@@ -21,7 +21,7 @@ BOOL GearPhoneCall_Kurt(PokegearPhoneCallContext *ctx) {
     u32 kurtQuantity;
     u8 msgId;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_127)) {
@@ -55,6 +55,6 @@ BOOL GearPhoneCall_Kurt(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }

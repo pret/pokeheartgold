@@ -160,7 +160,7 @@ void FieldSystem_Delete(OVY_MANAGER *man) {
     Field_FreeMapEvents(fieldSystem);
     FreeToHeap(fieldSystem->bagCursor);
     sub_02092BD0(fieldSystem->unkA8);
-    sub_02092DD8(fieldSystem->phoneRingManager);
+    GearPhoneRingManager_Delete(fieldSystem->phoneRingManager);
     FreeToHeap(fieldSystem->unk0);
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_89);
@@ -263,7 +263,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 if (newEvent != 2) {
-                    sub_02092FA8(fieldSystem->phoneRingManager);
+                    GearPhoneRingManager_ResetIfActive(fieldSystem->phoneRingManager);
                 }
             } else {
                 if (gSystem.newKeys & PAD_BUTTON_A) {

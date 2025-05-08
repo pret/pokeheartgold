@@ -47,7 +47,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx) {
     u16 dexFanfare;
     BOOL r6_3;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         pokedex = Save_Pokedex_Get(ctx->saveData);
@@ -94,7 +94,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx) {
             state->flag3 = TRUE;
         } else {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0666_00021);
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         }
         if (!state->flag3) {
@@ -129,7 +129,7 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx) {
         PlayFanfare(dexFanfare);
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, r7);
         if (r6_3) {
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         }
         break;
@@ -146,13 +146,13 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx) {
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (state->state1 == 255 && IsFanfarePlaying()) {
+        if (state->scriptState == 255 && IsFanfarePlaying()) {
             return FALSE;
         }
         DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }

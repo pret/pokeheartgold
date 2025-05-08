@@ -42,7 +42,7 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     int response;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         state->momsSavingsBalance = MomSavingsBalanceAction(ctx->momsSavings, MOMS_BALANCE_GET, 0);
@@ -50,7 +50,7 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
         state->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(ctx->saveVarsFlags);
         state->flag1 = MomsSavings_GiftQueueFull(ctx->momsSavings);
         if (state->unk_1A == 2) {
-            state->state1 = 2;
+            state->scriptState = 2;
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, MomCallGetIntroMsgByLocation(ctx, state));
@@ -61,7 +61,7 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
         }
         if (state->flag1) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0664_00021);
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         }
         break;
@@ -97,7 +97,7 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 

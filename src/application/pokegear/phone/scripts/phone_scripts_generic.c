@@ -245,14 +245,14 @@ BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     const PhoneCallScriptDef *scriptDef;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCall_ApplyGenericNPCcallSideEffect(ctx, PhoneCall_GetScriptDefPtrByID(state->scriptID));
         BufferSpeciesName(ctx->msgFormat, 10, getRandomTrainerMon(state->phoneBookEntry->trainerId, ctx->heapId));
         BufferSpeciesName(ctx->msgFormat, 11, getRandomEncounterSlot(state->phoneBookEntry->mapId, state->phoneBookEntry->trainerClass, state->timeOfDay));
         if (state->phoneBookEntry->unkC == 255) {
-            ++state->state1;
+            ++state->scriptState;
         }
         break;
     case 1:
@@ -272,7 +272,7 @@ BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 
@@ -281,12 +281,12 @@ BOOL GearPhoneCall_Generic2(PokegearPhoneCallContext *ctx) {
     u8 rnd;
     const PhoneCallScriptDef *scriptDef;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCall_ApplyGenericNPCcallSideEffect(ctx, PhoneCall_GetScriptDefPtrByID(state->scriptID));
         if (state->phoneBookEntry->unkC == 255) {
-            ++state->state1;
+            ++state->scriptState;
         }
         break;
     case 1:
@@ -312,6 +312,6 @@ BOOL GearPhoneCall_Generic2(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }

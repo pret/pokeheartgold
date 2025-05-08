@@ -47,7 +47,7 @@ static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
 String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     String *str;
-    if (!gearPhone->unk_var0_0 || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
+    if (!gearPhone->active || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         str = String_New(8, heapId);
     } else {
         int phoneMsg = GetPhoneMessageGmm(gearPhone->callerId);
@@ -98,7 +98,7 @@ BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
         return FALSE;
     }
 
-    if (gearPhone->unk_var0_0 || gearPhone->unk_var8 < gearPhone->unk_varC) {
+    if (gearPhone->active || gearPhone->unk_var8 < gearPhone->unk_varC) {
         return FALSE;
     }
 
@@ -196,7 +196,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         slot = (MTRandom() % (ret * 100));
         rand = slot / 100;
         ov02_02251EB8(gearPhone, contact[(u8)rand].id, var, index, 0, 0);
-        sub_02092DF4(gearPhone);
+        GearPhoneRingManager_StartRinging(gearPhone);
         ov02_022522AC(gearPhone, 1);
     }
 
@@ -427,7 +427,7 @@ _02252164:
 	add r3, r7, #0
 	bl ov02_02251EB8
 	ldr r0, [sp, #8]
-	bl sub_02092DF4
+	bl GearPhoneRingManager_StartRinging
 	ldr r0, [sp, #8]
 	mov r1, #1
 	bl ov02_022522AC
@@ -449,7 +449,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         return FALSE;
     }
     ov02_02251EB8(gearPhone, ov02_02253C84[r6].unk0, 0xFF, 0, 3, ov02_02253C84[r6].unk2);
-    sub_02092DF4(gearPhone);
+    GearPhoneRingManager_StartRinging(gearPhone);
     gearPhone->unk_var7 = r6;
     return ov02_02253C84[r6].unk4 + 1;
 }
@@ -465,8 +465,8 @@ static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u
             continue;
         }
         PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].unk0];
-        if (entry->id == 6) {
-            if (GSPlayerMisc_IsGearNumberRegistered(gearPhone->pokegearData, 6) != 0xFF) {
+        if (entry->id == PHONE_CONTACT_DAY_C_MAN) {
+            if (GSPlayerMisc_IsGearNumberRegistered(gearPhone->pokegearData, PHONE_CONTACT_DAY_C_MAN) != 0xFF) {
                 // had to do this to match
                 goto LABEL;
             } else {

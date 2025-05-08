@@ -4652,7 +4652,7 @@ BOOL ScrCmd_SetPhoneCall(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); // PhoneCallAppData
-    sub_02092DF4(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    GearPhoneRingManager_StartRinging(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     ctx->fieldSystem->unkD2_7 = TRUE;
     ov02_02251EB8(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), callerId, 0xFF, 0, r6, r7);
     return TRUE;
@@ -4668,7 +4668,7 @@ BOOL ScrCmd_RunPhoneCall(ScriptContext *ctx) {
 BOOL ScrCmd_LoadPhoneDat(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = LoadPhoneBookEntryI(idx, sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem)), HEAP_ID_32);
+    *p_ret = LoadPhoneBookEntryI(idx, GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem)), HEAP_ID_32);
     return FALSE;
 }
 
@@ -4677,7 +4677,7 @@ BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
     u8 r6 = ScriptReadByte(ctx);
     u16 *sp0 = ScriptGetVarPointer(ctx);
     u16 *p_ret_msg = ScriptGetVarPointer(ctx);
-    PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     *sp0 = GetPhoneMessageGmm(entry->id);
     u16 r5, p_ret_gmm;
 
@@ -4709,7 +4709,7 @@ BOOL ScrCmd_462(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     if (entry->gift == ITEM_CHERI_BERRY) {
         *p_ret = ITEM_CHERI_BERRY + (LCRandom() % 10);
     } else {
@@ -4720,7 +4720,7 @@ BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
     *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->id);
     PhoneRematches_GiftItemIdSet(momsSavings, entry->id, ITEM_NONE);

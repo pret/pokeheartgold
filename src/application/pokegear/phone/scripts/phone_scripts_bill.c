@@ -24,7 +24,7 @@ BOOL GearPhoneCall_Bill(PokegearPhoneCallContext *ctx) {
     PCStorage *pcStorage;
     u32 count;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         break;
@@ -63,6 +63,6 @@ BOOL GearPhoneCall_Bill(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }

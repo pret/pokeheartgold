@@ -52,7 +52,7 @@ void ov101_021F0F48(PokegearPhoneAppData *phoneApp) {
     }
     r4->unk_000 = phoneApp->numContacts;
     r4->unk_390 = &phoneApp->unk_048[2];
-    r4->callContext = phoneApp->unk_0C4;
+    r4->callContext = phoneApp->callContext;
     r4->unk_006_0 = 0;
     r4->unk_400 = &phoneApp->pokegear->unk_00C;
     r4->unk_404 = &phoneApp->unk_010;
@@ -145,7 +145,7 @@ void ov101_021F11E0(PokegearPhoneAppData *phoneApp, PokegearPhoneApp_Sub0E0 *a1,
     a1->unk_001 = a3;
     CopyWindowToVram(a1->unk_390);
     ov101_021F1B48(a1);
-    if (phoneApp->unk_0CB != 0) {
+    if (phoneApp->isIncomingCall != 0) {
         ov101_021F1290(a1, a3, 0);
     } else {
         ov101_021F1290(a1, a3, 1);

@@ -382,7 +382,7 @@ void ov101_021F0464(PokegearPhoneAppData *phoneApp, BOOL a1) {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x60, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0, 0x40, 8, RGB_BLACK);
-        AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[1], 0, PhoneContact_GetName(phoneApp->unk_0C4, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[1], 0, PhoneContact_GetName(phoneApp->callContext, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 0, RGB_BLACK);
@@ -453,11 +453,11 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     sp00.playerProfile = phoneApp->pokegear->profile;
     sp00.saveVarsFlags = phoneApp->pokegear->saveVarsFlags;
     sp00.rtc = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);
-    phoneApp->unk_0C4 = PhoneCall_CreateContext(&sp00);
+    phoneApp->callContext = PhoneCall_CreateContext(&sp00);
 }
 
 void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
-    PhoneCall_DestroyContext(phoneApp->unk_0C4);
+    PhoneCall_DestroyContext(phoneApp->callContext);
 }
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {

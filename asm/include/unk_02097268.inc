@@ -7,13 +7,13 @@
 .public SaveData_GetMomsSavingsAddr
 .public sub_0202F01C
 .public sub_0202F050
-.public sub_0202F300
+.public MomsSavings_SetCurSafariZoneArrangement
 .public Save_SafariZone_Get
 .public SafariZone_GetAreaSet
 .public sub_0202F6A0
 .public sub_0202F6AC
 .public sub_0202F6B8
-.public sub_0202F720
+.public SafariZone_GetObjectUnlockLevel
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_CheckSafariSysFlag
 .public sub_02097268

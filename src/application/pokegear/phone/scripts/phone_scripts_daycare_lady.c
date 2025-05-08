@@ -35,7 +35,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     int monIdx;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, msg_0660_00003, msg_0660_00004);
@@ -46,7 +46,7 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
         }
         if (state->sharedU8var == 0) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00010);
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         } else {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00005);
@@ -59,17 +59,17 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
         if (state->daycareMonsLevelGrowth[0] != 0) {
             monIdx = 0;
             if (state->daycareMonsLevelGrowth[1] == 0) {
-                state->state1 = 4;
+                state->scriptState = 4;
             } else {
-                state->state1 = 3;
+                state->scriptState = 3;
             }
         } else {
             if (state->daycareMonsLevelGrowth[1] != 0) {
                 monIdx = 1;
-                state->state1 = 4;
+                state->scriptState = 4;
             } else {
                 PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0660_00009);
-                state->state1 = 255;
+                state->scriptState = 255;
                 return FALSE;
             }
         }
@@ -103,6 +103,6 @@ BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }

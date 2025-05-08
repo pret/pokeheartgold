@@ -221,7 +221,7 @@
 .public SavePokegear_SetKenjiActiveState
 .public SavePokegear_GetKenjiActiveState
 .public SavePokegear_GetKenjiWaitDays
-.public sub_0202F340
+.public MomsSavings_AllocGetCurSafariZoneArrangement
 .public sub_0202F3DC
 .public sub_0202F400
 .public sub_0202F4E8
@@ -229,7 +229,7 @@
 .public sub_0202F514
 .public sub_0202F53C
 .public Save_SafariZone_Get
-.public sub_0202F730
+.public SafariZone_IncObjectUnlockLevel
 .public sub_0202F784
 .public Save_ApricornBox_Get
 .public ApricornBox_GetKurtQuantity

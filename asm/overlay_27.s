@@ -3801,7 +3801,7 @@ ov27_0225BDFC: ; 0x0225BDFC
 	sub sp, #0x14
 	add r5, r0, #0
 	ldr r0, [r5, #4]
-	bl sub_02092E08
+	bl GearPhoneRingManager_IsRinging
 	ldr r1, [r5, #0x1c]
 	cmp r1, #0
 	bne _0225BE8A

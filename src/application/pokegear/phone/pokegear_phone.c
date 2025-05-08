@@ -17,8 +17,8 @@ int ov101_021EFAB8(PokegearPhoneAppData *phoneApp);
 int ov101_021EFAC0(PokegearPhoneAppData *phoneApp);
 int ov101_021EFAC8(PokegearPhoneAppData *phoneApp);
 int ov101_021EFAD0(PokegearPhoneAppData *phoneApp);
-int ov101_021EFADC(PokegearPhoneAppData *phoneApp);
-int ov101_021EFAE8(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_SetUpPhoneCall(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_DoPhoneCall(PokegearPhoneAppData *phoneApp);
 int ov101_021EFB08(PokegearPhoneAppData *phoneApp);
 int ov101_021EFB4C(PokegearPhoneAppData *phoneApp);
 int ov101_021EFB70(PokegearPhoneAppData *phoneApp);
@@ -63,10 +63,10 @@ BOOL PokegearPhone_Main(OVY_MANAGER *man, int *state) {
         *state = ov101_021EFAD0(phoneApp);
         break;
     case 3:
-        *state = ov101_021EFADC(phoneApp);
+        *state = PokegearPhone_MainTask_SetUpPhoneCall(phoneApp);
         break;
     case 6:
-        *state = ov101_021EFAE8(phoneApp);
+        *state = PokegearPhone_MainTask_DoPhoneCall(phoneApp);
         break;
     case 4:
         *state = ov101_021EFB08(phoneApp);
@@ -109,16 +109,16 @@ void ov101_021EF96C(PokegearPhoneAppData *phoneApp) {
     phoneApp->numContacts = GSPlayerMisc_FindEmptyGearPhonebookSlot(phoneApp->pokegear->savePokegear);
     ov101_021F0D6C(phoneApp);
     if (phoneApp->pokegear->args->kind == 1) {
-        phoneApp->unk_0CB = 1;
+        phoneApp->isIncomingCall = 1;
         phoneApp->callerID = phoneApp->pokegear->args->callerId;
         phoneApp->unk_0C9 = phoneApp->pokegear->args->unk05;
-        phoneApp->unk_0CA = phoneApp->pokegear->args->unk06;
+        phoneApp->callScriptID = phoneApp->pokegear->args->callScriptID;
         phoneApp->pokegear->unk_006 = 0;
     } else {
-        phoneApp->unk_0CB = 0;
+        phoneApp->isIncomingCall = 0;
         phoneApp->callerID = 0;
         phoneApp->unk_0C9 = 0;
-        phoneApp->unk_0CA = 0;
+        phoneApp->callScriptID = 0;
     }
 }
 
@@ -193,17 +193,17 @@ int ov101_021EFAD0(PokegearPhoneAppData *phoneApp) {
     return 3;
 }
 
-int ov101_021EFADC(PokegearPhoneAppData *phoneApp) {
-    ov101_021EFFC8(phoneApp);
+int PokegearPhone_MainTask_SetUpPhoneCall(PokegearPhoneAppData *phoneApp) {
+    PokegearPhone_SetUpCallData(phoneApp);
     return 6;
 }
 
-int ov101_021EFAE8(PokegearPhoneAppData *phoneApp) {
-    if (!ov101_021F26F8(phoneApp->unk_0C4)) {
+int PokegearPhone_MainTask_DoPhoneCall(PokegearPhoneAppData *phoneApp) {
+    if (!PhoneCall_Main(phoneApp->callContext)) {
         return 6;
     }
 
-    ov101_021F003C(phoneApp);
+    PhoneCall_Exit(phoneApp);
     return 1;
 }
 
@@ -223,7 +223,7 @@ int ov101_021EFB08(PokegearPhoneAppData *phoneApp) {
 int ov101_021EFB4C(PokegearPhoneAppData *phoneApp) {
     if (ov101_021EFF14(phoneApp)) {
         phoneApp->unk_004 = 0;
-        if (phoneApp->unk_0CB) {
+        if (phoneApp->isIncomingCall) {
             return 3;
         } else {
             return 1;

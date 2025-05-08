@@ -365,7 +365,7 @@ void sub_0202F294(MomsSavings *momsSavings, int days) {
     }
 }
 
-void sub_0202F300(MomsSavings *momsSavings, u8 *a1, u8 a2) {
+void MomsSavings_SetCurSafariZoneArrangement(MomsSavings *momsSavings, u8 *a1, u8 a2) {
     MI_CpuClear8(momsSavings->safariAreas, 6);
     if (a1 == NULL) {
         momsSavings->numSafariAreas = 0;
@@ -378,10 +378,10 @@ void sub_0202F300(MomsSavings *momsSavings, u8 *a1, u8 a2) {
     }
 }
 
-u8 *sub_0202F340(MomsSavings *momsSavings, u8 *a1, HeapID heapId) {
+u8 *MomsSavings_AllocGetCurSafariZoneArrangement(MomsSavings *momsSavings, u8 *numAreasRet, HeapID heapId) {
     u8 *ret = AllocFromHeap(heapId, momsSavings->numSafariAreas);
     MI_CpuCopy8(momsSavings->safariAreas, ret, momsSavings->numSafariAreas);
-    *a1 = momsSavings->numSafariAreas;
+    *numAreasRet = momsSavings->numSafariAreas;
     return ret;
 }
 

@@ -59,7 +59,7 @@ void sub_02055478(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date,
     }
     s32 delta_seconds = seconds - sys_seconds;
     if (delta_seconds > 0) {
-        sub_02092F30(FieldSystem_GetGearPhoneRingManager(fieldSystem), seconds);
+        GearPhoneRingManager_HandleTimeAdvance(FieldSystem_GetGearPhoneRingManager(fieldSystem), seconds);
     }
     s32 minutes = delta_seconds / 60;
     if (minutes <= 0) {

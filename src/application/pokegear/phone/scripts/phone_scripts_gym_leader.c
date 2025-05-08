@@ -26,12 +26,12 @@ BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     int yesNoResponse;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
 
         if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
-            state->state1 = 255;
+            state->scriptState = 255;
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00001);
             return FALSE;
         }
@@ -43,17 +43,17 @@ BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
         }
         if (!state->flag0) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00003);
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         }
         if (state->flag1) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00009);
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         }
         if (state->date.week != state->phoneBookEntry->rematchWeekday || state->timeOfDay != state->phoneBookEntry->rematchTimeOfDay) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00004);
-            state->state1 = 255;
+            state->scriptState = 255;
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00005);
@@ -87,14 +87,14 @@ BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 
 BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00010);
@@ -117,7 +117,7 @@ BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 

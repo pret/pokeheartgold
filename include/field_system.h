@@ -40,10 +40,10 @@ typedef struct FollowMon {
 } FollowMon;
 
 struct GearPhoneRingManager {
-    u8 unk_var0_0 : 1;
+    u8 active : 1;
     u8 unk_var0_1 : 1;
     u8 unk_var0_2 : 1;
-    u8 unk_var0_3 : 1;
+    u8 ringing : 1;
     u8 unk_var0_4 : 4;
     u8 unk_var1;
     u8 callerId;
@@ -53,9 +53,9 @@ struct GearPhoneRingManager {
     u8 unk_var7;
     s32 unk_var8;
     s32 unk_varC;
-    u16 unk_var10;
+    u16 maxActiveDuration;
     u16 unk_var12;
-    s64 unk_var14;              // Seconds? see sub_02092F30
+    s64 activeTimer;            // Seconds? see GearPhoneRingManager_HandleTimeAdvance
     PhoneBookEntry entry;       // 0x1c
     SavePokegear *pokegearData; // 0x30
     MomsSavings *savingsData;   // 0x34

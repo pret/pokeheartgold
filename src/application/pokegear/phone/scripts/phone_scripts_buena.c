@@ -34,7 +34,7 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *ctx, PokegearPhoneCall
 BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, state->timeOfDay * 2 + msg_0641_00003, state->timeOfDay * 2 + msg_0641_00004);
@@ -53,7 +53,7 @@ BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 
@@ -62,7 +62,7 @@ BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx) {
     u8 r5;
     u8 r2;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, state->timeOfDay * 2 + msg_0641_00015, state->timeOfDay * 2 + msg_0641_00016);
@@ -91,7 +91,7 @@ BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 

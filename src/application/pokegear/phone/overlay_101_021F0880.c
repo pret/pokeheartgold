@@ -66,12 +66,12 @@ void ov101_021F0990(PokegearPhoneAppData *phoneApp) {
     ov101_021F11E0(phoneApp, &phoneApp->unk_0E0, 0, 0);
 }
 
-TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int a1, int a2) {
-    TouchscreenListMenuHeader sp18;
+TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int a1, int menuID) {
+    TouchscreenListMenuHeader header;
 
     phoneApp->unk_0CC = a1;
-    MI_CpuClear8(&sp18, sizeof(TouchscreenListMenuHeader));
-    sp18.template = (TouchscreenListMenuTemplate) {
+    MI_CpuClear8(&header, sizeof(TouchscreenListMenuHeader));
+    header.template = (TouchscreenListMenuTemplate) {
         .wrapAround = TRUE,
         .centered = TRUE,
         .xOffset = 0,
@@ -83,15 +83,15 @@ TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAp
         .charOffset = 0x3A4,
         .unkA = 0x00A0,
     };
-    sp18.listMenuItems = phoneApp->unk_4E8[a2];
-    sp18.bgConfig = phoneApp->pokegear->bgConfig;
-    sp18.numWindows = ov101_021F8404[a2].nItems;
-    if (a2 == 1) {
-        phoneApp->unk_504 = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &sp18, phoneApp->pokegear->unk_00C, ov101_021F8404[a2].x, ov101_021F8404[a2].y, ov101_021F8404[a2].width, 0, ov101_021F0A94, phoneApp, TRUE);
+    header.listMenuItems = phoneApp->unk_4E8[menuID];
+    header.bgConfig = phoneApp->pokegear->bgConfig;
+    header.numWindows = ov101_021F8404[menuID].nItems;
+    if (menuID == 1) {
+        phoneApp->touchscreenListMenu = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &header, phoneApp->pokegear->unk_00C, ov101_021F8404[menuID].x, ov101_021F8404[menuID].y, ov101_021F8404[menuID].width, 0, ov101_021F0A94, phoneApp, TRUE);
     } else {
-        phoneApp->unk_504 = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &sp18, phoneApp->pokegear->unk_00C, ov101_021F8404[a2].x, ov101_021F8404[a2].y, ov101_021F8404[a2].width, 0, ov101_021F0AB8, phoneApp, TRUE);
+        phoneApp->touchscreenListMenu = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &header, phoneApp->pokegear->unk_00C, ov101_021F8404[menuID].x, ov101_021F8404[menuID].y, ov101_021F8404[menuID].width, 0, ov101_021F0AB8, phoneApp, TRUE);
     }
-    return phoneApp->unk_504;
+    return phoneApp->touchscreenListMenu;
 }
 
 void ov101_021F0A94(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
@@ -100,7 +100,7 @@ void ov101_021F0A94(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, 
     if (event != 0) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
     }
-    ov101_021F0ACC(phoneApp, cursorPos + 3, 1);
+    ov101_021F0ACC(phoneApp, cursorPos + 3, TRUE);
 }
 
 void ov101_021F0AB8(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
@@ -109,7 +109,7 @@ void ov101_021F0AB8(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, 
     }
 }
 
-void ov101_021F0ACC(PokegearPhoneAppData *phoneApp, u8 a1, int a2) {
+void ov101_021F0ACC(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2) {
     if (a2) {
         u32 xpos;
         CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->unk_50C->rawData, 0, 24, phoneApp->unk_50C->screenWidth / 8, phoneApp->unk_50C->screenHeight / 8);
@@ -147,7 +147,7 @@ int ov101_021F0BA0(PokegearPhoneAppData *phoneApp) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         ov101_021F1338(&phoneApp->unk_0E0, 0);
         PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
-        ov101_021F0ACC(phoneApp, 0, 1);
+        ov101_021F0ACC(phoneApp, 0, TRUE);
         return 8;
     }
 
@@ -176,7 +176,7 @@ int ov101_021F0C4C(PokegearPhoneAppData *phoneApp) {
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             ov101_021F1338(&phoneApp->unk_0E0, 0);
             PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 0);
-            ov101_021F0ACC(phoneApp, 0, 1);
+            ov101_021F0ACC(phoneApp, 0, TRUE);
             phoneApp->pokegear->unk_00C = MENU_INPUT_STATE_TOUCH;
             return 8;
         }
@@ -270,7 +270,7 @@ void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PhoneContactListNode *a1, u8
 }
 
 void ov101_021F0EB0(PokegearPhoneAppData *phoneApp, u8 a1) {
-    PhoneBookEntry *r2 = phoneApp->unk_0C4->phoneEntries;
+    PhoneBookEntry *r2 = phoneApp->callContext->phoneEntries;
     for (int i = 0; i < phoneApp->numContacts - 1; ++i) {
         for (int j = phoneApp->numContacts - 1; j > i; --j) {
             if (r2[phoneApp->saveContacts[j].id].sortParam[a1] < r2[phoneApp->saveContacts[i].id].sortParam[a1]) {

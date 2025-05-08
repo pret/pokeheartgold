@@ -190,7 +190,7 @@
 .public Save_SafariZone_Get
 .public SafariZone_CopyAreaSet
 .public SafariZone_SetAreaSet
-.public sub_0202F720
+.public SafariZone_GetObjectUnlockLevel
 .public SafariZone_SwapAreasInSet
 .public SafariZone_InitAreaInSet
 .public SafariZone_AddObjectToArea

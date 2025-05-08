@@ -186,7 +186,7 @@
 .public Save_SafariZone_Get
 .public sub_0202F620
 .public SafariZone_GetAreaSet
-.public sub_0202F720
+.public SafariZone_GetObjectUnlockLevel
 .public MapMatrix_GetWidth
 .public MapHeader_GetMapSec
 .public MapHeader_GetField14_1E
@@ -337,7 +337,7 @@
 .public Party_GetUnkSubSlot
 .public SaveArray_Party_Get
 .public GetItemAttr
-.public sub_02092DF4
+.public GearPhoneRingManager_StartRinging
 .public GearPhone_ToggleRinging
 .public AllocAndReadPhoneBook
 .public FreePhoneBook

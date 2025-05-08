@@ -14,7 +14,7 @@
 #include "unk_02005D10.h"
 
 static BOOL (*const sPhoneCallHandlers[])(PokegearPhoneCallContext *) = {
-    ov101_021F2680,
+    PhoneCall_Simple,
     GearPhoneCall_Generic,
     GearPhoneCall_Generic2,
     GearPhoneCall_Bill,
@@ -118,17 +118,17 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneCallContext *ctx, 
     MI_CpuClear8(state, sizeof(PokegearPhoneCallState));
     if (callerId >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(FALSE);
-        state->state0 = 0xFF;
+        state->mainState = 0xFF;
         return FALSE;
     }
     if (incomingCall) {
         if (!MapHeader_GetField14_1E(ctx->playerMapSec)) {
-            state->state0 = 0xFF;
+            state->mainState = 0xFF;
             return FALSE;
         }
     } else {
         if (!MapHeader_GetField14_1D(ctx->playerMapSec)) {
-            state->state0 = 0xFF;
+            state->mainState = 0xFF;
             return FALSE;
         }
     }
@@ -138,7 +138,7 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneCallContext *ctx, 
     state->isIncomingCall = incomingCall;
     state->unk_1A = a3;
     state->predefinedScriptID = scriptID;
-    state->state0 = state->isIncomingCall;
+    state->mainState = state->isIncomingCall;
     GF_RTC_CopyDateTime(&state->date, &state->time);
     state->timeOfDay = GF_RTC_GetTimeOfDayWildParamByHour(state->time.hour);
     state->scriptType = 0;
@@ -224,31 +224,31 @@ void PhoneCall_AnimateFastForwardButtonOnTouch(PokegearPhoneCallContext *a0) {
     }
 }
 
-void PhoneCallMessagePrint(PokegearPhoneCallContext *a0, MsgData *msgData, const u8 *msgIDs) {
-    ReadMsgDataIntoString(msgData, msgIDs[a0->playerGender], a0->phoneCallMsgReadBuff);
-    StringExpandPlaceholders(a0->msgFormat, a0->msgExpansionBuff, a0->phoneCallMsgReadBuff);
-    FillWindowPixelBuffer(a0->phoneCallMsgWindow, 0);
-    a0->textPrinter = AddTextPrinterParameterizedWithColor(a0->phoneCallMsgWindow, 0, a0->msgExpansionBuff, 0, 0, a0->textSpeed, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+void PhoneCallMessagePrint(PokegearPhoneCallContext *ctx, MsgData *msgData, const u8 *msgIDs) {
+    ReadMsgDataIntoString(msgData, msgIDs[ctx->playerGender], ctx->phoneCallMsgReadBuff);
+    StringExpandPlaceholders(ctx->msgFormat, ctx->msgExpansionBuff, ctx->phoneCallMsgReadBuff);
+    FillWindowPixelBuffer(ctx->phoneCallMsgWindow, 0);
+    ctx->textPrinter = AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->msgExpansionBuff, 0, 0, ctx->textSpeed, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 }
 
-void PhoneCallMessagePrint_Gendered(PokegearPhoneCallContext *a0, MsgData *msgData, u8 msgIDifEthan, u8 msgIDifLyra) {
-    a0->msgIDs[0] = msgIDifEthan;
-    a0->msgIDs[1] = msgIDifLyra;
-    PhoneCallMessagePrint(a0, msgData, a0->msgIDs);
+void PhoneCallMessagePrint_Gendered(PokegearPhoneCallContext *ctx, MsgData *msgData, u8 msgIDifEthan, u8 msgIDifLyra) {
+    ctx->msgIDs[0] = msgIDifEthan;
+    ctx->msgIDs[1] = msgIDifLyra;
+    PhoneCallMessagePrint(ctx, msgData, ctx->msgIDs);
 }
 
-void PhoneCallMessagePrint_Ungendered(PokegearPhoneCallContext *a0, MsgData *msgData, u8 msgID) {
-    a0->msgIDs[0] = msgID;
-    a0->msgIDs[1] = msgID;
-    PhoneCallMessagePrint(a0, msgData, a0->msgIDs);
+void PhoneCallMessagePrint_Ungendered(PokegearPhoneCallContext *ctx, MsgData *msgData, u8 msgID) {
+    ctx->msgIDs[0] = msgID;
+    ctx->msgIDs[1] = msgID;
+    PhoneCallMessagePrint(ctx, msgData, ctx->msgIDs);
 }
 
-BOOL PhoneCall_IsMessageDonePrinting(PokegearPhoneCallContext *a0) {
-    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
-    if (TextPrinterCheckActive(a0->textPrinter)) {
+BOOL PhoneCall_IsMessageDonePrinting(PokegearPhoneCallContext *ctx) {
+    PhoneCall_AnimateFastForwardButtonOnTouch(ctx);
+    if (TextPrinterCheckActive(ctx->textPrinter)) {
         return FALSE;
     }
-    a0->state.menuInputState = TextFlags_GetIsTouchSpeedingUpPrint();
+    ctx->state.menuInputState = TextFlags_GetIsTouchSpeedingUpPrint();
     return TRUE;
 }
 
@@ -284,133 +284,104 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
     }
 }
 
-void PhoneCall_TouchscreenListMenu_Create(PokegearPhoneCallContext *a0, u8 a1) {
-    ov101_021F0ACC(a0->phoneApp, 2, 1);
-    a0->touchscreenListMenu = PokegearPhoneApp_TouchscreenListMenu_Create(a0->phoneApp, 0, a1);
-    Sprite_SetVisibleFlag(a0->sprite, FALSE);
-    ov101_021F2384(a0, 1);
+void PhoneCall_TouchscreenListMenu_Create(PokegearPhoneCallContext *ctx, u8 menuID) {
+    ov101_021F0ACC(ctx->phoneApp, 2, TRUE);
+    ctx->touchscreenListMenu = PokegearPhoneApp_TouchscreenListMenu_Create(ctx->phoneApp, 0, menuID);
+    Sprite_SetVisibleFlag(ctx->sprite, FALSE);
+    ov101_021F2384(ctx, 1);
 }
 
 int PhoneCall_TouchscreenListMenu_HandleInput(PokegearPhoneCallContext *a0) {
     return TouchscreenListMenu_HandleInput(a0->touchscreenListMenu);
 }
 
-void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneCallContext *a0) {
-    *a0->menuInputStatePtr = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(a0->touchscreenListMenu);
-    TouchscreenListMenu_Destroy(a0->touchscreenListMenu);
-    ov101_021F0ACC(a0->phoneApp, 0, 0);
-    Sprite_SetVisibleFlag(a0->sprite, TRUE);
-    ov101_021F2384(a0, 0);
+void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneCallContext *ctx) {
+    *ctx->menuInputStatePtr = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(ctx->touchscreenListMenu);
+    TouchscreenListMenu_Destroy(ctx->touchscreenListMenu);
+    ov101_021F0ACC(ctx->phoneApp, 0, FALSE);
+    Sprite_SetVisibleFlag(ctx->sprite, TRUE);
+    ov101_021F2384(ctx, 0);
 }
 
 const PhoneCallScriptDef *PhoneCall_GetScriptDefPtrByID(int scriptID) {
     return &gPhoneCallScriptDef[scriptID];
 }
 
-void ov101_021F2384(PokegearPhoneCallContext *a0, BOOL a1) {
+void ov101_021F2384(PokegearPhoneCallContext *ctx, BOOL a1) {
     if (a1) {
-        PaletteData_BlendPalette(a0->plttData, PLTTBUF_MAIN_BG, 0x10, 0x10, 0, RGB_BLACK);
-        PaletteData_BlendPalette(a0->plttData, PLTTBUF_MAIN_BG, 0xA0, 0x10, 0, RGB_BLACK);
+        PaletteData_BlendPalette(ctx->plttData, PLTTBUF_MAIN_BG, 0x10, 0x10, 0, RGB_BLACK);
+        PaletteData_BlendPalette(ctx->plttData, PLTTBUF_MAIN_BG, 0xA0, 0x10, 0, RGB_BLACK);
     } else {
-        PaletteData_BlendPalette(a0->plttData, PLTTBUF_MAIN_BG, 0x10, 0x10, 8, RGB_BLACK);
-        PaletteData_BlendPalette(a0->plttData, PLTTBUF_MAIN_BG, 0xA0, 0x10, 8, RGB_BLACK);
+        PaletteData_BlendPalette(ctx->plttData, PLTTBUF_MAIN_BG, 0x10, 0x10, 8, RGB_BLACK);
+        PaletteData_BlendPalette(ctx->plttData, PLTTBUF_MAIN_BG, 0xA0, 0x10, 8, RGB_BLACK);
     }
-    PaletteData_SetAutoTransparent(a0->plttData, TRUE);
-    PaletteData_PushTransparentBuffers(a0->plttData);
-    PaletteData_SetAutoTransparent(a0->plttData, FALSE);
+    PaletteData_SetAutoTransparent(ctx->plttData, TRUE);
+    PaletteData_PushTransparentBuffers(ctx->plttData);
+    PaletteData_SetAutoTransparent(ctx->plttData, FALSE);
 }
 
-BOOL ov101_021F23F0(PokegearPhoneCallContext *a0) {
-    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
+BOOL PhoneCall_WaitButtonBeforeHangup(PokegearPhoneCallContext *ctx) {
+    PhoneCall_AnimateFastForwardButtonOnTouch(ctx);
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
         PlaySE(SEQ_SE_DP_SELECT);
-        a0->state.menuInputState = MENU_INPUT_STATE_BUTTONS;
+        ctx->state.menuInputState = MENU_INPUT_STATE_BUTTONS;
         return TRUE;
     }
 
     if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
         PlaySE(SEQ_SE_DP_SELECT);
-        a0->state.menuInputState = MENU_INPUT_STATE_TOUCH;
+        ctx->state.menuInputState = MENU_INPUT_STATE_TOUCH;
         return TRUE;
     }
 
     return FALSE;
 }
 
-void ov101_021F243C(PokegearPhoneCallContext *a0, u8 a1, u8 a2) {
+void PhoneCall_NoSignalMessage(PokegearPhoneCallContext *ctx, u8 a1, u8 a2) {
     if (a2 == 0) {
-        FillWindowPixelBuffer(a0->phoneCallMsgWindow, 0);
+        FillWindowPixelBuffer(ctx->phoneCallMsgWindow, 0);
     }
     if (a1 == 0) {
-        AddTextPrinterParameterizedWithColor(a0->phoneCallMsgWindow, 0, a0->noSignalMsgs[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->noSignalMsgs[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(a0->phoneCallMsgWindow, 0, a0->hangUpMsgs[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->hangUpMsgs[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     }
 }
 
-BOOL ov101_021F2494(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
-    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
-    switch (r4->state2) {
-    case 0:
-        PlaySE(SEQ_SE_GS_PHONE0);
-        ov101_021F243C(a0, 0, r4->state2);
-        break;
-    case 1:
-        if (IsSEPlaying(SEQ_SE_GS_PHONE0)) {
-            return FALSE;
-        }
-        PlaySE(SEQ_SE_GS_PHONE0);
-        ov101_021F243C(a0, 0, r4->state2);
-        break;
-    case 2:
-        if (IsSEPlaying(SEQ_SE_GS_PHONE0)) {
-            return FALSE;
-        }
-        r4->state2 = 0;
-        return TRUE;
-    }
-
-    ++r4->state2;
-    return FALSE;
-}
-
-BOOL ov101_021F2510(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
-    PhoneCall_AnimateFastForwardButtonOnTouch(a0);
-    switch (r4->state2) {
-    case 0:
-        PlaySE(SEQ_SE_GS_PHONE_OFF);
-        ov101_021F243C(a0, 1, r4->state2);
-        r4->hangupToneTimer = 0;
-        break;
-    case 1:
-    case 2:
-        if (r4->hangupToneTimer++ < 10) {
-            return FALSE;
-        }
-        r4->hangupToneTimer = 0;
-        ov101_021F243C(a0, 1, r4->state2);
-        break;
-    case 3:
-        if (r4->hangupToneTimer++ < 10) {
-            return FALSE;
-        }
-        r4->hangupToneTimer = 0;
-        r4->state2 = 0;
-        return TRUE;
-    }
-
-    ++r4->state2;
-    return FALSE;
-}
-
-BOOL ov101_021F2598(PokegearPhoneCallContext *ctx) {
+BOOL PhoneCall_InitialRing(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     PhoneCall_AnimateFastForwardButtonOnTouch(ctx);
-    switch (state->state2) {
+    switch (state->hangupToneState) {
     case 0:
-        ov101_021F243C(ctx, 0, state->state2);
+        PlaySE(SEQ_SE_GS_PHONE0);
+        PhoneCall_NoSignalMessage(ctx, 0, state->hangupToneState);
+        break;
+    case 1:
+        if (IsSEPlaying(SEQ_SE_GS_PHONE0)) {
+            return FALSE;
+        }
+        PlaySE(SEQ_SE_GS_PHONE0);
+        PhoneCall_NoSignalMessage(ctx, 0, state->hangupToneState);
+        break;
+    case 2:
+        if (IsSEPlaying(SEQ_SE_GS_PHONE0)) {
+            return FALSE;
+        }
+        state->hangupToneState = 0;
+        return TRUE;
+    }
+
+    ++state->hangupToneState;
+    return FALSE;
+}
+
+BOOL PhoneCall_HangupTone(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
+    PhoneCall_AnimateFastForwardButtonOnTouch(ctx);
+    switch (state->hangupToneState) {
+    case 0:
+        PlaySE(SEQ_SE_GS_PHONE_OFF);
+        PhoneCall_NoSignalMessage(ctx, 1, state->hangupToneState);
         state->hangupToneTimer = 0;
         break;
     case 1:
@@ -419,18 +390,47 @@ BOOL ov101_021F2598(PokegearPhoneCallContext *ctx) {
             return FALSE;
         }
         state->hangupToneTimer = 0;
-        ov101_021F243C(ctx, 0, state->state2);
+        PhoneCall_NoSignalMessage(ctx, 1, state->hangupToneState);
         break;
     case 3:
         if (state->hangupToneTimer++ < 10) {
             return FALSE;
         }
         state->hangupToneTimer = 0;
-        state->state2 = 0;
+        state->hangupToneState = 0;
         return TRUE;
     }
 
-    ++state->state2;
+    ++state->hangupToneState;
+    return FALSE;
+}
+
+BOOL PhoneCall_HangupNoTone(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
+    PhoneCall_AnimateFastForwardButtonOnTouch(ctx);
+    switch (state->hangupToneState) {
+    case 0:
+        PhoneCall_NoSignalMessage(ctx, 0, state->hangupToneState);
+        state->hangupToneTimer = 0;
+        break;
+    case 1:
+    case 2:
+        if (state->hangupToneTimer++ < 10) {
+            return FALSE;
+        }
+        state->hangupToneTimer = 0;
+        PhoneCall_NoSignalMessage(ctx, 0, state->hangupToneState);
+        break;
+    case 3:
+        if (state->hangupToneTimer++ < 10) {
+            return FALSE;
+        }
+        state->hangupToneTimer = 0;
+        state->hangupToneState = 0;
+        return TRUE;
+    }
+
+    ++state->hangupToneState;
     return FALSE;
 }
 
@@ -439,7 +439,7 @@ BOOL PhoneCall_PrintGreeting(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
     PhoneCall_AnimateFastForwardButtonOnTouch(ctx);
-    switch (state->state2) {
+    switch (state->hangupToneState) {
     case 0:
         idx = state->timeOfDay * 2 + state->isIncomingCall * 6;
         PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_0640, sGreetingMsgIDs[state->phoneBookEntry->unkC][idx], sGreetingMsgIDs[state->phoneBookEntry->unkC][idx + 1]);
@@ -448,52 +448,52 @@ BOOL PhoneCall_PrintGreeting(PokegearPhoneCallContext *ctx) {
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        state->state2 = 0;
+        state->hangupToneState = 0;
         return TRUE;
     }
 
-    ++state->state2;
+    ++state->hangupToneState;
     return FALSE;
 }
 
-BOOL ov101_021F2680(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
-    const PhoneCallScriptDef *r6 = r4->scriptDef;
+BOOL PhoneCall_Simple(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
+    const PhoneCallScriptDef *scriptDef = state->scriptDef;
 
-    switch (r4->state1) {
+    switch (state->scriptState) {
     case 0:
-        PhoneCall_InitMsgDataAndBufferNames(a0);
-        PhoneCall_ApplyGenericNPCcallSideEffect(a0, r6);
-        if (r4->phoneBookEntry->unkC == 0xFF) {
-            ++r4->state1;
+        PhoneCall_InitMsgDataAndBufferNames(ctx);
+        PhoneCall_ApplyGenericNPCcallSideEffect(ctx, scriptDef);
+        if (state->phoneBookEntry->unkC == 0xFF) {
+            ++state->scriptState;
         }
         break;
     case 1:
-        if (!PhoneCall_PrintGreeting(a0)) {
+        if (!PhoneCall_PrintGreeting(ctx)) {
             return FALSE;
         }
         break;
     case 2:
-        PhoneCallMessagePrint(a0, a0->msgData_PhoneContact, r6->msgIds);
+        PhoneCallMessagePrint(ctx, ctx->msgData_PhoneContact, scriptDef->msgIds);
         break;
     case 3:
-        if (!PhoneCall_IsMessageDonePrinting(a0)) {
+        if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        DestroyMsgData(a0->msgData_PhoneContact);
+        DestroyMsgData(ctx->msgData_PhoneContact);
         return TRUE;
     }
 
-    ++r4->state1;
+    ++state->scriptState;
     return FALSE;
 }
 
-BOOL ov101_021F26F8(PokegearPhoneCallContext *ctx) {
+BOOL PhoneCall_Main(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
-    switch (state->state0) {
+    switch (state->mainState) {
     case 0:
-        if (!ov101_021F2494(ctx)) {
+        if (!PhoneCall_InitialRing(ctx)) {
             return FALSE;
         }
         break;
@@ -504,23 +504,23 @@ BOOL ov101_021F26F8(PokegearPhoneCallContext *ctx) {
         *ctx->menuInputStatePtr = (MenuInputState)state->menuInputState;
         break;
     case 2:
-        if (!ov101_021F23F0(ctx)) {
+        if (!PhoneCall_WaitButtonBeforeHangup(ctx)) {
             return FALSE;
         }
         break;
     case 3:
-        if (!ov101_021F2510(ctx)) {
+        if (!PhoneCall_HangupTone(ctx)) {
             return FALSE;
         }
-        state->state0 = 0;
+        state->mainState = 0;
         return TRUE;
     case 255:
-        if (!ov101_021F2598(ctx)) {
+        if (!PhoneCall_HangupNoTone(ctx)) {
             return FALSE;
         }
         break;
     case 256: // OUT OF AREA
-        if (!ov101_021F2510(ctx)) {
+        if (!PhoneCall_HangupTone(ctx)) {
             return FALSE;
         }
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_0271, msg_0271_00037);
@@ -531,13 +531,13 @@ BOOL ov101_021F26F8(PokegearPhoneCallContext *ctx) {
         }
         break;
     case 258:
-        if (!ov101_021F23F0(ctx)) {
+        if (!PhoneCall_WaitButtonBeforeHangup(ctx)) {
             return FALSE;
         }
-        state->state0 = 0;
+        state->mainState = 0;
         return TRUE;
     }
 
-    ++state->state0;
+    ++state->mainState;
     return FALSE;
 }

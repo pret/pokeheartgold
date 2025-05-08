@@ -150,7 +150,7 @@ ov108_021E59E4: ; 0x021E59E4
 	str r1, [r5, r0]
 	str r4, [r5, #0x14]
 	ldr r0, [r5, #0x18]
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	cmp r0, #0
 	beq _021E5A36
 	ldr r0, _021E5A44 ; =0x000184E3

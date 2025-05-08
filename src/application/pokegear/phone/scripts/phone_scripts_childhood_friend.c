@@ -32,7 +32,7 @@ u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhone
 BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         break;
@@ -53,7 +53,7 @@ BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 
@@ -92,7 +92,7 @@ u8 ov101_021F3D34(PokegearPhoneCallContext *a0) {
 BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
 
-    switch (state->state1) {
+    switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         break;
@@ -117,7 +117,7 @@ BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    ++state->state1;
+    ++state->scriptState;
     return FALSE;
 }
 

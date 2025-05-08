@@ -123,7 +123,7 @@ static void ov100_021E5A88(PokegearAppData *pokegearApp) {
 static BOOL ov100_021E5B4C(PokegearAppData *pokegearApp, u8 selection, u8 a2) {
     u8 r2;
     ov100_021E5A88(pokegearApp);
-    if (selection == 4) {
+    if (selection == GEAR_APP_CANCEL) {
         r2 = 26;
     } else {
         r2 = selection * 6 + 1;
@@ -267,7 +267,7 @@ void ov100_021E5EB4(PokegearAppData *pokegearApp, int a1) {
 
     NARC_ReadWholeMember(narc, a1 + 54, pokegearApp->unk_0C4);
     NNS_G2dGetUnpackedScreenData(pokegearApp->unk_0C4, &pokegearApp->unk_0C8);
-    if (pokegearApp->app == 4) {
+    if (pokegearApp->app == GEAR_APP_CANCEL) {
         ov100_021E5B4C(pokegearApp, 2, 1);
     } else {
         ov100_021E5B4C(pokegearApp, pokegearApp->app, 1);
@@ -658,7 +658,7 @@ static void ov100_021E6374(PokegearAppData *pokegearApp) {
 
     pokegearApp->appSwitchCursor = ov100_021E6F88(4, pokegearApp->heapId);
     ov100_021E7014(pokegearApp->appSwitchCursor, ov100_021E7720[pokegearApp->registeredCards], ov100_021E74A0[pokegearApp->registeredCards], 0, TRUE, pokegearApp->heapId, pokegearApp->unk_098[0], pokegearApp->unk_098[1], pokegearApp->unk_098[2], pokegearApp->unk_098[3]);
-    if (pokegearApp->app == 4) {
+    if (pokegearApp->app == GEAR_APP_CANCEL) {
         ov100_021E72F8(pokegearApp->appSwitchCursor, 0, 2);
     } else {
         ov100_021E72F8(pokegearApp->appSwitchCursor, 0, ov100_021E5DC8(pokegearApp));

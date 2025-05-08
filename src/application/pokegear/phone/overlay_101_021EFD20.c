@@ -44,15 +44,15 @@ BOOL ov101_021EFD7C(PokegearPhoneAppData *phoneApp) {
 }
 
 int ov101_021EFDB4(PokegearPhoneAppData *phoneApp) {
-    int input = TouchscreenListMenu_HandleInput(phoneApp->unk_504);
+    int input = TouchscreenListMenu_HandleInput(phoneApp->touchscreenListMenu);
     if (input != -1) {
-        phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->unk_504);
-        TouchscreenListMenu_Destroy(phoneApp->unk_504);
+        phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
+        TouchscreenListMenu_Destroy(phoneApp->touchscreenListMenu);
         if (input == 1) {
             PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 1);
             return 8;
         } else {
-            ov101_021F0ACC(phoneApp, 0, 0);
+            ov101_021F0ACC(phoneApp, 0, FALSE);
             if (input == 0) {
                 return 5;
             } else {
@@ -65,30 +65,30 @@ int ov101_021EFDB4(PokegearPhoneAppData *phoneApp) {
 }
 
 int ov101_021EFE1C(PokegearPhoneAppData *phoneApp) {
-    int input = TouchscreenListMenu_HandleInput(phoneApp->unk_504);
+    int input = TouchscreenListMenu_HandleInput(phoneApp->touchscreenListMenu);
     if (input == -1) {
         return 8;
     }
 
-    phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->unk_504);
-    TouchscreenListMenu_Destroy(phoneApp->unk_504);
+    phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
+    TouchscreenListMenu_Destroy(phoneApp->touchscreenListMenu);
     switch (input) {
     case 0:
     case 1:
     case 2:
         ov101_021F0EB0(phoneApp, input);
-        ov101_021F0ACC(phoneApp, 0, 0);
+        ov101_021F0ACC(phoneApp, 0, FALSE);
         ov101_021F0B84(phoneApp);
         return 1;
     case 3:
-        ov101_021F0ACC(phoneApp, 1, 1);
+        ov101_021F0ACC(phoneApp, 1, TRUE);
         ov101_021F13C8(&phoneApp->unk_0E0, 1);
         ov101_021F1290(&phoneApp->unk_0E0, 0xFF, 0);
         phoneApp->pokegear->unk_05C = ov101_021F0978;
         return 9;
     case 4:
     default:
-        ov101_021F0ACC(phoneApp, 0, 0);
+        ov101_021F0ACC(phoneApp, 0, FALSE);
         ov101_021F0B84(phoneApp);
         return 1;
     }
@@ -101,7 +101,7 @@ int ov101_021EFEC8(PokegearPhoneAppData *phoneApp) {
         break;
     case 1:
         ov101_021F13C8(&phoneApp->unk_0E0, 0);
-        ov101_021F0ACC(phoneApp, 0, 0);
+        ov101_021F0ACC(phoneApp, 0, FALSE);
         ov101_021F1338(&phoneApp->unk_0E0, 1);
         phoneApp->pokegear->unk_05C = ov101_021F0944;
         phoneApp->unk_008 = 0;
@@ -115,11 +115,11 @@ BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->unk_008) {
     case 0:
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, phoneApp->heapId);
-        if (phoneApp->unk_0CB) {
+        if (phoneApp->isIncomingCall) {
             PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xB0, 0x30, 0, RGB_BLACK);
             PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, RGB_BLACK);
         }
-        ov101_021F0464(phoneApp, phoneApp->unk_0CB);
+        ov101_021F0464(phoneApp, phoneApp->isIncomingCall);
         for (int i = 0; i < 8; ++i) {
             ToggleBgLayer(i, TRUE);
         }
@@ -142,25 +142,25 @@ BOOL ov101_021EFFBC(PokegearPhoneAppData *phoneApp) {
     return TRUE;
 }
 
-BOOL ov101_021EFFC8(PokegearPhoneAppData *phoneApp) {
+BOOL PokegearPhone_SetUpCallData(PokegearPhoneAppData *phoneApp) {
     BOOL r4;
 
-    if (phoneApp->unk_0CB) {
-        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->unk_0C4, phoneApp->callerID, phoneApp->unk_0CB, phoneApp->unk_0C9, phoneApp->unk_0CA);
-        phoneApp->unk_0CB = 0;
+    if (phoneApp->isIncomingCall) {
+        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, phoneApp->unk_0C9, phoneApp->callScriptID);
+        phoneApp->isIncomingCall = 0;
         phoneApp->pokegear->args->kind = 0;
     } else {
-        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->unk_0C4, phoneApp->callerID, phoneApp->unk_0CB, 0, 0);
+        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, 0, PHONE_SCRIPT_NONE);
     }
     if (r4) {
-        PhoneCall_GetCallScriptId(phoneApp->unk_0C4);
+        PhoneCall_GetCallScriptId(phoneApp->callContext);
     }
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
     TextFlags_SetFastForwardTouchButtonHitbox(&ov101_021F8400);
     return r4;
 }
 
-BOOL ov101_021F003C(PokegearPhoneAppData *phoneApp) {
+BOOL PhoneCall_Exit(PokegearPhoneAppData *phoneApp) {
     FillWindowPixelBuffer(&phoneApp->unk_048[0], 0);
     FillWindowPixelBuffer(&phoneApp->unk_048[1], 0);
     CopyWindowToVram(&phoneApp->unk_048[0]);

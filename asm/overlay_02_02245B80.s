@@ -18115,7 +18115,7 @@ _0224E39E:
 	pop {r4, r5, r6, r7, pc}
 _0224E3AE:
 	add r0, r4, #0
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	cmp r0, #0
 	bne _0224E3BE
 	add sp, #0x1c
@@ -18450,7 +18450,7 @@ ov02_0224E640: ; 0x0224E640
 	add r5, r0, #0
 	add r0, r4, #0
 	bl Save_SafariZone_Get
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0xa
