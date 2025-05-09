@@ -8,8 +8,8 @@
 #include "sound_02004A44.h"
 #include "unk_0200FA24.h"
 
-void ov101_021EF96C(PokegearPhoneAppData *phoneApp);
-void ov101_021EFA04(PokegearPhoneAppData *phoneApp);
+static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp);
+static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp);
 int ov101_021EFA24(PokegearPhoneAppData *phoneApp);
 int ov101_021EFA48(PokegearPhoneAppData *phoneApp);
 int ov101_021EFAA4(PokegearPhoneAppData *phoneApp);
@@ -32,8 +32,8 @@ BOOL PokegearPhone_Init(OVY_MANAGER *man, int *state) {
     memset(phoneApp, 0, sizeof(PokegearPhoneAppData));
     phoneApp->pokegear = pokegearApp;
     phoneApp->heapId = HEAP_ID_PHONE;
-    sub_02004EC4(0x37, 0, 0);
-    ov101_021EF96C(phoneApp);
+    Sound_SetSceneAndPlayBGM(55, 0, 0);
+    PokegearPhone_LoadContactsAndInitFromArgs(phoneApp);
     return TRUE;
 }
 
@@ -93,7 +93,7 @@ BOOL PokegearPhone_Main(OVY_MANAGER *man, int *state) {
 BOOL PokegearPhone_Exit(OVY_MANAGER *man, int *state) {
     PokegearPhoneAppData *phoneApp = OverlayManager_GetData(man);
 
-    ov101_021EFA04(phoneApp);
+    PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);
     phoneApp->pokegear->unk_005_7 = TRUE;
     HeapID heapId = phoneApp->heapId;
     OverlayManager_FreeData(man);
@@ -101,7 +101,7 @@ BOOL PokegearPhone_Exit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-void ov101_021EF96C(PokegearPhoneAppData *phoneApp) {
+static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp) {
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->unk_05C = ov101_021F0944;
     phoneApp->unk_011 = sub_0202EE7C(phoneApp->pokegear->savePokegear);
@@ -122,8 +122,8 @@ void ov101_021EF96C(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-void ov101_021EFA04(PokegearPhoneAppData *phoneApp) {
-    ov101_021F0D90(phoneApp);
+static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp) {
+    PokegearPhone_ContactList_ToSaveArray(phoneApp);
     FreeToHeap(phoneApp->saveContacts);
     phoneApp->pokegear->unk_05C = NULL;
     phoneApp->pokegear->unk_060 = NULL;

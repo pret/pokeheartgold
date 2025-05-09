@@ -587,7 +587,7 @@ BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state) {
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleData));
         data->heapId = HEAP_ID_ALPH_PUZZLE;
         data->args = OverlayManager_GetArgs(man);
-        sub_02004EC4(74, 0, 0);
+        Sound_SetSceneAndPlayBGM(74, 0, 0);
         AlphPuzzle_InitTextOptionsAndPuzzleIndex(data);
         (*state)++;
         break;

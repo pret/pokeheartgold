@@ -18,7 +18,7 @@
 .public SndRadio_StopSeq
 .public SndRadio_CountPlayingSeq
 .public GF_GetCurrentPlayingBGM
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlayBGM
 .public StopBGM
 .public GF_SndStartFadeOutBGM

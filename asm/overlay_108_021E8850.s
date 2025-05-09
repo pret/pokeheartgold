@@ -43,7 +43,7 @@ _021E8862:
 	mov r1, #0
 	mov r0, #0x43
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]

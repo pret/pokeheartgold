@@ -857,8 +857,8 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     RegisterHallOfFame_SetGfxBanks();
     RegisterHallOfFame_CreateBgConfig(data);
     RegisterHallOfFame_CreateSpriteGfxHandlers(data);
-    sub_02004EC4(8, SEQ_GS_E_DENDOUIRI, 1);
-    sub_02004EC4(71, 0, 0);
+    Sound_SetSceneAndPlayBGM(8, SEQ_GS_E_DENDOUIRI, 1);
+    Sound_SetSceneAndPlayBGM(71, 0, 0);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->currentScene = REGHOF_SCENE_INDIV_MONS_INIT;
     return TRUE;

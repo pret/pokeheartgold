@@ -4,7 +4,7 @@
 .public FontID_Release
 .public FontID_String_GetWidth
 .public LoadFontPal1
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData

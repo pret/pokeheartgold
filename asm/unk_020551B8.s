@@ -31,7 +31,7 @@ _020551D6:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

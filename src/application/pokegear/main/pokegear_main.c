@@ -90,7 +90,7 @@ BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     pokegearApp->unk_038 = 0;
     pokegearApp->unk_056 = EC_WORD_NULL;
     pokegearApp->unk_006 = 1;
-    sub_02004EC4(0x37, 0, 0);
+    Sound_SetSceneAndPlayBGM(0x37, 0, 0);
     return TRUE;
 }
 

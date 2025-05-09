@@ -88,7 +88,7 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case INTRO_MOVIE_INIT:
         data->scene1Data.skipAllowedPtr = &data->skipAllowed;
-        sub_02004EC4(2, SEQ_GS_TITLE, 1);
+        Sound_SetSceneAndPlayBGM(2, SEQ_GS_TITLE, 1);
         ++(*state);
         break;
     case INTRO_MOVIE_RUN:

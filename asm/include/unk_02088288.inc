@@ -5,7 +5,7 @@
 .public FontID_SetAccessLazy
 .public FontID_Release
 .public LoadFontPal1
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public sub_020062E0
 .public sub_02006EA0

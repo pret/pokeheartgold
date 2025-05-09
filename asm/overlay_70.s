@@ -1663,7 +1663,7 @@ _02238446:
 	ldr r1, _022385B8 ; =0x0000047D
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _022385BC ; =0x00020020
 	mov r0, #0x3d
 	bl AllocFromHeap
@@ -3032,7 +3032,7 @@ ov70_02238FF4: ; 0x02238FF4
 	ldr r1, _022390D0 ; =0x00000484
 	mov r0, #0x17
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldrh r0, [r4, #0x34]
 	cmp r0, #0
 	bne _02239072

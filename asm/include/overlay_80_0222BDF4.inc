@@ -21,7 +21,7 @@
 .public PaletteData_LoadNarc
 .public PaletteData_FillPaletteInBuffer
 .public PaletteData_BlendPalette
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public NARC_New
 .public NARC_Delete

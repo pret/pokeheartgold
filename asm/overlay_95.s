@@ -1400,7 +1400,7 @@ _021E63DC:
 	ldr r1, _021E6598 ; =0x000003F3
 	mov r0, #0xd
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]
@@ -1714,7 +1714,7 @@ _021E6670:
 	ldr r1, _021E67E8 ; =0x000003F3
 	mov r0, #0xd
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r4, #0x60]
 	add r0, r0, #1
 	str r0, [r4, #0x60]

@@ -1529,7 +1529,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     switch (data->state) {
     case OAK_SPEECH_MAIN_STATE_START_TUTORIAL_MUSIC:
         ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
-        sub_02004EC4(2, SEQ_GS_POKEMON_THEME, 1);
+        Sound_SetSceneAndPlayBGM(2, SEQ_GS_POKEMON_THEME, 1);
         StopBGM(SEQ_GS_POKEMON_THEME, 0);
         PlayBGM(SEQ_GS_STARTING);
         data->state = OAK_SPEECH_MAIN_STATE_FADE_IN_TUTORIAL_MENU;

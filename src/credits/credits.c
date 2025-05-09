@@ -255,7 +255,7 @@ BOOL Credits_Init(OVY_MANAGER *man, int *state) {
 
         // Initialize to first line of the credits
         work->pageWork.pageState.line = 1;
-        sub_02004EC4(0xe, 0x3f8, 1);
+        Sound_SetSceneAndPlayBGM(0xe, 0x3f8, 1);
         Main_SetVBlankIntrCB((GFIntrCB)VBlankCB, work);
         *state += 1;
         break;

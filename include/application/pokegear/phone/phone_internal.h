@@ -253,8 +253,8 @@ int ov101_021F0BA0(PokegearPhoneAppData *phoneApp);
 int ov101_021F0C4C(PokegearPhoneAppData *phoneApp);
 BOOL ov101_021F0CE4(PokegearPhoneAppData *phoneApp);
 void ov101_021F0D6C(PokegearPhoneAppData *phoneApp);
-void ov101_021F0D90(PokegearPhoneAppData *phoneApp);
-void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PhoneContactListNode *a1, u8 a2);
+void PokegearPhone_ContactList_ToSaveArray(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneContactListNode *newNode, u8 index);
 void ov101_021F0EB0(PokegearPhoneAppData *phoneApp, u8 a1);
 
 void ov101_021F0F48(PokegearPhoneAppData *phoneApp);

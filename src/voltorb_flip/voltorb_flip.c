@@ -302,7 +302,7 @@ BOOL GenerateBoardAndPrintNewLevel(WorkflowEngine *workflow, VoltorbFlipAppWork 
     // "VOLTORB Flip Lv. {}"
     PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, 0x000f0100);
     BgCommitTilemapBufferToVram(work->bgConfig, 5);
-    sub_02004EC4(64, 0, 0);
+    Sound_SetSceneAndPlayBGM(64, 0, 0);
 
     if (levelDiff != 0) {
         if (levelDiff > 0) {
@@ -364,7 +364,7 @@ BOOL ov122_021E5D24(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         // fallthrough
     case 1:
         if (!IsSEPlaying(SEQ_SE_GS_SLOT01) || !IsSEPlaying(SEQ_SE_GS_SLOT02)) {
-            sub_02004EC4(70, 0, 0);
+            Sound_SetSceneAndPlayBGM(70, 0, 0);
             return TRUE;
         }
         break;
@@ -716,7 +716,7 @@ BOOL AwardCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         // "{} received {} Coin(s)!"
         PrintTextWindow(work, msg_0039_00040, 1);
         ov122_021E7888(&work->unk25C);
-        sub_02004EC4(64, 0, 0);
+        Sound_SetSceneAndPlayBGM(64, 0, 0);
         PlaySE(SEQ_SE_GS_COIN_PAYOUT_ONE);
         IncrementTaskState(workflow);
     }
@@ -728,7 +728,7 @@ BOOL AwardCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         break;
     case 2:
         if (!GF_IsAnySEPlaying() && IsPrinterFinished(work)) {
-            sub_02004EC4(70, 0, 0);
+            Sound_SetSceneAndPlayBGM(70, 0, 0);
             BgClearTilemapBufferAndCommit(work->bgConfig, 3);
             ov122_021E78B4(&work->unk25C);
             EnqueueWorkflow(workflow, WORKFLOW_REVEAL_BOARD);
@@ -1992,7 +1992,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     work->game = CreateGameState(work->heapId);
     PrintBoardVoltorbsAndPoints(work);
 
-    sub_02004EC4(0x46, 0, 0);
+    Sound_SetSceneAndPlayBGM(0x46, 0, 0);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     sub_0200FBDC(0);

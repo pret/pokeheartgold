@@ -10,7 +10,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlayBGM
 .public GF_SndStartFadeOutBGM
 .public PlaySE

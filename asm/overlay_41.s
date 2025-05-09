@@ -2166,7 +2166,7 @@ _02246E42:
 	str r1, [r4, r2]
 	mov r0, #0x35
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, pc}

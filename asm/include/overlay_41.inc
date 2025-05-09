@@ -7,7 +7,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public CreateSysTaskAndEnvironment
 .public DestroySysTaskAndEnvironment

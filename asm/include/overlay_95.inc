@@ -12,7 +12,7 @@
 .public PaletteData_PushTransparentBuffers
 .public PaletteData_GetSelectedBuffersBitmask
 .public PaletteData_SetAutoTransparent
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public Sound_Stop
 .public PlaySE
 .public PlayCry

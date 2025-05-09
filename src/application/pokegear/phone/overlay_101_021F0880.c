@@ -205,7 +205,7 @@ BOOL ov101_021F0CE4(PokegearPhoneAppData *phoneApp) {
     if (r4 == phoneApp->unk_0E0.unk_002) {
         return TRUE;
     }
-    ov101_021F0E0C(phoneApp, phoneApp->unk_0E0.unk_00C[phoneApp->unk_0E0.unk_002].unk_4, r4);
+    PokegearPhone_ContactList_InsertNode(phoneApp, phoneApp->unk_0E0.unk_00C[phoneApp->unk_0E0.unk_002].unk_4, r4);
     phoneApp->unk_0E0.unk_002 = r4;
     ov101_021F11B0(phoneApp);
     ov101_021F11E0(phoneApp, &phoneApp->unk_0E0, phoneApp->unk_0E0.unk_003, phoneApp->unk_0E0.unk_001);
@@ -217,7 +217,7 @@ void ov101_021F0D6C(PokegearPhoneAppData *phoneApp) {
     ov101_021F1840(phoneApp);
 }
 
-void ov101_021F0D90(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_ContactList_ToSaveArray(PokegearPhoneAppData *phoneApp) {
     u8 i = 0;
     PhoneContactListNode *ptr;
 
@@ -232,40 +232,40 @@ void ov101_021F0D90(PokegearPhoneAppData *phoneApp) {
     FreeToHeap(phoneApp->unk_0D4);
 }
 
-void ov101_021F0E0C(PokegearPhoneAppData *phoneApp, PhoneContactListNode *a1, u8 a2) {
+void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneContactListNode *newNode, u8 index) {
     int i = 0;
-    PhoneContactListNode *r4;
+    PhoneContactListNode *curNode;
 
-    a1->prev->next = a1->next;
-    a1->next->prev = a1->prev;
-    if (a1 == phoneApp->contactListHead) {
-        phoneApp->contactListHead = a1->next;
+    newNode->prev->next = newNode->next;
+    newNode->next->prev = newNode->prev;
+    if (newNode == phoneApp->contactListHead) {
+        phoneApp->contactListHead = newNode->next;
     }
-    if (a1 == phoneApp->contactListTail) {
-        phoneApp->contactListTail = a1->prev;
+    if (newNode == phoneApp->contactListTail) {
+        phoneApp->contactListTail = newNode->prev;
     }
-    if (a2 == phoneApp->numContacts - 1) {
-        a1->prev = phoneApp->contactListTail;
-        a1->next = phoneApp->contactListTail->next;
-        phoneApp->contactListTail->next = a1;
-        phoneApp->contactListHead->prev = a1;
-        phoneApp->contactListTail = a1;
+    if (index == phoneApp->numContacts - 1) {
+        newNode->prev = phoneApp->contactListTail;
+        newNode->next = phoneApp->contactListTail->next;
+        phoneApp->contactListTail->next = newNode;
+        phoneApp->contactListHead->prev = newNode;
+        phoneApp->contactListTail = newNode;
     } else {
-        r4 = phoneApp->contactListHead;
+        curNode = phoneApp->contactListHead;
         do {
-            if (i++ != a2) {
-                r4 = r4->next;
+            if (i++ != index) {
+                curNode = curNode->next;
             } else {
-                a1->next = r4;
-                a1->prev = r4->prev;
-                a1->prev->next = a1;
-                r4->prev = a1;
-                if (r4 == phoneApp->contactListHead) {
-                    phoneApp->contactListHead = a1;
+                newNode->next = curNode;
+                newNode->prev = curNode->prev;
+                newNode->prev->next = newNode;
+                curNode->prev = newNode;
+                if (curNode == phoneApp->contactListHead) {
+                    phoneApp->contactListHead = newNode;
                 }
                 return;
             }
-        } while (r4 != phoneApp->contactListHead);
+        } while (curNode != phoneApp->contactListHead);
     }
 }
 

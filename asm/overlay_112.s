@@ -10074,7 +10074,7 @@ ov112_021EAC18: ; 0x021EAC18
 	ldr r1, _021EAC30 ; =0x00000497
 	mov r0, #0x49
 	mov r2, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, _021EAC30 ; =0x00000497
 	bl PlayBGM
 	mov r0, #2

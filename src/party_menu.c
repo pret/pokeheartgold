@@ -245,7 +245,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     sub_02079A14(partyMenu, narc);
     sub_020210BC();
     sub_02021148(4);
-    sub_02004EC4(57, 0, 0);
+    Sound_SetSceneAndPlayBGM(57, 0, 0);
     PartyMenu_SetContextMenuStaticStrings(partyMenu);
     PartyMenu_AddAllWindows(partyMenu);
     sub_0207EB24(partyMenu);

@@ -8,7 +8,7 @@
 .public FontID_String_GetWidth
 .public LoadFontPal1
 .public BlendPalette
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public StopSE
 .public CreateSysTaskAndEnvironment

@@ -384,13 +384,13 @@ _02087D0C:
 	ldr r1, _02087E04 ; =0x0000047B
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	b _02087D46
 _02087D3C:
 	ldr r1, _02087E08 ; =0x0000045D
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 _02087D46:
 	ldr r0, _02087E0C ; =gOverlayTemplate_Battle
 	ldr r1, [r5, #0x10]

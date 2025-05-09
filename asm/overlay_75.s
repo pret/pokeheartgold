@@ -50,7 +50,7 @@ ov75_02246960: ; 0x02246960
 	ldr r1, _022469D4 ; =0x0000047D
 	mov r0, #0x11
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #0
 	add r4, #0x88
 	str r0, [r4]

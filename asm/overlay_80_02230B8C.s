@@ -207,7 +207,7 @@ FrtCmd_144: ; 0x02230D0C
 	ldr r1, _02230D54 ; =0x0000045D
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]

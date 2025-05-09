@@ -201,7 +201,7 @@ _021E5C2C:
 	mov r1, #0
 	mov r0, #0x38
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, _021E5D6C ; =0x000033A0
 	add r0, r4, r0
 	bl ov51_021E7DA4

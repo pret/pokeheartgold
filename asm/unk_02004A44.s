@@ -716,17 +716,17 @@ _02004EB0: .word BANK_SE_EVENT
 
 	thumb_func_start sub_02004EB4
 sub_02004EB4: ; 0x02004EB4
-	ldr r3, _02004EC0 ; =sub_02004EC4
+	ldr r3, _02004EC0 ; =Sound_SetSceneAndPlayBGM
 	add r1, r0, #0
 	mov r0, #4
 	mov r2, #1
 	bx r3
 	nop
-_02004EC0: .word sub_02004EC4
+_02004EC0: .word Sound_SetSceneAndPlayBGM
 	thumb_func_end sub_02004EB4
 
-	thumb_func_start sub_02004EC4
-sub_02004EC4: ; 0x02004EC4
+	thumb_func_start Sound_SetSceneAndPlayBGM
+Sound_SetSceneAndPlayBGM: ; 0x02004EC4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -930,7 +930,7 @@ _0200505A:
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_02004EC4
+	thumb_func_end Sound_SetSceneAndPlayBGM
 
 	thumb_func_start sub_02005060
 sub_02005060: ; 0x02005060

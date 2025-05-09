@@ -256,7 +256,7 @@ _021F95B6:
 	mov r1, #0
 	mov r0, #0x33
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	bl sub_0203A964
 	ldr r2, _021F9604 ; =0x04000304
 	ldrh r1, [r2]

@@ -164,7 +164,7 @@ PokemonSummary_Init: ; 0x02088298
 	mov r1, #0
 	mov r0, #0x3d
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	bl sub_0203A964
 	add r0, r5, #0
 	bl NARC_Delete

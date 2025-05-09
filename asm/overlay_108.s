@@ -31,7 +31,7 @@ SafariAreaCustomizer_Init: ; 0x021E5900
 	mov r1, #0
 	mov r0, #0x43
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

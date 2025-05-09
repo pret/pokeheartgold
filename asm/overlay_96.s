@@ -2495,7 +2495,7 @@ ov96_021E6A94: ; 0x021E6A94
 	ldr r1, _021E6AE4 ; =0x0000046F
 	mov r0, #0x19
 	mov r2, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 _021E6AE0:
 	mov r0, #0
 	pop {r4, pc}
@@ -2856,7 +2856,7 @@ ov96_021E6D54: ; 0x021E6D54
 	ldr r1, _021E6DE0 ; =0x00000472
 	mov r0, #0x18
 	mov r2, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	b _021E6DBA
 _021E6DAA:
 	mov r0, #0
@@ -2864,7 +2864,7 @@ _021E6DAA:
 	ldr r1, _021E6DE4 ; =0x00000471
 	mov r0, #0x18
 	mov r2, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 _021E6DBA:
 	mov r0, #7
 	mov r1, #1
@@ -3551,7 +3551,7 @@ ov96_021E72CC: ; 0x021E72CC
 	ldr r1, _021E731C ; =0x00000474
 	mov r0, #0x19
 	mov r2, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 _021E7318:
 	mov r0, #0
 	pop {r4, pc}

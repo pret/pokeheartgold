@@ -387,7 +387,7 @@ static BOOL ov17_02201DF0(BerryPotsAppData *data) {
         ov17_02202528(data);
         sub_020210BC();
         sub_02021148(1);
-        sub_02004EC4(0x45, 0, 0);
+        Sound_SetSceneAndPlayBGM(0x45, 0, 0);
 
         data->state70 = 0;
         return TRUE;
