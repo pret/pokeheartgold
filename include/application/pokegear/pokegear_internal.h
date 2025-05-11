@@ -90,12 +90,12 @@ struct PokegearAppData {
     u8 app;                                     // 0x004
     u8 registeredCards : 7;                     // 0x005
     u8 unk_005_7 : 1;                           // 0x005
-    u8 unk_006;                                 // 0x006
+    u8 cursorInAppSwitchZone;                   // 0x006
     u8 unk_007;                                 // 0x007
     u8 unk_008;                                 // 0x008
     u8 unk_009;                                 // 0x009
-    MenuInputState unk_00C;                     // 0x00C
-    MenuInputState unk_010;                     // 0x010
+    MenuInputState menuInputState;              // 0x00C
+    MenuInputState menuInputStateBak;           // 0x010
     u8 filler_014[0x4];                         // 0x014
     int unk_018;                                // 0x018
     int unk_01C;                                // 0x01C
@@ -136,7 +136,7 @@ typedef struct PhoneCallScriptDef {
 
 int ov100_021E5C50(u16 a0, u16 a1);
 int ov100_021E5C80(PokegearAppData *pokegearApp);
-BOOL ov100_021E5900(PokegearAppData *pokegearApp);
+BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp);
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1);

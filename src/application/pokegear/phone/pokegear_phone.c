@@ -113,7 +113,7 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
         phoneApp->callerID = phoneApp->pokegear->args->callerId;
         phoneApp->unk_0C9 = phoneApp->pokegear->args->unk05;
         phoneApp->callScriptID = phoneApp->pokegear->args->callScriptID;
-        phoneApp->pokegear->unk_006 = 0;
+        phoneApp->pokegear->cursorInAppSwitchZone = 0;
     } else {
         phoneApp->isIncomingCall = 0;
         phoneApp->callerID = 0;
@@ -141,15 +141,15 @@ int ov101_021EFA24(PokegearPhoneAppData *phoneApp) {
 }
 
 int ov101_021EFA48(PokegearPhoneAppData *phoneApp) {
-    int input = ov101_021F0C4C(phoneApp);
+    int input = PokegearPhone_HandleTouchInput(phoneApp);
     if (input == -1) {
-        if (phoneApp->unk_010 == 0) {
-            ov100_021E5900(phoneApp->pokegear);
+        if (phoneApp->menuInputStateBak == 0) {
+            PokegearApp_HandleInputModeChangeToButtons(phoneApp->pokegear);
         }
-        if (phoneApp->pokegear->unk_006 == 1) {
+        if (phoneApp->pokegear->cursorInAppSwitchZone == 1) {
             input = PokegearApp_HandleKeyInput_SwitchApps(phoneApp->pokegear);
         } else {
-            input = ov101_021F0BA0(phoneApp);
+            input = PokegearPhone_HandleKeyInput_ContactList(phoneApp);
         }
     }
     switch (input) {

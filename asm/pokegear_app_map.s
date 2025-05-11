@@ -605,7 +605,7 @@ ov101_021E7BB4: ; 0x021E7BB4
 	cmp r1, #0
 	bne _021E7BE4
 	ldr r0, [r4, #0x10]
-	bl ov100_021E5900
+	bl PokegearApp_HandleInputModeChangeToButtons
 	ldr r0, [r4, #0x10]
 	ldrb r1, [r0, #6]
 	cmp r1, #1
@@ -747,7 +747,7 @@ _021E7CC0:
 	mov r0, #9
 	pop {r3, r4, r5, pc}
 _021E7CC4:
-	bl ov100_021E5900
+	bl PokegearApp_HandleInputModeChangeToButtons
 	cmp r0, #0
 	beq _021E7CE6
 	ldr r0, [r5, #0x10]

@@ -233,7 +233,7 @@ ov101_021EEA70: ; 0x021EEA70
 	cmp r0, r1
 	bne _021EEA9A
 	ldr r0, [r4, #0xc]
-	bl ov100_021E5900
+	bl PokegearApp_HandleInputModeChangeToButtons
 	ldr r0, [r4, #0xc]
 	ldrb r1, [r0, #6]
 	cmp r1, #1

@@ -363,7 +363,7 @@ ov101_021F46EC: ; 0x021F46EC
 	cmp r1, #0
 	bne _021F471C
 	ldr r0, [r4, #0xc]
-	bl ov100_021E5900
+	bl PokegearApp_HandleInputModeChangeToButtons
 	ldr r0, [r4, #0xc]
 	ldrb r1, [r0, #6]
 	cmp r1, #1

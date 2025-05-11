@@ -296,7 +296,7 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gSystem
-.public ov100_021E5900
+.public PokegearApp_HandleInputModeChangeToButtons
 .public PokegearApp_HandleTouchInput_SwitchApps
 .public PokegearApp_HandleKeyInput_SwitchApps
 .public ov100_021E5C50

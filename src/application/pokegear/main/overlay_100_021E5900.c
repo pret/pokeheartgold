@@ -37,10 +37,10 @@ static const u8 ov100_021E74B4[][4] = {
     { 0x00, 0x01, 0x02, 0x03 },
 };
 
-BOOL ov100_021E5900(PokegearAppData *pokegearApp) {
-    pokegearApp->unk_010 = pokegearApp->unk_00C;
+BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp) {
+    pokegearApp->menuInputStateBak = pokegearApp->menuInputState;
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN | PAD_BUTTON_X | PAD_BUTTON_Y)) {
-        pokegearApp->unk_00C = MENU_INPUT_STATE_BUTTONS;
+        pokegearApp->menuInputState = MENU_INPUT_STATE_BUTTONS;
         return TRUE;
     } else {
         return FALSE;
@@ -71,8 +71,8 @@ int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp) {
     }
     ov100_021E5B4C(pokegearApp, newApp, 1);
     PlaySE(newApp != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
-    pokegearApp->unk_006 = 0;
-    pokegearApp->unk_00C = MENU_INPUT_STATE_TOUCH;
+    pokegearApp->cursorInAppSwitchZone = 0;
+    pokegearApp->menuInputState = MENU_INPUT_STATE_TOUCH;
     return newApp;
 }
 
@@ -84,7 +84,7 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
     if (gSystem.newKeys & PAD_BUTTON_A) {
         PokegearAppSwitchButtonSpec *r4 = &pokegearApp->appSwitchCursor->unk_08->buttonSpec[pokegearApp->appSwitchCursor->unk_08->unk_01];
         ov100_021E7128(pokegearApp->appSwitchCursor, 0, FALSE);
-        pokegearApp->unk_006 = 0;
+        pokegearApp->cursorInAppSwitchZone = 0;
         PlaySE(r4->appId != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
         if (r4->appId == pokegearApp->app) {
             if (pokegearApp->unk_05C != NULL) {

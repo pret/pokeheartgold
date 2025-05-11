@@ -438,7 +438,7 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     PokegearPhoneCallContextParam sp00;
     MI_CpuClear8(&sp00, sizeof(PokegearPhoneCallContextParam));
     sp00.heapId = phoneApp->heapId;
-    sp00.menuInputStatePtr = &phoneApp->pokegear->unk_00C;
+    sp00.menuInputStatePtr = &phoneApp->pokegear->menuInputState;
     sp00.sprite = phoneApp->unk_088[13];
     sp00.phoneApp = phoneApp;
     sp00.bgConfig = phoneApp->pokegear->bgConfig;

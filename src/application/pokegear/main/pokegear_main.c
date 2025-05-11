@@ -67,7 +67,7 @@ BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     pokegearApp->options = Save_PlayerData_GetOptionsAddr(pokegearApp->args->saveData);
     pokegearApp->profile = Save_PlayerData_GetProfile(pokegearApp->args->saveData);
     pokegearApp->registeredCards = Pokegear_GetRegisteredCardsArray(pokegearApp->savePokegear);
-    pokegearApp->unk_00C = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
+    pokegearApp->menuInputState = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
     pokegearApp->unk_008 = sub_0202EE7C(pokegearApp->savePokegear);
     switch (pokegearApp->args->kind) {
     case 1: // scripted phone call
@@ -89,7 +89,7 @@ BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     }
     pokegearApp->unk_038 = 0;
     pokegearApp->unk_056 = EC_WORD_NULL;
-    pokegearApp->unk_006 = 1;
+    pokegearApp->cursorInAppSwitchZone = 1;
     Sound_SetSceneAndPlayBGM(0x37, 0, 0);
     return TRUE;
 }
@@ -142,7 +142,7 @@ BOOL Pokegear_Main(OVY_MANAGER *man, int *state) {
 BOOL Pokegear_Exit(OVY_MANAGER *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetData(man);
     SavePokegear_SetLastUsedApp(pokegearApp->savePokegear, pokegearApp->app);
-    MenuInputStateMgr_SetState(pokegearApp->args->menuInputStatePtr, pokegearApp->unk_00C);
+    MenuInputStateMgr_SetState(pokegearApp->args->menuInputStatePtr, pokegearApp->menuInputState);
     HeapID heapId = pokegearApp->heapId;
     OverlayManager_FreeData(man);
     sub_02004B10();

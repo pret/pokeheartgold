@@ -5,18 +5,18 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void ov101_021F1830(PhoneContactListNode *a0);
-void ov101_021F18E0(PokegearPhoneApp_Sub0E0_Sub00C *a0);
-void ov101_021F18E8(PokegearPhoneApp_Sub0E0 *a0, u8 a1, BOOL a2, BOOL a3);
-void ov101_021F19E4(PokegearPhoneApp_Sub0E0 *a0);
-u8 ov101_021F1A10(PokegearPhoneApp_Sub0E0 *a0, u8 a1);
-void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, BOOL a4);
-void ov101_021F1B48(PokegearPhoneApp_Sub0E0 *a0);
-BOOL ov101_021F1B94(PokegearPhoneApp_Sub0E0 *a0, u8 a1);
-BOOL ov101_021F1C34(PokegearPhoneApp_Sub0E0 *a0);
-BOOL ov101_021F1C98(PokegearPhoneApp_Sub0E0 *a0, u8 a1);
-BOOL ov101_021F1CE8(PokegearPhoneApp_Sub0E0 *a0);
-void ov101_021F1D44(PokegearPhoneApp_Sub0E0 *a0);
+void PhoneContactListNode_Init(PhoneContactListNode *a0);
+void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *a0);
+void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow);
+void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui);
+u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot);
+void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 index, u8 selected, BOOL copyNow);
+void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui);
+BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 direction);
+BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui);
+BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction);
+BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui);
+void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui);
 
 static const TouchscreenHitbox ov101_021F8634[] = {
     { .rect = { 0x08, 0x20, 0x08, 0xE0 } },
@@ -42,142 +42,143 @@ static const TouchscreenHitbox ov101_021F8658[] = {
     { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
-void ov101_021F0F48(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitContactListUI(PokegearPhoneAppData *phoneApp) {
     int i;
-    PokegearPhoneApp_Sub0E0 *r4 = &phoneApp->unk_0E0;
+    PhoneContactListUI *ui = &phoneApp->contactListUI;
 
-    MI_CpuClear8(r4, sizeof(PokegearPhoneApp_Sub0E0));
+    MI_CpuClear8(ui, sizeof(PhoneContactListUI));
     for (i = 0; i < NUM_PHONE_CONTACTS; ++i) {
-        ov101_021F18E0(&r4->unk_00C[i]);
+        PhoneContactListUISlotData_Init(&ui->slotData[i]);
     }
-    r4->unk_000 = phoneApp->numContacts;
-    r4->unk_390 = &phoneApp->unk_048[2];
-    r4->callContext = phoneApp->callContext;
-    r4->unk_006_0 = 0;
-    r4->unk_400 = &phoneApp->pokegear->unk_00C;
-    r4->unk_404 = &phoneApp->unk_010;
+    ui->numContacts = phoneApp->numContacts;
+    ui->window = &phoneApp->unk_048[2];
+    ui->callContext = phoneApp->callContext;
+    ui->firstBgColor = 0;
+    ui->menuInputStatePtr = &phoneApp->pokegear->menuInputState;
+    ui->menuInputStateBakPtr = &phoneApp->menuInputStateBak;
 
     for (i = 0; i < 2; ++i) {
-        r4->unk_3CC[i] = phoneApp->unk_088[4 + i];
+        ui->unk_3CC[i] = phoneApp->unk_088[4 + i];
     }
     for (i = 0; i < 6; ++i) {
-        r4->unk_3D4[i] = phoneApp->unk_088[6 + i];
+        ui->unk_3D4[i] = phoneApp->unk_088[6 + i];
     }
     for (i = 0; i < 4; ++i) {
-        r4->unk_3EC[i] = phoneApp->unk_088[i];
+        ui->unk_3EC[i] = phoneApp->unk_088[i];
     }
 
-    r4->unk_394[0].unk_00 = 1;
-    r4->unk_394[0].unk_01 = 9;
-    r4->unk_394[0].unk_02 = 2;
-    r4->unk_394[0].unk_03 = 3;
-    r4->unk_394[0].unk_04 = 4;
-    r4->unk_394[0].unk_0A = 11;
-    r4->unk_394[0].unk_05 = 5;
-    r4->unk_394[0].unk_06 = 10;
-    r4->unk_394[0].unk_07 = 6;
-    r4->unk_394[0].unk_08 = 7;
-    r4->unk_394[0].unk_09 = 8;
-    r4->unk_394[0].unk_0B = 10;
-    r4->unk_394[0].unk_0C = MAKE_TEXT_COLOR(r4->unk_394[0].unk_00, r4->unk_394[0].unk_02, r4->unk_394[0].unk_01);
-    r4->unk_394[0].unk_10 = MAKE_TEXT_COLOR(r4->unk_394[0].unk_05, r4->unk_394[0].unk_07, r4->unk_394[0].unk_06);
-    r4->unk_394[0].unk_14 = MAKE_TEXT_COLOR(r4->unk_394[0].unk_03, r4->unk_394[0].unk_04, r4->unk_394[0].unk_01);
-    r4->unk_394[0].unk_18 = MAKE_TEXT_COLOR(r4->unk_394[0].unk_08, r4->unk_394[0].unk_09, r4->unk_394[0].unk_06);
-    r4->unk_394[1].unk_00 = 1;
-    r4->unk_394[1].unk_01 = 12;
-    r4->unk_394[1].unk_02 = 2;
-    r4->unk_394[1].unk_03 = 3;
-    r4->unk_394[1].unk_04 = 4;
-    r4->unk_394[1].unk_0A = 14;
-    r4->unk_394[1].unk_05 = 5;
-    r4->unk_394[1].unk_06 = 13;
-    r4->unk_394[1].unk_07 = 6;
-    r4->unk_394[1].unk_08 = 7;
-    r4->unk_394[1].unk_09 = 8;
-    r4->unk_394[1].unk_0B = 13;
-    r4->unk_394[1].unk_0C = MAKE_TEXT_COLOR(r4->unk_394[1].unk_00, r4->unk_394[1].unk_02, r4->unk_394[1].unk_01);
-    r4->unk_394[1].unk_10 = MAKE_TEXT_COLOR(r4->unk_394[1].unk_05, r4->unk_394[1].unk_07, r4->unk_394[1].unk_06);
-    r4->unk_394[1].unk_14 = MAKE_TEXT_COLOR(r4->unk_394[1].unk_03, r4->unk_394[1].unk_04, r4->unk_394[1].unk_01);
-    r4->unk_394[1].unk_18 = MAKE_TEXT_COLOR(r4->unk_394[1].unk_08, r4->unk_394[1].unk_09, r4->unk_394[1].unk_06);
+    ui->textColors[0].fg1 = 1;
+    ui->textColors[0].bg1 = 9;
+    ui->textColors[0].sh1 = 2;
+    ui->textColors[0].fg3 = 3;
+    ui->textColors[0].sh3 = 4;
+    ui->textColors[0].fill1 = 11;
+    ui->textColors[0].fg2 = 5;
+    ui->textColors[0].bg2 = 10;
+    ui->textColors[0].sh2 = 6;
+    ui->textColors[0].fg4 = 7;
+    ui->textColors[0].sh4 = 8;
+    ui->textColors[0].fill2 = 10;
+    ui->textColors[0].nameColor_Deselected = MAKE_TEXT_COLOR(ui->textColors[0].fg1, ui->textColors[0].sh1, ui->textColors[0].bg1);
+    ui->textColors[0].classColor_Deselected = MAKE_TEXT_COLOR(ui->textColors[0].fg2, ui->textColors[0].sh2, ui->textColors[0].bg2);
+    ui->textColors[0].nameColor_Selected = MAKE_TEXT_COLOR(ui->textColors[0].fg3, ui->textColors[0].sh3, ui->textColors[0].bg1);
+    ui->textColors[0].classColor_Selected = MAKE_TEXT_COLOR(ui->textColors[0].fg4, ui->textColors[0].sh4, ui->textColors[0].bg2);
+    ui->textColors[1].fg1 = 1;
+    ui->textColors[1].bg1 = 12;
+    ui->textColors[1].sh1 = 2;
+    ui->textColors[1].fg3 = 3;
+    ui->textColors[1].sh3 = 4;
+    ui->textColors[1].fill1 = 14;
+    ui->textColors[1].fg2 = 5;
+    ui->textColors[1].bg2 = 13;
+    ui->textColors[1].sh2 = 6;
+    ui->textColors[1].fg4 = 7;
+    ui->textColors[1].sh4 = 8;
+    ui->textColors[1].fill2 = 13;
+    ui->textColors[1].nameColor_Deselected = MAKE_TEXT_COLOR(ui->textColors[1].fg1, ui->textColors[1].sh1, ui->textColors[1].bg1);
+    ui->textColors[1].classColor_Deselected = MAKE_TEXT_COLOR(ui->textColors[1].fg2, ui->textColors[1].sh2, ui->textColors[1].bg2);
+    ui->textColors[1].nameColor_Selected = MAKE_TEXT_COLOR(ui->textColors[1].fg3, ui->textColors[1].sh3, ui->textColors[1].bg1);
+    ui->textColors[1].classColor_Selected = MAKE_TEXT_COLOR(ui->textColors[1].fg4, ui->textColors[1].sh4, ui->textColors[1].bg2);
 }
 
 void ov101_021F11B0(PokegearPhoneAppData *phoneApp) {
     int i;
     PhoneContactListNode *node;
-    PokegearPhoneApp_Sub0E0 *r3;
+    PhoneContactListUI *ui;
 
-    r3 = &phoneApp->unk_0E0;
+    ui = &phoneApp->contactListUI;
     node = phoneApp->contactListHead;
-    for (i = 0; i < r3->unk_000; ++i) {
-        r3->unk_00C[i].unk_0 = i;
-        r3->unk_00C[i].unk_8 = node->contact.id;
-        r3->unk_00C[i].unk_4 = node;
+    for (i = 0; i < ui->numContacts; ++i) {
+        ui->slotData[i].index = i;
+        ui->slotData[i].contactID = node->contact.id;
+        ui->slotData[i].node = node;
         node = node->next;
     }
 }
 
-void ov101_021F11E0(PokegearPhoneAppData *phoneApp, PokegearPhoneApp_Sub0E0 *a1, u8 a2, u8 a3) {
+void PokegearPhone_SetContactListUIAndDraw(PokegearPhoneAppData *phoneApp, PhoneContactListUI *ui, u8 firstContactOnPage, u8 cursorPos) {
     int i;
     int r4;
 
-    if (a2 >= a1->unk_000) {
-        a2 = 0;
+    if (firstContactOnPage >= ui->numContacts) {
+        firstContactOnPage = 0;
     }
-    ov101_021F19E4(a1);
-    a1->unk_005 = 0;
-    a1->unk_003 = a2;
-    a1->unk_002 = 0xFF;
-    for (i = 0, r4 = a2; i < 6; ++r4, ++i) {
-        if (r4 >= a1->unk_000) {
-            a1->unk_004 = r4 - 1;
-            a1->unk_005 = i;
+    PhoneContactListUI_DrawNameSlotsBGs(ui);
+    ui->listBottomIndex = 0;
+    ui->firstContactOnPage = firstContactOnPage;
+    ui->selectedIndex = 0xFF;
+    // Check if we are drawing fewer than 6 contacts
+    for (i = 0, r4 = firstContactOnPage; i < 6; ++r4, ++i) {
+        if (r4 >= ui->numContacts) {
+            ui->lastContactIndex = r4 - 1;
+            ui->listBottomIndex = i;
             break;
         }
-        ov101_021F1A40(a1, i + 1, r4, 0, 0);
+        PhoneContactListUI_PrintNameAndClass(ui, i + 1, r4, 0, FALSE);
     }
-    if (a1->unk_005 == 0) {
-        a1->unk_005 = i;
-        a1->unk_004 = i - 1 + a2;
+    if (ui->listBottomIndex == 0) {
+        ui->listBottomIndex = i;
+        ui->lastContactIndex = i - 1 + firstContactOnPage;
     }
-    if (a3 >= a1->unk_005) {
-        a3 = 0;
+    if (cursorPos >= ui->listBottomIndex) {
+        cursorPos = 0;
     }
-    a1->unk_001 = a3;
-    CopyWindowToVram(a1->unk_390);
-    ov101_021F1B48(a1);
+    ui->cursorPos = cursorPos;
+    CopyWindowToVram(ui->window);
+    PokegearContactListUI_UpdateScrollArrowSpritesVisibility(ui);
     if (phoneApp->isIncomingCall != 0) {
-        ov101_021F1290(a1, a3, 0);
+        PhoneContactListUI_SetCursorSpritePos(ui, cursorPos, FALSE);
     } else {
-        ov101_021F1290(a1, a3, 1);
+        PhoneContactListUI_SetCursorSpritePos(ui, cursorPos, TRUE);
     }
 }
 
-void ov101_021F1290(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2) {
+void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, u8 visible) {
     int i;
 
-    if (a2 != 0) {
+    if (visible != 0) {
         for (i = 0; i < 4; ++i) {
-            Sprite_SetVisibleFlag(a0->unk_3EC[i], TRUE);
+            Sprite_SetVisibleFlag(ui->unk_3EC[i], TRUE);
         }
     } else {
         for (i = 0; i < 4; ++i) {
-            Sprite_SetVisibleFlag(a0->unk_3EC[i], FALSE);
+            Sprite_SetVisibleFlag(ui->unk_3EC[i], FALSE);
         }
     }
-    if (a1 >= 6) {
-        a1 = a0->unk_001;
+    if (position >= 6) {
+        position = ui->cursorPos;
     }
-    if (a0->unk_001 >= a0->unk_005) {
-        a0->unk_001 = a0->unk_005 - 1;
-        a1 = a0->unk_001;
+    if (ui->cursorPos >= ui->listBottomIndex) {
+        ui->cursorPos = ui->listBottomIndex - 1;
+        position = ui->cursorPos;
     }
-    Sprite_SetPositionXY(a0->unk_3EC[0], 16, a1 * 24 + 8);
-    Sprite_SetPositionXY(a0->unk_3EC[1], 16, a1 * 24 + 30);
-    Sprite_SetPositionXY(a0->unk_3EC[2], 224, a1 * 24 + 8);
-    Sprite_SetPositionXY(a0->unk_3EC[3], 224, a1 * 24 + 30);
+    Sprite_SetPositionXY(ui->unk_3EC[0], 16, position * 24 + 8);
+    Sprite_SetPositionXY(ui->unk_3EC[1], 16, position * 24 + 30);
+    Sprite_SetPositionXY(ui->unk_3EC[2], 224, position * 24 + 8);
+    Sprite_SetPositionXY(ui->unk_3EC[3], 224, position * 24 + 30);
 }
 
-void ov101_021F1338(PokegearPhoneApp_Sub0E0 *a0, int a1) {
+void ov101_021F1338(PhoneContactListUI *a0, BOOL a1) {
     int i;
 
     for (i = 0; i < 4; ++i) {
@@ -186,180 +187,180 @@ void ov101_021F1338(PokegearPhoneApp_Sub0E0 *a0, int a1) {
     }
 }
 
-void ov101_021F1364(PokegearPhoneApp_Sub0E0 *a0, int a1, int a2) {
+void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, int a2) {
     int i;
     if (a2 != 0) {
-        for (i = 0; i < a0->unk_005; ++i) {
-            Sprite_SetVisibleFlag(a0->unk_3D4[i], TRUE);
-            if (a1 == i) {
-                Sprite_SetAnimCtrlSeq(a0->unk_3D4[i], 7);
+        for (i = 0; i < ui->listBottomIndex; ++i) {
+            Sprite_SetVisibleFlag(ui->unk_3D4[i], TRUE);
+            if (cursorPos == i) {
+                Sprite_SetAnimCtrlSeq(ui->unk_3D4[i], 7);
             } else {
-                Sprite_SetAnimCtrlSeq(a0->unk_3D4[i], 6);
+                Sprite_SetAnimCtrlSeq(ui->unk_3D4[i], 6);
             }
         }
     } else {
         for (i = 0; i < 6; ++i) {
-            Sprite_SetVisibleFlag(a0->unk_3D4[i], FALSE);
+            Sprite_SetVisibleFlag(ui->unk_3D4[i], FALSE);
         }
     }
 }
 
-void ov101_021F13C8(PokegearPhoneApp_Sub0E0 *a0, int a1) {
+void ov101_021F13C8(PhoneContactListUI *ui, int a1) {
     if (a1 == 0) {
-        a0->unk_006_1 = 0;
-        ov101_021F1364(a0, 255, 0);
-        ov101_021F1808(a0);
-        ov101_021F1290(a0, a0->unk_001, 1);
+        ui->unk_006_1 = 0;
+        ov101_021F1364(ui, 255, 0);
+        ov101_021F1808(ui);
+        PhoneContactListUI_SetCursorSpritePos(ui, ui->cursorPos, 1);
     } else {
-        a0->unk_006_1 = 1;
-        ov101_021F1364(a0, a0->unk_001, 1);
+        ui->unk_006_1 = 1;
+        ov101_021F1364(ui, ui->cursorPos, 1);
     }
 }
 
-int ov101_021F1408(PokegearPhoneApp_Sub0E0 *a0) {
-    u8 r4;
+int PhoneContactListUI_HandleKeyInput(PhoneContactListUI *ui) {
+    u8 selectedIndex;
 
-    if (a0->unk_007_0) {
-        ov101_021F1D44(a0);
+    if (ui->isScrolling) {
+        PhoneContactListUI_HandleScrollInProgress(ui);
         return -1;
     }
-    if (a0->unk_007_3 != 0) {
-        --a0->unk_007_3;
+    if (ui->scrollTimer != 0) {
+        --ui->scrollTimer;
         return -1;
     }
-    r4 = a0->unk_003 + a0->unk_001;
+    selectedIndex = ui->firstContactOnPage + ui->cursorPos;
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        a0->unk_002 = r4;
-        ov101_021F1A40(a0, a0->unk_001 + 1, a0->unk_002, 1, 1);
+        ui->selectedIndex = selectedIndex;
+        PhoneContactListUI_PrintNameAndClass(ui, ui->cursorPos + 1, ui->selectedIndex, 1, TRUE);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
-        return a0->unk_002;
+        return ui->selectedIndex;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {}
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-        if (r4 == 0) { // no wraparound
+        if (selectedIndex == 0) { // no wraparound
             return -1;
         }
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        if (a0->unk_001 == 0) {
-            if (r4 != 0) {
-                ov101_021F1B94(a0, 1);
+        if (ui->cursorPos == 0) {
+            if (selectedIndex != 0) {
+                PokegearContactListUI_StartSingleScroll(ui, 1);
             }
             return -1;
         } else {
-            --a0->unk_001;
-            ov101_021F1290(a0, a0->unk_001, 1);
-            a0->unk_007_3 = 2;
+            --ui->cursorPos;
+            PhoneContactListUI_SetCursorSpritePos(ui, ui->cursorPos, 1);
+            ui->scrollTimer = 2;
             return -1;
         }
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        if (r4 >= a0->unk_000 - 1) { // no wraparound
+        if (selectedIndex >= ui->numContacts - 1) { // no wraparound
             return -1;
         }
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        if (a0->unk_001 == 5) {
-            if (r4 < a0->unk_000 - 1) {
-                ov101_021F1B94(a0, 0);
+        if (ui->cursorPos == 5) {
+            if (selectedIndex < ui->numContacts - 1) {
+                PokegearContactListUI_StartSingleScroll(ui, 0);
             }
             return -1;
         } else {
-            ++a0->unk_001;
-            ov101_021F1290(a0, a0->unk_001, 1);
-            a0->unk_007_3 = 2;
+            ++ui->cursorPos;
+            PhoneContactListUI_SetCursorSpritePos(ui, ui->cursorPos, 1);
+            ui->scrollTimer = 2;
             return -1;
         }
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
-        if (a0->unk_003 != 0) {
+        if (ui->firstContactOnPage != 0) {
             PlaySE(SEQ_SE_GS_GEARCURSOR);
-            ov101_021F1C98(a0, 1);
+            PhoneContactListUI_StartPageScroll(ui, 1);
         }
         return -1;
     }
     if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        if (a0->unk_003 + 6 < a0->unk_000) {
+        if (ui->firstContactOnPage + 6 < ui->numContacts) {
             PlaySE(SEQ_SE_GS_GEARCURSOR);
-            ov101_021F1C98(a0, 0);
+            PhoneContactListUI_StartPageScroll(ui, 0);
         }
         return -1;
     }
     return -1;
 }
 
-int ov101_021F1564(PokegearPhoneApp_Sub0E0 *a0) {
-    u8 r4;
+int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *a0) {
+    u8 contactIndex;
 
-    if (a0->unk_007_0) {
-        ov101_021F1D44(a0);
+    if (a0->isScrolling) {
+        PhoneContactListUI_HandleScrollInProgress(a0);
         return -1;
     }
-    if (a0->unk_007_3 != 0) {
-        --a0->unk_007_3;
+    if (a0->scrollTimer != 0) {
+        --a0->scrollTimer;
         return -1;
     }
-    r4 = a0->unk_003 + a0->unk_001;
+    contactIndex = a0->firstContactOnPage + a0->cursorPos;
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        return r4;
+        return contactIndex;
         ;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
-        return a0->unk_002;
+        return a0->selectedIndex;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-        if (r4 == 0) { // no wraparound
+        if (contactIndex == 0) { // no wraparound
             return -1;
         }
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        if (a0->unk_001 == 0) {
-            if (r4 != 0) {
-                ov101_021F1B94(a0, 1);
+        if (a0->cursorPos == 0) {
+            if (contactIndex != 0) {
+                PokegearContactListUI_StartSingleScroll(a0, 1);
             }
             return -1;
         } else {
-            --a0->unk_001;
-            ov101_021F1364(a0, a0->unk_001, 1);
-            a0->unk_007_3 = 2;
+            --a0->cursorPos;
+            ov101_021F1364(a0, a0->cursorPos, TRUE);
+            a0->scrollTimer = 2;
             return -1;
         }
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        if (r4 >= a0->unk_000 - 1) { // no wraparound
+        if (contactIndex >= a0->numContacts - 1) { // no wraparound
             return -1;
         }
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        if (a0->unk_001 == 5) {
-            if (r4 < a0->unk_000 - 1) {
-                ov101_021F1B94(a0, 0);
+        if (a0->cursorPos == 5) {
+            if (contactIndex < a0->numContacts - 1) {
+                PokegearContactListUI_StartSingleScroll(a0, 0);
             }
             return -1;
         } else {
-            ++a0->unk_001;
-            ov101_021F1364(a0, a0->unk_001, 1);
-            a0->unk_007_3 = 2;
+            ++a0->cursorPos;
+            ov101_021F1364(a0, a0->cursorPos, TRUE);
+            a0->scrollTimer = 2;
             return -1;
         }
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
-        if (a0->unk_003 != 0) {
+        if (a0->firstContactOnPage != 0) {
             PlaySE(SEQ_SE_GS_GEARCURSOR);
-            ov101_021F1C98(a0, 1);
+            PhoneContactListUI_StartPageScroll(a0, 1);
         }
         return -1;
     }
     if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        if (a0->unk_003 + 6 < a0->unk_000) {
+        if (a0->firstContactOnPage + 6 < a0->numContacts) {
             PlaySE(SEQ_SE_GS_GEARCURSOR);
-            ov101_021F1C98(a0, 0);
+            PhoneContactListUI_StartPageScroll(a0, 0);
         }
         return -1;
     }
     return -1;
 }
 
-int ov101_021F16A8(PokegearPhoneApp_Sub0E0 *a0) {
+int PhoneContactListUI_HandleTouchInput(PhoneContactListUI *ui) {
     int result;
-    if (a0->unk_007_0) {
-        ov101_021F1D44(a0);
+    if (ui->isScrolling) {
+        PhoneContactListUI_HandleScrollInProgress(ui);
         return -1;
     }
     result = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F8634);
@@ -367,31 +368,31 @@ int ov101_021F16A8(PokegearPhoneApp_Sub0E0 *a0) {
         return -1;
     }
 
-    if (result < 6 && result < a0->unk_005) {
-        a0->unk_001 = result;
-        a0->unk_002 = a0->unk_003 + result;
-        ov101_021F1A40(a0, a0->unk_001 + 1, a0->unk_002, 1, 1);
-        ov101_021F1290(a0, a0->unk_001, 1);
+    if (result < 6 && result < ui->listBottomIndex) {
+        ui->cursorPos = result;
+        ui->selectedIndex = ui->firstContactOnPage + result;
+        PhoneContactListUI_PrintNameAndClass(ui, ui->cursorPos + 1, ui->selectedIndex, 1, TRUE);
+        PhoneContactListUI_SetCursorSpritePos(ui, ui->cursorPos, 1);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
-        return a0->unk_002 + 1;
+        return ui->selectedIndex + 1;
     }
-    if (result == 6 && a0->unk_003 != 0) {
-        ov101_021F1C98(a0, 1);
+    if (result == 6 && ui->firstContactOnPage != 0) {
+        PhoneContactListUI_StartPageScroll(ui, 1);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
         return 0;
     }
-    if (result == 7 && a0->unk_003 + 6 < a0->unk_000) {
-        ov101_021F1C98(a0, 0);
+    if (result == 7 && ui->firstContactOnPage + 6 < ui->numContacts) {
+        PhoneContactListUI_StartPageScroll(ui, 0);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
         return 0;
     }
     return -1;
 }
 
-int ov101_021F1768(PokegearPhoneApp_Sub0E0 *a0, int *a1) {
+int PhoneContactListUI_HandleTouchInput2(PhoneContactListUI *ui, int *gotTouch) {
     int result;
-    if (a0->unk_007_0) {
-        ov101_021F1D44(a0);
+    if (ui->isScrolling) {
+        PhoneContactListUI_HandleScrollInProgress(ui);
         return -1;
     }
     result = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F8658);
@@ -399,222 +400,222 @@ int ov101_021F1768(PokegearPhoneApp_Sub0E0 *a0, int *a1) {
         return -1;
     }
 
-    if (result < 6 && result < a0->unk_005) {
-        a0->unk_001 = result;
+    if (result < 6 && result < ui->listBottomIndex) {
+        ui->cursorPos = result;
         PlaySE(SEQ_SE_GS_GEARDECIDE);
-        *a1 = 1;
-        return a0->unk_003 + result;
+        *gotTouch = 1;
+        return ui->firstContactOnPage + result;
     }
-    if (result == 6 && a0->unk_003 != 0) {
-        ov101_021F1C98(a0, 1);
+    if (result == 6 && ui->firstContactOnPage != 0) {
+        PhoneContactListUI_StartPageScroll(ui, 1);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        *a1 = 1;
+        *gotTouch = 1;
         return -1;
     }
-    if (result == 7 && a0->unk_003 + 6 < a0->unk_000) {
-        ov101_021F1C98(a0, 0);
+    if (result == 7 && ui->firstContactOnPage + 6 < ui->numContacts) {
+        PhoneContactListUI_StartPageScroll(ui, 0);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        *a1 = 1;
+        *gotTouch = 1;
         return -1;
     }
     return -1;
 }
 
-int ov101_021F1804(PokegearPhoneApp_Sub0E0 *a0) {
-    return a0->unk_001;
+int PhoneContactListUI_GetCursorPos(PhoneContactListUI *ui) {
+    return ui->cursorPos;
 }
 
-void ov101_021F1808(PokegearPhoneApp_Sub0E0 *a0) {
-    u8 r2 = a0->unk_002;
-    a0->unk_002 = 255;
-    if (r2 >= a0->unk_003 && a0->unk_004 >= r2) {
-        ov101_021F1A40(a0, r2 - a0->unk_003 + 1, r2, 0, 1);
+void ov101_021F1808(PhoneContactListUI *ui) {
+    u8 index = ui->selectedIndex;
+    ui->selectedIndex = 255;
+    if (index >= ui->firstContactOnPage && ui->lastContactIndex >= index) {
+        PhoneContactListUI_PrintNameAndClass(ui, index - ui->firstContactOnPage + 1, index, FALSE, TRUE);
     }
 }
 
-void ov101_021F1830(PhoneContactListNode *a0) {
-    a0->unk_00 = 0;
+void PhoneContactListNode_Init(PhoneContactListNode *a0) {
+    a0->index = 0;
     a0->contact.id = 255;
     a0->next = NULL;
     a0->prev = NULL;
 }
 
-void ov101_021F1840(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitContactsLinkedList(PokegearPhoneAppData *phoneApp) {
     int i;
-    PhoneContactListNode *r4;
+    PhoneContactListNode *listNode;
 
     phoneApp->contactListTail = NULL;
     phoneApp->contactListHead = phoneApp->contactListTail;
 
     for (i = 0; i < phoneApp->numContacts; ++i) {
-        r4 = &phoneApp->unk_0D4[i];
-        ov101_021F1830(r4);
-        r4->unk_00 = i;
-        r4->contact = phoneApp->saveContacts[i];
+        listNode = &phoneApp->unk_0D4[i];
+        PhoneContactListNode_Init(listNode);
+        listNode->index = i;
+        listNode->contact = phoneApp->saveContacts[i];
         if (phoneApp->contactListHead == NULL) {
-            phoneApp->contactListHead = r4;
+            phoneApp->contactListHead = listNode;
         }
         if (phoneApp->contactListTail == NULL) {
-            phoneApp->contactListTail = r4;
+            phoneApp->contactListTail = listNode;
         }
-        r4->prev = phoneApp->contactListTail;
-        phoneApp->contactListTail->next = r4;
-        phoneApp->contactListTail = r4;
+        listNode->prev = phoneApp->contactListTail;
+        phoneApp->contactListTail->next = listNode;
+        phoneApp->contactListTail = listNode;
     }
     phoneApp->contactListTail->next = phoneApp->contactListHead;
     phoneApp->contactListHead->prev = phoneApp->contactListTail;
 }
 
-void ov101_021F18E0(PokegearPhoneApp_Sub0E0_Sub00C *a0) {
-    a0->unk_0 = 0;
-    a0->unk_4 = NULL;
+void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slot) {
+    slot->index = 0;
+    slot->node = NULL;
 }
 
-void ov101_021F18E8(PokegearPhoneApp_Sub0E0 *a0, u8 a1, BOOL a2, BOOL a3) {
+void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow) {
     u8 y;
-    PokegearPhoneApp_Sub0E0_Sub394 *r4;
+    PhoneContactListUIColors *r4;
 
-    r4 = &a0->unk_394[a2];
-    y = 24 * a1;
-    FillWindowPixelRect(a0->unk_390, r4->unk_0A, 0, y, 216, 24);
-    FillWindowPixelRect(a0->unk_390, r4->unk_01, 8, y, 82, 20);
-    FillWindowPixelRect(a0->unk_390, r4->unk_06, 90, y, 126, 20);
-    FillWindowPixelRect(a0->unk_390, r4->unk_0B, 1, y + 1, 2, 2);
-    FillWindowPixelRect(a0->unk_390, r4->unk_0A, 8, y, 2, 7);
-    FillWindowPixelRect(a0->unk_390, r4->unk_0A, 9, y + 9, 2, 2);
-    FillWindowPixelRect(a0->unk_390, r4->unk_0A, 9, y + 13, 2, 2);
-    FillWindowPixelRect(a0->unk_390, r4->unk_0A, 9, y + 17, 2, 2);
-    if (a3) {
-        CopyWindowToVram(a0->unk_390);
+    r4 = &ui->textColors[colorIdx];
+    y = 24 * slot;
+    FillWindowPixelRect(ui->window, r4->fill1, 0, y, 216, 24);
+    FillWindowPixelRect(ui->window, r4->bg1, 8, y, 82, 20);
+    FillWindowPixelRect(ui->window, r4->bg2, 90, y, 126, 20);
+    FillWindowPixelRect(ui->window, r4->fill2, 1, y + 1, 2, 2);
+    FillWindowPixelRect(ui->window, r4->fill1, 8, y, 2, 7);
+    FillWindowPixelRect(ui->window, r4->fill1, 9, y + 9, 2, 2);
+    FillWindowPixelRect(ui->window, r4->fill1, 9, y + 13, 2, 2);
+    FillWindowPixelRect(ui->window, r4->fill1, 9, y + 17, 2, 2);
+    if (copyNow) {
+        CopyWindowToVram(ui->window);
     }
 }
 
-void ov101_021F19E4(PokegearPhoneApp_Sub0E0 *a0) {
+void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui) {
     int i;
 
-    u8 r5 = a0->unk_006_0;
+    u8 bgColor = ui->firstBgColor;
     for (i = 0; i < 8; ++i) {
-        ov101_021F18E8(a0, i, r5, FALSE);
-        r5 ^= 1;
+        PhoneContactListUI_DrawNameSlotBG(ui, i, bgColor, FALSE);
+        bgColor ^= 1;
     }
 }
 
-u8 ov101_021F1A10(PokegearPhoneApp_Sub0E0 *a0, u8 a1) {
-    if (a0->unk_006_0) {
-        return 1 - (a1 % 2);
+u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot) {
+    if (ui->firstBgColor) {
+        return 1 - (slot % 2);
     } else {
-        return a1 % 2;
+        return slot % 2;
     }
 }
 
-void ov101_021F1A40(PokegearPhoneApp_Sub0E0 *a0, u8 a1, u8 a2, u8 a3, BOOL a4) {
-    u8 r2;
+void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 index, u8 selected, BOOL copyNow) {
+    u8 colorIdx;
     u8 y;
-    PokegearPhoneApp_Sub0E0_Sub394 *r6;
-    PokegearPhoneApp_Sub0E0_Sub00C *r4;
+    PhoneContactListUIColors *colorSpec;
+    PhoneContactListUISlotData *r4;
 
-    r4 = &a0->unk_00C[a2];
-    r2 = ov101_021F1A10(a0, a1);
-    r6 = &a0->unk_394[r2];
-    ov101_021F18E8(a0, a1, r2, FALSE);
-    y = a1 * 24;
-    if (a3 != 0 || a2 == a0->unk_002) {
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->callContext, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_14, NULL);
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->callContext, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_18, NULL);
+    r4 = &ui->slotData[index];
+    colorIdx = PhoneContactListUI_GetBackgroundIndex(ui, slot);
+    colorSpec = &ui->textColors[colorIdx];
+    PhoneContactListUI_DrawNameSlotBG(ui, slot, colorIdx, FALSE);
+    y = slot * 24;
+    if (selected != 0 || index == ui->selectedIndex) {
+        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, r4->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Selected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, r4->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Selected, NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 4, PhoneContact_GetName(a0->callContext, r4->unk_8), 16, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_0C, NULL);
-        AddTextPrinterParameterizedWithColor(a0->unk_390, 0, PhoneContact_GetClass(a0->callContext, r4->unk_8), 94, y + 2, TEXT_SPEED_NOTRANSFER, r6->unk_10, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, r4->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Deselected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, r4->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Deselected, NULL);
     }
-    if (a4) {
-        CopyWindowToVram(a0->unk_390);
+    if (copyNow) {
+        CopyWindowToVram(ui->window);
     }
 }
 
-void ov101_021F1B48(PokegearPhoneApp_Sub0E0 *a0) {
-    if (a0->unk_003 != 0) {
-        Sprite_SetVisibleFlag(a0->unk_3CC[0], TRUE);
+void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui) {
+    if (ui->firstContactOnPage != 0) {
+        Sprite_SetVisibleFlag(ui->unk_3CC[0], TRUE);
     } else {
-        Sprite_SetVisibleFlag(a0->unk_3CC[0], FALSE);
+        Sprite_SetVisibleFlag(ui->unk_3CC[0], FALSE);
     }
-    if (a0->unk_003 + 6 < a0->unk_000) {
-        Sprite_SetVisibleFlag(a0->unk_3CC[1], TRUE);
+    if (ui->firstContactOnPage + 6 < ui->numContacts) {
+        Sprite_SetVisibleFlag(ui->unk_3CC[1], TRUE);
     } else {
-        Sprite_SetVisibleFlag(a0->unk_3CC[1], FALSE);
+        Sprite_SetVisibleFlag(ui->unk_3CC[1], FALSE);
     }
 }
 
-BOOL ov101_021F1B94(PokegearPhoneApp_Sub0E0 *a0, u8 a1) {
-    if (a1) {
-        if (a0->unk_003 < 1) {
+BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 direction) {
+    if (direction) {
+        if (ui->firstContactOnPage < 1) {
             return FALSE;
         }
-        --a0->unk_003;
-        ov101_021F1A40(a0, 0, a0->unk_003, 0, TRUE);
-        --a0->unk_004;
+        --ui->firstContactOnPage;
+        PhoneContactListUI_PrintNameAndClass(ui, 0, ui->firstContactOnPage, 0, TRUE);
+        --ui->lastContactIndex;
     } else {
-        if (a0->unk_004 >= a0->unk_000 - 1) {
+        if (ui->lastContactIndex >= ui->numContacts - 1) {
             return FALSE;
         }
-        ++a0->unk_004;
-        ov101_021F1A40(a0, 7, a0->unk_004, 0, TRUE);
-        ++a0->unk_003;
+        ++ui->lastContactIndex;
+        PhoneContactListUI_PrintNameAndClass(ui, 7, ui->lastContactIndex, 0, TRUE);
+        ++ui->firstContactOnPage;
     }
-    a0->unk_007_3 = 0;
-    a0->unk_007_1 = a1;
-    a0->unk_007_0 = TRUE;
-    *a0->unk_404 = 1;
-    a0->unk_006_0 ^= 1;
-    ov101_021F1B48(a0);
+    ui->scrollTimer = 0;
+    ui->scrollDirection = direction;
+    ui->isScrolling = TRUE;
+    *ui->menuInputStateBakPtr = 1;
+    ui->firstBgColor ^= 1;
+    PokegearContactListUI_UpdateScrollArrowSpritesVisibility(ui);
     return TRUE;
 }
 
-BOOL ov101_021F1C34(PokegearPhoneApp_Sub0E0 *a0) {
-    if (a0->unk_007_1) {
-        ScrollWindow(a0->unk_390, 1, 8, 0);
+BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui) {
+    if (ui->scrollDirection) {
+        ScrollWindow(ui->window, 1, 8, 0);
     } else {
-        ScrollWindow(a0->unk_390, 0, 8, 0);
+        ScrollWindow(ui->window, 0, 8, 0);
     }
-    CopyWindowToVram(a0->unk_390);
-    if (a0->unk_007_3++ >= 2) {
-        a0->unk_007_3 = 0;
+    CopyWindowToVram(ui->window);
+    if (ui->scrollTimer++ >= 2) {
+        ui->scrollTimer = 0;
         return TRUE;
     }
     return FALSE;
 }
 
-BOOL ov101_021F1C98(PokegearPhoneApp_Sub0E0 *a0, u8 a1) {
-    a0->unk_008_4 = 0;
-    a0->unk_007_2 = 1;
-    a0->unk_007_1 = a1;
-    a0->unk_007_0 = 1;
-    *a0->unk_404 = 1;
-    if (!ov101_021F1B94(a0, a1)) {
-        a0->unk_008_7 = 1;
+BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction) {
+    ui->pageScrollStep = 0;
+    ui->isPageScroll = 1;
+    ui->scrollDirection = direction;
+    ui->isScrolling = 1;
+    *ui->menuInputStateBakPtr = 1;
+    if (!PokegearContactListUI_StartSingleScroll(ui, direction)) {
+        ui->pageScrollFailed = 1;
     }
     return FALSE;
 }
 
-BOOL ov101_021F1CE8(PokegearPhoneApp_Sub0E0 *a0) {
-    if (!ov101_021F1C34(a0)) {
+BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui) {
+    if (!PokegearContactListUI_ScrollStep(ui)) {
         return FALSE;
     }
-    if (a0->unk_008_7 || a0->unk_008_4++ >= 5 || !ov101_021F1B94(a0, a0->unk_007_1)) {
-        a0->unk_008_4 = 0;
-        a0->unk_007_2 = 0;
+    if (ui->pageScrollFailed || ui->pageScrollStep++ >= 5 || !PokegearContactListUI_StartSingleScroll(ui, ui->scrollDirection)) {
+        ui->pageScrollStep = 0;
+        ui->isPageScroll = 0;
         return TRUE;
     }
     return FALSE;
 }
 
-void ov101_021F1D44(PokegearPhoneApp_Sub0E0 *a0) {
-    BOOL r0;
-    if (a0->unk_007_2) {
-        r0 = ov101_021F1CE8(a0);
+void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui) {
+    BOOL result;
+    if (ui->isPageScroll) {
+        result = PhoneContactListUI_ScrollMany(ui);
     } else {
-        r0 = ov101_021F1C34(a0);
+        result = PokegearContactListUI_ScrollStep(ui);
     }
-    if (r0) {
-        *a0->unk_404 = 0;
-        a0->unk_007_0 = 0;
+    if (result) {
+        *ui->menuInputStateBakPtr = 0;
+        ui->isScrolling = 0;
     }
 }

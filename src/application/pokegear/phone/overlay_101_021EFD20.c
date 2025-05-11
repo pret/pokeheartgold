@@ -46,10 +46,10 @@ BOOL ov101_021EFD7C(PokegearPhoneAppData *phoneApp) {
 int ov101_021EFDB4(PokegearPhoneAppData *phoneApp) {
     int input = TouchscreenListMenu_HandleInput(phoneApp->touchscreenListMenu);
     if (input != -1) {
-        phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
+        phoneApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
         TouchscreenListMenu_Destroy(phoneApp->touchscreenListMenu);
         if (input == 1) {
-            PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, ov101_021F1804(&phoneApp->unk_0E0), 1);
+            PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), 1);
             return 8;
         } else {
             ov101_021F0ACC(phoneApp, 0, FALSE);
@@ -70,7 +70,7 @@ int ov101_021EFE1C(PokegearPhoneAppData *phoneApp) {
         return 8;
     }
 
-    phoneApp->pokegear->unk_00C = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
+    phoneApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
     TouchscreenListMenu_Destroy(phoneApp->touchscreenListMenu);
     switch (input) {
     case 0:
@@ -82,8 +82,8 @@ int ov101_021EFE1C(PokegearPhoneAppData *phoneApp) {
         return 1;
     case 3:
         ov101_021F0ACC(phoneApp, 1, TRUE);
-        ov101_021F13C8(&phoneApp->unk_0E0, 1);
-        ov101_021F1290(&phoneApp->unk_0E0, 0xFF, 0);
+        ov101_021F13C8(&phoneApp->contactListUI, 1);
+        PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 0xFF, 0);
         phoneApp->pokegear->unk_05C = ov101_021F0978;
         return 9;
     case 4:
@@ -97,12 +97,12 @@ int ov101_021EFE1C(PokegearPhoneAppData *phoneApp) {
 int ov101_021EFEC8(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->unk_008) {
     case 0:
-        phoneApp->unk_008 = ov101_021F0CE4(phoneApp);
+        phoneApp->unk_008 = PokegearPhone_HandleInput2(phoneApp);
         break;
     case 1:
-        ov101_021F13C8(&phoneApp->unk_0E0, 0);
+        ov101_021F13C8(&phoneApp->contactListUI, 0);
         ov101_021F0ACC(phoneApp, 0, FALSE);
-        ov101_021F1338(&phoneApp->unk_0E0, 1);
+        ov101_021F1338(&phoneApp->contactListUI, TRUE);
         phoneApp->pokegear->unk_05C = ov101_021F0944;
         phoneApp->unk_008 = 0;
         return 1;
