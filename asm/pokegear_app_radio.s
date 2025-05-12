@@ -259,7 +259,7 @@ ov101_021F4634: ; 0x021F4634
 	ldr r0, [r0, #0x20]
 	ldrh r5, [r0, #0x10]
 	add r0, r5, #0
-	bl MapHeader_GetField14_1F
+	bl MapHeader_CanReceiveRadioSignal
 	cmp r0, #0
 	bne _021F464C
 	mov r0, #3

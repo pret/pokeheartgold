@@ -70,7 +70,7 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL a2) 
     if (GearPhoneRingManager_IsRinging(phoneRingMgr)) {
         pokegearArgs->callerId = ov02_02251EE8(phoneRingMgr, &Unk_struct.unk04[0]);
         if (pokegearArgs->callerId >= NUM_PHONE_CONTACTS) {
-            pokegearArgs->kind = 0;
+            pokegearArgs->incomingPhoneCall = 0;
         } else {
             // scripted phone call
             pokegearArgs->callScriptID = Unk_struct.unk04[4]; // message num?
@@ -81,10 +81,10 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL a2) 
                 sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk04[0], Unk_struct.unk04[1], pokegearArgs->callerId);
             }
             gearRingingManagerReset(phoneRingMgr);
-            pokegearArgs->kind = 1;
+            pokegearArgs->incomingPhoneCall = 1;
         }
     } else {
-        pokegearArgs->kind = 0;
+        pokegearArgs->incomingPhoneCall = 0;
     }
 }
 

@@ -10,7 +10,7 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     SafariZone *safariZone;
 
     state->scriptType = 0;
-    if (state->unk_1A == 2) {
+    if (state->isScriptedCall == 2) {
         return PHONE_SCRIPT_141;
     }
     if (state->isIncomingCall) {

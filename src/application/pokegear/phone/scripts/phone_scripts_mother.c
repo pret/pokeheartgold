@@ -11,7 +11,7 @@ int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *ctx, PokegearPhoneCal
 
 u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     state->scriptType = 0;
-    if (state->unk_1A == 2) {
+    if (state->isScriptedCall == 2) {
         Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL);
         state->scriptType = 4;
         return PHONE_SCRIPT_NONE;
@@ -49,7 +49,7 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
         BufferIntegerAsString(ctx->msgFormat, 10, state->momsSavingsBalance, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
         state->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(ctx->saveVarsFlags);
         state->flag1 = MomsSavings_GiftQueueFull(ctx->momsSavings);
-        if (state->unk_1A == 2) {
+        if (state->isScriptedCall == 2) {
             state->scriptState = 2;
             return FALSE;
         }
@@ -106,7 +106,7 @@ u16 MomCallGetIntroMsgByLocation(PokegearPhoneCallContext *ctx, PokegearPhoneCal
 }
 
 int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
-    if (state->unk_1A == 2) {
+    if (state->isScriptedCall == 2) {
         return msg_0664_00022;
     }
     if (state->flag0) {

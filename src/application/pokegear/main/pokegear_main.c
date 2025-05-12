@@ -69,7 +69,7 @@ BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     pokegearApp->registeredCards = Pokegear_GetRegisteredCardsArray(pokegearApp->savePokegear);
     pokegearApp->menuInputState = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
     pokegearApp->unk_008 = sub_0202EE7C(pokegearApp->savePokegear);
-    switch (pokegearApp->args->kind) {
+    switch (pokegearApp->args->incomingPhoneCall) {
     case 1: // scripted phone call
         pokegearApp->app = GEAR_APP_PHONE;
         break;
@@ -219,8 +219,8 @@ static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearAp
         return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
     }
 
-    int outcome = pokegearApp->unk_01C;
-    pokegearApp->unk_01C = 0;
+    int outcome = pokegearApp->appReturnCode;
+    pokegearApp->appReturnCode = 0;
     switch (outcome) {
     case 2:
         pokegearApp->app = GEAR_APP_MAP;
@@ -285,8 +285,8 @@ static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *poke
         return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
     }
 
-    int outcome = pokegearApp->unk_01C;
-    pokegearApp->unk_01C = 0;
+    int outcome = pokegearApp->appReturnCode;
+    pokegearApp->appReturnCode = 0;
     switch (outcome) {
     case 2:
         pokegearApp->app = GEAR_APP_MAP;
@@ -316,8 +316,8 @@ static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegear
         return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
     }
 
-    int outcome = pokegearApp->unk_01C;
-    pokegearApp->unk_01C = 0;
+    int outcome = pokegearApp->appReturnCode;
+    pokegearApp->appReturnCode = 0;
     switch (outcome) {
     case 2:
         pokegearApp->app = GEAR_APP_MAP;
@@ -347,8 +347,8 @@ static PokegearAppMainState Pokegear_MainStep_RunRadio(PokegearAppData *pokegear
         return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
     }
 
-    int outcome = pokegearApp->unk_01C;
-    pokegearApp->unk_01C = 0;
+    int outcome = pokegearApp->appReturnCode;
+    pokegearApp->appReturnCode = 0;
     switch (outcome) {
     case 2:
         pokegearApp->app = GEAR_APP_MAP;

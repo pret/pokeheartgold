@@ -12,7 +12,7 @@ u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneCallContext *ctx, PokegearPhoneCa
 
     state->scriptType = 0;
     pokedex = Save_Pokedex_Get(ctx->saveData);
-    if (state->unk_1A == 2) {
+    if (state->isScriptedCall == 2) {
         state->scriptType = 0;
         return PHONE_SCRIPT_082;
     }

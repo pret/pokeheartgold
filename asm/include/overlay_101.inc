@@ -240,9 +240,9 @@
 .public MapHeader_GetMapSec
 .public MapHeader_GetMomCallIntroParam
 .public MapHeader_IsInKanto
-.public MapHeader_GetField14_1D
-.public MapHeader_GetField14_1E
-.public MapHeader_GetField14_1F
+.public MapHeader_CanPlacePhoneCalls
+.public MapHeader_CanReceivePhoneCalls
+.public MapHeader_CanReceiveRadioSignal
 .public WildEncounters_ReadFromNarc
 .public LocalFieldData_GetMusicIdAddr
 .public LocalFieldData_GetPlayer

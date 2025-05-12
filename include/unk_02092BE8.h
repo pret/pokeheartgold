@@ -11,10 +11,10 @@
 #include "sys_task_api.h"
 
 typedef struct PokegearArgs {
-    u8 kind;        // 0x00
-    u8 unk01;       // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
-    u16 mapMusicID; // 0x02 (surf-overriden)
-    u8 callerId;    // related to unk_var2 from UnkFieldSystemSub_114
+    u8 incomingPhoneCall; // 0x00
+    u8 unk01;             // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
+    u16 mapMusicID;       // 0x02 (surf-overriden)
+    u8 callerId;          // related to unk_var2 from UnkFieldSystemSub_114
     u8 unk05;
     u8 callScriptID;
     u8 playerGender; // 0x07

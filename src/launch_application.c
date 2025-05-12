@@ -521,7 +521,7 @@ PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
     PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
     sub_02092D8C(fieldSystem, args);
-    args->kind = kind;
+    args->incomingPhoneCall = kind;
     PokegearTownMap_LaunchApp_Impl(fieldSystem, args);
     return args;
 }

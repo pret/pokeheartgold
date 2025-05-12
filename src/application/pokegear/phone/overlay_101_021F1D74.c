@@ -113,7 +113,7 @@ String *PhoneContact_GetClass(PokegearPhoneCallContext *ctx, u8 callerID) {
     return ctx->contactClassBuf;
 }
 
-BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneCallContext *ctx, u8 callerId, u8 incomingCall, u8 a3, u8 scriptID) {
+BOOL PhoneCall_InitContext(PokegearPhoneCallContext *ctx, u8 callerId, u8 incomingCall, u8 scriptedFlag, u8 scriptID) {
     PokegearPhoneCallState *state = &ctx->state;
     MI_CpuClear8(state, sizeof(PokegearPhoneCallState));
     if (callerId >= NUM_PHONE_CONTACTS) {
@@ -122,12 +122,12 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneCallContext *ctx, 
         return FALSE;
     }
     if (incomingCall) {
-        if (!MapHeader_GetField14_1E(ctx->playerMapSec)) {
+        if (!MapHeader_CanReceivePhoneCalls(ctx->playerMapSec)) {
             state->mainState = 0xFF;
             return FALSE;
         }
     } else {
-        if (!MapHeader_GetField14_1D(ctx->playerMapSec)) {
+        if (!MapHeader_CanPlacePhoneCalls(ctx->playerMapSec)) {
             state->mainState = 0xFF;
             return FALSE;
         }
@@ -136,7 +136,7 @@ BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneCallContext *ctx, 
     state->callerID = callerId;
     state->phoneBookEntry = &ctx->phoneEntries[callerId];
     state->isIncomingCall = incomingCall;
-    state->unk_1A = a3;
+    state->isScriptedCall = scriptedFlag;
     state->predefinedScriptID = scriptID;
     state->mainState = state->isIncomingCall;
     GF_RTC_CopyDateTime(&state->date, &state->time);

@@ -10,6 +10,24 @@
 #include "sprite.h"
 #include "touchscreen_list_menu.h"
 
+typedef enum PokegearPhoneMainState {
+    PHONE_MAIN_STATE_0,
+    PHONE_MAIN_STATE_1,
+    PHONE_MAIN_STATE_2,
+    PHONE_MAIN_STATE_3,
+    PHONE_MAIN_STATE_4,
+    PHONE_MAIN_STATE_5,
+    PHONE_MAIN_STATE_6,
+    PHONE_MAIN_STATE_7,
+    PHONE_MAIN_STATE_8,
+    PHONE_MAIN_STATE_9,
+    PHONE_MAIN_STATE_10,
+    PHONE_MAIN_STATE_11,
+    PHONE_MAIN_STATE_12,
+    PHONE_MAIN_STATE_13,
+    PHONE_MAIN_STATE_14,
+} PokegearPhoneMainState;
+
 typedef struct UnkStruct_ov101_021F8404 {
     u8 nItems : 3; // 0x0
     u8 width : 5;  //
@@ -69,7 +87,7 @@ typedef struct PokegearPhoneCallState {
     const PhoneCallScriptDef *scriptDef; // 0x14
     u8 callerID;                         // 0x18
     u8 isIncomingCall;                   // 0x19
-    u8 unk_1A;                           // 0x1a
+    u8 isScriptedCall;                   // 0x1a
     u16 predefinedScriptID;              // 0x1c
     u16 scriptID;                        // 0x1e
     u16 scriptType;                      // 0x20
@@ -193,10 +211,10 @@ struct PokegearPhoneAppData {
     TouchscreenListMenuSpawner *unk_0C0;      // 0x0C0
     PokegearPhoneCallContext *callContext;    // 0x0C4 type pending
     u8 callerID;                              // 0x0C8
-    u8 unk_0C9;                               // 0x0C9
+    u8 isScriptedCall;                        // 0x0C9
     u8 callScriptID;                          // 0x0CA
     u8 isIncomingCall;                        // 0x0CB
-    u8 unk_0CC;                               // 0x0CC
+    u8 prevMenuCursorPos;                     // 0x0CC set but not read
     u8 numContacts;                           // 0x0CD
     PhoneContact *saveContacts;               // 0x0D0
     PhoneContactListNode *unk_0D4;            // 0x0D4
@@ -241,7 +259,7 @@ void ov101_021F0864(PokegearPhoneAppData *phoneApp);
 void ov101_021F0880(PokegearPhoneAppData *phoneApp);
 void ov101_021F08DC(PokegearPhoneAppData *phoneApp);
 void ov101_021F0900(PokegearPhoneAppData *phoneApp);
-void ov101_021F0944(void *cb_arg);
+void PokegearPhone_OnReselectApp(void *cb_arg);
 void ov101_021F0954(PokegearPhoneAppData *phoneApp);
 void ov101_021F0978(void *cb_arg);
 TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int a1, int a2);
@@ -274,7 +292,7 @@ PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContext
 void PhoneCall_DestroyContext(PokegearPhoneCallContext *ctx);
 String *PhoneContact_GetName(PokegearPhoneCallContext *ctx, u8 a1);
 String *PhoneContact_GetClass(PokegearPhoneCallContext *ctx, u8 a1);
-BOOL PhoneCall_CheckMapPermissionAndGetTimeOfDay(PokegearPhoneCallContext *ctx, u8 callerId, u8 incomingCall, u8 a3, u8 scriptID);
+BOOL PhoneCall_InitContext(PokegearPhoneCallContext *ctx, u8 callerId, u8 incomingCall, u8 scriptedFlag, u8 scriptID);
 void PhoneCall_GetCallScriptId(PokegearPhoneCallContext *ctx);
 BOOL PhoneCall_Main(PokegearPhoneCallContext *ctx);
 

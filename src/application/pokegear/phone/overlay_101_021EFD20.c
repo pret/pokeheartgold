@@ -84,7 +84,7 @@ int ov101_021EFE1C(PokegearPhoneAppData *phoneApp) {
         ov101_021F0ACC(phoneApp, 1, TRUE);
         ov101_021F13C8(&phoneApp->contactListUI, 1);
         PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 0xFF, 0);
-        phoneApp->pokegear->unk_05C = ov101_021F0978;
+        phoneApp->pokegear->reselectAppCB = ov101_021F0978;
         return 9;
     case 4:
     default:
@@ -103,7 +103,7 @@ int ov101_021EFEC8(PokegearPhoneAppData *phoneApp) {
         ov101_021F13C8(&phoneApp->contactListUI, 0);
         ov101_021F0ACC(phoneApp, 0, FALSE);
         ov101_021F1338(&phoneApp->contactListUI, TRUE);
-        phoneApp->pokegear->unk_05C = ov101_021F0944;
+        phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
         phoneApp->unk_008 = 0;
         return 1;
     }
@@ -143,21 +143,21 @@ BOOL ov101_021EFFBC(PokegearPhoneAppData *phoneApp) {
 }
 
 BOOL PokegearPhone_SetUpCallData(PokegearPhoneAppData *phoneApp) {
-    BOOL r4;
+    BOOL okay;
 
     if (phoneApp->isIncomingCall) {
-        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, phoneApp->unk_0C9, phoneApp->callScriptID);
+        okay = PhoneCall_InitContext(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, phoneApp->isScriptedCall, phoneApp->callScriptID);
         phoneApp->isIncomingCall = 0;
-        phoneApp->pokegear->args->kind = 0;
+        phoneApp->pokegear->args->incomingPhoneCall = 0;
     } else {
-        r4 = PhoneCall_CheckMapPermissionAndGetTimeOfDay(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, 0, PHONE_SCRIPT_NONE);
+        okay = PhoneCall_InitContext(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, 0, PHONE_SCRIPT_NONE);
     }
-    if (r4) {
+    if (okay) {
         PhoneCall_GetCallScriptId(phoneApp->callContext);
     }
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
     TextFlags_SetFastForwardTouchButtonHitbox(&ov101_021F8400);
-    return r4;
+    return okay;
 }
 
 BOOL PhoneCall_Exit(PokegearPhoneAppData *phoneApp) {

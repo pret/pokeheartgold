@@ -79,21 +79,21 @@ int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp) {
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
     if (gSystem.newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
-        return GEAR_APP_CANCEL;
+        return 4;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        PokegearAppSwitchButtonSpec *r4 = &pokegearApp->appSwitchCursor->unk_08->buttonSpec[pokegearApp->appSwitchCursor->unk_08->unk_01];
+        PokegearAppSwitchButtonSpec *buttonSpec = &pokegearApp->appSwitchCursor->lastButton->buttonSpec[pokegearApp->appSwitchCursor->lastButton->cursorPos];
         ov100_021E7128(pokegearApp->appSwitchCursor, 0, FALSE);
         pokegearApp->cursorInAppSwitchZone = 0;
-        PlaySE(r4->appId != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
-        if (r4->appId == pokegearApp->app) {
-            if (pokegearApp->unk_05C != NULL) {
-                pokegearApp->unk_05C(pokegearApp->childAppdata);
+        PlaySE(buttonSpec->appId != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
+        if (buttonSpec->appId == pokegearApp->app) {
+            if (pokegearApp->reselectAppCB != NULL) {
+                pokegearApp->reselectAppCB(pokegearApp->childAppdata);
             }
             return -1;
         }
-        ov100_021E5B4C(pokegearApp, r4->appId, 1);
-        return r4->appId;
+        ov100_021E5B4C(pokegearApp, buttonSpec->appId, 1);
+        return buttonSpec->appId;
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
@@ -397,7 +397,7 @@ static void ov100_021E616C(PokegearAppData *pokegearApp) {
     ov100_021E5BB0(pokegearApp, TRUE);
 
     UnkImageStruct_SetSpriteAnimActiveFlag(pokegearApp->unk_098[9].unk_image_struct, TRUE);
-    if (!MapHeader_GetField14_1D(pokegearApp->args->mapID)) {
+    if (!MapHeader_CanPlacePhoneCalls(pokegearApp->args->mapID)) {
         UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[10].unk_image_struct, 1);
     }
 

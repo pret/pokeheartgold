@@ -189,7 +189,7 @@
 .public SafariZone_GetObjectUnlockLevel
 .public MapMatrix_GetWidth
 .public MapHeader_GetMapSec
-.public MapHeader_GetField14_1E
+.public MapHeader_CanReceivePhoneCalls
 .public Field_GetBgEvents
 .public Field_GetNumBgEvents
 .public MapEvents_GetLoadedEncTable

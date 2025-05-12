@@ -42,7 +42,7 @@ void ov101_021F0900(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-void ov101_021F0944(void *cb_arg) {
+void PokegearPhone_OnReselectApp(void *cb_arg) {
     PokegearPhoneAppData *phoneApp = cb_arg;
 
     PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, 1);
@@ -66,10 +66,10 @@ void ov101_021F0990(PokegearPhoneAppData *phoneApp) {
     PokegearPhone_SetContactListUIAndDraw(phoneApp, &phoneApp->contactListUI, 0, 0);
 }
 
-TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int a1, int menuID) {
+TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int prevMenuCursorPos, int menuID) {
     TouchscreenListMenuHeader header;
 
-    phoneApp->unk_0CC = a1;
+    phoneApp->prevMenuCursorPos = prevMenuCursorPos; // this is never used
     MI_CpuClear8(&header, sizeof(TouchscreenListMenuHeader));
     header.template = (TouchscreenListMenuTemplate) {
         .wrapAround = TRUE,
@@ -126,10 +126,12 @@ void ov101_021F0ACC(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2) {
 void ov101_021F0B84(PokegearPhoneAppData *phoneApp) {
     ov101_021F1808(&phoneApp->contactListUI);
     ov101_021F1338(&phoneApp->contactListUI, TRUE);
-    ov101_021F0944(phoneApp);
+    PokegearPhone_OnReselectApp(phoneApp);
 }
 
 int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
+    int result;
+
     if (gSystem.newKeys & PAD_BUTTON_B) {
         if (phoneApp->menuInputStateBak == 0) {
             phoneApp->pokegear->cursorInAppSwitchZone = 1;
@@ -141,9 +143,9 @@ int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
         }
     }
 
-    int r0 = PhoneContactListUI_HandleKeyInput(&phoneApp->contactListUI);
-    if (r0 >= 0) {
-        phoneApp->callerID = phoneApp->contactListUI.slotData[r0].contactID;
+    result = PhoneContactListUI_HandleKeyInput(&phoneApp->contactListUI);
+    if (result >= 0) {
+        phoneApp->callerID = phoneApp->contactListUI.slotData[result].contactID;
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         ov101_021F1338(&phoneApp->contactListUI, FALSE);
         PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), 0);

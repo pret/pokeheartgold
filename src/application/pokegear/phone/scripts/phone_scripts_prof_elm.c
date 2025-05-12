@@ -24,7 +24,7 @@ u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *ctx, PokegearPhoneCa
     u8 hatchedEgg;
     u8 gotEverstone;
 
-    if (state->unk_1A == 2) {
+    if (state->isScriptedCall == 2) {
         state->scriptType = sPhoneCallData_ProfElm_MapScripts[state->predefinedScriptID][0];
         return sPhoneCallData_ProfElm_MapScripts[state->predefinedScriptID][1];
     }
