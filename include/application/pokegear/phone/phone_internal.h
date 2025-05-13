@@ -11,21 +11,21 @@
 #include "touchscreen_list_menu.h"
 
 typedef enum PokegearPhoneMainState {
-    PHONE_MAIN_STATE_0,
-    PHONE_MAIN_STATE_1,
-    PHONE_MAIN_STATE_2,
-    PHONE_MAIN_STATE_3,
+    PHONE_MAIN_STATE_SETUP,
+    PHONE_MAIN_STATE_INPUT_LOOP,
+    PHONE_MAIN_STATE_TEARDOWN,
+    PHONE_MAIN_STATE_SETUP_CALL,
     PHONE_MAIN_STATE_4,
     PHONE_MAIN_STATE_5,
-    PHONE_MAIN_STATE_6,
-    PHONE_MAIN_STATE_7,
-    PHONE_MAIN_STATE_8,
-    PHONE_MAIN_STATE_9,
+    PHONE_MAIN_STATE_PLAY_CALL,
+    PHONE_MAIN_STATE_CONTEXT_MENU,
+    PHONE_MAIN_STATE_SORT_CONTEXT_MENU,
+    PHONE_MAIN_STATE_MOVING_CONTACTS,
     PHONE_MAIN_STATE_10,
-    PHONE_MAIN_STATE_11,
+    PHONE_MAIN_STATE_FADE_GEAR_CLOSE,
     PHONE_MAIN_STATE_12,
-    PHONE_MAIN_STATE_13,
-    PHONE_MAIN_STATE_14,
+    PHONE_MAIN_STATE_WIPE_SWITCH_APP,
+    PHONE_MAIN_STATE_QUIT,
 } PokegearPhoneMainState;
 
 typedef struct UnkStruct_ov101_021F8404 {
@@ -194,44 +194,44 @@ typedef struct PhoneContactListUI {
 } PhoneContactListUI;                                        // size 0x408
 
 struct PokegearPhoneAppData {
-    HeapID heapId;                            // 0x000
-    int unk_004;                              // 0x004
-    int unk_008;                              // 0x008
-    PokegearAppData *pokegear;                // 0x00C
-    u8 menuInputStateBak;                     // 0x010
-    u8 unk_011;                               // 0x011
-    MsgData *unk_014;                         // 0x014
-    MessageFormat *unk_018;                   // 0x018
-    String *unk_01C;                          // 0x01C
-    String *unk_020;                          // 0x020
-    String *unk_024[8];                       // 0x024
-    u8 unk_044;                               // 0x044
-    Window unk_048[4];                        // 0x048
-    Sprite *unk_088[14];                      // 0x088
-    TouchscreenListMenuSpawner *unk_0C0;      // 0x0C0
-    PokegearPhoneCallContext *callContext;    // 0x0C4 type pending
-    u8 callerID;                              // 0x0C8
-    u8 isScriptedCall;                        // 0x0C9
-    u8 callScriptID;                          // 0x0CA
-    u8 isIncomingCall;                        // 0x0CB
-    u8 prevMenuCursorPos;                     // 0x0CC set but not read
-    u8 numContacts;                           // 0x0CD
-    PhoneContact *saveContacts;               // 0x0D0
-    PhoneContactListNode *unk_0D4;            // 0x0D4
-    PhoneContactListNode *contactListHead;    // 0x0D8
-    PhoneContactListNode *contactListTail;    // 0x0DC
-    PhoneContactListUI contactListUI;         // 0x0E0
-    LISTMENUITEM *listMenuItems[7];           // 0x4E8
-    TouchscreenListMenu *touchscreenListMenu; // 0x504
-    void *unk_508;                            // 0x508
-    NNSG2dScreenData *unk_50C;                // 0x50C
+    HeapID heapId;                               // 0x000
+    int unk_004;                                 // 0x004
+    int unk_008;                                 // 0x008
+    PokegearAppData *pokegear;                   // 0x00C
+    u8 menuInputStateBak;                        // 0x010
+    u8 unk_011;                                  // 0x011
+    MsgData *unk_014;                            // 0x014
+    MessageFormat *unk_018;                      // 0x018
+    String *unk_01C;                             // 0x01C
+    String *unk_020;                             // 0x020
+    String *unk_024[8];                          // 0x024
+    u8 unk_044;                                  // 0x044
+    Window unk_048[4];                           // 0x048
+    Sprite *unk_088[14];                         // 0x088
+    TouchscreenListMenuSpawner *unk_0C0;         // 0x0C0
+    PokegearPhoneCallContext *callContext;       // 0x0C4 type pending
+    u8 callerID;                                 // 0x0C8
+    u8 isScriptedCall;                           // 0x0C9
+    u8 callScriptID;                             // 0x0CA
+    u8 isIncomingCall;                           // 0x0CB
+    u8 prevMenuCursorPos;                        // 0x0CC set but not read
+    u8 numContacts;                              // 0x0CD
+    PhoneContact *saveContacts;                  // 0x0D0
+    PhoneContactListNode *phoneContactListNodes; // 0x0D4
+    PhoneContactListNode *contactListHead;       // 0x0D8
+    PhoneContactListNode *contactListTail;       // 0x0DC
+    PhoneContactListUI contactListUI;            // 0x0E0
+    LISTMENUITEM *listMenuItems[7];              // 0x4E8
+    TouchscreenListMenu *touchscreenListMenu;    // 0x504
+    void *unk_508;                               // 0x508
+    NNSG2dScreenData *unk_50C;                   // 0x50C
 }; // size: 0x510
 
 BOOL ov101_021EFD20(PokegearPhoneAppData *phoneApp);
-BOOL ov101_021EFD7C(PokegearPhoneAppData *phoneApp);
-int ov101_021EFDB4(PokegearPhoneAppData *phoneApp);
-int ov101_021EFE1C(PokegearPhoneAppData *phoneApp);
-int ov101_021EFEC8(PokegearPhoneAppData *phoneApp);
+BOOL PokegearPhone_TearDown(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_HandleSubmenuInput(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_HandleSortMenuInput(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp);
 BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp);
 BOOL ov101_021EFFBC(PokegearPhoneAppData *phoneApp);
 BOOL PokegearPhone_SetUpCallData(PokegearPhoneAppData *phoneApp);
@@ -267,14 +267,14 @@ void ov101_021F0ACC(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2);
 void ov101_021F0B84(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp);
-BOOL PokegearPhone_HandleInput2(PokegearPhoneAppData *phoneApp);
-void ov101_021F0D6C(PokegearPhoneAppData *phoneApp);
-void PokegearPhone_ContactList_ToSaveArray(PokegearPhoneAppData *phoneApp);
+BOOL PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_ContactList_CreateLinkedList(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneContactListNode *newNode, u8 index);
-void ov101_021F0EB0(PokegearPhoneAppData *phoneApp, u8 a1);
+void PokegearPhone_SortList(PokegearPhoneAppData *phoneApp, u8 a1);
 
 void PokegearPhone_InitContactListUI(PokegearPhoneAppData *phoneApp);
-void ov101_021F11B0(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_ContactLinkedListToSlotsArray(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_SetContactListUIAndDraw(PokegearPhoneAppData *phoneApp, PhoneContactListUI *ui, u8 firstContactOnPage, u8 cursorPos);
 void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, u8 visible);
 void ov101_021F1338(PhoneContactListUI *ui, BOOL a1);
@@ -348,7 +348,7 @@ BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 
 extern const TouchscreenHitbox ov101_021F8400;
-extern const UnkStruct_ov101_021F8404 ov101_021F8404[];
+extern const UnkStruct_ov101_021F8404 sContextMenuParam[];
 extern const PhoneScriptGenericHeader ov101_021F968C[];
 extern const u8 ov101_021F8760[];
 

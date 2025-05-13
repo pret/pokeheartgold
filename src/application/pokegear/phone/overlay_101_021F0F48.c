@@ -101,7 +101,7 @@ void PokegearPhone_InitContactListUI(PokegearPhoneAppData *phoneApp) {
     ui->textColors[1].classColor_Selected = MAKE_TEXT_COLOR(ui->textColors[1].fg4, ui->textColors[1].sh4, ui->textColors[1].bg2);
 }
 
-void ov101_021F11B0(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_ContactLinkedListToSlotsArray(PokegearPhoneAppData *phoneApp) {
     int i;
     PhoneContactListNode *node;
     PhoneContactListUI *ui;
@@ -448,7 +448,7 @@ void PokegearPhone_InitContactsLinkedList(PokegearPhoneAppData *phoneApp) {
     phoneApp->contactListHead = phoneApp->contactListTail;
 
     for (i = 0; i < phoneApp->numContacts; ++i) {
-        listNode = &phoneApp->unk_0D4[i];
+        listNode = &phoneApp->phoneContactListNodes[i];
         PhoneContactListNode_Init(listNode);
         listNode->index = i;
         listNode->contact = phoneApp->saveContacts[i];

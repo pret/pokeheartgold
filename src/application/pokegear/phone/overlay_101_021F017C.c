@@ -164,7 +164,7 @@ static const UnkStruct_0200D2B4 ov101_021F84E8[] = {
      },
 };
 
-const UnkStruct_ov101_021F8404 ov101_021F8404[] = {
+const UnkStruct_ov101_021F8404 sContextMenuParam[] = {
     // Call; Sort; Quit
     {
      .nItems = 3,

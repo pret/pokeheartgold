@@ -1,5 +1,6 @@
 
 #include "application/pokegear/phone/phone_internal.h"
+#include "msgdata/msg/msg_0271.h"
 
 #include "render_text.h"
 #include "unk_02005D10.h"
@@ -31,7 +32,7 @@ BOOL ov101_021EFD20(PokegearPhoneAppData *phoneApp) {
     return FALSE;
 }
 
-BOOL ov101_021EFD7C(PokegearPhoneAppData *phoneApp) {
+BOOL PokegearPhone_TearDown(PokegearPhoneAppData *phoneApp) {
     ov101_021F08DC(phoneApp);
     ov101_021F0720(phoneApp);
     ov101_021F0864(phoneApp);
@@ -43,61 +44,61 @@ BOOL ov101_021EFD7C(PokegearPhoneAppData *phoneApp) {
     return TRUE;
 }
 
-int ov101_021EFDB4(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_HandleSubmenuInput(PokegearPhoneAppData *phoneApp) {
     int input = TouchscreenListMenu_HandleInput(phoneApp->touchscreenListMenu);
     if (input != -1) {
         phoneApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
         TouchscreenListMenu_Destroy(phoneApp->touchscreenListMenu);
-        if (input == 1) {
+        if (input == 1) { // Sort
             PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), 1);
-            return 8;
+            return PHONE_MAIN_STATE_SORT_CONTEXT_MENU;
         } else {
             ov101_021F0ACC(phoneApp, 0, FALSE);
             if (input == 0) {
-                return 5;
+                return PHONE_MAIN_STATE_5;
             } else {
                 ov101_021F0B84(phoneApp);
-                return 1;
+                return PHONE_MAIN_STATE_INPUT_LOOP;
             }
         }
     }
-    return 7;
+    return PHONE_MAIN_STATE_CONTEXT_MENU;
 }
 
-int ov101_021EFE1C(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_HandleSortMenuInput(PokegearPhoneAppData *phoneApp) {
     int input = TouchscreenListMenu_HandleInput(phoneApp->touchscreenListMenu);
     if (input == -1) {
-        return 8;
+        return PHONE_MAIN_STATE_SORT_CONTEXT_MENU;
     }
 
     phoneApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(phoneApp->touchscreenListMenu);
     TouchscreenListMenu_Destroy(phoneApp->touchscreenListMenu);
     switch (input) {
-    case 0:
-    case 1:
-    case 2:
-        ov101_021F0EB0(phoneApp, input);
+    case 0: // Title
+    case 1: // Alphabet
+    case 2: // Location
+        PokegearPhone_SortList(phoneApp, input);
         ov101_021F0ACC(phoneApp, 0, FALSE);
         ov101_021F0B84(phoneApp);
-        return 1;
-    case 3:
+        return PHONE_MAIN_STATE_INPUT_LOOP;
+    case 3: // Move
         ov101_021F0ACC(phoneApp, 1, TRUE);
         ov101_021F13C8(&phoneApp->contactListUI, 1);
         PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 0xFF, 0);
         phoneApp->pokegear->reselectAppCB = ov101_021F0978;
-        return 9;
-    case 4:
+        return PHONE_MAIN_STATE_MOVING_CONTACTS;
+    case 4: // Quit
     default:
         ov101_021F0ACC(phoneApp, 0, FALSE);
         ov101_021F0B84(phoneApp);
-        return 1;
+        return PHONE_MAIN_STATE_INPUT_LOOP;
     }
 }
 
-int ov101_021EFEC8(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->unk_008) {
     case 0:
-        phoneApp->unk_008 = PokegearPhone_HandleInput2(phoneApp);
+        phoneApp->unk_008 = PokegearPhone_HandleInput_MovingContacts(phoneApp);
         break;
     case 1:
         ov101_021F13C8(&phoneApp->contactListUI, 0);
@@ -105,10 +106,10 @@ int ov101_021EFEC8(PokegearPhoneAppData *phoneApp) {
         ov101_021F1338(&phoneApp->contactListUI, TRUE);
         phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
         phoneApp->unk_008 = 0;
-        return 1;
+        return PHONE_MAIN_STATE_INPUT_LOOP;
     }
 
-    return 9;
+    return PHONE_MAIN_STATE_MOVING_CONTACTS;
 }
 
 BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp) {
@@ -181,7 +182,7 @@ void ov101_021F0080(PokegearPhoneAppData *phoneApp) {
 BOOL ov101_021F00BC(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->unk_008) {
     case 0:
-        ReadMsgDataIntoString(phoneApp->unk_014, phoneApp->unk_008 + 33, phoneApp->unk_020);
+        ReadMsgDataIntoString(phoneApp->unk_014, phoneApp->unk_008 + msg_0271_00033, phoneApp->unk_020);
         AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[0], 0, phoneApp->unk_020, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         PlaySE(SEQ_SE_DP_SELECT);
         break;
