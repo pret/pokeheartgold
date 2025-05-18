@@ -164,7 +164,7 @@ static const UnkStruct_0200D2B4 ov101_021F84E8[] = {
      },
 };
 
-const UnkStruct_ov101_021F8404 sContextMenuParam[] = {
+const PokegearPhoneContextMenuParam sContextMenuParam[] = {
     // Call; Sort; Quit
     {
      .nItems = 3,
@@ -344,25 +344,25 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
     FontID_Alloc(4, phoneApp->heapId);
     NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapId);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->unk_011 + 28, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->unk_011 + 16, GF_BG_LYR_SUB_3, 0, 0, 0);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->unk_011 + 22, GF_BG_LYR_SUB_3, 1, 0, 0);
-    phoneApp->unk_508 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->unk_011 + 34, FALSE, &phoneApp->unk_50C, phoneApp->heapId);
-    CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->unk_50C->rawData, 0, 0, phoneApp->unk_50C->screenWidth / 8, phoneApp->unk_50C->screenHeight / 8);
+    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 28, GF_BG_LYR_MAIN_2, 0, 0, 0);
+    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 16, GF_BG_LYR_SUB_3, 0, 0, 0);
+    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 22, GF_BG_LYR_SUB_3, 1, 0, 0);
+    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->backgroundStyle + 34, FALSE, &phoneApp->screenData, phoneApp->heapId);
+    CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->screenData->rawData, 0, 0, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
 }
 
 void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
-    FreeToHeap(phoneApp->unk_508);
+    FreeToHeap(phoneApp->pNscrFile);
     FontID_Release(4);
 }
 
 void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
     NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapId);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->unk_011 + 10, phoneApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->unk_011 + 4, phoneApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 10, phoneApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 4, phoneApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
     PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
@@ -373,16 +373,16 @@ void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
     NARC_Delete(narc);
 }
 
-void ov101_021F0464(PokegearPhoneAppData *phoneApp, BOOL a1) {
-    Sprite_SetVisibleFlag(phoneApp->unk_088[13], a1);
-    FillWindowPixelBuffer(&phoneApp->unk_048[0], 0);
-    FillWindowPixelBuffer(&phoneApp->unk_048[1], 0);
-    if (a1) {
+void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL shouldDim) {
+    Sprite_SetVisibleFlag(phoneApp->sprites[13], shouldDim);
+    FillWindowPixelBuffer(&phoneApp->windows[0], 0);
+    FillWindowPixelBuffer(&phoneApp->windows[1], 0);
+    if (shouldDim) {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xB0, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x60, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0, 0x40, 8, RGB_BLACK);
-        AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[1], 0, PhoneContact_GetName(phoneApp->callContext, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&phoneApp->windows[1], 0, PhoneContact_GetName(phoneApp->callContext, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 0, RGB_BLACK);
@@ -396,40 +396,40 @@ void ov101_021F0464(PokegearPhoneAppData *phoneApp, BOOL a1) {
 
 void ov101_021F0578(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 4; ++i) {
-        AddWindowParameterized(phoneApp->pokegear->bgConfig, &phoneApp->unk_048[i], ov101_021F8420[i].bgId, ov101_021F8420[i].left, ov101_021F8420[i].top, ov101_021F8420[i].width, ov101_021F8420[i].height, ov101_021F8420[i].palette, ov101_021F8420[i].baseTile);
-        FillWindowPixelBuffer(&phoneApp->unk_048[i], 0);
+        AddWindowParameterized(phoneApp->pokegear->bgConfig, &phoneApp->windows[i], ov101_021F8420[i].bgId, ov101_021F8420[i].left, ov101_021F8420[i].top, ov101_021F8420[i].width, ov101_021F8420[i].height, ov101_021F8420[i].palette, ov101_021F8420[i].baseTile);
+        FillWindowPixelBuffer(&phoneApp->windows[i], 0);
     }
     TextPrinter_SetDownArrowBaseTile(0x3E1);
 }
 
 void ov101_021F05CC(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 4; ++i) {
-        ClearWindowTilemapAndCopyToVram(&phoneApp->unk_048[i]);
-        RemoveWindow(&phoneApp->unk_048[i]);
+        ClearWindowTilemapAndCopyToVram(&phoneApp->windows[i]);
+        RemoveWindow(&phoneApp->windows[i]);
     }
 }
 
 void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
-    phoneApp->unk_014 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, phoneApp->heapId);
-    phoneApp->unk_018 = MessageFormat_New_Custom(2, 32, phoneApp->heapId);
-    phoneApp->unk_01C = String_New(640, phoneApp->heapId);
-    phoneApp->unk_020 = String_New(640, phoneApp->heapId);
+    phoneApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, phoneApp->heapId);
+    phoneApp->msgFormat = MessageFormat_New_Custom(2, 32, phoneApp->heapId);
+    phoneApp->msgFormatBuf = String_New(640, phoneApp->heapId);
+    phoneApp->msgReadBuf = String_New(640, phoneApp->heapId);
     for (int i = 0; i < 8; ++i) {
-        phoneApp->unk_024[i] = NewString_ReadMsgData(phoneApp->unk_014, i + msg_0271_00020);
+        phoneApp->contextMenuStrings[i] = NewString_ReadMsgData(phoneApp->msgData, i + msg_0271_00020);
     }
-    phoneApp->unk_044 = Options_GetTextFrameDelay(phoneApp->pokegear->options);
+    phoneApp->textFrameDelay = Options_GetTextFrameDelay(phoneApp->pokegear->options);
     TextFlags_SetAlternateDownArrow(TRUE);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
 }
 
 void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 8; ++i) {
-        String_Delete(phoneApp->unk_024[i]);
+        String_Delete(phoneApp->contextMenuStrings[i]);
     }
-    String_Delete(phoneApp->unk_020);
-    String_Delete(phoneApp->unk_01C);
-    MessageFormat_Delete(phoneApp->unk_018);
-    DestroyMsgData(phoneApp->unk_014);
+    String_Delete(phoneApp->msgReadBuf);
+    String_Delete(phoneApp->msgFormatBuf);
+    MessageFormat_Delete(phoneApp->msgFormat);
+    DestroyMsgData(phoneApp->msgData);
     TextFlags_SetAlternateDownArrow(FALSE);
     TextFlags_SetCanABSpeedUpPrint(FALSE);
 }
@@ -439,13 +439,13 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     MI_CpuClear8(&sp00, sizeof(PokegearPhoneCallContextParam));
     sp00.heapId = phoneApp->heapId;
     sp00.menuInputStatePtr = &phoneApp->pokegear->menuInputState;
-    sp00.sprite = phoneApp->unk_088[13];
+    sp00.sprite = phoneApp->sprites[13];
     sp00.phoneApp = phoneApp;
     sp00.bgConfig = phoneApp->pokegear->bgConfig;
-    sp00.window1 = &phoneApp->unk_048[0];
-    sp00.window2 = &phoneApp->unk_048[1];
+    sp00.window1 = &phoneApp->windows[0];
+    sp00.window2 = &phoneApp->windows[1];
     sp00.plttData = phoneApp->pokegear->plttData;
-    sp00.textSpeed = phoneApp->unk_044;
+    sp00.textSpeed = phoneApp->textFrameDelay;
     sp00.playerMapSec = phoneApp->pokegear->args->mapID;
     sp00.playerMapID = phoneApp->pokegear->args->mapHeader;
     sp00.saveData = phoneApp->pokegear->saveData;
@@ -462,40 +462,40 @@ void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {
     ov100_021E6978(phoneApp->pokegear, 3);
-    phoneApp->unk_0C0 = TouchscreenListMenuSpawner_Create(phoneApp->heapId, phoneApp->pokegear->plttData);
+    phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapId, phoneApp->pokegear->plttData);
 }
 
 void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
-    TouchscreenListMenuSpawner_Destroy(phoneApp->unk_0C0);
+    TouchscreenListMenuSpawner_Destroy(phoneApp->contextMenuSpawner);
     ov100_021E69C8(phoneApp->pokegear);
 }
 
 void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
     int i;
     for (i = 0; i <= 5; ++i) {
-        phoneApp->unk_088[i] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[i]);
-        thunk_Sprite_SetPriority(phoneApp->unk_088[i], 1);
-        Sprite_SetVisibleFlag(phoneApp->unk_088[i], FALSE);
-        Sprite_SetAnimActiveFlag(phoneApp->unk_088[i], TRUE);
+        phoneApp->sprites[i] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[i]);
+        thunk_Sprite_SetPriority(phoneApp->sprites[i], 1);
+        Sprite_SetVisibleFlag(phoneApp->sprites[i], FALSE);
+        Sprite_SetAnimActiveFlag(phoneApp->sprites[i], TRUE);
     }
 
     for (i = 6; i <= 12; ++i) {
-        phoneApp->unk_088[i] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[6]);
-        thunk_Sprite_SetPriority(phoneApp->unk_088[i], 0);
-        thunk_Sprite_SetDrawPriority(phoneApp->unk_088[i], 0);
-        Sprite_SetVisibleFlag(phoneApp->unk_088[i], FALSE);
-        Sprite_SetAnimActiveFlag(phoneApp->unk_088[i], FALSE);
-        Sprite_SetPositionXY(phoneApp->unk_088[i], 12, (int)(i * 24) - 128);
+        phoneApp->sprites[i] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[6]);
+        thunk_Sprite_SetPriority(phoneApp->sprites[i], 0);
+        thunk_Sprite_SetDrawPriority(phoneApp->sprites[i], 0);
+        Sprite_SetVisibleFlag(phoneApp->sprites[i], FALSE);
+        Sprite_SetAnimActiveFlag(phoneApp->sprites[i], FALSE);
+        Sprite_SetPositionXY(phoneApp->sprites[i], 12, (int)(i * 24) - 128);
     }
 
-    phoneApp->unk_088[13] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[7]);
-    thunk_Sprite_SetPriority(phoneApp->unk_088[13], 0);
-    Sprite_SetVisibleFlag(phoneApp->unk_088[13], FALSE);
-    Sprite_SetAnimActiveFlag(phoneApp->unk_088[13], FALSE);
+    phoneApp->sprites[13] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[7]);
+    thunk_Sprite_SetPriority(phoneApp->sprites[13], 0);
+    Sprite_SetVisibleFlag(phoneApp->sprites[13], FALSE);
+    Sprite_SetAnimActiveFlag(phoneApp->sprites[13], FALSE);
 }
 
 void ov101_021F0864(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 14; ++i) {
-        thunk_Sprite_Delete(phoneApp->unk_088[i]);
+        thunk_Sprite_Delete(phoneApp->sprites[i]);
     }
 }

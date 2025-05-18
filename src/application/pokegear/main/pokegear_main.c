@@ -68,7 +68,7 @@ BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     pokegearApp->profile = Save_PlayerData_GetProfile(pokegearApp->args->saveData);
     pokegearApp->registeredCards = Pokegear_GetRegisteredCardsArray(pokegearApp->savePokegear);
     pokegearApp->menuInputState = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
-    pokegearApp->unk_008 = sub_0202EE7C(pokegearApp->savePokegear);
+    pokegearApp->unk_008 = Pokegear_GetBackgroundStyle(pokegearApp->savePokegear);
     switch (pokegearApp->args->incomingPhoneCall) {
     case 1: // scripted phone call
         pokegearApp->app = GEAR_APP_PHONE;

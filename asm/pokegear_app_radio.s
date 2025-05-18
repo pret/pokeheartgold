@@ -148,7 +148,7 @@ ov101_021F4558: ; 0x021F4558
 	str r1, [r0, #0x60]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EE7C
+	bl Pokegear_GetBackgroundStyle
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]

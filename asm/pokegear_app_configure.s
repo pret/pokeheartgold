@@ -147,7 +147,7 @@ ov101_021EE9D0: ; 0x021EE9D0
 	str r1, [r0, #0x5c]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EE7C
+	bl Pokegear_GetBackgroundStyle
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x19
@@ -190,7 +190,7 @@ ov101_021EEA2C: ; 0x021EEA2C
 	lsl r1, r1, #0x10
 	ldr r0, [r0, #0x28]
 	lsr r1, r1, #0x19
-	bl sub_0202EE84
+	bl Pokegear_SetBackgroundStyle
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	str r1, [r0, #0x5c]

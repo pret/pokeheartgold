@@ -51,20 +51,20 @@ void PokegearPhone_InitContactListUI(PokegearPhoneAppData *phoneApp) {
         PhoneContactListUISlotData_Init(&ui->slotData[i]);
     }
     ui->numContacts = phoneApp->numContacts;
-    ui->window = &phoneApp->unk_048[2];
+    ui->window = &phoneApp->windows[2];
     ui->callContext = phoneApp->callContext;
     ui->firstBgColor = 0;
     ui->menuInputStatePtr = &phoneApp->pokegear->menuInputState;
     ui->menuInputStateBakPtr = &phoneApp->menuInputStateBak;
 
     for (i = 0; i < 2; ++i) {
-        ui->unk_3CC[i] = phoneApp->unk_088[4 + i];
+        ui->unk_3CC[i] = phoneApp->sprites[4 + i];
     }
     for (i = 0; i < 6; ++i) {
-        ui->unk_3D4[i] = phoneApp->unk_088[6 + i];
+        ui->unk_3D4[i] = phoneApp->sprites[6 + i];
     }
     for (i = 0; i < 4; ++i) {
-        ui->unk_3EC[i] = phoneApp->unk_088[i];
+        ui->unk_3EC[i] = phoneApp->sprites[i];
     }
 
     ui->textColors[0].fg1 = 1;
@@ -178,18 +178,18 @@ void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, 
     Sprite_SetPositionXY(ui->unk_3EC[3], 224, position * 24 + 30);
 }
 
-void ov101_021F1338(PhoneContactListUI *a0, BOOL a1) {
+void ov101_021F1338(PhoneContactListUI *ui, BOOL a1) {
     int i;
 
     for (i = 0; i < 4; ++i) {
-        Sprite_SetAnimActiveFlag(a0->unk_3EC[i], a1);
-        Sprite_SetVisibleFlag(a0->unk_3EC[i], TRUE);
+        Sprite_SetAnimActiveFlag(ui->unk_3EC[i], a1);
+        Sprite_SetVisibleFlag(ui->unk_3EC[i], TRUE);
     }
 }
 
-void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, int a2) {
+void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, BOOL a2) {
     int i;
-    if (a2 != 0) {
+    if (a2) {
         for (i = 0; i < ui->listBottomIndex; ++i) {
             Sprite_SetVisibleFlag(ui->unk_3D4[i], TRUE);
             if (cursorPos == i) {
@@ -208,12 +208,12 @@ void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, int a2) {
 void ov101_021F13C8(PhoneContactListUI *ui, int a1) {
     if (a1 == 0) {
         ui->unk_006_1 = 0;
-        ov101_021F1364(ui, 255, 0);
+        ov101_021F1364(ui, 255, FALSE);
         ov101_021F1808(ui);
         PhoneContactListUI_SetCursorSpritePos(ui, ui->cursorPos, 1);
     } else {
         ui->unk_006_1 = 1;
-        ov101_021F1364(ui, ui->cursorPos, 1);
+        ov101_021F1364(ui, ui->cursorPos, TRUE);
     }
 }
 

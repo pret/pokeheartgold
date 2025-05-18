@@ -93,7 +93,7 @@ struct PokegearAppData {
     HeapID heapId;                              // 0x000
     u8 app;                                     // 0x004
     u8 registeredCards : 7;                     // 0x005
-    u8 unk_005_7 : 1;                           // 0x005
+    u8 isSwitchApp : 1;                         // 0x005
     u8 cursorInAppSwitchZone;                   // 0x006
     u8 unk_007;                                 // 0x007
     u8 unk_008;                                 // 0x008

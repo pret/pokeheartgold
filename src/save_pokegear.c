@@ -28,7 +28,7 @@ MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData) {
 static void InitGSPlayerMiscInternal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
     pokegear->lastUsedApp = 3;
-    pokegear->unk_4_18 = 0;
+    pokegear->backgroundStyle = 0;
     pokegear->unk_1 = 0;
     pokegear->unk_3 = 128;
     pokegear->unk_2 = pokegear->unk_3;
@@ -82,12 +82,12 @@ u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear) {
     return pokegear->mapUnlockLevel;
 }
 
-u32 sub_0202EE7C(SavePokegear *pokegear) {
-    return pokegear->unk_4_18;
+u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear) {
+    return pokegear->backgroundStyle;
 }
 
-void sub_0202EE84(SavePokegear *pokegear, u32 a1) {
-    pokegear->unk_4_18 = a1;
+void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 newStyle) {
+    pokegear->backgroundStyle = newStyle;
 }
 
 u16 sub_0202EE98(SavePokegear *pokegear) {

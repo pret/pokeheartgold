@@ -202,8 +202,8 @@
 .public SaveData_GetMomsSavingsAddr
 .public sub_0202EDF4
 .public Pokegear_GetMapUnlockLevel
-.public sub_0202EE7C
-.public sub_0202EE84
+.public Pokegear_GetBackgroundStyle
+.public Pokegear_SetBackgroundStyle
 .public sub_0202EE98
 .public sub_0202EEA4
 .public sub_0202EEA8

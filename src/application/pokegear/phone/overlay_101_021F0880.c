@@ -13,13 +13,13 @@ void ov101_021F0AB8(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, 
 void ov101_021F0880(PokegearPhoneAppData *phoneApp) {
     int i;
     int j;
-    const UnkStruct_ov101_021F8404 *r5;
+    const PokegearPhoneContextMenuParam *r5;
 
     for (i = 0; i < 7; ++i) {
         r5 = &sContextMenuParam[i];
         phoneApp->listMenuItems[i] = ListMenuItems_New(r5->nItems, phoneApp->heapId);
         for (j = 0; j < r5->nItems; ++j) {
-            ListMenuItems_AppendFromMsgData(phoneApp->listMenuItems[i], phoneApp->unk_014, r5->baseMsg + j, j);
+            ListMenuItems_AppendFromMsgData(phoneApp->listMenuItems[i], phoneApp->msgData, r5->baseMsg + j, j);
         }
     }
 }
@@ -57,7 +57,7 @@ void ov101_021F0954(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0978(void *cb_arg) {
     PokegearPhoneAppData *phoneApp = cb_arg;
 
-    ov101_021F1364(&phoneApp->contactListUI, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), 1);
+    ov101_021F1364(&phoneApp->contactListUI, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), TRUE);
 }
 
 void ov101_021F0990(PokegearPhoneAppData *phoneApp) {
@@ -87,9 +87,9 @@ TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAp
     header.bgConfig = phoneApp->pokegear->bgConfig;
     header.numWindows = sContextMenuParam[menuID].nItems;
     if (menuID == 1) {
-        phoneApp->touchscreenListMenu = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &header, phoneApp->pokegear->menuInputState, sContextMenuParam[menuID].x, sContextMenuParam[menuID].y, sContextMenuParam[menuID].width, 0, ov101_021F0A94, phoneApp, TRUE);
+        phoneApp->touchscreenListMenu = TouchscreenListMenu_CreateWithCallback(phoneApp->contextMenuSpawner, &header, phoneApp->pokegear->menuInputState, sContextMenuParam[menuID].x, sContextMenuParam[menuID].y, sContextMenuParam[menuID].width, 0, ov101_021F0A94, phoneApp, TRUE);
     } else {
-        phoneApp->touchscreenListMenu = TouchscreenListMenu_CreateWithCallback(phoneApp->unk_0C0, &header, phoneApp->pokegear->menuInputState, sContextMenuParam[menuID].x, sContextMenuParam[menuID].y, sContextMenuParam[menuID].width, 0, ov101_021F0AB8, phoneApp, TRUE);
+        phoneApp->touchscreenListMenu = TouchscreenListMenu_CreateWithCallback(phoneApp->contextMenuSpawner, &header, phoneApp->pokegear->menuInputState, sContextMenuParam[menuID].x, sContextMenuParam[menuID].y, sContextMenuParam[menuID].width, 0, ov101_021F0AB8, phoneApp, TRUE);
     }
     return phoneApp->touchscreenListMenu;
 }
@@ -112,12 +112,12 @@ void ov101_021F0AB8(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, 
 void ov101_021F0ACC(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2) {
     if (a2) {
         u32 xpos;
-        CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->unk_50C->rawData, 0, 24, phoneApp->unk_50C->screenWidth / 8, phoneApp->unk_50C->screenHeight / 8);
-        FillWindowPixelBuffer(&phoneApp->unk_048[3], 5);
-        xpos = (256 - FontID_String_GetWidth(0, phoneApp->unk_024[a1], 0)) / 2;
-        AddTextPrinterParameterizedWithColor(&phoneApp->unk_048[3], 0, phoneApp->unk_024[a1], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
+        CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->screenData->rawData, 0, 24, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
+        FillWindowPixelBuffer(&phoneApp->windows[3], 5);
+        xpos = (256 - FontID_String_GetWidth(0, phoneApp->contextMenuStrings[a1], 0)) / 2;
+        AddTextPrinterParameterizedWithColor(&phoneApp->windows[3], 0, phoneApp->contextMenuStrings[a1], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
     } else {
-        ClearWindowTilemapAndScheduleTransfer(&phoneApp->unk_048[3]);
+        ClearWindowTilemapAndScheduleTransfer(&phoneApp->windows[3]);
         FillBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 20, 32, 4, TILEMAP_FILL_OVWT_PAL);
     }
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
