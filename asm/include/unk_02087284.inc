@@ -18,7 +18,7 @@
 .public ManagedSprite_SetPositionXY
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public ManagedSprite_GetPositionXYWithSubscreenOffset
-.public UnkImageStruct_AddSpritePrecisePositionXY
+.public ManagedSprite_AddSpritePrecisePositionXY
 .public ManagedSprite_SetPositionFxXYWithSubscreenOffset
 .public ManagedSprite_GetPositionFxXYWithSubscreenOffset
 .public SysTask_CreateOnVBlankQueue

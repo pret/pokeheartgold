@@ -525,13 +525,13 @@ void SpriteSystem_FreeResourcesAndManager(SpriteSystem *spriteSystem, SpriteMana
     SpriteSystem_FreeSpriteManager(spriteSystem, spriteManager);
 }
 
-void Sprite_DeleteAndFreeResources(ManagedSprite *unk) {
-    if (unk->vramTransfer) {
-        sub_0200AF80(unk->spriteResourcesHeader->imageProxy);
+void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite) {
+    if (managedSprite->vramTransfer) {
+        sub_0200AF80(managedSprite->spriteResourcesHeader->imageProxy);
     }
-    Sprite_Delete(unk->sprite);
-    SpriteResourceHeaderList_Destroy(unk->spriteResourceHeaderList);
-    FreeToHeap(unk);
+    Sprite_Delete(managedSprite->sprite);
+    SpriteResourceHeaderList_Destroy(managedSprite->spriteResourceHeaderList);
+    FreeToHeap(managedSprite);
 }
 
 static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId) {
@@ -624,140 +624,140 @@ void Sprite_TickFrame(Sprite *sprite) {
     Sprite_UpdateAnim(sprite, FX32_ONE);
 }
 
-void ManagedSprite_TickFrame(ManagedSprite *unk) {
-    Sprite_TickFrame(unk->sprite);
+void ManagedSprite_TickFrame(ManagedSprite *managedSprite) {
+    Sprite_TickFrame(managedSprite->sprite);
 }
 
-void ManagedSprite_TickTwoFrames(ManagedSprite *unk) {
-    Sprite_UpdateAnim(unk->sprite, 2 * FX32_ONE);
+void ManagedSprite_TickTwoFrames(ManagedSprite *managedSprite) {
+    Sprite_UpdateAnim(managedSprite->sprite, 2 * FX32_ONE);
 }
 
-void ManagedSprite_TickNFrames(ManagedSprite *unk, fx32 frames) {
-    Sprite_UpdateAnim(unk->sprite, frames);
+void ManagedSprite_TickNFrames(ManagedSprite *managedSprite, fx32 frames) {
+    Sprite_UpdateAnim(managedSprite->sprite, frames);
 }
 
-u32 ManagedSprite_GetNumFrames(ManagedSprite *unk) {
-    return Sprite_GetNumAnimSeqs(unk->sprite);
+u32 ManagedSprite_GetNumFrames(ManagedSprite *managedSprite) {
+    return Sprite_GetNumAnimSeqs(managedSprite->sprite);
 }
 
-void ManagedSprite_SetAnim(ManagedSprite *unk, int seqno) {
-    Sprite_SetAnimCtrlSeq(unk->sprite, seqno);
+void ManagedSprite_SetAnim(ManagedSprite *managedSprite, int seqno) {
+    Sprite_SetAnimCtrlSeq(managedSprite->sprite, seqno);
 }
 
-void ManagedSprite_SetAnimNoRestart(ManagedSprite *unk, int a1) {
-    Sprite_TryChangeAnimSeq(unk->sprite, a1);
+void ManagedSprite_SetAnimNoRestart(ManagedSprite *managedSprite, int a1) {
+    Sprite_TryChangeAnimSeq(managedSprite->sprite, a1);
 }
 
-u16 ManagedSprite_GetActiveAnim(ManagedSprite *unk) {
-    return Sprite_GetAnimationNumber(unk->sprite);
+u16 ManagedSprite_GetActiveAnim(ManagedSprite *managedSprite) {
+    return Sprite_GetAnimationNumber(managedSprite->sprite);
 }
 
-void SetSpriteAnimationFlag(Sprite *sprite, int a1) {
+void thunk_Sprite_SetAnimationFlag(Sprite *sprite, int a1) {
     Sprite_SetAnimActiveFlag(sprite, a1);
 }
 
-void ManagedSprite_SetAnimateFlag(ManagedSprite *unk, int a1) {
-    SetSpriteAnimationFlag(unk->sprite, a1);
+void ManagedSprite_SetAnimateFlag(ManagedSprite *managedSprite, int a1) {
+    thunk_Sprite_SetAnimationFlag(managedSprite->sprite, a1);
 }
 
-void SpriteSetAnimationSpeed(Sprite *sprite, fx32 speed) {
+void thunk_Sprite_SetAnimationSpeed(Sprite *sprite, fx32 speed) {
     Sprite_SetAnimSpeed(sprite, speed);
 }
 
-void ManagedSprite_SetAnimSpeed(ManagedSprite *unk, fx32 speed) {
-    SpriteSetAnimationSpeed(unk->sprite, speed);
+void ManagedSprite_SetAnimSpeed(ManagedSprite *managedSprite, fx32 speed) {
+    thunk_Sprite_SetAnimationSpeed(managedSprite->sprite, speed);
 }
 
-BOOL IsSpriteAnimated(Sprite *sprite) {
+BOOL thunk_Sprite_IsAnimated(Sprite *sprite) {
     return Sprite_IsAnimated(sprite);
 }
 
-BOOL ManagedSprite_IsAnimated(ManagedSprite *unk) {
-    return IsSpriteAnimated(unk->sprite);
+BOOL ManagedSprite_IsAnimated(ManagedSprite *managedSprite) {
+    return thunk_Sprite_IsAnimated(managedSprite->sprite);
 }
 
-void UnkImageStruct_ResetSpriteAnimCtrlState(ManagedSprite *unk) {
-    Sprite_ResetAnimCtrlState(unk->sprite);
+void ManagedSprite_ResetSpriteAnimCtrlState(ManagedSprite *managedSprite) {
+    Sprite_ResetAnimCtrlState(managedSprite->sprite);
 }
 
-void SetSpriteAnimationFrame(Sprite *sprite, u16 frameIndex) {
+void thunk_Sprite_SetAnimationFrame(Sprite *sprite, u16 frameIndex) {
     Sprite_SetAnimationFrame(sprite, frameIndex);
 }
 
-void ManagedSprite_SetAnimationFrame(ManagedSprite *unk, u16 frameIndex) {
-    SetSpriteAnimationFrame(unk->sprite, frameIndex);
+void ManagedSprite_SetAnimationFrame(ManagedSprite *managedSprite, u16 frameIndex) {
+    thunk_Sprite_SetAnimationFrame(managedSprite->sprite, frameIndex);
 }
 
-u16 GetSpriteAnimationFrame(Sprite *sprite) {
+u16 thunk_Sprite_GetAnimationFrame(Sprite *sprite) {
     return Sprite_GetAnimationFrame(sprite);
 }
 
-u16 ManagedSprite_GetAnimationFrame(ManagedSprite *unk) {
-    return GetSpriteAnimationFrame(unk->sprite);
+u16 ManagedSprite_GetAnimationFrame(ManagedSprite *managedSprite) {
+    return thunk_Sprite_GetAnimationFrame(managedSprite->sprite);
 }
 
-void SpriteSetDrawFlag(Sprite *sprite, int flag) {
+void thunk_Sprite_SetDrawFlag(Sprite *sprite, int flag) {
     Sprite_SetDrawFlag(sprite, flag);
 }
 
-void ManagedSprite_SetDrawFlag(ManagedSprite *unk, int flag) {
-    SpriteSetDrawFlag(unk->sprite, flag);
+void ManagedSprite_SetDrawFlag(ManagedSprite *managedSprite, int flag) {
+    thunk_Sprite_SetDrawFlag(managedSprite->sprite, flag);
 }
 
-BOOL GetSpriteDrawFlag(Sprite *sprite) {
+BOOL thunk_Sprite_GetDrawFlag(Sprite *sprite) {
     return Sprite_GetDrawFlag(sprite);
 }
 
 BOOL ManagedSprite_GetDrawFlag(ManagedSprite *a0) {
-    return GetSpriteDrawFlag(a0->sprite);
+    return thunk_Sprite_GetDrawFlag(a0->sprite);
 }
 
-void SetSpritePaletteOverride(Sprite *sprite, int a1) {
+void thunk_Sprite_SetPaletteOverride(Sprite *sprite, int a1) {
     Sprite_SetPaletteOverride(sprite, a1);
 }
 
-void ManagedSprite_SetPaletteOverride(ManagedSprite *unk, int a1) {
-    SetSpritePaletteOverride(unk->sprite, a1);
+void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int a1) {
+    thunk_Sprite_SetPaletteOverride(managedSprite->sprite, a1);
 }
 
-void SetSpritePaletteOverrideOffset(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetPaletteOffset(Sprite *sprite, u8 a1) {
     Sprite_SetPalOffset(sprite, a1);
 }
 
-void ManagedSprite_SetPaletteOverrideOffset(ManagedSprite *unk, u8 a1) {
-    SetSpritePaletteOverrideOffset(unk->sprite, a1);
+void ManagedSprite_SetPaletteOverrideOffset(ManagedSprite *managedSprite, u8 a1) {
+    thunk_Sprite_SetPaletteOffset(managedSprite->sprite, a1);
 }
 
-u8 ManagedSprite_GetPaletteOverrideOffset(ManagedSprite *unk) {
-    return Sprite_GetPalOffset(unk->sprite);
+u8 ManagedSprite_GetPaletteOverrideOffset(ManagedSprite *managedSprite) {
+    return Sprite_GetPalOffset(managedSprite->sprite);
 }
 
-void SetSpritePriority(Sprite *sprite, int a1) {
+void thunk_Sprite_SetPriority(Sprite *sprite, int a1) {
     Sprite_SetPriority(sprite, a1);
 }
 
-int ManagedSprite_GetPriority(ManagedSprite *unk) {
-    return Sprite_GetPriority(unk->sprite);
+int ManagedSprite_GetPriority(ManagedSprite *managedSprite) {
+    return Sprite_GetPriority(managedSprite->sprite);
 }
 
-void ManagedSprite_SetPriority(ManagedSprite *unk, int a1) {
-    SetSpritePriority(unk->sprite, a1);
+void ManagedSprite_SetPriority(ManagedSprite *managedSprite, int a1) {
+    thunk_Sprite_SetPriority(managedSprite->sprite, a1);
 }
 
-void SetSpriteDrawPriority(Sprite *sprite, u16 a1) {
+void thunk_Sprite_SetDrawPriority(Sprite *sprite, u16 a1) {
     Sprite_SetDrawPriority(sprite, a1);
 }
 
-void ManagedSprite_SetDrawPriority(ManagedSprite *unk, u16 a1) {
-    SetSpriteDrawPriority(unk->sprite, a1);
+void ManagedSprite_SetDrawPriority(ManagedSprite *managedSprite, u16 a1) {
+    thunk_Sprite_SetDrawPriority(managedSprite->sprite, a1);
 }
 
-u16 GetSpriteDrawPriority(Sprite *sprite) {
+u16 thunk_Sprite_GetDrawPriority(Sprite *sprite) {
     return Sprite_GetDrawPriority(sprite);
 }
 
-u16 ManagedSprite_GetDrawPriority(ManagedSprite *unk) {
-    return GetSpriteDrawPriority(unk->sprite);
+u16 ManagedSprite_GetDrawPriority(ManagedSprite *managedSprite) {
+    return thunk_Sprite_GetDrawPriority(managedSprite->sprite);
 }
 
 void Sprite_SetPositionXY(Sprite *sprite, s16 x, s16 y) {
@@ -772,8 +772,8 @@ void Sprite_SetPositionXY(Sprite *sprite, s16 x, s16 y) {
     Sprite_SetMatrix(sprite, &vec);
 }
 
-void ManagedSprite_SetPositionXY(ManagedSprite *unk, s16 x, s16 y) {
-    Sprite_SetPositionXY(unk->sprite, x, y);
+void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y) {
+    Sprite_SetPositionXY(managedSprite->sprite, x, y);
 }
 
 void Sprite_SetPositionXYWithSubscreenOffset(Sprite *sprite, s16 x, s16 y, fx32 yOffset) {
@@ -788,8 +788,8 @@ void Sprite_SetPositionXYWithSubscreenOffset(Sprite *sprite, s16 x, s16 y, fx32 
     Sprite_SetMatrix(sprite, &vec);
 }
 
-void ManagedSprite_SetPositionXYWithSubscreenOffset(ManagedSprite *unk, s16 x, s16 y, fx32 yOffset) {
-    Sprite_SetPositionXYWithSubscreenOffset(unk->sprite, x, y, yOffset);
+void ManagedSprite_SetPositionXYWithSubscreenOffset(ManagedSprite *managedSprite, s16 x, s16 y, fx32 yOffset) {
+    Sprite_SetPositionXYWithSubscreenOffset(managedSprite->sprite, x, y, yOffset);
 }
 
 void Sprite_GetPositionXY(Sprite *sprite, s16 *x, s16 *y) {
@@ -802,8 +802,8 @@ void Sprite_GetPositionXY(Sprite *sprite, s16 *x, s16 *y) {
     }
 }
 
-void ManagedSprite_GetPositionXY(ManagedSprite *unk, s16 *x, s16 *y) {
-    Sprite_GetPositionXY(unk->sprite, x, y);
+void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y) {
+    Sprite_GetPositionXY(managedSprite->sprite, x, y);
 }
 
 void Sprite_GetPositionXY_CustomScreenYOffset(Sprite *sprite, s16 *x, s16 *y, fx32 yOffset) {
@@ -816,8 +816,8 @@ void Sprite_GetPositionXY_CustomScreenYOffset(Sprite *sprite, s16 *x, s16 *y, fx
     }
 }
 
-void ManagedSprite_GetPositionXYWithSubscreenOffset(ManagedSprite *unk, s16 *x, s16 *y, fx32 yOffset) {
-    Sprite_GetPositionXY_CustomScreenYOffset(unk->sprite, x, y, yOffset);
+void ManagedSprite_GetPositionXYWithSubscreenOffset(ManagedSprite *managedSprite, s16 *x, s16 *y, fx32 yOffset) {
+    Sprite_GetPositionXY_CustomScreenYOffset(managedSprite->sprite, x, y, yOffset);
 }
 
 void Sprite_OffsetPositionXY(Sprite *sprite, s16 dx, s16 dy) {
@@ -829,142 +829,142 @@ void Sprite_OffsetPositionXY(Sprite *sprite, s16 dx, s16 dy) {
     Sprite_SetMatrix(sprite, &vec);
 }
 
-void ManagedSprite_OffsetPositionXY(ManagedSprite *unk, s16 dx, s16 dy) {
-    Sprite_OffsetPositionXY(unk->sprite, dx, dy);
+void ManagedSprite_OffsetPositionXY(ManagedSprite *managedSprite, s16 dx, s16 dy) {
+    Sprite_OffsetPositionXY(managedSprite->sprite, dx, dy);
 }
 
-void UnkImageStruct_AddSpritePrecisePositionXY(ManagedSprite *unk, fx32 dx, fx32 dy) {
+void ManagedSprite_AddSpritePrecisePositionXY(ManagedSprite *managedSprite, fx32 dx, fx32 dy) {
     VecFx32 vec;
-    const VecFx32 *pos = Sprite_GetMatrixPtr(unk->sprite);
+    const VecFx32 *pos = Sprite_GetMatrixPtr(managedSprite->sprite);
     vec.x = pos->x + dx;
     vec.y = pos->y + dy;
     vec.z = pos->z;
-    Sprite_SetMatrix(unk->sprite, &vec);
+    Sprite_SetMatrix(managedSprite->sprite, &vec);
 }
 
-void ManagedSprite_SetPositonFxXY(ManagedSprite *unk, fx32 x, fx32 y) {
+void ManagedSprite_SetPositonFxXY(ManagedSprite *managedSprite, fx32 x, fx32 y) {
     VecFx32 vec;
-    const VecFx32 *pos = Sprite_GetMatrixPtr(unk->sprite);
+    const VecFx32 *pos = Sprite_GetMatrixPtr(managedSprite->sprite);
     vec.x = x;
     vec.y = y;
     vec.z = pos->z;
-    Sprite_SetMatrix(unk->sprite, &vec);
+    Sprite_SetMatrix(managedSprite->sprite, &vec);
 }
 
-void ManagedSprite_GetSpritePositionFxXY(ManagedSprite *unk, fx32 *x, fx32 *y) {
-    const VecFx32 *pos = Sprite_GetMatrixPtr(unk->sprite);
+void ManagedSprite_GetSpritePositionFxXY(ManagedSprite *managedSprite, fx32 *x, fx32 *y) {
+    const VecFx32 *pos = Sprite_GetMatrixPtr(managedSprite->sprite);
     *x = pos->x;
     *y = pos->y;
 }
 
-void ManagedSprite_SetPositionFxXYWithSubscreenOffset(ManagedSprite *unk, fx32 x, fx32 y, fx32 yOffset) {
-    if (Sprite_GetVramType(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
-        ManagedSprite_SetPositonFxXY(unk, x, y + yOffset);
+void ManagedSprite_SetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSprite, fx32 x, fx32 y, fx32 yOffset) {
+    if (Sprite_GetVramType(managedSprite->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+        ManagedSprite_SetPositonFxXY(managedSprite, x, y + yOffset);
     } else {
-        ManagedSprite_SetPositonFxXY(unk, x, y);
+        ManagedSprite_SetPositonFxXY(managedSprite, x, y);
     }
 }
 
-void ManagedSprite_GetPositionFxXYWithSubscreenOffset(ManagedSprite *unk, fx32 *x, fx32 *y, fx32 yOffset) {
-    ManagedSprite_GetSpritePositionFxXY(unk, x, y);
-    if (Sprite_GetVramType(unk->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
+void ManagedSprite_GetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSprite, fx32 *x, fx32 *y, fx32 yOffset) {
+    ManagedSprite_GetSpritePositionFxXY(managedSprite, x, y);
+    if (Sprite_GetVramType(managedSprite->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y -= yOffset;
     }
 }
 
-void SetSpriteAffineOverwriteMode(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetAffineOverworldMode(Sprite *sprite, u8 a1) {
     Sprite_SetAffineOverwriteMode(sprite, a1);
 }
 
-void ManagedSprite_SetAffineOverwriteMode(ManagedSprite *unk, u8 a1) {
-    SetSpriteAffineOverwriteMode(unk->sprite, a1);
+void ManagedSprite_SetAffineOverwriteMode(ManagedSprite *managedSprite, u8 a1) {
+    thunk_Sprite_SetAffineOverworldMode(managedSprite->sprite, a1);
 }
 
-void SetSpriteAffineScale(Sprite *sprite, f32 x, f32 y) {
+void Sprite_SetAffineScaleXY(Sprite *sprite, f32 x, f32 y) {
     VecFx32 *scale = Sprite_GetScalePtr(sprite);
     scale->x = FX_F32_TO_FX32(x);
     scale->y = FX_F32_TO_FX32(y);
     Sprite_SetAffineScale(sprite, scale);
 }
 
-void ManagedSprite_SetAffineScale(ManagedSprite *unk, f32 x, f32 y) {
-    SetSpriteAffineScale(unk->sprite, x, y);
+void ManagedSprite_SetAffineScale(ManagedSprite *managedSprite, f32 x, f32 y) {
+    Sprite_SetAffineScaleXY(managedSprite->sprite, x, y);
 }
 
-void GetSpriteAffineScale(Sprite *sprite, f32 *x, f32 *y) {
+void Sprite_GetAffineScaleXY(Sprite *sprite, f32 *x, f32 *y) {
     VecFx32 *scale = Sprite_GetScalePtr(sprite);
     *x = FX_FX32_TO_F32(scale->x);
     *y = FX_FX32_TO_F32(scale->y);
 }
 
-void ManagedSprite_GetAffineScale(ManagedSprite *unk, f32 *x, f32 *y) {
-    GetSpriteAffineScale(unk->sprite, x, y);
+void ManagedSprite_GetAffineScale(ManagedSprite *managedSprite, f32 *x, f32 *y) {
+    Sprite_GetAffineScaleXY(managedSprite->sprite, x, y);
 }
 
-void SetSpriteAffineZRotation(Sprite *sprite, u16 a1) {
-    Sprite_SetAffineZRotation(sprite, a1);
-}
-
-void ManagedSprite_SetAffineZRotation(ManagedSprite *unk, u16 a1) {
-    SetSpriteAffineZRotation(unk->sprite, a1);
-}
-
-void OffsetSpriteAffineZRotation(Sprite *sprite, u16 a1) {
-    u16 rotation = Sprite_GetRotation(sprite);
-    rotation += a1;
+void thunk_Sprite_SetAffineZRotation(Sprite *sprite, u16 rotation) {
     Sprite_SetAffineZRotation(sprite, rotation);
 }
 
-void ManagedSprite_OffsetAffineZRotation(ManagedSprite *unk, u16 a1) {
-    OffsetSpriteAffineZRotation(unk->sprite, a1);
+void ManagedSprite_SetAffineZRotation(ManagedSprite *managedSprite, u16 rotation) {
+    thunk_Sprite_SetAffineZRotation(managedSprite->sprite, rotation);
 }
 
-u16 sub_0200E0A4(Sprite *sprite) {
+void Sprite_OffsetAffineZRotation2(Sprite *sprite, u16 offset) {
+    u16 rotation = Sprite_GetRotation(sprite);
+    rotation += offset;
+    Sprite_SetAffineZRotation(sprite, rotation);
+}
+
+void ManagedSprite_OffsetAffineZRotation(ManagedSprite *managedSprite, u16 rotation) {
+    Sprite_OffsetAffineZRotation2(managedSprite->sprite, rotation);
+}
+
+u16 thunk_Sprite_GetRotation(Sprite *sprite) {
     return Sprite_GetRotation(sprite);
 }
 
-u16 sub_0200E0AC(ManagedSprite *unk) {
-    return sub_0200E0A4(unk->sprite);
+u16 ManagedSprite_GetRotation(ManagedSprite *managedSprite) {
+    return thunk_Sprite_GetRotation(managedSprite->sprite);
 }
 
-void SetSpriteFlipMode(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetFlipMode(Sprite *sprite, u8 a1) {
     Sprite_SetFlipMode(sprite, a1);
 }
 
-void ManagedSprite_SetFlipMode(ManagedSprite *unk, u8 a1) {
-    SetSpriteFlipMode(unk->sprite, a1);
+void ManagedSprite_SetFlipMode(ManagedSprite *managedSprite, u8 a1) {
+    thunk_Sprite_SetFlipMode(managedSprite->sprite, a1);
 }
 
-void ManagedSprite_SetAffineTranslation(ManagedSprite *unk, s16 x, s16 y) {
+void ManagedSprite_SetAffineTranslation(ManagedSprite *managedSprite, s16 x, s16 y) {
     VecFx32 matrix;
     matrix.x = x * FX32_ONE;
     matrix.y = y * FX32_ONE;
     matrix.z = 0;
-    Sprite_SetAffineMatrix(unk->sprite, &matrix);
+    Sprite_SetAffineMatrix(managedSprite->sprite, &matrix);
 }
 
-void ManagedSprite_SetMosaicFlag(ManagedSprite *unk, BOOL mosaic) {
-    Sprite_SetMosaic(unk->sprite, mosaic);
+void ManagedSprite_SetMosaicFlag(ManagedSprite *managedSprite, BOOL mosaic) {
+    Sprite_SetMosaic(managedSprite->sprite, mosaic);
 }
 
-void SetSpriteOamMode(Sprite *sprite, GXOamMode mode) {
+void thunk_Sprite_SetOamMode(Sprite *sprite, GXOamMode mode) {
     Sprite_SetOamMode(sprite, mode);
 }
 
-void ManagedSprite_SetOamMode(ManagedSprite *unk, GXOamMode mode) {
-    SetSpriteOamMode(unk->sprite, mode);
+void ManagedSprite_SetOamMode(ManagedSprite *managedSprite, GXOamMode mode) {
+    thunk_Sprite_SetOamMode(managedSprite->sprite, mode);
 }
 
-GXOamMode GetSpriteOamMode(Sprite *sprite) {
+GXOamMode thunk_Sprite_GetOamMode(Sprite *sprite) {
     return Sprite_GetOamMode(sprite);
 }
 
-GXOamMode ManagedSprite_GetOamMode(ManagedSprite *unk) {
-    return GetSpriteOamMode(unk->sprite);
+GXOamMode ManagedSprite_GetOamMode(ManagedSprite *managedSprite) {
+    return thunk_Sprite_GetOamMode(managedSprite->sprite);
 }
 
-u32 ManagedSprite_GetUserAttrForCurrentAnimFrame(ManagedSprite *unk) {
-    return Sprite_GetCurrentAnimFrameExAttr(unk->sprite);
+u32 ManagedSprite_GetUserAttrForCurrentAnimFrame(ManagedSprite *managedSprite) {
+    return Sprite_GetCurrentAnimFrameExAttr(managedSprite->sprite);
 }
 
 BOOL SpriteSystem_LoadCharResObjWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {

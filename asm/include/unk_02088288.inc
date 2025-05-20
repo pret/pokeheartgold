@@ -34,8 +34,8 @@
 .public MessagePrinter_Delete
 .public SpriteSystem_DrawSprites
 .public SpriteSystem_TransferOam
-.public SpriteSetDrawFlag
-.public SetSpritePaletteOverride
+.public thunk_Sprite_SetDrawFlag
+.public thunk_Sprite_SetPaletteOverride
 .public LoadUserFrameGfx2
 .public IsPaletteFadeFinished
 .public sub_02016EDC

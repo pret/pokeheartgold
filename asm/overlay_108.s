@@ -1940,7 +1940,7 @@ ov108_021E6804: ; 0x021E6804
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r2, _021E684C ; =0x000184DF
 	add r0, r4, #0
 	ldrb r2, [r4, r2]
@@ -1974,7 +1974,7 @@ ov108_021E6850: ; 0x021E6850
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #2
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	mov r2, #0
 	add r0, r4, #0
 	mov r1, #3
@@ -3454,47 +3454,47 @@ _021E73A4:
 	sub r1, #0x10
 	ldr r0, [r5, r1]
 	mov r1, #3
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	mov r0, #0xd9
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	mov r0, #0xda
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	mov r0, #0x36
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	mov r0, #0x36
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #5
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	mov r0, #0xd5
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	mov r0, #0x36
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	mov r0, #0xd7
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add r0, r5, #0
 	bl ov108_021E756C
 	add sp, #0x14

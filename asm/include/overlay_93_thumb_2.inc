@@ -29,7 +29,7 @@
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public ManagedSprite_GetPositionXYWithSubscreenOffset
 .public ManagedSprite_OffsetPositionXY
-.public UnkImageStruct_AddSpritePrecisePositionXY
+.public ManagedSprite_AddSpritePrecisePositionXY
 .public ManagedSprite_SetAffineOverwriteMode
 .public ManagedSprite_SetAffineScale
 .public ManagedSprite_SetOamMode

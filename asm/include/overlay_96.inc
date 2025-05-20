@@ -119,8 +119,8 @@
 .public ManagedSprite_SetAnimateFlag
 .public ManagedSprite_SetAnimSpeed
 .public ManagedSprite_IsAnimated
-.public UnkImageStruct_ResetSpriteAnimCtrlState
-.public SpriteSetDrawFlag
+.public ManagedSprite_ResetSpriteAnimCtrlState
+.public thunk_Sprite_SetDrawFlag
 .public ManagedSprite_SetDrawFlag
 .public ManagedSprite_GetDrawFlag
 .public ManagedSprite_SetPaletteOverride

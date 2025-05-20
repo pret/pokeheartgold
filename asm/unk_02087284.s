@@ -291,7 +291,7 @@ _020874D6:
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	ldr r1, [sp, #0x28]
-	bl UnkImageStruct_AddSpritePrecisePositionXY
+	bl ManagedSprite_AddSpritePrecisePositionXY
 	b _02087626
 _020874EE:
 	ldr r0, [r5, #0x2c]

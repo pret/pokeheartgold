@@ -964,7 +964,7 @@ _022668F8:
 	ldr r0, _02266A48 ; =0x000005D8
 	ldr r0, [r5, r0]
 	ldr r0, [r0]
-	bl GetSpriteDrawFlag
+	bl thunk_Sprite_GetDrawFlag
 	cmp r0, #0
 	beq _0226690C
 	ldrb r0, [r4, #2]
@@ -1229,7 +1229,7 @@ _02266AF4:
 	mov r1, #1
 	ldr r0, [r4, r0]
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, r7
@@ -1248,7 +1248,7 @@ _02266B1C:
 	ldr r0, [r5, r6]
 	add r1, r7, #0
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6
@@ -1282,11 +1282,11 @@ _02266B54:
 	ldr r0, [r5, r7]
 	mov r1, #0
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldr r0, [r5, r6]
 	mov r1, #0
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #6

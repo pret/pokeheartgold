@@ -1607,7 +1607,7 @@ FrtCmd_047: ; 0x0222C9A4
 _0222C9C8:
 	ldr r0, [r4]
 	mov r1, #1
-	bl SetSpriteFlipMode
+	bl thunk_Sprite_SetFlipMode
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end FrtCmd_047
@@ -1637,11 +1637,11 @@ _0222CA02:
 	ldr r0, [r4]
 	bne _0222CA10
 	mov r1, #0
-	bl SetSpriteOamMode
+	bl thunk_Sprite_SetOamMode
 	b _0222CA16
 _0222CA10:
 	mov r1, #1
-	bl SetSpriteOamMode
+	bl thunk_Sprite_SetOamMode
 _0222CA16:
 	mov r0, #0
 	pop {r4, r5, r6, pc}

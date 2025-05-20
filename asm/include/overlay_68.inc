@@ -57,7 +57,7 @@
 .public Sprite_DeleteAndFreeResources
 .public ManagedSprite_SetAnim
 .public ManagedSprite_SetAnimateFlag
-.public UnkImageStruct_ResetSpriteAnimCtrlState
+.public ManagedSprite_ResetSpriteAnimCtrlState
 .public ManagedSprite_SetAnimationFrame
 .public ManagedSprite_SetDrawFlag
 .public ManagedSprite_SetPaletteOverride

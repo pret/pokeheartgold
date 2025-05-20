@@ -262,7 +262,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00032, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
@@ -276,7 +276,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     } else if (partyMenu->args->context != PARTY_MENU_CONTEXT_10) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     } else {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
     }
     sub_0207A89C(partyMenu);
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
@@ -499,7 +499,7 @@ static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu) {
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_1;
             return PARTY_MENU_STATE_BEGIN_EXIT;
         } else {
-            SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+            thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
             return PartyMenu_HandleSetMonCapsule(partyMenu);
         }
     }
@@ -509,7 +509,7 @@ static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu) {
 static int PartyMenu_Subtask_UseItemSelectMon(PartyMenu *partyMenu) {
     u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         return PartyMenu_HandleUseItemOnMon(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -522,7 +522,7 @@ static int PartyMenu_Subtask_UseItemSelectMon(PartyMenu *partyMenu) {
 static int PartyMenu_Subtask_GiveItemSelectMon(PartyMenu *partyMenu) {
     u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         return PartyMenu_Subtask_GiveItemToMon(partyMenu);
     } else if (x == 3) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
@@ -543,7 +543,7 @@ static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenu *partyMenu) {
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return PARTY_MENU_STATE_1;
     default: {
         int result;
@@ -590,7 +590,7 @@ static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenu *partyMenu) {
 static int PartyMenu_Subtask_UseTMHM(PartyMenu *partyMenu) {
     u8 x = PartyMenu_GiveOrUseItemOnMon_HandleInput(partyMenu);
     if (x == 0 || x == 2) {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg != 1) {
             return PartyMenu_HandleUseTMHMonMon(partyMenu);
         } else {
@@ -1609,7 +1609,7 @@ static void sub_0207AFC4(PartyMenu *partyMenu) {
     FreeToHeapExplicit(HEAP_ID_PARTY_MENU, buf);
     sub_0207D1C8(partyMenu);
     PartyMenu_PrintMessageOnWindow33(partyMenu, -1, TRUE);
-    SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+    thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
 }
 
 static u8 sub_0207B0B0(PartyMenu *partyMenu, u8 *buf) {
@@ -2162,7 +2162,7 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenu *partyMenu, int *
         } else {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
         }
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return TRUE;
     case LIST_NOTHING_CHOSEN:
         break;
@@ -2187,7 +2187,7 @@ static int PartyMenu_SoftboiledTryTargetCheck(PartyMenu *partyMenu) {
     switch (PartyMenu_SoftboiledTargetCheck(partyMenu)) {
     case 0:
         PlaySE(SEQ_SE_DP_KAIFUKU);
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         if (partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp < partyMenu->levelUpStatsTmp[0]) {
             partyMenu->levelUpStatsTmp[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
         }
@@ -2264,7 +2264,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
     }
     case 1:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00037, TRUE);
         partyMenu->levelUpStatsTmp[1] = 0;
         break;
@@ -2291,7 +2291,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
         break;
     case 4:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         sub_0207FBC8(partyMenu);
         return PARTY_MENU_STATE_1;
     }
@@ -2304,7 +2304,7 @@ static u8 PartyMenu_SoftboiledTargetCheck(PartyMenu *partyMenu) {
         return 2;
     }
     if (partyMenu->partyMonIndex == partyMenu->softboiledDonorSlot || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0 || partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp) {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00120, TRUE);
         partyMenu->levelUpStatsTmp[1] = 1;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
@@ -2620,7 +2620,7 @@ static int PartyMenu_SwitchItemsDeclined(PartyMenu *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         partyMenu->args->context = PARTY_MENU_CONTEXT_0;
         return PARTY_MENU_STATE_1;
     } else {
@@ -2664,7 +2664,7 @@ static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenu *partyMenu) {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     } else {
-        SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00179, TRUE);
         partyMenu->yesCallback = PartyMenu_ConfirmRemoveCapsuleYes;
         partyMenu->noCallback = PartyMenu_ConfirmRemoveCapsuleNo;

@@ -3219,7 +3219,7 @@ _021E7150:
 	ldr r0, [r4, #0x10]
 	bne _021E7184
 	add r1, r5, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldrb r0, [r4]
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1f
@@ -3227,13 +3227,13 @@ _021E7150:
 	bne _021E71AC
 	ldr r0, [r4, #0x14]
 	add r1, r5, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldr r0, [r4, #0x18]
 	add r1, r5, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldr r0, [r4, #0x1c]
 	add r1, r5, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	b _021E71AC
 _021E7184:
 	add r1, r5, #0
@@ -3632,7 +3632,7 @@ _021E7420:
 	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl SetSpriteAnimationFlag
+	bl thunk_Sprite_SetAnimationFlag
 	pop {r4, r5, r6, pc}
 _021E7450:
 	mov r6, #0
@@ -3641,7 +3641,7 @@ _021E7452:
 	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl SetSpriteAnimationFlag
+	bl thunk_Sprite_SetAnimationFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -3652,7 +3652,7 @@ _021E746A:
 	lsr r0, r0, #0x1f
 	bne _021E7480
 	ldr r0, [r4, #0x10]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl ManagedSprite_SetAnimateFlag
@@ -3661,7 +3661,7 @@ _021E7480:
 	mov r6, #0
 _021E7482:
 	ldr r0, [r4, #0x10]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
 	bl ManagedSprite_SetAnimateFlag

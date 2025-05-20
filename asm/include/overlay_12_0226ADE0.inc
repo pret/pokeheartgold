@@ -14,7 +14,7 @@
 .public SpriteManager_UnloadAnimObjById
 .public Sprite_DeleteAndFreeResources
 .public Sprite_TickFrame
-.public SpriteSetDrawFlag
+.public thunk_Sprite_SetDrawFlag
 .public ManagedSprite_SetPositionXY
 .public ManagedSprite_GetPositionXY
 .public ManagedSprite_SetOamMode

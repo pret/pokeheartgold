@@ -30775,7 +30775,7 @@ _021F51FA:
 	ldr r1, [r4]
 	ldr r0, _021F5234 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -30829,7 +30829,7 @@ _021F5266:
 	ldr r1, [r4]
 	ldr r0, _021F52A0 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -30882,7 +30882,7 @@ _021F52D0:
 	ldr r1, [r4]
 	ldr r0, _021F530C ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -30936,7 +30936,7 @@ _021F533C:
 	ldr r1, [r4]
 	ldr r0, _021F5378 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -30990,7 +30990,7 @@ _021F53A8:
 	ldr r1, [r4]
 	ldr r0, _021F53E4 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -31044,7 +31044,7 @@ _021F5414:
 	ldr r1, [r4]
 	ldr r0, _021F5450 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -31098,7 +31098,7 @@ _021F5480:
 	ldr r1, [r4]
 	ldr r0, _021F54BC ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl ov18_021F5000
@@ -31338,7 +31338,7 @@ _021F5660:
 	ldr r1, [r5]
 	ldr r0, _021F56D8 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r1, r4, #0
@@ -31425,7 +31425,7 @@ _021F5712:
 	ldr r1, [r4]
 	ldr r0, _021F57B0 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -31531,7 +31531,7 @@ _021F57EA:
 	ldr r1, [r4]
 	ldr r0, _021F5888 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -31637,7 +31637,7 @@ _021F58C2:
 	ldr r1, [r4]
 	ldr r0, _021F5960 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -31743,7 +31743,7 @@ _021F599A:
 	ldr r1, [r4]
 	ldr r0, _021F5A38 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -31849,7 +31849,7 @@ _021F5A72:
 	ldr r1, [r4]
 	ldr r0, _021F5B10 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -31955,7 +31955,7 @@ _021F5B4A:
 	ldr r1, [r4]
 	ldr r0, _021F5BE8 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -32061,7 +32061,7 @@ _021F5C22:
 	ldr r1, [r4]
 	ldr r0, _021F5CC0 ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -32168,7 +32168,7 @@ _021F5CFC:
 	ldr r1, [r4]
 	ldr r0, _021F5DBC ; =0x0000068C
 	ldr r0, [r1, r0]
-	bl sub_0200E0AC
+	bl ManagedSprite_GetRotation
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0

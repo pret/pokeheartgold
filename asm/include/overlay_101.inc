@@ -59,8 +59,8 @@
 .public thunk_Sprite_Delete
 .public SpriteSystem_CreateSpriteFromResourceHeader
 .public SpriteManager_FindPlttResourceProxy
-.public SetSpritePriority
-.public SetSpriteDrawPriority
+.public thunk_Sprite_SetPriority
+.public thunk_Sprite_SetDrawPriority
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
 .public SpriteManager_GetSpriteList

@@ -43,8 +43,8 @@
 .public Sprite_TickFrame
 .public ManagedSprite_TickFrame
 .public ManagedSprite_SetAnim
-.public SpriteSetDrawFlag
-.public GetSpriteDrawFlag
+.public thunk_Sprite_SetDrawFlag
+.public thunk_Sprite_GetDrawFlag
 .public Sprite_SetPositionXYWithSubscreenOffset
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public Sprite_OffsetPositionXY

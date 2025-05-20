@@ -2828,7 +2828,7 @@ _021E9EC2:
 	ldr r0, _021E9F00 ; =0x00000444
 	mov r1, #1
 	ldr r0, [r6, r0]
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E9EF8: .word ov108_021EAC48

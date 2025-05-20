@@ -447,8 +447,8 @@ void sub_0207ECE0(PartyMenu *partyMenu, u8 partySlot) {
         GXS_LoadOBJ(pCharData->pRawData, subImageLocation, pCharData->szByte);
     }
     FreeToHeap(ncgrFile);
-    SetSpritePaletteOverride(partyMenu->monsDrawState[partySlot].iconSprite, GetMonIconPaletteEx(species, form, FALSE) + 3);
-    SetSpritePaletteOverride(partyMenu->monsDrawState[partySlot].mainScreenIconSprite, GetMonIconPaletteEx(species, form, FALSE) + 1);
+    thunk_Sprite_SetPaletteOverride(partyMenu->monsDrawState[partySlot].iconSprite, GetMonIconPaletteEx(species, form, FALSE) + 3);
+    thunk_Sprite_SetPaletteOverride(partyMenu->monsDrawState[partySlot].mainScreenIconSprite, GetMonIconPaletteEx(species, form, FALSE) + 1);
     NARC_Delete(narc);
 }
 
@@ -614,7 +614,7 @@ void sub_0207F240(PartyMenu *partyMenu, u8 partySlot, int selected) {
     Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
     Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sp1, sp0);
-    SetSpritePaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], selected);
+    thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], selected);
 }
 
 void sub_0207F2A8(PartyMenu *partyMenu, s16 x, s16 y) {

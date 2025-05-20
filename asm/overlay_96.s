@@ -19418,7 +19418,7 @@ ov96_021EEA94: ; 0x021EEA94
 	mov r1, #0
 	add r6, r0, #0
 	add r4, r2, #0
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldr r1, [sp, #0xc]
 	mov r0, #0x51
 	bl NARC_New
@@ -19507,7 +19507,7 @@ _021EEB5A:
 	bl NARC_Delete
 	add r0, r6, #0
 	mov r1, #1
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -74484,7 +74484,7 @@ _0220A1CC:
 	cmp r0, #0
 	bne _0220A1E4
 	ldr r0, [r5, #0xc]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
@@ -76627,7 +76627,7 @@ _0220B2A0:
 	add r1, r7, #0
 	bl ManagedSprite_SetPositionXY
 	ldr r0, [r5]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r5]
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
@@ -77608,7 +77608,7 @@ _0220B9C6: ; jump table
 	.short _0220BD10 - _0220B9C6 - 2 ; case 6
 _0220B9D4:
 	ldr r0, [r4, #0x1c]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x1c]
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
@@ -77642,7 +77642,7 @@ _0220BA02:
 	b _0220BD1E
 _0220BA1A:
 	ldr r0, [r4, #0x20]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x20]
 	mov r1, #0
 	bl ManagedSprite_SetAnimateFlag
@@ -77938,7 +77938,7 @@ _0220BC56:
 	mov r1, #1
 	bl ManagedSprite_SetAnimateFlag
 	ldr r0, [r4, #0x1c]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r1, [r4, #0x44]
 	ldr r0, _0220BD28 ; =0xFFFF03FF
 	add r2, r1, #0
@@ -78570,7 +78570,7 @@ _0220C17A: ; jump table
 _0220C188:
 	ldr r5, [r4, #0x2c]
 	add r0, r5, #0
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	add r0, r5, #0
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
@@ -78763,7 +78763,7 @@ _0220C2DA:
 	mov r1, #1
 	bl ManagedSprite_SetAnimateFlag
 	ldr r0, [r4, #0x2c]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r2, [r4, #0x38]
 	mov r1, #0x3c
 	add r0, r2, #0
@@ -82102,7 +82102,7 @@ _0220DBFA:
 	add r1, r7, #0
 	bl ManagedSprite_SetAnim
 	ldr r0, [r5, #0x14]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
@@ -82541,7 +82541,7 @@ _0220DF68:
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r5]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	add r0, r4, #0
 	mov r1, #0
 	bl ov96_0220D554
@@ -100022,7 +100022,7 @@ _0221679E:
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x10]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	mov r1, #0
 	mov r2, #2
 	mov r3, #0x1e
@@ -100370,7 +100370,7 @@ ov96_02216A54: ; 0x02216A54
 	lsl r3, r3, #0x10
 	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 	ldr r0, [r5, #0x10]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r5, #0xc]
 	mov r1, #0
 	bl ManagedSprite_SetDrawFlag
@@ -100903,7 +100903,7 @@ _02216E62:
 	lsl r3, r3, #0x10
 	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 	ldr r0, [r4, #0x14]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [r4, #0x14]
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
@@ -101296,7 +101296,7 @@ _02217174:
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x10]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	ldr r0, [sp, #0xc]
 	bl ov96_021E5F24
 	cmp r6, r0

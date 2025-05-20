@@ -595,7 +595,7 @@ _0226B240:
 	strh r1, [r4, #0x18]
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldrb r0, [r4, #0x1a]
 	add r0, r0, #1
 	strb r0, [r4, #0x1a]
@@ -1344,7 +1344,7 @@ _0226B808:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add r0, r5, #0
 	bl SysTask_Destroy
 	mov r0, #0
@@ -1395,7 +1395,7 @@ _0226B86C:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0]
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	add r0, r5, #0
 	bl SysTask_Destroy
 	mov r0, #0

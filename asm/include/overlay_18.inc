@@ -115,7 +115,7 @@
 .public ManagedSprite_SetAffineScale
 .public ManagedSprite_SetAffineZRotation
 .public ManagedSprite_OffsetAffineZRotation
-.public sub_0200E0AC
+.public ManagedSprite_GetRotation
 .public ManagedSprite_SetAffineTranslation
 .public ManagedSprite_SetOamMode
 .public SysTask_CreateOnMainQueue

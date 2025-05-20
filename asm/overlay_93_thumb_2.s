@@ -650,7 +650,7 @@ _022600B6:
 	mov r2, #5
 	ldr r0, [r4, #0x10]
 	lsl r2, r2, #0xc
-	bl UnkImageStruct_AddSpritePrecisePositionXY
+	bl ManagedSprite_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
@@ -675,7 +675,7 @@ _022600EC:
 	ldr r1, _02260270 ; =0xFFFFB000
 	add r2, r7, #0
 	sub r6, #0xcc
-	bl UnkImageStruct_AddSpritePrecisePositionXY
+	bl ManagedSprite_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
@@ -699,7 +699,7 @@ _02260120:
 	ldr r0, [r4, #0x10]
 	ldr r2, _02260270 ; =0xFFFFB000
 	sub r6, #0xa4
-	bl UnkImageStruct_AddSpritePrecisePositionXY
+	bl ManagedSprite_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
@@ -726,7 +726,7 @@ _02260152:
 	mov r1, #5
 	ldr r0, [r4, #0x10]
 	lsl r1, r1, #0xc
-	bl UnkImageStruct_AddSpritePrecisePositionXY
+	bl ManagedSprite_AddSpritePrecisePositionXY
 	add r1, sp, #8
 	mov r3, #0x16
 	ldr r0, [r4, #0x10]
@@ -5392,7 +5392,7 @@ _02262552:
 	ldr r0, [r5]
 	ldr r1, [r5, #8]
 	neg r2, r2
-	bl UnkImageStruct_AddSpritePrecisePositionXY
+	bl ManagedSprite_AddSpritePrecisePositionXY
 	ldr r0, [r5]
 	ldr r0, [r0]
 	bl Sprite_TickFrame

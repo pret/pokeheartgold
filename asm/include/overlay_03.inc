@@ -32,7 +32,7 @@
 .public BufferIntegerAsString
 .public BufferSafariZoneObjectName
 .public StringExpandPlaceholders
-.public SetSpritePaletteOverride
+.public thunk_Sprite_SetPaletteOverride
 .public Sprite_SetPositionXY
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy

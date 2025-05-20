@@ -9,8 +9,8 @@
 .public SpriteSystem_Free
 .public sub_0200D294
 .public SpriteSystem_CreateSpriteFromResourceHeader
-.public SpriteSetDrawFlag
-.public SetSpritePaletteOverride
+.public thunk_Sprite_SetDrawFlag
+.public thunk_Sprite_SetPaletteOverride
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
 .public SpriteSystem_ReplaceCharResObj

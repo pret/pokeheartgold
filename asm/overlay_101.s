@@ -2322,7 +2322,7 @@ _021E88EA:
 	bl Sprite_SetPositionXY
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	add r6, r6, #1
 	add r4, #0x28
 	cmp r6, #4
@@ -2344,7 +2344,7 @@ _021E88EA:
 	mov r1, #0
 	add r0, #0xc0
 	ldr r0, [r0]
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r1, [r5, #0x10]
 	ldr r2, _021E8A7C ; =ov101_021F7E08
 	add r0, r1, #0
@@ -11060,7 +11060,7 @@ _021ECCF4:
 	mul r0, r4
 	add r0, r7, r0
 	ldr r0, [r0, #0x20]
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	ldr r0, _021ECE4C ; =0x00000947
 	bl PlaySE
 	mov r0, #0
@@ -11107,7 +11107,7 @@ _021ECD3C:
 	add r0, r7, r0
 	ldr r0, [r0, #0x20]
 	mov r1, #1
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	b _021ECDF4
 _021ECD92:
 	ldr r0, _021ECE44 ; =0x00000139
@@ -11151,7 +11151,7 @@ _021ECD92:
 	add r0, r7, r0
 	ldr r0, [r0, #0x20]
 	mov r1, #1
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	lsl r0, r6, #4
 	add r0, r5, r0
 	ldr r0, [r0, #0x44]
@@ -11417,7 +11417,7 @@ _021ECFA6:
 	add r0, r0, r1
 	ldr r0, [r0, #0x20]
 	mov r1, #4
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	mov r1, #0x4f
 	lsl r1, r1, #2
 	ldrb r2, [r4, r1]
@@ -11494,7 +11494,7 @@ _021ED044:
 	add r0, r0, r1
 	ldr r0, [r0, #0x20]
 	mov r1, #4
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	mov r1, #0x4f
 	lsl r1, r1, #2
 	ldrb r2, [r4, r1]
@@ -11697,7 +11697,7 @@ ov101_021ED204: ; 0x021ED204
 	bl Sprite_SetPositionXY
 	ldr r0, [r5, r4]
 	mov r1, #4
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	pop {r3, r4, r5, r6, r7, pc}
 _021ED25C:
 	sub r0, r1, #4
@@ -11732,7 +11732,7 @@ _021ED25C:
 	bl Sprite_SetPositionXY
 	ldr r0, [r5, r4]
 	mov r1, #4
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	mov r1, #4
 	add r2, r1, #0
 	add r6, #0x44
@@ -14013,7 +14013,7 @@ _021EE422:
 	bl Sprite_SetPositionXY
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	add r6, r6, #1
 	add r4, #0x28
 	cmp r6, #4
@@ -14035,7 +14035,7 @@ _021EE422:
 	mov r1, #0
 	add r0, #0xc0
 	ldr r0, [r0]
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r1, [r5, #0x10]
 	ldr r2, _021EE654 ; =ov101_021F80CC
 	add r0, r1, #0
@@ -14137,7 +14137,7 @@ _021EE54A:
 	bl Sprite_GetPositionXY
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r0, [r4, #0x20]
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -15533,7 +15533,7 @@ _021EF046:
 	bl SpriteSystem_CreateSpriteFromResourceHeader
 	str r0, [r5, #0x14]
 	mov r1, #1
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	bl Sprite_SetDrawFlag
@@ -15563,10 +15563,10 @@ _021EF082:
 	bl SpriteSystem_CreateSpriteFromResourceHeader
 	str r0, [r4, #0x14]
 	mov r1, #1
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r0, [r4, #0x14]
 	mov r1, #0
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl Sprite_SetDrawFlag
@@ -18516,7 +18516,7 @@ _021F0766:
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #1
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -18552,12 +18552,12 @@ _021F07B4:
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
 	mov r1, #0
-	bl SetSpriteDrawPriority
+	bl thunk_Sprite_SetDrawPriority
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
@@ -18597,7 +18597,7 @@ _021F07B4:
 	add r0, #0xbc
 	ldr r0, [r0]
 	mov r1, #0
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	add r0, r6, #0
 	add r0, #0xbc
 	ldr r0, [r0]
@@ -27946,7 +27946,7 @@ _021F4E8E:
 	bl SpriteSystem_CreateSpriteFromResourceHeader
 	str r0, [r5, #0x10]
 	mov r1, #1
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	bl Sprite_SetDrawFlag
@@ -27960,7 +27960,7 @@ _021F4E8E:
 	blt _021F4E8E
 	ldr r0, [r7, #0x20]
 	mov r1, #3
-	bl SetSpritePriority
+	bl thunk_Sprite_SetPriority
 	ldr r0, [r7, #0x20]
 	mov r1, #1
 	bl Sprite_SetDrawFlag

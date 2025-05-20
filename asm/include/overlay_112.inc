@@ -92,9 +92,9 @@
 .public ManagedSprite_GetActiveAnim
 .public ManagedSprite_SetAnimateFlag
 .public ManagedSprite_IsAnimated
-.public UnkImageStruct_ResetSpriteAnimCtrlState
+.public ManagedSprite_ResetSpriteAnimCtrlState
 .public ManagedSprite_SetAnimationFrame
-.public SpriteSetDrawFlag
+.public thunk_Sprite_SetDrawFlag
 .public ManagedSprite_SetDrawFlag
 .public ManagedSprite_GetDrawFlag
 .public ManagedSprite_SetPaletteOverride

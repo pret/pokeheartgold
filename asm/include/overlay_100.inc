@@ -55,11 +55,11 @@
 .public SpriteSystem_Free
 .public sub_0200D2A4
 .public Sprite_DeleteAndFreeResources
-.public SetSpriteAnimationFlag
+.public thunk_Sprite_SetAnimationFlag
 .public ManagedSprite_SetAnimateFlag
-.public UnkImageStruct_ResetSpriteAnimCtrlState
+.public ManagedSprite_ResetSpriteAnimCtrlState
 .public ManagedSprite_SetAnimationFrame
-.public SpriteSetDrawFlag
+.public thunk_Sprite_SetDrawFlag
 .public ManagedSprite_SetDrawFlag
 .public Sprite_SetPositionXY
 .public ManagedSprite_SetPositionXY

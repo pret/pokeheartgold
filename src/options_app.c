@@ -1033,7 +1033,7 @@ static void OptionsApp_FreeSpriteRenderer(OptionsApp_Data *data) {
 static void OptionsApp_SetupSprites(OptionsApp_Data *data) {
     for (u16 i = 0; i < NELEMS(data->sprites); i++) {
         data->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler, &ov54_021E6EAC[i]);
-        SetSpritePriority(data->sprites[i], 2);
+        thunk_Sprite_SetPriority(data->sprites[i], 2);
         Sprite_SetAnimActiveFlag(data->sprites[i], TRUE);
     }
 

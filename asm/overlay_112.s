@@ -22577,7 +22577,7 @@ _021F0E8E:
 	ldr r0, _021F0EB0 ; =0x000005DC
 	bl PlaySE
 	ldr r0, [r4, #0x78]
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -25067,7 +25067,7 @@ _021F21B8:
 	bl NARC_Delete
 	ldr r0, [sp, #0x1c]
 	mov r1, #1
-	bl SpriteSetDrawFlag
+	bl thunk_Sprite_SetDrawFlag
 	ldr r0, [sp, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #4]

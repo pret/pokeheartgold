@@ -57,8 +57,8 @@
 .public ManagedSprite_IsAnimated
 .public ManagedSprite_SetDrawFlag
 .public ManagedSprite_SetPositionXY
-.public SetSpriteFlipMode
-.public SetSpriteOamMode
+.public thunk_Sprite_SetFlipMode
+.public thunk_Sprite_SetOamMode
 .public SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy

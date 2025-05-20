@@ -3395,7 +3395,7 @@ ov68_021E7424: ; 0x021E7424
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r4, #1
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	b _021E7444
 _021E7442:
 	mov r4, #0
@@ -3432,7 +3432,7 @@ _021E746A:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r4, #1
-	bl UnkImageStruct_ResetSpriteAnimCtrlState
+	bl ManagedSprite_ResetSpriteAnimCtrlState
 	b _021E748E
 _021E748C:
 	mov r4, #0

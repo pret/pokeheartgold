@@ -685,7 +685,7 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
 }
 
 void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
-    SpriteSetDrawFlag(sprite, FALSE);
+    thunk_Sprite_SetDrawFlag(sprite, FALSE);
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapId);
     NNSG3dResFileHeader *header = NARC_AllocAndReadWholeMember(narc, narcMemberNum, heapId);
@@ -707,7 +707,7 @@ void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     FreeToHeap(header);
     NARC_Delete(narc);
 
-    SpriteSetDrawFlag(sprite, TRUE);
+    thunk_Sprite_SetDrawFlag(sprite, TRUE);
 }
 
 static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId) {
@@ -778,5 +778,5 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a
     FreeToHeap(header);
     NARC_Delete(narc);
 
-    SpriteSetDrawFlag(sprite, TRUE);
+    thunk_Sprite_SetDrawFlag(sprite, TRUE);
 }

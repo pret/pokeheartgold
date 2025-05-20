@@ -60,10 +60,10 @@
 .public SpriteSystem_CreateSpriteFromResourceHeader
 .public SpriteManager_FindPlttResourceProxy
 .public Sprite_DeleteAndFreeResources
-.public SpriteSetDrawFlag
-.public SetSpritePriority
+.public thunk_Sprite_SetDrawFlag
+.public thunk_Sprite_SetPriority
 .public ManagedSprite_SetPriority
-.public SetSpriteDrawPriority
+.public thunk_Sprite_SetDrawPriority
 .public Sprite_SetPositionXY
 .public ManagedSprite_SetPositionXY
 .public Sprite_OffsetPositionXY
