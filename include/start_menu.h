@@ -52,9 +52,9 @@ typedef struct StartMenuTaskData {
     u8 selectionToAction[10];
     u8 filler_044[0x190];
     SpriteList *spriteList;
-    GF_G2dRenderer g2dRenderer;
+    G2dRenderer g2dRenderer;
     GF_2DGfxResMan *gfxResMan[4];
-    GF_2DGfxResObj *gfxResObj[4];
+    SpriteResource *gfxResObj[4];
     SpriteResourcesHeader spriteResourcesHeader;
     Sprite *cursorSprite;
     u8 filler_348[0x4];

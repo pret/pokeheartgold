@@ -5,7 +5,7 @@
 #include "msgdata.h"
 #include "overlay_manager.h"
 #include "system.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 
 extern const OVY_MGR_TEMPLATE gApplication_MicTest;
 

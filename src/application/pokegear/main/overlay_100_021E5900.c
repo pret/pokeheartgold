@@ -148,9 +148,9 @@ BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1) {
     sp0[2] = time.minute / 10;
     sp0[3] = time.minute % 10;
     for (u8 i = 0; i < 4; i++) {
-        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[i + 5].unk_image_struct, sp0[i]);
+        ManagedSprite_SetAnimationFrame(pokegearApp->unk_098[i + 5].unk_image_struct, sp0[i]);
     }
-    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[4].unk_image_struct, date.week);
+    ManagedSprite_SetAnimationFrame(pokegearApp->unk_098[4].unk_image_struct, date.week);
     pokegearApp->unk_080 = time;
     pokegearApp->unk_007 = 0;
     return TRUE;
@@ -396,24 +396,24 @@ static void ov100_021E616C(PokegearAppData *pokegearApp) {
     pokegearApp->unk_098[10].unk_image_struct = ov100_021E6AC0(pokegearApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
     ov100_021E5BB0(pokegearApp, TRUE);
 
-    UnkImageStruct_SetSpriteAnimActiveFlag(pokegearApp->unk_098[9].unk_image_struct, TRUE);
+    ManagedSprite_SetAnimateFlag(pokegearApp->unk_098[9].unk_image_struct, TRUE);
     if (!MapHeader_CanPlacePhoneCalls(pokegearApp->args->mapID)) {
-        UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(pokegearApp->unk_098[10].unk_image_struct, 1);
+        ManagedSprite_SetAnimationFrame(pokegearApp->unk_098[10].unk_image_struct, 1);
     }
 
     for (int i = 0; i <= 3; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(pokegearApp->unk_098[i].unk_image_struct, FALSE);
-        UnkImageStruct_SetSpriteAnimActiveFlag(pokegearApp->unk_098[i].unk_image_struct, TRUE);
+        ManagedSprite_SetDrawFlag(pokegearApp->unk_098[i].unk_image_struct, FALSE);
+        ManagedSprite_SetAnimateFlag(pokegearApp->unk_098[i].unk_image_struct, TRUE);
     }
 
     for (int i = 4; i < 11; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(pokegearApp->unk_098[i].unk_image_struct, TRUE);
+        ManagedSprite_SetDrawFlag(pokegearApp->unk_098[i].unk_image_struct, TRUE);
     }
 }
 
 static void ov100_021E6338(PokegearAppData *pokegearApp) {
     for (int i = 0; i < 11; ++i) {
-        UnkImageStruct_SetSpriteVisibleFlag(pokegearApp->unk_098[i].unk_image_struct, FALSE);
+        ManagedSprite_SetDrawFlag(pokegearApp->unk_098[i].unk_image_struct, FALSE);
         ov100_021E6C44(pokegearApp->unk_098[i].unk_image_struct);
     }
     ov100_021E6A3C(pokegearApp->unk_094);

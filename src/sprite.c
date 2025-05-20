@@ -215,25 +215,25 @@ void Sprite_SetAffineMatrix(Sprite *sprite, VecFx32 *vec) {
     sprite->affineMatrix = *vec;
 }
 
-void Sprite_SetScale(Sprite *sprite, VecFx32 *vec) {
+void Sprite_SetAffineScale(Sprite *sprite, VecFx32 *vec) {
     sprite->scale = *vec;
 }
 
 void Sprite_SetScaleAndAffineType(Sprite *sprite, VecFx32 *vec, u8 affine) {
-    Sprite_SetScale(sprite, vec);
-    Sprite_SetAffineOverwriteType(sprite, affine);
+    Sprite_SetAffineScale(sprite, vec);
+    Sprite_SetAffineOverwriteMode(sprite, affine);
 }
 
-void Sprite_SetRotation(Sprite *sprite, u32 rotation) {
+void Sprite_SetAffineZRotation(Sprite *sprite, u32 rotation) {
     sprite->rotation = rotation;
 }
 
 void Sprite_SetRotationAndAffineType(Sprite *sprite, u32 rotation, u8 affine) {
-    Sprite_SetRotation(sprite, rotation);
-    Sprite_SetAffineOverwriteType(sprite, affine);
+    Sprite_SetAffineZRotation(sprite, rotation);
+    Sprite_SetAffineOverwriteMode(sprite, affine);
 }
 
-void Sprite_SetVisibleFlag(Sprite *sprite, BOOL flag) {
+void Sprite_SetDrawFlag(Sprite *sprite, BOOL flag) {
     GF_ASSERT(sprite != NULL);
     GF_ASSERT(flag < 2);
     sprite->drawFlag = flag;
@@ -250,12 +250,12 @@ void Sprite_SetAnimSpeed(Sprite *sprite, fx32 frame) {
     sprite->speed = frame;
 }
 
-void Sprite_SetAffineOverwriteType(Sprite *sprite, u8 affine) {
+void Sprite_SetAffineOverwriteMode(Sprite *sprite, u8 affine) {
     GF_ASSERT(sprite != NULL);
     sprite->affine = affine;
 }
 
-void Sprite_SetFlip_AffineOff(Sprite *sprite, u8 flip) {
+void Sprite_SetFlipMode(Sprite *sprite, u8 flip) {
     GF_ASSERT(sprite != NULL);
     sprite->flip = flip;
     sprite->affine = 0;
@@ -273,7 +273,7 @@ u16 Sprite_GetRotation(Sprite *sprite) {
     return sprite->rotation;
 }
 
-BOOL Sprite_GetVisibleFlag(Sprite *sprite) {
+BOOL Sprite_GetDrawFlag(Sprite *sprite) {
     return sprite->drawFlag;
 }
 
@@ -319,12 +319,12 @@ void Sprite_ResetAnimCtrlState(Sprite *sprite) {
         SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
         NNS_G2dResetAnimCtrlState(&animData->animation.animCtrl);
         NNS_G2dStartAnimCtrl(&animData->animation.animCtrl);
-        Sprite_SetAnimCtrlCurrentFrame(sprite, 0);
+        Sprite_SetAnimationFrame(sprite, 0);
     } else {
         SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
         NNS_G2dResetAnimCtrlState(&animData->animation.animCtrl);
         NNS_G2dStartAnimCtrl(&animData->animation.animCtrl);
-        Sprite_SetAnimCtrlCurrentFrame(sprite, 0);
+        Sprite_SetAnimationFrame(sprite, 0);
     }
 }
 
@@ -332,7 +332,7 @@ u16 Sprite_GetAnimationNumber(Sprite *sprite) {
     return sprite->animationNo;
 }
 
-void Sprite_TickAnimCtrlFrame(Sprite *sprite, fx32 frames) {
+void Sprite_UpdateAnim(Sprite *sprite, fx32 frames) {
     if (sprite->flag == SPRITE_ANIM_TYPE_CELL || sprite->flag == SPRITE_ANIM_TYPE_CELL_TRANSFER) {
         SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
         NNS_G2dTickCellAnimation(&animData->animation, frames);
@@ -342,7 +342,7 @@ void Sprite_TickAnimCtrlFrame(Sprite *sprite, fx32 frames) {
     }
 }
 
-void Sprite_SetAnimCtrlCurrentFrame(Sprite *sprite, u16 frameIndex) {
+void Sprite_SetAnimationFrame(Sprite *sprite, u16 frameIndex) {
     if (sprite->flag == SPRITE_ANIM_TYPE_CELL || sprite->flag == SPRITE_ANIM_TYPE_CELL_TRANSFER) {
         SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
         NNS_G2dSetCellAnimationCurrentFrame(&animData->animation, frameIndex);
@@ -352,7 +352,7 @@ void Sprite_SetAnimCtrlCurrentFrame(Sprite *sprite, u16 frameIndex) {
     }
 }
 
-u16 Sprite_GetAnimCtrlCurrentFrame(Sprite *sprite) {
+u16 Sprite_GetAnimationFrame(Sprite *sprite) {
     SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
     return NNS_G2dGetAnimCtrlCurrentFrame(&animData->animation.animCtrl);
 }
@@ -365,7 +365,7 @@ u8 Sprite_GetPriority(Sprite *sprite) {
     return sprite->priority;
 }
 
-void Sprite_SetPalIndex(Sprite *sprite, int index) {
+void Sprite_SetPaletteOverride(Sprite *sprite, int index) {
     GF_ASSERT(sprite != NULL);
     sprite->palIndex = index;
     sprite->overwrite |= NNS_G2D_RND_OVERWRITE_PLTTNO;
@@ -373,7 +373,7 @@ void Sprite_SetPalIndex(Sprite *sprite, int index) {
 }
 
 void Sprite_SetPalIndexRespectVramOffset(Sprite *sprite, int index) {
-    Sprite_SetPalIndex(sprite, index);
+    Sprite_SetPaletteOverride(sprite, index);
     sprite->palIndex += Sprite_GetPaletteVramOffset(&sprite->paletteProxy, sprite->type);
 }
 
@@ -438,7 +438,7 @@ NNS_G2D_VRAM_TYPE Sprite_GetVramType(Sprite *sprite) {
     return sprite->type;
 }
 
-int Sprite_IsCellAnimationRunning(Sprite *sprite) {
+int Sprite_IsAnimated(Sprite *sprite) {
     GF_ASSERT(sprite != NULL);
     SpriteAnimationData *animData = (SpriteAnimationData *)sprite->animationData;
     return NNS_G2dIsAnimCtrlActive(&animData->animation.animCtrl);
@@ -503,7 +503,7 @@ static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 
 
 u32 Sprite_GetCurrentAnimFrameExAttr(Sprite *sprite) {
     u32 animNum = Sprite_GetAnimationNumber(sprite);
-    u32 animFrame = Sprite_GetAnimCtrlCurrentFrame(sprite);
+    u32 animFrame = Sprite_GetAnimationFrame(sprite);
     return Sprite_GetExAttrByAnimSeqAndFrame(sprite, animNum, animFrame);
 }
 
@@ -647,7 +647,7 @@ static void SpriteList_DrawSprite_Inactive(SpriteList *spriteList, Sprite *sprit
 }
 
 static void Sprite_AnimFunc_Active(Sprite *sprite) {
-    Sprite_TickAnimCtrlFrame(sprite, sprite->speed);
+    Sprite_UpdateAnim(sprite, sprite->speed);
 }
 
 static void Sprite_AnimFunc_Inactive(Sprite *sprite) {

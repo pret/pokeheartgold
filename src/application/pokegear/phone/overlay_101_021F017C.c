@@ -374,7 +374,7 @@ void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
 }
 
 void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL shouldDim) {
-    Sprite_SetVisibleFlag(phoneApp->sprites[13], shouldDim);
+    Sprite_SetDrawFlag(phoneApp->sprites[13], shouldDim);
     FillWindowPixelBuffer(&phoneApp->windows[0], 0);
     FillWindowPixelBuffer(&phoneApp->windows[1], 0);
     if (shouldDim) {
@@ -473,24 +473,24 @@ void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
 void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
     int i;
     for (i = 0; i <= 5; ++i) {
-        phoneApp->sprites[i] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[i]);
+        phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[i]);
         thunk_Sprite_SetPriority(phoneApp->sprites[i], 1);
-        Sprite_SetVisibleFlag(phoneApp->sprites[i], FALSE);
+        Sprite_SetDrawFlag(phoneApp->sprites[i], FALSE);
         Sprite_SetAnimActiveFlag(phoneApp->sprites[i], TRUE);
     }
 
     for (i = 6; i <= 12; ++i) {
-        phoneApp->sprites[i] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[6]);
+        phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[6]);
         thunk_Sprite_SetPriority(phoneApp->sprites[i], 0);
         thunk_Sprite_SetDrawPriority(phoneApp->sprites[i], 0);
-        Sprite_SetVisibleFlag(phoneApp->sprites[i], FALSE);
+        Sprite_SetDrawFlag(phoneApp->sprites[i], FALSE);
         Sprite_SetAnimActiveFlag(phoneApp->sprites[i], FALSE);
         Sprite_SetPositionXY(phoneApp->sprites[i], 12, (int)(i * 24) - 128);
     }
 
-    phoneApp->sprites[13] = SpriteRenderer_CreateSprite(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[7]);
+    phoneApp->sprites[13] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->gfxRenderer, phoneApp->pokegear->gfxHandler, &ov101_021F84E8[7]);
     thunk_Sprite_SetPriority(phoneApp->sprites[13], 0);
-    Sprite_SetVisibleFlag(phoneApp->sprites[13], FALSE);
+    Sprite_SetDrawFlag(phoneApp->sprites[13], FALSE);
     Sprite_SetAnimActiveFlag(phoneApp->sprites[13], FALSE);
 }
 

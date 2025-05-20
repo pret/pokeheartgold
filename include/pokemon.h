@@ -2,7 +2,7 @@
 #define POKEDIAMOND_POKEMON_H
 
 #include "pokemon_types_def.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 #include "unk_02016EDC.h"
 // Enums
 
@@ -150,7 +150,7 @@ u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 u8 GetMonPicHeightBySpeciesGenderForme_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId);
+struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId);
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
 u32 sub_02070D90(void);

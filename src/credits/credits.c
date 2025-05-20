@@ -62,10 +62,10 @@ typedef enum {
 } PageDisplayState;
 
 typedef struct {
-    GF_2DGfxResObj *charResObj;
-    GF_2DGfxResObj *plttResObj;
-    GF_2DGfxResObj *cellResObj;
-    GF_2DGfxResObj *cellAnmResObj;
+    SpriteResource *charResObj;
+    SpriteResource *plttResObj;
+    SpriteResource *cellResObj;
+    SpriteResource *cellAnmResObj;
 } CutsceneResources;
 
 typedef struct {
@@ -160,9 +160,9 @@ typedef struct {
     CreditsArgs *args;
     BOOL skipCredits;
     SpriteList *spriteList;
-    GF_G2dRenderer g2dRender;
+    G2dRenderer g2dRender;
     GF_2DGfxResMan *gf2dGfxResMan[4];
-    GF_2DGfxResObj *gf2dGfxResObj[4];
+    SpriteResource *gf2dGfxResObj[4];
     CutsceneResources cutsceneRsrs[UNIQUE_SPRITES_PER_CUTSCENE];
     SceneWork sceneWork;
     PageWork pageWork;
@@ -559,14 +559,14 @@ static void InitSprites(CreditsAppWork *work) {
         ptr->pokemon[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->pokemon[i] != NULL);
         Sprite_SetAnimActiveFlag(ptr->pokemon[i], TRUE);
-        Sprite_SetVisibleFlag(ptr->pokemon[i], TRUE);
+        Sprite_SetDrawFlag(ptr->pokemon[i], TRUE);
         Sprite_SetAnimCtrlSeq(ptr->pokemon[i], 6);
 
         tmpl.priority = 0;
         ptr->cloud[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->cloud[i] != NULL);
         Sprite_SetAnimActiveFlag(ptr->cloud[i], TRUE);
-        Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
+        Sprite_SetDrawFlag(ptr->cloud[i], FALSE);
         Sprite_SetAnimCtrlSeq(ptr->cloud[i], 7);
     }
 
@@ -585,13 +585,13 @@ static void InitSprites(CreditsAppWork *work) {
         u8 idx = i + MONS_PER_SCREEN;
         ptr->pokemon[idx] = Sprite_CreateAffine(&tmpl);
         Sprite_SetAnimActiveFlag(ptr->pokemon[idx], TRUE);
-        Sprite_SetVisibleFlag(ptr->pokemon[idx], TRUE);
+        Sprite_SetDrawFlag(ptr->pokemon[idx], TRUE);
         Sprite_SetAnimCtrlSeq(ptr->pokemon[idx], 6);
 
         tmpl.priority = 0;
         ptr->cloud[idx] = Sprite_CreateAffine(&tmpl);
         Sprite_SetAnimActiveFlag(ptr->cloud[idx], TRUE);
-        Sprite_SetVisibleFlag(ptr->cloud[idx], FALSE);
+        Sprite_SetDrawFlag(ptr->cloud[idx], FALSE);
         Sprite_SetAnimCtrlSeq(ptr->cloud[idx], 7);
     }
 
@@ -726,7 +726,7 @@ static void HandleSceneTransition(CreditsAppWork *work) {
         break;
     case SCENE_TRANS_CLOUDS_APPEAR:
         for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-            Sprite_SetVisibleFlag(ptr->cloud[i], TRUE);
+            Sprite_SetDrawFlag(ptr->cloud[i], TRUE);
             Sprite_SetAnimCtrlSeq(ptr->cloud[i], 7);
         }
         ptr->transition.timer = 0;
@@ -761,7 +761,7 @@ static void HandleSceneTransition(CreditsAppWork *work) {
     case SCENE_TRANS_CLOUDS_DISSIPATE:
         if (++ptr->transition.timer >= 30) {
             for (u8 i = 0; i < TOTAL_DANCING_MONS; i++) {
-                Sprite_SetVisibleFlag(ptr->cloud[i], FALSE);
+                Sprite_SetDrawFlag(ptr->cloud[i], FALSE);
             }
             ptr->transition.timer = 0;
             ptr->transition.state = SCENE_TRANS_NONE;
@@ -795,7 +795,7 @@ static void HandleCutscenes(CreditsAppWork *work) {
         if (work->timer == cutsceneSprites->sprite[i].activateTime) {
             ActivateSprite(cutsceneSprites->sprite[i].sprite);
         }
-        if (Sprite_IsCellAnimationRunning(cutsceneSprites->sprite[i].sprite) == 0) {
+        if (Sprite_IsAnimated(cutsceneSprites->sprite[i].sprite) == 0) {
             count++;
         }
     }
@@ -808,7 +808,7 @@ static void HandleCutscenes(CreditsAppWork *work) {
 
 static void ActivateSprite(Sprite *sprite) {
     Sprite_SetAnimActiveFlag(sprite, TRUE);
-    Sprite_SetVisibleFlag(sprite, TRUE);
+    Sprite_SetDrawFlag(sprite, TRUE);
 }
 
 // Marks the scene transition for the SysTask callback.
@@ -927,10 +927,10 @@ static void LoadPage(PageWork *ptr) {
 static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
-        GF_2DGfxResObj *charResObj = work->cutsceneRsrs[i].charResObj;
-        GF_2DGfxResObj *plttResObj = work->cutsceneRsrs[i].plttResObj;
+        SpriteResource *charResObj = work->cutsceneRsrs[i].charResObj;
+        SpriteResource *plttResObj = work->cutsceneRsrs[i].plttResObj;
         NNSG2dImageProxy *imageProxy = sub_0200AF00(charResObj);
-        NNSG2dImagePaletteProxy *plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, imageProxy);
+        NNSG2dImagePaletteProxy *plttProxy = SpriteTransfer_GetPaletteProxy(plttResObj, imageProxy);
 
         cutsceneWork->spriteGfx[i].imageProxy = imageProxy;
         cutsceneWork->spriteGfx[i].plttProxy = plttProxy;
@@ -1013,7 +1013,7 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
     GF_ASSERT(sprite != NULL);
 
     Sprite_SetAnimActiveFlag(cutsceneSprite->sprite, FALSE);
-    Sprite_SetVisibleFlag(cutsceneSprite->sprite, FALSE);
+    Sprite_SetDrawFlag(cutsceneSprite->sprite, FALSE);
     Sprite_SetAnimCtrlSeq(cutsceneSprite->sprite, spriteParam->animSeqNo);
     cutsceneSprite->activateTime = spriteParam->activateTime;
     sprites->count++;

@@ -37,7 +37,7 @@
 .public StringExpandPlaceholders
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
-.public Sprite_AddPositionXY
+.public Sprite_OffsetPositionXY
 .public SysTask_CreateOnMainQueue
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
@@ -126,7 +126,7 @@
 .public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimSpeed
 .public Sprite_SetAnimCtrlSeq

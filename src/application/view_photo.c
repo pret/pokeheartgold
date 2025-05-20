@@ -385,7 +385,7 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
     UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapId);
     for (int i = 0; i < 3; ++i) {
         viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->spriteRender, &ov19_0225A0C4[i]);
-        Sprite_SetVisibleFlag(viewPhoto->sprites[i], TRUE);
+        Sprite_SetDrawFlag(viewPhoto->sprites[i], TRUE);
         Sprite_SetAnimActiveFlag(viewPhoto->sprites[i], TRUE);
     }
     if (viewPhoto->scrollData.curPhoto == 0) {
@@ -416,7 +416,7 @@ static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto
 }
 
 static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto) {
-    return !Sprite_IsCellAnimationRunning(viewPhoto->sprites[viewPhoto->animSpriteNo]);
+    return !Sprite_IsAnimated(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
 static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {

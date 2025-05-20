@@ -134,7 +134,7 @@ _021E894E:
 	mov r0, #0x11
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 	mov r0, #0xce
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1521,16 +1521,16 @@ _021E945A:
 	ldr r0, _021E9480 ; =0x0000044C
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x45
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _021E9484 ; =0x00000444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E947C: .word 0x00000494
@@ -2000,7 +2000,7 @@ _021E97F4:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E9800
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 _021E9800:
 	bl GF_RunVramTransferTasks
 	ldr r0, _021E9824 ; =0x00000438
@@ -2732,17 +2732,17 @@ ov108_021E9E10: ; 0x021E9E10
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	ldr r1, _021E9E70 ; =0x0000043C
 	ldr r2, _021E9E74 ; =ov108_021EAAD0
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	ldr r1, _021E9E78 ; =ov108_021EABA8
 	mov r3, #1
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r0, _021E9E70 ; =0x0000043C
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	mov r1, #0x11
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2750,7 +2750,7 @@ ov108_021E9E10: ; 0x021E9E10
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	mov r2, #4
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	mov r3, #0
 	ldr r1, _021E9E70 ; =0x0000043C
 	str r3, [sp]
@@ -2780,10 +2780,10 @@ ov108_021E9E80: ; 0x021E9E80
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl SpriteRenderer_RemoveGfxHandler
+	bl SpriteSystem_DestroySpriteManager
 	ldr r0, _021E9EB4 ; =0x0000043C
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	ldr r0, _021E9EB4 ; =0x0000043C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -2813,13 +2813,13 @@ _021E9EC2:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, r1]
 	add r2, r4, #0
-	bl SpriteRenderer_CreateSprite
+	bl SpriteSystem_CreateSpriteFromResourceHeader
 	ldr r1, _021E9F00 ; =0x00000444
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r7, r7, #1
 	add r4, #0x28
 	add r5, r5, #4

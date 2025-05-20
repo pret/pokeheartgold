@@ -93,11 +93,11 @@
 .public SpriteList_Delete
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_CreateAffine
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority
-.public Sprite_SetPalIndex
+.public Sprite_SetPaletteOverride
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail

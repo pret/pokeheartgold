@@ -18,10 +18,10 @@ typedef struct IntroMovieScene1Data {
     u8 state;
     u8 needFreeGfx;
     u8 *skipAllowedPtr;
-    GF_2DGfxResObj *charResObj;
-    GF_2DGfxResObj *plttResObj;
-    GF_2DGfxResObj *cellResObj;
-    GF_2DGfxResObj *animResObj;
+    SpriteResource *charResObj;
+    SpriteResource *plttResObj;
+    SpriteResource *cellResObj;
+    SpriteResource *animResObj;
     Sprite *sunSprite;
     Sprite *birdSprite;
 } IntroMovieScene1Data;
@@ -46,7 +46,7 @@ typedef struct IntroMovieScene2Data {
     u8 needFreeGfx;
     u8 unk_002;
     u8 flowerIndex;
-    GF_2DGfxResObj *spriteGfxRes[2][4];
+    SpriteResource *spriteGfxRes[2][4];
     Sprite *ethanSprite0;
     Sprite *lyraSprite0;
     Sprite *ethanSprite1;
@@ -75,7 +75,7 @@ typedef struct IntroMovieScene3Data {
     NNSG2dScreenData *rivalGraphicSectionsScrnData[4];
     NNSG2dScreenData *rivalGraphicWholeScrnData;
     NNSG2dScreenData *beastGraphicScrnData[3];
-    GF_2DGfxResObj *spriteResObjs[2][4];
+    SpriteResource *spriteResObjs[2][4];
     Sprite *silverSilhouetteSprite;
     Sprite *eusineSprite;
     Sprite *unownSprites[3];
@@ -91,7 +91,7 @@ typedef struct IntroMovieScene4Data {
     u8 state;
     u8 needFreeGfx;
     u8 filler_002[2];
-    GF_2DGfxResObj *spriteResObjs[4][4];
+    SpriteResource *spriteResObjs[4][4];
     Sprite *hand1Sprite;
     Sprite *hand2Sprite;
     Sprite *sparklesSprite;
@@ -187,7 +187,7 @@ typedef struct IntroMovieOvyData {
     BOOL introSkipped;
     BgConfig *bgConfig;
     SpriteList *spriteList;
-    GF_G2dRenderer spriteRenderer;
+    G2dRenderer spriteRenderer;
     GF_2DGfxResMan *spriteResManagers[4];
     u32 savedLCRngSeed;
     IntroMovieScene1Data scene1Data;

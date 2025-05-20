@@ -189,8 +189,8 @@ void ov12_02237B6C(BattleSystem *bsys) {
     RemoveWindow(bsys->window);
     ov12_02238A30(bsys->bgConfig);
     ov12_02238A64(bsys);
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(bsys->spriteRenderer, bsys->gfxHandler);
-    SpriteRenderer_Delete(bsys->spriteRenderer);
+    SpriteSystem_FreeResourcesAndManager(bsys->spriteRenderer, bsys->gfxHandler);
+    SpriteSystem_Free(bsys->spriteRenderer);
     GF_DestroyVramTransferManager();
     FontID_Release(4);
 }
@@ -231,7 +231,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
     TextPrinter_SetDownArrowBaseTile(1);
     ov12_0223A620(bsys);
 
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(bsys->spriteRenderer), 0, FX32_CONST(272));
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(bsys->spriteRenderer), 0, FX32_CONST(272));
 }
 
 void ov12_02237CC4(BattleSystem *bsys) {

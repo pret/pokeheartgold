@@ -411,30 +411,30 @@ ov93_0225C768: ; 0x0225C768
 	add r0, r5, #0
 	bl ov93_0225CFC0
 	mov r0, #0x75
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	ldr r1, _0225CA68 ; =ov93_02262AA8
 	ldr r2, _0225CA6C ; =ov93_02262A7C
 	mov r3, #0x20
 	str r0, [r5, #0x24]
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r1, _0225CA70 ; =0x00100010
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
 	mov r0, #1
 	bl G2dRenderer_SetPlttTransferReservedRegion
 	ldr r0, [r5, #0x24]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	str r0, [r5, #0x28]
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r2, #0xe0
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	ldr r2, _0225CA74 ; =ov93_02262A90
-	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
+	bl SpriteSystem_InitManagerWithCapacities
 	ldr r0, [r5, #0x24]
-	bl SpriteRenderer_GetG2dRendererPtr
+	bl SpriteSystem_GetRenderer
 	mov r2, #0x16
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -569,7 +569,7 @@ ov93_0225C768: ; 0x0225C768
 	mov r0, #0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r5, #0x28]
-	bl sub_0200E2B0
+	bl SpriteManager_GetSpriteList
 	mov r1, #0x75
 	bl ov90_02258BD4
 	str r0, [r5, #0x1c]
@@ -1008,9 +1008,9 @@ _0225CD72:
 	bl sub_020135AC
 	ldr r0, [r4, #0x24]
 	ldr r1, [r4, #0x28]
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+	bl SpriteSystem_FreeResourcesAndManager
 	ldr r0, [r4, #0x24]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	add r0, #0x8c
@@ -1096,7 +1096,7 @@ ov93_0225CEA0: ; 0x0225CEA0
 	ldr r1, [r1]
 	bl ov93_0225EA50
 	bl GF_RunVramTransferTasks
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -1429,8 +1429,8 @@ ov93_0225D07C: ; 0x0225D07C
 _0225D18C:
 	bl sub_02015460
 	ldr r0, [r4, #0x28]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
-	bl SpriteRenderer_thunk_UpdateCellTransferStateManager
+	bl SpriteSystem_DrawSprites
+	bl SpriteSystem_UpdateTransfer
 	mov r0, #0
 	add r1, r0, #0
 	bl RequestSwap3DBuffers
@@ -2179,7 +2179,7 @@ ov93_0225D78C: ; 0x0225D78C
 	ldr r2, [r5, #0x24]
 	ldr r3, [r5, #0x28]
 	mov r1, #2
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -2333,7 +2333,7 @@ _0225D840:
 	ldr r0, [r0]
 	ldr r2, [r5, #0x24]
 	ldr r3, [r5, #0x28]
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -2344,7 +2344,7 @@ _0225D840:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x18
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225D9DC ; =0x00002712
@@ -2353,7 +2353,7 @@ _0225D840:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x1a
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225D9DC ; =0x00002712
@@ -2362,7 +2362,7 @@ _0225D840:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x19
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add r0, r5, #0
 	bl ov93_02262230
 	ldr r1, _0225D9D4 ; =0x000015A8
@@ -2384,7 +2384,7 @@ _0225D840:
 	ldr r0, [r0]
 	ldr r2, [r5, #0x24]
 	ldr r3, [r5, #0x28]
-	bl sub_0200D644
+	bl SpriteSystem_LoadPaletteBuffer
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -2395,7 +2395,7 @@ _0225D840:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x15
-	bl SpriteRenderer_LoadCharResObjFromNarcId
+	bl SpriteSystem_LoadCharResObj
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225D9E0 ; =0x00002711
@@ -2404,7 +2404,7 @@ _0225D840:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x16
-	bl SpriteRenderer_LoadCellResObjFromNarcId
+	bl SpriteSystem_LoadCellResObj
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225D9E0 ; =0x00002711
@@ -2413,7 +2413,7 @@ _0225D840:
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x17
-	bl SpriteRenderer_LoadAnimResObjFromNarcId
+	bl SpriteSystem_LoadAnimResObj
 	add r0, r5, #0
 	bl ov93_02262344
 	ldr r1, _0225D9E4 ; =0x0000174C
@@ -2495,7 +2495,7 @@ ov93_0225DA40: ; 0x0225DA40
 	ldr r0, [r0]
 	ldr r2, [r5, #0x24]
 	ldr r3, [r5, #0x28]
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -2506,7 +2506,7 @@ ov93_0225DA40: ; 0x0225DA40
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x14
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225DAE8 ; =0x00002714
@@ -2515,7 +2515,7 @@ ov93_0225DA40: ; 0x0225DA40
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x16
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225DAE8 ; =0x00002714
@@ -2524,7 +2524,7 @@ ov93_0225DA40: ; 0x0225DA40
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x15
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add r0, r5, #0
 	bl ov93_022609E0
 	ldr r1, _0225DAEC ; =0x00001458

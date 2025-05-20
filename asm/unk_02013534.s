@@ -371,7 +371,7 @@ _020137D8:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc
@@ -458,7 +458,7 @@ _02013868:
 	ldr r0, [r5]
 	add r1, r7, #0
 	ldr r0, [r0, r4]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	ldr r0, [r5, #4]
 	add r6, r6, #1
 	add r4, #0xc

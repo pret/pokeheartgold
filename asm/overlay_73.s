@@ -1083,7 +1083,7 @@ ov73_021E6184: ; 0x021E6184
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1118,7 +1118,7 @@ _021E6232:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -3727,7 +3727,7 @@ _021E76C8:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x36
 	mov r1, #2
 	lsl r0, r0, #4
@@ -5372,7 +5372,7 @@ _021E832A:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -9227,11 +9227,11 @@ ov73_021EA134: ; 0x021EA134
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _021EA158 ; =0x00000DD4
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _021EA154:
 	pop {r3, r4, r5, pc}
 	nop

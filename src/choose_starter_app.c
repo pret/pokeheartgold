@@ -137,12 +137,12 @@ struct ChooseStarterAnm {
 };
 
 struct StarterChooseMonObjResPtrs {
-    GF_2DGfxResObj *charResObj;
-    GF_2DGfxResObj *plttResObj;
-    GF_2DGfxResObj *cellResObj;
-    GF_2DGfxResObj *animResObj;
-    GF_2DGfxResObj *multiCellResObj;
-    GF_2DGfxResObj *multiCellAnmResObj;
+    SpriteResource *charResObj;
+    SpriteResource *plttResObj;
+    SpriteResource *cellResObj;
+    SpriteResource *animResObj;
+    SpriteResource *multiCellResObj;
+    SpriteResource *multiCellAnmResObj;
 };
 
 struct StarterChooseMonSpriteData {
@@ -157,7 +157,7 @@ struct StarterChooseMonSpriteData {
     void *plttDatas[3];
     struct PokepicTemplate pokepicTemplate;
     SpriteList *spriteList;
-    GF_G2dRenderer g2dRender;
+    G2dRenderer g2dRender;
     struct Sprite *sprites[3];
 };
 
@@ -1191,8 +1191,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
 }
 
 static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
-    GF_2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
-    GF_2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
+    SpriteResource *charResObj = SpriteResourceCollection_Find(charResMan, idx);
+    SpriteResource *plttResObj = SpriteResourceCollection_Find(plttResMan, idx);
     NNSG2dImageProxy *charProxy;
     const NNSG2dImagePaletteProxy *plttProxy;
     u32 imageloc;
@@ -1201,7 +1201,7 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     sub_0200ADA4(charResObj);
     sub_0200B00C(plttResObj);
     charProxy = sub_0200AF00(charResObj);
-    plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, charProxy);
+    plttProxy = SpriteTransfer_GetPaletteProxy(plttResObj, charProxy);
     imageloc = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     plttloc = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     DC_FlushRange(charData, 0xC80);
@@ -1232,19 +1232,19 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     pMonSpriteData->sprites[idx] = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
     Sprite_SetAnimCtrlSeq(pMonSpriteData->sprites[idx], 0);
-    Sprite_SetVisibleFlag(pMonSpriteData->sprites[idx], FALSE);
+    Sprite_SetDrawFlag(pMonSpriteData->sprites[idx], FALSE);
 }
 
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work) {
     setAllMonSpritesInvisible(&work->monSpriteData);
-    Sprite_SetVisibleFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
+    Sprite_SetDrawFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
 }
 
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        Sprite_SetVisibleFlag(a0->sprites[i], FALSE);
+        Sprite_SetDrawFlag(a0->sprites[i], FALSE);
     }
 }
 

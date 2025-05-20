@@ -13,9 +13,9 @@
 .public Sprite_SetMatrix
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_GetAnimationNumber
-.public Sprite_TickAnimCtrlFrame
-.public Sprite_SetAnimCtrlCurrentFrame
-.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_UpdateAnim
+.public Sprite_SetAnimationFrame
+.public Sprite_GetAnimationFrame
 .public GF_AssertFail
 .public String_Delete
 .public CopyStringToU16Array

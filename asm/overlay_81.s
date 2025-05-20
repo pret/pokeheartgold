@@ -10045,11 +10045,11 @@ ov81_02242D74: ; 0x02242D74
 
 	thumb_func_start ov81_02242D88
 ov81_02242D88: ; 0x02242D88
-	ldr r3, _02242D90 ; =Sprite_SetVisibleFlag
+	ldr r3, _02242D90 ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242D90: .word Sprite_SetVisibleFlag
+_02242D90: .word Sprite_SetDrawFlag
 	thumb_func_end ov81_02242D88
 
 	thumb_func_start ov81_02242D94
@@ -10097,11 +10097,11 @@ _02242DD4: .word Sprite_SetMatrix
 
 	thumb_func_start ov81_02242DD8
 ov81_02242DD8: ; 0x02242DD8
-	ldr r3, _02242DE0 ; =Sprite_IsCellAnimationRunning
+	ldr r3, _02242DE0 ; =Sprite_IsAnimated
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242DE0: .word Sprite_IsCellAnimationRunning
+_02242DE0: .word Sprite_IsAnimated
 	thumb_func_end ov81_02242DD8
 
 	thumb_func_start ov81_02242DE4
@@ -10111,7 +10111,7 @@ ov81_02242DE4: ; 0x02242DE4
 	ldr r0, [r5, #8]
 	add r4, r1, #0
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq
@@ -10120,11 +10120,11 @@ ov81_02242DE4: ; 0x02242DE4
 
 	thumb_func_start ov81_02242DFC
 ov81_02242DFC: ; 0x02242DFC
-	ldr r3, _02242E04 ; =Sprite_SetPalIndex
+	ldr r3, _02242E04 ; =Sprite_SetPaletteOverride
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E04: .word Sprite_SetPalIndex
+_02242E04: .word Sprite_SetPaletteOverride
 	thumb_func_end ov81_02242DFC
 
 	thumb_func_start ov81_02242E08
@@ -10203,7 +10203,7 @@ _02242E6A:
 	bl ov81_02242F10
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10223,11 +10223,11 @@ ov81_02242EA4: ; 0x02242EA4
 
 	thumb_func_start ov81_02242EB8
 ov81_02242EB8: ; 0x02242EB8
-	ldr r3, _02242EC0 ; =Sprite_SetVisibleFlag
+	ldr r3, _02242EC0 ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242EC0: .word Sprite_SetVisibleFlag
+_02242EC0: .word Sprite_SetDrawFlag
 	thumb_func_end ov81_02242EB8
 
 	thumb_func_start ov81_02242EC4
@@ -10383,11 +10383,11 @@ ov81_02242F94: ; 0x02242F94
 
 	thumb_func_start ov81_02242FB0
 ov81_02242FB0: ; 0x02242FB0
-	ldr r3, _02242FB8 ; =Sprite_SetPalIndex
+	ldr r3, _02242FB8 ; =Sprite_SetPaletteOverride
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242FB8: .word Sprite_SetPalIndex
+_02242FB8: .word Sprite_SetPaletteOverride
 	thumb_func_end ov81_02242FB0
 
 	thumb_func_start ov81_02242FBC

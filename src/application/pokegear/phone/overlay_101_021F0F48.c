@@ -158,11 +158,11 @@ void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, 
 
     if (visible != 0) {
         for (i = 0; i < 4; ++i) {
-            Sprite_SetVisibleFlag(ui->unk_3EC[i], TRUE);
+            Sprite_SetDrawFlag(ui->unk_3EC[i], TRUE);
         }
     } else {
         for (i = 0; i < 4; ++i) {
-            Sprite_SetVisibleFlag(ui->unk_3EC[i], FALSE);
+            Sprite_SetDrawFlag(ui->unk_3EC[i], FALSE);
         }
     }
     if (position >= 6) {
@@ -183,7 +183,7 @@ void ov101_021F1338(PhoneContactListUI *ui, BOOL a1) {
 
     for (i = 0; i < 4; ++i) {
         Sprite_SetAnimActiveFlag(ui->unk_3EC[i], a1);
-        Sprite_SetVisibleFlag(ui->unk_3EC[i], TRUE);
+        Sprite_SetDrawFlag(ui->unk_3EC[i], TRUE);
     }
 }
 
@@ -191,7 +191,7 @@ void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, BOOL a2) {
     int i;
     if (a2) {
         for (i = 0; i < ui->listBottomIndex; ++i) {
-            Sprite_SetVisibleFlag(ui->unk_3D4[i], TRUE);
+            Sprite_SetDrawFlag(ui->unk_3D4[i], TRUE);
             if (cursorPos == i) {
                 Sprite_SetAnimCtrlSeq(ui->unk_3D4[i], 7);
             } else {
@@ -200,7 +200,7 @@ void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, BOOL a2) {
         }
     } else {
         for (i = 0; i < 6; ++i) {
-            Sprite_SetVisibleFlag(ui->unk_3D4[i], FALSE);
+            Sprite_SetDrawFlag(ui->unk_3D4[i], FALSE);
         }
     }
 }
@@ -533,14 +533,14 @@ void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 in
 
 void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui) {
     if (ui->firstContactOnPage != 0) {
-        Sprite_SetVisibleFlag(ui->unk_3CC[0], TRUE);
+        Sprite_SetDrawFlag(ui->unk_3CC[0], TRUE);
     } else {
-        Sprite_SetVisibleFlag(ui->unk_3CC[0], FALSE);
+        Sprite_SetDrawFlag(ui->unk_3CC[0], FALSE);
     }
     if (ui->firstContactOnPage + 6 < ui->numContacts) {
-        Sprite_SetVisibleFlag(ui->unk_3CC[1], TRUE);
+        Sprite_SetDrawFlag(ui->unk_3CC[1], TRUE);
     } else {
-        Sprite_SetVisibleFlag(ui->unk_3CC[1], FALSE);
+        Sprite_SetDrawFlag(ui->unk_3CC[1], FALSE);
     }
 }
 

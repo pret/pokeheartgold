@@ -48,7 +48,7 @@ struct MicTestTaskManager {
 };
 
 typedef struct MicTestSub_24 {
-    UnkImageStruct *unk0;
+    ManagedSprite *unk0;
     u32 unk4;
     VecFx32 unk8;
     VecFx32 unk14;
@@ -59,9 +59,9 @@ typedef struct MicTestSub_24 {
 } MicTestSub_24;
 
 struct MicTestData {
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *gfxHandler;
-    UnkImageStruct *unk8[7];
+    SpriteSystem *spriteRenderer;
+    SpriteManager *gfxHandler;
+    ManagedSprite *unk8[7];
     MicTestSub_24 unk24[3];
     u32 unkB4;
     MicTestSub_B8 unkB8;
@@ -113,7 +113,7 @@ static void MicTest_MicrophoneCallback(MICResult result, void *data);
 static u32 MicTest_GetVolumeBracket(u8);
 static u32 ov62_021E63D0(MicTestData *micTest);
 static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y);
-static void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7);
+static void ov62_021E6480(ManagedSprite *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7);
 static void ov62_021E6570(SysTask *, void *);
 static void MicTest_EndTasks(MicTestData *micTest);
 static int MicTest_CheckReturn(MicTestData *data);
@@ -537,11 +537,11 @@ static void ov62_021E5B6C(MicTestTaskManager *taskMan, u32 *state) {
 
     switch (*state) {
     case 0:
-        UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[3], 1);
+        ManagedSprite_SetAnim(micTest->unk8[3], 1);
         (*state) = 1;
         break;
     case 1:
-        if (!sub_0200DCA0(micTest->unk8[3])) {
+        if (!ManagedSprite_IsAnimated(micTest->unk8[3])) {
             (*state) = 2;
         }
         break;
@@ -621,78 +621,78 @@ static void MicTest_VBlankIntrCB(void *data) {
 }
 
 static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId) {
-    SpriteRenderer *spriteRender = SpriteRenderer_Create(heapId);
+    SpriteSystem *spriteRender = SpriteSystem_Alloc(heapId);
 
     micTest->spriteRenderer = spriteRender;
-    SpriteRenderer_CreateOamCharPlttManagers(spriteRender, &sMicTestOamManParam, &ov62_021E6668, 0x20);
+    SpriteSystem_Init(spriteRender, &sMicTestOamManParam, &ov62_021E6668, 0x20);
     sub_0200B2E0(heapId);
     sub_0200B2E8(heapId);
-    micTest->gfxHandler = SpriteRenderer_CreateGfxHandler(micTest->spriteRenderer);
-    SpriteRenderer_CreateSpriteList(micTest->spriteRenderer, micTest->gfxHandler, 7);
-    SpriteRenderer_Init2DGfxResManagersFromCountsArray(micTest->spriteRenderer, micTest->gfxHandler, (SpriteResourceCountsListUnion *)&sMicTestResCountList);
+    micTest->gfxHandler = SpriteManager_New(micTest->spriteRenderer);
+    SpriteSystem_InitSprites(micTest->spriteRenderer, micTest->gfxHandler, 7);
+    SpriteSystem_InitManagerWithCapacities(micTest->spriteRenderer, micTest->gfxHandler, (SpriteResourceCountsListUnion *)&sMicTestResCountList);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 void MicTest_DeleteSpriteRenderer(MicTestData *micTest) {
-    SpriteRenderer_Delete(micTest->spriteRenderer);
+    SpriteSystem_Free(micTest->spriteRenderer);
     micTest->spriteRenderer = NULL;
 }
 
 static void MicTest_UpdateAnimations(MicTestData *micTest) {
     for (u16 i = 0; i < 7; i++) {
-        UnkImageStruct_TickSpriteAnimation1Frame(micTest->unk8[i]);
+        ManagedSprite_TickFrame(micTest->unk8[i]);
     }
-    SpriteGfxHandler_RenderAndAnimateSprites(micTest->gfxHandler);
+    SpriteSystem_DrawSprites(micTest->gfxHandler);
 }
 
 static void MicTest_LoadResources(MicTestData *micTest) {
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xA03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 8, 0, 0xA02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 9, 0, 0xA04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 7, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xa01);
+    SpriteSystem_LoadPlttResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xA03);
+    SpriteSystem_LoadCellResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 8, 0, 0xA02);
+    SpriteSystem_LoadAnimResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 9, 0, 0xA04);
+    SpriteSystem_LoadCharResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 7, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xa01);
 
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 10, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 12, 0, 0xB02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 13, 0, 0xB04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 11, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB01);
+    SpriteSystem_LoadPlttResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 10, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB03);
+    SpriteSystem_LoadCellResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 12, 0, 0xB02);
+    SpriteSystem_LoadAnimResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 13, 0, 0xB04);
+    SpriteSystem_LoadCharResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 11, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xB01);
 
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 18, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0xD03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 20, 0, 0xD02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 21, 0, 0xD04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 19, 0, NNS_G2D_VRAM_TYPE_2DSUB, 0xD01);
+    SpriteSystem_LoadPlttResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 18, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0xD03);
+    SpriteSystem_LoadCellResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 20, 0, 0xD02);
+    SpriteSystem_LoadAnimResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 21, 0, 0xD04);
+    SpriteSystem_LoadCharResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 19, 0, NNS_G2D_VRAM_TYPE_2DSUB, 0xD01);
 
-    SpriteRenderer_LoadPlttResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 14, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC03);
-    SpriteRenderer_LoadCellResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 16, 0, 0xC02);
-    SpriteRenderer_LoadAnimResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 17, 0, 0xC04);
-    SpriteRenderer_LoadCharResObjFromNarcId(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC01);
+    SpriteSystem_LoadPlttResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 14, 0, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC03);
+    SpriteSystem_LoadCellResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 16, 0, 0xC02);
+    SpriteSystem_LoadAnimResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 17, 0, 0xC04);
+    SpriteSystem_LoadCharResObj(micTest->spriteRenderer, micTest->gfxHandler, NARC_a_1_7_6, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 0xC01);
 
     for (u16 i = 0; i < 7; i++) {
-        micTest->unk8[i] = SpriteRenderer_LoadResourcesAndCreateSprite(micTest->spriteRenderer, micTest->gfxHandler, &ov62_021E67C8[ov62_021E6694[i]]);
-        UnkImageStruct_SetSpriteAnimActiveFlag(micTest->unk8[i], TRUE);
+        micTest->unk8[i] = SpriteSystem_NewSprite(micTest->spriteRenderer, micTest->gfxHandler, &ov62_021E67C8[ov62_021E6694[i]]);
+        ManagedSprite_SetAnimateFlag(micTest->unk8[i], TRUE);
     }
 
     for (u16 i = 0; i < 3; i++) {
-        UnkImageStruct_SetSpriteVisibleFlag(micTest->unk8[4 + i], 0);
+        ManagedSprite_SetDrawFlag(micTest->unk8[4 + i], 0);
     }
 
-    sub_0200E0C0(micTest->unk8[0], 1);
-    UnkImageStruct_SetSpritePriority(micTest->unk8[3], 1);
+    ManagedSprite_SetFlipMode(micTest->unk8[0], 1);
+    ManagedSprite_SetPriority(micTest->unk8[3], 1);
     micTest->unkB4 = 10;
 }
 
 static void ov62_021E5FA0(MicTestData *micTest) {
     for (int i = 0; i < 7; i++) {
         if (micTest->unk8[i] != NULL) {
-            UnkImageStruct_Delete(micTest->unk8[i]);
+            Sprite_DeleteAndFreeResources(micTest->unk8[i]);
         }
     }
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(micTest->spriteRenderer, micTest->gfxHandler);
+    SpriteSystem_FreeResourcesAndManager(micTest->spriteRenderer, micTest->gfxHandler);
 }
 
 static void ov62_021E5FC4(MicTestData *micTest) {
     if (micTest->spriteRenderer != NULL) {
-        thunk_OamManager_ApplyAndResetBuffers();
+        SpriteSystem_TransferOam();
     }
 }
 
@@ -864,7 +864,7 @@ static void MicTest_MicrophoneCallback(MICResult result, void *data) {
 
     if (volume) {
         if (unkF0->unk24) {
-            UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[2], 1);
+            ManagedSprite_SetAnim(micTest->unk8[2], 1);
             unkF0->unk24 = 0;
         }
 
@@ -878,12 +878,12 @@ static void MicTest_MicrophoneCallback(MICResult result, void *data) {
             }
         }
 
-        UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[0], volume);
-        UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[1], volume);
+        ManagedSprite_SetAnim(micTest->unk8[0], volume);
+        ManagedSprite_SetAnim(micTest->unk8[1], volume);
     } else if (volume == 0) {
-        UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[2], 0);
-        UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[0], 0);
-        UnkImageStruct_SetSpriteAnimSeqNo(micTest->unk8[1], 0);
+        ManagedSprite_SetAnim(micTest->unk8[2], 0);
+        ManagedSprite_SetAnim(micTest->unk8[0], 0);
+        ManagedSprite_SetAnim(micTest->unk8[1], 0);
     }
 
     _021E68E0.unk0++;
@@ -919,7 +919,7 @@ static u32 ov62_021E63D0(MicTestData *micTest) {
 }
 
 static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
-    UnkImageStruct *flag = 0;
+    ManagedSprite *flag = 0;
     MicTestSub_24 *args = NULL;
     for (int i = 0; i < 3; i++) {
         if (micTest->unk24[i].task == NULL) {
@@ -940,7 +940,7 @@ static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
     return FALSE;
 }
 
-static void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7) {
+static void ov62_021E6480(ManagedSprite *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7) {
     args->task = SysTask_CreateOnMainQueue(ov62_021E6570, args, 0);
     MicTestSub_24 *data = SysTask_GetData(args->task);
 
@@ -961,7 +961,7 @@ static void ov62_021E6480(UnkImageStruct *a0, MicTestSub_24 *args, s16 x, s16 y,
     data->unk24 = FX32_CONST(6);
     data->unk28 = r2;
 
-    UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
+    ManagedSprite_SetPositionXY(data->unk0, x, y);
 }
 
 static void ov62_021E6570(SysTask *task, void *_data) {
@@ -969,7 +969,7 @@ static void ov62_021E6570(SysTask *task, void *_data) {
 
     if (data->unk4) {
         if (--data->unk4 == 0) {
-            UnkImageStruct_SetSpriteVisibleFlag(data->unk0, TRUE);
+            ManagedSprite_SetDrawFlag(data->unk0, TRUE);
         }
         return;
     }
@@ -986,10 +986,10 @@ static void ov62_021E6570(SysTask *task, void *_data) {
 
     x += GF_SinDegNoWrap(data->unk20 >> FX32_SHIFT) * data->unk28 >> FX32_SHIFT;
 
-    UnkImageStruct_SetSpritePositionXY(data->unk0, x, y);
+    ManagedSprite_SetPositionXY(data->unk0, x, y);
 
     if (y < -16) {
-        UnkImageStruct_SetSpriteVisibleFlag(data->unk0, FALSE);
+        ManagedSprite_SetDrawFlag(data->unk0, FALSE);
         SysTask_Destroy(task);
         data->task = NULL;
     }

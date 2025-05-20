@@ -33,13 +33,13 @@ typedef struct PokegearAppSwitchButtonSpec {
 } PokegearAppSwitchButtonSpec;
 
 typedef union PokegearSpriteUnion {
-    UnkImageStruct *unk_image_struct;
+    ManagedSprite *unk_image_struct;
     Sprite *sprite;
 } PokegearSpriteUnion;
 
 typedef struct PokegearAppSwitchButton {
     u8 buttonsAreActive : 1;
-    u8 buttonsAreUnkImageStruct : 1;
+    u8 buttonsAreManagedSprite : 1;
     u8 buttonsAre4Tiles : 1;
     u8 cursorPos;
     u8 unk_02;
@@ -82,7 +82,7 @@ typedef struct PokegearApp_UnkSub094 {
     u16 unk_00C;
     u16 unk_00E;
     SpriteList *unk_010;
-    GF_G2dRenderer unk_014;
+    G2dRenderer unk_014;
     u8 filler_13C[4];
     GF_2DGfxResMan *unk_140[4];
     GF_2DGfxResObjList *unk_150[4];
@@ -123,8 +123,8 @@ struct PokegearAppData {
     PaletteData *plttData;                      // 0x078
     PokegearAppSwitchCursor *appSwitchCursor;   // 0x07C
     RTCTime unk_080;                            // 0x080
-    SpriteRenderer *gfxRenderer;                // 0x08C
-    SpriteGfxHandler *gfxHandler;               // 0x090
+    SpriteSystem *gfxRenderer;                  // 0x08C
+    SpriteManager *gfxHandler;                  // 0x090
     PokegearApp_UnkSub094 *unk_094;             // 0x094
     PokegearSpriteUnion unk_098[11];            // 0x098
     u16 *unk_0C4;                               // 0x0C4
@@ -163,8 +163,8 @@ void ov100_021E69E8(PokegearAppData *pokegearApp);
 PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);
 void ov100_021E6AB0(PokegearApp_UnkSub094 *a0);
-UnkImageStruct *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
-void ov100_021E6C44(UnkImageStruct *a0);
+ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
+void ov100_021E6C44(ManagedSprite *a0);
 
 UnkStruct_ov100_021E6E20 *ov100_021E6E20(int a1, HeapID heapId);
 void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0);

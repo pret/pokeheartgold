@@ -1338,13 +1338,13 @@ _021F4E8E:
 	add r1, #0x90
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl SpriteRenderer_CreateSprite
+	bl SpriteSystem_CreateSpriteFromResourceHeader
 	str r0, [r5, #0x10]
 	mov r1, #1
 	bl thunk_Sprite_SetPriority
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #0x10]
 	mov r1, #1
 	bl Sprite_SetAnimActiveFlag
@@ -1358,7 +1358,7 @@ _021F4E8E:
 	bl thunk_Sprite_SetPriority
 	ldr r0, [r7, #0x20]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0x28
 	mov r2, #0x2a
 	ldrsh r1, [r7, r1]

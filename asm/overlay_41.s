@@ -672,7 +672,7 @@ ov41_02246360: ; 0x02246360
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x48]
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r1, r0, #0
 	ldr r0, [r4, #0x48]
 	bl DestroySingle2DGfxResObj
@@ -684,7 +684,7 @@ ov41_02246374: ; 0x02246374
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r1, r0, #0
 	ldr r0, [r4, #0x4c]
 	bl DestroySingle2DGfxResObj
@@ -696,7 +696,7 @@ ov41_02246388: ; 0x02246388
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x50]
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r1, r0, #0
 	ldr r0, [r4, #0x50]
 	bl DestroySingle2DGfxResObj
@@ -708,7 +708,7 @@ ov41_0224639C: ; 0x0224639C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x54]
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r1, r0, #0
 	ldr r0, [r4, #0x54]
 	bl DestroySingle2DGfxResObj
@@ -9232,32 +9232,32 @@ ov41_0224A254: ; 0x0224A254
 
 	thumb_func_start ov41_0224A258
 ov41_0224A258: ; 0x0224A258
-	ldr r3, _0224A260 ; =Sprite_SetAnimCtrlCurrentFrame
+	ldr r3, _0224A260 ; =Sprite_SetAnimationFrame
 	ldr r0, [r0]
 	mov r1, #2
 	bx r3
 	.balign 4, 0
-_0224A260: .word Sprite_SetAnimCtrlCurrentFrame
+_0224A260: .word Sprite_SetAnimationFrame
 	thumb_func_end ov41_0224A258
 
 	thumb_func_start ov41_0224A264
 ov41_0224A264: ; 0x0224A264
-	ldr r3, _0224A26C ; =Sprite_SetAnimCtrlCurrentFrame
+	ldr r3, _0224A26C ; =Sprite_SetAnimationFrame
 	ldr r0, [r0]
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_0224A26C: .word Sprite_SetAnimCtrlCurrentFrame
+_0224A26C: .word Sprite_SetAnimationFrame
 	thumb_func_end ov41_0224A264
 
 	thumb_func_start ov41_0224A270
 ov41_0224A270: ; 0x0224A270
-	ldr r3, _0224A278 ; =Sprite_SetAnimCtrlCurrentFrame
+	ldr r3, _0224A278 ; =Sprite_SetAnimationFrame
 	ldr r0, [r0]
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_0224A278: .word Sprite_SetAnimCtrlCurrentFrame
+_0224A278: .word Sprite_SetAnimationFrame
 	thumb_func_end ov41_0224A270
 
 	thumb_func_start ov41_0224A27C
@@ -9926,9 +9926,9 @@ ov41_0224A734: ; 0x0224A734
 	str r2, [sp, #0x90]
 	str r0, [sp, #0xa0]
 	ldr r0, [r4, #0x4c]
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	mov r1, #0
-	bl GF_PlttResObj_GetPlttProxy
+	bl SpriteTransfer_GetPaletteProxy
 	str r0, [sp, #0x98]
 	ldr r0, [sp, #0xb8]
 	mov r1, #1
@@ -10959,7 +10959,7 @@ _0224AF48:
 	blt _0224AF6C
 	ldr r0, [r5, #0x10]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0224AF6C:
 	add r6, r6, #1
 	add r4, #0x12
@@ -11516,7 +11516,7 @@ _0224B396:
 	ldr r0, [r6, #0x10]
 	mov r1, #2
 	str r0, [r4, #4]
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	ldr r2, [sp, #8]
 	str r5, [sp, #0xc]
 	lsl r0, r5, #0xc
@@ -11630,10 +11630,10 @@ ov41_0224B450: ; 0x0224B450
 	ldr r0, [r5, #0x24]
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #4]
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r0, [r5, #8]
 	add r1, sp, #0xc
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r6, r5, #0
 	add r6, #0xc
 	add r3, sp, #0

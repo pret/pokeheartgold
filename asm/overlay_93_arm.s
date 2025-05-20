@@ -831,7 +831,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r2, [r5, #0x24]
 	ldr r3, [r5, #0x28]
 	mov r1, #2
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #1
@@ -842,7 +842,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r1, [r5, #0x28]
 	mov r2, r4
 	mov r3, #0x37
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225FAB8 ; =0x00002713
@@ -851,7 +851,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x39
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _0225FAB8 ; =0x00002713
@@ -860,7 +860,7 @@ ov93_0225F9D8: ; 0x0225F9D8
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
 	mov r3, #0x38
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	mov r0, r4
 	bl NARC_Delete
 	add sp, sp, #0x18
@@ -876,16 +876,16 @@ ov93_0225FABC: ; 0x0225FABC
 	mov r4, r0
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl SpriteGfxHandler_UnloadCharObjById
+	bl SpriteManager_UnloadCharObjById
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl SpriteGfxHandler_UnloadCellObjById
+	bl SpriteManager_UnloadCellObjById
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAF8 ; =0x00002713
-	bl SpriteGfxHandler_UnloadAnimObjById
+	bl SpriteManager_UnloadAnimObjById
 	ldr r0, [r4, #0x28]
 	ldr r1, _0225FAFC ; =0x00002715
-	bl SpriteGfxHandler_UnloadPlttObjById
+	bl SpriteManager_UnloadPlttObjById
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
 _0225FAF8: .word 0x00002713
@@ -911,12 +911,12 @@ ov93_0225FB00: ; 0x0225FB00
 	str r0, [ip]
 	ldr r0, [r5, #0x24]
 	ldr r1, [r5, #0x28]
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	mov r4, r0
 	mov r1, #0
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4]
-	bl TickSpriteAnimation1Frame
+	bl Sprite_TickFrame
 	mov r0, r4
 	add sp, sp, #0x34
 	ldmia sp!, {r4, r5, pc}
@@ -949,12 +949,12 @@ _0225FB94:
 	mov r1, r1, asr #0x10
 	mov r2, r2, asr #0x10
 	mov r3, #0x160000
-	bl UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset
+	bl ManagedSprite_SetPositionXYWithSubscreenOffset
 	mov r0, r5
 	mov r1, r4
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	ldr r0, [r5]
-	bl TickSpriteAnimation1Frame
+	bl Sprite_TickFrame
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _0225FBE0: .word ov93_02262C07
@@ -962,10 +962,10 @@ _0225FBE0: .word ov93_02262C07
 
 	arm_func_start ov93_0225FBE4
 ov93_0225FBE4: ; 0x0225FBE4
-	ldr ip, _0225FBEC ; =UnkImageStruct_Delete
+	ldr ip, _0225FBEC ; =Sprite_DeleteAndFreeResources
 	bx ip
 	.balign 4, 0
-_0225FBEC: .word UnkImageStruct_Delete
+_0225FBEC: .word Sprite_DeleteAndFreeResources
 	arm_func_end ov93_0225FBE4
 
 	.rodata

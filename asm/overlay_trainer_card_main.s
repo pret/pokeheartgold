@@ -3996,7 +3996,7 @@ _021E7BB0:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _021E7BBC:
 	add r4, r4, #1
 	add r6, #8
@@ -4098,7 +4098,7 @@ _021E7C3C:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #2
 	add r5, r5, #4
@@ -4200,7 +4200,7 @@ ov51_021E7D44: ; 0x021E7D44
 	bl Sprite_ResetAnimCtrlState
 	ldr r0, [r5, r4]
 	add r1, r6, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov51_021E7D44
 

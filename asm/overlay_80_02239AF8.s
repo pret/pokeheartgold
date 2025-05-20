@@ -32,7 +32,7 @@ _02239B10:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	ldr r1, [r4, #0x18]
 	mov r0, #0
 	str r5, [sp]
@@ -46,7 +46,7 @@ _02239B10:
 	mov r1, #2
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	ldr r3, [r4, #0x1c]
 	mov r0, #1
 	str r0, [sp]
@@ -54,7 +54,7 @@ _02239B10:
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	ldr r3, [r4, #0x20]
 	mov r0, #1
 	str r0, [sp]
@@ -62,7 +62,7 @@ _02239B10:
 	add r1, r7, #0
 	add r2, r5, #0
 	str r3, [sp, #4]
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -84,16 +84,16 @@ _02239B8A:
 	add r4, r1, r0
 	ldr r1, [r4, #0x14]
 	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadCharObjById
+	bl SpriteManager_UnloadCharObjById
 	ldr r1, [r4, #0x18]
 	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadPlttObjById
+	bl SpriteManager_UnloadPlttObjById
 	ldr r1, [r4, #0x1c]
 	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadCellObjById
+	bl SpriteManager_UnloadCellObjById
 	ldr r1, [r4, #0x20]
 	add r0, r5, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
+	bl SpriteManager_UnloadAnimObjById
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02239BB4: .word ov80_0223DA54
@@ -115,10 +115,10 @@ _02239BC8:
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r3, r2
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl TickSpriteAnimation1Frame
+	bl Sprite_TickFrame
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -127,10 +127,10 @@ _02239BE4: .word ov80_0223DA54
 
 	thumb_func_start ov80_02239BE8
 ov80_02239BE8: ; 0x02239BE8
-	ldr r3, _02239BEC ; =UnkImageStruct_Delete
+	ldr r3, _02239BEC ; =Sprite_DeleteAndFreeResources
 	bx r3
 	.balign 4, 0
-_02239BEC: .word UnkImageStruct_Delete
+_02239BEC: .word Sprite_DeleteAndFreeResources
 	thumb_func_end ov80_02239BE8
 
     .rodata

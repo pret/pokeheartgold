@@ -1931,7 +1931,7 @@ ov97_0221F56C: ; 0x0221F56C
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r4, #0x78
 	add r0, r4, #0
 	add r1, r6, #0
@@ -1963,7 +1963,7 @@ _0221F5B8:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0221F5E6
 _0221F5D6:
 	lsl r0, r1, #2
@@ -1972,7 +1972,7 @@ _0221F5D6:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0221F5E6:
 	add r0, r4, #1
 	lsl r0, r0, #0x18
@@ -2011,7 +2011,7 @@ _0221F604:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x77
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2029,7 +2029,7 @@ _0221F638:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x77
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2046,7 +2046,7 @@ _0221F65E:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0221F674:
 	ldr r0, [sp, #8]
 	mov r1, #0x18
@@ -2079,7 +2079,7 @@ _0221F6A0:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0221F72E
 _0221F6B2:
 	lsl r0, r4, #2
@@ -2088,7 +2088,7 @@ _0221F6B2:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -2102,7 +2102,7 @@ _0221F6D0:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -2116,7 +2116,7 @@ _0221F6EE:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -2130,7 +2130,7 @@ _0221F70C:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -2176,10 +2176,10 @@ _0221F760:
 	add r5, r0, r1
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, r6]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -2201,14 +2201,14 @@ _0221F78A:
 	mov r0, #0x77
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r4, #0
 _0221F7A4:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
 	add r1, r7, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
@@ -2226,7 +2226,7 @@ _0221F7A4:
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2670,7 +2670,7 @@ ov97_0221FAEC: ; 0x0221FAEC
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x9c]
 	add r0, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	add sp, #0x80
 	pop {r3, r4, r5, pc}
@@ -2710,7 +2710,7 @@ ov97_0221FBA0: ; 0x0221FBA0
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r6, #0
-	bl GF_PlttResObj_GetPlttProxy
+	bl SpriteTransfer_GetPaletteProxy
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #2

@@ -2,11 +2,11 @@
 #pragma once
 .public PaletteData_LoadPalette
 .public PlaySE
-.public SpriteGfxHandler_RenderAndAnimateSprites
-.public UnkImageStruct_TickSpriteAnimation1Frame
-.public UnkImageStruct_SetSpriteAnimSeqNo
-.public UnkImageStruct_AddSpritePositionXY
-.public sub_0200E024
+.public SpriteSystem_DrawSprites
+.public ManagedSprite_TickFrame
+.public ManagedSprite_SetAnim
+.public ManagedSprite_OffsetPositionXY
+.public ManagedSprite_SetAffineScale
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public FreeToHeap

@@ -1017,7 +1017,7 @@ ov52_021E888C: ; 0x021E888C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2509,14 +2509,14 @@ ov52_021E9488: ; 0x021E9488
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, pc}
 _021E949C:
 	mov r1, #0x25
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E9488

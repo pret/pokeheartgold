@@ -21,7 +21,7 @@
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
@@ -82,8 +82,8 @@ typedef struct OptionsApp_Data {
         };
     } windows;
     OptionsApp_MenuEntry menuEntries[MENU_ENTRY_COUNT];
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *spriteGfxHandler;
+    SpriteSystem *spriteRenderer;
+    SpriteManager *spriteGfxHandler;
     Sprite *sprites[9];
     u8 filler2FC[36];
     u32 menuInputState;
@@ -401,24 +401,24 @@ BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
         data->fadeUnused = 0;
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
         OptionsApp_SetActiveButtonsXPosition(data);
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
         break;
     case 1:
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
         if (!IsPaletteFadeFinished()) {
             return FALSE;
         }
         break;
     case 2:
         if (data->unk10_0 != 0) {
-            SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+            SpriteSystem_DrawSprites(data->spriteGfxHandler);
             break;
         }
         OptionsApp_HandleInput(data);
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
         return FALSE;
     case 3:
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
         if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
             data->fadeUnused = 0;
             BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
@@ -429,7 +429,7 @@ BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
         if (TextPrinterCheckActive(data->textPrinter)) {
             RemoveTextPrinter(data->textPrinter);
         }
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
         if (!IsPaletteFadeFinished()) {
             return FALSE;
         }
@@ -461,7 +461,7 @@ static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
         data->unk10_21 = FALSE;
     }
 
-    thunk_OamManager_ApplyAndResetBuffers();
+    SpriteSystem_TransferOam();
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
@@ -987,8 +987,8 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 
-    data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
+    data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
+    data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
 
     const OamManagerParam unk1 = {
         .fromOBJmain = 0,
@@ -1007,8 +1007,8 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
         .charModeMain = GX_OBJVRAMMODE_CHAR_1D_32K,
         .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
     };
-    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &unk1, &unk2, 32);
-    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 9);
+    SpriteSystem_Init(data->spriteRenderer, &unk1, &unk2, 32);
+    SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 9);
 
     u16 fileIdList[7] = {
         NARC_resdat_resdat_00000022_bin,
@@ -1021,23 +1021,23 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     };
     sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
 
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
 }
 
 static void OptionsApp_FreeSpriteRenderer(OptionsApp_Data *data) {
-    SpriteRenderer_RemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler);
-    SpriteRenderer_Delete(data->spriteRenderer);
+    SpriteSystem_DestroySpriteManager(data->spriteRenderer, data->spriteGfxHandler);
+    SpriteSystem_Free(data->spriteRenderer);
     data->spriteGfxHandler = NULL;
 }
 
 static void OptionsApp_SetupSprites(OptionsApp_Data *data) {
     for (u16 i = 0; i < NELEMS(data->sprites); i++) {
-        data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &ov54_021E6EAC[i]);
+        data->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler, &ov54_021E6EAC[i]);
         thunk_Sprite_SetPriority(data->sprites[i], 2);
         Sprite_SetAnimActiveFlag(data->sprites[i], TRUE);
     }
 
-    Sprite_SetVisibleFlag(data->sprites[7], TRUE);
+    Sprite_SetDrawFlag(data->sprites[7], TRUE);
 }
 
 static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {
@@ -1050,7 +1050,7 @@ static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {
 }
 
 static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data) {
-    if (Sprite_IsCellAnimationRunning(data->sprites[7]) == 0 && Sprite_IsCellAnimationRunning(data->sprites[8]) == 0) {
+    if (Sprite_IsAnimated(data->sprites[7]) == 0 && Sprite_IsAnimated(data->sprites[8]) == 0) {
         return FALSE;
     }
 

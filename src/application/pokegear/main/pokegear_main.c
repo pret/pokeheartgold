@@ -172,7 +172,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
             ov100_021E6AB0(pokegearApp->unk_094);
         }
         ov100_021E69E8(pokegearApp);
-        thunk_OamManager_ApplyAndResetBuffers();
+        SpriteSystem_TransferOam();
     }
 
     GF_RunVramTransferTasks();

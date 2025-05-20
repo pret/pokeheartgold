@@ -20,7 +20,7 @@
 .public sub_0200AEB0
 .public sub_0200B00C
 .public sub_0200B0A8
-.public GF_PlttResObj_GetVramSlotNum
+.public SpriteTransfer_GetPlttOffset
 .public AllocFromHeap
 .public FreeToHeap
 .public InitBgFromTemplate
@@ -32,13 +32,13 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
-.public Sprite_GetVisibleFlag
+.public Sprite_SetDrawFlag
+.public Sprite_GetDrawFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_TryChangeAnimSeq
-.public Sprite_TickAnimCtrlFrame
-.public Sprite_SetAnimCtrlCurrentFrame
-.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_UpdateAnim
+.public Sprite_SetAnimationFrame
+.public Sprite_GetAnimationFrame
 .public Sprite_SetPriority
 .public Sprite_GetPalOffset
 .public Sprite_SetDrawPriority

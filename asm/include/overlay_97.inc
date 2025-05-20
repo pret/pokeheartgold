@@ -24,7 +24,7 @@
 .public sub_0200AF00
 .public sub_0200AF94
 .public sub_0200B0A8
-.public GF_PlttResObj_GetPlttProxy
+.public SpriteTransfer_GetPaletteProxy
 .public OamManager_Create
 .public OamManager_Free
 .public NewMsgDataFromNarc
@@ -66,7 +66,7 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_CreateAffine
 .public Sprite_Delete
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority

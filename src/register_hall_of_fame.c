@@ -29,7 +29,7 @@
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02026E84.h"
@@ -184,9 +184,9 @@ struct RegisterHallOfFameData {
     String *strbuf2;
     NARC *narcA101;
     NARC *narcA180;
-    SpriteRenderer *spriteRenderer;     // 0009C
-    SpriteGfxHandler *spriteGfxHandler; // 000A0
-    UnkImageStruct *monPics[15];
+    SpriteSystem *spriteRenderer;     // 0009C
+    SpriteManager *spriteGfxHandler; // 000A0
+    ManagedSprite *monPics[15];
     Camera *camera;
     VecFx32 cameraTarget;
     CameraAngle cameraAngle;
@@ -296,7 +296,7 @@ static RegisterHallOfFameScene RegisterHallOfFame_IndivMonsExit(RegisterHallOfFa
 static RegisterHallOfFameScene RegisterHallOfFame_WholePartyInit(RegisterHallOfFameData *data);
 static RegisterHallOfFameScene RegisterHallOfFame_WholePartyMain(RegisterHallOfFameData *data);
 static RegisterHallOfFameScene RegisterHallOfFame_WholePartyExit(RegisterHallOfFameData *data);
-static void RegisterHallOfFame_MonSpritePosScaleAnimStep(UnkImageStruct *unkImageStruct, const RegHOFSpritePosScaleAnimParam *param, u32 duration, u32 step);
+static void RegisterHallOfFame_MonSpritePosScaleAnimStep(ManagedSprite *unkImageStruct, const RegHOFSpritePosScaleAnimParam *param, u32 duration, u32 step);
 static void RegisterHallOfFame_IndivMonsScene_LoadSpriteGfx(RegisterHallOfFameData *data);
 static void RegisterHallOfFame_IndivMonsScene_UnloadSpriteGfx(RegisterHallOfFameData *data);
 static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFameData *data, RegisterHofMon *mon, u8 whichFacing, int picIdx);
@@ -901,8 +901,8 @@ static void VBlankTask_RegisterHallOfFame_IndividualMonsCongrats(SysTask *task, 
         data->subprocCallback = NULL;
     }
     DoScheduledBgGpuUpdates(data->bgConfig);
-    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
-    thunk_OamManager_ApplyAndResetBuffers();
+    SpriteSystem_DrawSprites(data->spriteGfxHandler);
+    SpriteSystem_TransferOam();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
@@ -926,31 +926,31 @@ static void RegisterHallOfFame_DestroyBgConfig(RegisterHallOfFameData *data) {
 }
 
 static void RegisterHallOfFame_CreateSpriteGfxHandlers(RegisterHallOfFameData *data) {
-    data->spriteRenderer = SpriteRenderer_Create(HEAP_ID_REGISTER_HALL_OF_FAME);
-    data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
+    data->spriteRenderer = SpriteSystem_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
 
     {
         OamManagerParam sp2C = ov63_0221FCB8;
         OamCharTransferParam sp18 = ov63_0221FB30;
-        SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &sp2C, &sp18, 0x20);
+        SpriteSystem_Init(data->spriteRenderer, &sp2C, &sp18, 0x20);
     }
 
     {
         SpriteResourceCountsListUnion sp00 = sSpriteGfxHandlerCapacities;
-        SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 15);
-        SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler, &sp00);
+        SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 15);
+        SpriteSystem_InitManagerWithCapacities(data->spriteRenderer, data->spriteGfxHandler, &sp00);
     }
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(1024));
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), 0, FX32_CONST(1024));
 }
 
 static void RegisterHallOfFame_DestroySpriteGfxHandlers(RegisterHallOfFameData *data) {
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler);
-    SpriteRenderer_Delete(data->spriteRenderer);
+    SpriteSystem_FreeResourcesAndManager(data->spriteRenderer, data->spriteGfxHandler);
+    SpriteSystem_Free(data->spriteRenderer);
 }
 
 static void RegisterHallOfFame_DeletePicByIndex(RegisterHallOfFameData *data, u32 picIdx) {
     if (data->monPics[picIdx] != NULL) {
-        UnkImageStruct_Delete(data->monPics[picIdx]);
+        Sprite_DeleteAndFreeResources(data->monPics[picIdx]);
         data->monPics[picIdx] = NULL;
     }
 }
@@ -958,14 +958,14 @@ static void RegisterHallOfFame_DeletePicByIndex(RegisterHallOfFameData *data, u3
 static void RegisterHallOfFame_PicAnimationsTick(RegisterHallOfFameData *data) {
     for (u32 i = 0; i < 15; ++i) {
         if (data->monPics[i] != NULL) {
-            UnkImageStruct_TickSpriteAnimation1Frame(data->monPics[i]);
+            ManagedSprite_TickFrame(data->monPics[i]);
         }
     }
 }
 
 static void RegisterHallOfFame_StartPicAnimSeq(RegisterHallOfFameData *data, u32 picIdx, int animSeqNo) {
-    UnkImageStruct_SetSpriteAnimCtrlCurrentFrame(data->monPics[picIdx], 0);
-    UnkImageStruct_SetSpriteAnimSeqNo(data->monPics[picIdx], animSeqNo);
+    ManagedSprite_SetAnimationFrame(data->monPics[picIdx], 0);
+    ManagedSprite_SetAnim(data->monPics[picIdx], animSeqNo);
 }
 
 static RegisterHallOfFameScene RegisterHallOfFame_FadeFromBlack(RegisterHallOfFameData *data, RegisterHallOfFameScene nextScene) {
@@ -1099,14 +1099,14 @@ static RegisterHallOfFameScene RegisterHallOfFame_WholePartyMain(RegisterHallOfF
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
             GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_ON);
-            UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER], TRUE);
-            UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], TRUE);
+            ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER], TRUE);
+            ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], TRUE);
             for (int i = 0; i < data->numMons; ++i) {
                 RegisterHallOfFame_RestoreMonPicPalette(data, i, REGHOF_PIC_WHOLE_MON + i);
-                sub_0200E024(data->monPics[REGHOF_PIC_WHOLE_MON + i], 1.0f, 1.0f);
-                UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], TRUE);
-                sub_0200E0FC(data->monPics[REGHOF_PIC_WHOLE_MON + i], GX_OAM_MODE_NORMAL);
-                sub_0200E0FC(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], GX_OAM_MODE_XLU);
+                ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_WHOLE_MON + i], 1.0f, 1.0f);
+                ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], TRUE);
+                ManagedSprite_SetOamMode(data->monPics[REGHOF_PIC_WHOLE_MON + i], GX_OAM_MODE_NORMAL);
+                ManagedSprite_SetOamMode(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], GX_OAM_MODE_XLU);
             }
             data->requestBeginSpotlightsAndConfetti = FALSE;
         }
@@ -1154,13 +1154,13 @@ static RegisterHallOfFameScene RegisterHallOfFame_WholePartyExit(RegisterHallOfF
     return REGHOF_SCENE_WHOLE_PARTY_EXIT;
 }
 
-static void RegisterHallOfFame_MonSpritePosScaleAnimStep(UnkImageStruct *unkImageStruct, const RegHOFSpritePosScaleAnimParam *param, u32 duration, u32 step) {
+static void RegisterHallOfFame_MonSpritePosScaleAnimStep(ManagedSprite *unkImageStruct, const RegHOFSpritePosScaleAnimParam *param, u32 duration, u32 step) {
     if (step == 0) {
-        UnkImageStruct_SetSpritePositionXY(unkImageStruct, param->xStart, param->yStart);
-        sub_0200E024(unkImageStruct, param->scaleStart, param->scaleStart);
+        ManagedSprite_SetPositionXY(unkImageStruct, param->xStart, param->yStart);
+        ManagedSprite_SetAffineScale(unkImageStruct, param->scaleStart, param->scaleStart);
     } else if (step == duration) {
-        UnkImageStruct_SetSpritePositionXY(unkImageStruct, param->xEnd, param->yEnd);
-        sub_0200E024(unkImageStruct, param->scaleEnd, param->scaleEnd);
+        ManagedSprite_SetPositionXY(unkImageStruct, param->xEnd, param->yEnd);
+        ManagedSprite_SetAffineScale(unkImageStruct, param->scaleEnd, param->scaleEnd);
     } else {
         s16 dx = ((abs(param->xStart - param->xEnd) * 256) / duration * step) / 256;
         if (param->xStart > param->xEnd) {
@@ -1174,39 +1174,39 @@ static void RegisterHallOfFame_MonSpritePosScaleAnimStep(UnkImageStruct *unkImag
         } else {
             dy = param->yStart + dy;
         }
-        UnkImageStruct_SetSpritePositionXY(unkImageStruct, dx, dy);
+        ManagedSprite_SetPositionXY(unkImageStruct, dx, dy);
 
         f32 fpos = param->scaleStart + (param->scaleEnd - param->scaleStart) / (float)duration * (float)step;
-        sub_0200E024(unkImageStruct, fpos, fpos);
+        ManagedSprite_SetAffineScale(unkImageStruct, fpos, fpos);
     }
 }
 
 static void RegisterHallOfFame_IndivMonsScene_LoadSpriteGfx(RegisterHallOfFameData *data) {
     NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_REGISTER_HALL_OF_FAME);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55512);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55512);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55512);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55512);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55513);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55513);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55513);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55513);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55514);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55515);
+    SpriteSystem_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55512);
+    SpriteSystem_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55512);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55512);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55512);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55513);
+    SpriteSystem_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55513);
+    SpriteSystem_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55513);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55513);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55514);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55515);
     NARC_Delete(narc);
 }
 
 static void RegisterHallOfFame_IndivMonsScene_UnloadSpriteGfx(RegisterHallOfFameData *data) {
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55512);
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55513);
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55514);
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55515);
-    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55512);
-    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55512);
-    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55512);
-    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55513);
-    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55513);
-    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55513);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55512);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55513);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55514);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55515);
+    SpriteManager_UnloadCharObjById(data->spriteGfxHandler, 55512);
+    SpriteManager_UnloadCellObjById(data->spriteGfxHandler, 55512);
+    SpriteManager_UnloadAnimObjById(data->spriteGfxHandler, 55512);
+    SpriteManager_UnloadCharObjById(data->spriteGfxHandler, 55513);
+    SpriteManager_UnloadCellObjById(data->spriteGfxHandler, 55513);
+    SpriteManager_UnloadAnimObjById(data->spriteGfxHandler, 55513);
 }
 
 static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFameData *data, RegisterHofMon *hofMon, u8 whichFacing, int picIdx) {
@@ -1266,7 +1266,7 @@ static void RegisterHallOfFame_RestoreMonPicPalette(RegisterHallOfFameData *data
 
 static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHallOfFameData *data, RegisterHofMon *mon) {
     if (mon->followPokeParam[1]) {
-        SpriteRenderer_LoadCharResObjFromOpenNarc(
+        SpriteSystem_LoadCharResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
             data->narcA101,
@@ -1274,14 +1274,14 @@ static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHal
             TRUE,
             NNS_G2D_VRAM_TYPE_2DMAIN,
             55518);
-        SpriteRenderer_LoadCellResObjFromOpenNarc(
+        SpriteSystem_LoadCellResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
             data->narcA101,
             13,
             TRUE,
             55514);
-        SpriteRenderer_LoadAnimResObjFromOpenNarc(
+        SpriteSystem_LoadAnimResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
             data->narcA101,
@@ -1289,7 +1289,7 @@ static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHal
             TRUE,
             55514);
     } else {
-        SpriteRenderer_LoadCharResObjFromOpenNarc(
+        SpriteSystem_LoadCharResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
             data->narcA101,
@@ -1297,14 +1297,14 @@ static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHal
             TRUE,
             NNS_G2D_VRAM_TYPE_2DMAIN,
             55518);
-        SpriteRenderer_LoadCellResObjFromOpenNarc(
+        SpriteSystem_LoadCellResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
             data->narcA101,
             10,
             TRUE,
             55514);
-        SpriteRenderer_LoadAnimResObjFromOpenNarc(
+        SpriteSystem_LoadAnimResObjFromOpenNarc(
             data->spriteRenderer,
             data->spriteGfxHandler,
             data->narcA101,
@@ -1312,7 +1312,7 @@ static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHal
             TRUE,
             55514);
     }
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(
+    SpriteSystem_LoadPlttResObjFromOpenNarc(
         data->spriteRenderer,
         data->spriteGfxHandler,
         data->narcA101,
@@ -1321,7 +1321,7 @@ static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHal
         1,
         NNS_G2D_VRAM_TYPE_2DMAIN,
         55518);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(
+    SpriteSystem_LoadPlttResObjFromOpenNarc(
         data->spriteRenderer,
         data->spriteGfxHandler,
         data->narcA101,
@@ -1333,11 +1333,11 @@ static void RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(RegisterHal
 }
 
 static void RegisterHallOfFame_IndivMonsScene_UnloadMonOverworldSprite(RegisterHallOfFameData *data) {
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55518);
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55519);
-    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55518);
-    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55514);
-    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55514);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55518);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55519);
+    SpriteManager_UnloadCharObjById(data->spriteGfxHandler, 55518);
+    SpriteManager_UnloadCellObjById(data->spriteGfxHandler, 55514);
+    SpriteManager_UnloadAnimObjById(data->spriteGfxHandler, 55514);
 }
 
 static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFameData *data, RegisterHofMon *hofMon, int picIdx) {
@@ -1525,7 +1525,7 @@ static void RegisterHallOfFame_IndivMonsScene_CreateMonSprites(RegisterHallOfFam
     RegisterHallOfFame_IndivMonsScene_LoadSpriteGfx(data);
     RegisterHallOfFame_IndivMonsScene_LoadMonOverworldSprite(data, hofMon);
     for (int i = 0; i <= 5u; ++i) {
-        data->monPics[i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[i]);
+        data->monPics[i] = SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[i]);
     }
     RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(data, hofMon, 2, REGHOF_PIC_INDIV_FRONT);
     RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(data, hofMon, 0, REGHOF_PIC_INDIV_BACK);
@@ -1541,11 +1541,11 @@ static void RegisterHallOfFame_IndivMonsScene_CreateMonSprites(RegisterHallOfFam
 
 static void RegisterHallOfFame_IndivMonsScene_SetOverworldSpritePos(RegisterHallOfFameData *data, RegisterHofMon *mon) {
     if (mon->followPokeParam[1]) {
-        UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -32, -32);
-        UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -32, -32);
+        ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -32, -32);
+        ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -32, -32);
     } else {
-        UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -16, -16);
-        UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -16, -16);
+        ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -16, -16);
+        ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -16, -16);
     }
 }
 
@@ -1563,12 +1563,12 @@ static void RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(RegisterHallOfFameD
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 0);
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 256, -40);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 296, -80);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 288, 152 + hofMon->yOffset);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 296, 152 + hofMon->yOffset);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -82, -2);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -89, -3);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 256, -40);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 296, -80);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 288, 152 + hofMon->yOffset);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 296, 152 + hofMon->yOffset);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -82, -2);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -89, -3);
         RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(data, data->curMonIndex, 1);
     } else {
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
@@ -1577,17 +1577,17 @@ static void RegisterHallOfFame_IndivMons_ResetBgAndSpritePos(RegisterHallOfFameD
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 256);
         ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 0, -40);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], -40, -80);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], -80, 152 + hofMon->yOffset);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], -92, 152 + hofMon->yOffset);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 338, -2);
-        UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 345, -3);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 0, -40);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], -40, -80);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], -80, 152 + hofMon->yOffset);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], -92, 152 + hofMon->yOffset);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 338, -2);
+        ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 345, -3);
         RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(data, data->curMonIndex, 4);
     }
-    sub_0200DF98(data->monPics[REGHOF_PIC_INDIV_FRONT], 2);
-    sub_0200DF98(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 2);
-    sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 1.5, 1.5);
+    ManagedSprite_SetAffineOverwriteMode(data->monPics[REGHOF_PIC_INDIV_FRONT], 2);
+    ManagedSprite_SetAffineOverwriteMode(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 2);
+    ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 1.5, 1.5);
     RegisterHallOfFame_IndivMonsScene_SetOverworldSpritePos(data, hofMon);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, GF_BG_LYR_MAIN_0);
 }
@@ -1599,15 +1599,15 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             u8 yOffset = data->mons[data->curMonIndex].yOffset;
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, -72);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 72);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 48, yOffset + 152);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 46, yOffset + 152);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 48, yOffset + 152);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 46, yOffset + 152);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SUB_X, 7);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_ADD_X, 7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], -24, 0);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], -25, 0);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], -24, 0);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], -25, 0);
             ++data->subprocTimer;
         }
         break;
@@ -1625,14 +1625,14 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         break;
     case REGHOF_INDIV_SUBPROC_FLY_IN_OVERWORLD_SPRITE:
         if (data->subprocTimer == 6) {
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 32, 40);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 31, 39);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 32, 40);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 31, 39);
             RegisterHallOfFame_IndivMonsScene_SetOverworldSpritePos(data, &data->mons[data->curMonIndex]);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 19, 7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 20, 7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 19, 7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 20, 7);
             ++data->subprocTimer;
         }
         break;
@@ -1662,8 +1662,8 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         if (data->subprocTimer == 60) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -16);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 256);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK], 2);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 2);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK], 2);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 2);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
@@ -1675,15 +1675,15 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 112);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 192);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 256);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 88, 88);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 104, 72);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 88, 88);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 104, 72);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_ADD_X, 16);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_Y, 8);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], -21, 16);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], -24, 19);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], -21, 16);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], -24, 19);
             ++data->subprocTimer;
         }
         break;
@@ -1724,12 +1724,12 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
         if (data->subprocTimer == 240) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 72);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_FRONT], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_FRONT], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 3);
             data->unk_13058 = 1.0f;
             data->unk_1305C = 1.5f;
             data->subprocTimer = 0;
@@ -1746,14 +1746,14 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 0);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 60);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 226);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 148, 252);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 64, 192);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -28, -30);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -29, -31);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 48, 128);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 64, 112);
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT], 1.8f, 1.8f);
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 2.0f, 2.0f);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 148, 252);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 64, 192);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -28, -30);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -29, -31);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 48, 128);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 64, 112);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT], 1.8f, 1.8f);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 2.0f, 2.0f);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
@@ -1763,16 +1763,16 @@ static BOOL RegisterHallOfFame_ShowMon_LeftSide(RegisterHallOfFameData *data) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_X, 7);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_ADD_X, 6);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, 3);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 10, 10);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 10, 10);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -6, -7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -6, -7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], -4, 4);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], -4, 4);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 10, 10);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 10, 10);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -6, -7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -6, -7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], -4, 4);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], -4, 4);
             data->unk_13058 += 0.08;
             data->unk_1305C += 0.05;
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT], data->unk_13058, data->unk_13058);
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], data->unk_1305C, data->unk_1305C);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT], data->unk_13058, data->unk_13058);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], data->unk_1305C, data->unk_1305C);
             ++data->subprocTimer;
         }
         break;
@@ -1795,15 +1795,15 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             u8 yOffset = data->mons[data->curMonIndex].yOffset;
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 72);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -256);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 160, yOffset + 152);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 158, yOffset + 152);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 160, yOffset + 152);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 158, yOffset + 152);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_ADD_X, 7);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_X, 7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 24, 0);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 25, 0);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 24, 0);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 25, 0);
             ++data->subprocTimer;
         }
         break;
@@ -1821,14 +1821,14 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         break;
     case REGHOF_INDIV_SUBPROC_FLY_IN_OVERWORLD_SPRITE:
         if (data->subprocTimer == 6) {
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 224, 40);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 225, 39);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 224, 40);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 225, 39);
             RegisterHallOfFame_IndivMonsScene_SetOverworldSpritePos(data, &data->mons[data->curMonIndex]);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -19, 7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -20, 7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], -19, 7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], -20, 7);
             ++data->subprocTimer;
         }
         break;
@@ -1858,8 +1858,8 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         if (data->subprocTimer == 60) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 272);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 256);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK], 2);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 2);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK], 2);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 2);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
@@ -1871,15 +1871,15 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 144);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 192);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 256);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 168, 88);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 152, 72);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 168, 88);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 152, 72);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_X, 16);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_Y, 8);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 21, 16);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 24, 19);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 21, 16);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 24, 19);
             ++data->subprocTimer;
         }
         break;
@@ -1920,12 +1920,12 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
         if (data->subprocTimer == 240) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -256);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_FRONT], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 3);
-            UnkImageStruct_SetSpritePriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_FRONT], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 3);
+            ManagedSprite_SetPriority(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 3);
             data->unk_13058 = 1.0f;
             data->unk_1305C = 1.5f;
             data->subprocTimer = 0;
@@ -1942,14 +1942,14 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, -184);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_X, 196);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 226);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 260, 252);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 192, 192);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 164, -30);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 165, -31);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 208, 128);
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 192, 112);
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT], 1.8f, 1.8f);
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 2.0f, 2.0f);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], 260, 252);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], 192, 192);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 164, -30);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 165, -31);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 208, 128);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 192, 112);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT], 1.8f, 1.8f);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 2.0f, 2.0f);
             data->subprocTimer = 0;
             ++data->subprocStage;
         } else {
@@ -1959,16 +1959,16 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_ADD_X, 7);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, 6);
             ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_Y, 3);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], -10, 10);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], -10, 10);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 6, -7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 6, -7);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 4, 4);
-            UnkImageStruct_AddSpritePositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 4, 4);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK], -10, 10);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_BACK_SHADOW], -10, 10);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE], 6, -7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_OWSPRITE_SHADOW], 6, -7);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT], 4, 4);
+            ManagedSprite_OffsetPositionXY(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], 4, 4);
             data->unk_13058 += 0.08;
             data->unk_1305C += 0.05;
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT], data->unk_13058, data->unk_13058);
-            sub_0200E024(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], data->unk_1305C, data->unk_1305C);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT], data->unk_13058, data->unk_13058);
+            ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_INDIV_FRONT_SHADOW], data->unk_1305C, data->unk_1305C);
             ++data->subprocTimer;
         }
         break;
@@ -2143,7 +2143,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
         if (data->generateConfettiDelayTimer == data->generateConfettiDelayLength) {
             s16 x = LCRandom() % 224 + 16;
             s16 y = LCRandom() % 64 + 16;
-            UnkImageStruct_SetSpritePositionXY(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], x, y);
+            ManagedSprite_SetPositionXY(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], x, y);
             RegisterHallOfFame_StartPicAnimSeq(data, REGHOF_PIC_WHOLE_TWINKLE, 0);
             data->generateConfettiDelayLength = LCRandom() % 255 + 28;
             data->generateConfettiDelayTimer = 0;
@@ -2164,7 +2164,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
     case REGHOF_WHOLE_SUBPROC_FLY_IN_MONS:
         RegisterHallOfFame_MonSpritePosScaleAnimStep(data->monPics[data->curMonIndex], &sPicPosScaleAnimParams[data->curMonIndex], 6, data->subprocTimer);
         if (data->subprocTimer == 6) {
-            sub_0200DF98(data->monPics[data->curMonIndex], 1);
+            ManagedSprite_SetAffineOverwriteMode(data->monPics[data->curMonIndex], 1);
             ++data->curMonIndex;
             data->subprocTimer = 0;
             if (data->curMonIndex == PARTY_SIZE) {
@@ -2189,7 +2189,7 @@ static BOOL RegisterHallOfFame_WholeMonsSceneSubproc(RegisterHallOfFameData *dat
         data->requestBeginSpotlightsAndConfetti = TRUE;
         data->scrollingPolkadotBackground = TRUE;
         data->generatingConfetti = TRUE;
-        UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], TRUE);
+        ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], TRUE);
         ++data->subprocStage;
         break;
     case REGHOF_WHOLE_SUBPROC_ANIMATE_MONS_SHADOWS:
@@ -2265,8 +2265,8 @@ static void VBlankTask_RegisterHallOfFame_WholePartyCongrats(SysTask *task, void
     }
     RegisterHallOfFame_G3Commit(data);
     DoScheduledBgGpuUpdates(data->bgConfig);
-    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
-    thunk_OamManager_ApplyAndResetBuffers();
+    SpriteSystem_DrawSprites(data->spriteGfxHandler);
+    SpriteSystem_TransferOam();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
@@ -2349,45 +2349,45 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
     int tag;
     void *r4;
 
-    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55512);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55512);
+    SpriteSystem_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 77, FALSE, 55512);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 78, FALSE, 55512);
     for (i = 0; i < 6; ++i) {
         tag = 55512 + i;
-        SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, tag);
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, tag);
+        SpriteSystem_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, tag);
+        SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, tag);
     }
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55519);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55520);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55521);
+    SpriteSystem_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 76, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 55519);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55520);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, narc, 75, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55521);
     NARC_Delete(narc);
 
-    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 17, TRUE, 55515);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 18, TRUE, 55515);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 16, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 55520);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 19, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55522);
+    SpriteSystem_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 17, TRUE, 55515);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 18, TRUE, 55515);
+    SpriteSystem_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 16, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 55520);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler, data->narcA101, 19, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 55522);
 
     for (i = 0; i < 6; ++i) {
-        data->monPics[REGHOF_PIC_WHOLE_MON + i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i]);
-        data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i + 6]);
+        data->monPics[REGHOF_PIC_WHOLE_MON + i] = SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i]);
+        data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i] = SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler, &(sPicTemplates + 6)[i + 6]);
         if (i < data->numMons) {
             RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(data, &data->mons[i], 2, REGHOF_PIC_WHOLE_MON + i);
         } else {
-            UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_MON + i], FALSE);
+            ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_MON + i], FALSE);
         }
         RegisterHallOfFame_BackupMonPicPalette(data, i, REGHOF_PIC_WHOLE_MON + i);
         RegisterHallOfFame_SetSilhouettePalette(data, REGHOF_PIC_WHOLE_MON + i, REGHOF_SILHOUETTE_PAL_WHITE);
-        sub_0200DF98(data->monPics[REGHOF_PIC_WHOLE_MON + i], 1);
-        sub_0200E024(data->monPics[REGHOF_PIC_WHOLE_MON + i], 1.0f, 1.0f);
-        sub_0200E0FC(data->monPics[REGHOF_PIC_WHOLE_MON + i], GX_OAM_MODE_NORMAL);
-        sub_0200E0FC(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], GX_OAM_MODE_XLU);
-        UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], FALSE);
+        ManagedSprite_SetAffineOverwriteMode(data->monPics[REGHOF_PIC_WHOLE_MON + i], 1);
+        ManagedSprite_SetAffineScale(data->monPics[REGHOF_PIC_WHOLE_MON + i], 1.0f, 1.0f);
+        ManagedSprite_SetOamMode(data->monPics[REGHOF_PIC_WHOLE_MON + i], GX_OAM_MODE_NORMAL);
+        ManagedSprite_SetOamMode(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], GX_OAM_MODE_XLU);
+        ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_MON_SHADOW + i], FALSE);
     }
-    data->monPics[REGHOF_PIC_WHOLE_PLAYER] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[18]);
-    data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[19]);
-    sub_0200DF98(data->monPics[REGHOF_PIC_WHOLE_PLAYER], 1);
-    sub_0200DF98(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], 1);
-    UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER], FALSE);
-    UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], FALSE);
+    data->monPics[REGHOF_PIC_WHOLE_PLAYER] = SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[18]);
+    data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW] = SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[19]);
+    ManagedSprite_SetAffineOverwriteMode(data->monPics[REGHOF_PIC_WHOLE_PLAYER], 1);
+    ManagedSprite_SetAffineOverwriteMode(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], 1);
+    ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER], FALSE);
+    ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_PLAYER_SHADOW], FALSE);
 
     if (PlayerProfile_GetTrainerGender(data->args->profile) == TRAINER_FEMALE) {
         sub_02070D84(TRAINERCLASS_PKMN_TRAINER_LYRA, 2, &sp2C);
@@ -2401,8 +2401,8 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
 
     GfGfxLoader_GXLoadPal(sp2C.narcId, sp2C.nclr_id, GF_PAL_LOCATION_MAIN_OBJ, (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
 
-    data->monPics[REGHOF_PIC_WHOLE_TWINKLE] = SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[20]);
-    UnkImageStruct_SetSpriteVisibleFlag(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], FALSE);
+    data->monPics[REGHOF_PIC_WHOLE_TWINKLE] = SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler, &sPicTemplates[20]);
+    ManagedSprite_SetDrawFlag(data->monPics[REGHOF_PIC_WHOLE_TWINKLE], FALSE);
     RegisterHallOfFame_SetSilhouettePalette(data, REGHOF_PIC_WHOLE_PLAYER_SHADOW, REGHOF_SILHOUETTE_PAL_BLACK);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
@@ -2414,19 +2414,19 @@ static void RegisterHallOfFame_AfterWholePartyView_UnloadSpriteRes(RegisterHallO
     for (i = 0; i < 15; ++i) {
         RegisterHallOfFame_DeletePicByIndex(data, i);
     }
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55522);
-    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55520);
-    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55515);
-    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55515);
-    SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, 55520);
-    SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, 55519);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55522);
+    SpriteManager_UnloadCharObjById(data->spriteGfxHandler, 55520);
+    SpriteManager_UnloadCellObjById(data->spriteGfxHandler, 55515);
+    SpriteManager_UnloadAnimObjById(data->spriteGfxHandler, 55515);
+    SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, 55520);
+    SpriteManager_UnloadCharObjById(data->spriteGfxHandler, 55519);
     for (i = 0; i < 6; ++i) {
         tag = 55512 + i;
-        SpriteGfxHandler_UnloadPlttObjById(data->spriteGfxHandler, tag);
-        SpriteGfxHandler_UnloadCharObjById(data->spriteGfxHandler, tag);
+        SpriteManager_UnloadPlttObjById(data->spriteGfxHandler, tag);
+        SpriteManager_UnloadCharObjById(data->spriteGfxHandler, tag);
     }
-    SpriteGfxHandler_UnloadCellObjById(data->spriteGfxHandler, 55514);
-    SpriteGfxHandler_UnloadAnimObjById(data->spriteGfxHandler, 55514);
+    SpriteManager_UnloadCellObjById(data->spriteGfxHandler, 55514);
+    SpriteManager_UnloadAnimObjById(data->spriteGfxHandler, 55514);
 }
 
 static void RegisterHallOfFame_G3Init(RegisterHallOfFameData *data) {

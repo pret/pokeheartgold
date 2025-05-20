@@ -17,7 +17,7 @@
 .public GfGfxLoader_GXLoadPal
 .public ReplaceCharResObjFromNarc
 .public ReplacePlttResObjFromNarc
-.public Get2DGfxResObjById
+.public SpriteResourceCollection_Find
 .public sub_0200AE8C
 .public sub_0200B084
 .public NewMsgDataFromNarc
@@ -32,7 +32,7 @@
 .public BufferIntegerAsString
 .public BufferSafariZoneObjectName
 .public StringExpandPlaceholders
-.public thunk_Sprite_SetPalIndex
+.public thunk_Sprite_SetPaletteOverride
 .public Sprite_SetPositionXY
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
@@ -81,14 +81,14 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
-.public Sprite_GetVisibleFlag
+.public Sprite_GetDrawFlag
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_TickAnimCtrlFrame
-.public Sprite_SetAnimCtrlCurrentFrame
+.public Sprite_UpdateAnim
+.public Sprite_SetAnimationFrame
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationRunning
+.public Sprite_IsAnimated
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New

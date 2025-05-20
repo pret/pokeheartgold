@@ -1999,7 +1999,7 @@ ov85_021E6764: ; 0x021E6764
 	push {r4, lr}
 	add r4, r0, #0
 	bl GF_RunVramTransferTasks
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 	ldr r0, _021E6784 ; =0x00000D9C
 	ldr r0, [r4, r0]
 	bl PaletteData_PushTransparentBuffers
@@ -2087,7 +2087,7 @@ ov85_021E67F4: ; 0x021E67F4
 	bl RequestSwap3DBuffers
 	ldr r0, _021E6850 ; =0x00000D98
 	ldr r0, [r4, r0]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 	pop {r4, pc}
 	nop
 _021E6848: .word 0xFFFFF000
@@ -2872,14 +2872,14 @@ ov85_021E6ECC: ; 0x021E6ECC
 	ldr r0, [r3]
 	str r0, [r2]
 	mov r0, #0x66
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	ldr r1, _021E6F60 ; =0x00000D94
 	add r2, sp, #0x18
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	add r1, sp, #0x2c
 	mov r3, #0x20
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r3, _021E6F64 ; =ov85_021EA594
 	add r2, sp, #0
 	ldmia r3!, {r0, r1}
@@ -2890,14 +2890,14 @@ ov85_021E6ECC: ; 0x021E6ECC
 	stmia r2!, {r0, r1}
 	ldr r0, _021E6F60 ; =0x00000D94
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	ldr r1, _021E6F68 ; =0x00000D98
 	mov r2, #0xff
 	str r0, [r4, r1]
 	sub r0, r1, #4
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	cmp r0, #0
 	bne _021E6F3C
 	bl GF_AssertFail
@@ -2907,7 +2907,7 @@ _021E6F3C:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
+	bl SpriteSystem_InitManagerWithCapacities
 	cmp r0, #0
 	bne _021E6F52
 	bl GF_AssertFail
@@ -2948,7 +2948,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0x10
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	str r4, [sp]
 	mov r0, #0xf
 	str r0, [sp, #4]
@@ -2963,7 +2963,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	mov r1, #2
 	add r2, r6, #0
 	add r3, r5, #0
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #6
@@ -2972,7 +2972,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0x11
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #7
@@ -2981,7 +2981,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	add r1, r5, #0
 	add r2, r4, #0
 	mov r3, #0x12
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add r0, r4, #0
 	bl NARC_Delete
 	bl sub_0203A880
@@ -3014,10 +3014,10 @@ ov85_021E7024: ; 0x021E7024
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+	bl SpriteSystem_FreeResourcesAndManager
 	ldr r0, _021E7040 ; =0x00000D94
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	pop {r4, pc}
 	nop
 _021E7040: .word 0x00000D94
@@ -3031,11 +3031,11 @@ ov85_021E7044: ; 0x021E7044
 	ldr r0, [r3, r1]
 	add r1, r1, #4
 	ldr r1, [r3, r1]
-	ldr r3, _021E7058 ; =SpriteRenderer_LoadResourcesAndCreateSprite
+	ldr r3, _021E7058 ; =SpriteSystem_NewSprite
 	bx r3
 	.balign 4, 0
 _021E7054: .word 0x00000D94
-_021E7058: .word SpriteRenderer_LoadResourcesAndCreateSprite
+_021E7058: .word SpriteSystem_NewSprite
 	thumb_func_end ov85_021E7044
 
 	thumb_func_start ov85_021E705C
@@ -5414,9 +5414,9 @@ _021E81A8:
 	mov r1, #6
 	ldr r0, [r4, #0x14]
 	lsl r1, r1, #0xa
-	bl UnkImageStruct_TickSpriteAnimationNFrames
+	bl ManagedSprite_TickNFrames
 	ldr r0, [r4, #0x14]
-	bl sub_0200DCA0
+	bl ManagedSprite_IsAnimated
 	cmp r0, #0
 	bne _021E81D8
 	ldr r0, [r4]
@@ -5426,7 +5426,7 @@ _021E81A8:
 	pop {r3, r4, r5, pc}
 _021E81C6:
 	ldr r0, [r4, #0x14]
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	add r0, r4, #0
 	bl FreeToHeap
 	add r0, r5, #0
@@ -5484,7 +5484,7 @@ _021E81F6:
 	add r1, sp, #0
 	bl ov85_021E7044
 	str r0, [r4, #0x14]
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 	ldr r0, _021E8258 ; =ov85_021E815C
 	add r1, r4, #0
 	mov r2, #0
@@ -7469,7 +7469,7 @@ _021E90F8:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -9719,7 +9719,7 @@ _021EA248:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xe7
 	mov r1, #2
 	lsl r0, r0, #2

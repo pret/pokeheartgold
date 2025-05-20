@@ -27,13 +27,13 @@
 .public sub_0200B00C
 .public sub_0200B050
 .public sub_0200B0CC
-.public GF_PlttResObj_GetVramSlotNum
+.public SpriteTransfer_GetPlttOffset
 .public AllocFromHeap
 .public FreeToHeap
 .public SpriteList_Delete
 .public Sprite_CreateAffine
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_SetPalIndex
+.public Sprite_SetPaletteOverride
 .public Sprite_SetPalIndexRespectVramOffset
 .public Sprite_GetPalIndex
 .public GF_AssertFail

@@ -12,9 +12,9 @@
 .public OverlayManager_GetArgs
 .public NARC_New
 .public NARC_Delete
-.public thunk_OamManager_ApplyAndResetBuffers
-.public SpriteRenderer_Delete
-.public SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+.public SpriteSystem_TransferOam
+.public SpriteSystem_Free
+.public SpriteSystem_FreeResourcesAndManager
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public CreateHeap

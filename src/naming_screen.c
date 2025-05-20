@@ -106,9 +106,9 @@ typedef struct NamingScreenAppData {
     String *battleMsgString;
     String *unk_184; // set to a message that was not localized
     SpriteList *spriteList;
-    GF_G2dRenderer g2dRender;
+    G2dRenderer g2dRender;
     GF_2DGfxResMan *gfxResMen[4];
-    GF_2DGfxResObj *gfxResObjs[2][4];
+    SpriteResource *gfxResObjs[2][4];
     SpriteResourcesHeader spriteResHdr_Main;
     SpriteResourcesHeader spriteResHdr_Sub;
     Sprite *uiSprites[14];
@@ -611,8 +611,8 @@ static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data,
 
     NamingScreen_GetPlayerInput(data);
     if (gSystem.newKeys & PAD_BUTTON_SELECT) {
-        if (!Sprite_GetVisibleFlag(data->uiSprites[8])) {
-            Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+        if (!Sprite_GetDrawFlag(data->uiSprites[8])) {
+            Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
             return ret;
         }
         if (data->type != NAME_SCREEN_UNK4) {
@@ -1127,7 +1127,7 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
             Sprite_SetAnimCtrlSeq(data->uiSprites[i], sUISpritesParam[i][2]);
             Sprite_SetDrawPriority(data->uiSprites[i], sUISpritesParam[i][3]);
         }
-        Sprite_SetVisibleFlag(data->uiSprites[4], FALSE);
+        Sprite_SetDrawFlag(data->uiSprites[4], FALSE);
         for (i = 0; i < 7; ++i) {
             data->tasks[i] = CreateSysTaskAndEnvironment(SysTask_NamingScreen_SubspritePosController, sizeof(SubspritePosControllerTaskData), 5, HEAP_ID_NAMING_SCREEN);
             SubspritePosControllerTaskData *taskData = SysTask_GetData(data->tasks[i]);
@@ -1418,37 +1418,37 @@ static void NamingScreen_GetPlayerInput(NamingScreenAppData *data) {
     int doUpdateCursor = 0;
     int dpadMovement = 0;
     BOOL buttonInputIsTransition = FALSE;
-    if (!Sprite_GetVisibleFlag(data->uiSprites[8])) {
+    if (!Sprite_GetDrawFlag(data->uiSprites[8])) {
         buttonInputIsTransition = TRUE;
     }
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+        Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
         dpadMovement = 1;
         ++doUpdateCursor;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+        Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
         dpadMovement = 2;
         ++doUpdateCursor;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+        Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
         dpadMovement = 3;
         ++doUpdateCursor;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+        Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
         dpadMovement = 4;
         ++doUpdateCursor;
     }
     if (gSystem.newKeys & PAD_BUTTON_START) {
         PlaySE(SEQ_SE_DP_SELECT);
-        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+        Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
         data->kbCursor.x = 12;
         data->kbCursor.y = 0;
         ++doUpdateCursor;
@@ -1494,7 +1494,7 @@ static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, i
     }
 
     data->plttGlowEffectAngle = 180;
-    Sprite_SetAnimCtrlCurrentFrame(data->uiSprites[8], 0);
+    Sprite_SetAnimationFrame(data->uiSprites[8], 0);
     data->kbCursor.prevX = data->kbCursor.x;
     data->kbCursor.prevY = data->kbCursor.y;
     if (sDpadMovementCoordDeltas[dpadMovement][0] != 0) {
@@ -1652,8 +1652,8 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             key = CHAR_JP_SPACE;
         }
     }
-    if (!Sprite_GetVisibleFlag(data->uiSprites[8]) && gSystem.touchNew == 0) {
-        Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+    if (!Sprite_GetDrawFlag(data->uiSprites[8]) && gSystem.touchNew == 0) {
+        Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
         return NS_MAIN_STATE_INPUT_LOOP;
     }
 
@@ -1731,7 +1731,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
             ++data->textCursorPos;
             NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(data->textEntrySprites, data->textCursorPos, data->maxLen);
             PlaySE(SEQ_SE_DP_BOX02);
-            Sprite_SetVisibleFlag(data->uiSprites[8], TRUE);
+            Sprite_SetDrawFlag(data->uiSprites[8], TRUE);
             Sprite_SetOamMode(data->uiSprites[8], GX_OAM_MODE_XLU);
             G2_SetBlendAlpha(0, GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2, 8, 8);
             Sprite_SetAnimCtrlSeq(data->uiSprites[8], 60);
@@ -1890,7 +1890,7 @@ static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pag
 }
 
 static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data) {
-    if (Sprite_IsCellAnimationRunning(data->uiSprites[8])) {
+    if (Sprite_IsAnimated(data->uiSprites[8])) {
         return;
     }
 
@@ -1903,7 +1903,7 @@ static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data) {
         Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
     }
     if (!data->kbCursor.showCursor) {
-        Sprite_SetVisibleFlag(data->uiSprites[8], FALSE);
+        Sprite_SetDrawFlag(data->uiSprites[8], FALSE);
     } else {
         NamingScreen_UpdateCursorSpritePosition(data, 0);
     }

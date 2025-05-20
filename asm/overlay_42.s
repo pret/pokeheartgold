@@ -576,12 +576,12 @@ ov42_02227490: ; 0x02227490
 	add r5, r0, #0
 	ldr r0, [r5, #4]
 	add r4, r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #8]
 	cmp r0, #0
 	beq _022274A8
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _022274A8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -589,11 +589,11 @@ _022274A8:
 
 	thumb_func_start ov42_022274AC
 ov42_022274AC: ; 0x022274AC
-	ldr r3, _022274B4 ; =Sprite_GetVisibleFlag
+	ldr r3, _022274B4 ; =Sprite_GetDrawFlag
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274B4: .word Sprite_GetVisibleFlag
+_022274B4: .word Sprite_GetDrawFlag
 	thumb_func_end ov42_022274AC
 
 	thumb_func_start ov42_022274B8
@@ -612,20 +612,20 @@ ov42_022274C0: ; 0x022274C0
 
 	thumb_func_start ov42_022274C4
 ov42_022274C4: ; 0x022274C4
-	ldr r3, _022274CC ; =Sprite_SetAnimCtrlCurrentFrame
+	ldr r3, _022274CC ; =Sprite_SetAnimationFrame
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274CC: .word Sprite_SetAnimCtrlCurrentFrame
+_022274CC: .word Sprite_SetAnimationFrame
 	thumb_func_end ov42_022274C4
 
 	thumb_func_start ov42_022274D0
 ov42_022274D0: ; 0x022274D0
-	ldr r3, _022274D8 ; =Sprite_GetAnimCtrlCurrentFrame
+	ldr r3, _022274D8 ; =Sprite_GetAnimationFrame
 	ldr r0, [r0, #4]
 	bx r3
 	nop
-_022274D8: .word Sprite_GetAnimCtrlCurrentFrame
+_022274D8: .word Sprite_GetAnimationFrame
 	thumb_func_end ov42_022274D0
 
 	thumb_func_start ov42_022274DC
@@ -1856,24 +1856,24 @@ _02227DD4: .word Sprite_TryChangeAnimSeq
 
 	thumb_func_start ov42_02227DD8
 ov42_02227DD8: ; 0x02227DD8
-	ldr r3, _02227DE4 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227DE4 ; =Sprite_UpdateAnim
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227DE4: .word Sprite_TickAnimCtrlFrame
+_02227DE4: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227DD8
 
 	thumb_func_start ov42_02227DE8
 ov42_02227DE8: ; 0x02227DE8
-	ldr r3, _02227DF4 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227DF4 ; =Sprite_UpdateAnim
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227DF4: .word Sprite_TickAnimCtrlFrame
+_02227DF4: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227DE8
 
 	thumb_func_start ov42_02227DF8
@@ -1886,7 +1886,7 @@ ov42_02227DF8: ; 0x02227DF8
 	ldr r0, [r1, #4]
 	bne _02227E0E
 	mov r1, #1
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	pop {r3, pc}
 _02227E0E:
 	ldr r1, [r1, #0x10]
@@ -1897,57 +1897,57 @@ _02227E0E:
 
 	thumb_func_start ov42_02227E18
 ov42_02227E18: ; 0x02227E18
-	ldr r3, _02227E24 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227E24 ; =Sprite_UpdateAnim
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E24: .word Sprite_TickAnimCtrlFrame
+_02227E24: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227E18
 
 	thumb_func_start ov42_02227E28
 ov42_02227E28: ; 0x02227E28
-	ldr r3, _02227E34 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227E34 ; =Sprite_UpdateAnim
 	mov r1, #1
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E34: .word Sprite_TickAnimCtrlFrame
+_02227E34: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227E28
 
 	thumb_func_start ov42_02227E38
 ov42_02227E38: ; 0x02227E38
-	ldr r3, _02227E44 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227E44 ; =Sprite_UpdateAnim
 	mov r1, #1
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E44: .word Sprite_TickAnimCtrlFrame
+_02227E44: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227E38
 
 	thumb_func_start ov42_02227E48
 ov42_02227E48: ; 0x02227E48
-	ldr r3, _02227E54 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227E54 ; =Sprite_UpdateAnim
 	mov r1, #2
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xe
 	bx r3
 	nop
-_02227E54: .word Sprite_TickAnimCtrlFrame
+_02227E54: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227E48
 
 	thumb_func_start ov42_02227E58
 ov42_02227E58: ; 0x02227E58
-	ldr r3, _02227E64 ; =Sprite_TickAnimCtrlFrame
+	ldr r3, _02227E64 ; =Sprite_UpdateAnim
 	mov r1, #6
 	ldr r0, [r0, #4]
 	lsl r1, r1, #0xc
 	bx r3
 	nop
-_02227E64: .word Sprite_TickAnimCtrlFrame
+_02227E64: .word Sprite_UpdateAnim
 	thumb_func_end ov42_02227E58
 
 	thumb_func_start ov42_02227E68
@@ -1975,11 +1975,11 @@ ov42_02227E78: ; 0x02227E78
 	str r0, [sp, #4]
 	add r0, r6, #0
 	mov r1, #1
-	bl GF_PlttResObj_GetVramSlotNum
+	bl SpriteTransfer_GetPlttOffset
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #2
-	bl GF_PlttResObj_GetVramSlotNum
+	bl SpriteTransfer_GetPlttOffset
 	add r6, r0, #0
 	mov r0, #0
 	mvn r0, r0

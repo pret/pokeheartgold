@@ -627,14 +627,14 @@ ov80_0222A3D4: ; 0x0222A3D4
 	beq _0222A3FC
 	add r0, r5, #0
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222A3FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -654,7 +654,7 @@ ov80_0222A400: ; 0x0222A400
 	str r1, [sp, #8]
 	cmp r3, #1
 	bne _0222A42E
-	bl Sprite_GetAnimCtrlCurrentFrame
+	bl Sprite_GetAnimationFrame
 	cmp r0, #0
 	bne _0222A428
 	sub r0, r4, #3

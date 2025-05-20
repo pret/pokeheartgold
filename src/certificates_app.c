@@ -38,9 +38,9 @@ typedef struct CertificatesApp_Data {
     MessageFormat *msgFmt;
     s16 unk40;
     u16 waitFrames;
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *spriteGfxHandler;
-    UnkImageStruct *unk4C[3];
+    SpriteSystem *spriteRenderer;
+    SpriteManager *spriteGfxHandler;
+    ManagedSprite *unk4C[3];
     u32 unk58;
 } CertificatesApp_Data; // size: 0x5c
 
@@ -171,9 +171,9 @@ static void ov78_021E5E44(CertificatesApp_Data *data);
 static void ov78_021E5E54(CertificatesApp_Data *data);
 static void ov78_021E5EA4(CertificatesApp_Data *data);
 static void ov78_021E6068(CertificatesApp_Data *data);
-static UnkImageStruct *ov78_021E61C4(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority);
-static UnkImageStruct *ov78_021E6214(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, s16 x, s16 y);
-static UnkImageStruct *ov78_021E6250(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, s16 x, s16 y);
+static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority);
+static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y);
+static ManagedSprite *ov78_021E6250(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y);
 static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data);
 static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data);
 static void ov78_021E636C(CertificatesApp_Data *data);
@@ -320,9 +320,9 @@ static void CertificatesApp_OnVBlank(CertificatesApp_Data *data) {
 
     if (data->certificateId == CERTIFICATE_SHINY_LEAVES) {
         GF_ASSERT(data->spriteGfxHandler != NULL);
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
 
-        thunk_OamManager_ApplyAndResetBuffers();
+        SpriteSystem_TransferOam();
     }
 
     DoScheduledBgGpuUpdates(data->bgConfig);
@@ -563,48 +563,48 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
     String_Delete(string);
 }
 
-static UnkImageStruct *ov78_021E61C4(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority) {
+static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority) {
     UnkTemplate_0200D748 template = ov78_021E6880;
     template.x = x;
     template.y = y;
     template.spritePriority = spritePriority;
     template.animation = animation;
 
-    UnkImageStruct *unk = SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
-    UnkImageStruct_SetSpriteAnimActiveFlag(unk, FALSE);
+    ManagedSprite *unk = SpriteSystem_NewSpriteWithYOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
+    ManagedSprite_SetAnimateFlag(unk, FALSE);
     return unk;
 }
 
-static UnkImageStruct *ov78_021E6214(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, s16 x, s16 y) {
+static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y) {
     UnkTemplate_0200D748 template = ov78_021E68B4;
     template.x = x;
     template.y = y;
 
-    return SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
+    return SpriteSystem_NewSpriteWithYOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-static UnkImageStruct *ov78_021E6250(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, s16 x, s16 y) {
+static ManagedSprite *ov78_021E6250(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y) {
     UnkTemplate_0200D748 template = ov78_021E68E8;
     template.x = x;
     template.y = y;
 
-    return SpriteRenderer_LoadResourcesAndCreateSprite_CustomBottomScreenOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
+    return SpriteSystem_NewSpriteWithYOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
 static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
-    data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
+    data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
+    data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
 
     OamManagerParam oamManagerParam = sOamManagerParam;
     OamCharTransferParam oamTransferParam = sOamTransferParam;
     oamTransferParam.maxTasks = 0x20;
-    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &oamManagerParam, &oamTransferParam, 0x20);
-    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 0x20);
+    SpriteSystem_Init(data->spriteRenderer, &oamManagerParam, &oamTransferParam, 0x20);
+    SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 0x20);
 
     SpriteResourceCountsListUnion counts = sSpriteResourceCounts;
-    SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler, &counts);
+    SpriteSystem_InitManagerWithCapacities(data->spriteRenderer, data->spriteGfxHandler, &counts);
 
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), FX32_CONST(0), FX32_CONST(GX_LCD_SIZE_Y));
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(GX_LCD_SIZE_Y));
 
     u8 tp_param_data[4];
     ReadWholeNarcMemberByIdPair(tp_param_data, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(GetMonData(data->frontPokemon, MON_DATA_SPECIES, NULL)));
@@ -612,29 +612,29 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
 }
 
 static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data) {
-    SpriteRenderer *renderer = data->spriteRenderer;
-    SpriteGfxHandler *gfxHandler = data->spriteGfxHandler;
+    SpriteSystem *renderer = data->spriteRenderer;
+    SpriteManager *gfxHandler = data->spriteGfxHandler;
 
     for (int i = 0; i < (int)NELEMS(data->unk4C); i++) {
         GF_ASSERT(data->unk4C[i] != NULL);
-        UnkImageStruct_Delete(data->unk4C[i]);
+        Sprite_DeleteAndFreeResources(data->unk4C[i]);
     }
 
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(renderer, gfxHandler);
-    SpriteRenderer_Delete(renderer);
+    SpriteSystem_FreeResourcesAndManager(renderer, gfxHandler);
+    SpriteSystem_Free(renderer);
 }
 
 static void ov78_021E636C(CertificatesApp_Data *data) {
-    SpriteRenderer *renderer = data->spriteRenderer;
-    SpriteGfxHandler *gfxHandler = data->spriteGfxHandler;
+    SpriteSystem *renderer = data->spriteRenderer;
+    SpriteManager *gfxHandler = data->spriteGfxHandler;
 
     {
         NARC *narc = NARC_New(NARC_a_1_6_2, data->heapId);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 65, FALSE, 2, NNS_G2D_VRAM_TYPE_2DBOTH, 0);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 66, FALSE, NNS_G2D_VRAM_TYPE_2DBOTH, 0);
-        SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 67, FALSE, 0);
-        SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 68, FALSE, 0);
+        SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 65, FALSE, 2, NNS_G2D_VRAM_TYPE_2DBOTH, 0);
+        SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 66, FALSE, NNS_G2D_VRAM_TYPE_2DBOTH, 0);
+        SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 67, FALSE, 0);
+        SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 68, FALSE, 0);
 
         NARC_Delete(narc);
     }
@@ -642,15 +642,15 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     {
         NARC *narc = NARC_New(NARC_a_1_2_6, data->heapId);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 1);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19, FALSE, NNS_G2D_VRAM_TYPE_2DBOTH, 1);
-        SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20, FALSE, 1);
-        SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21, FALSE, 1);
+        SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 1);
+        SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19, FALSE, NNS_G2D_VRAM_TYPE_2DBOTH, 1);
+        SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20, FALSE, 1);
+        SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21, FALSE, 1);
 
-        SpriteRenderer_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 2);
-        SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19 + (data->unk58 * 3), FALSE, NNS_G2D_VRAM_TYPE_2DBOTH, 2);
-        SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20 + (data->unk58 * 3), FALSE, 2);
-        SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21 + (data->unk58 * 3), FALSE, 2);
+        SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, narc, 18, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 2);
+        SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 19 + (data->unk58 * 3), FALSE, NNS_G2D_VRAM_TYPE_2DBOTH, 2);
+        SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 20 + (data->unk58 * 3), FALSE, 2);
+        SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, 21 + (data->unk58 * 3), FALSE, 2);
 
         NARC_Delete(narc);
     }
@@ -659,7 +659,7 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     data->unk4C[1] = ov78_021E6250(data->spriteRenderer, data->spriteGfxHandler, ov78_021E6920[1][0], ov78_021E6920[1][1]);
     data->unk4C[2] = ov78_021E6214(data->spriteRenderer, data->spriteGfxHandler, ov78_021E6920[2][0], ov78_021E6920[2][1]);
 
-    UnkImageStruct_SetSpriteVisibleFlag(data->unk4C[0], FALSE);
+    ManagedSprite_SetDrawFlag(data->unk4C[0], FALSE);
     ov78_021E6664(data->unk4C[1]->sprite, data->profile, data->heapId);
     ov78_021E66D4(data->unk4C[2]->sprite, data->frontPokemon, data->heapId, data->unk58);
 
@@ -670,7 +670,7 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
 static void ov78_021E652C(CertificatesApp_Data *data) {
     for (int i = 0; i < (int)NELEMS(data->unk4C); i++) {
         GF_ASSERT(data->unk4C[i] != NULL);
-        UnkImageStruct_SetSpritePositionXY_CustomScreenYOffset(data->unk4C[i], ov78_021E6920[i][0], ov78_021E6920[i][1] - data->unk40, FX32_CONST(GX_LCD_SIZE_Y));
+        ManagedSprite_SetPositionXYWithSubscreenOffset(data->unk4C[i], ov78_021E6920[i][0], ov78_021E6920[i][1] - data->unk40, FX32_CONST(GX_LCD_SIZE_Y));
     }
 }
 
@@ -685,7 +685,7 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
 }
 
 void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
-    thunk_Set2dSpriteVisibleFlag(sprite, FALSE);
+    thunk_Sprite_SetDrawFlag(sprite, FALSE);
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapId);
     NNSG3dResFileHeader *header = NARC_AllocAndReadWholeMember(narc, narcMemberNum, heapId);
@@ -707,7 +707,7 @@ void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     FreeToHeap(header);
     NARC_Delete(narc);
 
-    thunk_Set2dSpriteVisibleFlag(sprite, TRUE);
+    thunk_Sprite_SetDrawFlag(sprite, TRUE);
 }
 
 static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId) {
@@ -778,5 +778,5 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a
     FreeToHeap(header);
     NARC_Delete(narc);
 
-    thunk_Set2dSpriteVisibleFlag(sprite, TRUE);
+    thunk_Sprite_SetDrawFlag(sprite, TRUE);
 }
