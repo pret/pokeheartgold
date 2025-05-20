@@ -960,7 +960,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00033, TRUE);
-        thunk_Sprite_SetPalIndex(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
+        thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return PARTY_MENU_STATE_USE_ITEM_SELECT_MON;
     default:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);

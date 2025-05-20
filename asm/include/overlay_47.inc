@@ -95,7 +95,7 @@
 .public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public GF_AssertFail
 .public String_New

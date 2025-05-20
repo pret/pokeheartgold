@@ -9,7 +9,7 @@
 #include "palette.h"
 #include "save.h"
 #include "task.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 #include "yes_no_prompt.h"
 
 typedef enum AlphPuzzles {

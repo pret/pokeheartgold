@@ -631,7 +631,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
     }
 
     if (data->overlayManager == NULL && data->spriteGfxHandler != NULL) {
-        SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler);
+        SpriteSystem_DrawSprites(data->spriteGfxHandler);
     }
     return ret;
 }
@@ -668,7 +668,7 @@ static void OakSpeech_VBlankCB(void *cbArg) {
     OakSpeechData *data = cbArg;
 
     DoScheduledBgGpuUpdates(data->bgConfig);
-    thunk_OamManager_ApplyAndResetBuffers();
+    SpriteSystem_TransferOam();
 }
 
 static void OakSpeech_InitBgs(OakSpeechData *data) {
@@ -1827,8 +1827,8 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     case OAK_SPEECH_MAIN_STATE_THIS_WORLD_IS_INHABITED:
         if (OakSpeech_PrintDialogMsg(data, msg_0219_00034, 1) == TRUE) {
             Sprite_SetAnimCtrlSeq(data->sprites[5], 3);
-            Sprite_SetPalIndex(data->sprites[5], 5);
-            Sprite_SetVisibleFlag(data->sprites[5], TRUE);
+            Sprite_SetPaletteOverride(data->sprites[5], 5);
+            Sprite_SetDrawFlag(data->sprites[5], TRUE);
             data->state = OAK_SPEECH_MAIN_STATE_BALL_OPENING_FLASH;
         }
         break;
@@ -1844,14 +1844,14 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     case OAK_SPEECH_MAIN_STATE_APPEAR_MARILL:
         if (IsBrightnessTransitionActive(SCREEN_MASK_MAIN) == TRUE && IsBrightnessTransitionActive(SCREEN_MASK_SUB) == TRUE) {
             Sprite_SetAnimCtrlSeq(data->sprites[5], 1);
-            Sprite_SetPalIndex(data->sprites[5], 4);
+            Sprite_SetPaletteOverride(data->sprites[5], 4);
             data->playerPicShrinkAnimStep = 16;
             G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->playerPicShrinkAnimStep);
             data->state = OAK_SPEECH_MAIN_STATE_MARILL_CRY;
         }
         break;
     case OAK_SPEECH_MAIN_STATE_MARILL_CRY:
-        if (!Sprite_IsCellAnimationRunning(data->sprites[5])) {
+        if (!Sprite_IsAnimated(data->sprites[5])) {
             --data->playerPicShrinkAnimStep;
             G2_SetBlendBrightness(GX_BLEND_PLANEMASK_OBJ, data->playerPicShrinkAnimStep);
             if (data->playerPicShrinkAnimStep == 0) {
@@ -2191,14 +2191,14 @@ static void OakSpeech_TouchToAdvanceButtonAction(OakSpeechData *data, int action
     GF_ASSERT(data != NULL);
     switch (action) {
     case TOUCHTOADVANCE_HIDE:
-        GF_ASSERT(Sprite_GetVisibleFlag(data->sprites[3]) == TRUE);
+        GF_ASSERT(Sprite_GetDrawFlag(data->sprites[3]) == TRUE);
         OakSpeech_HideTutorialTouchMsg(data);
-        Sprite_SetVisibleFlag(data->sprites[3], FALSE);
+        Sprite_SetDrawFlag(data->sprites[3], FALSE);
         break;
     case TOUCHTOADVANCE_SHOW:
-        GF_ASSERT(Sprite_GetVisibleFlag(data->sprites[3]) == FALSE);
+        GF_ASSERT(Sprite_GetDrawFlag(data->sprites[3]) == FALSE);
         OakSpeech_ShowTutorialTouchMsg(data);
-        Sprite_SetVisibleFlag(data->sprites[3], TRUE);
+        Sprite_SetDrawFlag(data->sprites[3], TRUE);
         break;
     case TOUCHTOADVANCE_PRESS:
         Sprite_SetAnimCtrlSeq(data->sprites[3], 1);
@@ -2218,7 +2218,7 @@ static BOOL OakSpeech_IsTouchToAdvanceButtonDepressed(OakSpeechData *data) {
 
 static BOOL OakSpeech_IsTouchToAdvanceButtonActive(OakSpeechData *data) {
     GF_ASSERT(data != NULL);
-    return Sprite_GetVisibleFlag(data->sprites[3]) == TRUE;
+    return Sprite_GetDrawFlag(data->sprites[3]) == TRUE;
 }
 
 static void OakSpeech_HandleTouchToAdvanceButton(OakSpeechData *data) {

@@ -525,7 +525,7 @@ _021E83CC:
 	bl ov01_021E847C
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
-	bl GF_PlttResObj_GetVramSlotNum
+	bl SpriteTransfer_GetPlttOffset
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021E83E4:
@@ -916,7 +916,7 @@ _021E86A2:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r6]
 	add r1, r5, r1
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	b _021E86EA
 _021E86E6:
 	bl GF_AssertFail

@@ -396,7 +396,7 @@ _02237FD8:
 	mov r3, #0xa
 	bl DrawFrameAndWindow2
 	mov r0, #5
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	add r1, r4, #0
 	add r1, #0x90
 	str r0, [r1]
@@ -406,7 +406,7 @@ _02237FD8:
 	ldr r1, _02238314 ; =ov12_0226C060
 	ldr r2, _02238318 ; =ov12_0226C018
 	mov r3, #0x20
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r1, _0223831C ; =0x00100010
 	mov r0, #1
 	bl G2dRenderer_SetObjCharTransferReservedRegion
@@ -415,7 +415,7 @@ _02237FD8:
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	add r1, r4, #0
 	add r1, #0x94
 	str r0, [r1]
@@ -426,7 +426,7 @@ _02237FD8:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x80
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	add r0, r4, #0
 	add r1, r4, #0
 	add r0, #0x90
@@ -434,11 +434,11 @@ _02237FD8:
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _02238320 ; =ov12_0226C02C
-	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
+	bl SpriteSystem_InitManagerWithCapacities
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl SpriteRenderer_GetG2dRendererPtr
+	bl SpriteSystem_GetRenderer
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #0x10
@@ -3168,7 +3168,7 @@ _02239798:
 	ldr r0, [r0]
 	bl PokepicManager_HandleLoadImgAndOrPltt
 	bl GF_RunVramTransferTasks
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 	ldr r0, [r4, #0x28]
 	bl PaletteData_PushTransparentBuffers
 	ldr r0, [r4, #4]
@@ -3236,8 +3236,8 @@ _02239830:
 	bl PokepicManager_DrawAll
 	add r4, #0x94
 	ldr r0, [r4]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
-	bl SpriteRenderer_thunk_UpdateCellTransferStateManager
+	bl SpriteSystem_DrawSprites
+	bl SpriteSystem_UpdateTransfer
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers

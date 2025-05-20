@@ -1137,7 +1137,7 @@ _0225DE42:
 	ldr r0, [r4, r1]
 	add r1, #0xea
 	ldrh r1, [r4, r1]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0225DE90 ; =0x0000028A
 	ldrh r0, [r4, r0]
 	cmp r0, #0
@@ -2165,7 +2165,7 @@ ov34_0225E5EC: ; 0x0225E5EC
 	add r4, r7, r0
 	lsl r6, r5, #2
 	ldr r0, [r4, r6]
-	bl Sprite_GetAnimCtrlCurrentFrame
+	bl Sprite_GetAnimationFrame
 	str r0, [sp]
 	ldr r0, [r4, r6]
 	bl Sprite_GetAnimationNumber
@@ -2203,7 +2203,7 @@ _0225E63A:
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Sprite_GetAnimCtrlCurrentFrame
+	bl Sprite_GetAnimationFrame
 	mov r0, #0x2a
 	lsl r0, r0, #4
 	ldrh r0, [r4, r0]
@@ -2234,7 +2234,7 @@ _0225E662:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 _0225E688:
 	add r6, r6, #1
 	add r5, r5, #4

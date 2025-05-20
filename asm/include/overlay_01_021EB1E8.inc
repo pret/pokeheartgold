@@ -53,9 +53,9 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_GetMatrixPtr
-.public Sprite_SetAnimCtrlCurrentFrame
+.public Sprite_SetAnimationFrame
 .public GF_AssertFail
 .public GF_InitG2dRenderer
 .public PlayerAvatar_GetMapObject

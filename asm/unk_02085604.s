@@ -508,7 +508,7 @@ _020859A2:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, #0xc]
-	bl UnkImageStruct_AddSpritePositionXY
+	bl ManagedSprite_OffsetPositionXY
 	ldrb r0, [r4, #0x18]
 	sub r0, r0, #1
 	strb r0, [r4, #0x18]
@@ -527,7 +527,7 @@ _020859A2:
 	ldr r1, [r7, r1]
 	ldr r0, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0200E024
+	bl ManagedSprite_SetAffineScale
 	ldrb r0, [r4, #0x19]
 	add r0, r0, #1
 	strb r0, [r4, #0x19]
@@ -548,7 +548,7 @@ _020859E4:
 	ldr r1, [r1, r2]
 	ldr r0, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0200E024
+	bl ManagedSprite_SetAffineScale
 	ldrb r0, [r4, #0x19]
 	add r0, r0, #1
 	strb r0, [r4, #0x19]
@@ -582,7 +582,7 @@ _02085A2E:
 	ldrsh r1, [r4, r1]
 	ldrsh r2, [r4, r2]
 	ldr r0, [r4, r0]
-	bl UnkImageStruct_AddSpritePositionXY
+	bl ManagedSprite_OffsetPositionXY
 	mov r0, #0x76
 	lsl r0, r0, #2
 	ldrb r0, [r4, r0]
@@ -620,9 +620,9 @@ _02085A82:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	ldr r0, [r4, #0xc]
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 	ldr r0, [r5, r7]
 	add r6, r6, #1
 	add r4, #0x1c
@@ -647,9 +647,9 @@ _02085ABA:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r4, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	ldr r0, [r4, #0xc]
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 	ldr r0, [r5, r7]
 	add r6, r6, #1
 	add r4, #0x1c
@@ -688,7 +688,7 @@ _02085B06:
 	ldr r1, [r7, r1]
 	ldr r0, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0200E024
+	bl ManagedSprite_SetAffineScale
 	ldrb r0, [r4, #0x19]
 	add r0, r0, #1
 	strb r0, [r4, #0x19]
@@ -720,7 +720,7 @@ _02085B42:
 	ldr r1, [r7, r1]
 	ldr r0, [r4, #0xc]
 	add r2, r1, #0
-	bl sub_0200E024
+	bl ManagedSprite_SetAffineScale
 	ldrb r0, [r4, #0x19]
 	add r0, r0, #1
 	strb r0, [r4, #0x19]
@@ -814,7 +814,7 @@ sub_02085BEC: ; 0x02085BEC
 	mov r0, #0xbd
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	nop
@@ -1047,12 +1047,12 @@ _02085D8E:
 	add r1, r0, #0
 	add r0, r4, r7
 	ldr r0, [r0, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	add r0, r4, r7
 	ldr r3, [r0, #4]
 	ldr r0, [sp]
@@ -1302,7 +1302,7 @@ _02085FA8:
 	bl sub_02086D98
 	add r1, r0, #0
 	ldr r0, [r5, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 _02085FC0:
 	mov r0, #1
 	str r0, [sp]
@@ -1385,7 +1385,7 @@ _02086044:
 	add r1, r0, #0
 	add r0, r5, r4
 	ldr r0, [r0, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	add r0, r5, r4
 	ldr r7, [r0, #4]
 	mov r0, #0x3f
@@ -1404,7 +1404,7 @@ _02086044:
 	add r1, r0, #0
 	add r0, r5, r4
 	ldr r0, [r0, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	add r0, r5, r4
 	ldr r3, [r0, #4]
 	cmp r7, r3
@@ -1658,7 +1658,7 @@ _0208623E:
 	add r1, r0, #0
 	add r0, r4, r6
 	ldr r0, [r0, #0xc]
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	mov r1, #1
 	add r0, r4, #0
 	add r2, r1, #0
@@ -1683,7 +1683,7 @@ _0208623E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #3
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	add r0, r4, r6
 	ldr r2, [r0, #4]
 	mov r0, #0x2d

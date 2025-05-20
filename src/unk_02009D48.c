@@ -10,12 +10,12 @@
 #include "unk_02025C44.h"
 
 void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
-    GF_2DGfxResObj *charObj;
-    GF_2DGfxResObj *plttObj;
-    GF_2DGfxResObj *cellObj;
-    GF_2DGfxResObj *cellAnmObj = NULL;
-    GF_2DGfxResObj *multiCellObj = NULL;
-    GF_2DGfxResObj *multiCellAnmObj = NULL;
+    SpriteResource *charObj;
+    SpriteResource *plttObj;
+    SpriteResource *cellObj;
+    SpriteResource *cellAnmObj = NULL;
+    SpriteResource *multiCellObj = NULL;
+    SpriteResource *multiCellAnmObj = NULL;
     NNSG2dImageProxy *proxy;
 
     GF_ASSERT(charMan != NULL);
@@ -24,25 +24,25 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     GF_ASSERT(cellMan != NULL);
     GF_ASSERT(hdr != NULL);
 
-    charObj = Get2DGfxResObjById(charMan, charId);
+    charObj = SpriteResourceCollection_Find(charMan, charId);
     GF_ASSERT(charObj != NULL);
-    plttObj = Get2DGfxResObjById(plttMan, plttId);
+    plttObj = SpriteResourceCollection_Find(plttMan, plttId);
     GF_ASSERT(plttObj != NULL);
-    cellObj = Get2DGfxResObjById(cellMan, cellId);
+    cellObj = SpriteResourceCollection_Find(cellMan, cellId);
     GF_ASSERT(cellObj != NULL);
 
     if (cellAnmMan != NULL) {
         if (cellAnmId != -1) {
-            cellAnmObj = Get2DGfxResObjById(cellAnmMan, cellAnmId);
+            cellAnmObj = SpriteResourceCollection_Find(cellAnmMan, cellAnmId);
             GF_ASSERT(cellAnmObj != NULL);
         }
     }
     if (multiCellMan != NULL) {
         if (multiCellId != -1) {
-            multiCellObj = Get2DGfxResObjById(multiCellMan, multiCellId);
+            multiCellObj = SpriteResourceCollection_Find(multiCellMan, multiCellId);
         }
         if (multiCellAnmId != -1) {
-            multiCellAnmObj = Get2DGfxResObjById(multiCellAnmMan, multiCellAnmId);
+            multiCellAnmObj = SpriteResourceCollection_Find(multiCellAnmMan, multiCellAnmId);
         }
     }
     if (transfer) {
@@ -54,7 +54,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
         GF_ASSERT(proxy != NULL);
         hdr->charData = NULL;
     }
-    hdr->plttProxy = GF_PlttResObj_GetPlttProxy(plttObj, proxy);
+    hdr->plttProxy = SpriteTransfer_GetPaletteProxy(plttObj, proxy);
     hdr->imageProxy = proxy;
     hdr->cellData = GF2DGfxResObj_GetCellDataPtr(cellObj);
     if (cellAnmObj != NULL) {
@@ -98,7 +98,7 @@ void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     FreeToHeap(list);
 }
 
-SpriteList *G2dRenderer_Init(int numSprites, GF_G2dRenderer *renderer, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapId) {
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 
@@ -119,7 +119,7 @@ SpriteList *G2dRenderer_Init(int numSprites, GF_G2dRenderer *renderer, HeapID he
     return SpriteList_Create(&param);
 }
 
-void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y) {
+void G2dRenderer_SetMainSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y) {
     struct NNSG2dViewRect rect;
 
     rect.posTopLeft.x = x;
@@ -129,7 +129,7 @@ void G2dRenderer_SetMainSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y) 
     GF_SetG2dRendererSurface(&renderer->renderSurface[0], &rect);
 }
 
-void G2dRenderer_SetSubSurfaceCoords(GF_G2dRenderer *renderer, fx32 x, fx32 y) {
+void G2dRenderer_SetSubSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y) {
     struct NNSG2dViewRect rect;
 
     rect.posTopLeft.x = x;

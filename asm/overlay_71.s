@@ -2490,7 +2490,7 @@ ov71_02247C34: ; 0x02247C34
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x3c]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #1
 	pop {r4, pc}
 _02247C5A:
@@ -2733,14 +2733,14 @@ _02247E2A:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _02247EC6
 _02247E50:
 	ldr r0, [r5, #0x40]
-	bl Sprite_IsCellAnimationRunning
+	bl Sprite_IsAnimated
 	cmp r0, #0
 	bne _02247EC6
 	ldr r0, [r5, #0x74]
@@ -3002,10 +3002,10 @@ ov71_02247FF8: ; 0x02247FF8
 	bl Sprite_SetPriority
 	ldr r0, [r4, #0x3c]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x70
 	pop {r4, pc}
 	thumb_func_end ov71_02247FF8
@@ -4316,10 +4316,10 @@ _02248AA2:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x20]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [sp, #0x14]
 	add r4, #8
 	add r0, r0, #1
@@ -4530,12 +4530,12 @@ _02248C66:
 	mov r1, #1
 	add r0, r0, r4
 	ldr r0, [r0, #0x1c]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #4]
 	mov r1, #1
 	add r0, r0, r4
 	ldr r0, [r0, #0x20]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02248CA6:
 	ldr r0, [r5, #4]
 	add r1, r7, #0
@@ -5770,14 +5770,14 @@ _022495FA:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224965C
 _02249624:
 	ldr r0, [r5, #0x20]
-	bl Sprite_IsCellAnimationRunning
+	bl Sprite_IsAnimated
 	cmp r0, #0
 	bne _0224965C
 	mov r0, #0x10
@@ -6164,7 +6164,7 @@ ov71_022498F0: ; 0x022498F0
 	bl ov71_02247340
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x70
 	pop {r4, pc}
 	.balign 4, 0
@@ -7260,14 +7260,14 @@ _0224A1E6:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, #0x20]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
 	b _0224A26A
 _0224A206:
 	ldr r0, [r5, #0x20]
-	bl Sprite_IsCellAnimationRunning
+	bl Sprite_IsAnimated
 	cmp r0, #0
 	bne _0224A26A
 	ldr r0, _0224A270 ; =0x000006AA
@@ -7682,7 +7682,7 @@ ov71_0224A510: ; 0x0224A510
 	bl ov71_02247340
 	mov r1, #0
 	str r0, [r4, #0x20]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x70
 	pop {r4, pc}
 	.balign 4, 0
@@ -9546,7 +9546,7 @@ ov71_0224B450: ; 0x0224B450
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #1
 	pop {r4, pc}
 _0224B476:
@@ -9594,7 +9594,7 @@ _0224B4AE:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x44]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x78]
 	mov r1, #0
 	bl ov71_02247704
@@ -10093,10 +10093,10 @@ ov71_0224B848: ; 0x0224B848
 	bl Sprite_SetPriority
 	ldr r0, [r4, #0x40]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x70
 	pop {r4, pc}
 	thumb_func_end ov71_0224B848

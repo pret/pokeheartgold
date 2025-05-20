@@ -84,10 +84,10 @@ _020755FA:
 	strh r0, [r1, #6]
 	add r0, r7, #0
 	mov r1, ip
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	mov r1, #1
 	add r4, r0, #0
-	bl UnkImageStruct_SetSpriteAnimActiveFlag
+	bl ManagedSprite_SetAnimateFlag
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
@@ -101,14 +101,14 @@ sub_02075630: ; 0x02075630
 	sub sp, #0x5c
 	add r5, r0, #0
 	ldr r0, [r5, #0x5c]
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	add r1, r5, #0
 	add r1, #0xac
 	str r0, [r1]
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	add r1, r5, #0
 	add r1, #0xb0
 	add r2, sp, #0x3c
@@ -139,7 +139,7 @@ sub_02075630: ; 0x02075630
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r3, #0x20
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	add r0, r5, #0
 	add r1, r5, #0
 	add r0, #0xac
@@ -147,7 +147,7 @@ sub_02075630: ; 0x02075630
 	ldr r0, [r0]
 	ldr r1, [r1]
 	mov r2, #0x10
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	ldr r4, _0207576C ; =_020FFEFC
 	add r3, sp, #0x10
 	add r2, r3, #0
@@ -163,7 +163,7 @@ sub_02075630: ; 0x02075630
 	add r1, #0xb0
 	ldr r0, [r0]
 	ldr r1, [r1]
-	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
+	bl SpriteSystem_InitManagerWithCapacities
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r6, [r0]
@@ -185,7 +185,7 @@ sub_02075630: ; 0x02075630
 	add r1, r4, #0
 	add r2, r7, #0
 	mov r3, #0xb
-	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
+	bl SpriteSystem_LoadPlttResObjFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #2
@@ -195,7 +195,7 @@ sub_02075630: ; 0x02075630
 	add r1, r4, #0
 	add r2, r7, #0
 	mov r3, #0xc
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -203,7 +203,7 @@ sub_02075630: ; 0x02075630
 	add r1, r4, #0
 	add r2, r7, #0
 	mov r3, #0xd
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -211,7 +211,7 @@ sub_02075630: ; 0x02075630
 	add r1, r4, #0
 	add r2, r7, #0
 	mov r3, #0xe
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add r0, r7, #0
 	bl NARC_Delete
 	mov r0, #1
@@ -232,7 +232,7 @@ sub_02075630: ; 0x02075630
 	add r0, #0xb4
 	ldr r0, [r0]
 	mov r1, #0
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	mov r0, #1
 	add r5, #0xb8
 	str r0, [r5]
@@ -263,12 +263,12 @@ _0207578C:
 	add r0, r5, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	add r0, r4, #0
 	add r1, r6, #0
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+	bl SpriteSystem_FreeResourcesAndManager
 	add r0, r4, #0
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	mov r0, #0
 	add r5, #0xb8
 	str r0, [r5]
@@ -316,7 +316,7 @@ _020757E6:
 	ldrsh r1, [r1, r3]
 	ldrsh r2, [r2, r3]
 	ldr r0, [r5]
-	bl UnkImageStruct_SetSpritePositionXY
+	bl ManagedSprite_SetPositionXY
 	pop {r3, r4, r5, pc}
 	nop
 _020757FC: .word _020FFEC4
@@ -413,7 +413,7 @@ _02075878:
 	add r5, #0xb4
 	ldr r0, [r5]
 	mov r1, #1
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _020758C8: .word 0x0000049D
@@ -534,7 +534,7 @@ _020759A0:
 	add r5, #0xb4
 	ldr r0, [r5]
 	mov r1, #3
-	bl UnkImageStruct_SetSpriteAnimSeqNo
+	bl ManagedSprite_SetAnim
 	ldr r0, _020759C4 ; =0x000005DC
 	bl PlaySE
 _020759BA:
@@ -559,14 +559,14 @@ _020759DC:
 	add r0, r4, #0
 	add r0, #0xb4
 	ldr r0, [r0]
-	bl UnkImageStruct_GetSpriteCurrentAnimSeqNo
+	bl ManagedSprite_GetActiveAnim
 	cmp r0, #3
 	beq _020759EE
 	bl GF_AssertFail
 _020759EE:
 	add r4, #0xb4
 	ldr r0, [r4]
-	bl sub_0200DCA0
+	bl ManagedSprite_IsAnimated
 	cmp r0, #0
 	bne _020759FE
 	mov r0, #1
@@ -628,7 +628,7 @@ _02075A52:
 	add r0, #0xb4
 	ldr r0, [r0]
 	mov r1, #0
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	add r4, #0x8b
 	ldrb r0, [r4]
 	pop {r4, pc}
@@ -3474,8 +3474,8 @@ _020772C0:
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_DrawSprites
+	bl SpriteSystem_TransferOam
 _020772CE:
 	bl GF_RunVramTransferTasks
 	ldr r0, [r4, #0x14]

@@ -22,9 +22,9 @@ typedef struct BattleFinger {
     u8 touchAnimationDelay;
 } BattleFinger;
 
-void BattleFinger_LoadResources(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation);
-void BattleFinger_FreeResources(SpriteGfxHandler *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation);
-BattleFinger *BattleFinger_New(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority);
+void BattleFinger_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation);
+void BattleFinger_FreeResources(SpriteManager *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation);
+BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority);
 void BattleFinger_Delete(BattleFinger *finger);
 void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3);
 void ov12_0226BD2C(BattleFinger *finger, int x, int y);

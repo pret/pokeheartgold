@@ -57,7 +57,7 @@
 .public sub_0200AEB0
 .public sub_0200B00C
 .public sub_0200B0A8
-.public GF_PlttResObj_GetPlttProxy
+.public SpriteTransfer_GetPaletteProxy
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
@@ -171,13 +171,13 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_GetAnimationNumber
-.public Sprite_TickAnimCtrlFrame
-.public Sprite_SetAnimCtrlCurrentFrame
-.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_UpdateAnim
+.public Sprite_SetAnimationFrame
+.public Sprite_GetAnimationFrame
 .public Sprite_SetDrawPriority
 .public System_GetTouchNew
 .public GF_AssertFail

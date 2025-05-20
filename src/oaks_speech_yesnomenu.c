@@ -76,7 +76,7 @@ void OakSpeechYesNo_Start(OakSpeechYesNo *yesnoMenu, int msgBank, int msgId_Yes,
     OakSpeechYesNo_SetCursorSpritePos(yesnoMenu);
     ToggleBgLayer(yesnoMenu->backgroundBgId, GF_PLANE_TOGGLE_ON);
     ToggleBgLayer(yesnoMenu->buttonBgId, GF_PLANE_TOGGLE_ON);
-    Sprite_SetVisibleFlag(yesnoMenu->sprite, TRUE);
+    Sprite_SetDrawFlag(yesnoMenu->sprite, TRUE);
 }
 
 int OakSpeechYesNo_Main(OakSpeechYesNo *yesnoMenu) {
@@ -91,7 +91,7 @@ int OakSpeechYesNo_Main(OakSpeechYesNo *yesnoMenu) {
             GF_ASSERT(yesnoMenu->result != YESNORESPONSE_WAIT);
             ToggleBgLayer(yesnoMenu->backgroundBgId, GF_PLANE_TOGGLE_OFF);
             ToggleBgLayer(yesnoMenu->buttonBgId, GF_PLANE_TOGGLE_OFF);
-            Sprite_SetVisibleFlag(yesnoMenu->sprite, FALSE);
+            Sprite_SetDrawFlag(yesnoMenu->sprite, FALSE);
             return yesnoMenu->result;
         }
         break;
@@ -228,5 +228,5 @@ static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu) {
 
 static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu) {
     GF_ASSERT(Sprite_GetAnimationNumber(yesnoMenu->sprite) == 3);
-    return !Sprite_IsCellAnimationRunning(yesnoMenu->sprite);
+    return !Sprite_IsAnimated(yesnoMenu->sprite);
 }

@@ -96,8 +96,8 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GF_CreateVramTransferManager(0x20, HEAP_ID_OAKS_SPEECH);
-    data->spriteRenderer = SpriteRenderer_Create(HEAP_ID_OAKS_SPEECH);
-    data->spriteGfxHandler = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
+    data->spriteRenderer = SpriteSystem_Alloc(HEAP_ID_OAKS_SPEECH);
+    data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
 
     {
         OamManagerParam oamManagerParam = {
@@ -119,11 +119,11 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
             .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
         };
 
-        SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &oamManagerParam, &oamCharTransferParam, 0x20);
+        SpriteSystem_Init(data->spriteRenderer, &oamManagerParam, &oamCharTransferParam, 0x20);
     }
 
-    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler, 10);
-    G2dRenderer_SetSubSurfaceCoords(SpriteRenderer_GetG2dRendererPtr(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
+    SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, 10);
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), 0, FX32_CONST(GX_LCD_SIZE_Y));
 
     {
         u16 fileIdList[7] = {
@@ -140,25 +140,25 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
 }
 
 void OakSpeech_CleanupSpriteEngine(OakSpeechData *data) {
-    SpriteRenderer_RemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler);
-    SpriteRenderer_Delete(data->spriteRenderer);
+    SpriteSystem_DestroySpriteManager(data->spriteRenderer, data->spriteGfxHandler);
+    SpriteSystem_Free(data->spriteRenderer);
     GF_DestroyVramTransferManager();
     data->spriteGfxHandler = NULL;
 }
 
 void OakSpeech_CreateSprites(OakSpeechData *data) {
     for (u16 i = 0; i < 6; ++i) {
-        data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
+        data->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
     }
-    Sprite_SetVisibleFlag(data->sprites[0], FALSE);
-    Sprite_SetVisibleFlag(data->sprites[1], FALSE);
-    Sprite_SetVisibleFlag(data->sprites[2], FALSE);
-    Sprite_SetVisibleFlag(data->sprites[3], FALSE);
-    Sprite_SetVisibleFlag(data->sprites[4], FALSE);
+    Sprite_SetDrawFlag(data->sprites[0], FALSE);
+    Sprite_SetDrawFlag(data->sprites[1], FALSE);
+    Sprite_SetDrawFlag(data->sprites[2], FALSE);
+    Sprite_SetDrawFlag(data->sprites[3], FALSE);
+    Sprite_SetDrawFlag(data->sprites[4], FALSE);
     Sprite_SetPriority(data->sprites[3], 1);
     Sprite_SetAnimActiveFlag(data->sprites[5], 1);
-    Sprite_SetAffineOverwriteType(data->sprites[5], 1);
-    Sprite_SetVisibleFlag(data->sprites[5], FALSE);
+    Sprite_SetAffineOverwriteMode(data->sprites[5], 1);
+    Sprite_SetDrawFlag(data->sprites[5], FALSE);
 }
 
 void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int action) {
@@ -179,6 +179,6 @@ void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int act
         sprite2Visible = FALSE;
     }
 
-    Sprite_SetVisibleFlag(data->sprites[1], sprite1Visible);
-    Sprite_SetVisibleFlag(data->sprites[2], sprite2Visible);
+    Sprite_SetDrawFlag(data->sprites[1], sprite1Visible);
+    Sprite_SetDrawFlag(data->sprites[2], sprite2Visible);
 }

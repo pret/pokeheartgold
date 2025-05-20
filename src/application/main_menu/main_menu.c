@@ -841,11 +841,11 @@ static void MainMenu_SetupSprites(MainMenuAppData *data) {
     ov74_02235728(NARC_a_1_1_3, 47, 44, 46, 45, 0);
 
     data->upArrowSprite = ov74_02235930(0, data->upArrowSprite, 236, 20, 0);
-    Sprite_SetVisibleFlag(data->upArrowSprite, TRUE);
+    Sprite_SetDrawFlag(data->upArrowSprite, TRUE);
     Sprite_SetAnimActiveFlag(data->upArrowSprite, FALSE);
 
     data->downArrowSprite = ov74_02235930(0, data->downArrowSprite, 236, 172, 1);
-    Sprite_SetVisibleFlag(data->downArrowSprite, TRUE);
+    Sprite_SetDrawFlag(data->downArrowSprite, TRUE);
     Sprite_SetAnimActiveFlag(data->downArrowSprite, FALSE);
 }
 

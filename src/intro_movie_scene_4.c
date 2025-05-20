@@ -261,7 +261,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE4_WAIT_SPARKLE:
-        if (!Sprite_IsCellAnimationRunning(sceneData->sparklesSprite)) {
+        if (!Sprite_IsAnimated(sceneData->sparklesSprite)) {
             return TRUE;
         }
         break;
@@ -448,7 +448,7 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
     template.position.y = FX32_ONE * (0x100 + 96);
     sceneData->hand1Sprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->hand1Sprite, FALSE);
-    Sprite_SetVisibleFlag(sceneData->hand1Sprite, FALSE);
+    Sprite_SetDrawFlag(sceneData->hand1Sprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->hand1Sprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
@@ -456,7 +456,7 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
     template.position.y = FX32_ONE * 96;
     sceneData->hand2Sprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->hand2Sprite, FALSE);
-    Sprite_SetVisibleFlag(sceneData->hand2Sprite, FALSE);
+    Sprite_SetDrawFlag(sceneData->hand2Sprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->hand2Sprite, 1);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(0, data, 0, NNS_G2D_VRAM_TYPE_2DMAIN, &template, &header);
@@ -464,7 +464,7 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
     template.position.y = FX32_ONE * 96;
     sceneData->sparklesSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->sparklesSprite, FALSE);
-    Sprite_SetVisibleFlag(sceneData->sparklesSprite, FALSE);
+    Sprite_SetDrawFlag(sceneData->sparklesSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->sparklesSprite, 2);
 
     for (u8 i = 0; i < 3; ++i) {
@@ -473,7 +473,7 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
         template.position.y = FX32_ONE * 96;
         sceneData->starterSprites[i] = Sprite_CreateAffine(&template);
         Sprite_SetAnimActiveFlag(sceneData->starterSprites[i], FALSE);
-        Sprite_SetVisibleFlag(sceneData->starterSprites[i], FALSE);
+        Sprite_SetDrawFlag(sceneData->starterSprites[i], FALSE);
         Sprite_SetAnimCtrlSeq(sceneData->starterSprites[i], 0);
     }
 }

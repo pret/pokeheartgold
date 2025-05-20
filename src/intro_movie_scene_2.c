@@ -325,7 +325,7 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     for (u8 i = 0; i < 10; ++i) {
         sceneData->flowerSprites[i] = Sprite_CreateAffine(&spriteTemplate);
         Sprite_SetAnimActiveFlag(sceneData->flowerSprites[i], FALSE);
-        Sprite_SetVisibleFlag(sceneData->flowerSprites[i], FALSE);
+        Sprite_SetDrawFlag(sceneData->flowerSprites[i], FALSE);
         Sprite_SetAnimCtrlSeq(sceneData->flowerSprites[i], anims[i]);
     }
 
@@ -334,15 +334,15 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     spriteTemplate.position.y = -96 * FX32_ONE;
     sceneData->ethanSprite0 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->ethanSprite0, FALSE);
-    Sprite_SetVisibleFlag(sceneData->ethanSprite0, TRUE);
+    Sprite_SetDrawFlag(sceneData->ethanSprite0, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->ethanSprite0, 0);
     sceneData->ethanSprite1 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->ethanSprite1, FALSE);
-    Sprite_SetVisibleFlag(sceneData->ethanSprite1, TRUE);
+    Sprite_SetDrawFlag(sceneData->ethanSprite1, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->ethanSprite1, 1);
     sceneData->ethanSprite2 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->ethanSprite2, FALSE);
-    Sprite_SetVisibleFlag(sceneData->ethanSprite2, TRUE);
+    Sprite_SetDrawFlag(sceneData->ethanSprite2, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->ethanSprite2, 2);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(1, data, 1, NNS_G2D_VRAM_TYPE_2DMAIN, &spriteTemplate, &spriteHeader);
@@ -350,15 +350,15 @@ static void IntroMovie_Scene2_CreateSprites(IntroMovieOverlayData *data, IntroMo
     spriteTemplate.position.y = -96 * FX32_ONE;
     sceneData->lyraSprite0 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->lyraSprite0, FALSE);
-    Sprite_SetVisibleFlag(sceneData->lyraSprite0, TRUE);
+    Sprite_SetDrawFlag(sceneData->lyraSprite0, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->lyraSprite0, 3);
     sceneData->lyraSprite1 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->lyraSprite1, FALSE);
-    Sprite_SetVisibleFlag(sceneData->lyraSprite1, TRUE);
+    Sprite_SetDrawFlag(sceneData->lyraSprite1, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->lyraSprite1, 4);
     sceneData->lyraSprite2 = Sprite_CreateAffine(&spriteTemplate);
     Sprite_SetAnimActiveFlag(sceneData->lyraSprite2, FALSE);
-    Sprite_SetVisibleFlag(sceneData->lyraSprite2, TRUE);
+    Sprite_SetDrawFlag(sceneData->lyraSprite2, TRUE);
     Sprite_SetAnimCtrlSeq(sceneData->lyraSprite2, 5);
 }
 

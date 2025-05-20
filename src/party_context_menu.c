@@ -338,7 +338,7 @@ void PartyMenu_StartContextMenuButtonAnim(PartyMenu *partyMenu, int selection, i
     animData->selection = selection;
     animData->state = Sprite_GetAnimationNumber(partyMenu->sprites[selection]) & 2;
     if (restartAnim == TRUE) {
-        Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[selection], 0);
+        Sprite_SetAnimationFrame(partyMenu->sprites[selection], 0);
         Sprite_SetAnimCtrlSeq(partyMenu->sprites[selection], animData->state);
     }
     animData->followUpState = followUpState;
@@ -355,7 +355,7 @@ BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenu *partyMenu) {
             PartyMenu_PrintContextMenuItemText(partyMenu, animData->template, animData->numItems, animData->selection, animData->state, FALSE);
             BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
         } else {
-            Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[animData->selection], 0);
+            Sprite_SetAnimationFrame(partyMenu->sprites[animData->selection], 0);
             Sprite_SetAnimCtrlSeq(partyMenu->sprites[animData->selection], animData->state);
         }
         ++animData->buttonAnimState;
@@ -368,7 +368,7 @@ BOOL PartyMenu_AnimateContextMenuButtonPress(PartyMenu *partyMenu) {
                 PartyMenu_PrintContextMenuItemText(partyMenu, animData->template, animData->numItems, animData->selection, animData->state, TRUE);
                 BgCommitTilemapBufferToVram(partyMenu->bgConfig, GF_BG_LYR_MAIN_0);
             } else {
-                Sprite_SetAnimCtrlCurrentFrame(partyMenu->sprites[animData->selection], 0);
+                Sprite_SetAnimationFrame(partyMenu->sprites[animData->selection], 0);
                 Sprite_SetAnimCtrlSeq(partyMenu->sprites[animData->selection], animData->state + 1);
             }
             animData->autoAnimTimer = 0;
@@ -1099,9 +1099,9 @@ PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMe
     PartyMenu_ShowContextMenu(partyMenu, ret->menu.numItems, ret->state);
     sub_0207E358(partyMenu, &ret->menu, ret->menu.numItems, ret->prevSelection, ret->state);
     PartyMenu_SetBlendBrightness_ForYesNo();
-    Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
+    Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
+        Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
     }
     return ret;
 }
@@ -1110,12 +1110,12 @@ void PartyMenu_CloseContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor
     PartyMenu_HideContextMenu(partyMenu, cursor->numItems, cursor->state);
     FreeToHeap(cursor);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
-        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
+        Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     } else {
-        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], TRUE);
+        Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], TRUE);
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        Sprite_SetVisibleFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], TRUE);
+        Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], TRUE);
     }
 }
 
