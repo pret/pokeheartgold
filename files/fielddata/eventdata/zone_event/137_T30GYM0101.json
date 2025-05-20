@@ -24,7 +24,7 @@
       "spriteId": "SPRITE_GSLEADER8",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2EF",
+      "eventFlag": "FLAG_HIDE_BLACKTHORN_GYM_CLAIR",
       "scriptId": "_EV_scr_seq_T30GYM0101_000 + 1",
       "facingDirection": 1,
       "param0": 0,

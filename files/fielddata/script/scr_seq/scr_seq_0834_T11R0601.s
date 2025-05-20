@@ -24,7 +24,7 @@ scr_seq_T11R0601_006:
 _003F:
 	setvar VAR_UNK_411D, 0
 _0045:
-	setflag FLAG_UNK_2F7
+	setflag FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE
 	check_registered_phone_number PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _007E
@@ -32,7 +32,7 @@ _0045:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _007E
 	goto_if_set FLAG_TRADE_LT_SURGE_PIKACHU, _007E
-	clearflag FLAG_UNK_2F7
+	clearflag FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE
 _007E:
 	end
 
@@ -172,7 +172,7 @@ _022C:
 _0234:
 	wait_movement
 	hide_person obj_T11R0601_gsleader9
-	setflag FLAG_UNK_2F7
+	setflag FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE
 	releaseall
 	end
 

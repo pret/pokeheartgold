@@ -49,7 +49,7 @@
       "spriteId": "SPRITE_MONO_PIP",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2FB",
+      "eventFlag": "FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL",
       "scriptId": 0,
       "facingDirection": 1,
       "param0": 0,

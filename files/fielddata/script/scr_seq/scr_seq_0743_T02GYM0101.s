@@ -23,20 +23,20 @@ scr_seq_T02GYM0101_002:
 	get_weekday VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 5
 	goto_if_ne _0059
-	setflag FLAG_UNK_2F6
+	setflag FLAG_HIDE_VIRIDIAN_GYM_BLUE
 	goto _005D
 
 _0059:
-	clearflag FLAG_UNK_2F6
+	clearflag FLAG_HIDE_VIRIDIAN_GYM_BLUE
 _005D:
 	end
 
 _005F:
-	clearflag FLAG_UNK_2F6
+	clearflag FLAG_HIDE_VIRIDIAN_GYM_BLUE
 	end
 
 _0065:
-	setflag FLAG_UNK_2F6
+	setflag FLAG_HIDE_VIRIDIAN_GYM_BLUE
 	end
 
 scr_seq_T02GYM0101_000:
@@ -62,7 +62,7 @@ scr_seq_T02GYM0101_000:
 	settrainerflag TRAINER_DOUBLE_TEAM_ELAN_AND_IDA
 	setflag FLAG_UNK_97F
 	clearflag FLAG_HIDE_ROUTE_10_ZAPDOS
-	setflag FLAG_UNK_30F
+	setflag FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE
 	setvar VAR_UNK_4096, 1
 	npc_msg msg_0454_T02GYM0101_00001
 	buffer_players_name 0
