@@ -178,11 +178,11 @@ void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
 u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4);
 BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 a1);
 u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *appSwitch, u16 index, BOOL draw);
-u16 ov100_021E72F8(PokegearAppSwitch *appSwitch, u16 a1, u8 a2);
-u8 ov100_021E7334(PokegearAppSwitch *appSwitch);
-u8 ov100_021E733C(PokegearAppSwitch *appSwitch, u16 a1);
-u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 a1);
+u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16 index, u8 cursorPos);
+u8 PokegearAppSwitch_GetCursorPos(PokegearAppSwitch *appSwitch);
+u8 PokegearAppSwitch_GetSpecCursorPos(PokegearAppSwitch *appSwitch, u16 index);
+u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 move);
 u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex);
-void ov100_021E7414(PokegearAppSwitch *appSwitch, u16 a1, BOOL a2);
+void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H

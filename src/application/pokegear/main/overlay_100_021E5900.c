@@ -659,9 +659,9 @@ static void Pokegear_AddAppSwitchButtons(PokegearAppData *pokegearApp) {
     pokegearApp->appSwitch = PokegearAppSwitch_Alloc(4, pokegearApp->heapId);
     PokegearAppSwitch_AddButtons(pokegearApp->appSwitch, sAppSwitchButtonSpecs[pokegearApp->registeredCards], sAppSwitchButtonCounts[pokegearApp->registeredCards], 0, TRUE, pokegearApp->heapId, pokegearApp->unk_098[0], pokegearApp->unk_098[1], pokegearApp->unk_098[2], pokegearApp->unk_098[3]);
     if (pokegearApp->app == GEAR_APP_CANCEL) {
-        ov100_021E72F8(pokegearApp->appSwitch, 0, 2);
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(pokegearApp->appSwitch, 0, 2);
     } else {
-        ov100_021E72F8(pokegearApp->appSwitch, 0, ov100_021E5DC8(pokegearApp));
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(pokegearApp->appSwitch, 0, ov100_021E5DC8(pokegearApp));
     }
 }
 

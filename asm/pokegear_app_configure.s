@@ -696,7 +696,7 @@ ov101_021EEDC4: ; 0x021EEDC4
 	ldr r1, _021EEE10 ; =0x0000FFFF
 	ldr r0, [r0, #0x7c]
 	mov r2, #1
-	bl ov100_021E7414
+	bl PokegearAppSwitch_SetCursorSpritesAnimateFlag
 	cmp r4, #0
 	bne _021EEE06
 	mov r0, #4
@@ -1189,7 +1189,7 @@ ov101_021EF17C: ; 0x021EF17C
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	pop {r4, pc}
 _021EF1B6:
 	mov r1, #0
@@ -1204,7 +1204,7 @@ _021EF1B6:
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	mov r2, #0
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	pop {r4, pc}
 	thumb_func_end ov101_021EF17C
 
@@ -1575,7 +1575,7 @@ ov101_021EF4B0: ; 0x021EF4B0
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	mov r2, #0xff
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
@@ -1601,7 +1601,7 @@ ov101_021EF4DC: ; 0x021EF4DC
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	mov r2, #0xff
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
@@ -1676,7 +1676,7 @@ ov101_021EF50C: ; 0x021EF50C
 	ldr r1, _021EF5A0 ; =0x0000FFFF
 	ldr r0, [r0, #0x7c]
 	mov r2, #0
-	bl ov100_021E7414
+	bl PokegearAppSwitch_SetCursorSpritesAnimateFlag
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1874,7 +1874,7 @@ ov101_021EF6E4: ; 0x021EF6E4
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	mov r0, #0x25
 	lsl r0, r0, #6
 	bl PlaySE
@@ -1888,7 +1888,7 @@ _021EF730:
 	beq _021EF766
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E7334
+	bl PokegearAppSwitch_GetCursorPos
 	add r5, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0

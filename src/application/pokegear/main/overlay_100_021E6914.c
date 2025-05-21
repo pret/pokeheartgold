@@ -426,34 +426,34 @@ void ov100_021E71B4(PokegearAppSwitch *appSwitch, u16 index) {
     }
 }
 
-u16 ov100_021E72F8(PokegearAppSwitch *appSwitch, u16 a1, u8 a2) {
-    if (a1 >= appSwitch->count) {
+u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16 index, u8 cursorPos) {
+    if (index >= appSwitch->count) {
         return 0xFFFF;
     }
-    appSwitch->lastButton = &appSwitch->buttons[a1];
-    appSwitch->lastButtonIndex = a1;
-    if (a2 != 0xFF) {
-        if (a2 >= appSwitch->buttons[a1].count) {
-            appSwitch->buttons[a1].cursorPos = 0;
+    appSwitch->lastButton = &appSwitch->buttons[index];
+    appSwitch->lastButtonIndex = index;
+    if (cursorPos != 0xFF) {
+        if (cursorPos >= appSwitch->buttons[index].count) {
+            appSwitch->buttons[index].cursorPos = 0;
         } else {
-            appSwitch->buttons[a1].cursorPos = a2;
+            appSwitch->buttons[index].cursorPos = cursorPos;
         }
     }
     ov100_021E71B4(appSwitch, 0xFFFF);
-    return a1;
+    return index;
 }
 
-u8 ov100_021E7334(PokegearAppSwitch *a0) {
-    return a0->lastButton->cursorPos;
+u8 PokegearAppSwitch_GetCursorPos(PokegearAppSwitch *appSwitch) {
+    return appSwitch->lastButton->cursorPos;
 }
 
-u8 ov100_021E733C(PokegearAppSwitch *a0, u16 a1) {
-    if (a1 == 0xFFFF) {
-        return a0->lastButton->cursorPos;
-    } else if (a1 >= a0->count || !a0->buttons[a1].buttonsAreActive) {
+u8 PokegearAppSwitch_GetSpecCursorPos(PokegearAppSwitch *appSwitch, u16 index) {
+    if (index == 0xFFFF) {
+        return appSwitch->lastButton->cursorPos;
+    } else if (index >= appSwitch->count || !appSwitch->buttons[index].buttonsAreActive) {
         return 0;
     } else {
-        return a0->buttons[a1].cursorPos;
+        return appSwitch->buttons[index].cursorPos;
     }
 }
 
@@ -509,31 +509,31 @@ u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex) {
     return button->cursorPos;
 }
 
-void ov100_021E7414(PokegearAppSwitch *a0, u16 a1, BOOL a2) {
-    if (a1 == 0xFFFF) {
-        a1 = a0->lastButtonIndex;
+void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active) {
+    if (index == 0xFFFF) {
+        index = appSwitch->lastButtonIndex;
     }
-    if (a1 < a0->count) {
-        PokegearAppSwitchButton *r4 = &a0->buttons[a1];
-        if (r4->buttonsAreActive) {
-            if (!r4->buttonsAreManagedSprite) {
-                if (!r4->buttonsAre4Tiles) {
-                    Sprite_ResetAnimCtrlState(r4->cursorSprites[0].sprite);
-                    thunk_Sprite_SetAnimationFlag(r4->cursorSprites[0].sprite, a2);
+    if (index < appSwitch->count) {
+        PokegearAppSwitchButton *button = &appSwitch->buttons[index];
+        if (button->buttonsAreActive) {
+            if (!button->buttonsAreManagedSprite) {
+                if (!button->buttonsAre4Tiles) {
+                    Sprite_ResetAnimCtrlState(button->cursorSprites[0].sprite);
+                    thunk_Sprite_SetAnimationFlag(button->cursorSprites[0].sprite, active);
                 } else {
                     for (int i = 0; i < 4; ++i) {
-                        Sprite_ResetAnimCtrlState(r4->cursorSprites[i].sprite);
-                        thunk_Sprite_SetAnimationFlag(r4->cursorSprites[i].sprite, a2);
+                        Sprite_ResetAnimCtrlState(button->cursorSprites[i].sprite);
+                        thunk_Sprite_SetAnimationFlag(button->cursorSprites[i].sprite, active);
                     }
                 }
             } else {
-                if (!r4->buttonsAre4Tiles) {
-                    ManagedSprite_ResetSpriteAnimCtrlState(r4->cursorSprites[0].managed);
-                    ManagedSprite_SetAnimateFlag(r4->cursorSprites[0].managed, a2);
+                if (!button->buttonsAre4Tiles) {
+                    ManagedSprite_ResetSpriteAnimCtrlState(button->cursorSprites[0].managed);
+                    ManagedSprite_SetAnimateFlag(button->cursorSprites[0].managed, active);
                 } else {
                     for (int i = 0; i < 4; ++i) {
-                        ManagedSprite_ResetSpriteAnimCtrlState(r4->cursorSprites[i].managed);
-                        ManagedSprite_SetAnimateFlag(r4->cursorSprites[i].managed, a2);
+                        ManagedSprite_ResetSpriteAnimCtrlState(button->cursorSprites[i].managed);
+                        ManagedSprite_SetAnimateFlag(button->cursorSprites[i].managed, active);
                     }
                 }
             }

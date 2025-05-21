@@ -321,12 +321,12 @@
 .public PokegearAppSwitch_AddButtons
 .public PokegearAppSwitch_RemoveButtons
 .public PokegearAppSwitchCursor_SetCursorSpritesDrawState
-.public ov100_021E72F8
-.public ov100_021E7334
-.public ov100_021E733C
+.public PokegearAppSwitch_SetSpecIndexAndCursorPos
+.public PokegearAppSwitch_GetCursorPos
+.public PokegearAppSwitch_GetSpecCursorPos
 .public ov100_021E73AC
 .public ov100_021E73C8
-.public ov100_021E7414
+.public PokegearAppSwitch_SetCursorSpritesAnimateFlag
 .public PokegearMap_Init
 .public PokegearMap_Main
 .public PokegearMap_Exit

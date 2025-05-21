@@ -1404,7 +1404,7 @@ ov101_021F4F00: ; 0x021F4F00
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	pop {r4, pc}
 _021F4F2A:
 	mov r1, #0
@@ -1942,7 +1942,7 @@ ov101_021F5304: ; 0x021F5304
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E72F8
+	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
 	mov r0, #0x25
 	lsl r0, r0, #6
 	bl PlaySE
