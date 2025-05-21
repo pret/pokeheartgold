@@ -17,7 +17,7 @@ typedef enum PokegearAppMainState {
     POKEGEAR_APP_MAIN_STATE_SETUP,
     POKEGEAR_APP_MAIN_STATE_TEARDOWN,
     POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE,
-    POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE,
+    POKEGEAR_APP_MAIN_STATE_RUN_CONFIGURE,
     POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO,
     POKEGEAR_APP_MAIN_STATE_RUN_RADIO,
     POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP,
@@ -106,7 +106,7 @@ BOOL Pokegear_Main(OVY_MANAGER *man, int *state) {
     case POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE:
         *state = Pokegear_MainStep_LaunchConfigure(pokegearApp);
         break;
-    case POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE:
+    case POKEGEAR_APP_MAIN_STATE_RUN_CONFIGURE:
         *state = Pokegear_MainStep_RunConfigure(pokegearApp);
         break;
     case POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO:
@@ -277,12 +277,12 @@ static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegear
 static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *pokegearApp) {
     static const OVY_MGR_TEMPLATE sOverlayTemplate_GearConfigure = { PokegearConfigure_Init, PokegearConfigure_Main, PokegearConfigure_Exit, FS_OVERLAY_ID(OVY_101) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearConfigure, pokegearApp, pokegearApp->heapId);
-    return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
+    return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGURE;
 }
 
 static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *pokegearApp) {
     if (!PokegearApp_RunSubapp(&pokegearApp->childApplication)) {
-        return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGUREPOKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
+        return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGURE;
     }
 
     int outcome = pokegearApp->appReturnCode;
