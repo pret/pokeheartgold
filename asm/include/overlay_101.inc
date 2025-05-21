@@ -318,9 +318,9 @@
 .public ov100_021E6EC4
 .public ov100_021E6EF4
 .public ov100_021E6F34
-.public ov100_021E7014
-.public ov100_021E70A4
-.public ov100_021E7128
+.public PokegearAppSwitch_AddButtons
+.public PokegearAppSwitch_RemoveButtons
+.public PokegearAppSwitchCursor_SetCursorSpritesDrawState
 .public ov100_021E72F8
 .public ov100_021E7334
 .public ov100_021E733C

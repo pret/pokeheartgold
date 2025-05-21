@@ -414,8 +414,8 @@ void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
     phoneApp->msgFormat = MessageFormat_New_Custom(2, 32, phoneApp->heapId);
     phoneApp->msgFormatBuf = String_New(640, phoneApp->heapId);
     phoneApp->msgReadBuf = String_New(640, phoneApp->heapId);
-    for (int i = 0; i < 8; ++i) {
-        phoneApp->contextMenuStrings[i] = NewString_ReadMsgData(phoneApp->msgData, i + msg_0271_00020);
+    for (int i = 0; i < PHONE_TOOLTIP_MAX; ++i) {
+        phoneApp->tooltipStrings[i] = NewString_ReadMsgData(phoneApp->msgData, i + msg_0271_00020);
     }
     phoneApp->textFrameDelay = Options_GetTextFrameDelay(phoneApp->pokegear->options);
     TextFlags_SetAlternateDownArrow(TRUE);
@@ -423,8 +423,8 @@ void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
-    for (int i = 0; i < 8; ++i) {
-        String_Delete(phoneApp->contextMenuStrings[i]);
+    for (int i = 0; i < PHONE_TOOLTIP_MAX; ++i) {
+        String_Delete(phoneApp->tooltipStrings[i]);
     }
     String_Delete(phoneApp->msgReadBuf);
     String_Delete(phoneApp->msgFormatBuf);

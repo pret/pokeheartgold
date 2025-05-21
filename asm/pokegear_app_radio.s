@@ -1397,7 +1397,7 @@ ov101_021F4F00: ; 0x021F4F00
 	bne _021F4F2A
 	mov r1, #0
 	mov r2, #1
-	bl ov100_021E7128
+	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	bl ov100_021E5DC8
 	add r2, r0, #0
@@ -1409,7 +1409,7 @@ ov101_021F4F00: ; 0x021F4F00
 _021F4F2A:
 	mov r1, #0
 	add r2, r1, #0
-	bl ov100_021E7128
+	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
 	pop {r4, pc}
 	thumb_func_end ov101_021F4F00
 
@@ -1509,7 +1509,7 @@ ov101_021F4FDC: ; 0x021F4FDC
 	add r1, #0x24
 	ldrb r2, [r1]
 	mov r1, #0x1e
-	ldr r3, _021F4FFC ; =ov100_021E7128
+	ldr r3, _021F4FFC ; =PokegearAppSwitchCursor_SetCursorSpritesDrawState
 	bic r2, r1
 	add r1, r0, #0
 	add r1, #0x24
@@ -1522,7 +1522,7 @@ ov101_021F4FDC: ; 0x021F4FDC
 	ldr r0, [r0, #0x7c]
 	bx r3
 	.balign 4, 0
-_021F4FFC: .word ov100_021E7128
+_021F4FFC: .word PokegearAppSwitchCursor_SetCursorSpritesDrawState
 	thumb_func_end ov101_021F4FDC
 
 	thumb_func_start ov101_021F5000
@@ -1935,7 +1935,7 @@ ov101_021F5304: ; 0x021F5304
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E7128
+	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
 	ldr r0, [r5, #0xc]
 	bl ov100_021E5DC8
 	add r2, r0, #0

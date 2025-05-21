@@ -28,6 +28,29 @@ typedef enum PokegearPhoneMainState {
     PHONE_MAIN_STATE_QUIT,
 } PokegearPhoneMainState;
 
+typedef enum PokegearPhoneContextMenu {
+    PHONE_CONTEXT_MENU_CALL_SORT_QUIT,
+    PHONE_CONTEXT_MENU_SORT_OPTIONS,
+    PHONE_CONTEXT_MENU_SAVE_MONEY,
+    PHONE_CONTEXT_MENU_DEX_EVAL,
+    PHONE_CONTEXT_MENU_DEX_EVAL_JTO_NTL,
+    PHONE_CONTEXT_MENU_DEX_EVAL_NTL,
+    PHONE_CONTEXT_MENU_YES_NO,
+    PHONE_CONTEXT_MENU_MAX,
+} PokegearPhoneContextMenu;
+
+typedef enum PokegearPhoneContextMenuTooltip {
+    PHONE_TOOLTIP_SELECT_NEXT_SEARCH,
+    PHONE_TOOLTIP_SELECT_WHERE_MOVE,
+    PHONE_TOOLTIP_WHAT_DO,
+    PHONE_TOOLTIP_SORT_TRAINER_TYPE,
+    PHONE_TOOLTIP_SORT_ALPHABET,
+    PHONE_TOOLTIP_SORT_LOCATION,
+    PHONE_TOOLTIP_SORT_MANUAL,
+    PHONE_TOOLTIP_SORT_FINISH,
+    PHONE_TOOLTIP_MAX,
+} PokegearPhoneContextMenuTooltip;
+
 typedef struct PokegearPhoneContextMenuParam {
     u8 nItems : 3; // 0x0
     u8 width : 5;  //
@@ -174,7 +197,7 @@ typedef struct PhoneContactListUI {
     u8 lastContactIndex;                                     // 0x004
     u8 listBottomIndex;                                      // 0x005
     u8 firstBgColor : 1;                                     // 0x006
-    u8 unk_006_1 : 7;                                        // 0x006
+    u8 movingContacts : 7;                                   // 0x006
     u8 isScrolling : 1;                                      // 0x007
     u8 scrollDirection : 1;                                  // 0x007
     u8 isPageScroll : 1;                                     // 0x007
@@ -185,9 +208,9 @@ typedef struct PhoneContactListUI {
     PhoneContactListUISlotData slotData[NUM_PHONE_CONTACTS]; // 0x00C
     Window *window;                                          // 0x390
     PhoneContactListUIColors textColors[2];                  // 0x394
-    Sprite *unk_3CC[2];                                      // 0x3CC
-    Sprite *unk_3D4[6];                                      // 0x3D4
-    Sprite *unk_3EC[4];                                      // 0x3EC
+    Sprite *listScrollArrowSprites[2];                       // 0x3CC
+    Sprite *moveContactArrowSprites[6];                      // 0x3D4
+    Sprite *cursorSprites[4];                                // 0x3EC
     PokegearPhoneCallContext *callContext;                   // 0x3FC
     MenuInputState *menuInputStatePtr;                       // 0x400
     u8 *menuInputStateBakPtr;                                // 0x404
@@ -204,7 +227,7 @@ struct PokegearPhoneAppData {
     MessageFormat *msgFormat;                       // 0x018
     String *msgFormatBuf;                           // 0x01C
     String *msgReadBuf;                             // 0x020
-    String *contextMenuStrings[8];                  // 0x024
+    String *tooltipStrings[PHONE_TOOLTIP_MAX];      // 0x024
     u8 textFrameDelay;                              // 0x044
     Window windows[4];                              // 0x048
     Sprite *sprites[14];                            // 0x088
@@ -256,15 +279,15 @@ void ov101_021F0748(PokegearPhoneAppData *phoneApp);
 void ov101_021F075C(PokegearPhoneAppData *phoneApp);
 void ov101_021F0864(PokegearPhoneAppData *phoneApp);
 
-void ov101_021F0880(PokegearPhoneAppData *phoneApp);
-void ov101_021F08DC(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_DeleteContextMenus(PokegearPhoneAppData *phoneApp);
 void ov101_021F0900(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_OnReselectApp(void *cb_arg);
 void ov101_021F0954(PokegearPhoneAppData *phoneApp);
 void ov101_021F0978(void *cb_arg);
 TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int a1, int a2);
-void ov101_021F0ACC(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2);
-void ov101_021F0B84(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2);
+void PokegearPhone_ReturnToContactList(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp);
 BOOL PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp);
@@ -277,15 +300,15 @@ void PokegearPhone_InitContactListUI(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_ContactLinkedListToSlotsArray(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_SetContactListUIAndDraw(PokegearPhoneAppData *phoneApp, PhoneContactListUI *ui, u8 firstContactOnPage, u8 cursorPos);
 void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, u8 visible);
-void ov101_021F1338(PhoneContactListUI *ui, BOOL a1);
-void ov101_021F1364(PhoneContactListUI *ui, int a1, int a2);
-void ov101_021F13C8(PhoneContactListUI *ui, int a1);
+void PhoneContactListUI_ShowMainListCursorSprites(PhoneContactListUI *ui, BOOL animate);
+void PhoneContactListUI_UpdateMoveContactArrowSprites(PhoneContactListUI *ui, int cursorPos, BOOL show);
+void PhoneContactListUI_SetMovingContactsState(PhoneContactListUI *ui, BOOL moving);
 int PhoneContactListUI_HandleKeyInput(PhoneContactListUI *ui);
 int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *ui);
 int PhoneContactListUI_HandleTouchInput(PhoneContactListUI *ui);
 int PhoneContactListUI_HandleTouchInput2(PhoneContactListUI *ui, int *gotTouch);
 int PhoneContactListUI_GetCursorPos(PhoneContactListUI *ui);
-void ov101_021F1808(PhoneContactListUI *ui);
+void PhoneContactListUI_DeselectContact(PhoneContactListUI *ui);
 void PokegearPhone_InitContactsLinkedList(PokegearPhoneAppData *phoneApp);
 
 PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContextParam *template);

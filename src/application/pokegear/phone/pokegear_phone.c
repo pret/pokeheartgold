@@ -217,7 +217,7 @@ int PokegearPhone_MainTask_DebugHangupEffect(PokegearPhoneAppData *phoneApp) {
     CopyWindowToVram(&phoneApp->windows[0]);
     CopyWindowToVram(&phoneApp->windows[1]);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
-    ov101_021F0B84(phoneApp);
+    PokegearPhone_ReturnToContactList(phoneApp);
     return PHONE_MAIN_STATE_INPUT_LOOP;
 }
 

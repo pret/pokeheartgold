@@ -22,7 +22,7 @@ BOOL PokegearPhone_SetUp(PokegearPhoneAppData *phoneApp) {
         break;
     case 1:
         ov101_021F075C(phoneApp);
-        ov101_021F0880(phoneApp);
+        PokegearPhone_InitContextMenus(phoneApp);
         ov101_021F0694(phoneApp);
         ov101_021F0900(phoneApp);
         phoneApp->subsubtaskState = 0;
@@ -33,7 +33,7 @@ BOOL PokegearPhone_SetUp(PokegearPhoneAppData *phoneApp) {
 }
 
 BOOL PokegearPhone_TearDown(PokegearPhoneAppData *phoneApp) {
-    ov101_021F08DC(phoneApp);
+    PokegearPhone_DeleteContextMenus(phoneApp);
     ov101_021F0720(phoneApp);
     ov101_021F0864(phoneApp);
     ov101_021F0748(phoneApp);
@@ -53,11 +53,11 @@ int PokegearPhone_HandleSubmenuInput(PokegearPhoneAppData *phoneApp) {
             PokegearPhoneApp_TouchscreenListMenu_Create(phoneApp, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), 1);
             return PHONE_MAIN_STATE_SORT_CONTEXT_MENU;
         } else {
-            ov101_021F0ACC(phoneApp, 0, FALSE);
+            PokegearPhone_PrintContextMenuTooltip(phoneApp, 0, FALSE);
             if (input == 0) {
                 return PHONE_MAIN_STATE_CLOSE_SUBMENU_BEFORE_CALL;
             } else {
-                ov101_021F0B84(phoneApp);
+                PokegearPhone_ReturnToContactList(phoneApp);
                 return PHONE_MAIN_STATE_INPUT_LOOP;
             }
         }
@@ -78,19 +78,19 @@ int PokegearPhone_HandleSortMenuInput(PokegearPhoneAppData *phoneApp) {
     case 1: // Alphabet
     case 2: // Location
         PokegearPhone_SortList(phoneApp, input);
-        ov101_021F0ACC(phoneApp, 0, FALSE);
-        ov101_021F0B84(phoneApp);
+        PokegearPhone_PrintContextMenuTooltip(phoneApp, 0, FALSE);
+        PokegearPhone_ReturnToContactList(phoneApp);
         return PHONE_MAIN_STATE_INPUT_LOOP;
     case 3: // Move
-        ov101_021F0ACC(phoneApp, 1, TRUE);
-        ov101_021F13C8(&phoneApp->contactListUI, 1);
+        PokegearPhone_PrintContextMenuTooltip(phoneApp, 1, TRUE);
+        PhoneContactListUI_SetMovingContactsState(&phoneApp->contactListUI, 1);
         PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 0xFF, 0);
         phoneApp->pokegear->reselectAppCB = ov101_021F0978;
         return PHONE_MAIN_STATE_MOVING_CONTACTS;
     case 4: // Quit
     default:
-        ov101_021F0ACC(phoneApp, 0, FALSE);
-        ov101_021F0B84(phoneApp);
+        PokegearPhone_PrintContextMenuTooltip(phoneApp, 0, FALSE);
+        PokegearPhone_ReturnToContactList(phoneApp);
         return PHONE_MAIN_STATE_INPUT_LOOP;
     }
 }
@@ -101,9 +101,9 @@ int PokegearPhone_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp) {
         phoneApp->subsubtaskState = PokegearPhone_HandleInput_MovingContacts(phoneApp);
         break;
     case 1:
-        ov101_021F13C8(&phoneApp->contactListUI, 0);
-        ov101_021F0ACC(phoneApp, 0, FALSE);
-        ov101_021F1338(&phoneApp->contactListUI, TRUE);
+        PhoneContactListUI_SetMovingContactsState(&phoneApp->contactListUI, 0);
+        PokegearPhone_PrintContextMenuTooltip(phoneApp, 0, FALSE);
+        PhoneContactListUI_ShowMainListCursorSprites(&phoneApp->contactListUI, TRUE);
         phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
         phoneApp->subsubtaskState = 0;
         return PHONE_MAIN_STATE_INPUT_LOOP;
@@ -169,7 +169,7 @@ BOOL PhoneCall_Exit(PokegearPhoneAppData *phoneApp) {
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     TextFlags_UnsetFastForwardTouchButtonHitbox();
     PokegearPhone_SetTouchscreenDimState(phoneApp, FALSE);
-    ov101_021F0B84(phoneApp);
+    PokegearPhone_ReturnToContactList(phoneApp);
     return TRUE;
 }
 

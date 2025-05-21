@@ -58,13 +58,13 @@ void PokegearPhone_InitContactListUI(PokegearPhoneAppData *phoneApp) {
     ui->menuInputStateBakPtr = &phoneApp->menuInputStateBak;
 
     for (i = 0; i < 2; ++i) {
-        ui->unk_3CC[i] = phoneApp->sprites[4 + i];
+        ui->listScrollArrowSprites[i] = phoneApp->sprites[4 + i];
     }
     for (i = 0; i < 6; ++i) {
-        ui->unk_3D4[i] = phoneApp->sprites[6 + i];
+        ui->moveContactArrowSprites[i] = phoneApp->sprites[6 + i];
     }
     for (i = 0; i < 4; ++i) {
-        ui->unk_3EC[i] = phoneApp->sprites[i];
+        ui->cursorSprites[i] = phoneApp->sprites[i];
     }
 
     ui->textColors[0].fg1 = 1;
@@ -158,11 +158,11 @@ void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, 
 
     if (visible != 0) {
         for (i = 0; i < 4; ++i) {
-            Sprite_SetDrawFlag(ui->unk_3EC[i], TRUE);
+            Sprite_SetDrawFlag(ui->cursorSprites[i], TRUE);
         }
     } else {
         for (i = 0; i < 4; ++i) {
-            Sprite_SetDrawFlag(ui->unk_3EC[i], FALSE);
+            Sprite_SetDrawFlag(ui->cursorSprites[i], FALSE);
         }
     }
     if (position >= 6) {
@@ -172,48 +172,48 @@ void PhoneContactListUI_SetCursorSpritePos(PhoneContactListUI *ui, u8 position, 
         ui->cursorPos = ui->listBottomIndex - 1;
         position = ui->cursorPos;
     }
-    Sprite_SetPositionXY(ui->unk_3EC[0], 16, position * 24 + 8);
-    Sprite_SetPositionXY(ui->unk_3EC[1], 16, position * 24 + 30);
-    Sprite_SetPositionXY(ui->unk_3EC[2], 224, position * 24 + 8);
-    Sprite_SetPositionXY(ui->unk_3EC[3], 224, position * 24 + 30);
+    Sprite_SetPositionXY(ui->cursorSprites[0], 16, position * 24 + 8);
+    Sprite_SetPositionXY(ui->cursorSprites[1], 16, position * 24 + 30);
+    Sprite_SetPositionXY(ui->cursorSprites[2], 224, position * 24 + 8);
+    Sprite_SetPositionXY(ui->cursorSprites[3], 224, position * 24 + 30);
 }
 
-void ov101_021F1338(PhoneContactListUI *ui, BOOL a1) {
+void PhoneContactListUI_ShowMainListCursorSprites(PhoneContactListUI *ui, BOOL animate) {
     int i;
 
     for (i = 0; i < 4; ++i) {
-        Sprite_SetAnimActiveFlag(ui->unk_3EC[i], a1);
-        Sprite_SetDrawFlag(ui->unk_3EC[i], TRUE);
+        Sprite_SetAnimActiveFlag(ui->cursorSprites[i], animate);
+        Sprite_SetDrawFlag(ui->cursorSprites[i], TRUE);
     }
 }
 
-void ov101_021F1364(PhoneContactListUI *ui, int cursorPos, BOOL a2) {
+void PhoneContactListUI_UpdateMoveContactArrowSprites(PhoneContactListUI *ui, int cursorPos, BOOL show) {
     int i;
-    if (a2) {
+    if (show) {
         for (i = 0; i < ui->listBottomIndex; ++i) {
-            Sprite_SetDrawFlag(ui->unk_3D4[i], TRUE);
+            Sprite_SetDrawFlag(ui->moveContactArrowSprites[i], TRUE);
             if (cursorPos == i) {
-                Sprite_SetAnimCtrlSeq(ui->unk_3D4[i], 7);
+                Sprite_SetAnimCtrlSeq(ui->moveContactArrowSprites[i], 7);
             } else {
-                Sprite_SetAnimCtrlSeq(ui->unk_3D4[i], 6);
+                Sprite_SetAnimCtrlSeq(ui->moveContactArrowSprites[i], 6);
             }
         }
     } else {
         for (i = 0; i < 6; ++i) {
-            Sprite_SetDrawFlag(ui->unk_3D4[i], FALSE);
+            Sprite_SetDrawFlag(ui->moveContactArrowSprites[i], FALSE);
         }
     }
 }
 
-void ov101_021F13C8(PhoneContactListUI *ui, int a1) {
-    if (a1 == 0) {
-        ui->unk_006_1 = 0;
-        ov101_021F1364(ui, 255, FALSE);
-        ov101_021F1808(ui);
+void PhoneContactListUI_SetMovingContactsState(PhoneContactListUI *ui, BOOL moving) {
+    if (!moving) {
+        ui->movingContacts = FALSE;
+        PhoneContactListUI_UpdateMoveContactArrowSprites(ui, 255, FALSE);
+        PhoneContactListUI_DeselectContact(ui);
         PhoneContactListUI_SetCursorSpritePos(ui, ui->cursorPos, 1);
     } else {
-        ui->unk_006_1 = 1;
-        ov101_021F1364(ui, ui->cursorPos, TRUE);
+        ui->movingContacts = TRUE;
+        PhoneContactListUI_UpdateMoveContactArrowSprites(ui, ui->cursorPos, TRUE);
     }
 }
 
@@ -318,7 +318,7 @@ int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *a0) {
             return -1;
         } else {
             --a0->cursorPos;
-            ov101_021F1364(a0, a0->cursorPos, TRUE);
+            PhoneContactListUI_UpdateMoveContactArrowSprites(a0, a0->cursorPos, TRUE);
             a0->scrollTimer = 2;
             return -1;
         }
@@ -335,7 +335,7 @@ int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *a0) {
             return -1;
         } else {
             ++a0->cursorPos;
-            ov101_021F1364(a0, a0->cursorPos, TRUE);
+            PhoneContactListUI_UpdateMoveContactArrowSprites(a0, a0->cursorPos, TRUE);
             a0->scrollTimer = 2;
             return -1;
         }
@@ -425,7 +425,7 @@ int PhoneContactListUI_GetCursorPos(PhoneContactListUI *ui) {
     return ui->cursorPos;
 }
 
-void ov101_021F1808(PhoneContactListUI *ui) {
+void PhoneContactListUI_DeselectContact(PhoneContactListUI *ui) {
     u8 index = ui->selectedIndex;
     ui->selectedIndex = 255;
     if (index >= ui->firstContactOnPage && ui->lastContactIndex >= index) {
@@ -533,14 +533,14 @@ void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 in
 
 void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui) {
     if (ui->firstContactOnPage != 0) {
-        Sprite_SetDrawFlag(ui->unk_3CC[0], TRUE);
+        Sprite_SetDrawFlag(ui->listScrollArrowSprites[0], TRUE);
     } else {
-        Sprite_SetDrawFlag(ui->unk_3CC[0], FALSE);
+        Sprite_SetDrawFlag(ui->listScrollArrowSprites[0], FALSE);
     }
     if (ui->firstContactOnPage + 6 < ui->numContacts) {
-        Sprite_SetDrawFlag(ui->unk_3CC[1], TRUE);
+        Sprite_SetDrawFlag(ui->listScrollArrowSprites[1], TRUE);
     } else {
-        Sprite_SetDrawFlag(ui->unk_3CC[1], FALSE);
+        Sprite_SetDrawFlag(ui->listScrollArrowSprites[1], FALSE);
     }
 }
 
