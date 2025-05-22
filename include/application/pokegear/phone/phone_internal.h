@@ -83,22 +83,22 @@ typedef struct PhoneContactListUISlotData {
 } PhoneContactListUISlotData;
 
 typedef struct PokegearPhoneCallContextParam {
-    HeapID heapId;                     // 0x00
-    MenuInputState *menuInputStatePtr; // 0x04
-    Sprite *sprite;                    // 0x08
-    PokegearPhoneAppData *phoneApp;    // 0x0C
-    BgConfig *bgConfig;                // 0x10
-    Window *window1;                   // 0x14
-    Window *window2;                   // 0x18
-    PaletteData *plttData;             // 0x1C
-    SaveData *saveData;                // 0x20
-    MomsSavings *momsSavings;          // 0x24
-    PlayerProfile *playerProfile;      // 0x28
-    SaveVarsFlags *saveVarsFlags;      // 0x2C
-    SysInfo_RTC *rtc;                  // 0x30
-    u16 playerMapSec;                  // 0x34
-    u16 playerMapID;                   // 0x36
-    u8 textSpeed;                      // 0x38
+    HeapID heapId;                         // 0x00
+    MenuInputState *menuInputStatePtr;     // 0x04
+    Sprite *sprite;                        // 0x08
+    PokegearPhoneAppData *phoneApp;        // 0x0C
+    BgConfig *bgConfig;                    // 0x10
+    Window *window1;                       // 0x14
+    Window *window2;                       // 0x18
+    PaletteData *plttData;                 // 0x1C
+    SaveData *saveData;                    // 0x20
+    PhoneCallPersistentState *callPersistentState; // 0x24
+    PlayerProfile *playerProfile;          // 0x28
+    SaveVarsFlags *saveVarsFlags;          // 0x2C
+    SysInfo_RTC *rtc;                      // 0x30
+    u16 playerMapSec;                      // 0x34
+    u16 playerMapID;                       // 0x36
+    u8 textSpeed;                          // 0x38
 } PokegearPhoneCallContextParam;
 
 typedef struct PokegearPhoneCallState {
@@ -142,7 +142,7 @@ typedef struct PokegearPhoneCallContext {
     TouchscreenListMenu *touchscreenListMenu; // 0x14
     PaletteData *plttData;                    // 0x18
     SaveData *saveData;                       // 0x1C
-    MomsSavings *momsSavings;                 // 0x20
+    PhoneCallPersistentState *callPersistentState;    // 0x20
     PlayerProfile *playerProfile;             // 0x24
     SaveVarsFlags *saveVarsFlags;             // 0x28
     SysInfo_RTC *rtc;                         // 0x2C

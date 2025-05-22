@@ -24,7 +24,7 @@ typedef struct PhoneRematch {
     u16 giftItem;
 } PhoneRematch; // size=0x4
 
-typedef struct MomsSavings {
+typedef struct PhoneCallPersistentState {
     PhoneRematch rematches[NUM_PHONE_CONTACTS];
     u16 momGiftQueue[5][2];
     u32 bankBalance; // 140
@@ -35,7 +35,7 @@ typedef struct MomsSavings {
     u8 safariAreas[6];
     u8 unk_14E[2];
     u8 filler_150[4];
-} MomsSavings; // size=0x154
+} PhoneCallPersistentState; // size=0x154
 
 typedef struct UnkPokegearSub8 {
     u16 unk_0;
@@ -72,13 +72,13 @@ typedef struct SavePokegear {
     u32 mapUnlockLevel : 2;
     u32 unk_4_29 : 3;
     UnkPokegearSub8List unk_8;
-    MomsSavings momsSavings;                        // 4B8
+    PhoneCallPersistentState callPersistentState;           // 4B8
     PhoneContact phoneContacts[NUM_PHONE_CONTACTS]; // 60C
 } SavePokegear;                                     // size=0x658
 
 u32 SaveData_GSPlayerMisc_sizeof(void);
 SavePokegear *SaveData_GSPlayerMisc_Get(SaveData *saveData);
-MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData);
+PhoneCallPersistentState *SaveData_GetMomsSavingsAddr(SaveData *saveData);
 void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear);
 UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear);
 u8 SavePokegear_GetLastUsedApp(SavePokegear *pokegear);
@@ -99,26 +99,26 @@ u8 GSPlayerMisc_IsGearNumberRegistered(SavePokegear *pokegear, u8 contact);
 void RegisterPhoneNumberInPokeGear(SavePokegear *pokegear, u8 contact);
 PhoneContact *GSPlayerMisc_AllocAndCopyPhonebook(SavePokegear *pokegear, HeapID heapId);
 void GSPlayerMisc_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *contacts, u8 num);
-void sub_0202F01C(MomsSavings *momsSavings, u8 idx);
-void sub_0202F050(MomsSavings *momsSavings, u8 idx);
-BOOL sub_0202F08C(MomsSavings *momsSavings, u8 idx);
-void PhoneRematches_SetSeeking(MomsSavings *momsSavings, u8 idx, BOOL state);
-BOOL PhoneRematches_IsSeeking(MomsSavings *momsSavings, u8 idx);
-void PhoneRematches_GiftItemIdSet(MomsSavings *momsSavings, u8 idx, u16 itemId);
-u16 PhoneRematches_GiftItemIdGet(MomsSavings *momsSavings, u8 idx);
-u32 MomSavingsBalanceAction(MomsSavings *momsSavings, int action, u32 operand);
-void sub_0202F198(MomsSavings *momsSavings, u8 idx);
-BOOL sub_0202F1B4(MomsSavings *momsSavings, u8 idx);
-void MomsSavings_GiftQueuePut(MomsSavings *momsSavings, u16 a1, u16 a2);
-void MomsSavings_GiftQueuePop(MomsSavings *momsSavings);
-u16 MomsSavings_GetGiftAtIndex(MomsSavings *momsSavings, u8 a1, u16 *a2);
-BOOL MomsSavings_GiftQueueFull(MomsSavings *momsSavings);
-void SavePokegear_SetKenjiActiveState(MomsSavings *momsSavings, BOOL a1);
-BOOL SavePokegear_GetKenjiActiveState(MomsSavings *momsSavings);
-int SavePokegear_GetKenjiWaitDays(MomsSavings *momsSavings);
-void sub_0202F294(MomsSavings *momsSavings, int a1);
-void MomsSavings_SetCurSafariZoneArrangement(MomsSavings *momsSavings, u8 *a1, u8 a2);
-u8 *MomsSavings_AllocGetCurSafariZoneArrangement(MomsSavings *momsSavings, u8 *a1, HeapID heapId);
+void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx);
+void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx);
+BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx);
+void PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state);
+BOOL PhoneRematches_IsSeeking(PhoneCallPersistentState *callPersistentState, u8 idx);
+void PhoneRematches_GiftItemIdSet(PhoneCallPersistentState *callPersistentState, u8 idx, u16 itemId);
+u16 PhoneRematches_GiftItemIdGet(PhoneCallPersistentState *callPersistentState, u8 idx);
+u32 MomSavingsBalanceAction(PhoneCallPersistentState *callPersistentState, int action, u32 operand);
+void sub_0202F198(PhoneCallPersistentState *callPersistentState, u8 idx);
+BOOL sub_0202F1B4(PhoneCallPersistentState *callPersistentState, u8 idx);
+void MomsSavings_GiftQueuePut(PhoneCallPersistentState *callPersistentState, u16 a1, u16 a2);
+void MomsSavings_GiftQueuePop(PhoneCallPersistentState *callPersistentState);
+u16 MomsSavings_GetGiftAtIndex(PhoneCallPersistentState *callPersistentState, u8 a1, u16 *a2);
+BOOL MomsSavings_GiftQueueFull(PhoneCallPersistentState *callPersistentState);
+void SavePokegear_SetKenjiActiveState(PhoneCallPersistentState *callPersistentState, BOOL a1);
+BOOL SavePokegear_GetKenjiActiveState(PhoneCallPersistentState *callPersistentState);
+int SavePokegear_GetKenjiWaitDays(PhoneCallPersistentState *callPersistentState);
+void sub_0202F294(PhoneCallPersistentState *callPersistentState, int a1);
+void MomsSavings_SetCurSafariZoneArrangement(PhoneCallPersistentState *callPersistentState, u8 *a1, u8 a2);
+u8 *MomsSavings_AllocGetCurSafariZoneArrangement(PhoneCallPersistentState *callPersistentState, u8 *a1, HeapID heapId);
 BOOL sub_0202F370(UnkPokegearSub8 *unk);
 void sub_0202F388(UnkPokegearSub8 *unk);
 void sub_0202F3DC(struct UnkStruct_0202F3DC *unk);

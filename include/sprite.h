@@ -132,7 +132,7 @@ u16 Sprite_GetRotation(Sprite *sprite);
 BOOL Sprite_GetDrawFlag(Sprite *sprite);
 BOOL Sprite_GetAnimActiveFlag(Sprite *sprite);
 u32 Sprite_GetNumAnimSeqs(Sprite *sprite);
-void Sprite_SetAnimCtrlSeq(Sprite *sprite, int a1seq);
+void Sprite_SetAnimCtrlSeq(Sprite *sprite, int seq);
 void Sprite_TryChangeAnimSeq(Sprite *sprite, int seq);
 void Sprite_ResetAnimCtrlState(Sprite *sprite);
 u16 Sprite_GetAnimationNumber(Sprite *sprite);

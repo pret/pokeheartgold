@@ -55,12 +55,12 @@ struct GearPhoneRingManager {
     s32 unk_varC;
     u16 maxActiveDuration;
     u16 unk_var12;
-    s64 activeTimer;            // Seconds? see GearPhoneRingManager_HandleTimeAdvance
-    PhoneBookEntry entry;       // 0x1c
-    SavePokegear *pokegearData; // 0x30
-    MomsSavings *savingsData;   // 0x34
-    SaveData *saveData;         // 0x38
-    FieldSystem *sys;           // 0x3c
+    s64 activeTimer;                       // Seconds? see GearPhoneRingManager_HandleTimeAdvance
+    PhoneBookEntry entry;                  // 0x1c
+    SavePokegear *pokegearData;            // 0x30
+    PhoneCallPersistentState *savingsData; // 0x34
+    SaveData *saveData;                    // 0x38
+    FieldSystem *sys;                      // 0x3c
     struct PokegearRingingTask {
         SysTask *task;
         u8 counter;

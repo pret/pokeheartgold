@@ -12,10 +12,18 @@ typedef enum PokegearAppId {
     GEAR_APP_MAP,
     GEAR_APP_PHONE,
     GEAR_APP_CANCEL,
+
+    GEAR_APP_NO_INPUT = -1,
 } PokegearAppId;
 
 typedef enum PokegearReturnCode {
-    GEAR_RETURN_0,
+    GEAR_RETURN_CONFIGURE,
+    GEAR_RETURN_RADIO,
+    GEAR_RETURN_MAP,
+    GEAR_RETURN_PHONE,
+    GEAR_RETURN_4,
+    GEAR_RETURN_5,
+    GEAR_RETURN_CANCEL,
 } PokegearReturnCode;
 
 typedef struct PokegearAppSwitchButtonSpec {
@@ -63,13 +71,13 @@ typedef struct UnkStruct_ov100_021E6E20_Sub8 {
     s16 unk_04;
     s16 unk_06;
     u8 filler_08[0x18];
-    Sprite *unk_20;
+    Sprite *sprite;
     u8 filler_24[0x4];
 } UnkStruct_ov100_021E6E20_Sub8;
 
 typedef struct UnkStruct_ov100_021E6E20 {
-    u16 unk_00;
-    u16 unk_02;
+    u16 max;
+    u16 num;
     u8 *unk_04; // char buffer?
     UnkStruct_ov100_021E6E20_Sub8 *unk_08;
 } UnkStruct_ov100_021E6E20;
@@ -81,11 +89,11 @@ typedef struct PokegearApp_UnkSub094 {
     u16 unk_00A;
     u16 unk_00C;
     u16 unk_00E;
-    SpriteList *unk_010;
+    SpriteList *spriteList;
     G2dRenderer unk_014;
     u8 filler_13C[4];
     GF_2DGfxResMan *unk_140[4];
-    GF_2DGfxResObjList *unk_150[4];
+    GF_2DGfxResObjList *spriteResources[4];
 } PokegearApp_UnkSub094; // size: 0x160
 
 typedef struct PokegearAppData PokegearAppData;
@@ -123,8 +131,8 @@ struct PokegearAppData {
     PaletteData *plttData;                      // 0x078
     PokegearAppSwitch *appSwitch;               // 0x07C
     RTCTime unk_080;                            // 0x080
-    SpriteSystem *gfxRenderer;                  // 0x08C
-    SpriteManager *gfxHandler;                  // 0x090
+    SpriteSystem *spriteSystem;                 // 0x08C
+    SpriteManager *spriteManager;               // 0x090
     PokegearApp_UnkSub094 *unk_094;             // 0x094
     PokegearSpriteUnion unk_098[11];            // 0x098
     u16 *unk_0C4;                               // 0x0C4

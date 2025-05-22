@@ -45,10 +45,10 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
     switch (state->scriptState) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
-        state->momsSavingsBalance = MomSavingsBalanceAction(ctx->momsSavings, MOMS_BALANCE_GET, 0);
+        state->momsSavingsBalance = MomSavingsBalanceAction(ctx->callPersistentState, MOMS_BALANCE_GET, 0);
         BufferIntegerAsString(ctx->msgFormat, 10, state->momsSavingsBalance, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
         state->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(ctx->saveVarsFlags);
-        state->flag1 = MomsSavings_GiftQueueFull(ctx->momsSavings);
+        state->flag1 = MomsSavings_GiftQueueFull(ctx->callPersistentState);
         if (state->isScriptedCall == 2) {
             state->scriptState = 2;
             return FALSE;

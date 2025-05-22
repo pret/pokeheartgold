@@ -393,7 +393,7 @@ void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots
 
 static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2) {
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
-    MomsSavings *savings = SaveData_GetMomsSavingsAddr(fieldSystem->saveData);
+    PhoneCallPersistentState *savings = SaveData_GetMomsSavingsAddr(fieldSystem->saveData);
 
     if (Save_VarsFlags_MomsSavingsFlagCheck(vars_flags)) {
         u32 money2 = PlayerProfile_GetMoney(profile2);

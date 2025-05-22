@@ -3,8 +3,8 @@
 #include "application/pokegear/pokegear_internal.h"
 
 #include "mail_misc.h"
-#include "overlay_101.h"
 #include "overlay_102.h"
+#include "pokegear_apps.h"
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 #include "unk_02092BE8.h"
@@ -166,7 +166,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
         PaletteData_PushTransparentBuffers(pokegearApp->plttData);
     }
 
-    if (pokegearApp->gfxRenderer != NULL) {
+    if (pokegearApp->spriteSystem != NULL) {
         if (pokegearApp->unk_094 != NULL) {
             ov100_021E5BB0(pokegearApp, 0);
             ov100_021E6AB0(pokegearApp->unk_094);
@@ -222,21 +222,21 @@ static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearAp
     int outcome = pokegearApp->appReturnCode;
     pokegearApp->appReturnCode = 0;
     switch (outcome) {
-    case 2:
+    case GEAR_RETURN_MAP:
         pokegearApp->app = GEAR_APP_MAP;
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_MAP;
-    case 6:
+    case GEAR_RETURN_CANCEL:
         pokegearApp->app = GEAR_APP_CANCEL;
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
-    case 0:
+    case GEAR_RETURN_CONFIGURE:
         pokegearApp->app = GEAR_APP_CONFIGURE;
         DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_CONFIGURE;
-    case 1:
+    case GEAR_RETURN_RADIO:
         pokegearApp->app = GEAR_APP_RADIO;
         DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_RADIO;
-    case 3:
+    case GEAR_RETURN_PHONE:
         pokegearApp->app = GEAR_APP_PHONE;
         DoScheduledBgGpuUpdates(pokegearApp->bgConfig);
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_PHONE;

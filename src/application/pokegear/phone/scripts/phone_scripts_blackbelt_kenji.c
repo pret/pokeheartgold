@@ -9,14 +9,14 @@ u16 PhoneCall_GetScriptId_Kenji(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
         return PHONE_SCRIPT_086;
     }
-    state->sharedU8var = SavePokegear_GetKenjiWaitDays(ctx->momsSavings);
+    state->sharedU8var = SavePokegear_GetKenjiWaitDays(ctx->callPersistentState);
     if (state->sharedU8var > 1) {
         return PHONE_SCRIPT_087;
     } else if (state->sharedU8var == 1) {
         return PHONE_SCRIPT_088;
     }
-    active = SavePokegear_GetKenjiActiveState(ctx->momsSavings);
-    if (active && !PhoneRematches_IsSeeking(ctx->momsSavings, 16)) {
+    active = SavePokegear_GetKenjiActiveState(ctx->callPersistentState);
+    if (active && !PhoneRematches_IsSeeking(ctx->callPersistentState, 16)) {
         return PHONE_SCRIPT_087;
     }
     timeOfDay = GF_RTC_GetTimeOfDayByHour(state->time.hour);
@@ -24,8 +24,8 @@ u16 PhoneCall_GetScriptId_Kenji(PokegearPhoneCallContext *ctx, PokegearPhoneCall
         return PHONE_SCRIPT_091;
     }
     if (!active) {
-        SavePokegear_SetKenjiActiveState(ctx->momsSavings, TRUE);
-        PhoneRematches_SetSeeking(ctx->momsSavings, 16, TRUE);
+        SavePokegear_SetKenjiActiveState(ctx->callPersistentState, TRUE);
+        PhoneRematches_SetSeeking(ctx->callPersistentState, 16, TRUE);
     }
     if (state->timeOfDay == TIMEOFDAY_WILD_DAY) {
         return PHONE_SCRIPT_090;

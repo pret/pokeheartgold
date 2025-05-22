@@ -50,24 +50,24 @@ BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp) {
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp) {
     // Don't switch if didn't tap an app button
     int newApp = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenButtonHitboxes);
-    if (newApp == -1) {
-        return -1;
+    if (newApp == TOUCH_MENU_NO_INPUT) {
+        return GEAR_APP_NO_INPUT;
     }
 
     // Don't switch if the button is blanked out
     u16 val = 0;
     if (DoesPixelAtScreenXYMatchPtrVal(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, gSystem.touchX, gSystem.touchY, &val) == 1) {
-        return -1;
+        return GEAR_APP_NO_INPUT;
     }
 
     // Don't switch from an app to itself
     if (newApp == pokegearApp->app) {
-        return -1;
+        return GEAR_APP_NO_INPUT;
     }
 
     // Don't switch if the card isn't unlocked
-    if ((newApp == GEAR_APP_RADIO && !(pokegearApp->registeredCards & 2)) || (newApp == GEAR_APP_MAP && !(pokegearApp->registeredCards & 1))) {
-        return -1;
+    if ((newApp == GEAR_APP_RADIO && !(pokegearApp->registeredCards & GEARCARD_RADIO)) || (newApp == GEAR_APP_MAP && !(pokegearApp->registeredCards & GEARCARD_MAP))) {
+        return GEAR_APP_NO_INPUT;
     }
     ov100_021E5B4C(pokegearApp, newApp, 1);
     PlaySE(newApp != GEAR_APP_CANCEL ? SEQ_SE_GS_GEARAPPLICHANGE : SEQ_SE_GS_GEARCANCEL);
@@ -79,7 +79,7 @@ int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp) {
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
     if (gSystem.newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
-        return 4;
+        return GEAR_APP_CANCEL;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
         PokegearAppSwitchButtonSpec *buttonSpec = &pokegearApp->appSwitch->lastButton->buttonSpec[pokegearApp->appSwitch->lastButton->cursorPos];
@@ -90,7 +90,7 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
             if (pokegearApp->reselectAppCB != NULL) {
                 pokegearApp->reselectAppCB(pokegearApp->childAppdata);
             }
-            return -1;
+            return GEAR_APP_NO_INPUT;
         }
         ov100_021E5B4C(pokegearApp, buttonSpec->appId, 1);
         return buttonSpec->appId;
@@ -98,37 +98,37 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp) {
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
         ov100_021E73AC(pokegearApp->appSwitch, 0);
-        return -1;
+        return GEAR_APP_NO_INPUT;
     }
     if (gSystem.newKeys & PAD_KEY_RIGHT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
         ov100_021E73AC(pokegearApp->appSwitch, 1);
-        return -1;
+        return GEAR_APP_NO_INPUT;
     }
-    return -1;
+    return GEAR_APP_NO_INPUT;
 }
 
 static void ov100_021E5A88(PokegearAppData *pokegearApp) {
     u8 registeredCards = pokegearApp->registeredCards;
     CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 20, 32, 4, pokegearApp->unk_0C8->rawData, 0, 0, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
-    if (!(registeredCards & 1)) {
+    if (!(registeredCards & GEARCARD_MAP)) {
         CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 13, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     }
-    if (!(registeredCards & 2)) {
+    if (!(registeredCards & GEARCARD_RADIO)) {
         CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     }
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
 static BOOL ov100_021E5B4C(PokegearAppData *pokegearApp, u8 selection, u8 a2) {
-    u8 r2;
+    u8 destX;
     ov100_021E5A88(pokegearApp);
     if (selection == GEAR_APP_CANCEL) {
-        r2 = 26;
+        destX = 26;
     } else {
-        r2 = selection * 6 + 1;
+        destX = selection * 6 + 1;
     }
-    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, r2, 20, 6, 4, pokegearApp->unk_0C8->rawData, r2, a2 * 4, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
+    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, destX, 20, 6, 4, pokegearApp->unk_0C8->rawData, destX, a2 * 4, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
     return FALSE;
 }

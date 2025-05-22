@@ -4721,9 +4721,9 @@ BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
-    *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->id);
-    PhoneRematches_GiftItemIdSet(momsSavings, entry->id, ITEM_NONE);
+    PhoneCallPersistentState *callPersistentState = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
+    *p_ret = PhoneRematches_GiftItemIdGet(callPersistentState, entry->id);
+    PhoneRematches_GiftItemIdSet(callPersistentState, entry->id, ITEM_NONE);
     return FALSE;
 }
 

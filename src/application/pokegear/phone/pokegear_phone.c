@@ -3,7 +3,7 @@
 #include "application/pokegear/phone/phone_internal.h"
 
 #include "brightness.h"
-#include "overlay_101.h"
+#include "pokegear_apps.h"
 #include "render_text.h"
 #include "sound_02004A44.h"
 #include "unk_0200FA24.h"
@@ -142,7 +142,7 @@ int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {
 
 int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp) {
     int input = PokegearPhone_HandleTouchInput(phoneApp);
-    if (input == -1) {
+    if (input == TOUCH_MENU_NO_INPUT) {
         if (phoneApp->menuInputStateBak == 0) {
             PokegearApp_HandleInputModeChangeToButtons(phoneApp->pokegear);
         }
@@ -153,9 +153,9 @@ int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp) {
         }
     }
     switch (input) {
-    case -1:
+    case TOUCH_MENU_NO_INPUT:
         break;
-    case 4:
+    case GEAR_RETURN_4:
         phoneApp->pokegear->appReturnCode = input;
         return PHONE_MAIN_STATE_FADE_GEAR_CLOSE;
     case 8:

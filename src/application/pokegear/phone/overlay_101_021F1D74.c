@@ -46,7 +46,7 @@ PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContext
     ret->window2 = template->window2;
     ret->plttData = template->plttData;
     ret->saveData = template->saveData;
-    ret->momsSavings = template->momsSavings;
+    ret->callPersistentState = template->callPersistentState;
     ret->playerProfile = template->playerProfile;
     ret->saveVarsFlags = template->saveVarsFlags;
     ret->rtc = template->rtc;
@@ -258,7 +258,7 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
 
     switch (scriptDef->kind) {
     case 3:
-        PhoneRematches_SetSeeking(ctx->momsSavings, state->callerID, TRUE);
+        PhoneRematches_SetSeeking(ctx->callPersistentState, state->callerID, TRUE);
         break;
     case 4:
         itemId = scriptDef->param1;
@@ -267,7 +267,7 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
         } else if (itemId == ITEM_POKE_BALL) {
             itemId = (MTRandom() % 3) + ITEM_ULTRA_BALL;
         }
-        PhoneRematches_GiftItemIdSet(ctx->momsSavings, state->callerID, itemId);
+        PhoneRematches_GiftItemIdSet(ctx->callPersistentState, state->callerID, itemId);
         break;
     case 1:
     case 2:
