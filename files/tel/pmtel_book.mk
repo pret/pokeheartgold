@@ -14,4 +14,4 @@ clean-pmtel-book:
 	$(RM) $(PMTEL_BOOK_DAT) $(PMTEL_BOOK_DAT:%.dat=%.c) $(PMTEL_BOOK_DAT:%.dat=%.o)
 
 .PHONY: clean-pmtel-book
-clean-filesystem: clean-pmtel-pmtel_book
+clean-filesystem: clean-pmtel-book
