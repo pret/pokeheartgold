@@ -524,7 +524,7 @@ _02205776:
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r6, #0
-	bl LocalMapObject_SetPositionFromVectorAndDirection
+	bl MapObject_SetPositionFromVectorAndDirection
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov01_02205720
@@ -557,7 +557,7 @@ ov01_02205790: ; 0x02205790
 	add r0, r6, #0
 	add r1, sp, #0
 	add r2, r4, #0
-	bl LocalMapObject_SetPositionFromVectorAndDirection
+	bl MapObject_SetPositionFromVectorAndDirection
 _022057BE:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -820,10 +820,10 @@ ov01_022059AC: ; 0x022059AC
 	cmp r0, #0
 	bne _02205A02
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetFacingDirection

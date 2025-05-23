@@ -29231,7 +29231,7 @@ ov101_021F57B8: ; 0x021F57B8
 	bl String_New
 	str r0, [r4, #0x70]
 	ldr r0, [sp, #4]
-	bl sub_0205C7EC
+	bl PlayerSaveData_GetState
 	cmp r0, #1
 	beq _021F5896
 	ldr r0, [sp, #8]

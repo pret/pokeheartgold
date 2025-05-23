@@ -4,11 +4,11 @@
 
 #include "constants/sprites.h"
 
-#include "field_player_avatar.h"
 #include "fieldmap.h"
 #include "filesystem.h"
 #include "heap.h"
 #include "overlay_01_021F944C.h"
+#include "player_avatar.h"
 #include "sys_task_api.h"
 #include "unk_0205FD20.h"
 
@@ -1974,7 +1974,7 @@ LocalMapObject *MapObjectManager_GetFirstObjectWithXAndZ(MapObjectManager *manag
     return NULL;
 }
 
-void LocalMapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction) {
+void MapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction) {
     MapObject_SetCurrentX(object, (positionVector->x >> 4) / FX32_ONE);
     MapObject_SetCurrentY(object, (positionVector->y >> 3) / FX32_ONE);
     MapObject_SetCurrentZ(object, (positionVector->z >> 4) / FX32_ONE);

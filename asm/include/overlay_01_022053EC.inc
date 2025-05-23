@@ -31,8 +31,8 @@
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
 .public GetMetatileBehavior
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetMapObject
 .public MapObject_Remove
 .public sub_0205F1A0
@@ -55,7 +55,7 @@
 .public MapObject_GetCurrentZ
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
-.public LocalMapObject_SetPositionFromVectorAndDirection
+.public MapObject_SetPositionFromVectorAndDirection
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement
 .public MapObject_IsMovementPaused
