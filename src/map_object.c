@@ -1974,7 +1974,7 @@ LocalMapObject *MapObjectManager_GetFirstObjectWithXAndZ(MapObjectManager *manag
     return NULL;
 }
 
-void LocalMapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction) {
+void MapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction) {
     MapObject_SetCurrentX(object, (positionVector->x >> 4) / FX32_ONE);
     MapObject_SetCurrentY(object, (positionVector->y >> 3) / FX32_ONE);
     MapObject_SetCurrentZ(object, (positionVector->z >> 4) / FX32_ONE);

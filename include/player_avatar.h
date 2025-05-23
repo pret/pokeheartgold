@@ -18,16 +18,16 @@ typedef enum PlayerAvatarFlags {
 } PlayerAvatarFlags;
 
 typedef struct PlayerSaveData {
-    u16 hasRunningShoes;
+    u16 hasRunningShoes; // bool16
     u16 runningShoesLock;
-    u32 state;
+    s32 state;
 } PlayerSaveData;
 
 struct PlayerAvatar {
     PlayerAvatarFlags flags;
     u32 transitionFlags;
     u32 unk8;
-    u32 unkc;
+    BOOL unkC;
     u32 unk10;
     u32 unk14;
     s32 state;
@@ -85,22 +85,19 @@ s32 PlayerAvatar_GetUnk2C(PlayerAvatar *avatar);
 void PlayerAvatar_SetUnk28Unk2C(PlayerAvatar *avatar, s32 unk28, s32 unk2C);
 void PlayerAvatar_SetUnk34(PlayerAvatar *avatar, u32 param1);
 u32 PlayerAvatar_GetUnk34(PlayerAvatar *avatar);
-void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData);
 PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar);
-void sub_0205C79C(PlayerAvatar *avatar, u32 unkA);
-u32 sub_0205C7A0(PlayerAvatar *avatar);
-u32 sub_0205C7A4(PlayerAvatar *avatar);
-void sub_0205C7A8(PlayerAvatar *avatar);
-void sub_0205C7B4(PlayerAvatar *avatar);
-void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData);
-BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData);
-void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, BOOL flag);
-int PlayerSaveData_GetState(PlayerSaveData *playerSaveData);
-void sub_0205C7F8(PlayerSaveData *playerSaveData, int state);
-void sub_0205C800(PlayerAvatar *avatar, int state);
-void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir);
-void sub_0205C838(PlayerAvatar *avatar, int unkA);
-void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 unkA);
+void PlayerAvatar_SetUnk8(PlayerAvatar *avatar, u32 unkA);
+u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar);
+BOOL PlayerAvatar_GetUnkC(PlayerAvatar *avatar);
+void PlayerAvatar_ToggleUnkC(PlayerAvatar *avatar);
+void PlayerAvatar_ResetUnkC(PlayerAvatar *avatar);
+void PlayerSaveData_Init(PlayerSaveData *playerSaveData);
+BOOL PlayerSaveData_CheckRunningShoes(PlayerSaveData *playerSaveData);
+void PlayerSaveData_SetRunningShoesFlag(PlayerSaveData *playerSaveData, BOOL flag);
+s32 PlayerSaveData_GetState(PlayerSaveData *playerSaveData);
+void sub_0205C810(PlayerAvatar *avatar, VecFx32 *position, u32 direction);
+void PlayerAvatar_SetMapObjectYPosition(PlayerAvatar *avatar, fx32 yVal);
+void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 flag);
 void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, BOOL unkA);
 u32 PlayerAvatar_GetSpriteByStateAndGender(s32 unkA, BOOL unkB);
 u32 PlayerAvatar_GetTransitionBits(u32 unkA);

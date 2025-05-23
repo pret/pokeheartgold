@@ -796,7 +796,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         if (FollowMon_IsActive(fieldSystem) && PlayerAvatar_GetState(fieldSystem->playerAvatar) != PLAYER_STATE_CYCLING) {
             LocalMapObject *followMon = FollowMon_GetMapObject(fieldSystem);
             LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-            LocalMapObject_SetPositionFromVectorAndDirection(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
+            MapObject_SetPositionFromVectorAndDirection(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
 
             int playerX = MapObject_GetCurrentX(playerObj);
             int playerZ = MapObject_GetCurrentZ(playerObj);

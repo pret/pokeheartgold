@@ -28,6 +28,9 @@ static void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags 
 static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags flags);
 static void PlayerAvatar_SetUnk28(PlayerAvatar *avatar, s32 param1);
 static void PlayerAvatar_SetUnk2C(PlayerAvatar *avatar, s32 param1);
+static void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData);
+static void PlayerSaveData_SetState(PlayerSaveData *playerSaveData, s32 state);
+static void PlayerAvatar_SetPlayerSaveDataState(PlayerAvatar *avatar, s32 state);
 
 u32 sub_0205C268(u32 param0) {
     if (param0 < 100) {
@@ -214,7 +217,7 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_ClearUnk24ClearFlag2(avatar);
     PlayerAvatar_SetUnk28(avatar, -1);
     PlayerAvatar_SetUnk2C(avatar, -1);
-    sub_0205C79C(avatar, 255);
+    PlayerAvatar_SetUnk8(avatar, 255);
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
 
@@ -320,7 +323,7 @@ static LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar) {
 void PlayerAvatar_SetState(PlayerAvatar *avatar, s32 state) {
     GF_ASSERT(state < PLAYER_STATE_UNK_SP);
     avatar->state = state;
-    sub_0205C800(avatar, state);
+    PlayerAvatar_SetPlayerSaveDataState(avatar, state);
 }
 
 s32 PlayerAvatar_GetState(PlayerAvatar *avatar) {
@@ -411,7 +414,7 @@ u32 PlayerAvatar_GetUnk34(PlayerAvatar *avatar) {
     return avatar->unk34;
 }
 
-void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData) {
+static void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData) {
     avatar->playerSaveData = playerSaveData;
 }
 
@@ -419,42 +422,40 @@ PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar) {
     return avatar->playerSaveData;
 }
 
-void sub_0205C79C(PlayerAvatar *avatar, u32 unkA) {
-    avatar->unk8 = unkA;
+void PlayerAvatar_SetUnk8(PlayerAvatar *avatar, u32 param1) {
+    avatar->unk8 = param1;
 }
 
-u32 sub_0205C7A0(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar) {
     return avatar->unk8;
 }
 
-u32 sub_0205C7A4(PlayerAvatar *avatar) {
-    return avatar->unkc;
+BOOL PlayerAvatar_GetUnkC(PlayerAvatar *avatar) {
+    return avatar->unkC;
 }
 
-void sub_0205C7A8(PlayerAvatar *avatar) {
-    avatar->unkc = (avatar->unkc + 1) & TRUE;
+void PlayerAvatar_ToggleUnkC(PlayerAvatar *avatar) {
+    avatar->unkC = (avatar->unkC + 1) & TRUE;
 }
 
-void sub_0205C7B4(PlayerAvatar *avatar) {
-    avatar->unkc = 0;
+void PlayerAvatar_ResetUnkC(PlayerAvatar *avatar) {
+    avatar->unkC = FALSE;
 }
 
-void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData) {
-    playerSaveData->hasRunningShoes = 0;
-    playerSaveData->runningShoesLock = 0;
+void PlayerSaveData_Init(PlayerSaveData *playerSaveData) {
+    playerSaveData->hasRunningShoes = FALSE;
+    playerSaveData->runningShoesLock = FALSE;
     playerSaveData->state = 0;
 }
 
-BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData) {
-    if (playerSaveData != NULL) {
-        if (playerSaveData->hasRunningShoes == TRUE) {
-            return TRUE;
-        }
+BOOL PlayerSaveData_CheckRunningShoes(PlayerSaveData *playerSaveData) {
+    if (playerSaveData != NULL && playerSaveData->hasRunningShoes == TRUE) {
+        return TRUE;
     }
     return FALSE;
 }
 
-void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, BOOL flag) {
+void PlayerSaveData_SetRunningShoesFlag(PlayerSaveData *playerSaveData, BOOL flag) {
     if (flag == TRUE) {
         playerSaveData->hasRunningShoes = TRUE;
     } else {
@@ -462,44 +463,44 @@ void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, B
     }
 }
 
-int PlayerSaveData_GetState(PlayerSaveData *playerSaveData) {
+s32 PlayerSaveData_GetState(PlayerSaveData *playerSaveData) {
     if (!playerSaveData) {
         return 0;
     }
     return playerSaveData->state;
 }
 
-void sub_0205C7F8(PlayerSaveData *playerSaveData, int state) {
+static void PlayerSaveData_SetState(PlayerSaveData *playerSaveData, s32 state) {
     if (!playerSaveData) {
         return;
     }
     playerSaveData->state = state;
 }
 
-void sub_0205C800(PlayerAvatar *avatar, int state) {
-    sub_0205C7F8(PlayerAvatar_GetPlayerSaveData(avatar), state);
+static void PlayerAvatar_SetPlayerSaveDataState(PlayerAvatar *avatar, s32 state) {
+    PlayerSaveData_SetState(PlayerAvatar_GetPlayerSaveData(avatar), state);
 }
 
-void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir) {
-    LocalMapObject_SetPositionFromVectorAndDirection(PlayerAvatar_GetMapObject(avatar), pos, dir);
+void sub_0205C810(PlayerAvatar *avatar, VecFx32 *position, u32 direction) {
+    MapObject_SetPositionFromVectorAndDirection(PlayerAvatar_GetMapObject(avatar), position, direction);
     PlayerAvatar_SetUnk10(avatar, 0);
     PlayerAvatar_SetUnk14(avatar, 0);
 }
 
-void sub_0205C838(PlayerAvatar *avatar, int unkA) {
-    LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
-    VecFx32 vec;
-    MapObject_CopyPositionVector(mapObj, &vec);
-    vec.y = unkA;
-    MapObject_SetPositionVector(mapObj, &vec);
+void PlayerAvatar_SetMapObjectYPosition(PlayerAvatar *avatar, fx32 yVal) {
+    LocalMapObject *mapObject = PlayerAvatar_GetMapObject(avatar);
+    VecFx32 position;
+    MapObject_CopyPositionVector(mapObject, &position);
+    position.y = yVal;
+    MapObject_SetPositionVector(mapObject, &position);
 }
 
-void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 state) {
-    LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
-    if (state == TRUE) {
-        MapObject_SetIgnoreHeights(mapObj, FALSE);
+void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 flag) {
+    LocalMapObject *mapObject = PlayerAvatar_GetMapObject(avatar);
+    if (flag == TRUE) {
+        MapObject_SetIgnoreHeights(mapObject, FALSE);
     } else {
-        MapObject_SetIgnoreHeights(mapObj, TRUE);
+        MapObject_SetIgnoreHeights(mapObject, TRUE);
     }
 }
 

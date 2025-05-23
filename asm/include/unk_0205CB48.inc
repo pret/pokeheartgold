@@ -42,11 +42,11 @@
 .public PlayerAvatar_GetUnk2C
 .public PlayerAvatar_SetUnk28Unk2C
 .public PlayerAvatar_GetPlayerSaveData
-.public sub_0205C79C
-.public sub_0205C7A0
-.public sub_0205C7A4
-.public sub_0205C7A8
-.public sub_0205C7B4
+.public PlayerAvatar_SetUnk8
+.public PlayerAvatar_GetUnk8
+.public PlayerAvatar_GetUnkC
+.public PlayerAvatar_ToggleUnkC
+.public PlayerAvatar_ResetUnkC
 .public PlayerSaveData_CheckRunningShoes
 .public PlayerAvatar_SetFlag0
 .public PlayerAvatar_CheckFlag0

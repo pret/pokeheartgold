@@ -333,7 +333,7 @@ _0205CDD2:
 	cmp r1, r0
 	bne _0205CDE6
 	add r0, r5, #0
-	bl sub_0205C7B4
+	bl PlayerAvatar_ResetUnkC
 	b _0205CDFE
 _0205CDE6:
 	add r0, r5, #0
@@ -341,14 +341,14 @@ _0205CDE6:
 	cmp r0, #0
 	bne _0205CDF8
 	add r0, r5, #0
-	bl sub_0205C7B4
+	bl PlayerAvatar_ResetUnkC
 	b _0205CDFE
 _0205CDF8:
 	add r0, r5, #0
-	bl sub_0205C7A8
+	bl PlayerAvatar_ToggleUnkC
 _0205CDFE:
 	add r0, r5, #0
-	bl sub_0205C7A4
+	bl PlayerAvatar_GetUnkC
 	cmp r0, #0
 	bne _0205CE58
 	add r0, r5, #0
@@ -1393,9 +1393,9 @@ sub_0205D610: ; 0x0205D610
 	add r1, r6, #0
 	bl MapObject_SetNextFacingDirection
 	add r0, r5, #0
-	bl sub_0205C7B4
+	bl PlayerAvatar_ResetUnkC
 	add r0, r5, #0
-	bl sub_0205C7A8
+	bl PlayerAvatar_ToggleUnkC
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_0205D610
 
@@ -1909,7 +1909,7 @@ sub_0205DA1C: ; 0x0205DA1C
 	add r4, r2, #0
 	add r5, r1, #0
 	add r1, r4, #0
-	bl sub_0205C79C
+	bl PlayerAvatar_SetUnk8
 	add r0, r5, #0
 	add r1, r4, #0
 	bl MapObject_SetHeldMovement
@@ -2513,7 +2513,7 @@ _0205DE92:
 	thumb_func_start sub_0205DE98
 sub_0205DE98: ; 0x0205DE98
 	push {r3, lr}
-	bl sub_0205C7A0
+	bl PlayerAvatar_GetUnk8
 	sub r0, #0x58
 	cmp r0, #3
 	bhi _0205DEBC
