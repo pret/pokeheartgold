@@ -141,7 +141,7 @@ struct PokegearAppData {
 
 typedef struct PhoneCallScriptDef {
     u8 msgIds[2];
-    u16 kind : 4;
+    u16 scriptType : 4;
     u16 param0 : 12;
     u16 param1;
 } PhoneCallScriptDef;

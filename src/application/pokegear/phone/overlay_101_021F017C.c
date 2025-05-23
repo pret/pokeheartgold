@@ -10,157 +10,157 @@
 #include "text.h"
 #include "unk_0208805C.h"
 
-static const WindowTemplate ov101_021F8420[] = {
+static const WindowTemplate sWindowTemplates[] = {
     {
      .bgId = GF_BG_LYR_SUB_2,
-     .left = 0x02,
-     .top = 0x13,
-     .width = 0x1B,
-     .height = 0x04,
-     .palette = 0x01,
-     .baseTile = 0x0375,
+     .left = 2,
+     .top = 19,
+     .width = 27,
+     .height = 4,
+     .palette = 1,
+     .baseTile = 0x375,
      },
     {
      .bgId = GF_BG_LYR_SUB_2,
-     .left = 0x04,
-     .top = 0x10,
-     .width = 0x09,
-     .height = 0x02,
-     .palette = 0x01,
-     .baseTile = 0x0363,
+     .left = 4,
+     .top = 16,
+     .width = 9,
+     .height = 2,
+     .palette = 1,
+     .baseTile = 0x363,
      },
     {
      .bgId = GF_BG_LYR_MAIN_3,
-     .left = 0x01,
-     .top = 0x02,
-     .width = 0x1B,
-     .height = 0x18,
-     .palette = 0x02,
-     .baseTile = 0x0177,
+     .left = 1,
+     .top = 2,
+     .width = 27,
+     .height = 24,
+     .palette = 2,
+     .baseTile = 0x177,
      },
     {
      .bgId = GF_BG_LYR_MAIN_1,
-     .left = 0x00,
-     .top = 0x15,
-     .width = 0x20,
-     .height = 0x02,
-     .palette = 0x0A,
-     .baseTile = 0x03BF,
+     .left = 0,
+     .top = 21,
+     .width = 32,
+     .height = 2,
+     .palette = 10,
+     .baseTile = 0x3BF,
      },
 };
 
-static const UnkStruct_0200D2B4 ov101_021F84E8[] = {
+static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
     {
-     .resourceSet = 0x00000000,
-     .x = 0x0000,
-     .y = 0x0000,
-     .z = 0x0000,
-     .animSeqNo = 0x0002,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000006,
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 2,
+     .rotation = 1,
+     .palIndex = 6,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x0000,
-     .y = 0x0000,
-     .z = 0x0000,
-     .animSeqNo = 0x0003,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000006,
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 3,
+     .rotation = 1,
+     .palIndex = 6,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x0000,
-     .y = 0x0000,
-     .z = 0x0000,
-     .animSeqNo = 0x0004,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000006,
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 4,
+     .rotation = 1,
+     .palIndex = 6,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x0000,
-     .y = 0x0000,
-     .z = 0x0000,
-     .animSeqNo = 0x0005,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000006,
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 5,
+     .rotation = 1,
+     .palIndex = 6,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x007C,
-     .y = 0x0008,
-     .z = 0x0000,
-     .animSeqNo = 0x0000,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000007,
+     .resourceSet = 0,
+     .x = 124,
+     .y = 8,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 7,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x007C,
-     .y = 0x009C,
-     .z = 0x0000,
-     .animSeqNo = 0x0001,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000007,
+     .resourceSet = 0,
+     .x = 124,
+     .y = 156,
+     .z = 0,
+     .animSeqNo = 1,
+     .rotation = 1,
+     .palIndex = 7,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x0000,
-     .y = 0x0000,
-     .z = 0x0000,
-     .animSeqNo = 0x0006,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000007,
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 6,
+     .rotation = 1,
+     .palIndex = 7,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000000,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
     {
-     .resourceSet = 0x00000000,
-     .x = 0x0080,
-     .y = 0x00A0,
-     .z = 0x0000,
-     .animSeqNo = 0x0008,
-     .rotation = 0x00000001,
-     .palIndex = 0x00000006,
+     .resourceSet = 0,
+     .x = 128,
+     .y = 160,
+     .z = 0,
+     .animSeqNo = 8,
+     .rotation = 1,
+     .palIndex = 6,
      .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0x00000001,
-     .unk_1C = 0x00000000,
-     .unk_20 = 0x00000000,
-     .unk_24 = 0x00000000,
+     .unk_18 = 1,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
      },
 };
 
@@ -226,105 +226,105 @@ const PokegearPhoneContextMenuParam sContextMenuParam[] = {
 void ov101_021F017C(PokegearPhoneAppData *phoneApp) {
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
 
-    BgTemplate ov101_021F8440[6] = {
+    BgTemplate sBgTemplates[6] = {
         {
-         .x = 0x00000000,
-         .y = 0x00000000,
+         .x = 0,
+         .y = 0,
          .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0x00000000,
+         .baseTile = 0,
          .size = GF_BG_SCR_SIZE_256x256,
          .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xf000,
          .charBase = GX_BG_CHARBASE_0x00000,
          .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0x00,
+         .priority = 0,
          .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0x00,
-         .mosaic = 0x00000000,
+         .dummy = 0,
+         .mosaic = 0,
          },
         {
-         .x = 0x00000000,
-         .y = 0x00000000,
+         .x = 0,
+         .y = 0,
          .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0x00000000,
+         .baseTile = 0,
          .size = GF_BG_SCR_SIZE_256x256,
          .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xe800,
          .charBase = GX_BG_CHARBASE_0x00000,
          .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0x02,
+         .priority = 2,
          .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0x00,
-         .mosaic = 0x00000000,
+         .dummy = 0,
+         .mosaic = 0,
          },
         {
-         .x = 0x00000000,
-         .y = 0x00000000,
+         .x = 0,
+         .y = 0,
          .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0x00000000,
+         .baseTile = 0,
          .size = GF_BG_SCR_SIZE_256x256,
          .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xe000,
          .charBase = GX_BG_CHARBASE_0x10000,
          .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0x03,
+         .priority = 3,
          .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0x00,
-         .mosaic = 0x00000000,
+         .dummy = 0,
+         .mosaic = 0,
          },
         {
-         .x = 0x00000000,
-         .y = 0x00000000,
+         .x = 0,
+         .y = 0,
          .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0x00000000,
+         .baseTile = 0,
          .size = GF_BG_SCR_SIZE_256x256,
          .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xf000,
          .charBase = GX_BG_CHARBASE_0x00000,
          .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0x00,
+         .priority = 0,
          .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0x00,
-         .mosaic = 0x00000000,
+         .dummy = 0,
+         .mosaic = 0,
          },
         {
-         .x = 0x00000000,
-         .y = 0x00000000,
+         .x = 0,
+         .y = 0,
          .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0x00000000,
+         .baseTile = 0,
          .size = GF_BG_SCR_SIZE_256x256,
          .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xe800,
          .charBase = GX_BG_CHARBASE_0x00000,
          .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0x01,
+         .priority = 1,
          .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0x00,
-         .mosaic = 0x00000000,
+         .dummy = 0,
+         .mosaic = 0,
          },
         {
-         .x = 0x00000000,
-         .y = 0x00000000,
+         .x = 0,
+         .y = 0,
          .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0x00000000,
+         .baseTile = 0,
          .size = GF_BG_SCR_SIZE_256x256,
          .colorMode = GX_BG_COLORMODE_16,
          .screenBase = GX_BG_SCRBASE_0xe000,
          .charBase = GX_BG_CHARBASE_0x00000,
          .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0x02,
+         .priority = 2,
          .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0x00,
-         .mosaic = 0x00000000,
+         .dummy = 0,
+         .mosaic = 0,
          },
     };
 
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &ov101_021F8440[0], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &ov101_021F8440[1], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, &ov101_021F8440[2], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, &ov101_021F8440[3], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, &ov101_021F8440[4], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &ov101_021F8440[5], GF_BG_TYPE_TEXT, FALSE);
+    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &sBgTemplates[0], GF_BG_TYPE_TEXT, FALSE);
+    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &sBgTemplates[1], GF_BG_TYPE_TEXT, FALSE);
+    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, &sBgTemplates[2], GF_BG_TYPE_TEXT, FALSE);
+    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, &sBgTemplates[3], GF_BG_TYPE_TEXT, FALSE);
+    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, &sBgTemplates[4], GF_BG_TYPE_TEXT, FALSE);
+    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &sBgTemplates[5], GF_BG_TYPE_TEXT, FALSE);
     for (int i = 0; i < 3; ++i) {
         BgClearTilemapBufferAndCommit(phoneApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
         BG_ClearCharDataRange(i + GF_BG_LYR_MAIN_1, 0x20, 0, phoneApp->heapId);
@@ -396,7 +396,7 @@ void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL s
 
 void ov101_021F0578(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 4; ++i) {
-        AddWindowParameterized(phoneApp->pokegear->bgConfig, &phoneApp->windows[i], ov101_021F8420[i].bgId, ov101_021F8420[i].left, ov101_021F8420[i].top, ov101_021F8420[i].width, ov101_021F8420[i].height, ov101_021F8420[i].palette, ov101_021F8420[i].baseTile);
+        AddWindowParameterized(phoneApp->pokegear->bgConfig, &phoneApp->windows[i], sWindowTemplates[i].bgId, sWindowTemplates[i].left, sWindowTemplates[i].top, sWindowTemplates[i].width, sWindowTemplates[i].height, sWindowTemplates[i].palette, sWindowTemplates[i].baseTile);
         FillWindowPixelBuffer(&phoneApp->windows[i], 0);
     }
     TextPrinter_SetDownArrowBaseTile(0x3E1);
@@ -435,25 +435,25 @@ void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
-    PokegearPhoneCallContextParam sp00;
-    MI_CpuClear8(&sp00, sizeof(PokegearPhoneCallContextParam));
-    sp00.heapId = phoneApp->heapId;
-    sp00.menuInputStatePtr = &phoneApp->pokegear->menuInputState;
-    sp00.sprite = phoneApp->sprites[13];
-    sp00.phoneApp = phoneApp;
-    sp00.bgConfig = phoneApp->pokegear->bgConfig;
-    sp00.window1 = &phoneApp->windows[0];
-    sp00.window2 = &phoneApp->windows[1];
-    sp00.plttData = phoneApp->pokegear->plttData;
-    sp00.textSpeed = phoneApp->textFrameDelay;
-    sp00.playerMapSec = phoneApp->pokegear->args->mapID;
-    sp00.playerMapID = phoneApp->pokegear->args->mapHeader;
-    sp00.saveData = phoneApp->pokegear->saveData;
-    sp00.callPersistentState = SaveData_GetMomsSavingsAddr(phoneApp->pokegear->saveData);
-    sp00.playerProfile = phoneApp->pokegear->profile;
-    sp00.saveVarsFlags = phoneApp->pokegear->saveVarsFlags;
-    sp00.rtc = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);
-    phoneApp->callContext = PhoneCall_CreateContext(&sp00);
+    PokegearPhoneCallContextParam param;
+    MI_CpuClear8(&param, sizeof(PokegearPhoneCallContextParam));
+    param.heapId = phoneApp->heapId;
+    param.menuInputStatePtr = &phoneApp->pokegear->menuInputState;
+    param.sprite = phoneApp->sprites[13];
+    param.phoneApp = phoneApp;
+    param.bgConfig = phoneApp->pokegear->bgConfig;
+    param.window1 = &phoneApp->windows[0];
+    param.window2 = &phoneApp->windows[1];
+    param.plttData = phoneApp->pokegear->plttData;
+    param.textSpeed = phoneApp->textFrameDelay;
+    param.playerMapSec = phoneApp->pokegear->args->mapID;
+    param.playerMapID = phoneApp->pokegear->args->mapHeader;
+    param.saveData = phoneApp->pokegear->saveData;
+    param.callPersistentState = SaveData_GetMomsSavingsAddr(phoneApp->pokegear->saveData);
+    param.playerProfile = phoneApp->pokegear->profile;
+    param.saveVarsFlags = phoneApp->pokegear->saveVarsFlags;
+    param.rtc = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);
+    phoneApp->callContext = PhoneCall_CreateContext(&param);
 }
 
 void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
@@ -473,14 +473,14 @@ void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
 void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
     int i;
     for (i = 0; i <= 5; ++i) {
-        phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &ov101_021F84E8[i]);
+        phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &sSpriteTemplates[i]);
         thunk_Sprite_SetPriority(phoneApp->sprites[i], 1);
         Sprite_SetDrawFlag(phoneApp->sprites[i], FALSE);
         Sprite_SetAnimActiveFlag(phoneApp->sprites[i], TRUE);
     }
 
     for (i = 6; i <= 12; ++i) {
-        phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &ov101_021F84E8[6]);
+        phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &sSpriteTemplates[6]);
         thunk_Sprite_SetPriority(phoneApp->sprites[i], 0);
         thunk_Sprite_SetDrawPriority(phoneApp->sprites[i], 0);
         Sprite_SetDrawFlag(phoneApp->sprites[i], FALSE);
@@ -488,7 +488,7 @@ void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
         Sprite_SetPositionXY(phoneApp->sprites[i], 12, (int)(i * 24) - 128);
     }
 
-    phoneApp->sprites[13] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &ov101_021F84E8[7]);
+    phoneApp->sprites[13] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &sSpriteTemplates[7]);
     thunk_Sprite_SetPriority(phoneApp->sprites[13], 0);
     Sprite_SetDrawFlag(phoneApp->sprites[13], FALSE);
     Sprite_SetAnimActiveFlag(phoneApp->sprites[13], FALSE);

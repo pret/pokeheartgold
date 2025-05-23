@@ -31,13 +31,13 @@
 #include "render_window.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "touchscreen_list_menu.h"
 #include "unk_02005D10.h"
 #include "unk_02009D48.h"
-#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "yes_no_prompt.h"
 
@@ -149,8 +149,8 @@ extern const OamCharTransferParam ov122_021E92D0;
 extern const SpriteResourceCountsListUnion ov122_021E92E4;
 extern const OamManagerParam ov122_021E92FC;
 extern const Ov122_021E6C2C ov122_021E9344[4];
-extern const UnkTemplate_0200D748 ov122_021E9374;
-extern const UnkTemplate_0200D748 ov122_021E93A8;
+extern const ManagedSpriteTemplate ov122_021E9374;
+extern const ManagedSpriteTemplate ov122_021E93A8;
 extern const WindowTemplate sVoltorbFlipWindowTemplates[];
 extern const BgTemplates sVoltorbFlipBgTemplates;
 extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
@@ -1824,7 +1824,7 @@ _021E7BE4:
 #endif // NONMATCHING
 
 static ManagedSprite *ov122_021E7C9C(SpriteSystem *a0, SpriteManager *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
-    UnkTemplate_0200D748 temp1 = ov122_021E9374;
+    ManagedSpriteTemplate temp1 = ov122_021E9374;
 
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a1 != NULL);
@@ -1841,7 +1841,7 @@ static ManagedSprite *ov122_021E7C9C(SpriteSystem *a0, SpriteManager *a1, u16 a2
 }
 
 static ManagedSprite *ov122_021E7D04(SpriteSystem *a0, SpriteManager *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
-    UnkTemplate_0200D748 temp1 = ov122_021E93A8;
+    ManagedSpriteTemplate temp1 = ov122_021E93A8;
 
     GF_ASSERT(a0 != NULL);
     GF_ASSERT(a1 != NULL);

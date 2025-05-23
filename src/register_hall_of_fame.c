@@ -24,12 +24,12 @@
 #include "pokemon.h"
 #include "pokepic.h"
 #include "sound_02004A44.h"
+#include "sprite_system.h"
 #include "sys_task_api.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "unk_02013FDC.h"
 #include "unk_02026E84.h"
@@ -184,7 +184,7 @@ struct RegisterHallOfFameData {
     String *strbuf2;
     NARC *narcA101;
     NARC *narcA180;
-    SpriteSystem *spriteRenderer;     // 0009C
+    SpriteSystem *spriteRenderer;    // 0009C
     SpriteManager *spriteGfxHandler; // 000A0
     ManagedSprite *monPics[15];
     Camera *camera;
@@ -795,7 +795,7 @@ static const RegHOFSpritePosScaleAnimParam sPicPosScaleAnimParams[27] = {
     { 128, 100, 128, 120, 1.0f, 0.8f  },
 };
 
-static const UnkTemplate_0200D748 sPicTemplates[21] = {
+static const ManagedSpriteTemplate sPicTemplates[21] = {
     [0] = {
            .x = 512,
            .y = 480,

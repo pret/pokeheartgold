@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/phone_contacts.h"
+
 #include "msgdata/msg.naix"
 
 #include "gear_phone.h"
@@ -51,7 +53,7 @@ u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId) {
     }
     FreePhoneBook(phoneBook);
     MI_CpuClear8(dest, sizeof(struct PhoneBookEntry));
-    dest->id = 0xFF;
+    dest->id = PHONE_CONTACT_NONE;
     return 0xFF;
 }
 

@@ -280,14 +280,14 @@ static int BattleHpBar_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 delt
 static u8 BattleHpBar_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
 static u32 BattleHpBar_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
 static const u8 *BattleHpBar_Util_GetComponentRawGraphic(int componentId);
-static const UnkTemplate_0200D748 *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType);
-static const UnkTemplate_0200D748 *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType);
+static const ManagedSpriteTemplate *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType);
+static const ManagedSpriteTemplate *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType);
 static void Task_ExpBarFullFlash(SysTask *task, void *data);
 static void ov12_02265D78(BattleHpBar *hpBar);
 static void ov12_02265DA0(BattleHpBar *hpBar);
 static void ov12_02265DC4(SysTask *task, void *data);
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSinglePlayer = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarSinglePlayer = {
     .x = 0xC0,
     .y = 0x74,
     .z = 0,
@@ -307,7 +307,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSinglePlayer = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSingleEnemy = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarSingleEnemy = {
     .x = 0x3A,
     .y = 0x24,
     .z = 0,
@@ -327,7 +327,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSingleEnemy = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoublePlayerLHS = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoublePlayerLHS = {
     .x = 0xC0,
     .y = 0x67,
     .z = 0,
@@ -347,7 +347,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoublePlayerLHS = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoubleEnemyLHS = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoubleEnemyLHS = {
     .x = 0x40,
     .y = 0x10,
     .z = 0,
@@ -367,7 +367,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoubleEnemyLHS = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoublePlayerRHS = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoublePlayerRHS = {
     .x = 0xC6,
     .y = 0x84,
     .z = 0,
@@ -387,7 +387,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoublePlayerRHS = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoubleEnemyRHS = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoubleEnemyRHS = {
     .x = 0x3A,
     .y = 0x2D,
     .z = 0,
@@ -407,7 +407,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarDoubleEnemyRHS = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_Arrow = {
+static const ManagedSpriteTemplate sSpriteTemplate_Arrow = {
     .x = 0,
     .y = 0,
     .z = 0,
@@ -427,7 +427,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_Arrow = {
     .vramTransfer = 0
 };
 
-static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSafariOrPark = {
+static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
     .x = 0xC0,
     .y = 0x74,
     .z = 0,
@@ -450,7 +450,7 @@ static const UnkTemplate_0200D748 sSpriteTemplate_HpBarSafariOrPark = {
 #include "battle/battle_hp_bar_data.h"
 
 static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const UnkTemplate_0200D748 *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
 
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
@@ -463,7 +463,7 @@ static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NAR
 }
 
 static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const UnkTemplate_0200D748 *pRes = BattleHpBar_Util_GetArrowSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetArrowSpriteTemplate(barType);
 
     if (pRes != NULL) {
         SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -474,7 +474,7 @@ static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NAR
 }
 
 static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHandler, int barType) {
-    const UnkTemplate_0200D748 *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
 
     ManagedSprite *ret = SpriteSystem_NewSprite(renderer, gfxHandler, pRes);
     Sprite_TickFrame(ret->sprite);
@@ -602,7 +602,7 @@ static void ov12_02264B4C(BattleHpBar *hpBar) {
 }
 
 static void ov12_02264B60(BattleHpBar *hpBar) {
-    const UnkTemplate_0200D748 *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
+    const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
     SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->bsys);
     SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
     SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -611,7 +611,7 @@ static void ov12_02264B60(BattleHpBar *hpBar) {
 }
 
 static void ov12_02264B94(BattleHpBar *hpBar) {
-    const UnkTemplate_0200D748 *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
+    const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
     if (tmplate != NULL) {
         SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->bsys);
         SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
@@ -623,7 +623,7 @@ static void ov12_02264B94(BattleHpBar *hpBar) {
 
 #ifdef NONMATCHING
 void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
-    const UnkTemplate_0200D748 *tmplate;
+    const ManagedSpriteTemplate *tmplate;
     SpriteSystem *renderer;
     SpriteManager *gfxHandler;
     PaletteData *plttData;
@@ -856,7 +856,7 @@ void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
 
 #ifdef NONMATCHING
 static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
-    const UnkTemplate_0200D748 *tmplate;
+    const ManagedSpriteTemplate *tmplate;
 
     GF_ASSERT(hpBar->boxObj != NULL);
 
@@ -953,7 +953,7 @@ void ov12_02264FB0(BattleHpBar *hpBar, BOOL a1) {
 static void ov12_02265054(SysTask *task, void *data) {
     BattleHpBar *hpBar = data;
     s16 x, y;
-    const UnkTemplate_0200D748 *r6;
+    const ManagedSpriteTemplate *r6;
     int r4;
 
     r4 = 0;
@@ -1618,8 +1618,8 @@ u8 BattleHpBar_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
     }
 }
 
-static const UnkTemplate_0200D748 *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType) {
-    const UnkTemplate_0200D748 *ret;
+static const ManagedSpriteTemplate *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType) {
+    const ManagedSpriteTemplate *ret;
     switch (barType) {
     case HP_BAR_TYPE_SINGLE_PLAYER:
         ret = &sSpriteTemplate_HpBarSinglePlayer;
@@ -1650,7 +1650,7 @@ static const UnkTemplate_0200D748 *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 ba
     return ret;
 }
 
-static const UnkTemplate_0200D748 *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType) {
+static const ManagedSpriteTemplate *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType) {
     switch (barType) {
     case HP_BAR_TYPE_SINGLE_PLAYER:
     case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:

@@ -12,7 +12,7 @@
 static void sub_0207F0FC(Sprite *sprite, u8 seqNo);
 static int sub_0207F11C(PartyMenuMonsDrawState *monDraw);
 
-static const UnkStruct_0200D2B4 sSpriteTemplates[24] = {
+static const UnmanagedSpriteTemplate sSpriteTemplates[24] = {
     {
      0x1,
      0x40,
@@ -393,7 +393,7 @@ void sub_0207EB24(PartyMenu *partyMenu) {
 
 void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-    UnkStruct_0200D2B4 sp1C;
+    UnmanagedSpriteTemplate sp1C;
     int isEgg;
 
     partyMenu->monsDrawState[partySlot].iconX = x;
@@ -477,7 +477,7 @@ void sub_0207EDD4(PartyMenu *partyMenu) {
 }
 
 void sub_0207EF5C(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y) {
-    UnkStruct_0200D2B4 sp0;
+    UnmanagedSpriteTemplate sp0;
 
     sp0.resourceSet = 0;
     sp0.x = x;

@@ -21,7 +21,7 @@ static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem);
 static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager);
 static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *a2, int a3, int a4);
 static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
-static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkTemplate_0200D748 *unkTemplate, fx32 yOffset);
+static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset);
 static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL RegisterLoadedResources(GF_2DGfxResObjList *list, SpriteResource *obj);
@@ -236,7 +236,7 @@ BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, cons
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, loadCharMode, loadPlttMode);
 }
 
-Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkStruct_0200D2B4 *template) {
+Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *template) {
     return CreateSpriteFromResourceHeader(spriteSystem, spriteManager, template->resourceSet, template->x, template->y, template->x /* typo? */, template->animSeqNo, template->rotation, template->palIndex, template->whichScreen, template->unk_18, template->unk_1C, template->unk_20, template->unk_24);
 }
 
@@ -397,15 +397,15 @@ BOOL SpriteSystem_LoadAnimResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteM
     return LoadResObjFromNarcInternal(spriteSystem, spriteManager, narc, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
-ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkTemplate_0200D748 *template) {
+ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template) {
     return SpriteSystem_NewSpriteInternal(spriteSystem, spriteManager, template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkTemplate_0200D748 *template, fx32 yOffset) {
+ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template, fx32 yOffset) {
     return SpriteSystem_NewSpriteInternal(spriteSystem, spriteManager, template, yOffset);
 }
 
-static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkTemplate_0200D748 *unkTemplate, fx32 yOffset) {
+static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset) {
     int i;
     int paletteOffset;
     ManagedSprite *ret = AllocFromHeap(spriteSystem->heapId, sizeof(ManagedSprite));

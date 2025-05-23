@@ -14,7 +14,7 @@
 #include "unk_02005D10.h"
 
 static BOOL (*const sPhoneCallHandlers[])(PokegearPhoneCallContext *) = {
-    PhoneCall_Simple,
+    GearPhoneCall_Simple,
     GearPhoneCall_Generic,
     GearPhoneCall_Generic2,
     GearPhoneCall_Bill,
@@ -146,81 +146,81 @@ BOOL PhoneCall_InitContext(PokegearPhoneCallContext *ctx, u8 callerId, u8 incomi
     return TRUE;
 }
 
-void PhoneCall_GetCallScriptId(PokegearPhoneCallContext *a0) {
-    PokegearPhoneCallState *r4 = &a0->state;
+void PhoneCall_GetCallScriptId(PokegearPhoneCallContext *ctx) {
+    PokegearPhoneCallState *state = &ctx->state;
 
-    FillWindowPixelBuffer(a0->phoneCallMsgWindow, 0);
-    ScheduleWindowCopyToVram(a0->phoneCallMsgWindow);
+    FillWindowPixelBuffer(ctx->phoneCallMsgWindow, 0);
+    ScheduleWindowCopyToVram(ctx->phoneCallMsgWindow);
 
-    switch (r4->phoneBookEntry->type) {
-    case 0:
-        r4->scriptID = PhoneCall_GetScriptId_Generic(a0, r4);
+    switch (state->phoneBookEntry->type) {
+    case PHONECALLTYPE_GENERIC:
+        state->scriptID = PhoneCall_GetScriptId_Generic(ctx, state);
         break;
-    case 1:
-        r4->scriptID = PhoneCall_GetScriptId_Mother(a0, r4);
+    case PHONECALLTYPE_MOM:
+        state->scriptID = PhoneCall_GetScriptId_Mother(ctx, state);
         break;
-    case 2:
-        r4->scriptID = PhoneCall_GetScriptId_ProfElm(a0, r4);
+    case PHONECALLTYPE_PROF_ELM:
+        state->scriptID = PhoneCall_GetScriptId_ProfElm(ctx, state);
         break;
-    case 3:
-        r4->scriptID = PhoneCall_GetScriptId_ProfOak(a0, r4);
+    case PHONECALLTYPE_PROF_OAK:
+        state->scriptID = PhoneCall_GetScriptId_ProfOak(ctx, state);
         break;
-    case 5:
-        r4->scriptID = PhoneCall_GetScriptId_BikeShop(a0, r4);
+    case PHONECALLTYPE_BIKE_SHOP:
+        state->scriptID = PhoneCall_GetScriptId_BikeShop(ctx, state);
         break;
-    case 7:
-        r4->scriptID = PhoneCall_GetScriptId_Bill(a0, r4);
+    case PHONECALLTYPE_BILL:
+        state->scriptID = PhoneCall_GetScriptId_Bill(ctx, state);
         break;
-    case 9:
-        r4->scriptID = PhoneCall_GetScriptId_DayCareLady(a0, r4);
+    case PHONECALLTYPE_DAYCARELADY:
+        state->scriptID = PhoneCall_GetScriptId_DayCareLady(ctx, state);
         break;
-    case 8:
-        r4->scriptID = PhoneCall_GetScriptId_DayCareMan(a0, r4);
+    case PHONECALLTYPE_DAYCAREMAN:
+        state->scriptID = PhoneCall_GetScriptId_DayCareMan(ctx, state);
         break;
-    case 10:
-        r4->scriptID = PhoneCall_GetScriptId_Buena(a0, r4);
+    case PHONECALLTYPE_BUENA:
+        state->scriptID = PhoneCall_GetScriptId_Buena(ctx, state);
         break;
-    case 11:
-        r4->scriptID = PhoneCall_GetScriptId_EthanLyra(a0, r4);
+    case PHONECALLTYPE_ETHAN_LYRA:
+        state->scriptID = PhoneCall_GetScriptId_EthanLyra(ctx, state);
         break;
-    case 4:
-        r4->scriptID = PhoneCall_GetScriptId_Kurt(a0, r4);
+    case PHONECALLTYPE_KURT:
+        state->scriptID = PhoneCall_GetScriptId_Kurt(ctx, state);
         break;
-    case 12:
-        r4->scriptID = PhoneCall_GetScriptId_GymLeader(a0, r4);
+    case PHONECALLTYPE_GYMLEADER:
+        state->scriptID = PhoneCall_GetScriptId_GymLeader(ctx, state);
         break;
-    case 6:
-        r4->scriptID = PhoneCall_GetScriptId_Kenji(a0, r4);
+    case PHONECALLTYPE_KENJI:
+        state->scriptID = PhoneCall_GetScriptId_Kenji(ctx, state);
         break;
-    case 13:
-        r4->scriptID = PhoneCall_GetScriptId_Baoba(a0, r4);
+    case PHONECALLTYPE_BAOBA:
+        state->scriptID = PhoneCall_GetScriptId_Baoba(ctx, state);
         break;
-    case 14:
-        r4->scriptID = PhoneCall_GetScriptId_Irwin(a0, r4);
+    case PHONECALLTYPE_IRWIN:
+        state->scriptID = PhoneCall_GetScriptId_Irwin(ctx, state);
         break;
-    case 15:
+    case PHONECALLTYPE_UNK15:
     default:
-        r4->scriptType = 0;
-        r4->scriptID = 0;
+        state->scriptType = 0;
+        state->scriptID = 0;
         break;
     }
-    if (r4->scriptType <= 2) {
-        r4->scriptDef = &gPhoneCallScriptDef[r4->scriptID];
+    if (state->scriptType <= 2) {
+        state->scriptDef = &gPhoneCallScriptDef[state->scriptID];
     }
 }
 
-void PhoneCall_InitMsgDataAndBufferNames(PokegearPhoneCallContext *a0) {
-    a0->msgData_PhoneContact = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, GetPhoneMessageGmm(a0->state.callerID), a0->heapId);
-    BufferPlayersName(a0->msgFormat, 0, a0->playerProfile);
-    BufferString(a0->msgFormat, 1, PhoneContact_GetName(a0, a0->state.callerID), 2, 1, 2);
-    BufferLandmarkName(a0->msgFormat, 2, MapHeader_GetMapSec(a0->playerMapSec));
-    BufferLandmarkName(a0->msgFormat, 3, MapHeader_GetMapSec(a0->state.phoneBookEntry->mapId));
+void PhoneCall_InitMsgDataAndBufferNames(PokegearPhoneCallContext *ctx) {
+    ctx->msgData_PhoneContact = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, GetPhoneMessageGmm(ctx->state.callerID), ctx->heapId);
+    BufferPlayersName(ctx->msgFormat, 0, ctx->playerProfile);
+    BufferString(ctx->msgFormat, 1, PhoneContact_GetName(ctx, ctx->state.callerID), 2, 1, 2);
+    BufferLandmarkName(ctx->msgFormat, 2, MapHeader_GetMapSec(ctx->playerMapSec));
+    BufferLandmarkName(ctx->msgFormat, 3, MapHeader_GetMapSec(ctx->state.phoneBookEntry->mapId));
 }
 
-void PhoneCall_AnimateFastForwardButtonOnTouch(PokegearPhoneCallContext *a0) {
+void PhoneCall_AnimateFastForwardButtonOnTouch(PokegearPhoneCallContext *ctx) {
     if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
-        Sprite_SetAnimActiveFlag(a0->sprite, TRUE);
-        Sprite_ResetAnimCtrlState(a0->sprite);
+        Sprite_SetAnimActiveFlag(ctx->sprite, TRUE);
+        Sprite_ResetAnimCtrlState(ctx->sprite);
     }
 }
 
@@ -256,11 +256,11 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
     PokegearPhoneCallState *state = &ctx->state;
     u16 itemId;
 
-    switch (scriptDef->kind) {
-    case 3:
+    switch (scriptDef->scriptType) {
+    case PHONESCRIPTTYPE_REMATCH:
         PhoneRematches_SetSeeking(ctx->callPersistentState, state->callerID, TRUE);
         break;
-    case 4:
+    case PHONESCRIPTTYPE_ITEM:
         itemId = scriptDef->param1;
         if (itemId == ITEM_CHERI_BERRY) {
             itemId = (MTRandom() % 10) + ITEM_CHERI_BERRY;
@@ -269,15 +269,15 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
         }
         PhoneRematches_GiftItemIdSet(ctx->callPersistentState, state->callerID, itemId);
         break;
-    case 1:
-    case 2:
+    case PHONESCRIPTTYPE_UNK1:
+    case PHONESCRIPTTYPE_FLAG:
         if (scriptDef->param0) {
             Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, scriptDef->param1);
         } else {
             Save_VarsFlags_ClearFlagInArray(ctx->saveVarsFlags, scriptDef->param1);
         }
         break;
-    case 5:
+    case PHONESCRIPTTYPE_WORD:
         ReadMsgDataIntoString(ctx->msgData_PhoneContact, scriptDef->param1 + (LCRandom() % scriptDef->param0), ctx->msgExpansionBuff);
         BufferString(ctx->msgFormat, 4, ctx->msgExpansionBuff, 2, 1, 2);
         break;
@@ -291,8 +291,8 @@ void PhoneCall_TouchscreenListMenu_Create(PokegearPhoneCallContext *ctx, u8 menu
     ov101_021F2384(ctx, 1);
 }
 
-int PhoneCall_TouchscreenListMenu_HandleInput(PokegearPhoneCallContext *a0) {
-    return TouchscreenListMenu_HandleInput(a0->touchscreenListMenu);
+int PhoneCall_TouchscreenListMenu_HandleInput(PokegearPhoneCallContext *ctx) {
+    return TouchscreenListMenu_HandleInput(ctx->touchscreenListMenu);
 }
 
 void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneCallContext *ctx) {
@@ -307,8 +307,8 @@ const PhoneCallScriptDef *PhoneCall_GetScriptDefPtrByID(int scriptID) {
     return &gPhoneCallScriptDef[scriptID];
 }
 
-void ov101_021F2384(PokegearPhoneCallContext *ctx, BOOL a1) {
-    if (a1) {
+void ov101_021F2384(PokegearPhoneCallContext *ctx, BOOL undim) {
+    if (undim) {
         PaletteData_BlendPalette(ctx->plttData, PLTTBUF_MAIN_BG, 0x10, 0x10, 0, RGB_BLACK);
         PaletteData_BlendPalette(ctx->plttData, PLTTBUF_MAIN_BG, 0xA0, 0x10, 0, RGB_BLACK);
     } else {
@@ -337,14 +337,14 @@ BOOL PhoneCall_WaitButtonBeforeHangup(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-void PhoneCall_NoSignalMessage(PokegearPhoneCallContext *ctx, u8 a1, u8 a2) {
-    if (a2 == 0) {
+void PhoneCall_NoSignalMessage(PokegearPhoneCallContext *ctx, u8 kind, u8 stage) {
+    if (stage == 0) {
         FillWindowPixelBuffer(ctx->phoneCallMsgWindow, 0);
     }
-    if (a1 == 0) {
-        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->noSignalMsgs[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    if (kind == 0) {
+        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->noSignalMsgs[stage], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->hangUpMsgs[a2], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->hangUpMsgs[stage], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     }
 }
 
@@ -456,7 +456,7 @@ BOOL PhoneCall_PrintGreeting(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-BOOL PhoneCall_Simple(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Simple(PokegearPhoneCallContext *ctx) {
     PokegearPhoneCallState *state = &ctx->state;
     const PhoneCallScriptDef *scriptDef = state->scriptDef;
 

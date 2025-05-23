@@ -8,7 +8,7 @@
 #include "math_util.h"
 #include "sys_flags.h"
 
-u16 ov101_021F3E74(u16 mapId);
+u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId);
 
 u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     ALIGN(4)
@@ -43,7 +43,7 @@ BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx) {
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, ov101_021F3E74(ctx->playerMapID));
+        PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, GearPhoneCall_GetEthanLyraMessage(ctx->playerMapID));
         break;
     default:
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
@@ -57,36 +57,36 @@ BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-u8 ov101_021F3D34(PokegearPhoneCallContext *a0) {
+u8 ov101_021F3D34(PokegearPhoneCallContext *ctx) {
     int i;
-    u8 r4;
-    u8 *r5;
-    u8 r6;
+    u8 count;
+    u8 *ptr;
+    u8 unlockLevel;
     u8 sp0[4];
 
-    r4 = 0;
-    r6 = Pokegear_GetMapUnlockLevel(SaveData_GSPlayerMisc_Get(a0->saveData));
+    count = 0;
+    unlockLevel = Pokegear_GetMapUnlockLevel(SaveData_GSPlayerMisc_Get(ctx->saveData));
     sp0[0] = 1;
-    if (Save_VarsFlags_FlypointFlagAction(a0->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_UNK_9C9 - FLAG_SYS_FLYPOINT_PALLET)) {
+    if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_UNK_9C9 - FLAG_SYS_FLYPOINT_PALLET)) {
         sp0[1] = 1; // 2D 2E 48
     } // UB: else, sp0[1] is undefined
-    if (r6) {
+    if (unlockLevel != 0) {
         sp0[2] = 1; // 19 1A 39
     } // UB: else, sp0[2] is undefined
-    if (r6 > 1) {
+    if (unlockLevel > 1) {
         sp0[3] = 1; // 00-17 1A 2F-37 39
     } // UB: else, sp0[3] is undefined
 
-    r5 = AllocFromHeapAtEnd(a0->heapId, 73);
-    MI_CpuClear8(r5, 73);
+    ptr = AllocFromHeapAtEnd(ctx->heapId, 73);
+    MI_CpuClear8(ptr, 73);
     for (i = 0; i < 73; ++i) {
         if (sp0[ov101_021F8760[i]]) {
-            r5[r4++] = i;
+            ptr[count++] = i;
         }
     }
-    r4 = r5[LCRandom() % r4];
-    FreeToHeap(r5);
-    return r4 + msg_0662_00086;
+    count = ptr[LCRandom() % count];
+    FreeToHeap(ptr);
+    return count + msg_0662_00086;
 }
 
 BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
@@ -121,7 +121,7 @@ BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-u16 ov101_021F3E74(u16 mapId) {
+u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId) {
     int i;
 
     static const u16 ov101_021F86CC[] = {

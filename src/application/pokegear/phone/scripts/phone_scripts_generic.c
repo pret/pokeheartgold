@@ -22,16 +22,16 @@ static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay);
 static u16 getRandomTrainerMon(u16 trainerID, HeapID heapID);
 
 u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
-    const PhoneScriptGenericHeader *r2;
+    const PhoneScriptGenericHeader *genericScripts;
 
     state->scriptType = 0;
-    r2 = &ov101_021F968C[state->callerID * 16];
+    genericScripts = &sGenericPhoneCallHeaders[state->callerID * 16];
     if (state->isIncomingCall) {
-        return PhoneScriptGeneric_GetScriptIdInternal(ctx, &r2[8], 8);
+        return PhoneScriptGeneric_GetScriptIdInternal(ctx, &genericScripts[8], 8);
     } else if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
         return state->phoneBookEntry->phoneScriptIfLocal;
     } else {
-        return PhoneScriptGeneric_GetScriptIdInternal(ctx, &r2[0], 8);
+        return PhoneScriptGeneric_GetScriptIdInternal(ctx, &genericScripts[0], 8);
     }
 }
 
@@ -43,26 +43,26 @@ static u16 PhoneScriptGeneric_GetScriptIdInternal(PokegearPhoneCallContext *ctx,
     const PhoneScriptGenericHeader *curHdr = hdrs;
 
     for (i = 0; i < count; ++i) {
-        if (curHdr->type == 255 || curHdr->type == 0) {
+        if (curHdr->type == PHONECALLGENERIC_NONE || curHdr->type == PHONECALLGENERIC_NIL) {
             break;
         }
         switch (curHdr->type) {
-        case 2:
+        case PHONECALLGENERIC_FIGHTPOSTROCKETS:
             result = PhoneScript_Generic_NoRematchUntilClearedRadioTower(ctx, curHdr);
             break;
-        case 7:
+        case PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST:
             result = PhoneScript_Generic_RematchAfterRadioTowerExceptDuringBugContest(ctx, curHdr);
             break;
-        case 8:
+        case PHONECALLGENERIC_GIFTNOTBUGCONTEST:
             result = PhoneScript_Generic_GiftItemExceptDuringBugContest(ctx, curHdr);
             break;
-        case 3:
+        case PHONECALLGENERIC_POSTROCKETWEEKTIME:
             result = PhoneScript_Generic_RematchAfterRadioTowerSpecificDayAndTime(ctx, curHdr);
             break;
-        case 4:
+        case PHONECALLGENERIC_BUGCONTESTDAYS:
             result = PhoneScript_Generic_OnlyTuesThursSat(ctx, curHdr);
             break;
-        case 5:
+        case PHONECALLGENERIC_DURINGROCKETS:
             result = PhoneScript_Generic_DuringRocketTakeover(ctx, curHdr);
             break;
         default:
@@ -75,7 +75,7 @@ static u16 PhoneScriptGeneric_GetScriptIdInternal(PokegearPhoneCallContext *ctx,
         }
         hdrs = curHdr++;
     }
-    if (hdrs->type == 255 || hdrs->type == 0) {
+    if (hdrs->type == PHONECALLGENERIC_NONE || hdrs->type == PHONECALLGENERIC_NIL) {
         state->scriptType = 0;
         return PHONE_SCRIPT_NONE;
     }
@@ -105,7 +105,7 @@ static BOOL PhoneScript_Generic_NoRematchUntilClearedRadioTower(PokegearPhoneCal
     if (PhoneRematches_GiftItemIdGet(ctx->callPersistentState, state->callerID)) {
         return FALSE;
     }
-    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && hdr->scriptType == 0 && PhoneCall_GetScriptDefPtrByID(hdr->scriptID)->kind == PHONESCRIPTTYPE_REMATCH) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && hdr->scriptType == 0 && PhoneCall_GetScriptDefPtrByID(hdr->scriptID)->scriptType == PHONESCRIPTTYPE_REMATCH) {
         return FALSE;
     }
     return rollPercentChance(hdr->chance);

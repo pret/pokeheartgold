@@ -8,12 +8,12 @@
 #include "sys_flags.h"
 #include "sys_vars.h"
 
-u8 ov101_021F3C60(u8 hour);
+static u8 IsBuenasPasswordOnAir(u8 hour);
 
 u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     state->scriptType = 0;
     state->flag0 = CheckGameClearFlag(ctx->saveVarsFlags);
-    state->sharedU8var = ov101_021F3C60(state->time.hour);
+    state->sharedU8var = IsBuenasPasswordOnAir(state->time.hour);
     if (Save_VarsFlags_IsInRocketTakeover(ctx->saveVarsFlags)) {
         return PHONE_SCRIPT_099;
     }
@@ -95,7 +95,7 @@ BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-u8 ov101_021F3C60(u8 hour) {
+static u8 IsBuenasPasswordOnAir(u8 hour) {
     // Different messages at different times of day
 
     // hour % 3 == 2, so 2, 5, 8, 11 AM/PM

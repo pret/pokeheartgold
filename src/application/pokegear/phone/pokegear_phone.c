@@ -109,13 +109,13 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     phoneApp->numContacts = GSPlayerMisc_FindEmptyGearPhonebookSlot(phoneApp->pokegear->savePokegear);
     PokegearPhone_ContactList_CreateLinkedList(phoneApp);
     if (phoneApp->pokegear->args->incomingPhoneCall == 1) {
-        phoneApp->isIncomingCall = 1;
+        phoneApp->isIncomingCall = TRUE;
         phoneApp->callerID = phoneApp->pokegear->args->callerId;
         phoneApp->isScriptedCall = phoneApp->pokegear->args->unk05;
         phoneApp->callScriptID = phoneApp->pokegear->args->callScriptID;
         phoneApp->pokegear->cursorInAppSwitchZone = 0;
     } else {
-        phoneApp->isIncomingCall = 0;
+        phoneApp->isIncomingCall = FALSE;
         phoneApp->callerID = 0;
         phoneApp->isScriptedCall = 0;
         phoneApp->callScriptID = 0;

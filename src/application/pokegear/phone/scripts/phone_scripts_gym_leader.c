@@ -66,7 +66,7 @@ BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
         break;
     case 3:
         yesNoResponse = PhoneCall_TouchscreenListMenu_HandleInput(ctx);
-        if (yesNoResponse == -1) {
+        if (yesNoResponse == TOUCH_MENU_NO_INPUT) {
             return FALSE;
         }
         PhoneCall_TouchscreenListMenu_Destroy(ctx);

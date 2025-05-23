@@ -4675,10 +4675,10 @@ BOOL ScrCmd_LoadPhoneDat(ScriptContext *ctx) {
 BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
     u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u8 r6 = ScriptReadByte(ctx);
-    u16 *sp0 = ScriptGetVarPointer(ctx);
+    u16 *pPhoneMsgGmm = ScriptGetVarPointer(ctx);
     u16 *p_ret_msg = ScriptGetVarPointer(ctx);
     PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    *sp0 = GetPhoneMessageGmm(entry->id);
+    *pPhoneMsgGmm = GetPhoneMessageGmm(entry->id);
     u16 r5, p_ret_gmm;
 
     if (entry->id == 0xFF) {

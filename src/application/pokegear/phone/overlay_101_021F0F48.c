@@ -5,8 +5,8 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void PhoneContactListNode_Init(PhoneContactListNode *a0);
-void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *a0);
+void PhoneContactListNode_Init(PhoneContactListNode *node);
+void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slotData);
 void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow);
 void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui);
 u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot);
@@ -146,7 +146,7 @@ void PokegearPhone_SetContactListUIAndDraw(PokegearPhoneAppData *phoneApp, Phone
     ui->cursorPos = cursorPos;
     CopyWindowToVram(ui->window);
     PokegearContactListUI_UpdateScrollArrowSpritesVisibility(ui);
-    if (phoneApp->isIncomingCall != 0) {
+    if (phoneApp->isIncomingCall) {
         PhoneContactListUI_SetCursorSpritePos(ui, cursorPos, FALSE);
     } else {
         PhoneContactListUI_SetCursorSpritePos(ui, cursorPos, TRUE);
@@ -287,70 +287,70 @@ int PhoneContactListUI_HandleKeyInput(PhoneContactListUI *ui) {
     return -1;
 }
 
-int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *a0) {
+int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *ui) {
     u8 contactIndex;
 
-    if (a0->isScrolling) {
-        PhoneContactListUI_HandleScrollInProgress(a0);
+    if (ui->isScrolling) {
+        PhoneContactListUI_HandleScrollInProgress(ui);
         return -1;
     }
-    if (a0->scrollTimer != 0) {
-        --a0->scrollTimer;
+    if (ui->scrollTimer != 0) {
+        --ui->scrollTimer;
         return -1;
     }
-    contactIndex = a0->firstContactOnPage + a0->cursorPos;
+    contactIndex = ui->firstContactOnPage + ui->cursorPos;
     if (gSystem.newKeys & PAD_BUTTON_A) {
         return contactIndex;
         ;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
-        return a0->selectedIndex;
+        return ui->selectedIndex;
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         if (contactIndex == 0) { // no wraparound
             return -1;
         }
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        if (a0->cursorPos == 0) {
+        if (ui->cursorPos == 0) {
             if (contactIndex != 0) {
-                PokegearContactListUI_StartSingleScroll(a0, 1);
+                PokegearContactListUI_StartSingleScroll(ui, 1);
             }
             return -1;
         } else {
-            --a0->cursorPos;
-            PhoneContactListUI_UpdateMoveContactArrowSprites(a0, a0->cursorPos, TRUE);
-            a0->scrollTimer = 2;
+            --ui->cursorPos;
+            PhoneContactListUI_UpdateMoveContactArrowSprites(ui, ui->cursorPos, TRUE);
+            ui->scrollTimer = 2;
             return -1;
         }
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        if (contactIndex >= a0->numContacts - 1) { // no wraparound
+        if (contactIndex >= ui->numContacts - 1) { // no wraparound
             return -1;
         }
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        if (a0->cursorPos == 5) {
-            if (contactIndex < a0->numContacts - 1) {
-                PokegearContactListUI_StartSingleScroll(a0, 0);
+        if (ui->cursorPos == 5) {
+            if (contactIndex < ui->numContacts - 1) {
+                PokegearContactListUI_StartSingleScroll(ui, 0);
             }
             return -1;
         } else {
-            ++a0->cursorPos;
-            PhoneContactListUI_UpdateMoveContactArrowSprites(a0, a0->cursorPos, TRUE);
-            a0->scrollTimer = 2;
+            ++ui->cursorPos;
+            PhoneContactListUI_UpdateMoveContactArrowSprites(ui, ui->cursorPos, TRUE);
+            ui->scrollTimer = 2;
             return -1;
         }
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
-        if (a0->firstContactOnPage != 0) {
+        if (ui->firstContactOnPage != 0) {
             PlaySE(SEQ_SE_GS_GEARCURSOR);
-            PhoneContactListUI_StartPageScroll(a0, 1);
+            PhoneContactListUI_StartPageScroll(ui, 1);
         }
         return -1;
     }
     if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        if (a0->firstContactOnPage + 6 < a0->numContacts) {
+        if (ui->firstContactOnPage + 6 < ui->numContacts) {
             PlaySE(SEQ_SE_GS_GEARCURSOR);
-            PhoneContactListUI_StartPageScroll(a0, 0);
+            PhoneContactListUI_StartPageScroll(ui, 0);
         }
         return -1;
     }
@@ -433,11 +433,11 @@ void PhoneContactListUI_DeselectContact(PhoneContactListUI *ui) {
     }
 }
 
-void PhoneContactListNode_Init(PhoneContactListNode *a0) {
-    a0->index = 0;
-    a0->contact.id = 255;
-    a0->next = NULL;
-    a0->prev = NULL;
+void PhoneContactListNode_Init(PhoneContactListNode *node) {
+    node->index = 0;
+    node->contact.id = 255;
+    node->next = NULL;
+    node->prev = NULL;
 }
 
 void PokegearPhone_InitContactsLinkedList(PokegearPhoneAppData *phoneApp) {
@@ -473,18 +473,18 @@ void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slot) {
 
 void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow) {
     u8 y;
-    PhoneContactListUIColors *r4;
+    PhoneContactListUIColors *colors;
 
-    r4 = &ui->textColors[colorIdx];
+    colors = &ui->textColors[colorIdx];
     y = 24 * slot;
-    FillWindowPixelRect(ui->window, r4->fill1, 0, y, 216, 24);
-    FillWindowPixelRect(ui->window, r4->bg1, 8, y, 82, 20);
-    FillWindowPixelRect(ui->window, r4->bg2, 90, y, 126, 20);
-    FillWindowPixelRect(ui->window, r4->fill2, 1, y + 1, 2, 2);
-    FillWindowPixelRect(ui->window, r4->fill1, 8, y, 2, 7);
-    FillWindowPixelRect(ui->window, r4->fill1, 9, y + 9, 2, 2);
-    FillWindowPixelRect(ui->window, r4->fill1, 9, y + 13, 2, 2);
-    FillWindowPixelRect(ui->window, r4->fill1, 9, y + 17, 2, 2);
+    FillWindowPixelRect(ui->window, colors->fill1, 0, y, 216, 24);
+    FillWindowPixelRect(ui->window, colors->bg1, 8, y, 82, 20);
+    FillWindowPixelRect(ui->window, colors->bg2, 90, y, 126, 20);
+    FillWindowPixelRect(ui->window, colors->fill2, 1, y + 1, 2, 2);
+    FillWindowPixelRect(ui->window, colors->fill1, 8, y, 2, 7);
+    FillWindowPixelRect(ui->window, colors->fill1, 9, y + 9, 2, 2);
+    FillWindowPixelRect(ui->window, colors->fill1, 9, y + 13, 2, 2);
+    FillWindowPixelRect(ui->window, colors->fill1, 9, y + 17, 2, 2);
     if (copyNow) {
         CopyWindowToVram(ui->window);
     }
@@ -512,19 +512,19 @@ void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 in
     u8 colorIdx;
     u8 y;
     PhoneContactListUIColors *colorSpec;
-    PhoneContactListUISlotData *r4;
+    PhoneContactListUISlotData *slotData;
 
-    r4 = &ui->slotData[index];
+    slotData = &ui->slotData[index];
     colorIdx = PhoneContactListUI_GetBackgroundIndex(ui, slot);
     colorSpec = &ui->textColors[colorIdx];
     PhoneContactListUI_DrawNameSlotBG(ui, slot, colorIdx, FALSE);
     y = slot * 24;
     if (selected != 0 || index == ui->selectedIndex) {
-        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, r4->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Selected, NULL);
-        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, r4->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Selected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, slotData->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Selected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, slotData->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Selected, NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, r4->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Deselected, NULL);
-        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, r4->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Deselected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, slotData->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Deselected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, slotData->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Deselected, NULL);
     }
     if (copyNow) {
         CopyWindowToVram(ui->window);

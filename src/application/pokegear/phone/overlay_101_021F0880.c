@@ -109,13 +109,13 @@ void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *m
     }
 }
 
-void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 a1, BOOL a2) {
-    if (a2) {
+void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 tooltipId, BOOL draw) {
+    if (draw) {
         u32 xpos;
         CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->screenData->rawData, 0, 24, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
         FillWindowPixelBuffer(&phoneApp->windows[3], 5);
-        xpos = (256 - FontID_String_GetWidth(0, phoneApp->tooltipStrings[a1], 0)) / 2;
-        AddTextPrinterParameterizedWithColor(&phoneApp->windows[3], 0, phoneApp->tooltipStrings[a1], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
+        xpos = (256 - FontID_String_GetWidth(0, phoneApp->tooltipStrings[tooltipId], 0)) / 2;
+        AddTextPrinterParameterizedWithColor(&phoneApp->windows[3], 0, phoneApp->tooltipStrings[tooltipId], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
     } else {
         ClearWindowTilemapAndScheduleTransfer(&phoneApp->windows[3]);
         FillBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 20, 32, 4, TILEMAP_FILL_OVWT_PAL);
@@ -272,11 +272,11 @@ void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneC
     }
 }
 
-void PokegearPhone_SortList(PokegearPhoneAppData *phoneApp, u8 a1) {
+void PokegearPhone_SortList(PokegearPhoneAppData *phoneApp, u8 sortParam) {
     PhoneBookEntry *phoneBook = phoneApp->callContext->phoneEntries;
     for (int i = 0; i < phoneApp->numContacts - 1; ++i) {
         for (int j = phoneApp->numContacts - 1; j > i; --j) {
-            if (phoneBook[phoneApp->saveContacts[j].id].sortParam[a1] < phoneBook[phoneApp->saveContacts[i].id].sortParam[a1]) {
+            if (phoneBook[phoneApp->saveContacts[j].id].sortParam[sortParam] < phoneBook[phoneApp->saveContacts[i].id].sortParam[sortParam]) {
                 u8 tmp = phoneApp->saveContacts[i].id;
                 phoneApp->saveContacts[i].id = phoneApp->saveContacts[j].id;
                 phoneApp->saveContacts[j].id = tmp;
