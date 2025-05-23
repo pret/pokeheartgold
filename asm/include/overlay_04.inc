@@ -38,7 +38,7 @@
 .public PlayerAvatar_CopyPositionVector
 .public PlayerAvatar_GetPositionVectorConst
 .public PlayerAvatar_GetMapObject
-.public sub_0205C838
+.public PlayerAvatar_SetMapObjectYPosition
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
 .public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
 .public MapObjectManager_GetFirstActiveObjectByID

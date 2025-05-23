@@ -297,7 +297,7 @@ _02254060:
 	add r1, r1, r0
 	str r1, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C838
+	bl PlayerAvatar_SetMapObjectYPosition
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	bl ov01_02205A34
@@ -395,7 +395,7 @@ _02254130:
 	sub r1, r1, r0
 	str r1, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C838
+	bl PlayerAvatar_SetMapObjectYPosition
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	bl ov01_02205A34
