@@ -51,6 +51,8 @@ typedef struct PokegearRadioAppData {
     s16 unk_28;                // 0x28
     s16 unk_2A;                // 0x2A
     u16 unk_2C;                // 0x2C
+    u16 unk_2E_0 : 15;         // 0x2E
+    u16 unk_2E_15 : 1;         // 0x2E
     Window unk_30[3];          // 0x30
     RadioSub60 *unk_60;        // 0x60
     void *unk_64;              // 0x64
@@ -70,6 +72,8 @@ BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1);
 int ov101_021F5304(PokegearRadioAppData *radioApp);
 int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
 u8 ov101_021F54AC(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *a3);
+void ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y);
+void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1);
 
 RadioSub60 *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
 void ov101_021F58A0(RadioSub60 *a0);
