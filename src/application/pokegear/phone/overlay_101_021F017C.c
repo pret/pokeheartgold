@@ -449,7 +449,7 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     param.playerMapSec = phoneApp->pokegear->args->mapID;
     param.playerMapID = phoneApp->pokegear->args->mapHeader;
     param.saveData = phoneApp->pokegear->saveData;
-    param.callPersistentState = SaveData_GetMomsSavingsAddr(phoneApp->pokegear->saveData);
+    param.callPersistentState = SaveData_GetPhoneCallPersistentState(phoneApp->pokegear->saveData);
     param.playerProfile = phoneApp->pokegear->profile;
     param.saveVarsFlags = phoneApp->pokegear->saveVarsFlags;
     param.rtc = Save_SysInfo_RTC_Get(phoneApp->pokegear->saveData);

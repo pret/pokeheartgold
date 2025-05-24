@@ -99,10 +99,10 @@ static BOOL PhoneScript_Generic_RandomChance(PokegearPhoneCallContext *ctx, cons
 static BOOL PhoneScript_Generic_NoRematchUntilClearedRadioTower(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
     PokegearPhoneCallState *state = &ctx->state;
 
-    if (PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID)) {
+    if (PhoneCallPersistentState_PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID)) {
         return FALSE;
     }
-    if (PhoneRematches_GiftItemIdGet(ctx->callPersistentState, state->callerID)) {
+    if (PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(ctx->callPersistentState, state->callerID)) {
         return FALSE;
     }
     if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS) && hdr->scriptType == 0 && PhoneCall_GetScriptDefPtrByID(hdr->scriptID)->scriptType == PHONESCRIPTTYPE_REMATCH) {
@@ -132,7 +132,7 @@ static BOOL PhoneScript_Generic_RematchAfterRadioTowerExceptDuringBugContest(Pok
     if (state->phoneBookEntry->mapId == MAP_NATIONAL_PARK && Save_VarsFlags_CheckBugContestFlag(ctx->saveVarsFlags)) {
         return FALSE;
     }
-    if (!PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID)) {
+    if (!PhoneCallPersistentState_PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID)) {
         return FALSE;
     }
     return rollPercentChance(hdr->chance);
@@ -144,7 +144,7 @@ static BOOL PhoneScript_Generic_GiftItemExceptDuringBugContest(PokegearPhoneCall
     if (state->phoneBookEntry->mapId == MAP_NATIONAL_PARK && Save_VarsFlags_CheckBugContestFlag(ctx->saveVarsFlags)) {
         return FALSE;
     }
-    if (!PhoneRematches_GiftItemIdGet(ctx->callPersistentState, state->callerID)) {
+    if (!PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(ctx->callPersistentState, state->callerID)) {
         return FALSE;
     }
     return rollPercentChance(hdr->chance);

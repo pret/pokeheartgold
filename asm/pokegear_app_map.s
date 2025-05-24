@@ -358,7 +358,7 @@ _021E799A:
 	str r0, [r5, #0x38]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -370,13 +370,13 @@ _021E799A:
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5]
 	ldr r0, [r0, #0x28]
-	bl GSPlayerMisc_AllocAndCopyPhonebook
+	bl SavePokegear_AllocAndCopyPhonebook
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x28]
-	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
+	bl SavePokegear_FindEmptyPhonebookSlot
 	mov r2, #0x13
 	lsl r2, r2, #4
 	strb r0, [r5, r2]
@@ -6525,7 +6525,7 @@ _021EA9E0:
 	lsl r0, r0, #2
 	ldrb r1, [r1, r4]
 	ldr r0, [r5, r0]
-	bl PhoneRematches_GiftItemIdGet
+	bl PhoneCallPersistentState_PhoneRematches_GiftItemIdGet
 	cmp r0, #0
 	beq _021EA9FA
 	mov r0, #1
@@ -12519,7 +12519,7 @@ TownMap_Init: ; 0x021ED7F8
 	str r0, [r1, #0x24]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GSPlayerMisc_Get
+	bl SaveData_Pokegear_Get
 	ldr r1, [r4, #0x10]
 	str r0, [r1, #0x28]
 	ldr r0, [r4, #0x10]
@@ -12707,7 +12707,7 @@ ov101_021ED980: ; 0x021ED980
 	str r0, [r4, #0x38]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x24]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	mov r1, #0x49
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -12719,13 +12719,13 @@ ov101_021ED980: ; 0x021ED980
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	ldr r0, [r0, #0x28]
-	bl GSPlayerMisc_AllocAndCopyPhonebook
+	bl SavePokegear_AllocAndCopyPhonebook
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x28]
-	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
+	bl SavePokegear_FindEmptyPhonebookSlot
 	mov r2, #0x13
 	lsl r2, r2, #4
 	strb r0, [r4, r2]

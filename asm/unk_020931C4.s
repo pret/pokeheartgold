@@ -35,15 +35,15 @@ _020931D0:
 	ldrh r1, [r4]
 	add r0, r5, #0
 	mov r2, #1
-	bl MomsSavings_GiftQueuePut
+	bl PhoneCallPersistentState_MomGiftQueue_Put
 	ldrh r2, [r4, #4]
 	add r0, r5, #0
 	mov r1, #3
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	str r0, [sp]
 	add r0, r5, #0
 	add r7, r7, #1
-	bl MomsSavings_GiftQueueFull
+	bl PhoneCallPersistentState_MomGiftQueue_IsFull
 	cmp r0, #0
 	bne _0209321A
 _02093212:
@@ -69,7 +69,7 @@ sub_0209322C: ; 0x0209322C
 	add r4, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl MomsSavings_GiftQueueFull
+	bl PhoneCallPersistentState_MomGiftQueue_IsFull
 	cmp r0, #0
 	beq _02093240
 	mov r0, #0
@@ -108,11 +108,11 @@ _0209326A:
 	add r1, #0x95
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl MomsSavings_GiftQueuePut
+	bl PhoneCallPersistentState_MomGiftQueue_Put
 	ldrb r2, [r5, #2]
 	add r0, r4, #0
 	mov r1, #3
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop

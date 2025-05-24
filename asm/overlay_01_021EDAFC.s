@@ -2565,10 +2565,10 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	mov r1, #0
 	add r2, r1, #0
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]

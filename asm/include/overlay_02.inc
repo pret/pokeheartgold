@@ -179,9 +179,9 @@
 .public RoamerSave_GetRepelAddr
 .public RoamerSave_RepelNotInUse
 .public RoamerSave_GetFlute
-.public GSPlayerMisc_FindEmptyGearPhonebookSlot
-.public GSPlayerMisc_IsGearNumberRegistered
-.public GSPlayerMisc_AllocAndCopyPhonebook
+.public SavePokegear_FindEmptyPhonebookSlot
+.public SavePokegear_IsNumberRegistered
+.public SavePokegear_AllocAndCopyPhonebook
 .public sub_0202F08C
 .public Save_SafariZone_Get
 .public sub_0202F620

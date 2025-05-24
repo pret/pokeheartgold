@@ -13,7 +13,7 @@ u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhone
     } else {
         state->flag0 = FALSE;
     }
-    state->flag1 = PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID);
+    state->flag1 = PhoneCallPersistentState_PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID);
     if (state->isIncomingCall) {
         state->scriptType = 14;
     } else {
@@ -74,7 +74,7 @@ BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00007);
         } else if (isDojoFull(ctx, state->callerID)) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00006);
-            PhoneRematches_SetSeeking(ctx->callPersistentState, state->callerID, TRUE);
+            PhoneCallPersistentState_PhoneRematches_SetSeeking(ctx->callPersistentState, state->callerID, TRUE);
         } else {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0644_00008);
         }
@@ -148,7 +148,7 @@ static BOOL isDojoFull(PokegearPhoneCallContext *ctx, u8 callerID) {
 
     count = 0;
     for (i = 0; i < 1; ++i) {
-        if (callerID != sGymLeaderContacts[i] && PhoneRematches_IsSeeking(ctx->callPersistentState, sGymLeaderContacts[i])) {
+        if (callerID != sGymLeaderContacts[i] && PhoneCallPersistentState_PhoneRematches_IsSeeking(ctx->callPersistentState, sGymLeaderContacts[i])) {
             ++count;
         }
     }

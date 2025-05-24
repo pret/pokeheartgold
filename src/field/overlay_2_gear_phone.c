@@ -142,8 +142,8 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     SaveVarsFlags *varsFlags = Save_VarsFlags_Get(gearPhone->saveData);
     Save_PlayerData_GetProfile(gearPhone->saveData);
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
-    u32 slot = GSPlayerMisc_FindEmptyGearPhonebookSlot(gearPhone->pokegearData);
-    contact = GSPlayerMisc_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
+    u32 slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
+    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
     u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, slot);
     MI_CpuFill8(ptr, 0xFF, slot);
     u16 rand = LCRandom() % 1000;
@@ -227,12 +227,12 @@ asm static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBo
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]
-	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
+	bl SavePokegear_FindEmptyPhonebookSlot
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #8]
 	mov r1, #4
 	ldr r0, [r0, #0x30]
-	bl GSPlayerMisc_AllocAndCopyPhonebook
+	bl SavePokegear_AllocAndCopyPhonebook
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
@@ -466,7 +466,7 @@ static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u
         }
         PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].unk0];
         if (entry->id == PHONE_CONTACT_DAY_C_MAN) {
-            if (GSPlayerMisc_IsGearNumberRegistered(gearPhone->pokegearData, PHONE_CONTACT_DAY_C_MAN) != 0xFF) {
+            if (SavePokegear_IsNumberRegistered(gearPhone->pokegearData, PHONE_CONTACT_DAY_C_MAN) != 0xFF) {
                 // had to do this to match
                 goto LABEL;
             } else {

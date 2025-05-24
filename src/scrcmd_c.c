@@ -4599,43 +4599,43 @@ BOOL ScrCmd_GetFriendSprite(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_RegisterPokegearCard(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_Pokegear_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 card = ScriptReadByte(ctx);
     switch (card) {
     case 1:
-        Pokegear_RegisterCard(pokegear, 1);
+        SavePokegear_RegisterCard(pokegear, 1);
         break;
     case 2:
-        Pokegear_RegisterCard(pokegear, 2);
+        SavePokegear_RegisterCard(pokegear, 2);
         break;
     case 0:
     default:
-        Pokegear_RegisterCard(pokegear, 0);
+        SavePokegear_RegisterCard(pokegear, 0);
         break;
     }
     return FALSE;
 }
 
 BOOL ScrCmd_804(ScriptContext *ctx) {
-    Pokegear_SetMapUnlockLevel(SaveData_GSPlayerMisc_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    Pokegear_SetMapUnlockLevel(SaveData_Pokegear_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
 BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_Pokegear_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 number = ScriptGetVar(ctx);
     if (number < NUM_PHONE_CONTACTS) {
-        RegisterPhoneNumberInPokeGear(pokegear, number);
+        SavePokegear_RegisterPhoneNumber(pokegear, number);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_Pokegear_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 number = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (number < NUM_PHONE_CONTACTS) {
-        *p_ret = GSPlayerMisc_IsGearNumberRegistered(pokegear, number);
+        *p_ret = SavePokegear_IsNumberRegistered(pokegear, number);
         if (*p_ret == 0xFF) {
             *p_ret = FALSE;
         } else {
@@ -4703,7 +4703,7 @@ BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
 
 BOOL ScrCmd_462(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
-    PhoneRematches_SetSeeking(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), idx, FALSE);
+    PhoneCallPersistentState_PhoneRematches_SetSeeking(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), idx, FALSE);
     return FALSE;
 }
 
@@ -4721,9 +4721,9 @@ BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    PhoneCallPersistentState *callPersistentState = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
-    *p_ret = PhoneRematches_GiftItemIdGet(callPersistentState, entry->id);
-    PhoneRematches_GiftItemIdSet(callPersistentState, entry->id, ITEM_NONE);
+    PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData);
+    *p_ret = PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(callPersistentState, entry->id);
+    PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(callPersistentState, entry->id, ITEM_NONE);
     return FALSE;
 }
 
@@ -4734,7 +4734,7 @@ BOOL ScrCmd_148(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_149(ScriptContext *ctx) {
-    sub_0202F050(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    sub_0202F050(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
@@ -5052,7 +5052,7 @@ BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
 static u32 GetMaxBankTransactionAmount(FieldSystem *fieldSystem, int action) {
     u32 ret;
     u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfile(fieldSystem->saveData));
-    u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), MOMS_BALANCE_GET, 0);
+    u32 bank = PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), MOMS_BALANCE_GET, 0);
     switch (action) {
     case 0:
         ret = MAX_MONEY - bank;
@@ -5102,11 +5102,11 @@ BOOL sub_020479D4(ScriptContext *ctx) {
         switch (work->mode) {
         case 0:
             PlayerProfile_SubMoney(Save_PlayerData_GetProfile(saveData), work->sub->selected);
-            MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_ADD, work->sub->selected);
+            PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_ADD, work->sub->selected);
             break;
         case 1:
             PlayerProfile_AddMoney(Save_PlayerData_GetProfile(saveData), work->sub->selected);
-            MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_SUB, work->sub->selected);
+            PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_SUB, work->sub->selected);
             break;
         default:
             GF_ASSERT(0);
@@ -5123,7 +5123,7 @@ BOOL ScrCmd_BankOrWalletIsFull(ScriptContext *ctx) {
     u16 action = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (action == 0) {
-        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
+        if (PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;
@@ -5265,7 +5265,7 @@ BOOL ScrCmd_ScriptOverlayCmd(ScriptContext *ctx) {
 BOOL ScrCmd_CheckBankBalance(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u32 check_amt = ScriptReadWord(ctx);
-    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) >= check_amt) {
+    if (PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) >= check_amt) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;

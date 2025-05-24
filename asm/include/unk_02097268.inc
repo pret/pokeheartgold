@@ -4,10 +4,10 @@
 .public AllocFromHeapAtEnd
 .public FreeToHeap
 .public GF_AssertFail
-.public SaveData_GetMomsSavingsAddr
+.public SaveData_GetPhoneCallPersistentState
 .public sub_0202F01C
 .public sub_0202F050
-.public MomsSavings_SetCurSafariZoneArrangement
+.public PhoneCallPersistentState_SafariZoneArrangement_Set
 .public Save_SafariZone_Get
 .public SafariZone_GetAreaSet
 .public sub_0202F6A0

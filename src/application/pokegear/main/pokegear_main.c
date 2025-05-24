@@ -62,7 +62,7 @@ BOOL Pokegear_Init(OVY_MANAGER *man, int *state) {
     pokegearApp->args = args;
     pokegearApp->heapId = HEAP_ID_POKEGEAR;
     pokegearApp->saveData = pokegearApp->args->saveData;
-    pokegearApp->savePokegear = SaveData_GSPlayerMisc_Get(pokegearApp->args->saveData);
+    pokegearApp->savePokegear = SaveData_Pokegear_Get(pokegearApp->args->saveData);
     pokegearApp->saveVarsFlags = Save_VarsFlags_Get(pokegearApp->args->saveData);
     pokegearApp->options = Save_PlayerData_GetOptionsAddr(pokegearApp->args->saveData);
     pokegearApp->profile = Save_PlayerData_GetProfile(pokegearApp->args->saveData);

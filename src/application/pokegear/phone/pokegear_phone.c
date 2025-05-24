@@ -105,8 +105,8 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
     phoneApp->backgroundStyle = Pokegear_GetBackgroundStyle(phoneApp->pokegear->savePokegear);
-    phoneApp->saveContacts = GSPlayerMisc_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapId);
-    phoneApp->numContacts = GSPlayerMisc_FindEmptyGearPhonebookSlot(phoneApp->pokegear->savePokegear);
+    phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapId);
+    phoneApp->numContacts = SavePokegear_FindEmptyPhonebookSlot(phoneApp->pokegear->savePokegear);
     PokegearPhone_ContactList_CreateLinkedList(phoneApp);
     if (phoneApp->pokegear->args->incomingPhoneCall == 1) {
         phoneApp->isIncomingCall = TRUE;

@@ -65,7 +65,7 @@ u8 ov101_021F3D34(PokegearPhoneCallContext *ctx) {
     u8 sp0[4];
 
     count = 0;
-    unlockLevel = Pokegear_GetMapUnlockLevel(SaveData_GSPlayerMisc_Get(ctx->saveData));
+    unlockLevel = Pokegear_GetMapUnlockLevel(SaveData_Pokegear_Get(ctx->saveData));
     sp0[0] = 1;
     if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_UNK_9C9 - FLAG_SYS_FLYPOINT_PALLET)) {
         sp0[1] = 1; // 2D 2E 48

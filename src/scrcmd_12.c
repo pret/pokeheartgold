@@ -13,8 +13,8 @@
 BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
     u16 sp;
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    PhoneCallPersistentState *callPersistentState = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
-    if (MomsSavings_GetGiftAtIndex(callPersistentState, 0, &sp) == 0) {
+    PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData);
+    if (PhoneCallPersistentState_MomGiftQueue_Peek(callPersistentState, 0, &sp) == 0) {
         *retPtr = FALSE;
     } else {
         *retPtr = TRUE;

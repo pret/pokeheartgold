@@ -230,7 +230,7 @@ void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *p
         phoneApp->saveContacts[i++].id = ptr->contact.id;
         ptr = ptr->next;
     }
-    GSPlayerMisc_SetPhonebookFromBuffer(phoneApp->pokegear->savePokegear, phoneApp->saveContacts, phoneApp->numContacts);
+    SavePokegear_SetPhonebookFromBuffer(phoneApp->pokegear->savePokegear, phoneApp->saveContacts, phoneApp->numContacts);
     MI_CpuClear8(phoneApp->phoneContactListNodes, phoneApp->numContacts * sizeof(PhoneContactListNode));
     FreeToHeap(phoneApp->phoneContactListNodes);
 }

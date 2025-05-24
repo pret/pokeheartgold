@@ -2189,7 +2189,7 @@ ov01_021E7A08: ; 0x021E7A08
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get

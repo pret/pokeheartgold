@@ -83,7 +83,7 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
     sub_020674BC(fieldSystem->saveData);
     WiFiHistory_UpgradeAllLocationsState(Save_WiFiHistory_Get(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
-    sub_0202F294(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), days);
+    sub_0202F294(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), days);
     if (!unkFlag) {
         sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
         sub_0209730C(fieldSystem->saveData, days);

@@ -258,7 +258,7 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
 
     switch (scriptDef->scriptType) {
     case PHONESCRIPTTYPE_REMATCH:
-        PhoneRematches_SetSeeking(ctx->callPersistentState, state->callerID, TRUE);
+        PhoneCallPersistentState_PhoneRematches_SetSeeking(ctx->callPersistentState, state->callerID, TRUE);
         break;
     case PHONESCRIPTTYPE_ITEM:
         itemId = scriptDef->param1;
@@ -267,7 +267,7 @@ void PhoneCall_ApplyGenericNPCcallSideEffect(PokegearPhoneCallContext *ctx, cons
         } else if (itemId == ITEM_POKE_BALL) {
             itemId = (MTRandom() % 3) + ITEM_ULTRA_BALL;
         }
-        PhoneRematches_GiftItemIdSet(ctx->callPersistentState, state->callerID, itemId);
+        PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(ctx->callPersistentState, state->callerID, itemId);
         break;
     case PHONESCRIPTTYPE_UNK1:
     case PHONESCRIPTTYPE_FLAG:

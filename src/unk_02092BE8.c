@@ -76,7 +76,7 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL a2) 
             pokegearArgs->callScriptID = Unk_struct.unk04[4]; // message num?
             pokegearArgs->unk05 = Unk_struct.unk04[3];        // call type?
             if (pokegearArgs->unk05 == 3) {
-                sub_0202F050(SaveData_GetMomsSavingsAddr(sys->saveData), Unk_struct.unk04[2]);
+                sub_0202F050(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.unk04[2]);
             } else if (pokegearArgs->unk05 == 0) {
                 sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk04[0], Unk_struct.unk04[1], pokegearArgs->callerId);
             }
@@ -104,8 +104,8 @@ GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys) 
     ptr->maxActiveDuration = 30;
     ptr->unk_var12 = 50;
     ptr->saveData = sys->saveData;
-    ptr->pokegearData = SaveData_GSPlayerMisc_Get(ptr->saveData);
-    ptr->savingsData = SaveData_GetMomsSavingsAddr(ptr->saveData);
+    ptr->pokegearData = SaveData_Pokegear_Get(ptr->saveData);
+    ptr->savingsData = SaveData_GetPhoneCallPersistentState(ptr->saveData);
     ptr->sys = sys;
     return ptr;
 }
@@ -278,7 +278,7 @@ void GearPhone_ToggleRinging(GearPhoneRingManager *ptr, BOOL toggle) {
 }
 
 BOOL sub_02093070(FieldSystem *sys) {
-    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->saveData), PHONE_CONTACT_BILL) == 0xff) {
+    if (SavePokegear_IsNumberRegistered(SaveData_Pokegear_Get(sys->saveData), PHONE_CONTACT_BILL) == 0xff) {
         return FALSE;
     }
     if (Save_VarsFlags_CheckFlagInArray(Save_VarsFlags_Get(sys->saveData), FLAG_UNK_985)) {
@@ -294,7 +294,7 @@ BOOL sub_02093070(FieldSystem *sys) {
 BOOL sub_020930C4(FieldSystem *sys) {
     int owned = Pokedex_CountNationalDexOwned(Save_Pokedex_Get(sys->saveData));
     SaveVarsFlags *state = Save_VarsFlags_Get(sys->saveData);
-    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->saveData), PHONE_CONTACT_PROF__OAK) == 0xff) {
+    if (SavePokegear_IsNumberRegistered(SaveData_Pokegear_Get(sys->saveData), PHONE_CONTACT_PROF__OAK) == 0xff) {
         return FALSE;
     }
     u16 var = (owned / 50);
@@ -322,7 +322,7 @@ BOOL sub_02093134(FieldSystem *sys, Pokemon *mon) {
 
 BOOL sub_0209316C(FieldSystem *sys) {
     SaveVarsFlags *state = Save_VarsFlags_Get(sys->saveData);
-    if (GSPlayerMisc_IsGearNumberRegistered(SaveData_GSPlayerMisc_Get(sys->saveData), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
+    if (SavePokegear_IsNumberRegistered(SaveData_Pokegear_Get(sys->saveData), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }
     if (Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_992) && !Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_99E)) {
