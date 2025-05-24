@@ -18,10 +18,10 @@
 #include "render_window.h"
 #include "sound.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "unk_0203A3B0.h"
 #include "vram_transfer_manager.h"
@@ -172,7 +172,7 @@ static const u32 ov54_021E6DA8[15][2] = {
     { MENU_ENTRY_6,            6 },
 };
 
-static const UnkStruct_0200D2B4 ov54_021E6EAC[9] = {
+static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
     {
      .resourceSet = 0,
      .x = 112,

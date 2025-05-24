@@ -127,20 +127,20 @@ void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1) {
     }
 }
 
-u8 sub_0202F720(SafariZone *safari_zone) {
-    return safari_zone->unk5F9_0;
+u8 SafariZone_GetObjectUnlockLevel(SafariZone *safari_zone) {
+    return safari_zone->objectUnlockLevel;
 }
 
-u8 sub_0202F730(SafariZone *safari_zone, s32 a1) {
-    sub_0202F754(safari_zone, (u8)(safari_zone->unk5F9_0 + a1));
-    return safari_zone->unk5F9_0;
+u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 a1) {
+    SafariZone_SetObjectUnlockLevel(safari_zone, (u8)(safari_zone->objectUnlockLevel + a1));
+    return safari_zone->objectUnlockLevel;
 }
 
-void sub_0202F754(SafariZone *safari_zone, u8 a1) {
+void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 a1) {
     if (a1 > 4) {
-        safari_zone->unk5F9_0 = 4;
+        safari_zone->objectUnlockLevel = 4;
     } else {
-        safari_zone->unk5F9_0 = a1;
+        safari_zone->objectUnlockLevel = a1;
     }
 }
 

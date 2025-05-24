@@ -1128,12 +1128,40 @@ Overlay OVY_99
 Overlay OVY_100
 {
     After main
-    Object asm/overlay_100.o
+    Object src/application/pokegear/main/overlay_100_021E5900.o
+    Object src/application/pokegear/main/pokegear_main.o
+    Object src/application/pokegear/main/overlay_100_021E6914.o
 }
 Overlay OVY_101
 {
     After OVY_100
-    Object asm/overlay_101.o
+    Object asm/pokegear_app_map.o
+    Object asm/pokegear_app_configure.o
+    Object src/application/pokegear/phone/pokegear_phone.o
+    Object src/application/pokegear/phone/overlay_101_021EFD20.o
+    Object src/application/pokegear/phone/overlay_101_021F017C.o
+    Object src/application/pokegear/phone/overlay_101_021F0880.o
+    Object src/application/pokegear/phone/overlay_101_021F0F48.o
+    Object src/application/pokegear/phone/overlay_101_021F1D74.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_mother.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_prof_elm.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_generic.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_prof_oak.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_kurt.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_bike_shop.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_blackbelt_kenji.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_bill.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_daycare_man.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_daycare_lady.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_buena.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_childhood_friend.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_gym_leader.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_baoba.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
+    Object src/application/pokegear/phone/extra_ethan_lyra_data.o
+    Object asm/pokegear_app_radio.o
+    Object src/application/pokegear/phone/phone_script_defs.o
+    Object src/application/pokegear/phone/phone_generic_headers.o
 }
 Overlay OVY_102
 {

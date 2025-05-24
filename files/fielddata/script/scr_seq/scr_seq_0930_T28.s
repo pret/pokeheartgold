@@ -24,10 +24,7 @@ scr_seq_T28_005:
 	goto_if_ne _0047
 	setvar VAR_UNK_40F8, 2
 _0047:
-	setvar VAR_SPECIAL_x8004, 1
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 2
-	callstd std_phone_call
+	phone_call PHONE_CONTACT_PROF__ELM, 2, 2
 	setvar VAR_MIDGAME_BADGES, 5
 	end
 

@@ -7,7 +7,7 @@
 #include "sprite.h"
 #include "unk_02009D48.h"
 
-typedef struct UnkStruct_0200D2B4 {
+typedef struct UnmanagedSpriteTemplate {
     int resourceSet;
     s16 x;
     s16 y;
@@ -20,9 +20,9 @@ typedef struct UnkStruct_0200D2B4 {
     int unk_1C;
     int unk_20;
     int unk_24;
-} UnkStruct_0200D2B4;
+} UnmanagedSpriteTemplate;
 
-typedef struct UnkTemplate_0200D748 {
+typedef struct ManagedSpriteTemplate {
     s16 x;
     s16 y;
     s16 z;
@@ -33,15 +33,15 @@ typedef struct UnkTemplate_0200D748 {
     int resIdList[GF_GFX_RES_TYPE_MAX];
     int bgPriority;
     int vramTransfer;
-} UnkTemplate_0200D748; // size=0x34
+} ManagedSpriteTemplate; // size=0x34
 
 typedef struct SpriteSystem {
     HeapID heapId;
     u32 numGfxHandlers;
     BOOL hasOamManager;
     NNSG2dCellTransferState *cellTransferState; // 00C
-    G2dRenderer renderer;                    // 010
-} SpriteSystem;                               // size: 0x138
+    G2dRenderer renderer;                       // 010
+} SpriteSystem;                                 // size: 0x138
 
 typedef struct SpriteManager {
     SpriteList *spriteList;
@@ -97,7 +97,7 @@ void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager
 void SpriteSystem_Free(SpriteSystem *spriteSystem);
 BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList);
 BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode);
-Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkStruct_0200D2B4 *a2);
+Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *a2);
 BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, SpriteResourceCountsListUnion *);
 BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
 BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId);
@@ -109,8 +109,8 @@ BOOL SpriteSystem_LoadCellResObj(SpriteSystem *spriteSystem, SpriteManager *spri
 BOOL SpriteSystem_LoadCellResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId);
 BOOL SpriteSystem_LoadAnimResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId);
 BOOL SpriteSystem_LoadAnimResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId);
-ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkTemplate_0200D748 *unkTemplate);
-ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnkTemplate_0200D748 *unkTemplate, fx32 yOffset);
+ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate);
+ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset);
 NNSG2dImagePaletteProxy *SpriteManager_FindPlttResourceProxy(SpriteManager *spriteManager, int id);
 int SpriteManager_FindPlttResourceOffset(SpriteManager *spriteManager, int id, NNS_G2D_VRAM_TYPE vram);
 BOOL SpriteManager_UnloadCharObjById(SpriteManager *spriteManager, u32 character);

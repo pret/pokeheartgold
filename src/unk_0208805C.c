@@ -125,7 +125,7 @@ int sub_020881C0(s16 *a0, u16 a1) {
     return 0;
 }
 
-void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, int unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset) {
+void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset) {
     switch (kind) {
     case 0:
         GfGfxLoader_LoadCharDataFromOpenNarc(narc, fileId, bgConfig, layer, offset, szByte, FALSE, heapId);

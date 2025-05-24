@@ -6,64 +6,64 @@
 
 #include "math_util.h"
 
-static void InitGSPlayerMiscInternal(SavePokegear *pokegear);
-static void GSPlayerMisc_PhonebookInit(SavePokegear *pokegear);
-static MomsSavings *GSPlayerMisc_GetMomSavingsAddr(SavePokegear *pokegear);
-static void sub_0202EFC4(PhoneRematch *rematch);
-static void MomsSavingsInit(MomsSavings *momsSavings);
+static void SavePokegear_Init_Internal(SavePokegear *pokegear);
+static void SavePokegear_PhonebookInit(SavePokegear *pokegear);
+static PhoneCallPersistentState *SavePokegear_GetPhoneCallPersistentState(SavePokegear *pokegear);
+static void PhoneRematch_Init(PhoneRematch *rematch);
+static void PhoneCallPersistentState_Init(PhoneCallPersistentState *callPersistentState);
 
-u32 SaveData_GSPlayerMisc_sizeof(void) {
+u32 SaveData_Pokegear_sizeof(void) {
     return sizeof(SavePokegear);
 }
 
-SavePokegear *SaveData_GSPlayerMisc_Get(SaveData *saveData) {
+SavePokegear *SaveData_Pokegear_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_POKEGEAR);
 }
 
-MomsSavings *SaveData_GetMomsSavingsAddr(SaveData *saveData) {
+PhoneCallPersistentState *SaveData_GetPhoneCallPersistentState(SaveData *saveData) {
     SavePokegear *pokegear = SaveArray_Get(saveData, SAVE_POKEGEAR);
-    return GSPlayerMisc_GetMomSavingsAddr(pokegear);
+    return SavePokegear_GetPhoneCallPersistentState(pokegear);
 }
 
-static void InitGSPlayerMiscInternal(SavePokegear *pokegear) {
+static void SavePokegear_Init_Internal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
-    pokegear->unk_0 = 3;
-    pokegear->unk_4_18 = 0;
+    pokegear->lastUsedApp = 3;
+    pokegear->backgroundStyle = 0;
     pokegear->unk_1 = 0;
     pokegear->unk_3 = 128;
     pokegear->unk_2 = pokegear->unk_3;
     pokegear->registeredCards = 0;
-    pokegear->unk_4_27 = 0;
-    GSPlayerMisc_PhonebookInit(pokegear);
-    MomsSavingsInit(&pokegear->momsSavings);
+    pokegear->mapUnlockLevel = 0;
+    SavePokegear_PhonebookInit(pokegear);
+    PhoneCallPersistentState_Init(&pokegear->callPersistentState);
 }
 
-void SaveData_GSPlayerMisc_Init(SavePokegear *pokegear) {
-    InitGSPlayerMiscInternal(pokegear);
+void SaveData_Pokegear_Init(SavePokegear *pokegear) {
+    SavePokegear_Init_Internal(pokegear);
 }
 
 UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear) {
     return &pokegear->unk_8;
 }
 
-u8 sub_0202EDF8(SavePokegear *pokegear) {
-    return pokegear->unk_0;
+u8 SavePokegear_GetLastUsedApp(SavePokegear *pokegear) {
+    return pokegear->lastUsedApp;
 }
 
-void sub_0202EDFC(SavePokegear *pokegear, u8 a1) {
-    pokegear->unk_0 = a1;
+void SavePokegear_SetLastUsedApp(SavePokegear *pokegear, u8 app) {
+    pokegear->lastUsedApp = app;
 }
 
-void Pokegear_RegisterCard(SavePokegear *pokegear, int card) {
+void SavePokegear_RegisterCard(SavePokegear *pokegear, int card) {
     switch (card) {
     case GEARCARD_PHONE:
         pokegear->registeredCards = 0;
         break;
     case GEARCARD_MAP:
-        pokegear->registeredCards |= 1;
+        pokegear->registeredCards |= GEARCARD_MAP;
         break;
     case GEARCARD_RADIO:
-        pokegear->registeredCards |= 2;
+        pokegear->registeredCards |= GEARCARD_RADIO;
         break;
     }
 }
@@ -72,22 +72,22 @@ u8 Pokegear_GetRegisteredCardsArray(SavePokegear *pokegear) {
     return pokegear->registeredCards;
 }
 
-void sub_0202EE58(SavePokegear *pokegear, u8 a1) {
-    if (a1 < 3) {
-        pokegear->unk_4_27 = a1;
+void Pokegear_SetMapUnlockLevel(SavePokegear *pokegear, u8 mapUnlockLevel) {
+    if (mapUnlockLevel < 3) {
+        pokegear->mapUnlockLevel = mapUnlockLevel;
     }
 }
 
-u8 sub_0202EE70(SavePokegear *pokegear) {
-    return pokegear->unk_4_27;
+u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear) {
+    return pokegear->mapUnlockLevel;
 }
 
-u32 sub_0202EE7C(SavePokegear *pokegear) {
-    return pokegear->unk_4_18;
+u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear) {
+    return pokegear->backgroundStyle;
 }
 
-void sub_0202EE84(SavePokegear *pokegear, u32 a1) {
-    pokegear->unk_4_18 = a1;
+void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 newStyle) {
+    pokegear->backgroundStyle = newStyle;
 }
 
 u16 sub_0202EE98(SavePokegear *pokegear) {
@@ -112,7 +112,7 @@ void sub_0202EEB4(SavePokegear *pokegear, u16 *a1, u16 *a2) {
     *a2 = pokegear->unk_3;
 }
 
-u8 GSPlayerMisc_FindEmptyGearPhonebookSlot(SavePokegear *pokegear) {
+u8 SavePokegear_FindEmptyPhonebookSlot(SavePokegear *pokegear) {
     u8 i;
 
     for (i = 0; i < NUM_PHONE_CONTACTS; i++) {
@@ -124,7 +124,7 @@ u8 GSPlayerMisc_FindEmptyGearPhonebookSlot(SavePokegear *pokegear) {
     return NUM_PHONE_CONTACTS;
 }
 
-u8 GSPlayerMisc_IsGearNumberRegistered(SavePokegear *pokegear, u8 contact) {
+u8 SavePokegear_IsNumberRegistered(SavePokegear *pokegear, u8 contact) {
     u8 i;
 
     for (i = 0; i < NUM_PHONE_CONTACTS; i++) {
@@ -139,7 +139,7 @@ u8 GSPlayerMisc_IsGearNumberRegistered(SavePokegear *pokegear, u8 contact) {
     return 0xFF;
 }
 
-void RegisterPhoneNumberInPokeGear(SavePokegear *pokegear, u8 contact) {
+void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact) {
     u8 slot;
 
     if (contact >= NUM_PHONE_CONTACTS) {
@@ -147,20 +147,20 @@ void RegisterPhoneNumberInPokeGear(SavePokegear *pokegear, u8 contact) {
         return;
     }
 
-    if (GSPlayerMisc_IsGearNumberRegistered(pokegear, contact) == 0xFF) {
-        slot = GSPlayerMisc_FindEmptyGearPhonebookSlot(pokegear);
+    if (SavePokegear_IsNumberRegistered(pokegear, contact) == 0xFF) {
+        slot = SavePokegear_FindEmptyPhonebookSlot(pokegear);
         pokegear->phoneContacts[slot].id = contact;
     }
 }
 
-PhoneContact *GSPlayerMisc_AllocAndCopyPhonebook(SavePokegear *pokegear, HeapID heapId) {
-    u8 num = GSPlayerMisc_FindEmptyGearPhonebookSlot(pokegear);
+PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, HeapID heapId) {
+    u8 num = SavePokegear_FindEmptyPhonebookSlot(pokegear);
     PhoneContact *ret = AllocFromHeap(heapId, num * sizeof(PhoneContact));
     MI_CpuCopy8(pokegear->phoneContacts, ret, num * sizeof(PhoneContact));
     return ret;
 }
 
-void GSPlayerMisc_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *contacts, u8 num) {
+void SavePokegear_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *contacts, u8 num) {
     MI_CpuFill8(pokegear->phoneContacts, PHONE_CONTACT_NONE, NUM_PHONE_CONTACTS * sizeof(PhoneContact));
     if (num >= NUM_PHONE_CONTACTS) {
         num = NUM_PHONE_CONTACTS;
@@ -168,33 +168,33 @@ void GSPlayerMisc_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *c
     MI_CpuCopy8(contacts, pokegear->phoneContacts, num * sizeof(PhoneContact));
 }
 
-static void GSPlayerMisc_PhonebookInit(SavePokegear *pokegear) {
+static void SavePokegear_PhonebookInit(SavePokegear *pokegear) {
     MI_CpuFill8(pokegear->phoneContacts, PHONE_CONTACT_NONE, NUM_PHONE_CONTACTS * sizeof(PhoneContact));
     pokegear->phoneContacts[0].id = PHONE_CONTACT_MOTHER;
 }
 
-static MomsSavings *GSPlayerMisc_GetMomSavingsAddr(SavePokegear *pokegear) {
-    return &pokegear->momsSavings;
+static PhoneCallPersistentState *SavePokegear_GetPhoneCallPersistentState(SavePokegear *pokegear) {
+    return &pokegear->callPersistentState;
 }
 
-static void sub_0202EFC4(PhoneRematch *rematch) {
+static void PhoneRematch_Init(PhoneRematch *rematch) {
     rematch->seeking = 0;
     rematch->hasGift = 0;
     rematch->unk_0_2 = 1;
     rematch->giftItem = 0;
 }
 
-static void MomsSavingsInit(MomsSavings *momsSavings) {
+static void PhoneCallPersistentState_Init(PhoneCallPersistentState *callPersistentState) {
     int i;
 
-    MI_CpuClear8(momsSavings, sizeof(MomsSavings));
+    MI_CpuClear8(callPersistentState, sizeof(PhoneCallPersistentState));
     for (i = 0; i < NUM_PHONE_CONTACTS; i++) {
-        sub_0202EFC4(&momsSavings->rematches[i]);
+        PhoneRematch_Init(&callPersistentState->rematches[i]);
     }
-    momsSavings->unk_146_0 = 7;
+    callPersistentState->kenjiWaitDays = 7;
 }
 
-void sub_0202F01C(MomsSavings *momsSavings, u8 idx) {
+void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
     if (idx >= 13) {
@@ -203,10 +203,10 @@ void sub_0202F01C(MomsSavings *momsSavings, u8 idx) {
     }
     byteno = idx / 8;
     flagno = idx % 8;
-    momsSavings->unk_14E[byteno] |= (1 << flagno);
+    callPersistentState->unk_14E[byteno] |= (1 << flagno);
 }
 
-void sub_0202F050(MomsSavings *momsSavings, u8 idx) {
+void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 mask;
     if (idx >= 13) {
@@ -215,12 +215,12 @@ void sub_0202F050(MomsSavings *momsSavings, u8 idx) {
     }
     byteno = idx / 8;
     mask = 1 << (idx % 8);
-    if (momsSavings->unk_14E[byteno] & mask) {
-        momsSavings->unk_14E[byteno] ^= mask;
+    if (callPersistentState->unk_14E[byteno] & mask) {
+        callPersistentState->unk_14E[byteno] ^= mask;
     }
 }
 
-BOOL sub_0202F08C(MomsSavings *momsSavings, u8 idx) {
+BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
     if (idx >= 13) {
@@ -229,159 +229,159 @@ BOOL sub_0202F08C(MomsSavings *momsSavings, u8 idx) {
     }
     byteno = idx / 8;
     flagno = idx % 8;
-    return (momsSavings->unk_14E[byteno] >> flagno) & 1;
+    return (callPersistentState->unk_14E[byteno] >> flagno) & 1;
 }
 
-void PhoneRematches_SetSeeking(MomsSavings *momsSavings, u8 idx, BOOL state) {
+void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state) {
     if (idx >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(0);
         return;
     }
-    momsSavings->rematches[idx].seeking = state;
+    callPersistentState->rematches[idx].seeking = state;
 }
 
-BOOL PhoneRematches_IsSeeking(MomsSavings *momsSavings, u8 idx) {
+BOOL PhoneCallPersistentState_PhoneRematches_IsSeeking(PhoneCallPersistentState *callPersistentState, u8 idx) {
     if (idx >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(0);
         return FALSE;
     }
-    return momsSavings->rematches[idx].seeking;
+    return callPersistentState->rematches[idx].seeking;
 }
 
-void PhoneRematches_GiftItemIdSet(MomsSavings *momsSavings, u8 idx, u16 itemId) {
+void PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(PhoneCallPersistentState *callPersistentState, u8 idx, u16 itemId) {
     if (idx >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(0);
         return;
     }
-    momsSavings->rematches[idx].giftItem = itemId;
+    callPersistentState->rematches[idx].giftItem = itemId;
     if (itemId == ITEM_NONE) {
-        momsSavings->rematches[idx].hasGift = FALSE;
+        callPersistentState->rematches[idx].hasGift = FALSE;
     } else {
-        momsSavings->rematches[idx].hasGift = TRUE;
+        callPersistentState->rematches[idx].hasGift = TRUE;
     }
 }
 
-u16 PhoneRematches_GiftItemIdGet(MomsSavings *momsSavings, u8 idx) {
+u16 PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(PhoneCallPersistentState *callPersistentState, u8 idx) {
     if (idx >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(0);
         return ITEM_NONE;
     }
-    if (momsSavings->rematches[idx].hasGift) {
-        return momsSavings->rematches[idx].giftItem;
+    if (callPersistentState->rematches[idx].hasGift) {
+        return callPersistentState->rematches[idx].giftItem;
     } else {
         return ITEM_NONE;
     }
 }
 
-u32 MomSavingsBalanceAction(MomsSavings *momsSavings, int action, u32 operand) {
+u32 PhoneCallPersistentState_MomSavings_BalanceAction(PhoneCallPersistentState *callPersistentState, int action, u32 operand) {
     switch (action) {
     case MOMS_BALANCE_SET:
-        momsSavings->bankBalance = operand;
+        callPersistentState->bankBalance = operand;
         break;
     case MOMS_BALANCE_ADD:
-        momsSavings->bankBalance += operand;
-        if (momsSavings->bankBalance > MOMS_BALANCE_MAX) {
-            momsSavings->bankBalance = MOMS_BALANCE_MAX;
+        callPersistentState->bankBalance += operand;
+        if (callPersistentState->bankBalance > MOMS_BALANCE_MAX) {
+            callPersistentState->bankBalance = MOMS_BALANCE_MAX;
         }
         break;
     case MOMS_BALANCE_SUB:
-        if (momsSavings->bankBalance < operand) {
-            momsSavings->bankBalance = 0;
+        if (callPersistentState->bankBalance < operand) {
+            callPersistentState->bankBalance = 0;
         } else {
-            momsSavings->bankBalance -= operand;
+            callPersistentState->bankBalance -= operand;
         }
         break;
     }
-    return momsSavings->bankBalance;
+    return callPersistentState->bankBalance;
 }
 
-void sub_0202F198(MomsSavings *momsSavings, u8 idx) {
+void sub_0202F198(PhoneCallPersistentState *callPersistentState, u8 idx) {
     if (idx < 9) {
-        momsSavings->unk_144 |= (1 << idx);
+        callPersistentState->unk_144 |= (1 << idx);
     }
 }
 
-BOOL sub_0202F1B4(MomsSavings *momsSavings, u8 idx) {
-    return (momsSavings->unk_144 >> idx) & 1;
+BOOL sub_0202F1B4(PhoneCallPersistentState *callPersistentState, u8 idx) {
+    return (callPersistentState->unk_144 >> idx) & 1;
 }
 
-void sub_0202F1C4(MomsSavings *momsSavings, u16 a1, u16 a2) {
+void PhoneCallPersistentState_MomGiftQueue_Put(PhoneCallPersistentState *callPersistentState, u16 itemID, u16 quantity) {
     int i;
 
     for (i = 0; i < 5; i++) {
-        if (momsSavings->unk_12C[i][1] == 0) {
-            momsSavings->unk_12C[i][0] = a1;
-            momsSavings->unk_12C[i][1] = a2;
+        if (callPersistentState->momGiftQueue[i][1] == 0) {
+            callPersistentState->momGiftQueue[i][0] = itemID;
+            callPersistentState->momGiftQueue[i][1] = quantity;
             break;
         }
     }
 }
 
-void sub_0202F1F4(MomsSavings *momsSavings) {
+void PhoneCallPersistentState_MomGiftQueue_Get(PhoneCallPersistentState *callPersistentState) {
     int i;
     for (i = 0; i < 4; i++) {
-        momsSavings->unk_12C[i][0] = momsSavings->unk_12C[i + 1][0];
-        momsSavings->unk_12C[i][1] = momsSavings->unk_12C[i + 1][1];
+        callPersistentState->momGiftQueue[i][0] = callPersistentState->momGiftQueue[i + 1][0];
+        callPersistentState->momGiftQueue[i][1] = callPersistentState->momGiftQueue[i + 1][1];
     }
-    momsSavings->unk_12C[4][0] = 0;
-    momsSavings->unk_12C[4][1] = 0;
+    callPersistentState->momGiftQueue[4][0] = 0;
+    callPersistentState->momGiftQueue[4][1] = 0;
 }
 
-u16 sub_0202F224(MomsSavings *momsSavings, u8 a1, u16 *a2) {
-    if (a1 >= 5) {
-        *a2 = 0;
+u16 PhoneCallPersistentState_MomGiftQueue_Peek(PhoneCallPersistentState *callPersistentState, u8 idx, u16 *pItemID) {
+    if (idx >= 5) {
+        *pItemID = 0;
         return 0;
     } else {
-        *a2 = momsSavings->unk_12C[a1][0];
-        return momsSavings->unk_12C[a1][1];
+        *pItemID = callPersistentState->momGiftQueue[idx][0];
+        return callPersistentState->momGiftQueue[idx][1];
     }
 }
 
-BOOL sub_0202F240(MomsSavings *momsSavings) {
-    return momsSavings->unk_12C[4][1] != 0;
+BOOL PhoneCallPersistentState_MomGiftQueue_IsFull(PhoneCallPersistentState *callPersistentState) {
+    return callPersistentState->momGiftQueue[4][1] != 0;
 }
 
-void sub_0202F254(MomsSavings *momsSavings, BOOL a1) {
-    momsSavings->unk_146_7 = a1;
+void PhoneCallPersistentState_BlackBeltKenji_SetActiveFlag(PhoneCallPersistentState *callPersistentState, BOOL state) {
+    callPersistentState->kenjiActive = state;
 }
 
-BOOL sub_0202F274(MomsSavings *momsSavings) {
-    return momsSavings->unk_146_7;
+BOOL PhoneCallPersistentState_BlackBeltKenji_GetActiveFlag(PhoneCallPersistentState *callPersistentState) {
+    return callPersistentState->kenjiActive;
 }
 
-int sub_0202F284(MomsSavings *momsSavings) {
-    return momsSavings->unk_146_0;
+int PhoneCallPersistentState_BlackBeltKenji_GetWaitDays(PhoneCallPersistentState *callPersistentState) {
+    return callPersistentState->kenjiWaitDays;
 }
 
-void sub_0202F294(MomsSavings *momsSavings, int a1) {
-    momsSavings->unk_146_7 = FALSE;
-    PhoneRematches_GiftItemIdSet(momsSavings, PHONE_CONTACT_KENJI, ITEM_NONE);
-    PhoneRematches_SetSeeking(momsSavings, PHONE_CONTACT_KENJI, FALSE);
+void sub_0202F294(PhoneCallPersistentState *callPersistentState, int days) {
+    callPersistentState->kenjiActive = FALSE;
+    PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(callPersistentState, PHONE_CONTACT_KENJI, ITEM_NONE);
+    PhoneCallPersistentState_PhoneRematches_SetSeeking(callPersistentState, PHONE_CONTACT_KENJI, FALSE);
 
-    if (a1 > 0 && momsSavings->unk_146_0 >= a1) {
-        momsSavings->unk_146_0 -= a1;
+    if (days > 0 && callPersistentState->kenjiWaitDays >= days) {
+        callPersistentState->kenjiWaitDays -= days;
     } else {
-        momsSavings->unk_146_0 = (LCRandom() % 6) + 1;
+        callPersistentState->kenjiWaitDays = (LCRandom() % 6) + 1;
     }
 }
 
-void sub_0202F300(MomsSavings *momsSavings, u8 *a1, u8 a2) {
-    MI_CpuClear8(momsSavings->unk_148, 6);
-    if (a1 == NULL) {
-        momsSavings->unk_147 = 0;
+void PhoneCallPersistentState_SafariZoneArrangement_Set(PhoneCallPersistentState *callPersistentState, u8 *areas, u8 numAreas) {
+    MI_CpuClear8(callPersistentState->safariAreas, 6);
+    if (areas == NULL) {
+        callPersistentState->numSafariAreas = 0;
     } else {
-        if (a2 >= 6) {
-            a2 = 6;
+        if (numAreas >= 6) {
+            numAreas = 6;
         }
-        MI_CpuCopy8(a1, momsSavings->unk_148, a2);
-        momsSavings->unk_147 = a2;
+        MI_CpuCopy8(areas, callPersistentState->safariAreas, numAreas);
+        callPersistentState->numSafariAreas = numAreas;
     }
 }
 
-u8 *sub_0202F340(MomsSavings *momsSavings, u8 *a1, HeapID heapId) {
-    u8 *ret = AllocFromHeap(heapId, momsSavings->unk_147);
-    MI_CpuCopy8(momsSavings->unk_148, ret, momsSavings->unk_147);
-    *a1 = momsSavings->unk_147;
+u8 *PhoneCallPersistentState_SafariZoneArrangement_AllocAndGet(PhoneCallPersistentState *callPersistentState, u8 *numAreasRet, HeapID heapId) {
+    u8 *ret = AllocFromHeap(heapId, callPersistentState->numSafariAreas);
+    MI_CpuCopy8(callPersistentState->safariAreas, ret, callPersistentState->numSafariAreas);
+    *numAreasRet = callPersistentState->numSafariAreas;
     return ret;
 }
 

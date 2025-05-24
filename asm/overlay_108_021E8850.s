@@ -43,7 +43,7 @@ _021E8862:
 	mov r1, #0
 	mov r0, #0x43
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -187,7 +187,7 @@ ov108_021E8968: ; 0x021E8968
 	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	add r7, r0, #0
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerID

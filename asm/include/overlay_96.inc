@@ -10,7 +10,7 @@
 .public TintPalette_GrayScale
 .public GF_GetCurrentPlayingBGM
 .public sub_02004AD8
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public sub_020053A8
 .public sub_0200592C
 .public sub_02005944

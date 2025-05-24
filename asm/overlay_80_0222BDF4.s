@@ -2172,7 +2172,7 @@ FrtCmd_110: ; 0x0222CD94
 	ldr r1, _0222CDEC ; =0x0000045D
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, [r5]
@@ -4111,7 +4111,7 @@ FrtCmd_063: ; 0x0222DC70
 	ldr r1, _0222DCE8 ; =0x0000045D
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #0xb
 	mov r1, #0x30
 	bl AllocFromHeap
@@ -4581,7 +4581,7 @@ FrtCmd_071: ; 0x0222DFF4
 	ldr r1, _0222E054 ; =0x0000047B
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _0222E058 ; =ov80_0222E05C
 	add r0, r5, #0
 	bl ov80_0222AB84

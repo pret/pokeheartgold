@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public AllocFromHeap
 .public FreeToHeap
 .public GfGfx_EngineATogglePlanes

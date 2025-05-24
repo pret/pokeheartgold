@@ -22,12 +22,12 @@
 #include "save_misc_data.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
@@ -236,7 +236,7 @@ static const struct UnkStruct_ov17_02203E88 ov17_02203E88[4] = {
     { NELEMS(sMenu_Water_Exit),           sMenu_Water_Exit           },
     { NELEMS(sMenu_Take_Exit),            sMenu_Take_Exit            },
 };
-static const UnkStruct_0200D2B4 ov17_02203EA8 = { 0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 };
+static const UnmanagedSpriteTemplate ov17_02203EA8 = { 0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 };
 static const GraphicsBanks ov17_02203ED0 = {
     GX_VRAM_BG_128_A,
     GX_VRAM_BGEXTPLTT_NONE,
@@ -249,7 +249,7 @@ static const GraphicsBanks ov17_02203ED0 = {
     GX_VRAM_TEX_NONE,
     GX_VRAM_TEXPLTT_NONE,
 };
-static const UnkStruct_0200D2B4 ov17_02203EF8[5] = {
+static const UnmanagedSpriteTemplate ov17_02203EF8[5] = {
     { 0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
     { 0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
     { 0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
@@ -387,7 +387,7 @@ static BOOL ov17_02201DF0(BerryPotsAppData *data) {
         ov17_02202528(data);
         sub_020210BC();
         sub_02021148(1);
-        sub_02004EC4(0x45, 0, 0);
+        Sound_SetSceneAndPlayBGM(0x45, 0, 0);
 
         data->state70 = 0;
         return TRUE;
@@ -996,8 +996,8 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
         return;
     }
 
-    UnkStruct_0200D2B4 unkStruct;
-    MI_CpuCopy8(&ov17_02203EA8, &unkStruct, sizeof(UnkStruct_0200D2B4));
+    UnmanagedSpriteTemplate unkStruct;
+    MI_CpuCopy8(&ov17_02203EA8, &unkStruct, sizeof(UnmanagedSpriteTemplate));
     unkStruct.x = (index + 1) * 27;
     switch (sub->growthStage) {
     case BERRY_POT_GROWTH_STAGE_PLANTED:
@@ -1297,8 +1297,8 @@ static void ov17_02203460(BerryPotsAppData *data, u8 index) {
 }
 
 ManagedSprite *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused) {
-    UnkTemplate_0200D748 template;
-    MI_CpuFill8(&template, 0, sizeof(UnkTemplate_0200D748));
+    ManagedSpriteTemplate template;
+    MI_CpuFill8(&template, 0, sizeof(ManagedSpriteTemplate));
 
     template.x = x;
     template.y = y;

@@ -132,7 +132,7 @@
 .public Bag_GetRegisteredItem2
 .public Save_Bag_Get
 .public FieldSystem_GetGearPhoneRingManager
-.public sub_02092E08
+.public GearPhoneRingManager_IsRinging
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG
 .public GX_SetBankForSubOBJ

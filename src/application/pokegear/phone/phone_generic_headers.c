@@ -1,0 +1,3243 @@
+#include "global.h"
+
+#include "application/pokegear/phone/phone_internal.h"
+#include "msgdata/msg/msg_0640.h"
+
+#define PHONE_GENERIC_TERM {       \
+    .type = PHONECALLGENERIC_NIL,  \
+    .chance = 100,                 \
+    .scriptType = 0,               \
+    .scriptID = PHONE_SCRIPT_NONE, \
+}
+
+#define PHONE_GENERIC_NULL {       \
+    .type = PHONECALLGENERIC_NONE, \
+    .chance = 0,                   \
+    .scriptType = 0,               \
+    .scriptID = PHONE_SCRIPT_NONE, \
+}
+
+// Each row of 12 is subdivided into two groups of 6
+//   Group 0: If outgoing
+//   Group 1: If incoming
+// Each group of 6 is subdivided into three pairs
+//   Pair 0: Morn
+//   Pair 1: Day
+//   Pair 2: Nite
+const u8 sGreetingMsgIDs[][12] = {
+    { msg_0640_00000, msg_0640_00001, msg_0640_00002, msg_0640_00003, msg_0640_00004, msg_0640_00005, msg_0640_00006, msg_0640_00007, msg_0640_00008, msg_0640_00009, msg_0640_00010, msg_0640_00011 },
+    { msg_0640_00012, msg_0640_00013, msg_0640_00014, msg_0640_00015, msg_0640_00016, msg_0640_00017, msg_0640_00018, msg_0640_00019, msg_0640_00020, msg_0640_00021, msg_0640_00022, msg_0640_00023 },
+    { msg_0640_00072, msg_0640_00072, msg_0640_00073, msg_0640_00073, msg_0640_00074, msg_0640_00074, msg_0640_00072, msg_0640_00072, msg_0640_00073, msg_0640_00073, msg_0640_00074, msg_0640_00074 },
+    { msg_0640_00075, msg_0640_00075, msg_0640_00076, msg_0640_00076, msg_0640_00077, msg_0640_00077, msg_0640_00075, msg_0640_00075, msg_0640_00076, msg_0640_00076, msg_0640_00077, msg_0640_00077 },
+    { msg_0640_00024, msg_0640_00025, msg_0640_00026, msg_0640_00027, msg_0640_00028, msg_0640_00029, msg_0640_00030, msg_0640_00031, msg_0640_00032, msg_0640_00033, msg_0640_00034, msg_0640_00035 },
+    { msg_0640_00036, msg_0640_00037, msg_0640_00038, msg_0640_00039, msg_0640_00040, msg_0640_00041, msg_0640_00042, msg_0640_00043, msg_0640_00044, msg_0640_00045, msg_0640_00046, msg_0640_00047 },
+    { msg_0640_00048, msg_0640_00049, msg_0640_00050, msg_0640_00051, msg_0640_00052, msg_0640_00053, msg_0640_00054, msg_0640_00055, msg_0640_00056, msg_0640_00057, msg_0640_00058, msg_0640_00059 },
+    { msg_0640_00060, msg_0640_00061, msg_0640_00062, msg_0640_00063, msg_0640_00064, msg_0640_00065, msg_0640_00066, msg_0640_00067, msg_0640_00068, msg_0640_00069, msg_0640_00070, msg_0640_00071 },
+};
+
+const PhoneScriptGenericHeader sGenericPhoneCallHeaders[] = {
+    // PHONE_CONTACT_MOTHER/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_MOTHER/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PROF__ELM/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PROF__ELM/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PROF__OAK/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PROF__OAK/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ETHAN/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ETHAN/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_LYRA/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_LYRA/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KURT/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KURT/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DAY_C_MAN/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DAY_C_MAN/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DAY_C_LADY/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DAY_C_LADY/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BUENA/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BUENA/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BILL/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BILL/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JOEY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_034,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_033,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_035,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JOEY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 60,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_033,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_030,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_031,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_032,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_RALPH/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_051,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_050,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_052,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_RALPH/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_050,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_047,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_048,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_049,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_LIZ/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_058,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_057,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_060,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_LIZ/2
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_056,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_057,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 2,
+     .scriptID = PHONE_SCRIPT_059,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WADE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_041,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_044,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_040,
+     },
+    {
+     .type = PHONECALLGENERIC_BUGCONTESTDAYS,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_045,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_042,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WADE/2
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_044,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_041,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_043,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_040,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_038,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_039,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_037,
+     },
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ANTHONY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_066,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_065,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_067,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ANTHONY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_065,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_062,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_063,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_064,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BIKE_SHOP/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BIKE_SHOP/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KENJI/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KENJI/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WHITNEY/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WHITNEY/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_FALKNER/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_FALKNER/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JACK/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_110,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_109,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_111,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JACK/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_109,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 2,
+     .scriptID = PHONE_SCRIPT_108,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_CHAD/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_118,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_116,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_119,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_CHAD/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_116,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 2,
+     .scriptID = PHONE_SCRIPT_117,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BRENT/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_126,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_125,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_127,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BRENT/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_125,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 2,
+     .scriptID = PHONE_SCRIPT_124,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TODD/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_132,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_131,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_133,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TODD/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_131,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_129,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_130,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ARNIE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_138,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_137,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_139,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ARNIE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_137,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_135,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_136,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BAOBA/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BAOBA/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_IRWIN/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_IRWIN/2
+    {
+     .type = PHONECALLGENERIC_NIL,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_NONE,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JANINE/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JANINE/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_CLAIR/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_CLAIR/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ERIKA/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ERIKA/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_MISTY/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_MISTY/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BLAINE/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BLAINE/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BLUE/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BLUE/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_CHUCK/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_CHUCK/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BROCK/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BROCK/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BUGSY/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BUGSY/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_SABRINA/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_SABRINA/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_LT__SURGE/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_LT__SURGE/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_MORTY/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_MORTY/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JASMINE/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JASMINE/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PRYCE/1
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PRYCE/2
+    PHONE_GENERIC_TERM,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_HUEY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_194,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_193,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_195,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_HUEY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 60,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_193,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_191,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_192,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_GAVEN/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_201,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_200,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_202,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_GAVEN/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_200,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_197,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_198,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_199,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JAMIE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_208,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_207,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_209,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JAMIE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_207,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_204,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_205,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_206,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_REENA/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_215,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_214,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_216,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_REENA/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_214,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_211,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_212,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_213,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_VANCE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_221,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_220,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_222,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_VANCE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 60,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_220,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_218,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_219,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PARRY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_227,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_226,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_228,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_PARRY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 60,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_226,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_224,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_225,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ERIN/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_234,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_233,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_235,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ERIN/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 60,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_233,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_231,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 40,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_232,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_230,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BEVERLY/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_241,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_239,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BEVERLY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_240,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_237,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_238,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JOSE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_247,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_250,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_246,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_248,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JOSE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_247,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_250,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_249,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_246,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_244,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_245,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_243,
+     },
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_GINA/1
+    {
+     .type = PHONECALLGENERIC_DURINGROCKETS,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_259,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_255,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_258,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_254,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_256,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_GINA/2
+    {
+     .type = PHONECALLGENERIC_DURINGROCKETS,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_259,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_255,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_258,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_254,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_257,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_252,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_253,
+     },
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ALAN/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_264,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_267,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_263,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_265,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ALAN/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_266,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_263,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_262,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_261,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DANA/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_272,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_275,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_271,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_273,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DANA/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_274,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_271,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_272,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_275,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_269,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_270,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DEREK/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_281,
+     },
+    {
+     .type = PHONECALLGENERIC_BUGCONTESTDAYS,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_282,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_279,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DEREK/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_280,
+     },
+    {
+     .type = PHONECALLGENERIC_BUGCONTESTDAYS,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_282,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_277,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_278,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TULLY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_287,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_290,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_286,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_288,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TULLY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_286,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_289,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_284,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_285,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TIFFANY/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_299,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_295,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_294,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_297,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TIFFANY/2
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_296,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_294,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_298,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_292,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_293,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WILTON/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_304,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_307,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_303,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_305,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WILTON/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_303,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_306,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 50,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_301,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_302,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KRISE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_313,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_312,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_314,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KRISE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_312,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_309,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_310,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_311,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_IAN/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_320,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_319,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_321,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_IAN/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_319,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_316,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_317,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_318,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WALT/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_327,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_326,
+     },
+    {
+     .type = PHONECALLGENERIC_BUGCONTESTDAYS,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_329,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_328,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_WALT/2
+    {
+     .type = PHONECALLGENERIC_BUGCONTESTDAYS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_329,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_326,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_323,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_324,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_325,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ALFRED/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_335,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_334,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_336,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ALFRED/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_334,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_331,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_332,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_333,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DOUG/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_342,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_345,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_341,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_343,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_DOUG/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_341,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_344,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_338,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_339,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_340,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ROB/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_351,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_354,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_350,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_352,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ROB/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_350,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 50,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_353,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_347,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_348,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_349,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KYLE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_360,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_359,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_361,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KYLE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_359,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_356,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_357,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_358,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KYLER/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_367,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_366,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_368,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KYLER/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_366,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_363,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_364,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_365,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TIM_AND_SUE/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_374,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_373,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_375,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TIM_AND_SUE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_373,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_370,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_371,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_372,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KENNY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_381,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_380,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_382,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KENNY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_380,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_377,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_378,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_379,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TANNER/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_391,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_388,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_387,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_389,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TANNER/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_387,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_390,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_384,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_385,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_386,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JOSH/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_400,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_397,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_396,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_398,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_JOSH/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_396,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_399,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_393,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_394,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_395,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TORIN/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_406,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_405,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_407,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_TORIN/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_405,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_402,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_403,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_404,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_HILLARY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_414,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_413,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_415,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_HILLARY/2
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 25,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_409,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_413,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 20,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_410,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_411,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_412,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BILLY/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_419,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_418,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 20,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_420,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 2,
+     .scriptID = PHONE_SCRIPT_417,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_BILLY/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_418,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 2,
+     .scriptID = PHONE_SCRIPT_417,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KAY_AND_TIA/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_426,
+     },
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_429,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_425,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_427,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_KAY_AND_TIA/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_428,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_425,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_422,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_423,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_424,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_REESE/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_438,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_435,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_434,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_436,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_REESE/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_434,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_437,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_431,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_432,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_433,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_AIDEN/1
+    {
+     .type = PHONECALLGENERIC_GIFTNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_447,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_444,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_443,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_445,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_AIDEN/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_443,
+     },
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 10,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_446,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_440,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_441,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_442,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ERNEST/1
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETSNOTBUGCONTEST,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_454,
+     },
+    {
+     .type = PHONECALLGENERIC_POSTROCKETWEEKTIME,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_453,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_455,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+
+    // PHONE_CONTACT_ERNEST/2
+    {
+     .type = PHONECALLGENERIC_FIGHTPOSTROCKETS,
+     .chance = 30,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_453,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 15,
+     .scriptType = 0,
+     .scriptID = PHONE_SCRIPT_449,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_450,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 30,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_451,
+     },
+    {
+     .type = PHONECALLGENERIC_RAND1,
+     .chance = 100,
+     .scriptType = 1,
+     .scriptID = PHONE_SCRIPT_452,
+     },
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+    PHONE_GENERIC_NULL,
+};

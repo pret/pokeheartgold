@@ -13,7 +13,7 @@
 .public GameStats_Inc
 .public GameStats_GetCapped
 .public GameStats_AddScore
-.public SaveData_GetMomsSavingsAddr
+.public SaveData_GetPhoneCallPersistentState
 .public sub_0202F08C
 .public Save_SafariZone_Get
 .public sub_0202F620

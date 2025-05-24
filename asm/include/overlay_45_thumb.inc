@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public FontID_String_AllCharsValid
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetPlayerVolume
 .public PlayBGM
 .public GF_SndStartFadeOutBGM

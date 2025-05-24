@@ -10,7 +10,7 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_PushTransparentBuffers
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public StopSE
 .public IsSEPlaying

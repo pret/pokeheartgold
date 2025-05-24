@@ -88,7 +88,7 @@ _021FC6E2:
 	bne _021FC728
 	add r0, r4, #0
 	bl FieldSystem_GetGearPhoneRingManager
-	bl sub_02092FA8
+	bl GearPhoneRingManager_ResetIfActive
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
 	mov r1, #0xb

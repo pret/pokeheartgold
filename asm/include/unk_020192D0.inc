@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public OverlayManager_New
 .public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData

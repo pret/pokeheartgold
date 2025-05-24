@@ -1238,14 +1238,14 @@ BOOL ScrCmd_811(ScriptContext *ctx) {
     u16 *unkPtr1 = ScriptGetVarPointer(ctx);
     u16 *unkPtr2 = ScriptGetVarPointer(ctx);
 
-    *unkPtr2 = sub_0202F224(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), 0, unkPtr1);
+    *unkPtr2 = PhoneCallPersistentState_MomGiftQueue_Peek(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), 0, unkPtr1);
 
     return FALSE;
 }
 
 // Gets called when getting a package from your mom
 BOOL ScrCmd_812(ScriptContext *ctx) {
-    sub_0202F1F4(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData));
+    PhoneCallPersistentState_MomGiftQueue_Get(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData));
     return FALSE;
 }
 

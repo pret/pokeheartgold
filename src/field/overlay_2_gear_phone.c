@@ -1,3 +1,4 @@
+#include "constants/maps.h"
 #include "constants/sndseq.h"
 
 #include "overlay_2/overlay_02_gear_phone.h"
@@ -46,10 +47,10 @@ static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
 String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     String *str;
-    if (!gearPhone->unk_var0_0 || gearPhone->unk_var2 >= 75) {
+    if (!gearPhone->active || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         str = String_New(8, heapId);
     } else {
-        int phoneMsg = GetPhoneMessageGmm(gearPhone->unk_var2);
+        int phoneMsg = GetPhoneMessageGmm(gearPhone->callerId);
         MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, phoneMsg, heapId);
         str = NewString_ReadMsgData(msgData, 0);
         DestroyMsgData(msgData);
@@ -57,14 +58,16 @@ String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     return str;
 }
 
-void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5) {
-    if (a1 >= 75) {
-        gearPhone->unk_var2 = 0xFF;
+void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u8 a4, u8 a5) {
+    // a4 set to 2 when passed from script
+    // a5 related to message id? when passed from script
+    if (callerId >= NUM_PHONE_CONTACTS) {
+        gearPhone->callerId = 0xFF;
         gearPhone->unk_arr5[0] = 0xFF;
         gearPhone->unk_arr5[1] = 0;
         GF_ASSERT(FALSE);
     } else {
-        gearPhone->unk_var2 = a1;
+        gearPhone->callerId = callerId;
         gearPhone->unk_arr5[0] = a2;
         gearPhone->unk_arr5[1] = a3;
     }
@@ -75,27 +78,27 @@ void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 a1, u8 a2, u8 a3, u8 a4, 
 
 u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
     MI_CpuFill8(a1, 0, 5);
-    if (gearPhone->unk_var2 >= 75) {
+    if (gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(FALSE);
         a1[0] = 0xFF;
         return 0xFF;
     }
     a1[0] = gearPhone->unk_arr5[0];
     a1[1] = gearPhone->unk_arr5[1];
-    a1[3] = gearPhone->unk_var3;
-    a1[4] = gearPhone->unk_var4;
+    a1[3] = gearPhone->unk_var3; // 2 = scripted?
+    a1[4] = gearPhone->unk_var4; // message ID?
     a1[2] = gearPhone->unk_var7;
-    return gearPhone->unk_var2;
+    return gearPhone->callerId;
 }
 
 BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(gearPhone->saveData));
 
-    if (MapHeader_GetField14_1E(position->mapId) == 0) {
+    if (!MapHeader_CanReceivePhoneCalls(position->mapId)) {
         return FALSE;
     }
 
-    if (gearPhone->unk_var0_0 || gearPhone->unk_var8 < gearPhone->unk_varC) {
+    if (gearPhone->active || gearPhone->unk_var8 < gearPhone->unk_varC) {
         return FALSE;
     }
 
@@ -139,8 +142,8 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     SaveVarsFlags *varsFlags = Save_VarsFlags_Get(gearPhone->saveData);
     Save_PlayerData_GetProfile(gearPhone->saveData);
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
-    u32 slot = GSPlayerMisc_FindEmptyGearPhonebookSlot(gearPhone->pokegearData);
-    contact = GSPlayerMisc_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
+    u32 slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
+    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
     u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, slot);
     MI_CpuFill8(ptr, 0xFF, slot);
     u16 rand = LCRandom() % 1000;
@@ -158,7 +161,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         u8 id = contact[i].id;
         if (phoneBook->entries[id].unkF == var) {
             // doesn't match with a switch statement
-            if (phoneBook->entries[id].unk1 == 0 || phoneBook->entries[id].unk1 == 12 || phoneBook->entries[id].unk1 == 11 || phoneBook->entries[id].unk1 == 10 || phoneBook->entries[id].unk1 == 14) {
+            if (phoneBook->entries[id].type == 0 || phoneBook->entries[id].type == 12 || phoneBook->entries[id].type == 11 || phoneBook->entries[id].type == 10 || phoneBook->entries[id].type == 14) {
                 ptr[index++] = id;
             }
         }
@@ -181,7 +184,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     }
 
     for (u8 j = 0; j < index; j++) {
-        if (mapId == phoneBook->entries[ptr[j]].mapId || sub_0202AA44(miscData, var, ptr[j]) || ptr[j] == 8 && (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags))) {
+        if (mapId == phoneBook->entries[ptr[j]].mapId || sub_0202AA44(miscData, var, ptr[j]) || (ptr[j] == 8 && (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags)))) {
             continue;
         }
         if (phoneBook->entries[ptr[j]].mapId != MAP_NATIONAL_PARK || !bugContestFlag) {
@@ -193,7 +196,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         slot = (MTRandom() % (ret * 100));
         rand = slot / 100;
         ov02_02251EB8(gearPhone, contact[(u8)rand].id, var, index, 0, 0);
-        sub_02092DF4(gearPhone);
+        GearPhoneRingManager_StartRinging(gearPhone);
         ov02_022522AC(gearPhone, 1);
     }
 
@@ -224,12 +227,12 @@ asm static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBo
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #8]
 	ldr r0, [r0, #0x30]
-	bl GSPlayerMisc_FindEmptyGearPhonebookSlot
+	bl SavePokegear_FindEmptyPhonebookSlot
 	str r0, [sp, #0x2c]
 	ldr r0, [sp, #8]
 	mov r1, #4
 	ldr r0, [r0, #0x30]
-	bl GSPlayerMisc_AllocAndCopyPhonebook
+	bl SavePokegear_AllocAndCopyPhonebook
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
@@ -424,7 +427,7 @@ _02252164:
 	add r3, r7, #0
 	bl ov02_02251EB8
 	ldr r0, [sp, #8]
-	bl sub_02092DF4
+	bl GearPhoneRingManager_StartRinging
 	ldr r0, [sp, #8]
 	mov r1, #1
 	bl ov02_022522AC
@@ -446,7 +449,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         return FALSE;
     }
     ov02_02251EB8(gearPhone, ov02_02253C84[r6].unk0, 0xFF, 0, 3, ov02_02253C84[r6].unk2);
-    sub_02092DF4(gearPhone);
+    GearPhoneRingManager_StartRinging(gearPhone);
     gearPhone->unk_var7 = r6;
     return ov02_02253C84[r6].unk4 + 1;
 }
@@ -462,8 +465,8 @@ static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u
             continue;
         }
         PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].unk0];
-        if (entry->unk0 == 6) {
-            if (GSPlayerMisc_IsGearNumberRegistered(gearPhone->pokegearData, 6) != 0xFF) {
+        if (entry->id == PHONE_CONTACT_DAY_C_MAN) {
+            if (SavePokegear_IsNumberRegistered(gearPhone->pokegearData, PHONE_CONTACT_DAY_C_MAN) != 0xFF) {
                 // had to do this to match
                 goto LABEL;
             } else {

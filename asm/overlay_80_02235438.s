@@ -287,7 +287,7 @@ FrtCmd_135: ; 0x02235624
 	ldr r1, _0223566C ; =0x0000045D
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [r5]

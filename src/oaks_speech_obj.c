@@ -5,7 +5,7 @@
 #include "oaks_speech_internal.h"
 #include "vram_transfer_manager.h"
 
-static const UnkStruct_0200D2B4 sSpriteTemplates[] = {
+static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
     {
      .resourceSet = 0,
      .x = 128,

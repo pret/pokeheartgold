@@ -36,9 +36,9 @@ typedef struct MapHeader {
     u32 runningAllowed_Unused : 1;
     u32 escapeRopeAllowed : 1;
     u32 flyAllowed : 1;
-    u32 unk_14_1D : 1;
-    u32 unk_14_1E : 1;
-    u32 unk_14_1F : 1;
+    u32 outgoingCalls : 1;
+    u32 incomingCalls : 1;
+    u32 radioSignal : 1;
 } MapHeader;
 
 typedef enum MapType {
@@ -72,9 +72,9 @@ BattleBg MapHeader_GetBattleBg(u32 mapId);
 BOOL MapHeader_IsEscapeRopeAllowed(u32 mapId);
 BOOL MapHeader_IsFlyAllowed(u32 mapId);
 BOOL MapHeader_IsBikeAllowed(u32 mapId);
-BOOL MapHeader_GetField14_1D(u32 mapId);
-BOOL MapHeader_GetField14_1E(u32 mapId);
-BOOL MapHeader_GetField14_1F(u32 mapId);
+BOOL MapHeader_CanPlacePhoneCalls(u32 mapId);
+BOOL MapHeader_CanReceivePhoneCalls(u32 mapId);
+BOOL MapHeader_CanReceiveRadioSignal(u32 mapId);
 MapType MapHeader_GetMapType(u32 mapId);
 u8 MapHeader_GetFollowMode(u32 mapId);
 void MapHeader_GetWorldMapCoords(u32 mapId, s16 *x, s16 *y);

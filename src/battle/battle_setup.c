@@ -239,7 +239,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     setup->evolutionLocation = MapHeader_GetMapEvolutionMethod(mapno);
     setup->unk_164 = sub_02088288(saveData);
     setup->metBill = CheckMetBill(Save_VarsFlags_Get(saveData));
-    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_GET, 0) < 999999) {
+    if (PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_GET, 0) < 999999) {
         setup->momsSavingsActive = Save_VarsFlags_MomsSavingsFlagCheck(Save_VarsFlags_Get(saveData));
     } else {
         setup->momsSavingsActive = FALSE;
@@ -393,19 +393,19 @@ void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots
 
 static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2) {
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
-    MomsSavings *savings = SaveData_GetMomsSavingsAddr(fieldSystem->saveData);
+    PhoneCallPersistentState *savings = SaveData_GetPhoneCallPersistentState(fieldSystem->saveData);
 
     if (Save_VarsFlags_MomsSavingsFlagCheck(vars_flags)) {
         u32 money2 = PlayerProfile_GetMoney(profile2);
         int delta = (int)(money2 - PlayerProfile_GetMoney(profile1)) / 4;
-        u32 savingsBalance = MomSavingsBalanceAction(savings, MOMS_BALANCE_GET, 0);
+        u32 savingsBalance = PhoneCallPersistentState_MomSavings_BalanceAction(savings, MOMS_BALANCE_GET, 0);
         u32 balanceResult;
         if (delta > 0) {
             if (savingsBalance + delta >= 999999) {
                 delta = 999999 - savingsBalance;
             }
             PlayerProfile_SetMoney(profile2, money2 - delta);
-            balanceResult = MomSavingsBalanceAction(savings, MOMS_BALANCE_ADD, delta);
+            balanceResult = PhoneCallPersistentState_MomSavings_BalanceAction(savings, MOMS_BALANCE_ADD, delta);
         } else {
             balanceResult = savingsBalance;
         }

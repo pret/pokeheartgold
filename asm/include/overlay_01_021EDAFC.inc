@@ -47,8 +47,8 @@
 .public CheckCoins
 .public FrontierData_BattlePointAction
 .public Save_FrontierData_Get
-.public SaveData_GetMomsSavingsAddr
-.public MomSavingsBalanceAction
+.public SaveData_GetPhoneCallPersistentState
+.public PhoneCallPersistentState_MomSavings_BalanceAction
 .public Save_Pokeathlon_Get
 .public SavePokeathlon_GetAthletePoints
 .public memset

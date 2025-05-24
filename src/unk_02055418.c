@@ -59,7 +59,7 @@ void sub_02055478(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date,
     }
     s32 delta_seconds = seconds - sys_seconds;
     if (delta_seconds > 0) {
-        sub_02092F30(FieldSystem_GetGearPhoneRingManager(fieldSystem), seconds);
+        GearPhoneRingManager_HandleTimeAdvance(FieldSystem_GetGearPhoneRingManager(fieldSystem), seconds);
     }
     s32 minutes = delta_seconds / 60;
     if (minutes <= 0) {
@@ -71,22 +71,22 @@ void sub_02055478(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date,
     sysinfo->time = *time;
 }
 
-void sub_02055508(FieldSystem *fieldSystem, int unkA) {
+void sub_02055508(FieldSystem *fieldSystem, int days) {
     BOOL unkFlag = sub_02055670(fieldSystem);
     ClearDailyFlags(fieldSystem);
-    sub_0206759C(fieldSystem->saveData, unkA); // reset badge shininess..?
-    sub_0202C78C(Save_FriendGroup_Get(fieldSystem->saveData), unkA);
+    sub_0206759C(fieldSystem->saveData, days); // reset badge shininess..?
+    sub_0202C78C(Save_FriendGroup_Get(fieldSystem->saveData), days);
     Roamers_SetRand(Save_Roamers_Get(fieldSystem->saveData), sub_0202C7DC(Save_FriendGroup_Get(fieldSystem->saveData)));
-    Party_UpdatePokerus(SaveArray_Party_Get(fieldSystem->saveData), unkA);
-    Save_LCRNGAdvanceLotoID(fieldSystem->saveData, (u16)unkA);
+    Party_UpdatePokerus(SaveArray_Party_Get(fieldSystem->saveData), days);
+    Save_LCRNGAdvanceLotoID(fieldSystem->saveData, (u16)days);
     sub_02066D60(fieldSystem->saveData);
     sub_020674BC(fieldSystem->saveData);
     WiFiHistory_UpgradeAllLocationsState(Save_WiFiHistory_Get(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
-    sub_0202F294(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), unkA);
+    sub_0202F294(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), days);
     if (!unkFlag) {
-        sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), unkA);
-        sub_0209730C(fieldSystem->saveData, unkA);
+        sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
+        sub_0209730C(fieldSystem->saveData, days);
     }
     sub_02031AE4(Save_Pokeathlon_Get(fieldSystem->saveData));
     Save_VarsFlags_UpdateBuenasPasswordSet(Save_VarsFlags_Get(fieldSystem->saveData));

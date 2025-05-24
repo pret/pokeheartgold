@@ -120,7 +120,7 @@ sub_0209730C: ; 0x0209730C
 	sub sp, #0xb0
 	add r4, r0, #0
 	str r1, [sp, #4]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	str r0, [sp, #0x2c]
 	add r0, r4, #0
 	bl Save_SafariZone_Get
@@ -129,7 +129,7 @@ sub_0209730C: ; 0x0209730C
 	bl SafariZone_GetAreaSet
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	cmp r0, #0
 	beq _0209733A
 	ldr r0, [sp, #4]
@@ -311,7 +311,7 @@ _02097476:
 	mov r1, #0
 	ldr r0, [sp, #0x2c]
 	add r2, r1, #0
-	bl sub_0202F300
+	bl PhoneCallPersistentState_SafariZoneArrangement_Set
 	add sp, #0xb0
 	pop {r3, r4, r5, r6, r7, pc}
 _020974A6:
@@ -323,7 +323,7 @@ _020974A6:
 	lsl r2, r2, #0x18
 	add r1, sp, #0x30
 	lsr r2, r2, #0x18
-	bl sub_0202F300
+	bl PhoneCallPersistentState_SafariZoneArrangement_Set
 _020974BC:
 	add sp, #0xb0
 	pop {r3, r4, r5, r6, r7, pc}

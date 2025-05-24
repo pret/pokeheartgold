@@ -67,7 +67,7 @@ sub_020192D0: ; 0x020192D0
 	ldr r1, _02019358 ; =0x0000047D
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
