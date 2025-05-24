@@ -122,7 +122,7 @@ struct PokegearAppData {
     u16 unk_056;                                // 0x056
     void (*unk_058)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);              // 0x05C
-    void *unk_060;                              // 0x060
+    void (*unk_060)(void *);                    // 0x060
     void *childAppdata;                         // 0x064
     u8 filler_068[0x4];                         // 0x068
     EasyChatArgs *easyChatArgs;                 // 0x06C
