@@ -27,11 +27,11 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
 
 BOOL PokegearPhone_Init(OVY_MANAGER *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
-    CreateHeap(HEAP_ID_3, HEAP_ID_PHONE, 0x30000);
-    PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_PHONE);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
+    PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_POKEGEAR_APP);
     memset(phoneApp, 0, sizeof(PokegearPhoneAppData));
     phoneApp->pokegear = pokegearApp;
-    phoneApp->heapId = HEAP_ID_PHONE;
+    phoneApp->heapId = HEAP_ID_POKEGEAR_APP;
     Sound_SetSceneAndPlayBGM(55, 0, 0);
     PokegearPhone_LoadContactsAndInitFromArgs(phoneApp);
     return TRUE;

@@ -15,41 +15,6 @@
 
 	.text
 
-	// File boundary?
-
-	// File boundary?
-
-	// File boundary?
-
-	thumb_func_start PokegearRadio_Init
-PokegearRadio_Init: ; 0x021F4480
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	bl OverlayManager_GetArgs
-	mov r2, #2
-	add r5, r0, #0
-	mov r0, #3
-	mov r1, #0x5b
-	lsl r2, r2, #0x10
-	bl CreateHeap
-	add r0, r4, #0
-	mov r1, #0x6c
-	mov r2, #0x5b
-	bl OverlayManager_CreateAndGetData
-	add r4, r0, #0
-	mov r1, #0
-	mov r2, #0x6c
-	bl memset
-	str r5, [r4, #0xc]
-	mov r0, #0x5b
-	str r0, [r4]
-	add r0, r4, #0
-	bl ov101_021F4558
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end PokegearRadio_Init
-
 	thumb_func_start PokegearRadio_Main
 PokegearRadio_Main: ; 0x021F44BC
 	push {r4, lr}
