@@ -15,242 +15,6 @@
 
 	.text
 
-	thumb_func_start ov101_021F4AEC
-ov101_021F4AEC: ; 0x021F4AEC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xac
-	mov r1, #0
-	add r5, r0, #0
-	mov r0, #1
-	add r2, r1, #0
-	bl GX_SetGraphicsMode
-	ldr r4, _021F4BB8 ; =ov101_021F87F4
-	add r3, sp, #4
-	mov r2, #0x15
-_021F4B02:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021F4B02
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0xc]
-	mov r1, #1
-	ldr r0, [r0, #0x74]
-	add r2, sp, #4
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0xc]
-	mov r1, #2
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x20
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0xc]
-	mov r1, #3
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x3c
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0xc]
-	mov r1, #5
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x58
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0xc]
-	mov r1, #6
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x74
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0xc]
-	mov r1, #7
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x90
-	bl InitBgFromTemplateEx
-	mov r4, #0
-	mov r6, #0x20
-	add r7, r4, #0
-_021F4B70:
-	ldr r0, [r5, #0xc]
-	add r1, r4, #1
-	lsl r1, r1, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgClearTilemapBufferAndCommit
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	ldr r3, [r5]
-	lsr r0, r0, #0x18
-	add r1, r6, #0
-	add r2, r7, #0
-	bl BG_ClearCharDataRange
-	ldr r0, [r5, #0xc]
-	add r1, r4, #5
-	lsl r1, r1, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgClearTilemapBufferAndCommit
-	add r0, r4, #5
-	lsl r0, r0, #0x18
-	ldr r3, [r5]
-	lsr r0, r0, #0x18
-	mov r1, #0x20
-	mov r2, #0
-	bl BG_ClearCharDataRange
-	add r4, r4, #1
-	cmp r4, #3
-	blt _021F4B70
-	add sp, #0xac
-	pop {r4, r5, r6, r7, pc}
-	nop
-_021F4BB8: .word ov101_021F87F4
-	thumb_func_end ov101_021F4AEC
-
-	thumb_func_start ov101_021F4BBC
-ov101_021F4BBC: ; 0x021F4BBC
-	ldr r3, _021F4BC4 ; =ov100_021E5CA4
-	ldr r0, [r0, #0xc]
-	bx r3
-	nop
-_021F4BC4: .word ov100_021E5CA4
-	thumb_func_end ov101_021F4BBC
-
-	thumb_func_start ov101_021F4BC8
-ov101_021F4BC8: ; 0x021F4BC8
-	push {r4, r5, lr}
-	sub sp, #0x14
-	add r5, r0, #0
-	ldr r1, [r5]
-	mov r0, #4
-	bl FontID_Alloc
-	ldr r1, [r5]
-	mov r0, #0x93
-	bl NARC_New
-	add r4, r0, #0
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	add r2, r4, #0
-	mov r3, #0x93
-	add r0, #0x10
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0xc]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	bl sub_0208820C
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	add r2, r4, #0
-	mov r3, #0x93
-	add r0, #0x22
-	str r0, [sp]
-	mov r0, #7
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0xc]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	bl sub_0208820C
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	add r2, r4, #0
-	mov r3, #0x93
-	add r0, #0x16
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	lsl r0, r0, #0xb
-	str r0, [sp, #0xc]
-	mov r0, #0
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0xc]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	bl sub_0208820C
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	add r2, r4, #0
-	mov r3, #0x93
-	add r0, #0x1c
-	str r0, [sp]
-	mov r0, #3
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	lsl r0, r0, #0xb
-	str r0, [sp, #0xc]
-	mov r0, #0
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0xc]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	bl sub_0208820C
-	add r0, r5, #0
-	add r0, #0x25
-	ldrb r0, [r0]
-	add r2, r4, #0
-	mov r3, #0x93
-	add r0, #0x28
-	str r0, [sp]
-	mov r0, #7
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	lsl r0, r0, #0xb
-	str r0, [sp, #0xc]
-	mov r0, #0
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0xc]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	bl sub_0208820C
-	ldr r0, [r5]
-	add r1, r5, #0
-	str r0, [sp]
-	add r1, #0x25
-	ldrb r1, [r1]
-	add r3, r5, #0
-	add r0, r4, #0
-	add r1, #0x16
-	mov r2, #0
-	add r3, #0x68
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	str r0, [r5, #0x64]
-	add r0, r4, #0
-	bl NARC_Delete
-	ldr r0, [r5, #0xc]
-	mov r1, #2
-	ldr r0, [r0, #0x74]
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r5, #0xc]
-	mov r1, #7
-	ldr r0, [r0, #0x74]
-	bl ScheduleBgTilemapBufferTransfer
-	add sp, #0x14
-	pop {r4, r5, pc}
-	thumb_func_end ov101_021F4BC8
-
 	thumb_func_start ov101_021F4CD8
 ov101_021F4CD8: ; 0x021F4CD8
 	push {r3, lr}
@@ -5322,6 +5086,7 @@ _021F7354: .word DestroyMsgData
 
 	.rodata
 
+	.global ov101_021F87DC
 ov101_021F87DC: ; 0x021F87DC
 	// window templates
 	.byte 0x06, 0x02, 0x13, 0x1C, 0x04, 0x00
@@ -5331,6 +5096,7 @@ ov101_021F87DC: ; 0x021F87DC
 	.byte 0x01, 0x05, 0x01, 0x16, 0x02, 0x00
 	.short 0x3D3
 
+	.global ov101_021F87F4
 ov101_021F87F4: ; 0x021F87F4
 	// bg template
 	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
@@ -5357,6 +5123,7 @@ ov101_021F87F4: ; 0x021F87F4
 	.byte 0x01, 0x00, 0x1C, 0x00, 0x00, 0x02, 0x00, 0x00
 	.word 0x00000000
 
+	.global ov101_021F889C
 ov101_021F889C: ; 0x021F889C
 	// UnmanagedSpriteTemplate
 	.word 0x00000000

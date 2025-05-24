@@ -27,7 +27,8 @@ typedef struct PokegearRadioAppData {
     u16 unk_2C;                // 0x2C
     u8 filler_2E[0x32];        // 0x2E
     RadioSub60 *unk_60;        // 0x60
-    u8 filler_64[0x8];         // 0x64
+    void *unk_64;              // 0x64
+    NNSG2dScreenData *unk_68;  // 0x68
 } PokegearRadioAppData;        // size: 0x6C
 
 BOOL ov101_021F49F8(PokegearRadioAppData *radioApp);
