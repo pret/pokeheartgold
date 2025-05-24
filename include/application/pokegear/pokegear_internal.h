@@ -164,9 +164,9 @@ void PokegearApp_VBlankCB(void *cb_args);
 
 void ov100_021E6914(PokegearAppData *pokegearApp);
 void ov100_021E6950(PokegearAppData *pokegearApp);
-void ov100_021E6978(PokegearAppData *pokegearApp, int a1);
-void ov100_021E69C8(PokegearAppData *pokegearApp);
-void ov100_021E69E8(PokegearAppData *pokegearApp);
+void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int a1);
+void PokegearApp_DestroySpriteManager(PokegearAppData *pokegearApp);
+void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
 PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);

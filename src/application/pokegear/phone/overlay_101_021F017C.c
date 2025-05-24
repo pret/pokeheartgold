@@ -461,13 +461,13 @@ void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {
-    ov100_021E6978(phoneApp->pokegear, 3);
+    PokegearApp_CreateSpriteManager(phoneApp->pokegear, 3);
     phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapId, phoneApp->pokegear->plttData);
 }
 
 void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
     TouchscreenListMenuSpawner_Destroy(phoneApp->contextMenuSpawner);
-    ov100_021E69C8(phoneApp->pokegear);
+    PokegearApp_DestroySpriteManager(phoneApp->pokegear);
 }
 
 void ov101_021F075C(PokegearPhoneAppData *phoneApp) {

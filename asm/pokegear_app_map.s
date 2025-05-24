@@ -2232,7 +2232,7 @@ ov101_021E886C: ; 0x021E886C
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	mov r1, #2
-	bl ov100_021E6978
+	bl PokegearApp_CreateSpriteManager
 	ldr r1, [r4]
 	mov r0, #0x6f
 	bl ov100_021E6E20
@@ -2274,7 +2274,7 @@ ov101_021E88A8: ; 0x021E88A8
 	ldr r0, [r0]
 	bl ov100_021E6E58
 	ldr r0, [r4, #0x10]
-	bl ov100_021E69C8
+	bl PokegearApp_DestroySpriteManager
 	pop {r4, pc}
 	thumb_func_end ov101_021E88A8
 
@@ -13919,7 +13919,7 @@ ov101_021EE394: ; 0x021EE394
 	bl ov100_021E6914
 	ldr r0, [r4, #0x10]
 	mov r1, #2
-	bl ov100_021E6978
+	bl PokegearApp_CreateSpriteManager
 	ldr r1, [r4]
 	mov r0, #0x2a
 	bl ov100_021E6E20
@@ -13963,7 +13963,7 @@ ov101_021EE3D8: ; 0x021EE3D8
 	ldr r0, [r0]
 	bl ov100_021E6E58
 	ldr r0, [r4, #0x10]
-	bl ov100_021E69C8
+	bl PokegearApp_DestroySpriteManager
 	ldr r0, [r4, #0x10]
 	bl ov100_021E6950
 	pop {r4, pc}

@@ -309,8 +309,8 @@
 .public PokegearApp_VBlankCB
 .public ov100_021E6914
 .public ov100_021E6950
-.public ov100_021E6978
-.public ov100_021E69C8
+.public PokegearApp_CreateSpriteManager
+.public PokegearApp_DestroySpriteManager
 .public ov100_021E6A58
 .public ov100_021E6E20
 .public ov100_021E6E58

@@ -72,7 +72,7 @@ void ov100_021E6950(PokegearAppData *pokegearApp) {
     sub_0200B2E8(pokegearApp->heapId);
 }
 
-void ov100_021E6978(PokegearAppData *pokegearApp, int a1) {
+void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int a1) {
     if (pokegearApp->spriteSystem != NULL) {
         pokegearApp->spriteManager = SpriteManager_New(pokegearApp->spriteSystem);
         SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[a1].maxSprites);
@@ -80,14 +80,14 @@ void ov100_021E6978(PokegearAppData *pokegearApp, int a1) {
     }
 }
 
-void ov100_021E69C8(PokegearAppData *pokegearApp) {
+void PokegearApp_DestroySpriteManager(PokegearAppData *pokegearApp) {
     if (pokegearApp->spriteManager != NULL) {
         SpriteSystem_DestroySpriteManager(pokegearApp->spriteSystem, pokegearApp->spriteManager);
         pokegearApp->spriteManager = NULL;
     }
 }
 
-void ov100_021E69E8(PokegearAppData *pokegearApp) {
+void PokegearApp_DrawSprites(PokegearAppData *pokegearApp) {
     if (pokegearApp->spriteManager != NULL) {
         SpriteSystem_DrawSprites(pokegearApp->spriteManager);
     }

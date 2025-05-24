@@ -171,7 +171,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
             ov100_021E5BB0(pokegearApp, 0);
             ov100_021E6AB0(pokegearApp->unk_094);
         }
-        ov100_021E69E8(pokegearApp);
+        PokegearApp_DrawSprites(pokegearApp);
         SpriteSystem_TransferOam();
     }
 
