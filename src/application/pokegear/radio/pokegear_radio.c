@@ -1,5 +1,7 @@
 #include "global.h"
 
+#include "constants/maps.h"
+
 #include "application/pokegear/radio/radio_internal.h"
 
 #include "brightness.h"
@@ -95,8 +97,43 @@ void ov101_021F45D4(PokegearRadioAppData *radioApp) {
     radioApp->pokegear->unk_060 = NULL;
 }
 
-extern const u8 ov101_021F87AC[];
-extern const u16 *ov101_021FB2C0[];
+static const u16 ov101_021F87B0[] = {
+    MAP_RUINS_OF_ALPH_UNDERGROUND_HALL,
+    MAP_RUINS_OF_ALPH_HALL_ENTRANCE,
+    MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT,
+    MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT,
+    MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2,
+};
+
+static const u16 ov101_021F87BA[] = {
+    MAP_MAHOGANY,
+    MAP_MAHOGANY_EAST_HOUSE,
+    MAP_MAHOGANY_GYM_LEADER_ROOM,
+    MAP_MAHOGANY_GYM_ROOM_2,
+    MAP_MAHOGANY_GYM_ROOM_1,
+    MAP_MAHOGANY_POKECENTER_1F,
+    MAP_MAHOGANY_POKECENTER_B1F,
+    MAP_MAHOGANY_SOUVENIR_SHOP,
+    MAP_TEAM_ROCKET_HEADQUARTERS_B1F,
+    MAP_TEAM_ROCKET_HEADQUARTERS_B2F,
+    MAP_TEAM_ROCKET_HEADQUARTERS_B3F,
+    MAP_ROUTE_43,
+    MAP_ROUTE_43_MAHOGANY_GATEHOUSE,
+    MAP_ROUTE_43_GATEHOUSE,
+    MAP_LAKE_OF_RAGE,
+    MAP_LAKE_OF_RAGE_HIDDEN_POWER_HOUSE,
+    MAP_LAKE_OF_RAGE_FISHING_GURU_HOUSE,
+};
+
+static const u16 *ov101_021FB2C0[] = {
+    ov101_021F87B0,
+    ov101_021F87BA,
+};
+
+static const u8 ov101_021F87AC[] = {
+    NELEMS(ov101_021F87B0),
+    NELEMS(ov101_021F87BA),
+};
 
 BOOL ov101_021F45FC(u16 mapID, int param) {
     for (int i = 0; i < ov101_021F87AC[param]; ++i) {
