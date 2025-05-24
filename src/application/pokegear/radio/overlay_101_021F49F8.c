@@ -149,7 +149,7 @@ BOOL ov101_021F49F8(PokegearRadioAppData *radioApp) {
 BOOL ov101_021F4A4C(PokegearRadioAppData *radioApp) {
     switch (radioApp->unk_08) {
     case 0:
-        if (ov101_021F54AC(radioApp, radioApp->unk_28, radioApp->unk_2A, 0) == 0xFF || radioApp->unk_60->unk_66_3 || radioApp->unk_60->unk_59 == 11) {
+        if (ov101_021F54AC(radioApp, radioApp->unk_28, radioApp->unk_2A, NULL) == 0xFF || radioApp->unk_60->unk_66_3 || radioApp->unk_60->unk_59 == 11) {
             GF_SndStartFadeOutBGM(0, 4);
         } else {
             radioApp->unk_08 = 2;
