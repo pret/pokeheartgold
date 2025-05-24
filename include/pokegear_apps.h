@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_OVY_101_H
-#define POKEHEARTGOLD_OVY_101_H
+#ifndef GUARD_POKEHEARTGOLD_POKEGEAR_APPS_H
+#define GUARD_POKEHEARTGOLD_POKEGEAR_APPS_H
 
 #include "overlay_manager.h"
 
@@ -23,4 +23,4 @@ BOOL PokegearRadio_Init(OVY_MANAGER *man, int *state);
 BOOL PokegearRadio_Main(OVY_MANAGER *man, int *state);
 BOOL PokegearRadio_Exit(OVY_MANAGER *man, int *state);
 
-#endif // POKEHEARTGOLD_OVY_101_H
+#endif // GUARD_POKEHEARTGOLD_POKEGEAR_APPS_H
