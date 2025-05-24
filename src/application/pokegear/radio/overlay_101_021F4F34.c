@@ -9,6 +9,80 @@
 void ov101_021F4F34(PokegearRadioAppData *radioApp, u8 a1, u8 a2);
 void ov101_021F5000(PokegearRadioAppData *radioApp);
 
+static const TouchscreenHitbox ov101_021F8968 = {
+    .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 92, 52 },
+};
+
+static const TouchscreenHitbox ov101_021F89B4[] = {
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 112, 76, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 112, 76, 16 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 152, 76, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 152, 76, 20 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 96, 108, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 96, 108, 16 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 136, 116, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 136, 116, 20 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const TouchscreenHitbox ov101_021F8998[] = {
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 112, 76, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 112, 76, 16 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 152, 76, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 152, 76, 20 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 96, 108, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 96, 108, 16 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const TouchscreenHitbox ov101_021F89D8[] = {
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 112, 76, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 112, 76, 16 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 152, 76, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 152, 76, 20 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 96, 108, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 96, 108, 16 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 136, 116, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 136, 116, 20 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 48, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 48, 8 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const TouchscreenHitbox ov101_021F8964[] = {
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const TouchscreenHitbox ov101_021F896C[] = {
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 92, 38 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 92, 52 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const TouchscreenHitbox ov101_021F8978[] = {
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 92, 4 } },
+    { .circle = { TOUCHSCREEN_CIRCLE_SENTINEL, 128, 92, 16 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
+static const TouchscreenHitbox *ov101_021FB2D0[] = {
+    ov101_021F89B4,
+    ov101_021F8998,
+    ov101_021F89D8,
+    ov101_021F8964,
+    ov101_021F8978,
+    ov101_021F896C,
+    ov101_021F896C,
+};
+
+static const TouchscreenHitbox ov101_021F8984[] = {
+    { .rect = { 48, 76, 16, 48 } },
+    { .rect = { 48, 76, 208, 240 } },
+    { .rect = { 112, 140, 16, 48 } },
+    { .rect = { 112, 140, 208, 240 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
+
 void ov101_021F4F34(PokegearRadioAppData *radioApp, u8 a1, u8 a2) {
     // Must be scoped here to match
     static u8 ov101_021FB2C8[][2] = {
@@ -79,15 +153,15 @@ void ov101_021F50D8(PokegearAppData *pokegear, void *cbArg) {
 }
 
 void ov101_021F50F0(PokegearRadioAppData *radioApp, int a1) {
-    G2S_SetWnd0Position(0x00, 0x70, 0xFF, 0xC0);
-    G2S_SetWnd1Position(0xFF, 0x70, 0x00, 0xC0);
+    G2S_SetWnd0Position(0, 112, 255, 192);
+    G2S_SetWnd1Position(255, 112, 0, 192);
     G2S_SetWndOutsidePlane(17, FALSE);
     G2S_SetWnd0InsidePlane(31, FALSE);
     G2S_SetWnd1InsidePlane(31, FALSE);
     GXS_SetVisibleWnd(3);
     if (a1 == 0) {
         for (int i = 0; i < 3; ++i) {
-            BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_1 + i, BG_POS_OP_SET_Y, -0x50);
+            BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_1 + i, BG_POS_OP_SET_Y, -80);
             ToggleBgLayer(GF_BG_LYR_SUB_1 + i, TRUE);
         }
     } else {
@@ -134,8 +208,6 @@ BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1) {
     G2S_SetWndOutsidePlane(0, FALSE);
     return TRUE;
 }
-
-extern const TouchscreenHitbox ov101_021F8968;
 
 int ov101_021F5304(PokegearRadioAppData *radioApp) {
     int xSpeed = 0;
@@ -206,13 +278,11 @@ int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
     return r6;
 }
 
-extern const TouchscreenHitbox *ov101_021FB2D0[];
-
 u8 ov101_021F54AC(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *a3) {
     u8 ret;
     int r0 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021FB2D0[radioApp->unk_26_0], x, y);
     if (r0 == TOUCH_MENU_NO_INPUT) {
-        ret = 0xFF;
+        ret = 255;
         if (a3 != NULL) {
             *a3 = 0;
         }
@@ -240,8 +310,6 @@ u8 ov101_021F54AC(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *a3) {
     }
     return ret;
 }
-
-extern const TouchscreenHitbox ov101_021F8984[];
 
 int ov101_021F5524(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
     int ret;
@@ -299,13 +367,13 @@ int ov101_021F5650(PokegearRadioAppData *radioApp) {
 BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y) {
     u8 sp0 = 0;
     u8 r4 = ov101_021F54AC(radioApp, x, y, &sp0);
-    if (r4 == 0xFF) {
+    if (r4 == 255) {
         if (radioApp->unk_26_4 != 0) {
             ov101_021F5048(radioApp);
             StopBGM(GF_GetCurrentPlayingBGM(), 0);
         }
         radioApp->unk_26_4 = 0;
-        radioApp->unk_27 = 0xFF;
+        radioApp->unk_27 = 255;
         return 0;
     }
 
@@ -320,7 +388,7 @@ BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y) {
         }
         return FALSE;
     }
-    if (radioApp->unk_27 != 0xFF) {
+    if (radioApp->unk_27 != 255) {
         ov101_021F5048(radioApp);
     }
     radioApp->unk_27 = r4;
@@ -328,8 +396,6 @@ BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y) {
     ov101_021F5000(radioApp);
     return TRUE;
 }
-
-extern const TouchscreenHitbox ov101_021F89B4[];
 
 void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1) {
     radioApp->unk_28 = ov101_021F89B4[a1 * 2].circle.x;
