@@ -2,6 +2,7 @@
 
 #include "application/pokegear/radio/radio_internal.h"
 
+#include "sound_02004A44.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 
@@ -187,4 +188,152 @@ int ov101_021F5304(PokegearRadioAppData *radioApp) {
     ov101_021F4F34(radioApp, 4, radioApp->unk_24_5);
     ov101_021F56B4(radioApp, radioApp->unk_28, radioApp->unk_2A);
     return TOUCH_MENU_NO_INPUT;
+}
+
+int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
+    *inputWasTouch = FALSE;
+    if (radioApp->unk_24_1 != 0) {
+        *inputWasTouch = TRUE;
+        return ov101_021F5650(radioApp);
+    }
+    int r6 = ov101_021F5524(radioApp, inputWasTouch);
+    if (*inputWasTouch) {
+        radioApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
+        if (radioApp->pokegear->cursorInAppSwitchZone == TRUE) {
+            ov101_021F4FDC(radioApp);
+        }
+    }
+    return r6;
+}
+
+extern const TouchscreenHitbox *ov101_021FB2D0[];
+
+u8 ov101_021F54AC(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *a3) {
+    u8 ret;
+    int r0 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021FB2D0[radioApp->unk_26_0], x, y);
+    if (r0 == TOUCH_MENU_NO_INPUT) {
+        ret = 0xFF;
+        if (a3 != NULL) {
+            *a3 = 0;
+        }
+    } else {
+        switch (radioApp->unk_26_0) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+            ret = r0 / 2u;
+            break;
+        case 5:
+            ret = 6;
+            break;
+        case 6:
+            ret = 7;
+            break;
+        default:
+            ret = 5;
+            break;
+        }
+        if (a3 != NULL) {
+            *a3 = 2 - (r0 % 2u);
+        }
+    }
+    return ret;
+}
+
+extern const TouchscreenHitbox ov101_021F8984[];
+
+int ov101_021F5524(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
+    int ret;
+    TouchscreenHitbox sp0;
+    if (!System_GetTouchNew()) {
+        return TOUCH_MENU_NO_INPUT;
+    }
+    ret = PokegearApp_HandleTouchInput_SwitchApps(radioApp->pokegear);
+    if (ret != TOUCH_MENU_NO_INPUT) {
+        *inputWasTouch = TRUE;
+        return ret;
+    }
+    ret = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F8984);
+    if (ret != TOUCH_MENU_NO_INPUT) {
+        ov101_021F4F34(radioApp, ret, radioApp->unk_24_5);
+        ov101_021F5780(radioApp, ret);
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        radioApp->unk_24_5 = ret;
+        *inputWasTouch = TRUE;
+        return TOUCH_MENU_NO_INPUT;
+    }
+    if (!TouchscreenHitbox_PointIsIn(&ov101_021F8968, gSystem.touchX, gSystem.touchY)) {
+        return TOUCH_MENU_NO_INPUT;
+    }
+    sp0.circle.sentinel = TOUCHSCREEN_CIRCLE_SENTINEL;
+    sp0.circle.r = 8;
+    sp0.circle.x = radioApp->unk_28;
+    sp0.circle.y = radioApp->unk_2A;
+    if (TouchscreenHitbox_PointIsIn(&sp0, gSystem.touchX, gSystem.touchY)) {
+        radioApp->unk_28 = gSystem.touchX;
+        radioApp->unk_2A = gSystem.touchY;
+        Sprite_SetPositionXY(radioApp->unk_10[4], radioApp->unk_28, radioApp->unk_2A);
+        radioApp->unk_24_1 = 1;
+        *inputWasTouch = TRUE;
+        ov101_021F4F34(radioApp, 4, radioApp->unk_24_5);
+        ov101_021F56B4(radioApp, radioApp->unk_28, radioApp->unk_2A);
+    }
+    return TOUCH_MENU_NO_INPUT;
+}
+
+int ov101_021F5650(PokegearRadioAppData *radioApp) {
+    if (!System_GetTouchHeld()) {
+        radioApp->unk_24_1 = 0;
+        return TOUCH_MENU_NO_INPUT;
+    }
+    if (TouchscreenHitbox_PointIsIn(&ov101_021F8968, gSystem.touchX, gSystem.touchY)) {
+        radioApp->unk_28 = gSystem.touchX;
+        radioApp->unk_2A = gSystem.touchY;
+        Sprite_SetPositionXY(radioApp->unk_10[4], radioApp->unk_28, radioApp->unk_2A);
+        ov101_021F56B4(radioApp, radioApp->unk_28, radioApp->unk_2A);
+    }
+    return TOUCH_MENU_NO_INPUT;
+}
+
+BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y) {
+    u8 sp0 = 0;
+    u8 r4 = ov101_021F54AC(radioApp, x, y, &sp0);
+    if (r4 == 0xFF) {
+        if (radioApp->unk_26_4 != 0) {
+            ov101_021F5048(radioApp);
+            StopBGM(GF_GetCurrentPlayingBGM(), 0);
+        }
+        radioApp->unk_26_4 = 0;
+        radioApp->unk_27 = 0xFF;
+        return 0;
+    }
+
+    if (r4 == radioApp->unk_27) {
+        if (sp0 != radioApp->unk_26_4) {
+            if (sp0 == 2) {
+                ov101_021F5A9C(radioApp->unk_60, 0);
+            } else {
+                ov101_021F5A9C(radioApp->unk_60, 1);
+            }
+            radioApp->unk_26_4 = sp0;
+        }
+        return FALSE;
+    }
+    if (radioApp->unk_27 != 0xFF) {
+        ov101_021F5048(radioApp);
+    }
+    radioApp->unk_27 = r4;
+    radioApp->unk_26_4 = sp0;
+    ov101_021F5000(radioApp);
+    return TRUE;
+}
+
+extern const TouchscreenHitbox ov101_021F89B4[];
+
+void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1) {
+    radioApp->unk_28 = ov101_021F89B4[a1 * 2].circle.x;
+    radioApp->unk_2A = ov101_021F89B4[a1 * 2].circle.y;
+    Sprite_SetPositionXY(radioApp->unk_10[4], radioApp->unk_28, radioApp->unk_2A);
+    ov101_021F56B4(radioApp, radioApp->unk_28, radioApp->unk_2A);
 }

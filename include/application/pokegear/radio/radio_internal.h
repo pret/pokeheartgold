@@ -72,7 +72,9 @@ BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1);
 int ov101_021F5304(PokegearRadioAppData *radioApp);
 int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
 u8 ov101_021F54AC(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *a3);
-void ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y);
+int ov101_021F5524(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
+int ov101_021F5650(PokegearRadioAppData *radioApp);
+BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y);
 void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1);
 
 RadioSub60 *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
@@ -80,5 +82,6 @@ void ov101_021F58A0(RadioSub60 *a0);
 void ov101_021F5970(RadioSub60 *a0, int a1, int a2);
 void ov101_021F5A50(RadioSub60 *a0);
 void ov101_021F5B94(RadioSub60 *a0);
+void ov101_021F5A9C(RadioSub60 *a0, int a1);
 
 #endif // GUARD_POKEHEARGOLD_APPLICATION_POKEGEAR_RADIO_RADIO_INTERNAL_H
