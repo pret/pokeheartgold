@@ -1,28 +1,45 @@
 #include "global.h"
 
+#include "constants/radio_station.h"
+
 #include "application/pokegear/radio/radio_internal.h"
 #include "msgdata/msg.naix"
 
+#include "text.h"
+
 typedef struct RadioFuncs {
-    void (*setup)(RadioSub60 *);
-    void (*print)(RadioSub60 *);
-    void (*teardown)(RadioSub60 *);
+    void (*setup)(RadioShow *);
+    int (*print)(RadioShow *);
+    void (*teardown)(RadioShow *);
 } RadioFuncs;
 
-u8 ov101_021F58E0(RadioSub60 *a0, int a1);
-BOOL ov101_021F5AB8(RadioSub60 *a0);
-BOOL ov101_021F5B24(RadioSub60 *a0);
-BOOL ov101_021F5B68(RadioSub60 *a0);
-void ov101_021F5C44(RadioSub60 *a0);
+u8 ov101_021F58E0(RadioShow *radioShow, int a1);
+BOOL ov101_021F5AB8(RadioShow *radioShow);
+BOOL ov101_021F5B24(RadioShow *radioShow);
+BOOL ov101_021F5B68(RadioShow *radioShow);
+void ov101_021F5C44(RadioShow *radioShow);
 
-extern const RadioFuncs ov101_021F8A04[];
+static const RadioFuncs ov101_021F8A04[] = {
+    { RadioShow_PokemonMusic_Setup,        RadioShow_PokemonMusic_Print,        RadioShow_PokemonMusic_Teardown        },
+    { RadioShow_PokemonTalk_Setup,         RadioShow_PokemonTalk_Print,         RadioShow_PokemonTalk_Teardown         },
+    { RadioShow_PokemonSearchParty_Setup,  RadioShow_PokemonSearchParty_Print,  RadioShow_PokemonSearchParty_Teardown  },
+    { RadioShow_SerialRadioDrama_Setup,    RadioShow_SerialRadioDrama_Print,    RadioShow_SerialRadioDrama_Teardown    },
+    { RadioShow_BuenasPassword_Setup,      RadioShow_BuenasPassword_Print,      RadioShow_BuenasPassword_Teardown      },
+    { RadioShow_TrainerProfiles_Setup,     RadioShow_TrainerProfiles_Print,     RadioShow_TrainerProfiles_Teardown     },
+    { RadioShow_ThatTownThesePeople_Setup, RadioShow_ThatTownThesePeople_Print, RadioShow_ThatTownThesePeople_Teardown },
+    { RadioShow_PokeFlute_Setup,           RadioShow_PokeFlute_Print,           RadioShow_PokeFlute_Teardown           },
+    { RadioShow_Unown_Setup,               RadioShow_Unown_Print,               RadioShow_Unown_Teardown               },
+    { RadioShow_TeamRocket_Setup,          RadioShow_TeamRocket_Print,          RadioShow_TeamRocket_Teardown          },
+    { RadioShow_MahoganySignal_Setup,      RadioShow_MahoganySignal_Print,      RadioShow_MahoganySignal_Teardown      },
+    { RadioShow_Commercials_Setup,         RadioShow_Commercials_Print,         RadioShow_Commercials_Teardown         },
+};
 
-RadioSub60 *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
+RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
     LocalFieldData *r4 = Save_LocalFieldData_Get(saveData);
     PlayerSaveData *sp4 = LocalFieldData_GetPlayer(r4);
     u16 *sp8 = LocalFieldData_GetMusicIdAddr(r4);
-    RadioSub60 *ret = AllocFromHeap(heapId, sizeof(RadioSub60));
-    MI_CpuClear8(ret, sizeof(RadioSub60));
+    RadioShow *ret = AllocFromHeap(heapId, sizeof(RadioShow));
+    MI_CpuClear8(ret, sizeof(RadioShow));
     ret->unk_04 = saveData;
     ret->unk_08 = mapID;
     ret->unk_0A = mapHeader;
@@ -48,131 +65,165 @@ RadioSub60 *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL in
     return ret;
 }
 
-void ov101_021F58A0(RadioSub60 *a0) {
-    String_Delete(a0->unk_70);
-    String_Delete(a0->unk_6C);
-    String_Delete(a0->unk_50);
-    String_Delete(a0->unk_4C);
-    String_Delete(a0->unk_48);
-    MessageFormat_Delete(a0->unk_44);
-    DestroyMsgData(a0->unk_20);
-    MI_CpuClear8(a0, sizeof(RadioSub60));
-    FreeToHeap(a0);
+void ov101_021F58A0(RadioShow *radioShow) {
+    String_Delete(radioShow->unk_70);
+    String_Delete(radioShow->unk_6C);
+    String_Delete(radioShow->unk_50);
+    String_Delete(radioShow->unk_4C);
+    String_Delete(radioShow->unk_48);
+    MessageFormat_Delete(radioShow->unk_44);
+    DestroyMsgData(radioShow->unk_20);
+    MI_CpuClear8(radioShow, sizeof(RadioShow));
+    FreeToHeap(radioShow);
 }
 
-u8 ov101_021F58E0(RadioSub60 *a0, int a1) {
+u8 ov101_021F58E0(RadioShow *radioShow, int a1) {
     if (a1 >= 8) {
         a1 = 0;
     }
-    if (a0->unk_66_4) {
-        a0->unk_66_4 = 0;
-        return 11;
+    if (radioShow->unk_66_4) {
+        radioShow->unk_66_4 = 0;
+        return RADIO_STATION_COMMERCIALS;
     }
 
-    GF_RTC_CopyDateTime(&a0->unk_28, &a0->unk_38);
+    GF_RTC_CopyDateTime(&radioShow->unk_28, &radioShow->unk_38);
     switch (a1) {
     case 0:
-        return 0;
+        return RADIO_STATION_POKEMON_MUSIC;
     case 1:
-        return 1;
+        return RADIO_STATION_POKEMON_TALK;
     case 2:
-        return 5 + (a0->unk_38.hour % 2);
+        return RADIO_STATION_TRAINER_PROFILES + (radioShow->unk_38.hour % 2);
     case 3:
-        return 2 + (a0->unk_38.hour % 3);
+        return RADIO_STATION_POKEMON_SEARCH_PARTY + (radioShow->unk_38.hour % 3);
     case 4:
-        return 7;
+        return RADIO_STATION_POKE_FLUTE;
     case 5:
-        return 8;
+        return RADIO_STATION_UNOWN;
     case 6:
-        return 9;
+        return RADIO_STATION_TEAM_ROCKET;
     case 7:
-        return 10;
+        return RADIO_STATION_MAHOGANY_SIGNAL;
     }
 
-    return 0;
+    return RADIO_STATION_POKEMON_MUSIC;
 }
 
-void ov101_021F5970(RadioSub60 *a0, int a1, int a2) {
-    a0->unk_66_0 = 0;
+void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
+    radioShow->unk_66_0 = 0;
     if (a1 >= 8) {
         a1 = 0;
     }
-    a0->unk_58 = a1;
-    if (a0->unk_59 != 11) {
-        a0->unk_5A = a0->unk_59;
+    radioShow->unk_58 = a1;
+    if (radioShow->unk_59 != RADIO_STATION_COMMERCIALS) {
+        radioShow->unk_5A = radioShow->unk_59;
     }
-    a0->unk_59 = ov101_021F58E0(a0, a1);
-    a0->unk_5E = 0;
-    a0->unk_68 = 45;
-    a0->unk_67 = 0;
-    a0->unk_6A = 8;
-    a0->unk_69 = 0;
-    a0->unk_66_1 = a2;
-    a0->unk_66_3 = 0;
-    a0->unk_5F = 0;
-    if (a0->unk_59 != 11 && a0->unk_5A != a0->unk_59) {
-        a0->unk_54 = 0;
+    radioShow->unk_59 = ov101_021F58E0(radioShow, a1);
+    radioShow->unk_5E = 0;
+    radioShow->unk_68 = 45;
+    radioShow->unk_67 = 0;
+    radioShow->unk_6A = 8;
+    radioShow->unk_69 = 0;
+    radioShow->unk_66_1 = a2;
+    radioShow->unk_66_3 = 0;
+    radioShow->unk_5F = 0;
+    if (radioShow->unk_59 != RADIO_STATION_COMMERCIALS && radioShow->unk_5A != radioShow->unk_59) {
+        radioShow->unk_54 = 0;
     }
-    FillWindowPixelBuffer(a0->unk_0C, (a0->unk_5C << 4) | a0->unk_5C);
-    CopyWindowToVram(a0->unk_0C);
-    ov101_021F8A04[a0->unk_59].setup(a0);
-    ov101_021F5C44(a0);
+    FillWindowPixelBuffer(radioShow->unk_0C, (radioShow->unk_5C << 4) | radioShow->unk_5C);
+    CopyWindowToVram(radioShow->unk_0C);
+    ov101_021F8A04[radioShow->unk_59].setup(radioShow);
+    ov101_021F5C44(radioShow);
 }
 
-void ov101_021F5A50(RadioSub60 *a0) {
-    if (a0->unk_1C) {
-        ov101_021F8A04[a0->unk_59].teardown(a0);
+void ov101_021F5A50(RadioShow *radioShow) {
+    if (radioShow->unk_1C) {
+        ov101_021F8A04[radioShow->unk_59].teardown(radioShow);
     }
-    FillWindowPixelBuffer(a0->unk_0C, (a0->unk_5C << 4) | a0->unk_5C);
-    CopyWindowToVram(a0->unk_0C);
-    a0->unk_66_4 = 0;
+    FillWindowPixelBuffer(radioShow->unk_0C, (radioShow->unk_5C << 4) | radioShow->unk_5C);
+    CopyWindowToVram(radioShow->unk_0C);
+    radioShow->unk_66_4 = 0;
 }
 
-void ov101_021F5A9C(RadioSub60 *a0, int a1) {
-    a0->unk_66_1 = a1;
+void ov101_021F5A9C(RadioShow *radioShow, int a1) {
+    radioShow->unk_66_1 = a1;
 }
 
-BOOL ov101_021F5AB8(RadioSub60 *a0) {
+BOOL ov101_021F5AB8(RadioShow *radioShow) {
     u8 r2;
 
-    if (a0->unk_67 < a0->unk_68) {
-        ++a0->unk_67;
+    if (radioShow->unk_67 < radioShow->unk_68) {
+        ++radioShow->unk_67;
         return FALSE;
     }
 
-    if (a0->unk_69) {
-        ScrollWindow(a0->unk_0C, 0, 2, 0);
-        CopyWindowToVram(a0->unk_0C);
+    if (radioShow->unk_69) {
+        ScrollWindow(radioShow->unk_0C, 0, 2, 0);
+        CopyWindowToVram(radioShow->unk_0C);
     }
-    r2 = a0->unk_69;
-    ++a0->unk_69;
+    r2 = radioShow->unk_69;
+    ++radioShow->unk_69;
     if (r2 < 8) {
         return FALSE;
     }
-    a0->unk_69 = 0;
-    a0->unk_67 = 0;
+    radioShow->unk_69 = 0;
+    radioShow->unk_67 = 0;
     return TRUE;
 }
 
-BOOL ov101_021F5B24(RadioSub60 *a0) {
+BOOL ov101_021F5B24(RadioShow *radioShow) {
     u8 r2;
-    ScrollWindow(a0->unk_0C, 0, 2, 0);
-    CopyWindowToVram(a0->unk_0C);
-    r2 = a0->unk_69;
-    ++a0->unk_69;
-    if (r2 < a0->unk_6A) {
+    ScrollWindow(radioShow->unk_0C, 0, 2, 0);
+    CopyWindowToVram(radioShow->unk_0C);
+    r2 = radioShow->unk_69;
+    ++radioShow->unk_69;
+    if (r2 < radioShow->unk_6A) {
         return FALSE;
     }
-    a0->unk_69 = 0;
+    radioShow->unk_69 = 0;
     return TRUE;
 }
 
-BOOL ov101_021F5B68(RadioSub60 *a0) {
-    u8 r3 = a0->unk_67;
-    ++a0->unk_67;
-    if (r3 < a0->unk_68) {
+BOOL ov101_021F5B68(RadioShow *radioShow) {
+    u8 r3 = radioShow->unk_67;
+    ++radioShow->unk_67;
+    if (r3 < radioShow->unk_68) {
         return FALSE;
     }
-    a0->unk_67 = 0;
+    radioShow->unk_67 = 0;
     return TRUE;
+}
+
+void ov101_021F5B94(RadioShow *radioShow) {
+    switch (radioShow->unk_5E) {
+    case 0:
+        radioShow->unk_5E = ov101_021F8A04[radioShow->unk_59].print(radioShow);
+        break;
+    case 1:
+        ov101_021F8A04[radioShow->unk_59].teardown(radioShow);
+        radioShow->unk_6A = 16;
+        radioShow->unk_68 = 15;
+        ++radioShow->unk_5E;
+        break;
+    case 2:
+        if (ov101_021F5B24(radioShow)) {
+            ++radioShow->unk_5E;
+        }
+        break;
+    case 3:
+        if (ov101_021F5B68(radioShow)) {
+            ov101_021F5970(radioShow, radioShow->unk_58, radioShow->unk_66_1);
+            radioShow->unk_5E = 0;
+        }
+        break;
+    }
+}
+
+void ov101_021F5C44(RadioShow *radioShow) {
+    FillWindowPixelBuffer(radioShow->unk_10, 0);
+    FillWindowPixelBuffer(radioShow->unk_14, 0);
+    AddTextPrinterParameterizedWithColor(radioShow->unk_10, 0, radioShow->unk_4C, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(radioShow->unk_14, 0, radioShow->unk_50, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    ScheduleWindowCopyToVram(radioShow->unk_10);
+    ScheduleWindowCopyToVram(radioShow->unk_14);
 }

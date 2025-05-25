@@ -3,7 +3,7 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
-typedef struct RadioSub60 {
+typedef struct RadioShow {
     HeapID unk_00;         // 0x00
     SaveData *unk_04;      // 0x04
     u16 unk_08;            // 0x08
@@ -47,7 +47,7 @@ typedef struct RadioSub60 {
     u8 unk_6A;             // 0x6A
     String *unk_6C;        // 0x6C
     String *unk_70;        // 0x70
-} RadioSub60;              // size: 0x74
+} RadioShow;               // size: 0x74
 
 typedef struct PokegearRadioAppData {
     HeapID heapId;             // 0x00
@@ -69,7 +69,7 @@ typedef struct PokegearRadioAppData {
     u16 unk_2E_0 : 15;         // 0x2E
     u16 unk_2E_15 : 1;         // 0x2E
     Window unk_30[3];          // 0x30
-    RadioSub60 *unk_60;        // 0x60
+    RadioShow *unk_60;         // 0x60
     void *unk_64;              // 0x64
     NNSG2dScreenData *unk_68;  // 0x68
 } PokegearRadioAppData;        // size: 0x6C
@@ -92,11 +92,59 @@ int ov101_021F5650(PokegearRadioAppData *radioApp);
 BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y);
 void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1);
 
-RadioSub60 *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
-void ov101_021F58A0(RadioSub60 *a0);
-void ov101_021F5970(RadioSub60 *a0, int a1, int a2);
-void ov101_021F5A50(RadioSub60 *a0);
-void ov101_021F5A9C(RadioSub60 *a0, int a1);
-void ov101_021F5B94(RadioSub60 *a0);
+RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
+void ov101_021F58A0(RadioShow *radioShow);
+void ov101_021F5970(RadioShow *radioShow, int a1, int a2);
+void ov101_021F5A50(RadioShow *radioShow);
+void ov101_021F5A9C(RadioShow *radioShow, int a1);
+void ov101_021F5B94(RadioShow *radioShow);
+
+void RadioShow_PokemonMusic_Setup(RadioShow *radioShow);
+int RadioShow_PokemonMusic_Print(RadioShow *radioShow);
+void RadioShow_PokemonMusic_Teardown(RadioShow *radioShow);
+
+void RadioShow_PokemonTalk_Setup(RadioShow *radioShow);
+int RadioShow_PokemonTalk_Print(RadioShow *radioShow);
+void RadioShow_PokemonTalk_Teardown(RadioShow *radioShow);
+
+void RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow);
+int RadioShow_PokemonSearchParty_Print(RadioShow *radioShow);
+void RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow);
+
+void RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow);
+int RadioShow_SerialRadioDrama_Print(RadioShow *radioShow);
+void RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow);
+
+void RadioShow_BuenasPassword_Setup(RadioShow *radioShow);
+int RadioShow_BuenasPassword_Print(RadioShow *radioShow);
+void RadioShow_BuenasPassword_Teardown(RadioShow *radioShow);
+
+void RadioShow_TrainerProfiles_Setup(RadioShow *radioShow);
+int RadioShow_TrainerProfiles_Print(RadioShow *radioShow);
+void RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow);
+
+void RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow);
+int RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow);
+void RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow);
+
+void RadioShow_PokeFlute_Setup(RadioShow *radioShow);
+int RadioShow_PokeFlute_Print(RadioShow *radioShow);
+void RadioShow_PokeFlute_Teardown(RadioShow *radioShow);
+
+void RadioShow_Unown_Setup(RadioShow *radioShow);
+int RadioShow_Unown_Print(RadioShow *radioShow);
+void RadioShow_Unown_Teardown(RadioShow *radioShow);
+
+void RadioShow_TeamRocket_Setup(RadioShow *radioShow);
+int RadioShow_TeamRocket_Print(RadioShow *radioShow);
+void RadioShow_TeamRocket_Teardown(RadioShow *radioShow);
+
+void RadioShow_MahoganySignal_Setup(RadioShow *radioShow);
+int RadioShow_MahoganySignal_Print(RadioShow *radioShow);
+void RadioShow_MahoganySignal_Teardown(RadioShow *radioShow);
+
+void RadioShow_Commercials_Setup(RadioShow *radioShow);
+int RadioShow_Commercials_Print(RadioShow *radioShow);
+void RadioShow_Commercials_Teardown(RadioShow *radioShow);
 
 #endif // GUARD_POKEHEARGOLD_APPLICATION_POKEGEAR_RADIO_RADIO_INTERNAL_H

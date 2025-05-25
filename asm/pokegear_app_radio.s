@@ -15,147 +15,8 @@
 
 	.text
 
-	.extern ov101_021F58E0
-	.extern ov101_021F5970
 	.extern ov101_021F5AB8
-	.extern ov101_021F5B24
 	.extern ov101_021F5B68
-
-	thumb_func_start ov101_021F5B94
-ov101_021F5B94: ; 0x021F5B94
-	push {r4, lr}
-	add r4, r0, #0
-	add r1, r4, #0
-	add r1, #0x5e
-	ldrb r1, [r1]
-	cmp r1, #3
-	bhi _021F5C38
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021F5BAE: ; jump table
-	.short _021F5BB6 - _021F5BAE - 2 ; case 0
-	.short _021F5BCE - _021F5BAE - 2 ; case 1
-	.short _021F5BFE - _021F5BAE - 2 ; case 2
-	.short _021F5C14 - _021F5BAE - 2 ; case 3
-_021F5BB6:
-	add r1, r4, #0
-	add r1, #0x59
-	ldrb r2, [r1]
-	mov r1, #0xc
-	add r3, r2, #0
-	mul r3, r1
-	ldr r1, _021F5C3C ; =ov101_021F8A04 + 4
-	ldr r1, [r1, r3]
-	blx r1
-	add r4, #0x5e
-	strb r0, [r4]
-	pop {r4, pc}
-_021F5BCE:
-	add r1, r4, #0
-	add r1, #0x59
-	ldrb r2, [r1]
-	mov r1, #0xc
-	add r3, r2, #0
-	mul r3, r1
-	ldr r1, _021F5C40 ; =ov101_021F8A04 + 8
-	ldr r1, [r1, r3]
-	blx r1
-	add r0, r4, #0
-	mov r1, #0x10
-	add r0, #0x6a
-	strb r1, [r0]
-	add r0, r4, #0
-	mov r1, #0xf
-	add r0, #0x68
-	strb r1, [r0]
-	add r0, r4, #0
-	add r0, #0x5e
-	ldrb r0, [r0]
-	add r4, #0x5e
-	add r0, r0, #1
-	strb r0, [r4]
-	pop {r4, pc}
-_021F5BFE:
-	bl ov101_021F5B24
-	cmp r0, #0
-	beq _021F5C38
-	add r0, r4, #0
-	add r0, #0x5e
-	ldrb r0, [r0]
-	add r4, #0x5e
-	add r0, r0, #1
-	strb r0, [r4]
-	pop {r4, pc}
-_021F5C14:
-	bl ov101_021F5B68
-	cmp r0, #0
-	beq _021F5C38
-	add r2, r4, #0
-	add r2, #0x66
-	add r1, r4, #0
-	ldrb r2, [r2]
-	add r1, #0x58
-	ldrb r1, [r1]
-	lsl r2, r2, #0x1e
-	add r0, r4, #0
-	lsr r2, r2, #0x1f
-	bl ov101_021F5970
-	mov r0, #0
-	add r4, #0x5e
-	strb r0, [r4]
-_021F5C38:
-	pop {r4, pc}
-	nop
-_021F5C3C: .word ov101_021F8A04 + 4
-_021F5C40: .word ov101_021F8A04 + 8
-	thumb_func_end ov101_021F5B94
-
-	thumb_func_start ov101_021F5C44
-ov101_021F5C44: ; 0x021F5C44
-	push {r4, lr}
-	sub sp, #0x10
-	add r4, r0, #0
-	ldr r0, [r4, #0x10]
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	ldr r0, [r4, #0x14]
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021F5C9C ; =0x00010200
-	add r3, r1, #0
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	ldr r0, [r4, #0x10]
-	ldr r2, [r4, #0x4c]
-	bl AddTextPrinterParameterizedWithColor
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021F5C9C ; =0x00010200
-	add r3, r1, #0
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	ldr r0, [r4, #0x14]
-	ldr r2, [r4, #0x50]
-	bl AddTextPrinterParameterizedWithColor
-	ldr r0, [r4, #0x10]
-	bl ScheduleWindowCopyToVram
-	ldr r0, [r4, #0x14]
-	bl ScheduleWindowCopyToVram
-	add sp, #0x10
-	pop {r4, pc}
-	nop
-_021F5C9C: .word 0x00010200
-	thumb_func_end ov101_021F5C44
 
 	thumb_func_start PrintRadioLine
 PrintRadioLine: ; 0x021F5CA0
@@ -478,6 +339,8 @@ _021F5EF0:
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end Radio_RunTextPrinter_WaitJingle
+
+	// File boundary
 
 	thumb_func_start RadioShow_PokemonMusic_StartPlaying
 RadioShow_PokemonMusic_StartPlaying: ; 0x021F5EF4
@@ -3147,23 +3010,6 @@ _021F7354: .word DestroyMsgData
 	thumb_func_end ov101_021F734C
 
 	.rodata
-
-	.global ov101_021F8A04
-ov101_021F8A04: ; 0x021F8A04
-	.word RadioShow_PokemonMusic_Setup, RadioShow_PokemonMusic_Print, RadioShow_PokemonMusic_Teardown ; RADIO_STATION_POKEMON_MUSIC
-	.word RadioShow_PokemonTalk_Setup, RadioShow_PokemonTalk_Print, RadioShow_PokemonTalk_Teardown ; RADIO_STATION_POKEMON_TALK
-	.word RadioShow_PokemonSearchParty_Setup, RadioShow_PokemonSearchParty_Print, RadioShow_PokemonSearchParty_Teardown ; RADIO_STATION_POKEMON_SEARCH_PARTY
-	.word RadioShow_SerialRadioDrama_Setup, RadioShow_SerialRadioDrama_Print, RadioShow_SerialRadioDrama_Teardown ; RADIO_STATION_SERIAL_RADIO_DRAMA
-	.word RadioShow_BuenasPassword_Setup, RadioShow_BuenasPassword_Print, RadioShow_BuenasPassword_Teardown ; RADIO_STATION_BUENAS_PASSWORD
-	.word RadioShow_TrainerProfiles_Setup, RadioShow_TrainerProfiles_Print, RadioShow_TrainerProfiles_Teardown ; RADIO_STATION_TRAINER_PROFILES
-	.word RadioShow_ThatTownThesePeople_Setup, RadioShow_ThatTownThesePeople_Print, RadioShow_ThatTownThesePeople_Teardown ; RADIO_STATION_THAT_TOWN_THESE_PEOPLE
-	.word RadioShow_PokeFlute_Setup, RadioShow_PokeFlute_Print, RadioShow_PokeFlute_Teardown ; RADIO_STATION_POKE_FLUTE
-	.word RadioShow_Unown_Setup, RadioShow_Unown_Print, RadioShow_Unown_Teardown ; RADIO_STATION_UNOWN
-	.word RadioShow_TeamRocket_Setup, RadioShow_TeamRocket_Print, RadioShow_TeamRocket_Teardown ; RADIO_STATION_TEAM_ROCKET
-	.word RadioShow_MahoganySignal_Setup, RadioShow_MahoganySignal_Print, RadioShow_MahoganySignal_Teardown ; RADIO_STATION_MAHOGANY_SIGNAL
-	.word RadioShow_Commercials_Setup, RadioShow_Commercials_Print, RadioShow_Commercials_Teardown ; RADIO_STATION_COMMERCIALS
-
-	// file boundary?
 
     .global ov101_021F8A94
 ov101_021F8A94:
