@@ -17,8 +17,7 @@ typedef struct RadioFuncs {
 
 u8 ov101_021F58E0(RadioShow *radioShow, int a1);
 BOOL ov101_021F5B24(RadioShow *radioShow);
-BOOL ov101_021F5B68(RadioShow *radioShow);
-void ov101_021F5C44(RadioShow *radioShow);
+void RadioShow_PrintTitleAndHost(RadioShow *radioShow);
 void PrintRadioLine(RadioShow *radioShow, String *msg, int y);
 BOOL RadioPrintAdvance(RadioShow *radioShow);
 
@@ -26,7 +25,7 @@ static const RadioFuncs ov101_021F8A04[] = {
     { RadioShow_PokemonMusic_Setup,        RadioShow_PokemonMusic_Print,        RadioShow_PokemonMusic_Teardown        },
     { RadioShow_PokemonTalk_Setup,         RadioShow_PokemonTalk_Print,         RadioShow_PokemonTalk_Teardown         },
     { RadioShow_PokemonSearchParty_Setup,  RadioShow_PokemonSearchParty_Print,  RadioShow_PokemonSearchParty_Teardown  },
-    { RadioShow_Variety_Setup,             RadioShow_Variety_Print,             RadioShow_Variety_Teardown             },
+    { RadioShow_SerialRadioDrama_Setup,    RadioShow_SerialRadioDrama_Print,    RadioShow_SerialRadioDrama_Teardown    },
     { RadioShow_BuenasPassword_Setup,      RadioShow_BuenasPassword_Print,      RadioShow_BuenasPassword_Teardown      },
     { RadioShow_TrainerProfiles_Setup,     RadioShow_TrainerProfiles_Print,     RadioShow_TrainerProfiles_Teardown     },
     { RadioShow_ThatTownThesePeople_Setup, RadioShow_ThatTownThesePeople_Print, RadioShow_ThatTownThesePeople_Teardown },
@@ -38,32 +37,32 @@ static const RadioFuncs ov101_021F8A04[] = {
 };
 
 RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
-    LocalFieldData *r4 = Save_LocalFieldData_Get(saveData);
-    PlayerSaveData *sp4 = LocalFieldData_GetPlayer(r4);
-    u16 *sp8 = LocalFieldData_GetMusicIdAddr(r4);
+    LocalFieldData *localFieldData = Save_LocalFieldData_Get(saveData);
+    PlayerSaveData *playerData = LocalFieldData_GetPlayer(localFieldData);
+    u16 *pMusicID = LocalFieldData_GetMusicIdAddr(localFieldData);
     RadioShow *ret = AllocFromHeap(heapId, sizeof(RadioShow));
     MI_CpuClear8(ret, sizeof(RadioShow));
-    ret->unk_04 = saveData;
-    ret->unk_08 = mapID;
-    ret->unk_0A = mapHeader;
-    ret->unk_66_2 = inKanto;
-    ret->unk_0C = win1;
-    ret->unk_10 = win2;
-    ret->unk_14 = win3;
-    ret->unk_18 = textColor;
-    ret->unk_5B = ret->unk_18 >> 16;
-    ret->unk_5D = ret->unk_18 >> 8;
-    ret->unk_5C = ret->unk_18;
+    ret->saveData = saveData;
+    ret->mapID = mapID;
+    ret->mapHeader = mapHeader;
+    ret->inKanto = inKanto;
+    ret->showScriptWindow = win1;
+    ret->showTitleWindow = win2;
+    ret->showHostWindow = win3;
+    ret->textColor = textColor;
+    ret->fgColor = ret->textColor >> 16;
+    ret->bgColor = ret->textColor >> 8;
+    ret->shadowColor = ret->textColor;
     ret->heapID = heapId;
-    ret->unk_20 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0269_bin, ret->heapID);
+    ret->msgData_269 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0269_bin, ret->heapID);
     ret->msgFormat = MessageFormat_New_Custom(8, 51, ret->heapID);
     ret->curLineStr = String_New(51, ret->heapID);
     ret->showTitle = String_New(51, ret->heapID);
     ret->showHost = String_New(51, ret->heapID);
     ret->msgbufFormatted = String_New(1351, ret->heapID);
     ret->msgbufRaw = String_New(1351, ret->heapID);
-    if (sub_0205C7EC(sp4) != 1) {
-        *sp8 = 0;
+    if (sub_0205C7EC(playerData) != 1) {
+        *pMusicID = 0;
     }
     return ret;
 }
@@ -75,7 +74,7 @@ void ov101_021F58A0(RadioShow *radioShow) {
     String_Delete(radioShow->showTitle);
     String_Delete(radioShow->curLineStr);
     MessageFormat_Delete(radioShow->msgFormat);
-    DestroyMsgData(radioShow->unk_20);
+    DestroyMsgData(radioShow->msgData_269);
     MI_CpuClear8(radioShow, sizeof(RadioShow));
     FreeToHeap(radioShow);
 }
@@ -122,7 +121,7 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
         radioShow->lastStation = radioShow->curStation;
     }
     radioShow->curStation = ov101_021F58E0(radioShow, a1);
-    radioShow->unk_5E = 0;
+    radioShow->runState = 0;
     radioShow->unk_68 = 45;
     radioShow->unk_67 = 0;
     radioShow->unk_6A = 8;
@@ -131,20 +130,20 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
     radioShow->unk_66_3 = 0;
     radioShow->printWithJingleState = 0;
     if (radioShow->curStation != RADIO_STATION_COMMERCIALS && radioShow->lastStation != radioShow->curStation) {
-        radioShow->lastVarietyShowScriptID = 0;
+        radioShow->lastSerialRadioDramaEpisodeID = 0;
     }
-    FillWindowPixelBuffer(radioShow->unk_0C, (radioShow->unk_5C << 4) | radioShow->unk_5C);
-    CopyWindowToVram(radioShow->unk_0C);
+    FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->shadowColor << 4) | radioShow->shadowColor);
+    CopyWindowToVram(radioShow->showScriptWindow);
     ov101_021F8A04[radioShow->curStation].setup(radioShow);
-    ov101_021F5C44(radioShow);
+    RadioShow_PrintTitleAndHost(radioShow);
 }
 
 void ov101_021F5A50(RadioShow *radioShow) {
     if (radioShow->showData != NULL) {
         ov101_021F8A04[radioShow->curStation].teardown(radioShow);
     }
-    FillWindowPixelBuffer(radioShow->unk_0C, (radioShow->unk_5C << 4) | radioShow->unk_5C);
-    CopyWindowToVram(radioShow->unk_0C);
+    FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->shadowColor << 4) | radioShow->shadowColor);
+    CopyWindowToVram(radioShow->showScriptWindow);
     radioShow->unk_66_4 = 0;
 }
 
@@ -161,8 +160,8 @@ BOOL ov101_021F5AB8(RadioShow *radioShow) {
     }
 
     if (radioShow->unk_69) {
-        ScrollWindow(radioShow->unk_0C, 0, 2, 0);
-        CopyWindowToVram(radioShow->unk_0C);
+        ScrollWindow(radioShow->showScriptWindow, 0, 2, 0);
+        CopyWindowToVram(radioShow->showScriptWindow);
     }
     r2 = radioShow->unk_69;
     ++radioShow->unk_69;
@@ -176,8 +175,8 @@ BOOL ov101_021F5AB8(RadioShow *radioShow) {
 
 BOOL ov101_021F5B24(RadioShow *radioShow) {
     u8 r2;
-    ScrollWindow(radioShow->unk_0C, 0, 2, 0);
-    CopyWindowToVram(radioShow->unk_0C);
+    ScrollWindow(radioShow->showScriptWindow, 0, 2, 0);
+    CopyWindowToVram(radioShow->showScriptWindow);
     r2 = radioShow->unk_69;
     ++radioShow->unk_69;
     if (r2 < radioShow->unk_6A) {
@@ -198,44 +197,44 @@ BOOL ov101_021F5B68(RadioShow *radioShow) {
 }
 
 void ov101_021F5B94(RadioShow *radioShow) {
-    switch (radioShow->unk_5E) {
+    switch (radioShow->runState) {
     case 0:
-        radioShow->unk_5E = ov101_021F8A04[radioShow->curStation].print(radioShow);
+        radioShow->runState = ov101_021F8A04[radioShow->curStation].print(radioShow);
         break;
     case 1:
         ov101_021F8A04[radioShow->curStation].teardown(radioShow);
         radioShow->unk_6A = 16;
         radioShow->unk_68 = 15;
-        ++radioShow->unk_5E;
+        ++radioShow->runState;
         break;
     case 2:
         if (ov101_021F5B24(radioShow)) {
-            ++radioShow->unk_5E;
+            ++radioShow->runState;
         }
         break;
     case 3:
         if (ov101_021F5B68(radioShow)) {
             ov101_021F5970(radioShow, radioShow->unk_58, radioShow->unk_66_1);
-            radioShow->unk_5E = 0;
+            radioShow->runState = 0;
         }
         break;
     }
 }
 
-void ov101_021F5C44(RadioShow *radioShow) {
-    FillWindowPixelBuffer(radioShow->unk_10, 0);
-    FillWindowPixelBuffer(radioShow->unk_14, 0);
-    AddTextPrinterParameterizedWithColor(radioShow->unk_10, 0, radioShow->showTitle, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterizedWithColor(radioShow->unk_14, 0, radioShow->showHost, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    ScheduleWindowCopyToVram(radioShow->unk_10);
-    ScheduleWindowCopyToVram(radioShow->unk_14);
+void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
+    FillWindowPixelBuffer(radioShow->showTitleWindow, 0);
+    FillWindowPixelBuffer(radioShow->showHostWindow, 0);
+    AddTextPrinterParameterizedWithColor(radioShow->showTitleWindow, 0, radioShow->showTitle, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(radioShow->showHostWindow, 0, radioShow->showHost, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    ScheduleWindowCopyToVram(radioShow->showTitleWindow);
+    ScheduleWindowCopyToVram(radioShow->showHostWindow);
 }
 
 void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
     if (radioShow->unk_66_1 == 1) {
         String_RadioAddStatic(msg, 70);
     }
-    AddTextPrinterParameterizedWithColor(radioShow->unk_0C, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->unk_18, NULL);
+    AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
 }
 
 BOOL RadioPrintAdvance(RadioShow *radioShow) {
@@ -247,7 +246,7 @@ BOOL RadioPrintAdvance(RadioShow *radioShow) {
     ++radioShow->curLineIdx;
     String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, r2);
     PrintRadioLine(radioShow, radioShow->curLineStr, 1);
-    CopyWindowToVram(radioShow->unk_0C);
+    CopyWindowToVram(radioShow->showScriptWindow);
     return radioShow->curLineIdx >= radioShow->numLines;
 }
 
@@ -263,7 +262,7 @@ void RadioPrintInit(RadioShow *radioShow, int msgId, int a2) {
     ++radioShow->curLineIdx;
     String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, r2);
     PrintRadioLine(radioShow, radioShow->curLineStr, radioShow->isSecondLine);
-    CopyWindowToVram(radioShow->unk_0C);
+    CopyWindowToVram(radioShow->showScriptWindow);
     if (radioShow->curLineIdx >= radioShow->numLines) {
         radioShow->printState = 5;
     } else if (!radioShow->isSecondLine) {

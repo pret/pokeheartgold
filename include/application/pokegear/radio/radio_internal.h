@@ -4,50 +4,50 @@
 #include "application/pokegear/pokegear_internal.h"
 
 typedef struct RadioShow {
-    HeapID heapID;               // 0x00
-    SaveData *unk_04;            // 0x04
-    u16 unk_08;                  // 0x08
-    u16 unk_0A;                  // 0x0A
-    Window *unk_0C;              // 0x0C
-    Window *unk_10;              // 0x10
-    Window *unk_14;              // 0x14
-    u32 unk_18;                  // 0x18
-    void *showData;              // 0x1C
-    MsgData *unk_20;             // 0x20
-    MsgData *showMsgData;        // 0x24
-    RTCDate date;                // 0x28
-    RTCTime time;                // 0x38
-    MessageFormat *msgFormat;    // 0x44
-    String *curLineStr;          // 0x48
-    String *showTitle;           // 0x4C
-    String *showHost;            // 0x50
-    u32 lastVarietyShowScriptID; // 0x54
-    u8 unk_58;                   // 0x58
-    u8 curStation;               // 0x59
-    u8 lastStation;              // 0x5A
-    u8 unk_5B;                   // 0x5B
-    u8 unk_5C;                   // 0x5C
-    u8 unk_5D;                   // 0x5D
-    u8 unk_5E;                   // 0x5E
-    u8 printWithJingleState;     // 0x5F
-    u8 unk_60;                   // 0x60
-    u8 unk_61;                   // 0x61
-    u8 curLineIdx;               // 0x62
-    u8 numLines;                 // 0x63
-    u8 printState;               // 0x64
-    u8 unk_65;                   // 0x65
-    u8 isSecondLine : 1;         // 0x66
-    u8 unk_66_1 : 1;             // 0x66
-    u8 unk_66_2 : 1;             // 0x66
-    u8 unk_66_3 : 1;             // 0x66
-    u8 unk_66_4 : 1;             // 0x66
-    u8 unk_67;                   // 0x67
-    u8 unk_68;                   // 0x68
-    u8 unk_69;                   // 0x69
-    u8 unk_6A;                   // 0x6A
-    String *msgbufFormatted;     // 0x6C
-    String *msgbufRaw;           // 0x70
-} RadioShow;                     // size: 0x74
+    HeapID heapID;                     // 0x00
+    SaveData *saveData;                // 0x04
+    u16 mapID;                         // 0x08
+    u16 mapHeader;                     // 0x0A
+    Window *showScriptWindow;          // 0x0C
+    Window *showTitleWindow;           // 0x10
+    Window *showHostWindow;            // 0x14
+    u32 textColor;                     // 0x18
+    void *showData;                    // 0x1C
+    MsgData *msgData_269;              // 0x20
+    MsgData *showMsgData;              // 0x24
+    RTCDate date;                      // 0x28
+    RTCTime time;                      // 0x38
+    MessageFormat *msgFormat;          // 0x44
+    String *curLineStr;                // 0x48
+    String *showTitle;                 // 0x4C
+    String *showHost;                  // 0x50
+    u32 lastSerialRadioDramaEpisodeID; // 0x54
+    u8 unk_58;                         // 0x58
+    u8 curStation;                     // 0x59
+    u8 lastStation;                    // 0x5A
+    u8 fgColor;                        // 0x5B
+    u8 shadowColor;                    // 0x5C
+    u8 bgColor;                        // 0x5D
+    u8 runState;                       // 0x5E
+    u8 printWithJingleState;           // 0x5F
+    u8 unk_60;                         // 0x60
+    u8 unk_61;                         // 0x61
+    u8 curLineIdx;                     // 0x62
+    u8 numLines;                       // 0x63
+    u8 printState;                     // 0x64
+    u8 unk_65;                         // 0x65
+    u8 isSecondLine : 1;               // 0x66
+    u8 unk_66_1 : 1;                   // 0x66
+    u8 inKanto : 1;                    // 0x66
+    u8 unk_66_3 : 1;                   // 0x66
+    u8 unk_66_4 : 1;                   // 0x66
+    u8 unk_67;                         // 0x67
+    u8 unk_68;                         // 0x68
+    u8 unk_69;                         // 0x69
+    u8 unk_6A;                         // 0x6A
+    String *msgbufFormatted;           // 0x6C
+    String *msgbufRaw;                 // 0x70
+} RadioShow;                           // size: 0x74
 
 typedef struct PokegearRadioAppData {
     HeapID heapId;             // 0x00
@@ -98,6 +98,7 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2);
 void ov101_021F5A50(RadioShow *radioShow);
 void ov101_021F5A9C(RadioShow *radioShow, int a1);
 BOOL ov101_021F5AB8(RadioShow *radioShow);
+BOOL ov101_021F5B68(RadioShow *radioShow);
 void ov101_021F5B94(RadioShow *radioShow);
 void RadioPrintInit(RadioShow *radioShow, int msgId, int a2);
 void RadioPrintInitEz(RadioShow *radioShow, int msgId);
@@ -117,9 +118,9 @@ BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow);
 BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow);
 BOOL RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow);
 
-BOOL RadioShow_Variety_Setup(RadioShow *radioShow);
-BOOL RadioShow_Variety_Print(RadioShow *radioShow);
-BOOL RadioShow_Variety_Teardown(RadioShow *radioShow);
+BOOL RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow);
+BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow);
+BOOL RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow);
 
 BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow);
 BOOL RadioShow_BuenasPassword_Print(RadioShow *radioShow);

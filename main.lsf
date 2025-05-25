@@ -1167,7 +1167,7 @@ Overlay OVY_101
     Object src/application/pokegear/radio/shows/poke_flute.o
     Object src/application/pokegear/radio/shows/unown.o
     Object src/application/pokegear/radio/shows/team_rocket.o
-    Object src/application/pokegear/radio/shows/variety.o
+    Object src/application/pokegear/radio/shows/serial_radio_drama.o
     Object src/application/pokegear/radio/shows/commercials.o
     Object src/application/pokegear/radio/shows/pokemon_search_party.o
     Object src/application/pokegear/radio/shows/buenas_password.o

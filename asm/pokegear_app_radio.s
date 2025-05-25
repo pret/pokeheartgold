@@ -23,217 +23,6 @@
 	.extern Radio_RunTextPrinter
 	.extern Radio_RunTextPrinter_WaitJingle
 
-	thumb_func_start RadioShow_Commercials_Setup
-RadioShow_Commercials_Setup: ; 0x021F647C
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, [r5]
-	mov r1, #0x34
-	bl AllocFromHeap
-	mov r1, #0
-	mov r2, #0x34
-	add r4, r0, #0
-	bl MI_CpuFill8
-	add r0, r5, #0
-	add r0, #0x66
-	ldrb r1, [r0]
-	mov r0, #0x10
-	bic r1, r0
-	add r0, r5, #0
-	add r0, #0x66
-	strb r1, [r0]
-	add r0, r5, #0
-	str r4, [r5, #0x1c]
-	bl RadioShow_Commercials_Init
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end RadioShow_Commercials_Setup
-
-	thumb_func_start RadioShow_Commercials_Teardown
-RadioShow_Commercials_Teardown: ; 0x021F64B0
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov101_021F6614
-	ldr r0, [r4, #0x1c]
-	mov r1, #0
-	mov r2, #0x34
-	bl MI_CpuFill8
-	ldr r0, [r4, #0x1c]
-	bl FreeToHeap
-	mov r0, #0
-	str r0, [r4, #0x1c]
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end RadioShow_Commercials_Teardown
-
-	thumb_func_start RadioShow_Commercials_Print
-RadioShow_Commercials_Print: ; 0x021F64D0
-	push {r4, lr}
-	ldr r4, [r0, #0x1c]
-	ldrh r1, [r4, #4]
-	cmp r1, #0
-	beq _021F64E4
-	cmp r1, #1
-	beq _021F64F4
-	cmp r1, #2
-	beq _021F6504
-	b _021F6510
-_021F64E4:
-	ldrh r1, [r4, #6]
-	mov r2, #1
-	bl RadioPrintInit
-	ldrh r0, [r4, #4]
-	add r0, r0, #1
-	strh r0, [r4, #4]
-	b _021F6510
-_021F64F4:
-	bl Radio_RunTextPrinter
-	cmp r0, #0
-	beq _021F6510
-	ldrh r0, [r4, #4]
-	add r0, r0, #1
-	strh r0, [r4, #4]
-	b _021F6510
-_021F6504:
-	bl ov101_021F5B68
-	cmp r0, #0
-	beq _021F6510
-	mov r0, #1
-	pop {r4, pc}
-_021F6510:
-	mov r0, #0
-	pop {r4, pc}
-	thumb_func_end RadioShow_Commercials_Print
-
-	thumb_func_start RadioShow_Commercials_Init
-RadioShow_Commercials_Init: ; 0x021F6514
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	mov r6, #0
-	mov r2, #0x67
-	ldr r4, [r5, #0x1c]
-	ldr r3, [r5]
-	add r0, r6, #0
-	mov r1, #0x1b
-	lsl r2, r2, #2
-	bl NewMsgDataFromNarc
-	str r0, [r5, #0x24]
-	ldr r2, [r5, #0x4c]
-	add r1, r6, #0
-	bl ReadMsgDataIntoString
-	ldr r0, [r5, #0x50]
-	bl String_SetEmpty
-	add r0, r4, #0
-	add r0, #8
-	add r1, r6, #0
-	mov r2, #8
-	bl MI_CpuFill8
-	add r0, r4, #0
-	add r0, #0x10
-	add r1, r6, #0
-	mov r2, #0x24
-	bl MI_CpuFill8
-	ldr r0, [r5, #4]
-	bl Save_VarsFlags_Get
-	mov r1, #1
-	strb r1, [r4, #8]
-	add r7, r0, #0
-	mov r1, #0x6b
-	bl Save_VarsFlags_CheckFlagInArray
-	strb r0, [r4, #9]
-	add r0, r7, #0
-	mov r1, #2
-	mov r2, #0x10
-	bl Save_VarsFlags_FlypointFlagAction
-	strb r0, [r4, #0xa]
-	add r0, r7, #0
-	mov r1, #2
-	mov r2, #0x12
-	bl Save_VarsFlags_FlypointFlagAction
-	strb r0, [r4, #0xb]
-	add r0, r7, #0
-	mov r1, #2
-	mov r2, #0x11
-	bl Save_VarsFlags_FlypointFlagAction
-	strb r0, [r4, #0xc]
-	add r0, r7, #0
-	mov r1, #2
-	mov r2, #5
-	bl Save_VarsFlags_FlypointFlagAction
-	strb r0, [r4, #0xe]
-	ldr r1, _021F660C ; =0x00000964
-	add r0, r7, #0
-	bl Save_VarsFlags_CheckFlagInArray
-	mov r1, #0x46
-	strb r0, [r4, #0xd]
-	add r0, r7, #0
-	lsl r1, r1, #2
-	bl Save_VarsFlags_CheckFlagInArray
-	ldr r7, _021F6610 ; =ov101_021F8AD0
-	strb r0, [r4, #0xf]
-	add r1, r6, #0
-_021F65B0:
-	lsl r0, r1, #1
-	add r0, r1, r0
-	add r2, r7, r0
-	ldrb r0, [r7, r0]
-	add r0, r4, r0
-	ldrb r0, [r0, #8]
-	cmp r0, #0
-	beq _021F65EE
-	ldrb r0, [r2, #2]
-	cmp r0, #0xff
-	beq _021F65D0
-	add r3, r5, #0
-	add r3, #0x58
-	ldrb r3, [r3]
-	cmp r0, r3
-	bne _021F65EE
-_021F65D0:
-	add r0, r5, #0
-	add r0, #0x66
-	ldrb r0, [r0]
-	ldrb r2, [r2, #1]
-	lsl r0, r0, #0x1d
-	lsr r0, r0, #0x1f
-	add r0, r0, #1
-	tst r0, r2
-	beq _021F65EE
-	add r0, r6, #0
-	add r2, r6, #1
-	lsl r2, r2, #0x18
-	add r0, r4, r0
-	lsr r6, r2, #0x18
-	strb r1, [r0, #0x10]
-_021F65EE:
-	add r0, r1, #1
-	lsl r0, r0, #0x18
-	lsr r1, r0, #0x18
-	cmp r1, #0x24
-	blo _021F65B0
-	bl LCRandom
-	add r1, r6, #0
-	bl _s32_div_f
-	add r0, r4, r1
-	ldrb r0, [r0, #0x10]
-	add r0, r0, #2
-	strh r0, [r4, #6]
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021F660C: .word 0x00000964
-_021F6610: .word ov101_021F8AD0
-	thumb_func_end RadioShow_Commercials_Init
-
-	thumb_func_start ov101_021F6614
-ov101_021F6614: ; 0x021F6614
-	ldr r3, _021F661C ; =DestroyMsgData
-	ldr r0, [r0, #0x24]
-	bx r3
-	nop
-_021F661C: .word DestroyMsgData
-	thumb_func_end ov101_021F6614
-
 	thumb_func_start RadioShow_PokemonSearchParty_Setup
 RadioShow_PokemonSearchParty_Setup: ; 0x021F6620
 	push {r3, r4, r5, lr}
@@ -263,7 +52,7 @@ _021F6654: .word SEQ_GS_RADIO_VARIETY
 RadioShow_PokemonSearchParty_Teardown: ; 0x021F6658
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F6800
+	bl RadioShow_PokemonSearchParty_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #0x20
@@ -470,14 +259,14 @@ _021F67F8: .word 0x000001A3
 _021F67FC: .word ov101_021F8B3C
 	thumb_func_end RadioShow_PokemonSearchParty_Init
 
-	thumb_func_start ov101_021F6800
-ov101_021F6800: ; 0x021F6800
+	thumb_func_start RadioShow_PokemonSearchParty_Unload
+RadioShow_PokemonSearchParty_Unload: ; 0x021F6800
 	ldr r3, _021F6808 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F6808: .word DestroyMsgData
-	thumb_func_end ov101_021F6800
+	thumb_func_end RadioShow_PokemonSearchParty_Unload
 
 	thumb_func_start RadioShow_BuenasPassword_Setup
 RadioShow_BuenasPassword_Setup: ; 0x021F680C
@@ -507,7 +296,7 @@ RadioShow_BuenasPassword_Setup: ; 0x021F680C
 RadioShow_BuenasPassword_Teardown: ; 0x021F6840
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F699C
+	bl RadioShow_BuenasPassword_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #8
@@ -674,14 +463,14 @@ _021F6948:
 _021F6998: .word 0x0000019B
 	thumb_func_end RadioShow_BuenasPassword_Init
 
-	thumb_func_start ov101_021F699C
-ov101_021F699C: ; 0x021F699C
+	thumb_func_start RadioShow_BuenasPassword_Unload
+RadioShow_BuenasPassword_Unload: ; 0x021F699C
 	ldr r3, _021F69A4 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F69A4: .word DestroyMsgData
-	thumb_func_end ov101_021F699C
+	thumb_func_end RadioShow_BuenasPassword_Unload
 
 	thumb_func_start RadioShow_ThatTownThesePeople_Setup
 RadioShow_ThatTownThesePeople_Setup: ; 0x021F69A8
@@ -712,7 +501,7 @@ _021F69DC: .word SEQ_GS_RADIO_PT
 RadioShow_ThatTownThesePeople_Teardown: ; 0x021F69E0
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F6B7C
+	bl RadioShow_ThatTownThesePeople_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #0x24
@@ -914,14 +703,14 @@ _021F6B74: .word 0x0000019F
 _021F6B78: .word ov101_021F8B4C
 	thumb_func_end RadioShow_ThatTownThesePeople_Init
 
-	thumb_func_start ov101_021F6B7C
-ov101_021F6B7C: ; 0x021F6B7C
+	thumb_func_start RadioShow_ThatTownThesePeople_Unload
+RadioShow_ThatTownThesePeople_Unload: ; 0x021F6B7C
 	ldr r3, _021F6B84 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F6B84: .word DestroyMsgData
-	thumb_func_end ov101_021F6B7C
+	thumb_func_end RadioShow_ThatTownThesePeople_Unload
 
 	thumb_func_start ov101_021F6B88
 ov101_021F6B88: ; 0x021F6B88
@@ -977,7 +766,7 @@ _021F6BE0: .word SEQ_GS_RADIO_TRAINER
 RadioShow_TrainerProfiles_Teardown: ; 0x021F6BE4
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F6D0C
+	bl RadioShow_TrainerProfiles_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #0xc
@@ -1128,14 +917,14 @@ _021F6CDC:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end RadioShow_TrainerProfiles_Init
 
-	thumb_func_start ov101_021F6D0C
-ov101_021F6D0C: ; 0x021F6D0C
+	thumb_func_start RadioShow_TrainerProfiles_Unload
+RadioShow_TrainerProfiles_Unload: ; 0x021F6D0C
 	ldr r3, _021F6D14 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F6D14: .word DestroyMsgData
-	thumb_func_end ov101_021F6D0C
+	thumb_func_end RadioShow_TrainerProfiles_Unload
 
 	thumb_func_start ov101_021F6D18
 ov101_021F6D18: ; 0x021F6D18
@@ -1193,7 +982,7 @@ _021F6D74: .word SEQ_GS_OHKIDO_RABO
 RadioShow_PokemonTalk_Teardown: ; 0x021F6D78
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F6FC0
+	bl RadioShow_PokemonTalk_Unload
 	mov r2, #0x95
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
@@ -1473,14 +1262,14 @@ _021F6F92:
 _021F6FBC: .word 0x0000019E
 	thumb_func_end RadioShow_PokemonTalk_Init
 
-	thumb_func_start ov101_021F6FC0
-ov101_021F6FC0: ; 0x021F6FC0
+	thumb_func_start RadioShow_PokemonTalk_Unload
+RadioShow_PokemonTalk_Unload: ; 0x021F6FC0
 	ldr r3, _021F6FC8 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F6FC8: .word DestroyMsgData
-	thumb_func_end ov101_021F6FC0
+	thumb_func_end RadioShow_PokemonTalk_Unload
 
 	thumb_func_start ov101_021F6FCC
 ov101_021F6FCC: ; 0x021F6FCC
@@ -1903,7 +1692,7 @@ _021F72FC: .word SEQ_GS_KAIDENPA
 RadioShow_MahoganySignal_Teardown: ; 0x021F7300
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F734C
+	bl RadioShow_MahoganySignal_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #8
@@ -1942,56 +1731,16 @@ RadioShow_MahoganySignal_Init: ; 0x021F7324
 _021F7348: .word 0x00000199
 	thumb_func_end RadioShow_MahoganySignal_Init
 
-	thumb_func_start ov101_021F734C
-ov101_021F734C: ; 0x021F734C
+	thumb_func_start RadioShow_MahoganySignal_Unload
+RadioShow_MahoganySignal_Unload: ; 0x021F734C
 	ldr r3, _021F7354 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F7354: .word DestroyMsgData
-	thumb_func_end ov101_021F734C
+	thumb_func_end RadioShow_MahoganySignal_Unload
 
 	.rodata
-
-	.balign 4, 0
-    .global ov101_021F8AD0
-ov101_021F8AD0: ; 0x021F8AD0
-	.byte 0x00, 0x03, 0xFF
-	.byte 0x00, 0x03, 0xFF
-	.byte 0x00, 0x03, 0xFF
-	.byte 0x00, 0x03, 0xFF
-	.byte 0x00, 0x03, 0xFF
-	.byte 0x00, 0x01, 0xFF
-	.byte 0x00, 0x01, 0xFF
-	.byte 0x00, 0x01, 0xFF
-	.byte 0x00, 0x01, 0xFF
-	.byte 0x00, 0x03, 0x02
-	.byte 0x00, 0x03, 0x02
-	.byte 0x01, 0x03, 0xFF
-	.byte 0x01, 0x03, 0xFF
-	.byte 0x01, 0x03, 0xFF
-	.byte 0x01, 0x03, 0xFF
-	.byte 0x02, 0x01, 0x03
-	.byte 0x02, 0x01, 0x03
-	.byte 0x02, 0x01, 0x03
-	.byte 0x02, 0x01, 0x02
-	.byte 0x02, 0x01, 0x02
-	.byte 0x02, 0x03, 0x02
-	.byte 0x03, 0x03, 0x02
-	.byte 0x03, 0x01, 0x03
-	.byte 0x04, 0x03, 0x01
-	.byte 0x04, 0x03, 0x01
-	.byte 0x04, 0x03, 0x01
-	.byte 0x04, 0x03, 0x01
-	.byte 0x04, 0x03, 0x01
-	.byte 0x04, 0x03, 0x01
-	.byte 0x05, 0x03, 0x03
-	.byte 0x06, 0x02, 0x03
-	.byte 0x06, 0x02, 0x03
-	.byte 0x06, 0x02, 0x03
-	.byte 0x06, 0x02, 0x03
-	.byte 0x06, 0x02, 0x03
-	.byte 0x07, 0x03, 0x03
 
     .global ov101_021F8B3C
 ov101_021F8B3C: ; 0x021F8B3C

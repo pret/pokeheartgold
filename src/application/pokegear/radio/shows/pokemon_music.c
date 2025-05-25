@@ -97,7 +97,7 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
     PokemonMusicData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonMusicData));
     MI_CpuClear8(data, sizeof(PokemonMusicData));
     // data->heapID = radioShow->heapID;
-    data->hasNationalDex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(radioShow->unk_04));
+    data->hasNationalDex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(radioShow->saveData));
     {
         RTCTime dummy;
         GF_RTC_CopyDateTime(&data->tuneInDate, &dummy);
@@ -106,7 +106,7 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
     data->queuedMsg = msg_0416_00003 + data->weekday;
     switch (data->weekday) {
     case RTC_WEEK_SUNDAY:
-        if (Bag_HasItem(Save_Bag_Get(radioShow->unk_04), ITEM_GB_SOUNDS, 1, data->heapID)) {
+        if (Bag_HasItem(Save_Bag_Get(radioShow->saveData), ITEM_GB_SOUNDS, 1, data->heapID)) {
             data->queuedTrack = PKMUSTRACK_GBSOUNDS;
         } else {
             data->queuedTrack = PKMUSTRACK_MARCH;
