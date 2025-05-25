@@ -8,8 +8,8 @@
 #include "overlay_manager.h"
 #include "palette.h"
 #include "save.h"
-#include "task.h"
 #include "sprite_system.h"
+#include "task.h"
 #include "yes_no_prompt.h"
 
 typedef enum AlphPuzzles {

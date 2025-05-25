@@ -4,8 +4,8 @@
 #include "bg_window.h"
 #include "msgdata.h"
 #include "overlay_manager.h"
-#include "system.h"
 #include "sprite_system.h"
+#include "system.h"
 
 extern const OverlayManagerTemplate gApplication_MicTest;
 

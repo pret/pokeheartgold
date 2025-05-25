@@ -20,9 +20,9 @@
 #include "seal_case.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "trainer_data.h"
 #include "trainer_memo.h"
-#include "sprite_system.h"
 #include "unk_02016EDC.h"
 #include "unk_02078834.h"
 
