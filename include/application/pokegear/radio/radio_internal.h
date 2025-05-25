@@ -14,22 +14,37 @@ typedef struct RadioSub60 {
     u32 unk_18;            // 0x18
     u32 unk_1C;            // 0x1C
     MsgData *unk_20;       // 0x20
-    u8 filler_24[0x20];    // 0x24
+    u8 filler_24[4];       // 0x24
+    RTCDate unk_28;        // 0x28
+    RTCTime unk_38;        // 0x38
     MessageFormat *unk_44; // 0x44
     String *unk_48;        // 0x48
     String *unk_4C;        // 0x4C
     String *unk_50;        // 0x50
-    u8 filler_54[5];       // 0x54
+    u32 unk_54;            // 0x54
+    u8 unk_58;             // 0x58
     u8 unk_59;             // 0x59
     u8 unk_5A;             // 0x5A
     u8 unk_5B;             // 0x5B
     u8 unk_5C;             // 0x5C
     u8 unk_5D;             // 0x5D
-    u8 filler_5E[8];       // 0x5E
-    u8 unk_66_0 : 2;       // 0x66
+    u8 unk_5E;             // 0x5E
+    u8 unk_5F;             // 0x5F
+    u8 unk_60;             // 0x60
+    u8 unk_61;             // 0x61
+    u8 unk_62;             // 0x62
+    u8 unk_63;             // 0x63
+    u8 unk_64;             // 0x64
+    u8 unk_65;             // 0x65
+    u8 unk_66_0 : 1;       // 0x66
+    u8 unk_66_1 : 1;       // 0x66
     u8 unk_66_2 : 1;       // 0x66
     u8 unk_66_3 : 1;       // 0x66
-    u8 filler_67[5];       // 0x67
+    u8 unk_66_4 : 1;       // 0x66
+    u8 unk_67;             // 0x67
+    u8 unk_68;             // 0x68
+    u8 unk_69;             // 0x69
+    u8 unk_6A;             // 0x6A
     String *unk_6C;        // 0x6C
     String *unk_70;        // 0x70
 } RadioSub60;              // size: 0x74
@@ -81,7 +96,7 @@ RadioSub60 *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL in
 void ov101_021F58A0(RadioSub60 *a0);
 void ov101_021F5970(RadioSub60 *a0, int a1, int a2);
 void ov101_021F5A50(RadioSub60 *a0);
-void ov101_021F5B94(RadioSub60 *a0);
 void ov101_021F5A9C(RadioSub60 *a0, int a1);
+void ov101_021F5B94(RadioSub60 *a0);
 
 #endif // GUARD_POKEHEARGOLD_APPLICATION_POKEGEAR_RADIO_RADIO_INTERNAL_H
