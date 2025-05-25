@@ -12,7 +12,7 @@ typedef struct RadioShow {
     Window *unk_10;        // 0x10
     Window *unk_14;        // 0x14
     u32 unk_18;            // 0x18
-    u32 unk_1C;            // 0x1C
+    void *unk_1C;          // 0x1C
     MsgData *unk_20;       // 0x20
     MsgData *unk_24;       // 0x24
     RTCDate unk_28;        // 0x28
@@ -97,6 +97,7 @@ void ov101_021F58A0(RadioShow *radioShow);
 void ov101_021F5970(RadioShow *radioShow, int a1, int a2);
 void ov101_021F5A50(RadioShow *radioShow);
 void ov101_021F5A9C(RadioShow *radioShow, int a1);
+BOOL ov101_021F5AB8(RadioShow *radioShow);
 void ov101_021F5B94(RadioShow *radioShow);
 void RadioPrintInit(RadioShow *radioShow, int msgId, int a2);
 void RadioPrintInitEz(RadioShow *radioShow, int msgId);
@@ -104,52 +105,52 @@ void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId);
 BOOL Radio_RunTextPrinter(RadioShow *radioShow);
 BOOL Radio_RunTextPrinter_WaitJingle(RadioShow *radioShow);
 
-void RadioShow_PokemonMusic_Setup(RadioShow *radioShow);
-int RadioShow_PokemonMusic_Print(RadioShow *radioShow);
-void RadioShow_PokemonMusic_Teardown(RadioShow *radioShow);
+BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow);
+BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow);
+BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow);
 
-void RadioShow_PokemonTalk_Setup(RadioShow *radioShow);
-int RadioShow_PokemonTalk_Print(RadioShow *radioShow);
-void RadioShow_PokemonTalk_Teardown(RadioShow *radioShow);
+BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow);
+BOOL RadioShow_PokemonTalk_Print(RadioShow *radioShow);
+BOOL RadioShow_PokemonTalk_Teardown(RadioShow *radioShow);
 
-void RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow);
-int RadioShow_PokemonSearchParty_Print(RadioShow *radioShow);
-void RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow);
+BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow);
+BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow);
+BOOL RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow);
 
-void RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow);
-int RadioShow_SerialRadioDrama_Print(RadioShow *radioShow);
-void RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow);
+BOOL RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow);
+BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow);
+BOOL RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow);
 
-void RadioShow_BuenasPassword_Setup(RadioShow *radioShow);
-int RadioShow_BuenasPassword_Print(RadioShow *radioShow);
-void RadioShow_BuenasPassword_Teardown(RadioShow *radioShow);
+BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow);
+BOOL RadioShow_BuenasPassword_Print(RadioShow *radioShow);
+BOOL RadioShow_BuenasPassword_Teardown(RadioShow *radioShow);
 
-void RadioShow_TrainerProfiles_Setup(RadioShow *radioShow);
-int RadioShow_TrainerProfiles_Print(RadioShow *radioShow);
-void RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow);
+BOOL RadioShow_TrainerProfiles_Setup(RadioShow *radioShow);
+BOOL RadioShow_TrainerProfiles_Print(RadioShow *radioShow);
+BOOL RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow);
 
-void RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow);
-int RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow);
-void RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow);
+BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow);
+BOOL RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow);
+BOOL RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow);
 
-void RadioShow_PokeFlute_Setup(RadioShow *radioShow);
-int RadioShow_PokeFlute_Print(RadioShow *radioShow);
-void RadioShow_PokeFlute_Teardown(RadioShow *radioShow);
+BOOL RadioShow_PokeFlute_Setup(RadioShow *radioShow);
+BOOL RadioShow_PokeFlute_Print(RadioShow *radioShow);
+BOOL RadioShow_PokeFlute_Teardown(RadioShow *radioShow);
 
-void RadioShow_Unown_Setup(RadioShow *radioShow);
-int RadioShow_Unown_Print(RadioShow *radioShow);
-void RadioShow_Unown_Teardown(RadioShow *radioShow);
+BOOL RadioShow_Unown_Setup(RadioShow *radioShow);
+BOOL RadioShow_Unown_Print(RadioShow *radioShow);
+BOOL RadioShow_Unown_Teardown(RadioShow *radioShow);
 
-void RadioShow_TeamRocket_Setup(RadioShow *radioShow);
-int RadioShow_TeamRocket_Print(RadioShow *radioShow);
-void RadioShow_TeamRocket_Teardown(RadioShow *radioShow);
+BOOL RadioShow_TeamRocket_Setup(RadioShow *radioShow);
+BOOL RadioShow_TeamRocket_Print(RadioShow *radioShow);
+BOOL RadioShow_TeamRocket_Teardown(RadioShow *radioShow);
 
-void RadioShow_MahoganySignal_Setup(RadioShow *radioShow);
-int RadioShow_MahoganySignal_Print(RadioShow *radioShow);
-void RadioShow_MahoganySignal_Teardown(RadioShow *radioShow);
+BOOL RadioShow_MahoganySignal_Setup(RadioShow *radioShow);
+BOOL RadioShow_MahoganySignal_Print(RadioShow *radioShow);
+BOOL RadioShow_MahoganySignal_Teardown(RadioShow *radioShow);
 
-void RadioShow_Commercials_Setup(RadioShow *radioShow);
-int RadioShow_Commercials_Print(RadioShow *radioShow);
-void RadioShow_Commercials_Teardown(RadioShow *radioShow);
+BOOL RadioShow_Commercials_Setup(RadioShow *radioShow);
+BOOL RadioShow_Commercials_Print(RadioShow *radioShow);
+BOOL RadioShow_Commercials_Teardown(RadioShow *radioShow);
 
 #endif // GUARD_POKEHEARGOLD_APPLICATION_POKEGEAR_RADIO_RADIO_INTERNAL_H

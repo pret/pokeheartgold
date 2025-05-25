@@ -17,324 +17,11 @@
 
 	.extern ov101_021F5AB8
 	.extern ov101_021F5B68
-	.extern PrintRadioLine
-	.extern RadioPrintAdvance
 	.extern RadioPrintInit
 	.extern RadioPrintInitEz
 	.extern RadioPrintAndPlayJingle
 	.extern Radio_RunTextPrinter
 	.extern Radio_RunTextPrinter_WaitJingle
-
-	// File boundary
-
-	thumb_func_start RadioShow_PokemonMusic_StartPlaying
-RadioShow_PokemonMusic_StartPlaying: ; 0x021F5EF4
-	push {r4, lr}
-	ldr r4, [r0, #0x1c]
-	cmp r1, #4
-	bne _021F5F1A
-	bl LCRandom
-	ldr r1, _021F5F34 ; =25000
-	bl _s32_div_f
-	add r0, r1, #0
-	mov r1, #1000>>2
-	lsl r1, r1, #2
-	bl _s32_div_f
-	lsl r0, r0, #0x18
-	lsr r1, r0, #0x18
-	lsl r2, r1, #1
-	ldr r0, _021F5F38 ; =ov101_021F8A9C
-	b _021F5F1E
-_021F5F1A:
-	ldr r0, _021F5F3C ; =ov101_021F8A94
-	lsl r2, r1, #1
-_021F5F1E:
-	ldrb r3, [r4, #4]
-	ldrh r0, [r0, r2]
-	mov r2, #0xfe
-	lsl r1, r1, #0x19
-	bic r3, r2
-	lsr r1, r1, #0x18
-	orr r1, r3
-	strb r1, [r4, #4]
-	bl SndRadio_StartSeq
-	pop {r4, pc}
-	.balign 4, 0
-_021F5F34: .word 25000
-_021F5F38: .word ov101_021F8A9C
-_021F5F3C: .word ov101_021F8A94
-	thumb_func_end RadioShow_PokemonMusic_StartPlaying
-
-	thumb_func_start RadioShow_PokemonMusic_Setup
-RadioShow_PokemonMusic_Setup: ; 0x021F5F40
-	push {r4, r5, lr}
-	sub sp, #0xc
-	add r5, r0, #0
-	ldr r0, [r5]
-	mov r1, #0x38
-	bl AllocFromHeap
-	mov r1, #0
-	mov r2, #0x38
-	add r4, r0, #0
-	bl MI_CpuFill8
-	ldr r0, [r5, #4]
-	bl Save_Pokedex_Get
-	bl Pokedex_GetNatDexFlag
-	ldrb r1, [r4, #4]
-	mov r2, #1
-	lsl r0, r0, #0x18
-	bic r1, r2
-	lsr r2, r0, #0x18
-	mov r0, #1
-	and r0, r2
-	orr r0, r1
-	strb r0, [r4, #4]
-	add r0, r4, #0
-	add r0, #0xc
-	add r1, sp, #0
-	bl GF_RTC_CopyDateTime
-	ldr r0, [r4, #0x18]
-	strb r0, [r4, #6]
-	ldrb r0, [r4, #6]
-	add r0, r0, #msg_0416_00003
-	strb r0, [r4, #5]
-	ldrb r0, [r4, #6]
-	cmp r0, #6
-	bhi _021F6006
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_021F5F9A: ; jump table
-	.short _021F5FA8 - _021F5F9A - 2 ; case 0
-	.short _021F5FCC - _021F5F9A - 2 ; case 1
-	.short _021F5FEA - _021F5F9A - 2 ; case 2
-	.short _021F5FD2 - _021F5F9A - 2 ; case 3
-	.short _021F5FF0 - _021F5F9A - 2 ; case 4
-	.short _021F5FCC - _021F5F9A - 2 ; case 5
-	.short _021F5FEA - _021F5F9A - 2 ; case 6
-_021F5FA8:
-	ldr r0, [r5, #4]
-	bl Save_Bag_Get
-	ldr r1, _021F603C ; =ITEM_GB_SOUNDS
-	ldr r3, [r4]
-	mov r2, #1
-	bl Bag_HasItem
-	cmp r0, #0
-	beq _021F5FC2
-	mov r0, #4
-	strb r0, [r4, #7]
-	b _021F6006
-_021F5FC2:
-	mov r0, #0
-	strb r0, [r4, #7]
-	mov r0, #msg_0416_00012 ; Sunday March
-	strb r0, [r4, #5]
-	b _021F6006
-_021F5FCC:
-	mov r0, #0
-	strb r0, [r4, #7]
-	b _021F6006
-_021F5FD2:
-	ldrb r0, [r4, #4]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	beq _021F5FE4
-	mov r0, #2
-	strb r0, [r4, #7]
-	mov r0, #msg_0416_00010 ; Wednesday Hoenn
-	strb r0, [r4, #5]
-	b _021F6006
-_021F5FE4:
-	mov r0, #0
-	strb r0, [r4, #7]
-	b _021F6006
-_021F5FEA:
-	mov r0, #1
-	strb r0, [r4, #7]
-	b _021F6006
-_021F5FF0:
-	ldrb r0, [r4, #4]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	beq _021F6002
-	mov r0, #3
-	strb r0, [r4, #7]
-	mov r0, #msg_0416_00011 ; Thursday Sinnoh
-	strb r0, [r4, #5]
-	b _021F6006
-_021F6002:
-	mov r0, #1
-	strb r0, [r4, #7]
-_021F6006:
-	add r0, r5, #0
-	str r4, [r5, #0x1c]
-	mov r1, #0
-	add r0, #0x61
-	strb r1, [r0]
-	add r0, r5, #0
-	bl RadioShow_PokemonMusic_InitGMM
-	bl GF_GetCurrentPlayingBGM
-	mov r1, #0
-	bl StopBGM
-	ldrb r1, [r4, #7]
-	add r0, r5, #0
-	bl RadioShow_PokemonMusic_StartPlaying
-	add r0, r5, #0
-	add r0, #0x66
-	ldrb r1, [r0]
-	mov r0, #1
-	add r5, #0x66
-	bic r1, r0
-	strb r1, [r5]
-	mov r0, #0
-	add sp, #0xc
-	pop {r4, r5, pc}
-	.balign 4, 0
-_021F603C: .word ITEM_GB_SOUNDS
-	thumb_func_end RadioShow_PokemonMusic_Setup
-
-	thumb_func_start RadioShow_PokemonMusic_Teardown
-RadioShow_PokemonMusic_Teardown: ; 0x021F6040
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov101_021F613C
-	ldr r0, [r4, #0x1c]
-	mov r1, #0
-	mov r2, #0x38
-	bl MI_CpuFill8
-	ldr r0, [r4, #0x1c]
-	bl FreeToHeap
-	mov r0, #0
-	str r0, [r4, #0x1c]
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end RadioShow_PokemonMusic_Teardown
-
-	thumb_func_start RadioShow_PokemonMusic_Print
-RadioShow_PokemonMusic_Print: ; 0x021F6060
-	push {r3, r4, r5, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	ldr r4, [r5, #0x1c]
-	ldrb r1, [r4, #8]
-	cmp r1, #4
-	bhi _021F610E
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021F607A: ; jump table
-	.short _021F6084 - _021F607A - 2 ; case 0
-	.short _021F6092 - _021F607A - 2 ; case 1
-	.short _021F60A2 - _021F607A - 2 ; case 2
-	.short _021F60BA - _021F607A - 2 ; case 3
-	.short _021F6100 - _021F607A - 2 ; case 4
-_021F6084:
-	mov r1, #2
-	bl RadioPrintInitEz
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-	b _021F610E
-_021F6092:
-	bl Radio_RunTextPrinter
-	cmp r0, #0
-	beq _021F610E
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-	b _021F610E
-_021F60A2:
-	add r0, r4, #0
-	add r0, #0x1c
-	bl GF_RTC_CopyDate
-	ldrb r1, [r4, #5]
-	add r0, r5, #0
-	bl RadioPrintInitEz
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-	b _021F610E
-_021F60BA:
-	bl Radio_RunTextPrinter
-	cmp r0, #0
-	beq _021F610E
-	add r0, sp, #0
-	bl GF_RTC_CopyDate
-	ldr r1, [sp, #8]
-	ldr r0, [r4, #0x24]
-	cmp r1, r0
-	bne _021F60E0
-	ldr r0, [r4, #0x14]
-	cmp r1, r0
-	bne _021F60E0
-	mov r0, #2
-	strb r0, [r4, #8]
-	add sp, #0x10
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_021F60E0:
-	add r0, r5, #0
-	add r0, #0x66
-	ldrb r1, [r0]
-	mov r0, #8
-	add r5, #0x66
-	orr r0, r1
-	strb r0, [r5]
-	bl GF_GetCurrentPlayingBGM
-	mov r1, #0x1e
-	bl StopBGM
-	ldrb r0, [r4, #8]
-	add r0, r0, #1
-	strb r0, [r4, #8]
-	b _021F610E
-_021F6100:
-	bl ov101_021F5AB8
-	cmp r0, #0
-	beq _021F610E
-	add sp, #0x10
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_021F610E:
-	mov r0, #0
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-	thumb_func_end RadioShow_PokemonMusic_Print
-
-	thumb_func_start RadioShow_PokemonMusic_InitGMM
-RadioShow_PokemonMusic_InitGMM: ; 0x021F6114
-	push {r4, lr}
-	add r4, r0, #0
-	mov r2, #0x1a
-	ldr r3, [r4]
-	mov r0, #0
-	mov r1, #0x1b
-	lsl r2, r2, #4
-	bl NewMsgDataFromNarc
-	str r0, [r4, #0x24]
-	ldr r2, [r4, #0x4c]
-	mov r1, #0
-	bl ReadMsgDataIntoString
-	ldr r0, [r4, #0x24]
-	ldr r2, [r4, #0x50]
-	mov r1, #1
-	bl ReadMsgDataIntoString
-	pop {r4, pc}
-	thumb_func_end RadioShow_PokemonMusic_InitGMM
-
-	thumb_func_start ov101_021F613C
-ov101_021F613C: ; 0x021F613C
-	ldr r3, _021F6144 ; =DestroyMsgData
-	ldr r0, [r0, #0x24]
-	bx r3
-	nop
-_021F6144: .word DestroyMsgData
-	thumb_func_end ov101_021F613C
 
 	thumb_func_start RadioShow_PokeFlute_Setup
 RadioShow_PokeFlute_Setup: ; 0x021F6148
@@ -2696,27 +2383,45 @@ _021F7354: .word DestroyMsgData
 
 	.rodata
 
-    .global ov101_021F8A94
-ov101_021F8A94:
-	.short SEQ_GS_RADIO_MARCH, SEQ_GS_RADIO_KOMORIUTA, SEQ_GS_RADIO_R_101, SEQ_GS_RADIO_R_201
-    .global ov101_021F8A9C
-ov101_021F8A9C:
-	.short SEQ_GS_P_TITLE, SEQ_GS_P_OPENING_TITLE_G, SEQ_GS_P_ENDING, SEQ_GS_P_ENDING2
-    .global ov101_021F8AA4
-ov101_021F8AA4:
-	.byte 0x1A, 0x05, 0x25, 0x05, 0x26, 0x05, 0x27, 0x05, 0x28, 0x05, 0x29, 0x05
-	.byte 0x2A, 0x05, 0x2B, 0x05, 0x2C, 0x05, 0x2D, 0x05, 0x2E, 0x05, 0x2F, 0x05, 0x34, 0x05, 0x24, 0x05
-	.byte 0x1E, 0x05, 0x23, 0x05, 0x20, 0x05, 0x1F, 0x05, 0x22, 0x05, 0xC6, 0x04, 0xFF, 0x04, 0x00, 0x00
-
+	.balign 4, 0
     .global ov101_021F8AD0
 ov101_021F8AD0: ; 0x021F8AD0
-	.byte 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00, 0x03, 0xFF, 0x00
-	.byte 0x01, 0xFF, 0x00, 0x01, 0xFF, 0x00, 0x01, 0xFF, 0x00, 0x01, 0xFF, 0x00, 0x03, 0x02, 0x00, 0x03
-	.byte 0x02, 0x01, 0x03, 0xFF, 0x01, 0x03, 0xFF, 0x01, 0x03, 0xFF, 0x01, 0x03, 0xFF, 0x02, 0x01, 0x03
-	.byte 0x02, 0x01, 0x03, 0x02, 0x01, 0x03, 0x02, 0x01, 0x02, 0x02, 0x01, 0x02, 0x02, 0x03, 0x02, 0x03
-	.byte 0x03, 0x02, 0x03, 0x01, 0x03, 0x04, 0x03, 0x01, 0x04, 0x03, 0x01, 0x04, 0x03, 0x01, 0x04, 0x03
-	.byte 0x01, 0x04, 0x03, 0x01, 0x04, 0x03, 0x01, 0x05, 0x03, 0x03, 0x06, 0x02, 0x03, 0x06, 0x02, 0x03
-	.byte 0x06, 0x02, 0x03, 0x06, 0x02, 0x03, 0x06, 0x02, 0x03, 0x07, 0x03, 0x03
+	.byte 0x00, 0x03, 0xFF
+	.byte 0x00, 0x03, 0xFF
+	.byte 0x00, 0x03, 0xFF
+	.byte 0x00, 0x03, 0xFF
+	.byte 0x00, 0x03, 0xFF
+	.byte 0x00, 0x01, 0xFF
+	.byte 0x00, 0x01, 0xFF
+	.byte 0x00, 0x01, 0xFF
+	.byte 0x00, 0x01, 0xFF
+	.byte 0x00, 0x03, 0x02
+	.byte 0x00, 0x03, 0x02
+	.byte 0x01, 0x03, 0xFF
+	.byte 0x01, 0x03, 0xFF
+	.byte 0x01, 0x03, 0xFF
+	.byte 0x01, 0x03, 0xFF
+	.byte 0x02, 0x01, 0x03
+	.byte 0x02, 0x01, 0x03
+	.byte 0x02, 0x01, 0x03
+	.byte 0x02, 0x01, 0x02
+	.byte 0x02, 0x01, 0x02
+	.byte 0x02, 0x03, 0x02
+	.byte 0x03, 0x03, 0x02
+	.byte 0x03, 0x01, 0x03
+	.byte 0x04, 0x03, 0x01
+	.byte 0x04, 0x03, 0x01
+	.byte 0x04, 0x03, 0x01
+	.byte 0x04, 0x03, 0x01
+	.byte 0x04, 0x03, 0x01
+	.byte 0x04, 0x03, 0x01
+	.byte 0x05, 0x03, 0x03
+	.byte 0x06, 0x02, 0x03
+	.byte 0x06, 0x02, 0x03
+	.byte 0x06, 0x02, 0x03
+	.byte 0x06, 0x02, 0x03
+	.byte 0x06, 0x02, 0x03
+	.byte 0x07, 0x03, 0x03
 
     .global ov101_021F8B3C
 ov101_021F8B3C: ; 0x021F8B3C

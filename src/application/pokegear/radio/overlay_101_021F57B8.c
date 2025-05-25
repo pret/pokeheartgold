@@ -10,13 +10,12 @@
 #include "text.h"
 
 typedef struct RadioFuncs {
-    void (*setup)(RadioShow *);
-    int (*print)(RadioShow *);
-    void (*teardown)(RadioShow *);
+    BOOL (*setup)(RadioShow *);
+    BOOL (*print)(RadioShow *);
+    BOOL (*teardown)(RadioShow *);
 } RadioFuncs;
 
 u8 ov101_021F58E0(RadioShow *radioShow, int a1);
-BOOL ov101_021F5AB8(RadioShow *radioShow);
 BOOL ov101_021F5B24(RadioShow *radioShow);
 BOOL ov101_021F5B68(RadioShow *radioShow);
 void ov101_021F5C44(RadioShow *radioShow);
@@ -141,7 +140,7 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
 }
 
 void ov101_021F5A50(RadioShow *radioShow) {
-    if (radioShow->unk_1C) {
+    if (radioShow->unk_1C != NULL) {
         ov101_021F8A04[radioShow->unk_59].teardown(radioShow);
     }
     FillWindowPixelBuffer(radioShow->unk_0C, (radioShow->unk_5C << 4) | radioShow->unk_5C);
