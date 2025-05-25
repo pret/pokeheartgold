@@ -116,9 +116,9 @@ void ov101_021F4FDC(void *cbArg) {
 void ov101_021F5000(PokegearRadioAppData *radioApp) {
     if (radioApp->unk_26_6 == 0) {
         if (radioApp->unk_26_4 == 2) {
-            ov101_021F5970(radioApp->unk_60, radioApp->unk_27, 0);
+            ov101_021F5970(radioApp->showData, radioApp->unk_27, 0);
         } else {
-            ov101_021F5970(radioApp->unk_60, radioApp->unk_27, 1);
+            ov101_021F5970(radioApp->showData, radioApp->unk_27, 1);
         }
         radioApp->unk_26_6 = 1;
     }
@@ -126,7 +126,7 @@ void ov101_021F5000(PokegearRadioAppData *radioApp) {
 
 void ov101_021F5048(PokegearRadioAppData *radioApp) {
     if (radioApp->unk_26_6 != 0) {
-        ov101_021F5A50(radioApp->unk_60);
+        ov101_021F5A50(radioApp->showData);
         FillWindowPixelBuffer(&radioApp->unk_30[2], 0);
         FillWindowPixelBuffer(&radioApp->unk_30[1], 0);
         ScheduleWindowCopyToVram(&radioApp->unk_30[2]);
@@ -148,7 +148,7 @@ void ov101_021F50D8(PokegearAppData *pokegear, void *cbArg) {
     PokegearRadioAppData *radioApp = cbArg;
 
     if (radioApp->unk_26_6 != 0) {
-        ov101_021F5B94(radioApp->unk_60);
+        ov101_021F5B94(radioApp->showData);
     }
 }
 
@@ -380,9 +380,9 @@ BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y) {
     if (r4 == radioApp->unk_27) {
         if (sp0 != radioApp->unk_26_4) {
             if (sp0 == 2) {
-                ov101_021F5A9C(radioApp->unk_60, 0);
+                ov101_021F5A9C(radioApp->showData, 0);
             } else {
-                ov101_021F5A9C(radioApp->unk_60, 1);
+                ov101_021F5A9C(radioApp->showData, 1);
             }
             radioApp->unk_26_4 = sp0;
         }

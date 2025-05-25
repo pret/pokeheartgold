@@ -81,7 +81,7 @@ static const u16 ov101_021F8A9C[] = {
 };
 
 void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track) {
-    PokemonMusicData *data = radioShow->unk_1C;
+    PokemonMusicData *data = radioShow->showData;
     u16 seqNo;
     if (track == PKMUSTRACK_GBSOUNDS) {
         track = (LCRandom() % 25000) / 1000;
@@ -94,9 +94,9 @@ void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track) {
 }
 
 BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
-    PokemonMusicData *data = AllocFromHeap(radioShow->unk_00, sizeof(PokemonMusicData));
+    PokemonMusicData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonMusicData));
     MI_CpuClear8(data, sizeof(PokemonMusicData));
-    // data->unk_00 = radioShow->unk_00;
+    // data->heapID = radioShow->heapID;
     data->hasNationalDex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(radioShow->unk_04));
     {
         RTCTime dummy;
@@ -138,25 +138,25 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
         }
         break;
     }
-    radioShow->unk_1C = data;
+    radioShow->showData = data;
     radioShow->unk_61 = 0;
     RadioShow_PokemonMusic_InitGMM(radioShow);
     StopBGM(GF_GetCurrentPlayingBGM(), 0);
     RadioShow_PokemonMusic_StartPlaying(radioShow, data->queuedTrack);
-    radioShow->unk_66_0 = 0;
+    radioShow->isSecondLine = 0;
     return FALSE;
 }
 
 BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow) {
     RadioShow_PokemonMusic_UnloadGMM(radioShow);
-    MI_CpuClear8(radioShow->unk_1C, sizeof(PokemonMusicData));
-    FreeToHeap(radioShow->unk_1C);
-    radioShow->unk_1C = NULL;
+    MI_CpuClear8(radioShow->showData, sizeof(PokemonMusicData));
+    FreeToHeap(radioShow->showData);
+    radioShow->showData = NULL;
     return FALSE;
 }
 
 BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
-    PokemonMusicData *data = radioShow->unk_1C;
+    PokemonMusicData *data = radioShow->showData;
 
     switch (data->state) {
     case PKMUSSTATE_PRINT_INTRO:
@@ -197,11 +197,11 @@ BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
 }
 
 void RadioShow_PokemonMusic_InitGMM(RadioShow *radioShow) {
-    radioShow->unk_24 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0416_bin, radioShow->unk_00);
-    ReadMsgDataIntoString(radioShow->unk_24, msg_0416_00000, radioShow->unk_4C);
-    ReadMsgDataIntoString(radioShow->unk_24, msg_0416_00001, radioShow->unk_50);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0416_bin, radioShow->heapID);
+    ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00000, radioShow->showTitle);
+    ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00001, radioShow->showHost);
 }
 
 void RadioShow_PokemonMusic_UnloadGMM(RadioShow *radioShow) {
-    DestroyMsgData(radioShow->unk_24);
+    DestroyMsgData(radioShow->showMsgData);
 }

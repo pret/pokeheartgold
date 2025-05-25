@@ -149,7 +149,7 @@ BOOL ov101_021F49F8(PokegearRadioAppData *radioApp) {
 BOOL ov101_021F4A4C(PokegearRadioAppData *radioApp) {
     switch (radioApp->unk_08) {
     case 0:
-        if (ov101_021F54AC(radioApp, radioApp->unk_28, radioApp->unk_2A, NULL) == 0xFF || radioApp->unk_60->unk_66_3 || radioApp->unk_60->unk_59 == 11) {
+        if (ov101_021F54AC(radioApp, radioApp->unk_28, radioApp->unk_2A, NULL) == 0xFF || radioApp->showData->unk_66_3 || radioApp->showData->curStation == 11) {
             GF_SndStartFadeOutBGM(0, 4);
         } else {
             radioApp->unk_08 = 2;
@@ -336,11 +336,11 @@ void ov101_021F4DC8(PokegearRadioAppData *radioApp) {
         FillWindowPixelBuffer(&radioApp->unk_30[i], 0);
     }
 
-    radioApp->unk_60 = ov101_021F57B8(radioApp->pokegear->saveData, radioApp->pokegear->args->mapID, radioApp->pokegear->args->mapHeader, MapHeader_IsInKanto(radioApp->pokegear->args->mapID), &radioApp->unk_30[0], &radioApp->unk_30[2], &radioApp->unk_30[1], MAKE_TEXT_COLOR(1, 2, 0), radioApp->heapId);
+    radioApp->showData = ov101_021F57B8(radioApp->pokegear->saveData, radioApp->pokegear->args->mapID, radioApp->pokegear->args->mapHeader, MapHeader_IsInKanto(radioApp->pokegear->args->mapID), &radioApp->unk_30[0], &radioApp->unk_30[2], &radioApp->unk_30[1], MAKE_TEXT_COLOR(1, 2, 0), radioApp->heapId);
 }
 
 void ov101_021F4E48(PokegearRadioAppData *radioApp) {
-    ov101_021F58A0(radioApp->unk_60);
+    ov101_021F58A0(radioApp->showData);
     for (int i = 0; i < 3; ++i) {
         ClearWindowTilemapAndCopyToVram(&radioApp->unk_30[i]);
         RemoveWindow(&radioApp->unk_30[i]);
