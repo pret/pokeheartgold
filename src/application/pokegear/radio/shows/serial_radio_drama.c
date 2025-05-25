@@ -82,10 +82,10 @@ void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow) {
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0413_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0413_00001, radioShow->showHost);
     data->episodeID = LCRandom() % 22;
-    if (data->episodeID == radioShow->lastSerialRadioDramaEpisodeID) {
+    if (data->episodeID == radioShow->lastEpisodeID) {
         data->episodeID = (data->episodeID + 1) % 22;
     }
-    radioShow->lastSerialRadioDramaEpisodeID = data->episodeID;
+    radioShow->lastEpisodeID = data->episodeID;
 }
 
 void RadioShow_SerialRadioDrama_Unload(RadioShow *radioShow) {

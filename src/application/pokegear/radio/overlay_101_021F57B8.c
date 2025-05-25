@@ -130,7 +130,7 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
     radioShow->unk_66_3 = 0;
     radioShow->printWithJingleState = 0;
     if (radioShow->curStation != RADIO_STATION_COMMERCIALS && radioShow->lastStation != radioShow->curStation) {
-        radioShow->lastSerialRadioDramaEpisodeID = 0;
+        radioShow->lastEpisodeID = 0;
     }
     FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->shadowColor << 4) | radioShow->shadowColor);
     CopyWindowToVram(radioShow->showScriptWindow);

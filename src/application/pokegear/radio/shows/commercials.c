@@ -10,17 +10,6 @@
 #include "sys_flags.h"
 #include "unk_02005D10.h"
 
-typedef struct CommercialsData {
-    HeapID heapID;
-    u16 state;
-    u16 msgID;
-    u8 commercialUnlockFlags[8];
-    u8 unlockedCommercials[36];
-} CommercialsData;
-
-void RadioShow_Commercials_Init(RadioShow *radioShow);
-void RadioShow_Commercials_Unload(RadioShow *radioShow);
-
 typedef enum CommercialUnlockFlag {
     COMM_UNLOCK_ALWAYS,
     COMM_UNLOCK_POKEDEX,  // effectively always
@@ -31,6 +20,17 @@ typedef enum CommercialUnlockFlag {
     COMM_UNLOCK_VERMILION,
     COMM_UNLOCK_RESTORED_POWER,
 } CommercialUnlockFlag;
+
+typedef struct CommercialsData {
+    HeapID heapID;
+    u16 state;
+    u16 msgID;
+    u8 commercialUnlockFlags[8];
+    u8 unlockedCommercials[36];
+} CommercialsData;
+
+void RadioShow_Commercials_Init(RadioShow *radioShow);
+void RadioShow_Commercials_Unload(RadioShow *radioShow);
 
 // Byte 0: Event condition (see CommercialUnlockFlag)
 // Byte 1: Whether the commercial plays in Johto (1), Kanto (2), or both (3)
@@ -120,6 +120,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
     u8 r0;
     CommercialsData *data = radioShow->showData;
     SaveVarsFlags *varsFlags;
+
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0412_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0412_00000, radioShow->showTitle);
     String_SetEmpty(radioShow->showHost);
