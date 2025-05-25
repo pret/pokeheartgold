@@ -6,7 +6,7 @@
 #include "overlay_manager.h"
 #include "pm_string.h"
 
-extern const OVY_MGR_TEMPLATE gOverlayTemplate_NamingScreen;
+extern const OverlayManagerTemplate gOverlayTemplate_NamingScreen;
 
 typedef struct NamingScreenArgs {
     NameScreenType kind;

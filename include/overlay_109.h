@@ -16,8 +16,8 @@ typedef struct PhotoAlbumArgs {
     SaveData *saveData;
 } PhotoAlbumArgs;
 
-BOOL PhotoAlbum_Init(OVY_MANAGER *man, int *state);
-BOOL PhotoAlbum_Main(OVY_MANAGER *man, int *state);
-BOOL PhotoAlbum_Exit(OVY_MANAGER *man, int *state);
+BOOL PhotoAlbum_Init(OverlayManager *man, int *state);
+BOOL PhotoAlbum_Main(OverlayManager *man, int *state);
+BOOL PhotoAlbum_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_109_H

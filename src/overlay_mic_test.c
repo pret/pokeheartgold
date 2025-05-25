@@ -72,9 +72,9 @@ struct MicTestData {
 
 #define TS_HITBOX_MIC_TEST_RETURN 0
 
-static BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state);
-static BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state);
-static BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state);
+static BOOL MicTest_Init(OverlayManager *overlayMan, int *state);
+static BOOL MicTest_Exit(OverlayManager *overlayMan, int *state);
+static BOOL MicTest_Main(OverlayManager *overlayMan, int *state);
 static void MicTest_StartTask(MicTestTaskManager *a0, MicTestData *data, MicTestTask a2);
 static void MicTestTaskMan_Run(MicTestTaskManager *a0);
 static void MicTest_SetTask(MicTestTaskManager *a0, MicTestTask a1);
@@ -393,9 +393,9 @@ static const MicTestTextBox sMicTestTextBoxes[3] = {
      .color = MAKE_TEXT_COLOR(14, 15, 0) },
 };
 
-const OVY_MGR_TEMPLATE gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };
+const OverlayManagerTemplate gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };
 
-static BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
+static BOOL MicTest_Init(OverlayManager *overlayMan, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_MIC_TEST, 0x30000);
 
     MicTestData *micTest = OverlayManager_CreateAndGetData(overlayMan, sizeof(MicTestData), HEAP_ID_MIC_TEST);
@@ -422,7 +422,7 @@ static BOOL MicTest_Init(OVY_MANAGER *overlayMan, int *state) {
     return TRUE;
 }
 
-static BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state) {
+static BOOL MicTest_Exit(OverlayManager *overlayMan, int *state) {
     MicTestData *micTest = OverlayManager_GetData(overlayMan);
     ov62_021E61FC(&micTest->unkF0);
     ov62_021E5FA0(micTest);
@@ -437,7 +437,7 @@ static BOOL MicTest_Exit(OVY_MANAGER *overlayMan, int *state) {
     return TRUE;
 }
 
-static BOOL MicTest_Main(OVY_MANAGER *overlayMan, int *state) {
+static BOOL MicTest_Main(OverlayManager *overlayMan, int *state) {
     MicTestData *micTest = OverlayManager_GetData(overlayMan);
     if (MicTestTaskMan_IsFinished(&micTest->taskMan)) {
         return TRUE;

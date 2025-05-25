@@ -2,10 +2,10 @@
 
 #include "global.h"
 
-OVY_MANAGER *OverlayManager_New(const OVY_MGR_TEMPLATE *template, void *args, HeapID heapId) {
-    OVY_MANAGER *ret;
+OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *args, HeapID heapId) {
+    OverlayManager *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(OVY_MANAGER));
+    ret = AllocFromHeap(heapId, sizeof(OverlayManager));
     ret->template = *template;
     ret->exec_state = 0;
     ret->proc_state = 0;
@@ -17,32 +17,32 @@ OVY_MANAGER *OverlayManager_New(const OVY_MGR_TEMPLATE *template, void *args, He
     return ret;
 }
 
-void OverlayManager_Delete(OVY_MANAGER *man) {
+void OverlayManager_Delete(OverlayManager *man) {
     FreeToHeap(man);
 }
 
-void *OverlayManager_CreateAndGetData(OVY_MANAGER *man, u32 size, HeapID heapId) {
+void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, HeapID heapId) {
     void *data;
     data = AllocFromHeap(heapId, size);
     man->data = data;
     return data;
 }
 
-void *OverlayManager_GetData(OVY_MANAGER *man) {
+void *OverlayManager_GetData(OverlayManager *man) {
     return man->data;
 }
 
-void OverlayManager_FreeData(OVY_MANAGER *man) {
+void OverlayManager_FreeData(OverlayManager *man) {
     FreeToHeap(man->data);
     man->data = NULL;
 }
 
 // Get arguments passed into the application.
-void *OverlayManager_GetArgs(OVY_MANAGER *man) {
+void *OverlayManager_GetArgs(OverlayManager *man) {
     return man->args;
 }
 
-BOOL OverlayManager_Run(OVY_MANAGER *man) {
+BOOL OverlayManager_Run(OverlayManager *man) {
     switch (man->exec_state) {
     case 0:
         if (man->template.ovy_id != FS_OVERLAY_ID_NONE) {

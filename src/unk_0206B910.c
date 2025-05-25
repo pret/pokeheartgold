@@ -62,7 +62,7 @@ typedef struct UnkStruct_0206BCD4 {
     u8 filler05[15];
 } UnkStruct_0206BCD4;
 
-static const OVY_MGR_TEMPLATE _020FF480 = {
+static const OverlayManagerTemplate _020FF480 = {
     .init = ov57_022378DC,
     .exec = ov57_02237AF8,
     .exit = ov57_02237B20,

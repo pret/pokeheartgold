@@ -45,8 +45,8 @@ typedef struct UnkStruct_0207A22C {
     u16 unk_A;
 } UnkStruct_0207A22C;
 
-static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState);
-static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState);
+static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState);
+static BOOL PartyMenuApp_Main(OverlayManager *manager, int *pState);
 static void PartyMenu_UpdateTopScreenPanelYCoordFrame(PartyMenu *partyMenu);
 static int PartyMenu_Subtask_Init(PartyMenu *partyMenu);
 static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu);
@@ -58,7 +58,7 @@ static int PartyMenu_Subtask_AfterMessageBeginExit(PartyMenu *partyMenu);
 static int PartyMenu_Subtask_YesNoMenuInit(PartyMenu *partyMenu);
 static int PartyMenu_Subtask_YesNoMenuHandleInput(PartyMenu *partyMenu);
 static int PartyMenu_Subtask_UseTMHM(PartyMenu *partyMenu);
-static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState);
+static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState);
 static void sub_020796B8(void *cbData);
 static void sub_02079700(void);
 static void sub_02079720(BgConfig *bgConfig);
@@ -69,7 +69,7 @@ static void Init3dVramManForPartyMenu(void);
 static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan);
 static void sub_02079A14(PartyMenu *partyMenu, NARC *narc);
 static BOOL sub_0207A880(PartyMenu *partyMenu, u8 partySlot);
-static PartyMenu *sub_02079BD8(OVY_MANAGER *manager);
+static PartyMenu *sub_02079BD8(OverlayManager *manager);
 static void sub_02079CE4(PartyMenu *partyMenu);
 static void sub_02079D38(PartyMenu *partyMenu);
 static u8 PartyMenu_IsMonDrawStateActive(PartyMenu *partyMenu, u8 partySlot);
@@ -131,7 +131,7 @@ static int PartyMenu_SwitchItemsDeclined(PartyMenu *partyMenu);
 static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu);
 static int PartyMenu_HandleChooseMonForInGameTrade(PartyMenu *partyMenu);
 
-const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu = {
+const OverlayManagerTemplate gOverlayTemplate_PartyMenu = {
     PartyMenuApp_Init,
     PartyMenuApp_Main,
     PartyMenuApp_Exit,
@@ -220,7 +220,7 @@ static const u16 sFieldMoves[PARTY_MON_CONTEXT_MENU_FIELD_MOVES_COUNT] = {
     MOVE_SOFTBOILED,
 };
 
-static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
+static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
     PartyMenu *partyMenu;
     NARC *narc;
 
@@ -287,7 +287,7 @@ static BOOL PartyMenuApp_Init(OVY_MANAGER *manager, int *pState) {
     return TRUE;
 }
 
-static BOOL PartyMenuApp_Main(OVY_MANAGER *manager, int *pState) {
+static BOOL PartyMenuApp_Main(OverlayManager *manager, int *pState) {
     PartyMenu *partyMenu = (PartyMenu *)OverlayManager_GetData(manager);
 
     switch (*pState) {
@@ -608,7 +608,7 @@ static int PartyMenu_Subtask_UseTMHM(PartyMenu *partyMenu) {
     }
 }
 
-static BOOL PartyMenuApp_Exit(OVY_MANAGER *manager, int *pState) {
+static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     u32 i;
     PartyMenu *partyMenu = (PartyMenu *)OverlayManager_GetData(manager);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
@@ -948,7 +948,7 @@ static void sub_02079A14(PartyMenu *partyMenu, NARC *narc) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-static PartyMenu *sub_02079BD8(OVY_MANAGER *manager) {
+static PartyMenu *sub_02079BD8(OverlayManager *manager) {
     u32 i;
     PartyMenu *ret = (PartyMenu *)OverlayManager_CreateAndGetData(manager, sizeof(PartyMenu), HEAP_ID_PARTY_MENU);
     memset(ret, 0, sizeof(PartyMenu));

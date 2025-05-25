@@ -273,7 +273,7 @@ void ov17_02201BC0(void) {
     sub_0200FBDC(1);
 }
 
-BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state) {
+BOOL BerryPotsApp_Initialize(OverlayManager *manager, int *state) {
     BerryPotsAppData *data;
 
     switch (*state) {
@@ -302,7 +302,7 @@ BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state) {
     return FALSE;
 }
 
-BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
+BOOL BerryPotsApp_Run(OverlayManager *manager, int *state) {
     BerryPotsAppData *data = OverlayManager_GetData(manager);
 
     switch (*state) {
@@ -341,7 +341,7 @@ BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
     return FALSE;
 }
 
-BOOL BerryPotsApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL BerryPotsApp_Exit(OverlayManager *manager, int *state) {
     BerryPotsAppData *data = OverlayManager_GetData(manager);
     if (!ov17_02201E3C(data)) {
         return FALSE;

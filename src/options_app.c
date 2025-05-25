@@ -326,7 +326,7 @@ static void OptionsApp_SetupSprites(OptionsApp_Data *data);
 static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data);
 static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data);
 
-BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state) {
+BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
     OptionsApp_Args *args = OverlayManager_GetArgs(manager);
     CreateHeap(HEAP_ID_3, HEAP_ID_OPTIONS_APP, 0x30000);
 
@@ -356,7 +356,7 @@ BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL OptionsMenu_Exit(OVY_MANAGER *manager, int *state) {
+BOOL OptionsMenu_Exit(OverlayManager *manager, int *state) {
     OptionsApp_Data *data = OverlayManager_GetData(manager);
 
     if (data->unk10_0 == 1) {
@@ -390,7 +390,7 @@ BOOL OptionsMenu_Exit(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state) {
+BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
     OptionsApp_Data *data = OverlayManager_GetData(manager);
     switch (data->exitState) {
     case 0:

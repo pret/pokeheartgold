@@ -81,9 +81,9 @@ struct CameraScript {
     int duration;
 };
 
-static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state);
-static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state);
-static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state);
+static BOOL TitleScreen_Init(OverlayManager *man, int *state);
+static BOOL TitleScreen_Main(OverlayManager *man, int *state);
+static BOOL TitleScreen_Exit(OverlayManager *man, int *state);
 static void TitleScreen_VBlankCB(void *pVoid);
 static void TitleScreen_SetGfxBanks(void);
 static void TitleScreen_Create3DVramMan(TitleScreenOverlayData *data);
@@ -105,9 +105,9 @@ static fx32 fx32_abs(fx32 x);
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData);
 static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData);
 
-const OVY_MGR_TEMPLATE gApplication_TitleScreen = { TitleScreen_Init, TitleScreen_Main, TitleScreen_Exit, FS_OVERLAY_ID_NONE };
+const OverlayManagerTemplate gApplication_TitleScreen = { TitleScreen_Init, TitleScreen_Main, TitleScreen_Exit, FS_OVERLAY_ID_NONE };
 
-static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Init(OverlayManager *man, int *state) {
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -134,7 +134,7 @@ static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
     TitleScreenOverlayData *data = OverlayManager_GetData(man);
     switch (*state) {
     case TITLESCREEN_MAIN_WAIT_FADE:
@@ -231,7 +231,7 @@ static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Exit(OverlayManager *man, int *state) {
     TitleScreenOverlayData *data = OverlayManager_GetData(man);
     HeapID heapID = data->heapID;
     int exitMode = data->exitMode;

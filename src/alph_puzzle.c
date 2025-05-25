@@ -578,7 +578,7 @@ static const u32 sQuitButtonTextColors[3] = {
     MAKE_TEXT_COLOR(5, 6, 0),
 };
 
-BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_Init(OverlayManager *man, int *state) {
     switch (*state) {
     case 0:
         AlphPuzzle_ScreenOff();
@@ -600,7 +600,7 @@ BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL AlphPuzzle_Main(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_Main(OverlayManager *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     switch (*state) {
     case ALPH_PUZZLE_STATE_FADE_IN:
@@ -634,7 +634,7 @@ BOOL AlphPuzzle_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL AlphPuzzle_Exit(OVY_MANAGER *man, int *state) {
+BOOL AlphPuzzle_Exit(OverlayManager *man, int *state) {
     AlphPuzzleData *data = OverlayManager_GetData(man);
     if (!AlphPuzzle_OverlayExitStep(data)) {
         return FALSE;
