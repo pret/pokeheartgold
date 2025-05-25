@@ -26,14 +26,14 @@
 FS_EXTERN_OVERLAY(intro_title);
 FS_EXTERN_OVERLAY(OVY_36);
 
-extern const OverlayManagerTemplate gApplication_IntroMovie;
-extern const OverlayManagerTemplate ov36_App_MainMenu_SelectOption_Continue;
+extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
+extern const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue;
 
 struct UnkStruct_02111868 {
     FSOverlayID mainOverlayId;
-    OverlayManager *overlayManager;
+    OVY_MANAGER *overlayManager;
     FSOverlayID queuedMainOverlayId;
-    const OverlayManagerTemplate *queuedMainOverlayTemplate;
+    const OVY_MGR_TEMPLATE *queuedMainOverlayTemplate;
     struct UnkStruct_02111868_sub unk_10;
 };
 
@@ -161,7 +161,7 @@ static void Main_RunOverlayManager(void) {
     }
 }
 
-void RegisterMainOverlay(FSOverlayID overlayId, const OverlayManagerTemplate *template) {
+void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template) {
     GF_ASSERT(_02111868.queuedMainOverlayTemplate == NULL);
     _02111868.queuedMainOverlayId = overlayId;
     _02111868.queuedMainOverlayTemplate = template;

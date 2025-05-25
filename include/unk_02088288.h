@@ -7,7 +7,7 @@
 #include "pokemon_types_def.h"
 #include "save_special_ribbons.h"
 
-extern struct OverlayManagerTemplate gOverlayTemplate_PokemonSummary;
+extern struct OVY_MGR_TEMPLATE gOverlayTemplate_PokemonSummary;
 
 typedef struct PokemonSummaryArgs {
     Party *party;
