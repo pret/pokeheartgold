@@ -15,8 +15,8 @@ typedef struct ApricornBoxArgs {
     SaveData *saveData;
 } ApricornBoxArgs;
 
-BOOL ApricornBox_Init(OVY_MANAGER *man, int *state);
-BOOL ApricornBox_Main(OVY_MANAGER *man, int *state);
-BOOL ApricornBox_Exit(OVY_MANAGER *man, int *state);
+BOOL ApricornBox_Init(OverlayManager *man, int *state);
+BOOL ApricornBox_Main(OverlayManager *man, int *state);
+BOOL ApricornBox_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_58_H

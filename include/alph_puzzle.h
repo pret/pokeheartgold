@@ -30,8 +30,8 @@ typedef struct AlphPuzzleArgs {
     SaveData *saveData;
 } AlphPuzzleArgs;
 
-BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state);
-BOOL AlphPuzzle_Main(OVY_MANAGER *man, int *state);
-BOOL AlphPuzzle_Exit(OVY_MANAGER *man, int *state);
+BOOL AlphPuzzle_Init(OverlayManager *man, int *state);
+BOOL AlphPuzzle_Main(OverlayManager *man, int *state);
+BOOL AlphPuzzle_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_ALPH_PUZZLE_H

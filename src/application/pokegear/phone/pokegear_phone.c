@@ -25,7 +25,7 @@ int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
 
-BOOL PokegearPhone_Init(OVY_MANAGER *man, int *state) {
+BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_PHONE, 0x30000);
     PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_PHONE);
@@ -37,7 +37,7 @@ BOOL PokegearPhone_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL PokegearPhone_Main(OVY_MANAGER *man, int *state) {
+BOOL PokegearPhone_Main(OverlayManager *man, int *state) {
     PokegearPhoneAppData *phoneApp = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -90,7 +90,7 @@ BOOL PokegearPhone_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL PokegearPhone_Exit(OVY_MANAGER *man, int *state) {
+BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
     PokegearPhoneAppData *phoneApp = OverlayManager_GetData(man);
 
     PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);

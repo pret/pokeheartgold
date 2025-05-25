@@ -38,7 +38,7 @@ typedef struct OakSpeechData {
     Options *options;
     int state;
     int unk_010;
-    OVY_MANAGER *overlayManager;
+    OverlayManager *overlayManager;
     BgConfig *bgConfig;
     Window fullScreenMsgWindow;
     Window dialogWindow;

@@ -3,6 +3,6 @@
 
 #include "field_system.h"
 
-void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem);
+void FieldSystem_Init(OverlayManager *man, FieldSystem *fieldSystem);
 
 #endif // POKEHEARTGOLD_OVERLAY_124_H

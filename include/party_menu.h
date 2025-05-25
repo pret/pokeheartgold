@@ -420,7 +420,7 @@ struct PartyMenu {
     u8 filler_CA0[0x8];
 }; // CA8
 
-extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
+extern const OverlayManagerTemplate gOverlayTemplate_PartyMenu;
 
 void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenu *partyMenu, BOOL show);
 

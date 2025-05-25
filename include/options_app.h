@@ -11,8 +11,8 @@ typedef struct OptionsApp_Args {
     MenuInputStateMgr *menuInputStateMgr;
 } OptionsApp_Args;
 
-BOOL OptionsMenu_Init(OVY_MANAGER *manager, int *state);
-BOOL OptionsMenu_Main(OVY_MANAGER *manager, int *state);
-BOOL OptionsMenu_Exit(OVY_MANAGER *manager, int *state);
+BOOL OptionsMenu_Init(OverlayManager *manager, int *state);
+BOOL OptionsMenu_Main(OverlayManager *manager, int *state);
+BOOL OptionsMenu_Exit(OverlayManager *manager, int *state);
 
 #endif

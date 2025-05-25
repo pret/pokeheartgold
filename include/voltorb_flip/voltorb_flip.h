@@ -15,8 +15,8 @@ typedef struct VoltorbFlipArgs {
     SaveData *saveData;
 } VoltorbFlipArgs;
 
-BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state);
-BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state);
-BOOL VoltorbFlip_Main(OVY_MANAGER *man, int *state);
+BOOL VoltorbFlip_Init(OverlayManager *man, int *state);
+BOOL VoltorbFlip_Exit(OverlayManager *man, int *state);
+BOOL VoltorbFlip_Main(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_H

@@ -172,12 +172,12 @@ void Credits_LaunchApp(FieldSystem *fieldSystem, CreditsArgs *args);
 void Battle_LaunchApp(FieldSystem *fieldSystem, BattleSetup *battleSetup);
 VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck);
 
-BOOL Battle_Init(OVY_MANAGER *man, int *state);
-BOOL Battle_Main(OVY_MANAGER *man, int *state);
-BOOL Battle_Exit(OVY_MANAGER *man, int *state);
+BOOL Battle_Init(OverlayManager *man, int *state);
+BOOL Battle_Main(OverlayManager *man, int *state);
+BOOL Battle_Exit(OverlayManager *man, int *state);
 
 void LaunchApplication_DeadstrippedFunction(FieldSystem *fieldSystem);
-extern const OVY_MGR_TEMPLATE gOverlayTemplate_UnownReport;
-extern const OVY_MGR_TEMPLATE gOverlayTemplate_Battle;
+extern const OverlayManagerTemplate gOverlayTemplate_UnownReport;
+extern const OverlayManagerTemplate gOverlayTemplate_Battle;
 
 #endif // POKEHEARTGOLD_FIELD_LAUNCH_APPLICATION_H

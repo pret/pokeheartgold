@@ -13,22 +13,22 @@
 FS_EXTERN_OVERLAY(OVY_56);
 FS_EXTERN_OVERLAY(OVY_102);
 
-extern BOOL ov56_021E5C20(OVY_MANAGER *, int *);
-extern BOOL ov56_021E5C9C(OVY_MANAGER *, int *);
-extern BOOL ov56_021E5CB4(OVY_MANAGER *, int *);
+extern BOOL ov56_021E5C20(OverlayManager *, int *);
+extern BOOL ov56_021E5C9C(OverlayManager *, int *);
+extern BOOL ov56_021E5CB4(OverlayManager *, int *);
 
-extern BOOL EasyChat_Init(OVY_MANAGER *, int *);
-extern BOOL EasyChat_Main(OVY_MANAGER *, int *);
-extern BOOL EasyChat_Exit(OVY_MANAGER *, int *);
+extern BOOL EasyChat_Init(OverlayManager *, int *);
+extern BOOL EasyChat_Main(OverlayManager *, int *);
+extern BOOL EasyChat_Exit(OverlayManager *, int *);
 
-static const OVY_MGR_TEMPLATE ov55_021E5BF4 = {
+static const OverlayManagerTemplate ov55_021E5BF4 = {
     .init = ov56_021E5C20,
     .exec = ov56_021E5C9C,
     .exit = ov56_021E5CB4,
     .ovy_id = FS_OVERLAY_ID(OVY_56),
 };
 
-static const OVY_MGR_TEMPLATE ov55_021E5C04 = {
+static const OverlayManagerTemplate ov55_021E5C04 = {
     .init = EasyChat_Init,
     .exec = EasyChat_Main,
     .exit = EasyChat_Exit,
@@ -39,7 +39,7 @@ static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *, HeapID);
 static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *);
 static void ov55_021E5BC4(Mail *, UnkStruct_ov55_021E5B08 *);
 
-static BOOL ov55_021E5900(OVY_MANAGER **manager) {
+static BOOL ov55_021E5900(OverlayManager **manager) {
     if (*manager != NULL && OverlayManager_Run(*manager)) {
         OverlayManager_Delete(*manager);
         *manager = NULL;
@@ -49,7 +49,7 @@ static BOOL ov55_021E5900(OVY_MANAGER **manager) {
     return FALSE;
 }
 
-BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
+BOOL ov55_UnkApp_Init(OverlayManager *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData;
     UseMailArgs *args;
 
@@ -72,7 +72,7 @@ BOOL ov55_UnkApp_Init(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
+BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
     UseMailArgs *args = OverlayManager_GetArgs(manager);
 
@@ -143,7 +143,7 @@ BOOL ov55_UnkApp_Main(OVY_MANAGER *manager, int *state) {
     return FALSE;
 }
 
-BOOL ov55_UnkApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
     ov55_021E5BAC(overlayData->unk10);
     OverlayManager_FreeData(manager);

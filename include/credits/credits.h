@@ -23,8 +23,8 @@ typedef struct {
     u8 unk3;
 } UnkOv021E60F6;
 
-BOOL Credits_Init(OVY_MANAGER *man, int *state);
-BOOL Credits_Exit(OVY_MANAGER *man, int *state);
-BOOL Credits_Main(OVY_MANAGER *man, int *state);
+BOOL Credits_Init(OverlayManager *man, int *state);
+BOOL Credits_Exit(OverlayManager *man, int *state);
+BOOL Credits_Main(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_CREDITS_CREDITS_H
