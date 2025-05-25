@@ -23,83 +23,6 @@
 	.extern Radio_RunTextPrinter
 	.extern Radio_RunTextPrinter_WaitJingle
 
-	thumb_func_start RadioShow_Unown_Setup
-RadioShow_Unown_Setup: ; 0x021F61D8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	ldr r0, [r5]
-	mov r1, #4
-	bl AllocFromHeap
-	mov r1, #0
-	mov r2, #4
-	add r4, r0, #0
-	bl MI_CpuFill8
-	add r0, r5, #0
-	str r4, [r5, #0x1c]
-	bl RadioShow_Unown_Init
-	bl GF_GetCurrentPlayingBGM
-	mov r1, #1
-	bl StopBGM
-	ldr r0, _021F620C ; =SEQ_GS_RADIO_UNKNOWN
-	bl SndRadio_StartSeq
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	nop
-_021F620C: .word SEQ_GS_RADIO_UNKNOWN
-	thumb_func_end RadioShow_Unown_Setup
-
-	thumb_func_start RadioShow_Unown_Teardown
-RadioShow_Unown_Teardown: ; 0x021F6210
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov101_021F625C
-	ldr r0, [r4, #0x1c]
-	mov r1, #0
-	mov r2, #4
-	bl MI_CpuFill8
-	ldr r0, [r4, #0x1c]
-	bl FreeToHeap
-	mov r0, #0
-	str r0, [r4, #0x1c]
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end RadioShow_Unown_Teardown
-
-	thumb_func_start RadioShow_Unown_Print
-RadioShow_Unown_Print: ; 0x021F6230
-	mov r0, #0
-	bx lr
-	thumb_func_end RadioShow_Unown_Print
-
-	thumb_func_start RadioShow_Unown_Init
-RadioShow_Unown_Init: ; 0x021F6234
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r2, _021F6258 ; =0x0000019A
-	ldr r3, [r4]
-	mov r0, #0
-	mov r1, #0x1b
-	bl NewMsgDataFromNarc
-	str r0, [r4, #0x24]
-	ldr r2, [r4, #0x4c]
-	mov r1, #0
-	bl ReadMsgDataIntoString
-	ldr r0, [r4, #0x50]
-	bl String_SetEmpty
-	pop {r4, pc}
-	nop
-_021F6258: .word 0x0000019A
-	thumb_func_end RadioShow_Unown_Init
-
-	thumb_func_start ov101_021F625C
-ov101_021F625C: ; 0x021F625C
-	ldr r3, _021F6264 ; =DestroyMsgData
-	ldr r0, [r0, #0x24]
-	bx r3
-	nop
-_021F6264: .word DestroyMsgData
-	thumb_func_end ov101_021F625C
-
 	thumb_func_start RadioShow_TeamRocket_Setup
 RadioShow_TeamRocket_Setup: ; 0x021F6268
 	push {r3, r4, r5, lr}
@@ -131,7 +54,7 @@ _021F62A0: .word SEQ_GS_SENKYO_R
 RadioShow_TeamRocket_Teardown: ; 0x021F62A4
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov101_021F6320
+	bl RadioShow_TeamRocket_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #8
@@ -195,14 +118,14 @@ RadioShow_TeamRocket_Init: ; 0x021F62F4
 _021F631C: .word 0x000001A2
 	thumb_func_end RadioShow_TeamRocket_Init
 
-	thumb_func_start ov101_021F6320
-ov101_021F6320: ; 0x021F6320
+	thumb_func_start RadioShow_TeamRocket_Unload
+RadioShow_TeamRocket_Unload: ; 0x021F6320
 	ldr r3, _021F6328 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F6328: .word DestroyMsgData
-	thumb_func_end ov101_021F6320
+	thumb_func_end RadioShow_TeamRocket_Unload
 
 	thumb_func_start RadioShow_SerialRadioDrama_Setup
 RadioShow_SerialRadioDrama_Setup: ; 0x021F632C
@@ -239,7 +162,7 @@ RadioShow_SerialRadioDrama_Teardown: ; 0x021F6364
 	mov r0, #0
 	pop {r4, pc}
 _021F6372:
-	bl ov101_021F6470
+	bl RadioShow_SerialRadioDrama_Unload
 	ldr r0, [r4, #0x1c]
 	mov r1, #0
 	mov r2, #8
@@ -367,14 +290,14 @@ _021F6464:
 _021F646C: .word 0x0000019D
 	thumb_func_end RadioShow_SerialRadioDrama_Init
 
-	thumb_func_start ov101_021F6470
-ov101_021F6470: ; 0x021F6470
+	thumb_func_start RadioShow_SerialRadioDrama_Unload
+RadioShow_SerialRadioDrama_Unload: ; 0x021F6470
 	ldr r3, _021F6478 ; =DestroyMsgData
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _021F6478: .word DestroyMsgData
-	thumb_func_end ov101_021F6470
+	thumb_func_end RadioShow_SerialRadioDrama_Unload
 
 	thumb_func_start RadioShow_Commercials_Setup
 RadioShow_Commercials_Setup: ; 0x021F647C

@@ -42,8 +42,8 @@ typedef struct PokemonMusicData {
 } PokemonMusicData; // size: 0x38
 
 void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track);
-void RadioShow_PokemonMusic_InitGMM(RadioShow *radioShow);
-void RadioShow_PokemonMusic_UnloadGMM(RadioShow *radioShow);
+void RadioShow_PokemonMusic_Init(RadioShow *radioShow);
+void RadioShow_PokemonMusic_Unload(RadioShow *radioShow);
 
 static const u16 ov101_021F8A94[] = {
     SEQ_GS_RADIO_MARCH,
@@ -140,7 +140,7 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
     }
     radioShow->showData = data;
     radioShow->unk_61 = 0;
-    RadioShow_PokemonMusic_InitGMM(radioShow);
+    RadioShow_PokemonMusic_Init(radioShow);
     StopBGM(GF_GetCurrentPlayingBGM(), 0);
     RadioShow_PokemonMusic_StartPlaying(radioShow, data->queuedTrack);
     radioShow->isSecondLine = 0;
@@ -148,7 +148,7 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
 }
 
 BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow) {
-    RadioShow_PokemonMusic_UnloadGMM(radioShow);
+    RadioShow_PokemonMusic_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonMusicData));
     FreeToHeap(radioShow->showData);
     radioShow->showData = NULL;
@@ -196,12 +196,12 @@ BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_PokemonMusic_InitGMM(RadioShow *radioShow) {
+void RadioShow_PokemonMusic_Init(RadioShow *radioShow) {
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0416_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00001, radioShow->showHost);
 }
 
-void RadioShow_PokemonMusic_UnloadGMM(RadioShow *radioShow) {
+void RadioShow_PokemonMusic_Unload(RadioShow *radioShow) {
     DestroyMsgData(radioShow->showMsgData);
 }
