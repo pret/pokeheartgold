@@ -18,7 +18,7 @@
 .public BlendPalette
 .public GF_GetCurrentPlayingBGM
 .public sub_02004AD8
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetInitialVolume
 .public sub_02005448
 .public GF_GetVolumeBySeqNo

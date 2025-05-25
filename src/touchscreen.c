@@ -17,7 +17,7 @@ static int TouchscreenHitbox_FindRectAtPoint(const TouchscreenHitbox *hitboxes, 
         }
     }
 
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
 static BOOL TouchscreenHitbox_PointIsInCircle(const TouchscreenHitbox *hitbox, u32 x, u32 y) {
@@ -35,7 +35,7 @@ int TouchscreenHitbox_FindRectAtTouchHeld(const TouchscreenHitbox *hitboxes) {
         return TouchscreenHitbox_FindRectAtPoint(hitboxes, gSystem.touchX, gSystem.touchY);
     }
 
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
 int TouchscreenHitbox_FindRectAtTouchNew(const TouchscreenHitbox *hitboxes) {
@@ -43,7 +43,7 @@ int TouchscreenHitbox_FindRectAtTouchNew(const TouchscreenHitbox *hitboxes) {
         return TouchscreenHitbox_FindRectAtPoint(hitboxes, gSystem.touchX, gSystem.touchY);
     }
 
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
 int TouchscreenHitbox_FindHitboxAtTouchHeld(const TouchscreenHitbox *hitboxes) {
@@ -61,7 +61,7 @@ int TouchscreenHitbox_FindHitboxAtTouchHeld(const TouchscreenHitbox *hitboxes) {
         }
     }
 
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
 int TouchscreenHitbox_FindHitboxAtTouchNew(const TouchscreenHitbox *hitboxes) {
@@ -79,7 +79,7 @@ int TouchscreenHitbox_FindHitboxAtTouchNew(const TouchscreenHitbox *hitboxes) {
         }
     }
 
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
 BOOL TouchscreenHitbox_TouchHeldIsIn(const TouchscreenHitbox *hitbox) {

@@ -117,7 +117,7 @@ static const GraphicsBanks ov78_021E6858 = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-static const UnkTemplate_0200D748 ov78_021E68B4 = {
+static const ManagedSpriteTemplate ov78_021E68B4 = {
     .x = 0,
     .y = 0,
     .z = 0,
@@ -130,7 +130,7 @@ static const UnkTemplate_0200D748 ov78_021E68B4 = {
     .vramTransfer = 0,
 };
 
-static const UnkTemplate_0200D748 ov78_021E6880 = {
+static const ManagedSpriteTemplate ov78_021E6880 = {
     .x = 0,
     .y = 0,
     .z = 0,
@@ -143,7 +143,7 @@ static const UnkTemplate_0200D748 ov78_021E6880 = {
     .vramTransfer = 0,
 };
 
-static const UnkTemplate_0200D748 ov78_021E68E8 = {
+static const ManagedSpriteTemplate ov78_021E68E8 = {
     .x = 0,
     .y = 0,
     .z = 0,
@@ -564,7 +564,7 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
 }
 
 static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority) {
-    UnkTemplate_0200D748 template = ov78_021E6880;
+    ManagedSpriteTemplate template = ov78_021E6880;
     template.x = x;
     template.y = y;
     template.spritePriority = spritePriority;
@@ -576,7 +576,7 @@ static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHa
 }
 
 static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y) {
-    UnkTemplate_0200D748 template = ov78_021E68B4;
+    ManagedSpriteTemplate template = ov78_021E68B4;
     template.x = x;
     template.y = y;
 
@@ -584,7 +584,7 @@ static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHa
 }
 
 static ManagedSprite *ov78_021E6250(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y) {
-    UnkTemplate_0200D748 template = ov78_021E68E8;
+    ManagedSpriteTemplate template = ov78_021E68E8;
     template.x = x;
     template.y = y;
 

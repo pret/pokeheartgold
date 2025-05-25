@@ -22,7 +22,7 @@ void BattleCursor_FreeResources(SpriteManager *gfxHandler, u32 character, u32 pa
     SpriteManager_UnloadAnimObjById(gfxHandler, animation);
 }
 
-static const UnkTemplate_0200D748 ov12_0226EBA0 = {
+static const ManagedSpriteTemplate ov12_0226EBA0 = {
     .x = 0,
     .y = 0,
     .z = 0,
@@ -37,7 +37,7 @@ static const UnkTemplate_0200D748 ov12_0226EBA0 = {
 
 BattleCursor *BattleCursor_New(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
     BattleCursor *cursor;
-    UnkTemplate_0200D748 unkStruct;
+    ManagedSpriteTemplate unkStruct;
     int i;
 
     unkStruct = ov12_0226EBA0;

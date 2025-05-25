@@ -11,12 +11,12 @@
 #include "sys_task_api.h"
 
 typedef struct PokegearArgs {
-    u8 kind;        // 0x00
-    u8 unk01;       // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
-    u16 mapMusicID; // 0x02 (surf-overriden)
-    u8 unk04;       // related to unk_var2 from UnkFieldSystemSub_114
+    u8 incomingPhoneCall; // 0x00
+    u8 unk01;             // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
+    u16 mapMusicID;       // 0x02 (surf-overriden)
+    u8 callerId;          // related to unk_var2 from UnkFieldSystemSub_114
     u8 unk05;
-    u8 unk06;
+    u8 callScriptID;
     u8 playerGender; // 0x07
     int x;           // 0x08
     int y;           // 0x0c
@@ -35,26 +35,22 @@ typedef struct PokegearArgs {
 typedef struct UnkPokegearstruct_14 {
     s16 y;
     s16 x;
-    u8 unk04;
-    u8 unk05;
-    u8 unk06;
-    u8 unk07;
-    u8 unk08;
+    u8 unk04[5];
     u8 padding_09[3];
 } Unk_PokegearSTRUCT_14;
 
 void sub_02092D80(FieldSystem *sys, PokegearArgs *ptr);
 void sub_02092D8C(FieldSystem *sys, PokegearArgs *ptr);
 GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys);
-void sub_02092DD8(GearPhoneRingManager *ptr);
+void GearPhoneRingManager_Delete(GearPhoneRingManager *ptr);
 GearPhoneRingManager *FieldSystem_GetGearPhoneRingManager(FieldSystem *sys);
-void sub_02092DF4(GearPhoneRingManager *ptr);
-BOOL sub_02092E08(GearPhoneRingManager *ptr);
-PhoneBookEntry *sub_02092E10(GearPhoneRingManager *ptr);
+void GearPhoneRingManager_StartRinging(GearPhoneRingManager *ptr);
+BOOL GearPhoneRingManager_IsRinging(GearPhoneRingManager *ptr);
+PhoneBookEntry *GearPhoneRingManager_GetCallerPhoneBookEntry(GearPhoneRingManager *ptr);
 void sub_02092E14(GearPhoneRingManager *ptr, u8 a1, BOOL a2);
 void sub_02092E34(GearPhoneRingManager *ptr, s32 a1, BOOL a2);
-void sub_02092F30(GearPhoneRingManager *ptr, s64 seconds);
-void sub_02092FA8(GearPhoneRingManager *ptr);
+void GearPhoneRingManager_HandleTimeAdvance(GearPhoneRingManager *ptr, s64 seconds);
+void GearPhoneRingManager_ResetIfActive(GearPhoneRingManager *ptr);
 void GearPhone_ToggleRinging(GearPhoneRingManager *ptr, BOOL a1);
 BOOL sub_02093070(FieldSystem *sys);
 BOOL sub_020930C4(FieldSystem *sys);

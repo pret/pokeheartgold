@@ -507,7 +507,7 @@ BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
         NamingScreen_CreateSprites(data);
         NamingScreen_InitWindows(data, ovyMan, narc);
         NamingScreen_PrintLastCharacterOfEntryBuf(&data->windows[4], data->entryBuf, data->textCursorPos, data->tmpBuf, data->charBuf, data->unkJapaneseString);
-        sub_02004EC4(0x34, 0, 0); // sound-related
+        Sound_SetSceneAndPlayBGM(0x34, 0, 0);
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, HEAP_ID_NAMING_SCREEN);
         NamingScreen_ToggleGfxPlanes(GF_PLANE_TOGGLE_ON);
         GfGfx_SetMainDisplay(PM_LCD_BOTTOM);

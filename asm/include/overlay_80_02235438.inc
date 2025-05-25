@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_GetCurrentPlayingBGM
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public StopBGM
 .public GF_AssertFail
 .public Save_GameStats_Get

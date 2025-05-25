@@ -8,8 +8,8 @@
 .public TaskManager_GetEnvironment
 .public CountDigits
 .public ItemIsTMOrHM
-.public sub_0205BBD0
-.public sub_0205BC78
+.public GetOakJohtoDexRating
+.public GetOakNationalDexRating
 .public Save_GetPartyLead
 .public Save_GetPartyLeadAlive
 .public Save_PlayerHasAllRegisInParty

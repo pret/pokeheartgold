@@ -4,6 +4,7 @@
 
 #include "constants/flags.h"
 
+#include "application/pokegear/pokegear_main.h"
 #include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
 
@@ -22,8 +23,6 @@
 #include "mail_misc.h"
 #include "naming_screen.h"
 #include "overlay_02.h"
-#include "overlay_100.h"
-#include "overlay_101.h"
 #include "overlay_102.h"
 #include "overlay_103.h"
 #include "overlay_104.h"
@@ -60,6 +59,7 @@
 #include "overlay_trainer_card_signature.h"
 #include "party_menu.h"
 #include "pokedex_util.h"
+#include "pokegear_apps.h"
 #include "save_local_field_data.h"
 #include "save_pokeathlon.h"
 #include "save_special_ribbons.h"
@@ -498,8 +498,8 @@ void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args) {
 }
 
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OVY_MGR_TEMPLATE sOverlayTemplate_Phone = { Phone_Init, Phone_Main, Phone_Exit, FS_OVERLAY_ID(OVY_100) };
-    OVY_MGR_TEMPLATE template = sOverlayTemplate_Phone;
+    static const OVY_MGR_TEMPLATE sOverlayTemplate_Pokegear = { Pokegear_Init, Pokegear_Main, Pokegear_Exit, FS_OVERLAY_ID(OVY_100) };
+    OVY_MGR_TEMPLATE template = sOverlayTemplate_Pokegear;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
@@ -521,7 +521,7 @@ PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
     PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
     sub_02092D8C(fieldSystem, args);
-    args->kind = kind;
+    args->incomingPhoneCall = kind;
     PokegearTownMap_LaunchApp_Impl(fieldSystem, args);
     return args;
 }

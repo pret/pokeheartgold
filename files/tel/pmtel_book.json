@@ -1,0 +1,1504 @@
+{
+    "pmtel_book": [
+        {
+            "id": "PHONE_CONTACT_MOTHER",
+            "type": 1,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_MOM",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_NEW_BARK_PLAYER_HOUSE_1F",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_023",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                1,
+                55,
+                30,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_PROF__ELM",
+            "type": 2,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_POKEMON_PROFESSOR",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_NEW_BARK_ELMS_LAB_1F",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_001",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                60,
+                57,
+                29,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_PROF__OAK",
+            "type": 3,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_POKEMON_PROFESSOR",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_PALLET_TOWN_OAKS_LAB",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_068",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 1,
+            "sortParam": [
+                61,
+                58,
+                1,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ETHAN",
+            "type": 11,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_CHILDHOOD_FRIEND",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_NEW_BARK_RIVAL_HOUSE_2F",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_101",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                18,
+                28,
+                32,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_LYRA",
+            "type": 11,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_CHILDHOOD_FRIEND",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_NEW_BARK_RIVAL_HOUSE_2F",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_102",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                19,
+                52,
+                31,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KURT",
+            "type": 4,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_POKE_BALL_CREATOR",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_AZALEA_KURT_HOUSE",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_083",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 1,
+            "sortParam": [
+                55,
+                47,
+                34,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_DAY_C_MAN",
+            "type": 8,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_DAY_CARE",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_ROUTE_34_DAYCARE",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_094",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                21,
+                22,
+                55,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_DAY_C_LADY",
+            "type": 9,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_DAY_CARE",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_ROUTE_34_DAYCARE",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_097",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                20,
+                21,
+                56,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BUENA",
+            "type": 10,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_RADIO_PERSONALITY",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_GOLDENROD_RADIO_TOWER_2F",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_098",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 1,
+            "sortParam": [
+                63,
+                15,
+                36,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BILL",
+            "type": 7,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_POKE_MANIAC",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_GOLDENROD_BILLS_HOUSE",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_092",
+            "unkC": 2,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 2,
+            "sortParam": [
+                56,
+                9,
+                39,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JOEY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_YOUNGSTER",
+            "trainerId": "TRAINER_YOUNGSTER_JOEY",
+            "mapId": "MAP_ROUTE_30",
+            "gift": "ITEM_HP_UP",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_029",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 1,
+            "sortParam": [
+                75,
+                40,
+                47,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_RALPH",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_FISHERMAN",
+            "trainerId": "TRAINER_FISHERMAN_RALPH",
+            "mapId": "MAP_ROUTE_32",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_046",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                25,
+                60,
+                50,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_LIZ",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PICNICKER",
+            "trainerId": "TRAINER_PICNICKER_LIZ",
+            "mapId": "MAP_ROUTE_32",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_053",
+            "unkC": 7,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 0,
+            "sortParam": [
+                53,
+                50,
+                49,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_WADE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BUG_CATCHER",
+            "trainerId": "TRAINER_BUG_CATCHER_WADE",
+            "mapId": "MAP_ROUTE_31",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_036",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                15,
+                72,
+                48,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ANTHONY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_HIKER",
+            "trainerId": "TRAINER_HIKER_ANTHONY",
+            "mapId": "MAP_ROUTE_33",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_061",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 0,
+            "sortParam": [
+                29,
+                4,
+                51,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BIKE_SHOP",
+            "type": 5,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_RADIO_PERSONALITY",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_GOLDENROD_BIKE_SHOP",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_084",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 1,
+            "sortParam": [
+                62,
+                8,
+                38,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KENJI",
+            "type": 6,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BLACK_BELT",
+            "trainerId": "TRAINER_BLACK_BELT_KENJI",
+            "mapId": "MAP_ROUTE_45",
+            "gift": "ITEM_PP_UP",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_086",
+            "unkC": 3,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 0,
+            "sortParam": [
+                11,
+                44,
+                72,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_WHITNEY",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_WHITNEY",
+            "trainerId": "TRAINER_LEADER_WHITNEY",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_175",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                50,
+                74,
+                37,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_FALKNER",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_FALKNER",
+            "trainerId": "TRAINER_LEADER_FALKNER_FALKNER",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_103",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                42,
+                29,
+                33,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JACK",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
+            "trainerId": "TRAINER_SCHOOL_KID_M_JACK",
+            "mapId": "MAP_NATIONAL_PARK",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_104",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                69,
+                36,
+                61,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_CHAD",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
+            "trainerId": "TRAINER_SCHOOL_KID_M_CHAD",
+            "mapId": "MAP_ROUTE_38",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_112",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                68,
+                17,
+                64,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BRENT",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_POKE_MANIAC",
+            "trainerId": "TRAINER_POKE_MANIAC_BRENT",
+            "mapId": "MAP_ROUTE_43",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_120",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                57,
+                13,
+                69,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_TODD",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_CAMPER",
+            "trainerId": "TRAINER_CAMPER_TODD",
+            "mapId": "MAP_ROUTE_34",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_128",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                17,
+                68,
+                54,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ARNIE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BUG_CATCHER",
+            "trainerId": "TRAINER_BUG_CATCHER_ARNIE",
+            "mapId": "MAP_ROUTE_35",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_134",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                12,
+                5,
+                59,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BAOBA",
+            "type": 13,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PHONE_SAFARI_WARDEN",
+            "trainerId": "TRAINER_NONE",
+            "mapId": "MAP_SAFARI_ZONE_ENTRANCE_INTERIOR",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_140",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 1,
+            "sortParam": [
+                64,
+                6,
+                75,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_IRWIN",
+            "type": 14,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_JUGGLER",
+            "trainerId": "TRAINER_JUGGLER_IRWIN",
+            "mapId": "MAP_ROUTE_35",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_155",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 0,
+            "sortParam": [
+                32,
+                35,
+                58,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JANINE",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_JANINE",
+            "trainerId": "TRAINER_LEADER_JANINE_JANINE",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_176",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                43,
+                38,
+                7,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_CLAIR",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_CLAIR",
+            "trainerId": "TRAINER_LEADER_CLAIR_CLAIR",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_177",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                40,
+                19,
+                46,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ERIKA",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_ERIKA",
+            "trainerId": "TRAINER_LEADER_ERIKA_ERIKA",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_178",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                41,
+                25,
+                6,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_MISTY",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_MISTY",
+            "trainerId": "TRAINER_LEADER_MISTY_MISTY",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_179",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                46,
+                53,
+                4,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BLAINE",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_BLAINE",
+            "trainerId": "TRAINER_LEADER_BLAINE_BLAINE",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_180",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                35,
+                11,
+                24,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BLUE",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_BLUE",
+            "trainerId": "TRAINER_LEADER_BLUE_BLUE",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_181",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                36,
+                12,
+                2,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_CHUCK",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_CHUCK",
+            "trainerId": "TRAINER_LEADER_CHUCK_CHUCK",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_182",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                39,
+                18,
+                44,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BROCK",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_BROCK",
+            "trainerId": "TRAINER_LEADER_BROCK_BROCK",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_183",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                37,
+                14,
+                3,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BUGSY",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_BUGSY",
+            "trainerId": "TRAINER_LEADER_BUGSY_BUGSY",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_184",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                38,
+                16,
+                35,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_SABRINA",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_SABRINA",
+            "trainerId": "TRAINER_LEADER_SABRINA_SABRINA",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_185",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                49,
+                64,
+                8,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_LT__SURGE",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_LT_SURGE",
+            "trainerId": "TRAINER_LEADER_LT_SURGE_LT__SURGE",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_186",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                45,
+                51,
+                5,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_MORTY",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_MORTY",
+            "trainerId": "TRAINER_LEADER_MORTY_MORTY",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_187",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                47,
+                54,
+                40,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JASMINE",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_JASMINE",
+            "trainerId": "TRAINER_LEADER_JASMINE_JASMINE",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_188",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                44,
+                39,
+                41,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_PRYCE",
+            "type": 12,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LEADER_PRYCE",
+            "trainerId": "TRAINER_LEADER_PRYCE_PRYCE",
+            "mapId": "MAP_SAFFRON_FIGHTING_DOJO",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_189",
+            "unkC": 255,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                48,
+                59,
+                45,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_HUEY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_SAILOR",
+            "trainerId": "TRAINER_SAILOR_HUEY",
+            "mapId": "MAP_OLIVINE_LIGHTHOUSE_2F",
+            "gift": "ITEM_PROTEIN",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_190",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 1,
+            "sortParam": [
+                65,
+                33,
+                43,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_GAVEN",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_ACE_TRAINER_M",
+            "trainerId": "TRAINER_ACE_TRAINER_M_GAVEN",
+            "mapId": "MAP_ROUTE_26",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_196",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 1,
+            "sortParam": [
+                2,
+                30,
+                25,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JAMIE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_ACE_TRAINER_F",
+            "trainerId": "TRAINER_ACE_TRAINER_F_JAMIE",
+            "mapId": "MAP_ROUTE_26",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_203",
+            "unkC": 5,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 1,
+            "sortParam": [
+                3,
+                37,
+                26,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_REENA",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_ACE_TRAINER_F",
+            "trainerId": "TRAINER_ACE_TRAINER_F_REENA",
+            "mapId": "MAP_ROUTE_27",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_210",
+            "unkC": 1,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 1,
+            "sortParam": [
+                4,
+                61,
+                28,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_VANCE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BIRD_KEEPER_GS",
+            "trainerId": "TRAINER_BIRD_KEEPER_GS_VANCE",
+            "mapId": "MAP_ROUTE_44",
+            "gift": "ITEM_CARBOS",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_217",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 1,
+            "sortParam": [
+                10,
+                71,
+                71,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_PARRY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_HIKER",
+            "trainerId": "TRAINER_HIKER_PARRY",
+            "mapId": "MAP_ROUTE_45",
+            "gift": "ITEM_IRON",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_223",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 1,
+            "sortParam": [
+                31,
+                56,
+                73,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ERIN",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PICNICKER",
+            "trainerId": "TRAINER_PICNICKER_ERIN",
+            "mapId": "MAP_ROUTE_46",
+            "gift": "ITEM_CALCIUM",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_229",
+            "unkC": 5,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 1,
+            "sortParam": [
+                51,
+                26,
+                74,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BEVERLY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_POKEFAN",
+            "trainerId": "TRAINER_POKEFAN_BEVERLY",
+            "mapId": "MAP_NATIONAL_PARK",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_236",
+            "unkC": 5,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 2,
+            "sortParam": [
+                58,
+                7,
+                62,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JOSE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BIRD_KEEPER_GS",
+            "trainerId": "TRAINER_BIRD_KEEPER_GS_JOSE_2",
+            "mapId": "MAP_ROUTE_27",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_242",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                8,
+                41,
+                27,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_GINA",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PICNICKER",
+            "trainerId": "TRAINER_PICNICKER_GINA",
+            "mapId": "MAP_ROUTE_34",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_251",
+            "unkC": 1,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                52,
+                31,
+                53,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ALAN",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
+            "trainerId": "TRAINER_SCHOOL_KID_M_ALAN",
+            "mapId": "MAP_ROUTE_36",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_260",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                66,
+                2,
+                60,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_DANA",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LASS",
+            "trainerId": "TRAINER_LASS_DANA",
+            "mapId": "MAP_ROUTE_38",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_268",
+            "unkC": 7,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                33,
+                20,
+                65,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_DEREK",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_POKEFAN_M",
+            "trainerId": "TRAINER_POKEFAN_M_DEREK",
+            "mapId": "MAP_ROUTE_39",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_276",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_MAX",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MAX",
+            "unkF": 2,
+            "sortParam": [
+                59,
+                23,
+                66,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_TULLY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_FISHERMAN",
+            "trainerId": "TRAINER_FISHERMAN_TULLY",
+            "mapId": "MAP_ROUTE_42",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_283",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                26,
+                70,
+                67,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_TIFFANY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_PICNICKER",
+            "trainerId": "TRAINER_PICNICKER_TIFFANY",
+            "mapId": "MAP_ROUTE_43",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_291",
+            "unkC": 7,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                54,
+                66,
+                68,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_WILTON",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_FISHERMAN",
+            "trainerId": "TRAINER_FISHERMAN_WILTON",
+            "mapId": "MAP_ROUTE_44",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_300",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                27,
+                75,
+                70,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KRISE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_LASS",
+            "trainerId": "TRAINER_LASS_KRISE",
+            "mapId": "MAP_NATIONAL_PARK",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_308",
+            "unkC": 1,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 1,
+            "sortParam": [
+                34,
+                46,
+                63,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_IAN",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_YOUNGSTER",
+            "trainerId": "TRAINER_YOUNGSTER_IAN",
+            "mapId": "MAP_ROUTE_34",
+            "gift": "ITEM_CHERI_BERRY",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_315",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 0,
+            "sortParam": [
+                74,
+                34,
+                52,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_WALT",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_FIREBREATHER",
+            "trainerId": "TRAINER_FIREBREATHER_WALT",
+            "mapId": "MAP_ROUTE_35",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_322",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                22,
+                73,
+                57,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ALFRED",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_GENTLEMAN",
+            "trainerId": "TRAINER_GENTLEMAN_ALFRED",
+            "mapId": "MAP_OLIVINE_LIGHTHOUSE_2F",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_330",
+            "unkC": 6,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                28,
+                3,
+                42,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_DOUG",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BUG_CATCHER",
+            "trainerId": "TRAINER_BUG_CATCHER_DOUG",
+            "mapId": "MAP_ROUTE_2",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_337",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 1,
+            "sortParam": [
+                13,
+                24,
+                10,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ROB",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BUG_CATCHER",
+            "trainerId": "TRAINER_BUG_CATCHER_ROB",
+            "mapId": "MAP_ROUTE_2",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_346",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 1,
+            "sortParam": [
+                14,
+                63,
+                9,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KYLE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_FISHERMAN",
+            "trainerId": "TRAINER_FISHERMAN_KYLE",
+            "mapId": "MAP_ROUTE_12",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_355",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                23,
+                48,
+                11,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KYLER",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_FISHERMAN",
+            "trainerId": "TRAINER_FISHERMAN_KYLER",
+            "mapId": "MAP_ROUTE_12",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_362",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                24,
+                49,
+                12,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_TIM_AND_SUE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_YOUNG_COUPLE",
+            "trainerId": "TRAINER_YOUNG_COUPLE_TIM_AND_SUE",
+            "mapId": "MAP_ROUTE_13",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_369",
+            "unkC": 5,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                73,
+                67,
+                13,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KENNY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_HIKER",
+            "trainerId": "TRAINER_HIKER_KENNY",
+            "mapId": "MAP_ROUTE_13",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_376",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 2,
+            "sortParam": [
+                30,
+                45,
+                15,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_TANNER",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_CAMPER",
+            "trainerId": "TRAINER_CAMPER_TANNER",
+            "mapId": "MAP_ROUTE_13",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_383",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                16,
+                65,
+                14,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_JOSH",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BIRD_KEEPER_GS",
+            "trainerId": "TRAINER_BIRD_KEEPER_GS_JOSH",
+            "mapId": "MAP_ROUTE_14",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_392",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_TUESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                9,
+                42,
+                16,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_TORIN",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
+            "trainerId": "TRAINER_SCHOOL_KID_M_TORIN",
+            "mapId": "MAP_ROUTE_14",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_401",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_WEDNESDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 1,
+            "sortParam": [
+                70,
+                69,
+                17,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_HILLARY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_TEACHER",
+            "trainerId": "TRAINER_TEACHER_HILLARY",
+            "mapId": "MAP_ROUTE_15",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_408",
+            "unkC": 7,
+            "rematchWeekday": "RTC_WEEK_THURSDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 0,
+            "sortParam": [
+                71,
+                32,
+                20,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_BILLY",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_SCHOOL_KID_M",
+            "trainerId": "TRAINER_SCHOOL_KID_M_BILLY",
+            "mapId": "MAP_ROUTE_15",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_416",
+            "unkC": 0,
+            "rematchWeekday": "RTC_WEEK_FRIDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 0,
+            "sortParam": [
+                67,
+                10,
+                19,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_KAY_AND_TIA",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_TWINS",
+            "trainerId": "TRAINER_TWINS_KAY_AND_TIA",
+            "mapId": "MAP_ROUTE_15",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_421",
+            "unkC": 7,
+            "rematchWeekday": "RTC_WEEK_SATURDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                72,
+                43,
+                18,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_REESE",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BIKER",
+            "trainerId": "TRAINER_BIKER_REESE",
+            "mapId": "MAP_ROUTE_17",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_430",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_NITE",
+            "unkF": 2,
+            "sortParam": [
+                7,
+                62,
+                23,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_AIDEN",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BIKER",
+            "trainerId": "TRAINER_BIKER_AIDEN",
+            "mapId": "MAP_ROUTE_17",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_439",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_MONDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_MORN",
+            "unkF": 2,
+            "sortParam": [
+                5,
+                1,
+                22,
+                0
+            ]
+        },
+        {
+            "id": "PHONE_CONTACT_ERNEST",
+            "type": 0,
+            "unk2": 0,
+            "trainerClass": "TRAINERCLASS_BIKER",
+            "trainerId": "TRAINER_BIKER_ERNEST",
+            "mapId": "MAP_ROUTE_17",
+            "gift": "ITEM_NONE",
+            "phoneScriptIfLocal": "PHONE_SCRIPT_448",
+            "unkC": 4,
+            "rematchWeekday": "RTC_WEEK_SUNDAY",
+            "rematchTimeOfDay": "TIMEOFDAY_WILD_DAY",
+            "unkF": 1,
+            "sortParam": [
+                6,
+                27,
+                21,
+                0
+            ]
+        }
+    ]
+}

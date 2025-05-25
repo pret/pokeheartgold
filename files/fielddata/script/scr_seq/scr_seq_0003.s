@@ -136,7 +136,7 @@ _01C9:
 	compare VAR_SPECIAL_RESULT, 4
 	call_if_lt _020C
 	call _0216
-	goto_if_unset FLAG_UNK_065, _034D
+	goto_if_unset FLAG_WAS_TOLD_ABOUT_POKERUS, _034D
 	goto _023A
 
 _020C:
@@ -242,7 +242,7 @@ _034D:
 	goto _023A
 
 _0364:
-	setflag FLAG_UNK_065
+	setflag FLAG_WAS_TOLD_ABOUT_POKERUS
 	scrcmd_148 1, 0
 	apply_movement obj_player, _0468
 	wait_movement

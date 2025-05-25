@@ -690,7 +690,7 @@ _021E5DFE:
 	str r0, [r6]
 	ldr r1, _021E5E2C ; =0x00000483
 	mov r0, #0xf
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	add r0, r6, #0
 	bl ov85_021E72E8
 	mov r0, #1
@@ -6553,7 +6553,7 @@ _021E890A:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r6, #0x30]
 	bl sub_02096CE0
 	bl sub_0203897C

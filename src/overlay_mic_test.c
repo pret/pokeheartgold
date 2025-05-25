@@ -247,7 +247,7 @@ static const UnkStruct_021E6728 ov62_021E6728[] = {
      },
 };
 
-static const UnkTemplate_0200D748 ov62_021E67C8[5] = {
+static const ManagedSpriteTemplate ov62_021E67C8[5] = {
     {
      .x = 0x40,
      .y = 0x60,

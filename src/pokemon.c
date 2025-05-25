@@ -2674,7 +2674,7 @@ u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing
     return ret;
 }
 
-static const struct UnkTemplate_0200D748 _020FF588 = {
+static const struct ManagedSpriteTemplate _020FF588 = {
     0, 0, 0, 0, 0, 0, NNS_G2D_VRAM_TYPE_2DMAIN, { 0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u },
            2, 1
 };
@@ -2684,7 +2684,7 @@ static const int _020FF50C[] = {
 };
 
 struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId) {
-    struct UnkTemplate_0200D748 spriteResourcesTemplate;
+    struct ManagedSpriteTemplate spriteResourcesTemplate;
     struct ManagedSprite *object;
     NARC *narc;
     struct UnkStruct_02070D3C fileIDs;

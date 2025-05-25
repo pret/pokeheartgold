@@ -117,7 +117,7 @@ _011A:
 	goto _0190
 
 _0189:
-	setflag FLAG_UNK_AA2
+	setflag FLAG_DAILY_KURT_MAKING_BALLS
 	npc_msg msg_0571_T23R0501_00005
 _0190:
 	wait_button_or_walk_away
@@ -128,7 +128,7 @@ _0190:
 	end
 
 _01A5:
-	goto_if_set FLAG_UNK_AA2, _0204
+	goto_if_set FLAG_DAILY_KURT_MAKING_BALLS, _0204
 	buffer_players_name 0
 	npc_msg msg_0571_T23R0501_00008
 	scrcmd_737 VAR_SPECIAL_x8004

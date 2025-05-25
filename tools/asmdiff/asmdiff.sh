@@ -18,6 +18,7 @@ DEFAULT_BASEROM=baserom.nds
 DEFAULT_ARM9BUILDDIR=build/heartgold.us
 DEFAULT_ARM7BUILDDIR=sub/build
 DEFAULT_FSDIR=files
+difftype='-u'
 
 # getword FILE OFFSET
 getword() {
@@ -81,6 +82,7 @@ usage () {
     echo "  -t            Force THUMB instructions (default: ARM)"
     echo "  -h            Show this message and exit"
     echo "  -c            Clear caches and exit"
+    echo "  -y            Side-by-side diff"
 }
 
 mktgt=all
@@ -136,6 +138,10 @@ while [[ $# -gt 0 ]]; do
   -S|--soulsilver)
     baserom="${baserom:-baserom.soulsilver.nds}"
     builddir="${builddir:-build/soulsilver.us}"
+    shift
+    ;;
+  -y)
+    difftype='-y -W160'
     shift
     ;;
   -*)
@@ -272,4 +278,4 @@ esac
 do-objdump () {
   arm-none-eabi-objdump -Drz -bbinary -m$proc $thumb --adjust-vma="$vma" --start-address="$start" --stop-address=$((start+size)) "$1"
 }
-cmp -s "$basefile" "$buildfile" || diff -u <(do-objdump "$basefile") <(do-objdump "$buildfile")
+cmp -s "$basefile" "$buildfile" || diff $difftype <(do-objdump "$basefile") <(do-objdump "$buildfile")

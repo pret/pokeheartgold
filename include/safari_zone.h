@@ -54,7 +54,7 @@ typedef struct SafariZone {
     SAFARIZONE_AREASET area_sets[SAFARI_ZONE_MAX_AREA_SETS];
     SAFARIZONE_LINKLEADER link_leader;
     u8 unk5F8;
-    u8 unk5F9_0 : 6;
+    u8 objectUnlockLevel : 6;
     u8 unk5F9_6 : 2;
     u16 unk5FA;
 } SafariZone;
@@ -71,9 +71,9 @@ void SafariZone_SetAreaSet(SafariZone *safari_zone, s32 area_set_no, SAFARIZONE_
 void sub_0202F6A0(SafariZone *safari_zone, u8 a1);
 u8 sub_0202F6AC(SafariZone *safari_zone);
 void sub_0202F6B8(SAFARIZONE_AREASET *area_set, s32 a1);
-u8 sub_0202F720(SafariZone *safari_zone);
-u8 sub_0202F730(SafariZone *safari_zone, s32 a1);
-void sub_0202F754(SafariZone *safari_zone, u8 a1);
+u8 SafariZone_GetObjectUnlockLevel(SafariZone *safari_zone);
+u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 a1);
+void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 a1);
 void sub_0202F784(SafariZone *safari_zone, IGT *igt);
 u32 sub_0202F798(SafariZone *safari_zone, IGT *igt, s32 a2);
 void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile *profile, HeapID heapId);

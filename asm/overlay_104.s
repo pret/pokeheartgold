@@ -195,7 +195,7 @@ _021E5A64:
 	ldr r1, _021E5B08 ; =0x00000447
 	mov r0, #0x44
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 _021E5A96:
 	mov r3, #1
 	mov r2, #0

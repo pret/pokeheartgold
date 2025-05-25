@@ -51,7 +51,7 @@ _007D:
 	compare VAR_SPECIAL_RESULT, 6
 	goto_if_eq _0106
 	give_togepi_egg
-	setflag FLAG_UNK_070
+	setflag FLAG_GOT_EGG_FROM_ELMS_ASSISTANT
 	buffer_players_name 0
 	npc_msg msg_0557_T22FS0101_00004
 	play_fanfare SEQ_ME_TAMAGO_GET

@@ -4,7 +4,7 @@
 .public LoadFontPal1
 .public FontID_String_GetCenterAlignmentX
 .public BlendPalette
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_GetArgs

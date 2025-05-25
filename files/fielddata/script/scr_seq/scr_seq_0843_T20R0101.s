@@ -286,7 +286,7 @@ scr_seq_T20R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0F2, _03BA
+	goto_if_set FLAG_GOT_SS_TICKET_FROM_ELM, _03BA
 	goto_if_set FLAG_GAME_CLEAR, _0526
 _03BA:
 	get_party_count VAR_SPECIAL_RESULT
@@ -301,7 +301,7 @@ _03BA:
 	goto_if_eq _0CDC
 _03F5:
 	goto_if_set FLAG_UNK_072, _04A1
-	goto_if_set FLAG_UNK_983, _055F
+	goto_if_set FLAG_SYS_HATCHED_TOGEPI_EGG, _055F
 	compare VAR_SCENE_ELMS_LAB, 9
 	goto_if_ge _04A1
 	compare VAR_SCENE_ELMS_LAB, 0
@@ -352,7 +352,7 @@ _04A1:
 	check_badge BADGE_EARTH, VAR_TEMP_x4003
 	compare VAR_TEMP_x4003, 1
 	goto_if_eq _0550
-	goto_if_set FLAG_UNK_0F2, _0541
+	goto_if_set FLAG_GOT_SS_TICKET_FROM_ELM, _0541
 	goto_if_set FLAG_UNK_108, _051B
 	goto_if_set FLAG_UNK_109, _051B
 	check_badge BADGE_RISING, VAR_TEMP_x4002
@@ -391,9 +391,9 @@ _051B:
 _0526:
 	buffer_players_name 0
 	gender_msgbox msg_0543_T20R0101_00071, msg_0543_T20R0101_00072
-	setvar VAR_SPECIAL_x8004, 456
+	setvar VAR_SPECIAL_x8004, ITEM_S_S__TICKET
 	setvar VAR_SPECIAL_x8005, 1
-	setflag FLAG_UNK_0F2
+	setflag FLAG_GOT_SS_TICKET_FROM_ELM
 	callstd std_give_item_verbose
 _0541:
 	buffer_players_name 0
@@ -729,7 +729,7 @@ _0904:
 	wait_se SEQ_SE_DP_KAIDAN2
 	setflag FLAG_HIDE_ELMS_LAB_OFFICER
 	setflag FLAG_HIDE_ELMS_LAB_FRIEND
-	setflag FLAG_UNK_079
+	setflag FLAG_GAVE_RIVAL_NAME_TO_OFFICER
 	apply_movement obj_player, _0A74
 	wait_movement
 	apply_movement obj_T20R0101_doctor, _0B2C

@@ -230,7 +230,7 @@ static BOOL Task_02050960(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         sub_02004AD8(0);
-        sub_02004EC4(5, encounter->bgm, 1);
+        Sound_SetSceneAndPlayBGM(5, encounter->bgm, 1);
         CallTask_StartBattle(taskManager, encounter->setup);
         (*state)++;
         break;

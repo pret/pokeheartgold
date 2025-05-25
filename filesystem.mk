@@ -518,6 +518,7 @@ include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
 include files/data/photo_data.mk
+include files/tel/pmtel_book.mk
 include files/graphic/camera_viewfinder.mk
 include files/application/guinness.mk
 include files/demo/intro/intro.mk

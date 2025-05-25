@@ -6475,7 +6475,7 @@ ov18_021E8C30: ; 0x021E8C30
 	mov r1, #0
 	mov r0, #0x36
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, _021E8D30 ; =ov18_021E5C40
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB

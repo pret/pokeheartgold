@@ -187,7 +187,7 @@ BOOL ScrCmd_ChatotSaveRecording(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_093(ScriptContext *ctx) {
-    sub_02004EC4(0x3f, 0, 0);
+    Sound_SetSceneAndPlayBGM(0x3f, 0, 0);
     return TRUE;
 }
 

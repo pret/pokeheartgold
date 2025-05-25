@@ -32,7 +32,7 @@ _0019:
 	goto _00DA
 
 _005E:
-	goto_if_set FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION, _00AF
+	goto_if_set FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION, _00AF
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
 	menu_item_add 18, 255, 0
@@ -77,7 +77,7 @@ _00EB:
 	check_johto_dex_complete VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _012F
-	setflag FLAG_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
+	setflag FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION
 	goto _0132
 
 _012F:

@@ -147,7 +147,7 @@ static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
         break;
     case TITLESCREEN_MAIN_START_MUSIC:
         sub_02004AD8(0);
-        sub_02004EC4(1, SEQ_GS_POKEMON_THEME, 1);
+        Sound_SetSceneAndPlayBGM(1, SEQ_GS_POKEMON_THEME, 1);
         *state = (int)TITLESCREEN_MAIN_PLAY;
         break;
     case TITLESCREEN_MAIN_PLAY:

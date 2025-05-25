@@ -20,13 +20,13 @@
 #include "save_vars_flags.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "sys_flags.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "sprite_system.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
@@ -563,7 +563,7 @@ static const u16 sResdatInfo[7] = {
     NARC_resdat_resdat_00000074_bin,
 };
 
-static const UnkStruct_0200D2B4 sSpriteTemplates[3] = {
+static const UnmanagedSpriteTemplate sSpriteTemplates[3] = {
     // Drop cursor
     { ALPH_SPRITE_RES_CURSORS,     208, 168, 0, 0, 3, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
     // Origin cursor
@@ -587,7 +587,7 @@ BOOL AlphPuzzle_Init(OVY_MANAGER *man, int *state) {
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleData));
         data->heapId = HEAP_ID_ALPH_PUZZLE;
         data->args = OverlayManager_GetArgs(man);
-        sub_02004EC4(74, 0, 0);
+        Sound_SetSceneAndPlayBGM(74, 0, 0);
         AlphPuzzle_InitTextOptionsAndPuzzleIndex(data);
         (*state)++;
         break;
