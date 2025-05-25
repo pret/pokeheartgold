@@ -26,7 +26,7 @@ static const RadioFuncs ov101_021F8A04[] = {
     { RadioShow_PokemonMusic_Setup,        RadioShow_PokemonMusic_Print,        RadioShow_PokemonMusic_Teardown        },
     { RadioShow_PokemonTalk_Setup,         RadioShow_PokemonTalk_Print,         RadioShow_PokemonTalk_Teardown         },
     { RadioShow_PokemonSearchParty_Setup,  RadioShow_PokemonSearchParty_Print,  RadioShow_PokemonSearchParty_Teardown  },
-    { RadioShow_SerialRadioDrama_Setup,    RadioShow_SerialRadioDrama_Print,    RadioShow_SerialRadioDrama_Teardown    },
+    { RadioShow_Variety_Setup,             RadioShow_Variety_Print,             RadioShow_Variety_Teardown             },
     { RadioShow_BuenasPassword_Setup,      RadioShow_BuenasPassword_Print,      RadioShow_BuenasPassword_Teardown      },
     { RadioShow_TrainerProfiles_Setup,     RadioShow_TrainerProfiles_Print,     RadioShow_TrainerProfiles_Teardown     },
     { RadioShow_ThatTownThesePeople_Setup, RadioShow_ThatTownThesePeople_Print, RadioShow_ThatTownThesePeople_Teardown },
@@ -131,7 +131,7 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
     radioShow->unk_66_3 = 0;
     radioShow->printWithJingleState = 0;
     if (radioShow->curStation != RADIO_STATION_COMMERCIALS && radioShow->lastStation != radioShow->curStation) {
-        radioShow->unk_54 = 0;
+        radioShow->lastVarietyShowScriptID = 0;
     }
     FillWindowPixelBuffer(radioShow->unk_0C, (radioShow->unk_5C << 4) | radioShow->unk_5C);
     CopyWindowToVram(radioShow->unk_0C);
