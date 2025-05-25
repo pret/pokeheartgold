@@ -14,7 +14,7 @@ typedef struct RadioShow {
     u32 unk_18;            // 0x18
     u32 unk_1C;            // 0x1C
     MsgData *unk_20;       // 0x20
-    u8 filler_24[4];       // 0x24
+    MsgData *unk_24;       // 0x24
     RTCDate unk_28;        // 0x28
     RTCTime unk_38;        // 0x38
     MessageFormat *unk_44; // 0x44
@@ -98,6 +98,11 @@ void ov101_021F5970(RadioShow *radioShow, int a1, int a2);
 void ov101_021F5A50(RadioShow *radioShow);
 void ov101_021F5A9C(RadioShow *radioShow, int a1);
 void ov101_021F5B94(RadioShow *radioShow);
+void RadioPrintInit(RadioShow *radioShow, int msgId, int a2);
+void RadioPrintInitEz(RadioShow *radioShow, int msgId);
+void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId);
+BOOL Radio_RunTextPrinter(RadioShow *radioShow);
+BOOL Radio_RunTextPrinter_WaitJingle(RadioShow *radioShow);
 
 void RadioShow_PokemonMusic_Setup(RadioShow *radioShow);
 int RadioShow_PokemonMusic_Print(RadioShow *radioShow);

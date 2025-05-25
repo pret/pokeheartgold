@@ -1,10 +1,12 @@
 #include "global.h"
 
 #include "constants/radio_station.h"
+#include "constants/sndseq.h"
 
 #include "application/pokegear/radio/radio_internal.h"
 #include "msgdata/msg.naix"
 
+#include "sound_radio.h"
 #include "text.h"
 
 typedef struct RadioFuncs {
@@ -18,6 +20,8 @@ BOOL ov101_021F5AB8(RadioShow *radioShow);
 BOOL ov101_021F5B24(RadioShow *radioShow);
 BOOL ov101_021F5B68(RadioShow *radioShow);
 void ov101_021F5C44(RadioShow *radioShow);
+void PrintRadioLine(RadioShow *radioShow, String *msg, int y);
+BOOL RadioPrintAdvance(RadioShow *radioShow);
 
 static const RadioFuncs ov101_021F8A04[] = {
     { RadioShow_PokemonMusic_Setup,        RadioShow_PokemonMusic_Print,        RadioShow_PokemonMusic_Teardown        },
@@ -226,4 +230,118 @@ void ov101_021F5C44(RadioShow *radioShow) {
     AddTextPrinterParameterizedWithColor(radioShow->unk_14, 0, radioShow->unk_50, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(radioShow->unk_10);
     ScheduleWindowCopyToVram(radioShow->unk_14);
+}
+
+void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
+    if (radioShow->unk_66_1 == 1) {
+        String_RadioAddStatic(msg, 70);
+    }
+    AddTextPrinterParameterizedWithColor(radioShow->unk_0C, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->unk_18, NULL);
+}
+
+BOOL RadioPrintAdvance(RadioShow *radioShow) {
+    u8 r2;
+    if (!radioShow->unk_66_0) {
+        radioShow->unk_66_0 = 1;
+    }
+    r2 = radioShow->unk_62;
+    ++radioShow->unk_62;
+    String_GetLineN(radioShow->unk_48, radioShow->unk_6C, r2);
+    PrintRadioLine(radioShow, radioShow->unk_48, 1);
+    CopyWindowToVram(radioShow->unk_0C);
+    return radioShow->unk_62 >= radioShow->unk_63;
+}
+
+void RadioPrintInit(RadioShow *radioShow, int msgId, int a2) {
+    u8 r2;
+    radioShow->unk_65 = a2;
+    ReadMsgDataIntoString(radioShow->unk_24, msgId, radioShow->unk_70);
+    StringExpandPlaceholders(radioShow->unk_44, radioShow->unk_6C, radioShow->unk_70);
+    radioShow->unk_62 = 0;
+    radioShow->unk_63 = String_CountLines(radioShow->unk_6C);
+    radioShow->unk_64 = 0;
+    r2 = radioShow->unk_62;
+    ++radioShow->unk_62;
+    String_GetLineN(radioShow->unk_48, radioShow->unk_6C, r2);
+    PrintRadioLine(radioShow, radioShow->unk_48, radioShow->unk_66_0);
+    CopyWindowToVram(radioShow->unk_0C);
+    if (radioShow->unk_62 >= radioShow->unk_63) {
+        radioShow->unk_64 = 5;
+    } else if (!radioShow->unk_66_0) {
+        radioShow->unk_64 = 1;
+    } else {
+        radioShow->unk_64 = 3;
+    }
+}
+
+void RadioPrintInitEz(RadioShow *radioShow, int msgId) {
+    RadioPrintInit(radioShow, msgId, 0);
+}
+
+void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId) {
+    RadioPrintInitEz(radioShow, msgId);
+    radioShow->unk_65 = 1;
+    radioShow->unk_66_3 = 1;
+    SndRadio_StopSeq(0);
+    SndRadio_StartSeq(SEQ_GS_RADIO_JINGLE);
+}
+
+BOOL Radio_RunTextPrinter(RadioShow *radioShow) {
+    switch (radioShow->unk_64) {
+    case 0:
+        break;
+    case 2:
+        if (RadioPrintAdvance(radioShow)) {
+            if (radioShow->unk_65) {
+                radioShow->unk_64 = 6;
+            } else {
+                radioShow->unk_64 = 4;
+            }
+        } else {
+            radioShow->unk_64 = 3;
+        }
+        break;
+    case 3:
+        if (ov101_021F5AB8(radioShow)) {
+            radioShow->unk_64 = 2;
+        }
+        break;
+    case 1:
+        if (ov101_021F5B68(radioShow)) {
+            radioShow->unk_64 = 2;
+        }
+        break;
+    case 4:
+        if (ov101_021F5AB8(radioShow)) {
+            radioShow->unk_64 = 6;
+        }
+        break;
+    case 5:
+        if (!ov101_021F5B68(radioShow)) {
+            break;
+        }
+        // fallthrough
+    case 6:
+        radioShow->unk_64 = 0;
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL Radio_RunTextPrinter_WaitJingle(RadioShow *radioShow) {
+    switch (radioShow->unk_5F) {
+    case 0:
+        if (Radio_RunTextPrinter(radioShow)) {
+            ++radioShow->unk_5F;
+        }
+        break;
+    case 1:
+        if (!SndRadio_CountPlayingSeq()) {
+            radioShow->unk_5F = 0;
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }
