@@ -9,19 +9,29 @@
 #include "sound_radio.h"
 #include "text.h"
 
+typedef enum RadioPrintState {
+    RADIO_PRINT_STATE_NULL,
+    RADIO_PRINT_STATE_WAIT_FIRST_LINE,
+    RADIO_PRINT_STATE_PRINT_NEXT_LINE,
+    RADIO_PRINT_STATE_WAIT_SCROLL,
+    RADIO_PRINT_STATE_WAIT_SCROLL_EXIT,
+    RADIO_PRINT_STATE_WAIT_EXIT,
+    RADIO_PRINT_STATE_EXIT,
+} RadioPrintState;
+
 typedef struct RadioFuncs {
     BOOL (*setup)(RadioShow *);
     BOOL (*print)(RadioShow *);
     BOOL (*teardown)(RadioShow *);
 } RadioFuncs;
 
-u8 ov101_021F58E0(RadioShow *radioShow, int a1);
-BOOL ov101_021F5B24(RadioShow *radioShow);
+u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station);
+BOOL RadioShow_ScrollTextOffWindow(RadioShow *radioShow);
 void RadioShow_PrintTitleAndHost(RadioShow *radioShow);
 void PrintRadioLine(RadioShow *radioShow, String *msg, int y);
 BOOL RadioPrintAdvance(RadioShow *radioShow);
 
-static const RadioFuncs ov101_021F8A04[] = {
+static const RadioFuncs sRadioShowFuncs[] = {
     { RadioShow_PokemonMusic_Setup,        RadioShow_PokemonMusic_Print,        RadioShow_PokemonMusic_Teardown        },
     { RadioShow_PokemonTalk_Setup,         RadioShow_PokemonTalk_Print,         RadioShow_PokemonTalk_Teardown         },
     { RadioShow_PokemonSearchParty_Setup,  RadioShow_PokemonSearchParty_Print,  RadioShow_PokemonSearchParty_Teardown  },
@@ -36,7 +46,7 @@ static const RadioFuncs ov101_021F8A04[] = {
     { RadioShow_Commercials_Setup,         RadioShow_Commercials_Print,         RadioShow_Commercials_Teardown         },
 };
 
-RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(saveData);
     PlayerSaveData *playerData = LocalFieldData_GetPlayer(localFieldData);
     u16 *pMusicID = LocalFieldData_GetMusicIdAddr(localFieldData);
@@ -51,8 +61,8 @@ RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inK
     ret->showHostWindow = win3;
     ret->textColor = textColor;
     ret->fgColor = ret->textColor >> 16;
-    ret->bgColor = ret->textColor >> 8;
-    ret->shadowColor = ret->textColor;
+    ret->shadowColor = ret->textColor >> 8;
+    ret->bgColor = ret->textColor;
     ret->heapID = heapId;
     ret->msgData_269 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0269_bin, ret->heapID);
     ret->msgFormat = MessageFormat_New_Custom(8, 51, ret->heapID);
@@ -67,7 +77,7 @@ RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inK
     return ret;
 }
 
-void ov101_021F58A0(RadioShow *radioShow) {
+void RadioShow_Delete(RadioShow *radioShow) {
     String_Delete(radioShow->msgbufRaw);
     String_Delete(radioShow->msgbufFormatted);
     String_Delete(radioShow->showHost);
@@ -79,24 +89,29 @@ void ov101_021F58A0(RadioShow *radioShow) {
     FreeToHeap(radioShow);
 }
 
-u8 ov101_021F58E0(RadioShow *radioShow, int a1) {
-    if (a1 >= 8) {
-        a1 = 0;
+u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station) {
+    if (station >= 8) {
+        station = 0;
     }
-    if (radioShow->unk_66_4) {
-        radioShow->unk_66_4 = 0;
+    if (radioShow->triggerCommercials) {
+        radioShow->triggerCommercials = 0;
         return RADIO_STATION_COMMERCIALS;
     }
 
     GF_RTC_CopyDateTime(&radioShow->date, &radioShow->time);
-    switch (a1) {
+    switch (station) {
     case 0:
         return RADIO_STATION_POKEMON_MUSIC;
     case 1:
         return RADIO_STATION_POKEMON_TALK;
     case 2:
+        // 00:00 - 11:59 = RADIO_STATION_TRAINER_PROFILES
+        // 12:00 - 23:59 = RADIO_STATION_THAT_TOWN_THESE_PEOPLE
         return RADIO_STATION_TRAINER_PROFILES + (radioShow->time.hour % 2);
     case 3:
+        // 00:00 - 07:59 = RADIO_STATION_POKEMON_SEARCH_PARTY
+        // 08:00 - 15:59 = RADIO_STATION_SERIAL_RADIO_DRAMA
+        // 16:00 - 23:59 = RADIO_STATION_BUENAS_PASSWORD
         return RADIO_STATION_POKEMON_SEARCH_PARTY + (radioShow->time.hour % 3);
     case 4:
         return RADIO_STATION_POKE_FLUTE;
@@ -111,110 +126,101 @@ u8 ov101_021F58E0(RadioShow *radioShow, int a1) {
     return RADIO_STATION_POKEMON_MUSIC;
 }
 
-void ov101_021F5970(RadioShow *radioShow, int a1, int a2) {
+void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik) {
     radioShow->isSecondLine = 0;
-    if (a1 >= 8) {
-        a1 = 0;
+    if (station >= 8) {
+        station = 0;
     }
-    radioShow->unk_58 = a1;
+    radioShow->nextStation = station;
     if (radioShow->curStation != RADIO_STATION_COMMERCIALS) {
         radioShow->lastStation = radioShow->curStation;
     }
-    radioShow->curStation = ov101_021F58E0(radioShow, a1);
+    radioShow->curStation = RadioShow_TranslateStationID(radioShow, station);
     radioShow->runState = 0;
-    radioShow->unk_68 = 45;
-    radioShow->unk_67 = 0;
-    radioShow->unk_6A = 8;
-    radioShow->unk_69 = 0;
-    radioShow->unk_66_1 = a2;
-    radioShow->unk_66_3 = 0;
+    radioShow->delayFrames = 45;
+    radioShow->delayCounter = 0;
+    radioShow->scrollFrames = 8;
+    radioShow->scrollCounter = 0;
+    radioShow->statik = statik;
+    radioShow->isPlayingJingle = 0;
     radioShow->printWithJingleState = 0;
     if (radioShow->curStation != RADIO_STATION_COMMERCIALS && radioShow->lastStation != radioShow->curStation) {
         radioShow->lastEpisodeID = 0;
     }
-    FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->shadowColor << 4) | radioShow->shadowColor);
+    FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->bgColor << 4) | radioShow->bgColor);
     CopyWindowToVram(radioShow->showScriptWindow);
-    ov101_021F8A04[radioShow->curStation].setup(radioShow);
+    sRadioShowFuncs[radioShow->curStation].setup(radioShow);
     RadioShow_PrintTitleAndHost(radioShow);
 }
 
-void ov101_021F5A50(RadioShow *radioShow) {
+void RadioShow_EndSegment(RadioShow *radioShow) {
     if (radioShow->showData != NULL) {
-        ov101_021F8A04[radioShow->curStation].teardown(radioShow);
+        sRadioShowFuncs[radioShow->curStation].teardown(radioShow);
     }
-    FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->shadowColor << 4) | radioShow->shadowColor);
+    FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->bgColor << 4) | radioShow->bgColor);
     CopyWindowToVram(radioShow->showScriptWindow);
-    radioShow->unk_66_4 = 0;
+    radioShow->triggerCommercials = 0;
 }
 
-void ov101_021F5A9C(RadioShow *radioShow, int a1) {
-    radioShow->unk_66_1 = a1;
+void RadioShow_SetStaticLevel(RadioShow *radioShow, BOOL statik) {
+    radioShow->statik = statik;
 }
 
-BOOL ov101_021F5AB8(RadioShow *radioShow) {
-    u8 r2;
-
-    if (radioShow->unk_67 < radioShow->unk_68) {
-        ++radioShow->unk_67;
+BOOL RadioShow_DelayAndScrollLine(RadioShow *radioShow) {
+    if (radioShow->delayCounter < radioShow->delayFrames) {
+        ++radioShow->delayCounter;
         return FALSE;
     }
 
-    if (radioShow->unk_69) {
+    if (radioShow->scrollCounter) {
         ScrollWindow(radioShow->showScriptWindow, 0, 2, 0);
         CopyWindowToVram(radioShow->showScriptWindow);
     }
-    r2 = radioShow->unk_69;
-    ++radioShow->unk_69;
-    if (r2 < 8) {
+    if (radioShow->scrollCounter++ < 8) {
         return FALSE;
     }
-    radioShow->unk_69 = 0;
-    radioShow->unk_67 = 0;
+    radioShow->scrollCounter = 0;
+    radioShow->delayCounter = 0;
     return TRUE;
 }
 
-BOOL ov101_021F5B24(RadioShow *radioShow) {
-    u8 r2;
+BOOL RadioShow_ScrollTextOffWindow(RadioShow *radioShow) {
     ScrollWindow(radioShow->showScriptWindow, 0, 2, 0);
     CopyWindowToVram(radioShow->showScriptWindow);
-    r2 = radioShow->unk_69;
-    ++radioShow->unk_69;
-    if (r2 < radioShow->unk_6A) {
+    if (radioShow->scrollCounter++ < radioShow->scrollFrames) {
         return FALSE;
     }
-    radioShow->unk_69 = 0;
+    radioShow->scrollCounter = 0;
     return TRUE;
 }
 
-BOOL ov101_021F5B68(RadioShow *radioShow) {
-    u8 r3 = radioShow->unk_67;
-    ++radioShow->unk_67;
-    if (r3 < radioShow->unk_68) {
+BOOL RadioShow_Delay(RadioShow *radioShow) {
+    if (radioShow->delayCounter++ < radioShow->delayFrames) {
         return FALSE;
     }
-    radioShow->unk_67 = 0;
+    radioShow->delayCounter = 0;
     return TRUE;
 }
 
-void ov101_021F5B94(RadioShow *radioShow) {
+void RadioShow_Main(RadioShow *radioShow) {
     switch (radioShow->runState) {
     case 0:
-        radioShow->runState = ov101_021F8A04[radioShow->curStation].print(radioShow);
+        radioShow->runState = sRadioShowFuncs[radioShow->curStation].print(radioShow);
         break;
     case 1:
-        ov101_021F8A04[radioShow->curStation].teardown(radioShow);
-        radioShow->unk_6A = 16;
-        radioShow->unk_68 = 15;
+        sRadioShowFuncs[radioShow->curStation].teardown(radioShow);
+        radioShow->scrollFrames = 16;
+        radioShow->delayFrames = 15;
         ++radioShow->runState;
         break;
     case 2:
-        if (ov101_021F5B24(radioShow)) {
+        if (RadioShow_ScrollTextOffWindow(radioShow)) {
             ++radioShow->runState;
         }
         break;
     case 3:
-        if (ov101_021F5B68(radioShow)) {
-            ov101_021F5970(radioShow, radioShow->unk_58, radioShow->unk_66_1);
+        if (RadioShow_Delay(radioShow)) {
+            RadioShow_BeginSegment(radioShow, radioShow->nextStation, radioShow->statik);
             radioShow->runState = 0;
         }
         break;
@@ -231,44 +237,38 @@ void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
 }
 
 void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
-    if (radioShow->unk_66_1 == 1) {
+    if (radioShow->statik == 1) {
         String_RadioAddStatic(msg, 70);
     }
     AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
 }
 
 BOOL RadioPrintAdvance(RadioShow *radioShow) {
-    u8 r2;
     if (!radioShow->isSecondLine) {
         radioShow->isSecondLine = 1;
     }
-    r2 = radioShow->curLineIdx;
-    ++radioShow->curLineIdx;
-    String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, r2);
+    String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
     PrintRadioLine(radioShow, radioShow->curLineStr, 1);
     CopyWindowToVram(radioShow->showScriptWindow);
     return radioShow->curLineIdx >= radioShow->numLines;
 }
 
-void RadioPrintInit(RadioShow *radioShow, int msgId, int a2) {
-    u8 r2;
-    radioShow->unk_65 = a2;
+void RadioPrintInit(RadioShow *radioShow, int msgId, int textNoScroll) {
+    radioShow->textNoScroll = textNoScroll;
     ReadMsgDataIntoString(radioShow->showMsgData, msgId, radioShow->msgbufRaw);
     StringExpandPlaceholders(radioShow->msgFormat, radioShow->msgbufFormatted, radioShow->msgbufRaw);
     radioShow->curLineIdx = 0;
     radioShow->numLines = String_CountLines(radioShow->msgbufFormatted);
-    radioShow->printState = 0;
-    r2 = radioShow->curLineIdx;
-    ++radioShow->curLineIdx;
-    String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, r2);
+    radioShow->printState = RADIO_PRINT_STATE_NULL;
+    String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
     PrintRadioLine(radioShow, radioShow->curLineStr, radioShow->isSecondLine);
     CopyWindowToVram(radioShow->showScriptWindow);
     if (radioShow->curLineIdx >= radioShow->numLines) {
-        radioShow->printState = 5;
+        radioShow->printState = RADIO_PRINT_STATE_WAIT_EXIT;
     } else if (!radioShow->isSecondLine) {
-        radioShow->printState = 1;
+        radioShow->printState = RADIO_PRINT_STATE_WAIT_FIRST_LINE;
     } else {
-        radioShow->printState = 3;
+        radioShow->printState = RADIO_PRINT_STATE_WAIT_SCROLL;
     }
 }
 
@@ -278,49 +278,49 @@ void RadioPrintInitEz(RadioShow *radioShow, int msgId) {
 
 void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId) {
     RadioPrintInitEz(radioShow, msgId);
-    radioShow->unk_65 = 1;
-    radioShow->unk_66_3 = 1;
+    radioShow->textNoScroll = 1;
+    radioShow->isPlayingJingle = 1;
     SndRadio_StopSeq(0);
     SndRadio_StartSeq(SEQ_GS_RADIO_JINGLE);
 }
 
 BOOL Radio_RunTextPrinter(RadioShow *radioShow) {
     switch (radioShow->printState) {
-    case 0:
+    case RADIO_PRINT_STATE_NULL:
         break;
-    case 2:
+    case RADIO_PRINT_STATE_PRINT_NEXT_LINE:
         if (RadioPrintAdvance(radioShow)) {
-            if (radioShow->unk_65) {
-                radioShow->printState = 6;
+            if (radioShow->textNoScroll) {
+                radioShow->printState = RADIO_PRINT_STATE_EXIT;
             } else {
-                radioShow->printState = 4;
+                radioShow->printState = RADIO_PRINT_STATE_WAIT_SCROLL_EXIT;
             }
         } else {
-            radioShow->printState = 3;
+            radioShow->printState = RADIO_PRINT_STATE_WAIT_SCROLL;
         }
         break;
-    case 3:
-        if (ov101_021F5AB8(radioShow)) {
-            radioShow->printState = 2;
+    case RADIO_PRINT_STATE_WAIT_SCROLL:
+        if (RadioShow_DelayAndScrollLine(radioShow)) {
+            radioShow->printState = RADIO_PRINT_STATE_PRINT_NEXT_LINE;
         }
         break;
-    case 1:
-        if (ov101_021F5B68(radioShow)) {
-            radioShow->printState = 2;
+    case RADIO_PRINT_STATE_WAIT_FIRST_LINE:
+        if (RadioShow_Delay(radioShow)) {
+            radioShow->printState = RADIO_PRINT_STATE_PRINT_NEXT_LINE;
         }
         break;
-    case 4:
-        if (ov101_021F5AB8(radioShow)) {
-            radioShow->printState = 6;
+    case RADIO_PRINT_STATE_WAIT_SCROLL_EXIT:
+        if (RadioShow_DelayAndScrollLine(radioShow)) {
+            radioShow->printState = RADIO_PRINT_STATE_EXIT;
         }
         break;
-    case 5:
-        if (!ov101_021F5B68(radioShow)) {
+    case RADIO_PRINT_STATE_WAIT_EXIT:
+        if (!RadioShow_Delay(radioShow)) {
             break;
         }
         // fallthrough
-    case 6:
-        radioShow->printState = 0;
+    case RADIO_PRINT_STATE_EXIT:
+        radioShow->printState = RADIO_PRINT_STATE_NULL;
         return TRUE;
     }
 

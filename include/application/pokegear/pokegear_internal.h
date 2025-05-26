@@ -122,7 +122,7 @@ struct PokegearAppData {
     u16 unk_056;                                // 0x056
     void (*unk_058)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);              // 0x05C
-    void (*unk_060)(void *);                    // 0x060
+    void (*unknownCB)(void *);                  // 0x060
     void *childAppdata;                         // 0x064
     u8 filler_068[0x4];                         // 0x068
     EasyChatArgs *easyChatArgs;                 // 0x06C
@@ -152,7 +152,7 @@ BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp);
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1);
-void ov100_021E5CA4(PokegearAppData *pokegearApp);
+void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
 BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1);
 u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
 BOOL ov100_021E5DDC(PokegearAppData *pokegearApp);

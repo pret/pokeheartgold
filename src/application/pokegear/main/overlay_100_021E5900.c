@@ -174,7 +174,7 @@ int ov100_021E5C80(PokegearAppData *pokegearApp) {
     return ov100_021E5C50(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
 }
 
-void ov100_021E5CA4(PokegearAppData *pokegearApp) {
+void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp) {
     BG_LoadBlankPltt(GF_BG_LYR_MAIN_3, 0x1C0, 0, pokegearApp->heapId);
     BG_LoadBlankPltt(GF_BG_LYR_SUB_3, 0x180, 0, pokegearApp->heapId);
     for (int i = 0; i < 3; ++i) {

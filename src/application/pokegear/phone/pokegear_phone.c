@@ -126,7 +126,7 @@ static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppD
     PokegearPhone_ContactList_FlushAndDestroyLinkedList(phoneApp);
     FreeToHeap(phoneApp->saveContacts);
     phoneApp->pokegear->reselectAppCB = NULL;
-    phoneApp->pokegear->unk_060 = NULL;
+    phoneApp->pokegear->unknownCB = NULL;
 }
 
 int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {

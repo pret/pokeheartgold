@@ -78,7 +78,7 @@ BOOL RadioShow_Commercials_Setup(RadioShow *radioShow) {
     CommercialsData *data = AllocFromHeap(radioShow->heapID, sizeof(CommercialsData));
     MI_CpuClear8(data, sizeof(CommercialsData));
     // data->heapID = radioShow->heapID;
-    radioShow->unk_66_4 = 0;
+    radioShow->triggerCommercials = 0;
     radioShow->showData = data;
     RadioShow_Commercials_Init(radioShow);
     return FALSE;
@@ -106,7 +106,7 @@ BOOL RadioShow_Commercials_Print(RadioShow *radioShow) {
         }
         break;
     case 2:
-        if (ov101_021F5B68(radioShow)) {
+        if (RadioShow_Delay(radioShow)) {
             return TRUE;
         }
         break;
@@ -142,7 +142,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
         }
         // This is required to match
         r0 = sCommercialsData[i][2];
-        if (r0 != 0xFF && r0 != radioShow->unk_58) {
+        if (r0 != 0xFF && r0 != radioShow->nextStation) {
             continue;
         }
         if (sCommercialsData[i][1] & (radioShow->inKanto + 1)) {

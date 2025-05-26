@@ -939,11 +939,11 @@ _021EEFD8: .word ov101_021F8254
 
 	thumb_func_start ov101_021EEFDC
 ov101_021EEFDC: ; 0x021EEFDC
-	ldr r3, _021EEFE4 ; =ov100_021E5CA4
+	ldr r3, _021EEFE4 ; =Pokegear_ClearAppBgLayers
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021EEFE4: .word ov100_021E5CA4
+_021EEFE4: .word Pokegear_ClearAppBgLayers
 	thumb_func_end ov101_021EEFDC
 
 	thumb_func_start ov101_021EEFE8

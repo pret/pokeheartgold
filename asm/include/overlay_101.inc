@@ -207,8 +207,8 @@
 .public sub_0202EE98
 .public sub_0202EEA4
 .public sub_0202EEA8
-.public sub_0202EEAC
-.public sub_0202EEB4
+.public Pokegear_SetRadioCursorCoords
+.public Pokegear_GetRadioCursorCoords
 .public SavePokegear_FindEmptyPhonebookSlot
 .public SavePokegear_AllocAndCopyPhonebook
 .public SavePokegear_SetPhonebookFromBuffer
@@ -301,7 +301,7 @@
 .public PokegearApp_HandleKeyInput_SwitchApps
 .public ov100_021E5C50
 .public ov100_021E5C80
-.public ov100_021E5CA4
+.public Pokegear_ClearAppBgLayers
 .public ov100_021E5D3C
 .public ov100_021E5DC8
 .public ov100_021E5EB4

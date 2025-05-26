@@ -90,14 +90,14 @@ BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow) {
         }
         break;
     case 3:
-        if (ov101_021F5AB8(radioShow)) {
+        if (RadioShow_DelayAndScrollLine(radioShow)) {
             RadioPrintAndPlayJingle(radioShow, msg_0419_00003);
             ++data->state;
         }
         break;
     case 4:
         if (Radio_RunTextPrinter_WaitJingle(radioShow)) {
-            radioShow->unk_66_4 = 1;
+            radioShow->triggerCommercials = 1;
             return TRUE;
         }
         break;

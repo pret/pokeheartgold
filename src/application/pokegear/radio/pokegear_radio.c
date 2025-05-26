@@ -13,12 +13,12 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 
-void ov101_021F4558(PokegearRadioAppData *radioApp);
-void ov101_021F45D4(PokegearRadioAppData *radioApp);
-BOOL ov101_021F45FC(u16 mapID, int param);
-u8 ov101_021F4634(PokegearRadioAppData *radioApp);
-int ov101_021F46C8(PokegearRadioAppData *radioApp);
-int ov101_021F46EC(PokegearRadioAppData *radioApp);
+void Radio_Load(PokegearRadioAppData *radioApp);
+void Radio_Unload(PokegearRadioAppData *radioApp);
+BOOL Radio_IsInSpecialMap(u16 mapID, int param);
+u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp);
+int PokegearRadio_MainTask_VideoInit(PokegearRadioAppData *radioApp);
+int PokegearRadio_MainTask_InputLoop(PokegearRadioAppData *radioApp);
 int ov101_021F4750(PokegearRadioAppData *radioApp);
 int ov101_021F4764(PokegearRadioAppData *radioApp);
 int ov101_021F4824(PokegearRadioAppData *radioApp);
@@ -32,7 +32,7 @@ BOOL PokegearRadio_Init(OVY_MANAGER *man, int *state) {
     memset(radioApp, 0, sizeof(PokegearRadioAppData));
     radioApp->pokegear = pokegearApp;
     radioApp->heapId = HEAP_ID_POKEGEAR_APP;
-    ov101_021F4558(radioApp);
+    Radio_Load(radioApp);
     return TRUE;
 }
 
@@ -41,10 +41,10 @@ BOOL PokegearRadio_Main(OVY_MANAGER *man, int *state) {
 
     switch (*state) {
     case 0:
-        *state = ov101_021F46C8(radioApp);
+        *state = PokegearRadio_MainTask_VideoInit(radioApp);
         break;
     case 1:
-        *state = ov101_021F46EC(radioApp);
+        *state = PokegearRadio_MainTask_InputLoop(radioApp);
         break;
     case 2:
         *state = ov101_021F4750(radioApp);
@@ -71,7 +71,7 @@ BOOL PokegearRadio_Main(OVY_MANAGER *man, int *state) {
 BOOL PokegearRadio_Exit(OVY_MANAGER *man, int *state) {
     PokegearRadioAppData *radioApp = OverlayManager_GetData(man);
 
-    ov101_021F45D4(radioApp);
+    Radio_Unload(radioApp);
     radioApp->pokegear->isSwitchApp = TRUE;
     HeapID heapId = radioApp->heapId;
     OverlayManager_FreeData(man);
@@ -79,25 +79,28 @@ BOOL PokegearRadio_Exit(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-void ov101_021F4558(PokegearRadioAppData *radioApp) {
+void Radio_Load(PokegearRadioAppData *radioApp) {
     radioApp->pokegear->childAppdata = radioApp;
-    radioApp->pokegear->reselectAppCB = ov101_021F4FCC;
-    radioApp->pokegear->unk_060 = ov101_021F4FDC;
-    radioApp->unk_25 = Pokegear_GetBackgroundStyle(radioApp->pokegear->savePokegear);
-    sub_0202EEB4(radioApp->pokegear->savePokegear, &radioApp->unk_28, &radioApp->unk_2A);
-    radioApp->unk_24_5 = 3;
-    radioApp->unk_26_0 = ov101_021F4634(radioApp);
-    radioApp->unk_27 = 0xFF;
-    radioApp->unk_2C = GF_GetCurrentPlayingBGM();
+    radioApp->pokegear->reselectAppCB = Radio_OnReselectApp;
+    radioApp->pokegear->unknownCB = Radio_UnknownCB;
+    radioApp->backgroundStyle = Pokegear_GetBackgroundStyle(radioApp->pokegear->savePokegear);
+    Pokegear_GetRadioCursorCoords(radioApp->pokegear->savePokegear, &radioApp->cursorX, &radioApp->cursorY);
+    radioApp->selectedButton = 3;
+    radioApp->stationSelection = Radio_GetAvailableChannels(radioApp);
+    radioApp->station = 0xFF;
+    radioApp->bgmBak = GF_GetCurrentPlayingBGM();
 }
 
-void ov101_021F45D4(PokegearRadioAppData *radioApp) {
-    sub_0202EEAC(radioApp->pokegear->savePokegear, radioApp->unk_28, radioApp->unk_2A);
+void Radio_Unload(PokegearRadioAppData *radioApp) {
+    Pokegear_SetRadioCursorCoords(radioApp->pokegear->savePokegear, radioApp->cursorX, radioApp->cursorY);
     radioApp->pokegear->reselectAppCB = NULL;
-    radioApp->pokegear->unk_060 = NULL;
+    radioApp->pokegear->unknownCB = NULL;
 }
 
-static const u16 ov101_021F87B0[] = {
+#define RADIO_SPECIAL_MAP_TYPE_ALPH     0
+#define RADIO_SPECIAL_MAP_TYPE_MAHOGANY 1
+
+static const u16 sAlphMaps[] = {
     MAP_RUINS_OF_ALPH_UNDERGROUND_HALL,
     MAP_RUINS_OF_ALPH_HALL_ENTRANCE,
     MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT,
@@ -105,7 +108,7 @@ static const u16 ov101_021F87B0[] = {
     MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2,
 };
 
-static const u16 ov101_021F87BA[] = {
+static const u16 sMahoganyMaps[] = {
     MAP_MAHOGANY,
     MAP_MAHOGANY_EAST_HOUSE,
     MAP_MAHOGANY_GYM_LEADER_ROOM,
@@ -125,19 +128,19 @@ static const u16 ov101_021F87BA[] = {
     MAP_LAKE_OF_RAGE_FISHING_GURU_HOUSE,
 };
 
-static const u16 *ov101_021FB2C0[] = {
-    ov101_021F87B0,
-    ov101_021F87BA,
+static const u16 *sSpecialRadioMapIDs[] = {
+    sAlphMaps,
+    sMahoganyMaps,
 };
 
-static const u8 ov101_021F87AC[] = {
-    NELEMS(ov101_021F87B0),
-    NELEMS(ov101_021F87BA),
+static const u8 sNumSpecialRadioMaps[] = {
+    NELEMS(sAlphMaps),
+    NELEMS(sMahoganyMaps),
 };
 
-BOOL ov101_021F45FC(u16 mapID, int param) {
-    for (int i = 0; i < ov101_021F87AC[param]; ++i) {
-        if (mapID == ov101_021FB2C0[param][i]) {
+BOOL Radio_IsInSpecialMap(u16 mapID, int param) {
+    for (int i = 0; i < sNumSpecialRadioMaps[param]; ++i) {
+        if (mapID == sSpecialRadioMapIDs[param][i]) {
             return TRUE;
         }
     }
@@ -146,35 +149,35 @@ BOOL ov101_021F45FC(u16 mapID, int param) {
 }
 
 // get channel selection?
-u8 ov101_021F4634(PokegearRadioAppData *radioApp) {
+u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp) {
     u16 mapID = radioApp->pokegear->args->mapID;
 
     if (!MapHeader_CanReceiveRadioSignal(mapID)) {
-        return 3; // Radio silence
+        return RADIO_STATION_SELECTION_NO_SIGNAL;
     }
-    if (ov101_021F45FC(mapID, 0)) {
-        return 4; // Alph signal
+    if (Radio_IsInSpecialMap(mapID, RADIO_SPECIAL_MAP_TYPE_ALPH)) {
+        return RADIO_STATION_SELECTION_ALPH;
     }
     if (MapHeader_IsInKanto(mapID)) {
         if (!Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_RESTORED_POWER)) {
-            return 3; // Radio silence
+            return RADIO_STATION_SELECTION_NO_SIGNAL;
         } else if (Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_GOT_EXPN_CARD)) {
-            return 2; // Full bandwidth
+            return RADIO_STATION_SELECTION_KANTO_EXPN;
         } else {
-            return 1; // Limited selection
+            return RADIO_STATION_SELECTION_KANTO;
         }
     }
-    if (ov101_021F45FC(mapID, 1) && !Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_RED_GYARADOS_MEET)) {
-        return 6; // Weird evolution broadcast
+    if (Radio_IsInSpecialMap(mapID, RADIO_SPECIAL_MAP_TYPE_MAHOGANY) && !Save_VarsFlags_CheckFlagInArray(radioApp->pokegear->saveVarsFlags, FLAG_RED_GYARADOS_MEET)) {
+        return RADIO_STATION_SELECTION_MAHOGANY;
     }
     if (Save_VarsFlags_IsInRocketTakeover(radioApp->pokegear->saveVarsFlags)) {
-        return 5; // Rocket takeover
+        return RADIO_STATION_SELECTION_ROCKET;
     }
-    return 0; // Normal Johto selection
+    return RADIO_STATION_SELECTION_JOHTO;
 }
 
-int ov101_021F46C8(PokegearRadioAppData *radioApp) {
-    if (!ov101_021F49F8(radioApp)) {
+int PokegearRadio_MainTask_VideoInit(PokegearRadioAppData *radioApp) {
+    if (!Radio_VideoInit(radioApp)) {
         return 0;
     }
     if (radioApp->pokegear->isSwitchApp) {
@@ -184,7 +187,7 @@ int ov101_021F46C8(PokegearRadioAppData *radioApp) {
     }
 }
 
-int ov101_021F46EC(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_InputLoop(PokegearRadioAppData *radioApp) {
     BOOL inputWasTouch = FALSE;
     int result = ov101_021F5468(radioApp, &inputWasTouch);
     if (!inputWasTouch) {
@@ -212,7 +215,7 @@ int ov101_021F46EC(PokegearRadioAppData *radioApp) {
 }
 
 int ov101_021F4750(PokegearRadioAppData *radioApp) {
-    if (ov101_021F4A4C(radioApp)) {
+    if (Radio_VideoUnload(radioApp)) {
         return 9;
     } else {
         return 2;
@@ -220,7 +223,7 @@ int ov101_021F4750(PokegearRadioAppData *radioApp) {
 }
 
 int ov101_021F4764(PokegearRadioAppData *radioApp) {
-    switch (radioApp->unk_04) {
+    switch (radioApp->state) {
     case 0:
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, radioApp->heapId);
         for (int i = 0; i < 8; ++i) {
@@ -234,12 +237,12 @@ int ov101_021F4764(PokegearRadioAppData *radioApp) {
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
         StopBGM(GF_GetCurrentPlayingBGM(), 6);
-        ++radioApp->unk_04;
+        ++radioApp->state;
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
             ov101_021F5090(radioApp);
-            radioApp->unk_04 = 0;
+            radioApp->state = 0;
             return 1;
         }
         break;
@@ -249,18 +252,18 @@ int ov101_021F4764(PokegearRadioAppData *radioApp) {
 }
 
 int ov101_021F4824(PokegearRadioAppData *radioApp) {
-    switch (radioApp->unk_04) {
+    switch (radioApp->state) {
     case 0:
         BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, radioApp->heapId);
-        ++radioApp->unk_04;
+        ++radioApp->state;
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
-            ov101_021F5048(radioApp);
+            Radio_CloseStation(radioApp);
             for (int i = 0; i < 8; ++i) {
                 ToggleBgLayer(i, FALSE);
             }
-            radioApp->unk_04 = 0;
+            radioApp->state = 0;
             return 2;
         }
         break;
@@ -270,7 +273,7 @@ int ov101_021F4824(PokegearRadioAppData *radioApp) {
 }
 
 int ov101_021F4888(PokegearRadioAppData *radioApp) {
-    switch (radioApp->unk_04) {
+    switch (radioApp->state) {
     case 0:
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, TRUE);
         ov101_021F50F0(radioApp, 0);
@@ -280,18 +283,18 @@ int ov101_021F4888(PokegearRadioAppData *radioApp) {
         }
         SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3), SCREEN_MASK_MAIN);
         StopBGM(GF_GetCurrentPlayingBGM(), 6);
-        ++radioApp->unk_04;
+        ++radioApp->state;
         break;
     case 1:
         if (ov100_021E5D3C(radioApp->pokegear, 0) && ov101_021F51C0(radioApp, 0)) {
-            ++radioApp->unk_04;
+            ++radioApp->state;
         }
         break;
     case 2:
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, FALSE);
         radioApp->pokegear->unk_009 = 0;
         ov101_021F5090(radioApp);
-        radioApp->unk_04 = 0;
+        radioApp->state = 0;
         return 1;
     }
 
@@ -299,30 +302,30 @@ int ov101_021F4888(PokegearRadioAppData *radioApp) {
 }
 
 int ov101_021F4928(PokegearRadioAppData *radioApp) {
-    switch (radioApp->unk_04) {
+    switch (radioApp->state) {
     case 0:
         ov101_021F50F0(radioApp, 1);
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, TRUE);
         radioApp->pokegear->unk_009 = 0;
-        ++radioApp->unk_04;
+        ++radioApp->state;
         break;
     case 1:
         if (ov100_021E5D3C(radioApp->pokegear, 1) && ov101_021F51C0(radioApp, 1)) {
-            ++radioApp->unk_04;
+            ++radioApp->state;
         }
         break;
     case 2:
         PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, 0);
         PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, 0);
         PaletteData_PushTransparentBuffers(radioApp->pokegear->plttData);
-        ov101_021F5048(radioApp);
+        Radio_CloseStation(radioApp);
         for (int i = 0; i < 3; ++i) {
             ToggleBgLayer(i + GF_BG_LYR_MAIN_1, FALSE);
             ToggleBgLayer(i + GF_BG_LYR_SUB_1, FALSE);
         }
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, FALSE);
         radioApp->pokegear->unk_009 = 0;
-        radioApp->unk_04 = 0;
+        radioApp->state = 0;
         return 2;
     }
 

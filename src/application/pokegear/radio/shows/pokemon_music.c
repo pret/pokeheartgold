@@ -181,14 +181,14 @@ BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
                 data->state = PKMUSSTATE_PRINT_DAY;
                 return FALSE;
             } else {
-                radioShow->unk_66_3 = 1;
+                radioShow->isPlayingJingle = 1;
                 StopBGM(GF_GetCurrentPlayingBGM(), 30);
                 ++data->state;
             }
         }
         break;
     case PKMUSSTATE_WAIT_OUT:
-        if (ov101_021F5AB8(radioShow)) {
+        if (RadioShow_DelayAndScrollLine(radioShow)) {
             return TRUE;
         }
         break;

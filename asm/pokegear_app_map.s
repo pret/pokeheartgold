@@ -1603,7 +1603,7 @@ _021E8350: .word ov101_021F7D10
 ov101_021E8354: ; 0x021E8354
 	push {r3, lr}
 	ldr r0, [r0, #0x10]
-	bl ov100_021E5CA4
+	bl Pokegear_ClearAppBgLayers
 	mov r1, #0
 	ldr r0, _021E836C ; =0x04000050
 	add r2, r1, #0

@@ -3,103 +3,113 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
+typedef enum RadioStationSelection {
+    RADIO_STATION_SELECTION_JOHTO,
+    RADIO_STATION_SELECTION_KANTO,
+    RADIO_STATION_SELECTION_KANTO_EXPN,
+    RADIO_STATION_SELECTION_NO_SIGNAL,
+    RADIO_STATION_SELECTION_ALPH,
+    RADIO_STATION_SELECTION_ROCKET,
+    RADIO_STATION_SELECTION_MAHOGANY,
+} RadioStationSelection;
+
 typedef struct RadioShow {
-    HeapID heapID;            // 0x00
-    SaveData *saveData;       // 0x04
-    u16 mapID;                // 0x08
-    u16 mapHeader;            // 0x0A
-    Window *showScriptWindow; // 0x0C
-    Window *showTitleWindow;  // 0x10
-    Window *showHostWindow;   // 0x14
-    u32 textColor;            // 0x18
-    void *showData;           // 0x1C
-    MsgData *msgData_269;     // 0x20
-    MsgData *showMsgData;     // 0x24
-    RTCDate date;             // 0x28
-    RTCTime time;             // 0x38
-    MessageFormat *msgFormat; // 0x44
-    String *curLineStr;       // 0x48
-    String *showTitle;        // 0x4C
-    String *showHost;         // 0x50
-    u32 lastEpisodeID;        // 0x54
-    u8 unk_58;                // 0x58
-    u8 curStation;            // 0x59
-    u8 lastStation;           // 0x5A
-    u8 fgColor;               // 0x5B
-    u8 shadowColor;           // 0x5C
-    u8 bgColor;               // 0x5D
-    u8 runState;              // 0x5E
-    u8 printWithJingleState;  // 0x5F
-    u8 unk_60;                // 0x60
-    u8 unk_61;                // 0x61
-    u8 curLineIdx;            // 0x62
-    u8 numLines;              // 0x63
-    u8 printState;            // 0x64
-    u8 unk_65;                // 0x65
-    u8 isSecondLine : 1;      // 0x66
-    u8 unk_66_1 : 1;          // 0x66
-    u8 inKanto : 1;           // 0x66
-    u8 unk_66_3 : 1;          // 0x66
-    u8 unk_66_4 : 1;          // 0x66
-    u8 unk_67;                // 0x67
-    u8 unk_68;                // 0x68
-    u8 unk_69;                // 0x69
-    u8 unk_6A;                // 0x6A
-    String *msgbufFormatted;  // 0x6C
-    String *msgbufRaw;        // 0x70
-} RadioShow;                  // size: 0x74
+    HeapID heapID;             // 0x00
+    SaveData *saveData;        // 0x04
+    u16 mapID;                 // 0x08
+    u16 mapHeader;             // 0x0A
+    Window *showScriptWindow;  // 0x0C
+    Window *showTitleWindow;   // 0x10
+    Window *showHostWindow;    // 0x14
+    u32 textColor;             // 0x18
+    void *showData;            // 0x1C
+    MsgData *msgData_269;      // 0x20
+    MsgData *showMsgData;      // 0x24
+    RTCDate date;              // 0x28
+    RTCTime time;              // 0x38
+    MessageFormat *msgFormat;  // 0x44
+    String *curLineStr;        // 0x48
+    String *showTitle;         // 0x4C
+    String *showHost;          // 0x50
+    u32 lastEpisodeID;         // 0x54
+    u8 nextStation;            // 0x58
+    u8 curStation;             // 0x59
+    u8 lastStation;            // 0x5A
+    u8 fgColor;                // 0x5B
+    u8 bgColor;                // 0x5C
+    u8 shadowColor;            // 0x5D
+    u8 runState;               // 0x5E
+    u8 printWithJingleState;   // 0x5F
+    u8 unk_60;                 // 0x60 unused
+    u8 unk_61;                 // 0x61 write-only
+    u8 curLineIdx;             // 0x62
+    u8 numLines;               // 0x63
+    u8 printState;             // 0x64
+    u8 textNoScroll;           // 0x65
+    u8 isSecondLine : 1;       // 0x66
+    u8 statik : 1;             // 0x66. spelling intentional, "static" is a reserved keyword
+    u8 inKanto : 1;            // 0x66
+    u8 isPlayingJingle : 1;    // 0x66
+    u8 triggerCommercials : 1; // 0x66
+    u8 delayCounter;           // 0x67
+    u8 delayFrames;            // 0x68
+    u8 scrollCounter;          // 0x69
+    u8 scrollFrames;           // 0x6A
+    String *msgbufFormatted;   // 0x6C
+    String *msgbufRaw;         // 0x70
+} RadioShow;                   // size: 0x74
 
 typedef struct PokegearRadioAppData {
-    HeapID heapId;             // 0x00
-    int unk_04;                // 0x04
-    int unk_08;                // 0x08
-    PokegearAppData *pokegear; // 0x0C
-    Sprite *unk_10[5];         // 0x10
-    u8 unk_24_0 : 1;           // 0x24
-    u8 unk_24_1 : 4;           // 0x24
-    u8 unk_24_5 : 3;           // 0x24
-    u8 unk_25;                 // 0x25
-    u8 unk_26_0 : 4;           // 0x26
-    u8 unk_26_4 : 2;           // 0x26
-    u8 unk_26_6 : 2;           // 0x26
-    u8 unk_27;                 // 0x27
-    s16 unk_28;                // 0x28
-    s16 unk_2A;                // 0x2A
-    u16 unk_2C;                // 0x2C
-    u16 unk_2E_0 : 15;         // 0x2E
-    u16 unk_2E_15 : 1;         // 0x2E
-    Window unk_30[3];          // 0x30
-    RadioShow *showData;       // 0x60
-    void *unk_64;              // 0x64
-    NNSG2dScreenData *unk_68;  // 0x68
-} PokegearRadioAppData;        // size: 0x6C
+    HeapID heapId;                // 0x00
+    int state;                    // 0x04
+    int substate;                 // 0x08
+    PokegearAppData *pokegear;    // 0x0C
+    Sprite *sprites[5];           // 0x10
+    u8 unk_24_0 : 1;              // 0x24 unused
+    u8 isDraggingCursor : 4;      // 0x24
+    u8 selectedButton : 3;        // 0x24
+    u8 backgroundStyle;           // 0x25
+    u8 stationSelection : 4;      // 0x26
+    u8 signalStrength : 2;        // 0x26
+    u8 stationActive : 2;         // 0x26
+    u8 station;                   // 0x27
+    s16 cursorX;                  // 0x28
+    s16 cursorY;                  // 0x2A
+    u16 bgmBak;                   // 0x2C
+    u16 windowScrollStep : 15;    // 0x2E
+    u16 windowScrollFinished : 1; // 0x2E
+    Window windows[3];            // 0x30
+    RadioShow *showData;          // 0x60
+    void *pNSCR;                  // 0x64
+    NNSG2dScreenData *screenData; // 0x68
+} PokegearRadioAppData;           // size: 0x6C
 
-BOOL ov101_021F49F8(PokegearRadioAppData *radioApp);
-BOOL ov101_021F4A4C(PokegearRadioAppData *radioApp);
+BOOL Radio_VideoInit(PokegearRadioAppData *radioApp);
+BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp);
 
-void ov101_021F4FCC(void *cbArg);
-void ov101_021F4FDC(void *cbArg);
-void ov101_021F5048(PokegearRadioAppData *radioApp);
+void Radio_OnReselectApp(void *cbArg);
+void Radio_UnknownCB(void *cbArg);
+void Radio_CloseStation(PokegearRadioAppData *radioApp);
 void ov101_021F5090(PokegearRadioAppData *radioApp);
 void ov101_021F50D8(PokegearAppData *pokegear, void *cbArg);
 void ov101_021F50F0(PokegearRadioAppData *radioApp, int a1);
 BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1);
 int ov101_021F5304(PokegearRadioAppData *radioApp);
 int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
-u8 ov101_021F54AC(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *a3);
+u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSignalStrengthRet);
 int ov101_021F5524(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
-int ov101_021F5650(PokegearRadioAppData *radioApp);
+int Radio_HandleDragCursor(PokegearRadioAppData *radioApp);
 BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y);
 void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1);
 
-RadioShow *ov101_021F57B8(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
-void ov101_021F58A0(RadioShow *radioShow);
-void ov101_021F5970(RadioShow *radioShow, int a1, int a2);
-void ov101_021F5A50(RadioShow *radioShow);
-void ov101_021F5A9C(RadioShow *radioShow, int a1);
-BOOL ov101_021F5AB8(RadioShow *radioShow);
-BOOL ov101_021F5B68(RadioShow *radioShow);
-void ov101_021F5B94(RadioShow *radioShow);
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
+void RadioShow_Delete(RadioShow *radioShow);
+void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik);
+void RadioShow_EndSegment(RadioShow *radioShow);
+void RadioShow_SetStaticLevel(RadioShow *radioShow, int a1);
+BOOL RadioShow_DelayAndScrollLine(RadioShow *radioShow);
+BOOL RadioShow_Delay(RadioShow *radioShow);
+void RadioShow_Main(RadioShow *radioShow);
 void RadioPrintInit(RadioShow *radioShow, int msgId, int a2);
 void RadioPrintInitEz(RadioShow *radioShow, int msgId);
 void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId);
