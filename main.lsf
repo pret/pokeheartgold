@@ -1175,7 +1175,6 @@ Overlay OVY_101
     Object src/application/pokegear/radio/shows/trainer_profiles.o
     Object src/application/pokegear/radio/shows/pokemon_talk.o
     Object src/application/pokegear/radio/shows/mahogany_signal.o
-    Object asm/pokegear_app_radio.o
     Object src/application/pokegear/phone/phone_script_defs.o
     Object src/application/pokegear/phone/phone_generic_headers.o
 }
