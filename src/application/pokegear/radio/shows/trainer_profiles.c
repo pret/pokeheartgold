@@ -89,6 +89,7 @@ void RadioShow_TrainerProfiles_Init(RadioShow *radioShow) {
     int i;
     u8 msgID;
     TrainerProfilesData *data = radioShow->showData;
+
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0420_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0420_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0420_00001, radioShow->showHost);

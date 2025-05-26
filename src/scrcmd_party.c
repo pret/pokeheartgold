@@ -16,7 +16,7 @@
 FS_EXTERN_OVERLAY(npc_trade);
 
 BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
-    u16 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
+    u32 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
     FieldSystem *fieldSystem = ctx->fieldSystem;
     Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
 
@@ -244,7 +244,7 @@ BOOL ScrCmd_MonAddFriendship(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 friendshipModifier = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
-    u16 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
+    u32 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     u16 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);

@@ -208,7 +208,7 @@ BOOL ScrCmd_234(ScriptContext *ctx) {
 BOOL ScrCmd_235(ScriptContext *ctx) {
     UnkStruct_0206BCD4 **unkStruct = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 unused = ScriptGetVar(ctx);
-    u16 unused2 = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
+    u32 unused2 = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
     sub_0206BD00(*unkStruct);
     return FALSE;
 }

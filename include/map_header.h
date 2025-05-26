@@ -62,7 +62,7 @@ u16 MapHeader_GetNightMusicId(u32 mapId);
 BOOL MapHeader_HasWildEncounters(u32 mapId);
 u8 MapHeader_GetWildEncounterBank(u32 mapId);
 u16 MapHeader_GetEventsBank(u32 mapId);
-u16 MapHeader_GetMapSec(u32 mapId);
+u32 MapHeader_GetMapSec(u32 mapId);
 u8 MapHeader_GetAreaIcon(u32 mapId);
 u8 MapHeader_GetMomCallIntroParam(u32 mapId);
 BOOL MapHeader_IsInKanto(u32 mapId);

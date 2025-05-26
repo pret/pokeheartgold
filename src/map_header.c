@@ -110,7 +110,7 @@ u16 MapHeader_GetEventsBank(u32 mapId) {
     return sMapHeaders[mapId].eventsBank;
 }
 
-u16 MapHeader_GetMapSec(u32 mapId) {
+u32 MapHeader_GetMapSec(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
     return sMapHeaders[mapId].mapsec;
 }
