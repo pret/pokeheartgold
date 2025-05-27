@@ -195,12 +195,12 @@ static const TouchscreenHitbox sArrowButtonHitboxes[] = {
     { TOUCHSCREEN_RECTLIST_END },
 };
 
-extern const OVY_MGR_TEMPLATE gApp_MainMenu_SelectOption_MysteryGift;
-extern const OVY_MGR_TEMPLATE gApp_MainMenu_SelectOption_MigrateFromAgb;
-extern const OVY_MGR_TEMPLATE gApp_MainMenu_SelectOption_ConnectToRanger;
-extern const OVY_MGR_TEMPLATE gApp_MainMenu_SelectOption_NintendoWFCSetup;
-extern const OVY_MGR_TEMPLATE ov112_App_MainMenu_SelectOption_ConnectToPokewalker;
-extern const OVY_MGR_TEMPLATE ov75_App_MainMenu_SelectOption_WiiMessageSettings;
+extern const OverlayManagerTemplate gApp_MainMenu_SelectOption_MysteryGift;
+extern const OverlayManagerTemplate gApp_MainMenu_SelectOption_MigrateFromAgb;
+extern const OverlayManagerTemplate gApp_MainMenu_SelectOption_ConnectToRanger;
+extern const OverlayManagerTemplate gApp_MainMenu_SelectOption_NintendoWFCSetup;
+extern const OverlayManagerTemplate ov112_App_MainMenu_SelectOption_ConnectToPokewalker;
+extern const OverlayManagerTemplate ov75_App_MainMenu_SelectOption_WiiMessageSettings;
 
 static u32 ov74_02227060(MainMenuAppData *data) {
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
@@ -1278,7 +1278,7 @@ static void MainMenu_UpdateArrowSprites(MainMenuAppData *data) {
     Sprite_SetAnimActiveFlag(data->downArrowSprite, FALSE);
 }
 
-static void MainMenu_FreeGraphics(OVY_MANAGER *manager) {
+static void MainMenu_FreeGraphics(OverlayManager *manager) {
     MainMenuAppData *data = OverlayManager_GetData(manager);
 
     if (data->upArrowSprite != NULL || data->downArrowSprite != NULL) {
@@ -1352,7 +1352,7 @@ static void MainMenu_OnVBlank(BgConfig *bgConfig) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-BOOL MainMenuApp_Init(OVY_MANAGER *manager, int *state) {
+BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_MAIN_MENU, 0x40000);
 
     MainMenuAppData *data = OverlayManager_CreateAndGetData(manager, sizeof(MainMenuAppData), HEAP_ID_MAIN_MENU);
@@ -1388,7 +1388,7 @@ BOOL MainMenuApp_Init(OVY_MANAGER *manager, int *state) {
 
 #define MAIN_MENU_BACKGROUND_COLOR RGB(12, 12, 31)
 
-BOOL MainMenuApp_Main(OVY_MANAGER *manager, int *state) {
+BOOL MainMenuApp_Main(OverlayManager *manager, int *state) {
     MainMenuAppData *data = OverlayManager_GetData(manager);
     data->frames++;
     BOOL cartInserted = CTRDG_IsExisting(); // unused
@@ -1519,7 +1519,7 @@ static void MainMenu_QueueSelectedApp(MainMenuAppData *data) {
     }
 }
 
-BOOL MainMenuApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL MainMenuApp_Exit(OverlayManager *manager, int *state) {
     MainMenuAppData *data = OverlayManager_GetData(manager);
 
     MainMenu_QueueSelectedApp(data);

@@ -17,8 +17,8 @@ typedef struct PokedexArgs {
     u16 mapMatrixId;
 } PokedexArgs;
 
-BOOL Pokedex_Init(OVY_MANAGER *man, int *state);
-BOOL Pokedex_Main(OVY_MANAGER *man, int *state);
-BOOL Pokedex_Exit(OVY_MANAGER *man, int *state);
+BOOL Pokedex_Init(OverlayManager *man, int *state);
+BOOL Pokedex_Main(OverlayManager *man, int *state);
+BOOL Pokedex_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_18_H

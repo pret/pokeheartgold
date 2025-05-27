@@ -8,8 +8,8 @@
 #include "save.h"
 #include "sprite_system.h"
 
-BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState);
-BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState);
-BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState);
+BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState);
+BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState);
+BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState);
 
 #endif // GUARD_POKEHEARTGOLD_OAKS_SPEECH_H

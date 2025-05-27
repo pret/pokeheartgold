@@ -94,7 +94,7 @@ static void ov84_0223F8E4(Window *window);
 static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work);
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work);
 
-BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
+BOOL BattleArcadeGameBoard_InitOverlay(OverlayManager *man, int *state) {
     int i;
     GAME_BOARD_WORK *work;
     GAME_BOARD_ARGS *args;
@@ -155,7 +155,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
+BOOL BattleArcadeGameBoard_Main(OverlayManager *man, int *state) {
     GAME_BOARD_WORK *work = OverlayManager_GetData(man);
 
     if (work->unkE != 0xff && *state == 1) {
@@ -209,7 +209,7 @@ BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov84_0223DFF0(OVY_MANAGER *man, int *state) {
+BOOL ov84_0223DFF0(OverlayManager *man, int *state) {
     GAME_BOARD_WORK *work = OverlayManager_GetData(man);
 
     *work->returnWork = work->cursorPos;

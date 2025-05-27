@@ -66,7 +66,7 @@ typedef struct GAME_BOARD_SUB_3E8 {
 } GAME_BOARD_SUB_3E8;
 
 typedef struct GAME_BOARD_WORK {
-    OVY_MANAGER *man;
+    OverlayManager *man;
     FrontierSave *frontierSaveData;
     u8 substate;
     u8 type;
@@ -147,9 +147,9 @@ typedef struct BATTLE_ARCADE_OBJECT {
     Sprite *sprite;
 } BATTLE_ARCADE_OBJECT;
 
-BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state);
-BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state);
-BOOL ov84_0223DFF0(OVY_MANAGER *man, int *state);
+BOOL BattleArcadeGameBoard_InitOverlay(OverlayManager *man, int *state);
+BOOL BattleArcadeGameBoard_Main(OverlayManager *man, int *state);
+BOOL ov84_0223DFF0(OverlayManager *man, int *state);
 void ov84_0223ED34(int a0, int size, void *data, void *_work);
 void ov84_0223EDA8(int a0, int size, void *data, void *_work);
 void ov84_0223EE08(int a0, int size, void *data, void *_work);

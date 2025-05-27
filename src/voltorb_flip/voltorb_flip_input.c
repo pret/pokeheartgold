@@ -8,10 +8,10 @@
 #include "voltorb_flip/voltorb_flip_data.h"
 
 #include "heap.h"
+#include "sprite_system.h"
 #include "system.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
-#include "sprite_system.h"
 #include "unk_020192D0.h"
 #include "unk_02020654.h"
 

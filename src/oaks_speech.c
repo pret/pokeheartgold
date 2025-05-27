@@ -543,7 +543,7 @@ static const int sBgPicNCGR_NCLR[10][2] = {
      },
 };
 
-BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
+BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState) {
     CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
     OakSpeechData *data = OverlayManager_CreateAndGetData(ovyMan, sizeof(OakSpeechData), HEAP_ID_OAKS_SPEECH);
     memset(data, 0, sizeof(OakSpeechData));
@@ -563,7 +563,7 @@ BOOL OakSpeech_Init(OVY_MANAGER *ovyMan, int *pState) {
     return TRUE;
 }
 
-BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
+BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
     BOOL ret = FALSE;
     switch (*pState) {
@@ -636,7 +636,7 @@ BOOL OakSpeech_Main(OVY_MANAGER *ovyMan, int *pState) {
     return ret;
 }
 
-BOOL OakSpeech_Exit(OVY_MANAGER *ovyMan, int *pState) {
+BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
     HeapID heapId = data->heapId;
     FontID_Release(4);

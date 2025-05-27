@@ -58,18 +58,18 @@ static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     {                              \
         .language = GAME_LANGUAGE, \
         .nickname = {              \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     },                         \
-}
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+            EOS,                   \
+        },                         \
+    }
 
 static const TrainerHouseSet ov25_02259D9C = {
     .trainer = {

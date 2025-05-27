@@ -11,8 +11,8 @@ typedef struct ChooseStarterArgs {
     Pokemon starters[3];
 } ChooseStarterArgs;
 
-BOOL ChooseStarter_Init(OVY_MANAGER *man, int *state);
-BOOL ChooseStarter_Main(OVY_MANAGER *man, int *state);
-BOOL ChooseStarter_Exit(OVY_MANAGER *man, int *state);
+BOOL ChooseStarter_Init(OverlayManager *man, int *state);
+BOOL ChooseStarter_Main(OverlayManager *man, int *state);
+BOOL ChooseStarter_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_CHOOSE_STARTER_APP_H

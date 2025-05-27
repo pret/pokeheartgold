@@ -835,7 +835,7 @@ static const ManagedSpriteTemplate sPicTemplates[21] = {
     [20] = { .x = 0,   .y = 0,   .z = 0, .animation = 0, .spritePriority = 0,  .pal = 0, .vram = NNS_G2D_VRAM_TYPE_2DMAIN, .resIdList = { [GF_GFX_RES_TYPE_CHAR] = 55520, [GF_GFX_RES_TYPE_PLTT] = 55522, [GF_GFX_RES_TYPE_CELL] = 55515, [GF_GFX_RES_TYPE_ANIM] = 55515, [GF_GFX_RES_TYPE_MCEL] = -1, [GF_GFX_RES_TYPE_MANM] = -1 }, .bgPriority = 2, .vramTransfer = 0 }
 };
 
-BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
+BOOL RegisterHallOfFame_Init(OverlayManager *man, int *state) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GfGfx_EngineASetPlanes(GX_PLANEMASK_NONE);
@@ -864,7 +864,7 @@ BOOL RegisterHallOfFame_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state) {
+BOOL RegisterHallOfFame_Exit(OverlayManager *man, int *state) {
     RegisterHallOfFameData *data = OverlayManager_GetData(man);
     RegisterHallOfFame_DestroySpriteGfxHandlers(data);
     RegisterHallOfFame_DestroyBgConfig(data);
@@ -881,7 +881,7 @@ BOOL RegisterHallOfFame_Exit(OVY_MANAGER *man, int *state) {
 
 static RegisterHallOfFameScene (*const sSceneFuncs[8])(RegisterHallOfFameData *data);
 
-BOOL RegisterHallOfFame_Main(OVY_MANAGER *man, int *state) {
+BOOL RegisterHallOfFame_Main(OverlayManager *man, int *state) {
     RegisterHallOfFameData *data = OverlayManager_GetData(man);
     data->currentScene = sSceneFuncs[data->currentScene](data);
     if (data->currentScene == REGHOF_SCENE_MAX) {

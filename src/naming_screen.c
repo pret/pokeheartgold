@@ -147,20 +147,20 @@ typedef struct UnkStruct_02102278 {
     u8 cursorY : 5;    // cursorX and cursorY should both be u16.
 } NamingScreenTouchHitboxDef;
 
-BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState);
+BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState);
 static void NamingScreen_LoadMonIcon(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form);
-BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState);
+BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState);
 static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data, NamingScreenMainState state);
 static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenArgs *args);
 static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s);
-BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState);
+BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState);
 static void NamingScreen_VBlankCB(void *param);
 static void NamingScreen_InitFromArgs(NamingScreenAppData *data, NamingScreenArgs *args);
 static void NamingScreen_SetGraphicsBanks(void);
 static void NamingScreen_SetBgModesAndInitBuffers(BgConfig *bgConfig);
 static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable);
-static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
-static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OVY_MANAGER *ovyMan);
+static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OverlayManager *ovyMan);
+static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OverlayManager *ovyMan);
 static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows);
 static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NARC *narc);
 static void NamingScreen_InitObjCharPlttTransfer(void);
@@ -172,7 +172,7 @@ static void SysTask_NamingScreen_WiggleEffect(SysTask *task, void *taskData);
 static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData);
 static void NamingScreen_PrintMessageOnWindowLeftAlign(Window *window, NameScreenType unused, String *msg);
 static void NamingScreen_PrintMessageOnWindowWithMargin(Window *window, NameScreenType unused, String *msg);
-static void NamingScreen_InitWindows(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc);
+static void NamingScreen_InitWindows(NamingScreenAppData *data, OverlayManager *ovyMan, NARC *narc);
 static void NamingScreen_SetPageBgPriorities(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos);
 static void NamingScreen_SetPagePgPosVecs(VecFx32 *posVecs, GFBgLayer bgId);
 static int NamingScreen_WrapAroundWithinInterval(int val, int lo, int hi);
@@ -465,14 +465,14 @@ static const int _021020B4[] = {
     msg_0249_00008,
 };
 
-const OVY_MGR_TEMPLATE gOverlayTemplate_NamingScreen = {
+const OverlayManagerTemplate gOverlayTemplate_NamingScreen = {
     NamingScreenApp_Init,
     NamingScreenApp_Main,
     NamingScreenApp_Exit,
     FS_OVERLAY_ID_NONE,
 };
 
-BOOL NamingScreenApp_Init(OVY_MANAGER *ovyMan, int *pState) {
+BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
     NamingScreenAppData *data;
     NARC *narc;
     switch ((NamingScreenInitState)*pState) {
@@ -535,7 +535,7 @@ static void NamingScreen_LoadMonIcon(NNSG2dCharacterData *pCharData, NNSG2dPalet
     GX_LoadOBJPltt(rawPltt + 16 * plttNo, 0xC0, 0x20);
 }
 
-BOOL NamingScreenApp_Main(OVY_MANAGER *ovyMan, int *pState) {
+BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState) {
     NamingScreenAppData *data = OverlayManager_GetData(ovyMan);
 
     switch ((NamingScreenMainState)*pState) {
@@ -693,7 +693,7 @@ static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s) {
     return ret;
 }
 
-BOOL NamingScreenApp_Exit(OVY_MANAGER *ovyMan, int *pState) {
+BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     NamingScreenAppData *data = OverlayManager_GetData(ovyMan);
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
@@ -926,7 +926,7 @@ static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }
 
-static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OverlayManager *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
     data->pageSwitchState = NS_PAGESWITCH_STATE_IDLE;
@@ -973,7 +973,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     }
 }
 
-static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OVY_MANAGER *ovyMan) {
+static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OverlayManager *ovyMan) {
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
     if (args->battleMsgId != 0) {
         String *string = String_New(200, HEAP_ID_NAMING_SCREEN);
@@ -1312,7 +1312,7 @@ static void NamingScreen_PrintMessageOnWindowWithMargin(Window *window, NameScre
     CopyWindowToVram(window);
 }
 
-static void NamingScreen_InitWindows(NamingScreenAppData *data, OVY_MANAGER *ovyMan, NARC *narc) {
+static void NamingScreen_InitWindows(NamingScreenAppData *data, OverlayManager *ovyMan, NARC *narc) {
     AddWindowParameterized(data->bgConfig, &data->windows[0], GF_BG_LYR_MAIN_0, 2, 1, 26, 12, 1, 0x100);
     AddWindowParameterized(data->bgConfig, &data->windows[1], GF_BG_LYR_MAIN_1, 2, 1, 26, 12, 1, 0x238);
 

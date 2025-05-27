@@ -42,7 +42,7 @@ typedef enum BattleState {
     BSTATE_EXIT
 } BattleState;
 
-BOOL Battle_Run(OVY_MANAGER *man, int *state) {
+BOOL Battle_Run(OverlayManager *man, int *state) {
     BattleSetup *setup = OverlayManager_GetArgs(man);
 
     switch (*state) {

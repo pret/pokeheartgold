@@ -10,8 +10,8 @@
 #include "menu_input_state.h"
 #include "options.h"
 #include "player_data.h"
-#include "touchscreen_list_menu.h"
 #include "sprite_system.h"
+#include "touchscreen_list_menu.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;

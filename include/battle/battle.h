@@ -21,10 +21,10 @@
 #include "pokepic.h"
 #include "sav_chatot.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "sys_task_api.h"
 #include "trainer_data.h"
 #include "unk_0200CE7C.h"
-#include "sprite_system.h"
 
 typedef struct BattleMessage {
     u8 unk0;

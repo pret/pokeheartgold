@@ -5,8 +5,8 @@
 
 typedef struct PokeathlonCourseArgs PokeathlonCourseArgs;
 
-BOOL PokeathlonCourse_Init(OVY_MANAGER *man, int *state);
-BOOL PokeathlonCourse_Main(OVY_MANAGER *man, int *state);
-BOOL PokeathlonCourse_Exit(OVY_MANAGER *man, int *state);
+BOOL PokeathlonCourse_Init(OverlayManager *man, int *state);
+BOOL PokeathlonCourse_Main(OverlayManager *man, int *state);
+BOOL PokeathlonCourse_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_96_H

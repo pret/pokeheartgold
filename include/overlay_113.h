@@ -10,8 +10,8 @@ typedef struct UnownReportArgs {
     SaveData *saveData;
 } UnownReportArgs;
 
-BOOL UnownReport_Init(OVY_MANAGER *man, int *state);
-BOOL UnownReport_Main(OVY_MANAGER *man, int *state);
-BOOL UnownReport_Exit(OVY_MANAGER *man, int *state);
+BOOL UnownReport_Init(OverlayManager *man, int *state);
+BOOL UnownReport_Main(OverlayManager *man, int *state);
+BOOL UnownReport_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_113_H

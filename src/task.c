@@ -105,7 +105,7 @@ static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work) {
+void CallApplicationAsTask(TaskManager *taskManager, const OverlayManagerTemplate *template, void *work) {
     struct UnkTaskEnv *env;
 
     env = AllocFromHeapAtEnd((HeapID)32, sizeof(struct UnkTaskEnv));
