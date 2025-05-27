@@ -25,7 +25,7 @@ int ov101_021F4824(PokegearRadioAppData *radioApp);
 int ov101_021F4888(PokegearRadioAppData *radioApp);
 int ov101_021F4928(PokegearRadioAppData *radioApp);
 
-BOOL PokegearRadio_Init(OVY_MANAGER *man, int *state) {
+BOOL PokegearRadio_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x20000);
     PokegearRadioAppData *radioApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearRadioAppData), HEAP_ID_POKEGEAR_APP);
@@ -36,7 +36,7 @@ BOOL PokegearRadio_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL PokegearRadio_Main(OVY_MANAGER *man, int *state) {
+BOOL PokegearRadio_Main(OverlayManager *man, int *state) {
     PokegearRadioAppData *radioApp = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -68,7 +68,7 @@ BOOL PokegearRadio_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL PokegearRadio_Exit(OVY_MANAGER *man, int *state) {
+BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
     PokegearRadioAppData *radioApp = OverlayManager_GetData(man);
 
     Radio_Unload(radioApp);
