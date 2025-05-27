@@ -33,13 +33,13 @@ typedef struct {
 typedef struct {
     HeapID heapId;
     u8 unk4[4];
-    OVY_MANAGER *ov_mgr;
+    OverlayManager *ov_mgr;
     Ov50_021E5A3C *parentData;
     void *unk10;
 } TrainerCardAppState;
 
-BOOL TrainerCard_Init(OVY_MANAGER *man, int *state);
-BOOL TrainerCard_Main(OVY_MANAGER *man, int *state);
-BOOL TrainerCard_Exit(OVY_MANAGER *man, int *state);
+BOOL TrainerCard_Init(OverlayManager *man, int *state);
+BOOL TrainerCard_Main(OverlayManager *man, int *state);
+BOOL TrainerCard_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVERLAY_TRAINER_CARD_H

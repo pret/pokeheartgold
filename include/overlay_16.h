@@ -42,8 +42,8 @@ u32 ItemIdToMulchId(u16 itemId);
 u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId);
 u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId);
 
-BOOL BerryPots_Init(OVY_MANAGER *manager, int *state);
-BOOL BerryPots_Main(OVY_MANAGER *manager, int *state);
-BOOL BerryPots_Exit(OVY_MANAGER *manager, int *state);
+BOOL BerryPots_Init(OverlayManager *manager, int *state);
+BOOL BerryPots_Main(OverlayManager *manager, int *state);
+BOOL BerryPots_Exit(OverlayManager *manager, int *state);
 
 #endif

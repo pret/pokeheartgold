@@ -102,7 +102,7 @@ static const GraphicsBanks sDeleteSave_GraphicsBanks = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-const OVY_MGR_TEMPLATE gApplication_DeleteSave = {
+const OverlayManagerTemplate gApplication_DeleteSave = {
     .init = DeleteSavedataApp_Init,
     .exec = DeleteSavedataApp_Main,
     .exit = DeleteSavedataApp_Exit,
@@ -119,7 +119,7 @@ static void DeleteSavedataApp_FreeTextAndWindow(DeleteSavedataApp_Data *data);
 static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data);
 static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
-BOOL DeleteSavedataApp_Init(OVY_MANAGER *manager, int *state) {
+BOOL DeleteSavedataApp_Init(OverlayManager *manager, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     DeleteSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(DeleteSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
@@ -132,7 +132,7 @@ BOOL DeleteSavedataApp_Init(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL DeleteSavedataApp_Main(OVY_MANAGER *manager, int *state) {
+BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
     DeleteSavedataApp_Data *data = OverlayManager_GetData(manager);
     BOOL ret = FALSE;
 
@@ -198,7 +198,7 @@ BOOL DeleteSavedataApp_Main(OVY_MANAGER *manager, int *state) {
     return ret;
 }
 
-BOOL DeleteSavedataApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state) {
     DeleteSavedataApp_Data *data = OverlayManager_GetData(manager);
     HeapID heapId = data->heapId;
 

@@ -49,7 +49,7 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
     return FALSE;
 }
 
-extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
+extern OverlayManagerTemplate gOverlayTemplate_BattleArcadeGameBoard;
 
 BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);

@@ -19,13 +19,13 @@ enum {
     TRAINERCARD_RUN_EXIT,
 };
 
-static BOOL isSubprocFinished(OVY_MANAGER **man);
+static BOOL isSubprocFinished(OverlayManager **man);
 static int TCardAppRunStep_Init(TrainerCardAppState *work);
 static int TCardAppRunStep_Exec(TrainerCardAppState *work);
 static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work);
 static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work);
 
-static BOOL isSubprocFinished(OVY_MANAGER **man) {
+static BOOL isSubprocFinished(OverlayManager **man) {
     if (*man && OverlayManager_Run(*man)) {
         OverlayManager_Delete(*man);
         *man = NULL;
@@ -34,7 +34,7 @@ static BOOL isSubprocFinished(OVY_MANAGER **man) {
     return FALSE;
 }
 
-BOOL TrainerCard_Init(OVY_MANAGER *man, int *state) {
+BOOL TrainerCard_Init(OverlayManager *man, int *state) {
     void *ptr = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_TRAINER_CARD, 0x1000);
 
@@ -47,7 +47,7 @@ BOOL TrainerCard_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL TrainerCard_Main(OVY_MANAGER *man, int *state) {
+BOOL TrainerCard_Main(OverlayManager *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
     switch (*state) {
     case TRAINERCARD_RUN_INIT:
@@ -69,7 +69,7 @@ BOOL TrainerCard_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL TrainerCard_Exit(OVY_MANAGER *man, int *state) {
+BOOL TrainerCard_Exit(OverlayManager *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));
     OverlayManager_FreeData(man);
@@ -79,7 +79,7 @@ BOOL TrainerCard_Exit(OVY_MANAGER *man, int *state) {
 }
 
 static int TCardAppRunStep_Init(TrainerCardAppState *work) {
-    static const OVY_MGR_TEMPLATE template = {
+    static const OverlayManagerTemplate template = {
         TrainerCardMainApp_Init,
         TrainerCardMainApp_Main,
         TrainerCardMainApp_Exit,
@@ -101,7 +101,7 @@ static int TCardAppRunStep_Exec(TrainerCardAppState *work) {
 }
 
 static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
-    const OVY_MGR_TEMPLATE template = {
+    const OverlayManagerTemplate template = {
         TrainerCardSignature_Init,
         TrainerCardSignature_Main,
         TrainerCardSignature_Exit,

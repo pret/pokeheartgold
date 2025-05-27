@@ -24,8 +24,8 @@ typedef struct CertificatesArgs {
     u32 certificateId;
 } CertificatesArgs;
 
-BOOL Certificates_Init(OVY_MANAGER *manager, int *state);
-BOOL Certificates_Main(OVY_MANAGER *manager, int *state);
-BOOL Certificates_Exit(OVY_MANAGER *manager, int *state);
+BOOL Certificates_Init(OverlayManager *manager, int *state);
+BOOL Certificates_Main(OverlayManager *manager, int *state);
+BOOL Certificates_Exit(OverlayManager *manager, int *state);
 
 #endif

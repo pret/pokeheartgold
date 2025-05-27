@@ -3,19 +3,21 @@
 #include "application/pokegear/phone/phone_internal.h"
 #include "msgdata/msg/msg_0640.h"
 
-#define PHONE_GENERIC_TERM {       \
-    .type = PHONECALLGENERIC_NIL,  \
-    .chance = 100,                 \
-    .scriptType = 0,               \
-    .scriptID = PHONE_SCRIPT_NONE, \
-}
+#define PHONE_GENERIC_TERM             \
+    {                                  \
+        .type = PHONECALLGENERIC_NIL,  \
+        .chance = 100,                 \
+        .scriptType = 0,               \
+        .scriptID = PHONE_SCRIPT_NONE, \
+    }
 
-#define PHONE_GENERIC_NULL {       \
-    .type = PHONECALLGENERIC_NONE, \
-    .chance = 0,                   \
-    .scriptType = 0,               \
-    .scriptID = PHONE_SCRIPT_NONE, \
-}
+#define PHONE_GENERIC_NULL             \
+    {                                  \
+        .type = PHONECALLGENERIC_NONE, \
+        .chance = 0,                   \
+        .scriptType = 0,               \
+        .scriptID = PHONE_SCRIPT_NONE, \
+    }
 
 // Each row of 12 is subdivided into two groups of 6
 //   Group 0: If outgoing

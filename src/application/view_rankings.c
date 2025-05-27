@@ -252,7 +252,7 @@ static const RecordPageParam *const sRecordPageParams[] = {
     sRecordPageParam_Pokemon,
 };
 
-static void ViewRankingsApp_Init_Internal(OVY_MANAGER *man, int *pState);
+static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState);
 static BOOL ViewRankingsApp_Main_Internal(ViewRankingsAppData *appData);
 static void ViewRankingsApp_RunSpriteAnimations(ViewRankingsAppData *appData);
 static BOOL ViewRankings_PollAndHandleInput(ViewRankingsAppData *appData);
@@ -295,12 +295,12 @@ static void dimAllMainBgsExceptLyr0(void);
 static void resetMainBgsBrightness(void);
 static void ViewRankingsApp_CommitChanges(ViewRankingsAppData *appData);
 
-BOOL ViewRankingsApp_Init(OVY_MANAGER *man, int *pState) {
+BOOL ViewRankingsApp_Init(OverlayManager *man, int *pState) {
     ViewRankingsApp_Init_Internal(man, pState);
     return TRUE;
 }
 
-BOOL ViewRankingsApp_Main(OVY_MANAGER *man, int *pState) {
+BOOL ViewRankingsApp_Main(OverlayManager *man, int *pState) {
     ViewRankingsAppData *appData = OverlayManager_GetData(man);
     switch (appData->mainState) {
     case VIEW_RANKINGS_APP_MAIN_STATE_FADE_IN:
@@ -333,7 +333,7 @@ BOOL ViewRankingsApp_Main(OVY_MANAGER *man, int *pState) {
     return FALSE;
 }
 
-BOOL ViewRankingsApp_Exit(OVY_MANAGER *man, int *pState) {
+BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
     ViewRankingsAppData *appData = OverlayManager_GetData(man);
 
     gSystem.screensFlipped = FALSE;
@@ -375,7 +375,7 @@ BOOL ViewRankingsApp_Exit(OVY_MANAGER *man, int *pState) {
     return TRUE;
 }
 
-static void ViewRankingsApp_Init_Internal(OVY_MANAGER *man, int *pState) {
+static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState) {
     ViewRankingsArgs *args = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_RANKINGS_APP, 0x10000);
     ViewRankingsAppData *data = OverlayManager_CreateAndGetData(man, sizeof(ViewRankingsAppData), HEAP_ID_RANKINGS_APP);

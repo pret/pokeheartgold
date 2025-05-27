@@ -136,8 +136,8 @@ static int MemoFlagToIdx(int);
 static void ov122_021E8004(VoltorbFlipAppWork *);
 static void SetGXBanks(void);
 static void ov122_021E8068(void);
-static void ov122_021E8094(OVY_MANAGER *);
-static void FreeOverlayData(OVY_MANAGER *);
+static void ov122_021E8094(OverlayManager *);
+static void FreeOverlayData(OverlayManager *);
 
 extern const GraphicsBanks sVoltorbFlipGraphicsBanks;
 extern const MsgNoList sMenuMsgNos[];
@@ -1947,7 +1947,7 @@ static void ov122_021E8068(void) {
     GXS_SetVisiblePlane(0);
 }
 
-static void ov122_021E8094(OVY_MANAGER *man) {
+static void ov122_021E8094(OverlayManager *man) {
     VoltorbFlipArgs *args = OverlayManager_GetArgs(man);
     GF_ASSERT(args != NULL);
 
@@ -2004,7 +2004,7 @@ static void ov122_021E8094(OVY_MANAGER *man) {
     GameStats_AddScore(Save_GameStats_Get(args->saveData), SCORE_EVENT_6);
 }
 
-static void FreeOverlayData(OVY_MANAGER *man) {
+static void FreeOverlayData(OverlayManager *man) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     Main_SetVBlankIntrCB(NULL, NULL);
     FreeGameState(work->game);
@@ -2025,7 +2025,7 @@ static void FreeOverlayData(OVY_MANAGER *man) {
     DestroyHeap(HEAP_ID_VOLTORB_FLIP);
 }
 
-BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Init(OverlayManager *man, int *state) {
     switch (*state) {
     case 0:
         ov122_021E8094(man);
@@ -2048,7 +2048,7 @@ BOOL VoltorbFlip_Init(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Exit(OverlayManager *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     switch (*state) {
     case 0:
@@ -2068,7 +2068,7 @@ BOOL VoltorbFlip_Exit(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL VoltorbFlip_Main(OVY_MANAGER *man, int *state) {
+BOOL VoltorbFlip_Main(OverlayManager *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     if (RunWorkflowEngine(work->workflow)) {
         return TRUE;
