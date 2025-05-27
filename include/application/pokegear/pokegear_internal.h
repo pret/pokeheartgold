@@ -105,7 +105,7 @@ struct PokegearAppData {
     u8 cursorInAppSwitchZone;                   // 0x006
     u8 unk_007;                                 // 0x007
     u8 unk_008;                                 // 0x008
-    u8 unk_009;                                 // 0x009
+    u8 fadeCounter;                             // 0x009
     MenuInputState menuInputState;              // 0x00C
     MenuInputState menuInputStateBak;           // 0x010
     u8 filler_014[0x4];                         // 0x014
@@ -153,7 +153,7 @@ int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1);
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
-BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1);
+BOOL Pokegear_RunFadeLyrs123(PokegearAppData *pokegearApp, int a1);
 u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
 BOOL ov100_021E5DDC(PokegearAppData *pokegearApp);
 BOOL ov100_021E5E88(PokegearAppData *pokegearApp);

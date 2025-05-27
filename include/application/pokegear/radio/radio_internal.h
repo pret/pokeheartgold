@@ -13,6 +13,19 @@ typedef enum RadioStationSelection {
     RADIO_STATION_SELECTION_MAHOGANY,
 } RadioStationSelection;
 
+typedef enum RadioMainState {
+    RADIO_MAIN_STATE_INIT,
+    RADIO_MAIN_STATE_INPUT_LOOP,
+    RADIO_MAIN_STATE_UNLOAD,
+    RADIO_MAIN_STATE_3,
+    RADIO_MAIN_STATE_4,
+    RADIO_MAIN_STATE_FADE_IN,
+    RADIO_MAIN_STATE_FADE_OUT,
+    RADIO_MAIN_STATE_FADE_IN_APP,
+    RADIO_MAIN_STATE_FADE_OUT_APP,
+    RADIO_MAIN_STATE_QUIT,
+} RadioMainState;
+
 typedef struct RadioShow {
     HeapID heapID;             // 0x00
     SaveData *saveData;        // 0x04
@@ -90,12 +103,12 @@ BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp);
 void Radio_OnReselectApp(void *cbArg);
 void Radio_UnknownCB(void *cbArg);
 void Radio_CloseStation(PokegearRadioAppData *radioApp);
-void ov101_021F5090(PokegearRadioAppData *radioApp);
-void ov101_021F50D8(PokegearAppData *pokegear, void *cbArg);
-void ov101_021F50F0(PokegearRadioAppData *radioApp, int a1);
-BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1);
-int ov101_021F5304(PokegearRadioAppData *radioApp);
-int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
+void Radio_Start(PokegearRadioAppData *radioApp);
+void Radio_Run(PokegearAppData *pokegear, void *cbArg);
+void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int a1);
+BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int a1);
+int Radio_HandleKeyInput(PokegearRadioAppData *radioApp);
+int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
 u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSignalStrengthRet);
 int ov101_021F5524(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
 int Radio_HandleDragCursor(PokegearRadioAppData *radioApp);

@@ -135,16 +135,16 @@ void Radio_CloseStation(PokegearRadioAppData *radioApp) {
     }
 }
 
-void ov101_021F5090(PokegearRadioAppData *radioApp) {
-    u8 sp0;
-    radioApp->station = Radio_GetTunedStationID(radioApp, radioApp->cursorX, radioApp->cursorY, &sp0);
-    radioApp->signalStrength = sp0;
+void Radio_Start(PokegearRadioAppData *radioApp) {
+    u8 signalStrength;
+    radioApp->station = Radio_GetTunedStationID(radioApp, radioApp->cursorX, radioApp->cursorY, &signalStrength);
+    radioApp->signalStrength = signalStrength;
     if (radioApp->station < 8) {
         Radio_OpenStation(radioApp);
     }
 }
 
-void ov101_021F50D8(PokegearAppData *pokegear, void *cbArg) {
+void Radio_Run(PokegearAppData *pokegear, void *cbArg) {
     PokegearRadioAppData *radioApp = cbArg;
 
     if (radioApp->stationActive != 0) {
@@ -152,7 +152,7 @@ void ov101_021F50D8(PokegearAppData *pokegear, void *cbArg) {
     }
 }
 
-void ov101_021F50F0(PokegearRadioAppData *radioApp, int a1) {
+void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int a1) {
     G2S_SetWnd0Position(0, 112, 255, 192);
     G2S_SetWnd1Position(255, 112, 0, 192);
     G2S_SetWndOutsidePlane(17, FALSE);
@@ -173,7 +173,7 @@ void ov101_021F50F0(PokegearRadioAppData *radioApp, int a1) {
     radioApp->windowScrollFinished = 0;
 }
 
-BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1) {
+BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int a1) {
     if (radioApp->windowScrollFinished) {
         return TRUE;
     }
@@ -209,7 +209,7 @@ BOOL ov101_021F51C0(PokegearRadioAppData *radioApp, int a1) {
     return TRUE;
 }
 
-int ov101_021F5304(PokegearRadioAppData *radioApp) {
+int Radio_HandleKeyInput(PokegearRadioAppData *radioApp) {
     int xSpeed = 0;
     int ySpeed = 0;
     s16 prevX;
@@ -262,7 +262,7 @@ int ov101_021F5304(PokegearRadioAppData *radioApp) {
     return TOUCH_MENU_NO_INPUT;
 }
 
-int ov101_021F5468(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
+int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
     *inputWasTouch = FALSE;
     if (radioApp->isDraggingCursor != 0) {
         *inputWasTouch = TRUE;

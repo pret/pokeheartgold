@@ -189,22 +189,22 @@ void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp) {
     }
 }
 
-BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1) {
-    if (pokegearApp->unk_009 > 16) {
+BOOL Pokegear_RunFadeLyrs123(PokegearAppData *pokegearApp, int direction) {
+    if (pokegearApp->fadeCounter > 16) {
         return TRUE;
     }
-    if (a1 == 0) {
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - pokegearApp->unk_009, RGB_BLACK);
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - pokegearApp->unk_009, RGB_BLACK);
+    if (direction == 0) {
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - pokegearApp->fadeCounter, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - pokegearApp->fadeCounter, RGB_BLACK);
     } else {
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, pokegearApp->unk_009, RGB_BLACK);
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, pokegearApp->unk_009, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, pokegearApp->fadeCounter, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, pokegearApp->fadeCounter, RGB_BLACK);
     }
-    if (pokegearApp->unk_009 >= 16) {
-        pokegearApp->unk_009 += 2;
+    if (pokegearApp->fadeCounter >= 16) {
+        pokegearApp->fadeCounter += 2;
         return TRUE;
     } else {
-        pokegearApp->unk_009 += 2;
+        pokegearApp->fadeCounter += 2;
         return FALSE;
     }
 }

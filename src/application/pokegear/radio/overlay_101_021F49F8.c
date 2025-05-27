@@ -24,7 +24,7 @@ void Radio_CreateSprites(PokegearRadioAppData *radioApp);
 void Radio_UnloadSprites(PokegearRadioAppData *radioApp);
 void Radio_InitAppSwitchCursorState(PokegearRadioAppData *radioApp);
 
-static const WindowTemplate ov101_021F87DC[] = {
+static const WindowTemplate sWindowTemplates[] = {
     {
      .bgId = GF_BG_LYR_SUB_2,
      .left = 2,
@@ -139,7 +139,7 @@ BOOL Radio_VideoInit(PokegearRadioAppData *radioApp) {
     case 1:
         Radio_CreateSprites(radioApp);
         Radio_InitAppSwitchCursorState(radioApp);
-        radioApp->pokegear->unk_058 = ov101_021F50D8;
+        radioApp->pokegear->unk_058 = Radio_Run;
         radioApp->substate = 0;
         return TRUE;
     }
@@ -334,7 +334,7 @@ void Radio_LoadPalettes(PokegearRadioAppData *radioApp) {
 
 void Radio_InitWindows(PokegearRadioAppData *radioApp) {
     for (int i = 0; i < 3; ++i) {
-        AddWindowParameterized(radioApp->pokegear->bgConfig, &radioApp->windows[i], ov101_021F87DC[i].bgId, ov101_021F87DC[i].left, ov101_021F87DC[i].top, ov101_021F87DC[i].width, ov101_021F87DC[i].height, ov101_021F87DC[i].palette, ov101_021F87DC[i].baseTile);
+        AddWindowParameterized(radioApp->pokegear->bgConfig, &radioApp->windows[i], sWindowTemplates[i].bgId, sWindowTemplates[i].left, sWindowTemplates[i].top, sWindowTemplates[i].width, sWindowTemplates[i].height, sWindowTemplates[i].palette, sWindowTemplates[i].baseTile);
         FillWindowPixelBuffer(&radioApp->windows[i], 0);
     }
 

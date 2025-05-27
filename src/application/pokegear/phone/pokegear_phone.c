@@ -262,17 +262,17 @@ int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp) {
             ToggleBgLayer(i + 1, TRUE);
             ToggleBgLayer(i + 5, TRUE);
         }
-        phoneApp->pokegear->unk_009 = 0;
+        phoneApp->pokegear->fadeCounter = 0;
         ++phoneApp->subtaskState;
         break;
     case 1:
-        if (ov100_021E5D3C(phoneApp->pokegear, 0)) {
+        if (Pokegear_RunFadeLyrs123(phoneApp->pokegear, 0)) {
             ++phoneApp->subtaskState;
         }
         break;
     case 2:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, FALSE);
-        phoneApp->pokegear->unk_009 = 0;
+        phoneApp->pokegear->fadeCounter = 0;
         phoneApp->subtaskState = 0;
         return PHONE_MAIN_STATE_INPUT_LOOP;
     }
@@ -283,11 +283,11 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp) 
     switch (phoneApp->subtaskState) {
     case 0:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
-        phoneApp->pokegear->unk_009 = 0;
+        phoneApp->pokegear->fadeCounter = 0;
         ++phoneApp->subtaskState;
         break;
     case 1:
-        if (ov100_021E5D3C(phoneApp->pokegear, 1)) {
+        if (Pokegear_RunFadeLyrs123(phoneApp->pokegear, 1)) {
             ++phoneApp->subtaskState;
         }
         break;
@@ -303,7 +303,7 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp) 
         break;
     case 3:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, FALSE);
-        phoneApp->pokegear->unk_009 = 0;
+        phoneApp->pokegear->fadeCounter = 0;
         phoneApp->subtaskState = 0;
         return PHONE_MAIN_STATE_TEARDOWN;
     }
