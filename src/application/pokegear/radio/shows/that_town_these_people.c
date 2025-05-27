@@ -31,7 +31,7 @@ void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow);
 void RadioShow_ThatTownThesePeople_Unload(RadioShow *radioShow);
 BOOL RadioShow_ThatTownThesePeople_EnsureUniqueMsgID(ThatTownThesePeopleData *data, u8 msgID, u8 index);
 
-static const u8 ov101_021F8B4C[] = {
+static const u8 sEpisodeUnlockFlags[] = {
     TTTP_COND_ALWAYS,
     TTTP_COND_ALWAYS,
     TTTP_COND_ALWAYS,
@@ -139,7 +139,7 @@ void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow) {
     data->episodeUnlockFlags[4] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
     num = 0;
     for (i = 0; i < 20; ++i) {
-        if (data->episodeUnlockFlags[ov101_021F8B4C[i]]) {
+        if (data->episodeUnlockFlags[sEpisodeUnlockFlags[i]]) {
             data->unlockedEpisodes[num++] = i;
         }
     }

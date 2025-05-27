@@ -110,10 +110,10 @@ BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int a1);
 int Radio_HandleKeyInput(PokegearRadioAppData *radioApp);
 int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
 u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSignalStrengthRet);
-int ov101_021F5524(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
+int Radio_HandleTouchInput_Internal(PokegearRadioAppData *radioApp, BOOL *inputWasTouch);
 int Radio_HandleDragCursor(PokegearRadioAppData *radioApp);
-BOOL ov101_021F56B4(PokegearRadioAppData *radioApp, s16 x, s16 y);
-void ov101_021F5780(PokegearRadioAppData *radioApp, u8 a1);
+BOOL Radio_CoordsToStation(PokegearRadioAppData *radioApp, s16 x, s16 y);
+void Radio_SnapCursorToChannelHitbox(PokegearRadioAppData *radioApp, u8 a1);
 
 RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
 void RadioShow_Delete(RadioShow *radioShow);

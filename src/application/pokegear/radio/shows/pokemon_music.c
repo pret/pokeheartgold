@@ -45,14 +45,14 @@ void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track);
 void RadioShow_PokemonMusic_Init(RadioShow *radioShow);
 void RadioShow_PokemonMusic_Unload(RadioShow *radioShow);
 
-static const u16 ov101_021F8A94[] = {
+static const u16 sMusicIDs_Default[] = {
     SEQ_GS_RADIO_MARCH,
     SEQ_GS_RADIO_KOMORIUTA,
     SEQ_GS_RADIO_R_101,
     SEQ_GS_RADIO_R_201,
 };
 
-static const u16 ov101_021F8A9C[] = {
+static const u16 sMusicIDS_GBSounds[] = {
     SEQ_GS_P_TITLE,
     SEQ_GS_P_OPENING_TITLE_G,
     SEQ_GS_P_ENDING,
@@ -85,9 +85,9 @@ void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track) {
     u16 seqNo;
     if (track == PKMUSTRACK_GBSOUNDS) {
         track = (LCRandom() % 25000) / 1000;
-        seqNo = ov101_021F8A9C[track];
+        seqNo = sMusicIDS_GBSounds[track];
     } else {
-        seqNo = ov101_021F8A94[track];
+        seqNo = sMusicIDs_Default[track];
     }
     data->playingTrack = track;
     SndRadio_StartSeq(seqNo);

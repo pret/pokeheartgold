@@ -34,7 +34,7 @@ typedef struct PokemonSearchPartyData {
 void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow);
 void RadioShow_PokemonSearchParty_Unload(RadioShow *radioShow);
 
-static const u8 ov101_021F8B3C[] = {
+static const u8 sEpisodeUnlockFlags[] = {
     PSP_EPISODE_UNLOCK_ALWAYS,
     PSP_EPISODE_UNLOCK_ALWAYS,
     PSP_EPISODE_UNLOCK_AZALEA_ROCKETS,
@@ -137,8 +137,8 @@ void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow) {
         data->episodeUnlockFlags[7] = 1;
     }
     data->episodeUnlockFlags[6] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
-    for (i = 0; i < NELEMS(ov101_021F8B3C); ++i) {
-        if (data->episodeUnlockFlags[ov101_021F8B3C[i]]) {
+    for (i = 0; i < NELEMS(sEpisodeUnlockFlags); ++i) {
+        if (data->episodeUnlockFlags[sEpisodeUnlockFlags[i]]) {
             data->unlockedEpisodes[num++] = i;
         }
     }
