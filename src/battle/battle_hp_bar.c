@@ -512,7 +512,7 @@ void ov12_0226498C(BattleHpBar *hpBar, u32 num, u32 flag) {
     case HP_BAR_TYPE_PALPARK:
         break;
     }
-    if (BattleSystem_GetBattleType(hpBar->bsys) & BATTLE_TYPE_TRAINER) {
+    if (BattleSystem_GetBattleType(hpBar->battleSystem) & BATTLE_TYPE_TRAINER) {
         flag &= ~0x200;
     }
 
@@ -603,8 +603,8 @@ static void ov12_02264B4C(BattleHpBar *hpBar) {
 
 static void ov12_02264B60(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
-    SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->bsys);
-    SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
+    SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->battleSystem);
+    SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->battleSystem);
     SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteManager_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
     SpriteManager_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -613,8 +613,8 @@ static void ov12_02264B60(BattleHpBar *hpBar) {
 static void ov12_02264B94(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
     if (tmplate != NULL) {
-        SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->bsys);
-        SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
+        SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->battleSystem);
+        SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->battleSystem);
         SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
         SpriteManager_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
         SpriteManager_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -631,9 +631,9 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 
     narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    renderer = BattleSystem_GetSpriteRenderer(hpBar->bsys);
-    gfxHandler = BattleSystem_GetGfxHandler(hpBar->bsys);
-    plttData = BattleSystem_GetPaletteData(hpBar->bsys);
+    renderer = BattleSystem_GetSpriteRenderer(hpBar->battleSystem);
+    gfxHandler = BattleSystem_GetGfxHandler(hpBar->battleSystem);
+    plttData = BattleSystem_GetPaletteData(hpBar->battleSystem);
 
     tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
@@ -816,7 +816,7 @@ void ov12_02264E84(BattleHpBar *hpBar) {
         Sprite_SetAnimActiveFlag(hpBar->arrowObj->sprite, TRUE);
         ov12_02264F00(hpBar, 1);
     }
-    if (!(BattleSystem_GetBattleType(hpBar->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
+    if (!(BattleSystem_GetBattleType(hpBar->battleSystem) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
         ov12_02265D78(hpBar);
     }
 }
@@ -841,7 +841,7 @@ void ov12_02264EE0(BattleHpBar *hpBar, int prio) {
 
 static void ov12_02264F00(BattleHpBar *hpBar, int a1) {
     if (hpBar->arrowObj != NULL) {
-        if (!(BattleSystem_GetBattleType(hpBar->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || a1 != TRUE) {
+        if (!(BattleSystem_GetBattleType(hpBar->battleSystem) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || a1 != TRUE) {
             ManagedSprite_SetDrawFlag(hpBar->arrowObj, a1);
         }
     }
@@ -1166,13 +1166,13 @@ static void ov12_0226516C(BattleHpBar *hpBar) {
     BoxPokemon *boxMon;
     MessageFormat *msgFormat;
 
-    bgConfig = BattleSystem_GetBgConfig(hpBar->bsys);
-    msgData = BattleSystem_GetMessageData(hpBar->bsys);
-    msgFormat = BattleSystem_GetMessageFormat(hpBar->bsys);
+    bgConfig = BattleSystem_GetBgConfig(hpBar->battleSystem);
+    msgData = BattleSystem_GetMessageData(hpBar->battleSystem);
+    msgFormat = BattleSystem_GetMessageFormat(hpBar->battleSystem);
     string = String_New(22, HEAP_ID_BATTLE);
     string2 = NewString_ReadMsgData(msgData, msg_0197_00964);
 
-    mon = BattleSystem_GetPartyMon(hpBar->bsys, hpBar->battlerId, hpBar->monId);
+    mon = BattleSystem_GetPartyMon(hpBar->battleSystem, hpBar->battlerId, hpBar->monId);
     boxMon = Mon_GetBoxMon(mon);
     BufferBoxMonNickname(msgFormat, 0, boxMon);
     StringExpandPlaceholders(msgFormat, string, string2);
@@ -1227,7 +1227,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
     u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     u8 *r7 = AllocFromHeap(HEAP_ID_BATTLE, 0xC0);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->bsys), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->battleSystem), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
     MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, ov12_0226D420[hpBar->type][0].size);
@@ -1252,7 +1252,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
 static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
     u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), num, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->battleSystem), num, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
@@ -1264,7 +1264,7 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
 static void ov12_02265500(BattleHpBar *hpBar) {
     u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), hpBar->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->battleSystem), hpBar->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
@@ -1301,8 +1301,8 @@ static void BattleHpBar_PrintSafariOrParkBallsString(BattleHpBar *hpBar, u32 fla
     MsgData *msgData;
     String *string;
 
-    bgConfig = BattleSystem_GetBgConfig(hpBar->bsys);
-    msgData = BattleSystem_GetMessageData(hpBar->bsys);
+    bgConfig = BattleSystem_GetBgConfig(hpBar->battleSystem);
+    msgData = BattleSystem_GetMessageData(hpBar->battleSystem);
 
     if (flag & 0x400) {
         string = NewString_ReadMsgData(msgData, msg_0197_00950); // SAFARI BALLS
@@ -1342,9 +1342,9 @@ static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u
     String *string;
     String *string2;
 
-    bgConfig = BattleSystem_GetBgConfig(hpBar->bsys);
-    msgData = BattleSystem_GetMessageData(hpBar->bsys);
-    msgFormat = BattleSystem_GetMessageFormat(hpBar->bsys);
+    bgConfig = BattleSystem_GetBgConfig(hpBar->battleSystem);
+    msgData = BattleSystem_GetMessageData(hpBar->battleSystem);
+    msgFormat = BattleSystem_GetMessageFormat(hpBar->battleSystem);
 
     string = String_New(30, HEAP_ID_BATTLE);
     if (flag & 0x400) {
@@ -1687,9 +1687,9 @@ SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
 
 static void Task_ExpBarFullFlash(SysTask *task, void *data) {
     BattleHpBarExpBarFullFlashEffectTaskData *taskData = data;
-    SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(taskData->hpBar->bsys);
+    SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(taskData->hpBar->battleSystem);
     int plttNum;
-    PaletteData *plttData = BattleSystem_GetPaletteData(taskData->hpBar->bsys);
+    PaletteData *plttData = BattleSystem_GetPaletteData(taskData->hpBar->battleSystem);
 
     switch (taskData->state) {
     case 0:

@@ -444,7 +444,7 @@ typedef struct BattleHpBar {
     };
     ManagedSprite *boxObj;
     ManagedSprite *arrowObj;
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     SysTask *unk10;
     Window unk14;
     u8 battlerId;
@@ -497,7 +497,7 @@ typedef struct OpponentData {
 
 typedef struct UnkBattleSystemSub17C {
     ManagedSprite *unk0;
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     u8 unk8;
     u8 unk9;
     s16 unkA;
@@ -629,7 +629,7 @@ struct BattleSystem {
 };
 
 struct GetterWork {
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     BattleContext *ctx;
     u32 unk8;
     u32 unkC[2];

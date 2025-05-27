@@ -11,11 +11,11 @@
 
 static void ov12_0226BF04(SysTask *task, void *data);
 
-SysTask *ov12_0226BEC4(BattleSystem *bsys) {
+SysTask *ov12_0226BEC4(BattleSystem *battleSystem) {
     UnkBattleStruct_0226BEC4 *unk;
     unk = AllocFromHeap(HEAP_ID_BATTLE, sizeof(UnkBattleStruct_0226BEC4));
     MI_CpuFill8(unk, 0, sizeof(UnkBattleStruct_0226BEC4));
-    unk->bsys = bsys;
+    unk->battleSystem = battleSystem;
     return SysTask_CreateOnMainQueue(ov12_0226BF04, unk, 1000);
 }
 
@@ -26,7 +26,7 @@ void ov12_0226BEF0(SysTask *task) {
 
 static void ov12_0226BF04(SysTask *task, void *_data) {
     UnkBattleStruct_0226BEC4 *data = _data;
-    u32 *unkPtr = ov12_0223A900(data->bsys);
+    u32 *unkPtr = ov12_0223A900(data->battleSystem);
 
     switch (data->state) {
     case 0:
@@ -46,7 +46,7 @@ static void ov12_0226BF04(SysTask *task, void *_data) {
         }
         break;
     case 2:
-        if (ov12_0223C080(data->bsys) == TRUE && ov12_02266B78(unkPtr) == TRUE) {
+        if (ov12_0223C080(data->battleSystem) == TRUE && ov12_02266B78(unkPtr) == TRUE) {
             PlaySE(1501);
             data->state++;
         }
@@ -54,7 +54,7 @@ static void ov12_0226BF04(SysTask *task, void *_data) {
     case 3:
         data->delay++;
         if (data->delay > 8) {
-            ov12_0223BFFC(data->bsys, 0);
+            ov12_0223BFFC(data->battleSystem, 0);
             data->state++;
         }
         break;

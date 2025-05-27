@@ -5,7 +5,7 @@
 
 #include "filesystem.h"
 
-void *ov12_022660D0(NARC *a0, NARC *a1, BattleSystem *bsys, u32 gender, void *a4);
+void *ov12_022660D0(NARC *a0, NARC *a1, BattleSystem *battleSystem, u32 gender, void *a4);
 BOOL ov12_02266C64(u32 *a0);
 BOOL ov12_02266B78(u32 *a0);
 void ov12_02266390(void *a0);
