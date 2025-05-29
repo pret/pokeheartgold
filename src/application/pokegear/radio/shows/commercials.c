@@ -78,7 +78,7 @@ BOOL RadioShow_Commercials_Setup(RadioShow *radioShow) {
     CommercialsData *data = AllocFromHeap(radioShow->heapID, sizeof(CommercialsData));
     MI_CpuClear8(data, sizeof(CommercialsData));
     // data->heapID = radioShow->heapID;
-    radioShow->triggerCommercials = 0;
+    radioShow->triggerCommercials = FALSE;
     radioShow->showData = data;
     RadioShow_Commercials_Init(radioShow);
     return FALSE;

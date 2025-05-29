@@ -97,7 +97,7 @@ BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow) {
         break;
     case 4:
         if (Radio_RunTextPrinter_WaitJingle(radioShow)) {
-            radioShow->triggerCommercials = 1;
+            radioShow->triggerCommercials = TRUE;
             return TRUE;
         }
         break;
@@ -122,21 +122,21 @@ void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow) {
 
     varsFlags = Save_VarsFlags_Get(radioShow->saveData);
     profile = Save_PlayerData_GetProfile(radioShow->saveData);
-    data->episodeUnlockFlags[0] = 1;
-    data->episodeUnlockFlags[1] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_BEAT_AZALEA_ROCKETS);
-    data->episodeUnlockFlags[2] = PlayerProfile_TestBadgeFlag(profile, BADGE_PLAIN);
-    data->episodeUnlockFlags[3] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS);
+    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_ALWAYS] = 1;
+    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_AZALEA_ROCKETS] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_BEAT_AZALEA_ROCKETS);
+    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_PLAINBADGE] = PlayerProfile_TestBadgeFlag(profile, BADGE_PLAIN);
+    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_TOWER_ROCKETS] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS);
     badgeCount = PlayerProfile_CountBadges(profile);
     if (badgeCount >= 8) {
-        data->episodeUnlockFlags[4] = 1;
+        data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_8BADGES] = 1;
     }
     if (badgeCount >= 9) {
-        data->episodeUnlockFlags[5] = 1;
+        data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_9BADGES] = 1;
     }
     if (badgeCount >= 16) {
-        data->episodeUnlockFlags[7] = 1;
+        data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_16BADGES] = 1;
     }
-    data->episodeUnlockFlags[6] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
+    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
     for (i = 0; i < NELEMS(sEpisodeUnlockFlags); ++i) {
         if (data->episodeUnlockFlags[sEpisodeUnlockFlags[i]]) {
             data->unlockedEpisodes[num++] = i;

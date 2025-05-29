@@ -94,7 +94,7 @@ u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station) {
         station = 0;
     }
     if (radioShow->triggerCommercials) {
-        radioShow->triggerCommercials = 0;
+        radioShow->triggerCommercials = FALSE;
         return RADIO_STATION_COMMERCIALS;
     }
 
@@ -127,7 +127,7 @@ u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station) {
 }
 
 void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik) {
-    radioShow->isSecondLine = 0;
+    radioShow->isSecondLine = FALSE;
     if (station >= 8) {
         station = 0;
     }
@@ -142,7 +142,7 @@ void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik) {
     radioShow->scrollFrames = 8;
     radioShow->scrollCounter = 0;
     radioShow->statik = statik;
-    radioShow->isPlayingJingle = 0;
+    radioShow->isPlayingJingle = FALSE;
     radioShow->printWithJingleState = 0;
     if (radioShow->curStation != RADIO_STATION_COMMERCIALS && radioShow->lastStation != radioShow->curStation) {
         radioShow->lastEpisodeID = 0;
@@ -159,7 +159,7 @@ void RadioShow_EndSegment(RadioShow *radioShow) {
     }
     FillWindowPixelBuffer(radioShow->showScriptWindow, (radioShow->bgColor << 4) | radioShow->bgColor);
     CopyWindowToVram(radioShow->showScriptWindow);
-    radioShow->triggerCommercials = 0;
+    radioShow->triggerCommercials = FALSE;
 }
 
 void RadioShow_SetStaticLevel(RadioShow *radioShow, BOOL statik) {
@@ -237,7 +237,7 @@ void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
 }
 
 void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
-    if (radioShow->statik == 1) {
+    if (radioShow->statik == TRUE) {
         String_RadioAddStatic(msg, 70);
     }
     AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
@@ -245,7 +245,7 @@ void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
 
 BOOL RadioPrintAdvance(RadioShow *radioShow) {
     if (!radioShow->isSecondLine) {
-        radioShow->isSecondLine = 1;
+        radioShow->isSecondLine = TRUE;
     }
     String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
     PrintRadioLine(radioShow, radioShow->curLineStr, 1);
@@ -279,7 +279,7 @@ void RadioPrintInitEz(RadioShow *radioShow, int msgId) {
 void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId) {
     RadioPrintInitEz(radioShow, msgId);
     radioShow->textNoScroll = 1;
-    radioShow->isPlayingJingle = 1;
+    radioShow->isPlayingJingle = TRUE;
     SndRadio_StopSeq(0);
     SndRadio_StartSeq(SEQ_GS_RADIO_JINGLE);
 }

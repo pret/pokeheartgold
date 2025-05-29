@@ -24,6 +24,8 @@ typedef enum PokegearReturnCode {
     GEAR_RETURN_4,
     GEAR_RETURN_5,
     GEAR_RETURN_CANCEL,
+    GEAR_RETURN_7,
+    GEAR_RETURN_8,
 } PokegearReturnCode;
 
 typedef struct PokegearAppSwitchButtonSpec {

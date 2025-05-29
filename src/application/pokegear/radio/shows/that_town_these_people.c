@@ -110,7 +110,7 @@ BOOL RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow) {
         break;
     case 5:
         if (Radio_RunTextPrinter_WaitJingle(radioShow)) {
-            radioShow->triggerCommercials = 1;
+            radioShow->triggerCommercials = TRUE;
             return TRUE;
         }
         break;
@@ -132,11 +132,11 @@ void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow) {
     MI_CpuClear8(data->episodeUnlockFlags, sizeof(data->episodeUnlockFlags));
     MI_CpuClear8(data->unlockedEpisodes, sizeof(data->unlockedEpisodes));
     varsFlags = Save_VarsFlags_Get(radioShow->saveData);
-    data->episodeUnlockFlags[0] = 1;
-    data->episodeUnlockFlags[1] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
-    data->episodeUnlockFlags[2] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_MAHOGANY);
-    data->episodeUnlockFlags[3] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_BLACKTHORN);
-    data->episodeUnlockFlags[4] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
+    data->episodeUnlockFlags[TTTP_COND_ALWAYS] = 1;
+    data->episodeUnlockFlags[TTTP_COND_GOLDENROD] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
+    data->episodeUnlockFlags[TTTP_COND_MAHOGANY] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_MAHOGANY);
+    data->episodeUnlockFlags[TTTP_COND_BLACKTHORN] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_BLACKTHORN);
+    data->episodeUnlockFlags[TTTP_COND_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
     num = 0;
     for (i = 0; i < 20; ++i) {
         if (data->episodeUnlockFlags[sEpisodeUnlockFlags[i]]) {

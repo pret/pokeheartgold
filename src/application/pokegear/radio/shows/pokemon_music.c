@@ -143,7 +143,7 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
     RadioShow_PokemonMusic_Init(radioShow);
     StopBGM(GF_GetCurrentPlayingBGM(), 0);
     RadioShow_PokemonMusic_StartPlaying(radioShow, data->queuedTrack);
-    radioShow->isSecondLine = 0;
+    radioShow->isSecondLine = FALSE;
     return FALSE;
 }
 
@@ -181,7 +181,7 @@ BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
                 data->state = PKMUSSTATE_PRINT_DAY;
                 return FALSE;
             } else {
-                radioShow->isPlayingJingle = 1;
+                radioShow->isPlayingJingle = TRUE;
                 StopBGM(GF_GetCurrentPlayingBGM(), 30);
                 ++data->state;
             }

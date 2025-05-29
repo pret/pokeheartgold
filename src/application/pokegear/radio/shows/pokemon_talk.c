@@ -140,7 +140,7 @@ BOOL RadioShow_PokemonTalk_Print(RadioShow *radioShow) {
         break;
     case 7:
         if (Radio_RunTextPrinter_WaitJingle(radioShow)) {
-            radioShow->triggerCommercials = 1;
+            radioShow->triggerCommercials = TRUE;
             return TRUE;
         }
         break;

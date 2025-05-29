@@ -204,7 +204,7 @@ int PokegearRadio_MainTask_InputLoop(PokegearRadioAppData *radioApp) {
     case GEAR_RETURN_4:
         radioApp->pokegear->appReturnCode = result;
         return RADIO_MAIN_STATE_FADE_OUT;
-    case 8:
+    case GEAR_RETURN_8:
         return RADIO_MAIN_STATE_3;
     default:
         radioApp->pokegear->appReturnCode = result;

@@ -21,6 +21,7 @@ static int TouchscreenHitbox_FindRectAtPoint(const TouchscreenHitbox *hitboxes, 
 }
 
 static BOOL TouchscreenHitbox_PointIsInCircle(const TouchscreenHitbox *hitbox, u32 x, u32 y) {
+    // Reusing the input variables here is required to match.
     x = (hitbox->circle.x - x) * (hitbox->circle.x - x);
     y = (hitbox->circle.y - y) * (hitbox->circle.y - y);
     return x + y < (hitbox->circle.r * hitbox->circle.r);

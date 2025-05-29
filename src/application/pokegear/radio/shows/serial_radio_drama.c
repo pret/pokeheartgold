@@ -68,7 +68,7 @@ BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow) {
         break;
     case 4:
         if (Radio_RunTextPrinter_WaitJingle(radioShow)) {
-            radioShow->triggerCommercials = 1;
+            radioShow->triggerCommercials = TRUE;
             return TRUE;
         }
         break;

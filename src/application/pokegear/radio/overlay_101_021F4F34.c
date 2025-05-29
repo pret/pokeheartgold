@@ -152,14 +152,14 @@ void Radio_Run(PokegearAppData *pokegear, void *cbArg) {
     }
 }
 
-void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int a1) {
+void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int direction) {
     G2S_SetWnd0Position(0, 112, 255, 192);
     G2S_SetWnd1Position(255, 112, 0, 192);
     G2S_SetWndOutsidePlane(17, FALSE);
     G2S_SetWnd0InsidePlane(31, FALSE);
     G2S_SetWnd1InsidePlane(31, FALSE);
     GXS_SetVisibleWnd(3);
-    if (a1 == 0) {
+    if (direction == 0) {
         for (int i = 0; i < 3; ++i) {
             BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_1 + i, BG_POS_OP_SET_Y, -80);
             ToggleBgLayer(GF_BG_LYR_SUB_1 + i, TRUE);
@@ -170,14 +170,14 @@ void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int a1) {
         BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SUB_Y, 0);
     }
     radioApp->windowScrollStep = 0;
-    radioApp->windowScrollFinished = 0;
+    radioApp->windowScrollFinished = FALSE;
 }
 
-BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int a1) {
+BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int direction) {
     if (radioApp->windowScrollFinished) {
         return TRUE;
     }
-    if (a1 == 0) {
+    if (direction == 0) {
         BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_ADD_Y, 10);
         BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_ADD_Y, 10);
         BgSetPosTextAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_ADD_Y, 10);
@@ -191,8 +191,8 @@ BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int a1) {
         return FALSE;
     }
     radioApp->windowScrollStep = 0;
-    radioApp->windowScrollFinished = 1;
-    if (a1 == 1) {
+    radioApp->windowScrollFinished = TRUE;
+    if (direction == 1) {
         for (int i = 0; i < 3; ++i) {
             ToggleBgLayer(GF_BG_LYR_SUB_1 + i, FALSE);
             BgClearTilemapBufferAndCommit(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_1 + i);
@@ -315,7 +315,7 @@ u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSi
 
 int Radio_HandleTouchInput_Internal(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
     int ret;
-    TouchscreenHitbox sp0;
+    TouchscreenHitbox hitbox;
     if (!System_GetTouchNew()) {
         return TOUCH_MENU_NO_INPUT;
     }
@@ -336,11 +336,13 @@ int Radio_HandleTouchInput_Internal(PokegearRadioAppData *radioApp, BOOL *inputW
     if (!TouchscreenHitbox_PointIsIn(&sTuningAreaHitbox, gSystem.touchX, gSystem.touchY)) {
         return TOUCH_MENU_NO_INPUT;
     }
-    sp0.circle.sentinel = TOUCHSCREEN_CIRCLE_SENTINEL;
-    sp0.circle.r = 8;
-    sp0.circle.x = radioApp->cursorX;
-    sp0.circle.y = radioApp->cursorY;
-    if (TouchscreenHitbox_PointIsIn(&sp0, gSystem.touchX, gSystem.touchY)) {
+
+    // If you tapped within 8 pixels of the cursor, snap the cursor to where you tapped.
+    hitbox.circle.sentinel = TOUCHSCREEN_CIRCLE_SENTINEL;
+    hitbox.circle.r = 8;
+    hitbox.circle.x = radioApp->cursorX;
+    hitbox.circle.y = radioApp->cursorY;
+    if (TouchscreenHitbox_PointIsIn(&hitbox, gSystem.touchX, gSystem.touchY)) {
         radioApp->cursorX = gSystem.touchX;
         radioApp->cursorY = gSystem.touchY;
         Sprite_SetPositionXY(radioApp->sprites[4], radioApp->cursorX, radioApp->cursorY);
