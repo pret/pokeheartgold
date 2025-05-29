@@ -114,24 +114,24 @@ void Radio_UnknownCB(void *cbArg) {
 }
 
 void Radio_OpenStation(PokegearRadioAppData *radioApp) {
-    if (radioApp->stationActive == 0) {
+    if (!radioApp->stationActive) {
         if (radioApp->signalStrength == 2) {
             RadioShow_BeginSegment(radioApp->showData, radioApp->station, 0);
         } else {
-            RadioShow_BeginSegment(radioApp->showData, radioApp->station, 1);
+            RadioShow_BeginSegment(radioApp->showData, radioApp->station, TRUE);
         }
-        radioApp->stationActive = 1;
+        radioApp->stationActive = TRUE;
     }
 }
 
 void Radio_CloseStation(PokegearRadioAppData *radioApp) {
-    if (radioApp->stationActive != 0) {
+    if (radioApp->stationActive) {
         RadioShow_EndSegment(radioApp->showData);
         FillWindowPixelBuffer(&radioApp->windows[2], 0);
         FillWindowPixelBuffer(&radioApp->windows[1], 0);
         ScheduleWindowCopyToVram(&radioApp->windows[2]);
         ScheduleWindowCopyToVram(&radioApp->windows[1]);
-        radioApp->stationActive = 0;
+        radioApp->stationActive = FALSE;
     }
 }
 
@@ -147,7 +147,7 @@ void Radio_Start(PokegearRadioAppData *radioApp) {
 void Radio_Run(PokegearAppData *pokegear, void *cbArg) {
     PokegearRadioAppData *radioApp = cbArg;
 
-    if (radioApp->stationActive != 0) {
+    if (radioApp->stationActive) {
         RadioShow_Main(radioApp->showData);
     }
 }
@@ -264,7 +264,7 @@ int Radio_HandleKeyInput(PokegearRadioAppData *radioApp) {
 
 int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
     *inputWasTouch = FALSE;
-    if (radioApp->isDraggingCursor != 0) {
+    if (radioApp->isDraggingCursor) {
         *inputWasTouch = TRUE;
         return Radio_HandleDragCursor(radioApp);
     }

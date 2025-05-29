@@ -155,7 +155,7 @@ int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1);
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
-BOOL Pokegear_RunFadeLyrs123(PokegearAppData *pokegearApp, int a1);
+BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
 u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
 BOOL ov100_021E5DDC(PokegearAppData *pokegearApp);
 BOOL ov100_021E5E88(PokegearAppData *pokegearApp);

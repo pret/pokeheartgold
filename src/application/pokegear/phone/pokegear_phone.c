@@ -266,7 +266,7 @@ int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp) {
         ++phoneApp->subtaskState;
         break;
     case 1:
-        if (Pokegear_RunFadeLyrs123(phoneApp->pokegear, 0)) {
+        if (Pokegear_RunFadeLayers123(phoneApp->pokegear, 0)) {
             ++phoneApp->subtaskState;
         }
         break;
@@ -287,7 +287,7 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp) 
         ++phoneApp->subtaskState;
         break;
     case 1:
-        if (Pokegear_RunFadeLyrs123(phoneApp->pokegear, 1)) {
+        if (Pokegear_RunFadeLayers123(phoneApp->pokegear, 1)) {
             ++phoneApp->subtaskState;
         }
         break;

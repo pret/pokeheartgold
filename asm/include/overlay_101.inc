@@ -302,7 +302,7 @@
 .public ov100_021E5C50
 .public ov100_021E5C80
 .public Pokegear_ClearAppBgLayers
-.public Pokegear_RunFadeLyrs123
+.public Pokegear_RunFadeLayers123
 .public ov100_021E5DC8
 .public ov100_021E5EB4
 .public ov100_021E5FDC

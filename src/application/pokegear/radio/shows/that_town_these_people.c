@@ -86,7 +86,7 @@ BOOL RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow) {
             break;
         }
         ++data->state;
-    // fallthrough
+        // fallthrough
     case 2:
         RadioPrintInitEz(radioShow, data->msgIDs[data->selector]);
         ++data->state;

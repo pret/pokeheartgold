@@ -189,7 +189,7 @@ void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp) {
     }
 }
 
-BOOL Pokegear_RunFadeLyrs123(PokegearAppData *pokegearApp, int direction) {
+BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int direction) {
     if (pokegearApp->fadeCounter > 16) {
         return TRUE;
     }

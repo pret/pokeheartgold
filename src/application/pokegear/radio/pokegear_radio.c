@@ -286,7 +286,7 @@ int PokegearRadio_MainState_FadeInApp(PokegearRadioAppData *radioApp) {
         ++radioApp->state;
         break;
     case 1:
-        if (Pokegear_RunFadeLyrs123(radioApp->pokegear, 0) && Radio_RunScriptWindowSlide(radioApp, 0)) {
+        if (Pokegear_RunFadeLayers123(radioApp->pokegear, 0) && Radio_RunScriptWindowSlide(radioApp, 0)) {
             ++radioApp->state;
         }
         break;
@@ -310,7 +310,7 @@ int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp) {
         ++radioApp->state;
         break;
     case 1:
-        if (Pokegear_RunFadeLyrs123(radioApp->pokegear, 1) && Radio_RunScriptWindowSlide(radioApp, 1)) {
+        if (Pokegear_RunFadeLayers123(radioApp->pokegear, 1) && Radio_RunScriptWindowSlide(radioApp, 1)) {
             ++radioApp->state;
         }
         break;

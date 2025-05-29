@@ -494,7 +494,7 @@ _021EEC32:
 _021EEC5E:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl Pokegear_RunFadeLyrs123
+	bl Pokegear_RunFadeLayers123
 	cmp r0, #0
 	beq _021EEC88
 	ldr r0, [r5, #4]
@@ -545,7 +545,7 @@ _021EECA2:
 _021EECBA:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl Pokegear_RunFadeLyrs123
+	bl Pokegear_RunFadeLayers123
 	cmp r0, #0
 	beq _021EED3C
 	ldr r0, [r5, #4]
