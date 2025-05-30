@@ -102,14 +102,14 @@ void sub_0202EEA8(SavePokegear *pokegear, u8 a1) {
     pokegear->unk_1 = a1;
 }
 
-void sub_0202EEAC(SavePokegear *pokegear, u16 a1, u16 a2) {
-    pokegear->unk_2 = a1;
-    pokegear->unk_3 = a2;
+void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y) {
+    pokegear->unk_2 = x;
+    pokegear->unk_3 = y;
 }
 
-void sub_0202EEB4(SavePokegear *pokegear, u16 *a1, u16 *a2) {
-    *a1 = pokegear->unk_2;
-    *a2 = pokegear->unk_3;
+void Pokegear_GetRadioCursorCoords(SavePokegear *pokegear, s16 *px, s16 *py) {
+    *px = pokegear->unk_2;
+    *py = pokegear->unk_3;
 }
 
 u8 SavePokegear_FindEmptyPhonebookSlot(SavePokegear *pokegear) {

@@ -494,7 +494,7 @@ _021EEC32:
 _021EEC5E:
 	ldr r0, [r5, #0xc]
 	mov r1, #0
-	bl ov100_021E5D3C
+	bl Pokegear_RunFadeLayers123
 	cmp r0, #0
 	beq _021EEC88
 	ldr r0, [r5, #4]
@@ -545,7 +545,7 @@ _021EECA2:
 _021EECBA:
 	ldr r0, [r5, #0xc]
 	mov r1, #1
-	bl ov100_021E5D3C
+	bl Pokegear_RunFadeLayers123
 	cmp r0, #0
 	beq _021EED3C
 	ldr r0, [r5, #4]
@@ -939,11 +939,11 @@ _021EEFD8: .word ov101_021F8254
 
 	thumb_func_start ov101_021EEFDC
 ov101_021EEFDC: ; 0x021EEFDC
-	ldr r3, _021EEFE4 ; =ov100_021E5CA4
+	ldr r3, _021EEFE4 ; =Pokegear_ClearAppBgLayers
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021EEFE4: .word ov100_021E5CA4
+_021EEFE4: .word Pokegear_ClearAppBgLayers
 	thumb_func_end ov101_021EEFDC
 
 	thumb_func_start ov101_021EEFE8
@@ -974,7 +974,7 @@ ov101_021EF00C: ; 0x021EF00C
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl ov100_021E6978
+	bl PokegearApp_CreateSpriteManager
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4]
 	ldr r1, [r1, #0x78]
@@ -991,7 +991,7 @@ ov101_021EF028: ; 0x021EF028
 	ldr r0, [r4, #0x38]
 	bl TouchscreenListMenuSpawner_Destroy
 	ldr r0, [r4, #0xc]
-	bl ov100_021E69C8
+	bl PokegearApp_DestroySpriteManager
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EF028

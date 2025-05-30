@@ -338,7 +338,7 @@ void ov101_021F017C(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
     SetBgPriority(GF_BG_LYR_MAIN_0, 0);
     BgSetPosTextAndCommit(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
-    ov100_021E5CA4(phoneApp->pokegear);
+    Pokegear_ClearAppBgLayers(phoneApp->pokegear);
 }
 
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
@@ -461,13 +461,13 @@ void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {
-    ov100_021E6978(phoneApp->pokegear, 3);
+    PokegearApp_CreateSpriteManager(phoneApp->pokegear, 3);
     phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapId, phoneApp->pokegear->plttData);
 }
 
 void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
     TouchscreenListMenuSpawner_Destroy(phoneApp->contextMenuSpawner);
-    ov100_021E69C8(phoneApp->pokegear);
+    PokegearApp_DestroySpriteManager(phoneApp->pokegear);
 }
 
 void ov101_021F075C(PokegearPhoneAppData *phoneApp) {

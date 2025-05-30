@@ -174,7 +174,7 @@ int ov100_021E5C80(PokegearAppData *pokegearApp) {
     return ov100_021E5C50(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
 }
 
-void ov100_021E5CA4(PokegearAppData *pokegearApp) {
+void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp) {
     BG_LoadBlankPltt(GF_BG_LYR_MAIN_3, 0x1C0, 0, pokegearApp->heapId);
     BG_LoadBlankPltt(GF_BG_LYR_SUB_3, 0x180, 0, pokegearApp->heapId);
     for (int i = 0; i < 3; ++i) {
@@ -189,22 +189,22 @@ void ov100_021E5CA4(PokegearAppData *pokegearApp) {
     }
 }
 
-BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1) {
-    if (pokegearApp->unk_009 > 16) {
+BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int direction) {
+    if (pokegearApp->fadeCounter > 16) {
         return TRUE;
     }
-    if (a1 == 0) {
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - pokegearApp->unk_009, RGB_BLACK);
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - pokegearApp->unk_009, RGB_BLACK);
+    if (direction == 0) {
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - pokegearApp->fadeCounter, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - pokegearApp->fadeCounter, RGB_BLACK);
     } else {
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, pokegearApp->unk_009, RGB_BLACK);
-        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, pokegearApp->unk_009, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, pokegearApp->fadeCounter, RGB_BLACK);
+        PaletteData_BlendPalette(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, pokegearApp->fadeCounter, RGB_BLACK);
     }
-    if (pokegearApp->unk_009 >= 16) {
-        pokegearApp->unk_009 += 2;
+    if (pokegearApp->fadeCounter >= 16) {
+        pokegearApp->fadeCounter += 2;
         return TRUE;
     } else {
-        pokegearApp->unk_009 += 2;
+        pokegearApp->fadeCounter += 2;
         return FALSE;
     }
 }

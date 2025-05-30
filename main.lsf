@@ -1159,7 +1159,22 @@ Overlay OVY_101
     Object src/application/pokegear/phone/scripts/phone_scripts_baoba.o
     Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
     Object src/application/pokegear/phone/extra_ethan_lyra_data.o
-    Object asm/pokegear_app_radio.o
+    Object src/application/pokegear/radio/pokegear_radio.o
+    Object src/application/pokegear/radio/overlay_101_021F49F8.o
+    Object src/application/pokegear/radio/overlay_101_021F4F34.o
+    Object src/application/pokegear/radio/overlay_101_021F57B8.o
+    Object src/application/pokegear/radio/shows/pokemon_music.o
+    Object src/application/pokegear/radio/shows/poke_flute.o
+    Object src/application/pokegear/radio/shows/unown.o
+    Object src/application/pokegear/radio/shows/team_rocket.o
+    Object src/application/pokegear/radio/shows/serial_radio_drama.o
+    Object src/application/pokegear/radio/shows/commercials.o
+    Object src/application/pokegear/radio/shows/pokemon_search_party.o
+    Object src/application/pokegear/radio/shows/buenas_password.o
+    Object src/application/pokegear/radio/shows/that_town_these_people.o
+    Object src/application/pokegear/radio/shows/trainer_profiles.o
+    Object src/application/pokegear/radio/shows/pokemon_talk.o
+    Object src/application/pokegear/radio/shows/mahogany_signal.o
     Object src/application/pokegear/phone/phone_script_defs.o
     Object src/application/pokegear/phone/phone_generic_headers.o
 }
