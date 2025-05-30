@@ -2070,9 +2070,9 @@ static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form,
     int ret;
 
     if (species <= 0 || species > SPECIES_ARCEUS) {
-        ret = NARC_mmodel_mmodel_00000001_bin;
+        ret = NARC_mmodel_mmodel_00000001_NSBTX;
     } else {
-        ret = SpeciesToOverworldModelIndexOffset(species) + NARC_mmodel_mmodel_00000297_bin;
+        ret = SpeciesToOverworldModelIndexOffset(species) + NARC_mmodel_mmodel_00000297_NSBTX;
         if (OverworldModelLookupHasFemaleForm(species)) {
             if (gender == MON_FEMALE) {
                 ++ret;
