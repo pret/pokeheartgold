@@ -16,161 +16,6 @@
 
 	.text
 
-	thumb_func_start PokegearMap_Init
-PokegearMap_Init: ; 0x021E7740
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	bl OverlayManager_GetArgs
-	add r5, r0, #0
-	ldr r0, _021E7790 ; =FS_OVERLAY_ID(OVY_26)
-	mov r1, #2
-	bl HandleLoadOverlay
-	mov r0, #3
-	mov r1, #0x5b
-	lsl r2, r0, #0x10
-	bl CreateHeap
-	ldr r1, _021E7794 ; =0x000009F4
-	add r0, r4, #0
-	mov r2, #0x5b
-	bl OverlayManager_CreateAndGetData
-	ldr r2, _021E7794 ; =0x000009F4
-	add r4, r0, #0
-	mov r1, #0
-	bl memset
-	str r5, [r4, #0x10]
-	mov r0, #0x5b
-	str r0, [r4]
-	add r0, r4, #0
-	bl ov101_021E78EC
-	mov r0, #0x85
-	ldr r1, _021E7798 ; =ov101_021F7372
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	mov r1, #0x64
-	add r0, r1, #0
-	add r0, #0xd2
-	strb r1, [r4, r0]
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_021E7790: .word FS_OVERLAY_ID(OVY_26)
-_021E7794: .word 0x000009F4
-_021E7798: .word ov101_021F7372
-	thumb_func_end PokegearMap_Init
-
-	thumb_func_start PokegearMap_Main
-PokegearMap_Main: ; 0x021E779C
-	push {r4, lr}
-	add r4, r1, #0
-	bl OverlayManager_GetData
-	ldr r1, [r4]
-	cmp r1, #0xd
-	bhi _021E782E
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021E77B6: ; jump table
-	.short _021E77D2 - _021E77B6 - 2 ; case 0
-	.short _021E77DA - _021E77B6 - 2 ; case 1
-	.short _021E77E2 - _021E77B6 - 2 ; case 2
-	.short _021E782E - _021E77B6 - 2 ; case 3
-	.short _021E77EA - _021E77B6 - 2 ; case 4
-	.short _021E77F2 - _021E77B6 - 2 ; case 5
-	.short _021E77FA - _021E77B6 - 2 ; case 6
-	.short _021E7802 - _021E77B6 - 2 ; case 7
-	.short _021E780A - _021E77B6 - 2 ; case 8
-	.short _021E7812 - _021E77B6 - 2 ; case 9
-	.short _021E781A - _021E77B6 - 2 ; case 10
-	.short _021E7822 - _021E77B6 - 2 ; case 11
-	.short _021E782E - _021E77B6 - 2 ; case 12
-	.short _021E782A - _021E77B6 - 2 ; case 13
-_021E77D2:
-	bl ov101_021E7B90
-	str r0, [r4]
-	b _021E782E
-_021E77DA:
-	bl ov101_021E7BB4
-	str r0, [r4]
-	b _021E782E
-_021E77E2:
-	bl ov101_021E7C10
-	str r0, [r4]
-	b _021E782E
-_021E77EA:
-	bl ov101_021E7D50
-	str r0, [r4]
-	b _021E782E
-_021E77F2:
-	bl ov101_021E7E28
-	str r0, [r4]
-	b _021E782E
-_021E77FA:
-	bl ov101_021E7E98
-	str r0, [r4]
-	b _021E782E
-_021E7802:
-	bl ov101_021E7F20
-	str r0, [r4]
-	b _021E782E
-_021E780A:
-	bl ov101_021E7C38
-	str r0, [r4]
-	b _021E782E
-_021E7812:
-	bl ov101_021E7C4C
-	str r0, [r4]
-	b _021E782E
-_021E781A:
-	bl ov101_021E7D28
-	str r0, [r4]
-	b _021E782E
-_021E7822:
-	bl ov101_021E7D3C
-	str r0, [r4]
-	b _021E782E
-_021E782A:
-	mov r0, #1
-	pop {r4, pc}
-_021E782E:
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end PokegearMap_Main
-
-	thumb_func_start PokegearMap_Exit
-PokegearMap_Exit: ; 0x021E7834
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl OverlayManager_GetData
-	add r4, r0, #0
-	bl ov101_021E7B54
-	ldr r0, [r4, #0x38]
-	bl MapMatrix_MapData_Free
-	ldr r2, [r4, #0x10]
-	ldr r0, [r2, #0x1c]
-	cmp r0, #6
-	beq _021E7858
-	ldrb r1, [r2, #5]
-	mov r0, #0x80
-	orr r0, r1
-	strb r0, [r2, #5]
-_021E7858:
-	ldr r4, [r4]
-	add r0, r5, #0
-	bl OverlayManager_FreeData
-	add r0, r4, #0
-	bl DestroyHeap
-	ldr r0, _021E7870 ; =FS_OVERLAY_ID(OVY_26)
-	bl UnloadOverlayByID
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_021E7870: .word FS_OVERLAY_ID(OVY_26)
-	thumb_func_end PokegearMap_Exit
-
 	thumb_func_start ov101_021E7874
 ov101_021E7874: ; 0x021E7874
 	push {r3, r4}
@@ -1170,6 +1015,8 @@ _021E7FEA:
 	.balign 4, 0
 _021E7FF0: .word 0x00000135
 	thumb_func_end ov101_021E7F20
+
+	// file boundary
 
 	thumb_func_start ov101_021E7FF4
 ov101_021E7FF4: ; 0x021E7FF4
@@ -14544,6 +14391,7 @@ _021F7358:
 ov101_021F7364: ; 0x021F7364
 	.short 0x0133, 0x0134, 0x0135, 0x0136, 0x0137, 0x0148, 0x0149
 
+	.global ov101_021F7372
 ov101_021F7372: ; 0x021F7372
 	.byte 0x09, 0x02, 0x13, 0x02, 0x33, 0xC0, 0x41, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x33, 0x01, 0x18, 0x10, 0x33, 0xC0, 0x45, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
@@ -14729,16 +14577,26 @@ ov101_021F79B4: ; 0x021F79B4
 	.short MAP_VICTORY_ROAD_1F, MAP_ROUTE_26
 	.byte FLYPOINT_VICTORY_ROAD, 0xFF, 0x1C, 0x07, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00
 
+	// File boundary
+
 	.balign 4, 0
 ov101_021F7B30: ; 0x021F7B30
 	.short 0x0000
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x48, 0x54, 0xEE, 0x12, 0xF4, 0x06
 
 ov101_021F7B3C: ; 0x021F7B3C
-	.byte 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
+	.word 1
+	.short 0
+	.short 0
+	.short 0
+	.short 4
+	.word 1
+	.word 4
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
 ov101_021F7B64: ; 0x021F7B64
 	.byte 0x05, 0x01, 0x08, 0x05, 0x03, 0x01, 0xF0, 0x03, 0x05, 0x03, 0x0C, 0x0C
