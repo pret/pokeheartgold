@@ -94,7 +94,7 @@ u16 sub_0202EE98(SavePokegear *pokegear) {
     return pokegear->unk_4_0;
 }
 
-u8 sub_0202EEA4(SavePokegear *pokegear) {
+BOOL sub_0202EEA4(SavePokegear *pokegear) {
     return pokegear->unk_1;
 }
 

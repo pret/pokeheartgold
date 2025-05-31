@@ -90,7 +90,7 @@ u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear);
 u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear);
 void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 a1);
 u16 sub_0202EE98(SavePokegear *pokegear);
-u8 sub_0202EEA4(SavePokegear *pokegear);
+BOOL sub_0202EEA4(SavePokegear *pokegear);
 void sub_0202EEA8(SavePokegear *pokegear, u8 a1);
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y);
 void Pokegear_GetRadioCursorCoords(SavePokegear *pokegear, s16 *px, s16 *py);

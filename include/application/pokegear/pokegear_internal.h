@@ -28,6 +28,15 @@ typedef enum PokegearReturnCode {
     GEAR_RETURN_8,
 } PokegearReturnCode;
 
+typedef struct PokegearUnkSub03C {
+    u8 unk_00;
+    u8 unk_01;
+    u16 unk_02;
+    u16 filler_04[10];
+    u16 unk_18;
+    u16 unk_1A;
+} PokegearUnkSub03C; // size: 0x1C
+
 typedef struct PokegearAppSwitchButtonSpec {
     u16 appId;
     u8 buttonLeft;
@@ -120,8 +129,8 @@ struct PokegearAppData {
     Options *options;                           // 0x030
     PlayerProfile *profile;                     // 0x034
     u8 unk_038;                                 // 0x038
-    u8 filler_039[0x1D];                        // 0x039
-    u16 unk_056;                                // 0x056
+    u8 filler_039[3];                           // 0x039
+    PokegearUnkSub03C unk_03C;                  // 0x03C
     void (*unk_058)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);              // 0x05C
     void (*unknownCB)(void *);                  // 0x060

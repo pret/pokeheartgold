@@ -88,7 +88,7 @@ BOOL Pokegear_Init(OverlayManager *man, int *state) {
         break;
     }
     pokegearApp->unk_038 = 0;
-    pokegearApp->unk_056 = EC_WORD_NULL;
+    pokegearApp->unk_03C.unk_1A = EC_WORD_NULL;
     pokegearApp->cursorInAppSwitchZone = 1;
     Sound_SetSceneAndPlayBGM(0x37, 0, 0);
     return TRUE;
@@ -253,8 +253,8 @@ static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokeg
     }
 
     pokegearApp->easyChatArgs = EasyChat_CreateArgs(0, 0, pokegearApp->args->saveData, pokegearApp->args->menuInputStatePtr, pokegearApp->heapId);
-    pokegearApp->unk_056 = EC_WORD_NULL;
-    sub_02090D14(pokegearApp->easyChatArgs, pokegearApp->unk_056);
+    pokegearApp->unk_03C.unk_1A = EC_WORD_NULL;
+    sub_02090D14(pokegearApp->easyChatArgs, pokegearApp->unk_03C.unk_1A);
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_EasyChat, pokegearApp->easyChatArgs, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_DEBUG;
 }
@@ -265,7 +265,7 @@ static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegear
     }
 
     if (!sub_02090D48(pokegearApp->easyChatArgs)) {
-        pokegearApp->unk_056 = sub_02090D50(pokegearApp->easyChatArgs);
+        pokegearApp->unk_03C.unk_1A = sub_02090D50(pokegearApp->easyChatArgs);
     }
 
     EasyChat_FreeArgs(pokegearApp->easyChatArgs);
