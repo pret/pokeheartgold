@@ -36,8 +36,17 @@ void ov101_021E8E58(PokegearMapAppData *mapApp);
 void ov101_021E90A8(PokegearMapAppData *mapApp);
 void ov101_021E9264(PokegearMapAppData *mapApp, int a1);
 void ov101_021E933C(PokegearMapAppData *mapApp);
+void ov101_021E990C(PokegearMapAppData *mapApp);
+void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1);
 void ov101_021E9FDC(PokegearMapAppData *mapApp, int a1);
 BOOL ov101_021EA0D8(PokegearMapAppData *mapApp, int a1);
+void ov101_021EA238(PokegearMapAppData *mapApp, int a1);
+void ov101_021EA608(PokegearMapAppData *mapApp, int a1);
+void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3);
+void ov101_021EAD90(PokegearMapAppData *mapApp, int a1);
+void ov101_021EAF40(PokegearMapAppData *mapApp);
+void ov101_021EB1E0(PokegearMapAppData *mapApp, int a1);
+void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 
 extern const WindowTemplate ov101_021F7B64[];
 extern const PokegearAppSwitchButtonSpec ov101_021F7C04[9];
@@ -489,4 +498,62 @@ void ov101_021E8E3C(PokegearMapAppData *mapApp) {
 
 void ov101_021E8E4C(PokegearMapAppData *mapApp) {
     ov100_021E6EF4(mapApp->unk_084);
+}
+
+void ov101_021E8E58(PokegearMapAppData *mapApp) {
+    int i;
+    UnkStruct_ov100_021E6E20_Sub8 *sp1C = mapApp->unk_084->unk_08;
+
+    GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_5, GX_BG0_AS_2D);
+
+    for (i = 0; i < 2; ++i) {
+        SetBgControlParam(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, GF_BG_CNT_SET_SCREEN_SIZE, GF_BG_SCR_SIZE_256x512);
+        SetBgControlParam(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, GF_BG_CNT_SET_CHAR_BASE, GX_BG_CHARBASE_0x10000);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, 0);
+    }
+
+    G2_SetBlendAlpha(4, 8, 10, 6);
+    ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_ON);
+
+    for (i = 0; i < 3; ++i) {
+        BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, 0);
+    }
+
+    mapApp->pokegear->reselectAppCB = ov101_021EB338;
+    mapApp->pokegear->unknownCB = ov101_021EB2FC;
+    ov101_021E990C(mapApp);
+    ov101_021E9B70(mapApp, &mapApp->unk_0C8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->unk_16C[3]->rawData, 0, 0, mapApp->unk_16C[3]->screenWidth / 8, mapApp->unk_16C[3]->screenHeight / 8);
+
+    ov101_021EAF40(mapApp);
+    ov101_021EB38C(mapApp, 1, mapApp->unk_138_0);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->unk_16C[0]->rawData, 0, 7, mapApp->unk_16C[0]->screenWidth / 8, mapApp->unk_16C[0]->screenHeight / 8);
+
+    ov101_021EA794(mapApp, &mapApp->unk_118, mapApp->unk_110, mapApp->unk_112);
+    ov101_021EAD90(mapApp, 0);
+    ov101_021EB1E0(mapApp, 1);
+    ov101_021E8A88(mapApp);
+    ov101_021EA238(mapApp, 0);
+    ov101_021EA608(mapApp, 1);
+    if (mapApp->pokegear->cursorInAppSwitchZone == TRUE) {
+        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
+        Sprite_SetDrawFlag(sp1C[5].sprite.sprite, FALSE);
+    } else {
+        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, FALSE);
+        Sprite_SetDrawFlag(sp1C[5].sprite.sprite, TRUE);
+    }
+
+    PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, ov100_021E5DC8(mapApp->pokegear));
+    if (mapApp->pokegear->isSwitchApp) {
+        ov101_021E9D74(mapApp, 0);
+    }
+    ov100_021E6E84(mapApp->unk_084);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
