@@ -599,7 +599,10 @@ ov01_021F9890: ; 0x021F9890
 	bl ov01_021FA1F4
 	bl GF3dGfxRawResMan_Destroy
 	pop {r4, pc}
-	.balign 4, 0
+	thumb_func_end ov01_021F9890
+
+	thumb_func_start ov01_021F98B4
+ov01_021F98B4:
 _021F98B4:
 	ldrh r3, [r2]
 	cmp r3, r0
@@ -614,7 +617,7 @@ _021F98BE:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov01_021F9890
+	thumb_func_end ov01_021F98B4
 
 	thumb_func_start ov01_021F98CC
 ov01_021F98CC: ; 0x021F98CC
@@ -634,7 +637,7 @@ _021F98E6:
 	ldr r2, [sp, #0x18]
 	add r0, r4, #0
 	add r1, r7, #0
-	bl _021F98B4
+	bl ov01_021F98B4
 	add r7, r0, #0
 	bne _021F98F8
 	bl GF_AssertFail
@@ -887,12 +890,16 @@ ov01_021F9A8C: ; 0x021F9A8C
 	bl ov01_021F9A70
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
+	thumb_func_end ov01_021F9A8C
+
+	thumb_func_start ov01_021F9AAC
+ov01_021F9AAC:
 _021F9AAC:
 	stmia r0!, {r1}
 	sub r2, r2, #1
 	bne _021F9AAC
 	bx lr
-	thumb_func_end ov01_021F9A8C
+	thumb_func_end ov01_021F9AAC
 
 	thumb_func_start ov01_021F9AB4
 ov01_021F9AB4: ; 0x021F9AB4
@@ -913,6 +920,9 @@ _021F9AC4:
 	pop {r3, r4}
 	bx lr
 	thumb_func_end ov01_021F9AB4
+
+	thumb_func_start ov01_021F9AD0
+	ov01_021F9AD0:
 _021F9AD0:
 	ldr r3, [r0]
 	cmp r3, r1
@@ -925,6 +935,7 @@ _021F9ADA:
 	bne _021F9AD0
 	mov r0, #0
 	bx lr
+	thumb_func_end ov01_021F9AD0
 
 	thumb_func_start ov01_021F9AE4
 ov01_021F9AE4: ; 0x021F9AE4
@@ -952,7 +963,7 @@ ov01_021F9B00: ; 0x021F9B00
 	bl ov01_021FA200
 	mov r1, #0xff
 	mov r2, #8
-	bl _021F9AAC
+	bl ov01_021F9AAC
 	pop {r3, pc}
 	thumb_func_end ov01_021F9B00
 
@@ -988,7 +999,7 @@ ov01_021F9B38: ; 0x021F9B38
 	bl ov01_021FA200
 	add r1, r4, #0
 	add r2, r6, #0
-	bl _021F9AD0
+	bl ov01_021F9AD0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021F9B38
 
@@ -1031,7 +1042,7 @@ ov01_021F9B84: ; 0x021F9B84
 	add r2, r0, #0
 	add r0, r6, r4
 	add r1, r7, #0
-	bl _021F9AD0
+	bl ov01_021F9AD0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F9B84
@@ -1102,7 +1113,7 @@ ov01_021F9C24: ; 0x021F9C24
 	bl ov01_021FA204
 	mov r1, #0xff
 	mov r2, #8
-	bl _021F9AAC
+	bl ov01_021F9AAC
 	pop {r3, pc}
 	thumb_func_end ov01_021F9C24
 
@@ -1138,7 +1149,7 @@ ov01_021F9C5C: ; 0x021F9C5C
 	bl ov01_021FA204
 	add r1, r4, #0
 	add r2, r6, #0
-	bl _021F9AD0
+	bl ov01_021F9AD0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021F9C5C
 
@@ -1181,7 +1192,7 @@ ov01_021F9CA8: ; 0x021F9CA8
 	add r2, r0, #0
 	add r0, r6, r4
 	add r1, r7, #0
-	bl _021F9AD0
+	bl ov01_021F9AD0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F9CA8
@@ -1252,7 +1263,7 @@ ov01_021F9D48: ; 0x021F9D48
 	bl ov01_021FA1FC
 	ldr r1, _021F9D58 ; =0x0000FFFF
 	mov r2, #0x20
-	bl _021F9AAC
+	bl ov01_021F9AAC
 	pop {r3, pc}
 	.balign 4, 0
 _021F9D58: .word 0x0000FFFF
@@ -1291,7 +1302,7 @@ ov01_021F9D88: ; 0x021F9D88
 	bl ov01_021FA1FC
 	add r1, r4, #0
 	add r2, r6, #0
-	bl _021F9AD0
+	bl ov01_021F9AD0
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov01_021F9D88
 
@@ -1434,7 +1445,7 @@ ov01_021F9E9C: ; 0x021F9E9C
 	add r2, r0, #0
 	add r0, r6, r4
 	add r1, r7, #0
-	bl _021F9AD0
+	bl ov01_021F9AD0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F9E9C
