@@ -286,3 +286,41 @@ void ov101_021E8674(PokegearMapAppData *mapApp) {
         PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, 0);
     }
 }
+
+void ov101_021E8774(PokegearMapAppData *mapApp) {
+    int i;
+
+    for (i = 0; i < 3; ++i) {
+        PokegearAppSwitch_RemoveButtons(mapApp->pokegear->appSwitch, i + 1);
+    }
+}
+
+void ov101_021E8790(PokegearMapAppData *mapApp, u8 a1) {
+    NARC *narc = NARC_New(NARC_a_1_4_4, mapApp->heapId);
+
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 20 + a1, mapApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 14 + a1, mapApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 0, mapApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 0, mapApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
+
+    PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, TRUE);
+    PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
+    PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, RGB_BLACK);
+    PaletteData_PushTransparentBuffers(mapApp->pokegear->plttData);
+    PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, FALSE);
+    NARC_Delete(narc);
+}
+
+void ov101_021E886C(PokegearMapAppData *mapApp) {
+    PokegearApp_CreateSpriteManager(mapApp->pokegear, 2);
+    mapApp->unk_084 = ov100_021E6E20(111, mapApp->heapId);
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(240));
+    mapApp->unk_03C = sub_02013534(4, mapApp->heapId);
+}
+
+void ov101_021E88A8(PokegearMapAppData *mapApp) {
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(192));
+    sub_020135AC(mapApp->unk_03C);
+    ov100_021E6E58(mapApp->unk_084);
+    PokegearApp_DestroySpriteManager(mapApp->pokegear);
+}

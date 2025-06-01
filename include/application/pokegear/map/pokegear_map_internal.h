@@ -5,6 +5,8 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
+#include "unk_02013534.h"
+
 typedef struct UnkStruct_ov101_021F79B4 {
     u16 unk_00;
     u16 unk_02;
@@ -29,7 +31,8 @@ typedef struct PokegearMapAppData {
     int unk_030;                       // 0x030
     u8 filler_034[4];                  // 0x034
     MAPDATA *unk_038;                  // 0x038
-    u8 filler_03C[0x48];               // 0x03C
+    UnkStruct_02013534 *unk_03C;       // 0x03C
+    u8 filler_040[0x44];               // 0x040
     UnkStruct_ov100_021E6E20 *unk_084; // 0x084
     MsgData *unk_088;                  // 0x088
     MessageFormat *unk_08C;            // 0x08C
