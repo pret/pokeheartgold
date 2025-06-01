@@ -27,6 +27,7 @@ void ov101_021E88D8(PokegearMapAppData *mapApp);
 void ov101_021E8A88(PokegearMapAppData *mapApp);
 void ov101_021E8AE4(PokegearMapAppData *mapApp);
 void ov101_021E8BB8(PokegearMapAppData *mapApp);
+void ov101_021E8BE8(PokegearMapAppData *mapApp);
 void ov101_021E8E20(PokegearMapAppData *mapApp);
 void ov101_021E8E34(PokegearMapAppData *mapApp);
 void ov101_021E8E3C(PokegearMapAppData *mapApp);
@@ -44,6 +45,7 @@ extern const PokegearAppSwitchButtonSpec ov101_021F7BA4[8];
 extern const PokegearAppSwitchButtonSpec ov101_021F7B30;
 extern const UnmanagedSpriteTemplate ov101_021F7DB8[5];
 extern const UnmanagedSpriteTemplate ov101_021F7B3C;
+extern const UnmanagedSpriteTemplate ov101_021F7C70[4];
 
 BOOL ov101_021E7FF4(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
@@ -418,4 +420,56 @@ void ov101_021E8BB8(PokegearMapAppData *mapApp) {
         mapApp->unk_044[i].unk_0 = NULL;
     }
     sub_02013938(mapApp->unk_040);
+}
+
+void ov101_021E8BE8(PokegearMapAppData *mapApp) {
+    u16 i;
+    UnkStruct_ov100_021E6E20_Sub8 *r7 = mapApp->unk_084->unk_08;
+
+    ov100_021E6EC4(mapApp->unk_084, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F7C70[0]));
+    r7[11].unk_04 = 0x80;
+    r7[11].unk_06 = 0x6C;
+    Sprite_SetDrawFlag(r7[11].sprite.sprite, TRUE);
+
+    for (i = 0; i < 8; ++i) {
+        ov100_021E6EC4(mapApp->unk_084, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F7C70[1]));
+        r7[12 + i].unk_04 = 0;
+        r7[12 + i].unk_06 = 0;
+        Sprite_SetAnimCtrlSeq(r7[12 + i].sprite.sprite, 5 + (i % 4));
+        Sprite_SetAnimActiveFlag(r7[12 + i].sprite.sprite, TRUE);
+        Sprite_SetDrawFlag(r7[12 + i].sprite.sprite, FALSE);
+        Sprite_SetPriority(r7[12 + i].sprite.sprite, 0);
+        r7[12 + i].unk_02 = 1;
+    }
+
+    for (i = 0; i < 4; ++i) {
+        ov100_021E6EC4(mapApp->unk_084, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F7C70[2]));
+        r7[20 + i].unk_04 = 32 + (i % 2) * 104;
+        r7[20 + i].unk_06 = 32 + (i / 2) * 21;
+        Sprite_SetPriority(r7[20 + i].sprite.sprite, 0);
+    }
+
+    for (i = 0; i < 4; ++i) {
+        ov100_021E6EC4(mapApp->unk_084, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F7C70[3]));
+        r7[24 + i].unk_04 = 40 + (i % 2) * 104;
+        r7[24 + i].unk_06 = 31 + (i / 2) * 21;
+        Sprite_SetPriority(r7[24 + i].sprite.sprite, 0);
+    }
+
+    for (i = 0; i < 8; ++i) {
+        ov100_021E6EC4(mapApp->unk_084, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F7C70[2]));
+        r7[28 + i].unk_04 = 40 + i * 24;
+        r7[28 + i].unk_06 = 132;
+        Sprite_SetAnimationFrame(r7[28 + i].sprite.sprite, i);
+        Sprite_SetPriority(r7[28 + i].sprite.sprite, 0);
+    }
+
+    for (i = 20; i <= 35; ++i) {
+        Sprite_SetDrawFlag(r7[i].sprite.sprite, TRUE);
+        Sprite_SetAnimActiveFlag(r7[i].sprite.sprite, FALSE);
+    }
+
+    Sprite_SetAnimActiveFlag(r7[11].sprite.sprite, TRUE);
+    ov100_021E6E84(mapApp->unk_084);
+    ov101_021E8AE4(mapApp);
 }

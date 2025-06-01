@@ -25,268 +25,6 @@
 	.extern ov101_021F7372
 	.extern ov101_021F79B4
 
-	thumb_func_start ov101_021E8BE8
-ov101_021E8BE8: ; 0x021E8BE8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	ldr r1, [r5, #0x10]
-	ldr r7, [r0, #8]
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	ldr r2, _021E8E00 ; =ov101_021F7C70
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r1, #0x6f
-	mov r0, #0x80
-	lsl r1, r1, #2
-	strh r0, [r7, r1]
-	add r0, r1, #2
-	mov r2, #0x6c
-	add r1, #0x1c
-	strh r2, [r7, r0]
-	ldr r0, [r7, r1]
-	mov r1, #1
-	bl Sprite_SetDrawFlag
-	mov r6, #0
-_021E8C2A:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8E04 ; =ov101_021F7C98
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r0, #0x28
-	mul r0, r6
-	add r4, r7, r0
-	mov r0, #0x79
-	mov r1, #0
-	lsl r0, r0, #2
-	strh r1, [r4, r0]
-	add r0, r0, #2
-	strh r1, [r4, r0]
-	mov r0, #2
-	lsl r0, r0, #8
-	lsr r2, r6, #0x1f
-	lsl r3, r6, #0x1e
-	sub r3, r3, r2
-	mov r1, #0x1e
-	ror r3, r1
-	add r1, r2, r3
-	ldr r0, [r4, r0]
-	add r1, r1, #5
-	bl Sprite_SetAnimCtrlSeq
-	mov r0, #2
-	lsl r0, r0, #8
-	ldr r0, [r4, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #2
-	lsl r0, r0, #8
-	ldr r0, [r4, r0]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	mov r0, #2
-	lsl r0, r0, #8
-	ldr r0, [r4, r0]
-	mov r1, #0
-	bl Sprite_SetPriority
-	ldr r0, _021E8E08 ; =0x000001E2
-	mov r1, #1
-	strh r1, [r4, r0]
-	add r0, r6, #1
-	lsl r0, r0, #0x10
-	lsr r6, r0, #0x10
-	cmp r6, #8
-	blo _021E8C2A
-	mov r6, #0xd
-	mov r4, #0
-	lsl r6, r6, #6
-_021E8CAC:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8E0C ; =ov101_021F7CC0
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r0, #0x28
-	mul r0, r4
-	add r3, r7, r0
-	lsr r2, r4, #0x1f
-	lsl r1, r4, #0x1f
-	sub r1, r1, r2
-	mov r0, #0x1f
-	ror r1, r0
-	add r0, r2, r1
-	mov r1, #0x68
-	mul r1, r0
-	mov r0, #0xc9
-	add r1, #0x20
-	lsl r0, r0, #2
-	strh r1, [r3, r0]
-	lsr r0, r4, #1
-	mov r1, #0x15
-	mul r1, r0
-	ldr r0, _021E8E10 ; =0x00000326
-	add r1, #0x20
-	strh r1, [r3, r0]
-	ldr r0, [r3, r6]
-	mov r1, #0
-	bl Sprite_SetPriority
-	add r0, r4, #1
-	lsl r0, r0, #0x10
-	lsr r4, r0, #0x10
-	cmp r4, #4
-	blo _021E8CAC
-	mov r6, #0x3e
-	mov r4, #0
-	lsl r6, r6, #4
-_021E8D0C:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8E14 ; =ov101_021F7CE8
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r0, #0x28
-	mul r0, r4
-	add r3, r7, r0
-	lsr r2, r4, #0x1f
-	lsl r1, r4, #0x1f
-	sub r1, r1, r2
-	mov r0, #0x1f
-	ror r1, r0
-	add r0, r2, r1
-	mov r1, #0x68
-	mul r1, r0
-	mov r0, #0xf1
-	add r1, #0x28
-	lsl r0, r0, #2
-	strh r1, [r3, r0]
-	lsr r0, r4, #1
-	mov r1, #0x15
-	mul r1, r0
-	ldr r0, _021E8E18 ; =0x000003C6
-	add r1, #0x1f
-	strh r1, [r3, r0]
-	ldr r0, [r3, r6]
-	mov r1, #0
-	bl Sprite_SetPriority
-	add r0, r4, #1
-	lsl r0, r0, #0x10
-	lsr r4, r0, #0x10
-	cmp r4, #4
-	blo _021E8D0C
-	mov r4, #0
-_021E8D68:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8E0C ; =ov101_021F7CC0
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r0, #0x28
-	mul r0, r4
-	add r6, r7, r0
-	mov r0, #0x18
-	add r1, r4, #0
-	mul r1, r0
-	ldr r0, _021E8E1C ; =0x00000464
-	add r1, #0x28
-	strh r1, [r6, r0]
-	mov r1, #0x84
-	add r0, r0, #2
-	strh r1, [r6, r0]
-	mov r0, #0x12
-	lsl r0, r0, #6
-	ldr r0, [r6, r0]
-	add r1, r4, #0
-	bl Sprite_SetAnimationFrame
-	mov r0, #0x12
-	lsl r0, r0, #6
-	ldr r0, [r6, r0]
-	mov r1, #0
-	bl Sprite_SetPriority
-	add r0, r4, #1
-	lsl r0, r0, #0x10
-	lsr r4, r0, #0x10
-	cmp r4, #8
-	blo _021E8D68
-	mov r4, #0x14
-_021E8DC2:
-	mov r0, #0x28
-	mul r0, r4
-	add r6, r7, r0
-	ldr r0, [r6, #0x20]
-	mov r1, #1
-	bl Sprite_SetDrawFlag
-	ldr r0, [r6, #0x20]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	add r0, r4, #1
-	lsl r0, r0, #0x10
-	lsr r4, r0, #0x10
-	cmp r4, #0x23
-	bls _021E8DC2
-	mov r0, #0x76
-	lsl r0, r0, #2
-	ldr r0, [r7, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6E84
-	add r0, r5, #0
-	bl ov101_021E8AE4
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E8E00: .word ov101_021F7C70
-_021E8E04: .word ov101_021F7C98
-_021E8E08: .word 0x000001E2
-_021E8E0C: .word ov101_021F7CC0
-_021E8E10: .word 0x00000326
-_021E8E14: .word ov101_021F7CE8
-_021E8E18: .word 0x000003C6
-_021E8E1C: .word 0x00000464
-	thumb_func_end ov101_021E8BE8
-
 	thumb_func_start ov101_021E8E20
 ov101_021E8E20: ; 0x021E8E20
 	push {r4, lr}
@@ -12011,8 +11749,7 @@ ov101_021F7C70: ; 0x021F7C70
 	.word 0
 	.word 0
 
-	.global ov101_021F7C98
-ov101_021F7C98: ; 0x021F7C98
+// ov101_021F7C98: ; 0x021F7C98
 	.word 1
 	.short 0
 	.short 0
@@ -12026,8 +11763,7 @@ ov101_021F7C98: ; 0x021F7C98
 	.word 0
 	.word 0
 
-	.global ov101_021F7CC0
-ov101_021F7CC0: ; 0x021F7CC0
+// ov101_021F7CC0: ; 0x021F7CC0
 	.word 0
 	.short 0
 	.short 0
@@ -12041,8 +11777,7 @@ ov101_021F7CC0: ; 0x021F7CC0
 	.word 0
 	.word 0
 
-	.global ov101_021F7CE8
-ov101_021F7CE8: ; 0x021F7CE8
+// ov101_021F7CE8: ; 0x021F7CE8
 	.word 2
 	.short 0
 	.short 0

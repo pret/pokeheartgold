@@ -76,14 +76,14 @@ typedef struct PokegearAppSwitch {
 } PokegearAppSwitch;
 
 typedef struct UnkStruct_ov100_021E6E20_Sub8 {
-    u8 unk_00;
-    u8 unk_01;
-    u16 unk_02;
-    s16 unk_04;
-    s16 unk_06;
-    u8 filler_08[0x18];
-    PokegearSpriteUnion sprite;
-    u8 filler_24[0x4];
+    u8 unk_00;                  // 0x00
+    u8 unk_01;                  // 0x01
+    u16 unk_02;                 // 0x02
+    s16 unk_04;                 // 0x04
+    s16 unk_06;                 // 0x06
+    u8 filler_08[0x18];         // 0x08
+    PokegearSpriteUnion sprite; // 0x20
+    u8 filler_24[0x4];          // 0x24
 } UnkStruct_ov100_021E6E20_Sub8;
 
 typedef struct UnkStruct_ov100_021E6E20 {
