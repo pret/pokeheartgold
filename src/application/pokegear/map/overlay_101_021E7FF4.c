@@ -114,3 +114,45 @@ BOOL ov101_021E80B4(PokegearMapAppData *mapApp) {
     ++mapApp->substate;
     return FALSE;
 }
+
+BOOL ov101_021E818C(PokegearMapAppData *mapApp) {
+    BOOL r5;
+    BOOL r0;
+
+    switch (mapApp->substate) {
+    case 0:
+        ov101_021E9FDC(mapApp, 1);
+        PlaySE(SEQ_SE_GS_GEARYBUTTON);
+        break;
+    case 1:
+        if (!ov101_021EA0D8(mapApp, 1)) {
+            return FALSE;
+        }
+        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, mapApp->heapId);
+        break;
+    case 2:
+        if (!IsPaletteFadeFinished()) {
+            return FALSE;
+        }
+        ov101_021E8774(mapApp);
+        ov101_021E8E20(mapApp);
+        break;
+    case 3:
+        ov101_021E9264(mapApp, 0);
+        ov101_021E8E58(mapApp);
+        ov101_021E9D74(mapApp, 0);
+        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
+        break;
+    case 4:
+        r5 = IsPaletteFadeFinished();
+        r0 = ov101_021E9E90(mapApp, 0);
+        if (!r5 || !r0) {
+            return FALSE;
+        }
+        mapApp->substate = 0;
+        return TRUE;
+    }
+
+    ++mapApp->substate;
+    return FALSE;
+}
