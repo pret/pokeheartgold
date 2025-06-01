@@ -50,7 +50,7 @@ typedef struct PokegearMapAppData {
     u8 unk_13D_2 : 1;                  // 0x13D
     u8 unk_13D_3 : 1;                  // 0x13D
     u8 filler_13E[0xD6];               // 0x13E
-    const u8 *unk_214;                 // 0x214
+    const u8 (*unk_214)[16];           // 0x214
     u8 filler_218[0x7D0];              // 0x218
     u16 unk_9E8[ROAMER_MAX];           // 0x9E8
     u8 filler_9F0[4];                  // 0x9F0
@@ -60,6 +60,7 @@ BOOL ov101_021E7FF4(PokegearMapAppData *mapApp);
 BOOL ov101_021E8070(PokegearMapAppData *mapApp);
 BOOL ov101_021E80B4(PokegearMapAppData *mapApp);
 BOOL ov101_021E818C(PokegearMapAppData *mapApp);
+void ov101_021E9270(PokegearAppData *pokegear, void *appData);
 BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, int a1);
 void ov101_021E9D74(PokegearMapAppData *mapApp, int a1);
 BOOL ov101_021E9E90(PokegearMapAppData *mapApp, int a1);
@@ -80,5 +81,7 @@ PokegearReturnCode ov101_021EB568(PokegearMapAppData *mapApp);
 u8 ov101_021ED614(PokegearMapAppData *mapApp, u16 a1);
 u8 ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
 void ov101_021ED79C(u8 a0, u8 a1, u16 a2);
+
+extern const u8 ov101_021F7372[][16];
 
 #endif // POKEHEARTGOLD_APPLICATION_POKEGEAR_MAP_POKEGEAR_MAP_INTERNAL_H
