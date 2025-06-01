@@ -192,6 +192,12 @@ u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *a1);
 void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0);
 void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1);
 
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline0(UnkStruct_ov100_021E6E20_Sub8 *a0, u16 a1) {
+    UnkStruct_ov100_021E6E20_Sub8 *sub = &a0[a1];
+    Sprite_GetPositionXY(sub->sprite.sprite, &sub->unk_04, &sub->unk_06);
+    Sprite_SetDrawFlag(sub->sprite.sprite, FALSE);
+}
+
 PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId);
 void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
 u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4);

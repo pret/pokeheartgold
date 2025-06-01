@@ -17,376 +17,13 @@
 	.text
 
 	.extern ov101_021E8674
+	.extern ov101_021E88D8
+	.extern ov101_021E8A88
+	.extern ov101_021E8AE4
+	.extern ov101_021E8BB8
+	.extern ov101_021E8BE8
 	.extern ov101_021F7372
 	.extern ov101_021F79B4
-
-	thumb_func_start ov101_021E88D8
-ov101_021E88D8: ; 0x021E88D8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	mov r6, #0
-	ldr r0, [r0, #8]
-	mov r7, #0x15
-	str r0, [sp]
-	add r4, r0, #0
-_021E88EA:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8A74 ; =ov101_021F7DB8
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	lsr r2, r6, #0x1f
-	lsl r3, r6, #0x1f
-	sub r3, r3, r2
-	mov r1, #0x1f
-	ror r3, r1
-	add r3, r2, r3
-	add r2, r6, r2
-	mov r1, #0x68
-	mul r1, r3
-	asr r2, r2, #1
-	add r3, r2, #0
-	mul r3, r7
-	add r1, #0x20
-	add r3, #0xcb
-	lsl r1, r1, #0x10
-	lsl r2, r3, #0x10
-	ldr r0, [r4, #0x20]
-	asr r1, r1, #0x10
-	asr r2, r2, #0x10
-	bl Sprite_SetPositionXY
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl thunk_Sprite_SetPriority
-	add r6, r6, #1
-	add r4, #0x28
-	cmp r6, #4
-	blt _021E88EA
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8A78 ; =ov101_021F7DE0
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	ldr r0, [sp]
-	mov r1, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	bl thunk_Sprite_SetPriority
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8A7C ; =ov101_021F7E08
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8A80 ; =ov101_021F7E30
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r7, #0
-	ldr r6, [sp]
-	add r4, r7, #0
-_021E89AE:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8A84 ; =ov101_021F7E58
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	cmp r7, #0
-	ble _021E89E2
-	add r0, r4, #0
-	bl _fflt
-	add r1, r0, #0
-	mov r0, #0x3f
-	lsl r0, r0, #0x18
-	bl _fadd
-	b _021E89F0
-_021E89E2:
-	add r0, r4, #0
-	bl _fflt
-	mov r1, #0x3f
-	lsl r1, r1, #0x18
-	bl _fsub
-_021E89F0:
-	bl _ffix
-	add r1, r0, #0
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	bl Sprite_UpdateAnim
-	mov r0, #1
-	lsl r0, r0, #0xc
-	add r7, r7, #1
-	add r4, r4, r0
-	add r6, #0x28
-	cmp r7, #4
-	blt _021E89AE
-	mov r4, #0
-	mov r7, #0x28
-_021E8A12:
-	lsl r0, r4, #0x10
-	lsr r0, r0, #0x10
-	add r1, r0, #0
-	ldr r0, [sp]
-	mul r1, r7
-	add r6, r0, r1
-	ldr r0, [r6, #0x20]
-	add r1, r6, #4
-	add r2, r6, #6
-	bl Sprite_GetPositionXY
-	ldr r0, [r6, #0x20]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	add r4, r4, #1
-	cmp r4, #0xb
-	blt _021E8A12
-	ldr r0, [sp]
-	mov r1, #1
-	add r0, #0xe8
-	ldr r0, [r0]
-	bl Sprite_SetAnimActiveFlag
-	mov r1, #0x11
-	ldr r0, [sp]
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	mov r1, #0x11
-	ldr r0, [sp]
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	ldr r1, [r5, #0x10]
-	ldr r1, [r1, #0x20]
-	ldrb r1, [r1, #7]
-	bl Sprite_SetAnimationFrame
-	ldr r0, [sp]
-	mov r1, #2
-	add r0, #0xe8
-	str r0, [sp]
-	ldr r0, [r0]
-	bl Sprite_SetAffineOverwriteMode
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E8A74: .word ov101_021F7DB8
-_021E8A78: .word ov101_021F7DE0
-_021E8A7C: .word ov101_021F7E08
-_021E8A80: .word ov101_021F7E30
-_021E8A84: .word ov101_021F7E58
-	thumb_func_end ov101_021E88D8
-
-	thumb_func_start ov101_021E8A88
-ov101_021E8A88: ; 0x021E8A88
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	mov r6, #0
-	ldr r7, [r0, #8]
-_021E8A94:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021E8AE0 ; =ov101_021F7B3C
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r1, #0x28
-	mul r1, r0
-	add r4, r7, r1
-	ldr r0, [r4, #0x20]
-	add r1, r4, #4
-	add r2, r4, #6
-	bl Sprite_GetPositionXY
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	add r0, r6, #1
-	lsl r0, r0, #0x10
-	lsr r6, r0, #0x10
-	cmp r6, #0x64
-	blo _021E8A94
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E8AE0: .word ov101_021F7B3C
-	thumb_func_end ov101_021E8A88
-
-	thumb_func_start ov101_021E8AE4
-ov101_021E8AE4: ; 0x021E8AE4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x48
-	add r5, r0, #0
-	mov r0, #0x81
-	lsl r0, r0, #2
-	ldr r1, [r5]
-	add r0, r5, r0
-	bl sub_02013910
-	mov r1, #1
-	str r0, [r5, #0x40]
-	bl sub_02013948
-	mov r1, #0
-	str r0, [sp, #0x14]
-	add r2, r5, #0
-	str r1, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, _021E8BB4 ; =0x00010200
-	add r2, #0xa0
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	lsr r0, r0, #7
-	ldr r2, [r2]
-	add r0, r5, r0
-	add r3, r1, #0
-	bl AddTextPrinterParameterizedWithColor
-	ldr r0, [r5, #0x3c]
-	str r0, [sp, #0x18]
-	mov r0, #0x81
-	lsl r0, r0, #2
-	add r0, r5, r0
-	str r0, [sp, #0x1c]
-	ldr r0, [r5, #0x10]
-	add r0, #0x90
-	ldr r0, [r0]
-	bl SpriteManager_GetSpriteList
-	str r0, [sp, #0x20]
-	ldr r0, [r5, #0x10]
-	mov r1, #0
-	add r0, #0x90
-	ldr r0, [r0]
-	bl SpriteManager_FindPlttResourceProxy
-	str r0, [sp, #0x24]
-	mov r0, #0
-	str r0, [sp, #0x10]
-	str r0, [sp, #0x38]
-	mov r0, #3
-	str r0, [sp, #0x3c]
-	mov r0, #4
-	str r0, [sp, #0x30]
-	sub r0, #0xa
-	str r0, [sp, #0x34]
-	mov r0, #1
-	str r0, [sp, #0x40]
-	ldr r0, [r5]
-	add r7, r5, #0
-	ldr r6, [sp, #0x10]
-	str r0, [sp, #0x44]
-	add r7, #0x48
-	add r4, r5, #0
-_021E8B66:
-	mov r1, #1
-	ldr r0, [sp, #0x14]
-	add r2, r1, #0
-	add r3, r7, #0
-	bl sub_02021AC8
-	ldr r0, [r4, #0x4c]
-	str r0, [sp, #0x2c]
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	ldr r0, [r0, #8]
-	add r1, r0, r6
-	mov r0, #0x3e
-	lsl r0, r0, #4
-	ldr r0, [r1, r0]
-	str r0, [sp, #0x28]
-	ldr r1, [r5, #0x40]
-	add r0, sp, #0x18
-	bl sub_02013950
-	str r0, [r4, #0x44]
-	mov r1, #0
-	bl sub_020137C0
-	ldr r0, [r4, #0x44]
-	mov r1, #7
-	bl sub_02013850
-	ldr r0, [sp, #0x10]
-	add r7, #0x10
-	add r0, r0, #1
-	add r4, #0x10
-	add r6, #0x28
-	str r0, [sp, #0x10]
-	cmp r0, #4
-	blt _021E8B66
-	add sp, #0x48
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E8BB4: .word 0x00010200
-	thumb_func_end ov101_021E8AE4
-
-	thumb_func_start ov101_021E8BB8
-ov101_021E8BB8: ; 0x021E8BB8
-	push {r3, r4, r5, r6, r7, lr}
-	mov r6, #0
-	add r5, r0, #0
-	str r0, [sp]
-	add r4, r0, #0
-	add r5, #0x48
-	add r7, r6, #0
-_021E8BC6:
-	ldr r0, [r4, #0x44]
-	bl sub_020139C8
-	add r0, r5, #0
-	bl sub_02021B5C
-	str r7, [r4, #0x44]
-	add r6, r6, #1
-	add r4, #0x10
-	add r5, #0x10
-	cmp r6, #4
-	blt _021E8BC6
-	ldr r0, [sp]
-	ldr r0, [r0, #0x40]
-	bl sub_02013938
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov101_021E8BB8
 
 	thumb_func_start ov101_021E8BE8
 ov101_021E8BE8: ; 0x021E8BE8
@@ -12285,6 +11922,7 @@ ov101_021F7B30: ; 0x021F7B30
 	.short 0x0000
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x48, 0x54, 0xEE, 0x12, 0xF4, 0x06
 
+	.global ov101_021F7B3C
 ov101_021F7B3C: ; 0x021F7B3C
 	.word 1
 	.short 0
@@ -12358,25 +11996,65 @@ ov101_021F7C04: ; 0x021F7C04
 	.short 0x0008
 	.byte 0xFF, 0xFF, 0x07, 0x03, 0xD0, 0x54, 0xF0, 0x10, 0xF7, 0x03
 
+	.global ov101_021F7C70
 ov101_021F7C70: ; 0x021F7C70
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 1
+	.short 0
+	.short 0
+	.short 0
+	.short 3
+	.word 4
+	.word 4
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
+	.global ov101_021F7C98
 ov101_021F7C98: ; 0x021F7C98
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 1
+	.short 0
+	.short 0
+	.short 0
+	.short 0
+	.word 4
+	.word 6
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
+	.global ov101_021F7CC0
 ov101_021F7CC0: ; 0x021F7CC0
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0
+	.short 0
+	.short 0
+	.short 0
+	.short 0
+	.word 4
+	.word 4
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
+	.global ov101_021F7CE8
 ov101_021F7CE8: ; 0x021F7CE8
-	.byte 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 2
+	.short 0
+	.short 0
+	.short 0
+	.short 0
+	.word 4
+	.word 5
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
 	.global ov101_021F7D10
 	.balign 4, 0
@@ -12400,30 +12078,76 @@ ov101_021F7D10: ; 0x021F7D10
 	.byte 0x01, 0x00, 0x1C, 0x04, 0x00, 0x02, 0x00, 0x00
 	.word 0x00000000
 
+	.global ov101_021F7DB8
 ov101_021F7DB8: ; 0x021F7DB8
-	.byte 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x60, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0
+	.short 0x20
+	.short 0x60
+	.short 0
+	.short 0
+	.word 0
+	.word 4
+	.word 2
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
-ov101_021F7DE0: ; 0x021F7DE0
-	.byte 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x98, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+// ov101_021F7DE0: ; 0x021F7DE0
+	.word 0
+	.short 0x10
+	.short 0x98
+	.short 0
+	.short 1
+	.word 0
+	.word 4
+	.word 2
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
-ov101_021F7E08: ; 0x021F7E08
-	.byte 0x01, 0x00, 0x00, 0x00, 0x20, 0x00, 0x80, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+// ov101_021F7E08: ; 0x021F7E08
+	.word 1
+	.short 0x20
+	.short 0x80
+	.short 0
+	.short 0
+	.word 1
+	.word 4
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
-ov101_021F7E30: ; 0x021F7E30
-	.byte 0x01, 0x00, 0x00, 0x00, 0x20, 0x00, 0x60, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+// ov101_021F7E30: ; 0x021F7E30
+	.word 1
+	.short 0x20
+	.short 0x60
+	.short 0
+	.short 1
+	.word 1
+	.word 4
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
-ov101_021F7E58: ; 0x021F7E58
-	.byte 0x01, 0x00, 0x00, 0x00, 0x20, 0x00, 0x60, 0x00
-	.byte 0x00, 0x00, 0x02, 0x00, 0x01, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+// ov101_021F7E58: ; 0x021F7E58
+	.word 1
+	.short 0x20
+	.short 0x60
+	.short 0
+	.short 2
+	.word 1
+	.word 4
+	.word 1
+	.word 0
+	.word 0
+	.word 0
+	.word 0
 
 ov101_021F7E80: ; 0x021F7E80
 	.byte 0x03, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x1C, 0x00, 0x01, 0x00, 0x40, 0x00
