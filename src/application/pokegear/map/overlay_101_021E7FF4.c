@@ -17,6 +17,7 @@ void ov101_021E84FC(PokegearMapAppData *mapApp);
 void ov101_021E857C(PokegearMapAppData *mapApp);
 void ov101_021E85A8(PokegearMapAppData *mapApp);
 void ov101_021E862C(PokegearMapAppData *mapApp);
+void ov101_021E8674(PokegearMapAppData *mapApp);
 void ov101_021E8774(PokegearMapAppData *mapApp);
 void ov101_021E8790(PokegearMapAppData *mapApp, u8 a1);
 void ov101_021E886C(PokegearMapAppData *mapApp);
@@ -33,6 +34,9 @@ void ov101_021E9FDC(PokegearMapAppData *mapApp, int a1);
 BOOL ov101_021EA0D8(PokegearMapAppData *mapApp, int a1);
 
 extern const WindowTemplate ov101_021F7B64[];
+extern const PokegearAppSwitchButtonSpec ov101_021F7C04[9];
+extern const PokegearAppSwitchButtonSpec ov101_021F7BA4[8];
+extern const PokegearAppSwitchButtonSpec ov101_021F7B30;
 
 BOOL ov101_021E7FF4(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
@@ -263,4 +267,22 @@ void ov101_021E862C(PokegearMapAppData *mapApp) {
     String_Delete(mapApp->unk_090);
     MessageFormat_Delete(mapApp->unk_08C);
     DestroyMsgData(mapApp->unk_088);
+}
+
+void ov101_021E8674(PokegearMapAppData *mapApp) {
+    UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
+
+    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, ov101_021F7C04, NELEMS(ov101_021F7C04), 0, FALSE, mapApp->heapId, r4[12].sprite, r4[13].sprite, r4[14].sprite, r4[15].sprite);
+    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, ov101_021F7BA4, NELEMS(ov101_021F7BA4), 0, FALSE, mapApp->heapId, r4[16].sprite, r4[17].sprite, r4[18].sprite, r4[19].sprite);
+    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, &ov101_021F7B30, 1, 0, FALSE, mapApp->heapId, r4[16].sprite, r4[17].sprite, r4[18].sprite, r4[19].sprite);
+
+    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, FALSE);
+    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 2, FALSE);
+    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 3, FALSE);
+
+    if (mapApp->unk_00C == 1) {
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, mapApp->unk_014.unk_02 * 2 + 1);
+    } else {
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, 0);
+    }
 }

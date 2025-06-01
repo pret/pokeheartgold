@@ -29,7 +29,8 @@ typedef struct PokegearMapAppData {
     int unk_030;                       // 0x030
     u8 filler_034[4];                  // 0x034
     MAPDATA *unk_038;                  // 0x038
-    u8 filler_03C[0x4C];               // 0x03C
+    u8 filler_03C[0x48];               // 0x03C
+    UnkStruct_ov100_021E6E20 *unk_084; // 0x084
     MsgData *unk_088;                  // 0x088
     MessageFormat *unk_08C;            // 0x08C
     String *unk_090;                   // 0x090

@@ -82,7 +82,7 @@ typedef struct UnkStruct_ov100_021E6E20_Sub8 {
     s16 unk_04;
     s16 unk_06;
     u8 filler_08[0x18];
-    Sprite *sprite;
+    PokegearSpriteUnion sprite;
     u8 filler_24[0x4];
 } UnkStruct_ov100_021E6E20_Sub8;
 
