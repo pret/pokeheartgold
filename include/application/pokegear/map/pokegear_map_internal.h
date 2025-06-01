@@ -49,7 +49,11 @@ typedef struct PokegearMapAppData {
     u8 unk_13D_1 : 1;                  // 0x13D
     u8 unk_13D_2 : 1;                  // 0x13D
     u8 unk_13D_3 : 1;                  // 0x13D
-    u8 filler_13E[0xD6];               // 0x13E
+    u8 filler_13E[0x16];               // 0x13E
+    void *unk_154[6];                  // 0x154
+    NNSG2dScreenData *unk_16C[6];      // 0x16C
+    Window unk_184[8];                 // 0x184
+    Window unk_204;                    // 0x204
     const u8 (*unk_214)[16];           // 0x214
     u8 filler_218[0x7D0];              // 0x218
     u16 unk_9E8[ROAMER_MAX];           // 0x9E8

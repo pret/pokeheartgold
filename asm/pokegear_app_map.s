@@ -18,407 +18,6 @@
 
 	.extern ov101_021F7372
 
-	thumb_func_start ov101_021E8264
-ov101_021E8264: ; 0x021E8264
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xac
-	add r5, r0, #0
-	mov r0, #1
-	mov r1, #5
-	mov r2, #0
-	bl GX_SetGraphicsMode
-	ldr r4, _021E8350 ; =ov101_021F7D10
-	add r3, sp, #4
-	mov r2, #0x15
-_021E827A:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021E827A
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x74]
-	add r2, sp, #4
-	bl InitBgFromTemplateEx
-	mov r0, #0
-	str r0, [sp]
-	ldr r0, [r5, #0x10]
-	mov r1, #2
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x20
-	add r3, r1, #0
-	bl InitBgFromTemplateEx
-	mov r0, #0
-	str r0, [sp]
-	ldr r0, [r5, #0x10]
-	mov r1, #3
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x3c
-	mov r3, #2
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0x10]
-	mov r1, #5
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x58
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0x10]
-	mov r1, #6
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x74
-	bl InitBgFromTemplateEx
-	mov r3, #0
-	str r3, [sp]
-	ldr r0, [r5, #0x10]
-	mov r1, #7
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x90
-	bl InitBgFromTemplateEx
-	mov r4, #0
-	mov r6, #0x40
-	add r7, r4, #0
-_021E82EC:
-	ldr r0, [r5, #0x10]
-	add r1, r4, #1
-	lsl r1, r1, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgClearTilemapBufferAndCommit
-	add r0, r4, #1
-	lsl r0, r0, #0x18
-	ldr r3, [r5]
-	lsr r0, r0, #0x18
-	add r1, r6, #0
-	add r2, r7, #0
-	bl BG_ClearCharDataRange
-	ldr r0, [r5, #0x10]
-	add r1, r4, #5
-	lsl r1, r1, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgClearTilemapBufferAndCommit
-	add r0, r4, #5
-	lsl r0, r0, #0x18
-	ldr r3, [r5]
-	lsr r0, r0, #0x18
-	mov r1, #0x20
-	mov r2, #0
-	bl BG_ClearCharDataRange
-	ldr r0, [r5, #0x10]
-	add r1, r4, #1
-	lsl r1, r1, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgCommitTilemapBufferToVram
-	ldr r0, [r5, #0x10]
-	add r1, r4, #5
-	lsl r1, r1, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgCommitTilemapBufferToVram
-	add r4, r4, #1
-	cmp r4, #3
-	blt _021E82EC
-	add sp, #0xac
-	pop {r4, r5, r6, r7, pc}
-	nop
-_021E8350: .word ov101_021F7D10
-	thumb_func_end ov101_021E8264
-
-	thumb_func_start ov101_021E8354
-ov101_021E8354: ; 0x021E8354
-	push {r3, lr}
-	ldr r0, [r0, #0x10]
-	bl Pokegear_ClearAppBgLayers
-	mov r1, #0
-	ldr r0, _021E836C ; =0x04000050
-	add r2, r1, #0
-	add r3, r1, #0
-	str r1, [sp]
-	bl G2x_SetBlendAlpha_
-	pop {r3, pc}
-	.balign 4, 0
-_021E836C: .word 0x04000050
-	thumb_func_end ov101_021E8354
-
-	thumb_func_start ov101_021E8370
-ov101_021E8370: ; 0x021E8370
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x14
-	add r5, r0, #0
-	add r6, r1, #0
-	ldr r1, [r5]
-	mov r0, #0x90
-	bl NARC_New
-	add r4, r0, #0
-	add r0, r6, #0
-	add r0, #0x1a
-	str r0, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0x10]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	add r2, r4, #0
-	mov r3, #0x90
-	bl sub_0208820C
-	mov r0, #0xa
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0x10]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	add r2, r4, #0
-	mov r3, #0x90
-	bl sub_0208820C
-	add r0, r6, #0
-	add r0, #0x32
-	str r0, [sp]
-	mov r0, #6
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0x10]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	add r2, r4, #0
-	mov r3, #0x90
-	bl sub_0208820C
-	mov r0, #0xc
-	str r0, [sp]
-	mov r0, #7
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #0xc]
-	str r0, [sp, #0x10]
-	ldr r0, [r5, #0x10]
-	ldr r1, [r5]
-	ldr r0, [r0, #0x74]
-	add r2, r4, #0
-	mov r3, #0x90
-	bl sub_0208820C
-	ldr r0, [r5]
-	mov r3, #0x5b
-	add r1, r6, #0
-	lsl r3, r3, #2
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, #0x38
-	mov r2, #0
-	add r3, r5, r3
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	mov r3, #0x55
-	lsl r3, r3, #2
-	str r0, [r5, r3]
-	ldr r0, [r5]
-	add r3, #0x1c
-	str r0, [sp]
-	add r0, r4, #0
-	mov r1, #0xb
-	mov r2, #0
-	add r3, r5, r3
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	mov r3, #0x56
-	lsl r3, r3, #2
-	str r0, [r5, r3]
-	ldr r0, [r5]
-	add r3, #0x1c
-	str r0, [sp]
-	add r0, r4, #0
-	mov r1, #0xd
-	mov r2, #0
-	add r3, r5, r3
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	mov r3, #0x57
-	lsl r3, r3, #2
-	str r0, [r5, r3]
-	ldr r0, [r5]
-	add r1, r6, #0
-	add r3, #0x1c
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, #0x20
-	mov r2, #0
-	add r3, r5, r3
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	mov r3, #0x16
-	lsl r3, r3, #4
-	str r0, [r5, r3]
-	ldr r0, [r5]
-	add r1, r6, #0
-	add r3, #0x1c
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, #0x26
-	mov r2, #0
-	add r3, r5, r3
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	mov r3, #0x59
-	lsl r3, r3, #2
-	str r0, [r5, r3]
-	ldr r0, [r5]
-	add r6, #0x2c
-	add r3, #0x1c
-	str r0, [sp]
-	add r0, r4, #0
-	add r1, r6, #0
-	mov r2, #0
-	add r3, r5, r3
-	bl GfGfxLoader_GetScrnDataFromOpenNarc
-	mov r1, #0x5a
-	lsl r1, r1, #2
-	str r0, [r5, r1]
-	add r0, r4, #0
-	bl NARC_Delete
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x74]
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r5, #0x10]
-	mov r1, #2
-	ldr r0, [r0, #0x74]
-	bl ScheduleBgTilemapBufferTransfer
-	add sp, #0x14
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021E8370
-
-	thumb_func_start ov101_021E84B8
-ov101_021E84B8: ; 0x021E84B8
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x5a
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	mov r0, #0x59
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	mov r0, #0x16
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	mov r0, #0x57
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	mov r0, #0x56
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	mov r0, #0x55
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl FreeToHeap
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021E84B8
-
-	thumb_func_start ov101_021E84FC
-ov101_021E84FC: ; 0x021E84FC
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x14
-	add r7, r0, #0
-	mov r0, #0x61
-	lsl r0, r0, #2
-	ldr r4, _021E8574 ; =ov101_021F7B64
-	mov r6, #0
-	add r5, r7, r0
-_021E850C:
-	ldrb r0, [r4, #2]
-	add r1, r5, #0
-	str r0, [sp]
-	ldrb r0, [r4, #3]
-	str r0, [sp, #4]
-	ldrb r0, [r4, #4]
-	str r0, [sp, #8]
-	ldrb r0, [r4, #5]
-	str r0, [sp, #0xc]
-	ldrh r0, [r4, #6]
-	str r0, [sp, #0x10]
-	ldr r0, [r7, #0x10]
-	ldrb r2, [r4]
-	ldrb r3, [r4, #1]
-	ldr r0, [r0, #0x74]
-	bl AddWindowParameterized
-	add r0, r5, #0
-	mov r1, #0
-	bl FillWindowPixelBuffer
-	add r6, r6, #1
-	add r4, #8
-	add r5, #0x10
-	cmp r6, #7
-	ble _021E850C
-	mov r0, #0x81
-	lsl r0, r0, #2
-	add r0, r7, r0
-	bl InitWindow
-	ldr r0, _021E8578 ; =0x000003C5
-	mov r1, #0x81
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	ldr r0, [r7, #0x10]
-	lsl r1, r1, #2
-	ldr r0, [r0, #0x74]
-	add r1, r7, r1
-	mov r2, #0xb
-	mov r3, #2
-	bl AddTextWindowTopLeftCorner
-	mov r0, #0x81
-	lsl r0, r0, #2
-	add r0, r7, r0
-	mov r1, #0
-	bl FillWindowPixelBufferText_AssumeTileSize32
-	add sp, #0x14
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E8574: .word ov101_021F7B64
-_021E8578: .word 0x000003C5
-	thumb_func_end ov101_021E84FC
-
-	thumb_func_start ov101_021E857C
-ov101_021E857C: ; 0x021E857C
-	push {r4, r5, r6, lr}
-	add r6, r0, #0
-	mov r0, #0x61
-	lsl r0, r0, #2
-	mov r4, #0
-	add r5, r6, r0
-_021E8588:
-	add r0, r5, #0
-	bl ClearWindowTilemapAndCopyToVram
-	add r0, r5, #0
-	bl RemoveWindow
-	add r4, r4, #1
-	add r5, #0x10
-	cmp r4, #8
-	blt _021E8588
-	mov r0, #0x81
-	lsl r0, r0, #2
-	add r0, r6, r0
-	bl RemoveWindow
-	pop {r4, r5, r6, pc}
-	thumb_func_end ov101_021E857C
-
 	thumb_func_start ov101_021E85A8
 ov101_021E85A8: ; 0x021E85A8
 	push {r4, lr}
@@ -13173,12 +12772,24 @@ ov101_021F7B3C: ; 0x021F7B3C
 	.word 0
 	.word 0
 
+	.global ov101_021F7B64
 ov101_021F7B64: ; 0x021F7B64
-	.byte 0x05, 0x01, 0x08, 0x05, 0x03, 0x01, 0xF0, 0x03, 0x05, 0x03, 0x0C, 0x0C
-	.byte 0x02, 0x01, 0xD8, 0x03, 0x05, 0x01, 0x0E, 0x1C, 0x04, 0x01, 0x68, 0x03, 0x05, 0x05, 0x12, 0x0B
-	.byte 0x05, 0x01, 0x31, 0x03, 0x05, 0x12, 0x12, 0x0B, 0x05, 0x01, 0xFA, 0x02, 0x05, 0x05, 0x14, 0x0B
-	.byte 0x02, 0x01, 0xE4, 0x02, 0x05, 0x12, 0x16, 0x0B, 0x02, 0x01, 0xCE, 0x02, 0x01, 0x03, 0x00, 0x0C
-	.byte 0x03, 0x0A, 0xDB, 0x03
+	.byte 0x05, 0x01, 0x08, 0x05, 0x03, 0x01
+	.short 0x03F0
+	.byte 0x05, 0x03, 0x0C, 0x0C, 0x02, 0x01
+	.short 0x03D8
+	.byte 0x05, 0x01, 0x0E, 0x1C, 0x04, 0x01
+	.short 0x0368
+	.byte 0x05, 0x05, 0x12, 0x0B, 0x05, 0x01
+	.short 0x0331
+	.byte 0x05, 0x12, 0x12, 0x0B, 0x05, 0x01
+	.short 0x02FA
+	.byte 0x05, 0x05, 0x14, 0x0B, 0x02, 0x01
+	.short 0x02E4
+	.byte 0x05, 0x12, 0x16, 0x0B, 0x02, 0x01
+	.short 0x02CE
+	.byte 0x01, 0x03, 0x00, 0x0C, 0x03, 0x0A
+	.short 0x03DB
 
 ov101_021F7BA4: ; 0x021F7BA4
 	.byte 0x00, 0x00, 0x07, 0x01, 0xFF, 0xFF, 0x28, 0x84, 0xF8, 0x08, 0xF8, 0x08
@@ -13218,18 +12829,27 @@ ov101_021F7CE8: ; 0x021F7CE8
 	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
+	.global ov101_021F7D10
+	.balign 4, 0
 ov101_021F7D10: ; 0x021F7D10
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x1E, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x01, 0x1A, 0x04
-	.byte 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x01, 0x16, 0x04, 0x00, 0x03, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x1D, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x1C, 0x04
-	.byte 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
+	.byte 0x01, 0x00, 0x1E, 0x00, 0x00, 0x01, 0x00, 0x00
+	.word 0x00000000
+	.word 0x00000000, 0x00000000, 0x00002000, 0x00000000
+	.byte 0x04, 0x01, 0x1A, 0x04, 0x00, 0x02, 0x00, 0x00
+	.word 0x00000000
+	.word 0x00000000, 0x00000000, 0x00002000, 0x00000000
+	.byte 0x04, 0x01, 0x16, 0x04, 0x00, 0x03, 0x00, 0x00
+	.word 0x00000000
+	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
+	.byte 0x01, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00
+	.word 0x00000000
+	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
+	.byte 0x01, 0x00, 0x1D, 0x00, 0x00, 0x01, 0x00, 0x00
+	.word 0x00000000
+	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
+	.byte 0x01, 0x00, 0x1C, 0x04, 0x00, 0x02, 0x00, 0x00
+	.word 0x00000000
 
 ov101_021F7DB8: ; 0x021F7DB8
 	.byte 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x60, 0x00
