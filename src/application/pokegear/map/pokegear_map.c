@@ -2,10 +2,15 @@
 
 #include "application/pokegear/map/pokegear_map_internal.h"
 
+#include "brightness.h"
 #include "phonebook_dat.h"
 #include "pokegear_apps.h"
 #include "roamer.h"
+#include "sound_02004A44.h"
 #include "sys_flags.h"
+#include "touchscreen.h"
+#include "unk_02005D10.h"
+#include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 
@@ -16,14 +21,14 @@ void ov101_021E7B54(PokegearMapAppData *mapApp);
 int ov101_021E7B90(PokegearMapAppData *mapApp);
 int ov101_021E7BB4(PokegearMapAppData *mapApp);
 int ov101_021E7C10(PokegearMapAppData *mapApp);
-int ov101_021E7D50(PokegearMapAppData *mapApp);
-int ov101_021E7E28(PokegearMapAppData *mapApp);
-int ov101_021E7E98(PokegearMapAppData *mapApp);
-int ov101_021E7F20(PokegearMapAppData *mapApp);
 int ov101_021E7C38(PokegearMapAppData *mapApp);
 int ov101_021E7C4C(PokegearMapAppData *mapApp);
 int ov101_021E7D28(PokegearMapAppData *mapApp);
 int ov101_021E7D3C(PokegearMapAppData *mapApp);
+int ov101_021E7D50(PokegearMapAppData *mapApp);
+int ov101_021E7E28(PokegearMapAppData *mapApp);
+int ov101_021E7E98(PokegearMapAppData *mapApp);
+int ov101_021E7F20(PokegearMapAppData *mapApp);
 
 extern const u8 ov101_021F7372[];
 extern const u16 ov101_021F7358[];
@@ -193,4 +198,267 @@ void ov101_021E78EC(PokegearMapAppData *mapApp) {
             mapApp->unk_9E8[i] = SPECIES_NONE;
         }
     }
+}
+
+void ov101_021E7B54(PokegearMapAppData *mapApp) {
+    FreeToHeap(mapApp->unk_12C);
+    FreePhoneBook(mapApp->unk_128);
+    mapApp->pokegear->reselectAppCB = NULL;
+    mapApp->pokegear->unknownCB = NULL;
+    ov101_021ED5AC(mapApp);
+    sub_0202EEA8(mapApp->pokegear->savePokegear, mapApp->unk_138_0);
+}
+
+int ov101_021E7B90(PokegearMapAppData *mapApp) {
+    if (!ov101_021E7FF4(mapApp)) {
+        return 0;
+    }
+    if (mapApp->pokegear->isSwitchApp) {
+        return 6;
+    } else {
+        return 4;
+    }
+}
+
+int ov101_021E7BB4(PokegearMapAppData *mapApp) {
+    BOOL isTouch = FALSE;
+    int input;
+
+    input = ov101_021EB5DC(mapApp, &isTouch);
+    if (!isTouch) {
+        PokegearApp_HandleInputModeChangeToButtons(mapApp->pokegear);
+        if (mapApp->pokegear->cursorInAppSwitchZone == TRUE) {
+            input = PokegearApp_HandleKeyInput_SwitchApps(mapApp->pokegear);
+        } else {
+            input = ov101_021EB568(mapApp);
+        }
+    }
+    mapApp->pokegear->appReturnCode = input;
+    switch (input) {
+    case TOUCH_MENU_NO_INPUT:
+        break;
+    case GEAR_RETURN_7:
+        return 8;
+    case GEAR_RETURN_4:
+        return 5;
+    default:
+        return 7;
+    }
+
+    return 1;
+}
+
+int ov101_021E7C10(PokegearMapAppData *mapApp) {
+    if (!ov101_021E8070(mapApp)) {
+        return 2;
+    }
+    mapApp->pokegear->unk_03C = mapApp->unk_014;
+    return 13;
+}
+
+int ov101_021E7C38(PokegearMapAppData *mapApp) {
+    if (ov101_021E80B4(mapApp)) {
+        return 9;
+    } else {
+        return 8;
+    }
+}
+
+int ov101_021E7C4C(PokegearMapAppData *mapApp) {
+    int r4 = -1;
+    BOOL sp0 = FALSE;
+
+    switch (mapApp->unk_13C_0) {
+    case 0:
+        r4 = ov101_021ECC58(mapApp, &sp0);
+        break;
+    case 1:
+        if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_BUTTONS) {
+            r4 = ov101_021ECF98(mapApp);
+            sp0 = TRUE;
+        }
+        break;
+    case 2:
+        if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_BUTTONS) {
+            r4 = ov101_021ED2C0(mapApp);
+            sp0 = TRUE;
+        }
+        break;
+    }
+    if (sp0) {
+        if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
+            ov101_021EB364(mapApp);
+        }
+        mapApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
+        if (r4 >= 0) {
+            return r4;
+        } else {
+            return 9;
+        }
+    }
+    if (PokegearApp_HandleInputModeChangeToButtons(mapApp->pokegear) && mapApp->pokegear->menuInputState != mapApp->pokegear->menuInputStateBak) {
+        ov101_021EB378(mapApp);
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        return 9;
+    }
+
+    switch (mapApp->unk_13C_0) {
+    case 0:
+        r4 = ov101_021ECAF0(mapApp);
+        break;
+    case 1:
+        r4 = ov101_021ECEA8(mapApp);
+        break;
+    case 2:
+        r4 = ov101_021ED158(mapApp);
+        break;
+    }
+    if (r4 < 0) {
+        r4 = 9;
+    }
+    return r4;
+}
+
+int ov101_021E7D28(PokegearMapAppData *mapApp) {
+    if (ov101_021E818C(mapApp)) {
+        return 1;
+    } else {
+        return 10;
+    }
+}
+
+int ov101_021E7D3C(PokegearMapAppData *mapApp) {
+    mapApp->pokegear->isSwitchApp = FALSE;
+    mapApp->pokegear->appReturnCode = GEAR_RETURN_CANCEL;
+    return 5;
+}
+
+int ov101_021E7D50(PokegearMapAppData *mapApp) {
+    int i;
+
+    switch (mapApp->state) {
+    case 0:
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
+        if (mapApp->unk_00C == 1) {
+            for (i = 0; i < 4; ++i) {
+                ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
+            }
+        } else {
+            for (i = 0; i < 8; ++i) {
+                ToggleBgLayer(i, TRUE);
+            }
+        }
+        PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, TRUE);
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, 0);
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, 0);
+        PaletteData_PushTransparentBuffers(mapApp->pokegear->plttData);
+        PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, FALSE);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
+        ++mapApp->state;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished()) {
+            mapApp->state = 0;
+            if (mapApp->unk_00C == 1) {
+                return 9;
+            } else {
+                return 1;
+            }
+        }
+        break;
+    }
+
+    return 4;
+}
+
+int ov101_021E7E28(PokegearMapAppData *mapApp) {
+    switch (mapApp->state) {
+    case 0:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapId);
+        ++mapApp->state;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished()) {
+            for (int i = 0; i < 8; ++i) {
+                ToggleBgLayer(i, FALSE);
+            }
+            GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+            GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+            mapApp->state = 0;
+            return 2;
+        }
+        break;
+    }
+
+    return 5;
+}
+
+int ov101_021E7E98(PokegearMapAppData *mapApp) {
+    BOOL r4;
+    BOOL r0;
+
+    switch (mapApp->state) {
+    case 0:
+        PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, TRUE);
+        mapApp->unk_135 = 0;
+        for (int i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
+        }
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3), SCREEN_MASK_MAIN);
+        ++mapApp->state;
+        break;
+    case 1:
+        r4 = ov101_021E9CD4(mapApp, 0);
+        r0 = ov101_021E9E90(mapApp, 0);
+        if (r4 && r0) {
+            ++mapApp->state;
+        }
+        break;
+    case 2:
+        PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, FALSE);
+        mapApp->state = 0;
+        mapApp->unk_030 = 0;
+        return 1;
+    }
+
+    return 6;
+}
+
+int ov101_021E7F20(PokegearMapAppData *mapApp) {
+    int i;
+    BOOL r4;
+    BOOL r0;
+
+    switch (mapApp->state) {
+    case 0:
+        PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, TRUE);
+        for (i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
+        }
+        ov101_021E9D74(mapApp, 1);
+        mapApp->unk_135 = 0;
+        ++mapApp->state;
+        break;
+    case 1:
+        r4 = ov101_021E9CD4(mapApp, 1);
+        r0 = ov101_021E9E90(mapApp, 1);
+        if (r4 && r0) {
+            ++mapApp->state;
+        }
+        break;
+    case 2:
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, 0);
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, 0);
+        PaletteData_PushTransparentBuffers(mapApp->pokegear->plttData);
+        for (int i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + GF_BG_LYR_MAIN_1, FALSE);
+        }
+        PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, FALSE);
+        mapApp->state = 0;
+        mapApp->unk_030 = 0;
+        return 2;
+    }
+
+    return 7;
 }
