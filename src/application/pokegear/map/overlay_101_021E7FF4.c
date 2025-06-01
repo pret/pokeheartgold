@@ -1,6 +1,8 @@
 #include "global.h"
 
 #include "application/pokegear/map/pokegear_map_internal.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0273.h"
 
 #include "gf_gfx_loader.h"
 #include "unk_02005D10.h"
@@ -240,4 +242,25 @@ void ov101_021E857C(PokegearMapAppData *mapApp) {
         RemoveWindow(&mapApp->unk_184[i]);
     }
     RemoveWindow(&mapApp->unk_204);
+}
+
+void ov101_021E85A8(PokegearMapAppData *mapApp) {
+    mapApp->unk_088 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0273_bin, mapApp->heapId);
+    mapApp->unk_08C = MessageFormat_New_Custom(2, 91, mapApp->heapId);
+    mapApp->unk_090 = String_New(91, mapApp->heapId);
+    mapApp->unk_09C = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00001);
+    mapApp->unk_0A0 = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00000);
+    mapApp->unk_0A4 = String_New(40, mapApp->heapId);
+    mapApp->unk_0B4 = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00003);
+    mapApp->unk_0B8 = 2;
+}
+
+void ov101_021E862C(PokegearMapAppData *mapApp) {
+    String_Delete(mapApp->unk_0B4);
+    String_Delete(mapApp->unk_0A4);
+    String_Delete(mapApp->unk_0A0);
+    String_Delete(mapApp->unk_09C);
+    String_Delete(mapApp->unk_090);
+    MessageFormat_Delete(mapApp->unk_08C);
+    DestroyMsgData(mapApp->unk_088);
 }

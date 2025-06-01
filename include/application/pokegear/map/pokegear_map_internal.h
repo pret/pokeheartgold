@@ -5,6 +5,20 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
+typedef struct UnkStruct_ov101_021F79B4 {
+    u16 unk_00;
+    u16 unk_02;
+    u8 unk_04;
+    u8 unk_05;
+    u8 unk_06;
+    u8 unk_07;
+    u8 unk_08;
+    u8 unk_09;
+    u8 unk_0A;
+    u8 unk_0B;
+    u8 unk_0C;
+} UnkStruct_ov101_021F79B4;
+
 typedef struct PokegearMapAppData {
     HeapID heapId;                     // 0x000
     int state;                         // 0x004
@@ -15,7 +29,18 @@ typedef struct PokegearMapAppData {
     int unk_030;                       // 0x030
     u8 filler_034[4];                  // 0x034
     MAPDATA *unk_038;                  // 0x038
-    u8 filler_03C[0xC4];               // 0x03C
+    u8 filler_03C[0x4C];               // 0x03C
+    MsgData *unk_088;                  // 0x088
+    MessageFormat *unk_08C;            // 0x08C
+    String *unk_090;                   // 0x090
+    u8 filler_094[8];                  // 0x094
+    String *unk_09C;                   // 0x09C
+    String *unk_0A0;                   // 0x0A0
+    String *unk_0A4;                   // 0x0A4
+    u8 filler_0A8[12];                 // 0x0A8
+    String *unk_0B4;                   // 0x0B4
+    u8 unk_0B8;                        // 0x0B8
+    u8 filler_0B9[0x47];               // 0x0B9
     u16 unk_100;                       // 0x100
     u16 unk_102;                       // 0x102
     u16 unk_104;                       // 0x104
@@ -87,5 +112,6 @@ u8 ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
 void ov101_021ED79C(u8 a0, u8 a1, u16 a2);
 
 extern const u8 ov101_021F7372[][16];
+extern const UnkStruct_ov101_021F79B4 ov101_021F79B4[];
 
 #endif // POKEHEARTGOLD_APPLICATION_POKEGEAR_MAP_POKEGEAR_MAP_INTERNAL_H

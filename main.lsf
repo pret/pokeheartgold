@@ -1136,6 +1136,7 @@ Overlay OVY_101
 {
     After OVY_100
     Object src/application/pokegear/map/pokegear_map.o
+    Object src/application/pokegear/map/overlay_101_021F79B4.o
     Object src/application/pokegear/map/overlay_101_021E7FF4.o
     Object asm/pokegear_app_map.o
     Object asm/pokegear_app_configure.o
