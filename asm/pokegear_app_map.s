@@ -25,47 +25,6 @@
 	.extern ov101_021F7372
 	.extern ov101_021F79B4
 
-	thumb_func_start ov101_021E8E20
-ov101_021E8E20: ; 0x021E8E20
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov101_021E8BB8
-	add r4, #0x84
-	ldr r0, [r4]
-	mov r1, #0xb
-	bl ov100_021E6F34
-	pop {r4, pc}
-	thumb_func_end ov101_021E8E20
-
-	thumb_func_start ov101_021E8E34
-ov101_021E8E34: ; 0x021E8E34
-	ldr r3, _021E8E38 ; =ov101_021E88D8
-	bx r3
-	.balign 4, 0
-_021E8E38: .word ov101_021E88D8
-	thumb_func_end ov101_021E8E34
-
-	thumb_func_start ov101_021E8E3C
-ov101_021E8E3C: ; 0x021E8E3C
-	ldr r3, _021E8E48 ; =ov100_021E6F34
-	add r0, #0x84
-	ldr r0, [r0]
-	mov r1, #0xb
-	bx r3
-	nop
-_021E8E48: .word ov100_021E6F34
-	thumb_func_end ov101_021E8E3C
-
-	thumb_func_start ov101_021E8E4C
-ov101_021E8E4C: ; 0x021E8E4C
-	ldr r3, _021E8E54 ; =ov100_021E6EF4
-	add r0, #0x84
-	ldr r0, [r0]
-	bx r3
-	.balign 4, 0
-_021E8E54: .word ov100_021E6EF4
-	thumb_func_end ov101_021E8E4C
-
 	thumb_func_start ov101_021E8E58
 ov101_021E8E58: ; 0x021E8E58
 	push {r3, r4, r5, r6, r7, lr}

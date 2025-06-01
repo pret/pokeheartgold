@@ -473,3 +473,20 @@ void ov101_021E8BE8(PokegearMapAppData *mapApp) {
     ov100_021E6E84(mapApp->unk_084);
     ov101_021E8AE4(mapApp);
 }
+
+void ov101_021E8E20(PokegearMapAppData *mapApp) {
+    ov101_021E8BB8(mapApp);
+    ov100_021E6F34(mapApp->unk_084, 11);
+}
+
+void ov101_021E8E34(PokegearMapAppData *mapApp) {
+    ov101_021E88D8(mapApp);
+}
+
+void ov101_021E8E3C(PokegearMapAppData *mapApp) {
+    ov100_021E6F34(mapApp->unk_084, 11);
+}
+
+void ov101_021E8E4C(PokegearMapAppData *mapApp) {
+    ov100_021E6EF4(mapApp->unk_084);
+}
