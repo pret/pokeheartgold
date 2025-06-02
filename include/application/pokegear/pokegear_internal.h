@@ -32,7 +32,18 @@ typedef struct PokegearUnkSub03C {
     u8 unk_00;
     u8 unk_01;
     u16 unk_02;
-    u16 filler_04[10];
+    u8 unk_04;
+    u8 unk_05;
+    u8 unk_06;
+    u8 unk_07;
+    u16 unk_08;
+    u16 unk_0A;
+    s16 unk_0C;
+    s16 unk_0E;
+    u16 unk_10;
+    u16 unk_12;
+    u16 unk_14;
+    u16 unk_16;
     u16 unk_18;
     u16 unk_1A;
 } PokegearUnkSub03C; // size: 0x1C
