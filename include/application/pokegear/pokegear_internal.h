@@ -40,10 +40,10 @@ typedef struct PokegearUnkSub03C {
     u16 unk_0A;
     s16 unk_0C;
     s16 unk_0E;
-    u16 unk_10;
-    u16 unk_12;
-    u16 unk_14;
-    u16 unk_16;
+    s16 unk_10;
+    s16 unk_12;
+    s16 unk_14;
+    s16 unk_16;
     u16 unk_18;
     u16 unk_1A;
 } PokegearUnkSub03C; // size: 0x1C
@@ -202,12 +202,6 @@ void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0);
 u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *a1);
 void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0);
 void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1);
-
-static inline void UnkStruct_ov100_021E6E20_Sub8_inline0(UnkStruct_ov100_021E6E20_Sub8 *a0, u16 a1) {
-    UnkStruct_ov100_021E6E20_Sub8 *sub = &a0[a1];
-    Sprite_GetPositionXY(sub->sprite.sprite, &sub->unk_04, &sub->unk_06);
-    Sprite_SetDrawFlag(sub->sprite.sprite, FALSE);
-}
 
 PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId);
 void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
