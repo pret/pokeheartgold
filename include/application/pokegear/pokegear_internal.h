@@ -215,4 +215,10 @@ u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 move);
 u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex);
 void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active);
 
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+    a0->unk_04 = a1;
+    a0->unk_06 = a2;
+    Sprite_SetPositionXY(a0->sprite.sprite, a0->unk_04, a0->unk_06);
+}
+
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H
