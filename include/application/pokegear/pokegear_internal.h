@@ -92,7 +92,11 @@ typedef struct UnkStruct_ov100_021E6E20_Sub8 {
     u16 unk_02;                 // 0x02
     s16 unk_04;                 // 0x04
     s16 unk_06;                 // 0x06
-    u8 filler_08[0x18];         // 0x08
+    s16 unk_08;                 // 0x08
+    s16 unk_0A;                 // 0x0A
+    u16 unk_0C;                 // 0x0C
+    u16 unk_0E;                 // 0x0E
+    u8 filler_10[0x10];         // 0x10
     PokegearSpriteUnion sprite; // 0x20
     u8 filler_24[0x4];          // 0x24
 } UnkStruct_ov100_021E6E20_Sub8;
@@ -219,6 +223,16 @@ static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub(UnkStruct_ov100_021E
     a0->unk_04 = a1;
     a0->unk_06 = a2;
     Sprite_SetPositionXY(a0->sprite.sprite, a0->unk_04, a0->unk_06);
+}
+
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub2(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+    a0->unk_04 = a1;
+    a0->unk_06 = a2;
+}
+
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub3(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+    a0->unk_0C = a1;
+    a0->unk_0E = a2;
 }
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H

@@ -34,6 +34,18 @@ typedef struct PokegearMapAppData_Sub0C8 {
     fx32 unk_0C;
     int unk_10;
     int unk_14;
+    fx32 unk_18;
+    fx32 unk_1C;
+    fx32 unk_20;
+    fx32 unk_24;
+    u16 unk_28;
+    u16 unk_2A;
+    u16 unk_2C;
+    u16 unk_2E;
+    s16 unk_30;
+    s16 unk_32;
+    s16 unk_34;
+    s16 unk_36;
 } PokegearMapAppData_Sub0C8;
 
 typedef struct PokegearMapAppData_Sub214 {
@@ -86,24 +98,12 @@ typedef struct PokegearMapAppData {
     u8 unk_0B8;                               // 0x0B8
     u8 filler_0B9[0xF];                       // 0x0B9
     PokegearMapAppData_Sub0C8 unk_0C8;        // 0x0C8
-    fx32 unk_0E0;                             // 0x0E0
-    fx32 unk_0E4;                             // 0x0E4
-    fx32 unk_0E8;                             // 0x0E8
-    fx32 unk_0EC;                             // 0x0EC
-    u16 unk_0F0;                              // 0x0F0
-    u16 unk_0F2;                              // 0x0F2
-    u16 unk_0F4;                              // 0x0F4
-    u16 unk_0F6;                              // 0x0F6
-    s16 unk_0F8;                              // 0x0F8
-    s16 unk_0FA;                              // 0x0FA
-    s16 unk_0FC;                              // 0x0FC
-    s16 unk_0FE;                              // 0x0FE
     u16 unk_100;                              // 0x100
     u16 unk_102;                              // 0x102
     u16 unk_104;                              // 0x104
     u16 unk_106;                              // 0x106
-    u16 unk_108;                              // 0x108
-    u16 unk_10A;                              // 0x10A
+    s16 unk_108;                              // 0x108
+    s16 unk_10A;                              // 0x10A
     u16 unk_10C;                              // 0x10C
     u16 unk_10E;                              // 0x10E
     s16 unk_110;                              // 0x110

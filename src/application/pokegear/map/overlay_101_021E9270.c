@@ -8,6 +8,7 @@ void ov101_021E9464(PokegearMapAppData *mapApp, s16 a1, s16 a2, u16 *a3, u16 *a4
 void ov101_021E94C0(PokegearMapAppData *mapApp);
 void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s16 a5);
 void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, int *a5, int *a6);
+void ov101_021E990C(PokegearMapAppData *mapApp);
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;
@@ -19,15 +20,15 @@ void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
 
 void ov101_021E9288(PokegearMapAppData *mapApp) {
     if (mapApp->unk_138_0) {
-        mapApp->unk_0F0 = (mapApp->unk_0C8.unk_04 + mapApp->unk_0C8.unk_14 - 8) / 16 + 1;
-        mapApp->unk_0F4 = (mapApp->unk_0C8.unk_00 + mapApp->unk_0C8.unk_10 - 8) / 16 + 1;
-        mapApp->unk_0F2 = mapApp->unk_0F0 + 7;
-        mapApp->unk_0F6 = mapApp->unk_0F4 + 11;
+        mapApp->unk_0C8.unk_28 = (mapApp->unk_0C8.unk_04 + mapApp->unk_0C8.unk_14 - 8) / 16 + 1;
+        mapApp->unk_0C8.unk_2C = (mapApp->unk_0C8.unk_00 + mapApp->unk_0C8.unk_10 - 8) / 16 + 1;
+        mapApp->unk_0C8.unk_2A = mapApp->unk_0C8.unk_28 + 7;
+        mapApp->unk_0C8.unk_2E = mapApp->unk_0C8.unk_2C + 11;
     } else {
-        mapApp->unk_0F0 = (-mapApp->unk_0C8.unk_04) / 8 + 1;
-        mapApp->unk_0F4 = mapApp->unk_0C8.unk_00 / 8 + 1;
-        mapApp->unk_0F2 = mapApp->unk_0F0 + 16;
-        mapApp->unk_0F6 = mapApp->unk_0F4 + 23;
+        mapApp->unk_0C8.unk_28 = (-mapApp->unk_0C8.unk_04) / 8 + 1;
+        mapApp->unk_0C8.unk_2C = mapApp->unk_0C8.unk_00 / 8 + 1;
+        mapApp->unk_0C8.unk_2A = mapApp->unk_0C8.unk_28 + 16;
+        mapApp->unk_0C8.unk_2E = mapApp->unk_0C8.unk_2C + 23;
     }
 }
 
@@ -44,10 +45,10 @@ void ov101_021E933C(PokegearMapAppData *mapApp) {
     mapApp->unk_014.unk_16 = mapApp->unk_0C8.unk_04;
     mapApp->unk_014.unk_10 = mapApp->unk_0C8.unk_10;
     mapApp->unk_014.unk_12 = mapApp->unk_0C8.unk_14;
-    mapApp->unk_014.unk_04 = mapApp->unk_0F0;
-    mapApp->unk_014.unk_05 = mapApp->unk_0F2;
-    mapApp->unk_014.unk_06 = mapApp->unk_0F4;
-    mapApp->unk_014.unk_07 = mapApp->unk_0F6;
+    mapApp->unk_014.unk_04 = mapApp->unk_0C8.unk_28;
+    mapApp->unk_014.unk_05 = mapApp->unk_0C8.unk_2A;
+    mapApp->unk_014.unk_06 = mapApp->unk_0C8.unk_2C;
+    mapApp->unk_014.unk_07 = mapApp->unk_0C8.unk_2E;
 }
 
 void ov101_021E93D0(PokegearMapAppData *mapApp) {
@@ -59,10 +60,10 @@ void ov101_021E93D0(PokegearMapAppData *mapApp) {
     mapApp->unk_0C8.unk_04 = mapApp->unk_014.unk_16;
     mapApp->unk_0C8.unk_10 = mapApp->unk_014.unk_10;
     mapApp->unk_0C8.unk_14 = mapApp->unk_014.unk_12;
-    mapApp->unk_0F0 = mapApp->unk_014.unk_04;
-    mapApp->unk_0F2 = mapApp->unk_014.unk_05;
-    mapApp->unk_0F4 = mapApp->unk_014.unk_06;
-    mapApp->unk_0F6 = mapApp->unk_014.unk_07;
+    mapApp->unk_0C8.unk_28 = mapApp->unk_014.unk_04;
+    mapApp->unk_0C8.unk_2A = mapApp->unk_014.unk_05;
+    mapApp->unk_0C8.unk_2C = mapApp->unk_014.unk_06;
+    mapApp->unk_0C8.unk_2E = mapApp->unk_014.unk_07;
     MI_CpuClear8(&mapApp->unk_014, sizeof(mapApp->unk_014));
     mapApp->unk_014.unk_1A = 0xFFFF;
     mapApp->unk_014.unk_00 = 0;
@@ -93,8 +94,8 @@ void ov101_021E94C0(PokegearMapAppData *mapApp) {
 
     r1 = mapApp->unk_138_0 + 1;
 
-    r5 = mapApp->unk_110 - mapApp->unk_0F4;
-    r4 = mapApp->unk_112 - mapApp->unk_0F0;
+    r5 = mapApp->unk_110 - mapApp->unk_0C8.unk_2C;
+    r4 = mapApp->unk_112 - mapApp->unk_0C8.unk_28;
 
     r5 = r5 * (8 * r1) + mapApp->unk_132 + 4 * r1;
     r4 = r4 * (8 * r1) + mapApp->unk_131 + 4 * r1;
@@ -157,18 +158,18 @@ void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s
         r5 -= r0;
         r3 -= r0;
     }
-    mapApp->unk_0F0 = sp08;
-    mapApp->unk_0F2 = r6;
-    mapApp->unk_0F4 = r3;
-    mapApp->unk_0F6 = r5;
-    mapApp->unk_0F8 = -(r2 * sp4);
-    mapApp->unk_0FA = -(ip * sp4);
-    mapApp->unk_0FC = mapApp->unk_0C8.unk_00 + mapApp->unk_0F8;
-    mapApp->unk_0FE = mapApp->unk_0C8.unk_04 + mapApp->unk_0FA;
-    mapApp->unk_0E8 = FX32_CONST(mapApp->unk_0C8.unk_00);
-    mapApp->unk_0EC = FX32_CONST(mapApp->unk_0C8.unk_04);
-    mapApp->unk_0E0 = FX_Div(FX32_CONST(mapApp->unk_0F8), FX32_CONST(mapApp->unk_13A));
-    mapApp->unk_0E4 = FX_Div(FX32_CONST(mapApp->unk_0FA), FX32_CONST(mapApp->unk_13A));
+    mapApp->unk_0C8.unk_28 = sp08;
+    mapApp->unk_0C8.unk_2A = r6;
+    mapApp->unk_0C8.unk_2C = r3;
+    mapApp->unk_0C8.unk_2E = r5;
+    mapApp->unk_0C8.unk_30 = -(r2 * sp4);
+    mapApp->unk_0C8.unk_32 = -(ip * sp4);
+    mapApp->unk_0C8.unk_34 = mapApp->unk_0C8.unk_00 + mapApp->unk_0C8.unk_30;
+    mapApp->unk_0C8.unk_36 = mapApp->unk_0C8.unk_04 + mapApp->unk_0C8.unk_32;
+    mapApp->unk_0C8.unk_20 = FX32_CONST(mapApp->unk_0C8.unk_00);
+    mapApp->unk_0C8.unk_24 = FX32_CONST(mapApp->unk_0C8.unk_04);
+    mapApp->unk_0C8.unk_18 = FX_Div(FX32_CONST(mapApp->unk_0C8.unk_30), FX32_CONST(mapApp->unk_13A));
+    mapApp->unk_0C8.unk_1C = FX_Div(FX32_CONST(mapApp->unk_0C8.unk_32), FX32_CONST(mapApp->unk_13A));
 }
 
 void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, int *a5, int *a6) {
@@ -193,4 +194,50 @@ void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, 
         *a5 = a1 * 8 + r2 * 8;
         *a6 = a2 * 8 + r1 * 8;
     }
+}
+
+void ov101_021E990C(PokegearMapAppData *mapApp) {
+    s16 sp18;
+    s16 sp14;
+    u16 r7;
+    u16 r6;
+    u16 sp10;
+    VecFx32 sp1C;
+    UnkStruct_ov100_021E6E20_Sub8 *r5 = mapApp->unk_084->unk_08;
+    if (mapApp->unk_138_0) {
+        r7 = 2;
+        r6 = 16;
+    } else {
+        r7 = 1;
+        r6 = 8;
+    }
+    mapApp->unk_0C8.unk_08 = FX32_CONST(r7);
+    mapApp->unk_0C8.unk_0C = FX32_CONST(r7);
+    sp10 = r6 / 2;
+    if (mapApp->unk_014.unk_00) {
+        ov101_021E93D0(mapApp);
+    } else {
+        ov101_021E9530(mapApp, 0, mapApp->unk_110, mapApp->unk_112, 0, 0);
+        mapApp->unk_0C8.unk_00 = mapApp->unk_0C8.unk_34;
+        mapApp->unk_0C8.unk_04 = mapApp->unk_0C8.unk_36;
+        sp18 = (mapApp->unk_110 - mapApp->unk_0C8.unk_2C) * 8 + mapApp->unk_132 + 4;
+        sp14 = (mapApp->unk_112 - mapApp->unk_0C8.unk_28) * 8 + mapApp->unk_131 + 4;
+        if (mapApp->unk_138_0) {
+            ov101_021E9530(mapApp, 1, mapApp->unk_110, mapApp->unk_112, sp18, sp14);
+            ov101_021E9848(mapApp, mapApp->unk_110, mapApp->unk_112, sp18, sp14, &mapApp->unk_0C8.unk_10, &mapApp->unk_0C8.unk_14);
+            mapApp->unk_0C8.unk_00 = mapApp->unk_0C8.unk_34;
+            mapApp->unk_0C8.unk_04 = mapApp->unk_0C8.unk_36;
+            sp18 = (mapApp->unk_110 - mapApp->unk_0C8.unk_2C) * r6 + mapApp->unk_132 + sp10;
+            sp14 = (mapApp->unk_112 - mapApp->unk_0C8.unk_28) * r6 + mapApp->unk_131 + sp10;
+        }
+        UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&r5[5], sp18, sp14);
+    }
+    UnkStruct_ov100_021E6E20_Sub8_inline_sub3(&r5[5], mapApp->unk_110, mapApp->unk_112);
+    sp1C.x = sp1C.y = FX32_CONST(r7);
+    sp1C.z = FX32_ONE;
+    Sprite_SetAffineScale(r5[5].sprite.sprite, &sp1C);
+    sp18 = (mapApp->unk_108 - mapApp->unk_0C8.unk_2C) * r6 + mapApp->unk_132 + sp10;
+    sp14 = (mapApp->unk_10A - mapApp->unk_0C8.unk_28) * r6 + mapApp->unk_131 + sp10;
+    UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&r5[6], sp18, sp14);
+    UnkStruct_ov100_021E6E20_Sub8_inline_sub3(&r5[6], mapApp->unk_108, mapApp->unk_10A);
 }
