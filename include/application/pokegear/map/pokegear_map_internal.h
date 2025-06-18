@@ -77,6 +77,7 @@ typedef struct PokegearMapAppData {
     int state;                                // 0x004
     int substate;                             // 0x008
     u8 unk_00C;                               // 0x00C
+    u8 unk_00D;                               // 0x00D
     PokegearAppData *pokegear;                // 0x010
     PokegearUnkSub03C unk_014;                // 0x014
     int unk_030;                              // 0x030
@@ -116,8 +117,8 @@ typedef struct PokegearMapAppData {
     u8 unk_130;                               // 0x130
     u8 unk_131;                               // 0x131
     u8 unk_132;                               // 0x132
-    u8 unk_133;                               // 0x133
-    u8 unk_134;                               // 0x134
+    s8 unk_133;                               // 0x133
+    s8 unk_134;                               // 0x134
     u8 unk_135;                               // 0x135
     u8 unk_136;                               // 0x136
     u8 unk_137;                               // 0x137
@@ -126,7 +127,8 @@ typedef struct PokegearMapAppData {
     u8 unk_138_4 : 1;                         // 0x138
     u8 unk_138_5 : 2;                         // 0x138
     u8 unk_138_7 : 1;                         // 0x138
-    u8 unk_139;                               // 0x139
+    u8 unk_139_0 : 3;                         // 0x139
+    u8 unk_139_3 : 1;                         // 0x139
     u8 unk_13A;                               // 0x13A
     u8 unk_13B;                               // 0x13B
     u8 unk_13C_0 : 7;                         // 0x13C

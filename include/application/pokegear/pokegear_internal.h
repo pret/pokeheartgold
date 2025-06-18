@@ -235,4 +235,9 @@ static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub3(UnkStruct_ov100_021
     a0->unk_0E = a2;
 }
 
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub4(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+    a0->unk_04 += a1;
+    a0->unk_06 += a2;
+}
+
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H

@@ -9,6 +9,7 @@ void ov101_021E94C0(PokegearMapAppData *mapApp);
 void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s16 a5);
 void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, int *a5, int *a6);
 void ov101_021E990C(PokegearMapAppData *mapApp);
+void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;
@@ -240,4 +241,49 @@ void ov101_021E990C(PokegearMapAppData *mapApp) {
     sp14 = (mapApp->unk_10A - mapApp->unk_0C8.unk_28) * r6 + mapApp->unk_131 + sp10;
     UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&r5[6], sp18, sp14);
     UnkStruct_ov100_021E6E20_Sub8_inline_sub3(&r5[6], mapApp->unk_108, mapApp->unk_10A);
+}
+
+void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1) {
+    int i;
+    MtxFx22 sp04;
+    fx32 r5;
+    fx32 r0;
+
+    r5 = FX_Inv(a1->unk_08);
+    r0 = FX_Inv(a1->unk_0C);
+
+    sp04._00 = r5;
+    sp04._01 = 0;
+    sp04._10 = 0;
+    sp04._11 = r0;
+
+    for (i = 0; i < 2; ++i) {
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, BG_POS_OP_SET_X, a1->unk_00 + mapApp->unk_134);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, a1->unk_04 + mapApp->unk_133);
+        SetBgAffine(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_2, &sp04, a1->unk_10, a1->unk_14);
+    }
+    mapApp->unk_138_7 = FALSE;
+}
+
+void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
+    u16 i;
+    UnkStruct_ov100_021E6E20_Sub8 *r1 = mapApp->unk_084->unk_08;
+
+    UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[6], a1, a2);
+
+    if (mapApp->unk_139_3) {
+        UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[5], a1, a2);
+    }
+    if (mapApp->unk_00D) {
+        for (i = 0; i < 27; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[15 + i], a1, a2);
+        }
+    } else {
+        for (i = 0; i < 4; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[7 + i], a1, a2);
+        }
+        for (i = 0; i < 100; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[11 + i], a1, a2);
+        }
+    }
 }
