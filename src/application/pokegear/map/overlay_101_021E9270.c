@@ -287,3 +287,53 @@ void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
         }
     }
 }
+
+BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, int direction) {
+    if (mapApp->unk_135 > 16) {
+        return TRUE;
+    }
+    if (direction == 0) {
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16 - mapApp->unk_135, RGB_BLACK);
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16 - mapApp->unk_135, RGB_BLACK);
+    } else {
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, mapApp->unk_135, RGB_BLACK);
+        PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, mapApp->unk_135, RGB_BLACK);
+    }
+    if (mapApp->unk_135 >= 16) {
+        mapApp->unk_135 += 2;
+        return TRUE;
+    } else {
+        mapApp->unk_135 += 2;
+        return FALSE;
+    }
+}
+
+void ov101_021E9D74(PokegearMapAppData *mapApp, int a1) {
+    int i;
+    UnkStruct_ov100_021E6E20_Sub8 *sp0 = mapApp->unk_084->unk_08;
+
+    G2S_SetWnd0Position(0x00, 0x40, 0xFF, 0xC0);
+    G2S_SetWnd1Position(0xFF, 0x40, 0x00, 0xC0);
+    G2S_SetWndOutsidePlane(0x11, FALSE);
+    G2S_SetWnd0InsidePlane(0x1F, FALSE);
+    G2S_SetWnd1InsidePlane(0x1F, FALSE);
+    GXS_SetVisibleWnd(3);
+
+    if (a1 == 0) {
+        for (i = 0; i < 3; ++i) {
+            BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, -0x80);
+            ToggleBgLayer(i + GF_BG_LYR_SUB_1, TRUE);
+        }
+        for (i = 0; i < 4; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&sp0[i], (i % 2) * 0x68 + 0x20, (i / 2) * 0x15 + 0x14B);
+        }
+        UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&sp0[4], 0x10, 0x118);
+        ov100_021E6E84(mapApp->unk_084);
+    } else {
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SUB_Y, 0);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SUB_Y, 0);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SUB_Y, 0);
+    }
+    mapApp->unk_034 = 0;
+    mapApp->unk_030 = 0;
+}
