@@ -6014,7 +6014,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             }
 
             SetMonData(mon, MON_DATA_EXPERIENCE, &newExp);
-            ov12_022463E8(BattleSystem_GetParty(data->bsys, expBattler),
+            BattleScript_CalcEffortValues(BattleSystem_GetParty(data->bsys, expBattler),
                 slot,
                 data->ctx->battleMons[data->ctx->battlerIdFainted].species,
                 data->ctx->battleMons[data->ctx->battlerIdFainted].form);
