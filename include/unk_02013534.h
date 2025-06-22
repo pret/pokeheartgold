@@ -25,15 +25,15 @@ typedef struct UnkStruct_02013950 UnkStruct_02013950;
 
 UnkStruct_02013534 *sub_02013534(int a0, HeapID a1);
 void sub_020135AC(UnkStruct_02013534 *a0);
-void sub_02013A50(Window *window, int a1, int a2, int a3, int a4, void *a5);
 
+void sub_020136B4(UnkStruct_02013950 *a0, int a1, int a2);
+void sub_020137C0(UnkStruct_02013950 *a0, int a1);
+void sub_02013850(UnkStruct_02013950 *a0, int a1);
 UnkStruct_02013910 *sub_02013910(Window *a0, HeapID heapID);
 void sub_02013938(UnkStruct_02013910 *a0);
 u32 sub_02013948(UnkStruct_02013910 *a0, NNS_G2D_VRAM_TYPE a1);
-
 UnkStruct_02013950 *sub_02013950(const UnkTemplate_02013950 *a0, UnkStruct_02013910 *a1);
 void sub_020139C8(UnkStruct_02013950 *a0);
-void sub_020137C0(UnkStruct_02013950 *a0, int a1);
-void sub_02013850(UnkStruct_02013950 *a0, int a1);
+void sub_02013A50(Window *window, int a1, int a2, int a3, int a4, void *a5);
 
 #endif // POKEHEARTGOLD_UNK_02013534_H

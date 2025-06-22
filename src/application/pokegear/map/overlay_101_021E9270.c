@@ -101,7 +101,7 @@ void ov101_021E94C0(PokegearMapAppData *mapApp) {
     r5 = r5 * (8 * r1) + mapApp->unk_132 + 4 * r1;
     r4 = r4 * (8 * r1) + mapApp->unk_131 + 4 * r1;
 
-    UnkStruct_ov100_021E6E20_Sub8_inline_sub(&mapApp->unk_084->unk_08[5], r5, r4);
+    UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&mapApp->unk_084->unk_08[5], r5, r4);
 }
 
 void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s16 a5) {
@@ -231,16 +231,16 @@ void ov101_021E990C(PokegearMapAppData *mapApp) {
             sp18 = (mapApp->unk_110 - mapApp->unk_0C8.unk_2C) * r6 + mapApp->unk_132 + sp10;
             sp14 = (mapApp->unk_112 - mapApp->unk_0C8.unk_28) * r6 + mapApp->unk_131 + sp10;
         }
-        UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&r5[5], sp18, sp14);
+        UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(&r5[5], sp18, sp14);
     }
-    UnkStruct_ov100_021E6E20_Sub8_inline_sub3(&r5[5], mapApp->unk_110, mapApp->unk_112);
+    UnkStruct_ov100_021E6E20_Sub8_inline_setCoord2(&r5[5], mapApp->unk_110, mapApp->unk_112);
     sp1C.x = sp1C.y = FX32_CONST(r7);
     sp1C.z = FX32_ONE;
     Sprite_SetAffineScale(r5[5].sprite.sprite, &sp1C);
     sp18 = (mapApp->unk_108 - mapApp->unk_0C8.unk_2C) * r6 + mapApp->unk_132 + sp10;
     sp14 = (mapApp->unk_10A - mapApp->unk_0C8.unk_28) * r6 + mapApp->unk_131 + sp10;
-    UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&r5[6], sp18, sp14);
-    UnkStruct_ov100_021E6E20_Sub8_inline_sub3(&r5[6], mapApp->unk_108, mapApp->unk_10A);
+    UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(&r5[6], sp18, sp14);
+    UnkStruct_ov100_021E6E20_Sub8_inline_setCoord2(&r5[6], mapApp->unk_108, mapApp->unk_10A);
 }
 
 void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1) {
@@ -269,26 +269,26 @@ void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
     u16 i;
     UnkStruct_ov100_021E6E20_Sub8 *r1 = mapApp->unk_084->unk_08;
 
-    UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[6], a1, a2);
+    UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r1[6], a1, a2);
 
     if (mapApp->unk_139_3) {
-        UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[5], a1, a2);
+        UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r1[5], a1, a2);
     }
     if (mapApp->unk_00D) {
         for (i = 0; i < 27; ++i) {
-            UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[15 + i], a1, a2);
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r1[15 + i], a1, a2);
         }
     } else {
         for (i = 0; i < 4; ++i) {
-            UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[7 + i], a1, a2);
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r1[7 + i], a1, a2);
         }
         for (i = 0; i < 100; ++i) {
-            UnkStruct_ov100_021E6E20_Sub8_inline_sub4(&r1[11 + i], a1, a2);
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r1[11 + i], a1, a2);
         }
     }
 }
 
-BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, int direction) {
+BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, u8 direction) {
     if (mapApp->unk_135 > 16) {
         return TRUE;
     }
@@ -308,7 +308,7 @@ BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, int direction) {
     }
 }
 
-void ov101_021E9D74(PokegearMapAppData *mapApp, int a1) {
+void ov101_021E9D74(PokegearMapAppData *mapApp, u8 a1) {
     int i;
     UnkStruct_ov100_021E6E20_Sub8 *sp0 = mapApp->unk_084->unk_08;
 
@@ -325,9 +325,9 @@ void ov101_021E9D74(PokegearMapAppData *mapApp, int a1) {
             ToggleBgLayer(i + GF_BG_LYR_SUB_1, TRUE);
         }
         for (i = 0; i < 4; ++i) {
-            UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&sp0[i], (i % 2) * 0x68 + 0x20, (i / 2) * 0x15 + 0x14B);
+            UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(&sp0[i], (i % 2) * 0x68 + 0x20, (i / 2) * 0x15 + 0x14B);
         }
-        UnkStruct_ov100_021E6E20_Sub8_inline_sub2(&sp0[4], 0x10, 0x118);
+        UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(&sp0[4], 0x10, 0x118);
         ov100_021E6E84(mapApp->unk_084);
     } else {
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SUB_Y, 0);
@@ -336,4 +336,133 @@ void ov101_021E9D74(PokegearMapAppData *mapApp, int a1) {
     }
     mapApp->unk_034 = 0;
     mapApp->unk_030 = 0;
+}
+
+BOOL ov101_021E9E90(PokegearMapAppData *mapApp, u8 a1) {
+    UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
+    int i;
+
+    if (mapApp->unk_030) {
+        return TRUE;
+    }
+    if (!a1) {
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_ADD_Y, 0x20);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_ADD_Y, 0x20);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_ADD_Y, 0x20);
+        for (i = 0; i <= 4; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r4[i], 0, -0x20);
+        }
+    } else {
+
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SUB_Y, 0x20);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SUB_Y, 0x20);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SUB_Y, 0x20);
+        for (i = 0; i <= 4; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r4[i], 0, 0x20);
+        }
+    }
+    ov100_021E6E84(mapApp->unk_084);
+    if (++mapApp->unk_034 < 4) {
+        return FALSE;
+    }
+    mapApp->unk_034 = 0;
+    mapApp->unk_030 = 1;
+    if (a1 == 1) {
+        for (i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + GF_BG_LYR_SUB_1, FALSE);
+            BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_SUB_1);
+            BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, 0);
+            ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, i + GF_BG_LYR_SUB_1);
+        }
+    }
+
+    GXS_SetVisibleWnd(0);
+    G2S_SetWnd0Position(0x00, 0x00, 0x00, 0x00);
+    G2S_SetWnd1Position(0x00, 0x00, 0x00, 0x00);
+    G2S_SetWnd0InsidePlane(0x00, FALSE);
+    G2S_SetWnd1InsidePlane(0x00, FALSE);
+    G2S_SetWndOutsidePlane(0x00, FALSE);
+    return TRUE;
+}
+
+void ov101_021E9FDC(PokegearMapAppData *mapApp, u8 a1) {
+    UnkStruct_ov100_021E6E20_Sub8 *sp0 = mapApp->unk_084->unk_08;
+    int i;
+
+    G2_SetWnd0Position(0x00, 0x00, 0xFF, 0x70);
+    G2_SetWnd1Position(0xFF, 0x00, 0x00, 0x70);
+    G2_SetWndOutsidePlane(0x18, FALSE);
+    G2_SetWnd0InsidePlane(0x1F, FALSE);
+    G2_SetWnd1InsidePlane(0x1F, FALSE);
+    GX_SetVisibleWnd(3);
+    if (a1 == 0) {
+        for (i = 0; i < 2; ++i) {
+            BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, 0x70);
+        }
+        for (i = 20; i <= 27; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&sp0[i], 0, -0x70);
+        }
+        ov100_021E6E84(mapApp->unk_084);
+        for (i = 0; i < 4; ++i) {
+            sub_020136B4(mapApp->unk_044[i].unk_0, 4, -6);
+        }
+    } else {
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SUB_Y, 0);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_Y, 0);
+        Sprite_SetDrawFlag(mapApp->unk_084->unk_08[11].sprite.sprite, FALSE);
+    }
+    mapApp->unk_034 = 0;
+    mapApp->unk_030 = 0;
+}
+
+BOOL ov101_021EA0D8(PokegearMapAppData *mapApp, u8 a1) {
+    UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
+    int i;
+
+    if (mapApp->unk_030) {
+        return TRUE;
+    }
+
+    if (!a1) {
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SUB_Y, 0x1C);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SUB_Y, 0x1C);
+        for (i = 20; i <= 27; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r4[i], 0, 0x1C);
+        }
+    } else {
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_ADD_Y, 0x1C);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_ADD_Y, 0x1C);
+        for (i = 20; i <= 27; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(&r4[i], 0, -0x1C);
+        }
+    }
+    ov100_021E6E84(mapApp->unk_084);
+    for (i = 0; i < 4; ++i) {
+        sub_020136B4(mapApp->unk_044[i].unk_0, 4, -6);
+    }
+    if (++mapApp->unk_034 < 4) {
+        return FALSE;
+    }
+    mapApp->unk_034 = 0;
+    mapApp->unk_030 = 1;
+    if (a1 == 1) {
+        for (i = 0; i < 2; ++i) {
+            BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
+            ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
+        }
+    }
+
+    GX_SetVisibleWnd(0);
+    G2_SetWnd0Position(0x00, 0x00, 0x00, 0x00);
+    G2_SetWnd1Position(0x00, 0x00, 0x00, 0x00);
+    G2_SetWnd0InsidePlane(0x00, FALSE);
+    G2_SetWnd1InsidePlane(0x00, FALSE);
+    G2_SetWndOutsidePlane(0x00, FALSE);
+    if (a1 == 0) {
+        Sprite_SetDrawFlag(mapApp->unk_084->unk_08[11].sprite.sprite, TRUE);
+        if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
+            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, TRUE);
+        }
+    }
+    return TRUE;
 }

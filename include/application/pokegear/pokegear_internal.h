@@ -219,23 +219,23 @@ u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 move);
 u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex);
 void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active);
 
-static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
     a0->unk_04 = a1;
     a0->unk_06 = a2;
     Sprite_SetPositionXY(a0->sprite.sprite, a0->unk_04, a0->unk_06);
 }
 
-static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub2(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
     a0->unk_04 = a1;
     a0->unk_06 = a2;
 }
 
-static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub3(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord2(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
     a0->unk_0C = a1;
     a0->unk_0E = a2;
 }
 
-static inline void UnkStruct_ov100_021E6E20_Sub8_inline_sub4(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
     a0->unk_04 += a1;
     a0->unk_06 += a2;
 }
