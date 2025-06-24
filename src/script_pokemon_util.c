@@ -118,7 +118,7 @@ Pokemon *GetFirstAliveMonInParty_CrashIfNone(Party *party) {
             return mon;
         }
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return NULL;
 }
 
@@ -134,7 +134,7 @@ u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(Party *party) {
             return i;
         }
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return 0;
 }
 

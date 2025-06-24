@@ -319,7 +319,7 @@ BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spri
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -333,7 +333,7 @@ BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteM
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -347,7 +347,7 @@ s8 SpriteSystem_LoadPlttResObj(SpriteSystem *spriteSystem, SpriteManager *sprite
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], obj);
         return SpriteTransfer_GetPlttOffset(obj, vram);
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return -1;
 }
 
@@ -361,7 +361,7 @@ s8 SpriteSystem_LoadPlttResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteMan
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], obj);
         return SpriteTransfer_GetPlttOffset(obj, vram);
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return -1;
 }
 
@@ -482,7 +482,7 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
             Sprite_SetPaletteOverride(ret->sprite, paletteOffset + unkTemplate->pal);
         }
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return ret;
 }
@@ -544,7 +544,7 @@ static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *sprite
         GF_ASSERT(result == TRUE);
         return result;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return data != NULL;
 }
 
@@ -558,7 +558,7 @@ static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager
         GF_ASSERT(result == TRUE);
         return result;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return data != NULL;
 }
 
@@ -977,7 +977,7 @@ BOOL SpriteSystem_LoadCharResObjWithHardwareMappingType(SpriteSystem *spriteSyst
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -991,7 +991,7 @@ BOOL SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType(SpriteSystem *sprit
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -1005,7 +1005,7 @@ BOOL SpriteSystem_LoadCharResObjFromOpenNarcWithHardwareMappingType(SpriteSystem
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 

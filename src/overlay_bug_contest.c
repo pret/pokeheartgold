@@ -252,7 +252,7 @@ void BugContest_InitOpponents(BugContest *bugContest) {
 
     FS_InitFile(&file);
     if (!FS_OpenFile(&file, "data/mushi/mushi_trainer.bin")) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     flen = FS_GetLength(&file);
@@ -295,7 +295,7 @@ void BugContest_InitEncounters(BugContest *bugContest) {
 
     FS_InitFile(&file);
     if (!FS_OpenFile(&file, "data/mushi/mushi_encount.bin")) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     flen = FS_GetLength(&file);
@@ -330,7 +330,7 @@ u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon) {
         }
     }
     if (bugmon == NULL) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return 0;
     }
 

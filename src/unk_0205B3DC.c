@@ -96,7 +96,7 @@ int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr) {
     case 0:
         return idx;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     }
     return 0;

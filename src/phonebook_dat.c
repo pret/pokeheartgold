@@ -15,7 +15,7 @@ struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
 
     FS_InitFile(&file);
     if (!FS_OpenFile(&file, "tel/pmtel_book.dat")) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return NULL;
     }
 

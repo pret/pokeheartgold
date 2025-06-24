@@ -80,7 +80,7 @@ int ApricornTrees_GetApricorn(const APRICORN_TREE *trees, int idx) {
     int ret;
     ret = sTreeApricorns[idx];
     if (ret <= 0) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return 0;
     }
     return ret - 1;

@@ -1193,7 +1193,7 @@ BOOL SaveSubstruct_AssertCRC(int idx) {
         return TRUE;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 
