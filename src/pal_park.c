@@ -16,168 +16,185 @@
 #include "save_arrays.h"
 #include "unk_02054648.h"
 
-struct PalParkMon {
+#define PAL_PARK_AREA_NONE     0
+#define POINTS_LOST_PER_SECOND 2
+#define WEIGHT_NO_ENCOUNTER    20
+#define DISTINCT_TYPE_BONUS    50
+#define DIFFERENT_TYPE_BONUS   200
+#define MAX_TIME_SECONDS       1000
+
+typedef struct CatchingShowPokemon {
     u16 species;
     u8 area;
-    u8 encounterRate;
-    u16 score;
+    u8 rarity;
+    u16 catchingPoints;
     u8 type1;
     u8 type2;
-};
+} CatchingShowPokemon;
 
-struct PalParkLocal {
-    struct PalParkMon mons[PARTY_SIZE];
-    u8 caught_order[PARTY_SIZE];
-    s32 stepsUntilEncounterRoll;
-    s32 encounterIndex;
-    s64 timestamp; // 40
-    int timeRemainingFactor;
-};
+typedef struct CatchingShow {
+    CatchingShowPokemon pokemon[PARTY_SIZE];
+    u8 caughtMonsOrder[PARTY_SIZE];
+    s32 steps;
+    s32 currentEncounterIndex;
+    s64 startTime; // 40
+    int timePoints;
+} CatchingShow;
 
-static struct PalParkLocal sPalParkLocalState;
+static CatchingShow sCatchingShow;
 
-static void LoadMonPalParkStats(u16 species, u8 *dest);
-static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark);
-static int CountCaughtMons(struct PalParkLocal *palpark);
-static void SetNumStepsUntilNextEncounterCheck(struct PalParkLocal *palpark);
-static BOOL ShouldTryEncounter(struct PalParkLocal *palpark);
-static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem *fieldSystem, int x, int z);
-static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark, int x, int z);
-static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark);
-static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct PalParkLocal *palpark);
-static int CalcSpeciesScore(struct PalParkLocal *palpark);
-static u32 CalcTypesScore(struct PalParkLocal *palpark);
-static int CalcTimeScore(struct PalParkLocal *palpark);
+static void BufferSpeciesData(u16 species, u8 *dest);
+static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow);
+static int NumMonsCaptured(CatchingShow *catchingShow);
+static void ResetStepCount(CatchingShow *catchingShow);
+static BOOL IsStepCountZero(CatchingShow *catchingShow);
+static BOOL TryStartEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow, int x, int z);
+static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow);
+static void UpdateBattleResultInternal(FieldSystem *fieldSystem, BattleSetup *setup, CatchingShow *catchingShow);
+static int CalcCatchingPoints(CatchingShow *catchingShow);
+static u32 CalculateTypePoints(CatchingShow *catchingShow);
+static int GetTimePoints(CatchingShow *catchingShow);
 
 void PalPark_ClearState(FieldSystem *fieldSystem) {
     s32 i;
-    struct PalParkLocal *local = &sPalParkLocalState;
+    CatchingShow *local = &sCatchingShow;
     for (i = 0; i < PARTY_SIZE; ++i) {
-        local->caught_order[i] = 0;
+        local->caughtMonsOrder[i] = 0;
     }
 }
 
-void PalPark_InitFromSave(FieldSystem *fieldSystem) {
-    MI_CpuClearFast(&sPalParkLocalState, sizeof sPalParkLocalState);
-    InitPalParkMonsData(fieldSystem, &sPalParkLocalState);
-    SetNumStepsUntilNextEncounterCheck(&sPalParkLocalState);
-    sPalParkLocalState.timestamp = GF_RTC_DateTimeToSec();
+void CatchingShow_Start(FieldSystem *fieldSystem) {
+    MI_CpuClearFast(&sCatchingShow, sizeof sCatchingShow);
+    InitSpeciesData(fieldSystem, &sCatchingShow);
+    ResetStepCount(&sCatchingShow);
+    sCatchingShow.startTime = GF_RTC_DateTimeToSec();
 }
 
-void PalPark_StopClock(FieldSystem *fieldSystem) {
-    struct PalParkLocal *local = &sPalParkLocalState;
+void CatchingShow_End(FieldSystem *fieldSystem) {
+    CatchingShow *catchingShow = &sCatchingShow;
     GameStats *stats = Save_GameStats_Get(fieldSystem->saveData);
-    s64 elapsed = GF_RTC_TimeDelta(local->timestamp, GF_RTC_DateTimeToSec());
-    if (elapsed < 1000) {
-        local->timeRemainingFactor = 2 * (1000 - elapsed);
+    s64 elapsedTime = GF_RTC_TimeDelta(catchingShow->startTime, GF_RTC_DateTimeToSec());
+
+    if (elapsedTime < MAX_TIME_SECONDS) {
+        catchingShow->timePoints = ((MAX_TIME_SECONDS - elapsedTime) * POINTS_LOST_PER_SECOND);
     } else {
-        local->timeRemainingFactor = 0;
+        catchingShow->timePoints = 0;
     }
+
     GameStats_AddScore(stats, SCORE_EVENT_17);
 }
 
-BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z) {
-    if (ShouldTryEncounter(&sPalParkLocalState) == TRUE) {
-        return TryEncounter(fieldSystem, &sPalParkLocalState, x, z);
+BOOL CatchingShow_CheckWildEncounter(FieldSystem *fieldSystem, int playerX, int playerY) {
+    if (IsStepCountZero(&sCatchingShow) == TRUE) {
+        return TryStartEncounter(fieldSystem, &sCatchingShow, playerX, playerY);
     }
     return FALSE;
 }
 
-BattleSetup *PalPark_SetupEncounter(FieldSystem *fieldSystem) {
-    return SetupEncounter(fieldSystem, &sPalParkLocalState);
+BattleSetup *CatchingShow_GetBattleDTO(FieldSystem *fieldSystem) {
+    return SetupEncounter(fieldSystem, &sCatchingShow);
 }
 
-void PalPark_HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup) {
-    return HandleBattleEnd(fieldSystem, setup, &sPalParkLocalState);
+void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setup) {
+    return UpdateBattleResultInternal(fieldSystem, setup, &sCatchingShow);
 }
 
-int PalPark_CountMonsNotCaught(FieldSystem *fieldSystem) {
-    return 6 - CountCaughtMons(&sPalParkLocalState);
+int CatchingShow_GetParkBallCount(FieldSystem *fieldSystem) {
+    return 6 - NumMonsCaptured(&sCatchingShow);
 }
 
-int PalPark_CalcSpeciesScore(FieldSystem *fieldSystem) {
-    return CalcSpeciesScore(&sPalParkLocalState);
+int CatchingShow_CalcCatchingPoints(FieldSystem *fieldSystem) {
+    return CalcCatchingPoints(&sCatchingShow);
 }
 
-int PalPark_CalcTimeScore(FieldSystem *fieldSystem) {
-    return CalcTimeScore(&sPalParkLocalState);
+int CatchingShow_GetTimePoints(FieldSystem *fieldSystem) {
+    return GetTimePoints(&sCatchingShow);
 }
 
-u32 PalPark_CalcTypesScore(FieldSystem *fieldSystem) {
-    return CalcTypesScore(&sPalParkLocalState);
+u32 CatchingShow_GetTypePoints(FieldSystem *fieldSystem) {
+    return CalculateTypePoints(&sCatchingShow);
 }
 
 // Local functions
 
-static void LoadMonPalParkStats(u16 species, u8 *dest) {
-    GF_ASSERT(species != SPECIES_NONE && species <= SPECIES_ARCEUS);
+static void BufferSpeciesData(u16 species, u8 *dest) {
+    GF_ASSERT(species != SPECIES_NONE && species <= NATIONAL_DEX_COUNT);
     ReadFromNarcMemberByIdPair(dest, NARC_arc_ppark, 0, (species - 1) * 6, 6);
 }
 
-static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
-    struct MigratedPokemonSav *migrated = Save_MigratedPokemon_Get(fieldSystem->saveData);
+static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
+    PalParkTransfer *transferData = Save_MigratedPokemon_Get(fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_4);
     u8 narc_data[6];
     u16 species;
+
     for (int i = 0; i < PARTY_SIZE; ++i) {
-        palpark->caught_order[i] = 0;
-        GetMigratedPokemonByIndex(migrated, i, mon);
-        palpark->mons[i].species = species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        LoadMonPalParkStats(species, narc_data);
+        catchingShow->caughtMonsOrder[i] = 0;
+        TransferDataToMon(transferData, i, mon);
+
+        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+
+        catchingShow->pokemon[i].species = species;
+        BufferSpeciesData(species, narc_data);
+
         if (narc_data[0] != 0) {
-            palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_LAND_SECTOR];
+            catchingShow->pokemon[i].area = narc_data[PPMONDAT_OFFSET_LAND_SECTOR];
         } else {
-            palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_WATER_SECTOR] + (int)(PP_ENCTYPE_WATER_MIN - PP_ENCTYPE_LAND_MIN);
+            catchingShow->pokemon[i].area = narc_data[PPMONDAT_OFFSET_WATER_SECTOR] + (int)(PP_ENCTYPE_WATER_MIN - PP_ENCTYPE_LAND_MIN);
         }
-        palpark->mons[i].encounterRate = narc_data[PPMONDAT_OFFSET_ENCOUTER_RATE];
-        palpark->mons[i].score = narc_data[PPMONDAT_OFFSET_SCORE];
-        palpark->mons[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
-        palpark->mons[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
+        catchingShow->pokemon[i].rarity = narc_data[PPMONDAT_OFFSET_ENCOUTER_RATE];
+        catchingShow->pokemon[i].catchingPoints = narc_data[PPMONDAT_OFFSET_SCORE];
+        catchingShow->pokemon[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
+        catchingShow->pokemon[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
     }
+
     FreeToHeap(mon);
 }
 
-static int CountCaughtMons(struct PalParkLocal *palpark) {
+static int NumMonsCaptured(CatchingShow *catchingShow) {
     int i;
-    int total = 0;
-    for (i = 0; i < PARTY_SIZE; ++i) {
-        if (palpark->caught_order[i] != 0) {
-            ++total;
+    int numMonsCaptured = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++) {
+        if (catchingShow->caughtMonsOrder[i] != 0) {
+            numMonsCaptured++;
         }
     }
-    return total;
+
+    return numMonsCaptured;
 }
 
-static void SetNumStepsUntilNextEncounterCheck(struct PalParkLocal *palpark) {
+static void ResetStepCount(CatchingShow *catchingShow) {
     u16 rnd = LCRandom() % 10;
-    palpark->stepsUntilEncounterRoll = rnd + 5;
+    catchingShow->steps = rnd + 5;
 }
 
-static BOOL ShouldTryEncounter(struct PalParkLocal *palpark) {
-    if (--palpark->stepsUntilEncounterRoll == 0) {
-        SetNumStepsUntilNextEncounterCheck(palpark);
+static BOOL IsStepCountZero(CatchingShow *catchingShow) {
+    if (--catchingShow->steps == 0) {
+        ResetStepCount(catchingShow);
         return TRUE;
     }
+
     return FALSE;
 }
 
-static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem *fieldSystem, int x, int z) {
+static enum PalParkEncounterType GetEncounterArea(FieldSystem *fieldSystem, int x, int z) {
     int behavior = GetMetatileBehavior(fieldSystem, x, z);
     int quadrant = (x < 32 ? 0 : 1);
     quadrant += (z < 32 ? 0 : 2);
     if (MetatileBehavior_IsEncounterGrass(behavior)) {
         return (enum PalParkEncounterType)(quadrant + PP_ENCTYPE_LAND_MIN);
-    }
-    if (MetatileBehavior_IsSurfableWater(behavior)) {
+    } else if (MetatileBehavior_IsSurfableWater(behavior)) {
         return (enum PalParkEncounterType)(quadrant + PP_ENCTYPE_WATER_MIN);
     }
+
     return PP_ENCTYPE_NONE;
 }
 
-static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark, int x, int z) {
+static BOOL TryStartEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow, int x, int z) {
     int i;
-    int rnd, total_rate = 0;
-    enum PalParkEncounterType area = GetEncounterTypeAt(fieldSystem, x, z);
+    int encounterChance, totalRarity = 0;
+    enum PalParkEncounterType area = GetEncounterArea(fieldSystem, x, z);
 
     if (area == PP_ENCTYPE_NONE) {
         return FALSE;
@@ -188,32 +205,35 @@ static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark,
     // Compute the total weight for the current
     // area. If it's zero, bail.
     for (i = 0; i < PARTY_SIZE; ++i) {
-        if (palpark->caught_order[i] == 0 && palpark->mons[i].area == area) {
-            total_rate += palpark->mons[i].encounterRate;
+        if (catchingShow->caughtMonsOrder[i] == 0 && catchingShow->pokemon[i].area == area) {
+            totalRarity += catchingShow->pokemon[i].rarity;
         }
     }
-    if (total_rate == 0) {
+
+    if (totalRarity == 0) {
         return FALSE;
     }
 
     // Prepend an extra bucket of weight 20
     // for a no-encounter roll.
-    rnd = LCRandRange(total_rate + 20);
-    if (rnd < 20) {
+    encounterChance = LCRandRange(totalRarity + WEIGHT_NO_ENCOUNTER);
+
+    if (encounterChance < WEIGHT_NO_ENCOUNTER) {
         return FALSE;
     }
-    rnd -= 20;
+
+    encounterChance -= WEIGHT_NO_ENCOUNTER;
 
     // Using the random number generated,
     // select the bucket to serve as the
     // encounter.
     for (i = 0; i < PARTY_SIZE; ++i) {
-        if (palpark->caught_order[i] == 0 && palpark->mons[i].area == area) {
-            if (rnd < palpark->mons[i].encounterRate) {
-                palpark->encounterIndex = i;
+        if (catchingShow->caughtMonsOrder[i] == 0 && catchingShow->pokemon[i].area == area) {
+            if (encounterChance < catchingShow->pokemon[i].rarity) {
+                catchingShow->currentEncounterIndex = i;
                 return TRUE;
             } else {
-                rnd -= palpark->mons[i].encounterRate;
+                encounterChance -= catchingShow->pokemon[i].rarity;
             }
         }
     }
@@ -223,10 +243,10 @@ static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark,
     return FALSE;
 }
 
-static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct PalParkLocal *palpark) {
+static void UpdateBattleResultInternal(FieldSystem *fieldSystem, BattleSetup *setup, CatchingShow *catchingShow) {
     switch (setup->winFlag) {
     case BATTLE_OUTCOME_MON_CAUGHT:
-        palpark->caught_order[palpark->encounterIndex] = CountCaughtMons(palpark) + 1;
+        catchingShow->caughtMonsOrder[catchingShow->currentEncounterIndex] = NumMonsCaptured(catchingShow) + 1;
         break;
     case BATTLE_OUTCOME_PLAYER_FLED:
         break;
@@ -235,46 +255,56 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
     }
 }
 
-static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
+static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
-    struct MigratedPokemonSav *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
+    PalParkTransfer *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
+    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, CatchingShow_GetParkBallCount(fieldSystem));
+
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
-    GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);
+    TransferDataToMon(migratedMons, catchingShow->currentEncounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);
     FreeToHeap(mon);
     return ret;
 }
 
-static int CalcSpeciesScore(struct PalParkLocal *palpark) {
-    int i, score = 0;
-    for (i = 0; i < PARTY_SIZE; ++i) {
-        score += palpark->mons[i].score;
+static int CalcCatchingPoints(CatchingShow *catchingShow) {
+    int i, totalCatchingPoints = 0;
+
+    for (i = 0; i < PARTY_SIZE; i++) {
+        totalCatchingPoints += catchingShow->pokemon[i].catchingPoints;
     }
-    return score;
+
+    return totalCatchingPoints;
 }
 
-static u32 CalcTypesScore(struct PalParkLocal *palpark) {
-    int j, i;
-    u8 type1, type2, last_type1, last_type2;
-    u32 seen_types = 0, score = 0;
+static u32 CalculateTypePoints(CatchingShow *catchingShow) {
+    int i, j;
+    int prevMonType1, prevMonType2, currMonType1, currMonType2;
+    u32 distinctTypeTracker = 0, totalTypePoints = 0;
 
     // This score is calculated in two phases
     // Phase 1: +200 points each time you don't
     // catch two Pokemon sharing a type in a row.
     // Maximum 1000 points.
-    for (i = 1; i < PARTY_SIZE + 1; ++i) {
-        for (j = 0; j < PARTY_SIZE; ++j) {
-            if (palpark->caught_order[j] == i) {
-                type1 = palpark->mons[j].type1;
-                type2 = palpark->mons[j].type2;
-                if (i != 1 && last_type1 != type1 && last_type1 != type2 && last_type2 != type1 && last_type2 != type2) {
-                    score += 200;
+    for (i = 1; i < PARTY_SIZE + 1; i++) {
+        for (j = 0; j < PARTY_SIZE; j++) {
+            if (catchingShow->caughtMonsOrder[j] == i) {
+                currMonType1 = catchingShow->pokemon[j].type1;
+                currMonType2 = catchingShow->pokemon[j].type2;
+
+                if (i != 1
+                    && prevMonType1 != currMonType1
+                    && prevMonType1 != currMonType2
+                    && prevMonType2 != currMonType1
+                    && prevMonType2 != currMonType2) {
+                    totalTypePoints += DIFFERENT_TYPE_BONUS;
                 }
-                last_type1 = type1;
-                last_type2 = type2;
-                seen_types |= 1 << type1;
-                seen_types |= 1 << type2;
+
+                prevMonType1 = currMonType1;
+                prevMonType2 = currMonType2;
+                distinctTypeTracker |= (1 << prevMonType1);
+                distinctTypeTracker |= (1 << prevMonType2);
+
                 break;
             }
         }
@@ -282,15 +312,16 @@ static u32 CalcTypesScore(struct PalParkLocal *palpark) {
 
     // Phase 2: +50 points for each unique
     // type caught. Maximum 600 points.
-    while (seen_types != 0) {
-        if (seen_types & 1) {
-            score += 50;
+    while (distinctTypeTracker != 0) {
+        if (distinctTypeTracker & 1) {
+            totalTypePoints += DISTINCT_TYPE_BONUS;
         }
-        seen_types >>= 1;
+        distinctTypeTracker >>= 1;
     }
-    return score;
+
+    return totalTypePoints;
 }
 
-static int CalcTimeScore(struct PalParkLocal *palpark) {
-    return palpark->timeRemainingFactor;
+static int GetTimePoints(CatchingShow *catchingShow) {
+    return catchingShow->timePoints;
 }

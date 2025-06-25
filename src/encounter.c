@@ -595,7 +595,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
         break;
     case 3:
         sub_02050724(encounter->setup, fieldSystem);
-        PalPark_HandleBattleEnd(fieldSystem, encounter->setup);
+        CatchingShow_UpdateBattleResult(fieldSystem, encounter->setup);
         sub_02051660(fieldSystem, encounter->setup);
         (*state)++;
         break;
@@ -610,7 +610,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
         break;
     case 6:
         Encounter_Delete(encounter);
-        if (PalPark_CountMonsNotCaught(fieldSystem) == 0) {
+        if (CatchingShow_GetParkBallCount(fieldSystem) == 0) {
             // Ding-dong!
             // Congratulations!
             // $PLAYER has successfully
