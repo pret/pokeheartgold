@@ -20,7 +20,7 @@
 #include "map_object.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
-#include "pal_park.h"
+#include "catching_show.h"
 #include "pokedex_util.h"
 #include "save_arrays.h"
 #include "save_local_field_data.h"

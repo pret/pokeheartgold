@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_PAL_PARK_H
-#define POKEHEARTGOLD_PAL_PARK_H
+#ifndef POKEHEARTGOLD_CATCHING_SHOW_H
+#define POKEHEARTGOLD_CATCHING_SHOW_H
 
 #include "battle/battle_setup.h"
 
@@ -106,4 +106,4 @@ void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setu
 // caught.
 int CatchingShow_GetParkBallCount(FieldSystem *fieldSystem);
 
-#endif // POKEHEARTGOLD_PAL_PARK_H
+#endif // POKEHEARTGOLD_CATCHING_SHOW_H
