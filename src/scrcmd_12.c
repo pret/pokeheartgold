@@ -34,7 +34,7 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
         Save_VarsFlags_ClearPalParkSysFlag(script);
         PalPark_StopClock(ctx->fieldSystem);
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 
     return FALSE;

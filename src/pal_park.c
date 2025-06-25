@@ -219,7 +219,7 @@ static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark,
     }
 
     // In theory, this is unreachable.
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 
@@ -231,7 +231,7 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
     case BATTLE_OUTCOME_PLAYER_FLED:
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 

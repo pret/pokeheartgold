@@ -49,7 +49,7 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
 
     for (; items->text != NULL; items++) {
         if (items->text == (String *)-1) {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
             return NULL;
         }
     }

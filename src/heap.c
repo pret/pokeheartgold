@@ -81,7 +81,7 @@ void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHea
             sHeapInfo.heapHandles[i] = NNS_FndCreateExpHeap(ptr, templates[i].size);
             sHeapInfo.heapIdxs[i] = (u8)i;
         } else {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         }
     }
 
@@ -141,19 +141,19 @@ static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignm
 
                         return TRUE;
                     } else {
-                        GF_ASSERT(0);
+                        GF_ASSERT(FALSE);
                     }
                 } else {
-                    GF_ASSERT(0);
+                    GF_ASSERT(FALSE);
                 }
             } else {
-                GF_ASSERT(0);
+                GF_ASSERT(FALSE);
             }
         } else {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         }
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -172,7 +172,7 @@ void DestroyHeap(HeapID heapId) {
         if (parentHeap != NULL && childRaw != NULL) {
             NNS_FndFreeToExpHeap(parentHeap, childRaw);
         } else {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         }
 
         sHeapInfo.heapHandles[sHeapInfo.heapIdxs[heapId]] = NULL;
@@ -258,7 +258,7 @@ void FreeToHeap(void *ptr) {
         return;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void FreeToHeapExplicit(HeapID heapId, void *ptr) {
@@ -279,7 +279,7 @@ void FreeToHeapExplicit(HeapID heapId, void *ptr) {
         return;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId) {
@@ -288,7 +288,7 @@ u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId) {
         return NNS_FndGetTotalFreeSizeForExpHeap(sHeapInfo.heapHandles[index]);
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return 0;
 }
 
@@ -300,7 +300,7 @@ void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int
         return;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void ReallocFromHeap(void *ptr, u32 newSize) {
@@ -316,7 +316,7 @@ void ReallocFromHeap(void *ptr, u32 newSize) {
         NNS_FndResizeForMBlockExpHeap(sHeapInfo.heapHandles[index], ptr, newSize);
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 BOOL GF_heap_c_dummy_return_true(HeapID heapId) {

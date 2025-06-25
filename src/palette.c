@@ -103,7 +103,7 @@ void PaletteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId 
         src = GetSubObjPlttAddr();
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
 
@@ -524,7 +524,7 @@ u16 PaletteData_GetBufferColorAtIndex(PaletteData *plttData, PaletteBufferId buf
     } else if (which == PLTTSEL_TRANSPARENT) {
         return plttData->buffers[bufferID].transparent[palIdx];
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return 0;
     }
 }

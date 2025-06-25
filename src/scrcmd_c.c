@@ -1227,7 +1227,7 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
 void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
     struct ObjectMovementTaskEnv *env = AllocFromHeap(HEAP_ID_4, sizeof(struct ObjectMovementTaskEnv));
     if (env == NULL) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     env->fieldSystem = fieldSystem;
@@ -1246,7 +1246,7 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
         }
         FreeToHeap(env);
         if (*movementCnt == 0) {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         } else {
             (*movementCnt)--;
         }
@@ -1423,7 +1423,7 @@ BOOL ScrCmd_HidePerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objectId);
     if (object == NULL) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     } else {
         MapObject_Delete(object);
     }
@@ -3524,7 +3524,7 @@ BOOL ScrCmd_NatDexFlagAction(ScriptContext *ctx) {
     } else if (action == 2) {
         *p_ret = Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -4010,7 +4010,7 @@ BOOL ScrCmd_560(ScriptContext *ctx) {
         ov02_0224E074(fieldSystem, p_ret, 5, HEAP_ID_32);
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     }
     return TRUE;
@@ -4439,7 +4439,7 @@ BOOL ScrCmd_598(ScriptContext *ctx) {
         obj1 = FollowMon_GetMapObject(fieldSystem);
         obj2 = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
     ov02_0224E0BC(obj1, obj2, ctx->taskman);
@@ -5067,7 +5067,7 @@ static u32 GetMaxBankTransactionAmount(FieldSystem *fieldSystem, int action) {
         }
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return ret;
 }
@@ -5109,7 +5109,7 @@ BOOL sub_020479D4(ScriptContext *ctx) {
             PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_SUB, work->sub->selected);
             break;
         default:
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
             break;
         }
         *p_ret = 0;

@@ -34,7 +34,7 @@ void Pokedex_Copy(const Pokedex *src, Pokedex *dest) {
 
 BOOL DexSpeciesIsInvalid(u16 species) {
     if (species == SPECIES_NONE || species > SPECIES_ARCEUS) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return TRUE;
     }
 
@@ -127,7 +127,7 @@ static u8 *Pokedex_GetFormOrderAddr(Pokedex *pokedex, u32 species) {
     case SPECIES_PICHU:
         return &pokedex->pichuFormOrder; // + 830;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return NULL;
     }
 }
@@ -660,7 +660,7 @@ u32 Pokedex_GetSeenSpindaPersonality(Pokedex *pokedex, u32 arg) {
     if (arg == 0) {
         personality = pokedex->spindaPersonality;
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return personality;
 }

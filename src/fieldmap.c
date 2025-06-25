@@ -472,7 +472,7 @@ u8 sub_02040578(u16 script) {
         }
     }
     if (i >= NELEMS(sHiddenItemParam)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return 0;
     }
 
@@ -499,7 +499,7 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
         }
     }
     if (i >= NELEMS(sHiddenItemParam)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
 
