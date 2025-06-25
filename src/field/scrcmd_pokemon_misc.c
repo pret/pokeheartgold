@@ -223,14 +223,14 @@ static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x
     }
 
     for (i = 0; i < 0x78; i++) {
-        unkPtr->stringArr_1C[i] = String_New(0x50, HEAP_ID_4);
+        unkPtr->stringArr_1C[i] = String_New(0x50, HEAP_ID_FIELD);
     }
 
     *unkPtr->input = 0xEEEE;
 }
 
 static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
-    SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
+    SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_FIELD, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
     }
@@ -250,15 +250,15 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     } else {
         AddWindowParameterized(unkPtr->fieldSystem->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2 * unk, 13, 1);
     }
-    LoadUserFrameGfx1(unkPtr->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_4);
+    LoadUserFrameGfx1(unkPtr->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD);
     DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
-    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_4);
+    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_FIELD);
     unkPtr->sysTask = SysTask_CreateOnMainQueue(ov01_022010CC, unkPtr, 0);
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
-    String *str = String_New(0x50, HEAP_ID_4);
+    String *str = String_New(0x50, HEAP_ID_FIELD);
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
@@ -441,7 +441,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
         }
     }
     if (count > 0) {
-        if (Bag_AddItem(Save_Bag_Get(fieldSystem->saveData), ITEM_GRISEOUS_ORB, count, HEAP_ID_4) == FALSE) {
+        if (Bag_AddItem(Save_Bag_Get(fieldSystem->saveData), ITEM_GRISEOUS_ORB, count, HEAP_ID_FIELD) == FALSE) {
             *success = 255;
             return FALSE;
         }

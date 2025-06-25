@@ -948,8 +948,8 @@ BOOL ScrCmd_YesNo(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LIST_MENU_2D);
     u16 data = ScriptReadHalfword(ctx);
-    LoadUserFrameGfx1(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_4);
-    *listMenu2D = Std_CreateYesNoMenu(fieldSystem->bgConfig, &_020FAC94, 0x3D9, 11, HEAP_ID_4);
+    LoadUserFrameGfx1(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD);
+    *listMenu2D = Std_CreateYesNoMenu(fieldSystem->bgConfig, &_020FAC94, 0x3D9, 11, HEAP_ID_FIELD);
     ctx->data[0] = data;
     SetupNativeScript(ctx, sub_020416E4);
     return TRUE;
@@ -959,7 +959,7 @@ BOOL sub_020416E4(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct ListMenu2D **listMenu2D = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LIST_MENU_2D);
     u16 *ret_p = GetVarPointer(fieldSystem, ctx->data[0]);
-    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu2D, HEAP_ID_4);
+    int selection = Handle2dMenuInput_DeleteOnFinish(*listMenu2D, HEAP_ID_FIELD);
     if (selection == LIST_NOTHING_CHOSEN) {
         return FALSE;
     } else {
@@ -1160,7 +1160,7 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     u8 *movementCounter;
 
     GF_ASSERT(object != NULL);
-    cmd = AllocFromHeap(HEAP_ID_4, 64 * sizeof(MovementScriptCommand));
+    cmd = AllocFromHeap(HEAP_ID_FIELD, 64 * sizeof(MovementScriptCommand));
     now_x = MapObject_GetCurrentX(object);
     now_z = MapObject_GetCurrentZ(object);
     i = 0;
@@ -1225,7 +1225,7 @@ struct ObjectMovementTaskEnv {
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
 
 void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
-    struct ObjectMovementTaskEnv *env = AllocFromHeap(HEAP_ID_4, sizeof(struct ObjectMovementTaskEnv));
+    struct ObjectMovementTaskEnv *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct ObjectMovementTaskEnv));
     if (env == NULL) {
         GF_ASSERT(FALSE);
         return;
@@ -1857,8 +1857,8 @@ BOOL ScrCmd_452(ScriptContext *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 species = ScriptGetVar(ctx);
     u16 gender = ScriptGetVar(ctx);
-    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_4);
-    *p_work = DrawPokemonPicFromSpecies(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, species, gender, HEAP_ID_4);
+    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_FIELD);
+    *p_work = DrawPokemonPicFromSpecies(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, species, gender, HEAP_ID_FIELD);
     Script_SetMonSeenFlagBySpecies(ctx->fieldSystem, species);
     return FALSE;
 }
@@ -1867,8 +1867,8 @@ BOOL ScrCmd_547(ScriptContext *ctx) {
     struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
-    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_4);
-    *p_work = DrawPokemonPicFromMon(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, mon, HEAP_ID_4);
+    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_FIELD);
+    *p_work = DrawPokemonPicFromMon(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, mon, HEAP_ID_FIELD);
     return FALSE;
 }
 
@@ -2031,7 +2031,7 @@ BOOL ScrCmd_164(ScriptContext *ctx) {
 
 BOOL ScrCmd_706(ScriptContext *ctx) {
     int saveOk;
-    HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_4, &saveOk);
+    HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_FIELD, &saveOk);
     u16 *p_var = ScriptGetVarPointer(ctx);
     *p_var = 0;
     if (saveOk == 2) {
@@ -2185,7 +2185,7 @@ BOOL ScrCmd_FadeScreen(ScriptContext *ctx) {
     u16 speed = ScriptReadHalfword(ctx);
     u16 type = ScriptReadHalfword(ctx);
     u16 color = ScriptReadHalfword(ctx);
-    BeginNormalPaletteFade(0, type, type, color, duration, speed, HEAP_ID_4);
+    BeginNormalPaletteFade(0, type, type, color, duration, speed, HEAP_ID_FIELD);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
     return FALSE;
@@ -3586,7 +3586,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
     u16 d = ScriptGetVar(ctx);
-    int wallpaper = ov02_0224CD38(profile, a, b, c, d, HEAP_ID_4);
+    int wallpaper = ov02_0224CD38(profile, a, b, c, d, HEAP_ID_FIELD);
     if (wallpaper == -1 || wallpaper > 7) {
         *p_ret = 0xFF;
         return FALSE;
@@ -3608,7 +3608,7 @@ BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     u16 b = ScriptGetVar(ctx);
     u16 c = ScriptGetVar(ctx);
     u16 d = ScriptGetVar(ctx);
-    int result = ov02_0224CD74(profile, a, b, c, d, HEAP_ID_4);
+    int result = ov02_0224CD74(profile, a, b, c, d, HEAP_ID_FIELD);
     if (result == -1) {
         *p_ret = 0xFF;
         return FALSE;
@@ -4123,7 +4123,7 @@ BOOL ScrCmd_ShowSaveStats(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct SaveStatsPrinter **saveStatsPrinter = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SAVE_STATS_PRINTER);
     if (!Save_FileDoesNotBelongToPlayer(fieldSystem->saveData)) {
-        *saveStatsPrinter = Field_SaveStatsPrinter_New(fieldSystem, HEAP_ID_4, 3);
+        *saveStatsPrinter = Field_SaveStatsPrinter_New(fieldSystem, HEAP_ID_FIELD, 3);
         Field_SaveStatsPrinter_Print(*saveStatsPrinter);
     }
     return FALSE;
@@ -4328,7 +4328,7 @@ BOOL ScrCmd_682(ScriptContext *ctx) {
     static u32 sHeap11Size;
     u16 action = ScriptGetVar(ctx);
     u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELDMAP);
-    u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_4);
+    u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD);
     u32 heap32Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD_TASK);
 
     if (action == 0) {
@@ -5078,8 +5078,8 @@ BOOL ScrCmd_BankTransaction(ScriptContext *ctx) {
     struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 mode = ScriptReadHalfword(ctx);
     u16 var_ret = ScriptReadHalfword(ctx);
-    struct BankTransactionWork *work = *p_work = AllocFromHeap(HEAP_ID_4, sizeof(struct BankTransactionWork)); // statement must be this way to match
-    work->sub = AllocFromHeap(HEAP_ID_4, sizeof(struct BankTransactionWorkSub));
+    struct BankTransactionWork *work = *p_work = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct BankTransactionWork)); // statement must be this way to match
+    work->sub = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct BankTransactionWorkSub));
     work->mode = mode;
     work->sub->max = GetMaxBankTransactionAmount(ctx->fieldSystem, mode);
     work->sub->selected = -1;
@@ -5367,7 +5367,7 @@ BOOL ScrCmd_822(ScriptContext *ctx) {
 BOOL ScrCmd_823(ScriptContext *ctx) {
     u16 *p_var = ScriptGetVarPointer(ctx);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    PlayerProfile *profile = PlayerProfile_New(HEAP_ID_4);
+    PlayerProfile *profile = PlayerProfile_New(HEAP_ID_FIELD);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_Get(ctx->fieldSystem->saveData), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);
     FreeToHeap(profile);

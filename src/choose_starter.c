@@ -34,7 +34,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
 
     switch (env->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
         env->state = 1;
         break;
     case 1:
@@ -90,7 +90,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         if (!sub_020505C8(fieldSystem)) {
             break;
         }
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
         env->state = 5;
         break;
     case 5:

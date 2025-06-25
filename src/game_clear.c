@@ -171,7 +171,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 1:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            CreateHeap(HEAP_ID_3, HEAP_ID_4, 0x20000);
+            CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x20000);
             GameClearSave_InitGraphics(fieldSystem, env);
             BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD_TASK);
             ++(*state);
@@ -249,7 +249,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
     case 11:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             FreeToHeap(env);
-            DestroyHeap(HEAP_ID_4);
+            DestroyHeap(HEAP_ID_FIELD);
             OS_ResetSystem(0);
             return TRUE;
         }
@@ -334,12 +334,12 @@ static void sub_02052E70(GameClearWork *env) {
 }
 
 static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int writeStatus) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_4);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_FIELD);
 
     if (writeStatus == 2) {
-        MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_4);
+        MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_FIELD);
         BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfile(fieldSystem->saveData));
-        env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, HEAP_ID_4);
+        env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, HEAP_ID_FIELD);
         MessageFormat_Delete(msgFmt);
     } else {
         env->windowText = NewString_ReadMsgData(msgData, msg_0040_00018);

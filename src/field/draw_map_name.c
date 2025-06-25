@@ -35,11 +35,11 @@ static void FieldDrawMapName_SetupWindow(FieldDrawMapNameInfo *info) {
 static void LoadAreaIconGraphics(FieldDrawMapNameInfo *info, u8 layer, u32 tileStart, u8 paletteOffset, u32 unused) {
     u8 memberNum = info->areaIcon * 2;
 
-    info->charData = GfGfxLoader_GetCharData(NARC_data_gs_areawindow, memberNum, FALSE, &info->g2dCharData, HEAP_ID_4);
+    info->charData = GfGfxLoader_GetCharData(NARC_data_gs_areawindow, memberNum, FALSE, &info->g2dCharData, HEAP_ID_FIELD);
     BG_LoadCharTilesData(info->bgConfig, layer, info->g2dCharData->pRawData, info->g2dCharData->szByte, tileStart);
 
     NNSG2dPaletteData *g2dPaletteData;
-    void *paletteData = GfGfxLoader_GetPlttData(NARC_data_gs_areawindow, memberNum + 1, &g2dPaletteData, HEAP_ID_4);
+    void *paletteData = GfGfxLoader_GetPlttData(NARC_data_gs_areawindow, memberNum + 1, &g2dPaletteData, HEAP_ID_FIELD);
     LoadAreaIconPalette(g2dPaletteData->pRawData, 1, paletteOffset);
     FreeToHeap(paletteData);
 }
@@ -131,11 +131,11 @@ static void FieldDrawMapName_StartAscending(FieldDrawMapNameInfo *info) {
 }
 
 FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig) {
-    FieldDrawMapNameInfo *ret = AllocFromHeap(HEAP_ID_4, sizeof(FieldDrawMapNameInfo));
-    ret->mapNameString = String_New(22, HEAP_ID_4);
+    FieldDrawMapNameInfo *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(FieldDrawMapNameInfo));
+    ret->mapNameString = String_New(22, HEAP_ID_FIELD);
     FieldDrawMapName_Init(ret, bgConfig);
     FieldDrawMapName_SetupWindow(ret);
-    ret->mapsecMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0279_bin, HEAP_ID_4);
+    ret->mapsecMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0279_bin, HEAP_ID_FIELD);
     return ret;
 }
 

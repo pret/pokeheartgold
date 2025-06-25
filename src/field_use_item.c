@@ -433,7 +433,7 @@ static void ItemMenuUseFunc_OldRod(struct ItemMenuUseData *data, const struct It
 }
 
 static BOOL ItemFieldUseFunc_OldRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_4, 0));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD, 0));
     return FALSE;
 }
 
@@ -447,7 +447,7 @@ static void ItemMenuUseFunc_GoodRod(struct ItemMenuUseData *data, const struct I
 }
 
 static BOOL ItemFieldUseFunc_GoodRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_4, 1));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD, 1));
     return FALSE;
 }
 
@@ -461,7 +461,7 @@ static void ItemMenuUseFunc_SuperRod(struct ItemMenuUseData *data, const struct 
 }
 
 static BOOL ItemFieldUseFunc_SuperRod(struct ItemFieldUseData *data) {
-    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_4, 2));
+    FieldSystem_CreateTask(data->fieldSystem, Task_OverworldFish, CreateFishingRodTaskEnv(data->fieldSystem, HEAP_ID_FIELD, 2));
     return FALSE;
 }
 

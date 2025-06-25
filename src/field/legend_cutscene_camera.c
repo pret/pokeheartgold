@@ -259,10 +259,10 @@ static const u8 sBg2TilemapFileIDs[] = {
 void LegendCutscene_BeginClearBellAnim(FieldSystem *fieldSystem) {
     ClearBellCutsceneCamera *cam;
 
-    fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(ClearBellCutsceneCamera));
+    fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ClearBellCutsceneCamera));
     cam = fieldSystem->unk4->legendCutsceneCamera;
 
-    cam->translation = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
+    cam->translation = CreateCameraTranslationWrapper(HEAP_ID_FIELD, fieldSystem->camera);
     cam->gameVersion = gGameVersion;
     cam->lookAtTarget = Camera_GetLookAtCamTarget(fieldSystem->camera);
     cam->lookAtPos = Camera_GetLookAtCamPos(fieldSystem->camera);
@@ -319,9 +319,9 @@ static BOOL Task_WaitShimmerEffectAndRestart(TaskManager *taskman) {
 }
 
 void LegendCutscene_LugiaEyeGlimmerEffect(FieldSystem *fieldSystem) {
-    LegendCutsceneLugiaEyeGlimmerTaskData *eyeGlimmer = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(LegendCutsceneLugiaEyeGlimmerTaskData));
+    LegendCutsceneLugiaEyeGlimmerTaskData *eyeGlimmer = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(LegendCutsceneLugiaEyeGlimmerTaskData));
     eyeGlimmer->eyeGlimmerDelayTimer = 0;
-    loadEyeGlimmer3dModel(HEAP_ID_4, fieldSystem, eyeGlimmer);
+    loadEyeGlimmer3dModel(HEAP_ID_FIELD, fieldSystem, eyeGlimmer);
     TaskManager_Call(fieldSystem->taskman, Task_LugiaEyeGlimmer, eyeGlimmer);
 }
 
@@ -333,16 +333,16 @@ static void Field3dObjectTaskInit_ClearBellCutscene(Field3dObjectTask *task, Fie
     ClearBellCutscene3dObjectTaskData *kimonoDanceObjData = (ClearBellCutscene3dObjectTaskData *)taskData;
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     kimonoDanceObjData->gameVersion = cam->gameVersion;
-    GF_ExpHeap_FndInitAllocator(&kimonoDanceObjData->allocator, HEAP_ID_4, 0x20);
-    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000018_NSBMD, HEAP_ID_4);
-    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000025_NSBMD, HEAP_ID_4);
-    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000032_NSBMD, HEAP_ID_4);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[0], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000019_NSBCA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[1], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000020_NSBTP, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[2], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000021_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerAnims[0], &kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000026_NSBCA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerAnims[1], &kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000027_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->cornerBellAnims[0], &kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000033_NSBTA, HEAP_ID_4, &kimonoDanceObjData->allocator);
+    GF_ExpHeap_FndInitAllocator(&kimonoDanceObjData->allocator, HEAP_ID_FIELD, 0x20);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000018_NSBMD, HEAP_ID_FIELD);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000025_NSBMD, HEAP_ID_FIELD);
+    Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000032_NSBMD, HEAP_ID_FIELD);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[0], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000019_NSBCA, HEAP_ID_FIELD, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[1], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000020_NSBTP, HEAP_ID_FIELD, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearbellRisingAnims[2], &kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000021_NSBTA, HEAP_ID_FIELD, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerAnims[0], &kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000026_NSBCA, HEAP_ID_FIELD, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerAnims[1], &kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000027_NSBTA, HEAP_ID_FIELD, &kimonoDanceObjData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&kimonoDanceObjData->cornerBellAnims[0], &kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000033_NSBTA, HEAP_ID_FIELD, &kimonoDanceObjData->allocator);
     Field3dObject_InitFromModel(&kimonoDanceObjData->clearBellRisingObject, &kimonoDanceObjData->clearBellRisingModel);
     Field3dObject_InitFromModel(&kimonoDanceObjData->clearBellObject, &kimonoDanceObjData->clearBellShimmerModel);
     Field3dObject_AddAnimation(&kimonoDanceObjData->clearBellRisingObject, &kimonoDanceObjData->clearbellRisingAnims[0]);
@@ -453,9 +453,9 @@ static void bellShimmerReplaceGraphics(ClearBellCutscene3dObjectTaskData *taskDa
     Field3dModelAnimation_Unload(&taskData->clearbellRisingAnims[2], &taskData->allocator);
     Field3dModelAnimation_Unload(&taskData->clearbellRisingAnims[1], &taskData->allocator);
     Field3dModelAnimation_Unload(&taskData->clearbellRisingAnims[0], &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[0], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000022_NSBCA, HEAP_ID_4, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[1], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000023_NSBTP, HEAP_ID_4, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[2], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000024_NSBTA, HEAP_ID_4, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[0], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000022_NSBCA, HEAP_ID_FIELD, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[1], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000023_NSBTP, HEAP_ID_FIELD, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->clearbellRisingAnims[2], &taskData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000024_NSBTA, HEAP_ID_FIELD, &taskData->allocator);
     Field3dObject_AddAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[0]);
     Field3dObject_AddAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[1]);
     Field3dObject_AddAnimation(&taskData->clearBellRisingObject, &taskData->clearbellRisingAnims[2]);
@@ -652,7 +652,7 @@ static BOOL Task_WaitCameraPan(TaskManager *taskman) {
 }
 
 void LegendCutscene_BirdFinalApproach(FieldSystem *fieldSystem) {
-    BirdFinalApproachTaskData *taskData = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(BirdFinalApproachTaskData));
+    BirdFinalApproachTaskData *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(BirdFinalApproachTaskData));
     taskData->gameVersion = gGameVersion;
     TaskManager_Call(fieldSystem->taskman, Task_BirdFinalApproach, taskData);
 }
@@ -684,11 +684,11 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
 
     switch (*pState) {
     case BIRD_FINAL_APPROACH_TASK_STATE_INIT:
-        GF_ExpHeap_FndInitAllocator(&taskData->allocator, HEAP_ID_4, 0x20);
-        Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000034_NSBMD, HEAP_ID_4);
-        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000035_NSBCA, HEAP_ID_4, &taskData->allocator);
-        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000036_NSBMA, HEAP_ID_4, &taskData->allocator);
-        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[2], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000037_NSBTP, HEAP_ID_4, &taskData->allocator);
+        GF_ExpHeap_FndInitAllocator(&taskData->allocator, HEAP_ID_FIELD, 0x20);
+        Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000034_NSBMD, HEAP_ID_FIELD);
+        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000035_NSBCA, HEAP_ID_FIELD, &taskData->allocator);
+        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000036_NSBMA, HEAP_ID_FIELD, &taskData->allocator);
+        Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[2], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000037_NSBTP, HEAP_ID_FIELD, &taskData->allocator);
         Field3dObject_InitFromModel(&taskData->object, &taskData->model);
         Field3dObject_AddAnimation(&taskData->object, &taskData->anims[0]);
         Field3dObject_AddAnimation(&taskData->object, &taskData->anims[1]);
@@ -812,9 +812,9 @@ static void beginWavesEffect(FieldSystem *fieldSystem) {
     ClearBellCutscene3dObjectTaskData *taskData = (ClearBellCutscene3dObjectTaskData *)Field3dObjectTask_GetData(cam->draw3dTask);
     ClearBellCutscene3dObjectTaskData_SoulSilver *wavesEffectData = &taskData->wavesEffect;
 
-    Field3dModel_LoadFromFilesystem(&wavesEffectData->model, NARC_demo_legend, NARC_legend_legend_00000038_NSBMD, HEAP_ID_4);
-    Field3dModelAnimation_LoadFromFilesystem(&wavesEffectData->anims[0], &wavesEffectData->model, NARC_demo_legend, NARC_legend_legend_00000039_NSBCA, HEAP_ID_4, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&wavesEffectData->anims[1], &wavesEffectData->model, NARC_demo_legend, NARC_legend_legend_00000040_NSBTA, HEAP_ID_4, &taskData->allocator);
+    Field3dModel_LoadFromFilesystem(&wavesEffectData->model, NARC_demo_legend, NARC_legend_legend_00000038_NSBMD, HEAP_ID_FIELD);
+    Field3dModelAnimation_LoadFromFilesystem(&wavesEffectData->anims[0], &wavesEffectData->model, NARC_demo_legend, NARC_legend_legend_00000039_NSBCA, HEAP_ID_FIELD, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&wavesEffectData->anims[1], &wavesEffectData->model, NARC_demo_legend, NARC_legend_legend_00000040_NSBTA, HEAP_ID_FIELD, &taskData->allocator);
     Field3dObject_InitFromModel(&wavesEffectData->object, &wavesEffectData->model);
     Field3dObject_AddAnimation(&wavesEffectData->object, &wavesEffectData->anims[0]);
     Field3dObject_AddAnimation(&wavesEffectData->object, &wavesEffectData->anims[1]);
@@ -835,17 +835,17 @@ static void beginLeavesEffect(FieldSystem *fieldSystem) {
     leavesEffectData->bgConfig = fieldSystem->bgConfig;
 
     for (u8 i = 0; i < 6; ++i) {
-        leavesEffectData->bg2ScrnRaw[i] = GfGfxLoader_GetScrnData(NARC_demo_legend, sBg2TilemapFileIDs[i], FALSE, &leavesEffectData->bg2ScrnData[i], HEAP_ID_4);
-        leavesEffectData->bg3ScrnRaw[i] = GfGfxLoader_GetScrnData(NARC_demo_legend, sBg3TilemapFileIDs[i], FALSE, &leavesEffectData->bg3ScrnData[i], HEAP_ID_4);
+        leavesEffectData->bg2ScrnRaw[i] = GfGfxLoader_GetScrnData(NARC_demo_legend, sBg2TilemapFileIDs[i], FALSE, &leavesEffectData->bg2ScrnData[i], HEAP_ID_FIELD);
+        leavesEffectData->bg3ScrnRaw[i] = GfGfxLoader_GetScrnData(NARC_demo_legend, sBg3TilemapFileIDs[i], FALSE, &leavesEffectData->bg3ScrnData[i], HEAP_ID_FIELD);
     }
 
     BG_LoadScreenTilemapData(leavesEffectData->bgConfig, GF_BG_LYR_MAIN_2, leavesEffectData->bg2ScrnData[0]->rawData, leavesEffectData->bg2ScrnData[0]->szByte);
     BG_LoadScreenTilemapData(leavesEffectData->bgConfig, GF_BG_LYR_MAIN_3, leavesEffectData->bg3ScrnData[0]->rawData, leavesEffectData->bg3ScrnData[0]->szByte);
     BgTilemapRectChangePalette(leavesEffectData->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 32, 6);
     BgTilemapRectChangePalette(leavesEffectData->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 32, 6);
-    GfGfxLoader_LoadCharData(NARC_demo_legend, NARC_legend_legend_00000053_NCGR, leavesEffectData->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, HEAP_ID_4);
-    GfGfxLoader_LoadCharData(NARC_demo_legend, NARC_legend_legend_00000053_NCGR, leavesEffectData->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_4);
-    GfGfxLoader_GXLoadPal(NARC_demo_legend, NARC_legend_legend_00000054_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xC0, 0x20, HEAP_ID_4);
+    GfGfxLoader_LoadCharData(NARC_demo_legend, NARC_legend_legend_00000053_NCGR, leavesEffectData->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, HEAP_ID_FIELD);
+    GfGfxLoader_LoadCharData(NARC_demo_legend, NARC_legend_legend_00000053_NCGR, leavesEffectData->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, HEAP_ID_FIELD);
+    GfGfxLoader_GXLoadPal(NARC_demo_legend, NARC_legend_legend_00000054_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0xC0, 0x20, HEAP_ID_FIELD);
     taskData->task = SysTask_CreateOnMainQueue(Task_LeavesEffect, taskData, 0);
     ScheduleBgTilemapBufferTransfer(leavesEffectData->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(leavesEffectData->bgConfig, GF_BG_LYR_MAIN_3);
@@ -924,7 +924,7 @@ static void Task_LeavesEffect(SysTask *task, void *taskData) {
 void LegendCutscene_BeginLugiaArrivesEffect(FieldSystem *fieldSystem) {
     LugiaArrivesCutsceneCamera *cam;
 
-    fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(LugiaArrivesCutsceneCamera));
+    fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(LugiaArrivesCutsceneCamera));
     cam = fieldSystem->unk4->legendCutsceneCamera;
 
     cam->gameVersion = gGameVersion;
@@ -962,7 +962,7 @@ void LegendCutscene_LugiaArrivesEffectCameraPan(FieldSystem *fieldSystem) {
         return;
     }
 
-    cam->translation = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
+    cam->translation = CreateCameraTranslationWrapper(HEAP_ID_FIELD, fieldSystem->camera);
     template.angleX = cam->angle.x;
     template.perspectiveAngle = cam->perspectiveAngle;
     template.position = cam->targetDistanceVec;

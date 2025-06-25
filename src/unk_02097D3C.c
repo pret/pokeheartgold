@@ -24,7 +24,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
 
     switch (taskData->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
         taskData->state++;
 
         break;
@@ -47,7 +47,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
         break;
     case 3:
         if (sub_020505C8(fieldSystem)) {
-            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
             taskData->state++;
         }
 

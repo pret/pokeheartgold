@@ -116,7 +116,7 @@ static void LoadMonPalParkStats(u16 species, u8 *dest) {
 
 static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
     struct MigratedPokemonSav *migrated = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_4);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);
     u8 narc_data[6];
     u16 species;
     for (int i = 0; i < PARTY_SIZE; ++i) {

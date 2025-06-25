@@ -222,7 +222,7 @@ BOOL ScrCmd_BufferSpeciesName(ScriptContext *ctx) {
     u16 unk2 = ScriptReadHalfword(ctx);
     u8 unk3 = ScriptReadByte(ctx);
 
-    String *species_name = _get_species_name(species, HEAP_ID_4);
+    String *species_name = _get_species_name(species, HEAP_ID_FIELD);
     BufferString(*msg_fmt, idx, species_name, unk2, unk3, 2);
     String_Delete(species_name);
 
@@ -241,7 +241,7 @@ BOOL ScrCmd_BufferStarterSpeciesName(ScriptContext *ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = Save_VarsFlags_GetStarter(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
 
-    String *species_name = _get_species_name(species, HEAP_ID_4);
+    String *species_name = _get_species_name(species, HEAP_ID_FIELD);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_Delete(species_name);
 
@@ -253,7 +253,7 @@ BOOL ScrCmd_BufferDPPtRivalStarterSpeciesName(ScriptContext *ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = DPPtLeftover_GetRivalSpecies(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
 
-    String *species_name = _get_species_name(species, HEAP_ID_4);
+    String *species_name = _get_species_name(species, HEAP_ID_FIELD);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_Delete(species_name);
 
@@ -265,7 +265,7 @@ BOOL ScrCmd_BufferDPPtFriendStarterSpeciesName(ScriptContext *ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 species = DPPtLeftover_GetFriendStarterSpecies(Save_VarsFlags_Get(ctx->fieldSystem->saveData));
 
-    String *species_name = _get_species_name(species, HEAP_ID_4);
+    String *species_name = _get_species_name(species, HEAP_ID_FIELD);
     BufferString(*msg_fmt, idx, species_name, 0, 1, 2);
     String_Delete(species_name);
 
@@ -301,12 +301,12 @@ BOOL ScrCmd_209(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BufferMapSecName(ScriptContext *ctx) {
-    String *str = String_New(22, HEAP_ID_4);
+    String *str = String_New(22, HEAP_ID_FIELD);
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 idx = ScriptReadByte(ctx);
     u16 mapno = ScriptGetVar(ctx);
 
-    sub_02068F98(mapno, HEAP_ID_4, str);
+    sub_02068F98(mapno, HEAP_ID_FIELD, str);
     BufferString(*msg_fmt, idx, str, 0, 1, 2);
     String_Delete(str);
 

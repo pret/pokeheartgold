@@ -499,7 +499,7 @@ static void FieldMove_UseTeleport(FieldMoveUseData *useData, const FieldMoveChec
 static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = TaskManager_GetEnvironment(taskManager);
-    FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateTeleportEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_4);
+    FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateTeleportEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_FIELD);
     FreeToHeap(fieldMoveEnvironment->moveData);
     FreeToHeap(fieldMoveEnvironment);
     TaskManager_Jump(taskManager, Task_FieldTeleport, fieldMoveTaskEnvironment);
