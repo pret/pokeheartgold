@@ -236,7 +236,7 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
 }
 
 static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD_TASK);
     struct MigratedPokemonSav *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
     BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);

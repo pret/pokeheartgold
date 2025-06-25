@@ -220,7 +220,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
         GF_ASSERT(FALSE);
     }
 
-    BagView *bagView = Bag_CreateView(bag, sPockets, HEAP_ID_32);
+    BagView *bagView = Bag_CreateView(bag, sPockets, HEAP_ID_FIELD_TASK);
     sub_0207789C(bagView, fieldSystem->saveData, 3, fieldSystem->bagCursor, &fieldSystem->menuInputState);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
@@ -462,19 +462,19 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
     EasyChatArgs *args;
 
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    UnkStruct_0203E878 *data = AllocFromHeap(HEAP_ID_32, sizeof(UnkStruct_0203E878));
+    UnkStruct_0203E878 *data = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(UnkStruct_0203E878));
     data->unk0 = a2;
     data->unk4 = a3;
     data->unk8 = a4;
     data->unk10 = a1;
     switch (a1) {
     default:
-        args = EasyChat_CreateArgs(0, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_32);
+        args = EasyChat_CreateArgs(0, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_FIELD_TASK);
         data->easyChat = args;
         sub_02090D14(args, *a3);
         break;
     case 1:
-        args = EasyChat_CreateArgs(1, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_32);
+        args = EasyChat_CreateArgs(1, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_FIELD_TASK);
         data->easyChat = args;
         sub_02090D18(args, *a3, *a4);
         break;
@@ -482,7 +482,7 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
     case 3:
     case 4:
     case 5:
-        args = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_32);
+        args = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_FIELD_TASK);
         data->easyChat = args;
         sub_02090D40(args);
         MailMessage *mailMessage = sub_0202D660(fieldSystem->saveData, a1 - 2);
@@ -841,9 +841,9 @@ static BOOL sub_0203F134(TaskManager *taskman) {
 }
 
 void sub_0203F198(TaskManager *taskman, u16 *ret, SaveData *saveData, u16 a3, u16 a4) {
-    UnkStruct_0203F134 *data = AllocFromHeap(HEAP_ID_32, sizeof(UnkStruct_0203F134));
+    UnkStruct_0203F134 *data = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(UnkStruct_0203F134));
     memset(data, 0, sizeof(UnkStruct_0203F134));
-    data->unkC = sub_0203F0D0(HEAP_ID_32, saveData, a3, &data->unk8, a4);
+    data->unkC = sub_0203F0D0(HEAP_ID_FIELD_TASK, saveData, a3, &data->unk8, a4);
     data->unk4 = ret;
     TaskManager_Call(taskman, sub_0203F134, data);
 }
@@ -875,9 +875,9 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->natDexEnabled = SaveArray_IsNatDexEnabled(fieldSystem->saveData);
     args->saveData = fieldSystem->saveData;
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);
-    args->partnerProfile = AllocFromHeap(HEAP_ID_32, PlayerProfile_sizeof());
-    args->unk38 = AllocFromHeap(HEAP_ID_32, sub_02070D90());
-    args->unk3C = AllocFromHeap(HEAP_ID_32, sub_02070D90());
+    args->partnerProfile = AllocFromHeap(HEAP_ID_FIELD_TASK, PlayerProfile_sizeof());
+    args->unk38 = AllocFromHeap(HEAP_ID_FIELD_TASK, sub_02070D90());
+    args->unk3C = AllocFromHeap(HEAP_ID_FIELD_TASK, sub_02070D90());
     args->fieldSystem = fieldSystem;
     args->unk30 = 0;
 }
@@ -986,7 +986,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
 }
 
 void CallTask_WirelessTrade(TaskManager *taskman) {
-    WirelessTradeData *data = AllocFromHeap(HEAP_ID_32, sizeof(WirelessTradeData));
+    WirelessTradeData *data = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(WirelessTradeData));
     data->state = 0;
     TaskManager_Call(taskman, Task_WirelessTrade, data);
 }
@@ -995,7 +995,7 @@ static const OverlayManagerTemplate _020FA2C4 = { ov37_021E5900, ov37_021E5A84, 
 static const OverlayManagerTemplate _020FA2B4 = { ov73_021E5900, ov73_021E5AB8, ov73_021E5BAC, FS_OVERLAY_ID(OVY_73) };
 
 void sub_0203F4C8(FieldSystem *fieldSystem) {
-    UnkStruct_0203F4C8 *args = AllocFromHeap(HEAP_ID_32, sizeof(UnkStruct_0203F4C8));
+    UnkStruct_0203F4C8 *args = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(UnkStruct_0203F4C8));
     args->unk0 = fieldSystem->unk84;
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     FieldSystem_LaunchApplication(fieldSystem, &_020FA2C4, args);

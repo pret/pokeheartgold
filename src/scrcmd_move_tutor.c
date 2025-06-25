@@ -286,8 +286,8 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     u16 *result = GetVarPointer(fieldSystem, resultVarId);
     Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
     *unk = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
-    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_32);
-    String *string = String_New(0x10, HEAP_ID_32);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_FIELD_TASK);
+    String *string = String_New(0x10, HEAP_ID_FIELD_TASK);
     showAsTwoColumns = (numLearnableMoves + showNextButton >= 4) ? 1 : 0;
     for (i = 0; i < numLearnableMoves; i++) {
         ReadMsgDataIntoString(messageData, sTutorMoves[learnableMoves[i + numMovesToSkip]].move, string);

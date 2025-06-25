@@ -169,7 +169,7 @@ void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *check
 }
 
 static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
-    FieldUseMoveEnvironment *environment = AllocFromHeap(HEAP_ID_32, sizeof(FieldUseMoveEnvironment));
+    FieldUseMoveEnvironment *environment = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(FieldUseMoveEnvironment));
     environment->magic = 0x19740205;
     environment->facingObject = checkData->facingObject;
     environment->useData = *useData;

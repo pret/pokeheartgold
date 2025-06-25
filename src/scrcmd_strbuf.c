@@ -319,7 +319,7 @@ BOOL ScrCmd_BufferBerryName(ScriptContext *ctx) {
     u16 berry_id = ScriptGetVar(ctx);
     u16 unk = ScriptGetVar(ctx);
 
-    String *str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), HEAP_ID_32);
+    String *str = GetNutName((u16)(berry_id - FIRST_BERRY_IDX), HEAP_ID_FIELD_TASK);
     BufferString(*msg_fmt, idx, str, 0, unk < 2, 2);
     String_Delete(str);
 

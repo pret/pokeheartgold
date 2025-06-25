@@ -134,7 +134,7 @@ void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManage
 
 FieldSystem *FieldSystem_New(OverlayManager *man) {
     CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
-    CreateHeap(HEAP_ID_3, HEAP_ID_32, 0x4000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_FIELD_TASK, 0x4000);
     CreateHeap(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
     FieldSystem *fieldSystem = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD);
     MI_CpuFill8(fieldSystem, 0, sizeof(FieldSystem));
@@ -165,7 +165,7 @@ void FieldSystem_Delete(OverlayManager *man) {
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_89);
     DestroyHeap(HEAP_ID_FIELD);
-    DestroyHeap(HEAP_ID_32);
+    DestroyHeap(HEAP_ID_FIELD_TASK);
 }
 
 static void ppOverlayManager_RunFrame_DeleteIfFinished(OverlayManager **man) {

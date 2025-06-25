@@ -122,7 +122,7 @@ BOOL sub_0205298C(TaskManager *taskman) {
         ++(*state);
         break;
     case 4:
-        BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_32);
+        BeginNormalPaletteFade(0, 1, 1, RGB_WHITE, 8, 1, HEAP_ID_FIELD_TASK);
         G2_BlendNone();
         ++(*state);
         break;
@@ -166,14 +166,14 @@ static BOOL Task_GameClear(TaskManager *taskman) {
             break;
         }
         GameClearSave_InitGraphics(fieldSystem, env);
-        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
+        BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD_TASK);
         *state = 2;
         break;
     case 1:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             CreateHeap(HEAP_ID_3, HEAP_ID_4, 0x20000);
             GameClearSave_InitGraphics(fieldSystem, env);
-            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
+            BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_FIELD_TASK);
             ++(*state);
         }
         break;
@@ -217,7 +217,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         ++(*state);
         break;
     case 7:
-        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_32);
+        BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_FIELD_TASK);
         env->bgmVolume = 127;
         ++(*state);
         break;
@@ -269,7 +269,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile *profile;
 
     fieldSystem = TaskManager_GetFieldSystem(taskman);
-    env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
+    env = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(GameClearWork));
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
@@ -309,14 +309,14 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
     SetBothScreensModesAndDisable(&sGameClearSaveBgModeSet);
     BG_SetMaskColor(3, RGB_BLACK);
     InitBgFromTemplate(env->bgConfig, 3, &sGameClearSaveBgTemplate, 0);
-    BG_ClearCharDataRange(3, 32, 0, HEAP_ID_32);
+    BG_ClearCharDataRange(3, 32, 0, HEAP_ID_FIELD_TASK);
     FillBgTilemapRect(env->bgConfig, 3, RGB_BLACK, 0, 0, 32, 32, 17);
     BgCommitTilemapBufferToVram(env->bgConfig, 3);
 }
 
 static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-    env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_32);
+    env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_FIELD_TASK);
     sub_0205B514(env->bgConfig, &env->window, 3);
     sub_0205B564(&env->window, options);
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);

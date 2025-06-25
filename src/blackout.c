@@ -122,7 +122,7 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
     BlackoutScreenEnvironment *env = TaskManager_GetEnvironment(taskManager);
     switch (env->state) {
     case STATE_SHOW_PRINTED_BLACKOUT_FADE_IN:
-        BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, HEAP_ID_32);
+        BeginNormalPaletteFade(3, 1, 43, RGB_WHITE, 8, 1, HEAP_ID_FIELD_TASK);
         G2_BlendNone();
         env->state++;
         break;
@@ -133,7 +133,7 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
         break;
     case STATE_SHOW_PRINTED_BLACKOUT_FADE_OUT_INPUT:
         if (gSystem.newKeys & PAD_BUTTON_A || gSystem.newKeys & PAD_BUTTON_B || gSystem.touchNew != 0) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_32);
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 8, 1, HEAP_ID_FIELD_TASK);
             env->state++;
         }
         break;

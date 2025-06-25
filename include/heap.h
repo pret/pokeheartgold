@@ -21,7 +21,7 @@ typedef enum HeapID {
     HEAP_ID_20 = 20,
     HEAP_ID_26 = 26,
     HEAP_ID_TITLE_SCREEN = 30,
-    HEAP_ID_32 = 32,
+    HEAP_ID_FIELD_TASK = 32,
     HEAP_ID_OPTIONS_APP = 38,
     HEAP_ID_OV55 = 40,
     HEAP_ID_CHOOSE_STARTER = 46,

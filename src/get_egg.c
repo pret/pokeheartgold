@@ -654,7 +654,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     if (trainerMemoStrat == 4) {
         otId = PlayerProfile_GetTrainerID(profile);
         gender = PlayerProfile_GetTrainerGender(profile);
-        name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
+        name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_FIELD_TASK);
         SetMonData(mon, MON_DATA_OT_NAME_2, name);
         SetMonData(mon, MON_DATA_OTID, &otId);
         SetMonData(mon, MON_DATA_MET_GENDER, &gender);

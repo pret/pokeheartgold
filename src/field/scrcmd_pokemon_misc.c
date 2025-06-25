@@ -137,7 +137,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
 
     ctx->data[0] = unkC;
 
-    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, HEAP_ID_32);
+    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, HEAP_ID_FIELD_TASK);
 
     input = GetVarPointer(fieldSystem, unkC);
 
@@ -151,7 +151,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     unkG = sub_020312C4(fieldSystem->saveData, 0xb, &out_1);
 
     if (out_1 == 1) {
-        data = ov01_02200C94(HEAP_ID_32, ov01_02209AE0[fileIndex], &out_2);
+        data = ov01_02200C94(HEAP_ID_FIELD_TASK, ov01_02209AE0[fileIndex], &out_2);
 
         for (i = 0; i < out_2; i++) {
             unkPtr_2 = sub_020312E0(fieldSystem->saveData, unkG, sub_0205C144(unkA), data[i]);
@@ -165,7 +165,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
         FreeToHeap(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_32);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_FIELD_TASK);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
@@ -1195,7 +1195,7 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
     rngSeed = GetLCRNGSeed();
     SetLCRNGSeed(sub_0202C7DC(friendGroup));
 
-    luckValues = AllocFromHeapAtEnd(HEAP_ID_32, numMachines);
+    luckValues = AllocFromHeapAtEnd(HEAP_ID_FIELD_TASK, numMachines);
     MI_CpuFill8(luckValues, 0, numMachines);
 
     for (i = 0; i < NELEMS(sSlotLuckDistribution[city]); ++i) {
@@ -1353,7 +1353,7 @@ BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx) {
 
     sealcase = Save_SealCase_Get(ctx->fieldSystem->saveData);
 
-    sealThresholds = AllocFromHeapAtEnd(HEAP_ID_32, sizeof(u16) * SEAL_MYSTERY);
+    sealThresholds = AllocFromHeapAtEnd(HEAP_ID_FIELD_TASK, sizeof(u16) * SEAL_MYSTERY);
 
     MI_CpuFill8(sealThresholds, 0, sizeof(u16) * SEAL_MYSTERY);
     MI_CpuFill8(uniqueSeals, 0, sizeof(u8) * 3);

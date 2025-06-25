@@ -65,7 +65,7 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
 static BOOL DoApricornJump(AnimApricornTreeWork *env);
 
 void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2) {
-    AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_32, sizeof(AnimApricornTreeWork));
+    AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_FIELD_TASK, sizeof(AnimApricornTreeWork));
     MI_CpuFill8(env, 0, sizeof(AnimApricornTreeWork));
     env->state = 0;
     env->tree = tree;

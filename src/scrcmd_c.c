@@ -1599,21 +1599,21 @@ BOOL ScrCmd_136(ScriptContext *ctx) {
 
 BOOL ScrCmd_PartySelectUI(ScriptContext *ctx) {
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = PartyMenu_LaunchApp_Unk2(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_Unk2(HEAP_ID_FIELD_TASK, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_566(ScriptContext *ctx) { // todo: trade screen
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = PartyMenu_LaunchApp_InGameTrade(HEAP_ID_32, ctx->fieldSystem);
+    *partyMenu = PartyMenu_LaunchApp_InGameTrade(HEAP_ID_FIELD_TASK, ctx->fieldSystem);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
 
 BOOL ScrCmd_350(ScriptContext *ctx) { // todo: union pokemon selection
     PartyMenuArgs **partyMenu = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *partyMenu = TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(ctx->fieldSystem->taskman, HEAP_ID_32);
+    *partyMenu = TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(ctx->fieldSystem->taskman, HEAP_ID_FIELD_TASK);
     return TRUE;
 }
 
@@ -1725,9 +1725,9 @@ BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx) {
     u16 partySlot = ScriptGetVar(ctx);
     u16 moveToLearn = ScriptGetVar(ctx);
     if (onlySkillsPanel == TRUE) {
-        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, partySlot, moveToLearn);
+        *p_work = LearnForgetMove_LaunchApp(HEAP_ID_FIELD_TASK, ctx->fieldSystem, partySlot, moveToLearn);
     } else {
-        *p_work = PokemonSummary_LaunchApp(HEAP_ID_32, ctx->fieldSystem, partySlot, moveToLearn);
+        *p_work = PokemonSummary_LaunchApp(HEAP_ID_FIELD_TASK, ctx->fieldSystem, partySlot, moveToLearn);
     }
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
@@ -1736,7 +1736,7 @@ BOOL ScrCmd_PokemonSummaryScreen(ScriptContext *ctx) {
 BOOL ScrCmd_GetPhoneBookRematch(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    struct PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_32);
+    struct PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_FIELD_TASK);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
     *r6 = PhoneBookTrainerGetRematchInfo(r4, ctx->fieldSystem->saveData, phoneBook, (TimeOfDayWildParam)(u8)Field_GetTimeOfDayWildParam(ctx->fieldSystem));
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
@@ -3322,7 +3322,7 @@ BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx) {
 BOOL ScrCmd_ShowCertificate(ScriptContext *ctx) {
     CertificatesArgs **args = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u16 certificateId = ScriptGetVar(ctx);
-    *args = Certificates_LaunchApp(ctx->fieldSystem, HEAP_ID_32, certificateId);
+    *args = Certificates_LaunchApp(ctx->fieldSystem, HEAP_ID_FIELD_TASK, certificateId);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -3641,7 +3641,7 @@ BOOL ScrCmd_502(ScriptContext *ctx) {
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
     Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD_TASK);
     ZeroMonData(mon);
     CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
     Pokedex_SetMonSeenFlag(pokedex, mon);
@@ -3927,7 +3927,7 @@ BOOL ScrCmd_546(ScriptContext *ctx) {
 BOOL ScrCmd_550(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     int loadResult;
-    HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_32, &loadResult);
+    HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_FIELD_TASK, &loadResult);
     if (loadResult == 0) {
         *p_ret = 0;
         FreeToHeap(hof);
@@ -3949,7 +3949,7 @@ BOOL ScrCmd_550(ScriptContext *ctx) {
 BOOL ScrCmd_551(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     PartyMenuArgs **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = PartyMenu_LaunchApp_Unk4(HEAP_ID_32, ctx->fieldSystem, r6);
+    *p_work = PartyMenu_LaunchApp_Unk4(HEAP_ID_FIELD_TASK, ctx->fieldSystem, r6);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -3992,22 +3992,22 @@ BOOL ScrCmd_560(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     switch (my_case) {
     case 0:
-        ov02_0224E074(fieldSystem, p_ret, 0, HEAP_ID_32);
+        ov02_0224E074(fieldSystem, p_ret, 0, HEAP_ID_FIELD_TASK);
         break;
     case 1:
-        ov02_0224E074(fieldSystem, p_ret, 1, HEAP_ID_32);
+        ov02_0224E074(fieldSystem, p_ret, 1, HEAP_ID_FIELD_TASK);
         break;
     case 2:
-        ov02_0224E074(fieldSystem, p_ret, 2, HEAP_ID_32);
+        ov02_0224E074(fieldSystem, p_ret, 2, HEAP_ID_FIELD_TASK);
         break;
     case 3:
-        ov02_0224E074(fieldSystem, p_ret, 3, HEAP_ID_32);
+        ov02_0224E074(fieldSystem, p_ret, 3, HEAP_ID_FIELD_TASK);
         break;
     case 4:
-        ov02_0224E074(fieldSystem, p_ret, 4, HEAP_ID_32);
+        ov02_0224E074(fieldSystem, p_ret, 4, HEAP_ID_FIELD_TASK);
         break;
     case 5:
-        ov02_0224E074(fieldSystem, p_ret, 5, HEAP_ID_32);
+        ov02_0224E074(fieldSystem, p_ret, 5, HEAP_ID_FIELD_TASK);
         break;
     default:
         GF_ASSERT(FALSE);
@@ -4046,13 +4046,13 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     String *r7_str;
     String *sp0_str;
-    MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_32);
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_32);
+    MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_FIELD_TASK);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_FIELD_TASK);
     BufferECWord(msgFmt, 0, sp4);
     BufferECWord(msgFmt, 1, sp8);
     BufferECWord(msgFmt, 2, spC);
     BufferECWord(msgFmt, 3, r7);
-    r7_str = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0202_00001, HEAP_ID_32);
+    r7_str = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0202_00001, HEAP_ID_FIELD_TASK);
     sp0_str = NewString_ReadMsgData(msgData, msg_0202_00000);
     *p_ret = String_Compare(r7_str, sp0_str) == FALSE;
     String_Delete(r7_str);
@@ -4172,14 +4172,14 @@ BOOL ScrCmd_631(ScriptContext *ctx) {
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     u16 r3 = ScriptGetVar(ctx);
-    *p_work = sub_0203FAB4(ctx->fieldSystem, r6, r7, r3, HEAP_ID_32);
+    *p_work = sub_0203FAB4(ctx->fieldSystem, r6, r7, r3, HEAP_ID_FIELD_TASK);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
 
 BOOL ScrCmd_ScratchOffCard(ScriptContext *ctx) {
     ScratchOffCardsArgs **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *scratchCardData = ScratchOffCards_LaunchApp(ctx->fieldSystem, HEAP_ID_32);
+    *scratchCardData = ScratchOffCards_LaunchApp(ctx->fieldSystem, HEAP_ID_FIELD_TASK);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -4303,7 +4303,7 @@ u32 sub_020467A8(SaveData *saveData) {
         }
     }
 
-    Pokemon *walkerMon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *walkerMon = AllocMonZeroed(HEAP_ID_FIELD_TASK);
     BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
@@ -4329,7 +4329,7 @@ BOOL ScrCmd_682(ScriptContext *ctx) {
     u16 action = ScriptGetVar(ctx);
     u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD);
     u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_4);
-    u32 heap32Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_32);
+    u32 heap32Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD_TASK);
 
     if (action == 0) {
         sHeap11Size = heap11Size;
@@ -4668,7 +4668,7 @@ BOOL ScrCmd_RunPhoneCall(ScriptContext *ctx) {
 BOOL ScrCmd_LoadPhoneDat(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = LoadPhoneBookEntryI(idx, GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem)), HEAP_ID_32);
+    *p_ret = LoadPhoneBookEntryI(idx, GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem)), HEAP_ID_FIELD_TASK);
     return FALSE;
 }
 
