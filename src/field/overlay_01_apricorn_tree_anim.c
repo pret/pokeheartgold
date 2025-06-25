@@ -91,7 +91,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
             env->state = 10;
             break;
         }
-        AnimPlayerShakeTreeWork *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AnimPlayerShakeTreeWork));
+        AnimPlayerShakeTreeWork *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(AnimPlayerShakeTreeWork));
         TaskManager_Call(taskman, Task_AnimPlayerShakeTree, ptr);
         env->state = 1;
         break;

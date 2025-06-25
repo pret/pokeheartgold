@@ -72,7 +72,7 @@ BOOL RoutineFieldFade(TaskManager *man) {
 }
 
 void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir, u32 transNo) {
-    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
+    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
     fenv->unk1 = 0;
@@ -86,7 +86,7 @@ void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warp
 }
 
 void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir) {
-    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
+    FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
     fenv->unk1 = 0;
@@ -386,7 +386,7 @@ BOOL sub_020562B0(TaskManager *man) {
         Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
         Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
         sub_0205F328(obj, 0);
-        fenv->unk18 = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
+        fenv->unk18 = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldEnvSubUnk18));
         fenv18 = fenv->unk18;
         fenv18->state = 0;
         fenv18->direction = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
@@ -472,7 +472,7 @@ BOOL sub_02056424(TaskManager *man) {
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
             sub_0205F328(obj, 0);
-            fenv->unk18 = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldEnvSubUnk18));
+            fenv->unk18 = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldEnvSubUnk18));
             fenv->unk18->state = 0;
             PlayerAvatar_ToggleAutomaticHeightUpdating(fieldSystem->playerAvatar, FALSE);
             fenv->transitionState++;

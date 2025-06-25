@@ -239,7 +239,7 @@ static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData) {
 static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
-    FieldMoveData *fieldMoveData = AllocFromHeap(HEAP_ID_FIELD, sizeof(FieldMoveData));
+    FieldMoveData *fieldMoveData = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(FieldMoveData));
     fieldMoveData->partySlot = useData->partySlot;
     startMenu->exitTaskEnvironment2 = fieldMoveData;
     startMenu->exitTaskEnvironment = PokegearTownMap_LaunchApp(fieldSystem, 0);
@@ -487,8 +487,8 @@ static void FieldMove_UseTeleport(FieldMoveUseData *useData, const FieldMoveChec
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
-    FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
-    FieldMoveData *fieldMoveData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldMoveData));
+    FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELDMAP, useData->partySlot, fieldSystem->saveData);
+    FieldMoveData *fieldMoveData = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldMoveData));
     fieldMoveEnvironment->moveData = fieldMoveData;
     fieldMoveData->partySlot = useData->partySlot;
     startMenu->exitTaskFunc = Task_UseTeleportInField;
@@ -527,8 +527,8 @@ static void FieldMove_UseDig(FieldMoveUseData *useData, const FieldMoveCheckData
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
-    FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
-    FieldMoveData *fieldMoveData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldMoveData));
+    FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELDMAP, useData->partySlot, fieldSystem->saveData);
+    FieldMoveData *fieldMoveData = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldMoveData));
     fieldMoveEnvironment->moveData = fieldMoveData;
     fieldMoveData->partySlot = useData->partySlot;
     startMenu->exitTaskFunc = Task_UseDigInField;
@@ -539,7 +539,7 @@ static void FieldMove_UseDig(FieldMoveUseData *useData, const FieldMoveCheckData
 static BOOL Task_UseDigInField(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = TaskManager_GetEnvironment(taskManager);
-    FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateDigEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_FIELD);
+    FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateDigEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_FIELDMAP);
     FreeToHeap(fieldMoveEnvironment->moveData);
     FreeToHeap(fieldMoveEnvironment);
     TaskManager_Jump(taskManager, Task_FieldDig, fieldMoveTaskEnvironment);
@@ -560,8 +560,8 @@ static u32 FieldMove_CheckSweetScent(const FieldMoveCheckData *checkData) {
 static void FieldMove_UseSweetScent(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
-    FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
-    FieldMoveData *fieldMoveData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldMoveData));
+    FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELDMAP, useData->partySlot, fieldSystem->saveData);
+    FieldMoveData *fieldMoveData = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldMoveData));
     fieldMoveEnvironment->moveData = fieldMoveData;
     fieldMoveData->partySlot = useData->partySlot;
     FieldSystem_LoadFieldOverlay(fieldSystem);

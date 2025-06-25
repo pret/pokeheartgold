@@ -146,7 +146,7 @@ static PhotoCameraParam sCameraParam = {
 };
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
-    FieldTakePhoto *takePhoto = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTakePhoto));
+    FieldTakePhoto *takePhoto = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldTakePhoto));
     MI_CpuFill8(takePhoto, 0, sizeof(FieldTakePhoto));
     takePhoto->state = 0;
     takePhoto->positionMonDelayCounter = 0;
@@ -170,7 +170,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
 }
 
 void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
-    FieldViewPhoto *photo = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldViewPhoto));
+    FieldViewPhoto *photo = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
     photo->x = GetPlayerXCoord(fieldSystem->playerAvatar);
     photo->y = GetPlayerZCoord(fieldSystem->playerAvatar);
@@ -250,7 +250,7 @@ static int ViewPhotoFieldTask_HandleAlbumSelection(FieldSystem *fieldSystem, Tas
 }
 
 static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *viewPhoto) {
-    FieldTakePhoto3 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTakePhoto3));
+    FieldTakePhoto3 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FieldTakePhoto3));
     MI_CpuClear8(taskData, sizeof(FieldTakePhoto3));
     PhotoAlbum_GetPhotoByIndex(viewPhoto->photoAlbum, &viewPhoto->pPhoto, viewPhoto->whichPhoto);
     viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId != 0 ? 2 : viewPhoto->pPhoto.numMons;
@@ -306,7 +306,7 @@ static int ViewPhotoFieldTask_WaitInput(FieldSystem *fieldSystem, TaskManager *t
 static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELDMAP);
         ++photo->substate;
         break;
     case 1:
@@ -323,7 +323,7 @@ static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManage
 static int ViewPhotoFieldTask_FadeOutFromPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELDMAP);
         ++photo->substate;
         break;
     case 1:

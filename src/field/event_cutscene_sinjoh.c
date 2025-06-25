@@ -51,7 +51,7 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data);
 static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data);
 
 void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem) {
-    SinjohCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohCutsceneData));
+    SinjohCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(SinjohCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohCutsceneData));
     data->fieldSystem = fieldSystem;
     TaskManager_Call(fieldSystem->taskman, Task_SinjohCutscene, data);
@@ -233,7 +233,7 @@ static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimat
 }
 
 void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 whichLegend) {
-    SinjohGetEggCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohGetEggCutsceneData));
+    SinjohGetEggCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(SinjohGetEggCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohGetEggCutsceneData));
     data->fieldSystem = fieldSystem;
     data->whichLegend = whichLegend;

@@ -57,7 +57,7 @@ static void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations,
 static BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations);
 
 void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem) {
-    CelebiTimeTravelCutsceneTaskData *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(CelebiTimeTravelCutsceneTaskData));
+    CelebiTimeTravelCutsceneTaskData *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(CelebiTimeTravelCutsceneTaskData));
     MI_CpuFill8(ptr, 0, sizeof(CelebiTimeTravelCutsceneTaskData));
     ptr->fieldSystem = fieldSystem;
     TaskManager_Call(fieldSystem->taskman, Task_CelebiTimeTravelCutscene, ptr);

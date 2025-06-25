@@ -1048,7 +1048,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
         return FALSE;
     }
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = AllocMonZeroed(HEAP_ID_FIELDMAP);
     ZeroMonData(mon);
 
     SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
@@ -1114,7 +1114,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     if (Party_GetCount(party) >= 6) {
         return FALSE;
     }
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = AllocMonZeroed(HEAP_ID_FIELDMAP);
     ZeroMonData(mon);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
@@ -1135,7 +1135,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
 
-    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELD);
+    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELDMAP);
 
     Party_AddMon(party, mon);
 

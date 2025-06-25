@@ -278,7 +278,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     setup->terrain = TERRAIN_BUILDING;
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
 
-    Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD);
+    Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELDMAP);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], Party_GetCount(party));
     for (int i = 0; i < Party_GetCount(party); ++i) {
         CopyPokemonToPokemon(Party_GetMonByIndex(party, i), pokemon);
@@ -345,7 +345,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
             }
             cnt = Party_GetCount(party);
         }
-        Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD);
+        Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELDMAP);
         Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], cnt);
         for (i = 0; i < cnt; ++i) {
             CopyPokemonToPokemon(Party_GetMonByIndex(party, partySlots_cpy[i] - 1), pokemon);

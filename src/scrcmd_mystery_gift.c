@@ -613,7 +613,7 @@ static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmSta
     Photo *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     Bag *bag = Save_Bag_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
-    if (!Bag_HasItem(bag, ITEM_PHOTO_ALBUM, 1, HEAP_ID_FIELD)) {
+    if (!Bag_HasItem(bag, ITEM_PHOTO_ALBUM, 1, HEAP_ID_FIELDMAP)) {
         *pMsgNum = msg_0209_00024;
     } else {
         *pMsgNum = msg_0209_00025;

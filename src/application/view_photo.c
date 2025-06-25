@@ -133,9 +133,9 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
 static const u8 _0225A03C[3] = { 9, 1, 4 };
 
 SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
-    ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
+    ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(ViewPhotoSysTaskData));
     MI_CpuClear8(viewPhoto, sizeof(ViewPhotoSysTaskData));
-    viewPhoto->heapId = HEAP_ID_FIELD;
+    viewPhoto->heapId = HEAP_ID_FIELDMAP;
     viewPhoto->fieldSystem = fieldSystem;
     viewPhoto->bgConfig = fieldSystem->bgConfig;
     viewPhoto->saveData = fieldSystem->saveData;

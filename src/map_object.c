@@ -143,8 +143,8 @@ MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCoun
 }
 
 void MapObjectManager_Delete(MapObjectManager *manager) {
-    FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectManager_GetObjects(manager));
-    FreeToHeapExplicit(HEAP_ID_FIELD, manager);
+    FreeToHeapExplicit(HEAP_ID_FIELDMAP, MapObjectManager_GetObjects(manager));
+    FreeToHeapExplicit(HEAP_ID_FIELDMAP, manager);
 }
 
 void sub_0205E104(MapObjectManager *manager, u32 unused, u32 mapId, u32 objectCount, ObjectEvent *objectEvents) {
@@ -173,11 +173,11 @@ void sub_0205E104(MapObjectManager *manager, u32 unused, u32 mapId, u32 objectCo
 
 static MapObjectManager *MapObjectManager_New(u32 objectCount) {
     LocalMapObject *objects;
-    MapObjectManager *manager = AllocFromHeap(HEAP_ID_FIELD, sizeof(MapObjectManager));
+    MapObjectManager *manager = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(MapObjectManager));
     GF_ASSERT(manager != NULL);
     memset(manager, 0, sizeof(MapObjectManager));
 
-    objects = AllocFromHeap(HEAP_ID_FIELD, objectCount * sizeof(LocalMapObject));
+    objects = AllocFromHeap(HEAP_ID_FIELDMAP, objectCount * sizeof(LocalMapObject));
     GF_ASSERT(objects != NULL);
     memset(objects, 0, objectCount * sizeof(LocalMapObject));
 
@@ -537,11 +537,11 @@ static void MapObject_ConvertXZToPositionVec(LocalMapObject *object) {
 void MapObject_CreateFromMultipleObjectEvents(MapObjectManager *manager, u32 mapNo, u32 objectEventCount, ObjectEvent *objectEvents) {
     GF_ASSERT(objectEventCount != 0);
 
-    ObjectEvent *objectEventsCopy = AllocFromHeapAtEnd(HEAP_ID_FIELD, objectEventCount * sizeof(ObjectEvent));
+    ObjectEvent *objectEventsCopy = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, objectEventCount * sizeof(ObjectEvent));
     GF_ASSERT(objectEventsCopy != NULL);
     memcpy(objectEventsCopy, objectEvents, objectEventCount * sizeof(ObjectEvent));
 
-    MapObjectInitArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(MapObjectInitArgs));
+    MapObjectInitArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(MapObjectInitArgs));
     GF_ASSERT(args != NULL);
     args->mapNo = mapNo;
     args->objectEventCount = objectEventCount;
@@ -563,8 +563,8 @@ static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args) {
         args->index++;
     } while (args->index < args->objectEventCount);
 
-    FreeToHeapExplicit(HEAP_ID_FIELD, args->objectEvents);
-    FreeToHeapExplicit(HEAP_ID_FIELD, args);
+    FreeToHeapExplicit(HEAP_ID_FIELDMAP, args->objectEvents);
+    FreeToHeapExplicit(HEAP_ID_FIELDMAP, args);
 }
 
 static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager *manager) {

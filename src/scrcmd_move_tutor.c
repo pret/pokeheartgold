@@ -202,7 +202,7 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     }
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
-    MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD, GetMoveTutorLearnsetIndex(species, form));
+    MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELDMAP, GetMoveTutorLearnsetIndex(species, form));
     u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
         // this is equivalent to treating `learnset` as a bitfield of 64 bits
@@ -326,7 +326,7 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
     *result = FALSE;
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
+    u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, 0x2c);
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     s32 size = Species_LoadLearnsetTable(species, form, unk);

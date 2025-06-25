@@ -139,7 +139,7 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
     int val;
     RTCDate date;
 
-    HallOfFame *hof = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &val);
+    HallOfFame *hof = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELDMAP, &val);
     if (val != 1 || !gameCleared) {
         Save_HOF_Init(hof);
     }
@@ -300,7 +300,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
 }
 
 static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env) {
-    env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
+    env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELDMAP);
     env->windowText = NULL;
     env->waitingIcon = NULL;
     InitWindow(&env->window);

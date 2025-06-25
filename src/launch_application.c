@@ -192,7 +192,7 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
 }
 
 BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
-    BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD);
+    BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELDMAP);
     sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->menuInputState);
     sub_020778E8(bagView, fieldSystem->unk70);
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
@@ -252,7 +252,7 @@ static PartyMenuArgs *PartyMenu_CreateArgs(HeapID heapId, FieldSystem *fieldSyst
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheckData *fieldMoveCheckData, u8 partySlot) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_0);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELDMAP, fieldSystem, 0, PARTY_MENU_CONTEXT_0);
     args->fieldMoveCheckData = fieldMoveCheckData;
     args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
@@ -260,13 +260,13 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheck
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk2(HeapID heapId, FieldSystem *fieldSystem) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_3);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELDMAP, fieldSystem, 0, PARTY_MENU_CONTEXT_3);
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_InGameTrade(HeapID heapId, FieldSystem *fieldSystem) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_INGAME_TRADE);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELDMAP, fieldSystem, 0, PARTY_MENU_CONTEXT_INGAME_TRADE);
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
@@ -276,7 +276,7 @@ int PartyMenuArgs_GetSlot(PartyMenuArgs *partyMenuArgs) {
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk4(HeapID heapId, FieldSystem *fieldSystem, u16 partySlot) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_18);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELDMAP, fieldSystem, 0, PARTY_MENU_CONTEXT_18);
     args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
@@ -351,7 +351,7 @@ PartyMenuArgs *TaskManager_LaunchPartyMenu_UnionRoomBattleSelect(TaskManager *ta
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk5(FieldSystem *fieldSystem, int partySlot) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD, fieldSystem, 0, PARTY_MENU_CONTEXT_SPIN_TRADE);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELDMAP, fieldSystem, 0, PARTY_MENU_CONTEXT_SPIN_TRADE);
     args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
@@ -510,7 +510,7 @@ static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArg
 }
 
 PokegearArgs *PokegearPhone_LaunchApp(FieldSystem *fieldSystem) {
-    PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
+    PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
     sub_02092D80(fieldSystem, args);
     PokegearPhone_LaunchApp_Impl(fieldSystem, args);
@@ -518,7 +518,7 @@ PokegearArgs *PokegearPhone_LaunchApp(FieldSystem *fieldSystem) {
 }
 
 PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
-    PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
+    PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
     sub_02092D8C(fieldSystem, args);
     args->incomingPhoneCall = kind;
@@ -533,7 +533,7 @@ static void SafariAreaCustomizer_LaunchApp_Impl(FieldSystem *fieldSystem, Safari
 }
 
 SafariAreaCustomizerArgs *SafariAreaCustomizer_LaunchApp(FieldSystem *fieldSystem) {
-    SafariAreaCustomizerArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SafariAreaCustomizerArgs));
+    SafariAreaCustomizerArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(SafariAreaCustomizerArgs));
     MI_CpuFill8(args, 0, sizeof(SafariAreaCustomizerArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -548,7 +548,7 @@ static void SafariDecoration_LaunchApp_Impl(FieldSystem *fieldSystem, SafariDeco
 }
 
 SafariDecorationArgs *SafariDecoration_LaunchApp(FieldSystem *fieldSystem) {
-    SafariDecorationArgs *args = SafariDecoration_CreateArgs(fieldSystem, HEAP_ID_FIELD);
+    SafariDecorationArgs *args = SafariDecoration_CreateArgs(fieldSystem, HEAP_ID_FIELDMAP);
     SafariDecoration_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
@@ -560,7 +560,7 @@ static void PhotoAlbum_LaunchApp_Impl(FieldSystem *fieldSystem, PhotoAlbumArgs *
 }
 
 PhotoAlbumArgs *PhotoAlbum_LaunchApp(FieldSystem *fieldSystem, int unused, int initialCursorPos) {
-    PhotoAlbumArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PhotoAlbumArgs));
+    PhotoAlbumArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(PhotoAlbumArgs));
     MI_CpuFill8(args, 0, sizeof(PhotoAlbumArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -576,7 +576,7 @@ static void AlphPuzzle_LaunchApp_Impl(FieldSystem *fieldSystem, AlphPuzzleArgs *
 }
 
 AlphPuzzleArgs *AlphPuzzle_LaunchApp(FieldSystem *fieldSystem, u8 puzzle) {
-    AlphPuzzleArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AlphPuzzleArgs));
+    AlphPuzzleArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(AlphPuzzleArgs));
     MI_CpuFill8(args, 0, sizeof(AlphPuzzleArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -592,7 +592,7 @@ static void UnownReport_LaunchApp_Impl(FieldSystem *fieldSystem, UnownReportArgs
 }
 
 UnownReportArgs *UnownReport_LaunchApp(FieldSystem *fieldSystem) {
-    UnownReportArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnownReportArgs));
+    UnownReportArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(UnownReportArgs));
     MI_CpuFill8(args, 0, sizeof(UnownReportArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -607,7 +607,7 @@ static void BerryPots_LaunchApp_Impl(FieldSystem *fieldSystem, BerryPotsArgs *ar
 }
 
 BerryPotsArgs *BerryPots_LaunchApp(FieldSystem *fieldSystem) {
-    BerryPotsArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(BerryPotsArgs));
+    BerryPotsArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(BerryPotsArgs));
     MI_CpuFill8(args, 0, sizeof(BerryPotsArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -623,7 +623,7 @@ static void ApricornBox_LaunchApp_Impl(FieldSystem *fieldSystem, ApricornBoxArgs
 }
 
 ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1) {
-    ApricornBoxArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ApricornBoxArgs));
+    ApricornBoxArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(ApricornBoxArgs));
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -638,7 +638,7 @@ ApricornBoxArgs *ApricornBox_LaunchApp(FieldSystem *fieldSystem, int a1) {
 }
 
 ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2) {
-    ApricornBoxArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ApricornBoxArgs));
+    ApricornBoxArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(ApricornBoxArgs));
     MI_CpuFill8(args, 0, sizeof(ApricornBoxArgs));
     args->saveData = FieldSystem_GetSaveData(fieldSystem);
     args->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -656,7 +656,7 @@ static void BugContestSwapMon_LaunchApp_Impl(FieldSystem *fieldSystem, BugContes
 }
 
 BugContestSwapMonArgs *BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, Pokemon *newlyCaughtMon, Pokemon *currentMon, BOOL noPokemonCaught) {
-    BugContestSwapMonArgs *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(BugContestSwapMonArgs));
+    BugContestSwapMonArgs *args = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(BugContestSwapMonArgs));
     MI_CpuFill8(args, 0, sizeof(BugContestSwapMonArgs));
     args->newlyCaughtMon = newlyCaughtMon;
     args->currentMon = currentMon;
@@ -672,7 +672,7 @@ static void OptionsMenu_LaunchApp_Impl(FieldSystem *fieldSystem, OptionsMenuArgs
 }
 
 OptionsMenuArgs *OptionsMenu_LaunchApp(FieldSystem *fieldSystem) {
-    OptionsMenuArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(OptionsMenuArgs));
+    OptionsMenuArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(OptionsMenuArgs));
     args->options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
     args->menuInputStatePtr = &fieldSystem->menuInputState;
     OptionsMenu_LaunchApp_Impl(fieldSystem, args);
@@ -689,7 +689,7 @@ static void PokeathlonCourseRecord_LaunchApp_Impl(FieldSystem *fieldSystem, Poke
 }
 
 PokeathlonCourseRecordArgs *PokeathlonCourseRecord_LaunchApp(FieldSystem *fieldSystem) {
-    PokeathlonCourseRecordArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokeathlonCourseRecordArgs));
+    PokeathlonCourseRecordArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(PokeathlonCourseRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     POKEATHLON_SAV *pokeathlon = Save_Pokeathlon_Get(saveData);
     args->pokeathlon = sub_02031974(pokeathlon);
@@ -704,7 +704,7 @@ static void PokeathlonMedals_LaunchApp_Impl(FieldSystem *fieldSystem, Pokeathlon
 }
 
 PokeathlonMedalsArgs *PokeathlonMedals_LaunchApp(FieldSystem *fieldSystem) {
-    PokeathlonMedalsArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokeathlonMedalsArgs));
+    PokeathlonMedalsArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(PokeathlonMedalsArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
     Pokedex *pokedex = Save_Pokedex_Get(saveData);
@@ -722,7 +722,7 @@ static void PokeathlonEventRecord_LaunchApp_Impl(FieldSystem *fieldSystem, Pokea
 }
 
 PokeathlonEventRecordArgs *PokeathlonEventRecord_LaunchApp(FieldSystem *fieldSystem) {
-    PokeathlonEventRecordArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokeathlonEventRecordArgs));
+    PokeathlonEventRecordArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(PokeathlonEventRecordArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     POKEATHLON_SAV *pokeathlonSave = Save_Pokeathlon_Get(saveData);
     args->unk0 = sub_0203197C(pokeathlonSave);
@@ -756,7 +756,7 @@ static void sub_0203EFD4(FieldSystem *fieldSystem, UseMailArgs *args) {
 }
 
 UseMailArgs *sub_0203EFEC(FieldSystem *fieldSystem, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId) {
-    UseMailArgs *args = sub_02090E68(FieldSystem_GetSaveData(fieldSystem), a1, partyIdx, mailType, HEAP_ID_FIELD);
+    UseMailArgs *args = sub_02090E68(FieldSystem_GetSaveData(fieldSystem), a1, partyIdx, mailType, HEAP_ID_FIELDMAP);
     sub_0203EFD4(fieldSystem, args);
     return args;
 }
@@ -1002,7 +1002,7 @@ void sub_0203F4C8(FieldSystem *fieldSystem) {
 }
 
 UnkStruct_0203F4F8 *sub_0203F4F8(FieldSystem *fieldSystem) {
-    UnkStruct_0203F4F8 *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203F4F8));
+    UnkStruct_0203F4F8 *args = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(UnkStruct_0203F4F8));
     args->saveData = fieldSystem->saveData;
     args->unk4 = fieldSystem->unk84;
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
@@ -1106,12 +1106,12 @@ static void SetName(TaskManager *taskman) {
 
 void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int species, int maxLen, int partyIdx, const u16 *defaultStr, u16 *retVar) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
-    NamingScreenData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(NamingScreenData));
+    NamingScreenData *data = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(NamingScreenData));
     data->state = 0;
     data->partyIdx = partyIdx;
     data->retVar = retVar;
-    data->args = NamingScreen_CreateArgs(HEAP_ID_FIELD, type, species, maxLen, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), &fieldSystem->menuInputState);
-    data->unk10 = String_New(12, HEAP_ID_FIELD);
+    data->args = NamingScreen_CreateArgs(HEAP_ID_FIELDMAP, type, species, maxLen, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), &fieldSystem->menuInputState);
+    data->unk10 = String_New(12, HEAP_ID_FIELDMAP);
 
     switch (type) {
     case NAME_SCREEN_POKEMON:
@@ -1172,7 +1172,7 @@ void sub_0203F844(FieldSystem *fieldSystem, u16 a1) {
     static const OverlayManagerTemplate _020FA264 = { ov70_02238430, ov70_022385C0, ov70_022386F4, FS_OVERLAY_ID(OVY_70) };
     OverlayManagerTemplate template = _020FA264;
 
-    UnkStruct_0203F844 *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0203F844));
+    UnkStruct_0203F844 *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(UnkStruct_0203F844));
     args->unk0 = sub_0202DB34(fieldSystem->saveData);
     args->sysInfo = Save_SysInfo_Get(fieldSystem->saveData);
     args->party = (Party *)SaveArray_Get(fieldSystem->saveData, SAVE_PARTY);
@@ -1196,7 +1196,7 @@ NintendoWifiConnectArgs *NintendoWifiConnection_LaunchApp(FieldSystem *fieldSyst
     static const OverlayManagerTemplate sOverlayTemplate_NintendoWifiConnect = { NintendoWfc_Init, NintendoWfc_Main, NintendoWfc_Exit, FS_OVERLAY_ID(OVY_72) };
     OverlayManagerTemplate template = sOverlayTemplate_NintendoWifiConnect;
 
-    NintendoWifiConnectArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(NintendoWifiConnectArgs));
+    NintendoWifiConnectArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(NintendoWifiConnectArgs));
     args->frontierData = Save_FrontierData_Get(fieldSystem->saveData);
     args->unk4 = sub_0202D928(fieldSystem->saveData);
     args->sysInfo = Save_SysInfo_Get(fieldSystem->saveData);
@@ -1230,7 +1230,7 @@ void RegisterHallOfFame_LaunchApp(FieldSystem *fieldSystem, RegisterHallOfFameAr
 HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem) {
     static const OverlayManagerTemplate sOverlayTemplate_HallOfFameShowcase = { HallOfFameShowcase_Init, HallOfFameShowcase_Main, HallOfFameShowcase_Exit, FS_OVERLAY_ID(OVY_64) };
     int loadResult;
-    HallOfFame *hallOfFame = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &loadResult);
+    HallOfFame *hallOfFame = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELDMAP, &loadResult);
     if (loadResult == 2) {
         FreeToHeap(hallOfFame);
         return NULL;
@@ -1265,7 +1265,7 @@ void HatchEggInParty(FieldSystem *fieldSystem) {
 
 VoltorbFlipArgs *VoltorbFlip_LaunchApp(FieldSystem *fieldSystem, u32 luck) {
     static const OverlayManagerTemplate sOverlayTemplate_VoltorbFlip = { VoltorbFlip_Init, VoltorbFlip_Main, VoltorbFlip_Exit, FS_OVERLAY_ID(voltorb_flip) };
-    VoltorbFlipArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(VoltorbFlipArgs));
+    VoltorbFlipArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(VoltorbFlipArgs));
     MI_CpuFill8(args, 0, sizeof(VoltorbFlipArgs));
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
     args->coins = Save_PlayerData_GetCoinsAddr(saveData);
@@ -1335,7 +1335,7 @@ ScratchOffCardsArgs *ScratchOffCards_LaunchApp(FieldSystem *fieldSystem, HeapID 
 }
 
 PokemonSummaryArgs *PokemonSummary_LaunchApp(HeapID heapId, FieldSystem *fieldSystem, u16 partySlot, u16 moveToLearn) {
-    PokemonSummaryArgs *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+    PokemonSummaryArgs *args = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(PokemonSummaryArgs));
     args->party = SaveArray_Party_Get(fieldSystem->saveData);
     args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     args->unk11 = 1;
@@ -1359,7 +1359,7 @@ void sub_0203FC14(FieldSystem *fieldSystem, u16 a1, u16 a2) {
     static const OverlayManagerTemplate _020FA1C4 = { sub_020192D0, sub_0201935C, sub_02019490, FS_OVERLAY_ID(OVY_39) };
     OverlayManagerTemplate template = _020FA1C4;
 
-    UnkStruct_0203FC14 *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0203FC14));
+    UnkStruct_0203FC14 *args = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(UnkStruct_0203FC14));
     MI_CpuFill8(args, 0, sizeof(UnkStruct_0203FC14));
     args->fieldSystem = fieldSystem;
     args->saveData = fieldSystem->saveData;

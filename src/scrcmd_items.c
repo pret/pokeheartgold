@@ -49,7 +49,7 @@ BOOL ScrCmd_HasItem(ScriptContext *ctx) {
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
 
     Bag *bag = Save_Bag_Get(sav_ptr->saveData);
-    *ret_ptr = Bag_HasItem(bag, item_id, quantity, HEAP_ID_FIELD);
+    *ret_ptr = Bag_HasItem(bag, item_id, quantity, HEAP_ID_FIELDMAP);
 
     return FALSE;
 }
@@ -60,7 +60,7 @@ BOOL ScrCmd_GetItemQuantity(ScriptContext *ctx) {
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
 
     Bag *bag = Save_Bag_Get(sav_ptr->saveData);
-    *ret_ptr = Bag_GetQuantity(bag, item_id, HEAP_ID_FIELD);
+    *ret_ptr = Bag_GetQuantity(bag, item_id, HEAP_ID_FIELDMAP);
 
     return FALSE;
 }
@@ -78,7 +78,7 @@ BOOL ScrCmd_GetItemPocket(ScriptContext *ctx) {
     u16 item_id = ScriptGetVar(ctx);
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
 
-    *ret_ptr = GetItemAttr(item_id, ITEMATTR_FIELD_POCKET, HEAP_ID_FIELD);
+    *ret_ptr = GetItemAttr(item_id, ITEMATTR_FIELD_POCKET, HEAP_ID_FIELDMAP);
 
     return FALSE;
 }

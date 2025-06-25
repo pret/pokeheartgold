@@ -1924,7 +1924,7 @@ BOOL ScrCmd_155(ScriptContext *ctx) {
     struct FashionAppData **fashionAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u16 r7 = ScriptReadHalfword(ctx);
     u16 *r6 = ScriptGetVarPointer(ctx);
-    *fashionAppData = sub_02042A60(HEAP_ID_FIELD, ctx->fieldSystem, 0, r7);
+    *fashionAppData = sub_02042A60(HEAP_ID_FIELDMAP, ctx->fieldSystem, 0, r7);
     if (*fashionAppData == NULL) {
         *r6 = 1;
         return TRUE;
@@ -1976,7 +1976,7 @@ BOOL ScrCmd_408(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
     UnkOv67Args **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkOv67Args));
+    *p_work = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(struct UnkOv67Args));
     InitUnkStructScrCmd408(*p_work, r7, sp0, ctx);
     sub_0203F0A8(ctx->fieldSystem, *p_work);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -2402,7 +2402,7 @@ BOOL ScrCmd_TrainerMessage(ScriptContext *ctx) {
     u16 trainerno = ScriptGetVar(ctx);
     u16 msgno = ScriptGetVar(ctx);
 
-    GetTrainerMessageByIdPair(trainerno, msgno, *p_strbuf1, HEAP_ID_FIELD);
+    GetTrainerMessageByIdPair(trainerno, msgno, *p_strbuf1, HEAP_ID_FIELDMAP);
     FillWindowPixelBuffer(FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW), 15);
     *p_printerno = sub_0205B5B4(
         FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW),
@@ -3224,7 +3224,7 @@ BOOL ScrCmd_MakeObjectVisible(ScriptContext *ctx) {
 
 BOOL ScrCmd_376(ScriptContext *ctx) {                                                                // todo: mail screen
     UnkStruct_0203F074 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); // MailAppData
-    *p_work = sub_0203F074(ctx->fieldSystem, HEAP_ID_FIELD);
+    *p_work = sub_0203F074(ctx->fieldSystem, HEAP_ID_FIELDMAP);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
     return TRUE;
 }
@@ -3445,7 +3445,7 @@ BOOL ScrCmd_LoadNPCTrade(ScriptContext *ctx) {
     u8 tradeNo = ScriptReadByte(ctx);
 
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
-    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELD, (NpcTradeNum)tradeNo);
+    *p_tradeWork = NPCTradeApp_Init(HEAP_ID_FIELDMAP, (NpcTradeNum)tradeNo);
     return FALSE;
 }
 
@@ -3473,7 +3473,7 @@ BOOL ScrCmd_GetNpcTradeUnusedFlag(ScriptContext *ctx) {
 BOOL ScrCmd_NPCTradeExec(ScriptContext *ctx) {
     NPCTradeAppData **p_tradeWork = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 arg = ScriptGetVar(ctx);
-    CallTask_NPCTrade(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELD);
+    CallTask_NPCTrade(ctx->taskman, *p_tradeWork, arg, HEAP_ID_FIELDMAP);
     return TRUE;
 }
 
@@ -4148,7 +4148,7 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 BOOL ScrCmd_627(ScriptContext *ctx) {
     FrontierLaunchParam **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    FrontierLaunchParam *param = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FrontierLaunchParam));
+    FrontierLaunchParam *param = AllocFromHeapAtEnd(HEAP_ID_FIELDMAP, sizeof(FrontierLaunchParam));
     MI_CpuClear8(param, sizeof(FrontierLaunchParam));
     *pParam = param;
     if (r6 == 5 || r6 == 6) {
@@ -4327,7 +4327,7 @@ BOOL ScrCmd_682(ScriptContext *ctx) {
     static u32 sHeap32Size;
     static u32 sHeap11Size;
     u16 action = ScriptGetVar(ctx);
-    u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD);
+    u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELDMAP);
     u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_4);
     u32 heap32Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD_TASK);
 

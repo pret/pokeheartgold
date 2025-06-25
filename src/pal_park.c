@@ -238,7 +238,7 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
 static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD_TASK);
     struct MigratedPokemonSav *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
+    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELDMAP, PalPark_CountMonsNotCaught(fieldSystem));
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
     GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);

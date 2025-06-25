@@ -232,9 +232,9 @@ void sub_0204A810(UnkStruct_Fsys_A0 **a0) {
 }
 
 UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32 a2) {
-    UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
+    UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(UnkStruct_Fsys_A0));
     MI_CpuClear8(unkStruct, sizeof(UnkStruct_Fsys_A0));
-    unkStruct->heapId = HEAP_ID_FIELD;
+    unkStruct->heapId = HEAP_ID_FIELDMAP;
     unkStruct->unk70 = sub_0202D908(saveData);
     unkStruct->unk74 = Save_FrontierData_Get(saveData);
     unkStruct->unk00 = 0x12345678;
