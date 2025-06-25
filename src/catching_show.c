@@ -100,7 +100,7 @@ void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setu
 }
 
 int CatchingShow_GetParkBallCount(FieldSystem *fieldSystem) {
-    return 6 - NumMonsCaptured(&sCatchingShow);
+    return CATCHING_SHOW_MONS - NumMonsCaptured(&sCatchingShow);
 }
 
 int CatchingShow_CalcCatchingPoints(FieldSystem *fieldSystem) {
@@ -128,7 +128,7 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
     u8 narc_data[6];
     u16 species;
 
-    for (int i = 0; i < PARTY_SIZE; ++i) {
+    for (int i = 0; i < CATCHING_SHOW_MONS; i++) {
         catchingShow->caughtMonsOrder[i] = 0;
         TransferDataToMon(transferData, i, mon);
 
@@ -155,7 +155,7 @@ static int NumMonsCaptured(CatchingShow *catchingShow) {
     int i;
     int numMonsCaptured = 0;
 
-    for (i = 0; i < PARTY_SIZE; i++) {
+    for (i = 0; i < CATCHING_SHOW_MONS; i++) {
         if (catchingShow->caughtMonsOrder[i] != 0) {
             numMonsCaptured++;
         }
@@ -204,7 +204,7 @@ static BOOL TryStartEncounter(FieldSystem *fieldSystem, CatchingShow *catchingSh
     // chance weight based on its species.
     // Compute the total weight for the current
     // area. If it's zero, bail.
-    for (i = 0; i < PARTY_SIZE; ++i) {
+    for (i = 0; i < CATCHING_SHOW_MONS; i++) {
         if (catchingShow->caughtMonsOrder[i] == 0 && catchingShow->pokemon[i].area == area) {
             totalRarity += catchingShow->pokemon[i].rarity;
         }
@@ -227,7 +227,7 @@ static BOOL TryStartEncounter(FieldSystem *fieldSystem, CatchingShow *catchingSh
     // Using the random number generated,
     // select the bucket to serve as the
     // encounter.
-    for (i = 0; i < PARTY_SIZE; ++i) {
+    for (i = 0; i < CATCHING_SHOW_MONS; i++) {
         if (catchingShow->caughtMonsOrder[i] == 0 && catchingShow->pokemon[i].area == area) {
             if (encounterChance < catchingShow->pokemon[i].rarity) {
                 catchingShow->currentEncounterIndex = i;
@@ -270,7 +270,7 @@ static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, CatchingShow *catch
 static int CalcCatchingPoints(CatchingShow *catchingShow) {
     int i, totalCatchingPoints = 0;
 
-    for (i = 0; i < PARTY_SIZE; i++) {
+    for (i = 0; i < CATCHING_SHOW_MONS; i++) {
         totalCatchingPoints += catchingShow->pokemon[i].catchingPoints;
     }
 
@@ -286,8 +286,8 @@ static u32 CalculateTypePoints(CatchingShow *catchingShow) {
     // Phase 1: +200 points each time you don't
     // catch two Pokemon sharing a type in a row.
     // Maximum 1000 points.
-    for (i = 1; i < PARTY_SIZE + 1; i++) {
-        for (j = 0; j < PARTY_SIZE; j++) {
+    for (i = 1; i < CATCHING_SHOW_MONS + 1; i++) {
+        for (j = 0; j < CATCHING_SHOW_MONS; j++) {
             if (catchingShow->caughtMonsOrder[j] == i) {
                 currMonType1 = catchingShow->pokemon[j].type1;
                 currMonType2 = catchingShow->pokemon[j].type2;
