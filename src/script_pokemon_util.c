@@ -56,7 +56,7 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
 
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
-    mon = AllocMonZeroed(HEAP_ID_FIELD_TASK);
+    mon = AllocMonZeroed(HEAP_ID_FIELD3);
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);

@@ -29,17 +29,17 @@ void FieldSystem_Init(OverlayManager *man, FieldSystem *fieldSystem) {
     fieldSystem->location = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
     fieldSystem->mapMatrix = MapMatrix_New();
     u32 key2 = 929 * ov123_0225F520(ov124_02260D58); // 929 is prime
-    Field_AllocateMapEvents(fieldSystem, HEAP_ID_FIELDMAP);
-    fieldSystem->bagCursor = BagCursor_New(HEAP_ID_FIELDMAP);
+    Field_AllocateMapEvents(fieldSystem, HEAP_ID_FIELD2);
+    fieldSystem->bagCursor = BagCursor_New(HEAP_ID_FIELD2);
     FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 
     // all combinations of the three prime multipliers above are coprime with 2441 and 4073
     if ((key + key2) % 2441) {
         ov124_02260D1C(fieldSystem);
     }
-    fieldSystem->unkA8 = sub_02092BB8(HEAP_ID_FIELDMAP);
-    fieldSystem->unk108 = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELDMAP);
-    fieldSystem->phoneRingManager = GearPhoneRingManager_New(HEAP_ID_FIELDMAP, fieldSystem);
+    fieldSystem->unkA8 = sub_02092BB8(HEAP_ID_FIELD2);
+    fieldSystem->unk108 = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD2);
+    fieldSystem->phoneRingManager = GearPhoneRingManager_New(HEAP_ID_FIELD2, fieldSystem);
     fieldSystem->judgeStatPosition = 0;
     if ((key + key2) % 4073) {
         ov124_02260D1C(fieldSystem);

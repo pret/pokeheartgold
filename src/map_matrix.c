@@ -28,7 +28,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
         map_matrix_data->name[i] = 0;
     }
 
-    void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, matrix_id, HEAP_ID_FIELDMAP);
+    void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, matrix_id, HEAP_ID_FIELD2);
     u8 *cursor = (u8 *)buffer;
 
     map_matrix_data->width = *(cursor++);
@@ -60,7 +60,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
 }
 
 MAPMATRIX *MapMatrix_New(void) {
-    MAPMATRIX *map_matrix = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(MAPMATRIX));
+    MAPMATRIX *map_matrix = AllocFromHeap(HEAP_ID_FIELD2, sizeof(MAPMATRIX));
     map_matrix->width = 0;
     map_matrix->height = 0;
     map_matrix->matrix_id = 0;

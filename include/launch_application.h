@@ -89,7 +89,7 @@ static inline void InitUnkStructScrCmd408(UnkOv67Args *data, u16 a1, u16 a2, Scr
 }
 
 static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx) {
-    PCBoxArgs *ret = AllocFromHeap(HEAP_ID_FIELDMAP, sizeof(PCBoxArgs));
+    PCBoxArgs *ret = AllocFromHeap(HEAP_ID_FIELD2, sizeof(PCBoxArgs));
     ret->saveData = ctx->fieldSystem->saveData;
     ret->unk8 = ScriptReadByte(ctx);
     ret->menuInputStatePtr = &ctx->fieldSystem->menuInputState;
