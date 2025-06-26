@@ -2,6 +2,7 @@
 
 #include "global.h"
 
+#include "battle/battle_input.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_02266024.h"
 
@@ -26,27 +27,27 @@ void ov12_0226BEF0(SysTask *task) {
 
 static void ov12_0226BF04(SysTask *task, void *_data) {
     UnkBattleStruct_0226BEC4 *data = _data;
-    u32 *unkPtr = ov12_0223A900(data->battleSystem);
+    BattleInput *battleInput = BattleSystem_GetBattleInput(data->battleSystem);
 
     switch (data->state) {
     case 0:
-        GF_ASSERT(unkPtr != NULL);
+        GF_ASSERT(battleInput != NULL);
         {
             NARC *bgHandleNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
             NARC *objHandleNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
-            ov12_02266508(bgHandleNarc, objHandleNarc, unkPtr, 18, FALSE, NULL);
+            ov12_02266508(bgHandleNarc, objHandleNarc, battleInput, 18, FALSE, NULL);
             NARC_Delete(bgHandleNarc);
             NARC_Delete(objHandleNarc);
         }
         data->state++;
         break;
     case 1:
-        if (ov12_02266C64(unkPtr) == TRUE) {
+        if (ov12_02266C64(battleInput) == TRUE) {
             data->state++;
         }
         break;
     case 2:
-        if (ov12_0223C080(data->battleSystem) == TRUE && ov12_02266B78(unkPtr) == TRUE) {
+        if (ov12_0223C080(data->battleSystem) == TRUE && ov12_02266B78(battleInput) == TRUE) {
             PlaySE(1501);
             data->state++;
         }

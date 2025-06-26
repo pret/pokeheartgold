@@ -5934,7 +5934,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
     u16 item;
     int itemEffect;
 
-    msgLoader = BattleSystem_GetMessageData(data->battleSystem);
+    msgLoader = BattleSystem_GetMessageLoader(data->battleSystem);
     battleType = BattleSystem_GetBattleType(data->battleSystem);
     side = (data->ctx->battlerIdFainted >> 1) & 1; // Get side of fainted mon (left or right)
     expBattler = 0;

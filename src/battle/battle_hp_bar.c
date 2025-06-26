@@ -603,8 +603,8 @@ static void ov12_02264B4C(BattleHpBar *hpBar) {
 
 static void ov12_02264B60(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
-    SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->battleSystem);
-    SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->battleSystem);
+    SpriteSystem *renderer = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
+    SpriteManager *gfxHandler = BattleSystem_GetSpriteManager(hpBar->battleSystem);
     SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteManager_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
     SpriteManager_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -613,8 +613,8 @@ static void ov12_02264B60(BattleHpBar *hpBar) {
 static void ov12_02264B94(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
     if (tmplate != NULL) {
-        SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(hpBar->battleSystem);
-        SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(hpBar->battleSystem);
+        SpriteSystem *renderer = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
+        SpriteManager *gfxHandler = BattleSystem_GetSpriteManager(hpBar->battleSystem);
         SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
         SpriteManager_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
         SpriteManager_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
@@ -631,8 +631,8 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 
     narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    renderer = BattleSystem_GetSpriteRenderer(hpBar->battleSystem);
-    gfxHandler = BattleSystem_GetGfxHandler(hpBar->battleSystem);
+    renderer = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
+    gfxHandler = BattleSystem_GetSpriteManager(hpBar->battleSystem);
     plttData = BattleSystem_GetPaletteData(hpBar->battleSystem);
 
     tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
@@ -657,10 +657,10 @@ asm void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
 	bl NARC_New
 	add r6, r0, #0
 	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r7, r0, #0
 	ldr r0, [r5, #0xc]
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
 	bl BattleSystem_GetPaletteData
@@ -1167,7 +1167,7 @@ static void ov12_0226516C(BattleHpBar *hpBar) {
     MessageFormat *msgFormat;
 
     bgConfig = BattleSystem_GetBgConfig(hpBar->battleSystem);
-    msgData = BattleSystem_GetMessageData(hpBar->battleSystem);
+    msgData = BattleSystem_GetMessageLoader(hpBar->battleSystem);
     msgFormat = BattleSystem_GetMessageFormat(hpBar->battleSystem);
     string = String_New(22, HEAP_ID_BATTLE);
     string2 = NewString_ReadMsgData(msgData, msg_0197_00964);
@@ -1302,7 +1302,7 @@ static void BattleHpBar_PrintSafariOrParkBallsString(BattleHpBar *hpBar, u32 fla
     String *string;
 
     bgConfig = BattleSystem_GetBgConfig(hpBar->battleSystem);
-    msgData = BattleSystem_GetMessageData(hpBar->battleSystem);
+    msgData = BattleSystem_GetMessageLoader(hpBar->battleSystem);
 
     if (flag & 0x400) {
         string = NewString_ReadMsgData(msgData, msg_0197_00950); // SAFARI BALLS
@@ -1343,7 +1343,7 @@ static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u
     String *string2;
 
     bgConfig = BattleSystem_GetBgConfig(hpBar->battleSystem);
-    msgData = BattleSystem_GetMessageData(hpBar->battleSystem);
+    msgData = BattleSystem_GetMessageLoader(hpBar->battleSystem);
     msgFormat = BattleSystem_GetMessageFormat(hpBar->battleSystem);
 
     string = String_New(30, HEAP_ID_BATTLE);
@@ -1687,7 +1687,7 @@ SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
 
 static void Task_ExpBarFullFlash(SysTask *task, void *data) {
     BattleHpBarExpBarFullFlashEffectTaskData *taskData = data;
-    SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(taskData->hpBar->battleSystem);
+    SpriteManager *gfxHandler = BattleSystem_GetSpriteManager(taskData->hpBar->battleSystem);
     int plttNum;
     PaletteData *plttData = BattleSystem_GetPaletteData(taskData->hpBar->battleSystem);
 

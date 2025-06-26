@@ -11,6 +11,7 @@
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_hp_bar.h"
+#include "battle/battle_input.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_02266024.h"
 #include "battle/overlay_12_0226BEC4.h"
@@ -107,11 +108,11 @@ u32 *ov12_0223A8DC(BattleSystem *battleSystem) {
     return battleSystem->unk8C;
 }
 
-SpriteSystem *BattleSystem_GetSpriteRenderer(BattleSystem *battleSystem) {
+SpriteSystem *BattleSystem_GetSpriteSystem(BattleSystem *battleSystem) {
     return battleSystem->spriteRenderer;
 }
 
-SpriteManager *BattleSystem_GetGfxHandler(BattleSystem *battleSystem) {
+SpriteManager *BattleSystem_GetSpriteManager(BattleSystem *battleSystem) {
     return battleSystem->gfxHandler;
 }
 
@@ -119,8 +120,8 @@ UnkBattleSystemSub17C *ov12_0223A8F4(BattleSystem *battleSystem, int index) {
     return &battleSystem->unk17C[index];
 }
 
-u32 *ov12_0223A900(BattleSystem *battleSystem) {
-    return battleSystem->unk19C;
+BattleInput *BattleSystem_GetBattleInput(BattleSystem *battleSystem) {
+    return battleSystem->battleInput;
 }
 
 u32 *ov12_0223A908(BattleSystem *battleSystem, int index) {
@@ -139,7 +140,7 @@ BattleNumberPrinter *BattleSystem_GetLevelNumPrinter(BattleSystem *battleSystem)
     return battleSystem->levelNumPrinter;
 }
 
-MsgData *BattleSystem_GetMessageData(BattleSystem *battleSystem) {
+MsgData *BattleSystem_GetMessageLoader(BattleSystem *battleSystem) {
     return battleSystem->msgData;
 }
 
@@ -289,7 +290,7 @@ Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem) {
     return battleSystem->terrain;
 }
 
-int ov12_0223AB54(BattleSystem *battleSystem) {
+int BattleSystem_GetBgId(BattleSystem *battleSystem) {
     return battleSystem->unk2404;
 }
 
@@ -1213,7 +1214,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
         return;
     }
 
-    ov12_0226AA8C(battleSystem->unk19C, flag);
+    ov12_0226AA8C(battleSystem->battleInput, flag);
     BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
@@ -1244,7 +1245,7 @@ u8 BattleSystem_GetChatotVoiceParam(BattleSystem *battleSystem, int battlerId) {
     }
 }
 
-u32 ov12_0223C134(BattleSystem *battleSystem) {
+Pokemon *ov12_0223C134(BattleSystem *battleSystem) {
     return battleSystem->unk2488;
 }
 

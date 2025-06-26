@@ -123,10 +123,10 @@
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8D4
-.public BattleSystem_GetSpriteRenderer
-.public BattleSystem_GetGfxHandler
+.public BattleSystem_GetSpriteSystem
+.public BattleSystem_GetSpriteManager
 .public ov12_0223A8F4
-.public BattleSystem_GetMessageData
+.public BattleSystem_GetMessageLoader
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetPokedex
 .public BattleSystem_GetMessageFormat

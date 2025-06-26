@@ -169,7 +169,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
 }
 
 void ov12_02237B0C(BattleSystem *battleSystem) {
-    ov12_0226631C(battleSystem->unk19C);
+    BattleInput_Free(battleSystem->battleInput);
     ov12_022660A8(battleSystem->bgConfig);
     battleSystem->unk240E_F = 1;
     FontID_Release(4);
@@ -185,7 +185,7 @@ void ov12_02237B0C(BattleSystem *battleSystem) {
 
 void ov12_02237B6C(BattleSystem *battleSystem) {
     Main_SetVBlankIntrCB(NULL, NULL);
-    ov12_0226631C(battleSystem->unk19C);
+    BattleInput_Free(battleSystem->battleInput);
     RemoveWindow(battleSystem->window);
     ov12_02238A30(battleSystem->bgConfig);
     ov12_02238A64(battleSystem);
@@ -213,7 +213,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
     NARC *unkNarcB = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    battleSystem->unk19C = ov12_022660D0(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
+    battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
 
     FontID_Alloc(4, HEAP_ID_BATTLE);
 
@@ -221,9 +221,9 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
 
     ov12_0226604C(battleSystem->bgConfig);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    ov12_02266390(battleSystem->unk19C);
-    ov12_02266508(unkNarcA, unkNarcB, battleSystem->unk19C, 0, TRUE, NULL);
-    ov12_02266644(unkNarcB, battleSystem->unk19C);
+    ov12_02266390(battleSystem->battleInput);
+    ov12_02266508(unkNarcA, unkNarcB, battleSystem->battleInput, 0, TRUE, NULL);
+    ov12_02266644(unkNarcB, battleSystem->battleInput);
 
     NARC_Delete(unkNarcA);
     NARC_Delete(unkNarcB);

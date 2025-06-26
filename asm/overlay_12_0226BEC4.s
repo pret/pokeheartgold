@@ -43,7 +43,7 @@ ov12_0226BF04: ; 0x0226BF04
 	sub sp, #8
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetBattleInput
 	mov r1, #4
 	ldrsh r1, [r4, r1]
 	add r5, r0, #0

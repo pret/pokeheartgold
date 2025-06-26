@@ -361,7 +361,7 @@ _02237FD8:
 	str r0, [sp]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ov12_022660D0
+	bl BattleInput_NewInit
 	mov r1, #0x67
 	lsl r1, r1, #2
 	str r0, [r4, r1]

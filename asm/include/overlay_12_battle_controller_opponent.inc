@@ -157,13 +157,13 @@
 .public BattleSystem_GetPartyMon
 .public ov12_0223A8D4
 .public ov12_0223A8DC
-.public BattleSystem_GetSpriteRenderer
-.public BattleSystem_GetGfxHandler
+.public BattleSystem_GetSpriteSystem
+.public BattleSystem_GetSpriteManager
 .public ov12_0223A8F4
-.public ov12_0223A900
+.public BattleSystem_GetBattleInput
 .public ov12_0223A908
 .public ov12_0223A914
-.public BattleSystem_GetMessageData
+.public BattleSystem_GetMessageLoader
 .public ov12_0223A934
 .public BattleSystem_GetPaletteData
 .public ov12_0223A99C
@@ -177,7 +177,7 @@
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetTerrainId
-.public ov12_0223AB54
+.public BattleSystem_GetBgId
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C

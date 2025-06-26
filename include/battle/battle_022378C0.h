@@ -24,7 +24,6 @@ BOOL ov12_02238358(OverlayManager *man);
 void ov12_0223843C(OverlayManager *man);
 BOOL ov12_0223A3F0(OverlayManager *man);
 BOOL ov12_0223A5E4(OverlayManager *man);
-void ov12_0226631C(u32 *);
 void ov12_022660A8(BgConfig *);
 void ov12_0223A620(BattleSystem *battleSystem);
 

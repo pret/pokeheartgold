@@ -243,8 +243,8 @@
 .public ov12_02265FD4
 .public ov12_0226604C
 .public ov12_022660A8
-.public ov12_022660D0
-.public ov12_0226631C
+.public BattleInput_NewInit
+.public BattleInput_Free
 .public ov12_02266390
 .public ov12_02266508
 .public ov12_02266644

@@ -518,6 +518,8 @@ typedef struct UnkBattleSystemSub220 {
     int unk8;
 } UnkBattleSystemSub220;
 
+typedef struct BattleInput BattleInput;
+
 struct BattleSystem {
     u32 *unk0;
     BgConfig *bgConfig;
@@ -551,7 +553,7 @@ struct BattleSystem {
     u8 trainerGender[4];
     Trainer trainers[4];
     UnkBattleSystemSub17C unk17C[2]; // Battle Background..?
-    u32 *unk19C;
+    BattleInput *battleInput;
     u32 *unk1A0[2];
     BattleNumberPrinter *hpNumPrinter;
     BattleNumberPrinter *levelNumPrinter;
@@ -559,7 +561,7 @@ struct BattleSystem {
     Options *options;
     u32 *unk1B8;
     void *unk1BC;
-    u32 *unk1C0;
+    u8 *unk1C0;
     u32 *unk1C4;
     void *unk1C8; // related to animations
     u32 *unk1CC;
@@ -624,7 +626,7 @@ struct BattleSystem {
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];
-    u32 unk2488;
+    Pokemon *unk2488;
     u8 unk248C[4];
 };
 
