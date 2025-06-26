@@ -102,7 +102,6 @@ typedef enum HeapID {
     HEAP_ID_95,
     HEAP_ID_96,
     HEAP_ID_ALPH_PUZZLE,
-    HEAP_ID_97,
     HEAP_ID_MIC_TEST,
     HEAP_ID_99,
     HEAP_ID_100,
