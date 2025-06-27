@@ -255,7 +255,7 @@ void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
 void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
     for (u16 i = 0; i < a0->num; ++i) {
         if (a0->unk_08[i].unk_00 != 0 && a0->unk_08[i].unk_02 == 0) {
-            Sprite_SetPositionXY(a0->unk_08[i].sprite.sprite, a0->unk_08[i].unk_04, a0->unk_08[i].unk_06);
+            Sprite_SetPositionXY(a0->unk_08[i].sprite, a0->unk_08[i].unk_04, a0->unk_08[i].unk_06);
         }
     }
 }
@@ -266,7 +266,7 @@ u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *sprite) {
     }
 
     UnkStruct_ov100_021E6E20_Sub8 *ptr = &a0->unk_08[a0->num];
-    ptr->sprite.sprite = sprite;
+    ptr->sprite = sprite;
     ptr->unk_00 = 1;
     ptr->unk_01 = 1;
     return a0->num++;
@@ -274,8 +274,8 @@ u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *sprite) {
 
 void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0) {
     for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->unk_08[i].sprite.sprite != NULL) {
-            thunk_Sprite_Delete(a0->unk_08[i].sprite.sprite);
+        if (a0->unk_08[i].sprite != NULL) {
+            thunk_Sprite_Delete(a0->unk_08[i].sprite);
         }
     }
     MI_CpuClear8(a0->unk_08, a0->num * sizeof(UnkStruct_ov100_021E6E20_Sub8));
@@ -288,8 +288,8 @@ void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 firstIndex) {
 
     clearCount = a0->num - firstIndex;
     for (i = firstIndex; i < a0->num; ++i) {
-        if (a0->unk_08[i].sprite.sprite != NULL) {
-            thunk_Sprite_Delete(a0->unk_08[i].sprite.sprite);
+        if (a0->unk_08[i].sprite != NULL) {
+            thunk_Sprite_Delete(a0->unk_08[i].sprite);
         }
     }
     MI_CpuClear8(a0->unk_08 + firstIndex, clearCount * sizeof(UnkStruct_ov100_021E6E20_Sub8));
@@ -319,7 +319,7 @@ void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch) {
     FreeToHeap(appSwitch);
 }
 
-u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4) {
+u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4) {
     u16 index = PokegearAppSwitch_GetFreeButtonSlot(appSwitch);
     if (index == 0xFFFF) {
         return 0xFFFF;
@@ -338,10 +338,10 @@ u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearApp
         button->cursorPos = cursorPos;
     }
     button->buttonsAreManagedSprite = managedSprites;
-    button->cursorSprites[0] = cursorSprite1;
-    button->cursorSprites[1] = cursorSprite2;
-    button->cursorSprites[2] = cursorSprite3;
-    button->cursorSprites[3] = cursorSprite4;
+    button->cursorSprites[0].undisclosed = cursorSprite1;
+    button->cursorSprites[1].undisclosed = cursorSprite2;
+    button->cursorSprites[2].undisclosed = cursorSprite3;
+    button->cursorSprites[3].undisclosed = cursorSprite4;
     return index;
 }
 

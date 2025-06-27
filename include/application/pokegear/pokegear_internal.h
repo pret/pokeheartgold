@@ -65,6 +65,7 @@ typedef struct PokegearAppSwitchButtonSpec {
 typedef union PokegearSpriteUnion {
     ManagedSprite *managed;
     Sprite *sprite;
+    void *undisclosed;
 } PokegearSpriteUnion;
 
 typedef struct PokegearAppSwitchButton {
@@ -87,18 +88,18 @@ typedef struct PokegearAppSwitch {
 } PokegearAppSwitch;
 
 typedef struct UnkStruct_ov100_021E6E20_Sub8 {
-    u8 unk_00;                  // 0x00
-    u8 unk_01;                  // 0x01
-    u16 unk_02;                 // 0x02
-    s16 unk_04;                 // 0x04
-    s16 unk_06;                 // 0x06
-    s16 unk_08;                 // 0x08
-    s16 unk_0A;                 // 0x0A
-    u16 unk_0C;                 // 0x0C
-    u16 unk_0E;                 // 0x0E
-    u8 filler_10[0x10];         // 0x10
-    PokegearSpriteUnion sprite; // 0x20
-    u8 filler_24[0x4];          // 0x24
+    u8 unk_00;          // 0x00
+    u8 unk_01;          // 0x01
+    u16 unk_02;         // 0x02
+    s16 unk_04;         // 0x04
+    s16 unk_06;         // 0x06
+    s16 unk_08;         // 0x08
+    s16 unk_0A;         // 0x0A
+    u16 unk_0C;         // 0x0C
+    u16 unk_0E;         // 0x0E
+    u8 filler_10[0x10]; // 0x10
+    Sprite *sprite;     // 0x20
+    u8 filler_24[0x4];  // 0x24
 } UnkStruct_ov100_021E6E20_Sub8;
 
 typedef struct UnkStruct_ov100_021E6E20 {
@@ -160,7 +161,7 @@ struct PokegearAppData {
     SpriteSystem *spriteSystem;                 // 0x08C
     SpriteManager *spriteManager;               // 0x090
     PokegearApp_UnkSub094 *unk_094;             // 0x094
-    PokegearSpriteUnion unk_098[11];            // 0x098
+    ManagedSprite *unk_098[11];                 // 0x098
     u16 *unk_0C4;                               // 0x0C4
     NNSG2dScreenData *unk_0C8;                  // 0x0C8
 }; // size: 0xCC
@@ -209,7 +210,7 @@ void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1);
 
 PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId);
 void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
-u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4);
+u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
 BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 a1);
 u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *appSwitch, u16 index, BOOL draw);
 u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16 index, u8 cursorPos);
@@ -222,7 +223,7 @@ void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch,
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
     a0->unk_04 = a1;
     a0->unk_06 = a2;
-    Sprite_SetPositionXY(a0->sprite.sprite, a0->unk_04, a0->unk_06);
+    Sprite_SetPositionXY(a0->sprite, a0->unk_04, a0->unk_06);
 }
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
@@ -238,6 +239,10 @@ static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord2(UnkStruct_ov10
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
     a0->unk_04 += a1;
     a0->unk_06 += a2;
+}
+
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setUnk01(UnkStruct_ov100_021E6E20_Sub8 *a0, BOOL a1) {
+    a0->unk_01 = a1;
 }
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H
