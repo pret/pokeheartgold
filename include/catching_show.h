@@ -100,7 +100,7 @@ BattleSetup *CatchingShow_GetBattleDataTransfer(FieldSystem *fieldSystem);
 // Called on return from the battle. Action is based on
 // whether the player caught the Pokemon or fled from it.
 // Other outcomes are unexpected and trip an assert.
-void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setup);
+void FieldSystem_UpdateCatchingShowResult(FieldSystem *fieldSystem, BattleSetup *setup);
 
 // Determines how many of the Pokemon in Pal Park were not
 // caught.

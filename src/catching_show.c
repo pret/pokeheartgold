@@ -95,7 +95,7 @@ BattleSetup *CatchingShow_GetBattleDataTransfer(FieldSystem *fieldSystem) {
     return FieldSystem_SetupCatchingShowEncounter(fieldSystem, &sCatchingShow);
 }
 
-void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setup) {
+void FieldSystem_UpdateCatchingShowResult(FieldSystem *fieldSystem, BattleSetup *setup) {
     UpdateBattleResultInternal(fieldSystem, setup, &sCatchingShow);
 }
 

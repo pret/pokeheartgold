@@ -595,7 +595,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
         break;
     case 3:
         sub_02050724(encounter->setup, fieldSystem);
-        CatchingShow_UpdateBattleResult(fieldSystem, encounter->setup);
+        FieldSystem_UpdateCatchingShowResult(fieldSystem, encounter->setup);
         sub_02051660(fieldSystem, encounter->setup);
         (*state)++;
         break;
