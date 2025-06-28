@@ -104,6 +104,6 @@ void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setu
 
 // Determines how many of the Pokemon in Pal Park were not
 // caught.
-int CatchingShow_GetParkBallCount(FieldSystem *fieldSystem);
+int FieldSystem_GetParkBallCount(FieldSystem *fieldSystem);
 
 #endif // POKEHEARTGOLD_CATCHING_SHOW_H

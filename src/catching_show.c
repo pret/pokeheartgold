@@ -45,7 +45,7 @@ static CatchingShow sCatchingShow;
 
 static void BufferSpeciesData(u16 species, u8 *dest);
 static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow);
-static int NumMonsCaptured(CatchingShow *catchingShow);
+static int CatchingShow_NumMonsCaptured(CatchingShow *catchingShow);
 static void CatchingShow_ResetStepCount(CatchingShow *catchingShow);
 static BOOL IsStepCountZero(CatchingShow *catchingShow);
 static BOOL TryStartEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow, int x, int z);
@@ -96,11 +96,11 @@ BattleSetup *CatchingShow_GetBattleDataTransfer(FieldSystem *fieldSystem) {
 }
 
 void CatchingShow_UpdateBattleResult(FieldSystem *fieldSystem, BattleSetup *setup) {
-    return UpdateBattleResultInternal(fieldSystem, setup, &sCatchingShow);
+    UpdateBattleResultInternal(fieldSystem, setup, &sCatchingShow);
 }
 
-int CatchingShow_GetParkBallCount(FieldSystem *fieldSystem) {
-    return CATCHING_SHOW_MONS - NumMonsCaptured(&sCatchingShow);
+int FieldSystem_GetParkBallCount(FieldSystem *fieldSystem) {
+    return CATCHING_SHOW_MONS - CatchingShow_NumMonsCaptured(&sCatchingShow);
 }
 
 int CatchingShow_CalcCatchingPoints(FieldSystem *fieldSystem) {
@@ -149,7 +149,7 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
     FreeToHeap(mon);
 }
 
-static int NumMonsCaptured(CatchingShow *catchingShow) {
+static int CatchingShow_NumMonsCaptured(CatchingShow *catchingShow) {
     int i;
     int numMonsCaptured = 0;
 
@@ -244,7 +244,7 @@ static BOOL TryStartEncounter(FieldSystem *fieldSystem, CatchingShow *catchingSh
 static void UpdateBattleResultInternal(FieldSystem *fieldSystem, BattleSetup *setup, CatchingShow *catchingShow) {
     switch (setup->winFlag) {
     case BATTLE_OUTCOME_MON_CAUGHT:
-        catchingShow->caughtMonsOrder[catchingShow->currentEncounterIndex] = NumMonsCaptured(catchingShow) + 1;
+        catchingShow->caughtMonsOrder[catchingShow->currentEncounterIndex] = CatchingShow_NumMonsCaptured(catchingShow) + 1;
         break;
     case BATTLE_OUTCOME_PLAYER_FLED:
         break;
@@ -256,7 +256,7 @@ static void UpdateBattleResultInternal(FieldSystem *fieldSystem, BattleSetup *se
 static BattleSetup *FieldSystem_SetupCatchingShowEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     MigratedPokemon *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, CatchingShow_GetParkBallCount(fieldSystem));
+    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, FieldSystem_GetParkBallCount(fieldSystem));
 
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
     MigratedPokemon_ToPokemon(migratedMons, catchingShow->currentEncounterIndex, mon);

@@ -610,7 +610,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
         break;
     case 6:
         Encounter_Delete(encounter);
-        if (CatchingShow_GetParkBallCount(fieldSystem) == 0) {
+        if (FieldSystem_GetParkBallCount(fieldSystem) == 0) {
             // Ding-dong!
             // Congratulations!
             // $PLAYER has successfully
