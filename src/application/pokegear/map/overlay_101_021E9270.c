@@ -1,6 +1,10 @@
 #include "global.h"
 
+#include "constants/maps.h"
+
 #include "application/pokegear/map/pokegear_map_internal.h"
+
+#include "sys_flags.h"
 
 void ov101_021E9288(PokegearMapAppData *mapApp);
 void ov101_021E93D0(PokegearMapAppData *mapApp);
@@ -10,7 +14,8 @@ void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s
 void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, int *a5, int *a6);
 void ov101_021E990C(PokegearMapAppData *mapApp);
 void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2);
-const PokegearMapAppData_Sub214 *ov101_021EA758(PokegearMapAppData *mapApp, u16 a1);
+BOOL ov101_021EA664(PokegearMapAppData *mapApp, int a1);
+BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;
@@ -537,4 +542,126 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 a1) {
             break;
         }
     }
+}
+
+void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 a1) {
+    u16 i;
+    u16 r0;
+    s16 r2;
+    s16 r1;
+    s16 r2_2;
+    s16 r1_2;
+    const UnkStruct_ov101_021F79B4 *r6;
+
+    for (i = 0; i < 27; ++i) {
+        r6 = &ov101_021F79B4[i];
+        r2_2 = r6->unk_0A_0 * 4;
+        r1_2 = r6->unk_0A_4 * 4;
+        r2 = (r6->unk_06 - mapApp->unk_0C8.unk_2C) * 8 + mapApp->unk_132 + r2_2;
+        r1 = ((r6->unk_07 + 2) - mapApp->unk_0C8.unk_28) * 8 + mapApp->unk_131 + r1_2;
+        r0 = i + 15;
+
+        switch (a1) {
+        case 0:
+            mapApp->unk_084->unk_08[r0].unk_04 = r2;
+            mapApp->unk_084->unk_08[r0].unk_06 = r1;
+            if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, r6->unk_04)) {
+                Sprite_SetDrawFlag(mapApp->unk_084->unk_08[r0].sprite, TRUE);
+            } else {
+                Sprite_SetDrawFlag(mapApp->unk_084->unk_08[r0].sprite, FALSE);
+            }
+            if (ov101_021EA804(mapApp, r6->unk_02, r6->unk_06, r6->unk_07)) {
+                Sprite_SetAnimCtrlSeq(mapApp->unk_084->unk_08[r0].sprite, 10);
+            }
+            break;
+        case 1:
+            mapApp->unk_084->unk_08[r0].unk_08 = r2;
+            mapApp->unk_084->unk_08[r0].unk_0A = r1;
+            break;
+        case 2:
+            Sprite_SetDrawFlag(mapApp->unk_084->unk_08[r0].sprite, FALSE);
+            break;
+        }
+    }
+}
+
+void ov101_021EA608(PokegearMapAppData *mapApp, u8 a1) {
+    int i;
+    UnkStruct_ov100_021E6E20_Sub8 *r5 = mapApp->unk_084->unk_08;
+
+    if (a1 == 0) {
+        Sprite_SetDrawFlag(r5[5].sprite, FALSE);
+        Sprite_SetDrawFlag(r5[6].sprite, FALSE);
+        for (i = 7; i <= 10; ++i) {
+            Sprite_SetDrawFlag(r5[i].sprite, FALSE);
+        }
+    } else {
+        Sprite_SetDrawFlag(r5[5].sprite, TRUE);
+        Sprite_SetDrawFlag(r5[6].sprite, TRUE);
+    }
+}
+
+BOOL ov101_021EA664(PokegearMapAppData *mapApp, int a1) {
+    switch (a1) {
+    case MAP_ROUTE_47:
+    case MAP_ROUTE_48:
+    case MAP_SAFARI_ZONE_GATE:
+        if (!mapApp->unk_13D_1) {
+            return TRUE;
+        }
+        break;
+    case MAP_SINJOH_RUINS_EXTERIOR:
+        if (!mapApp->unk_13D_2) {
+            return TRUE;
+        }
+        break;
+    case MAP_SS_AQUA_1F:
+        if (!mapApp->unk_13D_3) {
+            return TRUE;
+        }
+        break;
+    }
+    return FALSE;
+}
+
+BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1) {
+    if (!a1->unk_0) {
+        return FALSE;
+    }
+    if (a1->unk_0->unk_0 == MAP_SINJOH_RUINS_EXTERIOR || a1->unk_0->unk_0 == MAP_SS_AQUA_1F) {
+        return FALSE;
+    }
+    return TRUE;
+}
+
+const PokegearMapAppData_Sub214 *ov101_021EA6E8(PokegearMapAppData *mapApp, u8 a1, u8 a2) {
+    const PokegearMapAppData_Sub214 *r4;
+    u16 i;
+
+    for (i = 0; i < mapApp->unk_136; ++i) {
+        r4 = &mapApp->unk_214[i];
+        if (a1 >= r4->unk_2 && a2 >= r4->unk_3 && a1 < r4->unk_2 + r4->unk_4_0 && a2 < r4->unk_3 + r4->unk_4_4) {
+            if (ov101_021EA664(mapApp, r4->unk_0)) {
+                r4 = NULL;
+            }
+            return r4;
+        }
+    }
+    return NULL;
+}
+
+const PokegearMapAppData_Sub214 *ov101_021EA758(PokegearMapAppData *mapApp, u16 a1) {
+    const PokegearMapAppData_Sub214 *r4;
+    u16 i;
+
+    for (i = 0; i < mapApp->unk_136; ++i) {
+        r4 = &mapApp->unk_214[i];
+        if (r4->unk_0 == a1) {
+            if (ov101_021EA664(mapApp, r4->unk_0)) {
+                r4 = NULL;
+            }
+            return r4;
+        }
+    }
+    return NULL;
 }
