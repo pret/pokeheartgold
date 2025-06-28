@@ -68,7 +68,7 @@
 .public MapModel_IsHeadbuttTree
 .public MapCoordToMatrixIndex
 .public CatchingShow_CheckWildEncounter
-.public CatchingShow_GetBattleDTO
+.public CatchingShow_GetBattleDataTransfer
 .public NewFieldTransitionEnvironment
 .public sub_02055CD8
 .public sub_02057F18

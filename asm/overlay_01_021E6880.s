@@ -1120,7 +1120,7 @@ _021E7132:
 	cmp r0, #1
 	bne _021E716C
 	add r0, r4, #0
-	bl CatchingShow_GetBattleDTO
+	bl CatchingShow_GetBattleDataTransfer
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_020511F8

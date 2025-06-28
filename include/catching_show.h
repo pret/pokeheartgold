@@ -95,7 +95,7 @@ BOOL CatchingShow_CheckWildEncounter(FieldSystem *fieldSystem, int playerX, int 
 // Called if CatchingShow_CheckWildEncounter succeeds. Loads the
 // migrated Pokemon as the opponent and sets the Pal Park
 // state.
-BattleSetup *CatchingShow_GetBattleDTO(FieldSystem *fieldSystem);
+BattleSetup *CatchingShow_GetBattleDataTransfer(FieldSystem *fieldSystem);
 
 // Called on return from the battle. Action is based on
 // whether the player caught the Pokemon or fled from it.
