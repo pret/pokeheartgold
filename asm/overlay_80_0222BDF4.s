@@ -1776,7 +1776,7 @@ _0222CAF8:
 	mov r2, #1
 	bl ov80_02239BF0
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3507,7 +3507,7 @@ _0222D7DC:
 	ldr r0, [r7, r0]
 	bl ov80_0223B5E8
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #8]
 	bl SysTask_Destroy
 	add sp, #0x3c
@@ -4179,7 +4179,7 @@ ov80_0222DCF0: ; 0x0222DCF0
 	ldr r0, [r0]
 	bl Frontier_SetData
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0222DD2C:
 	cmp r6, #0
 	bne _0222DD34
@@ -5735,7 +5735,7 @@ _0222E8E4:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r7, #0x60]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6406,7 +6406,7 @@ _0222EDFC:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r7, #0x60]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -6632,7 +6632,7 @@ _0222EF9A:
 	mov r1, #0
 	str r1, [r0, #0x38]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r7, #0
 	bl SysTask_Destroy
 _0222EFC2:
@@ -6868,7 +6868,7 @@ _0222F0DA:
 	bl PaletteData_BlendPalette
 _0222F1AE:
 	ldr r0, [sp, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222F1CC ; =0x0000C350
 	add r5, #0x80
 	sub r0, r4, r0

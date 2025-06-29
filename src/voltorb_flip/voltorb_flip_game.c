@@ -32,7 +32,7 @@ GameState *CreateGameState(HeapID heapId) {
 }
 
 void FreeGameState(GameState *game) {
-    FreeToHeap(game);
+    Heap_Free(game);
 }
 
 void NewBoard(GameState *game) {

@@ -64,7 +64,7 @@ BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow) {
 BOOL RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow) {
     RadioShow_PokemonSearchParty_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonSearchPartyData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

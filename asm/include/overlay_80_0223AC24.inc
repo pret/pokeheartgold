@@ -16,7 +16,7 @@
 .public sub_02014C08
 .public sub_02014C40
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public FillWindowPixelRect
 .public GF_AssertFail
 .public GXx_SetMasterBrightness_

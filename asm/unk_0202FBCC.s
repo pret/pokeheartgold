@@ -51,7 +51,7 @@ sub_0202FBF0: ; 0x0202FBF0
 	add r6, r2, #0
 	cmp r0, #0
 	beq _0202FC0A
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0202FC20 ; =_021D2AF8
 	mov r1, #0
 	str r1, [r0]
@@ -80,7 +80,7 @@ sub_0202FC24: ; 0x0202FC24
 _0202FC32:
 	ldr r0, _0202FC44 ; =_021D2AF8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0202FC44 ; =_021D2AF8
 	mov r1, #0
 	str r1, [r0]
@@ -148,7 +148,7 @@ sub_0202FC90: ; 0x0202FC90
 	add r6, r3, #0
 	cmp r0, #0
 	beq _0202FCAC
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0202FD1C ; =_021D2AF8
 	mov r1, #0
 	str r1, [r0]
@@ -225,7 +225,7 @@ sub_0202FD28: ; 0x0202FD28
 	beq _0202FD46
 	mov r1, #3
 	str r1, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _0202FD46:
@@ -245,7 +245,7 @@ _0202FD46:
 	mov r0, #0
 	str r0, [r5]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _0202FD72:
@@ -257,14 +257,14 @@ _0202FD72:
 	mov r0, #2
 	str r0, [r5]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 _0202FD8C:
 	mov r0, #1
 	str r0, [r5]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -1597,7 +1597,7 @@ _0203074C:
 	blt _0203074C
 _02030770:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1847,10 +1847,10 @@ sub_02030920: ; 0x02030920
 
 	thumb_func_start sub_02030938
 sub_02030938: ; 0x02030938
-	ldr r3, _0203093C ; =FreeToHeap
+	ldr r3, _0203093C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0203093C: .word FreeToHeap
+_0203093C: .word Heap_Free
 	thumb_func_end sub_02030938
 
 	thumb_func_start sub_02030940

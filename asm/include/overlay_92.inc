@@ -93,7 +93,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

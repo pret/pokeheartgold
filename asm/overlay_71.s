@@ -255,7 +255,7 @@ TradeSequence_Exit: ; 0x02246B58
 	ldr r0, [r4, #0x14]
 	bl String_Delete
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x18]
 	bl SpriteList_Delete
 	bl OamManager_Free
@@ -391,7 +391,7 @@ ov71_02246C6C: ; 0x02246C6C
 	mov r2, #0x60
 	bl MIi_CpuClear16
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02246CA6:
 	add r1, r4, #0
 	mov r0, #0
@@ -517,7 +517,7 @@ _02246D78:
 	ldr r0, [r0]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02246D9A:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov71_02246D54
@@ -618,7 +618,7 @@ _02246E5C:
 	mov r1, #0
 	str r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _02246E7C:
@@ -740,7 +740,7 @@ _02246EE0:
 	pop {r3, r4, r5, pc}
 _02246F52:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02246F58:
 	pop {r3, r4, r5, pc}
 	nop
@@ -758,7 +758,7 @@ ov71_02246F60: ; 0x02246F60
 	cmp r0, #0
 	beq _02246F8E
 	bl SysTask_GetData
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r6, r4]
 	bl SysTask_Destroy
 	mov r0, #0
@@ -873,7 +873,7 @@ _02247034:
 	mov r0, #1
 	str r0, [r5]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02247058:
 	add r0, r4, #0
 	add sp, #8
@@ -1093,7 +1093,7 @@ _022471B8:
 	add r0, r4, #0
 	bl ReleaseBoxMonLock
 	ldr r0, [sp, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 _02247202:
 	ldr r0, [sp, #0x14]
 	cmp r0, #4
@@ -1189,7 +1189,7 @@ _02247252:
 	lsr r3, r3, #0x18
 	bl BgTilemapRectChangePalette
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 _022472BA:
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1234,14 +1234,14 @@ ov71_022472FC: ; 0x022472FC
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0224730E
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 _0224730E:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0224731C
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 _0224731C:
@@ -1422,7 +1422,7 @@ ov71_022473F0: ; 0x022473F0
 	ldr r5, _02247420 ; =ov71_0224C044
 _02247402:
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r6]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -1522,11 +1522,11 @@ _022474A6:
 	blo _022474A6
 _022474B8:
 	ldr r0, [r5, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl ov71_022478B8
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov71_02247498
 
@@ -1690,7 +1690,7 @@ ov71_022475F8: ; 0x022475F8
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0224760C
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	str r0, [r4, #0x64]
@@ -2168,7 +2168,7 @@ _02247980:
 	ldr r0, [r4, #0xc]
 	bl PokepicManager_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224798C:
 	pop {r4, pc}
 	.balign 4, 0
@@ -3206,7 +3206,7 @@ ov71_022481EC: ; 0x022481EC
 	cmp r0, #0
 	beq _02248208
 	bl SysTask_GetData
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x7c]
 	bl SysTask_Destroy
 	mov r0, #0
@@ -3419,7 +3419,7 @@ _02248394:
 	ldr r0, [r0]
 	bl SetMTRNGSeed
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _022483A4:
 	add r0, r4, #0
 	bl OS_RestoreInterrupts
@@ -3974,7 +3974,7 @@ ov71_02248604: ; 0x02248604
 	bl GX_EndLoadBGExtPltt
 	bl GXS_EndLoadBGExtPltt
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224880A:
 	add r0, r4, #0
 	add r0, #0xc0
@@ -4462,7 +4462,7 @@ _02248BD8:
 	cmp r0, #0
 	bne _02248C1C
 	ldr r0, [sp]
-	bl FreeToHeap
+	bl Heap_Free
 _02248C1C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4641,7 +4641,7 @@ ov71_02248D0C: ; 0x02248D0C
 	cmp r0, #0
 	bne _02248D78
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02248D78:
 	pop {r4, r5, r6, pc}
 	nop
@@ -4732,7 +4732,7 @@ ov71_02248E04: ; 0x02248E04
 	ldr r0, [r4, r0]
 	bl ov71_02248CF4
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _02248E2E:
@@ -4799,7 +4799,7 @@ _02248E9A:
 	asr r1, r1, #0xc
 	bl ov71_02247708
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
@@ -5622,7 +5622,7 @@ ov71_022494D0: ; 0x022494D0
 	add r0, #0x34
 	bl ov71_02249990
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _022494FE:
 	pop {r4, pc}
 	thumb_func_end ov71_022494D0
@@ -6658,7 +6658,7 @@ ov71_02249D14: ; 0x02249D14
 	beq _02249D24
 	bl ov71_0224A080
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02249D24:
 	pop {r4, pc}
 	.balign 4, 0
@@ -7169,7 +7169,7 @@ ov71_0224A12C: ; 0x0224A12C
 	add r0, #0x34
 	bl ov71_0224A5B0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224A15A:
 	pop {r4, pc}
 	thumb_func_end ov71_0224A12C
@@ -8209,7 +8209,7 @@ _0224A978:
 	bl ov71_0224B11C
 _0224A982:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224A988:
 	pop {r4, pc}
 	.balign 4, 0
@@ -8686,7 +8686,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	bl GX_EndLoadBGExtPltt
 	bl GXS_EndLoadBGExtPltt
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224AD52:
 	ldr r0, [r4, #0xc]
 	ldr r3, _0224ADAC ; =0xFFFFFE80
@@ -8911,7 +8911,7 @@ ov71_0224AF08: ; 0x0224AF08
 	cmp r0, #0
 	bne _0224AF48
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224AF48:
 	pop {r4, r5, r6, pc}
 	nop
@@ -9019,7 +9019,7 @@ ov71_0224AFD4: ; 0x0224AFD4
 	cmp r0, #0
 	bne _0224B020
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224B020:
 	pop {r4, r5, r6, pc}
 	nop
@@ -9069,7 +9069,7 @@ ov71_0224B068: ; 0x0224B068
 	ldr r1, [r0]
 	mov r2, #0
 	str r2, [r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 _0224B082:
@@ -9114,7 +9114,7 @@ ov71_0224B084: ; 0x0224B084
 	cmp r0, #0
 	bne _0224B0E0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _0224B0DC:
@@ -9164,7 +9164,7 @@ ov71_0224B11C: ; 0x0224B11C
 	ldr r1, [r0]
 	mov r2, #0
 	str r2, [r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 _0224B136:
@@ -9257,7 +9257,7 @@ _0224B1E2:
 	ldr r0, [r4, #0x10]
 	bl PokepicManager_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224B1F8:
 	pop {r4, pc}
 	.balign 4, 0
@@ -10273,7 +10273,7 @@ ov71_0224B9CC: ; 0x0224B9CC
 	cmp r0, #0
 	bne _0224BA3E
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 _0224BA3A:
 	mov r0, #0
@@ -10294,7 +10294,7 @@ ov71_0224BA48: ; 0x0224BA48
 	ldr r1, [r0]
 	mov r2, #0
 	str r2, [r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 _0224BA62:

@@ -640,7 +640,7 @@ static void ov84_0223E958(BgConfig *config) {
     FreeBgTilemapBuffer(config, 3);
     FreeBgTilemapBuffer(config, 1);
     FreeBgTilemapBuffer(config, 4);
-    FreeToHeap(config);
+    Heap_Free(config);
 }
 
 static void BattleArcade_VBlank(void *_work) {
@@ -725,7 +725,7 @@ static void ov84_0223EB44(void) {
     DC_FlushRange(dat->pRawData, 224);
     GX_LoadBGPltt(dat->pRawData, 0, 224);
 
-    FreeToHeap(buffer);
+    Heap_Free(buffer);
 }
 
 static void ov84_0223EB78(GAME_BOARD_WORK *work, GFBgLayer layer) {
@@ -1397,7 +1397,7 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
 
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj) {
     Sprite_Delete(obj->sprite);
-    FreeToHeap(obj);
+    Heap_Free(obj);
     return NULL;
 }
 

@@ -158,10 +158,10 @@ void FieldSystem_Delete(OverlayManager *man) {
     FieldSystem *fieldSystem = OverlayManager_GetData(man);
     MapMatrix_Free(fieldSystem->mapMatrix);
     Field_FreeMapEvents(fieldSystem);
-    FreeToHeap(fieldSystem->bagCursor);
+    Heap_Free(fieldSystem->bagCursor);
     sub_02092BD0(fieldSystem->unkA8);
     GearPhoneRingManager_Delete(fieldSystem->phoneRingManager);
-    FreeToHeap(fieldSystem->unk0);
+    Heap_Free(fieldSystem->unk0);
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_89);
     DestroyHeap(HEAP_ID_FIELD);

@@ -68,7 +68,7 @@ sub_02096248: ; 0x02096248
 	ldr r0, [r4, #4]
 	bl MessageFormat_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_02096248
 

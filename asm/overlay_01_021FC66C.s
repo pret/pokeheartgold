@@ -98,7 +98,7 @@ _021FC6E2:
 	add r1, r6, #0
 	bl FieldSystem_StartForcedWildBattle
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021FC728:
@@ -110,7 +110,7 @@ _021FC732:
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_UnpauseAllMovement
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021FC742:
@@ -162,7 +162,7 @@ ov01_021FC784: ; 0x021FC784
 	push {r4, lr}
 	add r4, r0, #0
 	bl SysTask_GetData
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 	pop {r4, pc}

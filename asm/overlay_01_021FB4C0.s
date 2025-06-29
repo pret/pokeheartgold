@@ -39,7 +39,7 @@ _021FB4E4:
 	add r0, r4, #0
 	bl ov01_021FB55C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021FB4F0:
 	pop {r4, pc}
 	.balign 4, 0

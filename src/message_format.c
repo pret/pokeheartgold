@@ -69,13 +69,13 @@ void MessageFormat_Delete(MessageFormat *messageFormat) {
             }
             String_Delete(messageFormat->fields[i].msg);
         }
-        FreeToHeap(messageFormat->fields);
+        Heap_Free(messageFormat->fields);
     }
     if (messageFormat->buffer != NULL) {
         String_Delete(messageFormat->buffer);
     }
     messageFormat->count = 0;
-    FreeToHeap(messageFormat);
+    Heap_Free(messageFormat);
 }
 
 void MessageFormat_InitFields(MessageFormatFields *field) {

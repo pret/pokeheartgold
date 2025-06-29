@@ -13,8 +13,8 @@
 .public Sys_AllocAndReadFile
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public Ascii_GetDelim
 .public Ascii_StrToL
 .public Camera_ClearFixedTarget

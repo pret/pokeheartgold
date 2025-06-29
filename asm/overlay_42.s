@@ -140,9 +140,9 @@ _0222716C:
 	cmp r6, #4
 	blt _0222716C
 	ldr r0, [r5, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02227188: .word 0x00002304
@@ -2061,9 +2061,9 @@ ov42_02227F28: ; 0x02227F28
 	bl GF_AssertFail
 _02227F32:
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov42_02227F28
 
@@ -2236,9 +2236,9 @@ ov42_02228050: ; 0x02228050
 	bl GF_AssertFail
 _0222805A:
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov42_02228050
 
@@ -4358,9 +4358,9 @@ _02228FC0:
 	ldr r0, [r5]
 	bl ov42_02227114
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov42_02228F94
 
@@ -4991,9 +4991,9 @@ ov42_0222940C: ; 0x0222940C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov42_0222940C
@@ -5751,9 +5751,9 @@ ov42_022299AC: ; 0x022299AC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov42_022299AC
@@ -5862,9 +5862,9 @@ ov42_02229A78: ; 0x02229A78
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov42_02229A78

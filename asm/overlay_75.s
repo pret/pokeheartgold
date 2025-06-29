@@ -281,7 +281,7 @@ ov75_02246B98: ; 0x02246B98
 	ldr r0, [r4, #0x10]
 	bl NNS_FndDestroyExpHeap
 	ldr r0, [r4, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
@@ -387,7 +387,7 @@ ov75_02246C3C: ; 0x02246C3C
 	add r1, r4, #0
 	bl sub_0203175C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov75_02246C3C
 
@@ -770,7 +770,7 @@ _02246EF4:
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -1094,7 +1094,7 @@ _022471A4:
 	add r0, r4, #0
 	bl ov75_02247838
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	bl ov75_0224741C
 	mov r0, #0
@@ -1509,7 +1509,7 @@ ov75_02247450: ; 0x02247450
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	mov r1, #0x5d
 	str r0, [sp, #0x24]
@@ -6018,7 +6018,7 @@ _02249808:
 	mov r0, #0
 	strb r0, [r5, r4]
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -6060,7 +6060,7 @@ _02249868:
 	bne _0224985E
 _02249870:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
 	nop

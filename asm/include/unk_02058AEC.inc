@@ -24,7 +24,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public InitWindow
 .public WindowIsInUse
 .public AddWindowParameterized

@@ -1660,7 +1660,7 @@ static void ov122_021E79A4(VoltorbFlipAppWork *work) {
     }
 
     FontID_Release(4);
-    FreeToHeap(work->bgConfig);
+    Heap_Free(work->bgConfig);
 }
 
 static void ov122_021E79D0(VoltorbFlipAppWork *work) {

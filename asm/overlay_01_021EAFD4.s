@@ -264,7 +264,7 @@ ov01_021EB18C: ; 0x021EB18C
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
 	beq _021EB1A4
-	bl FreeToHeap
+	bl Heap_Free
 _021EB1A4:
 	add r1, r5, #0
 	add r1, #0x18
@@ -296,7 +296,7 @@ _021EB1C4:
 	cmp r4, #0x10
 	blt _021EB1C4
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 _021EB1D8:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -307,7 +307,7 @@ ov01_021EB1DC: ; 0x021EB1DC
 	push {r3, lr}
 	cmp r0, #0
 	beq _021EB1E6
-	bl FreeToHeap
+	bl Heap_Free
 _021EB1E6:
 	pop {r3, pc}
 	thumb_func_end ov01_021EB1DC

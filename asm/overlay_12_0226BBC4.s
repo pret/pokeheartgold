@@ -152,7 +152,7 @@ ov12_0226BCE4: ; 0x0226BCE4
 	ldr r0, [r4, #4]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov12_0226BCE4
 

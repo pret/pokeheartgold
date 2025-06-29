@@ -364,13 +364,13 @@ BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     YesNoPrompt_Destroy(appData->yesNoPrompt);
-    FreeToHeap(appData->touchscreenHitboxes);
-    FreeToHeap(appData->bgConfig);
+    Heap_Free(appData->touchscreenHitboxes);
+    Heap_Free(appData->bgConfig);
     for (int i = 0; i < appData->pageLength + 1; ++i) {
         ViewRankingsPage_Delete(appData->pages[i]);
     }
-    FreeToHeap(appData->records);
-    FreeToHeap(appData);
+    Heap_Free(appData->records);
+    Heap_Free(appData);
     DestroyHeap(HEAP_ID_RANKINGS_APP);
     return TRUE;
 }

@@ -4,7 +4,7 @@
 .public NARC_Delete
 .public NARC_AllocAndReadWholeMember
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_CreateNewVramTransferTask
 .public sub_02020838
 .public sub_020208DC

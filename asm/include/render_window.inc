@@ -39,8 +39,8 @@
 .public sub_020143E0
 .public sub_02014450
 .public AllocFromHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgConfig_GetHeapId
 .public BgCommitTilemapBufferToVram
 .public BG_LoadCharTilesData

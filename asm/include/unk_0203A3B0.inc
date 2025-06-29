@@ -4,7 +4,7 @@
 .public SysTask_Destroy
 .public sub_0201A3F8
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public sub_02034DCC
 .public sub_02037454

@@ -231,7 +231,7 @@ ov80_0222F7CC: ; 0x0222F7CC
 	add r1, r4, #0
 	bl ov80_02230460
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov80_0222F7CC
 
@@ -461,7 +461,7 @@ _0222F954:
 	ldr r1, [sp, #0x18]
 	strh r0, [r1]
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0222FBE6
 _0222F98C:
 	ldrb r0, [r4, #4]
@@ -531,7 +531,7 @@ _0222FA04:
 	blt _0222F9BC
 _0222FA12:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	add r4, sp, #0x24
 	add r5, r0, #0

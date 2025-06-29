@@ -18,7 +18,7 @@
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public AddWindowParameterized
 .public RemoveWindow
 .public CopyWindowToVram

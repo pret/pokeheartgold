@@ -362,11 +362,11 @@ ov01_021F96E4: ; 0x021F96E4
 	add r1, #0xe4
 	ldr r1, [r1]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add r4, #0xf4
 	ldr r1, [r4]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	pop {r4, pc}
 	thumb_func_end ov01_021F96E4
 
@@ -2994,7 +2994,7 @@ ov01_021FA8F8: ; 0x021FA8F8
 	ldr r0, [r4, #0x24]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	mov r1, #0
 	lsl r0, r0, #8
@@ -3306,13 +3306,13 @@ _021FABCE:
 	ldr r0, [r5, #0x24]
 	bl sub_02023DA4
 	ldr r0, [r5, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
@@ -3339,13 +3339,13 @@ _021FAC1C:
 	ldr r0, [r5, #0x24]
 	bl sub_02023DA4
 	ldr r0, [r5, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _021FAC40:

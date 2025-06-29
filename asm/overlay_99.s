@@ -297,10 +297,10 @@ ov99_021E5B70: ; 0x021E5B70
 
 	thumb_func_start ov99_021E5B74
 ov99_021E5B74: ; 0x021E5B74
-	ldr r3, _021E5B78 ; =FreeToHeap
+	ldr r3, _021E5B78 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021E5B78: .word FreeToHeap
+_021E5B78: .word Heap_Free
 	thumb_func_end ov99_021E5B74
 
 	thumb_func_start ov99_021E5B7C
@@ -555,7 +555,7 @@ _021E5D3A:
 	cmp r4, #8
 	blo _021E5D3A
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E5D54: .word _021E954C
@@ -2194,7 +2194,7 @@ _021E6A7E:
 	cmp r4, #4
 	blo _021E6A7E
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E6A98: .word ov99_021E9D88
@@ -2903,10 +2903,10 @@ _021E700C:
 
 	thumb_func_start ov99_021E7060
 ov99_021E7060: ; 0x021E7060
-	ldr r3, _021E7064 ; =FreeToHeap
+	ldr r3, _021E7064 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021E7064: .word FreeToHeap
+_021E7064: .word Heap_Free
 	thumb_func_end ov99_021E7060
 
 	thumb_func_start ov99_021E7068
@@ -4081,7 +4081,7 @@ PokeathlonMedals_Exit: ; 0x021E78F0
 	mov r0, #0x3f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov99_021E7AB8
 	ldr r1, _021E7944 ; =0x00000404
@@ -4846,7 +4846,7 @@ _021E7ED0:
 	cmp r4, #7
 	blo _021E7ED0
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	nop
 _021E7EEC: .word ov99_021EA348
@@ -5915,7 +5915,7 @@ _021E876A:
 	cmp r4, #6
 	blo _021E876A
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021E8784: .word ov99_021EA59C
@@ -7562,7 +7562,7 @@ ov99_021E9418: ; 0x021E9418
 	ldr r0, [r4, r0]
 	bl String_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov99_021E9418

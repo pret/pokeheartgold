@@ -1008,19 +1008,19 @@ sub_02075D4C: ; 0x02075D4C
 	ldr r0, [r4, #0xc]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x3c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x58]
 	bl sub_020164C4
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
 	bl NARC_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -2919,7 +2919,7 @@ _02076D62:
 	add r2, r6, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	mov r1, #0xa2
 	add r2, sp, #0
@@ -2949,7 +2949,7 @@ _02076D62:
 	mov r1, #0x15
 	bl GameStats_AddScore
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x4c]
 	ldr r3, [r4, #0x5c]
 	mov r1, #4
@@ -3407,7 +3407,7 @@ sub_020771E8: ; 0x020771E8
 	mov r2, #2
 	bl GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3508,7 +3508,7 @@ sub_020772F8: ; 0x020772F8
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	mov r1, #0xff
 	bl FillWindowPixelBuffer

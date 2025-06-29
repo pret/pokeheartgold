@@ -69,7 +69,7 @@ void YesNoPrompt_Destroy(YesNoPrompt *yesno) {
     if (yesno->buttonsAreInit == 1) {
         YesNoPrompt_Reset(yesno);
     }
-    FreeToHeap(yesno);
+    Heap_Free(yesno);
 }
 
 static void YesNoPrompt_InitFromTemplate_Internal(YesNoPrompt *yesno, const YesNoPromptTemplate *template) {
@@ -109,7 +109,7 @@ void YesNoPrompt_InitFromTemplateWithPalette(YesNoPrompt *yesno, const YesNoProm
         NNSG2dPaletteData *plttDataOut;
         void *raw = GfGfxLoader_GetPlttData(NARC_system_touch_subwindow, 0, &plttDataOut, yesno->heapId);
         PaletteData_LoadPalette(plttData, plttDataOut->pRawData, (PaletteBufferId)(yesno->bgId / 4), template->plttSlot * 16, 64);
-        FreeToHeap(raw);
+        Heap_Free(raw);
     }
 }
 
@@ -312,7 +312,7 @@ static void YesNoPromptButton_Clear(YesNoPromptButton *button) {
     FillBgTilemapRect(button->bgConfig, button->bgId, 0, button->x, button->y, button->screenDataPtrs[0]->screenWidth / 8, button->screenDataPtrs[0]->screenHeight / 8, TILEMAP_COPY_SRC_FLAT);
     ScheduleBgTilemapBufferTransfer(button->bgConfig, button->bgId);
     for (int i = 0; i < 2; ++i) {
-        FreeToHeap(button->scrnDataRaw[i]);
+        Heap_Free(button->scrnDataRaw[i]);
     }
     memset(button, 0, sizeof(YesNoPromptButton));
 }
@@ -342,8 +342,8 @@ static void SysTask_LoadBGPixels(SysTask *task, void *voidptr) {
     DC_FlushRange(data->charData->pRawData, data->charData->szByte);
     BG_LoadCharTilesData(data->bgConfig, data->bgId, data->charData->pRawData, data->charData->szByte, data->tileStart);
     SysTask_Destroy(task);
-    FreeToHeap(data->charDataRaw);
-    FreeToHeap(data);
+    Heap_Free(data->charDataRaw);
+    Heap_Free(data);
 }
 
 static void SysTask_LoadBGPltt(SysTask *task, void *voidptr) {
@@ -355,8 +355,8 @@ static void SysTask_LoadBGPltt(SysTask *task, void *voidptr) {
         GXS_LoadBGPltt(data->plttData->pRawData, data->offset, data->size);
     }
     SysTask_Destroy(task);
-    FreeToHeap(data->plttDataRaw);
-    FreeToHeap(data);
+    Heap_Free(data->plttDataRaw);
+    Heap_Free(data);
 }
 
 static void ScreenPushGraphicsRect(BgConfig *bgConfig, int bgId, NNSG2dScreenData *screenData, int x, int y) {

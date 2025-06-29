@@ -207,7 +207,7 @@ sub_02087BAC: ; 0x02087BAC
 	bl sub_0202FC24
 _02087BC2:
 	ldr r0, [r4, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #1
@@ -353,7 +353,7 @@ _02087CDA:
 	ldr r1, [r5, #0x10]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
 	bl BattleSetup_Delete
 	mov r0, #0
@@ -429,7 +429,7 @@ _02087D88:
 	ldr r1, [r5, #0x10]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
 	bl BattleSetup_Delete
 	ldr r0, [r5, #8]

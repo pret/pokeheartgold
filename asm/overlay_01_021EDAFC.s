@@ -579,7 +579,7 @@ _021EDF08:
 	bl DestroyMsgData
 _021EDF2E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EDF00
@@ -1446,7 +1446,7 @@ _021EE5BE:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE5CC: .word SEQ_SE_DP_SELECT
@@ -1730,7 +1730,7 @@ _021EE80A:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021EE816:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

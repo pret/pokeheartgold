@@ -269,7 +269,7 @@ _02235AF2:
 	add r0, r5, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	add r5, #0xa8
 	str r0, [r5]

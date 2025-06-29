@@ -141,7 +141,7 @@ _020966A4:
 	ldrb r1, [r4, #0x10]
 	cmp r1, #1
 	bne _020966B4
-	bl FreeToHeap
+	bl Heap_Free
 _020966B4:
 	mov r0, #0
 	str r0, [r4, #4]

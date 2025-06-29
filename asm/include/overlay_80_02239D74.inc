@@ -9,7 +9,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BG_LoadScreenTilemapData
 .public BG_LoadCharTilesData
 .public ScheduleBgTilemapBufferTransfer

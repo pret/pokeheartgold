@@ -35,7 +35,7 @@
 .public MenuInputStateMgr_GetState
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BG_LoadScreenTilemapData

@@ -3,7 +3,7 @@
 .public CopyU16StringArrayN
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_GetNamePtr

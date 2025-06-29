@@ -20,7 +20,7 @@ GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera
 
 void DeleteCameraTranslationWrapper(GFCameraTranslationWrapper *wrapper) {
     resetWrapper(wrapper);
-    FreeToHeap(wrapper);
+    Heap_Free(wrapper);
 }
 
 static inline CameraAngle getBoundCameraAngle(GFCameraTranslationWrapper *wrapper) {

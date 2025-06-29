@@ -85,10 +85,10 @@ sub_02093354: ; 0x02093354
 	bl sub_020950D4
 	ldr r0, _02093428 ; =0x000046C8
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0209342C ; =0x000046CC
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -112,16 +112,16 @@ _020933AA:
 	bl SpriteList_Delete
 	ldr r0, _02093430 ; =0x000046A4
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #8]
 	bl YesNoPrompt_Destroy
 	ldr r0, _02093434 ; =0x000007E4
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x8d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, _02093438 ; =gSystem + 0x60
@@ -143,7 +143,7 @@ _020933AA:
 	mov r1, #3
 	bl FreeBgTilemapBuffer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0209341C: .word 0x000046B8
@@ -2206,7 +2206,7 @@ _020944BA:
 	cmp r7, #0x1e
 	blt _02094420
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	bl NARC_Delete
 	ldr r1, _0209451C ; =sub_02094758
@@ -2360,7 +2360,7 @@ _020945DA:
 	blt _020945DA
 _02094606:
 	ldr r0, [sp, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x20]
 	bl NARC_Delete
 	ldr r1, _0209465C ; =sub_02094758
@@ -2501,7 +2501,7 @@ _02094702:
 	bl sub_02094C08
 _0209472A:
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x14]
 	bl NARC_Delete
 	ldr r1, _02094750 ; =sub_02094758
@@ -2845,7 +2845,7 @@ _0209495C:
 	mov r1, #1
 	bl Sprite_SetDrawFlag
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	ldr r1, _020949EC ; =sub_02094758

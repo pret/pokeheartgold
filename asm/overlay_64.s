@@ -450,7 +450,7 @@ ov64_021E5CA4: ; 0x021E5CA4
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov64_021E5CA4
 
@@ -1960,7 +1960,7 @@ _021E685E:
 	lsl r2, r2, #6
 	bl ov64_021E5AC8
 	ldr r0, [sp, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, r6]
 	ldr r0, [r0]
@@ -2563,7 +2563,7 @@ _021E6D8C:
 	bl ov64_021E5AAC
 _021E6DCE:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	ldr r0, [r1, r0]
@@ -2590,7 +2590,7 @@ _021E6E02:
 	mov r2, #0x20
 	bl ov64_021E5AE4
 	ldr r0, [sp, #0x1c]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x68
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

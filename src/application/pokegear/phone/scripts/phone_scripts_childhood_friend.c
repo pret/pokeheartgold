@@ -85,7 +85,7 @@ u8 ov101_021F3D34(PokegearPhoneCallContext *ctx) {
         }
     }
     count = ptr[LCRandom() % count];
-    FreeToHeap(ptr);
+    Heap_Free(ptr);
     return count + msg_0662_00086;
 }
 

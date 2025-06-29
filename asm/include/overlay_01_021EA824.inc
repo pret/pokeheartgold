@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeap
-.public FreeToHeapExplicit
+.public Heap_FreeExplicit
 .public G3X_SetFog
 .public G3X_SetFogTable
 .public MIi_CpuClear32

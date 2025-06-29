@@ -42,8 +42,8 @@
 .public sub_020137C0
 .public sub_020138E0
 .public AllocFromHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgTilemapRectChangePalette
 .public BgGetCharPtr
 .public InitWindow

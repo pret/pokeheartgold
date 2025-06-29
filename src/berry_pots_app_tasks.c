@@ -65,7 +65,7 @@ static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
     Sprite_SetPositionXY(data->sprites[2], args->unk7 * 27 + 31, 56);
 
     data->runningTasks--;
-    FreeToHeap(args);
+    Heap_Free(args);
     SysTask_Destroy(task);
 }
 
@@ -108,7 +108,7 @@ static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
         Sprite_DeleteAndFreeResources(args->berrySprite);
 
         data->runningTasks--;
-        FreeToHeap(args);
+        Heap_Free(args);
         SysTask_Destroy(task);
         break;
     }
@@ -244,7 +244,7 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
             Sprite_SetDrawFlag(data->sprites[7 + args->potIndex], FALSE);
 
             data->runningTasks--;
-            FreeToHeap(args);
+            Heap_Free(args);
             SysTask_Destroy(task);
         }
 

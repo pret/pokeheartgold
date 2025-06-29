@@ -358,12 +358,12 @@ ov39_022272EC: ; 0x022272EC
 	mov r0, #0xed
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	bl ov39_02227E3C
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov39_022272EC
@@ -2647,7 +2647,7 @@ _02228394:
 	add r0, r4, #0
 	bl ov39_02228948
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	bl ov39_022285A8
 	mov r0, #0
@@ -3012,7 +3012,7 @@ ov39_022285CC: ; 0x022285CC
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	mov r1, #0x13
 	str r0, [sp, #0x24]

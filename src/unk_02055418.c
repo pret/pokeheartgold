@@ -148,7 +148,7 @@ UnkStruct_020556FC *sub_02055680(FieldSystem *fieldSystem, HeapID heapID) {
 
 void sub_020556A8(UnkStruct_020556FC *unkPtr) {
     sub_020556FC(unkPtr);
-    FreeToHeap(unkPtr);
+    Heap_Free(unkPtr);
 }
 
 void sub_020556B8(FieldSystem *fieldSystem) {

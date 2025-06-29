@@ -291,7 +291,7 @@ _0225405C:
 	ldr r0, _022540E4 ; =ov03_022598A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _022540E4 ; =ov03_022598A0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x50]
@@ -339,7 +339,7 @@ _022540B8:
 _022540D2:
 	ldr r0, _022540E4 ; =ov03_022598A0
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _022540E4 ; =ov03_022598A0
 	mov r1, #0
 	str r1, [r0]
@@ -4954,7 +4954,7 @@ _022565F6:
 	ldr r0, [r4, #0x6c]
 	bl PokedexData_UnloadAndDelete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _02256636:
@@ -6329,9 +6329,9 @@ ov03_0225709C: ; 0x0225709C
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -9402,7 +9402,7 @@ ov03_02258894: ; 0x02258894
 	ldr r1, [r0]
 	cmp r1, #0
 	bne _022588A8
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, pc}
 _022588A8:
@@ -10002,7 +10002,7 @@ _02258D6C:
 	add r0, r4, #0
 	bl ov03_02258E88
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _02258D84:

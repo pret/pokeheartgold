@@ -131,7 +131,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
             String_Delete(env->stringBuffer0);
             String_Delete(env->stringBuffer1);
             env->check = 0;
-            FreeToHeap(env);
+            Heap_Free(env);
             if (callback != NULL) {
                 (*callback)(fieldSystem);
                 return FALSE;
@@ -154,8 +154,8 @@ ScriptEnvironment *ScriptEnvironment_New(void) {
 
 void DestroyScriptContext(ScriptContext *ctx) {
     DestroyMsgData(ctx->msgdata);
-    FreeToHeap(ctx->mapScripts);
-    FreeToHeap(ctx);
+    Heap_Free(ctx->mapScripts);
+    Heap_Free(ctx);
 }
 
 void SetupScriptEngine(FieldSystem *fieldSystem, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void *a4) {

@@ -93,9 +93,9 @@ SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNar
 void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     GF_ASSERT(list != NULL);
     if (list->headers != NULL) {
-        FreeToHeap(list->headers);
+        Heap_Free(list->headers);
     }
-    FreeToHeap(list);
+    Heap_Free(list);
 }
 
 SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapId) {
