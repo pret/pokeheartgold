@@ -213,7 +213,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     u8 *srcRibbons = mgData->ribbons;
     int eggMetLocation = Pokemon_GetData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL);
     int personality = Pokemon_GetData(pokemon, MON_DATA_PERSONALITY, NULL);
-    int otid = Pokemon_GetData(pokemon, MON_DATA_OTID, NULL);
+    int otid = Pokemon_GetData(pokemon, MON_DATA_OT_ID, NULL);
     int rand = PRandom(OS_GetTick());
 
     if (personality != 0) {
@@ -227,7 +227,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     }
     SetMonPersonality(pokemon, rand);
 
-    int gender = GetMonGender(pokemon);
+    int gender = Pokemon_GetGender(pokemon);
     Pokemon_SetData(pokemon, MON_DATA_GENDER, &gender);
 
     gender = Pokemon_GetData(pokemon, MON_DATA_HP_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_ATK_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_DEF_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPEED_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPATK_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPDEF_IV, NULL);
@@ -291,7 +291,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
 #endif
         CopyPokemonToPokemon(pokemon, tmpPokemon);
         Pokemon_SetData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
-        Pokemon_SetData(tmpPokemon, MON_DATA_OTID, &trainerId);
+        Pokemon_SetData(tmpPokemon, MON_DATA_OT_ID, &trainerId);
         Pokemon_SetData(tmpPokemon, MON_DATA_MET_GENDER, &gender);
         pokemon = tmpPokemon;
         String_Delete(playerName);

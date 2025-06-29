@@ -1869,7 +1869,7 @@ _022469F8:
 	mov r1, #0x95
 	mov r2, #0x64
 	mov r3, #0x20
-	bl CreateMon
+	bl Pokemon_Create
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3907,7 +3907,7 @@ _022479A0:
 	bne _022479C8
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGender
 	add r7, r0, #0
 	cmp r7, #2
 	bne _022479B8
@@ -3924,7 +3924,7 @@ _022479C8:
 	cmp r0, #0x1c
 	bne _022479A0
 	add r0, r4, #0
-	bl GetNatureFromPersonality
+	bl Pokemon_GetNatureOf
 	ldr r1, [sp, #0x20]
 	cmp r0, r1
 	beq _022479E2
@@ -3943,7 +3943,7 @@ _022479E2:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl CreateMon
+	bl Pokemon_Create
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	ldr r3, [sp, #0x48]
@@ -4064,7 +4064,7 @@ _02247AE0:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl CreateMonWithNature
+	bl Pokemon_CreateWithNature
 	mov r5, #0
 _02247AF8:
 	add r1, r5, #0
@@ -4100,7 +4100,7 @@ _02247B26:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl CreateMonWithNature
+	bl Pokemon_CreateWithNature
 _02247B3C:
 	add r0, r4, #0
 	mov r1, #7

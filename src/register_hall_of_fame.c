@@ -1360,7 +1360,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
 
     u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
-    if (MonIsShiny(hofMon->mon) == TRUE) {
+    if (Pokemon_IsShiny(hofMon->mon) == TRUE) {
         loadPos = (const u8 *)loadPos + 0x20;
     }
     RegisterHallOfFame_ReplaceSpritePltt(loadPos, plttLoc, 0x20);
@@ -2032,7 +2032,7 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
 static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
     BOOL encry = AcquireMonLock(pokemon);
     RegisterHallOfFame_MetLocationType ret;
-    int version = Pokemon_GetData(pokemon, MON_DATA_GAME_VERSION, NULL);
+    int version = Pokemon_GetData(pokemon, MON_DATA_MET_GAME, NULL);
     if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
         ret = REGHOF_METLOC_HOENN;
     } else if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN) {
@@ -2047,7 +2047,7 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
         ret = REGHOF_METLOC_SHUCKIE;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_KENYA_SPEAROW) == TRUE) {
         ret = REGHOF_METLOC_KENYA;
-    } else if (PlayerProfile_GetTrainerID(profile) != Pokemon_GetData(pokemon, MON_DATA_OTID, NULL)) {
+    } else if (PlayerProfile_GetTrainerID(profile) != Pokemon_GetData(pokemon, MON_DATA_OT_ID, NULL)) {
         ret = REGHOF_METLOC_TRADED;
     } else {
         PlayerName_FlatToString(profile, data->strbuf1);

@@ -2571,7 +2571,7 @@ _0221D27E:
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	add r6, #0x1b
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldrb r1, [r6, r5]
 	mov r2, #7
 	bic r1, r2

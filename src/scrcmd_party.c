@@ -64,7 +64,7 @@ BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx) {
     u16 *mine = ScriptGetVarPointer(ctx);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), *slot);
-    u16 pokemonID = Pokemon_GetData(mon, MON_DATA_OTID, NULL);
+    u16 pokemonID = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
     u16 playerID = PlayerProfile_GetTrainerID(profile);
 
     if (pokemonID == playerID) {
@@ -468,7 +468,7 @@ BOOL ScrCmd_MonForgetMove(ScriptContext *ctx) {
     u16 moveSlot = ScriptGetVar(ctx);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), pokemonSlot);
-    MonDeleteMoveSlot(mon, moveSlot);
+    Pokemon_ClearMoveSlot(mon, moveSlot);
 
     return FALSE;
 }
@@ -505,7 +505,7 @@ BOOL ScrCmd_KenyaCheck(ScriptContext *ctx) {
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
     Mail *kenyaMail = NPCTrade_MakeKenyaMail();
     Mail *mail = Mail_New(HEAP_ID_FIELD);
-    Pokemon_GetData(mon, MON_DATA_MAIL_STRUCT, mail);
+    Pokemon_GetData(mon, MON_DATA_MAIL, mail);
     *kenya = Mail_Compare(kenyaMail, mail);
     FreeToHeap(mail);
     FreeToHeap(kenyaMail);
@@ -529,7 +529,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
     for (i = 0; i < Party_GetCount(party); i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
         if (ItemIdIsMail(Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL))) {
-            Pokemon_GetData(mon, MON_DATA_MAIL_STRUCT, mail);
+            Pokemon_GetData(mon, MON_DATA_MAIL, mail);
             if (Mail_Compare(kenyaMail, mail)) {
                 *kenya = TRUE;
                 FreeToHeap(mail);
@@ -572,7 +572,7 @@ BOOL ScrCmd_MonGiveMail(ScriptContext *ctx) {
     item = ITEM_NONE;
     Mail *mail = Mail_New(HEAP_ID_FIELD);
     Mail_Init(mail);
-    Pokemon_SetData(mon, MON_DATA_MAIL_STRUCT, mail);
+    Pokemon_SetData(mon, MON_DATA_MAIL, mail);
     Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item);
     FreeToHeap(mail);
 

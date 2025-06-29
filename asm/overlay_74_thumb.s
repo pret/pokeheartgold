@@ -24912,7 +24912,7 @@ _02234E62:
 	add r2, sp, #8
 	bl BoxPokemon_SetData
 	add r0, r4, #0
-	bl GetBoxMonGender
+	bl BoxPokemon_GetGender
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6f
@@ -26446,10 +26446,10 @@ ov74_02235B14: ; 0x02235B14
 	add r5, r2, #0
 	add r7, r3, #0
 	ldr r4, [sp, #0x44]
-	bl GetMonGender
+	bl Pokemon_GetGender
 	str r0, [sp, #0x24]
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

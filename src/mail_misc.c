@@ -209,7 +209,7 @@ UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
 
     Mail *mail = Mail_New(heapId);
     ptr->mail = mail;
-    Pokemon_GetData(mon, MON_DATA_MAIL_STRUCT, ptr->mail);
+    Pokemon_GetData(mon, MON_DATA_MAIL, ptr->mail);
 
     return ptr;
 }
@@ -236,7 +236,7 @@ BOOL sub_02090F70(UseMailArgs *args, Pokemon *mon) {
     if (sub_02090F6C(args) == 0) {
         return FALSE;
     }
-    Pokemon_SetData(mon, MON_DATA_MAIL_STRUCT, args->mail);
+    Pokemon_SetData(mon, MON_DATA_MAIL, args->mail);
     return TRUE;
 }
 
@@ -254,10 +254,10 @@ int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
     if (idx != -1) {
         Mail *mail = Mail_New(heapId);
 
-        Pokemon_GetData(mon, MON_DATA_MAIL_STRUCT, mail);
+        Pokemon_GetData(mon, MON_DATA_MAIL, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);
         Mail_Init(mail);
-        Pokemon_SetData(mon, MON_DATA_MAIL_STRUCT, mail);
+        Pokemon_SetData(mon, MON_DATA_MAIL, mail);
         Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item);
         FreeToHeap(mail);
         return idx;
@@ -274,7 +274,7 @@ int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId) {
     }
 
     item = MailToItemId(Mail_GetType(mail));
-    Pokemon_SetData(mon, MON_DATA_MAIL_STRUCT, mail);
+    Pokemon_SetData(mon, MON_DATA_MAIL, mail);
     Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item);
     Mailbox_DeleteSlotI(msgs, 0, i);
     FreeToHeap(mail);

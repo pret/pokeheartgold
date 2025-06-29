@@ -3643,7 +3643,7 @@ void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
     Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
-    CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    Pokemon_Create(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
     Pokedex_SetMonSeenFlag(pokedex, mon);
     FreeToHeap(mon);
 }
@@ -4388,14 +4388,14 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) || Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
         return FALSE;
     }
-    if (!MonMetadataMatchesEvent(event, mon, Pokemon_GetData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)))) {
+    if (!MonMetadataMatchesEvent(event, mon, Pokemon_GetData(mon, MON_DATA_OT_ID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)))) {
         return FALSE;
     }
 
     species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     switch (event) {
     case EVENT_SPIKY_EARED_PICHU:
-        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(mon)) {
+        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && Pokemon_IsShiny(mon)) {
             *r6 = 1;
         }
         break;

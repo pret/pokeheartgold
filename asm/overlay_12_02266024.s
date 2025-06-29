@@ -2116,7 +2116,7 @@ _022671C4:
 	cmp r0, #0
 	beq _022672B6
 	ldr r0, [sp, #0x24]
-	bl GetMonGender
+	bl Pokemon_GetGender
 	cmp r0, #0
 	beq _02267200
 	cmp r0, #1

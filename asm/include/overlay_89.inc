@@ -186,7 +186,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public Pokemon_GetData
-.public GetNatureFromPersonality
+.public Pokemon_GetNatureOf
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

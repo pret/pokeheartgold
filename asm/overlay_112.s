@@ -6280,7 +6280,7 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	strb r1, [r7, #0xd]
 	ldr r0, [r5, r0]
-	bl BoxMonIsShiny
+	bl BoxPokemon_IsShiny
 	lsl r0, r0, #0x1f
 	ldrb r2, [r7, #0xe]
 	mov r1, #2
@@ -6325,7 +6325,7 @@ _021E8D24:
 	bl FreeMonPersonal
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl GetBoxMonGender
+	bl BoxPokemon_GetGender
 	ldrb r2, [r7, #0xd]
 	mov r1, #0x60
 	lsl r0, r0, #0x1e
@@ -17835,7 +17835,7 @@ _021EE8E6:
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #8
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 _021EE91C:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -17981,7 +17981,7 @@ _021EEA06:
 	ldrb r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r3, #0x20
-	bl CreateMon
+	bl Pokemon_Create
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #2
@@ -18996,7 +18996,7 @@ ov112_021EF1F0: ; 0x021EF1F0
 	add r2, #0x18
 	bl BoxPokemon_GetData
 	add r0, r4, #0
-	bl BoxMonIsShiny
+	bl BoxPokemon_IsShiny
 	strh r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
@@ -19136,7 +19136,7 @@ ov112_021EF31C: ; 0x021EF31C
 	add r2, #0x1a
 	bl Pokemon_GetData
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	add r1, r5, #0
 	add r1, #0x31
 	strb r0, [r1]
@@ -19254,7 +19254,7 @@ _021EF414:
 	add r2, #2
 	bl Pokemon_GetData
 	add r0, r7, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	add r1, sp, #0x34
 	strb r0, [r1, #6]
 	add r0, r7, #0

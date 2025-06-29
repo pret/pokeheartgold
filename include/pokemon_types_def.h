@@ -50,7 +50,7 @@ typedef struct {
     /* 0x08 */ u32 exp;
     /* 0x0C */ u8 friendship;
     /* 0x0D */ u8 ability;
-    /* 0x0E */ u8 markings; // circle, triangle, square, heart, star, diamond
+    /* 0x0E */ u8 marks; // circle, triangle, square, heart, star, diamond
     /* 0x0F */ u8 originLanguage;
     /* 0x10 */ u8 hpEV;
     /* 0x11 */ u8 atkEV;
@@ -58,11 +58,11 @@ typedef struct {
     /* 0x13 */ u8 spdEV;
     /* 0x14 */ u8 spatkEV;
     /* 0x15 */ u8 spdefEV;
-    /* 0x16 */ u8 coolStat;
-    /* 0x17 */ u8 beautyStat;
-    /* 0x18 */ u8 cuteStat;
-    /* 0x19 */ u8 smartStat;
-    /* 0x1A */ u8 toughStat;
+    /* 0x16 */ u8 cool;
+    /* 0x17 */ u8 beauty;
+    /* 0x18 */ u8 cute;
+    /* 0x19 */ u8 smart;
+    /* 0x1A */ u8 tough;
     /* 0x1B */ u8 sheen;
     // TODO: Finish SinnohRibbonSet1
     /* 0x1C */ u32 sinnohRibbons;
@@ -79,7 +79,7 @@ typedef struct {
     /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, spdIV : 5, spatkIV : 5, spdefIV : 5, isEgg : 1, isNicknamed : 1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
-    /* 0x18 */ u8 fatefulEncounter : 1, gender : 2, alternateForm : 5;
+    /* 0x18 */ u8 fatefulEncounter : 1, gender : 2, form : 5;
     /* 0x19 */ u8 HGSS_shinyLeaves : 6;
     /* 0x19 */ u8 unk_19_6 : 2;
     /* 0x1A */ u16 Unused;
@@ -118,7 +118,7 @@ typedef union {
 } PokemonDataBlock;
 
 typedef struct BoxPokemon {
-    /* 0x000 */ u32 pid;
+    /* 0x000 */ u32 personality;
     /* 0x004 */ u16 party_lock : 1;
     u16 box_lock : 1;
     u16 checksum_fail : 1;
@@ -206,7 +206,7 @@ struct UnkPokemonStruct_02072A98 {
     u32 isNicknamed : 1;
     /* 0x30 */ u8 fatefulEncounter : 1;
     u8 gender : 2;
-    u8 alternateForm : 5;
+    u8 form : 5;
     /* 0x32 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
     /* 0x48 */ u16 otTrainerName[PLAYER_NAME_LENGTH + 1];
     /* 0x58 */ u8 pokeball;

@@ -1848,7 +1848,7 @@ _021E67D0:
 	ldrh r0, [r5, r1]
 	sub r1, #8
 	ldr r1, [r5, r1]
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGender
 	mov r2, #0x61
 	lsl r2, r2, #2
 	str r0, [sp, #0x20]
@@ -1914,7 +1914,7 @@ _021E685E:
 	str r0, [sp, #0x18]
 	ldrh r0, [r5, r1]
 	ldr r1, [sp, #0x18]
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGender
 	add r2, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
@@ -2465,7 +2465,7 @@ _021E6C84:
 	ldrh r0, [r5, r1]
 	sub r1, #8
 	ldr r1, [r5, r1]
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGender
 	mov r1, #0x66
 	lsl r1, r1, #2
 	add r2, r0, #0

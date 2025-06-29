@@ -67,7 +67,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete
-.public CalcMonStats
+.public Pokemon_CalcStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm
@@ -75,7 +75,7 @@
 .public FreeMonPersonal
 .public GetMonBaseStat
 .public GetMonBaseExperienceAtCurrentLevel
-.public MonApplyFriendshipMod
+.public Pokemon_UpdateFriendship
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon
 .public Pokemon_TryLevelUp

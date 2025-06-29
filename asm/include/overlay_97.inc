@@ -80,8 +80,8 @@
 .public sub_0203A994
 .public Pokemon_GetData
 .public BoxPokemon_GetData
-.public MonIsShiny
-.public BoxMonIsShiny
+.public Pokemon_IsShiny
+.public BoxPokemon_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public Mon_GetBoxMon
 .public CalcBoxMonPokeathlonPerformance

@@ -1067,7 +1067,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &moveData);
 
     pp = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, 0);
-    Pokemon_SetData(mon, MON_DATA_MOVE1PP + i, &pp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &pp);
 
     Party_AddMon(party, mon);
 
@@ -1119,7 +1119,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
     u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
-    CreateMon(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
+    Pokemon_Create(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
 
     form = 1;
     Pokemon_SetData(mon, MON_DATA_FORM, &form);
@@ -1127,7 +1127,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     for (i = 0; i < MAX_MON_MOVES; i++) {
         Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
         maxPP = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, 0);
-        Pokemon_SetData(mon, MON_DATA_MOVE1PP + i, &maxPP);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &maxPP);
     }
 
     heldItem = ITEM_ZAP_PLATE;
@@ -1415,7 +1415,7 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(ScriptContext *ctx) {
     for (c = 0; c < partyCount; c++) {
         Pokemon *mon = Party_GetMonByIndex(playerParty, c);
         u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-        u8 gameVer = Pokemon_GetData(mon, MON_DATA_GAME_VERSION, NULL);
+        u8 gameVer = Pokemon_GetData(mon, MON_DATA_MET_GAME, NULL);
         if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)
             && !Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL)
             && !Pokemon_GetData(mon, MON_DATA_EGG_MET_LOCATION, NULL)) {

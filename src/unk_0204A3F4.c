@@ -702,8 +702,8 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
         a0->moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
         a0->ppUp |= Pokemon_GetData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
     }
-    a0->language = Pokemon_GetData(mon, MON_DATA_GAME_LANGUAGE, NULL);
-    a0->otId = Pokemon_GetData(mon, MON_DATA_OTID, NULL);
+    a0->language = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
+    a0->otId = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
     a0->pid = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
     a0->ivsWord = Pokemon_GetData(mon, MON_DATA_IVS_WORD, NULL);
     for (s32 i = 0; i < NUM_STATS; i++) {

@@ -5996,7 +5996,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             }
 
             if (!ov12_022568B0(data->bsys, mon)) {
-                if (Pokemon_GetData(mon, MON_DATA_GAME_LANGUAGE, NULL) != gGameLanguage) {
+                if (Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL) != gGameLanguage) {
                     totalExp = totalExp * 170 / 100;
                 } else {
                     totalExp = totalExp * 150 / 100;
@@ -6005,7 +6005,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 msg.id = msg_0197_00002; // "{0} gained a boosted {1} Exp. Points!"
             }
 
-            u32 newExp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
+            u32 newExp = Pokemon_GetData(mon, MON_DATA_EXP, NULL);
             data->unk30[3] = newExp - GetMonBaseExperienceAtCurrentLevel(mon);
             newExp += totalExp;
 
@@ -6013,7 +6013,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 data->ctx->battleMons[expBattler].exp = newExp;
             }
 
-            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &newExp);
+            Pokemon_SetData(mon, MON_DATA_EXP, &newExp);
             BattleScript_CalcEffortValues(BattleSystem_GetParty(data->bsys, expBattler),
                 slot,
                 data->ctx->battleMons[data->ctx->battlerIdFainted].species,
@@ -6087,9 +6087,9 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 oldStats->stats[i] = Pokemon_GetData(mon, stats.stats[i], NULL);
             }
 
-            MonApplyFriendshipMod(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->bsys));
+            Pokemon_UpdateFriendship(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->bsys));
             ApplyMonMoodModifier(mon, 0);
-            CalcMonStats(mon);
+            Pokemon_CalcStats(mon);
 
             if (data->ctx->selectedMonIndex[expBattler] == slot) {
                 BattleSystem_ReloadMonData(data->bsys, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);

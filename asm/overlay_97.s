@@ -408,7 +408,7 @@ ov97_0221E898: ; 0x0221E898
 	add r2, #0x18
 	bl BoxPokemon_GetData
 	add r0, r4, #0
-	bl BoxMonIsShiny
+	bl BoxPokemon_IsShiny
 	strh r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
@@ -541,7 +541,7 @@ _0221E9B4:
 	mov r1, #0x75
 	bl Pokemon_GetData
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	strb r0, [r4, #0x1c]
 	add r0, r6, #0
 	mov r1, #0x6f
@@ -865,7 +865,7 @@ _0221EC3C:
 	add r2, #2
 	bl Pokemon_GetData
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	add r1, sp, #0x70
 	strb r0, [r1, #6]
 	add r0, r6, #0

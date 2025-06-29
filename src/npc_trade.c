@@ -73,7 +73,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
         name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
-        Pokemon_SetData(kenya, MON_DATA_MAIL_STRUCT, mail);
+        Pokemon_SetData(kenya, MON_DATA_MAIL, mail);
         String_Delete(name);
         FreeToHeap(mail);
     }
@@ -113,7 +113,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 1;
     }
 
-    capsule = Pokemon_GetData(mon, MON_DATA_CAPSULE, NULL);
+    capsule = Pokemon_GetData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
     if (capsule != 0) {
         return 3;
     }
@@ -194,7 +194,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     u32 mapsec;
     int heapId_2;
 
-    CreateMon(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
+    Pokemon_Create(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
 
     heapId_2 = (int)heapId;
     name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
@@ -224,11 +224,11 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     String_Delete(name);
 
     Pokemon_SetData(mon, MON_DATA_MET_GENDER, &trade_dat->gender);
-    Pokemon_SetData(mon, MON_DATA_GAME_LANGUAGE, &trade_dat->language);
+    Pokemon_SetData(mon, MON_DATA_LANGUAGE, &trade_dat->language);
 
     mapsec = MapHeader_GetMapSec(mapno);
     MonSetTrainerMemo(mon, NULL, met_level_strat, mapsec, heapId);
 
     CalcMonLevelAndStats(mon);
-    GF_ASSERT(!MonIsShiny(mon));
+    GF_ASSERT(!Pokemon_IsShiny(mon));
 }

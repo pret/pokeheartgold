@@ -193,7 +193,7 @@
 .public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature
-.public GetMonGender
+.public Pokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon
 .public GetMoveMaxPP

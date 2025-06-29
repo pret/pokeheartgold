@@ -100,7 +100,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
             u32 level = Pokemon_GetData(mon, MON_DATA_LEVEL, 0);
             u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
             u32 exp = GetMonExpBySpeciesAndLevel(species, level - 3);
-            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
+            Pokemon_SetData(mon, MON_DATA_EXP, &exp);
             CalcMonLevelAndStats(mon);
         }
     }
@@ -109,7 +109,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     for (i = 0; i < partyCnt; i++) {
         mon = Party_GetMonByIndex(arcadeData->playerParty, i);
         data = arcadeData->savedHp[i];
-        Pokemon_SetData(mon, MON_DATA_MAXHP, &data);
+        Pokemon_SetData(mon, MON_DATA_MAX_HP, &data);
         Pokemon_SetData(mon, MON_DATA_HP, &data);
         data = arcadeData->savedAtk[i];
         Pokemon_SetData(mon, MON_DATA_ATK, &data);
@@ -118,9 +118,9 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
         data = arcadeData->savedSpd[i];
         Pokemon_SetData(mon, MON_DATA_SPEED, &data);
         data = arcadeData->savedSpAtk[i];
-        Pokemon_SetData(mon, MON_DATA_SPATK, &data);
+        Pokemon_SetData(mon, MON_DATA_SP_ATK, &data);
         data = arcadeData->savedSpDef[i];
-        Pokemon_SetData(mon, MON_DATA_SPDEF, &data);
+        Pokemon_SetData(mon, MON_DATA_SP_DEF, &data);
     }
 
     BattleSetup_Delete(setup);
@@ -166,12 +166,12 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 
     for (int i = 0; i < partyCnt; i++) {
         Pokemon *mon = Party_GetMonByIndex(data->playerParty, i);
-        data->savedHp[i] = Pokemon_GetData(mon, MON_DATA_MAXHP, NULL);
+        data->savedHp[i] = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
         data->savedAtk[i] = Pokemon_GetData(mon, MON_DATA_ATK, NULL);
         data->savedDef[i] = Pokemon_GetData(mon, MON_DATA_DEF, NULL);
         data->savedSpd[i] = Pokemon_GetData(mon, MON_DATA_SPEED, NULL);
-        data->savedSpAtk[i] = Pokemon_GetData(mon, MON_DATA_SPATK, NULL);
-        data->savedSpDef[i] = Pokemon_GetData(mon, MON_DATA_SPDEF, NULL);
+        data->savedSpAtk[i] = Pokemon_GetData(mon, MON_DATA_SP_ATK, NULL);
+        data->savedSpDef[i] = Pokemon_GetData(mon, MON_DATA_SP_DEF, NULL);
     }
 }
 

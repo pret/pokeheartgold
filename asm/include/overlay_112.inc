@@ -254,7 +254,7 @@
 .public AllocMonZeroed
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
-.public CreateMon
+.public Pokemon_Create
 .public CalcMonLevelAndStats
 .public Pokemon_GetData
 .public BoxPokemon_GetData
@@ -265,10 +265,10 @@
 .public GetPersonalAttr
 .public FreeMonPersonal
 .public CalcBoxMonExpToNextLevel
-.public MonApplyFriendshipMod
-.public GetBoxMonGender
-.public MonIsShiny
-.public BoxMonIsShiny
+.public Pokemon_UpdateFriendship
+.public BoxPokemon_GetGender
+.public Pokemon_IsShiny
+.public BoxPokemon_IsShiny
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public sub_02070438

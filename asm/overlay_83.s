@@ -7950,7 +7950,7 @@ _02241F24:
 	strb r0, [r5, r1]
 _02241F2C:
 	add r0, r6, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldr r3, _02241FE4 ; =0x0000080E
 	mov r2, #0x7f
 	ldrb r1, [r5, r3]
@@ -15698,7 +15698,7 @@ _02245E54:
 	strb r0, [r5, r1]
 _02245E5C:
 	add r0, r6, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldr r3, _02245F18 ; =0x000005C6
 	mov r2, #0x7f
 	ldrb r1, [r5, r3]

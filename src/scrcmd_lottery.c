@@ -46,7 +46,7 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     for (monDigit = 0, monPosition = 0, i = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
         if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
-            otid = Pokemon_GetData(mon, MON_DATA_OTID, NULL) & 0xffff;
+            otid = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL) & 0xffff;
             digitCount = LotoId_CountDigitsMatched(lotoId, otid);
             if (digitCount != 0 && monDigit < digitCount) {
                 monDigit = digitCount;
@@ -59,7 +59,7 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(storage, ii, j);
             if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) != 0 && !BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
-                otid = BoxPokemon_GetData(boxMon, MON_DATA_OTID, NULL) & 0xffff;
+                otid = BoxPokemon_GetData(boxMon, MON_DATA_OT_ID, NULL) & 0xffff;
                 digitCount = LotoId_CountDigitsMatched(lotoId, otid);
                 if (digitCount != 0 && boxDigit < digitCount) {
                     boxDigit = digitCount;

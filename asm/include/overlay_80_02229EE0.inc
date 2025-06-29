@@ -28,12 +28,12 @@
 .public sub_02039F68
 .public MapHeader_GetMapSec
 .public ZeroMonData
-.public CreateMon
+.public Pokemon_Create
 .public CalcMonLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
-.public GetNatureFromPersonality
+.public Pokemon_GetNatureOf
 .public CalcShininessByOtIdAndPersonality
 .public sub_0207217C
 .public MaskOfFlagNo

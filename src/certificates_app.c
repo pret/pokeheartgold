@@ -738,8 +738,8 @@ static u32 ov78_021E6688(int species, int form, int gender) {
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3) {
     u32 species = Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL);
     u32 form = Pokemon_GetData(pokemon, MON_DATA_FORM, NULL);
-    u32 gender = GetMonGender(pokemon);
-    BOOL shiny = MonIsShiny(pokemon);
+    u32 gender = Pokemon_GetGender(pokemon);
+    BOOL shiny = Pokemon_IsShiny(pokemon);
 
     u32 bufferSize, unk;
     if (a3 != 0) {

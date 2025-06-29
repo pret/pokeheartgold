@@ -71,7 +71,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
-.public GetNatureFromPersonality
+.public Pokemon_GetNatureOf
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public sub_02070C24

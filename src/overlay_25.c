@@ -234,7 +234,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
         CopyPokemonToPokemon(Party_GetMonByIndex(party, i), mon);
         if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
             u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
-            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
+            Pokemon_SetData(mon, MON_DATA_EXP, &exp);
             CalcMonLevelAndStats(mon);
         }
         BattleSetup_AddMonToParty(setup, mon, BATTLER_PLAYER);
@@ -269,10 +269,10 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
         tempByte = trainerHouseMon->ppUp >> (i * 2) & 3;
         Pokemon_SetData(mon, MON_DATA_MOVE1PPUP + i, &tempByte);
         u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, NULL);
-        Pokemon_SetData(mon, MON_DATA_MOVE1PP + i, &pp);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &pp);
     }
     u32 otid = trainerHouseMon->otid;
-    Pokemon_SetData(mon, MON_DATA_OTID, &otid);
+    Pokemon_SetData(mon, MON_DATA_OT_ID, &otid);
     for (i = 0; i < NUM_STATS; i++) {
         tempByte = *(&trainerHouseMon->hpEv + i);
         Pokemon_SetData(mon, MON_DATA_HP_EV + i, &tempByte);
@@ -283,7 +283,7 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     StringFillEOS(nickname, NELEMS(nickname));
     CopyU16StringArrayN(nickname, trainerHouseMon->nickname, POKEMON_NAME_LENGTH);
     Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT, nickname);
-    Pokemon_SetData(mon, MON_DATA_GAME_LANGUAGE, &(trainerHouseMon->language));
+    Pokemon_SetData(mon, MON_DATA_LANGUAGE, &(trainerHouseMon->language));
     CalcMonLevelAndStats(mon);
 }
 

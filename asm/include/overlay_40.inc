@@ -251,7 +251,7 @@
 .public Pokemon_SetData
 .public AllocAndLoadMonPersonal
 .public FreeMonPersonal
-.public GetGenderBySpeciesAndPersonality
+.public Species_GetGender
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm

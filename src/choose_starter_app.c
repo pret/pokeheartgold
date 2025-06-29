@@ -1178,7 +1178,7 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
             Pokemon_GetData(work->choices[i], MON_DATA_SPECIES, NULL),
             Pokemon_GetData(work->choices[i], MON_DATA_GENDER, NULL),
             2,
-            MonIsShiny(work->choices[i]),
+            Pokemon_IsShiny(work->choices[i]),
             0,
             0);
         spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.charDataID, work->heapId);

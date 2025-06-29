@@ -44,7 +44,7 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                 team->party[j].level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
                 team->party[j].form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
                 team->party[j].personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
-                team->party[j].otid = Pokemon_GetData(mon, MON_DATA_OTID, NULL);
+                team->party[j].otid = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
                 team->party[j].moves[0] = Pokemon_GetData(mon, MON_DATA_MOVE1, NULL);
                 team->party[j].moves[1] = Pokemon_GetData(mon, MON_DATA_MOVE2, NULL);
                 team->party[j].moves[2] = Pokemon_GetData(mon, MON_DATA_MOVE3, NULL);

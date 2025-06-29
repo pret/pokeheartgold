@@ -160,7 +160,7 @@ _02229FF8:
 	add r6, r5, #0
 	orr r6, r0
 	add r0, r6, #0
-	bl GetNatureFromPersonality
+	bl Pokemon_GetNatureOf
 	add r1, sp, #8
 	ldrb r1, [r1, #0xb]
 	cmp r1, r0
@@ -345,7 +345,7 @@ _0222A15E:
 	add r0, r5, #0
 	lsl r1, r1, #0x15
 	lsr r1, r1, #0x15
-	bl CreateMon
+	bl Pokemon_Create
 	add r0, r5, #0
 	mov r1, #0xaf
 	add r2, sp, #0x1c

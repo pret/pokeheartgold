@@ -301,7 +301,7 @@ void sub_0208E994(Unk0208E600 *a0) {
 // Returns true if the Pokemon has the proper metadata to trigger the event.
 BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
     u8 metCondition = MonMetCondition(mon, isMine);
-    u8 version = Pokemon_GetData(mon, MON_DATA_GAME_VERSION, NULL);
+    u8 version = Pokemon_GetData(mon, MON_DATA_MET_GAME, NULL);
 
     if ((metCondition == MET_CONDITION_FATEFUL_ENCOUNTER || metCondition == MET_CONDITION_FATEFUL_ENCOUNTER_TRADED) && (eventNo != EVENT_ARCEUS_HALL_OF_ORIGIN)) {
         return TRUE;
@@ -370,7 +370,7 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     BufferIntegerAsString(a0->msgFmt, 2, Pokemon_GetData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferIntegerAsString(a0->msgFmt, 3, Pokemon_GetData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
 
-    version = Pokemon_GetData(a0->mon, MON_DATA_GAME_VERSION, NULL);
+    version = Pokemon_GetData(a0->mon, MON_DATA_MET_GAME, NULL);
     switch (version) {
     case 0:
     case 6:
@@ -798,7 +798,7 @@ static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *pro
     u32 gender = PlayerProfile_GetTrainerGender(profile);
     String *name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
 
-    BoxPokemon_SetData(boxMon, MON_DATA_OTID, &otId);
+    BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &otId);
     BoxPokemon_SetData(boxMon, MON_DATA_MET_GENDER, &gender);
     BoxPokemon_SetData(boxMon, MON_DATA_OT_NAME_2, name);
 

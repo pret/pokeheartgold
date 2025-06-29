@@ -1036,10 +1036,10 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
     PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
     partyMenu->monsDrawState[partySlot].species = species;
     partyMenu->monsDrawState[partySlot].hp = (u16)Pokemon_GetData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partySlot].maxHp = (u16)Pokemon_GetData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->monsDrawState[partySlot].maxHp = (u16)Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
     partyMenu->monsDrawState[partySlot].level = (u16)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
     partyMenu->monsDrawState[partySlot].heldItem = (u16)Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
-    partyMenu->monsDrawState[partySlot].capsule = (u16)Pokemon_GetData(mon, MON_DATA_CAPSULE, NULL);
+    partyMenu->monsDrawState[partySlot].capsule = (u16)Pokemon_GetData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
     partyMenu->monsDrawState[partySlot].isEgg = (u8)Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
     partyMenu->monsDrawState[partySlot].form = (u8)Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     if (Pokemon_GetData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
@@ -1047,7 +1047,7 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
     } else {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = TRUE;
     }
-    partyMenu->monsDrawState[partySlot].gender = GetMonGender(mon);
+    partyMenu->monsDrawState[partySlot].gender = Pokemon_GetGender(mon);
     partyMenu->monsDrawState[partySlot].active = TRUE;
     partyMenu->monsDrawState[partySlot].status = (u8)Pokemon_GetStatusIconId(mon);
     PartyMenu_MonSuperContestEligibilityCheck(partyMenu, mon, partySlot);

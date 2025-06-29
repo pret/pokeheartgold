@@ -4199,7 +4199,7 @@ _022485B4:
 	add r0, r7, #0
 	mov r1, #8
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #6
 	bl ApplyMonMoodModifier
@@ -4212,7 +4212,7 @@ _02248602:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4225,7 +4225,7 @@ _02248620:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4304,20 +4304,20 @@ ov12_0226C324: ; 0x0226C324
 
 .public ov12_0226C33C
 ov12_0226C33C: ; 0x0226C33C
-	.word MON_DATA_MAXHP
+	.word MON_DATA_MAX_HP
 	.word MON_DATA_ATK
 	.word MON_DATA_DEF
-	.word MON_DATA_SPATK
-	.word MON_DATA_SPDEF
+	.word MON_DATA_SP_ATK
+	.word MON_DATA_SP_DEF
 	.word MON_DATA_SPEED
 
 .public ov12_0226C354
 ov12_0226C354: ; 0x0226C354
-	.word MON_DATA_MAXHP
+	.word MON_DATA_MAX_HP
 	.word MON_DATA_ATK
 	.word MON_DATA_DEF
-	.word MON_DATA_SPATK
-	.word MON_DATA_SPDEF
+	.word MON_DATA_SP_ATK
+	.word MON_DATA_SP_DEF
 	.word MON_DATA_SPEED
 
 .public ov12_0226C36C
@@ -4331,11 +4331,11 @@ ov12_0226C36C: ; 0x0226C36C
 
 .public ov12_0226C384
 ov12_0226C384: ; 0x0226C384
-	.word MON_DATA_MAXHP
+	.word MON_DATA_MAX_HP
 	.word MON_DATA_ATK
 	.word MON_DATA_DEF
-	.word MON_DATA_SPATK
-	.word MON_DATA_SPDEF
+	.word MON_DATA_SP_ATK
+	.word MON_DATA_SP_DEF
 	.word MON_DATA_SPEED
 
 .public sLowKickDamageTable

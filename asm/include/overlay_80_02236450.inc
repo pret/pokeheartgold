@@ -20,7 +20,7 @@
 .public Pokemon_SetData
 .public GetMonBaseStat
 .public GetMonExpBySpeciesAndLevel
-.public GetNatureFromPersonality
+.public Pokemon_GetNatureOf
 .public CalcShininessByOtIdAndPersonality
 .public CopyPokemonToPokemon
 .public MaskOfFlagNo

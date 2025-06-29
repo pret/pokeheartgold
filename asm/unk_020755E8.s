@@ -2832,7 +2832,7 @@ _02076CE6:
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r5, #0
-	mov r1, #MON_DATA_MARKINGS
+	mov r1, #MON_DATA_MARKS
 	add r2, sp, #0
 	bl Pokemon_SetData
 	mov r1, #MON_DATA_SINNOH_CHAMP_RIBBON

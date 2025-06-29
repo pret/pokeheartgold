@@ -91,7 +91,7 @@ sub_0202B684: ; 0x0202B684
 	bl Pokemon_GetData
 	str r0, [r5]
 	add r0, r4, #0
-	mov r1, #MON_DATA_OTID
+	mov r1, #MON_DATA_OT_ID
 	mov r2, #0
 	bl Pokemon_GetData
 	str r0, [r5, #4]
@@ -175,7 +175,7 @@ sub_0202B730: ; 0x0202B730
 	str r0, [sp, #0xc]
 	ldrh r1, [r5, #8]
 	add r0, r4, #0
-	bl CreateMon
+	bl Pokemon_Create
 	add r2, r5, #0
 	add r0, r4, #0
 	mov r1, #0x75

@@ -143,8 +143,8 @@
 .public sub_0203A930
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public MonApplyFriendshipMod
-.public GetMonGender
+.public Pokemon_UpdateFriendship
+.public Pokemon_GetGender
 .public MaskOfFlagNo
 .public SaveArray_Party_Alloc
 .public Party_GetCount

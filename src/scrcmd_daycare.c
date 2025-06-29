@@ -171,7 +171,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
         form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
         species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
         u32 gender = BoxPokemon_GetData(boxMon, MON_DATA_GENDER, NULL);
-        BOOL shiny = BoxMonIsShiny(boxMon);
+        BOOL shiny = BoxPokemon_IsShiny(boxMon);
 
         CreateDaycareMonSpriteInternal(fieldSystem->mapObjectManager, (u8)dc_mon_idx, species, form, gender, 1, x, y, fieldSystem->location->mapId, shiny);
     }
