@@ -82,6 +82,8 @@ typedef struct PokegearMapAppData {
     int substate;                             // 0x008
     u8 unk_00C;                               // 0x00C
     u8 unk_00D;                               // 0x00D
+    u8 unk_00E;                               // 0x00E
+    s8 unk_00F;                               // 0x00F
     PokegearAppData *pokegear;                // 0x010
     PokegearUnkSub03C unk_014;                // 0x014
     int unk_030;                              // 0x030
@@ -172,7 +174,10 @@ void ov101_021EA608(PokegearMapAppData *mapApp, u8 a1);
 const PokegearMapAppData_Sub214 *ov101_021EA6E8(PokegearMapAppData *mapApp, u8 a1, u8 a2);
 const PokegearMapAppData_Sub214 *ov101_021EA758(PokegearMapAppData *mapApp, u16 a1);
 void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3);
-BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 a1, u8 a2, u8 a3);
+BOOL ov101_021EA7E4(PokegearMapAppData *mapApp, u16 a1, u16 a2);
+BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 a1, u16 a2, u16 a3);
+int ov101_021EA874(PokegearMapAppData *mapApp, u16 a1, u16 a2);
+int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3);
 void ov101_021EAD90(PokegearMapAppData *mapApp, int a1);
 void ov101_021EAE54(PokegearMapAppData *mapApp, int a1);
 void ov101_021EAF40(PokegearMapAppData *mapApp);
@@ -192,7 +197,7 @@ int ov101_021ED158(PokegearMapAppData *mapApp);
 int ov101_021ED2C0(PokegearMapAppData *mapApp);
 void ov101_021ED4E0(PokegearMapAppData *mapApp);
 void ov101_021ED5AC(PokegearMapAppData *mapApp);
-u8 ov101_021ED614(PokegearMapAppData *mapApp, u16 a1);
+u8 ov101_021ED614(PokegearMapAppData *mapApp, int a1);
 u8 ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
 void ov101_021ED79C(u8 a0, u8 a1, u16 a2);
 
