@@ -50,11 +50,11 @@ typedef struct UnkPokegearSub8List {
     UnkPokegearSub8 list[100];
 } UnkPokegearSub8List;
 
-struct UnkStruct_0202F3DC {
+typedef struct UnkStruct_0202F3DC {
     u32 unk_0;
     u8 unk_4[4];
     u16 unk_8[4];
-};
+} UnkStruct_0202F3DC;
 
 typedef struct SavePokegear {
     u8 lastUsedApp;

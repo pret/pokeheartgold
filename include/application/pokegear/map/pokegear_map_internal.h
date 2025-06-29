@@ -6,6 +6,7 @@
 #include "application/pokegear/pokegear_internal.h"
 
 #include "obj_char_transfer.h"
+#include "safari_zone.h"
 #include "unk_02013534.h"
 
 typedef struct UnkStruct_ov101_021F79B4 {
@@ -69,9 +70,17 @@ typedef struct PokegearMapAppData_Sub214 {
     u8 unk_F;
 } PokegearMapAppData_Sub214;
 
+typedef struct PokegearMapAppData_Sub118_Sub4 {
+    UnkStruct_0202F3DC unk_00;
+    u8 unk_10;
+    u8 unk_11;
+    u8 unk_12;
+    u8 unk_13;
+} PokegearMapAppData_Sub118_Sub4;
+
 typedef struct PokegearMapAppData_Sub118 {
     const PokegearMapAppData_Sub214 *unk_0;
-    int unk_4;
+    PokegearMapAppData_Sub118_Sub4 *unk_4;
     u16 unk_8;
     u16 unk_A;
 } PokegearMapAppData_Sub118;
@@ -97,8 +106,7 @@ typedef struct PokegearMapAppData {
     MessageFormat *unk_08C;                   // 0x08C
     String *unk_090;                          // 0x090
     u8 filler_094[8];                         // 0x094
-    String *unk_09C;                          // 0x09C
-    String *unk_0A0;                          // 0x0A0
+    String *unk_09C[2];                       // 0x09C
     String *unk_0A4;                          // 0x0A4
     u8 filler_0A8[12];                        // 0x0A8
     String *unk_0B4;                          // 0x0B4
@@ -145,9 +153,13 @@ typedef struct PokegearMapAppData {
     u8 unk_13D_3 : 1;                         // 0x13D
     u8 filler_13E[0x16];                      // 0x13E
     void *unk_154[6];                         // 0x154
-    NNSG2dScreenData *unk_16C[6];             // 0x16C
-    Window unk_184[8];                        // 0x184
-    Window unk_204;                           // 0x204
+    NNSG2dScreenData *unk_16C;                // 0x16C
+    NNSG2dScreenData *unk_170;                // 0x170
+    NNSG2dScreenData *unk_174;                // 0x174
+    NNSG2dScreenData *unk_178;                // 0x178
+    NNSG2dScreenData *unk_17C;                // 0x17C
+    NNSG2dScreenData *unk_180;                // 0x180
+    Window unk_184[9];                        // 0x184
     const PokegearMapAppData_Sub214 *unk_214; // 0x214
     u8 filler_218[0x7D0];                     // 0x218
     u16 unk_9E8[ROAMER_MAX];                  // 0x9E8
@@ -186,7 +198,7 @@ void ov101_021EB2FC(void *appData);
 void ov101_021EB338(void *appData);
 void ov101_021EB364(void *appData);
 void ov101_021EB378(void *appData);
-void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
+void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, int a2);
 PokegearReturnCode ov101_021EB568(PokegearMapAppData *mapApp);
 PokegearReturnCode ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int ov101_021ECAF0(PokegearMapAppData *mapApp);
@@ -197,9 +209,9 @@ int ov101_021ED158(PokegearMapAppData *mapApp);
 int ov101_021ED2C0(PokegearMapAppData *mapApp);
 void ov101_021ED4E0(PokegearMapAppData *mapApp);
 void ov101_021ED5AC(PokegearMapAppData *mapApp);
-u8 ov101_021ED614(PokegearMapAppData *mapApp, int a1);
-u8 ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
-void ov101_021ED79C(u8 a0, u8 a1, u16 a2);
+PokegearMapAppData_Sub118_Sub4 *ov101_021ED614(PokegearMapAppData *mapApp, int a1);
+PokegearMapAppData_Sub118_Sub4 *ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
+void ov101_021ED79C(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u16 a2);
 
 extern const PokegearMapAppData_Sub214 ov101_021F7372[];
 extern const UnkStruct_ov101_021F79B4 ov101_021F79B4[];

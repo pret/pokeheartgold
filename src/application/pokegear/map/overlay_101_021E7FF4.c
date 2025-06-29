@@ -212,12 +212,12 @@ void ov101_021E8370(PokegearMapAppData *mapApp, u8 a1) {
     sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 10, GF_BG_LYR_MAIN_2, 0, 0, 0);
     sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, a1 + 50, GF_BG_LYR_SUB_2, 0, 0, 0);
     sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 12, GF_BG_LYR_SUB_3, 0, 0, 0);
-    mapApp->unk_154[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 56, FALSE, &mapApp->unk_16C[0], mapApp->heapId);
-    mapApp->unk_154[1] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 11, FALSE, &mapApp->unk_16C[1], mapApp->heapId);
-    mapApp->unk_154[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 13, FALSE, &mapApp->unk_16C[2], mapApp->heapId);
-    mapApp->unk_154[3] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 32, FALSE, &mapApp->unk_16C[3], mapApp->heapId);
-    mapApp->unk_154[4] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 38, FALSE, &mapApp->unk_16C[4], mapApp->heapId);
-    mapApp->unk_154[5] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 44, FALSE, &mapApp->unk_16C[5], mapApp->heapId);
+    mapApp->unk_154[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 56, FALSE, &mapApp->unk_16C, mapApp->heapId);
+    mapApp->unk_154[1] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 11, FALSE, &mapApp->unk_170, mapApp->heapId);
+    mapApp->unk_154[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 13, FALSE, &mapApp->unk_174, mapApp->heapId);
+    mapApp->unk_154[3] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 32, FALSE, &mapApp->unk_178, mapApp->heapId);
+    mapApp->unk_154[4] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 38, FALSE, &mapApp->unk_17C, mapApp->heapId);
+    mapApp->unk_154[5] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, a1 + 44, FALSE, &mapApp->unk_180, mapApp->heapId);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -239,9 +239,9 @@ void ov101_021E84FC(PokegearMapAppData *mapApp) {
         AddWindowParameterized(mapApp->pokegear->bgConfig, &mapApp->unk_184[i], ov101_021F7B64[i].bgId, ov101_021F7B64[i].left, ov101_021F7B64[i].top, ov101_021F7B64[i].width, ov101_021F7B64[i].height, ov101_021F7B64[i].palette, ov101_021F7B64[i].baseTile);
         FillWindowPixelBuffer(&mapApp->unk_184[i], 0);
     }
-    InitWindow(&mapApp->unk_204);
-    AddTextWindowTopLeftCorner(mapApp->pokegear->bgConfig, &mapApp->unk_204, 11, 2, 0x3C5, 0);
-    FillWindowPixelBufferText_AssumeTileSize32(&mapApp->unk_204, 0);
+    InitWindow(&mapApp->unk_184[8]);
+    AddTextWindowTopLeftCorner(mapApp->pokegear->bgConfig, &mapApp->unk_184[8], 11, 2, 0x3C5, 0);
+    FillWindowPixelBufferText_AssumeTileSize32(&mapApp->unk_184[8], 0);
 }
 
 void ov101_021E857C(PokegearMapAppData *mapApp) {
@@ -251,15 +251,15 @@ void ov101_021E857C(PokegearMapAppData *mapApp) {
         ClearWindowTilemapAndCopyToVram(&mapApp->unk_184[i]);
         RemoveWindow(&mapApp->unk_184[i]);
     }
-    RemoveWindow(&mapApp->unk_204);
+    RemoveWindow(&mapApp->unk_184[8]);
 }
 
 void ov101_021E85A8(PokegearMapAppData *mapApp) {
     mapApp->unk_088 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0273_bin, mapApp->heapId);
     mapApp->unk_08C = MessageFormat_New_Custom(2, 91, mapApp->heapId);
     mapApp->unk_090 = String_New(91, mapApp->heapId);
-    mapApp->unk_09C = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00001);
-    mapApp->unk_0A0 = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00000);
+    mapApp->unk_09C[0] = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00001);
+    mapApp->unk_09C[1] = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00000);
     mapApp->unk_0A4 = String_New(40, mapApp->heapId);
     mapApp->unk_0B4 = NewString_ReadMsgData(mapApp->unk_088, msg_0273_00003);
     mapApp->unk_0B8 = 2;
@@ -268,8 +268,8 @@ void ov101_021E85A8(PokegearMapAppData *mapApp) {
 void ov101_021E862C(PokegearMapAppData *mapApp) {
     String_Delete(mapApp->unk_0B4);
     String_Delete(mapApp->unk_0A4);
-    String_Delete(mapApp->unk_0A0);
-    String_Delete(mapApp->unk_09C);
+    String_Delete(mapApp->unk_09C[1]);
+    String_Delete(mapApp->unk_09C[0]);
     String_Delete(mapApp->unk_090);
     MessageFormat_Delete(mapApp->unk_08C);
     DestroyMsgData(mapApp->unk_088);
@@ -383,12 +383,12 @@ void ov101_021E8AE4(PokegearMapAppData *mapApp) {
     u32 sp14;
     int i;
 
-    mapApp->unk_040 = sub_02013910(&mapApp->unk_204, mapApp->heapId);
+    mapApp->unk_040 = sub_02013910(&mapApp->unk_184[8], mapApp->heapId);
     sp14 = sub_02013948(mapApp->unk_040, NNS_G2D_VRAM_TYPE_2DMAIN);
-    AddTextPrinterParameterizedWithColor(&mapApp->unk_204, 0, mapApp->unk_0A0, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&mapApp->unk_184[8], 0, mapApp->unk_09C[1], 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     sp18.unk_00 = mapApp->unk_03C;
-    sp18.unk_04 = &mapApp->unk_204;
+    sp18.unk_04 = &mapApp->unk_184[8];
     sp18.unk_08 = SpriteManager_GetSpriteList(mapApp->pokegear->spriteManager);
     sp18.unk_0C = SpriteManager_FindPlttResourceProxy(mapApp->pokegear->spriteManager, 0);
     sp18.unk_20 = 0;
@@ -514,11 +514,11 @@ void ov101_021E8E58(PokegearMapAppData *mapApp) {
     mapApp->pokegear->unknownCB = ov101_021EB2FC;
     ov101_021E990C(mapApp);
     ov101_021E9B70(mapApp, &mapApp->unk_0C8);
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->unk_16C[3]->rawData, 0, 0, mapApp->unk_16C[3]->screenWidth / 8, mapApp->unk_16C[3]->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->unk_178->rawData, 0, 0, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
 
     ov101_021EAF40(mapApp);
     ov101_021EB38C(mapApp, 1, mapApp->unk_138_0);
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->unk_16C[0]->rawData, 0, 7, mapApp->unk_16C[0]->screenWidth / 8, mapApp->unk_16C[0]->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->unk_16C->rawData, 0, 7, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
 
     ov101_021EA794(mapApp, &mapApp->unk_118, mapApp->unk_110, mapApp->unk_112);
     ov101_021EAD90(mapApp, 0);
@@ -566,8 +566,8 @@ void ov101_021E90A8(PokegearMapAppData *mapApp) {
         BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
     }
 
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 14, mapApp->unk_16C[4]->rawData, 0, 0, mapApp->unk_16C[4]->screenWidth / 8, mapApp->unk_16C[4]->screenHeight / 8);
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 24, mapApp->unk_16C[5]->rawData, 0, 0, mapApp->unk_16C[5]->screenWidth / 8, mapApp->unk_16C[5]->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 14, mapApp->unk_17C->rawData, 0, 0, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 24, mapApp->unk_180->rawData, 0, 0, mapApp->unk_180->screenWidth / 8, mapApp->unk_180->screenHeight / 8);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_ON);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
