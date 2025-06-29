@@ -7511,7 +7511,7 @@ ov41_02249604: ; 0x02249604
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #2

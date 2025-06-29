@@ -5496,7 +5496,7 @@ ov81_022409B0: ; 0x022409B0
 	add r0, r7, #0
 	mov r1, #0xb0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #1
 	bne _02240AC8
 	add r0, r7, #0
@@ -6131,12 +6131,12 @@ ov81_02240F48: ; 0x02240F48
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x1c
@@ -6270,7 +6270,7 @@ _02241062:
 	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x3e
 	lsl r1, r1, #4
 	strh r0, [r6, r1]
@@ -6299,7 +6299,7 @@ _0224109C:
 	bl Party_GetMonByIndex
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x3e
 	lsl r1, r1, #4
 	strh r0, [r4, r1]
@@ -8565,13 +8565,13 @@ ov81_02242218: ; 0x02242218
 	mov r1, #5
 	mov r2, #0
 	str r0, [sp, #0x1c]
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x18]

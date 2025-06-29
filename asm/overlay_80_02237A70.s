@@ -448,13 +448,13 @@ _02237DAC:
 	mov r1, #0xac
 	mov r2, #0
 	add r5, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02237DEC
 	add r0, r5, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02237DDE
 	mov r0, #1
@@ -462,14 +462,14 @@ _02237DAC:
 	add r0, r5, #0
 	mov r1, #0xa3
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02237DDE:
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #0xa0
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02237DEC:
 	add r4, r4, #1
 	cmp r4, r6

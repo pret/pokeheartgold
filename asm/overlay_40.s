@@ -49519,7 +49519,7 @@ _02244A02:
 	mov r1, #0xac
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02244A5C
 	mov r0, #0
@@ -49529,7 +49529,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, r5, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r0, r4, #0
 	bl String_SetEmpty
 	add r0, r4, #0
@@ -49544,7 +49544,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0xb3
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02244A54:
 	ldr r0, [sp, #0x18]
 	add r6, r6, #1

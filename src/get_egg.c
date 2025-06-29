@@ -61,7 +61,7 @@ static u8 Save_Daycare_CountMonsInDaycare(Daycare *daycare) {
     ct = 0;
 
     for (i = 0; i < 2; i++) {
-        if (GetBoxMonData(DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+        if (BoxPokemon_GetData(DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
             ct++;
         }
     }
@@ -75,7 +75,7 @@ static int Save_Daycare_GetAvailableSlot(Daycare *daycare) {
 
     _021D4218 = daycare;
     for (i = 0; i < 2; i++) {
-        if (GetBoxMonData(DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        if (BoxPokemon_GetData(DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, i)), MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             return i;
         }
     }
@@ -95,12 +95,12 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     daycareMail = DaycareMon_GetExtras(daycareMon);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfile(saveData));
-    GetMonData(partyMon, MON_DATA_NICKNAME_FLAT, nickname);
+    Pokemon_GetData(partyMon, MON_DATA_NICKNAME_FLAT, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
-        GetMonData(partyMon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
+        Pokemon_GetData(partyMon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
     }
     mood = 0;
-    SetMonData(partyMon, MON_DATA_MOOD, &mood);
+    Pokemon_SetData(partyMon, MON_DATA_MOOD, &mood);
     CopyPokemonToBoxPokemon(partyMon, boxMon);
     BoxMon_UpdateShayminForm(boxMon, SHAYMIN_LAND);
     DaycareMon_SetSteps(daycareMon, 0);
@@ -126,7 +126,7 @@ static void Save_Daycare_Compaction(Daycare *daycare) {
     boxmon1 = DaycareMon_GetBoxMon(mon1);
     boxmon2 = DaycareMon_GetBoxMon(mon2);
 
-    if (GetBoxMonData(boxmon1, MON_DATA_SPECIES, NULL) == SPECIES_NONE && GetBoxMonData(boxmon2, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+    if (BoxPokemon_GetData(boxmon1, MON_DATA_SPECIES, NULL) == SPECIES_NONE && BoxPokemon_GetData(boxmon2, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
         DaycareMon_Copy(mon1, mon2);
         DaycareMon_Init(mon2);
     }
@@ -167,17 +167,17 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     daycareMail = DaycareMon_GetExtras(daycareMon);
 
     BufferBoxMonNickname(msgFmt, 0, boxMon);
-    species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
+    species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
 
     CopyBoxPokemonToPokemon(boxMon, mon);
-    if (GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
-        exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+    if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
+        exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
         exp += DaycareMon_GetSteps(daycareMon);
-        SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
+        Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
         Daycare_LearnLevelUpMoves(mon);
     }
     if (BoxMonIsHoldingMail(boxMon)) {
-        SetMonData(mon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
+        Pokemon_SetData(mon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
     }
     Party_AddMon(party, mon);
     ZeroBoxMonData(boxMon);
@@ -203,9 +203,9 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     tmpMon = AllocMonZeroed(HEAP_ID_FIELD);
     boxmon_tmp = Mon_GetBoxMon(tmpMon);
     CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
-    exp = GetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
+    exp = BoxPokemon_GetData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
     exp += steps;
-    SetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
+    BoxPokemon_SetData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
     level = CalcBoxMonLevel(boxmon_tmp);
     FreeToHeap(tmpMon);
     return level;
@@ -253,7 +253,7 @@ u8 Save_Daycare_BufferGrowthAndNick(Daycare *dayCare, u32 slot, MessageFormat *m
     DaycareMon *daycareMon;
 
     daycareMon = Save_Daycare_GetMonX(dayCare, slot);
-    if (GetBoxMonData(DaycareMon_GetBoxMon(daycareMon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+    if (BoxPokemon_GetData(DaycareMon_GetBoxMon(daycareMon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
         return DaycareMon_BufferLevelGrowthAndNick(daycareMon, msgFmt);
     } else {
         return 0;
@@ -276,7 +276,7 @@ static int Daycare_EverstoneCheck(Daycare *dayCare) {
     num_everstones = 0;
     everstone_idx = 0;
     for (i = 0; i < 2; i++) {
-        if (GetBoxMonData(boxmons[i], MON_DATA_HELD_ITEM, NULL) == ITEM_EVERSTONE) {
+        if (BoxPokemon_GetData(boxmons[i], MON_DATA_HELD_ITEM, NULL) == ITEM_EVERSTONE) {
             everstone_idx = i;
             num_everstones++;
         }
@@ -313,7 +313,7 @@ static void GenerateEggPID(Daycare *dayCare) {
     if (everstone_num < 0) {
         Save_Daycare_SetEggPID(dayCare, MTRandom());
     } else {
-        nature = GetNatureFromPersonality(GetBoxMonData(Daycare_GetBoxMonI(dayCare, everstone_num), MON_DATA_PERSONALITY, NULL));
+        nature = GetNatureFromPersonality(BoxPokemon_GetData(Daycare_GetBoxMonI(dayCare, everstone_num), MON_DATA_PERSONALITY, NULL));
         for (;;) {
             pid = MTRandom();
             if (nature == GetNatureFromPersonality(pid) && pid != 0) {
@@ -382,28 +382,28 @@ static void InheritIVs(Pokemon *egg, Daycare *dayCare) {
         boxMon = Daycare_GetBoxMonI(dayCare, sp7[i]);
         switch (sp10[i]) {
         case 0:
-            sp6 = GetBoxMonData(boxMon, MON_DATA_HP_IV, NULL);
-            SetMonData(egg, MON_DATA_HP_IV, &sp6);
+            sp6 = BoxPokemon_GetData(boxMon, MON_DATA_HP_IV, NULL);
+            Pokemon_SetData(egg, MON_DATA_HP_IV, &sp6);
             break;
         case 1:
-            sp6 = GetBoxMonData(boxMon, MON_DATA_ATK_IV, NULL);
-            SetMonData(egg, MON_DATA_ATK_IV, &sp6);
+            sp6 = BoxPokemon_GetData(boxMon, MON_DATA_ATK_IV, NULL);
+            Pokemon_SetData(egg, MON_DATA_ATK_IV, &sp6);
             break;
         case 2:
-            sp6 = GetBoxMonData(boxMon, MON_DATA_DEF_IV, NULL);
-            SetMonData(egg, MON_DATA_DEF_IV, &sp6);
+            sp6 = BoxPokemon_GetData(boxMon, MON_DATA_DEF_IV, NULL);
+            Pokemon_SetData(egg, MON_DATA_DEF_IV, &sp6);
             break;
         case 3:
-            sp6 = GetBoxMonData(boxMon, MON_DATA_SPEED_IV, NULL);
-            SetMonData(egg, MON_DATA_SPEED_IV, &sp6);
+            sp6 = BoxPokemon_GetData(boxMon, MON_DATA_SPEED_IV, NULL);
+            Pokemon_SetData(egg, MON_DATA_SPEED_IV, &sp6);
             break;
         case 4:
-            sp6 = GetBoxMonData(boxMon, MON_DATA_SPATK_IV, NULL);
-            SetMonData(egg, MON_DATA_SPATK_IV, &sp6);
+            sp6 = BoxPokemon_GetData(boxMon, MON_DATA_SPATK_IV, NULL);
+            Pokemon_SetData(egg, MON_DATA_SPATK_IV, &sp6);
             break;
         case 5:
-            sp6 = GetBoxMonData(boxMon, MON_DATA_SPDEF_IV, NULL);
-            SetMonData(egg, MON_DATA_SPDEF_IV, &sp6);
+            sp6 = BoxPokemon_GetData(boxMon, MON_DATA_SPDEF_IV, NULL);
+            Pokemon_SetData(egg, MON_DATA_SPDEF_IV, &sp6);
             break;
         }
     }
@@ -421,7 +421,7 @@ static u8 LoadEggMoves(Pokemon *mon, u16 *dest) {
     n = 0;
     offset = 0;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < 0x7FD; i++) {
         if (species + 20000 == kowaza_list[i]) {
             offset = i + 1;
@@ -460,12 +460,12 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     sp1C = 0;
     MI_CpuClearFast(search, sizeof(struct EggMoveSearch));
 
-    egg_species = GetMonData(egg, MON_DATA_SPECIES, NULL);
-    egg_form = GetMonData(egg, MON_DATA_FORM, NULL);
+    egg_species = Pokemon_GetData(egg, MON_DATA_SPECIES, NULL);
+    egg_form = Pokemon_GetData(egg, MON_DATA_FORM, NULL);
     learnset_size = Species_LoadLearnsetTable(egg_species, egg_form, search->baby_learnset);
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        search->dad_moves[i] = GetBoxMonData(father, MON_DATA_MOVE1 + i, NULL);
-        search->mom_moves[i] = GetBoxMonData(mother, MON_DATA_MOVE1 + i, NULL);
+        search->dad_moves[i] = BoxPokemon_GetData(father, MON_DATA_MOVE1 + i, NULL);
+        search->mom_moves[i] = BoxPokemon_GetData(mother, MON_DATA_MOVE1 + i, NULL);
     }
     r5 = LoadEggMoves(egg, search->baby_egg_moves);
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -556,8 +556,8 @@ static u16 Daycare_BreedingIncenseCheck(u16 species, Daycare *dayCare) {
     if (i == NELEMS(_020FF4AE)) {
         return species;
     }
-    item1 = GetBoxMonData(parents[0], MON_DATA_HELD_ITEM, NULL);
-    item2 = GetBoxMonData(parents[1], MON_DATA_HELD_ITEM, NULL);
+    item1 = BoxPokemon_GetData(parents[0], MON_DATA_HELD_ITEM, NULL);
+    item2 = BoxPokemon_GetData(parents[1], MON_DATA_HELD_ITEM, NULL);
     if (item1 != _020FF4AE[row_ndx][1] && item2 != _020FF4AE[row_ndx][1]) {
         species = _020FF4AE[row_ndx][2];
     }
@@ -569,8 +569,8 @@ static void Daycare_LightBallCheck(Pokemon *egg, Daycare *dayCare) {
     int item1, item2;
 
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
-    item1 = GetBoxMonData(parents[0], MON_DATA_HELD_ITEM, NULL);
-    item2 = GetBoxMonData(parents[1], MON_DATA_HELD_ITEM, NULL);
+    item1 = BoxPokemon_GetData(parents[0], MON_DATA_HELD_ITEM, NULL);
+    item2 = BoxPokemon_GetData(parents[1], MON_DATA_HELD_ITEM, NULL);
 
     if (item1 == ITEM_LIGHT_BALL || item2 == ITEM_LIGHT_BALL) {
         if (TryAppendMonMove(egg, MOVE_VOLT_TACKLE) == MOVE_APPEND_FULL) {
@@ -589,7 +589,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
 
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
     for (i = 0; i < 2; i++) {
-        if ((parent_species[i] = GetBoxMonData(parents[i], MON_DATA_SPECIES, NULL)) == SPECIES_DITTO) {
+        if ((parent_species[i] = BoxPokemon_GetData(parents[i], MON_DATA_SPECIES, NULL)) == SPECIES_DITTO) {
             gender_idx[0] = i ^ 1;
             gender_idx[1] = i;
         } else if (GetBoxMonGender(parents[i]) == MON_FEMALE) {
@@ -639,25 +639,25 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     metLevel = 0;
     pokeball = BALL_POKE;
 
-    SetMonData(mon, MON_DATA_POKEBALL, &pokeball);
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
-    SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
+    Pokemon_SetData(mon, MON_DATA_POKEBALL, &pokeball);
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
+    Pokemon_SetData(mon, MON_DATA_MET_LEVEL, &metLevel);
 
     if (metLocation != MAPSEC_MYSTERY_ZONE) {
-        SetMonData(mon, MON_DATA_EGG_MET_LOCATION, &metLocation);
+        Pokemon_SetData(mon, MON_DATA_EGG_MET_LOCATION, &metLocation);
     }
     isEgg = TRUE;
-    SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
+    Pokemon_SetData(mon, MON_DATA_IS_EGG, &isEgg);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
-    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
+    Pokemon_SetData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
     if (trainerMemoStrat == 4) {
         otId = PlayerProfile_GetTrainerID(profile);
         gender = PlayerProfile_GetTrainerGender(profile);
         name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
-        SetMonData(mon, MON_DATA_OT_NAME_2, name);
-        SetMonData(mon, MON_DATA_OTID, &otId);
-        SetMonData(mon, MON_DATA_MET_GENDER, &gender);
+        Pokemon_SetData(mon, MON_DATA_OT_NAME_2, name);
+        Pokemon_SetData(mon, MON_DATA_OTID, &otId);
+        Pokemon_SetData(mon, MON_DATA_MET_GENDER, &gender);
         String_Delete(name);
     }
     MonSetTrainerMemo(mon, profile, trainerMemoStrat, eggLocation, HEAP_ID_DEFAULT);
@@ -688,12 +688,12 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     metLevel = 0;
     pokeball = BALL_POKE;
 
-    SetMonData(mon, MON_DATA_POKEBALL, &pokeball);
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
-    SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
-    SetMonData(mon, MON_DATA_FORM, &form);
+    Pokemon_SetData(mon, MON_DATA_POKEBALL, &pokeball);
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
+    Pokemon_SetData(mon, MON_DATA_MET_LEVEL, &metLevel);
+    Pokemon_SetData(mon, MON_DATA_FORM, &form);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
-    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
+    Pokemon_SetData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 }
 
@@ -709,7 +709,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     species = Daycare_GetEggSpecies(dayCare, gender_idx);
     species = Daycare_BreedingIncenseCheck(species, dayCare);
     otId = PlayerProfile_GetTrainerID(profile);
-    mom_form = GetBoxMonData(Daycare_GetBoxMonI(dayCare, gender_idx[0]), MON_DATA_FORM, NULL);
+    mom_form = BoxPokemon_GetData(Daycare_GetBoxMonI(dayCare, gender_idx[0]), MON_DATA_FORM, NULL);
     SetBreedEggStats(mon, species, dayCare, otId, mom_form);
     InheritIVs(mon, dayCare);
     InheritMoves(mon, Daycare_GetBoxMonI(dayCare, gender_idx[1]), Daycare_GetBoxMonI(dayCare, gender_idx[0]));
@@ -718,7 +718,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
         Daycare_LightBallCheck(mon, dayCare);
     }
     isEgg = TRUE;
-    SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
+    Pokemon_SetData(mon, MON_DATA_IS_EGG, &isEgg);
     Party_AddMon(party, mon);
     Save_Daycare_ResetEggStats(dayCare);
     FreeToHeap(mon);
@@ -731,8 +731,8 @@ static u8 GetEggCyclesToSubtract(Party *party) {
 
     party_n = Party_GetCount(party);
     for (i = 0; i < party_n; i++) {
-        if (!GetMonData(Party_GetMonByIndex(party, i), MON_DATA_SANITY_IS_EGG, NULL)) {
-            ability = GetMonData(Party_GetMonByIndex(party, i), MON_DATA_ABILITY, NULL);
+        if (!Pokemon_GetData(Party_GetMonByIndex(party, i), MON_DATA_SANITY_IS_EGG, NULL)) {
+            ability = Pokemon_GetData(Party_GetMonByIndex(party, i), MON_DATA_ABILITY, NULL);
             if (ability == ABILITY_MAGMA_ARMOR || ability == ABILITY_FLAME_BODY) {
                 return 2;
             }
@@ -761,9 +761,9 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents) {
     u32 i;
 
     for (i = 0; i < 2; i++) {
-        species[i] = GetBoxMonData(parents[i], MON_DATA_SPECIES, NULL);
-        otIds[i] = GetBoxMonData(parents[i], MON_DATA_OTID, NULL);
-        genders[i] = GetGenderBySpeciesAndPersonality(species[i], GetBoxMonData(parents[i], MON_DATA_PERSONALITY, NULL));
+        species[i] = BoxPokemon_GetData(parents[i], MON_DATA_SPECIES, NULL);
+        otIds[i] = BoxPokemon_GetData(parents[i], MON_DATA_OTID, NULL);
+        genders[i] = GetGenderBySpeciesAndPersonality(species[i], BoxPokemon_GetData(parents[i], MON_DATA_PERSONALITY, NULL));
         eggGroups[i][0] = GetMonBaseStat(species[i], BASE_EGG_GROUP_1);
         eggGroups[i][1] = GetMonBaseStat(species[i], BASE_EGG_GROUP_2);
     }
@@ -864,7 +864,7 @@ BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem)
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
     n = 0;
     for (i = 0; i < 2; i++) {
-        if (GetBoxMonData(parents[i], MON_DATA_SPECIES_EXISTS, NULL)) {
+        if (BoxPokemon_GetData(parents[i], MON_DATA_SPECIES_EXISTS, NULL)) {
             DaycareMon_AddSteps(Save_Daycare_GetMonX(dayCare, i), 1);
             n++;
         }
@@ -886,15 +886,15 @@ BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem)
         to_sub = GetEggCyclesToSubtract(party);
         for (i = 0; i < Party_GetCount(party); i++) {
             mon = Party_GetMonByIndex(party, i);
-            if (GetMonData(mon, MON_DATA_IS_EGG, NULL) && !GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
-                friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+            if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) && !Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
+                friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
                 if (friendship != 0) {
                     if (friendship >= to_sub) {
                         friendship -= to_sub;
                     } else {
                         friendship -= 1;
                     }
-                    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+                    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
                 } else {
                     return TRUE;
                 }
@@ -911,7 +911,7 @@ Pokemon *sub_0206CE44(Party *party) {
     n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
         mon = Party_GetMonByIndex(party, i);
-        if (!GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL) && GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) == 0) {
+        if (!Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL) && Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) && Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL) == 0) {
             return mon;
         }
     }
@@ -922,11 +922,11 @@ void Save_Daycare_BufferStoredMonNicks(Daycare *dayCare, MessageFormat *msgFmt) 
     BoxPokemon *parents[2];
 
     Daycare_GetBothBoxMonsPtr(dayCare, parents);
-    if (GetBoxMonData(parents[0], MON_DATA_SPECIES, NULL)) {
+    if (BoxPokemon_GetData(parents[0], MON_DATA_SPECIES, NULL)) {
         BufferBoxMonNickname(msgFmt, 0, parents[0]);
         BufferBoxMonOTName(msgFmt, 2, parents[0]);
     }
-    if (GetBoxMonData(parents[1], MON_DATA_SPECIES, NULL)) {
+    if (BoxPokemon_GetData(parents[1], MON_DATA_SPECIES, NULL)) {
         BufferBoxMonNickname(msgFmt, 1, parents[1]);
     }
 }
@@ -945,10 +945,10 @@ void Save_Daycare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_i
     level = GetDaycareUpdatedLevel(boxMon, DaycareMon_GetSteps(daycareMon));
     BufferIntegerAsString(msgFmt, level_idx, level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
 
-    gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
+    gender = BoxPokemon_GetData(boxMon, MON_DATA_GENDER, NULL);
     if (gender != MON_GENDERLESS) {
-        species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-        if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !GetBoxMonData(boxMon, MON_DATA_HAS_NICKNAME, NULL)) {
+        species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+        if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !BoxPokemon_GetData(boxMon, MON_DATA_HAS_NICKNAME, NULL)) {
             gender = MON_GENDERLESS;
         }
     }
@@ -963,8 +963,8 @@ u16 Save_Daycare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt) {
 
     boxMon1 = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(dayCare, 0));
     boxMon2 = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(dayCare, 1));
-    species1 = GetBoxMonData(boxMon1, MON_DATA_SPECIES, NULL);
-    species2 = GetBoxMonData(boxMon2, MON_DATA_SPECIES, NULL);
+    species1 = BoxPokemon_GetData(boxMon1, MON_DATA_SPECIES, NULL);
+    species2 = BoxPokemon_GetData(boxMon2, MON_DATA_SPECIES, NULL);
     if (species2 == SPECIES_NONE) {
         BufferBoxMonNickname(msgFmt, 0, boxMon1);
         return species1;
@@ -1030,25 +1030,25 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
 
     string = String_New(PLAYER_NAME_LENGTH + 1, heapId);
     tmpMon = AllocMonZeroed(heapId);
-    species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        pp[i] = GetMonData(mon, MON_DATA_MOVE1PP + i, NULL);
+        moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
+        pp[i] = Pokemon_GetData(mon, MON_DATA_MOVE1PP + i, NULL);
     }
-    pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    pid = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
     for (i = 0; i < NUM_STATS; i++) {
-        ivs[i] = GetMonData(mon, MON_DATA_HP_IV + i, NULL);
+        ivs[i] = Pokemon_GetData(mon, MON_DATA_HP_IV + i, NULL);
     }
-    language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
-    version = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
-    markings = GetMonData(mon, MON_DATA_MARKINGS, NULL);
-    pokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
-    fateful = GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
-    GetMonData(mon, MON_DATA_OT_NAME_2, string);
-    otGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
-    otId = GetMonData(mon, MON_DATA_OTID, NULL);
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
-    if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
+    language = Pokemon_GetData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    version = Pokemon_GetData(mon, MON_DATA_GAME_VERSION, NULL);
+    markings = Pokemon_GetData(mon, MON_DATA_MARKINGS, NULL);
+    pokerus = Pokemon_GetData(mon, MON_DATA_POKERUS, NULL);
+    fateful = Pokemon_GetData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
+    Pokemon_GetData(mon, MON_DATA_OT_NAME_2, string);
+    otGender = Pokemon_GetData(mon, MON_DATA_MET_GENDER, NULL);
+    otId = Pokemon_GetData(mon, MON_DATA_OTID, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    if (species == SPECIES_MANAPHY && Pokemon_GetData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
         if (CalcShininessByOtIdAndPersonality(otId, pid)) {
             do {
                 pid = PRandom(pid);
@@ -1057,39 +1057,39 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     }
     CreateMon(tmpMon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        SetMonData(tmpMon, MON_DATA_MOVE1 + i, &moves[i]);
-        SetMonData(tmpMon, MON_DATA_MOVE1PP + i, &pp[i]);
+        Pokemon_SetData(tmpMon, MON_DATA_MOVE1 + i, &moves[i]);
+        Pokemon_SetData(tmpMon, MON_DATA_MOVE1PP + i, &pp[i]);
     }
     for (i = 0; i < NUM_STATS; i++) {
-        SetMonData(tmpMon, MON_DATA_HP_IV + i, &ivs[i]);
+        Pokemon_SetData(tmpMon, MON_DATA_HP_IV + i, &ivs[i]);
     }
-    SetMonData(tmpMon, MON_DATA_GAME_LANGUAGE, &language);
-    SetMonData(tmpMon, MON_DATA_GAME_VERSION, &version);
-    SetMonData(tmpMon, MON_DATA_MARKINGS, &markings);
+    Pokemon_SetData(tmpMon, MON_DATA_GAME_LANGUAGE, &language);
+    Pokemon_SetData(tmpMon, MON_DATA_GAME_VERSION, &version);
+    Pokemon_SetData(tmpMon, MON_DATA_MARKINGS, &markings);
     eggCycles = 120;
-    SetMonData(tmpMon, MON_DATA_FRIENDSHIP, &eggCycles);
-    SetMonData(tmpMon, MON_DATA_POKERUS, &pokerus);
-    SetMonData(tmpMon, MON_DATA_FATEFUL_ENCOUNTER, &fateful);
-    SetMonData(tmpMon, MON_DATA_OT_NAME_2, string);
-    SetMonData(tmpMon, MON_DATA_MET_GENDER, &otGender);
-    SetMonData(tmpMon, MON_DATA_OTID, &otId);
-    SetMonData(tmpMon, MON_DATA_FORM, &form);
-    metLoc = GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL);
-    metYear = GetMonData(mon, MON_DATA_EGG_MET_YEAR, NULL);
-    metMonth = GetMonData(mon, MON_DATA_EGG_MET_MONTH, NULL);
-    metDay = GetMonData(mon, MON_DATA_EGG_MET_DAY, NULL);
-    SetMonData(tmpMon, MON_DATA_EGG_MET_LOCATION, &metLoc);
-    SetMonData(tmpMon, MON_DATA_EGG_MET_YEAR, &metYear);
-    SetMonData(tmpMon, MON_DATA_EGG_MET_MONTH, &metMonth);
-    SetMonData(tmpMon, MON_DATA_EGG_MET_DAY, &metDay);
-    metLoc = GetMonData(mon, MON_DATA_MET_LOCATION, NULL);
-    metYear = GetMonData(mon, MON_DATA_MET_YEAR, NULL);
-    metMonth = GetMonData(mon, MON_DATA_MET_MONTH, NULL);
-    metDay = GetMonData(mon, MON_DATA_MET_DAY, NULL);
-    SetMonData(tmpMon, MON_DATA_MET_LOCATION, &metLoc);
-    SetMonData(tmpMon, MON_DATA_MET_YEAR, &metYear);
-    SetMonData(tmpMon, MON_DATA_MET_MONTH, &metMonth);
-    SetMonData(tmpMon, MON_DATA_MET_DAY, &metDay);
+    Pokemon_SetData(tmpMon, MON_DATA_FRIENDSHIP, &eggCycles);
+    Pokemon_SetData(tmpMon, MON_DATA_POKERUS, &pokerus);
+    Pokemon_SetData(tmpMon, MON_DATA_FATEFUL_ENCOUNTER, &fateful);
+    Pokemon_SetData(tmpMon, MON_DATA_OT_NAME_2, string);
+    Pokemon_SetData(tmpMon, MON_DATA_MET_GENDER, &otGender);
+    Pokemon_SetData(tmpMon, MON_DATA_OTID, &otId);
+    Pokemon_SetData(tmpMon, MON_DATA_FORM, &form);
+    metLoc = Pokemon_GetData(mon, MON_DATA_EGG_MET_LOCATION, NULL);
+    metYear = Pokemon_GetData(mon, MON_DATA_EGG_MET_YEAR, NULL);
+    metMonth = Pokemon_GetData(mon, MON_DATA_EGG_MET_MONTH, NULL);
+    metDay = Pokemon_GetData(mon, MON_DATA_EGG_MET_DAY, NULL);
+    Pokemon_SetData(tmpMon, MON_DATA_EGG_MET_LOCATION, &metLoc);
+    Pokemon_SetData(tmpMon, MON_DATA_EGG_MET_YEAR, &metYear);
+    Pokemon_SetData(tmpMon, MON_DATA_EGG_MET_MONTH, &metMonth);
+    Pokemon_SetData(tmpMon, MON_DATA_EGG_MET_DAY, &metDay);
+    metLoc = Pokemon_GetData(mon, MON_DATA_MET_LOCATION, NULL);
+    metYear = Pokemon_GetData(mon, MON_DATA_MET_YEAR, NULL);
+    metMonth = Pokemon_GetData(mon, MON_DATA_MET_MONTH, NULL);
+    metDay = Pokemon_GetData(mon, MON_DATA_MET_DAY, NULL);
+    Pokemon_SetData(tmpMon, MON_DATA_MET_LOCATION, &metLoc);
+    Pokemon_SetData(tmpMon, MON_DATA_MET_YEAR, &metYear);
+    Pokemon_SetData(tmpMon, MON_DATA_MET_MONTH, &metMonth);
+    Pokemon_SetData(tmpMon, MON_DATA_MET_DAY, &metDay);
     CopyPokemonToPokemon(tmpMon, mon);
     String_Delete(string);
     FreeToHeap(tmpMon);
@@ -1102,12 +1102,12 @@ void sub_0206D328(Pokemon *mon, HeapID heapId) {
     u8 pokeball = BALL_POKE;
     u8 metLevel = 0;
     sub_0206D038(mon, heapId);
-    SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
-    GetSpeciesNameIntoArray(GetMonData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
-    SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
-    SetMonData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
-    SetMonData(mon, MON_DATA_POKEBALL, &pokeball);
-    SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
+    Pokemon_SetData(mon, MON_DATA_IS_EGG, &isEgg);
+    GetSpeciesNameIntoArray(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
+    Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT, nickname);
+    Pokemon_SetData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
+    Pokemon_SetData(mon, MON_DATA_POKEBALL, &pokeball);
+    Pokemon_SetData(mon, MON_DATA_MET_LEVEL, &metLevel);
     CalcMonLevelAndStats(mon);
 }
 
@@ -1118,7 +1118,7 @@ static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2) {
     n = 0;
     r7 = 0;
     for (i = 0; i < 2; i++) {
-        if (PowerItemIdToInheritedIvIdx(GetBoxMonData(Daycare_GetBoxMonI(dayCare, i), MON_DATA_HELD_ITEM, NULL), &sp8[i])) {
+        if (PowerItemIdToInheritedIvIdx(BoxPokemon_GetData(Daycare_GetBoxMonI(dayCare, i), MON_DATA_HELD_ITEM, NULL), &sp8[i])) {
             r7 = i;
             n++;
         }

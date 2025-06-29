@@ -523,7 +523,7 @@ _022383EC:
 	str r1, [sp, #4]
 	mov r1, #6
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp]
 	add r6, r6, #1
 	add r4, #0x38

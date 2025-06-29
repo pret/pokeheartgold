@@ -232,9 +232,9 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
     for (i = 0; i < partyCount; i++) {
         CopyPokemonToPokemon(Party_GetMonByIndex(party, i), mon);
-        if (GetMonData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
-            u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
-            SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
+        if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
+            u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
+            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
             CalcMonLevelAndStats(mon);
         }
         BattleSetup_AddMonToParty(setup, mon, BATTLER_PLAYER);
@@ -261,29 +261,29 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     u32 pid = trainerHouseMon->pid;
     CreateMonWithFixedIVs(mon, species, tempByte, ivs, pid);
     tempByte = trainerHouseMon->form;
-    SetMonData(mon, MON_DATA_FORM, &tempByte);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &trainerHouseMon->item);
+    Pokemon_SetData(mon, MON_DATA_FORM, &tempByte);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &trainerHouseMon->item);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         u16 move = trainerHouseMon->moves[i];
-        SetMonData(mon, MON_DATA_MOVE1 + i, &move);
+        Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &move);
         tempByte = trainerHouseMon->ppUp >> (i * 2) & 3;
-        SetMonData(mon, MON_DATA_MOVE1PPUP + i, &tempByte);
-        u8 pp = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, NULL);
-        SetMonData(mon, MON_DATA_MOVE1PP + i, &pp);
+        Pokemon_SetData(mon, MON_DATA_MOVE1PPUP + i, &tempByte);
+        u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, NULL);
+        Pokemon_SetData(mon, MON_DATA_MOVE1PP + i, &pp);
     }
     u32 otid = trainerHouseMon->otid;
-    SetMonData(mon, MON_DATA_OTID, &otid);
+    Pokemon_SetData(mon, MON_DATA_OTID, &otid);
     for (i = 0; i < NUM_STATS; i++) {
         tempByte = *(&trainerHouseMon->hpEv + i);
-        SetMonData(mon, MON_DATA_HP_EV + i, &tempByte);
+        Pokemon_SetData(mon, MON_DATA_HP_EV + i, &tempByte);
     }
-    SetMonData(mon, MON_DATA_ABILITY, &(trainerHouseMon->ability));
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &(trainerHouseMon->friendship));
+    Pokemon_SetData(mon, MON_DATA_ABILITY, &(trainerHouseMon->ability));
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &(trainerHouseMon->friendship));
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     StringFillEOS(nickname, NELEMS(nickname));
     CopyU16StringArrayN(nickname, trainerHouseMon->nickname, POKEMON_NAME_LENGTH);
-    SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
-    SetMonData(mon, MON_DATA_GAME_LANGUAGE, &(trainerHouseMon->language));
+    Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT, nickname);
+    Pokemon_SetData(mon, MON_DATA_GAME_LANGUAGE, &(trainerHouseMon->language));
     CalcMonLevelAndStats(mon);
 }
 

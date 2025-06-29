@@ -267,7 +267,7 @@
 .public sub_02068F98
 .public DaycareMon_CalcLevelGrowth
 .public Save_Daycare_CalcCompatibility
-.public GetBoxMonData
+.public BoxPokemon_GetData
 .public TrainerData_ReadTrData
 .public TrainerData_ReadTrPoke
 .public PCStorage_GetActiveBox

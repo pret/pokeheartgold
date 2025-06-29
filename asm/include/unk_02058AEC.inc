@@ -126,7 +126,7 @@
 .public PlayerAvatar_GetMapObject
 .public sub_0205F55C
 .public MapObject_IsMovementPaused
-.public GetMonData
+.public Pokemon_GetData
 .public sub_02070D90
 .public Mon_GetBoxMon
 .public SaveArray_Party_Alloc

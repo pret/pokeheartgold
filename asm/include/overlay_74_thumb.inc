@@ -267,9 +267,9 @@
 .public ZeroBoxMonData
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
-.public GetMonData
-.public GetBoxMonData
-.public SetBoxMonData
+.public Pokemon_GetData
+.public BoxPokemon_GetData
+.public BoxPokemon_SetData
 .public GetMonBaseStat
 .public CalcLevelBySpeciesAndExp
 .public GetMonGender

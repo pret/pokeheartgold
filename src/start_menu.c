@@ -1056,7 +1056,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
         u16 itemId = BagView_GetItemId(bagView);
         Pokemon *pokemon = Party_GetMonByIndex(party, monSlot);
         FreeToHeap(startMenu->exitTaskEnvironment2);
-        if (ItemIdIsMail(itemId) == TRUE && !GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
+        if (ItemIdIsMail(itemId) == TRUE && !Pokemon_GetData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
             startMenu->exitTaskEnvironment = sub_0203EFEC(fieldSystem, 2, monSlot, ItemToMailId(itemId), HEAP_ID_FIELD);
             startMenu->exitTaskEnvironment2 = sub_0203D818(itemId, 0, monSlot);
             StartMenu_SetExitTaskFunc(startMenu, Task_ReturnToMenuFromMail);

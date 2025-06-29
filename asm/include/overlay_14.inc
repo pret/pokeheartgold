@@ -210,10 +210,10 @@
 .public AllocMonZeroed
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
-.public GetMonData
-.public GetBoxMonData
-.public SetMonData
-.public SetBoxMonData
+.public Pokemon_GetData
+.public BoxPokemon_GetData
+.public Pokemon_SetData
+.public BoxPokemon_SetData
 .public GetMonBaseStatEx_HandleAlternateForm
 .public GetBoxMonNature
 .public GetBoxMonGender

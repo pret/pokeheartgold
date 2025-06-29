@@ -43,7 +43,7 @@
 .public FollowMon_GetMapObject
 .public FollowMon_IsActive
 .public FieldSystem_UnkSub108_GetMonMood
-.public GetMonData
+.public Pokemon_GetData
 .public SaveArray_Party_Get
 .public FieldSystem_GetGearPhoneRingManager
 .public GearPhoneRingManager_ResetIfActive

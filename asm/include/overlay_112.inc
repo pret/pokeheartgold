@@ -256,10 +256,10 @@
 .public ReleaseBoxMonLock
 .public CreateMon
 .public CalcMonLevelAndStats
-.public GetMonData
-.public GetBoxMonData
-.public SetMonData
-.public SetBoxMonData
+.public Pokemon_GetData
+.public BoxPokemon_GetData
+.public Pokemon_SetData
+.public BoxPokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm
 .public AllocAndLoadMonPersonal
 .public GetPersonalAttr

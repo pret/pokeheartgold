@@ -21,8 +21,8 @@
 .public sub_0205C218
 .public sub_0205C268
 .public AllocMonZeroed
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public CopyPokemonToPokemon
 .public sub_0207217C
 .public SaveArray_Party_Init

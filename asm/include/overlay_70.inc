@@ -230,9 +230,9 @@
 .public AllocMonZeroed
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
-.public GetMonData
-.public GetBoxMonData
-.public SetMonData
+.public Pokemon_GetData
+.public BoxPokemon_GetData
+.public Pokemon_SetData
 .public GetMonBaseStat
 .public CalcBoxMonLevel
 .public GetPokemonSpriteCharAndPlttNarcIds

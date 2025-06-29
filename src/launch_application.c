@@ -952,7 +952,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         data->state = WIRELESS_TRADE_STATE_5;
         break;
     case WIRELESS_TRADE_STATE_5:
-        int heldItem = GetMonData(data->wirelessTradeSelectMon.unk3C, MON_DATA_HELD_ITEM, NULL);
+        int heldItem = Pokemon_GetData(data->wirelessTradeSelectMon.unk3C, MON_DATA_HELD_ITEM, NULL);
         int species = GetMonEvolution(NULL, data->wirelessTradeSelectMon.unk3C, EVOCTX_TRADE, heldItem, (int *)&evolutionCondition);
         if (species != SPECIES_NONE) {
             CreateHeap(HEAP_ID_3, HEAP_ID_26, 0x30000);
@@ -1091,7 +1091,7 @@ static void SetName(TaskManager *taskman) {
         } else {
             mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        SetMonData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->nameInputFlat);
+        Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT_COMPARE, data->args->nameInputFlat);
         break;
     case NAME_SCREEN_GROUP:
         SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
@@ -1122,8 +1122,8 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
         } else {
             mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), data->partyIdx);
         }
-        data->args->monGender = GetMonData(mon, MON_DATA_GENDER, NULL);
-        data->args->monForm = GetMonData(mon, MON_DATA_FORM, NULL);
+        data->args->monGender = Pokemon_GetData(mon, MON_DATA_GENDER, NULL);
+        data->args->monForm = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         if (defaultStr != NULL) {
             CopyU16ArrayToString(data->unk10, defaultStr);
         }

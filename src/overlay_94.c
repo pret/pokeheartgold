@@ -54,7 +54,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
 
     switch (work->state) {
     case 0:
-        work->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        work->species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         switch (work->species) {
         case SPECIES_GIRATINA:
             Mon_UpdateGiratinaForm(mon);

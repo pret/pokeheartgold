@@ -189,8 +189,8 @@
 .public AllocMonZeroed
 .public AcquireMonLock
 .public ReleaseMonLock
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C

@@ -97,10 +97,10 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
         monCnt = BattleArcade_GetMonCount(arcadeData->type, 1);
         for (i = 0; i < monCnt; i++) {
             mon = Party_GetMonByIndex(arcadeData->playerParty, i);
-            u32 level = GetMonData(mon, MON_DATA_LEVEL, 0);
-            u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
+            u32 level = Pokemon_GetData(mon, MON_DATA_LEVEL, 0);
+            u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
             u32 exp = GetMonExpBySpeciesAndLevel(species, level - 3);
-            SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
+            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
             CalcMonLevelAndStats(mon);
         }
     }
@@ -109,18 +109,18 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     for (i = 0; i < partyCnt; i++) {
         mon = Party_GetMonByIndex(arcadeData->playerParty, i);
         data = arcadeData->savedHp[i];
-        SetMonData(mon, MON_DATA_MAXHP, &data);
-        SetMonData(mon, MON_DATA_HP, &data);
+        Pokemon_SetData(mon, MON_DATA_MAXHP, &data);
+        Pokemon_SetData(mon, MON_DATA_HP, &data);
         data = arcadeData->savedAtk[i];
-        SetMonData(mon, MON_DATA_ATK, &data);
+        Pokemon_SetData(mon, MON_DATA_ATK, &data);
         data = arcadeData->savedDef[i];
-        SetMonData(mon, MON_DATA_DEF, &data);
+        Pokemon_SetData(mon, MON_DATA_DEF, &data);
         data = arcadeData->savedSpd[i];
-        SetMonData(mon, MON_DATA_SPEED, &data);
+        Pokemon_SetData(mon, MON_DATA_SPEED, &data);
         data = arcadeData->savedSpAtk[i];
-        SetMonData(mon, MON_DATA_SPATK, &data);
+        Pokemon_SetData(mon, MON_DATA_SPATK, &data);
         data = arcadeData->savedSpDef[i];
-        SetMonData(mon, MON_DATA_SPDEF, &data);
+        Pokemon_SetData(mon, MON_DATA_SPDEF, &data);
     }
 
     BattleSetup_Delete(setup);
@@ -166,12 +166,12 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 
     for (int i = 0; i < partyCnt; i++) {
         Pokemon *mon = Party_GetMonByIndex(data->playerParty, i);
-        data->savedHp[i] = GetMonData(mon, MON_DATA_MAXHP, NULL);
-        data->savedAtk[i] = GetMonData(mon, MON_DATA_ATK, NULL);
-        data->savedDef[i] = GetMonData(mon, MON_DATA_DEF, NULL);
-        data->savedSpd[i] = GetMonData(mon, MON_DATA_SPEED, NULL);
-        data->savedSpAtk[i] = GetMonData(mon, MON_DATA_SPATK, NULL);
-        data->savedSpDef[i] = GetMonData(mon, MON_DATA_SPDEF, NULL);
+        data->savedHp[i] = Pokemon_GetData(mon, MON_DATA_MAXHP, NULL);
+        data->savedAtk[i] = Pokemon_GetData(mon, MON_DATA_ATK, NULL);
+        data->savedDef[i] = Pokemon_GetData(mon, MON_DATA_DEF, NULL);
+        data->savedSpd[i] = Pokemon_GetData(mon, MON_DATA_SPEED, NULL);
+        data->savedSpAtk[i] = Pokemon_GetData(mon, MON_DATA_SPATK, NULL);
+        data->savedSpDef[i] = Pokemon_GetData(mon, MON_DATA_SPDEF, NULL);
     }
 }
 
@@ -243,7 +243,7 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
         } else {
             mon = Party_GetMonByIndex(arcadeCtx->opponentParty, 0);
         }
-        *out = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        *out = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
         break;
     case 16:
         *out = arcadeCtx->unk13;
@@ -252,7 +252,7 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
         party = SaveArray_Party_Get(param->saveData);
         for (i = 0; i < 3; i++) {
             mon = Party_GetMonByIndex(party, arcadeCtx->unk2C[i]);
-            SetMonData(mon, MON_DATA_HELD_ITEM, &arcadeCtx->unk412[i]);
+            Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &arcadeCtx->unk412[i]);
         }
         break;
     case 19:

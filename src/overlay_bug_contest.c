@@ -69,7 +69,7 @@ void BugContest_Judge(BugContest *bugContest) {
     player = &bugContest->contestants[BUGCONTESTANT_PLAYER];
     player->id = BUGCONTESTANT_PLAYER;
     player->score = BugContest_JudgePlayerMon(bugContest, bugContest->mon);
-    player->data.species = GetMonData(bugContest->mon, MON_DATA_SPECIES, NULL);
+    player->data.species = Pokemon_GetData(bugContest->mon, MON_DATA_SPECIES, NULL);
 
     // Init the rankings list
     for (i = 0; i < BUGCONTESTANT_COUNT; i++) {
@@ -162,7 +162,7 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
     }
 
     string = String_New(POKEMON_NAME_LENGTH + 1 + 1, bugContest->heapId);
-    GetMonData(bugContest->mon, MON_DATA_NICKNAME_STRING, string);
+    Pokemon_GetData(bugContest->mon, MON_DATA_NICKNAME_STRING, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
     String_Delete(string);
     return bugContest->party_cur_num >= PARTY_SIZE;
@@ -321,7 +321,7 @@ u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon) {
     if (!bugContest->caught_poke) {
         return score;
     }
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < BUGMON_COUNT; i++) {
         if (bugContest->encounters[i].species == species) {
             bugmon = &bugContest->encounters[i];
@@ -334,12 +334,12 @@ u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon) {
         return 0;
     }
 
-    score += GetMonData(mon, MON_DATA_LEVEL, NULL) * 100 / bugmon->lvlmax;
+    score += Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) * 100 / bugmon->lvlmax;
     stat_total = 0;
     for (i = 0; i < NUM_STATS; i++) {
-        stat_total += GetMonData(mon, MON_DATA_HP_IV + i, NULL);
+        stat_total += Pokemon_GetData(mon, MON_DATA_HP_IV + i, NULL);
     }
     score += stat_total * 100 / (31 * NUM_STATS);
-    score += GetMonData(mon, MON_DATA_HP, NULL) * 100 / GetMonData(mon, MON_DATA_MAXHP, NULL);
+    score += Pokemon_GetData(mon, MON_DATA_HP, NULL) * 100 / Pokemon_GetData(mon, MON_DATA_MAXHP, NULL);
     return score;
 }

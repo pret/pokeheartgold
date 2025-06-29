@@ -5472,7 +5472,7 @@ _02256A5C:
 	bl Party_GetMonByIndex
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02256A72
 	sub r5, r5, #1
@@ -9873,20 +9873,20 @@ _02258C62:
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02258CC4
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0xc]
 	cmp r1, r0
 	bne _02258CC4
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0x10]
 	add r2, sp, #0x14
 	ldrh r1, [r2, r1]
@@ -9895,13 +9895,13 @@ _02258C62:
 	add r0, r4, #0
 	mov r1, #0x98
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02258CC4
 	add r0, r4, #0
 	mov r1, #0x99
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r7, r0
 	bne _02258CC4
 	ldr r0, [sp]

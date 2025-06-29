@@ -102,7 +102,7 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonGender
 .public Mon_GetBoxMon

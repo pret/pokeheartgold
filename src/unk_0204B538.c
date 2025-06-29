@@ -192,7 +192,7 @@ void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        a0->unk83e[1 + i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        a0->unk83e[1 + i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     }
     a0->unk83e[3] = sub_0202D57C(a0->unk74, 3, 0);
 }

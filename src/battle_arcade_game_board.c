@@ -1172,7 +1172,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
 
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(work->playerParty, i);
-        if (GetMonData(mon, 6, NULL) == 0) {
+        if (Pokemon_GetData(mon, 6, NULL) == 0) {
             BattleArcadeObj_SetVisible(work->itemA[i], 0);
         } else {
             BattleArcadeObj_SetVisible(work->itemA[i], 1);
@@ -1181,7 +1181,7 @@ static void ov84_0223F1BC(GAME_BOARD_WORK *work) {
 
     for (i = 0; i < opponentPartyCount; i++) {
         mon = Party_GetMonByIndex(work->opponentParty, i);
-        if (GetMonData(mon, 6, NULL) == 0) {
+        if (Pokemon_GetData(mon, 6, NULL) == 0) {
             BattleArcadeObj_SetVisible(work->itemB[i], 0);
         } else {
             BattleArcadeObj_SetVisible(work->itemB[i], 1);

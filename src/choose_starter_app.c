@@ -1175,8 +1175,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
         spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapId);
         GetMonSpriteCharAndPlttNarcIdsEx(
             &spriteData->pokepicTemplate,
-            GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
-            GetMonData(work->choices[i], MON_DATA_GENDER, NULL),
+            Pokemon_GetData(work->choices[i], MON_DATA_SPECIES, NULL),
+            Pokemon_GetData(work->choices[i], MON_DATA_GENDER, NULL),
             2,
             MonIsShiny(work->choices[i]),
             0,

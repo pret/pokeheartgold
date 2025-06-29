@@ -42,7 +42,7 @@
 .public FollowMon_SetObjectParams
 .public FieldSystem_SetFollowerPokeParam
 .public FieldSystem_UnkSub108_Set
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonGender
 .public MonIsShiny
 .public SaveArray_Party_Get

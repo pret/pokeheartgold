@@ -67,7 +67,7 @@ BOOL Save_Daycare_MasudaCheck(Daycare *daycare) {
     // Uses language as a proxy for country, even though it
     // only accounts for European languages and Japanese.
     // If true, shiny odds are increased.
-    return GetBoxMonData(&daycare->mons[0].mon, MON_DATA_GAME_LANGUAGE, NULL) != GetBoxMonData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
+    return BoxPokemon_GetData(&daycare->mons[0].mon, MON_DATA_GAME_LANGUAGE, NULL) != BoxPokemon_GetData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
 }
 
 void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src) {

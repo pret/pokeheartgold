@@ -97,7 +97,7 @@ void Party_ResetUnkSubSlot(Party *party, int slot) {
 void Party_SafeCopyMonToSlot_ResetUnkSub(Party *party, int slot, Pokemon *src) {
     PARTY_ASSERT_SLOT(party, slot);
     {
-        BOOL valid = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
+        BOOL valid = Pokemon_GetData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - Pokemon_GetData(src, MON_DATA_SPECIES_EXISTS, NULL);
         party->core.mons[slot] = *src;
         MI_CpuClear8(&party->extra.unk_00[slot], sizeof(PartyExtraSub));
         party->core.curCount += valid;
@@ -130,7 +130,7 @@ BOOL Party_HasMon(Party *party, u16 species) {
     int i;
 
     for (i = 0; i < party->core.curCount; i++) {
-        if (species == GetMonData(&party->core.mons[i], MON_DATA_SPECIES_OR_EGG, NULL)) {
+        if (species == Pokemon_GetData(&party->core.mons[i], MON_DATA_SPECIES_OR_EGG, NULL)) {
             break;
         }
     }

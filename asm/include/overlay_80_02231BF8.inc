@@ -14,7 +14,7 @@
 .public IsBattleResultWin
 .public sub_0205C1F0
 .public sub_0205C268
-.public SetMonData
+.public Pokemon_SetData
 .public Party_GetMonByIndex
 .public Party_SafeCopyMonToSlot_ResetUnkSub
 .public SaveArray_Party_Get

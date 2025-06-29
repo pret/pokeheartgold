@@ -607,7 +607,7 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(GX_LCD_SIZE_Y));
 
     u8 tp_param_data[4];
-    ReadWholeNarcMemberByIdPair(tp_param_data, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(GetMonData(data->frontPokemon, MON_DATA_SPECIES, NULL)));
+    ReadWholeNarcMemberByIdPair(tp_param_data, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(Pokemon_GetData(data->frontPokemon, MON_DATA_SPECIES, NULL)));
     data->unk58 = tp_param_data[1];
 }
 
@@ -736,8 +736,8 @@ static u32 ov78_021E6688(int species, int form, int gender) {
 }
 
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3) {
-    u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(pokemon, MON_DATA_FORM, NULL);
+    u32 species = Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetData(pokemon, MON_DATA_FORM, NULL);
     u32 gender = GetMonGender(pokemon);
     BOOL shiny = MonIsShiny(pokemon);
 

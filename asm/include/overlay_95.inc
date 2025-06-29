@@ -148,8 +148,8 @@
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0203E354
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public GetMonNature
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C

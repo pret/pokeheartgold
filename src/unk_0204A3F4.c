@@ -126,13 +126,13 @@ BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
     SpeciesAndItem validMons[PARTY_SIZE];
     for (i = 0, numValid = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
+        species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        item = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
+        form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         if (!checkDuplicateItems) {
             item = ITEM_NONE;
         }
-        if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
             continue;
         }
         if (IsPokemonBannedFromBattleFrontier(species, form) == TRUE) {
@@ -325,8 +325,8 @@ BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData) {
     for (u16 i = 0; i < a0->unk0e; i++) {
         a0->unk2a[i] = unk[0x30 + i] - 1;
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        a0->unk2e[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        a0->unk36[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        a0->unk2e[i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        a0->unk36[i] = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     }
     FreeToHeap(*a1);
     *a1 = NULL;
@@ -339,8 +339,8 @@ u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     Party *party = SaveArray_Party_Get(saveData);
     for (u16 i = 0; i < a0->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        items[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        species[i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        items[i] = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
         if (i == 0) {
             continue;
         }
@@ -671,8 +671,8 @@ static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2) 
     u8 count = 0;
     for (s32 i = 0; i < a2->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a2->unk2a[i]);
-        if (GetMonData(mon, ribbon, NULL) == FALSE) {
-            SetMonData(mon, ribbon, &value);
+        if (Pokemon_GetData(mon, ribbon, NULL) == FALSE) {
+            Pokemon_SetData(mon, ribbon, &value);
             count++;
         }
     }
@@ -695,23 +695,23 @@ static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0) {
 }
 
 static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
-    a0->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    a0->form = GetMonData(mon, MON_DATA_FORM, NULL);
-    a0->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    a0->species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    a0->form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    a0->item = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     for (s32 i = 0; i < MAX_MON_MOVES; i++) {
-        a0->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        a0->ppUp |= GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
+        a0->moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
+        a0->ppUp |= Pokemon_GetData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
     }
-    a0->language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
-    a0->otId = GetMonData(mon, MON_DATA_OTID, NULL);
-    a0->pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    a0->ivsWord = GetMonData(mon, MON_DATA_IVS_WORD, NULL);
+    a0->language = Pokemon_GetData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    a0->otId = Pokemon_GetData(mon, MON_DATA_OTID, NULL);
+    a0->pid = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
+    a0->ivsWord = Pokemon_GetData(mon, MON_DATA_IVS_WORD, NULL);
     for (s32 i = 0; i < NUM_STATS; i++) {
-        a0->evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, NULL);
+        a0->evs[i] = Pokemon_GetData(mon, MON_DATA_HP_EV + i, NULL);
     }
-    a0->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
-    a0->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    GetMonData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
+    a0->ability = Pokemon_GetData(mon, MON_DATA_ABILITY, NULL);
+    a0->friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
+    Pokemon_GetData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
 }
 
 static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {

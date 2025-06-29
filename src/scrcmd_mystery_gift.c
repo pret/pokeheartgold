@@ -211,9 +211,9 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     Pokemon *tmpPokemon = NULL;
     Pokemon *pokemon = &mgData->mon;
     u8 *srcRibbons = mgData->ribbons;
-    int eggMetLocation = GetMonData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL);
-    int personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-    int otid = GetMonData(pokemon, MON_DATA_OTID, NULL);
+    int eggMetLocation = Pokemon_GetData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL);
+    int personality = Pokemon_GetData(pokemon, MON_DATA_PERSONALITY, NULL);
+    int otid = Pokemon_GetData(pokemon, MON_DATA_OTID, NULL);
     int rand = PRandom(OS_GetTick());
 
     if (personality != 0) {
@@ -228,55 +228,55 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     SetMonPersonality(pokemon, rand);
 
     int gender = GetMonGender(pokemon);
-    SetMonData(pokemon, MON_DATA_GENDER, &gender);
+    Pokemon_SetData(pokemon, MON_DATA_GENDER, &gender);
 
-    gender = GetMonData(pokemon, MON_DATA_HP_IV, NULL) + GetMonData(pokemon, MON_DATA_ATK_IV, NULL) + GetMonData(pokemon, MON_DATA_DEF_IV, NULL) + GetMonData(pokemon, MON_DATA_SPEED_IV, NULL) + GetMonData(pokemon, MON_DATA_SPATK_IV, NULL) + GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
+    gender = Pokemon_GetData(pokemon, MON_DATA_HP_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_ATK_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_DEF_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPEED_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPATK_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPDEF_IV, NULL);
     if (gender == 0) {
         u16 ivRand = LCRandom();
         rand = ivRand & 0x1Fu;
-        SetMonData(pokemon, MON_DATA_HP_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_HP_IV, &rand);
         rand = (ivRand & 0x3E0u) >> 5;
-        SetMonData(pokemon, MON_DATA_ATK_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_ATK_IV, &rand);
         rand = (ivRand & 0x7C00u) >> 10;
-        SetMonData(pokemon, MON_DATA_DEF_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_DEF_IV, &rand);
         ivRand = LCRandom();
         rand = ivRand & 0x1Fu;
-        SetMonData(pokemon, MON_DATA_SPEED_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_SPEED_IV, &rand);
         rand = (ivRand & 0x3E0u) >> 5;
-        SetMonData(pokemon, MON_DATA_SPATK_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_SPATK_IV, &rand);
         rand = (ivRand & 0x7C00u) >> 10;
-        SetMonData(pokemon, MON_DATA_SPDEF_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_SPDEF_IV, &rand);
     }
 
     SaveSpecialRibbons *ribbons = Save_SpecialRibbons_Get(fieldSys->saveData);
-    if (GetMonData(pokemon, MON_DATA_RED_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_RED_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_RED)] = srcRibbons[0];
     }
-    if (GetMonData(pokemon, MON_DATA_GREEN_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_GREEN_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_GREEN)] = srcRibbons[1];
     }
-    if (GetMonData(pokemon, MON_DATA_BLUE_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_BLUE_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_BLUE)] = srcRibbons[2];
     }
-    if (GetMonData(pokemon, MON_DATA_FESTIVAL_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_FESTIVAL_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_FESTIVAL)] = srcRibbons[3];
     }
-    if (GetMonData(pokemon, MON_DATA_CARNIVAL_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_CARNIVAL_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_CARNIVAL)] = srcRibbons[4];
     }
-    if (GetMonData(pokemon, MON_DATA_CLASSIC_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_CLASSIC_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_CLASSIC)] = srcRibbons[5];
     }
-    if (GetMonData(pokemon, MON_DATA_PREMIER_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_PREMIER_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_PREMIER)] = srcRibbons[6];
     }
-    if (GetMonData(pokemon, MON_DATA_HOENN_MARINE_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_HOENN_MARINE_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_HOENN_MARINE)] = srcRibbons[7];
     }
-    if (GetMonData(pokemon, MON_DATA_HOENN_LAND_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_HOENN_LAND_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_HOENN_LAND)] = srcRibbons[8];
     }
-    if (GetMonData(pokemon, MON_DATA_HOENN_SKY_RIBBON, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_HOENN_SKY_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_HOENN_SKY)] = srcRibbons[9];
     }
 
@@ -290,15 +290,15 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         GF_ASSERT(tmpPokemon != NULL);
 #endif
         CopyPokemonToPokemon(pokemon, tmpPokemon);
-        SetMonData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
-        SetMonData(tmpPokemon, MON_DATA_OTID, &trainerId);
-        SetMonData(tmpPokemon, MON_DATA_MET_GENDER, &gender);
+        Pokemon_SetData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
+        Pokemon_SetData(tmpPokemon, MON_DATA_OTID, &trainerId);
+        Pokemon_SetData(tmpPokemon, MON_DATA_MET_GENDER, &gender);
         pokemon = tmpPokemon;
         String_Delete(playerName);
     }
 
     MonSetTrainerMemo(pokemon, profile, 4, sub_02017FE4(MAPSECTYPE_EXTERNAL, eggMetLocation), HEAP_ID_32);
-    if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ARCEUS && GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE && !Save_VarsFlags_GetVar404C(vars_flags)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ARCEUS && Pokemon_GetData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE && !Save_VarsFlags_GetVar404C(vars_flags)) {
         Save_VarsFlags_SetVar404C(vars_flags, TRUE);
     }
     CalcMonLevelAndStats(pokemon);

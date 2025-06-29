@@ -58,7 +58,7 @@
 .public sub_02030A24
 .public Save_Frontier_GetStatic
 .public AllocMonZeroed
-.public SetMonData
+.public Pokemon_SetData
 .public sub_02072A98
 .public sub_02072D64
 .public Party_InitWithMaxSize

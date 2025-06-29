@@ -247,8 +247,8 @@
 .public Save_VarsFlags_GetBattleCastlePrintProgress
 .public Save_VarsFlags_GetBattleArcadePrintProgress
 .public Save_VarsFlags_GetBattleTowerPrintProgress
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public AllocAndLoadMonPersonal
 .public FreeMonPersonal
 .public GetGenderBySpeciesAndPersonality

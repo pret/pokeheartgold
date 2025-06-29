@@ -2112,7 +2112,7 @@ _022671C4:
 	beq _022672B6
 	mov r1, #5
 	add r2, r6, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _022672B6
 	ldr r0, [sp, #0x24]
@@ -2167,7 +2167,7 @@ _02267252:
 	ldr r0, [sp, #0x24]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]

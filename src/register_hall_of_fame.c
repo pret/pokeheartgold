@@ -1997,16 +1997,16 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
     for (i = 0; i < Party_GetCount(data->args->party); ++i) {
         pokemon = Party_GetMonByIndex(data->args->party, i);
         encry = AcquireMonLock(pokemon);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+        if (!Pokemon_GetData(pokemon, MON_DATA_IS_EGG, NULL)) {
             hofMon = &data->mons[data->numMons];
             hofMon->mon = pokemon;
-            hofMon->species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-            hofMon->personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-            hofMon->form = GetMonData(pokemon, MON_DATA_FORM, NULL);
-            hofMon->gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
+            hofMon->species = Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL);
+            hofMon->personality = Pokemon_GetData(pokemon, MON_DATA_PERSONALITY, NULL);
+            hofMon->form = Pokemon_GetData(pokemon, MON_DATA_FORM, NULL);
+            hofMon->gender = Pokemon_GetData(pokemon, MON_DATA_GENDER, NULL);
             hofMon->yOffset = GetMonPicHeightBySpeciesGenderForm(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
-            hofMon->metLocation = GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL);
-            hofMon->level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+            hofMon->metLocation = Pokemon_GetData(pokemon, MON_DATA_MET_LOCATION, NULL);
+            hofMon->level = Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL);
             hofMon->partyIndex = i;
             if (hofMon->species == SPECIES_NIDORAN_F || hofMon->species == SPECIES_NIDORAN_M) {
                 hofMon->printGender = FALSE;
@@ -2032,7 +2032,7 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
 static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
     BOOL encry = AcquireMonLock(pokemon);
     RegisterHallOfFame_MetLocationType ret;
-    int version = GetMonData(pokemon, MON_DATA_GAME_VERSION, NULL);
+    int version = Pokemon_GetData(pokemon, MON_DATA_GAME_VERSION, NULL);
     if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
         ret = REGHOF_METLOC_HOENN;
     } else if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN) {
@@ -2041,22 +2041,22 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
         ret = REGHOF_METLOC_ORRE;
     } else if (version == VERSION_DIAMOND || version == VERSION_PEARL || version == VERSION_PLATINUM) {
         ret = REGHOF_METLOC_SINNOH;
-    } else if (GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL)) {
+    } else if (Pokemon_GetData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL)) {
         ret = REGHOF_METLOC_FATEFUL;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_SHUCKIE_SHUCKLE) == TRUE) {
         ret = REGHOF_METLOC_SHUCKIE;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_KENYA_SPEAROW) == TRUE) {
         ret = REGHOF_METLOC_KENYA;
-    } else if (PlayerProfile_GetTrainerID(profile) != GetMonData(pokemon, MON_DATA_OTID, NULL)) {
+    } else if (PlayerProfile_GetTrainerID(profile) != Pokemon_GetData(pokemon, MON_DATA_OTID, NULL)) {
         ret = REGHOF_METLOC_TRADED;
     } else {
         PlayerName_FlatToString(profile, data->strbuf1);
-        GetMonData(pokemon, MON_DATA_OT_NAME_2, data->strbuf2);
+        Pokemon_GetData(pokemon, MON_DATA_OT_NAME_2, data->strbuf2);
         if (String_Compare(data->strbuf1, data->strbuf2)) {
             ret = REGHOF_METLOC_TRADED;
-        } else if (GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
+        } else if (Pokemon_GetData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
             ret = REGHOF_METLOC_FATEFUL;
-        } else if (GetMonData(pokemon, MON_DATA_EGG_MET_MONTH, NULL) == 0) {
+        } else if (Pokemon_GetData(pokemon, MON_DATA_EGG_MET_MONTH, NULL) == 0) {
             ret = REGHOF_METLOC_CAUGHT;
         } else {
             ret = REGHOF_METLOC_HATCHED;

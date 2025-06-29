@@ -52,8 +52,8 @@
 .public sub_0202BF80
 .public Save_FashionData_Get
 .public CreateMon
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public MATHi_CRC32InitTableRev
 .public MATH_CalcCRC32
 .public memcpy

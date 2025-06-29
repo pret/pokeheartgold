@@ -78,8 +78,8 @@
 .public Save_Pokeathlon_Get
 .public sub_020319A8
 .public sub_0203A994
-.public GetMonData
-.public GetBoxMonData
+.public Pokemon_GetData
+.public BoxPokemon_GetData
 .public MonIsShiny
 .public BoxMonIsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx

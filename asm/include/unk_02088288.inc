@@ -98,8 +98,8 @@
 .public AllocMonZeroed
 .public AcquireMonLock
 .public ReleaseMonLock
-.public GetMonData
-.public GetBoxMonData
+.public Pokemon_GetData
+.public BoxPokemon_GetData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature
 .public GetMonGender
