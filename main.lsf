@@ -131,6 +131,7 @@ Static main
     Object src/update_dex_received.o
     Object src/save_follow_mon.o
     Object src/save_pokegear.o
+    Object src/unk_0202F370.o
     Object src/safari_zone.o
     Object src/photo_album.o
     Object asm/unk_0202FBCC.o

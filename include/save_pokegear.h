@@ -5,6 +5,7 @@
 #include "constants/pokegear_card.h"
 
 #include "save.h"
+#include "unk_0202F370.h"
 
 #define MOMS_BALANCE_GET 0
 #define MOMS_BALANCE_SET 1
@@ -36,25 +37,6 @@ typedef struct PhoneCallPersistentState {
     u8 unk_14E[2];
     u8 filler_150[4];
 } PhoneCallPersistentState; // size=0x154
-
-typedef struct UnkPokegearSub8 {
-    u16 unk_0;
-    u16 unk_2_0 : 4;
-    u16 unk_2_4 : 4;
-    u16 unk_2_8 : 4;
-    u16 unk_2_C : 4;
-    u16 unk_4[4];
-} UnkPokegearSub8;
-
-typedef struct UnkPokegearSub8List {
-    UnkPokegearSub8 list[100];
-} UnkPokegearSub8List;
-
-typedef struct UnkStruct_0202F3DC {
-    u32 unk_0;
-    u8 unk_4[4];
-    u16 unk_8[4];
-} UnkStruct_0202F3DC;
 
 typedef struct SavePokegear {
     u8 lastUsedApp;
@@ -120,16 +102,5 @@ int PhoneCallPersistentState_BlackBeltKenji_GetWaitDays(PhoneCallPersistentState
 void sub_0202F294(PhoneCallPersistentState *callPersistentState, int a1);
 void PhoneCallPersistentState_SafariZoneArrangement_Set(PhoneCallPersistentState *callPersistentState, u8 *areas, u8 numAreas);
 u8 *PhoneCallPersistentState_SafariZoneArrangement_AllocAndGet(PhoneCallPersistentState *callPersistentState, u8 *numAreasRet, HeapID heapId);
-
-BOOL sub_0202F370(UnkPokegearSub8 *unk);
-void sub_0202F388(UnkPokegearSub8 *unk);
-void sub_0202F3DC(struct UnkStruct_0202F3DC *unk);
-BOOL sub_0202F400(struct UnkStruct_0202F3DC *unk);
-void sub_0202F434(struct UnkStruct_0202F3DC *src, UnkPokegearSub8 *dest);
-void sub_0202F4B0(UnkPokegearSub8 *src, struct UnkStruct_0202F3DC *dest);
-BOOL sub_0202F4E8(UnkPokegearSub8List *list, u8 a1);
-void sub_0202F500(UnkPokegearSub8List *list, u8 a1);
-BOOL sub_0202F514(UnkPokegearSub8List *list, struct UnkStruct_0202F3DC *a1, u8 a2);
-BOOL sub_0202F53C(UnkPokegearSub8List *list, struct UnkStruct_0202F3DC *a1, u8 a2, BOOL a3);
 
 #endif // POKEHEARTGOLD_SAVE_GS_PLAYER_MISC_H
