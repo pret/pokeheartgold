@@ -1,10 +1,12 @@
 #include "global.h"
 
+#include "constants/items.h"
 #include "constants/maps.h"
 
 #include "application/pokegear/map/pokegear_map_internal.h"
 
 #include "sys_flags.h"
+#include "unk_020932A4.h"
 
 void ov101_021E9288(PokegearMapAppData *mapApp);
 void ov101_021E93D0(PokegearMapAppData *mapApp);
@@ -17,6 +19,7 @@ void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 BOOL ov101_021EA664(PokegearMapAppData *mapApp, int a1);
 BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
+BOOL ov101_021EA990(PokegearMapAppData *mapApp, int a1);
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;
@@ -758,4 +761,28 @@ int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8
     }
     a1->unk_4 = ov101_021ED614(mapApp, sp8);
     return sp8;
+}
+
+BOOL ov101_021EA990(PokegearMapAppData *mapApp, int a1) {
+    int i;
+    TimeOfDayWildParam r0;
+    PhoneBookEntry *r3;
+
+    r0 = GF_RTC_GetTimeOfDayWildParam();
+    for (i = 0; i < mapApp->unk_130; ++i) {
+        r3 = &mapApp->unk_128->entries[mapApp->unk_12C[i].id];
+        if (r3->mapId != a1) {
+            continue;
+        }
+        if (r3->type != 0) {
+            continue;
+        }
+        if (PhoneBookTrainerGetRematchInfo(mapApp->unk_12C[i].id, mapApp->pokegear->saveData, mapApp->unk_128, r0) != 0) {
+            return TRUE;
+        }
+        if (PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(mapApp->unk_124, mapApp->unk_12C[i].id) != ITEM_NONE) {
+            return TRUE;
+        }
+    }
+    return FALSE;
 }

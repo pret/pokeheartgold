@@ -31,75 +31,9 @@
 	.extern ov101_021EA794
 	.extern ov101_021EA874
 	.extern ov101_021EA8A8
+	.extern ov101_021EA990
 	.extern ov101_021F7372
 	.extern ov101_021F79B4
-
-	thumb_func_start ov101_021EA990
-ov101_021EA990: ; 0x021EA990
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	bl GF_RTC_GetTimeOfDayWildParam
-	mov r1, #0x13
-	lsl r1, r1, #4
-	ldrb r1, [r5, r1]
-	mov r4, #0
-	cmp r1, #0
-	ble _021EAA06
-	lsl r0, r0, #0x18
-	lsr r7, r0, #0x18
-_021EA9AA:
-	mov r0, #0x4b
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	mov r3, #0x14
-	ldrb r1, [r0, r4]
-	mov r0, #0x4a
-	lsl r0, r0, #2
-	ldr r2, [r5, r0]
-	mul r3, r1
-	ldr r0, [r2, #4]
-	add r3, r0, r3
-	ldrh r0, [r3, #6]
-	cmp r0, r6
-	bne _021EA9FA
-	ldrb r0, [r3, #1]
-	cmp r0, #0
-	bne _021EA9FA
-	add r0, r1, #0
-	ldr r1, [r5, #0x10]
-	add r3, r7, #0
-	ldr r1, [r1, #0x24]
-	bl PhoneBookTrainerGetRematchInfo
-	cmp r0, #0
-	beq _021EA9E0
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_021EA9E0:
-	mov r1, #0x4b
-	lsl r1, r1, #2
-	ldr r1, [r5, r1]
-	mov r0, #0x49
-	lsl r0, r0, #2
-	ldrb r1, [r1, r4]
-	ldr r0, [r5, r0]
-	bl PhoneCallPersistentState_PhoneRematches_GiftItemIdGet
-	cmp r0, #0
-	beq _021EA9FA
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_021EA9FA:
-	mov r0, #0x13
-	lsl r0, r0, #4
-	ldrb r0, [r5, r0]
-	add r4, r4, #1
-	cmp r4, r0
-	blt _021EA9AA
-_021EAA06:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021EA990
 
 	thumb_func_start ov101_021EAA0C
 ov101_021EAA0C: ; 0x021EAA0C

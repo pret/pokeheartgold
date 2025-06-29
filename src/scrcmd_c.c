@@ -1738,7 +1738,7 @@ BOOL ScrCmd_GetPhoneBookRematch(ScriptContext *ctx) {
     u16 *r6 = ScriptGetVarPointer(ctx);
     struct PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_32);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
-    *r6 = PhoneBookTrainerGetRematchInfo(r4, ctx->fieldSystem->saveData, phoneBook, (TimeOfDayWildParam)(u8)Field_GetTimeOfDayWildParam(ctx->fieldSystem));
+    *r6 = PhoneBookTrainerGetRematchInfo(r4, ctx->fieldSystem->saveData, phoneBook, Field_GetTimeOfDayWildParam(ctx->fieldSystem));
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
     FreePhoneBook(phoneBook);
     return FALSE;
