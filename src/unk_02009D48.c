@@ -159,7 +159,7 @@ void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJV
         }
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     }
 }

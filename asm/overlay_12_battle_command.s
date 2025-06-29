@@ -10,8 +10,8 @@
 
 	.text
 
-	thumb_func_start ov12_022463E8
-ov12_022463E8: ; 0x022463E8
+	thumb_func_start BattleScript_CalcEffortValues
+BattleScript_CalcEffortValues: ; 0x022463E8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	str r0, [sp]
@@ -236,7 +236,7 @@ _0224659A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022465A4: .word 0x000001FE
-	thumb_func_end ov12_022463E8
+	thumb_func_end BattleScript_CalcEffortValues
 
 	thumb_func_start Task_GetPokemon
 Task_GetPokemon: ; 0x022465A8

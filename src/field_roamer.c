@@ -197,7 +197,7 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
         level = 35;
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
 

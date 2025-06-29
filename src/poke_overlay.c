@@ -83,7 +83,7 @@ BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
         }
     }
     if (i >= OVY_MAX_PER_REGION) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
 
@@ -102,7 +102,7 @@ BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
         result = LoadOverlayNoInitAsync(MI_PROCESSOR_ARM9, ovyId);
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
 
@@ -111,7 +111,7 @@ BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
     }
 
     if (result == FALSE) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
 
@@ -156,7 +156,7 @@ static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void **start, void **end) {
     FSOverlayInfo info;
 
     if (!FS_LoadOverlayInfo(&info, MI_PROCESSOR_ARM9, ovyId)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
 

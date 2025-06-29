@@ -987,11 +987,11 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
         boxMon->pid = VALUE(u32);
         break;
     case MON_DATA_PARTY_LOCK:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         boxMon->party_lock = VALUE(u8);
         break;
     case MON_DATA_BOX_LOCK:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         boxMon->box_lock = VALUE(u8);
         break;
     case MON_DATA_CHECKSUM_FAILED:
@@ -1390,7 +1390,7 @@ static void AddMonDataInternal(Pokemon *mon, int attr, int value) {
     case MON_DATA_SPDEF:
     case MON_DATA_MAIL_STRUCT:
         // case MON_DATA_SEAL_COORDS:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     default:
         AddBoxMonDataInternal(&mon->box, attr, value);
@@ -1707,7 +1707,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_SHINY_LEAF_E:
     case MON_DATA_SHINY_LEAF_CROWN:
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 

@@ -46,7 +46,7 @@ void String_Copy(String *dest, const String *src) {
         dest->size = src->size;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 String *String_Dup(const String *src, HeapID heapId) {
@@ -132,7 +132,7 @@ void String16_FormatInteger(String *str, int num, u32 ndigits, PrintingMode strC
         str->data[str->size] = EOS;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void String16_FormatUnsignedLongLong(String *str, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
@@ -218,7 +218,7 @@ void String16_FormatUnsignedLongLong(String *str, u64 num, u32 ndigits, Printing
         str->data[str->size] = EOS;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 s64 String_atoi(String *str, BOOL *flag) {
@@ -327,7 +327,7 @@ void CopyU16ArrayToString(String *str, const u16 *buf) {
 
     for (str->size = 0; *buf != EOS;) {
         if (str->size >= str->maxsize - 1) {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
             break;
         }
         str->data[str->size++] = *buf++;
@@ -352,7 +352,7 @@ void CopyU16ArrayToStringN(String *str, const u16 *buf, u32 length) {
         }
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void CopyStringToU16Array(const String *str, u16 *buf, u32 length) {
@@ -362,7 +362,7 @@ void CopyStringToU16Array(const String *str, u16 *buf, u32 length) {
         memcpy(buf, str->data, (u32)((str->size + 1) * 2));
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 u16 *String_cstr(String *str) {
@@ -380,7 +380,7 @@ void String_Cat(String *dest, String *src) {
         dest->size += src->size;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void String_AddChar(String *str, u16 val) {
@@ -391,7 +391,7 @@ void String_AddChar(String *str, u16 val) {
         str->data[str->size] = EOS;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 BOOL String_IsTrainerName(String *string) {

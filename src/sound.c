@@ -331,7 +331,7 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     case 58:
         return &work->unk_BEC7C;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return NULL;
 }
 
@@ -419,7 +419,7 @@ NNSSndHandle *GF_GetSoundHandle(int playerNo) {
 
     work = GetSoundDataPointer();
     if (playerNo >= SND_HANDLE_MAX) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         playerNo = 0;
     }
     return &work->unk_BEB78[playerNo];
@@ -444,7 +444,7 @@ enum SoundHandleNo GF_GetSndHandleByPlayerNo(int playerNo) {
     case PLAYER_BGM:
         return SND_HANDLE_BGM;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return SND_HANDLE_SE_1;
     }
 }
