@@ -33,15 +33,13 @@ typedef struct CatchingShowPokemon {
 } CatchingShowPokemon;
 
 typedef struct CatchingShow {
-    CatchingShowPokemon pokemon[PARTY_SIZE];
-    u8 caughtMonsOrder[PARTY_SIZE];
-    s32 steps;
-    s32 currentEncounterIndex;
-    s64 startTime; // 40
+    CatchingShowPokemon pokemon[CATCHING_SHOW_MONS];
+    u8 caughtMonsOrder[CATCHING_SHOW_MONS];
+    int steps;
+    int currentEncounterIndex;
+    s64 startTime;
     int timePoints;
 } CatchingShow;
-
-static CatchingShow sCatchingShow;
 
 static void BufferSpeciesData(u16 species, u8 *dest);
 static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow);
@@ -55,7 +53,9 @@ static u32 CalcCatchingPoints(CatchingShow *catchingShow);
 static u32 CalculateTypePoints(CatchingShow *catchingShow);
 static u32 GetTimePoints(CatchingShow *catchingShow);
 
-void PalPark_ClearState(FieldSystem *fieldSystem) {
+static CatchingShow sCatchingShow;
+
+void CatchingShow_ClearState(FieldSystem *fieldSystem) {
     s32 i;
     CatchingShow *catchingShow = &sCatchingShow;
     for (i = 0; i < PARTY_SIZE; ++i) {
@@ -111,7 +111,7 @@ int CatchingShow_GetTimePoints(FieldSystem *fieldSystem) {
     return GetTimePoints(&sCatchingShow);
 }
 
-u32 CatchingShow_GetTypePoints(FieldSystem *fieldSystem) {
+int CatchingShow_GetTypePoints(FieldSystem *fieldSystem) {
     return CalculateTypePoints(&sCatchingShow);
 }
 

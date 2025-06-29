@@ -46,7 +46,7 @@ struct PalParkMonsData {
 // Resets the Pal Park state. fieldSystem is unused.
 // Called when entering the park game, right
 // after the countdown finishes.
-void PalPark_ClearState(FieldSystem *fieldSystem);
+void CatchingShow_ClearState(FieldSystem *fieldSystem);
 
 // Initializes where your migrated Pokemon will spawn, and starts the timer.
 // Called on entry into Pal Park.
@@ -71,7 +71,7 @@ int CatchingShow_GetTimePoints(FieldSystem *fieldSystem);
 // the park. You earn 200 points if none of them match.
 // Second, you earn an extra 50 points for each unique type
 // among the Pokemon caught.
-u32 CatchingShow_GetTypePoints(FieldSystem *fieldSystem);
+int CatchingShow_GetTypePoints(FieldSystem *fieldSystem);
 
 // Determines whether to generate an encounter on the
 // current step. x and z are the player's coordinates.

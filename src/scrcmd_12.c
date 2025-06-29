@@ -27,7 +27,7 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
         Save_VarsFlags_SetPalParkSysFlag(script);
-        PalPark_ClearState(ctx->fieldSystem);
+        CatchingShow_ClearState(ctx->fieldSystem);
     } else if (var0 == 0) {
         CatchingShow_Start(ctx->fieldSystem);
     } else if (var0 == 1) {
