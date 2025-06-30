@@ -20,8 +20,10 @@ typedef struct UnkStruct_ov101_021F79B4 {
     u8 unk_09;
     u8 unk_0A_0 : 4;
     u8 unk_0A_4 : 4;
-    u8 unk_0B;
-    u8 unk_0C;
+    u8 unk_0B_0 : 4;
+    u8 unk_0B_4 : 4;
+    u8 unk_0C_0 : 4;
+    u8 unk_0C_4 : 4;
 } UnkStruct_ov101_021F79B4;
 
 typedef struct PokegearMapAppData_Sub044 {

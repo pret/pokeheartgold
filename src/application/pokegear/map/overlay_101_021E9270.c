@@ -933,3 +933,52 @@ void ov101_021EAE54(PokegearMapAppData *mapApp, int a1) {
         }
     }
 }
+
+void ov101_021EAF40(PokegearMapAppData *mapApp) {
+    int i;
+    const UnkStruct_ov101_021F79B4 *r4;
+
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 47, 20, mapApp->unk_170->rawData, 0, 0, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+
+    switch (mapApp->unk_138_5) {
+    case 0:
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 22, 0, 6, 20, mapApp->unk_170->rawData, 48, 0, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        break;
+    case 1:
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 29, 0, 3, 20, mapApp->unk_170->rawData, 54, 0, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        break;
+    }
+
+    for (i = 0; i < 27; ++i) {
+        r4 = &ov101_021F79B4[i];
+        if (r4->unk_00 == MAP_CIANWOOD) {
+            continue;
+        }
+        if (r4->unk_05 == 0xFF) {
+            continue;
+        }
+        if (mapApp->unk_138_5 < 2 && !ov100_021E5C50(r4->unk_06, r4->unk_07)) {
+            continue;
+        }
+        if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, r4->unk_04)) {
+            continue;
+        }
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, r4->unk_06 - r4->unk_0C_0, r4->unk_07 - r4->unk_0C_4 + 2, r4->unk_0B_0, r4->unk_0B_4, mapApp->unk_170->rawData, r4->unk_08, r4->unk_09, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    }
+
+    if (mapApp->unk_13D_1) {
+        if (!mapApp->unk_13D_0) {
+            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->unk_170->rawData, 48, 27, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        }
+    } else if (mapApp->unk_13D_0) {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->unk_170->rawData, 41, 20, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    } else {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->unk_170->rawData, 41, 27, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    }
+    if (mapApp->unk_13D_2) {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 19, 1, 3, 4, mapApp->unk_170->rawData, 55, 20, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    }
+    if (mapApp->unk_13D_3) {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 24, 15, 3, 3, mapApp->unk_170->rawData, 55, 24, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    }
+}
