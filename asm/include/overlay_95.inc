@@ -153,7 +153,7 @@
 .public GetMonNature
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public sub_020729A4

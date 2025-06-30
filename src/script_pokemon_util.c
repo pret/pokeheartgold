@@ -28,8 +28,8 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     {
-        mon = AllocMonZeroed(heapId);
-        ZeroMonData(mon);
+        mon = Pokemon_New(heapId);
+        Pokemon_Init(mon);
         Pokemon_Create(mon, species, level, 32, FALSE, 0, 0, 0);
         sub_020720FC(mon, profile, ITEM_POKE_BALL, ball, encounterType, heapId);
         sp1C = heldItem;
@@ -56,8 +56,8 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
 
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
-    mon = AllocMonZeroed(HEAP_ID_32);
-    ZeroMonData(mon);
+    mon = Pokemon_New(HEAP_ID_32);
+    Pokemon_Init(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);
     FreeToHeap(mon);

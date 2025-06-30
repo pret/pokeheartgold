@@ -188,14 +188,14 @@
 .public sub_0205C268
 .public AcquireMonLock
 .public ReleaseMonLock
-.public CalcMonLevelAndStats
+.public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature
 .public Pokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMoveMaxPP
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

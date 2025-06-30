@@ -1593,7 +1593,7 @@ BOOL ScrCmd_574(ScriptContext *ctx) {
 BOOL ScrCmd_136(ScriptContext *ctx) {
     u16 partyIdx = ScriptGetVar(ctx);
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = GetMonUnownLetter(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
+    *p_dest = Pokemon_GetForm(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
     return FALSE;
 }
 
@@ -3641,8 +3641,8 @@ BOOL ScrCmd_502(ScriptContext *ctx) {
 
 void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
     Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
-    ZeroMonData(mon);
+    Pokemon *mon = Pokemon_New(HEAP_ID_32);
+    Pokemon_Init(mon);
     Pokemon_Create(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
     Pokedex_SetMonSeenFlag(pokedex, mon);
     FreeToHeap(mon);
@@ -3703,7 +3703,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
         if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
             Pokemon_SetData(mon, MON_DATA_FORM, &form);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             Pokedex_SetMonCaughtFlag(pokedex, mon);
         }
     }
@@ -4303,8 +4303,8 @@ u32 sub_020467A8(SaveData *saveData) {
         }
     }
 
-    Pokemon *walkerMon = AllocMonZeroed(HEAP_ID_32);
-    BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
+    Pokemon *walkerMon = Pokemon_New(HEAP_ID_32);
+    BoxPokemon *walkerBoxMon = Pokemon_GetBoxPokemon(walkerMon);
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
         if (BoxPokemon_GetData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {

@@ -292,7 +292,7 @@ _0222A0FA:
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
 	add r2, r4, #0
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	add r0, r6, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -317,7 +317,7 @@ ov80_0222A140: ; 0x0222A140
 	add r6, r0, #0
 	add r0, r5, #0
 	add r4, r2, #0
-	bl ZeroMonData
+	bl Pokemon_Init
 	cmp r4, #0x78
 	bne _0222A158
 	mov r4, #0x32
@@ -351,7 +351,7 @@ _0222A15E:
 	add r2, sp, #0x1c
 	bl Pokemon_SetData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	ldrh r0, [r6]
 	add r2, sp, #0x14
 	add r2, #1
@@ -513,7 +513,7 @@ _0222A2F0:
 	add r2, r6, #0
 	bl Pokemon_SetData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

@@ -1021,7 +1021,7 @@ _021E60D4:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	pop {r3, r4, r5, pc}
 _021E60EC:
 	mov r0, #0
@@ -1084,7 +1084,7 @@ ov14_021E611C: ; 0x021E611C
 	add r1, r7, #0
 	bl Party_SafeCopyMonToSlot_ResetUnkSub
 	ldr r0, [r4]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r3, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -1144,7 +1144,7 @@ ov14_021E61BC: ; 0x021E61BC
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r3, r0, #0
 	ldrb r1, [r5, #0x1f]
 	ldr r0, [r5, #4]
@@ -1312,7 +1312,7 @@ ov14_021E6318: ; 0x021E6318
 	bl Mon_UpdateShayminForm
 _021E6350:
 	ldr r0, [r4]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [r5, #4]
 	add r1, r6, #0
@@ -22151,7 +22151,7 @@ ov14_021F08BC: ; 0x021F08BC
 	mov r6, #0xa
 _021F08D0:
 	add r0, r6, #0
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [r5]
 	add r4, r4, #1
 	add r5, #0x20
@@ -27022,7 +27022,7 @@ _021F2F4E:
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	ldr r2, [r5, #0x34]
 	add r1, r0, #0
 	add r3, r2, r4

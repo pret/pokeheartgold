@@ -1393,7 +1393,7 @@ ov68_021E6320: ; 0x021E6320
 	bl ReadMsgDataIntoString
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r5, #0
 	add r0, #0xfc
@@ -1427,7 +1427,7 @@ ov68_021E6320: ; 0x021E6320
 	str r0, [sp, #0x1c]
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	mov r4, #0
@@ -2139,7 +2139,7 @@ _021E6A44: ; jump table
 _021E6A5A:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2159,7 +2159,7 @@ _021E6A72:
 _021E6A86:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2170,7 +2170,7 @@ _021E6A86:
 _021E6A9E:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2189,7 +2189,7 @@ _021E6A9E:
 _021E6ACA:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2208,7 +2208,7 @@ _021E6ACA:
 _021E6AF6:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2227,7 +2227,7 @@ _021E6AF6:
 _021E6B22:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc
@@ -2255,7 +2255,7 @@ _021E6B4E:
 _021E6B62:
 	ldr r0, [r4]
 	ldr r0, [r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r4, #0
 	add r0, #0xfc

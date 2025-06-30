@@ -182,7 +182,7 @@
 .public GetMonBaseStat_HandleAlternateForm
 .public Pokemon_GetGender
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

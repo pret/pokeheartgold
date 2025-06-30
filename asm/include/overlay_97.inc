@@ -83,7 +83,7 @@
 .public Pokemon_IsShiny
 .public BoxPokemon_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public CalcBoxMonPokeathlonPerformance
 .public CalcBoxmonPokeathlonStars
 .public CalcMonPokeathlonStars

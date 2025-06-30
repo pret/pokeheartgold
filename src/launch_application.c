@@ -876,8 +876,8 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->saveData = fieldSystem->saveData;
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     args->partnerProfile = AllocFromHeap(HEAP_ID_32, PlayerProfile_sizeof());
-    args->unk38 = AllocFromHeap(HEAP_ID_32, sub_02070D90());
-    args->unk3C = AllocFromHeap(HEAP_ID_32, sub_02070D90());
+    args->unk38 = AllocFromHeap(HEAP_ID_32, Pokemon_GetStructSize());
+    args->unk3C = AllocFromHeap(HEAP_ID_32, Pokemon_GetStructSize());
     args->fieldSystem = fieldSystem;
     args->unk30 = 0;
 }
@@ -926,8 +926,8 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         break;
     case WIRELESS_TRADE_STATE_4:
         data->tradeSequence.partnerProfile = data->wirelessTradeSelectMon.partnerProfile;
-        data->tradeSequence.unk0 = Mon_GetBoxMon(data->wirelessTradeSelectMon.unk38);
-        data->tradeSequence.unk4 = Mon_GetBoxMon(data->wirelessTradeSelectMon.unk3C);
+        data->tradeSequence.unk0 = Pokemon_GetBoxPokemon(data->wirelessTradeSelectMon.unk38);
+        data->tradeSequence.unk4 = Pokemon_GetBoxPokemon(data->wirelessTradeSelectMon.unk3C);
         data->tradeSequence.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         data->tradeSequence.unk10 = 1;
 

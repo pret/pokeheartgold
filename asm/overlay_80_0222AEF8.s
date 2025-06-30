@@ -1549,7 +1549,7 @@ ov80_0222B9CC: ; 0x0222B9CC
 	bl SizeOfStructPokemon
 	add r5, r0, #0
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0
@@ -2031,7 +2031,7 @@ ov80_0222BD44: ; 0x0222BD44
 	bl SizeOfStructPokemon
 	add r5, r0, #0
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0

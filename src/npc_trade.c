@@ -32,7 +32,7 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
     ret->trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, heapId, FALSE);
     ret->heapId = heapId;
     ret->tradeno = tradeno;
-    ret->mon = AllocMonZeroed(heapId);
+    ret->mon = Pokemon_New(heapId);
     ret->profile = PlayerProfile_New(heapId);
     PlayerProfile_Init(ret->profile);
     {
@@ -62,7 +62,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = Pokemon_New(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
@@ -88,7 +88,7 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = Pokemon_New(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_ROUTE_35_GOLDENROD_GATEHOUSE, 7, HEAP_ID_FIELD);
     name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
@@ -163,8 +163,8 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     _CreateTradeMon(work->mon, work->trade_dat, Pokemon_GetData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapId);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
-    anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);
-    anim_work->trade_boxmon = Mon_GetBoxMon(trade_mon_buf);
+    anim_work->my_boxmon = Pokemon_GetBoxPokemon(my_mon_buf);
+    anim_work->trade_boxmon = Pokemon_GetBoxPokemon(trade_mon_buf);
     anim_work->trade_profile = work->profile;
     anim_work->is_ingame = 1;
     anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
@@ -229,6 +229,6 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     mapsec = MapHeader_GetMapSec(mapno);
     MonSetTrainerMemo(mon, NULL, met_level_strat, mapsec, heapId);
 
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
     GF_ASSERT(!Pokemon_IsShiny(mon));
 }

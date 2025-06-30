@@ -304,7 +304,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
         a1->ability = GetMonBaseStat(a1->species, BASE_ABILITY_1);
     }
     a1->friendship = friendship;
-    GetSpeciesNameIntoArray(a1->species, heapId, a1->nickname);
+    MessageLoader_GetSpeciesName(a1->species, heapId, a1->nickname);
     return pid;
 }
 

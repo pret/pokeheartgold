@@ -77,7 +77,7 @@
 .public GetMonBaseExperienceAtCurrentLevel
 .public Pokemon_UpdateFriendship
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public Pokemon_TryLevelUp
 .public MonSetMoveInSlot
 .public MonTryLearnMoveOnLevelUp

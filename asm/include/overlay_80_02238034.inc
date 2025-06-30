@@ -11,7 +11,7 @@
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_SetData
 .public CopyPokemonToPokemon
 .public sub_0207217C

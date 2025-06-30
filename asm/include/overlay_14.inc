@@ -207,7 +207,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public Save_SpecialRibbons_Get
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public Pokemon_GetData
@@ -218,7 +218,7 @@
 .public GetBoxMonNature
 .public BoxPokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public CopyBoxPokemonToPokemon
 .public CopyPokemonToPokemon
 .public BoxMon_UpdateArceusForm

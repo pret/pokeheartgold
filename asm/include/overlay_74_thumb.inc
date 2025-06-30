@@ -264,7 +264,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930
-.public ZeroBoxMonData
+.public BoxPokemon_Init
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public Pokemon_GetData
@@ -276,7 +276,7 @@
 .public BoxPokemon_GetGender
 .public Pokemon_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

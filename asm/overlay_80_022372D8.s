@@ -455,7 +455,7 @@ ov80_022375D0: ; 0x022375D0
 	ldr r1, [sp, #0x18]
 	bl Party_InitWithMaxSize
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x18]
 	mov r6, #0
@@ -555,7 +555,7 @@ _022376D4:
 	add r3, r6, r3
 	bl ov80_02237894
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp, #0xc]
@@ -637,7 +637,7 @@ _0223777E:
 	ldr r1, [sp, #0x10]
 	bl Party_InitWithMaxSize
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 _022377D0:
 	add r0, r5, #0

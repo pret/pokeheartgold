@@ -662,7 +662,7 @@ _0221C3F0:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, r6
@@ -5270,7 +5270,7 @@ ov65_0221E9A8: ; 0x0221E9A8
 	ldr r0, [r4, r0]
 	ldr r1, [r1]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6062,7 +6062,7 @@ ov65_0221F028: ; 0x0221F028
 	ldr r0, [r4, r0]
 	ldr r1, [r1]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6076,7 +6076,7 @@ ov65_0221F028: ; 0x0221F028
 	ldr r0, [r4, r0]
 	sub r1, r1, #6
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6530,7 +6530,7 @@ ov65_0221F3F4: ; 0x0221F3F4
 	ldr r0, [r4, r0]
 	sub r1, r1, #6
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6724,10 +6724,10 @@ ov65_0221F5A0: ; 0x0221F5A0
 	add r6, r2, #0
 	str r3, [sp, #8]
 	ldr r5, [sp, #0x30]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [sp, #0xc]
 	mov r0, #0x1a
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0

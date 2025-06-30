@@ -2279,7 +2279,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
         if (PartyMenu_SoftboiledHPTransferStep(partyMenu, partyMenu->partyMonIndex, 1) == TRUE) {
             Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxPokemon(pokemon));
             BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->levelUpStatsTmp[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
@@ -2463,7 +2463,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
     if (partyMenu->args->itemId == ITEM_GRISEOUS_ORB) {
         if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) != SPECIES_GIRATINA) {
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00189, partyMenu->unformattedStrBuf);
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxPokemon(mon));
             BufferItemNameWithIndefArticle(partyMenu->msgFormat, 1, partyMenu->args->itemId);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
             result = PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE;
@@ -2487,14 +2487,14 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
                 s32 sp0;
                 result = PartyMenu_GiveItemToMon_HandleGriseousOrb(partyMenu, mon, &sp0);
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00107, partyMenu->unformattedStrBuf);
-                BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+                BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxPokemon(mon));
                 BufferItemName(partyMenu->msgFormat, 1, partyMenu->args->itemId);
                 StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
             }
             break;
         case 1:
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00079, partyMenu->unformattedStrBuf);
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxPokemon(mon));
             BufferItemNameWithIndefArticle(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
             result = PARTY_MENU_STATE_PRINT_ASK_SWITCH_ITEMS;
@@ -2640,7 +2640,7 @@ static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu) {
     }
     if (oldItem == ITEM_NONE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00107, partyMenu->unformattedStrBuf);
-        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxPokemon(mon));
         BufferItemName(partyMenu->msgFormat, 1, partyMenu->args->itemId);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
     } else {

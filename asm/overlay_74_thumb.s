@@ -17844,7 +17844,7 @@ ov74_0223195C: ; 0x0223195C
 	bl Save_MigratedPokemon_Get
 	str r0, [sp]
 	add r0, sp, #8
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r6, r0, #0
 	mov r4, #0
 	add r5, r7, #0
@@ -24379,7 +24379,7 @@ MigrateBoxMon: ; 0x02234A9C
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ZeroBoxMonData
+	bl BoxPokemon_Init
 	add r0, r4, #0
 	bl AcquireBoxMonLock
 	mov r1, #0

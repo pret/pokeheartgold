@@ -2188,7 +2188,7 @@ _0208948A:
 	bl sub_0208A520
 	add r6, r0, #0
 	mov r0, #0x13
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -2629,7 +2629,7 @@ sub_020897F0: ; 0x020897F0
 	mov r0, #0x13
 	add r6, r1, #0
 	add r7, r2, #0
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -2660,7 +2660,7 @@ sub_0208981C: ; 0x0208981C
 	bl Pokemon_GetData
 	strh r0, [r4, #0xc]
 	add r0, r5, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	mov r2, #0x7a
 	lsl r2, r2, #4
 	add r6, r0, #0
@@ -4029,7 +4029,7 @@ sub_0208A310: ; 0x0208A310
 	beq _0208A396
 	b _0208A3C6
 _0208A32C:
-	bl sub_02070D90
+	bl Pokemon_GetStructSize
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -4078,7 +4078,7 @@ _0208A392:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0208A396:
-	bl sub_02070D94
+	bl BoxPokemon_GetStructSize
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -4158,7 +4158,7 @@ _0208A41A:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0208A420:
-	bl sub_02070D90
+	bl Pokemon_GetStructSize
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -4264,7 +4264,7 @@ _0208A4DE:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0208A4E4:
-	bl sub_02070D94
+	bl BoxPokemon_GetStructSize
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -4308,7 +4308,7 @@ sub_0208A520: ; 0x0208A520
 	beq _0208A550
 	b _0208A55E
 _0208A538:
-	bl sub_02070D90
+	bl Pokemon_GetStructSize
 	ldrb r1, [r4, #0x14]
 	ldr r2, [r4]
 	mul r0, r1
@@ -4320,7 +4320,7 @@ _0208A546:
 	bl Party_GetMonByIndex
 	pop {r4, pc}
 _0208A550:
-	bl sub_02070D94
+	bl BoxPokemon_GetStructSize
 	ldrb r1, [r4, #0x14]
 	ldr r2, [r4]
 	mul r0, r1
@@ -4702,7 +4702,7 @@ sub_0208A834: ; 0x0208A834
 	lsl r2, r2, #0x18
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x1c
-	bl BoxMonSwapMoves
+	bl BoxPokemon_SwapMoveSlots
 	b _0208A868
 _0208A85A:
 	ldrb r2, [r4, r1]
@@ -4710,7 +4710,7 @@ _0208A85A:
 	lsl r2, r2, #0x18
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x1c
-	bl MonSwapMoves
+	bl Pokemon_SwapMoveSlots
 _0208A868:
 	ldr r0, _0208A8F0 ; =0x000007BD
 	mov r1, #0x99

@@ -189,7 +189,7 @@
 .public SealCase_CountUniqueSeals
 .public Save_GameStats_Get
 .public GameStats_AddScore
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonNature

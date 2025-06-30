@@ -186,7 +186,7 @@
 .public sub_02055198
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireMonLock
 .public ReleaseMonLock
 .public Pokemon_GetData
@@ -194,7 +194,7 @@
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public CopyPokemonToPokemon
 .public Mon_UpdateShayminForm
 .public Pokemon_RemoveCapsule

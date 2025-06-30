@@ -10,7 +10,7 @@
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
-.public AllocMonZeroed
+.public Pokemon_New
 .public CopyPokemonToPokemon
 .public SaveArray_Party_Init
 .public Party_InitWithMaxSize

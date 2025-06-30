@@ -285,7 +285,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         u32 trainerId = PlayerProfile_GetTrainerID(profile);
         BOOL gender = PlayerProfile_GetTrainerGender(profile);
 
-        tmpPokemon = AllocMonZeroed(HEAP_ID_32);
+        tmpPokemon = Pokemon_New(HEAP_ID_32);
 #ifdef UBFIX
         GF_ASSERT(tmpPokemon != NULL);
 #endif
@@ -301,7 +301,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     if (Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ARCEUS && Pokemon_GetData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE && !Save_VarsFlags_GetVar404C(vars_flags)) {
         Save_VarsFlags_SetVar404C(vars_flags, TRUE);
     }
-    CalcMonLevelAndStats(pokemon);
+    Pokemon_CalcLevelAndStats(pokemon);
     if (Party_AddMon(SaveArray_Party_Get(fieldSys->saveData), pokemon)) {
         UpdatePokedexWithReceivedSpecies(fieldSys->saveData, pokemon);
     }
@@ -315,7 +315,7 @@ static void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState *gmmState, u1
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00007;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Pokemon_GetBoxPokemon(&mgData->mon));
 }
 
 static void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -332,7 +332,7 @@ static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState *gmmState, u16 *p
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00008;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Pokemon_GetBoxPokemon(&mgData->mon));
 }
 
 static BOOL MGCheck_Item(FieldSystem *fieldSys, MysteryGiftData *unused) {

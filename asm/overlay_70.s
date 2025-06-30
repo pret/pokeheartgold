@@ -4712,7 +4712,7 @@ ov70_02239D8C: ; 0x02239D8C
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	str r0, [sp]
 	mov r0, #0x8a
 	lsl r0, r0, #2
@@ -5617,7 +5617,7 @@ ov70_0223A4F4: ; 0x0223A4F4
 	ldr r0, [sp, #0x24]
 	add r6, r1, #0
 	add r4, r2, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, _0223A56C ; =0x00000B9C
 	mov r1, #0
@@ -6071,7 +6071,7 @@ ov70_0223A8BC: ; 0x0223A8BC
 	lsl r0, r0, #4
 	add r0, r4, r0
 	add r0, r0, r5
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	str r0, [sp]
 	mov r0, #0xd3
 	lsl r0, r0, #2
@@ -13240,7 +13240,7 @@ _0223E336:
 	ldr r0, [r0, #8]
 	bl Party_GetMonByIndex
 	str r0, [sp, #0x24]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	ldr r1, _0223E470 ; =0x000011F4
 	lsl r6, r4, #2
 	ldr r1, [r5, r1]
@@ -13428,7 +13428,7 @@ _0223E4C0:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	pop {r3, r4, r5, r6, r7, pc}
 _0223E4CE:
 	add r0, r7, #0
@@ -13731,7 +13731,7 @@ ov70_0223E690: ; 0x0223E690
 	sub r0, #8
 	mul r0, r1
 	add r0, r2, r0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	mov r1, #5
 	mov r2, #0
 	add r5, r0, #0
@@ -17374,14 +17374,14 @@ _0224030A:
 	cmp r0, #0
 	beq _0224036A
 	mov r0, #0x3d
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
 	ldr r0, [r0]
 	bl sub_0202DB64
 	add r0, r5, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, _022403F8 ; =0x00000B9C
 	mov r1, #0
@@ -17418,14 +17418,14 @@ _02240372:
 	cmp r0, #0
 	beq _022403E6
 	mov r0, #0x3d
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
 	ldr r0, [r0]
 	bl sub_0202DB64
 	add r0, r5, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, _022403F8 ; =0x00000B9C
 	mov r1, #0
@@ -18289,7 +18289,7 @@ ov70_022409C0: ; 0x022409C0
 	cmp r0, #0x12
 	beq _02240A1A
 	mov r0, #0x3d
-	bl AllocMonZeroed
+	bl Pokemon_New
 	mov r2, #0x12
 	lsl r2, r2, #4
 	add r4, r0, #0
@@ -18471,7 +18471,7 @@ _02240B54:
 	add r2, sp, #4
 	bl PCStorage_FindFirstEmptySlot
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
@@ -18593,7 +18593,7 @@ _02240C58:
 	add r2, sp, #4
 	bl PCStorage_FindFirstEmptySlot
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #0x20]
@@ -19649,7 +19649,7 @@ ov70_022414A0: ; 0x022414A0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x3d
-	bl AllocMonZeroed
+	bl Pokemon_New
 	ldr r1, _02241640 ; =0x000011F0
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x24]
@@ -19679,7 +19679,7 @@ _022414D8:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -19712,7 +19712,7 @@ _0224151C:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -19745,7 +19745,7 @@ _02241560:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -19756,7 +19756,7 @@ _02241560:
 	bl sub_0202DB64
 	ldr r0, _02241640 ; =0x000011F0
 	ldr r0, [r4, r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -19786,7 +19786,7 @@ _022415B2:
 	bl sub_0202DB64
 	ldr r0, _02241640 ; =0x000011F0
 	ldr r0, [r4, r0]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r1, r4, #0
 	add r1, #0xf8
 	str r0, [r1]
@@ -19799,7 +19799,7 @@ _022415B2:
 	sub r0, #8
 	mul r0, r1
 	add r0, r2, r0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r1, r4, #0
 	add r1, #0xfc
 	str r0, [r1]
@@ -19941,7 +19941,7 @@ _022416F0:
 	bl ov70_02241868
 	add r6, r0, #0
 	mov r0, #0x3d
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	ldr r0, [r5]
 	add r1, r7, #0
@@ -20190,7 +20190,7 @@ _022418D4:
 	add r2, sp, #0
 	bl PCStorage_FindFirstEmptySlot
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [r5]
 	ldr r1, [sp, #4]

@@ -314,11 +314,11 @@
 .public FieldSystem_UnkSub108_GetMonMood
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
-.public ZeroMonData
-.public AllocMonZeroed
+.public Pokemon_Init
+.public Pokemon_New
 .public Pokemon_Create
 .public Pokemon_CreateWithNature
-.public CreateMonWithGenderNatureLetter
+.public Pokemon_CreateWithGenderNatureLetter
 .public CreateMonWithFixedIVs
 .public Pokemon_GetData
 .public Pokemon_SetData
@@ -328,7 +328,7 @@
 .public Species_GetGender
 .public GenerateShinyPersonality
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public WildMonSetRandomHeldItem
 .public CalcMonPokeathlonStars
 .public EnemyTrainerSet_Init

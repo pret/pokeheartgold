@@ -105,7 +105,7 @@
 .public Pokemon_GetData
 .public GetMonExpBySpeciesAndLevel
 .public Pokemon_GetGender
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMoveAttr
 .public GetMoveMaxPP
 .public PCStorage_FindFirstBoxWithEmptySlot

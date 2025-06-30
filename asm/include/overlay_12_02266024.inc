@@ -97,7 +97,7 @@
 .public String_Delete
 .public Pokemon_GetData
 .public Pokemon_GetGender
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMoveAttr
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

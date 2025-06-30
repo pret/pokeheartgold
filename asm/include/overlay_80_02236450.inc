@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public GetSpeciesNameIntoArray
+.public MessageLoader_GetSpeciesName
 .public FreeToHeap
 .public GF_AssertFail
 .public PlayerProfile_GetVersion
@@ -14,8 +14,8 @@
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
-.public AllocMonZeroed
-.public CalcMonLevelAndStats
+.public Pokemon_New
+.public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat

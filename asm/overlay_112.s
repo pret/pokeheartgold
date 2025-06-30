@@ -10387,9 +10387,9 @@ _021EAEAE:
 	cmp r6, #0
 	beq _021EAF04
 	mov r0, #0x9a
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r4, r0, #0
 	ldr r0, _021EAF28 ; =0x0001E440
 	add r1, r4, #0
@@ -15523,7 +15523,7 @@ _021ED6D2:
 	ldrh r0, [r4, r2]
 	add r2, #0x10
 	add r2, r4, r2
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 _021ED700:
 	ldr r1, _021ED7C4 ; =0x0001F2C0
 	add r0, r4, #0
@@ -16623,7 +16623,7 @@ ov112_021EDFE8: ; 0x021EDFE8
 	add r5, r0, #0
 	mov r0, #0x9a
 	mov r6, #1
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	ldr r0, _021EE03C ; =0x0001E440
 	add r1, r4, #0
@@ -17681,9 +17681,9 @@ ov112_021EE7A8: ; 0x021EE7A8
 	bl SaveArray_PCStorage_Get
 	str r0, [sp, #4]
 	mov r0, #0x9a
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r6, r0, #0
 	ldr r0, _021EE89C ; =0x0001E440
 	add r2, sp, #8
@@ -17740,7 +17740,7 @@ _021EE81E:
 	add r2, r5, r7
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EE8B0 ; =0x0001E438
@@ -17829,7 +17829,7 @@ _021EE8E6:
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	cmp r6, #0
 	beq _021EE91C
 	add r0, r5, #0
@@ -18082,7 +18082,7 @@ ov112_021EEAF0: ; 0x021EEAF0
 	bl SaveArray_PCStorage_Get
 	add r7, r0, #0
 	mov r0, #0x9a
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	ldr r0, _021EECC4 ; =0x0001E438
 	mov r1, #0x9a
@@ -18125,7 +18125,7 @@ _021EEB3A:
 	add r2, r6, #0
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EECC4 ; =0x0001E438
@@ -18134,7 +18134,7 @@ _021EEB3A:
 	mov r3, #0xe9
 	bl BoxMonSetTrainerMemo
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, sp, #0x24
@@ -18180,9 +18180,9 @@ _021EEBA4:
 	add r1, r5, r2
 	bl CopyU16ArrayToString
 	add r0, r4, #0
-	bl ZeroMonData
+	bl Pokemon_Init
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r6, r0, #0
 	bl MTRandom
 	mov r1, #0x18
@@ -18214,7 +18214,7 @@ _021EEBA4:
 	mov r1, #0x91
 	bl BoxPokemon_SetData
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r3, _021EECE0 ; =0x0000AD1A

@@ -294,7 +294,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_LEVEL_UP)) {
         if (sp5C < MAX_LEVEL) {
             AddMonData(mon, MON_DATA_EXP, CalcMonExpToNextLevel(mon));
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             if (sp54 == 0) {
                 sp60 = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
                 RestoreMonHPBy(mon, sp54, sp60, sp60 - sp58);
@@ -347,7 +347,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         if (sp6C != -1) {
             sp54 = sp6C;
             Pokemon_SetData(mon, MON_DATA_HP_EV, &sp54);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             hadEffect = TRUE;
         }
 
@@ -362,7 +362,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         if (sp6C != -1) {
             sp58 = sp6C;
             Pokemon_SetData(mon, MON_DATA_ATK_EV, &sp58);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             hadEffect = TRUE;
         }
 
@@ -377,7 +377,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         if (sp6C != -1) {
             sp5C = sp6C;
             Pokemon_SetData(mon, MON_DATA_DEF_EV, &sp5C);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             hadEffect = TRUE;
         }
 
@@ -392,7 +392,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         if (sp6C != -1) {
             sp60 = sp6C;
             Pokemon_SetData(mon, MON_DATA_SPEED_EV, &sp60);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             hadEffect = TRUE;
         }
 
@@ -407,7 +407,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         if (sp6C != -1) {
             sp64 = sp6C;
             Pokemon_SetData(mon, MON_DATA_SPATK_EV, &sp64);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             hadEffect = TRUE;
         }
 
@@ -422,7 +422,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
         if (sp6C != -1) {
             sp68 = sp6C;
             Pokemon_SetData(mon, MON_DATA_SPDEF_EV, &sp68);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
             hadEffect = TRUE;
         }
 

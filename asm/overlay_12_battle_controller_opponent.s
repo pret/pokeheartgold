@@ -1461,7 +1461,7 @@ _0225929E:
 	add r2, #0x24
 	bl Pokemon_SetData
 	add r0, r7, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 _022592B6:
 	mov r2, #0x65
 	ldr r1, [sp, #4]
@@ -13828,7 +13828,7 @@ _0225F5CE:
 	str r0, [sp, #0x14]
 _0225F5DC:
 	mov r0, #5
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r5, #0
 _0225F5E6:

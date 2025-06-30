@@ -529,7 +529,7 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
 
     if (data->certificateId == CERTIFICATE_SHINY_LEAVES) {
         GF_ASSERT(data->frontPokemon != NULL);
-        BoxPokemon *boxMon = Mon_GetBoxMon(data->frontPokemon);
+        BoxPokemon *boxMon = Pokemon_GetBoxPokemon(data->frontPokemon);
         ReadMsgDataIntoString(data->msgData, msg_0004_00004, tempString);
         BufferBoxMonNickname(data->msgFmt, 1, boxMon);
     } else {

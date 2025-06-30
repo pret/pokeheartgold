@@ -13,7 +13,7 @@
 .public sub_0205C1F0
 .public sub_0205C268
 .public SizeOfStructPokemon
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_GetData
 .public Party_AddMon
 .public Party_GetMonByIndex

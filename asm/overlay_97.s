@@ -877,7 +877,7 @@ _0221EC3C:
 	add r0, r7, #0
 	add r1, r4, #0
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	lsl r1, r4, #0x18
 	add r6, r0, #0
 	add r0, r7, #0

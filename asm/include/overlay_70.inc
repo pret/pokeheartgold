@@ -227,7 +227,7 @@
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
 .public SizeOfStructPokemon
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public Pokemon_GetData
@@ -236,7 +236,7 @@
 .public GetMonBaseStat
 .public CalcBoxMonLevel
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMonEvolution
 .public CopyBoxPokemonToPokemon
 .public CopyPokemonToPokemon

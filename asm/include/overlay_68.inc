@@ -136,7 +136,7 @@
 .public Pokemon_SetData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMoveAttr
 .public GetMoveMaxPP
 .public sub_02077678

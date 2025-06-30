@@ -103,7 +103,7 @@
 .public Options_GetFrame
 .public Pokemon_GetData
 .public Pokemon_GetGender
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

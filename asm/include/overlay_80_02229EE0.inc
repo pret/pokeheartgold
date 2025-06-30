@@ -6,7 +6,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public GetSpeciesNameIntoArray
+.public MessageLoader_GetSpeciesName
 .public BufferPlayersName
 .public FreeToHeap
 .public LCRandom
@@ -27,9 +27,9 @@
 .public sub_0203769C
 .public sub_02039F68
 .public MapHeader_GetMapSec
-.public ZeroMonData
+.public Pokemon_Init
 .public Pokemon_Create
-.public CalcMonLevelAndStats
+.public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat

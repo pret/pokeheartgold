@@ -40,7 +40,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public GetSpeciesNameIntoArray
+.public MessageLoader_GetSpeciesName
 .public MessageFormat_New_Custom
 .public MessageFormat_Delete
 .public BufferString

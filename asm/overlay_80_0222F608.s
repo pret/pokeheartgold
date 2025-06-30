@@ -441,7 +441,7 @@ _0222F93C:
 	b _0222FBE6
 _0222F954:
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov80_02237120
@@ -477,7 +477,7 @@ _0222F99C:
 	cmp r1, #0x12
 	blt _0222F99C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]
@@ -689,7 +689,7 @@ _0222FB42:
 	add r1, r5, #0
 	ldr r0, [r4, r0]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r5, #0

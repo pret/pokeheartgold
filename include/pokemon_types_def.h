@@ -89,7 +89,7 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ u16 nickname[11];
-    /* 0x16 */ u8 Unused;
+    /* 0x16 */ u8 originCode;
     /* 0x17 */ u8 originGame;
     // TODO: Finish SinnohRibbonSet2
     /* 0x18 */ u64 sinnohRibbons2; // cool, ...
@@ -191,8 +191,8 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x17 */ u8 atkEV;
     /* 0x18 */ u8 defEV;
     /* 0x19 */ u8 spdEV;
-    /* 0x1A */ u8 spatkEV;
-    /* 0x1B */ u8 spdefEV;
+    /* 0x1A */ u8 spAtkEV;
+    /* 0x1B */ u8 spDefEV;
     /* 0x1C */ u16 moves[MAX_MON_MOVES];
     /* 0x24 */ u8 movePP[MAX_MON_MOVES];
     /* 0x28 */ u8 movePpUps[MAX_MON_MOVES];

@@ -413,7 +413,7 @@ _02230038:
 	add r6, r4, r0
 _02230078:
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov80_02237120
@@ -750,7 +750,7 @@ _022302A6:
 	add r3, sp, #0x28
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x4c
@@ -834,7 +834,7 @@ _0223035C:
 	add r3, sp, #0x28
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x4c
@@ -1348,7 +1348,7 @@ ov80_022307F0: ; 0x022307F0
 	ldr r0, [r5, r0]
 	bl SaveArray_Party_Init
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	mov r7, #0
@@ -1641,7 +1641,7 @@ ov80_02230A60: ; 0x02230A60
 	ldr r0, [r4, r0]
 	bl SaveArray_Party_Init
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]

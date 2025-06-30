@@ -218,7 +218,7 @@
 .public sub_0202BF04
 .public sub_0202BF08
 .public GameStats_AddScore
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_GetData
 .public sub_02070130
 .public sub_02070848

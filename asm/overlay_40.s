@@ -6749,7 +6749,7 @@ _0222ED6E:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x6d
 	add r2, sp, #0x64
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	ldr r0, [sp, #0x44]
 	add r1, sp, #0x64
 	bl CopyU16ArrayToString
@@ -7341,7 +7341,7 @@ _0222F21E:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x6d
 	add r2, sp, #0x6c
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	ldr r0, [sp, #0x4c]
 	add r1, sp, #0x6c
 	bl CopyU16ArrayToString
@@ -23253,7 +23253,7 @@ _02237238:
 	add r0, r6, #0
 	mov r1, #0x6d
 	add r2, sp, #0x10
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	add r0, r5, #0
 	add r1, sp, #0x10
 	bl CopyU16ArrayToString
@@ -27686,7 +27686,7 @@ _022396F8:
 	ldr r0, [sp, #0x10]
 	mov r1, #0x6d
 	add r2, sp, #0x2c
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	ldr r0, [sp, #0x1c]
 	add r1, sp, #0x2c
 	bl CopyU16ArrayToString
@@ -36270,7 +36270,7 @@ _0223DD94:
 	add r0, r6, #0
 	mov r1, #0x6d
 	add r2, sp, #0x10
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	add r0, r5, #0
 	add r1, sp, #0x10
 	bl CopyU16ArrayToString

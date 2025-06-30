@@ -43,7 +43,7 @@ BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
     bugContest->heapId = HEAP_ID_3;
     bugContest->saveData = fieldSystem->saveData;
     bugContest->sport_balls = 20;
-    bugContest->mon = AllocMonZeroed(bugContest->heapId);
+    bugContest->mon = Pokemon_New(bugContest->heapId);
     bugContest->national_dex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(bugContest->saveData));
     bugContest->day_of_week = weekday;
     BugContest_BackUpParty(bugContest);
@@ -212,7 +212,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
 
     // Restore the player's party to its prior state, but keep the
     // state of the Pokemon you used intact.
-    mon = AllocMonZeroed(bugContest->heapId);
+    mon = Pokemon_New(bugContest->heapId);
     CopyPokemonToPokemon(Party_GetMonByIndex(bugContest->party_cur, 0), mon);
     Party_GetUnkSubSlot(bugContest->party_cur, &sub, 0);
     Party_Copy(bugContest->party_bak, bugContest->party_cur);
@@ -224,7 +224,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
 
     if (bugContest->caught_poke) {
         if (bugContest->party_cur_num >= PARTY_SIZE) {
-            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(SaveArray_PCStorage_Get(bugContest->saveData), Mon_GetBoxMon(bugContest->mon));
+            PCStorage_PlaceMonInFirstEmptySlotInAnyBox(SaveArray_PCStorage_Get(bugContest->saveData), Pokemon_GetBoxPokemon(bugContest->mon));
         } else {
             Party_AddMon(bugContest->party_cur, bugContest->mon);
         }

@@ -26,7 +26,7 @@ void PCStorage_InitializeBoxes(PCStorage *storage) {
 
     for (i = 0; i < NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
-            ZeroBoxMonData(&storage->boxes[i].mons[j]);
+            BoxPokemon_Init(&storage->boxes[i].mons[j]);
         }
     }
 
@@ -111,7 +111,7 @@ void PCStorage_DeleteBoxMonByIndexPair(PCStorage *storage, u32 boxno, u32 slotno
         boxno = storage->curBox;
     }
     if (slotno < MONS_PER_BOX && boxno < NUM_BOXES) {
-        ZeroBoxMonData(&storage->boxes[boxno].mons[slotno]);
+        BoxPokemon_Init(&storage->boxes[boxno].mons[slotno]);
         PCStorage_SetBoxModified(storage, boxno);
         return;
     }

@@ -95,7 +95,7 @@
 .public sub_0203A964
 .public Save_VarsFlags_Get
 .public CheckFlag982
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireMonLock
 .public ReleaseMonLock
 .public Pokemon_GetData
@@ -104,11 +104,11 @@
 .public GetMonNature
 .public Pokemon_GetGender
 .public Pokemon_IsShiny
-.public sub_02070D90
-.public sub_02070D94
-.public Mon_GetBoxMon
-.public MonSwapMoves
-.public BoxMonSwapMoves
+.public Pokemon_GetStructSize
+.public BoxPokemon_GetStructSize
+.public Pokemon_GetBoxPokemon
+.public Pokemon_SwapMoveSlots
+.public BoxPokemon_SwapMoveSlots
 .public CopyBoxPokemonToPokemon
 .public MonGetFlavorPreference
 .public Pokemon_HasPokerus

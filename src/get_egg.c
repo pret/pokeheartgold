@@ -96,7 +96,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfile(saveData));
     Pokemon_GetData(partyMon, MON_DATA_NICKNAME_FLAT, nickname);
-    if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
+    if (BoxMonIsHoldingMail(Pokemon_GetBoxPokemon(partyMon))) {
         Pokemon_GetData(partyMon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
     }
     mood = 0;
@@ -152,7 +152,7 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
             }
         }
     }
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, MessageFormat *msgFmt) {
@@ -162,7 +162,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     DaycareMail *daycareMail;
     u16 species;
 
-    mon = AllocMonZeroed(HEAP_ID_4);
+    mon = Pokemon_New(HEAP_ID_4);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     daycareMail = DaycareMon_GetExtras(daycareMon);
 
@@ -180,7 +180,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
         Pokemon_SetData(mon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
     }
     Party_AddMon(party, mon);
-    ZeroBoxMonData(boxMon);
+    BoxPokemon_Init(boxMon);
     DaycareMon_SetSteps(daycareMon, 0);
     FreeToHeap(mon);
     return species;
@@ -200,8 +200,8 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     u32 exp;
     u32 level;
 
-    tmpMon = AllocMonZeroed(HEAP_ID_FIELD);
-    boxmon_tmp = Mon_GetBoxMon(tmpMon);
+    tmpMon = Pokemon_New(HEAP_ID_FIELD);
+    boxmon_tmp = Pokemon_GetBoxPokemon(tmpMon);
     CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
     exp = BoxPokemon_GetData(boxmon_tmp, MON_DATA_EXP, NULL);
     exp += steps;
@@ -472,7 +472,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < r5; j++) {
                 if (search->dad_moves[i] == search->baby_egg_moves[j]) {
-                    if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
+                    if (Pokemon_AddMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
                         DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
                     }
                     break;
@@ -487,7 +487,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
             for (j = 0; j < 100; j++) {
                 if (search->dad_moves[i] == TMHMGetMove(j + ITEM_TM01)) {
                     if (GetTMHMCompatBySpeciesAndForm(egg_species, egg_form, j)) {
-                        if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
+                        if (Pokemon_AddMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
                             DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
                         }
                     }
@@ -512,7 +512,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
         for (j = 0; j < learnset_size; j++) {
             if (search->baby_learnset[j] != MOVE_NONE) {
                 if (search->shared_moves[i] == search->baby_learnset[j]) {
-                    if (TryAppendMonMove(egg, search->shared_moves[i]) == MOVE_APPEND_FULL) {
+                    if (Pokemon_AddMove(egg, search->shared_moves[i]) == MOVE_APPEND_FULL) {
                         DeleteMonFirstMoveAndAppend(egg, search->shared_moves[i]);
                     }
                     break;
@@ -573,7 +573,7 @@ static void Daycare_LightBallCheck(Pokemon *egg, Daycare *dayCare) {
     item2 = BoxPokemon_GetData(parents[1], MON_DATA_HELD_ITEM, NULL);
 
     if (item1 == ITEM_LIGHT_BALL || item2 == ITEM_LIGHT_BALL) {
-        if (TryAppendMonMove(egg, MOVE_VOLT_TACKLE) == MOVE_APPEND_FULL) {
+        if (Pokemon_AddMove(egg, MOVE_VOLT_TACKLE) == MOVE_APPEND_FULL) {
             DeleteMonFirstMoveAndAppend(egg, MOVE_VOLT_TACKLE);
         }
     }
@@ -705,7 +705,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     u32 otId;
     u8 mom_form;
 
-    mon = AllocMonZeroed(HEAP_ID_4);
+    mon = Pokemon_New(HEAP_ID_4);
     species = Daycare_GetEggSpecies(dayCare, gender_idx);
     species = Daycare_BreedingIncenseCheck(species, dayCare);
     otId = PlayerProfile_GetTrainerID(profile);
@@ -1029,7 +1029,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     Pokemon *tmpMon;
 
     string = String_New(PLAYER_NAME_LENGTH + 1, heapId);
-    tmpMon = AllocMonZeroed(heapId);
+    tmpMon = Pokemon_New(heapId);
     species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
@@ -1103,12 +1103,12 @@ void sub_0206D328(Pokemon *mon, HeapID heapId) {
     u8 metLevel = 0;
     sub_0206D038(mon, heapId);
     Pokemon_SetData(mon, MON_DATA_IS_EGG, &isEgg);
-    GetSpeciesNameIntoArray(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
+    MessageLoader_GetSpeciesName(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
     Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT, nickname);
     Pokemon_SetData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
     Pokemon_SetData(mon, MON_DATA_POKEBALL, &pokeball);
     Pokemon_SetData(mon, MON_DATA_MET_LEVEL, &metLevel);
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2) {

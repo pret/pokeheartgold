@@ -1569,7 +1569,7 @@ sub_02030724: ; 0x02030724
 	add r0, sp, #4
 	strb r1, [r0]
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	ldrh r1, [r7]
 	ldr r0, [sp]

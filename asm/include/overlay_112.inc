@@ -57,7 +57,7 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public GetSpeciesNameIntoArray
+.public MessageLoader_GetSpeciesName
 .public ReadMsgData_ExpandPlaceholders
 .public GetSpeciesName
 .public MessageFormat_New
@@ -250,12 +250,12 @@
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
-.public ZeroMonData
-.public AllocMonZeroed
+.public Pokemon_Init
+.public Pokemon_New
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public Pokemon_Create
-.public CalcMonLevelAndStats
+.public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public Pokemon_SetData
@@ -272,7 +272,7 @@
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public sub_02070438
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public CopyBoxPokemonToPokemon
 .public Mon_UpdateShayminForm
 .public ChangePersonalityToNatureGenderAndAbility
