@@ -27503,7 +27503,7 @@ _021F3420:
 	bne _021F3482
 	add r0, r5, #0
 	mov r1, #0
-	bl Mon_UpdateShayminForm
+	bl Pokemon_SetShayminForm
 	ldrh r1, [r6]
 	ldr r0, _021F35A0 ; =0xFFFF07FF
 	and r0, r1
@@ -27624,7 +27624,7 @@ _021F353E:
 	beq _021F357E
 	add r0, r5, #0
 	mov r1, #1
-	bl Mon_UpdateShayminForm
+	bl Pokemon_SetShayminForm
 _021F357E:
 	ldr r0, [sp, #0x14]
 	add r6, #0x38

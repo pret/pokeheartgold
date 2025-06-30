@@ -1309,7 +1309,7 @@ ov14_021E6318: ; 0x021E6318
 	bne _021E6350
 	ldr r0, [r4]
 	mov r1, #0
-	bl Mon_UpdateShayminForm
+	bl Pokemon_SetShayminForm
 _021E6350:
 	ldr r0, [r4]
 	bl Pokemon_GetBoxPokemon
@@ -1603,7 +1603,7 @@ _021E6564:
 	add r2, r4, #0
 	bl ov14_021E60C0
 	mov r1, #0
-	bl BoxMon_UpdateShayminForm
+	bl BoxPokemon_SetShayminForm
 	ldr r3, [r5, #0x34]
 	ldrb r1, [r5, #0x1f]
 	add r6, r3, r4

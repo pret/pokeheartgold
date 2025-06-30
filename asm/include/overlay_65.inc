@@ -196,7 +196,7 @@
 .public sub_0207083C
 .public Pokemon_GetBoxPokemon
 .public CopyPokemonToPokemon
-.public Mon_UpdateShayminForm
+.public Pokemon_SetShayminForm
 .public Pokemon_RemoveCapsule
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

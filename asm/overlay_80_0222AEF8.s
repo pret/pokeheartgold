@@ -228,7 +228,7 @@ _0222B06C: .word 0x00000D88
 ov80_0222B070: ; 0x0222B070
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl SizeOfStructPokemon
+	bl Pokemon_StructSize
 	add r4, r0, #0
 	ldr r0, _0222B0B0 ; =0x000006FC
 	ldr r0, [r5, r0]
@@ -273,7 +273,7 @@ ov80_0222B0B8: ; 0x0222B0B8
 	bl sub_0203769C
 	cmp r5, r0
 	beq _0222B0E2
-	bl SizeOfStructPokemon
+	bl Pokemon_StructSize
 	ldr r1, _0222B0E4 ; =0x00000D8C
 	add r2, r0, #0
 	ldr r1, [r4, r1]
@@ -1482,7 +1482,7 @@ ov80_0222B968: ; 0x0222B968
 	mov r1, #0
 	bl ov80_02237B24
 	str r0, [sp]
-	bl SizeOfStructPokemon
+	bl Pokemon_StructSize
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r4, #0
@@ -1546,7 +1546,7 @@ ov80_0222B9CC: ; 0x0222B9CC
 	ldrb r0, [r0, #0x10]
 	bl ov80_02237B24
 	str r0, [sp, #8]
-	bl SizeOfStructPokemon
+	bl Pokemon_StructSize
 	add r5, r0, #0
 	mov r0, #0xb
 	bl Pokemon_New
@@ -1964,7 +1964,7 @@ ov80_0222BCE0: ; 0x0222BCE0
 	mov r1, #0
 	bl BattleArcade_GetMonCount
 	str r0, [sp]
-	bl SizeOfStructPokemon
+	bl Pokemon_StructSize
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r4, #0
@@ -2028,7 +2028,7 @@ ov80_0222BD44: ; 0x0222BD44
 	ldrb r0, [r0, #0x10]
 	bl BattleArcade_GetMonCount
 	str r0, [sp, #8]
-	bl SizeOfStructPokemon
+	bl Pokemon_StructSize
 	add r5, r0, #0
 	mov r0, #0xb
 	bl Pokemon_New

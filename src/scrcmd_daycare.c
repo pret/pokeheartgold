@@ -238,7 +238,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
             Mon_UpdateRotomForm(mon, 0, 0);
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForm(mon, 0);
+            Pokemon_SetShayminForm(mon, 0);
             break;
         }
     }

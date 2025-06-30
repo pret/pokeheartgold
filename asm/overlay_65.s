@@ -970,7 +970,7 @@ _0221C64A:
 	beq _0221C678
 	add r0, r6, #0
 	mov r1, #0
-	bl Mon_UpdateShayminForm
+	bl Pokemon_SetShayminForm
 _0221C678:
 	ldr r0, [r4, #8]
 	add r5, r5, #1

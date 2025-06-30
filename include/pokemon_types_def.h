@@ -76,7 +76,7 @@ typedef struct {
     /* 0x00 */ u16 moves[MAX_MON_MOVES];
     /* 0x08 */ u8 movePP[MAX_MON_MOVES];
     /* 0x0C */ u8 movePpUps[MAX_MON_MOVES];
-    /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, spdIV : 5, spatkIV : 5, spdefIV : 5, isEgg : 1, isNicknamed : 1;
+    /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, spdIV : 5, spatkIV : 5, spdefIV : 5, isEgg : 1, hasNickname : 1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
     /* 0x18 */ u8 fatefulEncounter : 1, gender : 2, form : 5;
@@ -159,7 +159,7 @@ typedef struct Mail {
 typedef struct PartyPokemon {
     /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
     /* 0x08C */ u8 level;
-    /* 0x08D */ u8 capsule;
+    /* 0x08D */ u8 ballCapsuleID;
     /* 0x08E */ u16 hp;
     /* 0x090 */ u16 maxHp;
     /* 0x092 */ u16 atk;
@@ -203,7 +203,7 @@ struct UnkPokemonStruct_02072A98 {
     u32 spatkIV : 5;
     u32 spdefIV : 5;
     u32 isEgg : 1;
-    u32 isNicknamed : 1;
+    u32 hasNickname : 1;
     /* 0x30 */ u8 fatefulEncounter : 1;
     u8 gender : 2;
     u8 form : 5;

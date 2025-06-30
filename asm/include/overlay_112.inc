@@ -274,7 +274,7 @@
 .public sub_02070438
 .public Pokemon_GetBoxPokemon
 .public CopyBoxPokemonToPokemon
-.public Mon_UpdateShayminForm
+.public Pokemon_SetShayminForm
 .public ChangePersonalityToNatureGenderAndAbility
 .public PCStorage_PlaceMonInBoxByIndexPair
 .public PCStorage_DeleteBoxMonByIndexPair

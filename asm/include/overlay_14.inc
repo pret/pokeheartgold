@@ -223,8 +223,8 @@
 .public CopyPokemonToPokemon
 .public BoxMon_UpdateArceusForm
 .public BoxMon_UpdateGiratinaForm
-.public Mon_UpdateShayminForm
-.public BoxMon_UpdateShayminForm
+.public Pokemon_SetShayminForm
+.public BoxPokemon_SetShayminForm
 .public PCStorage_PlaceMonInBoxFirstEmptySlot
 .public PCStorage_PlaceMonInBoxByIndexPair
 .public PCStorage_SwapMonsInBoxByIndexPair

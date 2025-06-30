@@ -226,7 +226,7 @@
 .public SpriteToUnionRoomAvatarIdx
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
-.public SizeOfStructPokemon
+.public Pokemon_StructSize
 .public Pokemon_New
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
@@ -240,8 +240,8 @@
 .public GetMonEvolution
 .public CopyBoxPokemonToPokemon
 .public CopyPokemonToPokemon
-.public Mon_UpdateShayminForm
-.public BoxMon_UpdateShayminForm
+.public Pokemon_SetShayminForm
+.public BoxPokemon_SetShayminForm
 .public Pokemon_RemoveCapsule
 .public PCStorage_PlaceMonInBoxFirstEmptySlot
 .public PCStorage_DeleteBoxMonByIndexPair
