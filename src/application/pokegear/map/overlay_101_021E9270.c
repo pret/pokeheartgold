@@ -23,6 +23,7 @@ int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 BOOL ov101_021EA990(PokegearMapAppData *mapApp, int a1);
 void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 void ov101_021EB560(u16 a0, HeapID a1, String *a2);
+void ov101_021EADC0(PokegearMapAppData *mapApp, u8 a1, u16 a2);
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;
@@ -878,4 +879,57 @@ void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2) {
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
+}
+
+void ov101_021EAD90(PokegearMapAppData *mapApp, int a1) {
+    ov101_021EAA0C(mapApp, a1, (ov100_021E5C50(mapApp->unk_110, mapApp->unk_112 - 2) / 2) ^ TRUE);
+}
+
+void ov101_021EADC0(PokegearMapAppData *mapApp, u8 a1, u16 a2) {
+    if (a2 == EC_WORD_NULL) {
+        sub_020137C0(mapApp->unk_044[a1].unk_0, 0);
+    } else {
+        BufferECWord(mapApp->unk_08C, 0, a2);
+        StringExpandPlaceholders(mapApp->unk_08C, mapApp->unk_090, mapApp->unk_0B4);
+        FillWindowPixelBufferText_AssumeTileSize32(&mapApp->unk_184[8], 0);
+        AddTextPrinterParameterizedWithColor(&mapApp->unk_184[8], 0, mapApp->unk_090, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
+        sub_020139D0(mapApp->unk_044[a1].unk_0, mapApp->unk_040, &mapApp->unk_184[8], mapApp->heapId);
+        sub_020137C0(mapApp->unk_044[a1].unk_0, 1);
+    }
+}
+
+void ov101_021EAE54(PokegearMapAppData *mapApp, int a1) {
+    u32 i;
+    const PokegearMapAppData_Sub214 *r5;
+    PokegearMapAppData_Sub118_Sub4 *sp10;
+    PokegearMapAppData_Sub118 *r0;
+    UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
+
+    r0 = &mapApp->unk_118;
+    r5 = r0->unk_0;
+    sp10 = r0->unk_4;
+
+    if (a1) {
+        String_SetEmpty(mapApp->unk_0A4);
+        FillWindowPixelBuffer(&mapApp->unk_184[7], 0);
+        ov101_021EB560(r5->unk_0, mapApp->heapId, mapApp->unk_0A4);
+        AddTextPrinterParameterizedWithColor(&mapApp->unk_184[7], 0, mapApp->unk_0A4, 0, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
+    }
+    if (sp10 == NULL) {
+        for (i = 0; i < 4; ++i) {
+            Sprite_SetDrawFlag(r4[i + 20].sprite, FALSE);
+            ov101_021EADC0(mapApp, i, 0xFFFF);
+        }
+    } else {
+        for (i = 0; i < 4; ++i) {
+            if (sp10->unk_00.unk_4[i] == 15) {
+                Sprite_SetDrawFlag(r4[i + 20].sprite, FALSE);
+            } else {
+                Sprite_SetAnimationFrame(r4[i + 20].sprite, sp10->unk_00.unk_4[i]);
+                Sprite_SetDrawFlag(r4[i + 20].sprite, TRUE);
+            }
+            ov101_021EADC0(mapApp, i, sp10->unk_00.unk_8[i]);
+        }
+    }
 }
