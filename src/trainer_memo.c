@@ -597,7 +597,7 @@ static void FormatFlavorPreference(Unk0208E600 *a0) {
     a0->notepad.flavorPreference = String_New(0x48, a0->heapId);
     int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
-        int preference = MonGetFlavorPreference(a0->mon, flavor);
+        int preference = Pokemon_GetFlavorAffinity(a0->mon, flavor);
         if (preference == 1) {
             index = flavor + 1;
         }

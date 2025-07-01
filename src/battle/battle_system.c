@@ -526,7 +526,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
 
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
-        if (Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + movePos, NULL) != Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
+        if (Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + movePos, NULL) != Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
             AddMonData(mon, MON_DATA_MOVE1_CUR_PP + movePos, data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
@@ -540,7 +540,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE_ALL, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
         for (movePos = 0; movePos < MAX_MON_MOVES; movePos++) {
-            if (Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + movePos, NULL) != Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
+            if (Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + movePos, NULL) != Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
                 AddMonData(mon, MON_DATA_MOVE1_CUR_PP + movePos, data);
                 if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                     if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {

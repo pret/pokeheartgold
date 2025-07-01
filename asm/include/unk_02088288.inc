@@ -110,7 +110,7 @@
 .public Pokemon_SwapMoveSlots
 .public BoxPokemon_SwapMoveSlots
 .public CopyBoxPokemonToPokemon
-.public MonGetFlavorPreference
+.public Pokemon_GetFlavorAffinity
 .public Pokemon_HasPokerus
 .public Pokemon_IsImmuneToPokerus
 .public sub_020729A4

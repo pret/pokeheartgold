@@ -12972,7 +12972,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 ov70_0223E114: ; 0x0223E114
 	push {r4, lr}
 	add r4, r1, #0
-	bl CalcBoxMonLevel
+	bl BoxPokemon_GetLevel
 	strb r0, [r4, #3]
 	pop {r4, pc}
 	thumb_func_end ov70_0223E114
@@ -13672,7 +13672,7 @@ ov70_0223E658: ; 0x0223E658
 	add r0, sp, #0
 	strb r1, [r0, #2]
 	add r0, r5, #0
-	bl CalcBoxMonLevel
+	bl BoxPokemon_GetLevel
 	add r1, sp, #0
 	strb r0, [r1, #3]
 	add r0, sp, #0
@@ -13708,7 +13708,7 @@ ov70_0223E690: ; 0x0223E690
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl CalcBoxMonLevel
+	bl BoxPokemon_GetLevel
 	add r1, sp, #0
 	strb r0, [r1, #9]
 	add r0, r4, #0
@@ -15556,7 +15556,7 @@ ov70_0223F508: ; 0x0223F508
 	bl BoxPokemon_GetData
 	add r6, r0, #1
 	ldr r0, [sp, #0xc]
-	bl CalcBoxMonLevel
+	bl BoxPokemon_GetLevel
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x68

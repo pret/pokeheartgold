@@ -1066,7 +1066,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     moveData = MOVE_EXTRASENSORY;
     Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &moveData);
 
-    pp = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, 0);
+    pp = Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
     Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &pp);
 
     Party_AddMon(party, mon);
@@ -1126,7 +1126,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
-        maxPP = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, 0);
+        maxPP = Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
         Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &maxPP);
     }
 

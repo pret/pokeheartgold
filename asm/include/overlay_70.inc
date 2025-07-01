@@ -234,7 +234,7 @@
 .public BoxPokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
-.public CalcBoxMonLevel
+.public BoxPokemon_GetLevel
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxPokemon
 .public GetMonEvolution

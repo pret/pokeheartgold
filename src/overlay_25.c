@@ -268,7 +268,7 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
         Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &move);
         tempByte = trainerHouseMon->ppUp >> (i * 2) & 3;
         Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + i, &tempByte);
-        u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1MAXPP + i, NULL);
+        u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + i, NULL);
         Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &pp);
     }
     u32 otid = trainerHouseMon->otid;
