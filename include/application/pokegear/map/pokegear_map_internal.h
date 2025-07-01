@@ -7,6 +7,7 @@
 
 #include "obj_char_transfer.h"
 #include "safari_zone.h"
+#include "touchscreen_list_menu.h"
 #include "unk_02013534.h"
 
 typedef struct UnkStruct_ov101_021F79B4 {
@@ -110,10 +111,14 @@ typedef struct PokegearMapAppData {
     u8 filler_094[8];                         // 0x094
     String *unk_09C[2];                       // 0x09C
     String *unk_0A4;                          // 0x0A4
-    u8 filler_0A8[12];                        // 0x0A8
+    String *unk_0A8;                          // 0x0A8
+    String *unk_0AC;                          // 0x0AC
+    u8 filler_0B0[4];                         // 0x0B0
     String *unk_0B4;                          // 0x0B4
     u8 unk_0B8;                               // 0x0B8
-    u8 filler_0B9[0xF];                       // 0x0B9
+    TouchscreenListMenuSpawner *unk_0BC;      // 0x0BC
+    LISTMENUITEM *unk_0C0;                    // 0x0C0
+    TouchscreenListMenu *unk_0C4;             // 0x0C4
     PokegearMapAppData_Sub0C8 unk_0C8;        // 0x0C8
     u16 unk_100;                              // 0x100
     u16 unk_102;                              // 0x102
@@ -203,6 +208,8 @@ void ov101_021EB338(void *appData);
 void ov101_021EB364(void *appData);
 void ov101_021EB378(void *appData);
 void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, int a2);
+void ov101_021EB4C4(PokegearMapAppData *mapApp, int a1);
+
 PokegearReturnCode ov101_021EB568(PokegearMapAppData *mapApp);
 PokegearReturnCode ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int ov101_021ECAF0(PokegearMapAppData *mapApp);

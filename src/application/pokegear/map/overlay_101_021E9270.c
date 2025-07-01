@@ -7,6 +7,8 @@
 
 #include "sys_flags.h"
 #include "text.h"
+#include "touchscreen_list_menu.h"
+#include "unk_02068F84.h"
 #include "unk_020932A4.h"
 
 void ov101_021E9288(PokegearMapAppData *mapApp);
@@ -22,8 +24,11 @@ BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 BOOL ov101_021EA990(PokegearMapAppData *mapApp, int a1);
 void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
-void ov101_021EB560(u16 a0, HeapID a1, String *a2);
 void ov101_021EADC0(PokegearMapAppData *mapApp, u8 a1, u16 a2);
+void ov101_021EB428(PokegearMapAppData *mapApp, u32 a1);
+void ov101_021EB560(u16 a0, HeapID a1, String *a2);
+
+extern const TouchscreenListMenuTemplate ov101_021F7E80;
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;
@@ -1056,4 +1061,45 @@ void ov101_021EB378(void *appData) {
     PokegearMapAppData *mapApp = appData;
 
     PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
+}
+
+void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, int a2) {
+    if (!a1) {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 2, 6, 7, mapApp->unk_178->rawData, 6 * a2, 21, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
+    } else {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 11, 6, 9, mapApp->unk_178->rawData, 6 * a2 + 18, 21, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
+    }
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
+}
+
+void ov101_021EB428(PokegearMapAppData *mapApp, u32 a1) {
+    TouchscreenListMenuHeader spC;
+
+    MI_CpuClear8(&spC, sizeof(TouchscreenListMenuHeader));
+
+    spC.template = ov101_021F7E80;
+    spC.listMenuItems = mapApp->unk_0C0;
+    spC.bgConfig = mapApp->pokegear->bgConfig;
+    spC.numWindows = 2;
+    if (a1 < 8 || a1 > 15) {
+        mapApp->unk_0C4 = TouchscreenListMenu_Create(mapApp->unk_0BC, &spC, mapApp->pokegear->menuInputState, 11, 4, 0, 0);
+    } else {
+        mapApp->unk_0C4 = TouchscreenListMenu_Create(mapApp->unk_0BC, &spC, mapApp->pokegear->menuInputState, 3, 4, 0, 0);
+    }
+}
+
+void ov101_021EB4C4(PokegearMapAppData *mapApp, int a1) {
+    FillWindowPixelBuffer(&mapApp->unk_184[7], 0);
+    if (a1 < 0) {
+        AddTextPrinterParameterizedWithColor(&mapApp->unk_184[7], 0, mapApp->unk_0A8, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
+    } else {
+        ov101_021EB560(a1, mapApp->heapId, mapApp->unk_0A4);
+        BufferString(mapApp->unk_08C, 0, mapApp->unk_0A4, 0, 0, 2);
+        StringExpandPlaceholders(mapApp->unk_08C, mapApp->unk_090, mapApp->unk_0AC);
+        AddTextPrinterParameterizedWithColor(&mapApp->unk_184[7], 0, mapApp->unk_090, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
+    }
+}
+
+void ov101_021EB560(u16 a0, HeapID a1, String *a2) {
+    sub_02068F98(a0, a1, a2);
 }
