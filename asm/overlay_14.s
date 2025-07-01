@@ -1071,7 +1071,7 @@ ov14_021E611C: ; 0x021E611C
 	add r1, r7, #0
 	bl Party_GetMonByIndex
 	ldr r1, [r4]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	mov r1, #0
 	add r0, sp, #0
 	strb r1, [r0]
@@ -1179,7 +1179,7 @@ ov14_021E6210: ; 0x021E6210
 	sub r4, #0x1e
 	bl Party_GetMonByIndex
 	ldr r1, [r6]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r1, sp, #4
 	ldr r0, [r5, #8]
 	add r1, #1
@@ -1226,7 +1226,7 @@ ov14_021E627C: ; 0x021E627C
 	add r1, r6, #0
 	bl Party_GetMonByIndex
 	ldr r1, [r4]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r5, #8]
 	add r1, sp, #0
 	add r2, r6, #0
@@ -1298,7 +1298,7 @@ ov14_021E6318: ; 0x021E6318
 	sub r1, #0x1e
 	bl Party_GetMonByIndex
 	ldr r1, [r4]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4]
 	mov r1, #5
 	mov r2, #0

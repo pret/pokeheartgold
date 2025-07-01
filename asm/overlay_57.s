@@ -7955,7 +7955,7 @@ ov57_0223B7C4: ; 0x0223B7C4
 	add r1, #0x6c
 	ldr r0, [r0, #4]
 	ldr r1, [r5, r1]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 _0223B7EA:
 	ldr r1, [r5]
@@ -7976,7 +7976,7 @@ _0223B7F6:
 	ldr r1, _0223B824 ; =0x00000458
 	add r0, r7, #0
 	ldr r1, [r5, r1]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 _0223B814:
 	ldr r1, [r5]

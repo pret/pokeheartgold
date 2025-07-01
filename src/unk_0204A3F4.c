@@ -700,7 +700,7 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
     a0->item = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     for (s32 i = 0; i < MAX_MON_MOVES; i++) {
         a0->moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
-        a0->ppUp |= Pokemon_GetData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
+        a0->ppUp |= Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL) << (i * 2);
     }
     a0->language = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
     a0->otId = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);

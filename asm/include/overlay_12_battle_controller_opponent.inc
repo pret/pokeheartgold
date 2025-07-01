@@ -76,7 +76,7 @@
 .public GetMonPicHeightBySpeciesGenderForm
 .public sub_02070C24
 .public sub_02070D84
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public sub_0207204C
 .public MaskOfFlagNo
 .public TrainerClassToBackpicID

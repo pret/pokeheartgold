@@ -666,7 +666,7 @@ _02236964:
 	ldr r0, [sp, #8]
 	bl Party_GetMonByIndex
 	add r1, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0

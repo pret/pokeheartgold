@@ -20171,7 +20171,7 @@ ov70_022418A4: ; 0x022418A4
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _022418D4:

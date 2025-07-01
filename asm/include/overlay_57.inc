@@ -195,7 +195,7 @@
 .public GetMonNature
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public Pokemon_GetIconNaix

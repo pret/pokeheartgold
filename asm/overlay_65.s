@@ -6733,12 +6733,12 @@ ov65_0221F5A0: ; 0x0221F5A0
 	add r1, r6, #0
 	bl Party_GetMonByIndex
 	ldr r1, [sp, #0xc]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	bl Party_GetMonByIndex
 	add r1, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
@@ -6813,10 +6813,10 @@ _0221F664:
 	bl Pokemon_RemoveCapsule
 	ldr r0, [sp, #0xc]
 	ldr r1, [r5, #0x38]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r1, [r5, #0x3c]
 	add r0, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	bl sub_0203769C
 	mov r1, #1
 	eor r0, r1
@@ -6841,13 +6841,13 @@ _0221F6BC:
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r7, #0
 	add r1, r6, #0
 	bl Party_ResetUnkSubSlot

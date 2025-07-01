@@ -22,7 +22,7 @@
 .public GetMonExpBySpeciesAndLevel
 .public Pokemon_GetNatureOf
 .public CalcShininessByOtIdAndPersonality
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public MaskOfFlagNo
 .public Party_InitWithMaxSize
 .public Party_AddMon

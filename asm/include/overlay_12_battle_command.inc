@@ -79,9 +79,9 @@
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxPokemon
 .public Pokemon_TryLevelUp
-.public MonSetMoveInSlot
+.public Pokemon_SetMoveSlot
 .public MonTryLearnMoveOnLevelUp
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public Party_MaskMonsWithPokerus
 .public Mon_UpdateGiratinaForm
 .public MaskOfFlagNo

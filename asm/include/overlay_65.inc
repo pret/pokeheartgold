@@ -195,7 +195,7 @@
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
 .public Pokemon_GetBoxPokemon
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public Pokemon_SetShayminForm
 .public Pokemon_RemoveCapsule
 .public GetMonIconNaixEx

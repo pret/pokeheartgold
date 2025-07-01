@@ -239,7 +239,7 @@
 .public Pokemon_GetBoxPokemon
 .public GetMonEvolution
 .public CopyBoxPokemonToPokemon
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public Pokemon_SetShayminForm
 .public BoxPokemon_SetShayminForm
 .public Pokemon_RemoveCapsule

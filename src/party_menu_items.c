@@ -897,7 +897,7 @@ void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) 
     int data = partyMenu->args->moveId;
     Pokemon_SetData(mon, MON_DATA_MOVE1 + moveIdx, &data);
     data = 0;
-    Pokemon_SetData(mon, MON_DATA_MOVE1PPUP + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
     data = GetMoveMaxPP(partyMenu->args->moveId, 0);
     Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + moveIdx, &data);
     if (partyMenu->args->itemId != ITEM_NONE) {

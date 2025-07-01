@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_POKEMON_H
 
 // Value and data limits
-#define MAX_LEVEL         100
+#define MAX_MON_LEVEL     100
 #define MAX_MON_MOVES     4
 #define MAX_EV            100
 #define MAX_EV_SUM        510
@@ -220,7 +220,7 @@
 #define MON_DATA_MOVE2_CUR_PP               59
 #define MON_DATA_MOVE3_CUR_PP               60
 #define MON_DATA_MOVE4_CUR_PP               61
-#define MON_DATA_MOVE1PPUP                  62
+#define MON_DATA_MOVE1_PP_UPS                  62
 #define MON_DATA_MOVE2PPUP                  63
 #define MON_DATA_MOVE3PPUP                  64
 #define MON_DATA_MOVE4PPUP                  65

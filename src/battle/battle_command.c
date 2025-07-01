@@ -6374,8 +6374,8 @@ static void Task_GetExp(SysTask *task, void *inData) {
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->bsys, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->bsys));
 
         i = 0;
-        Pokemon_SetData(mon, MON_DATA_MOVE1PPUP + data->unk30[5], &i);
-        MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + data->unk30[5], &i);
+        Pokemon_SetMoveSlot(mon, data->unk30[4], data->unk30[5]);
 
         if (data->ctx->selectedMonIndex[expBattler] == slot) {
             BattleSystem_ReloadMonData(data->bsys, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);

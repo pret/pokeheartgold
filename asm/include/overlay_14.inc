@@ -220,7 +220,7 @@
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxPokemon
 .public CopyBoxPokemonToPokemon
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public BoxMon_UpdateArceusForm
 .public BoxMon_UpdateGiratinaForm
 .public Pokemon_SetShayminForm

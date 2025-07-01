@@ -964,7 +964,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         break;
     case WIRELESS_TRADE_STATE_6:
         if (sub_02075D3C(data->tradeSequence.evolutionTaskData)) {
-            CopyPokemonToPokemon(
+            Pokemon_Copy(
                 data->wirelessTradeSelectMon.unk3C,
                 Party_GetMonByIndex(data->wirelessTradeSelectMon.party, data->wirelessTradeSelectMon.unk28));
             sub_02075D4C(data->tradeSequence.evolutionTaskData);

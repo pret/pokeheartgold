@@ -55,9 +55,9 @@ typedef struct {
     /* 0x10 */ u8 hpEV;
     /* 0x11 */ u8 atkEV;
     /* 0x12 */ u8 defEV;
-    /* 0x13 */ u8 spdEV;
-    /* 0x14 */ u8 spatkEV;
-    /* 0x15 */ u8 spdefEV;
+    /* 0x13 */ u8 speedEV;
+    /* 0x14 */ u8 spAtkEV;
+    /* 0x15 */ u8 spDefEV;
     /* 0x16 */ u8 cool;
     /* 0x17 */ u8 beauty;
     /* 0x18 */ u8 cute;
@@ -76,7 +76,7 @@ typedef struct {
     /* 0x00 */ u16 moves[MAX_MON_MOVES];
     /* 0x08 */ u8 movePP[MAX_MON_MOVES];
     /* 0x0C */ u8 movePpUps[MAX_MON_MOVES];
-    /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, spdIV : 5, spatkIV : 5, spdefIV : 5, isEgg : 1, hasNickname : 1;
+    /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, speedIV : 5, spAtkIV : 5, spDefIV : 5, isEgg : 1, hasNickname : 1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
     /* 0x18 */ u8 fatefulEncounter : 1, gender : 2, form : 5;
@@ -161,12 +161,12 @@ typedef struct PartyPokemon {
     /* 0x08C */ u8 level;
     /* 0x08D */ u8 ballCapsuleID;
     /* 0x08E */ u16 hp;
-    /* 0x090 */ u16 maxHp;
-    /* 0x092 */ u16 atk;
-    /* 0x094 */ u16 def;
+    /* 0x090 */ u16 maxHP;
+    /* 0x092 */ u16 attack;
+    /* 0x094 */ u16 defense;
     /* 0x096 */ u16 speed;
-    /* 0x098 */ u16 spatk;
-    /* 0x09A */ u16 spdef;
+    /* 0x098 */ u16 spAtk;
+    /* 0x09A */ u16 spDef;
     /* 0x09C */ Mail mail;
     /* 0x0D4 */ CAPSULE sealCoords; // seal coords
 } PARTYMON;
@@ -190,7 +190,7 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x16 */ u8 hpEV;
     /* 0x17 */ u8 atkEV;
     /* 0x18 */ u8 defEV;
-    /* 0x19 */ u8 spdEV;
+    /* 0x19 */ u8 speedEV;
     /* 0x1A */ u8 spAtkEV;
     /* 0x1B */ u8 spDefEV;
     /* 0x1C */ u16 moves[MAX_MON_MOVES];
@@ -199,9 +199,9 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x2C */ u32 hpIV : 5;
     u32 atkIV : 5;
     u32 defIV : 5;
-    u32 spdIV : 5;
-    u32 spatkIV : 5;
-    u32 spdefIV : 5;
+    u32 speedIV : 5;
+    u32 spAtkIV : 5;
+    u32 spDefIV : 5;
     u32 isEgg : 1;
     u32 hasNickname : 1;
     /* 0x30 */ u8 fatefulEncounter : 1;

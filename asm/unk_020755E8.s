@@ -2436,7 +2436,7 @@ _020769BC:
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x28]
 	add r2, #0x66
-	add r1, #MON_DATA_MOVE1PPUP
+	add r1, #MON_DATA_MOVE1_PP_UPS
 	bl Pokemon_SetData
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2445,7 +2445,7 @@ _020769BC:
 	ldrh r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4, #0x28]
-	bl MonSetMoveInSlot
+	bl Pokemon_SetMoveSlot
 	add r0, r4, #0
 	mov r1, #0x1e
 	add r0, #0x66
@@ -2811,7 +2811,7 @@ _02076CE6:
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
 	add r1, r5, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	mov r0, #0x49
 	lsl r0, r0, #2
 	str r0, [sp]
@@ -3394,7 +3394,7 @@ sub_020771E8: ; 0x020771E8
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
 	add r1, r5, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #5

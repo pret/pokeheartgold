@@ -56,7 +56,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     for (i = 0; i < 4; i++) {
         ctx->battleMons[battlerId].moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
         ctx->battleMons[battlerId].movePPCur[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
-        ctx->battleMons[battlerId].movePP[i] = Pokemon_GetData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+        ctx->battleMons[battlerId].movePP[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL);
     }
 
     ctx->battleMons[battlerId].hpIV = Pokemon_GetData(mon, MON_DATA_HP_IV, NULL);
@@ -166,7 +166,7 @@ void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int batt
             if (!(ctx->battleMons[battlerId].unk88.mimicedMoveIndex & MaskOfFlagNo(i))) {
                 ctx->battleMons[battlerId].moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
                 ctx->battleMons[battlerId].movePPCur[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
-                ctx->battleMons[battlerId].movePP[i] = Pokemon_GetData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+                ctx->battleMons[battlerId].movePP[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL);
             }
         }
         ctx->battleMons[battlerId].exp = Pokemon_GetData(mon, MON_DATA_EXP, NULL);
@@ -5354,7 +5354,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
             }
         }
         if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_ARCEUS && ctx->battleMons[ctx->battlerIdTemp].hp && GetBattlerAbility(ctx, ctx->battlerIdTemp) == ABILITY_MULTITYPE) {
-            form = GetArceusTypeByHeldItemEffect(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE));
+            form = HoldEffect_GetArceusType(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE));
             if (ctx->battleMons[ctx->battlerIdTemp].form != form) {
                 ctx->battleMons[ctx->battlerIdTemp].form = form;
                 *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
@@ -5376,7 +5376,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     } else {
                         battlerIdTarget = ctx->battlerIdTemp ^ 1;
                     }
-                    CopyPokemonToPokemon(BattleSystem_GetPartyMon(bsys, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
+                    Pokemon_Copy(BattleSystem_GetPartyMon(bsys, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
                     dat = 0;
                     Pokemon_SetData(mon2, MON_DATA_HELD_ITEM, &dat);
                     dat = (u8)GIRATINA_ALTERED;
