@@ -19,10 +19,10 @@
 #include "unk_0206D494.h"
 #include "update_dex_received.h"
 
-static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
-static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
+static String *_GetNpcTradeName(enum HeapID heapId, s32 msgno);
+static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, enum HeapID heapId);
 
-NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
+NPCTradeAppData *NPCTradeApp_Init(enum HeapID heapId, NpcTradeNum tradeno) {
     NPCTradeAppData *ret;
     u16 strbuf[128];
 
@@ -178,7 +178,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     }
 }
 
-static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
+static String *_GetNpcTradeName(enum HeapID heapId, s32 msgno) {
     String *ret;
     MsgData *msgData;
 
@@ -188,7 +188,7 @@ static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     return ret;
 }
 
-static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
+static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, enum HeapID heapId) {
     String *name;
     u8 nickname_flag;
     u32 mapsec;
@@ -197,7 +197,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     CreateMon(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
 
     heapId_2 = (int)heapId;
-    name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
+    name = _GetNpcTradeName((enum HeapID)heapId_2, tradeno);
     SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 
@@ -219,7 +219,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
 
     SetMonData(mon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
 
-    name = _GetNpcTradeName((HeapID)heapId_2, NPC_TRADE_OT_NUM(tradeno));
+    name = _GetNpcTradeName((enum HeapID)heapId_2, NPC_TRADE_OT_NUM(tradeno));
     SetMonData(mon, MON_DATA_OT_NAME_2, name);
     String_Delete(name);
 

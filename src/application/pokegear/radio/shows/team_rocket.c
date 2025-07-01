@@ -9,7 +9,7 @@
 #include "unk_02005D10.h"
 
 typedef struct TeamRocketRadioData {
-    HeapID heapID;
+    enum HeapID heapID;
     u8 state;
 } TeamRocketRadioData;
 

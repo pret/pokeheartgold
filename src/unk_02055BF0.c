@@ -38,7 +38,7 @@ extern TaskFunc sMapEnterRoutines[9];
 extern TaskFunc sMapExitRoutines[9];
 extern FieldSystemFunc _020FC76C[9];
 
-void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, HeapID heapID) {
+void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID) {
     FieldFadeEnvironment *sfenv = AllocFromHeap(heapID, sizeof(FieldFadeEnvironment));
     sfenv->pattern = pattern;
     sfenv->typeTop = typeTop;

@@ -100,7 +100,7 @@ static const ECIdenticalPhrases sIdenticalPhrases[12] = {
     { sEasyChatYou,          NELEMS(sEasyChatYou)          },
 };
 
-EasyChatManager *EasyChatManager_New(HeapID heapId) {
+EasyChatManager *EasyChatManager_New(enum HeapID heapId) {
     EasyChatManager *ret = AllocFromHeap(heapId, sizeof(EasyChatManager));
 
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
@@ -251,7 +251,7 @@ void Save_EasyChat_SetGreetingFlag(SaveEasyChat *saveEasyChat, u32 flag) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
+WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapId) {
     u32 size;
     WallpaperPasswordBank *ret = AllocFromHeap(heapId, sizeof(WallpaperPasswordBank));
 

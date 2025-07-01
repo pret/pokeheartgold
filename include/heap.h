@@ -3,7 +3,7 @@
 
 #include "global.h"
 
-typedef enum HeapID {
+enum HeapID {
     HEAP_ID_DEFAULT,
     HEAP_ID_1,
     HEAP_ID_2,
@@ -45,7 +45,7 @@ typedef enum HeapID {
     HEAP_ID_RANKINGS_APP = 158,
     HEAP_ID_VOLTORB_FLIP = 160,
     HEAP_ID_MAX,
-} HeapID;
+};
 
 typedef struct HeapParam {
     u32 size;        // maximum size of the heap
@@ -53,16 +53,16 @@ typedef struct HeapParam {
 } HEAP_PARAM;
 
 void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size);
-BOOL CreateHeap(HeapID parent, HeapID child, u32 size);
-BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size);
-void DestroyHeap(HeapID heapId);
-void *AllocFromHeap(HeapID heapId, u32 size);
-void *AllocFromHeapAtEnd(HeapID heapId, u32 size);
+BOOL CreateHeap(enum HeapID parent, enum HeapID child, u32 size);
+BOOL CreateHeapAtEnd(enum HeapID parent, enum HeapID child, u32 size);
+void DestroyHeap(enum HeapID heapId);
+void *AllocFromHeap(enum HeapID heapId, u32 size);
+void *AllocFromHeapAtEnd(enum HeapID heapId, u32 size);
 void FreeToHeap(void *ptr);
-void FreeToHeapExplicit(HeapID heapId, void *ptr);
-u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId);
-void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int alignment);
+void FreeToHeapExplicit(enum HeapID heapId, void *ptr);
+u32 GF_ExpHeap_FndGetTotalFreeSize(enum HeapID heapId);
+void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, enum HeapID heapId, int alignment);
 void ReallocFromHeap(void *ptr, u32 newSize);
-BOOL GF_heap_c_dummy_return_true(HeapID heapId);
+BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
 
 #endif // POKEHEARTGOLD_HEAP_H

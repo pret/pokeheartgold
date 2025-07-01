@@ -6,7 +6,7 @@
 
 #include "heap.h"
 
-WorkflowEngine *CreateWorkflowEngine(HeapID a0, VoltorbFlipWorkflows *workflows, int numWorkFlows, struct VoltorbFlipAppWork *work) {
+WorkflowEngine *CreateWorkflowEngine(enum HeapID a0, VoltorbFlipWorkflows *workflows, int numWorkFlows, struct VoltorbFlipAppWork *work) {
     WorkflowEngine *ptr = AllocFromHeap(a0, sizeof(WorkflowEngine));
     MI_CpuFill8(ptr, 0, sizeof(WorkflowEngine));
     ptr->workflows = workflows;

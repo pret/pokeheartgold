@@ -237,7 +237,7 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave *mg) {
 // ======================================
 static MysteryGiftSave *sMysteryGiftSaveData;
 
-void SaveMGDataPtr_Begin(SaveData *saveData, HeapID heapId) {
+void SaveMGDataPtr_Begin(SaveData *saveData, enum HeapID heapId) {
     if (sMysteryGiftSaveData == NULL) {
 #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
         u32 size = Save_MysteryGift_sizeof();

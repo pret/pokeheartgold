@@ -15,7 +15,7 @@
         GF_ASSERT((str)->magic == STRING_MAGIC); \
     } while (0)
 
-String *String_New(u32 maxsize, HeapID heapId) {
+String *String_New(u32 maxsize, enum HeapID heapId) {
     String *ret = (String *)AllocFromHeap(heapId, 2 * maxsize + sizeof(String) + sizeof(u16));
     if (ret != NULL) {
         ret->magic = STRING_MAGIC;
@@ -49,7 +49,7 @@ void String_Copy(String *dest, const String *src) {
     GF_ASSERT(FALSE);
 }
 
-String *String_Dup(const String *src, HeapID heapId) {
+String *String_Dup(const String *src, enum HeapID heapId) {
     String *ret;
     ASSERT_STRING(src);
     ret = String_New(src->size + 1, heapId);

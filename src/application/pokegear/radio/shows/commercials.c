@@ -27,7 +27,7 @@ typedef enum CommercialRegion {
 } CommercialRegion;
 
 typedef struct CommercialsData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 msgID;
     u8 commercialUnlockFlags[8];

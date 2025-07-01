@@ -8,14 +8,14 @@
 #include "pokepic.h"
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize);
-static void sub_0201401C(NarcId narcId, s32 fileId, HeapID heapId, NNSG2dCharacterData **pCharData);
+static void sub_0201401C(NarcId narcId, s32 fileId, enum HeapID heapId, NNSG2dCharacterData **pCharData);
 static void sub_02014050(int x, int y, int width, int height, NNSG2dCharacterData *pCharData, void *dest);
 static BOOL sub_020140E8(int species);
-static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species);
-static void *sub_02014178(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species);
+static void sub_02014128(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species);
+static void *sub_02014178(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species);
 static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest);
 static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest);
-static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest);
+static void sub_02014374(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, void *dest);
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize) {
     for (int i = 0; i < 8; ++i) {
@@ -25,7 +25,7 @@ static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOff
     }
 }
 
-static void sub_0201401C(NarcId narcId, s32 fileId, HeapID heapId, NNSG2dCharacterData **pCharData) {
+static void sub_0201401C(NarcId narcId, s32 fileId, enum HeapID heapId, NNSG2dCharacterData **pCharData) {
     BOOL result;
     void *pRaw = AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapId);
     GF_ASSERT(pRaw != NULL);
@@ -77,7 +77,7 @@ static BOOL sub_020140E8(int species) {
     return FALSE;
 }
 
-static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
+static void sub_02014128(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
     NNSG2dCharacterData *ppCharData = NULL;
     sub_0201401C(narcId, fileId, heapId, &ppCharData);
     UnscanPokepic(ppCharData->pRawData, narcId);
@@ -88,13 +88,13 @@ static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y,
     sub_02014050(x, y, width, height, ppCharData, dest);
 }
 
-static void *sub_02014178(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species) {
+static void *sub_02014178(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species) {
     void *ret = AllocFromHeap(heapId, width * height * 32);
     sub_02014128(narcId, fileId, heapId, x, y, width, height, ret, pid, isAnimated, whichFacing, species);
     return ret;
 }
 
-void sub_020141C4(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest) {
+void sub_020141C4(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, void *dest) {
     NNSG2dCharacterData *ppCharData = NULL;
     int srcOffset;
     int dstOffset;
@@ -124,7 +124,7 @@ void sub_020141C4(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
     FreeToHeap(pNcgrFile);
 }
 
-void *sub_02014298(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height) {
+void *sub_02014298(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height) {
     void *ret = AllocFromHeap(heapId, width * height * 32);
     sub_020141C4(narcId, fileId, heapId, x, y, width, height, ret);
     return ret;
@@ -155,7 +155,7 @@ static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *
     sub_020142D4(srcWidth, srcHeight, template->x, template->y, template->w, template->h, pDstOffset, src, dest);
 }
 
-static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest) {
+static void sub_02014374(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, void *dest) {
     UnkStruct_02014E30 sp1C[6] = {
         { 0, 0, 8, 8 },
         { 8, 0, 2, 4 },
@@ -173,22 +173,22 @@ static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y,
     FreeToHeap(sp14);
 }
 
-void sub_020143E0(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *a3, void *dest) {
+void sub_020143E0(NarcId narcId, s32 fileId, enum HeapID heapId, UnkStruct_02014E30 *a3, void *dest) {
     sub_02014374(narcId, fileId, heapId, a3->x, a3->y, a3->w, a3->h, dest);
 }
 
-void sub_02014400(NarcId narcId, s32 fileId, HeapID heapId, void *dest) {
+void sub_02014400(NarcId narcId, s32 fileId, enum HeapID heapId, void *dest) {
     UnkStruct_02014E30 sp4 = { 0, 0, 10, 10 };
     sub_020143E0(narcId, fileId, heapId, &sp4, dest);
 }
 
-void *sub_0201442C(NarcId narcId, s32 fileId, HeapID heapId) {
+void *sub_0201442C(NarcId narcId, s32 fileId, enum HeapID heapId) {
     void *ret = AllocFromHeap(heapId, 3200);
     sub_02014400(narcId, fileId, heapId, ret);
     return ret;
 }
 
-void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
+void *sub_02014450(NarcId narcId, s32 fileId, enum HeapID heapId) {
     void *ret = AllocFromHeap(heapId, 0x20);
     void *pNclrFile = AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapId);
     NNSG2dPaletteData *pPlttData;
@@ -198,7 +198,7 @@ void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
     return ret;
 }
 
-void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
+void sub_02014494(NarcId narcId, s32 fileId, enum HeapID heapId, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
     UnkStruct_02014E30 sp2C[6] = {
         { 0, 0, 8, 8 },
         { 8, 0, 2, 4 },
@@ -216,16 +216,16 @@ void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
     FreeToHeap(sp24);
 }
 
-void sub_02014510(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *a3, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+void sub_02014510(NarcId narcId, s32 fileId, enum HeapID heapId, UnkStruct_02014E30 *a3, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
     sub_02014494(narcId, fileId, heapId, a3->x, a3->y, a3->w, a3->h, dest, personality, isAnimated, whichFacing, species);
 }
 
-void sub_02014540(NarcId narcId, s32 fileId, HeapID heapId, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+void sub_02014540(NarcId narcId, s32 fileId, enum HeapID heapId, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
     UnkStruct_02014E30 sp14 = { 0, 0, 10, 10 };
     sub_02014510(narcId, fileId, heapId, &sp14, dest, personality, isAnimated, whichFacing, species);
 }
 
-void *sub_0201457C(NarcId narcId, s32 fileId, HeapID heapId, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+void *sub_0201457C(NarcId narcId, s32 fileId, enum HeapID heapId, u32 personality, BOOL isAnimated, int whichFacing, int species) {
     void *ret = AllocFromHeap(heapId, 3200);
     sub_02014540(narcId, fileId, heapId, ret, personality, isAnimated, whichFacing, species);
     return ret;

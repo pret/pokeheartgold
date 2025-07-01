@@ -102,7 +102,7 @@ int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr) {
     return 0;
 }
 
-u16 *sub_0205B4A4(HeapID heapId) {
+u16 *sub_0205B4A4(enum HeapID heapId) {
     NNSG2dPaletteData *pPlttData;
     u16 *pltt_src;
     u16 *ret;

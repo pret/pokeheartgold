@@ -55,7 +55,7 @@ enum {
 };
 
 typedef struct OptionsApp_Data {
-    HeapID heapId;
+    enum HeapID heapId;
     u32 exitState;
     u32 setupAndFreeState;
     u32 fadeUnused; // unused, game writes 0 here when it's about to start a fade, but never reads from here

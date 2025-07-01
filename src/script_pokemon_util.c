@@ -18,7 +18,7 @@ static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
     return !GetMonData(mon, MON_DATA_IS_EGG, NULL);
 }
 
-BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
+BOOL GiveMon(enum HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
     Party *party;
     Pokemon *mon;
     PlayerProfile *profile;
@@ -47,7 +47,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     return result;
 }
 
-BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
+BOOL GiveEgg(enum HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
 #pragma unused(heapId)
     PlayerProfile *profile;
     Party *party;

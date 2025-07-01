@@ -9,7 +9,7 @@
 #include "unk_02005D10.h"
 
 typedef struct PokeFluteData {
-    HeapID heapID;
+    enum HeapID heapID;
 } PokeFluteData;
 
 void RadioShow_PokeFlute_Init(RadioShow *radioShow);

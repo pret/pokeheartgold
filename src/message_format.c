@@ -24,11 +24,11 @@
 #include "string_control_code.h"
 #include "trainer_data.h"
 
-MessageFormat *MessageFormat_New(HeapID heapId) {
+MessageFormat *MessageFormat_New(enum HeapID heapId) {
     return MessageFormat_New_Custom(8, 32, heapId);
 }
 
-MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
+MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, enum HeapID heapId) {
     MessageFormat *ret;
     int i;
 

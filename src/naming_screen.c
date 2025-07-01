@@ -756,7 +756,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
 // Public functions
 // -------------------------------
 
-NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
+NamingScreenArgs *NamingScreen_CreateArgs(enum HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
     NamingScreenArgs *ret = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
     ret->kind = kind;
     ret->playerGenderOrMonSpecies = param;

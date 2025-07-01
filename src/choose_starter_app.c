@@ -170,7 +170,7 @@ struct ChooseStarter3dRes {
 
 struct ChooseStarterAppWork {
     u8 filler_000[0x4];
-    HeapID heapId;
+    enum HeapID heapId;
     BgConfig *bgConfig;
     struct GF3DVramMan *_3dMan;
     Camera *camera;
@@ -202,20 +202,20 @@ struct ChooseStarterAppWork {
 static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0);
 static void vBlankCB(struct ChooseStarterAppWork *work);
 static void setGxBanks(void);
-static void createOamManager(HeapID heapId);
+static void createOamManager(enum HeapID heapId);
 static void init3dEngine(struct ChooseStarterAppWork *work);
 static void update3dObjectsMain(struct ChooseStarterAppWork *work);
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index);
 static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work);
-static void initBgLayers(BgConfig *bgConfig, HeapID heapId);
+static void initBgLayers(BgConfig *bgConfig, enum HeapID heapId);
 static void initCameraPosition(struct ChooseStarterAppWork *work);
 static void createObjResMans(struct ChooseStarterAppWork *work);
 static void initObjRenderers(struct ChooseStarterAppWork *work);
 static void freeAll3dAnmObj(struct ChooseStarterAppWork *work);
 static void freeAll3dResHeader(struct ChooseStarterAppWork *work);
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId);
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, enum HeapID heapId);
 static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
-static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
+static void loadAnmFromNarc(int fileId, enum HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
 static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
 static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
 static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm);
@@ -233,8 +233,8 @@ static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, M
 static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
 static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
-static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId);
-static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
+static void loadBgGraphics(BgConfig *bgConfig, enum HeapID heapId);
+static u8 printMsgOnWinEx(Window *window, enum HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId);
 static void freeWindow(Window *window);
 static int getInput(struct ChooseStarterAppWork *work);
@@ -242,7 +242,7 @@ static int getRotateDirection(int a0, u8 a1, int a2);
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
 static void createMonSprites(struct ChooseStarterAppWork *work);
 static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
-static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId);
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, enum HeapID heapId);
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
 static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
@@ -607,7 +607,7 @@ static void setGxBanks(void) {
     GfGfx_SetBanks(&cfg);
 }
 
-static void createOamManager(HeapID heapId) {
+static void createOamManager(enum HeapID heapId) {
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
@@ -697,7 +697,7 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
+static void initBgLayers(BgConfig *bgConfig, enum HeapID heapId) {
     G2_SetBG0Priority(2);
     {
         const BgTemplate sp70 = {
@@ -826,7 +826,7 @@ static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId) {
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, enum HeapID heapId) {
     res->header = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
     res->mdlSet = NNS_G3dGetMdlSet(res->header);
     res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
@@ -839,7 +839,7 @@ static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
-static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
+static void loadAnmFromNarc(int fileId, enum HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
     void *pAnm;
     anm->hdr = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
     pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
@@ -1020,7 +1020,7 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
-static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
+static void loadBgGraphics(BgConfig *bgConfig, enum HeapID heapId) {
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
@@ -1039,7 +1039,7 @@ static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     G2S_SetBlendAlpha(4, 34, 5, 11);
 }
 
-static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
+static u8 printMsgOnWinEx(Window *window, enum HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
     MsgData *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
@@ -1210,7 +1210,7 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }
 
-static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId) {
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, enum HeapID heapId) {
     SpriteResourcesHeader header;
     struct SpriteTemplate template;
 

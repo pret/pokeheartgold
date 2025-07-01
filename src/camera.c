@@ -93,7 +93,7 @@ static void Camera_GetVecFromSomeRingBufferMaybe(Camera *camera, const VecFx32 *
     }
 }
 
-void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, HeapID heapId, Camera *camera) {
+void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, enum HeapID heapId, Camera *camera) {
     if (camera->curTarget == NULL) {
         return;
     }
@@ -134,7 +134,7 @@ void Camera_History_Delete(Camera *camera) {
     }
 }
 
-Camera *Camera_New(HeapID heapId) {
+Camera *Camera_New(enum HeapID heapId) {
     return AllocFromHeap(heapId, sizeof(Camera));
 }
 

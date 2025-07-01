@@ -95,7 +95,7 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
 
     PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);
     phoneApp->pokegear->isSwitchApp = TRUE;
-    HeapID heapId = phoneApp->heapId;
+    enum HeapID heapId = phoneApp->heapId;
     OverlayManager_FreeData(man);
     DestroyHeap(heapId);
     return TRUE;

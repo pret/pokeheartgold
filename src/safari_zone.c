@@ -163,7 +163,7 @@ u32 sub_0202F798(SafariZone *safari_zone, IGT *igt, s32 a2) {
     return 0;
 }
 
-void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile *profile, HeapID heapId) {
+void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile *profile, enum HeapID heapId) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     link_leader->id = PlayerProfile_GetTrainerID(profile);
     link_leader->gender = PlayerProfile_GetTrainerGender(profile);

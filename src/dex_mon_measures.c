@@ -7,18 +7,18 @@
 #include "filesystem.h"
 #include "gf_gfx_loader.h"
 
-static u32 *ZknNarc_LoadHeight(NARC *narc, HeapID heapId);
-static u32 *ZknNarc_LoadWeight(NARC *narc, HeapID heapId);
-static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
-static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
-static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
-static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId);
+static u32 *ZknNarc_LoadHeight(NARC *narc, enum HeapID heapId);
+static u32 *ZknNarc_LoadWeight(NARC *narc, enum HeapID heapId);
+static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId);
+static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId);
+static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId);
+static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId);
 
 static NarcId sDataNarcId = NARC_application_zukanlist_zukan_data_zukan_data;
 static int sWeightMsgBank = NARC_msg_msg_0812_bin;
 static int sHeightMsgBank = NARC_msg_msg_0814_bin;
 
-struct PokedexData *PokedexData_Create(HeapID heapId) {
+struct PokedexData *PokedexData_Create(enum HeapID heapId) {
     struct PokedexData *ret;
 
     ret = AllocFromHeap(heapId, sizeof(struct PokedexData));
@@ -31,7 +31,7 @@ void PokedexData_Delete(struct PokedexData *zkn) {
     FreeToHeap(zkn);
 }
 
-void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId) {
+void PokedexData_LoadAll(struct PokedexData *zkn, int mode, enum HeapID heapId) {
     NARC *narc;
 
     GF_ASSERT(zkn != NULL);
@@ -82,30 +82,30 @@ u32 PokedexData_GetWeight(struct PokedexData *zkn, int species) {
     return zkn->weight[species];
 }
 
-static u32 *ZknNarc_LoadHeight(NARC *narc, HeapID heapId) {
+static u32 *ZknNarc_LoadHeight(NARC *narc, enum HeapID heapId) {
     return GfGfxLoader_LoadFromOpenNarc(narc, 0, FALSE, heapId, FALSE);
 }
 
-static u32 *ZknNarc_LoadWeight(NARC *narc, HeapID heapId) {
+static u32 *ZknNarc_LoadWeight(NARC *narc, enum HeapID heapId) {
     return GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, heapId, FALSE);
 }
 
-static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 9, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 10, FALSE, heapId, FALSE);
 }
 
-static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 7, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 8, FALSE, heapId, FALSE);
 }
 
-static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 5, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 6, FALSE, heapId, FALSE);
 }
 
-static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, HeapID heapId) {
+static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapId) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 3, FALSE, heapId, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 4, FALSE, heapId, FALSE);
 }

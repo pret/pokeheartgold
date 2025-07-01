@@ -3,6 +3,6 @@
 
 #include "heap.h"
 
-void ShowSaveDataWriteError(HeapID heapId, int code);
+void ShowSaveDataWriteError(enum HeapID heapId, int code);
 
 #endif // POKEHEARTGOLD_SAVE_DATA_WRITE_ERROR_H

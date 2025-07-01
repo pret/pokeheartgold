@@ -50,9 +50,9 @@ static void sub_0204FB20(TaskManager *, u16, u16, u16 *);
 static BOOL sub_0204FB60(TaskManager *);
 static void sub_0204FBDC(TaskManager *, void *, BattleCastleChallengeType);
 static BOOL sub_0204FC10(TaskManager *);
-static u32 sub_0204FC78(UnkStruct_0204FBDC *, FieldSystem *, HeapID);
+static u32 sub_0204FC78(UnkStruct_0204FBDC *, FieldSystem *, enum HeapID);
 static u32 sub_0204FD50(UnkStruct_0204FBDC *, FieldSystem *);
-static u32 sub_0204FDA0(UnkStruct_0204FBDC *, FieldSystem *, HeapID);
+static u32 sub_0204FDA0(UnkStruct_0204FBDC *, FieldSystem *, enum HeapID);
 static u32 sub_0204FE30(UnkStruct_0204FBDC *, FieldSystem *);
 
 static const u8 unk_020FC3A4[] = {
@@ -201,7 +201,7 @@ static BOOL sub_0204FC10(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID unused) {
+static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, enum HeapID unused) {
     PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuArgs));
     partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -246,7 +246,7 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     return 2;
 }
 
-static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
+static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, enum HeapID heapId) {
     SaveData *saveData = fieldSystem->saveData;
     PokemonSummaryArgs *unk = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));

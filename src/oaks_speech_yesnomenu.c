@@ -7,7 +7,7 @@
 #include "yes_no_prompt.h"
 
 struct OakSpeechYesNo {
-    HeapID heapId;
+    enum HeapID heapId;
     u8 filler_04[0x8];
     BgConfig *bgConfig;
     Sprite *sprite;
@@ -27,9 +27,9 @@ static void OakSpeechYesNo_SetCursorSpritePos(OakSpeechYesNo *yesnoMenu);
 static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu);
 static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu);
 
-OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId) {
+OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, enum HeapID heapId) {
     GF_ASSERT(bgConfig != NULL);
-    volatile HeapID heapId_2 = heapId;
+    volatile enum HeapID heapId_2 = heapId;
     OakSpeechYesNo *ret = AllocFromHeap(heapId, sizeof(OakSpeechYesNo));
     MI_CpuClear8(ret, sizeof(OakSpeechYesNo));
     ret->heapId = heapId;
@@ -54,7 +54,7 @@ void OakSpeechYesNo_Delete(OakSpeechYesNo *yesnoMenu) {
 void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette) {
     NARC *narc;
     u8 bgId;
-    HeapID heapId;
+    enum HeapID heapId;
 
     heapId = yesnoMenu->heapId;
     bgId = yesnoMenu->backgroundBgId;

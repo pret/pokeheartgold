@@ -91,7 +91,7 @@ static void (*const sClearWindowTilemapFuncs[GF_BG_TYPE_MAX])(Window *window) = 
 
 // Make a new BgConfig object, which manages the
 // eight background layers (four on each screen).
-BgConfig *BgConfig_Alloc(HeapID heapId) {
+BgConfig *BgConfig_Alloc(enum HeapID heapId) {
     BgConfig *ret = AllocFromHeap(heapId, sizeof(BgConfig));
     memset(ret, 0, sizeof(BgConfig));
     ret->heapId = heapId;
@@ -100,7 +100,7 @@ BgConfig *BgConfig_Alloc(HeapID heapId) {
     return ret;
 }
 
-HeapID BgConfig_GetHeapId(BgConfig *bgConfig) {
+enum HeapID BgConfig_GetHeapId(BgConfig *bgConfig) {
     return bgConfig->heapId;
 }
 
@@ -893,7 +893,7 @@ static void LoadBgVramChar(u8 bgId, const void *data, u32 offset, u32 size) {
     }
 }
 
-void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId) {
+void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, enum HeapID heapId) {
     void *buffer = AllocFromHeapAtEnd(heapId, size);
     memset(buffer, 0, size);
 
@@ -930,7 +930,7 @@ void BG_LoadPlttData(u32 location, const void *plttData, u16 size, u16 offset) {
     GXS_LoadBGPltt(plttData, offset, size);
 }
 
-void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId) {
+void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, enum HeapID heapId) {
     void *plttData = AllocFromHeapAtEnd(heapId, size);
     memset(plttData, 0, size);
     DC_FlushRange(plttData, size);
@@ -1297,7 +1297,7 @@ static void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 pa
     }
 }
 
-u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heapId) {
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, enum HeapID heapId) {
     u8 *ptr = (u8 *)AllocFromHeap(heapId, size * 2);
 
     Convert4bppTo8bppInternal(src4Bpp, size, ptr, paletteNum);
@@ -1528,7 +1528,7 @@ static void FillBitmapRect8bit(const Bitmap *surface, u16 x, u16 y, u16 width, u
     }
 }
 
-Window *AllocWindows(HeapID heapId, s32 num) {
+Window *AllocWindows(enum HeapID heapId, s32 num) {
     Window *ret = AllocFromHeap(heapId, num * sizeof(Window));
     for (u16 i = 0; i < num; i++) {
         InitWindow(&ret[i]);

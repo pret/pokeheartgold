@@ -297,7 +297,7 @@ static const int sPokepicShadowUVParams[4][4] = {
     { 0xA0, 0xC0, 0xE0, 0xD0 },
 };
 
-PokepicManager *PokepicManager_Create(HeapID heapId) {
+PokepicManager *PokepicManager_Create(enum HeapID heapId) {
     PokepicManager *ret = AllocFromHeap(heapId, sizeof(PokepicManager));
     MI_CpuClearFast(ret, sizeof(PokepicManager));
     ret->heapId = heapId;

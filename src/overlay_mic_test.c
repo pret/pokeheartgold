@@ -67,7 +67,7 @@ struct MicTestData {
     MicTestSub_B8 unkB8;
     MicTestInput unkF0;
     MicTestTaskManager taskMan;
-    HeapID heapId;
+    enum HeapID heapId;
 };
 
 #define TS_HITBOX_MIC_TEST_RETURN 0
@@ -86,24 +86,24 @@ static void ov62_021E5B04(MicTestTaskManager *a0, u32 *state);
 static void ov62_021E5B6C(MicTestTaskManager *a0, u32 *state);
 static void MicTestTask_FadeOut(MicTestTaskManager *taskMan, u32 *state);
 static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state);
-static void ov62_021E5C34(HeapID heapId);
+static void ov62_021E5C34(enum HeapID heapId);
 static void ov62_021E5C80();
 static void MicTest_SetBanks();
 static void MicTest_VBlankIntrCB(void *data);
-static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId);
+static void MicTest_InitSpriteRenderer(MicTestData *micTest, enum HeapID heapId);
 static void MicTest_DeleteSpriteRenderer(MicTestData *micTest);
 static void MicTest_UpdateAnimations(MicTestData *micTest);
 static void MicTest_LoadResources(MicTestData *micTest);
 static void ov62_021E5FA0(MicTestData *micTest);
 static void ov62_021E5FC4(MicTestData *micTest);
-static void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId);
+static void ov62_021E5FD4(MicTestSub_B8 *a0, enum HeapID heapId);
 static void ov62_021E6024(MicTestSub_B8 *a0);
 static void ov62_021E6048(MicTestSub_B8 *a0);
-static void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId);
+static void MicTest_LoadTextResources(MicTestSub_B8 *a0, enum HeapID heapId);
 static void ov62_021E60D4(MicTestSub_B8 *a0);
-static void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId);
+static void ov62_021E60E4(MicTestSub_B8 *a0, enum HeapID heapId);
 static void ov62_021E6178(MicTestSub_B8 *a0);
-static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, MicTestData *micTest);
+static void ov62_021E61AC(MicTestInput *input, enum HeapID heapId, MICCallback a2, MicTestData *micTest);
 static void ov62_021E61FC(MicTestInput *input);
 static void ov62_021E620C(MicTestInput *input);
 static void ov62_021E625C(MicTestInput *input);
@@ -112,7 +112,7 @@ static s32 MicTest_AverageMicInput(MicTestInput *input);
 static void MicTest_MicrophoneCallback(MICResult result, void *data);
 static u32 MicTest_GetVolumeBracket(u8);
 static u32 ov62_021E63D0(MicTestData *micTest);
-static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y);
+static BOOL ov62_021E63E8(MicTestData *micTest, enum HeapID heapId, s16 x, s16 y);
 static void ov62_021E6480(ManagedSprite *a0, MicTestSub_24 *args, s16 x, s16 y, s32 z, s32 r1, s32 r2, BOOL a7);
 static void ov62_021E6570(SysTask *, void *);
 static void MicTest_EndTasks(MicTestData *micTest);
@@ -586,7 +586,7 @@ static void MicTestTask_End(MicTestTaskManager *taskMan, u32 *state) {
     MicTestTaskMan_Finish(taskMan);
 }
 
-static void ov62_021E5C34(HeapID heapId) {
+static void ov62_021E5C34(enum HeapID heapId) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GfGfx_DisableEngineAPlanes();
@@ -620,7 +620,7 @@ static void MicTest_VBlankIntrCB(void *data) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId) {
+static void MicTest_InitSpriteRenderer(MicTestData *micTest, enum HeapID heapId) {
     SpriteSystem *spriteRender = SpriteSystem_Alloc(heapId);
 
     micTest->spriteRenderer = spriteRender;
@@ -696,7 +696,7 @@ static void ov62_021E5FC4(MicTestData *micTest) {
     }
 }
 
-static void ov62_021E5FD4(MicTestSub_B8 *a0, HeapID heapId) {
+static void ov62_021E5FD4(MicTestSub_B8 *a0, enum HeapID heapId) {
     a0->bgConfig = BgConfig_Alloc(heapId);
     SetBothScreensModesAndDisable(&sMicTestGraphicsMode);
 
@@ -717,7 +717,7 @@ static void ov62_021E6024(MicTestSub_B8 *a0) {
 static void ov62_021E6048(MicTestSub_B8 *a0) {
 }
 
-static void MicTest_LoadTextResources(MicTestSub_B8 *a0, HeapID heapId) {
+static void MicTest_LoadTextResources(MicTestSub_B8 *a0, enum HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_a_1_7_6, 0, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 32, heapId);
     GfGfxLoader_LoadCharData(NARC_a_1_7_6, 4, a0->bgConfig, GF_BG_LYR_SUB_1, 0, 0, 0, heapId);
     GfGfxLoader_LoadScrnData(NARC_a_1_7_6, 5, a0->bgConfig, GF_BG_LYR_SUB_1, 0, 0, 0, heapId);
@@ -733,7 +733,7 @@ static void ov62_021E60D4(MicTestSub_B8 *a0) {
     }
 }
 
-static void ov62_021E60E4(MicTestSub_B8 *a0, HeapID heapId) {
+static void ov62_021E60E4(MicTestSub_B8 *a0, enum HeapID heapId) {
     a0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0234_bin, heapId);
 
     for (int i = 0; i < 3; i++) {
@@ -757,7 +757,7 @@ static void ov62_021E6178(MicTestSub_B8 *a0) {
     DestroyMsgData(a0->msgData);
 }
 
-static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, MicTestData *micTest) {
+static void ov62_021E61AC(MicTestInput *input, enum HeapID heapId, MICCallback a2, MicTestData *micTest) {
     Sys_SetSleepDisableFlag(8);
 
     void *data = AllocFromHeap(heapId, 0x120);
@@ -918,7 +918,7 @@ static u32 ov62_021E63D0(MicTestData *micTest) {
     return 1;
 }
 
-static BOOL ov62_021E63E8(MicTestData *micTest, HeapID heapId, s16 x, s16 y) {
+static BOOL ov62_021E63E8(MicTestData *micTest, enum HeapID heapId, s16 x, s16 y) {
     ManagedSprite *flag = 0;
     MicTestSub_24 *args = NULL;
     for (int i = 0; i < 3; i++) {

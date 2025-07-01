@@ -6,7 +6,7 @@
 
 static GF_VramTransferManager *sVramTransferManager;
 
-void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
+void GF_CreateVramTransferManager(u32 taskMax, enum HeapID heapId) {
     GF_ASSERT(sVramTransferManager == NULL);
 
     sVramTransferManager = AllocFromHeap(heapId, sizeof(GF_VramTransferManager));

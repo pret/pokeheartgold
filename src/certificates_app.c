@@ -26,7 +26,7 @@
 #include "unk_0205BB1C.h"
 
 typedef struct CertificatesApp_Data {
-    HeapID heapId;
+    enum HeapID heapId;
     u32 certificateId;
     SaveData *savedata;
     PlayerProfile *profile;
@@ -179,10 +179,10 @@ static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data);
 static void ov78_021E636C(CertificatesApp_Data *data);
 static void ov78_021E652C(CertificatesApp_Data *data);
 static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u32 srcOffset);
-static void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId);
-static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId);
+static void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, enum HeapID heapId);
+static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, enum HeapID heapId);
 static u32 ov78_021E6688(int species, int form, int gender);
-static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3);
+static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, enum HeapID heapId, u32 a3);
 
 BOOL Certificates_Init(OverlayManager *manager, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_CERTIFICATES, 0x20000);
@@ -296,7 +296,7 @@ BOOL Certificates_Main(OverlayManager *manager, int *state) {
 
 BOOL Certificates_Exit(OverlayManager *manager, int *state) {
     CertificatesApp_Data *data = OverlayManager_GetData(manager);
-    HeapID heapId = data->heapId;
+    enum HeapID heapId = data->heapId;
 
     if (data->certificateId == CERTIFICATE_SHINY_LEAVES) {
         CertificatesApp_FreeSpriteRenderer(data);
@@ -684,7 +684,7 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
     GXS_LoadOBJ(unkBuffer, (u32)((void *)NNS_G2dGetImageLocation(proxy, NNS_G2D_VRAM_TYPE_2DSUB) + srcOffset), unkBufferSize);
 }
 
-void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
+void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, enum HeapID heapId) {
     thunk_Sprite_SetDrawFlag(sprite, FALSE);
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapId);
@@ -710,7 +710,7 @@ void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     thunk_Sprite_SetDrawFlag(sprite, TRUE);
 }
 
-static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId) {
+static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, enum HeapID heapId) {
     u32 narcMemberNum = (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) ? MMODEL_HERO : MMODEL_HEROINE;
     ov78_021E65BC(sprite, narcMemberNum, 21, heapId);
 }
@@ -735,7 +735,7 @@ static u32 ov78_021E6688(int species, int form, int gender) {
     return ret;
 }
 
-static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3) {
+static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, enum HeapID heapId, u32 a3) {
     u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(pokemon, MON_DATA_FORM, NULL);
     u32 gender = GetMonGender(pokemon);

@@ -24,7 +24,7 @@ typedef enum PSPEpisodeUnlockFlag {
 } PSPEpisodeUnlockFlag;
 
 typedef struct PokemonSearchPartyData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 episodeID;
     u8 episodeUnlockFlags[8];

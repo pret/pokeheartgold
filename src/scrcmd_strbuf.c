@@ -15,7 +15,7 @@
 #include "unk_0205BB1C.h"
 #include "unk_02068F84.h"
 
-static String *_get_species_name(u16 species, HeapID heapId);
+static String *_get_species_name(u16 species, enum HeapID heapId);
 
 BOOL ScrCmd_BufferStatName(ScriptContext *ctx) {
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
@@ -229,7 +229,7 @@ BOOL ScrCmd_BufferSpeciesName(ScriptContext *ctx) {
     return FALSE;
 }
 
-String *_get_species_name(u16 species, HeapID heapId) {
+String *_get_species_name(u16 species, enum HeapID heapId) {
     MsgData *msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapId);
     String *name = NewString_ReadMsgData(msg_data, species);
     DestroyMsgData(msg_data);

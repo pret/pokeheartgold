@@ -89,7 +89,7 @@ static BOOL sub_0203A9FC(u32 *error_code_ptr) {
     return TRUE;
 }
 
-void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
+void ShowCommunicationError(enum HeapID heapId, u32 error, u32 errorCode) {
     Window window;
 
     u32 msgNo;

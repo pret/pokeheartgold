@@ -33,7 +33,7 @@ static BOOL PalPadEntry_IsEqual(SavePalPad *a, SavePalPad *b) {
     return !StringNotEqual(a->name, b->name) && a->otid == b->otid;
 }
 
-void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId) {
+void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, enum HeapID heapId) {
     int i, j, k;
     int sp18[5];
     SavePalPad *c;

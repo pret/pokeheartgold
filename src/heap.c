@@ -26,8 +26,8 @@ typedef struct MemoryBlock {
 
 static struct HeapInfo sHeapInfo;
 
-static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignment);
-BOOL GF_heap_c_dummy_return_true(HeapID heapId);
+static BOOL CreateHeapInternal(enum HeapID parent, enum HeapID child, u32 size, s32 alignment);
+BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
 
 void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size) {
     void *ptr;
@@ -113,15 +113,15 @@ static s32 FindFirstAvailableHeapHandle() {
     return -1;
 }
 
-BOOL CreateHeap(HeapID parent, HeapID child, u32 size) {
+BOOL CreateHeap(enum HeapID parent, enum HeapID child, u32 size) {
     return CreateHeapInternal(parent, child, size, 4);
 }
 
-BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size) {
+BOOL CreateHeapAtEnd(enum HeapID parent, enum HeapID child, u32 size) {
     return CreateHeapInternal(parent, child, size, -4);
 }
 
-static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignment) {
+static BOOL CreateHeapInternal(enum HeapID parent, enum HeapID child, u32 size, s32 alignment) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     u8 *ptr = sHeapInfo.heapIdxs;
@@ -158,7 +158,7 @@ static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignm
     return FALSE;
 }
 
-void DestroyHeap(HeapID heapId) {
+void DestroyHeap(enum HeapID heapId) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     NNSFndHeapHandle handle = sHeapInfo.heapHandles[sHeapInfo.heapIdxs[heapId]];
@@ -183,7 +183,7 @@ void DestroyHeap(HeapID heapId) {
     }
 }
 
-static void *AllocFromHeapInternal(NNSFndHeapHandle heap, u32 size, s32 alignment, HeapID heapId) {
+static void *AllocFromHeapInternal(NNSFndHeapHandle heap, u32 size, s32 alignment, enum HeapID heapId) {
     GF_ASSERT(heap);
 
     OSIntrMode intr_mode = OS_DisableInterrupts();
@@ -206,7 +206,7 @@ static void AllocFail() {
     }
 }
 
-void *AllocFromHeap(HeapID heapId, u32 size) {
+void *AllocFromHeap(enum HeapID heapId, u32 size) {
     void *ptr = NULL;
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -221,7 +221,7 @@ void *AllocFromHeap(HeapID heapId, u32 size) {
     return ptr;
 }
 
-void *AllocFromHeapAtEnd(HeapID heapId, u32 size) {
+void *AllocFromHeapAtEnd(enum HeapID heapId, u32 size) {
     void *ptr = NULL;
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -239,7 +239,7 @@ void *AllocFromHeapAtEnd(HeapID heapId, u32 size) {
 
 void FreeToHeap(void *ptr) {
     ptr -= sizeof(MemoryBlock);
-    HeapID heapId = (HeapID)((MemoryBlock *)ptr)->heapId;
+    enum HeapID heapId = (enum HeapID)((MemoryBlock *)ptr)->heapId;
 
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -261,7 +261,7 @@ void FreeToHeap(void *ptr) {
     GF_ASSERT(FALSE);
 }
 
-void FreeToHeapExplicit(HeapID heapId, void *ptr) {
+void FreeToHeapExplicit(enum HeapID heapId, void *ptr) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
@@ -282,7 +282,7 @@ void FreeToHeapExplicit(HeapID heapId, void *ptr) {
     GF_ASSERT(FALSE);
 }
 
-u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId) {
+u32 GF_ExpHeap_FndGetTotalFreeSize(enum HeapID heapId) {
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
         return NNS_FndGetTotalFreeSizeForExpHeap(sHeapInfo.heapHandles[index]);
@@ -292,7 +292,7 @@ u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId) {
     return 0;
 }
 
-void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int alignment) {
+void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, enum HeapID heapId, int alignment) {
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
 
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -319,7 +319,7 @@ void ReallocFromHeap(void *ptr, u32 newSize) {
     GF_ASSERT(FALSE);
 }
 
-BOOL GF_heap_c_dummy_return_true(HeapID heapId) {
+BOOL GF_heap_c_dummy_return_true(enum HeapID heapId) {
 #pragma unused(heapId)
     return TRUE;
 }

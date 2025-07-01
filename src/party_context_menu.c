@@ -1089,7 +1089,7 @@ void sub_0207E54C(PartyMenu *partyMenu, int numItems, int selection, int state) 
     }
 }
 
-PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state) {
+PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMenu, const PartyMenuContextMenu *template, int selection, enum HeapID heapId, int state) {
     PartyMenuContextMenuCursor *ret = AllocFromHeap(heapId, sizeof(PartyMenuContextMenuCursor));
     ret->menu = *template;
     ret->numItems = ret->menu.numItems;

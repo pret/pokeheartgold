@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *args, HeapID heapId) {
+OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *args, enum HeapID heapId) {
     OverlayManager *ret;
 
     ret = AllocFromHeap(heapId, sizeof(OverlayManager));
@@ -21,7 +21,7 @@ void OverlayManager_Delete(OverlayManager *man) {
     FreeToHeap(man);
 }
 
-void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, HeapID heapId) {
+void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, enum HeapID heapId) {
     void *data;
     data = AllocFromHeap(heapId, size);
     man->data = data;

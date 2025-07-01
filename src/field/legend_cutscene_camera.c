@@ -140,7 +140,7 @@ static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num
 static BOOL modelAnimListAdvanceNoLoop(Field3DModelAnimation *animation, u32 num);
 static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 num);
 static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData, int active);
-static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
+static void loadEyeGlimmer3dModel(enum HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
 static void unloadEyeGlimmer3dModel(LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
 static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman);
 static BOOL ov02_02251320(TaskManager *taskman);
@@ -494,7 +494,7 @@ static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData
     }
 }
 
-static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
+static void loadEyeGlimmer3dModel(enum HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
     GF_ExpHeap_FndInitAllocator(&taskData->allocator, heapId, 0x20);
     Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000028_NSBMD, heapId);
     Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000029_NSBMA, heapId, &taskData->allocator);

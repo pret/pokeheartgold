@@ -72,7 +72,7 @@ BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 i
     }
 }
 
-Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId) {
+Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, enum HeapID heapId) {
     u8 i, j, n;
     Photo *ret;
 

@@ -37,7 +37,7 @@ typedef struct UnkStateMachineSubstruct_0206A388 {
 typedef struct UnkStruct_0206A388 {
     int state;
     int displayTimer;
-    HeapID heapId;
+    enum HeapID heapId;
     BgConfig *bgConfig;
     Window *window;
     u16 bgColorMode;

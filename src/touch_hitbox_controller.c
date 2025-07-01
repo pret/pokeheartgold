@@ -7,7 +7,7 @@ static int sub_02026D88(TouchHitboxControllerTemplate *template, u32 unused, u32
 static int sub_02026DA4(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 unused);
 static void sub_02026DD8(TouchHitboxControllerTemplate *template, u8 a1);
 
-TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hitboxes, u32 numTemplates, TouchHitboxControllerCallback callback, void *callbackArg, HeapID heapId) {
+TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hitboxes, u32 numTemplates, TouchHitboxControllerCallback callback, void *callbackArg, enum HeapID heapId) {
     GF_ASSERT(numTemplates != 0);
 
     TouchHitboxController *controller = AllocFromHeap(heapId, sizeof(TouchHitboxController));

@@ -1815,7 +1815,7 @@ static BOOL sub_02042A30(FieldSystem *fieldSystem, int a1, int a2) {
     return TRUE;
 }
 
-static FashionAppData *sub_02042A60(HeapID heapId, FieldSystem *fieldSystem, int a2, int a3) {
+static FashionAppData *sub_02042A60(enum HeapID heapId, FieldSystem *fieldSystem, int a2, int a3) {
     SaveFashionData *saveFashionData = Save_FashionData_Get(fieldSystem->saveData);
     FashionAppData *fashionAppData;
     if (!sub_02042A30(fieldSystem, a2, a3)) {

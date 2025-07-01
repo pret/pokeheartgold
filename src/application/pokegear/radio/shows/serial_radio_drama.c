@@ -10,7 +10,7 @@
 #include "unk_02005D10.h"
 
 typedef struct SerialRadioDramaShowData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 episodeID;
 } SerialRadioDramaShowData;
