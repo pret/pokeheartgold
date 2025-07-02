@@ -28,6 +28,11 @@ typedef enum PokegearReturnCode {
     GEAR_RETURN_8,
 } PokegearReturnCode;
 
+typedef struct Coord2S16 {
+    s16 x;
+    s16 y;
+} Coord2S16;
+
 typedef struct PokegearUnkSub03C {
     u8 unk_00;
     u8 unk_01;
@@ -91,8 +96,7 @@ typedef struct UnkStruct_ov100_021E6E20_Sub8 {
     u8 unk_00;          // 0x00
     u8 unk_01;          // 0x01
     u16 unk_02;         // 0x02
-    s16 unk_04;         // 0x04
-    s16 unk_06;         // 0x06
+    Coord2S16 unk_04;   // 0x04
     s16 unk_08;         // 0x08
     s16 unk_0A;         // 0x0A
     u16 unk_0C;         // 0x0C
@@ -221,14 +225,14 @@ u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex);
 void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active);
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
-    a0->unk_04 = a1;
-    a0->unk_06 = a2;
-    Sprite_SetPositionXY(a0->sprite, a0->unk_04, a0->unk_06);
+    a0->unk_04.x = a1;
+    a0->unk_04.y = a2;
+    Sprite_SetPositionXY(a0->sprite, a0->unk_04.x, a0->unk_04.y);
 }
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
-    a0->unk_04 = a1;
-    a0->unk_06 = a2;
+    a0->unk_04.x = a1;
+    a0->unk_04.y = a2;
 }
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord2(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
@@ -237,8 +241,8 @@ static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setCoord2(UnkStruct_ov10
 }
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
-    a0->unk_04 += a1;
-    a0->unk_06 += a2;
+    a0->unk_04.x += a1;
+    a0->unk_04.y += a2;
 }
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setUnk01(UnkStruct_ov100_021E6E20_Sub8 *a0, BOOL a1) {

@@ -130,7 +130,7 @@ typedef struct PokegearMapAppData {
     u16 unk_10E;                              // 0x10E
     s16 unk_110;                              // 0x110
     s16 unk_112;                              // 0x112
-    u8 filler_114[4];                         // 0x114
+    Coord2S16 unk_114;                        // 0x114
     PokegearMapAppData_Sub118 unk_118;        // 0x118
     PhoneCallPersistentState *unk_124;        // 0x124
     PhoneBook *unk_128;                       // 0x128
@@ -148,7 +148,9 @@ typedef struct PokegearMapAppData {
     u8 unk_138_4 : 1;                         // 0x138
     u8 unk_138_5 : 2;                         // 0x138
     u8 unk_138_7 : 1;                         // 0x138
-    u8 unk_139_0 : 3;                         // 0x139
+    u8 unk_139_0 : 1;                         // 0x139
+    u8 unk_139_1 : 1;                         // 0x139
+    u8 unk_139_2 : 1;                         // 0x139
     u8 unk_139_3 : 1;                         // 0x139
     u8 unk_13A;                               // 0x13A
     u8 unk_13B;                               // 0x13B
@@ -210,8 +212,8 @@ void ov101_021EB378(void *appData);
 void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, int a2);
 void ov101_021EB4C4(PokegearMapAppData *mapApp, int a1);
 
-PokegearReturnCode ov101_021EB568(PokegearMapAppData *mapApp);
-PokegearReturnCode ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+int ov101_021EB568(PokegearMapAppData *mapApp);
+int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int ov101_021ECAF0(PokegearMapAppData *mapApp);
 int ov101_021ECEA8(PokegearMapAppData *mapApp);
 int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1);

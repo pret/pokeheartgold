@@ -255,7 +255,7 @@ void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
 void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
     for (u16 i = 0; i < a0->num; ++i) {
         if (a0->unk_08[i].unk_00 != 0 && a0->unk_08[i].unk_02 == 0) {
-            Sprite_SetPositionXY(a0->unk_08[i].sprite, a0->unk_08[i].unk_04, a0->unk_08[i].unk_06);
+            Sprite_SetPositionXY(a0->unk_08[i].sprite, a0->unk_08[i].unk_04.x, a0->unk_08[i].unk_04.y);
         }
     }
 }

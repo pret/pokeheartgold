@@ -59,8 +59,8 @@ void ov101_021E933C(PokegearMapAppData *mapApp) {
     mapApp->unk_014.unk_01 = mapApp->unk_138_0;
     mapApp->unk_014.unk_08 = mapApp->unk_110;
     mapApp->unk_014.unk_0A = mapApp->unk_112;
-    mapApp->unk_014.unk_0C = mapApp->unk_084->unk_08[5].unk_04;
-    mapApp->unk_014.unk_0E = mapApp->unk_084->unk_08[5].unk_06;
+    mapApp->unk_014.unk_0C = mapApp->unk_084->unk_08[5].unk_04.x;
+    mapApp->unk_014.unk_0E = mapApp->unk_084->unk_08[5].unk_04.y;
     mapApp->unk_014.unk_14 = mapApp->unk_0C8.unk_00;
     mapApp->unk_014.unk_16 = mapApp->unk_0C8.unk_04;
     mapApp->unk_014.unk_10 = mapApp->unk_0C8.unk_10;
@@ -74,8 +74,8 @@ void ov101_021E933C(PokegearMapAppData *mapApp) {
 void ov101_021E93D0(PokegearMapAppData *mapApp) {
     mapApp->unk_110 = mapApp->unk_014.unk_08;
     mapApp->unk_112 = mapApp->unk_014.unk_0A;
-    mapApp->unk_084->unk_08[5].unk_04 = mapApp->unk_014.unk_0C;
-    mapApp->unk_084->unk_08[5].unk_06 = mapApp->unk_014.unk_0E;
+    mapApp->unk_084->unk_08[5].unk_04.x = mapApp->unk_014.unk_0C;
+    mapApp->unk_084->unk_08[5].unk_04.y = mapApp->unk_014.unk_0E;
     mapApp->unk_0C8.unk_00 = mapApp->unk_014.unk_14;
     mapApp->unk_0C8.unk_04 = mapApp->unk_014.unk_16;
     mapApp->unk_0C8.unk_10 = mapApp->unk_014.unk_10;
@@ -508,8 +508,8 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 a1) {
 
         switch (a1) {
         case 0:
-            mapApp->unk_084->unk_08[r2].unk_04 = spC;
-            mapApp->unk_084->unk_08[r2].unk_06 = r0;
+            mapApp->unk_084->unk_08[r2].unk_04.x = spC;
+            mapApp->unk_084->unk_08[r2].unk_04.y = r0;
             if (ov101_021ED614(mapApp, r1->unk_0) != NULL) {
                 Sprite_SetDrawFlag(mapApp->unk_084->unk_08[r2].sprite, TRUE);
                 UnkStruct_ov100_021E6E20_Sub8_inline_setUnk01(&mapApp->unk_084->unk_08[r2], TRUE);
@@ -540,8 +540,8 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 a1) {
         r0 = (r1->unk_3 - mapApp->unk_0C8.unk_28) * sp4 + mapApp->unk_131 + sp0 + r1->unk_4_C * sp8;
         switch (a1) {
         case 0:
-            mapApp->unk_084->unk_08[r2].unk_04 = spC;
-            mapApp->unk_084->unk_08[r2].unk_06 = r0;
+            mapApp->unk_084->unk_08[r2].unk_04.x = spC;
+            mapApp->unk_084->unk_08[r2].unk_04.y = r0;
             UnkStruct_ov100_021E6E20_Sub8_inline_setUnk01(&mapApp->unk_084->unk_08[r2], TRUE);
             Sprite_SetDrawFlag(mapApp->unk_084->unk_08[r2].sprite, TRUE);
             break;
@@ -576,8 +576,8 @@ void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 a1) {
 
         switch (a1) {
         case 0:
-            mapApp->unk_084->unk_08[r0].unk_04 = r2;
-            mapApp->unk_084->unk_08[r0].unk_06 = r1;
+            mapApp->unk_084->unk_08[r0].unk_04.x = r2;
+            mapApp->unk_084->unk_08[r0].unk_04.y = r1;
             if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, r6->unk_04)) {
                 Sprite_SetDrawFlag(mapApp->unk_084->unk_08[r0].sprite, TRUE);
             } else {
