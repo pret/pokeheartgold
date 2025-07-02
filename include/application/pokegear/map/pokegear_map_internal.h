@@ -183,6 +183,7 @@ BOOL ov101_021E818C(PokegearMapAppData *mapApp);
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData);
 void ov101_021E933C(PokegearMapAppData *mapApp);
+void ov101_021E9464(PokegearMapAppData *mapApp, s16 a1, s16 a2, u16 *a3, u16 *a4);
 void ov101_021E990C(PokegearMapAppData *mapApp);
 void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1);
 BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, u8 a1);
@@ -210,6 +211,7 @@ void ov101_021EB338(void *appData);
 void ov101_021EB364(void *appData);
 void ov101_021EB378(void *appData);
 void ov101_021EB38C(PokegearMapAppData *mapApp, BOOL a1, int a2);
+void ov101_021EB428(PokegearMapAppData *mapApp, u32 a1);
 void ov101_021EB4C4(PokegearMapAppData *mapApp, int a1);
 
 int ov101_021EB568(PokegearMapAppData *mapApp);

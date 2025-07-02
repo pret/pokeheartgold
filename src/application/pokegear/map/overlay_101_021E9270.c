@@ -13,7 +13,6 @@
 
 void ov101_021E9288(PokegearMapAppData *mapApp);
 void ov101_021E93D0(PokegearMapAppData *mapApp);
-void ov101_021E9464(PokegearMapAppData *mapApp, s16 a1, s16 a2, u16 *a3, u16 *a4);
 void ov101_021E94C0(PokegearMapAppData *mapApp);
 void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s16 a5);
 void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, int *a5, int *a6);
@@ -25,7 +24,6 @@ int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 BOOL ov101_021EA990(PokegearMapAppData *mapApp, int a1);
 void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 void ov101_021EADC0(PokegearMapAppData *mapApp, u8 a1, u16 a2);
-void ov101_021EB428(PokegearMapAppData *mapApp, u32 a1);
 void ov101_021EB560(u16 a0, HeapID a1, String *a2);
 
 extern const TouchscreenListMenuTemplate ov101_021F7E80;
