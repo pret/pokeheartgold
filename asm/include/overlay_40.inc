@@ -40,7 +40,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public GetSpeciesNameIntoArray
+.public MessageLoader_GetSpeciesName
 .public MessageFormat_New_Custom
 .public MessageFormat_Delete
 .public BufferString
@@ -247,11 +247,11 @@
 .public Save_VarsFlags_GetBattleCastlePrintProgress
 .public Save_VarsFlags_GetBattleArcadePrintProgress
 .public Save_VarsFlags_GetBattleTowerPrintProgress
-.public GetMonData
-.public SetMonData
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public AllocAndLoadMonPersonal
 .public FreeMonPersonal
-.public GetGenderBySpeciesAndPersonality
+.public Species_GetGender
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm

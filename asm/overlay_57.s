@@ -52,7 +52,7 @@ ov57_022378DC: ; 0x022378DC
 	ldr r1, _02237AE8 ; =0x0000040C
 	str r0, [r4, r1]
 	mov r0, #0x34
-	bl AllocMonZeroed
+	bl Pokemon_New
 	ldr r1, _02237AEC ; =0x00000458
 	mov r2, #0xff
 	str r0, [r4, r1]
@@ -129,7 +129,7 @@ _022379B8:
 	beq _022379D6
 	add r1, r7, #0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _022379D6
 	lsl r0, r0, #3
@@ -2834,17 +2834,17 @@ _02238E5C:
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x10]
 	add r0, r7, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r2, [sp, #0x14]
@@ -3630,7 +3630,7 @@ ov57_022394D8: ; 0x022394D8
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 _02239504:
 	cmp r7, #0xff
 	beq _0223951E
@@ -3643,7 +3643,7 @@ _02239504:
 	add r0, r1, r0
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
-	bl SetMonData
+	bl Pokemon_SetData
 _0223951E:
 	add r2, r5, #4
 	ldr r1, [r2, r6]
@@ -3654,18 +3654,18 @@ _0223951E:
 	add r7, #8
 	ldr r0, [r7, r6]
 	add r1, sp, #0x10
-	bl CopyCapsule
+	bl BallCapsule_Copy
 	add r0, r5, #0
 	str r0, [sp, #4]
 	add r0, #8
 	str r0, [sp, #4]
 	ldr r0, [r0, r4]
 	ldr r1, [r7, r6]
-	bl CopyCapsule
+	bl BallCapsule_Copy
 	ldr r1, [sp, #4]
 	add r0, sp, #0x10
 	ldr r1, [r1, r4]
-	bl CopyCapsule
+	bl BallCapsule_Copy
 	add r0, r5, #0
 	bl ov57_022394AC
 	add sp, #0x28
@@ -5469,7 +5469,7 @@ _0223A39A:
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0xab
-	bl SetMonData
+	bl Pokemon_SetData
 _0223A3E2:
 	mov r0, #0xff
 	mov r1, #0xb
@@ -6464,7 +6464,7 @@ _0223AC04:
 	str r0, [sp, #0x7c]
 	ldr r0, _0223AEA0 ; =0x00000458
 	ldr r0, [r4, r0]
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x6c]
 	add r0, sp, #0x5c
 	bl ov07_02233DB8
@@ -6499,12 +6499,12 @@ _0223AC4A:
 	mov r1, #0xa2
 	ldr r0, [r4, r0]
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, _0223AEA0 ; =0x00000458
 	mov r1, #0xab
 	ldr r0, [r4, r0]
 	add r2, sp, #0x44
-	bl SetMonData
+	bl Pokemon_SetData
 	mov r0, #0x34
 	add r1, sp, #0x38
 	bl ov07_02232694
@@ -6646,7 +6646,7 @@ _0223AD7A:
 	str r0, [sp, #0x30]
 	ldr r0, [r4, r1]
 	mov r1, #0x9b
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x20]
 	add r0, sp, #0x10
 	bl ov07_02233DB8
@@ -7875,14 +7875,14 @@ ov57_0223B75C: ; 0x0223B75C
 	mov r0, #0xfb
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	ldr r3, _0223B770 ; =CopyCapsule
+	ldr r3, _0223B770 ; =BallCapsule_Copy
 	lsl r0, r0, #3
 	add r0, r1, r0
 	ldr r0, [r0, #8]
 	add r1, #0x68
 	bx r3
 	.balign 4, 0
-_0223B770: .word CopyCapsule
+_0223B770: .word BallCapsule_Copy
 	thumb_func_end ov57_0223B75C
 
 	thumb_func_start ov57_0223B774
@@ -7891,14 +7891,14 @@ ov57_0223B774: ; 0x0223B774
 	add r2, r0, #0
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	ldr r3, _0223B788 ; =CopyCapsule
+	ldr r3, _0223B788 ; =BallCapsule_Copy
 	lsl r1, r1, #3
 	add r1, r2, r1
 	add r0, #0x68
 	ldr r1, [r1, #8]
 	bx r3
 	.balign 4, 0
-_0223B788: .word CopyCapsule
+_0223B788: .word BallCapsule_Copy
 	thumb_func_end ov57_0223B774
 
 	thumb_func_start ov57_0223B78C
@@ -7955,7 +7955,7 @@ ov57_0223B7C4: ; 0x0223B7C4
 	add r1, #0x6c
 	ldr r0, [r0, #4]
 	ldr r1, [r5, r1]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 _0223B7EA:
 	ldr r1, [r5]
@@ -7970,13 +7970,13 @@ _0223B7F6:
 	mov r1, #0x4c
 	add r0, r7, #0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _0223B814
 	ldr r1, _0223B824 ; =0x00000458
 	add r0, r7, #0
 	ldr r1, [r5, r1]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 _0223B814:
 	ldr r1, [r5]
@@ -8177,7 +8177,7 @@ ov57_0223B950: ; 0x0223B950
 	mov r1, #5
 	ldr r0, [r5, r0]
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r4, r0, #0
 	ldr r0, _0223B9BC ; =0x00000458
 	mov r1, #2
@@ -8229,7 +8229,7 @@ ov57_0223B9C8: ; 0x0223B9C8
 	mov r1, #5
 	ldr r0, [r5, r0]
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r4, r0, #0
 	ldr r0, _0223BA14 ; =0x00000458
 	ldr r0, [r5, r0]
@@ -8570,7 +8570,7 @@ ov57_0223BC4C: ; 0x0223BC4C
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _0223BC70:
 	mov r0, #0xff
 	str r0, [r4, r6]

@@ -7,5 +7,5 @@
 .public BattleSetup_GetWildBattleMusic
 .public GetFirstAliveMonInParty_CrashIfNone
 .public Save_VarsFlags_FlypointFlagAction
-.public GetMonData
+.public Pokemon_GetData
 .public ov01_021F0D20

@@ -120,9 +120,9 @@ void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *sav
     mail->form_flags = 0;
     for (i = mon_no, j = 0; i < Party_GetCount(party); i++) {
         mon = Party_GetMonByIndex(party, i);
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
+        species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        isEgg = Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
+        form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         icon = Pokemon_GetIconNaix(mon);
         pal = GetMonIconPaletteEx(species, form, isEgg);
 
@@ -175,9 +175,9 @@ Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
 
     ret->form_flags = 0;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    isEgg = Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     r5 = Pokemon_GetIconNaix(mon);
     r0 = GetMonIconPaletteEx(species, form, isEgg);
     ret->mon_icons[0].icon = r5;

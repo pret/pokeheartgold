@@ -149,7 +149,7 @@
 .public FieldSystem_UnkSub108_MoveMoodTowardsNeutral
 .public HandleDaycareStep
 .public FieldSystem_BugContest_Get
-.public MonApplyFriendshipMod
+.public Pokemon_UpdateFriendship
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

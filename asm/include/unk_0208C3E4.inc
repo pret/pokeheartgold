@@ -28,10 +28,10 @@
 .public AddTextPrinterParameterizedWithColor
 .public String_Delete
 .public String_Compare
-.public AllocMonZeroed
+.public Pokemon_New
 .public CopyBoxPokemonToPokemon
 .public GetMoveAttr
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public Pokedex_ConvertToCurrentDexNo
 .public sub_0208A520
 .public sub_0208C3E4

@@ -8,8 +8,8 @@ u32 Save_Daycare_sizeof(void) {
 
 void Save_Daycare_Init(Daycare *daycare) {
     memset(daycare, 0, sizeof(Daycare));
-    ZeroBoxMonData(&daycare->mons[0].mon);
-    ZeroBoxMonData(&daycare->mons[1].mon);
+    BoxPokemon_Init(&daycare->mons[0].mon);
+    BoxPokemon_Init(&daycare->mons[1].mon);
     daycare->egg_pid = 0;
     daycare->egg_cycles = 0;
 }
@@ -67,7 +67,7 @@ BOOL Save_Daycare_MasudaCheck(Daycare *daycare) {
     // Uses language as a proxy for country, even though it
     // only accounts for European languages and Japanese.
     // If true, shiny odds are increased.
-    return GetBoxMonData(&daycare->mons[0].mon, MON_DATA_GAME_LANGUAGE, NULL) != GetBoxMonData(&daycare->mons[1].mon, MON_DATA_GAME_LANGUAGE, NULL);
+    return BoxPokemon_GetData(&daycare->mons[0].mon, MON_DATA_LANGUAGE, NULL) != BoxPokemon_GetData(&daycare->mons[1].mon, MON_DATA_LANGUAGE, NULL);
 }
 
 void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src) {
@@ -90,7 +90,7 @@ void DaycareMon_Extras_Init(DaycareMail *mail) {
 }
 
 void DaycareMon_Init(DaycareMon *mon) {
-    ZeroBoxMonData(&mon->mon);
+    BoxPokemon_Init(&mon->mon);
     mon->steps = 0;
     DaycareMon_Extras_Init(&mon->mail);
 }

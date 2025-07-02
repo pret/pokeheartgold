@@ -441,7 +441,7 @@ _0222F93C:
 	b _0222FBE6
 _0222F954:
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	add r0, r4, #0
 	bl ov80_02237120
@@ -457,7 +457,7 @@ _0222F954:
 	add r0, r6, #0
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0x18]
 	strh r0, [r1]
 	add r0, r6, #0
@@ -477,7 +477,7 @@ _0222F99C:
 	cmp r1, #0x12
 	blt _0222F99C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]
@@ -497,12 +497,12 @@ _0222F9BC:
 	add r0, r5, #0
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r7, r0
 	bne _0222F9E8
 	mov r0, #0xff
@@ -689,7 +689,7 @@ _0222FB42:
 	add r1, r5, #0
 	ldr r0, [r4, r0]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r5, #0

@@ -36,13 +36,13 @@ static u32 GetMonSizeHash(Pokemon *mon) {
     u16 spDefIv_lo;
     u16 ret, ret2;
 
-    pid_lo = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    hpIv_lo = GetMonData(mon, MON_DATA_HP_IV, NULL) & 0xF;
-    atkIv_lo = GetMonData(mon, MON_DATA_ATK_IV, NULL) & 0xF;
-    defIv_lo = GetMonData(mon, MON_DATA_DEF_IV, NULL) & 0xF;
-    spdIv_lo = GetMonData(mon, MON_DATA_SPEED_IV, NULL) & 0xF;
-    spAtkIv_lo = GetMonData(mon, MON_DATA_SPATK_IV, NULL) & 0xF;
-    spDefIv_lo = GetMonData(mon, MON_DATA_SPDEF_IV, NULL) & 0xF;
+    pid_lo = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
+    hpIv_lo = Pokemon_GetData(mon, MON_DATA_HP_IV, NULL) & 0xF;
+    atkIv_lo = Pokemon_GetData(mon, MON_DATA_ATK_IV, NULL) & 0xF;
+    defIv_lo = Pokemon_GetData(mon, MON_DATA_DEF_IV, NULL) & 0xF;
+    spdIv_lo = Pokemon_GetData(mon, MON_DATA_SPEED_IV, NULL) & 0xF;
+    spAtkIv_lo = Pokemon_GetData(mon, MON_DATA_SPATK_IV, NULL) & 0xF;
+    spDefIv_lo = Pokemon_GetData(mon, MON_DATA_SPDEF_IV, NULL) & 0xF;
 
     ret = ((spDefIv_lo ^ spAtkIv_lo) * spdIv_lo) ^ (pid_lo >> 8);
     ret2 = ((atkIv_lo ^ defIv_lo) * hpIv_lo) ^ ((u8)pid_lo);
@@ -94,7 +94,7 @@ BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
     ret_p = ScriptGetVarPointer(ctx);
     slot = ScriptGetVar(ctx);
     mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     rand = GetMonSizeHash(mon);
     cm1 = GetMonSize(species, rand);
     record = Save_VarsFlags_GetFishingCompetitionLengthRecord(Save_VarsFlags_Get(fieldSystem->saveData));
@@ -156,6 +156,6 @@ BOOL ScrCmd_BufferMonSize(ScriptContext *ctx) {
     idx1 = ScriptGetVar(ctx);
     slot = ScriptGetVar(ctx);
     mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
-    FormatSizeRecord(fieldSystem, idx0, idx1, GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonSizeHash(mon));
+    FormatSizeRecord(fieldSystem, idx0, idx1, Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), GetMonSizeHash(mon));
     return FALSE;
 }

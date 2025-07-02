@@ -2080,7 +2080,7 @@ _021E7932:
 	bl Party_GetMonByIndex
 	mov r1, #5
 	add r2, r5, #0
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r4, r4, #1
 	cmp r4, r7
 	blt _021E7932

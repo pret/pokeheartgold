@@ -95,9 +95,9 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public GetMonData
-.public GetMonGender
-.public Mon_GetBoxMon
+.public Pokemon_GetData
+.public Pokemon_GetGender
+.public Pokemon_GetBoxPokemon
 .public GetMoveAttr
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

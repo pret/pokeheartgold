@@ -7511,7 +7511,7 @@ ov41_02249604: ; 0x02249604
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #2
@@ -11884,7 +11884,7 @@ ov41_0224B630: ; 0x0224B630
 	lsl r0, r0, #2
 	str r1, [r4, r0]
 	ldr r0, [r5, #0x68]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	mov r1, #0x8d
 	lsl r1, r1, #2
 	str r0, [r4, r1]

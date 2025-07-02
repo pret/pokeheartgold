@@ -175,7 +175,7 @@
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Options_GetFrame
-.public CopyCapsule
+.public BallCapsule_Copy
 .public SealCase_GetCapsuleI
 .public SealCase_SetCapsuleI
 .public CapsuleGetSealI
@@ -189,13 +189,13 @@
 .public SealCase_CountUniqueSeals
 .public Save_GameStats_Get
 .public GameStats_AddScore
-.public AllocMonZeroed
-.public GetMonData
-.public SetMonData
+.public Pokemon_New
+.public Pokemon_GetData
+.public Pokemon_SetData
 .public GetMonNature
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public Pokemon_GetIconNaix

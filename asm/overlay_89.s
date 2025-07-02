@@ -2658,22 +2658,22 @@ _02259E78:
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0
 	strh r0, [r5, #2]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strb r0, [r5, #8]
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl ov89_0225C830
@@ -5019,7 +5019,7 @@ _0225AFF8: .word 0xFF00FFFF
 ov89_0225AFFC: ; 0x0225AFFC
 	push {r3, lr}
 	ldr r0, [r0, #4]
-	bl GetNatureFromPersonality
+	bl Pokemon_GetNatureOf
 	ldr r1, _0225B00C ; =ov89_0225CE34
 	ldrb r0, [r1, r0]
 	pop {r3, pc}

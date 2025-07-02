@@ -1608,7 +1608,7 @@ sub_0208D0A4: ; 0x0208D0A4
 	cmp r1, #2
 	bne _0208D102
 	mov r0, #0x13
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -2518,7 +2518,7 @@ _0208D8B8:
 	mov r1, #0
 	ldrh r0, [r0, #0x18]
 	str r0, [sp, #0x20]
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	str r0, [sp, #0x1c]
 	str r0, [sp, #0x18]
 _0208D8CA:

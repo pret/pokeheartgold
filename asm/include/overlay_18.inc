@@ -234,7 +234,7 @@
 .public MapHeader_GetMapSec
 .public AcquireMonLock
 .public ReleaseMonLock
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx

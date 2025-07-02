@@ -10464,7 +10464,7 @@ ov15_021FE620: ; 0x021FE620
 	bl String_Delete
 	ldr r0, [sp, #0x10]
 	mov r1, #0
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	add r7, r0, #0
 	mov r0, #0x2f
 	lsl r0, r0, #4

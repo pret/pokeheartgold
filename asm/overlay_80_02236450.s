@@ -470,7 +470,7 @@ _022367BE:
 	add r7, r6, #0
 	orr r7, r0
 	add r0, r7, #0
-	bl GetNatureFromPersonality
+	bl Pokemon_GetNatureOf
 	add r1, sp, #8
 	ldrb r1, [r1, #0xb]
 	cmp r1, r0
@@ -602,7 +602,7 @@ _022368C4:
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
 	add r2, r5, #0
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	add r0, r7, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -650,7 +650,7 @@ ov80_0223690C: ; 0x0223690C
 	add r0, r0, #4
 	str r1, [r7, r0]
 	ldr r0, [r5, #4]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	ldrb r1, [r5, #0xe]
 	ldr r0, [r7, #4]
@@ -666,26 +666,26 @@ _02236964:
 	ldr r0, [sp, #8]
 	bl Party_GetMonByIndex
 	add r1, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0x32
 	bls _022369A6
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x32
 	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 _022369A6:
 	add r0, r7, #0
 	add r1, r4, #0
@@ -771,7 +771,7 @@ ov80_02236A34: ; 0x02236A34
 	str r4, [sp]
 	bl ov80_0222A480
 	ldr r0, [sp, #0x28]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	mov r6, #0
 	cmp r7, #0

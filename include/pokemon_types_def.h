@@ -50,19 +50,19 @@ typedef struct {
     /* 0x08 */ u32 exp;
     /* 0x0C */ u8 friendship;
     /* 0x0D */ u8 ability;
-    /* 0x0E */ u8 markings; // circle, triangle, square, heart, star, diamond
+    /* 0x0E */ u8 marks; // circle, triangle, square, heart, star, diamond
     /* 0x0F */ u8 originLanguage;
     /* 0x10 */ u8 hpEV;
     /* 0x11 */ u8 atkEV;
     /* 0x12 */ u8 defEV;
-    /* 0x13 */ u8 spdEV;
-    /* 0x14 */ u8 spatkEV;
-    /* 0x15 */ u8 spdefEV;
-    /* 0x16 */ u8 coolStat;
-    /* 0x17 */ u8 beautyStat;
-    /* 0x18 */ u8 cuteStat;
-    /* 0x19 */ u8 smartStat;
-    /* 0x1A */ u8 toughStat;
+    /* 0x13 */ u8 speedEV;
+    /* 0x14 */ u8 spAtkEV;
+    /* 0x15 */ u8 spDefEV;
+    /* 0x16 */ u8 cool;
+    /* 0x17 */ u8 beauty;
+    /* 0x18 */ u8 cute;
+    /* 0x19 */ u8 smart;
+    /* 0x1A */ u8 tough;
     /* 0x1B */ u8 sheen;
     // TODO: Finish SinnohRibbonSet1
     /* 0x1C */ u32 sinnohRibbons;
@@ -75,11 +75,11 @@ typedef struct {
 typedef struct {
     /* 0x00 */ u16 moves[MAX_MON_MOVES];
     /* 0x08 */ u8 movePP[MAX_MON_MOVES];
-    /* 0x0C */ u8 movePpUps[MAX_MON_MOVES];
-    /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, spdIV : 5, spatkIV : 5, spdefIV : 5, isEgg : 1, isNicknamed : 1;
+    /* 0x0C */ u8 movePPUps[MAX_MON_MOVES];
+    /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, speedIV : 5, spAtkIV : 5, spDefIV : 5, isEgg : 1, hasNickname : 1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
-    /* 0x18 */ u8 fatefulEncounter : 1, gender : 2, alternateForm : 5;
+    /* 0x18 */ u8 fatefulEncounter : 1, gender : 2, form : 5;
     /* 0x19 */ u8 HGSS_shinyLeaves : 6;
     /* 0x19 */ u8 unk_19_6 : 2;
     /* 0x1A */ u16 Unused;
@@ -89,7 +89,7 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ u16 nickname[11];
-    /* 0x16 */ u8 Unused;
+    /* 0x16 */ u8 originCode;
     /* 0x17 */ u8 originGame;
     // TODO: Finish SinnohRibbonSet2
     /* 0x18 */ u64 sinnohRibbons2; // cool, ...
@@ -118,10 +118,10 @@ typedef union {
 } PokemonDataBlock;
 
 typedef struct BoxPokemon {
-    /* 0x000 */ u32 pid;
+    /* 0x000 */ u32 personality;
     /* 0x004 */ u16 party_lock : 1;
     u16 box_lock : 1;
-    u16 checksum_fail : 1;
+    u16 invalidData : 1;
     u16 Unused : 13;          // Might be used for validity checks
     /* 0x006 */ u16 checksum; // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
@@ -159,16 +159,16 @@ typedef struct Mail {
 typedef struct PartyPokemon {
     /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
     /* 0x08C */ u8 level;
-    /* 0x08D */ u8 capsule;
+    /* 0x08D */ u8 ballCapsuleID;
     /* 0x08E */ u16 hp;
-    /* 0x090 */ u16 maxHp;
-    /* 0x092 */ u16 atk;
-    /* 0x094 */ u16 def;
+    /* 0x090 */ u16 maxHP;
+    /* 0x092 */ u16 attack;
+    /* 0x094 */ u16 defense;
     /* 0x096 */ u16 speed;
-    /* 0x098 */ u16 spatk;
-    /* 0x09A */ u16 spdef;
+    /* 0x098 */ u16 spAtk;
+    /* 0x09A */ u16 spDef;
     /* 0x09C */ Mail mail;
-    /* 0x0D4 */ CAPSULE sealCoords; // seal coords
+    /* 0x0D4 */ BallCapsule ballCapsule; // seal coords
 } PARTYMON;
 
 typedef struct {
@@ -180,7 +180,7 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x00 */ u32 pid;
     /* 0x04 */ u16 party_lock : 1;
     u16 box_lock : 1;
-    u16 checksum_fail : 1;
+    u16 invalidData : 1;
     /* 0x06 */ u16 species;
     /* 0x08 */ u16 heldItem;
     /* 0x0C */ u32 otID;
@@ -190,23 +190,23 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x16 */ u8 hpEV;
     /* 0x17 */ u8 atkEV;
     /* 0x18 */ u8 defEV;
-    /* 0x19 */ u8 spdEV;
-    /* 0x1A */ u8 spatkEV;
-    /* 0x1B */ u8 spdefEV;
+    /* 0x19 */ u8 speedEV;
+    /* 0x1A */ u8 spAtkEV;
+    /* 0x1B */ u8 spDefEV;
     /* 0x1C */ u16 moves[MAX_MON_MOVES];
     /* 0x24 */ u8 movePP[MAX_MON_MOVES];
-    /* 0x28 */ u8 movePpUps[MAX_MON_MOVES];
+    /* 0x28 */ u8 movePPUps[MAX_MON_MOVES];
     /* 0x2C */ u32 hpIV : 5;
     u32 atkIV : 5;
     u32 defIV : 5;
-    u32 spdIV : 5;
-    u32 spatkIV : 5;
-    u32 spdefIV : 5;
+    u32 speedIV : 5;
+    u32 spAtkIV : 5;
+    u32 spDefIV : 5;
     u32 isEgg : 1;
-    u32 isNicknamed : 1;
+    u32 hasNickname : 1;
     /* 0x30 */ u8 fatefulEncounter : 1;
     u8 gender : 2;
-    u8 alternateForm : 5;
+    u8 form : 5;
     /* 0x32 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
     /* 0x48 */ u16 otTrainerName[PLAYER_NAME_LENGTH + 1];
     /* 0x58 */ u8 pokeball;
@@ -223,7 +223,7 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x6E */ u16 spdef;
 };
 
-typedef struct PokepicTemplate {
+typedef struct PokePicTemplate {
     u16 narcID;
     u16 charDataID;
     u16 palDataID;
@@ -231,7 +231,7 @@ typedef struct PokepicTemplate {
     u8 isAnimated;
     u8 filler_9[3];
     u32 personality;
-} PokepicTemplate;
+} PokePicTemplate;
 
 struct PokeanmSub {
     s8 unk0;

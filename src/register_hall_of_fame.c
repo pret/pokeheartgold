@@ -1210,7 +1210,7 @@ static void RegisterHallOfFame_IndivMonsScene_UnloadSpriteGfx(RegisterHallOfFame
 }
 
 static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFameData *data, RegisterHofMon *hofMon, u8 whichFacing, int picIdx) {
-    PokepicTemplate drawMonStruct;
+    PokePicTemplate drawMonStruct;
     GetPokemonSpriteCharAndPlttNarcIds(&drawMonStruct, hofMon->mon, whichFacing);
     RegisterHallOfFame_ReplaceSpriteChar(
         whichFacing == MON_PIC_FACING_FRONT ? hofMon->frontspriteCharbuf : hofMon->backspriteCharbuf,
@@ -1360,7 +1360,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
 
     u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
-    if (MonIsShiny(hofMon->mon) == TRUE) {
+    if (Pokemon_IsShiny(hofMon->mon) == TRUE) {
         loadPos = (const u8 *)loadPos + 0x20;
     }
     RegisterHallOfFame_ReplaceSpritePltt(loadPos, plttLoc, 0x20);
@@ -1432,7 +1432,7 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     Window *windows = &data->windows[windowIdx];
     RegisterHofMon *hofMon = &data->mons[monIdx];
     Pokemon *mon = hofMon->mon;
-    BoxPokemon *boxmon = Mon_GetBoxMon(mon);
+    BoxPokemon *boxmon = Pokemon_GetBoxPokemon(mon);
 
     FillWindowPixelBuffer(&windows[0], 0);
     ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->strbuf1);
@@ -1986,7 +1986,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
 
 static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
     u32 i;
-    PokepicTemplate sp40;
+    PokePicTemplate sp40;
     UnkStruct_02014E30 sp20[2];
     ARRAY_ASSIGN(sp20, ov63_0221FC38);
     NARC *narc = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
@@ -1997,16 +1997,16 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
     for (i = 0; i < Party_GetCount(data->args->party); ++i) {
         pokemon = Party_GetMonByIndex(data->args->party, i);
         encry = AcquireMonLock(pokemon);
-        if (!GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+        if (!Pokemon_GetData(pokemon, MON_DATA_IS_EGG, NULL)) {
             hofMon = &data->mons[data->numMons];
             hofMon->mon = pokemon;
-            hofMon->species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-            hofMon->personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-            hofMon->form = GetMonData(pokemon, MON_DATA_FORM, NULL);
-            hofMon->gender = GetMonData(pokemon, MON_DATA_GENDER, NULL);
+            hofMon->species = Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL);
+            hofMon->personality = Pokemon_GetData(pokemon, MON_DATA_PERSONALITY, NULL);
+            hofMon->form = Pokemon_GetData(pokemon, MON_DATA_FORM, NULL);
+            hofMon->gender = Pokemon_GetData(pokemon, MON_DATA_GENDER, NULL);
             hofMon->yOffset = GetMonPicHeightBySpeciesGenderForm(hofMon->species, hofMon->gender, 0, hofMon->form, hofMon->personality) + 8;
-            hofMon->metLocation = GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL);
-            hofMon->level = GetMonData(pokemon, MON_DATA_LEVEL, NULL);
+            hofMon->metLocation = Pokemon_GetData(pokemon, MON_DATA_MET_LOCATION, NULL);
+            hofMon->level = Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL);
             hofMon->partyIndex = i;
             if (hofMon->species == SPECIES_NIDORAN_F || hofMon->species == SPECIES_NIDORAN_M) {
                 hofMon->printGender = FALSE;
@@ -2032,7 +2032,7 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
 static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
     BOOL encry = AcquireMonLock(pokemon);
     RegisterHallOfFame_MetLocationType ret;
-    int version = GetMonData(pokemon, MON_DATA_GAME_VERSION, NULL);
+    int version = Pokemon_GetData(pokemon, MON_DATA_MET_GAME, NULL);
     if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
         ret = REGHOF_METLOC_HOENN;
     } else if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN) {
@@ -2041,22 +2041,22 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
         ret = REGHOF_METLOC_ORRE;
     } else if (version == VERSION_DIAMOND || version == VERSION_PEARL || version == VERSION_PLATINUM) {
         ret = REGHOF_METLOC_SINNOH;
-    } else if (GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL)) {
+    } else if (Pokemon_GetData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL)) {
         ret = REGHOF_METLOC_FATEFUL;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_SHUCKIE_SHUCKLE) == TRUE) {
         ret = REGHOF_METLOC_SHUCKIE;
     } else if (MonIsInGameTradePoke(pokemon, NPC_TRADE_KENYA_SPEAROW) == TRUE) {
         ret = REGHOF_METLOC_KENYA;
-    } else if (PlayerProfile_GetTrainerID(profile) != GetMonData(pokemon, MON_DATA_OTID, NULL)) {
+    } else if (PlayerProfile_GetTrainerID(profile) != Pokemon_GetData(pokemon, MON_DATA_OT_ID, NULL)) {
         ret = REGHOF_METLOC_TRADED;
     } else {
         PlayerName_FlatToString(profile, data->strbuf1);
-        GetMonData(pokemon, MON_DATA_OT_NAME_2, data->strbuf2);
+        Pokemon_GetData(pokemon, MON_DATA_OT_NAME_2, data->strbuf2);
         if (String_Compare(data->strbuf1, data->strbuf2)) {
             ret = REGHOF_METLOC_TRADED;
-        } else if (GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
+        } else if (Pokemon_GetData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
             ret = REGHOF_METLOC_FATEFUL;
-        } else if (GetMonData(pokemon, MON_DATA_EGG_MET_MONTH, NULL) == 0) {
+        } else if (Pokemon_GetData(pokemon, MON_DATA_EGG_MET_MONTH, NULL) == 0) {
             ret = REGHOF_METLOC_CAUGHT;
         } else {
             ret = REGHOF_METLOC_HATCHED;

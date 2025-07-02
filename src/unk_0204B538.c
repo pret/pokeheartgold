@@ -192,7 +192,7 @@ void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        a0->unk83e[1 + i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        a0->unk83e[1 + i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     }
     a0->unk83e[3] = sub_0202D57C(a0->unk74, 3, 0);
 }
@@ -263,7 +263,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     if (a4 == 0) {
         do {
             pid = sub_0204B510(a0) | sub_0204B510(a0) << 16;
-        } while (frontierMon.nature != GetNatureFromPersonality(pid)
+        } while (frontierMon.nature != Pokemon_GetNatureOf(pid)
             || CalcShininessByOtIdAndPersonality(otId, pid) == TRUE);
         a1->pid = pid;
     } else {
@@ -304,7 +304,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
         a1->ability = GetMonBaseStat(a1->species, BASE_ABILITY_1);
     }
     a1->friendship = friendship;
-    GetSpeciesNameIntoArray(a1->species, heapId, a1->nickname);
+    MessageLoader_GetSpeciesName(a1->species, heapId, a1->nickname);
     return pid;
 }
 

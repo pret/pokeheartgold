@@ -160,7 +160,7 @@
 .public GetItemFieldUseFunc
 .public Leftover_CanPlantBerry
 .public GetMoveAttr
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public sub_02077678
 .public sub_0207769C
 .public sub_020776B4

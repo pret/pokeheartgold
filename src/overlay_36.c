@@ -160,7 +160,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OverlayManager *man, int *s
         SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(saveData));
         Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(saveData));
         Save_SysInfo_InitFromSystem(sys_info);
-        Party_ResetAllShayminToLandForm(SaveArray_Party_Get(saveData));
+        Party_SetShayminLandForm(SaveArray_Party_Get(saveData));
     }
 
     sub_0201838C(Save_PlayerData_GetIGTAddr(saveData));
@@ -210,9 +210,9 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveDa
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
+    Pokemon *mon = Pokemon_New(HEAP_ID_3);
 
-    CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    Pokemon_Create(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
 
     Mail *mail;
     if (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) {

@@ -147,10 +147,10 @@ CallTask_NPCTrade: ; 0x02067A1C
 	str r5, [r4]
 	ldr r0, [sp]
 	str r6, [r4, #8]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [r4, #0x24]
 	ldr r0, [sp]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [r4, #0x28]
 	ldr r1, _02067A5C ; =Task_NPCTrade
 	add r0, r7, #0

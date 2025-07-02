@@ -3219,7 +3219,7 @@ _021E7218:
 	bne _021E7234
 	add r0, r4, #0
 	mov r1, #0
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGender
 _021E7234:
 	pop {r4, pc}
 	nop

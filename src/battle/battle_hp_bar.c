@@ -1173,7 +1173,7 @@ static void ov12_0226516C(BattleHpBar *hpBar) {
     string2 = NewString_ReadMsgData(msgData, msg_0197_00964);
 
     mon = BattleSystem_GetPartyMon(hpBar->bsys, hpBar->battlerId, hpBar->monId);
-    boxMon = Mon_GetBoxMon(mon);
+    boxMon = Pokemon_GetBoxPokemon(mon);
     BufferBoxMonNickname(msgFormat, 0, boxMon);
     StringExpandPlaceholders(msgFormat, string, string2);
 

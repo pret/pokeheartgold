@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonBaseStat
 .public MaskOfFlagNo
 .public Party_GetCount

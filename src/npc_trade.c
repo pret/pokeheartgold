@@ -32,7 +32,7 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
     ret->trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, heapId, FALSE);
     ret->heapId = heapId;
     ret->tradeno = tradeno;
-    ret->mon = AllocMonZeroed(heapId);
+    ret->mon = Pokemon_New(heapId);
     ret->profile = PlayerProfile_New(heapId);
     PlayerProfile_Init(ret->profile);
     {
@@ -62,7 +62,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = Pokemon_New(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
@@ -73,7 +73,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
         name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
-        SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
+        Pokemon_SetData(kenya, MON_DATA_MAIL, mail);
         String_Delete(name);
         FreeToHeap(mail);
     }
@@ -88,7 +88,7 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = Pokemon_New(HEAP_ID_FIELD);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD, TRUE);
     _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_ROUTE_35_GOLDENROD_GATEHOUSE, 7, HEAP_ID_FIELD);
     name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
@@ -113,7 +113,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 1;
     }
 
-    capsule = GetMonData(mon, MON_DATA_CAPSULE, NULL);
+    capsule = Pokemon_GetData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
     if (capsule != 0) {
         return 3;
     }
@@ -122,7 +122,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
     party_count = Party_GetCount(party);
     for (i = 0; i < party_count; i++) {
         cur_poke = Party_GetMonByIndex(party, i);
-        if (GetMonData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && GetMonData(cur_poke, MON_DATA_HP, NULL) != 0 && !GetMonData(cur_poke, MON_DATA_IS_EGG, NULL)) {
+        if (Pokemon_GetData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && Pokemon_GetData(cur_poke, MON_DATA_HP, NULL) != 0 && !Pokemon_GetData(cur_poke, MON_DATA_IS_EGG, NULL)) {
             n++;
         }
     }
@@ -130,7 +130,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 4;
     }
 
-    heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    heldItem = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     if (heldItem != ITEM_NONE) {
         return 2;
     }
@@ -160,11 +160,11 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     u32 time_of_day;
 
     my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
-    _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapId);
-    CopyPokemonToPokemon(my_poke, my_mon_buf);
-    CopyPokemonToPokemon(work->mon, trade_mon_buf);
-    anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);
-    anim_work->trade_boxmon = Mon_GetBoxMon(trade_mon_buf);
+    _CreateTradeMon(work->mon, work->trade_dat, Pokemon_GetData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapId);
+    Pokemon_Copy(my_poke, my_mon_buf);
+    Pokemon_Copy(work->mon, trade_mon_buf);
+    anim_work->my_boxmon = Pokemon_GetBoxPokemon(my_mon_buf);
+    anim_work->trade_boxmon = Pokemon_GetBoxPokemon(trade_mon_buf);
     anim_work->trade_profile = work->profile;
     anim_work->is_ingame = 1;
     anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
@@ -194,41 +194,41 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     u32 mapsec;
     int heapId_2;
 
-    CreateMon(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
+    Pokemon_Create(mon, trade_dat->give_species, level, 32, TRUE, trade_dat->pid, OT_ID_PRESET, trade_dat->otId);
 
     heapId_2 = (int)heapId;
     name = _GetNpcTradeName((HeapID)heapId_2, tradeno);
-    SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
+    Pokemon_SetData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 
     nickname_flag = TRUE;
-    SetMonData(mon, MON_DATA_HAS_NICKNAME, &nickname_flag);
+    Pokemon_SetData(mon, MON_DATA_HAS_NICKNAME, &nickname_flag);
 
-    SetMonData(mon, MON_DATA_HP_IV, &trade_dat->hpIv);
-    SetMonData(mon, MON_DATA_ATK_IV, &trade_dat->atkIv);
-    SetMonData(mon, MON_DATA_DEF_IV, &trade_dat->defIv);
-    SetMonData(mon, MON_DATA_SPEED_IV, &trade_dat->speedIv);
-    SetMonData(mon, MON_DATA_SPATK_IV, &trade_dat->spAtkIv);
-    SetMonData(mon, MON_DATA_SPDEF_IV, &trade_dat->spDefIv);
+    Pokemon_SetData(mon, MON_DATA_HP_IV, &trade_dat->hpIv);
+    Pokemon_SetData(mon, MON_DATA_ATK_IV, &trade_dat->atkIv);
+    Pokemon_SetData(mon, MON_DATA_DEF_IV, &trade_dat->defIv);
+    Pokemon_SetData(mon, MON_DATA_SPEED_IV, &trade_dat->speedIv);
+    Pokemon_SetData(mon, MON_DATA_SPATK_IV, &trade_dat->spAtkIv);
+    Pokemon_SetData(mon, MON_DATA_SPDEF_IV, &trade_dat->spDefIv);
 
-    SetMonData(mon, MON_DATA_COOL, &trade_dat->cool);
-    SetMonData(mon, MON_DATA_BEAUTY, &trade_dat->beauty);
-    SetMonData(mon, MON_DATA_CUTE, &trade_dat->cute);
-    SetMonData(mon, MON_DATA_SMART, &trade_dat->smart);
-    SetMonData(mon, MON_DATA_TOUGH, &trade_dat->tough);
+    Pokemon_SetData(mon, MON_DATA_COOL, &trade_dat->cool);
+    Pokemon_SetData(mon, MON_DATA_BEAUTY, &trade_dat->beauty);
+    Pokemon_SetData(mon, MON_DATA_CUTE, &trade_dat->cute);
+    Pokemon_SetData(mon, MON_DATA_SMART, &trade_dat->smart);
+    Pokemon_SetData(mon, MON_DATA_TOUGH, &trade_dat->tough);
 
-    SetMonData(mon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
 
     name = _GetNpcTradeName((HeapID)heapId_2, NPC_TRADE_OT_NUM(tradeno));
-    SetMonData(mon, MON_DATA_OT_NAME_2, name);
+    Pokemon_SetData(mon, MON_DATA_OT_NAME_2, name);
     String_Delete(name);
 
-    SetMonData(mon, MON_DATA_MET_GENDER, &trade_dat->gender);
-    SetMonData(mon, MON_DATA_GAME_LANGUAGE, &trade_dat->language);
+    Pokemon_SetData(mon, MON_DATA_MET_GENDER, &trade_dat->gender);
+    Pokemon_SetData(mon, MON_DATA_LANGUAGE, &trade_dat->language);
 
     mapsec = MapHeader_GetMapSec(mapno);
     MonSetTrainerMemo(mon, NULL, met_level_strat, mapsec, heapId);
 
-    CalcMonLevelAndStats(mon);
-    GF_ASSERT(!MonIsShiny(mon));
+    Pokemon_CalcLevelAndStats(mon);
+    GF_ASSERT(!Pokemon_IsShiny(mon));
 }

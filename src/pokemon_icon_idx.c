@@ -16,8 +16,8 @@ u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
     u32 ret;
 
     encry = AcquireBoxMonLock(boxMon);
-    species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-    isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
+    species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+    isEgg = BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL);
     form = BoxMonGetForm(boxMon);
     ret = GetMonIconNaixEx(species, isEgg, form);
     ReleaseBoxMonLock(boxMon, encry);
@@ -25,7 +25,7 @@ u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
 }
 
 u32 Pokemon_GetIconNaix(Pokemon *mon) {
-    return Boxmon_GetIconNaix(Mon_GetBoxMon(mon));
+    return Boxmon_GetIconNaix(Pokemon_GetBoxPokemon(mon));
 }
 
 u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
@@ -83,9 +83,9 @@ u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
 }
 
 static u16 BoxMonGetForm(BoxPokemon *boxMon) {
-    switch (GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL)) {
+    switch (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL)) {
     case SPECIES_UNOWN:
-        return GetBoxMonUnownLetter(boxMon);
+        return BoxPokemon_GetForm(boxMon);
     case SPECIES_DEOXYS:
     case SPECIES_SHELLOS:
     case SPECIES_GASTRODON:
@@ -94,7 +94,7 @@ static u16 BoxMonGetForm(BoxPokemon *boxMon) {
     case SPECIES_GIRATINA:
     case SPECIES_SHAYMIN:
     case SPECIES_ROTOM:
-        return GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+        return BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
     default:
         return 0;
     }
@@ -703,14 +703,14 @@ const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon) {
 
     encry = AcquireBoxMonLock(boxMon);
     form = BoxMonGetForm(boxMon);
-    species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-    isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
+    species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+    isEgg = BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL);
     ReleaseBoxMonLock(boxMon, encry);
     return GetMonIconPaletteEx(species, form, isEgg);
 }
 
 const u8 Pokemon_GetIconPalette(Pokemon *mon) {
-    return Boxmon_GetIconPalette(Mon_GetBoxMon(mon));
+    return Boxmon_GetIconPalette(Pokemon_GetBoxPokemon(mon));
 }
 
 u32 sub_02074490(void) {

@@ -6209,7 +6209,7 @@ ov85_021E86CC: ; 0x021E86CC
 	bl MonSetTrainerMemo
 	add r0, r5, #0
 	add r1, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov85_021E86CC
@@ -6353,13 +6353,13 @@ _021E8800:
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E8828
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E8828
 	mov r0, #1

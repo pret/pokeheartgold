@@ -6749,7 +6749,7 @@ _0222ED6E:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x6d
 	add r2, sp, #0x64
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	ldr r0, [sp, #0x44]
 	add r1, sp, #0x64
 	bl CopyU16ArrayToString
@@ -7341,7 +7341,7 @@ _0222F21E:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x6d
 	add r2, sp, #0x6c
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	ldr r0, [sp, #0x4c]
 	add r1, sp, #0x6c
 	bl CopyU16ArrayToString
@@ -23253,7 +23253,7 @@ _02237238:
 	add r0, r6, #0
 	mov r1, #0x6d
 	add r2, sp, #0x10
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	add r0, r5, #0
 	add r1, sp, #0x10
 	bl CopyU16ArrayToString
@@ -23583,7 +23583,7 @@ _022374D0:
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGender
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
@@ -27686,7 +27686,7 @@ _022396F8:
 	ldr r0, [sp, #0x10]
 	mov r1, #0x6d
 	add r2, sp, #0x2c
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	ldr r0, [sp, #0x1c]
 	add r1, sp, #0x2c
 	bl CopyU16ArrayToString
@@ -36270,7 +36270,7 @@ _0223DD94:
 	add r0, r6, #0
 	mov r1, #0x6d
 	add r2, sp, #0x10
-	bl GetSpeciesNameIntoArray
+	bl MessageLoader_GetSpeciesName
 	add r0, r5, #0
 	add r1, sp, #0x10
 	bl CopyU16ArrayToString
@@ -49519,7 +49519,7 @@ _02244A02:
 	mov r1, #0xac
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02244A5C
 	mov r0, #0
@@ -49529,7 +49529,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, r5, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r0, r4, #0
 	bl String_SetEmpty
 	add r0, r4, #0
@@ -49544,7 +49544,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0xb3
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02244A54:
 	ldr r0, [sp, #0x18]
 	add r6, r6, #1

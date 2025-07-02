@@ -283,7 +283,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
     seedBak = GetLCRNGSeed();
     Party_InitWithMaxSize(enemies->party[partyIndex], PARTY_SIZE);
     data = (TRPOKE *)AllocFromHeap(heapId, sizeof(TRPOKE) * PARTY_SIZE);
-    mon = AllocMonZeroed(heapId);
+    mon = Pokemon_New(heapId);
     TrainerData_ReadTrPoke(enemies->trainerId[partyIndex], data);
 
     // If a Pokemon's gender ratio is 50/50, the generated Pokemon will be the same
@@ -331,7 +331,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
             // Difficulty is a number between 0 and 250 which directly corresponds
             // to the (uniform) IV spread of the generated Pokemon.
             iv = (u8)((monSpecies[i].difficulty * 31) / 255);
-            CreateMon(mon, species, monSpecies[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_Create(mon, species, monSpecies[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
 
             // If you were treating the trainer type as a bitfield, you'd put the
             // checks for held item and moves here. You'd also treat the trpoke
@@ -340,7 +340,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
             // Starting in Platinum, enemy trainer could have
             // personalized ball capsules.
             SetTrMonCapsule(monSpecies[i].capsule, mon, heapId);
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
             // Starting in HGSS, an AI Pokemon with Frustration
             // will have minimum friendship.
             TrMon_FrustrationCheckAndSetFriendship(mon);
@@ -364,12 +364,12 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
             }
             personality = (personality << 8) + pidGender;
             iv = (u8)((monSpeciesMoves[i].difficulty * 31) / 255);
-            CreateMon(mon, species, monSpeciesMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_Create(mon, species, monSpeciesMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
             for (j = 0; j < MAX_MON_MOVES; j++) {
-                MonSetMoveInSlot(mon, monSpeciesMoves[i].moves[j], (u8)j);
+                Pokemon_SetMoveSlot(mon, monSpeciesMoves[i].moves[j], (u8)j);
             }
             SetTrMonCapsule(monSpeciesMoves[i].capsule, mon, heapId);
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
             Party_AddMon(enemies->party[partyIndex], mon);
         }
@@ -391,10 +391,10 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
             }
             personality = (personality << 8) + pidGender;
             iv = (u8)((monSpeciesItem[i].difficulty * 31) / 255);
-            CreateMon(mon, species, monSpeciesItem[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
-            SetMonData(mon, MON_DATA_HELD_ITEM, &monSpeciesItem[i].item);
+            Pokemon_Create(mon, species, monSpeciesItem[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &monSpeciesItem[i].item);
             SetTrMonCapsule(monSpeciesItem[i].capsule, mon, heapId);
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
             Party_AddMon(enemies->party[partyIndex], mon);
         }
@@ -416,13 +416,13 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
             }
             personality = (personality << 8) + pidGender;
             iv = (u8)((monSpeciesItemMoves[i].difficulty * 31) / 255);
-            CreateMon(mon, species, monSpeciesItemMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
-            SetMonData(mon, MON_DATA_HELD_ITEM, &monSpeciesItemMoves[i].item);
+            Pokemon_Create(mon, species, monSpeciesItemMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &monSpeciesItemMoves[i].item);
             for (j = 0; j < MAX_MON_MOVES; j++) {
-                MonSetMoveInSlot(mon, monSpeciesItemMoves[i].moves[j], (u8)j);
+                Pokemon_SetMoveSlot(mon, monSpeciesItemMoves[i].moves[j], (u8)j);
             }
             SetTrMonCapsule(monSpeciesItemMoves[i].capsule, mon, heapId);
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
             TrMon_FrustrationCheckAndSetFriendship(mon);
             Party_AddMon(enemies->party[partyIndex], mon);
         }
@@ -459,9 +459,9 @@ void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon) {
     int i;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_FRUSTRATION) {
+        if (Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_FRUSTRATION) {
             friendship = 0;
         }
     }
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
 }

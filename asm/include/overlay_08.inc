@@ -102,12 +102,12 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Delete
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonExpBySpeciesAndLevel
-.public GetMonGender
-.public Mon_GetBoxMon
+.public Pokemon_GetGender
+.public Pokemon_GetBoxPokemon
 .public GetMoveAttr
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public PCStorage_FindFirstBoxWithEmptySlot
 .public Pokemon_GetIconNaix
 .public GetMonIconNaixEx

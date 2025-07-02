@@ -46,28 +46,28 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     int side;
     struct PokedexData *dexData;
 
-    ctx->battleMons[battlerId].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    ctx->battleMons[battlerId].atk = GetMonData(mon, MON_DATA_ATK, NULL);
-    ctx->battleMons[battlerId].def = GetMonData(mon, MON_DATA_DEF, NULL);
-    ctx->battleMons[battlerId].speed = GetMonData(mon, MON_DATA_SPEED, NULL);
-    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SPATK, NULL);
-    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    ctx->battleMons[battlerId].species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    ctx->battleMons[battlerId].atk = Pokemon_GetData(mon, MON_DATA_ATK, NULL);
+    ctx->battleMons[battlerId].def = Pokemon_GetData(mon, MON_DATA_DEF, NULL);
+    ctx->battleMons[battlerId].speed = Pokemon_GetData(mon, MON_DATA_SPEED, NULL);
+    ctx->battleMons[battlerId].spAtk = Pokemon_GetData(mon, MON_DATA_SP_ATK, NULL);
+    ctx->battleMons[battlerId].spDef = Pokemon_GetData(mon, MON_DATA_SP_DEF, NULL);
 
     for (i = 0; i < 4; i++) {
-        ctx->battleMons[battlerId].moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1PP + i, NULL);
-        ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+        ctx->battleMons[battlerId].moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
+        ctx->battleMons[battlerId].movePPCur[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
+        ctx->battleMons[battlerId].movePP[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL);
     }
 
-    ctx->battleMons[battlerId].hpIV = GetMonData(mon, MON_DATA_HP_IV, NULL);
-    ctx->battleMons[battlerId].atkIV = GetMonData(mon, MON_DATA_ATK_IV, NULL);
-    ctx->battleMons[battlerId].defIV = GetMonData(mon, MON_DATA_DEF_IV, NULL);
-    ctx->battleMons[battlerId].speedIV = GetMonData(mon, MON_DATA_SPEED_IV, NULL);
-    ctx->battleMons[battlerId].spAtkIV = GetMonData(mon, MON_DATA_SPATK_IV, NULL);
-    ctx->battleMons[battlerId].spDefIV = GetMonData(mon, MON_DATA_SPDEF_IV, NULL);
+    ctx->battleMons[battlerId].hpIV = Pokemon_GetData(mon, MON_DATA_HP_IV, NULL);
+    ctx->battleMons[battlerId].atkIV = Pokemon_GetData(mon, MON_DATA_ATK_IV, NULL);
+    ctx->battleMons[battlerId].defIV = Pokemon_GetData(mon, MON_DATA_DEF_IV, NULL);
+    ctx->battleMons[battlerId].speedIV = Pokemon_GetData(mon, MON_DATA_SPEED_IV, NULL);
+    ctx->battleMons[battlerId].spAtkIV = Pokemon_GetData(mon, MON_DATA_SPATK_IV, NULL);
+    ctx->battleMons[battlerId].spDefIV = Pokemon_GetData(mon, MON_DATA_SPDEF_IV, NULL);
 
-    ctx->battleMons[battlerId].isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    ctx->battleMons[battlerId].hasNickname = GetMonData(mon, MON_DATA_HAS_NICKNAME, NULL);
+    ctx->battleMons[battlerId].isEgg = Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
+    ctx->battleMons[battlerId].hasNickname = Pokemon_GetData(mon, MON_DATA_HAS_NICKNAME, NULL);
 
     if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < 8; i++) {
@@ -87,38 +87,38 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     ctx->battleMons[battlerId].moldBreakerFlag = 0;
     ctx->battleMons[battlerId].pressureFlag = 0;
 
-    ctx->battleMons[battlerId].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
-    ctx->battleMons[battlerId].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
+    ctx->battleMons[battlerId].type1 = Pokemon_GetData(mon, MON_DATA_TYPE_1, NULL);
+    ctx->battleMons[battlerId].type2 = Pokemon_GetData(mon, MON_DATA_TYPE_2, NULL);
 
-    ctx->battleMons[battlerId].gender = GetMonGender(mon);
-    ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
+    ctx->battleMons[battlerId].gender = Pokemon_GetGender(mon);
+    ctx->battleMons[battlerId].shiny = Pokemon_IsShiny(mon);
 
     if (BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) { // No abilities battle
         ctx->battleMons[battlerId].ability = 0;
         ctx->battleMons[battlerId].status = 0;
         ctx->battleMons[battlerId].item = 0;
     } else {
-        ctx->battleMons[battlerId].ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
-        ctx->battleMons[battlerId].status = GetMonData(mon, MON_DATA_STATUS, NULL);
-        ctx->battleMons[battlerId].item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        ctx->battleMons[battlerId].ability = Pokemon_GetData(mon, MON_DATA_ABILITY, NULL);
+        ctx->battleMons[battlerId].status = Pokemon_GetData(mon, MON_DATA_STATUS, NULL);
+        ctx->battleMons[battlerId].item = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     }
 
     if ((BattleSystem_GetBattleType(bsys) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) && !BattleSystem_GetFieldSide(bsys, battlerId)) {
         ctx->battleMons[battlerId].form = 0;
     } else {
-        ctx->battleMons[battlerId].form = GetMonData(mon, MON_DATA_FORM, NULL);
+        ctx->battleMons[battlerId].form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     }
 
-    ctx->battleMons[battlerId].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-    ctx->battleMons[battlerId].friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+    ctx->battleMons[battlerId].level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    ctx->battleMons[battlerId].friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
 
-    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_HP, NULL);
-    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    ctx->battleMons[battlerId].hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
+    ctx->battleMons[battlerId].maxHp = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
 
-    ctx->battleMons[battlerId].exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
-    ctx->battleMons[battlerId].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    ctx->battleMons[battlerId].otid = GetMonData(mon, MON_DATA_OTID, NULL);
-    ctx->battleMons[battlerId].metGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
+    ctx->battleMons[battlerId].exp = Pokemon_GetData(mon, MON_DATA_EXP, NULL);
+    ctx->battleMons[battlerId].personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
+    ctx->battleMons[battlerId].otid = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
+    ctx->battleMons[battlerId].metGender = Pokemon_GetData(mon, MON_DATA_MET_GENDER, NULL);
 
     ctx->battleMons[battlerId].ball = BattleSystem_GetMonBall(bsys, mon);
 
@@ -131,8 +131,8 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     PokedexData_UnloadAll(dexData);
     PokedexData_Delete(dexData);
 
-    GetMonData(mon, MON_DATA_NICKNAME_FLAT, ctx->battleMons[battlerId].nickname);
-    GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
+    Pokemon_GetData(mon, MON_DATA_NICKNAME_FLAT, ctx->battleMons[battlerId].nickname);
+    Pokemon_GetData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
 
     ctx->battleMons[battlerId].unk78 = 0;
     ctx->battleMons[battlerId].msgFlag = 0;
@@ -151,25 +151,25 @@ void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int batt
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, monIndex);
     int i;
 
-    ctx->battleMons[battlerId].atk = GetMonData(mon, MON_DATA_ATK, NULL);
-    ctx->battleMons[battlerId].def = GetMonData(mon, MON_DATA_DEF, NULL);
-    ctx->battleMons[battlerId].speed = GetMonData(mon, MON_DATA_SPEED, NULL);
-    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SPATK, NULL);
-    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SPDEF, NULL);
-    ctx->battleMons[battlerId].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-    ctx->battleMons[battlerId].friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_HP, NULL);
-    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    ctx->battleMons[battlerId].atk = Pokemon_GetData(mon, MON_DATA_ATK, NULL);
+    ctx->battleMons[battlerId].def = Pokemon_GetData(mon, MON_DATA_DEF, NULL);
+    ctx->battleMons[battlerId].speed = Pokemon_GetData(mon, MON_DATA_SPEED, NULL);
+    ctx->battleMons[battlerId].spAtk = Pokemon_GetData(mon, MON_DATA_SP_ATK, NULL);
+    ctx->battleMons[battlerId].spDef = Pokemon_GetData(mon, MON_DATA_SP_DEF, NULL);
+    ctx->battleMons[battlerId].level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    ctx->battleMons[battlerId].friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
+    ctx->battleMons[battlerId].hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
+    ctx->battleMons[battlerId].maxHp = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
 
     if (!(ctx->battleMons[battlerId].status2 & STATUS2_TRANSFORM)) {
         for (i = 0; i < 4; i++) {
             if (!(ctx->battleMons[battlerId].unk88.mimicedMoveIndex & MaskOfFlagNo(i))) {
-                ctx->battleMons[battlerId].moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-                ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1PP + i, NULL);
-                ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+                ctx->battleMons[battlerId].moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
+                ctx->battleMons[battlerId].movePPCur[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
+                ctx->battleMons[battlerId].movePP[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL);
             }
         }
-        ctx->battleMons[battlerId].exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+        ctx->battleMons[battlerId].exp = Pokemon_GetData(mon, MON_DATA_EXP, NULL);
     }
 }
 
@@ -347,7 +347,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_MAX_PP_3:
     case BMON_DATA_MAX_PP_4: {
         int index = id - BMON_DATA_MAX_PP_1; // see above
-        return GetMoveMaxPP(mon->moves[index], mon->movePP[index]);
+        return MoveTable_CalcMaxPP(mon->moves[index], mon->movePP[index]);
     }
     case BMON_DATA_LEVEL:
         return mon->level;
@@ -829,7 +829,7 @@ void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
     case BMON_DATA_CUR_PP_3:
     case BMON_DATA_CUR_PP_4: {
         int index = varId - BMON_DATA_CUR_PP_1;
-        int maxPP = GetMoveMaxPP(mon->moves[index], mon->movePP[index]);
+        int maxPP = MoveTable_CalcMaxPP(mon->moves[index], mon->movePP[index]);
         if (mon->movePPCur[index] + data > maxPP) {
             mon->movePPCur[index] = maxPP;
         } else {
@@ -1640,7 +1640,7 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (i = 0; i < Party_GetCount(party); i++) {
                     mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                    if (Pokemon_GetData(mon, MON_DATA_HP, NULL)) {
                         aliveMons++;
                     }
                 }
@@ -1664,7 +1664,7 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (i = 0; i < Party_GetCount(party); i++) {
                     mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                    if (Pokemon_GetData(mon, MON_DATA_HP, NULL)) {
                         aliveMons++;
                     }
                 }
@@ -2696,9 +2696,9 @@ BOOL CanSwitchMon(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
 
     for (i = start; i < partySize; i++) {
         mon = Party_GetMonByIndex(party, i);
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
-            && !GetMonData(mon, MON_DATA_IS_EGG, NULL)
-            && GetMonData(mon, MON_DATA_HP, NULL) != 0
+        if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
+            && !Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)
+            && Pokemon_GetData(mon, MON_DATA_HP, NULL) != 0
             && monIndex1 != i
             && monIndex2 != i) {
             cnt++;
@@ -4708,7 +4708,7 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
         int maxIndex;
         for (index = 0; index < MAX_MON_MOVES; index++) {
             if (ctx->battleMons[ctx->battlerIdAttacker].moves[index]) {
-                ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdAttacker].moves[index], ctx->battleMons[ctx->battlerIdAttacker].movePP[index]) - ctx->battleMons[ctx->battlerIdAttacker].movePPCur[index];
+                ppCalc = MoveTable_CalcMaxPP(ctx->battleMons[ctx->battlerIdAttacker].moves[index], ctx->battleMons[ctx->battlerIdAttacker].movePP[index]) - ctx->battleMons[ctx->battlerIdAttacker].movePPCur[index];
                 if (ppCalc > max) {
                     max = ppCalc;
                     maxIndex = index;
@@ -4951,7 +4951,7 @@ BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
         int maxIndex;
         for (index = 0; index < MAX_MON_MOVES; index++) {
             if (ctx->battleMons[ctx->battlerIdTarget].moves[index]) {
-                ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdTarget].moves[index], ctx->battleMons[ctx->battlerIdTarget].movePP[index]) - ctx->battleMons[ctx->battlerIdTarget].movePPCur[index];
+                ppCalc = MoveTable_CalcMaxPP(ctx->battleMons[ctx->battlerIdTarget].moves[index], ctx->battleMons[ctx->battlerIdTarget].movePP[index]) - ctx->battleMons[ctx->battlerIdTarget].movePPCur[index];
                 if (ppCalc > max) {
                     max = ppCalc;
                     maxIndex = index;
@@ -5267,9 +5267,9 @@ BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon) {
     const u16 *name = PlayerProfile_GetNamePtr(profile);
     u16 otName[8];
 
-    GetMonData(mon, MON_DATA_OT_NAME, otName);
+    Pokemon_GetData(mon, MON_DATA_OT_NAME, otName);
 
-    if (trainerId == GetMonData(mon, MON_DATA_OTID, NULL) && gender == GetMonData(mon, MON_DATA_MET_GENDER, NULL) && !StringNotEqualN(name, otName, PLAYER_NAME_LENGTH)) {
+    if (trainerId == Pokemon_GetData(mon, MON_DATA_OT_ID, NULL) && gender == Pokemon_GetData(mon, MON_DATA_MET_GENDER, NULL) && !StringNotEqualN(name, otName, PLAYER_NAME_LENGTH)) {
         return TRUE;
     }
 
@@ -5354,7 +5354,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
             }
         }
         if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_ARCEUS && ctx->battleMons[ctx->battlerIdTemp].hp && GetBattlerAbility(ctx, ctx->battlerIdTemp) == ABILITY_MULTITYPE) {
-            form = GetArceusTypeByHeldItemEffect(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE));
+            form = HoldEffect_GetArceusType(GetItemAttr(ctx->battleMons[ctx->battlerIdTemp].item, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE));
             if (ctx->battleMons[ctx->battlerIdTemp].form != form) {
                 ctx->battleMons[ctx->battlerIdTemp].form = form;
                 *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
@@ -5369,25 +5369,25 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     int battlerIdTarget;
                     int dat;
 
-                    mon2 = AllocMonZeroed(HEAP_ID_BATTLE);
+                    mon2 = Pokemon_New(HEAP_ID_BATTLE);
 
                     if (BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_DOUBLES) {
                         battlerIdTarget = ctx->playerActions[ctx->battlerIdTemp].unk4;
                     } else {
                         battlerIdTarget = ctx->battlerIdTemp ^ 1;
                     }
-                    CopyPokemonToPokemon(BattleSystem_GetPartyMon(bsys, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
+                    Pokemon_Copy(BattleSystem_GetPartyMon(bsys, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
                     dat = 0;
-                    SetMonData(mon2, MON_DATA_HELD_ITEM, &dat);
+                    Pokemon_SetData(mon2, MON_DATA_HELD_ITEM, &dat);
                     dat = (u8)GIRATINA_ALTERED;
-                    SetMonData(mon2, MON_DATA_FORM, &dat);
+                    Pokemon_SetData(mon2, MON_DATA_FORM, &dat);
                     Mon_UpdateGiratinaForm(mon2);
-                    ctx->battleMons[ctx->battlerIdTemp].atk = GetMonData(mon2, MON_DATA_ATK, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].def = GetMonData(mon2, MON_DATA_DEF, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].speed = GetMonData(mon2, MON_DATA_SPEED, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].spAtk = GetMonData(mon2, MON_DATA_SPATK, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].spDef = GetMonData(mon2, MON_DATA_SPDEF, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].ability = GetMonData(mon2, MON_DATA_ABILITY, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].atk = Pokemon_GetData(mon2, MON_DATA_ATK, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].def = Pokemon_GetData(mon2, MON_DATA_DEF, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].speed = Pokemon_GetData(mon2, MON_DATA_SPEED, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].spAtk = Pokemon_GetData(mon2, MON_DATA_SP_ATK, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].spDef = Pokemon_GetData(mon2, MON_DATA_SP_DEF, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].ability = Pokemon_GetData(mon2, MON_DATA_ABILITY, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
                     ctx->battleStatus2 |= BATTLE_STATUS2_FORM_CHANGE;
                     BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, ctx->battlerIdTemp);

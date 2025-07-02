@@ -211,10 +211,10 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
     }
     for (i = 0, numEligibleMons = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-        form = GetMonData(mon, MON_DATA_FORM, NULL);
-        if (GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
+        species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+        form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+        if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) == FALSE
             && level >= 30
             && IsPokemonBannedFromBattleFrontier(species, form) != TRUE) {
             numEligibleMons++;

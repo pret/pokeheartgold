@@ -275,7 +275,7 @@ void ReadMsgDataIntoU16Array(MsgData *msgData, u32 msg_no, u16 *dest) {
     }
 }
 
-void GetSpeciesNameIntoArray(u16 species, HeapID heapId, u16 *dest) {
+void MessageLoader_GetSpeciesName(u16 species, HeapID heapId, u16 *dest) {
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapId);
     ReadMsgDataIntoU16Array(msgData, species, dest);
     DestroyMsgData(msgData);

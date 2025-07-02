@@ -137,7 +137,7 @@
 .public sub_02037BEC
 .public sub_0203A880
 .public sub_0203A914
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_POKEMON_H
 
 // Value and data limits
-#define MAX_LEVEL         100
+#define MAX_MON_LEVEL     100
 #define MAX_MON_MOVES     4
 #define MAX_EV            100
 #define MAX_EV_SUM        510
@@ -165,12 +165,12 @@
 #define MON_DATA_CHECKSUM                   4
 #define MON_DATA_SPECIES                    5
 #define MON_DATA_HELD_ITEM                  6
-#define MON_DATA_OTID                       7
-#define MON_DATA_EXPERIENCE                 8
+#define MON_DATA_OT_ID                      7
+#define MON_DATA_EXP                        8
 #define MON_DATA_FRIENDSHIP                 9
 #define MON_DATA_ABILITY                    10
-#define MON_DATA_MARKINGS                   11
-#define MON_DATA_GAME_LANGUAGE              12
+#define MON_DATA_MARKS                      11
+#define MON_DATA_LANGUAGE                   12
 #define MON_DATA_HP_EV                      13
 #define MON_DATA_ATK_EV                     14
 #define MON_DATA_DEF_EV                     15
@@ -211,23 +211,23 @@
 #define MON_DATA_CARNIVAL_RIBBON            50
 #define MON_DATA_CLASSIC_RIBBON             51
 #define MON_DATA_PREMIER_RIBBON             52
-#define MON_DATA_SINNOH_RIBBON_53           53
+#define MON_DATA_RIBBON_DUMMY               53
 #define MON_DATA_MOVE1                      54
 #define MON_DATA_MOVE2                      55
 #define MON_DATA_MOVE3                      56
 #define MON_DATA_MOVE4                      57
-#define MON_DATA_MOVE1PP                    58
-#define MON_DATA_MOVE2PP                    59
-#define MON_DATA_MOVE3PP                    60
-#define MON_DATA_MOVE4PP                    61
-#define MON_DATA_MOVE1PPUP                  62
-#define MON_DATA_MOVE2PPUP                  63
-#define MON_DATA_MOVE3PPUP                  64
-#define MON_DATA_MOVE4PPUP                  65
-#define MON_DATA_MOVE1MAXPP                 66
-#define MON_DATA_MOVE2MAXPP                 67
-#define MON_DATA_MOVE3MAXPP                 68
-#define MON_DATA_MOVE4MAXPP                 69
+#define MON_DATA_MOVE1_CUR_PP               58
+#define MON_DATA_MOVE2_CUR_PP               59
+#define MON_DATA_MOVE3_CUR_PP               60
+#define MON_DATA_MOVE4_CUR_PP               61
+#define MON_DATA_MOVE1_PP_UPS                  62
+#define MON_DATA_MOVE2_PP_UPS                  63
+#define MON_DATA_MOVE3_PP_UPS                  64
+#define MON_DATA_MOVE4_PP_UPS                  65
+#define MON_DATA_MOVE1_MAX_PP                 66
+#define MON_DATA_MOVE2_MAX_PP                 67
+#define MON_DATA_MOVE3_MAX_PP                 68
+#define MON_DATA_MOVE4_MAX_PP                 69
 #define MON_DATA_HP_IV                      70
 #define MON_DATA_ATK_IV                     71
 #define MON_DATA_DEF_IV                     72
@@ -279,8 +279,8 @@
 #define MON_DATA_NICKNAME_FLAT_COMPARE      118
 #define MON_DATA_NICKNAME_STRING            119
 #define MON_DATA_NICKNAME_STRING_COMPARE    120
-#define MON_DATA_UNK_121                    121
-#define MON_DATA_GAME_VERSION               122
+#define MON_DATA_MET_GAME_REGION_CODE                    121
+#define MON_DATA_MET_GAME               122
 #define MON_DATA_COOL_RIBBON                123
 #define MON_DATA_COOL_RIBBON_GREAT          124
 #define MON_DATA_COOL_RIBBON_ULTRA          125
@@ -301,7 +301,7 @@
 #define MON_DATA_TOUGH_RIBBON_GREAT         140
 #define MON_DATA_TOUGH_RIBBON_ULTRA         141
 #define MON_DATA_TOUGH_RIBBON_MASTER        142
-#define MON_DATA_SINNOH_RIBBON_143          143
+#define MON_DATA_CONTEST_RIBBON_DUMMY          143
 #define MON_DATA_OT_NAME                    144
 #define MON_DATA_OT_NAME_2                  145
 #define MON_DATA_EGG_MET_YEAR               146
@@ -320,16 +320,16 @@
 #define MON_DATA_RESERVED_159               159
 #define MON_DATA_STATUS                     160
 #define MON_DATA_LEVEL                      161
-#define MON_DATA_CAPSULE                    162
+#define MON_DATA_BALL_CAPSULE_ID            162
 #define MON_DATA_HP                         163
-#define MON_DATA_MAXHP                      164
+#define MON_DATA_MAX_HP                     164
 #define MON_DATA_ATK                        165
 #define MON_DATA_DEF                        166
 #define MON_DATA_SPEED                      167
-#define MON_DATA_SPATK                      168
-#define MON_DATA_SPDEF                      169
-#define MON_DATA_MAIL_STRUCT                170
-#define MON_DATA_SEAL_COORDS                171
+#define MON_DATA_SP_ATK                     168
+#define MON_DATA_SP_DEF                     169
+#define MON_DATA_MAIL                       170
+#define MON_DATA_BALL_CAPSULE                171
 #define MON_DATA_SPECIES_EXISTS             172
 #define MON_DATA_SANITY_IS_EGG              173
 #define MON_DATA_SPECIES_OR_EGG             174 // If the Pokémon is in an Egg, return SPECIES_EGG.
@@ -563,9 +563,9 @@ typedef enum {
 
 typedef enum EvoMethod {
     EVO_NONE = 0,
-    EVO_FRIENDSHIP,
-    EVO_FRIENDSHIP_DAY,
-    EVO_FRIENDSHIP_NIGHT,
+    EVO_LEVEL_FRIENDSHIP,
+    EVO_LEVEL_FRIENDSHIP_DAY,
+    EVO_LEVEL_FRIENDSHIP_NIGHT,
     EVO_LEVEL,
     EVO_TRADE,
     EVO_TRADE_ITEM,

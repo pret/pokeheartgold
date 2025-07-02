@@ -195,7 +195,7 @@
 .public sub_020669B4
 .public CheckFlag09A
 .public sub_02066D80
-.public GetMonData
+.public Pokemon_GetData
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

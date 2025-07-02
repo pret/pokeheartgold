@@ -116,13 +116,13 @@ static void LoadMonPalParkStats(u16 species, u8 *dest) {
 
 static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
     struct MigratedPokemonSav *migrated = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_4);
+    Pokemon *mon = Pokemon_New(HEAP_ID_4);
     u8 narc_data[6];
     u16 species;
     for (int i = 0; i < PARTY_SIZE; ++i) {
         palpark->caught_order[i] = 0;
         GetMigratedPokemonByIndex(migrated, i, mon);
-        palpark->mons[i].species = species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        palpark->mons[i].species = species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         LoadMonPalParkStats(species, narc_data);
         if (narc_data[0] != 0) {
             palpark->mons[i].area = narc_data[PPMONDAT_OFFSET_LAND_SECTOR];
@@ -131,8 +131,8 @@ static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *p
         }
         palpark->mons[i].encounterRate = narc_data[PPMONDAT_OFFSET_ENCOUTER_RATE];
         palpark->mons[i].score = narc_data[PPMONDAT_OFFSET_SCORE];
-        palpark->mons[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
-        palpark->mons[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
+        palpark->mons[i].type1 = Pokemon_GetData(mon, MON_DATA_TYPE_1, NULL);
+        palpark->mons[i].type2 = Pokemon_GetData(mon, MON_DATA_TYPE_2, NULL);
     }
     FreeToHeap(mon);
 }
@@ -236,7 +236,7 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
 }
 
 static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *mon = Pokemon_New(HEAP_ID_32);
     struct MigratedPokemonSav *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
     BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);

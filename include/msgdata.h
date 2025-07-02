@@ -36,7 +36,7 @@ MsgData *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc, s32 fileId, HeapI
 void DestroyMsgData(MsgData *msgData);
 String *NewString_ReadMsgData(MsgData *msgData, s32 strno);
 void ReadMsgDataIntoString(MsgData *msgData, s32 strno, String *dest);
-void GetSpeciesNameIntoArray(u16 species, HeapID heapId, u16 *dest);
+void MessageLoader_GetSpeciesName(u16 species, HeapID heapId, u16 *dest);
 String *GetSpeciesName(u16 species, HeapID heapId);
 void ReadMsgData_NewNarc_ExistingString(NarcId narcId, s32 fileId, u32 msgId, HeapID heapId, String *dest);
 String *ReadMsgData_ExpandPlaceholders(MessageFormat *messageFormat, MsgData *msgData, u32 msgno, HeapID heapId);

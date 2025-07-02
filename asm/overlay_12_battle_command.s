@@ -28,7 +28,7 @@ BattleScript_CalcEffortValues: ; 0x022463E8
 	mov r1, #6
 	add r2, r4, #0
 	str r0, [sp, #0x14]
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r6, #0
@@ -51,7 +51,7 @@ _02246436:
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
 	add r0, r1, #0
@@ -219,7 +219,7 @@ _02246568:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x10]
 	add r0, r0, #1
 	str r0, [sp, #0x10]
@@ -680,7 +680,7 @@ _02246950:
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_CheckMonCaught
@@ -1146,7 +1146,7 @@ _02246D4E:
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetOptions
@@ -1177,7 +1177,7 @@ _02246DB0:
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #8]
 	ldr r0, [r4]
 	bl BattleSystem_GetPcStorage
@@ -1185,7 +1185,7 @@ _02246DB0:
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #0x10]
 	ldr r0, _0224706C ; =gOverlayTemplate_NamingScreen
 	add r1, r5, #0
@@ -1244,7 +1244,7 @@ _02246E2A:
 	bne _02246E5C
 	ldr r2, [r5, #0x18]
 	mov r1, #0x78
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r4]
 	mov r1, #0x32
 	bl BattleSystem_GameStatIncrement
@@ -1315,7 +1315,7 @@ _02246EEC:
 	bl ov12_0223C134
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #0x28]
 	cmp r0, #0x16
 	bne _02246F0C
@@ -1380,13 +1380,13 @@ _02246F7E:
 	add r0, r6, #0
 	add r1, #0x42
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	str r0, [sp, #0x2c]
 	add r0, r6, #0
 	add r1, #0x3a
 	add r2, sp, #0x2c
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, r5, #1
 	cmp r5, #4
 	blt _02246F7E
@@ -1401,7 +1401,7 @@ _02246F7E:
 	bl BattleSystem_SetPokedexCaught
 _02246FB4:
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]
@@ -2248,7 +2248,7 @@ _02247622:
 	bl BattleSystem_GetPartyMon
 	mov r1, #9
 	add r2, sp, #8
-	bl SetMonData
+	bl Pokemon_SetData
 _02247646:
 	add r0, r5, #0
 	add sp, #0xc
@@ -3930,7 +3930,7 @@ ov12_02248228: ; 0x02248228
 	ldr r0, [sp, #0x18]
 	mov r1, #0xb0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02248390
 	mov r0, #2
@@ -3939,7 +3939,7 @@ _02248390:
 	ldr r0, [sp, #0x18]
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 _0224839A:
 	cmp r0, #0
 	bne _022483AC
@@ -3964,7 +3964,7 @@ _022483BC:
 	add r6, r0, #0
 _022483C6:
 	ldr r0, [sp, #0x18]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxPokemon
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
@@ -3972,7 +3972,7 @@ _022483C6:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4199,7 +4199,7 @@ _022485B4:
 	add r0, r7, #0
 	mov r1, #8
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #6
 	bl ApplyMonMoodModifier
@@ -4212,7 +4212,7 @@ _02248602:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4225,7 +4225,7 @@ _02248620:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4304,20 +4304,20 @@ ov12_0226C324: ; 0x0226C324
 
 .public ov12_0226C33C
 ov12_0226C33C: ; 0x0226C33C
-	.word MON_DATA_MAXHP
+	.word MON_DATA_MAX_HP
 	.word MON_DATA_ATK
 	.word MON_DATA_DEF
-	.word MON_DATA_SPATK
-	.word MON_DATA_SPDEF
+	.word MON_DATA_SP_ATK
+	.word MON_DATA_SP_DEF
 	.word MON_DATA_SPEED
 
 .public ov12_0226C354
 ov12_0226C354: ; 0x0226C354
-	.word MON_DATA_MAXHP
+	.word MON_DATA_MAX_HP
 	.word MON_DATA_ATK
 	.word MON_DATA_DEF
-	.word MON_DATA_SPATK
-	.word MON_DATA_SPDEF
+	.word MON_DATA_SP_ATK
+	.word MON_DATA_SP_DEF
 	.word MON_DATA_SPEED
 
 .public ov12_0226C36C
@@ -4331,11 +4331,11 @@ ov12_0226C36C: ; 0x0226C36C
 
 .public ov12_0226C384
 ov12_0226C384: ; 0x0226C384
-	.word MON_DATA_MAXHP
+	.word MON_DATA_MAX_HP
 	.word MON_DATA_ATK
 	.word MON_DATA_DEF
-	.word MON_DATA_SPATK
-	.word MON_DATA_SPDEF
+	.word MON_DATA_SP_ATK
+	.word MON_DATA_SP_DEF
 	.word MON_DATA_SPEED
 
 .public sLowKickDamageTable

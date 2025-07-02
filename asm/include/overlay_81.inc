@@ -178,11 +178,11 @@
 .public sub_02037BEC
 .public sub_0203A880
 .public sub_0203A914
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetMonGender
+.public Pokemon_GetGender
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxPokemon
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

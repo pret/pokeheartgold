@@ -15,13 +15,13 @@ void MoveRelearner_Delete(MoveRelearnerArgs *moveRelearner) {
 }
 
 u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u8 form = GetMonData(mon, MON_DATA_FORM, NULL);
-    u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+    u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u8 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    u8 level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
     u16 moves[MAX_MON_MOVES];
 
     for (u8 i = 0; i < MAX_MON_MOVES; i++) {
-        moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
     }
 
     u16 *tableFromFile = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);

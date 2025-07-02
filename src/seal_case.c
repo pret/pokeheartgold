@@ -10,25 +10,25 @@ void Save_SealCase_Init(SealCase *sealCase) {
     MI_CpuClear8(sealCase, Save_SealCase_sizeof());
 }
 
-void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {
-    MI_CpuCopy8(src, dest, sizeof(CAPSULE));
+void BallCapsule_Copy(const BallCapsule *src, BallCapsule *dest) {
+    MI_CpuCopy8(src, dest, sizeof(BallCapsule));
 }
 
 SealCase *Save_SealCase_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_SEAL_CASE);
 }
 
-CAPSULE *SealCase_GetCapsuleI(SealCase *sealCase, int i) {
+BallCapsule *SealCase_GetCapsuleI(SealCase *sealCase, int i) {
     GF_ASSERT(i < MAX_CAPSULES);
     return &sealCase->capsules[i];
 }
 
-void SealCase_SetCapsuleI(SealCase *sealCase, const CAPSULE *src, int i) {
+void SealCase_SetCapsuleI(SealCase *sealCase, const BallCapsule *src, int i) {
     GF_ASSERT(i < MAX_CAPSULES);
-    CopyCapsule(src, SealCase_GetCapsuleI(sealCase, i));
+    BallCapsule_Copy(src, SealCase_GetCapsuleI(sealCase, i));
 }
 
-SEAL *CapsuleGetSealI(CAPSULE *capsule, int i) {
+SEAL *CapsuleGetSealI(BallCapsule *capsule, int i) {
     GF_ASSERT(i < MAX_SEALS_ON_CAPSULE);
     return &capsule->seals[i];
 }
@@ -53,7 +53,7 @@ u8 SealCaseInventory_GetSealQuantity(const SEALBAG *inventory, int sealId) {
     return inventory->seals[sealId];
 }
 
-BOOL SealIsOnCapsule(const CAPSULE *capsule, int sealId) {
+BOOL SealIsOnCapsule(const BallCapsule *capsule, int sealId) {
     int i;
 
     for (i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {

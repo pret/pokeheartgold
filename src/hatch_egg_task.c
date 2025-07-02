@@ -52,9 +52,9 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 
         u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
         BOOL isEgg = FALSE;
-        SetMonData(pokemon, MON_DATA_IS_EGG, &isEgg);
+        Pokemon_SetData(pokemon, MON_DATA_IS_EGG, &isEgg);
         MonSetTrainerMemo(pokemon, profile, 6, mapsec, HEAP_ID_FIELD);
-        SetMonData(pokemon, MON_DATA_SPECIES_NAME, NULL);
+        Pokemon_SetData(pokemon, MON_DATA_SPECIES_NAME, NULL);
         sub_02093134(fieldSystem, pokemon);
         UpdatePokedexWithReceivedSpecies(FieldSystem_GetSaveData(fieldSystem), data->unkC.mon);
 
@@ -69,11 +69,11 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     case HATCHEGGTASKSTATE_OPEN_NAMING_SCREEN: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
-        u32 species = GetMonData(data->unkC.mon, MON_DATA_SPECIES, NULL);
+        u32 species = Pokemon_GetData(data->unkC.mon, MON_DATA_SPECIES, NULL);
         Options *options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
         data->namingScreenArgs = NamingScreen_CreateArgs(HEAP_ID_FIELD, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, options, NULL);
-        data->namingScreenArgs->monGender = GetMonData(data->unkC.mon, MON_DATA_GENDER, NULL);
-        data->namingScreenArgs->monForm = GetMonData(data->unkC.mon, MON_DATA_FORM, NULL);
+        data->namingScreenArgs->monGender = Pokemon_GetData(data->unkC.mon, MON_DATA_GENDER, NULL);
+        data->namingScreenArgs->monForm = Pokemon_GetData(data->unkC.mon, MON_DATA_FORM, NULL);
 
         CallApplicationAsTask(taskManager, &gOverlayTemplate_NamingScreen, data->namingScreenArgs);
         data->state++;
@@ -81,7 +81,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     }
     case HATCHEGGTASKSTATE_SET_MON_NAME:
         if (!data->namingScreenArgs->noInput) {
-            SetMonData(data->unkC.mon, MON_DATA_NICKNAME_STRING_COMPARE, data->namingScreenArgs->nameInputString);
+            Pokemon_SetData(data->unkC.mon, MON_DATA_NICKNAME_STRING_COMPARE, data->namingScreenArgs->nameInputString);
         }
         NamingScreen_DeleteArgs(data->namingScreenArgs);
         data->state++;

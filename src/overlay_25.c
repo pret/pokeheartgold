@@ -227,15 +227,15 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);
     setup->battleBg = BATTLE_BG_BUILDING_1;
     setup->terrain = TERRAIN_BUILDING;
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD);
     s32 partyCount = Party_GetCount(party);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
     for (i = 0; i < partyCount; i++) {
-        CopyPokemonToPokemon(Party_GetMonByIndex(party, i), mon);
-        if (GetMonData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
-            u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
-            SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
-            CalcMonLevelAndStats(mon);
+        Pokemon_Copy(Party_GetMonByIndex(party, i), mon);
+        if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
+            u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
+            Pokemon_SetData(mon, MON_DATA_EXP, &exp);
+            Pokemon_CalcLevelAndStats(mon);
         }
         BattleSetup_AddMonToParty(setup, mon, BATTLER_PLAYER);
     }
@@ -251,7 +251,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
 static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon *mon) {
     s32 i;
     u8 tempByte;
-    ZeroMonData(mon);
+    Pokemon_Init(mon);
     u32 level = trainerHouseMon->level > MAX_TRAINER_HOUSE_LEVEL
         ? MAX_TRAINER_HOUSE_LEVEL
         : trainerHouseMon->level;
@@ -261,30 +261,30 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     u32 pid = trainerHouseMon->pid;
     CreateMonWithFixedIVs(mon, species, tempByte, ivs, pid);
     tempByte = trainerHouseMon->form;
-    SetMonData(mon, MON_DATA_FORM, &tempByte);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &trainerHouseMon->item);
+    Pokemon_SetData(mon, MON_DATA_FORM, &tempByte);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &trainerHouseMon->item);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         u16 move = trainerHouseMon->moves[i];
-        SetMonData(mon, MON_DATA_MOVE1 + i, &move);
+        Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &move);
         tempByte = trainerHouseMon->ppUp >> (i * 2) & 3;
-        SetMonData(mon, MON_DATA_MOVE1PPUP + i, &tempByte);
-        u8 pp = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, NULL);
-        SetMonData(mon, MON_DATA_MOVE1PP + i, &pp);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + i, &tempByte);
+        u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + i, NULL);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_CUR_PP + i, &pp);
     }
     u32 otid = trainerHouseMon->otid;
-    SetMonData(mon, MON_DATA_OTID, &otid);
+    Pokemon_SetData(mon, MON_DATA_OT_ID, &otid);
     for (i = 0; i < NUM_STATS; i++) {
         tempByte = *(&trainerHouseMon->hpEv + i);
-        SetMonData(mon, MON_DATA_HP_EV + i, &tempByte);
+        Pokemon_SetData(mon, MON_DATA_HP_EV + i, &tempByte);
     }
-    SetMonData(mon, MON_DATA_ABILITY, &(trainerHouseMon->ability));
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &(trainerHouseMon->friendship));
+    Pokemon_SetData(mon, MON_DATA_ABILITY, &(trainerHouseMon->ability));
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &(trainerHouseMon->friendship));
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     StringFillEOS(nickname, NELEMS(nickname));
     CopyU16StringArrayN(nickname, trainerHouseMon->nickname, POKEMON_NAME_LENGTH);
-    SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
-    SetMonData(mon, MON_DATA_GAME_LANGUAGE, &(trainerHouseMon->language));
-    CalcMonLevelAndStats(mon);
+    Pokemon_SetData(mon, MON_DATA_NICKNAME_FLAT, nickname);
+    Pokemon_SetData(mon, MON_DATA_LANGUAGE, &(trainerHouseMon->language));
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 static void TrainerHouse_InitTrainer(TrainerHouseSet *set, Trainer *trainer) {
@@ -302,7 +302,7 @@ static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *se
     s32 i;
     TrainerHouse_InitTrainer(set, &setup->trainer[battlerId]);
     setup->trainerId[battlerId] = set->trainer.id;
-    Pokemon *tempMon = AllocMonZeroed(HEAP_ID_FIELD);
+    Pokemon *tempMon = Pokemon_New(HEAP_ID_FIELD);
     Party_InitWithMaxSize(setup->party[battlerId], PARTY_SIZE);
     TrainerHouseMon *trainerHouseMon = set->party;
     for (i = 0; i < PARTY_SIZE; trainerHouseMon++, i++) {
