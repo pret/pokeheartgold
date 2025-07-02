@@ -175,7 +175,7 @@
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
 .public Options_GetFrame
-.public CopyCapsule
+.public BallCapsule_Copy
 .public SealCase_GetCapsuleI
 .public SealCase_SetCapsuleI
 .public CapsuleGetSealI

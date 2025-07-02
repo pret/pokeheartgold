@@ -46,8 +46,29 @@ void Pokemon_CreateWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIVs, 
 void Pokemon_CreateWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter);
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature);
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality);
+
+/**
+ * @brief Calculates and stores the current level and stats for a given Pokemon based on its IVs, EVs etc.
+ *
+ * @param mon
+ */
 void Pokemon_CalcLevelAndStats(Pokemon *mon);
+
+/**
+ * @brief Calculates and stores the current stats for a given Pokemon based on its IVs, EVs etc.
+ *
+ * @param mon
+ */
 void Pokemon_CalcStats(Pokemon *mon);
+
+/**
+ * @brief Gets a value from a Pokemon, storing it in dest if neccessary
+ *
+ * @param mon
+ * @param param
+ * @param[out] dest Pointer for storing longer data
+ * @return The requested value
+ */
 u32 Pokemon_GetData(Pokemon *mon, int attr, void *ptr);
 u32 BoxPokemon_GetData(BoxPokemon *boxMon, int attr, void *ptr);
 void Pokemon_SetData(Pokemon *mon, int attr, const void *ptr);
@@ -67,7 +88,21 @@ u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon);
 u32 GetMonExpBySpeciesAndLevel(int species, int level);
 void LoadGrowthTable(int growthRate, u32 *table);
 u32 GetExpByGrowthRateAndLevel(int rate, int level);
+
+/**
+ * @copybrief Pokemon_GetLevel()
+ *
+ * @param mon
+ * @return The pokemons level
+ */
 u32 Pokemon_GetLevel(Pokemon *mon);
+
+/**
+ * @copybrief GetMonSpeciesLevel()
+ *
+ * @param boxMon
+ * @return The pokemons level
+ */
 u32 BoxPokemon_GetLevel(BoxPokemon *boxMon);
 int CalcLevelBySpeciesAndExp(u16 species, u32 experience);
 int CalcLevelBySpeciesAndExp_PreloadedPersonal(BASE_STATS *personal, u16 species, u32 experience);
@@ -75,9 +110,38 @@ u8 GetBoxMonNature(BoxPokemon *boxMon);
 u8 GetMonNature(Pokemon *mon);
 u8 Pokemon_GetNatureOf(u32 pid);
 void Pokemon_UpdateFriendship(Pokemon *mon, u8 kind, u16 location);
+
+/**
+ * @brief Gets the gender of a Pokemon based on its species and personality value
+ *
+ * @param boxMon
+ * @return The pokemons gender
+ */
 u8 Pokemon_GetGender(Pokemon *mon);
+
+/**
+ * @brief Gets the gender of a BoxPokemon based on its species and personality value
+ *
+ * @param boxMon
+ * @return The pokemons gender
+ */
 u8 BoxPokemon_GetGender(BoxPokemon *boxMon);
+
+/**
+ * @brief Gets the gender of a pokemon based on its species and personality value
+ *
+ * @param species
+ * @param personality
+ * @return The pokemons gender
+ */
 u8 Species_GetGender(u16 species, u32 personality);
+
+/**
+ * @brief Gets whether a BoxPokemon is shiny based on its Original Trainer ID and its personality value
+ *
+ * @param mon
+ * @return Whether the pokemon is shiny or not
+ */
 u8 Pokemon_IsShiny(Pokemon *mon);
 u8 BoxPokemon_IsShiny(BoxPokemon *boxMon);
 u8 CalcShininessByOtIdAndPersonality(u32 otid, u32 pid);
@@ -120,13 +184,13 @@ BOOL BoxMon_HasPokerus(BoxPokemon *boxMon);
 BOOL Pokemon_IsImmuneToPokerus(Pokemon *mon);
 BOOL BoxMon_IsImmuneToPokerus(BoxPokemon *boxMon);
 void Pokemon_UpdateArceusForm(Pokemon *mon);
-void BoxMon_UpdateArceusForm(BoxPokemon *boxMon);
+void BoxPokemon_UpdateArceusForm(BoxPokemon *boxMon);
 s32 Mon_UpdateGiratinaForm(Pokemon *mon);
 s32 BoxMon_UpdateGiratinaForm(BoxPokemon *boxMon);
 void Pokemon_SetShayminForm(Pokemon *mon, int form);
 void BoxPokemon_SetShayminForm(BoxPokemon *boxMon, int form);
 void UpdateMonAbility(Pokemon *mon);
-void UpdateBoxMonAbility(BoxPokemon *boxMon);
+void BoxPokemon_UpdateAbility(BoxPokemon *boxMon);
 int LowestFlagNo(u32 mask);
 BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 form);
 u16 GetBannedBattleFrontierPokemon(u32 idx);
@@ -138,13 +202,13 @@ int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int 
 u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
 BOOL BoxMonIsHoldingMail(BoxPokemon *boxMon);
-void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing);
-void sub_02070130(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing);
-void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14);
-void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality);
+void GetPokemonSpriteCharAndPlttNarcIds(PokePicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing);
+void sub_02070130(PokePicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing);
+void GetBoxmonSpriteCharAndPlttNarcIds(PokePicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14);
+void GetMonSpriteCharAndPlttNarcIdsEx(PokePicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality);
 u8 sub_02070438(u16 species, u8 form);
-void sub_02070560(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny);
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality);
+void sub_02070560(PokePicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny);
+void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokePicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality);
 u8 sub_0207083C(BoxPokemon *boxMon, u8 whichFacing);
 u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing);
 u8 BoxPokemon_SpriteYOffset(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
@@ -165,8 +229,8 @@ BOOL Pokemon_HasMove(Pokemon *mon, u16 move);
 u16 Species_JohtoDexNumber(u16 species);
 void Mon_ForceSetGiratinaOriginForm(Pokemon *mon);
 void Party_UpdateAllGiratina_DistortionWorld(Party *party, BOOL force_origin);
-BOOL Mon_CanUseGracidea(Pokemon *mon);
-void Party_ResetAllShayminToLandForm(Party *party);
+BOOL Pokemon_CanUseGracidea(Pokemon *mon);
+void Party_SetShayminLandForm(Party *party);
 BOOL Party_TryResetShaymin(Party *party, int min_max, const RTCTime *time);
 BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot);
 void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24);

@@ -78,7 +78,7 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
     }
 
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_UP) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_MAX)) {
-        if (Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, NULL) < 3 && GetMoveMaxPP(Pokemon_GetData(mon, MON_DATA_MOVE1 + moveIdx, NULL), 0) >= 5) {
+        if (Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, NULL) < 3 && MoveTable_CalcMaxPP(Pokemon_GetData(mon, MON_DATA_MOVE1 + moveIdx, NULL), 0) >= 5) {
             FreeToHeap(itemData);
             return TRUE;
         }
@@ -485,7 +485,7 @@ BOOL MonMoveCanRestorePP(Pokemon *mon, int moveIdx) {
 
     u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1_CUR_PP + moveIdx, NULL);
     u8 ppUp = Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, NULL);
-    return (u8)(pp < GetMoveMaxPP(moveID, ppUp));
+    return (u8)(pp < MoveTable_CalcMaxPP(moveID, ppUp));
 }
 
 BOOL MonMoveRestorePP(Pokemon *mon, int moveIdx, int ppRestore) {
@@ -497,7 +497,7 @@ BOOL MonMoveRestorePP(Pokemon *mon, int moveIdx, int ppRestore) {
     int ppAttr = MON_DATA_MOVE1_CUR_PP + moveIdx;
     u8 pp = Pokemon_GetData(mon, ppAttr, NULL);
     int ppUpAttr = MON_DATA_MOVE1_PP_UPS + moveIdx;
-    u8 maxPp = GetMoveMaxPP(move_id, Pokemon_GetData(mon, ppUpAttr, NULL));
+    u8 maxPp = MoveTable_CalcMaxPP(move_id, Pokemon_GetData(mon, ppUpAttr, NULL));
     if (pp < maxPp) {
         if (ppRestore == PP_RESTORE_ALL) {
             pp = maxPp;
@@ -524,20 +524,20 @@ BOOL BoostMonMovePpUpBy(Pokemon *mon, int moveIdx, int nPpUp) {
     }
 
     move = Pokemon_GetData(mon, MON_DATA_MOVE1 + moveIdx, NULL);
-    if (GetMoveMaxPP(move, 0) < 5) {
+    if (MoveTable_CalcMaxPP(move, 0) < 5) {
         return FALSE;
     }
 
     int ppAttr = MON_DATA_MOVE1_CUR_PP + moveIdx;
     pp = Pokemon_GetData(mon, ppAttr, NULL);
-    u8 maxPp = GetMoveMaxPP(move, ppUp);
+    u8 maxPp = MoveTable_CalcMaxPP(move, ppUp);
     if ((u32)(ppUp + nPpUp) > 3) {
         ppUp = 3;
     } else {
         ppUp = ppUp + nPpUp;
     }
 
-    u8 newMaxPp = GetMoveMaxPP(move, ppUp);
+    u8 newMaxPp = MoveTable_CalcMaxPP(move, ppUp);
     pp = pp + newMaxPp - maxPp;
     Pokemon_SetData(mon, ppUpAttr, &ppUp);
     Pokemon_SetData(mon, ppAttr, &pp);

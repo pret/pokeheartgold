@@ -155,7 +155,7 @@ struct StarterChooseMonSpriteData {
     struct StarterChooseMonObjResPtrs objs[3];
     void *charDatas[3];
     void *plttDatas[3];
-    struct PokepicTemplate pokepicTemplate;
+    struct PokePicTemplate pokepicTemplate;
     SpriteList *spriteList;
     G2dRenderer g2dRender;
     struct Sprite *sprites[3];

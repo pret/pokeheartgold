@@ -107,7 +107,7 @@
 .public Pokemon_GetGender
 .public Pokemon_GetBoxPokemon
 .public GetMoveAttr
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public PCStorage_FindFirstBoxWithEmptySlot
 .public Pokemon_GetIconNaix
 .public GetMonIconNaixEx

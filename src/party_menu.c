@@ -2407,7 +2407,7 @@ static u8 PartyMenu_GiveOrUseItemOnMon_HandleInput(PartyMenu *partyMenu) {
 static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
     ItemData *itemData = LoadItemDataOrGfx(partyMenu->args->itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
 
-    if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
+    if (partyMenu->args->itemId == ITEM_GRACIDEA && Pokemon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
         partyMenu->args->species = SHAYMIN_SKY; // SPECIES_BULBASAUR
         FreeToHeap(itemData);
         PartyMenu_FormChangeScene_Begin(partyMenu);

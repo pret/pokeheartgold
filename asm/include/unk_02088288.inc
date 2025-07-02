@@ -114,7 +114,7 @@
 .public Pokemon_HasPokerus
 .public Pokemon_IsImmuneToPokerus
 .public sub_020729A4
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public Party_GetMonByIndex
 .public MoveIsHM
 .public CalculateHpBarPixelsLength

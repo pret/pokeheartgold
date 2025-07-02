@@ -7993,7 +7993,7 @@ _02241F44:
 	ldr r0, _02241FE8 ; =0x00000828
 	lsr r1, r1, #0x18
 	ldrh r0, [r2, r0]
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	ldr r1, _02241FEC ; =0x00000834
 	strb r0, [r7, r1]
 	add r0, r4, #1
@@ -15742,7 +15742,7 @@ _02245E74:
 	lsl r0, r0, #4
 	ldrh r0, [r2, r0]
 	lsr r1, r1, #0x18
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	ldr r1, _02245F20 ; =0x000005EC
 	strb r0, [r7, r1]
 	add r0, r4, #1

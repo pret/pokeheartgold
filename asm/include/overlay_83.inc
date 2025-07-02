@@ -196,7 +196,7 @@
 .public Pokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxPokemon
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

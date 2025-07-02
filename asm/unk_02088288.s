@@ -2916,7 +2916,7 @@ _02089A3C:
 	lsr r1, r0, #0x18
 	ldr r0, [sp]
 	ldrh r0, [r0, #0x34]
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	add r1, r4, r6
 	add r1, #0x40
 	strb r0, [r1]

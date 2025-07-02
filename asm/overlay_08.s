@@ -2727,7 +2727,7 @@ _0221D3A0:
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	ldrb r1, [r5, #3]
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	mov r1, #3

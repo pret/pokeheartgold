@@ -1047,7 +1047,7 @@ ov68_021E614C: ; 0x021E614C
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	mov r1, #0
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	str r0, [sp]
 	ldr r1, [r4]
 	add r2, sp, #0
@@ -1781,7 +1781,7 @@ _021E6720:
 	ldr r0, [r0, #4]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	add r6, r0, #0
 	mov r0, #1
 	str r0, [sp]

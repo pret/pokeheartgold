@@ -75,7 +75,7 @@ typedef struct {
 typedef struct {
     /* 0x00 */ u16 moves[MAX_MON_MOVES];
     /* 0x08 */ u8 movePP[MAX_MON_MOVES];
-    /* 0x0C */ u8 movePpUps[MAX_MON_MOVES];
+    /* 0x0C */ u8 movePPUps[MAX_MON_MOVES];
     /* 0x10 */ u32 hpIV : 5, atkIV : 5, defIV : 5, speedIV : 5, spAtkIV : 5, spDefIV : 5, isEgg : 1, hasNickname : 1;
     // TODO: Finish HoennRibbonSet
     /* 0x14 */ u32 ribbonFlags; // cool, ...
@@ -121,7 +121,7 @@ typedef struct BoxPokemon {
     /* 0x000 */ u32 personality;
     /* 0x004 */ u16 party_lock : 1;
     u16 box_lock : 1;
-    u16 checksum_fail : 1;
+    u16 invalidData : 1;
     u16 Unused : 13;          // Might be used for validity checks
     /* 0x006 */ u16 checksum; // Stored checksum of pokemon
     /* 0x008 */ PokemonDataBlock substructs[4];
@@ -168,7 +168,7 @@ typedef struct PartyPokemon {
     /* 0x098 */ u16 spAtk;
     /* 0x09A */ u16 spDef;
     /* 0x09C */ Mail mail;
-    /* 0x0D4 */ CAPSULE sealCoords; // seal coords
+    /* 0x0D4 */ BallCapsule ballCapsule; // seal coords
 } PARTYMON;
 
 typedef struct {
@@ -180,7 +180,7 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x00 */ u32 pid;
     /* 0x04 */ u16 party_lock : 1;
     u16 box_lock : 1;
-    u16 checksum_fail : 1;
+    u16 invalidData : 1;
     /* 0x06 */ u16 species;
     /* 0x08 */ u16 heldItem;
     /* 0x0C */ u32 otID;
@@ -195,7 +195,7 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x1B */ u8 spDefEV;
     /* 0x1C */ u16 moves[MAX_MON_MOVES];
     /* 0x24 */ u8 movePP[MAX_MON_MOVES];
-    /* 0x28 */ u8 movePpUps[MAX_MON_MOVES];
+    /* 0x28 */ u8 movePPUps[MAX_MON_MOVES];
     /* 0x2C */ u32 hpIV : 5;
     u32 atkIV : 5;
     u32 defIV : 5;
@@ -223,7 +223,7 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x6E */ u16 spdef;
 };
 
-typedef struct PokepicTemplate {
+typedef struct PokePicTemplate {
     u16 narcID;
     u16 charDataID;
     u16 palDataID;
@@ -231,7 +231,7 @@ typedef struct PokepicTemplate {
     u8 isAnimated;
     u8 filler_9[3];
     u32 personality;
-} PokepicTemplate;
+} PokePicTemplate;
 
 struct PokeanmSub {
     s8 unk0;

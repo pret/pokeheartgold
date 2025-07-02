@@ -9,7 +9,7 @@
 .public GetMonExpBySpeciesAndLevel
 .public GetMonPicHeightBySpeciesGenderForm
 .public MaskOfFlagNo
-.public GetMoveMaxPP
+.public MoveTable_CalcMaxPP
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public sub_02074F9C

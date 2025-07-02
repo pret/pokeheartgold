@@ -347,7 +347,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_MAX_PP_3:
     case BMON_DATA_MAX_PP_4: {
         int index = id - BMON_DATA_MAX_PP_1; // see above
-        return GetMoveMaxPP(mon->moves[index], mon->movePP[index]);
+        return MoveTable_CalcMaxPP(mon->moves[index], mon->movePP[index]);
     }
     case BMON_DATA_LEVEL:
         return mon->level;
@@ -829,7 +829,7 @@ void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
     case BMON_DATA_CUR_PP_3:
     case BMON_DATA_CUR_PP_4: {
         int index = varId - BMON_DATA_CUR_PP_1;
-        int maxPP = GetMoveMaxPP(mon->moves[index], mon->movePP[index]);
+        int maxPP = MoveTable_CalcMaxPP(mon->moves[index], mon->movePP[index]);
         if (mon->movePPCur[index] + data > maxPP) {
             mon->movePPCur[index] = maxPP;
         } else {
@@ -4708,7 +4708,7 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
         int maxIndex;
         for (index = 0; index < MAX_MON_MOVES; index++) {
             if (ctx->battleMons[ctx->battlerIdAttacker].moves[index]) {
-                ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdAttacker].moves[index], ctx->battleMons[ctx->battlerIdAttacker].movePP[index]) - ctx->battleMons[ctx->battlerIdAttacker].movePPCur[index];
+                ppCalc = MoveTable_CalcMaxPP(ctx->battleMons[ctx->battlerIdAttacker].moves[index], ctx->battleMons[ctx->battlerIdAttacker].movePP[index]) - ctx->battleMons[ctx->battlerIdAttacker].movePPCur[index];
                 if (ppCalc > max) {
                     max = ppCalc;
                     maxIndex = index;
@@ -4951,7 +4951,7 @@ BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
         int maxIndex;
         for (index = 0; index < MAX_MON_MOVES; index++) {
             if (ctx->battleMons[ctx->battlerIdTarget].moves[index]) {
-                ppCalc = GetMoveMaxPP(ctx->battleMons[ctx->battlerIdTarget].moves[index], ctx->battleMons[ctx->battlerIdTarget].movePP[index]) - ctx->battleMons[ctx->battlerIdTarget].movePPCur[index];
+                ppCalc = MoveTable_CalcMaxPP(ctx->battleMons[ctx->battlerIdTarget].moves[index], ctx->battleMons[ctx->battlerIdTarget].movePP[index]) - ctx->battleMons[ctx->battlerIdTarget].movePPCur[index];
                 if (ppCalc > max) {
                     max = ppCalc;
                     maxIndex = index;

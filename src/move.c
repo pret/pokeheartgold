@@ -16,7 +16,7 @@ u32 GetMoveAttr(u16 moveId, MoveAttr attrno) {
     return GetMoveTblAttr(&movedata, attrno);
 }
 
-u8 GetMoveMaxPP(u16 moveId, u8 ppUps) {
+u8 MoveTable_CalcMaxPP(u16 moveId, u8 ppUps) {
     u8 pp;
     if (ppUps > 3) {
         ppUps = 3;

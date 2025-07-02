@@ -3654,18 +3654,18 @@ _0223951E:
 	add r7, #8
 	ldr r0, [r7, r6]
 	add r1, sp, #0x10
-	bl CopyCapsule
+	bl BallCapsule_Copy
 	add r0, r5, #0
 	str r0, [sp, #4]
 	add r0, #8
 	str r0, [sp, #4]
 	ldr r0, [r0, r4]
 	ldr r1, [r7, r6]
-	bl CopyCapsule
+	bl BallCapsule_Copy
 	ldr r1, [sp, #4]
 	add r0, sp, #0x10
 	ldr r1, [r1, r4]
-	bl CopyCapsule
+	bl BallCapsule_Copy
 	add r0, r5, #0
 	bl ov57_022394AC
 	add sp, #0x28
@@ -7875,14 +7875,14 @@ ov57_0223B75C: ; 0x0223B75C
 	mov r0, #0xfb
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	ldr r3, _0223B770 ; =CopyCapsule
+	ldr r3, _0223B770 ; =BallCapsule_Copy
 	lsl r0, r0, #3
 	add r0, r1, r0
 	ldr r0, [r0, #8]
 	add r1, #0x68
 	bx r3
 	.balign 4, 0
-_0223B770: .word CopyCapsule
+_0223B770: .word BallCapsule_Copy
 	thumb_func_end ov57_0223B75C
 
 	thumb_func_start ov57_0223B774
@@ -7891,14 +7891,14 @@ ov57_0223B774: ; 0x0223B774
 	add r2, r0, #0
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	ldr r3, _0223B788 ; =CopyCapsule
+	ldr r3, _0223B788 ; =BallCapsule_Copy
 	lsl r1, r1, #3
 	add r1, r2, r1
 	add r0, #0x68
 	ldr r1, [r1, #8]
 	bx r3
 	.balign 4, 0
-_0223B788: .word CopyCapsule
+_0223B788: .word BallCapsule_Copy
 	thumb_func_end ov57_0223B774
 
 	thumb_func_start ov57_0223B78C

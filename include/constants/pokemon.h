@@ -329,7 +329,7 @@
 #define MON_DATA_SP_ATK                     168
 #define MON_DATA_SP_DEF                     169
 #define MON_DATA_MAIL                       170
-#define MON_DATA_SEAL_COORDS                171
+#define MON_DATA_BALL_CAPSULE                171
 #define MON_DATA_SPECIES_EXISTS             172
 #define MON_DATA_SANITY_IS_EGG              173
 #define MON_DATA_SPECIES_OR_EGG             174 // If the Pokémon is in an Egg, return SPECIES_EGG.
@@ -563,9 +563,9 @@ typedef enum {
 
 typedef enum EvoMethod {
     EVO_NONE = 0,
-    EVO_FRIENDSHIP,
-    EVO_FRIENDSHIP_DAY,
-    EVO_FRIENDSHIP_NIGHT,
+    EVO_LEVEL_FRIENDSHIP,
+    EVO_LEVEL_FRIENDSHIP_DAY,
+    EVO_LEVEL_FRIENDSHIP_NIGHT,
     EVO_LEVEL,
     EVO_TRADE,
     EVO_TRADE_ITEM,

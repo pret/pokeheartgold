@@ -2518,7 +2518,7 @@ _0208D8B8:
 	mov r1, #0
 	ldrh r0, [r0, #0x18]
 	str r0, [sp, #0x20]
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	str r0, [sp, #0x1c]
 	str r0, [sp, #0x18]
 _0208D8CA:

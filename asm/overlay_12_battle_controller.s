@@ -1938,7 +1938,7 @@ _02262F7A:
 	ldr r0, _02262FD4 ; =0x00002D4C
 	ldrb r1, [r4, r1]
 	ldrh r0, [r6, r0]
-	bl GetMoveMaxPP
+	bl MoveTable_CalcMaxPP
 	strb r0, [r5, #0x10]
 	ldr r0, [sp, #0x10]
 	add r6, r6, #2

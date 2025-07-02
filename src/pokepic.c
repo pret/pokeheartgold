@@ -474,7 +474,7 @@ BOOL Pokepic_IsAnimFinished(Pokepic *pokepic) {
     return !!pokepic->animActive;
 }
 
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokePicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback) {
     int i;
     for (i = 0; i < 4; ++i) {
         if (!pokepicManager->pics[i].active) {
@@ -485,7 +485,7 @@ Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTem
     return PokepicManager_CreatePokepicAt(pokepicManager, template, x, y, z, polygonId, i, animScript, callback);
 }
 
-Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokePicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback) {
     GF_ASSERT(!pokepicManager->pics[picIndex].active);
     MI_CpuClearFast(&pokepicManager->pics[picIndex], sizeof(Pokepic));
     pokepicManager->pics[picIndex].active = TRUE;
@@ -1073,7 +1073,7 @@ void PokepicManager_SetPlttBaseAddrAndSize(PokepicManager *pokepicManager, int a
     pokepicManager->plttSize = size;
 }
 
-PokepicTemplate *Pokepic_GetTemplate(Pokepic *pokepic) {
+PokePicTemplate *Pokepic_GetTemplate(Pokepic *pokepic) {
     return &pokepic->template;
 }
 
