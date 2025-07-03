@@ -64,7 +64,7 @@
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020135D8
 .public sub_02013660

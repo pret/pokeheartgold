@@ -41,7 +41,7 @@
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public sub_0200FBF4
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020135D8
 .public sub_02013660

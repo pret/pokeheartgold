@@ -3925,7 +3925,7 @@ ov12_02248228: ; 0x02248228
 	bl ManagedSprite_TickFrame
 	mov r0, #1
 	mov r1, #5
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r5, #0x50]
 	ldr r0, [sp, #0x18]
 	mov r1, #0xb0

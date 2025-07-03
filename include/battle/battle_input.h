@@ -65,13 +65,13 @@ typedef struct BattleInput_UnkSub54_Unk28 {
     u16 unkE;
 } BattleInput_UnkSub54_Unk28;
 
-typedef struct BattleInput_UnkSub54 {
+typedef struct BattleInputMoveMemory {
     BattleInputMove move;
     u16 *typeIcon[4];
     BattleInput_UnkSub54_Unk28 unkMove[4];
     BattleInput_UnkSub54_Unk28 unkPp[4];
     BattleInput_UnkSub54_Unk28 unkPpMax[4];
-} BattleInput_UnkSub54;
+} BattleInputMoveMemory;
 
 typedef struct BattleInputTextObject {
     FontOAM *unk0;
@@ -86,12 +86,12 @@ typedef struct {
     s16 unk_0C;
     s16 unk_0E;
     s16 unk_10;
-    u8 unk_12;
+    u8 battlerId;
     u8 state;
 } BattleMenuSlideIn;
 typedef struct BallGaugeAnimation {
     s16 xOffset;
-    u8 unk3;
+    u8 percentExpToNextLevel;
     u8 state;
     u8 animationType;
     u8 delay;
@@ -105,7 +105,7 @@ typedef struct S16Pos {
     s16 y;
 } S16Pos;
 
-typedef struct BattleInputEffect {
+typedef struct BattleInputFeedback {
     s16 state;
     s16 delay;
     union {
@@ -116,7 +116,7 @@ typedef struct BattleInputEffect {
             int unk4;
         } move;
         struct {
-            s16 *unk4;
+            const s16 *unk4;
             void *unk8;
             int ret;
             u8 unk10;
@@ -139,7 +139,7 @@ typedef struct BattleInputEffect {
         } unkBugContest;
         s16 unk4[2];
     };
-} BattleInputEffect;
+} BattleInputFeedback;
 typedef struct {
     s8 commandX;
     s8 commandY;
@@ -158,12 +158,12 @@ typedef struct BattleInputColor {
     u8 pal;
 } BattleInputColor;
 
-typedef struct BattleInputCurosrData {
+typedef struct BattleMenuCursor {
     u8 enabled;
     s8 menuY;
     s8 menuX;
     u8 unused;
-} BattleInputCurosrData;
+} BattleMenuCursor;
 typedef struct BattleInputTutorial {
     BattleFinger *finger;
     u8 state;
@@ -174,7 +174,7 @@ typedef struct BattleInputTutorial {
 // At somepoint here my counting was off so some of the listed offsets may be wrong. Due to it being a big and poorly put together struct, it's difficult to find out where that is
 struct BattleInput {
     BattleSystem *battleSystem;
-    u8 *unk4;
+    u8 *unk4; //when non-null, allows for keyPressed to be set to unk4[0]; heldKeys?
     SysTask *ballTask;
     SysTask *unkC;
     SysTask *unk10;
@@ -184,68 +184,69 @@ struct BattleInput {
     u16 *paletteBuffer;
     u16 *bgPalNormal;
     u16 *bgPalTouch;
-    SysTask *bgTask;
-    BattleInput_UnkSub54 unk54[4];
-    void *unk574;
+    SysTask *bgTask; //Handles the subscreen background palette update; only ever set to Task_BattleMenuMessageWaitForTouchResponse
+    BattleInputMoveMemory unk54[4]; //Holds the move display info for ALL the currently active pokemon
+    void *fontSystem;
     BattleInputTextObject textObj[13];
-    void *unk67C;
+    void *unk67C; //5B8
     ManagedSprite *spriteBallGauge[6];
     ManagedSprite *spriteBallGaugeOpponent[6];
-    ManagedSprite *unk6A0[4];
-    ManagedSprite *unk6B0[4];
-    void *unk6C0[4];
+    ManagedSprite *spriteTypeIcons[4];
+    ManagedSprite *spriteCategoryIcons[4]; //Never gets set
+    ManagedSprite *unk6C0[4];
     SysTask *unk6D0[4];
-    BallGaugeAnimation unk6E0[6];
+    BallGaugeAnimation ballGaugeAnimation[6];
     SysTask *unk6E8;
-    u8 unk6EC;
-    u8 unk6ED;
-    u8 unk6EE;
+    u8 unused_668; 
+    u8 unused_669; 
+    u8 unk6EE; //battler type
     s8 curMenuId;
-    u8 unk6F0;
+    u8 unk6F0; //selection type
     u8 gender;
-    u8 invalidTouch;
-    u8 unk6F3;
+    u8 isTouchDisabled; //touchDisabled?
+    u8 unk6F3; //true when cancel is displayed, false when run is displayed
     u8 unk6F4;
     s16 unk6F5;
     u8 unk6F7;
     s16 unk6F8;
-    SysTask *unk6FC;
-    BattleInputEffect unk700;
+    SysTask *unk6FC; //fade task?
+    BattleInputFeedback unk700;
     BattleInputColor color;
-    s32 unk710;
-    s32 unk714;
-    s32 unk718;
+    s32 scrollXEdge;
+    s32 scrollXSpeed;
+    s32 scrollXEnd;
     BattleCursor *cursor;
-    BattleInputCurosrData cursorData;
+    BattleMenuCursor cursorData;
     u8 keyPressed;
-    u8 cancelRun;
+    u8 cancelRun; //needs a better name; controls if cancel or run should be displayed as the bottom middle button in the current menu
     BattleInputTutorial tutorial;
     ManagedSprite *unk_6EC;
-    ManagedSprite *unk_6F0;
-    ManagedSprite *unk_6F4;
+    ManagedSprite *spriteBugNet;
+    ManagedSprite *spriteSportBall;
 };
-void ov12_0226604C(BgConfig *config);
-void ov12_022660A8(BgConfig *config);
 
+BattleInput *BattleInput_New();
+void BgConfig_InitBattleMenuBackgrounds(BgConfig *config);
+void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config);
 void *BattleInput_NewInit(NARC *a0, NARC *a1, BattleSystem *battleSystem, u32 gender, u8 *a4);
 void BattleInput_Free(BattleInput *battleInput);
-
-void ov12_02266390(BattleInput *battleInput);
-void ov12_02266490(BattleInput *battleInput);
-void ov12_02266508(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5);
-void ov12_02266644(NARC *narc, BattleInput *battleInput);
-void ov12_02266804(BattleInput *battleInput);
-void ov12_02266A50(BattleInput *battleInput, u8 *a1);
-void ov12_02266A6C(BattleInput *battleInput, u8 *a1, u8 *a2);
-void ov12_02266AC0(BattleInput *battleInput);
-void ov12_02266B34(BattleInput *battleInput);
-int ov12_02266B78(BattleInput *battleInput);
-BOOL ov12_02266C64(BattleInput *battleInput);
+void BattleInput_LoadDefaultResources(BattleInput *battleInput);
+void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5);
+void BattleInput_LoadBallGaugeResources(NARC *narc, BattleInput *battleInput);
+void BattleInput_SetPartyExpPercents(BattleInput *battleInput, u8 *a1);
+void BattleInput_UpdateBallGaugeAnimation(BattleInput *battleInput, u8 *a1, u8 *a2);
+void BattleInput_EnableBallGauge(BattleInput *battleInput);
+void BattleInput_DisableBallGauge(BattleInput *battleInput);
+int BattleInput_CheckTouch(BattleInput *battleInput);
+BOOL BattleInput_CheckFeedbackDone(BattleInput *battleInput);
 int ov12_02266C84(int moveRange, int battlerId);
-void ov12_02266D28(BattleInput *battleInput);
-void ov12_02266D98(BattleInput *battleInput, int xSpeed, int xEnd);
-void ov12_02266E6C(BattleInput *battleInput, int battlerId);
-void ov12_02266F70(BattleInput *battleInput, int a1, int a2);
+void BattleInput_StartMenuScrollHorizontalTask(BattleInput *battleInput, int xSpeed, int xEnd);
+
+
+
+
+
+void BattleInput_CreateMenuObjectsInitial(BattleInput *battleInput, int a1, int a2);
 void ov12_02266F84(BattleInput *battleInput, int a1, int a2);
 void ov12_02267388(BattleInput *battleInput, int param1, int param2);
 void ov12_0226739C(BattleInput *battleInput, int a1, int a2);
@@ -274,12 +275,12 @@ void ov12_02268520(String *str, u32 fontId, int *param2, int *param3);
 void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int param5, int param6, int x, int y, int param9, BattleInput_UnkSub54_Unk28 *param10);
 void ov12_02268684(BattleInput *battleInput);
 void ov12_022686BC(BattleInput *battleInput);
-BattleInput_UnkSub54 *ov12_02268798(BattleInput *battleInput, int battlerId);
+BattleInputMoveMemory *ov12_02268798(BattleInput *battleInput, int battlerId);
 void ov12_022687AC(BattleInput *battleInput);
 void ov12_0226885C(BattleInput *battleInput, int battlerId, const BattleInputMove *moveDisplay);
 void ov12_02268A64(BattleInput *battleInput, String *moveName, u32 a2, BattleInput_UnkSub54_Unk28 *a3, int color);
-void ov12_02268BB8(BattleInput *battleInput);
-void ov12_02268BEC(BattleInput *battleInput);
+void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput);
+void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput);
 void ov12_02268C30(BattleInput *battleInput, int moveType, int a2);
 void ov12_02268C4C(BattleInput *battleInput, int a1);
 void ov12_02268CA0(BattleInput *battleInput, int param1);
@@ -289,7 +290,7 @@ void ov12_02268DD4(BattleInput *battleInput, u8 *param1, int param2);
 void ov12_02268E2C(BattleInput *battleInput, int a1, u8 *a2, int a3);
 void ov12_02268E84(SysTaskFunc taskFunc, BattleInput *battleInput);
 void ov12_02268EB8(BattleInput *battleInput);
-void ov12_02268EE4(BattleInput *battleInput, s16 *param1, TouchscreenHitbox *param2, int param3, int param4);
+void ov12_02268EE4(BattleInput *battleInput, const s16 *param1, const TouchscreenHitbox *param2, int param3, int param4);
 void ov12_02268F58(SysTask *task, void *data);
 void ov12_022690A8(SysTask *task, void *data);
 void ov12_02269360(SysTask *task, void *data);
@@ -299,31 +300,30 @@ int ov12_02269A9C(BattleInput *battleInput, int param1);
 void ov12_02269C7C(BattleInput *battleInput, int param1);
 int ov12_02269CDC(BattleInput *battleInput, int param1);
 int ov12_02269DD4(BattleInput *battleInput, int param1);
-u32 ov12_0226A6EC(BattleInputCurosrData *cursorMove, int xMax, int yMax, u8 *moveData);
+u32 ov12_0226A6EC(BattleMenuCursor *cursorMove, int xMax, int yMax, const u8 *moveData);
 int ov12_0226A960(BattleInput *battleInput);
 int ov12_0226A9B8(BattleInput *battleInput);
 void ov12_0226AA8C(BattleInput *battleInput, int index);
 u8 ov12_0226AC64(BattleInput *battleInput);
-void ov12_0226AC70(BattleInput *battleInput);
+void BattleInput_CreateBugContestGraphics(BattleInput *battleInput);
 // static functions
-BattleInput *BattleInput_New();
 void ov12_022698C4(SysTask *task, void *data);
-void ov12_02269954(SysTask *task, void *data);
+void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data);
 BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem);
 void ov12_02268DAC(BattleInput *battleInput);
-void ov12_02266490(BattleInput *battleInput);
+void BattleInput_FreeDefaultResources(BattleInput *battleInput);
 void ov12_02269830(SysTask *task, void *data);
-void ov12_022668D0(SysTask *, void *);
-void ov12_02266B34(BattleInput *);
+void Task_AnimateBallGauge(SysTask *, void *);
+void BattleInput_DisableBallGauge(BattleInput *);
 int BattleInput_CatchingTutorialMain(BattleInput *battleInput);
 int ov12_02269A24(BattleInput *battleInput);
 int ov12_022698B0(BattleInput *battleInput);
-void ov12_02266DC4(SysTask *task, void *data);
+void Task_BattleMenuScrollHorizontal(SysTask *task, void *data);
 void ov12_02269568(SysTask *task, void *data);
 void ov12_02269774(void *data);
 void ov12_02269668(SysTask *task, void *data);
-void ov12_0226AC70(BattleInput *battleInput);
-BattleInput_UnkSub54 *ov12_02268798(BattleInput *battleInput, int battlerType);
+void BattleInput_CreateBugContestGraphics(BattleInput *battleInput);
+BattleInputMoveMemory *ov12_02268798(BattleInput *battleInput, int battlerType);
 void ov12_02268AD0(BattleInput *battleInput);
 void ov12_0226789C(BattleInput *battleInput, int param1, int param2);
 void ov12_02268EE0(BattleInput *battleInput, int a1);
@@ -332,7 +332,6 @@ void ov12_0226989C(SysTask *task, void *data);
 void ov12_0226AD60(BattleInput *battleInput);
 void ov12_022698AC(BattleInput *battleInput, int a1);
 BattleCursorPosition *ov12_02261280(OpponentData *data);
-u32 ov12_0226A6EC(BattleInputCurosrData *cursor, int a1, int a2, u8 *a3);
 void ov12_02269F54(BattleInput *battleInput, int param1);
 int ov12_02269FA4(BattleInput *battleInput, int param1);
 void ov12_0226A594(BattleInput *battleInput, int param1);

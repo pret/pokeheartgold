@@ -170,7 +170,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
 
 void ov12_02237B0C(BattleSystem *battleSystem) {
     BattleInput_Free(battleSystem->battleInput);
-    ov12_022660A8(battleSystem->bgConfig);
+    BgConfig_CleanupBattleMenuBackgrounds(battleSystem->bgConfig);
     battleSystem->unk240E_F = 1;
     FontID_Release(4);
     ov12_0223BBF0(battleSystem, 3);
@@ -219,11 +219,11 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
 
     battleSystem->unk240F_1 = 1;
 
-    ov12_0226604C(battleSystem->bgConfig);
+    BgConfig_InitBattleMenuBackgrounds(battleSystem->bgConfig);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    ov12_02266390(battleSystem->battleInput);
-    ov12_02266508(unkNarcA, unkNarcB, battleSystem->battleInput, 0, TRUE, NULL);
-    ov12_02266644(unkNarcB, battleSystem->battleInput);
+    BattleInput_LoadDefaultResources(battleSystem->battleInput);
+    BattleInput_ChangeMenu(unkNarcA, unkNarcB, battleSystem->battleInput, 0, TRUE, NULL);
+    BattleInput_LoadBallGaugeResources(unkNarcB, battleSystem->battleInput);
 
     NARC_Delete(unkNarcA);
     NARC_Delete(unkNarcB);

@@ -255,7 +255,7 @@ _0223A1BA:
 	orr r0, r2
 	str r0, [r4, r3]
 	mov r0, #4
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #0x30]
 	ldr r2, _0223A510 ; =0x000002D9
 	mov r0, #1

@@ -138,7 +138,7 @@ ov89_02258800: ; 0x02258800
 	str r0, [r5, #0x30]
 	mov r0, #4
 	mov r1, #0x7d
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r5, #0x10]
 	mov r0, #0xd2
 	mov r1, #0x7d

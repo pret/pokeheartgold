@@ -2249,7 +2249,7 @@ ov101_021E886C: ; 0x021E886C
 	bl G2dRenderer_SetSubSurfaceCoords
 	ldr r1, [r4]
 	mov r0, #4
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #0x3c]
 	pop {r4, pc}
 	.balign 4, 0

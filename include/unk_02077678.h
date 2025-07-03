@@ -12,7 +12,7 @@ void sub_020777A4(SpriteManager *spriteManager, int a1);
 void sub_020777AC(SpriteManager *spriteManager, int a1);
 void sub_020777B4(SpriteManager *spriteManager, int a1, int a2);
 ManagedSprite *sub_020777C8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int type, ManagedSpriteTemplate *spriteTemplate);
-void sub_020777F8(ManagedSprite *managedSprite);
+void thunk_ManagedSprite_DeleteAndFreeResources(ManagedSprite *managedSprite);
 void sub_02077870(ManagedSprite *managedSprite);
 void sub_02077868(SpriteManager *spriteManager, int a1);
 

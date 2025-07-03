@@ -1501,7 +1501,7 @@ ov12_022592D0: ; 0x022592D0
 _022592FC:
 	ldr r1, _02259324 ; =0xFFFFF300
 	mov r2, #0
-	bl ov12_02266D98
+	bl BattleInput_StartMenuScrollHorizontalTask
 _02259304:
 	mov r1, #0x65
 	add r2, r4, #0
@@ -1789,7 +1789,7 @@ ov12_02259514: ; 0x02259514
 	add r0, r6, #0
 	add r1, r7, #0
 	str r3, [sp, #4]
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	ldr r0, [sp, #8]
 	mov r1, #0
 	bl ov12_022698AC
@@ -1816,7 +1816,7 @@ _02259586:
 	add r0, #0x28
 	bl ov12_02264EB4
 	ldr r0, [sp, #8]
-	bl ov12_02266B34
+	bl BattleInput_DisableBallGauge
 	add r0, r4, #0
 	bl ov12_02262014
 _0225959A:
@@ -10724,7 +10724,7 @@ _0225DC80:
 	strb r0, [r4, #0xa]
 _0225DC92:
 	add r0, r6, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #0
 	bne _0225DC9E
 _0225DC9C:
@@ -10787,7 +10787,7 @@ _0225DC9E:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #6
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DDC8
 _0225DD20:
 	ldr r0, [r4]
@@ -10804,7 +10804,7 @@ _0225DD20:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #0xa
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DDC8
 _0225DD44:
 	ldr r0, [r4]
@@ -10820,7 +10820,7 @@ _0225DD44:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #8
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DDC8
 _0225DD66:
 	ldr r0, [r4]
@@ -10837,7 +10837,7 @@ _0225DD66:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #0x14
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DDC8
 _0225DD8A:
 	add r0, sp, #0x10
@@ -10857,7 +10857,7 @@ _0225DD8A:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #4
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DDC8
 _0225DDB4:
 	mov r0, #0
@@ -10868,7 +10868,7 @@ _0225DDB4:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #3
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 _0225DDC8:
 	ldr r0, [r4]
 	mov r1, #1
@@ -10888,7 +10888,7 @@ _0225DDD2:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #5
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DE90
 _0225DDF4:
 	ldr r0, [r4]
@@ -10905,7 +10905,7 @@ _0225DDF4:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #9
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DE90
 _0225DE18:
 	ldr r0, [r4]
@@ -10921,7 +10921,7 @@ _0225DE18:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #7
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DE90
 _0225DE3A:
 	ldr r0, [r4]
@@ -10938,7 +10938,7 @@ _0225DE3A:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #0x13
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DE90
 _0225DE5E:
 	add r0, sp, #0x10
@@ -10953,7 +10953,7 @@ _0225DE5E:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #1
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225DE90
 _0225DE7C:
 	mov r0, #0
@@ -10964,7 +10964,7 @@ _0225DE7C:
 	add r1, r5, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 _0225DE90:
 	ldr r1, _0225DEE8 ; =0x00000197
 	ldr r0, [sp, #0xc]
@@ -10974,15 +10974,15 @@ _0225DE98:
 	add r1, r4, #0
 	add r0, r6, #0
 	add r1, #0x1c
-	bl ov12_02266A50
+	bl BattleInput_SetPartyExpPercents
 	add r1, r4, #0
 	add r2, r4, #0
 	add r0, r6, #0
 	add r1, #0x10
 	add r2, #0x16
-	bl ov12_02266A6C
+	bl BattleInput_UpdateBallGaugeAnimation
 	add r0, r6, #0
-	bl ov12_02266AC0
+	bl BattleInput_EnableBallGauge
 	add r0, r7, #0
 	bl NARC_Delete
 	add r0, r5, #0
@@ -11029,7 +11029,7 @@ _0225DF04:
 	blt _0225DF04
 _0225DF1E:
 	add r0, r6, #0
-	bl ov12_02266B78
+	bl BattleInput_CheckTouch
 	mov r1, #0
 	mvn r1, r1
 	str r0, [r4, #0xc]
@@ -11045,7 +11045,7 @@ _0225DF1E:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225DF40:
 	add r0, r6, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #1
 	beq _0225DF52
 	ldr r0, [r4, #0xc]
@@ -11096,7 +11096,7 @@ _0225DF84:
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	mov r1, #0
 	bl ov12_022698AC
@@ -11126,7 +11126,7 @@ _0225DFD0:
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	mov r1, #0
 	bl ov12_022698AC
@@ -11165,7 +11165,7 @@ _0225E044:
 	add r1, r5, #0
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	add r0, r7, #0
 	bl NARC_Delete
 	add r0, r5, #0
@@ -11180,7 +11180,7 @@ _0225E066:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225E06E:
 	add r0, r6, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #1
 	bne _0225E0FA
 	mov r0, #7
@@ -11197,7 +11197,7 @@ _0225E06E:
 	add r1, r7, #0
 	add r2, r6, #0
 	str r3, [sp, #4]
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	mov r1, #0
 	bl ov12_022698AC
@@ -11208,7 +11208,7 @@ _0225E06E:
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r6, #0
-	bl ov12_02266B34
+	bl BattleInput_DisableBallGauge
 	mov r0, #8
 	strb r0, [r4, #0xa]
 	add r0, r5, #0
@@ -11449,7 +11449,7 @@ _0225E2A4: ; jump table
 	.short _0225E3C2 - _0225E2A4 - 2 ; case 3
 _0225E2AC:
 	add r0, r7, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #0
 	bne _0225E2B8
 	b _0225E3F8
@@ -11472,7 +11472,7 @@ _0225E2B8:
 	add r2, sp, #0x28
 	bl BattleSystem_PrintBattleMessage
 	add r0, r7, #0
-	bl ov12_02266AC0
+	bl BattleInput_EnableBallGauge
 	mov r0, #7
 	mov r1, #5
 	bl NARC_New
@@ -11510,7 +11510,7 @@ _0225E300:
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
 	mov r3, #0xb
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	ldr r0, [sp, #0xc]
 	bl NARC_Delete
 	ldr r0, [sp, #8]
@@ -11525,7 +11525,7 @@ _0225E300:
 	pop {r4, r5, r6, r7, pc}
 _0225E350:
 	add r0, r7, #0
-	bl ov12_02266B78
+	bl BattleInput_CheckTouch
 	mov r1, #0
 	mvn r1, r1
 	str r0, [r4, #8]
@@ -11561,7 +11561,7 @@ _0225E376:
 	bl ov12_02262014
 _0225E3A2:
 	add r0, r7, #0
-	bl ov12_02266B34
+	bl BattleInput_DisableBallGauge
 _0225E3A8:
 	ldrb r1, [r4, #0x1d]
 	ldr r0, [r4]
@@ -11825,7 +11825,7 @@ _0225E5B6: ; jump table
 	.short _0225E696 - _0225E5B6 - 2 ; case 3
 _0225E5BE:
 	add r0, r5, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #0
 	bne _0225E5CA
 	b _0225E6F4
@@ -11875,7 +11875,7 @@ _0225E5E6:
 	add r1, r6, #0
 	add r2, r5, #0
 	mov r3, #0xc
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	add r0, r7, #0
 	bl NARC_Delete
 	add r0, r6, #0
@@ -11887,7 +11887,7 @@ _0225E5E6:
 	pop {r4, r5, r6, r7, pc}
 _0225E642:
 	add r0, r5, #0
-	bl ov12_02266B78
+	bl BattleInput_CheckTouch
 	mov r1, #0
 	mvn r1, r1
 	str r0, [r4, #8]
@@ -14411,7 +14411,7 @@ _0225FA92: ; jump table
 	.short _0225FC4C - _0225FA92 - 2 ; case 4
 _0225FA9C:
 	add r0, r5, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #0
 	beq _0225FB00
 	ldr r0, [r4, #0x10]
@@ -14471,7 +14471,7 @@ _0225FB02:
 	bl NARC_New
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_02266B34
+	bl BattleInput_DisableBallGauge
 	ldrh r1, [r4, #0x18]
 	add r0, sp, #0x10
 	strh r1, [r0]
@@ -14500,7 +14500,7 @@ _0225FB40:
 	add r1, r6, #0
 	add r2, r5, #0
 	mov r3, #0xd
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225FBB2
 _0225FB56:
 	mov r0, #0
@@ -14511,7 +14511,7 @@ _0225FB56:
 	add r1, r6, #0
 	add r2, r5, #0
 	mov r3, #0xe
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225FBB2
 _0225FB6C:
 	mov r0, #0
@@ -14522,7 +14522,7 @@ _0225FB6C:
 	add r1, r6, #0
 	add r2, r5, #0
 	mov r3, #0xf
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225FBB2
 _0225FB82:
 	mov r0, #0
@@ -14533,7 +14533,7 @@ _0225FB82:
 	add r1, r6, #0
 	add r2, r5, #0
 	mov r3, #0x10
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225FBB2
 _0225FB98:
 	mov r0, #0
@@ -14544,7 +14544,7 @@ _0225FB98:
 	add r1, r6, #0
 	add r2, r5, #0
 	mov r3, #0x11
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	b _0225FBB2
 _0225FBAE:
 	bl GF_AssertFail
@@ -14559,7 +14559,7 @@ _0225FBB2:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225FBC6:
 	add r0, r5, #0
-	bl ov12_02266B78
+	bl BattleInput_CheckTouch
 	mov r1, #0
 	mvn r1, r1
 	str r0, [r4, #8]
@@ -14573,7 +14573,7 @@ _0225FBC6:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225FBE4:
 	add r0, r5, #0
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #1
 	bne _0225FC76
 	mov r0, #7
@@ -14591,14 +14591,14 @@ _0225FBE4:
 	add r0, r7, #0
 	bl ov12_02265D74
 	add r0, r5, #0
-	bl ov12_02266B34
+	bl BattleInput_DisableBallGauge
 	mov r3, #0
 	str r3, [sp]
 	ldr r0, [sp, #8]
 	str r3, [sp, #4]
 	add r1, r6, #0
 	add r2, r5, #0
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	ldr r0, [r4, #8]
 	cmp r0, #1
 	bne _0225FC38

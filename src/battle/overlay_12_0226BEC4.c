@@ -35,19 +35,19 @@ static void ov12_0226BF04(SysTask *task, void *_data) {
         {
             NARC *bgHandleNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
             NARC *objHandleNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
-            ov12_02266508(bgHandleNarc, objHandleNarc, battleInput, 18, FALSE, NULL);
+            BattleInput_ChangeMenu(bgHandleNarc, objHandleNarc, battleInput, 18, FALSE, NULL);
             NARC_Delete(bgHandleNarc);
             NARC_Delete(objHandleNarc);
         }
         data->state++;
         break;
     case 1:
-        if (ov12_02266C64(battleInput) == TRUE) {
+        if (BattleInput_CheckFeedbackDone(battleInput) == TRUE) {
             data->state++;
         }
         break;
     case 2:
-        if (ov12_0223C080(data->battleSystem) == TRUE && ov12_02266B78(battleInput) == TRUE) {
+        if (ov12_0223C080(data->battleSystem) == TRUE && BattleInput_CheckTouch(battleInput) == TRUE) {
             PlaySE(1501);
             data->state++;
         }

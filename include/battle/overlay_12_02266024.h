@@ -5,7 +5,7 @@
 
 #include "filesystem.h"
 
-BOOL ov12_02266C64(BattleInput *a0);
-BOOL ov12_02266B78(BattleInput *a0);
+BOOL BattleInput_CheckFeedbackDone(BattleInput *a0);
+BOOL BattleInput_CheckTouch(BattleInput *a0);
 
 #endif

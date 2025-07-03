@@ -30807,7 +30807,7 @@ ov14_021F4D10: ; 0x021F4D10
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x41
 	lsl r1, r1, #4
 	str r0, [r4, r1]

@@ -9270,7 +9270,7 @@ ov41_0224A27C: ; 0x0224A27C
 	str r2, [r0]
 	mov r0, #1
 	mov r1, #0xd
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r5, #0x64]
 	add r0, r4, #0
 	bl ov41_0224A7F8

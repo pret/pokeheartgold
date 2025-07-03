@@ -1548,7 +1548,7 @@ sub_02086FCC: ; 0x02086FCC
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0x6c
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0xde
 	lsl r1, r1, #2
 	str r0, [r4, r1]

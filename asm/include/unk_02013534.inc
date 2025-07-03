@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GfGfxLoader_GetCellBank
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020135D8
 .public sub_02013660

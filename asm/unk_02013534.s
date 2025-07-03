@@ -13,8 +13,8 @@ _020F5F2D:
 
 	.text
 
-	thumb_func_start sub_02013534
-sub_02013534: ; 0x02013534
+	thumb_func_start FontSystem_NewInit
+FontSystem_NewInit: ; 0x02013534
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r7, r1, #0
@@ -72,7 +72,7 @@ _02013594:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02013534
+	thumb_func_end FontSystem_NewInit
 
 	thumb_func_start sub_020135AC
 sub_020135AC: ; 0x020135AC

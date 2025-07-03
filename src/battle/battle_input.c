@@ -16,19 +16,1124 @@
 #include "unk_02013534.h"
 #include "unk_02077678.h"
 #include "unk_0208805C.h"
+#include "constants/battle_menu.h"
+
+static void BattleInput_FreeDefaultResources(BattleInput *battleInput);
+static void BattleInput_FreeBallGaugeResources(BattleInput *battleInput);
+static void Task_AnimateBallGauge(SysTask *task, void *data);
+static void BattleInput_InitMenuWindow(BattleInput *battleInput);
+static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId);
+
+//Data
+
+__attribute__((aligned(4))) static const u16 ov12_0226E298[7] = { 
+	0x2B, 
+	0x24, 
+	0x29, 
+	0x25, 
+	0x26, 
+	0x2A, 
+	0x27
+};
+
+__attribute__((aligned(4))) static const u16 ov12_0226E2B8[][2] = {
+	{0x20, 0x3D},
+	{0xA0, 0x3C},
+	{0x20, 0x7C}, 
+	{0xA0, 0x7B}
+};
+
+__attribute__((aligned(4))) static const u16 ov12_0226E2C8[4][2] = {
+	{ 0x3B, 0x3D },
+	{0xBB, 0x3C},
+	{0x3B, 0x7C},
+	{0xBB, 0x7B}	
+};
+
+__attribute__((aligned(4))) static const u16 ov12_0226E308[4][2] = {
+	{ 0x4c, 0x3D },
+	{ 0xCC, 0x3C },
+	{0x4C, 0x7C},
+	{0xCC, 0x7B}
+};
+
+__attribute__((aligned(4))) static const u16 ov12_0226E370[][2] = {
+	{0x3c, 0x74},
+	{0xc4, 0x20},
+	{0xc4, 0x74},
+	{0x3C, 0x20},
+	{0x80, 0xAF}	
+};
+
+__attribute__((aligned(4))) static const u16 ov12_0226E328[][2] = {
+	{0x3C, 0x74},
+	{0xC4, 0x38},
+	{0xC4, 0x74},
+	{0x3C, 0x38}
+};
+
+static const BgTemplate ov12_0226E5DC[] = {
+	{
+		.x = 0,
+		.y = 0,
+		.bufferSize = 0x800,
+		.baseTile = 0,
+		.size = 1,
+		.colorMode = 0,
+		.screenBase = 12,
+		.charBase = 0,
+		.priority = 0,
+		.areaOver = 0,
+		.dummy = 0,
+		.mosaic = 0
+	},
+	{
+		.x = 0,
+		.y = 0,
+		.bufferSize = 0x800,
+		.baseTile = 0,
+		.size = 1,
+		.colorMode = 0,
+		.screenBase = 13,
+		.charBase = 0,
+		.priority = 0,
+		.areaOver = 0,
+		.dummy = 0,
+		.mosaic = 0
+	},
+	{
+		.x = 0,
+		.y = 0,
+		.bufferSize = 0x800,
+		.baseTile = 0,
+		.size = 1,
+		.colorMode = 0,
+		.screenBase = 14,
+		.charBase = 0,
+		.priority = 0,
+		.areaOver = 0,
+		.dummy = 0,
+		.mosaic = 0
+	},
+	{
+		.x = 0,
+		.y = 0,
+		.bufferSize = 0x800,
+		.baseTile = 0,
+		.size = 1,
+		.colorMode = 0,
+		.screenBase = 15,
+		.charBase = 0,
+		.priority = 0,
+		.areaOver = 0,
+		.dummy = 0,
+		.mosaic = 0
+	},
+};
+
+static const TouchscreenHitbox ov12_0226E35C[] = {
+	{
+		.rect = {
+			.top = 0x18,
+			.bottom = 0x90,
+			.left = 0x0,
+			.right = 0xFF
+		}
+	},
+	{
+		.rect = {
+			.top = 0x90,
+			.bottom = 0xC0,
+			.left = 0x0,
+			.right = 0x50
+		}
+	},
+	{
+		.rect = {
+			.top = 0x90,
+			.bottom = 0xC0,
+			.left = 0xB0,
+			.right = 0xff
+		}
+	},
+	{
+		.rect = {
+			.top = 0x98,
+			.bottom = 0xC0,
+			.left = 0x58,
+			.right = 0xA8
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+static const int ov12_0226E2E8[] = { 
+	1, 
+	2, 
+	3, 
+	4 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226EB04[] = { 
+	1, 
+	2, 
+	3, 
+	4 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E220[2][3] = {
+	{0, 0, 0},
+	{1, 3, 2}
+};
+
+static const TouchscreenHitbox ov12_0226E240[] = {
+	{
+		.rect = {
+			.top = 0x18,
+			.bottom = 0x90,
+			.left = 0,
+			.right = 0xFF
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+static const TouchscreenHitbox ov12_0226E274[] = {
+	{
+		.rect = {
+			.top = 0x28,
+			.bottom = 0x80,
+			.left = 0x18,
+			.right = 0xE8
+		}
+	},
+	{
+		.rect = {
+			.top = 0x98,
+			.bottom = 0xC0,
+			.left = 0x58,
+			.right = 0xA8
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+//CONFIRMED 1
+
+static const int ov12_0226E338[] = { 
+	1, 
+	4,
+	0,
+	0
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226EB00[] = { 
+	1, 
+	4 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E1FC[2][1] = { 
+	{0}, 
+	{1} 
+};
+
+static const TouchscreenHitbox ov12_0226E3C0[] = {
+	{
+		.rect = {
+			.top = 0x98,
+			.bottom = 0xC0,
+			.left = 0x08,
+			.right = 0xF8
+		}
+	},
+	{
+		.rect = {
+			.top = 0x18,
+			.bottom = 0x50,
+			.left = 0x0,
+			.right = 0x80
+		}
+	},
+	{
+		.rect = {
+			.top = 0x18,
+			.bottom = 0x50,
+			.left = 0x80,
+			.right = 0xff
+		}
+	},
+	{
+		.rect = {
+			.top = 0x58,
+			.bottom = 0x90,
+			.left = 0x00,
+			.right = 0x80
+		}
+	},
+	{
+		.rect = {
+			.top = 0x58,
+			.bottom = 0x90,
+			.left = 0x80,
+			.right = 0xFF
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+//CONFIRMED 2
+
+static const int ov12_0226E384[] = { 
+	0xFF, 
+	1, 
+	2, 
+	3, 
+	4 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226EB08[] = { 
+	4, 
+	8, 
+	9, 
+	10, 
+	11 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E218[][2] = {
+	{1, 2}, 
+	{3, 4}, 
+	{0, 0}
+};
+
+static const TouchscreenHitbox ov12_0226E28C[] = {
+	{
+		.rect = {
+			.top = 0x28,
+			.bottom = 0x60,
+			.left = 8,
+			.right = 0xF8
+		}
+	},
+	{
+		.rect = {
+			.top = 0x70,
+			.bottom = 0xA8,
+			.left = 8,
+			.right = 0xF8
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+//CONFIRMED 3
+
+static const int ov12_0226E250[] = { 
+	1, 
+	0xFF 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226EAFC[] = { 
+	1, 
+	4 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E200[2][1] = { 
+	{0}, 
+	{1} 
+};
+
+static const TouchscreenHitbox ov12_0226E3F0[] = {
+	{
+		.rect = {
+			.top = 0x58,
+			.bottom = 0x90,
+			.left = 0x00,
+			.right = 0x78
+		}
+	},
+	{
+		.rect = {
+			.top = 0x8,
+			.bottom = 0x50,
+			.left = 0x88,
+			.right = 0xFF
+		}
+	},
+	{
+		.rect = {
+			.top = 0x58,
+			.bottom = 0x90,
+			.left = 0x88,
+			.right = 0xff
+		}
+	},
+	{
+		.rect = {
+			.top = 0x8,
+			.bottom = 0x50,
+			.left = 0x00,
+			.right = 0x78
+		}
+	},
+	{
+		.rect = {
+			.top = 0x98,
+			.bottom = 0xC0,
+			.left = 0x8,
+			.right = 0xF8
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+static const int ov12_0226E3AC[] = {
+	1, 
+	2, 
+	3, 
+	4, 
+	0xFF 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226EB10[] = { 
+	6, 
+	12, 
+	13, 
+	5, 
+	4 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E210[][2] = {
+	{3, 1},
+	{0, 2}, 
+	{4, 4}
+};
+
+static const TouchscreenHitbox ov12_0226E22E[] = {
+	{
+		.rect = {
+			.top = 0x98,
+			.bottom = 0xC0,
+			.left = 0,
+			.right = 0xFF
+		}
+	},
+	{
+		.rect = {
+			.top = 0xFF,
+			.bottom = 0,
+			.left = 0,
+			.right = 0
+		}
+	}
+};
+
+static const int ov12_0226E208[] = { 
+	1 
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E1F8[] = { 
+	4 
+}; 
+
+//CONFIRMED 4
+
+typedef struct BattleMenuTemplate {
+    u16 unk_00;
+    u16 paletteId;
+    u16 unk_04_val2[4];
+    u16 priority[4];
+    const TouchscreenHitbox *touchscreenRect;
+    const int *unk_18;
+    const u8 *unk_1C;
+    int (*funcCursor)(BattleInput *battleInput, int param1);
+    void (*funcSaveCursorPos)(BattleInput *battleInput, int param1);
+    void (*funcCreateMenuObjects)(BattleInput *battleInput, int param1, int param2);
+    int (*unk_2C)(BattleInput *battleInput, int param1, int param2);
+} BattleMenuTemplate;
+static const BattleMenuTemplate sBattleMenuTemplates[] = {
+	[BATTLE_MENU_0] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 0xFFFF, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = NULL,
+		.unk_18 = NULL,
+		.unk_1C = NULL,
+		.funcCursor = NULL,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = NULL,
+		.unk_2C = NULL
+	},
+	[BATTLE_MENU_1] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_2] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_3] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = ov12_02266F84,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_4] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = ov12_02266F84,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_5] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E240,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = ov12_02267388,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_6] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E240,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = ov12_0226739C,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_7] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_8] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = ov12_02266F84,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_9] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E274,
+		.unk_18 = ov12_0226E338,
+		.unk_1C = ov12_0226EB00,
+		.funcCursor = ov12_02269CDC,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_02267404,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_10] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E274,
+		.unk_18 = ov12_0226E338,
+		.unk_1C = ov12_0226EB00,
+		.funcCursor = ov12_02269CDC,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_02267418,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_11] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 3, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E3C0,
+		.unk_18 = ov12_0226E384,
+		.unk_1C = ov12_0226EB08,
+		.funcCursor = ov12_02269DD4,
+		.funcSaveCursorPos = ov12_02269F54,
+		.funcCreateMenuObjects = ov12_0226748C,
+		.unk_2C = ov12_02267EF0
+	},
+	[BATTLE_MENU_12] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 4, 5, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E3F0,
+		.unk_18 = ov12_0226E3AC,
+		.unk_1C = ov12_0226EB10,
+		.funcCursor = ov12_02269FA4,
+		.funcSaveCursorPos = ov12_0226A594,
+		.funcCreateMenuObjects = ov12_02267C24,
+		.unk_2C = ov12_02268024
+	},
+	[BATTLE_MENU_13] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E28C,
+		.unk_18 = ov12_0226E250,
+		.unk_1C = ov12_0226EAFC,
+		.funcCursor = ov12_0226A5F0,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_02267760,
+		.unk_2C = ov12_02267FA0
+	},
+	[BATTLE_MENU_14] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E28C,
+		.unk_18 = ov12_0226E250,
+		.unk_1C = ov12_0226EAFC,
+		.funcCursor = ov12_0226A5F0,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_022677FC,
+		.unk_2C = ov12_02267FA0
+	},
+	[BATTLE_MENU_15] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E28C,
+		.unk_18 = ov12_0226E250,
+		.unk_1C = ov12_0226EAFC,
+		.funcCursor = ov12_0226A5F0,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_0226789C,
+		.unk_2C = ov12_02267FA0
+	},
+	[BATTLE_MENU_16] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E28C,
+		.unk_18 = ov12_0226E250,
+		.unk_1C = ov12_0226EAFC,
+		.funcCursor = ov12_0226A5F0,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_02267A58,
+		.unk_2C = ov12_02267FA0
+	},
+	[BATTLE_MENU_17] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+		.priority = { 2, 1, 3, 0 },
+		.touchscreenRect = ov12_0226E28C,
+		.unk_18 = ov12_0226E250,
+		.unk_1C = ov12_0226EAFC,
+		.funcCursor = ov12_0226A5F0,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_02267B40,
+		.unk_2C = ov12_02267FA0
+	},
+	[BATTLE_MENU_18] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 6, 4, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E22E,
+		.unk_18 = ov12_0226E208,
+		.unk_1C = ov12_0226E1F8,
+		.funcCursor = NULL,
+		.funcSaveCursorPos = NULL,
+		.funcCreateMenuObjects = ov12_02267984,
+		.unk_2C = ov12_02268130
+	},
+	[BATTLE_MENU_19] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
+		.unk_2C = ov12_02267E14
+	},
+	[BATTLE_MENU_20] = {
+		.unk_00 = 28,
+		.paletteId = 246,
+		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
+		.priority = { 2, 3, 3, 0 },
+		.touchscreenRect = ov12_0226E35C,
+		.unk_18 = ov12_0226E2E8,
+		.unk_1C = ov12_0226EB04,
+		.funcCursor = ov12_02269A9C,
+		.funcSaveCursorPos = ov12_02269C7C,
+		.funcCreateMenuObjects = ov12_02266F84,
+		.unk_2C = ov12_02267E14
+	},
+};
+
+static const ManagedSpriteTemplate sBallGaugeTemplate = {
+	.x = 12,
+	.y = 13,
+	.z = 0,
+	.animation = 0,
+	.spritePriority = 10,
+	.pal = 0,
+	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
+	.resIdList = {0x4e37, 0x4e37, 0x4e2f, 0x4e2f, -1, -1},
+	.bgPriority = 1,
+	.vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sBallGaugeOpponentTemplate = {
+	.x = 0xF6,
+	.y = 9,
+	.z = 0,
+	.animation = 0,
+	.spritePriority = 11,
+	.pal = 1,
+	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
+	.resIdList = {0x4e38, 0x4e37, 0x4e30, 0x4e30, -1, -1},
+	.bgPriority = 1,
+	.vramTransfer = 0
+};
+
+//CONFIRMED 5
+
+static const ManagedSpriteTemplate ov12_0226E4B0 = {
+	.x = 0,
+	.y = 0,
+	.z = 0,
+	.animation = 0,
+	.spritePriority = 100,
+	.pal = 0,
+	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
+	.resIdList = {0x4e39, 0x4e34, 0x4e31, 0x4e31, -1, -1},
+	.bgPriority = 1,
+	.vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate ov12_0226E4E4 = {
+	.x = 0,
+	.y = 0,
+	.z = 0,
+	.animation = 0,
+	.spritePriority = 100,
+	.pal = 0,
+	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
+	.resIdList = {0x4e45, 0x4e36, 0x4e35, 0x4e35, -1, -1},
+	.bgPriority = 1,
+	.vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplateBugNet = {
+	.x = 0x58,
+	.y = 8,
+	.z = 0,
+	.animation = 0,
+	.spritePriority = 10,
+	.pal = 4,
+	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
+	.resIdList = {0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1},
+	.bgPriority = 1,
+	.vramTransfer = 0
+};
+
+static const ManagedSpriteTemplate sSpriteTemplateSportBall = {
+	.x = 0xd0,
+	.y = 8,
+	.z = 0,
+	.animation = 0,
+	.spritePriority = 10,
+	.pal = 5,
+	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
+	.resIdList = {0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1},
+	.bgPriority = 1,
+	.vramTransfer = 0
+};
+
+//4 element u16 array 0 6 12 18 should go here??
+
+__attribute__((aligned(4))) static const s16 ov12_0226E3D8[][3] = {
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180}
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E318[][4] = {
+	{4, 15, 2, 29},
+	{17, 23, 0, 9},
+	{17, 23, 22, 31},
+	{18, 23, 11, 20}
+};
+
+__attribute__((aligned(4))) static const s16 ov12_0226E428[5][3] = {
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180}
+};
+
+__attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E398[] = {
+	{
+		.rect = {
+			.top = 2,
+			.bottom = 9,
+			.left = 0,
+			.right = 15
+		}
+	},
+	{
+		.rect = {
+			.top = 2,
+			.bottom = 9,
+			.left = 16,
+			.right = 31
+		}
+	},
+	{
+		.rect = {
+			.top = 10,
+			.bottom = 17,
+			.left = 0,
+			.right = 15
+		}
+	},
+	{
+		.rect = {
+			.top = 10,
+			.bottom = 17,
+			.left = 16,
+			.right = 31
+		}
+	},
+	{
+		.rect = {
+			.top = 18,
+			.bottom = 23,
+			.left = 1,
+			.right = 30
+		}
+	},
+};
+
+__attribute__((aligned(4))) static const s16 ov12_0226E258[] = { 0x22F, 0x22C, 0x229, 0x226 };
+
+__attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E2A8[] = {
+	{
+		.rect = {
+			.top = 3,
+			.bottom = 9,
+			.left = 0,
+			.right = 15
+		}
+	},
+	{
+		.rect = {
+			.top = 3,
+			.bottom = 9,
+			.left = 16,
+			.right = 31
+		}
+	},
+	{
+		.rect = {
+			.top = 11,
+			.bottom = 17,
+			.left = 0,
+			.right = 15
+		}
+	},
+	{
+		.rect = {
+			.top = 11,
+			.bottom = 17,
+			.left = 16,
+			.right = 31
+		}
+	}
+};
+
+__attribute__((aligned(4))) static const s16 ov12_0226E408[][3] = {
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180},
+	{0, 0xc0, 0x180}
+};
+
+__attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E348[] = {
+	{
+		.rect = {
+			.top = 0xa,
+			.bottom = 0x11,
+			.left = 0,
+			.right = 0xe
+		}
+	},
+	{
+		.rect = {
+			.top = 0,
+			.bottom = 0x9,
+			.left = 0x11,
+			.right = 0x1f
+		}
+	},
+	{
+		.rect = {
+			.top = 0xa,
+			.bottom = 0x11,
+			.left = 0x11,
+			.right = 0x1f
+		}
+	},
+	{
+		.rect = {
+			.top = 0x0,
+			.bottom = 0x9,
+			.left = 0,
+			.right = 0xe
+		}
+	},
+	{
+		.rect = {
+			.top = 0x12,
+			.bottom = 0x17,
+			.left = 0x1,
+			.right = 0x1e
+		}
+	}
+};
+
+__attribute__((aligned(4))) static const s16 ov12_0226E238[] = {
+	0x238, 
+	0x235, 
+	0x232, 
+	0x23B
+};
+
+__attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E2F8[] = {
+	{
+		.rect = {
+			.top = 0xB,
+			.bottom = 0x11,
+			.left = 0,
+			.right = 0xe
+		}
+	},
+	{
+		.rect = {
+			.top = 1,
+			.bottom = 9,
+			.left = 0x11,
+			.right = 0x1F
+		}
+	},
+	{
+		.rect = {
+			.top = 0xB,
+			.bottom = 0x11,
+			.left = 0x11,
+			.right = 0x1f
+		}
+	},
+	{
+		.rect = {
+			.top = 0x1,
+			.bottom = 0x9,
+			.left = 0,
+			.right = 0xe
+		}
+	}
+};
+
+__attribute__((aligned(4))) static const s16 ov12_0226E286[][3] = {
+	{0, 5, 10},
+	{0, 0xC0, 0x180}
+};
+
+__attribute__((aligned(4))) static const u8 ov12_0226E24C[][4] = {
+	{ 0xd, 0x14, 0, 0x1f},
+	{0x4, 0xb, 0, 0x1f}
+};
+
+__attribute__((aligned(4))) static const s16 ov12_0226E228[] = {0, 0xc0, 0x180};
+
+__attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E20C[] = {
+	{
+		.rect = {
+		.top = 18,
+		.bottom = 23,
+		.left = 0,
+		.right = 31
+		}
+	}
+};
+
+static const __attribute__((aligned(4))) S16Pos ov12_0226E2D8[] = {
+	{0x80, 0x4C},
+	{0x28, 0xA4},
+	{0xD8, 0xA4},
+	{0x80, 0xA8}
+};
+
+
+
+
+__attribute__((aligned(4))) static const int ov12_0226E64C[][4] = {
+	{ 1, 1, 1, 1 },
+	{ 0, 1, 0, 1 },
+	{ 0, 1, 1, 1 },
+	{ 1, 1, 1, 1 },
+	{ 1, 0, 0, 0 },
+	{ 1, 0, 1, 0 },
+	{ 0, 0, 1, 0 },
+	{ 1, 1, 0, 1 },
+	{ 0, 1, 1, 1 },
+	{ 1, 1, 0, 1 },
+	{ 1, 0, 1, 0 },
+	{ 0, 1, 0, 1 }
+};
+
+typedef struct NCLRIndex {
+    u16 baseIndex;
+    u16 animationIndex;
+} NCLRIndex;
+
+static const NCLRIndex sBackgroundPaletteIds[] = {
+	{ 0xF7, 0x10F },
+	{ 0xF8, 0x110 },
+	{ 0xF9, 0x111 },
+	{ 0xFA, 0x112 },
+	{ 0xFB, 0x113 },
+	{ 0xFC, 0x114 },
+	{ 0xFD, 0x115 },
+	{ 0xFE, 0x116 },
+	{ 0xFF, 0x117 },
+	{ 0x100, 0x118 },
+	{ 0x101, 0x119 },
+	{ 0x102, 0x11A },
+	{ 0x103, 0x11B },
+	{ 0x104, 0x11C },
+	{ 0x105, 0x11D },
+	{ 0x106, 0x11E },
+	{ 0x107, 0x11F },
+	{ 0x120, 0x121 },
+	{ -1, -1 },
+	{ -1, -1 },
+	{ -1, -1 },
+	{ -1, -1 },
+	{ -1, -1 }
+};
 
 BattleInput *BattleInput_New() {
     BattleInput *input = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleInput));
     MI_CpuFill8(input, 0, sizeof(BattleInput));
 
-    input->curMenuId = -1;
+    input->curMenuId = BATTLE_MENU_NONE;
 
     return input;
 }
 
-extern BgTemplate ov12_0226E5DC[4];
-
-void ov12_0226604C(BgConfig *config) {
+void BgConfig_InitBattleMenuBackgrounds(BgConfig *config) {
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
         InitBgFromTemplate(config, i + GF_BG_LYR_SUB_0, &ov12_0226E5DC[i], 0);
         BgFillTilemapBufferAndCommit(config, i + GF_BG_LYR_SUB_0, 767);
@@ -37,21 +1142,12 @@ void ov12_0226604C(BgConfig *config) {
     }
 }
 
-void ov12_022660A8(BgConfig *config) {
+void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config) {
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
         ToggleBgLayer(i + GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
         FreeBgTilemapBuffer(config, i + GF_BG_LYR_SUB_0);
     }
 }
-
-typedef struct NCLRIndex {
-    u16 baseIndex;
-    u16 animationIndex;
-} NCLRIndex;
-
-extern NCLRIndex ov12_0226E580[23];
-
-__attribute__((aligned(4))) extern const u16 ov12_0226E298[7];
 
 void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSystem, u32 gender, u8 *a4) {
     BattleInput *battleInput;
@@ -70,16 +1166,16 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     palette = BattleSystem_GetPaletteData(battleSystem);
     bgId = BattleSystem_GetBgId(battleSystem);
 
-    if (bgId >= NELEMS(ov12_0226E580)) {
+    if (bgId >= NELEMS(sBackgroundPaletteIds)) {
         bgId = 0;
         GF_ASSERT(FALSE);
     }
 
-    battleInput->unk574 = sub_02013534(13, HEAP_ID_BATTLE);
+    battleInput->fontSystem = FontSystem_NewInit(13, HEAP_ID_BATTLE);
     battleInput->unk6FC = SysTask_CreateOnMainQueue(ov12_022698C4, battleInput, 1310);
 
     NNSG2dScreenData *screenData;
-    void *v4;
+    void *narcData;
     int bottomScreenBgTilemapId;
 
     for (int i = 0; i < 7; i++) {
@@ -92,24 +1188,24 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
             bottomScreenBgTilemapId = ov12_0226E298[i];
         }
 
-        v4 = GfGfxLoader_GetScrnData(NARC_a_0_0_7, bottomScreenBgTilemapId, 1, &screenData, HEAP_ID_BATTLE);
+        narcData = GfGfxLoader_GetScrnData(NARC_a_0_0_7, bottomScreenBgTilemapId, 1, &screenData, HEAP_ID_BATTLE);
 
         MI_CpuCopy32(screenData->rawData, battleInput->screenBuffer[i], 0x800);
-        FreeToHeap(v4);
+        FreeToHeap(narcData);
     }
 
-    u16 *v7;
+    u16 *unfadedBuffer;
     int bottomScreenBgPaletteId = (BattleSystem_IsInFrontier(battleSystem)) ? 349 : 246;
     battleInput->paletteBuffer = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
 
     PaletteData_LoadNarc(palette, NARC_a_0_0_7, bottomScreenBgPaletteId, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 0, 0);
 
-    if (ov12_0226E580[bgId].baseIndex != 0xffff) {
-        PaletteData_LoadNarc(palette, NARC_a_0_0_7, ov12_0226E580[bgId].baseIndex, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 32, 0);
+    if (sBackgroundPaletteIds[bgId].baseIndex != 0xffff) {
+        PaletteData_LoadNarc(palette, NARC_a_0_0_7, sBackgroundPaletteIds[bgId].baseIndex, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 32, 0);
     }
 
-    v7 = PaletteData_GetUnfadedBuf(palette, PLTTBUF_SUB_BG);
-    MI_CpuCopy16(v7, battleInput->paletteBuffer, 0x200);
+    unfadedBuffer = PaletteData_GetUnfadedBuf(palette, PLTTBUF_SUB_BG);
+    MI_CpuCopy16(unfadedBuffer, battleInput->paletteBuffer, 0x200);
 
     for (int i = 0; i < 4; i++) {
         MI_CpuFill8(&battleInput->unk54[i].move, 0xFF, sizeof(BattleInputMove));
@@ -122,8 +1218,8 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     }
 
     NNSG2dPaletteData *nnsgPalette;
-    void *v14;
-    u16 v15;
+    void *narcDataPalette;
+    u16 animationIndex;
 
     battleInput->bgPalNormal = AllocFromHeap(HEAP_ID_BATTLE, 0x40);
     battleInput->bgPalTouch = AllocFromHeap(HEAP_ID_BATTLE, 0x40);
@@ -132,14 +1228,14 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     MI_CpuCopy16(&battleInput->paletteBuffer[7 * 16], &battleInput->bgPalNormal[16], 0x20);
 
     if (BattleSystem_IsInFrontier(battleSystem)) {
-        v15 = 0x15e;
-    } else if (ov12_0226E580[bgId].animationIndex != 0xffff) {
-        v15 = ov12_0226E580[bgId].animationIndex;
+        animationIndex = 0x15e;
+    } else if (sBackgroundPaletteIds[bgId].animationIndex != 0xffff) {
+        animationIndex = sBackgroundPaletteIds[bgId].animationIndex;
     } else {
-        v15 = 0x10f;
+        animationIndex = 0x10f;
     }
 
-    v14 = GfGfxLoader_GetPlttData(NARC_a_0_0_7, v15, &nnsgPalette, HEAP_ID_BATTLE);
+    narcDataPalette = GfGfxLoader_GetPlttData(NARC_a_0_0_7, animationIndex, &nnsgPalette, HEAP_ID_BATTLE);
 
     if (BattleSystem_IsInFrontier(battleSystem)) {
         MI_CpuCopy16(nnsgPalette->pRawData, battleInput->bgPalTouch, 0x40);
@@ -147,12 +1243,12 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
         MI_CpuCopy16(nnsgPalette->pRawData, battleInput->bgPalTouch, 0x20);
     }
 
-    FreeToHeap(v14);
+    FreeToHeap(narcDataPalette);
 
     TextFlags_ResetHasSpedUpInput();
     TextFlags_ResetHasContinuedInput();
 
-    battleInput->bgTask = SysTask_CreateOnMainQueue(ov12_02269954, battleInput, 55000);
+    battleInput->bgTask = SysTask_CreateOnMainQueue(Task_BattleMenuMessageWaitForTouchResponse, battleInput, 55000);
 
     return battleInput;
 }
@@ -163,10 +1259,10 @@ void BattleInput_Free(BattleInput *battleInput) {
     }
 
     ov12_02268DAC(battleInput);
-    ov12_02266804(battleInput);
-    ov12_02266490(battleInput);
+    BattleInput_FreeBallGaugeResources(battleInput);
+    BattleInput_FreeDefaultResources(battleInput);
 
-    sub_020135AC(battleInput->unk574);
+    sub_020135AC(battleInput->fontSystem);
     SysTask_Destroy(battleInput->unk6FC);
 
     for (int i = 0; i < 7; i++) {
@@ -181,7 +1277,7 @@ void BattleInput_Free(BattleInput *battleInput) {
     FreeToHeap(battleInput);
 }
 
-void ov12_02266390(BattleInput *battleInput) {
+void BattleInput_LoadDefaultResources(BattleInput *battleInput) {
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
@@ -211,7 +1307,7 @@ void ov12_02266390(BattleInput *battleInput) {
     }
 }
 
-void ov12_02266490(BattleInput *battleInput) {
+static void BattleInput_FreeDefaultResources(BattleInput *battleInput) {
     int i;
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
@@ -229,35 +1325,20 @@ void ov12_02266490(BattleInput *battleInput) {
     }
 }
 
-typedef struct BattleMenuTemplate {
-    u16 unk_00;
-    u16 paletteId;
-    u16 unk_04_val2[4];
-    u16 priority[4];
-    TouchscreenHitbox *touchscreenRect;
-    const int *unk_18;
-    const u8 *unk_1C;
-    int (*funcCursorMove)(BattleInput *battleInput, int param1);
-    void (*funcSaveCursorPos)(BattleInput *battleInput, int param1);
-    void (*funcCreateMenuObjects)(BattleInput *battleInput, int param1, int param2);
-    int (*unk_2C)(BattleInput *battleInput, int param1, int param2);
-} BattleMenuTemplate;
-extern const BattleMenuTemplate sBattleMenuTemplates[5];
-
-void ov12_02266508(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5) {
+void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5) {
     const BattleMenuTemplate *menuTemplate, *prevMenuTemplate;
 
     if (a5 != NULL) {
         MI_CpuCopy8(a5, &battleInput->menu, sizeof(BattleInputMenu));
     }
 
-    battleInput->invalidTouch = FALSE;
+    battleInput->isTouchDisabled = FALSE;
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
-    if (battleInput->curMenuId == -1) {
+    if (battleInput->curMenuId == BATTLE_MENU_NONE) {
         a4 = 1;
         prevMenuTemplate = NULL;
     } else {
@@ -289,9 +1370,7 @@ void ov12_02266508(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuI
     SysTask_CreateOnVWaitQueue(ov12_02269830, battleInput, 10);
 }
 
-extern ManagedSpriteTemplate sBallGaugeTemplate;
-extern ManagedSpriteTemplate sBallGaugeOpponentTemplate;
-void ov12_02266644(NARC *narc, BattleInput *battleInput) {
+void BattleInput_LoadBallGaugeResources(NARC *narc, BattleInput *battleInput) {
     int i;
 
     GF_ASSERT(battleInput->spriteBallGauge[0] == NULL && battleInput->spriteBallGaugeOpponent[0] == NULL);
@@ -316,17 +1395,17 @@ void ov12_02266644(NARC *narc, BattleInput *battleInput) {
         Sprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGaugeOpponent[i]->sprite, 246 + -12 * i, 9, ((192 + 80) << FX32_SHIFT));
     }
 
-    ov12_02266B34(battleInput);
+    BattleInput_DisableBallGauge(battleInput);
 
     GF_ASSERT(battleInput->ballTask == NULL);
-    battleInput->ballTask = SysTask_CreateOnMainQueue(ov12_022668D0, battleInput, 1300);
+    battleInput->ballTask = SysTask_CreateOnMainQueue(Task_AnimateBallGauge, battleInput, 1300);
 
     PaletteData *palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
     BattleCursor_LoadResources(spriteSystem, spriteManager, palette, HEAP_ID_BATTLE, 20413, 20035, 20406, 20395);
     battleInput->cursor = BattleCursor_New(spriteSystem, spriteManager, HEAP_ID_BATTLE, 20413, 20035, 20406, 20395, 5, 0);
 }
 
-void ov12_02266804(BattleInput *battleInput) {
+static void BattleInput_FreeBallGaugeResources(BattleInput *battleInput) {
     int i;
     SpriteSystem *spriteSystem;
     SpriteManager *spriteManager;
@@ -359,13 +1438,13 @@ void ov12_02266804(BattleInput *battleInput) {
     BattleCursor_Delete(battleInput->cursor);
 }
 
-void ov12_022668D0(SysTask *task, void *data) {
+static void Task_AnimateBallGauge(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     int i;
     BallGaugeAnimation *ballAnim;
 
     for (i = 0; i < 6; i++) {
-        ballAnim = &battleInput->unk6E0[i];
+        ballAnim = &battleInput->ballGaugeAnimation[i];
         switch (ballAnim->state) {
         case 0:
         default:
@@ -373,7 +1452,7 @@ void ov12_022668D0(SysTask *task, void *data) {
                 break;
             }
 
-            if (ballAnim->unk3 >= 87) {
+            if (ballAnim->percentExpToNextLevel >= 87) {
                 ballAnim->animationType = 0;
                 ballAnim->delay = 10;
             } else {
@@ -443,13 +1522,13 @@ void ov12_022668D0(SysTask *task, void *data) {
     }
 }
 
-void ov12_02266A50(BattleInput *battleInput, u8 *a1) {
+void BattleInput_SetPartyExpPercents(BattleInput *battleInput, u8 *percentExpToNextLevel) {
     for (int i = 0; i < 6; i++) {
-        battleInput->unk6E0[i].unk3 = a1[i];
+        battleInput->ballGaugeAnimation[i].percentExpToNextLevel = percentExpToNextLevel[i];
     }
 }
 
-void ov12_02266A6C(BattleInput *battleInput, u8 *a1, u8 *a2) {
+void BattleInput_UpdateBallGaugeAnimation(BattleInput *battleInput, u8 *a1, u8 *a2) {
     for (int i = 0; i < 6; i++) {
         Sprite_SetAnimCtrlSeq(battleInput->spriteBallGauge[i]->sprite, ov12_022684F8(a1[i]));
         Sprite_TickFrame(battleInput->spriteBallGauge[i]->sprite);
@@ -459,7 +1538,7 @@ void ov12_02266A6C(BattleInput *battleInput, u8 *a1, u8 *a2) {
     }
 }
 
-void ov12_02266AC0(BattleInput *battleInput) {
+void BattleInput_EnableBallGauge(BattleInput *battleInput) {
     GF_ASSERT(battleInput->spriteBallGauge[0] != NULL && battleInput->spriteBallGaugeOpponent[0] != NULL);
 
     int maxGauge;
@@ -481,7 +1560,7 @@ void ov12_02266AC0(BattleInput *battleInput) {
     }
 }
 
-void ov12_02266B34(BattleInput *battleInput) {
+void BattleInput_DisableBallGauge(BattleInput *battleInput) {
     GF_ASSERT(battleInput->spriteBallGauge[0] != NULL && battleInput->spriteBallGaugeOpponent[0] != NULL);
 
     for (int i = 0; i < 6; i++) {
@@ -490,16 +1569,16 @@ void ov12_02266B34(BattleInput *battleInput) {
     }
 }
 
-int ov12_02266B78(BattleInput *battleInput) {
+int BattleInput_CheckTouch(BattleInput *battleInput) {
     int ret, rectHit, paletteId;
     const BattleMenuTemplate *menuTemplate;
     int v5 = 0;
 
-    GF_ASSERT(battleInput->curMenuId != -1);
+    GF_ASSERT(battleInput->curMenuId != BATTLE_MENU_NONE);
 
     menuTemplate = &sBattleMenuTemplates[battleInput->curMenuId];
 
-    if ((menuTemplate->touchscreenRect == NULL) || (battleInput->invalidTouch == TRUE)) {
+    if ((menuTemplate->touchscreenRect == NULL) || (battleInput->isTouchDisabled == TRUE)) {
         return -1;
     }
 
@@ -532,7 +1611,7 @@ int ov12_02266B78(BattleInput *battleInput) {
                 menuTemplate->funcSaveCursorPos(battleInput, rectHit);
             }
 
-            MI_CpuClear8(&battleInput->cursorData, sizeof(BattleInputCurosrData));
+            MI_CpuClear8(&battleInput->cursorData, sizeof(BattleMenuCursor));
             BattleCursor_Disable(battleInput->cursor);
 
             if (v5 > 0) {
@@ -546,7 +1625,7 @@ int ov12_02266B78(BattleInput *battleInput) {
     return ret;
 }
 
-BOOL ov12_02266C64(BattleInput *battleInput) {
+BOOL BattleInput_CheckFeedbackDone(BattleInput *battleInput) {
     if ((battleInput->unkC == NULL) && (battleInput->unk10 == NULL) && (ov12_022698B0(battleInput) == 1)) {
         return TRUE;
     }
@@ -583,12 +1662,12 @@ int ov12_02266C84(int moveRange, int battlerId) {
     }
 }
 
-void ov12_02266D28(BattleInput *battleInput) {
+static void BattleInput_InitMenuWindow(BattleInput *battleInput) {
     GXS_SetVisibleWnd(GX_WNDMASK_W0);
     G2S_SetWndOutsidePlane(GX_WND_PLANEMASK_BG0 | GX_WND_PLANEMASK_BG1 | GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3 | GX_WND_PLANEMASK_OBJ, 1);
     G2S_SetWnd0InsidePlane(GX_WND_PLANEMASK_BG0 | GX_WND_PLANEMASK_BG1 | GX_WND_PLANEMASK_BG3 | GX_WND_PLANEMASK_OBJ, 1);
 
-    int x = 255 - (battleInput->unk710 / 0x100);
+    int x = 255 - (battleInput->scrollXEdge / 0x100);
 
     if (x < 0) {
         x = 0;
@@ -597,32 +1676,32 @@ void ov12_02266D28(BattleInput *battleInput) {
     G2S_SetWnd0Position(x, 0, 255, 192);
 }
 
-void ov12_02266D98(BattleInput *battleInput, int xSpeed, int xEnd) {
-    if (battleInput->unk710 == xEnd * 0x100) {
+void BattleInput_StartMenuScrollHorizontalTask(BattleInput *battleInput, int xSpeed, int xEnd) {
+    if (battleInput->scrollXEdge == xEnd * 0x100) {
         return;
     }
 
-    battleInput->unk714 = xSpeed;
-    battleInput->unk718 = xEnd << 8;
+    battleInput->scrollXSpeed = xSpeed;
+    battleInput->scrollXEnd = xEnd << 8;
 
-    SysTask_CreateOnMainQueue(ov12_02266DC4, battleInput, 1200);
+    SysTask_CreateOnMainQueue(Task_BattleMenuScrollHorizontal, battleInput, 1200);
 }
 
-void ov12_02266DC4(SysTask *task, void *data) {
+void Task_BattleMenuScrollHorizontal(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     int isFinished = 0;
     BgConfig *bgConfig;
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
-    battleInput->unk710 += battleInput->unk714;
+    battleInput->scrollXEdge += battleInput->scrollXSpeed;
 
-    if (((battleInput->unk714 <= 0) && (battleInput->unk710 <= battleInput->unk718)) || ((battleInput->unk714 > 0) && (battleInput->unk710 >= battleInput->unk718))) {
-        battleInput->unk710 = battleInput->unk718;
+    if (((battleInput->scrollXSpeed <= 0) && (battleInput->scrollXEdge <= battleInput->scrollXEnd)) || ((battleInput->scrollXSpeed > 0) && (battleInput->scrollXEdge >= battleInput->scrollXEnd))) {
+        battleInput->scrollXEdge = battleInput->scrollXEnd;
         isFinished = 1;
     }
 
-    BgSetPosTextAndCommit(bgConfig, 6, BG_POS_OP_SET_X, battleInput->unk710 / 0x100);
-    ov12_02266D28(battleInput);
+    BgSetPosTextAndCommit(bgConfig, 6, BG_POS_OP_SET_X, battleInput->scrollXEdge / 0x100);
+    BattleInput_InitMenuWindow(battleInput);
 
     if (isFinished == 1) {
         BgFillTilemapBufferAndCommit(bgConfig, 7, (0x6000 / 0x20 - 1));
@@ -634,11 +1713,11 @@ void ov12_02266DC4(SysTask *task, void *data) {
     }
 }
 
-void ov12_02266E6C(BattleInput *battleInput, int battlerId) {
+static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId) {
     BOOL ret;
     BattleMenuSlideIn *menuSlideIn;
 
-    battleInput->invalidTouch = TRUE;
+    battleInput->isTouchDisabled = TRUE;
 
     G2S_SetWndOutsidePlane(GX_WND_PLANEMASK_BG0 | GX_WND_PLANEMASK_BG1 | GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
     G2S_SetWnd0InsidePlane(GX_WND_PLANEMASK_BG2 | GX_WND_PLANEMASK_BG3, 1);
@@ -651,13 +1730,13 @@ void ov12_02266E6C(BattleInput *battleInput, int battlerId) {
     MI_CpuClear8(menuSlideIn, sizeof(BattleMenuSlideIn));
 
     menuSlideIn->battleInput = battleInput;
-    menuSlideIn->unk_12 = battlerId;
+    menuSlideIn->battlerId = battlerId;
     menuSlideIn->unk_08 = -(255 * 100);
     menuSlideIn->unk_0A = (40 * 100);
     menuSlideIn->unk_0C = ((255 * 100) - menuSlideIn->unk_08) / 100;
     menuSlideIn->unk_0E = ((40 * 100) - menuSlideIn->unk_0A) / 100;
 
-    PlaySE(1806);
+    PlaySE(SEQ_SE_DP_SLIDEIN);
     SysTask_CreateOnMainQueue(ov12_02269568, menuSlideIn, 1210);
 
     ret = Main_SetHBlankIntrCB(ov12_02269774, menuSlideIn);
@@ -666,10 +1745,10 @@ void ov12_02266E6C(BattleInput *battleInput, int battlerId) {
     menuSlideIn->unk_04 = SysTask_CreateOnVBlankQueue(ov12_02269668, menuSlideIn, 10);
 }
 
-void ov12_02266F70(BattleInput *battleInput, int a1, int a2) {
+void BattleInput_CreateMenuObjectsInitial(BattleInput *battleInput, int a1, int a2) {
     int battlerType = battleInput->menu.main.battlerType;
     ov12_02266F84(battleInput, a1, a2);
-    ov12_02266E6C(battleInput, battlerType);
+    BattleInput_InitMenuSlideIn(battleInput, battlerType);
 }
 
 void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
@@ -790,7 +1869,7 @@ void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
             StringExpandPlaceholders(format, strFormated, strBallsRemaining);
             BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, 0, 0x90800, 3, 0x4e37, 0xE0, 0x10, 0, 0);
             String_Delete(strBallsRemaining);
-            ov12_0226AC70(battleInput);
+            BattleInput_CreateBugContestGraphics(battleInput);
             String_Delete(strFormated);
         }
     }
@@ -800,7 +1879,7 @@ void ov12_02267388(BattleInput *battleInput, int param1, int param2) {
     int battlerType = battleInput->menu.main.battlerType;
 
     ov12_0226739C(battleInput, param1, param2);
-    ov12_02266E6C(battleInput, battlerType);
+    BattleInput_InitMenuSlideIn(battleInput, battlerType);
 }
 
 void ov12_0226739C(BattleInput *battleInput, int param1, int param2) {
@@ -822,7 +1901,7 @@ void ov12_02267404(BattleInput *battleInput, int param1, int param2) {
     int battlerType = battleInput->menu.main.battlerType;
 
     ov12_02267418(battleInput, param1, param2);
-    ov12_02266E6C(battleInput, battlerType);
+    BattleInput_InitMenuSlideIn(battleInput, battlerType);
 }
 
 void ov12_02267418(BattleInput *battleInput, int param1, int param2) {
@@ -842,14 +1921,11 @@ void ov12_02267418(BattleInput *battleInput, int param1, int param2) {
     sub_020137C0(battleInput->textObj[2].unk0, 0);
 }
 
-extern __attribute__((aligned(4))) const u16 ov12_0226E308[4][2];
-extern __attribute__((aligned(4))) const u16 ov12_0226E2C8[8][2];
-
 void ov12_0226748C(BattleInput *battleInput, int param1, int param2) {
     BattleInputFightMenu *fightMenu;
     int i;
     MsgData *msgLoader;
-    BattleInput_UnkSub54 *moveDisplay;
+    BattleInputMoveMemory *moveDisplay;
     int ppColor;
 
     fightMenu = &battleInput->menu.fight;
@@ -1056,9 +2132,6 @@ void ov12_02267B40(BattleInput *battleInput, int param1, int param2) {
     String_Delete(v4);
 }
 
-// note: these two are the same array
-extern __attribute__((aligned(4))) u16 ov12_0226E37C[5][2];
-extern __attribute__((aligned(4))) u16 ov12_0226E370[][2];
 void ov12_02267C24(BattleInput *battleInput, int param1, int param2) {
     BattleInputTargetScreen *pokemonMenu;
     int i;
@@ -1136,13 +2209,10 @@ void ov12_02267C24(BattleInput *battleInput, int param1, int param2) {
     String_Delete(v4);
 
     String *strCancel = NewString_ReadMsgData(msgLoader, 930); // CANCEL
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[4], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, ov12_0226E37C[1][0], ov12_0226E37C[1][1], 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[4], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, ov12_0226E370[4][0], ov12_0226E370[4][1], 1, NULL);
     String_Delete(strCancel);
 }
 
-extern __attribute__((aligned(4))) s16 ov12_0226E3D8[][3];
-extern __attribute__((aligned(4))) u8 ov12_0226E318[][4];
-extern __attribute__((aligned(4))) S16Pos ov12_0226E2D8[];
 int ov12_02267E14(BattleInput *battleInput, int param1, int param2) {
     int textObjId, frameType, battler;
 
@@ -1196,13 +2266,12 @@ int ov12_02267E14(BattleInput *battleInput, int param1, int param2) {
     return param1;
 }
 
-extern __attribute__((aligned(4))) s16 ov12_0226E428[5][3];
-extern __attribute__((aligned(4))) const TouchscreenHitbox ov12_0226E398[5];
+
 
 int ov12_02267EF0(BattleInput *battleInput, int param1, int param2) {
     BattleInputFightMenu *moveMenu;
     u32 v2;
-    s16 *offsets;
+    const s16 *offsets;
     const void *touchscreenRect;
 
     if (param1 == 0xffffffff) {
@@ -1248,9 +2317,6 @@ int ov12_02267EF0(BattleInput *battleInput, int param1, int param2) {
     return param1;
 }
 
-extern __attribute__((aligned(4))) s16 ov12_0226E286[2][3];
-extern __attribute__((aligned(4))) u8 ov12_0226E24C[2][4];
-
 int ov12_02267FA0(BattleInput *battleInput, int param1, int param2) {
     int textObjId;
 
@@ -1285,9 +2351,6 @@ int ov12_02267FA0(BattleInput *battleInput, int param1, int param2) {
 
     return param1;
 }
-
-extern __attribute__((aligned(4))) s16 ov12_0226E408[][3];
-extern TouchscreenHitbox ov12_0226E348[];
 
 int ov12_02268024(BattleInput *battleInput, int param1, int param2) {
     BattleInputTargetScreen *pokemonMenu;
@@ -1352,9 +2415,6 @@ int ov12_02268024(BattleInput *battleInput, int param1, int param2) {
     return param1;
 }
 
-extern s16 ov12_0226E228[];
-extern TouchscreenHitbox ov12_0226E20C[];
-
 int ov12_02268130(BattleInput *battleInput, int param1, int param2) {
     switch (param1) {
     case 0xffffffff:
@@ -1368,7 +2428,7 @@ int ov12_02268130(BattleInput *battleInput, int param1, int param2) {
     ov12_02268E84(ov12_02268F58, battleInput);
 
     battleInput->unk700.unk.unk4 = ov12_0226E228;
-    battleInput->unk700.unk.unk8 = &ov12_0226E20C[0];
+    battleInput->unk700.unk.unk8 = &ov12_0226E20C;
     battleInput->unk700.unk.unk10 = 6;
     battleInput->unk700.unk.ret = param1;
     battleInput->unk700.unk.unk11 = 0;
@@ -1423,9 +2483,6 @@ void ov12_02268264(BattleInput *battleInput) {
         battleInput->unk_6EC = NULL;
     }
 }
-
-extern ManagedSpriteTemplate ov12_0226E4E4;
-extern __attribute__((aligned(4))) u16 ov12_0226E328[][2];
 
 ManagedSprite *ov12_022682BC(BattleInput *battleInput, Pokemon *pokemon, int battlerType, int hp, int maxHp, int status) {
     SpriteSystem *spriteSystem;
@@ -1613,7 +2670,7 @@ void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObjec
 
     y += (((192 + 80) << FX32_SHIFT) >> FX32_SHIFT) - 8;
 
-    fontInit.unk_00 = battleInput->unk574;
+    fontInit.unk_00 = battleInput->fontSystem;
     fontInit.unk_04 = &window;
     fontInit.unk_08 = SpriteManager_GetSpriteList(spriteManager);
     fontInit.unk_0C = SpriteManager_FindPlttResourceProxy(spriteManager, param6);
@@ -1710,7 +2767,7 @@ void ov12_022686BC(BattleInput *battleInput) {
     }
 }
 
-BattleInput_UnkSub54 *ov12_02268798(BattleInput *battleInput, int battlerId) {
+BattleInputMoveMemory *ov12_02268798(BattleInput *battleInput, int battlerId) {
     if (battlerId >= 2) {
         battlerId -= 2;
     }
@@ -1741,7 +2798,7 @@ void ov12_022687AC(BattleInput *battleInput) {
 }
 
 void ov12_0226885C(BattleInput *battleInput, int battlerId, const BattleInputMove *moveDisplay) {
-    BattleInput_UnkSub54 *moveDisplayObj;
+    BattleInputMoveMemory *moveDisplayObj;
     void *charData;
     NNSG2dCharacterData *charDataNNS;
     int i, v3, moveType;
@@ -1816,8 +2873,6 @@ void ov12_02268A64(BattleInput *battleInput, String *moveName, u32 param2, Battl
     AddTextPrinterParameterizedWithColorAndSpacing(&param3->window, param2, moveName, 0, 0, 0xFF, textColor, 0, 0, NULL);
 }
 
-extern ManagedSpriteTemplate ov12_0226E4B0;
-extern __attribute__((aligned(4))) u16 ov12_0226E2B8[][2];
 void ov12_02268AD0(BattleInput *battleInput) {
     int i;
     SpriteSystem *renderer;
@@ -1825,7 +2880,7 @@ void ov12_02268AD0(BattleInput *battleInput) {
     ManagedSpriteTemplate typeIconTemplate;
     BattleInputFightMenu *moveMenu;
     int type;
-    BattleInput_UnkSub54 *moveDisplayObj;
+    BattleInputMoveMemory *moveDisplayObj;
 
     moveMenu = &battleInput->menu.fight;
     renderer = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
@@ -1834,7 +2889,7 @@ void ov12_02268AD0(BattleInput *battleInput) {
     typeIconTemplate = ov12_0226E4B0;
 
     for (i = 0; i < 4; i++) {
-        GF_ASSERT(battleInput->unk6A0[i] == 0);
+        GF_ASSERT(battleInput->spriteTypeIcons[i] == 0);
 
         if (moveMenu->moveNo[i] != 0) {
             type = GetMoveAttr(moveMenu->moveNo[i], MOVEATTR_TYPE);
@@ -1842,34 +2897,31 @@ void ov12_02268AD0(BattleInput *battleInput) {
             typeIconTemplate.x = ov12_0226E2B8[i][0];
             typeIconTemplate.y = ov12_0226E2B8[i][1];
 
-            battleInput->unk6A0[i] = sub_020777C8(renderer, spriteManager, type, &typeIconTemplate);
+            battleInput->spriteTypeIcons[i] = sub_020777C8(renderer, spriteManager, type, &typeIconTemplate);
 
-            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->unk6A0[i], typeIconTemplate.x, typeIconTemplate.y, ((192 + 80) << FX32_SHIFT));
+            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteTypeIcons[i], typeIconTemplate.x, typeIconTemplate.y, ((192 + 80) << FX32_SHIFT));
 
-            NNSG2dImageProxy *proxy = Sprite_GetImageProxy(battleInput->unk6A0[i]->sprite);
+            NNSG2dImageProxy *proxy = Sprite_GetImageProxy(battleInput->spriteTypeIcons[i]->sprite);
 
             MI_CpuCopy16(moveDisplayObj->typeIcon[i], (void *)(G2S_GetOBJCharPtr() + (u32)proxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DSUB]), sub_0208805C(6));
         }
     }
 }
 
-void ov12_02268BB8(BattleInput *battleInput) {
+void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput) {
     int i;
-    SpriteSystem *renderer;
-    SpriteManager *spriteManager;
-
-    renderer = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
-    spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
+    SpriteSystem *renderer = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
+    SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
     for (i = 0; i < 4; i++) {
-        if (battleInput->unk6A0[i] != NULL) {
-            sub_020777F8(battleInput->unk6A0[i]);
-            battleInput->unk6A0[i] = NULL;
+        if (battleInput->spriteTypeIcons[i] != NULL) {
+            thunk_ManagedSprite_DeleteAndFreeResources(battleInput->spriteTypeIcons[i]);
+            battleInput->spriteTypeIcons[i] = NULL;
         }
     }
 }
 
-void ov12_02268BEC(BattleInput *battleInput) {
+void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput) {
     int i;
     SpriteSystem *renderer;
     SpriteManager *spriteManager;
@@ -1878,10 +2930,10 @@ void ov12_02268BEC(BattleInput *battleInput) {
     spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
     for (i = 0; i < 4; i++) {
-        if (battleInput->unk6B0[i] != NULL) {
-            sub_02077870(battleInput->unk6B0[i]);
+        if (battleInput->spriteCategoryIcons[i] != NULL) {
+            sub_02077870(battleInput->spriteCategoryIcons[i]);
             sub_02077868(spriteManager, 20029 + i);
-            battleInput->unk6B0[i] = NULL;
+            battleInput->spriteCategoryIcons[i] = NULL;
         }
     }
 }
@@ -1890,8 +2942,7 @@ void ov12_02268C30(BattleInput *battleInput, int moveType, int movePos) {
     ov06_0221BA1C(BattleSystem_GetPaletteData(battleInput->battleSystem), moveType, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 8 + movePos);
 }
 
-extern __attribute__((aligned(4))) s16 ov12_0226E258[];
-extern TouchscreenHitbox ov12_0226E2A8[];
+
 void ov12_02268C4C(BattleInput *battleInput, int movePos) {
     PaletteData *palette;
     int i;
@@ -1904,29 +2955,9 @@ void ov12_02268C4C(BattleInput *battleInput, int movePos) {
     }
 }
 
-// Temporary for decomp purposes
-typedef struct TempBattleInputStruct {
-    u8 unk_00[2][1];
-    u8 unk_02[4];
-    u8 unk_06[4];
-} TempBattleInputStruct;
-
-extern __attribute__((aligned(4))) TempBattleInputStruct ov12_0226E1FC;
-extern __attribute__((aligned(4))) s16 ov12_0226E238[];
-extern TouchscreenHitbox ov12_0226E2F8[];
 void ov12_02268CA0(BattleInput *battleInput, int param1) {
     PaletteData *palette;
-    u8 paletteNo[4]; // ={ 6, 12, 13, 5 };
-
-    // Temporary for decomp purposes
-    u8 tmp1, tmp2;
-    paletteNo[0] = ov12_0226E1FC.unk_06[0];
-    paletteNo[1] = ov12_0226E1FC.unk_06[1];
-    tmp1 = ov12_0226E1FC.unk_06[2];
-    tmp2 = ov12_0226E1FC.unk_06[3];
-    paletteNo[2] = tmp1;
-    paletteNo[3] = tmp2;
-    //
+    const u8 paletteNo[] ={ 6, 12, 13, 5 };
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
@@ -1960,15 +2991,15 @@ void ov12_02268D88(BattleInput *battleInput, int param1, int param2) {
 }
 
 void ov12_02268DAC(BattleInput *battleInput) {
-    ov12_02268BB8(battleInput);
-    ov12_02268BEC(battleInput);
+    BattleInput_DeleteAndFreeTypeIconGraphics(battleInput);
+    BattleInput_DeleteAndFreeCategoryIconGraphics(battleInput);
     ov12_02268684(battleInput);
     ov12_02268214(battleInput);
     ov12_02268264(battleInput);
     ov12_0226AD60(battleInput);
 }
 
-__attribute__((aligned(4))) extern int ov12_0226E64C[][4];
+
 void ov12_02268DD4(BattleInput *battleInput, u8 *param1, int param2) {
     BattleInputTargetScreen *pokemonMenu;
     int i;
@@ -2018,7 +3049,7 @@ void ov12_02268E2C(BattleInput *battleInput, int param1, u8 *param2, int param3)
 void ov12_02268E84(SysTaskFunc task, BattleInput *battleInput) {
     GF_ASSERT(battleInput->unkC == NULL);
 
-    MI_CpuClear8(&battleInput->unk700, sizeof(BattleInputEffect));
+    MI_CpuClear8(&battleInput->unk700, sizeof(BattleInputFeedback));
     battleInput->unkC = SysTask_CreateOnMainQueue(task, battleInput, 1300);
 }
 
@@ -2026,7 +3057,7 @@ void ov12_02268EB8(BattleInput *battleInput) {
     if (battleInput->unkC != NULL) {
         SysTask_Destroy(battleInput->unkC);
         battleInput->unkC = NULL;
-        MI_CpuClear8(&battleInput->unk700, sizeof(BattleInputEffect));
+        MI_CpuClear8(&battleInput->unk700, sizeof(BattleInputFeedback));
     }
 }
 
@@ -2036,7 +3067,7 @@ void ov12_02268EDC(BattleInput *battleInput, int a1) {
 void ov12_02268EE0(BattleInput *battleInput, int a1) {
 }
 
-void ov12_02268EE4(BattleInput *battleInput, s16 *param1, TouchscreenHitbox *hitbox, int param3, int param4) {
+void ov12_02268EE4(BattleInput *battleInput, const s16 *param1, const TouchscreenHitbox *hitbox, int param3, int param4) {
     int j, i;
     BgConfig *bgConfig;
     u16 *src, *v4;
@@ -2177,10 +3208,10 @@ void ov12_022690A8(SysTask *task, void *data) {
             sub_020136B4(battleInput->textObj[v6].unk0, x, y + -2);
 
             if (moveNo != 0) {
-                Sprite_OffsetPositionXY(battleInput->unk6A0[v7]->sprite, 0, -2);
+                Sprite_OffsetPositionXY(battleInput->spriteTypeIcons[v7]->sprite, 0, -2);
 
-                if (battleInput->unk6B0[v7] != NULL) {
-                    Sprite_OffsetPositionXY(battleInput->unk6B0[v7]->sprite, 0, -2);
+                if (battleInput->spriteCategoryIcons[v7] != NULL) {
+                    Sprite_OffsetPositionXY(battleInput->spriteCategoryIcons[v7]->sprite, 0, -2);
                 }
             }
         } else {
@@ -2211,10 +3242,10 @@ void ov12_022690A8(SysTask *task, void *data) {
             sub_020136B4(battleInput->textObj[v6].unk0, x, y + 1);
 
             if (moveNo != 0) {
-                Sprite_OffsetPositionXY(battleInput->unk6A0[v7]->sprite, 0, 1);
+                Sprite_OffsetPositionXY(battleInput->spriteTypeIcons[v7]->sprite, 0, 1);
 
-                if (battleInput->unk6B0[v7] != NULL) {
-                    Sprite_OffsetPositionXY(battleInput->unk6B0[v7]->sprite, 0, 1);
+                if (battleInput->spriteCategoryIcons[v7] != NULL) {
+                    Sprite_OffsetPositionXY(battleInput->spriteCategoryIcons[v7]->sprite, 0, 1);
                 }
             }
         } else {
@@ -2363,7 +3394,7 @@ void ov12_02269568(SysTask *task, void *data) {
         }
         break;
     case 1:
-        menuSlideIn->battleInput->invalidTouch = FALSE;
+        menuSlideIn->battleInput->isTouchDisabled = FALSE;
         SysTask_Destroy(menuSlideIn->unk_04);
         HBlankInterruptDisable();
         GXS_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -2393,7 +3424,7 @@ void ov12_02269668(SysTask *task, void *data) {
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
 
-    if (menuSlideIn->unk_12 == 4) {
+    if (menuSlideIn->battlerId == 4) {
         v4 = 255 - menuSlideIn->unk_0C;
 
         if (v4 > 0) {
@@ -2433,7 +3464,7 @@ void ov12_02269668(SysTask *task, void *data) {
         v3 = 0;
     }
 
-    if (menuSlideIn->unk_12 == 4) {
+    if (menuSlideIn->battlerId == 4) {
         G2S_SetWnd0Position(0, 0, v2, (18 * 8));
     } else {
         if (v2 == 0) {
@@ -2463,7 +3494,7 @@ void ov12_02269774(void *data) {
     } else if (vCnt > 192) {
         BgConfig *bgConfig = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
 
-        if (menuSlideIn->unk_12 == 4) {
+        if (menuSlideIn->battlerId == 4) {
             v2 = 255 - menuSlideIn->unk_0C;
 
             if (v2 > 0) {
@@ -2551,15 +3582,15 @@ void ov12_022698C4(SysTask *task, void *data) {
     }
 }
 
-void ov12_02269954(SysTask *task, void *data) {
+void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     PaletteData *palette;
-    u16 *v2;
-    int v3;
-    int v4, v5;
+    u16 *fadedBuffer;
+    int size;
+    int msgSkip, msgWait;
 
-    v4 = TextFlags_GetHasSpedUpInput();
-    v5 = TextFlags_GetHasContinuedInput();
+    msgSkip = TextFlags_GetHasSpedUpInput();
+    msgWait = TextFlags_GetHasContinuedInput();
 
     TextFlags_ResetHasSpedUpInput();
     TextFlags_ResetHasContinuedInput();
@@ -2570,103 +3601,105 @@ void ov12_02269954(SysTask *task, void *data) {
         return;
     }
 
-    v2 = PaletteData_GetFadedBuf(palette, PLTTBUF_SUB_BG);
-    v3 = (16 - 8) * 2;
+    fadedBuffer = PaletteData_GetFadedBuf(palette, PLTTBUF_SUB_BG);
+    size = (16 - 8) * 2;
 
-    if (gSystem.touchHeld && ((v4 == 1) || (v5 == 1))) {
-        if (memcmp(&v2[8], &battleInput->bgPalNormal[8], v3) == 0) {
+    if (gSystem.touchHeld && ((msgSkip == 1) || (msgWait == 1))) {
+		// When using the touch screen to advance messages, set the background palette
+		// to the saved "background touch response" palette 
+        if (memcmp(&fadedBuffer[8], &battleInput->bgPalNormal[8], size) == 0) {
             if (BattleSystem_IsInFrontier(battleInput->battleSystem)) {
-                MI_CpuCopy16(&battleInput->bgPalTouch[0], &v2[0], 0x20);
-                MI_CpuCopy16(&battleInput->bgPalTouch[16], &v2[7 * 16], 0x20);
+                MI_CpuCopy16(&battleInput->bgPalTouch[0], &fadedBuffer[0], 0x20);
+                MI_CpuCopy16(&battleInput->bgPalTouch[16], &fadedBuffer[7 * 16], 0x20);
             } else {
-                MI_CpuCopy16(&battleInput->bgPalTouch[8], &v2[8], v3);
+                MI_CpuCopy16(&battleInput->bgPalTouch[8], &fadedBuffer[8], size);
             }
         }
     } else {
-        if (memcmp(&v2[8], &battleInput->bgPalTouch[8], v3) == 0) {
+		// If either the message isn't advanced this frame or if no touch input is 
+		// received, return the background palette to the "normal" palette
+        if (memcmp(&fadedBuffer[8], &battleInput->bgPalTouch[8], size) == 0) {
             if (BattleSystem_IsInFrontier(battleInput->battleSystem)) {
-                MI_CpuCopy16(&battleInput->bgPalNormal[0], &v2[0], 0x20);
-                MI_CpuCopy16(&battleInput->bgPalNormal[16], &v2[7 * 16], 0x20);
+                MI_CpuCopy16(&battleInput->bgPalNormal[0], &fadedBuffer[0], 0x20);
+                MI_CpuCopy16(&battleInput->bgPalNormal[16], &fadedBuffer[7 * 16], 0x20);
             } else {
-                MI_CpuCopy16(&battleInput->bgPalNormal[8], &v2[8], v3);
+                MI_CpuCopy16(&battleInput->bgPalNormal[8], &fadedBuffer[8], size);
             }
         }
     }
 }
 
 int ov12_02269A24(BattleInput *battleInput) {
-    BattleInputCurosrData *cursorMove;
+    BattleMenuCursor *cursor;
     const BattleMenuTemplate *menu;
 
-    cursorMove = &battleInput->cursorData;
+    cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
 
-    if (menu->funcCursorMove == NULL) {
+    if (menu->funcCursor == NULL) {
         return 0xffffffff;
     }
 
-    if (cursorMove->enabled == 0) {
+    if (cursor->enabled == 0) {
         if ((battleInput->keyPressed == 1) || (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_BUTTON_X | PAD_BUTTON_Y | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN))) {
             if (battleInput->keyPressed == 0) {
-                PlaySE(1500);
+                PlaySE(SEQ_SE_DP_SELECT);
             }
 
-            cursorMove->enabled = 1;
+            cursor->enabled = 1;
             battleInput->keyPressed = 0;
-            menu->funcCursorMove(battleInput, 1);
+            menu->funcCursor(battleInput, 1);
         }
 
         return 0xffffffff;
     }
 
-    return menu->funcCursorMove(battleInput, 0);
+    return menu->funcCursor(battleInput, 0);
 }
 
-extern __attribute__((aligned(4))) u8 ov12_0226E220[2][3];
-
 int ov12_02269A9C(BattleInput *battleInput, int param1) {
-    BattleInputCurosrData *cursorMove;
+    BattleMenuCursor *cursor;
     u32 key;
-    const BattleMenuTemplate *v2;
+    const BattleMenuTemplate *menu;
     int i, v4, v5;
     BattleCursorPosition *v6;
 
-    cursorMove = &battleInput->cursorData;
-    v2 = &sBattleMenuTemplates[battleInput->curMenuId];
+    cursor = &battleInput->cursorData;
+    menu = &sBattleMenuTemplates[battleInput->curMenuId];
     v5 = ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE);
     v6 = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, v5));
 
     if (param1 == 1) {
-        cursorMove->menuX = v6->commandX;
-        cursorMove->menuY = v6->commandY;
-        v4 = ov12_0226E220[cursorMove->menuY][cursorMove->menuX];
-        ov12_0226BB1C(battleInput->cursor, v2->touchscreenRect[v4].rect.left + 8, v2->touchscreenRect[v4].rect.right - 8, v2->touchscreenRect[v4].rect.top + 8, v2->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        cursor->menuX = v6->commandX;
+        cursor->menuY = v6->commandY;
+        v4 = ov12_0226E220[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         return -1;
     }
 
     switch (battleInput->curMenuId) {
     case 6:
     case 5:
-        key = ov12_0226A6EC(cursorMove, 1, 1, ov12_0226E220[0]);
+        key = ov12_0226A6EC(cursor, 1, 1, ov12_0226E220[0]);
         break;
     default:
-        v4 = ov12_0226E220[cursorMove->menuY][cursorMove->menuX];
+        v4 = ov12_0226E220[cursor->menuY][cursor->menuX];
 
         if ((v4 == 3) && (gSystem.newKeys & PAD_KEY_UP)) {
 
         } else {
-            key = ov12_0226A6EC(cursorMove, 3, 2, ov12_0226E220[0]);
+            key = ov12_0226A6EC(cursor, 3, 2, ov12_0226E220[0]);
 
             if ((key == 0) && (v4 == 0)) {
                 if (gSystem.newKeys & PAD_KEY_LEFT) {
-                    cursorMove->menuX = 0;
-                    cursorMove->menuY = 1;
-                    PlaySE(1500);
+                    cursor->menuX = 0;
+                    cursor->menuY = 1;
+                    PlaySE(SEQ_SE_DP_SELECT);
                     key = PAD_KEY_LEFT;
                 } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-                    cursorMove->menuX = 2;
-                    cursorMove->menuY = 1;
-                    PlaySE(1500);
+                    cursor->menuX = 2;
+                    cursor->menuY = 1;
+                    PlaySE(SEQ_SE_DP_SELECT);
                     key = PAD_KEY_RIGHT;
                 }
             }
@@ -2679,15 +3712,15 @@ int ov12_02269A9C(BattleInput *battleInput, int param1) {
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        v4 = ov12_0226E220[cursorMove->menuY][cursorMove->menuX];
-        ov12_0226BB1C(battleInput->cursor, v2->touchscreenRect[v4].rect.left + 8, v2->touchscreenRect[v4].rect.right - 8, v2->touchscreenRect[v4].rect.top + 8, v2->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        v4 = ov12_0226E220[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        return ov12_0226E220[cursorMove->menuY][cursorMove->menuX];
+        return ov12_0226E220[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         if (battleInput->unk6F3 == 1) {
-            for (i = 0; i < v2->touchscreenRect[i].rect.top != 0xff; i++) {
-                if (4 == v2->unk_18[i]) {
+            for (i = 0; i < menu->touchscreenRect[i].rect.top != 0xff; i++) {
+                if (4 == menu->unk_18[i]) {
                     return i;
                 }
             }
@@ -2721,34 +3754,34 @@ void ov12_02269C7C(BattleInput *battleInput, int param1) {
 }
 
 int ov12_02269CDC(BattleInput *battleInput, int param1) {
-    BattleInputCurosrData *cursorMove;
+    BattleMenuCursor *cursor;
     u32 key;
     const BattleMenuTemplate *menu;
     int v4;
 
-    cursorMove = &battleInput->cursorData;
+    cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
 
     if (param1 == 1) {
-        cursorMove->menuX = 0;
-        cursorMove->menuY = 0;
-        v4 = ov12_0226E1FC.unk_00[cursorMove->menuY][cursorMove->menuX];
+        cursor->menuX = 0;
+        cursor->menuY = 0;
+        v4 = ov12_0226E1FC[cursor->menuY][cursor->menuX];
         ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         return 0xffffffff;
     }
 
-    key = ov12_0226A6EC(cursorMove, 1, 2, ov12_0226E1FC.unk_00[0]);
+    key = ov12_0226A6EC(cursor, 1, 2, ov12_0226E1FC[0]);
 
     switch (key) {
     case PAD_KEY_UP:
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        v4 = ov12_0226E1FC.unk_00[cursorMove->menuY][cursorMove->menuX];
+        v4 = ov12_0226E1FC[cursor->menuY][cursor->menuX];
         ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        return ov12_0226E1FC.unk_00[cursorMove->menuY][cursorMove->menuX];
+        return ov12_0226E1FC[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         break;
     }
@@ -2756,10 +3789,8 @@ int ov12_02269CDC(BattleInput *battleInput, int param1) {
     return 0xffffffff;
 }
 
-extern __attribute__((aligned(4))) u8 ov12_0226E218[3][2];
-
 int ov12_02269DD4(BattleInput *battleInput, int param1) {
-    BattleInputCurosrData *cursorMove;
+    BattleMenuCursor *cursor;
     u32 keyPressed;
     const BattleMenuTemplate *menu;
     int index, i;
@@ -2768,21 +3799,21 @@ int ov12_02269DD4(BattleInput *battleInput, int param1) {
     BattleCursorPosition *cursorPos;
 
     cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE)));
-    cursorMove = &battleInput->cursorData;
+    cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
     moveMenu = &battleInput->menu.fight;
 
     if (param1 == 1) {
-        cursorMove->menuX = cursorPos->moveX;
-        cursorMove->menuY = cursorPos->moveY;
-        index = ov12_0226E218[cursorMove->menuY][cursorMove->menuX];
+        cursor->menuX = cursorPos->moveX;
+        cursor->menuY = cursorPos->moveY;
+        index = ov12_0226E218[cursor->menuY][cursor->menuX];
 
         if ((index != 0) && (moveMenu->moveNo[index - 1] == 0)) {
             cursorPos->moveX = 0;
             cursorPos->moveY = 0;
-            cursorMove->menuX = 0;
-            cursorMove->menuY = 0;
-            index = ov12_0226E218[cursorMove->menuY][cursorMove->menuX];
+            cursor->menuX = 0;
+            cursor->menuY = 0;
+            index = ov12_0226E218[cursor->menuY][cursor->menuX];
         }
 
         ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
@@ -2790,18 +3821,18 @@ int ov12_02269DD4(BattleInput *battleInput, int param1) {
     }
 
     MI_CpuCopy8(ov12_0226E218, v5, 3 * 2);
-    keyPressed = ov12_0226A6EC(cursorMove, 2, 3, v5[0]);
+    keyPressed = ov12_0226A6EC(cursor, 2, 3, v5[0]);
 
     switch (keyPressed) {
     case PAD_KEY_UP:
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        index = ov12_0226E218[cursorMove->menuY][cursorMove->menuX];
+        index = ov12_0226E218[cursor->menuY][cursor->menuX];
         ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        return ov12_0226E218[cursorMove->menuY][cursorMove->menuX];
+        return ov12_0226E218[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         for (i = 0; i < menu->touchscreenRect[i].rect.top != 0xff; i++) {
             if (0xff == menu->unk_18[i]) {
@@ -2837,10 +3868,8 @@ void ov12_02269F54(BattleInput *battleInput, int param1) {
     }
 }
 
-extern const __attribute__((aligned(4))) u8 ov12_0226E210[3][2];
-
 int ov12_02269FA4(BattleInput *battleInput, int param1) {
-    BattleInputCurosrData *cursorMove;
+    BattleMenuCursor *cursor;
     u32 keyPressed;
     const BattleMenuTemplate *menu;
     int v3, v4;
@@ -2856,7 +3885,7 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
     BattleCursorPosition *v30;
 
     v30 = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE)));
-    cursorMove = &battleInput->cursorData;
+    cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
 
     MI_CpuCopy8(ov12_0226E210, v8, 3 * 2);
@@ -2996,27 +4025,27 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
     if (param1 == 1) {
         if (v5 == 0) {
             if (v30->unk_06 == battleInput->unk6F0) {
-                cursorMove->menuX = v30->unk_04;
-                cursorMove->menuY = v30->unk_05;
+                cursor->menuX = v30->unk_04;
+                cursor->menuY = v30->unk_05;
             } else if (v6[5 - 2] == 1) {
-                cursorMove->menuX = 0;
-                cursorMove->menuY = 0;
+                cursor->menuX = 0;
+                cursor->menuY = 0;
             } else if (v6[3 - 2] == 1) {
-                cursorMove->menuX = 1;
-                cursorMove->menuY = 0;
+                cursor->menuX = 1;
+                cursor->menuY = 0;
             } else if (v6[2 - 2] == 1) {
-                cursorMove->menuX = 0;
-                cursorMove->menuY = 1;
+                cursor->menuX = 0;
+                cursor->menuY = 1;
             } else {
-                cursorMove->menuX = 1;
-                cursorMove->menuY = 1;
+                cursor->menuX = 1;
+                cursor->menuY = 1;
             }
 
-            v4 = ov12_0226E210[cursorMove->menuY][cursorMove->menuX];
+            v4 = ov12_0226E210[cursor->menuY][cursor->menuX];
             ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         } else {
-            cursorMove->menuX = 0;
-            cursorMove->menuY = 0;
+            cursor->menuX = 0;
+            cursor->menuY = 0;
 
             if (((v28 == -1) && (v27 == -1)) || (v17 == -1)) {
                 ov12_0226BB1C(battleInput->cursor, v13, v14, v15, v16, ((192 + 80) << FX32_SHIFT));
@@ -3035,9 +4064,9 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
     }
 
     if (v5 == 0) {
-        keyPressed = ov12_0226A6EC(cursorMove, v11, v12, v8[0]);
+        keyPressed = ov12_0226A6EC(cursor, v11, v12, v8[0]);
     } else {
-        keyPressed = ov12_0226A6EC(cursorMove, v11, v12, NULL);
+        keyPressed = ov12_0226A6EC(cursor, v11, v12, NULL);
     }
 
     switch (keyPressed) {
@@ -3046,10 +4075,10 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
         if (v5 == 0) {
-            v4 = ov12_0226E210[cursorMove->menuY][cursorMove->menuX];
+            v4 = ov12_0226E210[cursor->menuY][cursor->menuX];
             ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         } else {
-            if (cursorMove->menuY == 0) {
+            if (cursor->menuY == 0) {
                 if (((v27 == -1) && (v28 == -1)) || (v17 == -1)) {
                     ov12_0226BB1C(battleInput->cursor, v13, v14, v15, v16, ((192 + 80) << FX32_SHIFT));
                 } else if ((v28 != -1) && (v27 == -1)) {
@@ -3071,7 +4100,7 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
         break;
     case PAD_BUTTON_A:
         if (v5 == 1) {
-            if (cursorMove->menuY > 0) {
+            if (cursor->menuY > 0) {
                 return 4;
             } else {
                 for (v3 = 0; v3 < 4; v3++) {
@@ -3081,7 +4110,7 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
                 }
             }
         } else {
-            v4 = ov12_0226E210[cursorMove->menuY][cursorMove->menuX];
+            v4 = ov12_0226E210[cursor->menuY][cursor->menuX];
 
             if ((v4 == 4) || (v6[v4 - 0] == 1)) {
                 return v4;
@@ -3120,35 +4149,34 @@ void ov12_0226A594(BattleInput *battleInput, int param1) {
     }
 }
 
-extern __attribute__((aligned(4))) u8 ov12_0226E200[2][1];
 
 int ov12_0226A5F0(BattleInput *battleInput, int param1) {
-    BattleInputCurosrData *cursorMove;
+    BattleMenuCursor *cursor;
     u32 keyPressed;
     const BattleMenuTemplate *menu;
     int index;
 
-    cursorMove = &battleInput->cursorData;
+    cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
 
     if (param1 == 1) {
-        index = ov12_0226E200[cursorMove->menuY][cursorMove->menuX];
+        index = ov12_0226E200[cursor->menuY][cursor->menuX];
         ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         return 0xffffffff;
     }
 
-    keyPressed = ov12_0226A6EC(cursorMove, 1, 2, ov12_0226E200[0]);
+    keyPressed = ov12_0226A6EC(cursor, 1, 2, ov12_0226E200[0]);
 
     switch (keyPressed) {
     case PAD_KEY_UP:
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        index = ov12_0226E200[cursorMove->menuY][cursorMove->menuX];
+        index = ov12_0226E200[cursor->menuY][cursor->menuX];
         ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        index = ov12_0226E200[cursorMove->menuY][cursorMove->menuX];
+        index = ov12_0226E200[cursor->menuY][cursor->menuX];
         return index;
     case PAD_BUTTON_B:
         return 1;
@@ -3157,34 +4185,34 @@ int ov12_0226A5F0(BattleInput *battleInput, int param1) {
     return 0xffffffff;
 }
 
-u32 ov12_0226A6EC(BattleInputCurosrData *cursorMove, int xMax, int yMax, u8 *moveData) {
+u32 ov12_0226A6EC(BattleMenuCursor *cursor, int xMax, int yMax, const u8 *moveData) {
     int y, x;
     u32 key;
 
-    if (cursorMove->menuX >= xMax) {
-        cursorMove->menuX = xMax - 1;
+    if (cursor->menuX >= xMax) {
+        cursor->menuX = xMax - 1;
     }
 
-    if (cursorMove->menuY >= yMax) {
-        cursorMove->menuY = yMax - 1;
+    if (cursor->menuY >= yMax) {
+        cursor->menuY = yMax - 1;
     }
 
-    x = cursorMove->menuX;
-    y = cursorMove->menuY;
+    x = cursor->menuX;
+    y = cursor->menuY;
 
     if (gSystem.newKeys & PAD_KEY_UP) {
-        cursorMove->menuY--;
+        cursor->menuY--;
 
-        if (cursorMove->menuY < 0) {
-            cursorMove->menuY = 0;
+        if (cursor->menuY < 0) {
+            cursor->menuY = 0;
         }
 
         if (moveData != NULL) {
-            while (moveData[xMax * cursorMove->menuY + cursorMove->menuX] == 0xff) {
-                cursorMove->menuY--;
+            while (moveData[xMax * cursor->menuY + cursor->menuX] == 0xff) {
+                cursor->menuY--;
 
-                if (cursorMove->menuY < 0) {
-                    cursorMove->menuY = y;
+                if (cursor->menuY < 0) {
+                    cursor->menuY = y;
                     break;
                 }
             }
@@ -3192,18 +4220,18 @@ u32 ov12_0226A6EC(BattleInputCurosrData *cursorMove, int xMax, int yMax, u8 *mov
 
         key = PAD_KEY_UP;
     } else if (gSystem.newKeys & PAD_KEY_DOWN) {
-        cursorMove->menuY++;
+        cursor->menuY++;
 
-        if (cursorMove->menuY >= yMax) {
-            cursorMove->menuY = yMax - 1;
+        if (cursor->menuY >= yMax) {
+            cursor->menuY = yMax - 1;
         }
 
         if (moveData != NULL) {
-            while (moveData[xMax * cursorMove->menuY + cursorMove->menuX] == 0xff) {
-                cursorMove->menuY++;
+            while (moveData[xMax * cursor->menuY + cursor->menuX] == 0xff) {
+                cursor->menuY++;
 
-                if (cursorMove->menuY >= yMax) {
-                    cursorMove->menuY = y;
+                if (cursor->menuY >= yMax) {
+                    cursor->menuY = y;
                     break;
                 }
             }
@@ -3211,18 +4239,18 @@ u32 ov12_0226A6EC(BattleInputCurosrData *cursorMove, int xMax, int yMax, u8 *mov
 
         key = PAD_KEY_DOWN;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-        cursorMove->menuX--;
+        cursor->menuX--;
 
-        if (cursorMove->menuX < 0) {
-            cursorMove->menuX = 0;
+        if (cursor->menuX < 0) {
+            cursor->menuX = 0;
         }
 
         if (moveData != NULL) {
-            while (moveData[xMax * cursorMove->menuY + cursorMove->menuX] == 0xff) {
-                cursorMove->menuX--;
+            while (moveData[xMax * cursor->menuY + cursor->menuX] == 0xff) {
+                cursor->menuX--;
 
-                if (cursorMove->menuX < 0) {
-                    cursorMove->menuX = x;
+                if (cursor->menuX < 0) {
+                    cursor->menuX = x;
                     break;
                 }
             }
@@ -3230,18 +4258,18 @@ u32 ov12_0226A6EC(BattleInputCurosrData *cursorMove, int xMax, int yMax, u8 *mov
 
         key = PAD_KEY_LEFT;
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        cursorMove->menuX++;
+        cursor->menuX++;
 
-        if (cursorMove->menuX >= xMax) {
-            cursorMove->menuX = xMax - 1;
+        if (cursor->menuX >= xMax) {
+            cursor->menuX = xMax - 1;
         }
 
         if (moveData != NULL) {
-            while (moveData[xMax * cursorMove->menuY + cursorMove->menuX] == 0xff) {
-                cursorMove->menuX++;
+            while (moveData[xMax * cursor->menuY + cursor->menuX] == 0xff) {
+                cursor->menuX++;
 
-                if (cursorMove->menuX >= xMax) {
-                    cursorMove->menuX = x;
+                if (cursor->menuX >= xMax) {
+                    cursor->menuX = x;
                     break;
                 }
             }
@@ -3260,16 +4288,16 @@ u32 ov12_0226A6EC(BattleInputCurosrData *cursorMove, int xMax, int yMax, u8 *mov
         int prevIndex, index;
 
         prevIndex = moveData[xMax * y + x];
-        index = moveData[xMax * cursorMove->menuY + cursorMove->menuX];
+        index = moveData[xMax * cursor->menuY + cursor->menuX];
 
         if (prevIndex == index) {
-            cursorMove->menuX = x;
-            cursorMove->menuY = y;
+            cursor->menuX = x;
+            cursor->menuY = y;
         }
     }
 
-    if ((cursorMove->menuX != x) || (cursorMove->menuY != y)) {
-        PlaySE(1500);
+    if ((cursor->menuX != x) || (cursor->menuY != y)) {
+        PlaySE(SEQ_SE_DP_SELECT);
     } else if (key & 0xF0) {
         return 0;
     }
@@ -3285,7 +4313,7 @@ void ov12_0226A8EC(BattleInput *battleInput, int key) {
     battleInput->keyPressed = key;
 }
 
-extern int (*const ov12_0226E260[2])(BattleInput *);
+static int (* const ov12_0226E260[2])(BattleInput *) = { ov12_0226A960, ov12_0226A9B8 };
 int BattleInput_CatchingTutorialMain(BattleInput *battleInput) {
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
@@ -3371,11 +4399,6 @@ int ov12_0226AA10(BattleInput *battleInput) {
     return 0xffffffff;
 }
 
-typedef struct TempStruct_0226E23C {
-    u8 padding[0x2c];
-    u16 data[3][2];
-} TempStruct_0226E23C;
-extern const TempStruct_0226E23C ov12_0226E23C;
 void ov12_0226AA8C(BattleInput *battleInput, int index) {
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     PaletteData *palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
@@ -3407,20 +4430,18 @@ void ov12_0226AA8C(BattleInput *battleInput, int index) {
     String *src;
     MsgData *msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
     int i;
-    u16 stopMsgId[3][2];
-    stopMsgId = ov12_0226E23C.data;
-    /*const u16 stopMsgId[][2] = {
+    const u16 stopMsgId[][2] = {
         // Playback paused
         // Please wait
-        { pl_msg_00000368_01261, pl_msg_00000368_01262 },
+        { 1261, 1262 },
         // Data is corrupted
         // Playback canceled
-        { pl_msg_00000368_01263, pl_msg_00000368_01264 },
+        { 1263, 1264 },
         // Battle is too long
         // Playback canceled
-        { pl_msg_00000368_01265, pl_msg_00000368_01266 },
+        { 1265, 1266 },
     };
-*/
+
     for (i = 0; i < 2; i++) {
         if (battleInput->textObj[1 + i].unk0 != NULL) {
             GF_ASSERT(0);
@@ -3438,43 +4459,42 @@ u8 ov12_0226AC64(BattleInput *battleInput) {
     return battleInput->cancelRun;
 }
 
-extern ManagedSpriteTemplate ov12_0226E54C;
-extern ManagedSpriteTemplate ov12_0226E518;
-void ov12_0226AC70(BattleInput *battleInput) {
-    GF_ASSERT(battleInput->unk_6F0 == NULL);
+void BattleInput_CreateBugContestGraphics(BattleInput *battleInput) {
+    GF_ASSERT(battleInput->spriteBugNet == NULL);
 
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
     NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
+	//Bug catching contest net/ball graphics
     SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x157, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0x4e48);
     SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x158, 1, 0x4e36);
     SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x159, 1, 0x4e36);
 
     NARC_Delete(narc);
 
-    battleInput->unk_6F4 = SpriteSystem_NewSprite(spriteSystem, spriteManager, &ov12_0226E54C);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->unk_6F4, 0xd0, 16, 0x110000);
-    ManagedSprite_TickFrame(battleInput->unk_6F4);
+    battleInput->spriteSportBall = SpriteSystem_NewSprite(spriteSystem, spriteManager, &sSpriteTemplateSportBall);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteSportBall, 0xd0, 16, 0x110000);
+    ManagedSprite_TickFrame(battleInput->spriteSportBall);
 
-    battleInput->unk_6F0 = SpriteSystem_NewSprite(spriteSystem, spriteManager, &ov12_0226E518);
-    Sprite_SetAnimCtrlSeq(battleInput->unk_6F0->sprite, 1);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->unk_6F0, 0x58, 8, 0x110000);
-    ManagedSprite_TickFrame(battleInput->unk_6F0);
+    battleInput->spriteBugNet = SpriteSystem_NewSprite(spriteSystem, spriteManager, &sSpriteTemplateBugNet);
+    Sprite_SetAnimCtrlSeq(battleInput->spriteBugNet->sprite, 1);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBugNet, 0x58, 8, 0x110000);
+    ManagedSprite_TickFrame(battleInput->spriteBugNet);
 }
 
 void ov12_0226AD60(BattleInput *battleInput) {
-    if (battleInput->unk_6F0 == NULL || battleInput->unk_6F4 == NULL) {
+    if (battleInput->spriteBugNet == NULL || battleInput->spriteSportBall == NULL) {
         return;
     }
 
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
-    Sprite_DeleteAndFreeResources(battleInput->unk_6F0);
-    Sprite_DeleteAndFreeResources(battleInput->unk_6F4);
+    Sprite_DeleteAndFreeResources(battleInput->spriteBugNet);
+    Sprite_DeleteAndFreeResources(battleInput->spriteSportBall);
 
-    battleInput->unk_6F0 = NULL;
-    battleInput->unk_6F4 = NULL;
+    battleInput->spriteBugNet = NULL;
+    battleInput->spriteSportBall = NULL;
 
     SpriteManager_UnloadCharObjById(spriteManager, 0x4e48);
     SpriteManager_UnloadCellObjById(spriteManager, 0x4e36);

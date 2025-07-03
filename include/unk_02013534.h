@@ -27,7 +27,7 @@ typedef struct FontOAM {
     int unk_10;
 } FontOAM;
 
-void *sub_02013534(int, HeapID);
+void *FontSystem_NewInit(int, HeapID);
 void sub_02013A50(Window *window, int a1, int a2, int a3, int a4, void *a5);
 void sub_020135AC(void *a0);
 void sub_02013794(void *a0, u32 *a1, u32 *a2);

@@ -1817,7 +1817,7 @@ ov57_022386F0: ; 0x022386F0
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0x34
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r4, r1]
