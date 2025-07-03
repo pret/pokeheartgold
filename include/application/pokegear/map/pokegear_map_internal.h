@@ -160,7 +160,12 @@ typedef struct PokegearMapAppData {
     u8 unk_13D_1 : 1;                         // 0x13D
     u8 unk_13D_2 : 1;                         // 0x13D
     u8 unk_13D_3 : 1;                         // 0x13D
-    u8 filler_13E[0x14];                      // 0x13E
+    u8 filler_13E[0x4];                       // 0x13E
+    s16 unk_142;                              // 0x142
+    s16 unk_144;                              // 0x144
+    s16 unk_146;                              // 0x146
+    s16 unk_148;                              // 0x148
+    u8 filler_14A[8];                         // 0x14A
     u16 unk_152;                              // 0x152
     void *unk_154[6];                         // 0x154
     NNSG2dScreenData *unk_16C;                // 0x16C
@@ -184,6 +189,7 @@ BOOL ov101_021E818C(PokegearMapAppData *mapApp);
 void ov101_021E9270(PokegearAppData *pokegear, void *appData);
 void ov101_021E933C(PokegearMapAppData *mapApp);
 void ov101_021E9464(PokegearMapAppData *mapApp, s16 a1, s16 a2, u16 *a3, u16 *a4);
+void ov101_021E94C0(PokegearMapAppData *mapApp);
 void ov101_021E990C(PokegearMapAppData *mapApp);
 void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1);
 BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, u8 a1);

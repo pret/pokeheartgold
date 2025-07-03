@@ -27,464 +27,19 @@
 	.extern ov101_021EA238
 	.extern ov101_021EA4D0
 	.extern ov101_021EA608
-	.extern ov101_021EA6C4
 	.extern ov101_021EA794
-	.extern ov101_021EA874
 	.extern ov101_021EA8A8
 	.extern ov101_021EAD90
 	.extern ov101_021EAE54
 	.extern ov101_021EAF40
 	.extern ov101_021EB1E0
-	.extern ov101_021EB2D8
 	.extern ov101_021EB2FC
 	.extern ov101_021EB338
 	.extern ov101_021EB364
-	.extern ov101_021EB38C
-	.extern ov101_021EB428
 	.extern ov101_021EB4C4
-	.extern ov101_021EB654
-	.extern ov101_021EB784
 	.extern ov101_021EB94C
+	.extern ov101_021EBC1C
 	.extern ov101_021F7372
-
-	thumb_func_start ov101_021EBA44
-ov101_021EBA44: ; 0x021EBA44
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	add r5, r0, #0
-	add r4, r1, #0
-	bl System_GetTouchHeld
-	cmp r0, #0
-	bne _021EBA5C
-	mov r0, #0
-	add sp, #8
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021EBA5C:
-	ldr r0, _021EBBF8 ; =0x00000139
-	ldrb r0, [r5, r0]
-	lsl r1, r0, #0x1f
-	lsr r1, r1, #0x1f
-	bne _021EBA6C
-	lsl r0, r0, #0x1e
-	lsr r0, r0, #0x1f
-	beq _021EBA74
-_021EBA6C:
-	mov r0, #0
-	add sp, #8
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021EBA74:
-	ldr r0, _021EBBFC ; =ov101_021F7EAC
-	bl TouchscreenHitbox_FindRectAtTouchNew
-	add r6, r0, #0
-	mov r0, #0
-	mvn r0, r0
-	cmp r6, r0
-	beq _021EBB48
-	mov r0, #1
-	str r0, [r4]
-	add r0, r5, #0
-	bl ov101_021E94C0
-	cmp r6, #0
-	bne _021EBAC0
-	mov r1, #0x46
-	lsl r1, r1, #2
-	add r0, r5, #0
-	add r1, r5, r1
-	bl ov101_021EA6C4
-	cmp r0, #0
-	bne _021EBAAA
-	mov r0, #0
-	add sp, #8
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021EBAAA:
-	add r0, r5, #0
-	mov r1, #0
-	mov r2, #1
-	bl ov101_021EB38C
-	ldr r0, _021EBC00 ; =0x00000941
-	bl PlaySE
-	add sp, #8
-	mov r0, #7
-	pop {r4, r5, r6, pc}
-_021EBAC0:
-	mov r2, #0x4e
-	lsl r2, r2, #2
-	ldrb r3, [r5, r2]
-	mov r1, #1
-	add r0, r3, #0
-	bic r0, r1
-	lsl r1, r3, #0x1f
-	lsr r1, r1, #0x1f
-	mov r3, #1
-	eor r1, r3
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	and r1, r3
-	orr r0, r1
-	strb r0, [r5, r2]
-	mov r1, #4
-	add r0, r2, #2
-	strb r1, [r5, r0]
-	add r1, r2, #0
-	add r0, r5, #0
-	add r0, #0xdc
-	str r0, [sp]
-	sub r1, #0x28
-	sub r2, #0x26
-	add r3, r5, #0
-	ldrh r1, [r5, r1]
-	ldrh r2, [r5, r2]
-	add r0, r5, #0
-	add r3, #0xd8
-	bl ov101_021EC49C
-	ldr r2, _021EBBF8 ; =0x00000139
-	mov r0, #1
-	ldrb r3, [r5, r2]
-	mov r1, #1
-	bic r3, r0
-	add r0, r3, #0
-	orr r0, r1
-	strb r0, [r5, r2]
-	ldrb r3, [r5, r2]
-	mov r0, #2
-	orr r0, r3
-	strb r0, [r5, r2]
-	sub r2, r2, #1
-	ldrb r2, [r5, r2]
-	add r0, r5, #0
-	lsl r2, r2, #0x1f
-	lsr r2, r2, #0x1f
-	bl ov101_021EB38C
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldrb r0, [r5, r0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	cmp r0, #1
-	bne _021EBB3A
-	ldr r0, _021EBC04 ; =0x00000943
-	bl PlaySE
-	b _021EBB40
-_021EBB3A:
-	ldr r0, _021EBC08 ; =0x00000949
-	bl PlaySE
-_021EBB40:
-	mov r0, #0
-	add sp, #8
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021EBB48:
-	ldr r0, _021EBC0C ; =ov101_021F7EA4
-	bl TouchscreenHitbox_TouchNewIsIn
-	cmp r0, #0
-	bne _021EBB5A
-	mov r0, #0
-	add sp, #8
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021EBB5A:
-	mov r1, #1
-	add r0, sp, #4
-	strh r1, [r0]
-	add r0, sp, #4
-	str r0, [sp]
-	ldr r3, _021EBC10 ; =gSystem + 0x40
-	ldr r0, [r5, #0x10]
-	ldrh r2, [r3, #0x20]
-	ldrh r3, [r3, #0x22]
-	ldr r0, [r0, #0x74]
-	bl DoesPixelAtScreenXYMatchPtrVal
-	cmp r0, #0
-	bne _021EBB7E
-	mov r0, #0
-	add sp, #8
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021EBB7E:
-	ldr r0, _021EBC14 ; =0x00000945
-	bl PlaySE
-	mov r2, #0x11
-	lsl r2, r2, #4
-	add r1, r5, r2
-	add r2, r2, #2
-	add r0, r5, #0
-	add r2, r5, r2
-	bl ov101_021EC980
-	mov r3, #0x46
-	lsl r3, r3, #2
-	add r2, r3, #0
-	add r1, r5, r3
-	sub r2, #8
-	sub r3, r3, #6
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	add r0, r5, #0
-	lsl r2, r2, #0x18
-	lsl r3, r3, #0x18
-	lsr r2, r2, #0x18
-	lsr r3, r3, #0x18
-	bl ov101_021EA794
-	add r0, r5, #0
-	mov r1, #0
-	bl ov101_021EAD90
-	add r0, r5, #0
-	mov r1, #1
-	bl ov101_021EB1E0
-	ldr r2, _021EBC10 ; =gSystem + 0x40
-	ldr r0, _021EBC18 ; =0x00000142
-	ldrh r1, [r2, #0x20]
-	strh r1, [r5, r0]
-	ldrsh r3, [r5, r0]
-	add r1, r0, #4
-	strh r3, [r5, r1]
-	add r1, r0, #2
-	ldrh r2, [r2, #0x22]
-	add r0, r0, #6
-	strh r2, [r5, r1]
-	ldrsh r1, [r5, r1]
-	strh r1, [r5, r0]
-	add r0, r5, #0
-	bl ov101_021EBDEC
-	ldr r1, _021EBBF8 ; =0x00000139
-	mov r0, #8
-	ldrb r2, [r5, r1]
-	orr r0, r2
-	strb r0, [r5, r1]
-	mov r0, #1
-	str r0, [r4]
-	sub r0, r0, #2
-	add sp, #8
-	pop {r4, r5, r6, pc}
-	nop
-_021EBBF8: .word 0x00000139
-_021EBBFC: .word ov101_021F7EAC
-_021EBC00: .word 0x00000941
-_021EBC04: .word 0x00000943
-_021EBC08: .word 0x00000949
-_021EBC0C: .word ov101_021F7EA4
-_021EBC10: .word gSystem + 0x40
-_021EBC14: .word 0x00000945
-_021EBC18: .word 0x00000142
-	thumb_func_end ov101_021EBA44
-
-	thumb_func_start ov101_021EBC1C
-ov101_021EBC1C: ; 0x021EBC1C
-	push {r3, r4, r5, lr}
-	sub sp, #0x20
-	add r5, r0, #0
-	add r4, r1, #0
-	bl System_GetTouchHeld
-	cmp r0, #0
-	bne _021EBC34
-	mov r0, #0
-	add sp, #0x20
-	mvn r0, r0
-	pop {r3, r4, r5, pc}
-_021EBC34:
-	ldr r0, _021EBDD0 ; =0x00000139
-	ldrb r0, [r5, r0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	beq _021EBC46
-	mov r0, #0
-	add sp, #0x20
-	mvn r0, r0
-	pop {r3, r4, r5, pc}
-_021EBC46:
-	ldr r0, _021EBDD4 ; =ov101_021F7E94
-	bl TouchscreenHitbox_FindRectAtTouchNew
-	mov r1, #0
-	mvn r1, r1
-	cmp r0, r1
-	beq _021EBCAE
-	mov r0, #0x5e
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	mov r1, #8
-	str r1, [sp]
-	mov r1, #4
-	str r1, [sp, #4]
-	add r1, r0, #0
-	add r1, #0xc
-	str r1, [sp, #8]
-	mov r1, #0
-	str r1, [sp, #0xc]
-	mov r2, #0x18
-	str r2, [sp, #0x10]
-	ldrh r1, [r0]
-	mov r3, #0x14
-	lsl r1, r1, #0x15
-	lsr r1, r1, #0x18
-	str r1, [sp, #0x14]
-	ldrh r0, [r0, #2]
-	mov r1, #1
-	lsl r0, r0, #0x15
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x18]
-	ldr r0, [r5, #0x10]
-	ldr r0, [r0, #0x74]
-	bl CopyToBgTilemapRect
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x74]
-	bl ScheduleBgTilemapBufferTransfer
-	add r0, r5, #0
-	bl ov101_021E94C0
-	mov r0, #0x25
-	lsl r0, r0, #6
-	bl PlaySE
-	mov r0, #1
-	str r0, [r4]
-	add sp, #0x20
-	mov r0, #4
-	pop {r3, r4, r5, pc}
-_021EBCAE:
-	ldr r0, _021EBDD8 ; =ov101_021F7EA8
-	bl TouchscreenHitbox_TouchNewIsIn
-	cmp r0, #0
-	bne _021EBCC0
-	mov r0, #0
-	add sp, #0x20
-	mvn r0, r0
-	pop {r3, r4, r5, pc}
-_021EBCC0:
-	mov r1, #1
-	add r0, sp, #0x1c
-	strh r1, [r0]
-	add r0, sp, #0x1c
-	str r0, [sp]
-	ldr r3, _021EBDDC ; =gSystem + 0x40
-	ldr r0, [r5, #0x10]
-	ldrh r2, [r3, #0x20]
-	ldrh r3, [r3, #0x22]
-	ldr r0, [r0, #0x74]
-	bl DoesPixelAtScreenXYMatchPtrVal
-	cmp r0, #0
-	bne _021EBCE4
-	mov r0, #0
-	add sp, #0x20
-	mvn r0, r0
-	pop {r3, r4, r5, pc}
-_021EBCE4:
-	ldr r0, _021EBDE0 ; =0x00000945
-	bl PlaySE
-	mov r0, #1
-	str r0, [r4]
-	ldrb r0, [r5, #0xd]
-	cmp r0, #2
-	bne _021EBD34
-	mov r2, #0x11
-	lsl r2, r2, #4
-	add r1, r5, r2
-	add r2, r2, #2
-	add r0, r5, #0
-	add r2, r5, r2
-	bl ov101_021EC980
-	mov r3, #0x46
-	lsl r3, r3, #2
-	add r2, r3, #0
-	add r1, r5, r3
-	sub r2, #8
-	sub r3, r3, #6
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	add r0, r5, #0
-	lsl r2, r2, #0x18
-	lsl r3, r3, #0x18
-	lsr r2, r2, #0x18
-	lsr r3, r3, #0x18
-	bl ov101_021EA794
-	add r0, r5, #0
-	mov r1, #1
-	bl ov101_021EAD90
-	add r0, r5, #0
-	mov r1, #1
-	bl ov101_021EB1E0
-	b _021EBDA0
-_021EBD34:
-	mov r2, #0x11
-	lsl r2, r2, #4
-	add r1, r5, r2
-	add r2, r2, #2
-	add r0, r5, #0
-	add r2, r5, r2
-	bl ov101_021EC980
-	mov r3, #0x46
-	lsl r3, r3, #2
-	add r2, r3, #0
-	add r1, r5, r3
-	sub r2, #8
-	sub r3, r3, #6
-	ldrsh r2, [r5, r2]
-	ldrsh r3, [r5, r3]
-	add r0, r5, #0
-	lsl r2, r2, #0x18
-	lsl r3, r3, #0x18
-	lsr r2, r2, #0x18
-	lsr r3, r3, #0x18
-	bl ov101_021EA8A8
-	add r0, r5, #0
-	mov r1, #0
-	bl ov101_021EAD90
-	add r0, r5, #0
-	mov r1, #1
-	bl ov101_021EB1E0
-	mov r2, #0x11
-	lsl r2, r2, #4
-	ldrh r1, [r5, r2]
-	add r2, r2, #2
-	ldrsh r2, [r5, r2]
-	add r0, r5, #0
-	sub r2, r2, #2
-	lsl r2, r2, #0x10
-	lsr r2, r2, #0x10
-	bl ov101_021EA874
-	add r4, r0, #0
-	cmp r4, #0
-	ble _021EBDA0
-	ldr r0, _021EBDE4 ; =0x00000941
-	bl PlaySE
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov101_021EB784
-	add sp, #0x20
-	pop {r3, r4, r5, pc}
-_021EBDA0:
-	ldr r2, _021EBDDC ; =gSystem + 0x40
-	ldr r0, _021EBDE8 ; =0x00000142
-	ldrh r1, [r2, #0x20]
-	strh r1, [r5, r0]
-	ldrsh r3, [r5, r0]
-	add r1, r0, #4
-	strh r3, [r5, r1]
-	ldrh r2, [r2, #0x22]
-	add r1, r0, #2
-	add r0, r0, #6
-	strh r2, [r5, r1]
-	ldrsh r1, [r5, r1]
-	strh r1, [r5, r0]
-	add r0, r5, #0
-	bl ov101_021EBDEC
-	ldr r1, _021EBDD0 ; =0x00000139
-	mov r0, #8
-	ldrb r2, [r5, r1]
-	orr r2, r0
-	strb r2, [r5, r1]
-	sub r0, #9
-	add sp, #0x20
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_021EBDD0: .word 0x00000139
-_021EBDD4: .word ov101_021F7E94
-_021EBDD8: .word ov101_021F7EA8
-_021EBDDC: .word gSystem + 0x40
-_021EBDE0: .word 0x00000945
-_021EBDE4: .word 0x00000941
-_021EBDE8: .word 0x00000142
-	thumb_func_end ov101_021EBC1C
 
 	thumb_func_start ov101_021EBDEC
 ov101_021EBDEC: ; 0x021EBDEC
@@ -6190,26 +5745,33 @@ ov101_021F7E8E: ; 0x021F7E8E
 	.byte 0x10, 0x07
 	.byte 0xFF, 0x00, 0x00, 0x00
 
+	.global ov101_021F7E94
 ov101_021F7E94: ; 0x021F7E94
-	.byte 0x98, 0xB8, 0xC2, 0xFE, 0xFF, 0x00, 0x00, 0x00
+	.byte 0x98, 0xB8, 0xC2, 0xFE
+	.byte 0xFF, 0x00, 0x00, 0x00
 
+	.global ov101_021F7E9C
 ov101_021F7E9C: ; 0x021F7E9C
 	.byte 0x01, 0x10, 0x01, 0x16
 	.byte 0x01, 0x07, 0x01, 0x0A
 
+	.global ov101_021F7EA4
 ov101_021F7EA4: ; 0x021F7EA4
 	.byte 0x08, 0x98, 0x08, 0xC8
-
-ov101_021F7EA8: ; 0x021F7EA8
 	.byte 0x10, 0x90, 0x28, 0xE0
 
+	.global ov101_021F7EAC
 ov101_021F7EAC: ; 0x021F7EAC
 	.byte 0x10, 0x40, 0xD8, 0xF8
-	.byte 0x58, 0x98, 0xD8, 0xF8, 0xFF, 0x00, 0x00, 0x00
+	.byte 0x58, 0x98, 0xD8, 0xF8
+	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F7EB8: ; 0x021F7EB8
-	.byte 0x18, 0x2C, 0x18, 0x28, 0x18, 0x2C, 0x80, 0x90
-	.byte 0x2C, 0x40, 0x18, 0x28, 0x2C, 0x40, 0x80, 0x90, 0xFF, 0x00, 0x00, 0x00
+	.byte 0x18, 0x2C, 0x18, 0x28
+	.byte 0x18, 0x2C, 0x80, 0x90
+	.byte 0x2C, 0x40, 0x18, 0x28
+	.byte 0x2C, 0x40, 0x80, 0x90
+	.byte 0xFF, 0x00, 0x00, 0x00
 
 ov101_021F7ECC: ; 0x021F7ECC
 	.byte 0x18, 0x2C, 0x18, 0x28
