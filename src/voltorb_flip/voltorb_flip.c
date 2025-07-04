@@ -160,7 +160,7 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, 1, work->heapId);
 
     int payout = GamePayout(work->game);
-    u16 coins = (u32)CheckCoins(work->coins);
+    u16 coins = (u32)Coins_GetValue(work->coins);
 
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
@@ -271,7 +271,7 @@ static BOOL ov122_021E5B5C(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 }
 
 BOOL ov122_021E5BA8(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    u32 coins = CheckCoins(work->coins);
+    u32 coins = Coins_GetValue(work->coins);
     if (coins >= 50000) {
         // "You’ve gathered 50,000 Coins. You cannot gather..."
         PrintTextWindow(work, msg_0039_00014, 1);
@@ -778,7 +778,7 @@ BOOL ov122_021E6594(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     ov122_021E8E40(work->unk240);
 
     int payout = GamePayout(work->game);
-    u16 coins = (u32)CheckCoins(work->coins);
+    u16 coins = (u32)Coins_GetValue(work->coins);
 
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
@@ -1026,12 +1026,12 @@ static BOOL AddCoinsToPayout(VoltorbFlipAppWork *work) {
 static BOOL AwardPayoutToPlayer(VoltorbFlipAppWork *work) {
     BOOL payoutDeducted; // only TRUE for incremental deduction
 
-    u16 coins = (u32)CheckCoins(work->coins);
+    u16 coins = (u32)Coins_GetValue(work->coins);
     u16 payout = GamePayout(work->game);
 
     if (System_GetTouchNew() || gSystem.newKeys != 0 || coins >= 50000) {
         DeductFromPayout(work->game, (u8)payout);
-        GiveCoins(work->coins, payout);
+        Coins_Add(work->coins, payout);
 
         int newTotal = coins + payout;
         if (newTotal > 50000) {
@@ -1046,7 +1046,7 @@ static BOOL AwardPayoutToPlayer(VoltorbFlipAppWork *work) {
     }
 
     if (payoutDeducted) {
-        GiveCoins(work->coins, 1);
+        Coins_Add(work->coins, 1);
         PrintCoins(work, COIN_DISPLAY_PAYOUT, (u16)(payout - 1));
         PrintCoins(work, COIN_DISPLAY_TOTAL, (u16)(coins + 1));
         if (payout % 4 == 0) {
@@ -1981,7 +1981,7 @@ static void ov122_021E8094(OverlayManager *man) {
     ov122_021E73FC(work);
     ov122_021E6B38(work);
 
-    u16 coins = (u32)CheckCoins(work->coins);
+    u16 coins = (u32)Coins_GetValue(work->coins);
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
     ov122_021E7AEC(work);
     ov122_021E7BD4(work);
