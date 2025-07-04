@@ -116,6 +116,8 @@ typedef struct PokegearMapAppData {
     u8 filler_0B0[4];                         // 0x0B0
     String *unk_0B4;                          // 0x0B4
     u8 unk_0B8;                               // 0x0B8
+    u8 unk_0B9;                               // 0x0B9
+    u8 unk_0BA;                               // 0x0BA
     TouchscreenListMenuSpawner *unk_0BC;      // 0x0BC
     LISTMENUITEM *unk_0C0;                    // 0x0C0
     TouchscreenListMenu *unk_0C4;             // 0x0C4
@@ -160,7 +162,8 @@ typedef struct PokegearMapAppData {
     u8 unk_13D_1 : 1;                         // 0x13D
     u8 unk_13D_2 : 1;                         // 0x13D
     u8 unk_13D_3 : 1;                         // 0x13D
-    u8 filler_13E[0x4];                       // 0x13E
+    s16 unk_13E;                              // 0x13E
+    s16 unk_140;                              // 0x140
     s16 unk_142;                              // 0x142
     s16 unk_144;                              // 0x144
     s16 unk_146;                              // 0x146
@@ -195,6 +198,7 @@ void ov101_021E9464(PokegearMapAppData *mapApp, s16 a1, s16 a2, u16 *a3, u16 *a4
 void ov101_021E94C0(PokegearMapAppData *mapApp);
 void ov101_021E990C(PokegearMapAppData *mapApp);
 void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1);
+void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, u8 a1);
 void ov101_021E9D74(PokegearMapAppData *mapApp, u8 a1);
 BOOL ov101_021E9E90(PokegearMapAppData *mapApp, u8 a1);

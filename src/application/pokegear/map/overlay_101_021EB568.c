@@ -20,6 +20,7 @@ s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 int ov101_021EC0AC(PokegearMapAppData *mapApp);
 int ov101_021EC304(PokegearMapAppData *mapApp);
 int ov101_021EC778(PokegearMapAppData *mapApp);
+void ov101_021EC944(PokegearMapAppData *mapApp);
 void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2);
 
 extern const TouchscreenHitbox ov101_021F7E94[2];
@@ -467,4 +468,90 @@ s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
         }
     }
     return ov101_021EBFF8(mapApp, a1);
+}
+
+int ov101_021EC0AC(PokegearMapAppData *mapApp) {
+    s16 sp8;
+    s16 sp0;
+    s16 spC;
+    s16 sp4;
+    s16 r6;
+    s16 r4;
+    s16 sp1C;
+    s16 sp18;
+    s16 sp10;
+    s16 sp14;
+
+    sp8 = gSystem.touchX;
+    sp0 = gSystem.touchY;
+    sp14 = (mapApp->unk_138_0 * 8 + 8) / 2;
+
+    if (mapApp->unk_138_0) {
+        sp10 = 9;
+    } else {
+        sp10 = 5;
+    }
+    if (mapApp->unk_13A != 0) {
+        mapApp->unk_0C8.unk_00 -= mapApp->unk_13E;
+        mapApp->unk_0C8.unk_04 -= mapApp->unk_140;
+        ov101_021E9BF4(mapApp, mapApp->unk_13E, mapApp->unk_140);
+        ov100_021E6E84(mapApp->unk_084);
+        mapApp->unk_138_7 = 1;
+        mapApp->unk_13A = 0;
+        return -1;
+    }
+    if (!System_GetTouchHeld()) {
+        mapApp->unk_139_3 = 0;
+        return -1;
+    }
+
+    spC = r6 = sp8 - mapApp->unk_142;
+    sp4 = r4 = sp0 - mapApp->unk_144;
+    if (r6 < 0) {
+        r6 *= -1;
+    }
+    if (r4 < 0) {
+        r4 *= -1;
+    }
+    r6 /= sp10;
+    r4 /= sp10;
+    sp1C = spC % sp10;
+    sp18 = sp4 % sp10;
+    if (r6 < 1 && r4 < 1) {
+        return -1;
+    }
+    mapApp->unk_13E = mapApp->unk_140 = 0;
+    if (r6 > 0) {
+        spC = ov101_021EBF98(mapApp, spC / sp10, r6);
+        if (spC != 0) {
+            mapApp->unk_0C8.unk_00 -= spC * sp14;
+            mapApp->unk_0C8.unk_2E -= spC;
+            mapApp->unk_0C8.unk_2C -= spC;
+            mapApp->unk_142 = sp8 - sp1C;
+            mapApp->unk_13A = 1;
+            mapApp->unk_13E = spC * sp14;
+        }
+    } else {
+        spC = 0;
+    }
+    if (r4 > 0) {
+        sp4 = ov101_021EC04C(mapApp, sp4 / sp10, r4);
+        if (sp4 != 0) {
+            mapApp->unk_0C8.unk_04 -= sp4 * sp14;
+            mapApp->unk_0C8.unk_2A -= sp4;
+            mapApp->unk_0C8.unk_28 -= sp4;
+            mapApp->unk_144 = sp0 - sp18;
+            mapApp->unk_13A = 1;
+            mapApp->unk_140 = sp4 * sp14;
+        }
+    } else {
+        sp4 = 0;
+    }
+    if (spC != 0 || sp4 != 0) {
+        ov101_021E9BF4(mapApp, spC * sp14, sp4 * sp14);
+        ov101_021EC944(mapApp);
+        ov100_021E6E84(mapApp->unk_084);
+        mapApp->unk_138_7 = 1;
+    }
+    return -1;
 }
