@@ -165,7 +165,10 @@ typedef struct PokegearMapAppData {
     s16 unk_144;                              // 0x144
     s16 unk_146;                              // 0x146
     s16 unk_148;                              // 0x148
-    u8 filler_14A[8];                         // 0x14A
+    s16 unk_14A;                              // 0x14A
+    s16 unk_14C;                              // 0x14C
+    s16 unk_14E;                              // 0x14E
+    s16 unk_150;                              // 0x150
     u16 unk_152;                              // 0x152
     void *unk_154[6];                         // 0x154
     NNSG2dScreenData *unk_16C;                // 0x16C

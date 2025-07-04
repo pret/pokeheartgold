@@ -12,7 +12,11 @@ int ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4)
 BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-void ov101_021EBDEC(PokegearMapAppData *mapApp);
+BOOL ov101_021EBDEC(PokegearMapAppData *mapApp);
+s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 a1);
+s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2);
+s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 a1);
+s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 int ov101_021EC0AC(PokegearMapAppData *mapApp);
 int ov101_021EC304(PokegearMapAppData *mapApp);
 int ov101_021EC778(PokegearMapAppData *mapApp);
@@ -310,4 +314,157 @@ int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     ov101_021EBDEC(mapApp);
     mapApp->unk_139_3 = 1;
     return -1;
+}
+
+BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
+    s16 sp0;
+    s16 r7;
+    s16 r0;
+    s16 r0_2;
+    s16 sp14;
+    s16 sp10;
+    u8 r5;
+    u8 r6;
+    u8 spC;
+    u8 sp8;
+    s16 sp18;
+    s16 sp4;
+    s16 r3;
+    s16 r12;
+    s16 r6_2;
+    s16 r6_3;
+    s16 r6_4;
+    s16 r6_5;
+
+    if (mapApp->unk_138_0) {
+        spC = 12;
+        sp8 = 8;
+    } else {
+        spC = 24;
+        sp8 = 17;
+    }
+    r5 = (8 * (1 + mapApp->unk_138_0));
+    r6 = r5 / 2;
+
+    sp0 = gSystem.touchX - mapApp->unk_132;
+    r7 = gSystem.touchY - mapApp->unk_131;
+
+    sp14 = (sp0 % r5) - r6;
+    sp10 = (r7 % r5) - r6;
+
+    r0 = sp0 / r5;
+    r0_2 = r7 / r5;
+
+    sp18 = mapApp->unk_112 - r0_2;
+    sp4 = mapApp->unk_112 + (sp8 - 1 - r0_2);
+    r12 = mapApp->unk_110 - r0;
+    r3 = mapApp->unk_110 + (spC - 1 - r0);
+
+    if (sp18 < mapApp->unk_104) {
+        sp18 = mapApp->unk_104;
+    }
+    if (r12 < mapApp->unk_100) {
+        r12 = mapApp->unk_100;
+    }
+    if (sp4 > mapApp->unk_106) {
+        sp4 = mapApp->unk_106;
+    }
+    if (r3 > mapApp->unk_102) {
+        r3 = mapApp->unk_102;
+    }
+
+    r6_2 = (mapApp->unk_112 - sp18) * r5 + sp10;
+    r6_5 = (mapApp->unk_110 - r12) * r5 + sp14;
+    r6_3 = (sp4 - mapApp->unk_112) * r5 + sp10;
+    r6_4 = (r3 - mapApp->unk_110) * r5 + sp14;
+
+    mapApp->unk_14A = r6_2;
+    mapApp->unk_14C = r6_3;
+    mapApp->unk_14E = r6_5;
+    mapApp->unk_150 = r6_4;
+    return FALSE;
+}
+
+s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 a1) {
+    s16 r4;
+    s16 r2;
+    s16 ret;
+
+    r2 = mapApp->unk_0C8.unk_2C - a1 + 1;
+    r4 = mapApp->unk_0C8.unk_2E - a1 - 1;
+    if (mapApp->unk_110 >= r2 && r4 >= mapApp->unk_110) {
+        return a1;
+    }
+    if (mapApp->unk_110 <= r2) {
+        ret = a1 + (r2 - mapApp->unk_110);
+    } else if (mapApp->unk_110 >= r4) {
+        // Your language server may flag ret as being conditionally uninitalized.
+        // This is technically not UB since logically
+        // this block here is the only other possibility.
+        ret = a1 - (mapApp->unk_110 - r4);
+    }
+    return ret;
+}
+
+s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
+    s16 r3;
+
+    if (a1 > 0) {
+        r3 = mapApp->unk_0C8.unk_2C - mapApp->unk_100;
+        if (r3 <= 0) {
+            return 0;
+        } else if (r3 < a2) {
+            return ov101_021EBF44(mapApp, r3);
+        }
+    } else {
+        r3 = mapApp->unk_102 - mapApp->unk_0C8.unk_2E;
+        if (r3 <= 0) {
+            return 0;
+        } else if (r3 < a2) {
+            return ov101_021EBF44(mapApp, -r3);
+        }
+    }
+    return ov101_021EBF44(mapApp, a1);
+}
+
+s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 a1) {
+    s16 ret;
+    s16 r3;
+    s16 r4;
+
+    r3 = mapApp->unk_0C8.unk_28 - a1 + 1;
+    r4 = mapApp->unk_0C8.unk_2A - a1;
+    if (mapApp->unk_112 >= r3 && r4 >= mapApp->unk_112) {
+        return a1;
+    }
+    if (mapApp->unk_112 <= r3) {
+        ret = a1 + (r3 - mapApp->unk_112);
+    } else if (mapApp->unk_112 >= r4) {
+        // Your language server may flag ret as being conditionally uninitalized.
+        // This is technically not UB since logically
+        // this block here is the only other possibility.
+        ret = a1 - (mapApp->unk_112 - r4);
+    }
+    return ret;
+}
+
+s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
+    s16 r3;
+
+    if (a1 > 0) {
+        r3 = mapApp->unk_0C8.unk_28 - mapApp->unk_104;
+        if (r3 <= 0) {
+            return 0;
+        } else if (r3 < a2) {
+            return ov101_021EBFF8(mapApp, r3);
+        }
+    } else {
+        r3 = mapApp->unk_106 - mapApp->unk_0C8.unk_2A;
+        if (r3 <= 0) {
+            return 0;
+        } else if (r3 < a2) {
+            return ov101_021EBFF8(mapApp, -r3);
+        }
+    }
+    return ov101_021EBFF8(mapApp, a1);
 }
