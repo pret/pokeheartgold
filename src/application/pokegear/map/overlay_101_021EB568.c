@@ -31,6 +31,7 @@ extern const u8 ov101_021F7E9C[][4];
 extern const TouchscreenHitbox ov101_021F7E94[2];
 extern const TouchscreenHitbox ov101_021F7EA4[2];
 extern const TouchscreenHitbox ov101_021F7EAC[];
+extern const TouchscreenHitbox ov101_021F7EF4[];
 
 int ov101_021EB568(PokegearMapAppData *mapApp) {
     int ret;
@@ -844,5 +845,61 @@ int ov101_021ECAF0(PokegearMapAppData *mapApp) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
         ov100_021E73AC(mapApp->pokegear->appSwitch, 3);
     }
+    return -1;
+}
+
+int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1) {
+    int r4;
+    u16 r6;
+    UnkStruct_ov100_021E6E20_Sub8 *r7 = mapApp->unk_084->unk_08;
+
+    if (!System_GetTouchHeld()) {
+        return -1;
+    }
+
+    if (mapApp->unk_139_0) {
+        return -1;
+    }
+
+    r4 = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F7EF4);
+    if (r4 != -1) {
+        *a1 = TRUE;
+        if (r4 == 16) {
+            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 23, 8, 6, 5, mapApp->unk_17C->rawData, 7, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
+            ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
+            PlaySE(SEQ_SE_GS_GEARCANCEL);
+            return 10;
+        } else if (r4 >= 8) {
+            mapApp->unk_139_4 = r4 - 8;
+            mapApp->unk_13C_0 = 1;
+            thunk_Sprite_SetDrawPriority(r7[r4 + 20].sprite, 1);
+            PlaySE(SEQ_SE_GS_GEARSEALGRAB);
+            return -1;
+        } else if (ov101_021ECA30(mapApp, r4)) {
+            r6 = r4 / 2;
+            if (r4 % 2 == 0) {
+                mapApp->unk_139_4 = r6;
+                mapApp->unk_13E = mapApp->unk_140 = 0;
+                thunk_Sprite_SetDrawPriority(r7[r6 + 20].sprite, 1);
+            } else {
+                mapApp->unk_139_4 = r6 + 4;
+                mapApp->unk_13E = ((r6 % 2) * 0x68 + 0x28) - gSystem.touchX;
+                mapApp->unk_140 = ((r6 / 2) * 0x15 + 0x1F) - gSystem.touchY;
+                thunk_Sprite_SetDrawPriority(r7[r6 + 24].sprite, 1);
+                sub_02013820(mapApp->unk_044[r6].unk_0, 0);
+            }
+            mapApp->unk_13C_0 = 2;
+            PlaySE(SEQ_SE_GS_GEARSEALGRAB);
+            return -1;
+        } else if (r4 % 2 == 1) {
+            mapApp->unk_014.unk_02 = r4 / 2;
+            mapApp->unk_014.unk_18 = mapApp->unk_118.unk_0->unk_0;
+            PlaySE(SEQ_SE_GS_GEARDECIDE);
+            return 11;
+        } else {
+            return -1;
+        }
+    }
+
     return -1;
 }

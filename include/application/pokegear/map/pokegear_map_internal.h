@@ -154,6 +154,7 @@ typedef struct PokegearMapAppData {
     u8 unk_139_1 : 1;                         // 0x139
     u8 unk_139_2 : 1;                         // 0x139
     u8 unk_139_3 : 1;                         // 0x139
+    u8 unk_139_4 : 4;                         // 0x139
     u8 unk_13A;                               // 0x13A
     u8 unk_13B;                               // 0x13B
     u8 unk_13C_0 : 7;                         // 0x13C

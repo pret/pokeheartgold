@@ -26,6 +26,7 @@ typedef struct UnkStruct_02013950 UnkStruct_02013950;
 UnkStruct_02013534 *sub_02013534(int a0, HeapID a1);
 void sub_020135AC(UnkStruct_02013534 *a0);
 
+void sub_02013820(UnkStruct_02013950 *a0, int a1);
 void sub_020136B4(UnkStruct_02013950 *a0, int a1, int a2);
 void sub_020137C0(UnkStruct_02013950 *a0, int a1);
 void sub_02013850(UnkStruct_02013950 *a0, int a1);
