@@ -93,17 +93,20 @@ typedef struct PokegearAppSwitch {
 } PokegearAppSwitch;
 
 typedef struct UnkStruct_ov100_021E6E20_Sub8 {
-    u8 unk_00;          // 0x00
-    u8 unk_01;          // 0x01
-    u16 unk_02;         // 0x02
-    Coord2S16 unk_04;   // 0x04
-    s16 unk_08;         // 0x08
-    s16 unk_0A;         // 0x0A
-    u16 unk_0C;         // 0x0C
-    u16 unk_0E;         // 0x0E
-    u8 filler_10[0x10]; // 0x10
-    Sprite *sprite;     // 0x20
-    u8 filler_24[0x4];  // 0x24
+    u8 unk_00;         // 0x00
+    u8 unk_01;         // 0x01
+    u16 unk_02;        // 0x02
+    Coord2S16 unk_04;  // 0x04
+    s16 unk_08;        // 0x08
+    s16 unk_0A;        // 0x0A
+    u16 unk_0C;        // 0x0C
+    u16 unk_0E;        // 0x0E
+    fx32 unk_10;       // 0x10
+    fx32 unk_14;       // 0x14
+    fx32 unk_18;       // 0x18
+    fx32 unk_1C;       // 0x1C
+    Sprite *sprite;    // 0x20
+    u8 filler_24[0x4]; // 0x24
 } UnkStruct_ov100_021E6E20_Sub8;
 
 typedef struct UnkStruct_ov100_021E6E20 {
@@ -247,6 +250,11 @@ static inline void UnkStruct_ov100_021E6E20_Sub8_inline_addCoord(UnkStruct_ov100
 
 static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setUnk01(UnkStruct_ov100_021E6E20_Sub8 *a0, BOOL a1) {
     a0->unk_01 = a1;
+}
+
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setFixCoords(UnkStruct_ov100_021E6E20_Sub8 *a0, s16 a1, s16 a2) {
+    a0->unk_10 = FX32_CONST(a1);
+    a0->unk_14 = FX32_CONST(a2);
 }
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H

@@ -8,10 +8,10 @@ BOOL ov101_021EB654(PokegearMapAppData *mapApp);
 int ov101_021EB784(PokegearMapAppData *mapApp, int a1);
 int ov101_021EB818(PokegearMapAppData *mapApp);
 int ov101_021EB94C(PokegearMapAppData *mapApp);
-int ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4);
 BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+void ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4);
 BOOL ov101_021EBDEC(PokegearMapAppData *mapApp);
 s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 a1);
 s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2);
@@ -619,5 +619,44 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
         mapApp->unk_139_0 = 0;
         mapApp->unk_139_2 = 0;
         mapApp->unk_13B = 0;
+    }
+}
+
+void ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4) {
+    u16 i;
+    u8 r1 = 0, r0 = 0, r7, r5;
+    UnkStruct_ov100_021E6E20_Sub8 *r4 = &mapApp->unk_084->unk_08[5];
+    UnkStruct_ov100_021E6E20_Sub8 *sp1C = mapApp->unk_084->unk_08;
+    r7 = 8 * (mapApp->unk_138_0 + 1);
+    r5 = r7 / 2;
+    ov101_021E9530(mapApp, mapApp->unk_138_0, mapApp->unk_110, mapApp->unk_112, r4->unk_04.x, r4->unk_04.y);
+    if (!mapApp->unk_138_0) {
+        r1 = (r4->unk_04.x - mapApp->unk_132) / 16;
+        r0 = (r4->unk_04.y - mapApp->unk_131) / 16;
+        if (r1 <= 5) {
+            *a3 = a1 * 8 + 8;
+        } else {
+            *a3 = a1 * 8;
+        }
+        if (r0 > 4) {
+            *a4 = a2 * 8 + 8;
+        } else {
+            *a4 = a2 * 8;
+        }
+    } else {
+        r1 = ((r4->unk_04.x - mapApp->unk_132) / 8) % 2;
+        r0 = ((r4->unk_04.y - mapApp->unk_131) / 8) % 2;
+        *a3 = a1 * 8 + r1 * 8;
+        *a4 = a2 * 8 + r0 * 8;
+    }
+    r4->unk_08 = (a1 - mapApp->unk_0C8.unk_2C) * r7 + mapApp->unk_132 + r5;
+    r4->unk_0A = (a2 - mapApp->unk_0C8.unk_28) * r7 + mapApp->unk_131 + r5;
+    sp1C[6].unk_08 = (sp1C[6].unk_0C - mapApp->unk_0C8.unk_2C) * r7 + mapApp->unk_132 + r5;
+    sp1C[6].unk_0A = (sp1C[6].unk_0E - mapApp->unk_0C8.unk_28) * r7 + mapApp->unk_131 + r5;
+    ov101_021EA238(mapApp, 1);
+    for (i = 5; i < mapApp->unk_084->num; ++i) {
+        sp1C[i].unk_18 = FX_Div(FX32_CONST(sp1C[i].unk_08 - sp1C[i].unk_04.x), FX32_CONST(mapApp->unk_13A));
+        sp1C[i].unk_1C = FX_Div(FX32_CONST(sp1C[i].unk_0A - sp1C[i].unk_04.y), FX32_CONST(mapApp->unk_13A));
+        UnkStruct_ov100_021E6E20_Sub8_inline_setFixCoords(&sp1C[i], sp1C[i].unk_04.x, sp1C[i].unk_04.y);
     }
 }
