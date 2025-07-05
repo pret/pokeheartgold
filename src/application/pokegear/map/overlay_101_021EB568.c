@@ -18,11 +18,12 @@ s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 a1);
 s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 int ov101_021EC0AC(PokegearMapAppData *mapApp);
-int ov101_021EC304(PokegearMapAppData *mapApp);
+void ov101_021EC304(PokegearMapAppData *mapApp);
 int ov101_021EC778(PokegearMapAppData *mapApp);
 void ov101_021EC944(PokegearMapAppData *mapApp);
 void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2);
 
+extern const u8 ov101_021F7E8C[][2];
 extern const TouchscreenHitbox ov101_021F7E94[2];
 extern const TouchscreenHitbox ov101_021F7EA4[2];
 extern const TouchscreenHitbox ov101_021F7EAC[];
@@ -554,4 +555,69 @@ int ov101_021EC0AC(PokegearMapAppData *mapApp) {
         mapApp->unk_138_7 = 1;
     }
     return -1;
+}
+
+void ov101_021EC304(PokegearMapAppData *mapApp) {
+    u8 sp8 = 0;
+    s16 sp4 = 0;
+    s16 r7 = 0;
+    s16 r6 = 0;
+    u16 spE;
+    u16 spC;
+    UnkStruct_ov100_021E6E20_Sub8 *r4 = &mapApp->unk_084->unk_08[5];
+
+    if (!mapApp->unk_139_2) {
+        return;
+    }
+    if (mapApp->unk_138_0) {
+        r6 = 8;
+    } else {
+        r6 = 4;
+    }
+    ov101_021E9464(mapApp, mapApp->unk_114.x, mapApp->unk_114.y, &spE, &spC);
+    if (mapApp->unk_13B & 1) {
+        if (spC <= 1) {
+            r7 -= r6;
+            sp8 = 1;
+        } else {
+            r4->unk_04.y -= r6;
+        }
+    } else if (mapApp->unk_13B & 2) {
+        if (spC >= ov101_021F7E8C[1][mapApp->unk_138_0]) {
+            r7 += r6;
+            sp8 = 1;
+        } else {
+            r4->unk_04.y += r6;
+        }
+    }
+    if (mapApp->unk_13B & 4) {
+        if (spE <= 1) {
+            sp4 -= r6;
+            sp8 = 1;
+        } else {
+            r4->unk_04.x -= r6;
+        }
+    } else if (mapApp->unk_13B & 8) {
+        if (spE >= ov101_021F7E8C[0][mapApp->unk_138_0]) {
+            sp4 += r6;
+            sp8 = 1;
+        } else {
+            r4->unk_04.x += r6;
+        }
+    }
+    if (sp8 != 0) {
+        mapApp->unk_138_7 = 1;
+        mapApp->unk_0C8.unk_00 += sp4;
+        mapApp->unk_0C8.unk_04 += r7;
+        ov101_021E9BF4(mapApp, -sp4, -r7);
+        ov101_021EC944(mapApp);
+    }
+    ov100_021E6E84(mapApp->unk_084);
+    --mapApp->unk_13A;
+    if (mapApp->unk_13A == 0) {
+        ov101_021E9288(mapApp);
+        mapApp->unk_139_0 = 0;
+        mapApp->unk_139_2 = 0;
+        mapApp->unk_13B = 0;
+    }
 }

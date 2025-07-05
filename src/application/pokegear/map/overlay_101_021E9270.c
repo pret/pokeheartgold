@@ -11,7 +11,6 @@
 #include "unk_02068F84.h"
 #include "unk_020932A4.h"
 
-void ov101_021E9288(PokegearMapAppData *mapApp);
 void ov101_021E93D0(PokegearMapAppData *mapApp);
 void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s16 a5);
 void ov101_021E9848(PokegearMapAppData *mapApp, u16 a1, u16 a2, s16 a3, s16 a4, int *a5, int *a6);

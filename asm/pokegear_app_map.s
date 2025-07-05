@@ -17,13 +17,10 @@
 	.text
 
 	.extern ov101_021E9270
-	.extern ov101_021E9288
-	.extern ov101_021E9464
 	.extern ov101_021E94C0
 	.extern ov101_021E9530
 	.extern ov101_021E990C
 	.extern ov101_021E9B70
-	.extern ov101_021E9BF4
 	.extern ov101_021EA238
 	.extern ov101_021EA4D0
 	.extern ov101_021EA608
@@ -40,219 +37,8 @@
 	.extern ov101_021EB94C
 	.extern ov101_021EBC1C
 	.extern ov101_021EC0AC
+	.extern ov101_021EC304
 	.extern ov101_021F7372
-
-	thumb_func_start ov101_021EC304
-ov101_021EC304: ; 0x021EC304
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	mov r0, #0
-	str r0, [sp, #8]
-	str r0, [sp, #4]
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	ldr r7, [sp, #8]
-	ldr r4, [r0, #8]
-	ldr r0, _021EC488 ; =0x00000139
-	add r4, #0xc8
-	ldrb r1, [r5, r0]
-	lsl r1, r1, #0x1d
-	lsr r1, r1, #0x1f
-	bne _021EC328
-	b _021EC484
-_021EC328:
-	sub r0, r0, #1
-	ldrb r0, [r5, r0]
-	lsl r0, r0, #0x1f
-	lsr r0, r0, #0x1f
-	beq _021EC336
-	mov r6, #8
-	b _021EC338
-_021EC336:
-	mov r6, #4
-_021EC338:
-	add r0, sp, #0xc
-	mov r2, #0x45
-	str r0, [sp]
-	lsl r2, r2, #2
-	ldrsh r1, [r5, r2]
-	add r2, r2, #2
-	add r3, sp, #0xc
-	ldrsh r2, [r5, r2]
-	add r0, r5, #0
-	add r3, #2
-	bl ov101_021E9464
-	ldr r0, _021EC48C ; =0x0000013B
-	mov r2, #1
-	ldrb r1, [r5, r0]
-	tst r2, r1
-	beq _021EC378
-	add r0, sp, #0xc
-	ldrh r0, [r0]
-	cmp r0, #1
-	bhi _021EC36E
-	sub r0, r7, r6
-	lsl r0, r0, #0x10
-	asr r7, r0, #0x10
-	mov r0, #1
-	str r0, [sp, #8]
-	b _021EC3A6
-_021EC36E:
-	mov r0, #6
-	ldrsh r0, [r4, r0]
-	sub r0, r0, r6
-	strh r0, [r4, #6]
-	b _021EC3A6
-_021EC378:
-	mov r2, #2
-	tst r1, r2
-	beq _021EC3A6
-	sub r0, r0, #3
-	ldrb r0, [r5, r0]
-	add r1, sp, #0xc
-	ldrh r1, [r1]
-	lsl r0, r0, #0x1f
-	lsr r2, r0, #0x1f
-	ldr r0, _021EC490 ; =ov101_021F7E8E
-	ldrb r0, [r0, r2]
-	cmp r1, r0
-	blt _021EC39E
-	add r0, r7, r6
-	lsl r0, r0, #0x10
-	asr r7, r0, #0x10
-	mov r0, #1
-	str r0, [sp, #8]
-	b _021EC3A6
-_021EC39E:
-	mov r0, #6
-	ldrsh r0, [r4, r0]
-	add r0, r0, r6
-	strh r0, [r4, #6]
-_021EC3A6:
-	ldr r0, _021EC48C ; =0x0000013B
-	mov r3, #4
-	ldrb r0, [r5, r0]
-	add r1, r0, #0
-	tst r1, r3
-	beq _021EC3D2
-	add r0, sp, #0xc
-	ldrh r0, [r0, #2]
-	cmp r0, #1
-	bhi _021EC3CA
-	ldr r0, [sp, #4]
-	sub r0, r0, r6
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	b _021EC404
-_021EC3CA:
-	ldrsh r0, [r4, r3]
-	sub r0, r0, r6
-	strh r0, [r4, #4]
-	b _021EC404
-_021EC3D2:
-	mov r1, #8
-	tst r0, r1
-	beq _021EC404
-	add r0, sp, #0xc
-	ldrh r2, [r0, #2]
-	ldr r0, _021EC48C ; =0x0000013B
-	sub r0, r0, #3
-	ldrb r0, [r5, r0]
-	lsl r0, r0, #0x1f
-	lsr r1, r0, #0x1f
-	ldr r0, _021EC494 ; =ov101_021F7E8C
-	ldrb r0, [r0, r1]
-	cmp r2, r0
-	blt _021EC3FE
-	ldr r0, [sp, #4]
-	add r0, r0, r6
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	b _021EC404
-_021EC3FE:
-	ldrsh r0, [r4, r3]
-	add r0, r0, r6
-	strh r0, [r4, #4]
-_021EC404:
-	ldr r0, [sp, #8]
-	cmp r0, #0
-	beq _021EC44E
-	mov r1, #0x4e
-	lsl r1, r1, #2
-	ldrb r2, [r5, r1]
-	mov r0, #0x80
-	orr r0, r2
-	strb r0, [r5, r1]
-	add r0, r5, #0
-	add r0, #0xc8
-	ldr r1, [r0]
-	ldr r0, [sp, #4]
-	neg r2, r7
-	add r1, r1, r0
-	add r0, r5, #0
-	add r0, #0xc8
-	str r1, [r0]
-	add r0, r5, #0
-	add r0, #0xcc
-	ldr r0, [r0]
-	lsl r2, r2, #0x10
-	add r1, r0, r7
-	add r0, r5, #0
-	add r0, #0xcc
-	str r1, [r0]
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	neg r1, r1
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	asr r2, r2, #0x10
-	bl ov101_021E9BF4
-	add r0, r5, #0
-	bl ov101_021EC944
-_021EC44E:
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6E84
-	ldr r0, _021EC498 ; =0x0000013A
-	ldrb r1, [r5, r0]
-	sub r1, r1, #1
-	strb r1, [r5, r0]
-	ldrb r0, [r5, r0]
-	cmp r0, #0
-	bne _021EC484
-	add r0, r5, #0
-	bl ov101_021E9288
-	ldr r1, _021EC488 ; =0x00000139
-	mov r0, #1
-	ldrb r2, [r5, r1]
-	bic r2, r0
-	strb r2, [r5, r1]
-	ldrb r2, [r5, r1]
-	mov r0, #4
-	bic r2, r0
-	strb r2, [r5, r1]
-	mov r2, #0
-	add r0, r1, #2
-	strb r2, [r5, r0]
-_021EC484:
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021EC488: .word 0x00000139
-_021EC48C: .word 0x0000013B
-_021EC490: .word ov101_021F7E8E
-_021EC494: .word ov101_021F7E8C
-_021EC498: .word 0x0000013A
-	thumb_func_end ov101_021EC304
 
 	thumb_func_start ov101_021EC49C
 ov101_021EC49C: ; 0x021EC49C
@@ -5068,11 +4854,12 @@ ov101_021F7E80: ; 0x021F7E80
 	.byte (1<<0)|(1<<1), 0, 0, 14, 0, 0
 	.short 0x001C, 0x0001, 0x0040
 
+	.global ov101_021F7E8C
 ov101_021F7E8C: ; 0x021F7E8C
 	.byte 0x16, 0x0A
-
-ov101_021F7E8E: ; 0x021F7E8E
 	.byte 0x10, 0x07
+
+ov101_021F7E90:
 	.byte 0xFF, 0x00, 0x00, 0x00
 
 	.global ov101_021F7E94
