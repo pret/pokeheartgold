@@ -10,16 +10,17 @@ int ov101_021EB818(PokegearMapAppData *mapApp);
 int ov101_021EB94C(PokegearMapAppData *mapApp);
 BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-void ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4);
 BOOL ov101_021EBDEC(PokegearMapAppData *mapApp);
 s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 a1);
 s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 a1);
 s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2);
 int ov101_021EC0AC(PokegearMapAppData *mapApp);
+int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+void ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4);
 void ov101_021EC304(PokegearMapAppData *mapApp);
-int ov101_021EC778(PokegearMapAppData *mapApp);
+void ov101_021EC778(PokegearMapAppData *mapApp);
+void ov101_021EC920(UnkStruct_ov100_021E6E20_Sub8 *a0, u16 a1, s16 a2);
 void ov101_021EC944(PokegearMapAppData *mapApp);
 void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2);
 
@@ -613,8 +614,7 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
         ov101_021EC944(mapApp);
     }
     ov100_021E6E84(mapApp->unk_084);
-    --mapApp->unk_13A;
-    if (mapApp->unk_13A == 0) {
+    if (--mapApp->unk_13A == 0) {
         ov101_021E9288(mapApp);
         mapApp->unk_139_0 = 0;
         mapApp->unk_139_2 = 0;
@@ -659,4 +659,54 @@ void ov101_021EC49C(PokegearMapAppData *mapApp, u16 a1, u16 a2, int *a3, int *a4
         sp1C[i].unk_1C = FX_Div(FX32_CONST(sp1C[i].unk_0A - sp1C[i].unk_04.y), FX32_CONST(mapApp->unk_13A));
         UnkStruct_ov100_021E6E20_Sub8_inline_setFixCoords(&sp1C[i], sp1C[i].unk_04.x, sp1C[i].unk_04.y);
     }
+}
+
+void ov101_021EC778(PokegearMapAppData *mapApp) {
+    u16 i;
+    VecFx32 sp0;
+    UnkStruct_ov100_021E6E20_Sub8 *r0 = &mapApp->unk_084->unk_08[5];
+    UnkStruct_ov100_021E6E20_Sub8 *r6 = mapApp->unk_084->unk_08;
+    s16 r1;
+    s16 r2;
+
+    if (!mapApp->unk_139_1) {
+        return;
+    }
+    if (mapApp->unk_138_0) {
+        mapApp->unk_0C8.unk_08 += FX32_CONST(0.25);
+        mapApp->unk_0C8.unk_0C += FX32_CONST(0.25);
+    } else {
+        mapApp->unk_0C8.unk_08 -= FX32_CONST(0.25);
+        mapApp->unk_0C8.unk_0C -= FX32_CONST(0.25);
+    }
+    sp0.x = mapApp->unk_0C8.unk_08;
+    sp0.z = FX32_ONE;
+    sp0.y = mapApp->unk_0C8.unk_0C;
+    Sprite_SetAffineScale(r0->sprite, &sp0);
+    if (--mapApp->unk_13A == 0) {
+        mapApp->unk_0C8.unk_00 = mapApp->unk_0C8.unk_34;
+        mapApp->unk_0C8.unk_04 = mapApp->unk_0C8.unk_36;
+        for (i = 5; i < mapApp->unk_084->num; ++i) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(&r6[i], r6[i].unk_08, r6[i].unk_0A);
+            ov101_021EC920(&r6[i], i, r6[i].unk_0A);
+        }
+        mapApp->unk_139_0 = 0;
+        mapApp->unk_139_1 = 0;
+        mapApp->unk_13B = 0;
+    } else {
+        mapApp->unk_0C8.unk_20 += mapApp->unk_0C8.unk_18;
+        mapApp->unk_0C8.unk_24 += mapApp->unk_0C8.unk_1C;
+        mapApp->unk_0C8.unk_00 = FX_Whole(mapApp->unk_0C8.unk_20);
+        mapApp->unk_0C8.unk_04 = FX_Whole(mapApp->unk_0C8.unk_24);
+        for (i = 5; i < mapApp->unk_084->num; ++i) {
+            r6[i].unk_10 += r6[i].unk_18;
+            r6[i].unk_14 += r6[i].unk_1C;
+            r1 = FX_Whole(r6[i].unk_10);
+            r2 = FX_Whole(r6[i].unk_14);
+            UnkStruct_ov100_021E6E20_Sub8_inline_setCoord(&r6[i], r1, r2);
+            ov101_021EC920(&r6[i], i, r2);
+        }
+    }
+    ov100_021E6E84(mapApp->unk_084);
+    mapApp->unk_138_7 = 1;
 }
