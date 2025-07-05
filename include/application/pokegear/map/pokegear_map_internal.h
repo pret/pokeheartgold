@@ -242,6 +242,7 @@ void ov101_021ED4E0(PokegearMapAppData *mapApp);
 void ov101_021ED5AC(PokegearMapAppData *mapApp);
 PokegearMapAppData_Sub118_Sub4 *ov101_021ED614(PokegearMapAppData *mapApp, int a1);
 PokegearMapAppData_Sub118_Sub4 *ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
+void ov101_021ED750(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u8 a2);
 void ov101_021ED79C(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u16 a2);
 
 extern const PokegearMapAppData_Sub214 ov101_021F7372[];

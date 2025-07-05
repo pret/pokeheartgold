@@ -17,7 +17,6 @@
 	.text
 
 	.extern ov101_021E9270
-	.extern ov101_021E94C0
 	.extern ov101_021E990C
 	.extern ov101_021E9B70
 	.extern ov101_021EA4D0
@@ -36,160 +35,9 @@
 	.extern ov101_021EBC1C
 	.extern ov101_021EC0AC
 	.extern ov101_021EC304
-	.extern ov101_021ECA30
 	.extern ov101_021ECA84
+	.extern ov101_021ECE58
 	.extern ov101_021F7372
-
-	thumb_func_start ov101_021ECE58
-ov101_021ECE58: ; 0x021ECE58
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x10]
-	mov r1, #0
-	ldr r0, [r0, #0x7c]
-	bl ov100_021E73C8
-	ldr r0, [r4, #0x10]
-	ldr r1, _021ECEA4 ; =0x0000FFFF
-	ldr r0, [r0, #0x7c]
-	mov r2, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
-	ldr r0, [r4, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	bl PokegearAppSwitch_GetSpecCursorPos
-	add r2, r0, #0
-	ldr r0, [r4, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
-	ldr r0, [r4, #0x10]
-	ldr r1, _021ECEA4 ; =0x0000FFFF
-	ldr r0, [r0, #0x7c]
-	mov r2, #1
-	bl PokegearAppSwitch_SetCursorSpritesAnimateFlag
-	mov r1, #0x4f
-	lsl r1, r1, #2
-	ldrb r2, [r4, r1]
-	mov r0, #0x7f
-	bic r2, r0
-	strb r2, [r4, r1]
-	pop {r4, pc}
-	nop
-_021ECEA4: .word 0x0000FFFF
-	thumb_func_end ov101_021ECE58
-
-	thumb_func_start ov101_021ECEA8
-ov101_021ECEA8: ; 0x021ECEA8
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, _021ECF8C ; =gSystem
-	ldr r1, [r0, #0x48]
-	mov r0, #1
-	tst r0, r1
-	beq _021ECF06
-	ldr r0, _021ECF90 ; =0x00000941
-	bl PlaySE
-	ldr r0, [r5, #0x10]
-	ldr r0, [r0, #0x7c]
-	bl PokegearAppSwitch_GetCursorPos
-	add r6, r0, #0
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	bl PokegearAppSwitch_GetSpecCursorPos
-	mov r1, #0x47
-	lsl r1, r1, #2
-	add r4, r0, #0
-	ldr r0, [r5, r1]
-	cmp r0, #0
-	bne _021ECEEE
-	sub r1, r1, #4
-	ldr r1, [r5, r1]
-	add r0, r5, #0
-	ldrh r1, [r1]
-	bl ov101_021ED64C
-	mov r1, #0x47
-	lsl r1, r1, #2
-	str r0, [r5, r1]
-_021ECEEE:
-	mov r0, #0x47
-	lsl r0, r0, #2
-	lsl r1, r4, #0x17
-	ldr r0, [r5, r0]
-	lsr r1, r1, #0x18
-	add r2, r6, #0
-	bl ov101_021ED750
-	add r0, r5, #0
-	mov r1, #0
-	bl ov101_021EAE54
-_021ECF06:
-	ldr r0, _021ECF8C ; =gSystem
-	ldr r1, [r0, #0x48]
-	mov r0, #2
-	tst r0, r1
-	beq _021ECF24
-	mov r0, #0x25
-	lsl r0, r0, #6
-	bl PlaySE
-	add r0, r5, #0
-	bl ov101_021ECE58
-	mov r0, #0
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021ECF24:
-	bl System_GetTouchNew
-	cmp r0, #0
-	beq _021ECF54
-	mov r0, #0x25
-	lsl r0, r0, #6
-	bl PlaySE
-	add r0, r5, #0
-	bl ov101_021ECE58
-	ldr r0, [r5, #0x10]
-	ldr r0, [r0, #0xc]
-	cmp r0, #1
-	beq _021ECF4E
-	add r0, r5, #0
-	bl ov101_021EB364
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	str r1, [r0, #0xc]
-_021ECF4E:
-	mov r0, #0
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-_021ECF54:
-	ldr r0, _021ECF8C ; =gSystem
-	ldr r1, [r0, #0x48]
-	mov r0, #0x20
-	tst r0, r1
-	beq _021ECF70
-	ldr r0, _021ECF94 ; =0x0000093F
-	bl PlaySE
-	ldr r0, [r5, #0x10]
-	mov r1, #0
-	ldr r0, [r0, #0x7c]
-	bl ov100_021E73AC
-	b _021ECF86
-_021ECF70:
-	mov r0, #0x10
-	tst r0, r1
-	beq _021ECF86
-	ldr r0, _021ECF94 ; =0x0000093F
-	bl PlaySE
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	bl ov100_021E73AC
-_021ECF86:
-	mov r0, #0
-	mvn r0, r0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_021ECF8C: .word gSystem
-_021ECF90: .word 0x00000941
-_021ECF94: .word 0x0000093F
-	thumb_func_end ov101_021ECEA8
 
 	thumb_func_start ov101_021ECF98
 ov101_021ECF98: ; 0x021ECF98
