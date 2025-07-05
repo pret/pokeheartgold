@@ -794,3 +794,55 @@ void ov101_021ECA84(PokegearMapAppData *mapApp, BOOL a1) {
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->unk_17C->rawData, 8 * mapApp->unk_13C_7 + 14, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
+
+int ov101_021ECAF0(PokegearMapAppData *mapApp) {
+    u8 r5;
+
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+        return 10;
+    }
+    if (gSystem.newKeys & PAD_BUTTON_A) {
+        r5 = PokegearAppSwitch_GetCursorPos(mapApp->pokegear->appSwitch);
+        PlaySE(SEQ_SE_GS_GEARDECIDE);
+        if (r5 == 8) {
+            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+            return 10;
+        }
+        if (ov101_021ECA30(mapApp, r5)) {
+            PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+            PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 3, 0);
+            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
+            ov101_021ECA84(mapApp, TRUE);
+            mapApp->unk_13C_0 = 2;
+            return -1;
+        } else {
+            if (r5 % 2 == 0) {
+                PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+                PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 2, 0);
+                PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
+                mapApp->unk_13C_0 = 1;
+                return -1;
+            } else {
+                mapApp->unk_014.unk_02 = r5 / 2;
+                mapApp->unk_014.unk_18 = mapApp->unk_118.unk_0->unk_0;
+                return 11;
+            }
+        }
+    }
+    if (gSystem.newKeys & PAD_KEY_LEFT) {
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        ov100_021E73AC(mapApp->pokegear->appSwitch, 0);
+    } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        ov100_021E73AC(mapApp->pokegear->appSwitch, 1);
+    } else if (gSystem.newKeys & PAD_KEY_UP) {
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        ov100_021E73AC(mapApp->pokegear->appSwitch, 2);
+    } else if (gSystem.newKeys & PAD_KEY_DOWN) {
+        PlaySE(SEQ_SE_GS_GEARCURSOR);
+        ov100_021E73AC(mapApp->pokegear->appSwitch, 3);
+    }
+    return -1;
+}
