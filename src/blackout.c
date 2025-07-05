@@ -88,7 +88,7 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     env->state = 0;
     env->fieldSystem = fieldSystem;
     env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
-    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE); // are RGBs correct here?
+    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     sub_0200FBDC(0); // PM_LCD_TOP?
     sub_0200FBDC(1); // PM_LCD_TOP?
