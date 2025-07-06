@@ -22,7 +22,18 @@ void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 void ov101_021EADC0(PokegearMapAppData *mapApp, u8 a1, u16 a2);
 void ov101_021EB560(u16 a0, HeapID a1, String *a2);
 
-extern const TouchscreenListMenuTemplate ov101_021F7E80;
+const TouchscreenListMenuTemplate ov101_021F7E80 = {
+    .wrapAround = TRUE,
+    .centered = TRUE,
+    .xOffset = 0,
+    .bgId = GF_BG_LYR_MAIN_0,
+    .plttOffset = 14,
+    .unk4 = 0,
+    .unk5 = 0,
+    .baseTile = 0x01C,
+    .charOffset = 0x0001,
+    .unkA = 0x40,
+};
 
 void ov101_021E9270(PokegearAppData *pokegear, void *appData) {
     PokegearMapAppData *mapApp = appData;

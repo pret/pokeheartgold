@@ -29,15 +29,6 @@ void ov101_021ECE58(PokegearMapAppData *mapApp);
 void ov101_021ED110(PokegearMapAppData *mapApp, u8 a1, u8 a2);
 void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1);
 
-extern const u8 ov101_021F7E8C[][2];
-extern const u8 ov101_021F7E9C[][4];
-extern const TouchscreenHitbox ov101_021F7E94[2];
-extern const TouchscreenHitbox ov101_021F7EA4[2];
-extern const TouchscreenHitbox ov101_021F7EAC[];
-extern const TouchscreenHitbox ov101_021F7EB8[];
-extern const TouchscreenHitbox ov101_021F7ECC[];
-extern const TouchscreenHitbox ov101_021F7EF4[];
-
 int ov101_021EB568(PokegearMapAppData *mapApp) {
     int ret;
 
@@ -220,9 +211,20 @@ int ov101_021EB94C(PokegearMapAppData *mapApp) {
     return -1;
 }
 
+const TouchscreenHitbox ov101_021F7EA4[2] = {
+    { .rect = { 0x08, 0x98, 0x08, 0xc8 } },
+    { .rect = { 0x10, 0x90, 0x28, 0xe0 } },
+};
+
 int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     u16 sp4;
     int r6;
+
+    static const TouchscreenHitbox ov101_021F7EAC[] = {
+        { .rect = { 0x10, 0x40, 0xd8, 0xf8 } },
+        { .rect = { 0x58, 0x98, 0xd8, 0xf8 } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    };
 
     if (!System_GetTouchHeld()) {
         return -1;
@@ -280,6 +282,11 @@ int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     u16 sp1C;
     int r4;
     int r0;
+
+    static const TouchscreenHitbox ov101_021F7E94[2] = {
+        { .rect = { 0x98, 0xb8, 0xc2, 0xfe } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    };
 
     if (!System_GetTouchHeld()) {
         return -1;
@@ -576,6 +583,11 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
     u16 spC;
     UnkStruct_ov100_021E6E20_Sub8 *r4 = &mapApp->unk_084->unk_08[5];
 
+    static const u8 ov101_021F7E8C[][2] = {
+        { 22, 10 },
+        { 16, 7  },
+    };
+
     if (!mapApp->unk_139_2) {
         return;
     }
@@ -746,6 +758,12 @@ void ov101_021EC944(PokegearMapAppData *mapApp) {
 void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2) {
     s16 r7;
     s16 r4;
+
+    static const u8 ov101_021F7E9C[][4] = {
+        { 1, 16, 1, 22 },
+        { 1, 7,  1, 10 },
+    };
+
     const u8 *r6 = ov101_021F7E9C[mapApp->unk_138_0];
 
     r7 = gSystem.touchX - mapApp->unk_132;
@@ -858,7 +876,28 @@ int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1) {
     u16 r6;
     UnkStruct_ov100_021E6E20_Sub8 *r7 = mapApp->unk_084->unk_08;
 
-    // static const TouchscreenHitbox ov101_021F7E90 = { .rect = {TOUCHSCREEN_HITBOX_RECTLIST_END}};
+    static const TouchscreenHitbox ov101_021F7EF4[] = {
+        { .rect = { 0x18, 0x2c, 0x18, 0x28 } },
+        { .rect = { 0x18, 0x2c, 0x28, 0x80 } },
+        { .rect = { 0x18, 0x2c, 0x80, 0x90 } },
+        { .rect = { 0x18, 0x2c, 0x90, 0xe8 } },
+        { .rect = { 0x2c, 0x40, 0x18, 0x28 } },
+        { .rect = { 0x2c, 0x40, 0x28, 0x80 } },
+        { .rect = { 0x2c, 0x40, 0x80, 0x90 } },
+        { .rect = { 0x2c, 0x40, 0x90, 0xe8 } },
+        { .rect = { 0x7c, 0x8c, 0x20, 0x30 } },
+        { .rect = { 0x7c, 0x8c, 0x38, 0x48 } },
+        { .rect = { 0x7c, 0x8c, 0x50, 0x60 } },
+        { .rect = { 0x7c, 0x8c, 0x68, 0x78 } },
+        { .rect = { 0x7c, 0x8c, 0x80, 0x90 } },
+        { .rect = { 0x7c, 0x8c, 0x98, 0xa8 } },
+        { .rect = { 0x7c, 0x8c, 0xb0, 0xc0 } },
+        { .rect = { 0x7c, 0x8c, 0xc8, 0xd8 } },
+        { .rect = { 0x40, 0x68, 0xc0, 0xe8 } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    };
+
+    static const TouchscreenHitbox ov101_021F7E90 = { .rect = { TOUCHSCREEN_RECTLIST_END } };
 
     if (!System_GetTouchHeld()) {
         return -1;
@@ -960,6 +999,14 @@ int ov101_021ECEA8(PokegearMapAppData *mapApp) {
 int ov101_021ECF98(PokegearMapAppData *mapApp) {
     int r5;
 
+    static const TouchscreenHitbox ov101_021F7EB8[] = {
+        { .rect = { 0x18, 0x2c, 0x18, 0x28 } },
+        { .rect = { 0x18, 0x2c, 0x80, 0x90 } },
+        { .rect = { 0x2c, 0x40, 0x18, 0x28 } },
+        { .rect = { 0x2c, 0x40, 0x80, 0x90 } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    };
+
     if (!System_GetTouchHeld()) {
         r5 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021F7EB8, gSystem.touchX, gSystem.touchY);
         PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
@@ -1041,6 +1088,19 @@ void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1) {
 
 int ov101_021ED2C0(PokegearMapAppData *mapApp) {
     int r2;
+
+    static const TouchscreenHitbox ov101_021F7ECC[] = {
+        { .rect = { 0x18, 0x2c, 0x18, 0x28 } },
+        { .rect = { 0x18, 0x2c, 0x80, 0x90 } },
+        { .rect = { 0x2c, 0x40, 0x18, 0x28 } },
+        { .rect = { 0x2c, 0x40, 0x80, 0x90 } },
+        { .rect = { 0x18, 0x2c, 0x28, 0x80 } },
+        { .rect = { 0x18, 0x2c, 0x90, 0xe8 } },
+        { .rect = { 0x2c, 0x40, 0x28, 0x80 } },
+        { .rect = { 0x2c, 0x40, 0x90, 0xe8 } },
+        { .rect = { 0x44, 0x60, 0x2c, 0x64 } },
+        { .rect = { TOUCHSCREEN_RECTLIST_END } },
+    };
 
     if (!System_GetTouchHeld()) {
         r2 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021F7ECC, gSystem.touchX, gSystem.touchY);
