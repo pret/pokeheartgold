@@ -234,6 +234,10 @@ void ov101_021EB4C4(PokegearMapAppData *mapApp, int a1);
 
 int ov101_021EB568(PokegearMapAppData *mapApp);
 int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+int ov101_021EB94C(PokegearMapAppData *mapApp);
+int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+int ov101_021EC0AC(PokegearMapAppData *mapApp);
+void ov101_021EC304(PokegearMapAppData *mapApp);
 int ov101_021ECAF0(PokegearMapAppData *mapApp);
 int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1);
 int ov101_021ECEA8(PokegearMapAppData *mapApp);
@@ -252,6 +256,10 @@ BOOL ov101_021ED780(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
 BOOL ov101_021ED79C(PokegearMapAppData_Sub218 *a0, u8 a1, u16 a2);
 BOOL ov101_021ED7B0(PokegearMapAppData_Sub218 *a0, u8 a1);
 BOOL ov101_021ED7D8(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
+
+BOOL ov101_021EDCE0(PokegearMapAppData *mapApp);
+BOOL ov101_021EDDB0(PokegearMapAppData *mapApp);
+int ov101_021EDDF4(PokegearMapAppData *mapApp);
 
 extern const PokegearMapAppData_Sub214 ov101_021F7372[];
 extern const UnkStruct_ov101_021F79B4 ov101_021F79B4[];

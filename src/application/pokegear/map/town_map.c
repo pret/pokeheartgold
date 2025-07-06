@@ -3,6 +3,7 @@
 #include "phonebook_dat.h"
 #include "pokegear_apps.h"
 #include "sys_flags.h"
+#include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(OVY_100);
@@ -119,4 +120,119 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->unk_13D_1 = TRUE;
     mapApp->unk_13D_0 = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
     mapApp->unk_00E = ov100_021E5C80(mapApp->pokegear);
+}
+
+void ov101_021EDAF8(PokegearMapAppData *mapApp) {
+    FreeToHeap(mapApp->unk_12C);
+    FreePhoneBook(mapApp->unk_128);
+    mapApp->pokegear->reselectAppCB = NULL;
+    mapApp->pokegear->unknownCB = NULL;
+}
+
+int ov101_021EDB1C(PokegearMapAppData *mapApp) {
+    if (ov101_021EDCE0(mapApp)) {
+        return 4;
+    } else {
+        return 0;
+    }
+}
+
+int ov101_021EDB30(PokegearMapAppData *mapApp) {
+    BOOL sp0 = FALSE;
+    int ret;
+
+    if (!mapApp->unk_139_3) {
+        ret = ov101_021EBC1C(mapApp, &sp0);
+    } else {
+        ret = ov101_021EC0AC(mapApp);
+        sp0 = TRUE;
+    }
+    if (sp0) {
+        mapApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
+        mapApp->pokegear->appReturnCode = ret;
+        switch (ret) {
+        case -1:
+            break;
+        case 8:
+            return 12;
+        case 4:
+            return 5;
+        }
+        return 1;
+    }
+    if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_X | PAD_BUTTON_Y)) {
+        mapApp->pokegear->menuInputState = MENU_INPUT_STATE_BUTTONS;
+    }
+    ret = ov101_021EB94C(mapApp);
+    mapApp->pokegear->appReturnCode = ret;
+    switch (ret) {
+    case -1:
+        break;
+    case 8:
+        return 12;
+    case 4:
+        return 5;
+    }
+    ov101_021EC304(mapApp);
+    return 1;
+}
+
+int ov101_021EDBD4(PokegearMapAppData *mapApp) {
+    if (!ov101_021EDDB0(mapApp)) {
+        return 2;
+    }
+    mapApp->pokegear->unk_03C = mapApp->unk_014;
+    return 13;
+}
+
+int ov101_021EDBFC(PokegearMapAppData *mapApp) {
+    return ov101_021EDDF4(mapApp);
+}
+
+int ov101_021EDC04(PokegearMapAppData *mapApp) {
+    int i;
+
+    switch (mapApp->state) {
+    case 0:
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
+        for (i = 0; i < 8; ++i) {
+            ToggleBgLayer(i, GF_PLANE_TOGGLE_ON);
+        }
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+        ++mapApp->state;
+        break;
+    case 1:
+        if (!IsPaletteFadeFinished()) {
+            break;
+        }
+        mapApp->state = 0;
+        return 1;
+    }
+
+    return 4;
+}
+
+int ov101_021EDC70(PokegearMapAppData *mapApp) {
+    int i;
+
+    switch (mapApp->state) {
+    case 0:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapId);
+        ++mapApp->state;
+        break;
+    case 1:
+        if (!IsPaletteFadeFinished()) {
+            break;
+        }
+        for (i = 0; i < 8; ++i) {
+            ToggleBgLayer(i, GF_PLANE_TOGGLE_OFF);
+        }
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+        mapApp->state = 0;
+        return 2;
+    }
+
+    return 5;
 }
