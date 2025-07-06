@@ -36,14 +36,6 @@ void ov101_021E8E58(PokegearMapAppData *mapApp);
 void ov101_021E90A8(PokegearMapAppData *mapApp);
 void ov101_021E9264(PokegearMapAppData *mapApp, int a1);
 
-extern const WindowTemplate ov101_021F7B64[];
-extern const PokegearAppSwitchButtonSpec ov101_021F7C04[9];
-extern const PokegearAppSwitchButtonSpec ov101_021F7BA4[8];
-extern const PokegearAppSwitchButtonSpec ov101_021F7B30;
-extern const UnmanagedSpriteTemplate ov101_021F7DB8[5];
-extern const UnmanagedSpriteTemplate ov101_021F7B3C;
-extern const UnmanagedSpriteTemplate ov101_021F7C70[4];
-
 BOOL ov101_021E7FF4(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
     case 0:
@@ -179,9 +171,98 @@ void ov101_021E8264(PokegearMapAppData *mapApp) {
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_5, GX_BG0_AS_2D);
 
     {
-        extern const BgTemplate ov101_021F7D10[6];
-        BgTemplate bgTemplates[6];
-        ARRAY_ASSIGN(bgTemplates, ov101_021F7D10);
+        BgTemplate bgTemplates[6] = {
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xf000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 1,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_512x512,
+             .colorMode = GX_BG_COLORMODE_256,
+             .screenBase = GX_BG_SCRBASE_0xd000,
+             .charBase = GX_BG_CHARBASE_0x10000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 2,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_512x512_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_512x512,
+             .colorMode = GX_BG_COLORMODE_256,
+             .screenBase = GX_BG_SCRBASE_0xb000,
+             .charBase = GX_BG_CHARBASE_0x10000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 3,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xf000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 0,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe800,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 1,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe000,
+             .charBase = GX_BG_CHARBASE_0x10000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 2,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+        }; // ov101_021F7D10
 
         InitBgFromTemplateEx(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplates[0], GF_BG_TYPE_TEXT, FALSE);
         InitBgFromTemplateEx(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplates[1], GF_BG_TYPE_256x16PLTT, FALSE);
@@ -232,6 +313,81 @@ void ov101_021E84B8(PokegearMapAppData *mapApp) {
     FreeToHeap(mapApp->unk_154[0]);
 }
 
+const WindowTemplate ov101_021F7B64[] = {
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x01,
+     .top = 0x08,
+     .width = 0x05,
+     .height = 0x03,
+     .palette = 0x01,
+     .baseTile = 0x03F0,
+     },
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x03,
+     .top = 0x0C,
+     .width = 0x0C,
+     .height = 0x02,
+     .palette = 0x01,
+     .baseTile = 0x03D8,
+     },
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x01,
+     .top = 0x0E,
+     .width = 0x1C,
+     .height = 0x04,
+     .palette = 0x01,
+     .baseTile = 0x0368,
+     },
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x05,
+     .top = 0x12,
+     .width = 0x0B,
+     .height = 0x05,
+     .palette = 0x01,
+     .baseTile = 0x0331,
+     },
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x12,
+     .top = 0x12,
+     .width = 0x0B,
+     .height = 0x05,
+     .palette = 0x01,
+     .baseTile = 0x02FA,
+     },
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x05,
+     .top = 0x14,
+     .width = 0x0B,
+     .height = 0x02,
+     .palette = 0x01,
+     .baseTile = 0x02E4,
+     },
+    {
+     .bgId = GF_BG_LYR_SUB_1,
+     .left = 0x12,
+     .top = 0x16,
+     .width = 0x0B,
+     .height = 0x02,
+     .palette = 0x01,
+     .baseTile = 0x02CE,
+     },
+    {
+     .bgId = GF_BG_LYR_MAIN_1,
+     .left = 0x03,
+     .top = 0x00,
+     .width = 0x0C,
+     .height = 0x03,
+     .palette = 0x0A,
+     .baseTile = 0x03DB,
+     },
+};
+
 void ov101_021E84FC(PokegearMapAppData *mapApp) {
     int i;
 
@@ -274,6 +430,247 @@ void ov101_021E862C(PokegearMapAppData *mapApp) {
     MessageFormat_Delete(mapApp->unk_08C);
     DestroyMsgData(mapApp->unk_088);
 }
+
+const PokegearAppSwitchButtonSpec ov101_021F7B30 = {
+    .appId = 0,
+    .buttonLeft = 0xFF,
+    .buttonRight = 0xFF,
+    .buttonUp = 0xFF,
+    .buttonDown = 0xFF,
+    .x = 0x48,
+    .y = 0x54,
+    .leftOffset = -18,
+    .rightOffset = 18,
+    .topOffset = -12,
+    .bottomOffset = 6,
+};
+
+const PokegearAppSwitchButtonSpec ov101_021F7BA4[8] = {
+    {
+     .appId = 0,
+     .buttonLeft = 0x07,
+     .buttonRight = 0x01,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0x28,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 1,
+     .buttonLeft = 0x00,
+     .buttonRight = 0x02,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0x40,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 2,
+     .buttonLeft = 0x01,
+     .buttonRight = 0x03,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0x58,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 3,
+     .buttonLeft = 0x02,
+     .buttonRight = 0x04,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0x70,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 4,
+     .buttonLeft = 0x03,
+     .buttonRight = 0x05,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0x88,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 5,
+     .buttonLeft = 0x04,
+     .buttonRight = 0x06,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0xA0,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 6,
+     .buttonLeft = 0x05,
+     .buttonRight = 0x07,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0xB8,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+    {
+     .appId = 7,
+     .buttonLeft = 0x06,
+     .buttonRight = 0x00,
+     .buttonUp = 0xFF,
+     .buttonDown = 0xFF,
+     .x = 0xD0,
+     .y = 0x84,
+     .leftOffset = -8,
+     .rightOffset = 8,
+     .topOffset = -8,
+     .bottomOffset = 8,
+     },
+};
+
+const PokegearAppSwitchButtonSpec ov101_021F7C04[9] = {
+    {
+     .appId = 0,
+     .buttonLeft = 0x03,
+     .buttonRight = 0x01,
+     .buttonUp = 0x04,
+     .buttonDown = 0x04,
+     .x = 0x20,
+     .y = 0x20,
+     .leftOffset = 0xFA,
+     .rightOffset = 0x06,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 1,
+     .buttonLeft = 0x00,
+     .buttonRight = 0x02,
+     .buttonUp = 0x05,
+     .buttonDown = 0x05,
+     .x = 0x28,
+     .y = 0x1F,
+     .leftOffset = 0x06,
+     .rightOffset = 0x50,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 2,
+     .buttonLeft = 0x01,
+     .buttonRight = 0x03,
+     .buttonUp = 0x06,
+     .buttonDown = 0x06,
+     .x = 0x88,
+     .y = 0x20,
+     .leftOffset = 0xFA,
+     .rightOffset = 0x06,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 3,
+     .buttonLeft = 0x02,
+     .buttonRight = 0x00,
+     .buttonUp = 0x08,
+     .buttonDown = 0x07,
+     .x = 0x90,
+     .y = 0x1F,
+     .leftOffset = 0x06,
+     .rightOffset = 0x50,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 4,
+     .buttonLeft = 0x07,
+     .buttonRight = 0x05,
+     .buttonUp = 0x00,
+     .buttonDown = 0x00,
+     .x = 0x20,
+     .y = 0x35,
+     .leftOffset = 0xFA,
+     .rightOffset = 0x06,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 5,
+     .buttonLeft = 0x04,
+     .buttonRight = 0x06,
+     .buttonUp = 0x01,
+     .buttonDown = 0x01,
+     .x = 0x28,
+     .y = 0x34,
+     .leftOffset = 0x06,
+     .rightOffset = 0x50,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 6,
+     .buttonLeft = 0x05,
+     .buttonRight = 0x07,
+     .buttonUp = 0x02,
+     .buttonDown = 0x02,
+     .x = 0x88,
+     .y = 0x35,
+     .leftOffset = 0xFA,
+     .rightOffset = 0x06,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 7,
+     .buttonLeft = 0x06,
+     .buttonRight = 0x04,
+     .buttonUp = 0x03,
+     .buttonDown = 0x08,
+     .x = 0x90,
+     .y = 0x34,
+     .leftOffset = 0x06,
+     .rightOffset = 0x50,
+     .topOffset = 0xFA,
+     .bottomOffset = 0x06,
+     },
+    {
+     .appId = 8,
+     .buttonLeft = 0xFF,
+     .buttonRight = 0xFF,
+     .buttonUp = 0x07,
+     .buttonDown = 0x03,
+     .x = 0xD0,
+     .y = 0x54,
+     .leftOffset = 0xF0,
+     .rightOffset = 0x10,
+     .topOffset = 0xF7,
+     .bottomOffset = 0x03,
+     },
+};
 
 void ov101_021E8674(PokegearMapAppData *mapApp) {
     UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
@@ -331,6 +728,79 @@ void ov101_021E88A8(PokegearMapAppData *mapApp) {
     PokegearApp_DestroySpriteManager(mapApp->pokegear);
 }
 
+const UnmanagedSpriteTemplate ov101_021F7DB8[5] = {
+    {
+     .resourceSet = 0,
+     .x = 0x20,
+     .y = 0x60,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 0,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 0,
+     .x = 0x10,
+     .y = 0x98,
+     .z = 0,
+     .animSeqNo = 1,
+     .rotation = 0,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DSUB,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 1,
+     .x = 0x20,
+     .y = 0x80,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 1,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 1,
+     .x = 0x20,
+     .y = 0x60,
+     .z = 0,
+     .animSeqNo = 1,
+     .rotation = 1,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 1,
+     .x = 0x20,
+     .y = 0x60,
+     .z = 0,
+     .animSeqNo = 2,
+     .rotation = 1,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+};
+
 void ov101_021E88D8(PokegearMapAppData *mapApp) {
     int i;
     UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
@@ -364,6 +834,21 @@ void ov101_021E88D8(PokegearMapAppData *mapApp) {
     Sprite_SetAnimationFrame(r4[6].sprite, mapApp->pokegear->args->playerGender);
     Sprite_SetAffineOverwriteMode(r4[5].sprite, 2);
 }
+
+const UnmanagedSpriteTemplate ov101_021F7B3C = {
+    .resourceSet = 1,
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animSeqNo = 4,
+    .rotation = 1,
+    .palIndex = 4,
+    .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .unk_18 = 0,
+    .unk_1C = 0,
+    .unk_20 = 0,
+    .unk_24 = 0,
+};
 
 void ov101_021E8A88(PokegearMapAppData *mapApp) {
     UnkStruct_ov100_021E6E20_Sub8 *r7 = mapApp->unk_084->unk_08;
@@ -418,6 +903,65 @@ void ov101_021E8BB8(PokegearMapAppData *mapApp) {
     }
     sub_02013938(mapApp->unk_040);
 }
+
+const UnmanagedSpriteTemplate ov101_021F7C70[4] = {
+    {
+     .resourceSet = 1,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 3,
+     .rotation = 4,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 1,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 4,
+     .palIndex = 6,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 4,
+     .palIndex = 4,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 2,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animSeqNo = 0,
+     .rotation = 4,
+     .palIndex = 5,
+     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .unk_18 = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+};
 
 void ov101_021E8BE8(PokegearMapAppData *mapApp) {
     u16 i;
