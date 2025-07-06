@@ -35,6 +35,7 @@ extern const TouchscreenHitbox ov101_021F7E94[2];
 extern const TouchscreenHitbox ov101_021F7EA4[2];
 extern const TouchscreenHitbox ov101_021F7EAC[];
 extern const TouchscreenHitbox ov101_021F7EB8[];
+extern const TouchscreenHitbox ov101_021F7ECC[];
 extern const TouchscreenHitbox ov101_021F7EF4[];
 
 int ov101_021EB568(PokegearMapAppData *mapApp) {
@@ -1036,4 +1037,42 @@ void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1) {
         sub_020136B4(mapApp->unk_044[r7].unk_0, 4, -6);
         sub_02013820(mapApp->unk_044[r7].unk_0, 3);
     }
+}
+
+int ov101_021ED2C0(PokegearMapAppData *mapApp) {
+    int r2;
+
+    if (!System_GetTouchHeld()) {
+        r2 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021F7ECC, gSystem.touchX, gSystem.touchY);
+        if (r2 == 8) {
+            ov101_021ED110(mapApp, mapApp->unk_139_4 / 4, mapApp->unk_139_4 % 4);
+            ov101_021ED204(mapApp, mapApp->unk_139_4);
+            ov101_021ECA84(mapApp, FALSE);
+            PlaySE(SEQ_SE_GS_GEARGOMIBAKO);
+            mapApp->unk_13C_0 = 0;
+            return -1;
+        } else if (r2 == -1 || mapApp->unk_139_4 / 4 != r2 / 4 || mapApp->unk_139_4 == r2) {
+            ov101_021ED204(mapApp, mapApp->unk_139_4);
+            PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
+            mapApp->unk_13C_0 = 0;
+            return -1;
+        } else if (r2 / 4 == 0) {
+            ov101_021ED780(mapApp->unk_118.unk_4, mapApp->unk_139_4 % 4, r2 % 4);
+        } else {
+            ov101_021ED7D8(mapApp->unk_118.unk_4, mapApp->unk_139_4 % 4, r2 % 4);
+        }
+        ov101_021EAE54(mapApp, 0);
+        ov101_021ED204(mapApp, mapApp->unk_139_4);
+        PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
+        mapApp->unk_13C_0 = 0;
+        return -1;
+    }
+    UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&mapApp->unk_084->unk_08[mapApp->unk_139_4 + 20], gSystem.touchX + mapApp->unk_13E, gSystem.touchY + mapApp->unk_140);
+    if (mapApp->unk_139_4 >= 4) {
+        sub_020136B4(mapApp->unk_044[mapApp->unk_139_4 - 4].unk_0, 4, -6);
+    }
+    if (TouchscreenHitbox_PointIsIn(&ov101_021F7ECC[8], gSystem.touchX, gSystem.touchY) != mapApp->unk_13C_7) {
+        ov101_021ECA84(mapApp, mapApp->unk_13C_7 ^ TRUE);
+    }
+    return -1;
 }
