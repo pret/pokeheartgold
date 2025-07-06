@@ -73,17 +73,17 @@ typedef struct PokegearMapAppData_Sub214 {
     u8 unk_F;
 } PokegearMapAppData_Sub214;
 
-typedef struct PokegearMapAppData_Sub118_Sub4 {
+typedef struct PokegearMapAppData_Sub218 {
     UnkStruct_0202F3DC unk_00;
     u8 unk_10;
     u8 unk_11;
     u8 unk_12;
     u8 unk_13;
-} PokegearMapAppData_Sub118_Sub4;
+} PokegearMapAppData_Sub218;
 
 typedef struct PokegearMapAppData_Sub118 {
     const PokegearMapAppData_Sub214 *unk_0;
-    PokegearMapAppData_Sub118_Sub4 *unk_4;
+    PokegearMapAppData_Sub218 *unk_4;
     u16 unk_8;
     u16 unk_A;
 } PokegearMapAppData_Sub118;
@@ -183,9 +183,11 @@ typedef struct PokegearMapAppData {
     NNSG2dScreenData *unk_180;                // 0x180
     Window unk_184[9];                        // 0x184
     const PokegearMapAppData_Sub214 *unk_214; // 0x214
-    u8 filler_218[0x7D0];                     // 0x218
+    PokegearMapAppData_Sub218 unk_218[100];   // 0x218
     u16 unk_9E8[ROAMER_MAX];                  // 0x9E8
-    u8 filler_9F0[4];                         // 0x9F0
+    u8 unk_9F0;                               // 0x9F0
+    u8 unk_9F1;                               // 0x9F1
+    u8 unk_9F2;                               // 0x9F2
 } PokegearMapAppData;                         // size: 0x9F4
 
 BOOL ov101_021E7FF4(PokegearMapAppData *mapApp);
@@ -238,18 +240,19 @@ int ov101_021ECEA8(PokegearMapAppData *mapApp);
 int ov101_021ECF98(PokegearMapAppData *mapApp);
 int ov101_021ED158(PokegearMapAppData *mapApp);
 int ov101_021ED2C0(PokegearMapAppData *mapApp);
+
 void ov101_021ED4E0(PokegearMapAppData *mapApp);
 void ov101_021ED5AC(PokegearMapAppData *mapApp);
 
-PokegearMapAppData_Sub118_Sub4 *ov101_021ED614(PokegearMapAppData *mapApp, int a1);
-PokegearMapAppData_Sub118_Sub4 *ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
-void ov101_021ED6B8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118_Sub4 *a1);
-void ov101_021ED750(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u8 a2);
-BOOL ov101_021ED760(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1);
-void ov101_021ED780(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u8 a2);
-void ov101_021ED79C(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u16 a2);
-BOOL ov101_021ED7B0(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1);
-void ov101_021ED7D8(PokegearMapAppData_Sub118_Sub4 *a0, u8 a1, u8 a2);
+PokegearMapAppData_Sub218 *ov101_021ED614(PokegearMapAppData *mapApp, int a1);
+PokegearMapAppData_Sub218 *ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
+void ov101_021ED6B8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub218 *a1);
+void ov101_021ED750(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
+BOOL ov101_021ED760(PokegearMapAppData_Sub218 *a0, u8 a1);
+void ov101_021ED780(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
+void ov101_021ED79C(PokegearMapAppData_Sub218 *a0, u8 a1, u16 a2);
+BOOL ov101_021ED7B0(PokegearMapAppData_Sub218 *a0, u8 a1);
+void ov101_021ED7D8(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
 
 extern const PokegearMapAppData_Sub214 ov101_021F7372[];
 extern const UnkStruct_ov101_021F79B4 ov101_021F79B4[];

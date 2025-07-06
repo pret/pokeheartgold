@@ -151,7 +151,7 @@ BOOL ov101_021E78B0(u16 mapID) {
 
 void ov101_021E78EC(PokegearMapAppData *mapApp) {
     int i;
-    PokegearMapAppData_Sub118_Sub4 *r0;
+    PokegearMapAppData_Sub218 *r0;
     RoamerSaveData *roamers;
 
     mapApp->pokegear->childAppdata = mapApp;

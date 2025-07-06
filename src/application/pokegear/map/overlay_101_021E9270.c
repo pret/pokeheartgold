@@ -797,7 +797,7 @@ void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2) {
     u8 r1;
     PokegearMapAppData_Sub118 *sp30;
     const PokegearMapAppData_Sub214 *sp2C;
-    PokegearMapAppData_Sub118_Sub4 *sp28;
+    PokegearMapAppData_Sub218 *sp28;
     UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
 
     sp30 = &mapApp->unk_118;
@@ -900,7 +900,7 @@ void ov101_021EADC0(PokegearMapAppData *mapApp, u8 a1, u16 a2) {
 void ov101_021EAE54(PokegearMapAppData *mapApp, int a1) {
     u32 i;
     const PokegearMapAppData_Sub214 *r5;
-    PokegearMapAppData_Sub118_Sub4 *sp10;
+    PokegearMapAppData_Sub218 *sp10;
     PokegearMapAppData_Sub118 *r0;
     UnkStruct_ov100_021E6E20_Sub8 *r4 = mapApp->unk_084->unk_08;
 
