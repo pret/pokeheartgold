@@ -257,4 +257,8 @@ static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setFixCoords(UnkStruct_o
     a0->unk_14 = FX32_CONST(a2);
 }
 
+static inline void UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(UnkStruct_ov100_021E6E20_Sub8 *a0, int a1) {
+    thunk_Sprite_SetDrawPriority(a0->sprite, a1);
+}
+
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H

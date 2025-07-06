@@ -26,12 +26,15 @@ void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2);
 BOOL ov101_021ECA30(PokegearMapAppData *mapApp, u8 a1);
 void ov101_021ECA84(PokegearMapAppData *mapApp, BOOL a1);
 void ov101_021ECE58(PokegearMapAppData *mapApp);
+void ov101_021ED110(PokegearMapAppData *mapApp, u8 a1, u8 a2);
+void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1);
 
 extern const u8 ov101_021F7E8C[][2];
 extern const u8 ov101_021F7E9C[][4];
 extern const TouchscreenHitbox ov101_021F7E94[2];
 extern const TouchscreenHitbox ov101_021F7EA4[2];
 extern const TouchscreenHitbox ov101_021F7EAC[];
+extern const TouchscreenHitbox ov101_021F7EB8[];
 extern const TouchscreenHitbox ov101_021F7EF4[];
 
 int ov101_021EB568(PokegearMapAppData *mapApp) {
@@ -854,6 +857,8 @@ int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1) {
     u16 r6;
     UnkStruct_ov100_021E6E20_Sub8 *r7 = mapApp->unk_084->unk_08;
 
+    // static const TouchscreenHitbox ov101_021F7E90 = { .rect = {TOUCHSCREEN_HITBOX_RECTLIST_END}};
+
     if (!System_GetTouchHeld()) {
         return -1;
     }
@@ -873,7 +878,7 @@ int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1) {
         } else if (r4 >= 8) {
             mapApp->unk_139_4 = r4 - 8;
             mapApp->unk_13C_0 = 1;
-            thunk_Sprite_SetDrawPriority(r7[r4 + 20].sprite, 1);
+            UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&r7[r4 + 20], 1);
             PlaySE(SEQ_SE_GS_GEARSEALGRAB);
             return -1;
         } else if (ov101_021ECA30(mapApp, r4)) {
@@ -881,12 +886,12 @@ int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1) {
             if (r4 % 2 == 0) {
                 mapApp->unk_139_4 = r6;
                 mapApp->unk_13E = mapApp->unk_140 = 0;
-                thunk_Sprite_SetDrawPriority(r7[r6 + 20].sprite, 1);
+                UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&r7[r6 + 20], 1);
             } else {
                 mapApp->unk_139_4 = r6 + 4;
                 mapApp->unk_13E = ((r6 % 2) * 0x68 + 0x28) - gSystem.touchX;
                 mapApp->unk_140 = ((r6 / 2) * 0x15 + 0x1F) - gSystem.touchY;
-                thunk_Sprite_SetDrawPriority(r7[r6 + 24].sprite, 1);
+                UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&r7[r6 + 24], 1);
                 sub_02013820(mapApp->unk_044[r6].unk_0, 0);
             }
             mapApp->unk_13C_0 = 2;
@@ -949,4 +954,86 @@ int ov101_021ECEA8(PokegearMapAppData *mapApp) {
         ov100_021E73AC(mapApp->pokegear->appSwitch, 1);
     }
     return -1;
+}
+
+int ov101_021ECF98(PokegearMapAppData *mapApp) {
+    int r5;
+
+    if (!System_GetTouchHeld()) {
+        r5 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021F7EB8, gSystem.touchX, gSystem.touchY);
+        PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
+        if (r5 == -1) {
+            UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&mapApp->unk_084->unk_08[28 + mapApp->unk_139_4], mapApp->unk_139_4 * 24 + 40, 132);
+            UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&mapApp->unk_084->unk_08[28 + mapApp->unk_139_4], 4);
+            mapApp->unk_13C_0 = 0;
+            return -1;
+        }
+        if (mapApp->unk_118.unk_4 == NULL) {
+            mapApp->unk_118.unk_4 = ov101_021ED64C(mapApp, mapApp->unk_118.unk_0->unk_0);
+        }
+        ov101_021ED750(mapApp->unk_118.unk_4, r5, mapApp->unk_139_4);
+        ov101_021EAE54(mapApp, 0);
+        UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&mapApp->unk_084->unk_08[28 + mapApp->unk_139_4], mapApp->unk_139_4 * 24 + 40, 132);
+        UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&mapApp->unk_084->unk_08[28 + mapApp->unk_139_4], 4);
+        mapApp->unk_13C_0 = 0;
+        return -1;
+    }
+    UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&mapApp->unk_084->unk_08[28 + mapApp->unk_139_4], gSystem.touchX, gSystem.touchY);
+    return -1;
+}
+
+void ov101_021ED110(PokegearMapAppData *mapApp, u8 a1, u8 a2) {
+    u8 r0;
+    if (a1 == 0) {
+        r0 = ov101_021ED760(mapApp->unk_118.unk_4, a2);
+    } else {
+        r0 = ov101_021ED7B0(mapApp->unk_118.unk_4, a2);
+    }
+    if (r0 == 0) {
+        ov101_021ED6B8(mapApp, mapApp->unk_118.unk_4);
+        mapApp->unk_118.unk_4 = NULL;
+    }
+    ov101_021EAE54(mapApp, 0);
+}
+
+int ov101_021ED158(PokegearMapAppData *mapApp) {
+    u8 r2;
+    if (gSystem.newKeys & PAD_BUTTON_A) {
+        PlaySE(SEQ_SE_GS_GEARGOMIBAKO);
+        r2 = PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1);
+        ov101_021ED110(mapApp, r2 % 2, r2 / 2);
+        ov101_021ECE58(mapApp);
+        ov101_021ECA84(mapApp, FALSE);
+    }
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        ov101_021ECE58(mapApp);
+        ov101_021ECA84(mapApp, FALSE);
+    } else if (System_GetTouchNew()) {
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        ov101_021ECE58(mapApp);
+        ov101_021ECA84(mapApp, FALSE);
+        if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
+            ov101_021EB364(mapApp);
+            mapApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
+        }
+    }
+    return -1;
+}
+
+void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1) {
+    u8 r7;
+    UnkStruct_ov100_021E6E20_Sub8 *r5 = mapApp->unk_084->unk_08;
+
+    if (a1 < 4) {
+        r7 = mapApp->unk_139_4;
+        UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&r5[r7 + 20], 104 * (mapApp->unk_139_4 % 2) + 32, 21 * (mapApp->unk_139_4 / 2) + 32);
+        UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&r5[r7 + 20], 4);
+    } else {
+        r7 = a1 - 4;
+        UnkStruct_ov100_021E6E20_Sub8_inline_setCoordUpdateSprite(&r5[r7 + 24], 104 * (r7 % 2) + 40, 21 * (r7 / 2) + 31);
+        UnkStruct_ov100_021E6E20_Sub8_inline_setPriority(&r5[r7 + 24], 4);
+        sub_020136B4(mapApp->unk_044[r7].unk_0, 4, -6);
+        sub_02013820(mapApp->unk_044[r7].unk_0, 3);
+    }
 }
