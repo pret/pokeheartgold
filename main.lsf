@@ -1143,6 +1143,7 @@ Overlay OVY_101
     Object src/application/pokegear/map/overlay_101_021EB568.o
     Object src/application/pokegear/map/overlay_101_021ED498.o
     Object src/application/pokegear/map/town_map.o
+    Object src/application/pokegear/map/overlay_101_021EDCE0.o
     Object asm/pokegear_app_map.o
     Object asm/pokegear_app_configure.o
     Object src/application/pokegear/phone/pokegear_phone.o

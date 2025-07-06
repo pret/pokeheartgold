@@ -17,7 +17,7 @@ int ov101_021EDBFC(PokegearMapAppData *mapApp);
 int ov101_021EDC04(PokegearMapAppData *mapApp);
 int ov101_021EDC70(PokegearMapAppData *mapApp);
 
-extern const u16 ov101_021F7F3C[];
+const u16 ov101_021F7F3C[] = { 0x001A, 0x001D, 0x002D };
 
 BOOL TownMap_Init(OverlayManager *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
