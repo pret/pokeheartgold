@@ -94,3 +94,54 @@ int ov101_021EDDF4(PokegearMapAppData *mapApp) {
 
     return 12;
 }
+
+void ov101_021EDE4C(PokegearMapAppData *mapApp) {
+    int i;
+
+    ov100_021E5FDC();
+    mapApp->pokegear->bgConfig = BgConfig_Alloc(mapApp->heapId);
+    GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
+
+    {
+        extern const GraphicsModes ov101_021F7F44;
+        GraphicsModes graphicsModes = ov101_021F7F44;
+        SetBothScreensModesAndDisable(&graphicsModes);
+    }
+
+    {
+        extern const BgTemplate ov101_021F7F9C[8];
+        BgTemplate bgTemplates[8];
+        ARRAY_ASSIGN(bgTemplates, ov101_021F7F9C);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_0, &bgTemplates[0], GF_BG_TYPE_TEXT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplates[1], GF_BG_TYPE_TEXT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplates[2], GF_BG_TYPE_256x16PLTT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, &bgTemplates[3], GF_BG_TYPE_256x16PLTT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_0, &bgTemplates[4], GF_BG_TYPE_TEXT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, &bgTemplates[5], GF_BG_TYPE_TEXT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, &bgTemplates[6], GF_BG_TYPE_TEXT);
+        InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &bgTemplates[7], GF_BG_TYPE_TEXT);
+    }
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+    for (i = 0; i < 8; ++i) {
+        BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, i);
+        BG_ClearCharDataRange(i, 0x20, 0, mapApp->heapId);
+        ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, i);
+    }
+}
+
+void ov101_021EDF54(PokegearMapAppData *mapApp) {
+    BG_LoadBlankPltt(GF_PAL_LOCATION_MAIN_OBJ, 0x1C0, 0, mapApp->heapId);
+    BG_LoadBlankPltt(GF_PAL_LOCATION_SUB_OBJ, 0x180, 0, mapApp->heapId);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_0);
+    FreeToHeap(mapApp->pokegear->bgConfig);
+    GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
+    G2_SetBlendAlpha(0, 0, 0, 0);
+}

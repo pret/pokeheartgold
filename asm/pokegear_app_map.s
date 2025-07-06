@@ -30,195 +30,6 @@
 	.extern ov101_021EB338
 	.extern ov101_021EB4C4
 
-	thumb_func_start ov101_021EDE4C
-ov101_021EDE4C: ; 0x021EDE4C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0xf0
-	add r5, r0, #0
-	bl ov100_021E5FDC
-	ldr r0, [r5]
-	bl BgConfig_Alloc
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EDF44 ; =0x04000304
-	str r0, [r1, #0x74]
-	ldrh r1, [r2]
-	ldr r0, _021EDF48 ; =0xFFFF7FFF
-	ldr r4, _021EDF4C ; =ov101_021F7F44
-	and r0, r1
-	strh r0, [r2]
-	add r3, sp, #0
-	add r2, r3, #0
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	add r0, r2, #0
-	bl SetBothScreensModesAndDisable
-	ldr r4, _021EDF50 ; =ov101_021F7F9C
-	add r3, sp, #0x10
-	mov r2, #0x1c
-_021EDE84:
-	ldmia r4!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _021EDE84
-	ldr r0, [r5, #0x10]
-	mov r1, #0
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x10
-	add r3, r1, #0
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x2c
-	mov r3, #0
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #2
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x48
-	add r3, r1, #0
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #3
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x64
-	mov r3, #2
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #4
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x80
-	mov r3, #0
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #5
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0x9c
-	mov r3, #0
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #6
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0xb8
-	mov r3, #0
-	bl InitBgFromTemplate
-	ldr r0, [r5, #0x10]
-	mov r1, #7
-	ldr r0, [r0, #0x74]
-	add r2, sp, #0xd4
-	mov r3, #0
-	bl InitBgFromTemplate
-	mov r0, #0xf
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #0xf
-	mov r1, #0
-	bl GfGfx_EngineBTogglePlanes
-	mov r4, #0
-	mov r6, #0x20
-	add r7, r4, #0
-_021EDF12:
-	ldr r0, [r5, #0x10]
-	lsl r1, r4, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl BgClearTilemapBufferAndCommit
-	lsl r0, r4, #0x18
-	ldr r3, [r5]
-	lsr r0, r0, #0x18
-	add r1, r6, #0
-	add r2, r7, #0
-	bl BG_ClearCharDataRange
-	ldr r0, [r5, #0x10]
-	lsl r1, r4, #0x18
-	ldr r0, [r0, #0x74]
-	lsr r1, r1, #0x18
-	bl ScheduleBgTilemapBufferTransfer
-	add r4, r4, #1
-	cmp r4, #8
-	blt _021EDF12
-	add sp, #0xf0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021EDF44: .word 0x04000304
-_021EDF48: .word 0xFFFF7FFF
-_021EDF4C: .word ov101_021F7F44
-_021EDF50: .word ov101_021F7F9C
-	thumb_func_end ov101_021EDE4C
-
-	thumb_func_start ov101_021EDF54
-ov101_021EDF54: ; 0x021EDF54
-	push {r3, r4, lr}
-	sub sp, #4
-	add r4, r0, #0
-	mov r1, #7
-	ldr r3, [r4]
-	mov r0, #1
-	lsl r1, r1, #6
-	mov r2, #0
-	bl BG_LoadBlankPltt
-	mov r1, #6
-	ldr r3, [r4]
-	mov r0, #5
-	lsl r1, r1, #6
-	mov r2, #0
-	bl BG_LoadBlankPltt
-	ldr r0, [r4, #0x10]
-	mov r1, #7
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #6
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #5
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #4
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #3
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #2
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #1
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	mov r1, #0
-	ldr r0, [r0, #0x74]
-	bl FreeBgTilemapBuffer
-	ldr r0, [r4, #0x10]
-	ldr r0, [r0, #0x74]
-	bl FreeToHeap
-	ldr r2, _021EDFEC ; =0x04000304
-	ldr r0, _021EDFF0 ; =0xFFFF7FFF
-	ldrh r1, [r2]
-	and r0, r1
-	strh r0, [r2]
-	mov r1, #0
-	ldr r0, _021EDFF4 ; =0x04000050
-	add r2, r1, #0
-	add r3, r1, #0
-	str r1, [sp]
-	bl G2x_SetBlendAlpha_
-	add sp, #4
-	pop {r3, r4, pc}
-	nop
-_021EDFEC: .word 0x04000304
-_021EDFF0: .word 0xFFFF7FFF
-_021EDFF4: .word 0x04000050
-	thumb_func_end ov101_021EDF54
-
 	thumb_func_start ov101_021EDFF8
 ov101_021EDFF8: ; 0x021EDFF8
 	push {r4, r5, lr}
@@ -1292,12 +1103,14 @@ _021EE8E4: .word 0x00030100
 
     .rodata
 
+	.global ov101_021F7F44
 ov101_021F7F44: ; 0x021F7F44
 	.word 0x00000001
 	.word 0x00000005
 	.word 0x00000000
 	.word 0x00000000
 
+	.global ov101_021F7F54
 ov101_021F7F54: ; 0x021F7F54
 	.byte 0x05, 0x01, 0x08, 0x05, 0x03, 0x01
 	.short 0x3F0
@@ -1318,6 +1131,7 @@ ov101_021F7F54: ; 0x021F7F54
 	.byte 0x00, 0x19, 0x15, 0x06, 0x02, 0x0A
 	.short 0x08E
 
+	.global ov101_021F7F9C
 ov101_021F7F9C: ; 0x021F7F9C
 	.word 0x00000000, 0x00000000, 0x00000800, 0x00000000
 	.byte 0x01, 0x00, 0x1F, 0x02, 0x00, 0x00, 0x00, 0x00
@@ -1344,6 +1158,7 @@ ov101_021F7F9C: ; 0x021F7F9C
 	.byte 0x01, 0x00, 0x1C, 0x04, 0x00, 0x02, 0x00, 0x00
 	.word 0x00000000
 
+	.global ov101_021F807C
 ov101_021F807C: ; 0x021F807C
 	.word 0x00000000
 	.short 0x0020, 0x0060, 0x0000, 0x0000
@@ -1351,21 +1166,25 @@ ov101_021F807C: ; 0x021F807C
 	.word 0x00000002, 0x00000000, 0x00000000, 0x00000000
 	.word 0x00000000
 
+	.global ov101_021F80A4
 ov101_021F80A4: ; 0x021F80A4
 	.word 0x00000000
 	.short 0x0010, 0x0090, 0x0000, 0x0001
 	.word 0x00000000, 0x00000000, 0x00000002, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
+	.global ov101_021F80CC
 ov101_021F80CC: ; 0x021F80CC
 	.word 0x00000001
 	.short 0x0020, 0x0080, 0x0000, 0x0000
 	.word 0x00000001, 0x00000000, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
+	.global ov101_021F80F4
 ov101_021F80F4: ; 0x021F80F4
 	.word 0x00000001
 	.short 0x0020, 0x0060, 0x0000, 0x0001
 	.word 0x00000002, 0x00000000, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
+	.global ov101_021F811C
 ov101_021F811C: ; 0x021F811C
 	.word 0x00000001
 	.short 0x0020, 0x0060, 0x0000, 0x0002
@@ -1383,6 +1202,7 @@ ov101_021F811C: ; 0x021F811C
 	.short 0x0000, 0x0000, 0x0000, 0x0008
 	.word 0x00000001, 0x00000002, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
+	.global ov101_021F81E4
 ov101_021F81E4: ; 0x021F81E4
 	.word 0x00000001
 	.short 0x0000, 0x0000, 0x0000, 0x0009
