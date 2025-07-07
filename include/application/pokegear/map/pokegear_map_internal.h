@@ -113,7 +113,7 @@ typedef struct PokegearMapAppData {
     String *unk_0A4;                          // 0x0A4
     String *unk_0A8;                          // 0x0A8
     String *unk_0AC;                          // 0x0AC
-    u8 filler_0B0[4];                         // 0x0B0
+    String *unk_0B0;                          // 0x0B0
     String *unk_0B4;                          // 0x0B4
     u8 unk_0B8;                               // 0x0B8
     u8 unk_0B9;                               // 0x0B9
