@@ -30,64 +30,6 @@
 	.extern ov101_021EB338
 	.extern ov101_021EB4C4
 
-	thumb_func_start ov101_021EE394
-ov101_021EE394: ; 0x021EE394
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x10]
-	bl ov100_021E6914
-	ldr r0, [r4, #0x10]
-	mov r1, #2
-	bl PokegearApp_CreateSpriteManager
-	ldr r1, [r4]
-	mov r0, #0x2a
-	bl ov100_021E6E20
-	add r1, r4, #0
-	add r1, #0x84
-	str r0, [r1]
-	ldr r0, [r4, #0x10]
-	add r0, #0x8c
-	ldr r0, [r0]
-	bl SpriteSystem_GetRenderer
-	mov r2, #0xf
-	mov r1, #0
-	lsl r2, r2, #0x10
-	bl G2dRenderer_SetSubSurfaceCoords
-	ldr r1, [r4, #0x10]
-	ldr r0, [r4]
-	ldr r1, [r1, #0x78]
-	bl TouchscreenListMenuSpawner_Create
-	add r4, #0xbc
-	str r0, [r4]
-	pop {r4, pc}
-	thumb_func_end ov101_021EE394
-
-	thumb_func_start ov101_021EE3D8
-ov101_021EE3D8: ; 0x021EE3D8
-	push {r4, lr}
-	add r4, r0, #0
-	add r0, #0xbc
-	ldr r0, [r0]
-	bl TouchscreenListMenuSpawner_Destroy
-	ldr r0, [r4, #0x10]
-	add r0, #0x8c
-	ldr r0, [r0]
-	bl SpriteSystem_GetRenderer
-	mov r2, #3
-	mov r1, #0
-	lsl r2, r2, #0x12
-	bl G2dRenderer_SetSubSurfaceCoords
-	add r0, r4, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6E58
-	ldr r0, [r4, #0x10]
-	bl PokegearApp_DestroySpriteManager
-	ldr r0, [r4, #0x10]
-	bl ov100_021E6950
-	pop {r4, pc}
-	thumb_func_end ov101_021EE3D8
-
 	thumb_func_start ov101_021EE410
 ov101_021EE410: ; 0x021EE410
 	push {r3, r4, r5, r6, r7, lr}

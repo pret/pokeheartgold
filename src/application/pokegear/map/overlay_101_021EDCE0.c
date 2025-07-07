@@ -240,3 +240,19 @@ void ov101_021EE380(PokegearMapAppData *mapApp) {
     ListMenuItems_Delete(mapApp->unk_0C0);
     mapApp->unk_0C0 = NULL;
 }
+
+void ov101_021EE394(PokegearMapAppData *mapApp) {
+    ov100_021E6914(mapApp->pokegear);
+    PokegearApp_CreateSpriteManager(mapApp->pokegear, 2);
+    mapApp->unk_084 = ov100_021E6E20(42, mapApp->heapId);
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xF0));
+    mapApp->unk_0BC = TouchscreenListMenuSpawner_Create(mapApp->heapId, mapApp->pokegear->plttData);
+}
+
+void ov101_021EE3D8(PokegearMapAppData *mapApp) {
+    TouchscreenListMenuSpawner_Destroy(mapApp->unk_0BC);
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xC0));
+    ov100_021E6E58(mapApp->unk_084);
+    PokegearApp_DestroySpriteManager(mapApp->pokegear);
+    ov100_021E6950(mapApp->pokegear);
+}
