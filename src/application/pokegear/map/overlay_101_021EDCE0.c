@@ -4,6 +4,7 @@
 
 #include "font.h"
 #include "gf_gfx_loader.h"
+#include "text.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
@@ -298,4 +299,56 @@ void ov101_021EE410(PokegearMapAppData *mapApp) {
     Sprite_SetAnimActiveFlag(sp0[6].sprite, FALSE);
     Sprite_SetAnimationFrame(sp0[6].sprite, mapApp->pokegear->args->playerGender);
     Sprite_SetAffineOverwriteMode(sp0[5].sprite, NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE);
+}
+
+void ov101_021EE664(PokegearMapAppData *mapApp) {
+    ov100_021E6EF4(mapApp->unk_084);
+}
+
+void ov101_021EE670(PokegearMapAppData *mapApp) {
+    int i;
+    s16 r1;
+    UnkStruct_ov100_021E6E20_Sub8 *sp1C = mapApp->unk_084->unk_08;
+
+    G2_SetBlendAlpha(4, 8, 10, 6);
+    for (i = 0; i < 3; ++i) {
+        BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1 + i);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1 + i, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1 + i, BG_POS_OP_SET_Y, 0);
+    }
+    mapApp->pokegear->reselectAppCB = ov101_021EB338;
+    mapApp->pokegear->unknownCB = ov101_021EB2FC;
+    ov101_021E990C(mapApp);
+    ov101_021E9B70(mapApp, &mapApp->unk_0C8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 24, mapApp->unk_178->rawData, 0, 0, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
+    ov101_021EAF40(mapApp);
+    mapApp->unk_00F = -1;
+    if (mapApp->unk_00D == 2) {
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 6, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
+        ov101_021EA794(mapApp, &mapApp->unk_118, mapApp->unk_110, mapApp->unk_112);
+        ov101_021EAD90(mapApp, 1);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, -81);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, -81);
+        BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_Y, -81);
+    } else {
+        ov101_021EA4D0(mapApp, 0);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 16, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
+        ov101_021EA8A8(mapApp, &mapApp->unk_118, mapApp->unk_110, mapApp->unk_112);
+        ov101_021EAD90(mapApp, 0);
+        ov101_021EB4C4(mapApp, -1);
+    }
+    ov101_021EB1E0(mapApp, 1);
+    ov101_021EA608(mapApp, 1);
+    r1 = FontID_String_GetWidth(4, mapApp->unk_0B0, 0);
+    r1 = (48 - r1) / 2;
+    AddTextPrinterParameterizedWithColor(&mapApp->unk_184[8], 4, mapApp->unk_0B0, r1, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    Sprite_SetDrawFlag(sp1C[5].sprite, TRUE);
+    ov100_021E6E84(mapApp->unk_084);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_0);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_0);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
