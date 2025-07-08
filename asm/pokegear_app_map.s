@@ -30,274 +30,6 @@
 	.extern ov101_021EB338
 	.extern ov101_021EB4C4
 
-	thumb_func_start ov101_021EE410
-ov101_021EE410: ; 0x021EE410
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	mov r6, #0
-	ldr r0, [r0, #8]
-	mov r7, #0x15
-	str r0, [sp]
-	add r4, r0, #0
-_021EE422:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EE64C ; =ov101_021F807C
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	lsr r2, r6, #0x1f
-	lsl r3, r6, #0x1f
-	sub r3, r3, r2
-	mov r1, #0x1f
-	ror r3, r1
-	add r3, r2, r3
-	add r2, r6, r2
-	mov r1, #0x68
-	mul r1, r3
-	asr r2, r2, #1
-	add r3, r2, #0
-	mul r3, r7
-	add r1, #0x20
-	add r3, #0xcb
-	lsl r1, r1, #0x10
-	lsl r2, r3, #0x10
-	ldr r0, [r4, #0x20]
-	asr r1, r1, #0x10
-	asr r2, r2, #0x10
-	bl Sprite_SetPositionXY
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl thunk_Sprite_SetPriority
-	add r6, r6, #1
-	add r4, #0x28
-	cmp r6, #4
-	blt _021EE422
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EE650 ; =ov101_021F80A4
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	ldr r0, [sp]
-	mov r1, #0
-	add r0, #0xc0
-	ldr r0, [r0]
-	bl thunk_Sprite_SetPriority
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EE654 ; =ov101_021F80CC
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EE658 ; =ov101_021F80F4
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r7, #0
-	ldr r6, [sp]
-	add r4, r7, #0
-_021EE4E6:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EE65C ; =ov101_021F811C
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	cmp r7, #0
-	ble _021EE51A
-	add r0, r4, #0
-	bl _fflt
-	add r1, r0, #0
-	mov r0, #0x3f
-	lsl r0, r0, #0x18
-	bl _fadd
-	b _021EE528
-_021EE51A:
-	add r0, r4, #0
-	bl _fflt
-	mov r1, #0x3f
-	lsl r1, r1, #0x18
-	bl _fsub
-_021EE528:
-	bl _ffix
-	add r1, r0, #0
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	bl Sprite_UpdateAnim
-	mov r0, #1
-	lsl r0, r0, #0xc
-	add r7, r7, #1
-	add r4, r4, r0
-	add r6, #0x28
-	cmp r7, #4
-	blt _021EE4E6
-	ldr r7, _021EE64C ; =ov101_021F807C
-	mov r6, #0
-_021EE54A:
-	ldr r1, [r5, #0x10]
-	add r3, r6, #5
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	mov r2, #0x28
-	mul r2, r3
-	ldr r0, [r0]
-	ldr r1, [r1]
-	add r2, r7, r2
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	mov r1, #0x28
-	mul r1, r0
-	ldr r0, [sp]
-	add r4, r0, r1
-	ldr r0, [r4, #0x20]
-	add r1, r4, #4
-	add r2, r4, #6
-	bl Sprite_GetPositionXY
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl thunk_Sprite_SetPriority
-	ldr r0, [r4, #0x20]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	add r6, r6, #1
-	cmp r6, #4
-	blt _021EE54A
-	mov r6, #0
-	mov r7, #0x28
-_021EE5A2:
-	ldr r1, [r5, #0x10]
-	ldr r2, _021EE660 ; =ov101_021F81E4
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	add r1, r0, #0
-	add r0, r5, #0
-	add r0, #0x84
-	ldr r0, [r0]
-	bl ov100_021E6EC4
-	add r1, r0, #0
-	ldr r0, [sp]
-	mul r1, r7
-	add r4, r0, r1
-	ldr r0, [r4, #0x20]
-	add r1, r4, #4
-	add r2, r4, #6
-	bl Sprite_GetPositionXY
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	ldr r0, [r4, #0x20]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	add r6, r6, #1
-	cmp r6, #0x1b
-	blt _021EE5A2
-	mov r4, #0
-	mov r7, #0x28
-_021EE5EC:
-	lsl r0, r4, #0x10
-	lsr r0, r0, #0x10
-	add r1, r0, #0
-	ldr r0, [sp]
-	mul r1, r7
-	add r6, r0, r1
-	ldr r0, [r6, #0x20]
-	add r1, r6, #4
-	add r2, r6, #6
-	bl Sprite_GetPositionXY
-	ldr r0, [r6, #0x20]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	add r4, r4, #1
-	cmp r4, #0xb
-	blt _021EE5EC
-	ldr r0, [sp]
-	mov r1, #1
-	add r0, #0xe8
-	ldr r0, [r0]
-	bl Sprite_SetAnimActiveFlag
-	mov r1, #0x11
-	ldr r0, [sp]
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	mov r1, #0x11
-	ldr r0, [sp]
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	ldr r1, [r5, #0x10]
-	ldr r1, [r1, #0x20]
-	ldrb r1, [r1, #7]
-	bl Sprite_SetAnimationFrame
-	ldr r0, [sp]
-	mov r1, #2
-	add r0, #0xe8
-	str r0, [sp]
-	ldr r0, [r0]
-	bl Sprite_SetAffineOverwriteMode
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021EE64C: .word ov101_021F807C
-_021EE650: .word ov101_021F80A4
-_021EE654: .word ov101_021F80CC
-_021EE658: .word ov101_021F80F4
-_021EE65C: .word ov101_021F811C
-_021EE660: .word ov101_021F81E4
-	thumb_func_end ov101_021EE410
-
 	thumb_func_start ov101_021EE664
 ov101_021EE664: ; 0x021EE664
 	ldr r3, _021EE66C ; =ov100_021E6EF4
@@ -661,44 +393,38 @@ ov101_021F807C: ; 0x021F807C
 	.word 0x00000002, 0x00000000, 0x00000000, 0x00000000
 	.word 0x00000000
 
-	.global ov101_021F80A4
-ov101_021F80A4: ; 0x021F80A4
 	.word 0x00000000
 	.short 0x0010, 0x0090, 0x0000, 0x0001
 	.word 0x00000000, 0x00000000, 0x00000002, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
-	.global ov101_021F80CC
-ov101_021F80CC: ; 0x021F80CC
 	.word 0x00000001
 	.short 0x0020, 0x0080, 0x0000, 0x0000
 	.word 0x00000001, 0x00000000, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
-	.global ov101_021F80F4
-ov101_021F80F4: ; 0x021F80F4
 	.word 0x00000001
 	.short 0x0020, 0x0060, 0x0000, 0x0001
 	.word 0x00000002, 0x00000000, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
-	.global ov101_021F811C
-ov101_021F811C: ; 0x021F811C
 	.word 0x00000001
 	.short 0x0020, 0x0060, 0x0000, 0x0002
 	.word 0x00000002, 0x00000000, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
+	; 200
 	.word 0x00000001
 	.short 0x0000, 0x0000, 0x0000, 0x0005
 	.word 0x00000001, 0x00000002, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
+	; 240
 	.word 0x00000001
 	.short 0x0000, 0x0000, 0x0000, 0x0006
 	.word 0x00000001, 0x00000002, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
+	; 280
 	.word 0x00000001
 	.short 0x0000, 0x0000, 0x0000, 0x0007
 	.word 0x00000001, 0x00000002, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
+	;320
 	.word 0x00000001
 	.short 0x0000, 0x0000, 0x0000, 0x0008
 	.word 0x00000001, 0x00000002, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
 
-	.global ov101_021F81E4
-ov101_021F81E4: ; 0x021F81E4
 	.word 0x00000001
 	.short 0x0000, 0x0000, 0x0000, 0x0009
 	.word 0x00000003, 0x00000000, 0x00000001, 0x00000000, 0x00000000, 0x00000000, 0x00000000
