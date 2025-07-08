@@ -97,21 +97,21 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     ov101_021ED4E0(mapApp);
     mapApp->unk_138_4 = 0;
     mapApp->unk_138_1 = 0;
-    mapApp->unk_138_5 = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
+    mapApp->mapUnlockLevel = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
     mapApp->unk_038 = MapMatrix_MapData_New(mapApp->heapId);
-    mapApp->unk_124 = SaveData_GetPhoneCallPersistentState(mapApp->pokegear->saveData);
-    mapApp->unk_128 = AllocAndReadPhoneBook(mapApp->heapId);
-    mapApp->unk_12C = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapId);
-    mapApp->unk_130 = SavePokegear_FindEmptyPhonebookSlot(mapApp->pokegear->savePokegear);
-    mapApp->unk_108 = mapApp->pokegear->args->matrixXCoord;
-    mapApp->unk_10A = mapApp->pokegear->args->matrixYCoord + 2;
-    mapApp->unk_10C = mapApp->pokegear->args->mapID;
-    mapApp->unk_10E = mapApp->pokegear->args->playerGender;
-    mapApp->unk_110 = mapApp->pokegear->args->matrixXCoord;
-    mapApp->unk_112 = mapApp->pokegear->args->matrixYCoord + 2;
+    mapApp->phoneCallSave = SaveData_GetPhoneCallPersistentState(mapApp->pokegear->saveData);
+    mapApp->phoneBook = AllocAndReadPhoneBook(mapApp->heapId);
+    mapApp->phoneContact = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapId);
+    mapApp->numPhonebookSlots = SavePokegear_FindEmptyPhonebookSlot(mapApp->pokegear->savePokegear);
+    mapApp->matrixX = mapApp->pokegear->args->matrixXCoord;
+    mapApp->matrixY = mapApp->pokegear->args->matrixYCoord + 2;
+    mapApp->mapID = mapApp->pokegear->args->mapID;
+    mapApp->playerGender = mapApp->pokegear->args->playerGender;
+    mapApp->matrixX_2 = mapApp->pokegear->args->matrixXCoord;
+    mapApp->matrixY_2 = mapApp->pokegear->args->matrixYCoord + 2;
     mapApp->unk_100 = 1;
     mapApp->unk_104 = 1;
-    mapApp->unk_102 = ov101_021F7F3C[mapApp->unk_138_5];
+    mapApp->maxXscroll = ov101_021F7F3C[mapApp->mapUnlockLevel];
     mapApp->unk_106 = 0x11;
     mapApp->unk_132 = 0x20;
     mapApp->unk_131 = 8;
@@ -123,8 +123,8 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
 }
 
 void ov101_021EDAF8(PokegearMapAppData *mapApp) {
-    FreeToHeap(mapApp->unk_12C);
-    FreePhoneBook(mapApp->unk_128);
+    FreeToHeap(mapApp->phoneContact);
+    FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->unknownCB = NULL;
 }

@@ -264,7 +264,7 @@
 .public Save_VarsFlags_GetVar4057
 .public Save_VarsFlags_SetVar4057
 .public Save_VarsFlags_GetBuenasPasswordSet
-.public sub_02068F98
+.public MapID_GetLandmarkName
 .public DaycareMon_CalcLevelGrowth
 .public Save_Daycare_CalcCompatibility
 .public GetBoxMonData

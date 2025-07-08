@@ -112,21 +112,21 @@ typedef struct UnkStruct_ov100_021E6E20_Sub8 {
 typedef struct UnkStruct_ov100_021E6E20 {
     u16 max;
     u16 num;
-    u8 *unk_04; // char buffer?
-    UnkStruct_ov100_021E6E20_Sub8 *unk_08;
+    u8 filler_4[4];
+    UnkStruct_ov100_021E6E20_Sub8 *objects;
 } UnkStruct_ov100_021E6E20;
 
 typedef struct PokegearApp_UnkSub094 {
     HeapID heapId;
     int unk_004;
-    u16 unk_008;
+    u16 unk_008; // unused
     u16 unk_00A;
     u16 unk_00C;
     u16 unk_00E;
     SpriteList *spriteList;
-    G2dRenderer unk_014;
+    G2dRenderer renderer;
     u8 filler_13C[4];
-    GF_2DGfxResMan *unk_140[4];
+    GF_2DGfxResMan *resourceManagers[4];
     GF_2DGfxResObjList *spriteResources[4];
 } PokegearApp_UnkSub094; // size: 0x160
 
@@ -168,7 +168,7 @@ struct PokegearAppData {
     SpriteSystem *spriteSystem;                 // 0x08C
     SpriteManager *spriteManager;               // 0x090
     PokegearApp_UnkSub094 *unk_094;             // 0x094
-    ManagedSprite *unk_098[11];                 // 0x098
+    ManagedSprite *uiSprites[11];               // 0x098
     u16 *unk_0C4;                               // 0x0C4
     NNSG2dScreenData *unk_0C8;                  // 0x0C8
 }; // size: 0xCC

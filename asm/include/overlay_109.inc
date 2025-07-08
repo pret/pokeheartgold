@@ -118,7 +118,7 @@
 .public PhotoAlbum_DeletePhotoByIndex
 .public PhotoAlbum_SetPhotoAtIndex
 .public PhotoAlbum_LoadAllInUsePhotos
-.public sub_02068F98
+.public MapID_GetLandmarkName
 .public NNS_GfdDoVramTransfer
 .public FX_Inv
 .public MI_CpuFill8

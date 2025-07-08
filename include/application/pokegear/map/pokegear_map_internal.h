@@ -54,14 +54,14 @@ typedef struct PokegearMapAppData_Sub0C8 {
 } PokegearMapAppData_Sub0C8;
 
 typedef struct PokegearMapAppData_Sub214 {
-    u16 unk_0;
-    u8 unk_2;
-    u8 unk_3;
-    u16 unk_4_0 : 4;
-    u16 unk_4_4 : 4;
-    u16 unk_4_8 : 4;
-    u16 unk_4_C : 4;
-    u8 unk_6;
+    u16 mapId;
+    u8 x;
+    u8 y;
+    u16 width : 4;
+    u16 height : 4;
+    u16 objXoffset : 4;
+    u16 objYoffset : 4;
+    u8 flavorText;
     u8 unk_7;
     u8 unk_8;
     u8 unk_9;
@@ -69,8 +69,8 @@ typedef struct PokegearMapAppData_Sub214 {
     u8 unk_B;
     u8 unk_C;
     u8 unk_D;
-    u8 unk_E;
-    u8 unk_F;
+    u8 tilemapUnk170DestWidth;
+    u8 tilemapUnk170DestHeight;
 } PokegearMapAppData_Sub214;
 
 typedef struct PokegearMapAppData_Sub218 {
@@ -89,109 +89,107 @@ typedef struct PokegearMapAppData_Sub118 {
 } PokegearMapAppData_Sub118;
 
 typedef struct PokegearMapAppData {
-    HeapID heapId;                            // 0x000
-    int state;                                // 0x004
-    int substate;                             // 0x008
-    u8 unk_00C;                               // 0x00C
-    u8 unk_00D;                               // 0x00D
-    u8 unk_00E;                               // 0x00E
-    s8 unk_00F;                               // 0x00F
-    PokegearAppData *pokegear;                // 0x010
-    PokegearUnkSub03C unk_014;                // 0x014
-    int unk_030;                              // 0x030
-    int unk_034;                              // 0x034
-    MAPDATA *unk_038;                         // 0x038
-    UnkStruct_02013534 *unk_03C;              // 0x03C
-    UnkStruct_02013910 *unk_040;              // 0x040
-    PokegearMapAppData_Sub044 unk_044[4];     // 0x044
-    UnkStruct_ov100_021E6E20 *unk_084;        // 0x084
-    MsgData *unk_088;                         // 0x088
-    MessageFormat *unk_08C;                   // 0x08C
-    String *unk_090;                          // 0x090
-    u8 filler_094[8];                         // 0x094
-    String *unk_09C[2];                       // 0x09C
-    String *unk_0A4;                          // 0x0A4
-    String *unk_0A8;                          // 0x0A8
-    String *unk_0AC;                          // 0x0AC
-    String *unk_0B0;                          // 0x0B0
-    String *unk_0B4;                          // 0x0B4
-    u8 unk_0B8;                               // 0x0B8
-    u8 unk_0B9;                               // 0x0B9
-    u8 unk_0BA;                               // 0x0BA
-    TouchscreenListMenuSpawner *unk_0BC;      // 0x0BC
-    LISTMENUITEM *unk_0C0;                    // 0x0C0
-    TouchscreenListMenu *unk_0C4;             // 0x0C4
-    PokegearMapAppData_Sub0C8 unk_0C8;        // 0x0C8
-    u16 unk_100;                              // 0x100
-    u16 unk_102;                              // 0x102
-    u16 unk_104;                              // 0x104
-    u16 unk_106;                              // 0x106
-    s16 unk_108;                              // 0x108
-    s16 unk_10A;                              // 0x10A
-    u16 unk_10C;                              // 0x10C
-    u16 unk_10E;                              // 0x10E
-    s16 unk_110;                              // 0x110
-    s16 unk_112;                              // 0x112
-    Coord2S16 unk_114;                        // 0x114
-    PokegearMapAppData_Sub118 unk_118;        // 0x118
-    PhoneCallPersistentState *unk_124;        // 0x124
-    PhoneBook *unk_128;                       // 0x128
-    PhoneContact *unk_12C;                    // 0x12C
-    u8 unk_130;                               // 0x130
-    u8 unk_131;                               // 0x131
-    u8 unk_132;                               // 0x132
-    s8 unk_133;                               // 0x133
-    s8 unk_134;                               // 0x134
-    u8 unk_135;                               // 0x135
-    u8 unk_136;                               // 0x136
-    u8 unk_137;                               // 0x137
-    u8 unk_138_0 : 1;                         // 0x138
-    u8 unk_138_1 : 3;                         // 0x138
-    u8 unk_138_4 : 1;                         // 0x138
-    u8 unk_138_5 : 2;                         // 0x138
-    u8 unk_138_7 : 1;                         // 0x138
-    u8 unk_139_0 : 1;                         // 0x139
-    u8 unk_139_1 : 1;                         // 0x139
-    u8 unk_139_2 : 1;                         // 0x139
-    u8 unk_139_3 : 1;                         // 0x139
-    u8 unk_139_4 : 4;                         // 0x139
-    u8 unk_13A;                               // 0x13A
-    u8 unk_13B;                               // 0x13B
-    u8 unk_13C_0 : 7;                         // 0x13C
-    u8 unk_13C_7 : 1;                         // 0x13C
-    u8 unk_13D_0 : 1;                         // 0x13D
-    u8 unk_13D_1 : 1;                         // 0x13D
-    u8 unk_13D_2 : 1;                         // 0x13D
-    u8 unk_13D_3 : 1;                         // 0x13D
-    s16 unk_13E;                              // 0x13E
-    s16 unk_140;                              // 0x140
-    s16 unk_142;                              // 0x142
-    s16 unk_144;                              // 0x144
-    s16 unk_146;                              // 0x146
-    s16 unk_148;                              // 0x148
-    s16 unk_14A;                              // 0x14A
-    s16 unk_14C;                              // 0x14C
-    s16 unk_14E;                              // 0x14E
-    s16 unk_150;                              // 0x150
-    u16 unk_152;                              // 0x152
-    void *unk_154[6];                         // 0x154
-    NNSG2dScreenData *unk_16C;                // 0x16C
-    NNSG2dScreenData *unk_170;                // 0x170
-    NNSG2dScreenData *unk_174;                // 0x174
-    NNSG2dScreenData *unk_178;                // 0x178
-    NNSG2dScreenData *unk_17C;                // 0x17C
-    NNSG2dScreenData *unk_180;                // 0x180
-    Window unk_184[9];                        // 0x184
-    const PokegearMapAppData_Sub214 *unk_214; // 0x214
-    PokegearMapAppData_Sub218 unk_218[100];   // 0x218
-    u16 unk_9E8[ROAMER_MAX];                  // 0x9E8
-    u8 unk_9F0;                               // 0x9F0
-    u8 unk_9F1;                               // 0x9F1
-    u8 unk_9F2;                               // 0x9F2
-} PokegearMapAppData;                         // size: 0x9F4
+    HeapID heapId;                               // 0x000
+    int state;                                   // 0x004
+    int substate;                                // 0x008
+    u8 unk_00C;                                  // 0x00C
+    u8 unk_00D;                                  // 0x00D
+    u8 unk_00E;                                  // 0x00E
+    s8 unk_00F;                                  // 0x00F
+    PokegearAppData *pokegear;                   // 0x010
+    PokegearUnkSub03C unk_014;                   // 0x014
+    int unk_030;                                 // 0x030
+    int unk_034;                                 // 0x034
+    MAPDATA *unk_038;                            // 0x038
+    UnkStruct_02013534 *unk_03C;                 // 0x03C
+    UnkStruct_02013910 *unk_040;                 // 0x040
+    PokegearMapAppData_Sub044 unk_044[4];        // 0x044
+    UnkStruct_ov100_021E6E20 *objManager;        // 0x084
+    MsgData *msgData;                            // 0x088
+    MessageFormat *msgFormat;                    // 0x08C
+    String *flavorTextString;                    // 0x090
+    u8 filler_094[8];                            // 0x094
+    String *regionNameStrings[2];                // 0x09C
+    String *mapNameString;                       // 0x0A4
+    String *chooseDestinationString;             // 0x0A8
+    String *flyToLocationString;                 // 0x0AC
+    String *closeString;                         // 0x0B0
+    String *formatFlavorTextString;              // 0x0B4
+    u8 unk_0B8;                                  // 0x0B8, set 2 but never used
+    TouchscreenListMenuSpawner *listMenuSpawner; // 0x0BC
+    LISTMENUITEM *listMenuItems;                 // 0x0C0
+    TouchscreenListMenu *listMenu;               // 0x0C4
+    PokegearMapAppData_Sub0C8 unk_0C8;           // 0x0C8
+    u16 unk_100;                                 // 0x100
+    u16 maxXscroll;                              // 0x102
+    u16 unk_104;                                 // 0x104
+    u16 unk_106;                                 // 0x106
+    s16 matrixX;                                 // 0x108
+    s16 matrixY;                                 // 0x10A
+    u16 mapID;                                   // 0x10C
+    u16 playerGender;                            // 0x10E
+    s16 matrixX_2;                               // 0x110
+    s16 matrixY_2;                               // 0x112
+    Coord2S16 unk_114;                           // 0x114
+    PokegearMapAppData_Sub118 unk_118;           // 0x118
+    PhoneCallPersistentState *phoneCallSave;     // 0x124
+    PhoneBook *phoneBook;                        // 0x128
+    PhoneContact *phoneContact;                  // 0x12C
+    u8 numPhonebookSlots;                        // 0x130
+    u8 unk_131;                                  // 0x131
+    u8 unk_132;                                  // 0x132
+    s8 unk_133;                                  // 0x133
+    s8 unk_134;                                  // 0x134
+    u8 unk_135;                                  // 0x135
+    u8 unk_136;                                  // 0x136
+    u8 unk_137;                                  // 0x137
+    u8 unk_138_0 : 1;                            // 0x138
+    u8 unk_138_1 : 3;                            // 0x138
+    u8 unk_138_4 : 1;                            // 0x138
+    u8 mapUnlockLevel : 2;                       // 0x138
+    u8 unk_138_7 : 1;                            // 0x138
+    u8 unk_139_0 : 1;                            // 0x139
+    u8 unk_139_1 : 1;                            // 0x139
+    u8 unk_139_2 : 1;                            // 0x139
+    u8 unk_139_3 : 1;                            // 0x139
+    u8 unk_139_4 : 4;                            // 0x139
+    u8 unk_13A;                                  // 0x13A
+    u8 unk_13B;                                  // 0x13B
+    u8 unk_13C_0 : 7;                            // 0x13C
+    u8 unk_13C_7 : 1;                            // 0x13C
+    u8 unk_13D_0 : 1;                            // 0x13D
+    u8 unk_13D_1 : 1;                            // 0x13D
+    u8 unk_13D_2 : 1;                            // 0x13D
+    u8 unk_13D_3 : 1;                            // 0x13D
+    s16 unk_13E;                                 // 0x13E
+    s16 unk_140;                                 // 0x140
+    s16 unk_142;                                 // 0x142
+    s16 unk_144;                                 // 0x144
+    s16 unk_146;                                 // 0x146
+    s16 unk_148;                                 // 0x148
+    s16 unk_14A;                                 // 0x14A
+    s16 unk_14C;                                 // 0x14C
+    s16 unk_14E;                                 // 0x14E
+    s16 unk_150;                                 // 0x150
+    u16 unk_152;                                 // 0x152
+    void *unk_154[6];                            // 0x154
+    NNSG2dScreenData *unk_16C;                   // 0x16C
+    NNSG2dScreenData *unk_170;                   // 0x170
+    NNSG2dScreenData *unk_174;                   // 0x174
+    NNSG2dScreenData *unk_178;                   // 0x178
+    NNSG2dScreenData *unk_17C;                   // 0x17C
+    NNSG2dScreenData *unk_180;                   // 0x180
+    Window windows[9];                           // 0x184
+    const PokegearMapAppData_Sub214 *unk_214;    // 0x214
+    PokegearMapAppData_Sub218 unk_218[100];      // 0x218
+    u16 unk_9E8[ROAMER_MAX];                     // 0x9E8
+    u8 unk_9F0;                                  // 0x9F0
+    u8 unk_9F1;                                  // 0x9F1
+    u8 unk_9F2;                                  // 0x9F2
+} PokegearMapAppData;                            // size: 0x9F4
 
-BOOL ov101_021E7FF4(PokegearMapAppData *mapApp);
-BOOL ov101_021E8070(PokegearMapAppData *mapApp);
+BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp);
+BOOL PokegearMaps_GraphicsDeinit(PokegearMapAppData *mapApp);
 BOOL ov101_021E80B4(PokegearMapAppData *mapApp);
 BOOL ov101_021E818C(PokegearMapAppData *mapApp);
 

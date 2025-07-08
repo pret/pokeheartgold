@@ -148,9 +148,9 @@ BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1) {
     sp0[2] = time.minute / 10;
     sp0[3] = time.minute % 10;
     for (u8 i = 0; i < 4; i++) {
-        ManagedSprite_SetAnimationFrame(pokegearApp->unk_098[i + 5], sp0[i]);
+        ManagedSprite_SetAnimationFrame(pokegearApp->uiSprites[i + 5], sp0[i]);
     }
-    ManagedSprite_SetAnimationFrame(pokegearApp->unk_098[4], date.week);
+    ManagedSprite_SetAnimationFrame(pokegearApp->uiSprites[4], date.week);
     pokegearApp->unk_080 = time;
     pokegearApp->unk_007 = 0;
     return TRUE;
@@ -385,36 +385,36 @@ static void ov100_021E616C(PokegearAppData *pokegearApp) {
     ov100_021E6914(pokegearApp);
     pokegearApp->unk_094 = ov100_021E69F8(pokegearApp->heapId, 11, 1, pokegearApp->unk_008, 3, 2);
     for (int i = 0; i < 4; ++i) {
-        pokegearApp->unk_098[i] = ov100_021E6AC0(pokegearApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
+        pokegearApp->uiSprites[i] = ov100_021E6AC0(pokegearApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
     }
-    pokegearApp->unk_098[4] = ov100_021E6AC0(pokegearApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
-    pokegearApp->unk_098[5] = ov100_021E6AC0(pokegearApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
-    pokegearApp->unk_098[6] = ov100_021E6AC0(pokegearApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
-    pokegearApp->unk_098[7] = ov100_021E6AC0(pokegearApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
-    pokegearApp->unk_098[8] = ov100_021E6AC0(pokegearApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
-    pokegearApp->unk_098[9] = ov100_021E6AC0(pokegearApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
-    pokegearApp->unk_098[10] = ov100_021E6AC0(pokegearApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
+    pokegearApp->uiSprites[4] = ov100_021E6AC0(pokegearApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
+    pokegearApp->uiSprites[5] = ov100_021E6AC0(pokegearApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
+    pokegearApp->uiSprites[6] = ov100_021E6AC0(pokegearApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
+    pokegearApp->uiSprites[7] = ov100_021E6AC0(pokegearApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
+    pokegearApp->uiSprites[8] = ov100_021E6AC0(pokegearApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
+    pokegearApp->uiSprites[9] = ov100_021E6AC0(pokegearApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
+    pokegearApp->uiSprites[10] = ov100_021E6AC0(pokegearApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
     ov100_021E5BB0(pokegearApp, TRUE);
 
-    ManagedSprite_SetAnimateFlag(pokegearApp->unk_098[9], TRUE);
+    ManagedSprite_SetAnimateFlag(pokegearApp->uiSprites[9], TRUE);
     if (!MapHeader_CanPlacePhoneCalls(pokegearApp->args->mapID)) {
-        ManagedSprite_SetAnimationFrame(pokegearApp->unk_098[10], 1);
+        ManagedSprite_SetAnimationFrame(pokegearApp->uiSprites[10], 1);
     }
 
     for (int i = 0; i <= 3; ++i) {
-        ManagedSprite_SetDrawFlag(pokegearApp->unk_098[i], FALSE);
-        ManagedSprite_SetAnimateFlag(pokegearApp->unk_098[i], TRUE);
+        ManagedSprite_SetDrawFlag(pokegearApp->uiSprites[i], FALSE);
+        ManagedSprite_SetAnimateFlag(pokegearApp->uiSprites[i], TRUE);
     }
 
     for (int i = 4; i < 11; ++i) {
-        ManagedSprite_SetDrawFlag(pokegearApp->unk_098[i], TRUE);
+        ManagedSprite_SetDrawFlag(pokegearApp->uiSprites[i], TRUE);
     }
 }
 
 static void ov100_021E6338(PokegearAppData *pokegearApp) {
     for (int i = 0; i < 11; ++i) {
-        ManagedSprite_SetDrawFlag(pokegearApp->unk_098[i], FALSE);
-        ov100_021E6C44(pokegearApp->unk_098[i]);
+        ManagedSprite_SetDrawFlag(pokegearApp->uiSprites[i], FALSE);
+        ov100_021E6C44(pokegearApp->uiSprites[i]);
     }
     ov100_021E6A3C(pokegearApp->unk_094);
     ov100_021E6950(pokegearApp);
@@ -657,7 +657,7 @@ static void Pokegear_AddAppSwitchButtons(PokegearAppData *pokegearApp) {
     };
 
     pokegearApp->appSwitch = PokegearAppSwitch_Alloc(4, pokegearApp->heapId);
-    PokegearAppSwitch_AddButtons(pokegearApp->appSwitch, sAppSwitchButtonSpecs[pokegearApp->registeredCards], sAppSwitchButtonCounts[pokegearApp->registeredCards], 0, TRUE, pokegearApp->heapId, pokegearApp->unk_098[0], pokegearApp->unk_098[1], pokegearApp->unk_098[2], pokegearApp->unk_098[3]);
+    PokegearAppSwitch_AddButtons(pokegearApp->appSwitch, sAppSwitchButtonSpecs[pokegearApp->registeredCards], sAppSwitchButtonCounts[pokegearApp->registeredCards], 0, TRUE, pokegearApp->heapId, pokegearApp->uiSprites[0], pokegearApp->uiSprites[1], pokegearApp->uiSprites[2], pokegearApp->uiSprites[3]);
     if (pokegearApp->app == GEAR_APP_CANCEL) {
         PokegearAppSwitch_SetSpecIndexAndCursorPos(pokegearApp->appSwitch, 0, 2);
     } else {

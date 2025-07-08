@@ -121,11 +121,11 @@ void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1) {
     SpriteResource *obj;
 
     obj = a0->spriteResources[GF_GFX_RES_TYPE_CHAR]->obj[0];
-    ReplaceCharResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CHAR], obj, NARC_a_1_4_3, a1 + 6, FALSE, a0->heapId);
+    ReplaceCharResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_CHAR], obj, NARC_a_1_4_3, a1 + 6, FALSE, a0->heapId);
     sub_0200AE8C(obj);
 
     obj = a0->spriteResources[GF_GFX_RES_TYPE_PLTT]->obj[0];
-    ReplacePlttResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_PLTT], obj, NARC_a_1_4_3, a1, FALSE, a0->heapId);
+    ReplacePlttResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_PLTT], obj, NARC_a_1_4_3, a1, FALSE, a0->heapId);
     sub_0200B084(obj);
 }
 
@@ -149,7 +149,7 @@ ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 x, u8 y, u8 z, u8 pr
     // ret->spriteResourceHeaderList->num = 1;
     ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
     vramType = isBottomScreen == 0 ? NNS_G2D_VRAM_TYPE_2DMAIN : NNS_G2D_VRAM_TYPE_2DSUB;
-    CreateSpriteResourcesHeader(ret->spriteResourcesHeader, 0xE000, 0xE000, 0xE000, 0xE000, -1, -1, 0, priority, a0->unk_140[GF_GFX_RES_TYPE_CHAR], a0->unk_140[GF_GFX_RES_TYPE_PLTT], a0->unk_140[GF_GFX_RES_TYPE_CELL], a0->unk_140[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+    CreateSpriteResourcesHeader(ret->spriteResourcesHeader, 0xE000, 0xE000, 0xE000, 0xE000, -1, -1, 0, priority, a0->resourceManagers[GF_GFX_RES_TYPE_CHAR], a0->resourceManagers[GF_GFX_RES_TYPE_PLTT], a0->resourceManagers[GF_GFX_RES_TYPE_CELL], a0->resourceManagers[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 
     spriteTemplate.spriteList = a0->spriteList;
     spriteTemplate.header = ret->spriteResourcesHeader;
@@ -181,10 +181,10 @@ void ov100_021E6C44(ManagedSprite *managedSprite) {
 void ov100_021E6C4C(PokegearApp_UnkSub094 *a0, u16 a1) {
     u8 spC[4] = { 1, 1, 1, 1 };
 
-    a0->spriteList = G2dRenderer_Init(a0->unk_00C, &a0->unk_014, a0->heapId);
+    a0->spriteList = G2dRenderer_Init(a0->unk_00C, &a0->renderer, a0->heapId);
     spC[1] = a0->unk_00A;
     for (u32 i = 0; i < 4; ++i) {
-        a0->unk_140[i] = Create2DGfxResObjMan(spC[i], (GfGfxResType)i, a0->heapId);
+        a0->resourceManagers[i] = Create2DGfxResObjMan(spC[i], (GfGfxResType)i, a0->heapId);
         a0->spriteResources[i] = Create2DGfxResObjList(spC[i], a0->heapId);
         for (u32 j = 0; j < a0->spriteResources[i]->max; ++j) {
             a0->spriteResources[i]->obj[j] = NULL;
@@ -199,7 +199,7 @@ void ov100_021E6CF4(PokegearApp_UnkSub094 *a0) {
     sub_0200B0CC(a0->spriteResources[GF_GFX_RES_TYPE_PLTT]);
     for (u32 i = 0; i < 4; ++i) {
         Delete2DGfxResObjList(a0->spriteResources[i]);
-        Destroy2DGfxResObjMan(a0->unk_140[i]);
+        Destroy2DGfxResObjMan(a0->resourceManagers[i]);
     }
 }
 
@@ -207,7 +207,7 @@ void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1) {
     GF_2DGfxResObjList *objList;
 
     objList = a0->spriteResources[GF_GFX_RES_TYPE_CHAR];
-    objList->obj[0] = AddCharResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CHAR], NARC_a_1_4_3, a1 + 6, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, a0->heapId);
+    objList->obj[0] = AddCharResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_CHAR], NARC_a_1_4_3, a1 + 6, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, a0->heapId);
     GF_ASSERT(objList->obj[0] != NULL);
     switch (a0->unk_004) {
     case 1:
@@ -224,12 +224,12 @@ void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1) {
 
     for (int i = 0; i < 2; ++i) {
         objList = a0->spriteResources[GF_GFX_RES_TYPE_CELL + i];
-        objList->obj[0] = AddCellOrAnimResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CELL + i], NARC_a_1_4_3, 12 + i, FALSE, 0xE000, (GfGfxResType)(GF_GFX_RES_TYPE_CELL + i), a0->heapId);
+        objList->obj[0] = AddCellOrAnimResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_CELL + i], NARC_a_1_4_3, 12 + i, FALSE, 0xE000, (GfGfxResType)(GF_GFX_RES_TYPE_CELL + i), a0->heapId);
         GF_ASSERT(objList->obj[0] != NULL);
     }
 
     objList = a0->spriteResources[GF_GFX_RES_TYPE_PLTT];
-    objList->obj[0] = AddPlttResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_PLTT], NARC_a_1_4_3, a1, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, 4, a0->heapId);
+    objList->obj[0] = AddPlttResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_PLTT], NARC_a_1_4_3, a1, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, 4, a0->heapId);
     GF_ASSERT(objList->obj[0] != NULL);
     sub_0200B00C(objList->obj[0]);
 }
@@ -240,22 +240,22 @@ UnkStruct_ov100_021E6E20 *ov100_021E6E20(int count, HeapID heapId) {
     UnkStruct_ov100_021E6E20 *ret = (UnkStruct_ov100_021E6E20 *)AllocFromHeap(heapId, sizeof(UnkStruct_ov100_021E6E20));
     MI_CpuClear8(ret, sizeof(UnkStruct_ov100_021E6E20));
     ret->max = count;
-    ret->unk_08 = AllocFromHeap(heapId, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    MI_CpuClear8(ret->unk_08, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    ret->objects = AllocFromHeap(heapId, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    MI_CpuClear8(ret->objects, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
     return ret;
 }
 
 void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
-    MI_CpuClear8(a0->unk_08, a0->max * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    FreeToHeap(a0->unk_08);
+    MI_CpuClear8(a0->objects, a0->max * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    FreeToHeap(a0->objects);
     MI_CpuClear8(a0, sizeof(UnkStruct_ov100_021E6E20));
     FreeToHeap(a0);
 }
 
 void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
     for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->unk_08[i].unk_00 != 0 && a0->unk_08[i].unk_02 == 0) {
-            Sprite_SetPositionXY(a0->unk_08[i].sprite, a0->unk_08[i].unk_04.x, a0->unk_08[i].unk_04.y);
+        if (a0->objects[i].unk_00 != 0 && a0->objects[i].unk_02 == 0) {
+            Sprite_SetPositionXY(a0->objects[i].sprite, a0->objects[i].unk_04.x, a0->objects[i].unk_04.y);
         }
     }
 }
@@ -265,7 +265,7 @@ u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *sprite) {
         return 0xFFFF;
     }
 
-    UnkStruct_ov100_021E6E20_Sub8 *ptr = &a0->unk_08[a0->num];
+    UnkStruct_ov100_021E6E20_Sub8 *ptr = &a0->objects[a0->num];
     ptr->sprite = sprite;
     ptr->unk_00 = 1;
     ptr->unk_01 = 1;
@@ -274,11 +274,11 @@ u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *sprite) {
 
 void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0) {
     for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->unk_08[i].sprite != NULL) {
-            thunk_Sprite_Delete(a0->unk_08[i].sprite);
+        if (a0->objects[i].sprite != NULL) {
+            thunk_Sprite_Delete(a0->objects[i].sprite);
         }
     }
-    MI_CpuClear8(a0->unk_08, a0->num * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    MI_CpuClear8(a0->objects, a0->num * sizeof(UnkStruct_ov100_021E6E20_Sub8));
     a0->num = 0;
 }
 
@@ -288,11 +288,11 @@ void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 firstIndex) {
 
     clearCount = a0->num - firstIndex;
     for (i = firstIndex; i < a0->num; ++i) {
-        if (a0->unk_08[i].sprite != NULL) {
-            thunk_Sprite_Delete(a0->unk_08[i].sprite);
+        if (a0->objects[i].sprite != NULL) {
+            thunk_Sprite_Delete(a0->objects[i].sprite);
         }
     }
-    MI_CpuClear8(a0->unk_08 + firstIndex, clearCount * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    MI_CpuClear8(a0->objects + firstIndex, clearCount * sizeof(UnkStruct_ov100_021E6E20_Sub8));
     a0->num -= clearCount;
 }
 
