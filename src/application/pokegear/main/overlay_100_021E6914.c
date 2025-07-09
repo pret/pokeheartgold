@@ -72,11 +72,11 @@ void ov100_021E6950(PokegearAppData *pokegearApp) {
     sub_0200B2E8(pokegearApp->heapId);
 }
 
-void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int a1) {
+void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet) {
     if (pokegearApp->spriteSystem != NULL) {
         pokegearApp->spriteManager = SpriteManager_New(pokegearApp->spriteSystem);
-        SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[a1].maxSprites);
-        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[a1].resIdList, 1, 0);
+        SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[spriteSet].maxSprites);
+        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[spriteSet].resIdList, 1, 0);
     }
 }
 
@@ -234,66 +234,66 @@ void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1) {
     sub_0200B00C(objList->obj[0]);
 }
 
-// functions for UnkStruct_ov100_021E6E20
+// functions for PokegearObjectsManager
 
-UnkStruct_ov100_021E6E20 *ov100_021E6E20(int count, HeapID heapId) {
-    UnkStruct_ov100_021E6E20 *ret = (UnkStruct_ov100_021E6E20 *)AllocFromHeap(heapId, sizeof(UnkStruct_ov100_021E6E20));
-    MI_CpuClear8(ret, sizeof(UnkStruct_ov100_021E6E20));
+PokegearObjectsManager *PokegearObjectsManager_Create(int count, HeapID heapId) {
+    PokegearObjectsManager *ret = (PokegearObjectsManager *)AllocFromHeap(heapId, sizeof(PokegearObjectsManager));
+    MI_CpuClear8(ret, sizeof(PokegearObjectsManager));
     ret->max = count;
-    ret->objects = AllocFromHeap(heapId, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    MI_CpuClear8(ret->objects, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    ret->objects = AllocFromHeap(heapId, count * sizeof(PokegearManagedObject));
+    MI_CpuClear8(ret->objects, count * sizeof(PokegearManagedObject));
     return ret;
 }
 
-void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
-    MI_CpuClear8(a0->objects, a0->max * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    FreeToHeap(a0->objects);
-    MI_CpuClear8(a0, sizeof(UnkStruct_ov100_021E6E20));
-    FreeToHeap(a0);
+void PokegearObjectsManager_Release(PokegearObjectsManager *mgr) {
+    MI_CpuClear8(mgr->objects, mgr->max * sizeof(PokegearManagedObject));
+    FreeToHeap(mgr->objects);
+    MI_CpuClear8(mgr, sizeof(PokegearObjectsManager));
+    FreeToHeap(mgr);
 }
 
-void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
-    for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->objects[i].unk_00 != 0 && a0->objects[i].unk_02 == 0) {
-            Sprite_SetPositionXY(a0->objects[i].sprite, a0->objects[i].unk_04.x, a0->objects[i].unk_04.y);
+void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *mgr) {
+    for (u16 i = 0; i < mgr->num; ++i) {
+        if (mgr->objects[i].unk_00 != 0 && mgr->objects[i].unk_02 == 0) {
+            Sprite_SetPositionXY(mgr->objects[i].sprite, mgr->objects[i].pos.x, mgr->objects[i].pos.y);
         }
     }
 }
 
-u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *sprite) {
-    if (a0->num >= a0->max) {
+u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *sprite) {
+    if (mgr->num >= mgr->max) {
         return 0xFFFF;
     }
 
-    UnkStruct_ov100_021E6E20_Sub8 *ptr = &a0->objects[a0->num];
+    PokegearManagedObject *ptr = &mgr->objects[mgr->num];
     ptr->sprite = sprite;
     ptr->unk_00 = 1;
     ptr->unk_01 = 1;
-    return a0->num++;
+    return mgr->num++;
 }
 
-void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0) {
-    for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->objects[i].sprite != NULL) {
-            thunk_Sprite_Delete(a0->objects[i].sprite);
+void PokegearObjectsManager_Reset(PokegearObjectsManager *mgr) {
+    for (u16 i = 0; i < mgr->num; ++i) {
+        if (mgr->objects[i].sprite != NULL) {
+            thunk_Sprite_Delete(mgr->objects[i].sprite);
         }
     }
-    MI_CpuClear8(a0->objects, a0->num * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    a0->num = 0;
+    MI_CpuClear8(mgr->objects, mgr->num * sizeof(PokegearManagedObject));
+    mgr->num = 0;
 }
 
-void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 firstIndex) {
+void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 firstIndex) {
     u16 i;
     u16 clearCount;
 
-    clearCount = a0->num - firstIndex;
-    for (i = firstIndex; i < a0->num; ++i) {
-        if (a0->objects[i].sprite != NULL) {
-            thunk_Sprite_Delete(a0->objects[i].sprite);
+    clearCount = mgr->num - firstIndex;
+    for (i = firstIndex; i < mgr->num; ++i) {
+        if (mgr->objects[i].sprite != NULL) {
+            thunk_Sprite_Delete(mgr->objects[i].sprite);
         }
     }
-    MI_CpuClear8(a0->objects + firstIndex, clearCount * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    a0->num -= clearCount;
+    MI_CpuClear8(mgr->objects + firstIndex, clearCount * sizeof(PokegearManagedObject));
+    mgr->num -= clearCount;
 }
 
 // functions for PokegearAppSwitchCursor

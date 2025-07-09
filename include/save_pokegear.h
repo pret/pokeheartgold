@@ -53,7 +53,7 @@ typedef struct SavePokegear {
     // 2: the rest of Kanto
     u32 mapUnlockLevel : 2;
     u32 unk_4_29 : 3;
-    UnkPokegearSub8List unk_8;
+    MapMarkingsSaveArray unk_8;
     PhoneCallPersistentState callPersistentState;   // 4B8
     PhoneContact phoneContacts[NUM_PHONE_CONTACTS]; // 60C
 } SavePokegear;                                     // size=0x658
@@ -62,7 +62,7 @@ u32 SaveData_Pokegear_sizeof(void);
 SavePokegear *SaveData_Pokegear_Get(SaveData *saveData);
 PhoneCallPersistentState *SaveData_GetPhoneCallPersistentState(SaveData *saveData);
 void SaveData_Pokegear_Init(SavePokegear *pokegear);
-UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear);
+MapMarkingsSaveArray *SavePokegear_GetMapMarkingsArray(SavePokegear *pokegear);
 u8 SavePokegear_GetLastUsedApp(SavePokegear *pokegear);
 void SavePokegear_SetLastUsedApp(SavePokegear *pokegear, u8 appID);
 void SavePokegear_RegisterCard(SavePokegear *pokegear, int card);

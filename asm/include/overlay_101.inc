@@ -312,7 +312,7 @@
 .public PokegearApp_CreateSpriteManager
 .public PokegearApp_DestroySpriteManager
 .public ov100_021E6A58
-.public ov100_021E6E20
+.public Pokegear_CreateObjectsManager
 .public ov100_021E6E58
 .public ov100_021E6E84
 .public ov100_021E6EC4

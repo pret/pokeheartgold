@@ -1,107 +1,113 @@
 #include "unk_0202F370.h"
 
-BOOL sub_0202F370(UnkPokegearSub8 *unk) {
-    if (unk->unk_0 == 0 || unk->unk_0 >= 540) {
+#include "constants/easy_chat.h"
+#include "constants/maps.h"
+
+static BOOL MapMarkingsSave_MapIDisValid(MapMarkingsSave *unk);
+static void MapMarkingsSave_Reset(MapMarkingsSave *unk);
+
+static BOOL MapMarkingsSave_MapIDisValid(MapMarkingsSave *unk) {
+    if (unk->mapID == MAP_EVERYWHERE || unk->mapID >= MAP_ID_MAX) {
         return FALSE;
     } else {
         return TRUE;
     }
 }
 
-void sub_0202F388(UnkPokegearSub8 *unk) {
+static void MapMarkingsSave_Reset(MapMarkingsSave *unk) {
     int i;
 
-    unk->unk_0 = 0;
-    unk->unk_2_0 = 15;
-    unk->unk_2_4 = 15;
-    unk->unk_2_8 = 15;
-    unk->unk_2_C = 15;
+    unk->mapID = 0;
+    unk->icon0 = MAP_MARKING_ICON_NULL;
+    unk->icon1 = MAP_MARKING_ICON_NULL;
+    unk->icon2 = MAP_MARKING_ICON_NULL;
+    unk->icon3 = MAP_MARKING_ICON_NULL;
     for (i = 0; i < 4; i++) {
-        unk->unk_4[i] = 0xFFFF;
+        unk->words[i] = EC_WORD_NULL;
     }
 }
 
-void sub_0202F3DC(struct UnkStruct_0202F3DC *unk) {
+void MapMarkingsRAM_Reset(MapMarkingsRAM *mmRam) {
     int i;
 
-    unk->unk_0 = 0;
+    mmRam->mapID = 0;
     for (i = 0; i < 4; i++) {
-        unk->unk_4[i] = 0xF;
-        unk->unk_8[i] = 0xFFFF;
+        mmRam->icons[i] = MAP_MARKING_ICON_NULL;
+        mmRam->words[i] = EC_WORD_NULL;
     }
 }
 
-BOOL sub_0202F400(struct UnkStruct_0202F3DC *unk) {
+BOOL MapMarkingsRAM_IsInUse_EraseIfNot(MapMarkingsRAM *mmRam) {
     int i;
 
     for (i = 0; i < 4; i++) {
-        if (unk->unk_4[i] != 0xF || unk->unk_8[i] != 0xFFFF) {
+        if (mmRam->icons[i] != MAP_MARKING_ICON_NULL || mmRam->words[i] != EC_WORD_NULL) {
             return TRUE;
         }
     }
 
-    unk->unk_0 = 0;
+    mmRam->mapID = 0;
     return FALSE;
 }
 
-void sub_0202F434(struct UnkStruct_0202F3DC *src, UnkPokegearSub8 *dest) {
+void MapMarkings_CopyRAMtoSave(MapMarkingsRAM *src, MapMarkingsSave *dest) {
     int i;
-    dest->unk_0 = src->unk_0;
+    dest->mapID = src->mapID;
     // The explicit masks are required to match
-    dest->unk_2_0 = src->unk_4[0] & 0xF;
-    dest->unk_2_4 = src->unk_4[1] & 0xF;
-    dest->unk_2_8 = src->unk_4[2] & 0xF;
-    dest->unk_2_C = src->unk_4[3] & 0xF;
+    dest->icon0 = src->icons[0] & 0xF;
+    dest->icon1 = src->icons[1] & 0xF;
+    dest->icon2 = src->icons[2] & 0xF;
+    dest->icon3 = src->icons[3] & 0xF;
     for (i = 0; i < 4; i++) {
-        dest->unk_4[i] = src->unk_8[i];
+        dest->words[i] = src->words[i];
     }
 }
 
-void sub_0202F4B0(UnkPokegearSub8 *src, struct UnkStruct_0202F3DC *dest) {
+void MapMarkings_CopySaveToRAM(MapMarkingsSave *src, MapMarkingsRAM *dest) {
     int i;
-    dest->unk_0 = src->unk_0;
-    dest->unk_4[0] = src->unk_2_0;
-    dest->unk_4[1] = src->unk_2_4;
-    dest->unk_4[2] = src->unk_2_8;
-    dest->unk_4[3] = src->unk_2_C;
+    dest->mapID = src->mapID;
+    dest->icons[0] = src->icon0;
+    dest->icons[1] = src->icon1;
+    dest->icons[2] = src->icon2;
+    dest->icons[3] = src->icon3;
     for (i = 0; i < 4; i++) {
-        dest->unk_8[i] = src->unk_4[i];
+        dest->words[i] = src->words[i];
     }
 }
 
-BOOL sub_0202F4E8(UnkPokegearSub8List *list, u8 a1) {
-    if (a1 >= 100) {
+BOOL MapMarkingsSaveArray_EntryIsValid(MapMarkingsSaveArray *list, u8 index) {
+    if (index >= 100) {
         return FALSE;
     } else {
-        return sub_0202F370(&list->list[a1]);
+        return MapMarkingsSave_MapIDisValid(&list->list[index]);
     }
 }
 
-void sub_0202F500(UnkPokegearSub8List *list, u8 a1) {
-    if (a1 < 100) {
-        sub_0202F388(&list->list[a1]);
+void MapMarkingsSaveArray_ResetEntry(MapMarkingsSaveArray *list, u8 index) {
+    if (index < 100) {
+        MapMarkingsSave_Reset(&list->list[index]);
     }
 }
 
-BOOL sub_0202F514(UnkPokegearSub8List *list, struct UnkStruct_0202F3DC *a1, u8 a2) {
-    if (a2 >= 100) {
-        sub_0202F3DC(a1);
+BOOL MapMarkingsSaveArray_CopyEntryToRAM(MapMarkingsSaveArray *list, MapMarkingsRAM *dest, u8 index) {
+    if (index >= 100) {
+        MapMarkingsRAM_Reset(dest);
         return FALSE;
     } else {
-        sub_0202F4B0(&list->list[a2], a1);
-        return sub_0202F370(&list->list[a2]);
+        MapMarkings_CopySaveToRAM(&list->list[index], dest);
+        return MapMarkingsSave_MapIDisValid(&list->list[index]);
     }
 }
 
-BOOL sub_0202F53C(UnkPokegearSub8List *list, struct UnkStruct_0202F3DC *a1, u8 a2, BOOL a3) {
-    if (a2 >= 100) {
+BOOL MapMarkingsSaveArray_CopyEntryFromRAM(MapMarkingsSaveArray *list, MapMarkingsRAM *src, u8 index, BOOL noCheck) {
+    if (index >= 100) {
         return FALSE;
     }
-    if (!a3) {
-        if (sub_0202F370(&list->list[a2]) == TRUE) {
+    if (!noCheck) {
+        if (MapMarkingsSave_MapIDisValid(&list->list[index]) == TRUE) {
             return FALSE;
         }
     }
-    sub_0202F434(a1, &list->list[a2]);
+    MapMarkings_CopyRAMtoSave(src, &list->list[index]);
     return TRUE;
 }

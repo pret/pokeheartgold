@@ -42,7 +42,7 @@ void SaveData_Pokegear_Init(SavePokegear *pokegear) {
     SavePokegear_Init_Internal(pokegear);
 }
 
-UnkPokegearSub8List *sub_0202EDF4(SavePokegear *pokegear) {
+MapMarkingsSaveArray *SavePokegear_GetMapMarkingsArray(SavePokegear *pokegear) {
     return &pokegear->unk_8;
 }
 

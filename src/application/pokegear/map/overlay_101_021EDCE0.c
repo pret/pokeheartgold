@@ -593,7 +593,7 @@ void ov101_021EE380(PokegearMapAppData *mapApp) {
 void ov101_021EE394(PokegearMapAppData *mapApp) {
     ov100_021E6914(mapApp->pokegear);
     PokegearApp_CreateSpriteManager(mapApp->pokegear, 2);
-    mapApp->objManager = ov100_021E6E20(42, mapApp->heapId);
+    mapApp->objManager = PokegearObjectsManager_Create(42, mapApp->heapId);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xF0));
     mapApp->listMenuSpawner = TouchscreenListMenuSpawner_Create(mapApp->heapId, mapApp->pokegear->plttData);
 }
@@ -601,7 +601,7 @@ void ov101_021EE394(PokegearMapAppData *mapApp) {
 void ov101_021EE3D8(PokegearMapAppData *mapApp) {
     TouchscreenListMenuSpawner_Destroy(mapApp->listMenuSpawner);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xC0));
-    ov100_021E6E58(mapApp->objManager);
+    PokegearObjectsManager_Release(mapApp->objManager);
     PokegearApp_DestroySpriteManager(mapApp->pokegear);
     ov100_021E6950(mapApp->pokegear);
 }
@@ -609,37 +609,37 @@ void ov101_021EE3D8(PokegearMapAppData *mapApp) {
 void ov101_021EE410(PokegearMapAppData *mapApp) {
     int i;
     u16 r1;
-    UnkStruct_ov100_021E6E20_Sub8 *sp0 = mapApp->objManager->objects;
+    PokegearManagedObject *sp0 = mapApp->objManager->objects;
 
     for (i = 0; i < 4; ++i) {
-        ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[0]));
+        PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[0]));
         Sprite_SetPositionXY(sp0[i].sprite, 32 + 104 * (i % 2), 203 + 21 * (i / 2));
         thunk_Sprite_SetPriority(sp0[i].sprite, 0);
     }
-    ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[1]));
+    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[1]));
     thunk_Sprite_SetPriority(sp0[4].sprite, 0);
-    ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[2]));
-    ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[3]));
+    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[2]));
+    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[3]));
     for (i = 0; i < 4; ++i) {
-        ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[4]));
+        PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[4]));
         Sprite_UpdateAnim(sp0[7 + i].sprite, FX32_CONST(i));
     }
     for (i = 0; i < 4; ++i) {
-        r1 = ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[5 + i]));
-        Sprite_GetPositionXY(sp0[r1].sprite, &sp0[r1].unk_04.x, &sp0[r1].unk_04.y);
+        r1 = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[5 + i]));
+        Sprite_GetPositionXY(sp0[r1].sprite, &sp0[r1].pos.x, &sp0[r1].pos.y);
         thunk_Sprite_SetPriority(sp0[r1].sprite, 0);
         Sprite_SetAnimActiveFlag(sp0[r1].sprite, TRUE);
         Sprite_SetDrawFlag(sp0[r1].sprite, FALSE);
     }
     for (i = 0; i < 27; ++i) {
-        r1 = ov100_021E6EC4(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[9]));
-        Sprite_GetPositionXY(sp0[r1].sprite, &sp0[r1].unk_04.x, &sp0[r1].unk_04.y);
+        r1 = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[9]));
+        Sprite_GetPositionXY(sp0[r1].sprite, &sp0[r1].pos.x, &sp0[r1].pos.y);
         Sprite_SetDrawFlag(sp0[r1].sprite, FALSE);
         Sprite_SetAnimActiveFlag(sp0[r1].sprite, FALSE);
     }
     for (i = 0; i < 11; ++i) {
         r1 = i;
-        Sprite_GetPositionXY(sp0[r1].sprite, &sp0[r1].unk_04.x, &sp0[r1].unk_04.y);
+        Sprite_GetPositionXY(sp0[r1].sprite, &sp0[r1].pos.x, &sp0[r1].pos.y);
         Sprite_SetDrawFlag(sp0[r1].sprite, FALSE);
     }
     Sprite_SetAnimActiveFlag(sp0[5].sprite, TRUE);
@@ -649,13 +649,13 @@ void ov101_021EE410(PokegearMapAppData *mapApp) {
 }
 
 void ov101_021EE664(PokegearMapAppData *mapApp) {
-    ov100_021E6EF4(mapApp->objManager);
+    PokegearObjectsManager_Reset(mapApp->objManager);
 }
 
 void ov101_021EE670(PokegearMapAppData *mapApp) {
     int i;
     s16 r1;
-    UnkStruct_ov100_021E6E20_Sub8 *sp1C = mapApp->objManager->objects;
+    PokegearManagedObject *sp1C = mapApp->objManager->objects;
 
     G2_SetBlendAlpha(4, 8, 10, 6);
     for (i = 0; i < 3; ++i) {
@@ -690,7 +690,7 @@ void ov101_021EE670(PokegearMapAppData *mapApp) {
     r1 = (48 - r1) / 2;
     AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 4, mapApp->closeString, r1, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     Sprite_SetDrawFlag(sp1C[5].sprite, TRUE);
-    ov100_021E6E84(mapApp->objManager);
+    PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_0);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);

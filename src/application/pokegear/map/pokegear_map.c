@@ -17,8 +17,8 @@
 
 FS_EXTERN_OVERLAY(OVY_26);
 
-BOOL ov101_021E7874(u16 mapID);
-BOOL ov101_021E78B0(u16 mapID);
+BOOL IsMapSinjoh(u16 mapID);
+BOOL IsMapSSAqua(u16 mapID);
 void ov101_021E78EC(PokegearMapAppData *mapApp);
 void ov101_021E7B54(PokegearMapAppData *mapApp);
 int PokegearMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp);
@@ -113,16 +113,16 @@ BOOL PokegearMap_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL ov101_021E7874(u16 mapID) {
-    const u16 ov101_021F735E[] = {
+BOOL IsMapSinjoh(u16 mapID) {
+    const u16 sSinjohMapIDs[] = {
         MAP_SINJOH_RUINS_EXTERIOR,
         MAP_SINJOH_RUINS_MYSTRI_STAGE,
         MAP_SINJOH_RUINS_CABIN,
     };
 
     int i;
-    for (i = 0; i < NELEMS(ov101_021F735E); ++i) {
-        if (mapID == ov101_021F735E[i]) {
+    for (i = 0; i < NELEMS(sSinjohMapIDs); ++i) {
+        if (mapID == sSinjohMapIDs[i]) {
             return TRUE;
         }
     }
@@ -130,8 +130,8 @@ BOOL ov101_021E7874(u16 mapID) {
     return FALSE;
 }
 
-BOOL ov101_021E78B0(u16 mapID) {
-    const u16 ov101_021F7364[] = {
+BOOL IsMapSSAqua(u16 mapID) {
+    const u16 sSSAquaMapIDs[] = {
         MAP_SS_AQUA_1F,
         MAP_SS_AQUA_CAPTAIN_ROOM,
         MAP_SS_AQUA_1F_SOUTHEAST_ROOMS,
@@ -142,8 +142,8 @@ BOOL ov101_021E78B0(u16 mapID) {
     };
 
     int i;
-    for (i = 0; i < NELEMS(ov101_021F7364); ++i) {
-        if (mapID == ov101_021F7364[i]) {
+    for (i = 0; i < NELEMS(sSSAquaMapIDs); ++i) {
+        if (mapID == sSSAquaMapIDs[i]) {
             return TRUE;
         }
     }
@@ -153,13 +153,13 @@ BOOL ov101_021E78B0(u16 mapID) {
 
 void ov101_021E78EC(PokegearMapAppData *mapApp) {
     int i;
-    PokegearMapAppData_Sub218 *r0;
+    MapMarkingsHeapNode *r0;
     RoamerSaveData *roamers;
 
     mapApp->pokegear->childAppdata = mapApp;
     mapApp->pokegear->reselectAppCB = ov101_021EB338;
     mapApp->pokegear->unknownCB = ov101_021EB2FC;
-    ov101_021ED4E0(mapApp);
+    MapApp_LoadMarkingsLinkedListFromSave(mapApp);
     if (mapApp->pokegear->app != GEAR_APP_CANCEL) {
         mapApp->unk_00C = 0;
         mapApp->pokegear->app = GEAR_APP_MAP;
@@ -169,11 +169,11 @@ void ov101_021E78EC(PokegearMapAppData *mapApp) {
         mapApp->unk_014 = mapApp->pokegear->unk_03C;
         mapApp->unk_138_0 = mapApp->unk_014.unk_01;
         if (mapApp->unk_014.unk_1A != EC_WORD_NULL) {
-            r0 = ov101_021ED614(mapApp, mapApp->unk_014.unk_18);
+            r0 = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapApp->unk_014.unk_18);
             if (r0 == 0) {
-                r0 = ov101_021ED64C(mapApp, mapApp->unk_014.unk_18);
+                r0 = MapApp_GetOrCreateMarkingsHeapNodeByMapID(mapApp, mapApp->unk_014.unk_18);
             }
-            ov101_021ED79C(r0, mapApp->unk_014.unk_02, mapApp->unk_014.unk_1A);
+            MapMarkingsHeapNode_SetWord(r0, mapApp->unk_014.unk_02, mapApp->unk_014.unk_1A);
         }
         mapApp->pokegear->unk_038 = 0;
         mapApp->pokegear->app = GEAR_APP_MAP;
@@ -200,9 +200,9 @@ void ov101_021E78EC(PokegearMapAppData *mapApp) {
     mapApp->unk_132 = 8;
     mapApp->unk_133 = 0;
     mapApp->unk_13D_1 = TRUE;
-    mapApp->unk_13D_0 = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
-    mapApp->unk_13D_2 = ov101_021E7874(mapApp->mapID);
-    mapApp->unk_13D_3 = ov101_021E78B0(mapApp->mapID);
+    mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
+    mapApp->isMapSinjoh = IsMapSinjoh(mapApp->mapID);
+    mapApp->isMapSSAqua = IsMapSSAqua(mapApp->mapID);
 
     roamers = Save_Roamers_Get(mapApp->pokegear->saveData);
     for (i = 0; i < ROAMER_MAX; ++i) {
@@ -219,7 +219,7 @@ void ov101_021E7B54(PokegearMapAppData *mapApp) {
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->unknownCB = NULL;
-    ov101_021ED5AC(mapApp);
+    PokegearMap_FlattenMapMarkingsToSaveArray(mapApp);
     sub_0202EEA8(mapApp->pokegear->savePokegear, mapApp->unk_138_0);
 }
 

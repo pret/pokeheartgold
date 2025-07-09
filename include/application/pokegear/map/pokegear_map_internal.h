@@ -73,17 +73,17 @@ typedef struct PokegearMapAppData_Sub214 {
     u8 tilemapUnk170DestHeight;
 } PokegearMapAppData_Sub214;
 
-typedef struct PokegearMapAppData_Sub218 {
-    UnkStruct_0202F3DC unk_00;
-    u8 unk_10;
-    u8 unk_11;
-    u8 unk_12;
-    u8 unk_13;
-} PokegearMapAppData_Sub218;
+typedef struct MapMarkingsHeapNode {
+    MapMarkingsRAM mapMarkings;
+    u8 index;
+    u8 prev;
+    u8 next;
+    u8 active;
+} MapMarkingsHeapNode;
 
 typedef struct PokegearMapAppData_Sub118 {
     const PokegearMapAppData_Sub214 *unk_0;
-    PokegearMapAppData_Sub218 *unk_4;
+    MapMarkingsHeapNode *heap;
     u16 unk_8;
     u16 unk_A;
 } PokegearMapAppData_Sub118;
@@ -104,7 +104,7 @@ typedef struct PokegearMapAppData {
     UnkStruct_02013534 *unk_03C;                 // 0x03C
     UnkStruct_02013910 *unk_040;                 // 0x040
     PokegearMapAppData_Sub044 unk_044[4];        // 0x044
-    UnkStruct_ov100_021E6E20 *objManager;        // 0x084
+    PokegearObjectsManager *objManager;          // 0x084
     MsgData *msgData;                            // 0x088
     MessageFormat *msgFormat;                    // 0x08C
     String *flavorTextString;                    // 0x090
@@ -144,7 +144,7 @@ typedef struct PokegearMapAppData {
     u8 unk_136;                                  // 0x136
     u8 unk_137;                                  // 0x137
     u8 unk_138_0 : 1;                            // 0x138
-    u8 unk_138_1 : 3;                            // 0x138
+    u8 unk_138_1 : 3;                            // 0x138 set to 0, never read
     u8 unk_138_4 : 1;                            // 0x138
     u8 mapUnlockLevel : 2;                       // 0x138
     u8 unk_138_7 : 1;                            // 0x138
@@ -157,10 +157,10 @@ typedef struct PokegearMapAppData {
     u8 unk_13B;                                  // 0x13B
     u8 unk_13C_0 : 7;                            // 0x13C
     u8 unk_13C_7 : 1;                            // 0x13C
-    u8 unk_13D_0 : 1;                            // 0x13D
-    u8 unk_13D_1 : 1;                            // 0x13D
-    u8 unk_13D_2 : 1;                            // 0x13D
-    u8 unk_13D_3 : 1;                            // 0x13D
+    u8 canFlyToGoldenrod : 1;                    // 0x13D
+    u8 unk_13D_1 : 1;                            // 0x13D set to 1, never read
+    u8 isMapSinjoh : 1;                          // 0x13D
+    u8 isMapSSAqua : 1;                          // 0x13D
     s16 unk_13E;                                 // 0x13E
     s16 unk_140;                                 // 0x140
     s16 unk_142;                                 // 0x142
@@ -181,11 +181,11 @@ typedef struct PokegearMapAppData {
     NNSG2dScreenData *unk_180;                   // 0x180
     Window windows[9];                           // 0x184
     const PokegearMapAppData_Sub214 *unk_214;    // 0x214
-    PokegearMapAppData_Sub218 unk_218[100];      // 0x218
+    MapMarkingsHeapNode mapMarkingsHeap[100];    // 0x218
     u16 unk_9E8[ROAMER_MAX];                     // 0x9E8
-    u8 unk_9F0;                                  // 0x9F0
-    u8 unk_9F1;                                  // 0x9F1
-    u8 unk_9F2;                                  // 0x9F2
+    u8 mapMarkingsListHead;                      // 0x9F0
+    u8 mapMarkingsListTail;                      // 0x9F1
+    u8 mapMarkingsListCount;                     // 0x9F2
 } PokegearMapAppData;                            // size: 0x9F4
 
 BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp);
@@ -243,17 +243,17 @@ int ov101_021ECF98(PokegearMapAppData *mapApp);
 int ov101_021ED158(PokegearMapAppData *mapApp);
 int ov101_021ED2C0(PokegearMapAppData *mapApp);
 
-void ov101_021ED4E0(PokegearMapAppData *mapApp);
-void ov101_021ED5AC(PokegearMapAppData *mapApp);
-PokegearMapAppData_Sub218 *ov101_021ED614(PokegearMapAppData *mapApp, int a1);
-PokegearMapAppData_Sub218 *ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1);
-BOOL ov101_021ED6B8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub218 *a1);
-BOOL ov101_021ED750(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
-BOOL ov101_021ED760(PokegearMapAppData_Sub218 *a0, u8 a1);
-BOOL ov101_021ED780(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
-BOOL ov101_021ED79C(PokegearMapAppData_Sub218 *a0, u8 a1, u16 a2);
-BOOL ov101_021ED7B0(PokegearMapAppData_Sub218 *a0, u8 a1);
-BOOL ov101_021ED7D8(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2);
+void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp);
+void PokegearMap_FlattenMapMarkingsToSaveArray(PokegearMapAppData *mapApp);
+MapMarkingsHeapNode *MapApp_GetMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, int a1);
+MapMarkingsHeapNode *MapApp_GetOrCreateMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, u16 a1);
+BOOL MapApp_RemoveMarkingsHeapNodeFromList(PokegearMapAppData *mapApp, MapMarkingsHeapNode *a1);
+BOOL MapMarkingsHeapNode_SetIcon(MapMarkingsHeapNode *a0, u8 a1, u8 a2);
+BOOL MapMarkingsHeapNode_RemoveIcon(MapMarkingsHeapNode *a0, u8 a1);
+BOOL MapMarkingsHeapNode_SwapIcons(MapMarkingsHeapNode *a0, u8 a1, u8 a2);
+BOOL MapMarkingsHeapNode_SetWord(MapMarkingsHeapNode *a0, u8 a1, u16 a2);
+BOOL MapMarkingsHeapNode_RemoveWord(MapMarkingsHeapNode *a0, u8 a1);
+BOOL MapMarkingsHeapNode_SwapWords(MapMarkingsHeapNode *a0, u8 a1, u8 a2);
 
 BOOL ov101_021EDCE0(PokegearMapAppData *mapApp);
 BOOL ov101_021EDDB0(PokegearMapAppData *mapApp);

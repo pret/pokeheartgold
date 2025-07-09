@@ -1,19 +1,19 @@
 #include "application/pokegear/map/pokegear_map_internal.h"
 
-void ov101_021ED498(struct PokegearMapAppData_Sub218 *a0);
-u8 ov101_021ED4B0(PokegearMapAppData *mapApp);
+void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node);
+u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp);
 
-void ov101_021ED498(struct PokegearMapAppData_Sub218 *a0) {
-    a0->unk_13 = 0;
-    a0->unk_10 = a0->unk_11 = a0->unk_12 = 0xFF;
-    sub_0202F3DC(&a0->unk_00);
+void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node) {
+    node->active = 0;
+    node->index = node->prev = node->next = 0xFF;
+    MapMarkingsRAM_Reset(&node->mapMarkings);
 }
 
-u8 ov101_021ED4B0(PokegearMapAppData *mapApp) {
+u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp) {
     u8 i;
 
     for (i = 0; i < 100; ++i) {
-        if (mapApp->unk_218[i].unk_13 == 0) {
+        if (mapApp->mapMarkingsHeap[i].active == 0) {
             return i;
         }
     }
@@ -21,182 +21,182 @@ u8 ov101_021ED4B0(PokegearMapAppData *mapApp) {
     return -1;
 }
 
-void ov101_021ED4E0(PokegearMapAppData *mapApp) {
+void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp) {
     u8 i;
-    u8 r6;
-    UnkPokegearSub8List *sp0;
-    PokegearMapAppData_Sub218 *r4;
+    u8 index;
+    MapMarkingsSaveArray *mmSave;
+    MapMarkingsHeapNode *mmHeap;
 
-    sp0 = sub_0202EDF4(mapApp->pokegear->savePokegear);
-    mapApp->unk_9F0 = mapApp->unk_9F1 = 0xFF;
+    mmSave = SavePokegear_GetMapMarkingsArray(mapApp->pokegear->savePokegear);
+    mapApp->mapMarkingsListHead = mapApp->mapMarkingsListTail = 0xFF;
     for (i = 0; i < 100; ++i) {
-        ov101_021ED498(&mapApp->unk_218[i]);
+        MapMarkingsHeapNode_Reset(&mapApp->mapMarkingsHeap[i]);
     }
 
-    r6 = 0;
+    index = 0;
     for (i = 0; i < 100; ++i) {
-        if (!sub_0202F4E8(sp0, i)) {
+        if (!MapMarkingsSaveArray_EntryIsValid(mmSave, i)) {
             break;
         }
-        r4 = &mapApp->unk_218[r6];
-        sub_0202F514(sp0, &r4->unk_00, i);
-        r4->unk_10 = r6;
-        r4->unk_13 = 1;
-        if (mapApp->unk_9F0 == 0xFF) {
-            mapApp->unk_9F0 = r4->unk_10;
-            mapApp->unk_9F1 = r4->unk_10;
-            r4->unk_11 = 0xFF;
+        mmHeap = &mapApp->mapMarkingsHeap[index];
+        MapMarkingsSaveArray_CopyEntryToRAM(mmSave, &mmHeap->mapMarkings, i);
+        mmHeap->index = index;
+        mmHeap->active = 1;
+        if (mapApp->mapMarkingsListHead == 0xFF) {
+            mapApp->mapMarkingsListHead = mmHeap->index;
+            mapApp->mapMarkingsListTail = mmHeap->index;
+            mmHeap->prev = 0xFF;
         } else {
-            r4->unk_11 = mapApp->unk_9F1;
-            mapApp->unk_218[mapApp->unk_9F1].unk_12 = r4->unk_10;
-            mapApp->unk_9F1 = r4->unk_10;
+            mmHeap->prev = mapApp->mapMarkingsListTail;
+            mapApp->mapMarkingsHeap[mapApp->mapMarkingsListTail].next = mmHeap->index;
+            mapApp->mapMarkingsListTail = mmHeap->index;
         }
-        ++r6;
+        ++index;
     }
-    mapApp->unk_9F2 = r6;
+    mapApp->mapMarkingsListCount = index;
 }
 
-void ov101_021ED5AC(PokegearMapAppData *mapApp) {
+void PokegearMap_FlattenMapMarkingsToSaveArray(PokegearMapAppData *mapApp) {
     u8 i;
-    u8 r5;
-    UnkPokegearSub8List *r6;
-    PokegearMapAppData_Sub218 *r4;
+    u8 index;
+    MapMarkingsSaveArray *mmSave;
+    MapMarkingsHeapNode *mmHeapNode;
 
-    r6 = sub_0202EDF4(mapApp->pokegear->savePokegear);
-    r5 = 0;
-    for (i = mapApp->unk_9F0; i != 0xFF; i = r4->unk_12) {
-        r4 = &mapApp->unk_218[i];
-        sub_0202F53C(r6, &r4->unk_00, r5++, TRUE);
+    mmSave = SavePokegear_GetMapMarkingsArray(mapApp->pokegear->savePokegear);
+    index = 0;
+    for (i = mapApp->mapMarkingsListHead; i != 0xFF; i = mmHeapNode->next) {
+        mmHeapNode = &mapApp->mapMarkingsHeap[i];
+        MapMarkingsSaveArray_CopyEntryFromRAM(mmSave, &mmHeapNode->mapMarkings, index++, TRUE);
     }
-    for (i = r5; i < mapApp->unk_9F2; ++i) {
-        sub_0202F500(r6, i);
+    for (i = index; i < mapApp->mapMarkingsListCount; ++i) {
+        MapMarkingsSaveArray_ResetEntry(mmSave, i);
     }
 }
 
-PokegearMapAppData_Sub218 *ov101_021ED614(PokegearMapAppData *mapApp, int a1) {
+MapMarkingsHeapNode *MapApp_GetMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, int mapID) {
     u8 i;
-    PokegearMapAppData_Sub218 *ret;
+    MapMarkingsHeapNode *ret;
 
-    if (a1 <= 0) {
+    if (mapID <= 0) {
         return NULL;
     }
-    for (i = mapApp->unk_9F0; i != 0xFF; i = ret->unk_12) {
-        ret = &mapApp->unk_218[i];
-        if (ret->unk_00.unk_0 == a1) {
+    for (i = mapApp->mapMarkingsListHead; i != 0xFF; i = ret->next) {
+        ret = &mapApp->mapMarkingsHeap[i];
+        if (ret->mapMarkings.mapID == mapID) {
             return ret;
         }
     }
     return NULL;
 }
 
-PokegearMapAppData_Sub218 *ov101_021ED64C(PokegearMapAppData *mapApp, u16 a1) {
-    u8 r0;
-    PokegearMapAppData_Sub218 *ret;
+MapMarkingsHeapNode *MapApp_GetOrCreateMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, u16 mapID) {
+    u8 index;
+    MapMarkingsHeapNode *ret;
 
-    ret = ov101_021ED614(mapApp, a1);
+    ret = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapID);
     if (ret != NULL) {
         return ret;
     }
-    r0 = ov101_021ED4B0(mapApp);
-    if (r0 == 0xFF) {
+    index = PokegearMap_GetAvailableMarkingsHeapNode(mapApp);
+    if (index == 0xFF) {
         GF_ASSERT(FALSE);
         return NULL;
     }
-    ret = &mapApp->unk_218[r0];
-    ret->unk_10 = r0;
-    ret->unk_13 = 1;
-    ret->unk_00.unk_0 = a1;
-    if (mapApp->unk_9F0 == 0xFF) {
-        mapApp->unk_9F0 = mapApp->unk_9F1 = r0;
-        ret->unk_11 = 0xFF;
+    ret = &mapApp->mapMarkingsHeap[index];
+    ret->index = index;
+    ret->active = 1;
+    ret->mapMarkings.mapID = mapID;
+    if (mapApp->mapMarkingsListHead == 0xFF) {
+        mapApp->mapMarkingsListHead = mapApp->mapMarkingsListTail = index;
+        ret->prev = 0xFF;
     } else {
-        mapApp->unk_218[mapApp->unk_9F1].unk_12 = r0;
-        ret->unk_11 = mapApp->unk_9F1;
-        mapApp->unk_9F1 = r0;
+        mapApp->mapMarkingsHeap[mapApp->mapMarkingsListTail].next = index;
+        ret->prev = mapApp->mapMarkingsListTail;
+        mapApp->mapMarkingsListTail = index;
     }
     return ret;
 }
 
-BOOL ov101_021ED6B8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub218 *a1) {
-    if (a1 == NULL) {
+BOOL MapApp_RemoveMarkingsHeapNodeFromList(PokegearMapAppData *mapApp, MapMarkingsHeapNode *node) {
+    if (node == NULL) {
         return FALSE;
     }
-    if (a1->unk_10 == mapApp->unk_9F0) {
-        if (a1->unk_12 == 0xFF) {
-            mapApp->unk_9F0 = mapApp->unk_9F1 = 0xFF;
+    if (node->index == mapApp->mapMarkingsListHead) {
+        if (node->next == 0xFF) {
+            mapApp->mapMarkingsListHead = mapApp->mapMarkingsListTail = 0xFF;
         } else {
-            mapApp->unk_9F0 = mapApp->unk_218[a1->unk_12].unk_10;
-            mapApp->unk_218[a1->unk_12].unk_11 = 0xFF;
+            mapApp->mapMarkingsListHead = mapApp->mapMarkingsHeap[node->next].index;
+            mapApp->mapMarkingsHeap[node->next].prev = 0xFF;
         }
-    } else if (a1->unk_10 == mapApp->unk_9F1) {
-        mapApp->unk_218[a1->unk_11].unk_12 = 0xFF;
-        mapApp->unk_9F1 = mapApp->unk_218[a1->unk_11].unk_10;
+    } else if (node->index == mapApp->mapMarkingsListTail) {
+        mapApp->mapMarkingsHeap[node->prev].next = 0xFF;
+        mapApp->mapMarkingsListTail = mapApp->mapMarkingsHeap[node->prev].index;
     } else {
-        mapApp->unk_218[a1->unk_11].unk_12 = a1->unk_12;
-        mapApp->unk_218[a1->unk_12].unk_11 = a1->unk_11;
+        mapApp->mapMarkingsHeap[node->prev].next = node->next;
+        mapApp->mapMarkingsHeap[node->next].prev = node->prev;
     }
-    ov101_021ED498(a1);
+    MapMarkingsHeapNode_Reset(node);
     return TRUE;
 }
 
-BOOL ov101_021ED750(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2) {
-    if (a0 == NULL) {
+BOOL MapMarkingsHeapNode_SetIcon(MapMarkingsHeapNode *node, u8 index, u8 icon) {
+    if (node == NULL) {
         return FALSE;
     }
-    a0->unk_00.unk_4[a1] = a2;
+    node->mapMarkings.icons[index] = icon;
     return TRUE;
 }
 
-BOOL ov101_021ED760(PokegearMapAppData_Sub218 *a0, u8 a1) {
-    if (a0 == NULL) {
+BOOL MapMarkingsHeapNode_RemoveIcon(MapMarkingsHeapNode *node, u8 index) {
+    if (node == NULL) {
         return FALSE;
     }
-    a0->unk_00.unk_4[a1] = 15;
-    if (sub_0202F400(&a0->unk_00)) {
+    node->mapMarkings.icons[index] = MAP_MARKING_ICON_NULL;
+    if (MapMarkingsRAM_IsInUse_EraseIfNot(&node->mapMarkings)) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-BOOL ov101_021ED780(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2) {
+BOOL MapMarkingsHeapNode_SwapIcons(MapMarkingsHeapNode *node, u8 index1, u8 index2) {
     u8 tmp;
-    if (a0 == NULL) {
+    if (node == NULL) {
         return FALSE;
     }
-    tmp = a0->unk_00.unk_4[a1];
-    a0->unk_00.unk_4[a1] = a0->unk_00.unk_4[a2];
-    a0->unk_00.unk_4[a2] = tmp;
+    tmp = node->mapMarkings.icons[index1];
+    node->mapMarkings.icons[index1] = node->mapMarkings.icons[index2];
+    node->mapMarkings.icons[index2] = tmp;
     return TRUE;
 }
 
-BOOL ov101_021ED79C(PokegearMapAppData_Sub218 *a0, u8 a1, u16 a2) {
-    if (a0 == NULL) {
+BOOL MapMarkingsHeapNode_SetWord(MapMarkingsHeapNode *node, u8 index, u16 word) {
+    if (node == NULL) {
         return FALSE;
     }
-    a0->unk_00.unk_8[a1] = a2;
+    node->mapMarkings.words[index] = word;
     return TRUE;
 }
 
-BOOL ov101_021ED7B0(PokegearMapAppData_Sub218 *a0, u8 a1) {
-    if (a0 == NULL) {
+BOOL MapMarkingsHeapNode_RemoveWord(MapMarkingsHeapNode *node, u8 index) {
+    if (node == NULL) {
         return FALSE;
     }
-    a0->unk_00.unk_8[a1] = EC_WORD_NULL;
-    if (sub_0202F400(&a0->unk_00)) {
+    node->mapMarkings.words[index] = EC_WORD_NULL;
+    if (MapMarkingsRAM_IsInUse_EraseIfNot(&node->mapMarkings)) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-BOOL ov101_021ED7D8(PokegearMapAppData_Sub218 *a0, u8 a1, u8 a2) {
+BOOL MapMarkingsHeapNode_SwapWords(MapMarkingsHeapNode *node, u8 index1, u8 index2) {
     u16 tmp;
-    if (a0 == NULL) {
+    if (node == NULL) {
         return FALSE;
     }
-    tmp = a0->unk_00.unk_8[a1];
-    a0->unk_00.unk_8[a1] = a0->unk_00.unk_8[a2];
-    a0->unk_00.unk_8[a2] = tmp;
+    tmp = node->mapMarkings.words[index1];
+    node->mapMarkings.words[index1] = node->mapMarkings.words[index2];
+    node->mapMarkings.words[index2] = tmp;
     return TRUE;
 }

@@ -94,7 +94,7 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->unk_00D = mapApp->pokegear->args->incomingPhoneCall + 1;
     mapApp->pokegear->reselectAppCB = ov101_021EB338;
     mapApp->pokegear->unknownCB = ov101_021EB2FC;
-    ov101_021ED4E0(mapApp);
+    MapApp_LoadMarkingsLinkedListFromSave(mapApp);
     mapApp->unk_138_4 = 0;
     mapApp->unk_138_1 = 0;
     mapApp->mapUnlockLevel = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
@@ -118,7 +118,7 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->unk_133 = 0;
     mapApp->unk_134 = -24;
     mapApp->unk_13D_1 = TRUE;
-    mapApp->unk_13D_0 = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
+    mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
     mapApp->unk_00E = ov100_021E5C80(mapApp->pokegear);
 }
 
