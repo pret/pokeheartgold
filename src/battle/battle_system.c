@@ -254,7 +254,7 @@ u32 BattleSystem_GetTrainerGender(BattleSystem *battleSystem, int battlerId) {
     return PlayerProfile_GetTrainerGender(battleSystem->playerProfile[battlerId]);
 }
 
-int ov12_0223AAD8(BattleSystem *battleSystem, int a1) {
+int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int a1) {
     int battlerId;
     for (battlerId = 0; battlerId < battleSystem->maxBattlers; battlerId++) {
         if (ov12_02261258(battleSystem->opponentData[battlerId]) == a1) {
@@ -1214,7 +1214,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
         return;
     }
 
-    ov12_0226AA8C(battleSystem->battleInput, flag);
+    BattleInput_PrintSystemMessage(battleSystem->battleInput, flag);
     BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
@@ -1245,7 +1245,7 @@ u8 BattleSystem_GetChatotVoiceParam(BattleSystem *battleSystem, int battlerId) {
     }
 }
 
-Pokemon *ov12_0223C134(BattleSystem *battleSystem) {
+Pokemon *BattleSystem_GetBugContestCaughtMon(BattleSystem *battleSystem) {
     return battleSystem->unk2488;
 }
 

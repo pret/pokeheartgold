@@ -675,4 +675,6 @@ typedef struct BattleItem {
     u8 monIndex;
 } BattleItem;
 
+typedef struct BattleCursorPosition BattleCursorPosition;
+
 #endif

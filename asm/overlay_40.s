@@ -3018,7 +3018,7 @@ _0222CF2C:
 	ldr r0, _0222CF90 ; =0x00000548
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _0222CF88 ; =0x00000534
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -3080,7 +3080,7 @@ _0222CFC8:
 	bne _0222CFE4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _0222D03C ; =0x00000534
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3089,7 +3089,7 @@ _0222CFC8:
 _0222CFE4:
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _0222D03C ; =0x00000534
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -3103,7 +3103,7 @@ _0222CFF6:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _0222D044 ; =0x000005FC
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3114,7 +3114,7 @@ _0222D016:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _0222D044 ; =0x000005FC
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -3554,7 +3554,7 @@ _0222D2E6:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [sp, #0xc]
 	add r4, r4, #4
 	add r0, r0, #4
@@ -3877,7 +3877,7 @@ _0222D5BE:
 	bl RemoveWindow
 	ldr r0, [r5, #8]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -10358,7 +10358,7 @@ ov40_02230970: ; 0x02230970
 	bl sub_020136B4
 	ldr r0, [r4, #8]
 	ldr r1, [sp, #0x2c]
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x28]
 	bl ManagedSprite_SetAnim
@@ -11863,7 +11863,7 @@ _0223148C:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [sp, #4]
 	add r4, #0x10
 	add r0, r0, #4
@@ -12701,7 +12701,7 @@ _02231AF0:
 	ldr r0, _02231C6C ; =0x00000548
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _02231C68 ; =0x00000534
 	mov r1, #1
 	ldr r0, [r6, r0]
@@ -15310,7 +15310,7 @@ ov40_02233044: ; 0x02233044
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov40_02233044
 
@@ -15453,7 +15453,7 @@ ov40_0223316C: ; 0x0223316C
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r5, #0
 	mov r1, #2
 	bl ov40_0222D800
@@ -20204,7 +20204,7 @@ ov40_022359B4: ; 0x022359B4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -20222,7 +20222,7 @@ _022359E8:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -20335,12 +20335,12 @@ ov40_02235A30: ; 0x02235A30
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_022359B4
@@ -22110,7 +22110,7 @@ ov40_022368EC: ; 0x022368EC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -22128,7 +22128,7 @@ _02236920:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -27776,7 +27776,7 @@ ov40_022397BC: ; 0x022397BC
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -27794,7 +27794,7 @@ _022397F0:
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -27894,11 +27894,11 @@ ov40_02239838: ; 0x02239838
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r4, #0xc8
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_022397BC
@@ -29332,12 +29332,12 @@ ov40_0223A430: ; 0x0223A430
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_0223B4BC
@@ -31142,7 +31142,7 @@ _0223B3EC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [sp, #8]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -31236,7 +31236,7 @@ ov40_0223B4BC: ; 0x0223B4BC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -31254,7 +31254,7 @@ _0223B4F0:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -42422,7 +42422,7 @@ _022410C6:
 	bl sub_020136B4
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [sp, #8]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -44206,7 +44206,7 @@ ov40_02241F74: ; 0x02241F74
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #0x30]
 	mov r1, #0x80
 	mov r2, #0xa8
@@ -44217,7 +44217,7 @@ _02241F9C:
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #0x30]
 	mov r1, #0x50
 	mov r2, #0xa8
@@ -44298,10 +44298,10 @@ ov40_02241FD0: ; 0x02241FD0
 	bl sub_020136B4
 	ldr r0, [r5, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r5, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	bl ManagedSprite_SetAnim
@@ -44351,7 +44351,7 @@ ov40_022420B4: ; 0x022420B4
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0x20
 	mov r2, #0xe8
@@ -44362,7 +44362,7 @@ _022420DC:
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0x50
 	mov r2, #0xe8
@@ -44474,10 +44474,10 @@ _022421B2:
 	bl sub_020136B4
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_022420B4

@@ -172,7 +172,7 @@
 .public BattleSystem_GetPlayerProfile
 .public BattleSystem_GetBag
 .public BattleSystem_GetTrainerGender
-.public ov12_0223AAD8
+.public BattleSystem_GetBattlerFromBattlerType
 .public ov12_0223AB0C
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
@@ -285,12 +285,12 @@
 .public BattleInput_CheckFeedbackDone
 .public ov12_02266C84
 .public BattleInput_StartMenuScrollHorizontalTask
-.public ov12_0226885C
-.public ov12_022698AC
+.public BattleInput_LoadFightMenuText
+.public BattleInput_Deadstriped_022698AC
 .public ov12_022698B0
-.public ov12_0226A8E4
-.public ov12_0226A8EC
-.public ov12_0226AC64
+.public BattleInput_GetKeyPressed
+.public BattleInput_SetKeyPressed
+.public BattleInput_GetCancelRunFlag
 .public ov12_0226ADE0
 .public ov12_0226AE78
 .public ov12_0226AEE0

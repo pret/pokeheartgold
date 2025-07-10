@@ -1312,7 +1312,7 @@ _02246E84:
 	bl ov12_02237D00
 _02246EEC:
 	ldr r0, [r4]
-	bl ov12_0223C134
+	bl BattleSystem_GetBugContestCaughtMon
 	add r1, r0, #0
 	add r0, r6, #0
 	bl CopyPokemonToPokemon
@@ -4084,7 +4084,7 @@ ov12_022484D4: ; 0x022484D4
 	ldr r0, [r5, #0x10]
 	bl Sprite_DeleteAndFreeResources
 	ldr r0, [r5, #0x14]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r5, #0
 	add r0, #0x18
 	bl sub_02021B5C
@@ -4141,12 +4141,12 @@ UpdateFrienshipFainted: ; 0x02248558
 	beq _022485A8
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	mov r2, #0xc0
@@ -4165,7 +4165,7 @@ UpdateFrienshipFainted: ; 0x02248558
 _022485A8:
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 _022485B4:

@@ -3506,11 +3506,11 @@ _0221D62A:
 	ldr r0, _0221D65C ; =0x00000B4C
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, _0221D660 ; =0x00000B54
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	pop {r4, pc}
 	nop
 _0221D658: .word 0x00000B44
@@ -3557,7 +3557,7 @@ ov05_0221D690: ; 0x0221D690
 	add r5, r7, #0
 _0221D6A4:
 	ldr r0, [r5, r6]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4

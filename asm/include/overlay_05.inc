@@ -67,9 +67,9 @@
 .public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020135D8
-.public sub_02013660
+.public FontOAM_Delete
 .public sub_020136B4
-.public sub_020137C0
+.public FontOAM_SetDrawFlag
 .public sub_02013850
 .public sub_02014DA0
 .public sub_02014DB4

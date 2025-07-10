@@ -3,6 +3,7 @@
 #include "global.h"
 
 #include "constants/abilities.h"
+#include "constants/battle_menu.h"
 #include "constants/battle_subscript.h"
 #include "constants/items.h"
 #include "constants/message_tags.h"
@@ -399,7 +400,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *battleSyst
 
                         ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_FIGHT_INPUT;
                         break;
-                    case BATTLE_INPUT_ITEM:
+                    case BATTLE_INPUT_BAG:
                         if (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_BUG_CONTEST) {
                             ctx->unk_0[battlerId] = SSI_STATE_END;
                             ctx->unk_4[battlerId] = SSI_STATE_13;
@@ -677,14 +678,14 @@ static void BattleControllerPlayer_CalcExecutionOrder(BattleSystem *battleSystem
             }
         } else {
             for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-                if (ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_ITEM || ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_POKEMON) {
+                if (ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_BAG || ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_POKEMON) {
                     ctx->executionOrder[turn] = battlerId;
                     turn++;
                 }
             }
 
             for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-                if (ctx->playerActions[battlerId].inputSelection != BATTLE_INPUT_ITEM && ctx->playerActions[battlerId].inputSelection != BATTLE_INPUT_POKEMON) {
+                if (ctx->playerActions[battlerId].inputSelection != BATTLE_INPUT_BAG && ctx->playerActions[battlerId].inputSelection != BATTLE_INPUT_POKEMON) {
                     ctx->executionOrder[turn] = battlerId;
                     turn++;
                 }

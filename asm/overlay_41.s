@@ -9143,7 +9143,7 @@ ov41_0224A1C0: ; 0x0224A1C0
 	add r4, r0, #0
 	bl ov41_0224A1A8
 	ldr r0, [r4, #0x10]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x20

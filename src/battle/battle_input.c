@@ -2,6 +2,10 @@
 
 #include "global.h"
 
+#include "constants/battle_menu.h"
+
+#include "battle/battle_controller_opponent.h"
+
 #include "gf_gfx_loader.h"
 #include "heap.h"
 #include "math_util.h"
@@ -16,468 +20,519 @@
 #include "unk_02013534.h"
 #include "unk_02077678.h"
 #include "unk_0208805C.h"
-#include "constants/battle_menu.h"
 
 static void BattleInput_FreeDefaultResources(BattleInput *battleInput);
 static void BattleInput_FreeBallGaugeResources(BattleInput *battleInput);
 static void Task_AnimateBallGauge(SysTask *task, void *data);
 static void BattleInput_InitMenuWindow(BattleInput *battleInput);
+static void Task_BattleMenuScrollHorizontal(SysTask *task, void *data);
 static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId);
+static void BattleInput_CreateMainMenuObjectsInitial(BattleInput *battleInput, int a1, int a2);
+static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, int a2);
+static void BattleInput_CreateMainMenuFightObjectInitial(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateMainMenuFightObject(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreatePalParkMenuObjectsInitial(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreatePalParkMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateFightMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateYesNoMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateKeepForgetMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateGiveUpOnMoveMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateVSRecorderPlaybackMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateSwitchOrFleeMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateSwitchOrKeepMenuObjects(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int param1, int param2);
+static int BattleInput_TouchCallback_MainMenu(BattleInput *battleInput, int param1, int param2);
+static int BattleInput_TouchCallback_FightMenu(BattleInput *battleInput, int param1, int param2);
+static int BattleInput_TouchCallback_TwoOptionMenu(BattleInput *battleInput, int param1, int param2);
+static int BattleInput_TouchCallback_TargetMenu(BattleInput *battleInput, int param1, int param2);
+static int BattleInput_TouchCallback_VSRecorderMenu(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_LoadPokemonIconResources(BattleInput *battleInput);
+static void BattleInput_FreePokemonIconResources(BattleInput *battleInput);
+static void BattleInput_DeletePokemonIconSprites(BattleInput *battleInput);
+static ManagedSprite *BattleInput_SetPokemonIcon(BattleInput *battleInput, Pokemon *pokemon, int battlerType, int hp, int maxHp, int status);
+static ManagedSprite *BattleInput_SetBugContestPokemonIcon(BattleInput *battleInput, Pokemon *pokemon);
+static void Task_AnimatePokemonIconSprite(SysTask *task, void *data);
+static int ov12_022684F8(u8 task);
+static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut);
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
+static void BattleInput_DeleteTextObjects(BattleInput *battleInput);
+static void ov12_022686BC(BattleInput *battleInput);
+static BattleInputMoveMemory *BattleInput_GetMoveMemory(BattleInput *battleInput, int battlerType);
+static void BattleInput_FreeMoveMemory(BattleInput *battleInput);
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
+static void BattleInput_CreateMoveTypeIcons(BattleInput *battleInput);
+static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput);
+static void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput);
+static void ov12_02268C30(BattleInput *battleInput, int moveType, int movePos);
+static void ov12_02268C4C(BattleInput *battleInput, int movePos);
+static void ov12_02268CA0(BattleInput *battleInput, int param1);
+static void ov12_02268D5C(void);
+static void ov12_02268D88(BattleInput *battleInput, int param1, int param2);
+static void BattleInput_FreePersistentResources(BattleInput *battleInput);
+static void BattleInput_GetMonsHitArray(BattleInput *battleInput, u8 *monsHit, int checkMonExists);
+static void ov12_02268E2C(BattleInput *battleInput, int param1, u8 *monsHit, int checkExists);
+static void BattleInput_StartFeedbackTask(SysTaskFunc task, BattleInput *battleInput);
+static void BattleInput_DestroyFeedbackTask(BattleInput *battleInput);
+static void BattleInput_Deadstriped_02268EDC(BattleInput *battleInput, int touchInput);
+static void BattleInput_Deadstriped_02268EE0(BattleInput *battleInput, int unused);
+static void ov12_02268EE4(BattleInput *battleInput, const s16 *offsets, const TouchscreenHitbox *hitbox, int bufferIndex, int offsetIndex);
+static void Task_ButtonFeedback(SysTask *task, void *data);
+static void Task_FightMenuButtonFeedback(SysTask *task, void *data);
+static void Task_TargetMenuButtonFeedback(SysTask *task, void *data);
+static int GetPPTextColor(int pp, int maxPp);
+static void Task_BattleMenuSlideIn(SysTask *task, void *data);
+static void VBlankTask_BattleMenuSlideIn(SysTask *task, void *data);
+static void HBlankCB_BattleMenuSlideIn(void *data);
+static void ov12_02269830(SysTask *task, void *data);
+static void ov12_0226989C(SysTask *task, void *data);
+static void Task_FadeInBattleMenuBackground(SysTask *task, void *data);
+static void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data);
+static int BattleInput_CheckCursorInput(BattleInput *battleInput);
+static int BattleInput_CursorMove_MainMenu(BattleInput *battleInput, int shouldInitialize);
+static void BattleInput_CursorSave_MainMenu(BattleInput *battleInput, int param1);
+static int BattleInput_CursorMove_PalParkMenu(BattleInput *battleInput, int param1);
+static int BattleInput_CursorMove_FightMenu(BattleInput *battleInput, int param1);
+static void BattleInput_CursorSave_FightMenu(BattleInput *battleInput, int param1);
+static int BattleInput_CursorMove_TargetMenu(BattleInput *battleInput, int param1);
+static void BattleInput_CursorSave_TargetMenu(BattleInput *battleInput, int input);
+static int BattleInput_CursorMove_TwoOptionsMenu(BattleInput *battleInput, int param1);
+static u32 BattleCursor_CheckKeyInput(BattleMenuCursor *cursor, int xMax, int yMax, const u8 *moveData);
+static int BattleInput_CatchingTutorialMain(BattleInput *battleInput);
+static int BattleInput_CatchingTutorialCB_Fight(BattleInput *battleInput);
+static int BattleInput_CatchingTutorialCB_Move(BattleInput *battleInput);
+static int BattleInput_CatchingTutorialCB_Bag(BattleInput *battleInput);
+static void BattleInput_CreateBugContestGraphics(BattleInput *battleInput);
+static void BattleInput_DeleteBugContestGraphics(BattleInput *battleInput);
+static BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem);
 
-//Data
+// Data
 
-__attribute__((aligned(4))) static const u16 ov12_0226E298[7] = { 
-	0x2B, 
-	0x24, 
-	0x29, 
-	0x25, 
-	0x26, 
-	0x2A, 
-	0x27
+__attribute__((aligned(4))) static const u16 sBottomScreenBgTilemapId[7] = {
+    43,
+    36,
+    41,
+    37,
+    38,
+    42,
+    39
 };
 
-__attribute__((aligned(4))) static const u16 ov12_0226E2B8[][2] = {
-	{0x20, 0x3D},
-	{0xA0, 0x3C},
-	{0x20, 0x7C}, 
-	{0xA0, 0x7B}
+__attribute__((aligned(4))) static const u16 sTypeIconPositions[][2] = {
+    { 32,  61  },
+    { 160, 60  },
+    { 32,  124 },
+    { 160, 123 }
 };
 
-__attribute__((aligned(4))) static const u16 ov12_0226E2C8[4][2] = {
-	{ 0x3B, 0x3D },
-	{0xBB, 0x3C},
-	{0x3B, 0x7C},
-	{0xBB, 0x7B}	
+__attribute__((aligned(4))) static const u16 sMovePPTextPositions[4][2] = {
+    { 0x3B, 0x3D },
+    { 0xBB, 0x3C },
+    { 0x3B, 0x7C },
+    { 0xBB, 0x7B }
 };
 
-__attribute__((aligned(4))) static const u16 ov12_0226E308[4][2] = {
-	{ 0x4c, 0x3D },
-	{ 0xCC, 0x3C },
-	{0x4C, 0x7C},
-	{0xCC, 0x7B}
+__attribute__((aligned(4))) static const u16 sMovePPMaxTextPositions[4][2] = {
+    { 0x4c, 0x3D },
+    { 0xCC, 0x3C },
+    { 0x4C, 0x7C },
+    { 0xCC, 0x7B }
 };
 
-__attribute__((aligned(4))) static const u16 ov12_0226E370[][2] = {
-	{0x3c, 0x74},
-	{0xc4, 0x20},
-	{0xc4, 0x74},
-	{0x3C, 0x20},
-	{0x80, 0xAF}	
+__attribute__((aligned(4))) static const u16 sTargetPokemonMenuPositions[][2] = {
+    { 0x3c, 0x74 },
+    { 0xc4, 0x20 },
+    { 0xc4, 0x74 },
+    { 0x3C, 0x20 },
+    { 0x80, 0xAF }
 };
 
-__attribute__((aligned(4))) static const u16 ov12_0226E328[][2] = {
-	{0x3C, 0x74},
-	{0xC4, 0x38},
-	{0xC4, 0x74},
-	{0x3C, 0x38}
+__attribute__((aligned(4))) static const u16 sPokemonIconPositions[][2] = {
+    { 0x3C, 0x74 },
+    { 0xC4, 0x38 },
+    { 0xC4, 0x74 },
+    { 0x3C, 0x38 }
 };
 
-static const BgTemplate ov12_0226E5DC[] = {
-	{
-		.x = 0,
-		.y = 0,
-		.bufferSize = 0x800,
-		.baseTile = 0,
-		.size = 1,
-		.colorMode = 0,
-		.screenBase = 12,
-		.charBase = 0,
-		.priority = 0,
-		.areaOver = 0,
-		.dummy = 0,
-		.mosaic = 0
-	},
-	{
-		.x = 0,
-		.y = 0,
-		.bufferSize = 0x800,
-		.baseTile = 0,
-		.size = 1,
-		.colorMode = 0,
-		.screenBase = 13,
-		.charBase = 0,
-		.priority = 0,
-		.areaOver = 0,
-		.dummy = 0,
-		.mosaic = 0
-	},
-	{
-		.x = 0,
-		.y = 0,
-		.bufferSize = 0x800,
-		.baseTile = 0,
-		.size = 1,
-		.colorMode = 0,
-		.screenBase = 14,
-		.charBase = 0,
-		.priority = 0,
-		.areaOver = 0,
-		.dummy = 0,
-		.mosaic = 0
-	},
-	{
-		.x = 0,
-		.y = 0,
-		.bufferSize = 0x800,
-		.baseTile = 0,
-		.size = 1,
-		.colorMode = 0,
-		.screenBase = 15,
-		.charBase = 0,
-		.priority = 0,
-		.areaOver = 0,
-		.dummy = 0,
-		.mosaic = 0
-	},
+static const BgTemplate sBattleMenuBackgroundTemplates[] = {
+    { .x = 0,
+     .y = 0,
+     .bufferSize = 0x800,
+     .baseTile = 0,
+     .size = 1,
+     .colorMode = 0,
+     .screenBase = 12,
+     .charBase = 0,
+     .priority = 0,
+     .areaOver = 0,
+     .dummy = 0,
+     .mosaic = 0 },
+    { .x = 0,
+     .y = 0,
+     .bufferSize = 0x800,
+     .baseTile = 0,
+     .size = 1,
+     .colorMode = 0,
+     .screenBase = 13,
+     .charBase = 0,
+     .priority = 0,
+     .areaOver = 0,
+     .dummy = 0,
+     .mosaic = 0 },
+    { .x = 0,
+     .y = 0,
+     .bufferSize = 0x800,
+     .baseTile = 0,
+     .size = 1,
+     .colorMode = 0,
+     .screenBase = 14,
+     .charBase = 0,
+     .priority = 0,
+     .areaOver = 0,
+     .dummy = 0,
+     .mosaic = 0 },
+    { .x = 0,
+     .y = 0,
+     .bufferSize = 0x800,
+     .baseTile = 0,
+     .size = 1,
+     .colorMode = 0,
+     .screenBase = 15,
+     .charBase = 0,
+     .priority = 0,
+     .areaOver = 0,
+     .dummy = 0,
+     .mosaic = 0 },
 };
 
-static const TouchscreenHitbox ov12_0226E35C[] = {
-	{
-		.rect = {
-			.top = 0x18,
-			.bottom = 0x90,
-			.left = 0x0,
-			.right = 0xFF
-		}
-	},
-	{
-		.rect = {
-			.top = 0x90,
-			.bottom = 0xC0,
-			.left = 0x0,
-			.right = 0x50
-		}
-	},
-	{
-		.rect = {
-			.top = 0x90,
-			.bottom = 0xC0,
-			.left = 0xB0,
-			.right = 0xff
-		}
-	},
-	{
-		.rect = {
-			.top = 0x98,
-			.bottom = 0xC0,
-			.left = 0x58,
-			.right = 0xA8
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+static const TouchscreenHitbox sTouchscreenRectMainMenuButtons[] = {
+    {
+     .rect = {
+            .top = 0x18,
+            .bottom = 0x90,
+            .left = 0x0,
+            .right = 0xFF,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x90,
+            .bottom = 0xC0,
+            .left = 0x0,
+            .right = 0x50,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x90,
+            .bottom = 0xC0,
+            .left = 0xB0,
+            .right = 0xff,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x98,
+            .bottom = 0xC0,
+            .left = 0x58,
+            .right = 0xA8,
+        },
+     },
+    {
+     .rect = {
+            .top = TOUCHSCREEN_RECTLIST_END,
+            .bottom = 0,
+            .left = 0,
+            .right = 0,
+        },
+     },
 };
 
-static const int ov12_0226E2E8[] = { 
-	1, 
-	2, 
-	3, 
-	4 
+static const int sTouchArrayMainMenu[] = {
+    BATTLE_INPUT_FIGHT,
+    BATTLE_INPUT_BAG,
+    BATTLE_INPUT_POKEMON,
+    BATTLE_INPUT_RUN
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226EB04[] = { 
-	1, 
-	2, 
-	3, 
-	4 
+__attribute__((aligned(4))) static const u8 ov12_0226EB04[] = {
+    1,
+    2,
+    3,
+    4
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E220[2][3] = {
-	{0, 0, 0},
-	{1, 3, 2}
+__attribute__((aligned(4))) static const u8 sCursorArrayMainMenu[2][3] = {
+    { CURSOR_INPUT_FIGHT, CURSOR_INPUT_FIGHT, CURSOR_INPUT_FIGHT   },
+    { CURSOR_INPUT_BAG,   CURSOR_INPUT_RUN,   CURSOR_INPUT_POKEMON }
 };
 
 static const TouchscreenHitbox ov12_0226E240[] = {
-	{
-		.rect = {
-			.top = 0x18,
-			.bottom = 0x90,
-			.left = 0,
-			.right = 0xFF
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+    { .rect = {
+          .top = 0x18,
+          .bottom = 0x90,
+          .left = 0,
+          .right = 0xFF } },
+    { .rect = { .top = TOUCHSCREEN_RECTLIST_END, .bottom = 0, .left = 0, .right = 0 } }
 };
 
-static const TouchscreenHitbox ov12_0226E274[] = {
-	{
-		.rect = {
-			.top = 0x28,
-			.bottom = 0x80,
-			.left = 0x18,
-			.right = 0xE8
-		}
-	},
-	{
-		.rect = {
-			.top = 0x98,
-			.bottom = 0xC0,
-			.left = 0x58,
-			.right = 0xA8
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+static const TouchscreenHitbox sTouchscreenRectPalParkButtons[] = {
+    {
+     .rect = {
+            .top = 0x28,
+            .bottom = 0x80,
+            .left = 0x18,
+            .right = 0xE8,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x98,
+            .bottom = 0xC0,
+            .left = 0x58,
+            .right = 0xA8,
+        },
+     },
+    {
+     .rect = {
+            .top = TOUCHSCREEN_RECTLIST_END,
+            .bottom = 0,
+            .left = 0,
+            .right = 0,
+        },
+     },
 };
 
-//CONFIRMED 1
-
-static const int ov12_0226E338[] = { 
-	1, 
-	4,
-	0,
-	0
+static const int sTouchArrayPalPark[] = {
+    BATTLE_INPUT_BALL,
+    BATTLE_INPUT_RUN,
+    0,
+    0
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226EB00[] = { 
-	1, 
-	4 
+__attribute__((aligned(4))) static const u8 ov12_0226EB00[] = {
+    1,
+    4
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E1FC[2][1] = { 
-	{0}, 
-	{1} 
+__attribute__((aligned(4))) static const u8 sCursorArrayPalParkMenu[2][1] = {
+    { CURSOR_INPUT_PAL_PARK_BALL },
+    { CURSOR_INPUT_PAL_PARK_RUN }
 };
 
-static const TouchscreenHitbox ov12_0226E3C0[] = {
-	{
-		.rect = {
-			.top = 0x98,
-			.bottom = 0xC0,
-			.left = 0x08,
-			.right = 0xF8
-		}
-	},
-	{
-		.rect = {
-			.top = 0x18,
-			.bottom = 0x50,
-			.left = 0x0,
-			.right = 0x80
-		}
-	},
-	{
-		.rect = {
-			.top = 0x18,
-			.bottom = 0x50,
-			.left = 0x80,
-			.right = 0xff
-		}
-	},
-	{
-		.rect = {
-			.top = 0x58,
-			.bottom = 0x90,
-			.left = 0x00,
-			.right = 0x80
-		}
-	},
-	{
-		.rect = {
-			.top = 0x58,
-			.bottom = 0x90,
-			.left = 0x80,
-			.right = 0xFF
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+static const TouchscreenHitbox sTouchscreenRectFightMenuButtons[] = {
+    {
+     .rect = {
+            .top = 0x98,
+            .bottom = 0xC0,
+            .left = 0x08,
+            .right = 0xF8,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x18,
+            .bottom = 0x50,
+            .left = 0x0,
+            .right = 0x80,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x18,
+            .bottom = 0x50,
+            .left = 0x80,
+            .right = 0xff,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x58,
+            .bottom = 0x90,
+            .left = 0x00,
+            .right = 0x80,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x58,
+            .bottom = 0x90,
+            .left = 0x80,
+            .right = 0xFF,
+        },
+     },
+    {
+     .rect = {
+            .top = TOUCHSCREEN_RECTLIST_END,
+            .bottom = 0,
+            .left = 0,
+            .right = 0,
+        },
+     },
 };
 
-//CONFIRMED 2
-
-static const int ov12_0226E384[] = { 
-	0xFF, 
-	1, 
-	2, 
-	3, 
-	4 
+static const int sTouchArrayFightMenu[] = {
+    BATTLE_INPUT_CANCEL,
+    BATTLE_INPUT_MOVE_1,
+    BATTLE_INPUT_MOVE_2,
+    BATTLE_INPUT_MOVE_3,
+    BATTLE_INPUT_MOVE_4
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226EB08[] = { 
-	4, 
-	8, 
-	9, 
-	10, 
-	11 
+__attribute__((aligned(4))) static const u8 ov12_0226EB08[] = {
+    4,
+    8,
+    9,
+    10,
+    11
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E218[][2] = {
-	{1, 2}, 
-	{3, 4}, 
-	{0, 0}
+__attribute__((aligned(4))) static const u8 sCursorArrayFightMenu[][2] = {
+    { CURSOR_INPUT_MOVE_1,       CURSOR_INPUT_MOVE_2       },
+    { CURSOR_INPUT_MOVE_3,       CURSOR_INPUT_MOVE_4       },
+    { CURSOR_INPUT_FIGHT_CANCEL, CURSOR_INPUT_FIGHT_CANCEL }
 };
 
-static const TouchscreenHitbox ov12_0226E28C[] = {
-	{
-		.rect = {
-			.top = 0x28,
-			.bottom = 0x60,
-			.left = 8,
-			.right = 0xF8
-		}
-	},
-	{
-		.rect = {
-			.top = 0x70,
-			.bottom = 0xA8,
-			.left = 8,
-			.right = 0xF8
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+static const TouchscreenHitbox sTouchscreenRectTwoOptionsMenuButtons[] = {
+    {
+     .rect = {
+            .top = 0x28,
+            .bottom = 0x60,
+            .left = 8,
+            .right = 0xF8,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x70,
+            .bottom = 0xA8,
+            .left = 8,
+            .right = 0xF8,
+        },
+     },
+    {
+     .rect = {
+            .top = TOUCHSCREEN_RECTLIST_END,
+            .bottom = 0,
+            .left = 0,
+            .right = 0,
+        },
+     },
 };
 
-//CONFIRMED 3
-
-static const int ov12_0226E250[] = { 
-	1, 
-	0xFF 
+static const int sTouchArrayTwoOptionsMenu[] = {
+    BATTLE_INPUT_YES,
+    BATTLE_INPUT_CANCEL
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226EAFC[] = { 
-	1, 
-	4 
+__attribute__((aligned(4))) static const u8 ov12_0226EAFC[] = {
+    1,
+    4
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E200[2][1] = { 
-	{0}, 
-	{1} 
+__attribute__((aligned(4))) static const u8 sTwoOptionsMenuCursorInput[2][1] = {
+    { CURSOR_INPUT_TWO_OPTION_TOP },
+    { CURSOR_INPUT_TWO_OPTION_BOTTOM }
 };
 
-static const TouchscreenHitbox ov12_0226E3F0[] = {
-	{
-		.rect = {
-			.top = 0x58,
-			.bottom = 0x90,
-			.left = 0x00,
-			.right = 0x78
-		}
-	},
-	{
-		.rect = {
-			.top = 0x8,
-			.bottom = 0x50,
-			.left = 0x88,
-			.right = 0xFF
-		}
-	},
-	{
-		.rect = {
-			.top = 0x58,
-			.bottom = 0x90,
-			.left = 0x88,
-			.right = 0xff
-		}
-	},
-	{
-		.rect = {
-			.top = 0x8,
-			.bottom = 0x50,
-			.left = 0x00,
-			.right = 0x78
-		}
-	},
-	{
-		.rect = {
-			.top = 0x98,
-			.bottom = 0xC0,
-			.left = 0x8,
-			.right = 0xF8
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+static const TouchscreenHitbox sTouchscreenRectTargetMenuButtons[] = {
+    {
+     .rect = {
+            .top = 0x58,
+            .bottom = 0x90,
+            .left = 0x00,
+            .right = 0x78,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x8,
+            .bottom = 0x50,
+            .left = 0x88,
+            .right = 0xFF,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x58,
+            .bottom = 0x90,
+            .left = 0x88,
+            .right = 0xff,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x8,
+            .bottom = 0x50,
+            .left = 0x00,
+            .right = 0x78,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x98,
+            .bottom = 0xC0,
+            .left = 0x8,
+            .right = 0xF8,
+        },
+     },
+    {
+     .rect = {
+            .top = TOUCHSCREEN_RECTLIST_END,
+            .bottom = 0,
+            .left = 0,
+            .right = 0,
+        },
+     }
 };
 
-static const int ov12_0226E3AC[] = {
-	1, 
-	2, 
-	3, 
-	4, 
-	0xFF 
+static const int sTouchArrayTargetMenu[] = {
+    BATTLE_INPUT_TARGET_PLAYER_LEFT,
+    BATTLE_INPUT_TARGET_OPPONENT_RIGHT,
+    BATTLE_INPUT_TARGET_PLAYER_RIGHT,
+    BATTLE_INPUT_TARGET_OPPONENT_LEFT,
+    BATTLE_INPUT_CANCEL
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226EB10[] = { 
-	6, 
-	12, 
-	13, 
-	5, 
-	4 
+__attribute__((aligned(4))) static const u8 ov12_0226EB10[] = {
+    6,
+    12,
+    13,
+    5,
+    4
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E210[][2] = {
-	{3, 1},
-	{0, 2}, 
-	{4, 4}
+__attribute__((aligned(4))) static const u8 sTargetMenuButtonInputArray[][2] = {
+    { CURSOR_INPUT_TARGET_OPPONENT_LEFT, CURSOR_INPUT_TARGET_OPPONENT_RIGHT },
+    { CURSOR_INPUT_TARGET_PLAYER_LEFT,   CURSOR_INPUT_TARGET_PLAYER_RIGHT   },
+    { CURSOR_INPUT_TARGET_CANCEL,        CURSOR_INPUT_TARGET_CANCEL         }
 };
 
-static const TouchscreenHitbox ov12_0226E22E[] = {
-	{
-		.rect = {
-			.top = 0x98,
-			.bottom = 0xC0,
-			.left = 0,
-			.right = 0xFF
-		}
-	},
-	{
-		.rect = {
-			.top = 0xFF,
-			.bottom = 0,
-			.left = 0,
-			.right = 0
-		}
-	}
+static const TouchscreenHitbox sTouchscreenRectVsRecorderPlaybackButton[] = {
+    {
+     .rect = {
+            .top = 0x98,
+            .bottom = 0xC0,
+            .left = 0,
+            .right = 0xFF,
+        },
+     },
+    {
+     .rect = {
+            .top = TOUCHSCREEN_RECTLIST_END,
+            .bottom = 0,
+            .left = 0,
+            .right = 0,
+        },
+     }
 };
 
-static const int ov12_0226E208[] = { 
-	1 
+static const int sTouchArrayVsRecorderPlayback[] = {
+    BATTLE_INPUT_STOP
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E1F8[] = { 
-	4 
-}; 
-
-//CONFIRMED 4
+__attribute__((aligned(4))) static const u8 ov12_0226E1F8[] = {
+    4
+};
 
 typedef struct BattleMenuTemplate {
     u16 unk_00;
@@ -485,612 +540,603 @@ typedef struct BattleMenuTemplate {
     u16 unk_04_val2[4];
     u16 priority[4];
     const TouchscreenHitbox *touchscreenRect;
-    const int *unk_18;
+    const int *touchInput;
     const u8 *unk_1C;
     int (*funcCursor)(BattleInput *battleInput, int param1);
     void (*funcSaveCursorPos)(BattleInput *battleInput, int param1);
     void (*funcCreateMenuObjects)(BattleInput *battleInput, int param1, int param2);
-    int (*unk_2C)(BattleInput *battleInput, int param1, int param2);
+    int (*funcTouchCallback)(BattleInput *battleInput, int touchInput, int param2);
 } BattleMenuTemplate;
+
 static const BattleMenuTemplate sBattleMenuTemplates[] = {
-	[BATTLE_MENU_0] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 0xFFFF, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = NULL,
-		.unk_18 = NULL,
-		.unk_1C = NULL,
-		.funcCursor = NULL,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = NULL,
-		.unk_2C = NULL
-	},
-	[BATTLE_MENU_1] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_2] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_3] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = ov12_02266F84,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_4] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = ov12_02266F84,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_5] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E240,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = ov12_02267388,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_6] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E240,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = ov12_0226739C,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_7] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_8] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = ov12_02266F84,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_9] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E274,
-		.unk_18 = ov12_0226E338,
-		.unk_1C = ov12_0226EB00,
-		.funcCursor = ov12_02269CDC,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_02267404,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_10] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E274,
-		.unk_18 = ov12_0226E338,
-		.unk_1C = ov12_0226EB00,
-		.funcCursor = ov12_02269CDC,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_02267418,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_11] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 3, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E3C0,
-		.unk_18 = ov12_0226E384,
-		.unk_1C = ov12_0226EB08,
-		.funcCursor = ov12_02269DD4,
-		.funcSaveCursorPos = ov12_02269F54,
-		.funcCreateMenuObjects = ov12_0226748C,
-		.unk_2C = ov12_02267EF0
-	},
-	[BATTLE_MENU_12] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 4, 5, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E3F0,
-		.unk_18 = ov12_0226E3AC,
-		.unk_1C = ov12_0226EB10,
-		.funcCursor = ov12_02269FA4,
-		.funcSaveCursorPos = ov12_0226A594,
-		.funcCreateMenuObjects = ov12_02267C24,
-		.unk_2C = ov12_02268024
-	},
-	[BATTLE_MENU_13] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E28C,
-		.unk_18 = ov12_0226E250,
-		.unk_1C = ov12_0226EAFC,
-		.funcCursor = ov12_0226A5F0,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_02267760,
-		.unk_2C = ov12_02267FA0
-	},
-	[BATTLE_MENU_14] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E28C,
-		.unk_18 = ov12_0226E250,
-		.unk_1C = ov12_0226EAFC,
-		.funcCursor = ov12_0226A5F0,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_022677FC,
-		.unk_2C = ov12_02267FA0
-	},
-	[BATTLE_MENU_15] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E28C,
-		.unk_18 = ov12_0226E250,
-		.unk_1C = ov12_0226EAFC,
-		.funcCursor = ov12_0226A5F0,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_0226789C,
-		.unk_2C = ov12_02267FA0
-	},
-	[BATTLE_MENU_16] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E28C,
-		.unk_18 = ov12_0226E250,
-		.unk_1C = ov12_0226EAFC,
-		.funcCursor = ov12_0226A5F0,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_02267A58,
-		.unk_2C = ov12_02267FA0
-	},
-	[BATTLE_MENU_17] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
-		.priority = { 2, 1, 3, 0 },
-		.touchscreenRect = ov12_0226E28C,
-		.unk_18 = ov12_0226E250,
-		.unk_1C = ov12_0226EAFC,
-		.funcCursor = ov12_0226A5F0,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_02267B40,
-		.unk_2C = ov12_02267FA0
-	},
-	[BATTLE_MENU_18] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 6, 4, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E22E,
-		.unk_18 = ov12_0226E208,
-		.unk_1C = ov12_0226E1F8,
-		.funcCursor = NULL,
-		.funcSaveCursorPos = NULL,
-		.funcCreateMenuObjects = ov12_02267984,
-		.unk_2C = ov12_02268130
-	},
-	[BATTLE_MENU_19] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = BattleInput_CreateMenuObjectsInitial,
-		.unk_2C = ov12_02267E14
-	},
-	[BATTLE_MENU_20] = {
-		.unk_00 = 28,
-		.paletteId = 246,
-		.unk_04_val2 = { 1, 2, 0, 0xFFFF },
-		.priority = { 2, 3, 3, 0 },
-		.touchscreenRect = ov12_0226E35C,
-		.unk_18 = ov12_0226E2E8,
-		.unk_1C = ov12_0226EB04,
-		.funcCursor = ov12_02269A9C,
-		.funcSaveCursorPos = ov12_02269C7C,
-		.funcCreateMenuObjects = ov12_02266F84,
-		.unk_2C = ov12_02267E14
-	},
+    [BATTLE_MENU_0] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 0xFFFF, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = NULL,
+                       .touchInput = NULL,
+                       .unk_1C = NULL,
+                       .funcCursor = NULL,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = NULL,
+                       .funcTouchCallback = NULL,
+                       },
+    [BATTLE_MENU_MAIN_INITIAL] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjectsInitial,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_MAIN] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjectsInitial,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_3] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_4] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_5] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = ov12_0226E240,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuFightObjectInitial,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_6] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = ov12_0226E240,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuFightObject,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_7] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjectsInitial,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_8] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_PAL_PARK_INITIAL] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectPalParkButtons,
+                       .touchInput = sTouchArrayPalPark,
+                       .unk_1C = ov12_0226EB00,
+                       .funcCursor = BattleInput_CursorMove_PalParkMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreatePalParkMenuObjectsInitial,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_PAL_PARK] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectPalParkButtons,
+                       .touchInput = sTouchArrayPalPark,
+                       .unk_1C = ov12_0226EB00,
+                       .funcCursor = BattleInput_CursorMove_PalParkMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreatePalParkMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_FIGHT] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 3, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectFightMenuButtons,
+                       .touchInput = sTouchArrayFightMenu,
+                       .unk_1C = ov12_0226EB08,
+                       .funcCursor = BattleInput_CursorMove_FightMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_FightMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateFightMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_FightMenu,
+                       },
+    [BATTLE_MENU_TARGET] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 4, 5, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectTargetMenuButtons,
+                       .touchInput = sTouchArrayTargetMenu,
+                       .unk_1C = ov12_0226EB10,
+                       .funcCursor = BattleInput_CursorMove_TargetMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_TargetMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateTargetMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_TargetMenu,
+                       },
+    [BATTLE_MENU_YES_NO] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectTwoOptionsMenuButtons,
+                       .touchInput = sTouchArrayTwoOptionsMenu,
+                       .unk_1C = ov12_0226EAFC,
+                       .funcCursor = BattleInput_CursorMove_TwoOptionsMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreateYesNoMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_TwoOptionMenu,
+                       },
+    [BATTLE_MENU_KEEP_FORGET_MOVE] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectTwoOptionsMenuButtons,
+                       .touchInput = sTouchArrayTwoOptionsMenu,
+                       .unk_1C = ov12_0226EAFC,
+                       .funcCursor = BattleInput_CursorMove_TwoOptionsMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreateKeepForgetMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_TwoOptionMenu,
+                       },
+    [BATTLE_MENU_GIVE_UP_ON_MOVE] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectTwoOptionsMenuButtons,
+                       .touchInput = sTouchArrayTwoOptionsMenu,
+                       .unk_1C = ov12_0226EAFC,
+                       .funcCursor = BattleInput_CursorMove_TwoOptionsMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreateGiveUpOnMoveMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_TwoOptionMenu,
+                       },
+    [BATTLE_MENU_SWITCH_OR_FLEE] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectTwoOptionsMenuButtons,
+                       .touchInput = sTouchArrayTwoOptionsMenu,
+                       .unk_1C = ov12_0226EAFC,
+                       .funcCursor = BattleInput_CursorMove_TwoOptionsMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreateSwitchOrFleeMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_TwoOptionMenu,
+                       },
+    [BATTLE_MENU_SWITCH_OR_KEEP] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 6, 0xFFFF, 0, 0xFFFF },
+                       .priority = { 2, 1, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectTwoOptionsMenuButtons,
+                       .touchInput = sTouchArrayTwoOptionsMenu,
+                       .unk_1C = ov12_0226EAFC,
+                       .funcCursor = BattleInput_CursorMove_TwoOptionsMenu,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreateSwitchOrKeepMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_TwoOptionMenu,
+                       },
+    [BATTLE_MENU_VS_RECORDER_PLAYBACK] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 6, 4, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectVsRecorderPlaybackButton,
+                       .touchInput = sTouchArrayVsRecorderPlayback,
+                       .unk_1C = ov12_0226E1F8,
+                       .funcCursor = NULL,
+                       .funcSaveCursorPos = NULL,
+                       .funcCreateMenuObjects = BattleInput_CreateVSRecorderPlaybackMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_VSRecorderMenu,
+                       },
+    [BATTLE_MENU_19] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjectsInitial,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
+    [BATTLE_MENU_20] = {
+                       .unk_00 = 28,
+                       .paletteId = 246,
+                       .unk_04_val2 = { 1, 2, 0, 0xFFFF },
+                       .priority = { 2, 3, 3, 0 },
+                       .touchscreenRect = sTouchscreenRectMainMenuButtons,
+                       .touchInput = sTouchArrayMainMenu,
+                       .unk_1C = ov12_0226EB04,
+                       .funcCursor = BattleInput_CursorMove_MainMenu,
+                       .funcSaveCursorPos = BattleInput_CursorSave_MainMenu,
+                       .funcCreateMenuObjects = BattleInput_CreateMainMenuObjects,
+                       .funcTouchCallback = BattleInput_TouchCallback_MainMenu,
+                       },
 };
 
 static const ManagedSpriteTemplate sBallGaugeTemplate = {
-	.x = 12,
-	.y = 13,
-	.z = 0,
-	.animation = 0,
-	.spritePriority = 10,
-	.pal = 0,
-	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
-	.resIdList = {0x4e37, 0x4e37, 0x4e2f, 0x4e2f, -1, -1},
-	.bgPriority = 1,
-	.vramTransfer = 0
+    .x = 12,
+    .y = 13,
+    .z = 0,
+    .animation = 0,
+    .spritePriority = 10,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0x4e37, 0x4e37, 0x4e2f, 0x4e2f, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
 };
 
 static const ManagedSpriteTemplate sBallGaugeOpponentTemplate = {
-	.x = 0xF6,
-	.y = 9,
-	.z = 0,
-	.animation = 0,
-	.spritePriority = 11,
-	.pal = 1,
-	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
-	.resIdList = {0x4e38, 0x4e37, 0x4e30, 0x4e30, -1, -1},
-	.bgPriority = 1,
-	.vramTransfer = 0
+    .x = 0xF6,
+    .y = 9,
+    .z = 0,
+    .animation = 0,
+    .spritePriority = 11,
+    .pal = 1,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0x4e38, 0x4e37, 0x4e30, 0x4e30, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
 };
 
-//CONFIRMED 5
-
 static const ManagedSpriteTemplate ov12_0226E4B0 = {
-	.x = 0,
-	.y = 0,
-	.z = 0,
-	.animation = 0,
-	.spritePriority = 100,
-	.pal = 0,
-	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
-	.resIdList = {0x4e39, 0x4e34, 0x4e31, 0x4e31, -1, -1},
-	.bgPriority = 1,
-	.vramTransfer = 0
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animation = 0,
+    .spritePriority = 100,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0x4e39, 0x4e34, 0x4e31, 0x4e31, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
 };
 
 static const ManagedSpriteTemplate ov12_0226E4E4 = {
-	.x = 0,
-	.y = 0,
-	.z = 0,
-	.animation = 0,
-	.spritePriority = 100,
-	.pal = 0,
-	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
-	.resIdList = {0x4e45, 0x4e36, 0x4e35, 0x4e35, -1, -1},
-	.bgPriority = 1,
-	.vramTransfer = 0
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animation = 0,
+    .spritePriority = 100,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0x4e45, 0x4e36, 0x4e35, 0x4e35, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
 };
 
 static const ManagedSpriteTemplate sSpriteTemplateBugNet = {
-	.x = 0x58,
-	.y = 8,
-	.z = 0,
-	.animation = 0,
-	.spritePriority = 10,
-	.pal = 4,
-	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
-	.resIdList = {0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1},
-	.bgPriority = 1,
-	.vramTransfer = 0
+    .x = 0x58,
+    .y = 8,
+    .z = 0,
+    .animation = 0,
+    .spritePriority = 10,
+    .pal = 4,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
 };
 
 static const ManagedSpriteTemplate sSpriteTemplateSportBall = {
-	.x = 0xd0,
-	.y = 8,
-	.z = 0,
-	.animation = 0,
-	.spritePriority = 10,
-	.pal = 5,
-	.vram = NNS_G2D_VRAM_TYPE_2DSUB,
-	.resIdList = {0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1},
-	.bgPriority = 1,
-	.vramTransfer = 0
+    .x = 0xd0,
+    .y = 8,
+    .z = 0,
+    .animation = 0,
+    .spritePriority = 10,
+    .pal = 5,
+    .vram = NNS_G2D_VRAM_TYPE_2DSUB,
+    .resIdList = { 0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
 };
 
-//4 element u16 array 0 6 12 18 should go here??
-
-__attribute__((aligned(4))) static const s16 ov12_0226E3D8[][3] = {
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180}
+__attribute__((aligned(4))) static const s16 sMainMenuButtonsScreenOffsets[][3] = {
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 }
 };
 
-__attribute__((aligned(4))) static const u8 ov12_0226E318[][4] = {
-	{4, 15, 2, 29},
-	{17, 23, 0, 9},
-	{17, 23, 22, 31},
-	{18, 23, 11, 20}
+__attribute__((aligned(4))) static const u8 sMainMenuButtonsTouchscreenRect[][4] = {
+    { 4,  15, 2,  29 },
+    { 17, 23, 0,  9  },
+    { 17, 23, 22, 31 },
+    { 18, 23, 11, 20 }
 };
 
-__attribute__((aligned(4))) static const s16 ov12_0226E428[5][3] = {
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180}
+__attribute__((aligned(4))) static const s16 sFightMenuButtonsScreenOffsets[5][3] = {
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 }
 };
 
-__attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E398[] = {
-	{
-		.rect = {
-			.top = 2,
-			.bottom = 9,
-			.left = 0,
-			.right = 15
-		}
-	},
-	{
-		.rect = {
-			.top = 2,
-			.bottom = 9,
-			.left = 16,
-			.right = 31
-		}
-	},
-	{
-		.rect = {
-			.top = 10,
-			.bottom = 17,
-			.left = 0,
-			.right = 15
-		}
-	},
-	{
-		.rect = {
-			.top = 10,
-			.bottom = 17,
-			.left = 16,
-			.right = 31
-		}
-	},
-	{
-		.rect = {
-			.top = 18,
-			.bottom = 23,
-			.left = 1,
-			.right = 30
-		}
-	},
+__attribute__((aligned(4))) static const TouchscreenHitbox sFightMenuButtonsTouchscreenRect[] = {
+    {
+     .rect = {
+            .top = 2,
+            .bottom = 9,
+            .left = 0,
+            .right = 15,
+        },
+     },
+    {
+     .rect = {
+            .top = 2,
+            .bottom = 9,
+            .left = 16,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 10,
+            .bottom = 17,
+            .left = 0,
+            .right = 15,
+        },
+     },
+    {
+     .rect = {
+            .top = 10,
+            .bottom = 17,
+            .left = 16,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 18,
+            .bottom = 23,
+            .left = 1,
+            .right = 30,
+        },
+     },
 };
 
 __attribute__((aligned(4))) static const s16 ov12_0226E258[] = { 0x22F, 0x22C, 0x229, 0x226 };
 
 __attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E2A8[] = {
-	{
-		.rect = {
-			.top = 3,
-			.bottom = 9,
-			.left = 0,
-			.right = 15
-		}
-	},
-	{
-		.rect = {
-			.top = 3,
-			.bottom = 9,
-			.left = 16,
-			.right = 31
-		}
-	},
-	{
-		.rect = {
-			.top = 11,
-			.bottom = 17,
-			.left = 0,
-			.right = 15
-		}
-	},
-	{
-		.rect = {
-			.top = 11,
-			.bottom = 17,
-			.left = 16,
-			.right = 31
-		}
-	}
+    {
+     .rect = {
+            .top = 3,
+            .bottom = 9,
+            .left = 0,
+            .right = 15,
+        },
+     },
+    {
+     .rect = {
+            .top = 3,
+            .bottom = 9,
+            .left = 16,
+            .right = 31,
+        },
+     },
+    {
+     .rect = {
+            .top = 11,
+            .bottom = 17,
+            .left = 0,
+            .right = 15,
+        },
+     },
+    {
+     .rect = {
+            .top = 11,
+            .bottom = 17,
+            .left = 16,
+            .right = 31,
+        },
+     },
 };
 
-__attribute__((aligned(4))) static const s16 ov12_0226E408[][3] = {
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180},
-	{0, 0xc0, 0x180}
+__attribute__((aligned(4))) static const s16 sTargetMenuButtonsScreenOffsets[][3] = {
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 },
+    { 0, 0xc0, 0x180 }
 };
 
 __attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E348[] = {
-	{
-		.rect = {
-			.top = 0xa,
-			.bottom = 0x11,
-			.left = 0,
-			.right = 0xe
-		}
-	},
-	{
-		.rect = {
-			.top = 0,
-			.bottom = 0x9,
-			.left = 0x11,
-			.right = 0x1f
-		}
-	},
-	{
-		.rect = {
-			.top = 0xa,
-			.bottom = 0x11,
-			.left = 0x11,
-			.right = 0x1f
-		}
-	},
-	{
-		.rect = {
-			.top = 0x0,
-			.bottom = 0x9,
-			.left = 0,
-			.right = 0xe
-		}
-	},
-	{
-		.rect = {
-			.top = 0x12,
-			.bottom = 0x17,
-			.left = 0x1,
-			.right = 0x1e
-		}
-	}
+    {
+     .rect = {
+            .top = 0xa,
+            .bottom = 0x11,
+            .left = 0,
+            .right = 0xe,
+        },
+     },
+    {
+     .rect = {
+            .top = 0,
+            .bottom = 0x9,
+            .left = 0x11,
+            .right = 0x1f,
+        },
+     },
+    {
+     .rect = {
+            .top = 0xa,
+            .bottom = 0x11,
+            .left = 0x11,
+            .right = 0x1f,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x0,
+            .bottom = 0x9,
+            .left = 0,
+            .right = 0xe,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x12,
+            .bottom = 0x17,
+            .left = 0x1,
+            .right = 0x1e,
+        },
+     },
 };
 
 __attribute__((aligned(4))) static const s16 ov12_0226E238[] = {
-	0x238, 
-	0x235, 
-	0x232, 
-	0x23B
+    0x238,
+    0x235,
+    0x232,
+    0x23B
 };
 
 __attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E2F8[] = {
-	{
-		.rect = {
-			.top = 0xB,
-			.bottom = 0x11,
-			.left = 0,
-			.right = 0xe
-		}
-	},
-	{
-		.rect = {
-			.top = 1,
-			.bottom = 9,
-			.left = 0x11,
-			.right = 0x1F
-		}
-	},
-	{
-		.rect = {
-			.top = 0xB,
-			.bottom = 0x11,
-			.left = 0x11,
-			.right = 0x1f
-		}
-	},
-	{
-		.rect = {
-			.top = 0x1,
-			.bottom = 0x9,
-			.left = 0,
-			.right = 0xe
-		}
-	}
+    {
+     .rect = {
+            .top = 0xB,
+            .bottom = 0x11,
+            .left = 0,
+            .right = 0xe,
+        },
+     },
+    {
+     .rect = {
+            .top = 1,
+            .bottom = 9,
+            .left = 0x11,
+            .right = 0x1F,
+        },
+     },
+    {
+     .rect = {
+            .top = 0xB,
+            .bottom = 0x11,
+            .left = 0x11,
+            .right = 0x1f,
+        },
+     },
+    {
+     .rect = {
+            .top = 0x1,
+            .bottom = 0x9,
+            .left = 0,
+            .right = 0xe,
+        },
+     },
 };
 
 __attribute__((aligned(4))) static const s16 ov12_0226E286[][3] = {
-	{0, 5, 10},
-	{0, 0xC0, 0x180}
+    { 0, 5,    10    },
+    { 0, 0xC0, 0x180 }
 };
 
 __attribute__((aligned(4))) static const u8 ov12_0226E24C[][4] = {
-	{ 0xd, 0x14, 0, 0x1f},
-	{0x4, 0xb, 0, 0x1f}
+    { 0xd, 0x14, 0, 0x1f },
+    { 0x4, 0xb,  0, 0x1f }
 };
 
-__attribute__((aligned(4))) static const s16 ov12_0226E228[] = {0, 0xc0, 0x180};
+__attribute__((aligned(4))) static const s16 ov12_0226E228[] = { 0, 0xc0, 0x180 };
 
 __attribute__((aligned(4))) static const TouchscreenHitbox ov12_0226E20C[] = {
-	{
-		.rect = {
-		.top = 18,
-		.bottom = 23,
-		.left = 0,
-		.right = 31
-		}
-	}
+    { .rect = {
+          .top = 18,
+          .bottom = 23,
+          .left = 0,
+          .right = 31 } }
 };
 
 static const __attribute__((aligned(4))) S16Pos ov12_0226E2D8[] = {
-	{0x80, 0x4C},
-	{0x28, 0xA4},
-	{0xD8, 0xA4},
-	{0x80, 0xA8}
+    { 0x80, 0x4C },
+    { 0x28, 0xA4 },
+    { 0xD8, 0xA4 },
+    { 0x80, 0xA8 }
 };
 
-
-
-
-__attribute__((aligned(4))) static const int ov12_0226E64C[][4] = {
-	{ 1, 1, 1, 1 },
-	{ 0, 1, 0, 1 },
-	{ 0, 1, 1, 1 },
-	{ 1, 1, 1, 1 },
-	{ 1, 0, 0, 0 },
-	{ 1, 0, 1, 0 },
-	{ 0, 0, 1, 0 },
-	{ 1, 1, 0, 1 },
-	{ 0, 1, 1, 1 },
-	{ 1, 1, 0, 1 },
-	{ 1, 0, 1, 0 },
-	{ 0, 1, 0, 1 }
+__attribute__((aligned(4))) static const int sMoveRangeHitMons[][4] = {
+    { 1, 1, 1, 1 },
+    { 0, 1, 0, 1 },
+    { 0, 1, 1, 1 },
+    { 1, 1, 1, 1 },
+    { 1, 0, 0, 0 },
+    { 1, 0, 1, 0 },
+    { 0, 0, 1, 0 },
+    { 1, 1, 0, 1 },
+    { 0, 1, 1, 1 },
+    { 1, 1, 0, 1 },
+    { 1, 0, 1, 0 },
+    { 0, 1, 0, 1 }
 };
 
 typedef struct NCLRIndex {
@@ -1099,29 +1145,29 @@ typedef struct NCLRIndex {
 } NCLRIndex;
 
 static const NCLRIndex sBackgroundPaletteIds[] = {
-	{ 0xF7, 0x10F },
-	{ 0xF8, 0x110 },
-	{ 0xF9, 0x111 },
-	{ 0xFA, 0x112 },
-	{ 0xFB, 0x113 },
-	{ 0xFC, 0x114 },
-	{ 0xFD, 0x115 },
-	{ 0xFE, 0x116 },
-	{ 0xFF, 0x117 },
-	{ 0x100, 0x118 },
-	{ 0x101, 0x119 },
-	{ 0x102, 0x11A },
-	{ 0x103, 0x11B },
-	{ 0x104, 0x11C },
-	{ 0x105, 0x11D },
-	{ 0x106, 0x11E },
-	{ 0x107, 0x11F },
-	{ 0x120, 0x121 },
-	{ -1, -1 },
-	{ -1, -1 },
-	{ -1, -1 },
-	{ -1, -1 },
-	{ -1, -1 }
+    { 0xF7,  0x10F },
+    { 0xF8,  0x110 },
+    { 0xF9,  0x111 },
+    { 0xFA,  0x112 },
+    { 0xFB,  0x113 },
+    { 0xFC,  0x114 },
+    { 0xFD,  0x115 },
+    { 0xFE,  0x116 },
+    { 0xFF,  0x117 },
+    { 0x100, 0x118 },
+    { 0x101, 0x119 },
+    { 0x102, 0x11A },
+    { 0x103, 0x11B },
+    { 0x104, 0x11C },
+    { 0x105, 0x11D },
+    { 0x106, 0x11E },
+    { 0x107, 0x11F },
+    { 0x120, 0x121 },
+    { -1,    -1    },
+    { -1,    -1    },
+    { -1,    -1    },
+    { -1,    -1    },
+    { -1,    -1    }
 };
 
 BattleInput *BattleInput_New() {
@@ -1134,8 +1180,8 @@ BattleInput *BattleInput_New() {
 }
 
 void BgConfig_InitBattleMenuBackgrounds(BgConfig *config) {
-    for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
-        InitBgFromTemplate(config, i + GF_BG_LYR_SUB_0, &ov12_0226E5DC[i], 0);
+    for (int i = 0; i < NELEMS(sBattleMenuBackgroundTemplates); i++) {
+        InitBgFromTemplate(config, i + GF_BG_LYR_SUB_0, &sBattleMenuBackgroundTemplates[i], 0);
         BgFillTilemapBufferAndCommit(config, i + GF_BG_LYR_SUB_0, 767);
         BgSetPosTextAndCommit(config, i + GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
         BgSetPosTextAndCommit(config, i + GF_BG_LYR_SUB_0, BG_POS_OP_SET_Y, 0);
@@ -1143,7 +1189,7 @@ void BgConfig_InitBattleMenuBackgrounds(BgConfig *config) {
 }
 
 void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config) {
-    for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
+    for (int i = 0; i < NELEMS(sBattleMenuBackgroundTemplates); i++) {
         ToggleBgLayer(i + GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
         FreeBgTilemapBuffer(config, i + GF_BG_LYR_SUB_0);
     }
@@ -1172,7 +1218,7 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     }
 
     battleInput->fontSystem = FontSystem_NewInit(13, HEAP_ID_BATTLE);
-    battleInput->unk6FC = SysTask_CreateOnMainQueue(ov12_022698C4, battleInput, 1310);
+    battleInput->fadeTask = SysTask_CreateOnMainQueue(Task_FadeInBattleMenuBackground, battleInput, 1310);
 
     NNSG2dScreenData *screenData;
     void *narcData;
@@ -1182,10 +1228,10 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
         void *buffer = AllocFromHeap(HEAP_ID_BATTLE, 0x800);
         battleInput->screenBuffer[i] = buffer;
 
-        if (BattleSystem_IsInFrontier(battleSystem) && ov12_0226E298[i] == 43) {
+        if (BattleSystem_IsInFrontier(battleSystem) && sBottomScreenBgTilemapId[i] == 43) {
             bottomScreenBgTilemapId = 174;
         } else {
-            bottomScreenBgTilemapId = ov12_0226E298[i];
+            bottomScreenBgTilemapId = sBottomScreenBgTilemapId[i];
         }
 
         narcData = GfGfxLoader_GetScrnData(NARC_a_0_0_7, bottomScreenBgTilemapId, 1, &screenData, HEAP_ID_BATTLE);
@@ -1208,12 +1254,12 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     MI_CpuCopy16(unfadedBuffer, battleInput->paletteBuffer, 0x200);
 
     for (int i = 0; i < 4; i++) {
-        MI_CpuFill8(&battleInput->unk54[i].move, 0xFF, sizeof(BattleInputMove));
+        MI_CpuFill8(&battleInput->moveMemory[i].move, 0xFF, sizeof(BattleInputMove));
     }
 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            battleInput->unk54[i].typeIcon[j] = AllocFromHeap(HEAP_ID_BATTLE, sub_0208805C(6));
+            battleInput->moveMemory[i].typeIcon[j] = AllocFromHeap(HEAP_ID_BATTLE, sub_0208805C(6));
         }
     }
 
@@ -1258,19 +1304,19 @@ void BattleInput_Free(BattleInput *battleInput) {
         *battleInput->unk4 = battleInput->keyPressed;
     }
 
-    ov12_02268DAC(battleInput);
+    BattleInput_FreePersistentResources(battleInput);
     BattleInput_FreeBallGaugeResources(battleInput);
     BattleInput_FreeDefaultResources(battleInput);
 
     sub_020135AC(battleInput->fontSystem);
-    SysTask_Destroy(battleInput->unk6FC);
+    SysTask_Destroy(battleInput->fadeTask);
 
     for (int i = 0; i < 7; i++) {
         FreeToHeap(battleInput->screenBuffer[i]);
     }
 
     FreeToHeap(battleInput->paletteBuffer);
-    ov12_022687AC(battleInput);
+    BattleInput_FreeMoveMemory(battleInput);
     FreeToHeap(battleInput->bgPalNormal);
     FreeToHeap(battleInput->bgPalTouch);
     SysTask_Destroy(battleInput->bgTask);
@@ -1361,7 +1407,7 @@ void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, 
     battleInput->curMenuId = menuId;
 
     G2S_SetBlendAlpha(GX_BLEND_PLANEMASK_BG1, 15, 8, 12);
-    ov12_02268DAC(battleInput);
+    BattleInput_FreePersistentResources(battleInput);
 
     if (menuTemplate->funcCreateMenuObjects != NULL) {
         menuTemplate->funcCreateMenuObjects(battleInput, menuId, a4);
@@ -1388,11 +1434,11 @@ void BattleInput_LoadBallGaugeResources(NARC *narc, BattleInput *battleInput) {
 
     for (i = 0; i < 6; i++) {
         battleInput->spriteBallGauge[i] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &sBallGaugeTemplate);
-        Sprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i]->sprite, 19 * i + 12, 13, ((192 + 80) << FX32_SHIFT));
+        Sprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i]->sprite, 19 * i + 12, 13, (272 << FX32_SHIFT));
         ManagedSprite_SetAffineOverwriteMode(battleInput->spriteBallGauge[i], 1);
 
         battleInput->spriteBallGaugeOpponent[i] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &sBallGaugeOpponentTemplate);
-        Sprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGaugeOpponent[i]->sprite, 246 + -12 * i, 9, ((192 + 80) << FX32_SHIFT));
+        Sprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGaugeOpponent[i]->sprite, 246 + -12 * i, 9, (272 << FX32_SHIFT));
     }
 
     BattleInput_DisableBallGauge(battleInput);
@@ -1476,7 +1522,7 @@ static void Task_AnimateBallGauge(SysTask *task, void *data) {
             ManagedSprite_OffsetAffineZRotation(battleInput->spriteBallGauge[i], 0x800);
             ballAnim->xOffset += 0x180;
 
-            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i], 12 + 19 * i + ballAnim->xOffset / 0x100, 13, ((192 + 80) << FX32_SHIFT));
+            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i], 12 + 19 * i + ballAnim->xOffset / 0x100, 13, (272 << FX32_SHIFT));
             ballAnim->count++;
 
             if (ballAnim->count >= ballAnim->countMax) {
@@ -1486,7 +1532,7 @@ static void Task_AnimateBallGauge(SysTask *task, void *data) {
                     ballAnim->state++;
                 } else {
                     ManagedSprite_SetAffineZRotation(battleInput->spriteBallGauge[i], 0);
-                    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i], 12 + 19 * i, 13, ((192 + 80) << FX32_SHIFT));
+                    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i], 12 + 19 * i, 13, (272 << FX32_SHIFT));
 
                     ballAnim->xOffset = 0;
 
@@ -1510,7 +1556,7 @@ static void Task_AnimateBallGauge(SysTask *task, void *data) {
             ManagedSprite_OffsetAffineZRotation(battleInput->spriteBallGauge[i], -0x800);
             ballAnim->xOffset -= 0x180;
 
-            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i], 12 + 19 * i + ballAnim->xOffset / 0x100, 13, ((192 + 80) << FX32_SHIFT));
+            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBallGauge[i], 12 + 19 * i + ballAnim->xOffset / 0x100, 13, (272 << FX32_SHIFT));
             ballAnim->count++;
 
             if (ballAnim->count >= ballAnim->countMax * 2) {
@@ -1572,7 +1618,7 @@ void BattleInput_DisableBallGauge(BattleInput *battleInput) {
 int BattleInput_CheckTouch(BattleInput *battleInput) {
     int ret, rectHit, paletteId;
     const BattleMenuTemplate *menuTemplate;
-    int v5 = 0;
+    int keyPressed = 0;
 
     GF_ASSERT(battleInput->curMenuId != BATTLE_MENU_NONE);
 
@@ -1582,7 +1628,7 @@ int BattleInput_CheckTouch(BattleInput *battleInput) {
         return -1;
     }
 
-    GF_ASSERT(menuTemplate->unk_18 != NULL);
+    GF_ASSERT(menuTemplate->touchInput != NULL);
 
     if (BattleSystem_GetBattleType(battleInput->battleSystem) & BATTLE_TYPE_TUTORIAL) {
         rectHit = BattleInput_CatchingTutorialMain(battleInput);
@@ -1590,8 +1636,8 @@ int BattleInput_CheckTouch(BattleInput *battleInput) {
         rectHit = TouchscreenHitbox_FindRectAtTouchNew(menuTemplate->touchscreenRect);
 
         if (rectHit == -1) {
-            rectHit = ov12_02269A24(battleInput);
-            v5++;
+            rectHit = BattleInput_CheckCursorInput(battleInput);
+            keyPressed++;
         }
     }
 
@@ -1599,12 +1645,12 @@ int BattleInput_CheckTouch(BattleInput *battleInput) {
         ret = -1;
         paletteId = 0xff;
     } else {
-        ret = menuTemplate->unk_18[rectHit];
+        ret = menuTemplate->touchInput[rectHit];
         paletteId = menuTemplate->unk_1C[rectHit];
     }
 
-    if (menuTemplate->unk_2C != NULL) {
-        ret = menuTemplate->unk_2C(battleInput, ret, paletteId);
+    if (menuTemplate->funcTouchCallback != NULL) {
+        ret = menuTemplate->funcTouchCallback(battleInput, ret, paletteId);
 
         if (ret != -1) {
             if (menuTemplate->funcSaveCursorPos != NULL) {
@@ -1614,7 +1660,7 @@ int BattleInput_CheckTouch(BattleInput *battleInput) {
             MI_CpuClear8(&battleInput->cursorData, sizeof(BattleMenuCursor));
             BattleCursor_Disable(battleInput->cursor);
 
-            if (v5 > 0) {
+            if (keyPressed > 0) {
                 battleInput->keyPressed = 1;
             } else {
                 battleInput->keyPressed = 0;
@@ -1626,7 +1672,7 @@ int BattleInput_CheckTouch(BattleInput *battleInput) {
 }
 
 BOOL BattleInput_CheckFeedbackDone(BattleInput *battleInput) {
-    if ((battleInput->unkC == NULL) && (battleInput->unk10 == NULL) && (ov12_022698B0(battleInput) == 1)) {
+    if ((battleInput->feedbackTask == NULL) && (battleInput->unk10 == NULL) && (ov12_022698B0(battleInput) == 1)) {
         return TRUE;
     }
 
@@ -1687,7 +1733,7 @@ void BattleInput_StartMenuScrollHorizontalTask(BattleInput *battleInput, int xSp
     SysTask_CreateOnMainQueue(Task_BattleMenuScrollHorizontal, battleInput, 1200);
 }
 
-void Task_BattleMenuScrollHorizontal(SysTask *task, void *data) {
+static void Task_BattleMenuScrollHorizontal(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     int isFinished = 0;
     BgConfig *bgConfig;
@@ -1731,40 +1777,40 @@ static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId)
 
     menuSlideIn->battleInput = battleInput;
     menuSlideIn->battlerId = battlerId;
-    menuSlideIn->unk_08 = -(255 * 100);
-    menuSlideIn->unk_0A = (40 * 100);
-    menuSlideIn->unk_0C = ((255 * 100) - menuSlideIn->unk_08) / 100;
-    menuSlideIn->unk_0E = ((40 * 100) - menuSlideIn->unk_0A) / 100;
+    menuSlideIn->x = -(255 * 100);
+    menuSlideIn->y = (40 * 100);
+    menuSlideIn->xSet = ((255 * 100) - menuSlideIn->x) / 100;
+    menuSlideIn->ySet = ((40 * 100) - menuSlideIn->y) / 100;
 
     PlaySE(SEQ_SE_DP_SLIDEIN);
-    SysTask_CreateOnMainQueue(ov12_02269568, menuSlideIn, 1210);
+    SysTask_CreateOnMainQueue(Task_BattleMenuSlideIn, menuSlideIn, 1210);
 
-    ret = Main_SetHBlankIntrCB(ov12_02269774, menuSlideIn);
+    ret = Main_SetHBlankIntrCB(HBlankCB_BattleMenuSlideIn, menuSlideIn);
     GF_ASSERT(ret == 1);
 
-    menuSlideIn->unk_04 = SysTask_CreateOnVBlankQueue(ov12_02269668, menuSlideIn, 10);
+    menuSlideIn->vblankTask = SysTask_CreateOnVBlankQueue(VBlankTask_BattleMenuSlideIn, menuSlideIn, 10);
 }
 
-void BattleInput_CreateMenuObjectsInitial(BattleInput *battleInput, int a1, int a2) {
+static void BattleInput_CreateMainMenuObjectsInitial(BattleInput *battleInput, int a1, int a2) {
     int battlerType = battleInput->menu.main.battlerType;
-    ov12_02266F84(battleInput, a1, a2);
+    BattleInput_CreateMainMenuObjects(battleInput, a1, a2);
     BattleInput_InitMenuSlideIn(battleInput, battlerType);
 }
 
-void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
+static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, int a2) {
     String *strFight, *strBag, *strPokemon, *strRun;
     MsgData *msgLoader;
-    int v5;
-    BattleInputMainScreen *v6;
+    int battlerType;
+    BattleInputMainScreen *menu;
 
-    v6 = &battleInput->menu.main;
-    v5 = v6->battlerType;
+    menu = &battleInput->menu.main;
+    battlerType = menu->battlerType;
 
-    battleInput->cancelRun = v6->cancelRun;
+    battleInput->cancelRun = menu->cancelRun;
 
     msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
 
-    battleInput->unk6EE = v5;
+    battleInput->battlerType = battlerType;
 
     if (BattleSystem_GetBattleType(battleInput->battleSystem) & BATTLE_TYPE_SAFARI) {
         strFight = NewString_ReadMsgData(msgLoader, 931);   // BALL
@@ -1792,45 +1838,45 @@ void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
         battleInput->unk6F3 = 0;
     }
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strFight, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 83, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], strBag, 4, MAKE_TEXT_COLOR(4, 5, 6), 2, 20023, 40, 169, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[2], strPokemon, 4, MAKE_TEXT_COLOR(7, 8, 9), 2, 20023, 216, 168, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[3], strRun, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 176, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FIGHT], strFight, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 83, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BAG], strBag, 4, MAKE_TEXT_COLOR(4, 5, 6), 2, 20023, 40, 169, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_POKEMON], strPokemon, 4, MAKE_TEXT_COLOR(7, 8, 9), 2, 20023, 216, 168, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_RUN], strRun, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 176, 1, NULL);
 
     String_Delete(strFight);
     String_Delete(strBag);
     String_Delete(strPokemon);
     String_Delete(strRun);
 
-    if ((BattleSystem_GetBattleType(battleInput->battleSystem) & (0x220)) == 0) {
+    if ((BattleSystem_GetBattleType(battleInput->battleSystem) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) == 0) {
         Pokemon *pokemon;
-        ManagedSprite *v8;
-        int v9, v10;
+        ManagedSprite *spriteMonIcon;
+        int x, y;
 
-        pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, v6->battlerId, v6->selectedMon);
-        ov12_02268194(battleInput);
-        v8 = ov12_022682BC(battleInput, pokemon, v5, v6->hp, v6->maxHp, v6->unk3);
+        pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, menu->battlerId, menu->selectedMon);
+        BattleInput_LoadPokemonIconResources(battleInput);
+        spriteMonIcon = BattleInput_SetPokemonIcon(battleInput, pokemon, battlerType, menu->hp, menu->maxHp, menu->monIconStatus);
 
-        sub_02013794(battleInput->textObj[0].unk0, &v9, &v10);
+        sub_02013794(battleInput->textObj[MENUTXT_FIGHT].fontOAM, &x, &y);
 
-        if (v5 == 4) {
-            v9 += battleInput->textObj[0].unk20 + 32 / 2;
+        if (battlerType == 4) {
+            x += battleInput->textObj[MENUTXT_FIGHT].fontLength + 32 / 2;
         } else {
-            v9 -= 32 / 2;
+            x -= 32 / 2;
         }
 
-        ManagedSprite_SetPositionXYWithSubscreenOffset(v8, v9, v10 - (((192 + 80) << FX32_SHIFT) >> FX32_SHIFT), ((192 + 80) << FX32_SHIFT));
+        ManagedSprite_SetPositionXYWithSubscreenOffset(spriteMonIcon, x, y - ((272 << FX32_SHIFT) >> FX32_SHIFT), (272 << FX32_SHIFT));
 
         if (BattleSystem_GetBattleType(battleInput->battleSystem) & BATTLE_TYPE_BUG_CONTEST) {
             Pokemon *caughtMon;
             String *strMonGender;
             String *strFormated;
             MessageFormat *format;
-            int var = 0;
+            int genderColor = 0;
 
             format = BattleSystem_GetMessageFormat(battleInput->battleSystem);
             strFormated = String_New(32, HEAP_ID_BATTLE);
-            caughtMon = ov12_0223C134(battleInput->battleSystem);
+            caughtMon = BattleSystem_GetBugContestCaughtMon(battleInput->battleSystem);
             if (caughtMon != NULL) {
                 int species = GetMonData(caughtMon, MON_DATA_SPECIES, NULL);
                 if (species != SPECIES_NONE) {
@@ -1839,11 +1885,11 @@ void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
                     switch (gender) {
                     case MON_MALE:
                         strMonGender = NewString_ReadMsgData(msgLoader, 0x4f8);
-                        var = 0xc0d00;
+                        genderColor = 0xc0d00;
                         break;
                     case MON_FEMALE:
                         strMonGender = NewString_ReadMsgData(msgLoader, 0x4f9);
-                        var = 0xe0f00;
+                        genderColor = 0xe0f00;
                         break;
                     default:
                         strMonGender = NULL;
@@ -1851,16 +1897,16 @@ void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
                     }
 
                     if (strMonGender != NULL) {
-                        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[4], strMonGender, 0, var, 3, 0x4e37, 0x88, 0x10, 0, 0);
+                        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 0x4e37, 0x88, 0x10, 0, 0);
                         String_Delete(strMonGender);
                     }
                     int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
                     BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, 0x4fa);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);
-                    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[5], strFormated, 0, 0x90800, 3, 0x4e37, 0x90, 0x10, 0, 0);
+                    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, 0, 0x90800, 3, 0x4e37, 0x90, 0x10, 0, 0);
                     String_Delete(strMonLevel);
-                    ov12_02268440(battleInput, caughtMon);
+                    BattleInput_SetBugContestPokemonIcon(battleInput, caughtMon);
                 }
             }
             int ballsRemaining = BattleSystem_GetSafariBallCount(battleInput->battleSystem);
@@ -1875,82 +1921,80 @@ void ov12_02266F84(BattleInput *battleInput, int a1, int a2) {
     }
 }
 
-void ov12_02267388(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateMainMenuFightObjectInitial(BattleInput *battleInput, int param1, int param2) {
     int battlerType = battleInput->menu.main.battlerType;
 
-    ov12_0226739C(battleInput, param1, param2);
+    BattleInput_CreateMainMenuFightObject(battleInput, param1, param2);
     BattleInput_InitMenuSlideIn(battleInput, battlerType);
 }
 
-void ov12_0226739C(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateMainMenuFightObject(BattleInput *battleInput, int param1, int param2) {
     int battlerType = battleInput->menu.main.battlerType;
 
-    ov12_02266F84(battleInput, param1, param2);
+    BattleInput_CreateMainMenuObjects(battleInput, param1, param2);
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
     FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 32, 8, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
-    sub_020137C0(battleInput->textObj[1].unk0, 0);
-    sub_020137C0(battleInput->textObj[2].unk0, 0);
-    sub_020137C0(battleInput->textObj[3].unk0, 0);
+    FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_BAG].fontOAM, 0);
+    FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_POKEMON].fontOAM, 0);
+    FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_RUN].fontOAM, 0);
 }
 
-void ov12_02267404(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreatePalParkMenuObjectsInitial(BattleInput *battleInput, int param1, int param2) {
     int battlerType = battleInput->menu.main.battlerType;
 
-    ov12_02267418(battleInput, param1, param2);
+    BattleInput_CreatePalParkMenuObjects(battleInput, param1, param2);
     BattleInput_InitMenuSlideIn(battleInput, battlerType);
 }
 
-void ov12_02267418(BattleInput *battleInput, int param1, int param2) {
+void BattleInput_CreatePalParkMenuObjects(BattleInput *battleInput, int param1, int param2) {
     int battlerType = battleInput->menu.main.battlerType;
 
-    ov12_02266F84(battleInput, param1, param2);
+    BattleInput_CreateMainMenuObjects(battleInput, param1, param2);
 
-    {
-        BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
+    BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-        FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 10, 8, 17);
-        FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0x16, 0x10, 10, 8, 17);
-        ScheduleBgTilemapBufferTransfer(bgConfig, 5);
-    }
+    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, 4, (0x6000 / 0x20 - 1), 0x16, 0x10, 10, 8, 17);
+    ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
-    sub_020137C0(battleInput->textObj[1].unk0, 0);
-    sub_020137C0(battleInput->textObj[2].unk0, 0);
+    FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_BAG].fontOAM, 0);
+    FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_POKEMON].fontOAM, 0);
 }
 
-void ov12_0226748C(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateFightMenuObjects(BattleInput *battleInput, int param1, int param2) {
     BattleInputFightMenu *fightMenu;
     int i;
     MsgData *msgLoader;
-    BattleInputMoveMemory *moveDisplay;
+    BattleInputMoveMemory *moveMemory;
     int ppColor;
 
     fightMenu = &battleInput->menu.fight;
     GF_ASSERT(fightMenu);
 
-    battleInput->unk6EE = fightMenu->battlerType;
+    battleInput->battlerType = fightMenu->battlerType;
 
     msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
-    moveDisplay = ov12_02268798(battleInput, fightMenu->battlerType);
+    moveMemory = BattleInput_GetMoveMemory(battleInput, fightMenu->battlerType);
 
-    ov12_02268AD0(battleInput);
+    BattleInput_CreateMoveTypeIcons(battleInput);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 45, 1, &moveDisplay->unkMove[0]);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 44, 1, &moveDisplay->unkMove[1]);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[2], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 108, 1, &moveDisplay->unkMove[2]);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[3], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 107, 1, &moveDisplay->unkMove[3]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_1], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 45, 1, &moveMemory->moveDisplay[0]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_2], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 44, 1, &moveMemory->moveDisplay[1]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_3], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 108, 1, &moveMemory->moveDisplay[2]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_4], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 107, 1, &moveMemory->moveDisplay[3]);
 
     for (i = 0; i < 4; i++) {
-        ppColor = ov12_02269504(fightMenu->pp[i], fightMenu->ppMax[i]);
-        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[9 + i], NULL, 0, ppColor, 4, 20023, ov12_0226E308[i][0], ov12_0226E308[i][1], 0, &moveDisplay->unkPp[i]);
-        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[5 + i], NULL, 0, ppColor, 4, 20023, ov12_0226E2C8[i][0], ov12_0226E2C8[i][1], 0, &moveDisplay->unkPpMax[i]);
+        ppColor = GetPPTextColor(fightMenu->pp[i], fightMenu->ppMax[i]);
+        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_PP_MAX_1 + i], NULL, 0, ppColor, 4, 20023, sMovePPMaxTextPositions[i][0], sMovePPMaxTextPositions[i][1], 0, &moveMemory->ppDisplay[i]);
+        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_PP_1 + i], NULL, 0, ppColor, 4, 20023, sMovePPTextPositions[i][0], sMovePPTextPositions[i][1], 0, &moveMemory->ppMaxDisplay[i]);
     }
 
     String *strCancel = NewString_ReadMsgData(msgLoader, 929); // CANCEL
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[4], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 175, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_CANCEL], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 175, 1, NULL);
     String_Delete(strCancel);
 
     int moveType;
@@ -1967,32 +2011,32 @@ void ov12_0226748C(BattleInput *battleInput, int param1, int param2) {
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    if (fightMenu->moveNo[0] == 0) {
-        sub_020137C0(battleInput->textObj[0].unk0, 0);
-        sub_020137C0(battleInput->textObj[5].unk0, 0);
-        sub_020137C0(battleInput->textObj[9].unk0, 0);
+    if (fightMenu->moveNo[0] == MOVE_NONE) {
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_MOVE_1].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_1].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_MAX_1].fontOAM, 0);
     }
 
-    if (fightMenu->moveNo[1] == 0) {
-        sub_020137C0(battleInput->textObj[1].unk0, 0);
-        sub_020137C0(battleInput->textObj[6].unk0, 0);
-        sub_020137C0(battleInput->textObj[10].unk0, 0);
+    if (fightMenu->moveNo[1] == MOVE_NONE) {
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_MOVE_2].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_2].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_MAX_2].fontOAM, 0);
     }
 
-    if (fightMenu->moveNo[2] == 0) {
-        sub_020137C0(battleInput->textObj[2].unk0, 0);
-        sub_020137C0(battleInput->textObj[7].unk0, 0);
-        sub_020137C0(battleInput->textObj[11].unk0, 0);
+    if (fightMenu->moveNo[2] == MOVE_NONE) {
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_MOVE_3].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_3].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_MAX_3].fontOAM, 0);
     }
 
-    if (fightMenu->moveNo[3] == 0) {
-        sub_020137C0(battleInput->textObj[3].unk0, 0);
-        sub_020137C0(battleInput->textObj[8].unk0, 0);
-        sub_020137C0(battleInput->textObj[12].unk0, 0);
+    if (fightMenu->moveNo[3] == MOVE_NONE) {
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_MOVE_4].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_4].fontOAM, 0);
+        FontOAM_SetDrawFlag(battleInput->textObj[MENUTXT_PP_MAX_4].fontOAM, 0);
     }
 }
 
-void ov12_02267760(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateYesNoMenuObjects(BattleInput *battleInput, int param1, int param2) {
     MsgData *msgLoader;
     String *strYes, *strNo;
 
@@ -2000,14 +2044,14 @@ void ov12_02267760(BattleInput *battleInput, int param1, int param2) {
     strYes = NewString_ReadMsgData(msgLoader, 940); // Yes
     strNo = NewString_ReadMsgData(msgLoader, 941);  // No
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strYes, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], strNo, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_YES], strYes, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_NO], strNo, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strYes);
     String_Delete(strNo);
 }
 
-void ov12_022677FC(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateKeepForgetMenuObjects(BattleInput *battleInput, int param1, int param2) {
     MsgData *msgLoader;
     String *strForget, *strKeep;
 
@@ -2015,39 +2059,39 @@ void ov12_022677FC(BattleInput *battleInput, int param1, int param2) {
     strForget = NewString_ReadMsgData(msgLoader, 1181); // Forget a move!
     strKeep = NewString_ReadMsgData(msgLoader, 1182);   // Keep old moves!
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strForget, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], strKeep, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FORGET_MOVE], strForget, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_MOVE], strKeep, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strForget);
     String_Delete(strKeep);
 }
 
-void ov12_0226789C(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateGiveUpOnMoveMenuObjects(BattleInput *battleInput, int param1, int param2) {
     MsgData *msgLoader;
-    String *strGiveUp, *strDontGiveUp, *strGiveUpFormated, *v4;
+    String *strGiveUp, *strDontGiveUp, *strGiveUpFormated, *strDontGiveUpFormated;
     MessageFormat *strTemplate;
-    BattleInputYesNoScreen *yesNoMenu = &battleInput->menu.yesNo;
+    BattleInputTwoOptionMenu *menu = &battleInput->menu.twoOption;
     msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
     strTemplate = BattleSystem_GetMessageFormat(battleInput->battleSystem);
     strGiveUp = NewString_ReadMsgData(msgLoader, 1186);     // Give up on {move}?
     strDontGiveUp = NewString_ReadMsgData(msgLoader, 1187); // Don't give up on {move}!
     strGiveUpFormated = String_New(100, HEAP_ID_BATTLE);
-    v4 = String_New(100, HEAP_ID_BATTLE);
+    strDontGiveUpFormated = String_New(100, HEAP_ID_BATTLE);
 
-    BufferMoveName(strTemplate, 0, yesNoMenu->moveNo);
+    BufferMoveName(strTemplate, 0, menu->moveNo);
     StringExpandPlaceholders(strTemplate, strGiveUpFormated, strGiveUp);
-    StringExpandPlaceholders(strTemplate, v4, strDontGiveUp);
+    StringExpandPlaceholders(strTemplate, strDontGiveUpFormated, strDontGiveUp);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strGiveUpFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], v4, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_GIVEUP], strGiveUpFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_DONT_GIVEUP], strDontGiveUpFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strGiveUp);
     String_Delete(strDontGiveUp);
     String_Delete(strGiveUpFormated);
-    String_Delete(v4);
+    String_Delete(strDontGiveUpFormated);
 }
 
-void ov12_02267984(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateVSRecorderPlaybackMenuObjects(BattleInput *battleInput, int param1, int param2) {
     MsgData *msgLoader;
     String *strStop;
 
@@ -2058,11 +2102,11 @@ void ov12_02267984(BattleInput *battleInput, int param1, int param2) {
 
     BgConfig *bgConfig;
     NNSG2dScreenData *screenData;
-    void *v4;
+    void *data;
 
-    v4 = GfGfxLoader_GetScrnData(NARC_a_0_0_7, 40, 1, &screenData, HEAP_ID_BATTLE);
+    data = GfGfxLoader_GetScrnData(NARC_a_0_0_7, 40, 1, &screenData, HEAP_ID_BATTLE);
     MI_CpuCopy32(screenData->rawData, battleInput->screenBuffer[6], 0x800);
-    FreeToHeap(v4);
+    FreeToHeap(data);
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     BG_LoadScreenTilemapData(bgConfig, 4, battleInput->screenBuffer[6], 0x800);
@@ -2078,126 +2122,124 @@ void ov12_02267984(BattleInput *battleInput, int param1, int param2) {
     String_Delete(strStop);
 }
 
-void ov12_02267A58(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateSwitchOrFleeMenuObjects(BattleInput *battleInput, int param1, int param2) {
     MsgData *msgLoader;
-    String *strNextPokemon, *strFlee, *strNextPokemonFormated, *v4;
+    String *strNextPokemon, *strFlee, *strNextPokemonFormated, *strFleeFormated;
     MessageFormat *strTemplate;
-    BattleInputYesNoScreen *v6;
+    BattleInputTwoOptionMenu *menu;
 
-    v6 = &battleInput->menu.yesNo;
+    menu = &battleInput->menu.twoOption;
     msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
     strTemplate = BattleSystem_GetMessageFormat(battleInput->battleSystem);
     strNextPokemon = NewString_ReadMsgData(msgLoader, 1217); // Use next Pokémon
     strFlee = NewString_ReadMsgData(msgLoader, 1218);        // Flee
     strNextPokemonFormated = String_New(100, HEAP_ID_BATTLE);
-    v4 = String_New(100, HEAP_ID_BATTLE);
+    strFleeFormated = String_New(100, HEAP_ID_BATTLE);
 
-    BufferMoveName(strTemplate, 0, v6->moveNo);
+    BufferMoveName(strTemplate, 0, menu->moveNo);
     StringExpandPlaceholders(strTemplate, strNextPokemonFormated, strNextPokemon);
-    StringExpandPlaceholders(strTemplate, v4, strFlee);
+    StringExpandPlaceholders(strTemplate, strFleeFormated, strFlee);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strNextPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], v4, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_USE_NEXT_MON], strNextPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FLEE], strFleeFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strNextPokemon);
     String_Delete(strFlee);
     String_Delete(strNextPokemonFormated);
-    String_Delete(v4);
+    String_Delete(strFleeFormated);
 }
 
-void ov12_02267B40(BattleInput *battleInput, int param1, int param2) {
+static void BattleInput_CreateSwitchOrKeepMenuObjects(BattleInput *battleInput, int param1, int param2) {
     MsgData *msgLoader;
-    String *strSwitchPokemon, *strKeepBattling, *strSwitchtPokemonFormated, *v4;
+    String *strSwitchPokemon, *strKeepBattling, *strSwitchPokemonFormated, *strKeepBattlingFormated;
     MessageFormat *strTemplate;
-    BattleInputYesNoScreen *v6;
+    BattleInputTwoOptionMenu *menu;
 
-    v6 = &battleInput->menu.yesNo;
+    menu = &battleInput->menu.twoOption;
     msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
     strTemplate = BattleSystem_GetMessageFormat(battleInput->battleSystem);
     strSwitchPokemon = NewString_ReadMsgData(msgLoader, 1215); // Switch Pokémon
     strKeepBattling = NewString_ReadMsgData(msgLoader, 1216);  // Keep battling
-    strSwitchtPokemonFormated = String_New(100, HEAP_ID_BATTLE);
-    v4 = String_New(100, HEAP_ID_BATTLE);
+    strSwitchPokemonFormated = String_New(100, HEAP_ID_BATTLE);
+    strKeepBattlingFormated = String_New(100, HEAP_ID_BATTLE);
 
-    BufferMoveName(strTemplate, 0, v6->moveNo);
-    StringExpandPlaceholders(strTemplate, strSwitchtPokemonFormated, strSwitchPokemon);
-    StringExpandPlaceholders(strTemplate, v4, strKeepBattling);
+    BufferMoveName(strTemplate, 0, menu->moveNo);
+    StringExpandPlaceholders(strTemplate, strSwitchPokemonFormated, strSwitchPokemon);
+    StringExpandPlaceholders(strTemplate, strKeepBattlingFormated, strKeepBattling);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strSwitchtPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1], v4, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_SWITCH], strSwitchPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_BATTLING], strKeepBattlingFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strSwitchPokemon);
     String_Delete(strKeepBattling);
-    String_Delete(strSwitchtPokemonFormated);
-    String_Delete(v4);
+    String_Delete(strSwitchPokemonFormated);
+    String_Delete(strKeepBattlingFormated);
 }
 
-void ov12_02267C24(BattleInput *battleInput, int param1, int param2) {
-    BattleInputTargetScreen *pokemonMenu;
+static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int param1, int param2) {
+    BattleInputTargetMenu *menu;
     int i;
     MsgData *msgLoader;
     u8 v3[4];
-    String *v4, *genderMarker;
+    String *strPokemonName, *strGenderMarker;
     Pokemon *pokemon;
     BoxPokemon *boxMon;
-    MessageFormat *stringTemplate;
-    int v9;
+    MessageFormat *messageFormat;
+    int monNameColor;
     u8 v10[6];
     u8 v11[6];
-    int v12;
+    int battlerId;
 
-    pokemonMenu = &battleInput->menu.target;
+    menu = &battleInput->menu.target;
 
-    battleInput->unk6F0 = pokemonMenu->selectionType;
-    battleInput->unk6EE = pokemonMenu->battlerType;
+    battleInput->monTargetType = menu->selectionType;
+    battleInput->battlerType = menu->battlerType;
 
     msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
-    stringTemplate = BattleSystem_GetMessageFormat(battleInput->battleSystem);
+    messageFormat = BattleSystem_GetMessageFormat(battleInput->battleSystem);
 
-    ov12_02268DD4(battleInput, v3, 0);
-    ov12_02268194(battleInput);
+    BattleInput_GetMonsHitArray(battleInput, v3, 0);
+    BattleInput_LoadPokemonIconResources(battleInput);
     ov12_022686BC(battleInput);
     ov12_0223C1C4(battleInput->battleSystem, v10);
     ov12_0223C1A0(battleInput->battleSystem, v11);
 
-    v4 = String_New((12 + 2 + (5 * 2)), HEAP_ID_BATTLE);
+    strPokemonName = String_New(24, HEAP_ID_BATTLE);
 
-    for (i = 0; i < 4; i++) {
-        v12 = v11[2 + i];
+    for (i = MENUTXT_MON_NAME_1; i < MENUTXT_MON_NAME_4 + 1; i++) {
+        battlerId = v11[2 + i];
 
-        if ((pokemonMenu->targetMons[v12].hide == 1) && (v3[i] == 1)) {
-            if (pokemonMenu->targetMons[v12].gender == 0) {
-                genderMarker = NewString_ReadMsgData(msgLoader, 962); // ♂
-            } else if (pokemonMenu->targetMons[v12].gender == 1) {
-                genderMarker = NewString_ReadMsgData(msgLoader, 963); // ♀
+        if ((menu->targetMons[battlerId].hide == 1) && (v3[i] == 1)) {
+            if (menu->targetMons[battlerId].gender == 0) {
+                strGenderMarker = NewString_ReadMsgData(msgLoader, 962); // ♂
+            } else if (menu->targetMons[battlerId].gender == 1) {
+                strGenderMarker = NewString_ReadMsgData(msgLoader, 963); // ♀
             } else {
-                genderMarker = NewString_ReadMsgData(msgLoader, 964); //(genderless)
+                strGenderMarker = NewString_ReadMsgData(msgLoader, 964); //(genderless)
             }
 
-            pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, v12, pokemonMenu->targetMons[v12].selectedMon);
+            pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, battlerId, menu->targetMons[battlerId].selectedMon);
             boxMon = Mon_GetBoxMon(pokemon);
 
-            BufferBoxMonNickname(stringTemplate, 0, boxMon);
-            StringExpandPlaceholders(stringTemplate, v4, genderMarker);
+            BufferBoxMonNickname(messageFormat, 0, boxMon);
+            StringExpandPlaceholders(messageFormat, strPokemonName, strGenderMarker);
 
             if (i & 1) {
-                v9 = MAKE_TEXT_COLOR(1, 2, 3);
+                monNameColor = MAKE_TEXT_COLOR(1, 2, 3); // Opponent
             } else {
-                v9 = MAKE_TEXT_COLOR(4, 5, 6);
+                monNameColor = MAKE_TEXT_COLOR(4, 5, 6); // Ally
             }
 
-            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0 + i], v4, 4, v9, 6, 20023, ov12_0226E370[i][0], ov12_0226E370[i][1], 1, NULL);
-            String_Delete(genderMarker);
+            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[i], strPokemonName, 4, monNameColor, 6, 20023, sTargetPokemonMenuPositions[i][0], sTargetPokemonMenuPositions[i][1], 1, NULL);
+            String_Delete(strGenderMarker);
 
-            {
-                switch (i) {
-                case 1:
-                    ov12_022682BC(battleInput, pokemon, 3, pokemonMenu->targetMons[v12].hp, pokemonMenu->targetMons[v12].hpMax, pokemonMenu->targetMons[v12].status);
-                    break;
-                case 3:
-                    ov12_022682BC(battleInput, pokemon, 5, pokemonMenu->targetMons[v12].hp, pokemonMenu->targetMons[v12].hpMax, pokemonMenu->targetMons[v12].status);
-                    break;
-                }
+            switch (i) {
+            case 1:
+                BattleInput_SetPokemonIcon(battleInput, pokemon, 3, menu->targetMons[battlerId].hp, menu->targetMons[battlerId].hpMax, menu->targetMons[battlerId].status);
+                break;
+            case 3:
+                BattleInput_SetPokemonIcon(battleInput, pokemon, 5, menu->targetMons[battlerId].hp, menu->targetMons[battlerId].hpMax, menu->targetMons[battlerId].status);
+                break;
             }
         } else {
             if (v3[i] == 0) {
@@ -2206,239 +2248,235 @@ void ov12_02267C24(BattleInput *battleInput, int param1, int param2) {
         }
     }
 
-    String_Delete(v4);
+    String_Delete(strPokemonName);
 
     String *strCancel = NewString_ReadMsgData(msgLoader, 930); // CANCEL
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[4], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, ov12_0226E370[4][0], ov12_0226E370[4][1], 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_TARGET_CANCEL], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][0], sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][1], 1, NULL);
     String_Delete(strCancel);
 }
 
-int ov12_02267E14(BattleInput *battleInput, int param1, int param2) {
+static int BattleInput_TouchCallback_MainMenu(BattleInput *battleInput, int touchInput, int unused) {
     int textObjId, frameType, battler;
 
     battler = 0xff;
 
-    switch (param1) {
-    case 0xffffffff:
+    switch (touchInput) {
+    case TOUCH_MENU_NO_INPUT:
     default:
-        return param1;
-    case 1:
-        textObjId = 0;
+        return touchInput;
+    case BATTLE_INPUT_FIGHT:
+        textObjId = MENUTXT_FIGHT;
         frameType = 0;
 
-        switch (battleInput->unk6EE) {
+        switch (battleInput->battlerType) {
         case 0:
-            battler = battleInput->unk6EE;
+            battler = battleInput->battlerType;
             break;
         case 2:
         case 4:
-            battler = battleInput->unk6EE - 2;
+            battler = battleInput->battlerType - 2;
             break;
         }
         break;
-    case 2:
-        textObjId = 1;
+    case BATTLE_INPUT_BAG:
+        textObjId = MENUTXT_BAG;
         frameType = 1;
         break;
-    case 3:
-        textObjId = 2;
+    case BATTLE_INPUT_POKEMON:
+        textObjId = MENUTXT_POKEMON;
         frameType = 1;
         break;
-    case 4:
-        textObjId = 3;
+    case BATTLE_INPUT_RUN:
+        textObjId = MENUTXT_RUN;
         frameType = 1;
         break;
     }
 
-    ov12_02268EE0(battleInput, param2);
-    ov12_02268E84(ov12_02268F58, battleInput);
+    BattleInput_Deadstriped_02268EE0(battleInput, unused);
+    BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
-    battleInput->unk700.unk.unk4 = ov12_0226E3D8[param1 - 1];
-    battleInput->unk700.unk.unk8 = &ov12_0226E318[param1 - 1];
-    battleInput->unk700.unk.unk10 = 1;
-    battleInput->unk700.unk.ret = param1;
-    battleInput->unk700.unk.unk11 = textObjId;
-    battleInput->unk700.unk.unk12 = battler;
-    battleInput->unk700.unk.unk13 = frameType;
-    battleInput->unk700.unk.pos = ov12_0226E2D8[param1 - 1];
-    battleInput->unk700.unk.unk14 = 1;
+    battleInput->feedback.button.screenOffsets = sMainMenuButtonsScreenOffsets[touchInput - 1];
+    battleInput->feedback.button.unk8 = &sMainMenuButtonsTouchscreenRect[touchInput - 1];
+    battleInput->feedback.button.unk10 = 1;
+    battleInput->feedback.button.ret = touchInput;
+    battleInput->feedback.button.textObjId = textObjId;
+    battleInput->feedback.button.pokemonIconIndex = battler;
+    battleInput->feedback.button.frameType = frameType;
+    battleInput->feedback.button.pos = ov12_0226E2D8[touchInput - 1];
+    battleInput->feedback.button.shouldDeleteAfter = TRUE;
 
-    return param1;
+    return touchInput;
 }
 
-
-
-int ov12_02267EF0(BattleInput *battleInput, int param1, int param2) {
-    BattleInputFightMenu *moveMenu;
-    u32 v2;
+static int BattleInput_TouchCallback_FightMenu(BattleInput *battleInput, int touchInput, int unusedParam) {
+    BattleInputFightMenu *menu;
+    u32 unused;
     const s16 *offsets;
     const void *touchscreenRect;
 
-    if (param1 == 0xffffffff) {
-        return param1;
+    if (touchInput == TOUCH_MENU_NO_INPUT) {
+        return touchInput;
     }
 
-    moveMenu = &battleInput->menu.fight;
+    menu = &battleInput->menu.fight;
 
-    if ((param1 >= 1) && (param1 <= 4)) {
-        if (moveMenu->moveNo[param1 - 1] == 0) {
-            return 0xffffffff;
+    if ((touchInput >= BATTLE_INPUT_MOVE_1) && (touchInput <= BATTLE_INPUT_MOVE_4)) {
+        if (menu->moveNo[touchInput - 1] == MOVE_NONE) {
+            return TOUCH_MENU_NO_INPUT;
         }
     }
 
-    v2 = param1 - 1;
+    unused = touchInput - 1; // required to match
 
-    switch (param1) {
-    case 0xffffffff:
+    switch (touchInput) {
+    case TOUCH_MENU_NO_INPUT:
     default:
-        return 0xffffffff;
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-        offsets = ov12_0226E428[param1 - 1];
-        touchscreenRect = &ov12_0226E398[param1 - 1];
+        return TOUCH_MENU_NO_INPUT;
+    case BATTLE_INPUT_MOVE_1:
+    case BATTLE_INPUT_MOVE_2:
+    case BATTLE_INPUT_MOVE_3:
+    case BATTLE_INPUT_MOVE_4:
+        offsets = sFightMenuButtonsScreenOffsets[touchInput - 1];
+        touchscreenRect = &sFightMenuButtonsTouchscreenRect[touchInput - 1];
         break;
-    case 0xff:
-        offsets = ov12_0226E428[4];
-        touchscreenRect = &ov12_0226E398[4];
+    case BATTLE_INPUT_CANCEL:
+        offsets = sFightMenuButtonsScreenOffsets[4];
+        touchscreenRect = &sFightMenuButtonsTouchscreenRect[4];
         break;
     }
 
-    ov12_02268EE0(battleInput, param2);
-    ov12_02268E84(ov12_022690A8, battleInput);
+    BattleInput_Deadstriped_02268EE0(battleInput, unusedParam);
+    BattleInput_StartFeedbackTask(Task_FightMenuButtonFeedback, battleInput);
 
-    battleInput->unk700.unk.unk4 = offsets;
-    battleInput->unk700.unk.unk8 = touchscreenRect;
-    battleInput->unk700.unk.unk10 = 3;
-    battleInput->unk700.unk.ret = param1;
-    battleInput->unk700.unk.unk14 = 1;
+    battleInput->feedback.button.screenOffsets = offsets;
+    battleInput->feedback.button.unk8 = touchscreenRect;
+    battleInput->feedback.button.unk10 = 3;
+    battleInput->feedback.button.ret = touchInput;
+    battleInput->feedback.button.shouldDeleteAfter = TRUE;
 
-    return param1;
+    return touchInput;
 }
 
-int ov12_02267FA0(BattleInput *battleInput, int param1, int param2) {
+static int BattleInput_TouchCallback_TwoOptionMenu(BattleInput *battleInput, int touchInput, int unused) {
     int textObjId;
 
-    switch (param1) {
-    case 0xffffffff:
+    switch (touchInput) {
+    case TOUCH_MENU_NO_INPUT:
     default:
-        return param1;
-    case 1:
-        textObjId = 0;
+        return touchInput;
+    case BATTLE_INPUT_YES:
+        textObjId = MENUTXT_YES;
         break;
-    case 0xff:
-        textObjId = 1;
+    case BATTLE_INPUT_CANCEL:
+        textObjId = MENUTXT_NO;
         break;
     }
 
-    ov12_02268EE0(battleInput, param2);
-    ov12_02268E84(ov12_02268F58, battleInput);
+    BattleInput_Deadstriped_02268EE0(battleInput, unused);
+    BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
-    if (param1 == 1) {
-        battleInput->unk700.unk.unk4 = ov12_0226E286[1];
-        battleInput->unk700.unk.unk8 = &ov12_0226E24C[1];
+    if (touchInput == BATTLE_INPUT_YES) {
+        battleInput->feedback.button.screenOffsets = ov12_0226E286[1];
+        battleInput->feedback.button.unk8 = &ov12_0226E24C[1];
     } else {
-        battleInput->unk700.unk.unk4 = ov12_0226E286[0];
-        battleInput->unk700.unk.unk8 = &ov12_0226E24C[0];
+        battleInput->feedback.button.screenOffsets = ov12_0226E286[0];
+        battleInput->feedback.button.unk8 = &ov12_0226E24C[0];
     }
 
-    battleInput->unk700.unk.unk10 = 6;
-    battleInput->unk700.unk.ret = param1;
-    battleInput->unk700.unk.unk11 = textObjId;
-    battleInput->unk700.unk.unk13 = 3;
-    battleInput->unk700.unk.unk14 = 1;
+    battleInput->feedback.button.unk10 = 6;
+    battleInput->feedback.button.ret = touchInput;
+    battleInput->feedback.button.textObjId = textObjId;
+    battleInput->feedback.button.frameType = 3;
+    battleInput->feedback.button.shouldDeleteAfter = TRUE;
 
-    return param1;
+    return touchInput;
 }
 
-int ov12_02268024(BattleInput *battleInput, int param1, int param2) {
-    BattleInputTargetScreen *pokemonMenu;
+static int BattleInput_TouchCallback_TargetMenu(BattleInput *battleInput, int touchInput, int unused) {
+    BattleInputTargetMenu *menu;
     u8 moveRange[4];
 
-    pokemonMenu = &battleInput->menu.target;
+    menu = &battleInput->menu.target;
 
-    ov12_02268DD4(battleInput, moveRange, 1);
+    BattleInput_GetMonsHitArray(battleInput, moveRange, 1);
 
-    switch (param1) {
-    case -1:
+    switch (touchInput) {
+    case TOUCH_MENU_NO_INPUT:
     default:
-        return param1;
-    case 1:
-        if (moveRange[2 - 2] == 0) {
-            return -1;
+        return touchInput;
+    case BATTLE_INPUT_MOVE_1:
+        if (moveRange[0] == 0) {
+            return TOUCH_MENU_NO_INPUT;
         }
         break;
-    case 2:
-        if (moveRange[3 - 2] == 0) {
-            return -1;
+    case BATTLE_INPUT_MOVE_2:
+        if (moveRange[1] == 0) {
+            return TOUCH_MENU_NO_INPUT;
         }
         break;
-    case 3:
-        if (moveRange[4 - 2] == 0) {
-            return -1;
+    case BATTLE_INPUT_MOVE_3:
+        if (moveRange[2] == 0) {
+            return TOUCH_MENU_NO_INPUT;
         }
         break;
-    case 4:
-        if (moveRange[5 - 2] == 0) {
-            return -1;
+    case BATTLE_INPUT_MOVE_4:
+        if (moveRange[3] == 0) {
+            return TOUCH_MENU_NO_INPUT;
         }
         break;
-    case 0xff:
-        ov12_02268EE0(battleInput, 4);
-        ov12_02268E84(ov12_02268F58, battleInput);
+    case BATTLE_INPUT_CANCEL:
+        BattleInput_Deadstriped_02268EE0(battleInput, 4);
+        BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
-        battleInput->unk700.unk.unk4 = ov12_0226E408[4];
-        battleInput->unk700.unk.unk8 = &ov12_0226E348[4];
-        battleInput->unk700.unk.unk10 = 4;
-        battleInput->unk700.unk.ret = param1;
-        battleInput->unk700.unk.unk11 = 4;
-        battleInput->unk700.unk.unk13 = 3;
-        battleInput->unk700.unk.unk14 = 1;
+        battleInput->feedback.button.screenOffsets = sTargetMenuButtonsScreenOffsets[4];
+        battleInput->feedback.button.unk8 = &ov12_0226E348[4];
+        battleInput->feedback.button.unk10 = 4;
+        battleInput->feedback.button.ret = touchInput;
+        battleInput->feedback.button.textObjId = 4;
+        battleInput->feedback.button.frameType = 3;
+        battleInput->feedback.button.shouldDeleteAfter = TRUE;
 
-        return param1;
+        return touchInput;
     }
 
-    {
-        BgConfig *bgConfig;
+    BgConfig *bgConfig;
 
-        bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
-        BgFillTilemapBufferAndCommit(bgConfig, 5, (0x6000 / 0x20 - 1));
-        ScheduleBgTilemapBufferTransfer(bgConfig, 5);
-    }
+    bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
+    BgFillTilemapBufferAndCommit(bgConfig, 5, (0x6000 / 0x20 - 1));
+    ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
-    ov12_02268EDC(battleInput, param1);
-    ov12_02268E84(ov12_02269360, battleInput);
+    BattleInput_Deadstriped_02268EDC(battleInput, touchInput);
+    BattleInput_StartFeedbackTask(Task_TargetMenuButtonFeedback, battleInput);
 
-    battleInput->unk700.monSelect.ret = param1;
+    battleInput->feedback.monSelect.ret = touchInput;
 
-    return param1;
+    return touchInput;
 }
 
-int ov12_02268130(BattleInput *battleInput, int param1, int param2) {
-    switch (param1) {
-    case 0xffffffff:
+static int BattleInput_TouchCallback_VSRecorderMenu(BattleInput *battleInput, int touchInput, int unused) {
+    switch (touchInput) {
+    case TOUCH_MENU_NO_INPUT:
     default:
-        return param1;
+        return touchInput;
     case 1:
         break;
     }
 
-    ov12_02268EE0(battleInput, param2);
-    ov12_02268E84(ov12_02268F58, battleInput);
+    BattleInput_Deadstriped_02268EE0(battleInput, unused);
+    BattleInput_StartFeedbackTask(Task_ButtonFeedback, battleInput);
 
-    battleInput->unk700.unk.unk4 = ov12_0226E228;
-    battleInput->unk700.unk.unk8 = &ov12_0226E20C;
-    battleInput->unk700.unk.unk10 = 6;
-    battleInput->unk700.unk.ret = param1;
-    battleInput->unk700.unk.unk11 = 0;
-    battleInput->unk700.unk.unk13 = 3;
-    battleInput->unk700.unk.unk14 = 0;
+    battleInput->feedback.button.screenOffsets = ov12_0226E228;
+    battleInput->feedback.button.unk8 = &ov12_0226E20C;
+    battleInput->feedback.button.unk10 = 6;
+    battleInput->feedback.button.ret = touchInput;
+    battleInput->feedback.button.textObjId = 0;
+    battleInput->feedback.button.frameType = 3;
+    battleInput->feedback.button.shouldDeleteAfter = FALSE;
 
-    return param1;
+    return touchInput;
 }
 
-void ov12_02268194(BattleInput *battleInput) {
+static void BattleInput_LoadPokemonIconResources(BattleInput *battleInput) {
     SpriteSystem *spriteSystem;
     SpriteManager *spriteManager;
     PaletteData *palette;
@@ -2452,7 +2490,7 @@ void ov12_02268194(BattleInput *battleInput) {
     SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, sub_020744A4(), 0, 20021);
 }
 
-void ov12_02268214(BattleInput *battleInput) {
+static void BattleInput_FreePokemonIconResources(BattleInput *battleInput) {
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
     SpriteManager_UnloadCharObjById(spriteManager, 20036);
@@ -2463,31 +2501,31 @@ void ov12_02268214(BattleInput *battleInput) {
     SpriteManager_UnloadPlttObjById(spriteManager, 20022);
 }
 
-void ov12_02268264(BattleInput *battleInput) {
+static void BattleInput_DeletePokemonIconSprites(BattleInput *battleInput) {
     int i;
 
     for (i = 0; i < 4; i++) {
-        if (battleInput->unk6C0[i] != NULL) {
-            Sprite_DeleteAndFreeResources(battleInput->unk6C0[i]);
-            battleInput->unk6C0[i] = NULL;
+        if (battleInput->spritePokemonIcons[i] != NULL) {
+            Sprite_DeleteAndFreeResources(battleInput->spritePokemonIcons[i]);
+            battleInput->spritePokemonIcons[i] = NULL;
         }
 
-        if (battleInput->unk6D0[i] != NULL) {
-            SysTask_Destroy(battleInput->unk6D0[i]);
-            battleInput->unk6D0[i] = NULL;
+        if (battleInput->taskAnimatePokemonIcon[i] != NULL) {
+            SysTask_Destroy(battleInput->taskAnimatePokemonIcon[i]);
+            battleInput->taskAnimatePokemonIcon[i] = NULL;
         }
     }
 
-    if (battleInput->unk_6EC != NULL) {
-        Sprite_DeleteAndFreeResources(battleInput->unk_6EC);
-        battleInput->unk_6EC = NULL;
+    if (battleInput->spriteCaughtBugIcon != NULL) {
+        Sprite_DeleteAndFreeResources(battleInput->spriteCaughtBugIcon);
+        battleInput->spriteCaughtBugIcon = NULL;
     }
 }
 
-ManagedSprite *ov12_022682BC(BattleInput *battleInput, Pokemon *pokemon, int battlerType, int hp, int maxHp, int status) {
+static ManagedSprite *BattleInput_SetPokemonIcon(BattleInput *battleInput, Pokemon *pokemon, int battlerType, int hp, int maxHp, int status) {
     SpriteSystem *spriteSystem;
     SpriteManager *spriteManager;
-    u32 v2;
+    u32 resId;
     ManagedSpriteTemplate spriteTemplate;
     ManagedSprite *sprite;
     int battler;
@@ -2498,20 +2536,20 @@ ManagedSprite *ov12_022682BC(BattleInput *battleInput, Pokemon *pokemon, int bat
         battler = battlerType;
     }
 
-    GF_ASSERT(battleInput->unk6C0[battler] == 0);
-    GF_ASSERT(battleInput->unk6D0[battler] == 0);
+    GF_ASSERT(battleInput->spritePokemonIcons[battler] == 0);
+    GF_ASSERT(battleInput->taskAnimatePokemonIcon[battler] == 0);
 
     switch (battlerType) {
     case BATTLER_TYPE_SOLO_PLAYER:
     case BATTLER_TYPE_PLAYER_SIDE_SLOT_1:
     case BATTLER_TYPE_PLAYER_SIDE_SLOT_2:
-        v2 = 20036;
+        resId = 20036;
         break;
     case BATTLER_TYPE_ENEMY_SIDE_SLOT_1:
-        v2 = 20037;
+        resId = 20037;
         break;
     case BATTLER_TYPE_ENEMY_SIDE_SLOT_2:
-        v2 = 20038;
+        resId = 20038;
         break;
     default:
         GF_ASSERT(0);
@@ -2521,54 +2559,52 @@ ManagedSprite *ov12_022682BC(BattleInput *battleInput, Pokemon *pokemon, int bat
     spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
-    SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, Pokemon_GetIconNaix(pokemon), 0, NNS_G2D_VRAM_TYPE_2DSUB, v2);
+    SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, Pokemon_GetIconNaix(pokemon), 0, NNS_G2D_VRAM_TYPE_2DSUB, resId);
 
     spriteTemplate = ov12_0226E4E4;
-    spriteTemplate.resIdList[0] = v2;
-    spriteTemplate.x = ov12_0226E328[battler][0];
-    spriteTemplate.y = ov12_0226E328[battler][1];
+    spriteTemplate.resIdList[0] = resId;
+    spriteTemplate.x = sPokemonIconPositions[battler][0];
+    spriteTemplate.y = sPokemonIconPositions[battler][1];
     sprite = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
 
-    ManagedSprite_SetPositionXYWithSubscreenOffset(sprite, spriteTemplate.x, spriteTemplate.y, ((192 + 80) << FX32_SHIFT));
+    ManagedSprite_SetPositionXYWithSubscreenOffset(sprite, spriteTemplate.x, spriteTemplate.y, (272 << FX32_SHIFT));
     Sprite_SetPalOffsetRespectVramOffset(sprite->sprite, Pokemon_GetIconPalette(pokemon));
 
-    {
-        int v6 = 0;
+    int anim = 0;
 
-        if ((hp == 0) || (status == 2)) {
-            v6 = 0;
-        } else if (status == 3) {
-            v6 = 5;
-        } else {
-            switch (CalculateHpBarColor(hp, maxHp, (8 * 6))) {
-            case 4:
-                v6 = 1;
-                break;
-            case 3:
-                v6 = 2;
-                break;
-            case 2:
-                v6 = 3;
-                break;
-            case 1:
-                v6 = 4;
-                break;
-            }
-
-            ManagedSprite_SetAnim(sprite, v6);
+    if ((hp == 0) || (status == 2)) {
+        anim = 0;
+    } else if (status == 3) {
+        anim = 5;
+    } else {
+        switch (CalculateHpBarColor(hp, maxHp, 48)) {
+        case 4:
+            anim = 1;
+            break;
+        case 3:
+            anim = 2;
+            break;
+        case 2:
+            anim = 3;
+            break;
+        case 1:
+            anim = 4;
+            break;
         }
+
+        ManagedSprite_SetAnim(sprite, anim);
     }
 
     ManagedSprite_TickFrame(sprite);
 
-    battleInput->unk6C0[battler] = sprite;
-    battleInput->unk6D0[battler] = SysTask_CreateOnMainQueue(ov12_022684EC, sprite, 1300);
+    battleInput->spritePokemonIcons[battler] = sprite;
+    battleInput->taskAnimatePokemonIcon[battler] = SysTask_CreateOnMainQueue(Task_AnimatePokemonIconSprite, sprite, 1300);
 
     return sprite;
 }
 
-ManagedSprite *ov12_02268440(BattleInput *battleInput, Pokemon *pokemon) {
-    GF_ASSERT(battleInput->unk_6EC == 0);
+static ManagedSprite *BattleInput_SetBugContestPokemonIcon(BattleInput *battleInput, Pokemon *pokemon) {
+    GF_ASSERT(battleInput->spriteCaughtBugIcon == 0);
 
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
@@ -2587,15 +2623,15 @@ ManagedSprite *ov12_02268440(BattleInput *battleInput, Pokemon *pokemon) {
 
     ManagedSprite_TickFrame(sprite);
 
-    battleInput->unk_6EC = sprite;
+    battleInput->spriteCaughtBugIcon = sprite;
     return sprite;
 }
 
-void ov12_022684EC(SysTask *task, void *data) {
+static void Task_AnimatePokemonIconSprite(SysTask *task, void *data) {
     ManagedSprite_TickFrame((ManagedSprite *)data);
 }
 
-int ov12_022684F8(u8 task) {
+static int ov12_022684F8(u8 task) {
     int animationState;
 
     switch (task) {
@@ -2617,21 +2653,21 @@ int ov12_022684F8(u8 task) {
     return animationState;
 }
 
-void ov12_02268520(String *str, u32 fontId, int *widthOut, int *charWidthOut) {
-    int width, charWidth;
+static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut) {
+    int length, charLength;
 
-    width = FontID_String_GetWidth(fontId, str, 0);
-    charWidth = width / 8;
+    length = FontID_String_GetWidth(fontId, str, 0);
+    charLength = length / 8;
 
-    if (FX_ModS32(width, 8) != 0) {
-        charWidth++;
+    if (FX_ModS32(length, 8) != 0) {
+        charLength++;
     }
 
-    *widthOut = width;
-    *charWidthOut = charWidth;
+    *lengthOut = length;
+    *charLengthOut = charLength;
 }
 
-void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int param5, int param6, int x, int y, int param9, BattleInput_UnkSub54_Unk28 *param10) {
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
     FontOAMInitData fontInit;
     Window window;
     UnkStruct_02021AC8 charTransferAlloc;
@@ -2639,23 +2675,23 @@ void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObjec
     FontOAM *fontOAM;
     BgConfig *bgConfig;
     SpriteManager *spriteManager;
-    int v7, v8;
+    int fontLength, charLength;
 
-    GF_ASSERT(textObj->unk0 == NULL);
+    GF_ASSERT(textObj->fontOAM == NULL);
 
     spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
     if (param10 == NULL) {
-        ov12_02268520(str, fontId, &v7, &v8);
+        String_GetFontLength(str, fontId, &fontLength, &charLength);
     } else {
-        v7 = param10->unkE;
-        v8 = param10->unkC;
+        fontLength = param10->fontLength;
+        charLength = param10->charLength;
     }
 
     if (param10 == NULL) {
         InitWindow(&window);
-        AddTextWindowTopLeftCorner(bgConfig, &window, v8, 16 / 8, 0, 0);
+        AddTextWindowTopLeftCorner(bgConfig, &window, charLength, 16 / 8, 0, 0);
         AddTextPrinterParameterizedWithColorAndSpacing(&window, fontId, str, 0, 0, 0xFF, textColor, 0, 0, NULL);
     } else {
         window = param10->window;
@@ -2664,79 +2700,79 @@ void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObjec
     size = sub_02013688(&window, NNS_G2D_VRAM_TYPE_2DSUB, 5);
     sub_02021AC8(size, 1, NNS_G2D_VRAM_TYPE_2DSUB, &charTransferAlloc);
 
-    if (param9 == 1) {
-        x -= v7 / 2;
+    if (centerText == 1) {
+        x -= fontLength / 2;
     }
 
-    y += (((192 + 80) << FX32_SHIFT) >> FX32_SHIFT) - 8;
+    y += ((272 << FX32_SHIFT) >> FX32_SHIFT) - 8;
 
-    fontInit.unk_00 = battleInput->fontSystem;
-    fontInit.unk_04 = &window;
-    fontInit.unk_08 = SpriteManager_GetSpriteList(spriteManager);
-    fontInit.unk_0C = SpriteManager_FindPlttResourceProxy(spriteManager, param6);
+    fontInit.fontSystem = battleInput->fontSystem;
+    fontInit.window = &window;
+    fontInit.spriteList = SpriteManager_GetSpriteList(spriteManager);
+    fontInit.imagePaletteProxy = SpriteManager_FindPlttResourceProxy(spriteManager, palId);
     fontInit.unk_10 = NULL;
-    fontInit.unk_14 = charTransferAlloc.offset;
-    fontInit.unk_18 = x;
-    fontInit.unk_1C = y;
+    fontInit.offset = charTransferAlloc.offset;
+    fontInit.x = x;
+    fontInit.y = y;
     fontInit.unk_20 = 0;
     fontInit.unk_24 = 100;
-    fontInit.unk_28 = NNS_G2D_VRAM_TYPE_2DSUB;
+    fontInit.vram = NNS_G2D_VRAM_TYPE_2DSUB;
     fontInit.unk_2C = 5;
 
     fontOAM = sub_020135D8(&fontInit);
 
-    sub_020138E0(fontOAM, param5);
+    sub_020138E0(fontOAM, palOffset);
     sub_020136B4(fontOAM, x, y);
 
     if (param10 == NULL) {
         RemoveWindow(&window);
     }
 
-    textObj->unk0 = fontOAM;
+    textObj->fontOAM = fontOAM;
     textObj->unk4 = charTransferAlloc;
-    textObj->unk20 = v7;
+    textObj->fontLength = fontLength;
 }
 
-void ov12_02268684(BattleInput *battleInput) {
+static void BattleInput_DeleteTextObjects(BattleInput *battleInput) {
     for (int i = 0; i < 13; i++) {
-        if (battleInput->textObj[i].unk0 != NULL) {
-            sub_02013660(battleInput->textObj[i].unk0);
+        if (battleInput->textObj[i].fontOAM != NULL) {
+            FontOAM_Delete(battleInput->textObj[i].fontOAM);
             sub_02021B5C(&battleInput->textObj[i].unk4);
-            battleInput->textObj[i].unk0 = NULL;
+            battleInput->textObj[i].fontOAM = NULL;
         }
     }
 }
 
-void ov12_022686BC(BattleInput *battleInput) {
+static void ov12_022686BC(BattleInput *battleInput) {
     u8 moveRange[4], hitsMultiple[4];
     int j, i;
-    u16 *src, *v5;
+    u16 *src, *dest;
     BgConfig *bgConfig;
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     src = GetBgTilemapBuffer(bgConfig, 5);
 
-    ov12_02268DD4(battleInput, moveRange, 0);
+    BattleInput_GetMonsHitArray(battleInput, moveRange, 0);
 
     if (moveRange[0] == 1) {
         ov12_02268E2C(battleInput, 1, hitsMultiple, 0);
 
-        if (hitsMultiple[3 - 1] == 1) {
+        if (hitsMultiple[2] == 1) {
             for (i = 12; i <= 16; i++) {
-                v5 = &src[i * 32];
+                dest = &src[i * 32];
 
-                for (j = 0xf; j <= 0x10; j++) {
-                    v5[j] = 0x2a4;
+                for (j = 15; j <= 16; j++) {
+                    dest[j] = 676;
                 }
             }
         }
 
-        if (hitsMultiple[4 - 1] == 1) {
+        if (hitsMultiple[3] == 1) {
             for (i = 10; i <= 10; i++) {
-                v5 = &src[i * 32];
+                dest = &src[i * 32];
 
                 for (j = 2; j <= 12; j++) {
-                    v5[j] = 0x2a4;
+                    dest[j] = 676;
                 }
             }
         }
@@ -2745,161 +2781,161 @@ void ov12_022686BC(BattleInput *battleInput) {
     if (moveRange[1] == 1) {
         ov12_02268E2C(battleInput, 2, hitsMultiple, 0);
 
-        if (hitsMultiple[3 - 1] == 1) {
+        if (hitsMultiple[2] == 1) {
             for (i = 10; i <= 10; i++) {
-                v5 = &src[i * 32];
+                dest = &src[i * 32];
 
-                for (j = 0x13; j <= 0x1d; j++) {
-                    v5[j] = 0x2a4;
+                for (j = 19; j <= 29; j++) {
+                    dest[j] = 676;
                 }
             }
         }
 
-        if (hitsMultiple[4 - 1] == 1) {
+        if (hitsMultiple[3] == 1) {
             for (i = 3; i <= 7; i++) {
-                v5 = &src[i * 32];
+                dest = &src[i * 32];
 
-                for (j = 0xf; j <= 0x10; j++) {
-                    v5[j] = 0x2a4;
+                for (j = 15; j <= 16; j++) {
+                    dest[j] = 676;
                 }
             }
         }
     }
 }
 
-BattleInputMoveMemory *ov12_02268798(BattleInput *battleInput, int battlerId) {
-    if (battlerId >= 2) {
-        battlerId -= 2;
+static BattleInputMoveMemory *BattleInput_GetMoveMemory(BattleInput *battleInput, int battlerType) {
+    if (battlerType >= 2) {
+        battlerType -= 2;
     }
 
-    return &battleInput->unk54[battlerId];
+    return &battleInput->moveMemory[battlerType];
 }
 
-void ov12_022687AC(BattleInput *battleInput) {
+static void BattleInput_FreeMoveMemory(BattleInput *battleInput) {
     int j, i;
 
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 4; j++) {
-            FreeToHeap(battleInput->unk54[i].typeIcon[j]);
+            FreeToHeap(battleInput->moveMemory[i].typeIcon[j]);
 
-            if (battleInput->unk54[i].unkMove[j].window.pixelBuffer != NULL) {
-                RemoveWindow(&battleInput->unk54[i].unkMove[j].window);
+            if (battleInput->moveMemory[i].moveDisplay[j].window.pixelBuffer != NULL) {
+                RemoveWindow(&battleInput->moveMemory[i].moveDisplay[j].window);
             }
 
-            if (battleInput->unk54[i].unkPp[j].window.pixelBuffer != NULL) {
-                RemoveWindow(&battleInput->unk54[i].unkPp[j].window);
+            if (battleInput->moveMemory[i].ppDisplay[j].window.pixelBuffer != NULL) {
+                RemoveWindow(&battleInput->moveMemory[i].ppDisplay[j].window);
             }
 
-            if (battleInput->unk54[i].unkPpMax[j].window.pixelBuffer != NULL) {
-                RemoveWindow(&battleInput->unk54[i].unkPpMax[j].window);
+            if (battleInput->moveMemory[i].ppMaxDisplay[j].window.pixelBuffer != NULL) {
+                RemoveWindow(&battleInput->moveMemory[i].ppMaxDisplay[j].window);
             }
         }
     }
 }
 
-void ov12_0226885C(BattleInput *battleInput, int battlerId, const BattleInputMove *moveDisplay) {
+void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, const BattleInputMove *moveMemory) {
     BattleInputMoveMemory *moveDisplayObj;
     void *charData;
     NNSG2dCharacterData *charDataNNS;
-    int i, v3, moveType;
-    String *moveName;
-    String *v7;
-    String *v8;
-    String *v9;
-    void *v10;
+    int i, size, moveType;
+    String *strMoveName;
+    String *strSlashFormatted;
+    String *strSlash;
+    String *strPP;
+    MessageFormat *messageFormat;
     int ppColor;
-    MsgData *v12;
+    MsgData *msgLoader;
 
-    v12 = BattleSystem_GetMessageLoader(battleInput->battleSystem);
-    moveDisplayObj = ov12_02268798(battleInput, battlerId);
-    v3 = sub_0208805C(6);
-    v9 = NewString_ReadMsgData(v12, 938); // PP
-    v10 = BattleSystem_GetMessageFormat(battleInput->battleSystem);
-    v7 = String_New(((2 + 2 + 1 + 2) * 2 + 2), HEAP_ID_BATTLE);
-    v8 = NewString_ReadMsgData(v12, 937); // '/'
+    msgLoader = BattleSystem_GetMessageLoader(battleInput->battleSystem);
+    moveDisplayObj = BattleInput_GetMoveMemory(battleInput, battlerId);
+    size = sub_0208805C(6);
+    strPP = NewString_ReadMsgData(msgLoader, 938); // PP
+    messageFormat = BattleSystem_GetMessageFormat(battleInput->battleSystem);
+    strSlashFormatted = String_New(((2 + 2 + 1 + 2) * 2 + 2), HEAP_ID_BATTLE);
+    strSlash = NewString_ReadMsgData(msgLoader, 937); // '/'
 
     for (i = 0; i < 4; i++) {
-        if ((moveDisplay->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveDisplay->moveNo[i] != 0)) {
-            moveType = GetMoveAttr(moveDisplay->moveNo[i], MOVEATTR_TYPE);
+        if ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0)) {
+            moveType = GetMoveAttr(moveMemory->moveNo[i], MOVEATTR_TYPE);
             charData = GfGfxLoader_GetCharData(sub_020776B4(), sub_02077678(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
-            MI_CpuCopy32(charDataNNS->pRawData, moveDisplayObj->typeIcon[i], v3);
+            MI_CpuCopy32(charDataNNS->pRawData, moveDisplayObj->typeIcon[i], size);
             FreeToHeap(charData);
         }
 
-        if ((moveDisplayObj->unkMove[i].window.pixelBuffer == NULL) || ((moveDisplay->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveDisplay->moveNo[i] != 0))) {
-            moveName = GetMoveName(moveDisplay->moveNo[i], HEAP_ID_BATTLE);
-            ov12_02268A64(battleInput, moveName, 4, &moveDisplayObj->unkMove[i], MAKE_TEXT_COLOR(7, 8, 9));
-            String_Delete(moveName);
+        if ((moveDisplayObj->moveDisplay[i].window.pixelBuffer == NULL) || ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0))) {
+            strMoveName = GetMoveName(moveMemory->moveNo[i], HEAP_ID_BATTLE);
+            BattleInput_SetMoveDisplayObjectTextFont(battleInput, strMoveName, 4, &moveDisplayObj->moveDisplay[i], MAKE_TEXT_COLOR(7, 8, 9));
+            String_Delete(strMoveName);
         }
 
-        if ((moveDisplayObj->unkPp[i].window.pixelBuffer == NULL) || (moveDisplayObj->unkPpMax[i].window.pixelBuffer == NULL) || (moveDisplay->moveNo[i] != 0) || (moveDisplay->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveDisplay->pp[i] != moveDisplayObj->move.pp[i]) || (moveDisplay->ppMax[i] != moveDisplayObj->move.ppMax[i])) {
-            BufferIntegerAsString(v10, 0, moveDisplay->pp[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
-            BufferIntegerAsString(v10, 1, moveDisplay->ppMax[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
-            StringExpandPlaceholders(v10, v7, v8);
+        if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != 0) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i]) || (moveMemory->ppMax[i] != moveDisplayObj->move.ppMax[i])) {
+            BufferIntegerAsString(messageFormat, 0, moveMemory->pp[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
+            BufferIntegerAsString(messageFormat, 1, moveMemory->ppMax[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
+            StringExpandPlaceholders(messageFormat, strSlashFormatted, strSlash);
 
-            ppColor = ov12_02269504(moveDisplay->pp[i], moveDisplay->ppMax[i]);
+            ppColor = GetPPTextColor(moveMemory->pp[i], moveMemory->ppMax[i]);
 
-            if ((moveDisplayObj->unkPp[i].window.pixelBuffer == NULL) || (moveDisplay->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveDisplay->pp[i] != moveDisplayObj->move.pp[i])) {
-                ov12_02268A64(battleInput, v7, 0, &moveDisplayObj->unkPp[i], ppColor);
+            if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i])) {
+                BattleInput_SetMoveDisplayObjectTextFont(battleInput, strSlashFormatted, 0, &moveDisplayObj->ppDisplay[i], ppColor);
             }
 
-            if ((moveDisplayObj->unkPpMax[i].window.pixelBuffer == NULL) || (moveDisplay->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveDisplay->pp[i] != moveDisplayObj->move.pp[i])) {
-                ov12_02268A64(battleInput, v9, 0, &moveDisplayObj->unkPpMax[i], ppColor);
+            if ((moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i])) {
+                BattleInput_SetMoveDisplayObjectTextFont(battleInput, strPP, 0, &moveDisplayObj->ppMaxDisplay[i], ppColor);
             }
         }
     }
 
-    String_Delete(v9);
-    String_Delete(v8);
-    String_Delete(v7);
+    String_Delete(strPP);
+    String_Delete(strSlash);
+    String_Delete(strSlashFormatted);
 
-    moveDisplayObj->move = *moveDisplay;
+    moveDisplayObj->move = *moveMemory;
 }
 
-void ov12_02268A64(BattleInput *battleInput, String *moveName, u32 param2, BattleInput_UnkSub54_Unk28 *param3, int textColor) {
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
     int length, charLength;
 
-    ov12_02268520(moveName, param2, &length, &charLength);
+    String_GetFontLength(str, fontId, &length, &charLength);
 
-    param3->unkE = length;
-    param3->unkC = charLength;
+    display->fontLength = length;
+    display->charLength = charLength;
 
-    if (param3->window.pixelBuffer != NULL) {
-        RemoveWindow(&param3->window);
+    if (display->window.pixelBuffer != NULL) {
+        RemoveWindow(&display->window);
     }
 
-    InitWindow(&param3->window);
-    AddTextWindowTopLeftCorner(BattleSystem_GetBgConfig(battleInput->battleSystem), &param3->window, charLength, 16 / 8, 0, 0);
-    AddTextPrinterParameterizedWithColorAndSpacing(&param3->window, param2, moveName, 0, 0, 0xFF, textColor, 0, 0, NULL);
+    InitWindow(&display->window);
+    AddTextWindowTopLeftCorner(BattleSystem_GetBgConfig(battleInput->battleSystem), &display->window, charLength, 16 / 8, 0, 0);
+    AddTextPrinterParameterizedWithColorAndSpacing(&display->window, fontId, str, 0, 0, 0xFF, textColor, 0, 0, NULL);
 }
 
-void ov12_02268AD0(BattleInput *battleInput) {
+static void BattleInput_CreateMoveTypeIcons(BattleInput *battleInput) {
     int i;
     SpriteSystem *renderer;
     SpriteManager *spriteManager;
     ManagedSpriteTemplate typeIconTemplate;
-    BattleInputFightMenu *moveMenu;
+    BattleInputFightMenu *menu;
     int type;
     BattleInputMoveMemory *moveDisplayObj;
 
-    moveMenu = &battleInput->menu.fight;
+    menu = &battleInput->menu.fight;
     renderer = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
-    moveDisplayObj = ov12_02268798(battleInput, battleInput->unk6EE);
+    moveDisplayObj = BattleInput_GetMoveMemory(battleInput, battleInput->battlerType);
     typeIconTemplate = ov12_0226E4B0;
 
     for (i = 0; i < 4; i++) {
         GF_ASSERT(battleInput->spriteTypeIcons[i] == 0);
 
-        if (moveMenu->moveNo[i] != 0) {
-            type = GetMoveAttr(moveMenu->moveNo[i], MOVEATTR_TYPE);
+        if (menu->moveNo[i] != 0) {
+            type = GetMoveAttr(menu->moveNo[i], MOVEATTR_TYPE);
             typeIconTemplate.resIdList[0] = 20025 + i;
-            typeIconTemplate.x = ov12_0226E2B8[i][0];
-            typeIconTemplate.y = ov12_0226E2B8[i][1];
+            typeIconTemplate.x = sTypeIconPositions[i][0];
+            typeIconTemplate.y = sTypeIconPositions[i][1];
 
             battleInput->spriteTypeIcons[i] = sub_020777C8(renderer, spriteManager, type, &typeIconTemplate);
 
-            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteTypeIcons[i], typeIconTemplate.x, typeIconTemplate.y, ((192 + 80) << FX32_SHIFT));
+            ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteTypeIcons[i], typeIconTemplate.x, typeIconTemplate.y, (272 << FX32_SHIFT));
 
             NNSG2dImageProxy *proxy = Sprite_GetImageProxy(battleInput->spriteTypeIcons[i]->sprite);
 
@@ -2908,7 +2944,7 @@ void ov12_02268AD0(BattleInput *battleInput) {
     }
 }
 
-void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput) {
+static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput) {
     int i;
     SpriteSystem *renderer = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
@@ -2921,7 +2957,7 @@ void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput) {
     }
 }
 
-void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput) {
+static void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput) {
     int i;
     SpriteSystem *renderer;
     SpriteManager *spriteManager;
@@ -2938,12 +2974,11 @@ void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput) {
     }
 }
 
-void ov12_02268C30(BattleInput *battleInput, int moveType, int movePos) {
+static void ov12_02268C30(BattleInput *battleInput, int moveType, int movePos) {
     ov06_0221BA1C(BattleSystem_GetPaletteData(battleInput->battleSystem), moveType, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 8 + movePos);
 }
 
-
-void ov12_02268C4C(BattleInput *battleInput, int movePos) {
+static void ov12_02268C4C(BattleInput *battleInput, int movePos) {
     PaletteData *palette;
     int i;
 
@@ -2955,34 +2990,34 @@ void ov12_02268C4C(BattleInput *battleInput, int movePos) {
     }
 }
 
-void ov12_02268CA0(BattleInput *battleInput, int param1) {
+static void ov12_02268CA0(BattleInput *battleInput, int textObjId) {
     PaletteData *palette;
-    const u8 paletteNo[] ={ 6, 12, 13, 5 };
+    const u8 paletteNo[] = { 6, 12, 13, 5 };
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
 
-    ov12_02268EE4(battleInput, &ov12_0226E238[param1], &ov12_0226E2F8[param1], 4, 0);
+    ov12_02268EE4(battleInput, &ov12_0226E238[textObjId], &ov12_0226E2F8[textObjId], 4, 0);
 
-    PaletteData_LoadPalette(palette, &battleInput->paletteBuffer[0xe * 16], PLTTBUF_SUB_BG, paletteNo[param1] * 16, 0x20);
+    PaletteData_LoadPalette(palette, &battleInput->paletteBuffer[0xe * 16], PLTTBUF_SUB_BG, paletteNo[textObjId] * 16, 0x20);
     ScheduleBgTilemapBufferTransfer(bgConfig, 4);
-    FillBgTilemapRect(bgConfig, 5, (0x6000 / 0x20 - 1), ov12_0226E2F8[param1].rect.left, ov12_0226E2F8[param1].rect.top, ov12_0226E2F8[param1].rect.right - ov12_0226E2F8[param1].rect.left + 1, ov12_0226E2F8[param1].rect.bottom - ov12_0226E2F8[param1].rect.top + 1, 17);
+    FillBgTilemapRect(bgConfig, 5, (0x6000 / 0x20 - 1), ov12_0226E2F8[textObjId].rect.left, ov12_0226E2F8[textObjId].rect.top, ov12_0226E2F8[textObjId].rect.right - ov12_0226E2F8[textObjId].rect.left + 1, ov12_0226E2F8[textObjId].rect.bottom - ov12_0226E2F8[textObjId].rect.top + 1, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 }
 
-void ov12_02268D5C(void) {
+static void ov12_02268D5C(void) {
     for (int i = 0; i < 4; i++) {
-        if (4 + i != 6) {
-            ToggleBgLayer(4 + i, 0);
+        if (GF_BG_LYR_SUB_0 + i != GF_BG_LYR_SUB_2) {
+            ToggleBgLayer(GF_BG_LYR_SUB_0 + i, GF_PLANE_TOGGLE_OFF);
         } else {
-            ToggleBgLayer(4 + i, 1);
+            ToggleBgLayer(GF_BG_LYR_SUB_0 + i, GF_PLANE_TOGGLE_ON);
         }
     }
 }
 
-void ov12_02268D88(BattleInput *battleInput, int param1, int param2) {
+static void ov12_02268D88(BattleInput *battleInput, int param1, int param2) {
     if (param1 == 1) {
-        ov12_02268DAC(battleInput);
+        BattleInput_FreePersistentResources(battleInput);
     }
 
     if (param2 == 1) {
@@ -2990,285 +3025,284 @@ void ov12_02268D88(BattleInput *battleInput, int param1, int param2) {
     }
 }
 
-void ov12_02268DAC(BattleInput *battleInput) {
+static void BattleInput_FreePersistentResources(BattleInput *battleInput) {
     BattleInput_DeleteAndFreeTypeIconGraphics(battleInput);
     BattleInput_DeleteAndFreeCategoryIconGraphics(battleInput);
-    ov12_02268684(battleInput);
-    ov12_02268214(battleInput);
-    ov12_02268264(battleInput);
-    ov12_0226AD60(battleInput);
+    BattleInput_DeleteTextObjects(battleInput);
+    BattleInput_FreePokemonIconResources(battleInput);
+    BattleInput_DeletePokemonIconSprites(battleInput);
+    BattleInput_DeleteBugContestGraphics(battleInput);
 }
 
-
-void ov12_02268DD4(BattleInput *battleInput, u8 *param1, int param2) {
-    BattleInputTargetScreen *pokemonMenu;
+static void BattleInput_GetMonsHitArray(BattleInput *battleInput, u8 *monsHit, int checkMonExists) {
+    BattleInputTargetMenu *menu;
     int i;
     u8 battlerIdBuffer[6];
-    int v3;
+    int battlerId;
 
-    pokemonMenu = &battleInput->menu.target;
+    menu = &battleInput->menu.target;
     ov12_0223C1A0(battleInput->battleSystem, battlerIdBuffer);
 
     for (i = 0; i < 4; i++) {
-        v3 = battlerIdBuffer[2 + i];
+        battlerId = battlerIdBuffer[2 + i];
 
-        if ((param2 == 1) && (pokemonMenu->targetMons[v3].hide == 0)) {
-            param1[i] = 0;
+        if ((checkMonExists == TRUE) && (menu->targetMons[battlerId].hide == FALSE)) {
+            monsHit[i] = 0;
         } else {
-            param1[i] = ov12_0226E64C[battleInput->unk6F0][i];
+            monsHit[i] = sMoveRangeHitMons[battleInput->monTargetType][i];
         }
     }
 }
 
-void ov12_02268E2C(BattleInput *battleInput, int param1, u8 *param2, int param3) {
-    BattleInputTargetScreen *pokemonMenu;
+static void ov12_02268E2C(BattleInput *battleInput, int param1, u8 *monsHit, int checkExists) {
+    BattleInputTargetMenu *menu;
     int i;
 
-    pokemonMenu = &battleInput->menu.target;
+    menu = &battleInput->menu.target;
 
-    switch (battleInput->unk6F0) {
-    case 0:
-    case 8:
-    case 9:
-    case 10:
-    case 11:
+    switch (battleInput->monTargetType) {
+    case TARGET_ANY:
+    case TARGET_ANY_NOT_PLAYER_LEFT:
+    case TARGET_ANY_NOT_PLAYER_RIGHT:
+    case TARGET_ANY_ALLY:
+    case TARGET_ANY_OPPONENT:
         for (i = 0; i < 4; i++) {
             if (i == param1 - 1) {
-                param2[i] = 1;
+                monsHit[i] = 1;
             } else {
-                param2[i] = 0;
+                monsHit[i] = 0;
             }
         }
         break;
     default:
-        ov12_02268DD4(battleInput, param2, param3);
+        BattleInput_GetMonsHitArray(battleInput, monsHit, checkExists);
         break;
     }
 }
 
-void ov12_02268E84(SysTaskFunc task, BattleInput *battleInput) {
-    GF_ASSERT(battleInput->unkC == NULL);
+static void BattleInput_StartFeedbackTask(SysTaskFunc task, BattleInput *battleInput) {
+    GF_ASSERT(battleInput->feedbackTask == NULL);
 
-    MI_CpuClear8(&battleInput->unk700, sizeof(BattleInputFeedback));
-    battleInput->unkC = SysTask_CreateOnMainQueue(task, battleInput, 1300);
+    MI_CpuClear8(&battleInput->feedback, sizeof(BattleInputFeedback));
+    battleInput->feedbackTask = SysTask_CreateOnMainQueue(task, battleInput, 1300);
 }
 
-void ov12_02268EB8(BattleInput *battleInput) {
-    if (battleInput->unkC != NULL) {
-        SysTask_Destroy(battleInput->unkC);
-        battleInput->unkC = NULL;
-        MI_CpuClear8(&battleInput->unk700, sizeof(BattleInputFeedback));
+static void BattleInput_DestroyFeedbackTask(BattleInput *battleInput) {
+    if (battleInput->feedbackTask != NULL) {
+        SysTask_Destroy(battleInput->feedbackTask);
+        battleInput->feedbackTask = NULL;
+        MI_CpuClear8(&battleInput->feedback, sizeof(BattleInputFeedback));
     }
 }
 
-void ov12_02268EDC(BattleInput *battleInput, int a1) {
+static void BattleInput_Deadstriped_02268EDC(BattleInput *battleInput, int touchInput) {
 }
 
-void ov12_02268EE0(BattleInput *battleInput, int a1) {
+static void BattleInput_Deadstriped_02268EE0(BattleInput *battleInput, int unused) {
 }
 
-void ov12_02268EE4(BattleInput *battleInput, const s16 *param1, const TouchscreenHitbox *hitbox, int param3, int param4) {
-    int j, i;
+static void ov12_02268EE4(BattleInput *battleInput, const s16 *offsets, const TouchscreenHitbox *hitbox, int bufferIndex, int offsetIndex) {
+    int x, y;
     BgConfig *bgConfig;
-    u16 *src, *v4;
-    u16 *v5, *v6;
-    int v7;
+    u16 *src, *dest;
+    u16 *screenBuffer, *writeBuffer;
+    int offset;
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     src = GetBgTilemapBuffer(bgConfig, 4);
-    v5 = battleInput->screenBuffer[param3];
-    v7 = param1[param4];
+    screenBuffer = battleInput->screenBuffer[bufferIndex];
+    offset = offsets[offsetIndex];
 
-    for (i = hitbox->rect.top; i <= hitbox->rect.bottom; i++) {
-        v4 = &src[i * 32];
-        v6 = &v5[i * 32];
+    for (y = hitbox->rect.top; y <= hitbox->rect.bottom; y++) {
+        dest = &src[y * 32];
+        writeBuffer = &screenBuffer[y * 32];
 
-        for (j = hitbox->rect.left; j <= hitbox->rect.right; j++) {
-            v4[j] = v6[j] + v7;
+        for (x = hitbox->rect.left; x <= hitbox->rect.right; x++) {
+            dest[x] = writeBuffer[x] + offset;
         }
     }
 
     ScheduleBgTilemapBufferTransfer(bgConfig, 4);
 }
 
-void ov12_02268F58(SysTask *task, void *data) {
+static void Task_ButtonFeedback(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     int x, y;
 
-    switch (battleInput->unk700.state) {
+    switch (battleInput->feedback.state) {
     case 0:
-        ov12_02268EE4(battleInput, battleInput->unk700.unk.unk4, battleInput->unk700.unk.unk8, battleInput->unk700.unk.unk10, 2);
-        sub_02013794(battleInput->textObj[battleInput->unk700.unk.unk11].unk0, &x, &y);
-        sub_020136B4(battleInput->textObj[battleInput->unk700.unk.unk11].unk0, x, y + -2);
+        // Button down
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 2);
+        sub_02013794(battleInput->textObj[battleInput->feedback.button.textObjId].fontOAM, &x, &y);
+        sub_020136B4(battleInput->textObj[battleInput->feedback.button.textObjId].fontOAM, x, y - 2);
 
-        if ((battleInput->unk700.unk.unk12 != 0xff) && (battleInput->unk6C0[battleInput->unk700.unk.unk12] != NULL)) {
-            ManagedSprite_OffsetPositionXY(battleInput->unk6C0[battleInput->unk700.unk.unk12], 0, -2);
+        if ((battleInput->feedback.button.pokemonIconIndex != 0xFF) && (battleInput->spritePokemonIcons[battleInput->feedback.button.pokemonIconIndex] != NULL)) {
+            ManagedSprite_OffsetPositionXY(battleInput->spritePokemonIcons[battleInput->feedback.button.pokemonIconIndex], 0, -2);
         }
 
-        battleInput->unk700.state++;
+        battleInput->feedback.state++;
         break;
     case 1:
-        battleInput->unk700.delay++;
+        // Wait until animation is finished
+        battleInput->feedback.delay++;
 
-        if (battleInput->unk700.delay <= 0) {
+        if (battleInput->feedback.delay <= 0) {
             break;
         }
 
-        battleInput->unk700.delay = 0;
-        battleInput->unk700.state++;
+        battleInput->feedback.delay = 0;
+        battleInput->feedback.state++;
+        // fallthrough
     case 2:
-        ov12_02268EE4(battleInput, battleInput->unk700.unk.unk4, battleInput->unk700.unk.unk8, battleInput->unk700.unk.unk10, 1);
-        sub_02013794(battleInput->textObj[battleInput->unk700.unk.unk11].unk0, &x, &y);
-        sub_020136B4(battleInput->textObj[battleInput->unk700.unk.unk11].unk0, x, y + 1);
+        // Button up
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 1);
+        sub_02013794(battleInput->textObj[battleInput->feedback.button.textObjId].fontOAM, &x, &y);
+        sub_020136B4(battleInput->textObj[battleInput->feedback.button.textObjId].fontOAM, x, y + 1);
 
-        if ((battleInput->unk700.unk.unk12 != 0xff) && (battleInput->unk6C0[battleInput->unk700.unk.unk12] != NULL)) {
-            ManagedSprite_OffsetPositionXY(battleInput->unk6C0[battleInput->unk700.unk.unk12], 0, 1);
+        if ((battleInput->feedback.button.pokemonIconIndex != 0xFF) && (battleInput->spritePokemonIcons[battleInput->feedback.button.pokemonIconIndex] != NULL)) {
+            ManagedSprite_OffsetPositionXY(battleInput->spritePokemonIcons[battleInput->feedback.button.pokemonIconIndex], 0, 1);
         }
 
-        battleInput->unk700.state++;
+        battleInput->feedback.state++;
         break;
     default:
-        battleInput->unk700.delay++;
+        // Finish task
+        battleInput->feedback.delay++;
 
-        if (battleInput->unk700.delay > 0) {
-            ov12_02268D88(battleInput, battleInput->unk700.unk.unk14, 0);
-            ov12_02268EB8(battleInput);
+        if (battleInput->feedback.delay > 0) {
+            ov12_02268D88(battleInput, battleInput->feedback.button.shouldDeleteAfter, 0);
+            BattleInput_DestroyFeedbackTask(battleInput);
             return;
         }
         break;
     }
 }
 
-void ov12_022690A8(SysTask *task, void *data) {
+static void Task_FightMenuButtonFeedback(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     BgConfig *bgConfig;
     int x, y;
-    int v4, v5, v6;
-    int v7, v8, moveNo;
-    BattleInputFightMenu *v10;
+    int moveTextObjId, ppMaxTextObjId, ppTextObjId;
+    int spriteIndex, moveNo;
+    BattleInputFightMenu *menu;
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
-    v10 = &battleInput->menu.fight;
+    menu = &battleInput->menu.fight;
 
-    switch (battleInput->unk700.unk.ret) {
-    case 1:
-        v4 = 0;
-        v5 = 9;
-        v6 = 5;
-        v7 = 0;
-        v8 = 0;
-        moveNo = v10->moveNo[0];
+    switch (battleInput->feedback.button.ret) {
+    case BATTLE_INPUT_MOVE_1:
+        moveTextObjId = MENUTXT_MOVE_1;
+        ppMaxTextObjId = MENUTXT_PP_MAX_1;
+        ppTextObjId = MENUTXT_PP_1;
+        spriteIndex = 0;
+        moveNo = menu->moveNo[0];
         break;
-    case 2:
-        v4 = 1;
-        v5 = 10;
-        v6 = 6;
-        v7 = 1;
-        v8 = 1;
-        moveNo = v10->moveNo[1];
+    case BATTLE_INPUT_MOVE_2:
+        moveTextObjId = 1;
+        ppMaxTextObjId = MENUTXT_PP_MAX_2;
+        ppTextObjId = MENUTXT_PP_2;
+        spriteIndex = 1;
+        moveNo = menu->moveNo[1];
         break;
-    case 3:
-        v4 = 2;
-        v5 = 11;
-        v6 = 7;
-        v7 = 2;
-        v8 = 2;
-        moveNo = v10->moveNo[2];
+    case BATTLE_INPUT_MOVE_3:
+        moveTextObjId = 2;
+        ppMaxTextObjId = MENUTXT_PP_MAX_3;
+        ppTextObjId = MENUTXT_PP_3;
+        spriteIndex = 2;
+        moveNo = menu->moveNo[2];
         break;
-    case 4:
-        v4 = 3;
-        v5 = 12;
-        v6 = 8;
-        v7 = 3;
-        v8 = 3;
-        moveNo = v10->moveNo[3];
+    case BATTLE_INPUT_MOVE_4:
+        moveTextObjId = 3;
+        ppMaxTextObjId = MENUTXT_PP_MAX_4;
+        ppTextObjId = MENUTXT_PP_4;
+        spriteIndex = 3;
+        moveNo = menu->moveNo[3];
         break;
-    case 0xff:
+    case BATTLE_INPUT_CANCEL:
     default:
-        v4 = 0;
-        v5 = 0;
-        v6 = 0;
-        v7 = 0;
-        v8 = 0;
+        moveTextObjId = 0;
+        ppMaxTextObjId = 0;
+        ppTextObjId = 0;
+        spriteIndex = 0;
         moveNo = 0;
         break;
     }
 
-    switch (battleInput->unk700.state) {
+    switch (battleInput->feedback.state) {
     case 0:
-        ov12_02268EE4(battleInput, battleInput->unk700.unk.unk4, battleInput->unk700.unk.unk8, battleInput->unk700.unk.unk10, 2);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 2);
 
-        if (battleInput->unk700.unk.ret != 0xff) {
-            sub_02013794(battleInput->textObj[v4].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[v4].unk0, x, y + -2);
-            sub_02013794(battleInput->textObj[v5].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[v5].unk0, x, y + -2);
-            sub_02013794(battleInput->textObj[v6].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[v6].unk0, x, y + -2);
+        if (battleInput->feedback.button.ret != BATTLE_INPUT_CANCEL) {
+            sub_02013794(battleInput->textObj[moveTextObjId].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[moveTextObjId].fontOAM, x, y - 2);
+            sub_02013794(battleInput->textObj[ppMaxTextObjId].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[ppMaxTextObjId].fontOAM, x, y - 2);
+            sub_02013794(battleInput->textObj[ppTextObjId].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[ppTextObjId].fontOAM, x, y - 2);
 
-            if (moveNo != 0) {
-                Sprite_OffsetPositionXY(battleInput->spriteTypeIcons[v7]->sprite, 0, -2);
+            if (moveNo != MOVE_NONE) {
+                Sprite_OffsetPositionXY(battleInput->spriteTypeIcons[spriteIndex]->sprite, 0, -2);
 
-                if (battleInput->spriteCategoryIcons[v7] != NULL) {
-                    Sprite_OffsetPositionXY(battleInput->spriteCategoryIcons[v7]->sprite, 0, -2);
+                if (battleInput->spriteCategoryIcons[spriteIndex] != NULL) {
+                    Sprite_OffsetPositionXY(battleInput->spriteCategoryIcons[spriteIndex]->sprite, 0, -2);
                 }
             }
         } else {
-            sub_02013794(battleInput->textObj[4].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[4].unk0, x, y + -2);
+            sub_02013794(battleInput->textObj[4].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[4].fontOAM, x, y - 2);
         }
 
-        battleInput->unk700.state++;
+        battleInput->feedback.state++;
         break;
     case 1:
-        battleInput->unk700.delay++;
+        battleInput->feedback.delay++;
 
-        if (battleInput->unk700.delay <= 0) {
+        if (battleInput->feedback.delay <= 0) {
             break;
         }
 
-        battleInput->unk700.delay = 0;
-        battleInput->unk700.state++;
+        battleInput->feedback.delay = 0;
+        battleInput->feedback.state++;
     case 2:
-        ov12_02268EE4(battleInput, battleInput->unk700.unk.unk4, battleInput->unk700.unk.unk8, battleInput->unk700.unk.unk10, 1);
+        ov12_02268EE4(battleInput, battleInput->feedback.button.screenOffsets, battleInput->feedback.button.unk8, battleInput->feedback.button.unk10, 1);
 
-        if (battleInput->unk700.unk.ret != 0xff) {
-            sub_02013794(battleInput->textObj[v4].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[v4].unk0, x, y + 1);
-            sub_02013794(battleInput->textObj[v5].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[v5].unk0, x, y + 1);
-            sub_02013794(battleInput->textObj[v6].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[v6].unk0, x, y + 1);
+        if (battleInput->feedback.button.ret != 0xff) {
+            sub_02013794(battleInput->textObj[moveTextObjId].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[moveTextObjId].fontOAM, x, y + 1);
+            sub_02013794(battleInput->textObj[ppMaxTextObjId].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[ppMaxTextObjId].fontOAM, x, y + 1);
+            sub_02013794(battleInput->textObj[ppTextObjId].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[ppTextObjId].fontOAM, x, y + 1);
 
             if (moveNo != 0) {
-                Sprite_OffsetPositionXY(battleInput->spriteTypeIcons[v7]->sprite, 0, 1);
+                Sprite_OffsetPositionXY(battleInput->spriteTypeIcons[spriteIndex]->sprite, 0, 1);
 
-                if (battleInput->spriteCategoryIcons[v7] != NULL) {
-                    Sprite_OffsetPositionXY(battleInput->spriteCategoryIcons[v7]->sprite, 0, 1);
+                if (battleInput->spriteCategoryIcons[spriteIndex] != NULL) {
+                    Sprite_OffsetPositionXY(battleInput->spriteCategoryIcons[spriteIndex]->sprite, 0, 1);
                 }
             }
         } else {
-            sub_02013794(battleInput->textObj[4].unk0, &x, &y);
-            sub_020136B4(battleInput->textObj[4].unk0, x, y + 1);
+            sub_02013794(battleInput->textObj[4].fontOAM, &x, &y);
+            sub_020136B4(battleInput->textObj[4].fontOAM, x, y + 1);
         }
 
-        battleInput->unk700.state++;
+        battleInput->feedback.state++;
         break;
     default:
-        battleInput->unk700.delay++;
+        battleInput->feedback.delay++;
 
-        if (battleInput->unk700.delay > 0) {
-            ov12_02268EE4(battleInput, battleInput->unk700.unkBugContest.unk4, battleInput->unk700.unkBugContest.unk8, battleInput->unk700.unk.unk10, 0);
+        if (battleInput->feedback.delay > 0) {
+            ov12_02268EE4(battleInput, battleInput->feedback.unkBugContest.unk4, battleInput->feedback.unkBugContest.unk8, battleInput->feedback.button.unk10, 0);
             ov12_02268D88(battleInput, 1, 1);
-            ov12_02268EB8(battleInput);
+            BattleInput_DestroyFeedbackTask(battleInput);
             return;
         }
         break;
     }
 }
 
-void ov12_02269360(SysTask *task, void *data) {
+static void Task_TargetMenuButtonFeedback(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     BgConfig *bgConfig;
     int i, x, y;
@@ -3276,72 +3310,72 @@ void ov12_02269360(SysTask *task, void *data) {
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    switch (battleInput->unk700.state) {
+    switch (battleInput->feedback.state) {
     case 0:
-        ov12_02268E2C(battleInput, battleInput->unk700.monSelect.ret, v4, 1);
+        ov12_02268E2C(battleInput, battleInput->feedback.monSelect.ret, v4, 1);
 
         for (i = 0; i < 4; i++) {
             if (v4[i] == 1) {
-                ov12_02268EE4(battleInput, ov12_0226E408[i], &ov12_0226E348[i], 4, 2);
+                ov12_02268EE4(battleInput, sTargetMenuButtonsScreenOffsets[i], &ov12_0226E348[i], 4, 2);
 
-                if (battleInput->textObj[0 + i].unk0 != 0) {
-                    sub_02013794(battleInput->textObj[0 + i].unk0, &x, &y);
-                    sub_020136B4(battleInput->textObj[0 + i].unk0, x, y + -2);
+                if (battleInput->textObj[0 + i].fontOAM != 0) {
+                    sub_02013794(battleInput->textObj[0 + i].fontOAM, &x, &y);
+                    sub_020136B4(battleInput->textObj[0 + i].fontOAM, x, y + -2);
                 }
 
-                if (battleInput->unk6C0[i] != 0) {
-                    ManagedSprite_OffsetPositionXY(battleInput->unk6C0[i], 0, -2);
+                if (battleInput->spritePokemonIcons[i] != 0) {
+                    ManagedSprite_OffsetPositionXY(battleInput->spritePokemonIcons[i], 0, -2);
                 }
             }
         }
 
-        battleInput->unk700.state++;
+        battleInput->feedback.state++;
         break;
     case 1:
-        battleInput->unk700.delay++;
+        battleInput->feedback.delay++;
 
-        if (battleInput->unk700.delay <= 0) {
+        if (battleInput->feedback.delay <= 0) {
             break;
         }
 
-        battleInput->unk700.delay = 0;
-        battleInput->unk700.state++;
+        battleInput->feedback.delay = 0;
+        battleInput->feedback.state++;
     case 2:
-        ov12_02268E2C(battleInput, battleInput->unk700.monSelect.ret, v4, 1);
+        ov12_02268E2C(battleInput, battleInput->feedback.monSelect.ret, v4, 1);
 
         for (i = 0; i < 4; i++) {
             if (v4[i] == 1) {
-                ov12_02268EE4(battleInput, ov12_0226E408[i], &ov12_0226E348[i], 4, 1);
+                ov12_02268EE4(battleInput, sTargetMenuButtonsScreenOffsets[i], &ov12_0226E348[i], 4, 1);
 
-                if (battleInput->textObj[0 + i].unk0 != 0) {
-                    sub_02013794(battleInput->textObj[0 + i].unk0, &x, &y);
-                    sub_020136B4(battleInput->textObj[0 + i].unk0, x, y + 1);
+                if (battleInput->textObj[0 + i].fontOAM != 0) {
+                    sub_02013794(battleInput->textObj[0 + i].fontOAM, &x, &y);
+                    sub_020136B4(battleInput->textObj[0 + i].fontOAM, x, y + 1);
                 }
 
-                if (battleInput->unk6C0[i] != 0) {
-                    ManagedSprite_OffsetPositionXY(battleInput->unk6C0[i], 0, 1);
+                if (battleInput->spritePokemonIcons[i] != 0) {
+                    ManagedSprite_OffsetPositionXY(battleInput->spritePokemonIcons[i], 0, 1);
                 }
             }
         }
 
-        battleInput->unk700.state++;
+        battleInput->feedback.state++;
         break;
     case 3:
-        battleInput->unk700.delay++;
+        battleInput->feedback.delay++;
 
-        if (battleInput->unk700.delay > 0) {
-            battleInput->unk700.delay = 0;
-            battleInput->unk700.state++;
+        if (battleInput->feedback.delay > 0) {
+            battleInput->feedback.delay = 0;
+            battleInput->feedback.state++;
         }
         break;
     default:
         ov12_02268D88(battleInput, 1, 1);
-        ov12_02268EB8(battleInput);
+        BattleInput_DestroyFeedbackTask(battleInput);
         return;
     }
 }
 
-int ov12_02269504(int pp, int maxPp) {
+static int GetPPTextColor(int pp, int maxPp) {
     if (pp == 0) {
         return MAKE_TEXT_COLOR(7, 8, 0);
     }
@@ -3374,31 +3408,31 @@ int ov12_02269504(int pp, int maxPp) {
     return MAKE_TEXT_COLOR(1, 2, 0);
 }
 
-void ov12_02269568(SysTask *task, void *data) {
+static void Task_BattleMenuSlideIn(SysTask *task, void *data) {
     BattleMenuSlideIn *menuSlideIn = data;
     BgConfig *bgConfig = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
 
     switch (menuSlideIn->state) {
     case 0:
-        menuSlideIn->unk_08 += ((255 * 100) / 4);
-        menuSlideIn->unk_0A -= ((40 * 100) / 4);
-        menuSlideIn->unk_0C = ((255 * 100) - menuSlideIn->unk_08) / 100;
-        menuSlideIn->unk_0E = -menuSlideIn->unk_0A / 100;
+        menuSlideIn->x += ((255 * 100) / 4);
+        menuSlideIn->y -= ((40 * 100) / 4);
+        menuSlideIn->xSet = ((255 * 100) - menuSlideIn->x) / 100;
+        menuSlideIn->ySet = -menuSlideIn->y / 100;
 
-        if ((menuSlideIn->unk_08 >= 0) || (menuSlideIn->unk_0A <= 0)) {
-            menuSlideIn->unk_08 = 0;
-            menuSlideIn->unk_0A = (18 * 8);
-            menuSlideIn->unk_0C = 0 / 100;
-            menuSlideIn->unk_0E = 0 / 100;
+        if ((menuSlideIn->x >= 0) || (menuSlideIn->y <= 0)) {
+            menuSlideIn->x = 0;
+            menuSlideIn->y = (18 * 8);
+            menuSlideIn->xSet = 0 / 100;
+            menuSlideIn->ySet = 0 / 100;
             menuSlideIn->state++;
         }
         break;
     case 1:
         menuSlideIn->battleInput->isTouchDisabled = FALSE;
-        SysTask_Destroy(menuSlideIn->unk_04);
+        SysTask_Destroy(menuSlideIn->vblankTask);
         HBlankInterruptDisable();
         GXS_SetVisibleWnd(GX_WNDMASK_NONE);
-        ov12_022698AC(menuSlideIn->battleInput, 1);
+        BattleInput_Deadstriped_022698AC(menuSlideIn->battleInput, 1);
         menuSlideIn->state++;
         break;
     default:
@@ -3418,100 +3452,100 @@ void ov12_02269568(SysTask *task, void *data) {
     }
 }
 
-void ov12_02269668(SysTask *task, void *data) {
+static void VBlankTask_BattleMenuSlideIn(SysTask *task, void *data) {
     BattleMenuSlideIn *menuSlideIn = data;
-    s32 v2, v3, v4;
+    s32 xSet, ySet, x;
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
 
     if (menuSlideIn->battlerId == 4) {
-        v4 = 255 - menuSlideIn->unk_0C;
+        x = 255 - menuSlideIn->xSet;
 
-        if (v4 > 0) {
-            v4 = 0;
+        if (x > 0) {
+            x = 0;
         }
 
-        BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, v4);
-        BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 255 - menuSlideIn->unk_0C);
-        v2 = -menuSlideIn->unk_08 / 100;
+        BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, x);
+        BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 255 - menuSlideIn->xSet);
+        xSet = -menuSlideIn->x / 100;
     } else {
-        v4 = menuSlideIn->unk_0C;
+        x = menuSlideIn->xSet;
 
-        if (v4 < 0) {
-            v4 = 0;
+        if (x < 0) {
+            x = 0;
         }
 
-        BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, v4);
-        BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, menuSlideIn->unk_0C);
+        BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, x);
+        BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, menuSlideIn->xSet);
 
-        v2 = 255 + menuSlideIn->unk_08 / 100;
+        xSet = 255 + menuSlideIn->x / 100;
     }
 
     BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_Y, 0);
     BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_Y, 0);
 
-    v3 = (18 * 8) + (menuSlideIn->unk_0A) / 100;
+    ySet = (18 * 8) + (menuSlideIn->y) / 100;
 
-    if (v2 < 0) {
-        v2 = 0;
-    } else if (v2 > 255) {
-        v2 = 255;
+    if (xSet < 0) {
+        xSet = 0;
+    } else if (xSet > 255) {
+        xSet = 255;
     }
 
-    if (v3 > 192) {
-        v3 = 192;
-    } else if (v3 < 0) {
-        v3 = 0;
+    if (ySet > 192) {
+        ySet = 192;
+    } else if (ySet < 0) {
+        ySet = 0;
     }
 
     if (menuSlideIn->battlerId == 4) {
-        G2S_SetWnd0Position(0, 0, v2, (18 * 8));
+        G2S_SetWnd0Position(0, 0, xSet, (18 * 8));
     } else {
-        if (v2 == 0) {
-            v2 = 1;
+        if (xSet == 0) {
+            xSet = 1;
         }
 
-        G2S_SetWnd0Position(v2, 0, 0, (18 * 8));
+        G2S_SetWnd0Position(xSet, 0, 0, (18 * 8));
     }
 
-    G2S_SetWnd1Position(0, (18 * 8), 255, v3);
-    menuSlideIn->unk_10 = menuSlideIn->unk_0E;
+    G2S_SetWnd1Position(0, (18 * 8), 255, ySet);
+    menuSlideIn->unk_10 = menuSlideIn->ySet;
 }
 
-void ov12_02269774(void *data) {
+static void HBlankCB_BattleMenuSlideIn(void *data) {
     BattleMenuSlideIn *menuSlideIn = data;
-    s32 vCnt, v2;
+    s32 vCnt, x;
 
     vCnt = GX_GetVCount();
 
     if (vCnt == (18 * 8)) {
-        BgConfig *v3 = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
+        BgConfig *bgConfig = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
 
-        BgSetPosTextAndCommit(v3, 4, BG_POS_OP_SET_X, 0);
-        BgSetPosTextAndCommit(v3, 4, BG_POS_OP_SET_Y, menuSlideIn->unk_10);
-        BgSetPosTextAndCommit(v3, 5, BG_POS_OP_SET_X, 0);
-        BgSetPosTextAndCommit(v3, 5, BG_POS_OP_SET_Y, menuSlideIn->unk_10);
+        BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_Y, menuSlideIn->unk_10);
+        BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 0);
+        BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_Y, menuSlideIn->unk_10);
     } else if (vCnt > 192) {
         BgConfig *bgConfig = BattleSystem_GetBgConfig(menuSlideIn->battleInput->battleSystem);
 
         if (menuSlideIn->battlerId == 4) {
-            v2 = 255 - menuSlideIn->unk_0C;
+            x = 255 - menuSlideIn->xSet;
 
-            if (v2 > 0) {
-                v2 = 0;
+            if (x > 0) {
+                x = 0;
             }
 
-            BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, 255 - menuSlideIn->unk_0C);
-            BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 255 - menuSlideIn->unk_0C);
+            BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, 255 - menuSlideIn->xSet);
+            BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 255 - menuSlideIn->xSet);
         } else {
-            v2 = menuSlideIn->unk_0C;
+            x = menuSlideIn->xSet;
 
-            if (v2 < 0) {
-                v2 = 0;
+            if (x < 0) {
+                x = 0;
             }
 
-            BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, menuSlideIn->unk_0C);
-            BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, menuSlideIn->unk_0C);
+            BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_X, menuSlideIn->xSet);
+            BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, menuSlideIn->xSet);
         }
 
         BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_Y, 0);
@@ -3519,7 +3553,7 @@ void ov12_02269774(void *data) {
     }
 }
 
-void ov12_02269830(SysTask *task, void *data) {
+static void ov12_02269830(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     const BattleMenuTemplate *menu;
     int i;
@@ -3541,23 +3575,24 @@ void ov12_02269830(SysTask *task, void *data) {
     SysTask_Destroy(task);
 }
 
-void ov12_0226989C(SysTask *task, void *data) {
+static void ov12_0226989C(SysTask *task, void *data) {
     ov12_02268D5C();
     SysTask_Destroy(task);
 }
 
-void ov12_022698AC(BattleInput *battleInput, int a1) {
+void BattleInput_Deadstriped_022698AC(BattleInput *battleInput, int unused) {
 }
 
 int ov12_022698B0(BattleInput *battleInput) {
-    if (battleInput->unk6E8 == NULL) {
-        return 1;
+    if (battleInput->unused_664 == NULL) {
+        // always returns TRUE
+        return TRUE;
     }
 
-    return 0;
+    return FALSE;
 }
 
-void ov12_022698C4(SysTask *task, void *data) {
+static void Task_FadeInBattleMenuBackground(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     PaletteData *palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
 
@@ -3565,24 +3600,24 @@ void ov12_022698C4(SysTask *task, void *data) {
         return;
     }
 
-    PaletteData_BlendPalette(palette, PLTTBUF_SUB_BG, 16 * 0 + 1, 1, battleInput->unk6F8 >> 8, 0x7e37);
+    PaletteData_BlendPalette(palette, PLTTBUF_SUB_BG, 1, 1, battleInput->fadeCur >> 8, 32311);
 
-    if (battleInput->unk6F7 == 0) {
-        battleInput->unk6F8 += 0x200;
+    if (battleInput->fadeDir == 0) {
+        battleInput->fadeCur += 0x200;
     } else {
-        battleInput->unk6F8 -= 0x200;
+        battleInput->fadeCur -= 0x200;
     }
 
-    if (battleInput->unk6F8 >= (16 + 1) << 8) {
-        battleInput->unk6F8 = (16 - 1) << 8;
-        battleInput->unk6F7 = 1;
-    } else if (battleInput->unk6F8 <= 0) {
-        battleInput->unk6F8 = 1 << 8;
-        battleInput->unk6F7 = 0;
+    if (battleInput->fadeCur >= 17 << 8) {
+        battleInput->fadeCur = 15 << 8;
+        battleInput->fadeDir = 1;
+    } else if (battleInput->fadeCur <= 0) {
+        battleInput->fadeCur = 1 << 8;
+        battleInput->fadeDir = 0;
     }
 }
 
-void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data) {
+static void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data) {
     BattleInput *battleInput = data;
     PaletteData *palette;
     u16 *fadedBuffer;
@@ -3602,11 +3637,11 @@ void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data) {
     }
 
     fadedBuffer = PaletteData_GetFadedBuf(palette, PLTTBUF_SUB_BG);
-    size = (16 - 8) * 2;
+    size = 16;
 
     if (gSystem.touchHeld && ((msgSkip == 1) || (msgWait == 1))) {
-		// When using the touch screen to advance messages, set the background palette
-		// to the saved "background touch response" palette 
+        // When using the touch screen to advance messages, set the background palette
+        // to the saved "background touch response" palette
         if (memcmp(&fadedBuffer[8], &battleInput->bgPalNormal[8], size) == 0) {
             if (BattleSystem_IsInFrontier(battleInput->battleSystem)) {
                 MI_CpuCopy16(&battleInput->bgPalTouch[0], &fadedBuffer[0], 0x20);
@@ -3616,8 +3651,8 @@ void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data) {
             }
         }
     } else {
-		// If either the message isn't advanced this frame or if no touch input is 
-		// received, return the background palette to the "normal" palette
+        // If either the message isn't advanced this frame or if no touch input is
+        // received, return the background palette to the "normal" palette
         if (memcmp(&fadedBuffer[8], &battleInput->bgPalTouch[8], size) == 0) {
             if (BattleSystem_IsInFrontier(battleInput->battleSystem)) {
                 MI_CpuCopy16(&battleInput->bgPalNormal[0], &fadedBuffer[0], 0x20);
@@ -3629,7 +3664,7 @@ void Task_BattleMenuMessageWaitForTouchResponse(SysTask *task, void *data) {
     }
 }
 
-int ov12_02269A24(BattleInput *battleInput) {
+static int BattleInput_CheckCursorInput(BattleInput *battleInput) {
     BattleMenuCursor *cursor;
     const BattleMenuTemplate *menu;
 
@@ -3637,60 +3672,60 @@ int ov12_02269A24(BattleInput *battleInput) {
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
 
     if (menu->funcCursor == NULL) {
-        return 0xffffffff;
+        return TOUCH_MENU_NO_INPUT;
     }
 
-    if (cursor->enabled == 0) {
-        if ((battleInput->keyPressed == 1) || (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_BUTTON_X | PAD_BUTTON_Y | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN))) {
-            if (battleInput->keyPressed == 0) {
+    if (cursor->enabled == FALSE) {
+        if ((battleInput->keyPressed == TRUE) || (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_BUTTON_X | PAD_BUTTON_Y | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN))) {
+            if (battleInput->keyPressed == FALSE) {
                 PlaySE(SEQ_SE_DP_SELECT);
             }
 
-            cursor->enabled = 1;
-            battleInput->keyPressed = 0;
-            menu->funcCursor(battleInput, 1);
+            cursor->enabled = TRUE;
+            battleInput->keyPressed = FALSE;
+            menu->funcCursor(battleInput, TRUE);
         }
 
-        return 0xffffffff;
+        return TOUCH_MENU_NO_INPUT;
     }
 
-    return menu->funcCursor(battleInput, 0);
+    return menu->funcCursor(battleInput, FALSE);
 }
 
-int ov12_02269A9C(BattleInput *battleInput, int param1) {
+static int BattleInput_CursorMove_MainMenu(BattleInput *battleInput, int shouldInitialize) {
     BattleMenuCursor *cursor;
     u32 key;
     const BattleMenuTemplate *menu;
-    int i, v4, v5;
-    BattleCursorPosition *v6;
+    int i, input, battlerId;
+    BattleCursorPosition *cursorPos;
 
     cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
-    v5 = ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE);
-    v6 = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, v5));
+    battlerId = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
+    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battlerId));
 
-    if (param1 == 1) {
-        cursor->menuX = v6->commandX;
-        cursor->menuY = v6->commandY;
-        v4 = ov12_0226E220[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
-        return -1;
+    if (shouldInitialize == TRUE) {
+        cursor->menuX = cursorPos->commandX;
+        cursor->menuY = cursorPos->commandY;
+        input = sCursorArrayMainMenu[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[input].rect.left + 8, menu->touchscreenRect[input].rect.right - 8, menu->touchscreenRect[input].rect.top + 8, menu->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
+        return TOUCH_MENU_NO_INPUT;
     }
 
     switch (battleInput->curMenuId) {
-    case 6:
-    case 5:
-        key = ov12_0226A6EC(cursor, 1, 1, ov12_0226E220[0]);
+    case BATTLE_MENU_6:
+    case BATTLE_MENU_5:
+        key = BattleCursor_CheckKeyInput(cursor, 1, 1, sCursorArrayMainMenu[0]);
         break;
     default:
-        v4 = ov12_0226E220[cursor->menuY][cursor->menuX];
+        input = sCursorArrayMainMenu[cursor->menuY][cursor->menuX];
 
-        if ((v4 == 3) && (gSystem.newKeys & PAD_KEY_UP)) {
+        if ((input == CURSOR_INPUT_RUN) && (gSystem.newKeys & PAD_KEY_UP)) {
 
         } else {
-            key = ov12_0226A6EC(cursor, 3, 2, ov12_0226E220[0]);
+            key = BattleCursor_CheckKeyInput(cursor, 3, 2, sCursorArrayMainMenu[0]);
 
-            if ((key == 0) && (v4 == 0)) {
+            if ((key == 0) && (input == CURSOR_INPUT_FIGHT)) {
                 if (gSystem.newKeys & PAD_KEY_LEFT) {
                     cursor->menuX = 0;
                     cursor->menuY = 1;
@@ -3712,15 +3747,15 @@ int ov12_02269A9C(BattleInput *battleInput, int param1) {
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        v4 = ov12_0226E220[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        input = sCursorArrayMainMenu[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[input].rect.left + 8, menu->touchscreenRect[input].rect.right - 8, menu->touchscreenRect[input].rect.top + 8, menu->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        return ov12_0226E220[cursor->menuY][cursor->menuX];
+        return sCursorArrayMainMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         if (battleInput->unk6F3 == 1) {
-            for (i = 0; i < menu->touchscreenRect[i].rect.top != 0xff; i++) {
-                if (4 == menu->unk_18[i]) {
+            for (i = 0; i < menu->touchscreenRect[i].rect.top != TOUCHSCREEN_RECTLIST_END; i++) {
+                if (BATTLE_INPUT_RUN == menu->touchInput[i]) {
                     return i;
                 }
             }
@@ -3728,23 +3763,23 @@ int ov12_02269A9C(BattleInput *battleInput, int param1) {
         break;
     }
 
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-void ov12_02269C7C(BattleInput *battleInput, int param1) {
+static void BattleInput_CursorSave_MainMenu(BattleInput *battleInput, int input) {
     BattleCursorPosition *cursor;
-    int battler, j, i;
+    int battler, x, y;
 
-    battler = ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE);
+    battler = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
 
-    if ((param1 != 3) || (battleInput->cancelRun == 0)) {
+    if ((input != 3) || (battleInput->cancelRun == 0)) {
         cursor = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
 
-        for (i = 0; i < 2; i++) {
-            for (j = 0; j < 3; j++) {
-                if (param1 == ov12_0226E220[i][j]) {
-                    cursor->commandX = j;
-                    cursor->commandY = i;
+        for (y = 0; y < 2; y++) {
+            for (x = 0; x < 3; x++) {
+                if (input == sCursorArrayMainMenu[y][x]) {
+                    cursor->commandX = x;
+                    cursor->commandY = y;
 
                     return;
                 }
@@ -3753,89 +3788,89 @@ void ov12_02269C7C(BattleInput *battleInput, int param1) {
     }
 }
 
-int ov12_02269CDC(BattleInput *battleInput, int param1) {
+static int BattleInput_CursorMove_PalParkMenu(BattleInput *battleInput, int shoulInit) {
     BattleMenuCursor *cursor;
     u32 key;
     const BattleMenuTemplate *menu;
-    int v4;
+    int input;
 
     cursor = &battleInput->cursorData;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
 
-    if (param1 == 1) {
+    if (shoulInit == TRUE) {
         cursor->menuX = 0;
         cursor->menuY = 0;
-        v4 = ov12_0226E1FC[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
-        return 0xffffffff;
+        input = sCursorArrayPalParkMenu[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[input].rect.left + 8, menu->touchscreenRect[input].rect.right - 8, menu->touchscreenRect[input].rect.top + 8, menu->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
+        return TOUCH_MENU_NO_INPUT;
     }
 
-    key = ov12_0226A6EC(cursor, 1, 2, ov12_0226E1FC[0]);
+    key = BattleCursor_CheckKeyInput(cursor, 1, 2, sCursorArrayPalParkMenu[0]);
 
     switch (key) {
     case PAD_KEY_UP:
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        v4 = ov12_0226E1FC[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        input = sCursorArrayPalParkMenu[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[input].rect.left + 8, menu->touchscreenRect[input].rect.right - 8, menu->touchscreenRect[input].rect.top + 8, menu->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        return ov12_0226E1FC[cursor->menuY][cursor->menuX];
+        return sCursorArrayPalParkMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
         break;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-int ov12_02269DD4(BattleInput *battleInput, int param1) {
+static int BattleInput_CursorMove_FightMenu(BattleInput *battleInput, int param1) {
     BattleMenuCursor *cursor;
     u32 keyPressed;
-    const BattleMenuTemplate *menu;
-    int index, i;
-    u8 v5[3][2];
-    BattleInputFightMenu *moveMenu;
+    const BattleMenuTemplate *menuTemplate;
+    int input, i;
+    u8 cursorArray[3][2];
+    BattleInputFightMenu *menu;
     BattleCursorPosition *cursorPos;
 
-    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE)));
+    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType)));
     cursor = &battleInput->cursorData;
-    menu = &sBattleMenuTemplates[battleInput->curMenuId];
-    moveMenu = &battleInput->menu.fight;
+    menuTemplate = &sBattleMenuTemplates[battleInput->curMenuId];
+    menu = &battleInput->menu.fight;
 
     if (param1 == 1) {
         cursor->menuX = cursorPos->moveX;
         cursor->menuY = cursorPos->moveY;
-        index = ov12_0226E218[cursor->menuY][cursor->menuX];
+        input = sCursorArrayFightMenu[cursor->menuY][cursor->menuX];
 
-        if ((index != 0) && (moveMenu->moveNo[index - 1] == 0)) {
+        if ((input != CURSOR_INPUT_FIGHT_CANCEL) && (menu->moveNo[input - 1] == MOVE_NONE)) {
             cursorPos->moveX = 0;
             cursorPos->moveY = 0;
             cursor->menuX = 0;
             cursor->menuY = 0;
-            index = ov12_0226E218[cursor->menuY][cursor->menuX];
+            input = sCursorArrayFightMenu[cursor->menuY][cursor->menuX];
         }
 
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
-        return 0xffffffff;
+        ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[input].rect.left + 8, menuTemplate->touchscreenRect[input].rect.right - 8, menuTemplate->touchscreenRect[input].rect.top + 8, menuTemplate->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
+        return TOUCH_MENU_NO_INPUT;
     }
 
-    MI_CpuCopy8(ov12_0226E218, v5, 3 * 2);
-    keyPressed = ov12_0226A6EC(cursor, 2, 3, v5[0]);
+    MI_CpuCopy8(sCursorArrayFightMenu, cursorArray, 6);
+    keyPressed = BattleCursor_CheckKeyInput(cursor, 2, 3, cursorArray[0]);
 
     switch (keyPressed) {
     case PAD_KEY_UP:
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        index = ov12_0226E218[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        input = sCursorArrayFightMenu[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[input].rect.left + 8, menuTemplate->touchscreenRect[input].rect.right - 8, menuTemplate->touchscreenRect[input].rect.top + 8, menuTemplate->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        return ov12_0226E218[cursor->menuY][cursor->menuX];
+        return sCursorArrayFightMenu[cursor->menuY][cursor->menuX];
     case PAD_BUTTON_B:
-        for (i = 0; i < menu->touchscreenRect[i].rect.top != 0xff; i++) {
-            if (0xff == menu->unk_18[i]) {
+        for (i = 0; i < menuTemplate->touchscreenRect[i].rect.top != TOUCHSCREEN_RECTLIST_END; i++) {
+            if (BATTLE_INPUT_CANCEL == menuTemplate->touchInput[i]) {
                 return i;
             }
         }
@@ -3843,179 +3878,181 @@ int ov12_02269DD4(BattleInput *battleInput, int param1) {
         break;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-void ov12_02269F54(BattleInput *battleInput, int param1) {
+static void BattleInput_CursorSave_FightMenu(BattleInput *battleInput, int input) {
     BattleCursorPosition *cursorPos;
-    int battler, j, i;
+    int battler, x, y;
 
-    if (param1 == 0) {
+    if (input == 0) {
         return;
     }
 
-    battler = ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE);
+    battler = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
     cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
 
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 2; j++) {
-            if (param1 == ov12_0226E218[i][j]) {
-                cursorPos->moveX = j;
-                cursorPos->moveY = i;
+    for (y = 0; y < 3; y++) {
+        for (x = 0; x < 2; x++) {
+            if (input == sCursorArrayFightMenu[y][x]) {
+                cursorPos->moveX = x;
+                cursorPos->moveY = y;
                 return;
             }
         }
     }
 }
 
-int ov12_02269FA4(BattleInput *battleInput, int param1) {
+static int BattleInput_CursorMove_TargetMenu(BattleInput *battleInput, int param1) {
     BattleMenuCursor *cursor;
     u32 keyPressed;
-    const BattleMenuTemplate *menu;
-    int v3, v4;
-    int v5 = 0;
-    u8 v6[4], v7[4];
-    u8 v8[3][2];
-    int i, j, v11, v12;
-    int v13, v14, v15, v16, v17, v18;
-    int v19, v20, v21, v22;
-    int v23, v24, v25, v26;
-    int v27, v28;
-    int v29;
-    BattleCursorPosition *v30;
+    const BattleMenuTemplate *menuTemplate;
+    int battler, input;
+    int multiTarget = FALSE;
+    u8 moveRange[4], connectRange[4]; // Connect range checks if the mon exists or not
+    u8 buttonInputArray[3][2];
+    int i, j, menuMaxX, menuMaxY;
+    int cursorLeft, cursorRight, cursorTop, cursorBottom, v17, v18;
+    int topOpponent, bottomOpponent, leftOpponent, rightOpponent;
+    int topPlayer, bottomPlayer, leftPlayer, rightPlayer;
+    int cursorLeftBottom, cursorRightBottom;
+    int anim;
+    BattleCursorPosition *cursorPos;
 
-    v30 = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE)));
+    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType)));
     cursor = &battleInput->cursorData;
-    menu = &sBattleMenuTemplates[battleInput->curMenuId];
+    menuTemplate = &sBattleMenuTemplates[battleInput->curMenuId];
 
-    MI_CpuCopy8(ov12_0226E210, v8, 3 * 2);
+    MI_CpuCopy8(sTargetMenuButtonInputArray, buttonInputArray, 3 * 2);
 
-    ov12_02268DD4(battleInput, v6, 1);
-    ov12_02268DD4(battleInput, v7, 0);
+    BattleInput_GetMonsHitArray(battleInput, moveRange, 1);
+    BattleInput_GetMonsHitArray(battleInput, connectRange, 0);
 
     for (i = 0; i < 2; i++) {
         for (j = 0; j < 2; j++) {
-            if (v7[v8[i][j]] == 0) {
-                v8[i][j] = 0xff;
+            if (connectRange[buttonInputArray[i][j]] == 0) {
+                buttonInputArray[i][j] = 0xff;
             }
         }
     }
 
-    switch (battleInput->unk6F0) {
+    switch (battleInput->monTargetType) {
     default:
-    case 0:
-    case 4:
-    case 6:
-    case 8:
-    case 9:
-    case 10:
-    case 11:
-        v11 = 2;
-        v12 = 3;
+        // Targets any selected
+    case TARGET_ANY:
+    case TARGET_PLAYER_LEFT:
+    case TARGET_PLAYER_RIGHT:
+    case TARGET_ANY_NOT_PLAYER_LEFT:
+    case TARGET_ANY_NOT_PLAYER_RIGHT:
+    case TARGET_ANY_ALLY:
+    case TARGET_ANY_OPPONENT:
+        menuMaxX = 2;
+        menuMaxY = 3;
         break;
-    case 1:
-    case 2:
-    case 3:
-    case 5:
-    case 7:
-        v5 = 1;
-        v11 = 1;
-        v12 = 2;
+        // Targets all selected
+    case TARGET_ALL_OPPONENTS:
+    case TARGET_ALL_NOT_PLAYER_LEFT:
+    case TARGET_ALL:
+    case TARGET_ALL_ALLIES:
+    case TARGET_ALL_NOT_PLAYER_RIGHT:
+        multiTarget = TRUE;
+        menuMaxX = 1;
+        menuMaxY = 2;
 
-        if ((v7[5 - 2] == 1) && (v7[3 - 2] == 1)) {
-            v21 = menu->touchscreenRect[3].rect.left + 8;
-            v22 = menu->touchscreenRect[1].rect.right - 8;
-            v19 = menu->touchscreenRect[3].rect.top + 8;
-            v20 = menu->touchscreenRect[3].rect.bottom - 8;
-        } else if ((v7[5 - 2] == 1) && (v7[3 - 2] == 0)) {
-            v21 = menu->touchscreenRect[3].rect.left + 8;
-            v22 = menu->touchscreenRect[3].rect.right - 8;
-            v19 = menu->touchscreenRect[3].rect.top + 8;
-            v20 = menu->touchscreenRect[3].rect.bottom - 8;
-        } else if ((v7[5 - 2] == 0) && (v7[3 - 2] == 1)) {
-            v21 = menu->touchscreenRect[1].rect.left + 8;
-            v22 = menu->touchscreenRect[1].rect.right - 8;
-            v19 = menu->touchscreenRect[1].rect.top + 8;
-            v20 = menu->touchscreenRect[1].rect.bottom - 8;
+        if ((connectRange[BATTLER_ENEMY2] == 1) && (connectRange[BATTLER_ENEMY] == 1)) {
+            leftOpponent = menuTemplate->touchscreenRect[3].rect.left + 8;
+            rightOpponent = menuTemplate->touchscreenRect[1].rect.right - 8;
+            topOpponent = menuTemplate->touchscreenRect[3].rect.top + 8;
+            bottomOpponent = menuTemplate->touchscreenRect[3].rect.bottom - 8;
+        } else if ((connectRange[BATTLER_ENEMY2] == 1) && (connectRange[BATTLER_ENEMY] == 0)) {
+            leftOpponent = menuTemplate->touchscreenRect[3].rect.left + 8;
+            rightOpponent = menuTemplate->touchscreenRect[3].rect.right - 8;
+            topOpponent = menuTemplate->touchscreenRect[3].rect.top + 8;
+            bottomOpponent = menuTemplate->touchscreenRect[3].rect.bottom - 8;
+        } else if ((connectRange[BATTLER_ENEMY2] == 0) && (connectRange[BATTLER_ENEMY] == 1)) {
+            leftOpponent = menuTemplate->touchscreenRect[1].rect.left + 8;
+            rightOpponent = menuTemplate->touchscreenRect[1].rect.right - 8;
+            topOpponent = menuTemplate->touchscreenRect[1].rect.top + 8;
+            bottomOpponent = menuTemplate->touchscreenRect[1].rect.bottom - 8;
         } else {
-            v21 = -1;
-            v22 = -1;
-            v19 = -1;
-            v20 = -1;
+            leftOpponent = -1;
+            rightOpponent = -1;
+            topOpponent = -1;
+            bottomOpponent = -1;
         }
 
-        if ((v7[2 - 2] == 1) && (v7[4 - 2] == 1)) {
-            v25 = menu->touchscreenRect[0].rect.left + 8;
-            v26 = menu->touchscreenRect[2].rect.right - 8;
-            v23 = menu->touchscreenRect[0].rect.top + 8;
-            v24 = menu->touchscreenRect[0].rect.bottom - 8;
-        } else if ((v7[2 - 2] == 1) && (v7[4 - 2] == 0)) {
-            v25 = menu->touchscreenRect[0].rect.left + 8;
-            v26 = menu->touchscreenRect[0].rect.right - 8;
-            v23 = menu->touchscreenRect[0].rect.top + 8;
-            v24 = menu->touchscreenRect[0].rect.bottom - 8;
-        } else if ((v7[2 - 2] == 0) && (v7[4 - 2] == 1)) {
-            v25 = menu->touchscreenRect[2].rect.left + 8;
-            v26 = menu->touchscreenRect[2].rect.right - 8;
-            v23 = menu->touchscreenRect[2].rect.top + 8;
-            v24 = menu->touchscreenRect[2].rect.bottom - 8;
+        if ((connectRange[BATTLER_PLAYER] == 1) && (connectRange[BATTLER_PLAYER2] == 1)) {
+            leftPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.left + 8;
+            rightPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER2].rect.right - 8;
+            topPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.top + 8;
+            bottomPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.bottom - 8;
+        } else if ((connectRange[BATTLER_PLAYER] == 1) && (connectRange[BATTLER_PLAYER2] == 0)) {
+            leftPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.left + 8;
+            rightPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.right - 8;
+            topPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.top + 8;
+            bottomPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER].rect.bottom - 8;
+        } else if ((connectRange[BATTLER_PLAYER] == 0) && (connectRange[BATTLER_PLAYER2] == 1)) {
+            leftPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER2].rect.left + 8;
+            rightPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER2].rect.right - 8;
+            topPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER2].rect.top + 8;
+            bottomPlayer = menuTemplate->touchscreenRect[BATTLER_PLAYER2].rect.bottom - 8;
         } else {
-            v25 = -1;
-            v26 = -1;
-            v23 = -1;
-            v24 = -1;
+            leftPlayer = -1;
+            rightPlayer = -1;
+            topPlayer = -1;
+            bottomPlayer = -1;
         }
 
         v17 = -1;
         v18 = -1;
-        v27 = -1;
-        v28 = -1;
+        cursorLeftBottom = -1;
+        cursorRightBottom = -1;
 
-        if (v21 == v25) {
-            v13 = v21;
-        } else if ((v21 != -1) && (v25 == -1)) {
-            v13 = v21;
-        } else if ((v21 == -1) && (v25 != -1)) {
-            v13 = v25;
+        if (leftOpponent == leftPlayer) {
+            cursorLeft = leftOpponent;
+        } else if ((leftOpponent != -1) && (leftPlayer == -1)) {
+            cursorLeft = leftOpponent;
+        } else if ((leftOpponent == -1) && (leftPlayer != -1)) {
+            cursorLeft = leftPlayer;
         } else {
-            v13 = v21;
-            v17 = v25;
-            v29 = 2;
+            cursorLeft = leftOpponent;
+            v17 = leftPlayer;
+            anim = 2;
         }
 
-        if (v22 == v26) {
-            v14 = v22;
-        } else if ((v22 != -1) && (v26 == -1)) {
-            v14 = v22;
-        } else if ((v22 == -1) && (v26 != -1)) {
-            v14 = v26;
+        if (rightOpponent == rightPlayer) {
+            cursorRight = rightOpponent;
+        } else if ((rightOpponent != -1) && (rightPlayer == -1)) {
+            cursorRight = rightOpponent;
+        } else if ((rightOpponent == -1) && (rightPlayer != -1)) {
+            cursorRight = rightPlayer;
         } else {
-            v14 = v22;
-            v17 = v26;
-            v29 = 3;
+            cursorRight = rightOpponent;
+            v17 = rightPlayer;
+            anim = 3;
         }
 
-        if ((v19 != -1) && (v23 == -1)) {
-            v15 = v19;
-        } else if ((v19 == -1) && (v23 != -1)) {
-            v15 = v23;
+        if ((topOpponent != -1) && (topPlayer == -1)) {
+            cursorTop = topOpponent;
+        } else if ((topOpponent == -1) && (topPlayer != -1)) {
+            cursorTop = topPlayer;
         } else {
-            v15 = v19;
-            v18 = v20;
+            cursorTop = topOpponent;
+            v18 = bottomOpponent;
         }
 
-        if ((v20 != -1) && (v24 == -1)) {
-            v16 = v20;
-        } else if ((v20 == -1) && (v24 != -1)) {
-            v16 = v24;
+        if ((bottomOpponent != -1) && (bottomPlayer == -1)) {
+            cursorBottom = bottomOpponent;
+        } else if ((bottomOpponent == -1) && (bottomPlayer != -1)) {
+            cursorBottom = bottomPlayer;
         } else {
-            v16 = v24;
-            v18 = v24;
+            cursorBottom = bottomPlayer;
+            v18 = bottomPlayer;
 
-            if (v29 == 2) {
-                v28 = v20;
+            if (anim == 2) {
+                cursorRightBottom = bottomOpponent;
             } else {
-                v27 = v20;
+                cursorLeftBottom = bottomOpponent;
             }
         }
 
@@ -4023,17 +4060,17 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
     }
 
     if (param1 == 1) {
-        if (v5 == 0) {
-            if (v30->unk_06 == battleInput->unk6F0) {
-                cursor->menuX = v30->unk_04;
-                cursor->menuY = v30->unk_05;
-            } else if (v6[5 - 2] == 1) {
+        if (multiTarget == FALSE) {
+            if (cursorPos->monTargetType == battleInput->monTargetType) {
+                cursor->menuX = cursorPos->targetX;
+                cursor->menuY = cursorPos->targetY;
+            } else if (moveRange[3] == 1) {
                 cursor->menuX = 0;
                 cursor->menuY = 0;
-            } else if (v6[3 - 2] == 1) {
+            } else if (moveRange[1] == 1) {
                 cursor->menuX = 1;
                 cursor->menuY = 0;
-            } else if (v6[2 - 2] == 1) {
+            } else if (moveRange[0] == 1) {
                 cursor->menuX = 0;
                 cursor->menuY = 1;
             } else {
@@ -4041,32 +4078,32 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
                 cursor->menuY = 1;
             }
 
-            v4 = ov12_0226E210[cursor->menuY][cursor->menuX];
-            ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+            input = sTargetMenuButtonInputArray[cursor->menuY][cursor->menuX];
+            ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[input].rect.left + 8, menuTemplate->touchscreenRect[input].rect.right - 8, menuTemplate->touchscreenRect[input].rect.top + 8, menuTemplate->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
         } else {
             cursor->menuX = 0;
             cursor->menuY = 0;
 
-            if (((v28 == -1) && (v27 == -1)) || (v17 == -1)) {
-                ov12_0226BB1C(battleInput->cursor, v13, v14, v15, v16, ((192 + 80) << FX32_SHIFT));
-            } else if ((v28 != -1) && (v27 == -1)) {
-                ov12_0226BA4C(battleInput->cursor, v13, v15, v14, v15, v13, v28, v14, v16, ((192 + 80) << FX32_SHIFT));
+            if (((cursorRightBottom == -1) && (cursorLeftBottom == -1)) || (v17 == -1)) {
+                ov12_0226BB1C(battleInput->cursor, cursorLeft, cursorRight, cursorTop, cursorBottom, (272 << FX32_SHIFT));
+            } else if ((cursorRightBottom != -1) && (cursorLeftBottom == -1)) {
+                ov12_0226BA4C(battleInput->cursor, cursorLeft, cursorTop, cursorRight, cursorTop, cursorLeft, cursorRightBottom, cursorRight, cursorBottom, (272 << FX32_SHIFT));
             } else {
-                ov12_0226BA4C(battleInput->cursor, v13, v15, v14, v15, v13, v16, v14, v27, ((192 + 80) << FX32_SHIFT));
+                ov12_0226BA4C(battleInput->cursor, cursorLeft, cursorTop, cursorRight, cursorTop, cursorLeft, cursorBottom, cursorRight, cursorLeftBottom, (272 << FX32_SHIFT));
             }
 
             if (v17 != -1) {
-                ov12_0226BB40(battleInput->cursor, v17, v18, v29, ((192 + 80) << FX32_SHIFT));
+                ov12_0226BB40(battleInput->cursor, v17, v18, anim, (272 << FX32_SHIFT));
             }
         }
 
-        return 0xffffffff;
+        return TOUCH_MENU_NO_INPUT;
     }
 
-    if (v5 == 0) {
-        keyPressed = ov12_0226A6EC(cursor, v11, v12, v8[0]);
+    if (multiTarget == FALSE) {
+        keyPressed = BattleCursor_CheckKeyInput(cursor, menuMaxX, menuMaxY, buttonInputArray[0]);
     } else {
-        keyPressed = ov12_0226A6EC(cursor, v11, v12, NULL);
+        keyPressed = BattleCursor_CheckKeyInput(cursor, menuMaxX, menuMaxY, NULL);
     }
 
     switch (keyPressed) {
@@ -4074,74 +4111,74 @@ int ov12_02269FA4(BattleInput *battleInput, int param1) {
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        if (v5 == 0) {
-            v4 = ov12_0226E210[cursor->menuY][cursor->menuX];
-            ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[v4].rect.left + 8, menu->touchscreenRect[v4].rect.right - 8, menu->touchscreenRect[v4].rect.top + 8, menu->touchscreenRect[v4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        if (multiTarget == FALSE) {
+            input = sTargetMenuButtonInputArray[cursor->menuY][cursor->menuX];
+            ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[input].rect.left + 8, menuTemplate->touchscreenRect[input].rect.right - 8, menuTemplate->touchscreenRect[input].rect.top + 8, menuTemplate->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
         } else {
             if (cursor->menuY == 0) {
-                if (((v27 == -1) && (v28 == -1)) || (v17 == -1)) {
-                    ov12_0226BB1C(battleInput->cursor, v13, v14, v15, v16, ((192 + 80) << FX32_SHIFT));
-                } else if ((v28 != -1) && (v27 == -1)) {
-                    ov12_0226BA4C(battleInput->cursor, v13, v15, v14, v15, v13, v28, v14, v16, ((192 + 80) << FX32_SHIFT));
+                if (((cursorLeftBottom == -1) && (cursorRightBottom == -1)) || (v17 == -1)) {
+                    ov12_0226BB1C(battleInput->cursor, cursorLeft, cursorRight, cursorTop, cursorBottom, (272 << FX32_SHIFT));
+                } else if ((cursorRightBottom != -1) && (cursorLeftBottom == -1)) {
+                    ov12_0226BA4C(battleInput->cursor, cursorLeft, cursorTop, cursorRight, cursorTop, cursorLeft, cursorRightBottom, cursorRight, cursorBottom, (272 << FX32_SHIFT));
                 } else {
-                    ov12_0226BA4C(battleInput->cursor, v13, v15, v14, v15, v13, v16, v14, v27, ((192 + 80) << FX32_SHIFT));
+                    ov12_0226BA4C(battleInput->cursor, cursorLeft, cursorTop, cursorRight, cursorTop, cursorLeft, cursorBottom, cursorRight, cursorLeftBottom, (272 << FX32_SHIFT));
                 }
 
                 if (v17 != -1) {
-                    ov12_0226BB40(battleInput->cursor, v17, v18, v29, ((192 + 80) << FX32_SHIFT));
+                    ov12_0226BB40(battleInput->cursor, v17, v18, anim, (272 << FX32_SHIFT));
                 } else {
                     ov12_0226BB84(battleInput->cursor);
                 }
             } else {
-                ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[4].rect.left + 8, menu->touchscreenRect[4].rect.right - 8, menu->touchscreenRect[4].rect.top + 8, menu->touchscreenRect[4].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+                ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[4].rect.left + 8, menuTemplate->touchscreenRect[4].rect.right - 8, menuTemplate->touchscreenRect[4].rect.top + 8, menuTemplate->touchscreenRect[4].rect.bottom - 8, (272 << FX32_SHIFT));
                 ov12_0226BB84(battleInput->cursor);
             }
         }
         break;
     case PAD_BUTTON_A:
-        if (v5 == 1) {
+        if (multiTarget == TRUE) {
             if (cursor->menuY > 0) {
-                return 4;
+                return CURSOR_INPUT_TARGET_CANCEL;
             } else {
-                for (v3 = 0; v3 < 4; v3++) {
-                    if (v6[v3] == 1) {
-                        return 0 + v3;
+                for (battler = BATTLER_PLAYER; battler < BATTLER_MAX; battler++) {
+                    if (moveRange[battler] == 1) {
+                        return CURSOR_INPUT_TARGET_PLAYER_LEFT + battler;
                     }
                 }
             }
         } else {
-            v4 = ov12_0226E210[cursor->menuY][cursor->menuX];
+            input = sTargetMenuButtonInputArray[cursor->menuY][cursor->menuX];
 
-            if ((v4 == 4) || (v6[v4 - 0] == 1)) {
-                return v4;
+            if ((input == CURSOR_INPUT_TARGET_CANCEL) || (moveRange[input] == 1)) {
+                return input;
             }
         }
         break;
     case PAD_BUTTON_B:
-        return 4;
+        return CURSOR_INPUT_TARGET_CANCEL;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-void ov12_0226A594(BattleInput *battleInput, int param1) {
+static void BattleInput_CursorSave_TargetMenu(BattleInput *battleInput, int input) {
     BattleCursorPosition *cursorPos;
-    int battler, j, i;
+    int battler, x, y;
 
-    if (param1 == 4) {
+    if (input == CURSOR_INPUT_TARGET_CANCEL) {
         return;
     }
 
-    battler = ov12_0223AAD8(battleInput->battleSystem, battleInput->unk6EE);
+    battler = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
     cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
 
-    cursorPos->unk_06 = battleInput->unk6F0;
+    cursorPos->monTargetType = battleInput->monTargetType;
 
-    for (i = 0; i < 3; i++) {
-        for (j = 0; j < 2; j++) {
-            if (param1 == ov12_0226E210[i][j]) {
-                cursorPos->unk_04 = j;
-                cursorPos->unk_05 = i;
+    for (y = 0; y < 3; y++) {
+        for (x = 0; x < 2; x++) {
+            if (input == sTargetMenuButtonInputArray[y][x]) {
+                cursorPos->targetX = x;
+                cursorPos->targetY = y;
 
                 return;
             }
@@ -4149,43 +4186,42 @@ void ov12_0226A594(BattleInput *battleInput, int param1) {
     }
 }
 
-
-int ov12_0226A5F0(BattleInput *battleInput, int param1) {
+static int BattleInput_CursorMove_TwoOptionsMenu(BattleInput *battleInput, int param1) {
     BattleMenuCursor *cursor;
     u32 keyPressed;
-    const BattleMenuTemplate *menu;
-    int index;
+    const BattleMenuTemplate *menuTemplate;
+    int input;
 
     cursor = &battleInput->cursorData;
-    menu = &sBattleMenuTemplates[battleInput->curMenuId];
+    menuTemplate = &sBattleMenuTemplates[battleInput->curMenuId];
 
     if (param1 == 1) {
-        index = ov12_0226E200[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
-        return 0xffffffff;
+        input = sTwoOptionsMenuCursorInput[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[input].rect.left + 8, menuTemplate->touchscreenRect[input].rect.right - 8, menuTemplate->touchscreenRect[input].rect.top + 8, menuTemplate->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
+        return TOUCH_MENU_NO_INPUT;
     }
 
-    keyPressed = ov12_0226A6EC(cursor, 1, 2, ov12_0226E200[0]);
+    keyPressed = BattleCursor_CheckKeyInput(cursor, 1, 2, sTwoOptionsMenuCursorInput[0]);
 
     switch (keyPressed) {
     case PAD_KEY_UP:
     case PAD_KEY_DOWN:
     case PAD_KEY_LEFT:
     case PAD_KEY_RIGHT:
-        index = ov12_0226E200[cursor->menuY][cursor->menuX];
-        ov12_0226BB1C(battleInput->cursor, menu->touchscreenRect[index].rect.left + 8, menu->touchscreenRect[index].rect.right - 8, menu->touchscreenRect[index].rect.top + 8, menu->touchscreenRect[index].rect.bottom - 8, ((192 + 80) << FX32_SHIFT));
+        input = sTwoOptionsMenuCursorInput[cursor->menuY][cursor->menuX];
+        ov12_0226BB1C(battleInput->cursor, menuTemplate->touchscreenRect[input].rect.left + 8, menuTemplate->touchscreenRect[input].rect.right - 8, menuTemplate->touchscreenRect[input].rect.top + 8, menuTemplate->touchscreenRect[input].rect.bottom - 8, (272 << FX32_SHIFT));
         break;
     case PAD_BUTTON_A:
-        index = ov12_0226E200[cursor->menuY][cursor->menuX];
-        return index;
+        input = sTwoOptionsMenuCursorInput[cursor->menuY][cursor->menuX];
+        return input;
     case PAD_BUTTON_B:
-        return 1;
+        return CURSOR_INPUT_TWO_OPTION_BOTTOM;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-u32 ov12_0226A6EC(BattleMenuCursor *cursor, int xMax, int yMax, const u8 *moveData) {
+static u32 BattleCursor_CheckKeyInput(BattleMenuCursor *cursor, int xMax, int yMax, const u8 *moveData) {
     int y, x;
     u32 key;
 
@@ -4305,29 +4341,33 @@ u32 ov12_0226A6EC(BattleMenuCursor *cursor, int xMax, int yMax, const u8 *moveDa
     return key;
 }
 
-int ov12_0226A8E4(BattleInput *battleInput) {
+int BattleInput_GetKeyPressed(BattleInput *battleInput) {
     return battleInput->keyPressed;
 }
 
-void ov12_0226A8EC(BattleInput *battleInput, int key) {
+void BattleInput_SetKeyPressed(BattleInput *battleInput, int key) {
     battleInput->keyPressed = key;
 }
 
-static int (* const ov12_0226E260[2])(BattleInput *) = { ov12_0226A960, ov12_0226A9B8 };
-int BattleInput_CatchingTutorialMain(BattleInput *battleInput) {
+static int (*const ov12_0226E260[2])(BattleInput *) = {
+    BattleInput_CatchingTutorialCB_Fight,
+    BattleInput_CatchingTutorialCB_Move
+};
+
+static int BattleInput_CatchingTutorialMain(BattleInput *battleInput) {
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
     PaletteData *palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
-    int ret = 0xffffffff;
+    int ret = TOUCH_MENU_NO_INPUT;
 
     if (ov12_0223BB04(battleInput->battleSystem) == 0) {
         GF_ASSERT(battleInput->tutorial.state < NELEMS(ov12_0226E260));
         ret = ov12_0226E260[battleInput->tutorial.state](battleInput);
     } else {
-        ret = ov12_0226AA10(battleInput);
+        ret = BattleInput_CatchingTutorialCB_Bag(battleInput);
     }
 
-    if (ret != 0xffffffff) {
+    if (ret != TOUCH_MENU_NO_INPUT) {
         battleInput->tutorial.substate = 0;
         battleInput->tutorial.delay = 0;
         battleInput->tutorial.state++;
@@ -4336,44 +4376,44 @@ int BattleInput_CatchingTutorialMain(BattleInput *battleInput) {
     return ret;
 }
 
-int ov12_0226A960(BattleInput *battleInput) {
+static int BattleInput_CatchingTutorialCB_Fight(BattleInput *battleInput) {
     switch (battleInput->tutorial.substate) {
     case 0:
-        ov12_0226BCFC(battleInput->tutorial.finger, 128, 84 - 25, ((192 + 80) << FX32_SHIFT));
+        ov12_0226BCFC(battleInput->tutorial.finger, 128, 59, (272 << FX32_SHIFT));
         ov12_0226BD4C(battleInput->tutorial.finger, 60);
         battleInput->tutorial.substate++;
         break;
     default:
         if (ov12_0226BD50(battleInput->tutorial.finger) == TRUE) {
             battleInput->tutorial.substate++;
-            return 0;
+            return CURSOR_INPUT_FIGHT;
         }
 
         break;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-int ov12_0226A9B8(BattleInput *battleInput) {
+static int BattleInput_CatchingTutorialCB_Move(BattleInput *battleInput) {
     switch (battleInput->tutorial.substate) {
     case 0:
-        ov12_0226BCFC(battleInput->tutorial.finger, 64, 46 - 25, ((192 + 80) << FX32_SHIFT));
+        ov12_0226BCFC(battleInput->tutorial.finger, 64, 21, (272 << FX32_SHIFT));
         ov12_0226BD4C(battleInput->tutorial.finger, 60);
         battleInput->tutorial.substate++;
         break;
     default:
         if (ov12_0226BD50(battleInput->tutorial.finger) == TRUE) {
             battleInput->tutorial.substate++;
-            return 1;
+            return CURSOR_INPUT_MOVE_1;
         }
         break;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-int ov12_0226AA10(BattleInput *battleInput) {
+static int BattleInput_CatchingTutorialCB_Bag(BattleInput *battleInput) {
     switch (battleInput->tutorial.substate) {
     case 0:
         battleInput->tutorial.delay++;
@@ -4384,22 +4424,22 @@ int ov12_0226AA10(BattleInput *battleInput) {
         }
         break;
     case 1:
-        ov12_0226BCFC(battleInput->tutorial.finger, 40, 170 - 25, ((192 + 80) << FX32_SHIFT));
+        ov12_0226BCFC(battleInput->tutorial.finger, 40, 170 - 25, (272 << FX32_SHIFT));
         ov12_0226BD4C(battleInput->tutorial.finger, 60);
         battleInput->tutorial.substate++;
         break;
     default:
         if (ov12_0226BD50(battleInput->tutorial.finger) == 1) {
             battleInput->tutorial.substate++;
-            return 1;
+            return CURSOR_INPUT_BAG;
         }
         break;
     }
 
-    return 0xffffffff;
+    return TOUCH_MENU_NO_INPUT;
 }
 
-void ov12_0226AA8C(BattleInput *battleInput, int index) {
+void BattleInput_PrintSystemMessage(BattleInput *battleInput, int index) {
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     PaletteData *palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
 
@@ -4409,22 +4449,22 @@ void ov12_0226AA8C(BattleInput *battleInput, int index) {
     PaletteData_LoadPaletteSlotFromHardware(palette, PLTTBUF_SUB_BG, 1 * 16, 0x20);
 
     int fillVal = 0x20, paletteNo = 1;
-    int v4, v5, v6, v7;
+    int x, y, width, height;
 
-    v4 = 1;
-    v5 = 6;
-    v6 = 30;
-    v7 = 6;
+    x = 1;
+    y = 6;
+    width = 30;
+    height = 6;
 
-    FillBgTilemapRect(bgConfig, 5, fillVal, v4, v5, 1, 1, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 1, v4 + 1, v5, v6 - 2, 1, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 2, v4 + v6 - 1, v5, 1, 1, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 3, v4, v5 + 1, 1, v7 - 2, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 5, v4 + v6 - 1, v5 + 1, 1, v7 - 2, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 6, v4, v5 + v7 - 1, 1, 1, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 7, v4 + 1, v5 + v7 - 1, v6 - 2, 1, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 8, v4 + v6 - 1, v5 + v7 - 1, 1, 1, paletteNo);
-    FillBgTilemapRect(bgConfig, 5, fillVal + 4, v4 + 1, v5 + 1, v6 - 2, v7 - 2, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal, x, y, 1, 1, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 1, x + 1, y, width - 2, 1, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 2, x + width - 1, y, 1, 1, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 3, x, y + 1, 1, height - 2, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 5, x + width - 1, y + 1, 1, height - 2, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 6, x, y + height - 1, 1, 1, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 7, x + 1, y + height - 1, width - 2, 1, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 8, x + width - 1, y + height - 1, 1, 1, paletteNo);
+    FillBgTilemapRect(bgConfig, 5, fillVal + 4, x + 1, y + 1, width - 2, height - 2, paletteNo);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     String *src;
@@ -4443,7 +4483,7 @@ void ov12_0226AA8C(BattleInput *battleInput, int index) {
     };
 
     for (i = 0; i < 2; i++) {
-        if (battleInput->textObj[1 + i].unk0 != NULL) {
+        if (battleInput->textObj[1 + i].fontOAM != NULL) {
             GF_ASSERT(0);
             return;
         }
@@ -4455,18 +4495,18 @@ void ov12_0226AA8C(BattleInput *battleInput, int index) {
     }
 }
 
-u8 ov12_0226AC64(BattleInput *battleInput) {
+u8 BattleInput_GetCancelRunFlag(BattleInput *battleInput) {
     return battleInput->cancelRun;
 }
 
-void BattleInput_CreateBugContestGraphics(BattleInput *battleInput) {
+static void BattleInput_CreateBugContestGraphics(BattleInput *battleInput) {
     GF_ASSERT(battleInput->spriteBugNet == NULL);
 
     SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
     NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-	//Bug catching contest net/ball graphics
+    // Bug catching contest net/ball graphics
     SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x157, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0x4e48);
     SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x158, 1, 0x4e36);
     SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x159, 1, 0x4e36);
@@ -4483,7 +4523,7 @@ void BattleInput_CreateBugContestGraphics(BattleInput *battleInput) {
     ManagedSprite_TickFrame(battleInput->spriteBugNet);
 }
 
-void ov12_0226AD60(BattleInput *battleInput) {
+static void BattleInput_DeleteBugContestGraphics(BattleInput *battleInput) {
     if (battleInput->spriteBugNet == NULL || battleInput->spriteSportBall == NULL) {
         return;
     }
@@ -4501,7 +4541,7 @@ void ov12_0226AD60(BattleInput *battleInput) {
     SpriteManager_UnloadAnimObjById(spriteManager, 0x4e36);
 }
 
-BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem) {
+static BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem) {
     int battleType = BattleSystem_GetBattleType(battleSystem);
     return (battleType & BATTLE_TYPE_FRONTIER) && !(battleType & BATTLE_TYPE_13);
 }

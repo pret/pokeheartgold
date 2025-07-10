@@ -44,7 +44,7 @@
 .public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020135D8
-.public sub_02013660
+.public FontOAM_Delete
 .public sub_02013688
 .public sub_020138E0
 .public sub_0201649C
@@ -132,7 +132,7 @@
 .public BattleSystem_GetMessageFormat
 .public BattleSystem_GetMessageBuffer
 .public ov12_0223AAB8
-.public ov12_0223AAD8
+.public BattleSystem_GetBattlerFromBattlerType
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetPcStorage
@@ -150,7 +150,7 @@
 .public BattleSystem_SetCriticalHpMusicFlag
 .public ov12_0223BD8C
 .public BattleSystem_Random
-.public ov12_0223C134
+.public BattleSystem_GetBugContestCaughtMon
 .public ov12_0223C224
 .public BattleSystem_SetPokedexCaught
 .public BattleSystem_CheckMonCaught

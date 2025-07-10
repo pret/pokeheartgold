@@ -4,6 +4,7 @@
 
 #include "constants/abilities.h"
 #include "constants/battle.h"
+#include "constants/battle_menu.h"
 #include "constants/battle_subscript.h"
 #include "constants/items.h"
 #include "constants/message_tags.h"

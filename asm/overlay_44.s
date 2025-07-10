@@ -15070,7 +15070,7 @@ ov44_02231754: ; 0x02231754
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 _02231776:
 	ldr r0, _02231784 ; =0x00000D54
 	mov r1, #0

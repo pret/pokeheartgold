@@ -89,11 +89,11 @@
 .public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020135D8
-.public sub_02013660
+.public FontOAM_Delete
 .public sub_02013688
 .public sub_020136B4
 .public sub_02013794
-.public sub_020137C0
+.public FontOAM_SetDrawFlag
 .public sub_020138E0
 .public ListMenuItems_New
 .public ListMenuItems_Delete

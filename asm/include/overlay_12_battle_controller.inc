@@ -30,7 +30,7 @@
 .public ov12_0223A978
 .public ov12_0223A984
 .public ov12_0223A990
-.public ov12_0223AAD8
+.public BattleSystem_GetBattlerFromBattlerType
 .public ov12_0223AB0C
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetTerrainId

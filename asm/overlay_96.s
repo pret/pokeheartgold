@@ -39818,10 +39818,10 @@ ov96_021F8C54: ; 0x021F8C54
 _021F8C76:
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_021F8C54
 
@@ -40360,7 +40360,7 @@ _021F908C:
 	bl String_Delete
 	ldr r0, [r7, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [sp, #0x14]
 	add r0, #0x10
 	str r0, [r7, #0x48]

@@ -1792,7 +1792,7 @@ ov12_02259514: ; 0x02259514
 	bl BattleInput_ChangeMenu
 	ldr r0, [sp, #8]
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 	add r0, r6, #0
 	bl NARC_Delete
 	add r0, r7, #0
@@ -10582,7 +10582,7 @@ _0225DB46:
 	add r1, #0x34
 	ldrb r1, [r1]
 	add r2, sp, #0x40
-	bl ov12_0226885C
+	bl BattleInput_LoadFightMenuText
 	ldrb r0, [r4, #0xa]
 	add r0, r0, #1
 	strb r0, [r4, #0xa]
@@ -10773,7 +10773,7 @@ _0225DC9E:
 	beq _0225DDD2
 	add r0, r6, #0
 	mov r1, #1
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleSpecial
 	mov r1, #1
@@ -11099,7 +11099,7 @@ _0225DF84:
 	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 	ldr r0, [sp, #8]
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
@@ -11129,7 +11129,7 @@ _0225DFD0:
 	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 	ldr r0, [sp, #8]
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
@@ -11151,7 +11151,7 @@ _0225E01C:
 	bl NARC_New
 	add r5, r0, #0
 	add r0, r6, #0
-	bl ov12_0226AC64
+	bl BattleInput_GetCancelRunFlag
 	cmp r0, #1
 	bne _0225E044
 	ldr r0, [sp, #8]
@@ -11200,7 +11200,7 @@ _0225E06E:
 	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 	ldr r0, [sp, #8]
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
@@ -11552,7 +11552,7 @@ _0225E376:
 	bne _0225E3A2
 	add r0, r7, #0
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 	add r0, r5, #0
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
@@ -11917,7 +11917,7 @@ _0225E662:
 	bne _0225E68C
 	add r0, r5, #0
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 _0225E68C:
 	ldrb r0, [r4, #0xf]
 	add sp, #0x34
@@ -12188,7 +12188,7 @@ _0225E858: ; jump table
 _0225E896:
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleInput
-	bl ov12_0226A8E4
+	bl BattleInput_GetKeyPressed
 	strb r0, [r4, #0x10]
 	ldr r0, [r4]
 	bl BattleSystem_GetMessageIcon
@@ -12547,7 +12547,7 @@ _0225EB6E:
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleInput
 	ldrb r1, [r4, #0x10]
-	bl ov12_0226A8EC
+	bl BattleInput_SetKeyPressed
 	mov r0, #7
 	str r0, [sp]
 	mov r0, #0
@@ -13744,7 +13744,7 @@ _0225F50A:
 	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleInput
-	bl ov12_0226A8E4
+	bl BattleInput_GetKeyPressed
 	strb r0, [r4, #0x17]
 	ldr r0, [r4]
 	bl BattleSystem_GetMessageIcon
@@ -14093,7 +14093,7 @@ _0225F7EA:
 	ldr r1, [r4, #4]
 	add r1, #0x32
 	ldrb r1, [r1]
-	bl ov12_0226A8EC
+	bl BattleInput_SetKeyPressed
 	mov r0, #7
 	str r0, [sp]
 	mov r0, #0
@@ -14604,7 +14604,7 @@ _0225FBE4:
 	bne _0225FC38
 	add r0, r5, #0
 	mov r1, #0
-	bl ov12_022698AC
+	bl BattleInput_Deadstriped_022698AC
 _0225FC38:
 	mov r0, #4
 	strb r0, [r4, #0xe]
@@ -17796,16 +17796,16 @@ ov12_02261544: ; 0x02261544
 	beq _0226156A
 	add r0, r7, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	b _02261574
 _0226156A:
 	add r0, r7, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r6, r0, #0
 _02261574:
 	mov r1, #4
@@ -18098,21 +18098,21 @@ _0226178E: ; jump table
 _02261796:
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r7, r0, #0
 	b _02261832
 _022617AC:
 	ldr r0, [sp]
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r7, r0, #0
 	b _02261832
 _022617C2:
@@ -18121,17 +18121,17 @@ _022617C2:
 	tst r0, r1
 	beq _022617DE
 	ldr r0, [sp]
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r7, r0, #0
 	b _02261832
 _022617DE:
 	ldr r0, [sp]
 	mov r1, #0
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r5, r0, #0
 	add r7, r5, #0
 	b _02261832
@@ -18158,11 +18158,11 @@ _0226180E:
 	tst r0, r1
 	beq _0226182A
 	ldr r0, [sp]
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r7, r0, #0
 	b _02261832
 _0226182A:
@@ -18307,16 +18307,16 @@ ov12_02261928: ; 0x02261928
 	beq _02261956
 	ldr r0, [sp]
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	b _02261960
 _02261956:
 	ldr r0, [sp]
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	add r4, r0, #0
 _02261960:
 	cmp r7, #1
@@ -18466,11 +18466,11 @@ _02261A62:
 	strb r0, [r7, #1]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	str r0, [r7, #4]
 	add r0, r5, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	str r0, [r7, #8]
 	b _02261ABE
 _02261A8E:
@@ -18485,7 +18485,7 @@ _02261A8E:
 	strb r0, [r7, #1]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	str r0, [r7, #4]
 	b _02261ABE
 _02261AAE:
@@ -18494,7 +18494,7 @@ _02261AAE:
 	strb r0, [r7, #1]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	str r0, [r7, #4]
 _02261ABE:
 	add r0, r5, #0
@@ -18531,13 +18531,13 @@ ov12_02261AD4: ; 0x02261AD4
 	beq _02261B0E
 	add r0, r5, #0
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	str r0, [r4, #4]
 	b _02261B22
 _02261B0E:
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	str r0, [r4, #4]
 	b _02261B22
 _02261B1A:

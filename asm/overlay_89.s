@@ -1675,7 +1675,7 @@ _0225963E:
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x4c
@@ -3279,7 +3279,7 @@ ov89_0225A354: ; 0x0225A354
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r4, #4
 	bl sub_02021B5C
 	pop {r4, pc}

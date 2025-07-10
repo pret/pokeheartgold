@@ -1567,7 +1567,7 @@ sub_02086FE8: ; 0x02086FE8
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02013660
+	bl FontOAM_Delete
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1575,7 +1575,7 @@ sub_02086FE8: ; 0x02086FE8
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02013660
+	bl FontOAM_Delete
 	mov r0, #0x39
 	lsl r0, r0, #4
 	add r0, r4, r0
