@@ -461,7 +461,7 @@ void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {
-    PokegearApp_CreateSpriteManager(phoneApp->pokegear, 3);
+    PokegearApp_CreateSpriteManager(phoneApp->pokegear, GEAR_APP_PHONE);
     phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapId, phoneApp->pokegear->plttData);
 }
 

@@ -74,41 +74,41 @@ int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
 }
 
 BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
-    u8 r4 = 0;
-    int r5 = gSystem.heldKeys;
-    PokegearManagedObject *r1 = &mapApp->objManager->objects[5];
+    u8 flag = 0;
+    int heldKeys = gSystem.heldKeys;
+    PokegearManagedObject *object = &mapApp->objManager->objects[5];
 
-    if (r5 & PAD_KEY_UP) {
-        if (mapApp->matrixY_2 > mapApp->unk_104 + 1) {
+    if (heldKeys & PAD_KEY_UP) {
+        if (mapApp->matrixY_2 > mapApp->minYscroll + 1) {
             --mapApp->matrixY_2;
             mapApp->unk_13B |= 1;
-            r4 = 1;
+            flag = 1;
         }
-    } else if (r5 & PAD_KEY_DOWN) {
-        if (mapApp->matrixY_2 < mapApp->unk_106) {
+    } else if (heldKeys & PAD_KEY_DOWN) {
+        if (mapApp->matrixY_2 < mapApp->maxYscroll) {
             ++mapApp->matrixY_2;
             mapApp->unk_13B |= 2;
-            r4 = 1;
+            flag = 1;
         }
     }
-    if (r5 & PAD_KEY_LEFT) {
-        if (mapApp->matrixX_2 > mapApp->unk_100 + 1) {
+    if (heldKeys & PAD_KEY_LEFT) {
+        if (mapApp->matrixX_2 > mapApp->minXscroll + 1) {
             --mapApp->matrixX_2;
             mapApp->unk_13B |= 4;
-            r4 = 1;
+            flag = 1;
         }
-    } else if (r5 & PAD_KEY_RIGHT) {
+    } else if (heldKeys & PAD_KEY_RIGHT) {
         if (mapApp->matrixX_2 < mapApp->maxXscroll - 1) {
             ++mapApp->matrixX_2;
             mapApp->unk_13B |= 8;
-            r4 = 1;
+            flag = 1;
         }
     }
-    if (r4) {
+    if (flag) {
         mapApp->unk_13A = 2;
         mapApp->unk_139_0 = 1;
         mapApp->unk_139_2 = 1;
-        mapApp->unk_114 = r1->pos;
+        mapApp->unk_114 = object->pos;
         return TRUE;
     }
     return FALSE;
@@ -375,14 +375,14 @@ BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
     r12 = mapApp->matrixX_2 - r0;
     r3 = mapApp->matrixX_2 + (spC - 1 - r0);
 
-    if (sp18 < mapApp->unk_104) {
-        sp18 = mapApp->unk_104;
+    if (sp18 < mapApp->minYscroll) {
+        sp18 = mapApp->minYscroll;
     }
-    if (r12 < mapApp->unk_100) {
-        r12 = mapApp->unk_100;
+    if (r12 < mapApp->minXscroll) {
+        r12 = mapApp->minXscroll;
     }
-    if (sp4 > mapApp->unk_106) {
-        sp4 = mapApp->unk_106;
+    if (sp4 > mapApp->maxYscroll) {
+        sp4 = mapApp->maxYscroll;
     }
     if (r3 > mapApp->maxXscroll) {
         r3 = mapApp->maxXscroll;
@@ -425,7 +425,7 @@ s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
     s16 r3;
 
     if (a1 > 0) {
-        r3 = mapApp->unk_0C8.unk_2C - mapApp->unk_100;
+        r3 = mapApp->unk_0C8.unk_2C - mapApp->minXscroll;
         if (r3 <= 0) {
             return 0;
         } else if (r3 < a2) {
@@ -467,14 +467,14 @@ s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2) {
     s16 r3;
 
     if (a1 > 0) {
-        r3 = mapApp->unk_0C8.unk_28 - mapApp->unk_104;
+        r3 = mapApp->unk_0C8.unk_28 - mapApp->minYscroll;
         if (r3 <= 0) {
             return 0;
         } else if (r3 < a2) {
             return ov101_021EBFF8(mapApp, r3);
         }
     } else {
-        r3 = mapApp->unk_106 - mapApp->unk_0C8.unk_2A;
+        r3 = mapApp->maxYscroll - mapApp->unk_0C8.unk_2A;
         if (r3 <= 0) {
             return 0;
         } else if (r3 < a2) {
@@ -845,8 +845,8 @@ int ov101_021ECAF0(PokegearMapAppData *mapApp) {
                 mapApp->unk_13C_0 = 1;
                 return -1;
             } else {
-                mapApp->unk_014.unk_02 = r5 / 2;
-                mapApp->unk_014.unk_18 = mapApp->unk_118.unk_0->mapId;
+                mapApp->unk_014.index = r5 / 2;
+                mapApp->unk_014.mapID = mapApp->unk_118.unk_0->mapId;
                 return 11;
             }
         }
@@ -934,8 +934,8 @@ int ov101_021ECC58(PokegearMapAppData *mapApp, BOOL *a1) {
             PlaySE(SEQ_SE_GS_GEARSEALGRAB);
             return -1;
         } else if (r4 % 2 == 1) {
-            mapApp->unk_014.unk_02 = r4 / 2;
-            mapApp->unk_014.unk_18 = mapApp->unk_118.unk_0->mapId;
+            mapApp->unk_014.index = r4 / 2;
+            mapApp->unk_014.mapID = mapApp->unk_118.unk_0->mapId;
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             return 11;
         } else {

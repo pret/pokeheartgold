@@ -512,16 +512,18 @@ static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArg
 PokegearArgs *PokegearPhone_LaunchApp(FieldSystem *fieldSystem) {
     PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
-    sub_02092D80(fieldSystem, args);
+    FieldSystem_InitPokegearArgs_Phone(fieldSystem, args);
     PokegearPhone_LaunchApp_Impl(fieldSystem, args);
     return args;
 }
 
+// 0 = fly menu
+// 1 = interact with town map in pokecenters
 PokegearArgs *PokegearTownMap_LaunchApp(FieldSystem *fieldSystem, int kind) {
     PokegearArgs *args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(PokegearArgs));
     MI_CpuFill8(args, 0, sizeof(PokegearArgs));
-    sub_02092D8C(fieldSystem, args);
-    args->incomingPhoneCall = kind;
+    FieldSystem_InitPokegearArgs_Map(fieldSystem, args);
+    args->isScriptedLaunch = kind;
     PokegearTownMap_LaunchApp_Impl(fieldSystem, args);
     return args;
 }

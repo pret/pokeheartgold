@@ -350,7 +350,7 @@ void Radio_UnloadWindows(PokegearRadioAppData *radioApp) {
 }
 
 void Radio_CreateSpriteManager(PokegearRadioAppData *radioApp) {
-    PokegearApp_CreateSpriteManager(radioApp->pokegear, 1);
+    PokegearApp_CreateSpriteManager(radioApp->pokegear, GEAR_APP_RADIO);
 }
 
 void Radio_DestroySpriteManager(PokegearRadioAppData *radioApp) {

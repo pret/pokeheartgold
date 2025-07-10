@@ -1,16 +1,17 @@
 #include "application/pokegear/pokegear_internal.h"
+#include "data/resdat.naix"
 
 #include "math_util.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
 
-typedef struct UnkStruct_ov100_021E76BC {
+typedef struct PokegearObjResSpec {
     u32 maxSprites;
     const OamManagerParam *oamManagerParam;
     const OamCharTransferParam *oamCharTransferParam;
     const u16 *resIdList;
-} UnkStruct_ov100_021E76BC;
+} PokegearObjResSpec;
 
 void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1);
 void ov100_021E6C4C(PokegearApp_UnkSub094 *a0, u16 a1);
@@ -43,23 +44,57 @@ static const OamCharTransferParam sOamCharTransferParam = {
     .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
-static const u16 ov100_021E767A[] = { 0x0022, 0x0023, 0x0021, 0x0020, 0xFFFF, 0xFFFF, 0x0050 };
-static const u16 ov100_021E7650[] = { 0x002A, 0x002B, 0x0029, 0x0028, 0xFFFF, 0xFFFF, 0x0052 };
-static const u16 ov100_021E765E[] = { 0x002E, 0x002F, 0x002D, 0x002C, 0xFFFF, 0xFFFF, 0x0053 };
-static const u16 ov100_021E766C[] = { 0x0026, 0x0027, 0x0025, 0x0024, 0xFFFF, 0xFFFF, 0x0051 };
-
-static const UnkStruct_ov100_021E76BC ov100_021E76BC[] = {
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E7650 },
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E766C },
-    { 0xC0, &sOamManagerParam, &sOamCharTransferParam, ov100_021E767A },
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E765E },
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E767A },
+static const u16 sResList_Map[] = {
+    NARC_resdat_resdat_00000034_bin,
+    NARC_resdat_resdat_00000035_bin,
+    NARC_resdat_resdat_00000033_bin,
+    NARC_resdat_resdat_00000032_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000080_bin,
 };
+static const u16 sResList_Configure[] = {
+    NARC_resdat_resdat_00000042_bin,
+    NARC_resdat_resdat_00000043_bin,
+    NARC_resdat_resdat_00000041_bin,
+    NARC_resdat_resdat_00000040_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000082_bin,
+};
+static const u16 sResList_Phone[] = {
+    NARC_resdat_resdat_00000046_bin,
+    NARC_resdat_resdat_00000047_bin,
+    NARC_resdat_resdat_00000045_bin,
+    NARC_resdat_resdat_00000044_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000083_bin,
+};
+static const u16 sResList_Radio[] = {
+    NARC_resdat_resdat_00000038_bin,
+    NARC_resdat_resdat_00000039_bin,
+    NARC_resdat_resdat_00000037_bin,
+    NARC_resdat_resdat_00000036_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000081_bin,
+};
+
+// clang-format off
+static const PokegearObjResSpec sPokegearObjResSpecs[] = {
+    [GEAR_APP_CONFIGURE] = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Configure },
+    [GEAR_APP_RADIO]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Radio     },
+    [GEAR_APP_MAP]       = { 0xC0, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
+    [GEAR_APP_PHONE]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Phone     },
+    [GEAR_APP_CANCEL]    = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
+};
+// clang-format on
 
 void ov100_021E6914(PokegearAppData *pokegearApp) {
     GF_CreateVramTransferManager(32, pokegearApp->heapId);
     pokegearApp->spriteSystem = SpriteSystem_Alloc(pokegearApp->heapId);
-    SpriteSystem_Init(pokegearApp->spriteSystem, ov100_021E76BC[0].oamManagerParam, ov100_021E76BC[0].oamCharTransferParam, 0x20);
+    SpriteSystem_Init(pokegearApp->spriteSystem, sPokegearObjResSpecs[0].oamManagerParam, sPokegearObjResSpecs[0].oamCharTransferParam, 0x20);
     sub_0200B2E0(pokegearApp->heapId);
     sub_0200B2E8(pokegearApp->heapId);
 }
@@ -75,8 +110,8 @@ void ov100_021E6950(PokegearAppData *pokegearApp) {
 void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet) {
     if (pokegearApp->spriteSystem != NULL) {
         pokegearApp->spriteManager = SpriteManager_New(pokegearApp->spriteSystem);
-        SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[spriteSet].maxSprites);
-        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[spriteSet].resIdList, 1, 0);
+        SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].maxSprites);
+        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].resIdList, 1, 0);
     }
 }
 

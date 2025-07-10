@@ -36,7 +36,7 @@ typedef struct Coord2S16 {
 typedef struct PokegearUnkSub03C {
     u8 unk_00;
     u8 unk_01;
-    u16 unk_02;
+    u16 index;
     u8 unk_04;
     u8 unk_05;
     u8 unk_06;
@@ -49,8 +49,8 @@ typedef struct PokegearUnkSub03C {
     s16 unk_12;
     s16 unk_14;
     s16 unk_16;
-    u16 unk_18;
-    u16 unk_1A;
+    u16 mapID;
+    u16 word;
 } PokegearUnkSub03C; // size: 0x1C
 
 typedef struct PokegearAppSwitchButtonSpec {

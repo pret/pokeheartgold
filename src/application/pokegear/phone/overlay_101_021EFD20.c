@@ -149,7 +149,7 @@ BOOL PokegearPhone_SetUpCallData(PokegearPhoneAppData *phoneApp) {
     if (phoneApp->isIncomingCall) {
         okay = PhoneCall_InitContext(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, phoneApp->isScriptedCall, phoneApp->callScriptID);
         phoneApp->isIncomingCall = FALSE;
-        phoneApp->pokegear->args->incomingPhoneCall = 0;
+        phoneApp->pokegear->args->isScriptedLaunch = 0;
     } else {
         okay = PhoneCall_InitContext(phoneApp->callContext, phoneApp->callerID, phoneApp->isIncomingCall, 0, PHONE_SCRIPT_NONE);
     }

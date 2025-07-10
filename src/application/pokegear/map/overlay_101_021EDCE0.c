@@ -592,7 +592,7 @@ void ov101_021EE380(PokegearMapAppData *mapApp) {
 
 void ov101_021EE394(PokegearMapAppData *mapApp) {
     ov100_021E6914(mapApp->pokegear);
-    PokegearApp_CreateSpriteManager(mapApp->pokegear, 2);
+    PokegearApp_CreateSpriteManager(mapApp->pokegear, GEAR_APP_MAP);
     mapApp->objManager = PokegearObjectsManager_Create(42, mapApp->heapId);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xF0));
     mapApp->listMenuSpawner = TouchscreenListMenuSpawner_Create(mapApp->heapId, mapApp->pokegear->plttData);

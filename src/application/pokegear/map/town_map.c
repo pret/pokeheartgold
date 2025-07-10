@@ -74,7 +74,7 @@ BOOL TownMap_Exit(OverlayManager *man, int *state) {
     PokegearMapAppData *mapApp = OverlayManager_GetData(man);
     HeapID heapID;
     ov101_021EDAF8(mapApp);
-    MapMatrix_MapData_Free(mapApp->unk_038);
+    MapMatrix_MapData_Free(mapApp->mapData);
     if (mapApp->pokegear->appReturnCode != GEAR_RETURN_CANCEL) {
         mapApp->pokegear->isSwitchApp = TRUE;
     }
@@ -91,14 +91,14 @@ BOOL TownMap_Exit(OverlayManager *man, int *state) {
 void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->pokegear->childAppdata = mapApp;
     mapApp->pokegear->menuInputState = (MenuInputState)mapApp->pokegear->args->unk01;
-    mapApp->unk_00D = mapApp->pokegear->args->incomingPhoneCall + 1;
+    mapApp->unk_00D = mapApp->pokegear->args->isScriptedLaunch + 1;
     mapApp->pokegear->reselectAppCB = ov101_021EB338;
     mapApp->pokegear->unknownCB = ov101_021EB2FC;
     MapApp_LoadMarkingsLinkedListFromSave(mapApp);
     mapApp->unk_138_4 = 0;
     mapApp->unk_138_1 = 0;
     mapApp->mapUnlockLevel = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
-    mapApp->unk_038 = MapMatrix_MapData_New(mapApp->heapId);
+    mapApp->mapData = MapMatrix_MapData_New(mapApp->heapId);
     mapApp->phoneCallSave = SaveData_GetPhoneCallPersistentState(mapApp->pokegear->saveData);
     mapApp->phoneBook = AllocAndReadPhoneBook(mapApp->heapId);
     mapApp->phoneContact = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapId);
@@ -109,15 +109,15 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->playerGender = mapApp->pokegear->args->playerGender;
     mapApp->matrixX_2 = mapApp->pokegear->args->matrixXCoord;
     mapApp->matrixY_2 = mapApp->pokegear->args->matrixYCoord + 2;
-    mapApp->unk_100 = 1;
-    mapApp->unk_104 = 1;
+    mapApp->minXscroll = 1;
+    mapApp->minYscroll = 1;
     mapApp->maxXscroll = ov101_021F7F3C[mapApp->mapUnlockLevel];
-    mapApp->unk_106 = 0x11;
+    mapApp->maxYscroll = 0x11;
     mapApp->unk_132 = 0x20;
     mapApp->unk_131 = 8;
     mapApp->unk_133 = 0;
     mapApp->unk_134 = -24;
-    mapApp->unk_13D_1 = TRUE;
+    mapApp->canSeeSafariZone = TRUE;
     mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
     mapApp->unk_00E = ov100_021E5C80(mapApp->pokegear);
 }

@@ -76,18 +76,18 @@ void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u
     gearPhone->unk_var4 = a5;
 }
 
-u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
+u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, Unk_PokegearSTRUCT_14 *a1) {
     MI_CpuFill8(a1, 0, 5);
     if (gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(FALSE);
-        a1[0] = 0xFF;
+        a1->unk_0 = 0xFF;
         return 0xFF;
     }
-    a1[0] = gearPhone->unk_arr5[0];
-    a1[1] = gearPhone->unk_arr5[1];
-    a1[3] = gearPhone->unk_var3; // 2 = scripted?
-    a1[4] = gearPhone->unk_var4; // message ID?
-    a1[2] = gearPhone->unk_var7;
+    a1->unk_0 = gearPhone->unk_arr5[0];
+    a1->unk_1 = gearPhone->unk_arr5[1];
+    a1->isScriptedCall = gearPhone->unk_var3; // 2 = scripted?
+    a1->callScriptID = gearPhone->unk_var4;   // message ID?
+    a1->unk_2 = gearPhone->unk_var7;
     return gearPhone->callerId;
 }
 

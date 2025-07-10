@@ -10,22 +10,22 @@
 #include "touchscreen_list_menu.h"
 #include "unk_02013534.h"
 
-typedef struct UnkStruct_ov101_021F79B4 {
-    u16 unk_00;
-    u16 unk_02;
-    u8 unk_04;
+typedef struct MapFlypointParam {
+    u16 mapIDforName;
+    u16 mapIDforWarp;
+    u8 flypoint;
     u8 unk_05;
-    u8 unk_06;
-    u8 unk_07;
-    u8 unk_08;
-    u8 unk_09;
-    u8 unk_0A_0 : 4;
-    u8 unk_0A_4 : 4;
-    u8 unk_0B_0 : 4;
-    u8 unk_0B_4 : 4;
-    u8 unk_0C_0 : 4;
-    u8 unk_0C_4 : 4;
-} UnkStruct_ov101_021F79B4;
+    u8 x;
+    u8 y;
+    u8 unk170SrcX;
+    u8 unk170SrcY;
+    u8 width : 4;
+    u8 height : 4;
+    u8 unk170DestWidth : 4;
+    u8 unk170DestHeight : 4;
+    u8 unk170DestX : 4;
+    u8 unk170DestY : 4;
+} MapFlypointParam;
 
 typedef struct PokegearMapAppData_Sub044 {
     UnkStruct_02013950 *unk_0;
@@ -62,13 +62,13 @@ typedef struct PokegearMapAppData_Sub214 {
     u16 objXoffset : 4;
     u16 objYoffset : 4;
     u8 flavorText;
-    u8 unk_7;
-    u8 unk_8;
-    u8 unk_9;
-    u8 unk_A;
-    u8 unk_B;
-    u8 unk_C;
-    u8 unk_D;
+    u8 tilemapUnk170BlockID;
+    u8 unk_8; // unused
+    u8 unk_9; // unused
+    u8 unk_A; // unused
+    u8 unk_B; // unused
+    u8 tilemapUnk170SrcX;
+    u8 tilemapUnk170SrcY;
     u8 tilemapUnk170DestWidth;
     u8 tilemapUnk170DestHeight;
 } PokegearMapAppData_Sub214;
@@ -84,8 +84,8 @@ typedef struct MapMarkingsHeapNode {
 typedef struct PokegearMapAppData_Sub118 {
     const PokegearMapAppData_Sub214 *unk_0;
     MapMarkingsHeapNode *heap;
-    u16 unk_8;
-    u16 unk_A;
+    u16 x; // written but never read
+    u16 y; // written but never read
 } PokegearMapAppData_Sub118;
 
 typedef struct PokegearMapAppData {
@@ -100,7 +100,7 @@ typedef struct PokegearMapAppData {
     PokegearUnkSub03C unk_014;                   // 0x014
     int unk_030;                                 // 0x030
     int unk_034;                                 // 0x034
-    MAPDATA *unk_038;                            // 0x038
+    MAPDATA *mapData;                            // 0x038
     UnkStruct_02013534 *unk_03C;                 // 0x03C
     UnkStruct_02013910 *unk_040;                 // 0x040
     PokegearMapAppData_Sub044 unk_044[4];        // 0x044
@@ -120,10 +120,10 @@ typedef struct PokegearMapAppData {
     LISTMENUITEM *listMenuItems;                 // 0x0C0
     TouchscreenListMenu *listMenu;               // 0x0C4
     PokegearMapAppData_Sub0C8 unk_0C8;           // 0x0C8
-    u16 unk_100;                                 // 0x100
+    u16 minXscroll;                              // 0x100
     u16 maxXscroll;                              // 0x102
-    u16 unk_104;                                 // 0x104
-    u16 unk_106;                                 // 0x106
+    u16 minYscroll;                              // 0x104
+    u16 maxYscroll;                              // 0x106
     s16 matrixX;                                 // 0x108
     s16 matrixY;                                 // 0x10A
     u16 mapID;                                   // 0x10C
@@ -158,7 +158,7 @@ typedef struct PokegearMapAppData {
     u8 unk_13C_0 : 7;                            // 0x13C
     u8 unk_13C_7 : 1;                            // 0x13C
     u8 canFlyToGoldenrod : 1;                    // 0x13D
-    u8 unk_13D_1 : 1;                            // 0x13D set to 1, never read
+    u8 canSeeSafariZone : 1;                     // 0x13D
     u8 isMapSinjoh : 1;                          // 0x13D
     u8 isMapSSAqua : 1;                          // 0x13D
     s16 unk_13E;                                 // 0x13E
@@ -182,7 +182,7 @@ typedef struct PokegearMapAppData {
     Window windows[9];                           // 0x184
     const PokegearMapAppData_Sub214 *unk_214;    // 0x214
     MapMarkingsHeapNode mapMarkingsHeap[100];    // 0x218
-    u16 unk_9E8[ROAMER_MAX];                     // 0x9E8
+    u16 roamerLocations[ROAMER_MAX];             // 0x9E8
     u8 mapMarkingsListHead;                      // 0x9F0
     u8 mapMarkingsListTail;                      // 0x9F1
     u8 mapMarkingsListCount;                     // 0x9F2
@@ -245,21 +245,21 @@ int ov101_021ED2C0(PokegearMapAppData *mapApp);
 
 void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp);
 void PokegearMap_FlattenMapMarkingsToSaveArray(PokegearMapAppData *mapApp);
-MapMarkingsHeapNode *MapApp_GetMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, int a1);
-MapMarkingsHeapNode *MapApp_GetOrCreateMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, u16 a1);
-BOOL MapApp_RemoveMarkingsHeapNodeFromList(PokegearMapAppData *mapApp, MapMarkingsHeapNode *a1);
-BOOL MapMarkingsHeapNode_SetIcon(MapMarkingsHeapNode *a0, u8 a1, u8 a2);
-BOOL MapMarkingsHeapNode_RemoveIcon(MapMarkingsHeapNode *a0, u8 a1);
-BOOL MapMarkingsHeapNode_SwapIcons(MapMarkingsHeapNode *a0, u8 a1, u8 a2);
-BOOL MapMarkingsHeapNode_SetWord(MapMarkingsHeapNode *a0, u8 a1, u16 a2);
-BOOL MapMarkingsHeapNode_RemoveWord(MapMarkingsHeapNode *a0, u8 a1);
-BOOL MapMarkingsHeapNode_SwapWords(MapMarkingsHeapNode *a0, u8 a1, u8 a2);
+MapMarkingsHeapNode *MapApp_GetMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, int mapID);
+MapMarkingsHeapNode *MapApp_GetOrCreateMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, u16 mapID);
+BOOL MapApp_RemoveMarkingsHeapNodeFromList(PokegearMapAppData *mapApp, MapMarkingsHeapNode *node);
+BOOL MapMarkingsHeapNode_SetIcon(MapMarkingsHeapNode *node, u8 index, u8 icon);
+BOOL MapMarkingsHeapNode_RemoveIcon(MapMarkingsHeapNode *node, u8 index);
+BOOL MapMarkingsHeapNode_SwapIcons(MapMarkingsHeapNode *node, u8 index1, u8 index2);
+BOOL MapMarkingsHeapNode_SetWord(MapMarkingsHeapNode *node, u8 index, u16 word);
+BOOL MapMarkingsHeapNode_RemoveWord(MapMarkingsHeapNode *node, u8 index);
+BOOL MapMarkingsHeapNode_SwapWords(MapMarkingsHeapNode *node, u8 index1, u8 index2);
 
 BOOL ov101_021EDCE0(PokegearMapAppData *mapApp);
 BOOL ov101_021EDDB0(PokegearMapAppData *mapApp);
 int ov101_021EDDF4(PokegearMapAppData *mapApp);
 
 extern const PokegearMapAppData_Sub214 ov101_021F7372[];
-extern const UnkStruct_ov101_021F79B4 ov101_021F79B4[];
+extern const MapFlypointParam gMapFlypointParams[];
 
 #endif // POKEHEARTGOLD_APPLICATION_POKEGEAR_MAP_POKEGEAR_MAP_INTERNAL_H

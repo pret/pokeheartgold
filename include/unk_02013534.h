@@ -9,9 +9,9 @@ typedef struct UnkStruct_02013534 UnkStruct_02013534; // size: 0x68
 typedef struct UnkStruct_02013910 UnkStruct_02013910;
 typedef struct UnkTemplate_02013950 {
     UnkStruct_02013534 *unk_00;
-    Window *unk_04;
-    SpriteList *unk_08;
-    NNSG2dImagePaletteProxy *unk_0C;
+    Window *window;
+    SpriteList *spriteList;
+    NNSG2dImagePaletteProxy *plttResourceProxy;
     Sprite *unk_10;
     u32 unk_14;
     int unk_18;
@@ -19,7 +19,7 @@ typedef struct UnkTemplate_02013950 {
     int unk_20;
     int unk_24;
     int unk_28;
-    HeapID unk_2C;
+    HeapID heapID;
 } UnkTemplate_02013950;
 typedef struct UnkStruct_02013950 UnkStruct_02013950;
 
