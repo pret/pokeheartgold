@@ -226,8 +226,8 @@ static void gearRingingManagerReset(GearPhoneRingManager *ptr) {
     ptr->unk_var0_1 = FALSE;
     ptr->ringing = FALSE;
     ptr->callerId = PHONE_CONTACT_NONE;
-    ptr->unk_var3 = 0;
-    ptr->unk_var4 = 0;
+    ptr->isScriptedCall = 0;
+    ptr->callScriptID = 0;
     ptr->unk_var7 = 0;
     ptr->entry.id = PHONE_CONTACT_NONE;
     ptr->unk_var12 = 50;

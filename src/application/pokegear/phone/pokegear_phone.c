@@ -111,13 +111,13 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     if (phoneApp->pokegear->args->isScriptedLaunch == 1) {
         phoneApp->isIncomingCall = TRUE;
         phoneApp->callerID = phoneApp->pokegear->args->callerId;
-        phoneApp->isScriptedCall = phoneApp->pokegear->args->isScriptedCall;
+        phoneApp->callScriptType = phoneApp->pokegear->args->isScriptedCall;
         phoneApp->callScriptID = phoneApp->pokegear->args->callScriptID;
         phoneApp->pokegear->cursorInAppSwitchZone = 0;
     } else {
         phoneApp->isIncomingCall = FALSE;
         phoneApp->callerID = 0;
-        phoneApp->isScriptedCall = 0;
+        phoneApp->callScriptType = 0;
         phoneApp->callScriptID = 0;
     }
 }

@@ -4654,7 +4654,7 @@ BOOL ScrCmd_SetPhoneCall(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); // PhoneCallAppData
     GearPhoneRingManager_StartRinging(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     ctx->fieldSystem->unkD2_7 = TRUE;
-    ov02_02251EB8(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), callerId, 0xFF, 0, r6, r7);
+    GearPhoneRingManager_SetCallerParams(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), callerId, 0xFF, 0, r6, r7);
     return TRUE;
 }
 
