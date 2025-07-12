@@ -60,7 +60,7 @@ sub_02055218: ; 0x02055218
 	mov r0, #0xb
 	mov r1, #0x10
 	add r4, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [r2]

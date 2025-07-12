@@ -52,7 +52,7 @@ sub_020192D0: ; 0x020192D0
 	mov r0, #3
 	mov r1, #0x7b
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0x80
 	mov r2, #0x7b
@@ -240,7 +240,7 @@ sub_02019490: ; 0x02019490
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x7b
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02019490
@@ -258,7 +258,7 @@ sub_020194B4: ; 0x020194B4
 	bl sub_02039FD8
 	ldr r1, _020194F4 ; =0x00020020
 	mov r0, #0x7b
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0xc]
 	add r0, #0x1f
 	mov r1, #0x1f
@@ -346,7 +346,7 @@ sub_0201956C: ; 0x0201956C
 	mov r1, #0x10
 	add r5, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	str r6, [r4]
 	strh r5, [r4, #8]
@@ -368,7 +368,7 @@ sub_0201956C: ; 0x0201956C
 	strh r0, [r4, #0xa]
 	ldr r0, [sp]
 	add r1, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]
@@ -421,7 +421,7 @@ sub_020195F4: ; 0x020195F4
 	add r5, r4, r7
 	lsl r1, r1, #1
 	str r2, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, r7]
 	ldrh r0, [r5, #4]
 	mov r1, #0x3f
@@ -1228,7 +1228,7 @@ sub_02019BA4: ; 0x02019BA4
 	mov r1, #0x20
 	add r6, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r5, [r0]
 	str r4, [r0, #4]
 	str r6, [r0, #0x18]

@@ -678,7 +678,7 @@ void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID he
         return;
     }
 
-    buf = AllocFromHeap(heapId, sPocketCounts[pocket] * sizeof(ItemSlot));
+    buf = Heap_Alloc(heapId, sPocketCounts[pocket] * sizeof(ItemSlot));
 
     j = 0;
     for (i = 0; i < sPocketCounts[pocket]; i++) {

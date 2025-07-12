@@ -55,7 +55,7 @@ static const u8 sEpisodeUnlockFlags[] = {
 };
 
 BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow) {
-    ThatTownThesePeopleData *data = AllocFromHeap(radioShow->heapID, sizeof(ThatTownThesePeopleData));
+    ThatTownThesePeopleData *data = Heap_Alloc(radioShow->heapID, sizeof(ThatTownThesePeopleData));
     MI_CpuClear8(data, sizeof(ThatTownThesePeopleData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

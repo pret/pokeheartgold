@@ -282,7 +282,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
     // so back up the overworld state here.
     seedBak = GetLCRNGSeed();
     Party_InitWithMaxSize(enemies->party[partyIndex], PARTY_SIZE);
-    data = (TRPOKE *)AllocFromHeap(heapId, sizeof(TRPOKE) * PARTY_SIZE);
+    data = (TRPOKE *)Heap_Alloc(heapId, sizeof(TRPOKE) * PARTY_SIZE);
     mon = AllocMonZeroed(heapId);
     TrainerData_ReadTrPoke(enemies->trainerId[partyIndex], data);
 

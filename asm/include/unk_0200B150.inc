@@ -6,7 +6,7 @@
 .public sub_0200B27C
 .public sub_0200B2E0
 .public sub_0200B2E8
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public ClearMainOAM
 .public ClearSubOAM

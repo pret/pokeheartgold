@@ -633,7 +633,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
 static void IntroMovie_Scene3_Load3dGfxData(IntroMovieScene3Data *sceneData) {
     u8 j, i;
     NARC *narc = NARC_New(NARC_demo_opening_gs_opening, HEAP_ID_INTRO_MOVIE);
-    GF_ExpHeap_FndInitAllocator(&sceneData->allocator, HEAP_ID_INTRO_MOVIE, 4);
+    HeapExp_FndInitAllocator(&sceneData->allocator, HEAP_ID_INTRO_MOVIE, 4);
     for (i = 0; i < 3; ++i) {
         NNSG3dResMdl *pMdl;
         sceneData->mapRender[i].resFileHeader = NARC_AllocAndReadWholeMember(narc, sMap3dResHeaderFileIds[i], HEAP_ID_INTRO_MOVIE);

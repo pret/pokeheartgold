@@ -50,7 +50,7 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(saveData);
     PlayerSaveData *playerData = LocalFieldData_GetPlayer(localFieldData);
     u16 *pMusicID = LocalFieldData_GetMusicIdAddr(localFieldData);
-    RadioShow *ret = AllocFromHeap(heapId, sizeof(RadioShow));
+    RadioShow *ret = Heap_Alloc(heapId, sizeof(RadioShow));
     MI_CpuClear8(ret, sizeof(RadioShow));
     ret->saveData = saveData;
     ret->mapID = mapID;

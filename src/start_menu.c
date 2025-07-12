@@ -274,7 +274,7 @@ void sub_0203BD64(FieldSystem *fieldSystem) {
 }
 
 static StartMenuTaskData *StartMenu_Create(void) {
-    StartMenuTaskData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuTaskData));
+    StartMenuTaskData *ret = Heap_Alloc(HEAP_ID_FIELD, sizeof(StartMenuTaskData));
     MI_CpuClearFast(ret, sizeof(StartMenuTaskData));
     ret->state = 0;
     ret->lastButtonSelected = 0;
@@ -746,7 +746,7 @@ static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location *position = LocalFieldData_GetCurrentPosition(localFieldData);
     Location *specialSpawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(localFieldData);
-    PokedexArgs *pokedexArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokedexArgs));
+    PokedexArgs *pokedexArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PokedexArgs));
     MI_CpuClear8(pokedexArgs, sizeof(PokedexArgs));
     pokedexArgs->pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     pokedexArgs->playerProfile = Save_PlayerData_GetProfile(fieldSystem->saveData);
@@ -811,13 +811,13 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    PartyMenuArgs *partyMenuArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memcpy(partyMenuArgs, startMenu->exitTaskEnvironment, sizeof(PartyMenuArgs));
     Heap_Free(startMenu->exitTaskEnvironment);
 
     switch (partyMenuArgs->selectedAction) {
     case PARTY_MENU_ACTION_RETURN_1: {
-        PokemonSummaryArgs *pokemonSummaryArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+        PokemonSummaryArgs *pokemonSummaryArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
         pokemonSummaryArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
         pokemonSummaryArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         pokemonSummaryArgs->unk11 = 1;
@@ -839,7 +839,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         break;
     }
     case PARTY_MENU_ACTION_RETURN_4: {
-        PokemonSummaryArgs *pokemonSummaryArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+        PokemonSummaryArgs *pokemonSummaryArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
         pokemonSummaryArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
         pokemonSummaryArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         pokemonSummaryArgs->unk11 = 1;
@@ -855,7 +855,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfile(fieldSystem->saveData));
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, pokemonSummaryArgs);
-        UnkStruct_0203D580 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
+        UnkStruct_0203D580 *unk = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
         unk->itemId = partyMenuArgs->itemId;
         unk->unk_2 = 0;
         startMenu->exitTaskEnvironment2 = unk;
@@ -864,7 +864,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         break;
     }
     case PARTY_MENU_ACTION_RETURN_5: {
-        PokemonSummaryArgs *pokemonSummaryArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+        PokemonSummaryArgs *pokemonSummaryArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
         pokemonSummaryArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
         pokemonSummaryArgs->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         pokemonSummaryArgs->unk11 = 1;
@@ -880,7 +880,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         sub_02089D40(pokemonSummaryArgs, _020FA0AC);
         sub_0208AD34(pokemonSummaryArgs, Save_PlayerData_GetProfile(fieldSystem->saveData));
         PokemonSummary_LearnForget_LaunchApp(fieldSystem, pokemonSummaryArgs);
-        UnkStruct_0203D580 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
+        UnkStruct_0203D580 *unk = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0203D580));
         unk->itemId = ITEM_NONE;
         unk->unk_2 = partyMenuArgs->levelUpMoveSearchState;
         startMenu->exitTaskEnvironment2 = unk;
@@ -903,7 +903,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         StartMenu_SetExitTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         break;
     case 3: {
-        StartMenuAfterEvoPartySlotBak *afterEvoPartySlot = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
+        StartMenuAfterEvoPartySlotBak *afterEvoPartySlot = Heap_Alloc(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
         afterEvoPartySlot->partySlot = partyMenuArgs->partySlot;
         startMenu->exitTaskEnvironment2 = afterEvoPartySlot;
         Bag *bag = Save_Bag_Get(fieldSystem->saveData);
@@ -916,7 +916,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         break;
     }
     case PARTY_MENU_ACTION_RETURN_EVO_ITEM_USE: {
-        UnkStruct_0203CA9C_Case8 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
+        UnkStruct_0203CA9C_Case8 *unk = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
         unk->evoParam = partyMenuArgs->itemId;
         unk->evoType = EVOCTX_ITEM_USE;
         unk->partySlot = partyMenuArgs->partySlot;
@@ -927,7 +927,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         break;
     }
     case PARTY_MENU_ACTION_RETURN_EVO_RARE_CANDY: {
-        UnkStruct_0203CA9C_Case8 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
+        UnkStruct_0203CA9C_Case8 *unk = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0203CA9C_Case8));
         unk->evoParam = MapHeader_GetMapEvolutionMethod(fieldSystem->location->mapId);
         unk->evoType = EVOCTX_LEVELUP;
         unk->partySlot = partyMenuArgs->partySlot;
@@ -1039,7 +1039,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
         sub_0203D664(taskManager, BagView_GetItemId(bagView));
         break;
     case 2: {
-        PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+        PartyMenuArgs *partyMenuArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
         memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->context = PARTY_MENU_CONTEXT_9;
@@ -1061,7 +1061,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
             startMenu->exitTaskEnvironment2 = sub_0203D818(itemId, 0, monSlot);
             StartMenu_SetExitTaskFunc(startMenu, Task_ReturnToMenuFromMail);
         } else {
-            PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+            PartyMenuArgs *partyMenuArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
             memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
             sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
             partyMenuArgs->party = party;
@@ -1297,11 +1297,11 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
-    PokemonSummaryArgs *summaryArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
+    PokemonSummaryArgs *summaryArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PokemonSummaryArgs));
     memcpy(summaryArgs, startMenu->exitTaskEnvironment, sizeof(PokemonSummaryArgs));
     Heap_Free(startMenu->exitTaskEnvironment);
     if (summaryArgs->unk12 == 2) {
-        PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+        PartyMenuArgs *partyMenuArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
         UnkStruct_0203D580 *r7 = startMenu->exitTaskEnvironment2;
         sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
         partyMenuArgs->itemId = r7->itemId;
@@ -1387,7 +1387,7 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
 }
 
 UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
-    UnkStruct_0203D818 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D818));
+    UnkStruct_0203D818 *ret = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0203D818));
     ret->itemId = itemId;
     ret->partySlot = partySlot;
     ret->kind = kind;
@@ -1435,7 +1435,7 @@ BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager) {
 
 static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu, u8 a2) {
     UnkStruct_0203D818 *unk = startMenu->exitTaskEnvironment2;
-    PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    PartyMenuArgs *partyMenuArgs = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
     partyMenuArgs->itemId = unk->itemId;
     partyMenuArgs->partySlot = unk->partySlot;
@@ -1462,7 +1462,7 @@ static void Task_StartMenu_Evolution(TaskManager *taskManager) {
 
     UnkStruct_0203CA9C_Case8 *unk = startMenu->exitTaskEnvironment;
     Sound_Stop();
-    CreateHeap(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
 
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
     Pokemon *pokemon = Party_GetMonByIndex(party, unk->partySlot);
@@ -1472,7 +1472,7 @@ static void Task_StartMenu_Evolution(TaskManager *taskManager) {
     } else {
         evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->evoMethod, FALSE, HEAP_ID_EVOLUTION);
     }
-    StartMenuAfterEvoPartySlotBak *newEnv = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
+    StartMenuAfterEvoPartySlotBak *newEnv = Heap_Alloc(HEAP_ID_FIELD, sizeof(StartMenuAfterEvoPartySlotBak));
     newEnv->partySlot = unk->partySlot;
     startMenu->exitTaskEnvironment2 = newEnv;
     Heap_Free(startMenu->exitTaskEnvironment);
@@ -1486,7 +1486,7 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
 
     if (sub_02075D3C(startMenu->exitTaskEnvironment) == TRUE) {
         sub_02075D4C(startMenu->exitTaskEnvironment);
-        DestroyHeap(HEAP_ID_EVOLUTION);
+        Heap_Destroy(HEAP_ID_EVOLUTION);
         StopBGM(SEQ_GS_SHINKA, 0);
         sub_02004AD8(0);
         sub_02055164(fieldSystem, fieldSystem->location->mapId);

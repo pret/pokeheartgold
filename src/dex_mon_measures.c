@@ -21,7 +21,7 @@ static int sHeightMsgBank = NARC_msg_msg_0814_bin;
 struct PokedexData *PokedexData_Create(HeapID heapId) {
     struct PokedexData *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(struct PokedexData));
+    ret = Heap_Alloc(heapId, sizeof(struct PokedexData));
     memset(ret, 0, sizeof(struct PokedexData));
     return ret;
 }

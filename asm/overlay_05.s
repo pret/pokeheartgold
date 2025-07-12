@@ -3990,7 +3990,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r1, #0x12
 	ldr r0, [r0, #0x24]
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xb6
 	lsl r2, r2, #4
 	str r0, [r4, r2]

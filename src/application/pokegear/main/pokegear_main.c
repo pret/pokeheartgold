@@ -56,7 +56,7 @@ static BOOL PokegearApp_RunSubapp(OverlayManager **ppOvyMan) {
 BOOL Pokegear_Init(OverlayManager *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
     sub_0200616C(0);
-    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR, 0x32000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR, 0x32000);
     PokegearAppData *pokegearApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearAppData), HEAP_ID_POKEGEAR);
     memset(pokegearApp, 0, sizeof(PokegearAppData));
     pokegearApp->args = args;
@@ -147,7 +147,7 @@ BOOL Pokegear_Exit(OverlayManager *man, int *state) {
     OverlayManager_FreeData(man);
     sub_02004B10();
     sub_0203E354();
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
     return TRUE;
 }
 

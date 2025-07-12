@@ -81,7 +81,7 @@ static void CallTask_StartBattle(TaskManager *taskManager, BattleSetup *setup) {
 }
 
 static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
-    Encounter *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(Encounter));
+    Encounter *encounter = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(Encounter));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
         *winFlag = BATTLE_OUTCOME_NONE;
@@ -293,7 +293,7 @@ void CallTask_020509F0(TaskManager *taskManager, BattleSetup *battleSetup, s32 e
 }
 
 static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
-    WildEncounter *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(WildEncounter));
+    WildEncounter *encounter = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(WildEncounter));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
         *winFlag = BATTLE_OUTCOME_NONE;

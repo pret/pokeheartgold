@@ -8,7 +8,7 @@ SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, 
     void *environment;
 
     if (environmentSize != 0) {
-        environment = AllocFromHeap(heapId, environmentSize);
+        environment = Heap_Alloc(heapId, environmentSize);
         if (environment == NULL) {
             return NULL;
         }

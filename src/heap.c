@@ -29,7 +29,7 @@ static struct HeapInfo sHeapInfo;
 static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignment);
 BOOL GF_heap_c_dummy_return_true(HeapID heapId);
 
-void InitHeapSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size) {
+void Heap_InitSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size) {
     void *ptr;
     u32 unk_size, i;
 
@@ -113,11 +113,11 @@ static s32 FindFirstAvailableHeapHandle() {
     return -1;
 }
 
-BOOL CreateHeap(HeapID parent, HeapID child, u32 size) {
+BOOL Heap_Create(HeapID parent, HeapID child, u32 size) {
     return CreateHeapInternal(parent, child, size, 4);
 }
 
-BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size) {
+BOOL Heap_CreateAtEnd(HeapID parent, HeapID child, u32 size) {
     return CreateHeapInternal(parent, child, size, -4);
 }
 
@@ -158,7 +158,7 @@ static BOOL CreateHeapInternal(HeapID parent, HeapID child, u32 size, s32 alignm
     return FALSE;
 }
 
-void DestroyHeap(HeapID heapId) {
+void Heap_Destroy(HeapID heapId) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     NNSFndHeapHandle handle = sHeapInfo.heapHandles[sHeapInfo.heapIdxs[heapId]];
@@ -206,7 +206,7 @@ static void AllocFail() {
     }
 }
 
-void *AllocFromHeap(HeapID heapId, u32 size) {
+void *Heap_Alloc(HeapID heapId, u32 size) {
     void *ptr = NULL;
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -221,7 +221,7 @@ void *AllocFromHeap(HeapID heapId, u32 size) {
     return ptr;
 }
 
-void *AllocFromHeapAtEnd(HeapID heapId, u32 size) {
+void *Heap_AllocAtEnd(HeapID heapId, u32 size) {
     void *ptr = NULL;
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -282,7 +282,7 @@ void Heap_FreeExplicit(HeapID heapId, void *ptr) {
     GF_ASSERT(FALSE);
 }
 
-u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId) {
+u32 HeapExp_FndGetTotalFreeSize(HeapID heapId) {
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
         u8 index = sHeapInfo.heapIdxs[heapId];
         return NNS_FndGetTotalFreeSizeForExpHeap(sHeapInfo.heapHandles[index]);
@@ -292,7 +292,7 @@ u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId) {
     return 0;
 }
 
-void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int alignment) {
+void HeapExp_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int alignment) {
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {
 
         u8 index = sHeapInfo.heapIdxs[heapId];
@@ -303,7 +303,7 @@ void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int
     GF_ASSERT(FALSE);
 }
 
-void ReallocFromHeap(void *ptr, u32 newSize) {
+void Heap_Realloc(void *ptr, u32 newSize) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     newSize += sizeof(MemoryBlock);

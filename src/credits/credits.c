@@ -214,7 +214,7 @@ BOOL Credits_Init(OverlayManager *man, int *state) {
 
     switch (*state) {
     case 0:
-        CreateHeap(HEAP_ID_3, HEAP_ID_CREDITS, 0x40000);
+        Heap_Create(HEAP_ID_3, HEAP_ID_CREDITS, 0x40000);
         work = OverlayManager_CreateAndGetData(man, sizeof(CreditsAppWork), HEAP_ID_CREDITS);
         if (work != NULL) {
             MI_CpuFill8(work, 0, sizeof(CreditsAppWork));
@@ -297,7 +297,7 @@ BOOL Credits_Exit(OverlayManager *man, int *state) {
         break;
     case 3:
         OverlayManager_FreeData(man);
-        DestroyHeap(HEAP_ID_CREDITS);
+        Heap_Destroy(HEAP_ID_CREDITS);
         return TRUE;
     }
     return FALSE;

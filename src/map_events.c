@@ -13,7 +13,7 @@ static void MapScriptHeader_ReadFromNarc(MapEvents *events, u32 mapno);
 
 void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
     GF_ASSERT(work->mapEvents == NULL);
-    work->mapEvents = AllocFromHeap(heapId, sizeof(MapEvents));
+    work->mapEvents = Heap_Alloc(heapId, sizeof(MapEvents));
 }
 
 void Field_FreeMapEvents(FieldSystem *work) {

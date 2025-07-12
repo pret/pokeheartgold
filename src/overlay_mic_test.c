@@ -396,7 +396,7 @@ static const MicTestTextBox sMicTestTextBoxes[3] = {
 const OverlayManagerTemplate gApplication_MicTest = { MicTest_Init, MicTest_Main, MicTest_Exit, FS_OVERLAY_ID_NONE };
 
 static BOOL MicTest_Init(OverlayManager *overlayMan, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_MIC_TEST, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_MIC_TEST, 0x30000);
 
     MicTestData *micTest = OverlayManager_CreateAndGetData(overlayMan, sizeof(MicTestData), HEAP_ID_MIC_TEST);
 
@@ -432,7 +432,7 @@ static BOOL MicTest_Exit(OverlayManager *overlayMan, int *state) {
     ov62_021E5C80();
     FontID_Release(4);
     OverlayManager_FreeData(overlayMan);
-    DestroyHeap(micTest->heapId);
+    Heap_Destroy(micTest->heapId);
     RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
     return TRUE;
 }
@@ -760,7 +760,7 @@ static void ov62_021E6178(MicTestSub_B8 *a0) {
 static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, MicTestData *micTest) {
     Sys_SetSleepDisableFlag(8);
 
-    void *data = AllocFromHeap(heapId, 0x120);
+    void *data = Heap_Alloc(heapId, 0x120);
     MI_CpuFill8(data, 0, 0x120);
     input->unk1C = data;
 

@@ -62,7 +62,7 @@ BOOL Mail_TypeIsValid(Mail *mail) {
 }
 
 Mail *Mail_New(HeapID heapId) {
-    Mail *ret = (Mail *)AllocFromHeapAtEnd(heapId, sizeof(Mail));
+    Mail *ret = (Mail *)Heap_AllocAtEnd(heapId, sizeof(Mail));
     Mail_Init(ret);
     return ret;
 }

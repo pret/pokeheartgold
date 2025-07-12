@@ -17,7 +17,7 @@
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public AddWindowParameterized
 .public RemoveWindow

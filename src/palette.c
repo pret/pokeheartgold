@@ -20,7 +20,7 @@ static void PaletteData_AdvanceSelectedBitCur(PaletteData *data, u8 bufferID, Se
 static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int denom, int numer, int rTarget, int gTarget, int bTarget);
 
 PaletteData *PaletteData_Init(HeapID heapId) {
-    PaletteData *ret = AllocFromHeap(heapId, sizeof(PaletteData));
+    PaletteData *ret = Heap_Alloc(heapId, sizeof(PaletteData));
     MI_CpuFill8(ret, 0, sizeof(PaletteData));
     return ret;
 }
@@ -36,7 +36,7 @@ void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *op
 }
 
 void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, HeapID heapID) {
-    PaletteData_SetBuffers(data, bufferID, AllocFromHeap(heapID, size), AllocFromHeap(heapID, size), size);
+    PaletteData_SetBuffers(data, bufferID, Heap_Alloc(heapID, size), Heap_Alloc(heapID, size), size);
 }
 
 void PaletteData_FreeBuffers(PaletteData *data, PaletteBufferId bufferID) {
@@ -431,7 +431,7 @@ void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1) {
 void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
     void *tmp;
 
-    tmp = AllocFromHeap(heapId, 0x200);
+    tmp = Heap_Alloc(heapId, 0x200);
     memset(tmp, 0, 0x200);
     DC_FlushRange(tmp, 0x200);
 
@@ -450,7 +450,7 @@ void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
 
     Heap_FreeExplicit(heapId, tmp);
 
-    tmp = AllocFromHeap(heapId, 0x2000);
+    tmp = Heap_Alloc(heapId, 0x2000);
     memset(tmp, 0, 0x2000);
     DC_FlushRange(tmp, 0x2000);
 

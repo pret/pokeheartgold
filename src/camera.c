@@ -98,8 +98,8 @@ void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, H
         return;
     }
     GF_ASSERT(initialWriteIdx + 1 <= count);
-    CameraHistory *history = AllocFromHeap(heapId, sizeof(CameraHistory));
-    history->vecs = AllocFromHeap(heapId, sizeof(VecFx32) * count);
+    CameraHistory *history = Heap_Alloc(heapId, sizeof(CameraHistory));
+    history->vecs = Heap_Alloc(heapId, sizeof(VecFx32) * count);
     for (s32 i = 0; i < count; i++) {
         history->vecs[i].x = 0;
         history->vecs[i].y = 0;
@@ -135,7 +135,7 @@ void Camera_History_Delete(Camera *camera) {
 }
 
 Camera *Camera_New(HeapID heapId) {
-    return AllocFromHeap(heapId, sizeof(Camera));
+    return Heap_Alloc(heapId, sizeof(Camera));
 }
 
 void Camera_Delete(Camera *camera) {

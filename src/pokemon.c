@@ -113,7 +113,7 @@ u32 SizeOfStructPokemon(void) {
 }
 
 Pokemon *AllocMonZeroed(HeapID heapId) {
-    Pokemon *mon = (Pokemon *)AllocFromHeap(heapId, sizeof(Pokemon));
+    Pokemon *mon = (Pokemon *)Heap_Alloc(heapId, sizeof(Pokemon));
     ZeroMonData(mon);
     return mon;
 }
@@ -355,7 +355,7 @@ void CalcMonStats(Pokemon *mon) {
     form = (int)GetMonData(mon, MON_DATA_FORM, NULL);
     species = (int)GetMonData(mon, MON_DATA_SPECIES, NULL);
 
-    baseStats = (BASE_STATS *)AllocFromHeap(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
+    baseStats = (BASE_STATS *)Heap_Alloc(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
     LoadMonBaseStats_HandleAlternateForm(species, form, baseStats);
 
     if (species == SPECIES_SHEDINJA) {
@@ -1712,13 +1712,13 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
 }
 
 BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, HeapID heapId) {
-    BASE_STATS *ret = AllocFromHeap(heapId, sizeof(BASE_STATS));
+    BASE_STATS *ret = Heap_Alloc(heapId, sizeof(BASE_STATS));
     LoadMonBaseStats_HandleAlternateForm(species, form, ret);
     return ret;
 }
 
 BASE_STATS *AllocAndLoadMonPersonal(int species, HeapID heapId) {
-    BASE_STATS *ret = AllocFromHeap(heapId, sizeof(BASE_STATS));
+    BASE_STATS *ret = Heap_Alloc(heapId, sizeof(BASE_STATS));
     LoadMonPersonal(species, ret);
     return ret;
 }
@@ -1854,7 +1854,7 @@ int GetMonBaseStat(int species, int attr) {
 int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int attr) {
     int resolved = ResolveMonForm(species, form);
     int ret;
-    BASE_STATS *buf = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
+    BASE_STATS *buf = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
     NARC_ReadWholeMember(narc, resolved, buf);
     ret = GetPersonalAttr(buf, attr);
     Heap_Free(buf);
@@ -1904,7 +1904,7 @@ u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
     u32 ret;
     GF_ASSERT(growthRate < 8);
     GF_ASSERT(level <= MAX_LEVEL + 1);
-    table = (u32 *)AllocFromHeap(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
+    table = (u32 *)Heap_Alloc(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
     LoadGrowthTable(growthRate, table);
     ret = table[level];
     Heap_Free(table);
@@ -2809,7 +2809,7 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
     if (method_ret == NULL) {
         method_ret = &method_local;
     }
-    evoTable = AllocFromHeap(HEAP_ID_DEFAULT, MAX_EVOS_PER_POKE * sizeof(struct Evolution));
+    evoTable = Heap_Alloc(HEAP_ID_DEFAULT, MAX_EVOS_PER_POKE * sizeof(struct Evolution));
     LoadMonEvolutionTable(species, evoTable);
     switch (context) {
     case EVOCTX_LEVELUP:
@@ -3039,7 +3039,7 @@ void InitBoxMonMoveset(BoxPokemon *boxMon) {
     u32 form;
     u8 level;
     u16 move;
-    levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
+    levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
     decry = AcquireBoxMonLock(boxMon);
     species = (u16)GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
@@ -3140,7 +3140,7 @@ void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
 
 u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
     u32 ret = 0;
-    u16 *levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
+    u16 *levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
     u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     u8 level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
@@ -3299,7 +3299,7 @@ s8 GetFlavorPreferenceFromPID(u32 personality, int flavor) {
 
 int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest) {
     int i;
-    u16 *levelUpLearnset = AllocFromHeap(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
+    u16 *levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
     LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
     for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
         dest[i] = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);

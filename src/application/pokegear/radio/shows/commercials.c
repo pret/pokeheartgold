@@ -80,7 +80,7 @@ static const u8 sCommercialsData[][3] = {
 };
 
 BOOL RadioShow_Commercials_Setup(RadioShow *radioShow) {
-    CommercialsData *data = AllocFromHeap(radioShow->heapID, sizeof(CommercialsData));
+    CommercialsData *data = Heap_Alloc(radioShow->heapID, sizeof(CommercialsData));
     MI_CpuClear8(data, sizeof(CommercialsData));
     // data->heapID = radioShow->heapID;
     radioShow->triggerCommercials = FALSE;

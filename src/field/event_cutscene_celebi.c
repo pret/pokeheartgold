@@ -57,7 +57,7 @@ static void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations,
 static BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations);
 
 void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem) {
-    CelebiTimeTravelCutsceneTaskData *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(CelebiTimeTravelCutsceneTaskData));
+    CelebiTimeTravelCutsceneTaskData *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(CelebiTimeTravelCutsceneTaskData));
     MI_CpuFill8(ptr, 0, sizeof(CelebiTimeTravelCutsceneTaskData));
     ptr->fieldSystem = fieldSystem;
     TaskManager_Call(fieldSystem->taskman, Task_CelebiTimeTravelCutscene, ptr);
@@ -201,7 +201,7 @@ static BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *dat
 
 static void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data) {
     const u32 files[3] = { NARC_legend_legend_00000076_NSBCA, NARC_legend_legend_00000078_NSBTP, NARC_legend_legend_00000077_NSBTA };
-    GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
+    HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
     Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, NARC_legend_legend_00000075_NSBMD, HEAP_ID_4);
     for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, files[i], HEAP_ID_4, &data->alloc);

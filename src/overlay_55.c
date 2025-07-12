@@ -54,7 +54,7 @@ BOOL ov55_UnkApp_Init(OverlayManager *manager, int *state) {
     UseMailArgs *args;
 
     args = OverlayManager_GetArgs(manager);
-    CreateHeap(HEAP_ID_3, HEAP_ID_OV55, 0x1000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_OV55, 0x1000);
     overlayData = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov55_021E5924), HEAP_ID_OV55);
     MI_CpuFill8(overlayData, 0, sizeof(UnkStruct_ov55_021E5924));
 
@@ -147,12 +147,12 @@ BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
     ov55_021E5BAC(overlayData->unk10);
     OverlayManager_FreeData(manager);
-    DestroyHeap(overlayData->heapId);
+    Heap_Destroy(overlayData->heapId);
     return TRUE;
 }
 
 static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, HeapID heapId) {
-    UnkStruct_ov55_021E5B08 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_ov55_021E5B08));
+    UnkStruct_ov55_021E5B08 *ret = Heap_Alloc(heapId, sizeof(UnkStruct_ov55_021E5B08));
     MI_CpuFill8(ret, 0, sizeof(UnkStruct_ov55_021E5B08));
 
     ret->unk0 = 0;

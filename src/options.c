@@ -6,7 +6,7 @@
 #include "system.h"
 
 Options *Options_New(HeapID heapId) {
-    Options *ret = AllocFromHeap(heapId, sizeof(Options));
+    Options *ret = Heap_Alloc(heapId, sizeof(Options));
     Options_Init(ret);
     return ret;
 }

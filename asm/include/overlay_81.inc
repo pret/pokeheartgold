@@ -96,9 +96,9 @@
 .public sub_0201A018
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

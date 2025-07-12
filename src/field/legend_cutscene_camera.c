@@ -259,7 +259,7 @@ static const u8 sBg2TilemapFileIDs[] = {
 void LegendCutscene_BeginClearBellAnim(FieldSystem *fieldSystem) {
     ClearBellCutsceneCamera *cam;
 
-    fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(ClearBellCutsceneCamera));
+    fieldSystem->unk4->legendCutsceneCamera = Heap_AllocAtEnd(HEAP_ID_4, sizeof(ClearBellCutsceneCamera));
     cam = fieldSystem->unk4->legendCutsceneCamera;
 
     cam->translation = CreateCameraTranslationWrapper(HEAP_ID_4, fieldSystem->camera);
@@ -319,7 +319,7 @@ static BOOL Task_WaitShimmerEffectAndRestart(TaskManager *taskman) {
 }
 
 void LegendCutscene_LugiaEyeGlimmerEffect(FieldSystem *fieldSystem) {
-    LegendCutsceneLugiaEyeGlimmerTaskData *eyeGlimmer = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(LegendCutsceneLugiaEyeGlimmerTaskData));
+    LegendCutsceneLugiaEyeGlimmerTaskData *eyeGlimmer = Heap_AllocAtEnd(HEAP_ID_4, sizeof(LegendCutsceneLugiaEyeGlimmerTaskData));
     eyeGlimmer->eyeGlimmerDelayTimer = 0;
     loadEyeGlimmer3dModel(HEAP_ID_4, fieldSystem, eyeGlimmer);
     TaskManager_Call(fieldSystem->taskman, Task_LugiaEyeGlimmer, eyeGlimmer);
@@ -333,7 +333,7 @@ static void Field3dObjectTaskInit_ClearBellCutscene(Field3dObjectTask *task, Fie
     ClearBellCutscene3dObjectTaskData *kimonoDanceObjData = (ClearBellCutscene3dObjectTaskData *)taskData;
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     kimonoDanceObjData->gameVersion = cam->gameVersion;
-    GF_ExpHeap_FndInitAllocator(&kimonoDanceObjData->allocator, HEAP_ID_4, 0x20);
+    HeapExp_FndInitAllocator(&kimonoDanceObjData->allocator, HEAP_ID_4, 0x20);
     Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellRisingModel, NARC_demo_legend, NARC_legend_legend_00000018_NSBMD, HEAP_ID_4);
     Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->clearBellShimmerModel, NARC_demo_legend, NARC_legend_legend_00000025_NSBMD, HEAP_ID_4);
     Field3dModel_LoadFromFilesystem(&kimonoDanceObjData->cornerBellModel, NARC_demo_legend, NARC_legend_legend_00000032_NSBMD, HEAP_ID_4);
@@ -495,7 +495,7 @@ static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData
 }
 
 static void loadEyeGlimmer3dModel(HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
-    GF_ExpHeap_FndInitAllocator(&taskData->allocator, heapId, 0x20);
+    HeapExp_FndInitAllocator(&taskData->allocator, heapId, 0x20);
     Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000028_NSBMD, heapId);
     Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000029_NSBMA, heapId, &taskData->allocator);
     Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000030_NSBTP, heapId, &taskData->allocator);
@@ -652,7 +652,7 @@ static BOOL Task_WaitCameraPan(TaskManager *taskman) {
 }
 
 void LegendCutscene_BirdFinalApproach(FieldSystem *fieldSystem) {
-    BirdFinalApproachTaskData *taskData = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(BirdFinalApproachTaskData));
+    BirdFinalApproachTaskData *taskData = Heap_AllocAtEnd(HEAP_ID_4, sizeof(BirdFinalApproachTaskData));
     taskData->gameVersion = gGameVersion;
     TaskManager_Call(fieldSystem->taskman, Task_BirdFinalApproach, taskData);
 }
@@ -684,7 +684,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
 
     switch (*pState) {
     case BIRD_FINAL_APPROACH_TASK_STATE_INIT:
-        GF_ExpHeap_FndInitAllocator(&taskData->allocator, HEAP_ID_4, 0x20);
+        HeapExp_FndInitAllocator(&taskData->allocator, HEAP_ID_4, 0x20);
         Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000034_NSBMD, HEAP_ID_4);
         Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000035_NSBCA, HEAP_ID_4, &taskData->allocator);
         Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000036_NSBMA, HEAP_ID_4, &taskData->allocator);
@@ -924,7 +924,7 @@ static void Task_LeavesEffect(SysTask *task, void *taskData) {
 void LegendCutscene_BeginLugiaArrivesEffect(FieldSystem *fieldSystem) {
     LugiaArrivesCutsceneCamera *cam;
 
-    fieldSystem->unk4->legendCutsceneCamera = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(LugiaArrivesCutsceneCamera));
+    fieldSystem->unk4->legendCutsceneCamera = Heap_AllocAtEnd(HEAP_ID_4, sizeof(LugiaArrivesCutsceneCamera));
     cam = fieldSystem->unk4->legendCutsceneCamera;
 
     cam->gameVersion = gGameVersion;

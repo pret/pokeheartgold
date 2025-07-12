@@ -1160,7 +1160,7 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
     u8 *movementCounter;
 
     GF_ASSERT(object != NULL);
-    cmd = AllocFromHeap(HEAP_ID_4, 64 * sizeof(MovementScriptCommand));
+    cmd = Heap_Alloc(HEAP_ID_4, 64 * sizeof(MovementScriptCommand));
     now_x = MapObject_GetCurrentX(object);
     now_z = MapObject_GetCurrentZ(object);
     i = 0;
@@ -1225,7 +1225,7 @@ struct ObjectMovementTaskEnv {
 void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
 
 void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
-    struct ObjectMovementTaskEnv *env = AllocFromHeap(HEAP_ID_4, sizeof(struct ObjectMovementTaskEnv));
+    struct ObjectMovementTaskEnv *env = Heap_Alloc(HEAP_ID_4, sizeof(struct ObjectMovementTaskEnv));
     if (env == NULL) {
         GF_ASSERT(FALSE);
         return;
@@ -1821,7 +1821,7 @@ static FashionAppData *sub_02042A60(HeapID heapId, FieldSystem *fieldSystem, int
     if (!sub_02042A30(fieldSystem, a2, a3)) {
         return NULL;
     }
-    fashionAppData = AllocFromHeap(heapId, sizeof(FashionAppData));
+    fashionAppData = Heap_Alloc(heapId, sizeof(FashionAppData));
     memset(fashionAppData, 0, sizeof(FashionAppData));
     fashionAppData->saveFashionData = saveFashionData;
     fashionAppData->unk_8 = a2;
@@ -1976,7 +1976,7 @@ BOOL ScrCmd_408(ScriptContext *ctx) {
     u16 r7 = ScriptGetVar(ctx);
     u16 sp0 = ScriptGetVar(ctx);
     UnkOv67Args **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *p_work = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct UnkOv67Args));
+    *p_work = Heap_Alloc(HEAP_ID_FIELD, sizeof(struct UnkOv67Args));
     InitUnkStructScrCmd408(*p_work, r7, sp0, ctx);
     sub_0203F0A8(ctx->fieldSystem, *p_work);
     SetupNativeScript(ctx, ScrNative_WaitApplication_DestroyTaskData);
@@ -4148,7 +4148,7 @@ BOOL ScrCmd_595(ScriptContext *ctx) {
 BOOL ScrCmd_627(ScriptContext *ctx) {
     FrontierLaunchParam **pParam = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u8 r6 = ScriptReadByte(ctx);
-    FrontierLaunchParam *param = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FrontierLaunchParam));
+    FrontierLaunchParam *param = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(FrontierLaunchParam));
     MI_CpuClear8(param, sizeof(FrontierLaunchParam));
     *pParam = param;
     if (r6 == 5 || r6 == 6) {
@@ -4327,9 +4327,9 @@ BOOL ScrCmd_682(ScriptContext *ctx) {
     static u32 sHeap32Size;
     static u32 sHeap11Size;
     u16 action = ScriptGetVar(ctx);
-    u32 heap11Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_FIELD);
-    u32 heap4Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_4);
-    u32 heap32Size = GF_ExpHeap_FndGetTotalFreeSize(HEAP_ID_32);
+    u32 heap11Size = HeapExp_FndGetTotalFreeSize(HEAP_ID_FIELD);
+    u32 heap4Size = HeapExp_FndGetTotalFreeSize(HEAP_ID_4);
+    u32 heap32Size = HeapExp_FndGetTotalFreeSize(HEAP_ID_32);
 
     if (action == 0) {
         sHeap11Size = heap11Size;
@@ -5078,8 +5078,8 @@ BOOL ScrCmd_BankTransaction(ScriptContext *ctx) {
     struct BankTransactionWork **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 mode = ScriptReadHalfword(ctx);
     u16 var_ret = ScriptReadHalfword(ctx);
-    struct BankTransactionWork *work = *p_work = AllocFromHeap(HEAP_ID_4, sizeof(struct BankTransactionWork)); // statement must be this way to match
-    work->sub = AllocFromHeap(HEAP_ID_4, sizeof(struct BankTransactionWorkSub));
+    struct BankTransactionWork *work = *p_work = Heap_Alloc(HEAP_ID_4, sizeof(struct BankTransactionWork)); // statement must be this way to match
+    work->sub = Heap_Alloc(HEAP_ID_4, sizeof(struct BankTransactionWorkSub));
     work->mode = mode;
     work->sub->max = GetMaxBankTransactionAmount(ctx->fieldSystem, mode);
     work->sub->selected = -1;

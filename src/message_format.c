@@ -34,13 +34,13 @@ MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
 
     GF_ASSERT(nstr != 0);
     GF_ASSERT(len != 0);
-    ret = AllocFromHeapAtEnd(heapId, sizeof(MessageFormat));
+    ret = Heap_AllocAtEnd(heapId, sizeof(MessageFormat));
     if (ret != NULL) {
         ret->count = nstr;
         ret->heapId = heapId;
         ret->buffer = String_New(len, heapId);
         if (ret->buffer != NULL) {
-            ret->fields = AllocFromHeapAtEnd(heapId, nstr * sizeof(MessageFormatFields));
+            ret->fields = Heap_AllocAtEnd(heapId, nstr * sizeof(MessageFormatFields));
             if (ret->fields != NULL) {
                 for (i = 0; i < nstr; i++) {
                     MessageFormat_InitFields(&ret->fields[i]);

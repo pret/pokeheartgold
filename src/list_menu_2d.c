@@ -23,7 +23,7 @@ static void Draw2dMenuCursor(struct ListMenu2D *listMenu);
 static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, u8 selectedIdx);
 
 static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
-    struct ListMenu2D *ret = AllocFromHeap((HeapID)heapId, sizeof(struct ListMenu2D));
+    struct ListMenu2D *ret = Heap_Alloc((HeapID)heapId, sizeof(struct ListMenu2D));
     ret->template = *template;
     ret->cursor = ListMenuCursorNew((HeapID)heapId);
     ret->cancelKey = cancelKey;

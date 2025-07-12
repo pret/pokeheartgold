@@ -26,7 +26,7 @@ static u32 GetNumFashionBackgrounds(SaveData *saveData);
 static u32 GetNumBattlePoints(SaveData *saveData);
 
 BagView *BagView_New(u8 heapId) {
-    BagView *ret = AllocFromHeap((HeapID)heapId, sizeof(BagView));
+    BagView *ret = Heap_Alloc((HeapID)heapId, sizeof(BagView));
     memset(ret, 0, sizeof(BagView));
     return ret;
 }

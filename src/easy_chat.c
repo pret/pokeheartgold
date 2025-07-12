@@ -101,7 +101,7 @@ static const ECIdenticalPhrases sIdenticalPhrases[12] = {
 };
 
 EasyChatManager *EasyChatManager_New(HeapID heapId) {
-    EasyChatManager *ret = AllocFromHeap(heapId, sizeof(EasyChatManager));
+    EasyChatManager *ret = Heap_Alloc(heapId, sizeof(EasyChatManager));
 
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
         ret->heapId = heapId; // inadvertently inside the loop
@@ -253,7 +253,7 @@ void Save_EasyChat_SetGreetingFlag(SaveEasyChat *saveEasyChat, u32 flag) {
 
 WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
     u32 size;
-    WallpaperPasswordBank *ret = AllocFromHeap(heapId, sizeof(WallpaperPasswordBank));
+    WallpaperPasswordBank *ret = Heap_Alloc(heapId, sizeof(WallpaperPasswordBank));
 
     memset(ret, 0, sizeof(WallpaperPasswordBank));
     ret->words = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_resource_eng_pms_aikotoba_pms_aikotoba, 0, FALSE, heapId, FALSE, &size);

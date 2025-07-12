@@ -239,7 +239,7 @@ static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index) {
     if (file.prop.file.bottom - file.prop.file.top != filesize) {
         GF_ASSERT(FALSE);
     }
-    MoveTutorLearnset *learnset = AllocFromHeapAtEnd(heapId, sizeof(MoveTutorLearnset));
+    MoveTutorLearnset *learnset = Heap_AllocAtEnd(heapId, sizeof(MoveTutorLearnset));
     FS_SeekFile(&file, index * sizeof(MoveTutorLearnset), FS_SEEK_SET);
     FS_ReadFile(&file, learnset, sizeof(MoveTutorLearnset));
     FS_CloseFile(&file);
@@ -326,7 +326,7 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
     *result = FALSE;
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
+    u16 *unk = Heap_AllocAtEnd(HEAP_ID_FIELD, 0x2c);
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     s32 size = Species_LoadLearnsetTable(species, form, unk);

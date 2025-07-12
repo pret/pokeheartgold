@@ -298,7 +298,7 @@ static const int sPokepicShadowUVParams[4][4] = {
 };
 
 PokepicManager *PokepicManager_Create(HeapID heapId) {
-    PokepicManager *ret = AllocFromHeap(heapId, sizeof(PokepicManager));
+    PokepicManager *ret = Heap_Alloc(heapId, sizeof(PokepicManager));
     MI_CpuClearFast(ret, sizeof(PokepicManager));
     ret->heapId = heapId;
     ret->unread_330 = 0;
@@ -306,10 +306,10 @@ PokepicManager *PokepicManager_Create(HeapID heapId) {
     ret->charSize = 0x8000;
     ret->plttBaseAddr = 0;
     ret->plttSize = 0x80;
-    ret->charRawData = AllocFromHeap(heapId, 0x8000);
-    ret->plttRawData = AllocFromHeap(heapId, 0xC0);
+    ret->charRawData = Heap_Alloc(heapId, 0x8000);
+    ret->plttRawData = Heap_Alloc(heapId, 0xC0);
     MI_CpuClearFast(ret->plttRawData, 4);
-    ret->plttRawDataUnfaded = AllocFromHeap(heapId, 0xC0);
+    ret->plttRawDataUnfaded = Heap_Alloc(heapId, 0xC0);
     MI_CpuClearFast(ret->plttRawDataUnfaded, 4);
     for (int i = 0; i < 4; ++i) {
         MI_CpuClearFast(&ret->pics[i], sizeof(Pokepic));

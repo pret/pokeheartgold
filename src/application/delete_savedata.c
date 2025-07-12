@@ -120,7 +120,7 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data);
 static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
 BOOL DeleteSavedataApp_Init(OverlayManager *manager, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     DeleteSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(DeleteSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
     memset(data, 0, sizeof(DeleteSavedataApp_Data));
@@ -204,7 +204,7 @@ BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state) {
 
     OverlayManager_FreeData(manager);
 
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
 
     OS_ResetSystem(0);
 

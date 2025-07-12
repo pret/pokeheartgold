@@ -103,7 +103,7 @@ typedef struct TaskData_TryHeadbuttEncounter {
 } TaskData_TryHeadbuttEncounter;
 
 void FieldSystem_TryHeadbuttEncounter(FieldSystem *fieldSystem, u16 *varPointer) {
-    TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
+    TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
     didHeadbuttStartBattle->resultPtr = varPointer;
     *varPointer = FALSE;
     TaskManager_Call(fieldSystem->taskman, Task_TryHeadbuttEncounter, didHeadbuttStartBattle);

@@ -22,9 +22,9 @@ static int GF2DGfxResHeaderNarc_CountObjects(const GF_2DGfxResHeaderNarc *a0);
 static void *loadResourceFromNarc(NARC *narc, int fileId, BOOL compressed, HeapID heapId, BOOL atEnd);
 
 GF_2DGfxResMan *Create2DGfxResObjMan(int num, GfGfxResType type, HeapID heapId) {
-    GF_2DGfxResMan *ret = AllocFromHeap(heapId, sizeof(GF_2DGfxResMan));
+    GF_2DGfxResMan *ret = Heap_Alloc(heapId, sizeof(GF_2DGfxResMan));
     ret->resourceMgr = GF2dGfxRawResMan_Create(num, heapId);
-    ret->objects = AllocFromHeap(heapId, num * sizeof(SpriteResource));
+    ret->objects = Heap_Alloc(heapId, num * sizeof(SpriteResource));
     memset(ret->objects, 0, num * sizeof(SpriteResource));
     ret->max = num;
     ret->num = 0;
@@ -240,8 +240,8 @@ static void loadAll2DGfxResObjFromHeaderInternal(GF_2DGfxResMan *mgr, const GF_2
 }
 
 GF_2DGfxResObjList *Create2DGfxResObjList(int num, HeapID heapId) {
-    GF_2DGfxResObjList *ret = AllocFromHeap(heapId, sizeof(GF_2DGfxResObjList));
-    ret->obj = AllocFromHeap(heapId, num * sizeof(SpriteResource *));
+    GF_2DGfxResObjList *ret = Heap_Alloc(heapId, sizeof(GF_2DGfxResObjList));
+    ret->obj = Heap_Alloc(heapId, num * sizeof(SpriteResource *));
     ret->max = num;
     ret->num = 0;
     return ret;
@@ -385,7 +385,7 @@ void GF2DGfxResHeader_Init(const GF_2DGfxResHeaderNarcList *narcList, GF_2DGfxRe
     header->isNarc = TRUE;
     header->num = GF2DGfxResHeaderNarc_CountObjects(narcList->internal);
     if (header->num > 0) {
-        header->table = AllocFromHeap(heapId, header->num * sizeof(GF_2DGfxResHeaderNarc));
+        header->table = Heap_Alloc(heapId, header->num * sizeof(GF_2DGfxResHeaderNarc));
     } else {
         header->table = NULL;
     }
@@ -502,14 +502,14 @@ void GF2DGfxResObj_LoadExDat(SpriteResource *obj, GfGfxResType type, NNS_G2D_VRA
 }
 
 static struct CharResExtraData *GetResourceExtraCharData(void *resource, NNS_G2D_VRAM_TYPE vram, HeapID heapId) {
-    struct CharResExtraData *ret = AllocFromHeap(heapId, sizeof(struct CharResExtraData));
+    struct CharResExtraData *ret = Heap_Alloc(heapId, sizeof(struct CharResExtraData));
     NNS_G2dGetUnpackedCharacterData(resource, &ret->charData);
     ret->vram = vram;
     return ret;
 }
 
 static struct PlttResExtraData *GetResourceExtraPlttData(void *resource, NNS_G2D_VRAM_TYPE vram, int pltt_num, HeapID heapId) {
-    struct PlttResExtraData *ret = AllocFromHeap(heapId, sizeof(struct PlttResExtraData));
+    struct PlttResExtraData *ret = Heap_Alloc(heapId, sizeof(struct PlttResExtraData));
     NNS_G2dGetUnpackedPaletteData(resource, &ret->plttData);
     ret->vram = vram;
     ret->pltt_num = pltt_num;
@@ -517,25 +517,25 @@ static struct PlttResExtraData *GetResourceExtraPlttData(void *resource, NNS_G2D
 }
 
 static struct CellResExtraData *GetResourceExtraCellData(void *resource, HeapID heapId) {
-    struct CellResExtraData *ret = AllocFromHeap(heapId, sizeof(struct CellResExtraData));
+    struct CellResExtraData *ret = Heap_Alloc(heapId, sizeof(struct CellResExtraData));
     NNS_G2dGetUnpackedCellBank(resource, &ret->cellDataBank);
     return ret;
 }
 
 static struct AnimResExtraData *GetResourceExtraAnimData(void *resource, HeapID heapId) {
-    struct AnimResExtraData *ret = AllocFromHeap(heapId, sizeof(struct AnimResExtraData));
+    struct AnimResExtraData *ret = Heap_Alloc(heapId, sizeof(struct AnimResExtraData));
     NNS_G2dGetUnpackedAnimBank(resource, &ret->animBankData);
     return ret;
 }
 
 static struct MulticellResExtraData *GetResourceExtraMulticellData(void *resource, HeapID heapId) {
-    struct MulticellResExtraData *ret = AllocFromHeap(heapId, sizeof(struct MulticellResExtraData));
+    struct MulticellResExtraData *ret = Heap_Alloc(heapId, sizeof(struct MulticellResExtraData));
     NNS_G2dGetUnpackedMultiCellBank(resource, &ret->multiCellDataBank);
     return ret;
 }
 
 static struct MultianimResExtraData *GetResourceExtraMultianimData(void *resource, HeapID heapId) {
-    struct MultianimResExtraData *ret = AllocFromHeap(heapId, sizeof(struct MultianimResExtraData));
+    struct MultianimResExtraData *ret = Heap_Alloc(heapId, sizeof(struct MultianimResExtraData));
     NNS_G2dGetUnpackedMCAnimBank(resource, &ret->animBankData);
     return ret;
 }
@@ -587,9 +587,9 @@ static void *loadResourceFromNarc(NARC *narc, int fileId, BOOL compressed, HeapI
         if (compressed) {
             void *uncompData;
             if (atEnd == 0) { // explicit comparison to 0 is required to match
-                uncompData = AllocFromHeap(heapId, MI_GetUncompressedSize(data));
+                uncompData = Heap_Alloc(heapId, MI_GetUncompressedSize(data));
             } else {
-                uncompData = AllocFromHeapAtEnd(heapId, MI_GetUncompressedSize(data));
+                uncompData = Heap_AllocAtEnd(heapId, MI_GetUncompressedSize(data));
             }
             if (uncompData != NULL) {
                 MI_UncompressLZ8(data, uncompData);

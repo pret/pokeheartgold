@@ -51,7 +51,7 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data);
 static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data);
 
 void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem) {
-    SinjohCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohCutsceneData));
+    SinjohCutsceneData *data = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(SinjohCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohCutsceneData));
     data->fieldSystem = fieldSystem;
     TaskManager_Call(fieldSystem->taskman, Task_SinjohCutscene, data);
@@ -147,7 +147,7 @@ static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
     unkData2 = ov02_02253CF8_0;
     unownModelFiles = sUnownModelFiles;
 
-    GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
+    HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
 
     for (i = 0; i < NELEMS(data->unownObjects); i++) {
         Field3dModel_LoadFromFilesystem(&data->unownModels[i], NARC_demo_legend, unownModelFiles[i], HEAP_ID_4);
@@ -233,7 +233,7 @@ static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimat
 }
 
 void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 whichLegend) {
-    SinjohGetEggCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohGetEggCutsceneData));
+    SinjohGetEggCutsceneData *data = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(SinjohGetEggCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohGetEggCutsceneData));
     data->fieldSystem = fieldSystem;
     data->whichLegend = whichLegend;
@@ -308,7 +308,7 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
 
     VecFx32 arceusPos;
 
-    GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
+    HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
     Field3dModel_LoadFromFilesystem(&data->eggModel, NARC_demo_legend, modelFiles[data->whichLegend], HEAP_ID_4);
 
     for (u8 i = 0; i < NELEMS(data->animations); i++) {

@@ -99,7 +99,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 }
 
 void CallTask_HatchEggInParty(TaskManager *taskManager, UnkStruct_02091240 *a1) {
-    HatchEggTaskData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(HatchEggTaskData));
+    HatchEggTaskData *data = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(HatchEggTaskData));
     memset(data, 0, sizeof(HatchEggTaskData));
     data->unkC = *a1;
 

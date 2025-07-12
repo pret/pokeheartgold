@@ -185,7 +185,7 @@ static u32 ov78_021E6688(int species, int form, int gender);
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3);
 
 BOOL Certificates_Init(OverlayManager *manager, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_CERTIFICATES, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_CERTIFICATES, 0x20000);
 
     CertificatesApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CertificatesApp_Data), HEAP_ID_CERTIFICATES);
     memset(data, 0, sizeof(CertificatesApp_Data));
@@ -309,7 +309,7 @@ BOOL Certificates_Exit(OverlayManager *manager, int *state) {
 
     OverlayManager_FreeData(manager);
 
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
 
     return TRUE;
 }
@@ -692,7 +692,7 @@ void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     NNSG3dResTex *tex = NNS_G3dGetTex(header);
 
     const void *address = NNS_G3dGetTexData(tex);
-    void *buffer = AllocFromHeapAtEnd(heapId, 0x200);
+    void *buffer = Heap_AllocAtEnd(heapId, 0x200);
     sub_020145B4(address + (a2 * 0x200), 4, 0, 0, 4, 4, buffer);
     ov78_021E656C(sprite, buffer, 0x200, 0);
     Heap_Free(buffer);
@@ -760,7 +760,7 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a
     NNSG3dResFileHeader *header = NARC_AllocAndReadWholeMember(narc, member, heapId);
     NNSG3dResTex *tex = NNS_G3dGetTex(header);
     void *address = (void *)tex + tex->texInfo.ofsTex;
-    void *buffer = AllocFromHeapAtEnd(heapId, bufferSize);
+    void *buffer = Heap_AllocAtEnd(heapId, bufferSize);
     sub_020145B4(address + (bufferSize * 2), unk, 0, 0, unk, unk, buffer);
     ov78_021E656C(sprite, buffer, bufferSize, 0);
     Heap_Free(buffer);

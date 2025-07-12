@@ -1353,7 +1353,7 @@ static void MainMenu_OnVBlank(BgConfig *bgConfig) {
 }
 
 BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_MAIN_MENU, 0x40000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_MAIN_MENU, 0x40000);
 
     MainMenuAppData *data = OverlayManager_CreateAndGetData(manager, sizeof(MainMenuAppData), HEAP_ID_MAIN_MENU);
     memset(data, 0, sizeof(MainMenuAppData));
@@ -1525,7 +1525,7 @@ BOOL MainMenuApp_Exit(OverlayManager *manager, int *state) {
     MainMenu_QueueSelectedApp(data);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_MAIN_MENU);
+    Heap_Destroy(HEAP_ID_MAIN_MENU);
 
     ov74_02236034(FALSE);
 

@@ -51,7 +51,7 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
     NARC *narc;
 
     narc = GetBerryInfoNarc(heapId);
-    unk = AllocFromHeap(heapId, NUM_BERRIES * sizeof(UnkStruct_ov16_022014A0));
+    unk = Heap_Alloc(heapId, NUM_BERRIES * sizeof(UnkStruct_ov16_022014A0));
 
     for (int fileId = 0; fileId < NUM_BERRIES; fileId++) {
         BerryFile *berryFile = GetBerryFileFromNarc(narc, fileId, heapId);

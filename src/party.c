@@ -21,7 +21,7 @@ u32 PartyCore_sizeof(void) {
 }
 
 Party *SaveArray_Party_Alloc(HeapID heapId) {
-    Party *ret = AllocFromHeap(heapId, sizeof(Party));
+    Party *ret = Heap_Alloc(heapId, sizeof(Party));
     SaveArray_Party_Init(ret);
     return ret;
 }
@@ -110,7 +110,7 @@ BOOL Party_SwapSlots(Party *party, int slotA, int slotB) {
 
     PARTY_ASSERT_SLOT(party, slotA);
     PARTY_ASSERT_SLOT(party, slotB);
-    tmp_POKEMON = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(Pokemon));
+    tmp_POKEMON = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(Pokemon));
     *tmp_POKEMON = party->core.mons[slotA];
     party->core.mons[slotA] = party->core.mons[slotB];
     party->core.mons[slotB] = *tmp_POKEMON;

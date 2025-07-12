@@ -58,7 +58,7 @@ static const u16 sFilterLandmarks[] = {
 };
 
 BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow) {
-    PokemonTalkData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonTalkData));
+    PokemonTalkData *data = Heap_Alloc(radioShow->heapID, sizeof(PokemonTalkData));
     MI_CpuClear8(data, sizeof(PokemonTalkData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

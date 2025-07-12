@@ -55,10 +55,10 @@ static void ObjPlttTransferTask_ReserveBlocks(ObjPlttTransferTask *task, u32 *pB
 
 void ObjPlttTransfer_Init(int num, HeapID heapId) {
     if (sObjPlttTransferTasksManager == NULL) {
-        sObjPlttTransferTasksManager = AllocFromHeap(heapId, sizeof(ObjPlttTransferTasksManager));
+        sObjPlttTransferTasksManager = Heap_Alloc(heapId, sizeof(ObjPlttTransferTasksManager));
         MI_CpuClear32(sObjPlttTransferTasksManager, sizeof(ObjPlttTransferTasksManager));
         sObjPlttTransferTasksManager->numTasks = num;
-        sObjPlttTransferTasksManager->tasks = AllocFromHeap(heapId, num * sizeof(ObjPlttTransferTask));
+        sObjPlttTransferTasksManager->tasks = Heap_Alloc(heapId, num * sizeof(ObjPlttTransferTask));
         for (int i = 0; i < num; ++i) {
             ObjPlttTransferTask_Init(&sObjPlttTransferTasksManager->tasks[i]);
         }

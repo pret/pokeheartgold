@@ -89,7 +89,7 @@ static void sub_02014128(NarcId narcId, s32 fileId, HeapID heapId, int x, int y,
 }
 
 static void *sub_02014178(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species) {
-    void *ret = AllocFromHeap(heapId, width * height * 32);
+    void *ret = Heap_Alloc(heapId, width * height * 32);
     sub_02014128(narcId, fileId, heapId, x, y, width, height, ret, pid, isAnimated, whichFacing, species);
     return ret;
 }
@@ -125,7 +125,7 @@ void sub_020141C4(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
 }
 
 void *sub_02014298(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height) {
-    void *ret = AllocFromHeap(heapId, width * height * 32);
+    void *ret = Heap_Alloc(heapId, width * height * 32);
     sub_020141C4(narcId, fileId, heapId, x, y, width, height, ret);
     return ret;
 }
@@ -183,13 +183,13 @@ void sub_02014400(NarcId narcId, s32 fileId, HeapID heapId, void *dest) {
 }
 
 void *sub_0201442C(NarcId narcId, s32 fileId, HeapID heapId) {
-    void *ret = AllocFromHeap(heapId, 3200);
+    void *ret = Heap_Alloc(heapId, 3200);
     sub_02014400(narcId, fileId, heapId, ret);
     return ret;
 }
 
 void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
-    void *ret = AllocFromHeap(heapId, 0x20);
+    void *ret = Heap_Alloc(heapId, 0x20);
     void *pNclrFile = AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapId);
     NNSG2dPaletteData *pPlttData;
     GF_ASSERT(NNS_G2dGetUnpackedPaletteData(pNclrFile, &pPlttData) == TRUE);
@@ -226,7 +226,7 @@ void sub_02014540(NarcId narcId, s32 fileId, HeapID heapId, void *dest, u32 pers
 }
 
 void *sub_0201457C(NarcId narcId, s32 fileId, HeapID heapId, u32 personality, BOOL isAnimated, int whichFacing, int species) {
-    void *ret = AllocFromHeap(heapId, 3200);
+    void *ret = Heap_Alloc(heapId, 3200);
     sub_02014540(narcId, fileId, heapId, ret, personality, isAnimated, whichFacing, species);
     return ret;
 }

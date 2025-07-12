@@ -55,12 +55,12 @@ static void ov124_02260D1C(FieldSystem *fieldSystem) {
             ++numBadges;
         }
     }
-    AllocFromHeapAtEnd(HEAP_ID_3, numBadges == 0 ? 20000 : (20000 * numBadges));
+    Heap_AllocAtEnd(HEAP_ID_3, numBadges == 0 ? 20000 : (20000 * numBadges));
 }
 
 // you can have a little heap clobber, as a treat
 static void ov124_02260D58(void) {
-    AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+    Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static void ov124_02260D68(void) {

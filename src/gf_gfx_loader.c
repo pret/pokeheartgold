@@ -85,17 +85,17 @@ void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, Hea
     void *uncompBuf;
 
     if (isCompressed || atEnd == TRUE) {
-        data = AllocFromHeapAtEnd(heapId, GetNarcMemberSizeByIdPair(narcId, fileId));
+        data = Heap_AllocAtEnd(heapId, GetNarcMemberSizeByIdPair(narcId, fileId));
     } else {
-        data = AllocFromHeap(heapId, GetNarcMemberSizeByIdPair(narcId, fileId));
+        data = Heap_Alloc(heapId, GetNarcMemberSizeByIdPair(narcId, fileId));
     }
     if (data != NULL) {
         ReadWholeNarcMemberByIdPair(data, narcId, fileId);
         if (isCompressed) {
             if (atEnd == FALSE) {
-                uncompBuf = AllocFromHeap(heapId, MI_GetUncompressedSize(data));
+                uncompBuf = Heap_Alloc(heapId, MI_GetUncompressedSize(data));
             } else {
-                uncompBuf = AllocFromHeapAtEnd(heapId, MI_GetUncompressedSize(data));
+                uncompBuf = Heap_AllocAtEnd(heapId, MI_GetUncompressedSize(data));
             }
             if (uncompBuf != NULL) {
                 MI_UncompressLZ8(data, uncompBuf);
@@ -113,18 +113,18 @@ void *GfGfxLoader_LoadFromNarc_GetSizeOut(NarcId narcId, s32 fileId, BOOL isComp
 
     *sizeOut = GetNarcMemberSizeByIdPair(narcId, fileId);
     if (isCompressed || atEnd == TRUE) {
-        data = AllocFromHeapAtEnd(heapId, *sizeOut);
+        data = Heap_AllocAtEnd(heapId, *sizeOut);
     } else {
-        data = AllocFromHeap(heapId, *sizeOut);
+        data = Heap_Alloc(heapId, *sizeOut);
     }
     if (data != NULL) {
         ReadWholeNarcMemberByIdPair(data, narcId, fileId);
         if (isCompressed) {
             *sizeOut = MI_GetUncompressedSize(data);
             if (atEnd == FALSE) {
-                uncompBuf = AllocFromHeap(heapId, *sizeOut);
+                uncompBuf = Heap_Alloc(heapId, *sizeOut);
             } else {
-                uncompBuf = AllocFromHeapAtEnd(heapId, *sizeOut);
+                uncompBuf = Heap_AllocAtEnd(heapId, *sizeOut);
             }
             if (uncompBuf != NULL) {
                 MI_UncompressLZ8(data, uncompBuf);
@@ -211,18 +211,18 @@ void *GfGfxLoader_LoadFromOpenNarc_GetSizeOut(NARC *narc, s32 fileId, BOOL isCom
 
     *sizeOut = NARC_GetMemberSize(narc, fileId);
     if (isCompressed || atEnd == TRUE) {
-        data = AllocFromHeapAtEnd(heapId, *sizeOut);
+        data = Heap_AllocAtEnd(heapId, *sizeOut);
     } else {
-        data = AllocFromHeap(heapId, *sizeOut);
+        data = Heap_Alloc(heapId, *sizeOut);
     }
     if (data != NULL) {
         NARC_ReadWholeMember(narc, fileId, data);
         if (isCompressed) {
             *sizeOut = MI_GetUncompressedSize(data);
             if (atEnd == FALSE) {
-                uncompBuf = AllocFromHeap(heapId, *sizeOut);
+                uncompBuf = Heap_Alloc(heapId, *sizeOut);
             } else {
-                uncompBuf = AllocFromHeapAtEnd(heapId, *sizeOut);
+                uncompBuf = Heap_AllocAtEnd(heapId, *sizeOut);
             }
             if (uncompBuf != NULL) {
                 MI_UncompressLZ8(data, uncompBuf);

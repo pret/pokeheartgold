@@ -145,7 +145,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
 }
 
 ScriptEnvironment *ScriptEnvironment_New(void) {
-    ScriptEnvironment *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(ScriptEnvironment));
+    ScriptEnvironment *ret = Heap_Alloc(HEAP_ID_FIELD, sizeof(ScriptEnvironment));
     GF_ASSERT(ret != NULL);
     memset(ret, 0, sizeof(ScriptEnvironment));
     ret->check = Unk80_10_C_MAGIC;
@@ -173,7 +173,7 @@ void SetupScriptEngine(FieldSystem *fieldSystem, ScriptEnvironment *env, u16 scr
 }
 
 ScriptContext *CreateScriptContext(FieldSystem *fieldSystem, u16 script) {
-    ScriptContext *ctx = AllocFromHeap(HEAP_ID_FIELD, sizeof(ScriptContext));
+    ScriptContext *ctx = Heap_Alloc(HEAP_ID_FIELD, sizeof(ScriptContext));
     GF_ASSERT(ctx != NULL);
     InitScriptContext(ctx, gScriptCmdTable, sNumScriptCmds);
     SetUpScriptContextForMap(fieldSystem, ctx, script, 0);
@@ -525,7 +525,7 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, Hea
     j = 0;
     num_bgs = Field_GetNumBgEvents(fieldSystem);
     num_bgs++;
-    ret = AllocFromHeap(heapId, num_bgs * sizeof(HiddenItemResponse));
+    ret = Heap_Alloc(heapId, num_bgs * sizeof(HiddenItemResponse));
     if (num_bgs == 1) {
         ret[0].unk4 = 0xFF;
         ret[0].x = -1;

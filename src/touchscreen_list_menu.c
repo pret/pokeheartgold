@@ -30,7 +30,7 @@ static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq);
 static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int a1);
 
 TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData) {
-    TouchscreenListMenuSpawner *ret = AllocFromHeap(heapId, sizeof(TouchscreenListMenuSpawner));
+    TouchscreenListMenuSpawner *ret = Heap_Alloc(heapId, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
     ret->heapId = heapId;
     ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCGR, FALSE, heapId, FALSE);
@@ -49,7 +49,7 @@ void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner) {
 }
 
 static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment) {
-    TouchscreenListMenu *ret = AllocFromHeap(spawner->heapId, sizeof(TouchscreenListMenu));
+    TouchscreenListMenu *ret = Heap_Alloc(spawner->heapId, sizeof(TouchscreenListMenu));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenu));
     MI_CpuCopy8(header, &ret->header, sizeof(TouchscreenListMenuHeader));
     ret->spawner = spawner;
@@ -167,7 +167,7 @@ typedef struct TaskData_TouchscreenListMenuGraphicsLoad {
 } TaskData_TouchscreenListMenuGraphicsLoad;
 
 static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId) {
-    TaskData_TouchscreenListMenuGraphicsLoad *taskData = AllocFromHeapAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
+    TaskData_TouchscreenListMenuGraphicsLoad *taskData = Heap_AllocAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     MI_CpuClear8(taskData, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     taskData->pCharData = spawner->pCharData;
     taskData->pPlttData = spawner->pPlttData;
@@ -224,7 +224,7 @@ static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu) {
     int i;
     u16 tilesPerWindow;
     menu->windows = AllocWindows(menu->heapId, menu->header.numWindows);
-    menu->touchscreenHitboxes = AllocFromHeap(menu->heapId, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
+    menu->touchscreenHitboxes = Heap_Alloc(menu->heapId, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
     MI_CpuClear8(menu->touchscreenHitboxes, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
     tilesPerWindow = menu->width * 2;
     for (i = 0; i < menu->header.numWindows; ++i) {

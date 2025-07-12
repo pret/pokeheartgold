@@ -328,7 +328,7 @@ static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *da
 
 BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
     OptionsApp_Args *args = OverlayManager_GetArgs(manager);
-    CreateHeap(HEAP_ID_3, HEAP_ID_OPTIONS_APP, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_OPTIONS_APP, 0x30000);
 
     OptionsApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(OptionsApp_Data), HEAP_ID_OPTIONS_APP);
     memset(data, 0, sizeof(OptionsApp_Data));
@@ -385,7 +385,7 @@ BOOL OptionsMenu_Exit(OverlayManager *manager, int *state) {
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(data->heapId);
+    Heap_Destroy(data->heapId);
 
     return TRUE;
 }

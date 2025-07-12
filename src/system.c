@@ -107,7 +107,7 @@ void sub_0201A1B4(void) {
     while (heap_size_pre & 3) {
         heap_size_pre++;
     }
-    InitHeapSystem(sDefaultHeapSpec, NELEMS(sDefaultHeapSpec), HEAP_ID_MAX, heap_size_pre);
+    Heap_InitSystem(sDefaultHeapSpec, NELEMS(sDefaultHeapSpec), HEAP_ID_MAX, heap_size_pre);
 }
 
 void InitSystemForTheGame(void) {
@@ -167,7 +167,7 @@ void *Sys_AllocAndReadFile(HeapID heapId, const char *path) {
     FS_InitFile(&file);
     if (FS_OpenFile(&file, path)) {
         size = FS_GetLength(&file);
-        ret = AllocFromHeap(heapId, size);
+        ret = Heap_Alloc(heapId, size);
         if (ret != NULL) {
             if (FS_ReadFile(&file, ret, size) != size) {
                 Heap_FreeExplicit(heapId, ret);
@@ -368,7 +368,7 @@ void sub_0201A738(int a0) {
 
 void sub_0201A748(HeapID heapId) {
     GF_ASSERT(gSystem.unk74 == NULL);
-    gSystem.unk74 = AllocFromHeapAtEnd(heapId, sizeof(u32));
+    gSystem.unk74 = Heap_AllocAtEnd(heapId, sizeof(u32));
     *gSystem.unk74 = 0x2F93A1BC;
 }
 

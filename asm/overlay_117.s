@@ -36,7 +36,7 @@ _0225F050:
 	mov r1, #0x3d
 	mov r0, #4
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [sp, #0x18]
 	mov r2, #0x3d
 	str r0, [r1, #0xc]
@@ -667,7 +667,7 @@ _0225F560:
 	mov r1, #0x6f
 	add r0, r7, #0
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x6f
 	str r0, [r5, #0xc]
 	mov r1, #0

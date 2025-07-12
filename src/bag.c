@@ -22,7 +22,7 @@ u32 Save_Bag_sizeof(void) {
 }
 
 Bag *Save_Bag_New(HeapID heapId) {
-    Bag *bag = (Bag *)AllocFromHeap(heapId, sizeof(Bag));
+    Bag *bag = (Bag *)Heap_Alloc(heapId, sizeof(Bag));
     Save_Bag_Init(bag);
     return bag;
 }
@@ -384,7 +384,7 @@ Bag *Save_Bag_Get(SaveData *saveData) {
 }
 
 BagCursor *BagCursor_New(HeapID heapId) {
-    BagCursor *ret = AllocFromHeap(heapId, sizeof(BagCursor));
+    BagCursor *ret = Heap_Alloc(heapId, sizeof(BagCursor));
     MI_CpuClear16(ret, sizeof(BagCursor));
     return ret;
 }

@@ -133,7 +133,7 @@ BOOL ScrCmd_638(ScriptContext *ctx) {
 }
 
 static void sub_0204FB20(TaskManager *taskManager, u16 firstMon, u16 secondMon, u16 *result) {
-    UnkStruct_0204FB20 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FB20));
+    UnkStruct_0204FB20 *unk = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0204FB20));
     memset(unk, 0, sizeof(UnkStruct_0204FB20));
     unk->playerTeam[0] = firstMon;
     unk->playerTeam[1] = secondMon;
@@ -171,7 +171,7 @@ static BOOL sub_0204FB60(TaskManager *taskManager) {
 
 static void sub_0204FBDC(TaskManager *taskManager, void *a1, BattleCastleChallengeType challengeType) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204FBDC *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
+    UnkStruct_0204FBDC *unk = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204FBDC));
     unk->challengeType = challengeType;
     unk->unk0c = a1;
@@ -202,7 +202,7 @@ static BOOL sub_0204FC10(TaskManager *taskManager) {
 }
 
 static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID unused) {
-    PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    PartyMenuArgs *partyMenu = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuArgs));
     partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
     partyMenu->bag = Save_Bag_Get(fieldSystem->saveData);
@@ -248,7 +248,7 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
 
 static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
     SaveData *saveData = fieldSystem->saveData;
-    PokemonSummaryArgs *unk = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
+    PokemonSummaryArgs *unk = Heap_AllocAtEnd(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));
     unk->options = Save_PlayerData_GetOptionsAddr(saveData);
     unk->party = SaveArray_Party_Get(saveData);

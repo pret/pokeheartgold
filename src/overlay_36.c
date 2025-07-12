@@ -91,7 +91,7 @@ static const MailMessageTemplate sMailMsgTemplates[2] = {
 
 BOOL ov36_TitleScreen_NewGame_AppInit(OverlayManager *man, int *state) {
 #pragma unused(man, state)
-    CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
 
     return TRUE;
@@ -107,7 +107,7 @@ BOOL ov36_TitleScreen_NewGame_AppExec(OverlayManager *man, int *state) {
 
 BOOL ov36_TitleScreen_NewGame_AppExit(OverlayManager *man, int *state) {
 #pragma unused(man, state)
-    DestroyHeap(HEAPID_OV36);
+    Heap_Destroy(HEAPID_OV36);
     RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_OakSpeech);
 
     return TRUE;
@@ -115,7 +115,7 @@ BOOL ov36_TitleScreen_NewGame_AppExit(OverlayManager *man, int *state) {
 
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OverlayManager *man, int *state) {
 #pragma unused(man, state)
-    CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
 
     return TRUE;
@@ -133,7 +133,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OverlayManager *man, int *sta
 
 BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OverlayManager *man, int *state) {
 #pragma unused(man, state)
-    DestroyHeap(HEAPID_OV36);
+    Heap_Destroy(HEAPID_OV36);
     RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_NewGameFieldsys);
 
     return TRUE;
@@ -141,7 +141,7 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OverlayManager *man, int *sta
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OverlayManager *man, int *state) {
 #pragma unused(man, state)
-    CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
 
     return TRUE;
@@ -170,7 +170,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OverlayManager *man, int *s
 
 BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OverlayManager *man, int *state) {
 #pragma unused(man, state)
-    DestroyHeap(HEAPID_OV36);
+    Heap_Destroy(HEAPID_OV36);
     RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_ContinueFieldsys);
 
     return TRUE;

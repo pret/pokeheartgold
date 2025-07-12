@@ -10,7 +10,7 @@ static BOOL ListMenuChangeSelection(struct ListMenu *list, u8 updateCursorAndCal
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit);
 
 struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId) {
-    struct ListMenu *list = AllocFromHeap(heapId, sizeof(struct ListMenu));
+    struct ListMenu *list = Heap_Alloc(heapId, sizeof(struct ListMenu));
     list->template = *template;
     list->cursor = ListMenuCursorNew(heapId);
     list->cursorPos = cursorPos;

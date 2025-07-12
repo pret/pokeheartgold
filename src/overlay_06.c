@@ -23,7 +23,7 @@ SPLEmitter *ov06_0221BA40(HeapID heapId) {
     SPLEmitter *pPVar1;
     Camera *pGVar2;
 
-    particleHeap = AllocFromHeap(heapId, 0x4800);
+    particleHeap = Heap_Alloc(heapId, 0x4800);
     pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapId);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
@@ -37,7 +37,7 @@ SPLEmitter *ov06_0221BA88(HeapID heapId) {
     SPLEmitter *pPVar1;
     Camera *pGVar2;
 
-    particleHeap = AllocFromHeap(heapId, 0x4200);
+    particleHeap = Heap_Alloc(heapId, 0x4200);
     if (particleHeap == NULL) {
         return NULL;
     }

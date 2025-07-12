@@ -171,7 +171,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 1:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            CreateHeap(HEAP_ID_3, HEAP_ID_4, 0x20000);
+            Heap_Create(HEAP_ID_3, HEAP_ID_4, 0x20000);
             GameClearSave_InitGraphics(fieldSystem, env);
             BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 8, 1, HEAP_ID_32);
             ++(*state);
@@ -249,7 +249,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
     case 11:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             Heap_Free(env);
-            DestroyHeap(HEAP_ID_4);
+            Heap_Destroy(HEAP_ID_4);
             OS_ResetSystem(0);
             return TRUE;
         }
@@ -269,7 +269,7 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     PlayerProfile *profile;
 
     fieldSystem = TaskManager_GetFieldSystem(taskman);
-    env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
+    env = Heap_Alloc(HEAP_ID_32, sizeof(GameClearWork));
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));

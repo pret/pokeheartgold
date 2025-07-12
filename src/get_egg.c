@@ -456,7 +456,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     u16 r5;
     struct EggMoveSearch *search;
 
-    search = AllocFromHeap(HEAP_ID_4, sizeof(struct EggMoveSearch));
+    search = Heap_Alloc(HEAP_ID_4, sizeof(struct EggMoveSearch));
     sp1C = 0;
     MI_CpuClearFast(search, sizeof(struct EggMoveSearch));
 

@@ -60,7 +60,7 @@ static void ScreenSetBaseTile(NNSG2dScreenData *scrnData, int baseTile);
 static void ScreenSetPalette(NNSG2dScreenData *scrnData, int plttNum);
 
 YesNoPrompt *YesNoPrompt_Create(HeapID heapId) {
-    YesNoPrompt *out = (YesNoPrompt *)AllocFromHeap(heapId, sizeof(YesNoPrompt));
+    YesNoPrompt *out = (YesNoPrompt *)Heap_Alloc(heapId, sizeof(YesNoPrompt));
     YesNoPrompt_Init(out, heapId);
     return out;
 }
@@ -318,7 +318,7 @@ static void YesNoPromptButton_Clear(YesNoPromptButton *button) {
 }
 
 static SysTask *LoadPixelDataFromNarcAndScheduleTransfer(NarcId narcId, s32 fileId, BgConfig *bgConfig, int bgId, u32 tileStart, HeapID heapId) {
-    struct SysTaskState_02016DBC *buffer = (struct SysTaskState_02016DBC *)AllocFromHeap(heapId, sizeof(struct SysTaskState_02016DBC));
+    struct SysTaskState_02016DBC *buffer = (struct SysTaskState_02016DBC *)Heap_Alloc(heapId, sizeof(struct SysTaskState_02016DBC));
     memset(buffer, 0, sizeof(struct SysTaskState_02016DBC));
     buffer->charDataRaw = GfGfxLoader_GetCharData(narcId, fileId, TRUE, &buffer->charData, heapId);
     buffer->bgConfig = bgConfig;
@@ -328,7 +328,7 @@ static SysTask *LoadPixelDataFromNarcAndScheduleTransfer(NarcId narcId, s32 file
 }
 
 static SysTask *LoadPlttFromNarcAndScheduleTransfer(NarcId narcId, s32 fileId, int bgId, u32 offset, u32 size, HeapID heapId) {
-    struct SysTaskState_02016DF8 *buffer = (struct SysTaskState_02016DF8 *)AllocFromHeap(heapId, sizeof(struct SysTaskState_02016DF8));
+    struct SysTaskState_02016DF8 *buffer = (struct SysTaskState_02016DF8 *)Heap_Alloc(heapId, sizeof(struct SysTaskState_02016DF8));
     memset(buffer, 0, sizeof(struct SysTaskState_02016DF8));
     buffer->plttDataRaw = GfGfxLoader_GetPlttData(narcId, fileId, &buffer->plttData, heapId);
     buffer->bgId = bgId;

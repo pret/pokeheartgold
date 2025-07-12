@@ -40,7 +40,7 @@ _021E5916:
 	mov r0, #3
 	mov r1, #0x32
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0x54
 	mov r1, #0x32
 	bl NARC_New
@@ -376,7 +376,7 @@ _021E5BD8:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x32
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -4359,7 +4359,7 @@ ov73_021E7B3C: ; 0x021E7B3C
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_020270C4
@@ -4395,7 +4395,7 @@ ov73_021E7B84: ; 0x021E7B84
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_020270C4
@@ -4429,7 +4429,7 @@ ov73_021E7BC8: ; 0x021E7BC8
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_020270C4
@@ -4463,7 +4463,7 @@ ov73_021E7C0C: ; 0x021E7C0C
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_020270C4
@@ -4497,7 +4497,7 @@ ov73_021E7C50: ; 0x021E7C50
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_020270C4
@@ -4531,7 +4531,7 @@ ov73_021E7C94: ; 0x021E7C94
 	add r5, r0, #0
 	add r0, r1, #0
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	add r0, r5, #0
 	bl sub_020270C4
@@ -4804,7 +4804,7 @@ _021E7E62:
 	mov r0, #3
 	mov r1, #0x96
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E7F88 ; =0x000012CC
 	add r0, r6, #0
 	mov r2, #0x96
@@ -4870,7 +4870,7 @@ _021E7E62:
 	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _021E7FA8 ; =0x00020020
 	mov r0, #0x96
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x24]
 	add r0, #0x1f
 	mov r1, #0x1f
@@ -5062,7 +5062,7 @@ ov73_021E808C: ; 0x021E808C
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x96
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -9385,7 +9385,7 @@ ov73_021EA268: ; 0x021EA268
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	add r0, r6, #0
 	bl ov73_021E7960
@@ -9427,7 +9427,7 @@ ov73_021EA2B4: ; 0x021EA2B4
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -9509,7 +9509,7 @@ ov73_021EA348: ; 0x021EA348
 	add r6, r0, #0
 	add r0, r1, #0
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	add r2, r5, #0

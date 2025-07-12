@@ -5,7 +5,7 @@
 OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *args, HeapID heapId) {
     OverlayManager *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(OverlayManager));
+    ret = Heap_Alloc(heapId, sizeof(OverlayManager));
     ret->template = *template;
     ret->exec_state = 0;
     ret->proc_state = 0;
@@ -23,7 +23,7 @@ void OverlayManager_Delete(OverlayManager *man) {
 
 void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, HeapID heapId) {
     void *data;
-    data = AllocFromHeap(heapId, size);
+    data = Heap_Alloc(heapId, size);
     man->data = data;
     return data;
 }

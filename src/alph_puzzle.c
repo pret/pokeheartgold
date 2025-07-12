@@ -582,7 +582,7 @@ BOOL AlphPuzzle_Init(OverlayManager *man, int *state) {
     switch (*state) {
     case 0:
         AlphPuzzle_ScreenOff();
-        CreateHeap(HEAP_ID_3, HEAP_ID_ALPH_PUZZLE, 0x20000);
+        Heap_Create(HEAP_ID_3, HEAP_ID_ALPH_PUZZLE, 0x20000);
         AlphPuzzleData *data = OverlayManager_CreateAndGetData(man, sizeof(AlphPuzzleData), HEAP_ID_ALPH_PUZZLE);
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleData));
         data->heapId = HEAP_ID_ALPH_PUZZLE;
@@ -642,7 +642,7 @@ BOOL AlphPuzzle_Exit(OverlayManager *man, int *state) {
     AlphPuzzle_ScreenOff();
     AlphPuzzle_Finish(data);
     OverlayManager_FreeData(man);
-    DestroyHeap(HEAP_ID_ALPH_PUZZLE);
+    Heap_Destroy(HEAP_ID_ALPH_PUZZLE);
     return TRUE;
 }
 
@@ -1409,7 +1409,7 @@ typedef struct AlphPuzzleQuitTaskData {
 } AlphPuzzleQuitTaskData;
 
 static void AlphPuzzle_CreateQuitTask(AlphPuzzleData *data) {
-    AlphPuzzleQuitTaskData *unkStruct = AllocFromHeapAtEnd(data->heapId, sizeof(AlphPuzzleQuitTaskData));
+    AlphPuzzleQuitTaskData *unkStruct = Heap_AllocAtEnd(data->heapId, sizeof(AlphPuzzleQuitTaskData));
     MI_CpuFill8(unkStruct, 0, sizeof(AlphPuzzleQuitTaskData));
     unkStruct->data = data;
     SysTask_CreateOnMainQueue(Task_AlphPuzzle_WaitDropCursorAnimOnQuit, unkStruct, 0);

@@ -48,7 +48,7 @@ BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler
     unkStruct.spritePriority = spritePriority;
     unkStruct.bgPriority = bgPriority;
 
-    finger = AllocFromHeap(heapId, sizeof(BattleFinger));
+    finger = Heap_Alloc(heapId, sizeof(BattleFinger));
     MI_CpuFill8(finger, 0, sizeof(BattleFinger));
 
     finger->unk0 = SpriteSystem_NewSprite(renderer, gfxHandler, &unkStruct);

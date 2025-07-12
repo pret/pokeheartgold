@@ -63,7 +63,7 @@ BOOL sub_0206D494(FieldSystem *fieldSystem) {
     LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
-        UnkStruct_0206D494 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0206D494));
+        UnkStruct_0206D494 *unkStruct = Heap_AllocAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0206D494));
         unkStruct->unk00 = unk2;
         unkStruct->unk04 = NULL;
         unkStruct->unk08 = MapObject_GetFacingDirection(unk1);
@@ -402,7 +402,7 @@ void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem
 }
 
 void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon) {
-    UnkStruct_0206DB94 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
+    UnkStruct_0206DB94 *unkStruct = Heap_AllocAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206DB94));
     unkStruct->newlyCaughtMon = mon;
     TaskManager_Call(taskManager, Task_BugContest_PromptSwapPokemon, unkStruct);

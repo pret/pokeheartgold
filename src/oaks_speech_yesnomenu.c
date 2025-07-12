@@ -30,7 +30,7 @@ static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu);
 OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId) {
     GF_ASSERT(bgConfig != NULL);
     volatile HeapID heapId_2 = heapId;
-    OakSpeechYesNo *ret = AllocFromHeap(heapId, sizeof(OakSpeechYesNo));
+    OakSpeechYesNo *ret = Heap_Alloc(heapId, sizeof(OakSpeechYesNo));
     MI_CpuClear8(ret, sizeof(OakSpeechYesNo));
     ret->heapId = heapId;
     ret->bgConfig = bgConfig;

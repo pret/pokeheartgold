@@ -23,7 +23,7 @@ u32 Save_Pokedex_sizeof(void) {
 }
 
 Pokedex *Pokedex_New(HeapID heapId) {
-    Pokedex *ret = AllocFromHeap(heapId, sizeof(Pokedex));
+    Pokedex *ret = Heap_Alloc(heapId, sizeof(Pokedex));
     Save_Pokedex_Init(ret);
     return ret;
 }

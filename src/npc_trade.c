@@ -27,7 +27,7 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
     u16 strbuf[128];
 
     GF_ASSERT((u32)tradeno < NPC_TRADE_MAX);
-    ret = AllocFromHeap(heapId, sizeof(NPCTradeAppData));
+    ret = Heap_Alloc(heapId, sizeof(NPCTradeAppData));
     memset(ret, 0, sizeof(NPCTradeAppData));
     ret->trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, heapId, FALSE);
     ret->heapId = heapId;

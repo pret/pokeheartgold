@@ -483,7 +483,7 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
         GfGfx_DisableEngineBPlanes();
         GX_SetVisiblePlane(0);
         GXS_SetVisiblePlane(0);
-        CreateHeap(HEAP_ID_3, HEAP_ID_NAMING_SCREEN, 0x28000);
+        Heap_Create(HEAP_ID_3, HEAP_ID_NAMING_SCREEN, 0x28000);
 
         data = OverlayManager_CreateAndGetData(ovyMan, sizeof(NamingScreenAppData), HEAP_ID_NAMING_SCREEN);
         memset(data, 0, sizeof(NamingScreenAppData));
@@ -747,7 +747,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     MessageFormat_Delete(data->msgFormat);
     OverlayManager_FreeData(ovyMan);
     Main_SetVBlankIntrCB(NULL, NULL);
-    DestroyHeap(HEAP_ID_NAMING_SCREEN);
+    Heap_Destroy(HEAP_ID_NAMING_SCREEN);
     GfGfx_SetMainDisplay(PM_LCD_TOP);
     return TRUE;
 }
@@ -757,7 +757,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
 // -------------------------------
 
 NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
-    NamingScreenArgs *ret = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
+    NamingScreenArgs *ret = Heap_Alloc(heapId, sizeof(NamingScreenArgs));
     ret->kind = kind;
     ret->playerGenderOrMonSpecies = param;
     ret->maxLen = maxLen;

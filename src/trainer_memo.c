@@ -76,7 +76,7 @@ static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon);
 static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId);
 
 Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
-    Unk0208E600 *ptr = AllocFromHeap(heapId, sizeof(Unk0208E600));
+    Unk0208E600 *ptr = Heap_Alloc(heapId, sizeof(Unk0208E600));
     ptr->heapId = heapId;
     ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapId);
     ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapId);

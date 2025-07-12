@@ -48,7 +48,7 @@ BattleCursor *BattleCursor_New(SpriteSystem *renderer, SpriteManager *gfxHandler
     unkStruct.spritePriority = a7;
     unkStruct.bgPriority = a8;
 
-    cursor = AllocFromHeap(heapId, sizeof(BattleCursor));
+    cursor = Heap_Alloc(heapId, sizeof(BattleCursor));
     MI_CpuFill8(cursor, 0, sizeof(BattleCursor));
 
     for (i = 0; i < 5; i++) {

@@ -133,12 +133,12 @@ void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManage
 }
 
 FieldSystem *FieldSystem_New(OverlayManager *man) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
-    CreateHeap(HEAP_ID_3, HEAP_ID_32, 0x4000);
-    CreateHeap(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
+    Heap_Create(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_32, 0x4000);
+    Heap_Create(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
     FieldSystem *fieldSystem = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD);
     MI_CpuFill8(fieldSystem, 0, sizeof(FieldSystem));
-    fieldSystem->unk0 = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FieldSystemUnkSub0));
+    fieldSystem->unk0 = Heap_Alloc(HEAP_ID_FIELD, sizeof(struct FieldSystemUnkSub0));
 
     fieldSystem->unk0->unk0 = NULL;
     fieldSystem->unk0->unk4 = NULL;
@@ -163,9 +163,9 @@ void FieldSystem_Delete(OverlayManager *man) {
     GearPhoneRingManager_Delete(fieldSystem->phoneRingManager);
     Heap_Free(fieldSystem->unk0);
     OverlayManager_FreeData(man);
-    DestroyHeap(HEAP_ID_89);
-    DestroyHeap(HEAP_ID_FIELD);
-    DestroyHeap(HEAP_ID_32);
+    Heap_Destroy(HEAP_ID_89);
+    Heap_Destroy(HEAP_ID_FIELD);
+    Heap_Destroy(HEAP_ID_32);
 }
 
 static void ppOverlayManager_RunFrame_DeleteIfFinished(OverlayManager **man) {

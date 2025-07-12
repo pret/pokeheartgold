@@ -110,7 +110,7 @@ u16 *sub_0205B4A4(HeapID heapId) {
     int i;
 
     pltt_src = GfGfxLoader_GetPlttData(NARC_application_record_record, NARC_record_record_00000011_NCLR, &pPlttData, heapId);
-    ret = AllocFromHeap(heapId, 0x120 * 2);
+    ret = Heap_Alloc(heapId, 0x120 * 2);
     plttRaw = pPlttData->pRawData;
     for (i = 0; i < 0x100; i++) {
         ret[i] = plttRaw[i];

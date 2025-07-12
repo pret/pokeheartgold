@@ -38,7 +38,7 @@ u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon);
 BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
     BugContest *bugContest;
 
-    bugContest = (BugContest *)AllocFromHeap(HEAP_ID_3, sizeof(BugContest));
+    bugContest = (BugContest *)Heap_Alloc(HEAP_ID_3, sizeof(BugContest));
     MI_CpuClear8(bugContest, sizeof(BugContest));
     bugContest->heapId = HEAP_ID_3;
     bugContest->saveData = fieldSystem->saveData;
@@ -174,7 +174,7 @@ ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId) {
     int i;
     u8 modulo;
 
-    slot = AllocFromHeapAtEnd(heapId, sizeof(ENC_SLOT));
+    slot = Heap_AllocAtEnd(heapId, sizeof(ENC_SLOT));
     roll = LCRandom() % 100;
     for (i = 0; i < BUGMON_COUNT; i++) {
         if ((int)roll >= bugContest->encounters[i].rate) {
@@ -256,8 +256,8 @@ void BugContest_InitOpponents(BugContest *bugContest) {
         return;
     }
     flen = FS_GetLength(&file);
-    bin = AllocFromHeapAtEnd(bugContest->heapId, flen);
-    idxs = AllocFromHeapAtEnd(bugContest->heapId, 8);
+    bin = Heap_AllocAtEnd(bugContest->heapId, flen);
+    idxs = Heap_AllocAtEnd(bugContest->heapId, 8);
     FS_ReadFile(&file, bin, flen);
     for (i = 0; i < BUGCONTESTANT_NPC_COUNT; i++) {
         bugContest->contestants[i].id = 0xFF;
@@ -299,7 +299,7 @@ void BugContest_InitEncounters(BugContest *bugContest) {
         return;
     }
     flen = FS_GetLength(&file);
-    bugmon = AllocFromHeapAtEnd(bugContest->heapId, flen);
+    bugmon = Heap_AllocAtEnd(bugContest->heapId, flen);
     FS_ReadFile(&file, bugmon, flen);
     if (bugContest->national_dex) {
         set = bugContest->day_of_week / 2; // Tuesday -> 1, Thursday -> 2, Saturday -> 3

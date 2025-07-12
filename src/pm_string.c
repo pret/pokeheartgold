@@ -16,7 +16,7 @@
     } while (0)
 
 String *String_New(u32 maxsize, HeapID heapId) {
-    String *ret = (String *)AllocFromHeap(heapId, 2 * maxsize + sizeof(String) + sizeof(u16));
+    String *ret = (String *)Heap_Alloc(heapId, 2 * maxsize + sizeof(String) + sizeof(u16));
     if (ret != NULL) {
         ret->magic = STRING_MAGIC;
         ret->maxsize = maxsize;

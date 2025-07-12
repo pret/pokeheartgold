@@ -81,7 +81,7 @@ static void Blackout_InitDisplays(BgConfig *bgConfig) {
 }
 
 static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
-    BlackoutScreenEnvironment *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(BlackoutScreenEnvironment));
+    BlackoutScreenEnvironment *env = Heap_Alloc(HEAP_ID_FIELD, sizeof(BlackoutScreenEnvironment));
 
     GF_ASSERT(env != NULL);
     memset(env, 0, sizeof(BlackoutScreenEnvironment));

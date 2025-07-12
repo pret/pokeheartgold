@@ -131,7 +131,7 @@ static void FieldDrawMapName_StartAscending(FieldDrawMapNameInfo *info) {
 }
 
 FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig) {
-    FieldDrawMapNameInfo *ret = AllocFromHeap(HEAP_ID_4, sizeof(FieldDrawMapNameInfo));
+    FieldDrawMapNameInfo *ret = Heap_Alloc(HEAP_ID_4, sizeof(FieldDrawMapNameInfo));
     ret->mapNameString = String_New(22, HEAP_ID_4);
     FieldDrawMapName_Init(ret, bgConfig);
     FieldDrawMapName_SetupWindow(ret);

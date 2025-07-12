@@ -16,7 +16,7 @@ void RadioShow_Unown_Init(RadioShow *radioShow);
 void RadioShow_Unown_Unload(RadioShow *radioShow);
 
 BOOL RadioShow_Unown_Setup(RadioShow *radioShow) {
-    UnownSignalData *data = AllocFromHeap(radioShow->heapID, sizeof(UnownSignalData));
+    UnownSignalData *data = Heap_Alloc(radioShow->heapID, sizeof(UnownSignalData));
     MI_CpuClear8(data, sizeof(UnownSignalData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

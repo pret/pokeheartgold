@@ -544,7 +544,7 @@ static const int sBgPicNCGR_NCLR[10][2] = {
 };
 
 BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
     OakSpeechData *data = OverlayManager_CreateAndGetData(ovyMan, sizeof(OakSpeechData), HEAP_ID_OAKS_SPEECH);
     memset(data, 0, sizeof(OakSpeechData));
     data->heapId = HEAP_ID_OAKS_SPEECH;
@@ -646,7 +646,7 @@ BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState) {
     NamingScreen_DeleteArgs(data->namingScreenArgs_Player);
     NamingScreen_DeleteArgs(data->namingScreenArgs_Rival);
     OverlayManager_FreeData(ovyMan);
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_36), &ov36_App_InitGameState_AfterOakSpeech);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     return TRUE;

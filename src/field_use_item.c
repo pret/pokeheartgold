@@ -177,7 +177,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
 }
 
 static struct AlphItemUseData *CreateAlphItemUseWork(int scriptNo, u16 var_8000, u16 var_8001, u16 var_8002, u16 var_8003) {
-    struct AlphItemUseData *ret = AllocFromHeap((HeapID)32, sizeof(struct AlphItemUseData));
+    struct AlphItemUseData *ret = Heap_Alloc((HeapID)32, sizeof(struct AlphItemUseData));
     ret->scriptNo = scriptNo;
     ret->var_8000 = var_8000;
     ret->var_8001 = var_8001;
@@ -225,7 +225,7 @@ static void ItemMenuUseFunc_HealingItem(struct ItemMenuUseData *data, const stru
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    PartyMenuArgs *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    PartyMenuArgs *usedat = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memset(usedat, 0, sizeof(PartyMenuArgs));
     usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag = Save_Bag_Get(fieldSystem->saveData);
@@ -348,7 +348,7 @@ static void ItemMenuUseFunc_TMHM(struct ItemMenuUseData *data, const struct Item
 #pragma unused(dat2)
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(data->taskManager);
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
-    PartyMenuArgs *usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    PartyMenuArgs *usedat = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memset(usedat, 0, sizeof(PartyMenuArgs));
     usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag = Save_Bag_Get(fieldSystem->saveData);
@@ -415,7 +415,7 @@ static void ItemMenuUseFunc_Honey(struct ItemMenuUseData *data, const struct Ite
     StartMenuTaskData *env = TaskManager_GetEnvironment(data->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
     size = GetHoneySweetScentWorkSize();
-    honey_work = AllocFromHeapAtEnd(HEAP_ID_FIELD, size);
+    honey_work = Heap_AllocAtEnd(HEAP_ID_FIELD, size);
     memset(honey_work, 0, size);
     env->exitTaskFunc = Task_HoneyOrSweetScent;
     env->exitTaskEnvironment = honey_work;
@@ -484,7 +484,7 @@ static enum ItemUseError ItemCheckUseFunc_FishingRod(const struct ItemCheckUseDa
 }
 
 static BOOL ItemFieldUseFunc_Generic(struct ItemFieldUseData *data) {
-    struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
+    struct RegisteredKeyItemUseMessagePrintTaskData *env = Heap_Alloc(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_New(128, HEAP_ID_FIELD);
     TryFormatRegisteredKeyItemUseMessage(data->fieldSystem->saveData, env->strbuf, data->itemId, HEAP_ID_FIELD);
@@ -538,7 +538,7 @@ static void ItemMenuUseFunc_EvoStone(struct ItemMenuUseData *data, const struct 
         return;
     }
     env = TaskManager_GetEnvironment(data->taskManager);
-    usedat = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    usedat = Heap_Alloc(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     memset(usedat, 0, sizeof(PartyMenuArgs));
     usedat->party = SaveArray_Party_Get(fieldSystem->saveData);
     usedat->bag = Save_Bag_Get(fieldSystem->saveData);
@@ -680,7 +680,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
 }
 
 static BOOL ItemFieldUseFunc_GbSounds(struct ItemFieldUseData *data) {
-    struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
+    struct RegisteredKeyItemUseMessagePrintTaskData *env = Heap_Alloc(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, HEAP_ID_FIELD);
     if (SoundSys_GetGBSoundsState() == TRUE) {
@@ -788,7 +788,7 @@ int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
     if (fieldUseFunc == NULL) {
         return 0;
     }
-    data = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct ItemFieldUseData));
+    data = Heap_Alloc(HEAP_ID_FIELD, sizeof(struct ItemFieldUseData));
     memset(data, 0, sizeof(struct ItemFieldUseData));
     data->fieldSystem = fieldSystem;
     data->itemId = itemId;
@@ -813,7 +813,7 @@ int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
 }
 
 static void RegisteredItem_GoToPrintErrorTask(struct ItemFieldUseData *data, enum ItemUseError error) {
-    struct RegisteredKeyItemUseMessagePrintTaskData *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
+    struct RegisteredKeyItemUseMessagePrintTaskData *env = Heap_Alloc(HEAP_ID_FIELD, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
     env->strbuf = String_New(128, HEAP_ID_FIELD);
     GetItemUseErrorMessage(Save_PlayerData_GetProfile(data->fieldSystem->saveData), env->strbuf, data->itemId, error, HEAP_ID_FIELD);

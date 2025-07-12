@@ -253,11 +253,11 @@ BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
     struct ChooseStarterArgs *args;
     int i;
 
-    CreateHeap(HEAP_ID_3, HEAP_ID_CHOOSE_STARTER, 0x40000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_CHOOSE_STARTER, 0x40000);
     work = OverlayManager_CreateAndGetData(ovy, sizeof(struct ChooseStarterAppWork), HEAP_ID_CHOOSE_STARTER);
     MI_CpuClear8(work, sizeof(struct ChooseStarterAppWork));
     work->heapId = HEAP_ID_CHOOSE_STARTER;
-    GF_ExpHeap_FndInitAllocator(&work->allocator, HEAP_ID_CHOOSE_STARTER, 0x20);
+    HeapExp_FndInitAllocator(&work->allocator, HEAP_ID_CHOOSE_STARTER, 0x20);
     args = OverlayManager_GetArgs(ovy);
     work->frame = Options_GetFrame(args->options);
     for (i = 0; i < 3; i++) {
@@ -567,7 +567,7 @@ BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state) {
     Heap_Free(work->bgConfig);
     GF_3DVramMan_Delete(work->_3dMan);
     OverlayManager_FreeData(ovy);
-    DestroyHeap(HEAP_ID_CHOOSE_STARTER);
+    Heap_Destroy(HEAP_ID_CHOOSE_STARTER);
     return TRUE;
 }
 

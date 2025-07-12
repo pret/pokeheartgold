@@ -230,7 +230,7 @@ static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x
 }
 
 static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
-    SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
+    SCR_648_STRUCT *unkPtr = Heap_Alloc(HEAP_ID_4, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
     }
@@ -1195,7 +1195,7 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
     rngSeed = GetLCRNGSeed();
     SetLCRNGSeed(sub_0202C7DC(friendGroup));
 
-    luckValues = AllocFromHeapAtEnd(HEAP_ID_32, numMachines);
+    luckValues = Heap_AllocAtEnd(HEAP_ID_32, numMachines);
     MI_CpuFill8(luckValues, 0, numMachines);
 
     for (i = 0; i < NELEMS(sSlotLuckDistribution[city]); ++i) {
@@ -1353,7 +1353,7 @@ BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx) {
 
     sealcase = Save_SealCase_Get(ctx->fieldSystem->saveData);
 
-    sealThresholds = AllocFromHeapAtEnd(HEAP_ID_32, sizeof(u16) * SEAL_MYSTERY);
+    sealThresholds = Heap_AllocAtEnd(HEAP_ID_32, sizeof(u16) * SEAL_MYSTERY);
 
     MI_CpuFill8(sealThresholds, 0, sizeof(u16) * SEAL_MYSTERY);
     MI_CpuFill8(uniqueSeals, 0, sizeof(u8) * 3);

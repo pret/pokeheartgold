@@ -41,13 +41,13 @@ static void (*const sAnimFuncs[2])(Sprite *sprite) = {
 SpriteList *SpriteList_Create(SpriteListParam *param) {
     GF_ASSERT(param != NULL);
     GF_ASSERT(param->rendererInstance != NULL);
-    SpriteList *ret = AllocFromHeap(param->heapId, sizeof(SpriteList));
+    SpriteList *ret = Heap_Alloc(param->heapId, sizeof(SpriteList));
     GF_ASSERT(ret != NULL);
     SpriteList_Init(ret);
-    ret->sprites = AllocFromHeap(param->heapId, param->num * sizeof(Sprite));
+    ret->sprites = Heap_Alloc(param->heapId, param->num * sizeof(Sprite));
     GF_ASSERT(ret->sprites != NULL);
     ret->numSprites = param->num;
-    ret->stack = AllocFromHeap(param->heapId, param->num * sizeof(Sprite *));
+    ret->stack = Heap_Alloc(param->heapId, param->num * sizeof(Sprite *));
     GF_ASSERT(ret->stack != NULL);
     SpriteList_InitStack(ret);
     Sprite_Init(&ret->dummy);
@@ -460,7 +460,7 @@ GXOamMode Sprite_GetOamMode(Sprite *sprite) {
 }
 
 void ClearMainOAM(HeapID heapId) {
-    void *buf = AllocFromHeap(heapId, HW_OAM_SIZE);
+    void *buf = Heap_Alloc(heapId, HW_OAM_SIZE);
     MI_CpuFill16(buf, 0x2c0, HW_OAM_SIZE);
     DC_FlushRange(buf, HW_OAM_SIZE);
     GX_LoadOAM(buf, 0, HW_OAM_SIZE);
@@ -468,7 +468,7 @@ void ClearMainOAM(HeapID heapId) {
 }
 
 void ClearSubOAM(HeapID heapId) {
-    void *buf = AllocFromHeap(heapId, HW_OAM_SIZE);
+    void *buf = Heap_Alloc(heapId, HW_OAM_SIZE);
     MI_CpuFill16(buf, 0x2c0, HW_OAM_SIZE);
     GXS_LoadOAM(buf, 0, HW_OAM_SIZE);
     Heap_Free(buf);
@@ -584,8 +584,8 @@ static void Sprite_InitMultiCellAnimation(Sprite *sprite, HeapID heapId) {
     SpriteMultiAnimationData *animData = (SpriteMultiAnimationData *)sprite->animationData;
     const NNSG2dMultiCellAnimSequence *animSeq = NNS_G2dGetAnimSequenceByIdx(animData->multiAnimBankData, 0);
     u16 numNodes = NNS_G2dGetMCBankNumNodesRequired(animData->multiCellBank);
-    animData->node = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dNode));
-    animData->cellAnim = AllocFromHeap(heapId, numNodes * sizeof(NNSG2dCellAnimation));
+    animData->node = Heap_Alloc(heapId, numNodes * sizeof(NNSG2dNode));
+    animData->cellAnim = Heap_Alloc(heapId, numNodes * sizeof(NNSG2dCellAnimation));
     NNS_G2dInitMCAnimation(&animData->animation, animData->node, animData->cellAnim, numNodes, animData->animBankData, animData->cellBank, animData->multiCellBank);
     NNS_G2dSetAnimSequenceToMCAnimation(&animData->animation, animSeq);
 }

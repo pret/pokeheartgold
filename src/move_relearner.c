@@ -5,7 +5,7 @@
 #include "pokemon.h"
 
 MoveRelearnerArgs *MoveRelearner_New(HeapID heapId) {
-    MoveRelearnerArgs *ret = AllocFromHeap(heapId, sizeof(MoveRelearnerArgs));
+    MoveRelearnerArgs *ret = Heap_Alloc(heapId, sizeof(MoveRelearnerArgs));
     memset(ret, 0, sizeof(MoveRelearnerArgs));
     return ret;
 }
@@ -24,8 +24,8 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
         moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
     }
 
-    u16 *tableFromFile = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);
-    u16 *returnTable = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);
+    u16 *tableFromFile = Heap_Alloc(heapId, LEVEL_UP_LEARNSET_MAX * 2);
+    u16 *returnTable = Heap_Alloc(heapId, LEVEL_UP_LEARNSET_MAX * 2);
 
     LoadLevelUpLearnset_HandleAlternateForm(species, form, tableFromFile);
 

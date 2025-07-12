@@ -38,7 +38,7 @@ static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem);
 
 BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     int i;
-    BattleSetup *setup = AllocFromHeap(heapId, sizeof(BattleSetup));
+    BattleSetup *setup = Heap_Alloc(heapId, sizeof(BattleSetup));
     MI_CpuClear8(setup, sizeof(BattleSetup));
     setup->battleType = battleTypeFlags;
     setup->battleSpecial = 0;

@@ -241,7 +241,7 @@ void SaveMGDataPtr_Begin(SaveData *saveData, HeapID heapId) {
     if (sMysteryGiftSaveData == NULL) {
 #ifdef MYSTERY_GIFT_SAVE_TRANSACTION_IMPL
         u32 size = Save_MysteryGift_sizeof();
-        sMysteryGiftSaveData = AllocFromHeap(heapId, size);
+        sMysteryGiftSaveData = Heap_Alloc(heapId, size);
         GF_ASSERT(sMysteryGiftSaveData != NULL);
         MI_CpuCopy32(Save_MysteryGift_Get(saveData), sMysteryGiftSaveData, size);
 #else

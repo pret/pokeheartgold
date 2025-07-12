@@ -27,7 +27,7 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
 
 BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
-    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
     PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_POKEGEAR_APP);
     memset(phoneApp, 0, sizeof(PokegearPhoneAppData));
     phoneApp->pokegear = pokegearApp;
@@ -97,7 +97,7 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
     phoneApp->pokegear->isSwitchApp = TRUE;
     HeapID heapId = phoneApp->heapId;
     OverlayManager_FreeData(man);
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
     return TRUE;
 }
 

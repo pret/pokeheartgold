@@ -232,7 +232,7 @@ void sub_0204A810(UnkStruct_Fsys_A0 **a0) {
 }
 
 UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32 a2) {
-    UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
+    UnkStruct_Fsys_A0 *unkStruct = Heap_Alloc(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
     MI_CpuClear8(unkStruct, sizeof(UnkStruct_Fsys_A0));
     unkStruct->heapId = HEAP_ID_FIELD;
     unkStruct->unk70 = sub_0202D908(saveData);
@@ -715,7 +715,7 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
 }
 
 static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
-    UnkStruct_0204B470 *unkStructs = AllocFromHeapAtEnd(a0->heapId, 3 * sizeof(UnkStruct_0204B470));
+    UnkStruct_0204B470 *unkStructs = Heap_AllocAtEnd(a0->heapId, 3 * sizeof(UnkStruct_0204B470));
     MI_CpuClear8(unkStructs, 3 * sizeof(UnkStruct_0204B470));
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 3; i++) {

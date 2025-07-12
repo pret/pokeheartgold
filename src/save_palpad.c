@@ -38,7 +38,7 @@ void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId) {
     int sp18[5];
     SavePalPad *c;
 
-    c = AllocFromHeap(heapId, sizeof(SavePalPad) * NUM_PALPAD_ENTRIES);
+    c = Heap_Alloc(heapId, sizeof(SavePalPad) * NUM_PALPAD_ENTRIES);
     Save_PalPad_Init(c);
 
     for (i = 0; i < n; i++) {

@@ -144,7 +144,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
     u32 slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
     contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
-    u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, slot);
+    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_4, slot);
     MI_CpuFill8(ptr, 0xFF, slot);
     u16 rand = LCRandom() % 1000;
 
@@ -236,7 +236,7 @@ asm static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBo
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	ldr r2, [sp, #0x2c]
 	mov r1, #0xff
 	add r4, r0, #0
@@ -456,7 +456,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, 13);
+    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_4, 13);
     MI_CpuFill8(ptr, 0, 13);
 
     int cnt = 0;

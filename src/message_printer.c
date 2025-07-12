@@ -16,7 +16,7 @@ static const u16 _020F5C24[][2] = {
 };
 
 MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, HeapID heapId) {
-    MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
+    MessagePrinter *messagePrinter = Heap_Alloc(heapId, sizeof(MessagePrinter));
     if (messagePrinter != NULL) {
         messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, TRUE, &messagePrinter->ppCharData, heapId);
         int i;

@@ -27,7 +27,7 @@ int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp);
 
 BOOL PokegearRadio_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
-    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x20000);
     PokegearRadioAppData *radioApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearRadioAppData), HEAP_ID_POKEGEAR_APP);
     memset(radioApp, 0, sizeof(PokegearRadioAppData));
     radioApp->pokegear = pokegearApp;
@@ -75,7 +75,7 @@ BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
     radioApp->pokegear->isSwitchApp = TRUE;
     HeapID heapId = radioApp->heapId;
     OverlayManager_FreeData(man);
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
     return TRUE;
 }
 

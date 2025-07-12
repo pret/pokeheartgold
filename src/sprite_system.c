@@ -30,7 +30,7 @@ static BOOL UnregisterLoadedCharResources(GF_2DGfxResMan *manager, GF_2DGfxResOb
 static BOOL UnregisterLoadedPlttResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 plttId);
 
 SpriteSystem *SpriteSystem_Alloc(HeapID heapId) {
-    SpriteSystem *ret = AllocFromHeap(heapId, sizeof(SpriteSystem));
+    SpriteSystem *ret = Heap_Alloc(heapId, sizeof(SpriteSystem));
     if (ret == NULL) {
         return NULL;
     }
@@ -42,7 +42,7 @@ SpriteSystem *SpriteSystem_Alloc(HeapID heapId) {
 
 SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem) {
     GF_ASSERT(spriteSystem != NULL);
-    SpriteManager *ret = AllocFromHeap(spriteSystem->heapId, sizeof(SpriteManager));
+    SpriteManager *ret = Heap_Alloc(spriteSystem->heapId, sizeof(SpriteManager));
     if (ret == NULL) {
         return NULL;
     }
@@ -172,7 +172,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
     }
     spriteManager->numGfxResObjectTypes = numGfxResTypes;
     size = GF2DGfxResHeader_sizeof();
-    spriteManager->_2dGfxResHeader = AllocFromHeap(spriteSystem->heapId, size * numGfxResTypes);
+    spriteManager->_2dGfxResHeader = Heap_Alloc(spriteSystem->heapId, size * numGfxResTypes);
     narc = NARC_New(NARC_data_resdat, spriteSystem->heapId);
 
     for (i = 0; i < numGfxResTypes; ++i) {
@@ -408,18 +408,18 @@ ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, Spr
 static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset) {
     int i;
     int paletteOffset;
-    ManagedSprite *ret = AllocFromHeap(spriteSystem->heapId, sizeof(ManagedSprite));
+    ManagedSprite *ret = Heap_Alloc(spriteSystem->heapId, sizeof(ManagedSprite));
     SpriteTemplate spriteTemplate;
     int resIdList[GF_GFX_RES_TYPE_MAX];
 
     if (ret == NULL) {
         return NULL;
     }
-    ret->spriteResourceHeaderList = AllocFromHeap(spriteSystem->heapId, sizeof(SpriteResourceHeaderList));
+    ret->spriteResourceHeaderList = Heap_Alloc(spriteSystem->heapId, sizeof(SpriteResourceHeaderList));
     if (ret->spriteResourceHeaderList == NULL) {
         return NULL;
     }
-    ret->spriteResourceHeaderList->headers = AllocFromHeap(spriteSystem->heapId, sizeof(SpriteResourcesHeader));
+    ret->spriteResourceHeaderList->headers = Heap_Alloc(spriteSystem->heapId, sizeof(SpriteResourcesHeader));
     ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
     if (ret->spriteResourceHeaderList->headers == NULL) {
         if (ret->spriteResourceHeaderList != NULL) { // always true

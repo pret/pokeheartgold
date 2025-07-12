@@ -87,8 +87,8 @@
 .public sub_02019FF8
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public Heap_FreeExplicit
 .public BgConfig_Alloc

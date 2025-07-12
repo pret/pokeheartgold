@@ -7,7 +7,7 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
 
 LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
     int i;
-    LISTMENUITEM *ret = AllocFromHeap(heapId, (n + 1) * sizeof(LISTMENUITEM));
+    LISTMENUITEM *ret = Heap_Alloc(heapId, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
         for (i = 0; i < n; i++) {
             ret[i].text = NULL;

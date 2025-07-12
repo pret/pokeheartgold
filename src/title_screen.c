@@ -117,7 +117,7 @@ static BOOL TitleScreen_Init(OverlayManager *man, int *state) {
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
     SetKeyRepeatTimers(4, 8);
-    CreateHeap(HEAP_ID_3, HEAP_ID_TITLE_SCREEN, 0x50000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_TITLE_SCREEN, 0x50000);
     TitleScreenOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(TitleScreenOverlayData), HEAP_ID_TITLE_SCREEN);
     memset(data, 0, sizeof(TitleScreenOverlayData));
     data->heapID = HEAP_ID_TITLE_SCREEN;
@@ -240,7 +240,7 @@ static BOOL TitleScreen_Exit(OverlayManager *man, int *state) {
     TitleScreen_Delete3DVramMan(data);
     TitleScreen_ReleaseBgs(data);
     OverlayManager_FreeData(man);
-    DestroyHeap(heapID);
+    Heap_Destroy(heapID);
 
     switch (exitMode) {
     default:
@@ -309,7 +309,7 @@ static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFil
         animObj->_3dResObjsArc[i] = animObj->_3dAnmObjs[i] = NULL;
     }
 
-    GF_ExpHeap_FndInitAllocator(&animObj->allocator, heapID, 4);
+    HeapExp_FndInitAllocator(&animObj->allocator, heapID, 4);
     void *pAnim;
     animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, texFileId, heapID);
     GF3dRender_InitObjFromHeader(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);

@@ -201,7 +201,7 @@ static u16 getRandomTrainerMon(u16 trainerID, HeapID a1) {
     u16 teamSpecies[PARTY_SIZE];
 
     TrainerData_ReadTrData(trainerID, &trdata);
-    trpoke = AllocFromHeap(a1, sizeof(TRPOKE) * PARTY_SIZE);
+    trpoke = Heap_Alloc(a1, sizeof(TRPOKE) * PARTY_SIZE);
     MI_CpuClear8(trpoke, sizeof(TRPOKE) * PARTY_SIZE);
     TrainerData_ReadTrPoke(trainerID, trpoke);
     switch (trdata.data.trainerType) {

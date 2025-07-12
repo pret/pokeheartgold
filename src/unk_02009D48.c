@@ -81,8 +81,8 @@ SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNar
     while (resdatNarcEntry[num].charId != -2) {
         num++;
     }
-    ret = AllocFromHeap(heapId, sizeof(SpriteResourceHeaderList));
-    ret->headers = AllocFromHeap(heapId, sizeof(SpriteResourcesHeader) * num);
+    ret = Heap_Alloc(heapId, sizeof(SpriteResourceHeaderList));
+    ret->headers = Heap_Alloc(heapId, sizeof(SpriteResourcesHeader) * num);
     ret->num = num;
     for (i = 0; i < ret->num; i++) {
         CreateSpriteResourcesHeader(&ret->headers[i], resdatNarcEntry[i].charId, resdatNarcEntry[i].plttId, resdatNarcEntry[i].cellId, resdatNarcEntry[i].animId, resdatNarcEntry[i].mcelId, resdatNarcEntry[i].manmId, resdatNarcEntry[i].xferFlag, resdatNarcEntry[i].priority, charMan, plttMan, cellMan, animMan, mcelMan, manmMan);

@@ -74,7 +74,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT *table, u32 num, String
     if (num < table->count) {
         alloc = table->alloc[num];
         Decrypt1(&alloc, num, table->key);
-        buf = AllocFromHeapAtEnd(HEAP_ID_DEFAULT, 2 * alloc.length);
+        buf = Heap_AllocAtEnd(HEAP_ID_DEFAULT, 2 * alloc.length);
         if (buf != NULL) {
             MI_CpuCopy16((char *)table + alloc.offset, buf, 2 * alloc.length);
             Decrypt2(buf, alloc.length, num);
@@ -94,7 +94,7 @@ static String *ReadMsgData_ExistingTable_NewString(MAT *table, u32 num, HeapID h
     if (num < table->count) {
         alloc = table->alloc[num];
         Decrypt1(&alloc, num, table->key);
-        buf = AllocFromHeapAtEnd(heapId, 2 * alloc.length);
+        buf = Heap_AllocAtEnd(heapId, 2 * alloc.length);
         if (buf != NULL) {
             MI_CpuCopy16((char *)table + alloc.offset, buf, 2 * alloc.length);
             Decrypt2(buf, alloc.length, num);
@@ -132,7 +132,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC *narc, u32 group, u32 n
         NARC_ReadFromMember(narc, group, 8 * num + 4, 8, &alloc);
         Decrypt1(&alloc, num, sp10[1]);
         size = alloc.length * 2;
-        buf = AllocFromHeapAtEnd(heapId, size);
+        buf = Heap_AllocAtEnd(heapId, size);
         if (buf != NULL) {
             NARC_ReadFromMember(narc, group, alloc.offset, size, buf);
             Decrypt2(buf, alloc.length, num);
@@ -172,7 +172,7 @@ static String *ReadMsgData_ExistingNarc_NewString(NARC *narc, u32 group, u32 num
         dest = String_New(alloc.length, heapId);
         if (dest != NULL) {
             size = alloc.length * 2;
-            buf = AllocFromHeapAtEnd(heapId, size);
+            buf = Heap_AllocAtEnd(heapId, size);
             if (buf != NULL) {
                 NARC_ReadFromMember(narc, group, alloc.offset, size, buf);
                 Decrypt2(buf, alloc.length, num);
@@ -198,7 +198,7 @@ static u16 GetMsgCount_TableFromNarc(NarcId narc_id, s32 file_id) {
 }
 
 MsgData *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, HeapID heapId) {
-    MsgData *msgData = AllocFromHeapAtEnd(heapId, sizeof(MsgData));
+    MsgData *msgData = Heap_AllocAtEnd(heapId, sizeof(MsgData));
     if (msgData != NULL) {
         if (type == MSGDATA_LOAD_DIRECT) {
             msgData->direct = LoadSingleElementFromNarc(narc_id, file_id, heapId);
