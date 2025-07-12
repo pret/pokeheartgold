@@ -116,7 +116,7 @@ static void LoadMonPalParkStats(u16 species, u8 *dest) {
 
 static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
     struct MigratedPokemonSav *migrated = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_4);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD1);
     u8 narc_data[6];
     u16 species;
     for (int i = 0; i < PARTY_SIZE; ++i) {
@@ -236,9 +236,9 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
 }
 
 static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     struct MigratedPokemonSav *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
+    BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD2, PalPark_CountMonsNotCaught(fieldSystem));
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
     GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);

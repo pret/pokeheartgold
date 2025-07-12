@@ -65,7 +65,7 @@
 .public sub_02013488
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
-.public AllocFromHeapAtEnd
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF_AssertFail
 .public GXx_SetMasterBrightness_

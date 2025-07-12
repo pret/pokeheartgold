@@ -19,7 +19,7 @@ typedef struct Ov122_021E8CFC {
 
 typedef void (*Ov122UnkCB)(struct Ov122_021E8CFC *a0, int a1, int a2);
 
-Ov122_021E8CFC *ov122_021E8CFC(HeapID, struct ManagedSprite *, struct ManagedSprite *);
+Ov122_021E8CFC *ov122_021E8CFC(enum HeapID, struct ManagedSprite *, struct ManagedSprite *);
 void ov122_021E8D58(Ov122_021E8CFC *);
 int ov122_021E8D74(Ov122_021E8CFC *);
 void ov122_021E8D8C(Ov122_021E8CFC *, int);

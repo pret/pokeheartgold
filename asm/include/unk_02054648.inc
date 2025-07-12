@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public AllocFromHeapAtEnd
+.public Heap_AllocAtEnd
 .public GF_AssertFail
 .public MapMatrix_GetWidth
 .public sub_02054550

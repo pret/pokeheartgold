@@ -10,7 +10,7 @@
 #include "unk_02005D10.h"
 
 typedef struct TrainerProfilesData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u8 msgIDs[3];
     u8 selector;
@@ -21,7 +21,7 @@ void RadioShow_TrainerProfiles_Unload(RadioShow *radioShow);
 BOOL RadioShow_TrainerProfiles_EnsureUniqueMsgID(TrainerProfilesData *data, u8 msgID, u8 index);
 
 BOOL RadioShow_TrainerProfiles_Setup(RadioShow *radioShow) {
-    TrainerProfilesData *data = AllocFromHeap(radioShow->heapID, sizeof(TrainerProfilesData));
+    TrainerProfilesData *data = Heap_Alloc(radioShow->heapID, sizeof(TrainerProfilesData));
     MI_CpuClear8(data, sizeof(TrainerProfilesData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

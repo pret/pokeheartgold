@@ -1578,7 +1578,7 @@ _02238446:
 	mov r0, #3
 	mov r1, #0x3d
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	bl LoadDwcOverlay
 	bl LoadOVY38
 	mov r0, #0x3d
@@ -1666,7 +1666,7 @@ _02238446:
 	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _022385BC ; =0x00020020
 	mov r0, #0x3d
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x4c]
 	add r0, #0x1f
 	mov r1, #0x1f
@@ -1911,7 +1911,7 @@ ov70_022386F4: ; 0x022386F4
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x3d
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -5947,7 +5947,7 @@ ov70_0223A7E4: ; 0x0223A7E4
 	add r5, r0, #0
 	mov r0, #0x3d
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r0, sp, #0x20
 	add r1, r5, #0
@@ -8434,7 +8434,7 @@ ov70_0223BC7C: ; 0x0223BC7C
 	str r0, [r4, r1]
 	mov r0, #0x3d
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0223BCCC ; =0x000011C4
 	mov r2, #0x30
 	str r0, [r4, r1]
@@ -11321,7 +11321,7 @@ ov70_0223D3BC: ; 0x0223D3BC
 _0223D3F2:
 	mov r0, #0x3d
 	mov r1, #0x78
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0223D410 ; =0x000011F4
 	str r0, [r4, r1]
 	pop {r4, pc}
@@ -13143,7 +13143,7 @@ ov70_0223E264: ; 0x0223E264
 	ldr r1, _0223E46C ; =0x00003D68
 	str r0, [sp, #0x20]
 	mov r0, #3
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0x12
 	lsl r1, r1, #8
 	str r0, [r5, r1]
@@ -14448,7 +14448,7 @@ ov70_0223ECCC: ; 0x0223ECCC
 	str r0, [r4, r1]
 	mov r0, #0x3d
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0223ED20 ; =0x000011C4
 	mov r2, #0x30
 	str r0, [r4, r1]
@@ -15717,7 +15717,7 @@ ov70_0223F684: ; 0x0223F684
 	ldr r1, _0223F6DC ; =0x000001EE
 	add r5, r0, #0
 	mov r0, #0x3d
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r2, _0223F6DC ; =0x000001EE
 	mov r0, #0
@@ -21075,7 +21075,7 @@ ov70_02242014: ; 0x02242014
 	mov r0, #0x3d
 	mov r1, #0x80
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r0, [r5]
 	mov r1, #0

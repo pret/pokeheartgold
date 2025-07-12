@@ -279,7 +279,7 @@ BOOL BerryPotsApp_Initialize(OverlayManager *manager, int *state) {
     switch (*state) {
     case 0:
         ov17_02201BC0();
-        CreateHeap(HEAP_ID_3, HEAP_ID_BERRY_POTS_APP, 0x20000);
+        Heap_Create(HEAP_ID_3, HEAP_ID_BERRY_POTS_APP, 0x20000);
 
         data = OverlayManager_CreateAndGetData(manager, sizeof(BerryPotsAppData), HEAP_ID_BERRY_POTS_APP);
         MI_CpuFill8(data, 0, sizeof(BerryPotsAppData));
@@ -350,7 +350,7 @@ BOOL BerryPotsApp_Exit(OverlayManager *manager, int *state) {
     ov17_02201DD8(data);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_BERRY_POTS_APP);
+    Heap_Destroy(HEAP_ID_BERRY_POTS_APP);
 
     return TRUE;
 }

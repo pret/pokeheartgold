@@ -24,7 +24,7 @@ typedef enum ViewPhotoTaskState {
 } ViewPhotoTaskState;
 
 typedef struct ViewPhotoSysTaskData {
-    HeapID heapId;
+    enum HeapID heapId;
     int state;
     MenuInputState menuInputState;
     ViewPhotoInputResponse lastInput;
@@ -63,7 +63,7 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
 static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto);
-static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
+static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, enum HeapID heapId, SaveData *saveData);
 static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto);
 static u8 Photo_CountValidMons(Photo *a0);
@@ -133,9 +133,9 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
 static const u8 _0225A03C[3] = { 9, 1, 4 };
 
 SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
-    ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
+    ViewPhotoSysTaskData *viewPhoto = Heap_Alloc(HEAP_ID_FIELD2, sizeof(ViewPhotoSysTaskData));
     MI_CpuClear8(viewPhoto, sizeof(ViewPhotoSysTaskData));
-    viewPhoto->heapId = HEAP_ID_FIELD;
+    viewPhoto->heapId = HEAP_ID_FIELD2;
     viewPhoto->fieldSystem = fieldSystem;
     viewPhoto->bgConfig = fieldSystem->bgConfig;
     viewPhoto->saveData = fieldSystem->saveData;
@@ -419,7 +419,7 @@ static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto
     return !Sprite_IsAnimated(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
-static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, enum HeapID heapId, SaveData *saveData) {
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
     sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);

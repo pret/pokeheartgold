@@ -245,7 +245,7 @@ ov01_021F488C: ; 0x021F488C
 _021F4894:
 	ldr r1, _021F4964 ; =0x00000A74
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _021F4964 ; =0x00000A74
 	mov r1, #0
 	add r7, r0, #0
@@ -306,7 +306,7 @@ _021F4894:
 	beq _021F4944
 	mov r0, #4
 	lsl r1, r0, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r1, r5, r4
 	add r1, #0x90
 	ldr r2, [r1]
@@ -356,7 +356,7 @@ ov01_021F497C: ; 0x021F497C
 _021F4982:
 	ldr r1, _021F49EC ; =0x00000A74
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _021F49EC ; =0x00000A74
 	mov r1, #0
 	add r7, r0, #0
@@ -420,7 +420,7 @@ ov01_021F49FC: ; 0x021F49FC
 	beq _021F4A22
 	mov r0, #4
 	mov r1, #0x10
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r7, #0
@@ -3379,7 +3379,7 @@ ov01_021F6020: ; 0x021F6020
 	lsl r1, r1, #4
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x11
 	mov r1, #0
 	lsl r2, r2, #4
@@ -4398,7 +4398,7 @@ ov01_021F676C: ; 0x021F676C
 	mov r1, #0x30
 	add r6, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r0, #0
 	str r5, [r1]
 	str r4, [r1, #4]

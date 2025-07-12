@@ -101,7 +101,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OverlayManager *man, int *state) {
 
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_80), OVY_LOAD_ASYNC);
     BattleArcadeGameBoard_InitSub();
-    CreateHeap(HEAP_ID_3, HEAP_ID_GAME_BOARD, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_GAME_BOARD, 0x20000);
     work = OverlayManager_CreateAndGetData(man, sizeof(GAME_BOARD_WORK), HEAP_ID_GAME_BOARD);
     memset(work, 0, sizeof(GAME_BOARD_WORK));
 
@@ -221,7 +221,7 @@ BOOL ov84_0223DFF0(OverlayManager *man, int *state) {
     OverlayManager_FreeData(man);
 
     Main_SetVBlankIntrCB(NULL, NULL);
-    DestroyHeap(HEAP_ID_GAME_BOARD);
+    Heap_Destroy(HEAP_ID_GAME_BOARD);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_80));
 
     return TRUE;
@@ -1370,7 +1370,7 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
     VecFx32 vec;
     u32 i;
 
-    obj = AllocFromHeap(HEAP_ID_GAME_BOARD, sizeof(BATTLE_ARCADE_OBJECT));
+    obj = Heap_Alloc(HEAP_ID_GAME_BOARD, sizeof(BATTLE_ARCADE_OBJECT));
 
     u8 *temp = (u8 *)obj;
     for (i = sizeof(BATTLE_ARCADE_OBJECT); i; i--) {

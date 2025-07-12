@@ -711,7 +711,7 @@ sub_02033F44: ; 0x02033F44
 	lsl r7, r4, #4
 	mov r0, #0xf
 	add r1, r7, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r5, #0x18]
@@ -1001,7 +1001,7 @@ sub_0203410C: ; 0x0203410C
 	bne _02034128
 	mov r0, #0xf
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02034150 ; =_021D412C
 	str r0, [r1]
 _02034128:

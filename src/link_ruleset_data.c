@@ -181,7 +181,7 @@ LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index) {
     }
 }
 
-void sub_0202921C(SaveData *saveData, int index, String *string, HeapID heapId) {
+void sub_0202921C(SaveData *saveData, int index, String *string, enum HeapID heapId) {
     if (index == 5) {
         LinkBattleRuleset *ruleset = Save_LinkBattleRuleset_GetByIndex(saveData, 0);
         LinkBattleRuleset_CopyNameToString(ruleset, string);

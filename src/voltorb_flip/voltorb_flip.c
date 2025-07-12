@@ -1957,7 +1957,7 @@ static void ov122_021E8094(OverlayManager *man) {
     ov122_021E8068();
     SetGXBanks();
 
-    CreateHeap(HEAP_ID_3, HEAP_ID_VOLTORB_FLIP, 0x50000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_VOLTORB_FLIP, 0x50000);
 
     VoltorbFlipAppWork *work = OverlayManager_CreateAndGetData(man, sizeof(VoltorbFlipAppWork), HEAP_ID_VOLTORB_FLIP);
     MI_CpuFill8(work, 0, sizeof(VoltorbFlipAppWork));
@@ -2022,7 +2022,7 @@ static void FreeOverlayData(OverlayManager *man) {
     NARC_Delete(work->narc);
     ov122_021E8068();
     OverlayManager_FreeData(man);
-    DestroyHeap(HEAP_ID_VOLTORB_FLIP);
+    Heap_Destroy(HEAP_ID_VOLTORB_FLIP);
 }
 
 BOOL VoltorbFlip_Init(OverlayManager *man, int *state) {

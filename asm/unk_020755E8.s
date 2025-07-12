@@ -657,7 +657,7 @@ sub_02075A7C: ; 0x02075A7C
 	bl FontID_Alloc
 	add r0, r5, #0
 	mov r1, #0xbc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -855,7 +855,7 @@ sub_02075A7C: ; 0x02075A7C
 	str r0, [r4, #0x10]
 	add r0, r5, #0
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x3c]
 	ldr r1, [r4, #0x3c]
 	mov r0, #0
@@ -1444,7 +1444,7 @@ _02076136:
 	mov r3, #4
 	bl Pokepic_StartPaletteFade
 	ldr r0, [r4, #0x5c]
-	bl GF_ExpHeap_FndGetTotalFreeSize
+	bl HeapExp_FndGetTotalFreeSize
 	mov r1, #2
 	lsl r1, r1, #0xe
 	cmp r0, r1

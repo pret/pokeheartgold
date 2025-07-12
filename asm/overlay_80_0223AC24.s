@@ -13,7 +13,7 @@ ov80_0223AC24: ; 0x0223AC24
 	mov r1, #0x4c
 	str r2, [sp]
 	add r5, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x4c
 	add r4, r0, #0
@@ -264,7 +264,7 @@ _0223ADEE:
 ov80_0223ADF4: ; 0x0223ADF4
 	push {r4, lr}
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -442,7 +442,7 @@ ov80_0223AF30: ; 0x0223AF30
 	mov r1, #0x19
 	lsl r1, r1, #4
 	add r6, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #4
@@ -1268,7 +1268,7 @@ ov80_0223B544: ; 0x0223B544
 	add r4, r0, #0
 	ldr r1, _0223B5D4 ; =0x00003024
 	add r0, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0223B5D4 ; =0x00003024
 	str r0, [sp]
 	mov r1, #0

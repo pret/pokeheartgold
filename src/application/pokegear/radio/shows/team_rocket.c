@@ -9,7 +9,7 @@
 #include "unk_02005D10.h"
 
 typedef struct TeamRocketRadioData {
-    HeapID heapID;
+    enum HeapID heapID;
     u8 state;
 } TeamRocketRadioData;
 
@@ -17,7 +17,7 @@ void RadioShow_TeamRocket_Init(RadioShow *radioShow);
 void RadioShow_TeamRocket_Unload(RadioShow *radioShow);
 
 BOOL RadioShow_TeamRocket_Setup(RadioShow *radioShow) {
-    TeamRocketRadioData *data = AllocFromHeap(radioShow->heapID, sizeof(TeamRocketRadioData));
+    TeamRocketRadioData *data = Heap_Alloc(radioShow->heapID, sizeof(TeamRocketRadioData));
     MI_CpuClear8(data, sizeof(TeamRocketRadioData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

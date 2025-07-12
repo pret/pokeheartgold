@@ -38,7 +38,7 @@ typedef enum CheckSavedataApp_PrintState {
 } CheckSavedataApp_PrintState;
 
 typedef struct CheckSavedataApp_Data {
-    HeapID heapId;
+    enum HeapID heapId;
     CheckSavedataApp_MainState mainState;
     u32 msgNum;
     CheckSavedataApp_PrintState printState;
@@ -113,7 +113,7 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data);
 static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
 BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     CheckSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CheckSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
     memset(data, 0, sizeof(CheckSavedataApp_Data));
@@ -178,12 +178,12 @@ BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
 
 BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state) {
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
-    HeapID heapId = data->heapId;
+    enum HeapID heapId = data->heapId;
 
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(heapId);
+    Heap_Destroy(heapId);
 
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_74), &gApp_MainMenu);
 

@@ -24,7 +24,7 @@ ov85_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x66
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E5A28 ; =0x00000DCC
 	add r0, r5, #0
 	mov r2, #0x66
@@ -176,7 +176,7 @@ _021E5A4A:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x66
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #2
 	bl sub_0201A738
 	mov r0, #1
@@ -4501,7 +4501,7 @@ ov85_021E7B40: ; 0x021E7B40
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r0, #0x66
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r0, #0
 	add r3, r1, #0
 	mov r2, #0x18
@@ -5445,7 +5445,7 @@ ov85_021E81E0: ; 0x021E81E0
 	add r5, r0, #0
 	mov r0, #0x66
 	mov r1, #0x18
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x18
@@ -5886,7 +5886,7 @@ ov85_021E84EC: ; 0x021E84EC
 	str r0, [sp, #4]
 	mov r0, #0x66
 	mov r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r0, #0
 	str r5, [r1]
 	lsl r2, r4, #2
@@ -5978,11 +5978,11 @@ ov85_021E8588: ; 0x021E8588
 	cmp r5, #1
 	bne _021E85A8
 	mov r0, #0x66
-	bl AllocFromHeap
+	bl Heap_Alloc
 	b _021E85AE
 _021E85A8:
 	mov r0, #0x66
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _021E85AE:
 	add r5, r0, #0
 	mov r0, #0x36
@@ -6484,7 +6484,7 @@ _021E88C8:
 	mov r0, #3
 	mov r1, #0x66
 	lsl r2, r2, #7
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0xd9
 	mov r1, #0x66
 	bl NARC_New
@@ -6782,7 +6782,7 @@ _021E8B34:
 	ldr r0, [sp]
 	bl OverlayManager_FreeData
 	mov r0, #0x66
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

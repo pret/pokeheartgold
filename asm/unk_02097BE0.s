@@ -16,7 +16,7 @@ sub_02097BE0: ; 0x02097BE0
 	add r7, r1, #0
 	mov r0, #0xb
 	mov r1, #0x54
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	ldr r3, [r5, #0x48]
 	add r6, r4, #0
@@ -132,7 +132,7 @@ sub_02097CB4: ; 0x02097CB4
 	add r5, r1, #0
 	mov r0, #0xb
 	mov r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	str r5, [r2]
 	mov r0, #0

@@ -30,7 +30,7 @@ ov01_021EB1F4: ; 0x021EB1F4
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x18
@@ -444,7 +444,7 @@ _021EB4EE:
 	add r1, r0, #0
 	mov r0, #4
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r6, #0x10]
 	mov r1, #0
 	mov r2, #0x39
@@ -612,7 +612,7 @@ ov01_021EB64C: ; 0x021EB64C
 	add r5, r0, #0
 	mov r0, #4
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0x41
 	lsl r0, r0, #2
@@ -1227,7 +1227,7 @@ _021EBA92:
 	cmp r1, #0
 	ble _021EBAF8
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, [r4, #8]
 	ldr r1, _021EBB38 ; =0x00000F58
 	str r0, [r2, r1]
@@ -1688,7 +1688,7 @@ _021EBE5C:
 	mov r1, #0xf7
 	mov r0, #4
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #8]
 	cmp r0, #0
 	bne _021EBE70
@@ -1747,7 +1747,7 @@ ov01_021EBEB8: ; 0x021EBEB8
 _021EBECE:
 	mov r0, #4
 	mov r1, #0x64
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0xc]
 	cmp r0, #0
 	bne _021EBEE0

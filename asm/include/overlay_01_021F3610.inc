@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public NARC_ReadFile
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF3dRender_DrawModel
 .public sub_0201F990

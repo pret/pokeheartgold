@@ -12,7 +12,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r1, _0205ACF4 ; =0x000004E8
 	add r5, r0, #0
 	mov r0, #0x1f
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r2, _0205ACF4 ; =0x000004E8
 	mov r0, #0
@@ -45,7 +45,7 @@ sub_0205AC88: ; 0x0205AC88
 	ldr r0, [r0, #0x40]
 	str r0, [r4, #8]
 	mov r0, #0xb
-	bl CreateHeapAtEnd
+	bl Heap_CreateAtEnd
 	mov r0, #0x57
 	bl sub_0205B3B8
 	ldr r1, _0205AD08 ; =0x000004DC
@@ -108,7 +108,7 @@ sub_0205AD3C: ; 0x0205AD3C
 	ldr r0, [r4, r0]
 	bl sub_0205B3CC
 	mov r0, #0x57
-	bl DestroyHeap
+	bl Heap_Destroy
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r4, pc}
@@ -966,7 +966,7 @@ sub_0205B3B8: ; 0x0205B3B8
 	push {r4, lr}
 	mov r1, #0x35
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bl sub_0205B35C
 	add r0, r4, #0

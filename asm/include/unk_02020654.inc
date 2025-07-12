@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_CreateNewVramTransferTask
 .public sub_02020654

@@ -100,7 +100,7 @@ ov12_0226AEAC: ; 0x0226AEAC
 	push {r4, lr}
 	mov r0, #5
 	lsl r1, r0, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #5
 	mov r1, #0
 	lsl r2, r2, #6

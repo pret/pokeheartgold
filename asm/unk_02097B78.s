@@ -17,7 +17,7 @@ LegendaryCinematic_Init: ; 0x02097B78
 	mov r0, #3
 	mov r1, #0x99
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _02097BA8 ; =0x0000041C
 	add r0, r5, #0
 	mov r2, #0x99
@@ -62,7 +62,7 @@ LegendaryCinematic_Exit: ; 0x02097BD0
 	push {r3, lr}
 	bl OverlayManager_FreeData
 	mov r0, #0x99
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end LegendaryCinematic_Exit

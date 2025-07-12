@@ -24,23 +24,23 @@
 #include "string_control_code.h"
 #include "trainer_data.h"
 
-MessageFormat *MessageFormat_New(HeapID heapId) {
+MessageFormat *MessageFormat_New(enum HeapID heapId) {
     return MessageFormat_New_Custom(8, 32, heapId);
 }
 
-MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, HeapID heapId) {
+MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 len, enum HeapID heapId) {
     MessageFormat *ret;
     int i;
 
     GF_ASSERT(nstr != 0);
     GF_ASSERT(len != 0);
-    ret = AllocFromHeapAtEnd(heapId, sizeof(MessageFormat));
+    ret = Heap_AllocAtEnd(heapId, sizeof(MessageFormat));
     if (ret != NULL) {
         ret->count = nstr;
         ret->heapId = heapId;
         ret->buffer = String_New(len, heapId);
         if (ret->buffer != NULL) {
-            ret->fields = AllocFromHeapAtEnd(heapId, nstr * sizeof(MessageFormatFields));
+            ret->fields = Heap_AllocAtEnd(heapId, nstr * sizeof(MessageFormatFields));
             if (ret->fields != NULL) {
                 for (i = 0; i < nstr; i++) {
                     MessageFormat_InitFields(&ret->fields[i]);
@@ -468,7 +468,7 @@ void BufferGroupName(MessageFormat *msgFmt, SaveData *saveData, s32 groupId, s32
     SAV_FRIEND_GRP *friendGrp = Save_FriendGroup_Get(saveData);
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
-    String *dest = String_New(64, HEAP_ID_4);
+    String *dest = String_New(64, HEAP_ID_FIELD1);
     CopyU16ArrayToString(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
     String_Delete(dest);

@@ -53,7 +53,7 @@ _021FCED8:
 	bl Heap_Free
 	mov r0, #0xb
 	mov r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [r7, #4]
 	str r6, [r0, #8]
 	ldr r0, [r4]
@@ -65,7 +65,7 @@ _021FCEF4:
 	add r7, r0, #0
 	mov r0, #0xb
 	add r1, r7, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [r5, #4]
 	mov r1, #0
 	add r2, r7, #0
@@ -184,7 +184,7 @@ ov01_021FCFEC: ; 0x021FCFEC
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #0xd4
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r0, #4
 	add r1, r5, #0
@@ -251,7 +251,7 @@ ov01_021FD064: ; 0x021FD064
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #0x86

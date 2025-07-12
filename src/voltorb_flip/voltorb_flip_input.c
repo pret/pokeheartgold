@@ -30,10 +30,10 @@ extern const u8 ov122_021E9A3C[];
 extern const u8 ov122_021E9AAC[];
 extern u8 ov122_021E9BA0[5][2];
 
-Ov122_021E8CFC *ov122_021E8CFC(HeapID heapId, struct ManagedSprite *a1, struct ManagedSprite *a2) {
+Ov122_021E8CFC *ov122_021E8CFC(enum HeapID heapId, struct ManagedSprite *a1, struct ManagedSprite *a2) {
     GF_ASSERT(a1 != NULL);
 
-    Ov122_021E8CFC *ptr = AllocFromHeap(heapId, sizeof(Ov122_021E8CFC));
+    Ov122_021E8CFC *ptr = Heap_Alloc(heapId, sizeof(Ov122_021E8CFC));
     MI_CpuFill8(ptr, 0, sizeof(Ov122_021E8CFC));
 
     ptr->unk0 = a1;

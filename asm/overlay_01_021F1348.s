@@ -24,7 +24,7 @@ ov01_021F1348: ; 0x021F1348
 	add r5, r1, #0
 	add r0, r7, #0
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x24
@@ -34,7 +34,7 @@ ov01_021F1348: ; 0x021F1348
 	str r6, [r4, #0x10]
 	add r0, r7, #0
 	lsl r1, r5, #3
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x14]
 	add r0, r4, #0
 	bl ov01_021F14DC
@@ -142,10 +142,10 @@ ov01_021F141C: ; 0x021F141C
 	cmp r2, #0
 	ldr r0, [r0]
 	bne _021F142A
-	bl AllocFromHeap
+	bl Heap_Alloc
 	pop {r3, pc}
 _021F142A:
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	pop {r3, pc}
 	thumb_func_end ov01_021F141C
 

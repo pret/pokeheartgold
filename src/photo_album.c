@@ -72,12 +72,12 @@ BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 i
     }
 }
 
-Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId) {
+Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, enum HeapID heapId) {
     u8 i, j, n;
     Photo *ret;
 
     n = PhotoAlbum_GetNumSaved(photoAlbum);
-    ret = AllocFromHeap(heapId, n * sizeof(Photo));
+    ret = Heap_Alloc(heapId, n * sizeof(Photo));
     MI_CpuClear8(ret, n * sizeof(Photo));
     j = 0;
     for (i = 0; i < PHOTO_ALBUM_MAX; i++) {

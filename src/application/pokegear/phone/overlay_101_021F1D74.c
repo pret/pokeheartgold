@@ -33,7 +33,7 @@ static BOOL (*const sPhoneCallHandlers[])(PokegearPhoneCallContext *) = {
 };
 
 PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContextParam *template) {
-    PokegearPhoneCallContext *ret = AllocFromHeap(template->heapId, sizeof(PokegearPhoneCallContext));
+    PokegearPhoneCallContext *ret = Heap_Alloc(template->heapId, sizeof(PokegearPhoneCallContext));
     MI_CpuClear8(ret, sizeof(PokegearPhoneCallContext));
     ret->heapId = template->heapId;
     ret->phoneBook = AllocAndReadPhoneBook(template->heapId);

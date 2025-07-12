@@ -13,7 +13,7 @@ ov46_02258800: ; 0x02258800
 	mov r0, #3
 	mov r1, #0x77
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _02258918 ; =0x00000404
 	add r0, r4, #0
 	mov r2, #0x77
@@ -552,7 +552,7 @@ _02258C68:
 	add r0, r4, #0
 	bl Heap_Free
 	mov r0, #0x77
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02258CB0 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -572,7 +572,7 @@ ov46_02258CB4: ; 0x02258CB4
 	mov r0, #3
 	mov r1, #0x77
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _02258D98 ; =0x00000404
 	add r0, r5, #0
 	mov r2, #0x77
@@ -885,7 +885,7 @@ _02258F2C:
 	add r0, r4, #0
 	bl Heap_Free
 	mov r0, #0x77
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02258F6C ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]

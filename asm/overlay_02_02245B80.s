@@ -31,7 +31,7 @@ ov02_02245B9C: ; 0x02245B9C
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #0xd0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02245BB4
 	bl GF_AssertFail
@@ -223,7 +223,7 @@ ov02_02245D18: ; 0x02245D18
 	ldr r1, [r4]
 	add r0, #0xbc
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	ldr r3, [r4]
 	add r0, #0xc
@@ -336,7 +336,7 @@ ov02_02245E04: ; 0x02245E04
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0xa4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xa4
@@ -348,7 +348,7 @@ ov02_02245E04: ; 0x02245E04
 	add r0, #0x8c
 	add r1, r6, #0
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldrh r1, [r5]
 	ldrb r2, [r5, #2]
 	add r0, r4, #0
@@ -494,7 +494,7 @@ _02245F38:
 	mov r1, #0x14
 	ldr r0, [r0]
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r1, r5, #0
 	add r1, #0x88
 	str r0, [r1]
@@ -695,7 +695,7 @@ ov02_022460CC: ; 0x022460CC
 	add r6, r1, #0
 	mov r0, #4
 	mov r1, #0x14
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _022460E6
 	bl GF_AssertFail
@@ -808,7 +808,7 @@ ov02_022461AC: ; 0x022461AC
 	add r6, r1, #0
 	mov r0, #4
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _022461C6
 	bl GF_AssertFail
@@ -976,7 +976,7 @@ ov02_02246304: ; 0x02246304
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _0224631C
 	bl GF_AssertFail
@@ -1238,7 +1238,7 @@ ov02_0224650C: ; 0x0224650C
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x38
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
@@ -1521,7 +1521,7 @@ ov02_02246744: ; 0x02246744
 	mov r1, #0xc
 	add r7, r2, #0
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02246766
 	bl GF_AssertFail
@@ -1600,7 +1600,7 @@ ov02_022467E8: ; 0x022467E8
 	add r6, r1, #0
 	mov r0, #4
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02246802
 	bl GF_AssertFail
@@ -1840,7 +1840,7 @@ ov02_022469D8: ; 0x022469D8
 	mov r0, #4
 	mov r1, #0x1c
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _022469F8
 	bl GF_AssertFail
@@ -5339,11 +5339,11 @@ ov02_02248444: ; 0x02248444
 _02248470:
 	mov r0, #4
 	mov r1, #0x1c
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #8]
 	mov r0, #4
 	mov r1, #0x1c
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #4]
 	ldr r0, [sp, #8]
 	mov r1, #0
@@ -7602,7 +7602,7 @@ ov02_0224955C: ; 0x0224955C
 	add r5, r0, #0
 	mov r0, #4
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r2, #0xbe
 	mov r1, #0
 	lsl r2, r2, #2
@@ -10115,7 +10115,7 @@ ov02_0224A7B8: ; 0x0224A7B8
 	mov r0, #4
 	lsl r1, r1, #6
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _0224A7D4
 	bl GF_AssertFail
@@ -12077,7 +12077,7 @@ ov02_0224B68C: ; 0x0224B68C
 ov02_0224B690: ; 0x0224B690
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _0224B6A0
 	bl GF_AssertFail
@@ -12365,7 +12365,7 @@ ov02_0224B88C: ; 0x0224B88C
 	add r0, r4, #0
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	mov r0, #0x67
 	mov r1, #0x83
 	mov r2, #4
@@ -12690,7 +12690,7 @@ PokecenterAnimCreate: ; 0x0224BB18
 	beq _0224BB84
 	mov r0, #4
 	mov r1, #0x18
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	strb r6, [r4, #0xc]
 	mov r0, #0
@@ -13041,7 +13041,7 @@ ov02_0224BDE8: ; 0x0224BDE8
 	beq _0224BE1A
 	mov r0, #4
 	add r1, r0, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	strb r6, [r2]
 	strb r4, [r2, #1]
@@ -14143,7 +14143,7 @@ _0224C65C: .word ov02_02253724
 ov02_0224C660: ; 0x0224C660
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _0224C670
 	bl GF_AssertFail
@@ -15105,7 +15105,7 @@ ov02_0224CDB0: ; 0x0224CDB0
 	beq _0224CE1C
 	mov r0, #4
 	mov r1, #0x18
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	strb r6, [r4, #0xc]
 	mov r0, #0
@@ -15671,7 +15671,7 @@ ov02_0224D1E4: ; 0x0224D1E4
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #3
@@ -15706,7 +15706,7 @@ ov02_0224D22C: ; 0x0224D22C
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r1, #3
@@ -15840,7 +15840,7 @@ ov02_0224D310: ; 0x0224D310
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r2, #4
@@ -15875,7 +15875,7 @@ ov02_0224D358: ; 0x0224D358
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	mov r2, #4
@@ -16010,7 +16010,7 @@ ov02_0224D43C: ; 0x0224D43C
 	add r0, r4, r0
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r0, _0224D464 ; =0x000001CA
 	mov r1, #0
 	strh r1, [r4, r0]
@@ -16224,7 +16224,7 @@ ov02_0224D5B4: ; 0x0224D5B4
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
@@ -16593,7 +16593,7 @@ ov02_0224D880: ; 0x0224D880
 	mov r1, #4
 	add r0, r5, r0
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r5, #0
 	mov r1, #0x86
 	mov r2, #8
@@ -16769,7 +16769,7 @@ ov02_0224D9C0: ; 0x0224D9C0
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	str r0, [sp]
@@ -16884,7 +16884,7 @@ ov02_0224DAA4: ; 0x0224DAA4
 	add r0, #0xdc
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0xdc
 	str r0, [sp]
@@ -17163,7 +17163,7 @@ ov02_0224DCB0: ; 0x0224DCB0
 	mov r1, #4
 	add r0, r6, r0
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r6, #0
 	mov r1, #0x86
 	mov r2, #8
@@ -17676,7 +17676,7 @@ ov02_0224E074: ; 0x0224E074
 	add r0, r3, #0
 	mov r1, #0x10
 	add r4, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	add r2, r6, #0
 	mov r1, #0x10
@@ -17726,7 +17726,7 @@ ov02_0224E0D4: ; 0x0224E0D4
 	add r4, r1, #0
 	mov r0, #4
 	mov r1, #0x20
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	str r1, [r0]
 	str r5, [r0, #4]
@@ -18283,7 +18283,7 @@ SafariDecoration_CreateArgs: ; 0x0224E4EC
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #0x24
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x24
 	add r4, r0, #0
@@ -20854,7 +20854,7 @@ _0224F85C:
 ov02_0224F864: ; 0x0224F864
 	push {r4, lr}
 	ldr r1, _0224F87C ; =0x00000884
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0224F87C ; =0x00000884
 	mov r1, #0
 	add r4, r0, #0
@@ -22874,7 +22874,7 @@ ov02_022507B4: ; 0x022507B4
 	bls _022507E0
 	mov r0, #0xb
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	strh r4, [r2]
 	mov r0, #0
@@ -22995,7 +22995,7 @@ ov02_022508B4: ; 0x022508B4
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #4
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r0, #0
 	strh r0, [r2]

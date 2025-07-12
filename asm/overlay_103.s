@@ -12,7 +12,7 @@ ov103_021EC940: ; 0x021EC940
 	mov r0, #3
 	mov r1, #0x9c
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0x2c
 	mov r2, #0x9c
@@ -60,7 +60,7 @@ ov103_021EC9A4: ; 0x021EC9A4
 	push {r3, lr}
 	bl OverlayManager_FreeData
 	mov r0, #0x9c
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, pc}
 	thumb_func_end ov103_021EC9A4
@@ -1300,11 +1300,11 @@ ov103_021ED314: ; 0x021ED314
 	mov r0, #3
 	mov r1, #0x9d
 	lsl r2, r0, #0x11
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x2f
 	mov r0, #0x9d
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x2f
 	mov r1, #0
 	lsl r2, r2, #4
@@ -1391,7 +1391,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	mov r0, #0
 	str r0, [r4, #0xc]
 	mov r0, #0x9d
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, [r4, #0x28]
 	pop {r4, pc}
 	nop
@@ -2494,7 +2494,7 @@ ov103_021EDC68: ; 0x021EDC68
 	mov r1, #0x44
 	add r7, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0

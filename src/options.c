@@ -5,8 +5,8 @@
 #include "player_data.h"
 #include "system.h"
 
-Options *Options_New(HeapID heapId) {
-    Options *ret = AllocFromHeap(heapId, sizeof(Options));
+Options *Options_New(enum HeapID heapId) {
+    Options *ret = Heap_Alloc(heapId, sizeof(Options));
     Options_Init(ret);
     return ret;
 }

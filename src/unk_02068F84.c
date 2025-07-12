@@ -11,7 +11,7 @@ u32 sub_02068F84(MsgData *msgData, u32 map_sec, String *dest) {
     return FontID_String_GetWidth(0, dest, 0);
 }
 
-void sub_02068F98(u32 mapno, HeapID heapId, String *dest) {
+void sub_02068F98(u32 mapno, enum HeapID heapId, String *dest) {
     MsgData *msgData;
     u32 map_sec;
 

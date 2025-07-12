@@ -255,7 +255,7 @@ Field_SaveStatsPrinter_Print: ; 0x021F412C
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x10]
 	mov r3, #1
 	str r3, [sp]
@@ -327,7 +327,7 @@ Field_SaveStatsPrinter_New: ; 0x021F41C0
 	add r0, r5, #0
 	mov r1, #0x34
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	str r6, [r4]
 	str r5, [r4, #4]
@@ -485,7 +485,7 @@ ov01_021F42F8: ; 0x021F42F8
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x10]
 	mov r0, #2
 	str r0, [sp]
@@ -539,7 +539,7 @@ ov01_021F4360: ; 0x021F4360
 	add r0, r5, #0
 	mov r1, #0x34
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	str r6, [r4]
 	str r5, [r4, #4]

@@ -263,13 +263,13 @@ static void ViewRankings_InitBgLayers(BgConfig *bgConfig);
 static void ViewRankings_InitObjCharTransfer(void);
 static void ViewRankings_CreateOamManager(void);
 static void VBlankCB_ViewRankings(void *cbData);
-static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId);
-static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID heapId);
+static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, enum HeapID heapId);
+static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, enum HeapID heapId);
 static void ViewRankings_CreateSpriteResourcesHeader(ViewRankingsAppData *appData);
 static void ViewRankings_DestroySprites(ViewRankingsAppData *appData);
 static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewRankingsAppData *appData);
 static void ViewRankings_CreateSprites(ViewRankingsAppData *appData);
-static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData, HeapID heapId);
+static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData, enum HeapID heapId);
 static ViewRankingsInput ViewRankings_PollInput(ViewRankingsAppData *appData, int *pSelection);
 static BOOL ViewRankings_HandleInput_BrowsePages(ViewRankingsAppData *appData, ViewRankingsInput input, int selection);
 static void ViewRankings_HandleInput_SelectRecordToDelete(ViewRankingsAppData *appData, ViewRankingsInput input, int selection);
@@ -371,13 +371,13 @@ BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
     }
     Heap_Free(appData->records);
     Heap_Free(appData);
-    DestroyHeap(HEAP_ID_RANKINGS_APP);
+    Heap_Destroy(HEAP_ID_RANKINGS_APP);
     return TRUE;
 }
 
 static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState) {
     ViewRankingsArgs *args = OverlayManager_GetArgs(man);
-    CreateHeap(HEAP_ID_3, HEAP_ID_RANKINGS_APP, 0x10000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_RANKINGS_APP, 0x10000);
     ViewRankingsAppData *data = OverlayManager_CreateAndGetData(man, sizeof(ViewRankingsAppData), HEAP_ID_RANKINGS_APP);
     memset(data, 0, sizeof(ViewRankingsAppData));
     data->bgConfig = BgConfig_Alloc(HEAP_ID_RANKINGS_APP);
@@ -595,7 +595,7 @@ static void VBlankCB_ViewRankings(void *cbData) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
+static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, enum HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_application_guinness, NARC_guinness_guinness_00000001_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x40, heapId);
     GfGfxLoader_LoadCharData(NARC_application_guinness, NARC_guinness_guinness_00000003_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x1000, TRUE, heapId);
     GfGfxLoader_LoadScrnData(NARC_application_guinness, NARC_guinness_guinness_00000005_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x600, TRUE, heapId);
@@ -607,7 +607,7 @@ static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_0);
 }
 
-static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID heapId) {
+static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, enum HeapID heapId) {
     appData->spriteList = G2dRenderer_Init(5, &appData->g2dRenderer, heapId);
     for (int i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
         appData->gf2dGfxResManagers[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
@@ -700,8 +700,8 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
     appData->sprites[VIEW_RANKINGS_APP_SPRITE_DELETE_RECORD] = sprite;
 }
 
-static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData, HeapID heapId) {
-    appData->touchscreenHitboxes = AllocFromHeap(heapId, 10 * sizeof(TouchscreenHitbox));
+static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData, enum HeapID heapId) {
+    appData->touchscreenHitboxes = Heap_Alloc(heapId, 10 * sizeof(TouchscreenHitbox));
     for (int i = 0; i < 6; ++i) {
         TouchscreenHitbox_SetRect(&appData->touchscreenHitboxes[i], 56 + 16 * i, 40, 16, 176);
     }
@@ -929,7 +929,7 @@ static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, Sa
     ViewRankingsPage *ptr;
     int cnt;
 
-    appData->records = AllocFromHeap(HEAP_ID_RANKINGS_APP, appData->pageLength * sizeof(ViewRankingsAppPage));
+    appData->records = Heap_Alloc(HEAP_ID_RANKINGS_APP, appData->pageLength * sizeof(ViewRankingsAppPage));
     MI_CpuClear8(appData->records, appData->pageLength * sizeof(ViewRankingsAppPage));
     appData->pages[0] = Save_GetPlayerViewRankingPage(saveData, appData->page, HEAP_ID_RANKINGS_APP);
     for (i = 0; i < appData->pageLength; ++i) {

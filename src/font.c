@@ -49,7 +49,7 @@ void FontWork_Init(void) {
     SetFontsPointer(sFontInfos);
 }
 
-void FontID_Alloc(FontID fontId, HeapID heapId) {
+void FontID_Alloc(FontID fontId, enum HeapID heapId) {
     if (sFontWork->fontDataMan[fontId] == NULL) {
         sFontWork->fontDataMan[fontId] = FontData_New(NARC_graphic_font, sFontArcParam[fontId][0], FONTARC_MODE_LAZY, sFontArcParam[fontId][1], heapId);
         sFontWork->fontDataRefCount[fontId] = 1;
@@ -58,7 +58,7 @@ void FontID_Alloc(FontID fontId, HeapID heapId) {
     }
 }
 
-void FontID_SetAccessDirect(FontID fontId, HeapID heapId) {
+void FontID_SetAccessDirect(FontID fontId, enum HeapID heapId) {
     GF_ASSERT((int)fontId < FONT_NUM);
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     FontData_ModeSwitch(sFontWork->fontDataMan[fontId], FONTARC_MODE_DIRECT, heapId);
@@ -171,11 +171,11 @@ u8 GetFontAttribute(FontID fontId, int attr) {
     return ret;
 }
 
-void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId) { // todo sync with diamond
+void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, enum HeapID heapId) { // todo sync with diamond
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 7, location, palSlotOffset, 0x20, heapId);
 }
 
-void LoadFontPal1(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, HeapID heapId) {
+void LoadFontPal1(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, enum HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 8, location, palSlotOffset, 0x20, heapId);
 }
 

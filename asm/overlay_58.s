@@ -34,7 +34,7 @@ ApricornBox_Init: ; 0x022378E4
 	mov r0, #3
 	mov r1, #0x85
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0x20
 	mov r2, #0x85
@@ -135,7 +135,7 @@ ApricornBox_Exit: ; 0x0223799C
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x85
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ApricornBox_Exit
@@ -424,7 +424,7 @@ ov58_02237BD4: ; 0x02237BD4
 	add r5, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x44
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0

@@ -54,7 +54,7 @@ extern OverlayManagerTemplate gOverlayTemplate_BattleArcadeGameBoard;
 BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
     ArcadeContext *data = Frontier_GetData(ctx->frontierSystem->unk0);
-    GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
+    GAME_BOARD_ARGS *args = Heap_Alloc(HEAP_ID_FIELD2, sizeof(GAME_BOARD_ARGS));
     MI_CpuFill8(args, 0, sizeof(GAME_BOARD_ARGS));
     args->saveData = param->saveData;
     GameBoardArgs_Set(args, data);

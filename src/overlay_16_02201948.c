@@ -41,7 +41,7 @@ static const OverlayManagerTemplate ov16_02201B78 = {
 static const u8 *unused_02201BA0;
 
 typedef struct UnkStruct_ov16_0220196C {
-    HeapID heapId;
+    enum HeapID heapId;
     BerryPotsArgs *args;
     OverlayManager *ovyManager;
     u8 unkC[0x10 - 0xC];
@@ -74,7 +74,7 @@ BOOL BerryPots_Init(OverlayManager *manager, int *state) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_17), OVY_LOAD_ASYNC);
     ov17_02201BC0();
 
-    CreateHeap(HEAP_ID_3, HEAP_ID_BERRY_POTS, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_BERRY_POTS, 0x20000);
 
     UnkStruct_ov16_0220196C *unk = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov16_0220196C), HEAP_ID_BERRY_POTS);
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_ov16_0220196C));
@@ -115,7 +115,7 @@ BOOL BerryPots_Exit(OverlayManager *manager, int *state) {
     ov16_02201A4C(unk);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_BERRY_POTS);
+    Heap_Destroy(HEAP_ID_BERRY_POTS);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_17));
 
     return TRUE;

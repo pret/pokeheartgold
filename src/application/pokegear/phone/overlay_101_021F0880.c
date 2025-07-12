@@ -216,7 +216,7 @@ int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp) {
 }
 
 void PokegearPhone_ContactList_CreateLinkedList(PokegearPhoneAppData *phoneApp) {
-    phoneApp->phoneContactListNodes = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PhoneContactListNode));
+    phoneApp->phoneContactListNodes = Heap_Alloc(phoneApp->heapId, phoneApp->numContacts * sizeof(PhoneContactListNode));
     PokegearPhone_InitContactsLinkedList(phoneApp);
 }
 
