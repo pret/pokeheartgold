@@ -1233,7 +1233,7 @@ ov101_021EF1D8: ; 0x021EF1D8
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
 	ldr r0, [r0, #0x74]
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	ldrh r0, [r5, #0x12]
 	add r2, r4, #0
 	mov r3, #0x91
@@ -1251,7 +1251,7 @@ ov101_021EF1D8: ; 0x021EF1D8
 	ldr r0, [r5, #0xc]
 	ldr r1, [r5]
 	ldr r0, [r0, #0x74]
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	ldr r0, [r5]
 	add r3, r5, #0
 	str r0, [sp]

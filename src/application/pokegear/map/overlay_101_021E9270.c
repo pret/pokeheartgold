@@ -690,14 +690,16 @@ const PokegearMapAppData_Sub214 *ov101_021EA758(PokegearMapAppData *mapApp, u16 
 void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y) {
     a1->unk_0 = ov101_021EA6E8(mapApp, x, y);
     if (mapApp->mapUnlockLevel == 0) {
+        // New Bark is at x=21, anything east is Kanto. Hide if haven't unlocked it yet.
+        // Carve out an exception for Mt. Silver which is at (25, 10)
         if (!(x == 25 && y == 10) && x >= 22) {
             a1->unk_0 = NULL;
         }
     }
     if (a1->unk_0 == NULL) {
-        a1->heap = 0;
+        a1->markingsNode = NULL;
     } else {
-        a1->heap = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapApp->unk_118.unk_0->mapId);
+        a1->markingsNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapApp->unk_118.unk_0->mapId);
     }
     a1->x = x;
     a1->y = y;
@@ -738,23 +740,23 @@ int ov101_021EA81C(PokegearMapAppData *mapApp, u16 x, u16 y) {
     return -1;
 }
 
-int ov101_021EA874(PokegearMapAppData *mapApp, u16 a1, u16 a2) {
-    int r0;
+int PokegearMap_GetFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y) {
+    int idx;
 
-    r0 = ov101_021EA81C(mapApp, a1, a2);
-    if (r0 < 0 || !ov101_021EA804(mapApp, gMapFlypointParams[r0].mapIDforWarp, a1, a2)) {
+    idx = ov101_021EA81C(mapApp, x, y);
+    if (idx < 0 || !ov101_021EA804(mapApp, gMapFlypointParams[idx].mapIDforWarp, x, y)) {
         return 0;
     }
-    return gMapFlypointParams[r0].mapIDforWarp;
+    return gMapFlypointParams[idx].mapIDforWarp;
 }
 
-int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3) {
+int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y) {
     int mapID;
-    int r6;
+    int idx;
 
-    r6 = ov101_021EA81C(mapApp, a2, a3 - 2);
-    if (r6 < 0) {
-        ov101_021EA794(mapApp, a1, a2, a3);
+    idx = ov101_021EA81C(mapApp, x, y - 2);
+    if (idx < 0) {
+        ov101_021EA794(mapApp, a1, x, y);
         if (mapApp->unk_00F >= 0) {
             Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[15 + mapApp->unk_00F].sprite, 10);
             mapApp->unk_00F = -1;
@@ -762,21 +764,21 @@ int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8
         return -1;
     }
 
-    mapID = gMapFlypointParams[r6].mapIDforName;
-    a1->x = a2;
-    a1->y = a3;
+    mapID = gMapFlypointParams[idx].mapIDforName;
+    a1->x = x;
+    a1->y = y;
     a1->unk_0 = ov101_021EA758(mapApp, mapID);
-    if (mapApp->unk_00F != r6) {
+    if (mapApp->unk_00F != idx) {
         if (mapApp->unk_00F >= 0) {
             Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[15 + mapApp->unk_00F].sprite, 10);
             mapApp->unk_00F = -1;
         }
-        if (ov101_021EA804(mapApp, mapID, a2, a3 - 2)) {
-            Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[15 + r6].sprite, 11);
-            mapApp->unk_00F = r6;
+        if (ov101_021EA804(mapApp, mapID, x, y - 2)) {
+            Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[15 + idx].sprite, 11);
+            mapApp->unk_00F = idx;
         }
     }
-    a1->heap = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapID);
+    a1->markingsNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapID);
     return mapID;
 }
 
@@ -816,7 +818,7 @@ void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
 
     sp30 = &mapApp->unk_118;
     sp2C = sp30->unk_0;
-    markersHeap = sp30->heap;
+    markersHeap = sp30->markingsNode;
 
     String_SetEmpty(mapApp->mapNameString);
     for (i = 0; i < 3; ++i) {
@@ -920,7 +922,7 @@ void ov101_021EAE54(PokegearMapAppData *mapApp, int a1) {
 
     r0 = &mapApp->unk_118;
     r5 = r0->unk_0;
-    sp10 = r0->heap;
+    sp10 = r0->markingsNode;
 
     if (a1) {
         String_SetEmpty(mapApp->mapNameString);

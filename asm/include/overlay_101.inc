@@ -275,7 +275,7 @@
 .public PCStorage_GetBoxName
 .public Bag_HasItem
 .public Save_Bag_Get
-.public sub_0208820C
+.public BgConfig_LoadAssetFromOpenNarc
 .public PhoneBookTrainerGetRematchInfo
 .public AllocAndReadPhoneBook
 .public FreePhoneBook

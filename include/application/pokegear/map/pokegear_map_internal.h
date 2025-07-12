@@ -83,7 +83,7 @@ typedef struct MapMarkingsHeapNode {
 
 typedef struct PokegearMapAppData_Sub118 {
     const PokegearMapAppData_Sub214 *unk_0;
-    MapMarkingsHeapNode *heap;
+    MapMarkingsHeapNode *markingsNode;
     u16 x; // written but never read
     u16 y; // written but never read
 } PokegearMapAppData_Sub118;
@@ -215,7 +215,7 @@ const PokegearMapAppData_Sub214 *ov101_021EA758(PokegearMapAppData *mapApp, u16 
 void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3);
 BOOL ov101_021EA7E4(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 a1, u16 a2, u16 a3);
-int ov101_021EA874(PokegearMapAppData *mapApp, u16 a1, u16 a2);
+int PokegearMap_GetFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3);
 void ov101_021EAD90(PokegearMapAppData *mapApp, int a1);
 void ov101_021EAE54(PokegearMapAppData *mapApp, int a1);

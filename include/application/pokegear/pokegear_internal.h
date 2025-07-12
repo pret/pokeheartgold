@@ -138,7 +138,7 @@ struct PokegearAppData {
     u8 isSwitchApp : 1;                         // 0x005
     u8 cursorInAppSwitchZone;                   // 0x006
     u8 unk_007;                                 // 0x007
-    u8 frame;                                   // 0x008
+    u8 backgroundStyle;                         // 0x008
     u8 fadeCounter;                             // 0x009
     MenuInputState menuInputState;              // 0x00C
     MenuInputState menuInputStateBak;           // 0x010

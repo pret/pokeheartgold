@@ -90,7 +90,7 @@ BOOL TownMap_Exit(OverlayManager *man, int *state) {
 
 void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->pokegear->childAppdata = mapApp;
-    mapApp->pokegear->menuInputState = (MenuInputState)mapApp->pokegear->args->unk01;
+    mapApp->pokegear->menuInputState = (MenuInputState)mapApp->pokegear->args->menuInputState;
     mapApp->unk_00D = mapApp->pokegear->args->isScriptedLaunch + 1;
     mapApp->pokegear->reselectAppCB = ov101_021EB338;
     mapApp->pokegear->unknownCB = ov101_021EB2FC;

@@ -12,7 +12,7 @@
 
 typedef struct PokegearArgs {
     u8 isScriptedLaunch;     // 0x00
-    u8 unk01;                // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
+    u8 menuInputState;       // 0x01
     u16 mapMusicID;          // 0x02 (surf-overriden)
     u8 callerId;             // 0x04
     u8 isScriptedCall;       // 0x05
@@ -22,7 +22,7 @@ typedef struct PokegearArgs {
     int y;                   // 0x0c
     u16 mapID;               // 0x10
     u16 mapHeader;           // 0x12
-    BOOL unk_14;             // 0x14
+    BOOL setFlyDestination;  // 0x14
     int mapCursorX;          // 0x18
     int mapCursorY;          // 0x1C
     u16 unk_20;              // 0x20

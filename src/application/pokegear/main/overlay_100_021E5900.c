@@ -258,8 +258,8 @@ BOOL ov100_021E5E88(PokegearAppData *pokegearApp) {
 
 void ov100_021E5EB4(PokegearAppData *pokegearApp, int a1) {
     NARC *narc = NARC_New(NARC_a_1_4_3, pokegearApp->heapId);
-    sub_0208820C(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 48, GF_BG_LYR_MAIN_0, 0, 0, 0);
-    sub_0208820C(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 36, GF_BG_LYR_SUB_0, 0, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 48, GF_BG_LYR_MAIN_0, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 36, GF_BG_LYR_SUB_0, GF_BG_GFX_TYPE_CHAR, 0, 0);
     PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1 + 30, pokegearApp->heapId, PLTTBUF_MAIN_BG, 0x40, 0xE0, 0xE0);
     PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1 + 24, pokegearApp->heapId, PLTTBUF_SUB_BG, 0x80, 0xC0, 0xC0);
     PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, a1, pokegearApp->heapId, PLTTBUF_MAIN_OBJ, 0x80, 0, 0);
@@ -272,7 +272,7 @@ void ov100_021E5EB4(PokegearAppData *pokegearApp, int a1) {
     } else {
         ov100_021E5B4C(pokegearApp, pokegearApp->app, 1);
     }
-    sub_0208820C(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 42, GF_BG_LYR_SUB_0, 1, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_a_1_4_3, a1 + 42, GF_BG_LYR_SUB_0, GF_BG_GFX_TYPE_SCRN, 0, 0);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_SUB_0);
@@ -367,7 +367,7 @@ static void ov100_021E60C4(PokegearAppData *pokegearApp) {
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG, 0x200, pokegearApp->heapId);
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ, 0x200, pokegearApp->heapId);
     pokegearApp->unk_0C4 = AllocFromHeap(pokegearApp->heapId, GetNarcMemberSizeByIdPair(NARC_a_1_4_3, 54));
-    ov100_021E5EB4(pokegearApp, pokegearApp->frame);
+    ov100_021E5EB4(pokegearApp, pokegearApp->backgroundStyle);
     NARC_Delete(narc); // was never actually used
 }
 
@@ -383,7 +383,7 @@ static void ov100_021E6134(PokegearAppData *pokegearApp) {
 
 static void ov100_021E616C(PokegearAppData *pokegearApp) {
     ov100_021E6914(pokegearApp);
-    pokegearApp->unk_094 = ov100_021E69F8(pokegearApp->heapId, 11, 1, pokegearApp->frame, 3, 2);
+    pokegearApp->unk_094 = ov100_021E69F8(pokegearApp->heapId, 11, 1, pokegearApp->backgroundStyle, 3, 2);
     for (int i = 0; i < 4; ++i) {
         pokegearApp->uiSprites[i] = ov100_021E6AC0(pokegearApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
     }

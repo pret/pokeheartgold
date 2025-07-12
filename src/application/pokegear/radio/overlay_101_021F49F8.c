@@ -301,11 +301,11 @@ void Radio_UnloadBGs(PokegearRadioAppData *radioApp) {
 void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
     FontID_Alloc(4, radioApp->heapId);
     NARC *narc = NARC_New(NARC_a_1_4_7, radioApp->heapId);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 16, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 34, GF_BG_LYR_SUB_3, 0, 0, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 22, GF_BG_LYR_MAIN_2, 1, 0x800, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 28, GF_BG_LYR_MAIN_3, 1, 0x800, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 40, GF_BG_LYR_SUB_3, 1, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 16, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 34, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 22, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 28, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 40, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
     radioApp->pNSCR = GfGfxLoader_GetScrnDataFromOpenNarc(narc, radioApp->backgroundStyle + 22, FALSE, &radioApp->screenData, radioApp->heapId);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(radioApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);

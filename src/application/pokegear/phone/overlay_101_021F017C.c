@@ -344,9 +344,9 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
     FontID_Alloc(4, phoneApp->heapId);
     NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapId);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 28, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 16, GF_BG_LYR_SUB_3, 0, 0, 0);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 22, GF_BG_LYR_SUB_3, 1, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 28, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 16, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 22, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
     phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->backgroundStyle + 34, FALSE, &phoneApp->screenData, phoneApp->heapId);
     CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->screenData->rawData, 0, 0, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
     NARC_Delete(narc);

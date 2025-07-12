@@ -115,8 +115,8 @@ BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
 }
 
 int ov101_021EB784(PokegearMapAppData *mapApp, int a1) {
-    u16 sp6;
-    u16 sp4;
+    u16 x;
+    u16 y;
 
     if (a1 < 0) {
         return -1;
@@ -126,12 +126,12 @@ int ov101_021EB784(PokegearMapAppData *mapApp, int a1) {
     mapApp->pokegear->args->mapCursorX = mapApp->matrixX_2;
     mapApp->pokegear->args->mapCursorY = mapApp->matrixY_2 - 2;
     if (mapApp->pokegear->menuInputState == MENU_INPUT_STATE_TOUCH) {
-        ov101_021E9464(mapApp, gSystem.touchX, gSystem.touchY, &sp6, &sp4);
+        ov101_021E9464(mapApp, gSystem.touchX, gSystem.touchY, &x, &y);
     } else {
-        ov101_021E9464(mapApp, mapApp->objManager->objects[5].pos.x, mapApp->objManager->objects[5].pos.y, &sp6, &sp4);
+        ov101_021E9464(mapApp, mapApp->objManager->objects[5].pos.x, mapApp->objManager->objects[5].pos.y, &x, &y);
     }
     ov101_021EB4C4(mapApp, mapApp->unk_118.unk_0->mapId);
-    ov101_021EB428(mapApp, sp6);
+    ov101_021EB428(mapApp, x);
     return 8;
 }
 
@@ -171,15 +171,15 @@ int ov101_021EB818(PokegearMapAppData *mapApp) {
 }
 
 int ov101_021EB94C(PokegearMapAppData *mapApp) {
-    u32 r1 = gSystem.newKeys;
+    u32 newKeys = gSystem.newKeys;
     int r5;
 
     if (gSystem.heldKeys == 0 || mapApp->unk_139_0 || mapApp->unk_139_2) {
         return -1;
     }
-    if (r1 & PAD_BUTTON_A) {
+    if (newKeys & PAD_BUTTON_A) {
         if (mapApp->unk_00D == 1) {
-            r5 = ov101_021EA874(mapApp, mapApp->matrixX_2, mapApp->matrixY_2 - 2);
+            r5 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->matrixX_2, mapApp->matrixY_2 - 2);
             if (r5 > 0) {
                 PlaySE(SEQ_SE_GS_GEARDECIDE);
                 return ov101_021EB784(mapApp, r5);
@@ -188,7 +188,7 @@ int ov101_021EB94C(PokegearMapAppData *mapApp) {
             }
         }
     }
-    if (r1 & PAD_BUTTON_B) {
+    if (newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return 4;
     }
@@ -318,7 +318,7 @@ int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
         ov101_021EA8A8(mapApp, &mapApp->unk_118, mapApp->matrixX_2, mapApp->matrixY_2);
         ov101_021EAD90(mapApp, 0);
         ov101_021EB1E0(mapApp, 1);
-        r4 = ov101_021EA874(mapApp, mapApp->matrixX_2, mapApp->matrixY_2 - 2);
+        r4 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->matrixX_2, mapApp->matrixY_2 - 2);
         if (r4 > 0) {
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             return ov101_021EB784(mapApp, r4);
@@ -791,11 +791,11 @@ void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2) {
 
 BOOL ov101_021ECA30(PokegearMapAppData *mapApp, u8 a1) {
     MapMarkingsRAM *r0;
-    if (mapApp->unk_118.heap == NULL || a1 >= 8) {
+    if (mapApp->unk_118.markingsNode == NULL || a1 >= 8) {
         return FALSE;
     }
 
-    r0 = &mapApp->unk_118.heap->mapMarkings;
+    r0 = &mapApp->unk_118.markingsNode->mapMarkings;
     if (a1 % 2 == 0) {
         if (r0->icons[a1 / 2] != 15) {
             return TRUE;
@@ -962,10 +962,10 @@ int ov101_021ECEA8(PokegearMapAppData *mapApp) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         r6 = PokegearAppSwitch_GetCursorPos(mapApp->pokegear->appSwitch);
         r4 = PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1);
-        if (mapApp->unk_118.heap == NULL) {
-            mapApp->unk_118.heap = MapApp_GetOrCreateMarkingsHeapNodeByMapID(mapApp, mapApp->unk_118.unk_0->mapId);
+        if (mapApp->unk_118.markingsNode == NULL) {
+            mapApp->unk_118.markingsNode = MapApp_GetOrCreateMarkingsHeapNodeByMapID(mapApp, mapApp->unk_118.unk_0->mapId);
         }
-        MapMarkingsHeapNode_SetIcon(mapApp->unk_118.heap, r4 / 2, r6);
+        MapMarkingsHeapNode_SetIcon(mapApp->unk_118.markingsNode, r4 / 2, r6);
         ov101_021EAE54(mapApp, 0);
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
@@ -1012,10 +1012,10 @@ int ov101_021ECF98(PokegearMapAppData *mapApp) {
             mapApp->unk_13C_0 = 0;
             return -1;
         }
-        if (mapApp->unk_118.heap == NULL) {
-            mapApp->unk_118.heap = MapApp_GetOrCreateMarkingsHeapNodeByMapID(mapApp, mapApp->unk_118.unk_0->mapId);
+        if (mapApp->unk_118.markingsNode == NULL) {
+            mapApp->unk_118.markingsNode = MapApp_GetOrCreateMarkingsHeapNodeByMapID(mapApp, mapApp->unk_118.unk_0->mapId);
         }
-        MapMarkingsHeapNode_SetIcon(mapApp->unk_118.heap, r5, mapApp->unk_139_4);
+        MapMarkingsHeapNode_SetIcon(mapApp->unk_118.markingsNode, r5, mapApp->unk_139_4);
         ov101_021EAE54(mapApp, 0);
         PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->unk_139_4], mapApp->unk_139_4 * 24 + 40, 132);
         PokegearManagedObject_SetPriority(&mapApp->objManager->objects[28 + mapApp->unk_139_4], 4);
@@ -1029,13 +1029,13 @@ int ov101_021ECF98(PokegearMapAppData *mapApp) {
 void ov101_021ED110(PokegearMapAppData *mapApp, u8 a1, u8 a2) {
     u8 r0;
     if (a1 == 0) {
-        r0 = MapMarkingsHeapNode_RemoveIcon(mapApp->unk_118.heap, a2);
+        r0 = MapMarkingsHeapNode_RemoveIcon(mapApp->unk_118.markingsNode, a2);
     } else {
-        r0 = MapMarkingsHeapNode_RemoveWord(mapApp->unk_118.heap, a2);
+        r0 = MapMarkingsHeapNode_RemoveWord(mapApp->unk_118.markingsNode, a2);
     }
     if (r0 == 0) {
-        MapApp_RemoveMarkingsHeapNodeFromList(mapApp, mapApp->unk_118.heap);
-        mapApp->unk_118.heap = NULL;
+        MapApp_RemoveMarkingsHeapNodeFromList(mapApp, mapApp->unk_118.markingsNode);
+        mapApp->unk_118.markingsNode = NULL;
     }
     ov101_021EAE54(mapApp, 0);
 }
@@ -1113,9 +1113,9 @@ int ov101_021ED2C0(PokegearMapAppData *mapApp) {
             mapApp->unk_13C_0 = 0;
             return -1;
         } else if (r2 / 4 == 0) {
-            MapMarkingsHeapNode_SwapIcons(mapApp->unk_118.heap, mapApp->unk_139_4 % 4, r2 % 4);
+            MapMarkingsHeapNode_SwapIcons(mapApp->unk_118.markingsNode, mapApp->unk_139_4 % 4, r2 % 4);
         } else {
-            MapMarkingsHeapNode_SwapWords(mapApp->unk_118.heap, mapApp->unk_139_4 % 4, r2 % 4);
+            MapMarkingsHeapNode_SwapWords(mapApp->unk_118.markingsNode, mapApp->unk_139_4 % 4, r2 % 4);
         }
         ov101_021EAE54(mapApp, 0);
         ov101_021ED204(mapApp, mapApp->unk_139_4);

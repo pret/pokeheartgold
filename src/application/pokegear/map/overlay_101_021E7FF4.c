@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "application/pokegear/map/pgmap_gra.naix"
 #include "application/pokegear/map/pokegear_map_internal.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0273.h"
@@ -42,13 +43,13 @@ BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp) {
         PokegearMap_InitBGs(mapApp);
         break;
     case 1:
-        PokegearMap_LoadGraphics(mapApp, mapApp->pokegear->frame);
+        PokegearMap_LoadGraphics(mapApp, mapApp->pokegear->backgroundStyle);
         PokegearMap_InitWindows(mapApp);
         PokegearMap_InitMsg(mapApp);
         break;
     case 2:
         PokegearMap_CreateObjectsManager(mapApp);
-        PokegearMap_LoadPalettes(mapApp, mapApp->pokegear->frame);
+        PokegearMap_LoadPalettes(mapApp, mapApp->pokegear->backgroundStyle);
         ov101_021E8E34(mapApp);
         break;
     case 3:
@@ -289,16 +290,16 @@ void PokegearMap_UnloadBGs(PokegearMapAppData *mapApp) {
 
 void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame) {
     NARC *narc = NARC_New(NARC_application_pokegear_map_pgmap_gra, mapApp->heapId);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, frame + 26, GF_BG_LYR_MAIN_1, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 10, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, frame + 50, GF_BG_LYR_SUB_2, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 12, GF_BG_LYR_SUB_3, 0, 0, 0);
-    mapApp->unk_154[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + 56, FALSE, &mapApp->unk_16C, mapApp->heapId);
-    mapApp->unk_154[1] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 11, FALSE, &mapApp->unk_170, mapApp->heapId);
-    mapApp->unk_154[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 13, FALSE, &mapApp->unk_174, mapApp->heapId);
-    mapApp->unk_154[3] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + 32, FALSE, &mapApp->unk_178, mapApp->heapId);
-    mapApp->unk_154[4] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + 38, FALSE, &mapApp->unk_17C, mapApp->heapId);
-    mapApp->unk_154[5] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + 44, FALSE, &mapApp->unk_180, mapApp->heapId);
+    BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, frame + NARC_pgmap_gra_pgmap_gra_00000026_NCGR, GF_BG_LYR_MAIN_1, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000010_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, frame + NARC_pgmap_gra_pgmap_gra_00000050_NCGR, GF_BG_LYR_SUB_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000012_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    mapApp->unk_154[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000056_NSCR, FALSE, &mapApp->unk_16C, mapApp->heapId);
+    mapApp->unk_154[1] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_pgmap_gra_pgmap_gra_00000011_NSCR, FALSE, &mapApp->unk_170, mapApp->heapId);
+    mapApp->unk_154[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_pgmap_gra_pgmap_gra_00000013_NSCR, FALSE, &mapApp->unk_174, mapApp->heapId);
+    mapApp->unk_154[3] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000032_NSCR, FALSE, &mapApp->unk_178, mapApp->heapId);
+    mapApp->unk_154[4] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000038_NSCR, FALSE, &mapApp->unk_17C, mapApp->heapId);
+    mapApp->unk_154[5] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000044_NSCR, FALSE, &mapApp->unk_180, mapApp->heapId);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -703,10 +704,10 @@ void PokegearMap_RemoveUIButtons(PokegearMapAppData *mapApp) {
 void PokegearMap_LoadPalettes(PokegearMapAppData *mapApp, u8 frame) {
     NARC *narc = NARC_New(NARC_application_pokegear_map_pgmap_gra, mapApp->heapId);
 
-    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 20 + frame, mapApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 14 + frame, mapApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
-    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 0, mapApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
-    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, 0, mapApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, NARC_pgmap_gra_pgmap_gra_00000020_NCLR + frame, mapApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, NARC_pgmap_gra_pgmap_gra_00000014_NCLR + frame, mapApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, NARC_pgmap_gra_pgmap_gra_00000000_NCLR, mapApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, NARC_pgmap_gra_pgmap_gra_00000000_NCLR, mapApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
 
     PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, TRUE);
     PaletteData_BlendPalette(mapApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
