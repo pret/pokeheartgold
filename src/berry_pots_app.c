@@ -267,8 +267,8 @@ void ov17_02201BC0(void) {
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
 }

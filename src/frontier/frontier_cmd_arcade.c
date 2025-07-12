@@ -386,11 +386,11 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
         break;
     case 44:
         if (var0 == 0) {
-            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, 0, 0x100, var0, 0);
+            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, 0, 0x100, var0, RGB_BLACK);
         } else {
             UnkStruct_02239938 *unkStruct = ov80_02239938(ctx->frontierSystem->unk0, var1);
             u32 palNo = ov42_02229248(unkStruct->unk4);
-            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, palNo * 0x10, 0x10, var0, 0);
+            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, palNo * 0x10, 0x10, var0, RGB_BLACK);
         }
         break;
     case 45:

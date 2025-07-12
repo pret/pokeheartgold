@@ -228,13 +228,13 @@ static BOOL TutorialScreenTransition(WorkflowEngine *workflow, VoltorbFlipAppWor
     int state = CurrentTaskState(workflow);
     switch (state) {
     case 0:
-        BeginNormalPaletteFade(4, 20, 20, 0, 4, 1, work->heapId);
+        BeginNormalPaletteFade(4, 20, 20, RGB_BLACK, 4, 1, work->heapId);
         IncrementTaskState(workflow);
         break;
     case 1:
         if (IsPaletteFadeFinished()) {
             cb(work);
-            BeginNormalPaletteFade(4, 21, 21, 0, 4, 1, work->heapId);
+            BeginNormalPaletteFade(4, 21, 21, RGB_BLACK, 4, 1, work->heapId);
             IncrementTaskState(workflow);
         }
         break;
@@ -2033,7 +2033,7 @@ BOOL VoltorbFlip_Init(OverlayManager *man, int *state) {
         break;
     case 1: {
         VoltorbFlipAppWork *work = OverlayManager_GetData(man);
-        BeginNormalPaletteFade(0, 0x15, 0x15, 0, 6, 1, work->heapId);
+        BeginNormalPaletteFade(0, 0x15, 0x15, RGB_BLACK, 6, 1, work->heapId);
         *state += 1;
         break;
     }
@@ -2052,7 +2052,7 @@ BOOL VoltorbFlip_Exit(OverlayManager *man, int *state) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     switch (*state) {
     case 0:
-        BeginNormalPaletteFade(0, 0x14, 0x14, 0, 6, 1, work->heapId);
+        BeginNormalPaletteFade(0, 0x14, 0x14, RGB_BLACK, 6, 1, work->heapId);
         *state += 1;
         break;
     case 1:

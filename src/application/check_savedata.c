@@ -139,8 +139,8 @@ BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
 
     switch (*state) {
     case STATE_SETUP:
-        sub_0200FBF4(PM_LCD_TOP, 0);
-        sub_0200FBF4(PM_LCD_BOTTOM, 0);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
         Main_SetVBlankIntrCB(NULL, NULL);
         Main_SetHBlankIntrCB(NULL, NULL);

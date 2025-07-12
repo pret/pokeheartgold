@@ -285,7 +285,7 @@ static BOOL BattleArcadeGameBoard_Init(GAME_BOARD_WORK *work) {
                 work->substate++;
             }
         } else {
-            BeginNormalPaletteFade(0, 1, 1, 0, 6, 3, HEAP_ID_GAME_BOARD);
+            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
             work->substate++;
         }
         break;
@@ -293,7 +293,7 @@ static BOOL BattleArcadeGameBoard_Init(GAME_BOARD_WORK *work) {
         if (BattleArcade_MultiplayerCheck(work->type) == TRUE) {
             if (work->unkF >= 2) {
                 work->unkF = 0;
-                BeginNormalPaletteFade(0, 1, 1, 0, 6, 3, HEAP_ID_GAME_BOARD);
+                BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
                 work->substate++;
             }
         } else {
@@ -476,7 +476,7 @@ static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work) {
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work) {
     switch (work->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_GAME_BOARD);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_GAME_BOARD);
         work->substate++;
         break;
     case 1:

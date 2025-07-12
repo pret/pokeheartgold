@@ -77,8 +77,8 @@ void NitroMain(void) {
             RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_IntroMovie);
             break;
         case 1:
-            sub_0200FBF4(0, 0);
-            sub_0200FBF4(1, 0);
+            sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+            sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
             _02111868.unk_10.unk_04 = 1;
             RegisterMainOverlay(FS_OVERLAY_ID(OVY_36), &ov36_App_MainMenu_SelectOption_Continue);
             break;
@@ -203,8 +203,8 @@ static void sub_02000F60(void) {
 }
 
 static void DoSoftReset(u32 param) {
-    sub_0200FBF4(0, RGB_WHITE);
-    sub_0200FBF4(1, RGB_WHITE);
+    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     if (sub_02038D90()) {
         Save_Cancel(SaveData_Get());
     }

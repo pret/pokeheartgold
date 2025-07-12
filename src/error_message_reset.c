@@ -94,8 +94,8 @@ void PrintErrorMessageAndReset(void) {
     OS_SetArenaLo(OS_ARENA_MAIN, OS_GetInitArenaLo(OS_ARENA_MAIN));
     InitHeapSystem(&sErrorMessageHeapParams, 1, 1, 0);
 
-    sub_0200FBF4(PM_LCD_TOP, 0);
-    sub_0200FBF4(PM_LCD_BOTTOM, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
     OS_DisableIrqMask(OS_IE_VBLANK);
     OS_SetIrqFunction(OS_IE_VBLANK, VBlankIntr);
@@ -171,8 +171,8 @@ void PrintErrorMessageAndReset(void) {
         OS_WaitIrq(TRUE, OS_IE_VBLANK);
     }
 
-    sub_0200FBF4(PM_LCD_TOP, 0x7FFF);
-    sub_0200FBF4(PM_LCD_BOTTOM, 0x7FFF);
+    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
 
     RemoveWindow(&window);
     DestroyMsgData(error_msgdata);

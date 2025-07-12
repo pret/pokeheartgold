@@ -230,8 +230,8 @@ int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
             ToggleBgLayer(i, TRUE);
         }
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, TRUE);
-        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, 0);
-        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, 0);
+        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, RGB_BLACK);
+        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, RGB_BLACK);
         PaletteData_PushTransparentBuffers(radioApp->pokegear->plttData);
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, FALSE);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
@@ -315,8 +315,8 @@ int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp) {
         }
         break;
     case 2:
-        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, 0);
-        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, 0);
+        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
+        PaletteData_BlendPalette(radioApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, RGB_BLACK);
         PaletteData_PushTransparentBuffers(radioApp->pokegear->plttData);
         Radio_CloseStation(radioApp);
         for (int i = 0; i < 3; ++i) {
