@@ -503,15 +503,15 @@ void ov101_021EDF54(PokegearMapAppData *mapApp) {
 }
 
 void ov101_021EDFF8(PokegearMapAppData *mapApp) {
-    NARC *narc = NARC_New(NARC_a_1_4_4, mapApp->heapId);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 66, GF_BG_LYR_MAIN_1, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 10, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 64, GF_BG_LYR_SUB_0, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 68, GF_BG_LYR_SUB_2, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 12, GF_BG_LYR_SUB_3, 0, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 63, GF_BG_LYR_MAIN_1, 2, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 62, GF_BG_LYR_SUB_0, 2, 0, 0);
-    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_a_1_4_4, 65, GF_BG_LYR_SUB_0, 1, 0, 0);
+    NARC *narc = NARC_New(NARC_application_pokegear_map_pgmap_gra, mapApp->heapId);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 66, GF_BG_LYR_MAIN_1, 0, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 10, GF_BG_LYR_MAIN_2, 0, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 64, GF_BG_LYR_SUB_0, 0, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 68, GF_BG_LYR_SUB_2, 0, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 12, GF_BG_LYR_SUB_3, 0, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 63, GF_BG_LYR_MAIN_1, 2, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 62, GF_BG_LYR_SUB_0, 2, 0, 0);
+    sub_0208820C(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, 65, GF_BG_LYR_SUB_0, 1, 0, 0);
     mapApp->unk_154[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 69, FALSE, &mapApp->unk_16C, mapApp->heapId);
     mapApp->unk_154[1] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 11, FALSE, &mapApp->unk_170, mapApp->heapId);
     mapApp->unk_154[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 13, FALSE, &mapApp->unk_174, mapApp->heapId);
