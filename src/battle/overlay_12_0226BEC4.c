@@ -20,7 +20,7 @@ SysTask *ov12_0226BEC4(BattleSystem *bsys) {
 }
 
 void ov12_0226BEF0(SysTask *task) {
-    FreeToHeap(SysTask_GetData(task));
+    Heap_Free(SysTask_GetData(task));
     SysTask_Destroy(task);
 }
 

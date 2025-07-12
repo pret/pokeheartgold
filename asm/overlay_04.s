@@ -174,7 +174,7 @@ _02253F6C:
 	str r0, [r4]
 	b _02253F86
 _02253F7E:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02253F86:
@@ -221,7 +221,7 @@ _02253FC8:
 	str r0, [r4]
 	b _02253FE2
 _02253FDA:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02253FE2:
@@ -1024,7 +1024,7 @@ _02254670:
 	str r0, [r4]
 	b _0225468A
 _02254682:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0225468A:
@@ -1119,7 +1119,7 @@ ov04_02254710: ; 0x02254710
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x24]
@@ -1903,7 +1903,7 @@ ov04_02254D84: ; 0x02254D84
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x24]
@@ -2095,7 +2095,7 @@ _02254EFE:
 	ldr r0, [r4, #0xc]
 	bl ov04_02254F44
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02254F18:
@@ -2286,7 +2286,7 @@ ov04_0225507C: ; 0x0225507C
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x24]
@@ -3685,7 +3685,7 @@ _02255AA2:
 	mov r1, #0
 	bl StopSE
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x14
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -3932,7 +3932,7 @@ _02255C9E:
 	mov r1, #0
 	bl StopSE
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _02255CB0:
@@ -4391,7 +4391,7 @@ ov04_02256044: ; 0x02256044
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x24]
@@ -4647,7 +4647,7 @@ _02256248:
 	b _0225626C
 _02256260:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x58
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4818,7 +4818,7 @@ ov04_022563B0: ; 0x022563B0
 	add r4, r0, #0
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	mov r1, #0
 	str r1, [r0, #0x24]
@@ -4920,7 +4920,7 @@ _0225646A:
 	beq _02256480
 	bl GF_AssertFail
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 _02256480:
 	mov r0, #1
@@ -5140,7 +5140,7 @@ _02256628:
 	b _02256642
 _02256636:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5219,7 +5219,7 @@ _022566C8:
 	cmp r4, #3
 	blo _022566B4
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -5885,7 +5885,7 @@ _02256BCA:
 	cmp r4, #3
 	blo _02256BB8
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	mov r1, #0
 	ldr r0, [r0, #4]
@@ -6274,7 +6274,7 @@ ov04_02256EB0: ; 0x02256EB0
 	add r0, r4, #0
 	bl ov04_022570EC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #4]
 	mov r1, #0
 	str r1, [r0, #0x24]

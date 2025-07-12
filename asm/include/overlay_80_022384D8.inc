@@ -3,7 +3,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public LoadRectToBgTilemapRect
 .public ScheduleBgTilemapBufferTransfer
 .public MI_CpuFill8

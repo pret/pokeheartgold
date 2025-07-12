@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public ov01_021FB3A4
 .public ov01_021FB3E4

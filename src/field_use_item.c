@@ -214,7 +214,7 @@ static BOOL Task_UseItemInAlphChamber(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 1:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -520,7 +520,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
         RemoveWindow(&env->window);
         String_Delete(env->strbuf);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -805,7 +805,7 @@ int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
         }
     }
     if (result == FALSE) {
-        FreeToHeap(data);
+        Heap_Free(data);
     } else if (KeyItemIdSpawnsSubprocess(fieldSystem, data->itemId)) {
         return 1;
     }
@@ -847,7 +847,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
         // fallthrough
     case 3:
         if (env->work != NULL) {
-            FreeToHeap(env->work);
+            Heap_Free(env->work);
         }
         FieldSystem_LoadFieldOverlay(fieldSystem);
         env->state = 4;
@@ -862,7 +862,7 @@ static BOOL Task_RegisteredItem_GoToApp(TaskManager *taskManager) {
     case 5:
         if (IsPaletteFadeFinished()) {
             MapObjectManager_UnpauseAllMovement(fieldSystem->mapObjectManager);
-            FreeToHeap(env);
+            Heap_Free(env);
             return TRUE;
         }
         break;

@@ -21,7 +21,7 @@ LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
 
 void ListMenuItems_Delete(LISTMENUITEM *items) {
     ListMenuItems_DestroyMenuStrings(items);
-    FreeToHeap(items);
+    Heap_Free(items);
 }
 
 void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {

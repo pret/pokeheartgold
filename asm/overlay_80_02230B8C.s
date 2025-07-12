@@ -231,7 +231,7 @@ ov80_02230D5C: ; 0x02230D5C
 	add r1, r4, #0
 	bl ov80_022314DC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov80_02230D5C
 

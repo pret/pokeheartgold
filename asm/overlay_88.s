@@ -556,7 +556,7 @@ _02258C68:
 	cmp r4, #5
 	blt _02258C68
 	ldr r0, [r6]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02258C94 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -680,11 +680,11 @@ ov88_02258D64: ; 0x02258D64
 
 	thumb_func_start ov88_02258D84
 ov88_02258D84: ; 0x02258D84
-	ldr r3, _02258D8C ; =FreeToHeap
+	ldr r3, _02258D8C ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_02258D8C: .word FreeToHeap
+_02258D8C: .word Heap_Free
 	thumb_func_end ov88_02258D84
 
 	thumb_func_start ov88_02258D90
@@ -1557,7 +1557,7 @@ ov88_022593D0: ; 0x022593D0
 	add r5, r0, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]

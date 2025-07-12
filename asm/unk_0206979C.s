@@ -101,7 +101,7 @@ sub_02069818: ; 0x02069818
 	tst r0, r1
 	beq _02069832
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [r4]
 	mov r0, #1
 	bic r1, r0

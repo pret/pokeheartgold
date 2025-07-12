@@ -282,7 +282,7 @@ ov108_021E8A88: ; 0x021E8A88
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r2, r4, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0
@@ -781,11 +781,11 @@ _021E8E76:
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x20]
 	bl NARC_Delete
 	ldr r0, [r4, #0x1c]
@@ -1113,7 +1113,7 @@ _021E9124:
 	ldr r0, [r6]
 	cmp r0, #0
 	beq _021E912E
-	bl FreeToHeap
+	bl Heap_Free
 _021E912E:
 	add r0, r6, #0
 	mov r1, #0
@@ -1212,7 +1212,7 @@ ov108_021E91D4: ; 0x021E91D4
 	add r0, r0, #4
 	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x14
@@ -2269,7 +2269,7 @@ ov108_021E9A08: ; 0x021E9A08
 	bl FreeBgTilemapBuffer
 	ldr r0, _021E9A5C ; =0x00000438
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 _021E9A5C: .word 0x00000438
@@ -2455,14 +2455,14 @@ ov108_021E9BD4: ; 0x021E9BD4
 	bl G2x_SetBlendAlpha_
 	ldr r0, _021E9C0C ; =0x00000528
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x52
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E9C10 ; =0x00000518
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -3719,7 +3719,7 @@ ov108_021EA5E4: ; 0x021EA5E4
 	sub r0, r0, #1
 	str r0, [r1]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021EA61E:

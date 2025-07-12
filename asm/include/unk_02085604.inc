@@ -9,7 +9,7 @@
 .public ManagedSprite_SetAffineScale
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public FreeToHeap
+.public Heap_Free
 .public System_GetTouchHeld
 .public String_New
 .public String_Delete

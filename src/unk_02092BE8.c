@@ -112,7 +112,7 @@ GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys) 
 
 void GearPhoneRingManager_Delete(GearPhoneRingManager *ptr) {
     MI_CpuClear8(ptr, sizeof(GearPhoneRingManager));
-    FreeToHeap(ptr);
+    Heap_Free(ptr);
 }
 
 GearPhoneRingManager *FieldSystem_GetGearPhoneRingManager(FieldSystem *sys) {

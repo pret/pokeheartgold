@@ -42,7 +42,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
         if (result) {
             UpdatePokedexWithReceivedSpecies(saveData, mon);
         }
-        FreeToHeap(mon);
+        Heap_Free(mon);
     }
     return result;
 }
@@ -60,7 +60,7 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return result;
 }
 

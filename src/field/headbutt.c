@@ -122,8 +122,8 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
         u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
         enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numRegularTrees, headbuttTable->numSecretTrees, trainerId, x, y, headbuttTable->treeCoords);
         if (treeType == TREETYPE_NONE) {
-            FreeToHeap(headbuttTable);
-            FreeToHeap(didHeadbuttStartBattle);
+            Heap_Free(headbuttTable);
+            Heap_Free(didHeadbuttStartBattle);
             return TRUE;
         }
         HeadbuttSlot *headbuttEncounterSlots;
@@ -135,20 +135,20 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
             headbuttEncounterSlots = headbuttTable->secret;
         } else {
             GF_ASSERT(FALSE);
-            FreeToHeap(headbuttTable);
-            FreeToHeap(didHeadbuttStartBattle);
+            Heap_Free(headbuttTable);
+            Heap_Free(didHeadbuttStartBattle);
             return TRUE;
         }
         if (FieldSystem_ChooseHeadbuttEncounter(fieldSystem, &setup, headbuttEncounterSlots)) {
             *didHeadbuttStartBattle->resultPtr = TRUE;
-            FreeToHeap(headbuttTable);
-            FreeToHeap(didHeadbuttStartBattle);
+            Heap_Free(headbuttTable);
+            Heap_Free(didHeadbuttStartBattle);
             FieldSystem_StartForcedWildBattle(fieldSystem, taskManager, setup);
             return FALSE;
         }
     }
-    FreeToHeap(headbuttTable);
-    FreeToHeap(didHeadbuttStartBattle);
+    Heap_Free(headbuttTable);
+    Heap_Free(didHeadbuttStartBattle);
     return TRUE;
 }
 

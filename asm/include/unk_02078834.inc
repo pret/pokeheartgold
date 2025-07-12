@@ -5,7 +5,7 @@
 .public CreateHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public sub_020378E4
 .public sub_020398C8
 .public sub_0203A05C

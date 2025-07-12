@@ -478,7 +478,7 @@ ov68_021E5CD8: ; 0x021E5CD8
 	bl FreeBgTilemapBuffer
 	mov r0, #0x42
 	add r1, r4, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	ldr r2, _021E5D20 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -623,11 +623,11 @@ ov68_021E5D24: ; 0x021E5D24
 ov68_021E5E38: ; 0x021E5E38
 	mov r1, #7
 	lsl r1, r1, #6
-	ldr r3, _021E5E44 ; =FreeToHeap
+	ldr r3, _021E5E44 ; =Heap_Free
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E5E44: .word FreeToHeap
+_021E5E44: .word Heap_Free
 	thumb_func_end ov68_021E5E38
 
 	thumb_func_start ov68_021E5E48

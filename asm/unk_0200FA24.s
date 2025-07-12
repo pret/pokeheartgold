@@ -870,7 +870,7 @@ sub_0200FFD8: ; 0x0200FFD8
 	add r0, r5, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200FFD8
 
@@ -885,7 +885,7 @@ sub_0200FFF8: ; 0x0200FFF8
 	add r0, r5, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_0200FFF8
 

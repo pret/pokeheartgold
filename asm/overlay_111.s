@@ -893,7 +893,7 @@ _021E5FE2:
 	cmp r4, #5
 	blt _021E5FE2
 	ldr r0, [r6, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	nop
 _021E5FFC: .word _021E6B74
@@ -1219,7 +1219,7 @@ ov111_021E6268: ; 0x021E6268
 	lsl r2, r2, #0xa
 	bl ov111_021E62E0
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl Pokemon_GetIconPalette
 	add r0, r6, r0
@@ -1766,7 +1766,7 @@ _021E66BE:
 	cmp r5, #6
 	blt _021E66BE
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov111_021E6694
@@ -1819,7 +1819,7 @@ _021E6728:
 	cmp r4, #2
 	blt _021E671E
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov111_021E6710
 
@@ -1998,7 +1998,7 @@ _021E687A:
 	ldr r0, [r4, #4]
 	bl MessagePrinter_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov111_021E685C
 

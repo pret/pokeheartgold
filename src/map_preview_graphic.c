@@ -874,7 +874,7 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
             BG_ClearCharDataRange(2, 0x20, 0, unk->heapId);
             BgClearTilemapBufferAndCommit(unk->bgConfig, 2);
             WindowArray_Delete(unk->window, 1);
-            FreeToHeap(unk);
+            Heap_Free(unk);
             return TRUE;
         }
         break;

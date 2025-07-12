@@ -828,7 +828,7 @@ ov89_02258F00: ; 0x02258F00
 	ldr r0, [r4, #8]
 	bl ov89_02259230
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x1c]
 	ldr r1, [r4, #0x20]
 	bl SpriteSystem_FreeResourcesAndManager
@@ -2198,7 +2198,7 @@ _02259ACA:
 	mov r2, #0x40
 	bl MIi_CpuCopy16
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -4071,7 +4071,7 @@ _0225A926:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _0225A930
-	bl FreeToHeap
+	bl Heap_Free
 _0225A930:
 	mov r1, #0x10
 	mov r0, #0
@@ -4381,7 +4381,7 @@ _0225AB2E:
 	add r0, r0, r1
 	strh r2, [r0, #2]
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov89_0225AA24
@@ -4474,7 +4474,7 @@ _0225ABE6:
 	blt _0225ABE2
 _0225AC06:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov89_0225AB64
@@ -4486,7 +4486,7 @@ ov89_0225AC10: ; 0x0225AC10
 	add r0, #0xc
 	bl sub_02018068
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov89_0225AC10
@@ -8203,7 +8203,7 @@ _0225C7D8:
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0225C80A:
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}

@@ -42,9 +42,9 @@ GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plt
 }
 
 void GF_3DVramMan_Delete(GF3DVramMan *vramMan) {
-    FreeToHeap(vramMan->plttWork);
-    FreeToHeap(vramMan->texWork);
-    FreeToHeap(vramMan);
+    Heap_Free(vramMan->plttWork);
+    Heap_Free(vramMan->texWork);
+    Heap_Free(vramMan);
 }
 
 void GF_3DVramMan_DefaultInitializer(void) {

@@ -114,7 +114,7 @@ PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0) {
     ov100_021E6CF4(a0);
     MI_CpuClear8(a0, sizeof(PokegearApp_UnkSub094));
-    FreeToHeap(a0);
+    Heap_Free(a0);
 }
 
 void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1) {
@@ -247,9 +247,9 @@ UnkStruct_ov100_021E6E20 *ov100_021E6E20(int count, HeapID heapId) {
 
 void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
     MI_CpuClear8(a0->unk_08, a0->max * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    FreeToHeap(a0->unk_08);
+    Heap_Free(a0->unk_08);
     MI_CpuClear8(a0, sizeof(UnkStruct_ov100_021E6E20));
-    FreeToHeap(a0);
+    Heap_Free(a0);
 }
 
 void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
@@ -314,9 +314,9 @@ void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch) {
         }
     }
     MI_CpuClear8(appSwitch->buttons, appSwitch->count * sizeof(PokegearAppSwitchButton));
-    FreeToHeap(appSwitch->buttons);
+    Heap_Free(appSwitch->buttons);
     MI_CpuClear8(appSwitch, sizeof(PokegearAppSwitch));
-    FreeToHeap(appSwitch);
+    Heap_Free(appSwitch);
 }
 
 u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4) {
@@ -354,7 +354,7 @@ BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 buttonInd
         appSwitch->lastButton = NULL;
     }
     MI_CpuClear8(appSwitch->buttons[buttonIndex].buttonSpec, appSwitch->buttons[buttonIndex].count * sizeof(PokegearAppSwitchButtonSpec));
-    FreeToHeap(appSwitch->buttons[buttonIndex].buttonSpec);
+    Heap_Free(appSwitch->buttons[buttonIndex].buttonSpec);
     MI_CpuClear8(&appSwitch->buttons[buttonIndex], sizeof(PokegearAppSwitchButton));
     return FALSE;
 }

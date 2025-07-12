@@ -331,7 +331,7 @@ _0207500C:
 	blt _0207500C
 _0207501E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_02074F9C
@@ -985,7 +985,7 @@ _02075488:
 	pop {r3, r4, r5, r6, r7, pc}
 _020754B0:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	bl SysTask_Destroy
 _020754BC:
@@ -1045,7 +1045,7 @@ _02075502:
 	pop {r3, r4, r5, r6, r7, pc}
 _02075526:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	bl SysTask_Destroy
 _02075532:

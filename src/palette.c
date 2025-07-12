@@ -26,7 +26,7 @@ PaletteData *PaletteData_Init(HeapID heapId) {
 }
 
 void PaletteData_Free(PaletteData *plttData) {
-    FreeToHeap(plttData);
+    Heap_Free(plttData);
 }
 
 void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *opaque, u16 *transparent, u32 size) {
@@ -40,8 +40,8 @@ void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 s
 }
 
 void PaletteData_FreeBuffers(PaletteData *data, PaletteBufferId bufferID) {
-    FreeToHeap(data->buffers[bufferID].opaque);
-    FreeToHeap(data->buffers[bufferID].transparent);
+    Heap_Free(data->buffers[bufferID].opaque);
+    Heap_Free(data->buffers[bufferID].transparent);
 }
 
 void PaletteData_LoadPalette(PaletteData *data, const u16 *src, PaletteBufferId bufferID, u16 pos, u16 size) {
@@ -60,7 +60,7 @@ void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, He
     }
     GF_ASSERT(pos * sizeof(pos) + size <= data->buffers[bufferID].size);
     PaletteData_LoadPalette(data, (const u16 *)plttData->pRawData + readPos, bufferID, pos, size);
-    FreeToHeap(rawPtr);
+    Heap_Free(rawPtr);
 }
 
 void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos) {
@@ -78,7 +78,7 @@ void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, H
     }
     GF_ASSERT(pos * sizeof(pos) + size <= data->buffers[bufferID].size);
     PaletteData_LoadPalette(data, (const u16 *)plttData->pRawData + readPos, bufferID, pos, size);
-    FreeToHeap(rawPtr);
+    Heap_Free(rawPtr);
 }
 
 void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos) {
@@ -448,7 +448,7 @@ void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
         GXS_LoadOBJPltt(tmp, 0, 0x200);
     }
 
-    FreeToHeapExplicit(heapId, tmp);
+    Heap_FreeExplicit(heapId, tmp);
 
     tmp = AllocFromHeap(heapId, 0x2000);
     memset(tmp, 0, 0x2000);
@@ -505,7 +505,7 @@ void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
         GXS_EndLoadOBJExtPltt();
     }
 
-    FreeToHeapExplicit(heapId, tmp);
+    Heap_FreeExplicit(heapId, tmp);
 }
 
 void PaletteData_FillPaletteInBuffer(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 value, u16 begin, u16 end) {
@@ -613,7 +613,7 @@ void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 membe
     }
     TintPalette_CustomTone(pPlttData->pRawData, 0x10, rTone, gTone, bTone);
     PaletteData_LoadPalette(data, pPlttData->pRawData, bufferID, pos, size);
-    FreeToHeap(rawBuf);
+    Heap_Free(rawBuf);
 }
 
 static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int duration, int step, int rTarget, int gTarget, int bTarget) {

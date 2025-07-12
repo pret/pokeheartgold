@@ -31,7 +31,7 @@ BOOL RadioShow_TeamRocket_Setup(RadioShow *radioShow) {
 BOOL RadioShow_TeamRocket_Teardown(RadioShow *radioShow) {
     RadioShow_TeamRocket_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(TeamRocketRadioData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

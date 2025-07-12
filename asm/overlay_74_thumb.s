@@ -668,7 +668,7 @@ _022291D8:
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov74_02229190
 
@@ -2187,7 +2187,7 @@ ov74_02229DF8: ; 0x02229DF8
 	ldr r1, _02229E10 ; =ov74_0223D0A4
 	mov r0, #0xf
 	ldr r1, [r1]
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	ldr r0, _02229E10 ; =ov74_0223D0A4
 	mov r1, #0
 	str r1, [r0]
@@ -2316,7 +2316,7 @@ _02229ED2:
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r7]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_02229E68
 
@@ -6804,7 +6804,7 @@ _0222C2BC:
 	str r2, [r1]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 _0222C2D0:
 	add r0, r4, #0
@@ -8229,7 +8229,7 @@ ov74_0222CEC0: ; 0x0222CEC0
 	bl sub_02034DE0
 	ldr r0, _0222CEDC ; =ov74_0223D0A8
 	ldr r0, [r0, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203A914
 	ldr r0, _0222CEDC ; =ov74_0223D0A8
 	mov r1, #0
@@ -9824,7 +9824,7 @@ ov74_0222DB30: ; 0x0222DB30
 	add r3, r6, #0
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10125,7 +10125,7 @@ _0222DD6A:
 	ldr r0, [r5, r0]
 	bl Sprite_SetPaletteOverride
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _0222DDD4:
 	ldr r0, [sp, #0xc]
 	add r4, r4, #2
@@ -11825,7 +11825,7 @@ _0222EBA0:
 	bl FreeBgTilemapBuffer
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222EC00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
@@ -11877,7 +11877,7 @@ ov74_0222EC08: ; 0x0222EC08
 	mov r1, #1
 	bl ov74_0222D824
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222EC54: .word 0x00003D54
@@ -12730,7 +12730,7 @@ ov74_0222F2D4: ; 0x0222F2D4
 	add r3, r6, #0
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -13026,7 +13026,7 @@ _0222F504:
 	ldr r0, [r5, r0]
 	bl Sprite_SetPaletteOverride
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _0222F56E:
 	ldr r0, [sp, #0xc]
 	add r4, r4, #2
@@ -13828,7 +13828,7 @@ _0222FBE8:
 	bl FreeBgTilemapBuffer
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222FC48 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
@@ -13878,7 +13878,7 @@ ov74_0222FC50: ; 0x0222FC50
 	mov r2, #0
 	bl ov74_0222F024
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222FC98: .word 0x00003D0C
@@ -18458,7 +18458,7 @@ ov74_02231E00: ; 0x02231E00
 	cmp r0, #0
 	bne _02231E34
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02231E34:
@@ -18593,7 +18593,7 @@ ov74_02231EC4: ; 0x02231EC4
 	add r1, #8
 	bl Sprite_SetPaletteOverride
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_02231EC4
 
@@ -18837,7 +18837,7 @@ _0223210A:
 	b _02232016
 _0223211A:
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl NARC_Delete
 	ldr r1, _0223214C ; =ov74_02231FB0
@@ -21772,7 +21772,7 @@ ov74_022338D4: ; 0x022338D4
 	ldr r0, [r4, r0]
 	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223391C ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02233920 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
@@ -25171,7 +25171,7 @@ _02235182:
 	mov r0, #0
 	bl CTRDG_Enable
 	ldr r0, _022351F0 ; =ov74_02235138
-	ldr r1, _022351F4 ; =FreeToHeap
+	ldr r1, _022351F4 ; =Heap_Free
 	bl CRYPTO_SetAllocator
 	ldr r1, _022351E8 ; =0x000004A8
 	ldr r3, _022351F8 ; =_0223B690
@@ -25203,7 +25203,7 @@ _022351E4: .word ov74_0223CE9C
 _022351E8: .word 0x000004A8
 _022351EC: .word 0x08020000
 _022351F0: .word ov74_02235138
-_022351F4: .word FreeToHeap
+_022351F4: .word Heap_Free
 _022351F8: .word _0223B690
 	thumb_func_end ov74_0223514C
 
@@ -26821,7 +26821,7 @@ ov74_02235DC4: ; 0x02235DC4
 	lsl r3, r3, #8
 	bl BG_LoadScreenTilemapData
 	ldr r0, [sp, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -26927,7 +26927,7 @@ ov74_02235ED0: ; 0x02235ED0
 	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #4
 	bl OS_GetMacAddress
 	add r0, sp, #4
@@ -26962,7 +26962,7 @@ _02235F12:
 	add r3, r7, #0
 	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -26990,7 +26990,7 @@ ov74_02235F58: ; 0x02235F58
 	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	bl sub_02035754
 	ldrb r2, [r0, #4]
@@ -27037,7 +27037,7 @@ _02235FB2:
 	add r3, r7, #0
 	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -28367,7 +28367,7 @@ ov74_022369C8: ; 0x022369C8
 	beq _022369D6
 	sub r0, r1, #4
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 _022369D6:
 	pop {r3, pc}
 	thumb_func_end ov74_022369C8

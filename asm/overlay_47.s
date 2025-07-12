@@ -454,7 +454,7 @@ _02258B94:
 	cmp r4, #4
 	blt _02258B94
 	ldr r0, [r6]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02258BB0: .word ov47_02259E68
@@ -708,7 +708,7 @@ ov47_02258D78: ; 0x02258D78
 	add r2, r6, #0
 	bl BufferPlayersName
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov47_02258D78
 
@@ -2230,7 +2230,7 @@ ov47_02259968: ; 0x02259968
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	mov r4, #0
 	add r0, #0x80

@@ -120,7 +120,7 @@
 .public sub_0201A728
 .public sub_0201A738
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

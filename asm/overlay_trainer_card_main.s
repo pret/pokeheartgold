@@ -492,13 +492,13 @@ TrainerCardMainApp_Exit: ; 0x021E5EC8
 	bl ov51_021E7CA4
 	ldr r0, _021E5F50 ; =0x000030EC
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E5F54 ; =0x000033B8
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E5F58 ; =0x000033B0
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov51_021E6EF0
 	ldr r0, [r4]
@@ -837,7 +837,7 @@ _021E61B0:
 	mov r2, #0x20
 	bl GXS_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x64
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -869,7 +869,7 @@ ov51_021E6200: ; 0x021E6200
 	mov r2, #0x20
 	bl GXS_LoadBGPltt
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -1025,7 +1025,7 @@ ov51_021E6354: ; 0x021E6354
 	lsl r2, r2, #8
 	bl GXS_LoadBGPltt
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r2, [r0]
@@ -1053,7 +1053,7 @@ ov51_021E6354: ; 0x021E6354
 	lsl r2, r2, #8
 	bl GX_LoadBGPltt
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -1400,7 +1400,7 @@ ov51_021E6644: ; 0x021E6644
 	mov r1, #3
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov51_021E6644
 
@@ -3866,7 +3866,7 @@ _021E7A74:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	bl GF_AssertFail
 	b _021E7AB2
 _021E7AAE:
@@ -4123,7 +4123,7 @@ _021E7CAE:
 	lsl r0, r4, #2
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

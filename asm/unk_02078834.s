@@ -251,9 +251,9 @@ _020789CC:
 	b _02078B20
 _020789E8:
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	add r0, r0, #1
 	str r0, [r4, #4]
@@ -276,7 +276,7 @@ _02078A16:
 	cmp r0, #0
 	bne _02078B20
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #2
 	str r0, [r4, #4]
 	b _02078B20
@@ -528,7 +528,7 @@ _02078C08:
 	ldrb r0, [r0, #4]
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	pop {r4, pc}
 	.balign 4, 0
@@ -572,7 +572,7 @@ _02078C5C: .word _02101260
 	thumb_func_start sub_02078C60
 sub_02078C60: ; 0x02078C60
 	push {r3, lr}
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02078C70 ; =FS_OVERLAY_ID(OVY_90)
 	bl UnloadOverlayByID
 	pop {r3, pc}
@@ -614,7 +614,7 @@ _02078CB0: .word _02101270
 	thumb_func_start sub_02078CB4
 sub_02078CB4: ; 0x02078CB4
 	push {r3, lr}
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02078CC4 ; =FS_OVERLAY_ID(OVY_90)
 	bl UnloadOverlayByID
 	pop {r3, pc}
@@ -660,7 +660,7 @@ _02078D0C: .word _021012A0
 	thumb_func_start sub_02078D10
 sub_02078D10: ; 0x02078D10
 	push {r3, lr}
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02078D20 ; =FS_OVERLAY_ID(OVY_90)
 	bl UnloadOverlayByID
 	pop {r3, pc}

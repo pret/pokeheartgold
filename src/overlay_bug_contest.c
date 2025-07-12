@@ -55,8 +55,8 @@ BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
 
 void BugContest_Delete(BugContest *bugContest) {
     BugContest_RestoreParty_RetrieveCaughtPokemon(bugContest);
-    FreeToHeap(bugContest->mon);
-    FreeToHeap(bugContest);
+    Heap_Free(bugContest->mon);
+    Heap_Free(bugContest);
 }
 
 void BugContest_Judge(BugContest *bugContest) {
@@ -218,8 +218,8 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
     Party_Copy(bugContest->party_bak, bugContest->party_cur);
     Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, mon);
     Party_SetUnkSubSlot(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
-    FreeToHeap(mon);
-    FreeToHeap(bugContest->party_bak);
+    Heap_Free(mon);
+    Heap_Free(bugContest->party_bak);
     bugContest->party_bak = NULL;
 
     if (bugContest->caught_poke) {
@@ -282,8 +282,8 @@ void BugContest_InitOpponents(BugContest *bugContest) {
         score = (LCRandom() % (2 * bugContest->contestants[i].data.randmod)) - bugContest->contestants[i].data.randmod;
         bugContest->contestants[i].score = score + bugContest->contestants[i].data.score;
     }
-    FreeToHeap(idxs);
-    FreeToHeap(bin);
+    Heap_Free(idxs);
+    Heap_Free(bin);
     FS_CloseFile(&file);
 }
 
@@ -307,7 +307,7 @@ void BugContest_InitEncounters(BugContest *bugContest) {
         set = 0;
     }
     MI_CpuCopy8(&bugmon[set * BUGMON_COUNT], bugContest->encounters, BUGMON_COUNT * sizeof(BUGMON));
-    FreeToHeap(bugmon);
+    Heap_Free(bugmon);
     FS_CloseFile(&file);
 }
 

@@ -70,7 +70,7 @@
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public SetBgPriority

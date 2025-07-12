@@ -373,7 +373,7 @@ static void BerryPotsApp_InitData(BerryPotsAppData *data) {
 }
 
 static void ov17_02201DD8(BerryPotsAppData *data) {
-    FreeToHeap(data->berryGrowthProperties);
+    Heap_Free(data->berryGrowthProperties);
     MenuInputStateMgr_SetState(data->args->unk4->menuInputPtr, data->fieldMenuState);
 }
 
@@ -1101,7 +1101,7 @@ static void BerryPotsApp_FreeBgConfig(BerryPotsAppData *data) {
     FreeBgTilemapBuffer(data->bgConfig, 0);
     FreeBgTilemapBuffer(data->bgConfig, 7);
     FreeBgTilemapBuffer(data->bgConfig, 4);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
 }

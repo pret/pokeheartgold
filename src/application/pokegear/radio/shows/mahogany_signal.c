@@ -31,7 +31,7 @@ BOOL RadioShow_MahoganySignal_Setup(RadioShow *radioShow) {
 BOOL RadioShow_MahoganySignal_Teardown(RadioShow *radioShow) {
     RadioShow_MahoganySignal_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(MahoganySignalData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

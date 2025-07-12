@@ -341,7 +341,7 @@ ov103_021ECBBC: ; 0x021ECBBC
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov103_021ECBBC
@@ -456,7 +456,7 @@ ov103_021ECC1C: ; 0x021ECC1C
 	mov r2, #0x20
 	bl MIi_CpuCopy32
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x14
@@ -950,7 +950,7 @@ _021ED0AC:
 	ldr r0, [r6, #0xc]
 	add r0, r0, r5
 	ldr r0, [r0, r7]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x14
@@ -1387,7 +1387,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	mov r0, #0
 	bl GfGfx_EngineBSetPlanes
 	ldr r0, [r4, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0xc]
 	mov r0, #0x9d
@@ -2569,7 +2569,7 @@ ov103_021EDCE0: ; 0x021EDCE0
 	bl sub_02091004
 _021EDD08:
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2599,7 +2599,7 @@ ov103_021EDD14: ; 0x021EDD14
 	add r1, #0x20
 	strb r2, [r1]
 	ldr r0, [r0, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov103_021EDD14
@@ -2608,7 +2608,7 @@ ov103_021EDD14: ; 0x021EDD14
 ov103_021EDD48: ; 0x021EDD48
 	push {r3, lr}
 	ldr r0, [r0, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #8
 	pop {r3, pc}
 	thumb_func_end ov103_021EDD48
@@ -3313,7 +3313,7 @@ _021EE260:
 	lsl r2, r2, #8
 	bl GXS_LoadOBJ
 	ldr r0, [sp, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0xc]
 	add r1, r0, r6
 	mov r0, #0x9a

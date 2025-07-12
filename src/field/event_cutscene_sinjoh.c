@@ -106,7 +106,7 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
     case SJC_STATE_WAIT_FREE_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohCutscene_FreeResources(data);
-            FreeToHeap(data);
+            Heap_Free(data);
             return TRUE;
         }
         break;
@@ -279,7 +279,7 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
         break;
     case SGEC_STATE_FREE_RESOURCES:
         SinjohGetEggCutscene_FreeResources(data);
-        FreeToHeap(data);
+        Heap_Free(data);
         return TRUE;
     }
 

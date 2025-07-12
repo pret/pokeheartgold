@@ -1573,7 +1573,7 @@ _0222BA0E:
 	blt _0222BA0E
 _0222BA2E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203769C
 	cmp r0, #0
 	beq _0222BA54
@@ -2055,7 +2055,7 @@ _0222BD86:
 	blt _0222BD86
 _0222BDA6:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203769C
 	cmp r0, #0
 	beq _0222BDCC

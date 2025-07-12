@@ -23,9 +23,9 @@ void Field3dObjectTaskManager_Delete(Field3dObjectTaskManager *manager) {
     for (int i = 0; i < manager->max; ++i) {
         Field3dObjectTask_Delete(&manager->tasks[i]);
     }
-    FreeToHeap(manager->tasks);
-    FreeToHeap(manager->taskQueue);
-    FreeToHeap(manager);
+    Heap_Free(manager->tasks);
+    Heap_Free(manager->taskQueue);
+    Heap_Free(manager);
 }
 
 void Field3dObjectTaskManager_RunDrawTasks(Field3dObjectTaskManager *manager) {
@@ -81,7 +81,7 @@ void Field3dObjectTask_Delete(Field3dObjectTask *task) {
             task->param->destroyFunc(task, task->manager->fieldSystem, task->data);
         }
         if (task->param->dataSize != 0) {
-            FreeToHeap(task->data);
+            Heap_Free(task->data);
         }
         SysTask_Destroy(task->mainTask);
         SysTask_Destroy(task->g3dRenderTask);

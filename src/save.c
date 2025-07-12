@@ -149,7 +149,7 @@ BOOL Save_DeleteAllData(SaveData *saveData) {
         FlashWriteChunk(i * SAVE_SECTOR_SIZE, r6, SAVE_SECTOR_SIZE);
         FlashWriteChunk((i + 64) * SAVE_SECTOR_SIZE, r6, SAVE_SECTOR_SIZE);
     }
-    FreeToHeap(r6);
+    Heap_Free(r6);
     Save_InitDynamicRegion(saveData);
     saveData->saveFileExists = FALSE;
     Sys_ClearSleepDisableFlag(1);
@@ -457,8 +457,8 @@ static int Save_GetSaveFilesStatus(SaveData *saveData) {
         SaveSlotCheck_InitDummy(&checks_main[1]);
         SaveSlotCheck_InitDummy(&checks_sub[1]);
     }
-    FreeToHeap(data1);
-    FreeToHeap(data2);
+    Heap_Free(data1);
+    Heap_Free(data2);
 
     numGood_main = SaveSlotCheckCompare(&checks_main[0], &checks_main[1], &newer_main, &older_main);
     __older_main = older_main;
@@ -540,7 +540,7 @@ static void Save_CheckFrontierData(SaveData *saveData, int *err1, int *err2) {
     if (Save_CheckExtraChunksExist(saveData)) {
         sub_0202AC38(misc, 1, &sp0C, &sp08, &sp04);
         if (sp0C != -1 || sp08 != -1) {
-            FreeToHeap(sub_020284A4(saveData, HEAP_ID_3, 1, &sp14, &sp10));
+            Heap_Free(sub_020284A4(saveData, HEAP_ID_3, 1, &sp14, &sp10));
             if (sp14 == 2) {
                 *err1 = 3;
             } else if (sp14 == 1 && sp10 == 1) {
@@ -550,7 +550,7 @@ static void Save_CheckFrontierData(SaveData *saveData, int *err1, int *err2) {
         for (i = 2; i <= 5; i++) {
             sub_0202AC38(misc, i, &sp0C, &sp08, &sp04);
             if (sp0C != -1 || sp08 != -1) {
-                FreeToHeap(sub_020284A4(saveData, HEAP_ID_3, i, &sp14, &sp10));
+                Heap_Free(sub_020284A4(saveData, HEAP_ID_3, i, &sp14, &sp10));
                 if (sp14 == 2) {
                     *err2 = 3;
                 } else if (sp14 == 1 && sp10 == 1 && *err2 != 3) {
@@ -830,7 +830,7 @@ void Save_WipeExtraChunks(SaveData *saveData) {
             MI_CpuClear8(data, chunkHeaders[i].sizeFunc());
             chunkHeaders[i].initFunc(data);
             WriteExtraSaveChunk(saveData, chunkHeaders[i].id, data);
-            FreeToHeap(data);
+            Heap_Free(data);
         }
     }
 
@@ -1122,7 +1122,7 @@ static BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
     CARD_UnlockBackup(lock);
     OS_ReleaseLockID(lock);
     if (!result) {
-        FreeToHeap(sSaveDataPtr);
+        Heap_Free(sSaveDataPtr);
         ShowSaveDataReadError(HEAP_ID_1);
     }
     return result;
@@ -1175,7 +1175,7 @@ static BOOL WaitFlashWrite(s32 lockId, BOOL checkResult, BOOL *resultSuccess) {
 static void SaveErrorHandling(s32 lockId, int code) {
     CARD_UnlockBackup(lockId);
     OS_ReleaseLockID(lockId);
-    FreeToHeap(sSaveDataPtr);
+    Heap_Free(sSaveDataPtr);
     ShowSaveDataWriteError(HEAP_ID_1, code);
 }
 

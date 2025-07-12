@@ -1108,7 +1108,7 @@ PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMe
 
 void PartyMenu_CloseContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *cursor) {
     PartyMenu_HideContextMenu(partyMenu, cursor->numItems, cursor->state);
-    FreeToHeap(cursor);
+    Heap_Free(cursor);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_4 || partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], FALSE);
     } else {

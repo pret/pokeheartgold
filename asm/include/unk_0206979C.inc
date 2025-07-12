@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GfGfxLoader_LoadFromOpenNarc
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public GF3dRender_DrawModel
 .public sub_02020DA4

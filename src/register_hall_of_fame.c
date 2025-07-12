@@ -922,7 +922,7 @@ static void RegisterHallOfFame_CreateBgConfig(RegisterHallOfFameData *data) {
 }
 
 static void RegisterHallOfFame_DestroyBgConfig(RegisterHallOfFameData *data) {
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static void RegisterHallOfFame_CreateSpriteGfxHandlers(RegisterHallOfFameData *data) {
@@ -1356,7 +1356,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
         sub_020145B4((const u8 *)texData + size * i, spriteSquareDim, 0, 0, spriteSquareDim, spriteSquareDim, buffer);
         RegisterHallOfFame_ReplaceSpriteChar(buffer, imageLoc + size * i, size);
     }
-    FreeToHeap(buffer);
+    Heap_Free(buffer);
 
     u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
@@ -1364,7 +1364,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
         loadPos = (const u8 *)loadPos + 0x20;
     }
     RegisterHallOfFame_ReplaceSpritePltt(loadPos, plttLoc, 0x20);
-    FreeToHeap(fileData);
+    Heap_Free(fileData);
 }
 
 static void RegisterHallOfFame_IndivMons_InitBgLayers(RegisterHallOfFameData *data) {
@@ -2121,7 +2121,7 @@ static void Task_RegisterHallOfFame_IndivMonAnimAndCry(SysTask *task, void *task
     if (animStep >= 0) {
         RegisterHallOfFame_ReplaceSpriteChar(showPic->charbuf[animStep], showPic->imageLocation, 3200);
     } else {
-        FreeToHeap(showPic);
+        Heap_Free(showPic);
         SysTask_Destroy(task);
     }
 }
@@ -2397,7 +2397,7 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
     r4 = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, 0x1900);
     sub_020143E0(sp2C.narcId, sp2C.ncbr_id, HEAP_ID_REGISTER_HALL_OF_FAME, &sp1C, r4);
     RegisterHallOfFame_ReplaceSpriteChar(r4, NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 3200);
-    FreeToHeap(r4);
+    Heap_Free(r4);
 
     GfGfxLoader_GXLoadPal(sp2C.narcId, sp2C.nclr_id, GF_PAL_LOCATION_MAIN_OBJ, (enum GFPalSlotOffset)NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 0x20, HEAP_ID_REGISTER_HALL_OF_FAME);
 
@@ -2586,9 +2586,9 @@ static void RegisterHallOfFame_DestroySpotlightsTask(SysTask *task) {
         RegisterHofSpotlightTaskData *spotlight = (RegisterHofSpotlightTaskData *)SysTask_GetData(task);
 
         for (int i = 0; i < spotlight->numSpotlights; ++i) {
-            FreeToHeap(SysTask_GetData(spotlight->childTasks[i]));
+            Heap_Free(SysTask_GetData(spotlight->childTasks[i]));
         }
-        FreeToHeap(spotlight);
+        Heap_Free(spotlight);
     }
 }
 
@@ -2639,7 +2639,7 @@ static SysTask *RegisterHallOfFame_CreateConfettiTask(RegisterHallOfFameData *da
 
 static void RegisterHallOfFame_EndConfetti(SysTask *task) {
     if (task != NULL) {
-        FreeToHeap(SysTask_GetData(task));
+        Heap_Free(SysTask_GetData(task));
         SysTask_Destroy(task);
     }
 }

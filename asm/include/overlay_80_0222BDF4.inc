@@ -83,7 +83,7 @@
 .public sub_0201A748
 .public sub_0201A774
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public ToggleBgLayer
 .public BgSetPosTextAndCommit
 .public BG_ClearCharDataRange

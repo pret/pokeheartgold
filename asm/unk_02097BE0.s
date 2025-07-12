@@ -117,7 +117,7 @@ _02097C9A:
 	str r0, [r4, #0x50]
 	b _02097CB0
 _02097CA8:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02097CB0:
@@ -186,9 +186,9 @@ _02097D14:
 	b _02097D36
 _02097D26:
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02097D36:

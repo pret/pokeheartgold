@@ -547,7 +547,7 @@ ov101_021E7B54: ; 0x021E7B54
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1776,27 +1776,27 @@ ov101_021E84B8: ; 0x021E84B8
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021E84B8
@@ -12642,7 +12642,7 @@ _021ED948:
 	mov r2, #0xcc
 	bl MI_CpuFill8
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r4, [r4]
 	add r0, r5, #0
 	bl OverlayManager_FreeData
@@ -12845,7 +12845,7 @@ ov101_021EDAF8: ; 0x021EDAF8
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -13445,7 +13445,7 @@ ov101_021EDF54: ; 0x021EDF54
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #0x74]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _021EDFEC ; =0x04000304
 	ldr r0, _021EDFF0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -13664,19 +13664,19 @@ ov101_021EE190: ; 0x021EE190
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov101_021EE190
 

@@ -118,7 +118,7 @@ sub_02037D2C: ; 0x02037D2C
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02037D48
-	bl FreeToHeap
+	bl Heap_Free
 _02037D48:
 	bl sub_02039998
 	cmp r0, #0
@@ -130,7 +130,7 @@ _02037D56:
 	bl sub_02034DE0
 	ldr r0, _02037D74 ; =_021D4150
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xf
 	bl DestroyHeap
 	ldr r0, _02037D74 ; =_021D4150
@@ -3236,7 +3236,7 @@ sub_0203946C: ; 0x0203946C
 	bl sub_020398D4
 	ldr r0, _0203949C ; =_021D4150
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0203949C ; =_021D4150
 	mov r1, #0
 	str r1, [r0]
@@ -3304,7 +3304,7 @@ sub_020394F4: ; 0x020394F4
 	bl sub_020398D4
 	ldr r0, _02039524 ; =_021D4150
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02039524 ; =_021D4150
 	mov r1, #0
 	str r1, [r0]
@@ -3372,7 +3372,7 @@ sub_0203957C: ; 0x0203957C
 	bl sub_020398D4
 	ldr r0, _020395AC ; =_021D4150
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020395AC ; =_021D4150
 	mov r1, #0
 	str r1, [r0]
@@ -4772,7 +4772,7 @@ sub_02039FD8: ; 0x02039FD8
 	bl DWC_Init
 	add r5, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

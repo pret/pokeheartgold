@@ -39,9 +39,9 @@ void Destroy2DGfxResObjMan(GF_2DGfxResMan *mgr) {
     destroyAllObjects(mgr);
     GF2dGfxRawResObj_Destroy(mgr->resourceMgr);
     mgr->resourceMgr = NULL;
-    FreeToHeap(mgr->objects);
+    Heap_Free(mgr->objects);
     mgr->objects = NULL;
-    FreeToHeap(mgr);
+    Heap_Free(mgr);
 }
 
 SpriteResource *Add2DGfxResObjFromHeader(GF_2DGfxResMan *mgr, const GF_2DGfxResHeader *header, int idx, HeapID heapId) {
@@ -248,8 +248,8 @@ GF_2DGfxResObjList *Create2DGfxResObjList(int num, HeapID heapId) {
 }
 
 void Delete2DGfxResObjList(GF_2DGfxResObjList *list) {
-    FreeToHeap(list->obj);
-    FreeToHeap(list);
+    Heap_Free(list->obj);
+    Heap_Free(list);
 }
 
 BOOL GF2DGfxResObjExistsById(GF_2DGfxResMan *mgr, int a1) {
@@ -396,7 +396,7 @@ void GF2DGfxResHeader_Init(const GF_2DGfxResHeaderNarcList *narcList, GF_2DGfxRe
 
 void GF2DGfxResHeader_Reset(GF_2DGfxResHeader *header) {
     if (header->table != NULL) {
-        FreeToHeap(header->table);
+        Heap_Free(header->table);
     }
     header->table = NULL;
     header->num = 0;
@@ -542,7 +542,7 @@ static struct MultianimResExtraData *GetResourceExtraMultianimData(void *resourc
 
 static void destroyResObjExtra(SpriteResource *obj) {
     if (obj->extra != NULL) {
-        FreeToHeap(obj->extra);
+        Heap_Free(obj->extra);
     }
     obj->extra = NULL;
 }
@@ -593,7 +593,7 @@ static void *loadResourceFromNarc(NARC *narc, int fileId, BOOL compressed, HeapI
             }
             if (uncompData != NULL) {
                 MI_UncompressLZ8(data, uncompData);
-                FreeToHeap(data);
+                Heap_Free(data);
             }
             // Possible memory leak if uncompData == NULL
             data = uncompData;
