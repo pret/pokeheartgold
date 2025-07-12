@@ -14,7 +14,7 @@ typedef struct UnkStruct_0203FC14 {
     u8 unkC;
 } UnkStruct_0203FC14;
 
-void *sub_02019BA4(const void *, const void *, const void *, void *, int, u8, HeapID);
+void *sub_02019BA4(const void *, const void *, const void *, void *, int, u8, enum HeapID);
 void sub_02019BDC(void *);
 int sub_02019F74(void *);
 void sub_02019F7C(void *, int);

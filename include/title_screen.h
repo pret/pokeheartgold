@@ -64,7 +64,7 @@ typedef struct TitleScreenAnimData {
 } TitleScreenAnimData;
 
 typedef struct TitleScreenOverlayData {
-    HeapID heapID;
+    enum HeapID heapID;
     BgConfig *bgConfig;
     GF3DVramMan *_3dVramMan;
     u8 filler_0C[0xC0];

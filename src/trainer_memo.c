@@ -73,9 +73,9 @@ static void BoxMon_ClearMetDateAndLocation(BoxPokemon *boxMon, int setMetDatePar
 static void BoxMon_SetMetDateAndLocation(BoxPokemon *boxMon, int mapsec, int setMetDateParam);
 static void BoxMon_SetFatefulEncounter(BoxPokemon *boxMon);
 static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon);
-static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId);
+static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapId);
 
-Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
+Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, enum HeapID heapId, int a3) {
     Unk0208E600 *ptr = Heap_Alloc(heapId, sizeof(Unk0208E600));
     ptr->heapId = heapId;
     ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapId);
@@ -690,11 +690,11 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
     return MET_CONDITION_EGG_TRADED;
 }
 
-void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId) {
+void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, enum HeapID heapId) {
     BoxMonSetTrainerMemo(&mon->box, profile, strat, mapsec, heapId);
 }
 
-void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId) {
+void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat, int mapsec, enum HeapID heapId) {
     int var;
 
     switch (strat) {
@@ -793,7 +793,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
     }
 }
 
-static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId) {
+static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapId) {
     u32 otId = PlayerProfile_GetTrainerID(profile);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
     String *name = PlayerProfile_GetPlayerName_NewString(profile, heapId);

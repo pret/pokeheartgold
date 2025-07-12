@@ -14,7 +14,7 @@
 #include "save_vars_flags.h"
 #include "sys_flags.h"
 
-EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputStateMgr *menuInputStateMgr, HeapID heapId) {
+EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputStateMgr *menuInputStateMgr, enum HeapID heapId) {
     EasyChatArgs *ptr = Heap_Alloc(heapId, sizeof(EasyChatArgs));
     ptr->unk0 = args;
     ptr->unk1 = a1;
@@ -163,7 +163,7 @@ void sub_02090E5C(EasyChatArgs *args, MenuInputState a1) {
     MenuInputStateMgr_SetState(args->menuInputPtr, a1);
 }
 
-UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId) {
+UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, enum HeapID heapId) {
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
     UseMailArgs *ptr = Heap_AllocAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
@@ -184,7 +184,7 @@ UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, 
     return ptr;
 }
 
-UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
+UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, enum HeapID heapId) {
     UseMailArgs *ptr = Heap_AllocAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
@@ -200,7 +200,7 @@ UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
     return ptr;
 }
 
-UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
+UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, enum HeapID heapId) {
     UseMailArgs *ptr = Heap_AllocAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
@@ -214,7 +214,7 @@ UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
     return ptr;
 }
 
-UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
+UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, enum HeapID heapId) {
     UseMailArgs *ptr = Heap_AllocAtEnd(heapId, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
@@ -247,7 +247,7 @@ void sub_02090F90(UseMailArgs *args) {
     Heap_Free(args);
 }
 
-int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
+int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, enum HeapID heapId) {
     int item = ITEM_NONE;
     int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
 
@@ -265,7 +265,7 @@ int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
     return -1;
 }
 
-int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId) {
+int sub_02091004(Mail *msgs, int i, Pokemon *mon, enum HeapID heapId) {
     int item = ITEM_NONE;
 
     Mail *mail = Mailbox_AllocAndFetchMailI(msgs, 0, i, heapId);

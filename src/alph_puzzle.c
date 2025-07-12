@@ -91,7 +91,7 @@ typedef struct AlphPuzzleTile {
 } AlphPuzzleTile;
 
 typedef struct AlphPuzzleData {
-    HeapID heapId;
+    enum HeapID heapId;
     MenuInputState menuInputState;
     int unkState;
     u16 subState;

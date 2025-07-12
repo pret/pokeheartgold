@@ -10,7 +10,7 @@
 #include "unk_02005D10.h"
 
 typedef struct TrainerProfilesData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u8 msgIDs[3];
     u8 selector;

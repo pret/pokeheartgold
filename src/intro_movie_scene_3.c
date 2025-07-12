@@ -725,8 +725,8 @@ static void IntroMovie_Scene3_SetMapLightingAndColorParams(u8 mapIdx) {
     NNS_G3dGlbMaterialColorSpecEmi(sMaterialSpecular[mapIdx], sMaterialEmission[mapIdx], FALSE);
 }
 
-HeapID _deadstrip_03(int idx);
-HeapID _deadstrip_03(int idx) {
-    static const HeapID sDeadstrippedRodata_021EB1F8[1] = { HEAP_ID_INTRO_MOVIE };
+enum HeapID _deadstrip_03(int idx);
+enum HeapID _deadstrip_03(int idx) {
+    static const enum HeapID sDeadstrippedRodata_021EB1F8[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata_021EB1F8[idx];
 }

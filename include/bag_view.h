@@ -67,7 +67,7 @@ u8 sub_0207791C(BagView *bagView);
  *
  * @returns: TRUE if non_npc_msg formatted, else FALSE
  */
-BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heapId);
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, enum HeapID heapId);
 
 /*
  * void GetItemUseErrorMessage(PLAYERDATA *playerData, String *dest, u32 unused, enum ItemUseError code, u32 heapId)
@@ -85,6 +85,6 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 
  * @param code:           Which non_npc_msg to output
  * @param heapId:        Heap to allocate temp buffers from
  */
-void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heapId);
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, enum HeapID heapId);
 
 #endif // POKEHEARTGOLD_BAG_VIEW_H

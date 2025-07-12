@@ -14,9 +14,9 @@
 #include "pokemon.h"
 #include "save_misc_data.h"
 
-void CreateNPCTrainerParty(BattleSetup *battleSetup, int trainerIndex, HeapID heapId);
+void CreateNPCTrainerParty(BattleSetup *battleSetup, int trainerIndex, enum HeapID heapId);
 
-void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID heapId) {
+void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, enum HeapID heapId) {
     Trainer trainer;
     MsgData *msgData;
     const u16 *rivalName;
@@ -76,7 +76,7 @@ int TrainerData_GetAttr(u32 trainerIndex, TrainerAttr attr) {
     return result;
 }
 
-BOOL TrainerMessageWithIdPairExists(u32 trainerIndex, u32 msg_id, HeapID heapId) {
+BOOL TrainerMessageWithIdPairExists(u32 trainerIndex, u32 msg_id, enum HeapID heapId) {
     u16 rdbuf[3];
     struct NARC *trTblNarc;
     BOOL ret = FALSE;
@@ -100,7 +100,7 @@ BOOL TrainerMessageWithIdPairExists(u32 trainerIndex, u32 msg_id, HeapID heapId)
     return ret;
 }
 
-void GetTrainerMessageByIdPair(u32 trainerIndex, u32 msg_id, String *str, HeapID heapId) {
+void GetTrainerMessageByIdPair(u32 trainerIndex, u32 msg_id, String *str, enum HeapID heapId) {
     u16 rdbuf[3];
     u32 trTblSize;
     NARC *trTblNarc;
@@ -268,7 +268,7 @@ TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass) {
 void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid);
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 
-void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) {
+void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, enum HeapID heapId) {
     TRPOKE *data; // sp74
     int i;
     int j;

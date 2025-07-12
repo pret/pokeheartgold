@@ -553,8 +553,8 @@ static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid) {
     sceneData->flipScreensTask = NULL;
 }
 
-HeapID _deadstrip_04(int idx);
-HeapID _deadstrip_04(int idx) {
-    static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
+enum HeapID _deadstrip_04(int idx);
+enum HeapID _deadstrip_04(int idx) {
+    static const enum HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }

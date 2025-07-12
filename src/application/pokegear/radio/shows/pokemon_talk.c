@@ -17,7 +17,7 @@
 #include "unk_02097F6C.h"
 
 typedef struct PokemonTalkData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 swarmSpecies;
     u16 swarmMap;

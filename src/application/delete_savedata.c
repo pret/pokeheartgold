@@ -34,7 +34,7 @@ typedef enum DeleteSavedataApp_PrintState {
 } DeleteSavedataApp_PrintState;
 
 typedef struct DeleteSavedataApp_Data {
-    HeapID heapId;
+    enum HeapID heapId;
     DeleteSavedataApp_MainState mainState;
     DeleteSavedataApp_PrintState printState;
     u32 textPrinterId;
@@ -200,7 +200,7 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
 
 BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state) {
     DeleteSavedataApp_Data *data = OverlayManager_GetData(manager);
-    HeapID heapId = data->heapId;
+    enum HeapID heapId = data->heapId;
 
     OverlayManager_FreeData(manager);
 

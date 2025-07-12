@@ -4,7 +4,7 @@
 
 #include "pokemon.h"
 
-MoveRelearnerArgs *MoveRelearner_New(HeapID heapId) {
+MoveRelearnerArgs *MoveRelearner_New(enum HeapID heapId) {
     MoveRelearnerArgs *ret = Heap_Alloc(heapId, sizeof(MoveRelearnerArgs));
     memset(ret, 0, sizeof(MoveRelearnerArgs));
     return ret;
@@ -14,7 +14,7 @@ void MoveRelearner_Delete(MoveRelearnerArgs *moveRelearner) {
     Heap_Free(moveRelearner);
 }
 
-u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
+u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, enum HeapID heapId) {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 form = GetMonData(mon, MON_DATA_FORM, NULL);
     u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);

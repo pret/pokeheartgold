@@ -39,7 +39,7 @@ u32 PlayerProfile_sizeof(void) {
     return sizeof(PlayerProfile);
 }
 
-PlayerProfile *PlayerProfile_New(HeapID heapId) {
+PlayerProfile *PlayerProfile_New(enum HeapID heapId) {
     PlayerProfile *profile = Heap_Alloc(heapId, sizeof(PlayerProfile));
     PlayerProfile_Init(profile);
 
@@ -84,7 +84,7 @@ void PlayerName_FlatToString(PlayerProfile *profile, String *str) {
     CopyU16ArrayToString(str, profile->name);
 }
 
-String *PlayerProfile_GetPlayerName_NewString(PlayerProfile *profile, HeapID heapId) {
+String *PlayerProfile_GetPlayerName_NewString(PlayerProfile *profile, enum HeapID heapId) {
     String *str = String_New(PLAYER_NAME_LENGTH + 1, heapId);
     PlayerName_FlatToString(profile, str);
 

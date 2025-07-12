@@ -41,7 +41,7 @@ static const OverlayManagerTemplate ov16_02201B78 = {
 static const u8 *unused_02201BA0;
 
 typedef struct UnkStruct_ov16_0220196C {
-    HeapID heapId;
+    enum HeapID heapId;
     BerryPotsArgs *args;
     OverlayManager *ovyManager;
     u8 unkC[0x10 - 0xC];

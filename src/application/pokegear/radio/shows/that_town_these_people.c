@@ -19,7 +19,7 @@ typedef enum TTTPUnlockCondition {
 } TTTPUnlockCondition;
 
 typedef struct ThatTownThesePeopleData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u8 msgIDs[3];
     u8 selector;

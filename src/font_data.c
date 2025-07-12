@@ -38,11 +38,11 @@ struct FontData {
     u32 gmifOffset;
 };
 
-static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, BOOL isFixedWidth, HeapID heapId);
+static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, BOOL isFixedWidth, enum HeapID heapId);
 static void FontData_FreeWidthsAndNarc(struct FontData *fontData);
-static void InitFontResources(struct FontData *fontData, int mode, HeapID heapId);
-static void InitFontResources_FromPreloaded(struct FontData *fontData, HeapID heapId);
-static void InitFontResources_LazyFromNarc(struct FontData *fontData, HeapID heapId);
+static void InitFontResources(struct FontData *fontData, int mode, enum HeapID heapId);
+static void InitFontResources_FromPreloaded(struct FontData *fontData, enum HeapID heapId);
+static void InitFontResources_LazyFromNarc(struct FontData *fontData, enum HeapID heapId);
 static void FreeLoadedFontResources(struct FontData *fontData);
 static void FreeLoadedFontResources_FromPreloaded(struct FontData *fontData);
 static void FreeLoadedFontResources_LazyFromNarc(struct FontData *fontData);
@@ -51,7 +51,7 @@ static void DecompressGlyphTiles_LazyFromNarc(struct FontData *fontData, u16 gly
 static u32 GetGlyphWidth_VariableWidth(struct FontData *fontData, int glyphId);
 static u32 GetGlyphWidth_FixedWidth(struct FontData *fontData, int glyphId);
 
-struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, HeapID heapId) {
+struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedWidth, enum HeapID heapId) {
     struct FontData *ret;
 
     ret = Heap_Alloc(heapId, sizeof(struct FontData));
@@ -68,14 +68,14 @@ void FontData_Delete(struct FontData *fontData) {
     Heap_Free(fontData);
 }
 
-void FontData_ModeSwitch(struct FontData *fontData, int mode, HeapID heapId) {
+void FontData_ModeSwitch(struct FontData *fontData, int mode, enum HeapID heapId) {
     if (fontData->glyphAccessMode != mode) {
         FreeLoadedFontResources(fontData);
         InitFontResources(fontData, mode, heapId);
     }
 }
 
-static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, BOOL isFixedWidth, HeapID heapId) {
+static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, BOOL isFixedWidth, enum HeapID heapId) {
     static const u8 _020F6324[][2] = {
         { GLYPHSHAPE_8x8,  GLYPHSHAPE_8x16  },
         { GLYPHSHAPE_16x8, GLYPHSHAPE_16x16 }
@@ -110,8 +110,8 @@ static void FontData_FreeWidthsAndNarc(struct FontData *fontData) {
     }
 }
 
-static void InitFontResources(struct FontData *fontData, int mode, HeapID heapId) {
-    static void (*const _020F6328[])(struct FontData *fontData, HeapID heapId) = {
+static void InitFontResources(struct FontData *fontData, int mode, enum HeapID heapId) {
+    static void (*const _020F6328[])(struct FontData *fontData, enum HeapID heapId) = {
         InitFontResources_FromPreloaded,
         InitFontResources_LazyFromNarc,
     };
@@ -119,14 +119,14 @@ static void InitFontResources(struct FontData *fontData, int mode, HeapID heapId
     _020F6328[mode](fontData, heapId);
 }
 
-static void InitFontResources_FromPreloaded(struct FontData *fontData, HeapID heapId) {
+static void InitFontResources_FromPreloaded(struct FontData *fontData, enum HeapID heapId) {
     u32 size = fontData->glyphSize * fontData->header.numGlyphs;
     fontData->narcReadBuf = Heap_Alloc(heapId, size);
     fontData->uncompGlyphFunc = DecompressGlyphTiles_FromPreloaded;
     NARC_ReadFromMember(fontData->narc, fontData->fileId, fontData->header.headerSize, size, fontData->narcReadBuf);
 }
 
-static void InitFontResources_LazyFromNarc(struct FontData *fontData, HeapID heapId) {
+static void InitFontResources_LazyFromNarc(struct FontData *fontData, enum HeapID heapId) {
     fontData->uncompGlyphFunc = DecompressGlyphTiles_LazyFromNarc;
 }
 

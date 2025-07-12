@@ -52,7 +52,7 @@ static void sub_02050060(TaskManager *, u16, u16, u16 *);
 static BOOL sub_020500A0(TaskManager *);
 static u32 sub_020501B8(UnkStruct_0204FBDC *, FieldSystem *, u32);
 static u32 sub_02050290(UnkStruct_0204FBDC *, FieldSystem *);
-static u32 sub_020502E0(UnkStruct_0204FBDC *, FieldSystem *, HeapID);
+static u32 sub_020502E0(UnkStruct_0204FBDC *, FieldSystem *, enum HeapID);
 static u32 sub_02050370(UnkStruct_0204FBDC *, FieldSystem *);
 
 static const u8 unk_020FC3AC[] = {
@@ -242,7 +242,7 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     return 2;
 }
 
-static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
+static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, enum HeapID heapId) {
     SaveData *saveData = fieldSystem->saveData;
     PokemonSummaryArgs *unk = Heap_AllocAtEnd(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));

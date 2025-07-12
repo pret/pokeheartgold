@@ -23,9 +23,9 @@ static void Draw2dMenuCursor(struct ListMenu2D *listMenu);
 static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, u8 selectedIdx);
 
 static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapId, int cancelKey) {
-    struct ListMenu2D *ret = Heap_Alloc((HeapID)heapId, sizeof(struct ListMenu2D));
+    struct ListMenu2D *ret = Heap_Alloc((enum HeapID)heapId, sizeof(struct ListMenu2D));
     ret->template = *template;
-    ret->cursor = ListMenuCursorNew((HeapID)heapId);
+    ret->cursor = ListMenuCursorNew((enum HeapID)heapId);
     ret->cancelKey = cancelKey;
     ret->selectedIndex = initialSelection;
     ret->maxItemWidth = Get2dMenuMaxItemWidth(ret);
@@ -54,7 +54,7 @@ void Delete2dMenu(struct ListMenu2D *menu, u8 *ret_p) {
         *ret_p = menu->selectedIndex;
     }
     DestroyListMenuCursorObj(menu->cursor);
-    Heap_FreeExplicit((HeapID)menu->heapId, menu);
+    Heap_FreeExplicit((enum HeapID)menu->heapId, menu);
 }
 
 int Handle2dMenuInput(struct ListMenu2D *menu) {
@@ -205,7 +205,7 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
     *y = listMenu->y + (selectedIdx % listMenu->template.itemsHigh) * (listMenu->maxGlyphHeight + listMenu->template.yTop);
 }
 
-struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, HeapID heapId) {
+struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, enum HeapID heapId) {
     struct ListMenu2DTemplate menuTemplate;
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapId);
     LISTMENUITEM *items = ListMenuItems_New(2, heapId);
@@ -225,11 +225,11 @@ struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *win
     return Create2dMenuInternal(&menuTemplate, 8, 0, initialSelection, heapId, PAD_BUTTON_B);
 }
 
-struct ListMenu2D *Std_CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, HeapID heapId) {
+struct ListMenu2D *Std_CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, enum HeapID heapId) {
     return CreateYesNoMenu(bgConfig, windowTemplate, tileNum, paletteNum, 0, heapId);
 }
 
-int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, HeapID heapId) {
+int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, enum HeapID heapId) {
     int ret = Handle2dMenuInput(menu);
     if (ret != LIST_NOTHING_CHOSEN) {
         Clear2dMenuWindowAndDelete(menu, heapId);
@@ -237,7 +237,7 @@ int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, HeapID heapId) {
     return ret;
 }
 
-void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, HeapID heapId) {
+void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, enum HeapID heapId) {
     sub_0200E5D4(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
     Heap_FreeExplicit(heapId, menu->template.window);

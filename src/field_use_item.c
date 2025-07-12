@@ -177,7 +177,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
 }
 
 static struct AlphItemUseData *CreateAlphItemUseWork(int scriptNo, u16 var_8000, u16 var_8001, u16 var_8002, u16 var_8003) {
-    struct AlphItemUseData *ret = Heap_Alloc((HeapID)32, sizeof(struct AlphItemUseData));
+    struct AlphItemUseData *ret = Heap_Alloc((enum HeapID)32, sizeof(struct AlphItemUseData));
     ret->scriptNo = scriptNo;
     ret->var_8000 = var_8000;
     ret->var_8001 = var_8001;

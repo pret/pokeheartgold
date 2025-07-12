@@ -47,7 +47,7 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents);
 static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare);
 static u8 sub_0206CCD8(FieldSystem *fieldSystem);
 static u8 ConvertDaycareCompatibilityScore(u32 compatibility);
-static void sub_0206D038(Pokemon *mon, HeapID heapId);
+static void sub_0206D038(Pokemon *mon, enum HeapID heapId);
 static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2);
 static BOOL PowerItemIdToInheritedIvIdx(u16 itemId, u8 *a1);
 
@@ -1005,7 +1005,7 @@ u8 Save_Daycare_CalcCompatibility(Daycare *dayCare) {
     return ConvertDaycareCompatibilityScore(Save_Daycare_CalcCompatibilityInternal(dayCare));
 }
 
-static void sub_0206D038(Pokemon *mon, HeapID heapId) {
+static void sub_0206D038(Pokemon *mon, enum HeapID heapId) {
     u16 moves[MAX_MON_MOVES];
     u8 pp[MAX_MON_MOVES];
     u32 otId;
@@ -1095,7 +1095,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     Heap_Free(tmpMon);
 }
 
-void sub_0206D328(Pokemon *mon, HeapID heapId) {
+void sub_0206D328(Pokemon *mon, enum HeapID heapId) {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 isEgg = 70;
     u8 hasNickname = FALSE;

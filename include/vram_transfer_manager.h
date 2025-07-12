@@ -9,7 +9,7 @@ typedef struct {
     NNSGfdVramTransferTask *tasks;
 } GF_VramTransferManager;
 
-void GF_CreateVramTransferManager(u32, HeapID);
+void GF_CreateVramTransferManager(u32, enum HeapID);
 void GF_DestroyVramTransferManager(void);
 BOOL GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE type, u32 dstAddr, void *pSrc, u32 szByte);
 void GF_RunVramTransferTasks(void);

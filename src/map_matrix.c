@@ -119,7 +119,7 @@ u8 MapMatrix_GetMapAltitude(MAPMATRIX *map_matrix, u8 matrix_id, u16 x, u16 y, i
     return map_matrix->data.altitudes[y * matrix_width + x];
 }
 
-MAPDATA *MapMatrix_MapData_New(HeapID heapId) {
+MAPDATA *MapMatrix_MapData_New(enum HeapID heapId) {
     MAPDATA *map_data = Heap_Alloc(heapId, sizeof(MAPDATA));
 
     void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, 0, heapId);

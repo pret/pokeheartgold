@@ -160,7 +160,7 @@ u16 GF_CalcCRC16(const void *data, u32 size) {
     return MATH_CalcCRC16CCITT(sCRC16TablePtr, data, size);
 }
 
-void GF_CRC16Init(HeapID heapId) {
+void GF_CRC16Init(enum HeapID heapId) {
     GF_ASSERT(sCRC16TablePtr == NULL);
     sCRC16TablePtr = Heap_Alloc(heapId, sizeof(MATHCRC16Table));
     MATH_CRC16InitTable(sCRC16TablePtr);

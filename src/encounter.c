@@ -691,7 +691,7 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager) {
     TaskManager_Call(taskManager, Task_TutorialBattle, encounter);
 }
 
-void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag) {
+void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, enum HeapID heapId, u32 *winFlag) {
     u32 battleType;
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);

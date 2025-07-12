@@ -9,7 +9,7 @@
 #include "unk_02005D10.h"
 
 typedef struct UnownSignalData {
-    HeapID heapID;
+    enum HeapID heapID;
 } UnownSignalData;
 
 void RadioShow_Unown_Init(RadioShow *radioShow);

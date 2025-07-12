@@ -14,7 +14,7 @@
 #include "unk_02005D10.h"
 
 static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment);
-static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, HeapID heapId);
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, enum HeapID heapId);
 static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData);
 static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin);
 static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu);
@@ -29,7 +29,7 @@ static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu);
 static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq);
 static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int a1);
 
-TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData) {
+TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(enum HeapID heapId, PaletteData *paletteData) {
     TouchscreenListMenuSpawner *ret = Heap_Alloc(heapId, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
     ret->heapId = heapId;
@@ -166,7 +166,7 @@ typedef struct TaskData_TouchscreenListMenuGraphicsLoad {
     NNSG2dPaletteData *pPlttData;
 } TaskData_TouchscreenListMenuGraphicsLoad;
 
-static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId) {
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, enum HeapID heapId) {
     TaskData_TouchscreenListMenuGraphicsLoad *taskData = Heap_AllocAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     MI_CpuClear8(taskData, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     taskData->pCharData = spawner->pCharData;

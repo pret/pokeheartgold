@@ -53,7 +53,7 @@ static void ObjPlttTransferTask_ReleaseBlocks(ObjPlttTransferTask *task);
 static BOOL ObjPlttTransferTask_CheckAllocBlocks(ObjPlttTransferTask *task, u32 blockAddrMain, u32 blockAddrSub, u32 sizeMain, u32 sizeSub);
 static void ObjPlttTransferTask_ReserveBlocks(ObjPlttTransferTask *task, u32 *pBlockAddrMain, u32 *pBlockAddrSub);
 
-void ObjPlttTransfer_Init(int num, HeapID heapId) {
+void ObjPlttTransfer_Init(int num, enum HeapID heapId) {
     if (sObjPlttTransferTasksManager == NULL) {
         sObjPlttTransferTasksManager = Heap_Alloc(heapId, sizeof(ObjPlttTransferTasksManager));
         MI_CpuClear32(sObjPlttTransferTasksManager, sizeof(ObjPlttTransferTasksManager));

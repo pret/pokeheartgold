@@ -44,9 +44,9 @@ static BOOL (*sIntroMovieSceneFuncs[])(IntroMovieOverlayData *data, void *pVoid)
     IntroMovie_Scene5,
 };
 
-HeapID _deadstrip_00(int idx);
-HeapID _deadstrip_00(int idx) {
-    static const HeapID sDeadstrippedRodata[2] = { HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE };
+enum HeapID _deadstrip_00(int idx);
+enum HeapID _deadstrip_00(int idx) {
+    static const enum HeapID sDeadstrippedRodata[2] = { HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }
 

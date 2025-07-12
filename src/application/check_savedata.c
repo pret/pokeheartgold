@@ -38,7 +38,7 @@ typedef enum CheckSavedataApp_PrintState {
 } CheckSavedataApp_PrintState;
 
 typedef struct CheckSavedataApp_Data {
-    HeapID heapId;
+    enum HeapID heapId;
     CheckSavedataApp_MainState mainState;
     u32 msgNum;
     CheckSavedataApp_PrintState printState;
@@ -178,7 +178,7 @@ BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
 
 BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state) {
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
-    HeapID heapId = data->heapId;
+    enum HeapID heapId = data->heapId;
 
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 

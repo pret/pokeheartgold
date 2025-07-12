@@ -9,7 +9,7 @@
 #define GF_3D_MEM_BLOCK_PER_PLTT 256
 #define GF_3D_PLTT_SLOT_SIZE     0x2000
 
-GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer) {
+GF3DVramMan *GF_3DVramMan_Create(enum HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer) {
     GF3DVramMan *ret;
     u32 texWorkSz, pltWorkSz;
 

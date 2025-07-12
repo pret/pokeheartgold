@@ -26,7 +26,7 @@ static u32 GetNumFashionBackgrounds(SaveData *saveData);
 static u32 GetNumBattlePoints(SaveData *saveData);
 
 BagView *BagView_New(u8 heapId) {
-    BagView *ret = Heap_Alloc((HeapID)heapId, sizeof(BagView));
+    BagView *ret = Heap_Alloc((enum HeapID)heapId, sizeof(BagView));
     memset(ret, 0, sizeof(BagView));
     return ret;
 }
@@ -117,7 +117,7 @@ static u32 GetNumBattlePoints(SaveData *saveData) {
     return FrontierData_BattlePointAction(Save_FrontierData_Get(saveData), 0, 0); // todo: DATA_GET
 }
 
-BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heapId) {
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, enum HeapID heapId) {
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapId);
     MessageFormat *messageFormat = MessageFormat_New(heapId);
     String *string;
@@ -150,7 +150,7 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 
     return TRUE;
 }
 
-void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heapId) {
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, enum HeapID heapId) {
 #pragma unused(itemId)
     MsgData *msgData;
     switch (code) {

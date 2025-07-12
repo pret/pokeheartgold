@@ -31,8 +31,8 @@ typedef struct FrontierMon {
     u16 form;
 } FrontierMon;
 
-static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, HeapID heapId);
-static u16 *sub_0204BC7C(u32 frontierTrainerIndex, HeapID heapId);
+static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, enum HeapID heapId);
+static u16 *sub_0204BC7C(u32 frontierTrainerIndex, enum HeapID heapId);
 static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex);
 
 static const u16 _020FBFA4[] = { ITEM_BRIGHTPOWDER, ITEM_LUM_BERRY, ITEM_LEFTOVERS, ITEM_QUICK_CLAW };
@@ -228,7 +228,7 @@ u16 sub_0204B73C(UnkStruct_Fsys_A0 *a0, u8 a1, u8 a2, u32 a3) {
     }
 }
 
-static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, HeapID heapId) {
+static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, enum HeapID heapId) {
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0027_bin, heapId);
     MI_CpuClear8(a0, sizeof(UnkStruct_0204B7D0));
     u16 *unk = sub_0204BC7C(frontierTrainerIndex, heapId);
@@ -243,7 +243,7 @@ static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, HeapI
     return unk;
 }
 
-static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 frontierMonIndex, u32 otId, u32 a4, u8 iv, u8 a6, BOOL a7, HeapID heapId) {
+static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 frontierMonIndex, u32 otId, u32 a4, u8 iv, u8 a6, BOOL a7, enum HeapID heapId) {
     s32 i;
     FrontierMon frontierMon;
     MI_CpuClear8(a1, sizeof(UnkStruct_0204B470));
@@ -308,14 +308,14 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     return pid;
 }
 
-u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, u16 *a4, u16 *a5, UnkStruct_0204A824_7E8 *a6, HeapID heapId) {
+u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, u16 *a4, u16 *a5, UnkStruct_0204A824_7E8 *a6, enum HeapID heapId) {
     u16 *unk7 = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
     u32 unk4 = sub_0204BABC(a0, unk7, frontierTrainerIndex, a1->unk30, a3, a4, a5, a6, heapId);
     Heap_Free(unk7);
     return unk4;
 }
 
-void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, UnkStruct_0204A824_7E8 *a4, HeapID heapId) {
+void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, UnkStruct_0204A824_7E8 *a4, enum HeapID heapId) {
     u8 iv;
     u16 *unk = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
     iv = sub_0204B4D4(frontierTrainerIndex);
@@ -325,7 +325,7 @@ void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTra
     Heap_Free(unk);
 }
 
-static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, HeapID heapId) {
+static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, enum HeapID heapId) {
     s32 i;
     u8 iv;
     u32 otId;
@@ -407,7 +407,7 @@ static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex
     return unk28;
 }
 
-static u16 *sub_0204BC7C(u32 frontierTrainerIndex, HeapID heapId) {
+static u16 *sub_0204BC7C(u32 frontierTrainerIndex, enum HeapID heapId) {
     return AllocAndReadWholeNarcMemberByIdPair(NARC_a_2_0_2, frontierTrainerIndex, heapId);
 }
 

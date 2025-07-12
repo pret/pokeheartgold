@@ -29,7 +29,7 @@ static BOOL UnregisterLoadedResources(GF_2DGfxResMan *manager, GF_2DGfxResObjLis
 static BOOL UnregisterLoadedCharResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 charId);
 static BOOL UnregisterLoadedPlttResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 plttId);
 
-SpriteSystem *SpriteSystem_Alloc(HeapID heapId) {
+SpriteSystem *SpriteSystem_Alloc(enum HeapID heapId) {
     SpriteSystem *ret = Heap_Alloc(heapId, sizeof(SpriteSystem));
     if (ret == NULL) {
         return NULL;

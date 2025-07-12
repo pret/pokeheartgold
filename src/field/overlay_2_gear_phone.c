@@ -45,7 +45,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
-String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
+String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, enum HeapID heapId) {
     String *str;
     if (!gearPhone->active || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         str = String_New(8, heapId);

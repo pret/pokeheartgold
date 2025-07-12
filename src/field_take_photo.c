@@ -112,7 +112,7 @@ static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 ico
 static BOOL FieldTask_TakePhoto(TaskManager *taskManager);
 static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender);
 static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo);
-static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId);
+static void drawCameraGfx(BgConfig *bgConfig, enum HeapID heapId);
 
 typedef struct Coord2U16 {
     u16 x;
@@ -843,7 +843,7 @@ static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo) {
     }
 }
 
-static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId) {
+static void drawCameraGfx(BgConfig *bgConfig, enum HeapID heapId) {
     GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapId);
     GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapId);
     GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapId);

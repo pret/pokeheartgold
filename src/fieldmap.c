@@ -509,7 +509,7 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
     return TRUE;
 }
 
-HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, HeapID heapId) {
+HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enum HeapID heapId) {
     HiddenItemResponse *ret;
     const BG_EVENT *bgEvents;
     int i;

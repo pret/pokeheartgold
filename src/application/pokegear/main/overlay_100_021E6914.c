@@ -95,7 +95,7 @@ void PokegearApp_DrawSprites(PokegearAppData *pokegearApp) {
 
 // functions for PokegearApp_UnkSub094
 
-PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5) {
+PokegearApp_UnkSub094 *ov100_021E69F8(enum HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5) {
     PokegearApp_UnkSub094 *ret = Heap_Alloc(heapId, sizeof(PokegearApp_UnkSub094));
     MI_CpuClear8(ret, sizeof(PokegearApp_UnkSub094));
     ret->heapId = heapId;
@@ -236,7 +236,7 @@ void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1) {
 
 // functions for UnkStruct_ov100_021E6E20
 
-UnkStruct_ov100_021E6E20 *ov100_021E6E20(int count, HeapID heapId) {
+UnkStruct_ov100_021E6E20 *ov100_021E6E20(int count, enum HeapID heapId) {
     UnkStruct_ov100_021E6E20 *ret = (UnkStruct_ov100_021E6E20 *)Heap_Alloc(heapId, sizeof(UnkStruct_ov100_021E6E20));
     MI_CpuClear8(ret, sizeof(UnkStruct_ov100_021E6E20));
     ret->max = count;
@@ -298,7 +298,7 @@ void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 firstIndex) {
 
 // functions for PokegearAppSwitchCursor
 
-PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId) {
+PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, enum HeapID heapId) {
     PokegearAppSwitch *ret = (PokegearAppSwitch *)Heap_Alloc(heapId, sizeof(PokegearAppSwitch));
     MI_CpuClear8(ret, sizeof(PokegearAppSwitch));
     ret->count = count;
@@ -319,7 +319,7 @@ void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch) {
     Heap_Free(appSwitch);
 }
 
-u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4) {
+u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, enum HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4) {
     u16 index = PokegearAppSwitch_GetFreeButtonSlot(appSwitch);
     if (index == 0xFFFF) {
         return 0xFFFF;

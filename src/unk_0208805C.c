@@ -57,7 +57,7 @@ u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide) {
     return HpBar_GetColorIdx(CalculateHpBarPixelsLength(hp, maxHp, pixelsWide), pixelsWide);
 }
 
-void sub_020880CC(u8 a0, HeapID heapId) {
+void sub_020880CC(u8 a0, enum HeapID heapId) {
     if (a0 == 0) {
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, heapId);
     } else {
@@ -125,7 +125,7 @@ int sub_020881C0(s16 *a0, u16 a1) {
     return 0;
 }
 
-void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset) {
+void sub_0208820C(BgConfig *bgConfig, enum HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset) {
     switch (kind) {
     case 0:
         GfGfxLoader_LoadCharDataFromOpenNarc(narc, fileId, bgConfig, layer, offset, szByte, FALSE, heapId);

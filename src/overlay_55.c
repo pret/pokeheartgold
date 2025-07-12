@@ -35,7 +35,7 @@ static const OverlayManagerTemplate ov55_021E5C04 = {
     .ovy_id = FS_OVERLAY_ID(OVY_102),
 };
 
-static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *, HeapID);
+static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *, enum HeapID);
 static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *);
 static void ov55_021E5BC4(Mail *, UnkStruct_ov55_021E5B08 *);
 
@@ -151,7 +151,7 @@ BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, HeapID heapId) {
+static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, enum HeapID heapId) {
     UnkStruct_ov55_021E5B08 *ret = Heap_Alloc(heapId, sizeof(UnkStruct_ov55_021E5B08));
     MI_CpuFill8(ret, 0, sizeof(UnkStruct_ov55_021E5B08));
 

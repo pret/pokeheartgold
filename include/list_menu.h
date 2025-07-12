@@ -76,7 +76,7 @@ typedef struct ListMenu {
     /*0x34*/ u8 heapId;
 } ListMenu;
 
-struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId);
+struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, enum HeapID heapId);
 s32 ListMenu_ProcessInput(struct ListMenu *list);
 void DestroyListMenu(struct ListMenu *list, u16 *cursorPos, u16 *itemsAbove);
 void RedrawListMenu(struct ListMenu *list);

@@ -61,7 +61,7 @@ void MailMsg_Init_FromTemplate(MailMessage *mailMessage, const MailMessageTempla
     }
 }
 
-String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId) {
+String *MailMsg_GetExpandedString(const MailMessage *mailMessage, enum HeapID heapId) {
     MessageFormat *msgFmt;
     MsgData *msgData;
     String *string;
@@ -82,7 +82,7 @@ String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId)
     return string;
 }
 
-String *MailMsg_GetRawString(MailMessage *mailMessage, HeapID heapId) {
+String *MailMsg_GetRawString(MailMessage *mailMessage, enum HeapID heapId) {
     return ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], mailMessage->msg_no, heapId);
 }
 

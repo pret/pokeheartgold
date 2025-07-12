@@ -41,12 +41,12 @@ static u32 ov16_02201588(BerryPot *berryPot);
 static u32 ov16_02201598(BerryPot *berryPot);
 static void ov16_02201688(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1);
 static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a2);
-static NARC *GetBerryInfoNarc(HeapID heapId);
-static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, HeapID heapId);
+static NARC *GetBerryInfoNarc(enum HeapID heapId);
+static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, enum HeapID heapId);
 static void FreeBerryInfoNarc(NARC *narc);
 static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr);
 
-UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
+UnkStruct_ov16_022014A0 *ov16_022014A0(enum HeapID heapId) {
     UnkStruct_ov16_022014A0 *unk;
     NARC *narc;
 
@@ -288,11 +288,11 @@ void BerryPots_CopyBerryDatetime(struct GF_RTC_DateTime *datetime, RTCDate *date
     *time = datetime->time;
 }
 
-static NARC *GetBerryInfoNarc(HeapID heapId) {
+static NARC *GetBerryInfoNarc(enum HeapID heapId) {
     return NARC_New(NARC_a_0_6_6, heapId);
 }
 
-static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, HeapID heapId) {
+static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, enum HeapID heapId) {
     return NARC_AllocAndReadWholeMember(narc, fileId, heapId);
 }
 
@@ -361,7 +361,7 @@ u32 ItemIdToMulchId(u16 itemId) {
     return itemId - ITEM_GROWTH_MULCH + 1;
 }
 
-u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId) {
+u16 GetTotalBerryQuantity(Bag *bag, enum HeapID heapId) {
     s32 i;
     u16 total;
     for (total = 0, i = 0; i < NUM_BAG_BERRIES; i++) {
@@ -370,7 +370,7 @@ u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId) {
     return total;
 }
 
-u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId) {
+u16 GetTotalMulchQuantity(Bag *bag, enum HeapID heapId) {
     s32 i;
     u16 total;
     for (total = 0, i = 0; i < NUM_MULCHES; i++) {

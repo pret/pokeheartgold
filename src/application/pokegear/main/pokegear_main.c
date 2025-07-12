@@ -143,7 +143,7 @@ BOOL Pokegear_Exit(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetData(man);
     SavePokegear_SetLastUsedApp(pokegearApp->savePokegear, pokegearApp->app);
     MenuInputStateMgr_SetState(pokegearApp->args->menuInputStatePtr, pokegearApp->menuInputState);
-    HeapID heapId = pokegearApp->heapId;
+    enum HeapID heapId = pokegearApp->heapId;
     OverlayManager_FreeData(man);
     sub_02004B10();
     sub_0203E354();

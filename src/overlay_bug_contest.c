@@ -168,7 +168,7 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
     return bugContest->party_cur_num >= PARTY_SIZE;
 }
 
-ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId) {
+ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, enum HeapID heapId) {
     ENC_SLOT *slot;
     u16 roll;
     int i;

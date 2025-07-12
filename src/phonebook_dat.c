@@ -8,7 +8,7 @@
 
 #include "gear_phone.h"
 
-struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
+struct PhoneBook *AllocAndReadPhoneBook(enum HeapID heapId) {
     FSFile file;
     struct PhoneBook *ret;
     u32 flen;
@@ -40,7 +40,7 @@ void FreePhoneBook(struct PhoneBook *phoneBook) {
     Heap_Free(phoneBook);
 }
 
-u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId) {
+u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, enum HeapID heapId) {
     struct PhoneBook *phoneBook = AllocAndReadPhoneBook(heapId);
     int i;
 

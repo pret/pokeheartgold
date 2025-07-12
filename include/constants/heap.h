@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_HEAP_H
 #define POKEHEARTGOLD_CONSTANTS_HEAP_H
 
-typedef enum HeapID {
+enum HeapID {
     HEAP_ID_DEFAULT,
     HEAP_ID_1,
     HEAP_ID_2,
@@ -163,7 +163,7 @@ typedef enum HeapID {
     HEAP_ID_RANKINGS_APP,
     HEAP_ID_159,
     HEAP_ID_VOLTORB_FLIP,
-    HEAP_ID_MAX,
-} HeapID;
+    HEAP_ID_MAX
+};
 
 #endif // POKEHEARTGOLD_CONSTANTS_HEAP_H

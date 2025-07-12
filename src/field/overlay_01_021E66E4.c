@@ -7,7 +7,7 @@
 static void Task_Field3dObject_Update(SysTask *task, void *taskdata);
 static void Task_Field3dObject_Render(SysTask *task, void *taskData);
 
-Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, HeapID heapId, int num) {
+Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, enum HeapID heapId, int num) {
     Field3dObjectTaskManager *ret = Heap_Alloc(heapId, sizeof(Field3dObjectTaskManager));
     ret->fieldSystem = fieldSystem;
     ret->heapId = heapId;

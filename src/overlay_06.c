@@ -18,7 +18,7 @@ void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferI
     PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
-SPLEmitter *ov06_0221BA40(HeapID heapId) {
+SPLEmitter *ov06_0221BA40(enum HeapID heapId) {
     void *particleHeap;
     SPLEmitter *pPVar1;
     Camera *pGVar2;
@@ -32,7 +32,7 @@ SPLEmitter *ov06_0221BA40(HeapID heapId) {
     return pPVar1;
 }
 
-SPLEmitter *ov06_0221BA88(HeapID heapId) {
+SPLEmitter *ov06_0221BA88(enum HeapID heapId) {
     void *particleHeap;
     SPLEmitter *pPVar1;
     Camera *pGVar2;

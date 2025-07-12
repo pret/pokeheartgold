@@ -19,7 +19,7 @@ static BOOL PhoneScript_Generic_GiftItemExceptDuringBugContest(PokegearPhoneCall
 static BOOL PhoneScript_Generic_OnlyTuesThursSat(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr);
 static BOOL PhoneScript_Generic_DuringRocketTakeover(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr);
 static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay);
-static u16 getRandomTrainerMon(u16 trainerID, HeapID heapID);
+static u16 getRandomTrainerMon(u16 trainerID, enum HeapID heapID);
 
 u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     const PhoneScriptGenericHeader *genericScripts;
@@ -194,7 +194,7 @@ static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay) {
     }
 }
 
-static u16 getRandomTrainerMon(u16 trainerID, HeapID a1) {
+static u16 getRandomTrainerMon(u16 trainerID, enum HeapID a1) {
     int i;
     Trainer trdata;
     TRPOKE *trpoke;

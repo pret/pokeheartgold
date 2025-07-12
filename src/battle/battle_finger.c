@@ -8,7 +8,7 @@
 static void BattleFinger_Update(SysTask *task, void *data);
 static void ov12_0226BEB8(BattleFinger *finger);
 
-void BattleFinger_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleFinger_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, enum HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation) {
     NARC *narc = NARC_New(NARC_a_1_6_4, heapId);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 1, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, pal);
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 0, 0, NNS_G2D_VRAM_TYPE_2DSUB, character);
@@ -37,7 +37,7 @@ static const ManagedSpriteTemplate ov12_0226EBD4 = {
     .vramTransfer = 0
 };
 
-BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority) {
+BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler, enum HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority) {
     BattleFinger *finger;
     ManagedSpriteTemplate unkStruct = ov12_0226EBD4;
 

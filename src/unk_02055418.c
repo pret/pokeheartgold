@@ -138,7 +138,7 @@ BOOL sub_02055670(FieldSystem *fieldSystem) {
     return sub_02028E1C(sysinfo);
 }
 
-UnkStruct_020556FC *sub_02055680(FieldSystem *fieldSystem, HeapID heapID) {
+UnkStruct_020556FC *sub_02055680(FieldSystem *fieldSystem, enum HeapID heapID) {
     UnkStruct_020556FC *unkPtr = Heap_Alloc(heapID, sizeof(UnkStruct_020556FC));
     MI_CpuClear8(unkPtr, sizeof(UnkStruct_020556FC));
     unkPtr->heapID = heapID;

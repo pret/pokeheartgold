@@ -69,7 +69,7 @@ static void ObjCharTransferTask_G2dLoadImageMappingVramTransfer(ObjCharTransferT
 static void ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
 static ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void);
 static void ObjCharTransfer_GetVramCapacityByBank(void);
-static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID);
+static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, enum HeapID heapID);
 static void ObjCharTransfer_ClearBothScreensBlockBufs(void);
 static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer);
 static u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer);
@@ -675,7 +675,7 @@ static void ObjCharTransfer_ClearBothScreensBlockBufs(void) {
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufSub);
 }
 
-static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID) {
+static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, enum HeapID heapID) {
     sObjCharTransferTasksManager->numBlocksMain = numBlocksMain;
     sObjCharTransferTasksManager->numBlocksSub = numBlocksSub;
     if (sObjCharTransferTasksManager->blockBufMain != NULL) {

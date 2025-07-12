@@ -73,7 +73,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     hdr->priority = priority;
 }
 
-SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan) {
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, enum HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan) {
     int i;
     int num = 0;
     SpriteResourceHeaderList *ret;
@@ -98,7 +98,7 @@ void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     Heap_Free(list);
 }
 
-SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, enum HeapID heapId) {
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 

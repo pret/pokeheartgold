@@ -29,7 +29,7 @@ typedef enum PokemonMusicState {
 } PokemonMusicState;
 
 typedef struct PokemonMusicData {
-    HeapID heapID;
+    enum HeapID heapID;
     u8 hasNationalDex : 1;
     u8 playingTrack : 7;
     u8 queuedMsg;

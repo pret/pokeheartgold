@@ -1915,7 +1915,7 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     return mapObject;
 }
 
-FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(HeapID heapId) {
+FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(enum HeapID heapId) {
     FieldSystemUnk108 *ret;
 
     ret = Heap_Alloc(heapId, sizeof(FieldSystemUnk108));

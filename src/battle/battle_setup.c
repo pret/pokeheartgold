@@ -36,7 +36,7 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
 static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg);
 static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem);
 
-BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
+BattleSetup *BattleSetup_New(enum HeapID heapId, u32 battleTypeFlags) {
     int i;
     BattleSetup *setup = Heap_Alloc(heapId, sizeof(BattleSetup));
     MI_CpuClear8(setup, sizeof(BattleSetup));
@@ -83,26 +83,26 @@ BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     return setup;
 }
 
-BattleSetup *BattleSetup_New_SafariZone(HeapID heapId, int balls) {
+BattleSetup *BattleSetup_New_SafariZone(enum HeapID heapId, int balls) {
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_SAFARI);
     setup->safariBalls = balls;
     return setup;
 }
 
-BattleSetup *BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon *bugmon) {
+BattleSetup *BattleSetup_New_BugContest(enum HeapID heapId, int balls, Pokemon *bugmon) {
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_BUG_CONTEST);
     setup->safariBalls = balls;
     CopyPokemonToPokemon(bugmon, setup->bugContestMon);
     return setup;
 }
 
-BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls) {
+BattleSetup *BattleSetup_New_PalPark(enum HeapID heapId, int balls) {
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_PAL_PARK);
     setup->safariBalls = balls;
     return setup;
 }
 
-BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
+BattleSetup *BattleSetup_New_Tutorial(enum HeapID heapId, FieldSystem *fieldSystem) {
     PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);

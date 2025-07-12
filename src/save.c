@@ -947,7 +947,7 @@ int sub_02028230(SaveData *saveData, int idx, void *data) {
     return WRITE_STATUS_TOTAL_FAIL;
 }
 
-void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p) {
+void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapId, int idx, int *ret_p) {
     const struct ExtraSaveChunkHeader *hdr;
     u32 size;
     void *ret;
@@ -1001,7 +1001,7 @@ void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p)
     return ret;
 }
 
-void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p) {
+void *sub_020284A4(SaveData *saveData, enum HeapID heapId, int idx, int *ret_p, int *ret2_p) {
     const struct ExtraSaveChunkHeader *hdr;
     u32 sp2C;
     u32 sp28;

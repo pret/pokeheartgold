@@ -159,7 +159,7 @@ void InitGraphicMemory(void) {
     MI_CpuClearFast((void *)HW_DB_PLTT, HW_DB_PLTT_SIZE);
 }
 
-void *Sys_AllocAndReadFile(HeapID heapId, const char *path) {
+void *Sys_AllocAndReadFile(enum HeapID heapId, const char *path) {
     FSFile file;
     void *ret;
     u32 size;
@@ -366,7 +366,7 @@ void sub_0201A738(int a0) {
     gSystem.softResetDisabled &= ~a0;
 }
 
-void sub_0201A748(HeapID heapId) {
+void sub_0201A748(enum HeapID heapId) {
     GF_ASSERT(gSystem.unk74 == NULL);
     gSystem.unk74 = Heap_AllocAtEnd(heapId, sizeof(u32));
     *gSystem.unk74 = 0x2F93A1BC;

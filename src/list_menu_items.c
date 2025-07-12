@@ -3,9 +3,9 @@
 #include "global.h"
 
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
+LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
+LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapId) {
     int i;
     LISTMENUITEM *ret = Heap_Alloc(heapId, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
@@ -25,7 +25,7 @@ void ListMenuItems_Delete(LISTMENUITEM *items) {
 }
 
 void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {
-    HeapID dummy;
+    enum HeapID dummy;
 
     items = ListMenuItems_SeekEnd(items, &dummy);
     if (items != NULL) {
@@ -35,7 +35,7 @@ void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int 
 }
 
 void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
-    HeapID heapId;
+    enum HeapID heapId;
 
     items = ListMenuItems_SeekEnd(items, &heapId);
     if (items != NULL) {
@@ -44,7 +44,7 @@ void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
     }
 }
 
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
+LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p) {
     LISTMENUITEM *out;
 
     for (; items->text != NULL; items++) {
@@ -55,7 +55,7 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
     }
     out = items;
     for (; items->text != (String *)-1; items++) {}
-    *heapId_p = (HeapID)items->value;
+    *heapId_p = (enum HeapID)items->value;
     return out;
 }
 

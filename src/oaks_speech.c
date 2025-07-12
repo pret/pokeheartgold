@@ -638,7 +638,7 @@ BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState) {
 
 BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
-    HeapID heapId = data->heapId;
+    enum HeapID heapId = data->heapId;
     FontID_Release(4);
     PlayerName_StringToFlat(Save_PlayerData_GetProfile(data->saveData), data->namingScreenArgs_Player->nameInputString);
     PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfile(data->saveData), data->namingScreenArgs_Player->playerGenderOrMonSpecies);

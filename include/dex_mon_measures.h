@@ -13,9 +13,9 @@ typedef struct PokedexData {
     u32 *unk_14;
 } PokedexData; // size=0x18
 
-struct PokedexData *PokedexData_Create(HeapID heapId);
+struct PokedexData *PokedexData_Create(enum HeapID heapId);
 void PokedexData_Delete(struct PokedexData *zkn);
-void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId);
+void PokedexData_LoadAll(struct PokedexData *zkn, int mode, enum HeapID heapId);
 void PokedexData_UnloadAll(struct PokedexData *zkn);
 u32 PokedexData_GetHeight(struct PokedexData *zkn, int species);
 u32 PokedexData_GetWeight(struct PokedexData *zkn, int species);
@@ -24,7 +24,7 @@ NarcId GetPokedexDataNarcID(void);
 int GetDexWeightMsgBank(void);
 int GetDexHeightMsgBank(void);
 
-static inline u32 SpeciesGetDexHeight(int species, HeapID heapId) {
+static inline u32 SpeciesGetDexHeight(int species, enum HeapID heapId) {
     u32 ret;
     struct PokedexData *zkn;
 
@@ -37,7 +37,7 @@ static inline u32 SpeciesGetDexHeight(int species, HeapID heapId) {
     return ret;
 }
 
-static inline u32 SpeciesGetDexWeight(int species, HeapID heapId) {
+static inline u32 SpeciesGetDexWeight(int species, enum HeapID heapId) {
     u32 ret;
     struct PokedexData *zkn;
 

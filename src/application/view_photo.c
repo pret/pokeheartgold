@@ -24,7 +24,7 @@ typedef enum ViewPhotoTaskState {
 } ViewPhotoTaskState;
 
 typedef struct ViewPhotoSysTaskData {
-    HeapID heapId;
+    enum HeapID heapId;
     int state;
     MenuInputState menuInputState;
     ViewPhotoInputResponse lastInput;
@@ -63,7 +63,7 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
 static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto);
-static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
+static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, enum HeapID heapId, SaveData *saveData);
 static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto);
 static u8 Photo_CountValidMons(Photo *a0);
@@ -419,7 +419,7 @@ static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto
     return !Sprite_IsAnimated(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
-static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, enum HeapID heapId, SaveData *saveData) {
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
     sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);

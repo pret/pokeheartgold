@@ -73,7 +73,7 @@ BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
 
     Radio_Unload(radioApp);
     radioApp->pokegear->isSwitchApp = TRUE;
-    HeapID heapId = radioApp->heapId;
+    enum HeapID heapId = radioApp->heapId;
     OverlayManager_FreeData(man);
     Heap_Destroy(heapId);
     return TRUE;
