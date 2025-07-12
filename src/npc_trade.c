@@ -62,15 +62,15 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
-    trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD, TRUE);
-    _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD);
+    mon = AllocMonZeroed(HEAP_ID_FIELD2);
+    trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD2, TRUE);
+    _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD2);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     Party_AddMon(party, mon);
     if (tradeno == NPC_TRADE_KENYA_SPEAROW) {
         kenya = Party_GetMonByIndex(party, Party_GetCount(party) - 1);
-        name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
+        name = _GetNpcTradeName(HEAP_ID_FIELD2, NPC_TRADE_OT_NUM(tradeno));
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
         SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
@@ -88,10 +88,10 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
-    trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD, TRUE);
-    _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_ROUTE_35_GOLDENROD_GATEHOUSE, 7, HEAP_ID_FIELD);
-    name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
+    mon = AllocMonZeroed(HEAP_ID_FIELD2);
+    trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD2, TRUE);
+    _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_ROUTE_35_GOLDENROD_GATEHOUSE, 7, HEAP_ID_FIELD2);
+    name = _GetNpcTradeName(HEAP_ID_FIELD2, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));
     mailno = ItemToMailId(trade_dat->heldItem);
     mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
     String_Delete(name);

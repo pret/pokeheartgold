@@ -132,7 +132,7 @@ static void FieldSystem_SetQueuedMGReceived(FieldSystem *fieldSys) {
 BOOL ScrCmd_MysteryGift(ScriptContext *ctx) {
     switch (ScriptReadHalfword(ctx)) {
     case SCR_MG_BEGIN:
-        SaveMGDataPtr_Begin(ctx->fieldSystem->saveData, HEAP_ID_32);
+        SaveMGDataPtr_Begin(ctx->fieldSystem->saveData, HEAP_ID_FIELD3);
         break;
     case SCR_MG_END:
         SaveMGDataPtr_End(ctx->fieldSystem->saveData, FALSE);
@@ -195,7 +195,7 @@ static BOOL MGCheck_PartySpace(FieldSystem *fieldSys, MysteryGiftData *unused) {
 }
 
 static void MGGive_ManaphyEgg(FieldSystem *fieldSys, MysteryGiftData *unused) {
-    GiveEgg(HEAP_ID_32, fieldSys->saveData, SPECIES_MANAPHY, MAPSEC_TWINLEAF_TOWN, MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER));
+    GiveEgg(HEAP_ID_FIELD3, fieldSys->saveData, SPECIES_MANAPHY, MAPSEC_TWINLEAF_TOWN, MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER));
 }
 
 static void MGMessageSuccess_ManaphyEgg(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -281,11 +281,11 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     }
 
     if (mgData->fixedOT == OT_ID_PLAYER_ID) {
-        String *playerName = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
+        String *playerName = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_FIELD3);
         u32 trainerId = PlayerProfile_GetTrainerID(profile);
         BOOL gender = PlayerProfile_GetTrainerGender(profile);
 
-        tmpPokemon = AllocMonZeroed(HEAP_ID_32);
+        tmpPokemon = AllocMonZeroed(HEAP_ID_FIELD3);
 #ifdef UBFIX
         GF_ASSERT(tmpPokemon != NULL);
 #endif
@@ -297,7 +297,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         String_Delete(playerName);
     }
 
-    MonSetTrainerMemo(pokemon, profile, 4, sub_02017FE4(MAPSECTYPE_EXTERNAL, eggMetLocation), HEAP_ID_32);
+    MonSetTrainerMemo(pokemon, profile, 4, sub_02017FE4(MAPSECTYPE_EXTERNAL, eggMetLocation), HEAP_ID_FIELD3);
     if (GetMonData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ARCEUS && GetMonData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE && !Save_VarsFlags_GetVar404C(vars_flags)) {
         Save_VarsFlags_SetVar404C(vars_flags, TRUE);
     }
@@ -338,7 +338,7 @@ static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState *gmmState, u16 *p
 static BOOL MGCheck_Item(FieldSystem *fieldSys, MysteryGiftData *unused) {
     Bag *bag = Save_Bag_Get(fieldSys->saveData);
     u32 *pItem = &FieldSystem_GetDataOfNextMG(fieldSys)->item;
-    return Bag_HasSpaceForItem(bag, *pItem, 1, HEAP_ID_32);
+    return Bag_HasSpaceForItem(bag, *pItem, 1, HEAP_ID_FIELD3);
 }
 
 static void MGGive_Item(FieldSystem *fieldSys, MysteryGiftData *unused) {
@@ -347,7 +347,7 @@ static void MGGive_Item(FieldSystem *fieldSys, MysteryGiftData *unused) {
     if (item == ITEM_ENIGMA_STONE) {
         sub_02066B9C(Save_VarsFlags_Get(fieldSys->saveData), 0);
     }
-    Bag_AddItem(bag, item, 1, HEAP_ID_32);
+    Bag_AddItem(bag, item, 1, HEAP_ID_FIELD3);
 }
 
 static void MGMessageSuccess_Item(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -379,7 +379,7 @@ static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00010;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    String *rulesetName = LinkBattleRuleset_CreateStringFromName(mgData, HEAP_ID_32);
+    String *rulesetName = LinkBattleRuleset_CreateStringFromName(mgData, HEAP_ID_FIELD3);
     BufferString(gmmState->msgFormat, 1, rulesetName, 0, 1, 2);
     String_Delete(rulesetName);
 }
@@ -613,7 +613,7 @@ static void MGMessageFailure_MemorialPhoto(struct GetMysteryGiftGmmState *gmmSta
     Photo *photo = &FieldSystem_GetDataOfNextMG(gmmState->fieldSys)->photo;
     Bag *bag = Save_Bag_Get(gmmState->fieldSys->saveData);
     *pMsgBank = NARC_msg_msg_0209_bin;
-    if (!Bag_HasItem(bag, ITEM_PHOTO_ALBUM, 1, HEAP_ID_FIELD)) {
+    if (!Bag_HasItem(bag, ITEM_PHOTO_ALBUM, 1, HEAP_ID_FIELD2)) {
         *pMsgNum = msg_0209_00024;
     } else {
         *pMsgNum = msg_0209_00025;

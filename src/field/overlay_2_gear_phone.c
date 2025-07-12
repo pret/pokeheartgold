@@ -102,7 +102,7 @@ BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
         return FALSE;
     }
 
-    PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_4);
+    PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_FIELD1);
     u32 var = ov02_022521C0(gearPhone, phoneBook, position->mapId);
     if (var) {
         FreePhoneBook(phoneBook);
@@ -143,8 +143,8 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     Save_PlayerData_GetProfile(gearPhone->saveData);
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
     u32 slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
-    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
-    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_4, slot);
+    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_FIELD1);
+    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, slot);
     MI_CpuFill8(ptr, 0xFF, slot);
     u16 rand = LCRandom() % 1000;
 
@@ -456,7 +456,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_4, 13);
+    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, 13);
     MI_CpuFill8(ptr, 0, 13);
 
     int cnt = 0;

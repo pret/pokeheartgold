@@ -166,7 +166,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set) {
     MI_CpuCopy16(&ov25_02259D9C, set, sizeof(TrainerHouseSet));
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD2);
     GF_ASSERT(messageData);
     if (messageData) {
         String *otName = NewString_ReadMsgData(messageData, msg_0726_00003);
@@ -188,7 +188,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
         if (trainerHouseMon->species == SPECIES_NONE) {
             continue;
         }
-        String *name = GetSpeciesName(trainerHouseMon->species, HEAP_ID_FIELD);
+        String *name = GetSpeciesName(trainerHouseMon->species, HEAP_ID_FIELD2);
         GF_ASSERT(name);
         if (name) {
             u32 length = String_GetLength(name);
@@ -221,13 +221,13 @@ BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
 
 static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, TrainerHouseSet *set) {
     s32 i;
-    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_13);
+    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_13);
     SaveData *saveData = fieldSystem->saveData;
     Party *party = SaveArray_Party_Get(saveData);
     sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);
     setup->battleBg = BATTLE_BG_BUILDING_1;
     setup->terrain = TERRAIN_BUILDING;
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD2);
     s32 partyCount = Party_GetCount(party);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
     for (i = 0; i < partyCount; i++) {
@@ -302,7 +302,7 @@ static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *se
     s32 i;
     TrainerHouse_InitTrainer(set, &setup->trainer[battlerId]);
     setup->trainerId[battlerId] = set->trainer.id;
-    Pokemon *tempMon = AllocMonZeroed(HEAP_ID_FIELD);
+    Pokemon *tempMon = AllocMonZeroed(HEAP_ID_FIELD2);
     Party_InitWithMaxSize(setup->party[battlerId], PARTY_SIZE);
     TrainerHouseMon *trainerHouseMon = set->party;
     for (i = 0; i < PARTY_SIZE; trainerHouseMon++, i++) {

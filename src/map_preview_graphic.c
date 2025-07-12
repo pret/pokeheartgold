@@ -774,7 +774,7 @@ u8 MapPreviewGraphic_GetIndex(u32 mapId) {
 
 void MapPreviewGraphic_BeginShowImage(TaskManager *man, int index, u8 time, int a3) {
     FieldSystem *fsys = TaskManager_GetFieldSystem(man);
-    UnkStruct_0206A388 *unk = Heap_AllocAtEnd(HEAP_ID_4, sizeof(UnkStruct_0206A388));
+    UnkStruct_0206A388 *unk = Heap_AllocAtEnd(HEAP_ID_FIELD1, sizeof(UnkStruct_0206A388));
 
     unk->state = 0;
     unk->displayTimer = 0;
@@ -803,7 +803,7 @@ void MapPreviewGraphic_BeginShowImage(TaskManager *man, int index, u8 time, int 
         break;
     }
 
-    unk->heapId = HEAP_ID_4;
+    unk->heapId = HEAP_ID_FIELD1;
     unk->unk30 = a3;
     unk->unk34.state = 0;
     unk->unk34.unk2 = 0;
