@@ -1370,7 +1370,7 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
     int partySlot = flyMap->partySlot;
     FreeToHeapExplicit(HEAP_ID_FIELD, flyMap);
     PokegearArgs *pokegearArgs = startMenu->exitTaskEnvironment;
-    if (!pokegearArgs->unk_14) {
+    if (!pokegearArgs->setFlyDestination) {
         FreeToHeapExplicit(HEAP_ID_FIELD, pokegearArgs);
         startMenu->exitTaskEnvironment = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->fieldMoveCheckData, partySlot);
         StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);

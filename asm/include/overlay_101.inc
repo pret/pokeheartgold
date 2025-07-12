@@ -264,7 +264,7 @@
 .public Save_VarsFlags_GetVar4057
 .public Save_VarsFlags_SetVar4057
 .public Save_VarsFlags_GetBuenasPasswordSet
-.public sub_02068F98
+.public MapID_GetLandmarkName
 .public DaycareMon_CalcLevelGrowth
 .public Save_Daycare_CalcCompatibility
 .public GetBoxMonData
@@ -275,7 +275,7 @@
 .public PCStorage_GetBoxName
 .public Bag_HasItem
 .public Save_Bag_Get
-.public sub_0208820C
+.public BgConfig_LoadAssetFromOpenNarc
 .public PhoneBookTrainerGetRematchInfo
 .public AllocAndReadPhoneBook
 .public FreePhoneBook
@@ -312,7 +312,7 @@
 .public PokegearApp_CreateSpriteManager
 .public PokegearApp_DestroySpriteManager
 .public ov100_021E6A58
-.public ov100_021E6E20
+.public Pokegear_CreateObjectsManager
 .public ov100_021E6E58
 .public ov100_021E6E84
 .public ov100_021E6EC4

@@ -196,7 +196,7 @@
 .public SafariZone_AddObjectToArea
 .public Save_VarsFlags_Get
 .public ChangeFlag99D
-.public sub_0208820C
+.public BgConfig_LoadAssetFromOpenNarc
 .public sub_02097268
 .public NNS_GfdGetLnkTexVramManagerWorkSize
 .public NNS_GfdGetLnkPlttVramManagerWorkSize

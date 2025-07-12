@@ -3328,7 +3328,7 @@ _021E728A:
 	ldrh r0, [r4, #0x32]
 	ldr r1, [r5]
 	ldr r2, [r5, #0x2c]
-	bl sub_02068F98
+	bl MapID_GetLandmarkName
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #2

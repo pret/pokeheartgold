@@ -2614,7 +2614,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #4
@@ -2629,7 +2629,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #7
@@ -2644,7 +2644,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #5
 	str r0, [sp]
 	mov r0, #3
@@ -2660,7 +2660,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #7
@@ -2675,7 +2675,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #0xa
 	str r0, [sp]
 	mov r0, #2
@@ -2691,7 +2691,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #7
 	str r0, [sp]
 	mov r0, #3
@@ -2707,7 +2707,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #6
@@ -2723,7 +2723,7 @@ ov108_021E6D80: ; 0x021E6D80
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	ldr r0, _021E6F4C ; =0x000184E3
 	ldrb r0, [r5, r0]
 	cmp r0, #0
@@ -2748,7 +2748,7 @@ _021E6EA6:
 	ldr r1, [r5]
 	add r2, r4, #0
 	mov r3, #0xa6
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	ldr r0, [r5]
 	ldr r3, _021E6F50 ; =0x000004D8
 	str r0, [sp]

@@ -148,7 +148,7 @@ typedef enum NarcId {
     NARC_fielddata_tsurepoke_tp_param = 141,
     NARC_a_1_4_2 = 142,
     NARC_a_1_4_3 = 143,
-    NARC_a_1_4_4 = 144,
+    NARC_application_pokegear_map_pgmap_gra = 144,
     NARC_a_1_4_5 = 145,
     NARC_a_1_4_6 = 146,
     NARC_a_1_4_7 = 147,

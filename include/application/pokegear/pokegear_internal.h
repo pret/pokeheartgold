@@ -28,6 +28,31 @@ typedef enum PokegearReturnCode {
     GEAR_RETURN_8,
 } PokegearReturnCode;
 
+typedef struct Coord2S16 {
+    s16 x;
+    s16 y;
+} Coord2S16;
+
+typedef struct PokegearUnkSub03C {
+    u8 unk_00;
+    u8 unk_01;
+    u16 index;
+    u8 unk_04;
+    u8 unk_05;
+    u8 unk_06;
+    u8 unk_07;
+    u16 unk_08;
+    u16 unk_0A;
+    s16 unk_0C;
+    s16 unk_0E;
+    s16 unk_10;
+    s16 unk_12;
+    s16 unk_14;
+    s16 unk_16;
+    u16 mapID;
+    u16 word;
+} PokegearUnkSub03C; // size: 0x1C
+
 typedef struct PokegearAppSwitchButtonSpec {
     u16 appId;
     u8 buttonLeft;
@@ -45,6 +70,7 @@ typedef struct PokegearAppSwitchButtonSpec {
 typedef union PokegearSpriteUnion {
     ManagedSprite *managed;
     Sprite *sprite;
+    void *undisclosed;
 } PokegearSpriteUnion;
 
 typedef struct PokegearAppSwitchButton {
@@ -66,35 +92,41 @@ typedef struct PokegearAppSwitch {
     PokegearAppSwitchButton *lastButton;
 } PokegearAppSwitch;
 
-typedef struct UnkStruct_ov100_021E6E20_Sub8 {
-    u8 unk_00;
-    u8 unk_01;
-    u16 unk_02;
-    s16 unk_04;
-    s16 unk_06;
-    u8 filler_08[0x18];
-    Sprite *sprite;
-    u8 filler_24[0x4];
-} UnkStruct_ov100_021E6E20_Sub8;
+typedef struct PokegearManagedObject {
+    u8 unk_00;         // 0x00
+    u8 unk_01;         // 0x01
+    u16 unk_02;        // 0x02
+    Coord2S16 pos;     // 0x04
+    s16 unk_08;        // 0x08
+    s16 unk_0A;        // 0x0A
+    u16 unk_0C;        // 0x0C
+    u16 unk_0E;        // 0x0E
+    fx32 unk_10;       // 0x10
+    fx32 unk_14;       // 0x14
+    fx32 unk_18;       // 0x18
+    fx32 unk_1C;       // 0x1C
+    Sprite *sprite;    // 0x20
+    u8 filler_24[0x4]; // 0x24
+} PokegearManagedObject;
 
-typedef struct UnkStruct_ov100_021E6E20 {
+typedef struct PokegearObjectsManager {
     u16 max;
     u16 num;
-    u8 *unk_04; // char buffer?
-    UnkStruct_ov100_021E6E20_Sub8 *unk_08;
-} UnkStruct_ov100_021E6E20;
+    u8 filler_4[4];
+    PokegearManagedObject *objects;
+} PokegearObjectsManager;
 
 typedef struct PokegearApp_UnkSub094 {
     HeapID heapId;
     int unk_004;
-    u16 unk_008;
+    u16 unk_008; // unused
     u16 unk_00A;
     u16 unk_00C;
     u16 unk_00E;
     SpriteList *spriteList;
-    G2dRenderer unk_014;
+    G2dRenderer renderer;
     u8 filler_13C[4];
-    GF_2DGfxResMan *unk_140[4];
+    GF_2DGfxResMan *resourceManagers[4];
     GF_2DGfxResObjList *spriteResources[4];
 } PokegearApp_UnkSub094; // size: 0x160
 
@@ -106,7 +138,7 @@ struct PokegearAppData {
     u8 isSwitchApp : 1;                         // 0x005
     u8 cursorInAppSwitchZone;                   // 0x006
     u8 unk_007;                                 // 0x007
-    u8 unk_008;                                 // 0x008
+    u8 backgroundStyle;                         // 0x008
     u8 fadeCounter;                             // 0x009
     MenuInputState menuInputState;              // 0x00C
     MenuInputState menuInputStateBak;           // 0x010
@@ -120,8 +152,8 @@ struct PokegearAppData {
     Options *options;                           // 0x030
     PlayerProfile *profile;                     // 0x034
     u8 unk_038;                                 // 0x038
-    u8 filler_039[0x1D];                        // 0x039
-    u16 unk_056;                                // 0x056
+    u8 filler_039[3];                           // 0x039
+    PokegearUnkSub03C unk_03C;                  // 0x03C
     void (*unk_058)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);              // 0x05C
     void (*unknownCB)(void *);                  // 0x060
@@ -136,7 +168,7 @@ struct PokegearAppData {
     SpriteSystem *spriteSystem;                 // 0x08C
     SpriteManager *spriteManager;               // 0x090
     PokegearApp_UnkSub094 *unk_094;             // 0x094
-    PokegearSpriteUnion unk_098[11];            // 0x098
+    ManagedSprite *uiSprites[11];               // 0x098
     u16 *unk_0C4;                               // 0x0C4
     NNSG2dScreenData *unk_0C8;                  // 0x0C8
 }; // size: 0xCC
@@ -166,7 +198,7 @@ void PokegearApp_VBlankCB(void *cb_args);
 
 void ov100_021E6914(PokegearAppData *pokegearApp);
 void ov100_021E6950(PokegearAppData *pokegearApp);
-void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int a1);
+void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet);
 void PokegearApp_DestroySpriteManager(PokegearAppData *pokegearApp);
 void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
@@ -176,16 +208,16 @@ void ov100_021E6AB0(PokegearApp_UnkSub094 *a0);
 ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(ManagedSprite *a0);
 
-UnkStruct_ov100_021E6E20 *ov100_021E6E20(int a1, HeapID heapId);
-void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0);
-void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0);
-u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *a1);
-void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0);
-void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 a1);
+PokegearObjectsManager *PokegearObjectsManager_Create(int count, HeapID heapId);
+void PokegearObjectsManager_Release(PokegearObjectsManager *a0);
+void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *a0);
+u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *a0, Sprite *sprite);
+void PokegearObjectsManager_Reset(PokegearObjectsManager *a0);
+void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *a0, u8 a1);
 
 PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId);
 void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
-u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4);
+u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
 BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 a1);
 u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *appSwitch, u16 index, BOOL draw);
 u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16 index, u8 cursorPos);
@@ -194,5 +226,39 @@ u8 PokegearAppSwitch_GetSpecCursorPos(PokegearAppSwitch *appSwitch, u16 index);
 u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 move);
 u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex);
 void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active);
+
+static inline void PokegearManagedObject_SetCoordUpdateSprite(PokegearManagedObject *obj, s16 x, s16 y) {
+    obj->pos.x = x;
+    obj->pos.y = y;
+    Sprite_SetPositionXY(obj->sprite, obj->pos.x, obj->pos.y);
+}
+
+static inline void PokegearManagedObject_SetCoord(PokegearManagedObject *obj, s16 x, s16 y) {
+    obj->pos.x = x;
+    obj->pos.y = y;
+}
+
+static inline void PokegearManagedObject_SetCoord2(PokegearManagedObject *obj, s16 x, s16 y) {
+    obj->unk_0C = x;
+    obj->unk_0E = y;
+}
+
+static inline void PokegearManagedObject_AddCoord(PokegearManagedObject *obj, s16 x, s16 y) {
+    obj->pos.x += x;
+    obj->pos.y += y;
+}
+
+static inline void PokegearManagedObject_SetUnk01(PokegearManagedObject *obj, BOOL a1) {
+    obj->unk_01 = a1;
+}
+
+static inline void PokegearManagedObject_SetFixCoords(PokegearManagedObject *obj, s16 x, s16 y) {
+    obj->unk_10 = FX32_CONST(x);
+    obj->unk_14 = FX32_CONST(y);
+}
+
+static inline void PokegearManagedObject_SetPriority(PokegearManagedObject *obj, int priority) {
+    thunk_Sprite_SetDrawPriority(obj->sprite, priority);
+}
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_POKEGEAR_INTERNAL_H
