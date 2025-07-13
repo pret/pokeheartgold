@@ -194,7 +194,7 @@ ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 x, u8 y, u8 z, u8 pr
     }
     SetVecFx32(spriteTemplate.scale, FX32_ONE, FX32_ONE, FX32_ONE);
     spriteTemplate.rotation = 0;
-    spriteTemplate.priority = drawPriority;
+    spriteTemplate.drawPriority = drawPriority;
     spriteTemplate.whichScreen = vramType;
     spriteTemplate.heapId = a0->heapId;
     ret->sprite = Sprite_CreateAffine(&spriteTemplate);
@@ -289,7 +289,7 @@ void PokegearObjectsManager_Release(PokegearObjectsManager *mgr) {
 
 void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *mgr) {
     for (u16 i = 0; i < mgr->num; ++i) {
-        if (mgr->objects[i].unk_00 != 0 && mgr->objects[i].unk_02 == 0) {
+        if (mgr->objects[i].active != 0 && mgr->objects[i].autoUpdateDisabled == 0) {
             Sprite_SetPositionXY(mgr->objects[i].sprite, mgr->objects[i].pos.x, mgr->objects[i].pos.y);
         }
     }
@@ -300,10 +300,10 @@ u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *spr
         return 0xFFFF;
     }
 
-    PokegearManagedObject *ptr = &mgr->objects[mgr->num];
-    ptr->sprite = sprite;
-    ptr->unk_00 = 1;
-    ptr->unk_01 = 1;
+    PokegearManagedObject *obj = &mgr->objects[mgr->num];
+    obj->sprite = sprite;
+    obj->active = 1;
+    obj->unk_01 = 1;
     return mgr->num++;
 }
 

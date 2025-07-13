@@ -27,7 +27,7 @@ static const ManagedSpriteTemplate ov12_0226EBA0 = {
     .y = 0,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0,
+    .drawPriority = 0,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
     .resIdList = { 0, 0, 0, 0, -1, -1 },
@@ -45,7 +45,7 @@ BattleCursor *BattleCursor_New(SpriteSystem *renderer, SpriteManager *gfxHandler
     unkStruct.resIdList[1] = pal;
     unkStruct.resIdList[2] = cell;
     unkStruct.resIdList[3] = animation;
-    unkStruct.spritePriority = a7;
+    unkStruct.drawPriority = a7;
     unkStruct.bgPriority = a8;
 
     cursor = AllocFromHeap(heapId, sizeof(BattleCursor));

@@ -1001,14 +1001,14 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
     unkStruct.x = (index + 1) * 27;
     switch (sub->growthStage) {
     case BERRY_POT_GROWTH_STAGE_PLANTED:
-        unkStruct.animSeqNo = 5;
+        unkStruct.animation = 5;
         break;
     case BERRY_POT_GROWTH_STAGE_SPROUTED:
-        unkStruct.animSeqNo = 6;
+        unkStruct.animation = 6;
         break;
     default:
         unkStruct.resourceSet = index + 1;
-        unkStruct.animSeqNo = sub->growthStage - 3;
+        unkStruct.animation = sub->growthStage - 3;
         break;
     }
 

@@ -37,8 +37,8 @@ BOOL TownMap_Init(OverlayManager *man, int *state) {
     mapApp->pokegear->options = Save_PlayerData_GetOptionsAddr(mapApp->pokegear->saveData);
     mapApp->pokegear->profile = Save_PlayerData_GetProfile(mapApp->pokegear->saveData);
     ov101_021ED980(mapApp);
-    mapApp->unk_214 = ov101_021F7372;
-    mapApp->unk_136 = 100;
+    mapApp->locationSpecs = sLocationSpecs;
+    mapApp->numLocationSpecs = 100;
     return TRUE;
 }
 
@@ -107,19 +107,19 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->matrixY = mapApp->pokegear->args->matrixYCoord + 2;
     mapApp->mapID = mapApp->pokegear->args->mapID;
     mapApp->playerGender = mapApp->pokegear->args->playerGender;
-    mapApp->matrixX_2 = mapApp->pokegear->args->matrixXCoord;
-    mapApp->matrixY_2 = mapApp->pokegear->args->matrixYCoord + 2;
+    mapApp->cursorX = mapApp->pokegear->args->matrixXCoord;
+    mapApp->cursorY = mapApp->pokegear->args->matrixYCoord + 2;
     mapApp->minXscroll = 1;
     mapApp->minYscroll = 1;
     mapApp->maxXscroll = ov101_021F7F3C[mapApp->mapUnlockLevel];
-    mapApp->maxYscroll = 0x11;
-    mapApp->unk_132 = 0x20;
+    mapApp->maxYscroll = 17;
+    mapApp->unk_132 = 32;
     mapApp->unk_131 = 8;
     mapApp->unk_133 = 0;
     mapApp->unk_134 = -24;
     mapApp->canSeeSafariZone = TRUE;
     mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
-    mapApp->unk_00E = ov100_021E5C80(mapApp->pokegear);
+    mapApp->curRegion = ov100_021E5C80(mapApp->pokegear);
 }
 
 void ov101_021EDAF8(PokegearMapAppData *mapApp) {
@@ -181,7 +181,7 @@ int ov101_021EDBD4(PokegearMapAppData *mapApp) {
     if (!ov101_021EDDB0(mapApp)) {
         return 2;
     }
-    mapApp->pokegear->unk_03C = mapApp->unk_014;
+    mapApp->pokegear->unk_03C = mapApp->sessionState;
     return 13;
 }
 

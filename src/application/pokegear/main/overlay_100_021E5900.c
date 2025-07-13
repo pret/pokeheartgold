@@ -156,22 +156,24 @@ BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1) {
     return TRUE;
 }
 
-int ov100_021E5C50(u16 x, u16 y) {
+PokegearRegion Pokegear_Coords2Region(u16 x, u16 y) {
     if (x > 21) {
         if (x == 25 && y == 8) {
-            return 2;
+            // Mt. Silver
+            return POKEGEAR_REGION_JOHTO;
         } else if ((x == 28 && y == 6) || (x == 28 && y > 8 && y < 13)) {
-            return 1;
+            // Indigo Plateau or Victory Road
+            return POKEGEAR_REGION_INDIGO;
         } else {
-            return 0;
+            return POKEGEAR_REGION_KANTO;
         }
     }
 
-    return 2;
+    return POKEGEAR_REGION_JOHTO;
 }
 
 int ov100_021E5C80(PokegearAppData *pokegearApp) {
-    return ov100_021E5C50(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
+    return Pokegear_Coords2Region(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
 }
 
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp) {

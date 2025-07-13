@@ -12,7 +12,7 @@ typedef struct UnkTemplate_02013950 {
     Window *window;
     SpriteList *spriteList;
     NNSG2dImagePaletteProxy *plttResourceProxy;
-    Sprite *unk_10;
+    Sprite *sprite;
     u32 unk_14;
     int unk_18;
     int unk_1C;

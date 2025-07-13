@@ -1832,7 +1832,7 @@ static ManagedSprite *ov122_021E7C9C(SpriteSystem *a0, SpriteManager *a1, u16 a2
     temp1.x = a2;
     temp1.y = a3;
     temp1.animation = a4;
-    temp1.spritePriority = a5;
+    temp1.drawPriority = a5;
 
     ManagedSprite *var1 = SpriteSystem_NewSpriteWithYOffset(a0, a1, &temp1, 0x20c000);
     ManagedSprite_SetAnimateFlag(var1, 1);
@@ -1849,7 +1849,7 @@ static ManagedSprite *ov122_021E7D04(SpriteSystem *a0, SpriteManager *a1, u16 a2
     temp1.x = a2;
     temp1.y = a3;
     temp1.animation = a4;
-    temp1.spritePriority = a5;
+    temp1.drawPriority = a5;
 
     ManagedSprite *var1 = SpriteSystem_NewSpriteWithYOffset(a0, a1, &temp1, 0x20c000);
     ManagedSprite_SetAnimateFlag(var1, 1);

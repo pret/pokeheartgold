@@ -648,7 +648,7 @@ static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewRankingsAppDat
     spriteTemplate->position.z = 0;
     SetVecFx32(spriteTemplate->scale, FX32_ONE, FX32_ONE, FX32_ONE);
     spriteTemplate->rotation = 0;
-    spriteTemplate->priority = 0;
+    spriteTemplate->drawPriority = 0;
     spriteTemplate->whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
     spriteTemplate->heapId = HEAP_ID_RANKINGS_APP;
 }

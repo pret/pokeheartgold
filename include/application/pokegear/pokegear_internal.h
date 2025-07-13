@@ -33,7 +33,8 @@ typedef struct Coord2S16 {
     s16 y;
 } Coord2S16;
 
-typedef struct PokegearUnkSub03C {
+// Used to save state when
+typedef struct PokegearMapSessionState {
     u8 unk_00;
     u8 unk_01;
     u16 index;
@@ -41,17 +42,17 @@ typedef struct PokegearUnkSub03C {
     u8 unk_05;
     u8 unk_06;
     u8 unk_07;
-    u16 unk_08;
-    u16 unk_0A;
-    s16 unk_0C;
-    s16 unk_0E;
+    u16 playerX;
+    u16 playerY;
+    s16 cursorX;
+    s16 cursorY;
     s16 unk_10;
     s16 unk_12;
     s16 unk_14;
     s16 unk_16;
     u16 mapID;
     u16 word;
-} PokegearUnkSub03C; // size: 0x1C
+} PokegearMapSessionState; // size: 0x1C
 
 typedef struct PokegearAppSwitchButtonSpec {
     u16 appId;
@@ -93,20 +94,20 @@ typedef struct PokegearAppSwitch {
 } PokegearAppSwitch;
 
 typedef struct PokegearManagedObject {
-    u8 unk_00;         // 0x00
-    u8 unk_01;         // 0x01
-    u16 unk_02;        // 0x02
-    Coord2S16 pos;     // 0x04
-    s16 unk_08;        // 0x08
-    s16 unk_0A;        // 0x0A
-    u16 unk_0C;        // 0x0C
-    u16 unk_0E;        // 0x0E
-    fx32 unk_10;       // 0x10
-    fx32 unk_14;       // 0x14
-    fx32 unk_18;       // 0x18
-    fx32 unk_1C;       // 0x1C
-    Sprite *sprite;    // 0x20
-    u8 filler_24[0x4]; // 0x24
+    u8 active;              // 0x00
+    u8 unk_01;              // 0x01
+    u16 autoUpdateDisabled; // 0x02
+    Coord2S16 pos;          // 0x04
+    s16 destX;              // 0x08
+    s16 destY;              // 0x0A
+    u16 unk_0C;             // 0x0C
+    u16 unk_0E;             // 0x0E
+    fx32 unk_10;            // 0x10
+    fx32 unk_14;            // 0x14
+    fx32 unk_18;            // 0x18
+    fx32 unk_1C;            // 0x1C
+    Sprite *sprite;         // 0x20
+    u8 filler_24[0x4];      // 0x24
 } PokegearManagedObject;
 
 typedef struct PokegearObjectsManager {
@@ -153,7 +154,7 @@ struct PokegearAppData {
     PlayerProfile *profile;                     // 0x034
     u8 unk_038;                                 // 0x038
     u8 filler_039[3];                           // 0x039
-    PokegearUnkSub03C unk_03C;                  // 0x03C
+    PokegearMapSessionState unk_03C;            // 0x03C
     void (*unk_058)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);              // 0x05C
     void (*unknownCB)(void *);                  // 0x060
@@ -180,7 +181,13 @@ typedef struct PhoneCallScriptDef {
     u16 param1;
 } PhoneCallScriptDef;
 
-int ov100_021E5C50(u16 a0, u16 a1);
+typedef enum PokegearRegion {
+    POKEGEAR_REGION_KANTO,
+    POKEGEAR_REGION_INDIGO,
+    POKEGEAR_REGION_JOHTO,
+} PokegearRegion;
+
+PokegearRegion Pokegear_Coords2Region(u16 x, u16 y);
 int ov100_021E5C80(PokegearAppData *pokegearApp);
 BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp);
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
@@ -209,11 +216,11 @@ ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8
 void ov100_021E6C44(ManagedSprite *a0);
 
 PokegearObjectsManager *PokegearObjectsManager_Create(int count, HeapID heapId);
-void PokegearObjectsManager_Release(PokegearObjectsManager *a0);
-void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *a0);
-u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *a0, Sprite *sprite);
-void PokegearObjectsManager_Reset(PokegearObjectsManager *a0);
-void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *a0, u8 a1);
+void PokegearObjectsManager_Release(PokegearObjectsManager *mgr);
+void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *mgr);
+u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *sprite);
+void PokegearObjectsManager_Reset(PokegearObjectsManager *mgr);
+void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 a1);
 
 PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId);
 void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
