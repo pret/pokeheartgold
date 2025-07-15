@@ -33,9 +33,9 @@ void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
 void PokegearMap_LoadSprites(PokegearMapAppData *mapApp);
 void PokegearMap_RemoveAuxSprites_MapMode(PokegearMapAppData *mapApp);
 void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp);
-void ov101_021E8E58(PokegearMapAppData *mapApp);
-void ov101_021E90A8(PokegearMapAppData *mapApp);
-void ov101_021E9264(PokegearMapAppData *mapApp, int a1);
+void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp);
+void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp);
+void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1);
 
 BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
@@ -54,9 +54,9 @@ BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp) {
         break;
     case 3:
         if (mapApp->inMarkingsMode == 1) {
-            ov101_021E90A8(mapApp);
+            PokegearMap_SetBgParam_MarkingsMode(mapApp);
         } else {
-            ov101_021E8E58(mapApp);
+            PokegearMap_SetBgParam_MapMide(mapApp);
         }
         mapApp->pokegear->vblankCB = PokegearMap_VBlankCB;
         mapApp->substate = 0;
@@ -82,13 +82,13 @@ BOOL PokegearMaps_GraphicsDeinit(PokegearMapAppData *mapApp) {
     return TRUE;
 }
 
-BOOL ov101_021E80B4(PokegearMapAppData *mapApp) {
+BOOL PokegearMap_AnimateSwitchToMarkingMode(PokegearMapAppData *mapApp) {
     BOOL plttFadeFinished;
     BOOL bgScrollFinished;
 
     switch (mapApp->substate) {
     case 0:
-        ov101_021E933C(mapApp);
+        PokegearMap_SaveState(mapApp);
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 1);
         BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 6, 1, mapApp->heapId);
         break;
@@ -101,8 +101,8 @@ BOOL ov101_021E80B4(PokegearMapAppData *mapApp) {
         PokegearMap_RemoveAuxSprites_MapMode(mapApp);
         break;
     case 2:
-        ov101_021E9264(mapApp, 1);
-        ov101_021E90A8(mapApp);
+        ov101_021E9264(mapApp, TRUE);
+        PokegearMap_SetBgParam_MarkingsMode(mapApp);
         BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
         PokegearMap_BeginScrollMarkingsPanelBottomScreen(mapApp, 0);
         break;
@@ -124,9 +124,9 @@ BOOL ov101_021E80B4(PokegearMapAppData *mapApp) {
     return FALSE;
 }
 
-BOOL ov101_021E818C(PokegearMapAppData *mapApp) {
-    BOOL r5;
-    BOOL r0;
+BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp) {
+    BOOL plttFadeFinished;
+    BOOL bgScrollFinished;
 
     switch (mapApp->substate) {
     case 0:
@@ -147,15 +147,15 @@ BOOL ov101_021E818C(PokegearMapAppData *mapApp) {
         PokegearMap_RemoveAuxSprites_MarkingsMode(mapApp);
         break;
     case 3:
-        ov101_021E9264(mapApp, 0);
-        ov101_021E8E58(mapApp);
+        ov101_021E9264(mapApp, FALSE);
+        PokegearMap_SetBgParam_MapMide(mapApp);
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 0);
         BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
         break;
     case 4:
-        r5 = IsPaletteFadeFinished();
-        r0 = PokegearMap_RunScrollMarkingsPanelTopScreen(mapApp, 0);
-        if (!r5 || !r0) {
+        plttFadeFinished = IsPaletteFadeFinished();
+        bgScrollFinished = PokegearMap_RunScrollMarkingsPanelTopScreen(mapApp, 0);
+        if (!plttFadeFinished || !bgScrollFinished) {
             return FALSE;
         }
         mapApp->substate = 0;
@@ -1045,7 +1045,7 @@ void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp) {
     PokegearObjectsManager_Reset(mapApp->objManager);
 }
 
-void ov101_021E8E58(PokegearMapAppData *mapApp) {
+void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     int i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
@@ -1067,17 +1067,17 @@ void ov101_021E8E58(PokegearMapAppData *mapApp) {
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, 0);
     }
 
-    mapApp->pokegear->reselectAppCB = ov101_021EB338;
-    mapApp->pokegear->unknownCB = ov101_021EB2FC;
+    mapApp->pokegear->reselectAppCB = PokegearMap_ShowMapCursor;
+    mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
     ov101_021E990C(mapApp);
-    ov101_021E9B70(mapApp, &mapApp->unk_0C8);
+    ov101_021E9B70(mapApp, &mapApp->cursorSpriteState);
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->unk_178->rawData, 0, 0, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
 
     ov101_021EAF40(mapApp);
     ov101_021EB38C(mapApp, 1, mapApp->zoomed);
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->unk_16C->rawData, 0, 7, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
 
-    ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+    ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
     ov101_021EAD90(mapApp, 0);
     ov101_021EB1E0(mapApp, 1);
     PokegearMap_LoadMapHasMarkingsIndicatorSprites(mapApp);
@@ -1103,7 +1103,7 @@ void ov101_021E8E58(PokegearMapAppData *mapApp) {
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
 
-void ov101_021E90A8(PokegearMapAppData *mapApp) {
+void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
     int i;
 
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
@@ -1145,11 +1145,11 @@ void ov101_021E90A8(PokegearMapAppData *mapApp) {
     ov101_021EAE54(mapApp, 1);
     mapApp->draggingType = 0;
     mapApp->unk_13C_7 = FALSE;
-    mapApp->pokegear->reselectAppCB = ov101_021EB378;
-    mapApp->pokegear->unknownCB = ov101_021EB364;
+    mapApp->pokegear->reselectAppCB = PokegearMap_InMarkingsMode_ShowCursor;
+    mapApp->pokegear->deselectAppCB = PokegearMap_InMarkingsMode_HideCursor;
 }
 
-void ov101_021E9264(PokegearMapAppData *mapApp, int a1) {
+void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1) {
     if (!a1) {
         mapApp->sessionState.index = 0;
         mapApp->inMarkingsMode = 0;

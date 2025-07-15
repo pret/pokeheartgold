@@ -35,21 +35,21 @@ typedef struct Coord2S16 {
 
 // Used to save state when
 typedef struct PokegearMapSessionState {
-    u8 unk_00;
-    u8 unk_01;
+    u8 active;
+    u8 zoomed;
     u16 index;
-    u8 unk_04;
-    u8 unk_05;
-    u8 unk_06;
-    u8 unk_07;
+    u8 cursorTop;
+    u8 cursorBottom;
+    u8 cursorLeft;
+    u8 cursorRight;
     u16 playerX;
     u16 playerY;
+    s16 cursorSpriteX;
+    s16 cursorSpriteY;
+    s16 cursorAffineX;
+    s16 cursorAffineY;
     s16 cursorX;
     s16 cursorY;
-    s16 unk_10;
-    s16 unk_12;
-    s16 unk_14;
-    s16 unk_16;
     u16 mapID;
     u16 word;
 } PokegearMapSessionState; // size: 0x1C
@@ -157,7 +157,7 @@ struct PokegearAppData {
     PokegearMapSessionState unk_03C;             // 0x03C
     void (*vblankCB)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);               // 0x05C
-    void (*unknownCB)(void *);                   // 0x060
+    void (*deselectAppCB)(void *);               // 0x060
     void *childAppdata;                          // 0x064
     u8 filler_068[0x4];                          // 0x068
     EasyChatArgs *easyChatArgs;                  // 0x06C

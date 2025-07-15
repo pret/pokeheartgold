@@ -32,7 +32,7 @@ int ov101_021EB568(PokegearMapAppData *mapApp) {
         mapApp->pokegear->cursorInAppSwitchZone = TRUE;
         PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
         PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, ov100_021E5DC8(mapApp->pokegear));
-        ov101_021EB2D8(mapApp);
+        PokegearMap_HideMapCursor(mapApp);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return -1;
     }
@@ -60,7 +60,7 @@ int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
         ret = ov101_021EBA44(mapApp, pRetIsTouch);
         if (*pRetIsTouch && mapApp->pokegear->cursorInAppSwitchZone == TRUE) {
             mapApp->pokegear->cursorInAppSwitchZone = FALSE;
-            ov101_021EB2FC(mapApp);
+            PokegearMap_DeselectApp(mapApp);
         }
         if (ret == 7) {
             return ret;
@@ -79,27 +79,27 @@ BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
     PokegearManagedObject *object = &mapApp->objManager->objects[PGMAP_SPRITE_CURSOR];
 
     if (heldKeys & PAD_KEY_UP) {
-        if (mapApp->cursorY > mapApp->minYscroll + 1) {
-            --mapApp->cursorY;
+        if (mapApp->playerY > mapApp->minYscroll + 1) {
+            --mapApp->playerY;
             mapApp->moveCursorDirection |= 1;
             flag = 1;
         }
     } else if (heldKeys & PAD_KEY_DOWN) {
-        if (mapApp->cursorY < mapApp->maxYscroll) {
-            ++mapApp->cursorY;
+        if (mapApp->playerY < mapApp->maxYscroll) {
+            ++mapApp->playerY;
             mapApp->moveCursorDirection |= 2;
             flag = 1;
         }
     }
     if (heldKeys & PAD_KEY_LEFT) {
-        if (mapApp->cursorX > mapApp->minXscroll + 1) {
-            --mapApp->cursorX;
+        if (mapApp->playerX > mapApp->minXscroll + 1) {
+            --mapApp->playerX;
             mapApp->moveCursorDirection |= 4;
             flag = 1;
         }
     } else if (heldKeys & PAD_KEY_RIGHT) {
-        if (mapApp->cursorX < mapApp->maxXscroll - 1) {
-            ++mapApp->cursorX;
+        if (mapApp->playerX < mapApp->maxXscroll - 1) {
+            ++mapApp->playerX;
             mapApp->moveCursorDirection |= 8;
             flag = 1;
         }
@@ -123,15 +123,15 @@ int ov101_021EB784(PokegearMapAppData *mapApp, int a1) {
     }
     mapApp->pokegear->appReturnCode = GEAR_RETURN_5;
     mapApp->pokegear->args->unk_20 = a1;
-    mapApp->pokegear->args->mapCursorX = mapApp->cursorX;
-    mapApp->pokegear->args->mapCursorY = mapApp->cursorY - 2;
+    mapApp->pokegear->args->mapCursorX = mapApp->playerX;
+    mapApp->pokegear->args->mapCursorY = mapApp->playerY - 2;
     if (mapApp->pokegear->menuInputState == MENU_INPUT_STATE_TOUCH) {
         ov101_021E9464(mapApp, gSystem.touchX, gSystem.touchY, &x, &y);
     } else {
         ov101_021E9464(mapApp, mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].pos.x, mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].pos.y, &x, &y);
     }
-    ov101_021EB4C4(mapApp, mapApp->selectedMap.locationSpec->mapId);
-    ov101_021EB428(mapApp, x);
+    PokegearMap_PrintLandmarkNameAndFlavorText(mapApp, mapApp->selectedMap.locationSpec->mapId);
+    PokegearMap_SpawnFlyContextMenu(mapApp, x);
     return 8;
 }
 
@@ -143,7 +143,7 @@ int ov101_021EB818(PokegearMapAppData *mapApp) {
     if (newKeys & PAD_BUTTON_X) {
         mapApp->zoomed ^= 1;
         mapApp->cursorSpeed = 4;
-        ov101_021EC49C(mapApp, mapApp->cursorX, mapApp->cursorY, &mapApp->unk_0C8.affineX, &mapApp->unk_0C8.affineY);
+        ov101_021EC49C(mapApp, mapApp->playerX, mapApp->playerY, &mapApp->cursorSpriteState.affineX, &mapApp->cursorSpriteState.affineY);
         mapApp->draggingMarking = 1;
         mapApp->unk_139_1 = 1;
         ov101_021EB38C(mapApp, 1, mapApp->zoomed);
@@ -163,7 +163,7 @@ int ov101_021EB818(PokegearMapAppData *mapApp) {
         return 7;
     }
     if (ov101_021EB654(mapApp)) {
-        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 0);
         ov101_021EB1E0(mapApp, 1);
     }
@@ -179,7 +179,7 @@ int ov101_021EB94C(PokegearMapAppData *mapApp) {
     }
     if (newKeys & PAD_BUTTON_A) {
         if (mapApp->unk_00D == 1) {
-            r5 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->cursorX, mapApp->cursorY - 2);
+            r5 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->playerX, mapApp->playerY - 2);
             if (r5 > 0) {
                 PlaySE(SEQ_SE_GS_GEARDECIDE);
                 return ov101_021EB784(mapApp, r5);
@@ -196,11 +196,11 @@ int ov101_021EB94C(PokegearMapAppData *mapApp) {
         return -1;
     }
     if (mapApp->unk_00D == 2) {
-        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 1);
         ov101_021EB1E0(mapApp, 1);
     } else {
-        ov101_021EA8A8(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+        ov101_021EA8A8(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 0);
         ov101_021EB1E0(mapApp, 1);
     }
@@ -242,7 +242,7 @@ int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
         } else {
             mapApp->zoomed ^= 1;
             mapApp->cursorSpeed = 4;
-            ov101_021EC49C(mapApp, mapApp->cursorX, mapApp->cursorY, &mapApp->unk_0C8.affineX, &mapApp->unk_0C8.affineY);
+            ov101_021EC49C(mapApp, mapApp->playerX, mapApp->playerY, &mapApp->cursorSpriteState.affineX, &mapApp->cursorSpriteState.affineY);
             mapApp->draggingMarking = 1;
             mapApp->unk_139_1 = 1;
             ov101_021EB38C(mapApp, 1, mapApp->zoomed);
@@ -262,8 +262,8 @@ int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
         return -1;
     }
     PlaySE(SEQ_SE_GS_GEARMAPTOUCH);
-    ov101_021EC980(mapApp, &mapApp->cursorX, &mapApp->cursorY);
-    ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+    ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
+    ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
     ov101_021EAD90(mapApp, 0);
     ov101_021EB1E0(mapApp, 1);
     mapApp->unk_146 = mapApp->unk_142 = gSystem.touchX;
@@ -309,16 +309,16 @@ int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     PlaySE(SEQ_SE_GS_GEARMAPTOUCH);
     *pRetIsTouch = TRUE;
     if (mapApp->unk_00D == 2) {
-        ov101_021EC980(mapApp, &mapApp->cursorX, &mapApp->cursorY);
-        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+        ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
+        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 1);
         ov101_021EB1E0(mapApp, 1);
     } else {
-        ov101_021EC980(mapApp, &mapApp->cursorX, &mapApp->cursorY);
-        ov101_021EA8A8(mapApp, &mapApp->selectedMap, mapApp->cursorX, mapApp->cursorY);
+        ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
+        ov101_021EA8A8(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 0);
         ov101_021EB1E0(mapApp, 1);
-        r4 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->cursorX, mapApp->cursorY - 2);
+        r4 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->playerX, mapApp->playerY - 2);
         if (r4 > 0) {
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             return ov101_021EB784(mapApp, r4);
@@ -370,10 +370,10 @@ BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
     xTile = x / grid;
     yTile = y / grid;
 
-    y0 = mapApp->cursorY - yTile;
-    y1 = mapApp->cursorY + (height - 1 - yTile);
-    x0 = mapApp->cursorX - xTile;
-    x1 = mapApp->cursorX + (width - 1 - xTile);
+    y0 = mapApp->playerY - yTile;
+    y1 = mapApp->playerY + (height - 1 - yTile);
+    x0 = mapApp->playerX - xTile;
+    x1 = mapApp->playerX + (width - 1 - xTile);
 
     if (y0 < mapApp->minYscroll) {
         y0 = mapApp->minYscroll;
@@ -388,10 +388,10 @@ BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
         x1 = mapApp->maxXscroll;
     }
 
-    pixelTop = (mapApp->cursorY - y0) * grid + yPixel;
-    pixelLeft = (mapApp->cursorX - x0) * grid + xPixel;
-    pixelBottom = (y1 - mapApp->cursorY) * grid + yPixel;
-    pixelRight = (x1 - mapApp->cursorX) * grid + xPixel;
+    pixelTop = (mapApp->playerY - y0) * grid + yPixel;
+    pixelLeft = (mapApp->playerX - x0) * grid + xPixel;
+    pixelBottom = (y1 - mapApp->playerY) * grid + yPixel;
+    pixelRight = (x1 - mapApp->playerX) * grid + xPixel;
 
     mapApp->unk_14A = pixelTop;
     mapApp->unk_14C = pixelBottom;
@@ -405,18 +405,18 @@ s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 x) {
     s16 xMin;
     s16 ret;
 
-    xMin = mapApp->unk_0C8.left - x + 1;
-    xMax = mapApp->unk_0C8.right - x - 1;
-    if (mapApp->cursorX >= xMin && xMax >= mapApp->cursorX) {
+    xMin = mapApp->cursorSpriteState.left - x + 1;
+    xMax = mapApp->cursorSpriteState.right - x - 1;
+    if (mapApp->playerX >= xMin && xMax >= mapApp->playerX) {
         return x;
     }
-    if (mapApp->cursorX <= xMin) {
-        ret = x + (xMin - mapApp->cursorX);
-    } else if (mapApp->cursorX >= xMax) {
+    if (mapApp->playerX <= xMin) {
+        ret = x + (xMin - mapApp->playerX);
+    } else if (mapApp->playerX >= xMax) {
         // Your language server may flag ret as being conditionally uninitalized.
         // This is technically not UB since logically
         // this block here is the only other possibility.
-        ret = x - (mapApp->cursorX - xMax);
+        ret = x - (mapApp->playerX - xMax);
     }
     return ret;
 }
@@ -425,14 +425,14 @@ s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 x, s16 dxMax) {
     s16 dx;
 
     if (x > 0) {
-        dx = mapApp->unk_0C8.left - mapApp->minXscroll;
+        dx = mapApp->cursorSpriteState.left - mapApp->minXscroll;
         if (dx <= 0) {
             return 0;
         } else if (dx < dxMax) {
             return ov101_021EBF44(mapApp, dx);
         }
     } else {
-        dx = mapApp->maxXscroll - mapApp->unk_0C8.right;
+        dx = mapApp->maxXscroll - mapApp->cursorSpriteState.right;
         if (dx <= 0) {
             return 0;
         } else if (dx < dxMax) {
@@ -447,18 +447,18 @@ s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 y) {
     s16 yMin;
     s16 yMax;
 
-    yMin = mapApp->unk_0C8.top - y + 1;
-    yMax = mapApp->unk_0C8.bottom - y;
-    if (mapApp->cursorY >= yMin && yMax >= mapApp->cursorY) {
+    yMin = mapApp->cursorSpriteState.top - y + 1;
+    yMax = mapApp->cursorSpriteState.bottom - y;
+    if (mapApp->playerY >= yMin && yMax >= mapApp->playerY) {
         return y;
     }
-    if (mapApp->cursorY <= yMin) {
-        ret = y + (yMin - mapApp->cursorY);
-    } else if (mapApp->cursorY >= yMax) {
+    if (mapApp->playerY <= yMin) {
+        ret = y + (yMin - mapApp->playerY);
+    } else if (mapApp->playerY >= yMax) {
         // Your language server may flag ret as being conditionally uninitalized.
         // This is technically not UB since logically
         // this block here is the only other possibility.
-        ret = y - (mapApp->cursorY - yMax);
+        ret = y - (mapApp->playerY - yMax);
     }
     return ret;
 }
@@ -467,14 +467,14 @@ s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 y, s16 dyMax) {
     s16 dy;
 
     if (y > 0) {
-        dy = mapApp->unk_0C8.top - mapApp->minYscroll;
+        dy = mapApp->cursorSpriteState.top - mapApp->minYscroll;
         if (dy <= 0) {
             return 0;
         } else if (dy < dyMax) {
             return ov101_021EBFF8(mapApp, dy);
         }
     } else {
-        dy = mapApp->maxYscroll - mapApp->unk_0C8.bottom;
+        dy = mapApp->maxYscroll - mapApp->cursorSpriteState.bottom;
         if (dy <= 0) {
             return 0;
         } else if (dy < dyMax) {
@@ -506,8 +506,8 @@ int ov101_021EC0AC(PokegearMapAppData *mapApp) {
         halfGrid = 5;
     }
     if (mapApp->cursorSpeed != 0) {
-        mapApp->unk_0C8.x -= mapApp->draggingWordX;
-        mapApp->unk_0C8.y -= mapApp->draggingWordY;
+        mapApp->cursorSpriteState.x -= mapApp->draggingWordX;
+        mapApp->cursorSpriteState.y -= mapApp->draggingWordY;
         ov101_021E9BF4(mapApp, mapApp->draggingWordX, mapApp->draggingWordY);
         PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
         mapApp->requestAffineUpdate = TRUE;
@@ -538,9 +538,9 @@ int ov101_021EC0AC(PokegearMapAppData *mapApp) {
     if (absX > 0) {
         x = ov101_021EBF98(mapApp, x / halfGrid, absX);
         if (x != 0) {
-            mapApp->unk_0C8.x -= x * grid;
-            mapApp->unk_0C8.right -= x;
-            mapApp->unk_0C8.left -= x;
+            mapApp->cursorSpriteState.x -= x * grid;
+            mapApp->cursorSpriteState.right -= x;
+            mapApp->cursorSpriteState.left -= x;
             mapApp->unk_142 = touchX - xOffset;
             mapApp->cursorSpeed = 1;
             mapApp->draggingWordX = x * grid;
@@ -551,9 +551,9 @@ int ov101_021EC0AC(PokegearMapAppData *mapApp) {
     if (absY > 0) {
         y = ov101_021EC04C(mapApp, y / halfGrid, absY);
         if (y != 0) {
-            mapApp->unk_0C8.y -= y * grid;
-            mapApp->unk_0C8.bottom -= y;
-            mapApp->unk_0C8.top -= y;
+            mapApp->cursorSpriteState.y -= y * grid;
+            mapApp->cursorSpriteState.bottom -= y;
+            mapApp->cursorSpriteState.top -= y;
             mapApp->unk_144 = touchY - yOffset;
             mapApp->cursorSpeed = 1;
             mapApp->draggingWordY = y * grid;
@@ -625,8 +625,8 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
     }
     if (flag != 0) {
         mapApp->requestAffineUpdate = TRUE;
-        mapApp->unk_0C8.x += dx;
-        mapApp->unk_0C8.y += dy;
+        mapApp->cursorSpriteState.x += dx;
+        mapApp->cursorSpriteState.y += dy;
         ov101_021E9BF4(mapApp, -dx, -dy);
         ov101_021EC944(mapApp);
     }
@@ -646,7 +646,7 @@ void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yR
     PokegearManagedObject *objects = mapApp->objManager->objects;
     grid = 8 * (mapApp->zoomed + 1);
     half_grid = grid / 2;
-    ov101_021E9530(mapApp, mapApp->zoomed, mapApp->cursorX, mapApp->cursorY, cursorObj->pos.x, cursorObj->pos.y);
+    ov101_021E9530(mapApp, mapApp->zoomed, mapApp->playerX, mapApp->playerY, cursorObj->pos.x, cursorObj->pos.y);
     if (!mapApp->zoomed) {
         x2 = (cursorObj->pos.x - mapApp->unk_132) / 16;
         y2 = (cursorObj->pos.y - mapApp->unk_131) / 16;
@@ -666,10 +666,10 @@ void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yR
         *xRet = x * 8 + x2 * 8;
         *yRet = y * 8 + y2 * 8;
     }
-    cursorObj->destX = (x - mapApp->unk_0C8.left) * grid + mapApp->unk_132 + half_grid;
-    cursorObj->destY = (y - mapApp->unk_0C8.top) * grid + mapApp->unk_131 + half_grid;
-    objects[PGMAP_SPRITE_PLAYER].destX = (objects[PGMAP_SPRITE_PLAYER].unk_0C - mapApp->unk_0C8.left) * grid + mapApp->unk_132 + half_grid;
-    objects[PGMAP_SPRITE_PLAYER].destY = (objects[PGMAP_SPRITE_PLAYER].unk_0E - mapApp->unk_0C8.top) * grid + mapApp->unk_131 + half_grid;
+    cursorObj->destX = (x - mapApp->cursorSpriteState.left) * grid + mapApp->unk_132 + half_grid;
+    cursorObj->destY = (y - mapApp->cursorSpriteState.top) * grid + mapApp->unk_131 + half_grid;
+    objects[PGMAP_SPRITE_PLAYER].destX = (objects[PGMAP_SPRITE_PLAYER].unk_0C - mapApp->cursorSpriteState.left) * grid + mapApp->unk_132 + half_grid;
+    objects[PGMAP_SPRITE_PLAYER].destY = (objects[PGMAP_SPRITE_PLAYER].unk_0E - mapApp->cursorSpriteState.top) * grid + mapApp->unk_131 + half_grid;
     ov101_021EA238(mapApp, 1);
     for (i = 5; i < mapApp->objManager->num; ++i) {
         objects[i].unk_18 = FX_Div(FX32_CONST(objects[i].destX - objects[i].pos.x), FX32_CONST(mapApp->cursorSpeed));
@@ -690,19 +690,19 @@ void ov101_021EC778(PokegearMapAppData *mapApp) {
         return;
     }
     if (mapApp->zoomed) {
-        mapApp->unk_0C8.xRatio += FX32_CONST(0.25);
-        mapApp->unk_0C8.yRatio += FX32_CONST(0.25);
+        mapApp->cursorSpriteState.xRatio += FX32_CONST(0.25);
+        mapApp->cursorSpriteState.yRatio += FX32_CONST(0.25);
     } else {
-        mapApp->unk_0C8.xRatio -= FX32_CONST(0.25);
-        mapApp->unk_0C8.yRatio -= FX32_CONST(0.25);
+        mapApp->cursorSpriteState.xRatio -= FX32_CONST(0.25);
+        mapApp->cursorSpriteState.yRatio -= FX32_CONST(0.25);
     }
-    scale.x = mapApp->unk_0C8.xRatio;
+    scale.x = mapApp->cursorSpriteState.xRatio;
     scale.z = FX32_ONE;
-    scale.y = mapApp->unk_0C8.yRatio;
+    scale.y = mapApp->cursorSpriteState.yRatio;
     Sprite_SetAffineScale(cursorObj->sprite, &scale);
     if (--mapApp->cursorSpeed == 0) {
-        mapApp->unk_0C8.x = mapApp->unk_0C8.destX;
-        mapApp->unk_0C8.y = mapApp->unk_0C8.destY;
+        mapApp->cursorSpriteState.x = mapApp->cursorSpriteState.destX;
+        mapApp->cursorSpriteState.y = mapApp->cursorSpriteState.destY;
         for (i = 5; i < mapApp->objManager->num; ++i) {
             PokegearManagedObject_SetCoord(&objects[i], objects[i].destX, objects[i].destY);
             ov101_021EC920(&objects[i], i, objects[i].destY);
@@ -711,10 +711,10 @@ void ov101_021EC778(PokegearMapAppData *mapApp) {
         mapApp->unk_139_1 = 0;
         mapApp->moveCursorDirection = 0;
     } else {
-        mapApp->unk_0C8.unk_20 += mapApp->unk_0C8.dxStep;
-        mapApp->unk_0C8.unk_24 += mapApp->unk_0C8.dyStep;
-        mapApp->unk_0C8.x = FX_Whole(mapApp->unk_0C8.unk_20);
-        mapApp->unk_0C8.y = FX_Whole(mapApp->unk_0C8.unk_24);
+        mapApp->cursorSpriteState.unk_20 += mapApp->cursorSpriteState.dxStep;
+        mapApp->cursorSpriteState.unk_24 += mapApp->cursorSpriteState.dyStep;
+        mapApp->cursorSpriteState.x = FX_Whole(mapApp->cursorSpriteState.unk_20);
+        mapApp->cursorSpriteState.y = FX_Whole(mapApp->cursorSpriteState.unk_24);
         for (i = 5; i < mapApp->objManager->num; ++i) {
             objects[i].unk_10 += objects[i].unk_18;
             objects[i].unk_14 += objects[i].unk_1C;
@@ -778,8 +778,8 @@ void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2) {
     if (r7 > r6[3]) {
         r7 = r6[3];
     }
-    r7 += mapApp->unk_0C8.left;
-    r4 += mapApp->unk_0C8.top;
+    r7 += mapApp->cursorSpriteState.left;
+    r4 += mapApp->cursorSpriteState.top;
     if (a1 != NULL) {
         *a1 = r7;
     }
@@ -821,33 +821,33 @@ int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp) {
     if (gSystem.newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
-        return 10;
+        return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
         input = PokegearAppSwitch_GetCursorPos(mapApp->pokegear->appSwitch);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         if (input == 8) { // cancel
             PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
-            return 10;
+            return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
         }
         if (MapApp_MarkingSlotIsSet(mapApp, input)) {
             PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
             PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 3, 0);
             PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
             ov101_021ECA84(mapApp, TRUE);
-            mapApp->draggingType = 2;
+            mapApp->draggingType = PGMAP_DRAG_FROM_SET;
             return -1;
         } else {
             if (input % 2 == 0) {
                 PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
                 PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 2, 0);
                 PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
-                mapApp->draggingType = 1;
+                mapApp->draggingType = PGMAP_DRAG_FROM_POOL;
                 return -1;
             } else {
                 mapApp->sessionState.index = input / 2;
                 mapApp->sessionState.mapID = mapApp->selectedMap.locationSpec->mapId;
-                return 11;
+                return PGMAP_MAIN_STATE_FADE_OUT_FOR_WORD_SELECT;
             }
         }
     }
@@ -914,10 +914,10 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
             CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 23, 8, 6, 5, mapApp->unk_17C->rawData, 7, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
             ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            return 10;
+            return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
         } else if (slot >= 8) {
             mapApp->draggingIcon = slot - 8;
-            mapApp->draggingType = 1;
+            mapApp->draggingType = PGMAP_DRAG_FROM_POOL;
             PokegearManagedObject_SetPriority(&objects[slot + PGMAP_SPRITE_MARKINGS_MENU_SLOT_MARK_0], 1);
             PlaySE(SEQ_SE_GS_GEARSEALGRAB);
             return -1;
@@ -934,14 +934,14 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
                 PokegearManagedObject_SetPriority(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0], 1);
                 sub_02013820(mapApp->unk_044[index].unk_0, 0);
             }
-            mapApp->draggingType = 2;
+            mapApp->draggingType = PGMAP_DRAG_FROM_SET;
             PlaySE(SEQ_SE_GS_GEARSEALGRAB);
             return -1;
         } else if (slot % 2 == 1) {
             mapApp->sessionState.index = slot / 2;
             mapApp->sessionState.mapID = mapApp->selectedMap.locationSpec->mapId;
             PlaySE(SEQ_SE_GS_GEARDECIDE);
-            return 11;
+            return PGMAP_MAIN_STATE_FADE_OUT_FOR_WORD_SELECT;
         } else {
             return -1;
         }
@@ -955,10 +955,10 @@ void ov101_021ECE58(PokegearMapAppData *mapApp) {
     PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
     PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1));
     PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
-    mapApp->draggingType = 0;
+    mapApp->draggingType = PGMAP_DRAG_NONE;
 }
 
-int ov101_021ECEA8(PokegearMapAppData *mapApp) {
+int PokegearMap_HandleKeyInput_SelectedIconFromPool(PokegearMapAppData *mapApp) {
     u8 r6;
     u8 r4;
 
@@ -981,7 +981,7 @@ int ov101_021ECEA8(PokegearMapAppData *mapApp) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         ov101_021ECE58(mapApp);
         if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
-            ov101_021EB364(mapApp);
+            PokegearMap_InMarkingsMode_HideCursor(mapApp);
             mapApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
         }
         return -1;
@@ -996,7 +996,7 @@ int ov101_021ECEA8(PokegearMapAppData *mapApp) {
     return -1;
 }
 
-int ov101_021ECF98(PokegearMapAppData *mapApp) {
+int PokegearMap_HandleTouchInput_DragItemFromPool(PokegearMapAppData *mapApp) {
     int r5;
 
     static const TouchscreenHitbox ov101_021F7EB8[] = {
@@ -1013,7 +1013,7 @@ int ov101_021ECF98(PokegearMapAppData *mapApp) {
         if (r5 == -1) {
             PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->draggingIcon], mapApp->draggingIcon * 24 + 40, 132);
             PokegearManagedObject_SetPriority(&mapApp->objManager->objects[28 + mapApp->draggingIcon], 4);
-            mapApp->draggingType = 0;
+            mapApp->draggingType = PGMAP_DRAG_NONE;
             return -1;
         }
         if (mapApp->selectedMap.markingsNode == NULL) {
@@ -1023,7 +1023,7 @@ int ov101_021ECF98(PokegearMapAppData *mapApp) {
         ov101_021EAE54(mapApp, 0);
         PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->draggingIcon], mapApp->draggingIcon * 24 + 40, 132);
         PokegearManagedObject_SetPriority(&mapApp->objManager->objects[28 + mapApp->draggingIcon], 4);
-        mapApp->draggingType = 0;
+        mapApp->draggingType = PGMAP_DRAG_NONE;
         return -1;
     }
     PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->draggingIcon], gSystem.touchX, gSystem.touchY);
@@ -1044,7 +1044,7 @@ void ov101_021ED110(PokegearMapAppData *mapApp, u8 a1, u8 a2) {
     ov101_021EAE54(mapApp, 0);
 }
 
-int ov101_021ED158(PokegearMapAppData *mapApp) {
+int PokegearMap_HandleKeyInput_SelectedMarkingSlot(PokegearMapAppData *mapApp) {
     u8 r2;
     if (gSystem.newKeys & PAD_BUTTON_A) {
         PlaySE(SEQ_SE_GS_GEARGOMIBAKO);
@@ -1062,7 +1062,7 @@ int ov101_021ED158(PokegearMapAppData *mapApp) {
         ov101_021ECE58(mapApp);
         ov101_021ECA84(mapApp, FALSE);
         if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
-            ov101_021EB364(mapApp);
+            PokegearMap_InMarkingsMode_HideCursor(mapApp);
             mapApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
         }
     }
@@ -1086,7 +1086,7 @@ void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot) {
     }
 }
 
-int ov101_021ED2C0(PokegearMapAppData *mapApp) {
+int PokegearMap_HandleTouchInput_DragMarkingSlot(PokegearMapAppData *mapApp) {
     int r2;
 
     static const TouchscreenHitbox ov101_021F7ECC[] = {
@@ -1109,12 +1109,12 @@ int ov101_021ED2C0(PokegearMapAppData *mapApp) {
             ov101_021ED204(mapApp, mapApp->draggingIcon);
             ov101_021ECA84(mapApp, FALSE);
             PlaySE(SEQ_SE_GS_GEARGOMIBAKO);
-            mapApp->draggingType = 0;
+            mapApp->draggingType = PGMAP_DRAG_NONE;
             return -1;
         } else if (r2 == -1 || mapApp->draggingIcon / 4 != r2 / 4 || mapApp->draggingIcon == r2) {
             ov101_021ED204(mapApp, mapApp->draggingIcon);
             PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
-            mapApp->draggingType = 0;
+            mapApp->draggingType = PGMAP_DRAG_NONE;
             return -1;
         } else if (r2 / 4 == 0) {
             MapMarkingsHeapNode_SwapIcons(mapApp->selectedMap.markingsNode, mapApp->draggingIcon % 4, r2 % 4);
@@ -1124,7 +1124,7 @@ int ov101_021ED2C0(PokegearMapAppData *mapApp) {
         ov101_021EAE54(mapApp, 0);
         ov101_021ED204(mapApp, mapApp->draggingIcon);
         PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
-        mapApp->draggingType = 0;
+        mapApp->draggingType = PGMAP_DRAG_NONE;
         return -1;
     }
     PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[mapApp->draggingIcon + 20], gSystem.touchX + mapApp->draggingWordX, gSystem.touchY + mapApp->draggingWordY);

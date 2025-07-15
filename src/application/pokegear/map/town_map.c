@@ -92,8 +92,8 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->pokegear->childAppdata = mapApp;
     mapApp->pokegear->menuInputState = (MenuInputState)mapApp->pokegear->args->menuInputState;
     mapApp->unk_00D = mapApp->pokegear->args->isScriptedLaunch + 1;
-    mapApp->pokegear->reselectAppCB = ov101_021EB338;
-    mapApp->pokegear->unknownCB = ov101_021EB2FC;
+    mapApp->pokegear->reselectAppCB = PokegearMap_ShowMapCursor;
+    mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
     MapApp_LoadMarkingsLinkedListFromSave(mapApp);
     mapApp->unk_138_4 = 0;
     mapApp->unk_138_1 = 0;
@@ -107,8 +107,8 @@ void ov101_021ED980(PokegearMapAppData *mapApp) {
     mapApp->matrixY = mapApp->pokegear->args->matrixYCoord + 2;
     mapApp->mapID = mapApp->pokegear->args->mapID;
     mapApp->playerGender = mapApp->pokegear->args->playerGender;
-    mapApp->cursorX = mapApp->pokegear->args->matrixXCoord;
-    mapApp->cursorY = mapApp->pokegear->args->matrixYCoord + 2;
+    mapApp->playerX = mapApp->pokegear->args->matrixXCoord;
+    mapApp->playerY = mapApp->pokegear->args->matrixYCoord + 2;
     mapApp->minXscroll = 1;
     mapApp->minYscroll = 1;
     mapApp->maxXscroll = ov101_021F7F3C[mapApp->mapUnlockLevel];
@@ -126,7 +126,7 @@ void ov101_021EDAF8(PokegearMapAppData *mapApp) {
     FreeToHeap(mapApp->phoneContact);
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
-    mapApp->pokegear->unknownCB = NULL;
+    mapApp->pokegear->deselectAppCB = NULL;
 }
 
 int ov101_021EDB1C(PokegearMapAppData *mapApp) {
