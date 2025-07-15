@@ -285,7 +285,7 @@ BOOL ov101_021EDCE0(PokegearMapAppData *mapApp) {
     case 4:
         ov101_021EE670(mapApp);
         Main_SetVBlankIntrCB(PokegearApp_VBlankCB, mapApp->pokegear);
-        mapApp->pokegear->unk_058 = ov101_021E9270;
+        mapApp->pokegear->vblankCB = PokegearMap_VBlankCB;
         mapApp->substate = 0;
         return TRUE;
     }
@@ -295,7 +295,7 @@ BOOL ov101_021EDCE0(PokegearMapAppData *mapApp) {
 }
 
 BOOL ov101_021EDDB0(PokegearMapAppData *mapApp) {
-    mapApp->pokegear->unk_058 = NULL;
+    mapApp->pokegear->vblankCB = NULL;
     ov101_021EE380(mapApp);
     ov101_021EE664(mapApp);
     ov101_021EE3D8(mapApp);

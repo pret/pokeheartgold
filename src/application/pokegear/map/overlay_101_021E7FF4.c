@@ -58,7 +58,7 @@ BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp) {
         } else {
             ov101_021E8E58(mapApp);
         }
-        mapApp->pokegear->unk_058 = ov101_021E9270;
+        mapApp->pokegear->vblankCB = PokegearMap_VBlankCB;
         mapApp->substate = 0;
         return TRUE;
     }
@@ -68,7 +68,7 @@ BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp) {
 }
 
 BOOL PokegearMaps_GraphicsDeinit(PokegearMapAppData *mapApp) {
-    mapApp->pokegear->unk_058 = NULL;
+    mapApp->pokegear->vblankCB = NULL;
     if (mapApp->pokegear->appReturnCode == GEAR_RETURN_CANCEL) {
         PokegearMap_RemoveUIButtons(mapApp);
         PokegearMap_RemoveAuxSprites_MarkingsMode(mapApp);

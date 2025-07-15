@@ -133,45 +133,45 @@ typedef struct PokegearApp_UnkSub094 {
 
 typedef struct PokegearAppData PokegearAppData;
 struct PokegearAppData {
-    HeapID heapId;                              // 0x000
-    u8 app;                                     // 0x004
-    u8 registeredCards : 7;                     // 0x005
-    u8 isSwitchApp : 1;                         // 0x005
-    u8 cursorInAppSwitchZone;                   // 0x006
-    u8 unk_007;                                 // 0x007
-    u8 backgroundStyle;                         // 0x008
-    u8 fadeCounter;                             // 0x009
-    MenuInputState menuInputState;              // 0x00C
-    MenuInputState menuInputStateBak;           // 0x010
-    u8 filler_014[0x4];                         // 0x014
-    int unk_018;                                // 0x018
-    int appReturnCode;                          // 0x01C
-    PokegearArgs *args;                         // 0x020
-    SaveData *saveData;                         // 0x024
-    SavePokegear *savePokegear;                 // 0x028
-    SaveVarsFlags *saveVarsFlags;               // 0x02C
-    Options *options;                           // 0x030
-    PlayerProfile *profile;                     // 0x034
-    u8 unk_038;                                 // 0x038
-    u8 filler_039[3];                           // 0x039
-    PokegearMapSessionState unk_03C;            // 0x03C
-    void (*unk_058)(PokegearAppData *, void *); // 0x058
-    void (*reselectAppCB)(void *);              // 0x05C
-    void (*unknownCB)(void *);                  // 0x060
-    void *childAppdata;                         // 0x064
-    u8 filler_068[0x4];                         // 0x068
-    EasyChatArgs *easyChatArgs;                 // 0x06C
-    OverlayManager *childApplication;           // 0x070
-    BgConfig *bgConfig;                         // 0x074
-    PaletteData *plttData;                      // 0x078
-    PokegearAppSwitch *appSwitch;               // 0x07C
-    RTCTime unk_080;                            // 0x080
-    SpriteSystem *spriteSystem;                 // 0x08C
-    SpriteManager *spriteManager;               // 0x090
-    PokegearApp_UnkSub094 *unk_094;             // 0x094
-    ManagedSprite *uiSprites[11];               // 0x098
-    u16 *unk_0C4;                               // 0x0C4
-    NNSG2dScreenData *unk_0C8;                  // 0x0C8
+    HeapID heapId;                               // 0x000
+    u8 app;                                      // 0x004
+    u8 registeredCards : 7;                      // 0x005
+    u8 isSwitchApp : 1;                          // 0x005
+    u8 cursorInAppSwitchZone;                    // 0x006
+    u8 unk_007;                                  // 0x007
+    u8 backgroundStyle;                          // 0x008
+    u8 fadeCounter;                              // 0x009
+    MenuInputState menuInputState;               // 0x00C
+    MenuInputState menuInputStateBak;            // 0x010
+    u8 filler_014[0x4];                          // 0x014
+    int unk_018;                                 // 0x018
+    int appReturnCode;                           // 0x01C
+    PokegearArgs *args;                          // 0x020
+    SaveData *saveData;                          // 0x024
+    SavePokegear *savePokegear;                  // 0x028
+    SaveVarsFlags *saveVarsFlags;                // 0x02C
+    Options *options;                            // 0x030
+    PlayerProfile *profile;                      // 0x034
+    u8 unk_038;                                  // 0x038
+    u8 filler_039[3];                            // 0x039
+    PokegearMapSessionState unk_03C;             // 0x03C
+    void (*vblankCB)(PokegearAppData *, void *); // 0x058
+    void (*reselectAppCB)(void *);               // 0x05C
+    void (*unknownCB)(void *);                   // 0x060
+    void *childAppdata;                          // 0x064
+    u8 filler_068[0x4];                          // 0x068
+    EasyChatArgs *easyChatArgs;                  // 0x06C
+    OverlayManager *childApplication;            // 0x070
+    BgConfig *bgConfig;                          // 0x074
+    PaletteData *plttData;                       // 0x078
+    PokegearAppSwitch *appSwitch;                // 0x07C
+    RTCTime unk_080;                             // 0x080
+    SpriteSystem *spriteSystem;                  // 0x08C
+    SpriteManager *spriteManager;                // 0x090
+    PokegearApp_UnkSub094 *unk_094;              // 0x094
+    ManagedSprite *uiSprites[11];                // 0x098
+    u16 *unk_0C4;                                // 0x0C4
+    NNSG2dScreenData *unk_0C8;                   // 0x0C8
 }; // size: 0xCC
 
 typedef struct PhoneCallScriptDef {

@@ -158,8 +158,8 @@ BOOL Pokegear_Exit(OverlayManager *man, int *state) {
 void PokegearApp_VBlankCB(void *cb_args) {
     PokegearAppData *pokegearApp = (PokegearAppData *)cb_args;
 
-    if (pokegearApp->unk_058 != NULL) {
-        pokegearApp->unk_058(pokegearApp, pokegearApp->childAppdata);
+    if (pokegearApp->vblankCB != NULL) {
+        pokegearApp->vblankCB(pokegearApp, pokegearApp->childAppdata);
     }
 
     if (pokegearApp->plttData != NULL) {

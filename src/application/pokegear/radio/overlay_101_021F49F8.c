@@ -139,7 +139,7 @@ BOOL Radio_VideoInit(PokegearRadioAppData *radioApp) {
     case 1:
         Radio_CreateSprites(radioApp);
         Radio_InitAppSwitchCursorState(radioApp);
-        radioApp->pokegear->unk_058 = Radio_Run;
+        radioApp->pokegear->vblankCB = Radio_Run;
         radioApp->substate = 0;
         return TRUE;
     }
@@ -168,7 +168,7 @@ BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp) {
         ++radioApp->substate;
         break;
     case 2:
-        radioApp->pokegear->unk_058 = NULL;
+        radioApp->pokegear->vblankCB = NULL;
         Radio_UnloadSprites(radioApp);
         Radio_DestroySpriteManager(radioApp);
         Radio_UnloadWindows(radioApp);
