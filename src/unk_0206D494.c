@@ -293,7 +293,7 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     if (word != PlayerProfile_GetTrainerID(profile)) {
         return FALSE;
     }
-    u8 byte = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
+    u8 byte = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
     if (byte != PlayerProfile_GetTrainerGender(profile)) {
         return FALSE;
     }
@@ -337,7 +337,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     if (pid != trade->pid) {
         return FALSE;
     }
-    u8 gender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
+    u8 gender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
     if (gender != trade->gender) {
         return FALSE;
     }

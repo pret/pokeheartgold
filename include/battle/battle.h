@@ -258,7 +258,7 @@ typedef struct BattleMon {
     u8 unk78;
     u8 msgFlag;
     u8 gender : 4;
-    u8 metGender : 4;
+    u8 otGender : 4;
     u8 ball;
     u32 moveEffectFlags;
     u32 moveEffectFlagsTemp;

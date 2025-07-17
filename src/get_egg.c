@@ -657,7 +657,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
         name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
         SetMonData(mon, MON_DATA_OT_NAME_2, name);
         SetMonData(mon, MON_DATA_OTID, &otId);
-        SetMonData(mon, MON_DATA_MET_GENDER, &gender);
+        SetMonData(mon, MON_DATA_OT_GENDER, &gender);
         String_Delete(name);
     }
     MonSetTrainerMemo(mon, profile, trainerMemoStrat, eggLocation, HEAP_ID_DEFAULT);
@@ -1045,7 +1045,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     pokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
     fateful = GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
     GetMonData(mon, MON_DATA_OT_NAME_2, string);
-    otGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
+    otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
     otId = GetMonData(mon, MON_DATA_OTID, NULL);
     form = GetMonData(mon, MON_DATA_FORM, NULL);
     if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
@@ -1071,7 +1071,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     SetMonData(tmpMon, MON_DATA_POKERUS, &pokerus);
     SetMonData(tmpMon, MON_DATA_FATEFUL_ENCOUNTER, &fateful);
     SetMonData(tmpMon, MON_DATA_OT_NAME_2, string);
-    SetMonData(tmpMon, MON_DATA_MET_GENDER, &otGender);
+    SetMonData(tmpMon, MON_DATA_OT_GENDER, &otGender);
     SetMonData(tmpMon, MON_DATA_OTID, &otId);
     SetMonData(tmpMon, MON_DATA_FORM, &form);
     metLoc = GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL);
