@@ -10,6 +10,13 @@
 #include "touchscreen_list_menu.h"
 #include "unk_02013534.h"
 
+#define PGMAP_NUM_FLYPOINTS 27
+#define PGMAP_NUM_LOCATIONS 100
+
+#ifndef max
+#define max(a, b) ((a) < (b) ? (b) : (a))
+#endif
+
 typedef enum PokegearMapMainState {
     PGMAP_MAIN_STATE_LOAD,
     PGMAP_MAIN_STATE_HANDLE_INPUT,
@@ -40,8 +47,7 @@ typedef enum PokegearMapSpriteID {
     PGMAP_SPRITE_ALWAYS_END,
 
     PGMAP_SPRITE_HAS_MARKINGS_BEGIN = PGMAP_SPRITE_ALWAYS_END,
-    PGMAP_SPRITE_HAS_MARKINGS_END = PGMAP_SPRITE_HAS_MARKINGS_BEGIN + 100,
-    PGMAP_SPRITE_MAX = PGMAP_SPRITE_HAS_MARKINGS_END,
+    PGMAP_SPRITE_HAS_MARKINGS_END = PGMAP_SPRITE_HAS_MARKINGS_BEGIN + PGMAP_NUM_LOCATIONS,
 
     PGMAP_SPRITE_MARKINGS_BLINKING_ARROW = PGMAP_SPRITE_ALWAYS_END,
     PGMAP_SPRITE_MARKINGS_CURSOR_MAIN_0,
@@ -70,6 +76,13 @@ typedef enum PokegearMapSpriteID {
     PGMAP_SPRITE_MARKINGS_MENU_ICON_TMHM,
 
     PGMAP_SPRITE_FLY_MENU_11 = PGMAP_SPRITE_ALWAYS_END,
+    PGMAP_SPRITE_FLY_MENU_12,
+    PGMAP_SPRITE_FLY_MENU_13,
+    PGMAP_SPRITE_FLY_MENU_14,
+    PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN,
+    PGMAP_SPRITE_FLY_MENU_WARPS_END = PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN + PGMAP_NUM_FLYPOINTS,
+
+    PGMAP_SPRITE_MAX = max(PGMAP_SPRITE_FLY_MENU_WARPS_END, PGMAP_SPRITE_HAS_MARKINGS_END),
 } PokegearMapSpriteID;
 
 typedef enum PokegearMapMarkingDragMode {
@@ -163,7 +176,7 @@ typedef struct PokegearMapAppData {
     u8 inMarkingsMode;                            // 0x00C
     u8 unk_00D;                                   // 0x00D
     u8 curRegion;                                 // 0x00E
-    s8 unk_00F;                                   // 0x00F
+    s8 flyDestination;                            // 0x00F
     PokegearAppData *pokegear;                    // 0x010
     PokegearMapSessionState sessionState;         // 0x014
     int markingsPanelScrollActive;                // 0x030
@@ -239,7 +252,7 @@ typedef struct PokegearMapAppData {
     s16 unk_14C;                                  // 0x14C
     s16 unk_14E;                                  // 0x14E
     s16 unk_150;                                  // 0x150
-    u16 unk_152;                                  // 0x152
+    u16 lastSelectedMapID;                        // 0x152
     void *unk_154[6];                             // 0x154
     NNSG2dScreenData *unk_16C;                    // 0x16C
     NNSG2dScreenData *unk_170;                    // 0x170
@@ -327,7 +340,7 @@ BOOL ov101_021EDCE0(PokegearMapAppData *mapApp);
 BOOL ov101_021EDDB0(PokegearMapAppData *mapApp);
 int ov101_021EDDF4(PokegearMapAppData *mapApp);
 
-extern const PokegearMapLocationSpec sLocationSpecs[100];
-extern const MapFlypointParam gMapFlypointParams[27];
+extern const PokegearMapLocationSpec sLocationSpecs[PGMAP_NUM_LOCATIONS];
+extern const MapFlypointParam gMapFlypointParams[PGMAP_NUM_FLYPOINTS];
 
 #endif // POKEHEARTGOLD_APPLICATION_POKEGEAR_MAP_POKEGEAR_MAP_INTERNAL_H

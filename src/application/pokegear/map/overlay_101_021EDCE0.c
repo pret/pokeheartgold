@@ -612,19 +612,27 @@ void ov101_021EE410(PokegearMapAppData *mapApp) {
     u16 index;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
+    // Common sprites
+    // Markers
     for (i = 0; i < 4; ++i) {
         PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[0]));
         Sprite_SetPositionXY(objects[i].sprite, 32 + 104 * (i % 2), 203 + 21 * (i / 2));
         thunk_Sprite_SetPriority(objects[i].sprite, 0);
     }
+    // Battle or gift indicator
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[1]));
     thunk_Sprite_SetPriority(objects[4].sprite, 0);
+    // Cursor
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[2]));
+    // Player sprite
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[3]));
+    // Roamers
     for (i = 0; i < 4; ++i) {
         PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[4]));
         Sprite_UpdateAnim(objects[7 + i].sprite, FX32_CONST(i));
     }
+
+    // Fly menu specific sprites
     for (i = 0; i < 4; ++i) {
         index = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[5 + i]));
         Sprite_GetPositionXY(objects[index].sprite, &objects[index].pos.x, &objects[index].pos.y);
@@ -632,13 +640,16 @@ void ov101_021EE410(PokegearMapAppData *mapApp) {
         Sprite_SetAnimActiveFlag(objects[index].sprite, TRUE);
         Sprite_SetDrawFlag(objects[index].sprite, FALSE);
     }
-    for (i = 0; i < 27; ++i) {
+    // Flypoint indicators
+    for (i = 0; i < PGMAP_NUM_FLYPOINTS; ++i) {
         index = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[9]));
         Sprite_GetPositionXY(objects[index].sprite, &objects[index].pos.x, &objects[index].pos.y);
         Sprite_SetDrawFlag(objects[index].sprite, FALSE);
         Sprite_SetAnimActiveFlag(objects[index].sprite, FALSE);
     }
-    for (i = 0; i < 11; ++i) {
+
+    // Hide sprites initially
+    for (i = 0; i < PGMAP_SPRITE_ALWAYS_END; ++i) {
         index = i;
         Sprite_GetPositionXY(objects[index].sprite, &objects[index].pos.x, &objects[index].pos.y);
         Sprite_SetDrawFlag(objects[index].sprite, FALSE);
@@ -670,7 +681,7 @@ void ov101_021EE670(PokegearMapAppData *mapApp) {
     ov101_021E9B70(mapApp, &mapApp->cursorSpriteState);
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 24, mapApp->unk_178->rawData, 0, 0, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
     ov101_021EAF40(mapApp);
-    mapApp->unk_00F = -1;
+    mapApp->flyDestination = -1;
     if (mapApp->unk_00D == 2) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 6, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
         ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
