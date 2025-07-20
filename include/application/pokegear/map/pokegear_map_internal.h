@@ -239,7 +239,7 @@ typedef struct PokegearMapAppData {
     u8 cursorSpeed;                               // 0x13A
     u8 moveCursorDirection;                       // 0x13B
     u8 draggingType : 7;                          // 0x13C
-    u8 unk_13C_7 : 1;                             // 0x13C
+    u8 trashcanIconState : 1;                     // 0x13C
     u8 canFlyToGoldenrod : 1;                     // 0x13D
     u8 canSeeSafariZone : 1;                      // 0x13D
     u8 isMapSinjoh : 1;                           // 0x13D

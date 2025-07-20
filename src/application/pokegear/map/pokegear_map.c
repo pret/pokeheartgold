@@ -477,7 +477,7 @@ int PokegearMap_MainTask_FadeOutApp(PokegearMapAppData *mapApp) {
     return PGMAP_MAIN_STATE_FADE_OUT_APP;
 }
 
-const PokegearMapLocationSpec sLocationSpecs[100] = {
+const PokegearMapLocationSpec sLocationSpecs[PGMAP_NUM_LOCATIONS] = {
     {
      .mapId = MAP_SINJOH_RUINS_EXTERIOR,
      .x = 0x13,

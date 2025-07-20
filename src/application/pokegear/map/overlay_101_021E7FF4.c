@@ -862,7 +862,7 @@ void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp) 
          },
     };
 
-    for (i = 0; i < 100; ++i) {
+    for (i = 0; i < PGMAP_NUM_LOCATIONS; ++i) {
         idx = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &spriteTemplates[0]));
         Sprite_GetPositionXY(objects[idx].sprite, &objects[idx].pos.x, &objects[idx].pos.y);
         Sprite_SetDrawFlag(objects[idx].sprite, FALSE);
@@ -1144,7 +1144,7 @@ void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
 
     ov101_021EAE54(mapApp, 1);
     mapApp->draggingType = 0;
-    mapApp->unk_13C_7 = FALSE;
+    mapApp->trashcanIconState = FALSE;
     mapApp->pokegear->reselectAppCB = PokegearMap_InMarkingsMode_ShowCursor;
     mapApp->pokegear->deselectAppCB = PokegearMap_InMarkingsMode_HideCursor;
 }

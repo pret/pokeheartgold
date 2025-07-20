@@ -12,8 +12,8 @@ void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node) {
 u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp) {
     u8 i;
 
-    for (i = 0; i < 100; ++i) {
-        if (mapApp->mapMarkingsHeap[i].active == 0) {
+    for (i = 0; i < PGMAP_NUM_LOCATIONS; ++i) {
+        if (!mapApp->mapMarkingsHeap[i].active) {
             return i;
         }
     }
@@ -29,19 +29,19 @@ void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp) {
 
     mmSave = SavePokegear_GetMapMarkingsArray(mapApp->pokegear->savePokegear);
     mapApp->mapMarkingsListHead = mapApp->mapMarkingsListTail = 0xFF;
-    for (i = 0; i < 100; ++i) {
+    for (i = 0; i < PGMAP_NUM_LOCATIONS; ++i) {
         MapMarkingsHeapNode_Reset(&mapApp->mapMarkingsHeap[i]);
     }
 
     index = 0;
-    for (i = 0; i < 100; ++i) {
+    for (i = 0; i < PGMAP_NUM_LOCATIONS; ++i) {
         if (!MapMarkingsSaveArray_EntryIsValid(mmSave, i)) {
             break;
         }
         mmHeap = &mapApp->mapMarkingsHeap[index];
         MapMarkingsSaveArray_CopyEntryToRAM(mmSave, &mmHeap->mapMarkings, i);
         mmHeap->index = index;
-        mmHeap->active = 1;
+        mmHeap->active = TRUE;
         if (mapApp->mapMarkingsListHead == 0xFF) {
             mapApp->mapMarkingsListHead = mmHeap->index;
             mapApp->mapMarkingsListTail = mmHeap->index;
@@ -104,7 +104,7 @@ MapMarkingsHeapNode *MapApp_GetOrCreateMarkingsHeapNodeByMapID(PokegearMapAppDat
     }
     ret = &mapApp->mapMarkingsHeap[index];
     ret->index = index;
-    ret->active = 1;
+    ret->active = TRUE;
     ret->mapMarkings.mapID = mapID;
     if (mapApp->mapMarkingsListHead == 0xFF) {
         mapApp->mapMarkingsListHead = mapApp->mapMarkingsListTail = index;

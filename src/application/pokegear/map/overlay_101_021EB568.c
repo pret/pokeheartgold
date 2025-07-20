@@ -20,7 +20,7 @@ void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y);
 void ov101_021EC944(PokegearMapAppData *mapApp);
 void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2);
 BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 a1);
-void ov101_021ECA84(PokegearMapAppData *mapApp, BOOL a1);
+void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL a1);
 void ov101_021ECE58(PokegearMapAppData *mapApp);
 void ov101_021ED110(PokegearMapAppData *mapApp, u8 a1, u8 a2);
 void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1);
@@ -671,7 +671,7 @@ void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yR
     objects[PGMAP_SPRITE_PLAYER].destX = (objects[PGMAP_SPRITE_PLAYER].unk_0C - mapApp->cursorSpriteState.left) * grid + mapApp->centerX + half_grid;
     objects[PGMAP_SPRITE_PLAYER].destY = (objects[PGMAP_SPRITE_PLAYER].unk_0E - mapApp->cursorSpriteState.top) * grid + mapApp->centerY + half_grid;
     ov101_021EA238(mapApp, 1);
-    for (i = 5; i < mapApp->objManager->num; ++i) {
+    for (i = PGMAP_SPRITE_CURSOR; i < mapApp->objManager->num; ++i) {
         objects[i].unk_18 = FX_Div(FX32_CONST(objects[i].destX - objects[i].pos.x), FX32_CONST(mapApp->cursorSpeed));
         objects[i].unk_1C = FX_Div(FX32_CONST(objects[i].destY - objects[i].pos.y), FX32_CONST(mapApp->cursorSpeed));
         PokegearManagedObject_SetFixCoords(&objects[i], objects[i].pos.x, objects[i].pos.y);
@@ -703,7 +703,7 @@ void ov101_021EC778(PokegearMapAppData *mapApp) {
     if (--mapApp->cursorSpeed == 0) {
         mapApp->cursorSpriteState.x = mapApp->cursorSpriteState.destX;
         mapApp->cursorSpriteState.y = mapApp->cursorSpriteState.destY;
-        for (i = 5; i < mapApp->objManager->num; ++i) {
+        for (i = PGMAP_SPRITE_CURSOR; i < mapApp->objManager->num; ++i) {
             PokegearManagedObject_SetCoord(&objects[i], objects[i].destX, objects[i].destY);
             ov101_021EC920(&objects[i], i, objects[i].destY);
         }
@@ -715,7 +715,7 @@ void ov101_021EC778(PokegearMapAppData *mapApp) {
         mapApp->cursorSpriteState.unk_24 += mapApp->cursorSpriteState.dyStep;
         mapApp->cursorSpriteState.x = FX_Whole(mapApp->cursorSpriteState.unk_20);
         mapApp->cursorSpriteState.y = FX_Whole(mapApp->cursorSpriteState.unk_24);
-        for (i = 5; i < mapApp->objManager->num; ++i) {
+        for (i = PGMAP_SPRITE_CURSOR; i < mapApp->objManager->num; ++i) {
             objects[i].unk_10 += objects[i].unk_18;
             objects[i].unk_14 += objects[i].unk_1C;
             x = FX_Whole(objects[i].unk_10);
@@ -746,7 +746,7 @@ void ov101_021EC944(PokegearMapAppData *mapApp) {
     if (mapApp->flyMapState) {
         return;
     }
-    for (i = 5; i < mapApp->objManager->num; ++i) {
+    for (i = PGMAP_SPRITE_CURSOR; i < mapApp->objManager->num; ++i) {
         ov101_021EC920(&objects[i], i, objects[i].pos.y);
     }
 }
@@ -809,9 +809,9 @@ BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot) {
     return FALSE;
 }
 
-void ov101_021ECA84(PokegearMapAppData *mapApp, BOOL a1) {
-    mapApp->unk_13C_7 = a1;
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->unk_17C->rawData, 8 * mapApp->unk_13C_7 + 14, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
+void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL state) {
+    mapApp->trashcanIconState = state;
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->unk_17C->rawData, 8 * mapApp->trashcanIconState + 14, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
@@ -834,7 +834,7 @@ int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp) {
             PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
             PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 3, 0);
             PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
-            ov101_021ECA84(mapApp, TRUE);
+            PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, TRUE);
             mapApp->draggingType = PGMAP_DRAG_FROM_SET;
             return -1;
         } else {
@@ -1011,8 +1011,8 @@ int PokegearMap_HandleTouchInput_DragItemFromPool(PokegearMapAppData *mapApp) {
         r5 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021F7EB8, gSystem.touchX, gSystem.touchY);
         PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
         if (r5 == -1) {
-            PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->draggingIcon], mapApp->draggingIcon * 24 + 40, 132);
-            PokegearManagedObject_SetPriority(&mapApp->objManager->objects[28 + mapApp->draggingIcon], 4);
+            PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_ICON_POKEBALL + mapApp->draggingIcon], mapApp->draggingIcon * 24 + 40, 132);
+            PokegearManagedObject_SetPriority(&mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_ICON_POKEBALL + mapApp->draggingIcon], 4);
             mapApp->draggingType = PGMAP_DRAG_NONE;
             return -1;
         }
@@ -1021,12 +1021,12 @@ int PokegearMap_HandleTouchInput_DragItemFromPool(PokegearMapAppData *mapApp) {
         }
         MapMarkingsHeapNode_SetIcon(mapApp->selectedMap.markingsNode, r5, mapApp->draggingIcon);
         ov101_021EAE54(mapApp, 0);
-        PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->draggingIcon], mapApp->draggingIcon * 24 + 40, 132);
-        PokegearManagedObject_SetPriority(&mapApp->objManager->objects[28 + mapApp->draggingIcon], 4);
+        PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_ICON_POKEBALL + mapApp->draggingIcon], mapApp->draggingIcon * 24 + 40, 132);
+        PokegearManagedObject_SetPriority(&mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_ICON_POKEBALL + mapApp->draggingIcon], 4);
         mapApp->draggingType = PGMAP_DRAG_NONE;
         return -1;
     }
-    PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[28 + mapApp->draggingIcon], gSystem.touchX, gSystem.touchY);
+    PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_ICON_POKEBALL + mapApp->draggingIcon], gSystem.touchX, gSystem.touchY);
     return -1;
 }
 
@@ -1051,16 +1051,16 @@ int PokegearMap_HandleKeyInput_SelectedMarkingSlot(PokegearMapAppData *mapApp) {
         r2 = PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1);
         ov101_021ED110(mapApp, r2 % 2, r2 / 2);
         ov101_021ECE58(mapApp);
-        ov101_021ECA84(mapApp, FALSE);
+        PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, FALSE);
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         ov101_021ECE58(mapApp);
-        ov101_021ECA84(mapApp, FALSE);
+        PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, FALSE);
     } else if (System_GetTouchNew()) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         ov101_021ECE58(mapApp);
-        ov101_021ECA84(mapApp, FALSE);
+        PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, FALSE);
         if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
             PokegearMap_InMarkingsMode_HideCursor(mapApp);
             mapApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
@@ -1075,21 +1075,21 @@ void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot) {
 
     if (slot < 4) {
         index = mapApp->draggingIcon;
-        PokegearManagedObject_SetCoordUpdateSprite(&objects[index + 20], 104 * (mapApp->draggingIcon % 2) + 32, 21 * (mapApp->draggingIcon / 2) + 32);
-        PokegearManagedObject_SetPriority(&objects[index + 20], 4);
+        PokegearManagedObject_SetCoordUpdateSprite(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_MARK_0], 104 * (mapApp->draggingIcon % 2) + 32, 21 * (mapApp->draggingIcon / 2) + 32);
+        PokegearManagedObject_SetPriority(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_MARK_0], 4);
     } else {
         index = slot - 4;
-        PokegearManagedObject_SetCoordUpdateSprite(&objects[index + 24], 104 * (index % 2) + 40, 21 * (index / 2) + 31);
-        PokegearManagedObject_SetPriority(&objects[index + 24], 4);
+        PokegearManagedObject_SetCoordUpdateSprite(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0], 104 * (index % 2) + 40, 21 * (index / 2) + 31);
+        PokegearManagedObject_SetPriority(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0], 4);
         sub_020136B4(mapApp->unk_044[index].unk_0, 4, -6);
         sub_02013820(mapApp->unk_044[index].unk_0, 3);
     }
 }
 
 int PokegearMap_HandleTouchInput_DragMarkingSlot(PokegearMapAppData *mapApp) {
-    int r2;
+    int input;
 
-    static const TouchscreenHitbox ov101_021F7ECC[] = {
+    static const TouchscreenHitbox touchscreenHitboxes[] = {
         { .rect = { 0x18, 0x2c, 0x18, 0x28 } },
         { .rect = { 0x18, 0x2c, 0x80, 0x90 } },
         { .rect = { 0x2c, 0x40, 0x18, 0x28 } },
@@ -1103,23 +1103,23 @@ int PokegearMap_HandleTouchInput_DragMarkingSlot(PokegearMapAppData *mapApp) {
     };
 
     if (!System_GetTouchHeld()) {
-        r2 = TouchscreenHitbox_FindHitboxAtPoint(ov101_021F7ECC, gSystem.touchX, gSystem.touchY);
-        if (r2 == 8) {
+        input = TouchscreenHitbox_FindHitboxAtPoint(touchscreenHitboxes, gSystem.touchX, gSystem.touchY);
+        if (input == 8) {
             ov101_021ED110(mapApp, mapApp->draggingIcon / 4, mapApp->draggingIcon % 4);
             ov101_021ED204(mapApp, mapApp->draggingIcon);
-            ov101_021ECA84(mapApp, FALSE);
+            PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, FALSE);
             PlaySE(SEQ_SE_GS_GEARGOMIBAKO);
             mapApp->draggingType = PGMAP_DRAG_NONE;
             return -1;
-        } else if (r2 == -1 || mapApp->draggingIcon / 4 != r2 / 4 || mapApp->draggingIcon == r2) {
+        } else if (input == -1 || mapApp->draggingIcon / 4 != input / 4 || mapApp->draggingIcon == input) {
             ov101_021ED204(mapApp, mapApp->draggingIcon);
             PlaySE(SEQ_SE_GS_GEARSEALHAMERU);
             mapApp->draggingType = PGMAP_DRAG_NONE;
             return -1;
-        } else if (r2 / 4 == 0) {
-            MapMarkingsHeapNode_SwapIcons(mapApp->selectedMap.markingsNode, mapApp->draggingIcon % 4, r2 % 4);
+        } else if (input / 4 == 0) {
+            MapMarkingsHeapNode_SwapIcons(mapApp->selectedMap.markingsNode, mapApp->draggingIcon % 4, input % 4);
         } else {
-            MapMarkingsHeapNode_SwapWords(mapApp->selectedMap.markingsNode, mapApp->draggingIcon % 4, r2 % 4);
+            MapMarkingsHeapNode_SwapWords(mapApp->selectedMap.markingsNode, mapApp->draggingIcon % 4, input % 4);
         }
         ov101_021EAE54(mapApp, 0);
         ov101_021ED204(mapApp, mapApp->draggingIcon);
@@ -1127,12 +1127,12 @@ int PokegearMap_HandleTouchInput_DragMarkingSlot(PokegearMapAppData *mapApp) {
         mapApp->draggingType = PGMAP_DRAG_NONE;
         return -1;
     }
-    PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[mapApp->draggingIcon + 20], gSystem.touchX + mapApp->draggingWordX, gSystem.touchY + mapApp->draggingWordY);
+    PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[mapApp->draggingIcon + PGMAP_SPRITE_MARKINGS_MENU_SLOT_MARK_0], gSystem.touchX + mapApp->draggingWordX, gSystem.touchY + mapApp->draggingWordY);
     if (mapApp->draggingIcon >= 4) {
         sub_020136B4(mapApp->unk_044[mapApp->draggingIcon - 4].unk_0, 4, -6);
     }
-    if (TouchscreenHitbox_PointIsIn(&ov101_021F7ECC[8], gSystem.touchX, gSystem.touchY) != mapApp->unk_13C_7) {
-        ov101_021ECA84(mapApp, mapApp->unk_13C_7 ^ TRUE);
+    if (TouchscreenHitbox_PointIsIn(&touchscreenHitboxes[8], gSystem.touchX, gSystem.touchY) != mapApp->trashcanIconState) {
+        PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, mapApp->trashcanIconState ^ TRUE);
     }
     return -1;
 }

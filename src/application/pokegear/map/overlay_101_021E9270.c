@@ -490,7 +490,7 @@ BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, 
     return TRUE;
 }
 
-void ov101_021EA238(PokegearMapAppData *mapApp, u8 a1) {
+void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
     u16 i;
     u16 index;
     s16 x;
@@ -498,23 +498,23 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 a1) {
     u8 grid;
     u8 halfGrid;
     u8 scale;
-    const PokegearMapLocationSpec *r1;
+    const PokegearMapLocationSpec *locationSpec;
 
     scale = mapApp->zoomed + 1;
     grid = scale * 8;
     halfGrid = grid / 2;
 
-    for (i = 0; i < 100; ++i) {
-        r1 = &mapApp->locationSpecs[i];
-        x = (r1->x - mapApp->cursorSpriteState.left) * grid + mapApp->centerX + halfGrid + r1->objXoffset * scale;
-        y = (r1->y - mapApp->cursorSpriteState.top) * grid + mapApp->centerY + halfGrid + r1->objYoffset * scale;
+    for (i = 0; i < PGMAP_NUM_LOCATIONS; ++i) {
+        locationSpec = &mapApp->locationSpecs[i];
+        x = (locationSpec->x - mapApp->cursorSpriteState.left) * grid + mapApp->centerX + halfGrid + locationSpec->objXoffset * scale;
+        y = (locationSpec->y - mapApp->cursorSpriteState.top) * grid + mapApp->centerY + halfGrid + locationSpec->objYoffset * scale;
         index = i + PGMAP_SPRITE_HAS_MARKINGS_BEGIN;
 
-        switch (a1) {
+        switch (mode) {
         case 0:
             mapApp->objManager->objects[index].pos.x = x;
             mapApp->objManager->objects[index].pos.y = y;
-            if (MapApp_GetMarkingsHeapNodeByMapID(mapApp, r1->mapId) != NULL) {
+            if (MapApp_GetMarkingsHeapNodeByMapID(mapApp, locationSpec->mapId) != NULL) {
                 Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, TRUE);
                 PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], TRUE);
             } else {
@@ -541,10 +541,10 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 a1) {
             Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, FALSE);
             continue;
         }
-        r1 = PokegearMap_GetLocationSpecByMapID(mapApp, mapApp->roamerLocations[i]);
-        x = (r1->x - mapApp->cursorSpriteState.left) * grid + mapApp->centerX + halfGrid + r1->objXoffset * scale;
-        y = (r1->y - mapApp->cursorSpriteState.top) * grid + mapApp->centerY + halfGrid + r1->objYoffset * scale;
-        switch (a1) {
+        locationSpec = PokegearMap_GetLocationSpecByMapID(mapApp, mapApp->roamerLocations[i]);
+        x = (locationSpec->x - mapApp->cursorSpriteState.left) * grid + mapApp->centerX + halfGrid + locationSpec->objXoffset * scale;
+        y = (locationSpec->y - mapApp->cursorSpriteState.top) * grid + mapApp->centerY + halfGrid + locationSpec->objYoffset * scale;
+        switch (mode) {
         case 0:
             mapApp->objManager->objects[index].pos.x = x;
             mapApp->objManager->objects[index].pos.y = y;
