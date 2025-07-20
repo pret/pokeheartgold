@@ -1376,7 +1376,7 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
         StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);
     } else {
         Pokemon *pokemon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partySlot);
-        struct UnkStruct_02067BF8 *r5 = sub_02067BF8(HEAP_ID_FIELD, fieldSystem, pokemon, partySlot, pokegearArgs->unk_20, pokegearArgs->mapCursorX * 32 + 0x10, pokegearArgs->mapCursorY * 32 + 0x10);
+        struct UnkStruct_02067BF8 *r5 = sub_02067BF8(HEAP_ID_FIELD, fieldSystem, pokemon, partySlot, pokegearArgs->selectedFlyDest, pokegearArgs->mapCursorX * 32 + 0x10, pokegearArgs->mapCursorY * 32 + 0x10);
         FreeToHeapExplicit(HEAP_ID_FIELD, startMenu->exitTaskEnvironment);
         FieldSystem_LoadFieldOverlay(fieldSystem);
         startMenu->exitTaskFunc = sub_02067C30;

@@ -172,7 +172,7 @@ PokegearRegion Pokegear_Coords2Region(u16 x, u16 y) {
     return POKEGEAR_REGION_JOHTO;
 }
 
-int ov100_021E5C80(PokegearAppData *pokegearApp) {
+int Pokegear_GetRegionFromMapCoords(PokegearAppData *pokegearApp) {
     return Pokegear_Coords2Region(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
 }
 

@@ -154,7 +154,7 @@ struct PokegearAppData {
     PlayerProfile *profile;                      // 0x034
     u8 unk_038;                                  // 0x038
     u8 filler_039[3];                            // 0x039
-    PokegearMapSessionState unk_03C;             // 0x03C
+    PokegearMapSessionState mapSessionState;     // 0x03C
     void (*vblankCB)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);               // 0x05C
     void (*deselectAppCB)(void *);               // 0x060
@@ -188,7 +188,7 @@ typedef enum PokegearRegion {
 } PokegearRegion;
 
 PokegearRegion Pokegear_Coords2Region(u16 x, u16 y);
-int ov100_021E5C80(PokegearAppData *pokegearApp);
+int Pokegear_GetRegionFromMapCoords(PokegearAppData *pokegearApp);
 BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp);
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);

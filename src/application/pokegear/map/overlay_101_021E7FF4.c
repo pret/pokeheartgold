@@ -1070,7 +1070,7 @@ void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     mapApp->pokegear->reselectAppCB = PokegearMap_ShowMapCursor;
     mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
     ov101_021E990C(mapApp);
-    ov101_021E9B70(mapApp, &mapApp->cursorSpriteState);
+    PokegearMap_OnVBlank_UpdateCursorAffine(mapApp, &mapApp->cursorSpriteState);
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->unk_178->rawData, 0, 0, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
 
     ov101_021EAF40(mapApp);

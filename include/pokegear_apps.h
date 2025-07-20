@@ -3,9 +3,9 @@
 
 #include "overlay_manager.h"
 
-BOOL TownMap_Init(OverlayManager *man, int *state);
-BOOL TownMap_Main(OverlayManager *man, int *state);
-BOOL TownMap_Exit(OverlayManager *man, int *state);
+BOOL FlyMap_Init(OverlayManager *man, int *state);
+BOOL FlyMap_Main(OverlayManager *man, int *state);
+BOOL FlyMap_Exit(OverlayManager *man, int *state);
 
 BOOL PokegearMap_Init(OverlayManager *man, int *state);
 BOOL PokegearMap_Main(OverlayManager *man, int *state);

@@ -21,7 +21,8 @@ typedef enum PokegearMapMainState {
     PGMAP_MAIN_STATE_LOAD,
     PGMAP_MAIN_STATE_HANDLE_INPUT,
     PGMAP_MAIN_STATE_UNLOAD,
-    PGMAP_MAIN_STATE_FADE_IN = 4,
+    PGMAP_MAIN_STATE_3, // unused
+    PGMAP_MAIN_STATE_FADE_IN,
     PGMAP_MAIN_STATE_FADE_OUT,
     PGMAP_MAIN_STATE_FADE_IN_APP,
     PGMAP_MAIN_STATE_FADE_OUT_APP,
@@ -29,7 +30,8 @@ typedef enum PokegearMapMainState {
     PGMAP_MAIN_STATE_HANDLE_INPUT_MARKING_MODE,
     PGMAP_MAIN_STATE_EXIT_MARKING_MODE,
     PGMAP_MAIN_STATE_FADE_OUT_FOR_WORD_SELECT,
-    PGMAP_MAIN_STATE_QUIT = 13,
+    PGMAP_MAIN_STATE_FLY_CONTEXT_MENU,
+    PGMAP_MAIN_STATE_QUIT,
 } PokegearMapMainState;
 
 typedef enum PokegearMapSpriteID {
@@ -113,7 +115,7 @@ typedef struct PokegearMapAppData_Sub044 {
     UnkStruct_02021AC8 unk_4;
 } PokegearMapAppData_Sub044;
 
-typedef struct PokegearMapAppData_Sub0C8 {
+typedef struct PokegearMapCursorState {
     fx32 x;
     fx32 y;
     fx32 xRatio;
@@ -132,7 +134,7 @@ typedef struct PokegearMapAppData_Sub0C8 {
     s16 dy;
     s16 destX;
     s16 destY;
-} PokegearMapAppData_Sub0C8;
+} PokegearMapCursorState;
 
 typedef struct PokegearMapLocationSpec {
     u16 mapId;
@@ -174,7 +176,7 @@ typedef struct PokegearMapAppData {
     int state;                                    // 0x004
     int substate;                                 // 0x008
     u8 inMarkingsMode;                            // 0x00C
-    u8 unk_00D;                                   // 0x00D
+    u8 flyMapState;                               // 0x00D
     u8 curRegion;                                 // 0x00E
     s8 flyDestination;                            // 0x00F
     PokegearAppData *pokegear;                    // 0x010
@@ -200,7 +202,7 @@ typedef struct PokegearMapAppData {
     TouchscreenListMenuSpawner *listMenuSpawner;  // 0x0BC
     LISTMENUITEM *listMenuItems;                  // 0x0C0
     TouchscreenListMenu *listMenu;                // 0x0C4
-    PokegearMapAppData_Sub0C8 cursorSpriteState;  // 0x0C8
+    PokegearMapCursorState cursorSpriteState;     // 0x0C8
     u16 minXscroll;                               // 0x100
     u16 maxXscroll;                               // 0x102
     u16 minYscroll;                               // 0x104
@@ -217,11 +219,11 @@ typedef struct PokegearMapAppData {
     PhoneBook *phoneBook;                         // 0x128
     PhoneContact *phoneContact;                   // 0x12C
     u8 numPhonebookSlots;                         // 0x130
-    u8 unk_131;                                   // 0x131
-    u8 unk_132;                                   // 0x132
-    s8 unk_133;                                   // 0x133
-    s8 unk_134;                                   // 0x134
-    u8 unk_135;                                   // 0x135
+    u8 centerY;                                   // 0x131
+    u8 centerX;                                   // 0x132
+    s8 yOffset;                                   // 0x133
+    s8 xOffset;                                   // 0x134
+    u8 fadeStep;                                  // 0x135
     u8 numLocationSpecs;                          // 0x136
     u8 unk_137;                                   // 0x137
     u8 zoomed : 1;                                // 0x138
@@ -275,15 +277,15 @@ BOOL PokegearMap_AnimateSwitchToMarkingMode(PokegearMapAppData *mapApp);
 BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp);
 
 void PokegearMap_VBlankCB(PokegearAppData *pokegear, void *appData);
-void ov101_021E9288(PokegearMapAppData *mapApp);
+void PokegearMap_UpdateCursorBounds(PokegearMapAppData *mapApp);
 void PokegearMap_SaveState(PokegearMapAppData *mapApp);
 void ov101_021E9464(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut);
 void ov101_021E94C0(PokegearMapAppData *mapApp);
 void ov101_021E9530(PokegearMapAppData *mapApp, u8 a1, u16 a2, u16 a3, s16 a4, s16 a5);
 void ov101_021E990C(PokegearMapAppData *mapApp);
-void ov101_021E9B70(PokegearMapAppData *mapApp, PokegearMapAppData_Sub0C8 *a1);
+void PokegearMap_OnVBlank_UpdateCursorAffine(PokegearMapAppData *mapApp, PokegearMapCursorState *cursorState);
 void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 dx, s16 dy);
-BOOL ov101_021E9CD4(PokegearMapAppData *mapApp, u8 direction);
+BOOL PokegearMap_FadeMapScreen(PokegearMapAppData *mapApp, u8 direction);
 void PokegearMap_BeginScrollMarkingsPanelTopScreen(PokegearMapAppData *mapApp, u8 direction);
 BOOL PokegearMap_RunScrollMarkingsPanelTopScreen(PokegearMapAppData *mapApp, u8 direction);
 void PokegearMap_BeginScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, u8 direction);
@@ -308,14 +310,14 @@ void PokegearMap_ShowMapCursor(void *appData);
 void PokegearMap_InMarkingsMode_HideCursor(void *appData);
 void PokegearMap_InMarkingsMode_ShowCursor(void *appData);
 void ov101_021EB38C(PokegearMapAppData *mapApp, int a1, int a2);
-void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 a1);
-void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int a1);
+void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 x);
+void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int mapID);
 
 int ov101_021EB568(PokegearMapAppData *mapApp);
 int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-int ov101_021EB94C(PokegearMapAppData *mapApp);
-int ov101_021EBC1C(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-int ov101_021EC0AC(PokegearMapAppData *mapApp);
+int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp);
+int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+int FlyMap_HandleTouchInput_DraggingMap(PokegearMapAppData *mapApp);
 void ov101_021EC304(PokegearMapAppData *mapApp);
 int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp);
 int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, BOOL *a1);
@@ -336,9 +338,9 @@ BOOL MapMarkingsHeapNode_SetWord(MapMarkingsHeapNode *node, u8 index, u16 word);
 BOOL MapMarkingsHeapNode_RemoveWord(MapMarkingsHeapNode *node, u8 index);
 BOOL MapMarkingsHeapNode_SwapWords(MapMarkingsHeapNode *node, u8 index1, u8 index2);
 
-BOOL ov101_021EDCE0(PokegearMapAppData *mapApp);
-BOOL ov101_021EDDB0(PokegearMapAppData *mapApp);
-int ov101_021EDDF4(PokegearMapAppData *mapApp);
+BOOL FlyMap_GraphicsInit(PokegearMapAppData *mapApp);
+BOOL FlyMap_GraphicsDeinit(PokegearMapAppData *mapApp);
+int FlyMap_HandleContextMenu(PokegearMapAppData *mapApp);
 
 extern const PokegearMapLocationSpec sLocationSpecs[PGMAP_NUM_LOCATIONS];
 extern const MapFlypointParam gMapFlypointParams[PGMAP_NUM_FLYPOINTS];

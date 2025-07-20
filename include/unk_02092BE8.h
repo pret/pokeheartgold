@@ -25,7 +25,7 @@ typedef struct PokegearArgs {
     BOOL setFlyDestination;  // 0x14
     int mapCursorX;          // 0x18
     int mapCursorY;          // 0x1C
-    u16 unk_20;              // 0x20
+    u16 selectedFlyDest;     // 0x20
     u8 matrixXCoord;         // 0x22
     u8 matrixYCoord;         // 0x23
     SaveData *saveData;      // 0x24

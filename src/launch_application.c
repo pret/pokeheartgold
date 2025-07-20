@@ -504,7 +504,7 @@ static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs 
 }
 
 static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_TownMap = { TownMap_Init, TownMap_Main, TownMap_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OverlayManagerTemplate sOverlayTemplate_TownMap = { FlyMap_Init, FlyMap_Main, FlyMap_Exit, FS_OVERLAY_ID(OVY_101) };
     OverlayManagerTemplate template = sOverlayTemplate_TownMap;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }

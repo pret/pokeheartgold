@@ -166,7 +166,7 @@ void ov101_021E78EC(PokegearMapAppData *mapApp) {
         mapApp->zoomed = sub_0202EEA4(mapApp->pokegear->savePokegear);
     } else {
         mapApp->inMarkingsMode = 1;
-        mapApp->sessionState = mapApp->pokegear->unk_03C;
+        mapApp->sessionState = mapApp->pokegear->mapSessionState;
         mapApp->zoomed = mapApp->sessionState.zoomed;
         if (mapApp->sessionState.word != EC_WORD_NULL) {
             mapMarkingsHeapNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapApp->sessionState.mapID);
@@ -196,9 +196,9 @@ void ov101_021E78EC(PokegearMapAppData *mapApp) {
     mapApp->minYscroll = 1;
     mapApp->maxXscroll = sMapXScrollLimits[mapApp->mapUnlockLevel];
     mapApp->maxYscroll = 17;
-    mapApp->unk_131 = 8;
-    mapApp->unk_132 = 8;
-    mapApp->unk_133 = 0;
+    mapApp->centerY = 8;
+    mapApp->centerX = 8;
+    mapApp->yOffset = 0;
     mapApp->canSeeSafariZone = TRUE;
     mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
     mapApp->isMapSinjoh = IsMapSinjoh(mapApp->mapID);
@@ -266,7 +266,7 @@ int PokegearMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp) {
     if (!PokegearMaps_GraphicsDeinit(mapApp)) {
         return PGMAP_MAIN_STATE_UNLOAD;
     }
-    mapApp->pokegear->unk_03C = mapApp->sessionState;
+    mapApp->pokegear->mapSessionState = mapApp->sessionState;
     return PGMAP_MAIN_STATE_QUIT;
 }
 
@@ -409,13 +409,13 @@ int PokegearMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
 }
 
 int PokegearMap_MainTask_FadeInApp(PokegearMapAppData *mapApp) {
-    BOOL r4;
-    BOOL r0;
+    BOOL plltFadeDone;
+    BOOL scrollDone;
 
     switch (mapApp->state) {
     case 0:
         PaletteData_SetAutoTransparent(mapApp->pokegear->plttData, TRUE);
-        mapApp->unk_135 = 0;
+        mapApp->fadeStep = 0;
         for (int i = 0; i < 3; ++i) {
             ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
         }
@@ -423,9 +423,9 @@ int PokegearMap_MainTask_FadeInApp(PokegearMapAppData *mapApp) {
         ++mapApp->state;
         break;
     case 1:
-        r4 = ov101_021E9CD4(mapApp, 0);
-        r0 = PokegearMap_RunScrollMarkingsPanelTopScreen(mapApp, 0);
-        if (r4 && r0) {
+        plltFadeDone = PokegearMap_FadeMapScreen(mapApp, 0);
+        scrollDone = PokegearMap_RunScrollMarkingsPanelTopScreen(mapApp, 0);
+        if (plltFadeDone && scrollDone) {
             ++mapApp->state;
         }
         break;
@@ -451,11 +451,11 @@ int PokegearMap_MainTask_FadeOutApp(PokegearMapAppData *mapApp) {
             ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
         }
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 1);
-        mapApp->unk_135 = 0;
+        mapApp->fadeStep = 0;
         ++mapApp->state;
         break;
     case 1:
-        r4 = ov101_021E9CD4(mapApp, 1);
+        r4 = PokegearMap_FadeMapScreen(mapApp, 1);
         r0 = PokegearMap_RunScrollMarkingsPanelTopScreen(mapApp, 1);
         if (r4 && r0) {
             ++mapApp->state;
