@@ -140,5 +140,5 @@ void ShowWFCUserInfoWarning(HeapID heapId, int a1) {
     ToggleBgLayer(GF_BG_LYR_SUB_2, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
     FreeBgTilemapBuffer(bg_config, GF_BG_LYR_MAIN_0);
-    FreeToHeap(bg_config);
+    Heap_Free(bg_config);
 }

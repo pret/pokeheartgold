@@ -676,7 +676,7 @@ ov86_021E5E54: ; 0x021E5E54
 	mov r1, #6
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov86_021E5E54
 
@@ -783,7 +783,7 @@ ov86_021E5ECC: ; 0x021E5ECC
 	mov r2, #0x60
 	bl MIi_CpuCopy16
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x14
@@ -1622,7 +1622,7 @@ _021E6630:
 	cmp r4, #0
 	beq _021E663A
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021E663A:
 	add r0, r5, #0
 	mov r1, #0
@@ -3389,7 +3389,7 @@ _021E74A2:
 	blo _021E7462
 _021E74AE:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	add r0, r0, #1
 	lsl r0, r0, #0x10
@@ -3401,7 +3401,7 @@ _021E74C2:
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	beq _021E74CC
-	bl FreeToHeap
+	bl Heap_Free
 _021E74CC:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -3418,7 +3418,7 @@ _021E74DA:
 	ldr r0, [r5, r6]
 	cmp r0, #0
 	beq _021E74E4
-	bl FreeToHeap
+	bl Heap_Free
 _021E74E4:
 	add r4, r4, #1
 	add r5, #8

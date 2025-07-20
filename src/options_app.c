@@ -645,7 +645,7 @@ static void OptionsApp_FreeBgConfig(OptionsApp_Data *data) {
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static void OptionsApp_SetupGraphicsData(OptionsApp_Data *data) {

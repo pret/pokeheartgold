@@ -221,7 +221,7 @@ static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data) {
     ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
 
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data) {

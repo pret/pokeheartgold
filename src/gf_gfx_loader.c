@@ -99,7 +99,7 @@ void *GfGfxLoader_LoadFromNarc(NarcId narcId, s32 fileId, BOOL isCompressed, Hea
             }
             if (uncompBuf != NULL) {
                 MI_UncompressLZ8(data, uncompBuf);
-                FreeToHeap(data);
+                Heap_Free(data);
             }
             data = uncompBuf; // Potential memory leak
         }
@@ -128,7 +128,7 @@ void *GfGfxLoader_LoadFromNarc_GetSizeOut(NarcId narcId, s32 fileId, BOOL isComp
             }
             if (uncompBuf != NULL) {
                 MI_UncompressLZ8(data, uncompBuf);
-                FreeToHeap(data);
+                Heap_Free(data);
             }
             data = uncompBuf; // Potential memory leak
         }
@@ -226,7 +226,7 @@ void *GfGfxLoader_LoadFromOpenNarc_GetSizeOut(NARC *narc, s32 fileId, BOOL isCom
             }
             if (uncompBuf != NULL) {
                 MI_UncompressLZ8(data, uncompBuf);
-                FreeToHeap(data);
+                Heap_Free(data);
             }
             data = uncompBuf; // Potential memory leak
         }
@@ -244,7 +244,7 @@ static u32 GfGfxLoader_LoadCharDataInternal(void *data, BgConfig *bgConfig, GFBg
             }
             BG_LoadCharTilesData(bgConfig, (u8)layer, pCharData->pRawData, szByte, tileStart);
         }
-        FreeToHeap(data);
+        Heap_Free(data);
     }
     return szByte;
 }
@@ -264,7 +264,7 @@ static void GfGfxLoader_LoadScrnDataInternal(void *data, BgConfig *bgConfig, GFB
             }
             BgCopyOrUncompressTilemapBufferRangeToVram(bgConfig, (u8)layer, pScrnData->rawData, szByte, tileStart);
         }
-        FreeToHeap(data);
+        Heap_Free(data);
     }
 }
 
@@ -313,7 +313,7 @@ static void GfGfxLoader_GXLoadPalWithSrcOffsetInternal(void *data, enum GFPalLoa
                 break;
             }
         }
-        FreeToHeap(data);
+        Heap_Free(data);
     }
 }
 
@@ -330,7 +330,7 @@ static void GfGfxLoader_PartiallyLoadPaletteInternal(void *data, NNS_G2D_VRAM_TY
                 NNS_G2dLoadPalette(pPlttData, baseAddr, type, pPltProxy);
             }
         }
-        FreeToHeap(data);
+        Heap_Free(data);
     }
 }
 
@@ -369,7 +369,7 @@ static u32 GfGfxLoader_LoadImageMappingInternal(void *data, int layout, u32 szBy
             _020F5950[layout](pCharData, baseAddr, type, pImgProxy);
             size = pCharData->szByte;
         }
-        FreeToHeap(data);
+        Heap_Free(data);
     }
     return size;
 }
@@ -377,7 +377,7 @@ static u32 GfGfxLoader_LoadImageMappingInternal(void *data, int layout, u32 szBy
 static void *GfGfxLoader_GetCharDataInternal(void *data, NNSG2dCharacterData **ppCharData) {
     if (data != NULL) {
         if (!NNS_G2dGetUnpackedBGCharacterData(data, ppCharData)) {
-            FreeToHeap(data);
+            Heap_Free(data);
             return NULL;
         }
     }
@@ -387,7 +387,7 @@ static void *GfGfxLoader_GetCharDataInternal(void *data, NNSG2dCharacterData **p
 static void *GfGfxLoader_GetScrnDataInternal(void *data, NNSG2dScreenData **ppScrnData) {
     if (data != NULL) {
         if (!NNS_G2dGetUnpackedScreenData(data, ppScrnData)) {
-            FreeToHeap(data);
+            Heap_Free(data);
             return NULL;
         }
     }
@@ -397,7 +397,7 @@ static void *GfGfxLoader_GetScrnDataInternal(void *data, NNSG2dScreenData **ppSc
 static void *GfGfxLoader_GetPlttDataInternal(void *data, NNSG2dPaletteData **ppPlttData) {
     if (data != NULL) {
         if (!NNS_G2dGetUnpackedPaletteData(data, ppPlttData)) {
-            FreeToHeap(data);
+            Heap_Free(data);
             return NULL;
         }
     }
@@ -407,7 +407,7 @@ static void *GfGfxLoader_GetPlttDataInternal(void *data, NNSG2dPaletteData **ppP
 static void *GfGfxLoader_GetCellBankInternal(void *data, NNSG2dCellDataBank **ppCellBank) {
     if (data != NULL) {
         if (!NNS_G2dGetUnpackedCellBank(data, ppCellBank)) {
-            FreeToHeap(data);
+            Heap_Free(data);
             return NULL;
         }
     }
@@ -417,7 +417,7 @@ static void *GfGfxLoader_GetCellBankInternal(void *data, NNSG2dCellDataBank **pp
 static void *GfGfxLoader_GetAnimBankInternal(void *data, NNSG2dAnimBankData **ppAnimBank) {
     if (data != NULL) {
         if (!NNS_G2dGetUnpackedAnimBank(data, ppAnimBank)) {
-            FreeToHeap(data);
+            Heap_Free(data);
             return NULL;
         }
     }

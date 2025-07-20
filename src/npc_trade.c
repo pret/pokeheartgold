@@ -47,10 +47,10 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
 }
 
 void NPCTradeApp_Delete(NPCTradeAppData *work) {
-    FreeToHeap(work->trade_dat);
-    FreeToHeap(work->mon);
-    FreeToHeap(work->profile);
-    FreeToHeap(work);
+    Heap_Free(work->trade_dat);
+    Heap_Free(work->mon);
+    Heap_Free(work->profile);
+    Heap_Free(work);
 }
 
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 level, u16 mapno) {
@@ -75,10 +75,10 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
         SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
         String_Delete(name);
-        FreeToHeap(mail);
+        Heap_Free(mail);
     }
-    FreeToHeap(trade_dat);
-    FreeToHeap(mon);
+    Heap_Free(trade_dat);
+    Heap_Free(mon);
 }
 
 Mail *NPCTrade_MakeKenyaMail(void) {
@@ -95,8 +95,8 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     mailno = ItemToMailId(trade_dat->heldItem);
     mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
     String_Delete(name);
-    FreeToHeap(trade_dat);
-    FreeToHeap(mon);
+    Heap_Free(trade_dat);
+    Heap_Free(mon);
     return mail;
 }
 

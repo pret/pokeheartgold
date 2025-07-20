@@ -29,7 +29,7 @@ BOOL RadioShow_PokeFlute_Setup(RadioShow *radioShow) {
 BOOL RadioShow_PokeFlute_Teardown(RadioShow *radioShow) {
     RadioShow_PokeFlute_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokeFluteData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

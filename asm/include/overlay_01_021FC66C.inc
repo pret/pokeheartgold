@@ -11,7 +11,7 @@
 .public SysTask_Destroy
 .public ClearFrameAndWindow2
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public RemoveWindow
 .public SysTask_GetData
 .public LCRandom

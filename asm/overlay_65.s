@@ -1776,7 +1776,7 @@ ov65_0221CD0C: ; 0x0221CD0C
 _0221CD22:
 	ldr r0, _0221CD68 ; =0x0000079C
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, r7]
 	add r4, r4, #4
 	add r6, r6, #1
@@ -1795,7 +1795,7 @@ _0221CD38:
 _0221CD4A:
 	ldr r0, _0221CD70 ; =0x000007B4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, r7]
 	add r4, r4, #4
 	add r6, r6, #1
@@ -1829,7 +1829,7 @@ WirelessTradeSelectMon_Exit: ; 0x0221CD74
 	bl String_Delete
 	ldr r0, _0221CE14 ; =0x00002228
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov65_0221CCB0
 	ldr r0, _0221CE18 ; =0x00000444
@@ -1843,7 +1843,7 @@ WirelessTradeSelectMon_Exit: ; 0x0221CD74
 	lsl r1, r1, #6
 	ldr r1, [r4, r1]
 	mov r0, #0x1a
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0x19
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2375,7 +2375,7 @@ _0221D232:
 	bl BG_LoadScreenTilemapData
 _0221D250:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0221D256:
 	add sp, #8
 	pop {r4, r5, r6, pc}
@@ -4689,7 +4689,7 @@ _0221E4C0:
 	add r2, r6, #0
 	bl BufferPlayersName
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	mov r1, #0x41
 	bl ov65_0221E330
@@ -6858,9 +6858,9 @@ _0221F6BC:
 	mov r1, #0x14
 	bl GameStats_Inc
 	ldr r0, [sp, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

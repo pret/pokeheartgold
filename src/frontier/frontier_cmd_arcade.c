@@ -178,7 +178,7 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 static void ov80_02233A1C(void *data) {
     GAME_BOARD_ARGS *args = data;
     ov80_02234550(args->work, args);
-    FreeToHeap(args);
+    Heap_Free(args);
 }
 
 BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx) {

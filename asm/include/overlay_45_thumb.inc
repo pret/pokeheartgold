@@ -46,7 +46,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_BindModelSet
 .public sub_0201FA34
 .public MTRandom

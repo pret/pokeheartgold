@@ -33,7 +33,7 @@ sub_0205453C: ; 0x0205453C
 	ldr r0, [r4, #0x5c]
 	cmp r0, #0
 	beq _0205454E
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0x5c]
 _0205454E:

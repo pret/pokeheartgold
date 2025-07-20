@@ -480,7 +480,7 @@ _02237642:
 	blt _02237642
 _02237668:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl BattleSetup_SetAllySideBattlersToPlayer
 	lsl r0, r7, #1
@@ -493,7 +493,7 @@ _02237668:
 	mov r2, #0xb
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r2, [sp, #0x10]
@@ -600,7 +600,7 @@ _0223772C:
 	blt _0223772C
 _0223776E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldrb r0, [r5, #4]
 	cmp r0, #2
 	beq _0223777E
@@ -625,7 +625,7 @@ _0223777E:
 	mov r2, #0xb
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r2, [sp, #0x10]
@@ -665,7 +665,7 @@ _022377D0:
 	mov r2, #3
 	bl BattleSetup_AddMonToParty
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02237810:
 	add r0, r4, #0
 	add sp, #0x64

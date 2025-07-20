@@ -11,7 +11,7 @@ MoveRelearnerArgs *MoveRelearner_New(HeapID heapId) {
 }
 
 void MoveRelearner_Delete(MoveRelearnerArgs *moveRelearner) {
-    FreeToHeap(moveRelearner);
+    Heap_Free(moveRelearner);
 }
 
 u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
@@ -55,7 +55,7 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
             }
         }
     }
-    FreeToHeap(tableFromFile);
+    Heap_Free(tableFromFile);
     return returnTable;
 }
 

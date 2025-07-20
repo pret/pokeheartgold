@@ -790,20 +790,20 @@ sub_020350D4: ; 0x020350D4
 	ldr r1, [r0, #8]
 	ldr r0, _02035110 ; =0x00000D7C
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0203510C ; =_021D4134
 	ldr r1, [r0, #8]
 	ldr r0, _02035114 ; =0x00000D64
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0203510C ; =_021D4134
 	ldr r1, [r0, #8]
 	ldr r0, _02035118 ; =0x00000D84
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0203510C ; =_021D4134
 	ldr r0, [r0, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0203510C ; =_021D4134
 	mov r1, #0
 	str r1, [r0, #8]

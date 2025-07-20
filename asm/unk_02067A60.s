@@ -30,10 +30,10 @@ sub_02067A60: ; 0x02067A60
 
 	thumb_func_start sub_02067A78
 sub_02067A78: ; 0x02067A78
-	ldr r3, _02067A7C ; =FreeToHeap
+	ldr r3, _02067A7C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02067A7C: .word FreeToHeap
+_02067A7C: .word Heap_Free
 	thumb_func_end sub_02067A78
 
 	thumb_func_start sub_02067A80
@@ -454,7 +454,7 @@ _02067DB4:
 	sub r2, r2, #2
 	bl sub_02053908
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02067DE4:
 	mov r0, #0
 	add sp, #0x1c

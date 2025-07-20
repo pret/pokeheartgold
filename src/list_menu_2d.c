@@ -54,7 +54,7 @@ void Delete2dMenu(struct ListMenu2D *menu, u8 *ret_p) {
         *ret_p = menu->selectedIndex;
     }
     DestroyListMenuCursorObj(menu->cursor);
-    FreeToHeapExplicit((HeapID)menu->heapId, menu);
+    Heap_FreeExplicit((HeapID)menu->heapId, menu);
 }
 
 int Handle2dMenuInput(struct ListMenu2D *menu) {
@@ -240,7 +240,7 @@ int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, HeapID heapId) {
 void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, HeapID heapId) {
     sub_0200E5D4(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
-    FreeToHeapExplicit(heapId, menu->template.window);
+    Heap_FreeExplicit(heapId, menu->template.window);
     ListMenuItems_Delete(menu->template.items);
     Delete2dMenu(menu, NULL);
 }

@@ -9,7 +9,7 @@
 .public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_ResTexIsLoaded
 .public sub_020237EC
 .public sub_02023874

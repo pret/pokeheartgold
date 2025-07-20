@@ -11,7 +11,7 @@
 .public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public ReallocFromHeap
 .public GF3dRender_DrawModel
 .public GF3dRender_BindModelSet

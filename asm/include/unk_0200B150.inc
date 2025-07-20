@@ -7,7 +7,7 @@
 .public sub_0200B2E0
 .public sub_0200B2E8
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public ClearMainOAM
 .public ClearSubOAM
 .public GF_AssertFail

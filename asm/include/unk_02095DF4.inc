@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public sub_0203E30C
 .public FieldSystem_GetSaveData
 .public PokeathlonCourse_LaunchApp

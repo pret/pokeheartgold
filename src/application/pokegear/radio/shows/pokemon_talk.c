@@ -71,7 +71,7 @@ BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow) {
 BOOL RadioShow_PokemonTalk_Teardown(RadioShow *radioShow) {
     RadioShow_PokemonTalk_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonTalkData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

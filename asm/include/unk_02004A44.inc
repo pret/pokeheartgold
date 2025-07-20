@@ -93,7 +93,7 @@
 .public Sound_Stop
 .public sub_02005FD8
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public sub_020378CC
 .public NNS_SndSetMasterVolume

@@ -495,7 +495,7 @@ static void PartyMenu_SwapMonsData(PartyMenu *partyMenu) {
     *monBuf = partyMenu->monsDrawState[swapMonsData->slots[0]];
     partyMenu->monsDrawState[swapMonsData->slots[0]] = partyMenu->monsDrawState[swapMonsData->slots[1]];
     partyMenu->monsDrawState[swapMonsData->slots[1]] = *monBuf;
-    FreeToHeapExplicit(HEAP_ID_PARTY_MENU, monBuf);
+    Heap_FreeExplicit(HEAP_ID_PARTY_MENU, monBuf);
 
     pos = partyMenu->monsDrawState[swapMonsData->slots[0]].iconX;
     partyMenu->monsDrawState[swapMonsData->slots[0]].iconX = partyMenu->monsDrawState[swapMonsData->slots[1]].iconX;

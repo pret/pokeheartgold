@@ -49,7 +49,7 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
     } else {
         *retPtr = FALSE;
     }
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return FALSE;
 }
 
@@ -68,7 +68,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
         UpdatePokedexWithReceivedSpecies(ctx->fieldSystem->saveData, mon);
     }
 
-    FreeToHeap(mon);
+    Heap_Free(mon);
     sub_0202EB74(unkStruct);
     sub_02093070(ctx->fieldSystem);
     return FALSE;

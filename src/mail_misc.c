@@ -38,7 +38,7 @@ EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputS
 }
 
 void EasyChat_FreeArgs(EasyChatArgs *args) {
-    FreeToHeap(args);
+    Heap_Free(args);
 }
 
 void sub_02090D14(EasyChatArgs *args, u16 a1) {
@@ -242,9 +242,9 @@ BOOL sub_02090F70(UseMailArgs *args, Pokemon *mon) {
 
 void sub_02090F90(UseMailArgs *args) {
     if (args->mail != NULL) {
-        FreeToHeap(args->mail);
+        Heap_Free(args->mail);
     }
-    FreeToHeap(args);
+    Heap_Free(args);
 }
 
 int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
@@ -259,7 +259,7 @@ int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
         Mail_Init(mail);
         SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         SetMonData(mon, MON_DATA_HELD_ITEM, &item);
-        FreeToHeap(mail);
+        Heap_Free(mail);
         return idx;
     }
     return -1;
@@ -277,7 +277,7 @@ int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId) {
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
     Mailbox_DeleteSlotI(msgs, 0, i);
-    FreeToHeap(mail);
+    Heap_Free(mail);
 
     return i;
 }

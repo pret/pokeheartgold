@@ -2222,7 +2222,7 @@ ov08_0221CF38: ; 0x0221CF38
 	add r1, #0xc
 	bl ov08_022217F0
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, [r5]
 	add r0, r4, #0
 	ldr r2, [r2, #0xc]
@@ -2236,7 +2236,7 @@ ov08_0221CF38: ; 0x0221CF38
 	add r1, #0xc
 	bl ov08_02221B1C
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	str r0, [sp]
 	lsl r0, r0, #9
@@ -2378,7 +2378,7 @@ ov08_0221CF38: ; 0x0221CF38
 	add r1, r4, #0
 	bl PaletteData_LoadPalette
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 	nop
@@ -3425,7 +3425,7 @@ _0221D8BE:
 	lsr r1, r1, #0x18
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r6, r6, #4
 	cmp r4, #2
@@ -8670,7 +8670,7 @@ _0222053A:
 	bl String_Delete
 _0222056A:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11812,7 +11812,7 @@ ov08_02221E6C: ; 0x02221E6C
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -14144,7 +14144,7 @@ ov08_022230F4: ; 0x022230F4
 	add r1, #0xc
 	bl ov08_02224254
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	mov r0, #1
@@ -17052,7 +17052,7 @@ ov08_022247E4: ; 0x022247E4
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -17481,10 +17481,10 @@ _02224B72:
 
 	thumb_func_start ov08_02224B7C
 ov08_02224B7C: ; 0x02224B7C
-	ldr r3, _02224B80 ; =FreeToHeap
+	ldr r3, _02224B80 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02224B80: .word FreeToHeap
+_02224B80: .word Heap_Free
 	thumb_func_end ov08_02224B7C
 
 	thumb_func_start ov08_02224B84

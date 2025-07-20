@@ -5,7 +5,7 @@
 .public GetECWordIndexByPair
 .public GetCategoryAndMsgNoByECWordIdx
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public String_New
 .public CopyU16ArrayToStringN

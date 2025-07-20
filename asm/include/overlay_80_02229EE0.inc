@@ -8,7 +8,7 @@
 .public NewString_ReadMsgData
 .public GetSpeciesNameIntoArray
 .public BufferPlayersName
-.public FreeToHeap
+.public Heap_Free
 .public LCRandom
 .public Sprite_SetMatrix
 .public Sprite_SetAnimCtrlSeq

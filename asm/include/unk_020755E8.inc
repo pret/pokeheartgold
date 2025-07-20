@@ -92,7 +92,7 @@
 .public sub_02017068
 .public Main_SetVBlankIntrCB
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndGetTotalFreeSize
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

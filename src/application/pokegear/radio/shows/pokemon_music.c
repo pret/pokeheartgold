@@ -150,7 +150,7 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
 BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow) {
     RadioShow_PokemonMusic_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonMusicData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

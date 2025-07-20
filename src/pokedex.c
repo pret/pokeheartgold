@@ -574,7 +574,7 @@ u16 Pokedex_CountJohtoDexOwned(Pokedex *pokedex) {
             n++;
         }
     }
-    FreeToHeap(johto_species);
+    Heap_Free(johto_species);
     return n;
 }
 
@@ -589,7 +589,7 @@ u16 Pokedex_CountJohtoDexSeen(Pokedex *pokedex) {
             n++;
         }
     }
-    FreeToHeap(johto_species);
+    Heap_Free(johto_species);
     return n;
 }
 
@@ -626,7 +626,7 @@ u16 Pokedex_CountJohtoOwned_ExcludeMythical(Pokedex *pokedex) {
             n++;
         }
     }
-    FreeToHeap(johto_dex);
+    Heap_Free(johto_dex);
     return n;
 }
 

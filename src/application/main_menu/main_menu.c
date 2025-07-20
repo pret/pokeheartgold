@@ -1300,7 +1300,7 @@ static void MainMenu_FreeGraphics(OverlayManager *manager) {
 
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
 
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
     Main_SetVBlankIntrCB(NULL, NULL);
 }
 

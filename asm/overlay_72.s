@@ -1009,7 +1009,7 @@ _02238086:
 	mov r0, #4
 	bl FontID_Release
 	ldr r0, [r4, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	add r0, r4, #0
@@ -1031,7 +1031,7 @@ _02238086:
 	bl ov72_02238160
 	bl sub_02034DE0
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -2518,7 +2518,7 @@ ov72_02238BEC: ; 0x02238BEC
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
@@ -7292,7 +7292,7 @@ _0223B178:
 	ldr r0, [r4]
 	bl BgCommitTilemapBufferToVram
 	ldr r0, [sp, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x14]
 	bl NARC_Delete
 	add r0, r4, #0

@@ -2,7 +2,7 @@
 #pragma once
 .public GfGfxLoader_LoadFromNarc
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public SaveData_GetPhoneCallPersistentState
 .public sub_0202F01C

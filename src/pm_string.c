@@ -29,7 +29,7 @@ String *String_New(u32 maxsize, HeapID heapId) {
 void String_Delete(String *string) {
     ASSERT_STRING(string);
     string->magic = STRING_INVAL;
-    FreeToHeap(string);
+    Heap_Free(string);
 }
 
 void String_SetEmpty(String *string) {

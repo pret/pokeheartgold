@@ -86,7 +86,7 @@ void RadioShow_Delete(RadioShow *radioShow) {
     MessageFormat_Delete(radioShow->msgFormat);
     DestroyMsgData(radioShow->msgData_269);
     MI_CpuClear8(radioShow, sizeof(RadioShow));
-    FreeToHeap(radioShow);
+    Heap_Free(radioShow);
 }
 
 u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station) {

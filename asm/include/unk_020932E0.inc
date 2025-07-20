@@ -36,7 +36,7 @@
 .public YesNoPrompt_Reset
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BgCommitTilemapBufferToVram

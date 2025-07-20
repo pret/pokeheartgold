@@ -32,9 +32,9 @@ ov41_02245ECC: ; 0x02245ECC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_02245ECC
@@ -467,7 +467,7 @@ ov41_022461D0: ; 0x022461D0
 	add r0, r4, #0
 	bl ov41_02246A20
 	ldr r0, [r4, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov41_02246D2C
 	add r0, r4, #0
@@ -479,11 +479,11 @@ ov41_022461D0: ; 0x022461D0
 	ldr r0, [r4, r0]
 	bl NARC_Delete
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0x10]
 	pop {r4, pc}
@@ -989,11 +989,11 @@ ov41_02246594: ; 0x02246594
 	add r0, r4, #0
 	bl ov41_02246D2C
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0x10]
 	pop {r4, pc}
@@ -1118,7 +1118,7 @@ ov41_02246698: ; 0x02246698
 	add r4, r0, #0
 	bl ov41_02246A20
 	ldr r0, [r4, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1624,7 +1624,7 @@ ov41_02246A7C: ; 0x02246A7C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x38]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x34]
 	bl GF2dGfxRawResObj_Destroy
 	mov r0, #0
@@ -1905,7 +1905,7 @@ ov41_02246CB0: ; 0x02246CB0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x30]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0x30]
 	pop {r4, pc}
@@ -2043,11 +2043,11 @@ _02246DBA:
 	str r0, [r4, #0x14]
 _02246DC8:
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #8]
 	pop {r4, pc}
@@ -5925,7 +5925,7 @@ ov41_02248A6C: ; 0x02248A6C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	strb r0, [r4]
@@ -6314,7 +6314,7 @@ _02248D20:
 	mov r1, #0
 	str r1, [r0, #0x3c]
 	ldr r0, [r4, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl DestroySysTaskAndEnvironment
 	add sp, #4
@@ -6648,7 +6648,7 @@ ov41_02248F6C: ; 0x02248F6C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov41_02248E28
 	pop {r4, pc}
@@ -7602,7 +7602,7 @@ _022496C6:
 	strb r7, [r5, #0xa]
 _022496DC:
 	ldr r0, [sp, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	str r6, [r5, #0xc]
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
@@ -8052,7 +8052,7 @@ ov41_022499DC: ; 0x022499DC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	str r0, [r4, #4]
@@ -8551,7 +8551,7 @@ _02249D22:
 	ldr r3, [r3, #0x14]
 	bl ov41_02249F7C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02249D5C:
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -8588,7 +8588,7 @@ ov41_02249D60: ; 0x02249D60
 	ldr r3, [r3, #0x14]
 	bl ov41_02249F7C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0x18
 	mov r0, #0
 _02249DA6:
@@ -8764,7 +8764,7 @@ _02249EA2:
 	ldr r1, [r5, #0x1c]
 	bl ov41_02249F7C
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	cmp r4, #0
 	beq _02249EFE
 	str r7, [r4]
@@ -9001,9 +9001,9 @@ ov41_0224A094: ; 0x0224A094
 	add r0, r5, #0
 	bl SysTask_Destroy
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov41_0224A094
@@ -9038,9 +9038,9 @@ _0224A104:
 	add r0, r5, #0
 	bl SysTask_Destroy
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov41_0224A0D0
 
@@ -11797,9 +11797,9 @@ _0224B58E:
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov41_0224B57C
@@ -12669,7 +12669,7 @@ ov41_0224BC04: ; 0x0224BC04
 	ldr r0, [r5, #0x54]
 	bl BgTilemapRectChangePalette
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x54]
 	mov r1, #1
 	bl ScheduleBgTilemapBufferTransfer

@@ -2,7 +2,7 @@
 #pragma once
 .public IsPaletteFadeFinished
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public Camera_SetFixedTarget
 .public Camera_OffsetLookAtPosAndTarget
 .public Camera_SetLookAtTargetAndRecalcPos

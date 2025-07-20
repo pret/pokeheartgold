@@ -149,8 +149,8 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
         MessageFormat_Delete(env->msgFmt);
         DestroyMsgData(env->msgData);
         FreeBgTilemapBuffer(env->bgConfig, GF_BG_LYR_MAIN_3);
-        FreeToHeap(env->bgConfig);
-        FreeToHeap(env);
+        Heap_Free(env->bgConfig);
+        Heap_Free(env);
         return TRUE;
     }
 

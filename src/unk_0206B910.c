@@ -164,9 +164,9 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         r7->state = 6;
         break;
     case 6:
-        FreeToHeap(r7->partyMenu);
-        FreeToHeap(r7->unk04);
-        FreeToHeap(r7);
+        Heap_Free(r7->partyMenu);
+        Heap_Free(r7->unk04);
+        Heap_Free(r7);
         return TRUE;
     }
     return FALSE;
@@ -251,6 +251,6 @@ static UnkStruct_0206BCD4 *sub_0206BCEC(UnkStruct_0206BCEC *unused) {
 }
 
 static void sub_0206BD00(UnkStruct_0206BCD4 *a0) {
-    FreeToHeap(a0);
+    Heap_Free(a0);
     DestroyHeap(HEAP_ID_20);
 }

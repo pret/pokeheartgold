@@ -369,7 +369,7 @@ sub_02085820: ; 0x02085820
 	mov r3, #0xe0
 	bl PaletteData_LoadPalette
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _020858B8:
 	add r0, r5, #0
 	mov r1, #1

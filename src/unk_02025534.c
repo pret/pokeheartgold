@@ -41,8 +41,8 @@ GF_2DGfxRawResMan *GF2dGfxRawResMan_Create(int num, HeapID heapId) {
 void GF2dGfxRawResObj_Destroy(GF_2DGfxRawResMan *resourceMgr) {
     GF_ASSERT(resourceMgr != NULL);
     GF2dGfxRawResMan_FreeAllObjs(resourceMgr);
-    FreeToHeap(resourceMgr->vals);
-    FreeToHeap(resourceMgr);
+    Heap_Free(resourceMgr->vals);
+    Heap_Free(resourceMgr);
 }
 
 BOOL GF2dGfxRawResMan_DoesNotHaveObjWithId(GF_2DGfxRawResMan *resourceMgr, int id) {
@@ -78,7 +78,7 @@ void GF2dGfxRawResMan_FreeObj(GF_2DGfxRawResMan *resourceMgr, GF_2DGfxRawResObj 
     GF_ASSERT(resourceMgr != NULL);
     GF_ASSERT(obj != NULL);
     if (obj->data != NULL) {
-        FreeToHeap(obj->data);
+        Heap_Free(obj->data);
         obj->data = NULL;
     }
     obj->id = -1;
@@ -118,7 +118,7 @@ void *GF2dGfxRawResObj_GetData(GF_2DGfxRawResObj *obj) {
 void GF2dGfxRawResObj_ReplaceData(GF_2DGfxRawResObj *obj, void *newPtr) {
     GF_ASSERT(obj != NULL);
     if (obj->data != NULL) {
-        FreeToHeap(obj->data);
+        Heap_Free(obj->data);
     }
     obj->data = newPtr;
 }
@@ -165,8 +165,8 @@ void GF3dGfxRawResMan_Destroy(GF_3DGfxRawResMan *man) {
     GF_ASSERT(man != NULL);
     GF3dGfxRawResMan_FreeAllObjs(man);
     GF2dGfxRawResObj_Destroy(man->man);
-    FreeToHeap(man->objs);
-    FreeToHeap(man);
+    Heap_Free(man->objs);
+    Heap_Free(man);
 }
 
 BOOL GF3dGfxRawResMan_DoesNotHaveObjWithId(GF_3DGfxRawResMan *man, int id) {
@@ -201,7 +201,7 @@ static void GF_3DGfxResMan_FreeObj(GF_3DGfxRawResMan *man, GF_3DGfxRawResObj *ob
     GF_ASSERT(man != NULL);
     GF_ASSERT(obj != NULL);
     if (obj->headerNeedsLoad == TRUE && obj->hasLoadedFromHeader == FALSE) {
-        FreeToHeap(obj->resFileHeader);
+        Heap_Free(obj->resFileHeader);
         obj->headerNeedsLoad = FALSE;
     }
     if (obj->obj != NULL) {
@@ -292,7 +292,7 @@ void GF3dGfxRawResObj_FreeVramAndSecondaryHeader(GF_3DGfxRawResObj *obj) {
     }
     ResTexReleaseKeys(GF_3DGfxResObj_GetTex_MaybeFromSecondaryHeader(obj));
     ResTexSetKeys(GF_3DGfxResObj_GetTex_Internal(obj), obj->texKey, obj->tex4x4Key, obj->plttKey);
-    FreeToHeap(obj->resFileHeader);
+    Heap_Free(obj->resFileHeader);
     obj->resFileHeader = NULL;
     obj->hasLoadedFromHeader = TRUE;
 }

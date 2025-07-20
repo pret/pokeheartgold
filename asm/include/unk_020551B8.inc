@@ -2,7 +2,7 @@
 #pragma once
 .public Sound_SetSceneAndPlayBGM
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment

@@ -463,7 +463,7 @@ _0225D8B2:
 	ldr r0, [sp]
 	bl ov34_0225D900
 	ldr r0, [r6, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xa9
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

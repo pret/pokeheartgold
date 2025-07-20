@@ -919,7 +919,7 @@ ov91_0225CC38: ; 0x0225CC38
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0x4c]
 	str r0, [r4, #0x48]
@@ -1016,10 +1016,10 @@ ov91_0225CCC4: ; 0x0225CCC4
 
 	thumb_func_start ov91_0225CCEC
 ov91_0225CCEC: ; 0x0225CCEC
-	ldr r3, _0225CCF0 ; =FreeToHeap
+	ldr r3, _0225CCF0 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0225CCF0: .word FreeToHeap
+_0225CCF0: .word Heap_Free
 	thumb_func_end ov91_0225CCEC
 
 	thumb_func_start ov91_0225CCF4
@@ -1274,7 +1274,7 @@ _0225CE90:
 	add r0, r4, #0
 	bl ov91_0225F66C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	nop
 _0225CEAC: .word 0x0000878C
@@ -6977,7 +6977,7 @@ ov91_0225FA60: ; 0x0225FA60
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov91_0225FA60
 

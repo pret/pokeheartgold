@@ -22,7 +22,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimationFrame
 .public GF_AssertFail

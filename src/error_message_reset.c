@@ -176,7 +176,7 @@ void PrintErrorMessageAndReset(void) {
 
     RemoveWindow(&window);
     DestroyMsgData(error_msgdata);
-    FreeToHeap(bg_config);
+    Heap_Free(bg_config);
 
     OS_ResetSystem(0);
 }
