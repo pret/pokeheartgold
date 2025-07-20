@@ -27,18 +27,18 @@ scr_seq_D11R0106_009:
 	check_badge BADGE_EARTH, VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 1
 	goto_if_eq _0069
-	clearflag FLAG_UNK_2F5
+	clearflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	end
 
 _0069:
 	get_weekday VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 2
 	goto_if_ne _0084
-	setflag FLAG_UNK_2F5
+	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	goto _0088
 
 _0084:
-	clearflag FLAG_UNK_2F5
+	clearflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 _0088:
 	end
 
@@ -46,16 +46,16 @@ _008A:
 	get_weekday VAR_TEMP_x4002
 	compare VAR_TEMP_x4002, 4
 	goto_if_ne _00A5
-	setflag FLAG_UNK_2F5
+	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	goto _00A9
 
 _00A5:
-	clearflag FLAG_UNK_2F5
+	clearflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 _00A9:
 	end
 
 _00AB:
-	setflag FLAG_UNK_2F5
+	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	end
 
 scr_seq_D11R0106_008:

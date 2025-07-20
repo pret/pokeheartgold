@@ -205,7 +205,7 @@ _02056EB0:
 	bl SysTask_Destroy
 	ldr r0, _02056EDC ; =_021D41C4
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02056EDC ; =_021D41C4
 	mov r1, #0
 	str r1, [r0]

@@ -116,7 +116,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
@@ -181,7 +181,7 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Create
 .public Sprite_Delete
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPalOffsetRespectVramOffset
@@ -199,7 +199,7 @@
 .public RequestSwap3DBuffers
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
 .public PlayerProfile_GetTrainerID_VisibleHalf

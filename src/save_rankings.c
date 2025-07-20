@@ -181,7 +181,7 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID h
     String *name;
     PlayerProfile *profile;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     ret = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     MI_CpuClear8(ret, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
@@ -194,7 +194,7 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID h
         ret[i].stat = tmp[i];
     }
 
-    FreeToHeap(tmp);
+    Heap_Free(tmp);
     String_Delete(name);
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
     return ret;
@@ -280,7 +280,7 @@ static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId
     if (groupId != 0) {
         SaveRankings_GetSorted(saveRankings, temp, groupId, statIdx, RANKINGS_SCOPE_GROUP, filteredEntries, filteredEntriesCnt, heapId);
     }
-    FreeToHeap(temp);
+    Heap_Free(temp);
 }
 
 void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, HeapID heapId) {
@@ -314,7 +314,7 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
     u32 *tmp;
     PlayerProfile *profile;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     ret = AllocFromHeap(heapId, sizeof(ViewRankingsPage));
     MI_CpuClear8(ret, sizeof(ViewRankingsPage));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
@@ -326,7 +326,7 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
         ret->entries[i].stat = tmp[i + pageOffset];
         ret->entries[i].playerName = PlayerProfile_GetPlayerName_NewString(profile, heapId);
     }
-    FreeToHeap(tmp);
+    Heap_Free(tmp);
     return ret;
 }
 
@@ -357,6 +357,6 @@ void ViewRankingsPage_Delete(ViewRankingsPage *viewRankingsPage) {
         }
     }
     MI_CpuClear8(viewRankingsPage, sizeof(ViewRankingsPage));
-    FreeToHeap(viewRankingsPage);
+    Heap_Free(viewRankingsPage);
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
 }

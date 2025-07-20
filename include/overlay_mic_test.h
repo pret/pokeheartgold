@@ -4,9 +4,9 @@
 #include "bg_window.h"
 #include "msgdata.h"
 #include "overlay_manager.h"
+#include "sprite_system.h"
 #include "system.h"
-#include "unk_0200CF18.h"
 
-extern const OVY_MGR_TEMPLATE gApplication_MicTest;
+extern const OverlayManagerTemplate gApplication_MicTest;
 
 #endif // POKEHEARTGOLD_MIC_TEST_H

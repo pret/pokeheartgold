@@ -37,7 +37,7 @@ BOOL ScrCmd_CheckBadge(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
     GF_ASSERT(badgeIdx < 16);
-    *ret = PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData), badgeIdx);
+    *ret = PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData), badgeIdx);
     return FALSE;
 }
 
@@ -45,7 +45,7 @@ BOOL ScrCmd_GiveBadge(ScriptContext *ctx) {
     u16 badgeIdx = ScriptGetVar(ctx);
 
     GF_ASSERT(badgeIdx < 16);
-    PlayerProfile_SetBadgeFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData), badgeIdx);
+    PlayerProfile_SetBadgeFlag(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData), badgeIdx);
     return FALSE;
 }
 
@@ -59,7 +59,7 @@ BOOL ScrCmd_297(ScriptContext *ctx) {
 BOOL ScrCmd_CountBadges(ScriptContext *ctx) {
     u16 *ret = ScriptGetVarPointer(ctx);
 
-    *ret = PlayerProfile_CountBadges(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData));
+    *ret = PlayerProfile_CountBadges(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
@@ -148,7 +148,7 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
         break;
     }
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -169,7 +169,7 @@ BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
         break;
     }
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -191,7 +191,7 @@ BOOL ScrCmd_DefogAction(ScriptContext *ctx) {
         break;
     }
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }

@@ -406,14 +406,14 @@
     {
       "x": 25,
       "z": 3,
-      "header": "MAP_D37R0105",
+      "header": "MAP_GOLDENROD_TUNNEL_WAREHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 18,
       "z": 6,
-      "header": "MAP_T25R1007",
+      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

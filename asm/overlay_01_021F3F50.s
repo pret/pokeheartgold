@@ -41,7 +41,7 @@ _021F3F84:
 _021F3F86:
 	str r0, [r5]
 	add r0, r4, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r5, #8]
 	add r0, r4, #0
 	bl Save_PlayerData_GetIGTAddr
@@ -314,7 +314,7 @@ Field_SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
 	ldr r0, [r4, #0x10]
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end Field_SaveStatsPrinter_RemoveFromScreen
@@ -372,7 +372,7 @@ Field_SaveStatsPrinter_Delete: ; 0x021F421C
 	ldr r0, [r4, #0x14]
 	bl MessageFormat_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end Field_SaveStatsPrinter_Delete
 
@@ -526,7 +526,7 @@ ov01_021F434C: ; 0x021F434C
 	ldr r0, [r4, #0x10]
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F434C
@@ -590,7 +590,7 @@ ov01_021F43D0: ; 0x021F43D0
 	ldr r0, [r4, #0x14]
 	bl MessageFormat_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov01_021F43D0
 
@@ -652,9 +652,9 @@ _021F444C:
 	ldr r1, [r1]
 	cmp r1, #MAP_UNION
 	beq _021F4460
-	cmp r1, #MAP_DIRECT2
+	cmp r1, #MAP_WIFI_SINGLE_BATTLE_AREA
 	beq _021F4460
-	cmp r1, #MAP_DIRECT4
+	cmp r1, #MAP_WIFI_MULTI_BATTLE_AREA
 	beq _021F4460
 	bl ov01_021F4404
 _021F4460:

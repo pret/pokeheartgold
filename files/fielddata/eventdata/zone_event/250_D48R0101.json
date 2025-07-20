@@ -108,14 +108,14 @@
     {
       "x": 40,
       "z": 22,
-      "header": "MAP_T24",
+      "header": "MAP_CIANWOOD",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 18,
       "z": 46,
-      "header": "MAP_R47",
+      "header": "MAP_ROUTE_47",
       "anchor": 0,
       "y": 0
     }

@@ -5,14 +5,14 @@
 .public IsPaletteFadeFinished
 .public MailMsg_Init_WithBank
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public Save_Misc_Get
 .public SaveMisc_GetBattleGreeting
 .public SaveMisc_SetBattleGreeting
 .public EasyChat_LaunchApp
 .public TaskManager_Call
 .public FieldSystem_ApplicationIsRunning
-.public sub_020505C0
+.public FieldSystem_LoadFieldOverlay
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment

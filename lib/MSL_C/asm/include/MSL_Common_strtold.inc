@@ -1,0 +1,17 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public _fsub
+.public _f2d
+.public nan
+.public _dsub
+.public __dec2num
+.public _dneq
+.public _dls
+.public __msl_digit
+.public __upper_mapC
+.public __float_huge
+.public __double_huge
+.public _dgr
+.public fabs
+.public __StringRead
+.public errno

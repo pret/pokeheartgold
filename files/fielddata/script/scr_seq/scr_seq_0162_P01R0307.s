@@ -159,7 +159,7 @@ _01D0:
 	setvar VAR_UNK_40CB, 5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_P01R0306, 0, 9, 10, DIR_NORTH
+	warp MAP_SS_AQUA_1F_NORTHWEST_ROOMS, 0, 9, 10, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

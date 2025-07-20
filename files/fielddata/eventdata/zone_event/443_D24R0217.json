@@ -97,14 +97,14 @@
     {
       "x": 25,
       "z": 30,
-      "header": "MAP_D24R0101",
+      "header": "MAP_RUINS_OF_ALPH",
       "anchor": 13,
       "y": 0
     },
     {
       "x": 25,
       "z": 24,
-      "header": "MAP_D24R0218",
+      "header": "MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2",
       "anchor": 0,
       "y": 0
     }

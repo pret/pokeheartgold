@@ -2,7 +2,7 @@
 #include "constants/moves.h"
 #include "constants/pokemon.h"
 #include "constants/ribbon.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 #include "msgdata/msg/msg_0300.h"
 	.include "asm/macros.inc"
 	.include "unk_0208C3E4.inc"
@@ -1621,7 +1621,7 @@ sub_0208D0A4: ; 0x0208D0A4
 	add r2, r7, #0
 	bl sub_0208CFB4
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0208D110
 _0208D102:
 	sub r0, #8

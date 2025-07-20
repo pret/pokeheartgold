@@ -195,28 +195,28 @@
     {
       "x": 6,
       "z": 13,
-      "header": "MAP_D24R0101",
+      "header": "MAP_RUINS_OF_ALPH",
       "anchor": 8,
       "y": 0
     },
     {
       "x": 6,
       "z": 7,
-      "header": "MAP_D24R0205",
+      "header": "MAP_RUINS_OF_ALPH_UNDERGROUND_HALL",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 25,
       "z": 30,
-      "header": "MAP_D24R0101",
+      "header": "MAP_RUINS_OF_ALPH",
       "anchor": 11,
       "y": 0
     },
     {
       "x": 25,
       "z": 24,
-      "header": "MAP_D24R0216",
+      "header": "MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT",
       "anchor": 0,
       "y": 0
     }

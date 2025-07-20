@@ -111,7 +111,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     if (ov02_022470A0(fieldSystem, &setup)) {
         *env->itemFound = FALSE;
         *env->item = ITEM_NONE;
-        FreeToHeap(env);
+        Heap_Free(env);
         FieldSystem_StartForcedWildBattle(fieldSystem, taskman, setup);
         return FALSE;
     }
@@ -123,7 +123,7 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
 
     *env->itemFound = FALSE;
     *env->item = ITEM_NONE;
-    FreeToHeap(env);
+    Heap_Free(env);
     return TRUE;
 }
 
@@ -219,12 +219,12 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
             GF_ASSERT(FALSE);
             *env->itemFound = FALSE;
             *env->item = ITEM_NONE;
-            FreeToHeap(env);
+            Heap_Free(env);
             return TRUE;
         }
         *env->itemFound = TRUE;
         *env->item = item;
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
     }

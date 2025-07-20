@@ -1,10 +1,11 @@
 #ifndef POKEHEARTGOLD_PARTY_MENU_H
 #define POKEHEARTGOLD_PARTY_MENU_H
 
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 
 #include "bag_types_def.h"
 #include "battle_regulation.h"
+#include "field_move.h"
 #include "gf_3d_vramman.h"
 #include "mail.h"
 #include "message_printer.h"
@@ -15,16 +16,6 @@
 #include "unk_02020654.h"
 #include "unk_0202E41C.h"
 #include "yes_no_prompt.h"
-
-#define FIELD_MOVE_CHECK_TREE_F      0
-#define FIELD_MOVE_CHECK_WATER_F     2
-#define FIELD_MOVE_CHECK_ROCK_F      3
-#define FIELD_MOVE_CHECK_BREAKROCK_F 4
-#define FIELD_MOVE_CHECK_WATERFALL_F 5
-#define FIELD_MOVE_CHECK_ROCKCLIMB_F 6
-#define FIELD_MOVE_CHECK_FLASH_F     7
-#define FIELD_MOVE_CHECK_WHIRLPOOL_F 12
-#define FIELD_MOVE_CHECK_HEADBUTT_F  13
 
 typedef enum PartyMonSelection {
     PARTY_MON_SELECTION_1,
@@ -285,19 +276,6 @@ typedef struct PartyMenuContextMenuCursor {
     PartyMenuContextMenu menu;
 } PartyMenuContextMenuCursor;
 
-typedef struct FieldMoveUseData {
-    TaskManager *taskManager;
-    u16 partySlot;
-    u16 fieldMoveIdx;
-} FieldMoveUseData;
-
-typedef struct FieldMoveCheckData {
-    u32 mapId;
-    FieldSystem *fieldSystem;
-    LocalMapObject *facingObject;
-    u16 flag;
-} FieldMoveCheckData;
-
 typedef struct PartyMenuArgs {
     Party *party;
     Bag *bag;
@@ -401,8 +379,8 @@ struct PartyMenu {
     u16 unk_494[6 * 0x10];
     u16 hpBarPalettes[0x80];
     PartyMenuArgs *args; // 0x654
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *spriteGfxHandler;
+    SpriteSystem *spriteRenderer;
+    SpriteManager *spriteGfxHandler;
     Sprite *sprites[PARTY_MENU_SPRITE_ID_MAX]; // 0x660
     void *unk_6D4[PARTY_MENU_SPRITE_ID_MAX];
     Sprite *mainScreenStatusSprites[29]; // 0x748
@@ -442,24 +420,7 @@ struct PartyMenu {
     u8 filler_CA0[0x8];
 }; // CA8
 
-#define FIELD_MOVE_FUNC_USE   0
-#define FIELD_MOVE_FUNC_CHECK 1
-
-typedef void (*FieldMoveUseFunc)(struct FieldMoveUseData *useData, const struct FieldMoveCheckData *sub);
-typedef u32 (*FieldMoveCheckFunc)(const struct FieldMoveCheckData *checkData);
-
-typedef struct FieldUseMoveEnv {
-    u32 magic;
-    LocalMapObject *facingObject;
-    struct FieldMoveUseData useData;
-} FieldUseMoveEnv;
-
-struct TeleportFieldEnv {
-    Pokemon *mon;
-    struct FlyTaskStruct *flySub; // waste of space
-};
-
-extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
+extern const OverlayManagerTemplate gOverlayTemplate_PartyMenu;
 
 void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenu *partyMenu, BOOL show);
 

@@ -18,7 +18,7 @@ void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
 
 void Field_FreeMapEvents(FieldSystem *work) {
     GF_ASSERT(work->mapEvents != NULL);
-    FreeToHeap(work->mapEvents);
+    Heap_Free(work->mapEvents);
 }
 
 void Field_InitMapEvents(FieldSystem *work, u32 mapno) {
@@ -101,7 +101,7 @@ BOOL Field_SetEventDefaultXYPos(FieldSystem *fieldSystem, int id, u16 x, u16 y) 
         }
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 
@@ -117,7 +117,7 @@ BOOL Field_SetEventDefaultDirection(FieldSystem *fieldSystem, int id, u16 dirn) 
         }
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 
@@ -133,7 +133,7 @@ BOOL Field_SetEventDefaultMovement(FieldSystem *fieldSystem, int id, u16 movemen
         }
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 

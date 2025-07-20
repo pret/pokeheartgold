@@ -84,7 +84,7 @@
       "spriteId": "SPRITE_GSLEADER9",
       "movement": 14,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2F7",
+      "eventFlag": "FLAG_HIDE_SAFFRON_TRAIN_STATION_LT_SURGE",
       "scriptId": "_EV_scr_seq_T11R0601_007 + 1",
       "facingDirection": 0,
       "param0": 0,
@@ -101,21 +101,21 @@
     {
       "x": 14,
       "z": 20,
-      "header": "MAP_T11",
+      "header": "MAP_SAFFRON",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 3,
       "z": 4,
-      "header": "MAP_T11R0603",
+      "header": "MAP_SAFFRON_MAGNET_TRAIN_STATION_2F_EMPTY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 3,
       "z": 3,
-      "header": "MAP_T11R0603",
+      "header": "MAP_SAFFRON_MAGNET_TRAIN_STATION_2F_EMPTY",
       "anchor": 0,
       "y": 0
     }

@@ -21,6 +21,8 @@ typedef union TouchscreenHitbox {
 #define TOUCHSCREEN_CIRCLE_SENTINEL 0xFE
 #define TOUCHSCREEN_RECTLIST_END    0xFF
 
+#define TOUCH_MENU_NO_INPUT -1
+
 int TouchscreenHitbox_FindRectAtTouchHeld(const TouchscreenHitbox *hitboxes);
 int TouchscreenHitbox_FindHitboxAtTouchNew(const TouchscreenHitbox *hitboxes);
 int TouchscreenHitbox_FindRectAtTouchNew(const TouchscreenHitbox *hitboxes);

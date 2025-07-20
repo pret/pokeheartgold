@@ -63,7 +63,7 @@ _00DA:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0210, 0, 11, 7, VAR_SPECIAL_RESULT
+	warp MAP_RUINS_OF_ALPH_SOUTHEAST_HIDDEN_ROOM, 0, 11, 7, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

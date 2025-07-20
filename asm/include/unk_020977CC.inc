@@ -7,9 +7,9 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public sub_0203FC68
 .public TaskManager_Call

@@ -1851,9 +1851,9 @@ ov81_0223EC88: ; 0x0223EC88
 	ldrb r2, [r2, #0x14]
 	str r2, [r4, r0]
 	ldr r0, [r4, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 	add r0, r4, #0
@@ -4754,7 +4754,7 @@ ov81_02240458: ; 0x02240458
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov81_02240458
 
@@ -5164,7 +5164,7 @@ ov81_02240770: ; 0x02240770
 	lsl r2, r2, #4
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -5331,7 +5331,7 @@ ov81_022408C4: ; 0x022408C4
 	ldr r0, [r0, r1]
 	str r2, [sp, #0x10]
 	add r6, r3, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	mov r0, #8
 	mov r1, #0x64
@@ -6043,7 +6043,7 @@ ov81_02240E78: ; 0x02240E78
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r0, #0
 	mov r0, #7
 	lsl r0, r0, #6
@@ -6214,7 +6214,7 @@ ov81_02241008: ; 0x02241008
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r0, #0x3e
 	lsl r0, r0, #4
 	strh r4, [r5, r0]
@@ -8601,7 +8601,7 @@ ov81_02242218: ; 0x02242218
 	mov r3, #2
 	bl ov81_02242E14
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [sp, #0x18]
 	add r0, r7, #0
 	mov r2, #0
@@ -10038,18 +10038,18 @@ ov81_02242D74: ; 0x02242D74
 	ldr r0, [r4, #8]
 	bl Sprite_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov81_02242D74
 
 	thumb_func_start ov81_02242D88
 ov81_02242D88: ; 0x02242D88
-	ldr r3, _02242D90 ; =Sprite_SetVisibleFlag
+	ldr r3, _02242D90 ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242D90: .word Sprite_SetVisibleFlag
+_02242D90: .word Sprite_SetDrawFlag
 	thumb_func_end ov81_02242D88
 
 	thumb_func_start ov81_02242D94
@@ -10097,11 +10097,11 @@ _02242DD4: .word Sprite_SetMatrix
 
 	thumb_func_start ov81_02242DD8
 ov81_02242DD8: ; 0x02242DD8
-	ldr r3, _02242DE0 ; =Sprite_IsCellAnimationRunning
+	ldr r3, _02242DE0 ; =Sprite_IsAnimated
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242DE0: .word Sprite_IsCellAnimationRunning
+_02242DE0: .word Sprite_IsAnimated
 	thumb_func_end ov81_02242DD8
 
 	thumb_func_start ov81_02242DE4
@@ -10111,7 +10111,7 @@ ov81_02242DE4: ; 0x02242DE4
 	ldr r0, [r5, #8]
 	add r4, r1, #0
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq
@@ -10120,11 +10120,11 @@ ov81_02242DE4: ; 0x02242DE4
 
 	thumb_func_start ov81_02242DFC
 ov81_02242DFC: ; 0x02242DFC
-	ldr r3, _02242E04 ; =Sprite_SetPalIndex
+	ldr r3, _02242E04 ; =Sprite_SetPaletteOverride
 	ldr r0, [r0, #8]
 	bx r3
 	nop
-_02242E04: .word Sprite_SetPalIndex
+_02242E04: .word Sprite_SetPaletteOverride
 	thumb_func_end ov81_02242DFC
 
 	thumb_func_start ov81_02242E08
@@ -10203,7 +10203,7 @@ _02242E6A:
 	bl ov81_02242F10
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10216,18 +10216,18 @@ ov81_02242EA4: ; 0x02242EA4
 	ldr r0, [r4, #0xc]
 	bl Sprite_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov81_02242EA4
 
 	thumb_func_start ov81_02242EB8
 ov81_02242EB8: ; 0x02242EB8
-	ldr r3, _02242EC0 ; =Sprite_SetVisibleFlag
+	ldr r3, _02242EC0 ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242EC0: .word Sprite_SetVisibleFlag
+_02242EC0: .word Sprite_SetDrawFlag
 	thumb_func_end ov81_02242EB8
 
 	thumb_func_start ov81_02242EC4
@@ -10383,11 +10383,11 @@ ov81_02242F94: ; 0x02242F94
 
 	thumb_func_start ov81_02242FB0
 ov81_02242FB0: ; 0x02242FB0
-	ldr r3, _02242FB8 ; =Sprite_SetPalIndex
+	ldr r3, _02242FB8 ; =Sprite_SetPaletteOverride
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_02242FB8: .word Sprite_SetPalIndex
+_02242FB8: .word Sprite_SetPaletteOverride
 	thumb_func_end ov81_02242FB0
 
 	thumb_func_start ov81_02242FBC
@@ -10406,7 +10406,7 @@ ov81_02242FC8: ; 0x02242FC8
 	ldr r0, [r4, #0xc]
 	bl Sprite_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov81_02242FC8
@@ -10682,7 +10682,7 @@ _02243196:
 	blo _02243184
 _022431D2:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

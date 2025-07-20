@@ -193,28 +193,28 @@
     {
       "x": 923,
       "z": 345,
-      "header": "MAP_R26R0101",
+      "header": "MAP_ROUTE_26_NORTH_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 907,
       "z": 365,
-      "header": "MAP_R26R0201",
+      "header": "MAP_ROUTE_26_WEEK_SIBLINGS_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 909,
       "z": 296,
-      "header": "MAP_R22R0101",
+      "header": "MAP_ROUTE_22_POKEMON_LEAGUE_RECEPTION_GATE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 910,
       "z": 296,
-      "header": "MAP_R22R0101",
+      "header": "MAP_ROUTE_22_POKEMON_LEAGUE_RECEPTION_GATE",
       "anchor": 0,
       "y": 0
     }

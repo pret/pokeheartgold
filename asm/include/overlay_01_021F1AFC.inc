@@ -7,8 +7,8 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeapAtEnd
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public SysTask_GetData
 .public GF_AssertFail
 .public StartScriptFromMenu
@@ -45,8 +45,8 @@
 .public sub_0205C78C
 .public sub_0205C790
 .public PlayerAvatar_GetSpriteByStateAndGender
-.public sub_0205CA38
-.public sub_0205CA4C
+.public PlayerAvatar_CheckFlag0
+.public PlayerAvatar_SetFlag1
 .public sub_0205CBE4
 .public sub_0205DA34
 .public sub_0205DE38
@@ -101,7 +101,7 @@
 .public Field_PlayerAvatar_ApplyTransitionFlags
 .public ov01_021F1D94
 .public CallFieldTask_Surf
-.public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+.public Field_PlayerCanSurfOnTile
 .public CallFieldTask_RockClimb
 .public MetatileBehavior_IsRockClimbInDirection
 .public CallFieldTask_Waterfall

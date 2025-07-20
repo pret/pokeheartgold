@@ -75,21 +75,21 @@
     {
       "x": 3,
       "z": 5,
-      "header": "MAP_D23R0104",
+      "header": "MAP_GOLDENROD_RADIO_TOWER_4F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 13,
       "z": 2,
-      "header": "MAP_D23R0107",
+      "header": "MAP_GOLDENROD_RADIO_TOWER_ELEVATOR",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 19,
       "z": 5,
-      "header": "MAP_D23R0104",
+      "header": "MAP_GOLDENROD_RADIO_TOWER_4F",
       "anchor": 3,
       "y": 0
     }

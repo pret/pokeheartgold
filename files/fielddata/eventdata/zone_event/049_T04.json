@@ -175,7 +175,7 @@
       "spriteId": "SPRITE_GSMAN1",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_30F",
+      "eventFlag": "FLAG_HIDE_CERULEAN_CITY_MAN_OUTSIDE_CAVE",
       "scriptId": "_EV_scr_seq_T04_013 + 1",
       "facingDirection": 1,
       "param0": 0,
@@ -192,56 +192,56 @@
     {
       "x": 1305,
       "z": 116,
-      "header": "MAP_T04R0101",
+      "header": "MAP_CERULEAN_NORTH_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1319,
       "z": 123,
-      "header": "MAP_T04R0201",
+      "header": "MAP_CERULEAN_EAST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1304,
       "z": 131,
-      "header": "MAP_T04R0301",
+      "header": "MAP_CERULEAN_WEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1309,
       "z": 131,
-      "header": "MAP_T04PC0101",
+      "header": "MAP_CERULEAN_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1318,
       "z": 134,
-      "header": "MAP_T04GYM0101",
+      "header": "MAP_CERULEAN_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1308,
       "z": 144,
-      "header": "MAP_T04FS0101",
+      "header": "MAP_CERULEAN_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1298,
       "z": 144,
-      "header": "MAP_T04R0401",
+      "header": "MAP_CERULEAN_BIKE_MANIAC_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1290,
       "z": 107,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 0,
       "y": 0
     }

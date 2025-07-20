@@ -17,30 +17,30 @@
 #include "encounter_tables_narc.h"
 
 static const u16 sPokemonCenterMaps[] = {
-    MAP_T02PC0101,
-    MAP_T03PC0101,
-    MAP_T04PC0101,
-    MAP_T05PC0101,
-    MAP_T06PC0101,
-    MAP_T07PC0101,
-    MAP_T08PC0101,
-    MAP_T09PC0101,
-    MAP_T11PC0101,
-    MAP_T21PC0101,
-    MAP_T22PC0101,
-    MAP_T23PC0101,
-    MAP_T24PC0101,
-    MAP_T25PC0101,
-    MAP_T26PC0101,
-    MAP_T27PC0101,
-    MAP_T28PC0101,
-    MAP_T30PC0101,
-    MAP_T31PC0101,
-    MAP_R03PC0101,
-    MAP_R10PC0101,
-    MAP_R32PC0101,
-    MAP_D32PC0101,
-    MAP_D47PC0101,
+    MAP_VIRIDIAN_POKECENTER_1F,
+    MAP_PEWTER_POKECENTER_1F,
+    MAP_CERULEAN_POKECENTER_1F,
+    MAP_LAVENDER_POKECENTER_1F,
+    MAP_VERMILION_POKECENTER_1F,
+    MAP_CELADON_POKECENTER_1F,
+    MAP_FUCHSIA_POKECENTER_1F,
+    MAP_CINNABAR_ISLAND_POKECENTER_1F,
+    MAP_SAFFRON_POKECENTER_1F,
+    MAP_CHERRYGROVE_POKECENTER_1F,
+    MAP_VIOLET_POKECENTER_1F,
+    MAP_AZALEA_POKECENTER_1F,
+    MAP_CIANWOOD_POKECENTER_1F,
+    MAP_GOLDENROD_POKECENTER_1F,
+    MAP_OLIVINE_POKECENTER_1F,
+    MAP_ECRUTEAK_POKECENTER_1F,
+    MAP_MAHOGANY_POKECENTER_1F,
+    MAP_BLACKTHORN_POKECENTER_1F,
+    MAP_MOUNT_SILVER_POKECENTER_1F,
+    MAP_ROUTE_3_POKECENTER_1F,
+    MAP_ROUTE_10_POKECENTER_1F,
+    MAP_ROUTE_32_POKECENTER_1F,
+    MAP_FRONTIER_ACCESS_POKECENTER_1F,
+    MAP_SAFARI_ZONE_GATE_POKECENTER_1F,
     MAP_EVERYWHERE,
 };
 
@@ -110,7 +110,7 @@ u16 MapHeader_GetEventsBank(u32 mapId) {
     return sMapHeaders[mapId].eventsBank;
 }
 
-u16 MapHeader_GetMapSec(u32 mapId) {
+u32 MapHeader_GetMapSec(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
     return sMapHeaders[mapId].mapsec;
 }
@@ -160,19 +160,19 @@ BOOL MapHeader_IsBikeAllowed(u32 mapId) {
     return sMapHeaders[mapId].bikeAllowed;
 }
 
-BOOL MapHeader_GetField14_1D(u32 mapId) {
+BOOL MapHeader_CanPlacePhoneCalls(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_14_1D;
+    return sMapHeaders[mapId].outgoingCalls;
 }
 
-BOOL MapHeader_GetField14_1E(u32 mapId) {
+BOOL MapHeader_CanReceivePhoneCalls(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_14_1E;
+    return sMapHeaders[mapId].incomingCalls;
 }
 
-BOOL MapHeader_GetField14_1F(u32 mapId) {
+BOOL MapHeader_CanReceiveRadioSignal(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_14_1F;
+    return sMapHeaders[mapId].radioSignal;
 }
 
 MapType MapHeader_GetMapType(u32 mapId) {
@@ -236,7 +236,7 @@ BOOL MapHeader_MapIsPokemonCenter(u32 mapId) {
 }
 
 BOOL MapHeader_MapIsPokemonLeagueLobby(u32 mapId) {
-    return mapId == MAP_T10R0101;
+    return mapId == MAP_POKEMON_LEAGUE_ENTRANCE;
 }
 
 EvoMethod MapHeader_GetMapEvolutionMethod(u32 mapId) {

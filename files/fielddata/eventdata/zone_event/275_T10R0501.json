@@ -91,28 +91,28 @@
     {
       "x": 6,
       "z": 22,
-      "header": "MAP_T10R0101",
+      "header": "MAP_POKEMON_LEAGUE_ENTRANCE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 6,
       "z": 2,
-      "header": "MAP_T10R0601",
+      "header": "MAP_POKEMON_LEAGUE_LANCE_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_T10R0601",
+      "header": "MAP_POKEMON_LEAGUE_LANCE_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 7,
       "z": 2,
-      "header": "MAP_T10R0601",
+      "header": "MAP_POKEMON_LEAGUE_LANCE_ROOM",
       "anchor": 0,
       "y": 0
     }

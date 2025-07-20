@@ -40,14 +40,14 @@
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_R36",
+      "header": "MAP_ROUTE_36",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 5,
       "z": 12,
-      "header": "MAP_D24R0101",
+      "header": "MAP_RUINS_OF_ALPH",
       "anchor": 0,
       "y": 0
     }

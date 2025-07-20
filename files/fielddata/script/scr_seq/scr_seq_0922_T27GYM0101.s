@@ -25,17 +25,17 @@ scr_seq_T27GYM0101_000:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _0068
-	setflag FLAG_UNK_2ED
+	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _0083
 
 _0068:
 	compare VAR_TEMP_x4000, 2
 	goto_if_ne _007F
-	setflag FLAG_UNK_2ED
+	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _0083
 
 _007F:
-	clearflag FLAG_UNK_2ED
+	clearflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 _0083:
 	end
 
@@ -43,20 +43,20 @@ _0085:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _00A0
-	setflag FLAG_UNK_2ED
+	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _00A4
 
 _00A0:
-	clearflag FLAG_UNK_2ED
+	clearflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 _00A4:
 	end
 
 _00A6:
-	clearflag FLAG_UNK_2ED
+	clearflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	end
 
 _00AC:
-	setflag FLAG_UNK_2ED
+	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	end
 
 scr_seq_T27GYM0101_004:
@@ -72,7 +72,7 @@ scr_seq_T27GYM0101_004:
 	setvar VAR_UNK_4079, 1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T27, 7, 376, 182, DIR_SOUTH
+	warp MAP_ECRUTEAK, 7, 376, 182, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -161,7 +161,7 @@ scr_seq_T27GYM0101_002:
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T27GYM0101, 0, 16, 49, DIR_NORTH
+	warp MAP_ECRUTEAK_GYM, 0, 16, 49, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

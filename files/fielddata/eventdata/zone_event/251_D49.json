@@ -387,28 +387,28 @@
     {
       "x": 42,
       "z": 54,
-      "header": "MAP_R35R0201",
+      "header": "MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 42,
       "z": 22,
-      "header": "MAP_D49R0101",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 41,
       "z": 22,
-      "header": "MAP_D49R0101",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 43,
       "z": 22,
-      "header": "MAP_D49R0101",
+      "header": "MAP_POKEATHLON_DOME_INTERIOR_1F",
       "anchor": 0,
       "y": 0
     }

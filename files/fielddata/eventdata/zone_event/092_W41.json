@@ -218,28 +218,28 @@
     {
       "x": 208,
       "z": 341,
-      "header": "MAP_D40R0101",
+      "header": "MAP_WHIRL_ISLANDS_1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 211,
       "z": 370,
-      "header": "MAP_D40R0101",
+      "header": "MAP_WHIRL_ISLANDS_1F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 237,
       "z": 340,
-      "header": "MAP_D40R0101",
+      "header": "MAP_WHIRL_ISLANDS_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 241,
       "z": 372,
-      "header": "MAP_D40R0101",
+      "header": "MAP_WHIRL_ISLANDS_1F",
       "anchor": 9,
       "y": 0
     }

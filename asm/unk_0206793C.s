@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_0206793C.inc"
 	.include "global.inc"
@@ -114,11 +114,11 @@ _020679F0:
 	b _02067A16
 _020679FE:
 	ldr r0, [r4, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	mov r0, #1
 	pop {r4, r5, r6, pc}

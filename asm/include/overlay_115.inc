@@ -16,7 +16,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public BgSetPosTextAndCommit
 .public AddWindowParameterized
@@ -28,11 +28,11 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetScale
-.public Sprite_SetVisibleFlag
+.public Sprite_SetAffineScale
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimSpeed
-.public Sprite_SetAffineOverwriteType
+.public Sprite_SetAffineOverwriteMode
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority
 .public Sprite_GetPaletteProxy
@@ -40,7 +40,7 @@
 .public String_Delete
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public NNS_G2dGetImagePaletteLocation
 .public G2x_SetBlendAlpha_

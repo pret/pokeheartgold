@@ -12,7 +12,7 @@ typedef struct TaskManagerUnkSub1C {
 
 struct UnkTaskEnv {
     int state;
-    const OVY_MGR_TEMPLATE *template;
+    const OverlayManagerTemplate *template;
     void *work;
 };
 
@@ -33,9 +33,9 @@ void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env);
 BOOL FieldSystem_RunTaskFrame(FieldSystem *fieldSystem);
 BOOL FieldSystem_TaskIsRunning(FieldSystem *fieldSystem);
 BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem);
-void sub_020505C0(FieldSystem *fieldSystem);
+void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem);
 BOOL sub_020505C8(FieldSystem *fieldSystem);
-void CallApplicationAsTask(TaskManager *taskManager, const OVY_MGR_TEMPLATE *template, void *work);
+void CallApplicationAsTask(TaskManager *taskManager, const OverlayManagerTemplate *template, void *work);
 FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager);
 void *TaskManager_GetEnvironment(TaskManager *taskManager);
 u32 *TaskManager_GetStatePtr(TaskManager *taskManager);

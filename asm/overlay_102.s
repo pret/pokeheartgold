@@ -19,7 +19,7 @@ _021E7752:
 	mov r1, #0
 	mov r0, #0x3e
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r2, #2
 	mov r0, #3
 	mov r1, #0x22
@@ -3640,9 +3640,9 @@ _021E9166:
 	add r0, r6, #0
 	bl ov102_021E91BC
 	ldr r0, [r6, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021E9196:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov102_021E9144
@@ -4066,7 +4066,7 @@ ov102_021E94A4: ; 0x021E94A4
 	add r0, r1, r0
 	str r2, [r0, #8]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021E94A4
@@ -4346,14 +4346,14 @@ _021E971A:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E9728
-	bl FreeToHeap
+	bl Heap_Free
 _021E9728:
 	mov r0, #0x76
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E9736
-	bl FreeToHeap
+	bl Heap_Free
 _021E9736:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -6000,7 +6000,7 @@ _021EA3E0:
 	ldr r0, [r4, r0]
 	bl YesNoPrompt_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EA380
@@ -6460,12 +6460,12 @@ _021EA794:
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	asr r2, r2, #0x10
-	bl Sprite_AddPositionXY
+	bl Sprite_OffsetPositionXY
 	lsl r2, r4, #0x10
 	ldr r0, [r5, #0x64]
 	mov r1, #0
 	asr r2, r2, #0x10
-	bl Sprite_AddPositionXY
+	bl Sprite_OffsetPositionXY
 	mov r0, #0x79
 	lsl r0, r0, #2
 	ldrb r1, [r5, r0]
@@ -6534,7 +6534,7 @@ ov102_021EA80C: ; 0x021EA80C
 	lsl r1, r1, #6
 	bl DC_FlushRange
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -6743,16 +6743,16 @@ _021EA944:
 	beq _021EAA34
 	ldr r0, [r4, #0x6c]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x68]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x70]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _021EAA34:
 	add sp, #0x54
 	pop {r4, r5, pc}
@@ -7456,10 +7456,10 @@ ov102_021EAF5C: ; 0x021EAF5C
 	add r5, r0, #0
 	ldr r0, [r5, #0x60]
 	add r4, r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #0x64]
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r5, #0
 	mov r1, #1
 	bl ov102_021EB088
@@ -7477,16 +7477,16 @@ ov102_021EAF7C: ; 0x021EAF7C
 	bne _021EAFAA
 	ldr r0, [r4, #0x68]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x6c]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x74]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x70]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _021EAFAA:
 	pop {r4, pc}
 	thumb_func_end ov102_021EAF7C
@@ -7501,16 +7501,16 @@ ov102_021EAFAC: ; 0x021EAFAC
 	bne _021EAFEA
 	ldr r0, [r4, #0x68]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x6c]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x74]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x70]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x68]
 	mov r1, #0x13
 	bl Sprite_SetAnimCtrlSeq
@@ -7794,7 +7794,7 @@ ov102_021EB1E0: ; 0x021EB1E0
 	ldr r0, [r4, #0x14]
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EB1E0
@@ -7903,9 +7903,9 @@ _021EB2BA:
 	cmp r6, #3
 	blt _021EB2BA
 	ldr r0, [r7, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r7, #0x54]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	mov r1, #3
 	bl BgCommitTilemapBufferToVram
@@ -8169,7 +8169,7 @@ ov102_021EB4D0: ; 0x021EB4D0
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0xc]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x2c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -8197,11 +8197,11 @@ _021EB520: .word Sprite_SetAnimCtrlSeq
 
 	thumb_func_start ov102_021EB524
 ov102_021EB524: ; 0x021EB524
-	ldr r3, _021EB52C ; =Sprite_SetVisibleFlag
+	ldr r3, _021EB52C ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021EB52C: .word Sprite_SetVisibleFlag
+_021EB52C: .word Sprite_SetDrawFlag
 	thumb_func_end ov102_021EB524
 
 	thumb_func_start ov102_021EB530
@@ -8328,7 +8328,7 @@ _021EB602:
 	mov r1, #0
 	str r1, [r0, #0x64]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021EB620:
@@ -8439,7 +8439,7 @@ ov102_021EB6C8: ; 0x021EB6C8
 	bl Sprite_Delete
 _021EB6D6:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EB6C8
@@ -8762,7 +8762,7 @@ ov102_021EB950: ; 0x021EB950
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x5c]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x2c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -8776,7 +8776,7 @@ ov102_021EB98C: ; 0x021EB98C
 	ldr r0, [r4, #0x5c]
 	beq _021EB9B8
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #4]
 	bl ov102_021E8F7C
 	cmp r0, #0
@@ -8791,7 +8791,7 @@ _021EB9B0:
 	pop {r4, pc}
 _021EB9B8:
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r4, pc}
 	thumb_func_end ov102_021EB98C
 
@@ -9251,7 +9251,7 @@ _021EBCE8:
 	add r0, #0x10
 	bl RemoveWindow
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov102_021EBCBC
 
@@ -9326,7 +9326,7 @@ ov102_021EBD68: ; 0x021EBD68
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x30]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #1
@@ -9341,7 +9341,7 @@ ov102_021EBD68: ; 0x021EBD68
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #1
@@ -9356,7 +9356,7 @@ ov102_021EBD68: ; 0x021EBD68
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r4, #0x38]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x2c
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -9517,26 +9517,26 @@ ov102_021EBEF4: ; 0x021EBEF4
 	ldr r0, [r4, #0x30]
 	beq _021EBF22
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #4]
 	bl ov102_021E9050
 	add r1, r0, #0
 	ldr r0, [r4, #0x34]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #4]
 	bl ov102_021E9064
 	add r1, r0, #0
 	ldr r0, [r4, #0x38]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r4, pc}
 _021EBF22:
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x38]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r4, pc}
 	thumb_func_end ov102_021EBEF4
 
@@ -9703,12 +9703,12 @@ ov102_021EC05C: ; 0x021EC05C
 	bl ov102_021E9050
 	add r1, r0, #0
 	ldr r0, [r4, #0x34]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #4]
 	bl ov102_021E9064
 	add r1, r0, #0
 	ldr r0, [r4, #0x38]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #1
 	pop {r4, pc}
 _021EC08A:
@@ -9941,10 +9941,10 @@ ov102_021EC20C: ; 0x021EC20C
 
 	thumb_func_start ov102_021EC240
 ov102_021EC240: ; 0x021EC240
-	ldr r3, _021EC244 ; =FreeToHeap
+	ldr r3, _021EC244 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021EC244: .word FreeToHeap
+_021EC244: .word Heap_Free
 	thumb_func_end ov102_021EC240
 
 	thumb_func_start ov102_021EC248
@@ -10330,16 +10330,16 @@ _021EC4DC:
 	mov r0, #0xa
 	add r1, r5, #0
 	mul r1, r0
-	ldr r0, _021EC4F0 ; =ov102_021EC822
+	ldr r0, _021EC4F0 ; =ov102_021EC820 + 2
 	ldrb r0, [r0, r1]
 	str r0, [r4]
-	ldr r0, _021EC4F4 ; =ov102_021EC823
+	ldr r0, _021EC4F4 ; =ov102_021EC820 + 3
 	ldrb r0, [r0, r1]
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EC4F0: .word ov102_021EC822
-_021EC4F4: .word ov102_021EC823
+_021EC4F0: .word ov102_021EC820 + 2
+_021EC4F4: .word ov102_021EC820 + 3
 	thumb_func_end ov102_021EC4CC
 
 	thumb_func_start ov102_021EC4F8
@@ -10353,11 +10353,11 @@ _021EC504:
 	mov r0, #0xa
 	add r1, r4, #0
 	mul r1, r0
-	ldr r0, _021EC510 ; =ov102_021EC824
+	ldr r0, _021EC510 ; =ov102_021EC820 + 4
 	ldrb r0, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-_021EC510: .word ov102_021EC824
+_021EC510: .word ov102_021EC820 + 4
 	thumb_func_end ov102_021EC4F8
 
 	thumb_func_start ov102_021EC514
@@ -10371,11 +10371,11 @@ _021EC520:
 	mov r0, #0xa
 	add r1, r4, #0
 	mul r1, r0
-	ldr r0, _021EC52C ; =ov102_021EC825
+	ldr r0, _021EC52C ; =ov102_021EC820 + 5
 	ldrb r0, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-_021EC52C: .word ov102_021EC825
+_021EC52C: .word ov102_021EC820 + 5
 	thumb_func_end ov102_021EC514
 
 	thumb_func_start ov102_021EC530
@@ -10389,11 +10389,11 @@ _021EC53C:
 	mov r0, #0xa
 	add r1, r4, #0
 	mul r1, r0
-	ldr r0, _021EC548 ; =ov102_021EC826
+	ldr r0, _021EC548 ; =ov102_021EC820 + 6
 	ldrb r0, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-_021EC548: .word ov102_021EC826
+_021EC548: .word ov102_021EC820 + 6
 	thumb_func_end ov102_021EC530
 
 	thumb_func_start ov102_021EC54C
@@ -10407,11 +10407,11 @@ _021EC558:
 	mov r0, #0xa
 	add r1, r4, #0
 	mul r1, r0
-	ldr r0, _021EC564 ; =ov102_021EC827
+	ldr r0, _021EC564 ; =ov102_021EC820 + 7
 	ldrb r0, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-_021EC564: .word ov102_021EC827
+_021EC564: .word ov102_021EC820 + 7
 	thumb_func_end ov102_021EC54C
 
 	thumb_func_start ov102_021EC568
@@ -10425,11 +10425,11 @@ _021EC574:
 	mov r0, #0xa
 	add r1, r4, #0
 	mul r1, r0
-	ldr r0, _021EC580 ; =ov102_021EC828
+	ldr r0, _021EC580 ; =ov102_021EC820 + 8
 	ldrb r0, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-_021EC580: .word ov102_021EC828
+_021EC580: .word ov102_021EC820 + 8
 	thumb_func_end ov102_021EC568
 
 	thumb_func_start ov102_021EC584
@@ -10443,11 +10443,11 @@ _021EC590:
 	mov r0, #0xa
 	add r1, r4, #0
 	mul r1, r0
-	ldr r0, _021EC59C ; =ov102_021EC829
+	ldr r0, _021EC59C ; =ov102_021EC820 + 9
 	ldrb r0, [r0, r1]
 	pop {r4, pc}
 	.balign 4, 0
-_021EC59C: .word ov102_021EC829
+_021EC59C: .word ov102_021EC820 + 9
 	thumb_func_end ov102_021EC584
 
 	thumb_func_start ov102_021EC5A0
@@ -10611,48 +10611,35 @@ ov102_021EC788: ; 0x021EC788
 
 ov102_021EC808: ; 0x021EC808
 	.byte 0x00, 0x18, 0x0E, 0x07, 0x02, 0x0D, 0xF1, 0x03
-	.byte 0x00, 0x18, 0x11, 0x07, 0x02, 0x0D, 0xE3, 0x03, 0x00, 0x19, 0x15, 0x06, 0x02, 0x0D, 0xD5, 0x03
+	.byte 0x00, 0x18, 0x11, 0x07, 0x02, 0x0D, 0xE3, 0x03
+	.byte 0x00, 0x19, 0x15, 0x06, 0x02, 0x0D, 0xD5, 0x03
 
 ov102_021EC820: ; 0x021EC820
-	.byte 0x2B, 0x01
-
-ov102_021EC822: ; 0x021EC822
-	.byte 0x18
-
-ov102_021EC823: ; 0x021EC823
-	.byte 0x08
-
-ov102_021EC824: ; 0x021EC824
-	.byte 0xFE
-
-ov102_021EC825: ; 0x021EC825
-	.byte 0x0A
-
-ov102_021EC826: ; 0x021EC826
-	.byte 0x09
-
-ov102_021EC827: ; 0x021EC827
-	.byte 0x01
-
-ov102_021EC828: ; 0x021EC828
-	.byte 0x00
-
-ov102_021EC829: ; 0x021EC829
-	.byte 0x14, 0x2C, 0x01, 0x28, 0x08, 0xFE, 0x0B
-	.byte 0x00, 0x02, 0x01, 0x15, 0x2D, 0x01, 0x38, 0x08, 0xFE, 0x0C, 0x01, 0x03, 0x02, 0x16, 0x2E, 0x01
-	.byte 0x48, 0x08, 0xFE, 0x0D, 0x02, 0x04, 0x03, 0x17, 0x2F, 0x01, 0x58, 0x08, 0xFE, 0x0E, 0x03, 0x05
-	.byte 0x04, 0x18, 0x30, 0x01, 0x68, 0x08, 0xFE, 0x0F, 0x04, 0x06, 0x05, 0x19, 0x31, 0x01, 0x78, 0x08
-	.byte 0xFE, 0x10, 0x05, 0x07, 0x06, 0x10, 0x32, 0x01, 0x88, 0x08, 0xFE, 0x11, 0x06, 0x08, 0x07, 0x11
-	.byte 0x33, 0x01, 0x98, 0x08, 0xFE, 0x12, 0x07, 0x09, 0x08, 0x12, 0x34, 0x01, 0xA8, 0x08, 0xFE, 0x13
-	.byte 0x08, 0x00, 0x09, 0x1A, 0x35, 0x01, 0x18, 0x18, 0x00, 0x14, 0x13, 0x0B, 0x00, 0x14, 0x36, 0x01
-	.byte 0x28, 0x18, 0x01, 0x15, 0x0A, 0x0C, 0x01, 0x15, 0x37, 0x01, 0x38, 0x18, 0x02, 0x16, 0x0B, 0x0D
-	.byte 0x02, 0x16, 0x38, 0x01, 0x48, 0x18, 0x03, 0x17, 0x0C, 0x0E, 0x03, 0x17, 0x39, 0x01, 0x58, 0x18
-	.byte 0x04, 0x18, 0x0D, 0x0F, 0x04, 0x18, 0x3A, 0x01, 0x68, 0x18, 0x05, 0x19, 0x0E, 0x10, 0x05, 0x19
-	.byte 0x3B, 0x01, 0x78, 0x18, 0x06, 0xFE, 0x0F, 0x11, 0x06, 0x10, 0x3C, 0x01, 0x88, 0x18, 0x07, 0xFE
-	.byte 0x10, 0x12, 0x07, 0x11, 0x3D, 0x01, 0x98, 0x18, 0x08, 0xFE, 0x11, 0x13, 0x08, 0x12, 0x3E, 0x01
-	.byte 0xA8, 0x18, 0x09, 0x1A, 0x12, 0x0A, 0x09, 0x1A, 0x3F, 0x01, 0x18, 0x28, 0x0A, 0xFE, 0x1A, 0x15
-	.byte 0x00, 0x14, 0x40, 0x01, 0x28, 0x28, 0x0B, 0xFE, 0x14, 0x16, 0x01, 0x15, 0x41, 0x01, 0x38, 0x28
-	.byte 0x0C, 0xFE, 0x15, 0x17, 0x02, 0x16, 0x42, 0x01, 0x48, 0x28, 0x0D, 0xFE, 0x16, 0x18, 0x03, 0x17
-	.byte 0x43, 0x01, 0x58, 0x28, 0x0E, 0xFE, 0x17, 0x19, 0x04, 0x18, 0x44, 0x01, 0x68, 0x28, 0x0F, 0xFE
-	.byte 0x18, 0x1A, 0x05, 0x19, 0xAB, 0x01, 0xA8, 0x28, 0x13, 0xFE, 0x19, 0x14, 0x09, 0x1A, 0x00, 0x00
+	.byte 0x2B, 0x01, 0x18, 0x08, 0xFE, 0x0A, 0x09, 0x01, 0x00, 0x14
+	.byte 0x2C, 0x01, 0x28, 0x08, 0xFE, 0x0B, 0x00, 0x02, 0x01, 0x15
+	.byte 0x2D, 0x01, 0x38, 0x08, 0xFE, 0x0C, 0x01, 0x03, 0x02, 0x16
+	.byte 0x2E, 0x01, 0x48, 0x08, 0xFE, 0x0D, 0x02, 0x04, 0x03, 0x17
+	.byte 0x2F, 0x01, 0x58, 0x08, 0xFE, 0x0E, 0x03, 0x05, 0x04, 0x18
+	.byte 0x30, 0x01, 0x68, 0x08, 0xFE, 0x0F, 0x04, 0x06, 0x05, 0x19
+	.byte 0x31, 0x01, 0x78, 0x08, 0xFE, 0x10, 0x05, 0x07, 0x06, 0x10
+	.byte 0x32, 0x01, 0x88, 0x08, 0xFE, 0x11, 0x06, 0x08, 0x07, 0x11
+	.byte 0x33, 0x01, 0x98, 0x08, 0xFE, 0x12, 0x07, 0x09, 0x08, 0x12
+	.byte 0x34, 0x01, 0xA8, 0x08, 0xFE, 0x13, 0x08, 0x00, 0x09, 0x1A
+	.byte 0x35, 0x01, 0x18, 0x18, 0x00, 0x14, 0x13, 0x0B, 0x00, 0x14
+	.byte 0x36, 0x01, 0x28, 0x18, 0x01, 0x15, 0x0A, 0x0C, 0x01, 0x15
+	.byte 0x37, 0x01, 0x38, 0x18, 0x02, 0x16, 0x0B, 0x0D, 0x02, 0x16
+	.byte 0x38, 0x01, 0x48, 0x18, 0x03, 0x17, 0x0C, 0x0E, 0x03, 0x17
+	.byte 0x39, 0x01, 0x58, 0x18, 0x04, 0x18, 0x0D, 0x0F, 0x04, 0x18
+	.byte 0x3A, 0x01, 0x68, 0x18, 0x05, 0x19, 0x0E, 0x10, 0x05, 0x19
+	.byte 0x3B, 0x01, 0x78, 0x18, 0x06, 0xFE, 0x0F, 0x11, 0x06, 0x10
+	.byte 0x3C, 0x01, 0x88, 0x18, 0x07, 0xFE, 0x10, 0x12, 0x07, 0x11
+	.byte 0x3D, 0x01, 0x98, 0x18, 0x08, 0xFE, 0x11, 0x13, 0x08, 0x12
+	.byte 0x3E, 0x01, 0xA8, 0x18, 0x09, 0x1A, 0x12, 0x0A, 0x09, 0x1A
+	.byte 0x3F, 0x01, 0x18, 0x28, 0x0A, 0xFE, 0x1A, 0x15, 0x00, 0x14
+	.byte 0x40, 0x01, 0x28, 0x28, 0x0B, 0xFE, 0x14, 0x16, 0x01, 0x15
+	.byte 0x41, 0x01, 0x38, 0x28, 0x0C, 0xFE, 0x15, 0x17, 0x02, 0x16
+	.byte 0x42, 0x01, 0x48, 0x28, 0x0D, 0xFE, 0x16, 0x18, 0x03, 0x17
+	.byte 0x43, 0x01, 0x58, 0x28, 0x0E, 0xFE, 0x17, 0x19, 0x04, 0x18
+	.byte 0x44, 0x01, 0x68, 0x28, 0x0F, 0xFE, 0x18, 0x1A, 0x05, 0x19
+	.byte 0xAB, 0x01, 0xA8, 0x28, 0x13, 0xFE, 0x19, 0x14, 0x09, 0x1A
 	; 0x021EC930

@@ -218,21 +218,21 @@
     {
       "x": 740,
       "z": 396,
-      "header": "MAP_D45R0101",
+      "header": "MAP_TOHJO_FALLS",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 755,
       "z": 394,
-      "header": "MAP_D45R0101",
+      "header": "MAP_TOHJO_FALLS",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 751,
       "z": 400,
-      "header": "MAP_R27R0101",
+      "header": "MAP_ROUTE_27_HOUSE",
       "anchor": 0,
       "y": 0
     }

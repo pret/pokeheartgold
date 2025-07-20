@@ -185,7 +185,7 @@ BOOL ScrCmd_Whirlpool(ScriptContext *ctx);
 BOOL ScrCmd_183(ScriptContext *ctx);
 BOOL ScrCmd_PlayerOnBikeCheck(ScriptContext *ctx);
 BOOL ScrCmd_PlayerOnBikeSet(ScriptContext *ctx);
-BOOL ScrCmd_186(ScriptContext *ctx);
+BOOL ScrCmd_SetBikeStateLock(ScriptContext *ctx);
 BOOL ScrCmd_GetPlayerState(ScriptContext *ctx);
 BOOL ScrCmd_SetAvatarBits(ScriptContext *ctx);
 BOOL ScrCmd_UpdateAvatarState(ScriptContext *ctx);
@@ -1040,7 +1040,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_183,
     ScrCmd_PlayerOnBikeCheck,
     ScrCmd_PlayerOnBikeSet,
-    ScrCmd_186,
+    ScrCmd_SetBikeStateLock,
     ScrCmd_GetPlayerState,
     ScrCmd_SetAvatarBits,
     ScrCmd_UpdateAvatarState,

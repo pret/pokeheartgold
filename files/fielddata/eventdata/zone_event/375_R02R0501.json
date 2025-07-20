@@ -23,14 +23,14 @@
     {
       "x": 5,
       "z": 12,
-      "header": "MAP_D46R0101",
+      "header": "MAP_VIRIDIAN_FOREST",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_R02R0101",
+      "header": "MAP_ROUTE_2_EAST",
       "anchor": 0,
       "y": 0
     }

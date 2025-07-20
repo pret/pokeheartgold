@@ -85,7 +85,7 @@ _02097852:
 	strb r0, [r4, #2]
 _0209785A:
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	strb r0, [r4, #1]
 	ldr r0, [r5, #0x10]
@@ -131,7 +131,7 @@ _020978AC:
 	pop {r4, r5, r6, pc}
 _020978BA:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _020978C4:
@@ -241,7 +241,7 @@ _02097982:
 	strb r0, [r4]
 	b _020979A2
 _02097998:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}

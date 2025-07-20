@@ -210,21 +210,21 @@
     {
       "x": 24,
       "z": 3,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 9,
       "y": 0
     },
     {
       "x": 42,
       "z": 9,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 10,
       "y": 0
     },
     {
       "x": 42,
       "z": 8,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 10,
       "y": 0
     }

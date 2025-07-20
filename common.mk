@@ -79,7 +79,7 @@ TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 # Directories
 NITROSDK_SRC_SUBDIRS      := os mi
 
-LIB_SUBDIRS               := cw NitroSDK NitroSystem NitroDWC NitroWiFi libCPS libVCT
+LIB_SUBDIRS               := cw NitroSDK NitroSystem NitroDWC NitroWiFi libCPS libVCT MSL_C
 SRC_SUBDIR                := src
 ASM_SUBDIR                := asm
 LIB_SRC_SUBDIR            := lib/src $(LIB_SUBDIRS:%=lib/%/src) $(NITROSDK_SRC_SUBDIRS:%=lib/NitroSDK/src/%)
@@ -121,7 +121,7 @@ EXCCFLAGS         := -Cpp_exceptions off
 
 MWCFLAGS           = $(DEFINES) $(OPTFLAGS) -sym on -enum int -lang c99 $(EXCCFLAGS) -gccext,on -proc $(PROC) -msgstyle gcc -gccinc -i ./src -i ./include -i ./include/library -i $(WORK_DIR)/files -I$(WORK_DIR)/lib/include -ipa file -interworking -inline on,noauto -char signed -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
 
-MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -g -gccinc -i . -i ./include -i $(WORK_DIR)/asm/include -i $(WORK_DIR)/files -i $(WORK_DIR)/lib/asm/include -i $(WORK_DIR)/lib/NitroDWC/asm/include -i $(WORK_DIR)/lib/NitroSDK/asm/include -i $(WORK_DIR)/lib/syscall/asm/include -i $(WORK_DIR)/asm -i $(WORK_DIR)/files/msgdata -I$(WORK_DIR)/lib/include -DSDK_ASM
+MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -g -gccinc -i . -i ./include -i $(WORK_DIR)/asm/include -i $(WORK_DIR)/files -i $(WORK_DIR)/lib/asm/include -i $(WORK_DIR)/lib/NitroDWC/asm/include -i $(WORK_DIR)/lib/MSL_C/asm/include -i $(WORK_DIR)/lib/NitroSDK/asm/include -i $(WORK_DIR)/lib/syscall/asm/include -i $(WORK_DIR)/asm -i $(WORK_DIR)/files/msgdata -I$(WORK_DIR)/lib/include -DSDK_ASM
 MWLDFLAGS         := -proc $(PROC) -sym on -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
@@ -171,6 +171,7 @@ BUILD_C ?= $(MW_COMPILE) -c -o
 $(DEPFILES):
 
 $(BUILD_DIR)/lib/NitroSDK/%.o: MWCCVER := 2.0/sp2p3
+$(BUILD_DIR)/lib/MSL_C/%.o: MWCCVER := 2.0/sp2p3
 
 $(BUILD_DIR)/%.o: %.c
 $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d

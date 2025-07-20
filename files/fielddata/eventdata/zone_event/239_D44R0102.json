@@ -261,21 +261,21 @@
     {
       "x": 28,
       "z": 6,
-      "header": "MAP_D44R0101",
+      "header": "MAP_DRAGONS_DEN_ENTRANCE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 28,
       "z": 5,
-      "header": "MAP_D44R0101",
+      "header": "MAP_DRAGONS_DEN_ENTRANCE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 28,
       "z": 50,
-      "header": "MAP_D44R0103",
+      "header": "MAP_DRAGONS_DEN_SHRINE",
       "anchor": 0,
       "y": 0
     }

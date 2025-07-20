@@ -6,7 +6,7 @@
       "spriteId": "SPRITE_GSLEADER15",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2F5",
+      "eventFlag": "FLAG_HIDE_SEAFOAM_GYM_BLAINE",
       "scriptId": "_EV_scr_seq_D11R0106_000 + 1",
       "facingDirection": 1,
       "param0": 0,
@@ -142,7 +142,7 @@
     {
       "x": 14,
       "z": 25,
-      "header": "MAP_D11R0101",
+      "header": "MAP_SEAFOAM_ISLANDS_1F",
       "anchor": 4,
       "y": 0
     }

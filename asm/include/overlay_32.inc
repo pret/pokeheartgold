@@ -40,7 +40,7 @@
 .public sub_0201A018
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BG_ClearCharDataRange
@@ -61,7 +61,7 @@
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_TickAnimCtrlFrame
+.public Sprite_UpdateAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
 .public String_Delete

@@ -189,7 +189,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         break;
     case 10:
         MapObject_PauseMovement(env->tree);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
     return FALSE;
@@ -260,7 +260,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
         break;
     case 3:
         MapObject_PauseMovement(playerObj);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
     return FALSE;

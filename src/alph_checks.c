@@ -8,7 +8,7 @@
 BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
 
-    if (position->mapId != MAP_D24R0202) {
+    if (position->mapId != MAP_RUINS_OF_ALPH_NORTHEAST_ENTRANCE_FIRST_ROOM) {
         return FALSE;
     }
 
@@ -22,7 +22,7 @@ BOOL CheckUseEscapeRopeInAlphChamber(FieldSystem *fieldSystem) {
 BOOL CheckUseFlashInAlphChamber(FieldSystem *fieldSystem) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
 
-    if (position->mapId != MAP_D24R0204) {
+    if (position->mapId != MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM) {
         return FALSE;
     }
 
@@ -36,7 +36,7 @@ BOOL CheckUseFlashInAlphChamber(FieldSystem *fieldSystem) {
 BOOL CheckUseWaterStoneInAlphChamber(FieldSystem *fieldSystem) {
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
 
-    if (position->mapId != MAP_D24R0206) {
+    if (position->mapId != MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_FIRST_ROOM) {
         return FALSE;
     }
 

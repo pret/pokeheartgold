@@ -1,0 +1,10 @@
+#include <nitro/fs/overlay.h>
+#pragma once
+.public OS_TryLockMutex
+.public OS_LockMutex
+.public OS_UnlockMutex
+.public exit
+.public __cs
+.public OSi_ThreadInfo
+.public __cs_id
+.public __cs_ref

@@ -328,21 +328,21 @@
     {
       "x": 372,
       "z": 449,
-      "header": "MAP_R34R0201",
+      "header": "MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 373,
       "z": 449,
-      "header": "MAP_R34R0201",
+      "header": "MAP_ROUTE_34_ILEX_FOREST_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 368,
       "z": 410,
-      "header": "MAP_R34R0101",
+      "header": "MAP_ROUTE_34_DAYCARE",
       "anchor": 0,
       "y": 0
     }

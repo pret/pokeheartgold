@@ -114,16 +114,16 @@ static void sub_02052F30(FieldSystem *fieldSystem) {
     BOOL r2 = FALSE;
 
     switch (fieldSystem->location->mapId) {
-    case MAP_D47R0102:
+    case MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR:
         fieldSystem->unk70 = 1;
         return;
-    case MAP_D31R0201:
-    case MAP_D31R0202:
-    case MAP_D31R0203:
-    case MAP_D31R0204:
-    case MAP_D31R0205:
-    case MAP_D31R0206:
-    case MAP_D31R0207:
+    case MAP_BATTLE_TOWER:
+    case MAP_BATTLE_TOWER_ELEVATOR:
+    case MAP_BATTLE_TOWER_UNUSED_1:
+    case MAP_BATTLE_TOWER_UNUSED_2:
+    case MAP_BATTLE_TOWER_UNUSED_3:
+    case MAP_BATTLE_TOWER_UNUSED_4:
+    case MAP_BATTLE_TOWER_PARTNER_ROOM:
         r2 = TRUE;
         break;
     }
@@ -187,7 +187,7 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
     }
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
     weather = FieldSystem_GetWeather_HandleDiamondDust(fieldSystem, mapId);
-    if (sub_02066C74(varsFlags, 1) && mapId == MAP_T29) {
+    if (sub_02066C74(varsFlags, 1) && mapId == MAP_LAKE_OF_RAGE) {
         weather = 0;
     }
     if (weather == 9 && SysFlagDefogCheck(varsFlags) == TRUE) {
@@ -220,12 +220,12 @@ static void sub_0205316C(FieldSystem *fieldSystem) {
     u32 gender;
     struct PlayerSaveData *playerSaveData;
     if (fieldSystem->unkAC) {
-        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
     } else {
         fieldSystem->mapObjectManager = MapObjectManager_Init(fieldSystem, 64, 5);
-        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
         playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
         fieldSystem->playerAvatar = sub_0205C390(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, playerSaveData->unk4, gender, 2, playerSaveData);
         FollowMon_InitMapObject(fieldSystem->mapObjectManager, fieldSystem->location->x, fieldSystem->location->y, fieldSystem->location->direction, fieldSystem->location->mapId);
@@ -252,7 +252,7 @@ static void sub_0205323C(FieldSystem *fieldSystem) {
     fieldSystem->mapObjectManager = MapObjectManager_Init(fieldSystem, 64, 5);
     FieldSystem_RestoreMapObjectsFromSave(fieldSystem);
     playerSaveData = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
-    gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
     fieldSystem->playerAvatar = sub_0205C408(fieldSystem->mapObjectManager, playerSaveData, gender);
     FollowMon_ChangeMon(fieldSystem->mapObjectManager, fieldSystem->location->mapId);
     sub_0205F55C(fieldSystem->mapObjectManager);
@@ -431,7 +431,7 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
         }
         break;
     case 5:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -481,7 +481,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -513,7 +513,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
         break;
     case 2:
         sub_0205316C(fieldSystem);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -524,7 +524,7 @@ void sub_020537A8(TaskManager *taskManager, const Location *location) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fieldSystem)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     env->state = 0;
@@ -567,7 +567,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
         env->state++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -635,7 +635,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -693,7 +693,7 @@ static void sub_02053AA0(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnvironment(taskManager);
     if (!sub_0203DF7C(fieldSystem)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     env->unk4 = ov02_0224B418(fieldSystem, PlayerAvatar_GetGender(fieldSystem->playerAvatar));
@@ -745,13 +745,13 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         } else if (env->unk4 == 0 || env->unk4 == 1) {
             sub_02067BC0(fieldSystem);
         } else {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         }
         sub_02053C24(taskManager);
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -809,7 +809,7 @@ static void sub_02053C90(TaskManager *taskManager) {
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnvironment(taskManager);
 
     if (!sub_0203DF7C(fieldSystem)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     TaskManager_Call(taskManager, ov02_0224C1F8, ov02_0224C1D8(fieldSystem, 4, env->unk4));
@@ -874,7 +874,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         }
         break;
     case 7:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -929,7 +929,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 5:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -987,7 +987,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         }
         break;
     case 6:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -1031,7 +1031,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 

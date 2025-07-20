@@ -23,11 +23,8 @@
 	scrdef_end
 
 scr_seq_T22_000:
-	setflag FLAG_UNK_09F
-	setvar VAR_SPECIAL_x8004, 1
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 1
-	callstd std_phone_call
+	setflag FLAG_GOT_PICK_UP_EGG_CALL_FROM_ELM
+	phone_call PHONE_CONTACT_PROF__ELM, 2, 1
 	setvar VAR_SCENE_VIOLET_CITY_OW, 2
 	clearflag FLAG_HIDE_VIOLET_SHOP_LAB_AIDE
 	setflag FLAG_HIDE_ELMS_LAB_AIDE

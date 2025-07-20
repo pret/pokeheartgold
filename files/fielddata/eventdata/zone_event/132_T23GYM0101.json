@@ -41,14 +41,14 @@
     {
       "x": 7,
       "z": 11,
-      "header": "MAP_T23",
+      "header": "MAP_AZALEA",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 7,
       "z": 3,
-      "header": "MAP_T23GYM0102",
+      "header": "MAP_AZALEA_GYM",
       "anchor": 0,
       "y": 0
     }

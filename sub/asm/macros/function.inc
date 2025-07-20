@@ -4,6 +4,11 @@
 	.arm
 	.endm
 
+	.macro local_arm_func_start name
+	.balign 4, 0
+	.arm
+	.endm
+
 	.macro arm_func_end name
 	.size \name, .-\name
 	.endm

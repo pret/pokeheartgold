@@ -4,42 +4,42 @@
     {
       "x": 5,
       "z": 4,
-      "header": "MAP_D02R0101",
+      "header": "MAP_MOUNT_MOON",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 5,
       "z": 6,
-      "header": "MAP_D02R0103",
+      "header": "MAP_MOUNT_MOON_SQUARE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 25,
-      "header": "MAP_D02R0103",
+      "header": "MAP_MOUNT_MOON_SQUARE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 5,
       "z": 23,
-      "header": "MAP_D02R0101",
+      "header": "MAP_MOUNT_MOON",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 9,
       "z": 7,
-      "header": "MAP_D02R0104",
+      "header": "MAP_MOUNT_MOON_SQUARE_CLEFAIRY_EVENT",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 9,
       "z": 26,
-      "header": "MAP_D02R0104",
+      "header": "MAP_MOUNT_MOON_SQUARE_CLEFAIRY_EVENT",
       "anchor": 1,
       "y": 0
     }

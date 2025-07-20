@@ -189,7 +189,7 @@
 .public memcmp
 .public strlen
 .public strncpy
-.public atoi
+.public atol
 .public swprintf
 .public _ll_udiv
 .public _ull_mod

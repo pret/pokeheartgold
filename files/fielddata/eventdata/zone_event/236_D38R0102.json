@@ -252,70 +252,70 @@
     {
       "x": 35,
       "z": 81,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 57,
       "z": 81,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 82,
       "z": 81,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 27,
       "z": 65,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 27,
       "z": 64,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 70,
       "z": 66,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 8,
       "y": 0
     },
     {
       "x": 70,
       "z": 65,
-      "header": "MAP_D38R0101",
+      "header": "MAP_MOUNT_MORTAR_1F_ENTRANCE",
       "anchor": 8,
       "y": 0
     },
     {
       "x": 35,
       "z": 38,
-      "header": "MAP_D38R0104",
+      "header": "MAP_MOUNT_MORTAR_B1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 28,
       "z": 13,
-      "header": "MAP_D38R0103",
+      "header": "MAP_MOUNT_MORTAR_2F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 28,
       "z": 12,
-      "header": "MAP_D38R0103",
+      "header": "MAP_MOUNT_MORTAR_2F",
       "anchor": 1,
       "y": 0
     }

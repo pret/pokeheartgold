@@ -461,7 +461,7 @@ ov33_0225D84C: ; 0x0225D84C
 	add r1, r5, #0
 	bl MIi_CpuCopy16
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x14

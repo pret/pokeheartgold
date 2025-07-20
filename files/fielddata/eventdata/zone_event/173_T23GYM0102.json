@@ -125,7 +125,7 @@
       "spriteId": "SPRITE_GSLEADER2",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2EA",
+      "eventFlag": "FLAG_HIDE_AZALEA_GYM_BUGSY",
       "scriptId": "_EV_scr_seq_T23GYM0102_001 + 1",
       "facingDirection": 1,
       "param0": 0,
@@ -142,7 +142,7 @@
     {
       "x": 9,
       "z": 37,
-      "header": "MAP_T23GYM0101",
+      "header": "MAP_AZALEA_GYM_ENTRANCE",
       "anchor": 1,
       "y": 0
     }

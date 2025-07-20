@@ -40,21 +40,21 @@
     {
       "x": 19,
       "z": 20,
-      "header": "MAP_D41R0101",
+      "header": "MAP_MOUNT_SILVER_CAVE_1F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 23,
       "z": 37,
-      "header": "MAP_D41R0101",
+      "header": "MAP_MOUNT_SILVER_CAVE_1F",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 27,
       "z": 42,
-      "header": "MAP_D41R0101",
+      "header": "MAP_MOUNT_SILVER_CAVE_1F",
       "anchor": 3,
       "y": 0
     }

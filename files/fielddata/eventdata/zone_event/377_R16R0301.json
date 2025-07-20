@@ -23,21 +23,21 @@
     {
       "x": 1158,
       "z": 276,
-      "header": "MAP_R16R0201",
+      "header": "MAP_ROUTE_16_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1158,
       "z": 277,
-      "header": "MAP_R16R0201",
+      "header": "MAP_ROUTE_16_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1153,
       "z": 258,
-      "header": "MAP_R16R0101",
+      "header": "MAP_ROUTE_16_HOUSE",
       "anchor": 0,
       "y": 0
     }

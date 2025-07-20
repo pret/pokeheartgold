@@ -84,21 +84,21 @@
     {
       "x": 7,
       "z": 13,
-      "header": "MAP_T07",
+      "header": "MAP_CELADON",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 13,
       "z": 10,
-      "header": "MAP_T07R0202",
+      "header": "MAP_CELADON_CONDOMINIUMS_2F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 3,
       "z": 2,
-      "header": "MAP_T07R0206",
+      "header": "MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

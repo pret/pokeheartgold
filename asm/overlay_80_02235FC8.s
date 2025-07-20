@@ -29,7 +29,7 @@ ov80_02235FEC: ; 0x02235FEC
 	push {r3, lr}
 	cmp r0, #0
 	beq _02235FF6
-	bl FreeToHeap
+	bl Heap_Free
 _02235FF6:
 	pop {r3, pc}
 	thumb_func_end ov80_02235FEC
@@ -451,7 +451,7 @@ _022362F0:
 	add r0, r4, #0
 	add r0, #0xa8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xa8
@@ -556,7 +556,7 @@ ov80_02236330: ; 0x02236330
 	ldr r1, _02236414 ; =ov80_0223C040
 	bl sub_02089D40
 	ldr r0, [r4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xac
@@ -589,7 +589,7 @@ ov80_0223641C: ; 0x0223641C
 	add r0, r4, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0xac

@@ -721,15 +721,15 @@ _021E8508:
 	ldr r0, _021E876C ; =ov00_0221A694
 	mov r2, #0
 	ldr r1, [r0, #8]
-	ldr r0, _021E8774 ; =_021E58C0
+	ldr r0, _021E8774 ; =errno
 	str r2, [sp]
 	str r2, [r0]
 	add r0, r1, #0x1000
 	ldr r0, [r0, #0x314]
 	ldr r1, _021E8778 ; =ov00_022164C8
 	bl ov00_021EA1CC
-	bl atoi
-	ldr r1, _021E8774 ; =_021E58C0
+	bl atol
+	ldr r1, _021E8774 ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
 	bne _021E8560
@@ -879,7 +879,7 @@ _021E8764:
 	.balign 4, 0
 _021E876C: .word ov00_0221A694
 _021E8770: .word ov00_022164C0
-_021E8774: .word _021E58C0
+_021E8774: .word errno
 _021E8778: .word ov00_022164C8
 _021E877C: .word 0x00004E85
 _021E8780: .word ov00_022164D4
@@ -1766,7 +1766,7 @@ ov00_021E9350: ; 0x021E9350
 	strb r1, [r6]
 	bl OS_LockMutex
 	add r0, r8, r7
-	bl atoi
+	bl atol
 	add r1, r5, #0x1000
 	add r2, r5, #0x218
 	str r0, [r1, #0xa30]
@@ -2460,7 +2460,7 @@ _021E9D5C:
 	cmp r4, #0
 	beq _021E9DC0
 	mov r0, r4
-	bl atoi
+	bl atol
 	add r1, r5, #0x1100
 	strh r0, [r1, #0x34]
 _021E9DC0:
@@ -3217,9 +3217,9 @@ _021EA7FC:
 	ldr r0, [r5, #0x14]
 	ldr r1, _021EB4F8 ; =ov00_022169F0
 	bl ov00_021EA1CC
-	bl atoi
+	bl atol
 	mov r6, r0
-	ldr r0, _021EB4FC ; =_021E58C0
+	ldr r0, _021EB4FC ; =errno
 	ldr r0, [r0]
 	cmp r0, #0x22
 	bne _021EA82C
@@ -3709,9 +3709,9 @@ _021EAF10:
 	ldr r0, [r5, #0x14]
 	ldr r1, _021EB4F8 ; =ov00_022169F0
 	bl ov00_021EA1CC
-	bl atoi
+	bl atol
 	mov r6, r0
-	ldr r0, _021EB4FC ; =_021E58C0
+	ldr r0, _021EB4FC ; =errno
 	ldr r0, [r0]
 	cmp r0, #0x22
 	bne _021EAF4C
@@ -3760,8 +3760,8 @@ _021EAFA0:
 	b _021EB490
 _021EAFD4:
 	add r0, sp, #0x2c
-	bl atoi
-	ldr r1, _021EB4FC ; =_021E58C0
+	bl atol
+	ldr r1, _021EB4FC ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
 	bne _021EB004
@@ -3925,8 +3925,8 @@ _021EB234:
 	mov r1, #0
 	strb r1, [sl, r0]
 	mov r0, sl
-	bl atoi
-	ldr r1, _021EB4FC ; =_021E58C0
+	bl atol
+	ldr r1, _021EB4FC ; =errno
 	ldr r1, [r1]
 	cmp r1, #0x22
 	bne _021EB26C
@@ -4116,7 +4116,7 @@ _021EB4EC: .word ov00_022168DC
 _021EB4F0: .word ov00_0221A6D0
 _021EB4F4: .word OSi_ThreadInfo
 _021EB4F8: .word ov00_022169F0
-_021EB4FC: .word _021E58C0
+_021EB4FC: .word errno
 _021EB500: .word 0x0000012E
 _021EB504: .word ov00_02216420
 _021EB508: .word 0x00004E20
@@ -4209,7 +4209,7 @@ ov00_021EB5B0: ; 0x021EB5B0
 	mov r1, r6
 	bl strcpy
 	mov r2, #0
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	add r0, sp, #0xc
 	strb r2, [sp, #7]
 	strb r2, [sp, #0xb]
@@ -4218,8 +4218,8 @@ ov00_021EB5B0: ; 0x021EB5B0
 	strb r2, [sp, #0x16]
 	strb r2, [sp, #0x19]
 	str r2, [r1]
-	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	bl atol
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x2c]
 	ldr r1, [r1]
 	cmp r1, #0x22
@@ -4246,12 +4246,12 @@ _021EB6CC:
 	ldr r0, [sp, #0x30]
 	cmp r0, #0xc
 	bhi _021EB7B0
-	ldr r1, _021EB7C0 ; =_021E58C0
+	ldr r1, _021EB7C0 ; =errno
 	mov r2, #0
 	add r0, sp, #5
 	str r2, [r1]
-	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	bl atol
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x34]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4259,8 +4259,8 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #0x11
 	str r2, [r1]
-	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	bl atol
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x20]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4268,8 +4268,8 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #0x14
 	str r2, [r1]
-	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	bl atol
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x24]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4277,8 +4277,8 @@ _021EB6CC:
 	mov r2, #0
 	add r0, sp, #0x17
 	str r2, [r1]
-	bl atoi
-	ldr r1, _021EB7C0 ; =_021E58C0
+	bl atol
+	ldr r1, _021EB7C0 ; =errno
 	str r0, [sp, #0x28]
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4306,7 +4306,7 @@ _021EB7B0:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
 _021EB7BC: .word ov00_02216AF0
-_021EB7C0: .word _021E58C0
+_021EB7C0: .word errno
 _021EB7C4: .word ov00_02216AC0
 _021EB7C8: .word ov00_0221A734
 	arm_func_end ov00_021EB5B0
@@ -4645,8 +4645,8 @@ _021EBC40:
 	mov r0, #0
 	ldmia sp!, {r3, r4, pc}
 _021EBC6C:
-	bl atoi
-	ldr r1, _021EBDEC ; =_021E58C0
+	bl atol
+	ldr r1, _021EBDEC ; =errno
 	mov r2, r0
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4683,8 +4683,8 @@ _021EBCC0:
 	ldmia sp!, {r3, r4, pc}
 _021EBCF4:
 	add r0, sp, #0
-	bl atoi
-	ldr r1, _021EBDEC ; =_021E58C0
+	bl atol
+	ldr r1, _021EBDEC ; =errno
 	mov r2, r0
 	ldr r0, [r1]
 	cmp r0, #0x22
@@ -4747,7 +4747,7 @@ _021EBDDC: .word ov00_0221A748
 _021EBDE0: .word 0xFFFF9DF3
 _021EBDE4: .word ov00_02216B64
 _021EBDE8: .word ov00_02216B6C
-_021EBDEC: .word _021E58C0
+_021EBDEC: .word errno
 _021EBDF0: .word 0xFFFF9E58
 _021EBDF4: .word ov00_02216B78
 _021EBDF8: .word 0xFFFFA240
@@ -27933,7 +27933,7 @@ ov00_021FF408: ; 0x021FF408
 	mov r2, r0
 	cmp r3, #0
 	beq _021FF440
-	ldr r1, _021FF448 ; =_0210E404
+	ldr r1, _021FF448 ; =__lower_mapC
 _021FF41C:
 	cmp r3, #0
 	blt _021FF430
@@ -27949,7 +27949,7 @@ _021FF440:
 	mov r0, r2
 	bx lr
 	.balign 4, 0
-_021FF448: .word _0210E404
+_021FF448: .word __lower_mapC
 	arm_func_end ov00_021FF408
 
 	arm_func_start ov00_021FF44C
@@ -29886,7 +29886,7 @@ _02200D10:
 	cmp r0, #0
 	beq _02200DB8
 	add r0, r0, #4
-	bl atoi
+	bl atol
 	mov r5, r0
 	mov r0, r4
 	mov r1, fp
@@ -30193,7 +30193,7 @@ ov00_02201134: ; 0x02201134
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201198:
 	add r0, sp, #0x138
-	bl atoi
+	bl atol
 	mov r4, r0
 	ldr r1, _02201AB0 ; =ov00_022182A0
 	add r2, sp, #0x138
@@ -30216,7 +30216,7 @@ _02201198:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022011F0:
 	add r0, sp, #0x138
-	bl atoi
+	bl atol
 	mov r6, r0
 	ldr r1, _02201AB4 ; =ov00_022182A4
 	add r2, sp, #0x138
@@ -30226,7 +30226,7 @@ _022011F0:
 	cmp r0, #0
 	beq _02201224
 	add r0, sp, #0x138
-	bl atoi
+	bl atol
 	b _0220122C
 _02201224:
 	mov r0, #0
@@ -30530,7 +30530,7 @@ _0220163C:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201688:
 	add r0, sp, #0x28
-	bl atoi
+	bl atol
 	str r0, [r7, #4]
 	ldr r0, [r7, #8]
 	bl ov00_021EC3D8
@@ -30591,16 +30591,16 @@ _02201754:
 	moveq r0, #0
 	beq _022017CC
 	add r0, sp, #0x28
-	bl atoi
+	bl atol
 	mov r5, r0
 	add r0, sp, #0x28
-	bl atoi
+	bl atol
 	mov fp, r0
 	add r0, sp, #0x28
-	bl atoi
+	bl atol
 	mov r4, r0
 	add r0, sp, #0x28
-	bl atoi
+	bl atol
 	mov r1, r4, lsr #0x18
 	mov r0, r0, lsr #8
 	mov r2, fp, lsl #8
@@ -30623,7 +30623,7 @@ _022017CC:
 	moveq r0, #0
 	beq _0220181C
 	add r0, sp, #0x28
-	bl atoi
+	bl atol
 	mov r0, r0, lsl #0x10
 	mov r0, r0, lsr #0x10
 	mov r1, r0, asr #8
@@ -30726,7 +30726,7 @@ _02201938:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02201974:
 	add r0, r0, #3
-	bl atoi
+	bl atol
 	mov r4, r0
 	ldr r1, _02201AE0 ; =ov00_022182F0
 	add r0, sp, #0x138
@@ -31816,7 +31816,7 @@ ov00_022027FC: ; 0x022027FC
 	moveq r0, #3
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, sp, #0
-	bl atoi
+	bl atol
 	str r0, [r7]
 	ldr r0, [r6]
 	ldr r1, _02202934 ; =ov00_022185AC
@@ -31828,7 +31828,7 @@ ov00_022027FC: ; 0x022027FC
 	moveq r0, #3
 	ldmeqia sp!, {r3, r4, r5, r6, r7, pc}
 	add r0, sp, #0
-	bl atoi
+	bl atol
 	ldr r2, [r6]
 	add r1, r0, #1
 	sub r2, r4, r2
@@ -33110,7 +33110,7 @@ _02203AB8:
 	cmp r0, #0
 	beq _02203AEC
 	add r0, sp, #0xa0
-	bl atoi
+	bl atol
 	str r0, [r5, #0x1a0]
 _02203AEC:
 	ldr r1, _022040D4 ; =ov00_02218A08
@@ -33246,7 +33246,7 @@ _02203C90:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203CD8:
 	add r0, sp, #0xa0
-	bl atoi
+	bl atol
 	str r0, [r5, #0x19c]
 	ldr r1, _022040F0 ; =ov00_02218964
 	add r2, sp, #0xa0
@@ -33268,7 +33268,7 @@ _02203CD8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203D2C:
 	add r0, sp, #0xa0
-	bl atoi
+	bl atol
 	str r0, [r5, #0x1a0]
 	mov r0, r8
 	mov r1, r4
@@ -33318,7 +33318,7 @@ _02203DA0:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203DE8:
 	add r0, sp, #0xa0
-	bl atoi
+	bl atol
 	str r0, [r5, #0x198]
 	ldr r1, _022040E8 ; =ov00_02218958
 	add r2, sp, #0xa0
@@ -33340,7 +33340,7 @@ _02203DE8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203E3C:
 	add r0, sp, #0xa0
-	bl atoi
+	bl atol
 	str r0, [r5, #0x19c]
 	ldr r1, _022040F0 ; =ov00_02218964
 	add r2, sp, #0xa0
@@ -33362,7 +33362,7 @@ _02203E3C:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 _02203E90:
 	add r0, sp, #0xa0
-	bl atoi
+	bl atol
 	str r0, [r5, #0x1a0]
 	ldr r1, _022040FC ; =ov00_0221893C
 	add r2, sp, #0x18
@@ -34110,7 +34110,7 @@ _022048C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0220490C:
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	mov sb, r0
 	cmp sb, #0
 	bgt _02204934
@@ -34204,7 +34204,7 @@ _0220495C:
 	streq r0, [sp, #0x190]
 	beq _02204A88
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x190]
 _02204A88:
 	ldr r2, [sp, #0x18c]
@@ -34243,7 +34243,7 @@ _02204A88:
 	streq r0, [sp, #0x1a4]
 	beq _02204B24
 	add r0, sp, #0xec
-	bl atof
+	bl atod
 	bl _d2f
 	str r0, [sp, #0x1a4]
 _02204B24:
@@ -34257,7 +34257,7 @@ _02204B24:
 	streq r0, [sp, #0x1a8]
 	beq _02204B58
 	add r0, sp, #0xec
-	bl atof
+	bl atod
 	bl _d2f
 	str r0, [sp, #0x1a8]
 _02204B58:
@@ -34283,7 +34283,7 @@ _02204B58:
 	b _02204BD8
 _02204BA8:
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	add r5, sp, #0x234
 	mov r1, r0
 	add r2, sp, #0x22c
@@ -34325,7 +34325,7 @@ _02204C24:
 	streq r0, [sp, #0x23c]
 	beq _02204C54
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x23c]
 _02204C54:
 	ldr r2, [sp, #0x240]
@@ -34347,7 +34347,7 @@ _02204C54:
 	streq r0, [sp, #0x244]
 	beq _02204CA8
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x244]
 _02204CA8:
 	ldr r1, _0220503C ; =ov00_02218C78
@@ -34360,7 +34360,7 @@ _02204CA8:
 	streq r0, [sp, #0x248]
 	beq _02204CD8
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x248]
 _02204CD8:
 	ldr r1, _02205040 ; =ov00_02218C80
@@ -34373,7 +34373,7 @@ _02204CD8:
 	streq r0, [sp, #0x24c]
 	beq _02204D08
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x24c]
 _02204D08:
 	ldr r1, _02205044 ; =ov00_02218C88
@@ -34386,7 +34386,7 @@ _02204D08:
 	streq r0, [sp, #0x250]
 	beq _02204D38
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x250]
 _02204D38:
 	ldr r1, _02205048 ; =ov00_02218C90
@@ -34399,7 +34399,7 @@ _02204D38:
 	streq r0, [sp, #0x254]
 	beq _02204D68
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x254]
 _02204D68:
 	ldr r1, _0220504C ; =ov00_02218C98
@@ -34412,7 +34412,7 @@ _02204D68:
 	streq r0, [sp, #0x258]
 	beq _02204D98
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x258]
 _02204D98:
 	ldr r1, _02205050 ; =ov00_02218CA0
@@ -34425,7 +34425,7 @@ _02204D98:
 	streq r0, [sp, #0x25c]
 	beq _02204DC8
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x25c]
 _02204DC8:
 	ldr r1, _02205054 ; =ov00_02218CA8
@@ -34438,7 +34438,7 @@ _02204DC8:
 	streq r0, [sp, #0x260]
 	beq _02204DF8
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x260]
 _02204DF8:
 	ldr r1, _02205058 ; =ov00_02218CB0
@@ -34451,7 +34451,7 @@ _02204DF8:
 	streq r0, [sp, #0x264]
 	beq _02204E28
 	add r0, sp, #0xec
-	bl atoi
+	bl atol
 	str r0, [sp, #0x264]
 _02204E28:
 	ldr r1, _0220505C ; =ov00_02218CB8
@@ -35285,7 +35285,7 @@ _022059D8:
 	blt _022059F4
 	cmp r1, #0x80
 	bge _022059F4
-	ldr r0, _02205DF4 ; =_0210E484
+	ldr r0, _02205DF4 ; =__upper_mapC
 	ldrb r1, [r0, r1]
 _022059F4:
 	mov r0, r1, lsl #0x18
@@ -35338,7 +35338,7 @@ _02205A74:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205AA4:
 	mov r0, r5
-	bl atoi
+	bl atol
 	mov r2, r0
 	ldr r1, _02205E0C ; =0x0000070D
 	mov r0, r6
@@ -35349,7 +35349,7 @@ _02205AA4:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205ACC:
 	mov r0, r5
-	bl atoi
+	bl atol
 	mov r2, r0
 	ldr r1, _02205E10 ; =0x0000070E
 	mov r0, r6
@@ -35373,7 +35373,7 @@ _02205AF4:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205B24:
 	mov r0, r5
-	bl atoi
+	bl atol
 	mov r2, r0
 	mov r0, r6
 	mov r1, #0x710
@@ -35397,7 +35397,7 @@ _02205B4C:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205B7C:
 	mov r0, r5
-	bl atoi
+	bl atol
 	mov r2, r0
 	ldr r1, _02205E1C ; =0x00000712
 	mov r0, r6
@@ -35408,7 +35408,7 @@ _02205B7C:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205BA4:
 	mov r0, r5
-	bl atoi
+	bl atol
 	mov r2, r0
 	ldr r1, _02205E20 ; =0x00000714
 	mov r0, r6
@@ -35419,7 +35419,7 @@ _02205BA4:
 	ldmia sp!, {r4, r5, r6, pc}
 _02205BCC:
 	mov r0, r5
-	bl atoi
+	bl atol
 	mov r2, r0
 	ldr r1, _02205E24 ; =0x00000715
 	mov r0, r6
@@ -35568,7 +35568,7 @@ _02205DE4: .word ov00_02218C0C
 _02205DE8: .word ov00_02218C18
 _02205DEC: .word ov00_02218DE0
 _02205DF0: .word ov00_02218C24
-_02205DF4: .word _0210E484
+_02205DF4: .word __upper_mapC
 _02205DF8: .word ov00_02218D1C
 _02205DFC: .word ov00_02218D20
 _02205E00: .word ov00_02218D24
@@ -36625,7 +36625,7 @@ _02206C2C:
 	ldmia sp!, {r4, r5, r6, r7, pc}
 _02206C94:
 	add r0, sp, #0x71
-	bl atoi
+	bl atol
 	mov r7, r0
 	ldr r0, [r5, #0x18]
 	ldr r1, _02206DF0 ; =ov00_02219034
@@ -37776,7 +37776,7 @@ _02207C00:
 	ldmia sp!, {r4, r5, r6, pc}
 _02207C48:
 	add r0, sp, #0x10
-	bl atoi
+	bl atol
 	ldr r2, [r4, #0xc]
 	ldr r1, [r4, #0x10]
 	mov r6, r0
@@ -39013,7 +39013,7 @@ _02208D8C:
 	mov r2, #0xac
 	bl memset
 	mov r0, r5
-	bl atoi
+	bl atol
 	str r0, [r7, r8]
 	mov r8, #0
 _02208DC0:
@@ -39562,7 +39562,7 @@ _0220959C:
 	mov r0, #1
 	str r0, [r7, #0x24]
 	mov r0, r5
-	bl atoi
+	bl atol
 	str r0, [r8, sb]
 	mov r8, #0
 _022095D8:
@@ -39603,7 +39603,7 @@ _0220964C:
 	cmp r0, #0
 	bne _02209670
 	mov r0, r5
-	bl atoi
+	bl atol
 	str r0, [r7, #0x24]
 	b _022096A0
 _02209670:
@@ -39691,7 +39691,7 @@ _02209718:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _022097A4:
 	add r0, sp, #0x90
-	bl atoi
+	bl atol
 	movs r4, r0
 	beq _022097C4
 	ldr r0, [sp, #0x28]
@@ -39719,7 +39719,7 @@ _022097C4:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _0220980C:
 	add r0, sp, #0x90
-	bl atoi
+	bl atol
 	mov r5, r0
 _02209818:
 	mov r0, #8
@@ -39784,7 +39784,7 @@ _02209874:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02209900:
 	add r0, sp, #0x90
-	bl atoi
+	bl atol
 	movs r4, r0
 	ldrne r0, [sp, #0x28]
 	ldr r1, _02209F9C ; =ov00_02219648
@@ -39813,7 +39813,7 @@ _02209964:
 	b _02209978
 _0220996C:
 	add r0, sp, #0x90
-	bl atoi
+	bl atol
 	mov r5, r0
 _02209978:
 	mov r0, #8
@@ -39947,7 +39947,7 @@ _02209B34:
 	mov r0, r5
 	add r1, r1, #1
 	str r1, [fp, #4]
-	bl atoi
+	bl atol
 	str r0, [r8, sb]
 	mov r8, #0
 _02209B78:
@@ -40116,7 +40116,7 @@ _02209D60:
 	ldmia sp!, {r3, r4, r5, r6, r7, r8, sb, sl, fp, pc}
 _02209DD8:
 	add r0, sp, #0x90
-	bl atoi
+	bl atol
 	str r0, [r8, #4]
 	mov r0, r0, lsl #2
 	bl ov00_021EC3A8
@@ -40576,7 +40576,7 @@ ov00_0220A3C8: ; 0x0220A3C8
 	cmp r0, #0
 	beq _0220A420
 	add r0, sp, #0
-	bl atoi
+	bl atol
 	str r0, [r4, #0x418]
 _0220A420:
 	ldr r1, _0220A498 ; =ov00_022197A4
@@ -41689,12 +41689,12 @@ ov00_0220B26C: ; 0x0220B26C
 	ldr r1, _0220B30C ; =ov00_0221994C
 	mov r6, r0
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r5, r0
 	ldr r1, _0220B310 ; =ov00_02219954
 	mov r0, r6
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r4, r0
 	ldr r1, _0220B314 ; =ov00_02219958
 	mov r0, r6
@@ -41737,12 +41737,12 @@ ov00_0220B31C: ; 0x0220B31C
 	ldr r1, _0220B39C ; =ov00_02219960
 	mov r5, r0
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r4, r0
 	ldr r1, _0220B3A0 ; =ov00_02219954
 	mov r0, r5
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r1, r0
 	mov r0, #3
 	mov r2, #0
@@ -41778,22 +41778,22 @@ ov00_0220B3A8: ; 0x0220B3A8
 	ldr r1, _0220B470 ; =ov00_02219968
 	mov r4, r0
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r7, r0
 	ldr r1, _0220B474 ; =ov00_02219954
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r6, r0
 	ldr r1, _0220B478 ; =ov00_02219970
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r5, r0
 	ldr r1, _0220B47C ; =ov00_02219974
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r8, r0
 	mov r1, r6
 	mov r2, r5
@@ -41807,7 +41807,7 @@ ov00_0220B3A8: ; 0x0220B3A8
 	ldr r1, _0220B480 ; =ov00_02219978
 	mov r0, r4
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r6, r0
 	ldr r1, _0220B484 ; =ov00_02219980
 	mov r0, r4
@@ -41839,22 +41839,22 @@ ov00_0220B48C: ; 0x0220B48C
 	ldr r1, _0220B514 ; =ov00_02219988
 	mov r7, r0
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r6, r0
 	ldr r1, _0220B518 ; =ov00_02219970
 	mov r0, r7
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r5, r0
 	ldr r1, _0220B51C ; =ov00_02219954
 	mov r0, r7
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r4, r0
 	ldr r1, _0220B520 ; =ov00_02219974
 	mov r0, r7
 	bl ov00_0220B15C
-	bl atoi
+	bl atol
 	mov r1, r4
 	mov r4, r0
 	mov r2, r5
@@ -46973,7 +46973,7 @@ _0220F85C:
 	add r3, r5, #1
 	cmp r0, #0
 	beq _0220F8B4
-	ldr r1, _0220F950 ; =_0210E504
+	ldr r1, _0220F950 ; =__msl_digit
 	mov r2, #0
 _0220F874:
 	cmp r0, #0
@@ -46997,7 +46997,7 @@ _0220F898:
 	bne _0220F874
 _0220F8B4:
 	add r0, r5, #1
-	bl atoi
+	bl atol
 	cmp r0, #0
 	blt _0220F8D0
 	ldr r1, _0220F954 ; =0x0000FFFF
@@ -47040,7 +47040,7 @@ _0220F928:
 _0220F944: .word ov00_02219CF4
 _0220F948: .word ov00_02219D14
 _0220F94C: .word ov00_02219CD0
-_0220F950: .word _0210E504
+_0220F950: .word __msl_digit
 _0220F954: .word 0x0000FFFF
 	arm_func_end ov00_0220F7D4
 
@@ -50995,7 +50995,7 @@ _02212E0C:
 	mov r1, #0
 	b _02212E24
 _02212E14:
-	ldr r1, _02212E40 ; =_0210E504
+	ldr r1, _02212E40 ; =__msl_digit
 	mov r2, r2, lsl #1
 	ldrh r1, [r1, r2]
 	and r1, r1, #8
@@ -51006,11 +51006,11 @@ _02212E2C:
 	mov r0, r4
 	ldmia sp!, {r4, r5, r6, pc}
 _02212E34:
-	bl atoi
+	bl atol
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _02212E3C: .word ov00_0221A514
-_02212E40: .word _0210E504
+_02212E40: .word __msl_digit
 	arm_func_end ov00_02212DB4
 
 	arm_func_start ov00_02212E44
@@ -51022,7 +51022,7 @@ ov00_02212E44: ; 0x02212E44
 	bl ov00_02212D48
 	cmp r0, #0
 	beq _02212E6C
-	bl atof
+	bl atod
 	mov r5, r0
 	mov r4, r1
 _02212E6C:
@@ -51337,7 +51337,7 @@ ov00_0221321C: ; 0x0221321C
 	mov ip, #0
 	cmp lr, #0
 	beq _0221325C
-	ldr r3, _0221326C ; =_0210E404
+	ldr r3, _0221326C ; =__lower_mapC
 	ldr r2, _02213270 ; =0x9CCF9319
 _02213238:
 	cmp lr, #0
@@ -51356,7 +51356,7 @@ _0221325C:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221326C: .word _0210E404
+_0221326C: .word __lower_mapC
 _02213270: .word 0x9CCF9319
 	arm_func_end ov00_0221321C
 
@@ -52619,7 +52619,7 @@ ov00_022141EC: ; 0x022141EC
 	mov ip, #0
 	cmp lr, #0
 	beq _0221422C
-	ldr r3, _0221423C ; =_0210E404
+	ldr r3, _0221423C ; =__lower_mapC
 	ldr r2, _02214240 ; =0x9CCF9319
 _02214208:
 	cmp lr, #0
@@ -52638,7 +52638,7 @@ _0221422C:
 	mov r0, r1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_0221423C: .word _0210E404
+_0221423C: .word __lower_mapC
 _02214240: .word 0x9CCF9319
 	arm_func_end ov00_022141EC
 

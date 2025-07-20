@@ -100,42 +100,42 @@
     {
       "x": 524,
       "z": 165,
-      "header": "MAP_R43R0101",
+      "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 525,
       "z": 165,
-      "header": "MAP_R43R0101",
+      "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 523,
       "z": 183,
-      "header": "MAP_T28GYM0103",
+      "header": "MAP_MAHOGANY_GYM_ROOM_1",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 534,
       "z": 183,
-      "header": "MAP_T28PC0101",
+      "header": "MAP_MAHOGANY_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 537,
       "z": 174,
-      "header": "MAP_T28R0201",
+      "header": "MAP_MAHOGANY_EAST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 528,
       "z": 174,
-      "header": "MAP_D35R0101",
+      "header": "MAP_MAHOGANY_SOUVENIR_SHOP",
       "anchor": 0,
       "y": 0
     }

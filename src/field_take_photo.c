@@ -221,7 +221,7 @@ static BOOL FieldTask_ViewPhoto(TaskManager *taskManager) {
         break;
     case VIEW_PHOTO_STATE_QUIT2:
         sub_02067A80(fieldSystem, 0);
-        FreeToHeap(viewPhoto);
+        Heap_Free(viewPhoto);
         return TRUE;
     }
 
@@ -241,7 +241,7 @@ static int ViewPhotoFieldTask_HandleAlbumSelection(FieldSystem *fieldSystem, Tas
     PhotoAlbumArgs *args = photo->selectionFromAlbumApp;
     photo->photoWasSelected = photoWasSelected = args->photoWasSelected;
     photo->whichPhoto = args->cursorPos;
-    FreeToHeap(photo->selectionFromAlbumApp);
+    Heap_Free(photo->selectionFromAlbumApp);
     if (photoWasSelected == TRUE) {
         return VIEW_PHOTO_STATE_LOAD;
     } else {
@@ -371,7 +371,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         sub_0206B880(fieldSystem, photo);
         NNS_G3dGlbSetViewPort(4, 3, 252, 188);
         {
-            u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+            u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem)));
             sub_0206B82C(fieldSystem->playerAvatar, photo->avatarStateBak, profileGender);
         }
         {
@@ -418,7 +418,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         }
         ++taskData->placeObjectCounter;
         if (taskData->placeObjectCounter >= photo->numMons) {
-            FreeToHeap(taskData);
+            Heap_Free(taskData);
             return TRUE;
         }
         taskData->state = FIELD_PHOTO_DO_VIEW_STATE_4;
@@ -460,7 +460,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
                 ov01_021F902C(1, mapObject);
             }
         }
-        FreeToHeap(taskData);
+        Heap_Free(taskData);
         return TRUE;
     }
 
@@ -516,7 +516,7 @@ static void setCameraParam(Camera *camera) {
 static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 iconId, int mapId, int x, int y, int a6, int a7, u16 a8, u16 subjectObjId) {
     int partySize;
     SaveData *saveData = FieldSystem_GetSaveData(fieldSystem);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     Party *party = SaveArray_Party_Get(saveData);
     int i;
 
@@ -615,7 +615,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC;
         break;
     case TAKE_PHOTO_STATE_ADJUST_PLAYER_FACING_VEC:
-        u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
+        u8 profileGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem)));
         sub_0206B82C(fieldSystem->playerAvatar, takePhoto->pPhoto->avatarStateBak, profileGender);
         {
             VecFx32 facingVec;
@@ -813,7 +813,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_EXIT;
         break;
     case TAKE_PHOTO_STATE_EXIT:
-        FreeToHeap(takePhoto);
+        Heap_Free(takePhoto);
         return TRUE;
     }
 

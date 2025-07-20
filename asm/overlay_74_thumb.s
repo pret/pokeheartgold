@@ -8,3574 +8,18 @@
 	.public gApplication_TitleScreen
 	.public sub_020342C0
 
+	.public MainMenuApp_Init
+	.public MainMenuApp_Main
+	.public MainMenuApp_Exit
+	.public ov74_0223B2C0
+	.public ov74_0223B2CC
+	.public ov74_0223B2D8
+	.public ov74_0223B2E8
+	.public gApp_MainMenu_SelectOption_ConnectToRanger
+	.public gApp_MainMenu_SelectOption_MigrateFromAgb
+	.public gApp_MainMenu_SelectOption_MysteryGift
+
 	.text
-
-	thumb_func_start ov74_02227060
-ov74_02227060: ; 0x02227060
-	push {r4, lr}
-	ldr r1, _02227090 ; =gSystem
-	add r4, r0, #0
-	ldr r2, [r1, #0x48]
-	ldr r0, _02227094 ; =0x00000CF3
-	tst r0, r2
-	beq _0222707A
-	mov r0, #0x6b
-	mov r2, #0
-	lsl r0, r0, #2
-	str r2, [r4, r0]
-	ldr r0, [r1, #0x48]
-	pop {r4, pc}
-_0222707A:
-	bl System_GetTouchNew
-	cmp r0, #0
-	beq _0222708C
-	mov r1, #0x6b
-	mov r0, #1
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	pop {r4, pc}
-_0222708C:
-	mov r0, #0
-	pop {r4, pc}
-	.balign 4, 0
-_02227090: .word gSystem
-_02227094: .word 0x00000CF3
-	thumb_func_end ov74_02227060
-
-	thumb_func_start ov74_02227098
-ov74_02227098: ; 0x02227098
-	push {r3, r4}
-	mov r3, #0
-	add r4, r3, #0
-_0222709E:
-	add r2, r0, #0
-	add r2, #0xec
-	ldr r2, [r2]
-	cmp r2, #0
-	beq _022270B6
-	add r2, r4, #0
-	add r4, r4, #1
-	cmp r2, r1
-	bne _022270B6
-	add r0, r3, #0
-	pop {r3, r4}
-	bx lr
-_022270B6:
-	add r3, r3, #1
-	add r0, r0, #4
-	cmp r3, #9
-	blo _0222709E
-	mov r0, #0
-	pop {r3, r4}
-	bx lr
-	thumb_func_end ov74_02227098
-
-	thumb_func_start ov74_022270C4
-ov74_022270C4: ; 0x022270C4
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	cmp r2, #0
-	ldr r0, _02227158 ; =SEQ_SE_DP_SELECT
-	bne _02227106
-	bl PlaySE
-	add r0, r5, #0
-	add r0, #0x54
-	ldrh r0, [r0]
-	lsl r0, r0, #2
-	add r0, r5, r0
-	add r0, #0xec
-	ldr r0, [r0]
-	str r0, [r5, #0x58]
-	cmp r0, #6
-	bne _02227114
-	bl CTRDG_IsPulledOut
-	cmp r0, #1
-	bne _02227114
-	mov r0, #0x4f
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	cmp r0, #0xc
-	beq _022270FE
-	bl sub_02038D64
-_022270FE:
-	mov r0, #0x4f
-	bl ShowGBACartRemovedError
-	b _02227114
-_02227106:
-	bl PlaySE
-	mov r0, #0
-	str r0, [r5, #0x58]
-	mov r0, #1
-	bl ov74_02235390
-_02227114:
-	ldr r0, [r5, #0x58]
-	cmp r0, #2
-	bne _0222712E
-	ldr r1, [r5, #0x40]
-	mov r0, #0x80
-	orr r1, r0
-	str r1, [r5, #0x40]
-	mov r1, #1
-	add r0, #0xc8
-	str r1, [r5, r0]
-	mov r0, #6
-	str r0, [r4]
-	b _02227144
-_0222712E:
-	cmp r0, #7
-	bne _02227138
-	mov r0, #1
-	bl ov74_02235390
-_02227138:
-	mov r0, #0
-	mov r1, #7
-	add r2, r4, #0
-	mov r3, #8
-	bl ov74_0223539C
-_02227144:
-	mov r0, #0x4f
-	lsl r0, r0, #2
-	ldr r1, [r5, r0]
-	cmp r1, #0xd
-	bne _02227152
-	mov r1, #0xe
-	str r1, [r5, r0]
-_02227152:
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	nop
-_02227158: .word SEQ_SE_DP_SELECT
-	thumb_func_end ov74_022270C4
-
-	thumb_func_start ov74_0222715C
-ov74_0222715C: ; 0x0222715C
-	push {r3, r4}
-	mov r4, #0
-	add r3, r4, #0
-	cmp r1, #0
-	ble _0222717A
-_02227166:
-	add r2, r0, #0
-	add r2, #0xec
-	ldr r2, [r2]
-	cmp r2, #0
-	beq _02227172
-	add r4, r4, #1
-_02227172:
-	add r3, r3, #1
-	add r0, r0, #4
-	cmp r3, r1
-	blt _02227166
-_0222717A:
-	add r0, r4, #0
-	pop {r3, r4}
-	bx lr
-	thumb_func_end ov74_0222715C
-
-	thumb_func_start ov74_02227180
-ov74_02227180: ; 0x02227180
-	push {r3, r4, r5, r6, r7, lr}
-	add r3, r1, #0
-	ldr r1, _02227238 ; =gSystem
-	add r5, r0, #0
-	ldr r2, [r1, #0x48]
-	ldr r1, _0222723C ; =0x00000CF3
-	mov r4, #0
-	tst r1, r2
-	beq _022271AA
-	mov r7, #0x6b
-	lsl r7, r7, #2
-	ldr r1, [r5, r7]
-	cmp r1, #1
-	bne _022271AA
-	str r4, [r5, r7]
-	add r5, #0x54
-	ldrh r1, [r5]
-	bl ov74_0222841C
-	add r0, r4, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_022271AA:
-	mov r0, #1
-	tst r0, r2
-	beq _022271BC
-	add r0, r5, #0
-	add r1, r3, #0
-	mov r2, #0
-	bl ov74_022270C4
-	pop {r3, r4, r5, r6, r7, pc}
-_022271BC:
-	mov r0, #2
-	tst r0, r2
-	beq _022271CE
-	add r0, r5, #0
-	add r1, r3, #0
-	mov r2, #1
-	bl ov74_022270C4
-	pop {r3, r4, r5, r6, r7, pc}
-_022271CE:
-	ldr r0, [r5, #0x48]
-	cmp r0, #0
-	beq _022271D8
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_022271D8:
-	add r0, r5, #0
-	add r0, #0x54
-	ldrh r7, [r0]
-	mov r1, #0x40
-	add r0, r2, #0
-	tst r0, r1
-	beq _02227210
-	add r0, r5, #0
-	sub r1, #0x41
-	bl ov74_02228698
-	cmp r0, #0
-	beq _02227226
-	add r0, r5, #0
-	add r1, r7, #0
-	bl ov74_0222715C
-	add r6, r0, #0
-	cmp r6, #7
-	bne _02227206
-	mov r6, #3
-	mov r4, #1
-	b _02227226
-_02227206:
-	cmp r6, #3
-	bne _02227226
-	mov r6, #0
-	mov r4, #1
-	b _02227226
-_02227210:
-	mov r0, #0x80
-	tst r0, r2
-	beq _02227226
-	add r0, r5, #0
-	mov r1, #1
-	bl ov74_02228698
-	add r4, r0, #0
-	add r0, r5, #0
-	add r0, #0x54
-	ldrh r6, [r0]
-_02227226:
-	cmp r4, #0
-	beq _02227232
-	add r0, r5, #0
-	add r1, r6, #0
-	bl ov74_022286F8
-_02227232:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02227238: .word gSystem
-_0222723C: .word 0x00000CF3
-	thumb_func_end ov74_02227180
-
-	thumb_func_start ov74_02227240
-ov74_02227240: ; 0x02227240
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	mov r6, #0
-	add r5, r0, #0
-	str r1, [sp, #4]
-	add r4, r2, #0
-	mvn r6, r6
-	mov r7, #0
-	bl System_GetTouchNew
-	cmp r0, #0
-	bne _0222725E
-	add sp, #0xc
-	add r0, r7, #0
-	pop {r4, r5, r6, r7, pc}
-_0222725E:
-	ldr r0, [r5, #0x48]
-	cmp r0, #0
-	bne _02227276
-	mov r0, #0x6d
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	cmp r0, #0
-	bne _02227276
-	ldr r0, _0222741C ; =_0223B2C0
-	bl TouchscreenHitbox_FindRectAtTouchNew
-	add r6, r0, #0
-_02227276:
-	cmp r6, #0
-	bne _022272DA
-	mov r0, #0x1a
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	bl Sprite_GetAnimationNumber
-	lsr r0, r0, #1
-	beq _022272DA
-	mov r0, #0x1a
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #0x1a
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	bl Sprite_ResetAnimCtrlState
-	add r0, r5, #0
-	add r0, #0x54
-	ldrh r0, [r0]
-	cmp r0, #3
-	bls _022272C6
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r1, [r5, r0]
-	mov r0, #3
-	lsl r0, r0, #0x12
-	cmp r1, r0
-	ble _022272C6
-	add r0, r5, #0
-	mov r1, #3
-	bl ov74_02227098
-	add r1, r5, #0
-	add r1, #0x54
-	strh r0, [r1]
-	b _022272D4
-_022272C6:
-	add r0, r5, #0
-	mov r1, #0
-	bl ov74_02227098
-	add r1, r5, #0
-	add r1, #0x54
-	strh r0, [r1]
-_022272D4:
-	mov r7, #1
-	str r7, [r4]
-	b _02227328
-_022272DA:
-	cmp r6, #1
-	bne _02227328
-	mov r0, #0x69
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	bl Sprite_GetAnimationNumber
-	lsr r0, r0, #1
-	beq _02227328
-	mov r0, #0x69
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #0x69
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	bl Sprite_ResetAnimCtrlState
-	add r0, r5, #0
-	add r0, #0x54
-	ldrh r0, [r0]
-	cmp r0, #3
-	bhs _02227316
-	add r0, r5, #0
-	mov r1, #3
-	bl ov74_02227098
-	b _0222731E
-_02227316:
-	add r0, r5, #0
-	mov r1, #7
-	bl ov74_02227098
-_0222731E:
-	add r1, r5, #0
-	add r1, #0x54
-	strh r0, [r1]
-	mov r7, #1
-	str r7, [r4]
-_02227328:
-	cmp r7, #0
-	beq _0222735A
-	mov r0, #0x6b
-	mov r1, #1
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	add r1, r5, #0
-	add r1, #0x54
-	ldrh r1, [r1]
-	add r0, r5, #0
-	bl ov74_0222841C
-	add r1, r5, #0
-	add r1, #0x54
-	ldrh r1, [r1]
-	add r0, r5, #0
-	bl ov74_022286F8
-	mov r0, #0x6d
-	mov r1, #6
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	add sp, #0xc
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_0222735A:
-	ldr r1, _02227420 ; =0x0000FFFE
-	add r0, sp, #8
-	strh r1, [r0]
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r1, [r5, r0]
-	ldr r2, _02227424 ; =gSystem + 0x40
-	asr r6, r1, #0xb
-	lsr r6, r6, #0x14
-	add r6, r1, r6
-	ldrh r3, [r2, #0x22]
-	asr r1, r6, #0xc
-	add r0, #0xc8
-	add r1, r3, r1
-	lsl r1, r1, #0x10
-	lsr r3, r1, #0x10
-	cmp r3, r0
-	blo _02227384
-	add sp, #0xc
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_02227384:
-	add r0, sp, #8
-	str r0, [sp]
-	ldrh r2, [r2, #0x20]
-	ldr r0, [r5]
-	mov r1, #0
-	bl DoesPixelAtScreenXYMatchPtrVal
-	cmp r0, #0
-	bne _0222739C
-	add sp, #0xc
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_0222739C:
-	mov r0, #1
-	str r0, [r4]
-	ldr r0, _02227424 ; =gSystem + 0x40
-	mov r1, #0x30
-	ldrh r0, [r0, #0x22]
-	bl _s32_div_f
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x10
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r2, [r5, r0]
-	cmp r2, #0
-	bne _022273C4
-	cmp r1, #0
-	beq _022273DA
-	sub r0, r1, #1
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x10
-	b _022273DA
-_022273C4:
-	mov r0, #3
-	lsl r0, r0, #0x12
-	cmp r2, r0
-	bne _022273D4
-	add r0, r1, #3
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x10
-	b _022273DA
-_022273D4:
-	add r0, r1, #7
-	lsl r0, r0, #0x10
-	lsr r1, r0, #0x10
-_022273DA:
-	mov r0, #0x1b
-	lsl r0, r0, #4
-	ldr r0, [r5, r0]
-	cmp r1, r0
-	blt _022273EA
-	add sp, #0xc
-	mov r0, #0
-	pop {r4, r5, r6, r7, pc}
-_022273EA:
-	lsl r1, r1, #0x18
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	bl ov74_02227098
-	add r1, r5, #0
-	add r1, #0x54
-	strh r0, [r1]
-	mov r0, #0x6b
-	mov r1, #1
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	add r1, r5, #0
-	add r1, #0x54
-	ldrh r1, [r1]
-	add r0, r5, #0
-	bl ov74_0222841C
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	mov r2, #0
-	bl ov74_022270C4
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0222741C: .word _0223B2C0
-_02227420: .word 0x0000FFFE
-_02227424: .word gSystem + 0x40
-	thumb_func_end ov74_02227240
-
-	thumb_func_start ov74_02227428
-ov74_02227428: ; 0x02227428
-	push {r3, r4, r5, r6, lr}
-	sub sp, #4
-	mov r2, #0
-	str r2, [sp]
-	add r2, sp, #0
-	add r5, r0, #0
-	add r4, r1, #0
-	bl ov74_02227240
-	add r6, r0, #0
-	ldr r0, [sp]
-	cmp r0, #0
-	beq _02227460
-	mov r0, #0x6b
-	mov r1, #1
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	add r0, #8
-	ldr r0, [r5, r0]
-	cmp r0, #6
-	beq _0222745A
-	add r0, r5, #0
-	mov r1, #0xff
-	bl ov74_0222841C
-_0222745A:
-	add sp, #4
-	add r0, r6, #0
-	pop {r3, r4, r5, r6, pc}
-_02227460:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov74_02227180
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-	thumb_func_end ov74_02227428
-
-	thumb_func_start ov74_0222746C
-ov74_0222746C: ; 0x0222746C
-	push {r4, r5, r6, lr}
-	sub sp, #8
-	add r5, r0, #0
-	add r4, r1, #0
-	bl System_GetTouchNew
-	cmp r0, #0
-	bne _02227482
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_02227482:
-	ldr r0, _022274C8 ; =_0223B2CC
-	bl TouchscreenHitbox_FindRectAtTouchNew
-	add r6, r0, #0
-	mov r0, #0
-	mvn r0, r0
-	cmp r6, r0
-	bne _02227498
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_02227498:
-	ldr r1, _022274CC ; =0x0000FFFE
-	add r0, sp, #4
-	strh r1, [r0]
-	add r0, sp, #4
-	str r0, [sp]
-	ldr r3, _022274D0 ; =gSystem + 0x40
-	ldr r0, [r5]
-	ldrh r2, [r3, #0x20]
-	ldrh r3, [r3, #0x22]
-	mov r1, #1
-	bl DoesPixelAtScreenXYMatchPtrVal
-	cmp r0, #0
-	bne _022274BA
-	add sp, #8
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_022274BA:
-	mov r0, #1
-	str r0, [r4]
-	cmp r6, #0
-	beq _022274C4
-	mov r0, #2
-_022274C4:
-	add sp, #8
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_022274C8: .word _0223B2CC
-_022274CC: .word 0x0000FFFE
-_022274D0: .word gSystem + 0x40
-	thumb_func_end ov74_0222746C
-
-	thumb_func_start ov74_022274D4
-ov74_022274D4: ; 0x022274D4
-	push {r3, r4, r5, lr}
-	mov r1, #0
-	str r1, [sp]
-	add r1, sp, #0
-	add r4, r0, #0
-	bl ov74_0222746C
-	add r5, r0, #0
-	ldr r0, [sp]
-	cmp r0, #0
-	beq _022274FE
-	mov r0, #0x6b
-	mov r1, #1
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, r4, #0
-	mov r1, #0xff
-	bl ov74_02228548
-	add r0, r5, #0
-	pop {r3, r4, r5, pc}
-_022274FE:
-	ldr r0, _02227574 ; =gSystem
-	ldr r1, [r0, #0x48]
-	cmp r1, #0
-	bne _0222750A
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_0222750A:
-	ldr r0, _02227578 ; =0x00000CF3
-	tst r0, r1
-	beq _0222752C
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	ldr r2, [r4, r0]
-	cmp r2, #1
-	bne _0222752C
-	mov r1, #0
-	str r1, [r4, r0]
-	add r0, r4, #0
-	add r4, #0x56
-	ldrh r1, [r4]
-	bl ov74_02228548
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_0222752C:
-	mov r0, #0xc0
-	tst r0, r1
-	beq _02227556
-	add r0, r4, #0
-	add r0, #0x56
-	ldrh r1, [r0]
-	mov r0, #1
-	eor r1, r0
-	add r0, r4, #0
-	add r0, #0x56
-	strh r1, [r0]
-	add r0, r4, #0
-	add r4, #0x56
-	ldrh r1, [r4]
-	bl ov74_02228548
-	ldr r0, _0222757C ; =SEQ_SE_DP_SELECT
-	bl PlaySE
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_02227556:
-	mov r0, #1
-	add r2, r1, #0
-	tst r2, r0
-	beq _0222756A
-	add r4, #0x56
-	ldrh r1, [r4]
-	cmp r1, #0
-	beq _02227572
-	mov r0, #2
-	pop {r3, r4, r5, pc}
-_0222756A:
-	mov r0, #2
-	tst r1, r0
-	bne _02227572
-	mov r0, #0
-_02227572:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_02227574: .word gSystem
-_02227578: .word 0x00000CF3
-_0222757C: .word SEQ_SE_DP_SELECT
-	thumb_func_end ov74_022274D4
-
-	thumb_func_start ov74_02227580
-ov74_02227580: ; 0x02227580
-	mov r0, #0
-	bx lr
-	thumb_func_end ov74_02227580
-
-	thumb_func_start ov74_02227584
-ov74_02227584: ; 0x02227584
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x5c
-	add r5, r0, #0
-	mov r0, #0x19
-	lsl r0, r0, #4
-	add r0, r5, r0
-	bl WindowIsInUse
-	cmp r0, #0
-	bne _022275FC
-	mov r1, #0x63
-	mov r0, #0
-	add r3, r5, #0
-	lsl r1, r1, #2
-_022275A0:
-	ldr r2, [r3, r1]
-	cmp r2, #1
-	bne _022275F2
-	lsl r1, r0, #2
-	add r3, r5, r1
-	mov r1, #0x63
-	add r6, r0, #0
-	mov r2, #0
-	lsl r1, r1, #2
-	str r2, [r3, r1]
-	ldr r0, _02227630 ; =0x000003F7
-	mov r3, #0x1c
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	add r1, r1, #4
-	ldr r7, _02227634 ; =ov74_0223BBD4
-	mul r6, r3
-	add r4, r7, r6
-	ldr r3, [r4, #0x10]
-	add r0, sp, #8
-	add r1, r5, r1
-	bl ov74_02235414
-	ldr r1, [r4, #8]
-	ldr r2, [r4, #0xc]
-	add r0, sp, #8
-	mov r3, #1
-	bl ov74_02235464
-	ldr r0, [r4, #0x14]
-	add r1, sp, #8
-	str r0, [sp]
-	ldr r0, [r5]
-	ldr r2, [r7, r6]
-	ldr r3, [r4, #4]
-	bl ov74_02235568
-	add sp, #0x5c
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_022275F2:
-	add r0, r0, #1
-	add r3, r3, #4
-	cmp r0, #1
-	blt _022275A0
-	b _0222762A
-_022275FC:
-	add r0, r5, #0
-	bl ov74_02227060
-	mov r1, #3
-	tst r0, r1
-	beq _02227624
-	ldr r0, _02227638 ; =SEQ_SE_DP_SELECT
-	bl PlaySE
-	mov r0, #0x19
-	lsl r0, r0, #4
-	add r0, r5, r0
-	mov r1, #0
-	bl sub_0200E5D4
-	mov r0, #0x19
-	lsl r0, r0, #4
-	add r0, r5, r0
-	bl RemoveWindow
-_02227624:
-	add sp, #0x5c
-	mov r0, #1
-	pop {r4, r5, r6, r7, pc}
-_0222762A:
-	mov r0, #0
-	add sp, #0x5c
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02227630: .word 0x000003F7
-_02227634: .word ov74_0223BBD4
-_02227638: .word SEQ_SE_DP_SELECT
-	thumb_func_end ov74_02227584
-
-	thumb_func_start ov74_0222763C
-ov74_0222763C: ; 0x0222763C
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #0
-	bl PmAgbCartridgeGetOffsets
-	mov r4, #0
-	str r4, [r5, #0x24]
-	cmp r0, #0
-	bne _022276A6
-	bl PmAgbCartridge_GetVersionInternal
-	cmp r0, #4
-	bhi _0222767E
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02227662: ; jump table
-	.short _0222766C - _02227662 - 2 ; case 0
-	.short _02227670 - _02227662 - 2 ; case 1
-	.short _02227674 - _02227662 - 2 ; case 2
-	.short _02227678 - _02227662 - 2 ; case 3
-	.short _0222767C - _02227662 - 2 ; case 4
-_0222766C:
-	mov r4, #VERSION_RUBY
-	b _0222767E
-_02227670:
-	mov r4, #VERSION_SAPPHIRE
-	b _0222767E
-_02227674:
-	mov r4, #VERSION_LEAF_GREEN
-	b _0222767E
-_02227678:
-	mov r4, #VERSION_FIRE_RED
-	b _0222767E
-_0222767C:
-	mov r4, #VERSION_EMERALD
-_0222767E:
-	add r0, r4, #0
-	bl sub_0201A4B0
-	ldr r0, [r5, #8]
-	bl Pokedex_GetNatDexFlag
-	cmp r0, #0
-	beq _022276A6
-	bl PmAgbCartridge_GetLanguage
-	ldr r1, _022276A8 ; =gGameLanguage
-	ldrb r1, [r1]
-	cmp r1, r0
-	bne _022276A6
-	bl PmAgbCartridge_GetVersionInternal
-	add r0, r0, #1
-	str r0, [r5, #0x24]
-	bl ov74_02236074
-_022276A6:
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_022276A8: .word gGameLanguage
-	thumb_func_end ov74_0222763C
-
-	thumb_func_start ov74_022276AC
-ov74_022276AC: ; 0x022276AC
-	push {r4, lr}
-	mov r1, #0x4f
-	add r4, r0, #0
-	lsl r1, r1, #2
-	ldr r0, [r4, r1]
-	sub r0, #0xa
-	cmp r0, #4
-	bhi _0222779A
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_022276C8: ; jump table
-	.short _022276D2 - _022276C8 - 2 ; case 0
-	.short _022276D8 - _022276C8 - 2 ; case 1
-	.short _0222779A - _022276C8 - 2 ; case 2
-	.short _0222770A - _022276C8 - 2 ; case 3
-	.short _0222778E - _022276C8 - 2 ; case 4
-_022276D2:
-	mov r0, #0xb
-	str r0, [r4, r1]
-	pop {r4, pc}
-_022276D8:
-	ldr r0, [r4, #4]
-	bl sub_02038D28
-	mov r1, #0x78
-	add r0, r1, #0
-	add r0, #0xc8
-	str r1, [r4, r0]
-	mov r0, #0xd
-	add r1, #0xc4
-	str r0, [r4, r1]
-	mov r0, #0
-	str r0, [r4, #0x40]
-	ldr r0, [r4, #0x14]
-	bl SaveMysteryGift_TestFlagx7FF
-	cmp r0, #1
-	bne _0222779A
-	ldr r1, [r4, #0x40]
-	mov r0, #1
-	orr r1, r0
-	str r1, [r4, #0x40]
-	ldr r1, [r4, #0x44]
-	orr r0, r1
-	str r0, [r4, #0x44]
-	pop {r4, pc}
-_0222770A:
-	add r1, #0xc
-	ldr r0, [r4, r1]
-	cmp r0, #0
-	bne _0222779A
-	bl sub_02038D80
-	ldr r1, [r4, #0x40]
-	bic r0, r1
-	beq _02227770
-	mov r2, #0x51
-	lsl r2, r2, #2
-	ldr r3, [r4, r2]
-	cmp r3, #0xf
-	bne _02227770
-	add r2, r2, #4
-	ldr r2, [r4, r2]
-	cmp r2, #0
-	bne _02227770
-	cmp r1, r0
-	beq _02227770
-	mov r2, #1
-	add r1, r0, #0
-	str r2, [r4, #0x48]
-	tst r1, r2
-	beq _02227740
-	str r2, [r4, #0x34]
-	add r0, r2, #0
-_02227740:
-	mov r1, #2
-	add r2, r0, #0
-	tst r2, r1
-	beq _0222774E
-	mov r0, #1
-	str r0, [r4, #0x2c]
-	add r0, r1, #0
-_0222774E:
-	mov r1, #4
-	add r2, r0, #0
-	tst r2, r1
-	beq _0222775C
-	mov r0, #1
-	str r0, [r4, #0x30]
-	add r0, r1, #0
-_0222775C:
-	mov r1, #3
-	tst r1, r0
-	beq _0222776A
-	mov r1, #0x62
-	mov r2, #1
-	lsl r1, r1, #2
-	str r2, [r4, r1]
-_0222776A:
-	ldr r1, [r4, #0x40]
-	orr r0, r1
-	str r0, [r4, #0x40]
-_02227770:
-	mov r0, #5
-	lsl r0, r0, #6
-	ldr r1, [r4, r0]
-	sub r1, r1, #1
-	str r1, [r4, r0]
-	ldr r0, [r4, r0]
-	cmp r0, #0
-	bne _0222779A
-	bl sub_02038D64
-	mov r0, #0x4f
-	mov r1, #0xc
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	pop {r4, pc}
-_0222778E:
-	bl sub_02038D64
-	mov r0, #0x4f
-	mov r1, #0xc
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-_0222779A:
-	pop {r4, pc}
-	thumb_func_end ov74_022276AC
-
-	thumb_func_start ov74_0222779C
-ov74_0222779C: ; 0x0222779C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x70
-	mov r1, #0x51
-	add r4, r0, #0
-	lsl r1, r1, #2
-	ldr r2, [r4, r1]
-	sub r2, #0xf
-	cmp r2, #5
-	bls _022277B0
-	b _02227ABE
-_022277B0:
-	add r2, r2, r2
-	add r2, pc
-	ldrh r2, [r2, #6]
-	lsl r2, r2, #0x10
-	asr r2, r2, #0x10
-	add pc, r2
-_022277BC: ; jump table
-	.short _022277C8 - _022277BC - 2 ; case 0
-	.short _022277F0 - _022277BC - 2 ; case 1
-	.short _0222782E - _022277BC - 2 ; case 2
-	.short _022279CA - _022277BC - 2 ; case 3
-	.short _02227A26 - _022277BC - 2 ; case 4
-	.short _02227A9E - _022277BC - 2 ; case 5
-_022277C8:
-	add r0, r1, #4
-	ldr r0, [r4, r0]
-	cmp r0, #0
-	bne _022277D6
-	add sp, #0x70
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_022277D6:
-	add r0, r1, #4
-	ldr r0, [r4, r0]
-	sub r2, r0, #1
-	add r0, r1, #4
-	str r2, [r4, r0]
-	ldr r0, [r4, r0]
-	cmp r0, #0
-	bne _022277EA
-	mov r0, #0x10
-	str r0, [r4, r1]
-_022277EA:
-	add sp, #0x70
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_022277F0:
-	mov r0, #0
-	str r0, [sp]
-	mov r0, #0x4f
-	str r0, [sp, #4]
-	ldr r0, [r4]
-	ldr r2, _02227AC4 ; =0x000003F7
-	mov r1, #1
-	mov r3, #2
-	bl LoadUserFrameGfx1
-	mov r1, #1
-	str r1, [sp]
-	mov r0, #0x4f
-	str r0, [sp, #4]
-	ldr r0, [r4]
-	ldr r2, _02227AC8 ; =0x000003EE
-	mov r3, #3
-	bl LoadUserFrameGfx1
-	ldr r0, [r4]
-	mov r1, #1
-	bl BgClearTilemapBufferAndCommit
-	ldr r1, _02227ACC ; =0x00006B5A
-	ldr r0, _02227AD0 ; =0x05000042
-	strh r1, [r0]
-	mov r0, #0x51
-	mov r1, #0x11
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	b _02227ABE
-_0222782E:
-	ldr r0, _02227AC4 ; =0x000003F7
-	add r1, #0x10
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	add r0, sp, #0x1c
-	add r1, r4, r1
-	mov r2, #0
-	mov r3, #0x11
-	bl ov74_02235414
-	ldr r1, [r4, #0x40]
-	ldr r0, [r4, #0x44]
-	add r6, r1, #0
-	mvn r0, r0
-	and r6, r0
-	mov r0, #1
-	add r1, r6, #0
-	tst r1, r0
-	beq _02227864
-	ldr r1, [r4, #0x38]
-	tst r0, r1
-	beq _02227860
-	ldr r5, _02227AD4 ; =ov74_0223BC30
-	b _022278BC
-_02227860:
-	ldr r5, _02227AD8 ; =ov74_0223BC44
-	b _022278BC
-_02227864:
-	mov r2, #2
-	add r1, r6, #0
-	tst r1, r2
-	beq _0222787A
-	ldr r0, [r4, #0x38]
-	tst r0, r2
-	beq _02227876
-	ldr r5, _02227ADC ; =ov74_0223BC58
-	b _022278BC
-_02227876:
-	ldr r5, _02227AE0 ; =ov74_0223BC6C
-	b _022278BC
-_0222787A:
-	mov r1, #0x80
-	tst r1, r6
-	beq _022278BC
-	str r2, [sp, #0x1c]
-	ldr r5, _02227AE4 ; =ov74_0223BC80
-	ldr r2, [sp, #0x50]
-	mov r1, #0x1b
-	mov r3, #0x4f
-	bl NewMsgDataFromNarc
-	ldr r1, [r5, #0x10]
-	add r7, r0, #0
-	bl NewString_ReadMsgData
-	str r0, [sp, #0x10]
-	ldr r0, [sp, #0x5c]
-	ldr r1, [sp, #0x10]
-	mov r2, #0
-	bl FontID_String_GetWidthMultiline
-	ldr r1, [r5, #8]
-	lsl r1, r1, #3
-	sub r0, r1, r0
-	lsr r0, r0, #1
-	str r0, [sp, #0x3c]
-	ldr r0, [sp, #0x10]
-	bl String_Delete
-	add r0, r7, #0
-	bl DestroyMsgData
-	mov r0, #4
-	str r0, [sp, #0x40]
-_022278BC:
-	ldr r1, [r5, #8]
-	ldr r2, [r5, #0xc]
-	add r0, sp, #0x1c
-	mov r3, #0x91
-	bl ov74_02235464
-	mov r0, #1
-	str r0, [sp, #0x48]
-	ldr r0, [r5, #0x10]
-	add r1, sp, #0x1c
-	str r0, [sp]
-	ldr r0, [r4]
-	ldr r2, [r5]
-	ldr r3, [r5, #4]
-	bl ov74_02235568
-	ldr r0, [sp, #0x2c]
-	bl GetWindowX
-	add r7, r0, #0
-	ldr r0, [sp, #0x2c]
-	bl GetWindowY
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #0x2c]
-	bl GetWindowWidth
-	add r5, r0, #0
-	ldr r0, [sp, #0x2c]
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r4]
-	ldr r3, [sp, #0x14]
-	mov r1, #1
-	add r2, r7, #0
-	bl BgTilemapRectChangePalette
-	mov r1, #0x80
-	add r0, r6, #0
-	tst r0, r1
-	beq _0222799C
-	mov r0, #3
-	tst r0, r6
-	bne _0222799C
-	add r1, #0xe4
-	add r0, r4, r1
-	mov r6, #0
-	str r0, [sp, #0xc]
-	mov r7, #1
-_02227926:
-	ldr r0, _02227AC4 ; =0x000003F7
-	ldr r1, [sp, #0xc]
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	add r0, sp, #0x1c
-	mov r2, #0
-	mov r3, #0x11
-	bl ov74_02235414
-	add r1, r6, #5
-	mov r0, #0x14
-	mul r0, r1
-	ldr r1, _02227AD4 ; =ov74_0223BC30
-	str r0, [sp, #0x18]
-	add r5, r1, r0
-	mov r0, #4
-	str r0, [sp, #0x40]
-	ldr r1, [r5, #8]
-	ldr r2, [r5, #0xc]
-	add r0, sp, #0x1c
-	add r3, r7, #0
-	bl ov74_02235464
-	mov r0, #1
-	str r0, [sp, #0x48]
-	ldr r0, [r5, #0x10]
-	ldr r3, _02227AD4 ; =ov74_0223BC30
-	str r0, [sp]
-	ldr r2, [sp, #0x18]
-	ldr r0, [r4]
-	ldr r2, [r3, r2]
-	ldr r3, [r5, #4]
-	add r1, sp, #0x1c
-	bl ov74_02235568
-	ldr r0, [sp, #0xc]
-	add r6, r6, #1
-	add r0, #0x10
-	add r7, #0x48
-	str r0, [sp, #0xc]
-	cmp r6, #2
-	blt _02227926
-	add r0, r4, #0
-	mov r1, #0
-	add r0, #0x56
-	strh r1, [r0]
-	add r0, r4, #0
-	sub r1, r1, #1
-	bl ov74_02228548
-	mov r0, #0x51
-	mov r1, #0x13
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	mov r1, #0x1e
-	add r0, #8
-	str r1, [r4, r0]
-	b _022279B0
-_0222799C:
-	ldr r0, [r4, #0x44]
-	mov r1, #0x12
-	orr r0, r6
-	str r0, [r4, #0x44]
-	mov r0, #0x51
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	mov r1, #0x1e
-	add r0, #8
-	str r1, [r4, r0]
-_022279B0:
-	mov r0, #1
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #4
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #2
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	b _02227ABE
-_022279CA:
-	add r2, r1, #0
-	add r2, #8
-	ldr r2, [r4, r2]
-	cmp r2, #0
-	beq _022279E2
-	add r0, r1, #0
-	add r0, #8
-	ldr r0, [r4, r0]
-	add r1, #8
-	sub r0, r0, #1
-	str r0, [r4, r1]
-	b _02227ABE
-_022279E2:
-	add r1, #0x68
-	ldr r5, [r4, r1]
-	bl ov74_02227060
-	add r6, r0, #0
-	mov r0, #3
-	tst r0, r6
-	beq _02227ABE
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	cmp r5, r0
-	beq _02227A08
-	add r1, r4, #0
-	add r1, #0x54
-	ldrh r1, [r1]
-	add r0, r4, #0
-	bl ov74_0222841C
-_02227A08:
-	mov r0, #0x55
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl RemoveWindow
-	mov r0, #0x51
-	mov r1, #0x14
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, #0xc
-	str r6, [r4, r0]
-	ldr r0, _02227AE8 ; =SEQ_SE_DP_SELECT
-	bl PlaySE
-	b _02227ABE
-_02227A26:
-	add r2, r1, #0
-	add r2, #8
-	ldr r2, [r4, r2]
-	cmp r2, #0
-	beq _02227A4E
-	add r2, r1, #0
-	add r2, #8
-	ldr r2, [r4, r2]
-	sub r3, r2, #1
-	add r2, r1, #0
-	add r2, #8
-	str r3, [r4, r2]
-	add r1, #8
-	ldr r1, [r4, r1]
-	cmp r1, #0
-	bne _02227ABE
-	mov r1, #0
-	bl ov74_02228548
-	b _02227ABE
-_02227A4E:
-	bl ov74_022274D4
-	add r5, r0, #0
-	add r0, r4, #0
-	bl ov74_022288C4
-	mov r0, #3
-	tst r0, r5
-	beq _02227ABE
-	mov r0, #0x55
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl RemoveWindow
-	mov r0, #0x59
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl RemoveWindow
-	mov r0, #0x5d
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl RemoveWindow
-	add r1, r4, #0
-	add r1, #0x54
-	ldrh r1, [r1]
-	add r0, r4, #0
-	bl ov74_0222841C
-	mov r0, #0x51
-	mov r1, #0x14
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, #0xc
-	str r5, [r4, r0]
-	ldr r0, _02227AE8 ; =SEQ_SE_DP_SELECT
-	bl PlaySE
-	b _02227ABE
-_02227A9E:
-	mov r0, #1
-	add r1, r0, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #4
-	mov r1, #1
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #2
-	mov r1, #0
-	bl GfGfx_EngineATogglePlanes
-	mov r0, #0x51
-	mov r1, #0xf
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-_02227ABE:
-	mov r0, #1
-	add sp, #0x70
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02227AC4: .word 0x000003F7
-_02227AC8: .word 0x000003EE
-_02227ACC: .word 0x00006B5A
-_02227AD0: .word 0x05000042
-_02227AD4: .word ov74_0223BC30
-_02227AD8: .word ov74_0223BC44
-_02227ADC: .word ov74_0223BC58
-_02227AE0: .word ov74_0223BC6C
-_02227AE4: .word ov74_0223BC80
-_02227AE8: .word SEQ_SE_DP_SELECT
-	thumb_func_end ov74_0222779C
-
-	thumb_func_start ov74_02227AEC
-ov74_02227AEC: ; 0x02227AEC
-	push {r3, r4, r5, lr}
-	add r4, r0, #0
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r1, [r4, r0]
-	sub r0, r0, #4
-	ldr r0, [r4, r0]
-	cmp r0, r1
-	beq _02227B74
-	sub r1, r1, r0
-	asr r0, r1, #1
-	lsr r0, r0, #0x1e
-	add r0, r1, r0
-	asr r0, r0, #2
-	asr r2, r0, #0x1f
-	add r1, r0, #0
-	eor r1, r2
-	sub r2, r1, r2
-	mov r1, #3
-	lsl r1, r1, #0xe
-	cmp r2, r1
-	ble _02227B22
-	cmp r0, #0
-	ble _02227B20
-	add r0, r1, #0
-	b _02227B22
-_02227B20:
-	ldr r0, _02227B78 ; =0xFFFF4000
-_02227B22:
-	mov r1, #0x4d
-	lsl r1, r1, #2
-	ldr r2, [r4, r1]
-	add r0, r2, r0
-	str r0, [r4, r1]
-	add r0, r1, #4
-	ldr r0, [r4, r0]
-	ldr r2, [r4, r1]
-	sub r2, r0, r2
-	asr r3, r2, #0x1f
-	eor r2, r3
-	sub r3, r2, r3
-	add r2, r1, #0
-	add r2, #0xcc
-	cmp r3, r2
-	bge _02227B44
-	str r0, [r4, r1]
-_02227B44:
-	mov r3, #0x4d
-	lsl r3, r3, #2
-	ldr r5, [r4, r3]
-	ldr r0, [r4]
-	asr r3, r5, #0xb
-	lsr r3, r3, #0x14
-	add r3, r5, r3
-	mov r1, #0
-	mov r2, #3
-	asr r3, r3, #0xc
-	bl ScheduleSetBgPosText
-	mov r3, #0x4d
-	lsl r3, r3, #2
-	ldr r0, [r4]
-	ldr r4, [r4, r3]
-	mov r1, #2
-	asr r3, r4, #0xb
-	lsr r3, r3, #0x14
-	add r3, r4, r3
-	mov r2, #3
-	asr r3, r3, #0xc
-	bl ScheduleSetBgPosText
-_02227B74:
-	pop {r3, r4, r5, pc}
-	nop
-_02227B78: .word 0xFFFF4000
-	thumb_func_end ov74_02227AEC
-
-	thumb_func_start ov74_02227B7C
-ov74_02227B7C: ; 0x02227B7C
-	push {r3, r4, r5, lr}
-	sub sp, #0x40
-	ldr r5, _02227C9C ; =_0223B2E8
-	add r4, r0, #0
-	add r3, sp, #0x18
-	mov r2, #5
-_02227B88:
-	ldmia r5!, {r0, r1}
-	stmia r3!, {r0, r1}
-	sub r2, r2, #1
-	bne _02227B88
-	ldr r3, _02227CA0 ; =_0223B2D8
-	add r2, sp, #8
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldmia r3!, {r0, r1}
-	stmia r2!, {r0, r1}
-	add r0, sp, #0x18
-	bl GfGfx_SetBanks
-	add r0, sp, #8
-	bl SetBothScreensModesAndDisable
-	ldr r2, _02227CA4 ; =0x04000304
-	mov r3, #0xf
-	ldrh r1, [r2]
-	ldr r0, _02227CA8 ; =0xFFFF7FFF
-	lsl r3, r3, #0xc
-	and r0, r1
-	strh r0, [r2]
-	mov r1, #0
-	str r1, [sp]
-	ldr r0, [r4]
-	mov r2, #2
-	bl ov74_02235308
-	ldr r1, _02227CAC ; =0x04000008
-	mov r0, #3
-	ldrh r2, [r1]
-	mov r3, #0x4f
-	bic r2, r0
-	mov r0, #2
-	orr r0, r2
-	strh r0, [r1]
-	mov r0, #0
-	mov r1, #0x20
-	add r2, r0, #0
-	bl BG_ClearCharDataRange
-	ldr r0, [r4]
-	mov r1, #0
-	bl BgClearTilemapBufferAndCommit
-	mov r0, #2
-	lsl r0, r0, #0xe
-	str r0, [sp]
-	mov r1, #1
-	mov r3, #0x36
-	ldr r0, [r4]
-	add r2, r1, #0
-	lsl r3, r3, #0xa
-	bl ov74_02235308
-	ldr r1, _02227CB0 ; =0x0400000A
-	mov r0, #3
-	ldrh r2, [r1]
-	mov r3, #0x4f
-	bic r2, r0
-	mov r0, #1
-	orr r2, r0
-	strh r2, [r1]
-	mov r1, #0x20
-	mov r2, #0
-	bl BG_ClearCharDataRange
-	ldr r0, [r4]
-	mov r1, #1
-	bl BgClearTilemapBufferAndCommit
-	mov r0, #0
-	str r0, [sp]
-	mov r1, #2
-	mov r3, #0xe
-	ldr r0, [r4]
-	add r2, r1, #0
-	lsl r3, r3, #0xc
-	bl ov74_02235308
-	ldr r1, _02227CB4 ; =0x0400000C
-	mov r0, #3
-	ldrh r2, [r1]
-	bic r2, r0
-	strh r2, [r1]
-	mov r0, #2
-	mov r1, #0x20
-	mov r2, #0
-	mov r3, #0x4f
-	bl BG_ClearCharDataRange
-	ldr r0, [r4]
-	mov r1, #2
-	bl BgClearTilemapBufferAndCommit
-	bl ResetAllTextPrinters
-	mov r0, #0
-	mov r1, #0x20
-	mov r2, #0x4f
-	bl LoadFontPal0
-	mov r0, #0
-	add r1, r0, #0
-	mov r2, #0x4f
-	bl LoadFontPal0
-	mov r2, #5
-	mov r1, #0
-	lsl r2, r2, #0x18
-	ldr r0, _02227CB8 ; =0x00006B5A
-	strh r1, [r2]
-	strh r0, [r2, #0x3e]
-	str r1, [sp]
-	mov r0, #0x4f
-	str r0, [sp, #4]
-	ldr r0, [r4]
-	ldr r2, _02227CBC ; =0x000003F7
-	mov r3, #2
-	bl LoadUserFrameGfx1
-	mov r0, #1
-	str r0, [sp]
-	mov r0, #0x4f
-	str r0, [sp, #4]
-	ldr r0, [r4]
-	ldr r2, _02227CC0 ; =0x000003EE
-	mov r1, #0
-	mov r3, #3
-	bl LoadUserFrameGfx1
-	ldr r1, _02227CB8 ; =0x00006B5A
-	ldr r0, _02227CC4 ; =0x05000042
-	strh r1, [r0]
-	add sp, #0x40
-	pop {r3, r4, r5, pc}
-	nop
-_02227C9C: .word _0223B2E8
-_02227CA0: .word _0223B2D8
-_02227CA4: .word 0x04000304
-_02227CA8: .word 0xFFFF7FFF
-_02227CAC: .word 0x04000008
-_02227CB0: .word 0x0400000A
-_02227CB4: .word 0x0400000C
-_02227CB8: .word 0x00006B5A
-_02227CBC: .word 0x000003F7
-_02227CC0: .word 0x000003EE
-_02227CC4: .word 0x05000042
-	thumb_func_end ov74_02227B7C
-
-	thumb_func_start ov74_02227CC8
-ov74_02227CC8: ; 0x02227CC8
-	push {r4, lr}
-	sub sp, #8
-	add r4, r0, #0
-	bl ov74_0223563C
-	bl ov74_02235690
-	mov r0, #0x2d
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	mov r0, #0x71
-	mov r1, #0x2f
-	mov r2, #0x2c
-	mov r3, #0x2e
-	bl ov74_02235728
-	mov r0, #0
-	mov r1, #0x1a
-	str r0, [sp]
-	lsl r1, r1, #4
-	ldr r1, [r4, r1]
-	mov r2, #0xec
-	mov r3, #0x14
-	bl ov74_02235930
-	mov r1, #0x1a
-	lsl r1, r1, #4
-	str r0, [r4, r1]
-	ldr r0, [r4, r1]
-	mov r1, #1
-	bl Sprite_SetVisibleFlag
-	mov r0, #0x1a
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	mov r0, #1
-	mov r1, #0x69
-	str r0, [sp]
-	lsl r1, r1, #2
-	ldr r1, [r4, r1]
-	mov r0, #0
-	mov r2, #0xec
-	mov r3, #0xac
-	bl ov74_02235930
-	mov r1, #0x69
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	ldr r0, [r4, r1]
-	mov r1, #1
-	bl Sprite_SetVisibleFlag
-	mov r0, #0x69
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	add sp, #8
-	pop {r4, pc}
-	thumb_func_end ov74_02227CC8
-
-	thumb_func_start ov74_02227D48
-ov74_02227D48: ; 0x02227D48
-	push {r4, lr}
-	sub sp, #0x10
-	add r4, r0, #0
-	mov r0, #0x20
-	str r0, [sp]
-	mov r0, #0x4f
-	str r0, [sp, #4]
-	mov r0, #0x71
-	mov r1, #0x31
-	mov r2, #0
-	mov r3, #0x80
-	bl GfGfxLoader_GXLoadPal
-	ldr r0, _02227D84 ; =0x000003E6
-	mov r1, #0x30
-	str r0, [sp]
-	mov r0, #1
-	lsl r0, r0, #8
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	mov r0, #0x4f
-	str r0, [sp, #0xc]
-	ldr r2, [r4]
-	mov r0, #0x71
-	mov r3, #2
-	bl GfGfxLoader_LoadCharData
-	add sp, #0x10
-	pop {r4, pc}
-	.balign 4, 0
-_02227D84: .word 0x000003E6
-	thumb_func_end ov74_02227D48
-
-	thumb_func_start ov74_02227D88
-ov74_02227D88: ; 0x02227D88
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, [r5]
-	add r4, r1, #0
-	mov r1, #2
-	add r6, r2, #0
-	add r7, r3, #0
-	bl GetBgTilemapBuffer
-	ldr r1, _02227DD0 ; =0x000043E6
-	cmp r7, #2
-	bne _02227DA2
-	add r1, r1, #4
-_02227DA2:
-	lsl r2, r6, #5
-	add r3, r4, r2
-	lsl r2, r3, #1
-	add r3, r3, #1
-	strh r1, [r0, r2]
-	add r2, r1, #1
-	lsl r3, r3, #1
-	strh r2, [r0, r3]
-	add r2, r6, #1
-	lsl r2, r2, #5
-	add r4, r4, r2
-	add r3, r1, #2
-	lsl r2, r4, #1
-	strh r3, [r0, r2]
-	add r2, r1, #3
-	add r1, r4, #1
-	lsl r1, r1, #1
-	strh r2, [r0, r1]
-	ldr r0, [r5]
-	mov r1, #2
-	bl BgCommitTilemapBufferToVram
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02227DD0: .word 0x000043E6
-	thumb_func_end ov74_02227D88
-
-	thumb_func_start ov74_02227DD4
-ov74_02227DD4: ; 0x02227DD4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, [r5]
-	add r4, r1, #0
-	add r6, r2, #0
-	mov r1, #2
-	bl GetBgTilemapBuffer
-	lsl r1, r6, #5
-	add r3, r4, r1
-	mov r1, #0
-	lsl r2, r3, #1
-	strh r1, [r0, r2]
-	add r2, r3, #1
-	lsl r2, r2, #1
-	strh r1, [r0, r2]
-	add r2, r6, #1
-	lsl r2, r2, #5
-	add r3, r4, r2
-	lsl r2, r3, #1
-	strh r1, [r0, r2]
-	add r2, r3, #1
-	lsl r2, r2, #1
-	strh r1, [r0, r2]
-	ldr r0, [r5]
-	mov r1, #2
-	bl BgCommitTilemapBufferToVram
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov74_02227DD4
-
-	thumb_func_start ov74_02227E10
-ov74_02227E10: ; 0x02227E10
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r6, r0, #0
-	add r0, r2, #0
-	add r7, r3, #0
-	ldr r2, [sp, #0x28]
-	mov r3, #0x4f
-	bl ReadMsgData_ExpandPlaceholders
-	add r5, r0, #0
-	mov r0, #0
-	mov r1, #2
-	bl GetFontAttribute
-	add r2, r0, #0
-	mov r0, #0
-	add r1, r5, #0
-	bl FontID_String_GetWidth
-	add r4, r0, #0
-	add r0, r6, #0
-	bl GetWindowWidth
-	lsl r0, r0, #3
-	add r4, #0x20
-	sub r3, r0, r4
-	ldr r0, [sp, #0x2c]
-	mov r1, #0
-	str r0, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	str r7, [sp, #8]
-	add r0, r6, #0
-	add r2, r5, #0
-	str r1, [sp, #0xc]
-	bl AddTextPrinterParameterizedWithColor
-	add r0, r5, #0
-	bl String_Delete
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov74_02227E10
-
-	thumb_func_start ov74_02227E64
-ov74_02227E64: ; 0x02227E64
-	push {r3, lr}
-	sub sp, #8
-	add r2, r1, #0
-	cmp r2, #0x64
-	blt _02227E74
-	mov r3, #3
-	mov r1, #0
-	b _02227E82
-_02227E74:
-	cmp r2, #0xa
-	blt _02227E7E
-	mov r3, #3
-	mov r1, #1
-	b _02227E82
-_02227E7E:
-	mov r3, #2
-	mov r1, #1
-_02227E82:
-	str r1, [sp]
-	mov r1, #1
-	str r1, [sp, #4]
-	mov r1, #0
-	bl BufferIntegerAsString
-	add sp, #8
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end ov74_02227E64
-
-	thumb_func_start ov74_MainMenu_PrintContinueButton
-ov74_MainMenu_PrintContinueButton: ; 0x02227E94
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x2c
-	str r2, [sp, #0x18]
-	str r0, [sp, #0x10]
-	str r1, [sp, #0x14]
-	add r4, r3, #0
-	ldr r2, _02228028 ; =0x000001BA
-	mov r0, #1
-	mov r1, #0x1b
-	mov r3, #0x4f
-	bl NewMsgDataFromNarc
-	str r0, [sp, #0x24]
-	mov r0, #0x4f
-	bl MessageFormat_New
-	str r0, [sp, #0x28]
-	ldr r0, [sp, #0x10]
-	ldr r0, [r0, #0xc]
-	bl PlayerProfile_GetTrainerGender
-	cmp r0, #1
-	bne _02227EC8
-	ldr r0, _0222802C ; =0x0003040F
-	str r0, [sp, #0x1c]
-	b _02227ECC
-_02227EC8:
-	ldr r0, _02228030 ; =0x0007080F
-	str r0, [sp, #0x1c]
-_02227ECC:
-	ldr r0, [sp, #0x14]
-	ldr r1, _02228034 ; =ov74_0223BCBC + 8
-	lsl r0, r0, #4
-	str r0, [sp, #0x20]
-	ldr r0, [r1, r0]
-	ldr r1, [sp, #0x18]
-	str r0, [sp]
-	ldr r0, [sp, #0x10]
-	mov r2, #3
-	ldr r0, [r0]
-	add r3, r4, #0
-	bl ov74_02235568
-	ldr r4, _02228038 ; =ov74_0223BBC4
-	mov r6, #1
-	mov r5, #0x10
-_02227EEC:
-	cmp r6, #4
-	bne _02227EF8
-	ldr r0, [sp, #0x10]
-	ldr r0, [r0, #0x4c]
-	cmp r0, #0
-	beq _02227F28
-_02227EF8:
-	ldr r0, [sp, #0x28]
-	ldr r1, [sp, #0x24]
-	ldr r2, [r4]
-	mov r3, #0x4f
-	bl ReadMsgData_ExpandPlaceholders
-	add r7, r0, #0
-	str r5, [sp]
-	mov r0, #0xff
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x1c]
-	mov r1, #0
-	str r0, [sp, #8]
-	mov r0, #0
-	str r0, [sp, #0xc]
-	ldr r0, [sp, #0x18]
-	add r2, r7, #0
-	ldr r0, [r0, #0x10]
-	mov r3, #0x20
-	bl AddTextPrinterParameterizedWithColor
-	add r0, r7, #0
-	bl String_Delete
-_02227F28:
-	add r6, r6, #1
-	add r4, r4, #4
-	add r5, #0x10
-	cmp r6, #5
-	blo _02227EEC
-	ldr r2, [sp, #0x10]
-	ldr r0, [sp, #0x28]
-	ldr r2, [r2, #0xc]
-	mov r1, #0
-	bl BufferPlayersName
-	mov r0, #0x11
-	str r0, [sp]
-	mov r0, #0x10
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	ldr r0, [r0, #0x10]
-	ldr r2, [sp, #0x28]
-	ldr r3, [sp, #0x1c]
-	bl ov74_02227E10
-	ldr r0, [sp, #0x10]
-	ldr r0, [r0, #0x10]
-	bl GetIGTHours
-	add r1, r0, #0
-	ldr r0, [sp, #0x28]
-	bl ov74_02227E64
-	ldr r0, [sp, #0x10]
-	ldr r0, [r0, #0x10]
-	bl GetIGTMinutes
-	add r2, r0, #0
-	mov r3, #2
-	ldr r0, [sp, #0x28]
-	str r3, [sp]
-	mov r1, #1
-	str r1, [sp, #4]
-	bl BufferIntegerAsString
-	mov r0, #0x12
-	str r0, [sp]
-	mov r0, #0x20
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	ldr r0, [r0, #0x10]
-	ldr r2, [sp, #0x28]
-	ldr r3, [sp, #0x1c]
-	bl ov74_02227E10
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #1
-	str r0, [sp, #4]
-	ldr r2, [sp, #0x10]
-	ldr r0, [sp, #0x28]
-	ldr r2, [r2, #0x50]
-	mov r3, #2
-	bl BufferIntegerAsString
-	mov r0, #0x14
-	str r0, [sp]
-	mov r0, #0x30
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	ldr r0, [r0, #0x10]
-	ldr r2, [sp, #0x28]
-	ldr r3, [sp, #0x1c]
-	bl ov74_02227E10
-	ldr r0, [sp, #0x10]
-	ldr r0, [r0, #0x4c]
-	cmp r0, #0
-	beq _02227FEA
-	ldr r0, [sp, #0x10]
-	ldr r0, [r0, #8]
-	bl Pokedex_CountDexOwned
-	add r1, r0, #0
-	ldr r0, [sp, #0x28]
-	bl ov74_02227E64
-	mov r0, #0x13
-	str r0, [sp]
-	mov r0, #0x40
-	str r0, [sp, #4]
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	ldr r0, [r0, #0x10]
-	ldr r2, [sp, #0x28]
-	ldr r3, [sp, #0x1c]
-	bl ov74_02227E10
-_02227FEA:
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x18]
-	ldr r0, [sp, #0x18]
-	ldr r2, [r2, #0x38]
-	ldr r3, [r3, #0x3c]
-	lsl r2, r2, #0x10
-	lsl r3, r3, #0x18
-	ldr r0, [r0, #0x10]
-	mov r1, #0
-	lsr r2, r2, #0x10
-	lsr r3, r3, #0x18
-	bl DrawFrameAndWindow1
-	ldr r1, _0222803C ; =ov74_0223BCBC
-	ldr r0, [sp, #0x20]
-	ldr r2, [r1, r0]
-	ldr r0, [sp, #0x14]
-	lsl r1, r0, #2
-	ldr r0, [sp, #0x10]
-	add r0, r0, r1
-	add r0, #0xec
-	str r2, [r0]
-	ldr r0, [sp, #0x28]
-	bl MessageFormat_Delete
-	ldr r0, [sp, #0x24]
-	bl DestroyMsgData
-	mov r0, #1
-	add sp, #0x2c
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02228028: .word 0x000001BA
-_0222802C: .word 0x0003040F
-_02228030: .word 0x0007080F
-_02228034: .word ov74_0223BCBC + 8
-_02228038: .word ov74_0223BBC4
-_0222803C: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintContinueButton
-
-	thumb_func_start ov74_MainMenu_PrintMigrateFromAgbButton
-ov74_MainMenu_PrintMigrateFromAgbButton: ; 0x02228040
-	push {r3, r4, r5, r6, lr}
-	sub sp, #4
-	add r4, r0, #0
-	add r5, r1, #0
-	add r1, r2, #0
-	ldr r2, [r4, #0x24]
-	add r6, r3, #0
-	cmp r2, #0
-	bne _02228058
-	add sp, #4
-	mov r0, #0
-	pop {r3, r4, r5, r6, pc}
-_02228058:
-	sub r2, r2, #1
-	cmp r2, #4
-	bhi _02228086
-	add r2, r2, r2
-	add r2, pc
-	ldrh r2, [r2, #6]
-	lsl r2, r2, #0x10
-	asr r2, r2, #0x10
-	add pc, r2
-_0222806A: ; jump table
-	.short _02228074 - _0222806A - 2 ; case 0
-	.short _02228078 - _0222806A - 2 ; case 1
-	.short _0222807C - _0222806A - 2 ; case 2
-	.short _02228080 - _0222806A - 2 ; case 3
-	.short _02228084 - _0222806A - 2 ; case 4
-_02228074:
-	mov r0, #msg_0442_00004
-	b _02228086
-_02228078:
-	mov r0, #msg_0442_00005
-	b _02228086
-_0222807C:
-	mov r0, #msg_0442_00006
-	b _02228086
-_02228080:
-	mov r0, #msg_0442_00007
-	b _02228086
-_02228084:
-	mov r0, #msg_0442_00008
-_02228086:
-	str r0, [sp]
-	ldr r0, [r4]
-	mov r2, #3
-	add r3, r6, #0
-	bl ov74_02235568
-	add r0, r4, #0
-	mov r1, #0x17
-	add r2, r6, #0
-	bl ov74_02227DD4
-	ldr r0, _022280B0 ; =ov74_0223BCBC
-	lsl r1, r5, #4
-	ldr r1, [r0, r1]
-	lsl r0, r5, #2
-	add r0, r4, r0
-	add r0, #0xec
-	str r1, [r0]
-	mov r0, #1
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-_022280B0: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintMigrateFromAgbButton
-
-	thumb_func_start ov74_MainMenu_PrintMysteryGiftButton
-ov74_MainMenu_PrintMysteryGiftButton: ; 0x022280B4
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r5, r0, #0
-	ldr r0, [r5, #0x34]
-	add r4, r1, #0
-	add r7, r3, #0
-	str r2, [sp, #4]
-	cmp r0, #0
-	bne _022280FC
-	ldr r0, [r5, #0x14]
-	bl SaveMysteryGift_TestFlagx7FF
-	cmp r0, #1
-	bne _022280D4
-	mov r0, #1
-	str r0, [r5, #0x34]
-_022280D4:
-	ldr r0, [r5, #4]
-	bl Save_SysInfo_Get
-	bl Save_SysInfo_GetMysteryGiftActive
-	cmp r0, #1
-	bne _022280E6
-	mov r0, #1
-	str r0, [r5, #0x34]
-_022280E6:
-	mov r0, #0x4f
-	bl ov74_0223512C
-	bl ov74_02235230
-	cmp r0, #0
-	beq _022280FC
-	mov r0, #1
-	str r0, [r5, #0x34]
-	bl ov74_02236034
-_022280FC:
-	ldr r0, [r5, #0x34]
-	cmp r0, #1
-	bne _0222810C
-	ldr r0, [r5, #0x4c]
-	cmp r0, #0
-	bne _0222810C
-	mov r0, #0
-	str r0, [r5, #0x34]
-_0222810C:
-	ldr r0, [r5, #0x34]
-	cmp r0, #1
-	bne _02228150
-	ldr r0, _02228158 ; =ov74_0223BCBC + 8
-	lsl r6, r4, #4
-	ldr r0, [r0, r6]
-	ldr r1, [sp, #4]
-	str r0, [sp]
-	ldr r0, [r5]
-	mov r2, #3
-	add r3, r7, #0
-	bl ov74_02235568
-	add r0, r5, #0
-	mov r1, #0x17
-	add r2, r7, #0
-	bl ov74_02227DD4
-	ldr r0, _0222815C ; =ov74_0223BCBC
-	ldr r1, [r0, r6]
-	lsl r0, r4, #2
-	add r0, r5, r0
-	add r0, #0xec
-	str r1, [r0]
-	ldr r1, [r5, #0x38]
-	mov r0, #1
-	orr r0, r1
-	str r0, [r5, #0x38]
-	ldr r0, [r5, #0x14]
-	bl SaveMysteryGift_SetFlagx7FF
-	add sp, #8
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02228150:
-	mov r0, #0
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02228158: .word ov74_0223BCBC + 8
-_0222815C: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintMysteryGiftButton
-
-	thumb_func_start ov74_MainMenu_PrintConnectToRangerButton
-ov74_MainMenu_PrintConnectToRangerButton: ; 0x02228160
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #0x2c]
-	add r4, r1, #0
-	add r7, r3, #0
-	cmp r0, #1
-	bne _022281B0
-	ldr r0, [r5, #0x4c]
-	cmp r0, #1
-	bne _022281B0
-	ldr r0, _022281B4 ; =ov74_0223BCBC + 8
-	lsl r6, r4, #4
-	ldr r0, [r0, r6]
-	add r1, r2, #0
-	str r0, [sp]
-	ldr r0, [r5]
-	mov r2, #3
-	bl ov74_02235568
-	add r0, r5, #0
-	mov r1, #0x17
-	add r2, r7, #0
-	mov r3, #1
-	bl ov74_02227D88
-	lsl r1, r4, #2
-	add r2, r5, r1
-	mov r1, #0x11
-	mov r0, #1
-	lsl r1, r1, #4
-	str r0, [r2, r1]
-	ldr r1, _022281B8 ; =ov74_0223BCBC
-	add r2, #0xec
-	ldr r1, [r1, r6]
-	str r1, [r2]
-	ldr r2, [r5, #0x38]
-	mov r1, #2
-	orr r1, r2
-	str r1, [r5, #0x38]
-	pop {r3, r4, r5, r6, r7, pc}
-_022281B0:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_022281B4: .word ov74_0223BCBC + 8
-_022281B8: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintConnectToRangerButton
-
-	thumb_func_start ov74_MainMenu_PrintConnectToWiiButton
-ov74_MainMenu_PrintConnectToWiiButton: ; 0x022281BC
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x30]
-	add r5, r1, #0
-	add r7, r3, #0
-	cmp r0, #1
-	bne _02228200
-	ldr r0, _02228204 ; =ov74_0223BCBC + 8
-	lsl r6, r5, #4
-	ldr r0, [r0, r6]
-	add r1, r2, #0
-	str r0, [sp]
-	ldr r0, [r4]
-	mov r2, #3
-	bl ov74_02235568
-	lsl r5, r5, #2
-	mov r0, #0x11
-	mov r3, #1
-	add r1, r4, r5
-	lsl r0, r0, #4
-	str r3, [r1, r0]
-	add r0, r4, #0
-	mov r1, #0x17
-	add r2, r7, #0
-	bl ov74_02227D88
-	ldr r0, _02228208 ; =ov74_0223BCBC
-	ldr r1, [r0, r6]
-	add r0, r4, r5
-	add r0, #0xec
-	str r1, [r0]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02228200:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02228204: .word ov74_0223BCBC + 8
-_02228208: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintConnectToWiiButton
-
-	thumb_func_start ov74_MainMenu_PrintNintendoWFCSetupButton
-ov74_MainMenu_PrintNintendoWFCSetupButton: ; 0x0222820C
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	ldr r0, _0222824C ; =ov74_0223BCBC + 8
-	lsl r6, r4, #4
-	ldr r0, [r0, r6]
-	add r1, r2, #0
-	str r0, [sp]
-	ldr r0, [r5]
-	mov r2, #3
-	add r7, r3, #0
-	bl ov74_02235568
-	lsl r4, r4, #2
-	mov r0, #0x11
-	mov r3, #2
-	add r1, r5, r4
-	lsl r0, r0, #4
-	str r3, [r1, r0]
-	add r0, r5, #0
-	mov r1, #0x17
-	add r2, r7, #0
-	bl ov74_02227D88
-	ldr r0, _02228250 ; =ov74_0223BCBC
-	ldr r1, [r0, r6]
-	add r0, r5, r4
-	add r0, #0xec
-	str r1, [r0]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_0222824C: .word ov74_0223BCBC + 8
-_02228250: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintNintendoWFCSetupButton
-
-	thumb_func_start ov74_MainMenu_PrintConnectToPokewalkerButton
-ov74_MainMenu_PrintConnectToPokewalkerButton: ; 0x02228254
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r1, #0
-	add r5, r0, #0
-	ldr r0, _02228288 ; =ov74_0223BCBC + 8
-	lsl r4, r6, #4
-	ldr r0, [r0, r4]
-	add r1, r2, #0
-	str r0, [sp]
-	ldr r0, [r5]
-	add r7, r3, #0
-	mov r2, #3
-	bl ov74_02235568
-	add r0, r5, #0
-	mov r1, #0x17
-	add r2, r7, #0
-	bl ov74_02227DD4
-	ldr r0, _0222828C ; =ov74_0223BCBC
-	ldr r1, [r0, r4]
-	lsl r0, r6, #2
-	add r0, r5, r0
-	add r0, #0xec
-	str r1, [r0]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02228288: .word ov74_0223BCBC + 8
-_0222828C: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintConnectToPokewalkerButton
-
-	thumb_func_start ov74_MainMenu_PrintWiiMessageSettingsButton
-ov74_MainMenu_PrintWiiMessageSettingsButton: ; 0x02228290
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r1, #0
-	add r5, r0, #0
-	ldr r0, _022282C4 ; =ov74_0223BCBC + 8
-	lsl r4, r6, #4
-	ldr r0, [r0, r4]
-	add r1, r2, #0
-	str r0, [sp]
-	ldr r0, [r5]
-	add r7, r3, #0
-	mov r2, #3
-	bl ov74_02235568
-	add r0, r5, #0
-	mov r1, #0x17
-	add r2, r7, #0
-	bl ov74_02227DD4
-	ldr r0, _022282C8 ; =ov74_0223BCBC
-	ldr r1, [r0, r4]
-	lsl r0, r6, #2
-	add r0, r5, r0
-	add r0, #0xec
-	str r1, [r0]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_022282C4: .word ov74_0223BCBC + 8
-_022282C8: .word ov74_0223BCBC
-	thumb_func_end ov74_MainMenu_PrintWiiMessageSettingsButton
-
-	thumb_func_start ov74_022282CC
-ov74_022282CC: ; 0x022282CC
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x70
-	mov r1, #0x1b
-	add r7, r0, #0
-	mov r0, #0
-	lsl r1, r1, #4
-	str r0, [sp, #0xc]
-	str r0, [r7, r1]
-	str r0, [sp, #0x10]
-	add r0, r7, #0
-	str r0, [sp, #8]
-	add r0, #0x5c
-	str r0, [sp, #8]
-	add r0, r7, #0
-	mov r5, #1
-	str r0, [sp, #0x14]
-	add r0, #0x20
-	ldr r4, _02228410 ; =ov74_0223BCBC
-	str r5, [r7, #0x20]
-	str r7, [sp, #0x18]
-	str r0, [sp, #0x14]
-_022282F6:
-	ldr r0, _02228414 ; =0x000003F7
-	ldr r1, [sp, #8]
-	str r0, [sp]
-	mov r0, #2
-	str r0, [sp, #4]
-	ldr r3, _02228418 ; =0x000001BA
-	add r0, sp, #0x1c
-	mov r2, #1
-	bl ov74_02235414
-	ldr r2, [r4, #4]
-	ldr r3, [r7, #0x20]
-	add r0, sp, #0x1c
-	mov r1, #0x17
-	bl ov74_02235464
-	ldr r0, [r4, #0xc]
-	mov ip, r0
-	cmp r0, #0
-	beq _02228398
-	ldr r0, [sp, #0x18]
-	add r0, #0xec
-	ldr r0, [r0]
-	cmp r0, #0
-	beq _0222837C
-	ldr r0, [sp, #0x2c]
-	mov r1, #3
-	bl SetWindowX
-	lsl r1, r5, #0x18
-	ldr r0, [sp, #0x2c]
-	lsr r1, r1, #0x18
-	bl SetWindowY
-	ldr r2, [sp, #0x54]
-	ldr r3, [sp, #0x58]
-	lsl r2, r2, #0x10
-	lsl r3, r3, #0x18
-	ldr r0, [sp, #0x2c]
-	mov r1, #0
-	lsr r2, r2, #0x10
-	lsr r3, r3, #0x18
-	bl DrawFrameAndWindow1
-	mov r1, #0x11
-	ldr r0, [sp, #0x18]
-	lsl r1, r1, #4
-	ldr r3, [r0, r1]
-	cmp r3, #0
-	beq _02228366
-	add r0, r7, #0
-	mov r1, #0x17
-	add r2, r5, #0
-	bl ov74_02227D88
-	b _02228370
-_02228366:
-	add r0, r7, #0
-	mov r1, #0x17
-	add r2, r5, #0
-	bl ov74_02227DD4
-_02228370:
-	ldr r0, [r4, #4]
-	add r0, r0, #2
-	add r5, r5, r0
-	mov r0, #1
-	str r0, [sp, #0xc]
-	b _022283B6
-_0222837C:
-	ldr r1, [sp, #0x10]
-	add r0, r7, #0
-	add r2, sp, #0x1c
-	add r3, r5, #0
-	mov r6, ip
-	blx r6
-	cmp r0, #1
-	bne _022283B6
-	ldr r0, [r4, #4]
-	add r0, r0, #2
-	add r5, r5, r0
-	mov r0, #1
-	str r0, [sp, #0xc]
-	b _022283B6
-_02228398:
-	ldr r0, [r4, #8]
-	add r1, sp, #0x1c
-	str r0, [sp]
-	ldr r0, [r7]
-	mov r2, #3
-	add r3, r5, #0
-	bl ov74_02235568
-	ldr r0, [sp, #0x18]
-	ldr r1, [r4]
-	add r0, #0xec
-	str r1, [r0]
-	ldr r0, [r4, #4]
-	add r0, r0, #2
-	add r5, r5, r0
-_022283B6:
-	ldr r0, [sp, #0x14]
-	ldr r1, [r4, #4]
-	ldr r2, [r0]
-	mov r0, #0x17
-	mul r0, r1
-	add r1, r2, r0
-	ldr r0, [sp, #0x14]
-	str r1, [r0]
-	ldr r0, [sp, #0x18]
-	add r0, #0xec
-	ldr r0, [r0]
-	cmp r0, #0
-	beq _022283DE
-	mov r0, #0x1b
-	lsl r0, r0, #4
-	ldr r0, [r7, r0]
-	add r1, r0, #1
-	mov r0, #0x1b
-	lsl r0, r0, #4
-	str r1, [r7, r0]
-_022283DE:
-	ldr r0, [sp, #8]
-	add r4, #0x10
-	add r0, #0x10
-	str r0, [sp, #8]
-	ldr r0, [sp, #0x18]
-	add r0, r0, #4
-	str r0, [sp, #0x18]
-	ldr r0, [sp, #0x10]
-	add r0, r0, #1
-	str r0, [sp, #0x10]
-	cmp r0, #9
-	bhs _022283F8
-	b _022282F6
-_022283F8:
-	add r0, r7, #0
-	bl ov74_0222879C
-	add r0, r7, #0
-	add r7, #0x54
-	ldrh r1, [r7]
-	bl ov74_0222841C
-	ldr r0, [sp, #0xc]
-	add sp, #0x70
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02228410: .word ov74_0223BCBC
-_02228414: .word 0x000003F7
-_02228418: .word 0x000001BA
-	thumb_func_end ov74_022282CC
-
-	thumb_func_start ov74_0222841C
-ov74_0222841C: ; 0x0222841C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x30
-	add r7, r0, #0
-	add r0, r1, #0
-	add r0, r0, #5
-	str r0, [sp, #0x14]
-	add r0, r1, #0
-	add r4, r7, #0
-	sub r0, r0, #5
-	str r1, [sp, #0xc]
-	mov r6, #0
-	add r4, #0x5c
-	str r0, [sp, #0x10]
-_02228436:
-	add r0, r4, #0
-	bl WindowIsInUse
-	cmp r0, #0
-	beq _0222852C
-	cmp r6, #0
-	bne _02228452
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r1, [r7, r0]
-	mov r0, #6
-	lsl r0, r0, #0x12
-	cmp r1, r0
-	beq _0222852C
-_02228452:
-	ldr r0, [sp, #0x10]
-	cmp r6, r0
-	blt _0222852C
-	ldr r0, [sp, #0x14]
-	cmp r6, r0
-	bgt _0222852C
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	ldr r0, [r7, r0]
-	cmp r0, #1
-	bne _022284A8
-	ldr r2, _02228540 ; =0x000003EE
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #2
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x18]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x1c]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r7]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x1c]
-	mov r1, #0
-	bl BgTilemapRectChangePalette
-	b _0222852C
-_022284A8:
-	ldr r0, [sp, #0xc]
-	cmp r6, r0
-	bne _022284EE
-	ldr r2, _02228540 ; =0x000003EE
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #3
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x20]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x24]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r7]
-	ldr r2, [sp, #0x20]
-	ldr r3, [sp, #0x24]
-	mov r1, #0
-	bl BgTilemapRectChangePalette
-	b _0222852C
-_022284EE:
-	ldr r2, _02228544 ; =0x000003F7
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #2
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x28]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x2c]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	ldr r0, [r7]
-	ldr r2, [sp, #0x28]
-	ldr r3, [sp, #0x2c]
-	mov r1, #0
-	bl BgTilemapRectChangePalette
-_0222852C:
-	add r6, r6, #1
-	add r4, #0x10
-	cmp r6, #9
-	blo _02228436
-	ldr r0, [r7]
-	mov r1, #0
-	bl BgCommitTilemapBufferToVram
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_02228540: .word 0x000003EE
-_02228544: .word 0x000003F7
-	thumb_func_end ov74_0222841C
-
-	thumb_func_start ov74_02228548
-ov74_02228548: ; 0x02228548
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x30
-	add r6, r0, #0
-	mov r0, #0x59
-	lsl r0, r0, #2
-	str r1, [sp, #0xc]
-	mov r7, #0
-	add r4, r6, r0
-_02228558:
-	add r0, r4, #0
-	bl WindowIsInUse
-	cmp r0, #0
-	bne _02228564
-	b _02228678
-_02228564:
-	ldr r0, [sp, #0xc]
-	cmp r0, #0
-	bge _022285AA
-	ldr r2, _02228690 ; =0x000003F7
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #2
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x10]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x14]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	ldr r0, [r6]
-	ldr r2, [sp, #0x10]
-	ldr r3, [sp, #0x14]
-	mov r1, #1
-	bl BgTilemapRectChangePalette
-	b _02228678
-_022285AA:
-	mov r0, #0x6b
-	lsl r0, r0, #2
-	ldr r0, [r6, r0]
-	cmp r0, #1
-	bne _022285F4
-	ldr r2, _02228694 ; =0x000003EE
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #2
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x18]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x1c]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r6]
-	ldr r2, [sp, #0x18]
-	ldr r3, [sp, #0x1c]
-	mov r1, #1
-	bl BgTilemapRectChangePalette
-	b _02228678
-_022285F4:
-	ldr r0, [sp, #0xc]
-	cmp r7, r0
-	bne _0222863A
-	ldr r2, _02228694 ; =0x000003EE
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #3
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x20]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x24]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #0
-	str r0, [sp, #8]
-	ldr r0, [r6]
-	ldr r2, [sp, #0x20]
-	ldr r3, [sp, #0x24]
-	mov r1, #1
-	bl BgTilemapRectChangePalette
-	b _02228678
-_0222863A:
-	ldr r2, _02228690 ; =0x000003F7
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #2
-	bl DrawFrameAndWindow1
-	add r0, r4, #0
-	bl GetWindowX
-	str r0, [sp, #0x28]
-	add r0, r4, #0
-	bl GetWindowY
-	str r0, [sp, #0x2c]
-	add r0, r4, #0
-	bl GetWindowWidth
-	add r5, r0, #0
-	add r0, r4, #0
-	bl GetWindowHeight
-	str r5, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	ldr r0, [r6]
-	ldr r2, [sp, #0x28]
-	ldr r3, [sp, #0x2c]
-	mov r1, #1
-	bl BgTilemapRectChangePalette
-_02228678:
-	add r7, r7, #1
-	add r4, #0x10
-	cmp r7, #2
-	bge _02228682
-	b _02228558
-_02228682:
-	ldr r0, [r6]
-	mov r1, #1
-	bl BgCommitTilemapBufferToVram
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_02228690: .word 0x000003F7
-_02228694: .word 0x000003EE
-	thumb_func_end ov74_02228548
-
-	thumb_func_start ov74_02228698
-ov74_02228698: ; 0x02228698
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r0, #0x54
-	ldrh r6, [r0]
-	mov r7, #8
-	add r3, r7, #0
-	add r4, r6, #0
-	mov r0, #0
-	sub r3, #9
-_022286AA:
-	add r4, r4, r1
-	cmp r4, r3
-	bne _022286B2
-	add r4, r0, #0
-_022286B2:
-	cmp r4, #9
-	bne _022286B8
-	add r4, r7, #0
-_022286B8:
-	cmp r4, r6
-	beq _022286CE
-	lsl r2, r4, #2
-	add r2, r5, r2
-	add r2, #0xec
-	ldr r2, [r2]
-	cmp r2, #0
-	beq _022286AA
-	ldr r0, _022286F4 ; =SEQ_SE_DP_SELECT
-	bl PlaySE
-_022286CE:
-	add r0, r5, #0
-	add r0, #0x54
-	strh r4, [r0]
-	add r0, r5, #0
-	add r0, #0x54
-	ldrh r1, [r0]
-	cmp r1, r6
-	beq _022286F0
-	add r0, r5, #0
-	bl ov74_0222841C
-	mov r0, #0x6d
-	mov r1, #6
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_022286F0:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_022286F4: .word SEQ_SE_DP_SELECT
-	thumb_func_end ov74_02228698
-
-	thumb_func_start ov74_022286F8
-ov74_022286F8: ; 0x022286F8
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r6, r5, #0
-	add r6, #0x5c
-	lsl r7, r1, #4
-	add r0, r6, r7
-	bl GetWindowY
-	sub r0, r0, #1
-	lsl r4, r0, #3
-	add r0, r6, r7
-	bl GetWindowHeight
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r1, [r5, r0]
-	asr r0, r1, #0xb
-	lsr r0, r0, #0x14
-	add r0, r1, r0
-	asr r0, r0, #0xc
-	cmp r0, r4
-	bgt _0222872C
-	add r0, #0xc0
-	cmp r0, r4
-	bgt _02228796
-_0222872C:
-	mov r0, #0x4e
-	lsl r1, r4, #0xc
-	lsl r0, r0, #2
-	str r1, [r5, r0]
-	add r0, r5, #0
-	bl ov74_0222879C
-	mov r0, #0x4e
-	lsl r0, r0, #2
-	ldr r1, [r5, r0]
-	mov r0, #6
-	lsl r0, r0, #0x12
-	cmp r1, r0
-	bne _0222878C
-	mov r1, #0
-	str r1, [sp]
-	mov r0, #0x20
-	str r0, [sp, #4]
-	mov r0, #0xc
-	str r0, [sp, #8]
-	str r1, [sp, #0xc]
-	ldr r0, [r5]
-	add r2, r1, #0
-	add r3, r1, #0
-	bl FillBgTilemapRect
-	mov r2, #0
-	str r2, [sp]
-	mov r0, #0x20
-	str r0, [sp, #4]
-	mov r0, #0xc
-	str r0, [sp, #8]
-	str r2, [sp, #0xc]
-	ldr r0, [r5]
-	mov r1, #2
-	add r3, r2, #0
-	bl FillBgTilemapRect
-	ldr r0, [r5]
-	mov r1, #0
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r5]
-	mov r1, #2
-	bl ScheduleBgTilemapBufferTransfer
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-_0222878C:
-	cmp r1, #0
-	bne _02228796
-	add r0, r5, #0
-	bl ov74_022282CC
-_02228796:
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov74_022286F8
-
-	thumb_func_start ov74_0222879C
-ov74_0222879C: ; 0x0222879C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x10
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	mov r1, #0x4e
-	ldr r0, [sp]
-	lsl r1, r1, #2
-	ldr r1, [r0, r1]
-	ldr r5, [sp]
-	asr r0, r1, #0xb
-	lsr r0, r0, #0x14
-	add r0, r1, r0
-	asr r7, r0, #0xc
-	add r0, r7, #0
-	str r0, [sp, #0xc]
-	add r0, #0xc0
-	ldr r6, [sp, #4]
-	add r5, #0x5c
-	str r0, [sp, #0xc]
-_022287C6:
-	add r0, r5, #0
-	bl WindowIsInUse
-	cmp r0, #0
-	beq _022287F2
-	add r0, r5, #0
-	bl GetWindowY
-	sub r0, r0, #1
-	lsl r4, r0, #3
-	add r0, r5, #0
-	bl GetWindowHeight
-	cmp r7, r4
-	ble _022287E8
-	mov r0, #1
-	str r0, [sp, #8]
-_022287E8:
-	ldr r0, [sp, #0xc]
-	cmp r0, r4
-	bgt _022287F2
-	mov r0, #1
-	str r0, [sp, #4]
-_022287F2:
-	add r6, r6, #1
-	add r5, #0x10
-	cmp r6, #9
-	blo _022287C6
-	mov r1, #0x1a
-	ldr r0, [sp]
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	ldr r1, [sp, #8]
-	lsl r1, r1, #1
-	bl Sprite_SetAnimCtrlSeq
-	mov r1, #0x1a
-	ldr r0, [sp]
-	lsl r1, r1, #4
-	ldr r0, [r0, r1]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	mov r1, #0x69
-	ldr r0, [sp]
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	ldr r1, [sp, #4]
-	lsl r1, r1, #1
-	add r1, r1, #1
-	bl Sprite_SetAnimCtrlSeq
-	mov r1, #0x69
-	ldr r0, [sp]
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	add sp, #0x10
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov74_0222879C
-
-	thumb_func_start ov74_0222883C
-ov74_0222883C: ; 0x0222883C
-	push {r3, r4, r5, r6, r7, lr}
-	bl OverlayManager_GetData
-	mov r1, #0x1a
-	add r7, r0, #0
-	lsl r1, r1, #4
-	ldr r0, [r7, r1]
-	cmp r0, #0
-	bne _02228856
-	add r1, r1, #4
-	ldr r1, [r7, r1]
-	cmp r1, #0
-	beq _02228868
-_02228856:
-	bl Sprite_Delete
-	mov r0, #0x69
-	lsl r0, r0, #2
-	ldr r0, [r7, r0]
-	bl Sprite_Delete
-	bl ov74_022359BC
-_02228868:
-	add r5, r7, #0
-	mov r6, #0
-	add r4, r7, #0
-	add r5, #0x5c
-_02228870:
-	ldr r0, [r4, #0x5c]
-	cmp r0, #0
-	beq _02228882
-	add r0, r5, #0
-	bl ClearWindowTilemapAndCopyToVram
-	add r0, r5, #0
-	bl RemoveWindow
-_02228882:
-	add r6, r6, #1
-	add r4, #0x10
-	add r5, #0x10
-	cmp r6, #9
-	blo _02228870
-	ldr r0, [r7]
-	mov r1, #0
-	bl FreeBgTilemapBuffer
-	ldr r0, [r7]
-	mov r1, #1
-	bl FreeBgTilemapBuffer
-	ldr r0, [r7]
-	mov r1, #2
-	bl FreeBgTilemapBuffer
-	ldr r2, _022288C0 ; =0x04000304
-	ldrh r1, [r2]
-	lsr r0, r2, #0xb
-	orr r0, r1
-	strh r0, [r2]
-	ldr r0, [r7]
-	bl FreeToHeap
-	mov r0, #0
-	add r1, r0, #0
-	bl Main_SetVBlankIntrCB
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_022288C0: .word 0x04000304
-	thumb_func_end ov74_0222883C
-
-	thumb_func_start ov74_022288C4
-ov74_022288C4: ; 0x022288C4
-	mov r1, #0x6a
-	lsl r1, r1, #2
-	ldr r2, [r0, r1]
-	lsl r3, r2, #1
-	ldr r2, _022288F0 ; =ov74_0223BBF0
-	ldrh r2, [r2, r3]
-	cmp r2, #0
-	bne _022288D8
-	mov r2, #0
-	str r2, [r0, r1]
-_022288D8:
-	mov r1, #0x6a
-	lsl r1, r1, #2
-	ldr r3, [r0, r1]
-	add r2, r3, #1
-	str r2, [r0, r1]
-	ldr r0, _022288F0 ; =ov74_0223BBF0
-	lsl r1, r3, #1
-	ldrh r1, [r0, r1]
-	ldr r0, _022288F4 ; =0x0500006C
-	strh r1, [r0]
-	bx lr
-	nop
-_022288F0: .word ov74_0223BBF0
-_022288F4: .word 0x0500006C
-	thumb_func_end ov74_022288C4
-
-	thumb_func_start ov74_022288F8
-ov74_022288F8: ; 0x022288F8
-	push {r4, lr}
-	add r4, r0, #0
-	bl GF_RunVramTransferTasks
-	bl OamManager_ApplyAndResetBuffers
-	add r0, r4, #0
-	bl DoScheduledBgGpuUpdates
-	ldr r3, _02228918 ; =0x027E0000
-	ldr r1, _0222891C ; =0x00003FF8
-	mov r0, #1
-	ldr r2, [r3, r1]
-	orr r0, r2
-	str r0, [r3, r1]
-	pop {r4, pc}
-	.balign 4, 0
-_02228918: .word 0x027E0000
-_0222891C: .word 0x00003FF8
-	thumb_func_end ov74_022288F8
-
-	thumb_func_start ov74_MainMenu_AppInit
-ov74_MainMenu_AppInit: ; 0x02228920
-	push {r3, r4, r5, lr}
-	mov r2, #1
-	add r5, r0, #0
-	mov r0, #3
-	mov r1, #0x4f
-	lsl r2, r2, #0x12
-	bl CreateHeap
-	mov r1, #0x6e
-	add r0, r5, #0
-	lsl r1, r1, #2
-	mov r2, #0x4f
-	bl OverlayManager_CreateAndGetData
-	mov r2, #0x6e
-	mov r1, #0
-	lsl r2, r2, #2
-	add r4, r0, #0
-	bl memset
-	mov r0, #0x4f
-	bl BgConfig_Alloc
-	str r0, [r4]
-	mov r0, #0
-	add r1, r0, #0
-	bl sub_0200FBF4
-	mov r0, #1
-	mov r1, #0
-	bl sub_0200FBF4
-	add r0, r5, #0
-	bl OverlayManager_GetArgs
-	ldr r0, [r0, #8]
-	str r0, [r4, #4]
-	bl Save_MysteryGift_Get
-	str r0, [r4, #0x14]
-	mov r0, #0x4d
-	mov r1, #0
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, r0, #4
-	str r1, [r4, r0]
-	ldr r0, [r4, #4]
-	bl Save_PlayerData_GetProfileAddr
-	str r0, [r4, #0xc]
-	ldr r0, [r4, #4]
-	bl Save_Pokedex_Get
-	str r0, [r4, #8]
-	ldr r0, [r4, #4]
-	bl Save_PlayerData_GetIGTAddr
-	str r0, [r4, #0x10]
-	ldr r0, [r4, #8]
-	bl Pokedex_IsEnabled
-	str r0, [r4, #0x4c]
-	ldr r0, [r4, #0xc]
-	bl PlayerProfile_CountBadges
-	str r0, [r4, #0x50]
-	mov r0, #0x51
-	mov r1, #0xf
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	mov r0, #0x4f
-	bl ov74_022352A0
-	ldr r0, [r4, #4]
-	bl Save_FileExists
-	cmp r0, #0
-	bne _022289C4
-	mov r0, #0x61
-	mov r1, #1
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-_022289C4:
-	mov r0, #0
-	bl sub_02005AF8
-	mov r0, #0
-	bl sub_02004AD8
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov74_MainMenu_AppInit
-
-	thumb_func_start ov74_MainMenu_AppExec
-ov74_MainMenu_AppExec: ; 0x022289D4
-	push {r4, r5, r6, lr}
-	add r6, r0, #0
-	add r5, r1, #0
-	bl OverlayManager_GetData
-	add r4, r0, #0
-	ldr r0, [r4, #0x18]
-	add r0, r0, #1
-	str r0, [r4, #0x18]
-	bl CTRDG_IsExisting
-	add r0, r4, #0
-	bl ov74_0222779C
-	cmp r0, #1
-	bne _02228A04
-	add r0, r4, #0
-	bl ov74_022276AC
-	add r0, r4, #0
-	bl ov74_02227AEC
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_02228A04:
-	add r0, r4, #0
-	bl ov74_022288C4
-	mov r0, #0x6d
-	lsl r0, r0, #2
-	ldr r1, [r4, r0]
-	cmp r1, #0
-	beq _02228A18
-	sub r1, r1, #1
-	str r1, [r4, r0]
-_02228A18:
-	ldr r0, [r5]
-	cmp r0, #9
-	bls _02228A20
-	b _02228B70
-_02228A20:
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02228A2C: ; jump table
-	.short _02228A40 - _02228A2C - 2 ; case 0
-	.short _02228A4C - _02228A2C - 2 ; case 1
-	.short _02228A72 - _02228A2C - 2 ; case 2
-	.short _02228A8A - _02228A2C - 2 ; case 3
-	.short _02228AB8 - _02228A2C - 2 ; case 4
-	.short _02228AFC - _02228A2C - 2 ; case 5
-	.short _02228B32 - _02228A2C - 2 ; case 6
-	.short _02228B5A - _02228A2C - 2 ; case 7
-	.short _02228B64 - _02228A2C - 2 ; case 8
-	.short _02228B6C - _02228A2C - 2 ; case 9
-_02228A40:
-	add r0, r4, #0
-	bl ov74_02227B7C
-	mov r0, #1
-	str r0, [r5]
-	b _02228B70
-_02228A4C:
-	add r0, r4, #0
-	bl ov74_02227580
-	cmp r0, #0
-	bne _02228A5C
-	mov r0, #3
-	str r0, [r5]
-	b _02228B70
-_02228A5C:
-	mov r0, #1
-	mov r1, #2
-	add r2, r5, #0
-	mov r3, #8
-	bl ov74_0223539C
-	mov r0, #5
-	ldr r1, _02228B84 ; =0x00007D8C
-	lsl r0, r0, #0x18
-	strh r1, [r0]
-	b _02228B70
-_02228A72:
-	add r0, r4, #0
-	bl ov74_02227584
-	cmp r0, #0
-	bne _02228B70
-	mov r0, #0
-	mov r1, #3
-	add r2, r5, #0
-	mov r3, #8
-	bl ov74_0223539C
-	b _02228B70
-_02228A8A:
-	mov r0, #0x4f
-	mov r1, #0xc
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, #0x48
-	ldr r0, [r4, r0]
-	cmp r0, #1
-	bne _02228AAC
-	mov r0, #2
-	str r0, [r4, #0x58]
-	mov r0, #0
-	mov r1, #7
-	add r2, r5, #0
-	mov r3, #8
-	bl ov74_0223539C
-	b _02228B70
-_02228AAC:
-	add r0, r4, #0
-	bl ov74_0222763C
-	mov r0, #4
-	str r0, [r5]
-	b _02228B70
-_02228AB8:
-	add r0, r4, #0
-	bl ov74_02227CC8
-	add r0, r4, #0
-	bl ov74_02227D48
-	ldr r0, _02228B88 ; =ov74_022288F8
-	ldr r1, [r4]
-	bl Main_SetVBlankIntrCB
-	add r0, r4, #0
-	bl ov74_022282CC
-	add r1, r4, #0
-	add r1, #0x54
-	ldrh r1, [r1]
-	add r0, r4, #0
-	bl ov74_0222841C
-	mov r0, #1
-	mov r1, #5
-	add r2, r5, #0
-	mov r3, #8
-	bl ov74_0223539C
-	mov r0, #5
-	ldr r1, _02228B84 ; =0x00007D8C
-	lsl r0, r0, #0x18
-	strh r1, [r0]
-	mov r0, #0x4f
-	mov r1, #0xa
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	b _02228B70
-_02228AFC:
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov74_02227428
-	ldr r0, [r4, #0x48]
-	cmp r0, #1
-	bne _02228B16
-	add r0, r4, #0
-	bl ov74_022282CC
-	mov r0, #0
-	str r0, [r4, #0x48]
-	b _02228B70
-_02228B16:
-	ldr r0, [r5]
-	cmp r0, #5
-	bne _02228B70
-	mov r0, #0x62
-	lsl r0, r0, #2
-	ldr r1, [r4, r0]
-	cmp r1, #1
-	bne _02228B70
-	mov r1, #0
-	str r1, [r4, r0]
-	mov r1, #1
-	sub r0, #0x40
-	str r1, [r4, r0]
-	b _02228B70
-_02228B32:
-	mov r0, #0x51
-	lsl r0, r0, #2
-	ldr r1, [r4, r0]
-	cmp r1, #0xf
-	bne _02228B70
-	add r0, #0xc
-	ldr r1, [r4, r0]
-	mov r0, #2
-	tst r0, r1
-	beq _02228B4C
-	mov r0, #5
-	str r0, [r5]
-	b _02228B70
-_02228B4C:
-	mov r0, #0
-	mov r1, #7
-	add r2, r5, #0
-	mov r3, #8
-	bl ov74_0223539C
-	b _02228B70
-_02228B5A:
-	add r0, r6, #0
-	bl ov74_0222883C
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_02228B64:
-	add r0, r5, #0
-	bl ov74_022353FC
-	b _02228B70
-_02228B6C:
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_02228B70:
-	add r0, r4, #0
-	bl ov74_022276AC
-	add r0, r4, #0
-	bl ov74_02227AEC
-	bl ov74_022358BC
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_02228B84: .word 0x00007D8C
-_02228B88: .word ov74_022288F8
-	thumb_func_end ov74_MainMenu_AppExec
-
-	.public ov36_App_MainMenu_SelectOption_Continue
-	.public ov36_App_MainMenu_SelectOption_NewGame
-	.public gApp_MainMenu_SelectOption_NintendoWFCSetup
-	.public ov112_App_MainMenu_SelectOption_ConnectToPokewalker
-	.public gApp_MainMenu_SelectOption_NintendoWFCSetup
-	.public ov75_App_MainMenu_SelectOption_WiiMessageSettings
-
-	thumb_func_start ov74_MainMenu_QueueSelectedApp
-ov74_MainMenu_QueueSelectedApp: ; 0x02228B8C
-	push {r3, lr}
-	ldr r0, [r0, #0x58]
-	cmp r0, #9
-	bhi _02228C22
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_02228BA0: ; jump table
-	.short _02228C1A - _02228BA0 - 2 ; case 0
-	.short _02228BB4 - _02228BA0 - 2 ; case 1
-	.short _02228BBE - _02228BA0 - 2 ; case 2
-	.short _02228BFE - _02228BA0 - 2 ; case 3
-	.short _02228BC8 - _02228BA0 - 2 ; case 4
-	.short _02228BDC - _02228BA0 - 2 ; case 5
-	.short _02228BD2 - _02228BA0 - 2 ; case 6
-	.short _02228BE6 - _02228BA0 - 2 ; case 7
-	.short _02228BEE - _02228BA0 - 2 ; case 8
-	.short _02228C0C - _02228BA0 - 2 ; case 9
-_02228BB4:
-	ldr r0, _02228C24 ; =FS_OVERLAY_ID(OVY_36)
-	ldr r1, _02228C28 ; =ov36_App_MainMenu_SelectOption_Continue
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228BBE:
-	ldr r0, _02228C24 ; =FS_OVERLAY_ID(OVY_36)
-	ldr r1, _02228C2C ; =ov36_App_MainMenu_SelectOption_NewGame
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228BC8:
-	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
-	ldr r1, _02228C34 ; =gApp_MainMenu_SelectOption_MysteryGift
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228BD2:
-	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
-	ldr r1, _02228C38 ; =gApp_MainMenu_SelectOption_MigrateFromAgb
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228BDC:
-	ldr r0, _02228C30 ; =FS_OVERLAY_ID(OVY_74)
-	ldr r1, _02228C3C ; =gApp_MainMenu_SelectOption_ConnectToRanger
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228BE6:
-	ldr r0, _02228C40 ; =ov74_0223BD4C ; "data/eoo.dat"
-	bl sub_02027098
-	pop {r3, pc}
-_02228BEE:
-	bl Sound_Stop
-	mov r0, #0
-	ldr r1, _02228C44 ; =gApp_MainMenu_SelectOption_NintendoWFCSetup
-	mvn r0, r0
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228BFE:
-	bl Sound_Stop
-	ldr r0, _02228C48 ; =FS_OVERLAY_ID(OVY_112)
-	ldr r1, _02228C4C ; =ov112_App_MainMenu_SelectOption_ConnectToPokewalker
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228C0C:
-	bl Sound_Stop
-	ldr r0, _02228C50 ; =FS_OVERLAY_ID(OVY_75)
-	ldr r1, _02228C54 ; =ov75_App_MainMenu_SelectOption_WiiMessageSettings
-	bl RegisterMainOverlay
-	pop {r3, pc}
-_02228C1A:
-	ldr r0, _02228C58 ; =FS_OVERLAY_ID(intro_title)
-	ldr r1, _02228C5C ; =gApplication_TitleScreen
-	bl RegisterMainOverlay
-_02228C22:
-	pop {r3, pc}
-	.balign 4, 0
-_02228C24: .word FS_OVERLAY_ID(OVY_36)
-_02228C28: .word ov36_App_MainMenu_SelectOption_Continue
-_02228C2C: .word ov36_App_MainMenu_SelectOption_NewGame
-_02228C30: .word FS_OVERLAY_ID(OVY_74)
-_02228C34: .word gApp_MainMenu_SelectOption_MysteryGift
-_02228C38: .word gApp_MainMenu_SelectOption_MigrateFromAgb
-_02228C3C: .word gApp_MainMenu_SelectOption_ConnectToRanger
-_02228C40: .word ov74_0223BD4C
-_02228C44: .word gApp_MainMenu_SelectOption_NintendoWFCSetup
-_02228C48: .word FS_OVERLAY_ID(OVY_112)
-_02228C4C: .word ov112_App_MainMenu_SelectOption_ConnectToPokewalker
-_02228C50: .word FS_OVERLAY_ID(OVY_75)
-_02228C54: .word ov75_App_MainMenu_SelectOption_WiiMessageSettings
-_02228C58: .word FS_OVERLAY_ID(intro_title)
-_02228C5C: .word gApplication_TitleScreen
-	thumb_func_end ov74_MainMenu_QueueSelectedApp
-
-	thumb_func_start ov74_MainMenu_AppExit
-ov74_MainMenu_AppExit: ; 0x02228C60
-	push {r4, lr}
-	add r4, r0, #0
-	bl OverlayManager_GetData
-	bl ov74_MainMenu_QueueSelectedApp
-	add r0, r4, #0
-	bl OverlayManager_FreeData
-	mov r0, #0x4f
-	bl DestroyHeap
-	mov r0, #0
-	bl ov74_02236034
-	mov r0, #1
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov74_MainMenu_AppExit
 
 	thumb_func_start ov74_02228C84
 ov74_02228C84: ; 0x02228C84
@@ -4224,7 +668,7 @@ _022291D8:
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov74_02229190
 
@@ -4246,7 +690,7 @@ ov74_02229200: ; 0x02229200
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #8]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #8]
 	bl Save_Pokedex_Get
@@ -4284,7 +728,7 @@ ov74_02229200: ; 0x02229200
 	ldr r1, _02229290 ; =0x0000047E
 	mov r0, #9
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -4900,7 +1344,7 @@ _0222977A:
 	ldr r0, _02229A08 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02229A00 ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -4994,7 +1438,7 @@ _0222983C:
 	ldr r0, _02229A08 ; =0x00003170
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	bl ov74_02229084
 	mov r0, #0xb
@@ -5240,7 +1684,7 @@ _02229A4A:
 	ldr r0, _02229B58 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -5290,7 +1734,7 @@ _02229AB8:
 	ldr r0, _02229B58 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -5743,7 +2187,7 @@ ov74_02229DF8: ; 0x02229DF8
 	ldr r1, _02229E10 ; =ov74_0223D0A4
 	mov r0, #0xf
 	ldr r1, [r1]
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	ldr r0, _02229E10 ; =ov74_0223D0A4
 	mov r1, #0
 	str r1, [r0]
@@ -5872,7 +2316,7 @@ _02229ED2:
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r7]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_02229E68
 
@@ -5919,7 +2363,7 @@ _02229F4E:
 	ldr r0, _02229F5C ; =0x000005C4
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -7876,7 +4320,7 @@ ov74_0222AE6C: ; 0x0222AE6C
 	ldr r1, _0222AF18 ; =0x0000047E
 	mov r0, #0xa
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #0x54
 	bl ov74_0223512C
 	bl ov74_02235230
@@ -8171,7 +4615,7 @@ _0222B114:
 	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0222B13C:
 	add r0, r4, #0
 	add sp, #0x30
@@ -8193,11 +4637,11 @@ ov74_0222B144: ; 0x0222B144
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8205,7 +4649,7 @@ ov74_0222B144: ; 0x0222B144
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	ldr r0, _0222B198 ; =0x00003014
 	ldr r0, [r4, r0]
 	bl Sprite_GetMatrixPtr
@@ -8234,11 +4678,11 @@ ov74_0222B19C: ; 0x0222B19C
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -8246,7 +4690,7 @@ ov74_0222B19C: ; 0x0222B19C
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	ldr r0, _0222B1F0 ; =0x00003060
 	ldr r0, [r4, r0]
 	bl Sprite_GetMatrixPtr
@@ -8306,13 +4750,13 @@ _0222B232:
 	cmp r0, #0
 	beq _0222B242
 	add r1, r6, #0
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B242:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0222B24E
 	add r1, r6, #0
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B24E:
 	add r4, r4, #1
 	add r5, #0x4c
@@ -8325,7 +4769,7 @@ _0222B24E:
 	beq _0222B268
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B268:
 	ldr r1, _0222B284 ; =0x00003060
 	ldr r0, [sp]
@@ -8334,7 +4778,7 @@ _0222B268:
 	beq _0222B27A
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B27A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8366,7 +4810,7 @@ _0222B292:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r4, r4, #1
 	add r5, #0x4c
 	cmp r4, #0x50
@@ -8400,7 +4844,7 @@ _0222B2CE:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	b _0222B300
 _0222B2FA:
 	add r0, r5, #0
@@ -8434,7 +4878,7 @@ _0222B316:
 	bl Sprite_TryChangeAnimSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r4, r4, #1
 	add r5, #0x4c
 	cmp r4, #0x50
@@ -8749,7 +5193,7 @@ _0222B5A0:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B5F4 ; =ov74_0222BA48
 	ldr r1, [sp]
 	mov r2, #6
@@ -8929,7 +5373,7 @@ _0222B6AC:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B75C ; =ov74_0222BA48
 	add r1, r7, #0
 	mov r2, #6
@@ -9151,7 +5595,7 @@ _0222B8C0:
 	ldr r0, _0222B944 ; =0x00001854
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B948 ; =ov74_0222BA48
 	add r1, r6, #0
 	mov r2, #6
@@ -9295,7 +5739,7 @@ ov74_0222BA48: ; 0x0222BA48
 	ldr r0, [r5, #0xc]
 	beq _0222BA66
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, [r5, #0x30]
 	add sp, #0x24
 	sub r0, r0, #1
@@ -9303,7 +5747,7 @@ ov74_0222BA48: ; 0x0222BA48
 	pop {r4, r5, r6, r7, pc}
 _0222BA66:
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #0xc]
 	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
@@ -10123,7 +6567,7 @@ _0222C0DC:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0222C0EA:
 	cmp r6, #0
 	bne _0222C0F2
@@ -10253,13 +6697,13 @@ _0222C1CE:
 	str r1, [r0, #4]
 	ldr r0, _0222C2E4 ; =0x00003060
 	ldr r0, [r4, r0]
-	bl Sprite_GetVisibleFlag
+	bl Sprite_GetDrawFlag
 	cmp r0, #0
 	bne _0222C2D0
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222C2D0
 _0222C202:
 	mov r0, #7
@@ -10306,7 +6750,7 @@ _0222C250:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222C27E
 _0222C260:
 	cmp r5, #0x1e
@@ -10360,7 +6804,7 @@ _0222C2BC:
 	str r2, [r1]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 _0222C2D0:
 	add r0, r4, #0
@@ -11785,7 +8229,7 @@ ov74_0222CEC0: ; 0x0222CEC0
 	bl sub_02034DE0
 	ldr r0, _0222CEDC ; =ov74_0223D0A8
 	ldr r0, [r0, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203A914
 	ldr r0, _0222CEDC ; =ov74_0223D0A8
 	mov r1, #0
@@ -13380,7 +9824,7 @@ ov74_0222DB30: ; 0x0222DB30
 	add r3, r6, #0
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -13634,7 +10078,7 @@ _0222DD40:
 	cmp r0, #0
 	beq _0222DDD4
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222DDD4
 _0222DD6A:
 	ldr r0, [sp, #0xc]
@@ -13679,9 +10123,9 @@ _0222DD6A:
 	ldr r0, _0222DDF0 ; =0x00002DCC
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _0222DDD4:
 	ldr r0, [sp, #0xc]
 	add r4, r4, #2
@@ -15381,7 +11825,7 @@ _0222EBA0:
 	bl FreeBgTilemapBuffer
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222EC00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
@@ -15433,7 +11877,7 @@ ov74_0222EC08: ; 0x0222EC08
 	mov r1, #1
 	bl ov74_0222D824
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222EC54: .word 0x00003D54
@@ -16286,7 +12730,7 @@ ov74_0222F2D4: ; 0x0222F2D4
 	add r3, r6, #0
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -16535,7 +12979,7 @@ _0222F4E4:
 	cmp r0, #0
 	beq _0222F56E
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222F56E
 _0222F504:
 	ldr r0, [sp, #0xc]
@@ -16580,9 +13024,9 @@ _0222F504:
 	ldr r0, _0222F58C ; =0x00002D84
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _0222F56E:
 	ldr r0, [sp, #0xc]
 	add r4, r4, #2
@@ -17384,7 +13828,7 @@ _0222FBE8:
 	bl FreeBgTilemapBuffer
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222FC48 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
@@ -17434,7 +13878,7 @@ ov74_0222FC50: ; 0x0222FC50
 	mov r2, #0
 	bl ov74_0222F024
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222FC98: .word 0x00003D0C
@@ -22014,7 +18458,7 @@ ov74_02231E00: ; 0x02231E00
 	cmp r0, #0
 	bne _02231E34
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02231E34:
@@ -22147,9 +18591,9 @@ ov74_02231EC4: ; 0x02231EC4
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r1, #8
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_02231EC4
 
@@ -22243,7 +18687,7 @@ _02231FC0:
 	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 _02231FE4:
 	add r4, r4, #1
 	add r5, r5, r7
@@ -22330,7 +18774,7 @@ _02232016:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02232140 ; =0x0000E880
 	ldr r1, _02232144 ; =0x0000E884
 	ldr r0, [r6, r0]
@@ -22351,14 +18795,14 @@ _02232016:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0223210A
 _022320CC:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0223210A
 _022320DA:
 	mov r0, #0
@@ -22376,12 +18820,12 @@ _022320DA:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0223210A:
 	ldr r0, [sp, #0xc]
 	add r7, r7, #1
@@ -22393,7 +18837,7 @@ _0223210A:
 	b _02232016
 _0223211A:
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl NARC_Delete
 	ldr r1, _0223214C ; =ov74_02231FB0
@@ -22484,7 +18928,7 @@ _022321B2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r1, r4, #0
@@ -22531,7 +18975,7 @@ _0223221C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -22596,7 +19040,7 @@ ov74_02232284: ; 0x02232284
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x48]
 	add r0, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -22858,7 +19302,7 @@ ov74_022324A0: ; 0x022324A0
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _022324CC
-	bl Sprite_GetVisibleFlag
+	bl Sprite_GetDrawFlag
 	cmp r0, #0
 	bne _022324CC
 	add sp, #0x14
@@ -22989,7 +19433,7 @@ _0223256A:
 	bl Sprite_SetMatrix
 	ldr r0, [r5, r7]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0xf3
 	add r3, r4, r7
 	lsl r1, r1, #2
@@ -23022,7 +19466,7 @@ _022325F0:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r2, #0
 	mov r1, #0xf3
 	mvn r2, r2
@@ -23070,14 +19514,14 @@ _02232636:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _02232668
 _0223265C:
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02232668:
 	add r4, r4, #1
 	add r5, #0xc
@@ -23759,10 +20203,10 @@ _02232BE2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r5, r5, #1
 	add r4, #0xc
 	cmp r5, #0x1e
@@ -23774,7 +20218,7 @@ _02232BE2:
 _02232C06:
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r5, r5, #1
 	add r4, #0xc
 	cmp r5, #6
@@ -23783,17 +20227,17 @@ _02232C06:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r2, #0x61
 	lsl r2, r2, #2
 	add r0, sp, #0x1c
@@ -23833,7 +20277,7 @@ _02232C54:
 	ldr r0, _02232D94 ; =0x00000414
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0x3d
 	mov r2, #0xf3
 	lsl r1, r1, #4
@@ -23998,17 +20442,17 @@ _02232DCE:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xf3
 	mov r5, #0
 	lsl r0, r0, #2
@@ -24551,7 +20995,7 @@ ov74_02233230: ; 0x02233230
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	str r0, [r4, #0x10]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #0x10]
 	bl Save_PlayerData_GetOptionsAddr
@@ -24573,7 +21017,7 @@ ov74_02233230: ; 0x02233230
 	str r0, [r4, r1]
 	ldr r1, _022332E8 ; =0x0000047E
 	mov r0, #9
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _022332C6
@@ -25328,7 +21772,7 @@ ov74_022338D4: ; 0x022338D4
 	ldr r0, [r4, r0]
 	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223391C ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02233920 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
@@ -28727,7 +25171,7 @@ _02235182:
 	mov r0, #0
 	bl CTRDG_Enable
 	ldr r0, _022351F0 ; =ov74_02235138
-	ldr r1, _022351F4 ; =FreeToHeap
+	ldr r1, _022351F4 ; =Heap_Free
 	bl CRYPTO_SetAllocator
 	ldr r1, _022351E8 ; =0x000004A8
 	ldr r3, _022351F8 ; =_0223B690
@@ -28759,7 +25203,7 @@ _022351E4: .word ov74_0223CE9C
 _022351E8: .word 0x000004A8
 _022351EC: .word 0x08020000
 _022351F0: .word ov74_02235138
-_022351F4: .word FreeToHeap
+_022351F4: .word Heap_Free
 _022351F8: .word _0223B690
 	thumb_func_end ov74_0223514C
 
@@ -29701,7 +26145,7 @@ ov74_022358C8: ; 0x022358C8
 	bne _02235918
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sprite_GetVisibleFlag
+	bl Sprite_GetDrawFlag
 	cmp r0, #0
 	bne _022358FC
 	cmp r5, #0
@@ -29710,7 +26154,7 @@ ov74_022358C8: ; 0x022358C8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _022358FC:
 	mov r0, #0x82
 	lsl r0, r0, #2
@@ -29805,7 +26249,7 @@ _02235992:
 	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	add sp, #0x30
 	pop {r3, r4, r5, pc}
@@ -30377,7 +26821,7 @@ ov74_02235DC4: ; 0x02235DC4
 	lsl r3, r3, #8
 	bl BG_LoadScreenTilemapData
 	ldr r0, [sp, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -30453,7 +26897,7 @@ _02235EAE:
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -30483,7 +26927,7 @@ ov74_02235ED0: ; 0x02235ED0
 	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #4
 	bl OS_GetMacAddress
 	add r0, sp, #4
@@ -30518,7 +26962,7 @@ _02235F12:
 	add r3, r7, #0
 	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -30546,7 +26990,7 @@ ov74_02235F58: ; 0x02235F58
 	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	bl sub_02035754
 	ldrb r2, [r0, #4]
@@ -30593,7 +27037,7 @@ _02235FB2:
 	add r3, r7, #0
 	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -31923,7 +28367,7 @@ ov74_022369C8: ; 0x022369C8
 	beq _022369D6
 	sub r0, r1, #4
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 _022369D6:
 	pop {r3, pc}
 	thumb_func_end ov74_022369C8
@@ -32782,22 +29226,9 @@ _02237068: .word 0x0000FFFF
 
 	.rodata
 
-_0223B2C0:
-	.byte 0x06, 0x22, 0xDE, 0xFA, 0x9E, 0xBA, 0xDE, 0xFA, 0xFF, 0x00, 0x00, 0x00
-_0223B2CC:
-	.byte 0x70, 0x88, 0x20, 0xE0
-	.byte 0x98, 0xB0, 0x20, 0xE0, 0xFF, 0x00, 0x00, 0x00
-_0223B2D8:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-_0223B2E8:
-	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
-
 	.public gApp_MainMenu
 gApp_MainMenu:
-	.word ov74_MainMenu_AppInit, ov74_MainMenu_AppExec, ov74_MainMenu_AppExit, 0xFFFFFFFF
+	.word MainMenuApp_Init, MainMenuApp_Main, MainMenuApp_Exit, 0xFFFFFFFF
 gApp_MainMenu_SelectOption_ConnectToRanger:
 	.word ov74_02229200, ov74_02229294, ov74_02229450, 0xFFFFFFFF
 _0223B330:
@@ -33091,63 +29522,6 @@ _0223B760:
 	.byte 0x83, 0x01, 0x83, 0x01, 0x95, 0x01, 0x95, 0x01, 0x9B, 0x01, 0x9B, 0x01
 
 	.data
-
-_0223BBC0:
-	.byte 0x00, 0x00, 0x00, 0x00
-
-ov74_0223BBC4: ; 0x0223BBC4
-	.word msg_0442_00013
-	.word msg_0442_00014
-	.word msg_0442_00016
-	.word msg_0442_00015
-
-ov74_0223BBD4: ; 0x0223BBD4
-	.byte 0x05, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00
-	.byte 0x0E, 0x00, 0x00, 0x00, 0x20, 0x03, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-
-ov74_0223BBF0: ; 0x0223BBF0
-	.byte 0x81, 0x53, 0x83, 0x53, 0x85, 0x53, 0x87, 0x53, 0x89, 0x53, 0x8B, 0x53, 0x8D, 0x53, 0x8F, 0x53
-	.byte 0x91, 0x53, 0x93, 0x53, 0x95, 0x53, 0x97, 0x53, 0x99, 0x53, 0x9B, 0x53, 0x9D, 0x53, 0x9F, 0x53
-	.byte 0x9D, 0x53, 0x9B, 0x53, 0x99, 0x53, 0x97, 0x53, 0x95, 0x53, 0x93, 0x53, 0x91, 0x53, 0x8F, 0x53
-	.byte 0x8D, 0x53, 0x8B, 0x53, 0x89, 0x53, 0x87, 0x53, 0x85, 0x53, 0x83, 0x53, 0x00, 0x00, 0x00, 0x00
-
-ov74_0223BC30: ; 0x0223BC30
-	.byte 0x04, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00
-	.byte 0x01, 0x00, 0x00, 0x00
-
-ov74_0223BC44: ; 0x0223BC44
-	.byte 0x04, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
-	.byte 0x10, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00
-
-ov74_0223BC58: ; 0x0223BC58
-	.byte 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
-	.byte 0x18, 0x00, 0x00, 0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-
-ov74_0223BC6C: ; 0x0223BC6C
-	.byte 0x04, 0x00, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00, 0x12, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
-
-ov74_0223BC80: ; 0x0223BC80
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x0B, 0x00, 0x00, 0x00
-	.byte 0x05, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x0E, 0x00, 0x00, 0x00, 0x18, 0x00, 0x00, 0x00
-	.byte 0x03, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x13, 0x00, 0x00, 0x00
-	.byte 0x18, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00
-
-ov74_0223BCBC: ; 0x0223BCBC
-	; internal code, button height, button text, print function
-	.word 1, 10, msg_0442_00000, ov74_MainMenu_PrintContinueButton
-	.word 2,  4, msg_0442_00001, 0 ; New Game
-	.word 3,  4, msg_0442_00009, ov74_MainMenu_PrintConnectToPokewalkerButton
-	.word 4,  4, msg_0442_00002, ov74_MainMenu_PrintMysteryGiftButton
-	.word 5,  4, msg_0442_00003, ov74_MainMenu_PrintConnectToRangerButton
-	.word 6,  4, msg_0442_00000, ov74_MainMenu_PrintMigrateFromAgbButton ; 4, 5, 6, 7, or 8 depending on crtdg
-	.word 7,  4, msg_0442_00011, ov74_MainMenu_PrintConnectToWiiButton
-	.word 8,  4, msg_0442_00012, ov74_MainMenu_PrintNintendoWFCSetupButton
-	.word 9,  4, msg_0442_00010, ov74_MainMenu_PrintWiiMessageSettingsButton
-
-ov74_0223BD4C: ; 0x0223BD4C
-	.asciz "data/eoo.dat"
-	.balign 4, 0
 
 ov74_0223BD5C: ; 0x0223BD5C
 	.word 0x00150116 ; bitfield

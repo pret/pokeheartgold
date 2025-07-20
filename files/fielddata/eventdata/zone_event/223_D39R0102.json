@@ -118,42 +118,42 @@
     {
       "x": 6,
       "z": 21,
-      "header": "MAP_D39R0101",
+      "header": "MAP_ICE_PATH_1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 6,
       "z": 20,
-      "header": "MAP_D39R0101",
+      "header": "MAP_ICE_PATH_1F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 25,
       "z": 8,
-      "header": "MAP_D39R0103",
+      "header": "MAP_ICE_PATH_B2F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 27,
       "z": 40,
-      "header": "MAP_D39R0103",
+      "header": "MAP_ICE_PATH_B2F",
       "anchor": 4,
       "y": 0
     },
     {
       "x": 6,
       "z": 42,
-      "header": "MAP_D39R0101",
+      "header": "MAP_ICE_PATH_1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 6,
       "z": 41,
-      "header": "MAP_D39R0101",
+      "header": "MAP_ICE_PATH_1F",
       "anchor": 3,
       "y": 0
     }

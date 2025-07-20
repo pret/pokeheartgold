@@ -40,14 +40,14 @@
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_T22",
+      "header": "MAP_VIOLET",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_R36",
+      "header": "MAP_ROUTE_36",
       "anchor": 4,
       "y": 0
     }

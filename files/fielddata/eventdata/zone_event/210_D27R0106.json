@@ -74,21 +74,21 @@
     {
       "x": 4,
       "z": 5,
-      "header": "MAP_D27R0105",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_4F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 10,
       "z": 10,
-      "header": "MAP_D27R0107",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 10,
       "z": 9,
-      "header": "MAP_D27R0107",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM",
       "anchor": 0,
       "y": 0
     }

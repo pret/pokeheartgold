@@ -404,7 +404,7 @@ _021E5BEC:
 	add r0, r7, #0
 	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
-	bl FreeToHeap
+	bl Heap_Free
 _021E5C04:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -412,7 +412,7 @@ _021E5C04:
 	cmp r4, #4
 	blo _021E5BEC
 	ldr r0, [r6, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	ldr r1, [sp]
 	add r0, r0, #1
@@ -1435,7 +1435,7 @@ _021E63C2:
 	add r0, r4, #0
 	bl ov106_021E6668
 	ldr r0, [r4, #0xc]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -1450,7 +1450,7 @@ ov106_021E63E0: ; 0x021E63E0
 	bl ov106_021E6A34
 	ldr r0, [r4]
 	bl DoScheduledBgGpuUpdates
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 	ldr r3, _021E6400 ; =0x027E0000
 	ldr r1, _021E6404 ; =0x00003FF8
 	mov r0, #1
@@ -1588,7 +1588,7 @@ ov106_021E64FC: ; 0x021E64FC
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov106_021E64FC
 
@@ -1600,9 +1600,9 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, _021E661C ; =0x00000418
 	ldr r4, [r7, r0]
 	mov r0, #0x99
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	str r0, [r4, #8]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	add r2, sp, #0x3c
 	ldr r3, _021E6620 ; =ov106_021E6FC8
 	str r0, [r4, #0xc]
@@ -1627,7 +1627,7 @@ ov106_021E6520: ; 0x021E6520
 	str r0, [r3]
 	ldr r0, [r4, #8]
 	mov r3, #0x20
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r3, _021E6628 ; =ov106_021E6F5C
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}
@@ -1639,13 +1639,13 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	mov r2, #1
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	add r2, sp, #0x10
-	bl SpriteRenderer_Init2DGfxResManagersFromCountsArray
+	bl SpriteSystem_InitManagerWithCapacities
 	ldr r0, [r4, #8]
-	bl SpriteRenderer_GetG2dRendererPtr
+	bl SpriteSystem_GetRenderer
 	mov r2, #1
 	mov r1, #0
 	lsl r2, r2, #0x16
@@ -1658,7 +1658,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, _021E662C ; =0x0000C8E9
@@ -1667,7 +1667,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #1
@@ -1679,7 +1679,7 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl SpriteRenderer_LoadPlttResObjFromOpenNarc
+	bl SpriteSystem_LoadPlttResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1689,14 +1689,14 @@ ov106_021E6520: ; 0x021E6520
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, [r4, #4]
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
 	ldr r2, _021E6630 ; =ov106_021E7010
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	mov r1, #0
 	str r0, [r4, #0x10]
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	add r0, r7, #0
 	bl ov106_021E66FC
 	mov r0, #0x10
@@ -1722,7 +1722,7 @@ ov106_021E6634: ; 0x021E6634
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _021E664A
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	mov r0, #0
 	str r0, [r4, r5]
 _021E664A:
@@ -1737,9 +1737,9 @@ ov106_021E664C: ; 0x021E664C
 	bl ov106_021E6634
 	ldr r0, [r4, #8]
 	ldr r1, [r4, #0xc]
-	bl SpriteRenderer_UnloadResourcesAndRemoveGfxHandler
+	bl SpriteSystem_FreeResourcesAndManager
 	ldr r0, [r4, #8]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov106_021E664C
@@ -1750,7 +1750,7 @@ ov106_021E6668: ; 0x021E6668
 	ldr r0, [r0, #0x10]
 	cmp r0, #0
 	beq _021E6674
-	bl UnkImageStruct_TickSpriteAnimation1Frame
+	bl ManagedSprite_TickFrame
 _021E6674:
 	pop {r3, pc}
 	.balign 4, 0
@@ -1930,7 +1930,7 @@ _021E67A6:
 	cmp r7, #8
 	blo _021E67A6
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0]
@@ -1949,7 +1949,7 @@ _021E67FA:
 	mov r2, #0x20
 	bl ov106_021E6694
 	ldr r0, [sp, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2034,7 +2034,7 @@ ov106_021E68A8: ; 0x021E68A8
 	bl NARC_Delete
 	ldr r0, _021E68D8 ; =0x00000418
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #5
 	pop {r3, r4, r5, pc}
 	nop
@@ -2214,7 +2214,7 @@ ov106_021E69F0: ; 0x021E69F0
 	ldr r2, [r1, r2]
 	bl MIi_CpuCopy32
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -2634,7 +2634,7 @@ ov106_021E6CF8: ; 0x021E6CF8
 _021E6D0A:
 	ldr r0, [r4, #0x10]
 	ldr r1, [r5, #4]
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -2659,7 +2659,7 @@ _021E6D2E:
 	ldr r0, [r4, #0x10]
 	asr r1, r1, #0x10
 	asr r2, r2, #0x10
-	bl UnkImageStruct_SetSpritePositionXY
+	bl ManagedSprite_SetPositionXY
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2679,7 +2679,7 @@ ov106_021E6D48: ; 0x021E6D48
 _021E6D5A:
 	ldr r0, [r4, #0x10]
 	ldr r1, [r5, #4]
-	bl UnkImageStruct_SetSpritePriority
+	bl ManagedSprite_SetPriority
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop

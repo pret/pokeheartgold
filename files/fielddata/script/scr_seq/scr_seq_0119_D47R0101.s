@@ -41,7 +41,7 @@ _0062:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
+	warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -613,11 +613,11 @@ _0773:
 	call _08B7
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 1
 	safari_zone_action 0, 0
-	set_dynamic_warp MAP_D47R0101, 1, 5, 2, 1
+	set_dynamic_warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 1, 5, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
+	warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke
@@ -1015,11 +1015,11 @@ _0CCC:
 	call _08B7
 	setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE, 3
 	safari_zone_action 0, 1
-	set_dynamic_warp MAP_D47R0101, 2, 19, 2, 1
+	set_dynamic_warp MAP_SAFARI_ZONE_ENTRANCE_INTERIOR, 2, 19, 2, 1
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D47R0102, 0, 79, 100, DIR_NORTH
+	warp MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR, 0, 79, 100, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	lock obj_partner_poke

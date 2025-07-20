@@ -57,14 +57,14 @@
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_R32",
+      "header": "MAP_ROUTE_32",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_D24R0101",
+      "header": "MAP_RUINS_OF_ALPH",
       "anchor": 2,
       "y": 0
     }

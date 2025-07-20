@@ -10,7 +10,7 @@
 	scrdef_end
 
 scr_seq_R16_000:
-	scrcmd_186 1
+	set_bike_state_lock 1
 	setflag FLAG_UNK_149
 	end
 

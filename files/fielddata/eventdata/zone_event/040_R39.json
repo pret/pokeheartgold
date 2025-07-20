@@ -268,7 +268,7 @@
       "spriteId": "SPRITE_GSLEADER9",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_314",
+      "eventFlag": "FLAG_HIDE_ROUTE_39_LT_SURGE",
       "scriptId": "_EV_scr_seq_R39_007 + 1",
       "facingDirection": 0,
       "param0": 0,
@@ -285,14 +285,14 @@
     {
       "x": 265,
       "z": 164,
-      "header": "MAP_R39R0101",
+      "header": "MAP_ROUTE_39_MOOMOO_FARM_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 260,
       "z": 164,
-      "header": "MAP_R39R0201",
+      "header": "MAP_ROUTE_39_MOOMOO_FARM_STABLE",
       "anchor": 0,
       "y": 0
     }

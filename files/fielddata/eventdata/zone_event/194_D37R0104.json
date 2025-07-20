@@ -669,14 +669,14 @@
     {
       "x": 27,
       "z": 4,
-      "header": "MAP_D37R0101",
+      "header": "MAP_GOLDENROD_TUNNEL_1F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 26,
       "z": 14,
-      "header": "MAP_D37R0105",
+      "header": "MAP_GOLDENROD_TUNNEL_WAREHOUSE",
       "anchor": 0,
       "y": 0
     }

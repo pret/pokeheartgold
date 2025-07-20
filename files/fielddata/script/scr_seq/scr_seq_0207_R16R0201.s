@@ -16,7 +16,7 @@ scr_seq_R16R0201_003:
 	end
 
 _001F:
-	scrcmd_186 1
+	set_bike_state_lock 1
 	end
 
 scr_seq_R16R0201_001:
@@ -41,7 +41,7 @@ scr_seq_R16R0201_001:
 	end
 
 _006A:
-	scrcmd_186 1
+	set_bike_state_lock 1
 	setvar VAR_UNK_4129, 1
 	setvar VAR_UNK_412A, 1
 	setflag FLAG_UNK_149
@@ -59,7 +59,7 @@ _008C:
 	step_end
 
 scr_seq_R16R0201_002:
-	scrcmd_186 0
+	set_bike_state_lock 0
 	setvar VAR_UNK_4129, 0
 	setvar VAR_UNK_412A, 0
 	clearflag FLAG_UNK_149

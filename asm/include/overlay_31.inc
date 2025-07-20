@@ -35,7 +35,7 @@
 .public MenuInputStateMgr_GetState
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BG_LoadScreenTilemapData
@@ -60,7 +60,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetMoney
 .public Options_GetTextFrameDelay

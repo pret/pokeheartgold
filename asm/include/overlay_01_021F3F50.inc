@@ -18,7 +18,7 @@
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public AddWindowParameterized
 .public RemoveWindow
 .public CopyWindowToVram
@@ -28,7 +28,7 @@
 .public GF_AssertFail
 .public String_Delete
 .public SaveGameNormal
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetIGTAddr
 .public PlayerProfile_CountBadges
 .public Pokedex_CountDexOwned

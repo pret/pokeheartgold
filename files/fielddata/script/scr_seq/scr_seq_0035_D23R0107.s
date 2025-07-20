@@ -44,14 +44,14 @@ _0062:
 _0088:
 	npc_msg msg_0071_D23R0107_00000
 	closemsg
-	set_dynamic_warp MAP_D23R0106, 0, 5, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK, 0, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 0
 	goto _00C2
 
 _00A5:
 	npc_msg msg_0071_D23R0107_00001
 	closemsg
-	set_dynamic_warp MAP_D23R0105, 1, 5, 3, 1
+	set_dynamic_warp MAP_GOLDENROD_RADIO_TOWER_5F, 1, 5, 3, 1
 	setvar VAR_SPECIAL_x8004, 1
 	goto _00C2
 

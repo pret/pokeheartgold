@@ -10,10 +10,10 @@
 	scrdef_end
 
 scr_seq_R17_000:
-	scrcmd_186 1
+	set_bike_state_lock 1
 	end
 
 scr_seq_R17_001:
-	scrcmd_186 1
+	set_bike_state_lock 1
 	end
 	.balign 4, 0

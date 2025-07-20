@@ -79,7 +79,7 @@ _021E803C:
 	add r2, r4, #0
 	bl GF2DGfxResHeader_Init
 	ldr r0, [sp, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	add r6, r6, #2
 	add r0, r0, #1
@@ -169,7 +169,7 @@ _021E8102:
 	blo _021E8102
 _021E811A:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -213,7 +213,7 @@ _021E811A:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x20]
 	bl NARC_Delete
 	add sp, #0x30
@@ -525,7 +525,7 @@ _021E83CC:
 	bl ov01_021E847C
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
-	bl GF_PlttResObj_GetVramSlotNum
+	bl SpriteTransfer_GetPlttOffset
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 _021E83E4:
@@ -916,7 +916,7 @@ _021E86A2:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r6]
 	add r1, r5, r1
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	b _021E86EA
 _021E86E6:
 	bl GF_AssertFail

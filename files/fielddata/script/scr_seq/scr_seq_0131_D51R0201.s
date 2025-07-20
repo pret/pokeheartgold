@@ -768,7 +768,7 @@ _0AAA:
 	goto_if_ne _0AE5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 9, 24, DIR_SOUTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -778,7 +778,7 @@ _0AE5:
 	goto_if_ne _0B1C
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 9, 24, DIR_SOUTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -788,7 +788,7 @@ _0B1C:
 	goto_if_ne _0B53
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 9, 24, DIR_SOUTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -798,7 +798,7 @@ _0B53:
 	goto_if_ne _0B8A
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 9, 24, DIR_SOUTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _0BAE
@@ -806,7 +806,7 @@ _0B53:
 _0B8A:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 9, 24, DIR_SOUTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 9, 24, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _0BAE:

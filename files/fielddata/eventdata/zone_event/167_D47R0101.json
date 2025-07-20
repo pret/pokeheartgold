@@ -135,21 +135,21 @@
     {
       "x": 4,
       "z": 15,
-      "header": "MAP_D47",
+      "header": "MAP_SAFARI_ZONE_GATE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_D47R0102",
+      "header": "MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 19,
       "z": 2,
-      "header": "MAP_D47R0102",
+      "header": "MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR",
       "anchor": 0,
       "y": 0
     }

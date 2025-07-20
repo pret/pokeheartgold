@@ -7,7 +7,7 @@
 .public LoadFontPal0
 .public LoadFontPal1
 .public BlendPalette
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public StopSE
 .public OverlayManager_CreateAndGetData
@@ -78,7 +78,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -117,7 +117,7 @@
 .public SpriteList_Delete
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_CreateAffine
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetDrawPriority
@@ -133,7 +133,7 @@
 .public SaveSubstruct_UpdateCRC
 .public Save_SysInfo_GetField4C
 .public Save_SysInfo_SetField4C
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetNamePtr
 .public PlayerName_FlatToString
 .public PlayerProfile_GetTrainerID

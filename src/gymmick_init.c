@@ -58,7 +58,7 @@ void InitVermilionGym(FieldSystem *fieldSystem) {
     Save_Gymmick_Init(gymmick, GYMMICK_VERMILION);
 
     GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VERMILION);
-    if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(fieldSystem->saveData), BADGE_THUNDER)) {
+    if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(fieldSystem->saveData), BADGE_THUNDER)) {
         data->vermilion.switches[0] = 0;
         data->vermilion.switches[1] = 0;
         data->vermilion.gates[0] = 1;

@@ -941,7 +941,7 @@ scr_seq_D32_033:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D32R0401, 0, 25, 9, DIR_WEST
+	warp MAP_BATTLE_FRONTIER_BATTLE_HALL, 0, 25, 9, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -961,7 +961,7 @@ scr_seq_D32_034:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D32R0501, 0, 21, 9, DIR_WEST
+	warp MAP_BATTLE_FRONTIER_BATTLE_CASTLE, 0, 21, 9, DIR_WEST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -981,7 +981,7 @@ scr_seq_D32_035:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D32R0601, 0, 1, 6, DIR_EAST
+	warp MAP_BATTLE_FRONTIER_BATTLE_ARCADE, 0, 1, 6, DIR_EAST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall
@@ -1001,7 +1001,7 @@ scr_seq_D32_036:
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D32R0301, 0, 1, 7, DIR_EAST
+	warp MAP_BATTLE_FRONTIER_BATTLE_FACTORY, 0, 1, 7, DIR_EAST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

@@ -6,14 +6,14 @@
 .public StopSE
 .public MenuInputStateMgr_SetState
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_TestBadgeFlag
 .public Save_Daycare_Get
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped
 .public GameStats_AddScore
-.public SaveData_GetMomsSavingsAddr
+.public SaveData_GetPhoneCallPersistentState
 .public sub_0202F08C
 .public Save_SafariZone_Get
 .public sub_0202F620
@@ -64,7 +64,7 @@
 .public ApplyPoisonStep
 .public sub_02054874
 .public sub_020548C0
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public MapModel_IsHeadbuttTree
 .public MapCoordToMatrixIndex
 .public PalPark_TryEncounter
@@ -116,7 +116,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205CA38
+.public PlayerAvatar_CheckFlag0
 .public PlayerAvatar_CheckRunningShoesLock
 .public sub_0205CF44
 .public sub_0205CF60
@@ -167,7 +167,7 @@
 .public ov01_021E7F54
 .public FieldSystem_FacingModelIsHeadbuttTree
 .public ov01_021F1D94
-.public Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+.public Field_PlayerCanSurfOnTile
 .public MetatileBehavior_IsRockClimbInDirection
 .public ov01_021F3114
 .public ov01_021F6830

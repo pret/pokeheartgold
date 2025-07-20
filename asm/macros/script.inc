@@ -1090,9 +1090,16 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_186 arg0
+	; If `lock` is 1, the player's bike state will
+	; be locked, meaning they cannot mount or
+	; dismount their bike; otherwise, if `lock` is
+	; any other value, the bike state will be
+	; unlocked. The main use for this command was
+	; to block the player from dismounting their
+	; bike while they were on Cycling Road.
+	.macro set_bike_state_lock lock
 	.short 186
-	.byte \arg0
+	.byte \lock
 	.endm
 
 	; Get the player's overworld state.

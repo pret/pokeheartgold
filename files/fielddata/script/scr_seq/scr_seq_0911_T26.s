@@ -28,20 +28,14 @@ scr_seq_T26_002:
 	goto_if_ne _0057
 	setvar VAR_UNK_40F8, 2
 _0057:
-	setvar VAR_SPECIAL_x8004, 1
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 2
-	callstd std_phone_call
+	phone_call PHONE_CONTACT_PROF__ELM, 2, 2
 	setvar VAR_MIDGAME_BADGES, 5
 	end
 
 scr_seq_T26_003:
 	setflag FLAG_UNK_0F5
 	setvar VAR_UNK_4057, 1
-	setvar VAR_SPECIAL_x8004, 24
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 0
-	callstd std_phone_call
+	phone_call PHONE_CONTACT_BAOBA, 2, 0
 	setflag FLAG_UNK_249
 	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 3
 	end

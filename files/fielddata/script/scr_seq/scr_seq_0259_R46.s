@@ -14,7 +14,7 @@ scr_seq_R46_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_079, _002C
+	goto_if_set FLAG_GAVE_RIVAL_NAME_TO_OFFICER, _002C
 	npc_msg msg_0406_R46_00002
 	wait_button_or_walk_away
 	closemsg

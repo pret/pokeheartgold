@@ -24,7 +24,7 @@ BOOL ScrCmd_395(ScriptContext *ctx) {
         *retPtr = 255;
     }
 
-    FreeToHeap(*runningAppData);
+    Heap_Free(*runningAppData);
     *runningAppData = NULL;
     return FALSE;
 }
@@ -36,7 +36,7 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
     *retPtr = MoveRelearner_IsValidMove(eligibleMoves);
-    FreeToHeap(eligibleMoves);
+    Heap_Free(eligibleMoves);
     return FALSE;
 }
 
@@ -46,14 +46,14 @@ static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
-    moveRelearner->profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    moveRelearner->profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     moveRelearner->options = Save_PlayerData_GetOptionsAddr(ctx->fieldSystem->saveData);
     moveRelearner->eligibleMoves = eligibleMoves;
     moveRelearner->type = type;
 
     MoveRelearner_LaunchApp(ctx->fieldSystem, moveRelearner);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
-    FreeToHeap(eligibleMoves);
+    Heap_Free(eligibleMoves);
 }
 
 BOOL ScrCmd_MoveRelearner(ScriptContext *ctx) {

@@ -302,49 +302,49 @@
     {
       "x": 1201,
       "z": 237,
-      "header": "MAP_T07R0101",
+      "header": "MAP_CELADON_DEPARTMENT_STORE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1218,
       "z": 237,
-      "header": "MAP_T07R0201",
+      "header": "MAP_CELADON_CONDOMINIUMS_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1231,
       "z": 237,
-      "header": "MAP_T07PC0101",
+      "header": "MAP_CELADON_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1218,
       "z": 249,
-      "header": "MAP_T07SP0101",
+      "header": "MAP_CELADON_GAME_CORNER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1223,
       "z": 249,
-      "header": "MAP_T07R0501",
+      "header": "MAP_CELADON_PRIZE_CORNER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1201,
       "z": 266,
-      "header": "MAP_T07GYM0101",
+      "header": "MAP_CELADON_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1225,
       "z": 261,
-      "header": "MAP_T07R0701",
+      "header": "MAP_CELADON_RESTAURANT",
       "anchor": 0,
       "y": 0
     }

@@ -201,42 +201,42 @@
     {
       "x": 374,
       "z": 238,
-      "header": "MAP_R36R0201",
+      "header": "MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 374,
       "z": 237,
-      "header": "MAP_R36R0201",
+      "header": "MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 430,
       "z": 252,
-      "header": "MAP_R36R0101",
+      "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 431,
       "z": 252,
-      "header": "MAP_R36R0101",
+      "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 447,
       "z": 246,
-      "header": "MAP_T22R0701",
+      "header": "MAP_VIOLET_ROUTE_36_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 447,
       "z": 247,
-      "header": "MAP_T22R0701",
+      "header": "MAP_VIOLET_ROUTE_36_GATEHOUSE",
       "anchor": 1,
       "y": 0
     }

@@ -29,10 +29,10 @@ ov01_021E90C0: ; 0x021E90C0
 
 	thumb_func_start ov01_021E90D4
 ov01_021E90D4: ; 0x021E90D4
-	ldr r3, _021E90D8 ; =FreeToHeap
+	ldr r3, _021E90D8 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021E90D8: .word FreeToHeap
+_021E90D8: .word Heap_Free
 	thumb_func_end ov01_021E90D4
 
 	thumb_func_start ov01_021E90DC
@@ -139,7 +139,7 @@ _021E9190:
 	blt _021E915E
 _021E9198:
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _021E91F4
@@ -443,7 +443,7 @@ _021E9412:
 	blt _021E93E0
 _021E941A:
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _021E9476
@@ -1290,7 +1290,7 @@ ov01_021E9ABC: ; 0x021E9ABC
 	cmp r0, #0
 	beq _021E9AE4
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021E9AE4:
@@ -1360,7 +1360,7 @@ _021E9B5A:
 	blt _021E9B28
 _021E9B62:
 	ldr r0, [sp, #0x1c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _021E9BB0
@@ -1596,7 +1596,7 @@ _021E9D2A:
 	blt _021E9CF8
 _021E9D32:
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x24]
 	cmp r0, #0
 	beq _021E9D88
@@ -1840,7 +1840,7 @@ _021E9F48:
 	cmp r0, #0
 	beq _021E9F5C
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, pc}
@@ -1905,7 +1905,7 @@ _021E9FCA:
 	cmp r0, #0
 	beq _021E9FDE
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -2057,7 +2057,7 @@ _021EA0F0:
 	cmp r1, r0
 	bne _021EA110
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2165,7 +2165,7 @@ _021EA1DA:
 	cmp r0, #0
 	beq _021EA1EE
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -2268,7 +2268,7 @@ _021EA28E:
 	bl ov01_021EA564
 	ldr r1, [r4]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -2614,7 +2614,7 @@ _021EA502:
 _021EA54E:
 	ldr r1, [sp, #0x14]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	ldr r0, [sp, #8]
 	add sp, #0x1fc
 	add sp, #0x20
@@ -2629,7 +2629,7 @@ ov01_021EA564: ; 0x021EA564
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}

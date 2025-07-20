@@ -260,42 +260,42 @@
     {
       "x": 10,
       "z": 13,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 15,
       "z": 19,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 8,
       "z": 29,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 8,
       "y": 0
     },
     {
       "x": 56,
       "z": 13,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 46,
       "z": 27,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 35,
       "z": 33,
-      "header": "MAP_D03R0101",
+      "header": "MAP_CERULEAN_CAVE_1F",
       "anchor": 4,
       "y": 0
     }

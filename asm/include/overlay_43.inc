@@ -86,7 +86,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -133,14 +133,14 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_ResetAnimCtrlState
-.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_GetAnimationFrame
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
-.public Sprite_IsCellAnimationRunning
+.public Sprite_IsAnimated
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
@@ -152,7 +152,7 @@
 .public String_atoi
 .public CopyU16ArrayToString
 .public String_cstr
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
 .public Save_Profile_PlayerName_Set

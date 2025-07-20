@@ -8,9 +8,9 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetScale
-.public Sprite_SetVisibleFlag
-.public Sprite_SetAffineOverwriteType
+.public Sprite_SetAffineScale
+.public Sprite_SetDrawFlag
+.public Sprite_SetAffineOverwriteMode
 .public Sprite_SetOamMode
 .public G2x_SetBlendAlpha_
 .public memset

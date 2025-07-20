@@ -395,14 +395,14 @@
     {
       "x": 1172,
       "z": 102,
-      "header": "MAP_D02R0101",
+      "header": "MAP_MOUNT_MOON",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1167,
       "z": 106,
-      "header": "MAP_R03PC0101",
+      "header": "MAP_ROUTE_3_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     }

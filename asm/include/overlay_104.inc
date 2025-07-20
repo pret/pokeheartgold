@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -15,7 +15,7 @@
 .public HBlankInterruptDisable
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public GF3dRender_InitObjFromHeader
 .public GF3dRender_DrawModel

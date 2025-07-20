@@ -268,42 +268,42 @@
     {
       "x": 32,
       "z": 77,
-      "header": "MAP_R02R0401",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_SOUTH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 12,
       "z": 15,
-      "header": "MAP_R02R0501",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 33,
       "z": 77,
-      "header": "MAP_R02R0401",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_SOUTH_GATEHOUSE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 13,
       "z": 15,
-      "header": "MAP_R02R0501",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 12,
       "z": 16,
-      "header": "MAP_R02R0501",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 13,
       "z": 16,
-      "header": "MAP_R02R0501",
+      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
       "anchor": 0,
       "y": 0
     }

@@ -1592,7 +1592,7 @@ _02010BCC:
 	str r0, [r5, #0xc]
 	b _02010BF0
 _02010BDC:
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -2003,7 +2003,7 @@ sub_02010ED0: ; 0x02010ED0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -3090,7 +3090,7 @@ _020116B4:
 	b _020116E6
 _020116D0:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -3184,7 +3184,7 @@ _0201175C:
 	b _0201179A
 _02011784:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r7, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -3381,7 +3381,7 @@ _020118F0:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -3758,7 +3758,7 @@ _02011BC8:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -4020,7 +4020,7 @@ _02011DCC:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -4354,7 +4354,7 @@ _02012064:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -4550,7 +4550,7 @@ sub_020121F4: ; 0x020121F4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #0xc]
 	pop {r4, pc}
@@ -4725,7 +4725,7 @@ _0201232C:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -5145,7 +5145,7 @@ _02012660:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -5498,7 +5498,7 @@ _0201291A:
 	add r0, r4, #0
 	bl sub_02012A8C
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]
@@ -5864,7 +5864,7 @@ _02012BAE:
 	str r0, [r5, #0xc]
 	b _02012BDE
 _02012BC4:
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]

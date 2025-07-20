@@ -103,7 +103,7 @@ BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls) {
 }
 
 BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
     setup->saveData = fieldSystem->saveData;
@@ -128,7 +128,7 @@ BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
         Party_AddMon(setup->party[BATTLER_PLAYER], pokemon);
         CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
         Party_AddMon(setup->party[BATTLER_ENEMY], pokemon);
-        FreeToHeap(pokemon);
+        Heap_Free(pokemon);
     }
     setup->unk1CC[BATTLER_PLAYER] = 0;
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
@@ -145,25 +145,25 @@ void BattleSetup_Delete(BattleSetup *setup) {
 
     for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->party[i] != NULL);
-        FreeToHeap(setup->party[i]);
+        Heap_Free(setup->party[i]);
     }
 
     for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->profile[i] != NULL);
-        FreeToHeap(setup->profile[i]);
+        Heap_Free(setup->profile[i]);
     }
 
     for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->chatot[i] != NULL);
-        FreeToHeap(setup->chatot[i]);
+        Heap_Free(setup->chatot[i]);
     }
 
-    FreeToHeap(setup->bag);
-    FreeToHeap(setup->pokedex);
-    FreeToHeap(setup->options);
+    Heap_Free(setup->bag);
+    Heap_Free(setup->pokedex);
+    Heap_Free(setup->options);
     sub_02067A78(setup->unk_134);
-    FreeToHeap(setup->bugContestMon);
-    FreeToHeap(setup);
+    Heap_Free(setup->bugContestMon);
+    Heap_Free(setup);
 }
 
 void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battlerId) {
@@ -196,7 +196,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     BOOL forceNite;
     BattleBg battle_bg;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     bag = Save_Bag_Get(saveData);
     pokedex = Save_Pokedex_Get(saveData);
@@ -239,7 +239,7 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     setup->evolutionLocation = MapHeader_GetMapEvolutionMethod(mapno);
     setup->unk_164 = sub_02088288(saveData);
     setup->metBill = CheckMetBill(Save_VarsFlags_Get(saveData));
-    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_GET, 0) < 999999) {
+    if (PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_GET, 0) < 999999) {
         setup->momsSavingsActive = Save_VarsFlags_MomsSavingsFlagCheck(Save_VarsFlags_Get(saveData));
     } else {
         setup->momsSavingsActive = FALSE;
@@ -267,7 +267,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     SOUND_CHATOT *chatot;
     Options *options;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
@@ -289,7 +289,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
         }
         BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
     }
-    FreeToHeap(pokemon);
+    Heap_Free(pokemon);
 
     Save_Bag_Copy(bag, setup->bag);
     Pokedex_Copy(pokedex, setup->pokedex);
@@ -315,7 +315,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     Options *options;
     void *ruleset;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
     chatot = Save_Chatot_Get(fieldSystem->saveData);
@@ -356,7 +356,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
             }
             BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
         }
-        FreeToHeap(pokemon);
+        Heap_Free(pokemon);
     }
 
     if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_DRAGON_RAGE_CLAUSE)) {
@@ -393,19 +393,19 @@ void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots
 
 static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2) {
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
-    MomsSavings *savings = SaveData_GetMomsSavingsAddr(fieldSystem->saveData);
+    PhoneCallPersistentState *savings = SaveData_GetPhoneCallPersistentState(fieldSystem->saveData);
 
     if (Save_VarsFlags_MomsSavingsFlagCheck(vars_flags)) {
         u32 money2 = PlayerProfile_GetMoney(profile2);
         int delta = (int)(money2 - PlayerProfile_GetMoney(profile1)) / 4;
-        u32 savingsBalance = MomSavingsBalanceAction(savings, MOMS_BALANCE_GET, 0);
+        u32 savingsBalance = PhoneCallPersistentState_MomSavings_BalanceAction(savings, MOMS_BALANCE_GET, 0);
         u32 balanceResult;
         if (delta > 0) {
             if (savingsBalance + delta >= 999999) {
                 delta = 999999 - savingsBalance;
             }
             PlayerProfile_SetMoney(profile2, money2 - delta);
-            balanceResult = MomSavingsBalanceAction(savings, MOMS_BALANCE_ADD, delta);
+            balanceResult = PhoneCallPersistentState_MomSavings_BalanceAction(savings, MOMS_BALANCE_ADD, delta);
         } else {
             balanceResult = savingsBalance;
         }
@@ -423,7 +423,7 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     SaveVarsFlags *vars_flags;
     u16 *balls_ptr;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
@@ -452,7 +452,7 @@ void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem) {
     Bag *bag;
     Pokedex *pokedex;
 
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     party = SaveArray_Party_Get(fieldSystem->saveData);
     bag = Save_Bag_Get(fieldSystem->saveData);
     pokedex = Save_Pokedex_Get(fieldSystem->saveData);
@@ -487,7 +487,7 @@ static const Terrain _020FC4C0[] = {
 };
 
 static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg) {
-    u8 behavior = GetMetatileBehaviorAt(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
+    u8 behavior = GetMetatileBehavior(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
     if (sub_0205B828(behavior)) {
         return TERRAIN_ICE;

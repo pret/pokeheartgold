@@ -14,7 +14,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes
 .public Save_PlayerData_GetOptionsAddr

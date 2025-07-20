@@ -579,7 +579,7 @@ _021EDF08:
 	bl DestroyMsgData
 _021EDF2E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EDF00
@@ -1446,7 +1446,7 @@ _021EE5BE:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE5CC: .word SEQ_SE_DP_SELECT
@@ -1730,7 +1730,7 @@ _021EE80A:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021EE816:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -1740,20 +1740,20 @@ _021EE818: .word 0x0000FFFF
 	thumb_func_start MapNumToFloorNo
 MapNumToFloorNo: ; 0x021EE81C
 	push {r3, lr}
-	ldr r1, _021EE92C ; =MAP_T07R0104
+	ldr r1, _021EE92C ; =MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r1
 	bgt _021EE878
 	bge _021EE906
-	cmp r0, #MAP_D27R0107
+	cmp r0, #MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM
 	bgt _021EE860
 	bge _021EE8D2
-	cmp r0, #MAP_D27R0101
+	cmp r0, #MAP_OLIVINE_LIGHTHOUSE_1F
 	bgt _021EE834
 	beq _021EE8CE
 	b _021EE922
 _021EE834:
 	add r1, r0, #0
-	sub r1, #MAP_D23R0105
+	sub r1, #MAP_GOLDENROD_RADIO_TOWER_5F
 	cmp r1, #0xb
 	bhi _021EE922
 	add r1, r1, r1
@@ -1763,72 +1763,72 @@ _021EE834:
 	asr r1, r1, #0x10
 	add pc, r1
 _021EE848: ; jump table
-	.short _021EE8C6 - _021EE848 - 2 ; case MAP_D23R0105
-	.short _021EE8CA - _021EE848 - 2 ; case MAP_D23R0106
-	.short _021EE8DE - _021EE848 - 2 ; case MAP_T25R1001
-	.short _021EE8E2 - _021EE848 - 2 ; case MAP_T25R1002
-	.short _021EE8E6 - _021EE848 - 2 ; case MAP_T25R1003
-	.short _021EE8EA - _021EE848 - 2 ; case MAP_T25R1004
-	.short _021EE8EE - _021EE848 - 2 ; case MAP_T25R1005
-	.short _021EE8F2 - _021EE848 - 2 ; case MAP_T25R1006
-	.short _021EE922 - _021EE848 - 2 ; case MAP_T25R0501
-	.short _021EE922 - _021EE848 - 2 ; case MAP_T25R0502
-	.short _021EE922 - _021EE848 - 2 ; case MAP_D37R0102
-	.short _021EE8F6 - _021EE848 - 2 ; case MAP_D37R0103
+	.short _021EE8C6 - _021EE848 - 2 ; case MAP_GOLDENROD_RADIO_TOWER_5F
+	.short _021EE8CA - _021EE848 - 2 ; case MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK
+	.short _021EE8DE - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_1F
+	.short _021EE8E2 - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_2F
+	.short _021EE8E6 - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_3F
+	.short _021EE8EA - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_4F
+	.short _021EE8EE - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_5F
+	.short _021EE8F2 - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_6F
+	.short _021EE922 - _021EE848 - 2 ; case MAP_GOLDENROD_MAGNET_TRAIN_STATION_1F
+	.short _021EE922 - _021EE848 - 2 ; case MAP_GOLDENROD_MAGNET_TRAIN_STATION_2F
+	.short _021EE922 - _021EE848 - 2 ; case MAP_GOLDENROD_TUNNEL_B1F
+	.short _021EE8F6 - _021EE848 - 2 ; case MAP_GOLDENROD_DEPARTMENT_STORE_BASEMENT
 _021EE860:
-	ldr r1, _021EE930 ; =MAP_T07R0102
+	ldr r1, _021EE930 ; =MAP_CELADON_DEPARTMENT_STORE_2F
 	cmp r0, r1
 	bgt _021EE870
 	bge _021EE8FE
-	sub r1, r1, #MAP_T07R0102-MAP_T07R0101
+	sub r1, r1, #MAP_CELADON_DEPARTMENT_STORE_2F-MAP_CELADON_DEPARTMENT_STORE_1F
 	cmp r0, r1
 	beq _021EE8FA
 	b _021EE922
 _021EE870:
-	add r1, r1, #MAP_T07R0103-MAP_T07R0102
+	add r1, r1, #MAP_CELADON_DEPARTMENT_STORE_3F-MAP_CELADON_DEPARTMENT_STORE_2F
 	cmp r0, r1
 	beq _021EE902
 	b _021EE922
 _021EE878:
-	add r2, r1, #MAP_T07R0202-MAP_T07R0104
+	add r2, r1, #MAP_CELADON_CONDOMINIUMS_2F-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r2
 	bgt _021EE898
 	bge _021EE916
-	add r2, r1, #MAP_T07R0106-MAP_T07R0104
+	add r2, r1, #MAP_CELADON_DEPARTMENT_STORE_ROOF-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r2
 	bgt _021EE890
 	bge _021EE90E
-	add r1, r1, #MAP_T07R0105-MAP_T07R0104
+	add r1, r1, #MAP_CELADON_DEPARTMENT_STORE_5F-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r1
 	beq _021EE90A
 	b _021EE922
 _021EE890:
-	add r1, r1, #MAP_T07R0201-MAP_T07R0104
+	add r1, r1, #MAP_CELADON_CONDOMINIUMS_1F-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r1
 	beq _021EE912
 	b _021EE922
 _021EE898:
 	add r2, r1, #0
-	add r2, #MAP_T11R0701-MAP_T07R0104
+	add r2, #MAP_SAFFRON_SILPH_CO_HQ-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r2
 	bgt _021EE8BE
 	add r2, r1, #0
-	add r2, #MAP_T11R0701-MAP_T07R0104
+	add r2, #MAP_SAFFRON_SILPH_CO_HQ-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r2
 	bge _021EE8D6
-	add r2, r1, #MAP_T07R0204-MAP_T07R0104
+	add r2, r1, #MAP_CELADON_CONDOMINIUMS_ROOF-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r2
 	bgt _021EE922
-	add r2, r1, #MAP_T07R0203-MAP_T07R0104
+	add r2, r1, #MAP_CELADON_CONDOMINIUMS_3F-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r2
 	blt _021EE922
 	beq _021EE91A
-	add r1, r1, #MAP_T07R0204-MAP_T07R0104
+	add r1, r1, #MAP_CELADON_CONDOMINIUMS_ROOF-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r1
 	beq _021EE91E
 	b _021EE922
 _021EE8BE:
-	add r1, #MAP_T11R0702-MAP_T07R0104
+	add r1, #MAP_SAFFRON_SILPH_CO_ROTOM_ROOM-MAP_CELADON_DEPARTMENT_STORE_4F
 	cmp r0, r1
 	beq _021EE8DA
 	b _021EE922
@@ -1906,8 +1906,8 @@ _021EE922:
 	mov r0, #0
 	pop {r3, pc}
 	nop
-_021EE92C: .word MAP_T07R0104
-_021EE930: .word MAP_T07R0102
+_021EE92C: .word MAP_CELADON_DEPARTMENT_STORE_4F
+_021EE930: .word MAP_CELADON_DEPARTMENT_STORE_2F
 	thumb_func_end MapNumToFloorNo
 
 	thumb_func_start ov01_021EE934
@@ -2210,7 +2210,7 @@ MoneyBoxSys_Update: ; 0x021EEB4C
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetMoney
 	add r2, r0, #0
 	mov r0, #1
@@ -2565,10 +2565,10 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	mov r1, #0
 	add r2, r1, #0
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -2597,7 +2597,7 @@ ov01_021EEE44: ; 0x021EEE44
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	ldr r0, [r7, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetMoney
 	mov r1, #0
 	add r2, r0, #0

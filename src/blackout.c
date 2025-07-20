@@ -98,8 +98,8 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
 
     AddWindow(env->bgConfig, &env->window, &sBlackoutWindowTemplate);
 
-    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem)));
-    if (fieldSystem->location->mapId == MAP_T20R0201) {
+    BufferPlayersName(env->msgFmt, 0, Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem)));
+    if (fieldSystem->location->mapId == MAP_NEW_BARK_PLAYER_HOUSE_1F) {
         // {STRVAR_1 3, 0, 0} scurried back home, protecting the exhausted and fainted Pokémon from further harm...
         Blackout_PrintMessage(env, msg_0203_00004, 0, 0);
     } else {
@@ -149,8 +149,8 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
         MessageFormat_Delete(env->msgFmt);
         DestroyMsgData(env->msgData);
         FreeBgTilemapBuffer(env->bgConfig, GF_BG_LYR_MAIN_3);
-        FreeToHeap(env->bgConfig);
-        FreeToHeap(env);
+        Heap_Free(env->bgConfig);
+        Heap_Free(env);
         return TRUE;
     }
 

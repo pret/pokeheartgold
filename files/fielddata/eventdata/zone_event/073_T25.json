@@ -461,119 +461,119 @@
     {
       "x": 358,
       "z": 325,
-      "header": "MAP_R35R0101",
+      "header": "MAP_ROUTE_35_GOLDENROD_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 359,
       "z": 325,
-      "header": "MAP_R35R0101",
+      "header": "MAP_ROUTE_35_GOLDENROD_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 366,
       "z": 334,
-      "header": "MAP_T25GYM0101",
+      "header": "MAP_GOLDENROD_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 370,
       "z": 374,
-      "header": "MAP_T25R0201",
+      "header": "MAP_GOLDENROD_BIKE_SHOP",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 371,
       "z": 332,
-      "header": "MAP_T25R0601",
+      "header": "MAP_GOLDENROD_FLOWER_SHOP",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 352,
       "z": 368,
-      "header": "MAP_T25PC0101",
+      "header": "MAP_GOLDENROD_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 351,
       "z": 360,
-      "header": "MAP_T25SP0101",
+      "header": "MAP_GOLDENROD_GAME_CORNER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 342,
       "z": 349,
-      "header": "MAP_D23R0101",
+      "header": "MAP_GOLDENROD_RADIO_TOWER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 365,
       "z": 368,
-      "header": "MAP_T25R1001",
+      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 348,
       "z": 349,
-      "header": "MAP_T25R0501",
+      "header": "MAP_GOLDENROD_MAGNET_TRAIN_STATION_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 347,
       "z": 334,
-      "header": "MAP_D37R0101",
+      "header": "MAP_GOLDENROD_TUNNEL_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 347,
       "z": 374,
-      "header": "MAP_D37R0101",
+      "header": "MAP_GOLDENROD_TUNNEL_1F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 341,
       "z": 366,
-      "header": "MAP_T25R0401",
+      "header": "MAP_GOLDENROD_BILLS_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 373,
       "z": 362,
-      "header": "MAP_T25R0301",
+      "header": "MAP_GOLDENROD_FRIENDSHIP_CHECKER_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 376,
       "z": 335,
-      "header": "MAP_T25R0801",
+      "header": "MAP_GOLDENROD_NORTHEAST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 352,
       "z": 334,
-      "header": "MAP_T25R0901",
+      "header": "MAP_GOLDENROD_NAME_RATER_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 316,
       "z": 348,
-      "header": "MAP_T25R1201",
+      "header": "MAP_GOLDENROD_GLOBAL_TERMINAL_1F",
       "anchor": 0,
       "y": 0
     }

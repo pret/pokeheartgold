@@ -5,7 +5,7 @@
 .public GetECWordIndexByPair
 .public GetCategoryAndMsgNoByECWordIdx
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public String_New
 .public CopyU16ArrayToStringN
@@ -16,7 +16,7 @@
 .public Save_CheckExtraChunksExist
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_Get
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

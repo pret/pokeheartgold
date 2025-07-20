@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public FreeToHeap
+.public Heap_Free
 .public TaskManager_Jump
 .public FieldSystem_ApplicationIsRunning
-.public sub_020505C0
+.public FieldSystem_LoadFieldOverlay
 .public sub_020505C8
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment

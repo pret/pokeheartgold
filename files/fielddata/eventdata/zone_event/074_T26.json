@@ -209,63 +209,63 @@
     {
       "x": 269,
       "z": 238,
-      "header": "MAP_T26GYM0101",
+      "header": "MAP_OLIVINE_GYM",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 272,
       "z": 257,
-      "header": "MAP_T26PC0101",
+      "header": "MAP_OLIVINE_POKECENTER_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 285,
       "z": 257,
-      "header": "MAP_T26FS0101",
+      "header": "MAP_OLIVINE_POKEMART",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 301,
       "z": 263,
-      "header": "MAP_D27R0101",
+      "header": "MAP_OLIVINE_LIGHTHOUSE_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 273,
       "z": 247,
-      "header": "MAP_T26R0601",
+      "header": "MAP_OLIVINE_NORTHWEST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 265,
       "z": 257,
-      "header": "MAP_T26R0701",
+      "header": "MAP_OLIVINE_CAFE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 287,
       "z": 241,
-      "header": "MAP_T26R0301",
+      "header": "MAP_OLIVINE_NORTH_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 292,
       "z": 241,
-      "header": "MAP_T26R0501",
+      "header": "MAP_OLIVINE_NORTHEAST_HOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 279,
       "z": 276,
-      "header": "MAP_P01R0101",
+      "header": "MAP_SS_AQUA_OLIVINE_PORT_INTERIOR",
       "anchor": 0,
       "y": 0
     }

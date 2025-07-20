@@ -40,28 +40,28 @@
     {
       "x": 5,
       "z": 11,
-      "header": "MAP_D39R0103",
+      "header": "MAP_ICE_PATH_B2F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 5,
       "z": 10,
-      "header": "MAP_D39R0103",
+      "header": "MAP_ICE_PATH_B2F",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 24,
       "z": 12,
-      "header": "MAP_D39R0103",
+      "header": "MAP_ICE_PATH_B2F",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 24,
       "z": 11,
-      "header": "MAP_D39R0103",
+      "header": "MAP_ICE_PATH_B2F",
       "anchor": 3,
       "y": 0
     }

@@ -20,8 +20,8 @@ void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
 
 void GF_DestroyVramTransferManager(void) {
     GF_ASSERT(sVramTransferManager != NULL);
-    FreeToHeap(sVramTransferManager->tasks);
-    FreeToHeap(sVramTransferManager);
+    Heap_Free(sVramTransferManager->tasks);
+    Heap_Free(sVramTransferManager);
     sVramTransferManager = NULL;
 }
 

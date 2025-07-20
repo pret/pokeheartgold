@@ -65,14 +65,14 @@
     {
       "x": 3,
       "z": 10,
-      "header": "MAP_T20",
+      "header": "MAP_NEW_BARK",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 3,
       "z": 3,
-      "header": "MAP_T20R0202",
+      "header": "MAP_NEW_BARK_PLAYER_HOUSE_2F",
       "anchor": 0,
       "y": 0
     }

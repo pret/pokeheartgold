@@ -150,7 +150,7 @@ void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
 
     MenuInputStateMgr_SetState(&fieldSystem->menuInputState, viewPhoto->menuInputState);
     ViewPhotoSysTask_Teardown(viewPhoto);
-    FreeToHeap(viewPhoto);
+    Heap_Free(viewPhoto);
     SysTask_Destroy(fieldSystem->unk_D8);
     fieldSystem->unk_D8 = NULL;
 }
@@ -338,7 +338,7 @@ static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
     ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->heapId);
     r3 = viewPhoto->scrollData.photo->iconId + 1;
     BG_LoadCharTilesData(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, pCharData->pRawData + ((25 * r3 + 64) * 64), 0x640, 1);
-    FreeToHeap(ncgrFile);
+    Heap_Free(ncgrFile);
     NARC_Delete(narc);
 }
 
@@ -385,7 +385,7 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
     UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapId);
     for (int i = 0; i < 3; ++i) {
         viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->spriteRender, &ov19_0225A0C4[i]);
-        Sprite_SetVisibleFlag(viewPhoto->sprites[i], TRUE);
+        Sprite_SetDrawFlag(viewPhoto->sprites[i], TRUE);
         Sprite_SetAnimActiveFlag(viewPhoto->sprites[i], TRUE);
     }
     if (viewPhoto->scrollData.curPhoto == 0) {
@@ -416,11 +416,11 @@ static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto
 }
 
 static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto) {
-    return !Sprite_IsCellAnimationRunning(viewPhoto->sprites[viewPhoto->animSpriteNo]);
+    return !Sprite_IsAnimated(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
 static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
-    BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfileAddr(saveData));
+    BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
     sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
     CopyU16ArrayToString(strBuf, photo->leadMonNick);

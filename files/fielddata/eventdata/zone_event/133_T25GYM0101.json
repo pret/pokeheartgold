@@ -24,7 +24,7 @@
       "spriteId": "SPRITE_GSLEADER3",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2EC",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_GYM_WHITNEY",
       "scriptId": "_EV_scr_seq_T25GYM0101_000 + 1",
       "facingDirection": 1,
       "param0": 0,
@@ -126,7 +126,7 @@
     {
       "x": 6,
       "z": 25,
-      "header": "MAP_T25",
+      "header": "MAP_GOLDENROD",
       "anchor": 2,
       "y": 0
     }

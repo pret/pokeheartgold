@@ -9,7 +9,7 @@
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public AllocWindows
 .public AddWindowParameterized
 .public WindowArray_Delete
@@ -19,7 +19,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_GameStats_Get
 .public GameStats_Add
 .public sub_02030CBC

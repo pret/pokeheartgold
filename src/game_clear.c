@@ -148,7 +148,7 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
     GF_RTC_CopyDate(&date);
     Save_HOF_RecordParty(hof, party, &date);
     SaveHallOfFame(fieldSystem->saveData, hof);
-    FreeToHeap(hof);
+    Heap_Free(hof);
 }
 
 // Launches the Hall of Fame Congratulations app if the player beat Lance. Saves
@@ -248,7 +248,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 11:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            FreeToHeap(env);
+            Heap_Free(env);
             DestroyHeap(HEAP_ID_4);
             OS_ResetSystem(0);
             return TRUE;
@@ -271,15 +271,15 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     fieldSystem = TaskManager_GetFieldSystem(taskman);
     env = AllocFromHeap(HEAP_ID_32, sizeof(GameClearWork));
     varsFlags = Save_VarsFlags_Get(fieldSystem->saveData);
-    profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     dynamicWarp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
     spawnWarp = LocalFieldData_GetSpecialSpawnWarpPtr(Save_LocalFieldData_Get(fieldSystem->saveData));
 
     env->gameCleared = CheckGameClearFlag(varsFlags);
-    env->hofCongratsArgs.profile = Save_PlayerData_GetProfileAddr(fieldSystem->saveData);
+    env->hofCongratsArgs.profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     env->hofCongratsArgs.party = SaveArray_Party_Get(fieldSystem->saveData);
     env->hofCongratsArgs.igt = Save_PlayerData_GetIGTAddr(fieldSystem->saveData);
-    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+    env->creditsArgs.gender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData));
     env->creditsArgs.gameCleared = CheckGameClearFlag(varsFlags);
     env->vsTrainerRed = vsTrainerRed;
 
@@ -338,7 +338,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWor
 
     if (writeStatus == 2) {
         MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_4);
-        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
+        BufferPlayersName(msgFmt, 0, Save_PlayerData_GetProfile(fieldSystem->saveData));
         env->windowText = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0040_00016, HEAP_ID_4);
         MessageFormat_Delete(msgFmt);
     } else {
@@ -357,5 +357,5 @@ static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {
         RemoveWindow(&env->window);
     }
     FreeBgTilemapBuffer(env->bgConfig, 3);
-    FreeToHeap(env->bgConfig);
+    Heap_Free(env->bgConfig);
 }

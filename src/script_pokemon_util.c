@@ -25,7 +25,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     u32 sp1C;
     BOOL result;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     {
         mon = AllocMonZeroed(heapId);
@@ -42,7 +42,7 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
         if (result) {
             UpdatePokedexWithReceivedSpecies(saveData, mon);
         }
-        FreeToHeap(mon);
+        Heap_Free(mon);
     }
     return result;
 }
@@ -54,13 +54,13 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
     Pokemon *mon;
     BOOL result;
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     mon = AllocMonZeroed(HEAP_ID_32);
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return result;
 }
 
@@ -118,7 +118,7 @@ Pokemon *GetFirstAliveMonInParty_CrashIfNone(Party *party) {
             return mon;
         }
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return NULL;
 }
 
@@ -134,7 +134,7 @@ u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(Party *party) {
             return i;
         }
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return 0;
 }
 

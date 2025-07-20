@@ -39,7 +39,7 @@ void FieldSystem_FlagSet(FieldSystem *fieldSystem, u16 flagId);
 void FieldSystem_FlagClear(FieldSystem *fieldSystem, u16 flagId);
 void ClearTempFieldEventData(FieldSystem *fieldSystem);
 void ClearDailyFlags(FieldSystem *fieldSystem);
-void FieldMoveArgsSet(FieldSystem *fieldSystem, u16 v8000, u16 v8001, u16 v8002, u16 v8003);
+void FieldMove_SetArgs(FieldSystem *fieldSystem, u16 v8000, u16 v8001, u16 v8002, u16 v8003);
 u16 ScriptNumToTrainerNum(u16 script);
 BOOL ScriptNoToDoublePartnerNo(u16 a0);
 BOOL TrainerNumIsDouble(u32 trainer);

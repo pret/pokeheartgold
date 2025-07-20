@@ -28,10 +28,10 @@ typedef struct ArcadeContext {
     BOOL battleWon;
     u8 unk2C[0x3];
     u8 unkF;
-    UnkImageStruct *unk30[4];
-    UnkImageStruct *unk40[4];
-    UnkImageStruct *unk50[4];
-    UnkImageStruct *unk60[4];
+    ManagedSprite *unk30[4];
+    ManagedSprite *unk40[4];
+    ManagedSprite *unk50[4];
+    ManagedSprite *unk60[4];
     Party *playerParty;
     Party *opponentParty;
     u16 unk74[14];

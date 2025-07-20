@@ -127,7 +127,7 @@ _021E5916:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r2, _021E5AAC ; =0x04000304
 	ldr r0, _021E5AB0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -686,11 +686,11 @@ ov73_021E5ED4: ; 0x021E5ED4
 	add r6, r0, #0
 	bl ov73_021E77E8
 	ldr r0, [r6, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r4, #0
 	add r5, r6, #0
 _021E5EF0:
@@ -723,7 +723,7 @@ ov73_021E5F0C: ; 0x021E5F0C
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov73_021E5F0C
@@ -861,7 +861,7 @@ ov73_021E6048: ; 0x021E6048
 	mov r0, #0x31
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x31
 	mov r1, #0
 	lsl r0, r0, #4
@@ -1083,7 +1083,7 @@ ov73_021E6184: ; 0x021E6184
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x8a
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -1118,7 +1118,7 @@ _021E6232:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -3727,7 +3727,7 @@ _021E76C8:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x36
 	mov r1, #2
 	lsl r0, r0, #4
@@ -3875,19 +3875,19 @@ ov73_021E77E8: ; 0x021E77E8
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #3
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov73_021E77E8
@@ -4295,7 +4295,7 @@ ov73_021E7AC0: ; 0x021E7AC0
 	add r5, r1, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [sp, #4]
@@ -4867,7 +4867,7 @@ _021E7E62:
 	mov r1, #0
 	mov r0, #0x34
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _021E7FA8 ; =0x00020020
 	mov r0, #0x96
 	bl AllocFromHeap
@@ -4883,7 +4883,7 @@ _021E7E62:
 	ldr r1, _021E7FAC ; =0x0000047D
 	mov r0, #0xb
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r2, _021E7FB0 ; =0x04000304
 	ldr r0, _021E7FB4 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -5033,7 +5033,7 @@ ov73_021E808C: ; 0x021E808C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	add r0, r4, #0
@@ -5055,7 +5055,7 @@ ov73_021E808C: ; 0x021E808C
 	bl ov73_021E8164
 	bl sub_02034DE0
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -5372,7 +5372,7 @@ _021E832A:
 	bl Sprite_SetAnimCtrlSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r6, r6, #1
 	add r4, r4, #4
 	add r5, r5, #4
@@ -5987,7 +5987,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
@@ -9227,11 +9227,11 @@ ov73_021EA134: ; 0x021EA134
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _021EA158 ; =0x00000DD4
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _021EA154:
 	pop {r3, r4, r5, pc}
 	nop
@@ -9559,7 +9559,7 @@ _021EA3A0:
 	add r2, r4, #0
 	bl MIi_CpuCopyFast
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	sub r6, r6, r4
 	add r0, r0, r4

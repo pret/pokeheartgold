@@ -66,7 +66,7 @@ scr_seq_D24R0211_001:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0102, 0, 7, 4, DIR_EAST
+	warp MAP_RUINS_OF_ALPH_RESEARCH_CENTER, 0, 7, 4, DIR_EAST
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	scrcmd_344 2, 2

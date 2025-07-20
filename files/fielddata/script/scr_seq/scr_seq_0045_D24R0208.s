@@ -58,7 +58,7 @@ _00B8:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 5, 24, DIR_NORTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 24, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setvar VAR_UNK_40E0, 1
@@ -71,7 +71,7 @@ _0103:
 	play_se SEQ_SE_GS_RAKKA01
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 5, 24, DIR_NORTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 24, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	setvar VAR_UNK_40E0, 1
@@ -107,7 +107,7 @@ _0185:
 	goto_if_eq _01FB
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0205, 0, 5, 24, DIR_NORTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL, 0, 5, 24, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 _01CD:
@@ -117,7 +117,7 @@ _01CD:
 _01D1:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0218, 0, 5, 24, DIR_NORTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT_2, 0, 5, 24, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01CD
@@ -125,7 +125,7 @@ _01D1:
 _01FB:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_D24R0216, 0, 5, 24, DIR_NORTH
+	warp MAP_RUINS_OF_ALPH_UNDERGROUND_HALL_SINJOH_EVENT, 0, 5, 24, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	goto _01CD

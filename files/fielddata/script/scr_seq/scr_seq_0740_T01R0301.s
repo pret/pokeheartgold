@@ -124,7 +124,7 @@ _01AB:
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00009, msg_0451_T01R0301_00010
 _01B2:
-	goto_if_set FLAG_UNK_988, _01F2
+	goto_if_set FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION, _01F2
 	callstd std_in_person_evaluate_dex
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _01EC
@@ -140,7 +140,7 @@ _01EC:
 _01F0:
 	wait_button
 _01F2:
-	setflag FLAG_UNK_988
+	setflag FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION
 	buffer_players_name 0
 	gender_msgbox msg_0451_T01R0301_00004, msg_0451_T01R0301_00005
 	npc_msg msg_0451_T01R0301_00028

@@ -11,8 +11,8 @@ typedef struct OptionsMenuArgs {
     MenuInputStateMgr *menuInputStatePtr;
 } OptionsMenuArgs;
 
-BOOL OptionsMenu_Init(OVY_MANAGER *man, int *state);
-BOOL OptionsMenu_Main(OVY_MANAGER *man, int *state);
-BOOL OptionsMenu_Exit(OVY_MANAGER *man, int *state);
+BOOL OptionsMenu_Init(OverlayManager *man, int *state);
+BOOL OptionsMenu_Main(OverlayManager *man, int *state);
+BOOL OptionsMenu_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_54_H

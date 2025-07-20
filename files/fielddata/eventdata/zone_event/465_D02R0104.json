@@ -151,14 +151,14 @@
     {
       "x": 28,
       "z": 8,
-      "header": "MAP_D02R0102",
+      "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 32,
       "z": 20,
-      "header": "MAP_D02R0102",
+      "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
       "anchor": 2,
       "y": 0
     }

@@ -13,7 +13,7 @@
 sub_020931C4: ; 0x020931C4
 	push {r3, r4, r5, r6, r7, lr}
 	mov r7, #0
-	ldr r4, _02093228 ; =_02108374
+	ldr r4, _02093228 ; =sGiftNormalTable
 	add r5, r0, #0
 	str r1, [sp]
 	add r6, r7, #0
@@ -35,15 +35,15 @@ _020931D0:
 	ldrh r1, [r4]
 	add r0, r5, #0
 	mov r2, #1
-	bl sub_0202F1C4
+	bl PhoneCallPersistentState_MomGiftQueue_Put
 	ldrh r2, [r4, #4]
 	add r0, r5, #0
 	mov r1, #3
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	str r0, [sp]
 	add r0, r5, #0
 	add r7, r7, #1
-	bl sub_0202F240
+	bl PhoneCallPersistentState_MomGiftQueue_IsFull
 	cmp r0, #0
 	bne _0209321A
 _02093212:
@@ -60,7 +60,7 @@ _02093222:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_02093228: .word _02108374
+_02093228: .word sGiftNormalTable
 	thumb_func_end sub_020931C4
 
 	thumb_func_start sub_0209322C
@@ -69,7 +69,7 @@ sub_0209322C: ; 0x0209322C
 	add r4, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl sub_0202F240
+	bl PhoneCallPersistentState_MomGiftQueue_IsFull
 	cmp r0, #0
 	beq _02093240
 	mov r0, #0
@@ -100,7 +100,7 @@ _0209326A:
 	bl _s32_div_f
 	lsl r0, r1, #1
 	add r1, r1, r0
-	ldr r2, _020932A0 ; =_02108340
+	ldr r2, _020932A0 ; =sGiftBerryTable
 	add r0, r4, #0
 	add r5, r2, r1
 	ldrb r1, [r2, r1]
@@ -108,48 +108,49 @@ _0209326A:
 	add r1, #0x95
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	bl sub_0202F1C4
+	bl PhoneCallPersistentState_MomGiftQueue_Put
 	ldrb r2, [r5, #2]
 	add r0, r4, #0
 	mov r1, #3
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
 _0209329C: .word 0x00000BB8
-_020932A0: .word _02108340
+_020932A0: .word sGiftBerryTable
 	thumb_func_end sub_0209322C
 
 	.rodata
 
-_02108340:
-	.byte 0x23, 0x05, 0x64
-	.byte 0x24, 0x05, 0x64
-	.byte 0x25, 0x05, 0x64
-	.byte 0x26, 0x05, 0x64
-	.byte 0x27, 0x05, 0x64
-	.byte 0x28, 0x05, 0x64
-	.byte 0x29, 0x05, 0x64
-	.byte 0x2A, 0x05, 0x64
-	.byte 0x2B, 0x05, 0x64
-	.byte 0x2C, 0x05, 0x64
-	.byte 0x2D, 0x05, 0x64
-	.byte 0x2E, 0x05, 0x64
-	.byte 0x2F, 0x05, 0x64
-	.byte 0x30, 0x05, 0x64
-	.byte 0x31, 0x05, 0x64
-	.byte 0x32, 0x05, 0x64
-	.byte 0x33, 0x05, 0x64
+sGiftBerryTable:
+	//    berry                                 quantity  cost
+	.byte ITEM_OCCA_BERRY   - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_PASSHO_BERRY - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_WACAN_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_RINDO_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_YACHE_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_CHOPLE_BERRY - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_KEBIA_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_SHUCA_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_COBA_BERRY   - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_PAYAPA_BERRY - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_TANGA_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_CHARTI_BERRY - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_KASIB_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_HABAN_BERRY  - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_COLBUR_BERRY - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_BABIRI_BERRY - ITEM_CHERI_BERRY,        5,  100
+	.byte ITEM_CHILAN_BERRY - ITEM_CHERI_BERRY,        5,  100
 
 	.balign 2, 0
-_02108374:
-	.short 0x001A, 0x0384, 0x0258
-	.short 0x004F, 0x0FA0, 0x010E
-	.short 0x001A, 0x1B58, 0x0258
-	.short 0x00FB, 0x2710, 0x0064
-	.short 0x0051, 0x3A98, 0x0BB8
-	.short 0x0019, 0x4A38, 0x0384
-	.short 0x011F, 0x7530, 0x00C8
-	.short 0x010A, 0x9C40, 0x00C8
-	.short 0x0113, 0xC350, 0x00C8
-	; File boundary
+sGiftNormalTable:
+	//     item               threshold  cost
+	.short ITEM_SUPER_POTION,       900,  600
+	.short ITEM_REPEL,             4000,  270
+	.short ITEM_SUPER_POTION,      7000,  600
+	.short ITEM_SILK_SCARF,       10000,  100
+	.short ITEM_MOON_STONE,       15000, 3000
+	.short ITEM_HYPER_POTION,     19000,  900
+	.short ITEM_CHOICE_SCARF,     30000,  200
+	.short ITEM_MUSCLE_BAND,      40000,  200
+	.short ITEM_FOCUS_SASH,       50000,  200

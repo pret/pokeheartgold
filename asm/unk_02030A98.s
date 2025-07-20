@@ -1551,7 +1551,7 @@ _0203148E:
 	cmp r6, #0
 	beq _02031498
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02031498:
 	ldr r0, [sp, #0xc]
 	add sp, #0x1c
@@ -1576,10 +1576,10 @@ sub_020314A4: ; 0x020314A4
 
 	thumb_func_start sub_020314BC
 sub_020314BC: ; 0x020314BC
-	ldr r3, _020314C0 ; =FreeToHeap
+	ldr r3, _020314C0 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_020314C0: .word FreeToHeap
+_020314C0: .word Heap_Free
 	thumb_func_end sub_020314BC
 
 	thumb_func_start sub_020314C4
@@ -1589,7 +1589,7 @@ sub_020314C4: ; 0x020314C4
 	add r6, r1, #0
 	add r5, r0, #0
 	add r0, r6, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r4, r0, #0
 	add r0, r6, #0
 	bl Save_WiFiHistory_Get

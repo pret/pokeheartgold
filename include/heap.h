@@ -30,10 +30,13 @@ typedef enum HeapID {
     HEAP_ID_CREDITS = 73,
     HEAP_ID_INTRO_MOVIE = 74,
     HEAP_ID_OV36 = 75,
+    HEAP_ID_MAIN_MENU = 79,
     HEAP_ID_OAKS_SPEECH = 80,
     HEAP_ID_CERTIFICATES = 82,
     HEAP_ID_DELETE_SAVEDATA = 86,
     HEAP_ID_89 = 89,
+    HEAP_ID_POKEGEAR = 90,
+    HEAP_ID_POKEGEAR_APP = 91,
     HEAP_ID_ALPH_PUZZLE = 97,
     HEAP_ID_MIC_TEST = 98,
     HEAP_ID_GAME_BOARD = 110,
@@ -55,8 +58,8 @@ BOOL CreateHeapAtEnd(HeapID parent, HeapID child, u32 size);
 void DestroyHeap(HeapID heapId);
 void *AllocFromHeap(HeapID heapId, u32 size);
 void *AllocFromHeapAtEnd(HeapID heapId, u32 size);
-void FreeToHeap(void *ptr);
-void FreeToHeapExplicit(HeapID heapId, void *ptr);
+void Heap_Free(void *ptr);
+void Heap_FreeExplicit(HeapID heapId, void *ptr);
 u32 GF_ExpHeap_FndGetTotalFreeSize(HeapID heapId);
 void GF_ExpHeap_FndInitAllocator(NNSFndAllocator *pAllocator, HeapID heapId, int alignment);
 void ReallocFromHeap(void *ptr, u32 newSize);

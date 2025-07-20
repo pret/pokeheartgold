@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public BG_LoadCharTilesData
 .public BG_FillCharDataRange
@@ -15,7 +15,7 @@
 .public QueueScript
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public GetPlayerXCoord
 .public GetPlayerZCoord
 .public G2x_SetBlendAlpha_

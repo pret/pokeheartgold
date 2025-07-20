@@ -57,14 +57,14 @@
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_R34",
+      "header": "MAP_ROUTE_34",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 5,
       "z": 12,
-      "header": "MAP_D36R0101",
+      "header": "MAP_ILEX_FOREST",
       "anchor": 2,
       "y": 0
     }

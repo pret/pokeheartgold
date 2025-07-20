@@ -92,21 +92,21 @@
     {
       "x": 16,
       "z": 15,
-      "header": "MAP_P01R0101",
+      "header": "MAP_SS_AQUA_OLIVINE_PORT_INTERIOR",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 27,
       "z": 20,
-      "header": "MAP_P01R0301",
+      "header": "MAP_SS_AQUA_1F",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 11,
       "z": 13,
-      "header": "MAP_P01R0101",
+      "header": "MAP_SS_AQUA_OLIVINE_PORT_INTERIOR",
       "anchor": 2,
       "y": 0
     }

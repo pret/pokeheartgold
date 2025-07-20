@@ -45,7 +45,7 @@ _0071:
 	wait_se SEQ_SE_GS_W012
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_R10R0201, 0, 13, 7, DIR_SOUTH
+	warp MAP_ROUTE_10_POWER_PLANT_REPAIRED, 0, 13, 7, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	npc_msg msg_0345_R10R0202_00015
@@ -59,7 +59,7 @@ _0071:
 	closemsg
 	setflag FLAG_UNK_258
 	clearflag FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR
-	setflag FLAG_UNK_2FB
+	setflag FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL
 	clearflag FLAG_HIDE_VERMILION_FAN_CLUB_LOST_ITEM
 	setvar VAR_UNK_40FF, 1
 	releaseall

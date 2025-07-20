@@ -56,7 +56,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
     }
 
     MI_CpuCopy8(cursor, map_matrix_data->maps.models, map_matrix_data->width * map_matrix_data->height * sizeof(u16));
-    FreeToHeap(buffer);
+    Heap_Free(buffer);
 }
 
 MAPMATRIX *MapMatrix_New(void) {
@@ -79,7 +79,7 @@ void MapMatrix_Load(u32 map_no, MAPMATRIX *map_matrix) {
 }
 
 void MapMatrix_Free(MAPMATRIX *map_matrix) {
-    FreeToHeap(map_matrix);
+    Heap_Free(map_matrix);
 }
 
 u16 MapMatrix_GetMapModelNo(s32 map_no, MAPMATRIX *map_matrix) {
@@ -130,14 +130,14 @@ MAPDATA *MapMatrix_MapData_New(HeapID heapId) {
     cursor += name_length;
 
     MI_CpuCopy8(cursor, map_data, sizeof(MAPDATA));
-    FreeToHeap(buffer);
+    Heap_Free(buffer);
 
     return map_data;
 }
 
 void MapMatrix_MapData_Free(MAPDATA *map_data) {
     GF_ASSERT(map_data != NULL);
-    FreeToHeap(map_data);
+    Heap_Free(map_data);
 }
 
 u16 GetMapModelNo(u32 map_no, MAPMATRIX *map_matrix) {
@@ -157,7 +157,7 @@ void RemoveMahoganyTownAntennaTree(MAPMATRIX *map_matrix) {
 }
 
 static inline BOOL MapAndDayCheck(u32 map_no, RTCDate *date) {
-    return (map_no == MAP_T29 || map_no == MAP_R43) && date->week == RTC_WEEK_WEDNESDAY;
+    return (map_no == MAP_LAKE_OF_RAGE || map_no == MAP_ROUTE_43) && date->week == RTC_WEEK_WEDNESDAY;
 }
 
 BOOL ShouldUseAlternateLakeOfRage(SaveData *saveData, u32 map_no) {

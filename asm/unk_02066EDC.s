@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_02066EDC.inc"
 	.include "global.inc"
@@ -143,7 +143,7 @@ _02066FC4:
 	ldrb r0, [r0]
 	strb r0, [r5, #0xd]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	str r1, [r0]
@@ -202,7 +202,7 @@ sub_02066FEC: ; 0x02066FEC
 	add r0, r4, #0
 	bl sub_02089D40
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_0208AD34
@@ -234,7 +234,7 @@ _0206709A:
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x14]
 	strb r1, [r4, #0xd]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [r4, #0x14]
 	mov r0, #0
 	str r0, [r1]
@@ -289,7 +289,7 @@ _02067100:
 	str r0, [r4, #4]
 	b _02067112
 _0206710A:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02067112:
@@ -373,7 +373,7 @@ _0206719E:
 	ldr r0, [r0, #0x20]
 	str r0, [r4]
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #2
 	pop {r4, pc}
 	.balign 4, 0
@@ -413,7 +413,7 @@ _020671E6:
 	ldr r1, [r4]
 	strh r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _020671FC:
@@ -498,7 +498,7 @@ _02067290:
 	strh r0, [r4]
 _0206729A:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02067238
@@ -883,7 +883,7 @@ _0206756E:
 FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom: ; 0x02067584
 	ldr r0, [r0, #0x20]
 	ldr r1, [r0]
-	ldr r0, _02067598 ; =MAP_D31R0207
+	ldr r0, _02067598 ; =MAP_BATTLE_TOWER_PARTNER_ROOM
 	cmp r1, r0
 	bne _02067592
 	mov r0, #1
@@ -892,7 +892,7 @@ _02067592:
 	mov r0, #0
 	bx lr
 	nop
-_02067598: .word MAP_D31R0207
+_02067598: .word MAP_BATTLE_TOWER_PARTNER_ROOM
 	thumb_func_end FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 
 	thumb_func_start sub_0206759C
@@ -906,7 +906,7 @@ sub_0206759C: ; 0x0206759C
 	bl TrainerCard_GetBadgeShininessArr
 	add r4, r0, #0
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r1, #0xa

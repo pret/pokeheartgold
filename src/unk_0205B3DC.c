@@ -96,7 +96,7 @@ int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr) {
     case 0:
         return idx;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     }
     return 0;
@@ -115,6 +115,6 @@ u16 *sub_0205B4A4(HeapID heapId) {
     for (i = 0; i < 0x100; i++) {
         ret[i] = plttRaw[i];
     }
-    FreeToHeap(pltt_src);
+    Heap_Free(pltt_src);
     return ret;
 }

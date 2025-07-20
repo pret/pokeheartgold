@@ -130,7 +130,7 @@ _021E80D6:
 	mov r1, #0
 	mov r0, #0x38
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r2, _021E8240 ; =0x04000304
 	ldr r0, _021E8244 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -578,7 +578,7 @@ ov52_021E85A0: ; 0x021E85A0
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E85A0
@@ -1017,7 +1017,7 @@ ov52_021E888C: ; 0x021E888C
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -2509,14 +2509,14 @@ ov52_021E9488: ; 0x021E9488
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, pc}
 _021E949C:
 	mov r1, #0x25
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E9488

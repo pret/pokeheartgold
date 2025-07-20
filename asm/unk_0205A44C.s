@@ -1072,7 +1072,7 @@ _0205AB56:
 	str r4, [sp, #4]
 	bl BufferString
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc
@@ -1191,15 +1191,15 @@ sub_0205AC4C: ; 0x0205AC4C
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x63
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x61
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_0205AC4C
 

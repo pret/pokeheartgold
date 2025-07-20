@@ -201,7 +201,7 @@ _02245CF2:
 	cmp r0, #0
 	beq _02245D06
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -426,9 +426,9 @@ _02245EB8:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02245E68
 
@@ -480,7 +480,7 @@ _02245F2E:
 	add r0, r5, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 _02245F38:
 	add r1, r5, #0
 	ldr r0, [sp, #0xc]
@@ -771,7 +771,7 @@ _0224616A:
 	ldr r0, [r4, #8]
 	bl ov02_02245E68
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r3, r4, pc}
@@ -930,7 +930,7 @@ _022462A4:
 	ldr r0, [r4, #8]
 	bl ov02_02245E68
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, pc}
@@ -1036,7 +1036,7 @@ _02246374:
 	add r0, r4, #0
 	bl ov02_02246444
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _0224638E:
@@ -1259,7 +1259,7 @@ ov02_02246534: ; 0x02246534
 	ldr r0, [r4, #0x18]
 	bl Camera_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov02_02246534
@@ -1570,7 +1570,7 @@ _022467AE:
 	ldr r0, [r4, #8]
 	bl ov02_02246534
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov02_02246798
@@ -1650,7 +1650,7 @@ _0224683E:
 	add r0, r4, #0
 	bl ov02_02246964
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _02246862:
@@ -1906,9 +1906,9 @@ _02246A5E:
 	ldr r0, [r4, #0x18]
 	bl ov02_02249548
 	ldr r0, [r4, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _02246A7E:
@@ -2219,7 +2219,7 @@ _02246CA0:
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r7, r0, #0
 	add r2, sp, #0x18
 	add r0, r5, #0
@@ -2806,7 +2806,7 @@ ov02_02247170: ; 0x02247170
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, sp, #0x14
@@ -3954,7 +3954,7 @@ _022479E2:
 	bl GF_AssertFail
 _02247A0E:
 	ldr r0, [sp, #0x1c]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02247910
@@ -4045,7 +4045,7 @@ _02247A90:
 	bl GF_AssertFail
 _02247ACA:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 _02247AD4:
@@ -4116,7 +4116,7 @@ _02247B3C:
 	bl GF_AssertFail
 _02247B5A:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov02_02247A18
@@ -4534,7 +4534,7 @@ _02247E7C:
 	bne _02247EB8
 _02247EAC:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
@@ -4549,7 +4549,7 @@ _02247EB8:
 	mov r3, #1
 	bl ov02_02247A18
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
@@ -4573,7 +4573,7 @@ ov02_02247ED8: ; 0x02247ED8
 	cmp r0, #1
 	bne _02247F08
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #0
 	pop {r3, r4, r5, r6, pc}
@@ -4592,7 +4592,7 @@ _02247F08:
 	mov r3, #1
 	bl ov02_02247A18
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -4620,7 +4620,7 @@ ov02_02247F30: ; 0x02247F30
 	cmp r0, #0
 	beq _02247F80
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	add r3, r0, #0
 	add r0, sp, #0x10
@@ -5180,7 +5180,7 @@ ov02_022482BC: ; 0x022482BC
 	bl GF_AssertFail
 _02248350:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7}
 	pop {r3}
@@ -5437,9 +5437,9 @@ _02248534:
 	ldrb r4, [r0, r1]
 _02248542:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5611,7 +5611,7 @@ _0224866C:
 	bl Save_Pokedex_Get
 	str r0, [r5, #0x18]
 	ldr r0, [r7, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -5983,19 +5983,19 @@ _02248920:
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #8]
 	bl SpriteList_DeleteAllSprites
 	ldr r0, [r5, #8]
@@ -6488,18 +6488,18 @@ ov02_02248CAC: ; 0x02248CAC
 	bl ov02_02248C10
 	add r4, r0, #0
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	add r0, r4, #0
 	add r1, sp, #0x1c
 	bl Sprite_SetAffineMatrix
 	add r0, r4, #0
 	add r1, sp, #0x10
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #0
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	add r0, r4, #0
 	add sp, #0x34
 	pop {r3, r4, r5, r6, pc}
@@ -6532,7 +6532,7 @@ _02248D2C:
 	bl ov02_02248C10
 	add r4, r0, #0
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	mov r1, #6
 	bl Sprite_SetAnimCtrlSeq
@@ -6656,7 +6656,7 @@ ov02_02248E10: ; 0x02248E10
 	mov r1, #0
 	strb r1, [r0, #2]
 	ldr r0, [r0, #0x68]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov02_02248E10
@@ -6752,7 +6752,7 @@ ov02_02248E20: ; 0x02248E20
 	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x68]
 	add r1, sp, #0x18
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r1, [r4, #0x38]
 	asr r0, r1, #0xb
 	lsr r0, r0, #0x14
@@ -6762,13 +6762,13 @@ ov02_02248E20: ; 0x02248E20
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x68]
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r0, [r4, #0x68]
 	mov r1, #0x84
 	bl Sprite_SetDrawPriority
 	ldr r0, [r4, #0x68]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x58]
 	ldr r1, [r4, #0x60]
 	bl ov02_0224B298
@@ -6795,18 +6795,18 @@ ov02_02248E20: ; 0x02248E20
 	str r0, [r2]
 	ldr r4, [r4, #0x60]
 	add r0, r4, #0
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	add r0, r4, #0
 	add r1, sp, #0xc
 	bl Sprite_SetAffineMatrix
 	add r0, r4, #0
 	add r1, sp, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #0
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	add r0, r4, #0
 	mov r1, #2
 	bl Sprite_SetAnimCtrlSeq
@@ -6911,11 +6911,11 @@ _0224902A:
 	add r1, r5, #0
 	add r0, r6, #0
 	add r1, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r1, [r5, #8]
 	ldr r0, [r5, #0x14]
 	add r0, r1, r0
@@ -7050,7 +7050,7 @@ _02249124:
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r1, [r5, #0x2c]
 	ldr r0, [r5, #0x50]
 	add r1, r1, r0
@@ -7074,7 +7074,7 @@ _02249168:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r1, [r5, #8]
 	ldr r0, [r5, #0x14]
 	add r0, r1, r0
@@ -7110,7 +7110,7 @@ ov02_022491A8: ; 0x022491A8
 	add r4, r0, #0
 	ldr r0, [r4, #0x68]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x60]
 	mov r1, #1
 	bl Sprite_SetAnimCtrlSeq
@@ -7185,7 +7185,7 @@ _022491E2:
 	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x68]
 	add r1, sp, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r1, [r4, #0x38]
 	asr r0, r1, #0xb
 	lsr r0, r0, #0x14
@@ -7195,10 +7195,10 @@ _022491E2:
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x68]
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r0, [r4, #0x68]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x60]
 	mov r1, #6
 	bl Sprite_SetAnimCtrlSeq
@@ -7300,7 +7300,7 @@ _02249326:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #6
 	ldr r1, [r5, #0x38]
 	lsl r0, r0, #0xc
@@ -7325,7 +7325,7 @@ _0224934C:
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r1, [r5, #8]
 	ldr r0, [r5, #0x14]
 	add r0, r1, r0
@@ -7342,7 +7342,7 @@ _0224934C:
 	bgt _02249390
 	add r0, r4, #0
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldrb r0, [r5, #1]
 	add r0, r0, #1
 	strb r0, [r5, #1]
@@ -7375,7 +7375,7 @@ _022493BA:
 	bne _022493C8
 	ldr r0, [r4, #0x60]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _022493C8:
 	ldr r0, [r4, #4]
 	cmp r0, #0xf
@@ -7615,10 +7615,10 @@ ov02_0224955C: ; 0x0224955C
 
 	thumb_func_start ov02_0224957C
 ov02_0224957C: ; 0x0224957C
-	ldr r3, _02249580 ; =FreeToHeap
+	ldr r3, _02249580 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02249580: .word FreeToHeap
+_02249580: .word Heap_Free
 	thumb_func_end ov02_0224957C
 
 	thumb_func_start ov02_02249584
@@ -8845,7 +8845,7 @@ _02249E14:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _02249E32
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x86
 	mov r1, #0
 	lsl r0, r0, #2
@@ -8856,7 +8856,7 @@ _02249E32:
 	ldr r0, [r6, r0]
 	cmp r0, #0
 	beq _02249E48
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x87
 	mov r1, #0
 	lsl r0, r0, #2
@@ -8880,7 +8880,7 @@ ov02_02249E58: ; 0x02249E58
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	mov r1, #0x21
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -8911,7 +8911,7 @@ ov02_02249E90: ; 0x02249E90
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	mov r1, #0x21
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -9623,7 +9623,7 @@ _0224A426:
 	bl ov02_0224A33C
 	add r4, r0, #0
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	mov r1, #6
 	bl Sprite_SetAnimCtrlSeq
@@ -9676,18 +9676,18 @@ ov02_0224A468: ; 0x0224A468
 	bl ov02_0224A33C
 	add r4, r0, #0
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	add r0, r4, #0
 	add r1, sp, #0x1c
 	bl Sprite_SetAffineMatrix
 	add r0, r4, #0
 	add r1, sp, #0x10
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r0, r7, #0
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	add r0, r4, #0
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9797,7 +9797,7 @@ ov02_0224A570: ; 0x0224A570
 	lsl r3, r0, #7
 	bl BG_LoadPlttData
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov02_0224A570
 
@@ -9823,7 +9823,7 @@ ov02_0224A598: ; 0x0224A598
 	mov r1, #3
 	bl BG_LoadCharTilesData
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -9874,7 +9874,7 @@ ov02_0224A5D0: ; 0x0224A5D0
 	mov r1, #3
 	bl BgCommitTilemapBufferToVram
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov02_0224A5D0
@@ -10183,7 +10183,7 @@ ov02_0224A834: ; 0x0224A834
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	bl sub_0200AF00
 	mov r1, #1
 	bl NNS_G2dGetImageLocation
@@ -10230,16 +10230,16 @@ ov02_0224A88C: ; 0x0224A88C
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	bl sub_0200AF00
 	add r6, r0, #0
 	mov r0, #0x1a
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r1, r6, #0
-	bl GF_PlttResObj_GetPlttProxy
+	bl SpriteTransfer_GetPaletteProxy
 	mov r1, #1
 	bl NNS_G2dGetImagePaletteLocation
 	add r5, r0, #0
@@ -10262,7 +10262,7 @@ ov02_0224A8D4: ; 0x0224A8D4
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r4, r0, #0
 	bl sub_0200AEB0
 	mov r0, #0x67
@@ -10299,7 +10299,7 @@ _0224A922:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r4, r0, #0
 	bl sub_0200B0A8
 	mov r0, #0x1a
@@ -10336,7 +10336,7 @@ _0224A96C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r4, r0, #0
 	bl sub_0200A740
 	mov r0, #0x69
@@ -10508,7 +10508,7 @@ ov02_0224AA80: ; 0x0224AA80
 	bl ov02_0224A3F0
 	mov r1, #0
 	str r0, [r4, #8]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
@@ -10574,7 +10574,7 @@ ov02_0224AAD4: ; 0x0224AAD4
 	mov r1, #1
 _0224AB38:
 	ldr r0, [r4, #8]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 _0224AB42:
@@ -10582,7 +10582,7 @@ _0224AB42:
 	bne _0224AB4E
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0224AB4E:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -10726,7 +10726,7 @@ ov02_0224AC28: ; 0x0224AC28
 	mov r1, #0
 	strb r1, [r0, #2]
 	ldr r0, [r0, #0x58]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0
 	pop {r3, pc}
 	thumb_func_end ov02_0224AC28
@@ -10791,7 +10791,7 @@ ov02_0224AC38: ; 0x0224AC38
 	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x58]
 	add r1, sp, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r1, [r4, #0x38]
 	asr r0, r1, #0xb
 	lsr r0, r0, #0x14
@@ -10801,10 +10801,10 @@ ov02_0224AC38: ; 0x0224AC38
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x58]
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r0, [r4, #0x58]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -10890,7 +10890,7 @@ _0224AD6E:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #6
 	ldr r1, [r5, #0x38]
 	lsl r0, r0, #0xc
@@ -10913,7 +10913,7 @@ _0224AD90:
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r1, [r5, #8]
 	ldr r0, [r5, #0x14]
 	add r0, r1, r0
@@ -10931,7 +10931,7 @@ _0224AD90:
 	bge _0224ADDA
 	add r0, r4, #0
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #2
 	strb r0, [r5, #2]
 	ldrb r0, [r5, #1]
@@ -11059,7 +11059,7 @@ ov02_0224ADF0: ; 0x0224ADF0
 	bl Sprite_SetMatrix
 	ldr r0, [r4, #0x58]
 	add r1, sp, #0x18
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r1, [r4, #0x38]
 	asr r0, r1, #0xb
 	lsr r0, r0, #0x14
@@ -11069,10 +11069,10 @@ ov02_0224ADF0: ; 0x0224ADF0
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	ldr r0, [r4, #0x58]
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r0, [r4, #0x58]
 	add r1, r7, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	ldr r0, [r5, r1]
@@ -11107,18 +11107,18 @@ ov02_0224ADF0: ; 0x0224ADF0
 	ldr r4, [r1, r0]
 	mov r1, #2
 	add r0, r4, #0
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	add r0, r4, #0
 	add r1, sp, #0xc
 	bl Sprite_SetAffineMatrix
 	add r0, r4, #0
 	add r1, sp, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #0
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -11219,7 +11219,7 @@ _0224B012:
 	add r1, r5, #0
 	add r0, r4, #0
 	add r1, #0x2c
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #2
 	ldr r1, [r5, #0x38]
 	lsl r0, r0, #0xe
@@ -11245,7 +11245,7 @@ _0224B03A:
 	bl GF_DegreeToSinCosIdx
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Sprite_SetRotation
+	bl Sprite_SetAffineZRotation
 	ldr r1, [r5, #8]
 	ldr r0, [r5, #0x14]
 	add r0, r1, r0
@@ -11309,7 +11309,7 @@ _0224B0B8:
 _0224B0C8:
 	add r0, r4, #0
 	add r1, sp, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	mov r0, #0
 	add sp, #0x18
 	pop {r3, r4, r5, pc}
@@ -11331,7 +11331,7 @@ ov02_0224B0E0: ; 0x0224B0E0
 	bl Sprite_SetAnimCtrlSeq
 	add r0, r5, #0
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, #0x5c]
 	mov r1, #1
 	bl ov02_0224B6B0
@@ -11522,11 +11522,11 @@ _0224B25E:
 _0224B272:
 	add r0, r7, #0
 	add r1, sp, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r4, #0x2c
 	add r0, r6, #0
 	add r1, r4, #0
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	add r0, r6, #0
 	add r1, sp, #0x18
 	bl Sprite_SetMatrix
@@ -11786,7 +11786,7 @@ ov02_0224B448: ; 0x0224B448
 	push {r4, lr}
 	add r4, r0, #0
 	bl SysTask_GetData
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 	pop {r4, pc}
@@ -11996,7 +11996,7 @@ ov02_0224B5F0: ; 0x0224B5F0
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r3, #0x17
 	lsl r3, r3, #4
 	ldr r1, [r4, r3]
@@ -12145,17 +12145,17 @@ ov02_0224B6E4: ; 0x0224B6E4
 	bgt _0224B716
 	ldr r0, [r4]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, pc}
 _0224B716:
 	ldr r0, [r4]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, pc}
 _0224B720:
 	ldr r0, [r4]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov02_0224B6E4
@@ -13011,7 +13011,7 @@ _0224BDBA:
 	strb r0, [r4, #0xf]
 	b _0224BDCC
 _0224BDC2:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x34
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -13198,7 +13198,7 @@ _0224BF2C:
 	strb r0, [r4, #2]
 	b _0224BF48
 _0224BF3E:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -13343,7 +13343,7 @@ _0224C032:
 	cmp r4, #2
 	bne _0224C04E
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224C04E:
 	cmp r4, #1
 	beq _0224C032
@@ -13578,7 +13578,7 @@ _0224C20C:
 	cmp r0, #2
 	bne _0224C228
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0224C228:
@@ -13745,8 +13745,8 @@ _0224C358:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C338
 
-	thumb_func_start CreateFieldDigTaskEnv
-CreateFieldDigTaskEnv: ; 0x0224C368
+	thumb_func_start FieldMoveTask_CreateDigEnvironment
+FieldMoveTask_CreateDigEnvironment: ; 0x0224C368
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -13779,7 +13779,7 @@ _0224C3A4:
 _0224C3A8:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end CreateFieldDigTaskEnv
+	thumb_func_end FieldMoveTask_CreateDigEnvironment
 
 	thumb_func_start Task_FieldDig
 Task_FieldDig: ; 0x0224C3AC
@@ -13903,7 +13903,7 @@ _0224C494:
 	cmp r5, #2
 	bne _0224C49E
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224C49E:
 	cmp r5, #1
 	beq _0224C45C
@@ -13958,8 +13958,8 @@ _0224C4EA:
 	pop {r4, pc}
 	thumb_func_end ov02_0224C4D8
 
-	thumb_func_start CreateFieldTeleportTaskEnv
-CreateFieldTeleportTaskEnv: ; 0x0224C500
+	thumb_func_start FieldMoveTask_CreateTeleportEnvironment
+FieldMoveTask_CreateTeleportEnvironment: ; 0x0224C500
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -14002,7 +14002,7 @@ _0224C552:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end CreateFieldTeleportTaskEnv
+	thumb_func_end FieldMoveTask_CreateTeleportEnvironment
 
 	thumb_func_start Task_FieldTeleport
 Task_FieldTeleport: ; 0x0224C558
@@ -14126,7 +14126,7 @@ _0224C640:
 	cmp r5, #2
 	bne _0224C64A
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0224C64A:
 	cmp r5, #1
 	beq _0224C608
@@ -15351,7 +15351,7 @@ _0224CFAE:
 	strb r0, [r4, #0xf]
 	b _0224CFC0
 _0224CFB6:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -16674,7 +16674,7 @@ _0224D920:
 	lsl r6, r6, #4
 _0224D93C:
 	ldr r0, [r5, r6]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -17250,7 +17250,7 @@ _0224DD58:
 	mov r4, #0
 _0224DD72:
 	ldr r0, [r5, r6]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -17658,7 +17658,7 @@ _0224E04A:
 	mov r1, #1
 	strh r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _0224E068:
@@ -17867,7 +17867,7 @@ _0224E1F6:
 	bl MapObject_ClearHeldMovementIfActive
 	add r0, r4, #0
 	mov r5, #1
-	bl FreeToHeap
+	bl Heap_Free
 _0224E21E:
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
@@ -18115,7 +18115,7 @@ _0224E39E:
 	pop {r4, r5, r6, r7, pc}
 _0224E3AE:
 	add r0, r4, #0
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	cmp r0, #0
 	bne _0224E3BE
 	add sp, #0x1c
@@ -18445,12 +18445,12 @@ _0224E638:
 ov02_0224E640: ; 0x0224E640
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	add r5, r0, #0
 	add r0, r4, #0
 	bl Save_SafariZone_Get
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0xa
@@ -18601,7 +18601,7 @@ ov02_0224E754: ; 0x0224E754
 	bl GetDeltaYByFacingDirection
 	add r6, r5, r0
 	ldr r0, [r4, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerGender
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
@@ -18762,7 +18762,7 @@ _0224E8A4:
 	ldr r2, [sp, #0x3c]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x58]
 	ldr r2, [sp, #0x3c]
 	add r0, r4, #0
@@ -18881,7 +18881,7 @@ _0224E99E:
 	asr r5, r0, #0x10
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x20]
 	ldr r2, [sp, #4]
 	add r0, r4, #0
@@ -18979,7 +18979,7 @@ _0224EA6A:
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
 	add r1, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x24]
 	ldr r2, [sp, #0x30]
 	add r0, r4, #0
@@ -19128,7 +19128,7 @@ _0224EB98:
 	asr r5, r0, #0x10
 	add r0, r4, #0
 	add r2, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x50]
 	ldr r1, [sp, #4]
 	add r0, r4, #0
@@ -19226,7 +19226,7 @@ _0224EC64:
 	str r0, [sp, #0x2c]
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	add r0, r4, #0
@@ -19351,7 +19351,7 @@ _0224ED70:
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
 	add r2, r5, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	str r0, [sp, #0x5c]
 	ldr r1, [sp, #0x28]
 	add r0, r4, #0
@@ -20492,7 +20492,7 @@ ov02_0224F5FC: ; 0x0224F5FC
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	mov r1, #0x12
 	strb r0, [r4, #0x12]
 	lsl r1, r1, #4
@@ -20710,7 +20710,7 @@ _0224F782:
 	sub r1, r5, #1
 	ldrb r1, [r0, r1]
 	strb r1, [r4, #0xa]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0224F798: .word 0x000001ED
@@ -20926,10 +20926,10 @@ _0224F8F0: .word 0x0000086C
 
 	thumb_func_start ov02_0224F8F4
 ov02_0224F8F4: ; 0x0224F8F4
-	ldr r3, _0224F8F8 ; =FreeToHeap
+	ldr r3, _0224F8F8 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0224F8F8: .word FreeToHeap
+_0224F8F8: .word Heap_Free
 	thumb_func_end ov02_0224F8F4
 
 	thumb_func_start ov02_0224F8FC
@@ -21460,7 +21460,7 @@ ov02_0224FCE0: ; 0x0224FCE0
 	tst r0, r6
 	ldr r0, [r5, #0xc]
 	beq _0224FD3E
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -21489,7 +21489,7 @@ _0224FD3E:
 	bl Mon_GetBoxMon
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -21675,7 +21675,7 @@ _0224FE9E:
 	ldr r1, [sp, #8]
 	ldr r2, [sp, #4]
 	add r0, r6, #0
-	bl GetMetatileBehaviorAt
+	bl GetMetatileBehavior
 	add r5, r0, #0
 	lsl r0, r5, #0x18
 	lsr r0, r0, #0x18
@@ -22443,7 +22443,7 @@ FollowMon_PlaceholdersSet: ; 0x022504A0
 	add r2, r7, #0
 	bl BufferBoxMonSpeciesName
 	ldr r0, [r5, #0xc]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2
@@ -22979,7 +22979,7 @@ _0225089A:
 	b _022508AA
 _022508A0:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _022508AA:
@@ -23169,7 +23169,7 @@ _02250A2C:
 	bl sub_02023E78
 	b _02250A44
 _02250A3A:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18
 	mov r0, #1
 	pop {r4, r5, r6, pc}

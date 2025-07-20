@@ -23,14 +23,14 @@
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_R16R0301",
+      "header": "MAP_ROUTE_16_EAST",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_R16",
+      "header": "MAP_ROUTE_16",
       "anchor": 0,
       "y": 0
     }

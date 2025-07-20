@@ -104,7 +104,7 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
         break;
     case 3:
         sub_0206D850(fieldSystem->playerAvatar);
-        FreeToHeap(unkStruct);
+        Heap_Free(unkStruct);
         return TRUE;
     }
     return FALSE;
@@ -225,7 +225,7 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
     if (sub_020549F4(MapObject_GetFieldSystem(object), &position, x, y, &unk) == 1) {
         flags |= 1;
     }
-    u8 behavior = GetMetatileBehaviorAt(MapObject_GetFieldSystem(object), x, y);
+    u8 behavior = GetMetatileBehavior(MapObject_GetFieldSystem(object), x, y);
     if (sub_0205B828(behavior) == 0) {
         flags |= 4;
     }
@@ -257,14 +257,14 @@ static u32 sub_0206D81C(u32 direction) {
 }
 
 static void sub_0206D850(PlayerAvatar *playerAvatar) {
-    if (sub_0205CA38(playerAvatar) == TRUE) {
+    if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
-        if (sub_0205CB2C(playerAvatar) == 0) {
+        if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
             sub_0205C74C(playerAvatar);
         }
-        sub_0205CA20(playerAvatar, 0);
-        sub_0205CB14(playerAvatar, 0);
-        sub_0205CAD0(playerAvatar, 0);
+        PlayerAvatar_SetFlag0(playerAvatar, 0);
+        PlayerAvatar_SetFlag7(playerAvatar, 0);
+        PlayerAvatar_SetFlag5(playerAvatar, 0);
     }
     return;
 }
@@ -272,12 +272,12 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
 BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
     NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD, TRUE);
     BOOL result = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
-    FreeToHeap(trade);
+    Heap_Free(trade);
     return result != FALSE;
 }
 
 BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     SAVE_MISC_DATA *misc = Save_Misc_Get(saveData);
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     if (!(species == SPECIES_TOGEPI
@@ -392,7 +392,7 @@ void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration
 void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location warp;
-    warp.mapId = MAP_D22R0101; // national park
+    warp.mapId = MAP_NATIONAL_PARK;
     warp.warpId = -1;
     warp.x = 46;
     warp.y = 50;
@@ -428,8 +428,8 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
             if (!contest->caught_poke) {
                 contest->caught_poke = TRUE;
             }
-            FreeToHeap(unkStruct->unk08);
-            FreeToHeap(unkStruct);
+            Heap_Free(unkStruct->unk08);
+            Heap_Free(unkStruct);
             return TRUE;
         }
         break;

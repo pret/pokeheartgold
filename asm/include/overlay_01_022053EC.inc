@@ -9,7 +9,7 @@
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_CreateNewVramTransferTask
 .public GF_GetNumPendingVramTransferTasks
 .public sub_02020838
@@ -29,7 +29,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord
 .public GetPlayerZCoord

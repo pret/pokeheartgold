@@ -50,19 +50,19 @@ _008D:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _00A8
-	setflag FLAG_UNK_2F2
+	setflag FLAG_HIDE_CELADON_GYM_ERIKA
 	goto _00DC
 
 _00A8:
 	compare VAR_TEMP_x4000, 15
 	goto_if_ne _00BF
-	setflag FLAG_UNK_2F2
+	setflag FLAG_HIDE_CELADON_GYM_ERIKA
 	goto _00DC
 
 _00BF:
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _00D6
-	setflag FLAG_UNK_2F2
+	setflag FLAG_HIDE_CELADON_GYM_ERIKA
 	goto _00DC
 
 _00D6:
@@ -75,7 +75,7 @@ _00DE:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _00F9
-	setflag FLAG_UNK_2F2
+	setflag FLAG_HIDE_CELADON_GYM_ERIKA
 	goto _00FF
 
 _00F9:
@@ -85,11 +85,11 @@ _00FF:
 	end
 
 _0101:
-	clearflag FLAG_UNK_2F2
+	clearflag FLAG_HIDE_CELADON_GYM_ERIKA
 	end
 
 _0107:
-	setflag FLAG_UNK_2F2
+	setflag FLAG_HIDE_CELADON_GYM_ERIKA
 	end
 
 scr_seq_T07GYM0101_000:

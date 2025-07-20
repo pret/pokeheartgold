@@ -191,11 +191,11 @@ _021F1C64:
 
 	thumb_func_start ov01_021F1C70
 ov01_021F1C70: ; 0x021F1C70
-	ldr r3, _021F1C78 ; =sub_0205CA4C
+	ldr r3, _021F1C78 ; =PlayerAvatar_SetFlag1
 	mov r1, #1
 	bx r3
 	nop
-_021F1C78: .word sub_0205CA4C
+_021F1C78: .word PlayerAvatar_SetFlag1
 	thumb_func_end ov01_021F1C70
 
 	thumb_func_start ov01_021F1C7C
@@ -356,7 +356,7 @@ ov01_021F1D94: ; 0x021F1D94
 	add r0, r5, #0
 	add r4, r2, #0
 	add r7, r3, #0
-	bl sub_0205CA38
+	bl PlayerAvatar_CheckFlag0
 	cmp r0, #1
 	bne _021F1DBE
 	add r0, r6, #0
@@ -760,8 +760,8 @@ _021F20B0:
 	.balign 4, 0
 	thumb_func_end CallFieldTask_Surf
 
-	thumb_func_start Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
-Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors: ; 0x021F20C0
+	thumb_func_start Field_PlayerCanSurfOnTile
+Field_PlayerCanSurfOnTile: ; 0x021F20C0
 	push {r4, r5, r6, lr}
 	add r4, r2, #0
 	add r5, r1, #0
@@ -804,7 +804,7 @@ _021F2112:
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-	thumb_func_end Field_PlayerCanStartSurfingByStandingAndFacingTileBehaviors
+	thumb_func_end Field_PlayerCanSurfOnTile
 
 	thumb_func_start ov01_021F2118
 ov01_021F2118: ; 0x021F2118
@@ -2749,7 +2749,7 @@ _021F3018:
 	bl ov01_021F1B38
 _021F3022:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021F302E:
@@ -2868,12 +2868,12 @@ _021F30E4:
 
 	thumb_func_start ov01_021F30F4
 ov01_021F30F4: ; 0x021F30F4
-	ldr r3, _021F30FC ; =FreeToHeapExplicit
+	ldr r3, _021F30FC ; =Heap_FreeExplicit
 	add r1, r0, #0
 	mov r0, #4
 	bx r3
 	.balign 4, 0
-_021F30FC: .word FreeToHeapExplicit
+_021F30FC: .word Heap_FreeExplicit
 	thumb_func_end ov01_021F30F4
 
 	thumb_func_start ov01_021F3100

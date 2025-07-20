@@ -94,7 +94,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     partyMon = Party_GetMonByIndex(party, partyIdx);
     daycareMail = DaycareMon_GetExtras(daycareMon);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
-    playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfileAddr(saveData));
+    playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfile(saveData));
     GetMonData(partyMon, MON_DATA_NICKNAME_FLAT, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
         GetMonData(partyMon, MON_DATA_MAIL_STRUCT, DaycareMail_GetMailPtr(daycareMail));
@@ -182,7 +182,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     Party_AddMon(party, mon);
     ZeroBoxMonData(boxMon);
     DaycareMon_SetSteps(daycareMon, 0);
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return species;
 }
 
@@ -207,7 +207,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     exp += steps;
     SetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
     level = CalcBoxMonLevel(boxmon_tmp);
-    FreeToHeap(tmpMon);
+    Heap_Free(tmpMon);
     return level;
 }
 
@@ -435,7 +435,7 @@ static u8 LoadEggMoves(Pokemon *mon, u16 *dest) {
         dest[i] = kowaza_list[offset + i];
         n++;
     }
-    FreeToHeap(kowaza_list);
+    Heap_Free(kowaza_list);
     return n;
 }
 
@@ -520,7 +520,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
             }
         }
     }
-    FreeToHeap(search);
+    Heap_Free(search);
 }
 
 void Save_Daycare_ResetEggStats(Daycare *dayCare) {
@@ -721,7 +721,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     Party_AddMon(party, mon);
     Save_Daycare_ResetEggStats(dayCare);
-    FreeToHeap(mon);
+    Heap_Free(mon);
 }
 
 static u8 GetEggCyclesToSubtract(Party *party) {
@@ -1092,7 +1092,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     SetMonData(tmpMon, MON_DATA_MET_DAY, &metDay);
     CopyPokemonToPokemon(tmpMon, mon);
     String_Delete(string);
-    FreeToHeap(tmpMon);
+    Heap_Free(tmpMon);
 }
 
 void sub_0206D328(Pokemon *mon, HeapID heapId) {

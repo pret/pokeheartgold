@@ -633,112 +633,112 @@
     {
       "x": 48,
       "z": 17,
-      "header": "MAP_D31R0201",
+      "header": "MAP_BATTLE_TOWER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 49,
       "z": 17,
-      "header": "MAP_D31R0201",
+      "header": "MAP_BATTLE_TOWER",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 77,
       "z": 34,
-      "header": "MAP_D32R0301",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_FACTORY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 77,
       "z": 35,
-      "header": "MAP_D32R0301",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_FACTORY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 19,
       "z": 34,
-      "header": "MAP_D32R0401",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_HALL",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 19,
       "z": 35,
-      "header": "MAP_D32R0401",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_HALL",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 33,
       "z": 62,
-      "header": "MAP_D32R0501",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_CASTLE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 33,
       "z": 63,
-      "header": "MAP_D32R0501",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_CASTLE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 64,
       "z": 62,
-      "header": "MAP_D32R0601",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_ARCADE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 64,
       "z": 63,
-      "header": "MAP_D32R0601",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_ARCADE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 48,
       "z": 52,
-      "header": "MAP_D32R0101",
+      "header": "MAP_BATTLE_FRONTIER_FRONTIER_ACCESS_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 49,
       "z": 52,
-      "header": "MAP_D32R0101",
+      "header": "MAP_BATTLE_FRONTIER_FRONTIER_ACCESS_GATEHOUSE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 73,
       "z": 34,
-      "header": "MAP_D32R0301",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_FACTORY",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 23,
       "z": 34,
-      "header": "MAP_D32R0401",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_HALL",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 60,
       "z": 62,
-      "header": "MAP_D32R0601",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_ARCADE",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 36,
       "z": 62,
-      "header": "MAP_D32R0501",
+      "header": "MAP_BATTLE_FRONTIER_BATTLE_CASTLE",
       "anchor": 0,
       "y": 0
     }

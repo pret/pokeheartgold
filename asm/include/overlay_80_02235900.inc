@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public FreeToHeap
+.public Heap_Free
 .public sub_0202D57C
 .public Save_FrontierData_Get
 .public sub_02030C5C

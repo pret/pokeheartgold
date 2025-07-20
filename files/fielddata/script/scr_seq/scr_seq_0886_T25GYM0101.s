@@ -23,25 +23,25 @@ scr_seq_T25GYM0101_004:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _0062
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00AD
 
 _0062:
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _0079
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00AD
 
 _0079:
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _0090
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00AD
 
 _0090:
 	compare VAR_TEMP_x4000, 15
 	goto_if_ne _00A7
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00AD
 
 _00A7:
@@ -54,19 +54,19 @@ _00AF:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00CA
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00FE
 
 _00CA:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00E1
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00FE
 
 _00E1:
 	compare VAR_TEMP_x4000, 20
 	goto_if_ne _00F8
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	goto _00FE
 
 _00F8:
@@ -76,11 +76,11 @@ _00FE:
 	end
 
 _0100:
-	clearflag FLAG_UNK_2EC
+	clearflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	end
 
 _0106:
-	setflag FLAG_UNK_2EC
+	setflag FLAG_HIDE_GOLDENROD_GYM_WHITNEY
 	end
 
 scr_seq_T25GYM0101_000:

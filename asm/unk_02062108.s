@@ -7,7 +7,7 @@
 #include "constants/items.h"
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
-#include "constants/party_menu.h"
+#include "constants/field_move_response.h"
 	.include "asm/macros.inc"
 	.include "unk_02062108.inc"
 	.include "global.inc"
@@ -230,7 +230,7 @@ _02062284:
 	bl MapObject_ClearHeldMovementIfActive
 	mov r0, #4
 	add r1, r4, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add r0, r5, #0
 	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}

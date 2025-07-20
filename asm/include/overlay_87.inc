@@ -10,7 +10,7 @@
 .public PaletteData_AllocBuffers
 .public PaletteData_FreeBuffers
 .public PaletteData_PushTransparentBuffers
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public StopSE
 .public IsSEPlaying
@@ -33,7 +33,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public ReplacePlttResObjFromNarc
-.public Get2DGfxResObjById
+.public SpriteResourceCollection_Find
 .public sub_0200ACF0
 .public sub_0200AEB0
 .public sub_0200AF94
@@ -71,7 +71,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -117,7 +117,7 @@
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetScaleAndAffineType
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimSpeed
 .public Sprite_GetMatrixPtr
@@ -127,7 +127,7 @@
 .public Sprite_SetPalIndexRespectVramOffset
 .public Sprite_SetDrawPriority
 .public Sprite_SetMosaic
-.public Sprite_IsCellAnimationRunning
+.public Sprite_IsAnimated
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchHeld

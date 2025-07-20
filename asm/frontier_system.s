@@ -130,11 +130,11 @@ _0222A930:
 	ldr r0, [r4, #0x4c]
 	bl String_Delete
 	ldr r0, [r4, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x3c]
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222A920
@@ -251,10 +251,10 @@ _0222AA22:
 	ldr r1, [r5, #0x40]
 	cmp r0, r1
 	beq _0222AA32
-	bl FreeToHeap
+	bl Heap_Free
 _0222AA32:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0222AA0C
@@ -378,7 +378,7 @@ _0222AB00:
 	sub r3, r3, #1
 	bne _0222AB00
 	add r0, r1, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov80_0222AAF8
 

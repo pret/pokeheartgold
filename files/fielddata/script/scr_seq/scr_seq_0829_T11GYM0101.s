@@ -28,22 +28,22 @@ _0055:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 5
 	goto_if_ne _0083
-	setflag FLAG_UNK_2F1
+	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
 
 _006C:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_ne _0083
-	setflag FLAG_UNK_2F1
+	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
 
 _0083:
-	clearflag FLAG_UNK_2F1
+	clearflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
 
 _0089:
-	setflag FLAG_UNK_2F1
+	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
 
 scr_seq_T11GYM0101_000:
@@ -152,7 +152,7 @@ scr_seq_T11GYM0101_003:
 	wait_movement
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	warp MAP_T11GYM0101, 0, 15, 23, DIR_SOUTH
+	warp MAP_SAFFRON_GYM, 0, 15, 23, DIR_SOUTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

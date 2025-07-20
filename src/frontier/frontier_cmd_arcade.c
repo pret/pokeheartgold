@@ -49,7 +49,7 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
     return FALSE;
 }
 
-extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
+extern OverlayManagerTemplate gOverlayTemplate_BattleArcadeGameBoard;
 
 BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
@@ -178,7 +178,7 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 static void ov80_02233A1C(void *data) {
     GAME_BOARD_ARGS *args = data;
     ov80_02234550(args->work, args);
-    FreeToHeap(args);
+    Heap_Free(args);
 }
 
 BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx) {
@@ -360,7 +360,7 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
             BufferFrontierOpponentName(ctx->frontierSystem->unk44, var0, arcadeCtx->unk74[ov80_022347A8(arcadeCtx, var1)]);
         } else {
             if (BattleArcade_MultiplayerCheck(arcadeCtx->type) == FALSE) {
-                profile = Save_PlayerData_GetProfileAddr(param->saveData);
+                profile = Save_PlayerData_GetProfile(param->saveData);
             } else {
                 profile = sub_02034818(var1);
             }

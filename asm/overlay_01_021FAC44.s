@@ -88,7 +88,7 @@ _021FACBC:
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
 	beq _021FACD0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r5, #0x10]
 _021FACD0:
@@ -98,7 +98,7 @@ _021FACD0:
 	cmp r4, #4
 	blo _021FACBC
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FACB4

@@ -10,7 +10,7 @@
 .public FontID_String_GetWidth
 .public LoadFontPal1
 .public BlendPalette
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public UnloadOverlayByID
 .public HandleLoadOverlay
@@ -67,7 +67,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -114,7 +114,7 @@
 .public Save_SysInfo_Get
 .public Save_SysInfo_GetField4C
 .public Save_SysInfo_SetField4C
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202C08C

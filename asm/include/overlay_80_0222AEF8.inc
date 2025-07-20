@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public sub_02030E08
 .public sub_02030FA0
 .public Save_Frontier_GetStatic

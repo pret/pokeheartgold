@@ -115,7 +115,7 @@ _0186:
 _018E:
 	wait_movement
 	hide_person obj_T07R0102_leader3
-	setflag FLAG_UNK_313
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_2F_CRASHER_WAKE
 	clearflag FLAG_HIDE_ROUTE_47_CRASHER_WAKE
 	releaseall
 	end

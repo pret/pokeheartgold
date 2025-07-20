@@ -4,7 +4,7 @@
 .public FontID_Release
 .public FontID_String_GetWidth
 .public FontID_String_GetCenterAlignmentX
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
@@ -37,7 +37,7 @@
 .public StringExpandPlaceholders
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY
-.public Sprite_AddPositionXY
+.public Sprite_OffsetPositionXY
 .public SysTask_CreateOnMainQueue
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
@@ -79,7 +79,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -126,7 +126,7 @@
 .public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimSpeed
 .public Sprite_SetAnimCtrlSeq

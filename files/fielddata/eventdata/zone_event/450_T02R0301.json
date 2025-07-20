@@ -126,14 +126,14 @@
     {
       "x": 5,
       "z": 15,
-      "header": "MAP_T02",
+      "header": "MAP_VIRIDIAN",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 13,
       "z": 3,
-      "header": "MAP_T02R0302",
+      "header": "MAP_VIRIDIAN_TRAINER_HOUSE_B1F",
       "anchor": 0,
       "y": 0
     }

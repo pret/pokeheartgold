@@ -15,7 +15,7 @@ void Save_PlayerData_Init(PLAYERDATA *player) {
     InitIGT(&player->igt);
 }
 
-PlayerProfile *Save_PlayerData_GetProfileAddr(SaveData *saveData) {
+PlayerProfile *Save_PlayerData_GetProfile(SaveData *saveData) {
     PLAYERDATA *player = SaveArray_Get(saveData, SAVE_PLAYERDATA);
     return &player->profile;
 }

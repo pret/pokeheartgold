@@ -10,7 +10,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FC20
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public SetBgPriority
@@ -34,7 +34,7 @@
 .public GfGfx_EngineASetPlanes
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetPriority
 .public Sprite_SetDrawPriority
 .public GF_AssertFail

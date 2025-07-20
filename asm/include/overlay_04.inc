@@ -11,7 +11,7 @@
 .public IsCameraTranslationFinished
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public Camera_OffsetLookAtPosAndTarget
 .public Camera_GetPerspectiveAngle
@@ -30,7 +30,7 @@
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr
 .public sub_020548C0
-.public GetMetatileBehaviorAt
+.public GetMetatileBehavior
 .public sub_0205BAC4
 .public PlayerAvatar_GetFacingDirection
 .public GetPlayerXCoord

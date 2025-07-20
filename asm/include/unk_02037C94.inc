@@ -7,7 +7,7 @@
 .public CreateHeapAtEnd
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public String_New
 .public String_Delete
@@ -15,7 +15,7 @@
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
 .public Save_Cancel
-.public Save_PlayerData_GetProfileAddr
+.public Save_PlayerData_GetProfile
 .public PlayerProfile_GetPlayerName_NewString
 .public PlayerProfile_GetTrainerID
 .public PlayerProfile_GetTrainerGender

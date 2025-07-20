@@ -43,7 +43,7 @@ _021E8862:
 	mov r1, #0
 	mov r0, #0x43
 	add r2, r1, #0
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -134,7 +134,7 @@ _021E894E:
 	mov r0, #0x11
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl SpriteGfxHandler_RenderAndAnimateSprites
+	bl SpriteSystem_DrawSprites
 	mov r0, #0xce
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -184,10 +184,10 @@ ov108_021E8968: ; 0x021E8968
 	lsl r1, r1, #4
 	strb r0, [r5, r1]
 	ldr r0, [r4]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	ldr r0, [r5, #0x20]
-	bl sub_0202F720
+	bl SafariZone_GetObjectUnlockLevel
 	add r7, r0, #0
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerID
@@ -282,7 +282,7 @@ ov108_021E8A88: ; 0x021E8A88
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r2, r4, #0
 	ldr r0, [r4, #0x20]
 	mov r1, #0
@@ -781,11 +781,11 @@ _021E8E76:
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xec
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x20]
 	bl NARC_Delete
 	ldr r0, [r4, #0x1c]
@@ -1113,7 +1113,7 @@ _021E9124:
 	ldr r0, [r6]
 	cmp r0, #0
 	beq _021E912E
-	bl FreeToHeap
+	bl Heap_Free
 _021E912E:
 	add r0, r6, #0
 	mov r1, #0
@@ -1212,7 +1212,7 @@ ov108_021E91D4: ; 0x021E91D4
 	add r0, r0, #4
 	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0
 	mov r2, #0x14
@@ -1521,16 +1521,16 @@ _021E945A:
 	ldr r0, _021E9480 ; =0x0000044C
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x45
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _021E9484 ; =0x00000444
 	add r1, r4, #0
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E947C: .word 0x00000494
@@ -2000,7 +2000,7 @@ _021E97F4:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021E9800
-	bl thunk_OamManager_ApplyAndResetBuffers
+	bl SpriteSystem_TransferOam
 _021E9800:
 	bl GF_RunVramTransferTasks
 	ldr r0, _021E9824 ; =0x00000438
@@ -2269,7 +2269,7 @@ ov108_021E9A08: ; 0x021E9A08
 	bl FreeBgTilemapBuffer
 	ldr r0, _021E9A5C ; =0x00000438
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 _021E9A5C: .word 0x00000438
@@ -2455,14 +2455,14 @@ ov108_021E9BD4: ; 0x021E9BD4
 	bl G2x_SetBlendAlpha_
 	ldr r0, _021E9C0C ; =0x00000528
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x52
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E9C10 ; =0x00000518
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
@@ -2732,17 +2732,17 @@ ov108_021E9E10: ; 0x021E9E10
 	mov r0, #0x20
 	bl GF_CreateVramTransferManager
 	ldr r0, [r4]
-	bl SpriteRenderer_Create
+	bl SpriteSystem_Alloc
 	ldr r1, _021E9E70 ; =0x0000043C
 	ldr r2, _021E9E74 ; =ov108_021EAAD0
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
 	ldr r1, _021E9E78 ; =ov108_021EABA8
 	mov r3, #1
-	bl SpriteRenderer_CreateOamCharPlttManagers
+	bl SpriteSystem_Init
 	ldr r0, _021E9E70 ; =0x0000043C
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_CreateGfxHandler
+	bl SpriteManager_New
 	mov r1, #0x11
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -2750,7 +2750,7 @@ ov108_021E9E10: ; 0x021E9E10
 	ldr r0, [r4, r0]
 	ldr r1, [r4, r1]
 	mov r2, #4
-	bl SpriteRenderer_CreateSpriteList
+	bl SpriteSystem_InitSprites
 	mov r3, #0
 	ldr r1, _021E9E70 ; =0x0000043C
 	str r3, [sp]
@@ -2780,10 +2780,10 @@ ov108_021E9E80: ; 0x021E9E80
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl SpriteRenderer_RemoveGfxHandler
+	bl SpriteSystem_DestroySpriteManager
 	ldr r0, _021E9EB4 ; =0x0000043C
 	ldr r0, [r4, r0]
-	bl SpriteRenderer_Delete
+	bl SpriteSystem_Free
 	ldr r0, _021E9EB4 ; =0x0000043C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -2813,13 +2813,13 @@ _021E9EC2:
 	ldr r0, [r6, r0]
 	ldr r1, [r6, r1]
 	add r2, r4, #0
-	bl SpriteRenderer_CreateSprite
+	bl SpriteSystem_CreateSpriteFromResourceHeader
 	ldr r1, _021E9F00 ; =0x00000444
 	str r0, [r5, r1]
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r7, r7, #1
 	add r4, #0x28
 	add r5, r5, #4
@@ -3719,7 +3719,7 @@ ov108_021EA5E4: ; 0x021EA5E4
 	sub r0, r0, #1
 	str r0, [r1]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021EA61E:

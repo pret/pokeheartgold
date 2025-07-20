@@ -238,7 +238,7 @@ void InitBattleMsgData(BattleContext *ctx, BattleMessageData *msgdata);
 void InitBattleMsg(BattleSystem *bsys, BattleContext *ctx, BattleMessageData *msgdata, BattleMessage *msg);
 void UpdateFrienshipFainted(BattleSystem *bsys, BattleContext *ctx, int battlerId);
 int GetMoveMessageNo(BattleContext *ctx, int move);
-void ov12_022463E8(Party *party, int slot, u32 species, u32 form);
+void BattleScript_CalcEffortValues(Party *party, int slot, u32 species, u32 form);
 void ov12_02248228(BattleSystem *bsys, GetterWork *data, Pokemon *mon);
 void ov12_022484D4(BattleSystem *bsys, GetterWork *data);
 

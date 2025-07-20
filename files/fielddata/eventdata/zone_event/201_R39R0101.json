@@ -40,14 +40,14 @@
     {
       "x": 6,
       "z": 10,
-      "header": "MAP_R39",
+      "header": "MAP_ROUTE_39",
       "anchor": 0,
       "y": 0
     },
     {
       "x": 1,
       "z": 8,
-      "header": "MAP_R39R0201",
+      "header": "MAP_ROUTE_39_MOOMOO_FARM_STABLE",
       "anchor": 1,
       "y": 0
     }

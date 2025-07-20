@@ -25,10 +25,10 @@ sub_02092BB8: ; 0x02092BB8
 
 	thumb_func_start sub_02092BD0
 sub_02092BD0: ; 0x02092BD0
-	ldr r3, _02092BD4 ; =FreeToHeap
+	ldr r3, _02092BD4 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02092BD4: .word FreeToHeap
+_02092BD4: .word Heap_Free
 	thumb_func_end sub_02092BD0
 
 	thumb_func_start sub_02092BD8

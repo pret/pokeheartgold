@@ -32,7 +32,7 @@ GF_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOverlayData
 
 void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active) {
     Sprite_SetAnimActiveFlag(sprite, active);
-    Sprite_SetVisibleFlag(sprite, active);
+    Sprite_SetDrawFlag(sprite, active);
 }
 
 void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverlayData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header) {

@@ -135,63 +135,63 @@
     {
       "x": 6,
       "z": 7,
-      "header": "MAP_R47",
+      "header": "MAP_ROUTE_47",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 26,
       "z": 13,
-      "header": "MAP_R47",
+      "header": "MAP_ROUTE_47",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 6,
       "z": 29,
-      "header": "MAP_R47",
+      "header": "MAP_ROUTE_47",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 4,
       "z": 5,
-      "header": "MAP_D50R0101",
+      "header": "MAP_CLIFF_CAVE",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 4,
       "z": 4,
-      "header": "MAP_D50R0101",
+      "header": "MAP_CLIFF_CAVE",
       "anchor": 5,
       "y": 0
     },
     {
       "x": 4,
       "z": 22,
-      "header": "MAP_D50R0101",
+      "header": "MAP_CLIFF_CAVE",
       "anchor": 3,
       "y": 0
     },
     {
       "x": 8,
       "z": 5,
-      "header": "MAP_D50R0101",
+      "header": "MAP_CLIFF_CAVE",
       "anchor": 7,
       "y": 0
     },
     {
       "x": 27,
       "z": 4,
-      "header": "MAP_D50R0101",
+      "header": "MAP_CLIFF_CAVE",
       "anchor": 6,
       "y": 0
     },
     {
       "x": 27,
       "z": 3,
-      "header": "MAP_D50R0101",
+      "header": "MAP_CLIFF_CAVE",
       "anchor": 6,
       "y": 0
     }

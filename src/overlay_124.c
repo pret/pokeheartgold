@@ -18,7 +18,7 @@ static void ov124_02260D68(void);
 static void ov124_02260D6C(void);
 static void ov124_02260D58(void);
 
-void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem) {
+void FieldSystem_Init(OverlayManager *man, FieldSystem *fieldSystem) {
     u32 key = 2441 * 4073; // these are both prime
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
     key += 769 * (!ov123_0225F4A8(ov124_02260D68)); // 769 is prime
@@ -51,7 +51,7 @@ static void ov124_02260D1C(FieldSystem *fieldSystem) {
     int i = 0;
     int numBadges = 0;
     for (i = 0; i < 16; ++i) {
-        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfileAddr(fieldSystem->saveData), i) == TRUE) {
+        if (PlayerProfile_TestBadgeFlag(Save_PlayerData_GetProfile(fieldSystem->saveData), i) == TRUE) {
             ++numBadges;
         }
     }

@@ -14326,11 +14326,11 @@ ov45_0223D7B4: ; 0x0223D7B4
 	bxlt lr
 	cmp r0, #0x80
 	bxge lr
-	ldr r1, _0223D7D0 ; =_0210E404
+	ldr r1, _0223D7D0 ; =__lower_mapC
 	ldrb r0, [r1, r0]
 	bx lr
 	.balign 4, 0
-_0223D7D0: .word _0210E404
+_0223D7D0: .word __lower_mapC
 	arm_func_end ov45_0223D7B4
 
 	arm_func_start ov45_0223D7D4
@@ -16053,7 +16053,7 @@ _0223EEF8:
 	movs r0, r0, lsr #0x1f
 	addeq r0, r1, #1
 	ldrne r0, [r1, #8]
-	bl atoi
+	bl atol
 	movs r4, r0
 	bne _0223EF40
 	add r0, sp, #0x6c
@@ -20396,7 +20396,7 @@ _02242A80:
 	movs r0, r0, lsr #0x1f
 	addeq r0, r1, #0xd
 	ldrne r0, [r1, #0x14]
-	bl atoi
+	bl atol
 	movs r4, r0
 	add r0, sp, #0xc
 	bne _02242AB8
@@ -25833,7 +25833,7 @@ _0224755C:
 	mov r0, #0
 	cmp r2, #0
 	beq _02247594
-	ldr r1, _022475B4 ; =_0210E404
+	ldr r1, _022475B4 ; =__lower_mapC
 _02247570:
 	cmp r2, #0
 	blt _02247584
@@ -25855,7 +25855,7 @@ _022475A4: .word ov45_0225590C
 _022475A8: .word ov45_02255918
 _022475AC: .word ov45_02255668
 _022475B0: .word ov45_02255928
-_022475B4: .word _0210E404
+_022475B4: .word __lower_mapC
 	arm_func_end ov45_02247518
 
 	arm_func_start ov45_022475B8
@@ -30191,7 +30191,7 @@ _0224B05C:
 	cmpne r0, #0
 	streq r7, [sb, #0x1c]
 	beq _0224B0DC
-	bl atoi
+	bl atol
 	str r0, [sb, #0x1c]
 	b _0224B0DC
 _0224B080:
@@ -33616,7 +33616,7 @@ _0224E05C:
 	bl memcpy
 	ldr r0, [sb, #0x20]
 	ldr r0, [r0, #8]
-	bl atoi
+	bl atol
 	ldr r1, [sb, #0x20]
 	mov r5, r0
 	ldr r0, [r1, #0xc]
@@ -34447,7 +34447,7 @@ _0224EC44:
 	ldmneia sp!, {r3, r4, r5, r6, pc}
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0, #4]
-	bl atoi
+	bl atol
 	ldr r1, [r5, #0x20]
 	mov r5, r0
 	ldr r6, [r1, #8]
@@ -34504,11 +34504,11 @@ _0224ED10:
 	ldmltia sp!, {r3, r4, r5, pc}
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #4]
-	bl atoi
+	bl atol
 	str r0, [r5, #0x8ac]
 	ldr r0, [r4, #0x20]
 	ldr r0, [r0, #8]
-	bl atoi
+	bl atol
 	str r0, [r5, #0x8b0]
 	ldr r0, [r5, #0x10]
 	cmp r0, #0
@@ -35081,7 +35081,7 @@ _0224F4D4:
 	ldmneia sp!, {r3, r4, r5, r6, r7, r8, sb, pc}
 	ldr r0, [r5, #0x20]
 	ldr r0, [r0, #4]
-	bl atoi
+	bl atol
 	ldr r2, [r5, #0x20]
 	ldr r1, [r4, #4]
 	ldr r5, [r2, #8]

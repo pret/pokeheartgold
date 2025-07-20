@@ -37,7 +37,7 @@ Static main
     Object src/message_format.o
     Object src/message_printer.o
     Object src/unk_0200CE7C.o
-    Object src/unk_0200CF18.o
+    Object src/sprite_system.o
     Object src/sys_task_api.o
     Object asm/render_window.o
     Object asm/unk_0200FA24.o
@@ -238,6 +238,7 @@ Static main
     Object asm/unk_0206793C.o
     Object asm/unk_02067A60.o
     Object src/field_move.o
+    Object src/field_move_environment.o
     Object asm/unk_020689C8.o
     Object src/gymmick_init.o
     Object src/unk_02068F84.o
@@ -410,6 +411,47 @@ Static main
     Object lib/NitroSDK/asm/mi_compress.o
     Object lib/NitroSDK/asm/mi_init.o
     Object lib/asm/nitro.o
+    Object lib/MSL_C/asm/MSL_ARM_abort_exit.o
+    Object lib/MSL_c/asm/MSL_ARM_critical_regions_NITRO.o
+    Object lib/MSL_C/asm/MSL_ARM_math.o
+    Object lib/MSL_C/asm/MSL_Common_alloc.o
+    Object lib/MSL_C/asm/MSL_Common_ansi_files.o
+    Object lib/MSL_C/src/arith.o
+    Object lib/MSL_C/asm/MSL_Common_assert.o
+    Object lib/MSL_C/asm/MSL_Common_buffer_io.o
+    Object lib/MSL_C/asm/MSL_Common_ctype.o
+    Object lib/MSL_C/asm/MSL_Common_direct_io.o
+    Object lib/MSL_C/asm/MSL_Common_errno.o
+    Object lib/MSL_C/asm/MSL_Common_file_io.o
+    Object lib/MSL_C/asm/MSL_Common_file_pos.o
+    Object lib/MSL_C/asm/MSL_Common_float.o
+    Object lib/MSL_C/asm/MSL_Common_mbstring.o
+    Object lib/MSL_C/asm/MSL_Common_mem.o
+    Object lib/MSL_C/asm/MSL_Common_mem_funcs.o
+    Object lib/MSL_C/asm/MSL_Common_printf.o
+    Object lib/MSL_C/asm/MSL_Common_qsort.o
+    Object lib/MSL_C/src/rand.o
+    Object lib/MSL_C/asm/MSL_Common_scanf.o
+    Object lib/MSL_C/asm/MSL_Common_signal.o
+    Object lib/MSL_C/asm/MSL_Common_string.o
+    Object lib/MSL_C/asm/MSL_Common_strtold.o
+    Object lib/MSL_C/asm/MSL_Common_strtoul.o
+    Object lib/MSL_C/asm/MSL_Common_wchar_io.o
+    Object lib/MSL_C/asm/MSL_Common_wctype.o
+    Object lib/MSL_C/asm/MSL_Common_wmem.o
+    Object lib/MSL_C/asm/MSL_Common_wprintf.o
+    Object lib/MSL_C/asm/MSL_Common_wstring.o
+    Object lib/MSL_C/asm/MSL_DPMath_e_pow.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_copysign.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_fabs.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_frexp.o
+    Object lib/MSL_C/asm/MSL_DPMath_s_ldexp.o
+    Object lib/MSL_C/asm/MSL_DPMath_w_pow.o
+    Object lib/MSL_C/asm/MSL_fp_ansi.o
+    Object lib/MSL_C/asm/MSL_math.o
+    Object lib/MSL_C/asm/MSL_ARM_pool_alloc_NITRO.o
+    Object lib/MSL_C/asm/MSL_string_extras.o
+    Object lib/MSL_C/asm/MSL_CPP_NITRO_Ai_LE.o
     Object lib/asm/msl.o
 }
 
@@ -920,6 +962,7 @@ Overlay OVY_73
 Overlay OVY_74
 {
     After OVY_38
+    Object src/application/main_menu/main_menu.o
     Object asm/overlay_74_thumb.o
     Object asm/nitrocrypto.o
 }
@@ -1085,12 +1128,55 @@ Overlay OVY_99
 Overlay OVY_100
 {
     After main
-    Object asm/overlay_100.o
+    Object src/application/pokegear/main/overlay_100_021E5900.o
+    Object src/application/pokegear/main/pokegear_main.o
+    Object src/application/pokegear/main/overlay_100_021E6914.o
 }
 Overlay OVY_101
 {
     After OVY_100
-    Object asm/overlay_101.o
+    Object asm/pokegear_app_map.o
+    Object asm/pokegear_app_configure.o
+    Object src/application/pokegear/phone/pokegear_phone.o
+    Object src/application/pokegear/phone/overlay_101_021EFD20.o
+    Object src/application/pokegear/phone/overlay_101_021F017C.o
+    Object src/application/pokegear/phone/overlay_101_021F0880.o
+    Object src/application/pokegear/phone/overlay_101_021F0F48.o
+    Object src/application/pokegear/phone/overlay_101_021F1D74.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_mother.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_prof_elm.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_generic.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_prof_oak.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_kurt.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_bike_shop.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_blackbelt_kenji.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_bill.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_daycare_man.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_daycare_lady.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_buena.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_childhood_friend.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_gym_leader.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_baoba.o
+    Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
+    Object src/application/pokegear/phone/extra_ethan_lyra_data.o
+    Object src/application/pokegear/radio/pokegear_radio.o
+    Object src/application/pokegear/radio/overlay_101_021F49F8.o
+    Object src/application/pokegear/radio/overlay_101_021F4F34.o
+    Object src/application/pokegear/radio/overlay_101_021F57B8.o
+    Object src/application/pokegear/radio/shows/pokemon_music.o
+    Object src/application/pokegear/radio/shows/poke_flute.o
+    Object src/application/pokegear/radio/shows/unown.o
+    Object src/application/pokegear/radio/shows/team_rocket.o
+    Object src/application/pokegear/radio/shows/serial_radio_drama.o
+    Object src/application/pokegear/radio/shows/commercials.o
+    Object src/application/pokegear/radio/shows/pokemon_search_party.o
+    Object src/application/pokegear/radio/shows/buenas_password.o
+    Object src/application/pokegear/radio/shows/that_town_these_people.o
+    Object src/application/pokegear/radio/shows/trainer_profiles.o
+    Object src/application/pokegear/radio/shows/pokemon_talk.o
+    Object src/application/pokegear/radio/shows/mahogany_signal.o
+    Object src/application/pokegear/phone/phone_script_defs.o
+    Object src/application/pokegear/phone/phone_generic_headers.o
 }
 Overlay OVY_102
 {

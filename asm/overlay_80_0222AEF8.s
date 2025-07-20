@@ -25,7 +25,7 @@ ov80_0222AF10: ; 0x0222AF10
 	add r4, r0, #0
 	ldr r0, _0222AF34 ; =0x000006FC
 	ldr r0, [r4, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldr r1, _0222AF38 ; =0x0000072C
 	mov r0, #0x22
 	add r1, r4, r1
@@ -313,7 +313,7 @@ ov80_0222B108: ; 0x0222B108
 	add r4, r5, r0
 	sub r0, #0xc
 	ldr r0, [r5, r0]
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	ldrh r0, [r5, #8]
 	add r1, r4, #0
 	mov r2, #0x3c
@@ -1573,7 +1573,7 @@ _0222BA0E:
 	blt _0222BA0E
 _0222BA2E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203769C
 	cmp r0, #0
 	beq _0222BA54
@@ -2055,7 +2055,7 @@ _0222BD86:
 	blt _0222BD86
 _0222BDA6:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203769C
 	cmp r0, #0
 	beq _0222BDCC

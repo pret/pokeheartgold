@@ -131,7 +131,7 @@ BOOL Task_RunScripts(TaskManager *taskman) {
             String_Delete(env->stringBuffer0);
             String_Delete(env->stringBuffer1);
             env->check = 0;
-            FreeToHeap(env);
+            Heap_Free(env);
             if (callback != NULL) {
                 (*callback)(fieldSystem);
                 return FALSE;
@@ -154,8 +154,8 @@ ScriptEnvironment *ScriptEnvironment_New(void) {
 
 void DestroyScriptContext(ScriptContext *ctx) {
     DestroyMsgData(ctx->msgdata);
-    FreeToHeap(ctx->mapScripts);
-    FreeToHeap(ctx);
+    Heap_Free(ctx->mapScripts);
+    Heap_Free(ctx);
 }
 
 void SetupScriptEngine(FieldSystem *fieldSystem, ScriptEnvironment *env, u16 script, LocalMapObject *lastInteracted, void *a4) {
@@ -415,7 +415,7 @@ void ClearDailyFlags(FieldSystem *fieldSystem) {
     memset(flags, 0, NUM_DAILY_FLAGS / 8);
 }
 
-void FieldMoveArgsSet(FieldSystem *fieldSystem, u16 v8000, u16 v8001, u16 v8002, u16 v8003) {
+void FieldMove_SetArgs(FieldSystem *fieldSystem, u16 v8000, u16 v8001, u16 v8002, u16 v8003) {
     *(u16 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SPECIAL_VAR_8000) = v8000;
     *(u16 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SPECIAL_VAR_8001) = v8001;
     *(u16 *)FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_SPECIAL_VAR_8002) = v8002;
@@ -472,7 +472,7 @@ u8 sub_02040578(u16 script) {
         }
     }
     if (i >= NELEMS(sHiddenItemParam)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return 0;
     }
 
@@ -499,7 +499,7 @@ BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script) {
         }
     }
     if (i >= NELEMS(sHiddenItemParam)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
 

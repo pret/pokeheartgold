@@ -40,14 +40,14 @@
     {
       "x": 1,
       "z": 7,
-      "header": "MAP_D22R0101",
+      "header": "MAP_NATIONAL_PARK",
       "anchor": 2,
       "y": 0
     },
     {
       "x": 10,
       "z": 7,
-      "header": "MAP_R36",
+      "header": "MAP_ROUTE_36",
       "anchor": 1,
       "y": 0
     }

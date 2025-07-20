@@ -74,14 +74,14 @@
     {
       "x": 11,
       "z": 8,
-      "header": "MAP_T07R0105",
+      "header": "MAP_CELADON_DEPARTMENT_STORE_5F",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 5,
       "z": 2,
-      "header": "MAP_T07R0107",
+      "header": "MAP_CELADON_DEPARTMENT_STORE_ELEVATOR",
       "anchor": 0,
       "y": 0
     }

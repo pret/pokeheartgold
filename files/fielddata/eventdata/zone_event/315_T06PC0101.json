@@ -135,14 +135,14 @@
     {
       "x": 8,
       "z": 19,
-      "header": "MAP_T06",
+      "header": "MAP_VERMILION",
       "anchor": 1,
       "y": 0
     },
     {
       "x": 14,
       "z": 17,
-      "header": "MAP_T06PC0102",
+      "header": "MAP_VERMILION_POKECENTER_B1F",
       "anchor": 0,
       "y": 0
     }

@@ -157,7 +157,7 @@ _02023786:
 _02023798:
 	ldr r0, _020237AC ; =_021D2208
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020237AC ; =_021D2208
 	mov r1, #0
 	str r1, [r0]
@@ -281,15 +281,15 @@ _02023882:
 	beq _020238B6
 	bl sub_020238BC
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xd0
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xdc
 	ldr r0, [r0]

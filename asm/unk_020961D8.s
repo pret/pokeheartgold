@@ -68,7 +68,7 @@ sub_02096248: ; 0x02096248
 	ldr r0, [r4, #4]
 	bl MessageFormat_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_02096248
 
@@ -111,7 +111,7 @@ _020962A2:
 	cmp r0, #0
 	bne _02096314
 	ldr r0, [r4]
-	bl sub_020505C0
+	bl FieldSystem_LoadFieldOverlay
 	mov r0, #2
 	str r0, [r4, #0x18]
 	b _02096314

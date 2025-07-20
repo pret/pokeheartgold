@@ -550,7 +550,7 @@ ov80_0222A334: ; 0x0222A334
 	sub sp, #0xc
 	add r4, r1, #0
 	add r5, r0, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #7
@@ -558,7 +558,7 @@ ov80_0222A334: ; 0x0222A334
 	bl GetMonData
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl Save_PlayerData_GetProfileAddr
+	bl Save_PlayerData_GetProfile
 	mov r3, #0
 	add r1, r0, #0
 	str r3, [sp]
@@ -627,14 +627,14 @@ ov80_0222A3D4: ; 0x0222A3D4
 	beq _0222A3FC
 	add r0, r5, #0
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Sprite_SetAnimCtrlSeq
 	mov r1, #1
 	add r0, r5, #0
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222A3FC:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -654,7 +654,7 @@ ov80_0222A400: ; 0x0222A400
 	str r1, [sp, #8]
 	cmp r3, #1
 	bne _0222A42E
-	bl Sprite_GetAnimCtrlCurrentFrame
+	bl Sprite_GetAnimationFrame
 	cmp r0, #0
 	bne _0222A428
 	sub r0, r4, #3
@@ -715,7 +715,7 @@ _0222A46E:
 ov80_0222A474: ; 0x0222A474
 	push {r3, lr}
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, pc}
 	thumb_func_end ov80_0222A474
 
@@ -1123,7 +1123,7 @@ _0222A738:
 	blt _0222A738
 _0222A75C:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [sp, #0x14]
 	add r0, sp, #0x44
 	mov r2, #0xb
@@ -1158,7 +1158,7 @@ _0222A796:
 	blt _0222A796
 _0222A7A6:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x90]
 	ldr r1, [sp, #0x18]
 	str r0, [sp]

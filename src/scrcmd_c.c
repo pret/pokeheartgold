@@ -1227,7 +1227,7 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env);
 void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2) {
     struct ObjectMovementTaskEnv *env = AllocFromHeap(HEAP_ID_4, sizeof(struct ObjectMovementTaskEnv));
     if (env == NULL) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     env->fieldSystem = fieldSystem;
@@ -1242,11 +1242,11 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
         EventObjectMovementMan_Delete(env->movementMan);
         SysTask_Destroy(env->task);
         if (env->cmd != NULL) {
-            FreeToHeap(env->cmd);
+            Heap_Free(env->cmd);
         }
-        FreeToHeap(env);
+        Heap_Free(env);
         if (*movementCnt == 0) {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         } else {
             (*movementCnt)--;
         }
@@ -1423,7 +1423,7 @@ BOOL ScrCmd_HidePerson(ScriptContext *ctx) {
     u16 objectId = ScriptGetVar(ctx);
     LocalMapObject *object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, objectId);
     if (object == NULL) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     } else {
         MapObject_Delete(object);
     }
@@ -1488,7 +1488,7 @@ BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
     if (MapObject_GetID(*p_lastInteracted) == obj_partner_poke) {
         if (ov01_022055DC(*p_lastInteracted) && oldDir != rvsDir) {
             ov01_02205604(*p_lastInteracted, &x, &y);
-            metatile = GetMetatileBehaviorAt(fieldSystem, x, y);
+            metatile = GetMetatileBehavior(fieldSystem, x, y);
             if (rvsDir == 2 || rvsDir == 3) {
                 if (MetatileBehavior_IsEncounterGrass(metatile) == TRUE) {
                     ov01_021FF0E4(*p_lastInteracted, 0, x, y, 1);
@@ -1625,7 +1625,7 @@ BOOL ScrCmd_PartySelect(ScriptContext *ctx) { // todo: get selected pokemon slot
     if (*dest_p == 7) {
         *dest_p = 255;
     }
-    FreeToHeap(*partyMenu);
+    Heap_Free(*partyMenu);
     *partyMenu = NULL;
     return FALSE;
 }
@@ -1649,7 +1649,7 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
             (*r6)--;
         }
     }
-    FreeToHeap(*partyMenuPtr);
+    Heap_Free(*partyMenuPtr);
     *partyMenuPtr = NULL;
     return FALSE;
 }
@@ -1674,7 +1674,7 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
             (*r7)--;
         }
     }
-    FreeToHeap(*partyMenuPtr);
+    Heap_Free(*partyMenuPtr);
     *partyMenuPtr = NULL;
     return FALSE;
 }
@@ -1699,7 +1699,7 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
             (*r7)--;
         }
     }
-    FreeToHeap(*partyMenuPtr);
+    Heap_Free(*partyMenuPtr);
     *partyMenuPtr = NULL;
     return FALSE;
 }
@@ -1714,7 +1714,7 @@ BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
     } else {
         *r5 = sub_0203E600(*p_work);
     }
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return FALSE;
 }
@@ -1756,7 +1756,7 @@ BOOL ScrNative_WaitApplication_DestroyTaskData(ScriptContext *ctx) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return FALSE;
     }
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return TRUE;
 }
@@ -1768,7 +1768,7 @@ static BOOL sub_020429A0(ScriptContext *ctx) {
         return FALSE;
     }
     sub_02093070(fieldSystem);
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return TRUE;
 }
@@ -1843,7 +1843,7 @@ BOOL ScrCmd_153(ScriptContext *ctx) {
     struct FashionAppData **p_data = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u16 *p_dest = ScriptGetVarPointer(ctx);
     *p_dest = (*p_data)->unk_4;
-    FreeToHeap(*p_data);
+    Heap_Free(*p_data);
     return FALSE;
 }
 
@@ -2037,7 +2037,7 @@ BOOL ScrCmd_706(ScriptContext *ctx) {
     if (saveOk == 2) {
         *p_var = 1;
     }
-    FreeToHeap(hof);
+    Heap_Free(hof);
     return FALSE;
 }
 
@@ -2080,7 +2080,7 @@ BOOL ScrCmd_334(ScriptContext *ctx) { // todo: bag select screen result
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
     *r5 = BagView_SelectResult(*p_work);
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return FALSE;
 }
@@ -2350,9 +2350,9 @@ BOOL ScrCmd_591(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_186(ScriptContext *ctx) {
-    u8 r1 = ScriptReadByte(ctx);
-    sub_0205CAA4(ctx->fieldSystem->playerAvatar, r1);
+BOOL ScrCmd_SetBikeStateLock(ScriptContext *ctx) {
+    BOOL lock = ScriptReadByte(ctx);
+    PlayerAvatar_SetBikeStateLock(ctx->fieldSystem->playerAvatar, lock);
     return FALSE;
 }
 
@@ -2477,7 +2477,7 @@ BOOL ScrCmd_230(ScriptContext *ctx) {
     struct UnkStruct_ScrCmd230 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct UnkStruct_ScrCmd230 *work = *p_work;
     CallTask_020508B8(ctx->fieldSystem->taskman, &work->unk_30, 5);
-    FreeToHeap(work);
+    Heap_Free(work);
     *p_work = NULL;
     return TRUE;
 }
@@ -2551,15 +2551,15 @@ BOOL ScrCmd_247(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetDexEvalResult(ScriptContext *ctx) {
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
     u8 kind = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u16 *p_ret2 = ScriptGetVarPointer(ctx);
 
     if (kind == 0) {
-        *p_ret = sub_0205BBD0(Pokedex_CountJohtoOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
+        *p_ret = GetOakJohtoDexRating(Pokedex_CountJohtoOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
     } else {
-        *p_ret = sub_0205BC78(Pokedex_CountNationalOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
+        *p_ret = GetOakNationalDexRating(Pokedex_CountNationalOwned_ExcludeMythical(pokedex), PlayerProfile_GetTrainerGender(profile), p_ret2);
     }
     return FALSE;
 }
@@ -2698,7 +2698,7 @@ BOOL ScrCmd_264(ScriptContext *ctx) {
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_LAST_INTERACTED);
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 r4 = ScriptReadHalfword(ctx);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     SaveEasyChat *easyChat = Save_EasyChat_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 objId;
 
@@ -2743,7 +2743,7 @@ BOOL ScrCmd_586(ScriptContext *ctx) {
     *p_ret = sub_0205A4D8(ctx->fieldSystem->unk80);
     if (*p_ret) {
         void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-        FreeToHeap(*p_work);
+        Heap_Free(*p_work);
     }
     return FALSE;
 }
@@ -2863,7 +2863,7 @@ BOOL ScrCmd_286(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_BufferUnionRoomAvatarChoices(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     MessageFormat **p_msgFmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     BufferUnionRoomAvatarChoicesNames(
         PlayerProfile_GetTrainerID(profile),
@@ -2873,7 +2873,7 @@ BOOL ScrCmd_BufferUnionRoomAvatarChoices(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UnionRoomAvatarIdxToTrainerClass(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = UnionRoomAvatarIdxToSprite(
@@ -2888,7 +2888,7 @@ BOOL ScrCmd_UnionRoomAvatarIdxToTrainerClass(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_UnionRoomAvatarIdxToSprite(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = UnionRoomAvatarIdxToSprite(
@@ -2899,7 +2899,7 @@ BOOL ScrCmd_UnionRoomAvatarIdxToSprite(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_289(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 choice = ScriptGetVar(ctx);
     PlayerProfile_SetAvatar(profile, choice);
     return FALSE;
@@ -2918,7 +2918,7 @@ BOOL ScrCmd_SetSpawn(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_GetPlayerGender(ScriptContext *ctx) {
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = PlayerProfile_GetTrainerGender(profile);
     return FALSE;
@@ -3520,11 +3520,11 @@ BOOL ScrCmd_NatDexFlagAction(ScriptContext *ctx) {
     *p_ret = 0;
     if (action == 1) {
         Pokedex_SetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
-        PlayerProfile_SetNatDexFlag(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData));
+        PlayerProfile_SetNatDexFlag(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData));
     } else if (action == 2) {
         *p_ret = Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData));
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -3579,7 +3579,7 @@ BOOL ScrCmd_GetGameVersion(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PCStorage *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
@@ -3601,7 +3601,7 @@ BOOL ScrCmd_PrimoPasswordCheck1(ScriptContext *ctx) {
 
 BOOL ScrCmd_PrimoPasswordCheck2(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(fieldSystem));
+    PlayerProfile *profile = Save_PlayerData_GetProfile(FieldSystem_GetSaveData(fieldSystem));
     u16 *p_ret = ScriptGetVarPointer(ctx);
     PCStorage *pcStorage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 a = ScriptGetVar(ctx);
@@ -3645,7 +3645,7 @@ void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
     ZeroMonData(mon);
     CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
     Pokedex_SetMonSeenFlag(pokedex, mon);
-    FreeToHeap(mon);
+    Heap_Free(mon);
 }
 
 BOOL ScrCmd_687(ScriptContext *ctx) {
@@ -3930,15 +3930,15 @@ BOOL ScrCmd_550(ScriptContext *ctx) {
     HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_32, &loadResult);
     if (loadResult == 0) {
         *p_ret = 0;
-        FreeToHeap(hof);
+        Heap_Free(hof);
         return TRUE;
     } else if (loadResult == 1) {
         *p_ret = Save_HOF_TranslateRecordIdx(hof, 0);
-        FreeToHeap(hof);
+        Heap_Free(hof);
         return TRUE;
     } else if (loadResult == 2) {
         *p_ret = 0;
-        FreeToHeap(hof);
+        Heap_Free(hof);
         return TRUE;
     } else {
         *p_ret = 0;
@@ -3965,7 +3965,7 @@ BOOL ScrCmd_552(ScriptContext *ctx) {
     }
     *r5 = sub_0203E5F8(*partyMenu);
     *r5 = (*r5 == TRUE);
-    FreeToHeap(*partyMenu);
+    Heap_Free(*partyMenu);
     *partyMenu = NULL;
     return FALSE;
 }
@@ -4010,7 +4010,7 @@ BOOL ScrCmd_560(ScriptContext *ctx) {
         ov02_0224E074(fieldSystem, p_ret, 5, HEAP_ID_32);
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     }
     return TRUE;
@@ -4186,7 +4186,7 @@ BOOL ScrCmd_ScratchOffCard(ScriptContext *ctx) {
 
 BOOL ScrCmd_ScratchOffCardEnd(ScriptContext *ctx) {
     ScratchOffCardsArgs **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    FreeToHeap(*scratchCardData);
+    Heap_Free(*scratchCardData);
     *scratchCardData = NULL;
     return TRUE;
 }
@@ -4311,7 +4311,7 @@ u32 sub_020467A8(SaveData *saveData) {
             ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORM, NULL);
         }
     }
-    FreeToHeap(walkerMon);
+    Heap_Free(walkerMon);
 
     return ret;
 }
@@ -4388,7 +4388,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     if (GetMonData(mon, MON_DATA_IS_EGG, NULL) || GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
         return FALSE;
     }
-    if (!MonMetadataMatchesEvent(event, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)))) {
+    if (!MonMetadataMatchesEvent(event, mon, GetMonData(mon, MON_DATA_OTID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)))) {
         return FALSE;
     }
 
@@ -4439,7 +4439,7 @@ BOOL ScrCmd_598(ScriptContext *ctx) {
         obj1 = FollowMon_GetMapObject(fieldSystem);
         obj2 = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
     ov02_0224E0BC(obj1, obj2, ctx->taskman);
@@ -4470,7 +4470,7 @@ BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
             s32 playerY = MapObject_GetCurrentY(myObject);
             int playerZ = MapObject_GetCurrentZ(myObject);
             int deltaY = GetDeltaYByFacingDirection(facingDirection) * 2;
-            u8 facingTile = GetMetatileBehaviorAt(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
+            u8 facingTile = GetMetatileBehavior(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
             VecFx32 posVec;
             MapObject_CopyPositionVector(myObject, &posVec);
             if (sub_020549A8(ctx->fieldSystem, &posVec, playerX + deltaX, playerZ + deltaY, 0) || MetatileBehavior_IsSurfableWater(facingTile) || sub_02060BFC(myObject, playerX + deltaX, playerY, playerZ + deltaY)) {
@@ -4590,7 +4590,7 @@ BOOL ScrCmd_Pokeathlon(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetFriendSprite(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    if (PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfileAddr(FieldSystem_GetSaveData(ctx->fieldSystem))) != PLAYER_GENDER_MALE) {
+    if (PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(ctx->fieldSystem))) != PLAYER_GENDER_MALE) {
         *p_ret = SPRITE_HERO;
     } else {
         *p_ret = SPRITE_HEROINE;
@@ -4599,43 +4599,43 @@ BOOL ScrCmd_GetFriendSprite(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_RegisterPokegearCard(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_Pokegear_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 card = ScriptReadByte(ctx);
     switch (card) {
     case 1:
-        Pokegear_RegisterCard(pokegear, 1);
+        SavePokegear_RegisterCard(pokegear, 1);
         break;
     case 2:
-        Pokegear_RegisterCard(pokegear, 2);
+        SavePokegear_RegisterCard(pokegear, 2);
         break;
     case 0:
     default:
-        Pokegear_RegisterCard(pokegear, 0);
+        SavePokegear_RegisterCard(pokegear, 0);
         break;
     }
     return FALSE;
 }
 
 BOOL ScrCmd_804(ScriptContext *ctx) {
-    sub_0202EE58(SaveData_GSPlayerMisc_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    Pokegear_SetMapUnlockLevel(SaveData_Pokegear_Get(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
 BOOL ScrCmd_RegisterGearNumber(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_Pokegear_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 number = ScriptGetVar(ctx);
     if (number < NUM_PHONE_CONTACTS) {
-        RegisterPhoneNumberInPokeGear(pokegear, number);
+        SavePokegear_RegisterPhoneNumber(pokegear, number);
     }
     return FALSE;
 }
 
 BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx) {
-    SavePokegear *pokegear = SaveData_GSPlayerMisc_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
+    SavePokegear *pokegear = SaveData_Pokegear_Get(FieldSystem_GetSaveData(ctx->fieldSystem));
     u8 number = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (number < NUM_PHONE_CONTACTS) {
-        *p_ret = GSPlayerMisc_IsGearNumberRegistered(pokegear, number);
+        *p_ret = SavePokegear_IsNumberRegistered(pokegear, number);
         if (*p_ret == 0xFF) {
             *p_ret = FALSE;
         } else {
@@ -4648,13 +4648,13 @@ BOOL ScrCmd_CheckRegisteredPhoneNumber(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_SetPhoneCall(ScriptContext *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
+    u16 callerId = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 r7 = ScriptGetVar(ctx);
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA); // PhoneCallAppData
-    sub_02092DF4(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    GearPhoneRingManager_StartRinging(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     ctx->fieldSystem->unkD2_7 = TRUE;
-    ov02_02251EB8(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), r4, 0xFF, 0, r6, r7);
+    ov02_02251EB8(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), callerId, 0xFF, 0, r6, r7);
     return TRUE;
 }
 
@@ -4668,20 +4668,20 @@ BOOL ScrCmd_RunPhoneCall(ScriptContext *ctx) {
 BOOL ScrCmd_LoadPhoneDat(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = LoadPhoneBookEntryI(idx, sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem)), HEAP_ID_32);
+    *p_ret = LoadPhoneBookEntryI(idx, GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem)), HEAP_ID_32);
     return FALSE;
 }
 
 BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
     u16 *p_scriptno = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_ACTIVE_SCRIPT_NUMBER);
     u8 r6 = ScriptReadByte(ctx);
-    u16 *sp0 = ScriptGetVarPointer(ctx);
+    u16 *pPhoneMsgGmm = ScriptGetVarPointer(ctx);
     u16 *p_ret_msg = ScriptGetVarPointer(ctx);
-    PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    *sp0 = GetPhoneMessageGmm(entry->unk0);
+    PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    *pPhoneMsgGmm = GetPhoneMessageGmm(entry->id);
     u16 r5, p_ret_gmm;
 
-    if (entry->unk0 == 0xFF) {
+    if (entry->id == 0xFF) {
         *p_ret_msg = 0;
         return TRUE;
     }
@@ -4703,13 +4703,13 @@ BOOL ScrCmd_GetPhoneContactMsgIds(ScriptContext *ctx) {
 
 BOOL ScrCmd_462(ScriptContext *ctx) {
     u16 idx = ScriptGetVar(ctx);
-    PhoneRematches_SetSeeking(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), idx, FALSE);
+    PhoneCallPersistentState_PhoneRematches_SetSeeking(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), idx, FALSE);
     return FALSE;
 }
 
 BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
     if (entry->gift == ITEM_CHERI_BERRY) {
         *p_ret = ITEM_CHERI_BERRY + (LCRandom() % 10);
     } else {
@@ -4720,10 +4720,10 @@ BOOL ScrCmd_GetPhoneContactRandomGiftBerry(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    PhoneBookEntry *entry = sub_02092E10(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
-    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
-    *p_ret = PhoneRematches_GiftItemIdGet(momsSavings, entry->unk0);
-    PhoneRematches_GiftItemIdSet(momsSavings, entry->unk0, ITEM_NONE);
+    PhoneBookEntry *entry = GearPhoneRingManager_GetCallerPhoneBookEntry(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem));
+    PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData);
+    *p_ret = PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(callPersistentState, entry->id);
+    PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(callPersistentState, entry->id, ITEM_NONE);
     return FALSE;
 }
 
@@ -4734,7 +4734,7 @@ BOOL ScrCmd_148(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_149(ScriptContext *ctx) {
-    sub_0202F050(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    sub_0202F050(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 
@@ -5051,8 +5051,8 @@ BOOL sub_02047908(struct UnkStruct_ov01_021EDC28 *menu, int idx) {
 
 static u32 GetMaxBankTransactionAmount(FieldSystem *fieldSystem, int action) {
     u32 ret;
-    u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(fieldSystem->saveData));
-    u32 bank = MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(fieldSystem->saveData), MOMS_BALANCE_GET, 0);
+    u32 wallet = PlayerProfile_GetMoney(Save_PlayerData_GetProfile(fieldSystem->saveData));
+    u32 bank = PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), MOMS_BALANCE_GET, 0);
     switch (action) {
     case 0:
         ret = MAX_MONEY - bank;
@@ -5067,7 +5067,7 @@ static u32 GetMaxBankTransactionAmount(FieldSystem *fieldSystem, int action) {
         }
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return ret;
 }
@@ -5101,21 +5101,21 @@ BOOL sub_020479D4(ScriptContext *ctx) {
         SaveData *saveData = ctx->fieldSystem->saveData;
         switch (work->mode) {
         case 0:
-            PlayerProfile_SubMoney(Save_PlayerData_GetProfileAddr(saveData), work->sub->selected);
-            MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_ADD, work->sub->selected);
+            PlayerProfile_SubMoney(Save_PlayerData_GetProfile(saveData), work->sub->selected);
+            PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_ADD, work->sub->selected);
             break;
         case 1:
-            PlayerProfile_AddMoney(Save_PlayerData_GetProfileAddr(saveData), work->sub->selected);
-            MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(saveData), MOMS_BALANCE_SUB, work->sub->selected);
+            PlayerProfile_AddMoney(Save_PlayerData_GetProfile(saveData), work->sub->selected);
+            PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(saveData), MOMS_BALANCE_SUB, work->sub->selected);
             break;
         default:
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
             break;
         }
         *p_ret = 0;
     }
-    FreeToHeap(work->sub);
-    FreeToHeap(*p_work);
+    Heap_Free(work->sub);
+    Heap_Free(*p_work);
     return TRUE;
 }
 
@@ -5123,13 +5123,13 @@ BOOL ScrCmd_BankOrWalletIsFull(ScriptContext *ctx) {
     u16 action = ScriptReadHalfword(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
     if (action == 0) {
-        if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
+        if (PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;
         }
     } else {
-        if (PlayerProfile_GetMoney(Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData)) == MAX_MONEY) {
+        if (PlayerProfile_GetMoney(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)) == MAX_MONEY) {
             *p_ret = TRUE;
         } else {
             *p_ret = FALSE;
@@ -5265,7 +5265,7 @@ BOOL ScrCmd_ScriptOverlayCmd(ScriptContext *ctx) {
 BOOL ScrCmd_CheckBankBalance(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     u32 check_amt = ScriptReadWord(ctx);
-    if (MomSavingsBalanceAction(SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) >= check_amt) {
+    if (PhoneCallPersistentState_MomSavings_BalanceAction(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), MOMS_BALANCE_GET, 0) >= check_amt) {
         *p_ret = TRUE;
     } else {
         *p_ret = FALSE;
@@ -5370,7 +5370,7 @@ BOOL ScrCmd_823(ScriptContext *ctx) {
     PlayerProfile *profile = PlayerProfile_New(HEAP_ID_4);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_Get(ctx->fieldSystem->saveData), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);
-    FreeToHeap(profile);
+    Heap_Free(profile);
     return FALSE;
 }
 

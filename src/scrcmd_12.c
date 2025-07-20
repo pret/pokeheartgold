@@ -13,8 +13,8 @@
 BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
     u16 sp;
     u16 *retPtr = ScriptGetVarPointer(ctx);
-    MomsSavings *momsSavings = SaveData_GetMomsSavingsAddr(ctx->fieldSystem->saveData);
-    if (sub_0202F224(momsSavings, 0, &sp) == 0) {
+    PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData);
+    if (PhoneCallPersistentState_MomGiftQueue_Peek(callPersistentState, 0, &sp) == 0) {
         *retPtr = FALSE;
     } else {
         *retPtr = TRUE;
@@ -34,7 +34,7 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
         Save_VarsFlags_ClearPalParkSysFlag(script);
         PalPark_StopClock(ctx->fieldSystem);
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 
     return FALSE;
@@ -49,7 +49,7 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
     } else {
         *retPtr = FALSE;
     }
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return FALSE;
 }
 
@@ -57,7 +57,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     PCStorage *storage = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
-    PlayerProfile *profile = Save_PlayerData_GetProfileAddr(ctx->fieldSystem->saveData);
+    PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     int i;
 
@@ -68,7 +68,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
         UpdatePokedexWithReceivedSpecies(ctx->fieldSystem->saveData, mon);
     }
 
-    FreeToHeap(mon);
+    Heap_Free(mon);
     sub_0202EB74(unkStruct);
     sub_02093070(ctx->fieldSystem);
     return FALSE;

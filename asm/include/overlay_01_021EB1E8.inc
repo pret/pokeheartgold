@@ -34,8 +34,8 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public AllocFromHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgCommitTilemapBufferToVram
 .public BgCopyOrUncompressTilemapBufferRangeToVram
 .public BG_LoadScreenTilemapData
@@ -53,9 +53,9 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_GetMatrixPtr
-.public Sprite_SetAnimCtrlCurrentFrame
+.public Sprite_SetAnimationFrame
 .public GF_AssertFail
 .public GF_InitG2dRenderer
 .public PlayerAvatar_GetMapObject

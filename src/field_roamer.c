@@ -23,49 +23,49 @@ static void ApplyRoamerLocation(RoamerSaveData *roamer, u8 roamer_idx, u8 new_lo
 
 static const u32 sRoamerLocations[ROAMER_LOC_COUNT] = {
     // Johto
-    MAP_R29,
-    MAP_R30,
-    MAP_R31,
-    MAP_R32,
-    MAP_R33,
-    MAP_R34,
-    MAP_R35,
-    MAP_R36,
-    MAP_R37,
-    MAP_R38,
-    MAP_R39,
-    MAP_R42,
-    MAP_R43,
-    MAP_R44,
-    MAP_R45,
-    MAP_R46,
+    MAP_ROUTE_29,
+    MAP_ROUTE_30,
+    MAP_ROUTE_31,
+    MAP_ROUTE_32,
+    MAP_ROUTE_33,
+    MAP_ROUTE_34,
+    MAP_ROUTE_35,
+    MAP_ROUTE_36,
+    MAP_ROUTE_37,
+    MAP_ROUTE_38,
+    MAP_ROUTE_39,
+    MAP_ROUTE_42,
+    MAP_ROUTE_43,
+    MAP_ROUTE_44,
+    MAP_ROUTE_45,
+    MAP_ROUTE_46,
 
     // Kanto
-    MAP_R01,
-    MAP_R02,
-    MAP_R03,
-    MAP_R04,
-    MAP_R05,
-    MAP_R06,
-    MAP_R07,
-    MAP_R08,
-    MAP_R09,
-    MAP_R10,
-    MAP_R11,
-    MAP_R12,
-    MAP_R13,
-    MAP_R14,
-    MAP_R15,
-    MAP_R16,
-    MAP_R17,
-    MAP_R18,
-    MAP_W19,
-    MAP_W20,
-    MAP_W21,
-    MAP_R22,
-    MAP_R24,
-    MAP_R26,
-    MAP_R28,
+    MAP_ROUTE_1,
+    MAP_ROUTE_2,
+    MAP_ROUTE_3,
+    MAP_ROUTE_4,
+    MAP_ROUTE_5,
+    MAP_ROUTE_6,
+    MAP_ROUTE_7,
+    MAP_ROUTE_8,
+    MAP_ROUTE_9,
+    MAP_ROUTE_10,
+    MAP_ROUTE_11,
+    MAP_ROUTE_12,
+    MAP_ROUTE_13,
+    MAP_ROUTE_14,
+    MAP_ROUTE_15,
+    MAP_ROUTE_16,
+    MAP_ROUTE_17,
+    MAP_ROUTE_18,
+    MAP_ROUTE_19,
+    MAP_ROUTE_20,
+    MAP_ROUTE_21,
+    MAP_ROUTE_22,
+    MAP_ROUTE_24,
+    MAP_ROUTE_26,
+    MAP_ROUTE_28,
 };
 
 static const struct RoamerAdjacency sRoamerAdjacencyTable[ROAMER_LOC_COUNT] = {
@@ -197,14 +197,14 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
         level = 35;
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
 
     SetRoamerData(roamerStats, ROAMER_DATA_SPECIES, species);
     SetRoamerData(roamerStats, ROAMER_DATA_LEVEL, level);
 
-    profile = Save_PlayerData_GetProfileAddr(saveData);
+    profile = Save_PlayerData_GetProfile(saveData);
     mon = AllocMonZeroed((HeapID)4);
     ZeroMonData(mon);
     CreateMon(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
@@ -213,7 +213,7 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     SetRoamerData(roamerStats, ROAMER_DATA_IVS, GetMonData(mon, MON_DATA_IVS_WORD, NULL));
     SetRoamerData(roamerStats, ROAMER_DATA_PERSONALITY, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
     SetRoamerData(roamerStats, ROAMER_DATA_HP, GetMonData(mon, MON_DATA_MAXHP, NULL));
-    FreeToHeap(mon);
+    Heap_Free(mon);
     RoamerLocationSetRandom(roamerSave, idx, PlayerLocationHistoryGetBack(roamerSave));
 }
 

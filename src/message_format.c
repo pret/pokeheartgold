@@ -69,13 +69,13 @@ void MessageFormat_Delete(MessageFormat *messageFormat) {
             }
             String_Delete(messageFormat->fields[i].msg);
         }
-        FreeToHeap(messageFormat->fields);
+        Heap_Free(messageFormat->fields);
     }
     if (messageFormat->buffer != NULL) {
         String_Delete(messageFormat->buffer);
     }
     messageFormat->count = 0;
-    FreeToHeap(messageFormat);
+    Heap_Free(messageFormat);
 }
 
 void MessageFormat_InitFields(MessageFormatFields *field) {
@@ -108,7 +108,7 @@ void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
 }
 
 void BufferFriendsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
-    PlayerProfile *playerProfile = Save_PlayerData_GetProfileAddr(saveData);
+    PlayerProfile *playerProfile = Save_PlayerData_GetProfile(saveData);
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, msgFmt->heapId);
     if (PlayerProfile_GetTrainerGender(playerProfile) == PLAYER_GENDER_MALE) {
         ReadMsgDataIntoString(msgData, msg_0445_00001, msgFmt->buffer); // Lyra
