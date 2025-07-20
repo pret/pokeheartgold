@@ -149,8 +149,8 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
         sub_02005AF8(0);
         sub_02004AD8(0);
 
-        sub_0200FBF4(0, 0);
-        sub_0200FBF4(1, 0);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
         Main_SetVBlankIntrCB(NULL, NULL);
         Main_SetHBlankIntrCB(NULL, NULL);

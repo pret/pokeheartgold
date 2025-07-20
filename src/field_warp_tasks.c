@@ -403,8 +403,8 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0200FBF4(0, 0);
-        sub_0200FBF4(1, 0);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
         (*state_p)++;
         break;
     case 1:
