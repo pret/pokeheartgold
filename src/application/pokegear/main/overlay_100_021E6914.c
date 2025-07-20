@@ -19,9 +19,9 @@ void ov100_021E6CF4(PokegearApp_UnkSub094 *a0);
 void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1);
 
 u16 PokegearAppSwitch_GetFreeButtonSlot(PokegearAppSwitch *appSwitch);
-void ov100_021E71B4(PokegearAppSwitch *appSwitch, u16 index);
-void ov100_021E7368(PokegearAppSwitch *appSwitch, u8 move);
-u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex);
+void PokegearAppSwitch_UpdateCursorSpritePosition(PokegearAppSwitch *appSwitch, u16 index);
+void PokegearAppSwitch_UpdateActiveCursorPosition(PokegearAppSwitch *appSwitch, u8 move);
+u8 PokegearAppSwitch_SetCursorPosition(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex);
 
 extern const u8 ov100_021E764C[];
 
@@ -91,20 +91,20 @@ static const PokegearObjResSpec sPokegearObjResSpecs[] = {
 };
 // clang-format on
 
-void ov100_021E6914(PokegearAppData *pokegearApp) {
+void PokegearApp_CreateSpriteSystem(PokegearAppData *pokegearApp) {
     GF_CreateVramTransferManager(32, pokegearApp->heapId);
     pokegearApp->spriteSystem = SpriteSystem_Alloc(pokegearApp->heapId);
     SpriteSystem_Init(pokegearApp->spriteSystem, sPokegearObjResSpecs[0].oamManagerParam, sPokegearObjResSpecs[0].oamCharTransferParam, 0x20);
-    sub_0200B2E0(pokegearApp->heapId);
-    sub_0200B2E8(pokegearApp->heapId);
+    thunk_ClearMainOAM(pokegearApp->heapId);
+    thunk_ClearSubOAM(pokegearApp->heapId);
 }
 
-void ov100_021E6950(PokegearAppData *pokegearApp) {
+void PokegearApp_DestroySpriteSystem(PokegearAppData *pokegearApp) {
     SpriteSystem_Free(pokegearApp->spriteSystem);
     pokegearApp->spriteSystem = NULL;
     GF_DestroyVramTransferManager();
-    sub_0200B2E0(pokegearApp->heapId);
-    sub_0200B2E8(pokegearApp->heapId);
+    thunk_ClearMainOAM(pokegearApp->heapId);
+    thunk_ClearSubOAM(pokegearApp->heapId);
 }
 
 void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet) {
@@ -384,8 +384,8 @@ BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 buttonInd
     if (buttonIndex >= appSwitch->count || !appSwitch->buttons[buttonIndex].buttonsAreActive) {
         return FALSE;
     }
-    if (appSwitch->lastButtonIndex == buttonIndex) {
-        appSwitch->lastButtonIndex = 0xFFFF;
+    if (appSwitch->activeCursorIndex == buttonIndex) {
+        appSwitch->activeCursorIndex = 0xFFFF;
         appSwitch->lastButton = NULL;
     }
     MI_CpuClear8(appSwitch->buttons[buttonIndex].buttonSpec, appSwitch->buttons[buttonIndex].count * sizeof(PokegearAppSwitchButtonSpec));
@@ -404,7 +404,7 @@ u16 PokegearAppSwitch_GetFreeButtonSlot(PokegearAppSwitch *appSwitch) {
     return 0xFFFF;
 }
 
-u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *cursor, u16 index, BOOL draw) {
+u16 PokegearAppSwitch_SetCursorSpritesDrawState(PokegearAppSwitch *cursor, u16 index, BOOL draw) {
     PokegearAppSwitchButton *button;
     if (index == 0xFFFF) {
         button = cursor->lastButton;
@@ -429,7 +429,7 @@ u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *cursor,
     return index;
 }
 
-void ov100_021E71B4(PokegearAppSwitch *appSwitch, u16 index) {
+void PokegearAppSwitch_UpdateCursorSpritePosition(PokegearAppSwitch *appSwitch, u16 index) {
     PokegearAppSwitchButton *buttons;
     if (index == 0xFFFF) {
         buttons = appSwitch->lastButton;
@@ -466,7 +466,7 @@ u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16
         return 0xFFFF;
     }
     appSwitch->lastButton = &appSwitch->buttons[index];
-    appSwitch->lastButtonIndex = index;
+    appSwitch->activeCursorIndex = index;
     if (cursorPos != 0xFF) {
         if (cursorPos >= appSwitch->buttons[index].count) {
             appSwitch->buttons[index].cursorPos = 0;
@@ -474,7 +474,7 @@ u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16
             appSwitch->buttons[index].cursorPos = cursorPos;
         }
     }
-    ov100_021E71B4(appSwitch, 0xFFFF);
+    PokegearAppSwitch_UpdateCursorSpritePosition(appSwitch, 0xFFFF);
     return index;
 }
 
@@ -492,7 +492,7 @@ u8 PokegearAppSwitch_GetSpecCursorPos(PokegearAppSwitch *appSwitch, u16 index) {
     }
 }
 
-void ov100_021E7368(PokegearAppSwitch *appSwitch, u8 move) {
+void PokegearAppSwitch_UpdateActiveCursorPosition(PokegearAppSwitch *appSwitch, u8 move) {
     if (appSwitch->lastButton != NULL) {
         PokegearAppSwitchButtonSpec *spec = &appSwitch->lastButton->buttonSpec[appSwitch->lastButton->cursorPos];
         u8 newIndex;
@@ -517,21 +517,21 @@ void ov100_021E7368(PokegearAppSwitch *appSwitch, u8 move) {
     }
 }
 
-u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 move) {
-    ov100_021E7368(appSwitch, move);
-    ov100_021E71B4(appSwitch, 0xFFFF);
+u8 PokegearAppSwitch_MoveActiveCursor(PokegearAppSwitch *appSwitch, u8 move) {
+    PokegearAppSwitch_UpdateActiveCursorPosition(appSwitch, move);
+    PokegearAppSwitch_UpdateCursorSpritePosition(appSwitch, 0xFFFF);
     return appSwitch->lastButton->cursorPos;
 }
 
-u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex) {
-    return ov100_021E73D4(appSwitch, appSwitch->lastButtonIndex, newIndex);
+u8 PokegearAppSwitch_SetActiveCursorPosition(PokegearAppSwitch *appSwitch, u8 newIndex) {
+    return PokegearAppSwitch_SetCursorPosition(appSwitch, appSwitch->activeCursorIndex, newIndex);
 }
 
-u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex) {
+u8 PokegearAppSwitch_SetCursorPosition(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex) {
     PokegearAppSwitchButton *button;
     if (index == 0xFFFF) {
         button = appSwitch->lastButton;
-        index = appSwitch->lastButtonIndex;
+        index = appSwitch->activeCursorIndex;
     } else if (index >= appSwitch->count || (button = &appSwitch->buttons[index], !button->buttonsAreActive)) {
         return 0;
     }
@@ -540,13 +540,13 @@ u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex) {
     } else {
         button->cursorPos = newIndex;
     }
-    ov100_021E71B4(appSwitch, index);
+    PokegearAppSwitch_UpdateCursorSpritePosition(appSwitch, index);
     return button->cursorPos;
 }
 
 void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active) {
     if (index == 0xFFFF) {
-        index = appSwitch->lastButtonIndex;
+        index = appSwitch->activeCursorIndex;
     }
     if (index < appSwitch->count) {
         PokegearAppSwitchButton *button = &appSwitch->buttons[index];

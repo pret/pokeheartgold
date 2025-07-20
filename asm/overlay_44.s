@@ -3849,9 +3849,9 @@ _0222BCB8:
 	cmp r2, #0x21
 	blt _0222BCB8
 	mov r0, #0x35
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	mov r0, #0x35
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 _0222BCCE:
 	add r0, r5, #0
 	bl ov44_0222F98C

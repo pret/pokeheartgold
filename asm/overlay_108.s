@@ -5346,9 +5346,9 @@ ov108_021E838C: ; 0x021E838C
 	mov r3, #4
 	bl SpriteSystem_Init
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	pop {r4, pc}
 	nop
 _021E83C0: .word ov108_021EA9A0
@@ -5369,9 +5369,9 @@ ov108_021E83C8: ; 0x021E83C8
 	str r1, [r4, r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	pop {r4, pc}
 	thumb_func_end ov108_021E83C8
 

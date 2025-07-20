@@ -484,7 +484,7 @@ BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, 
     if (direction == 0) {
         Sprite_SetDrawFlag(mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_BLINKING_ARROW].sprite, TRUE);
         if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
-            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, TRUE);
+            PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, TRUE);
         }
     }
     return TRUE;
@@ -1044,7 +1044,7 @@ void PokegearMap_HideMapCursor(PokegearMapAppData *mapApp) {
 void PokegearMap_DeselectApp(void *appData) {
     PokegearMapAppData *mapApp = appData;
 
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, FALSE);
     ov101_021E94C0(mapApp);
     Sprite_SetDrawFlag(mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].sprite, TRUE);
     ov101_021EB1E0(mapApp, 1);
@@ -1062,13 +1062,13 @@ void PokegearMap_ShowMapCursor(void *appData) {
 void PokegearMap_InMarkingsMode_HideCursor(void *appData) {
     PokegearMapAppData *mapApp = appData;
 
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
 }
 
 void PokegearMap_InMarkingsMode_ShowCursor(void *appData) {
     PokegearMapAppData *mapApp = appData;
 
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
 }
 
 void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state) {

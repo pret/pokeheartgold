@@ -26,8 +26,8 @@
 .public Pokepic_StartPaletteFade
 .public Pokepic_ResumePaletteFade
 .public PokepicManager_HandleLoadImgAndOrPltt
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

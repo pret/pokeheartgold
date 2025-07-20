@@ -625,8 +625,8 @@ static void MicTest_InitSpriteRenderer(MicTestData *micTest, HeapID heapId) {
 
     micTest->spriteRenderer = spriteRender;
     SpriteSystem_Init(spriteRender, &sMicTestOamManParam, &ov62_021E6668, 0x20);
-    sub_0200B2E0(heapId);
-    sub_0200B2E8(heapId);
+    thunk_ClearMainOAM(heapId);
+    thunk_ClearSubOAM(heapId);
     micTest->gfxHandler = SpriteManager_New(micTest->spriteRenderer);
     SpriteSystem_InitSprites(micTest->spriteRenderer, micTest->gfxHandler, 7);
     SpriteSystem_InitManagerWithCapacities(micTest->spriteRenderer, micTest->gfxHandler, (SpriteResourceCountsListUnion *)&sMicTestResCountList);

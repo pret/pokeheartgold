@@ -36,8 +36,8 @@
 .public sub_0200AED4
 .public sub_0200B00C
 .public sub_0200B0CC
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

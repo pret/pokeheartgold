@@ -332,7 +332,7 @@ int FlyMap_HandleContextMenu(PokegearMapAppData *mapApp) {
 void FlyMap_InitBGs(PokegearMapAppData *mapApp) {
     int i;
 
-    ov100_021E5FDC();
+    PokegearApp_SetGraphicsBanks();
     mapApp->pokegear->bgConfig = BgConfig_Alloc(mapApp->heapId);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 
@@ -342,7 +342,7 @@ void FlyMap_InitBGs(PokegearMapAppData *mapApp) {
             .bgMode = GX_BGMODE_5,
             .subMode = GX_BGMODE_0,
             ._2d3dMode = GX_BG0_AS_2D,
-        }; // ov101_021F7F44
+        };
         SetBothScreensModesAndDisable(&graphicsModes);
     }
 
@@ -468,7 +468,7 @@ void FlyMap_InitBGs(PokegearMapAppData *mapApp) {
              .dummy = 0,
              .mosaic = 0,
              },
-        }; // ov101_021F7F9C
+        };
         InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_0, &bgTemplates[0], GF_BG_TYPE_TEXT);
         InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplates[1], GF_BG_TYPE_TEXT);
         InitBgFromTemplate(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplates[2], GF_BG_TYPE_256x16PLTT);
@@ -592,7 +592,7 @@ void PokegearMap_UnloadFlyContextMenuStrings(PokegearMapAppData *mapApp) {
 }
 
 void FlyMap_CreateSpriteManager(PokegearMapAppData *mapApp) {
-    ov100_021E6914(mapApp->pokegear);
+    PokegearApp_CreateSpriteSystem(mapApp->pokegear);
     PokegearApp_CreateSpriteManager(mapApp->pokegear, GEAR_APP_MAP);
     mapApp->objManager = PokegearObjectsManager_Create(42, mapApp->heapId);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xF0));
@@ -604,7 +604,7 @@ void FlyMap_DestroySpriteManager(PokegearMapAppData *mapApp) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xC0));
     PokegearObjectsManager_Release(mapApp->objManager);
     PokegearApp_DestroySpriteManager(mapApp->pokegear);
-    ov100_021E6950(mapApp->pokegear);
+    PokegearApp_DestroySpriteSystem(mapApp->pokegear);
 }
 
 void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {

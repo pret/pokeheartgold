@@ -1876,9 +1876,9 @@ ov113_021E677C: ; 0x021E677C
 	mov r3, #2
 	bl SpriteSystem_Init
 	ldr r0, [r5]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r5]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	add r0, r5, #0
 	add r0, #0xac
 	ldr r0, [r0]
@@ -2090,7 +2090,7 @@ ov113_021E6930: ; 0x021E6930
 	str r1, [r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	pop {r4, pc}
 	thumb_func_end ov113_021E6930
 

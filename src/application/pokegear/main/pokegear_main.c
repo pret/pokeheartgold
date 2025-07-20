@@ -168,7 +168,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
 
     if (pokegearApp->spriteSystem != NULL) {
         if (pokegearApp->unk_094 != NULL) {
-            ov100_021E5BB0(pokegearApp, 0);
+            PokegearApp_UpdateClockSprites(pokegearApp, 0);
             ov100_021E6AB0(pokegearApp->unk_094);
         }
         PokegearApp_DrawSprites(pokegearApp);
@@ -181,7 +181,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
 }
 
 static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp) {
-    if (!ov100_021E5DDC(pokegearApp)) {
+    if (!PokegearApp_GraphicsInit(pokegearApp)) {
         return POKEGEAR_APP_MAIN_STATE_SETUP;
     }
 
@@ -201,7 +201,7 @@ static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp
 }
 
 static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegearApp) {
-    if (ov100_021E5E88(pokegearApp)) {
+    if (PokegearApp_GraphicsDeinit(pokegearApp)) {
         return POKEGEAR_APP_MAIN_STATE_QUIT;
     }
 
@@ -248,7 +248,7 @@ static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearAp
 static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokegearApp) {
     static const OverlayManagerTemplate sOverlayTemplate_EasyChat = { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
 
-    if (!ov100_021E5E88(pokegearApp)) {
+    if (!PokegearApp_GraphicsDeinit(pokegearApp)) {
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
     }
 

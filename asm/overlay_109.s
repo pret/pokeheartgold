@@ -2736,9 +2736,9 @@ ov109_021E6DE4: ; 0x021E6DE4
 	mov r3, #3
 	bl SpriteSystem_Init
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -2796,7 +2796,7 @@ ov109_021E6E64: ; 0x021E6E64
 	str r1, [r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	pop {r4, pc}
 	thumb_func_end ov109_021E6E64
 

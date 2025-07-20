@@ -1105,7 +1105,7 @@ ov101_021EF0E0: ; 0x021EF0E0
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	mov r2, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	add sp, #0x18
 	pop {r4, pc}
 	nop
@@ -1177,12 +1177,12 @@ ov101_021EF17C: ; 0x021EF17C
 	bne _021EF1B6
 	mov r1, #0
 	mov r2, #1
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	mov r2, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	bl ov100_021E5DC8
 	add r2, r0, #0
@@ -1194,12 +1194,12 @@ ov101_021EF17C: ; 0x021EF17C
 _021EF1B6:
 	mov r1, #0
 	add r2, r1, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	add r2, r1, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
@@ -1580,12 +1580,12 @@ ov101_021EF4B0: ; 0x021EF4B0
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
 	add r2, r1, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	add r2, r1, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov101_021EF4B0
@@ -1606,12 +1606,12 @@ ov101_021EF4DC: ; 0x021EF4DC
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
 	add r2, r1, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	mov r1, #1
 	ldr r0, [r0, #0x7c]
 	add r2, r1, #0
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	pop {r4, pc}
 	thumb_func_end ov101_021EF4DC
 
@@ -1862,12 +1862,12 @@ ov101_021EF6E4: ; 0x021EF6E4
 	ldr r0, [r4, #0xc]
 	mov r2, #0
 	ldr r0, [r0, #0x7c]
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
 	mov r2, #1
-	bl PokegearAppSwitchCursor_SetCursorSpritesDrawState
+	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
 	bl ov100_021E5DC8
 	add r2, r0, #0
@@ -1913,7 +1913,7 @@ _021EF766:
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E73AC
+	bl PokegearAppSwitch_MoveActiveCursor
 	ldr r0, _021EF7D0 ; =0x0000093F
 	bl PlaySE
 	b _021EF7C2
@@ -1923,7 +1923,7 @@ _021EF77E:
 	beq _021EF794
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E73AC
+	bl PokegearAppSwitch_MoveActiveCursor
 	ldr r0, _021EF7D0 ; =0x0000093F
 	bl PlaySE
 	b _021EF7C2
@@ -1934,7 +1934,7 @@ _021EF794:
 	ldr r0, [r4, #0xc]
 	add r1, r2, #0
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E73AC
+	bl PokegearAppSwitch_MoveActiveCursor
 	ldr r0, _021EF7D0 ; =0x0000093F
 	bl PlaySE
 	b _021EF7C2
@@ -1945,7 +1945,7 @@ _021EF7AC:
 	ldr r0, [r4, #0xc]
 	mov r1, #3
 	ldr r0, [r0, #0x7c]
-	bl ov100_021E73AC
+	bl PokegearAppSwitch_MoveActiveCursor
 	ldr r0, _021EF7D0 ; =0x0000093F
 	bl PlaySE
 _021EF7C2:
@@ -1996,7 +1996,7 @@ _021EF818:
 	lsl r1, r4, #0x18
 	ldr r0, [r0, #0x7c]
 	lsr r1, r1, #0x18
-	bl ov100_021E73C8
+	bl PokegearAppSwitch_SetActiveCursorPosition
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18

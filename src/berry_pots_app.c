@@ -1193,8 +1193,8 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
     data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
     SpriteSystem_Init(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
-    sub_0200B2E0(data->heapId);
-    sub_0200B2E8(data->heapId);
+    thunk_ClearMainOAM(data->heapId);
+    thunk_ClearSubOAM(data->heapId);
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
@@ -1229,7 +1229,7 @@ static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data)
 
     GF_DestroyVramTransferManager();
 
-    sub_0200B2E0(data->heapId);
+    thunk_ClearMainOAM(data->heapId);
 }
 
 static void BerryPotsApp_SetupSpriteSystem(BerryPotsAppData *data) {

@@ -30,7 +30,7 @@ int ov101_021EB568(PokegearMapAppData *mapApp) {
 
     if ((gSystem.newKeys & PAD_BUTTON_B) && !mapApp->unk_139_2) {
         mapApp->pokegear->cursorInAppSwitchZone = TRUE;
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
+        PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
         PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, ov100_021E5DC8(mapApp->pokegear));
         PokegearMap_HideMapCursor(mapApp);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
@@ -820,20 +820,20 @@ int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp) {
 
     if (gSystem.newKeys & PAD_BUTTON_B) {
         PlaySE(SEQ_SE_GS_GEARCANCEL);
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+        PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
         return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
         input = PokegearAppSwitch_GetCursorPos(mapApp->pokegear->appSwitch);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         if (input == 8) { // cancel
-            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+            PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
             return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
         }
         if (MapApp_MarkingSlotIsSet(mapApp, input)) {
             PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
             PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 3, 0);
-            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
+            PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
             PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, TRUE);
             mapApp->draggingType = PGMAP_DRAG_FROM_SET;
             return -1;
@@ -841,7 +841,7 @@ int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp) {
             if (input % 2 == 0) {
                 PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
                 PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 2, 0);
-                PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
+                PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
                 mapApp->draggingType = PGMAP_DRAG_FROM_POOL;
                 return -1;
             } else {
@@ -853,16 +853,16 @@ int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp) {
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(mapApp->pokegear->appSwitch, 0);
+        PokegearAppSwitch_MoveActiveCursor(mapApp->pokegear->appSwitch, 0);
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(mapApp->pokegear->appSwitch, 1);
+        PokegearAppSwitch_MoveActiveCursor(mapApp->pokegear->appSwitch, 1);
     } else if (gSystem.newKeys & PAD_KEY_UP) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(mapApp->pokegear->appSwitch, 2);
+        PokegearAppSwitch_MoveActiveCursor(mapApp->pokegear->appSwitch, 2);
     } else if (gSystem.newKeys & PAD_KEY_DOWN) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(mapApp->pokegear->appSwitch, 3);
+        PokegearAppSwitch_MoveActiveCursor(mapApp->pokegear->appSwitch, 3);
     }
     return -1;
 }
@@ -951,25 +951,25 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
 }
 
 void ov101_021ECE58(PokegearMapAppData *mapApp) {
-    ov100_021E73C8(mapApp->pokegear->appSwitch, 0);
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
+    PokegearAppSwitch_SetActiveCursorPosition(mapApp->pokegear->appSwitch, 0);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
     PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1));
     PokegearAppSwitch_SetCursorSpritesAnimateFlag(mapApp->pokegear->appSwitch, 0xFFFF, TRUE);
     mapApp->draggingType = PGMAP_DRAG_NONE;
 }
 
 int PokegearMap_HandleKeyInput_SelectedIconFromPool(PokegearMapAppData *mapApp) {
-    u8 r6;
-    u8 r4;
+    u8 iconID;
+    u8 iconIndex;
 
     if (gSystem.newKeys & PAD_BUTTON_A) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
-        r6 = PokegearAppSwitch_GetCursorPos(mapApp->pokegear->appSwitch);
-        r4 = PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1);
+        iconID = PokegearAppSwitch_GetCursorPos(mapApp->pokegear->appSwitch);
+        iconIndex = PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1);
         if (mapApp->selectedMap.markingsNode == NULL) {
             mapApp->selectedMap.markingsNode = MapApp_GetOrCreateMarkingsHeapNodeByMapID(mapApp, mapApp->selectedMap.locationSpec->mapId);
         }
-        MapMarkingsHeapNode_SetIcon(mapApp->selectedMap.markingsNode, r4 / 2, r6);
+        MapMarkingsHeapNode_SetIcon(mapApp->selectedMap.markingsNode, iconIndex / 2, iconID);
         ov101_021EAE54(mapApp, 0);
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
@@ -988,10 +988,10 @@ int PokegearMap_HandleKeyInput_SelectedIconFromPool(PokegearMapAppData *mapApp) 
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(mapApp->pokegear->appSwitch, 0);
+        PokegearAppSwitch_MoveActiveCursor(mapApp->pokegear->appSwitch, 0);
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
         PlaySE(SEQ_SE_GS_GEARCURSOR);
-        ov100_021E73AC(mapApp->pokegear->appSwitch, 1);
+        PokegearAppSwitch_MoveActiveCursor(mapApp->pokegear->appSwitch, 1);
     }
     return -1;
 }

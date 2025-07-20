@@ -682,9 +682,9 @@ void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp) {
     PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsSelectIcon, NELEMS(buttonSpecsSelectIcon), 0, FALSE, mapApp->heapId, objects[16].sprite, objects[17].sprite, objects[18].sprite, objects[19].sprite);
     PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsTrashCan, NELEMS(buttonSpecsTrashCan), 0, FALSE, mapApp->heapId, objects[16].sprite, objects[17].sprite, objects[18].sprite, objects[19].sprite);
 
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, FALSE);
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 2, FALSE);
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 3, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 2, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 3, FALSE);
 
     if (mapApp->inMarkingsMode == 1) {
         PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, mapApp->sessionState.index * 2 + 1);
@@ -1084,10 +1084,10 @@ void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     ov101_021EA238(mapApp, 0);
     ov101_021EA608(mapApp, 1);
     if (mapApp->pokegear->cursorInAppSwitchZone == TRUE) {
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
+        PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_CURSOR].sprite, FALSE);
     } else {
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, FALSE);
+        PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, FALSE);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_CURSOR].sprite, TRUE);
     }
 
@@ -1136,9 +1136,9 @@ void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
     if (mapApp->inMarkingsMode == 1) {
         ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->sessionState.playerX, mapApp->sessionState.playerY);
         if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
-            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, TRUE);
+            PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, TRUE);
         } else {
-            PokegearAppSwitchCursor_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, FALSE);
+            PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, FALSE);
         }
     }
 
