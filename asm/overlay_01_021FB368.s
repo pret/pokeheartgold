@@ -121,9 +121,9 @@ ov01_021FB418: ; 0x021FB418
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FB418

@@ -26,7 +26,7 @@
 .public sub_02013468
 .public sub_02013488
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public _s32_div_f
 .public FX_SinCosTable_

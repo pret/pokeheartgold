@@ -46,7 +46,7 @@ ov80_02239DB8: ; 0x02239DB8
 	ldr r0, [r4, #4]
 	bl ov80_02239F94
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov80_02239DB8
 
@@ -88,7 +88,7 @@ _02239DFE:
 	lsl r2, r2, #0xc
 	bl MIi_CpuCopy32
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	lsl r0, r0, #0xc
 	add r6, r6, #1
@@ -117,7 +117,7 @@ _02239DFE:
 	ldr r2, [r3, #0x10]
 	bl MIi_CpuCopy32
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x65
 	str r0, [sp]
 	add r0, r4, #0
@@ -134,7 +134,7 @@ _02239DFE:
 	ldr r2, [r3, #0x10]
 	bl MIi_CpuCopy32
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	ldr r0, _02239EBC ; =ov80_02239ED8
@@ -162,7 +162,7 @@ ov80_02239EC4: ; 0x02239EC4
 	ldr r0, [r4]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02239EC4
@@ -265,7 +265,7 @@ ov80_02239F94: ; 0x02239F94
 	ldr r0, [r4]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02239F94

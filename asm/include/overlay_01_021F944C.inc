@@ -6,8 +6,8 @@
 .public SysTask_Destroy
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public sub_020237EC
 .public sub_02023874
 .public sub_020238F8

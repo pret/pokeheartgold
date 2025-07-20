@@ -3155,7 +3155,7 @@ ov59_022395B8: ; 0x022395B8
 	mov r1, #4
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x54]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _02239600 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -4035,7 +4035,7 @@ _02239CDE:
 	sub r0, r0, #1
 	strb r0, [r4]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _02239D04:
@@ -7300,7 +7300,7 @@ ov59_0223B554: ; 0x0223B554
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x54]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _0223B58C ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -8664,7 +8664,7 @@ _0223C03A:
 	sub r0, r0, #1
 	strb r0, [r4]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 	pop {r4, r5, r6, pc}
@@ -8773,7 +8773,7 @@ _0223C0E8:
 	sub r0, r0, #1
 	strb r0, [r4]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _0223C134:
@@ -8941,7 +8941,7 @@ _0223C25C:
 	sub r0, r0, #1
 	strb r0, [r5]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _0223C288:
@@ -9047,7 +9047,7 @@ ov59_0223C350: ; 0x0223C350
 	ldr r0, [r4, #4]
 	bl GF_3DVramMan_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov59_0223C350
 
@@ -9357,7 +9357,7 @@ ov59_0223C5B0: ; 0x0223C5B0
 	ldr r0, [r4, #0x24]
 	bl sub_02014EBC
 	ldr r0, [r4, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov59_0223C5B0

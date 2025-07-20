@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_CreateNewVramTransferTask
 .public sub_02020654
 .public thunk_UpdateCellTransferStateManager

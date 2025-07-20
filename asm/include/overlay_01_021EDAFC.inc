@@ -28,7 +28,7 @@
 .public sub_0200E5D4
 .public IsPaletteFadeFinished
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public AllocWindows
 .public AddWindowParameterized
 .public RemoveWindow

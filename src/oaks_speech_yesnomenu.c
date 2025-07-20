@@ -48,7 +48,7 @@ void OakSpeechYesNo_Delete(OakSpeechYesNo *yesnoMenu) {
     GF_ASSERT(yesnoMenu != NULL);
     OakSpeechYesNo_RemoveWindows(yesnoMenu);
     MessageFormat_Delete(yesnoMenu->msgFormat);
-    FreeToHeap(yesnoMenu);
+    Heap_Free(yesnoMenu);
 }
 
 void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette) {

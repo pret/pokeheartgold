@@ -271,14 +271,14 @@ _0222A138:
 	add r0, r5, #0
 	add r0, #0xe8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _0222A138
 	bl ov45_0222E688
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4249,11 +4249,11 @@ ov45_0222BCC8: ; 0x0222BCC8
 
 	thumb_func_start ov45_0222BCD8
 ov45_0222BCD8: ; 0x0222BCD8
-	ldr r3, _0222BCE0 ; =FreeToHeap
+	ldr r3, _0222BCE0 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222BCE0: .word FreeToHeap
+_0222BCE0: .word Heap_Free
 	thumb_func_end ov45_0222BCD8
 
 	thumb_func_start ov45_0222BCE4
@@ -4282,7 +4282,7 @@ ov45_0222BCE4: ; 0x0222BCE4
 	add r2, r7, #0
 	bl ov45_0222A844
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222BCE4
@@ -6636,7 +6636,7 @@ _0222CD6E:
 	cmp r4, #0xd
 	blt _0222CD6E
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov45_0222CD68
 
@@ -6813,7 +6813,7 @@ ov45_0222CE94: ; 0x0222CE94
 	add r6, r4, #0
 _0222CE9C:
 	ldr r0, [r5, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	str r6, [r5, #0x20]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -6893,7 +6893,7 @@ ov45_0222CF24: ; 0x0222CF24
 	bl GF_AssertFail
 _0222CF32:
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -7023,11 +7023,11 @@ _0222D008:
 
 	thumb_func_start ov45_0222D01C
 ov45_0222D01C: ; 0x0222D01C
-	ldr r3, _0222D024 ; =FreeToHeap
+	ldr r3, _0222D024 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D024: .word FreeToHeap
+_0222D024: .word Heap_Free
 	thumb_func_end ov45_0222D01C
 
 	thumb_func_start ov45_0222D028
@@ -7110,11 +7110,11 @@ ov45_0222D078: ; 0x0222D078
 
 	thumb_func_start ov45_0222D0BC
 ov45_0222D0BC: ; 0x0222D0BC
-	ldr r3, _0222D0C4 ; =FreeToHeap
+	ldr r3, _0222D0C4 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D0C4: .word FreeToHeap
+_0222D0C4: .word Heap_Free
 	thumb_func_end ov45_0222D0BC
 
 	thumb_func_start ov45_0222D0C8
@@ -7180,11 +7180,11 @@ _0222D110:
 
 	thumb_func_start ov45_0222D130
 ov45_0222D130: ; 0x0222D130
-	ldr r3, _0222D138 ; =FreeToHeap
+	ldr r3, _0222D138 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D138: .word FreeToHeap
+_0222D138: .word Heap_Free
 	thumb_func_end ov45_0222D130
 
 	thumb_func_start ov45_0222D13C
@@ -7249,7 +7249,7 @@ ov45_0222D19C: ; 0x0222D19C
 	ldr r0, [r4]
 	bl ov45_0222CE94
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222D19C
@@ -7331,7 +7331,7 @@ ov45_0222D23C: ; 0x0222D23C
 	ldr r0, [r4]
 	bl ov45_0222CE94
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222D23C
@@ -7417,7 +7417,7 @@ ov45_0222D2E4: ; 0x0222D2E4
 	ldr r0, [r4]
 	bl ov45_0222CE94
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222D2E4
@@ -7494,11 +7494,11 @@ ov45_0222D354: ; 0x0222D354
 
 	thumb_func_start ov45_0222D380
 ov45_0222D380: ; 0x0222D380
-	ldr r3, _0222D388 ; =FreeToHeap
+	ldr r3, _0222D388 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D388: .word FreeToHeap
+_0222D388: .word Heap_Free
 	thumb_func_end ov45_0222D380
 
 	thumb_func_start ov45_0222D38C
@@ -7581,11 +7581,11 @@ ov45_0222D3D8: ; 0x0222D3D8
 
 	thumb_func_start ov45_0222D410
 ov45_0222D410: ; 0x0222D410
-	ldr r3, _0222D418 ; =FreeToHeap
+	ldr r3, _0222D418 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D418: .word FreeToHeap
+_0222D418: .word Heap_Free
 	thumb_func_end ov45_0222D410
 
 	thumb_func_start ov45_0222D41C
@@ -7690,11 +7690,11 @@ ov45_0222D484: ; 0x0222D484
 
 	thumb_func_start ov45_0222D4C0
 ov45_0222D4C0: ; 0x0222D4C0
-	ldr r3, _0222D4C8 ; =FreeToHeap
+	ldr r3, _0222D4C8 ; =Heap_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_0222D4C8: .word FreeToHeap
+_0222D4C8: .word Heap_Free
 	thumb_func_end ov45_0222D4C0
 
 	thumb_func_start ov45_0222D4CC
@@ -8252,7 +8252,7 @@ ov45_0222D890: ; 0x0222D890
 	add r0, #0x5c
 	bl ov45_0222DFD0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_0222D890
@@ -10265,7 +10265,7 @@ _0222E696:
 	bl ov45_0222F878
 	ldr r0, _0222E6C4 ; =_022577C0
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222E6C4 ; =_022577C0
 	mov r1, #0
 	str r1, [r0]
@@ -12719,13 +12719,13 @@ _0222F874: .word _022577C0
 	thumb_func_start ov45_0222F878
 ov45_0222F878: ; 0x0222F878
 	ldr r0, _0222F884 ; =_022577C0
-	ldr r3, _0222F888 ; =FreeToHeap
+	ldr r3, _0222F888 ; =Heap_Free
 	ldr r0, [r0]
 	ldr r0, [r0, #0x24]
 	bx r3
 	nop
 _0222F884: .word _022577C0
-_0222F888: .word FreeToHeap
+_0222F888: .word Heap_Free
 	thumb_func_end ov45_0222F878
 
 	thumb_func_start ov45_0222F88C
@@ -12964,7 +12964,7 @@ _0222FA26:
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x12
 	lsl r0, r0, #4
 	str r6, [r5, r0]
@@ -14331,7 +14331,7 @@ ov45_022303FC: ; 0x022303FC
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}
@@ -14649,9 +14649,9 @@ ov45_02230638: ; 0x02230638
 	ldr r0, [r4, #4]
 	bl GF2dGfxRawResObj_Destroy
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov45_02230638
@@ -16008,7 +16008,7 @@ _0223104A:
 	str r0, [r4]
 _02231060:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	cmp r7, #0
 	bne _022310AC
 	add r0, r5, #0
@@ -16040,7 +16040,7 @@ _0223109C:
 _022310A4:
 	str r0, [r4]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _022310AC:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}

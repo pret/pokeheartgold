@@ -77,19 +77,19 @@ static PartyMenuItemType ItemId_GetPartyUseType(u16 itemId) {
     int param;
     ItemData *itemData = LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PARTY_USE) != TRUE) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_OTHER;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_ATK_STAGES) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_DEF_STAGES) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPATK_STAGES) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPDEF_STAGES) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPEED_STAGES) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_ACCURACY_STAGES) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_CRITRATE_STAGES)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_BATTLE_STAT_STAGES;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_REVIVE_ALL)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_REVIVE_ALL;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_LEVEL_UP)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_LEVEL_UP;
     }
 
@@ -102,114 +102,114 @@ static PartyMenuItemType ItemId_GetPartyUseType(u16 itemId) {
 
     switch (param) {
     case 1:
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SLP_HEAL;
     case 2:
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_PSN_HEAL;
     case 4:
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_BRN_HEAL;
     case 8:
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_FRZ_HEAL;
     case 16:
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_PRZ_HEAL;
     case 32:
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_CFS_HEAL;
     case 63:
         if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE)) {
-            FreeToHeap(itemData);
+            Heap_Free(itemData);
             return PARTY_MENU_ITEM_TYPE_HP_RESTORE;
         } else {
-            FreeToHeap(itemData);
+            Heap_Free(itemData);
             return PARTY_MENU_ITEM_TYPE_FULL_HEAL;
         }
     }
 
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_INF_HEAL)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_INF_HEAL;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_RESTORE)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_HP_RESTORE;
     }
 
     param = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_HP_EV_UP_PARAM);
     if (param > 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_HP_EV_UP;
     } else if (param < 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_HP_EV_DOWN;
     }
 
     param = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_ATK_EV_UP_PARAM);
     if (param > 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_ATK_EV_UP;
     } else if (param < 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_ATK_EV_DOWN;
     }
 
     param = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_DEF_EV_UP_PARAM);
     if (param > 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_DEF_EV_UP;
     } else if (param < 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_DEF_EV_DOWN;
     }
 
     param = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPEED_EV_UP_PARAM);
     if (param > 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SPEED_EV_UP;
     } else if (param < 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SPEED_EV_DOWN;
     }
 
     param = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPATK_EV_UP_PARAM);
     if (param > 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SPATK_EV_UP;
     } else if (param < 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SPATK_EV_DOWN;
     }
 
     param = GetItemAttr_PreloadedItemData(itemData, ITEMATTR_SPDEF_EV_UP_PARAM);
     if (param > 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SPDEF_EV_UP;
     } else if (param < 0) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_SPDEF_EV_DOWN;
     }
 
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_EVOLVE)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_EVOLVE;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_UP)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_PP_UP;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_MAX)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_PP_MAX;
     }
     if (
         GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_ALL)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         return PARTY_MENU_ITEM_TYPE_PP_RESTORE;
     }
-    FreeToHeap(itemData);
+    Heap_Free(itemData);
     return PARTY_MENU_ITEM_TYPE_OTHER;
 }
 

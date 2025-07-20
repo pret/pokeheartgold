@@ -33,10 +33,10 @@ _02020678: .word NNS_G2dUpdateCellTransferStateManager
 
 	thumb_func_start sub_0202067C
 sub_0202067C: ; 0x0202067C
-	ldr r3, _02020680 ; =FreeToHeap
+	ldr r3, _02020680 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02020680: .word FreeToHeap
+_02020680: .word Heap_Free
 	thumb_func_end sub_0202067C
 
 	thumb_func_start sub_02020684
@@ -85,9 +85,9 @@ sub_020206C8: ; 0x020206C8
 	add r4, r0, #0
 	bl sub_02020740
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_020206C8

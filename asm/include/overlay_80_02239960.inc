@@ -15,7 +15,7 @@
 .public sub_02015524
 .public sub_02015528
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public Camera_SetPerspectiveClippingPlane
 .public GF_AssertFail
 .public Thunk_G3X_Reset

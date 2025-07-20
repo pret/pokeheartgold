@@ -16,7 +16,7 @@
 .public NewString_ReadMsgData
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BG_ClearCharDataRange

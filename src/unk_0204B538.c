@@ -311,7 +311,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
 u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, u16 *a4, u16 *a5, UnkStruct_0204A824_7E8 *a6, HeapID heapId) {
     u16 *unk7 = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
     u32 unk4 = sub_0204BABC(a0, unk7, frontierTrainerIndex, a1->unk30, a3, a4, a5, a6, heapId);
-    FreeToHeap(unk7);
+    Heap_Free(unk7);
     return unk4;
 }
 
@@ -322,7 +322,7 @@ void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTra
     for (s32 i = 0; i < 2; i++) {
         sub_0204B834(a0, &a1->unk30[i], a4->unk04[i], a4->otId, a4->unk08[i], iv, i, a3, heapId);
     }
-    FreeToHeap(unk);
+    Heap_Free(unk);
 }
 
 static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, HeapID heapId) {

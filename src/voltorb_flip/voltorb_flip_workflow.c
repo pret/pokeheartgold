@@ -17,7 +17,7 @@ WorkflowEngine *CreateWorkflowEngine(HeapID a0, VoltorbFlipWorkflows *workflows,
 }
 
 void FreeWorkflowEngine(WorkflowEngine *workflow) {
-    FreeToHeap(workflow);
+    Heap_Free(workflow);
 }
 
 // Returns TRUE when the Workflow is terminated.

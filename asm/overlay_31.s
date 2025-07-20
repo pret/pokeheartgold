@@ -600,7 +600,7 @@ _0225D9EA:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #2
 	mov r1, #1
 	bl GfGfx_EngineBTogglePlanes
@@ -630,7 +630,7 @@ _0225DA26:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _0225DA64:
@@ -657,7 +657,7 @@ _0225DA64:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1472,7 +1472,7 @@ ov31_0225E0E4: ; 0x0225E0E4
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

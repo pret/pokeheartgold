@@ -46,8 +46,8 @@
 .public sub_02015524
 .public sub_02015528
 .public AllocFromHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

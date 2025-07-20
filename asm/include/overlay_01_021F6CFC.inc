@@ -10,7 +10,7 @@
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public WindowIsInUse
 .public RemoveWindow
 .public TextPrinterCheckActive

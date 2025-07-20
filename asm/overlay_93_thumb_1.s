@@ -1049,7 +1049,7 @@ _0225CD72:
 	ldr r0, [r0]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x2c]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov93_0225D064
 	add r0, r4, #0
@@ -1895,7 +1895,7 @@ _0225D560:
 	mov r1, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0225D58E:
 	add r4, r4, #1
 _0225D590:
@@ -2074,7 +2074,7 @@ ov93_0225D6E0: ; 0x0225D6E0
 	ldr r0, [r4]
 	bl sub_02014EBC
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov93_0225D6E0
@@ -4388,17 +4388,17 @@ ov93_0225E860: ; 0x0225E860
 	add r0, r5, #0
 	bl ov93_0225FABC
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x93
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov93_0225E860
 

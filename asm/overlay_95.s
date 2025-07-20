@@ -670,7 +670,7 @@ ov95_021E5E40: ; 0x021E5E40
 	add r0, r5, #0
 	bl sub_02014EBC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov95_021E5E40
 
@@ -763,10 +763,10 @@ _021E5EEC:
 
 	thumb_func_start ov95_021E5EF0
 ov95_021E5EF0: ; 0x021E5EF0
-	ldr r3, _021E5EF4 ; =FreeToHeap
+	ldr r3, _021E5EF4 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021E5EF4: .word FreeToHeap
+_021E5EF4: .word Heap_Free
 	thumb_func_end ov95_021E5EF0
 
 	thumb_func_start ov95_021E5EF8
@@ -2816,7 +2816,7 @@ HatchEggApp_Exit: ; 0x021E6F0C
 	mov r1, #3
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4, #0x3c]
 	bl PokepicManager_Delete
@@ -2953,7 +2953,7 @@ _021E7082:
 	mov r1, #6
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov95_021E7078

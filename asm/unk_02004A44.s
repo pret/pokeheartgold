@@ -2054,7 +2054,7 @@ _020058DC:
 	mov r0, #0
 	strb r0, [r4]
 	ldr r0, [r6]
-	bl FreeToHeap
+	bl Heap_Free
 _020058F2:
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020058B8

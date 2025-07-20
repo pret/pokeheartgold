@@ -157,7 +157,7 @@ sub_0203A444: ; 0x0203A444
 	strh r1, [r0, #4]
 _0203A466:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	nop
 _0203A470: .word 0x40000200
@@ -253,7 +253,7 @@ _0203A518:
 	bl GXS_LoadOBJPltt
 _0203A524:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 _0203A52A:
 	add sp, #8
 	pop {r3, r4, r5, pc}
@@ -483,7 +483,7 @@ _0203A6C6:
 	bl GXS_LoadOBJ
 _0203A6DC:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 _0203A6E2:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}

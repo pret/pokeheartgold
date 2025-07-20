@@ -431,7 +431,7 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
         }
         break;
     case 5:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -481,7 +481,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -513,7 +513,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
         break;
     case 2:
         sub_0205316C(fieldSystem);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -567,7 +567,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
         env->state++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -635,7 +635,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -751,7 +751,7 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -874,7 +874,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         }
         break;
     case 7:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -929,7 +929,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 5:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -987,7 +987,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         }
         break;
     case 6:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -1031,7 +1031,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 

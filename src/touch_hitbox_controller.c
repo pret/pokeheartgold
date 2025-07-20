@@ -23,7 +23,7 @@ TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hit
                 TouchHitboxControllerTemplate_Init(&controller->templates[i]);
             }
         } else {
-            FreeToHeap(controller);
+            Heap_Free(controller);
             controller = NULL;
         }
     }
@@ -38,8 +38,8 @@ static void TouchHitboxControllerTemplate_Init(TouchHitboxControllerTemplate *te
 
 void TouchHitboxController_Destroy(TouchHitboxController *controller) {
     GF_ASSERT(controller != NULL);
-    FreeToHeap(controller->templates);
-    FreeToHeap(controller);
+    Heap_Free(controller->templates);
+    Heap_Free(controller);
 }
 
 typedef int (*TouchHitboxControllerTemplate_UnkCallback)(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 touchNew);

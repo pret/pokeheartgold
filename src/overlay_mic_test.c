@@ -711,7 +711,7 @@ static void ov62_021E6024(MicTestSub_B8 *a0) {
     for (u32 i = 0; i < 5; i++) {
         FreeBgTilemapBuffer(a0->bgConfig, ov62_021E6728[i].bgId);
     }
-    FreeToHeap(a0->bgConfig);
+    Heap_Free(a0->bgConfig);
 }
 
 static void ov62_021E6048(MicTestSub_B8 *a0) {
@@ -776,7 +776,7 @@ static void ov62_021E61AC(MicTestInput *input, HeapID heapId, MICCallback a2, Mi
 }
 
 static void ov62_021E61FC(MicTestInput *input) {
-    FreeToHeap(input->unk1C);
+    Heap_Free(input->unk1C);
     Sys_ClearSleepDisableFlag(8);
 }
 

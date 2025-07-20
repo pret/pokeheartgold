@@ -258,7 +258,7 @@ _022381DC:
 	blt _022381DC
 _02238202:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl BattleSetup_SetAllySideBattlersToPlayer
 	ldrb r1, [r7, #0x11]
@@ -270,7 +270,7 @@ _02238202:
 	ldrh r1, [r1]
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r2, [sp, #0xc]
@@ -317,7 +317,7 @@ _0223826A:
 	blt _0223826A
 _0223828A:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldrb r0, [r7, #0x10]
 	cmp r0, #2
 	beq _0223829A
@@ -344,7 +344,7 @@ _0223829A:
 	ldrh r1, [r1]
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r2, [sp, #0xc]
@@ -386,7 +386,7 @@ _02238304:
 	blt _02238304
 _0223832A:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02238330:
 	ldr r0, [r7, #0x70]
 	bl HealParty
@@ -531,7 +531,7 @@ _022383EC:
 	blt _022383EC
 _02238424:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

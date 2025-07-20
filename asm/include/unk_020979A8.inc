@@ -7,7 +7,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public sub_0203FC90
 .public TaskManager_Call

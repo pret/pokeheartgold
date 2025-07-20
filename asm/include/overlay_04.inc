@@ -11,7 +11,7 @@
 .public IsCameraTranslationFinished
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public Camera_OffsetLookAtPosAndTarget
 .public Camera_GetPerspectiveAngle

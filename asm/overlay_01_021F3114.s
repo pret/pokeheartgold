@@ -316,10 +316,10 @@ _021F335C:
 
 	thumb_func_start ov01_021F336C
 ov01_021F336C: ; 0x021F336C
-	ldr r3, _021F3374 ; =FreeToHeapExplicit
+	ldr r3, _021F3374 ; =Heap_FreeExplicit
 	add r1, r0, #0
 	mov r0, #4
 	bx r3
 	.balign 4, 0
-_021F3374: .word FreeToHeapExplicit
+_021F3374: .word Heap_FreeExplicit
 	thumb_func_end ov01_021F336C

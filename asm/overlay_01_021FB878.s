@@ -154,7 +154,7 @@ _021FB968:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _021FB976
-	bl FreeToHeap
+	bl Heap_Free
 _021FB976:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -163,11 +163,11 @@ _021FB976:
 	ldr r1, [r5]
 	ldr r0, _021FB9C4 ; =0x000008BC
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [r5]
 	ldr r0, _021FB9C8 ; =0x0000089C
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [r5]
 	ldr r0, _021FB9C8 ; =0x0000089C
 	mov r2, #0
@@ -175,14 +175,14 @@ _021FB976:
 	ldr r1, [r5]
 	add r0, r0, #4
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x8a
 	ldr r1, [r5]
 	mov r2, #0
 	lsl r0, r0, #4
 	str r2, [r1, r0]
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r5]
 	pop {r3, r4, r5, r6, r7, pc}
@@ -553,7 +553,7 @@ _021FBC76:
 	bl ov01_021EA73C
 	ldr r0, _021FBC94 ; =0x000008B8
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021FBC94 ; =0x000008B8
 	mov r1, #0
 	str r1, [r5, r0]
@@ -723,7 +723,7 @@ _021FBDD8:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021FBDE2
-	bl FreeToHeap
+	bl Heap_Free
 _021FBDE2:
 	mov r1, #0x10
 	mov r0, #0
@@ -827,7 +827,7 @@ Field3dModelAnimation_Unload: ; 0x021FBE80
 	cmp r0, #0
 	bne _021FBE9E
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 _021FBE9E:
 	mov r1, #0x14
 	mov r0, #0

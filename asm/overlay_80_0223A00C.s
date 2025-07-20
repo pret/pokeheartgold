@@ -102,7 +102,7 @@ ov80_0223A0C0: ; 0x0223A0C0
 	bl NARC_Delete
 	ldr r1, [r5, #0xc]
 	mov r0, #0x65
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add r0, r4, #0
 	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
@@ -1279,7 +1279,7 @@ ov80_0223A938: ; 0x0223A938
 	add r2, #0xe0
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223AA44 ; =ov80_0223AA4C
 	ldr r2, _0223AA48 ; =0x0000044C
 	add r1, r5, #0

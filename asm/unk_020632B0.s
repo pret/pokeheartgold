@@ -440,7 +440,7 @@ _02063624:
 	bl PlaySE
 _0206366E:
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
@@ -2633,7 +2633,7 @@ sub_02064618: ; 0x02064618
 	bl SysTask_GetData
 	add r1, r0, #0
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add r0, r4, #0
 	bl SysTask_Destroy
 	pop {r4, pc}

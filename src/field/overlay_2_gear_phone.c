@@ -168,8 +168,8 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     }
 
     if (index == 0) {
-        FreeToHeap(contact);
-        FreeToHeap(ptr);
+        Heap_Free(contact);
+        Heap_Free(ptr);
         return 0;
     }
 
@@ -200,8 +200,8 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         ov02_022522AC(gearPhone, 1);
     }
 
-    FreeToHeap(contact);
-    FreeToHeap(ptr);
+    Heap_Free(contact);
+    Heap_Free(ptr);
 
     return ret;
 }
@@ -310,9 +310,9 @@ _022520A2:
 	cmp r7, #0
 	bne _022520B8
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -433,9 +433,9 @@ _02252164:
 	bl ov02_022522AC
 _022521AC:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x28]
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -480,12 +480,12 @@ LABEL:
     }
 
     if (cnt == 0) {
-        FreeToHeap(ptr);
+        Heap_Free(ptr);
         return 0xFF;
     }
 
     u8 ret = ptr[LCRandom() % cnt];
-    FreeToHeap(ptr);
+    Heap_Free(ptr);
     return ret;
 }
 

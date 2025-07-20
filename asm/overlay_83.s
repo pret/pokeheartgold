@@ -3010,7 +3010,7 @@ ov83_0223F734: ; 0x0223F734
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _0223F79C ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -3372,7 +3372,7 @@ ov83_0223FA74: ; 0x0223FA74
 	mov r2, #0xe0
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -3436,7 +3436,7 @@ ov83_0223FAF0: ; 0x0223FAF0
 	mov r2, #0x80
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -9096,7 +9096,7 @@ _022428E2:
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x3b
 	lsl r0, r0, #4
 	add r0, r6, r0
@@ -9213,7 +9213,7 @@ ov83_022429E4: ; 0x022429E4
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02242AA4 ; =0x00000862
 	mov r4, #0
 	ldrsh r1, [r6, r0]
@@ -12384,7 +12384,7 @@ ov83_0224442C: ; 0x0224442C
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _02244484 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -12689,7 +12689,7 @@ ov83_022446D0: ; 0x022446D0
 	mov r2, #0x80
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -12753,7 +12753,7 @@ ov83_0224474C: ; 0x0224474C
 	mov r2, #0x80
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -18457,7 +18457,7 @@ _0224754A:
 	ldr r0, [r4, #4]
 	bl Sprite_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -18673,7 +18673,7 @@ _022476C0:
 	lsl r2, r2, #6
 	bl MIi_CpuCopy32
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r7, #0xb8
 	mov r6, #0x3d
 _022476EA:
@@ -18705,7 +18705,7 @@ _022476EA:
 	mov r2, #5
 	bl GfGfxLoader_GXLoadPal
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

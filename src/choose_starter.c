@@ -97,8 +97,8 @@ static BOOL CreateStarter(TaskManager *taskManager) {
         if (!IsPaletteFadeFinished()) {
             break;
         }
-        FreeToHeap(env->args);
-        FreeToHeap(env);
+        Heap_Free(env->args);
+        Heap_Free(env);
         return TRUE;
     }
 

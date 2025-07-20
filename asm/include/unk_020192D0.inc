@@ -53,7 +53,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgCommitTilemapBufferToVram
 .public CopyToBgTilemapRect
 .public FillBgTilemapRect

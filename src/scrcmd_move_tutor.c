@@ -223,7 +223,7 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
             numLearnableMoves++;
         }
     }
-    FreeToHeap(learnset);
+    Heap_Free(learnset);
     return numLearnableMoves;
 }
 
@@ -336,6 +336,6 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
             break;
         }
     }
-    FreeToHeap(unk);
+    Heap_Free(unk);
     return FALSE;
 }

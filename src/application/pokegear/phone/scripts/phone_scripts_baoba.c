@@ -65,7 +65,7 @@ BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *ctx) {
             numAreas = 2 * (numAreas - 1);
             PhoneCallMessagePrint_Gendered(ctx, ctx->msgData_PhoneContact, msg_0667_00014 + numAreas, msg_0667_00015 + numAreas);
         }
-        FreeToHeap(areas);
+        Heap_Free(areas);
         break;
     default:
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {

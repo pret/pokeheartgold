@@ -18,7 +18,7 @@ OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void 
 }
 
 void OverlayManager_Delete(OverlayManager *man) {
-    FreeToHeap(man);
+    Heap_Free(man);
 }
 
 void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, HeapID heapId) {
@@ -33,7 +33,7 @@ void *OverlayManager_GetData(OverlayManager *man) {
 }
 
 void OverlayManager_FreeData(OverlayManager *man) {
-    FreeToHeap(man->data);
+    Heap_Free(man->data);
     man->data = NULL;
 }
 

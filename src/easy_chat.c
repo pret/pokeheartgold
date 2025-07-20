@@ -114,7 +114,7 @@ void EasyChatManager_Delete(EasyChatManager *easyChatManager) {
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
         DestroyMsgData(easyChatManager->msgData[i]);
     }
-    FreeToHeap(easyChatManager);
+    Heap_Free(easyChatManager);
 }
 
 void EasyChatManager_ReadWordIntoString(EasyChatManager *easyChatManager, u16 ecWord, String *dest) {
@@ -262,8 +262,8 @@ WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
 }
 
 void WallpaperPasswordBank_Delete(WallpaperPasswordBank *wallpaperPasswordBank) {
-    FreeToHeap(wallpaperPasswordBank->words);
-    FreeToHeap(wallpaperPasswordBank);
+    Heap_Free(wallpaperPasswordBank->words);
+    Heap_Free(wallpaperPasswordBank);
 }
 
 u32 WallpaperPasswordBank_GetCount(WallpaperPasswordBank *wallpaperPasswordBank) {

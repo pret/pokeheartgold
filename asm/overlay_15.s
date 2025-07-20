@@ -575,11 +575,11 @@ Bag_Exit: ; 0x021F982C
 	bl ov15_021FF894
 	ldr r0, _021F98EC ; =0x0000068C
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x69
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov15_021FA0D8
 	add r0, r4, #0
@@ -869,7 +869,7 @@ ov15_021F9A8C: ; 0x021F9A8C
 	bl FreeBgTilemapBuffer
 	mov r0, #6
 	add r1, r4, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov15_021F9A8C
@@ -4089,7 +4089,7 @@ _021FB34A:
 	add r1, sp, #0
 	bl ov15_021FB380
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -8341,7 +8341,7 @@ _021FD5A4:
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0xf
@@ -8361,7 +8361,7 @@ _021FD5A4:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -8400,7 +8400,7 @@ _021FD62E:
 	mov r1, #5
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #0xf
@@ -8420,7 +8420,7 @@ _021FD62E:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov15_02200294
 	add r0, r4, #0
@@ -8452,7 +8452,7 @@ _021FD6C6:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4]
 	mov r1, #5
 	add r2, r6, #0
@@ -8482,7 +8482,7 @@ _021FD70C:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _021FD740:
@@ -8505,7 +8505,7 @@ _021FD740:
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021FD770:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9487,9 +9487,9 @@ _021FDF30:
 	add r0, r5, r7
 	bl NNS_G3dFreeAnmObj
 	ldr r0, [r4, #0x5c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x7c]
-	bl FreeToHeap
+	bl Heap_Free
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #8
@@ -9503,10 +9503,10 @@ _021FDF30:
 	ldr r0, [sp]
 	add r0, #0x9c
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	ldr r0, [r0, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021FDF80: .word 0x0000081C
@@ -10814,7 +10814,7 @@ ov15_021FE9B0: ; 0x021FE9B0
 	bl BlitBitmapRectToWindow
 	mov r0, #6
 	add r1, r6, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add sp, #0x1c
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov15_021FE9B0
@@ -10870,7 +10870,7 @@ _021FEA2C:
 _021FEA50:
 	mov r0, #6
 	add r1, r7, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov15_021FE9F0
@@ -12694,7 +12694,7 @@ _021FF8A0:
 	bl SpriteSystem_Free
 	ldr r0, _021FF8D0 ; =0x0000069C
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021FF8D0: .word 0x0000069C

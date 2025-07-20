@@ -153,7 +153,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	mov r3, #0xe0
 	bl PaletteData_LoadPalette
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_020347A0
 	add r4, r0, #0
 	bl sub_0203769C
@@ -1909,7 +1909,7 @@ ov92_0225D49C: ; 0x0225D49C
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x5c]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -4655,10 +4655,10 @@ _0225EB54:
 
 	thumb_func_start ov92_0225EB68
 ov92_0225EB68: ; 0x0225EB68
-	ldr r3, _0225EB6C ; =FreeToHeap
+	ldr r3, _0225EB6C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0225EB6C: .word FreeToHeap
+_0225EB6C: .word Heap_Free
 	thumb_func_end ov92_0225EB68
 
 	thumb_func_start ov92_0225EB70
@@ -4898,10 +4898,10 @@ _0225ED5C: .word 0x00000944
 
 	thumb_func_start ov92_0225ED60
 ov92_0225ED60: ; 0x0225ED60
-	ldr r3, _0225ED64 ; =FreeToHeap
+	ldr r3, _0225ED64 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0225ED64: .word FreeToHeap
+_0225ED64: .word Heap_Free
 	thumb_func_end ov92_0225ED60
 
 	thumb_func_start ov92_0225ED68
@@ -5168,7 +5168,7 @@ _0225EF6C:
 	add r0, r6, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 _0225EF7C:
@@ -5519,7 +5519,7 @@ _0225F21C:
 	add r0, r6, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0225F23A:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -5551,7 +5551,7 @@ _0225F274:
 	add r0, r5, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 _0225F284:
@@ -5639,7 +5639,7 @@ _0225F31E:
 	add r0, r5, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0225F332:
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
@@ -8588,7 +8588,7 @@ _02260AFC:
 	add r0, r4, #0
 	bl SysTask_Destroy
 	ldr r0, [sp]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 _02260B14:
@@ -9305,7 +9305,7 @@ _022610BE:
 	add r2, r1, #0
 	bl ov92_0225DF0C
 	ldr r0, [sp]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 _022610D6:

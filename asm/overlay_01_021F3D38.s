@@ -41,7 +41,7 @@ ov01_021F3D50: ; 0x021F3D50
 	bl RemoveWindow
 _021F3D60:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov01_021F3D50
 

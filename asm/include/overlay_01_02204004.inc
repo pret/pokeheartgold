@@ -3,7 +3,7 @@
 .public AllocAndReadWholeNarcMemberByIdPair
 .public GF_RTC_GetTimeOfDay
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public GF_AssertFail
 .public NNS_FndAllocFromAllocator

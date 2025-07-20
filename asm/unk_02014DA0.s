@@ -260,7 +260,7 @@ _02014F38:
 	ldr r0, [r5, #4]
 	cmp r0, #0
 	beq _02014F50
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r5, #4]
 _02014F50:
@@ -287,7 +287,7 @@ _02014F6C:
 	bl Camera_Delete
 _02014F76:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02014F80: .word _021D10A8
@@ -1595,7 +1595,7 @@ _020157C2:
 	bl String_Delete
 _020157D0:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _020157D6:
 	pop {r4, pc}
 	thumb_func_end DestroyListMenuCursorObj

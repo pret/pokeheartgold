@@ -306,7 +306,7 @@ void sub_0204AA2C(UnkStruct_Fsys_A0 *a0) {
     }
     GF_ASSERT(a0->unk00 == 0x12345678);
     MI_CpuClear8(a0, sizeof(UnkStruct_Fsys_A0));
-    FreeToHeap(a0);
+    Heap_Free(a0);
 }
 
 void sub_0204AA58(UnkStruct_Fsys_A0 *a0, TaskManager *taskManager, void *a2) {
@@ -317,7 +317,7 @@ BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData) {
     Party *party;
     u8 *unk = *a1;
     if (unk[0x27] != 0 || unk[0x26] == 7) {
-        FreeToHeap(*a1);
+        Heap_Free(*a1);
         *a1 = NULL;
         return FALSE;
     }
@@ -328,7 +328,7 @@ BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData) {
         a0->unk2e[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
         a0->unk36[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     }
-    FreeToHeap(*a1);
+    Heap_Free(*a1);
     *a1 = NULL;
     return TRUE;
 }
@@ -723,7 +723,7 @@ static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
     }
     sub_0202D4B8(a0->unk74, a2, unkStructs);
     MI_CpuClear8(unkStructs, 3 * sizeof(UnkStruct_0204B470));
-    FreeToHeap(unkStructs);
+    Heap_Free(unkStructs);
 }
 
 u8 sub_0204B4D4(u32 frontierTrainerIndex) {

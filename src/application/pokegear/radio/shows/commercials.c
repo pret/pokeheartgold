@@ -92,7 +92,7 @@ BOOL RadioShow_Commercials_Setup(RadioShow *radioShow) {
 BOOL RadioShow_Commercials_Teardown(RadioShow *radioShow) {
     RadioShow_Commercials_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(CommercialsData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

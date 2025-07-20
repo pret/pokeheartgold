@@ -39,7 +39,7 @@ sub_02014A38: ; 0x02014A38
 	bl GF_AssertFail
 _02014A42:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02014A38
@@ -272,7 +272,7 @@ sub_02014BD8: ; 0x02014BD8
 	ldr r0, [r4, r0]
 	bl sub_02014A38
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02014BD8

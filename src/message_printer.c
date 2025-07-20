@@ -60,9 +60,9 @@ MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, H
 void MessagePrinter_Delete(MessagePrinter *messagePrinter) {
     if (messagePrinter != NULL) {
         if (messagePrinter->charData != NULL) {
-            FreeToHeap(messagePrinter->charData);
+            Heap_Free(messagePrinter->charData);
         }
-        FreeToHeap(messagePrinter);
+        Heap_Free(messagePrinter);
     }
 }
 

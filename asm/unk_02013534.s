@@ -85,15 +85,15 @@ _020135B6:
 	add r5, r6, #0
 _020135BA:
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xc
 	blt _020135BA
 	ldr r0, [r6, #0x60]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_020135AC
@@ -153,7 +153,7 @@ _020135F2:
 	add r3, r4, #0
 	bl sub_02013E78
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #8
 	bl sub_02013FA8
 	add r0, r4, #0
@@ -177,7 +177,7 @@ _02013674:
 	add r0, r4, #0
 	bl sub_02013ECC
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl sub_02013AC0
 	pop {r4, pc}
@@ -584,7 +584,7 @@ sub_02013938: ; 0x02013938
 	add r4, r0, #0
 	bl sub_02013FA8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_02013938
 
@@ -647,7 +647,7 @@ _0201396E:
 	add r3, r4, #0
 	bl sub_02013E78
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -715,7 +715,7 @@ _02013A36:
 	bl GXS_LoadOBJ
 _02013A46:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_020139D0
@@ -1148,7 +1148,7 @@ _02013D4A:
 	ldr r0, [sp, #0x28]
 	str r0, [r5, #0x20]
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x2c]
 	add r0, r0, r4
 	add sp, #0x14
@@ -1460,7 +1460,7 @@ sub_02013F94: ; 0x02013F94
 	bl GF_AssertFail
 _02013F9E:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02013F94

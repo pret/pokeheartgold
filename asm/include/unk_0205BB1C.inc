@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_SinDegNoWrap
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem

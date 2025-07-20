@@ -894,14 +894,14 @@ _022384D6:
 	ldr r1, [r6, #4]
 	bl Party_Copy
 	ldr r0, [r5, #0x68]
-	bl FreeToHeap
+	bl Heap_Free
 	add r1, r6, #0
 	add r1, #0xf8
 	ldr r0, [r5, #0x48]
 	ldr r1, [r1]
 	bl PlayerProfile_Copy
 	ldr r0, [r5, #0x48]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	add r6, r6, #4
 	add r0, r0, #1
@@ -919,14 +919,14 @@ _022384D6:
 	ldr r1, [r7, r1]
 	bl Save_Bag_Copy
 	ldr r0, [r4, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0x11
 	lsl r1, r1, #4
 	ldr r0, [r4, #0x60]
 	ldr r1, [r7, r1]
 	bl Pokedex_Copy
 	ldr r0, [r4, #0x60]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x45
 	ldr r1, [r4, #0x64]
 	lsl r0, r0, #2
@@ -1040,13 +1040,13 @@ _022384D6:
 	lsl r7, r7, #4
 _0223861E:
 	ldr r0, [r5, r7]
-	bl FreeToHeap
+	bl Heap_Free
 	add r6, r6, #1
 	add r5, #0x10
 	cmp r6, #4
 	blt _0223861E
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x28]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -1116,15 +1116,15 @@ _022386C0:
 	mov r1, #3
 	bl WindowArray_Delete
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x22
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1166,7 +1166,7 @@ _02238748:
 	bl ov12_0226BEF0
 _02238756:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _022387A0 ; =FS_OVERLAY_ID(OVY_6)
 	bl UnloadOverlayByID
 	ldr r0, _022387A4 ; =FS_OVERLAY_ID(OVY_7)
@@ -4165,7 +4165,7 @@ _02239FE2:
 	add r5, r4, #0
 _02239FFA:
 	ldr r0, [r5, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	add r6, r6, #1
 	add r5, r5, #4
 	cmp r6, #4
@@ -4256,9 +4256,9 @@ ov12_0223A088: ; 0x0223A088
 	mov r1, #1
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov12_0223A088
 
@@ -4445,7 +4445,7 @@ _0223A236:
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
 	beq _0223A244
-	bl FreeToHeap
+	bl Heap_Free
 _0223A244:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -4454,7 +4454,7 @@ _0223A244:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0223A25A:
@@ -4641,7 +4641,7 @@ _0223A3C6:
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
 	beq _0223A3D4
-	bl FreeToHeap
+	bl Heap_Free
 _0223A3D4:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -4650,7 +4650,7 @@ _0223A3D4:
 	mov r0, #0x71
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0223A3EA:
@@ -4920,14 +4920,14 @@ _0223A5FE:
 	ldr r0, [r5, #0x14]
 	cmp r0, #0
 	beq _0223A608
-	bl FreeToHeap
+	bl Heap_Free
 _0223A608:
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
 	blt _0223A5FE
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0223A61A:

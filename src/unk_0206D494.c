@@ -104,7 +104,7 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
         break;
     case 3:
         sub_0206D850(fieldSystem->playerAvatar);
-        FreeToHeap(unkStruct);
+        Heap_Free(unkStruct);
         return TRUE;
     }
     return FALSE;
@@ -272,7 +272,7 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
 BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
     NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD, TRUE);
     BOOL result = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
-    FreeToHeap(trade);
+    Heap_Free(trade);
     return result != FALSE;
 }
 
@@ -428,8 +428,8 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
             if (!contest->caught_poke) {
                 contest->caught_poke = TRUE;
             }
-            FreeToHeap(unkStruct->unk08);
-            FreeToHeap(unkStruct);
+            Heap_Free(unkStruct->unk08);
+            Heap_Free(unkStruct);
             return TRUE;
         }
         break;

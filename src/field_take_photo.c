@@ -221,7 +221,7 @@ static BOOL FieldTask_ViewPhoto(TaskManager *taskManager) {
         break;
     case VIEW_PHOTO_STATE_QUIT2:
         sub_02067A80(fieldSystem, 0);
-        FreeToHeap(viewPhoto);
+        Heap_Free(viewPhoto);
         return TRUE;
     }
 
@@ -241,7 +241,7 @@ static int ViewPhotoFieldTask_HandleAlbumSelection(FieldSystem *fieldSystem, Tas
     PhotoAlbumArgs *args = photo->selectionFromAlbumApp;
     photo->photoWasSelected = photoWasSelected = args->photoWasSelected;
     photo->whichPhoto = args->cursorPos;
-    FreeToHeap(photo->selectionFromAlbumApp);
+    Heap_Free(photo->selectionFromAlbumApp);
     if (photoWasSelected == TRUE) {
         return VIEW_PHOTO_STATE_LOAD;
     } else {
@@ -418,7 +418,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
         }
         ++taskData->placeObjectCounter;
         if (taskData->placeObjectCounter >= photo->numMons) {
-            FreeToHeap(taskData);
+            Heap_Free(taskData);
             return TRUE;
         }
         taskData->state = FIELD_PHOTO_DO_VIEW_STATE_4;
@@ -460,7 +460,7 @@ static BOOL FieldTask_DoViewPhoto(TaskManager *taskManager) {
                 ov01_021F902C(1, mapObject);
             }
         }
-        FreeToHeap(taskData);
+        Heap_Free(taskData);
         return TRUE;
     }
 
@@ -813,7 +813,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_EXIT;
         break;
     case TAKE_PHOTO_STATE_EXIT:
-        FreeToHeap(takePhoto);
+        Heap_Free(takePhoto);
         return TRUE;
     }
 
