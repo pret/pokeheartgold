@@ -840,8 +840,8 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_MET_LEVEL:
         ret = blockD->metLevel;
         break;
-    case MON_DATA_MET_GENDER:
-        ret = blockD->metGender;
+    case MON_DATA_OT_GENDER:
+        ret = blockD->otGender;
         break;
     case MON_DATA_ENCOUNTER_TYPE:
         ret = blockD->encounterType;
@@ -1308,8 +1308,8 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_MET_LEVEL:
         blockD->metLevel = VALUE(u8);
         break;
-    case MON_DATA_MET_GENDER:
-        blockD->metGender = VALUE(u8);
+    case MON_DATA_OT_GENDER:
+        blockD->otGender = VALUE(u8);
         break;
     case MON_DATA_ENCOUNTER_TYPE:
         blockD->encounterType = VALUE(u8);
@@ -1676,7 +1676,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_POKERUS:
     case MON_DATA_POKEBALL:
     case MON_DATA_MET_LEVEL:
-    case MON_DATA_MET_GENDER:
+    case MON_DATA_OT_GENDER:
     case MON_DATA_ENCOUNTER_TYPE:
     case MON_DATA_RESERVED_159:
     case MON_DATA_STATUS:
@@ -4115,7 +4115,7 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, HeapID he
     u32 myId = PlayerProfile_GetTrainerID(profile);
     u32 otId = GetBoxMonData(boxMon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
-    u32 otGender = GetBoxMonData(boxMon, MON_DATA_MET_GENDER, NULL);
+    u32 otGender = GetBoxMonData(boxMon, MON_DATA_OT_GENDER, NULL);
     String *r7 = PlayerProfile_GetPlayerName_NewString(profile, heapId);
     String *r6 = String_New(PLAYER_NAME_LENGTH + 1, heapId);
     BOOL ret = FALSE;

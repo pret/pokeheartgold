@@ -223,7 +223,7 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     SetMonData(mon, MON_DATA_OT_NAME_2, name);
     String_Delete(name);
 
-    SetMonData(mon, MON_DATA_MET_GENDER, &trade_dat->gender);
+    SetMonData(mon, MON_DATA_OT_GENDER, &trade_dat->gender);
     SetMonData(mon, MON_DATA_GAME_LANGUAGE, &trade_dat->language);
 
     mapsec = MapHeader_GetMapSec(mapno);

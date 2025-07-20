@@ -799,7 +799,7 @@ static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *pro
     String *name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
 
     SetBoxMonData(boxMon, MON_DATA_OTID, &otId);
-    SetBoxMonData(boxMon, MON_DATA_MET_GENDER, &gender);
+    SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gender);
     SetBoxMonData(boxMon, MON_DATA_OT_NAME_2, name);
 
     String_Delete(name);
