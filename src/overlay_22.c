@@ -47,14 +47,14 @@ BOOL ScrCmd_GiveCoins(ScriptContext *ctx) {
 BOOL ScrCmd_TakeCoins(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 amount = ScriptGetVar(ctx);
-    Coins_Remove(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
+    Coins_Subtract(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_569(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *ptr = ScriptGetVarPointer(ctx);
-    Coins_Remove(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), *ptr);
+    Coins_Subtract(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), *ptr);
     return FALSE;
 }
 
