@@ -273,7 +273,7 @@ void LegendCutscene_BeginClearBellAnim(FieldSystem *fieldSystem) {
 void LegendCutscene_EndClearBellAnim(FieldSystem *fieldSystem) {
     ClearBellCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     DeleteCameraTranslationWrapper(cam->translation);
-    FreeToHeap(fieldSystem->unk4->legendCutsceneCamera);
+    Heap_Free(fieldSystem->unk4->legendCutsceneCamera);
     fieldSystem->unk4->legendCutsceneCamera = NULL;
 }
 
@@ -538,7 +538,7 @@ static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman) {
         break;
     case LUGIA_EYE_GLIMMER_TASK_STATE_FINISH:
         unloadEyeGlimmer3dModel(unk);
-        FreeToHeap(unk);
+        Heap_Free(unk);
         return TRUE;
     }
 
@@ -791,7 +791,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         Field3dModelAnimation_Unload(&taskData->anims[1], &taskData->allocator);
         Field3dModelAnimation_Unload(&taskData->anims[0], &taskData->allocator);
         Field3dModel_Unload(&taskData->model);
-        FreeToHeap(taskData);
+        Heap_Free(taskData);
         return TRUE;
     }
 
@@ -882,8 +882,8 @@ static void endLeavesEffect(ClearBellCutscene3dObjectTaskData *taskData) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
     for (u8 i = 0; i < 6; ++i) {
-        FreeToHeap(leavesEffectData->bg2ScrnRaw[i]);
-        FreeToHeap(leavesEffectData->bg3ScrnRaw[i]);
+        Heap_Free(leavesEffectData->bg2ScrnRaw[i]);
+        Heap_Free(leavesEffectData->bg3ScrnRaw[i]);
     }
 }
 
@@ -950,7 +950,7 @@ void LegendCutscene_BeginLugiaArrivesEffect(FieldSystem *fieldSystem) {
 void LegendCutscene_EndLugiaArrivesEffect(FieldSystem *fieldSystem) {
     LugiaArrivesCutsceneCamera *cam = fieldSystem->unk4->legendCutsceneCamera;
     GF_ASSERT(cam->gameVersion != VERSION_HEARTGOLD);
-    FreeToHeap(fieldSystem->unk4->legendCutsceneCamera);
+    Heap_Free(fieldSystem->unk4->legendCutsceneCamera);
     fieldSystem->unk4->legendCutsceneCamera = NULL;
 }
 

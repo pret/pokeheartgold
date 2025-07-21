@@ -332,7 +332,7 @@ ov80_02231E94: ; 0x02231E94
 	add r1, r4, #0
 	bl ov80_02232AEC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov80_02231E94
 

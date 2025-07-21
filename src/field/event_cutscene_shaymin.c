@@ -103,7 +103,7 @@ static BOOL ov02_022523D0(TaskManager *taskMan) {
             var = 1;
         }
         if (var != 0) {
-            FreeToHeap(env);
+            Heap_Free(env);
             MapObject_PauseMovement(FollowMon_GetMapObject(fieldSystem));
             return TRUE;
         }

@@ -653,8 +653,8 @@ static void AlphPuzzle_ScreenOff(void) {
     GfGfx_DisableEngineBPlanes();
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
 }
@@ -699,7 +699,7 @@ static BOOL AlphPuzzle_OverlayExitStep(AlphPuzzleData *data) {
 static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data) {
     switch (data->unkState) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, 0, 6, 1, data->heapId);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
         data->unkState++;
         break;
     case 1:
@@ -715,7 +715,7 @@ static int AlphPuzzleMainSeq_FadeIn(AlphPuzzleData *data) {
 static int AlphPuzzleMainSeq_FadeOut(AlphPuzzleData *data) {
     switch (data->unkState) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, data->heapId);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
         data->unkState++;
         break;
     case 1:
@@ -1003,13 +1003,13 @@ static int AlphPuzzleMainSeq_Clear_impl(AlphPuzzleData *data) {
         data->subState++;
         break;
     case 1:
-        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, RGB_WHITE);
         if (data->sceneTimer++ >= 15) {
             data->subState++;
         }
         break;
     case 2:
-        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, 0x7FFF);
+        PaletteData_BlendPalette(data->palette, PLTTBUF_MAIN_OBJ, 0x2b, 5, data->sceneTimer, RGB_WHITE);
         if (data->sceneTimer-- == 0) {
             data->subState++;
         }
@@ -1113,7 +1113,7 @@ static void AlphPuzzle_FreeBackgroundBuffers(AlphPuzzleData *data) {
     FreeBgTilemapBuffer(data->bgConfig, 7);
     FreeBgTilemapBuffer(data->bgConfig, 6);
     FreeBgTilemapBuffer(data->bgConfig, 4);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
 }
@@ -1149,7 +1149,7 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
-    FreeToHeap(data->screenDataAlloc);
+    Heap_Free(data->screenDataAlloc);
     PaletteData_FreeBuffers(data->palette, PLTTBUF_MAIN_OBJ);
     PaletteData_FreeBuffers(data->palette, PLTTBUF_SUB_BG);
     PaletteData_FreeBuffers(data->palette, PLTTBUF_MAIN_BG);
@@ -1423,7 +1423,7 @@ static void Task_AlphPuzzle_WaitDropCursorAnimOnQuit(SysTask *task, void *_data)
         AlphPuzzle_ToggleDropCursorSprite(data->data, 0);
         data->data->quitTaskActive = 0;
         MI_CpuFill8(data, 0, sizeof(AlphPuzzleQuitTaskData));
-        FreeToHeap(data);
+        Heap_Free(data);
         SysTask_Destroy(task);
     }
 }

@@ -10,8 +10,8 @@
 
 	.text
 
-	thumb_func_start ov12_022463E8
-ov12_022463E8: ; 0x022463E8
+	thumb_func_start BattleScript_CalcEffortValues
+BattleScript_CalcEffortValues: ; 0x022463E8
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x28
 	str r0, [sp]
@@ -236,7 +236,7 @@ _0224659A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _022465A4: .word 0x000001FE
-	thumb_func_end ov12_022463E8
+	thumb_func_end BattleScript_CalcEffortValues
 
 	thumb_func_start Task_GetPokemon
 Task_GetPokemon: ; 0x022465A8
@@ -1580,7 +1580,7 @@ _02247116:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl SysTask_Destroy
 	add sp, #0x158
@@ -1651,7 +1651,7 @@ _022471AC:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl SysTask_Destroy
 	add sp, #0x158
@@ -1679,7 +1679,7 @@ _022471F8:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl SysTask_Destroy
 _02247216:
@@ -2276,7 +2276,7 @@ ov12_02247668: ; 0x02247668
 	bl GfGfxLoader_LoadFromNarc
 	lsl r1, r4, #2
 	ldr r4, [r0, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add sp, #4
 	pop {r3, r4, pc}

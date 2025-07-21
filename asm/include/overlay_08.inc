@@ -68,7 +68,7 @@
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetScreenModeAndDisable
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

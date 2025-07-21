@@ -2,7 +2,7 @@
 #pragma once
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_GetVersion

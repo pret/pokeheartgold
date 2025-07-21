@@ -345,7 +345,7 @@ ov57_02237B20: ; 0x02237B20
 	add r0, r4, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xe8
 	ldr r0, [r0]
@@ -379,7 +379,7 @@ ov57_02237B20: ; 0x02237B20
 	bl ov57_02237E80
 	ldr r0, _02237C94 ; =0x00000458
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov57_022383AC
 	mov r0, #0x7b
@@ -3760,7 +3760,7 @@ _022395E2:
 	cmp r4, #9
 	blo _022395E2
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp]
 	mov r1, #0x20
@@ -8111,7 +8111,7 @@ _0223B8E4:
 	add r0, r5, #0
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 _0223B904:
 	add r0, r0, #1

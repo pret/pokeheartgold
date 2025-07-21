@@ -71,7 +71,7 @@
 .public sub_02013468
 .public sub_02013488
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public FX_Div
 .public FX_Sqrt

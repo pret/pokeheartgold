@@ -1005,9 +1005,9 @@ _0200EB12:
 	add r2, r5, #0
 	bl BG_LoadCharTilesData
 	ldr r0, [sp, #0x34]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x48
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_0200EA68
@@ -1089,9 +1089,9 @@ _0200EBDE:
 	lsl r3, r3, #6
 	bl BG_LoadCharTilesData
 	ldr r0, [sp, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1137,7 +1137,7 @@ sub_0200EC0C: ; 0x0200EC0C
 	bl BG_LoadPlttData
 	ldr r1, [sp, #0x14]
 	add r0, r4, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add r0, sp, #0x20
 	ldrb r3, [r0, #0x10]
 	cmp r3, #1
@@ -1743,7 +1743,7 @@ _0200F12E:
 	cmp r5, #8
 	blo _0200F12E
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x28]
 	mov r1, #0x17
 	str r0, [sp]
@@ -1769,7 +1769,7 @@ _0200F12E:
 	ldr r0, [r0, #0x14]
 	bl sub_0200EA24
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x20]
 	ldr r1, _0200F1CC ; =0x00000484
 	str r0, [r4]
@@ -2111,7 +2111,7 @@ sub_0200F43C: ; 0x0200F43C
 	push {r4, lr}
 	add r4, r0, #0
 	add r0, r1, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl SysTask_Destroy
 	pop {r4, pc}
@@ -2559,7 +2559,7 @@ sub_0200F748: ; 0x0200F748
 	lsl r2, r2, #8
 	bl GX_LoadOBJ
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _0200F81C ; =0x00000162
 	ldrh r0, [r6]
 	ldrh r1, [r6, #4]
@@ -2584,7 +2584,7 @@ sub_0200F748: ; 0x0200F748
 	mov r2, #0x20
 	bl GX_LoadOBJPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

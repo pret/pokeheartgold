@@ -93,7 +93,7 @@ BOOL PCStorage_PlaceMonInBoxByIndexPair(PCStorage *storage, u32 boxno, u32 slotn
         PCStorage_SetBoxModified(storage, boxno);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 
@@ -116,7 +116,7 @@ void PCStorage_DeleteBoxMonByIndexPair(PCStorage *storage, u32 boxno, u32 slotno
         return;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 int PCStorage_GetActiveBox(PCStorage *storage) {
@@ -209,14 +209,14 @@ void PCStorage_SetActiveBox(PCStorage *storage, u32 boxno) {
         storage->curBox = boxno;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 u8 PCStorage_GetBoxWallpaper(PCStorage *storage, u32 boxno) {
     if (boxno < NUM_BOXES) {
         return storage->wallpapers[boxno];
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return 0;
 }
 
@@ -233,7 +233,7 @@ void PCStorage_SetBoxWallpaper(PCStorage *storage, u32 boxno, u8 wallpaperno) {
         storage->wallpapers[boxno] = wallpaperno;
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void PCStorage_GetBoxName(PCStorage *storage, u32 boxno, String *dest) {
@@ -244,7 +244,7 @@ void PCStorage_GetBoxName(PCStorage *storage, u32 boxno, String *dest) {
         CopyU16ArrayToString(dest, storage->box_names[boxno]);
         return;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
 }
 
 void PCStorage_SetBoxName(PCStorage *storage, u32 boxno, const String *src) {
@@ -271,7 +271,7 @@ int PCStorage_CountMonsAndEggsInBox(PCStorage *storage, u32 boxno) {
         return count;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return 0;
 }
 
@@ -291,7 +291,7 @@ int PCStorage_CountMonsInBox(PCStorage *storage, u32 boxno) {
         return count;
     }
 
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return 0;
 }
 
@@ -335,7 +335,7 @@ BOOL PCStorage_IsBonusWallpaperUnlocked(PCStorage *storage, u32 wallpaper) {
 
 void PCStorage_SetBoxModified(PCStorage *storage, u8 boxno) {
     if (boxno >= NUM_BOXES) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     storage->boxModifiedFlag |= 1 << boxno;

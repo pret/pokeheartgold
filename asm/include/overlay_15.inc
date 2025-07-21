@@ -88,8 +88,8 @@
 .public SetKeyRepeatTimers
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public GF_ExpHeap_FndInitAllocator
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

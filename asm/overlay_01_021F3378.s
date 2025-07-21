@@ -142,7 +142,7 @@ _021F345E:
 	mov r1, #1
 	str r1, [r0]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r7, #0
 	bl SysTask_Destroy
 _021F347A:
@@ -282,7 +282,7 @@ _021F3590:
 	mov r1, #1
 	str r1, [r0]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _021F35B4:

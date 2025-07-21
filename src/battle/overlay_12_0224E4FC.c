@@ -5392,7 +5392,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
                     ctx->battleStatus2 |= BATTLE_STATUS2_FORM_CHANGE;
                     BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, ctx->battlerIdTemp);
-                    FreeToHeap(mon2);
+                    Heap_Free(mon2);
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;

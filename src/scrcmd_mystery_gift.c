@@ -306,7 +306,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         UpdatePokedexWithReceivedSpecies(fieldSys->saveData, pokemon);
     }
     if (tmpPokemon != NULL) {
-        FreeToHeap(tmpPokemon);
+        Heap_Free(tmpPokemon);
     }
 }
 

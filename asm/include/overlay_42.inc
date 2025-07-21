@@ -22,7 +22,7 @@
 .public sub_0200B0A8
 .public SpriteTransfer_GetPlttOffset
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public CopyToBgTilemapRect

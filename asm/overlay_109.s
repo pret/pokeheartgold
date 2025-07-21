@@ -292,7 +292,7 @@ ov109_021E5B40: ; 0x021E5B40
 	add r0, r4, #0
 	add r0, #0xc8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4, #0xc]
 	ldr r0, [r0, #8]
@@ -2389,7 +2389,7 @@ ov109_021E6AFC: ; 0x021E6AFC
 	mov r1, #4
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _021E6B58 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -2540,14 +2540,14 @@ ov109_021E6C7C: ; 0x021E6C7C
 	add r4, r0, #0
 	add r0, #0xc0
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xb8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, #0xb0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov109_021E6C7C
 
@@ -4049,7 +4049,7 @@ ov109_021E7810: ; 0x021E7810
 	mov r2, #8
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021E784C:

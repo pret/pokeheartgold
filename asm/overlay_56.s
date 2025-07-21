@@ -1321,7 +1321,7 @@ ov56_021E660C: ; 0x021E660C
 	orr r0, r1
 	strh r0, [r2]
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	nop
 _021E664C: .word 0x04000304
@@ -1394,7 +1394,7 @@ ov56_021E6650: ; 0x021E6650
 	mov r1, #4
 	bl BG_LoadCharTilesData
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r1, r7, #0
 	bl NARC_GetMemberSize
@@ -1527,7 +1527,7 @@ _021E6768:
 	ldr r0, [r5, #0x30]
 	bl PaletteData_PushTransparentBuffers
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
 	bl NARC_GetMemberSize
@@ -1655,9 +1655,9 @@ ov56_021E692C: ; 0x021E692C
 	sub sp, #4
 	add r4, r0, #0
 	ldr r0, [r4, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x3c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x30]
 	mov r1, #2
 	bl PaletteData_FreeBuffers

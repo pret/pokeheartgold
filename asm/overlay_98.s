@@ -134,7 +134,7 @@ _0221E6B4:
 	ldr r0, [r7, #4]
 	bl SpriteSystem_Free
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov98_0221E684
@@ -381,7 +381,7 @@ _0221E806:
 	mov r1, #1
 	bl ManagedSprite_SetDrawFlag
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -523,7 +523,7 @@ _0221E984:
 	add r2, r4, #0
 	bl ov98_0221E9FC
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	mov r1, #0
 	bl ManagedSprite_SetDrawFlag
@@ -782,9 +782,9 @@ _0221EBB0:
 	blt _0221EBB0
 _0221EBC8:
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov98_0221EB84

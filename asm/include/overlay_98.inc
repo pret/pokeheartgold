@@ -46,7 +46,7 @@
 .public HBlankInterruptDisable
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public AddWindow
 .public RemoveWindow
 .public ScheduleWindowCopyToVram

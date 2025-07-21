@@ -59,7 +59,7 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
         unk[fileId].defaultDrainRate = GetBerryAttr(berryFile, BERRY_ATTR_DRAIN_RATE);
         unk[fileId].unk2 = GetBerryAttr(berryFile, BERRY_ATTR_UNK2);
 
-        FreeToHeap(berryFile);
+        Heap_Free(berryFile);
     }
 
     FreeBerryInfoNarc(narc);

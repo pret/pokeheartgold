@@ -65,7 +65,7 @@ struct FontData *FontData_New(NarcId narcId, int fileId, int mode, BOOL isFixedW
 void FontData_Delete(struct FontData *fontData) {
     FreeLoadedFontResources(fontData);
     FontData_FreeWidthsAndNarc(fontData);
-    FreeToHeap(fontData);
+    Heap_Free(fontData);
 }
 
 void FontData_ModeSwitch(struct FontData *fontData, int mode, HeapID heapId) {
@@ -103,7 +103,7 @@ static void FontData_Init(struct FontData *fontData, NarcId narcId, int fileId, 
 
 static void FontData_FreeWidthsAndNarc(struct FontData *fontData) {
     if (fontData->glyphWidths != NULL) {
-        FreeToHeap(fontData->glyphWidths);
+        Heap_Free(fontData->glyphWidths);
     }
     if (fontData->narc != NULL) {
         NARC_Delete(fontData->narc);
@@ -139,7 +139,7 @@ static void FreeLoadedFontResources(struct FontData *fontData) {
 }
 
 static void FreeLoadedFontResources_FromPreloaded(struct FontData *fontData) {
-    FreeToHeap(fontData->narcReadBuf);
+    Heap_Free(fontData->narcReadBuf);
     fontData->narcReadBuf = NULL;
 }
 

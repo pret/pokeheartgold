@@ -16,7 +16,7 @@
 FS_EXTERN_OVERLAY(npc_trade);
 
 BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
-    u16 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
+    u32 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
     FieldSystem *fieldSystem = ctx->fieldSystem;
     Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
 
@@ -91,7 +91,7 @@ BOOL ScrCmd_GiveEgg(ScriptContext *ctx) {
         int val = sub_02017FE4(MAPSECTYPE_GIFT, offset);
         SetEggStats(mon, species, 1, profile, 3, val);
         Party_AddMon(party, mon);
-        FreeToHeap(mon);
+        Heap_Free(mon);
     }
 
     return FALSE;
@@ -244,7 +244,7 @@ BOOL ScrCmd_MonAddFriendship(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 friendshipModifier = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
-    u16 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
+    u32 map = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
     u16 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
@@ -507,8 +507,8 @@ BOOL ScrCmd_KenyaCheck(ScriptContext *ctx) {
     Mail *mail = Mail_New(HEAP_ID_FIELD);
     GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     *kenya = Mail_Compare(kenyaMail, mail);
-    FreeToHeap(mail);
-    FreeToHeap(kenyaMail);
+    Heap_Free(mail);
+    Heap_Free(kenyaMail);
     UnloadOverlayByID(FS_OVERLAY_ID(npc_trade));
 
     return FALSE;
@@ -532,8 +532,8 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
             GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
             if (Mail_Compare(kenyaMail, mail)) {
                 *kenya = TRUE;
-                FreeToHeap(mail);
-                FreeToHeap(kenyaMail);
+                Heap_Free(mail);
+                Heap_Free(kenyaMail);
                 return FALSE;
             }
         }
@@ -554,8 +554,8 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
         }
     }
 
-    FreeToHeap(mail);
-    FreeToHeap(kenyaMail);
+    Heap_Free(mail);
+    Heap_Free(kenyaMail);
     return FALSE;
 }
 
@@ -574,7 +574,7 @@ BOOL ScrCmd_MonGiveMail(ScriptContext *ctx) {
     Mail_Init(mail);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
-    FreeToHeap(mail);
+    Heap_Free(mail);
 
     return FALSE;
 }

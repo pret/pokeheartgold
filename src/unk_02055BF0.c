@@ -63,7 +63,7 @@ BOOL RoutineFieldFade(TaskManager *man) {
     case 1:
         if (IsPaletteFadeFinished()) {
             ov01_021FB4F4(fieldSystem->unk4->unk1c);
-            FreeToHeap(fenv);
+            Heap_Free(fenv);
             return TRUE;
         }
         break;
@@ -220,7 +220,7 @@ BOOL sub_02055DBC(TaskManager *man) {
         break;
     case 8:
         Camera_SetHistoryUnk24(fieldSystem->camera, 1);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     case 9:
         env->unk1++;
@@ -445,7 +445,7 @@ BOOL sub_020562B0(TaskManager *man) {
     case 3:
         if (IsPaletteFadeFinished()) {
             PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fieldSystem->playerAvatar, TRUE);
-            FreeToHeap(fenv->unk18);
+            Heap_Free(fenv->unk18);
             return TRUE;
         }
     }
@@ -498,7 +498,7 @@ BOOL sub_02056424(TaskManager *man) {
     case 4:
         if (IsPaletteFadeFinished()) {
             PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fieldSystem->playerAvatar, TRUE);
-            FreeToHeap(fenv->unk18);
+            Heap_Free(fenv->unk18);
             return TRUE;
         }
     }

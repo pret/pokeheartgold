@@ -15,7 +15,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public ToggleBgLayer
 .public BgSetPosTextAndCommit

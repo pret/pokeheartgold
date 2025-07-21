@@ -2478,7 +2478,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r1, [r1, #0xc]
 	bl PaletteData_LoadPalette
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x14
 	mov r2, #0
@@ -2499,7 +2499,7 @@ ov85_021E6B68: ; 0x021E6B68
 	mov r3, #0
 	bl PaletteData_LoadPalette
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E6D54 ; =0x00000D9C
@@ -2527,7 +2527,7 @@ ov85_021E6B68: ; 0x021E6B68
 	mov r1, #3
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x16
 	mov r2, #0
@@ -2547,7 +2547,7 @@ ov85_021E6B68: ; 0x021E6B68
 	mov r1, #6
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x15
 	mov r2, #0
@@ -2567,7 +2567,7 @@ ov85_021E6B68: ; 0x021E6B68
 	mov r1, #7
 	bl BG_LoadCharTilesData
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x13
 	mov r2, #0
@@ -2590,7 +2590,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x12
 	mov r2, #0
@@ -2613,7 +2613,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x18
 	mov r2, #0
@@ -2636,7 +2636,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	mov r1, #0x17
 	mov r2, #0
@@ -2659,7 +2659,7 @@ ov85_021E6B68: ; 0x021E6B68
 	ldr r0, [r4, r0]
 	bl BgCommitTilemapBufferToVram
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	nop
 _021E6D54: .word 0x00000D9C
@@ -2695,7 +2695,7 @@ ov85_021E6D68: ; 0x021E6D68
 	bl FreeBgTilemapBuffer
 	ldr r0, _021E6DA8 ; =0x00000D84
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 _021E6DA8: .word 0x00000D84
@@ -2725,7 +2725,7 @@ ov85_021E6DAC: ; 0x021E6DAC
 	ldr r0, [r5, r0]
 	bl BgCommitTilemapBufferToVram
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	nop
 _021E6DE8: .word 0x00000D88
@@ -2999,7 +2999,7 @@ ov85_021E6F6C: ; 0x021E6F6C
 	mov r3, #0xe0
 	bl PaletteData_LoadPalette
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4541,7 +4541,7 @@ _021E7B94:
 	mov r1, #1
 	str r1, [r0, #8]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _021E7BB8:
@@ -5428,7 +5428,7 @@ _021E81C6:
 	ldr r0, [r4, #0x14]
 	bl Sprite_DeleteAndFreeResources
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021E81D8:
@@ -5865,7 +5865,7 @@ _021E84D0:
 	cmp r4, #1
 	bne _021E84E8
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _021E84E8:
@@ -7085,11 +7085,11 @@ ov85_021E8E00: ; 0x021E8E00
 	add r6, r0, #0
 	bl ov85_021EA368
 	ldr r0, [r6, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r4, #0
 	add r5, r6, #0
 _021E8E1C:
@@ -7125,7 +7125,7 @@ ov85_021E8E38: ; 0x021E8E38
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov85_021E8E38
@@ -9867,19 +9867,19 @@ ov85_021EA368: ; 0x021EA368
 	mov r0, #0xd1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xd2
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov85_021EA368

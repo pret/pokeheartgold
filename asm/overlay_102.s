@@ -3640,9 +3640,9 @@ _021E9166:
 	add r0, r6, #0
 	bl ov102_021E91BC
 	ldr r0, [r6, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021E9196:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov102_021E9144
@@ -4066,7 +4066,7 @@ ov102_021E94A4: ; 0x021E94A4
 	add r0, r1, r0
 	str r2, [r0, #8]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021E94A4
@@ -4346,14 +4346,14 @@ _021E971A:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E9728
-	bl FreeToHeap
+	bl Heap_Free
 _021E9728:
 	mov r0, #0x76
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E9736
-	bl FreeToHeap
+	bl Heap_Free
 _021E9736:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -6000,7 +6000,7 @@ _021EA3E0:
 	ldr r0, [r4, r0]
 	bl YesNoPrompt_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EA380
@@ -6534,7 +6534,7 @@ ov102_021EA80C: ; 0x021EA80C
 	lsl r1, r1, #6
 	bl DC_FlushRange
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -7794,7 +7794,7 @@ ov102_021EB1E0: ; 0x021EB1E0
 	ldr r0, [r4, #0x14]
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EB1E0
@@ -7903,9 +7903,9 @@ _021EB2BA:
 	cmp r6, #3
 	blt _021EB2BA
 	ldr r0, [r7, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r7, #0x54]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	mov r1, #3
 	bl BgCommitTilemapBufferToVram
@@ -8328,7 +8328,7 @@ _021EB602:
 	mov r1, #0
 	str r1, [r0, #0x64]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021EB620:
@@ -8439,7 +8439,7 @@ ov102_021EB6C8: ; 0x021EB6C8
 	bl Sprite_Delete
 _021EB6D6:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov102_021EB6C8
@@ -9251,7 +9251,7 @@ _021EBCE8:
 	add r0, #0x10
 	bl RemoveWindow
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov102_021EBCBC
 
@@ -9941,10 +9941,10 @@ ov102_021EC20C: ; 0x021EC20C
 
 	thumb_func_start ov102_021EC240
 ov102_021EC240: ; 0x021EC240
-	ldr r3, _021EC244 ; =FreeToHeap
+	ldr r3, _021EC244 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021EC244: .word FreeToHeap
+_021EC244: .word Heap_Free
 	thumb_func_end ov102_021EC240
 
 	thumb_func_start ov102_021EC248

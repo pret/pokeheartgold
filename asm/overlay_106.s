@@ -404,7 +404,7 @@ _021E5BEC:
 	add r0, r7, #0
 	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
-	bl FreeToHeap
+	bl Heap_Free
 _021E5C04:
 	add r0, r4, #1
 	lsl r0, r0, #0x10
@@ -412,7 +412,7 @@ _021E5C04:
 	cmp r4, #4
 	blo _021E5BEC
 	ldr r0, [r6, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	ldr r1, [sp]
 	add r0, r0, #1
@@ -1588,7 +1588,7 @@ ov106_021E64FC: ; 0x021E64FC
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov106_021E64FC
 
@@ -1930,7 +1930,7 @@ _021E67A6:
 	cmp r7, #8
 	blo _021E67A6
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x18]
 	ldr r0, [r0, #0x10]
 	ldr r0, [r0]
@@ -1949,7 +1949,7 @@ _021E67FA:
 	mov r2, #0x20
 	bl ov106_021E6694
 	ldr r0, [sp, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -2034,7 +2034,7 @@ ov106_021E68A8: ; 0x021E68A8
 	bl NARC_Delete
 	ldr r0, _021E68D8 ; =0x00000418
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #5
 	pop {r3, r4, r5, pc}
 	nop
@@ -2214,7 +2214,7 @@ ov106_021E69F0: ; 0x021E69F0
 	ldr r2, [r1, r2]
 	bl MIi_CpuCopy32
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

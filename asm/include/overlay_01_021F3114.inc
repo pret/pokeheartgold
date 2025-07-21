@@ -3,7 +3,7 @@
 .public PlaySE
 .public StopSE
 .public AllocFromHeapAtEnd
-.public FreeToHeapExplicit
+.public Heap_FreeExplicit
 .public GF_AssertFail
 .public FieldSystem_CreateTask
 .public TaskManager_GetEnvironment

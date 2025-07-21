@@ -699,7 +699,7 @@ ov67_021E5E84: ; 0x021E5E84
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov67_021E5E84
 
@@ -1414,7 +1414,7 @@ _021E645A:
 	cmp r0, #0x1e
 	blt _021E6406
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov67_021E63E8

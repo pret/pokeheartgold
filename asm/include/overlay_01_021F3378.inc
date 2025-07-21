@@ -6,7 +6,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_SetFacingDirection
 .public PlayerAvatar_GetMapObject

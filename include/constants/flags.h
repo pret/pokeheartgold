@@ -1,6 +1,7 @@
 #ifndef POKEHEARTGOLD_CONSTANTS_FLAGS_H
 #define POKEHEARTGOLD_CONSTANTS_FLAGS_H
 
+#include "constants/flypoints.h"
 #include "constants/trainers.h"
 
 #define FLAG_ACTION_CLEAR 0
@@ -1782,7 +1783,7 @@
 #define FLAG_UNK_9AD                                      0x9AD
 #define FLAG_UNK_9AE                                      0x9AE
 #define FLAG_UNK_9AF                                      0x9AF
-#define FLAG_SYS_FLYPOINT_PALLET                          0x9B0
+#define FLAG_SYS_FLYPOINT_PALLET                          0x9B0 // TODO define wrt FLYPOINT consts
 #define FLAG_SYS_FLYPOINT_VIRIDIAN                        0x9B1
 #define FLAG_SYS_FLYPOINT_PEWTER                          0x9B2
 #define FLAG_SYS_FLYPOINT_CERULEAN                        0x9B3

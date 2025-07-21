@@ -18,7 +18,7 @@
 .public sub_02014C08
 .public sub_02014C40
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public DC_FlushRange
 .public MI_WaitDma

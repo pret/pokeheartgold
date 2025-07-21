@@ -49,7 +49,7 @@
 .public sub_020138E0
 .public sub_0201649C
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public InitWindow
 .public AddWindowParameterized

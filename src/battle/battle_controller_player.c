@@ -171,8 +171,8 @@ BOOL BattleContext_Main(BattleSystem *battleSystem, BattleContext *ctx) {
 }
 
 void BattleContext_Delete(BattleContext *ctx) {
-    FreeToHeap(ctx->trainerAIData.itemData);
-    FreeToHeap(ctx);
+    Heap_Free(ctx->trainerAIData.itemData);
+    Heap_Free(ctx);
 }
 
 void BattleSystem_CheckMoveHitEffect(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo) {

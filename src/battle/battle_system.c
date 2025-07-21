@@ -1215,7 +1215,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
     }
 
     BattleInput_PrintSystemMessage(battleSystem->battleInput, flag);
-    BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
+    BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
     battleSystem->isRecordingPaused = TRUE;

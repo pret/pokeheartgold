@@ -70,7 +70,7 @@ u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state,
         } else {
             return 0xFFFF;
         }
-    } else if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, FLAG_SYS_FLYPOINT_VERMILION - FLAG_SYS_FLYPOINT_PALLET)) {
+    } else if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION)) {
         return PHONE_SCRIPT_164;
     } else if (CheckGameClearFlag(ctx->saveVarsFlags)) {
         if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A5)) {

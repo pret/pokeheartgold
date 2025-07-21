@@ -66,7 +66,7 @@
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public GXx_SetMasterBrightness_
 .public GX_LoadBGPltt

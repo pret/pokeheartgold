@@ -686,11 +686,11 @@ ov73_021E5ED4: ; 0x021E5ED4
 	add r6, r0, #0
 	bl ov73_021E77E8
 	ldr r0, [r6, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r4, #0
 	add r5, r6, #0
 _021E5EF0:
@@ -723,7 +723,7 @@ ov73_021E5F0C: ; 0x021E5F0C
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov73_021E5F0C
@@ -861,7 +861,7 @@ ov73_021E6048: ; 0x021E6048
 	mov r0, #0x31
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x31
 	mov r1, #0
 	lsl r0, r0, #4
@@ -3875,19 +3875,19 @@ ov73_021E77E8: ; 0x021E77E8
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #3
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xbb
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x2f
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov73_021E77E8
@@ -5033,7 +5033,7 @@ ov73_021E808C: ; 0x021E808C
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	add r0, r4, #0
@@ -5055,7 +5055,7 @@ ov73_021E808C: ; 0x021E808C
 	bl ov73_021E8164
 	bl sub_02034DE0
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -5987,7 +5987,7 @@ ov73_021E8730: ; 0x021E8730
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
@@ -9559,7 +9559,7 @@ _021EA3A0:
 	add r2, r4, #0
 	bl MIi_CpuCopyFast
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	sub r6, r6, r4
 	add r0, r0, r4

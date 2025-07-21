@@ -67,7 +67,7 @@ void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId) {
         }
     }
     memcpy(a, c, sizeof(SavePalPad) * NUM_PALPAD_ENTRIES);
-    FreeToHeap(c);
+    Heap_Free(c);
 }
 
 int PalPad_PlayerIdIsFriendOrMutual(SavePalPad *palPad, u32 otId) {

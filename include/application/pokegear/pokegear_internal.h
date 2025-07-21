@@ -24,6 +24,8 @@ typedef enum PokegearReturnCode {
     GEAR_RETURN_4,
     GEAR_RETURN_5,
     GEAR_RETURN_CANCEL,
+    GEAR_RETURN_7,
+    GEAR_RETURN_8,
 } PokegearReturnCode;
 
 typedef struct PokegearAppSwitchButtonSpec {
@@ -105,7 +107,7 @@ struct PokegearAppData {
     u8 cursorInAppSwitchZone;                   // 0x006
     u8 unk_007;                                 // 0x007
     u8 unk_008;                                 // 0x008
-    u8 unk_009;                                 // 0x009
+    u8 fadeCounter;                             // 0x009
     MenuInputState menuInputState;              // 0x00C
     MenuInputState menuInputStateBak;           // 0x010
     u8 filler_014[0x4];                         // 0x014
@@ -122,7 +124,7 @@ struct PokegearAppData {
     u16 unk_056;                                // 0x056
     void (*unk_058)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);              // 0x05C
-    void *unk_060;                              // 0x060
+    void (*unknownCB)(void *);                  // 0x060
     void *childAppdata;                         // 0x064
     u8 filler_068[0x4];                         // 0x068
     EasyChatArgs *easyChatArgs;                 // 0x06C
@@ -152,8 +154,8 @@ BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp);
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL ov100_021E5BB0(PokegearAppData *pokegearApp, BOOL a1);
-void ov100_021E5CA4(PokegearAppData *pokegearApp);
-BOOL ov100_021E5D3C(PokegearAppData *pokegearApp, int a1);
+void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
+BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
 u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
 BOOL ov100_021E5DDC(PokegearAppData *pokegearApp);
 BOOL ov100_021E5E88(PokegearAppData *pokegearApp);
@@ -164,9 +166,9 @@ void PokegearApp_VBlankCB(void *cb_args);
 
 void ov100_021E6914(PokegearAppData *pokegearApp);
 void ov100_021E6950(PokegearAppData *pokegearApp);
-void ov100_021E6978(PokegearAppData *pokegearApp, int a1);
-void ov100_021E69C8(PokegearAppData *pokegearApp);
-void ov100_021E69E8(PokegearAppData *pokegearApp);
+void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int a1);
+void PokegearApp_DestroySpriteManager(PokegearAppData *pokegearApp);
+void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
 PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);

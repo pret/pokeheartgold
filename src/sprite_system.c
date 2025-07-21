@@ -118,7 +118,7 @@ static void SpriteManager_FreeResources(SpriteManager *spriteManager) {
     for (int i = 0; i < spriteManager->numGfxResObjectTypes; ++i) {
         GF2DGfxResHeader_Reset(GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i));
     }
-    FreeToHeap(spriteManager->_2dGfxResHeader);
+    Heap_Free(spriteManager->_2dGfxResHeader);
     sub_0200AED4(spriteManager->_2dGfxResObjList[0]);
     sub_0200B0CC(spriteManager->_2dGfxResObjList[1]);
     for (int i = 0; i < spriteManager->numGfxResObjectTypes; ++i) {
@@ -138,7 +138,7 @@ static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem) {
 
 static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
     --spriteSystem->numGfxHandlers;
-    FreeToHeap(spriteManager);
+    Heap_Free(spriteManager);
 }
 
 void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
@@ -151,7 +151,7 @@ void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager
 void SpriteSystem_Free(SpriteSystem *spriteSystem) {
     GF_ASSERT(spriteSystem->numGfxHandlers == 0);
     SpriteSystem_FreeVramTransfers(spriteSystem);
-    FreeToHeap(spriteSystem);
+    Heap_Free(spriteSystem);
 }
 
 static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
@@ -179,7 +179,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
         header = GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i);
         data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, spriteSystem->heapId, TRUE);
         GF2DGfxResHeader_Init((GF_2DGfxResHeaderNarcList *)data, header, spriteSystem->heapId);
-        FreeToHeap(data);
+        Heap_Free(data);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
         header = GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i);
@@ -223,7 +223,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL],
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_MANM]);
-    FreeToHeap(data);
+    Heap_Free(data);
     NARC_Delete(narc);
     return TRUE;
 }
@@ -319,7 +319,7 @@ BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spri
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -333,7 +333,7 @@ BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteM
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -347,7 +347,7 @@ s8 SpriteSystem_LoadPlttResObj(SpriteSystem *spriteSystem, SpriteManager *sprite
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], obj);
         return SpriteTransfer_GetPlttOffset(obj, vram);
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return -1;
 }
 
@@ -361,7 +361,7 @@ s8 SpriteSystem_LoadPlttResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteMan
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], obj);
         return SpriteTransfer_GetPlttOffset(obj, vram);
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return -1;
 }
 
@@ -423,7 +423,7 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
     ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
     if (ret->spriteResourceHeaderList->headers == NULL) {
         if (ret->spriteResourceHeaderList != NULL) { // always true
-            FreeToHeap(ret->spriteResourceHeaderList);
+            Heap_Free(ret->spriteResourceHeaderList);
         }
         return NULL; // leaks 16 bytes
     }
@@ -482,7 +482,7 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
             Sprite_SetPaletteOverride(ret->sprite, paletteOffset + unkTemplate->pal);
         }
     } else {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return ret;
 }
@@ -531,7 +531,7 @@ void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite) {
     }
     Sprite_Delete(managedSprite->sprite);
     SpriteResourceHeaderList_Destroy(managedSprite->spriteResourceHeaderList);
-    FreeToHeap(managedSprite);
+    Heap_Free(managedSprite);
 }
 
 static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId) {
@@ -544,7 +544,7 @@ static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *sprite
         GF_ASSERT(result == TRUE);
         return result;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return data != NULL;
 }
 
@@ -558,7 +558,7 @@ static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager
         GF_ASSERT(result == TRUE);
         return result;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return data != NULL;
 }
 
@@ -977,7 +977,7 @@ BOOL SpriteSystem_LoadCharResObjWithHardwareMappingType(SpriteSystem *spriteSyst
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -991,7 +991,7 @@ BOOL SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType(SpriteSystem *sprit
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 
@@ -1005,7 +1005,7 @@ BOOL SpriteSystem_LoadCharResObjFromOpenNarcWithHardwareMappingType(SpriteSystem
         RegisterLoadedResources(spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], obj);
         return TRUE;
     }
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return obj != NULL;
 }
 

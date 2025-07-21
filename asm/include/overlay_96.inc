@@ -166,7 +166,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_heap_c_dummy_return_true
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

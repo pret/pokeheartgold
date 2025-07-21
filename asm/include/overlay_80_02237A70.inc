@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public FreeToHeap
+.public Heap_Free
 .public LoadRectToBgTilemapRect
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom

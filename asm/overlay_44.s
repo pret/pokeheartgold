@@ -600,7 +600,7 @@ ov44_0222A1FC: ; 0x0222A1FC
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	mov r1, #0xdf
 	str r0, [sp, #0x18]
@@ -1690,14 +1690,14 @@ ov44_0222ABB8: ; 0x0222ABB8
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _0222ABCA
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 _0222ABCA:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0222ABD8
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #8]
 _0222ABD8:
@@ -2111,7 +2111,7 @@ ov44_0222AE74: ; 0x0222AE74
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_0222AE74
@@ -11147,7 +11147,7 @@ ov44_0222F780: ; 0x0222F780
 	add r2, r4, #0
 	bl BufferPlayersName
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0222F7BA:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov44_0222F780
@@ -12142,13 +12142,13 @@ _0222FF52:
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r4, [sp]
 	ldr r6, _0222FFB0 ; =0x00000B28
 	mov r5, #0
 _0222FF8A:
 	ldr r0, [r4, r6]
-	bl FreeToHeap
+	bl Heap_Free
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #7
@@ -12157,7 +12157,7 @@ _0222FF8A:
 	ldr r0, [sp]
 	lsl r1, r1, #4
 	ldr r0, [r0, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -12711,7 +12711,7 @@ _02230322:
 	add r2, r6, #0
 	bl BufferPlayersName
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r2, #0x5a
 	lsl r2, r2, #2
 	ldr r0, [r5, r2]
@@ -15312,7 +15312,7 @@ ov44_02231918: ; 0x02231918
 	add r2, r4, #0
 	bl BufferPlayersName
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02231950:
 	pop {r4, r5, r6, pc}
 	nop
@@ -17992,7 +17992,7 @@ ov44_02232D08: ; 0x02232D08
 	push {r4, lr}
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0x14
 	mov r0, #0
 _02232D16:
@@ -18905,11 +18905,11 @@ ov44_0223340C: ; 0x0223340C
 	mov r0, #0x1e
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x7b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4]
 	mov r1, #2
 	bl FreeBgTilemapBuffer
@@ -18920,7 +18920,7 @@ ov44_0223340C: ; 0x0223340C
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov44_0223340C
 

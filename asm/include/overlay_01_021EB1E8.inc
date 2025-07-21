@@ -34,8 +34,8 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public AllocFromHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgCommitTilemapBufferToVram
 .public BgCopyOrUncompressTilemapBufferRangeToVram
 .public BG_LoadScreenTilemapData

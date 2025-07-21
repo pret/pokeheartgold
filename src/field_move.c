@@ -178,7 +178,7 @@ static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData 
 
 static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment) {
     GF_ASSERT(environment->magic == 0x19740205);
-    FreeToHeap(environment);
+    Heap_Free(environment);
 }
 
 static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData) {
@@ -500,8 +500,8 @@ static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateTeleportEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_4);
-    FreeToHeap(fieldMoveEnvironment->moveData);
-    FreeToHeap(fieldMoveEnvironment);
+    Heap_Free(fieldMoveEnvironment->moveData);
+    Heap_Free(fieldMoveEnvironment);
     TaskManager_Jump(taskManager, Task_FieldTeleport, fieldMoveTaskEnvironment);
     return FALSE;
 }
@@ -540,8 +540,8 @@ static BOOL Task_UseDigInField(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateDigEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_FIELD);
-    FreeToHeap(fieldMoveEnvironment->moveData);
-    FreeToHeap(fieldMoveEnvironment);
+    Heap_Free(fieldMoveEnvironment->moveData);
+    Heap_Free(fieldMoveEnvironment);
     TaskManager_Jump(taskManager, Task_FieldDig, fieldMoveTaskEnvironment);
     return FALSE;
 }

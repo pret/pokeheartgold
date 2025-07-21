@@ -526,7 +526,7 @@ ov117_0225F420: ; 0x0225F420
 	ldr r0, [r0, #8]
 	bl LoadRectToBgTilemapRect
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
 	ldr r0, [r0, #8]

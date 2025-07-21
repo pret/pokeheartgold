@@ -47,7 +47,7 @@ Ov122_021E8CFC *ov122_021E8CFC(HeapID heapId, struct ManagedSprite *a1, struct M
 void ov122_021E8D58(Ov122_021E8CFC *a0) {
     GF_ASSERT(a0->unk8 != 0);
     sub_02019BDC(a0->unk8);
-    FreeToHeap(a0);
+    Heap_Free(a0);
 }
 
 int ov122_021E8D74(Ov122_021E8CFC *a0) {

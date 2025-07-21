@@ -128,8 +128,8 @@ void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, H
 
 void Camera_History_Delete(Camera *camera) {
     if (camera->history != NULL) {
-        FreeToHeap(camera->history->vecs);
-        FreeToHeap(camera->history);
+        Heap_Free(camera->history->vecs);
+        Heap_Free(camera->history);
         camera->history = NULL;
     }
 }
@@ -139,7 +139,7 @@ Camera *Camera_New(HeapID heapId) {
 }
 
 void Camera_Delete(Camera *camera) {
-    FreeToHeap(camera);
+    Heap_Free(camera);
 }
 
 void Camera_Copy(Camera *src, Camera *dest) {

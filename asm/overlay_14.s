@@ -413,7 +413,7 @@ ov14_021E5C00: ; 0x021E5C00
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov14_021E5C00
 
@@ -3314,12 +3314,12 @@ _021E7260: .word 0x00004094
 ov14_021E7264: ; 0x021E7264
 	ldr r1, [r0, #0x34]
 	ldr r0, _021E7270 ; =0x000088DC
-	ldr r3, _021E7274 ; =FreeToHeap
+	ldr r3, _021E7274 ; =Heap_Free
 	ldr r0, [r1, r0]
 	bx r3
 	nop
 _021E7270: .word 0x000088DC
-_021E7274: .word FreeToHeap
+_021E7274: .word Heap_Free
 	thumb_func_end ov14_021E7264
 
 	thumb_func_start ov14_021E7278
@@ -3572,10 +3572,10 @@ _021E7462:
 
 	thumb_func_start ov14_021E7468
 ov14_021E7468: ; 0x021E7468
-	ldr r3, _021E746C ; =FreeToHeap
+	ldr r3, _021E746C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021E746C: .word FreeToHeap
+_021E746C: .word Heap_Free
 	thumb_func_end ov14_021E7468
 
 	thumb_func_start ov14_021E7470
@@ -3898,7 +3898,7 @@ ov14_021E76D0: ; 0x021E76D0
 	mov r3, #0x15
 	bl ov14_021F5718
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov14_021E76D0
@@ -4000,7 +4000,7 @@ _021E77BC:
 	cmp r0, #0x14
 	blo _021E776E
 	ldr r0, [sp, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -6634,7 +6634,7 @@ _021E8AA8:
 	bl PCStorage_SetBoxModified
 _021E8AC0:
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -6687,7 +6687,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	bl BagView_GetItemId
 	strh r0, [r4, #0x1c]
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
@@ -11550,7 +11550,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	mov r0, #0
 	bl GfGfx_EngineBSetPlanes
 	ldr r0, [r4, #0x34]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xa
 	bl DestroyHeap
 	ldr r0, [r4, #0x30]
@@ -18184,7 +18184,7 @@ ov14_021EE7B4: ; 0x021EE7B4
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xc
 	pop {r3, pc}
 	.balign 4, 0
@@ -18195,7 +18195,7 @@ ov14_021EE7C4: ; 0x021EE7C4
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x29
 	pop {r3, pc}
 	.balign 4, 0
@@ -18206,7 +18206,7 @@ ov14_021EE7D4: ; 0x021EE7D4
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x24
 	pop {r3, pc}
 	.balign 4, 0
@@ -18217,7 +18217,7 @@ ov14_021EE7E4: ; 0x021EE7E4
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x5b
 	pop {r3, pc}
 	.balign 4, 0
@@ -18229,7 +18229,7 @@ ov14_021EE7F4: ; 0x021EE7F4
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -18244,7 +18244,7 @@ ov14_021EE810: ; 0x021EE810
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x61
 	pop {r3, pc}
 	.balign 4, 0
@@ -18255,7 +18255,7 @@ ov14_021EE820: ; 0x021EE820
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x16
 	pop {r3, pc}
 	.balign 4, 0
@@ -18266,7 +18266,7 @@ ov14_021EE830: ; 0x021EE830
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x3d
 	pop {r3, pc}
 	.balign 4, 0
@@ -18277,7 +18277,7 @@ ov14_021EE840: ; 0x021EE840
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x42
 	pop {r3, pc}
 	.balign 4, 0
@@ -18288,7 +18288,7 @@ ov14_021EE850: ; 0x021EE850
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x51
 	pop {r3, pc}
 	.balign 4, 0
@@ -18300,7 +18300,7 @@ ov14_021EE860: ; 0x021EE860
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -18780,7 +18780,7 @@ ov14_021EEC8C: ; 0x021EEC8C
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x75
 	pop {r3, pc}
 	.balign 4, 0
@@ -19992,7 +19992,7 @@ ov14_021EF6D4: ; 0x021EF6D4
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x82
 	pop {r3, pc}
 	.balign 4, 0
@@ -20344,7 +20344,7 @@ ov14_021EF9BC: ; 0x021EF9BC
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x88
 	pop {r3, pc}
 	.balign 4, 0
@@ -20828,7 +20828,7 @@ ov14_021EFDE4: ; 0x021EFDE4
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x8b
 	pop {r3, pc}
 	.balign 4, 0
@@ -22176,13 +22176,13 @@ ov14_021F08F0: ; 0x021F08F0
 	add r5, r6, #0
 _021F08FA:
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, #0x20
 	cmp r4, #7
 	blo _021F08FA
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov14_021F08F0
 
@@ -24880,11 +24880,11 @@ ov14_021F1F24: ; 0x021F1F24
 	thumb_func_start ov14_021F1F38
 ov14_021F1F38: ; 0x021F1F38
 	ldr r0, [r0, #0x34]
-	ldr r3, _021F1F40 ; =FreeToHeap
+	ldr r3, _021F1F40 ; =Heap_Free
 	ldr r0, [r0, #0xc]
 	bx r3
 	.balign 4, 0
-_021F1F40: .word FreeToHeap
+_021F1F40: .word Heap_Free
 	thumb_func_end ov14_021F1F38
 
 	thumb_func_start ov14_021F1F44
@@ -24997,7 +24997,7 @@ ov14_021F2010: ; 0x021F2010
 	push {r3, lr}
 	ldr r0, [r0, #0x34]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x73
 	pop {r3, pc}
 	.balign 4, 0
@@ -26877,7 +26877,7 @@ _021F2E10:
 	lsl r2, r2, #8
 	bl MIi_CpuCopy32
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r7, #0
 	bl Boxmon_GetIconPalette
 	ldr r1, [r5, #0x34]
@@ -26945,7 +26945,7 @@ ov14_021F2EA0: ; 0x021F2EA0
 	add r2, r6, #0
 	bl ov14_021F2E78
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov14_021F2EA0
@@ -27997,7 +27997,7 @@ _021F365A:
 	mov r2, #5
 	bl GfGfxLoader_GXLoadPal
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -28201,7 +28201,7 @@ ov14_021F3844: ; 0x021F3844
 	lsl r3, r3, #8
 	bl ov14_021F2C1C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xca
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -28251,7 +28251,7 @@ ov14_021F38B0: ; 0x021F38B0
 	lsl r3, r3, #8
 	bl ov14_021F2C50
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xcb
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -28810,7 +28810,7 @@ ov14_021F3D0C: ; 0x021F3D0C
 	lsl r3, r3, #8
 	bl ov14_021F2C50
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	add r5, r5, r0
@@ -29985,9 +29985,9 @@ _021F4660:
 	cmp r0, #4
 	blo _021F4660
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -30359,7 +30359,7 @@ ov14_021F4958: ; 0x021F4958
 	lsl r2, r2, #0xa
 	bl MI_CpuCopy8
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov14_021E7930
@@ -31841,7 +31841,7 @@ _021F5546:
 	ldr r0, [sp, #0x2c]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x34]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x20]
 	add sp, #0x40
 	pop {r3, r4, r5, r6, r7, pc}
@@ -32126,7 +32126,7 @@ ov14_021F5718: ; 0x021F5718
 	add r0, r4, #0
 	bl RemoveWindow
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -32598,7 +32598,7 @@ _021F5B2A:
 	blt _021F5B2A
 _021F5B8E:
 	ldr r0, [sp, #0x50]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0, #0x34]
@@ -32935,7 +32935,7 @@ _021F5DB8:
 	blt _021F5DB8
 _021F5E4A:
 	ldr r0, [sp, #0x34]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x20]
 	ldr r0, [r0, #0x34]
@@ -33945,7 +33945,7 @@ _021F6542:
 	blt _021F6542
 _021F65D8:
 	ldr r0, [sp, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	mov r1, #0x41
 	ldr r0, [r0, #0x34]

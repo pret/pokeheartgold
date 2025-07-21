@@ -102,8 +102,8 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

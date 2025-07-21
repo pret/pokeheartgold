@@ -20,7 +20,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public MI_CpuFill8
 .public BattleCursor_LoadResources
 .public BattleCursor_FreeResources

@@ -28,7 +28,7 @@ struct PokedexData *PokedexData_Create(HeapID heapId) {
 
 void PokedexData_Delete(struct PokedexData *zkn) {
     GF_ASSERT(zkn != NULL);
-    FreeToHeap(zkn);
+    Heap_Free(zkn);
 }
 
 void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId) {
@@ -56,12 +56,12 @@ void PokedexData_LoadAll(struct PokedexData *zkn, int mode, HeapID heapId) {
 void PokedexData_UnloadAll(struct PokedexData *zkn) {
     GF_ASSERT(zkn->height != NULL);
     GF_ASSERT(zkn->weight != NULL);
-    FreeToHeap(zkn->height);
-    FreeToHeap(zkn->weight);
-    FreeToHeap(zkn->unk_08);
-    FreeToHeap(zkn->unk_0C);
-    FreeToHeap(zkn->unk_10);
-    FreeToHeap(zkn->unk_14);
+    Heap_Free(zkn->height);
+    Heap_Free(zkn->weight);
+    Heap_Free(zkn->unk_08);
+    Heap_Free(zkn->unk_0C);
+    Heap_Free(zkn->unk_10);
+    Heap_Free(zkn->unk_14);
     zkn->height = NULL;
     zkn->weight = NULL;
     zkn->unk_08 = NULL;

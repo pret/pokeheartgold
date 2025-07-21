@@ -49,7 +49,7 @@ sub_02097060: ; 0x02097060
 	ldr r0, [r4, #0x30]
 	bl sub_02096CC8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_02097060
 
@@ -104,7 +104,7 @@ sub_020970C0: ; 0x020970C0
 	cmp r0, #1
 	bne _020970DC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _020970DC:
@@ -180,7 +180,7 @@ sub_02097148: ; 0x02097148
 	add r1, r0, #0
 	add r1, #0x26
 	ldrb r4, [r1]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x2c]
 	add r0, #0x27
 	ldrb r0, [r0]
@@ -228,7 +228,7 @@ sub_020971AC: ; 0x020971AC
 	cmp r0, #0
 	bne _020971CE
 	ldr r0, [r4, #0x30]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x28]
 	ldr r1, [r4, #4]
 	bl PartyMenu_LaunchApp_Unk5

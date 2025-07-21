@@ -282,8 +282,8 @@ BOOL Credits_Exit(OverlayManager *man, int *state) {
         String_Delete(ptr->string);
         FreeBG(work);
         for (u8 i = 0; i < 6; i++) {
-            FreeToHeap(work->unk468[i]);
-            FreeToHeap(work->unk480[i]);
+            Heap_Free(work->unk468[i]);
+            Heap_Free(work->unk480[i]);
         }
         FreePageSysTasks(work);
         *state += 1;
@@ -436,7 +436,7 @@ static void FreeBG(CreditsAppWork *work) {
     FreeBgTilemapBuffer(work->bgConfig, GF_BG_LYR_SUB_1);
     FreeBgTilemapBuffer(work->bgConfig, GF_BG_LYR_SUB_2);
     FreeBgTilemapBuffer(work->bgConfig, GF_BG_LYR_SUB_3);
-    FreeToHeap(work->bgConfig);
+    Heap_Free(work->bgConfig);
 }
 
 static void LoadBgGraphics(CreditsAppWork *work) {
@@ -987,8 +987,8 @@ static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int spriteId) {
 
     a0->spriteGfx[a0->curSprite].unk2C = GfGfxLoader_GetCellBankFromOpenNarc(a0->narc, sCutsceneSpriteGfxFileIds[spriteId].cellBankFileId, TRUE, &a0->spriteGfx[a0->curSprite].cellDataBank, HEAP_ID_CREDITS);
     a0->spriteGfx[a0->curSprite].unk30 = GfGfxLoader_GetAnimBankFromOpenNarc(a0->narc, sCutsceneSpriteGfxFileIds[spriteId].animBankFileId, TRUE, &a0->spriteGfx[a0->curSprite].animDataBank, HEAP_ID_CREDITS);
-    FreeToHeap(charData);
-    FreeToHeap(plttData);
+    Heap_Free(charData);
+    Heap_Free(plttData);
     a0->curSprite++;
 }
 
@@ -1061,8 +1061,8 @@ static void FreeCutsceneSprites(CreditsAppWork *work) {
 
     sprites->count = 0;
     for (i = 0; i < cutsceneWork->curSprite; i++) {
-        FreeToHeap(cutsceneWork->spriteGfx[i].unk2C);
-        FreeToHeap(cutsceneWork->spriteGfx[i].unk30);
+        Heap_Free(cutsceneWork->spriteGfx[i].unk2C);
+        Heap_Free(cutsceneWork->spriteGfx[i].unk30);
         cutsceneWork->spriteGfx[i].cellDataBank = NULL;
         cutsceneWork->spriteGfx[i].animDataBank = NULL;
     }

@@ -490,7 +490,7 @@ _02237C5E:
 	ldrb r4, [r0]
 	strb r4, [r5, #0x1c]
 	ldr r0, [r5, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r5, #0x10]
 	cmp r4, #7

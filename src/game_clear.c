@@ -148,7 +148,7 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
     GF_RTC_CopyDate(&date);
     Save_HOF_RecordParty(hof, party, &date);
     SaveHallOfFame(fieldSystem->saveData, hof);
-    FreeToHeap(hof);
+    Heap_Free(hof);
 }
 
 // Launches the Hall of Fame Congratulations app if the player beat Lance. Saves
@@ -248,7 +248,7 @@ static BOOL Task_GameClear(TaskManager *taskman) {
         break;
     case 11:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            FreeToHeap(env);
+            Heap_Free(env);
             DestroyHeap(HEAP_ID_4);
             OS_ResetSystem(0);
             return TRUE;
@@ -357,5 +357,5 @@ static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {
         RemoveWindow(&env->window);
     }
     FreeBgTilemapBuffer(env->bgConfig, 3);
-    FreeToHeap(env->bgConfig);
+    Heap_Free(env->bgConfig);
 }

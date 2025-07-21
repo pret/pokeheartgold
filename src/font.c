@@ -88,7 +88,7 @@ void FontID_Release(FontID fontId) {
                 }
             }
             if (i == 6) {
-                FreeToHeap(sFontWork->extraData[fontId]);
+                Heap_Free(sFontWork->extraData[fontId]);
                 sFontWork->extraData[fontId] = NULL;
             }
         }

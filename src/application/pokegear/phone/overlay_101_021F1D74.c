@@ -84,7 +84,7 @@ void PhoneCall_DestroyContext(PokegearPhoneCallContext *ctx) {
     DestroyMsgData(ctx->msgData_0271);
     FreePhoneBook(ctx->phoneBook);
     MI_CpuClear8(ctx, sizeof(PokegearPhoneCallContext));
-    FreeToHeap(ctx);
+    Heap_Free(ctx);
 }
 
 String *PhoneContact_GetName(PokegearPhoneCallContext *ctx, u8 callerID) {

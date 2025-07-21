@@ -102,14 +102,14 @@ void sub_0202EEA8(SavePokegear *pokegear, u8 a1) {
     pokegear->unk_1 = a1;
 }
 
-void sub_0202EEAC(SavePokegear *pokegear, u16 a1, u16 a2) {
-    pokegear->unk_2 = a1;
-    pokegear->unk_3 = a2;
+void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y) {
+    pokegear->unk_2 = x;
+    pokegear->unk_3 = y;
 }
 
-void sub_0202EEB4(SavePokegear *pokegear, u16 *a1, u16 *a2) {
-    *a1 = pokegear->unk_2;
-    *a2 = pokegear->unk_3;
+void Pokegear_GetRadioCursorCoords(SavePokegear *pokegear, s16 *px, s16 *py) {
+    *px = pokegear->unk_2;
+    *py = pokegear->unk_3;
 }
 
 u8 SavePokegear_FindEmptyPhonebookSlot(SavePokegear *pokegear) {
@@ -143,7 +143,7 @@ void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact) {
     u8 slot;
 
     if (contact >= NUM_PHONE_CONTACTS) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
 
@@ -198,7 +198,7 @@ void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
     if (idx >= 13) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     byteno = idx / 8;
@@ -210,7 +210,7 @@ void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 mask;
     if (idx >= 13) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     byteno = idx / 8;
@@ -224,7 +224,7 @@ BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
     if (idx >= 13) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
     byteno = idx / 8;
@@ -234,7 +234,7 @@ BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx) {
 
 void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state) {
     if (idx >= NUM_PHONE_CONTACTS) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     callPersistentState->rematches[idx].seeking = state;
@@ -242,7 +242,7 @@ void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState
 
 BOOL PhoneCallPersistentState_PhoneRematches_IsSeeking(PhoneCallPersistentState *callPersistentState, u8 idx) {
     if (idx >= NUM_PHONE_CONTACTS) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return FALSE;
     }
     return callPersistentState->rematches[idx].seeking;
@@ -250,7 +250,7 @@ BOOL PhoneCallPersistentState_PhoneRematches_IsSeeking(PhoneCallPersistentState 
 
 void PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(PhoneCallPersistentState *callPersistentState, u8 idx, u16 itemId) {
     if (idx >= NUM_PHONE_CONTACTS) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     callPersistentState->rematches[idx].giftItem = itemId;
@@ -263,7 +263,7 @@ void PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(PhoneCallPersistentSt
 
 u16 PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(PhoneCallPersistentState *callPersistentState, u8 idx) {
     if (idx >= NUM_PHONE_CONTACTS) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return ITEM_NONE;
     }
     if (callPersistentState->rematches[idx].hasGift) {
