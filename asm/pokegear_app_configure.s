@@ -735,7 +735,7 @@ ov101_021EEE14: ; 0x021EEE14
 	lsr r1, r1, #0x19
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl ov100_021E5EB4
+	bl PokegearApp_LoadSkinGraphocs
 	ldrh r1, [r4, #0x12]
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0x10
@@ -1184,7 +1184,7 @@ ov101_021EF17C: ; 0x021EF17C
 	mov r2, #0
 	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
-	bl ov100_021E5DC8
+	bl PokegearApp_AppIDtoButtonIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -1869,7 +1869,7 @@ ov101_021EF6E4: ; 0x021EF6E4
 	mov r2, #1
 	bl PokegearAppSwitch_SetCursorSpritesDrawState
 	ldr r0, [r4, #0xc]
-	bl ov100_021E5DC8
+	bl PokegearApp_AppIDtoButtonIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0

@@ -31,7 +31,7 @@ int ov101_021EB568(PokegearMapAppData *mapApp) {
     if ((gSystem.newKeys & PAD_BUTTON_B) && !mapApp->unk_139_2) {
         mapApp->pokegear->cursorInAppSwitchZone = TRUE;
         PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, ov100_021E5DC8(mapApp->pokegear));
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(mapApp->pokegear));
         PokegearMap_HideMapCursor(mapApp);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return -1;

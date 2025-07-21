@@ -37,7 +37,7 @@ void ov101_021F0900(PokegearPhoneAppData *phoneApp) {
         PokegearAppSwitch_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, FALSE);
     } else {
         PokegearAppSwitch_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(phoneApp->pokegear->appSwitch, 0, ov100_021E5DC8(phoneApp->pokegear));
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(phoneApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(phoneApp->pokegear));
         PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, 0);
     }
 }
@@ -137,7 +137,7 @@ int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
             phoneApp->pokegear->cursorInAppSwitchZone = 1;
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             PokegearAppSwitch_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, TRUE);
-            PokegearAppSwitch_SetSpecIndexAndCursorPos(phoneApp->pokegear->appSwitch, 0, ov100_021E5DC8(phoneApp->pokegear));
+            PokegearAppSwitch_SetSpecIndexAndCursorPos(phoneApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(phoneApp->pokegear));
             PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, 0);
             return -1;
         }

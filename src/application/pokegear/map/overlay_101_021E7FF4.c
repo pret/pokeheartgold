@@ -1091,7 +1091,7 @@ void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_CURSOR].sprite, TRUE);
     }
 
-    PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, ov100_021E5DC8(mapApp->pokegear));
+    PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(mapApp->pokegear));
     if (mapApp->pokegear->isSwitchApp) {
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 0);
     }

@@ -144,7 +144,7 @@ struct PokegearAppData {
     MenuInputState menuInputState;               // 0x00C
     MenuInputState menuInputStateBak;            // 0x010
     u8 filler_014[0x4];                          // 0x014
-    int unk_018;                                 // 0x018
+    int substate;                                // 0x018
     int appReturnCode;                           // 0x01C
     PokegearArgs *args;                          // 0x020
     SaveData *saveData;                          // 0x024
@@ -195,10 +195,10 @@ int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL PokegearApp_UpdateClockSprites(PokegearAppData *pokegearApp, BOOL force);
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
 BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
-u8 ov100_021E5DC8(PokegearAppData *pokegearApp);
+u8 PokegearApp_AppIDtoButtonIndex(PokegearAppData *pokegearApp);
 BOOL PokegearApp_GraphicsInit(PokegearAppData *pokegearApp);
 BOOL PokegearApp_GraphicsDeinit(PokegearAppData *pokegearApp);
-void ov100_021E5EB4(PokegearAppData *pokegearApp, int a1);
+void PokegearApp_LoadSkinGraphocs(PokegearAppData *pokegearApp, int skin);
 void PokegearApp_SetGraphicsBanks(void);
 
 void PokegearApp_VBlankCB(void *cb_args);

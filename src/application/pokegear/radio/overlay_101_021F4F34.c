@@ -218,7 +218,7 @@ int Radio_HandleKeyInput(PokegearRadioAppData *radioApp) {
     if (gSystem.newKeys & PAD_BUTTON_B) {
         radioApp->pokegear->cursorInAppSwitchZone = TRUE;
         PokegearAppSwitch_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(radioApp->pokegear->appSwitch, 0, ov100_021E5DC8(radioApp->pokegear));
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(radioApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(radioApp->pokegear));
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return TOUCH_MENU_NO_INPUT;
     }

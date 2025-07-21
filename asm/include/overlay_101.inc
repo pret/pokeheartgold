@@ -303,8 +303,8 @@
 .public ov100_021E5C80
 .public Pokegear_ClearAppBgLayers
 .public Pokegear_RunFadeLayers123
-.public ov100_021E5DC8
-.public ov100_021E5EB4
+.public PokegearApp_AppIDtoButtonIndex
+.public PokegearApp_LoadSkinGraphocs
 .public PokegearApp_SetGraphicsBanks
 .public PokegearApp_VBlankCB
 .public PokegearApp_CreateSpriteSystem
