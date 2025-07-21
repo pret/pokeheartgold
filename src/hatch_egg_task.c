@@ -91,7 +91,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         data->state++;
         break;
     case HATCHEGGTASKSTATE_EXIT:
-        FreeToHeap(data);
+        Heap_Free(data);
         return TRUE;
     }
 

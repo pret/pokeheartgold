@@ -548,7 +548,7 @@ ov01_021E8AEC: ; 0x021E8AEC
 	ldr r0, [r4, r0]
 	bl NARC_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021E8B02:
 	pop {r4, pc}
 	thumb_func_end ov01_021E8AEC
@@ -990,7 +990,7 @@ ov01_021E8DD4: ; 0x021E8DD4
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021E8DE6
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 _021E8DE6:

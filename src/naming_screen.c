@@ -702,7 +702,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
         Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
         CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
         // wtf
-        FreeToHeap(mon);
+        Heap_Free(mon);
     }
     if (data->textCursorPos == 0 || !StringNotEqual(data->entryBuf, data->entryBufBak) || NamingScreen_PMCharArrayIsAllSpaces(data->entryBuf)) {
         NamingScreen_SetDefaultName(data, args);
@@ -724,10 +724,10 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     }
     SpriteList_Delete(data->spriteList);
     OamManager_Free();
-    FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->charDataRaw);
+    Heap_FreeExplicit(HEAP_ID_NAMING_SCREEN, data->charDataRaw);
     if (data->type == NAME_SCREEN_POKEMON) {
-        FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->monIconCharDaraRaw);
-        FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, data->plttDataRaw);
+        Heap_FreeExplicit(HEAP_ID_NAMING_SCREEN, data->monIconCharDaraRaw);
+        Heap_FreeExplicit(HEAP_ID_NAMING_SCREEN, data->plttDataRaw);
     }
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
     ObjCharTransfer_Destroy();
@@ -777,7 +777,7 @@ void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
     GF_ASSERT(namingScreenArgs->nameInputString != NULL);
     GF_ASSERT(namingScreenArgs != NULL); // UB: should check this first
     String_Delete(namingScreenArgs->nameInputString);
-    FreeToHeap(namingScreenArgs);
+    Heap_Free(namingScreenArgs);
 }
 
 // -------------------------------
@@ -944,7 +944,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
         Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
         CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
         BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
-        FreeToHeap(mon);
+        Heap_Free(mon);
     }
     if (args->battleMsgId != 0) {
         data->printedFromBattleGMM = TRUE;
@@ -991,7 +991,7 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
             Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
             CreateMon(mon, data->playerGenderOrMonSpecies, 1, 0, 0, 0, 0, 0);
             BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
-            FreeToHeap(mon);
+            Heap_Free(mon);
         } else {
             data->entryBuf[data->textCursorPos] = EOS;
             CopyU16ArrayToString(string, data->entryBuf);
@@ -1011,7 +1011,7 @@ static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows) {
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeapExplicit(HEAP_ID_NAMING_SCREEN, bgConfig);
+    Heap_FreeExplicit(HEAP_ID_NAMING_SCREEN, bgConfig);
 }
 
 static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NARC *narc) {

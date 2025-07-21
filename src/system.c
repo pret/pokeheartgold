@@ -170,7 +170,7 @@ void *Sys_AllocAndReadFile(HeapID heapId, const char *path) {
         ret = AllocFromHeap(heapId, size);
         if (ret != NULL) {
             if (FS_ReadFile(&file, ret, size) != size) {
-                FreeToHeapExplicit(heapId, ret);
+                Heap_FreeExplicit(heapId, ret);
                 ret = NULL;
             }
         }
@@ -199,7 +199,7 @@ void sub_0201A430(void) {
 
     for (i = 127; i > -1; i--) {
         if (gFileCache[i].data != NULL) {
-            FreeToHeap(gFileCache[i].data);
+            Heap_Free(gFileCache[i].data);
             gFileCache[i].data = NULL;
             gFileCache[i].hash = 0;
         }
@@ -375,7 +375,7 @@ void sub_0201A748(HeapID heapId) {
 void sub_0201A774(void) {
     GF_ASSERT(gSystem.unk74 != NULL);
     *gSystem.unk74 = 0;
-    FreeToHeap(gSystem.unk74);
+    Heap_Free(gSystem.unk74);
     gSystem.unk74 = NULL;
 }
 

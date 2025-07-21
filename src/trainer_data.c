@@ -429,8 +429,8 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
         break;
     }
     }
-    FreeToHeap(data);
-    FreeToHeap(mon);
+    Heap_Free(data);
+    Heap_Free(mon);
     SetLCRNGSeed(seedBak); // Restore the RNG state
 }
 

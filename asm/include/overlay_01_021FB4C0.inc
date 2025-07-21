@@ -2,7 +2,7 @@
 #pragma once
 .public Main_SetHBlankIntrCB
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public ov01_021FB4C0
 .public ov01_021FB4D4

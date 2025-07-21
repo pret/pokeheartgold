@@ -366,7 +366,7 @@ static void PokegearApp_InitBGs(PokegearAppData *pokegearApp) {
 static void PokegearApp_FreeBGs(PokegearAppData *pokegearApp) {
     FreeBgTilemapBuffer(pokegearApp->bgConfig, GF_BG_LYR_SUB_0);
     FreeBgTilemapBuffer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(pokegearApp->bgConfig);
+    Heap_Free(pokegearApp->bgConfig);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 }
 
@@ -383,7 +383,7 @@ static void PokegearApp_InitPaletteData(PokegearAppData *pokegearApp) {
 }
 
 static void PokegearApp_FreePaletteData(PokegearAppData *pokegearApp) {
-    FreeToHeap(pokegearApp->unk_0C4);
+    Heap_Free(pokegearApp->unk_0C4);
     PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ);
     PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG);
     PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_MAIN_OBJ);

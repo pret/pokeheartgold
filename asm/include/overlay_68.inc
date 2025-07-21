@@ -89,8 +89,8 @@
 .public HBlankInterruptDisable
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

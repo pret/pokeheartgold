@@ -176,7 +176,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     SetMonData(mon, MON_DATA_LEVEL, &level);
     mail = Mail_New(HEAP_ID_DEFAULT);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
-    FreeToHeap(mail);
+    Heap_Free(mail);
     capsule = 0;
     SetMonData(mon, MON_DATA_CAPSULE, &capsule);
     MI_CpuClearFast(&seal_coords, sizeof(seal_coords));
@@ -385,7 +385,7 @@ void CalcMonStats(Pokemon *mon) {
     newSpdef = ModifyStatByNature(GetMonNature(mon), (u16)newSpdef, STAT_SPDEF);
     SetMonData(mon, MON_DATA_SPDEF, &newSpdef);
 
-    FreeToHeap(baseStats);
+    Heap_Free(baseStats);
 
     if (hp != 0 || maxHp == 0) {
         if (species == SPECIES_SHEDINJA) {
@@ -1832,7 +1832,7 @@ int GetPersonalAttr(const BASE_STATS *baseStats, int attr) {
 
 void FreeMonPersonal(BASE_STATS *personal) {
     GF_ASSERT(personal != NULL);
-    FreeToHeap(personal);
+    Heap_Free(personal);
 }
 
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
@@ -1857,7 +1857,7 @@ int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int 
     BASE_STATS *buf = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
     NARC_ReadWholeMember(narc, resolved, buf);
     ret = GetPersonalAttr(buf, attr);
-    FreeToHeap(buf);
+    Heap_Free(buf);
     return ret;
 }
 
@@ -1907,7 +1907,7 @@ u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
     table = (u32 *)AllocFromHeap(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
     LoadGrowthTable(growthRate, table);
     ret = table[level];
-    FreeToHeap(table);
+    Heap_Free(table);
     return ret;
 }
 
@@ -2998,7 +2998,7 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
         }
         break;
     }
-    FreeToHeap(evoTable);
+    Heap_Free(evoTable);
     return target;
 }
 
@@ -3054,7 +3054,7 @@ void InitBoxMonMoveset(BoxPokemon *boxMon) {
             DeleteBoxMonFirstMoveAndAppend(boxMon, move);
         }
     }
-    FreeToHeap(levelUpLearnset);
+    Heap_Free(levelUpLearnset);
     ReleaseBoxMonLock(boxMon, decry);
 }
 
@@ -3147,13 +3147,13 @@ u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
     LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
 
     if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
-        FreeToHeap(levelUpLearnset);
+        Heap_Free(levelUpLearnset);
         return 0;
     }
     while ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) != (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
         (*last_i)++;
         if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
-            FreeToHeap(levelUpLearnset);
+            Heap_Free(levelUpLearnset);
             return 0;
         }
     }
@@ -3162,7 +3162,7 @@ u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
         (*last_i)++;
         ret = TryAppendMonMove(mon, *sp0);
     }
-    FreeToHeap(levelUpLearnset);
+    Heap_Free(levelUpLearnset);
     return ret;
 }
 
@@ -3237,7 +3237,7 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     SetMonData(dest, MON_DATA_MAXHP, &sp0);
     mail = Mail_New(HEAP_ID_DEFAULT);
     SetMonData(dest, MON_DATA_MAIL_STRUCT, mail);
-    FreeToHeap(mail);
+    Heap_Free(mail);
     SetMonData(dest, MON_DATA_CAPSULE, &sp0);
     MI_CpuClearFast(&sp4, sizeof(sp4));
     SetMonData(dest, MON_DATA_SEAL_COORDS, &sp4);
@@ -3304,7 +3304,7 @@ int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest) {
     for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
         dest[i] = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
     }
-    FreeToHeap(levelUpLearnset);
+    Heap_Free(levelUpLearnset);
     return i;
 }
 
@@ -3857,7 +3857,7 @@ void SetMonPersonality(Pokemon *mon, u32 personality) {
     mon->box.checksum = CHECKSUM(&mon->box);
     ENCRYPT_BOX(&mon->box);
     ENCRYPT_PTY(mon);
-    FreeToHeap(tmpMon);
+    Heap_Free(tmpMon);
 }
 
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {

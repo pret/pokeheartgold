@@ -550,7 +550,7 @@ _02258C68:
 	add r0, #0xd8
 	str r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x77
 	bl DestroyHeap
 	ldr r0, _02258CB0 ; =gSystem + 0x60
@@ -883,7 +883,7 @@ _02258F2C:
 	add r0, #0xd8
 	str r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x77
 	bl DestroyHeap
 	ldr r0, _02258F6C ; =gSystem + 0x60
@@ -1083,7 +1083,7 @@ _02258FAE:
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	mov r1, #0x57
 	str r0, [sp, #0x24]
@@ -1316,7 +1316,7 @@ _022592C0:
 	cmp r4, #3
 	blt _022592C0
 	ldr r0, [r6, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _022592DC: .word _02259598

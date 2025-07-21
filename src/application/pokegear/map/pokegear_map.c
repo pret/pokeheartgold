@@ -215,7 +215,7 @@ void ov101_021E78EC(PokegearMapAppData *mapApp) {
 }
 
 void ov101_021E7B54(PokegearMapAppData *mapApp) {
-    FreeToHeap(mapApp->phoneContact);
+    Heap_Free(mapApp->phoneContact);
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->deselectAppCB = NULL;

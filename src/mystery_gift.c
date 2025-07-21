@@ -259,7 +259,7 @@ void SaveMGDataPtr_End(SaveData *saveData, BOOL commit) {
             MI_CpuCopy32(sMysteryGiftSaveData, Save_MysteryGift_Get(saveData), size);
             SaveSubstruct_UpdateCRC(SAVE_MYSTERY_GIFT);
         }
-        FreeToHeap(sMysteryGiftSaveData);
+        Heap_Free(sMysteryGiftSaveData);
 #endif
         sMysteryGiftSaveData = NULL;
     }

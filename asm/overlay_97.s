@@ -139,9 +139,9 @@ ov97_0221E69C: ; 0x0221E69C
 	bl ObjCharTransfer_Destroy
 	bl ObjPlttTransfer_Destroy
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -1379,7 +1379,7 @@ _0221F0BC:
 	ldr r0, [r5, #4]
 	bl SpriteList_Delete
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov97_0221F020
@@ -1434,7 +1434,7 @@ _0221F114:
 	ldr r0, [sp]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2780,7 +2780,7 @@ _0221FC3A:
 	mov r2, #0x20
 	bl MIi_CpuCopy16
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x24
 	pop {r4, r5, pc}
 	thumb_func_end ov97_0221FBDC

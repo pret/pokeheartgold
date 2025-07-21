@@ -133,7 +133,7 @@ ov40_0222B6E0: ; 0x0222B6E0
 	mov r3, #0xe0
 	bl PaletteData_LoadPalette
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0222B826:
 	mov r0, #0xc
 	str r0, [sp, #0x14]
@@ -305,7 +305,7 @@ ov40_0222B934: ; 0x0222B934
 	mov r1, #7
 	bl FreeBgTilemapBuffer
 	ldr r0, [r5, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x28]
 	mov r1, #0
 	bl PaletteData_FreeBuffers
@@ -355,13 +355,13 @@ _0222BA34:
 	ldr r0, [r4, r7]
 	cmp r0, #0
 	beq _0222BA3E
-	bl FreeToHeap
+	bl Heap_Free
 _0222BA3E:
 	ldr r0, _0222BA8C ; =0x0000088C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0222BA4A
-	bl FreeToHeap
+	bl Heap_Free
 _0222BA4A:
 	add r6, r6, #1
 	add r4, r4, #4
@@ -8871,7 +8871,7 @@ _0222FDCE:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0222FDDE
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222FDF8 ; =0x0000087C
 	str r6, [r5, r0]
 _0222FDDE:
@@ -8879,7 +8879,7 @@ _0222FDDE:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _0222FDEE
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222FDFC ; =0x0000088C
 	str r7, [r5, r0]
 _0222FDEE:
@@ -12054,7 +12054,7 @@ _0223161A:
 	add r0, r5, #0
 	bl ov40_0222C39C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x24
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -12451,7 +12451,7 @@ _02231970:
 	pop {r3, r4, r5, pc}
 _02231994:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
@@ -12805,7 +12805,7 @@ _02231C44:
 	mov r0, #0x86
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 _02231C54:
 	mov r0, #0
 	add sp, #0x1c
@@ -13083,7 +13083,7 @@ _02231E72:
 	mov r0, #0x86
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	mov r1, #5
 	bl ov40_0222BF80
@@ -14702,7 +14702,7 @@ _02232B8E:
 	b _02232BCE
 _02232BC2:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, pc}
@@ -14850,7 +14850,7 @@ _02232CBA:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _02232D3E
 _02232D0E:
 	ldr r0, [r5, #0x58]
@@ -17260,7 +17260,7 @@ _0223409E:
 	mov r3, #7
 	bl G2x_SetBlendAlpha_
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov40_0222DD08
 	add r0, r5, #0
@@ -17793,7 +17793,7 @@ _02234514:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -18047,7 +18047,7 @@ _02234776:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02234804 ; =FS_OVERLAY_ID(OVY_41)
 	bl UnloadOverlayByID
 	ldr r0, _02234808 ; =ov40_0222BD04
@@ -18132,7 +18132,7 @@ _02234826:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -18274,7 +18274,7 @@ _02234984:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02234A0C ; =FS_OVERLAY_ID(OVY_41)
 	bl UnloadOverlayByID
 	ldr r0, _02234A10 ; =ov40_0222BD04
@@ -18785,7 +18785,7 @@ _02234DAE:
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -18925,7 +18925,7 @@ _02234F06:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02234F90 ; =FS_OVERLAY_ID(OVY_41)
 	bl UnloadOverlayByID
 	ldr r0, _02234F94 ; =ov40_0222BD04
@@ -20711,7 +20711,7 @@ _02235E16:
 	blt _02235E0A
 _02235E1E:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #8]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -20839,7 +20839,7 @@ _02235F00:
 	blt _02235F00
 _02235F12:
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r1, #0x75
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -20921,11 +20921,11 @@ ov40_02235FA0: ; 0x02235FA0
 	mov r0, #0x7a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x77
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x79
 	mov r1, #0
 	lsl r0, r0, #2
@@ -24109,7 +24109,7 @@ _022378DE:
 	ldr r0, [r7, r0]
 	bl sub_020314BC
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _02237970
 _02237938:
 	ldr r0, [r5, #0x58]
@@ -26599,7 +26599,7 @@ _02238E1E:
 	ldr r0, [r7, r0]
 	bl sub_020314BC
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _02238EB0
 _02238E78:
 	ldr r0, [r5, #0x58]
@@ -28550,7 +28550,7 @@ _02239E18:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _02239EC8
 _02239E6E:
 	ldr r0, [r4, #0x58]
@@ -28986,7 +28986,7 @@ _0223A1EA:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0223A26E
 _0223A23E:
 	ldr r0, [r5, #0x58]
@@ -30130,7 +30130,7 @@ _0223AB4A:
 	mov r1, #7
 	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0202FC48
 	cmp r0, #1
 	bne _0223ABFC
@@ -31859,7 +31859,7 @@ _0223B98E:
 	mov r1, #7
 	bl BgClearTilemapBufferAndCommit
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0223BA58
 _0223BA04:
 	ldr r0, [r4, #0x58]
@@ -32614,7 +32614,7 @@ _0223C030:
 	mov r1, #7
 	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0223C0D4
 _0223C0A4:
 	ldr r0, [r5, #0x58]
@@ -33088,7 +33088,7 @@ _0223C416:
 	b _0223C48E
 _0223C482:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, pc}
@@ -37054,7 +37054,7 @@ _0223E3E2:
 	mov r1, #7
 	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0223E486
 _0223E456:
 	ldr r0, [r5, #0x58]
@@ -38028,7 +38028,7 @@ _0223EC22:
 	blt _0223EC16
 _0223EC2A:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #8]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -38151,7 +38151,7 @@ _0223ED02:
 	blt _0223ED02
 _0223ED14:
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, _0223ED98 ; =0x000004C8
 	mov r0, #0x6d
 	ldr r1, [r4, r1]
@@ -38229,11 +38229,11 @@ ov40_0223EDA8: ; 0x0223EDA8
 	bl DestroyMsgData
 	ldr r0, _0223EDD8 ; =0x000004DC
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x4d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223EDDC ; =0x000004D8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -39491,7 +39491,7 @@ ov40_0223F860: ; 0x0223F860
 	cmp r0, #0
 	beq _0223F87A
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _0223F87A:
@@ -41203,7 +41203,7 @@ _02240626:
 	mov r1, #7
 	bl BgClearTilemapBufferAndCommit
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _022406C2
 _02240692:
 	ldr r0, [r5, #0x58]
@@ -41802,7 +41802,7 @@ ov40_02240B70: ; 0x02240B70
 	cmp r0, #0
 	beq _02240B8A
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _02240B8A:
@@ -41963,7 +41963,7 @@ _02240C92:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x24]
 	mov r1, #2
 	bl BgClearTilemapBufferAndCommit
@@ -42712,7 +42712,7 @@ _02241316:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x24]
 	mov r1, #2
 	bl BgClearTilemapBufferAndCommit
@@ -43486,7 +43486,7 @@ _0224198C:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x24]
 	mov r1, #2
 	bl BgClearTilemapBufferAndCommit
@@ -45254,7 +45254,7 @@ _022427FC:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x24]
 	mov r1, #2
 	bl BgClearTilemapBufferAndCommit
@@ -46182,7 +46182,7 @@ _0224300E:
 	ldr r0, [r4, #0x18]
 	bl String_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov40_02242FF8
 
@@ -49370,7 +49370,7 @@ _02244896:
 	mov r1, #5
 	bl ov40_0222BF80
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _0224491A
 _022448EA:
 	ldr r0, [r5, #0x58]
@@ -49566,7 +49566,7 @@ _02244A6E:
 	ldr r0, [sp, #0x1c]
 	bl String_Delete
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov40_02244920

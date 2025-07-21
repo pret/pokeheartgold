@@ -232,7 +232,7 @@ void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *p
     }
     SavePokegear_SetPhonebookFromBuffer(phoneApp->pokegear->savePokegear, phoneApp->saveContacts, phoneApp->numContacts);
     MI_CpuClear8(phoneApp->phoneContactListNodes, phoneApp->numContacts * sizeof(PhoneContactListNode));
-    FreeToHeap(phoneApp->phoneContactListNodes);
+    Heap_Free(phoneApp->phoneContactListNodes);
 }
 
 void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneContactListNode *newNode, u8 index) {

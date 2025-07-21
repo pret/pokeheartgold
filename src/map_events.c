@@ -18,7 +18,7 @@ void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
 
 void Field_FreeMapEvents(FieldSystem *work) {
     GF_ASSERT(work->mapEvents != NULL);
-    FreeToHeap(work->mapEvents);
+    Heap_Free(work->mapEvents);
 }
 
 void Field_InitMapEvents(FieldSystem *work, u32 mapno) {

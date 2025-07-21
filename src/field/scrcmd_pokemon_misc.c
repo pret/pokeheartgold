@@ -159,10 +159,10 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
                 ov01_02200DF8(unkPtr, data[i], 0xff, data[i]);
             }
         }
-        FreeToHeap(data);
+        Heap_Free(data);
     }
     if (unkG) {
-        FreeToHeap(unkG);
+        Heap_Free(unkG);
     }
 
     msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_32);
@@ -362,7 +362,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
 
     SysTask_Destroy(unkPtr->sysTask);
 
-    FreeToHeap(unkPtr);
+    Heap_Free(unkPtr);
 }
 
 static const u16 sStatJudgeBestStatMsgIdxs[6] = {
@@ -911,10 +911,10 @@ BOOL ScrCmd_741(ScriptContext *ctx) {
     }
     str = sub_020322AC(apricornBox, *unkPtrA, 0x20);
     BufferString(*msgfmt, 0, str, 2, 1, gGameVersion); // buffer owner..?
-    FreeToHeap(str);
+    Heap_Free(str);
     str = sub_02032308(apricornBox, *unkPtrA, 0x20);
     BufferString(*msgfmt, 1, str, 2, 1, gGameVersion); // buffer juice type..?
-    FreeToHeap(str);
+    Heap_Free(str);
 
     unkVar = sub_02031D80(&unkOut);
     *price = (unkOut.unk0 / 10) + 2 * unkVar;
@@ -1071,7 +1071,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
 
     Party_AddMon(party, mon);
 
-    FreeToHeap(mon);
+    Heap_Free(mon);
 
     SaveMisc_SetTogepiPersonalityGender(Save_Misc_Get(fieldSystem->saveData), GetMonData(mon, MON_DATA_PERSONALITY, 0), GetMonData(mon, MON_DATA_GENDER, 0));
 
@@ -1139,7 +1139,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     Party_AddMon(party, mon);
 
-    FreeToHeap(mon);
+    Heap_Free(mon);
 
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
 
@@ -1209,7 +1209,7 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
 
     luckiness = luckValues[machineId];
 
-    FreeToHeap(luckValues);
+    Heap_Free(luckValues);
     SetLCRNGSeed(rngSeed);
 
     return luckiness;
@@ -1389,7 +1389,7 @@ BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx) {
         i++;
     }
 
-    FreeToHeap(sealThresholds);
+    Heap_Free(sealThresholds);
 
     *seal1 = uniqueSeals[0];
     *seal2 = uniqueSeals[1];

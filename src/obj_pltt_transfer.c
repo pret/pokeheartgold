@@ -76,8 +76,8 @@ void ObjPlttTransfer_SetReservedRegion(u32 flag, NNS_G2D_VRAM_TYPE type) {
 void ObjPlttTransfer_Destroy(void) {
     if (sObjPlttTransferTasksManager != NULL) {
         ObjPlttTransfer_FreeAllTasks();
-        FreeToHeap(sObjPlttTransferTasksManager->tasks);
-        FreeToHeap(sObjPlttTransferTasksManager);
+        Heap_Free(sObjPlttTransferTasksManager->tasks);
+        Heap_Free(sObjPlttTransferTasksManager);
         sObjPlttTransferTasksManager = NULL;
     }
 }

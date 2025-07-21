@@ -64,7 +64,7 @@ BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler
 void BattleFinger_Delete(BattleFinger *finger) {
     Sprite_DeleteAndFreeResources(finger->unk0);
     SysTask_Destroy(finger->task);
-    FreeToHeap(finger);
+    Heap_Free(finger);
 }
 
 void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {

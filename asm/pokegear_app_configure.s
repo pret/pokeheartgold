@@ -1276,11 +1276,11 @@ ov101_021EF1D8: ; 0x021EF1D8
 
 	thumb_func_start ov101_021EF260
 ov101_021EF260: ; 0x021EF260
-	ldr r3, _021EF268 ; =FreeToHeap
+	ldr r3, _021EF268 ; =Heap_Free
 	ldr r0, [r0, #0x44]
 	bx r3
 	nop
-_021EF268: .word FreeToHeap
+_021EF268: .word Heap_Free
 	thumb_func_end ov101_021EF260
 
 	thumb_func_start ov101_021EF26C

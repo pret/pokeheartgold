@@ -113,7 +113,7 @@
 .public SetKeyRepeatTimers
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

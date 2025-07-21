@@ -15,7 +15,7 @@
 .public Sprite_GetPositionXY
 .public SpriteSystem_ReplaceCharResObj
 .public SpriteSystem_ReplacePlttResObj
-.public FreeToHeap
+.public Heap_Free
 .public GF_CreateVramTransferManager
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineBTogglePlanes

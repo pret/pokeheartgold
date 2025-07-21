@@ -159,7 +159,7 @@ _0200B252:
 	bl thunk_ClearSubOAM
 	ldr r0, _0200B278 ; =_021D0EB0
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0200B278 ; =_021D0EB0
 	mov r1, #0
 	str r1, [r0]

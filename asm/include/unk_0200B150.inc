@@ -7,7 +7,7 @@
 .public thunk_ClearMainOAM
 .public thunk_ClearSubOAM
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public ClearMainOAM
 .public ClearSubOAM
 .public GF_AssertFail

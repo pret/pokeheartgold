@@ -446,7 +446,7 @@ void sub_0207ECE0(PartyMenu *partyMenu, u8 partySlot) {
         DC_FlushRange(pCharData->pRawData, pCharData->szByte);
         GXS_LoadOBJ(pCharData->pRawData, subImageLocation, pCharData->szByte);
     }
-    FreeToHeap(ncgrFile);
+    Heap_Free(ncgrFile);
     thunk_Sprite_SetPaletteOverride(partyMenu->monsDrawState[partySlot].iconSprite, GetMonIconPaletteEx(species, form, FALSE) + 3);
     thunk_Sprite_SetPaletteOverride(partyMenu->monsDrawState[partySlot].mainScreenIconSprite, GetMonIconPaletteEx(species, form, FALSE) + 1);
     NARC_Delete(narc);

@@ -766,7 +766,7 @@ static void OakSpeech_CleanupBgs(OakSpeechData *data) {
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_1);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_2);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static void OakSpeech_InitMsgPrinter(OakSpeechData *data) {
@@ -1174,7 +1174,7 @@ static void OakSpeech_LoadButtonTutorialGfx(OakSpeechData *data) {
 
     plttData_raw = GfGfxLoader_GetPlttData(NARC_demo_intro_intro, plttId_Sub, &plttData, data->heapId);
     data->genderSelectFrameDefaultPalette = ((const u16 *)plttData->pRawData)[12];
-    FreeToHeap(plttData_raw);
+    Heap_Free(plttData_raw);
 
     OakSpeech_SetButtonTutorialScreenLayout(data, 1);
     OakSpeech_DrawPicOnBgLayer(data, OAK_SPEECH_PIC_NONE, OAK_SPEECH_PIC_NONE); // effectively a nop

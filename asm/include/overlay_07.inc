@@ -132,7 +132,7 @@
 .public sub_02015754
 .public sub_0201576C
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgControlParam
 .public SetBgPriority
 .public ToggleBgLayer

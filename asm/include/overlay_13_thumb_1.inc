@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public sub_02034D8C
 .public NNS_SndPlayerSetPlayerVolume
 .public NNS_SndPlayerSetPlayableSeqCount

@@ -1496,7 +1496,7 @@ sub_020068F8: ; 0x020068F8
 	ldr r0, [r4]
 	bl SysTask_Destroy
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0200691A:
 	mov r0, #0
 	str r0, [r4]

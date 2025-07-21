@@ -564,7 +564,7 @@ BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state) {
     FreeBgTilemapBuffer(work->bgConfig, 4);
     FreeBgTilemapBuffer(work->bgConfig, 5);
     FreeBgTilemapBuffer(work->bgConfig, 6);
-    FreeToHeap(work->bgConfig);
+    Heap_Free(work->bgConfig);
     GF_3DVramMan_Delete(work->_3dMan);
     OverlayManager_FreeData(ovy);
     DestroyHeap(HEAP_ID_CHOOSE_STARTER);
@@ -581,8 +581,8 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
         DestroySingle2DGfxResObj(a0->plttResMan, a0->objs[i].plttResObj);
         DestroySingle2DGfxResObj(a0->cellResMan, a0->objs[i].cellResObj);
         DestroySingle2DGfxResObj(a0->animResMan, a0->objs[i].animResObj);
-        FreeToHeap(a0->charDatas[i]);
-        FreeToHeap(a0->plttDatas[i]);
+        Heap_Free(a0->charDatas[i]);
+        Heap_Free(a0->plttDatas[i]);
     }
 }
 
@@ -903,14 +903,14 @@ static BOOL selectedBallIsInSmallWobbleState(struct ChooseStarterAppWork *work) 
 
 static void free3dResHeader(struct ChooseStarter3dRes *res) {
     if (res->header != NULL) {
-        FreeToHeap(res->header);
+        Heap_Free(res->header);
     }
 }
 
 static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
     if (anm->hdr != NULL) {
         NNS_G3dFreeAnmObj(alloc, anm->obj);
-        FreeToHeap(anm->hdr);
+        Heap_Free(anm->hdr);
     }
 }
 
@@ -1065,7 +1065,7 @@ static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
 
 static void freeWindow(Window *window) {
     RemoveWindow(window);
-    FreeToHeap(window);
+    Heap_Free(window);
 }
 
 static int getInput(struct ChooseStarterAppWork *work) {

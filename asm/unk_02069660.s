@@ -133,7 +133,7 @@ sub_02069734: ; 0x02069734
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _02069740
-	bl FreeToHeap
+	bl Heap_Free
 _02069740:
 	pop {r3, pc}
 	.balign 4, 0

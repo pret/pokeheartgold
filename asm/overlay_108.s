@@ -2577,7 +2577,7 @@ _021E6D4C:
 	mov r0, #0xd
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _021E6D7C ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -2818,10 +2818,10 @@ ov108_021E6F58: ; 0x021E6F58
 	mov r0, #0x4d
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E6F70 ; =0x000004CC
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 _021E6F70: .word 0x000004CC
@@ -4336,7 +4336,7 @@ ov108_021E7B74: ; 0x021E7B74
 	lsl r3, r3, #0xc
 	bl BG_LoadCharTilesData
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov108_021E7B74
@@ -5516,7 +5516,7 @@ ov108_021E84DC: ; 0x021E84DC
 	lsl r2, r2, #2
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov108_021E84DC
 

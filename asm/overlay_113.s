@@ -1525,7 +1525,7 @@ ov113_021E6490: ; 0x021E6490
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _021E64D8 ; =0x04000304
 	ldrh r1, [r2]
 	lsr r0, r2, #0xb
@@ -1709,27 +1709,27 @@ ov113_021E663C: ; 0x021E663C
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov113_021E663C

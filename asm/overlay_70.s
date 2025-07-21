@@ -1859,7 +1859,7 @@ ov70_022386F4: ; 0x022386F4
 	bl OverlayManager_GetData
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl FreeToHeap
+	bl Heap_Free
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	add r0, r4, #0
@@ -1890,9 +1890,9 @@ ov70_022386F4: ; 0x022386F4
 	mov r0, #0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #4
@@ -2353,7 +2353,7 @@ _02238ACC:
 	mov r2, #0x60
 	bl GX_LoadOBJPltt
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x18]
 	bl NARC_Delete
 	add sp, #0x20
@@ -6000,7 +6000,7 @@ ov70_0223A7E4: ; 0x0223A7E4
 	lsl r3, r3, #4
 	bl GfGfxLoader_GXLoadPal
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -8462,10 +8462,10 @@ ov70_0223BCD0: ; 0x0223BCD0
 	ldr r0, _0223BCFC ; =0x000011C4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223BCFC ; =0x000011C4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223BD00 ; =0x00000BBC
 	ldr r0, [r4, r0]
 	bl String_Delete
@@ -11339,7 +11339,7 @@ ov70_0223D414: ; 0x0223D414
 	add r4, r0, #0
 	ldr r0, _0223D43C ; =0x000011F4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223D440 ; =0x00000BB4
 	ldr r0, [r4, r0]
 	bl String_Delete
@@ -12916,7 +12916,7 @@ ov70_0223E094: ; 0x0223E094
 	cmp r0, #0
 	bne _0223E0B6
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _0223E0B6:
@@ -12963,7 +12963,7 @@ ov70_0223E0BC: ; 0x0223E0BC
 	add r0, r0, #3
 	str r0, [r4, #4]
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov70_0223E0BC
@@ -13014,7 +13014,7 @@ _0223E158:
 	ldr r0, [sp]
 	lsl r1, r1, #8
 	ldr r0, [r0, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov70_0223E120
@@ -14485,14 +14485,14 @@ ov70_0223ED24: ; 0x0223ED24
 	ldr r0, _0223ED50 ; =0x000011C4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223ED50 ; =0x000011C4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223ED50 ; =0x000011C4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223ED54 ; =0x00000BBC
 	ldr r0, [r4, r0]
 	bl String_Delete
@@ -15751,7 +15751,7 @@ _0223F6C8:
 	blo _0223F6C0
 _0223F6D0:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -17404,7 +17404,7 @@ _0224030A:
 	ldr r0, [r0]
 	bl sub_0202DB5C
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _022403E6
 _0224036A:
 	add r0, r4, #0
@@ -17440,7 +17440,7 @@ _02240372:
 	ldr r0, [r0]
 	bl sub_0202DB5C
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _022403E6
 _022403BE:
 	str r0, [r4, #0x3c]
@@ -18317,7 +18317,7 @@ ov70_022409C0: ; 0x022409C0
 	ldr r0, [r0, #0xc]
 	bl PCStorage_DeleteBoxMonByIndexPair
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _02240A62
 _02240A1A:
 	ldr r0, [r5]
@@ -19443,10 +19443,10 @@ ov70_02241308: ; 0x02241308
 	beq _02241324
 	add r0, #0xc
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0224132C ; =0x000011E0
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 _02241324:
 	pop {r4, pc}
 	nop
@@ -20027,7 +20027,7 @@ _022417A6:
 	mov r4, #4
 _022417B2:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _022417FE
 _022417BA:
 	add r0, r5, #0
@@ -20074,11 +20074,11 @@ ov70_02241808: ; 0x02241808
 	add r4, r0, #0
 	ldr r0, _02241828 ; =0x000011F0
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov70_02238E58
 	mov r0, #1
@@ -21224,7 +21224,7 @@ ov70_0224212C: ; 0x0224212C
 	ldr r0, [r4, #0x1c]
 	bl sub_020195C0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov70_0224212C
 
@@ -23759,7 +23759,7 @@ _022434AA:
 	blt _02243492
 _022434B4:
 	ldr r0, [sp, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #8]
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -25124,7 +25124,7 @@ ov70_02243F54: ; 0x02243F54
 	bl ov70_0224342C
 	add r4, r0, #0
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -25661,7 +25661,7 @@ ov70_022442B4: ; 0x022442B4
 	mov r2, #0x80
 	bl MIi_CpuCopy16
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]

@@ -32,7 +32,7 @@ static void sub_0201401C(NarcId narcId, s32 fileId, HeapID heapId, NNSG2dCharact
     result = NNS_G2dGetUnpackedCharacterData(pRaw, pCharData);
     GF_ASSERT(pCharData != NULL);
     GF_ASSERT(result);
-    FreeToHeap(pRaw);
+    Heap_Free(pRaw);
 }
 
 static void sub_02014050(int x, int y, int width, int height, NNSG2dCharacterData *pCharData, void *dest) {
@@ -121,7 +121,7 @@ void sub_020141C4(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
             sub_02013FDC(srcu8, dstu8, &srcOffset, &dstOffset, 4, srcWidth);
         }
     }
-    FreeToHeap(pNcgrFile);
+    Heap_Free(pNcgrFile);
 }
 
 void *sub_02014298(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int width, int height) {
@@ -170,7 +170,7 @@ static void sub_02014374(NarcId narcId, s32 fileId, HeapID heapId, int x, int y,
     for (int i = 0; i < 6; ++i) {
         sub_02014350(width, height, &sp1C[i], &sp18, sp14, dest);
     }
-    FreeToHeap(sp14);
+    Heap_Free(sp14);
 }
 
 void sub_020143E0(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *a3, void *dest) {
@@ -194,7 +194,7 @@ void *sub_02014450(NarcId narcId, s32 fileId, HeapID heapId) {
     NNSG2dPaletteData *pPlttData;
     GF_ASSERT(NNS_G2dGetUnpackedPaletteData(pNclrFile, &pPlttData) == TRUE);
     MI_CpuCopy16(pPlttData->pRawData, ret, 0x20);
-    FreeToHeap(pNclrFile);
+    Heap_Free(pNclrFile);
     return ret;
 }
 
@@ -213,7 +213,7 @@ void sub_02014494(NarcId narcId, s32 fileId, HeapID heapId, int x, int y, int wi
     for (int i = 0; i < 6; ++i) {
         sub_02014350(width, height, &sp2C[i], &sp28, sp24, dest);
     }
-    FreeToHeap(sp24);
+    Heap_Free(sp24);
 }
 
 void sub_02014510(NarcId narcId, s32 fileId, HeapID heapId, UnkStruct_02014E30 *a3, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {

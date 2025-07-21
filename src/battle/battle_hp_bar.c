@@ -1245,8 +1245,8 @@ static void ov12_02265354(BattleHpBar *hpBar) {
     u8 *buf2 = r7 + 0x60;
     MI_CpuCopy16(buf1, (void *)((u32)vramAddr + ov12_0226D420[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D420[hpBar->type][0].size);
     MI_CpuCopy16(buf2, (void *)((u32)vramAddr + ov12_0226D420[hpBar->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D420[hpBar->type][1].size);
-    FreeToHeap(r4);
-    FreeToHeap(r7);
+    Heap_Free(r4);
+    Heap_Free(r7);
 }
 
 static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
@@ -1258,7 +1258,7 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D450[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D450[hpBar->type][0].size);
     MI_CpuCopy16(r4 + ov12_0226D450[hpBar->type][0].size, (void *)((u32)vramAddr + ov12_0226D450[hpBar->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D450[hpBar->type][1].size);
-    FreeToHeap(r4);
+    Heap_Free(r4);
 }
 
 static void ov12_02265500(BattleHpBar *hpBar) {
@@ -1269,7 +1269,7 @@ static void ov12_02265500(BattleHpBar *hpBar) {
     void *vramAddr = G2_GetOBJCharPtr();
 
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D3F0[hpBar->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3F0[hpBar->type].size);
-    FreeToHeap(r4);
+    Heap_Free(r4);
 }
 
 static void ov12_02265560(BattleHpBar *hpBar) {
@@ -1718,7 +1718,7 @@ static void Task_ExpBarFullFlash(SysTask *task, void *data) {
         plttNum = SpriteManager_FindPlttResourceOffset(gfxHandler, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
         ManagedSprite_SetPaletteOverride(taskData->hpBar->boxObj, plttNum);
         *taskData->pDoneFlag = 1;
-        FreeToHeap(taskData);
+        Heap_Free(taskData);
         SysTask_Destroy(task);
         break;
     }

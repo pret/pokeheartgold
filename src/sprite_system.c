@@ -118,7 +118,7 @@ static void SpriteManager_FreeResources(SpriteManager *spriteManager) {
     for (int i = 0; i < spriteManager->numGfxResObjectTypes; ++i) {
         GF2DGfxResHeader_Reset(GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i));
     }
-    FreeToHeap(spriteManager->_2dGfxResHeader);
+    Heap_Free(spriteManager->_2dGfxResHeader);
     sub_0200AED4(spriteManager->_2dGfxResObjList[0]);
     sub_0200B0CC(spriteManager->_2dGfxResObjList[1]);
     for (int i = 0; i < spriteManager->numGfxResObjectTypes; ++i) {
@@ -138,7 +138,7 @@ static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem) {
 
 static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
     --spriteSystem->numGfxHandlers;
-    FreeToHeap(spriteManager);
+    Heap_Free(spriteManager);
 }
 
 void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
@@ -151,7 +151,7 @@ void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager
 void SpriteSystem_Free(SpriteSystem *spriteSystem) {
     GF_ASSERT(spriteSystem->numGfxHandlers == 0);
     SpriteSystem_FreeVramTransfers(spriteSystem);
-    FreeToHeap(spriteSystem);
+    Heap_Free(spriteSystem);
 }
 
 static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
@@ -179,7 +179,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
         header = GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i);
         data = GfGfxLoader_LoadFromOpenNarc(narc, fileIdList[i], FALSE, spriteSystem->heapId, TRUE);
         GF2DGfxResHeader_Init((GF_2DGfxResHeaderNarcList *)data, header, spriteSystem->heapId);
-        FreeToHeap(data);
+        Heap_Free(data);
     }
     for (i = 0; i < numGfxResTypes; ++i) {
         header = GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i);
@@ -223,7 +223,7 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM],
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL],
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_MANM]);
-    FreeToHeap(data);
+    Heap_Free(data);
     NARC_Delete(narc);
     return TRUE;
 }
@@ -423,7 +423,7 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
     ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
     if (ret->spriteResourceHeaderList->headers == NULL) {
         if (ret->spriteResourceHeaderList != NULL) { // always true
-            FreeToHeap(ret->spriteResourceHeaderList);
+            Heap_Free(ret->spriteResourceHeaderList);
         }
         return NULL; // leaks 16 bytes
     }
@@ -531,7 +531,7 @@ void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite) {
     }
     Sprite_Delete(managedSprite->sprite);
     SpriteResourceHeaderList_Destroy(managedSprite->spriteResourceHeaderList);
-    FreeToHeap(managedSprite);
+    Heap_Free(managedSprite);
 }
 
 static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId) {

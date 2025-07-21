@@ -132,9 +132,9 @@ _02095EC4:
 	ldr r0, [r4, #0x1c]
 	strh r1, [r0]
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02095EF4:

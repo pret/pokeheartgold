@@ -9,7 +9,7 @@
 .public DrawFrameAndWindow1
 .public sub_0200E5D4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public AllocWindows
 .public AddWindowParameterized
 .public WindowArray_Delete

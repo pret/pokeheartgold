@@ -1242,9 +1242,9 @@ void _RunObjectEventMovement(SysTask *task, struct ObjectMovementTaskEnv *env) {
         EventObjectMovementMan_Delete(env->movementMan);
         SysTask_Destroy(env->task);
         if (env->cmd != NULL) {
-            FreeToHeap(env->cmd);
+            Heap_Free(env->cmd);
         }
-        FreeToHeap(env);
+        Heap_Free(env);
         if (*movementCnt == 0) {
             GF_ASSERT(FALSE);
         } else {
@@ -1625,7 +1625,7 @@ BOOL ScrCmd_PartySelect(ScriptContext *ctx) { // todo: get selected pokemon slot
     if (*dest_p == 7) {
         *dest_p = 255;
     }
-    FreeToHeap(*partyMenu);
+    Heap_Free(*partyMenu);
     *partyMenu = NULL;
     return FALSE;
 }
@@ -1649,7 +1649,7 @@ BOOL ScrCmd_635(ScriptContext *ctx) {
             (*r6)--;
         }
     }
-    FreeToHeap(*partyMenuPtr);
+    Heap_Free(*partyMenuPtr);
     *partyMenuPtr = NULL;
     return FALSE;
 }
@@ -1674,7 +1674,7 @@ BOOL ScrCmd_639(ScriptContext *ctx) {
             (*r7)--;
         }
     }
-    FreeToHeap(*partyMenuPtr);
+    Heap_Free(*partyMenuPtr);
     *partyMenuPtr = NULL;
     return FALSE;
 }
@@ -1699,7 +1699,7 @@ BOOL ScrCmd_645(ScriptContext *ctx) {
             (*r7)--;
         }
     }
-    FreeToHeap(*partyMenuPtr);
+    Heap_Free(*partyMenuPtr);
     *partyMenuPtr = NULL;
     return FALSE;
 }
@@ -1714,7 +1714,7 @@ BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
     } else {
         *r5 = sub_0203E600(*p_work);
     }
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return FALSE;
 }
@@ -1756,7 +1756,7 @@ BOOL ScrNative_WaitApplication_DestroyTaskData(ScriptContext *ctx) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return FALSE;
     }
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return TRUE;
 }
@@ -1768,7 +1768,7 @@ static BOOL sub_020429A0(ScriptContext *ctx) {
         return FALSE;
     }
     sub_02093070(fieldSystem);
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return TRUE;
 }
@@ -1843,7 +1843,7 @@ BOOL ScrCmd_153(ScriptContext *ctx) {
     struct FashionAppData **p_data = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     u16 *p_dest = ScriptGetVarPointer(ctx);
     *p_dest = (*p_data)->unk_4;
-    FreeToHeap(*p_data);
+    Heap_Free(*p_data);
     return FALSE;
 }
 
@@ -2037,7 +2037,7 @@ BOOL ScrCmd_706(ScriptContext *ctx) {
     if (saveOk == 2) {
         *p_var = 1;
     }
-    FreeToHeap(hof);
+    Heap_Free(hof);
     return FALSE;
 }
 
@@ -2080,7 +2080,7 @@ BOOL ScrCmd_334(ScriptContext *ctx) { // todo: bag select screen result
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     GF_ASSERT(*p_work != NULL);
     *r5 = BagView_SelectResult(*p_work);
-    FreeToHeap(*p_work);
+    Heap_Free(*p_work);
     *p_work = NULL;
     return FALSE;
 }
@@ -2477,7 +2477,7 @@ BOOL ScrCmd_230(ScriptContext *ctx) {
     struct UnkStruct_ScrCmd230 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
     struct UnkStruct_ScrCmd230 *work = *p_work;
     CallTask_020508B8(ctx->fieldSystem->taskman, &work->unk_30, 5);
-    FreeToHeap(work);
+    Heap_Free(work);
     *p_work = NULL;
     return TRUE;
 }
@@ -2743,7 +2743,7 @@ BOOL ScrCmd_586(ScriptContext *ctx) {
     *p_ret = sub_0205A4D8(ctx->fieldSystem->unk80);
     if (*p_ret) {
         void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-        FreeToHeap(*p_work);
+        Heap_Free(*p_work);
     }
     return FALSE;
 }
@@ -3645,7 +3645,7 @@ void Script_SetMonSeenFlagBySpecies(FieldSystem *fieldSystem, u16 species) {
     ZeroMonData(mon);
     CreateMon(mon, species, 50, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
     Pokedex_SetMonSeenFlag(pokedex, mon);
-    FreeToHeap(mon);
+    Heap_Free(mon);
 }
 
 BOOL ScrCmd_687(ScriptContext *ctx) {
@@ -3930,15 +3930,15 @@ BOOL ScrCmd_550(ScriptContext *ctx) {
     HallOfFame *hof = LoadHallOfFame(ctx->fieldSystem->saveData, HEAP_ID_32, &loadResult);
     if (loadResult == 0) {
         *p_ret = 0;
-        FreeToHeap(hof);
+        Heap_Free(hof);
         return TRUE;
     } else if (loadResult == 1) {
         *p_ret = Save_HOF_TranslateRecordIdx(hof, 0);
-        FreeToHeap(hof);
+        Heap_Free(hof);
         return TRUE;
     } else if (loadResult == 2) {
         *p_ret = 0;
-        FreeToHeap(hof);
+        Heap_Free(hof);
         return TRUE;
     } else {
         *p_ret = 0;
@@ -3965,7 +3965,7 @@ BOOL ScrCmd_552(ScriptContext *ctx) {
     }
     *r5 = sub_0203E5F8(*partyMenu);
     *r5 = (*r5 == TRUE);
-    FreeToHeap(*partyMenu);
+    Heap_Free(*partyMenu);
     *partyMenu = NULL;
     return FALSE;
 }
@@ -4186,7 +4186,7 @@ BOOL ScrCmd_ScratchOffCard(ScriptContext *ctx) {
 
 BOOL ScrCmd_ScratchOffCardEnd(ScriptContext *ctx) {
     ScratchOffCardsArgs **scratchCardData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    FreeToHeap(*scratchCardData);
+    Heap_Free(*scratchCardData);
     *scratchCardData = NULL;
     return TRUE;
 }
@@ -4311,7 +4311,7 @@ u32 sub_020467A8(SaveData *saveData) {
             ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORM, NULL);
         }
     }
-    FreeToHeap(walkerMon);
+    Heap_Free(walkerMon);
 
     return ret;
 }
@@ -5114,8 +5114,8 @@ BOOL sub_020479D4(ScriptContext *ctx) {
         }
         *p_ret = 0;
     }
-    FreeToHeap(work->sub);
-    FreeToHeap(*p_work);
+    Heap_Free(work->sub);
+    Heap_Free(*p_work);
     return TRUE;
 }
 
@@ -5370,7 +5370,7 @@ BOOL ScrCmd_823(ScriptContext *ctx) {
     PlayerProfile *profile = PlayerProfile_New(HEAP_ID_4);
     SafariZone_GetLinkLeaderToProfile(Save_SafariZone_Get(ctx->fieldSystem->saveData), profile);
     BufferPlayersName(*p_msgFmt, *p_var, profile);
-    FreeToHeap(profile);
+    Heap_Free(profile);
     return FALSE;
 }
 

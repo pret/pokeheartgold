@@ -65,7 +65,7 @@ _02012E44:
 	add r0, r4, #0
 	bl sub_02010EC8
 	ldr r0, [r5, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0xc]

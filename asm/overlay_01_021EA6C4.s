@@ -111,11 +111,11 @@ ov01_021EA7E0: ; 0x021EA7E0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov01_021EA7E0
 

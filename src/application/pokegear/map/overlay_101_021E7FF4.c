@@ -306,12 +306,12 @@ void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame) {
 }
 
 void PokegearMap_UnloadGraphics(PokegearMapAppData *mapApp) {
-    FreeToHeap(mapApp->unk_154[5]);
-    FreeToHeap(mapApp->unk_154[4]);
-    FreeToHeap(mapApp->unk_154[3]);
-    FreeToHeap(mapApp->unk_154[2]);
-    FreeToHeap(mapApp->unk_154[1]);
-    FreeToHeap(mapApp->unk_154[0]);
+    Heap_Free(mapApp->unk_154[5]);
+    Heap_Free(mapApp->unk_154[4]);
+    Heap_Free(mapApp->unk_154[3]);
+    Heap_Free(mapApp->unk_154[2]);
+    Heap_Free(mapApp->unk_154[1]);
+    Heap_Free(mapApp->unk_154[0]);
 }
 
 void PokegearMap_InitWindows(PokegearMapAppData *mapApp) {

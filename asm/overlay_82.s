@@ -679,9 +679,9 @@ ov82_0223E2A4: ; 0x0223E2A4
 	add r0, r4, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 	add r0, r4, #0
@@ -1788,7 +1788,7 @@ ov82_0223EBB8: ; 0x0223EBB8
 	mov r1, #4
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 _0223EC08: .word 0xFFFF1FFF
@@ -2087,7 +2087,7 @@ ov82_0223EE38: ; 0x0223EE38
 	mov r2, #0xc0
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -3997,7 +3997,7 @@ ov82_0223FC9C: ; 0x0223FC9C
 	ldr r0, [r4, #0x10]
 	bl Sprite_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov82_0223FC9C

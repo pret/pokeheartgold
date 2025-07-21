@@ -236,7 +236,7 @@ sub_02019490: ; 0x02019490
 	add r4, r0, #0
 	bl sub_020194F8
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x7b
@@ -287,7 +287,7 @@ sub_020194F8: ; 0x020194F8
 	ldr r0, [r4, #0x10]
 	bl NNS_FndDestroyExpHeap
 	ldr r0, [r4, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	bl UnloadOVY38
 	bl UnloadDwcOverlay
 	bl sub_02034DE0
@@ -393,7 +393,7 @@ _020195CE:
 	ldr r0, [r0, r4]
 	cmp r0, #0
 	beq _020195DA
-	bl FreeToHeap
+	bl Heap_Free
 _020195DA:
 	ldrh r0, [r5, #8]
 	add r6, r6, #1
@@ -402,9 +402,9 @@ _020195DA:
 	blo _020195CE
 _020195E4:
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_020195C0
@@ -507,7 +507,7 @@ sub_02019688: ; 0x02019688
 	add r2, #0xc
 	bl sub_02019668
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02019688
@@ -532,7 +532,7 @@ sub_020196B8: ; 0x020196B8
 	add r2, #0xc
 	bl sub_02019668
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_020196B8
@@ -1252,10 +1252,10 @@ sub_02019BA4: ; 0x02019BA4
 
 	thumb_func_start sub_02019BDC
 sub_02019BDC: ; 0x02019BDC
-	ldr r3, _02019BE0 ; =FreeToHeap
+	ldr r3, _02019BE0 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02019BE0: .word FreeToHeap
+_02019BE0: .word Heap_Free
 	thumb_func_end sub_02019BDC
 
 	thumb_func_start sub_02019BE4

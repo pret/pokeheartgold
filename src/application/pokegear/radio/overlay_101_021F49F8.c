@@ -313,7 +313,7 @@ void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
 }
 
 void Radio_UnloadGraphics(PokegearRadioAppData *radioApp) {
-    FreeToHeap(radioApp->pNSCR);
+    Heap_Free(radioApp->pNSCR);
     FontID_Release(4);
 }
 

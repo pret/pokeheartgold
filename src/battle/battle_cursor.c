@@ -67,7 +67,7 @@ void BattleCursor_Delete(BattleCursor *cursor) {
     }
 
     SysTask_Destroy(cursor->task);
-    FreeToHeap(cursor);
+    Heap_Free(cursor);
 }
 
 void ov12_0226BA4C(BattleCursor *cursor, int x0, int y0, int x1, int y1, int x2, int y2, int x3, int y3, fx32 a9) {

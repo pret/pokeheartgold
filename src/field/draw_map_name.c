@@ -41,7 +41,7 @@ static void LoadAreaIconGraphics(FieldDrawMapNameInfo *info, u8 layer, u32 tileS
     NNSG2dPaletteData *g2dPaletteData;
     void *paletteData = GfGfxLoader_GetPlttData(NARC_data_gs_areawindow, memberNum + 1, &g2dPaletteData, HEAP_ID_4);
     LoadAreaIconPalette(g2dPaletteData->pRawData, 1, paletteOffset);
-    FreeToHeap(paletteData);
+    Heap_Free(paletteData);
 }
 
 static void DrawAreaIcon(FieldDrawMapNameInfo *info, int namePixelWidth) {
@@ -55,7 +55,7 @@ static void DrawAreaIcon(FieldDrawMapNameInfo *info, int namePixelWidth) {
     }
 
     CopyWindowToVram(&info->window);
-    FreeToHeap(info->charData);
+    Heap_Free(info->charData);
 }
 
 static void FieldDrawMapName_ResetState(FieldDrawMapNameInfo *info) {
@@ -143,7 +143,7 @@ void FieldDrawMapNameInfo_Destroy(FieldDrawMapNameInfo *info) {
     DestroyMsgData(info->mapsecMsgData);
     RemoveWindow(&info->window);
     String_Delete(info->mapNameString);
-    FreeToHeap(info);
+    Heap_Free(info);
 }
 
 static void FieldDrawMapName_Start(FieldDrawMapNameInfo *info, u32 mapsec, u32 areaIcon) {

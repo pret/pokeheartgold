@@ -286,14 +286,14 @@ _021E5B36:
 	add r0, r7, r0
 	bl NNS_G3dFreeAnmObj
 	ldr r0, [r5, #0x5c]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	cmp r4, #2
 	blo _021E5B36
 	ldr r0, [r6, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	add r0, r0, #1
 	lsl r0, r0, #0x18

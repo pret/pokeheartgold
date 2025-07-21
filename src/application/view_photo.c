@@ -150,7 +150,7 @@ void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
 
     MenuInputStateMgr_SetState(&fieldSystem->menuInputState, viewPhoto->menuInputState);
     ViewPhotoSysTask_Teardown(viewPhoto);
-    FreeToHeap(viewPhoto);
+    Heap_Free(viewPhoto);
     SysTask_Destroy(fieldSystem->unk_D8);
     fieldSystem->unk_D8 = NULL;
 }
@@ -338,7 +338,7 @@ static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
     ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->heapId);
     r3 = viewPhoto->scrollData.photo->iconId + 1;
     BG_LoadCharTilesData(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, pCharData->pRawData + ((25 * r3 + 64) * 64), 0x640, 1);
-    FreeToHeap(ncgrFile);
+    Heap_Free(ncgrFile);
     NARC_Delete(narc);
 }
 

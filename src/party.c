@@ -114,7 +114,7 @@ BOOL Party_SwapSlots(Party *party, int slotA, int slotB) {
     *tmp_POKEMON = party->core.mons[slotA];
     party->core.mons[slotA] = party->core.mons[slotB];
     party->core.mons[slotB] = *tmp_POKEMON;
-    FreeToHeap(tmp_POKEMON);
+    Heap_Free(tmp_POKEMON);
 
     tmp_PartyExtraSub = party->extra.unk_00[slotA];
     party->extra.unk_00[slotA] = party->extra.unk_00[slotB];

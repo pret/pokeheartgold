@@ -128,7 +128,7 @@ BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
         Party_AddMon(setup->party[BATTLER_PLAYER], pokemon);
         CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
         Party_AddMon(setup->party[BATTLER_ENEMY], pokemon);
-        FreeToHeap(pokemon);
+        Heap_Free(pokemon);
     }
     setup->unk1CC[BATTLER_PLAYER] = 0;
     setup->storagePC = SaveArray_PCStorage_Get(fieldSystem->saveData);
@@ -145,25 +145,25 @@ void BattleSetup_Delete(BattleSetup *setup) {
 
     for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->party[i] != NULL);
-        FreeToHeap(setup->party[i]);
+        Heap_Free(setup->party[i]);
     }
 
     for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->profile[i] != NULL);
-        FreeToHeap(setup->profile[i]);
+        Heap_Free(setup->profile[i]);
     }
 
     for (i = 0; i < BATTLER_MAX; ++i) {
         GF_ASSERT(setup->chatot[i] != NULL);
-        FreeToHeap(setup->chatot[i]);
+        Heap_Free(setup->chatot[i]);
     }
 
-    FreeToHeap(setup->bag);
-    FreeToHeap(setup->pokedex);
-    FreeToHeap(setup->options);
+    Heap_Free(setup->bag);
+    Heap_Free(setup->pokedex);
+    Heap_Free(setup->options);
     sub_02067A78(setup->unk_134);
-    FreeToHeap(setup->bugContestMon);
-    FreeToHeap(setup);
+    Heap_Free(setup->bugContestMon);
+    Heap_Free(setup);
 }
 
 void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battlerId) {
@@ -289,7 +289,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
         }
         BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
     }
-    FreeToHeap(pokemon);
+    Heap_Free(pokemon);
 
     Save_Bag_Copy(bag, setup->bag);
     Pokedex_Copy(pokedex, setup->pokedex);
@@ -356,7 +356,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
             }
             BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
         }
-        FreeToHeap(pokemon);
+        Heap_Free(pokemon);
     }
 
     if (ruleset != NULL && LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_DRAGON_RAGE_CLAUSE)) {

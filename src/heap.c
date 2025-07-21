@@ -237,7 +237,7 @@ void *AllocFromHeapAtEnd(HeapID heapId, u32 size) {
     return ptr;
 }
 
-void FreeToHeap(void *ptr) {
+void Heap_Free(void *ptr) {
     ptr -= sizeof(MemoryBlock);
     HeapID heapId = (HeapID)((MemoryBlock *)ptr)->heapId;
 
@@ -261,7 +261,7 @@ void FreeToHeap(void *ptr) {
     GF_ASSERT(FALSE);
 }
 
-void FreeToHeapExplicit(HeapID heapId, void *ptr) {
+void Heap_FreeExplicit(HeapID heapId, void *ptr) {
     GF_ASSERT(OS_GetProcMode() != OS_PROCMODE_IRQ);
 
     if (((u32)heapId) < sHeapInfo.totalNumHeaps) {

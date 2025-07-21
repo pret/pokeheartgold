@@ -2,7 +2,7 @@
 #pragma once
 .public Sound_SetSceneAndPlayBGM
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GfGfx_EngineATogglePlanes
 .public sub_02030B14
 .public sub_02030BD0

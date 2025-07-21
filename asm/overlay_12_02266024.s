@@ -90,7 +90,7 @@ _0226615A:
 	lsl r2, r2, #0xa
 	bl MIi_CpuCopy32
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 _02266184:
 	cmp r4, #7
@@ -252,7 +252,7 @@ _022662C0:
 	bl MIi_CpuCopy16
 _022662CA:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl TextFlags_ResetHasSpedUpInput
 	bl TextFlags_ResetHasContinuedInput
 	ldr r0, _02266314 ; =ov12_02269954
@@ -306,23 +306,23 @@ _0226632E:
 	add r5, r6, #0
 _02266354:
 	ldr r0, [r5, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #7
 	blt _02266354
 	ldr r0, [r6, #0x5c]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl ov12_022687AC
 	ldr r0, [r6, #0x60]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r6, #0x64]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r6, #0x68]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02266388: .word 0x000004CC
@@ -3011,7 +3011,7 @@ ov12_02267984: ; 0x02267984
 	lsl r2, r2, #0xa
 	bl MIi_CpuCopy32
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5]
 	bl BattleSystem_GetBgConfig
 	mov r1, #4
@@ -4783,7 +4783,7 @@ _022687E0:
 	ldr r0, [sp, #4]
 	add r0, #0x84
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0xa0
 	ldr r0, [r0]
@@ -4922,7 +4922,7 @@ _022688CA:
 	ldr r2, [sp, #0xc]
 	bl MIi_CpuCopy32
 	ldr r0, [sp, #0x44]
-	bl FreeToHeap
+	bl Heap_Free
 _02268910:
 	ldr r0, [r6, #0x34]
 	cmp r0, #0
@@ -6641,7 +6641,7 @@ _02269606:
 	ldr r0, [r0]
 	bl ov12_0223BB64
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	bl SysTask_Destroy
 _02269656:

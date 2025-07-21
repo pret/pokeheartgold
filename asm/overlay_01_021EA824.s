@@ -36,7 +36,7 @@ ov01_021EA840: ; 0x021EA840
 	add r4, r0, #0
 	ldr r1, [r4]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}

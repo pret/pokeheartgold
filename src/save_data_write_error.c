@@ -76,8 +76,8 @@ void ShowSaveDataWriteError(HeapID heapId, int code) {
         msg_no = msg_0009_00000;
     }
 
-    sub_0200FBF4(PM_LCD_TOP, 0);
-    sub_0200FBF4(PM_LCD_BOTTOM, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
     sub_0201A0E0();
 

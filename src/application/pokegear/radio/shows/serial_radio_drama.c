@@ -35,7 +35,7 @@ BOOL RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow) {
     }
     RadioShow_SerialRadioDrama_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(SerialRadioDramaShowData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

@@ -14,7 +14,7 @@
 .public HBlankInterruptDisable
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public GF3dRender_InitObjFromHeader
 .public GF3dRender_DrawModel

@@ -4,7 +4,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeapAtEnd
-.public FreeToHeapExplicit
+.public Heap_FreeExplicit
 .public SysTask_GetData
 .public GF_AssertFail
 .public MapObjectManager_GetPriority

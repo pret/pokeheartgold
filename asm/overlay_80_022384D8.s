@@ -130,7 +130,7 @@ ov80_022385B0: ; 0x022385B0
 	ldr r0, [r4, #4]
 	bl ov80_022385C4
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_022385B0
@@ -142,7 +142,7 @@ ov80_022385C4: ; 0x022385C4
 	ldr r0, [r4]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_022385C4

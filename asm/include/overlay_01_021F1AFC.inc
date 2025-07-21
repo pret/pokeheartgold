@@ -7,8 +7,8 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeapAtEnd
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public SysTask_GetData
 .public GF_AssertFail
 .public StartScriptFromMenu

@@ -29,7 +29,7 @@
 .public sub_0200B0CC
 .public SpriteTransfer_GetPlttOffset
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SpriteList_Delete
 .public Sprite_CreateAffine
 .public Sprite_SetAnimCtrlSeq

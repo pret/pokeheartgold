@@ -83,7 +83,7 @@ BOOL FlyMap_Exit(OverlayManager *man, int *state) {
         mapApp->pokegear->isSwitchApp = TRUE;
     }
     MI_CpuClear8(mapApp->pokegear, sizeof(PokegearAppData));
-    FreeToHeap(mapApp->pokegear);
+    Heap_Free(mapApp->pokegear);
     heapID = mapApp->heapId;
     OverlayManager_FreeData(man);
     DestroyHeap(heapID);
@@ -127,7 +127,7 @@ void FlyMap_InitParam(PokegearMapAppData *mapApp) {
 }
 
 void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp) {
-    FreeToHeap(mapApp->phoneContact);
+    Heap_Free(mapApp->phoneContact);
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->deselectAppCB = NULL;

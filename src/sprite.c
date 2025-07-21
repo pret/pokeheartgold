@@ -70,11 +70,11 @@ BOOL SpriteList_Delete(SpriteList *spriteList) {
     }
 
     SpriteList_DeleteAllSprites(spriteList);
-    FreeToHeap(spriteList->animBuff);
-    FreeToHeap(spriteList->stack);
-    FreeToHeap(spriteList->sprites);
+    Heap_Free(spriteList->animBuff);
+    Heap_Free(spriteList->stack);
+    Heap_Free(spriteList->sprites);
     SpriteList_Init(spriteList);
-    FreeToHeap(spriteList);
+    Heap_Free(spriteList);
     return TRUE;
 }
 
@@ -196,10 +196,10 @@ void Sprite_Delete(Sprite *sprite) {
     if (sprite->flag == SPRITE_ANIM_TYPE_MULTICELL) {
         SpriteMultiAnimationData *anim = (SpriteMultiAnimationData *)sprite->animationData;
         if (anim->node != NULL) {
-            FreeToHeap(anim->node);
+            Heap_Free(anim->node);
         }
         if (anim->cellAnim != NULL) {
-            FreeToHeap(anim->cellAnim);
+            Heap_Free(anim->cellAnim);
         }
     }
 
@@ -464,14 +464,14 @@ void ClearMainOAM(HeapID heapId) {
     MI_CpuFill16(buf, 0x2c0, HW_OAM_SIZE);
     DC_FlushRange(buf, HW_OAM_SIZE);
     GX_LoadOAM(buf, 0, HW_OAM_SIZE);
-    FreeToHeap(buf);
+    Heap_Free(buf);
 }
 
 void ClearSubOAM(HeapID heapId) {
     void *buf = AllocFromHeap(heapId, HW_OAM_SIZE);
     MI_CpuFill16(buf, 0x2c0, HW_OAM_SIZE);
     GXS_LoadOAM(buf, 0, HW_OAM_SIZE);
-    FreeToHeap(buf);
+    Heap_Free(buf);
 }
 
 static u32 Sprite_GetExAttrByAnimSeqAndFrame(const Sprite *sprite, u32 seq, u32 frame) {

@@ -498,7 +498,7 @@ void FlyMap_DeinitBGs(PokegearMapAppData *mapApp) {
     FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(mapApp->pokegear->bgConfig);
+    Heap_Free(mapApp->pokegear->bgConfig);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
     G2_SetBlendAlpha(0, 0, 0, 0);
 }
@@ -526,10 +526,10 @@ void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp) {
 
 void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp) {
     FontID_Release(4);
-    FreeToHeap(mapApp->unk_154[3]);
-    FreeToHeap(mapApp->unk_154[2]);
-    FreeToHeap(mapApp->unk_154[1]);
-    FreeToHeap(mapApp->unk_154[0]);
+    Heap_Free(mapApp->unk_154[3]);
+    Heap_Free(mapApp->unk_154[2]);
+    Heap_Free(mapApp->unk_154[1]);
+    Heap_Free(mapApp->unk_154[0]);
 }
 
 void FlyMap_CreateWindows(PokegearMapAppData *mapApp) {

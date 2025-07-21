@@ -143,8 +143,8 @@ MapObjectManager *MapObjectManager_Init(FieldSystem *fieldSystem, u32 objectCoun
 }
 
 void MapObjectManager_Delete(MapObjectManager *manager) {
-    FreeToHeapExplicit(HEAP_ID_FIELD, MapObjectManager_GetObjects(manager));
-    FreeToHeapExplicit(HEAP_ID_FIELD, manager);
+    Heap_FreeExplicit(HEAP_ID_FIELD, MapObjectManager_GetObjects(manager));
+    Heap_FreeExplicit(HEAP_ID_FIELD, manager);
 }
 
 void sub_0205E104(MapObjectManager *manager, u32 unused, u32 mapId, u32 objectCount, ObjectEvent *objectEvents) {
@@ -563,8 +563,8 @@ static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args) {
         args->index++;
     } while (args->index < args->objectEventCount);
 
-    FreeToHeapExplicit(HEAP_ID_FIELD, args->objectEvents);
-    FreeToHeapExplicit(HEAP_ID_FIELD, args);
+    Heap_FreeExplicit(HEAP_ID_FIELD, args->objectEvents);
+    Heap_FreeExplicit(HEAP_ID_FIELD, args);
 }
 
 static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager *manager) {

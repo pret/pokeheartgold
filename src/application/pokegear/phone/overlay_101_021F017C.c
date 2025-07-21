@@ -355,7 +355,7 @@ void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
-    FreeToHeap(phoneApp->pNscrFile);
+    Heap_Free(phoneApp->pNscrFile);
     FontID_Release(4);
 }
 
