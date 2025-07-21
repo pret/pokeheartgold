@@ -110,7 +110,7 @@ const WindowTemplate sWindowTemplates[] = {
      },
 };
 
-const UnmanagedSpriteTemplate ov101_021F807C[] = {
+const UnmanagedSpriteTemplate sSpriteTemplates[] = {
     {
      .resourceSet = 0,
      .x = 0x20,
@@ -615,26 +615,26 @@ void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
     // Common sprites
     // Markers
     for (i = 0; i < 4; ++i) {
-        PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[0]));
+        PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[0]));
         Sprite_SetPositionXY(objects[i].sprite, 32 + 104 * (i % 2), 203 + 21 * (i / 2));
         thunk_Sprite_SetPriority(objects[i].sprite, 0);
     }
     // Battle or gift indicator
-    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[1]));
+    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[1]));
     thunk_Sprite_SetPriority(objects[4].sprite, 0);
     // Cursor
-    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[2]));
+    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[2]));
     // Player sprite
-    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[3]));
+    PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[3]));
     // Roamers
     for (i = 0; i < 4; ++i) {
-        PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[4]));
+        PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[4]));
         Sprite_UpdateAnim(objects[7 + i].sprite, FX32_CONST(i));
     }
 
     // Fly menu specific sprites
     for (i = 0; i < 4; ++i) {
-        index = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[5 + i]));
+        index = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[5 + i]));
         Sprite_GetPositionXY(objects[index].sprite, &objects[index].pos.x, &objects[index].pos.y);
         thunk_Sprite_SetPriority(objects[index].sprite, 0);
         Sprite_SetAnimActiveFlag(objects[index].sprite, TRUE);
@@ -642,7 +642,7 @@ void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
     }
     // Flypoint indicators
     for (i = 0; i < PGMAP_NUM_FLYPOINTS; ++i) {
-        index = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &ov101_021F807C[9]));
+        index = PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[9]));
         Sprite_GetPositionXY(objects[index].sprite, &objects[index].pos.x, &objects[index].pos.y);
         Sprite_SetDrawFlag(objects[index].sprite, FALSE);
         Sprite_SetAnimActiveFlag(objects[index].sprite, FALSE);

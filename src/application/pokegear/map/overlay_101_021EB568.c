@@ -577,11 +577,12 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
     s16 delta = 0;
     u16 x;
     u16 y;
-    PokegearManagedObject *r4 = &mapApp->objManager->objects[PGMAP_SPRITE_CURSOR];
+    PokegearManagedObject *cursorObj = &mapApp->objManager->objects[PGMAP_SPRITE_CURSOR];
 
-    static const u8 ov101_021F7E8C[][2] = {
-        { 22, 10 },
-        { 16, 7  },
+    static const u8 scrollLimits[][2] = {
+        // normal, zoomed
+        { 22, 10 }, // x
+        { 16, 7  }, // y
     };
 
     if (!mapApp->unk_139_2) {
@@ -593,19 +594,22 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
         delta = 4;
     }
     ov101_021E9464(mapApp, mapApp->unk_114.x, mapApp->unk_114.y, &x, &y);
+
+    // Move the cursor object.
+    // Scroll the screen if this would move the cursor out of bounds.
     if (mapApp->moveCursorDirection & 1) {
         if (y <= 1) {
             dy -= delta;
             flag = 1;
         } else {
-            r4->pos.y -= delta;
+            cursorObj->pos.y -= delta;
         }
     } else if (mapApp->moveCursorDirection & 2) {
-        if (y >= ov101_021F7E8C[1][mapApp->zoomed]) {
+        if (y >= scrollLimits[1][mapApp->zoomed]) {
             dy += delta;
             flag = 1;
         } else {
-            r4->pos.y += delta;
+            cursorObj->pos.y += delta;
         }
     }
     if (mapApp->moveCursorDirection & 4) {
@@ -613,14 +617,14 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
             dx -= delta;
             flag = 1;
         } else {
-            r4->pos.x -= delta;
+            cursorObj->pos.x -= delta;
         }
     } else if (mapApp->moveCursorDirection & 8) {
-        if (x >= ov101_021F7E8C[0][mapApp->zoomed]) {
+        if (x >= scrollLimits[0][mapApp->zoomed]) {
             dx += delta;
             flag = 1;
         } else {
-            r4->pos.x += delta;
+            cursorObj->pos.x += delta;
         }
     }
     if (flag != 0) {
