@@ -111,7 +111,7 @@ typedef struct MapFlypointParam {
 } MapFlypointParam;
 
 typedef struct PokegearMapAppData_Sub044 {
-    UnkStruct_02013950 *unk_0;
+    TextOBJ *textOBJ;
     UnkStruct_02021AC8 unk_4;
 } PokegearMapAppData_Sub044;
 
@@ -214,7 +214,7 @@ typedef struct PokegearMapAppData {
     s16 playerX;                                  // 0x110
     s16 playerY;                                  // 0x112
     Coord2S16 unk_114;                            // 0x114
-    PokegearMapAppData_Sub118 selectedMap;        // 0x118
+    PokegearMapAppData_Sub118 selectedLoc;        // 0x118
     PhoneCallPersistentState *phoneCallSave;      // 0x124
     PhoneBook *phoneBook;                         // 0x128
     PhoneContact *phoneContact;                   // 0x12C
@@ -301,7 +301,7 @@ BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 a1, u16 a2, u16 a3);
 int PokegearMap_GetFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 a2, u8 a3);
 void ov101_021EAD90(PokegearMapAppData *mapApp, int a1);
-void ov101_021EAE54(PokegearMapAppData *mapApp, int a1);
+void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUpdateMapName);
 void ov101_021EAF40(PokegearMapAppData *mapApp);
 void ov101_021EB1E0(PokegearMapAppData *mapApp, u8 a1);
 void PokegearMap_HideMapCursor(PokegearMapAppData *mapApp);

@@ -353,8 +353,8 @@ _020137B4:
 	.balign 4, 0
 	thumb_func_end sub_02013794
 
-	thumb_func_start sub_020137C0
-sub_020137C0: ; 0x020137C0
+	thumb_func_start TextOBJ_SetSpritesDrawFlag
+TextOBJ_SetSpritesDrawFlag: ; 0x020137C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -380,7 +380,7 @@ _020137D8:
 _020137EC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_020137C0
+	thumb_func_end TextOBJ_SetSpritesDrawFlag
 
 	thumb_func_start sub_020137F0
 sub_020137F0: ; 0x020137F0
@@ -440,8 +440,8 @@ _0201384C:
 	.balign 4, 0
 	thumb_func_end sub_02013820
 
-	thumb_func_start sub_02013850
-sub_02013850: ; 0x02013850
+	thumb_func_start TextOBJ_SetPaletteNum
+TextOBJ_SetPaletteNum: ; 0x02013850
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -467,7 +467,7 @@ _02013868:
 _0201387C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02013850
+	thumb_func_end TextOBJ_SetPaletteNum
 
 	thumb_func_start sub_02013880
 sub_02013880: ; 0x02013880
@@ -596,8 +596,8 @@ sub_02013948: ; 0x02013948
 _0201394C: .word sub_02013E24
 	thumb_func_end sub_02013948
 
-	thumb_func_start sub_02013950
-sub_02013950: ; 0x02013950
+	thumb_func_start TextOBJ_Create
+TextOBJ_Create: ; 0x02013950
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -652,18 +652,18 @@ _0201396E:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02013950
+	thumb_func_end TextOBJ_Create
 
-	thumb_func_start sub_020139C8
-sub_020139C8: ; 0x020139C8
+	thumb_func_start TextOBJ_Destroy
+TextOBJ_Destroy: ; 0x020139C8
 	ldr r3, _020139CC ; =sub_02013660
 	bx r3
 	.balign 4, 0
 _020139CC: .word sub_02013660
-	thumb_func_end sub_020139C8
+	thumb_func_end TextOBJ_Destroy
 
-	thumb_func_start sub_020139D0
-sub_020139D0: ; 0x020139D0
+	thumb_func_start TextOBJ_CopyFromBGWindow
+TextOBJ_CopyFromBGWindow: ; 0x020139D0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	ldr r0, [r0]
@@ -718,7 +718,7 @@ _02013A46:
 	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_020139D0
+	thumb_func_end TextOBJ_CopyFromBGWindow
 
 	thumb_func_start sub_02013A50
 sub_02013A50: ; 0x02013A50

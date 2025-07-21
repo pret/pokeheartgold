@@ -684,7 +684,7 @@ void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
     mapApp->flyDestination = -1;
     if (mapApp->flyMapState == 2) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 6, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
-        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
+        ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 1);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, -81);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, -81);
@@ -692,7 +692,7 @@ void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
     } else {
         ov101_021EA4D0(mapApp, 0);
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 16, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
-        ov101_021EA8A8(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
+        ov101_021EA8A8(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, 0);
         PokegearMap_PrintLandmarkNameAndFlavorText(mapApp, -1);
     }

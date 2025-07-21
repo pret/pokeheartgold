@@ -10097,7 +10097,7 @@ ov41_0224A8D4: ; 0x0224A8D4
 	bl sub_020136B4
 	ldr r0, [r5, #0x10]
 	mov r1, #4
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	pop {r3, r4, r5, pc}
 _0224A8F0:
 	cmp r4, #1
@@ -10115,7 +10115,7 @@ _0224A8FE:
 	bl sub_020136B4
 	ldr r0, [r5, #0x10]
 	mov r1, #3
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 _0224A914:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

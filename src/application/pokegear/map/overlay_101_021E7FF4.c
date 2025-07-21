@@ -871,7 +871,7 @@ void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp) 
 }
 
 void ov101_021E8AE4(PokegearMapAppData *mapApp) {
-    UnkTemplate_02013950 sp18;
+    TextOBJTemplate template;
     u32 size;
     int i;
 
@@ -879,24 +879,24 @@ void ov101_021E8AE4(PokegearMapAppData *mapApp) {
     size = sub_02013948(mapApp->unk_040, NNS_G2D_VRAM_TYPE_2DMAIN);
     AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 0, mapApp->regionNameStrings[1], 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-    sp18.unk_00 = mapApp->unk_03C;
-    sp18.window = &mapApp->windows[8];
-    sp18.spriteList = SpriteManager_GetSpriteList(mapApp->pokegear->spriteManager);
-    sp18.plttResourceProxy = SpriteManager_FindPlttResourceProxy(mapApp->pokegear->spriteManager, 0);
-    sp18.unk_20 = 0;
-    sp18.unk_24 = 3;
-    sp18.unk_18 = 4;
-    sp18.unk_1C = -6;
-    sp18.unk_28 = 1;
-    sp18.heapID = mapApp->heapId;
+    template.unk_00 = mapApp->unk_03C;
+    template.window = &mapApp->windows[8];
+    template.spriteList = SpriteManager_GetSpriteList(mapApp->pokegear->spriteManager);
+    template.plttResourceProxy = SpriteManager_FindPlttResourceProxy(mapApp->pokegear->spriteManager, 0);
+    template.unk_20 = 0;
+    template.unk_24 = 3;
+    template.unk_18 = 4;
+    template.unk_1C = -6;
+    template.unk_28 = 1;
+    template.heapID = mapApp->heapId;
 
     for (i = 0; i < 4; ++i) {
         sub_02021AC8(size, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, &mapApp->unk_044[i].unk_4);
-        sp18.unk_14 = mapApp->unk_044[i].unk_4.offset;
-        sp18.sprite = mapApp->objManager->objects[24 + i].sprite;
-        mapApp->unk_044[i].unk_0 = sub_02013950(&sp18, mapApp->unk_040);
-        sub_020137C0(mapApp->unk_044[i].unk_0, 0);
-        sub_02013850(mapApp->unk_044[i].unk_0, 7);
+        template.offset = mapApp->unk_044[i].unk_4.offset;
+        template.sprite = mapApp->objManager->objects[24 + i].sprite;
+        mapApp->unk_044[i].textOBJ = TextOBJ_Create(&template, mapApp->unk_040);
+        TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[i].textOBJ, FALSE);
+        TextOBJ_SetPaletteNum(mapApp->unk_044[i].textOBJ, 7);
     }
 }
 
@@ -904,9 +904,9 @@ void ov101_021E8BB8(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 4; ++i) {
-        sub_020139C8(mapApp->unk_044[i].unk_0);
+        TextOBJ_Destroy(mapApp->unk_044[i].textOBJ);
         sub_02021B5C(&mapApp->unk_044[i].unk_4);
-        mapApp->unk_044[i].unk_0 = NULL;
+        mapApp->unk_044[i].textOBJ = NULL;
     }
     sub_02013938(mapApp->unk_040);
 }
@@ -1077,7 +1077,7 @@ void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     ov101_021EB38C(mapApp, 1, mapApp->zoomed);
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->unk_16C->rawData, 0, 7, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
 
-    ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->playerX, mapApp->playerY);
+    ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
     ov101_021EAD90(mapApp, 0);
     ov101_021EB1E0(mapApp, 1);
     PokegearMap_LoadMapHasMarkingsIndicatorSprites(mapApp);
@@ -1134,7 +1134,7 @@ void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
     ov101_021EA608(mapApp, 0);
 
     if (mapApp->inMarkingsMode == 1) {
-        ov101_021EA794(mapApp, &mapApp->selectedMap, mapApp->sessionState.playerX, mapApp->sessionState.playerY);
+        ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->sessionState.playerX, mapApp->sessionState.playerY);
         if (mapApp->pokegear->menuInputState != MENU_INPUT_STATE_TOUCH) {
             PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, TRUE);
         } else {
@@ -1142,7 +1142,7 @@ void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
         }
     }
 
-    ov101_021EAE54(mapApp, 1);
+    PokegearMap_PrintSelectedMapDetail(mapApp, TRUE);
     mapApp->draggingType = 0;
     mapApp->trashcanIconState = FALSE;
     mapApp->pokegear->reselectAppCB = PokegearMap_InMarkingsMode_ShowCursor;

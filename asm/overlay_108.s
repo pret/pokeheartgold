@@ -3636,18 +3636,18 @@ ov108_021E756C: ; 0x021E756C
 	str r0, [sp, #0x20]
 	ldr r1, [r5, r1]
 	add r0, sp, #0x10
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #0xe9
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0xe9
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #4
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	add sp, #0x40
 	pop {r4, r5, r6, pc}
 	nop
@@ -3662,7 +3662,7 @@ ov108_021E7650: ; 0x021E7650
 	mov r0, #0xe9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	mov r0, #0xea
 	lsl r0, r0, #2
 	add r0, r4, r0
