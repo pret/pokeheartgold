@@ -11,7 +11,7 @@ void Save_PlayerData_Init(PLAYERDATA *player) {
 
     Options_Init(&player->options);
     PlayerProfile_Init(&player->profile);
-    InitCoins(&player->coins);
+    Coins_Init(&player->coins);
     InitIGT(&player->igt);
 }
 

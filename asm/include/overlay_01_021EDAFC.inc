@@ -44,7 +44,7 @@
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetCoinsAddr
 .public PlayerProfile_GetMoney
-.public CheckCoins
+.public Coins_GetValue
 .public FrontierData_BattlePointAction
 .public Save_FrontierData_Get
 .public SaveData_GetPhoneCallPersistentState

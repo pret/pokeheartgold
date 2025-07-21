@@ -2,20 +2,21 @@
 
 #include "global.h"
 
-void InitCoins(u16 *coins) {
+void Coins_Init(u16 *coins) {
     *coins = 0;
 }
 
-u16 CheckCoins(u16 *coins) {
+u16 Coins_GetValue(u16 *coins) {
     return *coins;
 }
 
-BOOL GiveCoins(u16 *coins, u16 amount) {
+BOOL Coins_Add(u16 *coins, u16 amount) {
     if (*coins >= MAX_COINS) {
         return FALSE;
     }
 
     *coins += amount;
+
     if (*coins > MAX_COINS) {
         *coins = MAX_COINS;
     }
@@ -23,11 +24,11 @@ BOOL GiveCoins(u16 *coins, u16 amount) {
     return TRUE;
 }
 
-BOOL CanGiveCoins(u16 *coins, u16 amount) {
+BOOL Coins_CanAdd(u16 *coins, u16 amount) {
     return (u32)(amount + *coins) <= MAX_COINS;
 }
 
-BOOL TakeCoins(u16 *coins, u16 amount) {
+BOOL Coins_Subtract(u16 *coins, u16 amount) {
     if (*coins < amount) {
         return FALSE;
     }
