@@ -350,8 +350,8 @@ BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
-    sub_0200FBF4(PM_LCD_TOP, 0);
-    sub_0200FBF4(PM_LCD_BOTTOM, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
     return TRUE;
 }
