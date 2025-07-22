@@ -78,9 +78,9 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
 .public sub_0200FBF4
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
-.public sub_020137C0
+.public FontOAM_SetDrawFlag
 .public sub_02013850
 .public sub_02013910
 .public sub_02013938

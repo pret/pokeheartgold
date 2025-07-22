@@ -24,7 +24,7 @@
 .public sub_020777AC
 .public sub_020777B4
 .public sub_020777C8
-.public sub_020777F8
+.public thunk_ManagedSprite_DeleteAndFreeResources
 .public sub_02077800
 .public sub_02077818
 .public sub_02077830

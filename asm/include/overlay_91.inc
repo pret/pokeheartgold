@@ -49,10 +49,10 @@
 .public IsPaletteFadeFinished
 .public sub_0200FB70
 .public sub_0200FC20
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
 .public sub_02013728
-.public sub_020137C0
+.public FontOAM_SetDrawFlag
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948

@@ -3682,7 +3682,7 @@ ov102_021E91C4: ; 0x021E91C4
 	add r7, r0, #0
 	mov r0, #2
 	mov r1, #0x23
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -3838,7 +3838,7 @@ _021E9308:
 	add r0, r1, #0
 	ldr r0, [r0, r2]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r1, #0x85
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2
