@@ -1,7 +1,7 @@
 {{ doNotModifyHeader }}
 
 #include "global.h"
-#include "pal_park.h"
+#include "catching_show.h"
 
 const struct PalParkMonsData gData[] = {
 {% for mon in mons %}
