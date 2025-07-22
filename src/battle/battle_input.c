@@ -1237,7 +1237,7 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
         narcData = GfGfxLoader_GetScrnData(NARC_a_0_0_7, bottomScreenBgTilemapId, 1, &screenData, HEAP_ID_BATTLE);
 
         MI_CpuCopy32(screenData->rawData, battleInput->screenBuffer[i], 0x800);
-        FreeToHeap(narcData);
+        Heap_Free(narcData);
     }
 
     u16 *unfadedBuffer;
@@ -1289,7 +1289,7 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
         MI_CpuCopy16(nnsgPalette->pRawData, battleInput->bgPalTouch, 0x20);
     }
 
-    FreeToHeap(narcDataPalette);
+    Heap_Free(narcDataPalette);
 
     TextFlags_ResetHasSpedUpInput();
     TextFlags_ResetHasContinuedInput();
@@ -1312,15 +1312,15 @@ void BattleInput_Free(BattleInput *battleInput) {
     SysTask_Destroy(battleInput->fadeTask);
 
     for (int i = 0; i < 7; i++) {
-        FreeToHeap(battleInput->screenBuffer[i]);
+        Heap_Free(battleInput->screenBuffer[i]);
     }
 
-    FreeToHeap(battleInput->paletteBuffer);
+    Heap_Free(battleInput->paletteBuffer);
     BattleInput_FreeMoveMemory(battleInput);
-    FreeToHeap(battleInput->bgPalNormal);
-    FreeToHeap(battleInput->bgPalTouch);
+    Heap_Free(battleInput->bgPalNormal);
+    Heap_Free(battleInput->bgPalTouch);
     SysTask_Destroy(battleInput->bgTask);
-    FreeToHeap(battleInput);
+    Heap_Free(battleInput);
 }
 
 void BattleInput_LoadDefaultResources(BattleInput *battleInput) {
@@ -2106,7 +2106,7 @@ static void BattleInput_CreateVSRecorderPlaybackMenuObjects(BattleInput *battleI
 
     data = GfGfxLoader_GetScrnData(NARC_a_0_0_7, 40, 1, &screenData, HEAP_ID_BATTLE);
     MI_CpuCopy32(screenData->rawData, battleInput->screenBuffer[6], 0x800);
-    FreeToHeap(data);
+    Heap_Free(data);
 
     bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
     BG_LoadScreenTilemapData(bgConfig, 4, battleInput->screenBuffer[6], 0x800);
@@ -2816,7 +2816,7 @@ static void BattleInput_FreeMoveMemory(BattleInput *battleInput) {
 
     for (i = 0; i < 4; i++) {
         for (j = 0; j < 4; j++) {
-            FreeToHeap(battleInput->moveMemory[i].typeIcon[j]);
+            Heap_Free(battleInput->moveMemory[i].typeIcon[j]);
 
             if (battleInput->moveMemory[i].moveDisplay[j].window.pixelBuffer != NULL) {
                 RemoveWindow(&battleInput->moveMemory[i].moveDisplay[j].window);
@@ -2859,7 +2859,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
             moveType = GetMoveAttr(moveMemory->moveNo[i], MOVEATTR_TYPE);
             charData = GfGfxLoader_GetCharData(sub_020776B4(), sub_02077678(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
             MI_CpuCopy32(charDataNNS->pRawData, moveDisplayObj->typeIcon[i], size);
-            FreeToHeap(charData);
+            Heap_Free(charData);
         }
 
         if ((moveDisplayObj->moveDisplay[i].window.pixelBuffer == NULL) || ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0))) {
@@ -3445,7 +3445,7 @@ static void Task_BattleMenuSlideIn(SysTask *task, void *data) {
         BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 0);
         BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_Y, 0);
         ov12_0223BB64(menuSlideIn->battleInput->battleSystem, 1);
-        FreeToHeap(data);
+        Heap_Free(data);
         SysTask_Destroy(task);
 
         return;
