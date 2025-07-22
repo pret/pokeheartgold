@@ -7,7 +7,7 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GetPlttDataFromOpenNarc
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public GfGfx_EngineATogglePlanes

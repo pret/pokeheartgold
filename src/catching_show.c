@@ -146,7 +146,7 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
         catchingShow->pokemon[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
     }
 
-    FreeToHeap(mon);
+    Heap_Free(mon);
 }
 
 static int CatchingShow_NumMonsCaptured(CatchingShow *catchingShow) {
@@ -261,7 +261,7 @@ static BattleSetup *FieldSystem_SetupCatchingShowEncounter(FieldSystem *fieldSys
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
     MigratedPokemon_ToPokemon(migratedMons, catchingShow->currentEncounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return ret;
 }
 

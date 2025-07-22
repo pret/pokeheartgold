@@ -358,10 +358,10 @@ static void TitleScreen_Unload3DObjects(TitleScreenAnimObject *animObj) {
     for (int i = 0; i < 4; ++i) {
         if (animObj->_3dAnmObjs[i] != NULL) {
             NNS_G3dFreeAnmObj(&animObj->allocator, animObj->_3dAnmObjs[i]);
-            FreeToHeap(animObj->_3dResObjsArc[i]);
+            Heap_Free(animObj->_3dResObjsArc[i]);
         }
     }
-    FreeToHeap(animObj->resFileHeader);
+    Heap_Free(animObj->resFileHeader);
 }
 
 static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 frameBy) {
@@ -481,7 +481,7 @@ static void TitleScreen_ReleaseBgs(TitleScreenOverlayData *data) {
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static const WindowTemplate sTouchToStartWindow = { GF_BG_LYR_MAIN_3, 0, 18, 32, 2, 2, 0x001 };

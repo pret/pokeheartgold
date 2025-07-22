@@ -166,7 +166,7 @@ _0226BA30:
 	ldr r0, [r6, #0x14]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_0226BA28
 

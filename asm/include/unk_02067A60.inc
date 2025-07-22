@@ -4,7 +4,7 @@
 .public IsCryFinished
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public Save_Roamers_Get
 .public RoamerSave_SetFlute

@@ -182,7 +182,7 @@ void sub_0205C46C(PlayerAvatar *avatar) {
 }
 
 void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar) {
-    FreeToHeap(avatar);
+    Heap_Free(avatar);
 }
 
 void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar) {

@@ -34,7 +34,7 @@ BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow) {
 BOOL RadioShow_BuenasPassword_Teardown(RadioShow *radioShow) {
     RadioShow_BuenasPassword_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(BuenasPasswordData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

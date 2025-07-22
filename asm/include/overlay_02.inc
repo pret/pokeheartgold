@@ -76,7 +76,7 @@
 .public IsCameraTranslationFinished
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public GF_heap_c_dummy_return_true
 .public SetBgPriority

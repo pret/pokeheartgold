@@ -3,7 +3,7 @@
 .public GfGfxLoader_LoadFromOpenNarc
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_AllocAndLoadTexResources
 .public GF_AssertFail
 .public sub_020696C4

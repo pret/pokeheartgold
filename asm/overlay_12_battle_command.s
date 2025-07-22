@@ -1580,7 +1580,7 @@ _02247116:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl SysTask_Destroy
 	add sp, #0x158
@@ -1651,7 +1651,7 @@ _022471AC:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl SysTask_Destroy
 	add sp, #0x158
@@ -1679,7 +1679,7 @@ _022471F8:
 	lsl r0, r0, #2
 	str r2, [r1, r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl SysTask_Destroy
 _02247216:
@@ -2276,7 +2276,7 @@ ov12_02247668: ; 0x02247668
 	bl GfGfxLoader_LoadFromNarc
 	lsl r1, r4, #2
 	ldr r4, [r0, r1]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add sp, #4
 	pop {r3, r4, pc}

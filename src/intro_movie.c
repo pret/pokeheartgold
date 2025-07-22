@@ -125,7 +125,7 @@ static BOOL IntroMovie_Exit(OverlayManager *man, int *state) {
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     IntroMovie_TeardownSpritesManager(data);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
     if (data->bgAnimCnt.blend[0].task != NULL) {
         SysTask_Destroy(data->bgAnimCnt.blend[0].task);
         data->bgAnimCnt.blend[0].task = NULL;

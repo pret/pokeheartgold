@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public Save_GameStats_Get

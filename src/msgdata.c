@@ -16,7 +16,7 @@ static void *LoadSingleElementFromNarc(NarcId narcId, s32 fileId, HeapID heapId)
 }
 
 static void FreeMsgDataRawData(void *data) {
-    FreeToHeap(data);
+    Heap_Free(data);
 }
 
 inline static void Decrypt1(MAT_ENTRY *arg0, u32 arg1, u32 seed) {
@@ -79,7 +79,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT *table, u32 num, String
             MI_CpuCopy16((char *)table + alloc.offset, buf, 2 * alloc.length);
             Decrypt2(buf, alloc.length, num);
             CopyU16ArrayToStringN(dest, buf, alloc.length);
-            FreeToHeap(buf);
+            Heap_Free(buf);
         }
     } else {
         GF_ASSERT(FALSE);
@@ -102,7 +102,7 @@ static String *ReadMsgData_ExistingTable_NewString(MAT *table, u32 num, HeapID h
             if (dest != NULL) {
                 CopyU16ArrayToStringN(dest, buf, alloc.length);
             }
-            FreeToHeap(buf);
+            Heap_Free(buf);
             return dest;
         } else {
             return NULL;
@@ -137,7 +137,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC *narc, u32 group, u32 n
             NARC_ReadFromMember(narc, group, alloc.offset, size, buf);
             Decrypt2(buf, alloc.length, num);
             CopyU16ArrayToStringN(dest, buf, alloc.length);
-            FreeToHeap(buf);
+            Heap_Free(buf);
             return;
         }
     } else {
@@ -177,7 +177,7 @@ static String *ReadMsgData_ExistingNarc_NewString(NARC *narc, u32 group, u32 num
                 NARC_ReadFromMember(narc, group, alloc.offset, size, buf);
                 Decrypt2(buf, alloc.length, num);
                 CopyU16ArrayToStringN(dest, buf, alloc.length);
-                FreeToHeap(buf);
+                Heap_Free(buf);
             }
         }
         return dest;
@@ -203,7 +203,7 @@ MsgData *NewMsgDataFromNarc(MsgDataLoadType type, NarcId narc_id, s32 file_id, H
         if (type == MSGDATA_LOAD_DIRECT) {
             msgData->direct = LoadSingleElementFromNarc(narc_id, file_id, heapId);
             if (msgData->direct == NULL) {
-                FreeToHeap(msgData);
+                Heap_Free(msgData);
                 return NULL;
             }
         } else {
@@ -227,7 +227,7 @@ void DestroyMsgData(MsgData *msgData) {
             NARC_Delete(msgData->lazy);
             break;
         }
-        FreeToHeap(msgData);
+        Heap_Free(msgData);
     }
 }
 

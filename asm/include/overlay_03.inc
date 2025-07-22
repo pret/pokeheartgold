@@ -49,7 +49,7 @@
 .public MenuInputStateMgr_SetState
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public FillBgTilemapRect
 .public BgFillTilemapBufferAndSchedule

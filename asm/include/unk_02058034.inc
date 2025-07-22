@@ -6,7 +6,7 @@
 .public sub_0200FBDC
 .public sub_0200FC60
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public sub_02034434
 .public sub_02034638

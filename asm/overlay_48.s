@@ -348,7 +348,7 @@ _02258AE6:
 	blt _02258ABC
 _02258AEE:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r7, #1
 	bl LocationGmmDatCountGet
 	str r0, [sp, #0x18]
@@ -404,7 +404,7 @@ _02258B2E:
 	blt _02258B2E
 _02258B64:
 	ldr r0, [sp, #0x1c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x18]
 	add r7, r7, #1
 	cmp r7, r0
@@ -1851,7 +1851,7 @@ _02259658:
 	cmp r4, #5
 	blt _02259658
 	ldr r0, [r6]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02259684 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -3294,7 +3294,7 @@ ov48_0225A108: ; 0x0225A108
 	add r0, r5, #0
 	add r0, #0x94
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl ov48_0225A768
 	mov r0, #0x6a
@@ -4425,7 +4425,7 @@ ov48_0225A928: ; 0x0225A928
 	add r5, r6, #0
 _0225A93A:
 	ldr r0, [r5, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldrh r0, [r6, #0x18]
 	add r4, r4, #1
 	add r5, r5, #4
@@ -4438,7 +4438,7 @@ _0225A94A:
 	cmp r0, #0
 	beq _0225A95A
 	ldr r0, [r6, #0x1c]
-	bl FreeToHeap
+	bl Heap_Free
 _0225A95A:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov48_0225A928

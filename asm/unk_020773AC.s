@@ -276,7 +276,7 @@ sub_020775AC: ; 0x020775AC
 	add r0, r5, #0
 	bl sub_02014EBC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020775AC
 
@@ -378,7 +378,7 @@ sub_02077664: ; 0x02077664
 	ldr r0, [r4, #0xc]
 	bl sub_020775AC
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02077664

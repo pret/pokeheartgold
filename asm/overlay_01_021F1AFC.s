@@ -2749,7 +2749,7 @@ _021F3018:
 	bl ov01_021F1B38
 _021F3022:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021F302E:
@@ -2868,12 +2868,12 @@ _021F30E4:
 
 	thumb_func_start ov01_021F30F4
 ov01_021F30F4: ; 0x021F30F4
-	ldr r3, _021F30FC ; =FreeToHeapExplicit
+	ldr r3, _021F30FC ; =Heap_FreeExplicit
 	add r1, r0, #0
 	mov r0, #4
 	bx r3
 	.balign 4, 0
-_021F30FC: .word FreeToHeapExplicit
+_021F30FC: .word Heap_FreeExplicit
 	thumb_func_end ov01_021F30F4
 
 	thumb_func_start ov01_021F3100

@@ -17,7 +17,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public Save_GameStats_Get
 .public sub_0202FC24
 .public sub_0202FC48

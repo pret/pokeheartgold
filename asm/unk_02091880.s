@@ -49,7 +49,7 @@ sub_020918C0: ; 0x020918C0
 	ldr r0, [r4, #4]
 	bl EasyChatManager_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _020918D2:
 	pop {r4, pc}
 	thumb_func_end sub_020918C0

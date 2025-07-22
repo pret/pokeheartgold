@@ -277,7 +277,7 @@ static void IntroMovie_Scene4_Exit(IntroMovieOverlayData *data, IntroMovieScene4
     if (sceneData->needFreeGfx) {
         G2_BlendNone();
         sub_02014EBC(sceneData->particleSystem);
-        FreeToHeap(sceneData->particleHeap);
+        Heap_Free(sceneData->particleHeap);
         GF_3DVramMan_Delete(sceneData->gf3dVramMan);
         IntroMovie_Scene4_DestroySprites(data, sceneData);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);

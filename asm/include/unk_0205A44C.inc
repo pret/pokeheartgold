@@ -15,7 +15,7 @@
 .public MailMsg_GetMsgNo
 .public MailMsg_Copy
 .public Save_EasyChat_SetGreetingFlag
-.public FreeToHeap
+.public Heap_Free
 .public LCRandom
 .public GF_AssertFail
 .public PlayerProfile_GetTrainerID

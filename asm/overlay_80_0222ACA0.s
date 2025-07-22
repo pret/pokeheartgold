@@ -180,11 +180,11 @@ ov80_0222ADCC: ; 0x0222ADCC
 
 	thumb_func_start ov80_0222ADDC
 ov80_0222ADDC: ; 0x0222ADDC
-	ldr r3, _0222ADE4 ; =FreeToHeap
+	ldr r3, _0222ADE4 ; =Heap_Free
 	ldr r0, [r1]
 	bx r3
 	nop
-_0222ADE4: .word FreeToHeap
+_0222ADE4: .word Heap_Free
 	thumb_func_end ov80_0222ADDC
 
 	thumb_func_start ov80_0222ADE8

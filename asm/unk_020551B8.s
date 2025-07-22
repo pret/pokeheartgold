@@ -43,7 +43,7 @@ _020551FC:
 	ldr r0, [r4, #8]
 	bl ov01_021EFC04
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02055212:

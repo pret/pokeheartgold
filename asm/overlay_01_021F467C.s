@@ -76,7 +76,7 @@ ov01_021F46DC: ; 0x021F46DC
 	bl GfGfx_EngineATogglePlanes
 	ldr r1, [r4]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	pop {r4, pc}
 	thumb_func_end ov01_021F46DC
 

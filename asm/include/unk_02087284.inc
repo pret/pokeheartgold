@@ -24,7 +24,7 @@
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_SinDeg
 .public GF_CosDeg
 .public sub_02087284

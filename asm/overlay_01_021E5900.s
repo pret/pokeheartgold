@@ -588,9 +588,9 @@ _021E5E12:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #4
@@ -1603,7 +1603,7 @@ _021E6674:
 	blt _021E6674
 _021E6688:
 	strh r3, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	nop
@@ -1624,10 +1624,10 @@ ov01_021E669C: ; 0x021E669C
 
 	thumb_func_start ov01_021E66A0
 ov01_021E66A0: ; 0x021E66A0
-	ldr r3, _021E66A4 ; =FreeToHeap
+	ldr r3, _021E66A4 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021E66A4: .word FreeToHeap
+_021E66A4: .word Heap_Free
 	thumb_func_end ov01_021E66A0
 
 	thumb_func_start ov01_021E66A8

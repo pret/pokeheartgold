@@ -609,7 +609,7 @@ sub_0208877C: ; 0x0208877C
 	bl FreeBgTilemapBuffer
 	mov r0, #0x13
 	add r1, r4, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0208877C
@@ -2299,7 +2299,7 @@ _02089566:
 	cmp r0, #2
 	bne _02089584
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02089584:
 	mov r1, #7
 	mov r0, #0
@@ -2639,7 +2639,7 @@ sub_020897F0: ; 0x020897F0
 	add r2, r7, #0
 	bl sub_0208981C
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end sub_020897F0
@@ -3563,7 +3563,7 @@ sub_02089F50: ; 0x02089F50
 	lsr r1, r1, #0x18
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02089F50

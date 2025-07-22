@@ -3,7 +3,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public SysTask_GetData
 .public Camera_SetDistance
 .public Camera_GetDistance

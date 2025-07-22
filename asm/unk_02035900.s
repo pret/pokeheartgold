@@ -950,22 +950,22 @@ _0203604E:
 	ldr r1, [r1, #8]
 	sub r0, #0xec
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020360D0 ; =_021D4140
 	ldr r1, [r0, #8]
 	ldr r0, _020360D8 ; =0x00000494
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020360D0 ; =_021D4140
 	ldr r1, [r0, #8]
 	ldr r0, _020360DC ; =0x0000048C
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020360D0 ; =_021D4140
 	ldr r1, [r0, #8]
 	ldr r0, _020360E0 ; =0x00000488
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020360D0 ; =_021D4140
 	ldr r1, [r0, #8]
 	mov r0, #0x5a
@@ -980,7 +980,7 @@ _0203604E:
 	bl sub_02033F90
 	ldr r0, _020360D0 ; =_021D4140
 	ldr r0, [r0, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020360D0 ; =_021D4140
 	mov r1, #0
 	str r1, [r0, #8]

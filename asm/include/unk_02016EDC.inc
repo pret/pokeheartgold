@@ -14,7 +14,7 @@
 .public sub_02017068
 .public sub_02017088
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public MI_CpuFill8
 .public _s32_div_f

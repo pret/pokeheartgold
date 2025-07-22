@@ -77,7 +77,7 @@ _020580AE:
 	ldr r0, [r0, r5]
 	cmp r0, #0
 	beq _020580BA
-	bl FreeToHeap
+	bl Heap_Free
 _020580BA:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -88,11 +88,11 @@ _020580BA:
 	ldr r0, [r0, #0x40]
 	cmp r0, #0
 	beq _020580D0
-	bl FreeToHeap
+	bl Heap_Free
 _020580D0:
 	ldr r0, _020580E0 ; =_021D41C8
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020580E0 ; =_021D41C8
 	mov r1, #0
 	str r1, [r0]
@@ -743,7 +743,7 @@ _020585BA:
 	ldr r0, [r0, r5]
 	cmp r0, #0
 	beq _020585CA
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r6]
 	str r7, [r0, r5]
 _020585CA:
@@ -1016,7 +1016,7 @@ _020587C4:
 	ldr r0, _020587E4 ; =_021D41C8
 	ldr r0, [r0]
 	ldr r0, [r0, #0x40]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _020587E4 ; =_021D41C8
 	mov r1, #0
 	ldr r0, [r0]

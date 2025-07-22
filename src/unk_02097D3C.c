@@ -57,8 +57,8 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
             break;
         }
 
-        FreeToHeap(taskData->args);
-        FreeToHeap(taskData);
+        Heap_Free(taskData->args);
+        Heap_Free(taskData);
         return TRUE;
     }
 

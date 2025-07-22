@@ -239,7 +239,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
         }
         BattleSetup_AddMonToParty(setup, mon, BATTLER_PLAYER);
     }
-    FreeToHeap(mon);
+    Heap_Free(mon);
     BattleSetup_SetAllySideBattlersToPlayer(setup);
     TrainerHouse_InitBattleSetup(setup, set, BATTLER_ENEMY);
     for (i = 0; i < BATTLER_MAX; i++) {
@@ -312,5 +312,5 @@ static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *se
         TrainerHouse_CopyToPokemon(&set->party[i], tempMon);
         BattleSetup_AddMonToParty(setup, tempMon, battlerId);
     }
-    FreeToHeap(tempMon);
+    Heap_Free(tempMon);
 }

@@ -531,7 +531,7 @@ _0205BEB0:
 	add r1, sp, #0
 	bl sub_0205F9A0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, pc}
@@ -638,7 +638,7 @@ sub_0205BF6C: ; 0x0205BF6C
 	cmp r1, #0
 	bne _0205BFB0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, pc}
 _0205BFB0:

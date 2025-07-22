@@ -121,7 +121,7 @@ ov12_0226AEC8: ; 0x0226AEC8
 	bl GF_AssertFail
 _0226AED6:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov12_0226AEC8

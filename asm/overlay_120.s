@@ -20,10 +20,10 @@ ov120_0225F020: ; 0x0225F020
 
 	thumb_func_start ov120_0225F038
 ov120_0225F038: ; 0x0225F038
-	ldr r3, _0225F03C ; =FreeToHeap
+	ldr r3, _0225F03C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0225F03C: .word FreeToHeap
+_0225F03C: .word Heap_Free
 	thumb_func_end ov120_0225F038
 
 	thumb_func_start ov120_0225F040
@@ -142,10 +142,10 @@ ov120_0225F0FC: ; 0x0225F0FC
 
 	thumb_func_start ov120_0225F118
 ov120_0225F118: ; 0x0225F118
-	ldr r3, _0225F11C ; =FreeToHeap
+	ldr r3, _0225F11C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0225F11C: .word FreeToHeap
+_0225F11C: .word Heap_Free
 	thumb_func_end ov120_0225F118
 
 	thumb_func_start ov120_0225F120
@@ -371,7 +371,7 @@ _0225F2A2:
 	cmp r4, #0x30
 	blt _0225F2A2
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov120_0225F294
 
@@ -1809,7 +1809,7 @@ ov120_0225FD2C: ; 0x0225FD2C
 	str r2, [sp, #8]
 	bl BgTilemapRectChangePalette
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
@@ -1953,9 +1953,9 @@ _0225FE78:
 	pop {r4, r5, r6, pc}
 _0225FEA4:
 	ldr r0, [r5, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r5, #0x14]
 	add r0, r6, #0

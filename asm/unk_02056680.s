@@ -333,7 +333,7 @@ _0205691E:
 	b _02056932
 _02056926:
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -465,7 +465,7 @@ _02056A3A:
 	b _02056A4E
 _02056A42:
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -831,7 +831,7 @@ _02056D4E:
 	strh r0, [r4]
 	b _02056D74
 _02056D6C:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02056D74:

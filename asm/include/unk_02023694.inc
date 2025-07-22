@@ -2,7 +2,7 @@
 #pragma once
 .public Sys_AllocAndReadFile
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_ExpHeap_FndInitAllocator
 .public GF3dRender_DrawModel
 .public sub_0202068C

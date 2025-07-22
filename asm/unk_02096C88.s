@@ -45,11 +45,11 @@ sub_02096CC8: ; 0x02096CC8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x4c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x50]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_02096CC8
 

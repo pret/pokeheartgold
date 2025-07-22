@@ -324,12 +324,12 @@ static BOOL Task_OpenPartyMenuForUnionRoomBattleSelect(TaskManager *taskman) {
     case PMMS_WAIT_SUMMARY:
         if (!FieldSystem_ApplicationIsRunning(fieldSystem)) {
             data->unk4->partySlot = data->pokemonSummary->partySlot;
-            FreeToHeap(data->pokemonSummary);
+            Heap_Free(data->pokemonSummary);
             *state = PMMS_OPEN_PARTY_MENU;
         }
         break;
     case PMMS_FREE:
-        FreeToHeap(data);
+        Heap_Free(data);
         return TRUE;
     }
     return FALSE;
@@ -452,7 +452,7 @@ static BOOL sub_0203E878(TaskManager *taskman) {
             }
         }
         EasyChat_FreeArgs(data->easyChat);
-        FreeToHeap(data);
+        Heap_Free(data);
         return TRUE;
     }
     return FALSE;
@@ -831,8 +831,8 @@ static BOOL sub_0203F134(TaskManager *taskman) {
                     *ptr = 0;
                 }
             }
-            FreeToHeap(data->unkC);
-            FreeToHeap(data);
+            Heap_Free(data->unkC);
+            Heap_Free(data);
             return TRUE;
         }
         break;
@@ -884,15 +884,15 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
 
 static void WirelessTradeSelectMon_FreeArgs(WirelessTradeSelectMonArgs *args) {
     if (args->partnerProfile != NULL) {
-        FreeToHeap(args->partnerProfile);
+        Heap_Free(args->partnerProfile);
         args->partnerProfile = NULL;
     }
     if (args->unk38 != NULL) {
-        FreeToHeap(args->unk38);
+        Heap_Free(args->unk38);
         args->unk38 = NULL;
     }
     if (args->unk3C != NULL) {
-        FreeToHeap(args->unk3C);
+        Heap_Free(args->unk3C);
         args->unk3C = NULL;
     }
 }
@@ -919,7 +919,7 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
     case WIRELESS_TRADE_STATE_3:
         if (data->wirelessTradeSelectMon.unk24 == 0) {
             WirelessTradeSelectMon_FreeArgs(&data->wirelessTradeSelectMon);
-            FreeToHeap(data);
+            Heap_Free(data);
             return TRUE;
         }
         data->state++;
@@ -1065,7 +1065,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
         }
         NamingScreen_DeleteArgs(data->args);
         String_Delete(data->unk10);
-        FreeToHeap(data);
+        Heap_Free(data);
         return TRUE;
     }
     return FALSE;
@@ -1232,7 +1232,7 @@ HallOfFame *HallOfFameShowcase_LaunchApp(FieldSystem *fieldSystem) {
     int loadResult;
     HallOfFame *hallOfFame = LoadHallOfFame(fieldSystem->saveData, HEAP_ID_FIELD, &loadResult);
     if (loadResult == 2) {
-        FreeToHeap(hallOfFame);
+        Heap_Free(hallOfFame);
         return NULL;
     }
     FieldSystem_LaunchApplication(fieldSystem, &sOverlayTemplate_HallOfFameShowcase, hallOfFame);

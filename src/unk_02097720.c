@@ -26,7 +26,7 @@ static BOOL sub_02097754(TaskManager *taskManager) {
     case 1:
         if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
             *env->unknown_4 = env->safariDecorationArgs->unk1C;
-            FreeToHeap(env->safariDecorationArgs);
+            Heap_Free(env->safariDecorationArgs);
             env->state++;
         }
         break;
@@ -35,7 +35,7 @@ static BOOL sub_02097754(TaskManager *taskManager) {
         env->state++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 

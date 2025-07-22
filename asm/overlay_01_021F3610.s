@@ -60,10 +60,10 @@ _021F365C: .word 0x00000704
 
 	thumb_func_start ov01_021F3660
 ov01_021F3660: ; 0x021F3660
-	ldr r3, _021F3664 ; =FreeToHeap
+	ldr r3, _021F3664 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021F3664: .word FreeToHeap
+_021F3664: .word Heap_Free
 	thumb_func_end ov01_021F3660
 
 	thumb_func_start ov01_021F3668
@@ -305,7 +305,7 @@ _021F381C:
 	ldr r0, [sp, #4]
 	cmp r0, #0
 	beq _021F3830
-	bl FreeToHeap
+	bl Heap_Free
 _021F3830:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}

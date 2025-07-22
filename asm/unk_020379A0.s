@@ -61,7 +61,7 @@ sub_020379F8: ; 0x020379F8
 	push {r3, lr}
 	ldr r0, _02037A0C ; =_021D414C
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _02037A0C ; =_021D414C
 	mov r1, #0
 	str r1, [r0]

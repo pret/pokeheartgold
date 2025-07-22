@@ -944,7 +944,7 @@ _020879C6:
 	ldr r0, [r4]
 	bl NARC_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 _020879DA:

@@ -777,9 +777,9 @@ ov01_0220596C: ; 0x0220596C
 	add r0, r5, #0
 	bl SysTask_Destroy
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0220598C:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1019,7 +1019,7 @@ _02205B4A:
 	cmp r0, #0
 	bne _02205B60
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1029,7 +1029,7 @@ _02205B60:
 	cmp r0, #0
 	beq _02205B76
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1199,7 +1199,7 @@ _02205C92:
 	strb r0, [r4]
 	b _02205CDA
 _02205CD0:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x30
 	mov r0, #1
 	pop {r4, r5, r6, pc}
@@ -1374,7 +1374,7 @@ _02205E12:
 	add r1, r6, #4
 	bl MIi_CpuCopy16
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp]
 	mov r1, #1
 	bl ov01_0220329C
@@ -1430,7 +1430,7 @@ _02205E5A:
 	b _02205ED2
 _02205EC6:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x14
 	mov r0, #1
 	pop {r4, r5, r6, r7, pc}
@@ -1593,7 +1593,7 @@ _02205FF2:
 	b _02206024
 _0220601A:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02206024:
@@ -1768,7 +1768,7 @@ _02206142:
 	add r1, r4, #4
 	bl MIi_CpuCopy16
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1875,7 +1875,7 @@ _0220620C:
 	b _0220625A
 _02206250:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0220625A:

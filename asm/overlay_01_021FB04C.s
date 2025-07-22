@@ -271,7 +271,7 @@ _021FB21A:
 	mov r1, #0
 	str r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 	pop {r3, r4, r5, pc}
@@ -359,7 +359,7 @@ ov01_021FB270: ; 0x021FB270
 	add r2, r4, #0
 	bl ov01_021FB164
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	str r0, [r5, #0x18]
 	pop {r4, r5, r6}
@@ -374,7 +374,7 @@ ov01_021FB2E8: ; 0x021FB2E8
 	push {r3, lr}
 	cmp r0, #0
 	beq _021FB2F2
-	bl FreeToHeap
+	bl Heap_Free
 _021FB2F2:
 	pop {r3, pc}
 	thumb_func_end ov01_021FB2E8
