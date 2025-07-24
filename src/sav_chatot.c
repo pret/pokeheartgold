@@ -4,42 +4,51 @@
 
 #include "global.h"
 
-u32 Save_Chatot_sizeof(void) {
+u32 Save_Chatot_sizeof(void)
+{
     return sizeof(SOUND_CHATOT);
 }
 
-void Save_Chatot_Init(SOUND_CHATOT *chatot) {
+void Save_Chatot_Init(SOUND_CHATOT *chatot)
+{
     MI_CpuClear32(chatot, sizeof(SOUND_CHATOT));
     chatot->exists = FALSE;
 }
 
-SOUND_CHATOT *Chatot_New(HeapID heapID) {
+SOUND_CHATOT *Chatot_New(HeapID heapID)
+{
     SOUND_CHATOT *chatot = AllocFromHeap(heapID, sizeof(SOUND_CHATOT));
     Save_Chatot_Init(chatot);
     return chatot;
 }
 
-SOUND_CHATOT *Save_Chatot_Get(SaveData *saveData) {
+SOUND_CHATOT *Save_Chatot_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_CHATOT);
 }
 
-BOOL Chatot_Exists(SOUND_CHATOT *chatot) {
+BOOL Chatot_Exists(SOUND_CHATOT *chatot)
+{
     return chatot->exists;
 }
 
-void Chatot_Invalidate(SOUND_CHATOT *chatot) {
+void Chatot_Invalidate(SOUND_CHATOT *chatot)
+{
     chatot->exists = FALSE;
 }
 
-s8 *Chatot_GetData(SOUND_CHATOT *chatot) {
+s8 *Chatot_GetData(SOUND_CHATOT *chatot)
+{
     return chatot->data;
 }
 
-static inline s8 transform(u8 val) {
+static inline s8 transform(u8 val)
+{
     return (s8)(val - 8);
 }
 
-void Chatot_Decode(s8 *dest, const s8 *data) {
+void Chatot_Decode(s8 *dest, const s8 *data)
+{
     s32 i;
     s32 dest_i;
     u8 val;
@@ -55,12 +64,14 @@ void Chatot_Decode(s8 *dest, const s8 *data) {
     }
 }
 
-static inline u8 untransform(s8 val) {
+static inline u8 untransform(s8 val)
+{
     val /= 16;
     return (u8)(val + 8);
 }
 
-void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data) {
+void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data)
+{
     s32 src_i;
     s32 i = 0;
     u8 val2;
@@ -80,6 +91,7 @@ void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data) {
     }
 }
 
-void Chatot_Copy(SOUND_CHATOT *dst, SOUND_CHATOT *src) {
+void Chatot_Copy(SOUND_CHATOT *dst, SOUND_CHATOT *src)
+{
     MI_CpuCopyFast(src, dst, sizeof(SOUND_CHATOT));
 }

@@ -295,12 +295,14 @@ static void dimAllMainBgsExceptLyr0(void);
 static void resetMainBgsBrightness(void);
 static void ViewRankingsApp_CommitChanges(ViewRankingsAppData *appData);
 
-BOOL ViewRankingsApp_Init(OverlayManager *man, int *pState) {
+BOOL ViewRankingsApp_Init(OverlayManager *man, int *pState)
+{
     ViewRankingsApp_Init_Internal(man, pState);
     return TRUE;
 }
 
-BOOL ViewRankingsApp_Main(OverlayManager *man, int *pState) {
+BOOL ViewRankingsApp_Main(OverlayManager *man, int *pState)
+{
     ViewRankingsAppData *appData = OverlayManager_GetData(man);
     switch (appData->mainState) {
     case VIEW_RANKINGS_APP_MAIN_STATE_FADE_IN:
@@ -333,7 +335,8 @@ BOOL ViewRankingsApp_Main(OverlayManager *man, int *pState) {
     return FALSE;
 }
 
-BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
+BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState)
+{
     ViewRankingsAppData *appData = OverlayManager_GetData(man);
 
     gSystem.screensFlipped = FALSE;
@@ -375,7 +378,8 @@ BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
     return TRUE;
 }
 
-static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState) {
+static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState)
+{
     ViewRankingsArgs *args = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_RANKINGS_APP, 0x10000);
     ViewRankingsAppData *data = OverlayManager_CreateAndGetData(man, sizeof(ViewRankingsAppData), HEAP_ID_RANKINGS_APP);
@@ -419,7 +423,8 @@ static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState) {
     ViewRankings_PrintRecordStatHeaderText(data);
 }
 
-static BOOL ViewRankingsApp_Main_Internal(ViewRankingsAppData *appData) {
+static BOOL ViewRankingsApp_Main_Internal(ViewRankingsAppData *appData)
+{
     switch (appData->state) {
     case VIEW_RANKINGS_APP_STATE_REDRAW:
         ViewRankings_PrintRecords(appData);
@@ -446,13 +451,15 @@ static BOOL ViewRankingsApp_Main_Internal(ViewRankingsAppData *appData) {
     return FALSE;
 }
 
-static void ViewRankingsApp_RunSpriteAnimations(ViewRankingsAppData *appData) {
+static void ViewRankingsApp_RunSpriteAnimations(ViewRankingsAppData *appData)
+{
     if (appData->spriteList != NULL) {
         SpriteList_RenderAndAnimateSprites(appData->spriteList);
     }
 }
 
-static BOOL ViewRankings_PollAndHandleInput(ViewRankingsAppData *appData) {
+static BOOL ViewRankings_PollAndHandleInput(ViewRankingsAppData *appData)
+{
     int selection;
     ViewRankingsInput input = ViewRankings_PollInput(appData, &selection);
     if (input == 0) {
@@ -468,7 +475,8 @@ static BOOL ViewRankings_PollAndHandleInput(ViewRankingsAppData *appData) {
     return FALSE;
 }
 
-static void ViewRankings_HandleYesNoInput(ViewRankingsAppData *appData) {
+static void ViewRankings_HandleYesNoInput(ViewRankingsAppData *appData)
+{
     switch (YesNoPrompt_HandleInput(appData->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         YesNoPrompt_Reset(appData->yesNoPrompt);
@@ -485,7 +493,8 @@ static void ViewRankings_HandleYesNoInput(ViewRankingsAppData *appData) {
     }
 }
 
-static BOOL ViewRankings_WaitButtonOrTouch(ViewRankingsAppData *appData) {
+static BOOL ViewRankings_WaitButtonOrTouch(ViewRankingsAppData *appData)
+{
     if (gSystem.newKeys != 0 || System_GetTouchNew()) {
         ViewRankings_PrintSelectRecordToDeleteText(appData);
         return TRUE;
@@ -493,7 +502,8 @@ static BOOL ViewRankings_WaitButtonOrTouch(ViewRankingsAppData *appData) {
     return FALSE;
 }
 
-static void ViewRankings_SetGfxBanks(void) {
+static void ViewRankings_SetGfxBanks(void)
+{
     GraphicsBanks graphicsBanks = {
         .bg = GX_VRAM_BG_128_A,
         .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
@@ -509,7 +519,8 @@ static void ViewRankings_SetGfxBanks(void) {
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-static void ViewRankings_InitBgLayers(BgConfig *bgConfig) {
+static void ViewRankings_InitBgLayers(BgConfig *bgConfig)
+{
     gSystem.screensFlipped = TRUE;
     GfGfx_SwapDisplay();
 
@@ -568,7 +579,8 @@ static void ViewRankings_InitBgLayers(BgConfig *bgConfig) {
     BG_FillCharDataRange(bgConfig, GF_BG_LYR_MAIN_2, 0, 1, 0);
 }
 
-static void ViewRankings_InitObjCharTransfer(void) {
+static void ViewRankings_InitObjCharTransfer(void)
+{
     ObjCharTransferTemplate template = {
         .maxTasks = 10,
         .sizeMain = 0x10000,
@@ -581,12 +593,14 @@ static void ViewRankings_InitObjCharTransfer(void) {
     ObjPlttTransfer_Reset();
 }
 
-static void ViewRankings_CreateOamManager(void) {
+static void ViewRankings_CreateOamManager(void)
+{
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 126, 0, 32, 0, 126, 0, 32, HEAP_ID_RANKINGS_APP);
 }
 
-static void VBlankCB_ViewRankings(void *cbData) {
+static void VBlankCB_ViewRankings(void *cbData)
+{
     BgConfig *bgConfig = (BgConfig *)cbData;
 
     OamManager_ApplyAndResetBuffers();
@@ -595,7 +609,8 @@ static void VBlankCB_ViewRankings(void *cbData) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
+static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId)
+{
     GfGfxLoader_GXLoadPal(NARC_application_guinness, NARC_guinness_guinness_00000001_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x40, heapId);
     GfGfxLoader_LoadCharData(NARC_application_guinness, NARC_guinness_guinness_00000003_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x1000, TRUE, heapId);
     GfGfxLoader_LoadScrnData(NARC_application_guinness, NARC_guinness_guinness_00000005_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_3, 0, 0x600, TRUE, heapId);
@@ -607,7 +622,8 @@ static void ViewRankings_LoadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_SUB_0);
 }
 
-static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID heapId) {
+static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID heapId)
+{
     appData->spriteList = G2dRenderer_Init(5, &appData->g2dRenderer, heapId);
     for (int i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
         appData->gf2dGfxResManagers[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, heapId);
@@ -620,11 +636,13 @@ static void ViewRankings_LoadSpriteGraphics(ViewRankingsAppData *appData, HeapID
     sub_0200AF94(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
 }
 
-static void ViewRankings_CreateSpriteResourcesHeader(ViewRankingsAppData *appData) {
+static void ViewRankings_CreateSpriteResourcesHeader(ViewRankingsAppData *appData)
+{
     CreateSpriteResourcesHeader(&appData->spriteResourcesHeader, 0, 0, 0, 0, -1, -1, 0, 3, appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CHAR], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_PLTT], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_CELL], appData->gf2dGfxResManagers[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 }
 
-static void ViewRankings_DestroySprites(ViewRankingsAppData *appData) {
+static void ViewRankings_DestroySprites(ViewRankingsAppData *appData)
+{
     if (appData->sprites[VIEW_RANKINGS_APP_SPRITE_CURSOR] != NULL) {
         Sprite_Delete(appData->sprites[VIEW_RANKINGS_APP_SPRITE_CURSOR]);
     }
@@ -642,7 +660,8 @@ static void ViewRankings_DestroySprites(ViewRankingsAppData *appData) {
     }
 }
 
-static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewRankingsAppData *appData) {
+static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewRankingsAppData *appData)
+{
     spriteTemplate->spriteList = appData->spriteList;
     spriteTemplate->header = &appData->spriteResourcesHeader;
     spriteTemplate->position.z = 0;
@@ -653,7 +672,8 @@ static void setSpriteTemplate(SpriteTemplate *spriteTemplate, ViewRankingsAppDat
     spriteTemplate->heapId = HEAP_ID_RANKINGS_APP;
 }
 
-static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
+static void ViewRankings_CreateSprites(ViewRankingsAppData *appData)
+{
     Sprite *sprite;
     SpriteTemplate spriteTemplate;
     setSpriteTemplate(&spriteTemplate, appData);
@@ -700,7 +720,8 @@ static void ViewRankings_CreateSprites(ViewRankingsAppData *appData) {
     appData->sprites[VIEW_RANKINGS_APP_SPRITE_DELETE_RECORD] = sprite;
 }
 
-static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData, HeapID heapId) {
+static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData, HeapID heapId)
+{
     appData->touchscreenHitboxes = AllocFromHeap(heapId, 10 * sizeof(TouchscreenHitbox));
     for (int i = 0; i < 6; ++i) {
         TouchscreenHitbox_SetRect(&appData->touchscreenHitboxes[i], 56 + 16 * i, 40, 16, 176);
@@ -711,7 +732,8 @@ static void ViewRankings_CreateTouchscreenHitboxes(ViewRankingsAppData *appData,
     TouchscreenHitbox_SetCircle(&appData->touchscreenHitboxes[9], 240, 96, 16);
 }
 
-static ViewRankingsInput ViewRankings_PollInput(ViewRankingsAppData *appData, int *pSelection) {
+static ViewRankingsInput ViewRankings_PollInput(ViewRankingsAppData *appData, int *pSelection)
+{
     int input = 0;
     if (!System_GetTouchHeld()) {
         input = gSystem.newKeys;
@@ -762,7 +784,8 @@ static ViewRankingsInput ViewRankings_PollInput(ViewRankingsAppData *appData, in
     return VIEW_RANKINGS_APP_INPUT_NONE;
 }
 
-static BOOL ViewRankings_HandleInput_BrowsePages(ViewRankingsAppData *appData, ViewRankingsInput input, int selection) {
+static BOOL ViewRankings_HandleInput_BrowsePages(ViewRankingsAppData *appData, ViewRankingsInput input, int selection)
+{
     switch (input) {
     case VIEW_RANKINGS_APP_INPUT_NONE:
     case VIEW_RANKINGS_APP_INPUT_CURSOR_UP:
@@ -790,7 +813,8 @@ static BOOL ViewRankings_HandleInput_BrowsePages(ViewRankingsAppData *appData, V
     return FALSE;
 }
 
-static void ViewRankings_HandleInput_SelectRecordToDelete(ViewRankingsAppData *appData, ViewRankingsInput input, int selection) {
+static void ViewRankings_HandleInput_SelectRecordToDelete(ViewRankingsAppData *appData, ViewRankingsInput input, int selection)
+{
     switch (input) {
     case VIEW_RANKINGS_APP_INPUT_NONE:
     case VIEW_RANKINGS_APP_INPUT_CURSOR_LEFT:
@@ -833,7 +857,8 @@ static void ViewRankings_HandleInput_SelectRecordToDelete(ViewRankingsAppData *a
     }
 }
 
-static void ViewRankings_MoveCursorInDirection(ViewRankingsAppData *appData, int direction) {
+static void ViewRankings_MoveCursorInDirection(ViewRankingsAppData *appData, int direction)
+{
     if (direction > 0) {
         if (appData->cursorPos == 6) {
             appData->cursorPos = 0;
@@ -855,7 +880,8 @@ static void ViewRankings_MoveCursorInDirection(ViewRankingsAppData *appData, int
     ViewRankings_DrawCursor(appData);
 }
 
-static void ViewRankings_TrySetCursorPosition(ViewRankingsAppData *appData, int selection) {
+static void ViewRankings_TrySetCursorPosition(ViewRankingsAppData *appData, int selection)
+{
     if (selection == 6 || selection < appData->numRecords) {
         PlaySE(SEQ_SE_DP_SELECT);
         appData->cursorPos = selection;
@@ -863,7 +889,8 @@ static void ViewRankings_TrySetCursorPosition(ViewRankingsAppData *appData, int 
     }
 }
 
-static void ViewRankings_DrawCursor(ViewRankingsAppData *appData) {
+static void ViewRankings_DrawCursor(ViewRankingsAppData *appData)
+{
     VecFx32 pos = {};
     u8 idx = appData->cursorPos;
     pos.x = sCursorPositionParams[idx].x * FX32_ONE;
@@ -872,7 +899,8 @@ static void ViewRankings_DrawCursor(ViewRankingsAppData *appData) {
     Sprite_SetAnimCtrlSeq(appData->sprites[VIEW_RANKINGS_APP_SPRITE_CURSOR], sCursorPositionParams[idx].anim);
 }
 
-static void ViewRankings_SwitchPage(ViewRankingsAppData *appData, int direction) {
+static void ViewRankings_SwitchPage(ViewRankingsAppData *appData, int direction)
+{
     int new = appData->recordIdx + direction;
     if (new < 0) {
         new = appData->pageLength - 1;
@@ -890,7 +918,8 @@ static void ViewRankings_SwitchPage(ViewRankingsAppData *appData, int direction)
     appData->state = VIEW_RANKINGS_APP_STATE_REDRAW;
 }
 
-static void ViewRankings_ToggleDeleteMode(ViewRankingsAppData *appData, BOOL selection) {
+static void ViewRankings_ToggleDeleteMode(ViewRankingsAppData *appData, BOOL selection)
+{
     appData->isDeleteMode = selection;
     if (selection == FALSE) {
         appData->cursorPos = 6;
@@ -906,7 +935,8 @@ static void ViewRankings_ToggleDeleteMode(ViewRankingsAppData *appData, BOOL sel
     ViewRankings_DrawCursor(appData);
 }
 
-static void ViewRankings_CreateWindows(ViewRankingsAppData *appData) {
+static void ViewRankings_CreateWindows(ViewRankingsAppData *appData)
+{
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_RANKINGS_APP);
     AddWindowParameterized(appData->bgConfig, &appData->windows[VIEW_RANKINGS_APP_WINDOW_RANKING], GF_BG_LYR_MAIN_1, 5, 7, 2, 12, 15, 0x1);
     AddWindowParameterized(appData->bgConfig, &appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], GF_BG_LYR_MAIN_1, 7, 7, 20, 12, 15, 0x19);
@@ -917,12 +947,14 @@ static void ViewRankings_CreateWindows(ViewRankingsAppData *appData) {
     LoadUserFrameGfx2(appData->bgConfig, GF_BG_LYR_MAIN_0, 0x1, 12, appData->frame, HEAP_ID_RANKINGS_APP);
 }
 
-static void ViewRankings_HideSelectRecordToDeleteText(ViewRankingsAppData *appData) {
+static void ViewRankings_HideSelectRecordToDeleteText(ViewRankingsAppData *appData)
+{
     ClearFrameAndWindow2(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], TRUE);
     ClearWindowTilemapAndCopyToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, SaveData *saveData) {
+static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, SaveData *saveData)
+{
     int j;
     int i;
     BOOL inserted;
@@ -970,7 +1002,8 @@ static void ViewRankingsApp_GetRankingsFromSave(ViewRankingsAppData *appData, Sa
     }
 }
 
-static void ViewRankings_CreateStrings(ViewRankingsAppData *appData) {
+static void ViewRankings_CreateStrings(ViewRankingsAppData *appData)
+{
     appData->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0421_bin, HEAP_ID_RANKINGS_APP);
     appData->msgFormat = MessageFormat_New_Custom(2, 76, HEAP_ID_RANKINGS_APP);
     appData->formatedStrBuf = String_New(76, HEAP_ID_RANKINGS_APP);
@@ -981,7 +1014,8 @@ static void ViewRankings_CreateStrings(ViewRankingsAppData *appData) {
     }
 }
 
-static void ViewRankings_DeleteStrings(ViewRankingsAppData *appData) {
+static void ViewRankings_DeleteStrings(ViewRankingsAppData *appData)
+{
     for (int i = 0; i < VIEW_RANKINGS_MISC_STRING_MAX; ++i) {
         String_Delete(appData->miscStrings[i]);
     }
@@ -992,7 +1026,8 @@ static void ViewRankings_DeleteStrings(ViewRankingsAppData *appData) {
     DestroyMsgData(appData->msgData);
 }
 
-static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintRecords(ViewRankingsAppData *appData)
+{
     int i;
     int ranking;
     int y;
@@ -1046,7 +1081,8 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
     }
 }
 
-static void ViewRankings_PrintDeleteRecordText(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintDeleteRecordText(ViewRankingsAppData *appData)
+{
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00040);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
@@ -1054,7 +1090,8 @@ static void ViewRankings_PrintDeleteRecordText(ViewRankingsAppData *appData) {
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD]);
 }
 
-static void ViewRankings_PrintReturnText(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintReturnText(ViewRankingsAppData *appData)
+{
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00041);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
@@ -1062,7 +1099,8 @@ static void ViewRankings_PrintReturnText(ViewRankingsAppData *appData) {
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN]);
 }
 
-static void ViewRankings_PrintDeleteXsRecordAreYouSure(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintDeleteXsRecordAreYouSure(ViewRankingsAppData *appData)
+{
     ViewRankingsAppPage *page;
     u8 entryIdx;
     String *string;
@@ -1078,7 +1116,8 @@ static void ViewRankings_PrintDeleteXsRecordAreYouSure(ViewRankingsAppData *appD
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void ViewRankings_PrintYourOwnRecordCantBeDeleted(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintYourOwnRecordCantBeDeleted(ViewRankingsAppData *appData)
+{
     String *string;
 
     DrawFrameAndWindow2(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
@@ -1089,7 +1128,8 @@ static void ViewRankings_PrintYourOwnRecordCantBeDeleted(ViewRankingsAppData *ap
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void ViewRankings_PrintRecordStatHeaderText(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintRecordStatHeaderText(ViewRankingsAppData *appData)
+{
     String *string;
     String *string2;
     int msgNo;
@@ -1105,7 +1145,8 @@ static void ViewRankings_PrintRecordStatHeaderText(ViewRankingsAppData *appData)
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER]);
 }
 
-static void ViewRankings_PrintSelectRecordToDeleteText(ViewRankingsAppData *appData) {
+static void ViewRankings_PrintSelectRecordToDeleteText(ViewRankingsAppData *appData)
+{
     String *string;
 
     DrawFrameAndWindow2(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
@@ -1116,7 +1157,8 @@ static void ViewRankings_PrintSelectRecordToDeleteText(ViewRankingsAppData *appD
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
-static void ViewRankings_AskConfirmDeleteRecord(ViewRankingsAppData *appData) {
+static void ViewRankings_AskConfirmDeleteRecord(ViewRankingsAppData *appData)
+{
     YesNoPromptTemplate template;
 
     appData->recordToDelete = &appData->records[appData->recordIdx].entries[appData->recordEntryIdxs[appData->cursorPos]];
@@ -1139,15 +1181,18 @@ static void ViewRankings_AskConfirmDeleteRecord(ViewRankingsAppData *appData) {
     }
 }
 
-static void dimAllMainBgsExceptLyr0(void) {
+static void dimAllMainBgsExceptLyr0(void)
+{
     G2_SetBlendBrightness(GX_PLANEMASK_ALL & ~GX_PLANEMASK_BG0, -7);
 }
 
-static void resetMainBgsBrightness(void) {
+static void resetMainBgsBrightness(void)
+{
     G2_BlendNone();
 }
 
-static void ViewRankingsApp_CommitChanges(ViewRankingsAppData *appData) {
+static void ViewRankingsApp_CommitChanges(ViewRankingsAppData *appData)
+{
     int i;
     int j;
     int count;

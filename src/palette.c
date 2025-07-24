@@ -19,37 +19,44 @@ static void ApplyScheduledBlendStepToSinglePalette(u16 *opaque, u16 *transparent
 static void PaletteData_AdvanceSelectedBitCur(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedBit);
 static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int denom, int numer, int rTarget, int gTarget, int bTarget);
 
-PaletteData *PaletteData_Init(HeapID heapId) {
+PaletteData *PaletteData_Init(HeapID heapId)
+{
     PaletteData *ret = AllocFromHeap(heapId, sizeof(PaletteData));
     MI_CpuFill8(ret, 0, sizeof(PaletteData));
     return ret;
 }
 
-void PaletteData_Free(PaletteData *plttData) {
+void PaletteData_Free(PaletteData *plttData)
+{
     Heap_Free(plttData);
 }
 
-void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *opaque, u16 *transparent, u32 size) {
+void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *opaque, u16 *transparent, u32 size)
+{
     data->buffers[bufferID].opaque = opaque;
     data->buffers[bufferID].transparent = transparent;
     data->buffers[bufferID].size = size;
 }
 
-void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, HeapID heapID) {
+void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, HeapID heapID)
+{
     PaletteData_SetBuffers(data, bufferID, AllocFromHeap(heapID, size), AllocFromHeap(heapID, size), size);
 }
 
-void PaletteData_FreeBuffers(PaletteData *data, PaletteBufferId bufferID) {
+void PaletteData_FreeBuffers(PaletteData *data, PaletteBufferId bufferID)
+{
     Heap_Free(data->buffers[bufferID].opaque);
     Heap_Free(data->buffers[bufferID].transparent);
 }
 
-void PaletteData_LoadPalette(PaletteData *data, const u16 *src, PaletteBufferId bufferID, u16 pos, u16 size) {
+void PaletteData_LoadPalette(PaletteData *data, const u16 *src, PaletteBufferId bufferID, u16 pos, u16 size)
+{
     MI_CpuCopy16(src, data->buffers[bufferID].opaque + pos, size);
     MI_CpuCopy16(src, data->buffers[bufferID].transparent + pos, size);
 }
 
-void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos) {
+void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos)
+{
     void *rawPtr;
     NNSG2dPaletteData *plttData;
 
@@ -63,11 +70,13 @@ void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, He
     Heap_Free(rawPtr);
 }
 
-void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos) {
+void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos)
+{
     PaletteData_LoadFromNarc(data, narcID, memberNo, heapID, bufferID, size, pos, 0);
 }
 
-void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos) {
+void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos)
+{
     void *rawPtr;
     NNSG2dPaletteData *plttData;
 
@@ -81,11 +90,13 @@ void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, H
     Heap_Free(rawPtr);
 }
 
-void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos) {
+void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos)
+{
     PaletteData_LoadFromOpenNarc(data, narc, memberNo, heapID, bufferID, size, pos, 0);
 }
 
-void PaletteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size) {
+void PaletteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size)
+{
     GF_ASSERT(pos * sizeof(pos) + size <= data->buffers[bufferID].size);
 
     const u16 *src;
@@ -110,20 +121,24 @@ void PaletteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId 
     PaletteData_LoadPalette(data, src + pos, bufferID, pos, size);
 }
 
-void PaletteData_CopyPalette(PaletteData *data, u32 srcBufferID, u16 srcPos, u32 destBufferID, u16 destPos, u16 size) {
+void PaletteData_CopyPalette(PaletteData *data, u32 srcBufferID, u16 srcPos, u32 destBufferID, u16 destPos, u16 size)
+{
     MI_CpuCopy16(data->buffers[srcBufferID].opaque + srcPos, data->buffers[destBufferID].opaque + destPos, size);
     MI_CpuCopy16(data->buffers[srcBufferID].opaque + srcPos, data->buffers[destBufferID].transparent + destPos, size);
 }
 
-u16 *PaletteData_GetUnfadedBuf(PaletteData *data, PaletteBufferId bufferID) {
+u16 *PaletteData_GetUnfadedBuf(PaletteData *data, PaletteBufferId bufferID)
+{
     return data->buffers[bufferID].opaque;
 }
 
-u16 *PaletteData_GetFadedBuf(PaletteData *data, PaletteBufferId bufferID) {
+u16 *PaletteData_GetFadedBuf(PaletteData *data, PaletteBufferId bufferID)
+{
     return data->buffers[bufferID].transparent;
 }
 
-u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
+u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB)
+{
     u16 opaqueBitBak = opaqueBit;
     u8 startTask = FALSE;
     u8 i;
@@ -156,7 +171,8 @@ u8 PaletteData_BeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, 
     return startTask;
 }
 
-u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
+u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB)
+{
     u16 opaqueBitBak = opaqueBit;
     u8 startTask = FALSE;
     u8 i;
@@ -189,17 +205,20 @@ u8 PaletteData_ForceBeginPaletteFade(PaletteData *data, u16 toSelect, u16 opaque
     return startTask;
 }
 
-static u8 IsPaletteSelected(u16 selectedFlag, u16 bufferID) {
+static u8 IsPaletteSelected(u16 selectedFlag, u16 bufferID)
+{
     return (selectedFlag & (1 << bufferID)) != 0;
 }
 
-static void PaletteData_SetTransparentBit(PaletteData *data, u16 bufferID) {
+static void PaletteData_SetTransparentBit(PaletteData *data, u16 bufferID)
+{
     if (IsPaletteSelected(data->transparentBit, bufferID) != TRUE) {
         data->transparentBit |= 1 << bufferID;
     }
 }
 
-static void MaskOpaqueBit(PaletteBufferId bufferID, PaletteBuffer *buffer, u16 *opaqueBit) {
+static void MaskOpaqueBit(PaletteBufferId bufferID, PaletteBuffer *buffer, u16 *opaqueBit)
+{
     u8 limit;
     if (bufferID < PLTTBUF_EX_BEGIN) {
         limit = buffer->size >> 5;
@@ -213,7 +232,8 @@ static void MaskOpaqueBit(PaletteBufferId bufferID, PaletteBuffer *buffer, u16 *
     *opaqueBit &= bits;
 }
 
-static void SelectedPaletteData_SetTimedFadeParams(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB) {
+static void SelectedPaletteData_SetTimedFadeParams(SelectedPaletteData *selectedBit, u16 opaqueBit, s8 wait, u8 cur, u8 end, u16 nextRGB)
+{
     if (wait < 0) {
         selectedBit->step = abs(wait) + 2;
         selectedBit->wait = 0;
@@ -233,7 +253,8 @@ static void SelectedPaletteData_SetTimedFadeParams(SelectedPaletteData *selected
     }
 }
 
-static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
+static void SysTask_TimedPaletteFade(SysTask *task, void *taskData)
+{
     PaletteData *data = (PaletteData *)taskData;
 
     if (data->forceExit == 1) {
@@ -257,25 +278,29 @@ static void SysTask_TimedPaletteFade(SysTask *task, void *taskData) {
     }
 }
 
-void PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers(PaletteData *data) {
+void PaletteData_ScheduleFadeTaskEndIfNoSelectedBuffers(PaletteData *data)
+{
     if (data->selectedBuffer != 0) {
         data->forceExit = 1;
     }
 }
 
-static void PaletteData_TryApplyScheduledBlendStepToStdBuffersHandleDelay(PaletteData *data) {
+static void PaletteData_TryApplyScheduledBlendStepToStdBuffersHandleDelay(PaletteData *data)
+{
     for (u8 i = 0; i < PLTTBUF_EX_BEGIN; ++i) {
         PaletteData_TryApplyScheduledBlendStepToSingleBufferHandleDelay(data, i, 0x10);
     }
 }
 
-static void PaletteData_TryApplyScheduledBlendStepToExBuffersHandleDelay(PaletteData *data) {
+static void PaletteData_TryApplyScheduledBlendStepToExBuffersHandleDelay(PaletteData *data)
+{
     for (u8 i = PLTTBUF_EX_BEGIN; i < PLTTBUF_MAX; ++i) {
         PaletteData_TryApplyScheduledBlendStepToSingleBufferHandleDelay(data, i, 0x100);
     }
 }
 
-static void PaletteData_TryApplyScheduledBlendStepToSingleBufferHandleDelay(PaletteData *data, u16 bufferID, u16 size) {
+static void PaletteData_TryApplyScheduledBlendStepToSingleBufferHandleDelay(PaletteData *data, u16 bufferID, u16 size)
+{
     if (IsPaletteSelected(data->selectedBuffer, bufferID)) {
         if (data->buffers[bufferID].selected.waitStep < data->buffers[bufferID].selected.wait) {
             ++data->buffers[bufferID].selected.waitStep;
@@ -286,7 +311,8 @@ static void PaletteData_TryApplyScheduledBlendStepToSingleBufferHandleDelay(Pale
     }
 }
 
-static void PaletteData_ApplyScheduledBlendStepToSingleBuffer(PaletteData *data, u16 bufferID, u16 size) {
+static void PaletteData_ApplyScheduledBlendStepToSingleBuffer(PaletteData *data, u16 bufferID, u16 size)
+{
     for (u32 i = 0; i < 16; ++i) {
         if (IsPaletteSelected(data->buffers[bufferID].selected.opaqueBit, i)) {
             ApplyScheduledBlendStepToSinglePalette(&data->buffers[bufferID].opaque[i * size], &data->buffers[bufferID].transparent[i * size], &data->buffers[bufferID].selected, size);
@@ -295,7 +321,8 @@ static void PaletteData_ApplyScheduledBlendStepToSingleBuffer(PaletteData *data,
     PaletteData_AdvanceSelectedBitCur(data, bufferID, &data->buffers[bufferID].selected);
 }
 
-static void ApplyScheduledBlendStepToSinglePalette(u16 *opaque, u16 *transparent, SelectedPaletteData *selectedBit, u16 size) {
+static void ApplyScheduledBlendStepToSinglePalette(u16 *opaque, u16 *transparent, SelectedPaletteData *selectedBit, u16 size)
+{
     u32 i;
     u8 r, g, b;
     for (i = 0; i < size; ++i) {
@@ -306,7 +333,8 @@ static void ApplyScheduledBlendStepToSinglePalette(u16 *opaque, u16 *transparent
     }
 }
 
-static void PaletteData_AdvanceSelectedBitCur(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedBit) {
+static void PaletteData_AdvanceSelectedBitCur(PaletteData *data, u8 bufferID, SelectedPaletteData *selectedBit)
+{
     s16 next;
 
     if (selectedBit->cur == selectedBit->end) {
@@ -330,7 +358,8 @@ static void PaletteData_AdvanceSelectedBitCur(PaletteData *data, u8 bufferID, Se
     }
 }
 
-void PaletteData_PushTransparentBuffers(PaletteData *plttData) {
+void PaletteData_PushTransparentBuffers(PaletteData *plttData)
+{
     int i;
     if (plttData->autoTransparent || plttData->selectedFlag == 1) {
         for (i = 0; i < PLTTBUF_MAX; ++i) {
@@ -415,20 +444,24 @@ void PaletteData_PushTransparentBuffers(PaletteData *plttData) {
     }
 }
 
-u16 PaletteData_GetSelectedBuffersBitmask(PaletteData *plttData) {
+u16 PaletteData_GetSelectedBuffersBitmask(PaletteData *plttData)
+{
     return plttData->selectedBuffer;
 }
 
-void PaletteData_SetAutoTransparent(PaletteData *plttData, BOOL autoTransparent) {
+void PaletteData_SetAutoTransparent(PaletteData *plttData, BOOL autoTransparent)
+{
     plttData->autoTransparent = autoTransparent;
 }
 
-void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1) {
+void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1)
+{
     plttData->selectedFlag = a1 & 1;
     plttData->selectedBuffer = PLTTBUF_ALL_F;
 }
 
-void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
+void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId)
+{
     void *tmp;
 
     tmp = AllocFromHeap(heapId, 0x200);
@@ -508,7 +541,8 @@ void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId) {
     Heap_FreeExplicit(heapId, tmp);
 }
 
-void PaletteData_FillPaletteInBuffer(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 value, u16 begin, u16 end) {
+void PaletteData_FillPaletteInBuffer(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 value, u16 begin, u16 end)
+{
     GF_ASSERT(end * sizeof(u16) <= plttData->buffers[bufferID].size);
     if (which == PLTTSEL_OPAQUE || which == PLTTSEL_BOTH) {
         MI_CpuFill16(&plttData->buffers[bufferID].opaque[begin], value, (end - begin) * sizeof(u16));
@@ -518,7 +552,8 @@ void PaletteData_FillPaletteInBuffer(PaletteData *plttData, PaletteBufferId buff
     }
 }
 
-u16 PaletteData_GetBufferColorAtIndex(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 palIdx) {
+u16 PaletteData_GetBufferColorAtIndex(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 palIdx)
+{
     if (which == PLTTSEL_OPAQUE) {
         return plttData->buffers[bufferID].opaque[palIdx];
     } else if (which == PLTTSEL_TRANSPARENT) {
@@ -529,7 +564,8 @@ u16 PaletteData_GetBufferColorAtIndex(PaletteData *plttData, PaletteBufferId buf
     }
 }
 
-void BlendPalette(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target) {
+void BlendPalette(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target)
+{
     u16 i;
     int r1, g1, b1;
     int r2, g2, b2;
@@ -546,12 +582,14 @@ void BlendPalette(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target) {
     }
 }
 
-void PaletteData_BlendPalette(PaletteData *data, PaletteBufferId bufferID, u16 offset, u16 size, u8 cur, u16 target) {
+void PaletteData_BlendPalette(PaletteData *data, PaletteBufferId bufferID, u16 offset, u16 size, u8 cur, u16 target)
+{
     GF_ASSERT(data->buffers[bufferID].opaque != NULL && data->buffers[bufferID].transparent != NULL);
     BlendPalette(&data->buffers[bufferID].opaque[offset], &data->buffers[bufferID].transparent[offset], size, cur, target);
 }
 
-void PaletteData_BlendPalettes(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffer, u8 cur, u16 target) {
+void PaletteData_BlendPalettes(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffer, u8 cur, u16 target)
+{
     int i = 0;
 
     GF_ASSERT(data->buffers[bufferID].opaque != NULL && data->buffers[bufferID].transparent != NULL);
@@ -564,7 +602,8 @@ void PaletteData_BlendPalettes(PaletteData *data, PaletteBufferId bufferID, u16 
     }
 }
 
-void TintPalette_GrayScale(u16 *palette, int count) {
+void TintPalette_GrayScale(u16 *palette, int count)
+{
     int i, r, g, b;
     u32 gray;
     for (i = 0; i < count; ++i) {
@@ -577,7 +616,8 @@ void TintPalette_GrayScale(u16 *palette, int count) {
     }
 }
 
-void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone) {
+void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone)
+{
     int i, r, g, b;
     u32 gray;
     for (i = 0; i < count; ++i) {
@@ -604,7 +644,8 @@ void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int b
     }
 }
 
-void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone) {
+void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone)
+{
     NNSG2dPaletteData *pPlttData;
     void *rawBuf = GfGfxLoader_GetPlttData(narcId, memberNo, &pPlttData, heapId);
     GF_ASSERT(rawBuf != NULL);
@@ -616,7 +657,8 @@ void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 membe
     Heap_Free(rawBuf);
 }
 
-static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int duration, int step, int rTarget, int gTarget, int bTarget) {
+static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int duration, int step, int rTarget, int gTarget, int bTarget)
+{
     int i, r, g, b;
 
     for (i = 0; i < 16; ++i) {
@@ -635,7 +677,8 @@ static void FadePaletteTowardsColorStep(const u16 *src, u16 *dest, int duration,
     }
 }
 
-void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transparentBit, int opaqueBit, int duration, int step, u16 target) {
+void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transparentBit, int opaqueBit, int duration, int step, u16 target)
+{
     int i, j, r, g, b;
 
     plttData->selectedFlag = 1;

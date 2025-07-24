@@ -102,14 +102,16 @@ typedef struct TaskData_TryHeadbuttEncounter {
     u16 *resultPtr;
 } TaskData_TryHeadbuttEncounter;
 
-void FieldSystem_TryHeadbuttEncounter(FieldSystem *fieldSystem, u16 *varPointer) {
+void FieldSystem_TryHeadbuttEncounter(FieldSystem *fieldSystem, u16 *varPointer)
+{
     TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
     didHeadbuttStartBattle->resultPtr = varPointer;
     *varPointer = FALSE;
     TaskManager_Call(fieldSystem->taskman, Task_TryHeadbuttEncounter, didHeadbuttStartBattle);
 }
 
-static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
+static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager)
+{
     HeadbuttEncounterData *headbuttTable;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
@@ -152,7 +154,8 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     return TRUE;
 }
 
-static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]) {
+static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2])
+{
     // Based on your trainer ID and the tree you're facing, choose which encounter table applies
     // Not all trees are headbuttable, this is determined by trainer ID
     u16 i;
@@ -172,7 +175,8 @@ static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees,
     return TREETYPE_NONE;
 }
 
-static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId) {
+static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId)
+{
     s8 ret = TREETYPE_NONE;
     u8 trainerIdLastDigit = trainerId % 10;
     if (numTrees >= 5) {
@@ -193,7 +197,8 @@ static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId)
     return ret;
 }
 
-static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y)
+{
     int inFrontX, inFrontY;
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
     if (FollowMon_IsActive(fieldSystem)) {
@@ -214,7 +219,8 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
 // Not related to headbutt, should these be a separate file object? //
 // ---------------------------------------------------------------- //
 
-BOOL ScrCmd_795(ScriptContext *ctx) {
+BOOL ScrCmd_795(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 x = ScriptGetVar(ctx);
     u8 y = ScriptGetVar(ctx);
@@ -223,14 +229,16 @@ BOOL ScrCmd_795(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_796(ScriptContext *ctx) {
+BOOL ScrCmd_796(ScriptContext *ctx)
+{
     Window **moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
     ov01_021EEE30(*moneyBox);
     return FALSE;
 }
 
 // Unused
-BOOL ScrCmd_797(ScriptContext *ctx) {
+BOOL ScrCmd_797(ScriptContext *ctx)
+{
     Window **moneyBox = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MONEY_BOX);
     ov01_021EEE44(ctx->fieldSystem, *moneyBox);
     return FALSE;

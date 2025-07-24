@@ -100,7 +100,8 @@ static const ECIdenticalPhrases sIdenticalPhrases[12] = {
     { sEasyChatYou,          NELEMS(sEasyChatYou)          },
 };
 
-EasyChatManager *EasyChatManager_New(HeapID heapId) {
+EasyChatManager *EasyChatManager_New(HeapID heapId)
+{
     EasyChatManager *ret = AllocFromHeap(heapId, sizeof(EasyChatManager));
 
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
@@ -110,21 +111,24 @@ EasyChatManager *EasyChatManager_New(HeapID heapId) {
     return ret;
 }
 
-void EasyChatManager_Delete(EasyChatManager *easyChatManager) {
+void EasyChatManager_Delete(EasyChatManager *easyChatManager)
+{
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
         DestroyMsgData(easyChatManager->msgData[i]);
     }
     Heap_Free(easyChatManager);
 }
 
-void EasyChatManager_ReadWordIntoString(EasyChatManager *easyChatManager, u16 ecWord, String *dest) {
+void EasyChatManager_ReadWordIntoString(EasyChatManager *easyChatManager, u16 ecWord, String *dest)
+{
     u32 category;
     u32 msgNo;
     GetCategoryAndMsgNoByECWordIdx(ecWord, &category, &msgNo);
     ReadMsgDataIntoString(easyChatManager->msgData[category], msgNo, dest);
 }
 
-void GetECWordIntoStringByIndex(u16 ecWord, String *dest) {
+void GetECWordIntoStringByIndex(u16 ecWord, String *dest)
+{
     u32 category;
     u32 msgNo;
     if (ecWord != EC_WORD_NULL) {
@@ -136,7 +140,8 @@ void GetECWordIntoStringByIndex(u16 ecWord, String *dest) {
     }
 }
 
-u16 GetECWordIndexByPair(u32 category, u32 msgNo) {
+u16 GetECWordIndexByPair(u32 category, u32 msgNo)
+{
     u32 bank;
     u16 count;
     u16 i;
@@ -151,7 +156,8 @@ u16 GetECWordIndexByPair(u32 category, u32 msgNo) {
     return EC_WORD_NULL;
 }
 
-BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgNo) {
+BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgNo)
+{
     u32 bank;
     u32 count;
     u32 wordId = ecWord & EC_WORD_MASK;
@@ -169,11 +175,13 @@ BOOL GetCategoryAndMsgNoByECWordIdx(u16 ecWord, u32 *category, u32 *msgNo) {
     return FALSE;
 }
 
-u32 Save_EasyChat_sizeof(void) {
+u32 Save_EasyChat_sizeof(void)
+{
     return sizeof(SaveEasyChat);
 }
 
-void Save_EasyChat_Init(SaveEasyChat *saveEasyChat) {
+void Save_EasyChat_Init(SaveEasyChat *saveEasyChat)
+{
     u32 i;
 
     saveEasyChat->greetings = 0;
@@ -187,16 +195,19 @@ void Save_EasyChat_Init(SaveEasyChat *saveEasyChat) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-SaveEasyChat *Save_EasyChat_Get(SaveData *saveData) {
+SaveEasyChat *Save_EasyChat_Get(SaveData *saveData)
+{
     SaveSubstruct_AssertCRC(SAVE_EASY_CHAT);
     return SaveArray_Get(saveData, SAVE_EASY_CHAT);
 }
 
-BOOL Save_EasyChat_GetTrendySayingFlag(SaveEasyChat *saveEasyChat, u32 flag) {
+BOOL Save_EasyChat_GetTrendySayingFlag(SaveEasyChat *saveEasyChat, u32 flag)
+{
     return (saveEasyChat->trendy >> flag) & 1;
 }
 
-u32 Save_EasyChat_SetRandomTrendySaying(SaveEasyChat *saveEasyChat) {
+u32 Save_EasyChat_SetRandomTrendySaying(SaveEasyChat *saveEasyChat)
+{
     u32 i;
     u32 count;
     u32 bit;
@@ -224,7 +235,8 @@ u32 Save_EasyChat_SetRandomTrendySaying(SaveEasyChat *saveEasyChat) {
     return EC_WORDS_TOUGH_WORDS_COUNT;
 }
 
-BOOL Save_EasyChat_TrendySayingsUnlockedAllCheck(SaveEasyChat *saveEasyChat) {
+BOOL Save_EasyChat_TrendySayingsUnlockedAllCheck(SaveEasyChat *saveEasyChat)
+{
     for (u32 i = 0; i < EC_WORDS_TOUGH_WORDS_COUNT; i++) {
         if (!((saveEasyChat->trendy >> i) & 1)) {
             return FALSE;
@@ -233,7 +245,8 @@ BOOL Save_EasyChat_TrendySayingsUnlockedAllCheck(SaveEasyChat *saveEasyChat) {
     return TRUE;
 }
 
-ecword_t TrendyWordIdxToECWord(u32 word) {
+ecword_t TrendyWordIdxToECWord(u32 word)
+{
     s32 i;
     u16 count = 0;
     for (i = 0; i < EC_GROUP_TOUGH_WORDS; i++) {
@@ -242,16 +255,19 @@ ecword_t TrendyWordIdxToECWord(u32 word) {
     return (ecword_t)(count + word);
 }
 
-BOOL Save_EasyChat_GetGreetingsFlag(SaveEasyChat *saveEasyChat, u32 flag) {
+BOOL Save_EasyChat_GetGreetingsFlag(SaveEasyChat *saveEasyChat, u32 flag)
+{
     return (saveEasyChat->greetings >> flag) & 1;
 }
 
-void Save_EasyChat_SetGreetingFlag(SaveEasyChat *saveEasyChat, u32 flag) {
+void Save_EasyChat_SetGreetingFlag(SaveEasyChat *saveEasyChat, u32 flag)
+{
     saveEasyChat->greetings |= (1 << flag);
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
+WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId)
+{
     u32 size;
     WallpaperPasswordBank *ret = AllocFromHeap(heapId, sizeof(WallpaperPasswordBank));
 
@@ -261,16 +277,19 @@ WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
     return ret;
 }
 
-void WallpaperPasswordBank_Delete(WallpaperPasswordBank *wallpaperPasswordBank) {
+void WallpaperPasswordBank_Delete(WallpaperPasswordBank *wallpaperPasswordBank)
+{
     Heap_Free(wallpaperPasswordBank->words);
     Heap_Free(wallpaperPasswordBank);
 }
 
-u32 WallpaperPasswordBank_GetCount(WallpaperPasswordBank *wallpaperPasswordBank) {
+u32 WallpaperPasswordBank_GetCount(WallpaperPasswordBank *wallpaperPasswordBank)
+{
     return wallpaperPasswordBank->count;
 }
 
-ecword_t WallpaperPasswordBank_GetWordAtIndex(WallpaperPasswordBank *wallpaperPasswordBank, s32 index) {
+ecword_t WallpaperPasswordBank_GetWordAtIndex(WallpaperPasswordBank *wallpaperPasswordBank, s32 index)
+{
     GF_ASSERT(wallpaperPasswordBank != NULL);
     if (wallpaperPasswordBank->count <= index) {
         return EC_WORD_NULL;
@@ -279,7 +298,8 @@ ecword_t WallpaperPasswordBank_GetWordAtIndex(WallpaperPasswordBank *wallpaperPa
     }
 }
 
-s16 WallpaperPasswordBank_GetIndexOfWord(WallpaperPasswordBank *wallpaperPasswordBank, s32 word) {
+s16 WallpaperPasswordBank_GetIndexOfWord(WallpaperPasswordBank *wallpaperPasswordBank, s32 word)
+{
     GF_ASSERT(wallpaperPasswordBank != NULL);
     for (s32 i = 0; i < wallpaperPasswordBank->count; i++) {
         if (word == wallpaperPasswordBank->words[i]) {
@@ -290,7 +310,8 @@ s16 WallpaperPasswordBank_GetIndexOfWord(WallpaperPasswordBank *wallpaperPasswor
     return EC_WORD_NULL;
 }
 
-u16 EasyChat_GetMsgBankForGroup(s32 category) {
+u16 EasyChat_GetMsgBankForGroup(s32 category)
+{
     if (category >= EC_GROUP_MAX) {
         category = 0;
     }
@@ -301,7 +322,8 @@ u16 EasyChat_GetMsgBankForGroup(s32 category) {
 // However, they are unlinked in heartgold and deadstripped in linktime.
 // The only reason why there's any code in here at all is because these
 // functions can be found in Diamond and Pearl.
-s32 GetDuplicateWordNum(ecword_t word) {
+s32 GetDuplicateWordNum(ecword_t word)
+{
     for (s32 i = 0; i < NELEMS(sIdenticalPhrases); i++) {
         for (s32 j = 0; j < sIdenticalPhrases[i].count; j++) {
             if (word == sIdenticalPhrases[i].data[j]) {
@@ -312,7 +334,8 @@ s32 GetDuplicateWordNum(ecword_t word) {
     return 0;
 }
 
-ecword_t RemapDuplicateWord(ecword_t word, s32 target) {
+ecword_t RemapDuplicateWord(ecword_t word, s32 target)
+{
     for (s32 phrases = 0; phrases < NELEMS(sIdenticalPhrases); phrases++) {
         for (s32 phraseCount = 0; phraseCount < sIdenticalPhrases[phrases].count; phraseCount++) {
             if (word == sIdenticalPhrases[phrases].data[phraseCount]) {

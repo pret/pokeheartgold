@@ -65,7 +65,8 @@ static u32 Save_CalcPCBoxModifiedFlags(SaveData *saveData);
 static u32 PCModifiedFlags_CountModifiedBoxes(u32 flags);
 static u32 PCModifiedFlags_GetIndexOfNthModifiedBox(u32 flags, u8 last);
 
-SaveData *SaveData_New(void) {
+SaveData *SaveData_New(void)
+{
     SaveData *ret;
     int status;
     int sp4;
@@ -120,21 +121,25 @@ SaveData *SaveData_New(void) {
     return ret;
 }
 
-SaveData *SaveData_Get(void) {
+SaveData *SaveData_Get(void)
+{
     GF_ASSERT(sSaveDataPtr != NULL);
     return sSaveDataPtr;
 }
 
-void *SaveArray_Get(SaveData *saveData, int id) {
+void *SaveArray_Get(SaveData *saveData, int id)
+{
     GF_ASSERT(id < SAVE_BLOCK_NUM);
     return (void *)&saveData->dynamic_region[saveData->arrayHeaders[id].offset];
 }
 
-const void *SaveArray_Const_Get(const SaveData *saveData, int id) {
+const void *SaveArray_Const_Get(const SaveData *saveData, int id)
+{
     return SaveArray_Get((SaveData *)saveData, id);
 }
 
-BOOL Save_DeleteAllData(SaveData *saveData) {
+BOOL Save_DeleteAllData(SaveData *saveData)
+{
     u8 *r6;
     int i;
 
@@ -156,7 +161,8 @@ BOOL Save_DeleteAllData(SaveData *saveData) {
     return TRUE;
 }
 
-BOOL SaveData_TryLoadOnContinue(SaveData *saveData) {
+BOOL SaveData_TryLoadOnContinue(SaveData *saveData)
+{
     int sp4;
     int sp0;
 
@@ -173,7 +179,8 @@ BOOL SaveData_TryLoadOnContinue(SaveData *saveData) {
     return FALSE;
 }
 
-int SaveGameNormal(SaveData *saveData) {
+int SaveGameNormal(SaveData *saveData)
+{
     int ret;
 
     if (!saveData->flashChipDetected) {
@@ -195,7 +202,8 @@ int SaveGameNormal(SaveData *saveData) {
     return ret;
 }
 
-int Save_NowWriteFile_AfterMGInit(SaveData *saveData, int a1) {
+int Save_NowWriteFile_AfterMGInit(SaveData *saveData, int a1)
+{
     int ret;
 
     GF_ASSERT(a1 < 2);
@@ -208,64 +216,78 @@ int Save_NowWriteFile_AfterMGInit(SaveData *saveData, int a1) {
     return ret;
 }
 
-void Save_InitDynamicRegion(SaveData *saveData) {
+void Save_InitDynamicRegion(SaveData *saveData)
+{
     saveData->isNewGame = TRUE;
     saveData->sectorCleanFlag[0] = 1;
     saveData->sectorCleanFlag[1] = 1;
     Save_InitDynamicRegion_Internal(saveData->dynamic_region, saveData->arrayHeaders);
 }
 
-BOOL Save_FlashChipIsDetected(SaveData *saveData) {
+BOOL Save_FlashChipIsDetected(SaveData *saveData)
+{
     return saveData->flashChipDetected;
 }
 
-u32 Save_GetStatusFlags(SaveData *saveData) {
+u32 Save_GetStatusFlags(SaveData *saveData)
+{
     return saveData->statusFlags;
 }
 
-void Save_ClearStatusFlags(SaveData *saveData) {
+void Save_ClearStatusFlags(SaveData *saveData)
+{
     saveData->statusFlags = 0;
 }
 
-u32 Save_FileExists(SaveData *saveData) {
+u32 Save_FileExists(SaveData *saveData)
+{
     return saveData->saveFileExists;
 }
 
-static u32 Save_IsNewGame(SaveData *saveData) {
+static u32 Save_IsNewGame(SaveData *saveData)
+{
     return saveData->isNewGame;
 }
 
-BOOL Save_CheckExtraChunksExist(SaveData *saveData) {
+BOOL Save_CheckExtraChunksExist(SaveData *saveData)
+{
     SAVE_MISC_DATA *misc = Save_Misc_Get(saveData);
     return SaveMisc_CheckExtraChunksExist(misc);
 }
 
-static void Save_SetExtraChunksExist(SaveData *saveData) {
+static void Save_SetExtraChunksExist(SaveData *saveData)
+{
     SAVE_MISC_DATA *misc = Save_Misc_Get(saveData);
     SaveMisc_SetExtraChunksExist(misc);
 }
 
-BOOL Save_FileDoesNotBelongToPlayer(SaveData *saveData) {
+BOOL Save_FileDoesNotBelongToPlayer(SaveData *saveData)
+{
     return Save_IsNewGame(saveData) != 0 && Save_FileExists(saveData) != 0;
 }
 
-BOOL Save_NumModifiedPCBoxesIsMany(SaveData *saveData) {
+BOOL Save_NumModifiedPCBoxesIsMany(SaveData *saveData)
+{
     return Save_CalcNumModifiedPCBoxes(saveData) >= 6;
 }
 
-void SetAllPCBoxesModified(void) {
+void SetAllPCBoxesModified(void)
+{
     Save_SetAllPCBoxesModified(sSaveDataPtr);
 }
 
-static u32 Save_CalcNumModifiedPCBoxes(SaveData *saveData) {
+static u32 Save_CalcNumModifiedPCBoxes(SaveData *saveData)
+{
     return PCModifiedFlags_CountModifiedBoxes(Save_CalcPCBoxModifiedFlags(saveData));
 }
 
-void Save_PrepareForAsyncWrite(SaveData *saveData, int a1) {
+void Save_PrepareForAsyncWrite(SaveData *saveData, int a1)
+{
     Save_WriteManInit(saveData, &saveData->asyncWriteMan, a1);
 }
 
-int Save_WriteFileAsync(SaveData *saveData) {
+int Save_WriteFileAsync(SaveData *saveData)
+{
     int ret;
 
     if (saveData->asyncWriteMan.curSector == 1) {
@@ -279,34 +301,41 @@ int Save_WriteFileAsync(SaveData *saveData) {
     return ret;
 }
 
-void Save_Cancel(SaveData *saveData) {
+void Save_Cancel(SaveData *saveData)
+{
     CancelAsyncSave(saveData, &saveData->asyncWriteMan);
 }
 
-static void SaveFooterDebugPrn(struct SaveChunkFooter *footer) {
+static void SaveFooterDebugPrn(struct SaveChunkFooter *footer)
+{
 #pragma unused(footer)
 }
 
-static void DebugPrn_MirrorValid(BOOL unk) {
+static void DebugPrn_MirrorValid(BOOL unk)
+{
 #pragma unused(unk)
 }
 
-static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *check) {
+static void SaveSlotCheck_InitDummy(struct SaveSlotCheck *check)
+{
     check->valid = FALSE;
     check->count = 0;
 }
 
-u16 SaveArray_CalcCRC16(SaveData *saveData, const void *data, u32 size) {
+u16 SaveArray_CalcCRC16(SaveData *saveData, const void *data, u32 size)
+{
 #pragma unused(saveData)
     return GF_CalcCRC16(data, size);
 }
 
-static u16 SaveArray_CalcCRC16MinusFooter(SaveData *saveData, const void *data, u32 size) {
+static u16 SaveArray_CalcCRC16MinusFooter(SaveData *saveData, const void *data, u32 size)
+{
 #pragma unused(saveData)
     return GF_CalcCRC16(data, size - sizeof(struct SaveArrayFooter));
 }
 
-static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec) {
+static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec)
+{
     u32 adrs;
     if (slot == 0) {
         adrs = 0;
@@ -316,7 +345,8 @@ static u32 GetChunkOffsetFromCurrentSaveSlot(u32 slot, struct SaveSlotSpec *spec
     return adrs + spec->offset;
 }
 
-static struct SaveChunkFooter *GetSaveSectorFooterPtr(SaveData *saveData, void *data, int idx) {
+static struct SaveChunkFooter *GetSaveSectorFooterPtr(SaveData *saveData, void *data, int idx)
+{
     u8 *ret;
     struct SaveSlotSpec *spec;
 
@@ -326,7 +356,8 @@ static struct SaveChunkFooter *GetSaveSectorFooterPtr(SaveData *saveData, void *
     return (struct SaveChunkFooter *)(ret + spec->size - sizeof(struct SaveChunkFooter));
 }
 
-static BOOL ValidateSaveSectorFooter(SaveData *saveData, void *data, int idx) {
+static BOOL ValidateSaveSectorFooter(SaveData *saveData, void *data, int idx)
+{
     struct SaveSlotSpec *spec;
     struct SaveChunkFooter *footer;
     u32 offset;
@@ -347,7 +378,8 @@ static BOOL ValidateSaveSectorFooter(SaveData *saveData, void *data, int idx) {
     return SaveArray_CalcCRC16MinusFooter(saveData, (u8 *)data + offset, spec->size) == footer->crc;
 }
 
-static void SaveSlotCheck_InitFromSavedat(struct SaveSlotCheck *check, SaveData *saveData, void *data, int idx) {
+static void SaveSlotCheck_InitFromSavedat(struct SaveSlotCheck *check, SaveData *saveData, void *data, int idx)
+{
     struct SaveChunkFooter *footer;
 
     footer = GetSaveSectorFooterPtr(saveData, data, idx);
@@ -359,7 +391,8 @@ static void SaveSlotCheck_InitFromSavedat(struct SaveSlotCheck *check, SaveData 
     }
 }
 
-static void SaveSlot_BuildFooter(SaveData *saveData, void *data, int idx) {
+static void SaveSlot_BuildFooter(SaveData *saveData, void *data, int idx)
+{
     struct SaveSlotSpec *spec;
     struct SaveChunkFooter *footer;
     u32 offset;
@@ -375,7 +408,8 @@ static void SaveSlot_BuildFooter(SaveData *saveData, void *data, int idx) {
     SaveFooterDebugPrn(footer);
 }
 
-static int SaveCounterCompare(u32 stat1, u32 stat2) {
+static int SaveCounterCompare(u32 stat1, u32 stat2)
+{
     if (stat1 == -1 && stat2 == 0) {
         return -1;
     }
@@ -388,7 +422,8 @@ static int SaveCounterCompare(u32 stat1, u32 stat2) {
     return -((stat1 < stat2) ? 1 : 0);
 }
 
-static u32 SaveSlotCheckCompare(struct SaveSlotCheck *first, struct SaveSlotCheck *second, u32 *ret1_p, u32 *ret2_p) {
+static u32 SaveSlotCheckCompare(struct SaveSlotCheck *first, struct SaveSlotCheck *second, u32 *ret1_p, u32 *ret2_p)
+{
     int r0;
 
     r0 = SaveCounterCompare(first->count, second->count);
@@ -420,13 +455,15 @@ static u32 SaveSlotCheckCompare(struct SaveSlotCheck *first, struct SaveSlotChec
     return 0;
 }
 
-static void Save_RecordWhichLatestGoodSector(SaveData *saveData, struct SaveSlotCheck *checks_main, struct SaveSlotCheck *checks_sub, int idx) {
+static void Save_RecordWhichLatestGoodSector(SaveData *saveData, struct SaveSlotCheck *checks_main, struct SaveSlotCheck *checks_sub, int idx)
+{
 #pragma unused(checks_sub)
     saveData->saveCounter = checks_main[idx].count;
     saveData->lastGoodSector = idx;
 }
 
-static int Save_GetSaveFilesStatus(SaveData *saveData) {
+static int Save_GetSaveFilesStatus(SaveData *saveData)
+{
     u8 *data1;
     u8 *data2;
 
@@ -525,7 +562,8 @@ static int Save_GetSaveFilesStatus(SaveData *saveData) {
     return LOAD_STATUS_TOTAL_FAIL;
 }
 
-static void Save_CheckFrontierData(SaveData *saveData, int *err1, int *err2) {
+static void Save_CheckFrontierData(SaveData *saveData, int *err1, int *err2)
+{
     SAVE_MISC_DATA *misc;
     int sp14;
     int sp10;
@@ -561,11 +599,13 @@ static void Save_CheckFrontierData(SaveData *saveData, int *err1, int *err2) {
     }
 }
 
-static BOOL FlashLoadSaveDataFromChunk(u32 slot, struct SaveSlotSpec *spec, void *dest) {
+static BOOL FlashLoadSaveDataFromChunk(u32 slot, struct SaveSlotSpec *spec, void *dest)
+{
     return FlashLoadChunk(GetChunkOffsetFromCurrentSaveSlot(slot, spec), (u8 *)dest + spec->offset, spec->size);
 }
 
-static BOOL Save_LoadDynamicRegion(SaveData *saveData) {
+static BOOL Save_LoadDynamicRegion(SaveData *saveData)
+{
     int i;
     u8 *data;
     u32 pc_offs;
@@ -593,7 +633,8 @@ static BOOL Save_LoadDynamicRegion(SaveData *saveData) {
     return TRUE;
 }
 
-static int Save_WriteSlotAsync(SaveData *saveData, int idx, u8 slot) {
+static int Save_WriteSlotAsync(SaveData *saveData, int idx, u8 slot)
+{
     struct SaveSlotSpec *spec;
 
     spec = &saveData->saveSlotSpecs[idx];
@@ -601,7 +642,8 @@ static int Save_WriteSlotAsync(SaveData *saveData, int idx, u8 slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec), saveData->dynamic_region + spec->offset, spec->size - sizeof(struct SaveChunkFooter));
 }
 
-static int Save_WriteChunkFooterAsync(SaveData *saveData, int idx, u8 slot) {
+static int Save_WriteChunkFooterAsync(SaveData *saveData, int idx, u8 slot)
+{
     struct SaveSlotSpec *spec;
     u32 size;
 
@@ -610,7 +652,8 @@ static int Save_WriteChunkFooterAsync(SaveData *saveData, int idx, u8 slot) {
     return FlashWriteChunkInternal(GetChunkOffsetFromCurrentSaveSlot(slot, spec) + size - sizeof(struct SaveChunkFooter), saveData->dynamic_region + spec->offset + size - sizeof(struct SaveChunkFooter), sizeof(struct SaveChunkFooter));
 }
 
-static void Save_WriteManInit(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2) {
+static void Save_WriteManInit(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2)
+{
 #pragma unused(a2)
     sub_0202C714(saveData);
     Save_Frontier_Commit(saveData);
@@ -628,7 +671,8 @@ static void Save_WriteManInit(SaveData *saveData, struct AsyncWriteManager *writ
     Sys_SetSleepDisableFlag(1);
 }
 
-static int HandleWriteSaveAsync_NormalData(SaveData *saveData, struct AsyncWriteManager *writeMan) {
+static int HandleWriteSaveAsync_NormalData(SaveData *saveData, struct AsyncWriteManager *writeMan)
+{
     BOOL result;
     switch (writeMan->state) {
     case 0:
@@ -671,7 +715,8 @@ static int HandleWriteSaveAsync_NormalData(SaveData *saveData, struct AsyncWrite
     return WRITE_STATUS_CONTINUE;
 }
 
-static void Save_WriteManFinish(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2) {
+static void Save_WriteManFinish(SaveData *saveData, struct AsyncWriteManager *writeMan, int a2)
+{
     saveData->numModifiedBoxes = 0;
     saveData->nextBoxToWrite = 0;
     if (a2 == 3) {
@@ -690,7 +735,8 @@ static void Save_WriteManFinish(SaveData *saveData, struct AsyncWriteManager *wr
     Sys_ClearSleepDisableFlag(1);
 }
 
-static void CancelAsyncSave(SaveData *saveData, struct AsyncWriteManager *writeMan) {
+static void CancelAsyncSave(SaveData *saveData, struct AsyncWriteManager *writeMan)
+{
     if (writeMan->rollbackCounter) {
         saveData->saveCounter = writeMan->count;
     }
@@ -705,7 +751,8 @@ static void CancelAsyncSave(SaveData *saveData, struct AsyncWriteManager *writeM
     Sys_ClearSleepDisableFlag(1);
 }
 
-static int _NowWriteFlash(SaveData *saveData) {
+static int _NowWriteFlash(SaveData *saveData)
+{
     struct AsyncWriteManager writeManager;
     int ret;
 
@@ -721,7 +768,8 @@ static int _NowWriteFlash(SaveData *saveData) {
     return ret;
 }
 
-static int FlashClobberChunkFooter(SaveData *saveData, int spec, int sector) {
+static int FlashClobberChunkFooter(SaveData *saveData, int spec, int sector)
+{
     struct SaveChunkFooter sp0;
     struct SaveSlotSpec *slotSpec;
 
@@ -730,7 +778,8 @@ static int FlashClobberChunkFooter(SaveData *saveData, int spec, int sector) {
     return FlashWriteChunk(GetChunkOffsetFromCurrentSaveSlot(sector, slotSpec) + slotSpec->size - sizeof(struct SaveChunkFooter), &sp0, sizeof(struct SaveChunkFooter));
 }
 
-static u32 GetSaveChunkSizePlusCRC(int idx) {
+static u32 GetSaveChunkSizePlusCRC(int idx)
+{
     u32 size;
     const struct SaveChunkHeader *hdr;
 
@@ -741,7 +790,8 @@ static u32 GetSaveChunkSizePlusCRC(int idx) {
     return size;
 }
 
-static void SaveData_InitSubstructs(struct SaveArrayHeader *arr_hdr) {
+static void SaveData_InitSubstructs(struct SaveArrayHeader *arr_hdr)
+{
     int i;
     const struct SaveChunkHeader *hdr;
     int adrs;
@@ -767,7 +817,8 @@ static void SaveData_InitSubstructs(struct SaveArrayHeader *arr_hdr) {
     GF_ASSERT(adrs <= SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
 }
 
-static void SaveData_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SaveArrayHeader *headers) {
+static void SaveData_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SaveArrayHeader *headers)
+{
     int i;
     int adrs;
     int npage;
@@ -796,7 +847,8 @@ static void SaveData_InitSlotSpecs(struct SaveSlotSpec *slotSpecs, struct SaveAr
     GF_ASSERT(npage <= SAVE_PAGE_MAX);
 }
 
-static void Save_InitDynamicRegion_Internal(u8 *dynamic_region, struct SaveArrayHeader *headers) {
+static void Save_InitDynamicRegion_Internal(u8 *dynamic_region, struct SaveArrayHeader *headers)
+{
     const struct SaveChunkHeader *chunkHeaders;
     int i;
     u32 adrs;
@@ -812,7 +864,8 @@ static void Save_InitDynamicRegion_Internal(u8 *dynamic_region, struct SaveArray
     }
 }
 
-void Save_WipeExtraChunks(SaveData *saveData) {
+void Save_WipeExtraChunks(SaveData *saveData)
+{
     const struct ExtraSaveChunkHeader *chunkHeaders;
     int i;
     void *data;
@@ -837,7 +890,8 @@ void Save_WipeExtraChunks(SaveData *saveData) {
     Save_SetExtraChunksExist(saveData);
 }
 
-static void CreateChunkFooter(SaveData *saveData, void *data, int idx, u32 size) {
+static void CreateChunkFooter(SaveData *saveData, void *data, int idx, u32 size)
+{
     struct SaveArrayFooter *footer;
 
     footer = (struct SaveArrayFooter *)((u8 *)data + size);
@@ -849,7 +903,8 @@ static void CreateChunkFooter(SaveData *saveData, void *data, int idx, u32 size)
     footer->crc = GF_CalcCRC16(data, size + offsetof(struct SaveArrayFooter, crc));
 }
 
-static BOOL ValidateChunk(SaveData *saveData, void *data, int idx, u32 size) {
+static BOOL ValidateChunk(SaveData *saveData, void *data, int idx, u32 size)
+{
 #pragma unused(saveData)
     struct SaveArrayFooter *footer;
 
@@ -867,7 +922,8 @@ static BOOL ValidateChunk(SaveData *saveData, void *data, int idx, u32 size) {
     return footer->crc == GF_CalcCRC16(data, size + offsetof(struct SaveArrayFooter, crc));
 }
 
-static u32 SaveArray_GetFooterSaveNo(void *data, u32 size) {
+static u32 SaveArray_GetFooterSaveNo(void *data, u32 size)
+{
     struct SaveArrayFooter *footer;
 
     footer = (struct SaveArrayFooter *)((u8 *)data + size);
@@ -875,7 +931,8 @@ static u32 SaveArray_GetFooterSaveNo(void *data, u32 size) {
     return footer->saveno;
 }
 
-int WriteExtraSaveChunk(SaveData *saveData, int idx, void *data) {
+int WriteExtraSaveChunk(SaveData *saveData, int idx, void *data)
+{
     const struct ExtraSaveChunkHeader *hdr;
     u32 size;
     int ret;
@@ -910,7 +967,8 @@ int WriteExtraSaveChunk(SaveData *saveData, int idx, void *data) {
     return 3;
 }
 
-int sub_02028230(SaveData *saveData, int idx, void *data) {
+int sub_02028230(SaveData *saveData, int idx, void *data)
+{
     const struct ExtraSaveChunkHeader *hdr;
     u32 size;
     int ret;
@@ -947,7 +1005,8 @@ int sub_02028230(SaveData *saveData, int idx, void *data) {
     return WRITE_STATUS_TOTAL_FAIL;
 }
 
-void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p) {
+void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p)
+{
     const struct ExtraSaveChunkHeader *hdr;
     u32 size;
     void *ret;
@@ -1001,7 +1060,8 @@ void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p)
     return ret;
 }
 
-void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p) {
+void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p)
+{
     const struct ExtraSaveChunkHeader *hdr;
     u32 sp2C;
     u32 sp28;
@@ -1075,15 +1135,18 @@ void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *
     return ret;
 }
 
-static void sub_020286B4(SaveData *saveData, int a1, u32 *a2, u32 *a3, u8 *a4) {
+static void sub_020286B4(SaveData *saveData, int a1, u32 *a2, u32 *a3, u8 *a4)
+{
     sub_0202AC38(Save_Misc_Get(saveData), a1, a2, a3, a4);
 }
 
-static void sub_020286D4(SaveData *saveData, int a1, u32 a2, u32 a3, u8 a4) {
+static void sub_020286D4(SaveData *saveData, int a1, u32 a2, u32 a3, u8 a4)
+{
     sub_0202AC60(Save_Misc_Get(saveData), a1, a2, a3, a4);
 }
 
-static BOOL SaveDetectFlash(void) {
+static BOOL SaveDetectFlash(void)
+{
     s32 lockId;
     CARDBackupType flash_id;
 
@@ -1102,7 +1165,8 @@ static BOOL SaveDetectFlash(void) {
     return flash_id != CARD_BACKUP_TYPE_NOT_USE;
 }
 
-static s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
+static s32 FlashWriteChunk(u32 offset, void *data, u32 size)
+{
     int stat;
     s32 lockId;
     lockId = FlashWriteChunkInternal(offset, data, size);
@@ -1110,7 +1174,8 @@ static s32 FlashWriteChunk(u32 offset, void *data, u32 size) {
     return stat;
 }
 
-static BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
+static BOOL FlashLoadChunk(u32 offset, void *data, u32 size)
+{
     u32 lock;
     BOOL result;
 
@@ -1128,12 +1193,14 @@ static BOOL FlashLoadChunk(u32 offset, void *data, u32 size) {
     return result;
 }
 
-static void FlashWriteCommandCallback(void *arg) {
+static void FlashWriteCommandCallback(void *arg)
+{
 #pragma unused(arg)
     saveWritten = TRUE;
 }
 
-static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
+static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size)
+{
     s32 lock;
     u32 sp14;
 
@@ -1148,7 +1215,8 @@ static s32 FlashWriteChunkInternal(u32 offset, void *data, u32 size) {
     return lock;
 }
 
-static BOOL WaitFlashWrite(s32 lockId, BOOL checkResult, BOOL *resultSuccess) {
+static BOOL WaitFlashWrite(s32 lockId, BOOL checkResult, BOOL *resultSuccess)
+{
     if (saveWritten == TRUE) {
         if (!checkResult) {
             return TRUE;
@@ -1172,14 +1240,16 @@ static BOOL WaitFlashWrite(s32 lockId, BOOL checkResult, BOOL *resultSuccess) {
     return FALSE;
 }
 
-static void SaveErrorHandling(s32 lockId, int code) {
+static void SaveErrorHandling(s32 lockId, int code)
+{
     CARD_UnlockBackup(lockId);
     OS_ReleaseLockID(lockId);
     Heap_Free(sSaveDataPtr);
     ShowSaveDataWriteError(HEAP_ID_1, code);
 }
 
-BOOL SaveSubstruct_AssertCRC(int idx) {
+BOOL SaveSubstruct_AssertCRC(int idx)
+{
     u8 *data;
     int size;
     u16 *data_u16;
@@ -1197,7 +1267,8 @@ BOOL SaveSubstruct_AssertCRC(int idx) {
     return FALSE;
 }
 
-void SaveSubstruct_UpdateCRC(int idx) {
+void SaveSubstruct_UpdateCRC(int idx)
+{
     u8 *data;
     int size;
     u16 *data_u16;
@@ -1210,7 +1281,8 @@ void SaveSubstruct_UpdateCRC(int idx) {
     data_u16[size / 2] = crc;
 }
 
-static int HandleWriteSaveAsync_PCBoxes(SaveData *saveData, struct AsyncWriteManager *writeMan) {
+static int HandleWriteSaveAsync_PCBoxes(SaveData *saveData, struct AsyncWriteManager *writeMan)
+{
     u32 r7;
     int r0;
     int sp0;
@@ -1271,7 +1343,8 @@ static int HandleWriteSaveAsync_PCBoxes(SaveData *saveData, struct AsyncWriteMan
     return WRITE_STATUS_CONTINUE;
 }
 
-static int Save_WritePCBoxes(SaveData *saveData, struct AsyncWriteManager *writeMan) {
+static int Save_WritePCBoxes(SaveData *saveData, struct AsyncWriteManager *writeMan)
+{
     int write_ok;
 
     switch (writeMan->state_sub) {
@@ -1316,7 +1389,8 @@ static int Save_WritePCBoxes(SaveData *saveData, struct AsyncWriteManager *write
     return 2;
 }
 
-static int Save_WriteNextPCBox(SaveData *saveData, struct SaveSlotSpec *spec, u8 slot) {
+static int Save_WriteNextPCBox(SaveData *saveData, struct SaveSlotSpec *spec, u8 slot)
+{
     u32 boxno;
     u32 box_size;
     u32 offset;
@@ -1328,7 +1402,8 @@ static int Save_WriteNextPCBox(SaveData *saveData, struct SaveSlotSpec *spec, u8
     return FlashWriteChunkInternal(offset + box_size * boxno, saveData->dynamic_region + spec->offset + box_size * boxno, box_size);
 }
 
-static int Save_WritePCFooter(SaveData *saveData, struct SaveSlotSpec *spec, u8 slot) {
+static int Save_WritePCFooter(SaveData *saveData, struct SaveSlotSpec *spec, u8 slot)
+{
     u32 sector_size;
     struct SaveChunkFooter *footer;
     u32 spec_offset;
@@ -1351,7 +1426,8 @@ static int Save_WritePCFooter(SaveData *saveData, struct SaveSlotSpec *spec, u8 
     return FlashWriteChunkInternal(offset + pc_size, data + pc_size, sector_size - pc_size);
 }
 
-static u32 Save_CalcPCBoxModifiedFlags(SaveData *saveData) {
+static u32 Save_CalcPCBoxModifiedFlags(SaveData *saveData)
+{
     u32 ret;
 
     ret = Save_GetPCBoxModifiedFlags(saveData);
@@ -1362,7 +1438,8 @@ static u32 Save_CalcPCBoxModifiedFlags(SaveData *saveData) {
     return ret;
 }
 
-static u32 PCModifiedFlags_CountModifiedBoxes(u32 flags) {
+static u32 PCModifiedFlags_CountModifiedBoxes(u32 flags)
+{
     u8 i, n;
     u32 t;
 
@@ -1378,7 +1455,8 @@ static u32 PCModifiedFlags_CountModifiedBoxes(u32 flags) {
     return n;
 }
 
-static u32 PCModifiedFlags_GetIndexOfNthModifiedBox(u32 flags, u8 last) {
+static u32 PCModifiedFlags_GetIndexOfNthModifiedBox(u32 flags, u8 last)
+{
     u8 i, n;
     u32 t;
 

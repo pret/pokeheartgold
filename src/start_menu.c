@@ -206,11 +206,13 @@ static const u8 sPockets[] = {
     POCKET_BAG_VIEW_END
 };
 
-BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem) {
+BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem)
+{
     return MapHeader_GetMapSec(fieldSystem->location->mapId) != MAPSEC_MYSTERY_ZONE;
 }
 
-void sub_0203BC28(FieldSystem *fieldSystem) {
+void sub_0203BC28(FieldSystem *fieldSystem)
+{
     StartMenuTaskData *startMenu = StartMenu_Create();
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Safari(fieldSystem);
@@ -230,7 +232,8 @@ void sub_0203BC28(FieldSystem *fieldSystem) {
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }
 
-void sub_0203BCDC(FieldSystem *fieldSystem) {
+void sub_0203BCDC(FieldSystem *fieldSystem)
+{
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->inhibitIconFlags = sub_0203BEE0(fieldSystem);
     startMenu->unk_350 = TRUE;
@@ -240,7 +243,8 @@ void sub_0203BCDC(FieldSystem *fieldSystem) {
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }
 
-void sub_0203BD20(FieldSystem *fieldSystem) {
+void sub_0203BD20(FieldSystem *fieldSystem)
+{
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->inhibitIconFlags = sub_0203BEE8(fieldSystem);
     startMenu->unk_350 = FALSE;
@@ -250,7 +254,8 @@ void sub_0203BD20(FieldSystem *fieldSystem) {
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }
 
-void sub_0203BD64(FieldSystem *fieldSystem) {
+void sub_0203BD64(FieldSystem *fieldSystem)
+{
     PlaySE(SEQ_SE_DP_WIN_OPEN);
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->unk_350 = FALSE;
@@ -273,7 +278,8 @@ void sub_0203BD64(FieldSystem *fieldSystem) {
     TaskManager_Jump(fieldSystem->taskman, Task_StartMenu, startMenu);
 }
 
-static StartMenuTaskData *StartMenu_Create(void) {
+static StartMenuTaskData *StartMenu_Create(void)
+{
     StartMenuTaskData *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(StartMenuTaskData));
     MI_CpuClearFast(ret, sizeof(StartMenuTaskData));
     ret->state = 0;
@@ -282,7 +288,8 @@ static StartMenuTaskData *StartMenu_Create(void) {
     return ret;
 }
 
-static u32 FieldSystem_GetStartMenuButtonInhibitFlags_Normal(FieldSystem *fieldSystem) {
+static u32 FieldSystem_GetStartMenuButtonInhibitFlags_Normal(FieldSystem *fieldSystem)
+{
     u32 ret = 0;
     if (!CheckGotPokedex(Save_VarsFlags_Get(fieldSystem->saveData))) {
         ret |= (1 << START_MENU_ACTION_DISABLE_POKEDEX);
@@ -303,31 +310,38 @@ static u32 FieldSystem_GetStartMenuButtonInhibitFlags_Normal(FieldSystem *fieldS
     return ret;
 }
 
-static u32 FieldSystem_GetStartMenuButtonInhibitFlags_Safari(FieldSystem *fieldSystem) {
+static u32 FieldSystem_GetStartMenuButtonInhibitFlags_Safari(FieldSystem *fieldSystem)
+{
     return (1 << START_MENU_ACTION_DISABLE_SAVE) | (1 << START_MENU_ACTION_DISABLE_7);
 }
 
-static u32 FieldSystem_GetStartMenuButtonInhibitFlags_BugContest(FieldSystem *fieldSystem) {
+static u32 FieldSystem_GetStartMenuButtonInhibitFlags_BugContest(FieldSystem *fieldSystem)
+{
     return (1 << START_MENU_ACTION_DISABLE_BAG) | (1 << START_MENU_ACTION_DISABLE_SAVE) | (1 << START_MENU_ACTION_DISABLE_7);
 }
 
-static u32 FieldSystem_GetStartMenuButtonInhibitFlags_PalPark(FieldSystem *fieldSystem) {
+static u32 FieldSystem_GetStartMenuButtonInhibitFlags_PalPark(FieldSystem *fieldSystem)
+{
     return (1 << START_MENU_ACTION_DISABLE_BAG) | (1 << START_MENU_ACTION_DISABLE_SAVE) | (1 << START_MENU_ACTION_DISABLE_7);
 }
 
-static u32 FieldSystem_GetStartMenuButtonInhibitFlags_BattleTowerMultiPartnerSelectRoom(FieldSystem *fieldSystem) {
+static u32 FieldSystem_GetStartMenuButtonInhibitFlags_BattleTowerMultiPartnerSelectRoom(FieldSystem *fieldSystem)
+{
     return (1 << START_MENU_ACTION_DISABLE_POKEDEX) | (1 << START_MENU_ACTION_DISABLE_BAG) | (1 << START_MENU_ACTION_DISABLE_SAVE) | (1 << START_MENU_ACTION_DISABLE_7) | (1 << START_MENU_ACTION_DISABLE_RETIRE) | (1 << START_MENU_ACTION_DISABLE_POKEGEAR);
 }
 
-static u32 sub_0203BEE0(FieldSystem *fieldSystem) {
+static u32 sub_0203BEE0(FieldSystem *fieldSystem)
+{
     return (1 << START_MENU_ACTION_DISABLE_SAVE) | (1 << START_MENU_ACTION_DISABLE_RETIRE);
 }
 
-static u32 sub_0203BEE8(FieldSystem *fieldSystem) {
+static u32 sub_0203BEE8(FieldSystem *fieldSystem)
+{
     return (1 << START_MENU_ACTION_DISABLE_POKEDEX) | (1 << START_MENU_ACTION_DISABLE_SAVE) | (1 << START_MENU_ACTION_DISABLE_7) | (1 << START_MENU_ACTION_DISABLE_RETIRE) | (1 << START_MENU_ACTION_DISABLE_POKEGEAR);
 }
 
-static BOOL Task_StartMenu(TaskManager *taskManager) {
+static BOOL Task_StartMenu(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -449,7 +463,8 @@ static BOOL Task_StartMenu(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void Task_StartMenu_DrawCursor(TaskManager *taskManager) {
+static void Task_StartMenu_DrawCursor(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -468,7 +483,8 @@ static void Task_StartMenu_DrawCursor(TaskManager *taskManager) {
     StartMenu_CreateCursor(startMenu, startMenu->insertionOrder, numActiveButtons, PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(fieldSystem->saveData)));
 }
 
-static void StartMenuButton_Insert(u8 *insertionOrderDest, u8 *displayOrderDest, u32 *pLength, u8 item, vu32 position) {
+static void StartMenuButton_Insert(u8 *insertionOrderDest, u8 *displayOrderDest, u32 *pLength, u8 item, vu32 position)
+{
     insertionOrderDest[*pLength] = item;
     if (position == -1u) {
         position = *pLength;
@@ -477,7 +493,8 @@ static void StartMenuButton_Insert(u8 *insertionOrderDest, u8 *displayOrderDest,
     ++(*pLength);
 }
 
-static u32 StartMenu_BuildActionLists(StartMenuTaskData *startMenu, u8 *insertionOrderDest, u8 *displayOrderDest) {
+static u32 StartMenu_BuildActionLists(StartMenuTaskData *startMenu, u8 *insertionOrderDest, u8 *displayOrderDest)
+{
     u32 numIcons = 0;
 
     if (!(startMenu->inhibitIconFlags & (1 << START_MENU_ACTION_DISABLE_RETIRE))) {
@@ -519,17 +536,20 @@ static u32 StartMenu_BuildActionLists(StartMenuTaskData *startMenu, u8 *insertio
     return numIcons;
 }
 
-static void sub_0203C38C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem) {
+static void sub_0203C38C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem)
+{
     StartMenu_DestroyCursor(startMenu);
     FillBgTilemapRect(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 0, 0x20, 0x18, 0);
     startMenu->cursorActive = FALSE;
 }
 
-static BOOL FieldSystem_StartMenuActionIsAvailable(FieldSystem *fieldSystem, StartMenuAction action) {
+static BOOL FieldSystem_StartMenuActionIsAvailable(FieldSystem *fieldSystem, StartMenuAction action)
+{
     return FieldSystem_ShouldDrawStartMenuIcon(fieldSystem, (StartMenuIcon)sActionToIconIndex[action]);
 }
 
-BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon icon) {
+BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon icon)
+{
     switch (icon) {
     case START_MENU_ICON_POKEDEX:
         return CheckGotPokedex(Save_VarsFlags_Get(fieldSystem->saveData));
@@ -552,13 +572,15 @@ BOOL FieldSystem_ShouldDrawStartMenuIcon(FieldSystem *fieldSystem, StartMenuIcon
     }
 }
 
-static void FieldSystem_ResetGearRingManagerIfNotSelectingSaveOrPokegear(FieldSystem *fieldSystem) {
+static void FieldSystem_ResetGearRingManagerIfNotSelectingSaveOrPokegear(FieldSystem *fieldSystem)
+{
     if (fieldSystem->lastStartMenuAction != START_MENU_ACTION_SAVE && fieldSystem->lastStartMenuAction != START_MENU_ACTION_POKEGEAR) {
         GearPhoneRingManager_ResetIfActive(fieldSystem->phoneRingManager);
     }
 }
 
-static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -585,7 +607,8 @@ static BOOL Task_StartMenu_HandleInput(TaskManager *taskManager) {
     return TRUE;
 }
 
-static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
+static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu)
+{
     if (fieldSystem->unkD3 < startMenu->numActiveButtons) {
         PlaySE(SEQ_SE_DP_SELECT);
         MenuInputStateMgr_SetState(&fieldSystem->menuInputState, MENU_INPUT_STATE_BUTTONS);
@@ -607,7 +630,8 @@ static BOOL StartMenu_HandleKeyInput(TaskManager *taskManager, FieldSystem *fiel
     return TRUE;
 }
 
-static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
+static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fieldSystem, StartMenuTaskData *startMenu)
+{
     if (fieldSystem->lastTouchMenuInput != 0) {
         MenuInputStateMgr_SetState(&fieldSystem->menuInputState, MENU_INPUT_STATE_TOUCH);
     }
@@ -651,7 +675,8 @@ static BOOL StartMenu_HandleTouchInput(TaskManager *taskManager, FieldSystem *fi
     return TRUE;
 }
 
-static void sub_0203C69C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem) {
+static void sub_0203C69C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem)
+{
     if (sub_02035650() && startMenu->unk_350) {
         sub_0205AD0C(fieldSystem->unk84);
         sub_02037FF0();
@@ -659,7 +684,8 @@ static void sub_0203C69C(StartMenuTaskData *startMenu, FieldSystem *fieldSystem)
     }
 }
 
-static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2, u8 gender) {
+static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2, u8 gender)
+{
     startMenu->spriteList = G2dRenderer_Init(1, &startMenu->g2dRenderer, HEAP_ID_FIELD);
     for (int i = 0; i < 4; ++i) {
         startMenu->gfxResMan[i] = Create2DGfxResObjMan(1, (GfGfxResType)i, HEAP_ID_FIELD);
@@ -692,7 +718,8 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu) {
+static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu)
+{
     sub_0200AEB0(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     for (u16 i = 0; i < 4; ++i) {
@@ -701,7 +728,8 @@ static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu) {
     SpriteList_Delete(startMenu->spriteList);
 }
 
-static void Task_StartMenu_WaitFade(TaskManager *taskManager) {
+static void Task_StartMenu_WaitFade(TaskManager *taskManager)
+{
     if (IsPaletteFadeFinished()) {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
         StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
@@ -713,7 +741,8 @@ static void Task_StartMenu_WaitFade(TaskManager *taskManager) {
     }
 }
 
-static void Task_StartMenu_WaitApp(TaskManager *taskManager) {
+static void Task_StartMenu_WaitApp(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -725,12 +754,14 @@ static void Task_StartMenu_WaitApp(TaskManager *taskManager) {
     }
 }
 
-void StartMenu_SetExitTaskFunc(StartMenuTaskData *startMenu, TaskFunc func) {
+void StartMenu_SetExitTaskFunc(StartMenuTaskData *startMenu, TaskFunc func)
+{
     startMenu->exitTaskFunc = func;
     startMenu->state = START_MENU_STATE_WAIT_APP;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Pokedex(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Pokedex(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -739,7 +770,8 @@ static BOOL Task_StartMenu_HandleSelection_Pokedex(TaskManager *taskManager) {
     return TRUE;
 }
 
-static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
+static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -777,7 +809,8 @@ static BOOL Task_StartMenu_OpenPokedex(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleReturn_Pokedex(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleReturn_Pokedex(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -789,7 +822,8 @@ static BOOL Task_StartMenu_HandleReturn_Pokedex(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Pokemon(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Pokemon(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -798,7 +832,8 @@ static BOOL Task_StartMenu_HandleSelection_Pokemon(TaskManager *taskManager) {
     return TRUE;
 }
 
-static BOOL Task_StartMenu_Pokemon(TaskManager *taskManager) {
+static BOOL Task_StartMenu_Pokemon(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -807,7 +842,8 @@ static BOOL Task_StartMenu_Pokemon(TaskManager *taskManager) {
     return FALSE;
 }
 
-BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
+BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -985,7 +1021,8 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Bag(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Bag(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -994,7 +1031,8 @@ static BOOL Task_StartMenu_HandleSelection_Bag(TaskManager *taskManager) {
     return TRUE;
 }
 
-static BOOL Task_StartMenu_Bag(TaskManager *taskManager) {
+static BOOL Task_StartMenu_Bag(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1005,7 +1043,8 @@ static BOOL Task_StartMenu_Bag(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem, StartMenuTaskData *startMenu) {
+static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem, StartMenuTaskData *startMenu)
+{
     memset(partyMenuArgs, 0, sizeof(PartyMenuArgs));
     partyMenuArgs->party = SaveArray_Party_Get(fieldSystem->saveData);
     partyMenuArgs->bag = Save_Bag_Get(fieldSystem->saveData);
@@ -1017,7 +1056,8 @@ static void sub_0203CF74(PartyMenuArgs *partyMenuArgs, FieldSystem *fieldSystem,
     partyMenuArgs->menuInputStatePtr = &fieldSystem->menuInputState;
 }
 
-static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1089,7 +1129,8 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_TrainerCard(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_TrainerCard(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -1098,7 +1139,8 @@ static BOOL Task_StartMenu_HandleSelection_TrainerCard(TaskManager *taskManager)
     return TRUE;
 }
 
-static BOOL sub_0203D1CC(TaskManager *taskManager) {
+static BOOL sub_0203D1CC(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1110,7 +1152,8 @@ static BOOL sub_0203D1CC(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL sub_0203D218(TaskManager *taskManager) {
+static BOOL sub_0203D218(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1120,7 +1163,8 @@ static BOOL sub_0203D218(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Save(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Save(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
@@ -1129,7 +1173,8 @@ static BOOL Task_StartMenu_HandleSelection_Save(TaskManager *taskManager) {
     return TRUE;
 }
 
-static void sub_0203D264(TaskManager *taskManager) {
+static void sub_0203D264(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1138,7 +1183,8 @@ static void sub_0203D264(TaskManager *taskManager) {
     }
 }
 
-static void sub_0203D288(TaskManager *taskManager) {
+static void sub_0203D288(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1152,7 +1198,8 @@ static void sub_0203D288(TaskManager *taskManager) {
     }
 }
 
-static BOOL sub_0203D2CC(TaskManager *taskManager) {
+static BOOL sub_0203D2CC(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
@@ -1161,21 +1208,24 @@ static BOOL sub_0203D2CC(TaskManager *taskManager) {
     return TRUE;
 }
 
-static void sub_0203D2EC(TaskManager *taskManager) {
+static void sub_0203D2EC(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
     startMenu->state = START_MENU_STATE_20;
 }
 
-static void sub_0203D304(TaskManager *taskManager) {
+static void sub_0203D304(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     startMenu->state = START_MENU_STATE_CLOSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Options(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Options(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -1184,7 +1234,8 @@ static BOOL Task_StartMenu_HandleSelection_Options(TaskManager *taskManager) {
     return TRUE;
 }
 
-static BOOL Task_StartMenu_Options(TaskManager *taskManager) {
+static BOOL Task_StartMenu_Options(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1193,7 +1244,8 @@ static BOOL Task_StartMenu_Options(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleReturn_Options(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleReturn_Options(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1203,7 +1255,8 @@ static BOOL Task_StartMenu_HandleReturn_Options(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_RemovedEasyChatThing(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_RemovedEasyChatThing(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -1212,7 +1265,8 @@ static BOOL Task_StartMenu_HandleSelection_RemovedEasyChatThing(TaskManager *tas
     return TRUE;
 }
 
-static BOOL Task_StartMenu_RemovedEasyChatThing(TaskManager *taskManager) {
+static BOOL Task_StartMenu_RemovedEasyChatThing(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1225,7 +1279,8 @@ static BOOL Task_StartMenu_RemovedEasyChatThing(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleReturn_RemovedEasyChatThing(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleReturn_RemovedEasyChatThing(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1246,7 +1301,8 @@ static BOOL Task_StartMenu_HandleReturn_RemovedEasyChatThing(TaskManager *taskMa
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Retire(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Retire(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1263,7 +1319,8 @@ static BOOL Task_StartMenu_HandleSelection_Retire(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleSelection_Pokegear(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleSelection_Pokegear(TaskManager *taskManager)
+{
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     ov01_021E636C(0);
@@ -1272,7 +1329,8 @@ static BOOL Task_StartMenu_HandleSelection_Pokegear(TaskManager *taskManager) {
     return TRUE;
 }
 
-static BOOL Task_StartMenu_Pokegear(TaskManager *taskManager) {
+static BOOL Task_StartMenu_Pokegear(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1281,7 +1339,8 @@ static BOOL Task_StartMenu_Pokegear(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_StartMenu_HandleReturn_Pokegear(TaskManager *taskManager) {
+static BOOL Task_StartMenu_HandleReturn_Pokegear(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1293,7 +1352,8 @@ static BOOL Task_StartMenu_HandleReturn_Pokegear(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL sub_0203D580(TaskManager *taskManager) {
+static BOOL sub_0203D580(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1328,7 +1388,8 @@ static BOOL sub_0203D580(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void sub_0203D664(TaskManager *taskManager, int a1) {
+static void sub_0203D664(TaskManager *taskManager, int a1)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1341,7 +1402,8 @@ static void sub_0203D664(TaskManager *taskManager, int a1) {
     StartMenu_SetExitTaskFunc(startMenu, sub_0203D6C8);
 }
 
-static BOOL sub_0203D6C8(TaskManager *taskManager) {
+static BOOL sub_0203D6C8(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1352,7 +1414,8 @@ static BOOL sub_0203D6C8(TaskManager *taskManager) {
     return FALSE;
 }
 
-BOOL Task_ReturnToMenuFromAppItem(TaskManager *taskManager) {
+BOOL Task_ReturnToMenuFromAppItem(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1362,7 +1425,8 @@ BOOL Task_ReturnToMenuFromAppItem(TaskManager *taskManager) {
     return FALSE;
 }
 
-BOOL Task_UseFlyInField(TaskManager *taskManager) {
+BOOL Task_UseFlyInField(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1386,7 +1450,8 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
+UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot)
+{
     UnkStruct_0203D818 *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0203D818));
     ret->itemId = itemId;
     ret->partySlot = partySlot;
@@ -1394,7 +1459,8 @@ UnkStruct_0203D818 *sub_0203D818(u16 itemId, u8 kind, u8 partySlot) {
     return ret;
 }
 
-BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager) {
+BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1433,7 +1499,8 @@ BOOL Task_ReturnToMenuFromMail(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu, u8 a2) {
+static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu, u8 a2)
+{
     UnkStruct_0203D818 *unk = startMenu->exitTaskEnvironment2;
     PartyMenuArgs *partyMenuArgs = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     sub_0203CF74(partyMenuArgs, fieldSystem, startMenu);
@@ -1447,7 +1514,8 @@ static void sub_0203D940(FieldSystem *fieldSystem, StartMenuTaskData *startMenu,
     StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);
 }
 
-BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager) {
+BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1456,7 +1524,8 @@ BOOL Task_ReturnToMenuFromVSRecorder(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void Task_StartMenu_Evolution(TaskManager *taskManager) {
+static void Task_StartMenu_Evolution(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
@@ -1480,7 +1549,8 @@ static void Task_StartMenu_Evolution(TaskManager *taskManager) {
     startMenu->state = START_MENU_STATE_WAIT_EVOLUTION;
 }
 
-static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
+static void Task_StartMenu_WaitEvolution(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 

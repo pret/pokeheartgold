@@ -85,7 +85,8 @@ static const FieldMoveFuncData sFieldMoveFuncTable[] = {
     { FieldMove_UseHeadbutt,   FieldMove_CheckHeadbutt   },
 };
 
-static inline BOOL FieldMove_CheckSafariOrPalPark(const FieldMoveCheckData *checkData) {
+static inline BOOL FieldMove_CheckSafariOrPalPark(const FieldMoveCheckData *checkData)
+{
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE || Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return TRUE;
     } else {
@@ -93,7 +94,8 @@ static inline BOOL FieldMove_CheckSafariOrPalPark(const FieldMoveCheckData *chec
     }
 }
 
-static inline BOOL FieldMove_CheckPalPark(const FieldMoveCheckData *checkData) {
+static inline BOOL FieldMove_CheckPalPark(const FieldMoveCheckData *checkData)
+{
     if (Save_VarsFlags_CheckPalParkSysFlag(Save_VarsFlags_Get(checkData->fieldSystem->saveData)) == TRUE) {
         return TRUE;
     } else {
@@ -101,7 +103,8 @@ static inline BOOL FieldMove_CheckPalPark(const FieldMoveCheckData *checkData) {
     }
 }
 
-static inline BOOL FieldMove_CheckFlag(const FieldMoveCheckData *checkData, u32 flag) {
+static inline BOOL FieldMove_CheckFlag(const FieldMoveCheckData *checkData, u32 flag)
+{
     if (checkData->flag & flag) {
         return TRUE;
     } else {
@@ -109,7 +112,8 @@ static inline BOOL FieldMove_CheckFlag(const FieldMoveCheckData *checkData, u32 
     }
 }
 
-void *FieldMove_GetMoveFunc(FieldMoveFuncType funcType, u16 fieldMoveIndex) {
+void *FieldMove_GetMoveFunc(FieldMoveFuncType funcType, u16 fieldMoveIndex)
+{
     if (funcType == FIELD_MOVE_FUNC_USE) {
         return sFieldMoveFuncTable[fieldMoveIndex].use;
     } else {
@@ -117,7 +121,8 @@ void *FieldMove_GetMoveFunc(FieldMoveFuncType funcType, u16 fieldMoveIndex) {
     }
 }
 
-void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *checkData) {
+void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *checkData)
+{
     checkData->fieldSystem = fieldSystem;
     checkData->mapId = fieldSystem->location->mapId;
     checkData->flag = 0;
@@ -168,7 +173,8 @@ void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *check
     }
 }
 
-static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     FieldUseMoveEnvironment *environment = AllocFromHeap(HEAP_ID_32, sizeof(FieldUseMoveEnvironment));
     environment->magic = 0x19740205;
     environment->facingObject = checkData->facingObject;
@@ -176,12 +182,14 @@ static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData 
     return environment;
 }
 
-static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment) {
+static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment)
+{
     GF_ASSERT(environment->magic == 0x19740205);
     Heap_Free(environment);
 }
 
-static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -195,7 +203,8 @@ static u32 FieldMove_CheckCut(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseCut(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseCut(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -204,7 +213,8 @@ static void FieldMove_UseCut(FieldMoveUseData *useData, const FieldMoveCheckData
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseCutInField(TaskManager *taskManager) {
+static BOOL Task_UseCutInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *environment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_cut, environment->facingObject);
@@ -213,7 +223,8 @@ static BOOL Task_UseCutInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -236,7 +247,8 @@ static u32 FieldMove_CheckFly(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldMoveData *fieldMoveData = AllocFromHeap(HEAP_ID_FIELD, sizeof(FieldMoveData));
@@ -246,7 +258,8 @@ static void FieldMove_UseFly(FieldMoveUseData *useData, const FieldMoveCheckData
     StartMenu_SetExitTaskFunc(startMenu, Task_UseFlyInField);
 }
 
-static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -269,7 +282,8 @@ static u32 FieldMove_CheckSurf(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseSurf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseSurf(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -278,7 +292,8 @@ static void FieldMove_UseSurf(FieldMoveUseData *useData, const FieldMoveCheckDat
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseSurfInField(TaskManager *taskManager) {
+static BOOL Task_UseSurfInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_surf, NULL);
@@ -287,7 +302,8 @@ static BOOL Task_UseSurfInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckStrength(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckStrength(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -304,7 +320,8 @@ static u32 FieldMove_CheckStrength(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseStrength(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseStrength(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -313,7 +330,8 @@ static void FieldMove_UseStrength(FieldMoveUseData *useData, const FieldMoveChec
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
+static BOOL Task_UseStrengthInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_strength, useMoveEnvironment->facingObject);
@@ -322,7 +340,8 @@ static BOOL Task_UseStrengthInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckRockSmash(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckRockSmash(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -336,7 +355,8 @@ static u32 FieldMove_CheckRockSmash(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseRockSmash(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseRockSmash(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -345,7 +365,8 @@ static void FieldMove_UseRockSmash(FieldMoveUseData *useData, const FieldMoveChe
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
+static BOOL Task_UseRockSmashInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_smash, useMoveEnvironment->facingObject);
@@ -354,7 +375,8 @@ static BOOL Task_UseRockSmashInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckWaterfall(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckWaterfall(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -371,7 +393,8 @@ static u32 FieldMove_CheckWaterfall(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseWaterfall(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseWaterfall(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -380,7 +403,8 @@ static void FieldMove_UseWaterfall(FieldMoveUseData *useData, const FieldMoveChe
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
+static BOOL Task_UseWaterfallInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_waterfall, NULL);
@@ -389,7 +413,8 @@ static BOOL Task_UseWaterfallInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckRockClimb(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckRockClimb(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -409,7 +434,8 @@ static u32 FieldMove_CheckRockClimb(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseRockClimb(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseRockClimb(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -418,7 +444,8 @@ static void FieldMove_UseRockClimb(FieldMoveUseData *useData, const FieldMoveChe
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
+static BOOL Task_UseRockClimbInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_rock_climb, NULL);
@@ -427,7 +454,8 @@ static BOOL Task_UseRockClimbInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckFlash(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckFlash(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -441,7 +469,8 @@ static u32 FieldMove_CheckFlash(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseFlash(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseFlash(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -450,7 +479,8 @@ static void FieldMove_UseFlash(FieldMoveUseData *useData, const FieldMoveCheckDa
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseFlashInField(TaskManager *taskManager) {
+static BOOL Task_UseFlashInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     if (CheckUseFlashInAlphChamber(fieldSystem)) {
@@ -463,7 +493,8 @@ static BOOL Task_UseFlashInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckTeleport(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckTeleport(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -483,7 +514,8 @@ static u32 FieldMove_CheckTeleport(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseTeleport(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseTeleport(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
@@ -496,7 +528,8 @@ static void FieldMove_UseTeleport(FieldMoveUseData *useData, const FieldMoveChec
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
+static BOOL Task_UseTeleportInField(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateTeleportEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_4);
@@ -506,7 +539,8 @@ static BOOL Task_UseTeleportInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckDig(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckDig(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -523,7 +557,8 @@ static u32 FieldMove_CheckDig(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseDig(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseDig(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldSystem_LoadFieldOverlay(fieldSystem);
@@ -536,7 +571,8 @@ static void FieldMove_UseDig(FieldMoveUseData *useData, const FieldMoveCheckData
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseDigInField(TaskManager *taskManager) {
+static BOOL Task_UseDigInField(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldMoveTaskEnvironment *fieldMoveTaskEnvironment = FieldMoveTask_CreateDigEnvironment(fieldSystem, fieldMoveEnvironment->mon, fieldMoveEnvironment->moveData->partySlot, HEAP_ID_FIELD);
@@ -546,7 +582,8 @@ static BOOL Task_UseDigInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckSweetScent(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckSweetScent(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -557,7 +594,8 @@ static u32 FieldMove_CheckSweetScent(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseSweetScent(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseSweetScent(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldMoveEnvironment *fieldMoveEnvironment = FieldMove_CreateEnvironment(HEAP_ID_FIELD, useData->partySlot, fieldSystem->saveData);
@@ -570,7 +608,8 @@ static void FieldMove_UseSweetScent(FieldMoveUseData *useData, const FieldMoveCh
     startMenu->state = START_MENU_STATE_12;
 }
 
-static u32 FieldMove_CheckChatter(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckChatter(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -578,7 +617,8 @@ static u32 FieldMove_CheckChatter(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_OK;
 }
 
-static void FieldMove_UseChatter(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseChatter(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(useData->taskManager);
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
@@ -588,7 +628,8 @@ static void FieldMove_UseChatter(FieldMoveUseData *useData, const FieldMoveCheck
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseChatterInField(TaskManager *taskManager) {
+static BOOL Task_UseChatterInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_chatter, NULL);
@@ -597,7 +638,8 @@ static BOOL Task_UseChatterInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckWhirlpool(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckWhirlpool(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -614,7 +656,8 @@ static u32 FieldMove_CheckWhirlpool(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseWhirlpool(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseWhirlpool(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -623,7 +666,8 @@ static void FieldMove_UseWhirlpool(FieldMoveUseData *useData, const FieldMoveChe
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
+static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_whirlpool, NULL);
@@ -632,7 +676,8 @@ static BOOL Task_UseWhirlpoolInField(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 FieldMove_CheckHeadbutt(const FieldMoveCheckData *checkData) {
+static u32 FieldMove_CheckHeadbutt(const FieldMoveCheckData *checkData)
+{
     if (checkData->fieldSystem->unk70 == 2 || checkData->fieldSystem->unk70 == 3) {
         return FIELD_MOVE_RESPONSE_NOT_HERE;
     }
@@ -643,7 +688,8 @@ static u32 FieldMove_CheckHeadbutt(const FieldMoveCheckData *checkData) {
     return FIELD_MOVE_RESPONSE_NOT_HERE;
 }
 
-static void FieldMove_UseHeadbutt(FieldMoveUseData *useData, const FieldMoveCheckData *checkData) {
+static void FieldMove_UseHeadbutt(FieldMoveUseData *useData, const FieldMoveCheckData *checkData)
+{
     StartMenuTaskData *startMenu = TaskManager_GetEnvironment(useData->taskManager);
     FieldUseMoveEnvironment *useMoveEnvironment = FieldMove_CreateUseEnvironment(useData, checkData);
     FieldSystem_LoadFieldOverlay(checkData->fieldSystem);
@@ -652,7 +698,8 @@ static void FieldMove_UseHeadbutt(FieldMoveUseData *useData, const FieldMoveChec
     startMenu->state = START_MENU_STATE_12;
 }
 
-static BOOL Task_UseHeadbuttInField(TaskManager *taskManager) {
+static BOOL Task_UseHeadbuttInField(TaskManager *taskManager)
+{
     FieldUseMoveEnvironment *useMoveEnvironment = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     StartScriptFromMenu(taskManager, std_menu_headbutt, useMoveEnvironment->facingObject);

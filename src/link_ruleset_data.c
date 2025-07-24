@@ -168,7 +168,8 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
 };
-LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index) {
+LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index)
+{
     if (index == 5) {
         Save_LinkBattleRuleset *linkBattleRuleset = SaveArray_Get(saveData, SAVE_LINK_BATTLE_RULESET);
         return &linkBattleRuleset->rules[0];
@@ -181,7 +182,8 @@ LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index) {
     }
 }
 
-void sub_0202921C(SaveData *saveData, int index, String *string, HeapID heapId) {
+void sub_0202921C(SaveData *saveData, int index, String *string, HeapID heapId)
+{
     if (index == 5) {
         LinkBattleRuleset *ruleset = Save_LinkBattleRuleset_GetByIndex(saveData, 0);
         LinkBattleRuleset_CopyNameToString(ruleset, string);
@@ -191,11 +193,13 @@ void sub_0202921C(SaveData *saveData, int index, String *string, HeapID heapId) 
         DestroyMsgData(msgData);
     }
 }
-LinkBattleRuleset *sub_0202925C(void) {
+LinkBattleRuleset *sub_0202925C(void)
+{
     return &sDefaultRuleset;
 }
 
-int sub_02029264(const LinkBattleRuleset *ruleset) {
+int sub_02029264(const LinkBattleRuleset *ruleset)
+{
     if (ruleset == NULL) {
         return 0xFF;
     }

@@ -26,13 +26,15 @@ static BOOL LoadOverlayNoInit(MIProcessor proc, FSOverlayID ovyId);
 static BOOL LoadOverlayNoInitAsync(MIProcessor proc, FSOverlayID ovyId);
 static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void **start, void **end);
 
-static void FreeOverlayAllocation(PMiLoadedOverlay *ovload) {
+static void FreeOverlayAllocation(PMiLoadedOverlay *ovload)
+{
     GF_ASSERT(ovload->active == TRUE);
     GF_ASSERT(FS_UnloadOverlay(MI_PROCESSOR_ARM9, ovload->id) == TRUE);
     ovload->active = FALSE;
 }
 
-void UnloadOverlayByID(FSOverlayID ovyId) {
+void UnloadOverlayByID(FSOverlayID ovyId)
+{
     int i;
     PMiLoadedOverlay *table = GetLoadedOverlaysInRegion(GetOverlayLoadDestination(ovyId));
     for (i = 0; i < OVY_MAX_PER_REGION; i++) {
@@ -43,7 +45,8 @@ void UnloadOverlayByID(FSOverlayID ovyId) {
     }
 }
 
-static PMiOverlayRegion GetOverlayLoadDestination(FSOverlayID id) {
+static PMiOverlayRegion GetOverlayLoadDestination(FSOverlayID id)
+{
     FSOverlayInfo info;
     u8 *end;
     u8 *start;
@@ -61,7 +64,8 @@ static PMiOverlayRegion GetOverlayLoadDestination(FSOverlayID id) {
     return OVY_REGION_MAIN;
 }
 
-BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
+BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType)
+{
     BOOL result;
     u32 dmaBak = FS_DMA_NOT_USE;
     PMiOverlayRegion overlayRegion;
@@ -118,7 +122,8 @@ BOOL HandleLoadOverlay(FSOverlayID ovyId, PMOverlayLoadType loadType) {
     return TRUE;
 }
 
-static BOOL CanOverlayBeLoaded(FSOverlayID ovyId) {
+static BOOL CanOverlayBeLoaded(FSOverlayID ovyId)
+{
     void *my_start, *my_end;
     void *their_start, *their_end;
     int i;
@@ -140,7 +145,8 @@ static BOOL CanOverlayBeLoaded(FSOverlayID ovyId) {
     return TRUE;
 }
 
-static PMiLoadedOverlay *GetLoadedOverlaysInRegion(PMiOverlayRegion region) {
+static PMiLoadedOverlay *GetLoadedOverlaysInRegion(PMiOverlayRegion region)
+{
     switch (region) {
     case OVY_REGION_MAIN:
     default:
@@ -152,7 +158,8 @@ static PMiLoadedOverlay *GetLoadedOverlaysInRegion(PMiOverlayRegion region) {
     }
 }
 
-static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void **start, void **end) {
+static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void **start, void **end)
+{
     FSOverlayInfo info;
 
     if (!FS_LoadOverlayInfo(&info, MI_PROCESSOR_ARM9, ovyId)) {
@@ -165,11 +172,13 @@ static BOOL GetOverlayRamBounds(FSOverlayID ovyId, void **start, void **end) {
     return TRUE;
 }
 
-static BOOL LoadOverlayNormal(MIProcessor proc, FSOverlayID ovyId) {
+static BOOL LoadOverlayNormal(MIProcessor proc, FSOverlayID ovyId)
+{
     return FS_LoadOverlay(proc, ovyId);
 }
 
-static BOOL LoadOverlayNoInit(MIProcessor proc, FSOverlayID ovyId) {
+static BOOL LoadOverlayNoInit(MIProcessor proc, FSOverlayID ovyId)
+{
     FSOverlayInfo info;
     if (!FS_LoadOverlayInfo(&info, proc, ovyId)) {
         return FALSE;
@@ -181,7 +190,8 @@ static BOOL LoadOverlayNoInit(MIProcessor proc, FSOverlayID ovyId) {
     return TRUE;
 }
 
-static BOOL LoadOverlayNoInitAsync(MIProcessor proc, FSOverlayID ovyId) {
+static BOOL LoadOverlayNoInitAsync(MIProcessor proc, FSOverlayID ovyId)
+{
     FSFile file;
     FSOverlayInfo info;
     if (!FS_LoadOverlayInfo(&info, proc, ovyId)) {

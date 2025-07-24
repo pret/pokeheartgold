@@ -96,7 +96,8 @@ static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index);
 static BOOL ov01_0220305C(ScriptContext *ctx);
 
 // get number of pages needed to show learnable moves from move tutor
-BOOL ScrCmd_652(ScriptContext *ctx) {
+BOOL ScrCmd_652(ScriptContext *ctx)
+{
     u16 slot = ScriptGetVar(ctx);
     u16 moveTutorNpc = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
@@ -113,7 +114,8 @@ BOOL ScrCmd_652(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_TutorMoveTeachInSlot(ScriptContext *ctx) {
+BOOL ScrCmd_TutorMoveTeachInSlot(ScriptContext *ctx)
+{
     u16 partySlot = ScriptGetVar(ctx);
     u16 moveSlot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
@@ -122,7 +124,8 @@ BOOL ScrCmd_TutorMoveTeachInSlot(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
+BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx)
+{
     u16 move = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
     for (u32 i = 0; i < NELEMS(sTutorMoves); i++) {
@@ -137,7 +140,8 @@ BOOL ScrCmd_TutorMoveGetPrice(ScriptContext *ctx) {
 }
 
 // check if mon at given slot can learn from headbutt move tutor
-BOOL ScrCmd_656(ScriptContext *ctx) {
+BOOL ScrCmd_656(ScriptContext *ctx)
+{
     u16 slot = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
@@ -147,7 +151,8 @@ BOOL ScrCmd_656(ScriptContext *ctx) {
     return FALSE;
 }
 
-static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form) {
+static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form)
+{
     u16 index;
     // subtract 2 because SPECIES_EGG and SPECIES_BAD_EGG are missing
     switch (species) {
@@ -194,7 +199,8 @@ static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form) {
     return index - 1;
 }
 
-static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
+static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[])
+{
     s32 i, j;
     u16 currentMoves[MAX_MON_MOVES];
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -227,7 +233,8 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     return numLearnableMoves;
 }
 
-static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index) {
+static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index)
+{
     FSFile file;
     FS_InitFile(&file);
     if (FS_OpenFile(&file, "fielddata/wazaoshie/waza_oshie.bin") == FALSE) {
@@ -246,7 +253,8 @@ static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index) {
     return learnset;
 }
 
-BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
+BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx)
+{
     u8 learnableMoves[52];
     s32 i;
     s32 numLearnableMoves;
@@ -307,7 +315,8 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     return TRUE;
 }
 
-static BOOL ov01_0220305C(ScriptContext *ctx) {
+static BOOL ov01_0220305C(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     struct UnkStruct_ov01_021EDC28 **unk = ov01_021F6B20(fieldSystem);
     u16 *result = GetVarPointer(fieldSystem, ctx->data[0]);
@@ -319,7 +328,8 @@ static BOOL ov01_0220305C(ScriptContext *ctx) {
 }
 
 // Unused
-BOOL ScrCmd_742(ScriptContext *ctx) {
+BOOL ScrCmd_742(ScriptContext *ctx)
+{
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);

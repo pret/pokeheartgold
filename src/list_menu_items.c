@@ -5,7 +5,8 @@
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
 LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
+LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId)
+{
     int i;
     LISTMENUITEM *ret = AllocFromHeap(heapId, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
@@ -19,12 +20,14 @@ LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
     return ret;
 }
 
-void ListMenuItems_Delete(LISTMENUITEM *items) {
+void ListMenuItems_Delete(LISTMENUITEM *items)
+{
     ListMenuItems_DestroyMenuStrings(items);
     Heap_Free(items);
 }
 
-void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {
+void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value)
+{
     HeapID dummy;
 
     items = ListMenuItems_SeekEnd(items, &dummy);
@@ -34,7 +37,8 @@ void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int 
     }
 }
 
-void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
+void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value)
+{
     HeapID heapId;
 
     items = ListMenuItems_SeekEnd(items, &heapId);
@@ -44,7 +48,8 @@ void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
     }
 }
 
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
+LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p)
+{
     LISTMENUITEM *out;
 
     for (; items->text != NULL; items++) {
@@ -59,7 +64,8 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
     return out;
 }
 
-void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items) {
+void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items)
+{
     int i;
     for (i = 0; items[i].text != (String *)-1; i++) {
         if (items[i].text == NULL) {

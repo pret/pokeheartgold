@@ -7,11 +7,13 @@
 #include "save_special_ribbons.h"
 #include "script.h"
 
-static inline u16 ScriptGetVar(ScriptContext *ctx) {
+static inline u16 ScriptGetVar(ScriptContext *ctx)
+{
     return FieldSystem_VarGet(ctx->fieldSystem, ScriptReadHalfword(ctx));
 }
 
-static inline u16 *ScriptGetVarPointer(ScriptContext *ctx) {
+static inline u16 *ScriptGetVarPointer(ScriptContext *ctx)
+{
     return GetVarPointer(ctx->fieldSystem, ScriptReadHalfword(ctx));
 }
 

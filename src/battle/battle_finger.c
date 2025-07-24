@@ -8,7 +8,8 @@
 static void BattleFinger_Update(SysTask *task, void *data);
 static void ov12_0226BEB8(BattleFinger *finger);
 
-void BattleFinger_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleFinger_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, PaletteData *plttData, u32 character, u32 pal, u32 cell, u32 animation)
+{
     NARC *narc = NARC_New(NARC_a_1_6_4, heapId);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 1, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, pal);
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 0, 0, NNS_G2D_VRAM_TYPE_2DSUB, character);
@@ -17,7 +18,8 @@ void BattleFinger_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandle
     NARC_Delete(narc);
 }
 
-void BattleFinger_FreeResources(SpriteManager *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation) {
+void BattleFinger_FreeResources(SpriteManager *gfxHandler, u32 character, u32 pal, u32 cell, u32 animation)
+{
     SpriteManager_UnloadCharObjById(gfxHandler, character);
     SpriteManager_UnloadPlttObjById(gfxHandler, pal);
     SpriteManager_UnloadCellObjById(gfxHandler, cell);
@@ -37,7 +39,8 @@ static const ManagedSpriteTemplate ov12_0226EBD4 = {
     .vramTransfer = 0
 };
 
-BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority) {
+BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 spritePriority, u32 bgPriority)
+{
     BattleFinger *finger;
     ManagedSpriteTemplate unkStruct = ov12_0226EBD4;
 
@@ -61,13 +64,15 @@ BattleFinger *BattleFinger_New(SpriteSystem *renderer, SpriteManager *gfxHandler
 }
 
 // BattleFinger_Delete
-void BattleFinger_Delete(BattleFinger *finger) {
+void BattleFinger_Delete(BattleFinger *finger)
+{
     Sprite_DeleteAndFreeResources(finger->unk0);
     SysTask_Destroy(finger->task);
     Heap_Free(finger);
 }
 
-void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {
+void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3)
+{
     ov12_0226BEB8(finger);
     finger->x = x;
     finger->y = y;
@@ -76,24 +81,29 @@ void ov12_0226BCFC(BattleFinger *finger, int x, int y, fx32 a3) {
     ManagedSprite_SetDrawFlag(finger->unk0, TRUE);
 }
 
-void ov12_0226BD2C(BattleFinger *finger, int x, int y) {
+void ov12_0226BD2C(BattleFinger *finger, int x, int y)
+{
     ov12_0226BCFC(finger, x, y, (fx32)0xC0000);
 }
 
-void BattleFinger_Disable(BattleFinger *finger) {
+void BattleFinger_Disable(BattleFinger *finger)
+{
     ManagedSprite_SetDrawFlag(finger->unk0, FALSE);
     ov12_0226BEB8(finger);
 }
 
-void ov12_0226BD4C(BattleFinger *finger, int delay) {
+void ov12_0226BD4C(BattleFinger *finger, int delay)
+{
     finger->delay = delay;
 }
 
-BOOL ov12_0226BD50(BattleFinger *finger) {
+BOOL ov12_0226BD50(BattleFinger *finger)
+{
     return finger->touchOccurrence;
 }
 
-static void BattleFinger_Update(SysTask *task, void *data) {
+static void BattleFinger_Update(SysTask *task, void *data)
+{
     BattleFinger *finger = (BattleFinger *)data;
 
     if (finger->touchOccurrence == TRUE) {
@@ -166,7 +176,8 @@ static void BattleFinger_Update(SysTask *task, void *data) {
     ManagedSprite_TickFrame(finger->unk0);
 }
 
-static void ov12_0226BEB8(BattleFinger *finger) {
+static void ov12_0226BEB8(BattleFinger *finger)
+{
     finger->angle = 0;
     finger->touchAnimationFlag = FALSE;
     finger->touchAnimationState = 0;

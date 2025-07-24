@@ -60,7 +60,8 @@ static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk);
 static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk);
 static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk);
 
-static BOOL ov16_02201948(OverlayManager **manager) {
+static BOOL ov16_02201948(OverlayManager **manager)
+{
     if (*manager != NULL && OverlayManager_Run(*manager)) {
         OverlayManager_Delete(*manager);
         *manager = NULL;
@@ -70,7 +71,8 @@ static BOOL ov16_02201948(OverlayManager **manager) {
     return FALSE;
 }
 
-BOOL BerryPots_Init(OverlayManager *manager, int *state) {
+BOOL BerryPots_Init(OverlayManager *manager, int *state)
+{
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_17), OVY_LOAD_ASYNC);
     ov17_02201BC0();
 
@@ -85,7 +87,8 @@ BOOL BerryPots_Init(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL BerryPots_Main(OverlayManager *manager, int *state) {
+BOOL BerryPots_Main(OverlayManager *manager, int *state)
+{
     UnkStruct_ov16_0220196C *unk = OverlayManager_GetData(manager);
 
     switch (*state) {
@@ -108,7 +111,8 @@ BOOL BerryPots_Main(OverlayManager *manager, int *state) {
     return FALSE;
 }
 
-BOOL BerryPots_Exit(OverlayManager *manager, int *state) {
+BOOL BerryPots_Exit(OverlayManager *manager, int *state)
+{
     UnkStruct_ov16_0220196C *unk = OverlayManager_GetData(manager);
     ov17_02201BC0();
 
@@ -121,22 +125,26 @@ BOOL BerryPots_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-static void ov16_02201A34(UnkStruct_ov16_0220196C *unk) {
+static void ov16_02201A34(UnkStruct_ov16_0220196C *unk)
+{
     unk->cursor1 = BagCursor_New(unk->heapId);
     unk->cursor2 = BagCursor_New(unk->heapId);
 }
 
-static void ov16_02201A4C(UnkStruct_ov16_0220196C *unk) {
+static void ov16_02201A4C(UnkStruct_ov16_0220196C *unk)
+{
     Heap_Free(unk->cursor2);
     Heap_Free(unk->cursor1);
 }
 
-static u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk)
+{
     unk->ovyManager = OverlayManager_New(&ov16_02201B68, unk, unk->heapId);
     return 1;
 }
 
-static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk)
+{
     if (!ov16_02201948(&unk->ovyManager)) {
         return 1;
     }
@@ -148,7 +156,8 @@ static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
     return 4;
 }
 
-static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk)
+{
     Bag *bag = Save_Bag_Get(unk->args->saveData);
 
     switch (unk->unk14) {
@@ -173,7 +182,8 @@ static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
     return 3;
 }
 
-static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
+static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk)
+{
     if (!ov16_02201948(&unk->ovyManager)) {
         return 3;
     }

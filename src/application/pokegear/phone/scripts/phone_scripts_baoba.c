@@ -6,7 +6,8 @@
 #include "safari_zone.h"
 #include "sys_vars.h"
 
-u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     SafariZone *safariZone;
 
     state->scriptType = 0;
@@ -44,7 +45,8 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     return Save_VarsFlags_GetVar4057(ctx->saveVarsFlags) + PHONE_SCRIPT_147;
 }
 
-BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     u8 numAreas;
     u8 *areas;

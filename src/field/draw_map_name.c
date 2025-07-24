@@ -23,16 +23,19 @@
 
 static void PrintMapNameOnIcon(FieldDrawMapNameInfo *info, String *name);
 
-static void LoadAreaIconPalette(void *data, u32 size, u32 offset) {
+static void LoadAreaIconPalette(void *data, u32 size, u32 offset)
+{
     DC_FlushRange(data, size * 32);
     GX_LoadBGPltt(data, offset * 32, size * 32);
 }
 
-static void FieldDrawMapName_SetupWindow(FieldDrawMapNameInfo *info) {
+static void FieldDrawMapName_SetupWindow(FieldDrawMapNameInfo *info)
+{
     AddWindowParameterized(info->bgConfig, &info->window, GF_BG_LYR_MAIN_3, 0, 0, 32, 5, 11, 0x197);
 }
 
-static void LoadAreaIconGraphics(FieldDrawMapNameInfo *info, u8 layer, u32 tileStart, u8 paletteOffset, u32 unused) {
+static void LoadAreaIconGraphics(FieldDrawMapNameInfo *info, u8 layer, u32 tileStart, u8 paletteOffset, u32 unused)
+{
     u8 memberNum = info->areaIcon * 2;
 
     info->charData = GfGfxLoader_GetCharData(NARC_data_gs_areawindow, memberNum, FALSE, &info->g2dCharData, HEAP_ID_4);
@@ -44,7 +47,8 @@ static void LoadAreaIconGraphics(FieldDrawMapNameInfo *info, u8 layer, u32 tileS
     Heap_Free(paletteData);
 }
 
-static void DrawAreaIcon(FieldDrawMapNameInfo *info, int namePixelWidth) {
+static void DrawAreaIcon(FieldDrawMapNameInfo *info, int namePixelWidth)
+{
     info->nameX = ((132 - namePixelWidth) / 2) + 4;
 
     LoadAreaIconGraphics(info, 3, 0x2D9, 11, 0);
@@ -58,7 +62,8 @@ static void DrawAreaIcon(FieldDrawMapNameInfo *info, int namePixelWidth) {
     Heap_Free(info->charData);
 }
 
-static void FieldDrawMapName_ResetState(FieldDrawMapNameInfo *info) {
+static void FieldDrawMapName_ResetState(FieldDrawMapNameInfo *info)
+{
     info->onScreen = FALSE;
     info->positionState = POSITION_STATE_INVALID;
     info->task = NULL;
@@ -69,12 +74,14 @@ static void FieldDrawMapName_ResetState(FieldDrawMapNameInfo *info) {
     info->bgConfig = NULL;
 }
 
-static void FieldDrawMapName_Init(FieldDrawMapNameInfo *info, BgConfig *bgConfig) {
+static void FieldDrawMapName_Init(FieldDrawMapNameInfo *info, BgConfig *bgConfig)
+{
     FieldDrawMapName_ResetState(info);
     info->bgConfig = bgConfig;
 }
 
-static void Task_MapNameAndIcon(SysTask *task, FieldDrawMapNameInfo *info) {
+static void Task_MapNameAndIcon(SysTask *task, FieldDrawMapNameInfo *info)
+{
     switch (info->positionState) {
     case POSITION_STATE_DESCENDING:
         info->layerY -= 4;
@@ -121,16 +128,19 @@ static void Task_MapNameAndIcon(SysTask *task, FieldDrawMapNameInfo *info) {
     }
 }
 
-static void PrintMapNameOnIcon(FieldDrawMapNameInfo *info, String *name) {
+static void PrintMapNameOnIcon(FieldDrawMapNameInfo *info, String *name)
+{
     AddTextPrinterParameterizedWithColor(&info->window, 0, name, info->nameX, 8, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 }
 
-static void FieldDrawMapName_StartAscending(FieldDrawMapNameInfo *info) {
+static void FieldDrawMapName_StartAscending(FieldDrawMapNameInfo *info)
+{
     info->positionState = POSITION_STATE_ASCENDING;
     info->framesFullyOnscreen = 0;
 }
 
-FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig) {
+FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig)
+{
     FieldDrawMapNameInfo *ret = AllocFromHeap(HEAP_ID_4, sizeof(FieldDrawMapNameInfo));
     ret->mapNameString = String_New(22, HEAP_ID_4);
     FieldDrawMapName_Init(ret, bgConfig);
@@ -139,14 +149,16 @@ FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig) {
     return ret;
 }
 
-void FieldDrawMapNameInfo_Destroy(FieldDrawMapNameInfo *info) {
+void FieldDrawMapNameInfo_Destroy(FieldDrawMapNameInfo *info)
+{
     DestroyMsgData(info->mapsecMsgData);
     RemoveWindow(&info->window);
     String_Delete(info->mapNameString);
     Heap_Free(info);
 }
 
-static void FieldDrawMapName_Start(FieldDrawMapNameInfo *info, u32 mapsec, u32 areaIcon) {
+static void FieldDrawMapName_Start(FieldDrawMapNameInfo *info, u32 mapsec, u32 areaIcon)
+{
     info->mapsec = mapsec;
     if (!info->onScreen) {
         info->onScreen = TRUE;
@@ -178,7 +190,8 @@ static void FieldDrawMapName_Start(FieldDrawMapNameInfo *info, u32 mapsec, u32 a
     }
 }
 
-void FieldDrawMapName_Reset(FieldDrawMapNameInfo *info) {
+void FieldDrawMapName_Reset(FieldDrawMapNameInfo *info)
+{
     if (info->task != NULL) {
         SysTask_Destroy(info->task);
     }
@@ -187,7 +200,8 @@ void FieldDrawMapName_Reset(FieldDrawMapNameInfo *info) {
     FieldDrawMapName_Init(info, info->bgConfig);
 }
 
-void FieldSystem_DrawMapNameAnimation(FieldSystem *fieldSystem) {
+void FieldSystem_DrawMapNameAnimation(FieldSystem *fieldSystem)
+{
     if (MapHeader_GetAreaIcon(fieldSystem->location->mapId) == 0 || MapHeader_IsInBuilding(fieldSystem->location->mapId)) {
         return;
     }

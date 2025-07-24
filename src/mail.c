@@ -40,7 +40,8 @@ int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int nmsg);
 Mail *Mailbox_GetPtrToSlotI(Mail *msgs, int n, int i);
 u32 MailArray_CountMessages(Mail *msgs, int n);
 
-void Mail_Init(Mail *mail) {
+void Mail_Init(Mail *mail)
+{
     int i;
     mail->author_otId = 0;
     mail->author_gender = PLAYER_GENDER_MALE;
@@ -57,21 +58,25 @@ void Mail_Init(Mail *mail) {
     }
 }
 
-BOOL Mail_TypeIsValid(Mail *mail) {
+BOOL Mail_TypeIsValid(Mail *mail)
+{
     return mail->mail_type <= NUM_MAIL - 1;
 }
 
-Mail *Mail_New(HeapID heapId) {
+Mail *Mail_New(HeapID heapId)
+{
     Mail *ret = (Mail *)AllocFromHeapAtEnd(heapId, sizeof(Mail));
     Mail_Init(ret);
     return ret;
 }
 
-void Mail_Copy(const Mail *src, Mail *dst) {
+void Mail_Copy(const Mail *src, Mail *dst)
+{
     MI_CpuCopy8(src, dst, sizeof(Mail));
 }
 
-BOOL Mail_Compare(const Mail *a, const Mail *b) {
+BOOL Mail_Compare(const Mail *a, const Mail *b)
+{
     int i;
     if (a->author_otId != b->author_otId
         || a->author_gender != b->author_gender
@@ -98,7 +103,8 @@ BOOL Mail_Compare(const Mail *a, const Mail *b) {
     return TRUE;
 }
 
-void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *saveData) {
+void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *saveData)
+{
     u8 i, j, pal, k;
     u16 species;
     u32 icon, isEgg, form;
@@ -146,7 +152,8 @@ void Mail_SetNewMessageDetails(Mail *mail, u8 mailType, u8 mon_no, SaveData *sav
     }
 }
 
-Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId) {
+Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otId)
+{
     u8 r0;
     u32 r5;
     u16 species;
@@ -186,37 +193,45 @@ Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
     return ret;
 }
 
-u32 Mail_GetOTID(const Mail *mail) {
+u32 Mail_GetOTID(const Mail *mail)
+{
     return mail->author_otId;
 }
 
-u16 *Mail_GetAuthorNamePtr(Mail *mail) {
+u16 *Mail_GetAuthorNamePtr(Mail *mail)
+{
     return mail->author_name;
 }
 
-u8 Mail_GetAuthorGender(const Mail *mail) {
+u8 Mail_GetAuthorGender(const Mail *mail)
+{
     return mail->author_gender;
 }
 
-u8 Mail_GetType(const Mail *mail) {
+u8 Mail_GetType(const Mail *mail)
+{
     return mail->mail_type;
 }
 
-void Mail_SetType(Mail *mail, u8 mailType) {
+void Mail_SetType(Mail *mail, u8 mailType)
+{
     if (mailType < NUM_MAIL) {
         mail->mail_type = mailType;
     }
 }
 
-u8 Mail_GetLanguage(const Mail *mail) {
+u8 Mail_GetLanguage(const Mail *mail)
+{
     return mail->author_language;
 }
 
-u8 Mail_GetVersion(const Mail *mail) {
+u8 Mail_GetVersion(const Mail *mail)
+{
     return mail->author_version;
 }
 
-u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3) {
+u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3)
+{
     int i;
     union MailPatternData sp0;
     if (r1 < NELEMS(mail->mon_icons)) {
@@ -246,11 +261,13 @@ u16 sub_0202B404(Mail *mail, u8 r1, u8 r4, u16 r3) {
     return 0;
 }
 
-u16 sub_0202B4E4(const Mail *mail) {
+u16 sub_0202B4E4(const Mail *mail)
+{
     return mail->form_flags;
 }
 
-MailMessage *Mail_GetUnk20Array(Mail *mail, int i) {
+MailMessage *Mail_GetUnk20Array(Mail *mail, int i)
+{
     if (i < NELEMS(mail->unk_20)) {
         return &mail->unk_20[i];
     } else {
@@ -258,50 +275,59 @@ MailMessage *Mail_GetUnk20Array(Mail *mail, int i) {
     }
 }
 
-void Mail_SetMessage(Mail *mail, const MailMessage *src, int i) {
+void Mail_SetMessage(Mail *mail, const MailMessage *src, int i)
+{
     if (i < NELEMS(mail->unk_20)) {
         MailMsg_Copy(&mail->unk_20[i], src);
     }
 }
 
-Mailbox *Save_Mailbox_Get(SaveData *saveData) {
+Mailbox *Save_Mailbox_Get(SaveData *saveData)
+{
     return (Mailbox *)SaveArray_Get(saveData, SAVE_MAILBOX);
 }
 
-u32 Save_Mailbox_sizeof(void) {
+u32 Save_Mailbox_sizeof(void)
+{
     return sizeof(Mailbox);
 }
 
-void Save_Mailbox_Init(Mailbox *mailbox) {
+void Save_Mailbox_Init(Mailbox *mailbox)
+{
     int i;
     for (i = 0; i < MAILBOX_MSG_COUNT; i++) {
         Mail_Init(&mailbox->msgs[i]);
     }
 }
 
-int Mailbox_GetFirstEmptySlotIdx(Mailbox *mailbox) {
+int Mailbox_GetFirstEmptySlotIdx(Mailbox *mailbox)
+{
     return MailArray_GetFirstEmptySlotIdx(mailbox->msgs, MAILBOX_MSG_COUNT);
 }
 
-void Mailbox_DeleteSlotI(Mail *msgs, int n, int i) {
+void Mailbox_DeleteSlotI(Mail *msgs, int n, int i)
+{
     Mail *mail = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (mail != NULL) {
         Mail_Init(mail);
     }
 }
 
-void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src) {
+void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src)
+{
     Mail *dest = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (dest != NULL) {
         Mail_Copy(src, dest);
     }
 }
 
-u32 Mailbox_CountMessages(Mailbox *mailbox, int unused) {
+u32 Mailbox_CountMessages(Mailbox *mailbox, int unused)
+{
     return MailArray_CountMessages(mailbox->msgs, MAILBOX_MSG_COUNT);
 }
 
-Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId) {
+Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId)
+{
     const Mail *src = Mailbox_GetPtrToSlotI(msgs, n, i);
     Mail *ret = Mail_New(heapId);
     if (src != NULL) {
@@ -310,7 +336,8 @@ Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId) {
     return ret;
 }
 
-void Mailbox_FetchMailToBuffer(Mail *msgs, int n, int i, Mail *dest) {
+void Mailbox_FetchMailToBuffer(Mail *msgs, int n, int i, Mail *dest)
+{
     const Mail *src = Mailbox_GetPtrToSlotI(msgs, n, i);
     if (src == NULL) {
         Mail_Init(dest);
@@ -319,7 +346,8 @@ void Mailbox_FetchMailToBuffer(Mail *msgs, int n, int i, Mail *dest) {
     }
 }
 
-int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n) {
+int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n)
+{
     int i;
     for (i = 0; i < n; i++) {
         if (!Mail_TypeIsValid(&msgs[i])) {
@@ -329,7 +357,8 @@ int MailArray_GetFirstEmptySlotIdx(Mail *msgs, int n) {
     return -1;
 }
 
-u32 MailArray_CountMessages(Mail *msgs, int n) {
+u32 MailArray_CountMessages(Mail *msgs, int n)
+{
     int i;
     u32 ct = 0;
     for (i = 0; i < n; i++) {
@@ -341,7 +370,8 @@ u32 MailArray_CountMessages(Mail *msgs, int n) {
     return ct;
 }
 
-Mail *Mailbox_GetPtrToSlotI(Mail *msgs, int n, int i) {
+Mail *Mailbox_GetPtrToSlotI(Mail *msgs, int n, int i)
+{
 #pragma unused(n)
     if (i < MAILBOX_MSG_COUNT) {
         return &msgs[i];

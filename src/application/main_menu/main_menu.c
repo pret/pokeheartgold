@@ -202,7 +202,8 @@ extern const OverlayManagerTemplate gApp_MainMenu_SelectOption_NintendoWFCSetup;
 extern const OverlayManagerTemplate ov112_App_MainMenu_SelectOption_ConnectToPokewalker;
 extern const OverlayManagerTemplate ov75_App_MainMenu_SelectOption_WiiMessageSettings;
 
-static u32 ov74_02227060(MainMenuAppData *data) {
+static u32 ov74_02227060(MainMenuAppData *data)
+{
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
         data->menuInputState.state = MENU_INPUT_STATE_BUTTONS;
         return gSystem.newKeys;
@@ -214,7 +215,8 @@ static u32 ov74_02227060(MainMenuAppData *data) {
     return 0;
 }
 
-static u32 GetNthAvailableApp(MainMenuAppData *data, u8 n) {
+static u32 GetNthAvailableApp(MainMenuAppData *data, u8 n)
+{
     for (u32 i = 0, apps = 0; i < APPOPTION_COUNT; i++) {
         if (data->unkEC[i] != 0 && apps++ == n) {
             return i;
@@ -223,7 +225,8 @@ static u32 GetNthAvailableApp(MainMenuAppData *data, u8 n) {
     return 0;
 }
 
-static u32 ov74_022270C4(MainMenuAppData *data, int *state, BOOL a2) {
+static u32 ov74_022270C4(MainMenuAppData *data, int *state, BOOL a2)
+{
     if (!a2) {
         PlaySE(SEQ_SE_DP_SELECT);
         data->selectedApp = (MainMenu_AppOption)data->unkEC[data->currentOption];
@@ -257,7 +260,8 @@ static u32 ov74_022270C4(MainMenuAppData *data, int *state, BOOL a2) {
     return TRUE;
 }
 
-static int CountAvailableAppsBefore(MainMenuAppData *data, int a1) {
+static int CountAvailableAppsBefore(MainMenuAppData *data, int a1)
+{
     int i;
     int apps = 0;
     for (i = 0; i < a1; i++) {
@@ -268,7 +272,8 @@ static int CountAvailableAppsBefore(MainMenuAppData *data, int a1) {
     return apps;
 }
 
-static BOOL MainMenu_HandleKeyInput(MainMenuAppData *data, int *state) {
+static BOOL MainMenu_HandleKeyInput(MainMenuAppData *data, int *state)
+{
     BOOL changedOption = FALSE;
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A) && data->menuInputState.state == MENU_INPUT_STATE_TOUCH) {
@@ -312,7 +317,8 @@ static BOOL MainMenu_HandleKeyInput(MainMenuAppData *data, int *state) {
     return FALSE;
 }
 
-static BOOL MainMenu_HandleTouchInput(MainMenuAppData *data, int *state, BOOL *validInput) {
+static BOOL MainMenu_HandleTouchInput(MainMenuAppData *data, int *state, BOOL *validInput)
+{
     BOOL hitArrowButton;
 
     int hitboxNum = -1;
@@ -391,7 +397,8 @@ static BOOL MainMenu_HandleTouchInput(MainMenuAppData *data, int *state, BOOL *v
     return ov74_022270C4(data, state, FALSE);
 }
 
-static BOOL MainMenu_HandleInput(MainMenuAppData *data, int *newState) {
+static BOOL MainMenu_HandleInput(MainMenuAppData *data, int *newState)
+{
     BOOL hadTouchInput = FALSE;
     BOOL touchResult = MainMenu_HandleTouchInput(data, newState, &hadTouchInput);
     if (hadTouchInput) {
@@ -404,7 +411,8 @@ static BOOL MainMenu_HandleInput(MainMenuAppData *data, int *newState) {
     return MainMenu_HandleKeyInput(data, newState);
 }
 
-static u32 MainMenu_NewGame_HandleTouchInput(MainMenuAppData *data, BOOL *validInput) {
+static u32 MainMenu_NewGame_HandleTouchInput(MainMenuAppData *data, BOOL *validInput)
+{
     if (!System_GetTouchNew()) {
         return 0;
     }
@@ -429,7 +437,8 @@ static u32 MainMenu_NewGame_HandleTouchInput(MainMenuAppData *data, BOOL *validI
     return ret;
 }
 
-static u32 MainMenu_NewGame_HandleInput(MainMenuAppData *data) {
+static u32 MainMenu_NewGame_HandleInput(MainMenuAppData *data)
+{
     BOOL hadTouchInput = FALSE;
     u32 touchResult = MainMenu_NewGame_HandleTouchInput(data, &hadTouchInput);
     if (hadTouchInput) {
@@ -470,7 +479,8 @@ static u32 MainMenu_NewGame_HandleInput(MainMenuAppData *data) {
     return ret;
 }
 
-static u32 ov74_02227580(MainMenuAppData *data) {
+static u32 ov74_02227580(MainMenuAppData *data)
+{
     return 0;
 }
 
@@ -485,7 +495,8 @@ typedef struct UnkStruct_ov74_0223BBD4 {
 } UnkStruct_ov74_0223BBD4;
 
 // Unused warning screen for wifi user info
-static BOOL ov74_02227584(MainMenuAppData *data) {
+static BOOL ov74_02227584(MainMenuAppData *data)
+{
     static UnkStruct_ov74_0223BBD4 ov74_0223BBD4[] = {
         {
          .x = 5,
@@ -524,7 +535,8 @@ static BOOL ov74_02227584(MainMenuAppData *data) {
     return FALSE;
 }
 
-static void DetectInsertedGBACart(MainMenuAppData *data) {
+static void DetectInsertedGBACart(MainMenuAppData *data)
+{
     u32 offsets = PmAgbCartridgeGetOffsets(0);
     u32 version = 0;
     data->connectedAgbGame = 0;
@@ -558,7 +570,8 @@ static void DetectInsertedGBACart(MainMenuAppData *data) {
     }
 }
 
-static void ov74_022276AC(MainMenuAppData *data) {
+static void ov74_022276AC(MainMenuAppData *data)
+{
     switch (data->unk13C) {
     case 10:
         data->unk13C = 11;
@@ -628,7 +641,8 @@ typedef struct UnkStruct_ov74_0223BC30 {
     u32 msgId;
 } UnkStruct_ov74_0223BC30;
 
-static BOOL ov74_0222779C(MainMenuAppData *data) {
+static BOOL ov74_0222779C(MainMenuAppData *data)
+{
     static UnkStruct_ov74_0223BC30 ov74_0223BC30[] = {
         { .x = 4, .y = 2,  .width = 24, .height = 20, .msgId = msg_0017_00001 }, // Found a mystery gift
         { .x = 4, .y = 4,  .width = 24, .height = 16, .msgId = msg_0017_00003 }, // Found a mystery gift, but don't have the Pokédex
@@ -758,7 +772,8 @@ static BOOL ov74_0222779C(MainMenuAppData *data) {
     return TRUE;
 }
 
-static void HandleScreenScroll(MainMenuAppData *data) {
+static void HandleScreenScroll(MainMenuAppData *data)
+{
     if (data->currentScreenY == data->effectiveScreenY) {
         return;
     }
@@ -783,7 +798,8 @@ static void HandleScreenScroll(MainMenuAppData *data) {
     ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_2, BG_POS_OP_SET_Y, data->currentScreenY / FX32_ONE);
 }
 
-static void MainMenu_SetupGraphics(MainMenuAppData *data) {
+static void MainMenu_SetupGraphics(MainMenuAppData *data)
+{
     static const GraphicsBanks sMainMenuGraphicsBanks = {
         .bg = GX_VRAM_BG_128_A,
         .subbg = GX_VRAM_SUB_BG_128_C,
@@ -834,7 +850,8 @@ static void MainMenu_SetupGraphics(MainMenuAppData *data) {
     ((vu16 *)HW_PLTT)[33] = RGB(26, 26, 26);
 }
 
-static void MainMenu_SetupSprites(MainMenuAppData *data) {
+static void MainMenu_SetupSprites(MainMenuAppData *data)
+{
     ov74_0223563C();
     ov74_02235690();
     // FIXME: Unpack a/1/1/3 and use NAIX constants here.
@@ -849,13 +866,15 @@ static void MainMenu_SetupSprites(MainMenuAppData *data) {
     Sprite_SetAnimActiveFlag(data->downArrowSprite, FALSE);
 }
 
-static void MainMenu_SetupWifiTiles(MainMenuAppData *data) {
+static void MainMenu_SetupWifiTiles(MainMenuAppData *data)
+{
     // FIXME: Unpack a/1/1/3 and use NAIX constants here.
     GfGfxLoader_GXLoadPal(NARC_a_1_1_3, 49, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_4_OFFSET, 32, HEAP_ID_MAIN_MENU);
     GfGfxLoader_LoadCharData(NARC_a_1_1_3, 48, data->bgConfig, GF_BG_LYR_MAIN_2, 0x3E6, 0x100, FALSE, HEAP_ID_MAIN_MENU);
 }
 
-static void DrawWirelessIcon(MainMenuAppData *data, u32 x, u32 y, u32 type) {
+static void DrawWirelessIcon(MainMenuAppData *data, u32 x, u32 y, u32 type)
+{
     u16 *buffer = GetBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
 
     // Bits 15-12: palette, 11-0: tile number
@@ -874,7 +893,8 @@ static void DrawWirelessIcon(MainMenuAppData *data, u32 x, u32 y, u32 type) {
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
-static void ClearWirelessIcon(MainMenuAppData *data, u32 x, u32 y) {
+static void ClearWirelessIcon(MainMenuAppData *data, u32 x, u32 y)
+{
     u16 *buffer = GetBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
 
     u32 offset = (y + 0) * 32 + x;
@@ -887,7 +907,8 @@ static void ClearWirelessIcon(MainMenuAppData *data, u32 x, u32 y) {
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
-static void PrintPlayerInfoField(Window *window, MsgData *msgData, MessageFormat *msgFmt, u32 color, u32 msgId, u32 y) {
+static void PrintPlayerInfoField(Window *window, MsgData *msgData, MessageFormat *msgFmt, u32 color, u32 msgId, u32 y)
+{
     String *string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msgId, HEAP_ID_MAIN_MENU);
     int stringPixelWidth = FontID_String_GetWidth(0, string, GetFontAttribute(0, 2));
     u32 x = GetWindowWidth(window) * 8 - (stringPixelWidth + 32);
@@ -895,7 +916,8 @@ static void PrintPlayerInfoField(Window *window, MsgData *msgData, MessageFormat
     String_Delete(string);
 }
 
-static void ov74_02227E64(MessageFormat *messageFormat, int number) {
+static void ov74_02227E64(MessageFormat *messageFormat, int number)
+{
     u32 digits;
     PrintingMode printingMode;
 
@@ -913,7 +935,8 @@ static void ov74_02227E64(MessageFormat *messageFormat, int number) {
     BufferIntegerAsString(messageFormat, 0, number, digits, printingMode, 1);
 }
 
-static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     MessageFormat *messageFormat;
     MsgData *msgData;
 
@@ -964,7 +987,8 @@ static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruc
     return TRUE;
 }
 
-static BOOL MainMenu_PrintMigrateFromAgbButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintMigrateFromAgbButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     if (data->connectedAgbGame == 0) {
         return FALSE;
     }
@@ -995,7 +1019,8 @@ static BOOL MainMenu_PrintMigrateFromAgbButton(MainMenuAppData *data, u32 a1, Un
     return TRUE;
 }
 
-static BOOL MainMenu_PrintMysteryGiftButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 y) {
+static BOOL MainMenu_PrintMysteryGiftButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 y)
+{
     if (!data->drawMysteryGiftButton) {
         if (SaveMysteryGift_TestFlagx7FF(data->mysteryGift) == TRUE) {
             data->drawMysteryGiftButton = TRUE;
@@ -1030,7 +1055,8 @@ static BOOL MainMenu_PrintMysteryGiftButton(MainMenuAppData *data, u32 a1, UnkSt
     return FALSE;
 }
 
-static BOOL MainMenu_PrintConnectToRangerButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintConnectToRangerButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     if (data->drawConnectToRangerButton == TRUE && data->hasPokedex == TRUE) {
         ov74_02235568(data->bgConfig, a2, 3, a3, sMainMenuButtons[a1].msgId);
         DrawWirelessIcon(data, 23, a3, 1);
@@ -1044,7 +1070,8 @@ static BOOL MainMenu_PrintConnectToRangerButton(MainMenuAppData *data, u32 a1, U
     return FALSE;
 }
 
-static BOOL MainMenu_PrintConnectToWiiButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintConnectToWiiButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     if (data->drawConnectToWiiButton == TRUE) {
         ov74_02235568(data->bgConfig, a2, 3, a3, sMainMenuButtons[a1].msgId);
         data->unk110[a1] = 1;
@@ -1057,7 +1084,8 @@ static BOOL MainMenu_PrintConnectToWiiButton(MainMenuAppData *data, u32 a1, UnkS
     return FALSE;
 }
 
-static BOOL MainMenu_PrintNintendoWFCSetupButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintNintendoWFCSetupButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     ov74_02235568(data->bgConfig, a2, 3, a3, sMainMenuButtons[a1].msgId);
     data->unk110[a1] = 2;
     DrawWirelessIcon(data, 23, a3, 2);
@@ -1066,7 +1094,8 @@ static BOOL MainMenu_PrintNintendoWFCSetupButton(MainMenuAppData *data, u32 a1, 
     return TRUE;
 }
 
-static BOOL MainMenu_PrintConnectToPokewalkerButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintConnectToPokewalkerButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     ov74_02235568(data->bgConfig, a2, 3, a3, sMainMenuButtons[a1].msgId);
     ClearWirelessIcon(data, 23, a3);
     data->unkEC[a1] = sMainMenuButtons[a1].id;
@@ -1074,7 +1103,8 @@ static BOOL MainMenu_PrintConnectToPokewalkerButton(MainMenuAppData *data, u32 a
     return TRUE;
 }
 
-static BOOL MainMenu_PrintWiiMessageSettingsButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
+static BOOL MainMenu_PrintWiiMessageSettingsButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3)
+{
     ov74_02235568(data->bgConfig, a2, 3, a3, sMainMenuButtons[a1].msgId);
     ClearWirelessIcon(data, 23, a3);
     data->unkEC[a1] = sMainMenuButtons[a1].id;
@@ -1082,7 +1112,8 @@ static BOOL MainMenu_PrintWiiMessageSettingsButton(MainMenuAppData *data, u32 a1
     return TRUE;
 }
 
-static BOOL ov74_022282CC(MainMenuAppData *data) {
+static BOOL ov74_022282CC(MainMenuAppData *data)
+{
     u32 y;
     u32 i;
 
@@ -1133,7 +1164,8 @@ static BOOL ov74_022282CC(MainMenuAppData *data) {
     return ret;
 }
 
-static void ov74_0222841C(MainMenuAppData *data, int currentOption) {
+static void ov74_0222841C(MainMenuAppData *data, int currentOption)
+{
     for (int i = 0; i < NELEMS(data->unk5C); i++) {
         Window *window = &data->unk5C[i];
         if (!WindowIsInUse(window)) {
@@ -1163,7 +1195,8 @@ static void ov74_0222841C(MainMenuAppData *data, int currentOption) {
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-static void ov74_02228548(MainMenuAppData *data, int a1) {
+static void ov74_02228548(MainMenuAppData *data, int a1)
+{
     for (int i = 0; i < (int)NELEMS(data->unk164); i++) {
         Window *window = &data->unk164[i];
         if (!WindowIsInUse(window)) {
@@ -1187,7 +1220,8 @@ static void ov74_02228548(MainMenuAppData *data, int a1) {
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_MAIN_1);
 }
 
-static BOOL ChangeCurrentAppOption(MainMenuAppData *data, int offset) {
+static BOOL ChangeCurrentAppOption(MainMenuAppData *data, int offset)
+{
     int option = data->currentOption;
     int oldOption = data->currentOption;
 
@@ -1222,7 +1256,8 @@ static BOOL ChangeCurrentAppOption(MainMenuAppData *data, int offset) {
     return FALSE;
 }
 
-static void ov74_022286F8(MainMenuAppData *data, int a1) {
+static void ov74_022286F8(MainMenuAppData *data, int a1)
+{
     Window *window = &data->unk5C[a1];
 
     int optionY = (GetWindowY(window) - 1) * 8;
@@ -1246,7 +1281,8 @@ static void ov74_022286F8(MainMenuAppData *data, int a1) {
     }
 }
 
-static void MainMenu_UpdateArrowSprites(MainMenuAppData *data) {
+static void MainMenu_UpdateArrowSprites(MainMenuAppData *data)
+{
     BOOL upArrowEnabled;
     BOOL downArrowEnabled;
 
@@ -1278,7 +1314,8 @@ static void MainMenu_UpdateArrowSprites(MainMenuAppData *data) {
     Sprite_SetAnimActiveFlag(data->downArrowSprite, FALSE);
 }
 
-static void MainMenu_FreeGraphics(OverlayManager *manager) {
+static void MainMenu_FreeGraphics(OverlayManager *manager)
+{
     MainMenuAppData *data = OverlayManager_GetData(manager);
 
     if (data->upArrowSprite != NULL || data->downArrowSprite != NULL) {
@@ -1304,7 +1341,8 @@ static void MainMenu_FreeGraphics(OverlayManager *manager) {
     Main_SetVBlankIntrCB(NULL, NULL);
 }
 
-static void AdvanceButtonBorderAnimation(MainMenuAppData *data) {
+static void AdvanceButtonBorderAnimation(MainMenuAppData *data)
+{
     static u16 sButtonBorderAnimation[] = {
         RGB(1, 28, 20),
         RGB(3, 28, 20),
@@ -1345,14 +1383,16 @@ static void AdvanceButtonBorderAnimation(MainMenuAppData *data) {
     ((vu16 *)HW_PLTT)[54] = sButtonBorderAnimation[data->buttonBorderAnimFrame++];
 }
 
-static void MainMenu_OnVBlank(BgConfig *bgConfig) {
+static void MainMenu_OnVBlank(BgConfig *bgConfig)
+{
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     DoScheduledBgGpuUpdates(bgConfig);
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
+BOOL MainMenuApp_Init(OverlayManager *manager, int *state)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_MAIN_MENU, 0x40000);
 
     MainMenuAppData *data = OverlayManager_CreateAndGetData(manager, sizeof(MainMenuAppData), HEAP_ID_MAIN_MENU);
@@ -1388,7 +1428,8 @@ BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
 
 #define MAIN_MENU_BACKGROUND_COLOR RGB(12, 12, 31)
 
-BOOL MainMenuApp_Main(OverlayManager *manager, int *state) {
+BOOL MainMenuApp_Main(OverlayManager *manager, int *state)
+{
     MainMenuAppData *data = OverlayManager_GetData(manager);
     data->frames++;
     BOOL cartInserted = CTRDG_IsExisting(); // unused
@@ -1478,7 +1519,8 @@ BOOL MainMenuApp_Main(OverlayManager *manager, int *state) {
     return FALSE;
 }
 
-static void MainMenu_QueueSelectedApp(MainMenuAppData *data) {
+static void MainMenu_QueueSelectedApp(MainMenuAppData *data)
+{
     FS_EXTERN_OVERLAY(OVY_75);
     FS_EXTERN_OVERLAY(OVY_112);
 
@@ -1519,7 +1561,8 @@ static void MainMenu_QueueSelectedApp(MainMenuAppData *data) {
     }
 }
 
-BOOL MainMenuApp_Exit(OverlayManager *manager, int *state) {
+BOOL MainMenuApp_Exit(OverlayManager *manager, int *state)
+{
     MainMenuAppData *data = OverlayManager_GetData(manager);
 
     MainMenu_QueueSelectedApp(data);

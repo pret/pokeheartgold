@@ -25,17 +25,20 @@ static Card *GetCard(GameState *, int);
 extern const u8 sBoardIdDistribution[8][80];
 extern const BoardConfig sBoardConfigs[80];
 
-GameState *CreateGameState(HeapID heapId) {
+GameState *CreateGameState(HeapID heapId)
+{
     GameState *ptr = AllocFromHeap(heapId, sizeof(GameState));
     MI_CpuFill8(ptr, 0, sizeof(GameState));
     return ptr;
 }
 
-void FreeGameState(GameState *game) {
+void FreeGameState(GameState *game)
+{
     Heap_Free(game);
 }
 
-void NewBoard(GameState *game) {
+void NewBoard(GameState *game)
+{
     SelectBoardId(game);
     GenerateBoard(game);
     CountPointsInRowCols(game);
@@ -43,7 +46,8 @@ void NewBoard(GameState *game) {
     CountMultiplierCards(game);
 }
 
-void ov122_021E8528(GameState *game) {
+void ov122_021E8528(GameState *game)
+{
     int i;
     RoundSummary temp[5];
 
@@ -62,11 +66,13 @@ void ov122_021E8528(GameState *game) {
     game->historyHead = head;
 }
 
-void SetRoundOutcome(GameState *game, RoundOutcome outcome) {
+void SetRoundOutcome(GameState *game, RoundOutcome outcome)
+{
     game->roundOutcome = outcome;
 }
 
-void MultiplyPayoutAndUpdateCardsFlipped(GameState *game, CardType type) {
+void MultiplyPayoutAndUpdateCardsFlipped(GameState *game, CardType type)
+{
     u32 value = CardValue(type);
 
     GF_ASSERT(value < 4);
@@ -93,7 +99,8 @@ void MultiplyPayoutAndUpdateCardsFlipped(GameState *game, CardType type) {
     game->payout = newPayout;
 }
 
-void FlipCard(GameState *game, CardID cardId) {
+void FlipCard(GameState *game, CardID cardId)
+{
     Card *card = GetCard(game, cardId);
     GF_ASSERT(card->flipped == FALSE);
 
@@ -102,7 +109,8 @@ void FlipCard(GameState *game, CardID cardId) {
 }
 
 // Returns TRUE if some amount was deducted.
-BOOL DeductFromPayout(GameState *game, u8 amount) {
+BOOL DeductFromPayout(GameState *game, u8 amount)
+{
     int payout = game->payout;
     if (payout != 0) {
         int newPayout = payout - amount;
@@ -115,23 +123,27 @@ BOOL DeductFromPayout(GameState *game, u8 amount) {
     return FALSE;
 }
 
-BOOL IsCardFlipped(GameState *game, CardID cardId) {
+BOOL IsCardFlipped(GameState *game, CardID cardId)
+{
     Card *card = GetCard(game, cardId);
     return card->flipped;
 }
 
-BOOL EarnedMaxPayout(GameState *game) {
+BOOL EarnedMaxPayout(GameState *game)
+{
     GF_ASSERT(game->payout <= game->maxPayout);
 
     return game->payout == game->maxPayout;
 }
 
-CardType GetCardType(GameState *game, CardID cardId) {
+CardType GetCardType(GameState *game, CardID cardId)
+{
     Card *card = GetCard(game, cardId);
     return card->type;
 }
 
-int IsCardMemoFlagOn(GameState *game, CardID cardId, int memoFlag) {
+int IsCardMemoFlagOn(GameState *game, CardID cardId, int memoFlag)
+{
     Card *card = GetCard(game, cardId);
     int cardMemoFlag = card->memo & memoFlag;
     if (cardMemoFlag == memoFlag) {
@@ -140,7 +152,8 @@ int IsCardMemoFlagOn(GameState *game, CardID cardId, int memoFlag) {
     return 0;
 }
 
-void ToggleCardMemo(GameState *game, CardID cardId, int memoFlag) {
+void ToggleCardMemo(GameState *game, CardID cardId, int memoFlag)
+{
     Card *card = GetCard(game, cardId);
     int var2 = card->memo;
     if (var2 & memoFlag) {
@@ -150,7 +163,8 @@ void ToggleCardMemo(GameState *game, CardID cardId, int memoFlag) {
     card->memo |= memoFlag;
 }
 
-int PointsAlongAxis(GameState *game, Axis axis, u8 i) {
+int PointsAlongAxis(GameState *game, Axis axis, u8 i)
+{
     GF_ASSERT(i < 5);
 
     switch (axis) {
@@ -164,7 +178,8 @@ int PointsAlongAxis(GameState *game, Axis axis, u8 i) {
     return 0;
 }
 
-int VoltorbsAlongAxis(GameState *game, Axis axis, u8 i) {
+int VoltorbsAlongAxis(GameState *game, Axis axis, u8 i)
+{
     GF_ASSERT(i < 5);
 
     switch (axis) {
@@ -178,7 +193,8 @@ int VoltorbsAlongAxis(GameState *game, Axis axis, u8 i) {
     return 0;
 }
 
-int FlippedCardsAlongAxis(GameState *game, Axis axis, u8 i) {
+int FlippedCardsAlongAxis(GameState *game, Axis axis, u8 i)
+{
     u8 count = 0;
 
     switch (axis) {
@@ -202,29 +218,35 @@ int FlippedCardsAlongAxis(GameState *game, Axis axis, u8 i) {
     return count;
 }
 
-u16 GamePayout(GameState *game) {
+u16 GamePayout(GameState *game)
+{
     return game->payout;
 }
 
-u8 MultiplierCards(GameState *game) {
+u8 MultiplierCards(GameState *game)
+{
     return game->multiplierCards;
 }
 
-u8 MultiplierCardsFlipped(GameState *game) {
+u8 MultiplierCardsFlipped(GameState *game)
+{
     return game->multipliersFlipped;
 }
 
-u8 GameLevel(GameState *game) {
+u8 GameLevel(GameState *game)
+{
     return game->level;
 }
 
 // Levels gained (as viewed in display).
-int LevelsGained(GameState *game) {
+int LevelsGained(GameState *game)
+{
     RoundSummary *round = PrevRoundSummary(game);
     return round->level - game->level;
 }
 
-static void AddRoundSummary(GameState *game) {
+static void AddRoundSummary(GameState *game)
+{
     GF_ASSERT(game->historyHead < 5);
 
     RoundSummary *round = &game->boardHistory[game->historyHead];
@@ -236,7 +258,8 @@ static void AddRoundSummary(GameState *game) {
     game->historyHead = (game->historyHead + 1) % 5;
 }
 
-static RoundSummary *PrevRoundSummary(GameState *game) {
+static RoundSummary *PrevRoundSummary(GameState *game)
+{
     int idx;
 
     int head = game->historyHead;
@@ -249,7 +272,8 @@ static RoundSummary *PrevRoundSummary(GameState *game) {
     return &game->boardHistory[idx];
 }
 
-static int CardValue(CardType type) {
+static int CardValue(CardType type)
+{
     switch (type) {
     case CARD_TYPE_ONE:
         return 1;
@@ -265,7 +289,8 @@ static int CardValue(CardType type) {
 // True if the boardId corresponds to at least level `level`.
 #define LEVEL_AT_LEAST(boardId, level) (boardId >= 10 * (level - 1))
 
-static int CalcNextLevel(GameState *game) {
+static int CalcNextLevel(GameState *game)
+{
     int i;
     u32 boardId;
     RoundOutcome roundOutcome;
@@ -315,7 +340,8 @@ static int CalcNextLevel(GameState *game) {
     return 7; // Lv. 1
 }
 
-static void SelectBoardId(GameState *game) {
+static void SelectBoardId(GameState *game)
+{
     int i;
 
     int rand = (u32)MTRandom() % 100;
@@ -332,7 +358,8 @@ static void SelectBoardId(GameState *game) {
     game->boardId = i;
 }
 
-static void CountPointsInRowCols(GameState *game) {
+static void CountPointsInRowCols(GameState *game)
+{
     int r;
     int c;
 
@@ -351,7 +378,8 @@ static void CountPointsInRowCols(GameState *game) {
     }
 }
 
-static void CountVoltorbsInRowCols(GameState *game) {
+static void CountVoltorbsInRowCols(GameState *game)
+{
     int r;
     int c;
 
@@ -374,7 +402,8 @@ static void CountVoltorbsInRowCols(GameState *game) {
     }
 }
 
-static void CalcBoardMaxPayout(GameState *game) {
+static void CalcBoardMaxPayout(GameState *game)
+{
     int i;
     int var1 = 1;
 
@@ -392,7 +421,8 @@ static void CalcBoardMaxPayout(GameState *game) {
     game->maxPayout = var1;
 }
 
-static void CountMultiplierCards(GameState *game) {
+static void CountMultiplierCards(GameState *game)
+{
     for (int i = 0; i < 25; i++) {
         Card *card = GetCard(game, (u8)i);
         GF_ASSERT(card->type != CARD_TYPE_NONE);
@@ -403,7 +433,8 @@ static void CountMultiplierCards(GameState *game) {
     }
 }
 
-static void PlaceCardsOnBoard(GameState *game, CardType type, int n, BOOL isNot1Card) {
+static void PlaceCardsOnBoard(GameState *game, CardType type, int n, BOOL isNot1Card)
+{
     u8 cardId;
     int attempts = 0;
 
@@ -431,7 +462,8 @@ static void PlaceCardsOnBoard(GameState *game, CardType type, int n, BOOL isNot1
     }
 }
 
-static BOOL RetryBoardGen(GameState *game) {
+static BOOL RetryBoardGen(GameState *game)
+{
     int i;
     const BoardConfig *config;
 
@@ -472,7 +504,8 @@ static BOOL RetryBoardGen(GameState *game) {
     return FALSE;
 }
 
-static void GenerateBoard(GameState *game) {
+static void GenerateBoard(GameState *game)
+{
     GF_ASSERT(game->boardId < 80);
 
     int voltorbs = sBoardConfigs[game->boardId].voltorbs;
@@ -492,7 +525,8 @@ static void GenerateBoard(GameState *game) {
     }
 }
 
-static Card *GetCard(GameState *game, CardID cardId) {
+static Card *GetCard(GameState *game, CardID cardId)
+{
     GF_ASSERT((u32)cardId < 25);
 
     u8 row = cardId / 5;

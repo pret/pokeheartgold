@@ -92,7 +92,8 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      },
 };
 
-void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
+void OakSpeech_InitSpriteEngine(OakSpeechData *data)
+{
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GF_CreateVramTransferManager(0x20, HEAP_ID_OAKS_SPEECH);
@@ -139,14 +140,16 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
     }
 }
 
-void OakSpeech_CleanupSpriteEngine(OakSpeechData *data) {
+void OakSpeech_CleanupSpriteEngine(OakSpeechData *data)
+{
     SpriteSystem_DestroySpriteManager(data->spriteRenderer, data->spriteGfxHandler);
     SpriteSystem_Free(data->spriteRenderer);
     GF_DestroyVramTransferManager();
     data->spriteGfxHandler = NULL;
 }
 
-void OakSpeech_CreateSprites(OakSpeechData *data) {
+void OakSpeech_CreateSprites(OakSpeechData *data)
+{
     for (u16 i = 0; i < 6; ++i) {
         data->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler, &sSpriteTemplates[i]);
     }
@@ -161,7 +164,8 @@ void OakSpeech_CreateSprites(OakSpeechData *data) {
     Sprite_SetDrawFlag(data->sprites[5], FALSE);
 }
 
-void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int action) {
+void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int action)
+{
     BOOL sprite1Visible = FALSE;
     BOOL sprite2Visible = FALSE;
 

@@ -5,20 +5,23 @@
 #include "palette.h"
 #include "unk_02026E30.h"
 
-const u16 *ov06_0221BA00(int param_1) {
+const u16 *ov06_0221BA00(int param_1)
+{
     if (param_1 != -1) {
         return ov06_0221BDD0[param_1];
     }
     return ov06_0221BB6C;
 }
 
-void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferId bufferId, u32 paletteSlot) {
+void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferId bufferId, u32 paletteSlot)
+{
     const u16 *srcData = ov06_0221BA00(param_2);
 
     PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
-SPLEmitter *ov06_0221BA40(HeapID heapId) {
+SPLEmitter *ov06_0221BA40(HeapID heapId)
+{
     void *particleHeap;
     SPLEmitter *pPVar1;
     Camera *pGVar2;
@@ -32,7 +35,8 @@ SPLEmitter *ov06_0221BA40(HeapID heapId) {
     return pPVar1;
 }
 
-SPLEmitter *ov06_0221BA88(HeapID heapId) {
+SPLEmitter *ov06_0221BA88(HeapID heapId)
+{
     void *particleHeap;
     SPLEmitter *pPVar1;
     Camera *pGVar2;
@@ -49,7 +53,8 @@ SPLEmitter *ov06_0221BA88(HeapID heapId) {
     return pPVar1;
 }
 
-void ov06_0221BAD8(SPLEmitter *param_1) {
+void ov06_0221BAD8(SPLEmitter *param_1)
+{
     void *pvVar1;
 
     pvVar1 = sub_020154D0(param_1);
@@ -57,7 +62,8 @@ void ov06_0221BAD8(SPLEmitter *param_1) {
     Heap_Free(pvVar1);
 }
 
-void ov06_0221BAF0(void) {
+void ov06_0221BAF0(void)
+{
     int iVar1;
 
     Thunk_G3X_Reset();
@@ -72,7 +78,8 @@ void ov06_0221BAF0(void) {
     }
 }
 
-u32 ov06_0221BB14(u32 szByte, BOOL is4x4comp) {
+u32 ov06_0221BB14(u32 szByte, BOOL is4x4comp)
+{
     NNSGfdTexKey texKey;
 
     texKey = NNS_GfdDefaultFuncAllocTexVram(szByte, is4x4comp, 0);
@@ -80,7 +87,8 @@ u32 ov06_0221BB14(u32 szByte, BOOL is4x4comp) {
     return (texKey << 16) >> 13;
 }
 
-u32 ov06_0221BB30(u32 szByte, BOOL is4pltt) {
+u32 ov06_0221BB30(u32 szByte, BOOL is4pltt)
+{
     NNSGfdPlttKey plttKey;
 
     plttKey = NNS_GfdDefaultFuncAllocPlttVram(szByte, is4pltt, 0);

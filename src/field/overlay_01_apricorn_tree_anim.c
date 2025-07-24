@@ -64,7 +64,8 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman);
 static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z);
 static BOOL DoApricornJump(AnimApricornTreeWork *env);
 
-void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2) {
+void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2)
+{
     AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_32, sizeof(AnimApricornTreeWork));
     MI_CpuFill8(env, 0, sizeof(AnimApricornTreeWork));
     env->state = 0;
@@ -74,7 +75,8 @@ void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree
     TaskManager_Call(fieldSystem->taskman, Task_AnimApricornTree, env);
 }
 
-static BOOL Task_AnimApricornTree(TaskManager *taskman) {
+static BOOL Task_AnimApricornTree(TaskManager *taskman)
+{
     int direction;
     int posX;
     int posZ;
@@ -195,7 +197,8 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
     return FALSE;
 }
 
-static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z) {
+static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 sprite, u32 x, u32 z)
+{
     LocalMapObject *obj = MapObject_Create(taskman, x, z, 0, sprite, 0, 1);
     GF_ASSERT(obj != NULL);
 
@@ -211,7 +214,8 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
     return obj;
 }
 
-static BOOL DoApricornJump(AnimApricornTreeWork *env) {
+static BOOL DoApricornJump(AnimApricornTreeWork *env)
+{
     VecFx32 pos;
     MapObject_CopyPositionVector(env->apricorn, &pos);
     pos.y += sApricornJumpDy[env->jumpTimer] * FX32_ONE;
@@ -226,7 +230,8 @@ static BOOL DoApricornJump(AnimApricornTreeWork *env) {
     return FALSE;
 }
 
-static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
+static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
     u32 *state_p = TaskManager_GetStatePtr(taskman);

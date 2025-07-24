@@ -32,7 +32,8 @@ static const OverlayManagerTemplate sApplication_HatchEgg = {
     .ovy_id = FS_OVERLAY_ID(OVY_95),
 };
 
-static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
+static BOOL Task_HatchEggInParty(TaskManager *taskManager)
+{
     HatchEggTaskData *data = TaskManager_GetEnvironment(taskManager);
 
     switch (data->state) {
@@ -98,7 +99,8 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallTask_HatchEggInParty(TaskManager *taskManager, UnkStruct_02091240 *a1) {
+void CallTask_HatchEggInParty(TaskManager *taskManager, UnkStruct_02091240 *a1)
+{
     HatchEggTaskData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(HatchEggTaskData));
     memset(data, 0, sizeof(HatchEggTaskData));
     data->unkC = *a1;

@@ -15,7 +15,8 @@ static const u16 sFossilPokemonMap[7][2] = {
     { ITEM_SKULL_FOSSIL, SPECIES_CRANIDOS   },
 };
 
-BOOL ScrCmd_CountFossils(ScriptContext *ctx) {
+BOOL ScrCmd_CountFossils(ScriptContext *ctx)
+{
     FieldSystem *sav_ptr = ctx->fieldSystem;
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
 
@@ -29,7 +30,8 @@ BOOL ScrCmd_CountFossils(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetFossilPokemon(ScriptContext *ctx) {
+BOOL ScrCmd_GetFossilPokemon(ScriptContext *ctx)
+{
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     u16 fossil_id = ScriptGetVar(ctx);
 
@@ -44,7 +46,8 @@ BOOL ScrCmd_GetFossilPokemon(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetFossilMinimumAmount(ScriptContext *ctx) {
+BOOL ScrCmd_GetFossilMinimumAmount(ScriptContext *ctx)
+{
     FieldSystem *sav_ptr = ctx->fieldSystem;
     u16 *ret_ptr1 = ScriptGetVarPointer(ctx);
     u16 *ret_ptr2 = ScriptGetVarPointer(ctx);

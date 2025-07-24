@@ -35,7 +35,8 @@ static void _DestroyParticleSystem(IconFormChangeData *partyMenu);
 static u32 texAlloc(u32 szByte, BOOL is4x4comp);
 static u32 plttAlloc(u32 szByte, BOOL is4pltt);
 
-void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
+void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu)
+{
     if (partyMenu->iconFormChange != NULL) {
         GF_ASSERT(FALSE);
     }
@@ -48,7 +49,8 @@ void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
 #define NARC_particle_giratina 0
 #define NARC_particle_shaymin  1
 
-BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
+BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu)
+{
     IconFormChangeData *work = partyMenu->iconFormChange;
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
 
@@ -132,24 +134,28 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
     return FALSE;
 }
 
-static void _DestroyLocalWork(PartyMenu *partyMenu) {
+static void _DestroyLocalWork(PartyMenu *partyMenu)
+{
     Heap_Free(partyMenu->iconFormChange);
     partyMenu->iconFormChange = 0;
 }
 
-static void _InitEffects(PartyMenu *partyMenu) {
+static void _InitEffects(PartyMenu *partyMenu)
+{
     PartyMenu_Toggle3dEngine(partyMenu, PARTY_MENU_3D_ENGINE_ON);
     _CreateParticleSystem(partyMenu->iconFormChange);
     G2_SetBlendAlpha(0, 63, 31, 0);
 }
 
-static void _CleanupEffects(PartyMenu *partyMenu) {
+static void _CleanupEffects(PartyMenu *partyMenu)
+{
     _DestroyParticleSystem(partyMenu->iconFormChange);
     PartyMenu_Toggle3dEngine(partyMenu, PARTY_MENU_3D_ENGINE_OFF);
     G2_BlendNone();
 }
 
-static void _CreateParticleSystem(IconFormChangeData *partyMenu) {
+static void _CreateParticleSystem(IconFormChangeData *partyMenu)
+{
     sub_02014DA0();
     void *particleHeap = AllocFromHeap(HEAP_ID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
@@ -158,7 +164,8 @@ static void _CreateParticleSystem(IconFormChangeData *partyMenu) {
     Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, sub_02015524(partyMenu->particleSystem));
 }
 
-static void _EmitParticles(IconFormChangeData *partyMenu) {
+static void _EmitParticles(IconFormChangeData *partyMenu)
+{
     sub_0201526C(partyMenu->particleSystem, sub_02015264(NARC_a_2_0_6, partyMenu->fileId, HEAP_ID_PARTY_MENU), 0xA, 1);
 
     switch (partyMenu->species) {
@@ -185,13 +192,15 @@ static const fx32 sPartyMonSpritePositions[][2] = {
     { 5000,   -4500 }
 };
 
-static void particleEmitCallback(SPLEmitter *emitter) {
+static void particleEmitCallback(SPLEmitter *emitter)
+{
     IconFormChangeData *unkA = sub_02015504();
     SPL_SetEmitterPositionX(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][0]);
     SPL_SetEmitterPositionY(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][1]);
 }
 
-static s32 _RunParticleSystem(void) {
+static s32 _RunParticleSystem(void)
+{
     Thunk_G3X_Reset();
     s32 val = sub_0201543C();
     if (val > 0) {
@@ -202,13 +211,15 @@ static s32 _RunParticleSystem(void) {
     return val;
 }
 
-static void _DestroyParticleSystem(IconFormChangeData *partyMenu) {
+static void _DestroyParticleSystem(IconFormChangeData *partyMenu)
+{
     void *unkA = sub_020154D0(partyMenu->particleSystem);
     sub_02014EBC(partyMenu->particleSystem);
     Heap_Free(unkA);
 }
 
-static u32 texAlloc(u32 szByte, BOOL is4x4comp) {
+static u32 texAlloc(u32 szByte, BOOL is4x4comp)
+{
     NNSGfdTexKey unkC = NNS_GfdDefaultFuncAllocTexVram(szByte, is4x4comp, 0);
 
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_TEXKEY);
@@ -218,7 +229,8 @@ static u32 texAlloc(u32 szByte, BOOL is4x4comp) {
     return NNS_GfdGetTexKeyAddr(unkC);
 }
 
-static u32 plttAlloc(u32 szByte, BOOL is4pltt) {
+static u32 plttAlloc(u32 szByte, BOOL is4pltt)
+{
     NNSGfdPlttKey unkC = NNS_GfdDefaultFuncAllocPlttVram(szByte, is4pltt, 1);
 
     GF_ASSERT(unkC != NNS_GFD_ALLOC_ERROR_PLTTKEY);

@@ -79,7 +79,8 @@ static const u8 sCommercialsData[][3] = {
     { COMM_UNLOCK_RESTORED_POWER, COMM_REGION_JOHTO_F | COMM_REGION_KANTO_F, 3    },
 };
 
-BOOL RadioShow_Commercials_Setup(RadioShow *radioShow) {
+BOOL RadioShow_Commercials_Setup(RadioShow *radioShow)
+{
     CommercialsData *data = AllocFromHeap(radioShow->heapID, sizeof(CommercialsData));
     MI_CpuClear8(data, sizeof(CommercialsData));
     // data->heapID = radioShow->heapID;
@@ -89,7 +90,8 @@ BOOL RadioShow_Commercials_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_Commercials_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_Commercials_Teardown(RadioShow *radioShow)
+{
     RadioShow_Commercials_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(CommercialsData));
     Heap_Free(radioShow->showData);
@@ -97,7 +99,8 @@ BOOL RadioShow_Commercials_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_Commercials_Print(RadioShow *radioShow) {
+BOOL RadioShow_Commercials_Print(RadioShow *radioShow)
+{
     CommercialsData *data = radioShow->showData;
 
     switch (data->state) {
@@ -119,7 +122,8 @@ BOOL RadioShow_Commercials_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_Commercials_Init(RadioShow *radioShow) {
+void RadioShow_Commercials_Init(RadioShow *radioShow)
+{
     u8 num = 0;
     u8 i;
     u8 r0;
@@ -157,6 +161,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
     data->msgID = msg_0412_00002 + data->unlockedCommercials[LCRandom() % num];
 }
 
-void RadioShow_Commercials_Unload(RadioShow *radioShow) {
+void RadioShow_Commercials_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

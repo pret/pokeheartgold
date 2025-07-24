@@ -63,7 +63,8 @@ static const u8 unk_020FC3A4[] = {
     4,
 };
 
-BOOL ScrCmd_637(ScriptContext *ctx) {
+BOOL ScrCmd_637(ScriptContext *ctx)
+{
     u16 arg0 = ScriptReadHalfword(ctx);
     u16 arg1 = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
@@ -104,13 +105,15 @@ BOOL ScrCmd_637(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_640(ScriptContext *ctx) {
+BOOL ScrCmd_640(ScriptContext *ctx)
+{
     u16 unk = ScriptGetVar(ctx);
     sub_0204FA14(ctx->fieldSystem->saveData, sub_02030E08(ctx->fieldSystem->saveData), unk);
     return FALSE;
 }
 
-static void sub_0204FA14(SaveData *saveData, u32 a1, u8 a2) {
+static void sub_0204FA14(SaveData *saveData, u32 a1, u8 a2)
+{
     u8 unk;
     unk = 0;
     sub_02030E18(a1, 9, a2, 0, &unk);
@@ -124,7 +127,8 @@ static void sub_0204FA14(SaveData *saveData, u32 a1, u8 a2) {
     }
 }
 
-BOOL ScrCmd_638(ScriptContext *ctx) {
+BOOL ScrCmd_638(ScriptContext *ctx)
+{
     u16 firstMon = ScriptGetVar(ctx);
     u16 secondMon = ScriptGetVar(ctx);
     u16 *result = ScriptGetVarPointer(ctx);
@@ -132,7 +136,8 @@ BOOL ScrCmd_638(ScriptContext *ctx) {
     return TRUE;
 }
 
-static void sub_0204FB20(TaskManager *taskManager, u16 firstMon, u16 secondMon, u16 *result) {
+static void sub_0204FB20(TaskManager *taskManager, u16 firstMon, u16 secondMon, u16 *result)
+{
     UnkStruct_0204FB20 *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FB20));
     memset(unk, 0, sizeof(UnkStruct_0204FB20));
     unk->playerTeam[0] = firstMon;
@@ -142,7 +147,8 @@ static void sub_0204FB20(TaskManager *taskManager, u16 firstMon, u16 secondMon, 
     TaskManager_Call(taskManager, sub_0204FB60, unk);
 }
 
-static BOOL sub_0204FB60(TaskManager *taskManager) {
+static BOOL sub_0204FB60(TaskManager *taskManager)
+{
     UnkStruct_0204FB20 *unk = TaskManager_GetEnvironment(taskManager);
     switch (unk->state) {
     case 0:
@@ -169,7 +175,8 @@ static BOOL sub_0204FB60(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void sub_0204FBDC(TaskManager *taskManager, void *a1, BattleCastleChallengeType challengeType) {
+static void sub_0204FBDC(TaskManager *taskManager, void *a1, BattleCastleChallengeType challengeType)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204FBDC *unk = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0204FBDC));
     MI_CpuFill8(unk, 0, sizeof(UnkStruct_0204FBDC));
@@ -178,7 +185,8 @@ static void sub_0204FBDC(TaskManager *taskManager, void *a1, BattleCastleChallen
     TaskManager_Call(fieldSystem->taskman, sub_0204FC10, unk);
 }
 
-static BOOL sub_0204FC10(TaskManager *taskManager) {
+static BOOL sub_0204FC10(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0204FBDC *unk = TaskManager_GetEnvironment(taskManager);
     switch (unk->state) {
@@ -201,7 +209,8 @@ static BOOL sub_0204FC10(TaskManager *taskManager) {
     return FALSE;
 }
 
-static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID unused) {
+static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID unused)
+{
     PartyMenuArgs *partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
     MIi_CpuClearFast(0, (u32 *)partyMenu, sizeof(PartyMenuArgs));
     partyMenu->party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -228,7 +237,8 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     return 1;
 }
 
-static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
+static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem)
+{
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return TRUE;
     }
@@ -246,7 +256,8 @@ static u32 sub_0204FD50(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     return 2;
 }
 
-static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId) {
+static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID heapId)
+{
     SaveData *saveData = fieldSystem->saveData;
     PokemonSummaryArgs *unk = AllocFromHeapAtEnd(heapId, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));
@@ -268,7 +279,8 @@ static u32 sub_0204FDA0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, HeapID
     return 3;
 }
 
-static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
+static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem)
+{
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
@@ -279,7 +291,8 @@ static u32 sub_0204FE30(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     return 0;
 }
 
-void sub_0204FE58(u32 a0, u32 unused, UnkStruct_0204FB20 *a2, UnkStruct_0204FB20 *a3) {
+void sub_0204FE58(u32 a0, u32 unused, UnkStruct_0204FB20 *a2, UnkStruct_0204FB20 *a3)
+{
     a3->unk01++;
     if (sub_0203769C() != a0) {
         a3->partnerTeam[0] = a2->playerTeam[0];

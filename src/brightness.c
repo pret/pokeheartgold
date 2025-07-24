@@ -7,7 +7,8 @@
 static BrightnessData sMainScreenBrightnessData;
 static BrightnessData sSubScreenBrightnessData;
 
-void DoBrightnessTransitionStep(BrightnessData *brightness) {
+void DoBrightnessTransitionStep(BrightnessData *brightness)
+{
     BOOL transitionFinished = FALSE;
 
     if ((brightness->targetBrightness != brightness->currentBrightness + brightness->transitionDirection * brightness->stepSizeInteger) && brightness->currentBrightness != brightness->targetBrightness) {
@@ -38,7 +39,8 @@ void DoBrightnessTransitionStep(BrightnessData *brightness) {
     }
 }
 
-void InitBrightnessTransition(BrightnessData *brightnessData, u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask) {
+void InitBrightnessTransition(BrightnessData *brightnessData, u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask)
+{
     GF_ASSERT(!brightnessData->transitionActive);
 
     brightnessData->transitionActive = TRUE;
@@ -61,7 +63,8 @@ void InitBrightnessTransition(BrightnessData *brightnessData, u16 stepCount, s16
     brightnessData->fractionalCount = 0;
 }
 
-void StartBrightnessTransition(u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask) {
+void StartBrightnessTransition(u16 stepCount, s16 targetBrightness, s16 startBrightness, GXBlendPlaneMask surfaceMask, u32 screenMask)
+{
     if (stepCount != 0) {
         if (screenMask & SCREEN_MASK_MAIN) {
             G2_SetBlendBrightness(surfaceMask, startBrightness);
@@ -75,7 +78,8 @@ void StartBrightnessTransition(u16 stepCount, s16 targetBrightness, s16 startBri
     }
 }
 
-void SetBlendBrightness(fx32 brightness, GXBlendPlaneMask surfaceMask, u32 screenMask) {
+void SetBlendBrightness(fx32 brightness, GXBlendPlaneMask surfaceMask, u32 screenMask)
+{
     if (screenMask & SCREEN_MASK_MAIN) {
         G2_SetBlendBrightness(surfaceMask, brightness);
     }
@@ -87,7 +91,8 @@ void SetBlendBrightness(fx32 brightness, GXBlendPlaneMask surfaceMask, u32 scree
     InitScreenBrightnessData(screenMask);
 }
 
-void ScreenBrightnessData_InitAll(void) {
+void ScreenBrightnessData_InitAll(void)
+{
     MI_CpuFill8(&sMainScreenBrightnessData, 0, sizeof(BrightnessData));
     MI_CpuFill8(&sSubScreenBrightnessData, 0, sizeof(BrightnessData));
 
@@ -95,7 +100,8 @@ void ScreenBrightnessData_InitAll(void) {
     sSubScreenBrightnessData.transitionActive = FALSE;
 }
 
-void InitScreenBrightnessData(u32 screenMask) {
+void InitScreenBrightnessData(u32 screenMask)
+{
     if (screenMask & SCREEN_MASK_MAIN) {
         MI_CpuFill8(&sMainScreenBrightnessData, 0, sizeof(BrightnessData));
         sMainScreenBrightnessData.transitionActive = FALSE;
@@ -107,7 +113,8 @@ void InitScreenBrightnessData(u32 screenMask) {
     }
 }
 
-void DoAllScreenBrightnessTransitionStep(void) {
+void DoAllScreenBrightnessTransitionStep(void)
+{
     if (sMainScreenBrightnessData.transitionActive) {
         DoBrightnessTransitionStep(&sMainScreenBrightnessData);
     }
@@ -117,7 +124,8 @@ void DoAllScreenBrightnessTransitionStep(void) {
     }
 }
 
-BOOL IsBrightnessTransitionActive(u32 screenMask) {
+BOOL IsBrightnessTransitionActive(u32 screenMask)
+{
     if (screenMask == (SCREEN_MASK_MAIN | SCREEN_MASK_SUB)) {
         if (!sMainScreenBrightnessData.transitionActive && !sSubScreenBrightnessData.transitionActive) {
             return TRUE;
@@ -135,7 +143,8 @@ BOOL IsBrightnessTransitionActive(u32 screenMask) {
     return FALSE;
 }
 
-void UpdateMainScreenBrightnessSurface(GXBlendPlaneMask mask1, GXBlendPlaneMask mask2) {
+void UpdateMainScreenBrightnessSurface(GXBlendPlaneMask mask1, GXBlendPlaneMask mask2)
+{
     GXBlendPlaneMask mask = (GXBlendPlaneMask)(mask1 | mask2 << 8);
     sMainScreenBrightnessData.surfaceMask = mask;
 }

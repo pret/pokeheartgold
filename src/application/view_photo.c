@@ -132,7 +132,8 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
 
 static const u8 _0225A03C[3] = { 9, 1, 4 };
 
-SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
+SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem)
+{
     ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
     MI_CpuClear8(viewPhoto, sizeof(ViewPhotoSysTaskData));
     viewPhoto->heapId = HEAP_ID_FIELD;
@@ -145,7 +146,8 @@ SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
     return SysTask_CreateOnMainQueue(SysTask_ViewPhoto, viewPhoto, 1);
 }
 
-void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
+void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem)
+{
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)SysTask_GetData(fieldSystem->unk_D8);
 
     MenuInputStateMgr_SetState(&fieldSystem->menuInputState, viewPhoto->menuInputState);
@@ -155,7 +157,8 @@ void FieldSystem_DestroyViewPhotoTask(FieldSystem *fieldSystem) {
     fieldSystem->unk_D8 = NULL;
 }
 
-static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
+static void SysTask_ViewPhoto(SysTask *task, void *taskData)
+{
     ViewPhotoSysTaskData *viewPhoto = (ViewPhotoSysTaskData *)taskData;
     switch (viewPhoto->state) {
     case VIEW_PHOTO_TASK_STATE_0:
@@ -176,7 +179,8 @@ static void SysTask_ViewPhoto(SysTask *task, void *taskData) {
     SpriteList_RenderAndAnimateSprites(viewPhoto->spriteRender.spriteList);
 }
 
-static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto)
+{
     ViewPhotoSysTask_InitBgLayers(viewPhoto);
     ViewPhotoSysTask_LoadBgGraphics(viewPhoto);
     ViewPhotoSysTask_InitMessages(viewPhoto);
@@ -185,7 +189,8 @@ static void ViewPhotoSysTask_Setup(ViewPhotoSysTaskData *viewPhoto) {
     ViewPhotoSysTask_PrintTextOnWindows(viewPhoto);
 }
 
-static void ViewPhotoSysTask_Teardown(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_Teardown(ViewPhotoSysTaskData *viewPhoto)
+{
     ViewPhotoSysTask_DeleteSprites(viewPhoto);
     ViewPhotoSysTask_ReleaseWindows(viewPhoto);
     ViewPhotoSysTask_ReleaseMessages(viewPhoto);
@@ -193,7 +198,8 @@ static void ViewPhotoSysTask_Teardown(ViewPhotoSysTaskData *viewPhoto) {
     ViewPhotoSysTask_ReleaseBgLayers(viewPhoto);
 }
 
-static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData *viewPhoto) {
+static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData *viewPhoto)
+{
     ViewPhotoInputResponse response = ViewPhotoSysTask_GetTouchInput(viewPhoto);
     if (response == VIEW_PHOTO_INPUT_NOTHING) {
         response = ViewPhotoSysTask_GetKeyInput(viewPhoto);
@@ -232,7 +238,8 @@ static ViewPhotoInputResponse ViewPhotoSysTask_HandleInput(ViewPhotoSysTaskData 
     return response;
 }
 
-static ViewPhotoInputResponse ViewPhotoSysTask_GetKeyInput(ViewPhotoSysTaskData *viewPhoto) {
+static ViewPhotoInputResponse ViewPhotoSysTask_GetKeyInput(ViewPhotoSysTaskData *viewPhoto)
+{
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
         return VIEW_PHOTO_INPUT_END;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
@@ -244,7 +251,8 @@ static ViewPhotoInputResponse ViewPhotoSysTask_GetKeyInput(ViewPhotoSysTaskData 
     }
 }
 
-static ViewPhotoInputResponse ViewPhotoSysTask_GetTouchInput(ViewPhotoSysTaskData *viewPhoto) {
+static ViewPhotoInputResponse ViewPhotoSysTask_GetTouchInput(ViewPhotoSysTaskData *viewPhoto)
+{
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(ov19_0225A05E);
     if (hitbox == -1) {
         return VIEW_PHOTO_INPUT_NOTHING;
@@ -253,7 +261,8 @@ static ViewPhotoInputResponse ViewPhotoSysTask_GetTouchInput(ViewPhotoSysTaskDat
     return (ViewPhotoInputResponse)(hitbox + 1);
 }
 
-static void ViewPhotoSysTask_InitBgLayers(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_InitBgLayers(ViewPhotoSysTaskData *viewPhoto)
+{
     GXS_SetGraphicsMode(GX_BGMODE_3);
 
     {
@@ -318,7 +327,8 @@ static void ViewPhotoSysTask_InitBgLayers(ViewPhotoSysTaskData *viewPhoto) {
     BgSetPosTextAndCommit(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, -4);
 }
 
-static void ViewPhotoSysTask_ReleaseBgLayers(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_ReleaseBgLayers(ViewPhotoSysTaskData *viewPhoto)
+{
     BgSetPosTextAndCommit(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, 0);
     FreeBgTilemapBuffer(viewPhoto->bgConfig, GF_BG_LYR_SUB_3);
     FreeBgTilemapBuffer(viewPhoto->bgConfig, GF_BG_LYR_SUB_2);
@@ -326,7 +336,8 @@ static void ViewPhotoSysTask_ReleaseBgLayers(ViewPhotoSysTaskData *viewPhoto) {
     GXS_SetGraphicsMode(GX_BGMODE_0);
 }
 
-static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto)
+{
     NARC *narc = NARC_New(NARC_a_1_7_1, viewPhoto->heapId);
     GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, viewPhoto->heapId);
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, viewPhoto->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->heapId);
@@ -342,10 +353,12 @@ static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
     NARC_Delete(narc);
 }
 
-static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto)
+{
 }
 
-static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto)
+{
     FontID_Alloc(4, viewPhoto->heapId);
     viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0000_bin, viewPhoto->heapId);
     viewPhoto->msgFormat = MessageFormat_New_Custom(6, 22, viewPhoto->heapId);
@@ -356,7 +369,8 @@ static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
     }
 }
 
-static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto)
+{
     for (int i = 0; i < 2; ++i) {
         String_Delete(viewPhoto->photoDescStringTemplates[i]);
     }
@@ -367,21 +381,24 @@ static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto) {
     FontID_Release(4);
 }
 
-static void ViewPhotoSysTask_InitWindows(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_InitWindows(ViewPhotoSysTaskData *viewPhoto)
+{
     for (int i = 0; i < 2; ++i) {
         AddWindow(viewPhoto->bgConfig, &viewPhoto->windows[i], &ov19_0225A04E[i]);
         FillWindowPixelBuffer(&viewPhoto->windows[i], 0);
     }
 }
 
-static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto)
+{
     for (int i = 0; i < 2; ++i) {
         ClearWindowTilemapAndCopyToVram(&viewPhoto->windows[i]);
         RemoveWindow(&viewPhoto->windows[i]);
     }
 }
 
-static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto)
+{
     UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapId);
     for (int i = 0; i < 3; ++i) {
         viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->spriteRender, &ov19_0225A0C4[i]);
@@ -401,7 +418,8 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto)
+{
     for (int i = 0; i < 3; ++i) {
         Sprite_Delete(viewPhoto->sprites[i]);
     }
@@ -409,17 +427,20 @@ static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }
 
-static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo) {
+static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo)
+{
     viewPhoto->animSpriteNo = spriteNo;
     Sprite_SetAnimCtrlSeq(viewPhoto->sprites[spriteNo], _0225A03C[spriteNo]);
     Sprite_ResetAnimCtrlState(viewPhoto->sprites[spriteNo]);
 }
 
-static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto) {
+static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto)
+{
     return !Sprite_IsAnimated(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
-static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData)
+{
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
     sub_02068F98(photo->mapId, heapId, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
@@ -433,7 +454,8 @@ static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String
     BufferIntegerAsString(msgFormat, 5, day, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
 }
 
-static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto)
+{
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
             FillBgTilemapRect(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, 5 * i + j + 1, 13 + j, 2 + i, 1, 1, TILEMAP_COPY_SRC_FLAT);
@@ -442,7 +464,8 @@ static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto) {
     ScheduleBgTilemapBufferTransfer(viewPhoto->bgConfig, GF_BG_LYR_SUB_3);
 }
 
-static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto) {
+static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto)
+{
     // EXIT (print centered)
     AddTextPrinterParameterizedWithColor(&viewPhoto->windows[0], 4, viewPhoto->exitMsg, (64 - FontID_String_GetWidth(4, viewPhoto->exitMsg, 0)) / 2u, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 5, 0), NULL);
     ScheduleWindowCopyToVram(&viewPhoto->windows[0]);
@@ -459,7 +482,8 @@ static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto)
     ViewPhotoSysTask_DrawLyr3Icon(viewPhoto);
 }
 
-static u8 Photo_CountValidMons(Photo *photo) {
+static u8 Photo_CountValidMons(Photo *photo)
+{
     u8 answer = 0;
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         int species = photo->party[i].species;

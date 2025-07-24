@@ -27,7 +27,8 @@ static void OakSpeechYesNo_SetCursorSpritePos(OakSpeechYesNo *yesnoMenu);
 static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu);
 static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu);
 
-OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId) {
+OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId)
+{
     GF_ASSERT(bgConfig != NULL);
     volatile HeapID heapId_2 = heapId;
     OakSpeechYesNo *ret = AllocFromHeap(heapId, sizeof(OakSpeechYesNo));
@@ -44,14 +45,16 @@ OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int ba
     return ret;
 }
 
-void OakSpeechYesNo_Delete(OakSpeechYesNo *yesnoMenu) {
+void OakSpeechYesNo_Delete(OakSpeechYesNo *yesnoMenu)
+{
     GF_ASSERT(yesnoMenu != NULL);
     OakSpeechYesNo_RemoveWindows(yesnoMenu);
     MessageFormat_Delete(yesnoMenu->msgFormat);
     Heap_Free(yesnoMenu);
 }
 
-void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette) {
+void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette)
+{
     NARC *narc;
     u8 bgId;
     HeapID heapId;
@@ -68,7 +71,8 @@ void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette)
     NARC_Delete(narc);
 }
 
-void OakSpeechYesNo_Start(OakSpeechYesNo *yesnoMenu, int msgBank, int msgId_Yes, int msgId_No) {
+void OakSpeechYesNo_Start(OakSpeechYesNo *yesnoMenu, int msgBank, int msgId_Yes, int msgId_No)
+{
     OakSpeechYesNo_PrintMessageOnWindow(yesnoMenu, &yesnoMenu->windows[0], msgId_Yes, msgBank);
     OakSpeechYesNo_PrintMessageOnWindow(yesnoMenu, &yesnoMenu->windows[1], msgId_No, msgBank);
     yesnoMenu->state = 0;
@@ -79,7 +83,8 @@ void OakSpeechYesNo_Start(OakSpeechYesNo *yesnoMenu, int msgBank, int msgId_Yes,
     Sprite_SetDrawFlag(yesnoMenu->sprite, TRUE);
 }
 
-int OakSpeechYesNo_Main(OakSpeechYesNo *yesnoMenu) {
+int OakSpeechYesNo_Main(OakSpeechYesNo *yesnoMenu)
+{
     switch (yesnoMenu->state) {
     case 0:
         if (OakSpeechYesNo_HandleInput(yesnoMenu)) {
@@ -103,20 +108,23 @@ int OakSpeechYesNo_Main(OakSpeechYesNo *yesnoMenu) {
     return FALSE;
 }
 
-static void OakSpeechYesNo_CreateWindows(OakSpeechYesNo *yesnoMenu) {
+static void OakSpeechYesNo_CreateWindows(OakSpeechYesNo *yesnoMenu)
+{
     GF_ASSERT(yesnoMenu != NULL);
     AddWindowParameterized(yesnoMenu->bgConfig, &yesnoMenu->windows[0], yesnoMenu->buttonBgId, 4, 8, 24, 2, yesnoMenu->buttonPalette, 0x50);
     AddWindowParameterized(yesnoMenu->bgConfig, &yesnoMenu->windows[1], yesnoMenu->buttonBgId, 4, 14, 24, 2, yesnoMenu->buttonPalette, 0x80);
 }
 
-static void OakSpeechYesNo_RemoveWindows(OakSpeechYesNo *yesnoMenu) {
+static void OakSpeechYesNo_RemoveWindows(OakSpeechYesNo *yesnoMenu)
+{
     GF_ASSERT(yesnoMenu != NULL);
     for (int i = 0; i < 2; ++i) {
         RemoveWindow(&yesnoMenu->windows[i]);
     }
 }
 
-static void OakSpeechYesNo_PrintMessageOnWindow(OakSpeechYesNo *yesnoMenu, Window *window, int msgId, int msgBank) {
+static void OakSpeechYesNo_PrintMessageOnWindow(OakSpeechYesNo *yesnoMenu, Window *window, int msgId, int msgBank)
+{
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, yesnoMenu->heapId);
     String *string = ReadMsgData_ExpandPlaceholders(yesnoMenu->msgFormat, msgData, msgId, yesnoMenu->heapId);
     FillWindowPixelBuffer(window, 0);
@@ -137,7 +145,8 @@ static const s16 sCoords[2][2] = {
      },
 };
 
-static void OakSpeechYesNo_SetCursorSpritePos(OakSpeechYesNo *yesnoMenu) {
+static void OakSpeechYesNo_SetCursorSpritePos(OakSpeechYesNo *yesnoMenu)
+{
     GF_ASSERT(yesnoMenu->sprite != NULL);
     int r4;
     switch (yesnoMenu->result) {
@@ -178,7 +187,8 @@ static const TouchscreenHitbox sHitboxes[] = {
      },
 };
 
-static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu) {
+static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu)
+{
     BOOL ret = FALSE;
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(sHitboxes);
     if (hitbox != -1) {
@@ -226,7 +236,8 @@ static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu) {
     return ret;
 }
 
-static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu) {
+static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu)
+{
     GF_ASSERT(Sprite_GetAnimationNumber(yesnoMenu->sprite) == 3);
     return !Sprite_IsAnimated(yesnoMenu->sprite);
 }

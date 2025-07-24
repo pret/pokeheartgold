@@ -5,11 +5,13 @@
 
 static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a1, BOOL a2);
 
-static void ov26_022599D0(LocalMapObject *last_talked, u16 movement) {
+static void ov26_022599D0(LocalMapObject *last_talked, u16 movement)
+{
     sub_0205FC94(last_talked, movement);
 }
 
-void ov26_022599D8(FieldSystem *fieldSystem, LocalMapObject *last_talked) {
+void ov26_022599D8(FieldSystem *fieldSystem, LocalMapObject *last_talked)
+{
     if (last_talked == NULL) {
         return;
     }
@@ -34,7 +36,8 @@ void ov26_022599D8(FieldSystem *fieldSystem, LocalMapObject *last_talked) {
     ov26_022599D0(last_talked, movement);
 }
 
-static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a1, BOOL a2) {
+static LocalMapObject *ov26_02259A24(FieldSystem *fieldSystem, LocalMapObject *a1, BOOL a2)
+{
     u32 num_events = Field_GetNumObjectEvents(fieldSystem);
     u16 script = MapObject_GetScriptID(a1);
     u32 trainer = ScriptNumToTrainerNum(script);

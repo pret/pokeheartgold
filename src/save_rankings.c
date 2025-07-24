@@ -69,30 +69,36 @@ static const int sStatIDs[] = {
     GAME_STAT_RIBBONS_EARNED,
 };
 
-u8 RankingsViewSys_GetNumRecordsPerPage(int page) {
+u8 RankingsViewSys_GetNumRecordsPerPage(int page)
+{
     return sPageOffsets[page][0];
 }
 
-u8 RankingsViewSys_GetFirstRecordIndexOnPage(int page) {
+u8 RankingsViewSys_GetFirstRecordIndexOnPage(int page)
+{
     return sPageOffsets[page][1];
 }
 
-static void SaveRankingsEntry_Init(SaveRankingsEntry *entry) {
+static void SaveRankingsEntry_Init(SaveRankingsEntry *entry)
+{
     entry->groupId = 0;
     entry->stat = 0;
     StringFillEOS(entry->playerName, PLAYER_NAME_LENGTH + 1);
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
 }
 
-static BOOL SaveRankingsEntry_IsInit(SaveRankingsEntry *entry) {
+static BOOL SaveRankingsEntry_IsInit(SaveRankingsEntry *entry)
+{
     return StringLength(entry->playerName) != 0;
 }
 
-u32 Save_Rankings_sizeof(void) {
+u32 Save_Rankings_sizeof(void)
+{
     return sizeof(SaveRankings);
 }
 
-void Save_Rankings_Init(SaveRankings *saveRankings) {
+void Save_Rankings_Init(SaveRankings *saveRankings)
+{
     MI_CpuClear8(saveRankings, sizeof(SaveRankings));
     for (int i = 0; i < 2 * RANKINGS_COUNT; ++i) {
         for (int j = 0; j < RANKINGS_PER_STAT; ++j) {
@@ -102,12 +108,14 @@ void Save_Rankings_Init(SaveRankings *saveRankings) {
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
 }
 
-SaveRankings *Save_Rankings_Get(SaveData *saveData) {
+SaveRankings *Save_Rankings_Get(SaveData *saveData)
+{
     SaveSubstruct_AssertCRC(SAVE_RANKINGS);
     return SaveArray_Get(saveData, SAVE_RANKINGS);
 }
 
-void Save_Rankings_DeleteEntryByIndex(SaveRankings *saveRankings, int stat, u8 index) {
+void Save_Rankings_DeleteEntryByIndex(SaveRankings *saveRankings, int stat, u8 index)
+{
     if (index >= RANKINGS_PER_STAT) {
         GF_ASSERT(index < RANKINGS_PER_STAT);
         return;
@@ -120,11 +128,13 @@ void Save_Rankings_DeleteEntryByIndex(SaveRankings *saveRankings, int stat, u8 i
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
 }
 
-u32 Save_Rankings_GetMixingSize(void) {
+u32 Save_Rankings_GetMixingSize(void)
+{
     return RANKINGS_COUNT * sizeof(SaveRankingsEntry);
 }
 
-static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
+static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId)
+{
     int i;
     u32 val;
     GameStats *gameStats;
@@ -173,7 +183,8 @@ static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
     return ret;
 }
 
-SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID heapId) {
+SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID heapId)
+{
     int i;
     int groupId;
     SaveRankingsEntry *ret;
@@ -200,20 +211,23 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID h
     return ret;
 }
 
-static void SaveRankingsEntry_InitArrayOf6(SaveRankingsEntry *entries) {
+static void SaveRankingsEntry_InitArrayOf6(SaveRankingsEntry *entries)
+{
     for (int i = 0; i < RANKINGS_PER_STAT; ++i) {
         SaveRankingsEntry_Init(&entries[i]);
     }
 }
 
-static BOOL SaveRankingsEntry_TestEqual(const SaveRankingsEntry *lhs, const SaveRankingsEntry *rhs) {
+static BOOL SaveRankingsEntry_TestEqual(const SaveRankingsEntry *lhs, const SaveRankingsEntry *rhs)
+{
     if (lhs->groupId != rhs->groupId) {
         return FALSE;
     }
     return !StringNotEqual(lhs->playerName, rhs->playerName);
 }
 
-static BOOL SaveRankingsSortBuffer_EntryAlreadyExists(const SaveRankingsSortBuffer *sortBuffer, const SaveRankingsEntry *entry) {
+static BOOL SaveRankingsSortBuffer_EntryAlreadyExists(const SaveRankingsSortBuffer *sortBuffer, const SaveRankingsEntry *entry)
+{
     for (int i = 0; i < sortBuffer->rankingsFromMixingCnt; ++i) {
         if (SaveRankingsEntry_TestEqual(sortBuffer->rankings[i], entry)) {
             return TRUE;
@@ -223,7 +237,8 @@ static BOOL SaveRankingsSortBuffer_EntryAlreadyExists(const SaveRankingsSortBuff
     return FALSE;
 }
 
-static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortBuffer *sortBuffer, int groupId, u8 statIdx, u8 scope, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID unused) {
+static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortBuffer *sortBuffer, int groupId, u8 statIdx, u8 scope, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID unused)
+{
     SaveRankingsEntry *saveRecordsPtr;
     int i;
     int j;
@@ -274,7 +289,8 @@ static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortB
     }
 }
 
-static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID heapId) {
+static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID heapId)
+{
     SaveRankingsSortBuffer *temp = AllocFromHeapAtEnd(heapId, sizeof(SaveRankingsSortBuffer));
     SaveRankings_GetSorted(saveRankings, temp, groupId, statIdx, RANKINGS_SCOPE_GLOBAL, filteredEntries, filteredEntriesCnt, heapId);
     if (groupId != 0) {
@@ -283,7 +299,8 @@ static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId
     Heap_Free(temp);
 }
 
-void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, HeapID heapId) {
+void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, HeapID heapId)
+{
     u8 i;
     u8 cnt;
     SaveRankingsEntry *filteredEntries[RANKINGS_PER_STAT - 1];
@@ -306,7 +323,8 @@ void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn,
     }
 }
 
-ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, HeapID heapId) {
+ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, HeapID heapId)
+{
     int i;
     int pageOffset;
     ViewRankingsPage *ret;
@@ -330,7 +348,8 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
     return ret;
 }
 
-ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, HeapID heapId) {
+ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, HeapID heapId)
+{
     int i;
     ViewRankingsPage *ret;
 
@@ -348,7 +367,8 @@ ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, in
     return ret;
 }
 
-void ViewRankingsPage_Delete(ViewRankingsPage *viewRankingsPage) {
+void ViewRankingsPage_Delete(ViewRankingsPage *viewRankingsPage)
+{
     int i;
 
     for (i = 0; i < RANKINGS_PER_STAT; ++i) {

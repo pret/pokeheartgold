@@ -127,7 +127,8 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      },
 };
 
-BOOL Radio_VideoInit(PokegearRadioAppData *radioApp) {
+BOOL Radio_VideoInit(PokegearRadioAppData *radioApp)
+{
     switch (radioApp->substate) {
     case 0:
         Radio_InitBGs(radioApp);
@@ -148,7 +149,8 @@ BOOL Radio_VideoInit(PokegearRadioAppData *radioApp) {
     return FALSE;
 }
 
-BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp) {
+BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp)
+{
     switch (radioApp->substate) {
     case 0:
         if (Radio_GetTunedStationID(radioApp, radioApp->cursorX, radioApp->cursorY, NULL) == 0xFF || radioApp->showData->isPlayingJingle || radioApp->showData->curStation == RADIO_STATION_COMMERCIALS) {
@@ -181,7 +183,8 @@ BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp) {
     return FALSE;
 }
 
-void Radio_InitBGs(PokegearRadioAppData *radioApp) {
+void Radio_InitBGs(PokegearRadioAppData *radioApp)
+{
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
 
     {
@@ -294,11 +297,13 @@ void Radio_InitBGs(PokegearRadioAppData *radioApp) {
     }
 }
 
-void Radio_UnloadBGs(PokegearRadioAppData *radioApp) {
+void Radio_UnloadBGs(PokegearRadioAppData *radioApp)
+{
     Pokegear_ClearAppBgLayers(radioApp->pokegear);
 }
 
-void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
+void Radio_LoadGraphics(PokegearRadioAppData *radioApp)
+{
     FontID_Alloc(4, radioApp->heapId);
     NARC *narc = NARC_New(NARC_a_1_4_7, radioApp->heapId);
     sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 16, GF_BG_LYR_MAIN_2, 0, 0, 0);
@@ -312,12 +317,14 @@ void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
     ScheduleBgTilemapBufferTransfer(radioApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
 }
 
-void Radio_UnloadGraphics(PokegearRadioAppData *radioApp) {
+void Radio_UnloadGraphics(PokegearRadioAppData *radioApp)
+{
     Heap_Free(radioApp->pNSCR);
     FontID_Release(4);
 }
 
-void Radio_LoadPalettes(PokegearRadioAppData *radioApp) {
+void Radio_LoadPalettes(PokegearRadioAppData *radioApp)
+{
     NARC *narc = NARC_New(NARC_a_1_4_7, radioApp->heapId);
 
     PaletteData_LoadFromOpenNarc(radioApp->pokegear->plttData, narc, radioApp->backgroundStyle + 10, radioApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
@@ -332,7 +339,8 @@ void Radio_LoadPalettes(PokegearRadioAppData *radioApp) {
     NARC_Delete(narc);
 }
 
-void Radio_InitWindows(PokegearRadioAppData *radioApp) {
+void Radio_InitWindows(PokegearRadioAppData *radioApp)
+{
     for (int i = 0; i < 3; ++i) {
         AddWindowParameterized(radioApp->pokegear->bgConfig, &radioApp->windows[i], sWindowTemplates[i].bgId, sWindowTemplates[i].left, sWindowTemplates[i].top, sWindowTemplates[i].width, sWindowTemplates[i].height, sWindowTemplates[i].palette, sWindowTemplates[i].baseTile);
         FillWindowPixelBuffer(&radioApp->windows[i], 0);
@@ -341,7 +349,8 @@ void Radio_InitWindows(PokegearRadioAppData *radioApp) {
     radioApp->showData = RadioShow_Create(radioApp->pokegear->saveData, radioApp->pokegear->args->mapID, radioApp->pokegear->args->mapHeader, MapHeader_IsInKanto(radioApp->pokegear->args->mapID), &radioApp->windows[0], &radioApp->windows[2], &radioApp->windows[1], MAKE_TEXT_COLOR(1, 2, 0), radioApp->heapId);
 }
 
-void Radio_UnloadWindows(PokegearRadioAppData *radioApp) {
+void Radio_UnloadWindows(PokegearRadioAppData *radioApp)
+{
     RadioShow_Delete(radioApp->showData);
     for (int i = 0; i < 3; ++i) {
         ClearWindowTilemapAndCopyToVram(&radioApp->windows[i]);
@@ -349,15 +358,18 @@ void Radio_UnloadWindows(PokegearRadioAppData *radioApp) {
     }
 }
 
-void Radio_CreateSpriteManager(PokegearRadioAppData *radioApp) {
+void Radio_CreateSpriteManager(PokegearRadioAppData *radioApp)
+{
     PokegearApp_CreateSpriteManager(radioApp->pokegear, 1);
 }
 
-void Radio_DestroySpriteManager(PokegearRadioAppData *radioApp) {
+void Radio_DestroySpriteManager(PokegearRadioAppData *radioApp)
+{
     PokegearApp_DestroySpriteManager(radioApp->pokegear);
 }
 
-void Radio_CreateSprites(PokegearRadioAppData *radioApp) {
+void Radio_CreateSprites(PokegearRadioAppData *radioApp)
+{
     for (int i = 0; i < 5; ++i) {
         radioApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(radioApp->pokegear->spriteSystem, radioApp->pokegear->spriteManager, &sSpriteTemplates[i]);
         thunk_Sprite_SetPriority(radioApp->sprites[i], 1);
@@ -369,13 +381,15 @@ void Radio_CreateSprites(PokegearRadioAppData *radioApp) {
     Sprite_SetPositionXY(radioApp->sprites[4], radioApp->cursorX, radioApp->cursorY);
 }
 
-void Radio_UnloadSprites(PokegearRadioAppData *radioApp) {
+void Radio_UnloadSprites(PokegearRadioAppData *radioApp)
+{
     for (int i = 0; i < 5; ++i) {
         thunk_Sprite_Delete(radioApp->sprites[i]);
     }
 }
 
-void Radio_InitAppSwitchCursorState(PokegearRadioAppData *radioApp) {
+void Radio_InitAppSwitchCursorState(PokegearRadioAppData *radioApp)
+{
     if (radioApp->pokegear->cursorInAppSwitchZone == TRUE) {
         PokegearAppSwitchCursor_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, TRUE);
         PokegearAppSwitch_SetSpecIndexAndCursorPos(radioApp->pokegear->appSwitch, 0, ov100_021E5DC8(radioApp->pokegear));

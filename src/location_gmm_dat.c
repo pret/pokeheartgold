@@ -735,11 +735,13 @@ static const LocationGmmDat sLocationGmmDat[19] = {
      },
 };
 
-int LocationGmmDatCountGet(void) {
+int LocationGmmDatCountGet(void)
+{
     return NELEMS(sLocationGmmDat);
 }
 
-int LocationGmmDatIndexGetByCountryMsgNo(int country) {
+int LocationGmmDatIndexGetByCountryMsgNo(int country)
+{
     for (int i = 0; i < NELEMS(sLocationGmmDat); ++i) {
         if (sLocationGmmDat[i].country == country) {
             return i;
@@ -749,7 +751,8 @@ int LocationGmmDatIndexGetByCountryMsgNo(int country) {
     return 0;
 }
 
-int LocationGmmDatRegionCountGetByCountryMsgNo(int country) {
+int LocationGmmDatRegionCountGetByCountryMsgNo(int country)
+{
     for (int i = 0; i < NELEMS(sLocationGmmDat); ++i) {
         if (sLocationGmmDat[i].country == country) {
             return sLocationGmmDat[i].numMsgIds;
@@ -759,32 +762,38 @@ int LocationGmmDatRegionCountGetByCountryMsgNo(int country) {
     return 0;
 }
 
-int GetCityNamesMsgdataIdByCountry(int country) {
+int GetCityNamesMsgdataIdByCountry(int country)
+{
     int index = LocationGmmDatIndexGetByCountryMsgNo(country);
     return LocationGmmDatGetGmmNo(index);
 }
 
-int LocationGmmDatGetGmmNo(int index) {
+int LocationGmmDatGetGmmNo(int index)
+{
     GF_ASSERT(index < NELEMS(sLocationGmmDat));
     return sLocationGmmDat[index].gmm;
 }
 
-int LocationGmmDatGetCountryMsgNo(int index) {
+int LocationGmmDatGetCountryMsgNo(int index)
+{
     GF_ASSERT(index < NELEMS(sLocationGmmDat));
     return sLocationGmmDat[index].country;
 }
 
-int LocationGmmDatGetEarthPlaceDatId(int index) {
+int LocationGmmDatGetEarthPlaceDatId(int index)
+{
     GF_ASSERT(index < NELEMS(sLocationGmmDat));
     return sLocationGmmDat[index].placeDatId;
 }
 
-const u8 *LocationGmmDatGetDistrictNameMsgIdsPtr(int index) {
+const u8 *LocationGmmDatGetDistrictNameMsgIdsPtr(int index)
+{
     GF_ASSERT(index < NELEMS(sLocationGmmDat));
     return sLocationGmmDat[index].msgIds;
 }
 
-int LocationGmmDatGetDistrictCount(int index) {
+int LocationGmmDatGetDistrictCount(int index)
+{
     GF_ASSERT(index < NELEMS(sLocationGmmDat));
     return sLocationGmmDat[index].numMsgIds;
 }

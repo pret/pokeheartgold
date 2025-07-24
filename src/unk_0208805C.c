@@ -23,11 +23,13 @@ static const u16 _02103894[] = {
     0x400,
 };
 
-u16 sub_0208805C(int a0) {
+u16 sub_0208805C(int a0)
+{
     return _02103894[a0];
 }
 
-u8 CalculateHpBarPixelsLength(u32 hp, u32 maxHp, u8 pixelsWide) {
+u8 CalculateHpBarPixelsLength(u32 hp, u32 maxHp, u8 pixelsWide)
+{
     u8 ret = hp * pixelsWide / maxHp;
     if (ret == 0 && hp != 0) {
         ret = 1;
@@ -35,7 +37,8 @@ u8 CalculateHpBarPixelsLength(u32 hp, u32 maxHp, u8 pixelsWide) {
     return ret;
 }
 
-u8 HpBar_GetColorIdx(u32 pixelsCur, u32 pixelsWide) {
+u8 HpBar_GetColorIdx(u32 pixelsCur, u32 pixelsWide)
+{
     pixelsCur <<= 8;
     pixelsWide <<= 8;
 
@@ -50,14 +53,16 @@ u8 HpBar_GetColorIdx(u32 pixelsCur, u32 pixelsWide) {
     return 0; // fainted
 }
 
-u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide) {
+u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide)
+{
     if (hp == maxHp) {
         return 4;
     }
     return HpBar_GetColorIdx(CalculateHpBarPixelsLength(hp, maxHp, pixelsWide), pixelsWide);
 }
 
-void sub_020880CC(u8 a0, HeapID heapId) {
+void sub_020880CC(u8 a0, HeapID heapId)
+{
     if (a0 == 0) {
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, heapId);
     } else {
@@ -65,7 +70,8 @@ void sub_020880CC(u8 a0, HeapID heapId) {
     }
 }
 
-u8 sub_02088108(s16 *a0, u16 a1, s16 a2) {
+u8 sub_02088108(s16 *a0, u16 a1, s16 a2)
+{
     s16 prev = *a0;
     switch (a2) {
     case -1:
@@ -109,7 +115,8 @@ u8 sub_02088108(s16 *a0, u16 a1, s16 a2) {
     return 0;
 }
 
-int sub_020881C0(s16 *a0, u16 a1) {
+int sub_020881C0(s16 *a0, u16 a1)
+{
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         return sub_02088108(a0, a1, 1);
     }
@@ -125,7 +132,8 @@ int sub_020881C0(s16 *a0, u16 a1) {
     return 0;
 }
 
-void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset) {
+void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset)
+{
     switch (kind) {
     case 0:
         GfGfxLoader_LoadCharDataFromOpenNarc(narc, fileId, bgConfig, layer, offset, szByte, FALSE, heapId);

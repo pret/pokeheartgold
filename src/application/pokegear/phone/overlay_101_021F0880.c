@@ -10,7 +10,8 @@ void ov101_021F0990(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
 void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
 
-void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp)
+{
     int i;
     int j;
     const PokegearPhoneContextMenuParam *param;
@@ -24,14 +25,16 @@ void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-void PokegearPhone_DeleteContextMenus(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_DeleteContextMenus(PokegearPhoneAppData *phoneApp)
+{
     for (int i = 0; i < PHONE_CONTEXT_MENU_MAX; ++i) {
         ListMenuItems_Delete(phoneApp->listMenuItems[i]);
         phoneApp->listMenuItems[i] = NULL;
     }
 }
 
-void ov101_021F0900(PokegearPhoneAppData *phoneApp) {
+void ov101_021F0900(PokegearPhoneAppData *phoneApp)
+{
     ov101_021F0990(phoneApp);
     if (phoneApp->pokegear->cursorInAppSwitchZone == 0) {
         PokegearAppSwitchCursor_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, FALSE);
@@ -42,31 +45,36 @@ void ov101_021F0900(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-void PokegearPhone_OnReselectApp(void *cb_arg) {
+void PokegearPhone_OnReselectApp(void *cb_arg)
+{
     PokegearPhoneAppData *phoneApp = cb_arg;
 
     PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, TRUE);
 }
 
-void ov101_021F0954(PokegearPhoneAppData *phoneApp) {
+void ov101_021F0954(PokegearPhoneAppData *phoneApp)
+{
     phoneApp->pokegear->cursorInAppSwitchZone = 0;
     PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, TRUE);
     PokegearAppSwitchCursor_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, FALSE);
 }
 
-void ov101_021F0978(void *cb_arg) {
+void ov101_021F0978(void *cb_arg)
+{
     PokegearPhoneAppData *phoneApp = cb_arg;
 
     PhoneContactListUI_UpdateMoveContactArrowSprites(&phoneApp->contactListUI, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), TRUE);
 }
 
-void ov101_021F0990(PokegearPhoneAppData *phoneApp) {
+void ov101_021F0990(PokegearPhoneAppData *phoneApp)
+{
     PokegearPhone_InitContactListUI(phoneApp);
     PokegearPhone_ContactLinkedListToSlotsArray(phoneApp);
     PokegearPhone_SetContactListUIAndDraw(phoneApp, &phoneApp->contactListUI, 0, 0);
 }
 
-TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int prevMenuCursorPos, int menuID) {
+TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAppData *phoneApp, int prevMenuCursorPos, int menuID)
+{
     TouchscreenListMenuHeader header;
 
     phoneApp->prevMenuCursorPos = prevMenuCursorPos; // this is never used
@@ -94,7 +102,8 @@ TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAp
     return phoneApp->touchscreenListMenu;
 }
 
-void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
+void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event)
+{
     PokegearPhoneAppData *phoneApp = callbackArg;
 
     if (event != 0) {
@@ -103,13 +112,15 @@ void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *
     PokegearPhone_PrintContextMenuTooltip(phoneApp, cursorPos + PHONE_TOOLTIP_SORT_TRAINER_TYPE, TRUE);
 }
 
-void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
+void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event)
+{
     if (event != 0) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
     }
 }
 
-void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 tooltipId, BOOL draw) {
+void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 tooltipId, BOOL draw)
+{
     if (draw) {
         u32 xpos;
         CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->screenData->rawData, 0, 24, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
@@ -123,13 +134,15 @@ void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 to
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
 }
 
-void PokegearPhone_ReturnToContactList(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_ReturnToContactList(PokegearPhoneAppData *phoneApp)
+{
     PhoneContactListUI_DeselectContact(&phoneApp->contactListUI);
     PhoneContactListUI_ShowMainListCursorSprites(&phoneApp->contactListUI, TRUE);
     PokegearPhone_OnReselectApp(phoneApp);
 }
 
-int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp)
+{
     int result;
 
     if (gSystem.newKeys & PAD_BUTTON_B) {
@@ -156,7 +169,8 @@ int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
     return -1;
 }
 
-int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp)
+{
     int result;
     if (phoneApp->menuInputStateBak == 0) {
         result = PokegearApp_HandleTouchInput_SwitchApps(phoneApp->pokegear);
@@ -188,7 +202,8 @@ int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp) {
 }
 
 // return value is a state for PokegearPhone_HandleMoveContactsInput
-int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp)
+{
     int isTouch;
     int result;
 
@@ -215,12 +230,14 @@ int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp) {
     return 1;
 }
 
-void PokegearPhone_ContactList_CreateLinkedList(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_ContactList_CreateLinkedList(PokegearPhoneAppData *phoneApp)
+{
     phoneApp->phoneContactListNodes = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PhoneContactListNode));
     PokegearPhone_InitContactsLinkedList(phoneApp);
 }
 
-void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *phoneApp)
+{
     u8 i = 0;
     PhoneContactListNode *ptr;
 
@@ -235,7 +252,8 @@ void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *p
     Heap_Free(phoneApp->phoneContactListNodes);
 }
 
-void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneContactListNode *newNode, u8 index) {
+void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneContactListNode *newNode, u8 index)
+{
     int i = 0;
     PhoneContactListNode *curNode;
 
@@ -272,7 +290,8 @@ void PokegearPhone_ContactList_InsertNode(PokegearPhoneAppData *phoneApp, PhoneC
     }
 }
 
-void PokegearPhone_SortList(PokegearPhoneAppData *phoneApp, u8 sortParam) {
+void PokegearPhone_SortList(PokegearPhoneAppData *phoneApp, u8 sortParam)
+{
     PhoneBookEntry *phoneBook = phoneApp->callContext->phoneEntries;
     for (int i = 0; i < phoneApp->numContacts - 1; ++i) {
         for (int j = phoneApp->numContacts - 1; j > i; --j) {

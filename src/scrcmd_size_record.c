@@ -26,7 +26,8 @@ static const u16 sBigMonSizeTable[][3] = {
     { 1700, 1,   65510 },
 };
 
-static u32 GetMonSizeHash(Pokemon *mon) {
+static u32 GetMonSizeHash(Pokemon *mon)
+{
     u16 pid_lo;
     u16 hpIv_lo;
     u16 atkIv_lo;
@@ -49,7 +50,8 @@ static u32 GetMonSizeHash(Pokemon *mon) {
     return ret + (ret2 << 8);
 }
 
-static u8 TranslateBigMonSizeTableIndex(u32 a0) {
+static u8 TranslateBigMonSizeTableIndex(u32 a0)
+{
     u8 i;
     for (i = 1; i < NELEMS(sBigMonSizeTable) - 1; i++) {
         if (a0 < sBigMonSizeTable[i][2]) {
@@ -59,7 +61,8 @@ static u8 TranslateBigMonSizeTableIndex(u32 a0) {
     return i;
 }
 
-static u32 GetMonSize(int species, int rand) {
+static u32 GetMonSize(int species, int rand)
+{
     u32 r6;
     int r4;
 
@@ -68,7 +71,8 @@ static u32 GetMonSize(int species, int rand) {
     return r6 * ((u64)sBigMonSizeTable[r4][0] + ((u64)rand - (u64)sBigMonSizeTable[r4][2]) / (u64)sBigMonSizeTable[r4][1]) / 10;
 }
 
-static void FormatSizeRecord(FieldSystem *fieldSystem, u8 idx0, u8 idx1, u16 species, u16 rand) {
+static void FormatSizeRecord(FieldSystem *fieldSystem, u8 idx0, u8 idx1, u16 species, u16 rand)
+{
     MessageFormat **msgFmt;
     u32 score;
     u32 r4;
@@ -80,7 +84,8 @@ static void FormatSizeRecord(FieldSystem *fieldSystem, u8 idx0, u8 idx1, u16 spe
     BufferIntegerAsString(*msgFmt, idx1, r4 % 10, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
 }
 
-BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
+BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx)
+{
     Pokemon *mon;
     vu16 rand, record;
     u16 slot;
@@ -116,7 +121,8 @@ BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx) {
+BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx)
+{
     Pokemon *mon;
     u16 slot;
     FieldSystem *fieldSystem;
@@ -128,7 +134,8 @@ BOOL ScrCmd_SizeRecordUpdate(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx) {
+BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem;
     u16 idx0;
     u16 idx1;
@@ -144,7 +151,8 @@ BOOL ScrCmd_BufferRecordSize(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferMonSize(ScriptContext *ctx) {
+BOOL ScrCmd_BufferMonSize(ScriptContext *ctx)
+{
     Pokemon *mon;
     FieldSystem *fieldSystem;
     u16 idx0;

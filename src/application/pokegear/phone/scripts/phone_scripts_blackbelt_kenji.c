@@ -2,7 +2,8 @@
 
 #include "application/pokegear/phone/phone_internal.h"
 
-u16 PhoneCall_GetScriptId_Kenji(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Kenji(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     u8 active;
     u8 timeOfDay;
     state->scriptType = 0;

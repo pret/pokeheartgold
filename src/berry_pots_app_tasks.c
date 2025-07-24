@@ -25,7 +25,8 @@ static const TouchscreenHitbox ov17_02203FC0 = {
 
 static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args);
 
-void ov17_0220351C(BerryPotsAppData *data) {
+void ov17_0220351C(BerryPotsAppData *data)
+{
     SysTaskArgs_ov17_0220351C *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_0220351C));
     MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_0220351C));
     args->data = data;
@@ -45,7 +46,8 @@ void ov17_0220351C(BerryPotsAppData *data) {
     data->runningTasks++;
 }
 
-static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args) {
+static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args)
+{
     BerryPotsAppData *data = args->data;
 
     Sprite_OffsetPositionXY(data->sprites[2], args->sign * 4, 0);
@@ -79,7 +81,8 @@ typedef struct SysTaskArgs_ov17_02203674 {
 
 static void ov17_02203674(SysTask *, SysTaskArgs_ov17_02203674 *);
 
-void ov17_02203638(BerryPotsAppData *data) {
+void ov17_02203638(BerryPotsAppData *data)
+{
     SysTaskArgs_ov17_02203674 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_02203674));
     MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_02203674));
 
@@ -90,7 +93,8 @@ void ov17_02203638(BerryPotsAppData *data) {
     data->runningTasks++;
 }
 
-static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
+static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args)
+{
     BerryPotsAppData *data = args->data;
     switch (args->state) {
     case 0:
@@ -114,7 +118,8 @@ static void ov17_02203674(SysTask *task, SysTaskArgs_ov17_02203674 *args) {
     }
 }
 
-void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action action, u8 potIndex) {
+void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action action, u8 potIndex)
+{
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[potIndex];
 
     switch (action) {
@@ -146,7 +151,8 @@ void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action act
     StringExpandPlaceholders(data->msgFmt, data->currentStatusString, data->statusStrings[action]);
 }
 
-void ov17_022037C8(BerryPotsAppData *data, BOOL a1) {
+void ov17_022037C8(BerryPotsAppData *data, BOOL a1)
+{
     RTCDate date1;
     RTCDate date2;
     RTCTime time1;
@@ -172,7 +178,8 @@ void ov17_022037C8(BerryPotsAppData *data, BOOL a1) {
     }
 }
 
-void ov17_0220387C(BerryPotsAppData *data) {
+void ov17_0220387C(BerryPotsAppData *data)
+{
     for (int i = 0; i < MAX_BERRY_POT; i++) {
         data->unk20[i].unkB = data->unk20[i].berryId;
         data->unk20[i].unkC = data->unk20[i].growthStage;
@@ -199,7 +206,8 @@ typedef struct SysTaskArgs_ov17_022039A0 {
 
 static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args);
 
-static void ov17_02203928(BerryPotsAppData *data) {
+static void ov17_02203928(BerryPotsAppData *data)
+{
     for (int i = 0; i < MAX_BERRY_POT; i++) {
         BerryPotsAppData_UnkSub20 *sub = &data->unk20[i];
 
@@ -223,7 +231,8 @@ static void ov17_02203928(BerryPotsAppData *data) {
     }
 }
 
-static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
+static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args)
+{
     BerryPotsAppData *data = args->data;
 
     switch (args->state) {
@@ -252,7 +261,8 @@ static void ov17_022039A0(SysTask *task, SysTaskArgs_ov17_022039A0 *args) {
     }
 }
 
-u32 ov17_02203A34(BerryPotsAppData *data) {
+u32 ov17_02203A34(BerryPotsAppData *data)
+{
     BOOL flag = FALSE;
     u32 r0 = ov17_02203B68(data, &flag);
     if (!flag) {
@@ -261,7 +271,8 @@ u32 ov17_02203A34(BerryPotsAppData *data) {
     return r0;
 }
 
-BOOL ov17_02203A54(BerryPotsAppData *data) {
+BOOL ov17_02203A54(BerryPotsAppData *data)
+{
     BOOL flag = FALSE;
     BOOL ret = ov17_02203C20(data, &flag);
     if (!flag) {
@@ -270,7 +281,8 @@ BOOL ov17_02203A54(BerryPotsAppData *data) {
     return ret;
 }
 
-static u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
+static u32 ov17_02203A74(BerryPotsAppData *data, u32 a1)
+{
     switch (a1) {
     case 0:
     case 1:
@@ -297,7 +309,8 @@ static u32 ov17_02203A74(BerryPotsAppData *data, u32 a1) {
     return 2;
 }
 
-static u32 ov17_02203AD4(BerryPotsAppData *data) {
+static u32 ov17_02203AD4(BerryPotsAppData *data)
+{
     BOOL flag = FALSE;
 
     if (gSystem.newKeys & (PAD_BUTTON_Y | PAD_BUTTON_X | PAD_KEY_DOWN | PAD_KEY_UP | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_B | PAD_BUTTON_A)) {
@@ -329,7 +342,8 @@ static u32 ov17_02203AD4(BerryPotsAppData *data) {
     }
 }
 
-static u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
+static u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1)
+{
     int unk = ov17_02203CC8(data);
     if (unk < 0) {
         return 2;
@@ -340,7 +354,8 @@ static u32 ov17_02203B68(BerryPotsAppData *data, BOOL *a1) {
     return ov17_02203A74(data, unk);
 }
 
-static BOOL ov17_02203B88(BerryPotsAppData *data) {
+static BOOL ov17_02203B88(BerryPotsAppData *data)
+{
     BOOL unk = FALSE;
 
     if (data->unk81 != 0xFF) {
@@ -369,7 +384,8 @@ static BOOL ov17_02203B88(BerryPotsAppData *data) {
     return FALSE;
 }
 
-static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
+static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1)
+{
     if (data->unk81 != 0xFF) {
         return FALSE;
     }
@@ -389,7 +405,8 @@ static BOOL ov17_02203C20(BerryPotsAppData *data, BOOL *a1) {
     return TRUE;
 }
 
-static int ov17_02203C78(BerryPotsAppData *data) {
+static int ov17_02203C78(BerryPotsAppData *data)
+{
     TouchscreenHitbox touchHitbox;
 
     for (int i = 0, xOffsetMaybe = 16; i < MAX_BERRY_POT; xOffsetMaybe += 28, i++) {
@@ -410,7 +427,8 @@ static int ov17_02203C78(BerryPotsAppData *data) {
     return -1;
 }
 
-static int ov17_02203CC8(BerryPotsAppData *data) {
+static int ov17_02203CC8(BerryPotsAppData *data)
+{
     if (TouchscreenHitbox_TouchNewIsIn(&ov17_02203FC0)) {
         return 5;
     }
@@ -425,7 +443,8 @@ static int ov17_02203CC8(BerryPotsAppData *data) {
     return -1;
 }
 
-static u32 ov17_02203D00(BerryPotsAppData *data) {
+static u32 ov17_02203D00(BerryPotsAppData *data)
+{
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[data->unk7C];
     switch (unk->growthStage) {
     case BERRY_POT_GROWTH_STAGE_NONE:

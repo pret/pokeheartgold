@@ -46,7 +46,8 @@ static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, HeapID heapId);
 static void FreeBerryInfoNarc(NARC *narc);
 static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr);
 
-UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
+UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId)
+{
     UnkStruct_ov16_022014A0 *unk;
     NARC *narc;
 
@@ -67,7 +68,8 @@ UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId) {
     return unk;
 }
 
-static void BerryPot_Clear(BerryPot *berryPot) {
+static void BerryPot_Clear(BerryPot *berryPot)
+{
     berryPot->berryId = BERRY_NONE;
     berryPot->growthStage = BERRY_POT_GROWTH_STAGE_NONE;
     berryPot->unk_2 = 0;
@@ -79,11 +81,13 @@ static void BerryPot_Clear(BerryPot *berryPot) {
     berryPot->mulch = MULCH_NONE;
 }
 
-static u32 ov16_02201514(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1) {
+static u32 ov16_02201514(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1)
+{
     return berryPot->unk_A * a1[berryPot->berryId - 1].unk2;
 }
 
-static u32 CalculateBerryPotGrowthInterval(UnkStruct_ov16_022014A0 *a0, int berryId, int mulch) {
+static u32 CalculateBerryPotGrowthInterval(UnkStruct_ov16_022014A0 *a0, int berryId, int mulch)
+{
     s32 growthTimeInMinutes = a0[berryId - 1].defaultGrowthTimeInHours * 60;
     if (mulch == MULCH_IDX(ITEM_GROWTH_MULCH)) {
         return (growthTimeInMinutes * 3) / 4;
@@ -93,7 +97,8 @@ static u32 CalculateBerryPotGrowthInterval(UnkStruct_ov16_022014A0 *a0, int berr
     return growthTimeInMinutes;
 }
 
-static u32 CalculateBerryPotDrainRate(UnkStruct_ov16_022014A0 *a0, int berryId, int mulch) {
+static u32 CalculateBerryPotDrainRate(UnkStruct_ov16_022014A0 *a0, int berryId, int mulch)
+{
     s32 drainRate = a0[berryId - 1].defaultDrainRate;
     if (mulch == MULCH_IDX(ITEM_DAMP_MULCH)) {
         return drainRate / 2;
@@ -103,29 +108,35 @@ static u32 CalculateBerryPotDrainRate(UnkStruct_ov16_022014A0 *a0, int berryId, 
     return drainRate;
 }
 
-static u32 ov16_02201578(BerryPot *berryPot) {
+static u32 ov16_02201578(BerryPot *berryPot)
+{
     return (berryPot->mulch == MULCH_IDX(ITEM_STABLE_MULCH)) ? 6 : 4;
 }
 
-static u32 ov16_02201588(BerryPot *berryPot) {
+static u32 ov16_02201588(BerryPot *berryPot)
+{
     return (berryPot->mulch == MULCH_IDX(ITEM_GOOEY_MULCH)) ? 15 : 10;
 }
 
-static u32 ov16_02201598(BerryPot *berryPot) {
+static u32 ov16_02201598(BerryPot *berryPot)
+{
     u32 unk1 = ov16_02201578(berryPot);
     u32 unk2 = ov16_02201588(berryPot);
     return (unk1 + 3) * unk2 + 1;
 }
 
-u8 BerryPots_GetPotGrowthStage(BerryPot *berryPots, u32 idx) {
+u8 BerryPots_GetPotGrowthStage(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].growthStage;
 }
 
-u8 BerryPots_GetPotBerryId(BerryPot *berryPots, u32 idx) {
+u8 BerryPots_GetPotBerryId(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].berryId;
 }
 
-u32 BerryPots_GetSoilState(BerryPot *berryPots, u32 idx) {
+u32 BerryPots_GetSoilState(BerryPot *berryPots, u32 idx)
+{
     s32 moisture = berryPots[idx].moisture;
     if (moisture == 0) {
         return 0;
@@ -136,23 +147,28 @@ u32 BerryPots_GetSoilState(BerryPot *berryPots, u32 idx) {
     }
 }
 
-u8 BerryPots_GetPotMoisture(BerryPot *berryPots, u32 idx) {
+u8 BerryPots_GetPotMoisture(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].moisture;
 }
 
-u8 ov16_022015EC(BerryPot *berryPots, u32 idx) {
+u8 ov16_022015EC(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].unk_A;
 }
 
-u16 ov16_022015F8(BerryPot *berryPots, u32 idx) {
+u16 ov16_022015F8(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].unk_2;
 }
 
-u16 ov16_02201604(BerryPot *berryPots, u32 idx) {
+u16 ov16_02201604(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].unk_4;
 }
 
-void ov16_02201610(BerryPot *berryPots, u32 idx, UnkStruct_ov16_022014A0 *a2, u32 berryId) {
+void ov16_02201610(BerryPot *berryPots, u32 idx, UnkStruct_ov16_022014A0 *a2, u32 berryId)
+{
     berryPots[idx].berryId = berryId;
     berryPots[idx].growthStage = BERRY_POT_GROWTH_STAGE_PLANTED;
     berryPots[idx].unk_2 = CalculateBerryPotGrowthInterval(a2, berryId, berryPots[idx].mulch);
@@ -163,29 +179,35 @@ void ov16_02201610(BerryPot *berryPots, u32 idx, UnkStruct_ov16_022014A0 *a2, u3
     berryPots[idx].unk_A = 5;
 }
 
-void BerryPots_ResetPotMoisture(BerryPot *berryPots, u32 idx) {
+void BerryPots_ResetPotMoisture(BerryPot *berryPots, u32 idx)
+{
     berryPots[idx].moisture = 100;
 }
 
-u8 BerryPots_GetPotMulch(BerryPot *berryPots, u32 idx) {
+u8 BerryPots_GetPotMulch(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].mulch;
 }
 
-void BerryPots_SetPotMulch(BerryPot *berryPots, u32 idx, u32 mulch) {
+void BerryPots_SetPotMulch(BerryPot *berryPots, u32 idx, u32 mulch)
+{
     berryPots[idx].mulch = mulch;
 }
 
-u16 ov16_02201668(BerryPot *berryPots, u32 idx) {
+u16 ov16_02201668(BerryPot *berryPots, u32 idx)
+{
     return berryPots[idx].unk_6;
 }
 
-u16 ov16_02201674(BerryPot *berryPots, u32 idx) {
+u16 ov16_02201674(BerryPot *berryPots, u32 idx)
+{
     u16 unk = berryPots[idx].unk_6;
     BerryPot_Clear(&berryPots[idx]);
     return unk;
 }
 
-static void ov16_02201688(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1) {
+static void ov16_02201688(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1)
+{
     switch (berryPot->growthStage) {
     case BERRY_POT_GROWTH_STAGE_NONE:
         GF_ASSERT(FALSE);
@@ -214,7 +236,8 @@ static void ov16_02201688(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1) {
     }
 }
 
-static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a2) {
+static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a2)
+{
     if (berryPot->growthStage == BERRY_POT_GROWTH_STAGE_BERRIES) {
         return;
     }
@@ -244,7 +267,8 @@ static void ov16_022016F4(BerryPot *berryPot, UnkStruct_ov16_022014A0 *a1, int a
     berryPot->unk_A = 0;
 }
 
-void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
+void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2)
+{
     for (s32 i = 0; i < MAX_BERRY_POT; i++) {
         if (berryPots[i].berryId == BERRY_NONE || berryPots[i].growthStage == BERRY_POT_GROWTH_STAGE_NONE) {
             continue;
@@ -278,29 +302,35 @@ void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2) {
     }
 }
 
-void BerryPots_SetBerryDatetime(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime) {
+void BerryPots_SetBerryDatetime(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime)
+{
     dest->date = srcDate;
     dest->time = srcTime;
 }
 
-void BerryPots_CopyBerryDatetime(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time) {
+void BerryPots_CopyBerryDatetime(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time)
+{
     *date = datetime->date;
     *time = datetime->time;
 }
 
-static NARC *GetBerryInfoNarc(HeapID heapId) {
+static NARC *GetBerryInfoNarc(HeapID heapId)
+{
     return NARC_New(NARC_a_0_6_6, heapId);
 }
 
-static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, HeapID heapId) {
+static BerryFile *GetBerryFileFromNarc(NARC *narc, s32 fileId, HeapID heapId)
+{
     return NARC_AllocAndReadWholeMember(narc, fileId, heapId);
 }
 
-static void FreeBerryInfoNarc(NARC *narc) {
+static void FreeBerryInfoNarc(NARC *narc)
+{
     NARC_Delete(narc);
 }
 
-static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr) {
+static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr)
+{
     switch (attr) {
     case BERRY_ATTR_SIZE:
         return unk->sizeInMillimeters;
@@ -329,7 +359,8 @@ static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr) {
     }
 }
 
-u16 BerryIdToItemId(u16 berryId) {
+u16 BerryIdToItemId(u16 berryId)
+{
     if (berryId == BERRY_NONE) {
         return ITEM_NONE;
     }
@@ -337,7 +368,8 @@ u16 BerryIdToItemId(u16 berryId) {
     return berryId + FIRST_BERRY_IDX - 1;
 }
 
-u16 ItemIdToBerryId(u16 itemId) {
+u16 ItemIdToBerryId(u16 itemId)
+{
     if (itemId == ITEM_NONE) {
         return BERRY_NONE;
     }
@@ -345,7 +377,8 @@ u16 ItemIdToBerryId(u16 itemId) {
     return itemId - FIRST_BERRY_IDX + 1;
 }
 
-u16 MulchIdToItemId(u16 mulchId) {
+u16 MulchIdToItemId(u16 mulchId)
+{
     if (mulchId == MULCH_NONE) {
         return ITEM_NONE;
     }
@@ -353,7 +386,8 @@ u16 MulchIdToItemId(u16 mulchId) {
     return mulchId + ITEM_GROWTH_MULCH - 1;
 }
 
-u32 ItemIdToMulchId(u16 itemId) {
+u32 ItemIdToMulchId(u16 itemId)
+{
     if (itemId == ITEM_NONE) {
         return MULCH_NONE;
     }
@@ -361,7 +395,8 @@ u32 ItemIdToMulchId(u16 itemId) {
     return itemId - ITEM_GROWTH_MULCH + 1;
 }
 
-u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId) {
+u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId)
+{
     s32 i;
     u16 total;
     for (total = 0, i = 0; i < NUM_BAG_BERRIES; i++) {
@@ -370,7 +405,8 @@ u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId) {
     return total;
 }
 
-u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId) {
+u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId)
+{
     s32 i;
     u16 total;
     for (total = 0, i = 0; i < NUM_MULCHES; i++) {

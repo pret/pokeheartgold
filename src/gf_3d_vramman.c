@@ -9,7 +9,8 @@
 #define GF_3D_MEM_BLOCK_PER_PLTT 256
 #define GF_3D_PLTT_SLOT_SIZE     0x2000
 
-GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer) {
+GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plttMode, int numPltt, GF3DVramManInitFunc initializer)
+{
     GF3DVramMan *ret;
     u32 texWorkSz, pltWorkSz;
 
@@ -41,13 +42,15 @@ GF3DVramMan *GF_3DVramMan_Create(HeapID heapId, int texMode, int numTex, int plt
     return ret;
 }
 
-void GF_3DVramMan_Delete(GF3DVramMan *vramMan) {
+void GF_3DVramMan_Delete(GF3DVramMan *vramMan)
+{
     Heap_Free(vramMan->plttWork);
     Heap_Free(vramMan->texWork);
     Heap_Free(vramMan);
 }
 
-void GF_3DVramMan_DefaultInitializer(void) {
+void GF_3DVramMan_DefaultInitializer(void)
+{
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
     G2_SetBG0Priority(0);
     G3X_SetShading(GX_SHADING_TOON);
@@ -60,18 +63,22 @@ void GF_3DVramMan_DefaultInitializer(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void GF_3DVramMan_InitLinkedListTexVramManager(u32 szByte, u32 szByteFor4x4, void *pManagementWork, u32 szByteManagementWork, BOOL useAsDefault) {
+void GF_3DVramMan_InitLinkedListTexVramManager(u32 szByte, u32 szByteFor4x4, void *pManagementWork, u32 szByteManagementWork, BOOL useAsDefault)
+{
     NNS_GfdInitLnkTexVramManager(szByte, szByteFor4x4, pManagementWork, szByteManagementWork, useAsDefault);
 }
 
-void GF_3DVramMan_InitLinkedListPlttVramManager(u32 szByte, void *pManagementWork, u32 szByteManagementWork, BOOL useAsDefault) {
+void GF_3DVramMan_InitLinkedListPlttVramManager(u32 szByte, void *pManagementWork, u32 szByteManagementWork, BOOL useAsDefault)
+{
     NNS_GfdInitLnkPlttVramManager(szByte, pManagementWork, szByteManagementWork, useAsDefault);
 }
 
-void GF_3DVramMan_InitFrameTexVramManager(u16 numSlot, BOOL useAsDefault) {
+void GF_3DVramMan_InitFrameTexVramManager(u16 numSlot, BOOL useAsDefault)
+{
     NNS_GfdInitFrmTexVramManager(numSlot, useAsDefault);
 }
 
-void GF_3DVramMan_InitFramePlttVramManager(u32 numSlot, BOOL useAsDefault) {
+void GF_3DVramMan_InitFramePlttVramManager(u32 numSlot, BOOL useAsDefault)
+{
     NNS_GfdInitFrmPlttVramManager(numSlot, useAsDefault);
 }

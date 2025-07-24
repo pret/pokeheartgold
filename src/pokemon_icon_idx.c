@@ -8,7 +8,8 @@
 
 static u16 BoxMonGetForm(BoxPokemon *boxMon);
 
-u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
+u32 Boxmon_GetIconNaix(BoxPokemon *boxMon)
+{
     BOOL encry;
     int species;
     BOOL isEgg;
@@ -24,11 +25,13 @@ u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
     return ret;
 }
 
-u32 Pokemon_GetIconNaix(Pokemon *mon) {
+u32 Pokemon_GetIconNaix(Pokemon *mon)
+{
     return Boxmon_GetIconNaix(Mon_GetBoxMon(mon));
 }
 
-u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
+u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form)
+{
     if (isEgg == TRUE) {
         if (species == SPECIES_MANAPHY) {
             return 502;
@@ -65,7 +68,8 @@ u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
     return species + 7;
 }
 
-u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
+u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form)
+{
     if (!isEgg) {
         if (species == SPECIES_CASTFORM) {
             form = sub_02070438(species, form);
@@ -82,7 +86,8 @@ u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
     return GetMonIconNaixEx(species, isEgg, form);
 }
 
-static u16 BoxMonGetForm(BoxPokemon *boxMon) {
+static u16 BoxMonGetForm(BoxPokemon *boxMon)
+{
     switch (GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL)) {
     case SPECIES_UNOWN:
         return GetBoxMonUnownLetter(boxMon);
@@ -647,7 +652,8 @@ static const u8 sPokemonPalNoBySpeciesAndForm[] = {
     1,
 };
 
-const u8 GetMonIconPaletteEx(u32 species, u32 form, u32 isEgg) {
+const u8 GetMonIconPaletteEx(u32 species, u32 form, u32 isEgg)
+{
     if (isEgg == TRUE) {
         if (species == SPECIES_MANAPHY) {
             species = 495;
@@ -680,7 +686,8 @@ const u8 GetMonIconPaletteEx(u32 species, u32 form, u32 isEgg) {
     return sPokemonPalNoBySpeciesAndForm[species];
 }
 
-const u8 GetBattleMonIconPaletteEx(u32 species, u32 form, BOOL isEgg) {
+const u8 GetBattleMonIconPaletteEx(u32 species, u32 form, BOOL isEgg)
+{
     if (!isEgg) {
         if (species == SPECIES_CASTFORM) {
             if (form != 0) {
@@ -695,7 +702,8 @@ const u8 GetBattleMonIconPaletteEx(u32 species, u32 form, BOOL isEgg) {
     return GetMonIconPaletteEx(species, form, isEgg);
 }
 
-const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon) {
+const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon)
+{
     BOOL encry;
     u32 species;
     u32 form;
@@ -709,34 +717,42 @@ const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon) {
     return GetMonIconPaletteEx(species, form, isEgg);
 }
 
-const u8 Pokemon_GetIconPalette(Pokemon *mon) {
+const u8 Pokemon_GetIconPalette(Pokemon *mon)
+{
     return Boxmon_GetIconPalette(Mon_GetBoxMon(mon));
 }
 
-u32 sub_02074490(void) {
+u32 sub_02074490(void)
+{
     return 0;
 }
 
-u32 sub_02074494(void) {
+u32 sub_02074494(void)
+{
     return 2;
 }
 
-u32 sub_02074498(void) {
+u32 sub_02074498(void)
+{
     return 4;
 }
 
-u32 sub_0207449C(void) {
+u32 sub_0207449C(void)
+{
     return 6;
 }
 
-u32 sub_020744A0(void) {
+u32 sub_020744A0(void)
+{
     return 1;
 }
 
-u32 sub_020744A4(void) {
+u32 sub_020744A4(void)
+{
     return 3;
 }
 
-u32 sub_020744A8(void) {
+u32 sub_020744A8(void)
+{
     return 5;
 }

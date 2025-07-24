@@ -9,7 +9,8 @@
 u16 MomCallGetIntroMsgByLocation(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 
-u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     state->scriptType = 0;
     if (state->isScriptedCall == 2) {
         Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL);
@@ -38,7 +39,8 @@ u16 PhoneCall_GetScriptId_Mother(PokegearPhoneCallContext *ctx, PokegearPhoneCal
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     int response;
 
@@ -101,11 +103,13 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-u16 MomCallGetIntroMsgByLocation(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 MomCallGetIntroMsgByLocation(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     return msg_0664_00007 + MapHeader_GetMomCallIntroParam(ctx->playerMapSec);
 }
 
-int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+int MomCallGetSaveMoneyPromptMsg(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     if (state->isScriptedCall == 2) {
         return msg_0664_00022;
     }

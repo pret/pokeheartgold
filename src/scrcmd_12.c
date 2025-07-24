@@ -10,7 +10,8 @@
 #include "unk_02092BE8.h"
 #include "update_dex_received.h"
 
-BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
+BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx)
+{
     u16 sp;
     u16 *retPtr = ScriptGetVarPointer(ctx);
     PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData);
@@ -22,7 +23,8 @@ BOOL ScrCmd_MomGiftCheck(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
+BOOL ScrCmd_PalParkAction(ScriptContext *ctx)
+{
     SaveVarsFlags *script = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
@@ -40,7 +42,8 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_509(ScriptContext *ctx) {
+BOOL ScrCmd_509(ScriptContext *ctx)
+{
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     u16 *retPtr = ScriptGetVarPointer(ctx);
@@ -53,7 +56,8 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_510(ScriptContext *ctx) {
+BOOL ScrCmd_510(ScriptContext *ctx)
+{
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     PCStorage *storage = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
@@ -74,7 +78,8 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx) {
+BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx)
+{
     u16 var0 = ScriptGetVar(ctx);
     u16 *retPtr = ScriptGetVarPointer(ctx);
 

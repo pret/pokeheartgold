@@ -29,7 +29,8 @@ static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu);
 static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq);
 static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int a1);
 
-TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData) {
+TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData)
+{
     TouchscreenListMenuSpawner *ret = AllocFromHeap(heapId, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
     ret->heapId = heapId;
@@ -41,14 +42,16 @@ TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, Pal
     return ret;
 }
 
-void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner) {
+void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner)
+{
     Heap_Free(spawner->plttDataRaw);
     Heap_Free(spawner->charDataRaw);
     MI_CpuFill8(spawner, 0, sizeof(TouchscreenListMenuSpawner));
     Heap_Free(spawner);
 }
 
-static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment) {
+static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment)
+{
     TouchscreenListMenu *ret = AllocFromHeap(spawner->heapId, sizeof(TouchscreenListMenu));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenu));
     MI_CpuCopy8(header, &ret->header, sizeof(TouchscreenListMenuHeader));
@@ -101,33 +104,40 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
     return ret;
 }
 
-TouchscreenListMenu *TouchscreenListMenu_Create(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection) {
+TouchscreenListMenu *TouchscreenListMenu_Create(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection)
+{
     return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, 0);
 }
 
-TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment) {
+TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment)
+{
     return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, alignment);
 }
 
-TouchscreenListMenu *TouchscreenListMenu_CreateWithCallback(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent) {
+TouchscreenListMenu *TouchscreenListMenu_CreateWithCallback(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent)
+{
     return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, callback, callbackArg, silent, 0);
 }
 
-u8 TouchscreenListMenu_WasLastInputTouch(TouchscreenListMenu *menu) {
+u8 TouchscreenListMenu_WasLastInputTouch(TouchscreenListMenu *menu)
+{
     return menu->isTouch;
 }
 
-void TouchscreenListMenu_Destroy(TouchscreenListMenu *menu) {
+void TouchscreenListMenu_Destroy(TouchscreenListMenu *menu)
+{
     MI_CpuClear8(menu, sizeof(TouchscreenListMenu));
     Heap_Free(menu);
 }
 
-void TouchscreenListMenu_DestroyButtons(TouchscreenListMenu *menu) {
+void TouchscreenListMenu_DestroyButtons(TouchscreenListMenu *menu)
+{
     TouchscreenListMenu_EraseTilemap(menu);
     TouchscreenListMenu_DeleteWindows(menu);
 }
 
-int TouchscreenListMenu_HandleInput(TouchscreenListMenu *menu) {
+int TouchscreenListMenu_HandleInput(TouchscreenListMenu *menu)
+{
     if (menu->animActive == 1) {
         if (menu->animTimer == 0) {
             TouchscreenListMenu_DestroyButtons(menu);
@@ -166,7 +176,8 @@ typedef struct TaskData_TouchscreenListMenuGraphicsLoad {
     NNSG2dPaletteData *pPlttData;
 } TaskData_TouchscreenListMenuGraphicsLoad;
 
-static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId) {
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId)
+{
     TaskData_TouchscreenListMenuGraphicsLoad *taskData = AllocFromHeapAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     MI_CpuClear8(taskData, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     taskData->pCharData = spawner->pCharData;
@@ -185,7 +196,8 @@ static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenLis
     }
 }
 
-static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData) {
+static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData)
+{
     TaskData_TouchscreenListMenuGraphicsLoad *data = taskData;
 
     DC_FlushRange(data->pCharData->pRawData, data->pCharData->szByte);
@@ -202,7 +214,8 @@ static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *task
     Heap_Free(taskData);
 }
 
-static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin) {
+static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin)
+{
     u8 maxWidth = 0;
     for (int i = 0; i < num; ++i) {
         GF_ASSERT(listMenuItem[i].text != NULL);
@@ -220,7 +233,8 @@ static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u
     }
 }
 
-static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu) {
+static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu)
+{
     int i;
     u16 tilesPerWindow;
     menu->windows = AllocWindows(menu->heapId, menu->header.numWindows);
@@ -238,12 +252,14 @@ static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu) {
     menu->touchscreenHitboxes[i].rect.top = TOUCHSCREEN_RECTLIST_END;
 }
 
-static void TouchscreenListMenu_DeleteWindows(TouchscreenListMenu *menu) {
+static void TouchscreenListMenu_DeleteWindows(TouchscreenListMenu *menu)
+{
     Heap_Free(menu->touchscreenHitboxes);
     WindowArray_Delete(menu->windows, menu->header.numWindows);
 }
 
-static void TouchscreenListMenu_DrawButtons(TouchscreenListMenu *menu) {
+static void TouchscreenListMenu_DrawButtons(TouchscreenListMenu *menu)
+{
     int i;
     int tileNum;
     int lastIndex;
@@ -292,7 +308,8 @@ static void TouchscreenListMenu_DrawButtons(TouchscreenListMenu *menu) {
     }
 }
 
-static void TouchscreenListMenu_PrintOptions(TouchscreenListMenu *menu) {
+static void TouchscreenListMenu_PrintOptions(TouchscreenListMenu *menu)
+{
     int i;
     u32 x;
     u32 width;
@@ -310,7 +327,8 @@ static void TouchscreenListMenu_PrintOptions(TouchscreenListMenu *menu) {
     ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
 }
 
-static void TouchscreenListMenu_ToggleButtonPalette(TouchscreenListMenu *menu, u8 index, BOOL selected) {
+static void TouchscreenListMenu_ToggleButtonPalette(TouchscreenListMenu *menu, u8 index, BOOL selected)
+{
     u32 x;
     u32 width;
     u32 textColor;
@@ -334,7 +352,8 @@ static void TouchscreenListMenu_ToggleButtonPalette(TouchscreenListMenu *menu, u
     ScheduleWindowCopyToVram(&menu->windows[index]);
 }
 
-static void TouchscreenListMenu_EraseTilemap(TouchscreenListMenu *menu) {
+static void TouchscreenListMenu_EraseTilemap(TouchscreenListMenu *menu)
+{
     for (int i = 0; i < menu->header.numWindows; ++i) {
         ClearWindowTilemapAndScheduleTransfer(&menu->windows[i]);
     }
@@ -342,12 +361,14 @@ static void TouchscreenListMenu_EraseTilemap(TouchscreenListMenu *menu) {
     ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
 }
 
-static void TouchscreenListMenu_DrawButtonsAndTransfer(TouchscreenListMenu *menu, u8 cursorPos) {
+static void TouchscreenListMenu_DrawButtonsAndTransfer(TouchscreenListMenu *menu, u8 cursorPos)
+{
     TouchscreenListMenu_DrawButtons(menu);
     ScheduleBgTilemapBufferTransfer(menu->header.bgConfig, menu->header.template.bgId);
 }
 
-static int TouchscreenListMenu_HandleTouchInput(TouchscreenListMenu *menu, BOOL *flagRet) {
+static int TouchscreenListMenu_HandleTouchInput(TouchscreenListMenu *menu, BOOL *flagRet)
+{
     int hitbox = TouchscreenHitbox_FindRectAtTouchNew(menu->touchscreenHitboxes);
     if (hitbox == -1) {
         *flagRet = FALSE;
@@ -367,7 +388,8 @@ static int TouchscreenListMenu_HandleTouchInput(TouchscreenListMenu *menu, BOOL 
     return -1;
 }
 
-static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu) {
+static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu)
+{
     u8 prev;
 
     if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT | PAD_BUTTON_A | PAD_BUTTON_B)) {
@@ -416,13 +438,15 @@ static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu) {
     return -1;
 }
 
-static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq) {
+static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq)
+{
     if (!menu->silent) {
         PlaySE(sndseq);
     }
 }
 
-static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int event) {
+static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int event)
+{
     if (menu->callback != NULL) {
         menu->callback(menu, menu->cursorPos, menu->callbackArg, event);
     }

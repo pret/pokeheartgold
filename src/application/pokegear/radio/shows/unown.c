@@ -15,7 +15,8 @@ typedef struct UnownSignalData {
 void RadioShow_Unown_Init(RadioShow *radioShow);
 void RadioShow_Unown_Unload(RadioShow *radioShow);
 
-BOOL RadioShow_Unown_Setup(RadioShow *radioShow) {
+BOOL RadioShow_Unown_Setup(RadioShow *radioShow)
+{
     UnownSignalData *data = AllocFromHeap(radioShow->heapID, sizeof(UnownSignalData));
     MI_CpuClear8(data, sizeof(UnownSignalData));
     // data->heapID = radioShow->heapID;
@@ -26,7 +27,8 @@ BOOL RadioShow_Unown_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_Unown_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_Unown_Teardown(RadioShow *radioShow)
+{
     RadioShow_Unown_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(UnownSignalData));
     Heap_Free(radioShow->showData);
@@ -34,16 +36,19 @@ BOOL RadioShow_Unown_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_Unown_Print(RadioShow *radioShow) {
+BOOL RadioShow_Unown_Print(RadioShow *radioShow)
+{
     return FALSE;
 }
 
-void RadioShow_Unown_Init(RadioShow *radioShow) {
+void RadioShow_Unown_Init(RadioShow *radioShow)
+{
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0410_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0410_00000, radioShow->showTitle);
     String_SetEmpty(radioShow->showHost);
 }
 
-void RadioShow_Unown_Unload(RadioShow *radioShow) {
+void RadioShow_Unown_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

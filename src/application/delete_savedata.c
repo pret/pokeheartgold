@@ -119,7 +119,8 @@ static void DeleteSavedataApp_FreeTextAndWindow(DeleteSavedataApp_Data *data);
 static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data);
 static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
-BOOL DeleteSavedataApp_Init(OverlayManager *manager, int *state) {
+BOOL DeleteSavedataApp_Init(OverlayManager *manager, int *state)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     DeleteSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(DeleteSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
@@ -132,7 +133,8 @@ BOOL DeleteSavedataApp_Init(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
+BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state)
+{
     DeleteSavedataApp_Data *data = OverlayManager_GetData(manager);
     BOOL ret = FALSE;
 
@@ -198,7 +200,8 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
     return ret;
 }
 
-BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state) {
+BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state)
+{
     DeleteSavedataApp_Data *data = OverlayManager_GetData(manager);
     HeapID heapId = data->heapId;
 
@@ -211,11 +214,13 @@ BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-static void DeleteSavedataApp_OnVBlank(DeleteSavedataApp_Data *data) {
+static void DeleteSavedataApp_OnVBlank(DeleteSavedataApp_Data *data)
+{
     DoScheduledBgGpuUpdates(data->bgConfig);
 }
 
-static void DeleteSavedataApp_SetupBgConfig(DeleteSavedataApp_Data *data) {
+static void DeleteSavedataApp_SetupBgConfig(DeleteSavedataApp_Data *data)
+{
     GraphicsBanks banks = sDeleteSave_GraphicsBanks;
     GfGfx_SetBanks(&banks);
 
@@ -235,7 +240,8 @@ static void DeleteSavedataApp_SetupBgConfig(DeleteSavedataApp_Data *data) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 }
 
-static void DeleteSavedataApp_FreeBgConfig(DeleteSavedataApp_Data *data) {
+static void DeleteSavedataApp_FreeBgConfig(DeleteSavedataApp_Data *data)
+{
     ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
@@ -249,7 +255,8 @@ static void DeleteSavedataApp_FreeBgConfig(DeleteSavedataApp_Data *data) {
     Heap_Free(data->bgConfig);
 }
 
-static void DeleteSavedataApp_SetupTextAndWindow(DeleteSavedataApp_Data *data) {
+static void DeleteSavedataApp_SetupTextAndWindow(DeleteSavedataApp_Data *data)
+{
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0007_bin, data->heapId);
     ResetAllTextPrinters();
 
@@ -259,12 +266,14 @@ static void DeleteSavedataApp_SetupTextAndWindow(DeleteSavedataApp_Data *data) {
     FillWindowPixelRect(&data->window, 0xF, 0, 0, 216, 32);
 }
 
-static void DeleteSavedataApp_FreeTextAndWindow(DeleteSavedataApp_Data *data) {
+static void DeleteSavedataApp_FreeTextAndWindow(DeleteSavedataApp_Data *data)
+{
     RemoveWindow(&data->window);
     DestroyMsgData(data->msgData);
 }
 
-static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
+static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data)
+{
     BOOL ret = FALSE;
 
     switch (data->mainState) {
@@ -327,7 +336,8 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
     return ret;
 }
 
-static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed) {
+static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed)
+{
     BOOL ret = FALSE;
 
     switch (data->printState) {

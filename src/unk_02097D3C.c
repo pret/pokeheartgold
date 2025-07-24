@@ -8,7 +8,8 @@
 
 static BOOL Task_ViewRankingsApp(TaskManager *taskManager);
 
-void FieldSystem_LaunchTask_ViewRankingsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos) {
+void FieldSystem_LaunchTask_ViewRankingsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos)
+{
     UnkStruct_02097D48 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097D48));
     taskData->state = 0;
     taskData->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ViewRankingsArgs));
@@ -18,7 +19,8 @@ void FieldSystem_LaunchTask_ViewRankingsApp(FieldSystem *fieldSystem, u8 pageScr
     TaskManager_Call(fieldSystem->taskman, Task_ViewRankingsApp, taskData);
 }
 
-static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
+static BOOL Task_ViewRankingsApp(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_02097D48 *taskData = TaskManager_GetEnvironment(taskManager);
 

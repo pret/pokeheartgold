@@ -57,7 +57,8 @@ static const u16 sFilterLandmarks[] = {
     MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR,
 };
 
-BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow) {
+BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow)
+{
     PokemonTalkData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonTalkData));
     MI_CpuClear8(data, sizeof(PokemonTalkData));
     // data->heapID = radioShow->heapID;
@@ -68,7 +69,8 @@ BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_PokemonTalk_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_PokemonTalk_Teardown(RadioShow *radioShow)
+{
     RadioShow_PokemonTalk_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonTalkData));
     Heap_Free(radioShow->showData);
@@ -76,7 +78,8 @@ BOOL RadioShow_PokemonTalk_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_PokemonTalk_Print(RadioShow *radioShow) {
+BOOL RadioShow_PokemonTalk_Print(RadioShow *radioShow)
+{
     PokemonTalkData *data = radioShow->showData;
     int i;
 
@@ -149,7 +152,8 @@ BOOL RadioShow_PokemonTalk_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_PokemonTalk_Init(RadioShow *radioShow) {
+void RadioShow_PokemonTalk_Init(RadioShow *radioShow)
+{
     int step;
     int i;
     u8 phrase1;
@@ -177,11 +181,13 @@ void RadioShow_PokemonTalk_Init(RadioShow *radioShow) {
     }
 }
 
-void RadioShow_PokemonTalk_Unload(RadioShow *radioShow) {
+void RadioShow_PokemonTalk_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }
 
-void RadioShow_PokemonTalk_SampleMapAreasAndEncounters(RadioShow *radioShow, PokemonTalkData *data) {
+void RadioShow_PokemonTalk_SampleMapAreasAndEncounters(RadioShow *radioShow, PokemonTalkData *data)
+{
     int i;
     int j;
     u16 landmark;
@@ -228,7 +234,8 @@ void RadioShow_PokemonTalk_SampleMapAreasAndEncounters(RadioShow *radioShow, Pok
     }
 }
 
-BOOL RadioShow_PokemonTalk_AlreadySampledLandmark(PokemonTalkData *data, u16 landmark, u8 num) {
+BOOL RadioShow_PokemonTalk_AlreadySampledLandmark(PokemonTalkData *data, u16 landmark, u8 num)
+{
     for (int i = 0; i < num; ++i) {
         if (landmark == data->landmarkSpeciesPairs[i][0]) {
             return TRUE;
@@ -238,7 +245,8 @@ BOOL RadioShow_PokemonTalk_AlreadySampledLandmark(PokemonTalkData *data, u16 lan
     return FALSE;
 }
 
-void RadioShow_PokemonTalk_AddSpecies(PokemonTalkData *data, Pokedex *pokedex, u16 species) {
+void RadioShow_PokemonTalk_AddSpecies(PokemonTalkData *data, Pokedex *pokedex, u16 species)
+{
     int i;
     if (species != SPECIES_NONE && species <= MAX_SPECIES) {
         for (i = 0; i < data->numSpecies; ++i) {
@@ -253,7 +261,8 @@ void RadioShow_PokemonTalk_AddSpecies(PokemonTalkData *data, Pokedex *pokedex, u
     }
 }
 
-u16 RadioShow_PokemonTalk_SampleSpeciesFromMapEncounters(PokemonTalkData *data, Pokedex *pokedex, u16 mapID) {
+u16 RadioShow_PokemonTalk_SampleSpeciesFromMapEncounters(PokemonTalkData *data, Pokedex *pokedex, u16 mapID)
+{
     int i;
     ENC_DATA encData;
 

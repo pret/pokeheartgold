@@ -10,7 +10,8 @@ static GF3DVramMan *sSimple3DVramManager;
 static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader);
 static void initializeSimple3DVramManager(void);
 
-static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader) {
+static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHeader)
+{
     NNSG3dResTex *tex = NNS_G3dGetTex(*ppHeader);
     if (tex != NULL && !GF3dRender_ResTexIsLoaded(tex)) {
         DC_FlushRange(*ppHeader, (*ppHeader)->fileSize);
@@ -21,17 +22,20 @@ static void getFirstMdlFromSet(NNSG3dResMdl **ppMdl, NNSG3dResFileHeader **ppHea
     *ppMdl = NNS_G3dGetMdlByIdx(mdlSet, 0);
 }
 
-void GF3dRender_InitObjFromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header) {
+void GF3dRender_InitObjFromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header)
+{
     getFirstMdlFromSet(p_mdl, p_header);
     GF_ASSERT(p_mdl != NULL);
     NNS_G3dRenderObjInit(obj, *p_mdl);
 }
 
-BOOL GF3dRender_ResTexIsLoaded(NNSG3dResTex *tex) {
+BOOL GF3dRender_ResTexIsLoaded(NNSG3dResTex *tex)
+{
     return (tex->texInfo.flag & NNS_G3D_RESTEX_LOADED) || (tex->tex4x4Info.flag & NNS_G3D_RESTEX_LOADED);
 }
 
-void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale) {
+void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale)
+{
     NNS_G3dGlbSetBaseTrans(translation);
     NNS_G3dGlbSetBaseRot(rotation);
     NNS_G3dGlbSetBaseScale(scale);
@@ -39,11 +43,13 @@ void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, cons
     NNS_G3dDraw(obj);
 }
 
-void GF3dRender_InitSimpleManager(HeapID heapID) {
+void GF3dRender_InitSimpleManager(HeapID heapID)
+{
     sSimple3DVramManager = GF_3DVramMan_Create(heapID, 0, 2, 0, 4, initializeSimple3DVramManager);
 }
 
-static void initializeSimple3DVramManager(void) {
+static void initializeSimple3DVramManager(void)
+{
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
     G2_SetBG0Priority(1);
     G3X_SetShading(GX_SHADING_TOON);
@@ -56,11 +62,13 @@ static void initializeSimple3DVramManager(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void GF3dRender_DeleteSimpleManager(void) {
+void GF3dRender_DeleteSimpleManager(void)
+{
     GF_3DVramMan_Delete(sSimple3DVramManager);
 }
 
-BOOL GF3dRender_BindModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex) {
+BOOL GF3dRender_BindModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex)
+{
     NNSG3dResMdlSet *mdlSet = NNS_G3dGetMdlSet(hdr);
     if (tex != NULL) {
         NNS_G3dBindMdlSet(mdlSet, tex);
@@ -70,7 +78,8 @@ BOOL GF3dRender_BindModelSet(NNSG3dResFileHeader *hdr, const NNSG3dResTex *tex) 
     return FALSE;
 }
 
-BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex) {
+BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex)
+{
     if (tex == NULL) {
         return FALSE;
     }
@@ -144,10 +153,12 @@ BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex) {
 }
 
 // temporary routines
-void GF3dRender_LoadTexture(NNSG3dResTex *pTex, BOOL exec_begin_end) {
+void GF3dRender_LoadTexture(NNSG3dResTex *pTex, BOOL exec_begin_end)
+{
     NNS_G3dTexLoad(pTex, exec_begin_end);
 }
 
-void GF3dRender_LoadPalette(NNSG3dResTex *pTex, BOOL exec_begin_end) {
+void GF3dRender_LoadPalette(NNSG3dResTex *pTex, BOOL exec_begin_end)
+{
     NNS_G3dPlttLoad(pTex, exec_begin_end);
 }

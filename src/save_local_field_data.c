@@ -31,106 +31,131 @@ struct SavedMapObjectList {
     struct SavedMapObject subs[64];
 };
 
-u32 Save_LocalFieldData_sizeof(void) {
+u32 Save_LocalFieldData_sizeof(void)
+{
     return sizeof(LocalFieldData);
 }
 
-u32 Save_MapObjects_sizeof(void) {
+u32 Save_MapObjects_sizeof(void)
+{
     return sizeof(struct SavedMapObjectList);
 }
 
-void Save_MapObjects_Init(struct SavedMapObjectList *unk) {
+void Save_MapObjects_Init(struct SavedMapObjectList *unk)
+{
     MI_CpuClear32(unk, sizeof(struct SavedMapObjectList));
 }
 
-void Save_LocalFieldData_Init(LocalFieldData *localFieldData) {
+void Save_LocalFieldData_Init(LocalFieldData *localFieldData)
+{
     memset(localFieldData, 0, sizeof(LocalFieldData));
     PlayerSaveData_Init(&localFieldData->player);
     localFieldData->lastSpawn = GetMomSpawnId();
 }
 
-Location *LocalFieldData_GetCurrentPosition(LocalFieldData *localFieldData) {
+Location *LocalFieldData_GetCurrentPosition(LocalFieldData *localFieldData)
+{
     return &localFieldData->currentPosition;
 }
 
-Location *LocalFieldData_GetEntrancePosition(LocalFieldData *localFieldData) {
+Location *LocalFieldData_GetEntrancePosition(LocalFieldData *localFieldData)
+{
     return &localFieldData->entrancePosition;
 }
 
-Location *LocalFieldData_GetPreviousPosition(LocalFieldData *localFieldData) {
+Location *LocalFieldData_GetPreviousPosition(LocalFieldData *localFieldData)
+{
     return &localFieldData->previousPosition;
 }
 
-Location *LocalFieldData_GetSpecialSpawnWarpPtr(LocalFieldData *localFieldData) {
+Location *LocalFieldData_GetSpecialSpawnWarpPtr(LocalFieldData *localFieldData)
+{
     return &localFieldData->specialSpawn;
 }
 
-Location *LocalFieldData_GetDynamicWarp(LocalFieldData *localFieldData) {
+Location *LocalFieldData_GetDynamicWarp(LocalFieldData *localFieldData)
+{
     return &localFieldData->dynamicWarp;
 }
 
-void LocalFieldData_SetDynamicWarp(LocalFieldData *localFieldData, const Location *location) {
+void LocalFieldData_SetDynamicWarp(LocalFieldData *localFieldData, const Location *location)
+{
     localFieldData->dynamicWarp = *location;
 }
 
-u16 *LocalFieldData_GetMusicIdAddr(LocalFieldData *localFieldData) {
+u16 *LocalFieldData_GetMusicIdAddr(LocalFieldData *localFieldData)
+{
     return &localFieldData->musicId;
 }
 
-u16 LocalFieldData_GetWeatherType(LocalFieldData *localFieldData) {
+u16 LocalFieldData_GetWeatherType(LocalFieldData *localFieldData)
+{
     return localFieldData->weather;
 }
 
-void LocalFieldData_SetWeatherType(LocalFieldData *localFieldData, const u16 weather) {
+void LocalFieldData_SetWeatherType(LocalFieldData *localFieldData, const u16 weather)
+{
     localFieldData->weather = weather;
 }
 
-u16 LocalFieldData_GetBlackoutSpawn(LocalFieldData *localFieldData) {
+u16 LocalFieldData_GetBlackoutSpawn(LocalFieldData *localFieldData)
+{
     return localFieldData->lastSpawn;
 }
 
-void LocalFieldData_SetBlackoutSpawn(LocalFieldData *localFieldData, const u16 spawn) {
+void LocalFieldData_SetBlackoutSpawn(LocalFieldData *localFieldData, const u16 spawn)
+{
     localFieldData->lastSpawn = spawn;
 }
 
-u32 LocalFieldData_GetCameraType(LocalFieldData *localFieldData) {
+u32 LocalFieldData_GetCameraType(LocalFieldData *localFieldData)
+{
     return localFieldData->cameraType;
 }
 
-void LocalFieldData_SetCameraType(LocalFieldData *localFieldData, const u32 cameraType) {
+void LocalFieldData_SetCameraType(LocalFieldData *localFieldData, const u32 cameraType)
+{
     localFieldData->cameraType = cameraType;
 }
 
-struct PlayerSaveData *LocalFieldData_GetPlayer(LocalFieldData *localFieldData) {
+struct PlayerSaveData *LocalFieldData_GetPlayer(LocalFieldData *localFieldData)
+{
     return &localFieldData->player;
 }
 
-u16 *LocalFieldData_GetSafariBallsCounter(LocalFieldData *localFieldData) {
+u16 *LocalFieldData_GetSafariBallsCounter(LocalFieldData *localFieldData)
+{
     return &localFieldData->safariBallCounter;
 }
 
-u16 *LocalFieldData_GetSafariStepsCounter(LocalFieldData *localFieldData) {
+u16 *LocalFieldData_GetSafariStepsCounter(LocalFieldData *localFieldData)
+{
     return &localFieldData->safariStepCounter;
 }
 
-u16 *LocalFieldData_GetPoisonStepCounter(LocalFieldData *localFieldData) {
+u16 *LocalFieldData_GetPoisonStepCounter(LocalFieldData *localFieldData)
+{
     return &localFieldData->poisonStepCounter;
 }
 
-LocalFieldData *Save_LocalFieldData_Get(SaveData *saveData) {
+LocalFieldData *Save_LocalFieldData_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_LOCAL_FIELD_DATA);
 }
 
-struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData) {
+struct SavedMapObjectList *Save_MapObjects_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_MAP_OBJECTS);
 }
 
-void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem) {
+void FieldSystem_SyncMapObjectsToSave(FieldSystem *fieldSystem)
+{
     struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->saveData);
     FieldSystem_SyncMapObjectsToSaveEx(fieldSystem, fieldSystem->mapObjectManager, unk->subs, 64);
 }
 
-void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
+void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem)
+{
     struct SavedMapObjectList *unk = Save_MapObjects_Get(fieldSystem->saveData);
     struct SavedMapObject *follower = SaveMapObject_GetFirstObjectWithSpriteID(unk->subs, 64, SPRITE_FOLLOWER_MON_SHAYMIN_SKY);
     Pokemon *mon;

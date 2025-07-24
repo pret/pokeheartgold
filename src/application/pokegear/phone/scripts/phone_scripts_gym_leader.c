@@ -7,7 +7,8 @@
 
 static BOOL isDojoFull(PokegearPhoneCallContext *ctx, u8 callerID);
 
-u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     if (PlayerProfile_CountBadges(ctx->playerProfile) >= 16) {
         state->flag0 = TRUE;
     } else {
@@ -22,7 +23,8 @@ u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhone
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     int yesNoResponse;
 
@@ -91,7 +93,8 @@ BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
 
     switch (state->scriptState) {
@@ -123,7 +126,8 @@ BOOL GearPhoneCall_GymLeader_Incoming(PokegearPhoneCallContext *ctx) {
 
 // It's possible this function was intended to check whether the dojo is full.
 // However, it stops after a single iteration.
-static BOOL isDojoFull(PokegearPhoneCallContext *ctx, u8 callerID) {
+static BOOL isDojoFull(PokegearPhoneCallContext *ctx, u8 callerID)
+{
     int i;
     int count;
 

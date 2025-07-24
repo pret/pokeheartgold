@@ -5,14 +5,16 @@
 #include "scrcmd.h"
 #include "unk_0202C730.h"
 
-BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx) {
+BOOL ScrCmd_GetStaticEncounterOutcomeFlag(ScriptContext *ctx)
+{
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
     u16 *variable = ScriptGetVarPointer(ctx);
     *variable = *winFlag;
     return TRUE;
 }
 
-BOOL ScrCmd_465(ScriptContext *ctx) {
+BOOL ScrCmd_465(ScriptContext *ctx)
+{
     MessageFormat **msg = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     SAV_FRIEND_GRP *group = Save_FriendGroup_Get(ctx->fieldSystem->saveData);
     SaveData *save = ctx->fieldSystem->saveData;

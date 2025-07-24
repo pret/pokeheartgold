@@ -21,7 +21,8 @@ static BOOL PhoneScript_Generic_DuringRocketTakeover(PokegearPhoneCallContext *c
 static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay);
 static u16 getRandomTrainerMon(u16 trainerID, HeapID heapID);
 
-u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     const PhoneScriptGenericHeader *genericScripts;
 
     state->scriptType = 0;
@@ -35,7 +36,8 @@ u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCa
     }
 }
 
-static u16 PhoneScriptGeneric_GetScriptIdInternal(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdrs, int count) {
+static u16 PhoneScriptGeneric_GetScriptIdInternal(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdrs, int count)
+{
     // at runtime, param:count is always 8
     int i;
     BOOL result;
@@ -84,7 +86,8 @@ static u16 PhoneScriptGeneric_GetScriptIdInternal(PokegearPhoneCallContext *ctx,
     return hdrs->scriptID;
 }
 
-static BOOL rollPercentChance(int chance) {
+static BOOL rollPercentChance(int chance)
+{
     int rnd = MTRandom() ^ MTRandom();
     u16 rnd_xor_rem = (u16)rnd;
     rnd_xor_rem ^= (rnd >> 8);
@@ -92,11 +95,13 @@ static BOOL rollPercentChance(int chance) {
     return rnd_xor_rem <= chance;
 }
 
-static BOOL PhoneScript_Generic_RandomChance(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_RandomChance(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     return rollPercentChance(hdr->chance);
 }
 
-static BOOL PhoneScript_Generic_NoRematchUntilClearedRadioTower(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_NoRematchUntilClearedRadioTower(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     PokegearPhoneCallState *state = &ctx->state;
 
     if (PhoneCallPersistentState_PhoneRematches_IsSeeking(ctx->callPersistentState, state->callerID)) {
@@ -111,7 +116,8 @@ static BOOL PhoneScript_Generic_NoRematchUntilClearedRadioTower(PokegearPhoneCal
     return rollPercentChance(hdr->chance);
 }
 
-static BOOL PhoneScript_Generic_RematchAfterRadioTowerSpecificDayAndTime(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_RematchAfterRadioTowerSpecificDayAndTime(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     PokegearPhoneCallState *state = &ctx->state;
 
     if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
@@ -123,7 +129,8 @@ static BOOL PhoneScript_Generic_RematchAfterRadioTowerSpecificDayAndTime(Pokegea
     return rollPercentChance(hdr->chance);
 }
 
-static BOOL PhoneScript_Generic_RematchAfterRadioTowerExceptDuringBugContest(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_RematchAfterRadioTowerExceptDuringBugContest(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     PokegearPhoneCallState *state = &ctx->state;
 
     if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
@@ -138,7 +145,8 @@ static BOOL PhoneScript_Generic_RematchAfterRadioTowerExceptDuringBugContest(Pok
     return rollPercentChance(hdr->chance);
 }
 
-static BOOL PhoneScript_Generic_GiftItemExceptDuringBugContest(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_GiftItemExceptDuringBugContest(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     PokegearPhoneCallState *state = &ctx->state;
 
     if (state->phoneBookEntry->mapId == MAP_NATIONAL_PARK && Save_VarsFlags_CheckBugContestFlag(ctx->saveVarsFlags)) {
@@ -150,21 +158,24 @@ static BOOL PhoneScript_Generic_GiftItemExceptDuringBugContest(PokegearPhoneCall
     return rollPercentChance(hdr->chance);
 }
 
-static BOOL PhoneScript_Generic_OnlyTuesThursSat(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_OnlyTuesThursSat(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     if (ctx->state.date.week == RTC_WEEK_TUESDAY || ctx->state.date.week == RTC_WEEK_THURSDAY || ctx->state.date.week == RTC_WEEK_SATURDAY) {
         return rollPercentChance(hdr->chance);
     }
     return FALSE;
 }
 
-static BOOL PhoneScript_Generic_DuringRocketTakeover(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr) {
+static BOOL PhoneScript_Generic_DuringRocketTakeover(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr)
+{
     if (Save_VarsFlags_IsInRocketTakeover(ctx->saveVarsFlags)) {
         return rollPercentChance(hdr->chance);
     }
     return FALSE;
 }
 
-static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay) {
+static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay)
+{
     ENC_DATA encounters;
     u16 *slots;
 
@@ -194,7 +205,8 @@ static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay) {
     }
 }
 
-static u16 getRandomTrainerMon(u16 trainerID, HeapID a1) {
+static u16 getRandomTrainerMon(u16 trainerID, HeapID a1)
+{
     int i;
     Trainer trdata;
     TRPOKE *trpoke;
@@ -241,7 +253,8 @@ static u16 getRandomTrainerMon(u16 trainerID, HeapID a1) {
     return teamSpecies[LCRandom() % trdata.data.npoke];
 }
 
-BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     const PhoneCallScriptDef *scriptDef;
 
@@ -276,7 +289,8 @@ BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-BOOL GearPhoneCall_Generic2(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Generic2(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     u8 rnd;
     const PhoneCallScriptDef *scriptDef;

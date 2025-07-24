@@ -11,27 +11,32 @@ static void stepPerspective(Camera *camera, const u16 *first, const u16 *last, u
 static void stepPosition(Camera *camera, const VecFx32 *first, const VecFx32 *last, u8 step, u8 duration);
 static fx32 calcPositionComponentStep(fx32 component, u8 step, u8 duration);
 
-GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera *camera) {
+GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera *camera)
+{
     GFCameraTranslationWrapper *ret = AllocFromHeap(heapId, sizeof(GFCameraTranslationWrapper));
     MI_CpuClear8(ret, sizeof(GFCameraTranslationWrapper));
     ret->camera = camera;
     return ret;
 }
 
-void DeleteCameraTranslationWrapper(GFCameraTranslationWrapper *wrapper) {
+void DeleteCameraTranslationWrapper(GFCameraTranslationWrapper *wrapper)
+{
     resetWrapper(wrapper);
     Heap_Free(wrapper);
 }
 
-static inline CameraAngle getBoundCameraAngle(GFCameraTranslationWrapper *wrapper) {
+static inline CameraAngle getBoundCameraAngle(GFCameraTranslationWrapper *wrapper)
+{
     return Camera_GetAngle(wrapper->camera);
 }
 
-static inline VecFx32 getBoundCameraTarget(GFCameraTranslationWrapper *wrapper) {
+static inline VecFx32 getBoundCameraTarget(GFCameraTranslationWrapper *wrapper)
+{
     return Camera_GetLookAtCamTarget(wrapper->camera);
 }
 
-void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct CameraTranslationPathTemplate *template, int duration) {
+void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct CameraTranslationPathTemplate *template, int duration)
+{
     VecFx32 target;
     CameraAngle angle;
     const VecFx32 *bindTarget;
@@ -58,11 +63,13 @@ void SetCameraTranslationPath(GFCameraTranslationWrapper *wrapper, struct Camera
     }
 }
 
-u8 IsCameraTranslationFinished(GFCameraTranslationWrapper *wrapper) {
+u8 IsCameraTranslationFinished(GFCameraTranslationWrapper *wrapper)
+{
     return wrapper->active == FALSE;
 }
 
-static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrapper *wrapper) {
+static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrapper *wrapper)
+{
     if (wrapper->mode == 0) {
         wrapper->step++;
         stepCamera(wrapper->camera, &wrapper->init, &wrapper->target, wrapper->step, wrapper->duration);
@@ -78,7 +85,8 @@ static void sysTask_MoveCameraAlongTrack(SysTask *unk, GFCameraTranslationWrappe
     }
 }
 
-static void resetWrapper(GFCameraTranslationWrapper *wrapper) {
+static void resetWrapper(GFCameraTranslationWrapper *wrapper)
+{
     if (wrapper->task != NULL) {
         SysTask_Destroy(wrapper->task);
         wrapper->task = NULL;
@@ -89,14 +97,16 @@ static void resetWrapper(GFCameraTranslationWrapper *wrapper) {
     wrapper->active = FALSE;
 }
 
-static void stepCamera(Camera *camera, struct CameraTranslationPathTemplate *first, struct CameraTranslationPathTemplate *last, u8 step, u8 duration) {
+static void stepCamera(Camera *camera, struct CameraTranslationPathTemplate *first, struct CameraTranslationPathTemplate *last, u8 step, u8 duration)
+{
     stepDistance(camera, &first->distance, &last->distance, step, duration);
     stepAngleX(camera, &first->angleX, &last->angleX, step, duration);
     stepPerspective(camera, &first->perspectiveAngle, &last->perspectiveAngle, step, duration);
     stepPosition(camera, &first->position, &last->position, step, duration);
 }
 
-static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 step, u8 duration) {
+static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 step, u8 duration)
+{
     CameraAngle cameraAngle = {};
     u16 diff;
     int scaled;
@@ -111,21 +121,24 @@ static void stepAngleX(Camera *camera, const u16 *first, const u16 *last, u8 ste
     Camera_SetAnglePos(&cameraAngle, camera);
 }
 
-static void stepDistance(Camera *camera, const fx32 *first, const fx32 *last, u8 step, u8 duration) {
+static void stepDistance(Camera *camera, const fx32 *first, const fx32 *last, u8 step, u8 duration)
+{
     fx32 diff = *last - *first;
     int scaled = (diff * step) / duration;
     fx32 new = *first + scaled;
     Camera_SetDistance(new, camera);
 }
 
-static void stepPerspective(Camera *camera, const u16 *first, const u16 *last, u8 step, u8 duration) {
+static void stepPerspective(Camera *camera, const u16 *first, const u16 *last, u8 step, u8 duration)
+{
     int diff = *last - *first;
     int scaled = (diff * step) / duration;
     int new = *first + scaled;
     Camera_SetPerspectiveAngle(new, camera);
 }
 
-static void stepPosition(Camera *camera, const VecFx32 *first, const VecFx32 *last, u8 step, u8 duration) {
+static void stepPosition(Camera *camera, const VecFx32 *first, const VecFx32 *last, u8 step, u8 duration)
+{
     VecFx32 scaled;
     VecFx32 diff;
     VEC_Subtract(last, first, &diff);
@@ -135,7 +148,8 @@ static void stepPosition(Camera *camera, const VecFx32 *first, const VecFx32 *la
     Camera_OffsetLookAtPosAndTarget(&scaled, camera);
 }
 
-static fx32 calcPositionComponentStep(fx32 component, u8 step, u8 duration) {
+static fx32 calcPositionComponentStep(fx32 component, u8 step, u8 duration)
+{
     GF_ASSERT(step != 0);
     return (component * step) / duration - (component * (step - 1)) / duration;
 }

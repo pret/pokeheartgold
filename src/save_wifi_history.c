@@ -14,21 +14,25 @@ struct SaveWiFiHistory {
     u8 seenLocations[SAVE_WIFI_HISTORY_COUNTRY_MAX * SAVE_WIFI_HISTORY_REGION_WIDTH]; // does not match as a 2d array
 }; // size: 0xFF8
 
-u32 Save_WiFiHistory_sizeof(void) {
+u32 Save_WiFiHistory_sizeof(void)
+{
     return sizeof(SaveWiFiHistory);
 }
 
-void Save_WiFiHistory_Init(SaveWiFiHistory *wifiHistory) {
+void Save_WiFiHistory_Init(SaveWiFiHistory *wifiHistory)
+{
     MI_CpuClear32(wifiHistory, sizeof(SaveWiFiHistory));
     SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }
 
-SaveWiFiHistory *Save_WiFiHistory_Get(SaveData *saveData) {
+SaveWiFiHistory *Save_WiFiHistory_Get(SaveData *saveData)
+{
     SaveSubstruct_AssertCRC(SAVE_WIFI_HISTORY);
     return (SaveWiFiHistory *)SaveArray_Get(saveData, SAVE_WIFI_HISTORY);
 }
 
-void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *wifiHistory, int country, int region) {
+void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *wifiHistory, int country, int region)
+{
     GF_ASSERT(country < SAVE_WIFI_HISTORY_COUNTRY_MAX + 1);
     GF_ASSERT(region < SAVE_WIFI_HISTORY_REGION_MAX);
     wifiHistory->country = country;
@@ -37,15 +41,18 @@ void WiFiHistory_SetPlayerGlobeInfo(SaveWiFiHistory *wifiHistory, int country, i
     SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }
 
-u8 WifiHistory_GetPlayerCountry(SaveWiFiHistory *wifiHistory) {
+u8 WifiHistory_GetPlayerCountry(SaveWiFiHistory *wifiHistory)
+{
     return wifiHistory->country;
 }
 
-u8 WiFiHistory_GetPlayerRegion(SaveWiFiHistory *wifiHistory) {
+u8 WiFiHistory_GetPlayerRegion(SaveWiFiHistory *wifiHistory)
+{
     return wifiHistory->region;
 }
 
-int WiFiHistory_GetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, int region) {
+int WiFiHistory_GetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, int region)
+{
     GF_ASSERT(country < SAVE_WIFI_HISTORY_COUNTRY_MAX + 1);
     GF_ASSERT(region < SAVE_WIFI_HISTORY_REGION_MAX);
     if (country == 0) {
@@ -55,7 +62,8 @@ int WiFiHistory_GetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, 
     return (wifiHistory->seenLocations[(country - 1) * 16 + region / 4] >> ((region % 4) * 2)) & SAVE_WIFI_HISTORY_STATE_MASK;
 }
 
-void WiFiHistory_SetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, int region, int state) {
+void WiFiHistory_SetLocationSeenState(SaveWiFiHistory *wifiHistory, int country, int region, int state)
+{
     GF_ASSERT(state < SAVE_WIFI_HISTORY_STATE_MAX);
     GF_ASSERT(country < SAVE_WIFI_HISTORY_COUNTRY_MAX + 1);
     GF_ASSERT(region < SAVE_WIFI_HISTORY_REGION_MAX);
@@ -70,16 +78,19 @@ void WiFiHistory_SetLocationSeenState(SaveWiFiHistory *wifiHistory, int country,
     }
 }
 
-u8 WiFiHistory_GetNonJapaneseFlag(SaveWiFiHistory *wifiHistory) {
+u8 WiFiHistory_GetNonJapaneseFlag(SaveWiFiHistory *wifiHistory)
+{
     return wifiHistory->seenNotJapanese;
 }
 
-void WiFiHistory_SetNonJapaneseFlag(SaveWiFiHistory *wifiHistory, int flag) {
+void WiFiHistory_SetNonJapaneseFlag(SaveWiFiHistory *wifiHistory, int flag)
+{
     wifiHistory->seenNotJapanese = flag;
     SaveSubstruct_UpdateCRC(SAVE_WIFI_HISTORY);
 }
 
-void WiFiHistory_UpgradeAllLocationsState(SaveWiFiHistory *wifiHistory) {
+void WiFiHistory_UpgradeAllLocationsState(SaveWiFiHistory *wifiHistory)
+{
     int i;
     int j;
     u8 byte;

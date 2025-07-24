@@ -9,7 +9,8 @@ BOOL SysTaskQueue_DeleteTask(SysTaskQueue *queue, SysTask *task);
 void SysTaskQueue_Init(SysTaskQueue *queue);
 SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void *data, u32 priority);
 
-void SysTaskQueue_InitTask(SysTaskQueue *queue, SysTask *task) {
+void SysTaskQueue_InitTask(SysTaskQueue *queue, SysTask *task)
+{
     task->queue = queue;
     task->prev = task->next = &queue->headSentinel;
     task->priority = 0;
@@ -17,7 +18,8 @@ void SysTaskQueue_InitTask(SysTaskQueue *queue, SysTask *task) {
     task->func = NULL;
 }
 
-void SysTaskQueue_InitStack(SysTaskQueue *queue) {
+void SysTaskQueue_InitStack(SysTaskQueue *queue)
+{
     for (int i = 0; i < queue->limit; ++i) {
         SysTaskQueue_InitTask(queue, &queue->taskList[i]);
         queue->taskStack[i] = &queue->taskList[i];
@@ -25,7 +27,8 @@ void SysTaskQueue_InitStack(SysTaskQueue *queue) {
     queue->activeCount = 0;
 }
 
-SysTask *SysTaskQueue_CreateTask(SysTaskQueue *queue) {
+SysTask *SysTaskQueue_CreateTask(SysTaskQueue *queue)
+{
     if (queue->activeCount == queue->limit) {
         return NULL;
     }
@@ -34,7 +37,8 @@ SysTask *SysTaskQueue_CreateTask(SysTaskQueue *queue) {
     return ret;
 }
 
-BOOL SysTaskQueue_DeleteTask(SysTaskQueue *queue, SysTask *task) {
+BOOL SysTaskQueue_DeleteTask(SysTaskQueue *queue, SysTask *task)
+{
     if (queue->activeCount == 0) {
         return FALSE;
     }
@@ -48,11 +52,13 @@ BOOL SysTaskQueue_DeleteTask(SysTaskQueue *queue, SysTask *task) {
     return TRUE;
 }
 
-u32 SysTaskQueue_GetArenaSize(u32 num) {
+u32 SysTaskQueue_GetArenaSize(u32 num)
+{
     return num * (sizeof(SysTask) + sizeof(SysTask *)) + sizeof(SysTaskQueue);
 }
 
-SysTaskQueue *SysTaskQueue_PlacementNew(u32 num, void *p_mem) {
+SysTaskQueue *SysTaskQueue_PlacementNew(u32 num, void *p_mem)
+{
     GF_ASSERT(p_mem != NULL);
 
     SysTaskQueue *ret = (SysTaskQueue *)p_mem;
@@ -67,7 +73,8 @@ SysTaskQueue *SysTaskQueue_PlacementNew(u32 num, void *p_mem) {
     return ret;
 }
 
-void SysTaskQueue_Init(SysTaskQueue *queue) {
+void SysTaskQueue_Init(SysTaskQueue *queue)
+{
     SysTaskQueue_InitStack(queue);
     queue->headSentinel.queue = queue;
     queue->headSentinel.prev = queue->headSentinel.next = &queue->headSentinel;
@@ -77,7 +84,8 @@ void SysTaskQueue_Init(SysTaskQueue *queue) {
     queue->runningTask = queue->headSentinel.next;
 }
 
-void SysTaskQueue_RunTasks(SysTaskQueue *queue) {
+void SysTaskQueue_RunTasks(SysTaskQueue *queue)
+{
     if (!queue->isInsertingTask) {
         queue->runningTask = queue->headSentinel.next;
         while (queue->runningTask != &queue->headSentinel) {
@@ -95,14 +103,16 @@ void SysTaskQueue_RunTasks(SysTaskQueue *queue) {
     }
 }
 
-SysTask *SysTaskQueue_InsertTask(SysTaskQueue *queue, SysTaskFunc func, void *data, u32 priority) {
+SysTask *SysTaskQueue_InsertTask(SysTaskQueue *queue, SysTaskFunc func, void *data, u32 priority)
+{
     queue->isInsertingTask = TRUE;
     SysTask *ret = SysTaskQueue_InsertTaskCore(queue, func, data, priority);
     queue->isInsertingTask = FALSE;
     return ret;
 }
 
-SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void *data, u32 priority) {
+SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void *data, u32 priority)
+{
     SysTask *ret = SysTaskQueue_CreateTask(queue);
     SysTask *tail;
     if (ret == NULL) {
@@ -143,7 +153,8 @@ SysTask *SysTaskQueue_InsertTaskCore(SysTaskQueue *queue, SysTaskFunc func, void
     return ret;
 }
 
-BOOL SysTask_Unlink(SysTask *task) {
+BOOL SysTask_Unlink(SysTask *task)
+{
     GF_ASSERT(task->func != NULL);
     if (task->queue->nextTask == task) {
         task->queue->nextTask = task->next;
@@ -153,14 +164,17 @@ BOOL SysTask_Unlink(SysTask *task) {
     return SysTaskQueue_DeleteTask(task->queue, task);
 }
 
-void SysTask_SetFunc(SysTask *task, SysTaskFunc func) {
+void SysTask_SetFunc(SysTask *task, SysTaskFunc func)
+{
     task->func = func;
 }
 
-void *SysTask_GetData(SysTask *task) {
+void *SysTask_GetData(SysTask *task)
+{
     return task->data;
 }
 
-u32 SysTask_GetPriority(SysTask *task) {
+u32 SysTask_GetPriority(SysTask *task)
+{
     return task->priority;
 }

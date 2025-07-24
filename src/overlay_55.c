@@ -39,7 +39,8 @@ static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *, HeapID);
 static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *);
 static void ov55_021E5BC4(Mail *, UnkStruct_ov55_021E5B08 *);
 
-static BOOL ov55_021E5900(OverlayManager **manager) {
+static BOOL ov55_021E5900(OverlayManager **manager)
+{
     if (*manager != NULL && OverlayManager_Run(*manager)) {
         OverlayManager_Delete(*manager);
         *manager = NULL;
@@ -49,7 +50,8 @@ static BOOL ov55_021E5900(OverlayManager **manager) {
     return FALSE;
 }
 
-BOOL ov55_UnkApp_Init(OverlayManager *manager, int *state) {
+BOOL ov55_UnkApp_Init(OverlayManager *manager, int *state)
+{
     UnkStruct_ov55_021E5924 *overlayData;
     UseMailArgs *args;
 
@@ -72,7 +74,8 @@ BOOL ov55_UnkApp_Init(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state) {
+BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state)
+{
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
     UseMailArgs *args = OverlayManager_GetArgs(manager);
 
@@ -143,7 +146,8 @@ BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state) {
     return FALSE;
 }
 
-BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state) {
+BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state)
+{
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
     ov55_021E5BAC(overlayData->unk10);
     OverlayManager_FreeData(manager);
@@ -151,7 +155,8 @@ BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, HeapID heapId) {
+static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, HeapID heapId)
+{
     UnkStruct_ov55_021E5B08 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_ov55_021E5B08));
     MI_CpuFill8(ret, 0, sizeof(UnkStruct_ov55_021E5B08));
 
@@ -174,7 +179,8 @@ static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, HeapID heapId) {
     return ret;
 }
 
-static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *unk) {
+static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *unk)
+{
     if (unk->mailAuthorName != NULL) {
         String_Delete(unk->mailAuthorName);
     }
@@ -182,7 +188,8 @@ static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *unk) {
     Heap_Free(unk);
 }
 
-static void ov55_021E5BC4(Mail *mail, UnkStruct_ov55_021E5B08 *unk) {
+static void ov55_021E5BC4(Mail *mail, UnkStruct_ov55_021E5B08 *unk)
+{
     for (u16 i = 0; i < 3; i++) {
         Mail_SetMessage(mail, &unk->mailMessages[i], (u8)i);
     }

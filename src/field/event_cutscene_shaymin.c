@@ -22,7 +22,8 @@ typedef struct UnkStruct_022523D0 {
 
 static BOOL ov02_022523D0(TaskManager *taskMan);
 
-BOOL ov02_02252334(FieldSystem *fieldSystem) {
+BOOL ov02_02252334(FieldSystem *fieldSystem)
+{
     if (!MapObject_AreBitsSetForMovementScriptInit(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar))) {
         return FALSE;
     }
@@ -42,12 +43,14 @@ BOOL ov02_02252334(FieldSystem *fieldSystem) {
     return FALSE;
 }
 
-void ov02_022523B4(TaskManager *taskMan) {
+void ov02_022523B4(TaskManager *taskMan)
+{
     UnkStruct_022523D0 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_022523D0));
     TaskManager_Call(taskMan, ov02_022523D0, data);
 }
 
-static BOOL ov02_022523D0(TaskManager *taskMan) {
+static BOOL ov02_022523D0(TaskManager *taskMan)
+{
     int *state = TaskManager_GetStatePtr(taskMan);
     VecFx32 pos;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);

@@ -45,7 +45,8 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
-String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
+String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId)
+{
     String *str;
     if (!gearPhone->active || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         str = String_New(8, heapId);
@@ -58,7 +59,8 @@ String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     return str;
 }
 
-void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u8 a4, u8 a5) {
+void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u8 a4, u8 a5)
+{
     // a4 set to 2 when passed from script
     // a5 related to message id? when passed from script
     if (callerId >= NUM_PHONE_CONTACTS) {
@@ -76,7 +78,8 @@ void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u
     gearPhone->unk_var4 = a5;
 }
 
-u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
+u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1)
+{
     MI_CpuFill8(a1, 0, 5);
     if (gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(FALSE);
@@ -91,7 +94,8 @@ u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
     return gearPhone->callerId;
 }
 
-BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
+BOOL ov02_02251F20(GearPhoneRingManager *gearPhone)
+{
     Location *position = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(gearPhone->saveData));
 
     if (!MapHeader_CanReceivePhoneCalls(position->mapId)) {
@@ -133,7 +137,8 @@ BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
 
 #ifdef NONMATCHING
 // FIXME: https://decomp.me/scratch/KW1m7 down to stack swaps between bugContestFlag and var -adrienn
-static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
+static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId)
+{
     u8 ret;
     u8 var;
     u8 bugContestFlag;
@@ -443,7 +448,8 @@ _022521AC:
 // clang-format on
 #endif
 
-static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
+static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId)
+{
     u8 r6 = ov02_02252218(gearPhone, phoneBook, mapId);
     if (r6 == 0xFF) {
         return FALSE;
@@ -455,7 +461,8 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 }
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak
-static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
+static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId)
+{
     u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, 13);
     MI_CpuFill8(ptr, 0, 13);
 
@@ -489,11 +496,13 @@ LABEL:
     return ret;
 }
 
-static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1) {
+static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1)
+{
     GearPhone_ToggleRinging(gearPhone, a1);
 }
 
-int GetRadioMusicPlayingSeq(void) {
+int GetRadioMusicPlayingSeq(void)
+{
     u16 seq = SndRadio_GetSeqNo();
     switch (seq) {
     case SEQ_GS_RADIO_MARCH:

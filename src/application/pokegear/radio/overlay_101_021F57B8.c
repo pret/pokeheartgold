@@ -46,7 +46,8 @@ static const RadioFuncs sRadioShowFuncs[] = {
     { RadioShow_Commercials_Setup,         RadioShow_Commercials_Print,         RadioShow_Commercials_Teardown         },
 };
 
-RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId)
+{
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(saveData);
     PlayerSaveData *playerData = LocalFieldData_GetPlayer(localFieldData);
     u16 *pMusicID = LocalFieldData_GetMusicIdAddr(localFieldData);
@@ -77,7 +78,8 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
     return ret;
 }
 
-void RadioShow_Delete(RadioShow *radioShow) {
+void RadioShow_Delete(RadioShow *radioShow)
+{
     String_Delete(radioShow->msgbufRaw);
     String_Delete(radioShow->msgbufFormatted);
     String_Delete(radioShow->showHost);
@@ -89,7 +91,8 @@ void RadioShow_Delete(RadioShow *radioShow) {
     Heap_Free(radioShow);
 }
 
-u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station) {
+u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station)
+{
     if (station >= 8) {
         station = 0;
     }
@@ -126,7 +129,8 @@ u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station) {
     return RADIO_STATION_POKEMON_MUSIC;
 }
 
-void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik) {
+void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik)
+{
     radioShow->isSecondLine = FALSE;
     if (station >= 8) {
         station = 0;
@@ -153,7 +157,8 @@ void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik) {
     RadioShow_PrintTitleAndHost(radioShow);
 }
 
-void RadioShow_EndSegment(RadioShow *radioShow) {
+void RadioShow_EndSegment(RadioShow *radioShow)
+{
     if (radioShow->showData != NULL) {
         sRadioShowFuncs[radioShow->curStation].teardown(radioShow);
     }
@@ -162,11 +167,13 @@ void RadioShow_EndSegment(RadioShow *radioShow) {
     radioShow->triggerCommercials = FALSE;
 }
 
-void RadioShow_SetStaticLevel(RadioShow *radioShow, BOOL statik) {
+void RadioShow_SetStaticLevel(RadioShow *radioShow, BOOL statik)
+{
     radioShow->statik = statik;
 }
 
-BOOL RadioShow_DelayAndScrollLine(RadioShow *radioShow) {
+BOOL RadioShow_DelayAndScrollLine(RadioShow *radioShow)
+{
     if (radioShow->delayCounter < radioShow->delayFrames) {
         ++radioShow->delayCounter;
         return FALSE;
@@ -184,7 +191,8 @@ BOOL RadioShow_DelayAndScrollLine(RadioShow *radioShow) {
     return TRUE;
 }
 
-BOOL RadioShow_ScrollTextOffWindow(RadioShow *radioShow) {
+BOOL RadioShow_ScrollTextOffWindow(RadioShow *radioShow)
+{
     ScrollWindow(radioShow->showScriptWindow, 0, 2, 0);
     CopyWindowToVram(radioShow->showScriptWindow);
     if (radioShow->scrollCounter++ < radioShow->scrollFrames) {
@@ -194,7 +202,8 @@ BOOL RadioShow_ScrollTextOffWindow(RadioShow *radioShow) {
     return TRUE;
 }
 
-BOOL RadioShow_Delay(RadioShow *radioShow) {
+BOOL RadioShow_Delay(RadioShow *radioShow)
+{
     if (radioShow->delayCounter++ < radioShow->delayFrames) {
         return FALSE;
     }
@@ -202,7 +211,8 @@ BOOL RadioShow_Delay(RadioShow *radioShow) {
     return TRUE;
 }
 
-void RadioShow_Main(RadioShow *radioShow) {
+void RadioShow_Main(RadioShow *radioShow)
+{
     switch (radioShow->runState) {
     case 0:
         radioShow->runState = sRadioShowFuncs[radioShow->curStation].print(radioShow);
@@ -227,7 +237,8 @@ void RadioShow_Main(RadioShow *radioShow) {
     }
 }
 
-void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
+void RadioShow_PrintTitleAndHost(RadioShow *radioShow)
+{
     FillWindowPixelBuffer(radioShow->showTitleWindow, 0);
     FillWindowPixelBuffer(radioShow->showHostWindow, 0);
     AddTextPrinterParameterizedWithColor(radioShow->showTitleWindow, 0, radioShow->showTitle, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
@@ -236,14 +247,16 @@ void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
     ScheduleWindowCopyToVram(radioShow->showHostWindow);
 }
 
-void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
+void PrintRadioLine(RadioShow *radioShow, String *msg, int y)
+{
     if (radioShow->statik == TRUE) {
         String_RadioAddStatic(msg, 70);
     }
     AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
 }
 
-BOOL RadioPrintAdvance(RadioShow *radioShow) {
+BOOL RadioPrintAdvance(RadioShow *radioShow)
+{
     if (!radioShow->isSecondLine) {
         radioShow->isSecondLine = TRUE;
     }
@@ -253,7 +266,8 @@ BOOL RadioPrintAdvance(RadioShow *radioShow) {
     return radioShow->curLineIdx >= radioShow->numLines;
 }
 
-void RadioPrintInit(RadioShow *radioShow, int msgId, int textNoScroll) {
+void RadioPrintInit(RadioShow *radioShow, int msgId, int textNoScroll)
+{
     radioShow->textNoScroll = textNoScroll;
     ReadMsgDataIntoString(radioShow->showMsgData, msgId, radioShow->msgbufRaw);
     StringExpandPlaceholders(radioShow->msgFormat, radioShow->msgbufFormatted, radioShow->msgbufRaw);
@@ -272,11 +286,13 @@ void RadioPrintInit(RadioShow *radioShow, int msgId, int textNoScroll) {
     }
 }
 
-void RadioPrintInitEz(RadioShow *radioShow, int msgId) {
+void RadioPrintInitEz(RadioShow *radioShow, int msgId)
+{
     RadioPrintInit(radioShow, msgId, 0);
 }
 
-void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId) {
+void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId)
+{
     RadioPrintInitEz(radioShow, msgId);
     radioShow->textNoScroll = 1;
     radioShow->isPlayingJingle = TRUE;
@@ -284,7 +300,8 @@ void RadioPrintAndPlayJingle(RadioShow *radioShow, int msgId) {
     SndRadio_StartSeq(SEQ_GS_RADIO_JINGLE);
 }
 
-BOOL Radio_RunTextPrinter(RadioShow *radioShow) {
+BOOL Radio_RunTextPrinter(RadioShow *radioShow)
+{
     switch (radioShow->printState) {
     case RADIO_PRINT_STATE_NULL:
         break;
@@ -327,7 +344,8 @@ BOOL Radio_RunTextPrinter(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL Radio_RunTextPrinter_WaitJingle(RadioShow *radioShow) {
+BOOL Radio_RunTextPrinter_WaitJingle(RadioShow *radioShow)
+{
     switch (radioShow->printWithJingleState) {
     case 0:
         if (Radio_RunTextPrinter(radioShow)) {

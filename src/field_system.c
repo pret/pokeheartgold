@@ -48,7 +48,8 @@ typedef struct UnkFieldSystemInit {
 
 static BOOL FieldSystem_Main(FieldSystem *fieldSystem);
 
-BOOL Field_Continue_AppInit(OverlayManager *man, int *unused) {
+BOOL Field_Continue_AppInit(OverlayManager *man, int *unused)
+{
     FieldSystemInitWork *args = OverlayManager_GetArgs(man);
     sFieldSysPtr = FieldSystem_New(man);
 
@@ -63,13 +64,15 @@ BOOL Field_Continue_AppInit(OverlayManager *man, int *unused) {
     return TRUE;
 }
 
-BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused) {
+BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused)
+{
     sFieldSysPtr = FieldSystem_New(man);
     CallFieldTask_NewGame(sFieldSysPtr);
     return TRUE;
 }
 
-BOOL Field_AppExec(OverlayManager *man, int *unused) {
+BOOL Field_AppExec(OverlayManager *man, int *unused)
+{
     if (FieldSystem_Main(OverlayManager_GetData(man))) {
         return TRUE;
     }
@@ -78,7 +81,8 @@ BOOL Field_AppExec(OverlayManager *man, int *unused) {
 
 extern OverlayManagerTemplate gApplication_TitleScreen;
 
-BOOL Field_AppExit(OverlayManager *man, int *unused) {
+BOOL Field_AppExit(OverlayManager *man, int *unused)
+{
     FieldSystem_Delete(man);
     RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
     return TRUE;
@@ -86,7 +90,8 @@ BOOL Field_AppExit(OverlayManager *man, int *unused) {
 
 extern OverlayManagerTemplate ov01_02206378;
 
-void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem) {
+void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem)
+{
     GF_ASSERT(fieldSystem->unk0->unk4 == NULL);
     GF_ASSERT(fieldSystem->unk0->unk0 == NULL);
 
@@ -97,34 +102,41 @@ void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem) {
     fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD);
 }
 
-void sub_0203DF34(FieldSystem *fieldSystem) {
+void sub_0203DF34(FieldSystem *fieldSystem)
+{
     fieldSystem->unk6C = FALSE;
 }
 
-u8 sub_0203DF3C(FieldSystem *fieldSystem) {
+u8 sub_0203DF3C(FieldSystem *fieldSystem)
+{
     GF_ASSERT(fieldSystem->unk_110 == 0 || fieldSystem->unk_110 == 1);
 
     return fieldSystem->unk_110;
 }
 
-void sub_0203DF64(FieldSystem *fieldSystem, int a1) {
+void sub_0203DF64(FieldSystem *fieldSystem, int a1)
+{
     GF_ASSERT(a1 == 0 || a1 == 1);
     fieldSystem->unk_110 = a1;
 }
 
-BOOL sub_0203DF7C(FieldSystem *fieldSystem) {
+BOOL sub_0203DF7C(FieldSystem *fieldSystem)
+{
     return fieldSystem->unk0->unk0 != NULL;
 }
 
-BOOL sub_0203DF8C(FieldSystem *fieldSystem) {
+BOOL sub_0203DF8C(FieldSystem *fieldSystem)
+{
     return fieldSystem->unk0->unk0 != NULL && fieldSystem->unk6C;
 }
 
-BOOL sub_0203DFA4(FieldSystem *fieldSystem) {
+BOOL sub_0203DFA4(FieldSystem *fieldSystem)
+{
     return fieldSystem->unk0->unk4 != NULL;
 }
 
-void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManagerTemplate *template, void *parentWork) {
+void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManagerTemplate *template, void *parentWork)
+{
     GF_ASSERT(fieldSystem->unk0->unk4 == NULL);
 
     sub_0203DF34(fieldSystem);
@@ -132,7 +144,8 @@ void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManage
     fieldSystem->unk0->unk4 = OverlayManager_New(template, parentWork, HEAP_ID_FIELD);
 }
 
-FieldSystem *FieldSystem_New(OverlayManager *man) {
+FieldSystem *FieldSystem_New(OverlayManager *man)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
     CreateHeap(HEAP_ID_3, HEAP_ID_32, 0x4000);
     CreateHeap(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
@@ -154,7 +167,8 @@ FieldSystem *FieldSystem_New(OverlayManager *man) {
     return fieldSystem;
 }
 
-void FieldSystem_Delete(OverlayManager *man) {
+void FieldSystem_Delete(OverlayManager *man)
+{
     FieldSystem *fieldSystem = OverlayManager_GetData(man);
     MapMatrix_Free(fieldSystem->mapMatrix);
     Field_FreeMapEvents(fieldSystem);
@@ -168,14 +182,16 @@ void FieldSystem_Delete(OverlayManager *man) {
     DestroyHeap(HEAP_ID_32);
 }
 
-static void ppOverlayManager_RunFrame_DeleteIfFinished(OverlayManager **man) {
+static void ppOverlayManager_RunFrame_DeleteIfFinished(OverlayManager **man)
+{
     if (*man && OverlayManager_Run(*man)) {
         OverlayManager_Delete(*man);
         *man = NULL;
     }
 }
 
-static BOOL FieldSystem_Main(FieldSystem *fieldSystem) {
+static BOOL FieldSystem_Main(FieldSystem *fieldSystem)
+{
     FieldSystem_Control(fieldSystem);
     if (FieldSystem_RunTaskFrame(fieldSystem) == TRUE) {
         if (fieldSystem->unk4) {
@@ -196,11 +212,13 @@ static BOOL FieldSystem_Main(FieldSystem *fieldSystem) {
     return FALSE;
 }
 
-BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem) {
+BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem)
+{
     return !fieldSystem->unk0->isPaused && fieldSystem->unk6C && !FieldSystem_TaskIsRunning(fieldSystem);
 }
 
-void FieldSystem_Control(FieldSystem *fieldSystem) {
+void FieldSystem_Control(FieldSystem *fieldSystem)
+{
     FieldInput fieldInput;
 
     BOOL movementAllowed = FieldSystem_IsPlayerMovementAllowed(fieldSystem);
@@ -280,40 +298,48 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
     }
 }
 
-void sub_0203E2F4() {
+void sub_0203E2F4()
+{
     sFieldSysPtr->unk0->isPaused = TRUE;
     sub_02037504();
 }
 
-void sub_0203E30C() {
+void sub_0203E30C()
+{
     sFieldSysPtr->unk0->isPaused = FALSE;
     sub_020374E4();
 }
 
-int sub_0203E324() {
+int sub_0203E324()
+{
     if (sFieldSysPtr->unk4 == NULL) {
         return 0;
     }
     return sFieldSysPtr->unk4->unk14;
 }
 
-void sub_0203E33C(FieldSystem *fieldSystem, int a1) {
+void sub_0203E33C(FieldSystem *fieldSystem, int a1)
+{
     fieldSystem->unk1C = a1;
 }
 
-BgConfig *FieldSystem_GetBgConfigPtr(FieldSystem *fieldSystem) {
+BgConfig *FieldSystem_GetBgConfigPtr(FieldSystem *fieldSystem)
+{
     return fieldSystem->bgConfig;
 }
 
-SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem) {
+SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem)
+{
     return fieldSystem->saveData;
 }
 
-void sub_0203E348() {
+void sub_0203E348()
+{
     LCRandom();
     LCRandom();
 }
 
-void sub_0203E354() {
+void sub_0203E354()
+{
     sFieldSysPtr->unkC4 = -2;
 }

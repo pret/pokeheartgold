@@ -73,7 +73,8 @@ static void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int mo
 static u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx);
 static u16 PartyMenu_GetCurrentMapSec(PartyMenu *partyMenu);
 
-static PartyMenuItemType ItemId_GetPartyUseType(u16 itemId) {
+static PartyMenuItemType ItemId_GetPartyUseType(u16 itemId)
+{
     int param;
     ItemData *itemData = LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PARTY_USE) != TRUE) {
@@ -213,7 +214,8 @@ static PartyMenuItemType ItemId_GetPartyUseType(u16 itemId) {
     return PARTY_MENU_ITEM_TYPE_OTHER;
 }
 
-static void PartyMenu_GetItemUseMessage(PartyMenu *partyMenu, u16 itemId, int param) {
+static void PartyMenu_GetItemUseMessage(PartyMenu *partyMenu, u16 itemId, int param)
+{
     String *string;
 
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)));
@@ -346,7 +348,8 @@ static void PartyMenu_GetItemUseMessage(PartyMenu *partyMenu, u16 itemId, int pa
     }
 }
 
-void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenu *partyMenu) {
+void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenu *partyMenu)
+{
     switch (ItemId_GetPartyUseType(partyMenu->args->itemId)) {
     case PARTY_MENU_ITEM_TYPE_BATTLE_STAT_STAGES:
     case PARTY_MENU_ITEM_TYPE_OTHER:
@@ -389,7 +392,8 @@ void PartyMenu_SetItemUseFuncFromBagSelection(PartyMenu *partyMenu) {
     }
 }
 
-int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenu *partyMenu) {
+int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenu *partyMenu)
+{
     if (TextPrinterCheckActive(partyMenu->textPrinterId)) {
         return PARTY_MENU_STATE_ITEM_USE_CB;
     } else {
@@ -398,7 +402,8 @@ int PartyMenu_ItemUseFunc_WaitTextPrinterThenExit(PartyMenu *partyMenu) {
     }
 }
 
-static int PartyMenu_ItemUseFunc_StatusHealEtc(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_StatusHealEtc(PartyMenu *partyMenu)
+{
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     sub_02079E38(partyMenu, partyMenu->partyMonIndex);
     sub_0207D5DC(partyMenu, partyMenu->partyMonIndex);
@@ -411,7 +416,8 @@ static int PartyMenu_ItemUseFunc_StatusHealEtc(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-static int PartyMenu_ItemUseFunc_EVDown(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_EVDown(PartyMenu *partyMenu)
+{
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     u8 hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
     u8 atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
@@ -440,7 +446,8 @@ static int PartyMenu_ItemUseFunc_EVDown(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu)
+{
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     int hp = GetMonData(mon, MON_DATA_HP, NULL);
@@ -468,7 +475,8 @@ static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-static int PartyMenu_ItemUseFunc_HPRestoreAnimLoop(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_HPRestoreAnimLoop(PartyMenu *partyMenu)
+{
     int hp = GetMonData(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), MON_DATA_HP, NULL);
     // Hook: Speed up HP restore here
     // This currently animates 1 HP per frame
@@ -486,11 +494,13 @@ static int PartyMenu_ItemUseFunc_HPRestoreAnimLoop(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-BOOL ItemId_IsReviveAll(u16 itemId) {
+BOOL ItemId_IsReviveAll(u16 itemId)
+{
     return !!GetItemAttr(itemId, ITEMATTR_REVIVE_ALL, HEAP_ID_PARTY_MENU);
 }
 
-static u8 PartyMenu_SacredAshGetNextMonId(PartyMenu *partyMenu, u8 partySlot) {
+static u8 PartyMenu_SacredAshGetNextMonId(PartyMenu *partyMenu, u8 partySlot)
+{
     if (partySlot >= PARTY_SIZE) {
         return 0xFF;
     }
@@ -503,7 +513,8 @@ static u8 PartyMenu_SacredAshGetNextMonId(PartyMenu *partyMenu, u8 partySlot) {
     return 0xFF;
 }
 
-int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
+int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu)
+{
     Pokemon *mon;
     String *string;
     int hp;
@@ -571,7 +582,8 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_SACRED_ASH;
 }
 
-static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu)
+{
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     partyMenu->levelUpStatsTmp[0] = GetMonData(mon, MON_DATA_MAXHP, NULL);
     partyMenu->levelUpStatsTmp[1] = GetMonData(mon, MON_DATA_ATK, NULL);
@@ -604,7 +616,8 @@ static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu)
+{
     Pokemon *mon;
     String *string;
     int mapEvoMethod;
@@ -687,7 +700,8 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
-int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu) {
+int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu)
+{
     partyMenu->itemUseCallback = PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop;
     partyMenu->levelUpLearnMovesLoopState = 3;
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
@@ -707,7 +721,8 @@ int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu) {
     }
 }
 
-static int PartyMenu_ItemUseFunc_LevelUpPromptForgetMove(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_LevelUpPromptForgetMove(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00060);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -717,7 +732,8 @@ static int PartyMenu_ItemUseFunc_LevelUpPromptForgetMove(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00056);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -728,7 +744,8 @@ static int PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn(PartyMenu *partyMen
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_LevelUpDidNotLearnMove(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_LevelUpDidNotLearnMove(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00059);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -738,7 +755,8 @@ static int PartyMenu_ItemUseFunc_LevelUpDidNotLearnMove(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_LevelUpAskAgainToForget(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_LevelUpAskAgainToForget(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -749,7 +767,8 @@ static int PartyMenu_ItemUseFunc_LevelUpAskAgainToForget(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon) {
+u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon)
+{
     u8 i;
     for (i = 0; i < MAX_MON_MOVES; ++i) {
         u16 move = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
@@ -772,7 +791,8 @@ u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon) {
     return i;
 }
 
-int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
+int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu)
+{
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     u32 response = PartyMenu_CheckCanLearnTMHMMove(partyMenu, mon);
     String *string;
@@ -821,7 +841,8 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenu *partyMenu) {
+int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenu *partyMenu)
+{
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     if (partyMenu->args->selectedMoveIdx == 4) {
@@ -838,7 +859,8 @@ int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenu *partyMenu) {
     }
 }
 
-int PartyMenu_Subtask_TMHMLearnMove(PartyMenu *partyMenu) {
+int PartyMenu_Subtask_TMHMLearnMove(PartyMenu *partyMenu)
+{
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     PartyMenu_LearnMoveToSlot(partyMenu, mon, partyMenu->args->selectedMoveIdx);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
@@ -851,7 +873,8 @@ int PartyMenu_Subtask_TMHMLearnMove(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_TMHMPromptForgetMove(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_TMHMPromptForgetMove(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00060);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -861,7 +884,8 @@ static int PartyMenu_ItemUseFunc_TMHMPromptForgetMove(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00056);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -872,7 +896,8 @@ static int PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn(PartyMenu *partyMenu) 
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_TMHMDidNotLearnMove(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_TMHMDidNotLearnMove(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00059);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -882,7 +907,8 @@ static int PartyMenu_ItemUseFunc_TMHMDidNotLearnMove(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-static int PartyMenu_ItemUseFunc_TMHMAskAgainToForget(PartyMenu *partyMenu) {
+static int PartyMenu_ItemUseFunc_TMHMAskAgainToForget(PartyMenu *partyMenu)
+{
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -893,7 +919,8 @@ static int PartyMenu_ItemUseFunc_TMHMAskAgainToForget(PartyMenu *partyMenu) {
     return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
 }
 
-void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) {
+void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx)
+{
     int data = partyMenu->args->moveId;
     SetMonData(mon, MON_DATA_MOVE1 + moveIdx, &data);
     data = 0;
@@ -909,7 +936,8 @@ void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) 
     }
 }
 
-u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx) {
+u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx)
+{
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     u16 moveId = GetMonData(mon, MON_DATA_MOVE1 + moveIdx, NULL);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00145 + moveIdx);
@@ -924,7 +952,8 @@ u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx) {
     }
 }
 
-void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenu *partyMenu, BOOL isPpRestore) {
+void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenu *partyMenu, BOOL isPpRestore)
+{
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     if (!isPpRestore) {
         PartyMenu_PrintMessageOnWindow33(partyMenu, msg_0300_00042, TRUE);
@@ -951,7 +980,8 @@ void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenu *partyMenu, BOOL isPpResto
     partyMenu->contextMenuCursor = PartyMenu_CreateContextMenuCursor(partyMenu, &contextMenu, 0, HEAP_ID_PARTY_MENU, 1);
 }
 
-int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
+int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu)
+{
     u32 input = PartyMenu_HandleSubcontextMenuInput_TopLevel(partyMenu, partyMenu->contextMenuCursor);
     switch (input) {
     case LIST_CANCEL:
@@ -985,7 +1015,8 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
     }
 }
 
-void PartyMenu_HandleAttachMailFromMailbox(PartyMenu *partyMenu) {
+void PartyMenu_HandleAttachMailFromMailbox(PartyMenu *partyMenu)
+{
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00116, partyMenu->formattedStrBuf);
@@ -1001,7 +1032,8 @@ void PartyMenu_HandleAttachMailFromMailbox(PartyMenu *partyMenu) {
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
 }
 
-static u16 PartyMenu_GetCurrentMapSec(PartyMenu *partyMenu) {
+static u16 PartyMenu_GetCurrentMapSec(PartyMenu *partyMenu)
+{
     int ret = MapHeader_GetMapSec(partyMenu->args->fieldSystem->location->mapId);
     return ret;
 }

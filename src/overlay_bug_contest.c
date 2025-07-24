@@ -35,7 +35,8 @@ void BugContest_InitEncounters(BugContest *bugContest);
 void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest);
 u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon);
 
-BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
+BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday)
+{
     BugContest *bugContest;
 
     bugContest = (BugContest *)AllocFromHeap(HEAP_ID_3, sizeof(BugContest));
@@ -53,13 +54,15 @@ BugContest *BugContest_New(FieldSystem *fieldSystem, u32 weekday) {
     return bugContest;
 }
 
-void BugContest_Delete(BugContest *bugContest) {
+void BugContest_Delete(BugContest *bugContest)
+{
     BugContest_RestoreParty_RetrieveCaughtPokemon(bugContest);
     Heap_Free(bugContest->mon);
     Heap_Free(bugContest);
 }
 
-void BugContest_Judge(BugContest *bugContest) {
+void BugContest_Judge(BugContest *bugContest)
+{
     int i, j, cur_max, score, score2;
     u8 temp;
     u8 rand;
@@ -127,7 +130,8 @@ void BugContest_Judge(BugContest *bugContest) {
     }
 }
 
-void BugContest_BufferContestWinnerNames(BugContest *bugContest, MsgData *msgData, MessageFormat *msgFmt, u8 place) {
+void BugContest_BufferContestWinnerNames(BugContest *bugContest, MsgData *msgData, MessageFormat *msgFmt, u8 place)
+{
     BugContestant *contestant;
     String *string;
 
@@ -144,7 +148,8 @@ void BugContest_BufferContestWinnerNames(BugContest *bugContest, MsgData *msgDat
     BufferIntegerAsString(msgFmt, 3, contestant->score, 3, PRINTING_MODE_LEFT_ALIGN, 1);
 }
 
-BOOL BugContest_ContestantIsRegistered(BugContest *bugContest, u8 id) {
+BOOL BugContest_ContestantIsRegistered(BugContest *bugContest, u8 id)
+{
     int i;
     for (i = 0; i < BUGCONTESTANT_NPC_COUNT; i++) {
         if (id == bugContest->contestants[i].id) {
@@ -154,7 +159,8 @@ BOOL BugContest_ContestantIsRegistered(BugContest *bugContest, u8 id) {
     return FALSE;
 }
 
-BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFmt, u8 slot) {
+BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFmt, u8 slot)
+{
     String *string;
 
     if (!bugContest->caught_poke) {
@@ -168,7 +174,8 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
     return bugContest->party_cur_num >= PARTY_SIZE;
 }
 
-ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId) {
+ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId)
+{
     ENC_SLOT *slot;
     u16 roll;
     int i;
@@ -188,7 +195,8 @@ ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId) {
     return slot;
 }
 
-void BugContest_BackUpParty(BugContest *bugContest) {
+void BugContest_BackUpParty(BugContest *bugContest)
+{
     int i;
     bugContest->party_bak = SaveArray_Party_Alloc(bugContest->heapId);
     bugContest->party_cur = SaveArray_Party_Get(bugContest->saveData);
@@ -206,7 +214,8 @@ void BugContest_BackUpParty(BugContest *bugContest) {
     }
 }
 
-void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
+void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest)
+{
     Pokemon *mon;
     PartyExtraSub sub;
 
@@ -231,7 +240,8 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
     }
 }
 
-BOOL BugContest_ContestantIsRegisteredN(BugContest *bugContest, u8 id, u8 n) {
+BOOL BugContest_ContestantIsRegisteredN(BugContest *bugContest, u8 id, u8 n)
+{
     int i;
     for (i = 0; i < n; i++) {
         if (id == bugContest->contestants[i].id) {
@@ -241,7 +251,8 @@ BOOL BugContest_ContestantIsRegisteredN(BugContest *bugContest, u8 id, u8 n) {
     return FALSE;
 }
 
-void BugContest_InitOpponents(BugContest *bugContest) {
+void BugContest_InitOpponents(BugContest *bugContest)
+{
     FSFile file;
     u32 flen;
     BugContestantData *bin, *curbin;
@@ -287,7 +298,8 @@ void BugContest_InitOpponents(BugContest *bugContest) {
     FS_CloseFile(&file);
 }
 
-void BugContest_InitEncounters(BugContest *bugContest) {
+void BugContest_InitEncounters(BugContest *bugContest)
+{
     FSFile file;
     u32 flen;
     BUGMON *bugmon;
@@ -311,7 +323,8 @@ void BugContest_InitEncounters(BugContest *bugContest) {
     FS_CloseFile(&file);
 }
 
-u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon) {
+u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon)
+{
     u16 score = 0;
     int i;
     u16 species;

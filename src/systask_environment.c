@@ -4,7 +4,8 @@
 
 #include "sys_task.h"
 
-SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, HeapID heapId) {
+SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, HeapID heapId)
+{
     void *environment;
 
     if (environmentSize != 0) {
@@ -20,7 +21,8 @@ SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, 
     return SysTask_CreateOnMainQueue(function, environment, priority);
 }
 
-void DestroySysTaskAndEnvironment(SysTask *task) {
+void DestroySysTaskAndEnvironment(SysTask *task)
+{
     void *environment = SysTask_GetData(task);
     if (environment != NULL) {
         Heap_Free(environment);

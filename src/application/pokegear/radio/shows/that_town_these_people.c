@@ -54,7 +54,8 @@ static const u8 sEpisodeUnlockFlags[] = {
     TTTP_COND_VERMILION,
 };
 
-BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow) {
+BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow)
+{
     ThatTownThesePeopleData *data = AllocFromHeap(radioShow->heapID, sizeof(ThatTownThesePeopleData));
     MI_CpuClear8(data, sizeof(ThatTownThesePeopleData));
     // data->heapID = radioShow->heapID;
@@ -65,7 +66,8 @@ BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow)
+{
     RadioShow_ThatTownThesePeople_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(ThatTownThesePeopleData));
     Heap_Free(radioShow->showData);
@@ -73,7 +75,8 @@ BOOL RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow) {
+BOOL RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow)
+{
     ThatTownThesePeopleData *data = radioShow->showData;
 
     switch (data->state) {
@@ -119,7 +122,8 @@ BOOL RadioShow_ThatTownThesePeople_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow) {
+void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow)
+{
     int i;
     int num;
     u8 msgID;
@@ -151,11 +155,13 @@ void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow) {
     }
 }
 
-void RadioShow_ThatTownThesePeople_Unload(RadioShow *radioShow) {
+void RadioShow_ThatTownThesePeople_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }
 
-BOOL RadioShow_ThatTownThesePeople_EnsureUniqueMsgID(ThatTownThesePeopleData *data, u8 msgID, u8 index) {
+BOOL RadioShow_ThatTownThesePeople_EnsureUniqueMsgID(ThatTownThesePeopleData *data, u8 msgID, u8 index)
+{
     for (int i = 0; i < index; ++i) {
         if (data->msgIDs[i] == msgID) {
             return TRUE;

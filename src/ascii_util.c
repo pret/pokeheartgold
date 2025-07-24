@@ -2,7 +2,8 @@
 
 #include "global.h"
 
-s32 Ascii_StrLen(const s8 *str) {
+s32 Ascii_StrLen(const s8 *str)
+{
     s32 i = 0;
     while (str[i] != 0) {
         i++;
@@ -10,7 +11,8 @@ s32 Ascii_StrLen(const s8 *str) {
     return i;
 }
 
-const s8 *Ascii_GetDelim(const s8 *src, s8 *dst, s32 c) {
+const s8 *Ascii_GetDelim(const s8 *src, s8 *dst, s32 c)
+{
     for (int i = 0; i < 256; i++) {
         dst[i] = src[i];
         if (src[i] == c || src[i] == 0) {
@@ -25,7 +27,8 @@ const s8 *Ascii_GetDelim(const s8 *src, s8 *dst, s32 c) {
     return NULL;
 }
 
-s32 Ascii_StrToL(const s8 *str) {
+s32 Ascii_StrToL(const s8 *str)
+{
     s32 length = Ascii_StrLen(str);
     s32 i;
     s32 pow10 = 1;
@@ -55,7 +58,8 @@ s32 Ascii_StrToL(const s8 *str) {
     return num;
 }
 
-void sub_02020B3C(NNSG3dResName *resName, const s8 *input) {
+void sub_02020B3C(NNSG3dResName *resName, const s8 *input)
+{
     // memset(resName, 0, NNS_G3D_RESNAME_SIZE);
     // strncpy(resName->name, input, NNS_G3D_RESNAME_SIZE);
 
@@ -68,6 +72,7 @@ void sub_02020B3C(NNSG3dResName *resName, const s8 *input) {
     }
 }
 
-BOOL sub_02020B78(u16 c) {
+BOOL sub_02020B78(u16 c)
+{
     return c < CHAR_0;
 }

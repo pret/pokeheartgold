@@ -49,7 +49,8 @@ static int CalcSpeciesScore(struct PalParkLocal *palpark);
 static u32 CalcTypesScore(struct PalParkLocal *palpark);
 static int CalcTimeScore(struct PalParkLocal *palpark);
 
-void PalPark_ClearState(FieldSystem *fieldSystem) {
+void PalPark_ClearState(FieldSystem *fieldSystem)
+{
     s32 i;
     struct PalParkLocal *local = &sPalParkLocalState;
     for (i = 0; i < PARTY_SIZE; ++i) {
@@ -57,14 +58,16 @@ void PalPark_ClearState(FieldSystem *fieldSystem) {
     }
 }
 
-void PalPark_InitFromSave(FieldSystem *fieldSystem) {
+void PalPark_InitFromSave(FieldSystem *fieldSystem)
+{
     MI_CpuClearFast(&sPalParkLocalState, sizeof sPalParkLocalState);
     InitPalParkMonsData(fieldSystem, &sPalParkLocalState);
     SetNumStepsUntilNextEncounterCheck(&sPalParkLocalState);
     sPalParkLocalState.timestamp = GF_RTC_DateTimeToSec();
 }
 
-void PalPark_StopClock(FieldSystem *fieldSystem) {
+void PalPark_StopClock(FieldSystem *fieldSystem)
+{
     struct PalParkLocal *local = &sPalParkLocalState;
     GameStats *stats = Save_GameStats_Get(fieldSystem->saveData);
     s64 elapsed = GF_RTC_TimeDelta(local->timestamp, GF_RTC_DateTimeToSec());
@@ -76,45 +79,54 @@ void PalPark_StopClock(FieldSystem *fieldSystem) {
     GameStats_AddScore(stats, SCORE_EVENT_17);
 }
 
-BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z) {
+BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z)
+{
     if (ShouldTryEncounter(&sPalParkLocalState) == TRUE) {
         return TryEncounter(fieldSystem, &sPalParkLocalState, x, z);
     }
     return FALSE;
 }
 
-BattleSetup *PalPark_SetupEncounter(FieldSystem *fieldSystem) {
+BattleSetup *PalPark_SetupEncounter(FieldSystem *fieldSystem)
+{
     return SetupEncounter(fieldSystem, &sPalParkLocalState);
 }
 
-void PalPark_HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup) {
+void PalPark_HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup)
+{
     return HandleBattleEnd(fieldSystem, setup, &sPalParkLocalState);
 }
 
-int PalPark_CountMonsNotCaught(FieldSystem *fieldSystem) {
+int PalPark_CountMonsNotCaught(FieldSystem *fieldSystem)
+{
     return 6 - CountCaughtMons(&sPalParkLocalState);
 }
 
-int PalPark_CalcSpeciesScore(FieldSystem *fieldSystem) {
+int PalPark_CalcSpeciesScore(FieldSystem *fieldSystem)
+{
     return CalcSpeciesScore(&sPalParkLocalState);
 }
 
-int PalPark_CalcTimeScore(FieldSystem *fieldSystem) {
+int PalPark_CalcTimeScore(FieldSystem *fieldSystem)
+{
     return CalcTimeScore(&sPalParkLocalState);
 }
 
-u32 PalPark_CalcTypesScore(FieldSystem *fieldSystem) {
+u32 PalPark_CalcTypesScore(FieldSystem *fieldSystem)
+{
     return CalcTypesScore(&sPalParkLocalState);
 }
 
 // Local functions
 
-static void LoadMonPalParkStats(u16 species, u8 *dest) {
+static void LoadMonPalParkStats(u16 species, u8 *dest)
+{
     GF_ASSERT(species != SPECIES_NONE && species <= SPECIES_ARCEUS);
     ReadFromNarcMemberByIdPair(dest, NARC_arc_ppark, 0, (species - 1) * 6, 6);
 }
 
-static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
+static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *palpark)
+{
     struct MigratedPokemonSav *migrated = Save_MigratedPokemon_Get(fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_4);
     u8 narc_data[6];
@@ -137,7 +149,8 @@ static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *p
     Heap_Free(mon);
 }
 
-static int CountCaughtMons(struct PalParkLocal *palpark) {
+static int CountCaughtMons(struct PalParkLocal *palpark)
+{
     int i;
     int total = 0;
     for (i = 0; i < PARTY_SIZE; ++i) {
@@ -148,12 +161,14 @@ static int CountCaughtMons(struct PalParkLocal *palpark) {
     return total;
 }
 
-static void SetNumStepsUntilNextEncounterCheck(struct PalParkLocal *palpark) {
+static void SetNumStepsUntilNextEncounterCheck(struct PalParkLocal *palpark)
+{
     u16 rnd = LCRandom() % 10;
     palpark->stepsUntilEncounterRoll = rnd + 5;
 }
 
-static BOOL ShouldTryEncounter(struct PalParkLocal *palpark) {
+static BOOL ShouldTryEncounter(struct PalParkLocal *palpark)
+{
     if (--palpark->stepsUntilEncounterRoll == 0) {
         SetNumStepsUntilNextEncounterCheck(palpark);
         return TRUE;
@@ -161,7 +176,8 @@ static BOOL ShouldTryEncounter(struct PalParkLocal *palpark) {
     return FALSE;
 }
 
-static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem *fieldSystem, int x, int z) {
+static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem *fieldSystem, int x, int z)
+{
     int behavior = GetMetatileBehavior(fieldSystem, x, z);
     int quadrant = (x < 32 ? 0 : 1);
     quadrant += (z < 32 ? 0 : 2);
@@ -174,7 +190,8 @@ static enum PalParkEncounterType GetEncounterTypeAt(FieldSystem *fieldSystem, in
     return PP_ENCTYPE_NONE;
 }
 
-static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark, int x, int z) {
+static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark, int x, int z)
+{
     int i;
     int rnd, total_rate = 0;
     enum PalParkEncounterType area = GetEncounterTypeAt(fieldSystem, x, z);
@@ -223,7 +240,8 @@ static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark,
     return FALSE;
 }
 
-static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct PalParkLocal *palpark) {
+static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct PalParkLocal *palpark)
+{
     switch (setup->winFlag) {
     case BATTLE_OUTCOME_MON_CAUGHT:
         palpark->caught_order[palpark->encounterIndex] = CountCaughtMons(palpark) + 1;
@@ -235,7 +253,8 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
     }
 }
 
-static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark) {
+static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark)
+{
     Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
     struct MigratedPokemonSav *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
     BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD, PalPark_CountMonsNotCaught(fieldSystem));
@@ -246,7 +265,8 @@ static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal
     return ret;
 }
 
-static int CalcSpeciesScore(struct PalParkLocal *palpark) {
+static int CalcSpeciesScore(struct PalParkLocal *palpark)
+{
     int i, score = 0;
     for (i = 0; i < PARTY_SIZE; ++i) {
         score += palpark->mons[i].score;
@@ -254,7 +274,8 @@ static int CalcSpeciesScore(struct PalParkLocal *palpark) {
     return score;
 }
 
-static u32 CalcTypesScore(struct PalParkLocal *palpark) {
+static u32 CalcTypesScore(struct PalParkLocal *palpark)
+{
     int j, i;
     u8 type1, type2, last_type1, last_type2;
     u32 seen_types = 0, score = 0;
@@ -291,6 +312,7 @@ static u32 CalcTypesScore(struct PalParkLocal *palpark) {
     return score;
 }
 
-static int CalcTimeScore(struct PalParkLocal *palpark) {
+static int CalcTimeScore(struct PalParkLocal *palpark)
+{
     return palpark->timeRemainingFactor;
 }

@@ -89,7 +89,8 @@ static const MailMessageTemplate sMailMsgTemplates[2] = {
      },
 };
 
-BOOL ov36_TitleScreen_NewGame_AppInit(OverlayManager *man, int *state) {
+BOOL ov36_TitleScreen_NewGame_AppInit(OverlayManager *man, int *state)
+{
 #pragma unused(man, state)
     CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
@@ -97,7 +98,8 @@ BOOL ov36_TitleScreen_NewGame_AppInit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL ov36_TitleScreen_NewGame_AppExec(OverlayManager *man, int *state) {
+BOOL ov36_TitleScreen_NewGame_AppExec(OverlayManager *man, int *state)
+{
 #pragma unused(state)
     SaveData *saveData = ((struct UnkStruct_02111868_sub *)OverlayManager_GetArgs(man))->saveData;
     NewGame_InitSaveData(HEAPID_OV36, saveData);
@@ -105,7 +107,8 @@ BOOL ov36_TitleScreen_NewGame_AppExec(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL ov36_TitleScreen_NewGame_AppExit(OverlayManager *man, int *state) {
+BOOL ov36_TitleScreen_NewGame_AppExit(OverlayManager *man, int *state)
+{
 #pragma unused(man, state)
     DestroyHeap(HEAPID_OV36);
     RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_OakSpeech);
@@ -113,7 +116,8 @@ BOOL ov36_TitleScreen_NewGame_AppExit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OverlayManager *man, int *state) {
+BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OverlayManager *man, int *state)
+{
 #pragma unused(man, state)
     CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
@@ -121,7 +125,8 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppInit(OverlayManager *man, int *sta
     return TRUE;
 }
 
-BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OverlayManager *man, int *state) {
+BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OverlayManager *man, int *state)
+{
 #pragma unused(state)
     struct UnkStruct_02111868_sub *unk_work = OverlayManager_GetArgs(man);
     SaveData *saveData = unk_work->saveData;
@@ -131,7 +136,8 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExec(OverlayManager *man, int *sta
     return TRUE;
 }
 
-BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OverlayManager *man, int *state) {
+BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OverlayManager *man, int *state)
+{
 #pragma unused(man, state)
     DestroyHeap(HEAPID_OV36);
     RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_NewGameFieldsys);
@@ -139,7 +145,8 @@ BOOL ov36_App_InitGameState_AfterOakSpeech_AppExit(OverlayManager *man, int *sta
     return TRUE;
 }
 
-BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OverlayManager *man, int *state) {
+BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OverlayManager *man, int *state)
+{
 #pragma unused(man, state)
     CreateHeap(HEAP_ID_3, HEAPID_OV36, 0x20000);
     InitializeMainRNG();
@@ -147,7 +154,8 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppInit(OverlayManager *man, int *s
     return TRUE;
 }
 
-BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OverlayManager *man, int *state) {
+BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OverlayManager *man, int *state)
+{
     struct UnkStruct_02111868_sub *unk_work = OverlayManager_GetArgs(man);
     SaveData *saveData = unk_work->saveData;
     SysInfo *sys_info = Save_SysInfo_Get(saveData);
@@ -168,7 +176,8 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OverlayManager *man, int *s
     return TRUE;
 }
 
-BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OverlayManager *man, int *state) {
+BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OverlayManager *man, int *state)
+{
 #pragma unused(man, state)
     DestroyHeap(HEAPID_OV36);
     RegisterMainOverlay(FS_OVERLAY_ID_NONE, &gApplication_ContinueFieldsys);
@@ -176,7 +185,8 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExit(OverlayManager *man, int *s
     return TRUE;
 }
 
-static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveData, BOOL set_trainer_id) {
+static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveData, BOOL set_trainer_id)
+{
 #pragma unused(heapId)
     s32 i;
     MsgData *friend_names_msgdata;
@@ -240,14 +250,16 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveDa
     DestroyMsgData(friend_names_msgdata);
 }
 
-static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData *saveData) {
+static void Continue_LoadSaveData_HandleError(HeapID heapId, SaveData *saveData)
+{
 #pragma unused(heapId)
     if (!SaveData_TryLoadOnContinue(saveData)) {
         OS_ResetSystem(0);
     }
 }
 
-static void NewGame_InitSaveData(HeapID heapId, SaveData *saveData) {
+static void NewGame_InitSaveData(HeapID heapId, SaveData *saveData)
+{
 #pragma unused(heapId)
     Save_InitDynamicRegion(saveData);
     Save_SetPositionToPlayerRoom(saveData);

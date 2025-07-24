@@ -212,7 +212,8 @@ void sub_0203E354();
 extern const OverlayManagerTemplate gApplication_NewGameFieldsys;
 extern const OverlayManagerTemplate gApplication_ContinueFieldsys;
 
-static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
+static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction)
+{
     location->mapId = mapId;
     location->warpId = warpId;
     location->x = x;

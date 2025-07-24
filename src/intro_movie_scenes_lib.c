@@ -14,28 +14,33 @@ void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid);
 void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid);
 void IntroMovie_CircleWipeEffect_HBlankCB(void *pVoid);
 
-void IntroMovie_CreateSpriteResourceManagers(IntroMovieOverlayData *data, const u8 *counts) {
+void IntroMovie_CreateSpriteResourceManagers(IntroMovieOverlayData *data, const u8 *counts)
+{
     for (u8 i = 0; i < 4; ++i) {
         data->spriteResManagers[i] = Create2DGfxResObjMan(counts[i], (GfGfxResType)i, HEAP_ID_INTRO_MOVIE);
     }
 }
 
-void IntroMovie_DestroySpriteResourceManagers(IntroMovieOverlayData *data) {
+void IntroMovie_DestroySpriteResourceManagers(IntroMovieOverlayData *data)
+{
     for (u8 i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(data->spriteResManagers[i]);
     }
 }
 
-GF_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOverlayData *data) {
+GF_2DGfxResMan **IntroMovie_GetSpriteResourceManagersArray(IntroMovieOverlayData *data)
+{
     return data->spriteResManagers;
 }
 
-void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active) {
+void IntroMovie_StartSpriteAnimAndMakeVisible(Sprite *sprite, BOOL active)
+{
     Sprite_SetAnimActiveFlag(sprite, active);
     Sprite_SetDrawFlag(sprite, active);
 }
 
-void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverlayData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header) {
+void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverlayData *data, int priority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *template, SpriteResourcesHeader *header)
+{
     CreateSpriteResourcesHeader(
         header,
         resId,
@@ -62,12 +67,14 @@ void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverl
     template->heapId = HEAP_ID_INTRO_MOVIE;
 }
 
-void IntroMovie_RendererSetSurfaceCoords(IntroMovieOverlayData *data, int mainx, int mainy, int subx, int suby) {
+void IntroMovie_RendererSetSurfaceCoords(IntroMovieOverlayData *data, int mainx, int mainy, int subx, int suby)
+{
     G2dRenderer_SetSubSurfaceCoords(&data->spriteRenderer, subx * FX32_ONE, suby * FX32_ONE);
     G2dRenderer_SetMainSurfaceCoords(&data->spriteRenderer, mainx * FX32_ONE, mainy * FX32_ONE);
 }
 
-void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen) {
+void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, int plane2, u8 duration, int direction, int screen)
+{
     data->counter = 0;
     data->ev = 0;
     data->finished = 0;
@@ -79,7 +86,8 @@ void IntroMovie_StartBlendFadeEffect(IntroMovieBgBlendAnim *data, int plane1, in
     data->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BlendFadeEffect, data, 0);
 }
 
-void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
+void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid)
+{
     IntroMovieBgBlendAnim *data = (IntroMovieBgBlendAnim *)pVoid;
 
     ++data->counter;
@@ -103,7 +111,8 @@ void Task_IntroMovie_BlendFadeEffect(SysTask *task, void *pVoid) {
     }
 }
 
-void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration) {
+void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration)
+{
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         GF_ASSERT(FALSE);
@@ -131,7 +140,8 @@ void IntroMovie_StartBgScroll_VBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim 
     obj->task = SysTask_CreateOnVBlankQueue(Task_IntroMovie_BgScroll_VBlank, obj, 0);
 }
 
-void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration) {
+void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAnim *data, GFBgLayer bgId, s16 xChange, s16 yChange, int duration)
+{
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         GF_ASSERT(FALSE);
@@ -159,7 +169,8 @@ void IntroMovie_StartBgScroll_NotVBlank(BgConfig *bgConfig, IntroMovieBgScrollAn
     obj->task = SysTask_CreateOnMainQueue(Task_IntroMovie_BgScroll_NotVBlank, obj, 0);
 }
 
-void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
+void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid)
+{
     IntroMovieBgScrollAnim *data = (IntroMovieBgScrollAnim *)pVoid;
     int x;
     int y;
@@ -184,7 +195,8 @@ void Task_IntroMovie_BgScroll_VBlank(SysTask *task, void *pVoid) {
     BgSetPosTextAndCommit(data->bgConfig, data->bgId, BG_POS_OP_SET_Y, y);
 }
 
-void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
+void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid)
+{
     IntroMovieBgScrollAnim *data = (IntroMovieBgScrollAnim *)pVoid;
     int x;
     int y;
@@ -209,7 +221,8 @@ void Task_IntroMovie_BgScroll_NotVBlank(SysTask *task, void *pVoid) {
     ScheduleSetBgPosText(data->bgConfig, data->bgId, BG_POS_OP_SET_Y, y);
 }
 
-BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId) {
+BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId)
+{
     BOOL ret = FALSE;
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (!obj->active) {
@@ -221,7 +234,8 @@ BOOL IntroMovie_WaitBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId) {
     return ret;
 }
 
-void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId) {
+void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId)
+{
     IntroMovieBgScrollAnim *obj = &data[IntroMovie_BgLayerToScrollEffectSlot(bgId)];
     if (obj->active) {
         SysTask_Destroy(obj->task);
@@ -231,7 +245,8 @@ void IntroMovie_CancelBgScrollAnim(IntroMovieBgScrollAnim *data, GFBgLayer bgId)
     }
 }
 
-int IntroMovie_BgLayerToScrollEffectSlot(GFBgLayer bgId) {
+int IntroMovie_BgLayerToScrollEffectSlot(GFBgLayer bgId)
+{
     int ret = 0;
     switch (bgId) {
     case GF_BG_LYR_MAIN_0:
@@ -265,7 +280,8 @@ int IntroMovie_BgLayerToScrollEffectSlot(GFBgLayer bgId) {
     return ret;
 }
 
-IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param) {
+IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *data, int duration, int whichScreen, const IntroMovieBgWindowAnimParam *param)
+{
     IntroMovie_WindowsOn_SetInsideOutsidePlanes(param->winIn, param->winOut, param->topScreenEffect, param->bottomScreenEffect, whichScreen);
     if (duration <= 0) {
         IntroMovie_SetBgWindowsPosition(param->x1End, param->y1End, param->x2End, param->y2End, whichScreen);
@@ -287,7 +303,8 @@ IntroMovieBgWindowAnim *IntroMovie_StartWindowPanEffect(IntroMovieBgWindowAnim *
     return ret;
 }
 
-BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1) {
+BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1)
+{
     IntroMovieBgWindowAnim *which = a1 == 0 ? &data[1] : &data[0];
     if (which->active == 0) {
         return TRUE;
@@ -301,7 +318,8 @@ BOOL IntroMovie_WaitWindowPanEffect(IntroMovieBgWindowAnim *data, int a1) {
     (start) + diff;                             \
 })
 
-void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid) {
+void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid)
+{
     IntroMovieBgWindowAnim *data = (IntroMovieBgWindowAnim *)pVoid;
     ++data->counter;
     int x1 = SCALE_POS(data->param.x1Start, data->param.x1End, data->counter, data->duration);
@@ -323,7 +341,8 @@ void Task_IntroMovie_WindowPanEffect(SysTask *task, void *pVoid) {
 
 #undef SCALE_POS
 
-void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEffect, int whichScreen) {
+void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topScreenEffect, u8 bottomScreenEffect, int whichScreen)
+{
     if (whichScreen) {
         GX_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
         G2_SetWnd0InsidePlane(winIn, topScreenEffect);
@@ -337,7 +356,8 @@ void IntroMovie_WindowsOn_SetInsideOutsidePlanes(int winIn, int winOut, u8 topSc
     }
 }
 
-void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichScreen) {
+void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichScreen)
+{
     if (x1 == 0 && x2 == 0xFF) {
         if (whichScreen) {
             G2_SetWnd1Position(0, y1, 1, y2);
@@ -355,23 +375,28 @@ void IntroMovie_SetBgWindowsPosition(int x1, int y1, int x2, int y2, int whichSc
     }
 }
 
-BgConfig *IntroMovie_GetBgConfig(IntroMovieOverlayData *data) {
+BgConfig *IntroMovie_GetBgConfig(IntroMovieOverlayData *data)
+{
     return data->bgConfig;
 }
 
-IntroMovieBgLinearAnims *IntroMovie_GetBgLinearAnimsController(IntroMovieOverlayData *data) {
+IntroMovieBgLinearAnims *IntroMovie_GetBgLinearAnimsController(IntroMovieOverlayData *data)
+{
     return &data->bgAnimCnt;
 }
 
-BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOverlayData *data) {
+BOOL IntroMovie_GetIntroSkippedFlag(IntroMovieOverlayData *data)
+{
     return data->introSkipped;
 }
 
-int IntroMovie_GetTotalFrameCount(IntroMovieOverlayData *data) {
+int IntroMovie_GetTotalFrameCount(IntroMovieOverlayData *data)
+{
     return data->totalFrameCount;
 }
 
-void IntroMovie_InitBgAnimGxState(IntroMovieOverlayData *data) {
+void IntroMovie_InitBgAnimGxState(IntroMovieOverlayData *data)
+{
     G2_BlendNone();
     G2S_BlendNone();
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -382,7 +407,8 @@ void IntroMovie_InitBgAnimGxState(IntroMovieOverlayData *data) {
     }
 }
 
-void IntroMovie_BeginCircleWipeEffect(IntroMovieOverlayData *data, int kind, BOOL isTopScreen, int duration) {
+void IntroMovie_BeginCircleWipeEffect(IntroMovieOverlayData *data, int kind, BOOL isTopScreen, int duration)
+{
     int winIn = 0x1F;
     IntroMovieCircleWipeEffect *effectData = &data->circleWipeEffect;
     BOOL setBrightnessNeutral = FALSE;
@@ -425,7 +451,8 @@ void IntroMovie_BeginCircleWipeEffect(IntroMovieOverlayData *data, int kind, BOO
     Main_SetHBlankIntrCB(IntroMovie_CircleWipeEffect_HBlankCB, effectData);
 }
 
-BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOverlayData *data) {
+BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOverlayData *data)
+{
     IntroMovieCircleWipeEffect *effectData = &data->circleWipeEffect;
     if (!effectData->active) {
         return TRUE;
@@ -436,7 +463,8 @@ BOOL IntroMovie_WaitCircleWipeEffect(IntroMovieOverlayData *data) {
     return FALSE;
 }
 
-void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid) {
+void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid)
+{
     IntroMovieCircleWipeEffect *effectData = (IntroMovieCircleWipeEffect *)pVoid;
 
     u16 idx = FX_DEG_TO_IDX(180 * FX32_ONE) * effectData->counter / effectData->duration;
@@ -466,7 +494,8 @@ void Task_IntroMovie_CircleWipeEffect(SysTask *task, void *pVoid) {
     }
 }
 
-void IntroMovie_CircleWipeEffect_HBlankCB(void *pVoid) {
+void IntroMovie_CircleWipeEffect_HBlankCB(void *pVoid)
+{
     IntroMovieCircleWipeEffect *data = (IntroMovieCircleWipeEffect *)pVoid;
 
     int vcount = GX_GetVCount();
@@ -488,7 +517,8 @@ void IntroMovie_CircleWipeEffect_HBlankCB(void *pVoid) {
     }
 }
 
-void *IntroMovie_GetSceneDataPtr(IntroMovieOverlayData *data) {
+void *IntroMovie_GetSceneDataPtr(IntroMovieOverlayData *data)
+{
     void *ret = NULL;
     switch (data->sceneNumber) {
     case 0:
@@ -513,15 +543,18 @@ void *IntroMovie_GetSceneDataPtr(IntroMovieOverlayData *data) {
     return ret;
 }
 
-void IntroMovie_AdvanceSceneStep(IntroMovieOverlayData *data) {
+void IntroMovie_AdvanceSceneStep(IntroMovieOverlayData *data)
+{
     ++data->sceneStep;
     data->sceneTimer = 0;
 }
 
-u8 IntroMovie_GetSceneStep(IntroMovieOverlayData *data) {
+u8 IntroMovie_GetSceneStep(IntroMovieOverlayData *data)
+{
     return data->sceneStep;
 }
 
-u8 IntroMovie_GetSceneStepTimer(IntroMovieOverlayData *data) {
+u8 IntroMovie_GetSceneStepTimer(IntroMovieOverlayData *data)
+{
     return data->sceneTimer;
 }

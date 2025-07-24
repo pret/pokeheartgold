@@ -7,7 +7,8 @@
 #include "palette.h"
 #include "unk_02013534.h"
 
-BattleInput *BattleInput_New() {
+BattleInput *BattleInput_New()
+{
     BattleInput *input = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleInput));
     MI_CpuFill8(input, 0, sizeof(BattleInput));
 
@@ -18,7 +19,8 @@ BattleInput *BattleInput_New() {
 
 extern BgTemplate ov12_0226E5DC[4];
 
-void ov12_0226604C(BgConfig *config) {
+void ov12_0226604C(BgConfig *config)
+{
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
         InitBgFromTemplate(config, i + GF_BG_LYR_SUB_0, &ov12_0226E5DC[i], 0);
         BgFillTilemapBufferAndCommit(config, i + GF_BG_LYR_SUB_0, 767);
@@ -27,7 +29,8 @@ void ov12_0226604C(BgConfig *config) {
     }
 }
 
-void ov12_022660A8(BgConfig *config) {
+void ov12_022660A8(BgConfig *config)
+{
     for (int i = 0; i < NELEMS(ov12_0226E5DC); i++) {
         ToggleBgLayer(i + GF_BG_LYR_SUB_0, GF_PLANE_TOGGLE_OFF);
         FreeBgTilemapBuffer(config, i + GF_BG_LYR_SUB_0);

@@ -122,7 +122,8 @@ static const u16 _020FBFCC[][2] = {
     { 200, 299 },
 };
 
-MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen) {
+MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, u8 a3, u8 *numLegendaryPokemonSeen)
+{
     String *speciesName, *unused;
     Pokedex *pokedex;
     MessageFormat *messageFormat;
@@ -148,7 +149,8 @@ MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, 
     return messageFormat;
 }
 
-u32 sub_0204B5E8(u8 a0) {
+u32 sub_0204B5E8(u8 a0)
+{
     for (u32 i = 0; i < NELEMS(_020FBFEC); i++) {
         if (a0 == _020FBFEC[i][0]) {
             return _020FBFEC[i][1];
@@ -157,7 +159,8 @@ u32 sub_0204B5E8(u8 a0) {
     return 3;
 }
 
-u16 sub_0204B610(FieldSystem *fieldSystem, u16 *a1) {
+u16 sub_0204B610(FieldSystem *fieldSystem, u16 *a1)
+{
     u16 unk = 0;
     UnkStruct_Fsys_A0 *unkStruct = fieldSystem->unkA0;
     unkStruct->unk12 = a1[0];
@@ -174,7 +177,8 @@ u16 sub_0204B610(FieldSystem *fieldSystem, u16 *a1) {
     return unk;
 }
 
-BOOL sub_0204B66C(FieldSystem *fieldSystem, u16 *a1) {
+BOOL sub_0204B66C(FieldSystem *fieldSystem, u16 *a1)
+{
     UnkStruct_Fsys_A0 *unkStruct = fieldSystem->unkA0;
     if (sub_0203769C() == 0) {
         return FALSE;
@@ -183,11 +187,13 @@ BOOL sub_0204B66C(FieldSystem *fieldSystem, u16 *a1) {
     return TRUE;
 }
 
-BOOL sub_0204B690(FieldSystem *fieldSystem, u16 *a1) {
+BOOL sub_0204B690(FieldSystem *fieldSystem, u16 *a1)
+{
     return fieldSystem->unkA0->unk10_3 || a1[0] != 0;
 }
 
-void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     a0->unk83e[0] = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(saveData));
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
@@ -197,16 +203,19 @@ void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     a0->unk83e[3] = sub_0202D57C(a0->unk74, 3, 0);
 }
 
-void sub_0204B708(UnkStruct_Fsys_A0 *a0) {
+void sub_0204B708(UnkStruct_Fsys_A0 *a0)
+{
     MI_CpuCopy8(a0->unk3e, a0->unk83e, sizeof(a0->unk3e));
 }
 
-void sub_0204B720(UnkStruct_Fsys_A0 *a0, u32 a1) {
+void sub_0204B720(UnkStruct_Fsys_A0 *a0, u32 a1)
+{
     a0->unk10_3 = a1;
     a0->unk83e[0] = a1;
 }
 
-u16 sub_0204B73C(UnkStruct_Fsys_A0 *a0, u8 a1, u8 a2, u32 a3) {
+u16 sub_0204B73C(UnkStruct_Fsys_A0 *a0, u8 a1, u8 a2, u32 a3)
+{
     if (a3 == 0) {
         if (a1 == 2 && a2 == 6) {
             return 305;
@@ -228,7 +237,8 @@ u16 sub_0204B73C(UnkStruct_Fsys_A0 *a0, u8 a1, u8 a2, u32 a3) {
     }
 }
 
-static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, HeapID heapId) {
+static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, HeapID heapId)
+{
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0027_bin, heapId);
     MI_CpuClear8(a0, sizeof(UnkStruct_0204B7D0));
     u16 *unk = sub_0204BC7C(frontierTrainerIndex, heapId);
@@ -243,7 +253,8 @@ static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, HeapI
     return unk;
 }
 
-static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 frontierMonIndex, u32 otId, u32 a4, u8 iv, u8 a6, BOOL a7, HeapID heapId) {
+static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 frontierMonIndex, u32 otId, u32 a4, u8 iv, u8 a6, BOOL a7, HeapID heapId)
+{
     s32 i;
     FrontierMon frontierMon;
     MI_CpuClear8(a1, sizeof(UnkStruct_0204B470));
@@ -308,14 +319,16 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     return pid;
 }
 
-u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, u16 *a4, u16 *a5, UnkStruct_0204A824_7E8 *a6, HeapID heapId) {
+u32 sub_0204BA04(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, u16 *a4, u16 *a5, UnkStruct_0204A824_7E8 *a6, HeapID heapId)
+{
     u16 *unk7 = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
     u32 unk4 = sub_0204BABC(a0, unk7, frontierTrainerIndex, a1->unk30, a3, a4, a5, a6, heapId);
     Heap_Free(unk7);
     return unk4;
 }
 
-void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, UnkStruct_0204A824_7E8 *a4, HeapID heapId) {
+void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTrainerIndex, u32 a3, UnkStruct_0204A824_7E8 *a4, HeapID heapId)
+{
     u8 iv;
     u16 *unk = sub_0204B7D0(a1, frontierTrainerIndex, heapId);
     iv = sub_0204B4D4(frontierTrainerIndex);
@@ -325,7 +338,8 @@ void sub_0204BA50(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B7D0 *a1, u16 frontierTra
     Heap_Free(unk);
 }
 
-static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, HeapID heapId) {
+static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex, UnkStruct_0204B470 *a3, u8 a4, u16 *a5, u16 *a6, UnkStruct_0204A824_7E8 *a7, HeapID heapId)
+{
     s32 i;
     u8 iv;
     u32 otId;
@@ -407,10 +421,12 @@ static u32 sub_0204BABC(UnkStruct_Fsys_A0 *a0, u16 *a1, u16 frontierTrainerIndex
     return unk28;
 }
 
-static u16 *sub_0204BC7C(u32 frontierTrainerIndex, HeapID heapId) {
+static u16 *sub_0204BC7C(u32 frontierTrainerIndex, HeapID heapId)
+{
     return AllocAndReadWholeNarcMemberByIdPair(NARC_a_2_0_2, frontierTrainerIndex, heapId);
 }
 
-static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex) {
+static void GetFrontierMon(FrontierMon *mon, u32 frontierMonIndex)
+{
     ReadWholeNarcMemberByIdPair(mon, NARC_a_2_0_3, frontierMonIndex);
 }

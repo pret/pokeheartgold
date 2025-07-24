@@ -17,36 +17,42 @@ void HBlankIntrRegsToggle(BOOL enable);
 void sub_0201A1B4(void);
 void sub_0201A5E8(void);
 
-void VBlankCB_DmaTasksFramecounter(void) {
+void VBlankCB_DmaTasksFramecounter(void)
+{
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
     SysTaskQueue_RunTasks(gSystem.vblankTaskQueue);
     gSystem.frameCounter++;
 }
 
-void VBlankCB_DmaOnly(void) {
+void VBlankCB_DmaOnly(void)
+{
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
-void sub_0201A0E0(void) {
+void sub_0201A0E0(void)
+{
     OS_DisableIrqMask(OS_IE_VBLANK);
     OS_SetIrqFunction(OS_IE_VBLANK, VBlankCB_DmaOnly);
     OS_EnableIrqMask(OS_IE_VBLANK);
 }
 
-void Main_SetVBlankIntrCB(GFIntrCB cb, void *arg) {
+void Main_SetVBlankIntrCB(GFIntrCB cb, void *arg)
+{
     gSystem.vBlankIntr = cb;
     gSystem.vBlankIntrArg = arg;
 }
 
-void HBlankInterruptDisable(void) {
+void HBlankInterruptDisable(void)
+{
     HBlankIntrRegsToggle(FALSE);
     gSystem.hBlankIntr = NULL;
     gSystem.hBlankIntrArg = NULL;
 }
 
-BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg) {
+BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg)
+{
     if (cb == NULL) {
         HBlankIntrRegsToggle(FALSE);
         gSystem.hBlankIntr = NULL;
@@ -62,13 +68,15 @@ BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg) {
     }
 }
 
-void CallHBlankIntrCallback(void) {
+void CallHBlankIntrCallback(void)
+{
     if (gSystem.hBlankIntr != NULL) {
         gSystem.hBlankIntr(gSystem.hBlankIntrArg);
     }
 }
 
-void HBlankIntrRegsToggle(BOOL enable) {
+void HBlankIntrRegsToggle(BOOL enable)
+{
     OS_DisableIrq();
     if (!enable) {
         OS_GetIrqMask();
@@ -90,7 +98,8 @@ static const struct HeapParam sDefaultHeapSpec[] = {
     { 0x11D000, OS_ARENA_MAIN },
 };
 
-void sub_0201A1B4(void) {
+void sub_0201A1B4(void)
+{
     u32 lowEntropyBuffer[OS_LOW_ENTROPY_DATA_SIZE / sizeof(u32)];
     u8 digest[MATH_MD5_DIGEST_SIZE];
     u32 heap_size_pre;
@@ -110,7 +119,8 @@ void sub_0201A1B4(void) {
     InitHeapSystem(sDefaultHeapSpec, NELEMS(sDefaultHeapSpec), HEAP_ID_MAX, heap_size_pre);
 }
 
-void InitSystemForTheGame(void) {
+void InitSystemForTheGame(void)
+{
     u32 table_size;
     void *fsTable;
 
@@ -149,7 +159,8 @@ void InitSystemForTheGame(void) {
     GF_CRC16Init(HEAP_ID_DEFAULT);
 }
 
-void InitGraphicMemory(void) {
+void InitGraphicMemory(void)
+{
     GX_SetBankForLCDC(GX_VRAM_LCDC_ALL);
     MI_CpuClearFast((void *)HW_LCDC_VRAM, HW_LCDC_VRAM_SIZE);
     GX_DisableBankForLCDC();
@@ -159,7 +170,8 @@ void InitGraphicMemory(void) {
     MI_CpuClearFast((void *)HW_DB_PLTT, HW_DB_PLTT_SIZE);
 }
 
-void *Sys_AllocAndReadFile(HeapID heapId, const char *path) {
+void *Sys_AllocAndReadFile(HeapID heapId, const char *path)
+{
     FSFile file;
     void *ret;
     u32 size;
@@ -181,7 +193,8 @@ void *Sys_AllocAndReadFile(HeapID heapId, const char *path) {
     return ret;
 }
 
-void sub_0201A3F8(const char *path, void **mem) {
+void sub_0201A3F8(const char *path, void **mem)
+{
     FSFile file;
     u32 size;
     FS_InitFile(&file);
@@ -194,7 +207,8 @@ void sub_0201A3F8(const char *path, void **mem) {
     }
 }
 
-void sub_0201A430(void) {
+void sub_0201A430(void)
+{
     int i;
 
     for (i = 127; i > -1; i--) {
@@ -206,7 +220,8 @@ void sub_0201A430(void) {
     }
 }
 
-void InitKeypadAndTouchpad(void) {
+void InitKeypadAndTouchpad(void)
+{
     TPCalibrateParam tp_calibrate;
     gSystem.buttonMode = 0;
     gSystem.heldKeysRaw = 0;
@@ -230,19 +245,23 @@ void InitKeypadAndTouchpad(void) {
     }
 }
 
-void sub_0201A4B0(int a0) {
+void sub_0201A4B0(int a0)
+{
     gSystem.unk6A = a0;
 }
 
-void Sys_SetSleepDisableFlag(int a0) {
+void Sys_SetSleepDisableFlag(int a0)
+{
     gSystem.lidClosedPauseDisabled |= a0;
 }
 
-void Sys_ClearSleepDisableFlag(int a0) {
+void Sys_ClearSleepDisableFlag(int a0)
+{
     gSystem.lidClosedPauseDisabled &= ~a0;
 }
 
-void ReadKeypadAndTouchpad(void) {
+void ReadKeypadAndTouchpad(void)
+{
     TPData rawTpData, calibTpData;
     int raw;
     if (PAD_DetectFold()) {
@@ -328,7 +347,8 @@ void ReadKeypadAndTouchpad(void) {
         adrs &= ((pat) ^ 0xFFFF); \
     }
 
-void sub_0201A5E8(void) {
+void sub_0201A5E8(void)
+{
     switch (gSystem.buttonMode) {
     case BUTTONMODE_NORMAL:
         break;
@@ -353,33 +373,39 @@ void sub_0201A5E8(void) {
     }
 }
 
-void SetKeyRepeatTimers(int cont, int start) {
+void SetKeyRepeatTimers(int cont, int start)
+{
     gSystem.keyRepeatContinueDelay = cont;
     gSystem.keyRepeatStartDelay = start;
 }
 
-void sub_0201A728(int a0) {
+void sub_0201A728(int a0)
+{
     gSystem.softResetDisabled |= a0;
 }
 
-void sub_0201A738(int a0) {
+void sub_0201A738(int a0)
+{
     gSystem.softResetDisabled &= ~a0;
 }
 
-void sub_0201A748(HeapID heapId) {
+void sub_0201A748(HeapID heapId)
+{
     GF_ASSERT(gSystem.unk74 == NULL);
     gSystem.unk74 = AllocFromHeapAtEnd(heapId, sizeof(u32));
     *gSystem.unk74 = 0x2F93A1BC;
 }
 
-void sub_0201A774(void) {
+void sub_0201A774(void)
+{
     GF_ASSERT(gSystem.unk74 != NULL);
     *gSystem.unk74 = 0;
     Heap_Free(gSystem.unk74);
     gSystem.unk74 = NULL;
 }
 
-BOOL sub_0201A79C(void) {
+BOOL sub_0201A79C(void)
+{
     if (gSystem.unk74 != NULL && *gSystem.unk74 == 0x2F93A1BC) {
         return TRUE;
     } else {

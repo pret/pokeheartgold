@@ -19,7 +19,8 @@ static const u8 sPhoneCallData_ProfElm_MapScripts[][2] = {
     { 0, PHONE_SCRIPT_006 },
 };
 
-u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_ProfElm(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     u8 badgeCount;
     u8 hatchedEgg;
     u8 gotEverstone;

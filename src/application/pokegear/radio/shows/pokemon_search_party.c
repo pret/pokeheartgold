@@ -50,7 +50,8 @@ static const u8 sEpisodeUnlockFlags[] = {
     PSP_EPISODE_UNLOCK_16BADGES,
 };
 
-BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow) {
+BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow)
+{
     PokemonSearchPartyData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonSearchPartyData));
     MI_CpuClear8(data, sizeof(PokemonSearchPartyData));
     // data->heapID = radioShow->heapID;
@@ -61,7 +62,8 @@ BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow)
+{
     RadioShow_PokemonSearchParty_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonSearchPartyData));
     Heap_Free(radioShow->showData);
@@ -69,7 +71,8 @@ BOOL RadioShow_PokemonSearchParty_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow) {
+BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow)
+{
     PokemonSearchPartyData *data = radioShow->showData;
 
     switch (data->state) {
@@ -106,7 +109,8 @@ BOOL RadioShow_PokemonSearchParty_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow) {
+void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow)
+{
     u8 badgeCount;
     u8 num = 0;
     u8 i;
@@ -149,6 +153,7 @@ void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow) {
     radioShow->lastEpisodeID = data->episodeID;
 }
 
-void RadioShow_PokemonSearchParty_Unload(RadioShow *radioShow) {
+void RadioShow_PokemonSearchParty_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

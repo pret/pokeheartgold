@@ -6,11 +6,13 @@
 
 static UnkStruct_021D10E8 s_021D10E8;
 
-void sub_02018380(void) {
+void sub_02018380(void)
+{
     s_021D10E8.unk0 = 0;
 }
 
-void sub_0201838C(IGT *igt) {
+void sub_0201838C(IGT *igt)
+{
     s_021D10E8.unk0 = 1;
     s_021D10E8.unk10 = 0;
     s_021D10E8.unk14 = 0;
@@ -19,7 +21,8 @@ void sub_0201838C(IGT *igt) {
     s_021D10E8.unk18 = sub_020254FC();
 }
 
-void sub_020183B0(void) {
+void sub_020183B0(void)
+{
     if (s_021D10E8.unk0 == 0) {
         return;
     }

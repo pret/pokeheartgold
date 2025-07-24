@@ -7,7 +7,8 @@
 static void Task_Field3dObject_Update(SysTask *task, void *taskdata);
 static void Task_Field3dObject_Render(SysTask *task, void *taskData);
 
-Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, HeapID heapId, int num) {
+Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, HeapID heapId, int num)
+{
     Field3dObjectTaskManager *ret = AllocFromHeap(heapId, sizeof(Field3dObjectTaskManager));
     ret->fieldSystem = fieldSystem;
     ret->heapId = heapId;
@@ -19,7 +20,8 @@ Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fi
     return ret;
 }
 
-void Field3dObjectTaskManager_Delete(Field3dObjectTaskManager *manager) {
+void Field3dObjectTaskManager_Delete(Field3dObjectTaskManager *manager)
+{
     for (int i = 0; i < manager->max; ++i) {
         Field3dObjectTask_Delete(&manager->tasks[i]);
     }
@@ -28,11 +30,13 @@ void Field3dObjectTaskManager_Delete(Field3dObjectTaskManager *manager) {
     Heap_Free(manager);
 }
 
-void Field3dObjectTaskManager_RunDrawTasks(Field3dObjectTaskManager *manager) {
+void Field3dObjectTaskManager_RunDrawTasks(Field3dObjectTaskManager *manager)
+{
     SysTaskQueue_RunTasks(manager->taskQueue);
 }
 
-static void Task_Field3dObject_Update(SysTask *task, void *taskData) {
+static void Task_Field3dObject_Update(SysTask *task, void *taskData)
+{
     Field3dObjectTask *objTask = (Field3dObjectTask *)taskData;
     if (sub_0203DF8C(objTask->manager->fieldSystem)) {
         if (objTask->param->updateFunc != NULL) {
@@ -41,7 +45,8 @@ static void Task_Field3dObject_Update(SysTask *task, void *taskData) {
     }
 }
 
-static void Task_Field3dObject_Render(SysTask *task, void *taskData) {
+static void Task_Field3dObject_Render(SysTask *task, void *taskData)
+{
     Field3dObjectTask *objTask = (Field3dObjectTask *)taskData;
     if (sub_0203DF8C(objTask->manager->fieldSystem)) {
         if (objTask->param->renderFunc != NULL) {
@@ -50,7 +55,8 @@ static void Task_Field3dObject_Render(SysTask *task, void *taskData) {
     }
 }
 
-Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager *manager, const Field3dObjectTaskTemplate *template) {
+Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager *manager, const Field3dObjectTaskTemplate *template)
+{
     int i;
     Field3dObjectTask *ret;
     for (ret = manager->tasks, i = 0; i < manager->max; ++ret, ++i) {
@@ -75,7 +81,8 @@ Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager 
     return NULL;
 }
 
-void Field3dObjectTask_Delete(Field3dObjectTask *task) {
+void Field3dObjectTask_Delete(Field3dObjectTask *task)
+{
     if (task->mainTask != NULL) {
         if (task->param->destroyFunc != NULL) {
             task->param->destroyFunc(task, task->manager->fieldSystem, task->data);
@@ -89,6 +96,7 @@ void Field3dObjectTask_Delete(Field3dObjectTask *task) {
     }
 }
 
-void *Field3dObjectTask_GetData(Field3dObjectTask *task) {
+void *Field3dObjectTask_GetData(Field3dObjectTask *task)
+{
     return task->data;
 }

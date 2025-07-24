@@ -167,7 +167,8 @@ static TouchSaveAppStateFunc sTouchSaveAppStateFuncs[TOUCHSAVEAPP_STATE_COUNT] =
     TouchSaveApp_CloseApp,
 };
 
-SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, void *a3) {
+SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, void *a3)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_8, 0x18000);
 
     GXS_SetGraphicsMode(GX_BGMODE_0);
@@ -212,7 +213,8 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, v
     return task;
 }
 
-void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
+void ov30_0225D64C(BgConfig *bgConfig, SysTask *task)
+{
     TouchSaveAppData *data = SysTask_GetData(task);
 
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
@@ -248,11 +250,13 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 }
 
-BOOL ov30_0225D6FC(void *a0) {
+BOOL ov30_0225D6FC(void *a0)
+{
     return TRUE;
 }
 
-static void ov30_0225D700(SysTask *task, TouchSaveAppData *data) {
+static void ov30_0225D700(SysTask *task, TouchSaveAppData *data)
+{
     if (!FieldSystem_TaskIsRunning(data->fieldSystem)) {
         if (data->fieldSystem->unkD2_0 == 2) {
             data->fieldSystem->unkD2_0 = 3;
@@ -268,7 +272,8 @@ static void ov30_0225D700(SysTask *task, TouchSaveAppData *data) {
     }
 }
 
-static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data) {
+static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data)
+{
     G2S_BlendNone();
 
     GfGfxLoader_LoadCharData(NARC_a_0_1_4, 76, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_8);
@@ -282,22 +287,26 @@ static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data) {
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0xEC, 5, Options_GetFrame(data->options), HEAP_ID_4);
 }
 
-static void TouchSaveApp_DestroyWindow(TouchSaveAppData *data) {
+static void TouchSaveApp_DestroyWindow(TouchSaveAppData *data)
+{
     RemoveWindow(&data->window);
 }
 
-static void TouchSaveApp_SetupText(TouchSaveAppData *data, u8 unused) {
+static void TouchSaveApp_SetupText(TouchSaveAppData *data, u8 unused)
+{
     data->messageFormat = MessageFormat_New(HEAP_ID_8);
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_8);
     BufferPlayersName(data->messageFormat, 0, Save_PlayerData_GetProfile(data->fieldSystem->saveData));
 }
 
-static void TouchSaveApp_DestroyText(TouchSaveAppData *data) {
+static void TouchSaveApp_DestroyText(TouchSaveAppData *data)
+{
     DestroyMsgData(data->msgData);
     MessageFormat_Delete(data->messageFormat);
 }
 
-static void ov30_0225D880(TouchSaveAppData *data) {
+static void ov30_0225D880(TouchSaveAppData *data)
+{
     YesNoPromptTemplate template;
     MI_CpuFill8(&template, 0, sizeof(YesNoPromptTemplate));
     template.bgConfig = data->bgConfig;
@@ -317,12 +326,14 @@ static void ov30_0225D880(TouchSaveAppData *data) {
     YesNoPrompt_InitFromTemplate(unk, &template);
 }
 
-static void TouchSaveApp_SetupWaitForTextPrinter(TouchSaveAppData *data, enum TouchSaveApp_State nextState) {
+static void TouchSaveApp_SetupWaitForTextPrinter(TouchSaveAppData *data, enum TouchSaveApp_State nextState)
+{
     data->state = TOUCHSAVEAPP_STATE_WAIT_FOR_TEXT_PRINTER;
     data->stateAfterTextPrint = nextState;
 }
 
-static BOOL TouchSaveApp_DisplaySaveInformation(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_DisplaySaveInformation(TouchSaveAppData *data)
+{
     UnkStruct_field_021F4360 *unk = ov01_021F4360(data->fieldSystem, HEAP_ID_4, 5);
     data->unk40 = unk;
     ov01_021F42F8(unk);
@@ -331,7 +342,8 @@ static BOOL TouchSaveApp_DisplaySaveInformation(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_AskForSave(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_AskForSave(TouchSaveAppData *data)
+{
     if (!Save_FileDoesNotBelongToPlayer(data->fieldSystem->saveData)) {
         DrawFrameAndWindow2(&data->window, TRUE, 0xEC, 5);
         data->string = NewString_ReadMsgData(data->msgData, msg_0040_00081);
@@ -344,7 +356,8 @@ static BOOL TouchSaveApp_AskForSave(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_WaitForTextPrinter(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_WaitForTextPrinter(TouchSaveAppData *data)
+{
     if (!TextPrinterCheckActive(data->textPrinter)) {
         String_Delete(data->string);
         data->state = data->stateAfterTextPrint;
@@ -353,14 +366,16 @@ static BOOL TouchSaveApp_WaitForTextPrinter(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_GetSaveConfirmation(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_GetSaveConfirmation(TouchSaveAppData *data)
+{
     ov30_0225D880(data);
 
     data->state = TOUCHSAVEAPP_STATE_HANDLE_SAVE_CONFIRMATION;
     return FALSE;
 }
 
-static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data)
+{
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         TouchSaveApp_SetMenuInputState(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
@@ -382,7 +397,8 @@ static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_PrintOverwriteMessage(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_PrintOverwriteMessage(TouchSaveAppData *data)
+{
     FillWindowPixelBuffer(&data->window, 0xFF);
     data->string = NewString_ReadMsgData(data->msgData, msg_0040_00082);
     data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
@@ -391,14 +407,16 @@ static BOOL TouchSaveApp_PrintOverwriteMessage(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_GetOverwriteConfirmation(TouchSaveAppData *data)
+{
     ov30_0225D880(data);
 
     data->state = TOUCHSAVEAPP_STATE_HANDLE_OVERWRITE_CONFIRMATION;
     return FALSE;
 }
 
-static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data)
+{
     switch (YesNoPrompt_HandleInputForSave(data->yesNoPrompt)) {
     case YESNORESPONSE_YES:
         TouchSaveApp_SetMenuInputState(&data->fieldSystem->menuInputState, YesNoPrompt_IsInTouchMode(data->yesNoPrompt));
@@ -416,7 +434,8 @@ static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_PrintNotMySaveError(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_PrintNotMySaveError(TouchSaveAppData *data)
+{
     DrawFrameAndWindow2(&data->window, TRUE, 0xEC, 5);
     data->string = NewString_ReadMsgData(data->msgData, msg_0040_00020);
     data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
@@ -425,14 +444,16 @@ static BOOL TouchSaveApp_PrintNotMySaveError(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_SaveFailed(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_SaveFailed(TouchSaveAppData *data)
+{
     data->state = TOUCHSAVEAPP_STATE_CLOSE;
     data->waitFrames = 0;
 
     return FALSE;
 }
 
-static BOOL TouchSaveApp_PrintSavingMessage(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_PrintSavingMessage(TouchSaveAppData *data)
+{
     FillWindowPixelBuffer(&data->window, 0xFF);
 
     data->savingMovementTask = Field_PlayerMovementSavingSet(data->fieldSystem);
@@ -450,21 +471,24 @@ static BOOL TouchSaveApp_PrintSavingMessage(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_SetupWaitingIcon(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_SetupWaitingIcon(TouchSaveAppData *data)
+{
     data->waitingIcon = WaitingIcon_New(&data->window, 0xEC);
     data->state = TOUCHSAVEAPP_STATE_SAVE;
 
     return FALSE;
 }
 
-static BOOL TouchSaveApp_SaveGame(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_SaveGame(TouchSaveAppData *data)
+{
     Field_SaveGameNormal(data->fieldSystem);
     data->state = TOUCHSAVEAPP_STATE_PRINT_SAVED_MESSAGE;
 
     return FALSE;
 }
 
-static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data)
+{
     Field_PlayerMovementSavingClear(data->savingMovementTask);
 
     sub_0200F450(data->waitingIcon);
@@ -477,7 +501,8 @@ static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_SaveSucceeded(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_SaveSucceeded(TouchSaveAppData *data)
+{
     PlaySE(SEQ_SE_DP_SAVE);
     data->state = TOUCHSAVEAPP_STATE_CLOSE;
     data->waitFrames = 0;
@@ -485,7 +510,8 @@ static BOOL TouchSaveApp_SaveSucceeded(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_CloseApp(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_CloseApp(TouchSaveAppData *data)
+{
     if (++data->waitFrames > 30) {
         return TRUE;
     }
@@ -493,21 +519,26 @@ static BOOL TouchSaveApp_CloseApp(TouchSaveAppData *data) {
     return FALSE;
 }
 
-static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *data) {
+static BOOL TouchSaveApp_ShouldPrintAlternateSavingMessage(TouchSaveAppData *data)
+{
     return Save_NumModifiedPCBoxesIsMany(data->fieldSystem->saveData);
 }
 
-static void TouchSaveApp_SetMenuInputState(MenuInputStateMgr *stateMgr, MenuInputState state) {
+static void TouchSaveApp_SetMenuInputState(MenuInputStateMgr *stateMgr, MenuInputState state)
+{
     MenuInputStateMgr_SetState(stateMgr, state);
 }
 
-static void ov30_0225DC08(void) {
+static void ov30_0225DC08(void)
+{
     AllocFromHeapAtEnd(HEAP_ID_3, 1000);
 }
 
-static void ov30_0225DC18(void) {
+static void ov30_0225DC18(void)
+{
     AllocFromHeapAtEnd(HEAP_ID_3, 1000);
 }
 
-static void ov30_0225DC28(void) {
+static void ov30_0225DC28(void)
+{
 }

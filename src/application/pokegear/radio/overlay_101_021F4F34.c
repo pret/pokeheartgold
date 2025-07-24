@@ -83,7 +83,8 @@ static const TouchscreenHitbox sTuningButtonHitboxes[] = {
     { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
-void Radio_ToggleChannelSelectionButtons(PokegearRadioAppData *radioApp, u8 on, u8 off) {
+void Radio_ToggleChannelSelectionButtons(PokegearRadioAppData *radioApp, u8 on, u8 off)
+{
     // Must be scoped here to match
     static u8 coords[][2] = {
         { 2,  6  },
@@ -101,19 +102,22 @@ void Radio_ToggleChannelSelectionButtons(PokegearRadioAppData *radioApp, u8 on, 
     ScheduleBgTilemapBufferTransfer(radioApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
-void Radio_OnReselectApp(void *cbArg) {
+void Radio_OnReselectApp(void *cbArg)
+{
     PokegearRadioAppData *radioApp = cbArg;
     radioApp->isDraggingCursor = 0;
 }
 
-void Radio_UnknownCB(void *cbArg) {
+void Radio_UnknownCB(void *cbArg)
+{
     PokegearRadioAppData *radioApp = cbArg;
     radioApp->isDraggingCursor = 0;
     radioApp->pokegear->cursorInAppSwitchZone = FALSE;
     PokegearAppSwitchCursor_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, FALSE);
 }
 
-void Radio_OpenStation(PokegearRadioAppData *radioApp) {
+void Radio_OpenStation(PokegearRadioAppData *radioApp)
+{
     if (!radioApp->stationActive) {
         if (radioApp->signalStrength == 2) {
             RadioShow_BeginSegment(radioApp->showData, radioApp->station, 0);
@@ -124,7 +128,8 @@ void Radio_OpenStation(PokegearRadioAppData *radioApp) {
     }
 }
 
-void Radio_CloseStation(PokegearRadioAppData *radioApp) {
+void Radio_CloseStation(PokegearRadioAppData *radioApp)
+{
     if (radioApp->stationActive) {
         RadioShow_EndSegment(radioApp->showData);
         FillWindowPixelBuffer(&radioApp->windows[2], 0);
@@ -135,7 +140,8 @@ void Radio_CloseStation(PokegearRadioAppData *radioApp) {
     }
 }
 
-void Radio_Start(PokegearRadioAppData *radioApp) {
+void Radio_Start(PokegearRadioAppData *radioApp)
+{
     u8 signalStrength;
     radioApp->station = Radio_GetTunedStationID(radioApp, radioApp->cursorX, radioApp->cursorY, &signalStrength);
     radioApp->signalStrength = signalStrength;
@@ -144,7 +150,8 @@ void Radio_Start(PokegearRadioAppData *radioApp) {
     }
 }
 
-void Radio_Run(PokegearAppData *pokegear, void *cbArg) {
+void Radio_Run(PokegearAppData *pokegear, void *cbArg)
+{
     PokegearRadioAppData *radioApp = cbArg;
 
     if (radioApp->stationActive) {
@@ -152,7 +159,8 @@ void Radio_Run(PokegearAppData *pokegear, void *cbArg) {
     }
 }
 
-void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int direction) {
+void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int direction)
+{
     G2S_SetWnd0Position(0, 112, 255, 192);
     G2S_SetWnd1Position(255, 112, 0, 192);
     G2S_SetWndOutsidePlane(17, FALSE);
@@ -173,7 +181,8 @@ void Radio_BeginScriptWindowSlide(PokegearRadioAppData *radioApp, int direction)
     radioApp->windowScrollFinished = FALSE;
 }
 
-BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int direction) {
+BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int direction)
+{
     if (radioApp->windowScrollFinished) {
         return TRUE;
     }
@@ -209,7 +218,8 @@ BOOL Radio_RunScriptWindowSlide(PokegearRadioAppData *radioApp, int direction) {
     return TRUE;
 }
 
-int Radio_HandleKeyInput(PokegearRadioAppData *radioApp) {
+int Radio_HandleKeyInput(PokegearRadioAppData *radioApp)
+{
     int xSpeed = 0;
     int ySpeed = 0;
     s16 prevX;
@@ -262,7 +272,8 @@ int Radio_HandleKeyInput(PokegearRadioAppData *radioApp) {
     return TOUCH_MENU_NO_INPUT;
 }
 
-int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
+int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch)
+{
     *inputWasTouch = FALSE;
     if (radioApp->isDraggingCursor) {
         *inputWasTouch = TRUE;
@@ -278,7 +289,8 @@ int Radio_HandleTouchInput(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) 
     return input;
 }
 
-u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSignalStrengthRet) {
+u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSignalStrengthRet)
+{
     u8 ret;
     int station = TouchscreenHitbox_FindHitboxAtPoint(sTuningHitboxes[radioApp->stationSelection], x, y);
     if (station == TOUCH_MENU_NO_INPUT) {
@@ -313,7 +325,8 @@ u8 Radio_GetTunedStationID(PokegearRadioAppData *radioApp, s16 x, s16 y, u8 *pSi
     return ret;
 }
 
-int Radio_HandleTouchInput_Internal(PokegearRadioAppData *radioApp, BOOL *inputWasTouch) {
+int Radio_HandleTouchInput_Internal(PokegearRadioAppData *radioApp, BOOL *inputWasTouch)
+{
     int ret;
     TouchscreenHitbox hitbox;
     if (!System_GetTouchNew()) {
@@ -354,7 +367,8 @@ int Radio_HandleTouchInput_Internal(PokegearRadioAppData *radioApp, BOOL *inputW
     return TOUCH_MENU_NO_INPUT;
 }
 
-int Radio_HandleDragCursor(PokegearRadioAppData *radioApp) {
+int Radio_HandleDragCursor(PokegearRadioAppData *radioApp)
+{
     if (!System_GetTouchHeld()) {
         // released stylus
         radioApp->isDraggingCursor = FALSE;
@@ -369,7 +383,8 @@ int Radio_HandleDragCursor(PokegearRadioAppData *radioApp) {
     return TOUCH_MENU_NO_INPUT;
 }
 
-BOOL Radio_CoordsToStation(PokegearRadioAppData *radioApp, s16 x, s16 y) {
+BOOL Radio_CoordsToStation(PokegearRadioAppData *radioApp, s16 x, s16 y)
+{
     u8 signalStrength = 0;
     u8 station = Radio_GetTunedStationID(radioApp, x, y, &signalStrength);
     if (station == 255) {
@@ -402,7 +417,8 @@ BOOL Radio_CoordsToStation(PokegearRadioAppData *radioApp, s16 x, s16 y) {
     return TRUE;
 }
 
-void Radio_SnapCursorToChannelHitbox(PokegearRadioAppData *radioApp, u8 channel) {
+void Radio_SnapCursorToChannelHitbox(PokegearRadioAppData *radioApp, u8 channel)
+{
     radioApp->cursorX = sTuningHitboxes_Johto[channel * 2].circle.x;
     radioApp->cursorY = sTuningHitboxes_Johto[channel * 2].circle.y;
     Sprite_SetPositionXY(radioApp->sprites[4], radioApp->cursorX, radioApp->cursorY);

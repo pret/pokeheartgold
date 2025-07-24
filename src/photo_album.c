@@ -6,15 +6,18 @@
 
 static BOOL Photo_IsUse(const Photo *photo);
 
-u32 Save_PhotoAlbum_sizeof(void) {
+u32 Save_PhotoAlbum_sizeof(void)
+{
     return sizeof(PhotoAlbum);
 }
 
-PhotoAlbum *Save_PhotoAlbum_Get(SaveData *saveData) {
+PhotoAlbum *Save_PhotoAlbum_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_PHOTO_ALBUM);
 }
 
-void Save_PhotoAlbum_Init(PhotoAlbum *photoAlbum) {
+void Save_PhotoAlbum_Init(PhotoAlbum *photoAlbum)
+{
     int i;
 
     photoAlbum->unk_00 = 0;
@@ -23,7 +26,8 @@ void Save_PhotoAlbum_Init(PhotoAlbum *photoAlbum) {
     }
 }
 
-u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PhotoAlbum *photoAlbum) {
+u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PhotoAlbum *photoAlbum)
+{
     u8 i;
 
     for (i = 0; i < PHOTO_ALBUM_MAX; i++) {
@@ -35,7 +39,8 @@ u8 PhotoAlbum_GetIndexOfFirstEmptySlot(const PhotoAlbum *photoAlbum) {
     return 0xFF;
 }
 
-u8 PhotoAlbum_GetNumSaved(const PhotoAlbum *photoAlbum) {
+u8 PhotoAlbum_GetNumSaved(const PhotoAlbum *photoAlbum)
+{
     u8 i, n;
 
     for (i = 0, n = 0; i < PHOTO_ALBUM_MAX; i++) {
@@ -47,13 +52,15 @@ u8 PhotoAlbum_GetNumSaved(const PhotoAlbum *photoAlbum) {
     return n;
 }
 
-void PhotoAlbum_DeletePhotoByIndex(PhotoAlbum *photoAlbum, u8 idx) {
+void PhotoAlbum_DeletePhotoByIndex(PhotoAlbum *photoAlbum, u8 idx)
+{
     if (idx < PHOTO_ALBUM_MAX) {
         Photo_Init(&photoAlbum->photos[idx]);
     }
 }
 
-BOOL PhotoAlbum_SetPhotoAtIndex(PhotoAlbum *photoAlbum, const Photo *photo, u8 idx) {
+BOOL PhotoAlbum_SetPhotoAtIndex(PhotoAlbum *photoAlbum, const Photo *photo, u8 idx)
+{
     if (idx >= PHOTO_ALBUM_MAX) {
         return FALSE;
     } else {
@@ -62,7 +69,8 @@ BOOL PhotoAlbum_SetPhotoAtIndex(PhotoAlbum *photoAlbum, const Photo *photo, u8 i
     }
 }
 
-BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 idx) {
+BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 idx)
+{
     if (idx >= PHOTO_ALBUM_MAX) {
         Photo_Init(photo);
         return FALSE;
@@ -72,7 +80,8 @@ BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 i
     }
 }
 
-Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId) {
+Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId)
+{
     u8 i, j, n;
     Photo *ret;
 
@@ -88,12 +97,14 @@ Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId
     return ret;
 }
 
-void Photo_Init(Photo *photo) {
+void Photo_Init(Photo *photo)
+{
     MI_CpuClear8(photo, sizeof(Photo));
     StringFillEOS(photo->playerName, PLAYER_NAME_LENGTH + 1);
     StringFillEOS(photo->leadMonNick, POKEMON_NAME_LENGTH + 2);
 }
 
-static BOOL Photo_IsUse(const Photo *photo) {
+static BOOL Photo_IsUse(const Photo *photo)
+{
     return photo->numMons ? TRUE : FALSE;
 }

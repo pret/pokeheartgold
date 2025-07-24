@@ -8,7 +8,8 @@
 #include "pokedex.h"
 #include "pokewalker.h"
 
-void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon) {
+void UpdatePokedexWithReceivedSpecies(SaveData *saveData, Pokemon *mon)
+{
     BOOL isEgg;
     u16 species;
     isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);

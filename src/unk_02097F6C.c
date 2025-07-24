@@ -35,7 +35,8 @@ static const u16 sSwarmMapLUT[SWARM_MAP_COUNT][2] = {
     { MAP_VIOLET,                   2 },
 };
 
-BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue) {
+BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue)
+{
     u8 offset = rand % SWARM_MAP_COUNT;
     if (mapno == sSwarmMapLUT[offset][0]) {
         if (swarmValue == sSwarmMapLUT[offset][1]) {
@@ -45,7 +46,8 @@ BOOL sub_02097F6C(u32 rand, u16 mapno, u16 swarmValue) {
     return FALSE;
 }
 
-void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species) {
+void GetSwarmInfoFromRand(u32 rand, u16 *mapno, u16 *species)
+{
     ENC_DATA encData;
     const u16(*swarmMap)[2];
 

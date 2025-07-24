@@ -6,7 +6,8 @@
 #include "unk_02005D10.h"
 #include "unk_0205BB1C.h"
 
-u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     Pokedex *pokedex;
     u16 dexCountParam;
 
@@ -38,7 +39,8 @@ u16 PhoneCall_GetScriptId_ProfOak(PokegearPhoneCallContext *ctx, PokegearPhoneCa
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     Pokedex *pokedex;
     int r6;

@@ -38,7 +38,8 @@ extern TaskFunc sMapEnterRoutines[9];
 extern TaskFunc sMapExitRoutines[9];
 extern FieldSystemFunc _020FC76C[9];
 
-void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, HeapID heapID) {
+void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, HeapID heapID)
+{
     FieldFadeEnvironment *sfenv = AllocFromHeap(heapID, sizeof(FieldFadeEnvironment));
     sfenv->pattern = pattern;
     sfenv->typeTop = typeTop;
@@ -51,7 +52,8 @@ void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typ
     TaskManager_Call(man, RoutineFieldFade, sfenv);
 }
 
-BOOL RoutineFieldFade(TaskManager *man) {
+BOOL RoutineFieldFade(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldFadeEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->state) {
@@ -71,7 +73,8 @@ BOOL RoutineFieldFade(TaskManager *man) {
     return FALSE;
 }
 
-void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir, u32 transNo) {
+void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir, u32 transNo)
+{
     FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
@@ -85,7 +88,8 @@ void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warp
     FieldSystem_CreateTask(fieldSystem, sub_02055DBC, fenv);
 }
 
-void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir) {
+void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y, int dir)
+{
     FieldTransitionEnvironment *fenv = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTransitionEnvironment));
     fenv->state = 0;
     fenv->transitionState = 0;
@@ -135,7 +139,8 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
 }
 
 // this function handles transition routines between maps
-BOOL sub_02055DBC(TaskManager *man) {
+BOOL sub_02055DBC(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *env = TaskManager_GetEnvironment(man);
     switch (env->state) {
@@ -232,7 +237,8 @@ BOOL sub_02055DBC(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_02056004(TaskManager *man) {
+BOOL sub_02056004(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
@@ -247,7 +253,8 @@ BOOL sub_02056004(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_02056040(TaskManager *man) {
+BOOL sub_02056040(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
@@ -272,7 +279,8 @@ BOOL sub_02056040(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_020560C4(TaskManager *man) {
+BOOL sub_020560C4(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {
@@ -295,7 +303,8 @@ BOOL sub_020560C4(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_0205613C(TaskManager *man) {
+BOOL sub_0205613C(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
@@ -344,7 +353,8 @@ BOOL sub_0205613C(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_02056220(TaskManager *man) {
+BOOL sub_02056220(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
@@ -359,7 +369,8 @@ BOOL sub_02056220(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_02056268(TaskManager *man) {
+BOOL sub_02056268(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
@@ -374,7 +385,8 @@ BOOL sub_02056268(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_020562B0(TaskManager *man) {
+BOOL sub_020562B0(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
@@ -452,7 +464,8 @@ BOOL sub_020562B0(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_02056424(TaskManager *man) {
+BOOL sub_02056424(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
@@ -505,7 +518,8 @@ BOOL sub_02056424(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_02056530(TaskManager *man) {
+BOOL sub_02056530(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     LocalMapObject *obj;
@@ -540,7 +554,8 @@ BOOL sub_02056530(TaskManager *man) {
     return FALSE;
 }
 
-BOOL sub_020565FC(TaskManager *man) {
+BOOL sub_020565FC(TaskManager *man)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(man);
     FieldTransitionEnvironment *fenv = TaskManager_GetEnvironment(man);
     switch (fenv->transitionState) {

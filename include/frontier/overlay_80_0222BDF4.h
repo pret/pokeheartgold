@@ -15,7 +15,8 @@ typedef struct FrontierContext {
     u16 unk78[2];
 } FrontierContext;
 
-u8 inline FrontierScript_ReadShort(FrontierContext *ctx) {
+u8 inline FrontierScript_ReadShort(FrontierContext *ctx)
+{
     return *(ctx->scriptPtr++);
 }
 

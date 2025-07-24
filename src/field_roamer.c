@@ -115,12 +115,14 @@ static const struct RoamerAdjacency sRoamerAdjacencyTable[ROAMER_LOC_COUNT] = {
     { 3, { ROAMER_LOC_R22, ROAMER_LOC_R26, ROAMER_LOC_R09, -1, -1, -1 }                                     },
 };
 
-void RoamerLocationUpdateRand(RoamerSaveData *roamer, u8 roamer_idx) {
+void RoamerLocationUpdateRand(RoamerSaveData *roamer, u8 roamer_idx)
+{
     u32 last_loc = PlayerLocationHistoryGetBack(roamer);
     RoamerLocationSetRandom(roamer, roamer_idx, last_loc);
 }
 
-void Save_RandomizeRoamersLocation(RoamerSaveData *roamer) {
+void Save_RandomizeRoamersLocation(RoamerSaveData *roamer)
+{
     u8 i;
 
     for (i = 0; i < ROAMER_MAX; i++) {
@@ -130,7 +132,8 @@ void Save_RandomizeRoamersLocation(RoamerSaveData *roamer) {
     }
 }
 
-void Save_UpdateRoamersLocation(RoamerSaveData *roamer) {
+void Save_UpdateRoamersLocation(RoamerSaveData *roamer)
+{
     u8 i;
     u16 rnd;
     u32 last_loc;
@@ -148,12 +151,14 @@ void Save_UpdateRoamersLocation(RoamerSaveData *roamer) {
     }
 }
 
-u32 GetRoamMapByLocationIdx(u8 idx) {
+u32 GetRoamMapByLocationIdx(u8 idx)
+{
     GF_ASSERT(idx < NELEMS(sRoamerLocations));
     return sRoamerLocations[idx];
 }
 
-static BOOL AreAnyRoamersActive(RoamerSaveData *roamers) {
+static BOOL AreAnyRoamersActive(RoamerSaveData *roamers)
+{
     u8 i;
 
     for (i = 0; i < ROAMER_MAX; i++) {
@@ -165,13 +170,15 @@ static BOOL AreAnyRoamersActive(RoamerSaveData *roamers) {
     return FALSE;
 }
 
-void UpdatePlayerLocationHistoryIfAnyRoamersActive(RoamerSaveData *roamers, u32 location) {
+void UpdatePlayerLocationHistoryIfAnyRoamersActive(RoamerSaveData *roamers, u32 location)
+{
     if (AreAnyRoamersActive(roamers)) {
         PlayerLocationHistoryPush(roamers, location);
     }
 }
 
-void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
+void Save_CreateRoamerByID(SaveData *saveData, u8 idx)
+{
     PlayerProfile *profile;
     RoamerSaveData *roamerSave = Save_Roamers_Get(saveData);
     Roamer *roamerStats = Roamers_GetRoamMonStats(roamerSave, idx);
@@ -217,7 +224,8 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     RoamerLocationSetRandom(roamerSave, idx, PlayerLocationHistoryGetBack(roamerSave));
 }
 
-u8 SpeciesToRoamerIdx(u16 species) {
+u8 SpeciesToRoamerIdx(u16 species)
+{
     switch (species) {
     case SPECIES_RAIKOU:
         return ROAMER_RAIKOU;
@@ -233,7 +241,8 @@ u8 SpeciesToRoamerIdx(u16 species) {
     }
 }
 
-static void RoamerLocationSetRandom(RoamerSaveData *roamer, u8 roamer_idx, u32 last_loc) {
+static void RoamerLocationSetRandom(RoamerSaveData *roamer, u8 roamer_idx, u32 last_loc)
+{
     u32 roamer_cur_loc, roamer_test_loc;
     u8 loc_min, loc_num;
     u8 loc_cur_rand;
@@ -253,7 +262,8 @@ static void RoamerLocationSetRandom(RoamerSaveData *roamer, u8 roamer_idx, u32 l
     ApplyRoamerLocation(roamer, roamer_idx, loc_cur_rand, roamer_test_loc);
 }
 
-static void RoamerLocationUpdateEx(RoamerSaveData *roamer, u8 roamer_idx, u32 last_loc) {
+static void RoamerLocationUpdateEx(RoamerSaveData *roamer, u8 roamer_idx, u32 last_loc)
+{
     u8 roamer_last_loc;
     u8 roamer_next_loc;
     u32 roamer_next_mapno;
@@ -283,7 +293,8 @@ static void RoamerLocationUpdateEx(RoamerSaveData *roamer, u8 roamer_idx, u32 la
     }
 }
 
-static void ApplyRoamerLocation(RoamerSaveData *roamer, u8 roamer_idx, u8 new_loc, u32 new_mapno) {
+static void ApplyRoamerLocation(RoamerSaveData *roamer, u8 roamer_idx, u8 new_loc, u32 new_mapno)
+{
     Roamer *roamerStats = Roamers_GetRoamMonStats(roamer, roamer_idx);
     Roamer_SetLocation(roamer, roamer_idx, new_loc);
     SetRoamerData(roamerStats, ROAMER_DATA_MET_LOCATION, new_mapno);

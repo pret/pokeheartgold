@@ -22,7 +22,8 @@
 static String *_GetNpcTradeName(HeapID heapId, s32 msgno);
 static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId);
 
-NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
+NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno)
+{
     NPCTradeAppData *ret;
     u16 strbuf[128];
 
@@ -46,14 +47,16 @@ NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno) {
     return ret;
 }
 
-void NPCTradeApp_Delete(NPCTradeAppData *work) {
+void NPCTradeApp_Delete(NPCTradeAppData *work)
+{
     Heap_Free(work->trade_dat);
     Heap_Free(work->mon);
     Heap_Free(work->profile);
     Heap_Free(work);
 }
 
-void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 level, u16 mapno) {
+void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 level, u16 mapno)
+{
     Party *party;
     Pokemon *mon;
     NPCTrade *trade_dat;
@@ -81,7 +84,8 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
     Heap_Free(mon);
 }
 
-Mail *NPCTrade_MakeKenyaMail(void) {
+Mail *NPCTrade_MakeKenyaMail(void)
+{
     Pokemon *mon;
     NPCTrade *trade_dat;
     String *name;
@@ -100,7 +104,8 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     return mail;
 }
 
-int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 idx) {
+int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 idx)
+{
     Party *party;
     Pokemon *mon, *cur_poke;
     u8 capsule;
@@ -138,24 +143,29 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
     return 0;
 }
 
-int NPCTradeApp_GetOfferedSpecies(NPCTradeAppData *work) {
+int NPCTradeApp_GetOfferedSpecies(NPCTradeAppData *work)
+{
     return work->trade_dat->give_species;
 }
 
-int NPCTradeApp_GetRequestedSpecies(NPCTradeAppData *work) {
+int NPCTradeApp_GetRequestedSpecies(NPCTradeAppData *work)
+{
     return work->trade_dat->ask_species;
 }
 
-int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work) {
+int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work)
+{
     return work->trade_dat->unk_50;
 }
 
-void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot) {
+void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot)
+{
     Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fieldSystem->saveData), slot, work->mon);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, work->mon);
 }
 
-void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf) {
+void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot, TRADE_ANIM_WORK *anim_work, Pokemon *my_mon_buf, Pokemon *trade_mon_buf)
+{
     Pokemon *my_poke;
     u32 time_of_day;
 
@@ -178,7 +188,8 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     }
 }
 
-static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
+static String *_GetNpcTradeName(HeapID heapId, s32 msgno)
+{
     String *ret;
     MsgData *msgData;
 
@@ -188,7 +199,8 @@ static String *_GetNpcTradeName(HeapID heapId, s32 msgno) {
     return ret;
 }
 
-static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId) {
+static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTradeNum tradeno, u32 mapno, u32 met_level_strat, HeapID heapId)
+{
     String *name;
     u8 nickname_flag;
     u32 mapsec;

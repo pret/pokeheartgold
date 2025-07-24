@@ -9,7 +9,8 @@
 #include "unk_0200B150.h"
 #include "unk_02025C44.h"
 
-void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan) {
+void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, int plttId, int cellId, int cellAnmId, int multiCellId, int multiCellAnmId, int transfer, int priority, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *cellAnmMan, GF_2DGfxResMan *multiCellMan, GF_2DGfxResMan *multiCellAnmMan)
+{
     SpriteResource *charObj;
     SpriteResource *plttObj;
     SpriteResource *cellObj;
@@ -73,7 +74,8 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     hdr->priority = priority;
 }
 
-SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan) {
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan)
+{
     int i;
     int num = 0;
     SpriteResourceHeaderList *ret;
@@ -90,7 +92,8 @@ SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNar
     return ret;
 }
 
-void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
+void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list)
+{
     GF_ASSERT(list != NULL);
     if (list->headers != NULL) {
         Heap_Free(list->headers);
@@ -98,7 +101,8 @@ void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     Heap_Free(list);
 }
 
-SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapId)
+{
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 
@@ -119,7 +123,8 @@ SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapI
     return SpriteList_Create(&param);
 }
 
-void G2dRenderer_SetMainSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y) {
+void G2dRenderer_SetMainSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y)
+{
     struct NNSG2dViewRect rect;
 
     rect.posTopLeft.x = x;
@@ -129,7 +134,8 @@ void G2dRenderer_SetMainSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y) {
     GF_SetG2dRendererSurface(&renderer->renderSurface[0], &rect);
 }
 
-void G2dRenderer_SetSubSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y) {
+void G2dRenderer_SetSubSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y)
+{
     struct NNSG2dViewRect rect;
 
     rect.posTopLeft.x = x;
@@ -139,7 +145,8 @@ void G2dRenderer_SetSubSurfaceCoords(G2dRenderer *renderer, fx32 x, fx32 y) {
     GF_SetG2dRendererSurface(&renderer->renderSurface[1], &rect);
 }
 
-void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode) {
+void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJVRamModeChar mode)
+{
     switch (mode) {
     case GX_OBJVRAMMODE_CHAR_1D_32K:
         if (GX_GetBankForOBJ() == GX_VRAM_OBJ_16_G || GX_GetBankForOBJ() == GX_VRAM_OBJ_16_F) {
@@ -164,6 +171,7 @@ void G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE vram, GXOBJV
     }
 }
 
-void G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE type) {
+void G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE type)
+{
     ObjPlttTransfer_SetReservedRegion(0xC000, type);
 }

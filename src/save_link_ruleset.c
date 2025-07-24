@@ -2,33 +2,40 @@
 
 #include "global.h"
 
-u32 LinkBattleRuleset_sizeof(void) {
+u32 LinkBattleRuleset_sizeof(void)
+{
     return sizeof(LinkBattleRuleset);
 }
 
-u32 Save_LinkBattleRuleset_sizeof(void) {
+u32 Save_LinkBattleRuleset_sizeof(void)
+{
     return sizeof(Save_LinkBattleRuleset);
 }
 
-void LinkBattleRuleset_Copy(const LinkBattleRuleset *src, LinkBattleRuleset *dst) {
+void LinkBattleRuleset_Copy(const LinkBattleRuleset *src, LinkBattleRuleset *dst)
+{
     MI_CpuCopy8(src, dst, sizeof(LinkBattleRuleset));
 }
 
-void Save_LinkBattleRuleset_Init(Save_LinkBattleRuleset *ruleset) {
+void Save_LinkBattleRuleset_Init(Save_LinkBattleRuleset *ruleset)
+{
     memset(ruleset, 0, sizeof(Save_LinkBattleRuleset));
 }
 
-void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *dest) {
+void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *dest)
+{
     CopyU16ArrayToStringN(dest, rule->name, 12);
 }
 
-String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, HeapID heapId) {
+String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, HeapID heapId)
+{
     String *ret = String_New(24, heapId);
     CopyU16ArrayToString(ret, rule->name);
     return ret;
 }
 
-int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleRule rule) {
+int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleRule rule)
+{
     int ret = 0;
     switch (rule) {
     case LINKBATTLERULE_NONE:
@@ -88,7 +95,8 @@ int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleR
     return ret;
 }
 
-LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int rulesetNum) {
+LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int rulesetNum)
+{
     Save_LinkBattleRuleset *saveRuleset = NULL;
     GF_ASSERT(rulesetNum < NUM_SAVE_LINK_BATTLE_RULESETS);
     saveRuleset = SaveArray_Get(saveData, SAVE_LINK_BATTLE_RULESET);
@@ -98,7 +106,8 @@ LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int rul
     return NULL;
 }
 
-void Save_LinkBattleRuleset_Set(SaveData *saveData, const LinkBattleRuleset *ruleset) {
+void Save_LinkBattleRuleset_Set(SaveData *saveData, const LinkBattleRuleset *ruleset)
+{
     Save_LinkBattleRuleset *saveRulesets = SaveArray_Get(saveData, SAVE_LINK_BATTLE_RULESET);
     LinkBattleRuleset_Copy(ruleset, &saveRulesets->rules[0]);
 }

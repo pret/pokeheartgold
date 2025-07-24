@@ -17,14 +17,16 @@
 #include "unk_02035900.h"
 #include "unk_0205FD20.h"
 
-int sub_0205C268(u32 unkA) {
+int sub_0205C268(u32 unkA)
+{
     if (unkA < 100) {
         return 255;
     }
     return ov00_021E6EBC();
 }
 
-u8 sub_0205C278(void) {
+u8 sub_0205C278(void)
+{
     PlayerProfile *profile = sub_02034818(sub_0203769C() ^ 1);
     if (!profile) {
         GF_ASSERT(FALSE);
@@ -32,7 +34,8 @@ u8 sub_0205C278(void) {
     return PlayerProfile_GetVersion(profile);
 }
 
-u8 sub_0205C298(SaveData *saveData) {
+u8 sub_0205C298(SaveData *saveData)
+{
     u8 ver = PlayerProfile_GetVersion(Save_PlayerData_GetProfile(saveData));
     if (ver == 0) {
         return 1;
@@ -43,7 +46,8 @@ u8 sub_0205C298(SaveData *saveData) {
     return 0;
 }
 
-u8 sub_0205C2C0(u32 unkA) {
+u8 sub_0205C2C0(u32 unkA)
+{
     switch (unkA) {
     case 0:
         return 95;
@@ -56,7 +60,8 @@ u8 sub_0205C2C0(u32 unkA) {
     }
 }
 
-u8 sub_0205C2E8(u32 unkA) {
+u8 sub_0205C2E8(u32 unkA)
+{
     switch (unkA) {
     case 0:
         return 94;
@@ -69,7 +74,8 @@ u8 sub_0205C2E8(u32 unkA) {
     }
 }
 
-u8 sub_0205C310(u32 unkA) {
+u8 sub_0205C310(u32 unkA)
+{
     u8 ret;
     switch (unkA) {
     case 0:
@@ -98,7 +104,8 @@ u8 sub_0205C310(u32 unkA) {
     return ret;
 }
 
-u8 sub_0205C350(u32 unkA) {
+u8 sub_0205C350(u32 unkA)
+{
     u8 ret;
     switch (unkA) {
     case 0:
@@ -127,7 +134,8 @@ u8 sub_0205C350(u32 unkA) {
     return ret;
 }
 
-PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData) {
+PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, int state, int gender, int a6, struct PlayerSaveData *playerSaveData)
+{
     PlayerAvatar *avatar = sub_0205C4E0();
     sub_0205C500(avatar, state, gender, playerSaveData);
     int sprite;
@@ -153,7 +161,8 @@ PlayerAvatar *sub_0205C390(MapObjectManager *man, int x, int y, int direction, i
     return avatar;
 }
 
-PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData, int gender) {
+PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData, int gender)
+{
     PlayerAvatar *avatar = sub_0205C4E0();
     int state = sub_0205C7EC(playerSaveData);
     sub_0205C500(avatar, state, gender, playerSaveData);
@@ -166,7 +175,8 @@ PlayerAvatar *sub_0205C408(MapObjectManager *man, PlayerSaveData *playerSaveData
     return avatar;
 }
 
-void sub_0205C46C(PlayerAvatar *avatar) {
+void sub_0205C46C(PlayerAvatar *avatar)
+{
     LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
     if (!mapObj) {
         GF_ASSERT(FALSE);
@@ -181,16 +191,19 @@ void sub_0205C46C(PlayerAvatar *avatar) {
     }
 }
 
-void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar) {
+void PlayerAvatar_FreeToHeap(PlayerAvatar *avatar)
+{
     Heap_Free(avatar);
 }
 
-void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar) {
+void PlayerAvatar_DeleteFromMap(PlayerAvatar *avatar)
+{
     MapObject_Remove(PlayerAvatar_GetMapObject(avatar));
     PlayerAvatar_FreeToHeap(avatar);
 }
 
-PlayerAvatar *sub_0205C4E0() {
+PlayerAvatar *sub_0205C4E0()
+{
     PlayerAvatar *avatar = AllocFromHeap(HEAP_ID_FIELD, sizeof(PlayerAvatar));
     if (!avatar) {
         GF_ASSERT(FALSE);
@@ -199,7 +212,8 @@ PlayerAvatar *sub_0205C4E0() {
     return avatar;
 }
 
-void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *playerSaveData) {
+void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *playerSaveData)
+{
     PlayerAvatar_SetPlayerSaveData(avatar, playerSaveData);
     sub_0205C6C8(avatar, 0);
     sub_0205C6D0(avatar, 0);
@@ -213,7 +227,8 @@ void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *p
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
 
-void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u32 sprite, u32 direction, u32 x, u32 y) {
+void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u32 sprite, u32 direction, u32 x, u32 y)
+{
     LocalMapObject *mapObj = MapObject_Create(man, x, y, direction, sprite, 1, 1);
     if (!mapObj) {
         GF_ASSERT(FALSE);
@@ -233,7 +248,8 @@ void CreatePlayerAvatarMapObject(PlayerAvatar *avatar, MapObjectManager *man, u3
     PlayerAvatar_SetMapObject(avatar, mapObj);
 }
 
-LocalMapObject *sub_0205C600(MapObjectManager *man) {
+LocalMapObject *sub_0205C600(MapObjectManager *man)
+{
     int y = 0;
     LocalMapObject *mapObj = 0;
     while (MapObjectManager_GetNextObjectWithFlagFromIndex(man, &mapObj, &y, MAPOBJECTFLAG_ACTIVE)) {
@@ -244,7 +260,8 @@ LocalMapObject *sub_0205C600(MapObjectManager *man) {
     return mapObj;
 }
 
-LocalMapObject *sub_0205C640(MapObjectManager *man) {
+LocalMapObject *sub_0205C640(MapObjectManager *man)
+{
     LocalMapObject *mapObj = sub_0205C600(man);
     if (!mapObj) {
         GF_ASSERT(FALSE);
@@ -252,71 +269,88 @@ LocalMapObject *sub_0205C640(MapObjectManager *man) {
     return mapObj;
 }
 
-int PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar) {
+int PlayerAvatar_GetFacingDirection(PlayerAvatar *avatar)
+{
     return MapObject_GetFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
-void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, int direction) {
+void PlayerAvatar_SetFacingDirection(PlayerAvatar *avatar, int direction)
+{
     MapObject_SetFacingDirection(PlayerAvatar_GetMapObject(avatar), direction);
 }
 
-u32 PlayerAvatar_GetNextFacing(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetNextFacing(PlayerAvatar *avatar)
+{
     return MapObject_GetNextFacingDirection(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerXCoord(PlayerAvatar *avatar) {
+int GetPlayerXCoord(PlayerAvatar *avatar)
+{
     return MapObject_GetCurrentX(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerZCoord(PlayerAvatar *avatar) {
+int GetPlayerZCoord(PlayerAvatar *avatar)
+{
     return MapObject_GetCurrentZ(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerLastXCoord(PlayerAvatar *avatar) {
+int GetPlayerLastXCoord(PlayerAvatar *avatar)
+{
     return MapObject_GetPreviousX(PlayerAvatar_GetMapObject(avatar));
 }
 
-int GetPlayerLastZCoord(PlayerAvatar *avatar) {
+int GetPlayerLastZCoord(PlayerAvatar *avatar)
+{
     return MapObject_GetPreviousZ(PlayerAvatar_GetMapObject(avatar));
 }
 
-void PlayerAvatar_GetPositionVec(PlayerAvatar *avatar, VecFx32 *vec) {
+void PlayerAvatar_GetPositionVec(PlayerAvatar *avatar, VecFx32 *vec)
+{
     MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(avatar), vec);
 }
 
-VecFx32 *PlayerAvatar_GetPositionVecConst(PlayerAvatar *avatar) {
+VecFx32 *PlayerAvatar_GetPositionVecConst(PlayerAvatar *avatar)
+{
     return MapObject_GetPositionVector(PlayerAvatar_GetMapObjectConst(avatar));
 }
 
-void sub_0205C6C8(PlayerAvatar *avatar, u32 unkA) {
+void sub_0205C6C8(PlayerAvatar *avatar, u32 unkA)
+{
     avatar->unk10 = unkA;
 }
 
-u32 sub_0205C6CC(PlayerAvatar *avatar) {
+u32 sub_0205C6CC(PlayerAvatar *avatar)
+{
     return avatar->unk10;
 }
 
-void sub_0205C6D0(PlayerAvatar *avatar, u32 unkA) {
+void sub_0205C6D0(PlayerAvatar *avatar, u32 unkA)
+{
     avatar->unk14 = unkA;
 }
 
-u32 sub_0205C6D4(PlayerAvatar *avatar) {
+u32 sub_0205C6D4(PlayerAvatar *avatar)
+{
     return avatar->unk14;
 }
 
-void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *obj) {
+void PlayerAvatar_SetMapObject(PlayerAvatar *avatar, LocalMapObject *obj)
+{
     avatar->mapObject = obj;
 }
 
-LocalMapObject *PlayerAvatar_GetMapObject(PlayerAvatar *avatar) {
+LocalMapObject *PlayerAvatar_GetMapObject(PlayerAvatar *avatar)
+{
     return avatar->mapObject;
 }
 
-LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar) {
+LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar)
+{
     return avatar->mapObject;
 }
 
-void PlayerAvatar_SetState(PlayerAvatar *avatar, int state) {
+void PlayerAvatar_SetState(PlayerAvatar *avatar, int state)
+{
     if (state >= PLAYER_STATE_UNK_SP) {
         GF_ASSERT(FALSE);
     }
@@ -324,59 +358,72 @@ void PlayerAvatar_SetState(PlayerAvatar *avatar, int state) {
     sub_0205C800(avatar, state);
 }
 
-int PlayerAvatar_GetState(PlayerAvatar *avatar) {
+int PlayerAvatar_GetState(PlayerAvatar *avatar)
+{
     if (!avatar) {
         GF_ASSERT(FALSE);
     }
     return avatar->state;
 }
 
-void PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, u32 flag) {
+void PlayerAvatar_OrrTransitionFlags(PlayerAvatar *avatar, u32 flag)
+{
     avatar->transFlag = avatar->transFlag | flag;
 }
 
-void PlayerAvatar_SetTransitionFlags(PlayerAvatar *avatar, u32 flag) {
+void PlayerAvatar_SetTransitionFlags(PlayerAvatar *avatar, u32 flag)
+{
     avatar->transFlag = flag;
 }
 
-u32 PlayerAvatar_GetTransitionFlags(PlayerAvatar *avatar) {
+u32 PlayerAvatar_GetTransitionFlags(PlayerAvatar *avatar)
+{
     return avatar->transFlag;
 }
 
-void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender) {
+void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender)
+{
     avatar->gender = gender;
 }
 
-int PlayerAvatar_GetGender(PlayerAvatar *avatar) {
+int PlayerAvatar_GetGender(PlayerAvatar *avatar)
+{
     return avatar->gender;
 }
 
-void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits) {
+void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits)
+{
     avatar->flags = (PlayerAvatarFlags)(avatar->flags | bits);
 }
 
-void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits) {
+void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags bits)
+{
     avatar->flags = (PlayerAvatarFlags)(avatar->flags & ~bits);
 }
 
-PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags bits) {
+PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags bits)
+{
     return (PlayerAvatarFlags)(avatar->flags & bits);
 }
 
-u32 sub_0205C744(PlayerAvatar *avatar) {
+u32 sub_0205C744(PlayerAvatar *avatar)
+{
     return avatar->unk24;
 }
 
-void sub_0205C748(PlayerAvatar *avatar, u32 unkA) {
+void sub_0205C748(PlayerAvatar *avatar, u32 unkA)
+{
     avatar->unk24 = unkA;
 }
 
-void sub_0205C74C(PlayerAvatar *avatar) {
+void sub_0205C74C(PlayerAvatar *avatar)
+{
     avatar->unk24 = 0;
     PlayerAvatar_SetFlag2(avatar, FALSE);
 }
 
-int sub_0205C758(PlayerAvatar *avatar, int unkB, int unkC) {
+int sub_0205C758(PlayerAvatar *avatar, int unkB, int unkC)
+{
     int var = avatar->unk24 + unkB;
     avatar->unk24 = var;
     if (var > unkC) {
@@ -385,70 +432,86 @@ int sub_0205C758(PlayerAvatar *avatar, int unkB, int unkC) {
     return avatar->unk24;
 }
 
-void sub_0205C768(PlayerAvatar *avatar, int unkA) {
+void sub_0205C768(PlayerAvatar *avatar, int unkA)
+{
     avatar->unk28 = unkA;
 }
 
-int sub_0205C76C(PlayerAvatar *avatar) {
+int sub_0205C76C(PlayerAvatar *avatar)
+{
     return avatar->unk28;
 }
 
-void sub_0205C770(PlayerAvatar *avatar, int unkA) {
+void sub_0205C770(PlayerAvatar *avatar, int unkA)
+{
     avatar->unk2c = unkA;
 }
 
-int sub_0205C774(PlayerAvatar *avatar) {
+int sub_0205C774(PlayerAvatar *avatar)
+{
     return avatar->unk2c;
 }
 
-void sub_0205C778(PlayerAvatar *avatar, int unkB, int unkC) {
+void sub_0205C778(PlayerAvatar *avatar, int unkB, int unkC)
+{
     sub_0205C768(avatar, unkB);
     sub_0205C770(avatar, unkC);
 }
 
-void sub_0205C78C(PlayerAvatar *avatar, u32 unkA) {
+void sub_0205C78C(PlayerAvatar *avatar, u32 unkA)
+{
     avatar->unk34 = unkA;
 }
 
-u32 sub_0205C790(PlayerAvatar *avatar) {
+u32 sub_0205C790(PlayerAvatar *avatar)
+{
     return avatar->unk34;
 }
 
-void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData) {
+void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData)
+{
     avatar->playerSaveData = playerSaveData;
 }
 
-PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar) {
+PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar)
+{
     return avatar->playerSaveData;
 }
 
-void sub_0205C79C(PlayerAvatar *avatar, u32 unkA) {
+void sub_0205C79C(PlayerAvatar *avatar, u32 unkA)
+{
     avatar->unk8 = unkA;
 }
 
-u32 sub_0205C7A0(PlayerAvatar *avatar) {
+u32 sub_0205C7A0(PlayerAvatar *avatar)
+{
     return avatar->unk8;
 }
 
-u32 sub_0205C7A4(PlayerAvatar *avatar) {
+u32 sub_0205C7A4(PlayerAvatar *avatar)
+{
     return avatar->unkc;
 }
 
-void sub_0205C7A8(PlayerAvatar *avatar) {
+void sub_0205C7A8(PlayerAvatar *avatar)
+{
     avatar->unkc = (avatar->unkc + 1) & TRUE;
 }
 
-void sub_0205C7B4(PlayerAvatar *avatar) {
+void sub_0205C7B4(PlayerAvatar *avatar)
+{
     avatar->unkc = 0;
 }
 
-void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData) {
+void PlayerSaveData_Init(struct PlayerSaveData *playerSaveData)
+{
     playerSaveData->hasRunningShoes = 0;
     playerSaveData->runningShoesLock = 0;
     playerSaveData->unk4 = 0;
 }
 
-BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData) {
+BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData)
+{
     if (playerSaveData != NULL) {
         if (playerSaveData->hasRunningShoes == TRUE) {
             return TRUE;
@@ -457,7 +520,8 @@ BOOL PlayerSaveData_CheckRunningShoes(struct PlayerSaveData *playerSaveData) {
     return FALSE;
 }
 
-void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, BOOL flag) {
+void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, BOOL flag)
+{
     if (flag == TRUE) {
         playerSaveData->hasRunningShoes = TRUE;
     } else {
@@ -465,31 +529,36 @@ void PlayerSaveData_SetRunningShoesFlag(struct PlayerSaveData *playerSaveData, B
     }
 }
 
-int sub_0205C7EC(PlayerSaveData *playerSaveData) {
+int sub_0205C7EC(PlayerSaveData *playerSaveData)
+{
     if (!playerSaveData) {
         return 0;
     }
     return playerSaveData->unk4;
 }
 
-void sub_0205C7F8(PlayerSaveData *playerSaveData, int state) {
+void sub_0205C7F8(PlayerSaveData *playerSaveData, int state)
+{
     if (!playerSaveData) {
         return;
     }
     playerSaveData->unk4 = state;
 }
 
-void sub_0205C800(PlayerAvatar *avatar, int state) {
+void sub_0205C800(PlayerAvatar *avatar, int state)
+{
     sub_0205C7F8(PlayerAvatar_GetPlayerSaveData(avatar), state);
 }
 
-void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir) {
+void sub_0205C810(PlayerAvatar *avatar, VecFx32 *pos, u32 dir)
+{
     LocalMapObject_SetPositionFromVectorAndDirection(PlayerAvatar_GetMapObject(avatar), pos, dir);
     sub_0205C6C8(avatar, 0);
     sub_0205C6D0(avatar, 0);
 }
 
-void sub_0205C838(PlayerAvatar *avatar, int unkA) {
+void sub_0205C838(PlayerAvatar *avatar, int unkA)
+{
     LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
     VecFx32 vec;
     MapObject_CopyPositionVector(mapObj, &vec);
@@ -497,7 +566,8 @@ void sub_0205C838(PlayerAvatar *avatar, int unkA) {
     MapObject_SetPositionVector(mapObj, &vec);
 }
 
-void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 state) {
+void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 state)
+{
     LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
     if (state == TRUE) {
         MapObject_SetIgnoreHeights(mapObj, FALSE);
@@ -506,7 +576,8 @@ void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 state) 
     }
 }
 
-void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, BOOL state) {
+void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, BOOL state)
+{
     LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
     if (state == TRUE) {
         MapObject_SetIgnoreHeights(mapObj, FALSE);
@@ -516,7 +587,8 @@ void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, B
     }
 }
 
-u32 PlayerAvatar_GetSpriteByStateAndGender(u32 state, int gender) {
+u32 PlayerAvatar_GetSpriteByStateAndGender(u32 state, int gender)
+{
     if (!gender) {
         switch (state) {
         case PLAYER_STATE_WALKING:
@@ -588,7 +660,8 @@ u32 PlayerAvatar_GetSpriteByStateAndGender(u32 state, int gender) {
     return 0;
 }
 
-u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
+u32 PlayerAvatar_GetTransitionBits(u32 unkA)
+{
     switch (unkA) {
     case PLAYER_STATE_WALKING:
         return PLAYER_TRANSITION_WALKING;
@@ -625,11 +698,13 @@ u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
     }
 }
 
-PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem) {
+PlayerAvatar *FieldSystem_GetPlayerAvatar(FieldSystem *fieldSystem)
+{
     return fieldSystem->playerAvatar;
 }
 
-void PlayerAvatar_SetFlag0(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetFlag0(PlayerAvatar *avatar, BOOL set)
+{
     if (set == TRUE) {
         PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK0);
     } else {
@@ -637,14 +712,16 @@ void PlayerAvatar_SetFlag0(PlayerAvatar *avatar, BOOL set) {
     }
 }
 
-BOOL PlayerAvatar_CheckFlag0(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_CheckFlag0(PlayerAvatar *avatar)
+{
     if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK0)) {
         return TRUE;
     }
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set)
+{
     if (set == TRUE) {
         PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK1);
     } else {
@@ -652,14 +729,16 @@ void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set) {
     }
 }
 
-BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar)
+{
     if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK1)) {
         return TRUE;
     }
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set)
+{
     if (set == TRUE) {
         PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK2);
     } else {
@@ -667,14 +746,16 @@ void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set) {
     }
 }
 
-BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar)
+{
     if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK2)) {
         return TRUE;
     }
     return FALSE;
 }
 
-void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock) {
+void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock)
+{
     if (lock == TRUE) {
         PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_LOCK_BIKE_STATE);
     } else {
@@ -682,14 +763,16 @@ void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock) {
     }
 }
 
-BOOL PlayerAvatar_IsBikeStateLocked(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_IsBikeStateLocked(PlayerAvatar *avatar)
+{
     if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_LOCK_BIKE_STATE)) {
         return TRUE;
     }
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set)
+{
     if (set == TRUE) {
         PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK5);
     } else {
@@ -697,22 +780,26 @@ void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set) {
     }
 }
 
-void PlayerAvatar_SetFlag6(PlayerAvatar *avatar) {
+void PlayerAvatar_SetFlag6(PlayerAvatar *avatar)
+{
     PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK6);
 }
 
-void PlayerAvatar_ClearFlag6(PlayerAvatar *avatar) {
+void PlayerAvatar_ClearFlag6(PlayerAvatar *avatar)
+{
     PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK6);
 }
 
-BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar)
+{
     if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK6)) {
         return TRUE;
     }
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag7(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetFlag7(PlayerAvatar *avatar, BOOL set)
+{
     if (set == TRUE) {
         PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK7);
     } else {
@@ -720,14 +807,17 @@ void PlayerAvatar_SetFlag7(PlayerAvatar *avatar, BOOL set) {
     }
 }
 
-BOOL PlayerAvatar_CheckFlag7(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_CheckFlag7(PlayerAvatar *avatar)
+{
     return PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK7);
 }
 
-u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar) {
+u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar)
+{
     return avatar->playerSaveData->runningShoesLock;
 }
 
-void PlayerAvatar_SetRunningShoesLock(PlayerAvatar *avatar, u16 lock) {
+void PlayerAvatar_SetRunningShoesLock(PlayerAvatar *avatar, u16 lock)
+{
     avatar->playerSaveData->runningShoesLock = lock;
 }

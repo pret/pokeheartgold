@@ -58,18 +58,18 @@ static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     {                              \
         .language = GAME_LANGUAGE, \
         .nickname = {              \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-            EOS,                   \
-        },                         \
-    }
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     EOS,                   \
+                     },                         \
+}
 
 static const TrainerHouseSet ov25_02259D9C = {
     .trainer = {
@@ -144,7 +144,8 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
 static void TrainerHouse_InitTrainer(TrainerHouseSet *set, Trainer *trainer);
 static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *set, u32 battlerId);
 
-void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
+void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum)
+{
     TrainerHouse *trainerHouse = Save_TrainerHouse_Get(fieldSystem->saveData);
     BattleSetup *setup;
     if (trainerNum == MAX_NUM_TRAINER_HOUSE_SETS) {
@@ -164,7 +165,8 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
     CallTask_020509F0(fieldSystem->taskman, setup, effect, bgm, winFlag);
 }
 
-static void TrainerHouse_SetNames(TrainerHouseSet *set) {
+static void TrainerHouse_SetNames(TrainerHouseSet *set)
+{
     MI_CpuCopy16(&ov25_02259D9C, set, sizeof(TrainerHouseSet));
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD);
     GF_ASSERT(messageData);
@@ -203,7 +205,8 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
     }
 }
 
-BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
+BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx)
+{
     u16 trainerNum = ScriptGetVar(ctx);
     TrainerHouse *trainerHouse = Save_TrainerHouse_Get(ctx->fieldSystem->saveData);
     MailMessage intro;
@@ -219,7 +222,8 @@ BOOL ScrCmd_ShowTrainerHouseIntroMessage(ScriptContext *ctx) {
     return TRUE;
 }
 
-static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, TrainerHouseSet *set) {
+static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, TrainerHouseSet *set)
+{
     s32 i;
     BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_13);
     SaveData *saveData = fieldSystem->saveData;
@@ -248,7 +252,8 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     return setup;
 }
 
-static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon *mon) {
+static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon *mon)
+{
     s32 i;
     u8 tempByte;
     ZeroMonData(mon);
@@ -287,7 +292,8 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     CalcMonLevelAndStats(mon);
 }
 
-static void TrainerHouse_InitTrainer(TrainerHouseSet *set, Trainer *trainer) {
+static void TrainerHouse_InitTrainer(TrainerHouseSet *set, Trainer *trainer)
+{
     MI_CpuFill8(trainer, 0, sizeof(Trainer));
     trainer->data.trainerClass = GetUnionRoomAvatarAttrBySprite(set->trainer.gender, set->trainer.sprite, 1);
     trainer->data.unk_2 = 0;
@@ -298,7 +304,8 @@ static void TrainerHouse_InitTrainer(TrainerHouseSet *set, Trainer *trainer) {
     trainer->data.doubleBattle = 0;
 }
 
-static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *set, u32 battlerId) {
+static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *set, u32 battlerId)
+{
     s32 i;
     TrainerHouse_InitTrainer(set, &setup->trainer[battlerId]);
     setup->trainerId[battlerId] = set->trainer.id;

@@ -37,14 +37,16 @@ BOOL System_GetTouchNewCoords(u32 *x, u32 *y);
 int TouchscreenHitbox_FindHitboxAtPoint(const TouchscreenHitbox *hitbox, u32 x, u32 y);
 BOOL TouchscreenHitbox_PointIsIn(const TouchscreenHitbox *hitbox, u32 x, u32 y);
 
-static inline void TouchscreenHitbox_SetRect(TouchscreenHitbox *hitbox, int top, int left, int height, int width) {
+static inline void TouchscreenHitbox_SetRect(TouchscreenHitbox *hitbox, int top, int left, int height, int width)
+{
     hitbox->rect.top = top;
     hitbox->rect.left = left;
     hitbox->rect.bottom = hitbox->rect.top + height;
     hitbox->rect.right = hitbox->rect.left + width;
 }
 
-static inline void TouchscreenHitbox_SetCircle(TouchscreenHitbox *hitbox, int x, int y, int r) {
+static inline void TouchscreenHitbox_SetCircle(TouchscreenHitbox *hitbox, int x, int y, int r)
+{
     hitbox->circle.sentinel = TOUCHSCREEN_CIRCLE_SENTINEL;
     hitbox->circle.x = x;
     hitbox->circle.y = y;

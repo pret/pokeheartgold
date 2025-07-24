@@ -50,7 +50,8 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan);
 static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data);
 static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data);
 
-void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem) {
+void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem)
+{
     SinjohCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohCutsceneData));
     data->fieldSystem = fieldSystem;
@@ -66,7 +67,8 @@ typedef enum SinjohCutsceneState {
     SJC_STATE_WAIT_FREE_RESOURCES
 } SinjohCutsceneState;
 
-static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
+static BOOL Task_SinjohCutscene(TaskManager *taskMan)
+{
     int *state = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     SinjohCutsceneData *data = TaskManager_GetEnvironment(taskMan);
@@ -136,7 +138,8 @@ static const u32 sSinjohEggModelFiles[3] = { NARC_legend_legend_00000088_NSBMD, 
 static const u32 sUnownModelFiles[2] = { NARC_legend_legend_00000079_NSBMD, NARC_legend_legend_00000082_NSBMD };
 static const u32 ov02_02253CF8_0[2] = { NARC_legend_legend_00000086_NSBCA, NARC_legend_legend_00000087_NSBMA };
 
-static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
+static void SinjohCutscene_LoadResources(SinjohCutsceneData *data)
+{
     u8 i, j;
 
     u32 unownAnimationFiles[2][2];
@@ -200,7 +203,8 @@ static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
     data->drawObjectFlag = 1;
 }
 
-static void SinjohCutscene_FreeResources(SinjohCutsceneData *data) {
+static void SinjohCutscene_FreeResources(SinjohCutsceneData *data)
+{
     for (u8 i = 0; i < NELEMS(data->unownAnimations); i++) {
         for (u8 j = 0; j < NELEMS(data->unownAnimations[i]); j++) {
             Field3dModelAnimation_Unload(&data->unownAnimations[i][j], &data->alloc);
@@ -215,13 +219,15 @@ static void SinjohCutscene_FreeResources(SinjohCutsceneData *data) {
     Field3dModel_Unload(&data->model174);
 }
 
-static void sField3DModelAnimation_Array_SetFrame(Field3DModelAnimation *animation, u32 length, u32 frame) {
+static void sField3DModelAnimation_Array_SetFrame(Field3DModelAnimation *animation, u32 length, u32 frame)
+{
     for (u8 i = 0; i < length; i++) {
         Field3dModelAnimation_FrameSet(&animation[i], frame);
     }
 }
 
-static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimation *animation, u32 length) {
+static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimation *animation, u32 length)
+{
     u8 i;
     u8 cnt = 0;
     for (i = 0; i < length; i++) {
@@ -232,7 +238,8 @@ static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimat
     return cnt == length;
 }
 
-void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 whichLegend) {
+void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 whichLegend)
+{
     SinjohGetEggCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohGetEggCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohGetEggCutsceneData));
     data->fieldSystem = fieldSystem;
@@ -248,7 +255,8 @@ typedef enum SinjohGetEggCutsceneState {
     SGEC_STATE_FREE_RESOURCES
 } SinjohGetEggCutsceneState;
 
-static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
+static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan)
+{
     int *state = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     SinjohGetEggCutsceneData *data = TaskManager_GetEnvironment(taskMan);
@@ -299,7 +307,8 @@ static const u32 sSinjohEggAnimationFiles[3][4] = {
     { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000098_NSBTA, NARC_legend_legend_00000099_NSBMA, NARC_legend_legend_00000097_NSBTP },
 };
 
-static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
+static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data)
+{
     u32 eggAnimationFiles[3][4];
     eggAnimationFiles = sSinjohEggAnimationFiles;
 
@@ -331,7 +340,8 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
     data->unkEE = 1;
 }
 
-static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data) {
+static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data)
+{
     for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
     }

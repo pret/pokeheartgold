@@ -6,7 +6,8 @@
 
 static GF_VramTransferManager *sVramTransferManager;
 
-void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
+void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId)
+{
     GF_ASSERT(sVramTransferManager == NULL);
 
     sVramTransferManager = AllocFromHeap(heapId, sizeof(GF_VramTransferManager));
@@ -18,14 +19,16 @@ void GF_CreateVramTransferManager(u32 taskMax, HeapID heapId) {
     NNS_GfdInitVramTransferManager(sVramTransferManager->tasks, sVramTransferManager->nMax);
 }
 
-void GF_DestroyVramTransferManager(void) {
+void GF_DestroyVramTransferManager(void)
+{
     GF_ASSERT(sVramTransferManager != NULL);
     Heap_Free(sVramTransferManager->tasks);
     Heap_Free(sVramTransferManager);
     sVramTransferManager = NULL;
 }
 
-BOOL GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE type, u32 dstAddr, void *pSrc, u32 szByte) {
+BOOL GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE type, u32 dstAddr, void *pSrc, u32 szByte)
+{
     GF_ASSERT(sVramTransferManager != NULL);
     sVramTransferManager->nCur++;
 
@@ -37,7 +40,8 @@ BOOL GF_CreateNewVramTransferTask(NNS_GFD_DST_TYPE type, u32 dstAddr, void *pSrc
     return NNS_GfdRegisterNewVramTransferTask(type, dstAddr, pSrc, szByte);
 }
 
-void GF_RunVramTransferTasks(void) {
+void GF_RunVramTransferTasks(void)
+{
     if (sVramTransferManager == NULL) {
         return;
     }
@@ -46,7 +50,8 @@ void GF_RunVramTransferTasks(void) {
     sVramTransferManager->nCur = 0;
 }
 
-u32 GF_GetNumPendingVramTransferTasks(void) {
+u32 GF_GetNumPendingVramTransferTasks(void)
+{
     GF_ASSERT(sVramTransferManager != NULL);
     return sVramTransferManager->nCur;
 }

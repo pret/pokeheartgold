@@ -20,36 +20,42 @@ static const UnkOv01_02209280 ov01_02209280 = {
     0x24, ov01_021FFFCC, ov01_021FFFFC, ov01_0220001C, ov01_02200020
 };
 
-UnkOv01_021FFECC *ov01_021FFECC(void *a0) {
+UnkOv01_021FFECC *ov01_021FFECC(void *a0)
+{
     UnkOv01_021FFECC *ptr = ov01_021F1430(a0, sizeof(UnkOv01_021FFECC), 0, 0);
     ptr->unk0 = a0;
     ov01_021FFEF8(ptr);
     return ptr;
 }
 
-void ov01_021FFEE8(UnkOv01_021FFECC *a0) {
+void ov01_021FFEE8(UnkOv01_021FFECC *a0)
+{
     ov01_021FFF38(a0);
     ov01_021F1448(a0);
 }
 
-static void ov01_021FFEF8(UnkOv01_021FFECC *a0) {
+static void ov01_021FFEF8(UnkOv01_021FFECC *a0)
+{
     for (int i = 0; i < 4; i++) {
         ov01_021F19F4(a0->unk0, &a0->unk4[i], 0, ov01_02209270[i], 0);
         sub_02069978(&a0->unk54[i], &a0->unk4[i]);
     }
 }
 
-static void ov01_021FFF38(UnkOv01_021FFECC *a0) {
+static void ov01_021FFF38(UnkOv01_021FFECC *a0)
+{
     for (int i = 0; i < 4; i++) {
         sub_02069784(&a0->unk4[i]);
     }
 }
 
-static NNSG3dRenderObj *ov01_021FFF50(UnkOv01_021FFECC *a0, int idx) {
+static NNSG3dRenderObj *ov01_021FFF50(UnkOv01_021FFECC *a0, int idx)
+{
     return &a0->unk54[idx];
 }
 
-void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
+void ov01_021FFF5C(LocalMapObject *mapObject, int a1)
+{
     VecFx32 temp;
     UnkOv01_021FFF5C temp2;
 
@@ -74,7 +80,8 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     ov01_021F1620(fieldSystem, &ov01_02209280, &temp, 0, &temp2, val3);
 }
 
-static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {
+static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1)
+{
     UnkOv01_021FFFCC *ptr = sub_02068D98(a0);
     LocalMapObject *mapObject = ptr->unk0.unkC;
 
@@ -84,7 +91,8 @@ static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {
     return TRUE;
 }
 
-static BOOL ov01_021FFFFC(void *a0, UnkOv01_021FFFCD *a1) {
+static BOOL ov01_021FFFFC(void *a0, UnkOv01_021FFFCD *a1)
+{
     LocalMapObject *mapObject = a1->unk10.unkC;
 
     BOOL val = sub_0205F0A8(mapObject, a1->localMapObjectId, a1->mapId);
@@ -94,10 +102,12 @@ static BOOL ov01_021FFFFC(void *a0, UnkOv01_021FFFCD *a1) {
     return val;
 }
 
-static void ov01_0220001C(void *a0, UnkOv01_021FFFCD *a1) {
+static void ov01_0220001C(void *a0, UnkOv01_021FFFCD *a1)
+{
 }
 
-static void ov01_02200020(void *a0, UnkOv01_021FFFCD *a1) {
+static void ov01_02200020(void *a0, UnkOv01_021FFFCD *a1)
+{
     VecFx32 translation;
 
     if (a1->unk4 != TRUE) {

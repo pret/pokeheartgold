@@ -20,7 +20,8 @@ void RadioShow_TrainerProfiles_Init(RadioShow *radioShow);
 void RadioShow_TrainerProfiles_Unload(RadioShow *radioShow);
 BOOL RadioShow_TrainerProfiles_EnsureUniqueMsgID(TrainerProfilesData *data, u8 msgID, u8 index);
 
-BOOL RadioShow_TrainerProfiles_Setup(RadioShow *radioShow) {
+BOOL RadioShow_TrainerProfiles_Setup(RadioShow *radioShow)
+{
     TrainerProfilesData *data = AllocFromHeap(radioShow->heapID, sizeof(TrainerProfilesData));
     MI_CpuClear8(data, sizeof(TrainerProfilesData));
     // data->heapID = radioShow->heapID;
@@ -31,7 +32,8 @@ BOOL RadioShow_TrainerProfiles_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow)
+{
     RadioShow_TrainerProfiles_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(TrainerProfilesData));
     Heap_Free(radioShow->showData);
@@ -39,7 +41,8 @@ BOOL RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_TrainerProfiles_Print(RadioShow *radioShow) {
+BOOL RadioShow_TrainerProfiles_Print(RadioShow *radioShow)
+{
     TrainerProfilesData *data = radioShow->showData;
 
     switch (data->state) {
@@ -85,7 +88,8 @@ BOOL RadioShow_TrainerProfiles_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_TrainerProfiles_Init(RadioShow *radioShow) {
+void RadioShow_TrainerProfiles_Init(RadioShow *radioShow)
+{
     int i;
     u8 msgID;
     TrainerProfilesData *data = radioShow->showData;
@@ -102,11 +106,13 @@ void RadioShow_TrainerProfiles_Init(RadioShow *radioShow) {
     }
 }
 
-void RadioShow_TrainerProfiles_Unload(RadioShow *radioShow) {
+void RadioShow_TrainerProfiles_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }
 
-BOOL RadioShow_TrainerProfiles_EnsureUniqueMsgID(TrainerProfilesData *data, u8 msgID, u8 index) {
+BOOL RadioShow_TrainerProfiles_EnsureUniqueMsgID(TrainerProfilesData *data, u8 msgID, u8 index)
+{
     for (int i = 0; i < index; ++i) {
         if (data->msgIDs[i] == msgID) {
             return TRUE;

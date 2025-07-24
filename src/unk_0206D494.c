@@ -59,7 +59,8 @@ static void sub_0206D850(PlayerAvatar *playerAvatar);
 static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum);
 static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager);
 
-BOOL sub_0206D494(FieldSystem *fieldSystem) {
+BOOL sub_0206D494(FieldSystem *fieldSystem)
+{
     LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
@@ -76,7 +77,8 @@ BOOL sub_0206D494(FieldSystem *fieldSystem) {
     }
 }
 
-static BOOL sub_0206D4E4(TaskManager *taskManager) {
+static BOOL sub_0206D4E4(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0206D494 *unkStruct = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -110,7 +112,8 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
     return FALSE;
 }
 
-static LocalMapObject *sub_0206D590(LocalMapObject *object) {
+static LocalMapObject *sub_0206D590(LocalMapObject *object)
+{
     MapObjectManager *manager = MapObject_GetManager(object);
     u32 direction = MapObject_GetFacingDirection(object);
     u32 x = MapObject_GetCurrentX(object);
@@ -133,7 +136,8 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     return NULL;
 }
 
-static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u32 y) {
+static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u32 y)
+{
     LocalMapObject *object = MapObjectManager_GetObjects(manager);
     u32 count = MapObjectManager_GetObjectCount(manager);
     do {
@@ -156,7 +160,8 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
     return NULL;
 }
 
-static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
+static u32 sub_0206D688(UnkStruct_0206D494 *a0)
+{
     switch (a0->unk09) {
     case 0:
         if (MapObject_IsMovementPaused(a0->unk00)) {
@@ -217,7 +222,8 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
     return FALSE;
 }
 
-static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
+static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y)
+{
     u32 unk;
     VecFx32 position;
     MapObject_CopyPositionVector(object, &position);
@@ -235,7 +241,8 @@ static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
     return flags;
 }
 
-static u32 sub_0206D81C(u32 direction) {
+static u32 sub_0206D81C(u32 direction)
+{
     u32 movement = MOVEMENT_NONE;
     switch (direction) {
     case DIR_NORTH:
@@ -256,7 +263,8 @@ static u32 sub_0206D81C(u32 direction) {
     return movement;
 }
 
-static void sub_0206D850(PlayerAvatar *playerAvatar) {
+static void sub_0206D850(PlayerAvatar *playerAvatar)
+{
     if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
         if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
@@ -269,14 +277,16 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
     return;
 }
 
-BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
+BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum)
+{
     NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD, TRUE);
     BOOL result = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
     Heap_Free(trade);
     return result != FALSE;
 }
 
-BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
+BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData)
+{
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     SAVE_MISC_DATA *misc = Save_Misc_Get(saveData);
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
@@ -315,7 +325,8 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     return TRUE;
 }
 
-static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum) {
+static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum)
+{
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     // The game calls this function only for Kenya the Spearow from the
     // Route 35-Goldenrod City Gate, and Shuckie the Shuckle from Cianwood City,
@@ -374,22 +385,26 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     return TRUE;
 }
 
-BugContest *FieldSystem_BugContest_Get(FieldSystem *fieldSystem) {
+BugContest *FieldSystem_BugContest_Get(FieldSystem *fieldSystem)
+{
     return fieldSystem->bugContest;
 }
 
-u16 *BugContest_GetSportBallsAddr(BugContest *contest) {
+u16 *BugContest_GetSportBallsAddr(BugContest *contest)
+{
     return &(contest->sport_balls);
 }
 
-void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration) {
+void FieldSystem_IncrementBugContestTimer(FieldSystem *fieldSystem, int duration)
+{
     BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
     if (contest && Save_VarsFlags_CheckBugContestFlag(Save_VarsFlags_Get(fieldSystem->saveData))) {
         contest->elapsed_time += duration;
     }
 }
 
-void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem) {
+void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem)
+{
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(fieldSystem->saveData);
     Location warp;
     warp.mapId = MAP_NATIONAL_PARK;
@@ -401,14 +416,16 @@ void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem
     sub_020537A8(taskManager, LocalFieldData_GetDynamicWarp(localFieldData));
 }
 
-void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon) {
+void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon)
+{
     UnkStruct_0206DB94 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206DB94));
     unkStruct->newlyCaughtMon = mon;
     TaskManager_Call(taskManager, Task_BugContest_PromptSwapPokemon, unkStruct);
 }
 
-static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
+static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0206DB94 *unkStruct = TaskManager_GetEnvironment(taskManager);
     BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
@@ -437,7 +454,8 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
     return FALSE;
 }
 
-BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx) {
+BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx)
+{
     u16 trainerNum = ScriptGetVar(ctx);
     u16 *hasTrainer = ScriptGetVarPointer(ctx);
     u16 *spriteId = GetVarPointer(ctx->fieldSystem, VAR_OBJ_1 + trainerNum);
@@ -451,7 +469,8 @@ BOOL ScrCmd_SetTrainerHouseSprite(ScriptContext *ctx) {
     return FALSE;
 }
 
-void FieldSystem_InitMystriStageGymmick(FieldSystem *fieldSystem) {
+void FieldSystem_InitMystriStageGymmick(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_SINJOH);
     GymmickUnion *gymmickData = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_SINJOH);

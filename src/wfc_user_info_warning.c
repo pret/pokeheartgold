@@ -63,7 +63,8 @@ static const WindowTemplate sWFCWarningWindowTemplate = {
     .baseTile = 0x23,
 };
 
-void ShowWFCUserInfoWarning(HeapID heapId, int a1) {
+void ShowWFCUserInfoWarning(HeapID heapId, int a1)
+{
 #pragma unused(a1)
     Window window;
 

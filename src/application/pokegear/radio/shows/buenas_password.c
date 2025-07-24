@@ -20,7 +20,8 @@ typedef struct BuenasPasswordData {
 void RadioShow_BuenasPassword_Init(RadioShow *radioShow);
 void RadioShow_BuenasPassword_Unload(RadioShow *radioShow);
 
-BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow) {
+BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow)
+{
     BuenasPasswordData *data = AllocFromHeap(radioShow->heapID, sizeof(BuenasPasswordData));
     MI_CpuClear8(data, sizeof(BuenasPasswordData));
     // data->heapID = radioShow->heapID;
@@ -31,7 +32,8 @@ BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_BuenasPassword_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_BuenasPassword_Teardown(RadioShow *radioShow)
+{
     RadioShow_BuenasPassword_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(BuenasPasswordData));
     Heap_Free(radioShow->showData);
@@ -39,7 +41,8 @@ BOOL RadioShow_BuenasPassword_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_BuenasPassword_Print(RadioShow *radioShow) {
+BOOL RadioShow_BuenasPassword_Print(RadioShow *radioShow)
+{
     BuenasPasswordData *data = radioShow->showData;
 
     switch (data->state) {
@@ -78,7 +81,8 @@ BOOL RadioShow_BuenasPassword_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_BuenasPassword_Init(RadioShow *radioShow) {
+void RadioShow_BuenasPassword_Init(RadioShow *radioShow)
+{
     BuenasPasswordData *data = radioShow->showData;
     MsgData *bpMsgData;
     u16 setID;
@@ -97,6 +101,7 @@ void RadioShow_BuenasPassword_Init(RadioShow *radioShow) {
     DestroyMsgData(bpMsgData);
 }
 
-void RadioShow_BuenasPassword_Unload(RadioShow *radioShow) {
+void RadioShow_BuenasPassword_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

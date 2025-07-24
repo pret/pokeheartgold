@@ -36,7 +36,8 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
 static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg);
 static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem);
 
-BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
+BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags)
+{
     int i;
     BattleSetup *setup = AllocFromHeap(heapId, sizeof(BattleSetup));
     MI_CpuClear8(setup, sizeof(BattleSetup));
@@ -83,26 +84,30 @@ BattleSetup *BattleSetup_New(HeapID heapId, u32 battleTypeFlags) {
     return setup;
 }
 
-BattleSetup *BattleSetup_New_SafariZone(HeapID heapId, int balls) {
+BattleSetup *BattleSetup_New_SafariZone(HeapID heapId, int balls)
+{
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_SAFARI);
     setup->safariBalls = balls;
     return setup;
 }
 
-BattleSetup *BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon *bugmon) {
+BattleSetup *BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon *bugmon)
+{
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_BUG_CONTEST);
     setup->safariBalls = balls;
     CopyPokemonToPokemon(bugmon, setup->bugContestMon);
     return setup;
 }
 
-BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls) {
+BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls)
+{
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_PAL_PARK);
     setup->safariBalls = balls;
     return setup;
 }
 
-BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
+BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem)
+{
     PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     BattleSetup *setup = BattleSetup_New(heapId, BATTLE_TYPE_TUTORIAL);
@@ -140,7 +145,8 @@ BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem) {
     return setup;
 }
 
-void BattleSetup_Delete(BattleSetup *setup) {
+void BattleSetup_Delete(BattleSetup *setup)
+{
     int i;
 
     for (i = 0; i < BATTLER_MAX; ++i) {
@@ -166,26 +172,31 @@ void BattleSetup_Delete(BattleSetup *setup) {
     Heap_Free(setup);
 }
 
-void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battlerId) {
+void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battlerId)
+{
     GF_ASSERT(battlerId < BATTLER_MAX);
     GF_ASSERT(Party_AddMon(setup->party[battlerId], mon));
 }
 
-static void BattleSetup_SetParty(BattleSetup *setup, Party *party, int battlerId) {
+static void BattleSetup_SetParty(BattleSetup *setup, Party *party, int battlerId)
+{
     GF_ASSERT(battlerId < BATTLER_MAX);
     Party_Copy(party, setup->party[battlerId]);
 }
 
-static void BattleSetup_SetProfile(BattleSetup *setup, PlayerProfile *profile, int battlerId) {
+static void BattleSetup_SetProfile(BattleSetup *setup, PlayerProfile *profile, int battlerId)
+{
     GF_ASSERT(battlerId < BATTLER_MAX);
     PlayerProfile_Copy(profile, setup->profile[battlerId]);
 }
 
-static void BattleSetup_SetChatotVoiceClip(BattleSetup *setup, SOUND_CHATOT *chatot, int battlerId) {
+static void BattleSetup_SetChatotVoiceClip(BattleSetup *setup, SOUND_CHATOT *chatot, int battlerId)
+{
     Chatot_Copy(setup->chatot[battlerId], chatot);
 }
 
-void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveData, u32 mapno, BagCursor *bagCursor, void *arg5) {
+void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveData, u32 mapno, BagCursor *bagCursor, void *arg5)
+{
     PlayerProfile *profile;
     Party *party;
     Bag *bag;
@@ -254,12 +265,14 @@ void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *saveDa
     setup->saveData = saveData;
 }
 
-void BattleSetup_InitFromFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem) {
+void BattleSetup_InitFromFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem)
+{
     sub_02051D18(setup, fieldSystem, fieldSystem->saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);
     BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
-void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fieldSystem, int level) {
+void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fieldSystem, int level)
+{
     PlayerProfile *profile;
     Party *party;
     Bag *bag;
@@ -307,7 +320,8 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
-void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots) {
+void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots)
+{
     PlayerProfile *profile;
     Bag *bag;
     Pokedex *pokedex;
@@ -387,11 +401,13 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     }
 }
 
-void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots) {
+void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots)
+{
     sub_020520B0(setup, fieldSystem, SaveArray_Party_Get(fieldSystem->saveData), partySlots);
 }
 
-static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2) {
+static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2)
+{
     SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
     PhoneCallPersistentState *savings = SaveData_GetPhoneCallPersistentState(fieldSystem->saveData);
 
@@ -415,7 +431,8 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
     }
 }
 
-void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
+void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem)
+{
     PlayerProfile *profile;
     Party *party;
     Bag *bag;
@@ -446,7 +463,8 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     }
 }
 
-void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem) {
+void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem)
+{
     PlayerProfile *profile;
     Party *party;
     Bag *bag;
@@ -486,7 +504,8 @@ static const Terrain _020FC4C0[] = {
     [BATTLE_BG_BATTLE_HALL] = TERRAIN_BATTLE_HALL,
 };
 
-static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg) {
+static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, BattleBg battleBg)
+{
     u8 behavior = GetMetatileBehavior(fieldSystem, fieldSystem->location->x, fieldSystem->location->y);
 
     if (sub_0205B828(behavior)) {
@@ -518,7 +537,8 @@ static Terrain FieldSystem_GetTerrainFromStandingTile(FieldSystem *fieldSystem, 
     return TERRAIN_MAX;
 }
 
-static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
+static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem)
+{
     PlayerSaveData *player = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     setup->battleBg = MapHeader_GetBattleBg(fieldSystem->location->mapId);
 
@@ -529,12 +549,14 @@ static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
     setup->terrain = FieldSystem_GetTerrainFromStandingTile(fieldSystem, setup->battleBg);
 }
 
-void sub_02052544(BattleSetup *setup) {
+void sub_02052544(BattleSetup *setup)
+{
     setup->terrain = TERRAIN_WATER;
     setup->unk_1D0 = TRUE;
 }
 
-BOOL IsBattleResultWin(u32 result) {
+BOOL IsBattleResultWin(u32 result)
+{
     switch (result) {
     case BATTLE_OUTCOME_LOSE:
     case BATTLE_OUTCOME_DRAW:
@@ -544,7 +566,8 @@ BOOL IsBattleResultWin(u32 result) {
     }
 }
 
-BOOL IsBattleResultStaticWildWin(u32 result) {
+BOOL IsBattleResultStaticWildWin(u32 result)
+{
     switch (result) {
     case BATTLE_OUTCOME_WIN:
     case BATTLE_OUTCOME_MON_CAUGHT:
@@ -554,7 +577,8 @@ BOOL IsBattleResultStaticWildWin(u32 result) {
     }
 }
 
-BOOL IsBattleResultLatiCaught(u32 result) {
+BOOL IsBattleResultLatiCaught(u32 result)
+{
     switch (result) {
     case BATTLE_OUTCOME_MON_CAUGHT:
         return FALSE;
@@ -563,7 +587,8 @@ BOOL IsBattleResultLatiCaught(u32 result) {
     }
 }
 
-void BattleSetup_SetAllySideBattlersToPlayer(BattleSetup *setup) {
+void BattleSetup_SetAllySideBattlersToPlayer(BattleSetup *setup)
+{
     setup->trainer[BATTLER_PLAYER].data.trainerClass = PlayerProfile_GetTrainerGender(setup->profile[BATTLER_PLAYER]);
     CopyU16StringArray(setup->trainer[BATTLER_PLAYER].name, PlayerProfile_GetNamePtr(setup->profile[BATTLER_PLAYER]));
     setup->trainer[BATTLER_PLAYER2] = setup->trainer[BATTLER_PLAYER];

@@ -56,7 +56,8 @@ static void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *dat
 static void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations, u32 frame);
 static BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations);
 
-void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem) {
+void FieldSystem_BeginCelebiTimeTravelCutsceneTask(FieldSystem *fieldSystem)
+{
     CelebiTimeTravelCutsceneTaskData *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(CelebiTimeTravelCutsceneTaskData));
     MI_CpuFill8(ptr, 0, sizeof(CelebiTimeTravelCutsceneTaskData));
     ptr->fieldSystem = fieldSystem;
@@ -72,7 +73,8 @@ typedef enum CelebiTimeTravelState {
     CTT_STATE_WAIT_UNLOAD_RESOURCES,
 } CelebiTimeTravelState;
 
-static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
+static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan)
+{
     int *state = TaskManager_GetStatePtr(taskMan);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskMan);
     CelebiTimeTravelCutsceneTaskData *data = TaskManager_GetEnvironment(taskMan);
@@ -127,17 +129,20 @@ static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
     return FALSE;
 }
 
-static void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data) {
+static void CelebiCutscene_StartSwirlTask(CelebiTimeTravelCutsceneTaskData *data)
+{
     data->unk4 = ov01_021F467C(3, 13);
     SysTask_CreateOnMainQueue(Task_CelebiCutsceneSwirl, data, 0);
     data->unk2 = 0;
 }
 
-static BOOL ov02_022526EC(CelebiTimeTravelCutsceneTaskData *data) {
+static BOOL ov02_022526EC(CelebiTimeTravelCutsceneTaskData *data)
+{
     return data->unk2 != 0;
 }
 
-static void Task_CelebiCutsceneSwirl(SysTask *task, void *_data) {
+static void Task_CelebiCutsceneSwirl(SysTask *task, void *_data)
+{
     CelebiTimeTravelCutsceneTaskData *data = _data;
     switch (data->unkEE) {
     case 0:
@@ -154,7 +159,8 @@ static void Task_CelebiCutsceneSwirl(SysTask *task, void *_data) {
     }
 }
 
-static void CelebiCutscene_InitSwirlData(CelebiTimeTravelCutsceneTaskData *data, UnkStruct_02253CE0 *a1) {
+static void CelebiCutscene_InitSwirlData(CelebiTimeTravelCutsceneTaskData *data, UnkStruct_02253CE0 *a1)
+{
     data->isSwirlFinished = FALSE;
     data->unkE6 = 0;
     data->unkE0 = a1->unk0;
@@ -165,7 +171,8 @@ static void CelebiCutscene_InitSwirlData(CelebiTimeTravelCutsceneTaskData *data,
     SysTask_CreateOnMainQueue(Task_CelebiCutsceneSwirlEffect, data, 1);
 }
 
-static BOOL CelebiCutscene_SwirlEffect(CelebiTimeTravelCutsceneTaskData *data) {
+static BOOL CelebiCutscene_SwirlEffect(CelebiTimeTravelCutsceneTaskData *data)
+{
     VecFx32 vec;
     MtxFx33 rotMatrix;
     const VecFx32 vec2 = { 0, 0x1000, 0 };
@@ -187,7 +194,8 @@ static BOOL CelebiCutscene_SwirlEffect(CelebiTimeTravelCutsceneTaskData *data) {
     return data->unkE6 >= data->unkE8;
 }
 
-static void Task_CelebiCutsceneSwirlEffect(SysTask *task, void *_data) {
+static void Task_CelebiCutsceneSwirlEffect(SysTask *task, void *_data)
+{
     CelebiTimeTravelCutsceneTaskData *data = _data;
     if (CelebiCutscene_SwirlEffect(data)) {
         data->isSwirlFinished = TRUE;
@@ -195,11 +203,13 @@ static void Task_CelebiCutsceneSwirlEffect(SysTask *task, void *_data) {
     }
 }
 
-static BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *data) {
+static BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *data)
+{
     return data->isSwirlFinished != FALSE;
 }
 
-static void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data) {
+static void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data)
+{
     const u32 files[3] = { NARC_legend_legend_00000076_NSBCA, NARC_legend_legend_00000078_NSBTP, NARC_legend_legend_00000077_NSBTA };
     GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
     Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, NARC_legend_legend_00000075_NSBMD, HEAP_ID_4);
@@ -219,20 +229,23 @@ static void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data)
     data->unkF1 = 1;
 }
 
-static void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data) {
+static void CelebiCutscene_UnloadResources(CelebiTimeTravelCutsceneTaskData *data)
+{
     for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_Unload(&data->animations[i], &data->alloc);
     }
     Field3dModel_Unload(&data->model);
 }
 
-static void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations, u32 frame) {
+static void CelebiCutsceneAnimations_FrameSet(Field3DModelAnimation *animations, u32 frame)
+{
     for (u8 i = 0; i < 3; i++) {
         Field3dModelAnimation_FrameSet(&animations[i], frame);
     }
 }
 
-static BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations) {
+static BOOL CelebiCutsceneAnimations_FrameAdvanceAndCheck(Field3DModelAnimation *animations)
+{
     u8 i;
     u8 cnt = 0;
     for (i = 0; i < 3; i++) {

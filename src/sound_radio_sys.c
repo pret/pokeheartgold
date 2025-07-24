@@ -4,12 +4,14 @@
 int sRadioSeqNo = 0;
 NNSSndHandle sSndHandle = { NULL };
 
-static void StopMusic(void) {
+static void StopMusic(void)
+{
     GF_SndStopPlayerField();
     GF_SndStopPlayerBgm();
 }
 
-void SndRadio_Init(NNSSndHeapHandle *heap_p) {
+void SndRadio_Init(NNSSndHeapHandle *heap_p)
+{
     NNS_SndHandleInit(&sSndHandle);
     NNS_SndPlayerSetAllocatableChannel(PLAYER_RADIO, 0xA7FE);
     NNS_SndPlayerSetPlayableSeqCount(PLAYER_RADIO, 1);
@@ -17,7 +19,8 @@ void SndRadio_Init(NNSSndHeapHandle *heap_p) {
     sRadioSeqNo = FALSE;
 }
 
-BOOL SndRadio_StartSeq(int seqNo) {
+BOOL SndRadio_StartSeq(int seqNo)
+{
     BOOL result;
 
     StopMusic();
@@ -29,19 +32,23 @@ BOOL SndRadio_StartSeq(int seqNo) {
     return result;
 }
 
-void SndRadio_StopSeq(int fadeFrame) {
+void SndRadio_StopSeq(int fadeFrame)
+{
     NNS_SndPlayerStopSeqByPlayerNo(PLAYER_RADIO, fadeFrame);
     sRadioSeqNo = 0;
 }
 
-int SndRadio_GetSeqNo(void) {
+int SndRadio_GetSeqNo(void)
+{
     return sRadioSeqNo;
 }
 
-void SndRadio_PausePlayer(BOOL flag) {
+void SndRadio_PausePlayer(BOOL flag)
+{
     NNS_SndPlayerPauseByPlayerNo(PLAYER_RADIO, flag);
 }
 
-int SndRadio_CountPlayingSeq(void) {
+int SndRadio_CountPlayingSeq(void)
+{
     return NNS_SndPlayerCountPlayingSeqByPlayerNo(PLAYER_RADIO);
 }

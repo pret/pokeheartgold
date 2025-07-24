@@ -297,7 +297,8 @@ static const int sPokepicShadowUVParams[4][4] = {
     { 0xA0, 0xC0, 0xE0, 0xD0 },
 };
 
-PokepicManager *PokepicManager_Create(HeapID heapId) {
+PokepicManager *PokepicManager_Create(HeapID heapId)
+{
     PokepicManager *ret = AllocFromHeap(heapId, sizeof(PokepicManager));
     MI_CpuClearFast(ret, sizeof(PokepicManager));
     ret->heapId = heapId;
@@ -340,7 +341,8 @@ PokepicManager *PokepicManager_Create(HeapID heapId) {
     return ret;
 }
 
-void PokepicManager_DrawAll(PokepicManager *pokepicManager) {
+void PokepicManager_DrawAll(PokepicManager *pokepicManager)
+{
     int i;
     int width;
     int height;
@@ -444,14 +446,16 @@ void PokepicManager_DrawAll(PokepicManager *pokepicManager) {
     G3_PopMtx(1);
 }
 
-void PokepicManager_Delete(PokepicManager *pokepicManager) {
+void PokepicManager_Delete(PokepicManager *pokepicManager)
+{
     Heap_Free(pokepicManager->charRawData);
     Heap_Free(pokepicManager->plttRawData);
     Heap_Free(pokepicManager->plttRawDataUnfaded);
     Heap_Free(pokepicManager);
 }
 
-void Pokepic_StartAnim(Pokepic *pokepic) {
+void Pokepic_StartAnim(Pokepic *pokepic)
+{
     pokepic->whichAnim = 0;
     for (int i = 0; i < 10; ++i) {
         pokepic->animLoopTimers[i] = 0;
@@ -466,15 +470,18 @@ void Pokepic_StartAnim(Pokepic *pokepic) {
     }
 }
 
-void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript) {
+void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript)
+{
     MI_CpuCopy8(animScript, pokepic->animScript, sizeof(PokepicAnimScript) * 10);
 }
 
-BOOL Pokepic_IsAnimFinished(Pokepic *pokepic) {
+BOOL Pokepic_IsAnimFinished(Pokepic *pokepic)
+{
     return !!pokepic->animActive;
 }
 
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback)
+{
     int i;
     for (i = 0; i < 4; ++i) {
         if (!pokepicManager->pics[i].active) {
@@ -485,7 +492,8 @@ Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTem
     return PokepicManager_CreatePokepicAt(pokepicManager, template, x, y, z, polygonId, i, animScript, callback);
 }
 
-Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback)
+{
     GF_ASSERT(!pokepicManager->pics[picIndex].active);
     MI_CpuClearFast(&pokepicManager->pics[picIndex], sizeof(Pokepic));
     pokepicManager->pics[picIndex].active = TRUE;
@@ -518,17 +526,20 @@ Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicT
     return &pokepicManager->pics[picIndex];
 }
 
-void Pokepic_Delete(Pokepic *pokepic) {
+void Pokepic_Delete(Pokepic *pokepic)
+{
     pokepic->active = FALSE;
 }
 
-void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager) {
+void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager)
+{
     for (int i = 0; i < 4; ++i) {
         Pokepic_Delete(&pokepicManager->pics[i]);
     }
 }
 
-void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
+void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value)
+{
     switch (attr) {
     case POKEPIC_X:
         pokepic->drawParam.xCenter = value;
@@ -679,7 +690,8 @@ void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
     }
 }
 
-int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
+int Pokepic_GetAttr(Pokepic *pokepic, int attr)
+{
     switch (attr) {
     case POKEPIC_X:
         return pokepic->drawParam.xCenter;
@@ -779,7 +791,8 @@ int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
     return 0;
 }
 
-void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
+void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend)
+{
     switch (attr) {
     case POKEPIC_X:
         pokepic->drawParam.xCenter += addend;
@@ -930,7 +943,8 @@ void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
     }
 }
 
-void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height) {
+void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height)
+{
     pokepic->drawParam.visible = TRUE;
     pokepic->drawParam.xOffset2 = x;
     pokepic->drawParam.yOffset2 = y;
@@ -938,7 +952,8 @@ void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height) {
     pokepic->drawParam.height = height;
 }
 
-void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPer, int targetColor) {
+void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPer, int targetColor)
+{
     pokepic->drawParam.fadeActive = TRUE;
     pokepic->drawParam.fadeCur = start;
     pokepic->drawParam.fadeEnd = end;
@@ -947,7 +962,8 @@ void Pokepic_StartPaletteFade(Pokepic *pokepic, int start, int end, int framesPe
     pokepic->drawParam.fadeTargetColor = targetColor;
 }
 
-void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int end, int framesPer, int targetColor) {
+void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int end, int framesPer, int targetColor)
+{
     for (int i = 0; i < 4; ++i) {
         if (pokepicManager->pics[i].active) {
             pokepicManager->pics[i].drawParam.fadeActive = TRUE;
@@ -960,15 +976,18 @@ void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int 
     }
 }
 
-BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic) {
+BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic)
+{
     return pokepic->drawParam.fadeActive == TRUE;
 }
 
-void sub_0200914C(Pokepic *pokepic, int y) {
+void sub_0200914C(Pokepic *pokepic, int y)
+{
     pokepic->drawParam.yOffset = (40 - y) - (((40 - y) * pokepic->drawParam.affineHeight) >> 8);
 }
 
-static inline void runPokepicAnim(u8 *pActive, u8 *pWhichAnimStep, u8 *pWhichAnim, u8 *pStepDelay, u8 *pLoopTimers, const PokepicAnimScript *animScript) {
+static inline void runPokepicAnim(u8 *pActive, u8 *pWhichAnimStep, u8 *pWhichAnim, u8 *pStepDelay, u8 *pLoopTimers, const PokepicAnimScript *animScript)
+{
     if (*pActive != 0) {
         if (*pStepDelay == 0) {
             ++(*pWhichAnim);
@@ -994,7 +1013,8 @@ static inline void runPokepicAnim(u8 *pActive, u8 *pWhichAnimStep, u8 *pWhichAni
     }
 }
 
-static void Pokepic_RunAnimInternal(Pokepic *pokepic) {
+static void Pokepic_RunAnimInternal(Pokepic *pokepic)
+{
     if (pokepic->animActive != 0) {
         if (pokepic->animStepDelay == 0) {
             ++pokepic->whichAnim;
@@ -1022,11 +1042,13 @@ static void Pokepic_RunAnimInternal(Pokepic *pokepic) {
     }
 }
 
-static void Pokepic_RunAnim(Pokepic *pokepic) {
+static void Pokepic_RunAnim(Pokepic *pokepic)
+{
     Pokepic_RunAnimInternal(pokepic);
 }
 
-void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
+void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript)
+{
     anim->active = TRUE;
     anim->animId = 0;
     anim->animStep = animScript->next;
@@ -1037,7 +1059,8 @@ void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript) {
     }
 }
 
-int PokepicAnim_Exec(PokepicAnim *anim) {
+int PokepicAnim_Exec(PokepicAnim *anim)
+{
     if (anim->active) {
         runPokepicAnim(&anim->active, &anim->animStep, &anim->animId, &anim->stepDelay, anim->loopTimers, anim->animScript);
         return anim->animStep;
@@ -1046,38 +1069,45 @@ int PokepicAnim_Exec(PokepicAnim *anim) {
     return -1;
 }
 
-void Pokepic_ScheduleReloadFromNarc(Pokepic *pokepic) {
+void Pokepic_ScheduleReloadFromNarc(Pokepic *pokepic)
+{
     pokepic->needReloadChar = TRUE;
     pokepic->needReloadPltt = TRUE;
 }
 
-void Pokepic_Push(Pokepic *pokepic) {
+void Pokepic_Push(Pokepic *pokepic)
+{
     pokepic->templateBak = pokepic->template;
     pokepic->shadowBak = pokepic->shadow;
 }
 
-void Pokepic_Pop(Pokepic *pokepic) {
+void Pokepic_Pop(Pokepic *pokepic)
+{
     pokepic->template = pokepic->templateBak;
     pokepic->shadow = pokepic->shadowBak;
     pokepic->needReloadChar = TRUE;
     pokepic->needReloadPltt = TRUE;
 }
 
-void PokepicManager_SetCharBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size) {
+void PokepicManager_SetCharBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size)
+{
     pokepicManager->charBaseAddr = addr;
     pokepicManager->charSize = size;
 }
 
-void PokepicManager_SetPlttBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size) {
+void PokepicManager_SetPlttBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size)
+{
     pokepicManager->plttBaseAddr = addr;
     pokepicManager->plttSize = size;
 }
 
-PokepicTemplate *Pokepic_GetTemplate(Pokepic *pokepic) {
+PokepicTemplate *Pokepic_GetTemplate(Pokepic *pokepic)
+{
     return &pokepic->template;
 }
 
-void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager) {
+void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager)
+{
     if (pokepicManager->needLoadImage) {
         pokepicManager->needLoadImage = FALSE;
         NNS_G2dInitImageProxy(&pokepicManager->imageProxy);
@@ -1096,24 +1126,29 @@ void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager) {
     }
 }
 
-void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity) {
+void PokepicManager_SetNeedG3IdentityFlag(PokepicManager *pokepicManager, BOOL needG3Identity)
+{
     pokepicManager->needG3Identity = needG3Identity;
 }
 
-BOOL Pokepic_IsActive(Pokepic *pokepic) {
+BOOL Pokepic_IsActive(Pokepic *pokepic)
+{
     GF_ASSERT(pokepic != NULL);
     return !!pokepic->active;
 }
 
-void PokepicManager_SetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask) {
+void PokepicManager_SetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask)
+{
     pokepicManager->flags |= mask;
 }
 
-void PokepicManager_ResetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask) {
+void PokepicManager_ResetG3UpdateFlagsMask(PokepicManager *pokepicManager, u32 mask)
+{
     pokepicManager->flags &= (mask ^ -1u);
 }
 
-static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
+static void PokepicManager_BufferCharData(PokepicManager *pokepicManager)
+{
     NNSG2dCharacterData *pCharData;
     int i;
     int k;
@@ -1215,7 +1250,8 @@ static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
     pokepicManager->needLoadImage = needCharUpdate;
 }
 
-static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager) {
+static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager)
+{
     NNSG2dPaletteData *plttData;
     int i;
     int j;
@@ -1270,19 +1306,22 @@ static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager) {
     pokepicManager->needLoadPltt = needPlttUpdate;
 }
 
-static u8 swapNybbles(u8 val) {
+static u8 swapNybbles(u8 val)
+{
     u8 ret = (val & 0xF0) >> 4;
     ret |= (val & 0x0F) << 4;
     return ret;
 }
 
-static void Pokepic_MaybeAddSpindaSpots(Pokepic *pokepic, u8 *charData) {
+static void Pokepic_MaybeAddSpindaSpots(Pokepic *pokepic, u8 *charData)
+{
     if (pokepic->template.species != SPECIES_NONE) {
         RawChardata_PlaceSpindaSpots(charData, pokepic->template.personality, TRUE);
     }
 }
 
-void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated) {
+void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated)
+{
     const u8(*spotCoords)[2];
     int i;
     u8 x;
@@ -1335,12 +1374,14 @@ void RawChardata_PlaceSpindaSpots(u8 *pRawData, u32 pid, BOOL isAnimated) {
     }
 }
 
-static u16 lcrngUpdate(u32 *p) {
+static u16 lcrngUpdate(u32 *p)
+{
     *p = *p * 1103515245 + 24691;
     return *p / 65536;
 }
 
-static void UnscanPokepic_PtHGSS(u8 *pRawCharData) {
+static void UnscanPokepic_PtHGSS(u8 *pRawCharData)
+{
     int i;
     u16 *pCharData_asU16 = (u16 *)pRawCharData;
     u32 seed = *pCharData_asU16;
@@ -1350,7 +1391,8 @@ static void UnscanPokepic_PtHGSS(u8 *pRawCharData) {
     }
 }
 
-static void UnscanPokepic_DP(u8 *pRawCharData) {
+static void UnscanPokepic_DP(u8 *pRawCharData)
+{
     int i;
     u16 *pCharData_asU16 = (u16 *)pRawCharData;
     u32 seed = pCharData_asU16[3199];
@@ -1360,7 +1402,8 @@ static void UnscanPokepic_DP(u8 *pRawCharData) {
     }
 }
 
-void UnscanPokepic(u8 *pRawData, NarcId narcId) {
+void UnscanPokepic(u8 *pRawData, NarcId narcId)
+{
     if (narcId == NARC_pbr_pokegra || narcId == NARC_pbr_otherpoke || narcId == NARC_a_0_5_8 || narcId == NARC_a_0_0_6) {
         UnscanPokepic_DP(pRawData);
     } else {

@@ -8,7 +8,8 @@
 
 #include "gear_phone.h"
 
-struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
+struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId)
+{
     FSFile file;
     struct PhoneBook *ret;
     u32 flen;
@@ -32,7 +33,8 @@ struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
     return ret;
 }
 
-void FreePhoneBook(struct PhoneBook *phoneBook) {
+void FreePhoneBook(struct PhoneBook *phoneBook)
+{
     MI_CpuClear8(phoneBook->entries, phoneBook->count * sizeof(struct PhoneBookEntry));
     Heap_Free(phoneBook->entries);
 
@@ -40,7 +42,8 @@ void FreePhoneBook(struct PhoneBook *phoneBook) {
     Heap_Free(phoneBook);
 }
 
-u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId) {
+u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId)
+{
     struct PhoneBook *phoneBook = AllocAndReadPhoneBook(heapId);
     int i;
 
@@ -135,10 +138,12 @@ static const u16 sPhoneMessageGmm[] = {
     NARC_msg_msg_0678_bin, // PHONE_CONTACT_ERNEST
 };
 
-int GetPhoneMessageGmm(int idx) {
+int GetPhoneMessageGmm(int idx)
+{
     return sPhoneMessageGmm[idx];
 }
 
-BOOL sub_02095FF8(int x) {
+BOOL sub_02095FF8(int x)
+{
     return (x % 3) == 2;
 }

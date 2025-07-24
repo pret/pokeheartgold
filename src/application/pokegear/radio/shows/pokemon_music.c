@@ -80,7 +80,8 @@ static const u16 sMusicIDS_GBSounds[] = {
     SEQ_GS_P_OHKIDO,
 };
 
-void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track) {
+void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track)
+{
     PokemonMusicData *data = radioShow->showData;
     u16 seqNo;
     if (track == PKMUSTRACK_GBSOUNDS) {
@@ -93,7 +94,8 @@ void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track) {
     SndRadio_StartSeq(seqNo);
 }
 
-BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
+BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow)
+{
     PokemonMusicData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonMusicData));
     MI_CpuClear8(data, sizeof(PokemonMusicData));
     // data->heapID = radioShow->heapID;
@@ -147,7 +149,8 @@ BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow)
+{
     RadioShow_PokemonMusic_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(PokemonMusicData));
     Heap_Free(radioShow->showData);
@@ -155,7 +158,8 @@ BOOL RadioShow_PokemonMusic_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
+BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow)
+{
     PokemonMusicData *data = radioShow->showData;
 
     switch (data->state) {
@@ -196,12 +200,14 @@ BOOL RadioShow_PokemonMusic_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_PokemonMusic_Init(RadioShow *radioShow) {
+void RadioShow_PokemonMusic_Init(RadioShow *radioShow)
+{
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0416_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0416_00001, radioShow->showHost);
 }
 
-void RadioShow_PokemonMusic_Unload(RadioShow *radioShow) {
+void RadioShow_PokemonMusic_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

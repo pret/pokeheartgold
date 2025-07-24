@@ -16,7 +16,8 @@
 
 void CreateNPCTrainerParty(BattleSetup *battleSetup, int trainerIndex, HeapID heapId);
 
-void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID heapId) {
+void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID heapId)
+{
     Trainer trainer;
     MsgData *msgData;
     const u16 *rivalName;
@@ -43,7 +44,8 @@ void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID h
     DestroyMsgData(msgData);
 }
 
-int TrainerData_GetAttr(u32 trainerIndex, TrainerAttr attr) {
+int TrainerData_GetAttr(u32 trainerIndex, TrainerAttr attr)
+{
     Trainer trainer;
     int result;
     TrainerData_ReadTrData(trainerIndex, &trainer);
@@ -76,7 +78,8 @@ int TrainerData_GetAttr(u32 trainerIndex, TrainerAttr attr) {
     return result;
 }
 
-BOOL TrainerMessageWithIdPairExists(u32 trainerIndex, u32 msg_id, HeapID heapId) {
+BOOL TrainerMessageWithIdPairExists(u32 trainerIndex, u32 msg_id, HeapID heapId)
+{
     u16 rdbuf[3];
     struct NARC *trTblNarc;
     BOOL ret = FALSE;
@@ -100,7 +103,8 @@ BOOL TrainerMessageWithIdPairExists(u32 trainerIndex, u32 msg_id, HeapID heapId)
     return ret;
 }
 
-void GetTrainerMessageByIdPair(u32 trainerIndex, u32 msg_id, String *str, HeapID heapId) {
+void GetTrainerMessageByIdPair(u32 trainerIndex, u32 msg_id, String *str, HeapID heapId)
+{
     u16 rdbuf[3];
     u32 trTblSize;
     NARC *trTblNarc;
@@ -122,11 +126,13 @@ void GetTrainerMessageByIdPair(u32 trainerIndex, u32 msg_id, String *str, HeapID
     }
 }
 
-void TrainerData_ReadTrData(u32 idx, Trainer *dest) {
+void TrainerData_ReadTrData(u32 idx, Trainer *dest)
+{
     ReadWholeNarcMemberByIdPair(dest, NARC_poketool_trainer_trdata, (s32)idx);
 }
 
-void TrainerData_ReadTrPoke(u32 idx, TRPOKE *dest) {
+void TrainerData_ReadTrPoke(u32 idx, TRPOKE *dest)
+{
     ReadWholeNarcMemberByIdPair(dest, NARC_poketool_trainer_trpoke, (s32)idx);
 }
 
@@ -261,14 +267,16 @@ static const u8 sTrainerGenders[] = {
     TRAINER_MALE,   // TRAINERCLASS_PKMN_TRAINER_LUCAS_PT
 };
 
-TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass) {
+TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass)
+{
     return (TrainerGender)sTrainerGenders[trainerClass];
 }
 
 void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid);
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 
-void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) {
+void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId)
+{
     TRPOKE *data; // sp74
     int i;
     int j;
@@ -434,7 +442,8 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, HeapID heapId) 
     SetLCRNGSeed(seedBak); // Restore the RNG state
 }
 
-void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid) {
+void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid)
+{
     int genderOverride = overrideParam & 0xF;
     int abilityOverride = (overrideParam & 0xF0) >> 4;
     if (overrideParam != 0) {
@@ -454,7 +463,8 @@ void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid)
     }
 }
 
-void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon) {
+void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon)
+{
     u8 friendship = FRIENDSHIP_MAX;
     int i;
 

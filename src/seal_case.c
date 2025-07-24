@@ -2,58 +2,71 @@
 
 #include "global.h"
 
-u32 Save_SealCase_sizeof(void) {
+u32 Save_SealCase_sizeof(void)
+{
     return sizeof(SealCase);
 }
 
-void Save_SealCase_Init(SealCase *sealCase) {
+void Save_SealCase_Init(SealCase *sealCase)
+{
     MI_CpuClear8(sealCase, Save_SealCase_sizeof());
 }
 
-void CopyCapsule(const CAPSULE *src, CAPSULE *dest) {
+void CopyCapsule(const CAPSULE *src, CAPSULE *dest)
+{
     MI_CpuCopy8(src, dest, sizeof(CAPSULE));
 }
 
-SealCase *Save_SealCase_Get(SaveData *saveData) {
+SealCase *Save_SealCase_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_SEAL_CASE);
 }
 
-CAPSULE *SealCase_GetCapsuleI(SealCase *sealCase, int i) {
+CAPSULE *SealCase_GetCapsuleI(SealCase *sealCase, int i)
+{
     GF_ASSERT(i < MAX_CAPSULES);
     return &sealCase->capsules[i];
 }
 
-void SealCase_SetCapsuleI(SealCase *sealCase, const CAPSULE *src, int i) {
+void SealCase_SetCapsuleI(SealCase *sealCase, const CAPSULE *src, int i)
+{
     GF_ASSERT(i < MAX_CAPSULES);
     CopyCapsule(src, SealCase_GetCapsuleI(sealCase, i));
 }
 
-SEAL *CapsuleGetSealI(CAPSULE *capsule, int i) {
+SEAL *CapsuleGetSealI(CAPSULE *capsule, int i)
+{
     GF_ASSERT(i < MAX_SEALS_ON_CAPSULE);
     return &capsule->seals[i];
 }
 
-u32 SealOnCapsuleGetID(const SEAL *seal) {
+u32 SealOnCapsuleGetID(const SEAL *seal)
+{
     return seal->kind;
 }
 
-u8 SealOnCapsuleGetX(const SEAL *seal) {
+u8 SealOnCapsuleGetX(const SEAL *seal)
+{
     return seal->x;
 }
 
-u8 SealOnCapsuleGetY(const SEAL *seal) {
+u8 SealOnCapsuleGetY(const SEAL *seal)
+{
     return seal->y;
 }
 
-SEALBAG *SealCase_inventory_Get(SealCase *sealCase) {
+SEALBAG *SealCase_inventory_Get(SealCase *sealCase)
+{
     return &sealCase->inventory;
 }
 
-u8 SealCaseInventory_GetSealQuantity(const SEALBAG *inventory, int sealId) {
+u8 SealCaseInventory_GetSealQuantity(const SEALBAG *inventory, int sealId)
+{
     return inventory->seals[sealId];
 }
 
-BOOL SealIsOnCapsule(const CAPSULE *capsule, int sealId) {
+BOOL SealIsOnCapsule(const CAPSULE *capsule, int sealId)
+{
     int i;
 
     for (i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
@@ -64,7 +77,8 @@ BOOL SealIsOnCapsule(const CAPSULE *capsule, int sealId) {
     return FALSE;
 }
 
-static int SealCase_CountSealOccurrenceInUse(const SealCase *sealCase, int sealId) {
+static int SealCase_CountSealOccurrenceInUse(const SealCase *sealCase, int sealId)
+{
     int i, j, result;
 
     for (result = 0, i = 0; i < MAX_CAPSULES; i++) {
@@ -78,11 +92,13 @@ static int SealCase_CountSealOccurrenceInUse(const SealCase *sealCase, int sealI
     return result;
 }
 
-void SealCaseInventory_SetSealQuantity(SEALBAG *inventory, int sealId, s16 quantity) {
+void SealCaseInventory_SetSealQuantity(SEALBAG *inventory, int sealId, s16 quantity)
+{
     inventory->seals[sealId] = quantity;
 }
 
-BOOL GiveOrTakeSeal(SealCase *sealCase, int sealId, s16 quantity) {
+BOOL GiveOrTakeSeal(SealCase *sealCase, int sealId, s16 quantity)
+{
     int num;
     int total;
 
@@ -106,7 +122,8 @@ BOOL GiveOrTakeSeal(SealCase *sealCase, int sealId, s16 quantity) {
     return TRUE;
 }
 
-BOOL GiveOrTakeSeal2(SealCase *sealCase, int sealId, s16 quantity) {
+BOOL GiveOrTakeSeal2(SealCase *sealCase, int sealId, s16 quantity)
+{
     int num;
     int total;
 
@@ -133,7 +150,8 @@ BOOL GiveOrTakeSeal2(SealCase *sealCase, int sealId, s16 quantity) {
     return TRUE;
 }
 
-BOOL SealCase_CheckSealQuantity(const SealCase *sealCase, int sealId, s16 quantity) {
+BOOL SealCase_CheckSealQuantity(const SealCase *sealCase, int sealId, s16 quantity)
+{
     int num;
     int total;
 
@@ -155,7 +173,8 @@ BOOL SealCase_CheckSealQuantity(const SealCase *sealCase, int sealId, s16 quanti
     }
 }
 
-int SealCase_CountUniqueSeals(const SealCase *sealCase) {
+int SealCase_CountUniqueSeals(const SealCase *sealCase)
+{
     int i, total = 0;
 
     for (i = SEAL_MIN; i < SEAL_MAX + 1; i++) {
@@ -167,7 +186,8 @@ int SealCase_CountUniqueSeals(const SealCase *sealCase) {
     return total;
 }
 
-int SealCase_CountSealOccurrenceAnywhere(const SealCase *sealCase, int sealId) {
+int SealCase_CountSealOccurrenceAnywhere(const SealCase *sealCase, int sealId)
+{
     int num = SealCase_CountSealOccurrenceInUse(sealCase, sealId - 1);
     return num + sealCase->inventory.seals[sealId - 1];
 }

@@ -2,7 +2,8 @@
 
 #include "field_system.h"
 
-static TaskManager *Task_New(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env) {
+static TaskManager *Task_New(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env)
+{
     TaskManager *taskman;
 
     taskman = AllocFromHeapAtEnd((HeapID)32, sizeof(TaskManager));
@@ -17,7 +18,8 @@ static TaskManager *Task_New(FieldSystem *fieldSystem, TaskFunc taskFunc, void *
     return taskman;
 }
 
-TaskManager *FieldSystem_CreateTask(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env) {
+TaskManager *FieldSystem_CreateTask(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env)
+{
     TaskManager *ret;
     GF_ASSERT(fieldSystem->taskman == NULL);
     ret = Task_New(fieldSystem, taskFunc, env);
@@ -25,7 +27,8 @@ TaskManager *FieldSystem_CreateTask(FieldSystem *fieldSystem, TaskFunc taskFunc,
     return ret;
 }
 
-void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env) {
+void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env)
+{
     taskman->func = taskFunc;
     taskman->state = 0;
     taskman->env = env;
@@ -38,7 +41,8 @@ void TaskManager_Jump(TaskManager *taskman, TaskFunc taskFunc, void *env) {
 
 // Synchronously executes a new task, returning to the current task `taskman`
 // once finished.
-void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env) {
+void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env)
+{
     TaskManager *newman;
 
     newman = Task_New(taskman->fieldSystem, taskFunc, env);
@@ -46,7 +50,8 @@ void TaskManager_Call(TaskManager *taskman, TaskFunc taskFunc, void *env) {
     taskman->fieldSystem->taskman = newman;
 }
 
-BOOL FieldSystem_RunTaskFrame(FieldSystem *fieldSystem) {
+BOOL FieldSystem_RunTaskFrame(FieldSystem *fieldSystem)
+{
     TaskManager *prevTask;
 
     if (fieldSystem->taskman == 0) {
@@ -67,23 +72,28 @@ BOOL FieldSystem_RunTaskFrame(FieldSystem *fieldSystem) {
     return FALSE;
 }
 
-BOOL FieldSystem_TaskIsRunning(FieldSystem *fieldSystem) {
+BOOL FieldSystem_TaskIsRunning(FieldSystem *fieldSystem)
+{
     return fieldSystem->taskman != NULL;
 }
 
-BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem) {
+BOOL FieldSystem_ApplicationIsRunning(FieldSystem *fieldSystem)
+{
     return sub_0203DF7C(fieldSystem) || sub_0203DFA4(fieldSystem);
 }
 
-void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem) {
+void FieldSystem_LoadFieldOverlay(FieldSystem *fieldSystem)
+{
     FieldSystem_LoadFieldOverlayInternal(fieldSystem);
 }
 
-BOOL sub_020505C8(FieldSystem *fieldSystem) {
+BOOL sub_020505C8(FieldSystem *fieldSystem)
+{
     return sub_0203DF8C(fieldSystem) != FALSE;
 }
 
-static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
+static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem;
     struct UnkTaskEnv *env;
 
@@ -105,7 +115,8 @@ static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallApplicationAsTask(TaskManager *taskManager, const OverlayManagerTemplate *template, void *work) {
+void CallApplicationAsTask(TaskManager *taskManager, const OverlayManagerTemplate *template, void *work)
+{
     struct UnkTaskEnv *env;
 
     env = AllocFromHeapAtEnd((HeapID)32, sizeof(struct UnkTaskEnv));
@@ -115,18 +126,22 @@ void CallApplicationAsTask(TaskManager *taskManager, const OverlayManagerTemplat
     TaskManager_Call(taskManager, Task_RunApplicationUntilComplete, env);
 }
 
-FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager) {
+FieldSystem *TaskManager_GetFieldSystem(TaskManager *taskManager)
+{
     return taskManager->fieldSystem;
 }
 
-void *TaskManager_GetEnvironment(TaskManager *taskManager) {
+void *TaskManager_GetEnvironment(TaskManager *taskManager)
+{
     return taskManager->env;
 }
 
-u32 *TaskManager_GetStatePtr(TaskManager *taskManager) {
+u32 *TaskManager_GetStatePtr(TaskManager *taskManager)
+{
     return &taskManager->state;
 }
 
-u32 sub_02050658(TaskManager *taskManager) {
+u32 sub_02050658(TaskManager *taskManager)
+{
     return taskManager->unk1C->unk0;
 }

@@ -72,7 +72,8 @@ static const WindowTemplate sBlackoutWindowTemplate = {
     .baseTile = 0x01
 };
 
-static void Blackout_InitDisplays(BgConfig *bgConfig) {
+static void Blackout_InitDisplays(BgConfig *bgConfig)
+{
     GfGfx_SetBanks(&sBlackoutGraphicsBanks);
     SetBothScreensModesAndDisable(&sBlackoutGraphicsModes);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &sBlackoutBgTemplate, GF_BG_TYPE_TEXT);
@@ -80,7 +81,8 @@ static void Blackout_InitDisplays(BgConfig *bgConfig) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_3, RGB_WHITE);
 }
 
-static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager) {
+static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskManager)
+{
     BlackoutScreenEnvironment *env = AllocFromHeap(HEAP_ID_FIELD, sizeof(BlackoutScreenEnvironment));
 
     GF_ASSERT(env != NULL);
@@ -118,7 +120,8 @@ enum {
     STATE_SHOW_PRINTED_BLACKOUT_CLEANUP,
 };
 
-static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
+static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager)
+{
     BlackoutScreenEnvironment *env = TaskManager_GetEnvironment(taskManager);
     switch (env->state) {
     case STATE_SHOW_PRINTED_BLACKOUT_FADE_IN:
@@ -157,7 +160,8 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 msgNo, u8 x, u8 y) {
+static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 msgNo, u8 x, u8 y)
+{
     String *tmpStr = String_New(1024, HEAP_ID_FIELD);
     String *finStr = String_New(1024, HEAP_ID_FIELD);
 
@@ -186,7 +190,8 @@ enum {
     STATE_BLACKOUT_TASK_EXIT
 };
 
-BOOL Task_Blackout(TaskManager *taskManager) {
+BOOL Task_Blackout(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
     LocalFieldData *localFieldData;
@@ -240,6 +245,7 @@ BOOL Task_Blackout(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallTask_Blackout(TaskManager *taskManager) {
+void CallTask_Blackout(TaskManager *taskManager)
+{
     TaskManager_Call(taskManager, Task_Blackout, NULL);
 }

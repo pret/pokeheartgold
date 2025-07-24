@@ -4,7 +4,8 @@
 
 #include "constants/charcode.h"
 
-u16 *CopyU16StringArray(u16 *dest, const u16 *src) {
+u16 *CopyU16StringArray(u16 *dest, const u16 *src)
+{
     while (*src != EOS) {
         *dest = *src;
         src++;
@@ -14,7 +15,8 @@ u16 *CopyU16StringArray(u16 *dest, const u16 *src) {
     return dest;
 }
 
-u16 *CopyU16StringArrayN(u16 *dest, const u16 *src, u32 n) {
+u16 *CopyU16StringArrayN(u16 *dest, const u16 *src, u32 n)
+{
     int i;
     for (i = 0; i < n; i++) {
         dest[i] = src[i];
@@ -23,13 +25,15 @@ u16 *CopyU16StringArrayN(u16 *dest, const u16 *src, u32 n) {
     return dest;
 }
 
-int StringLength(const u16 *str) {
+int StringLength(const u16 *str)
+{
     int i;
     for (i = 0; str[i] != EOS; i++) {}
     return i;
 }
 
-BOOL StringNotEqual(const u16 *a, const u16 *b) {
+BOOL StringNotEqual(const u16 *a, const u16 *b)
+{
     while (*a == *b) {
         if (*a == EOS) {
             return FALSE;
@@ -40,7 +44,8 @@ BOOL StringNotEqual(const u16 *a, const u16 *b) {
     return TRUE;
 }
 
-BOOL StringNotEqualN(const u16 *a, const u16 *b, u32 n) {
+BOOL StringNotEqualN(const u16 *a, const u16 *b, u32 n)
+{
     while (*a == *b) {
         if (n == 0) {
             return FALSE;
@@ -55,7 +60,8 @@ BOOL StringNotEqualN(const u16 *a, const u16 *b, u32 n) {
     return TRUE;
 }
 
-u16 *StringFill(u16 *str, u16 val, u32 n) {
+u16 *StringFill(u16 *str, u16 val, u32 n)
+{
     int i;
     for (i = 0; i < n; i++) {
         str[i] = val;
@@ -63,11 +69,13 @@ u16 *StringFill(u16 *str, u16 val, u32 n) {
     return str + i;
 }
 
-u16 *StringFillEOS(u16 *str, u32 n) {
+u16 *StringFillEOS(u16 *str, u32 n)
+{
     return StringFill(str, EOS, n);
 }
 
-u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u32 ndigits) {
+u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u32 ndigits)
+{
     static const u16 _digit_strcode[] = {
         CHAR_JP_0, CHAR_JP_1, CHAR_JP_2, CHAR_JP_3, CHAR_JP_4, CHAR_JP_5, CHAR_JP_6, CHAR_JP_7, CHAR_JP_8, CHAR_JP_9, CHAR_JP_A, CHAR_JP_B, CHAR_JP_C, CHAR_JP_D, CHAR_JP_E, CHAR_JP_F
 

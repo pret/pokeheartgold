@@ -671,7 +671,8 @@ static const u16 sItemNarcIds[ITEMS_COUNT][4] = {
     [ITEM_ENIGMA_STONE] = { NARC_item_data_0513_bin, NARC_item_icon_item_icon_757_NCGR, NARC_item_icon_item_icon_758_NCLR, AGB_ITEM_NONE                   },
 };
 
-void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heapId) {
+void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heapId)
+{
     ItemSlot *buf;
     int i, j;
     if (from == to) {
@@ -703,7 +704,8 @@ void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID he
     Heap_Free(buf);
 }
 
-int GetItemIndexMapping(u16 itemId, int attrNo) {
+int GetItemIndexMapping(u16 itemId, int attrNo)
+{
     switch (attrNo) {
     case ITEMNARC_PARAM:
         if (itemId != ITEM_NONE && itemId != 0xFFFF) {
@@ -736,7 +738,8 @@ int GetItemIndexMapping(u16 itemId, int attrNo) {
     return 0;
 }
 
-u16 UpConvertItemId_Gen3to4(u16 agbcode) {
+u16 UpConvertItemId_Gen3to4(u16 agbcode)
+{
     u16 ntrcode;
 
     for (ntrcode = ITEM_MIN; ntrcode <= ITEM_MAX; ntrcode++) {
@@ -748,15 +751,18 @@ u16 UpConvertItemId_Gen3to4(u16 agbcode) {
     return ITEM_NONE;
 }
 
-int GetItemIconCell(void) {
+int GetItemIconCell(void)
+{
     return NARC_item_icon_item_icon_001_NCER;
 }
 
-int GetItemIconAnim(void) {
+int GetItemIconAnim(void)
+{
     return NARC_item_icon_item_icon_000_NANR;
 }
 
-void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heapId) {
+void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heapId)
+{
     if (itemId > ITEM_MAX) {
         itemId = ITEM_NONE;
     }
@@ -772,13 +778,15 @@ void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heapId) {
     return NULL;
 }
 
-void GetItemNameIntoString(String *dest, u16 itemId, HeapID heapId) {
+void GetItemNameIntoString(String *dest, u16 itemId, HeapID heapId)
+{
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, heapId);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
-void GetItemDescIntoString(String *dest, u16 itemId, HeapID heapId) {
+void GetItemDescIntoString(String *dest, u16 itemId, HeapID heapId)
+{
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0221_bin, heapId);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
@@ -786,14 +794,16 @@ void GetItemDescIntoString(String *dest, u16 itemId, HeapID heapId) {
 
 static s32 GetItemAttrSub(ItemPartyParam *param, u16 attrno);
 
-s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heapId) {
+s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heapId)
+{
     ItemData *itemData = (ItemData *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heapId);
     s32 ret = GetItemAttr_PreloadedItemData(itemData, attrno);
     Heap_FreeExplicit(heapId, itemData);
     return ret;
 }
 
-s32 GetItemAttr_PreloadedItemData(ItemData *itemData, u16 attrno) {
+s32 GetItemAttr_PreloadedItemData(ItemData *itemData, u16 attrno)
+{
     switch (attrno) {
     case ITEMATTR_PRICE:
         return itemData->price;
@@ -837,7 +847,8 @@ s32 GetItemAttr_PreloadedItemData(ItemData *itemData, u16 attrno) {
     return 0;
 }
 
-static s32 GetItemAttrSub(ItemPartyParam *partyParam, u16 attr) {
+static s32 GetItemAttrSub(ItemPartyParam *partyParam, u16 attr)
+{
     switch (attr) {
     case ITEMATTR_SLP_HEAL:
         return partyParam->slp_heal;
@@ -932,7 +943,8 @@ static s32 GetItemAttrSub(ItemPartyParam *partyParam, u16 attr) {
     }
 }
 
-u16 TMHMGetMove(u16 itemId) {
+u16 TMHMGetMove(u16 itemId)
+{
     if (itemId < ITEM_TM01 || itemId > ITEM_HM08) {
         return MOVE_NONE;
     }
@@ -941,7 +953,8 @@ u16 TMHMGetMove(u16 itemId) {
     return sTMHMMoves[itemId];
 }
 
-BOOL MoveIsHM(u16 moveId) {
+BOOL MoveIsHM(u16 moveId)
+{
     u8 i;
 
     for (i = 0; i < NUM_HMS; i++) {
@@ -953,7 +966,8 @@ BOOL MoveIsHM(u16 moveId) {
     return FALSE;
 }
 
-u8 ItemToTMHMId(u16 itemId) {
+u8 ItemToTMHMId(u16 itemId)
+{
     if (itemId < ITEM_TM01 || itemId > ITEM_HM08) {
         return 0;
     }
@@ -961,7 +975,8 @@ u8 ItemToTMHMId(u16 itemId) {
     return itemId - ITEM_TM01;
 }
 
-BOOL ItemIdIsMail(u16 itemId) {
+BOOL ItemIdIsMail(u16 itemId)
+{
     if (itemId < FIRST_MAIL_IDX || itemId > LAST_MAIL_IDX) {
         return FALSE;
     } else {
@@ -969,7 +984,8 @@ BOOL ItemIdIsMail(u16 itemId) {
     }
 }
 
-u8 ItemToMailId(u16 itemId) {
+u8 ItemToMailId(u16 itemId)
+{
     if (itemId < FIRST_MAIL_IDX || itemId > LAST_MAIL_IDX) {
         return 0;
     } else {
@@ -977,7 +993,8 @@ u8 ItemToMailId(u16 itemId) {
     }
 }
 
-u16 MailToItemId(u8 mailId) {
+u16 MailToItemId(u8 mailId)
+{
     if (mailId >= NUM_MAIL) {
         return ITEM_NONE;
     } else {
@@ -985,7 +1002,8 @@ u16 MailToItemId(u8 mailId) {
     }
 }
 
-s32 ItemToBallId(u16 itemId) {
+s32 ItemToBallId(u16 itemId)
+{
     if (itemId >= ITEM_MASTER_BALL && itemId <= ITEM_CHERISH_BALL) {
         return itemId - ITEM_MASTER_BALL + BALL_MASTER;
     } else if (itemId >= ITEM_FAST_BALL && itemId <= ITEM_SPORT_BALL) {
@@ -995,7 +1013,8 @@ s32 ItemToBallId(u16 itemId) {
     }
 }
 
-u16 BallToItemId(s32 ballId) {
+u16 BallToItemId(s32 ballId)
+{
     if (ballId >= BALL_MASTER && ballId <= BALL_CHERISH) {
         return ballId - BALL_MASTER + ITEM_MASTER_BALL;
     } else if (ballId >= BALL_FAST && ballId <= BALL_SPORT) {
@@ -1005,7 +1024,8 @@ u16 BallToItemId(s32 ballId) {
     }
 }
 
-BOOL ItemIdIsBerry(u16 itemId) {
+BOOL ItemIdIsBerry(u16 itemId)
+{
     if (itemId < FIRST_BERRY_IDX || itemId > LAST_BERRY_IDX) {
         return FALSE;
     } else {
@@ -1013,14 +1033,16 @@ BOOL ItemIdIsBerry(u16 itemId) {
     }
 }
 
-u16 BerryToItemId(u8 berryId) {
+u16 BerryToItemId(u8 berryId)
+{
     if (berryId >= NUM_BERRIES) {
         return 0xFFFF;
     }
     return (u16)(berryId + FIRST_BERRY_IDX);
 }
 
-String *GetNutName(u16 berryId, HeapID heapId) {
+String *GetNutName(u16 berryId, HeapID heapId)
+{
     String *ret;
     MsgData *msgData;
 
@@ -1033,15 +1055,18 @@ String *GetNutName(u16 berryId, HeapID heapId) {
     return ret;
 }
 
-ItemData *LoadAllItemData(HeapID heapId) {
+ItemData *LoadAllItemData(HeapID heapId)
+{
     return AllocAndReadFromNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, 0, heapId, 0, GetItemIndexMapping(ITEM_MAX, ITEMNARC_PARAM) * sizeof(ItemData));
 }
 
-ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx) {
+ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx)
+{
     return &itemData[itemDataIdx];
 }
 
-BOOL ItemIdIsNotJohtoBall(u16 itemId) {
+BOOL ItemIdIsNotJohtoBall(u16 itemId)
+{
     // stupid hack to get it to match
     if ((u16)(itemId + (u16)-ITEM_FAST_BALL) > (ITEM_PARK_BALL - ITEM_FAST_BALL)) {
         return TRUE;

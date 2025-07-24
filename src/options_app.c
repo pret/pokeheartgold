@@ -326,7 +326,8 @@ static void OptionsApp_SetupSprites(OptionsApp_Data *data);
 static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data);
 static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data);
 
-BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
+BOOL OptionsMenu_Init(OverlayManager *manager, int *state)
+{
     OptionsApp_Args *args = OverlayManager_GetArgs(manager);
     CreateHeap(HEAP_ID_3, HEAP_ID_OPTIONS_APP, 0x30000);
 
@@ -356,7 +357,8 @@ BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL OptionsMenu_Exit(OverlayManager *manager, int *state) {
+BOOL OptionsMenu_Exit(OverlayManager *manager, int *state)
+{
     OptionsApp_Data *data = OverlayManager_GetData(manager);
 
     if (data->unk10_0 == 1) {
@@ -390,7 +392,8 @@ BOOL OptionsMenu_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
+BOOL OptionsMenu_Main(OverlayManager *manager, int *state)
+{
     OptionsApp_Data *data = OverlayManager_GetData(manager);
     switch (data->exitState) {
     case 0:
@@ -445,7 +448,8 @@ BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
     return FALSE;
 }
 
-static void OptionsApp_SetupGraphicsBanks(void) {
+static void OptionsApp_SetupGraphicsBanks(void)
+{
     GraphicsBanks banks = {
         .bg = GX_VRAM_BG_128_A,
         .subbg = GX_VRAM_SUB_BG_128_C,
@@ -455,7 +459,8 @@ static void OptionsApp_SetupGraphicsBanks(void) {
     GfGfx_SetBanks(&banks);
 }
 
-static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
+static void OptionsApp_OnVBlank(OptionsApp_Data *data)
+{
     if (data->unk10_21) {
         LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0x6D, 15, data->menuEntries[MENU_ENTRY_FRAME].value, data->heapId);
         data->unk10_21 = FALSE;
@@ -467,7 +472,8 @@ static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
+static BOOL ov54_021E5CE4(OptionsApp_Data *data)
+{
     switch (data->setupAndFreeState) {
     case 0:
         Main_SetVBlankIntrCB(NULL, NULL);
@@ -513,7 +519,8 @@ static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
     return FALSE;
 }
 
-static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
+static BOOL ov54_021E5DBC(OptionsApp_Data *data)
+{
     switch (data->setupAndFreeState) {
     case 0:
         GF_DestroyVramTransferManager();
@@ -545,7 +552,8 @@ static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
     return FALSE;
 }
 
-static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
+static void OptionsApp_SetupBgConfig(OptionsApp_Data *data)
+{
     data->bgConfig = BgConfig_Alloc(data->heapId);
     GraphicsModes modes = {
         .dispMode = GX_DISPMODE_GRAPHICS,
@@ -639,7 +647,8 @@ static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
     BG_ClearCharDataRange(GF_BG_LYR_SUB_1, 32, 0, data->heapId);
 }
 
-static void OptionsApp_FreeBgConfig(OptionsApp_Data *data) {
+static void OptionsApp_FreeBgConfig(OptionsApp_Data *data)
+{
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_1);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_0);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
@@ -648,7 +657,8 @@ static void OptionsApp_FreeBgConfig(OptionsApp_Data *data) {
     Heap_Free(data->bgConfig);
 }
 
-static void OptionsApp_SetupGraphicsData(OptionsApp_Data *data) {
+static void OptionsApp_SetupGraphicsData(OptionsApp_Data *data)
+{
     GfGfxLoader_GXLoadPal(NARC_a_0_7_2, 3, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x40, data->heapId);
     GfGfxLoader_LoadCharData(NARC_a_0_7_2, 8, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, data->heapId);
     GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 19, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, data->heapId);
@@ -660,11 +670,13 @@ static void OptionsApp_SetupGraphicsData(OptionsApp_Data *data) {
     BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, sMenuEntryBorderYCoords[data->currentMenuEntryId]);
 }
 
-static void ov54_021E6000(OptionsApp_Data *data) {
+static void ov54_021E6000(OptionsApp_Data *data)
+{
     // empty, maybe would've been used to free graphics data?
 }
 
-static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
+static void OptionsApp_SetupWindows(OptionsApp_Data *data)
+{
     AddWindowParameterized(data->bgConfig, &data->windows.optionsTitle, GF_BG_LYR_MAIN_1, 1, 0, 12, 3, 13, 0xA);
     AddWindowParameterized(data->bgConfig, &data->windows.selectedOption, GF_BG_LYR_MAIN_1, 1, 3, 30, 18, 13, 0x2E);
     AddWindowParameterized(data->bgConfig, &data->windows.quitButton, GF_BG_LYR_MAIN_1, 24, 21, 7, 3, 13, 0x24A);
@@ -690,7 +702,8 @@ static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
     DrawFrameAndWindow2(&data->windows.frameAndTextSpeedTest, TRUE, 0x6D, 15);
 }
 
-static void OptionsApp_FreeWindows(OptionsApp_Data *data) {
+static void OptionsApp_FreeWindows(OptionsApp_Data *data)
+{
     sub_0200E5D4(&data->windows.selectedOption, FALSE);
     ClearFrameAndWindow2(&data->windows.frameAndTextSpeedTest, FALSE);
 
@@ -702,7 +715,8 @@ static void OptionsApp_FreeWindows(OptionsApp_Data *data) {
     }
 }
 
-static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frameNumText, BOOL instantTextSpeed) {
+static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frameNumText, BOOL instantTextSpeed)
+{
     u32 textFrameDelay = Options_GetTextFrameDelay(data->playerOptions);
 
     if (TextPrinterCheckActive(data->textPrinter)) {
@@ -720,7 +734,8 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
     }
 }
 
-static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
+static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data)
+{
     u16 i;
     String *tmpString = String_New(40, data->heapId);
 
@@ -756,7 +771,8 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     String_Delete(tmpString);
 }
 
-static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {
+static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data)
+{
     u16 i, j;
     u16 msgNum = 0;
     for (i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
@@ -775,7 +791,8 @@ static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {
     data->menuEntries[MENU_ENTRY_6].value = 0;
 }
 
-static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
+static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId)
+{
     u32 selectedColor = MAKE_TEXT_COLOR(1, 2, 0);
     u32 notSelectedColor = MAKE_TEXT_COLOR(15, 2, 0);
     u32 color;
@@ -824,7 +841,8 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
     CopyWindowToVram(&data->windows.selectedOption);
 }
 
-static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset) {
+static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEntryId, OptionsApp_MenuEntry *menuEntry, s32 offset)
+{
     if (menuEntryId == MENU_ENTRY_FRAME) {
         if (offset == -1) {
             Sprite_SetAnimCtrlSeq(data->sprites[5], 1);
@@ -840,7 +858,8 @@ static void OptionsApp_UpdateMenuEntryCarousel(OptionsApp_Data *data, u32 menuEn
     }
 }
 
-static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntry *menuEntry) {
+static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntry *menuEntry)
+{
     if (data->currentMenuEntryId != MENU_ENTRY_6) {
         if (gSystem.newKeys & PAD_KEY_RIGHT) {
             OptionsApp_UpdateMenuEntryCarousel(data, data->currentMenuEntryId, menuEntry, 1);
@@ -900,7 +919,8 @@ static void OptionsApp_HandleKeyInput(OptionsApp_Data *data, OptionsApp_MenuEntr
     }
 }
 
-static void OptionsApp_HandleInput(OptionsApp_Data *data) {
+static void OptionsApp_HandleInput(OptionsApp_Data *data)
+{
     if (gSystem.touchNew != 0) {
         const int hitboxIndex = TouchscreenHitbox_FindRectAtTouchNew(sOptionsAppTouchscreenHitboxes);
         switch (hitboxIndex) {
@@ -959,7 +979,8 @@ static void OptionsApp_HandleInput(OptionsApp_Data *data) {
     }
 }
 
-static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId) {
+static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId)
+{
     if (menuEntryId == MENU_ENTRY_6) {
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
         if (data->menuEntries[menuEntryId].value == 0) {
@@ -977,13 +998,15 @@ static void ov54_021E69D4(OptionsApp_Data *data, u32 menuEntryId) {
     }
 }
 
-static void ov54_021E6A64(OptionsApp_Data *data) {
+static void ov54_021E6A64(OptionsApp_Data *data)
+{
     if (data->currentMenuEntryId == MENU_ENTRY_6) {
         ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
     }
 }
 
-static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
+static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data)
+{
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 
@@ -1024,13 +1047,15 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
 }
 
-static void OptionsApp_FreeSpriteRenderer(OptionsApp_Data *data) {
+static void OptionsApp_FreeSpriteRenderer(OptionsApp_Data *data)
+{
     SpriteSystem_DestroySpriteManager(data->spriteRenderer, data->spriteGfxHandler);
     SpriteSystem_Free(data->spriteRenderer);
     data->spriteGfxHandler = NULL;
 }
 
-static void OptionsApp_SetupSprites(OptionsApp_Data *data) {
+static void OptionsApp_SetupSprites(OptionsApp_Data *data)
+{
     for (u16 i = 0; i < NELEMS(data->sprites); i++) {
         data->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler, &ov54_021E6EAC[i]);
         thunk_Sprite_SetPriority(data->sprites[i], 2);
@@ -1040,7 +1065,8 @@ static void OptionsApp_SetupSprites(OptionsApp_Data *data) {
     Sprite_SetDrawFlag(data->sprites[7], TRUE);
 }
 
-static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {
+static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data)
+{
     for (int i = 0; i < 5; i++) {
         s16 x, y;
         Sprite_GetPositionXY(data->sprites[i], &x, &y);
@@ -1049,7 +1075,8 @@ static void OptionsApp_SetActiveButtonsXPosition(OptionsApp_Data *data) {
     }
 }
 
-static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data) {
+static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *data)
+{
     if (Sprite_IsAnimated(data->sprites[7]) == 0 && Sprite_IsAnimated(data->sprites[8]) == 0) {
         return FALSE;
     }

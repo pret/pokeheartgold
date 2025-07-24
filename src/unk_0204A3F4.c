@@ -37,7 +37,8 @@ static const u8 _020FBF8C[] = { 0, 5, 4, 4, 3, 3, 2, 2, 1, 1, 0, 0 };
 static const u8 _020FBF84[] = { 0, 3, 3, 4, 4, 5, 5, 7 };
 static const u8 _020FBF7C[] = { 0, 8, 9, 11, 12, 14, 15, 18 };
 
-static u32 sub_0204A3F4(u32 a0) {
+static u32 sub_0204A3F4(u32 a0)
+{
     switch (a0) {
     case 0:
     case 4:
@@ -54,7 +55,8 @@ static u32 sub_0204A3F4(u32 a0) {
     }
 }
 
-static BOOL sub_0204A424(SpeciesAndItem *validMons, u32 species, u32 item, s32 size) {
+static BOOL sub_0204A424(SpeciesAndItem *validMons, u32 species, u32 item, s32 size)
+{
     for (s32 i = 0; i < size; i++) {
         if (species == validMons[i].species
             && item != ITEM_NONE
@@ -65,7 +67,8 @@ static BOOL sub_0204A424(SpeciesAndItem *validMons, u32 species, u32 item, s32 s
     return FALSE;
 }
 
-static BOOL sub_0204A450(SpeciesAndItem *mons, s32 size) {
+static BOOL sub_0204A450(SpeciesAndItem *mons, s32 size)
+{
     for (s32 i = 0; i < size - 1; i++) {
         for (s32 j = i + 1; j < size; j++) {
             if (mons[i].species == mons[j].species) {
@@ -79,7 +82,8 @@ static BOOL sub_0204A450(SpeciesAndItem *mons, s32 size) {
     return TRUE;
 }
 
-static BOOL sub_0204A4A0(SpeciesAndItem *validMons, u32 numRequired, s32 numValid, s32 n) {
+static BOOL sub_0204A4A0(SpeciesAndItem *validMons, u32 numRequired, s32 numValid, s32 n)
+{
     // this assumes that numRequired is always either 2, 3, or 4
     SpeciesAndItem mons[4];
     MI_CpuClear8(mons, sizeof(SpeciesAndItem) * NELEMS(mons));
@@ -113,7 +117,8 @@ static BOOL sub_0204A4A0(SpeciesAndItem *validMons, u32 numRequired, s32 numVali
     return FALSE;
 }
 
-BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems) {
+BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
+{
     u8 i;
     u8 partyCount;
     u8 numValid;
@@ -151,19 +156,23 @@ BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
     return sub_0204A4A0(validMons, numRequired, numValid, numValid - numRequired + 1);
 }
 
-void sub_0204A68C(void) {
+void sub_0204A68C(void)
+{
     OS_ResetSystem(0);
 }
 
-void sub_0204A698(u32 a0) {
+void sub_0204A698(u32 a0)
+{
     sub_0202D234(a0);
 }
 
-u32 sub_0204A6A0(u32 a0) {
+u32 sub_0204A6A0(u32 a0)
+{
     return sub_0202D3DC();
 }
 
-void sub_0204A6A8(FieldSystem *fieldSystem) {
+void sub_0204A6A8(FieldSystem *fieldSystem)
+{
     Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
     u32 y = GetPlayerZCoord(fieldSystem->playerAvatar);
     u32 x = GetPlayerXCoord(fieldSystem->playerAvatar);
@@ -175,11 +184,13 @@ void sub_0204A6A8(FieldSystem *fieldSystem) {
     SetFlag966(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
-void sub_0204A6E8(FieldSystem *fieldSystem) {
+void sub_0204A6E8(FieldSystem *fieldSystem)
+{
     ClearFlag966(Save_VarsFlags_Get(fieldSystem->saveData));
 }
 
-u32 sub_0204A6F8(SaveData *saveData, u32 a1) {
+u32 sub_0204A6F8(SaveData *saveData, u32 a1)
+{
     if (a1 == 5) {
         return FALSE;
     } else if (a1 == 6) {
@@ -189,7 +200,8 @@ u32 sub_0204A6F8(SaveData *saveData, u32 a1) {
     }
 }
 
-void sub_0204A730(SaveData *saveData, u8 a1) {
+void sub_0204A730(SaveData *saveData, u8 a1)
+{
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
     if (a1 == 0) {
         sub_0202D5DC(frontierData, 5, 2);
@@ -198,11 +210,13 @@ void sub_0204A730(SaveData *saveData, u8 a1) {
     }
 }
 
-u16 sub_0204A750(SaveData *saveData) {
+u16 sub_0204A750(SaveData *saveData)
+{
     return sub_0202D5DC(Save_FrontierData_Get(saveData), 5, 0);
 }
 
-u32 sub_0204A764(SaveData *saveData) {
+u32 sub_0204A764(SaveData *saveData)
+{
     u32 unk = sub_0202D908(saveData);
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
     u8 unk4 = sub_0202D284(unk, 0, 0);
@@ -222,16 +236,19 @@ u32 sub_0204A764(SaveData *saveData) {
     return unk4;
 }
 
-u16 sub_0204A800(SaveData *saveData) {
+u16 sub_0204A800(SaveData *saveData)
+{
     return sub_0202D7B0(sub_0202D928(saveData));
 }
 
-void sub_0204A810(UnkStruct_Fsys_A0 **a0) {
+void sub_0204A810(UnkStruct_Fsys_A0 **a0)
+{
     GF_ASSERT(*a0 == NULL);
     *a0 = NULL;
 }
 
-UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32 a2) {
+UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32 a2)
+{
     UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
     MI_CpuClear8(unkStruct, sizeof(UnkStruct_Fsys_A0));
     unkStruct->heapId = HEAP_ID_FIELD;
@@ -300,7 +317,8 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
     return unkStruct;
 }
 
-void sub_0204AA2C(UnkStruct_Fsys_A0 *a0) {
+void sub_0204AA2C(UnkStruct_Fsys_A0 *a0)
+{
     if (a0 == NULL) {
         return;
     }
@@ -309,11 +327,13 @@ void sub_0204AA2C(UnkStruct_Fsys_A0 *a0) {
     Heap_Free(a0);
 }
 
-void sub_0204AA58(UnkStruct_Fsys_A0 *a0, TaskManager *taskManager, void *a2) {
+void sub_0204AA58(UnkStruct_Fsys_A0 *a0, TaskManager *taskManager, void *a2)
+{
     sub_02067118(taskManager, a2, 17, 0, a0->unk0e, a0->unk0e, 100, 0);
 }
 
-BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData) {
+BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData)
+{
     Party *party;
     u8 *unk = *a1;
     if (unk[0x27] != 0 || unk[0x26] == 7) {
@@ -333,7 +353,8 @@ BOOL sub_0204AA78(UnkStruct_Fsys_A0 *a0, void **a1, SaveData *saveData) {
     return TRUE;
 }
 
-u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     u16 species[4];
     u16 items[4];
     Party *party = SaveArray_Party_Get(saveData);
@@ -356,7 +377,8 @@ u32 sub_0204AB10(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     return 0;
 }
 
-static BOOL sub_0204ABA0(u16 *a0, u32 a1, u16 a2) {
+static BOOL sub_0204ABA0(u16 *a0, u32 a1, u16 a2)
+{
     for (u16 i = 0; i < a2; i++) {
         if (a1 == a0[i]) {
             return TRUE;
@@ -365,7 +387,8 @@ static BOOL sub_0204ABA0(u16 *a0, u32 a1, u16 a2) {
     return FALSE;
 }
 
-void sub_0204ABC8(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+void sub_0204ABC8(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     // saveData is unused
     s32 i;
     u32 unk;
@@ -395,11 +418,13 @@ void sub_0204ABC8(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     }
 }
 
-u8 sub_0204AC78(UnkStruct_Fsys_A0 *a0) {
+u8 sub_0204AC78(UnkStruct_Fsys_A0 *a0)
+{
     return a0->unk0c;
 }
 
-BOOL sub_0204AC7C(UnkStruct_Fsys_A0 *a0) {
+BOOL sub_0204AC7C(UnkStruct_Fsys_A0 *a0)
+{
     if (a0->unk10_0) {
         return TRUE;
     }
@@ -410,7 +435,8 @@ BOOL sub_0204AC7C(UnkStruct_Fsys_A0 *a0) {
     return FALSE;
 }
 
-static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16 a3) {
+static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16 a3)
+{
     // a2 and a3 are unused
     switch (a0->unk0f) {
     case 0:
@@ -429,7 +455,8 @@ static void sub_0204ACA0(UnkStruct_Fsys_A0 *a0, SaveData *saveData, BOOL a2, u16
     }
 }
 
-void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     GameStats *gameStats = Save_GameStats_Get(saveData);
     FrontierSave *frontierSaveData = Save_Frontier_GetStatic(saveData);
     if (a0->unk0f == 5) {
@@ -462,7 +489,8 @@ void sub_0204AD04(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     sub_0204ACA0(a0, saveData, 0, unk);
 }
 
-void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     if (a0->unk0f == 5) {
         return;
     }
@@ -492,7 +520,8 @@ void sub_0204AE20(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     sub_0204ACA0(a0, saveData, 1, unk6);
 }
 
-void sub_0204AF2C(UnkStruct_Fsys_A0 *a0) {
+void sub_0204AF2C(UnkStruct_Fsys_A0 *a0)
+{
     u8 unk = a0->unk0f;
     sub_0202D308(a0->unk70, 0, &unk);
     unk = a0->unk0c;
@@ -510,25 +539,30 @@ void sub_0204AF2C(UnkStruct_Fsys_A0 *a0) {
     }
 }
 
-void sub_0204AFE0(UnkStruct_Fsys_A0 *a0) {
+void sub_0204AFE0(UnkStruct_Fsys_A0 *a0)
+{
     for (s32 i = 0; i < 5; i++) {
         a0->unk838[i] = sub_0204BA04(a0, &a0->unk298[i], 300 + i, a0->unk0e, a0->unk2e, a0->unk36, &a0->unk7e8[i], a0->heapId);
     }
 }
 
-u32 sub_0204B044(UnkStruct_Fsys_A0 *a0, u32 a1) {
+u32 sub_0204B044(UnkStruct_Fsys_A0 *a0, u32 a1)
+{
     sub_0204B5E8(a0->unk78[a1].unk04);
 }
 
-u32 sub_0204B05C(UnkStruct_Fsys_A0 *a0) {
+u32 sub_0204B05C(UnkStruct_Fsys_A0 *a0)
+{
     return a0->unk0f;
 }
 
-u32 sub_0204B060(UnkStruct_Fsys_A0 *a0) {
+u32 sub_0204B060(UnkStruct_Fsys_A0 *a0)
+{
     return a0->unk10_1;
 }
 
-u32 sub_0204B068(UnkStruct_Fsys_A0 *a0) {
+u32 sub_0204B068(UnkStruct_Fsys_A0 *a0)
+{
     u32 unk;
     if (a0->unk0f == 5) {
         return 0;
@@ -558,7 +592,8 @@ u32 sub_0204B068(UnkStruct_Fsys_A0 *a0) {
     return unk;
 }
 
-BOOL sub_0204B0E0(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+BOOL sub_0204B0E0(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     u32 unk = sub_0204A6F8(saveData, a0->unk0f);
     if (unk < 50) {
         return FALSE;
@@ -572,7 +607,8 @@ BOOL sub_0204B0E0(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     return TRUE;
 }
 
-u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
+u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2)
+{
     FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
     switch (a2) {
     case 0:
@@ -609,7 +645,8 @@ u32 sub_0204B120(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
     return 0;
 }
 
-BOOL sub_0204B1CC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+BOOL sub_0204B1CC(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     if (a0->unk0f != 0) {
         return FALSE;
     }
@@ -622,7 +659,8 @@ BOOL sub_0204B1CC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     return FALSE;
 }
 
-BOOL sub_0204B204(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+BOOL sub_0204B204(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     if (a0->unk0f == 5) {
         return FALSE;
     }
@@ -650,7 +688,8 @@ BOOL sub_0204B204(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     return sub_0204B2B8(saveData, ribbon, a0);
 }
 
-u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
+u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData)
+{
     u8 unk;
     if (a0->unk0f == 6) {
         unk = FrontierSave_GetStat(Save_Frontier_GetStatic(saveData), 100, sub_0205C268(100));
@@ -665,7 +704,8 @@ u16 sub_0204B258(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     return a0->unk08 / 0xffff;
 }
 
-static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2) {
+static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2)
+{
     u8 value = TRUE;
     Party *party = SaveArray_Party_Get(saveData);
     u8 count = 0;
@@ -683,7 +723,8 @@ static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2) 
     }
 }
 
-static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0) {
+static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0)
+{
     if (a0->unk0f == 5 || a0->unk0f == 0 || a0->unk0f == 6 || a0->unk0f == 4) {
         return FALSE;
     }
@@ -694,7 +735,8 @@ static u32 sub_0204B318(UnkStruct_Fsys_A0 *a0) {
     return TRUE;
 }
 
-static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
+static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon)
+{
     a0->species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     a0->form = GetMonData(mon, MON_DATA_FORM, NULL);
     a0->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
@@ -714,7 +756,8 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
     GetMonData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
 }
 
-static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
+static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2)
+{
     UnkStruct_0204B470 *unkStructs = AllocFromHeapAtEnd(a0->heapId, 3 * sizeof(UnkStruct_0204B470));
     MI_CpuClear8(unkStructs, 3 * sizeof(UnkStruct_0204B470));
     Party *party = SaveArray_Party_Get(saveData);
@@ -726,7 +769,8 @@ static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
     Heap_Free(unkStructs);
 }
 
-u8 sub_0204B4D4(u32 frontierTrainerIndex) {
+u8 sub_0204B4D4(u32 frontierTrainerIndex)
+{
     if (frontierTrainerIndex < 100) {
         return 3;
     }
@@ -751,7 +795,8 @@ u8 sub_0204B4D4(u32 frontierTrainerIndex) {
     return 31;
 }
 
-u16 sub_0204B510(UnkStruct_Fsys_A0 *a0) {
+u16 sub_0204B510(UnkStruct_Fsys_A0 *a0)
+{
     if (a0->unk0f == 6) {
         return LCRandom();
     }

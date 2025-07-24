@@ -543,7 +543,8 @@ static const int sBgPicNCGR_NCLR[10][2] = {
      },
 };
 
-BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState) {
+BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_OAKS_SPEECH, 0x40000);
     OakSpeechData *data = OverlayManager_CreateAndGetData(ovyMan, sizeof(OakSpeechData), HEAP_ID_OAKS_SPEECH);
     memset(data, 0, sizeof(OakSpeechData));
@@ -563,7 +564,8 @@ BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState) {
     return TRUE;
 }
 
-BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState) {
+BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState)
+{
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
     BOOL ret = FALSE;
     switch (*pState) {
@@ -636,7 +638,8 @@ BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState) {
     return ret;
 }
 
-BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState) {
+BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState)
+{
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
     HeapID heapId = data->heapId;
     FontID_Release(4);
@@ -652,26 +655,30 @@ BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState) {
     return TRUE;
 }
 
-int OakSpeech_DeadstrippedFunction1(int a0) {
+int OakSpeech_DeadstrippedFunction1(int a0)
+{
     int arr[1];
     ARRAY_ASSIGN(arr, ov53_021E84F8);
     return ov53_021E84F8[a0];
 }
 
-int OakSpeech_DeadstrippedFunction2(int a0) {
+int OakSpeech_DeadstrippedFunction2(int a0)
+{
     int arr[1];
     ARRAY_ASSIGN(arr, ov53_021E84FC);
     return ov53_021E84FC[a0];
 }
 
-static void OakSpeech_VBlankCB(void *cbArg) {
+static void OakSpeech_VBlankCB(void *cbArg)
+{
     OakSpeechData *data = cbArg;
 
     DoScheduledBgGpuUpdates(data->bgConfig);
     SpriteSystem_TransferOam();
 }
 
-static void OakSpeech_InitBgs(OakSpeechData *data) {
+static void OakSpeech_InitBgs(OakSpeechData *data)
+{
     {
         GraphicsBanks graphicsBanks = sGraphicsBank;
         GfGfx_SetBanks(&graphicsBanks);
@@ -749,7 +756,8 @@ static void OakSpeech_InitBgs(OakSpeechData *data) {
     data->layerBlendState = 0;
 }
 
-static void OakSpeech_CleanupBgs(OakSpeechData *data) {
+static void OakSpeech_CleanupBgs(OakSpeechData *data)
+{
     ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
@@ -769,7 +777,8 @@ static void OakSpeech_CleanupBgs(OakSpeechData *data) {
     Heap_Free(data->bgConfig);
 }
 
-static void OakSpeech_InitMsgPrinter(OakSpeechData *data) {
+static void OakSpeech_InitMsgPrinter(OakSpeechData *data)
+{
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0219_bin, data->heapId);
     ResetAllTextPrinters();
     data->unk_114 = sub_020163E0(NULL, PM_LCD_TOP, 6, data->heapId);
@@ -779,13 +788,15 @@ static void OakSpeech_InitMsgPrinter(OakSpeechData *data) {
     data->unk_080 = 0;
 }
 
-static void OakSpeech_CleanupMsgPrinter(OakSpeechData *data) {
+static void OakSpeech_CleanupMsgPrinter(OakSpeechData *data)
+{
     MessageFormat_Delete(data->msgFormat);
     sub_020164C4(data->unk_114);
     DestroyMsgData(data->msgData);
 }
 
-static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut) {
+static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut)
+{
     BOOL ret = FALSE;
     GXBlendPlaneMask plane;
     PMLCDTarget screen;
@@ -918,7 +929,8 @@ static BOOL OakSpeech_BlendLayer(OakSpeechData *data, int param, BOOL isFadeOut)
     return ret;
 }
 
-static BOOL OakSpeech_WaitFrames(OakSpeechData *data, int delay) {
+static BOOL OakSpeech_WaitFrames(OakSpeechData *data, int delay)
+{
     if (data->frameDelayCounter < delay) {
         ++data->frameDelayCounter;
         return FALSE;
@@ -928,12 +940,14 @@ static BOOL OakSpeech_WaitFrames(OakSpeechData *data, int delay) {
     }
 }
 
-static void OakSpeech_FillBgLayerWithPalette(OakSpeechData *data, int bgId, int palette) {
+static void OakSpeech_FillBgLayerWithPalette(OakSpeechData *data, int bgId, int palette)
+{
     BgTilemapRectChangePalette(data->bgConfig, bgId, 0, 0, 32, 24, palette);
     BgCommitTilemapBufferToVram(data->bgConfig, bgId);
 }
 
-static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitButtonMode) {
+static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitButtonMode)
+{
     BOOL ret = FALSE;
 
     switch (data->printDialogMsgState) {
@@ -983,7 +997,8 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
     return ret;
 }
 
-static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum, int kind, int y, int height) {
+static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum, int kind, int y, int height)
+{
     BOOL ret = FALSE;
     WindowTemplate windowTemplate;
 
@@ -1060,7 +1075,8 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
     return ret;
 }
 
-static BOOL OakSpeech_PrintAndFadeCenteredFullScreenText(OakSpeechData *data, int msgNum, int kind) {
+static BOOL OakSpeech_PrintAndFadeCenteredFullScreenText(OakSpeechData *data, int msgNum, int kind)
+{
     return OakSpeech_PrintAndFadeFullScreenText(data, msgNum, kind, 0xFFFF, 0xFFFF);
 }
 
@@ -1116,7 +1132,8 @@ static const WindowTemplate sMultichoiceMenuButtonWindowTemplates[][3] = {
      },
 };
 
-static void OakSpeech_PrintMultichoiceMenu(OakSpeechData *data, int msg1, int msg2, int msg3, int numChoices) {
+static void OakSpeech_PrintMultichoiceMenu(OakSpeechData *data, int msg1, int msg2, int msg3, int numChoices)
+{
     int msgIds[3];
     int i;
     int x;
@@ -1146,14 +1163,16 @@ static void OakSpeech_PrintMultichoiceMenu(OakSpeechData *data, int msg1, int ms
     }
 }
 
-static void OakSpeech_FreeWindows(OakSpeechData *data) {
+static void OakSpeech_FreeWindows(OakSpeechData *data)
+{
     for (int i = 0; i < data->numMultichoiceOptions; ++i) {
         RemoveWindow(&data->multichoiceMenuButtonWindows[i]);
     }
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
 }
 
-static void OakSpeech_LoadButtonTutorialGfx(OakSpeechData *data) {
+static void OakSpeech_LoadButtonTutorialGfx(OakSpeechData *data)
+{
     int plttId_Main;
     int plttId_Sub;
     NNSG2dPaletteData *plttData;
@@ -1183,7 +1202,8 @@ static void OakSpeech_LoadButtonTutorialGfx(OakSpeechData *data) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-static void OakSpeech_SetButtonTutorialScreenLayout(OakSpeechData *data, int a1) {
+static void OakSpeech_SetButtonTutorialScreenLayout(OakSpeechData *data, int a1)
+{
     int sp10[6];
     ARRAY_ASSIGN(sp10, sButtonTutorialNSCR);
 
@@ -1192,7 +1212,8 @@ static void OakSpeech_SetButtonTutorialScreenLayout(OakSpeechData *data, int a1)
     }
 }
 
-static void OakSpeech_DrawPicOnBgLayer(OakSpeechData *data, int layer1pic, int layer2pic) {
+static void OakSpeech_DrawPicOnBgLayer(OakSpeechData *data, int layer1pic, int layer2pic)
+{
     int sp10[10][2];
     ARRAY_ASSIGN(sp10, sBgPicNCGR_NCLR);
 
@@ -1211,7 +1232,8 @@ static void OakSpeech_DrawPicOnBgLayer(OakSpeechData *data, int layer1pic, int l
     }
 }
 
-static void ov53_021E67C4(OakSpeechData *data, int a1) {
+static void ov53_021E67C4(OakSpeechData *data, int a1)
+{
     int sp10[5];
     ARRAY_ASSIGN(sp10, ov53_021E8558);
 
@@ -1225,7 +1247,8 @@ static void ov53_021E67C4(OakSpeechData *data, int a1) {
     }
 }
 
-static void ov53_021E6824(OakSpeechData *data, int a1) {
+static void ov53_021E6824(OakSpeechData *data, int a1)
+{
     int sp10[3][2];
     ARRAY_ASSIGN(sp10, ov53_021E8584);
 
@@ -1248,7 +1271,8 @@ static void ov53_021E6824(OakSpeechData *data, int a1) {
     }
 }
 
-static void OakSpeech_InitMultichoiceMenu(OakSpeechMultichoice *dest, int menuId) {
+static void OakSpeech_InitMultichoiceMenu(OakSpeechMultichoice *dest, int menuId)
+{
     dest->cursorPos = 0;
     dest->unk_0 = 0;
     dest->numOptions = sMultichoiceMenuParam[menuId][1];
@@ -1258,7 +1282,8 @@ static void OakSpeech_InitMultichoiceMenu(OakSpeechMultichoice *dest, int menuId
     dest->inPadMode = 0;
 }
 
-static void OakSpeech_InitMultichoiceMenuWithFrameFlash(OakSpeechData *data, int menuId) {
+static void OakSpeech_InitMultichoiceMenuWithFrameFlash(OakSpeechData *data, int menuId)
+{
     data->menuData.unk_0 = 0;
     data->menuData.numOptions = sMultichoiceMenuParam[menuId][1];
     data->menuData.flashDelay = 0;
@@ -1267,7 +1292,8 @@ static void OakSpeech_InitMultichoiceMenuWithFrameFlash(OakSpeechData *data, int
     GfGfxLoader_LoadCharData(NARC_demo_intro_intro, NARC_intro_intro_00000042_NCGR, data->bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, data->heapId);
 }
 
-static int OakSpeech_MultichoiceMenuHandleInputVertical(OakSpeechData *data, int menuId) {
+static int OakSpeech_MultichoiceMenuHandleInputVertical(OakSpeechData *data, int menuId)
+{
     int ret = -1;
     int hitbox;
 
@@ -1337,7 +1363,8 @@ static int OakSpeech_MultichoiceMenuHandleInputVertical(OakSpeechData *data, int
     return ret;
 }
 
-static u16 OakSpeech_AdditiveTransformColor(u16 pltt, s8 delta) {
+static u16 OakSpeech_AdditiveTransformColor(u16 pltt, s8 delta)
+{
     int r = pltt & 0x1F;
     int g = (pltt >> 5) & 0x1F;
     int b = (pltt >> 10);
@@ -1364,7 +1391,8 @@ static u16 OakSpeech_AdditiveTransformColor(u16 pltt, s8 delta) {
     return (b << 10) | (g << 5) | r;
 }
 
-static void OakSpeech_BlinkHighlightedGenderFrame(OakSpeechData *data, int reset) {
+static void OakSpeech_BlinkHighlightedGenderFrame(OakSpeechData *data, int reset)
+{
     int brightnessMod = 0;
     u16 plttBuf[2];
 
@@ -1382,7 +1410,8 @@ static void OakSpeech_BlinkHighlightedGenderFrame(OakSpeechData *data, int reset
     BG_LoadPlttData(GF_BG_LYR_SUB_2, plttBuf, sizeof(plttBuf), sButtonBlinkPalOffsets[!data->menuData.cursorPos] * 2);
 }
 
-static void OakSpeech_StopHighlightedGenderFrameBlink(OakSpeechData *data) {
+static void OakSpeech_StopHighlightedGenderFrameBlink(OakSpeechData *data)
+{
     u16 plttBuf[2];
 
     plttBuf[0] = data->genderSelectFrameDefaultPalette;
@@ -1391,7 +1420,8 @@ static void OakSpeech_StopHighlightedGenderFrameBlink(OakSpeechData *data) {
     BG_LoadPlttData(GF_BG_LYR_SUB_2, plttBuf, sizeof(plttBuf), sButtonBlinkPalOffsets[1] * 2);
 }
 
-static BOOL OakSpeech_GenderSelectHandleInput(OakSpeechData *data) {
+static BOOL OakSpeech_GenderSelectHandleInput(OakSpeechData *data)
+{
     BOOL ret = FALSE;
     int hitbox;
 
@@ -1441,12 +1471,14 @@ static BOOL OakSpeech_GenderSelectHandleInput(OakSpeechData *data) {
     return ret;
 }
 
-static void OakSpeech_InitPlayerPicShrinkAnim(OakSpeechData *data) {
+static void OakSpeech_InitPlayerPicShrinkAnim(OakSpeechData *data)
+{
     data->playerPicShrinkAnimStep = 0;
     data->playerPicShrinkAnimDelay = 0;
 }
 
-static BOOL OakSpeech_PlayerPicShrinkAnim(OakSpeechData *data) {
+static BOOL OakSpeech_PlayerPicShrinkAnim(OakSpeechData *data)
+{
     BOOL ret = FALSE;
     int gfxId;
 
@@ -1474,7 +1506,8 @@ static BOOL OakSpeech_PlayerPicShrinkAnim(OakSpeechData *data) {
     return ret;
 }
 
-static int OakSpeech_GetTimeOfDayIntroMsg(void) {
+static int OakSpeech_GetTimeOfDayIntroMsg(void)
+{
     RTCDate date;
     RTCTime time;
     int ret = msg_0219_00001;
@@ -1494,7 +1527,8 @@ static int OakSpeech_GetTimeOfDayIntroMsg(void) {
     return ret;
 }
 
-static BOOL OakSpeech_TranslateOakPicHorizontally(OakSpeechData *data, int bgId, int direction) {
+static BOOL OakSpeech_TranslateOakPicHorizontally(OakSpeechData *data, int bgId, int direction)
+{
     switch (data->oakPicHTranslateState) {
     case 0:
         data->oakPicHTranslateState = 1;
@@ -1523,7 +1557,8 @@ static BOOL OakSpeech_TranslateOakPicHorizontally(OakSpeechData *data, int bgId,
     return FALSE;
 }
 
-static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
+static BOOL OakSpeech_DoMainTask(OakSpeechData *data)
+{
     BOOL ret = FALSE;
 
     switch (data->state) {
@@ -2153,7 +2188,8 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
     return ret;
 }
 
-static void OakSpeech_CreateMultichoiceYesNoMenu(OakSpeechData *data) {
+static void OakSpeech_CreateMultichoiceYesNoMenu(OakSpeechData *data)
+{
     ov53_021E6824(data, 1);
     ov53_021E67C4(data, 4);
     OakSpeech_PrintMultichoiceMenu(data, msg_0219_00047, msg_0219_00048, 0, 2);
@@ -2161,12 +2197,14 @@ static void OakSpeech_CreateMultichoiceYesNoMenu(OakSpeechData *data) {
     BgCommitTilemapBufferToVram(data->bgConfig, GF_BG_LYR_SUB_3);
 }
 
-static void OakSpeech_ClearBgLayer0TopBottomAndCommit(OakSpeechData *data) {
+static void OakSpeech_ClearBgLayer0TopBottomAndCommit(OakSpeechData *data)
+{
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
 }
 
-static void OakSpeech_ShowTutorialTouchMsg(OakSpeechData *data) {
+static void OakSpeech_ShowTutorialTouchMsg(OakSpeechData *data)
+{
     String *string = String_New(0x400, data->heapId);
     Window *window = &data->controlTutorialTouchMsgWindow;
 
@@ -2179,7 +2217,8 @@ static void OakSpeech_ShowTutorialTouchMsg(OakSpeechData *data) {
     String_Delete(string);
 }
 
-static void OakSpeech_HideTutorialTouchMsg(OakSpeechData *data) {
+static void OakSpeech_HideTutorialTouchMsg(OakSpeechData *data)
+{
     Window *window = &data->controlTutorialTouchMsgWindow;
     AddWindow(data->bgConfig, window, &ov53_021E8518);
     FillWindowPixelBuffer(window, 0);
@@ -2187,7 +2226,8 @@ static void OakSpeech_HideTutorialTouchMsg(OakSpeechData *data) {
     RemoveWindow(window);
 }
 
-static void OakSpeech_TouchToAdvanceButtonAction(OakSpeechData *data, int action) {
+static void OakSpeech_TouchToAdvanceButtonAction(OakSpeechData *data, int action)
+{
     GF_ASSERT(data != NULL);
     switch (action) {
     case TOUCHTOADVANCE_HIDE:
@@ -2212,16 +2252,19 @@ static void OakSpeech_TouchToAdvanceButtonAction(OakSpeechData *data, int action
     }
 }
 
-static BOOL OakSpeech_IsTouchToAdvanceButtonDepressed(OakSpeechData *data) {
+static BOOL OakSpeech_IsTouchToAdvanceButtonDepressed(OakSpeechData *data)
+{
     return Sprite_GetAnimationNumber(data->sprites[3]) == 1;
 }
 
-static BOOL OakSpeech_IsTouchToAdvanceButtonActive(OakSpeechData *data) {
+static BOOL OakSpeech_IsTouchToAdvanceButtonActive(OakSpeechData *data)
+{
     GF_ASSERT(data != NULL);
     return Sprite_GetDrawFlag(data->sprites[3]) == TRUE;
 }
 
-static void OakSpeech_HandleTouchToAdvanceButton(OakSpeechData *data) {
+static void OakSpeech_HandleTouchToAdvanceButton(OakSpeechData *data)
+{
     int hitbox;
     if (OakSpeech_IsTouchToAdvanceButtonActive(data)) {
         hitbox = TouchscreenHitbox_FindRectAtTouchHeld(ov53_021E8510);

@@ -16,7 +16,8 @@ typedef struct TeamRocketRadioData {
 void RadioShow_TeamRocket_Init(RadioShow *radioShow);
 void RadioShow_TeamRocket_Unload(RadioShow *radioShow);
 
-BOOL RadioShow_TeamRocket_Setup(RadioShow *radioShow) {
+BOOL RadioShow_TeamRocket_Setup(RadioShow *radioShow)
+{
     TeamRocketRadioData *data = AllocFromHeap(radioShow->heapID, sizeof(TeamRocketRadioData));
     MI_CpuClear8(data, sizeof(TeamRocketRadioData));
     // data->heapID = radioShow->heapID;
@@ -28,7 +29,8 @@ BOOL RadioShow_TeamRocket_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_TeamRocket_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_TeamRocket_Teardown(RadioShow *radioShow)
+{
     RadioShow_TeamRocket_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(TeamRocketRadioData));
     Heap_Free(radioShow->showData);
@@ -36,7 +38,8 @@ BOOL RadioShow_TeamRocket_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_TeamRocket_Print(RadioShow *radioShow) {
+BOOL RadioShow_TeamRocket_Print(RadioShow *radioShow)
+{
     TeamRocketRadioData *data = radioShow->showData;
 
     switch (data->state) {
@@ -53,12 +56,14 @@ BOOL RadioShow_TeamRocket_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_TeamRocket_Init(RadioShow *radioShow) {
+void RadioShow_TeamRocket_Init(RadioShow *radioShow)
+{
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0418_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0418_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0418_00001, radioShow->showHost);
 }
 
-void RadioShow_TeamRocket_Unload(RadioShow *radioShow) {
+void RadioShow_TeamRocket_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

@@ -42,7 +42,8 @@ typedef enum BattleState {
     BSTATE_EXIT
 } BattleState;
 
-BOOL Battle_Run(OverlayManager *man, int *state) {
+BOOL Battle_Run(OverlayManager *man, int *state)
+{
     BattleSetup *setup = OverlayManager_GetArgs(man);
 
     switch (*state) {
@@ -168,7 +169,8 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-void ov12_02237B0C(BattleSystem *bsys) {
+void ov12_02237B0C(BattleSystem *bsys)
+{
     ov12_0226631C(bsys->unk19C);
     ov12_022660A8(bsys->bgConfig);
     bsys->unk240E_F = 1;
@@ -183,7 +185,8 @@ void ov12_02237B0C(BattleSystem *bsys) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_8), OVY_LOAD_ASYNC);
 }
 
-void ov12_02237B6C(BattleSystem *bsys) {
+void ov12_02237B6C(BattleSystem *bsys)
+{
     Main_SetVBlankIntrCB(NULL, NULL);
     ov12_0226631C(bsys->unk19C);
     RemoveWindow(bsys->window);
@@ -195,7 +198,8 @@ void ov12_02237B6C(BattleSystem *bsys) {
     FontID_Release(4);
 }
 
-void ov12_02237BB8(BattleSystem *bsys) {
+void ov12_02237BB8(BattleSystem *bsys)
+{
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_8));
 
     if (bsys->unk2445 == 0) {
@@ -234,7 +238,8 @@ void ov12_02237BB8(BattleSystem *bsys) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(bsys->spriteRenderer), 0, FX32_CONST(272));
 }
 
-void ov12_02237CC4(BattleSystem *bsys) {
+void ov12_02237CC4(BattleSystem *bsys)
+{
     RemoveWindow(bsys->window);
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);

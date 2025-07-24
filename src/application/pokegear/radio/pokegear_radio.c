@@ -25,7 +25,8 @@ int PokegearRadio_MainTask_FadeOut(PokegearRadioAppData *radioApp);
 int PokegearRadio_MainState_FadeInApp(PokegearRadioAppData *radioApp);
 int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp);
 
-BOOL PokegearRadio_Init(OverlayManager *man, int *state) {
+BOOL PokegearRadio_Init(OverlayManager *man, int *state)
+{
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x20000);
     PokegearRadioAppData *radioApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearRadioAppData), HEAP_ID_POKEGEAR_APP);
@@ -36,7 +37,8 @@ BOOL PokegearRadio_Init(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL PokegearRadio_Main(OverlayManager *man, int *state) {
+BOOL PokegearRadio_Main(OverlayManager *man, int *state)
+{
     PokegearRadioAppData *radioApp = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -68,7 +70,8 @@ BOOL PokegearRadio_Main(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
+BOOL PokegearRadio_Exit(OverlayManager *man, int *state)
+{
     PokegearRadioAppData *radioApp = OverlayManager_GetData(man);
 
     Radio_Unload(radioApp);
@@ -79,7 +82,8 @@ BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-void Radio_Load(PokegearRadioAppData *radioApp) {
+void Radio_Load(PokegearRadioAppData *radioApp)
+{
     radioApp->pokegear->childAppdata = radioApp;
     radioApp->pokegear->reselectAppCB = Radio_OnReselectApp;
     radioApp->pokegear->unknownCB = Radio_UnknownCB;
@@ -91,7 +95,8 @@ void Radio_Load(PokegearRadioAppData *radioApp) {
     radioApp->bgmBak = GF_GetCurrentPlayingBGM();
 }
 
-void Radio_Unload(PokegearRadioAppData *radioApp) {
+void Radio_Unload(PokegearRadioAppData *radioApp)
+{
     Pokegear_SetRadioCursorCoords(radioApp->pokegear->savePokegear, radioApp->cursorX, radioApp->cursorY);
     radioApp->pokegear->reselectAppCB = NULL;
     radioApp->pokegear->unknownCB = NULL;
@@ -138,7 +143,8 @@ static const u8 sNumSpecialRadioMaps[] = {
     NELEMS(sMahoganyMaps),
 };
 
-BOOL Radio_IsInSpecialMap(u16 mapID, int param) {
+BOOL Radio_IsInSpecialMap(u16 mapID, int param)
+{
     for (int i = 0; i < sNumSpecialRadioMaps[param]; ++i) {
         if (mapID == sSpecialRadioMapIDs[param][i]) {
             return TRUE;
@@ -149,7 +155,8 @@ BOOL Radio_IsInSpecialMap(u16 mapID, int param) {
 }
 
 // get channel selection?
-u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp) {
+u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp)
+{
     u16 mapID = radioApp->pokegear->args->mapID;
 
     if (!MapHeader_CanReceiveRadioSignal(mapID)) {
@@ -176,7 +183,8 @@ u8 Radio_GetAvailableChannels(PokegearRadioAppData *radioApp) {
     return RADIO_STATION_SELECTION_JOHTO;
 }
 
-int PokegearRadio_MainTask_VideoInit(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_VideoInit(PokegearRadioAppData *radioApp)
+{
     if (!Radio_VideoInit(radioApp)) {
         return RADIO_MAIN_STATE_INIT;
     }
@@ -187,7 +195,8 @@ int PokegearRadio_MainTask_VideoInit(PokegearRadioAppData *radioApp) {
     }
 }
 
-int PokegearRadio_MainTask_InputLoop(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_InputLoop(PokegearRadioAppData *radioApp)
+{
     BOOL inputWasTouch = FALSE;
     int result = Radio_HandleTouchInput(radioApp, &inputWasTouch);
     if (!inputWasTouch) {
@@ -214,7 +223,8 @@ int PokegearRadio_MainTask_InputLoop(PokegearRadioAppData *radioApp) {
     return RADIO_MAIN_STATE_INPUT_LOOP;
 }
 
-int PokegearRadio_MainTask_Unload(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_Unload(PokegearRadioAppData *radioApp)
+{
     if (Radio_VideoUnload(radioApp)) {
         return RADIO_MAIN_STATE_QUIT;
     } else {
@@ -222,7 +232,8 @@ int PokegearRadio_MainTask_Unload(PokegearRadioAppData *radioApp) {
     }
 }
 
-int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp)
+{
     switch (radioApp->state) {
     case 0:
         BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, radioApp->heapId);
@@ -251,7 +262,8 @@ int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
     return RADIO_MAIN_STATE_FADE_IN;
 }
 
-int PokegearRadio_MainTask_FadeOut(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_FadeOut(PokegearRadioAppData *radioApp)
+{
     switch (radioApp->state) {
     case 0:
         BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, radioApp->heapId);
@@ -272,7 +284,8 @@ int PokegearRadio_MainTask_FadeOut(PokegearRadioAppData *radioApp) {
     return RADIO_MAIN_STATE_FADE_OUT;
 }
 
-int PokegearRadio_MainState_FadeInApp(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainState_FadeInApp(PokegearRadioAppData *radioApp)
+{
     switch (radioApp->state) {
     case 0:
         PaletteData_SetAutoTransparent(radioApp->pokegear->plttData, TRUE);
@@ -301,7 +314,8 @@ int PokegearRadio_MainState_FadeInApp(PokegearRadioAppData *radioApp) {
     return RADIO_MAIN_STATE_FADE_IN_APP;
 }
 
-int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp) {
+int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp)
+{
     switch (radioApp->state) {
     case 0:
         Radio_BeginScriptWindowSlide(radioApp, 1);

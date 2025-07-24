@@ -77,7 +77,8 @@ static UnkStruct_0206BCD4 *sub_0206BCD4(void);
 static UnkStruct_0206BCD4 *sub_0206BCEC(UnkStruct_0206BCEC *unused);
 static void sub_0206BD00(UnkStruct_0206BCD4 *a0);
 
-void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
+void sub_0206B910(TaskManager *taskManager, SaveData *saveData)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     UnkStruct_0206B910 *r4 = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0206B910));
     memset(r4, 0, sizeof(UnkStruct_0206B910));
@@ -92,7 +93,8 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     TaskManager_Call(taskManager, sub_0206B984, r4);
 }
 
-static BOOL sub_0206B984(TaskManager *taskManager) {
+static BOOL sub_0206B984(TaskManager *taskManager)
+{
     UnkStruct_0206B910 *r7 = TaskManager_GetEnvironment(taskManager);
     UnkStruct_0206B984 *r6 = r7->unk04;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
@@ -172,25 +174,29 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
     return FALSE;
 }
 
-BOOL ScrCmd_232(ScriptContext *ctx) {
+BOOL ScrCmd_232(ScriptContext *ctx)
+{
     UnkStruct_0206BCD4 **unkStruct = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     sub_0206BCA4(*unkStruct, ScriptGetVar(ctx));
     return FALSE;
 }
 
-BOOL ScrCmd_233(ScriptContext *ctx) {
+BOOL ScrCmd_233(ScriptContext *ctx)
+{
     void *unused = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     ctx->data[0] = ScriptGetVar(ctx);
     SetupNativeScript(ctx, sub_0206BB90);
     return TRUE;
 }
 
-static BOOL sub_0206BB90(ScriptContext *ctx) {
+static BOOL sub_0206BB90(ScriptContext *ctx)
+{
     UnkStruct_0206BCD4 **unkStruct = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     return sub_0206BCB4(*unkStruct, ctx->data[0]);
 }
 
-BOOL ScrCmd_234(ScriptContext *ctx) {
+BOOL ScrCmd_234(ScriptContext *ctx)
+{
     UnkStruct_0206BCD4 **unkStruct = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 arg1 = ScriptGetVar(ctx);
     u16 arg2 = ScriptGetVar(ctx);
@@ -205,7 +211,8 @@ BOOL ScrCmd_234(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_235(ScriptContext *ctx) {
+BOOL ScrCmd_235(ScriptContext *ctx)
+{
     UnkStruct_0206BCD4 **unkStruct = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 unused = ScriptGetVar(ctx);
     u32 unused2 = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
@@ -213,44 +220,51 @@ BOOL ScrCmd_235(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_236(ScriptContext *ctx) {
+BOOL ScrCmd_236(ScriptContext *ctx)
+{
     void **unused = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 *result = ScriptGetVarPointer(ctx);
     *result = 0;
     return FALSE;
 }
 
-BOOL ScrCmd_237(ScriptContext *ctx) {
+BOOL ScrCmd_237(ScriptContext *ctx)
+{
     void **unused = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     TextFlags_BeginAutoScroll(TRUE);
     return FALSE;
 }
 
-static void sub_0206BCA4(UnkStruct_0206BCD4 *a0, u8 a1) {
+static void sub_0206BCA4(UnkStruct_0206BCD4 *a0, u8 a1)
+{
     if (a0->unk04 != 0) {
         sub_02037AC0(a1);
     }
 }
 
-static BOOL sub_0206BCB4(UnkStruct_0206BCD4 *a0, u8 a1) {
+static BOOL sub_0206BCB4(UnkStruct_0206BCD4 *a0, u8 a1)
+{
     if (a0->unk04 == 0) {
         return TRUE;
     }
     return sub_02037B38(a1) == TRUE;
 }
 
-static UnkStruct_0206BCD4 *sub_0206BCD4(void) {
+static UnkStruct_0206BCD4 *sub_0206BCD4(void)
+{
     UnkStruct_0206BCD4 *unkStruct = AllocFromHeap(HEAP_ID_20, sizeof(UnkStruct_0206BCD4));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206BCD4));
     return unkStruct;
 }
 
-static UnkStruct_0206BCD4 *sub_0206BCEC(UnkStruct_0206BCEC *unused) {
+static UnkStruct_0206BCD4 *sub_0206BCEC(UnkStruct_0206BCEC *unused)
+{
     CreateHeap(HEAP_ID_FIELD, HEAP_ID_20, 0x4000);
     return sub_0206BCD4();
 }
 
-static void sub_0206BD00(UnkStruct_0206BCD4 *a0) {
+static void sub_0206BD00(UnkStruct_0206BCD4 *a0)
+{
     Heap_Free(a0);
     DestroyHeap(HEAP_ID_20);
 }

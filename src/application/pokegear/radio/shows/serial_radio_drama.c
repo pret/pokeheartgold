@@ -18,7 +18,8 @@ typedef struct SerialRadioDramaShowData {
 void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow);
 void RadioShow_SerialRadioDrama_Unload(RadioShow *radioShow);
 
-BOOL RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow) {
+BOOL RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow)
+{
     SerialRadioDramaShowData *data = AllocFromHeap(radioShow->heapID, sizeof(SerialRadioDramaShowData));
     MI_CpuClear8(data, sizeof(SerialRadioDramaShowData));
     // data->heapID = radioShow->heapID;
@@ -29,7 +30,8 @@ BOOL RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow)
+{
     if (radioShow->showData == NULL) {
         return FALSE;
     }
@@ -40,7 +42,8 @@ BOOL RadioShow_SerialRadioDrama_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow) {
+BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow)
+{
     SerialRadioDramaShowData *data = radioShow->showData;
 
     switch (data->state) {
@@ -76,7 +79,8 @@ BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow) {
     return FALSE;
 }
 
-void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow) {
+void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow)
+{
     SerialRadioDramaShowData *data = radioShow->showData;
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0413_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0413_00000, radioShow->showTitle);
@@ -88,6 +92,7 @@ void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow) {
     radioShow->lastEpisodeID = data->episodeID;
 }
 
-void RadioShow_SerialRadioDrama_Unload(RadioShow *radioShow) {
+void RadioShow_SerialRadioDrama_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

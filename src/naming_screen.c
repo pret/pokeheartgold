@@ -472,7 +472,8 @@ const OverlayManagerTemplate gOverlayTemplate_NamingScreen = {
     FS_OVERLAY_ID_NONE,
 };
 
-BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
+BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState)
+{
     NamingScreenAppData *data;
     NARC *narc;
     switch ((NamingScreenInitState)*pState) {
@@ -528,14 +529,16 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
     return FALSE;
 }
 
-static void NamingScreen_LoadMonIcon(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form) {
+static void NamingScreen_LoadMonIcon(NNSG2dCharacterData *pCharData, NNSG2dPaletteData *pPlttData, int species, int form)
+{
     GX_LoadOBJ(pCharData->pRawData, 0x57E0, 0x200);
     const u16 *rawPltt = pPlttData->pRawData;
     u32 plttNo = GetMonIconPaletteEx(species, form, FALSE);
     GX_LoadOBJPltt(rawPltt + 16 * plttNo, 0xC0, 0x20);
 }
 
-BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState) {
+BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState)
+{
     NamingScreenAppData *data = OverlayManager_GetData(ovyMan);
 
     switch ((NamingScreenMainState)*pState) {
@@ -606,7 +609,8 @@ BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState) {
     return FALSE;
 }
 
-static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data, NamingScreenMainState state) {
+static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data, NamingScreenMainState state)
+{
     NamingScreenMainState ret = state;
 
     NamingScreen_GetPlayerInput(data);
@@ -653,7 +657,8 @@ static NamingScreenMainState NamingScreen_HandleInput(NamingScreenAppData *data,
 #endif // HEARTGOLD
 
 // Called when the input is empty
-static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenArgs *args) {
+static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenArgs *args)
+{
     String *string;
 
     if (data->type == NAME_SCREEN_PLAYER) {
@@ -677,7 +682,8 @@ static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenA
     }
 }
 
-static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s) {
+static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s)
+{
     BOOL ret = TRUE;
     int i;
 
@@ -693,7 +699,8 @@ static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s) {
     return ret;
 }
 
-BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
+BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState)
+{
     NamingScreenAppData *data = OverlayManager_GetData(ovyMan);
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
@@ -756,7 +763,8 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
 // Public functions
 // -------------------------------
 
-NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState)
+{
     NamingScreenArgs *ret = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
     ret->kind = kind;
     ret->playerGenderOrMonSpecies = param;
@@ -773,7 +781,8 @@ NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, in
     return ret;
 }
 
-void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
+void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs)
+{
     GF_ASSERT(namingScreenArgs->nameInputString != NULL);
     GF_ASSERT(namingScreenArgs != NULL); // UB: should check this first
     String_Delete(namingScreenArgs->nameInputString);
@@ -784,13 +793,15 @@ void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
 // Back to private scope
 // -------------------------------
 
-static void NamingScreen_VBlankCB(void *param) {
+static void NamingScreen_VBlankCB(void *param)
+{
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-static void NamingScreen_InitFromArgs(NamingScreenAppData *data, NamingScreenArgs *args) {
+static void NamingScreen_InitFromArgs(NamingScreenAppData *data, NamingScreenArgs *args)
+{
     data->type = args->kind;
     data->playerGenderOrMonSpecies = args->playerGenderOrMonSpecies;
     data->monForm = args->monForm;
@@ -800,7 +811,8 @@ static void NamingScreen_InitFromArgs(NamingScreenAppData *data, NamingScreenArg
     data->pMenuInputState = args->pMenuInputState;
 }
 
-static void NamingScreen_SetGraphicsBanks(void) {
+static void NamingScreen_SetGraphicsBanks(void)
+{
     GraphicsBanks graphicsBanks = {
         GX_VRAM_BG_128_A,
         GX_VRAM_BGEXTPLTT_NONE,
@@ -817,7 +829,8 @@ static void NamingScreen_SetGraphicsBanks(void) {
     GfGfx_SetBanks(&graphicsBanks);
 }
 
-static void NamingScreen_SetBgModesAndInitBuffers(BgConfig *bgConfig) {
+static void NamingScreen_SetBgModesAndInitBuffers(BgConfig *bgConfig)
+{
     {
         GraphicsModes graphicsModes = {
             GX_DISPMODE_GRAPHICS,
@@ -915,7 +928,8 @@ static void NamingScreen_SetBgModesAndInitBuffers(BgConfig *bgConfig) {
     G2S_BlendNone();
 }
 
-static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable) {
+static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable)
+{
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, enable);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, enable);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, enable);
@@ -926,7 +940,8 @@ static void NamingScreen_ToggleGfxPlanes(GFPlaneToggle enable) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
 }
 
-static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OverlayManager *ovyMan) {
+static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, OverlayManager *ovyMan)
+{
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
     data->pageSwitchState = NS_PAGESWITCH_STATE_IDLE;
@@ -973,7 +988,8 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     }
 }
 
-static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OverlayManager *ovyMan) {
+static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, OverlayManager *ovyMan)
+{
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
     if (args->battleMsgId != 0) {
         String *string = String_New(200, HEAP_ID_NAMING_SCREEN);
@@ -1003,7 +1019,8 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
     }
 }
 
-static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows) {
+static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows)
+{
     for (int i = 0; i < 10; ++i) {
         RemoveWindow(&windows[i]);
     }
@@ -1014,7 +1031,8 @@ static void NamingScreen_UnloadBgGfx(BgConfig *bgConfig, Window *windows) {
     Heap_FreeExplicit(HEAP_ID_NAMING_SCREEN, bgConfig);
 }
 
-static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NARC *narc) {
+static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NARC *narc)
+{
     BgConfig *bgConfig = data->bgConfig;
 
     GfGfxLoader_GXLoadPalFromOpenNarc(narc, NARC_namein_namein_00000000_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0x60, HEAP_ID_NAMING_SCREEN);
@@ -1036,7 +1054,8 @@ static void NamingScreen_CreateBgConfigAndLoadGfx(NamingScreenAppData *data, NAR
     data->charDataRaw = GfGfxLoader_GetCharDataFromOpenNarc(narc, NARC_namein_namein_00000016_NCGR_lz, TRUE, &data->charData, HEAP_ID_NAMING_SCREEN);
 }
 
-static void NamingScreen_InitObjCharPlttTransfer(void) {
+static void NamingScreen_InitObjCharPlttTransfer(void)
+{
     ObjCharTransferTemplate tmplate = {
         .maxTasks = 20,
         .sizeMain = 0x800,
@@ -1049,7 +1068,8 @@ static void NamingScreen_InitObjCharPlttTransfer(void) {
     ObjPlttTransfer_Reset();
 }
 
-static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc) {
+static void NamingScreen_LoadObjGfx(NamingScreenAppData *data, NARC *narc)
+{
     NNS_G2dInitOamManagerModule();
     GX_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
     GXS_SetOBJVRamModeChar(GX_OBJVRAMMODE_CHAR_1D_32K);
@@ -1090,7 +1110,8 @@ typedef struct SubspritePosControllerTaskData {
     int i;
 } SubspritePosControllerTaskData;
 
-static void SysTask_NamingScreen_SubspritePosController(SysTask *task, void *taskData) {
+static void SysTask_NamingScreen_SubspritePosController(SysTask *task, void *taskData)
+{
     SubspritePosControllerTaskData *data = taskData;
     VecFx32 *pMatrix = Sprite_GetMatrixPtr(data->parent);
     VecFx32 matrix;
@@ -1100,7 +1121,8 @@ static void SysTask_NamingScreen_SubspritePosController(SysTask *task, void *tas
     Sprite_SetMatrix(data->child, &matrix);
 }
 
-static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
+static void NamingScreen_CreateSprites(NamingScreenAppData *data)
+{
     int i;
     CreateSpriteResourcesHeader(&data->spriteResHdr_Main, 0, 0, 0, 0, -1, -1, 0, 1, data->gfxResMen[GF_GFX_RES_TYPE_CHAR], data->gfxResMen[GF_GFX_RES_TYPE_PLTT], data->gfxResMen[GF_GFX_RES_TYPE_CELL], data->gfxResMen[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
     CreateSpriteResourcesHeader(&data->spriteResHdr_Sub, 1, 1, 1, 1, -1, -1, 0, 0, data->gfxResMen[GF_GFX_RES_TYPE_CHAR], data->gfxResMen[GF_GFX_RES_TYPE_PLTT], data->gfxResMen[GF_GFX_RES_TYPE_CELL], data->gfxResMen[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
@@ -1150,7 +1172,8 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void NamingScreen_CreateIconSprite(NamingScreenAppData *data, SpriteTemplate *tmplate) {
+static void NamingScreen_CreateIconSprite(NamingScreenAppData *data, SpriteTemplate *tmplate)
+{
     tmplate->position.x = FX32_CONST(24);
     tmplate->position.y = FX32_CONST(8);
     data->iconSprites[0] = Sprite_CreateAffine(tmplate);
@@ -1203,7 +1226,8 @@ typedef struct WiggleEffectTaskData {
     int y;
 } WiggleEffectTaskData;
 
-static void SysTask_NamingScreen_WiggleEffect(SysTask *task, void *taskData) {
+static void SysTask_NamingScreen_WiggleEffect(SysTask *task, void *taskData)
+{
     WiggleEffectTaskData
         *data
         = taskData;
@@ -1234,7 +1258,8 @@ static void SysTask_NamingScreen_WiggleEffect(SysTask *task, void *taskData) {
     ++data->state; // UB: potential use after free
 }
 
-static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData) {
+static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, int *pState, int pageNum, GFBgLayer *pBgId, VecFx32 *posVecs, Sprite **pSprites, void *pRawData)
+{
     GFBgLayer bgId_prev = *pBgId;
     GFBgLayer bgId_curr = (GFBgLayer)(bgId_prev ^ 1);
 
@@ -1294,13 +1319,15 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
     }
 }
 
-static void NamingScreen_PrintMessageOnWindowLeftAlign(Window *window, NameScreenType unused, String *msg) {
+static void NamingScreen_PrintMessageOnWindowLeftAlign(Window *window, NameScreenType unused, String *msg)
+{
     DrawFrameAndWindow2(window, FALSE, 0x100, 10);
     AddTextPrinterParameterized(window, 1, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
     CopyWindowToVram(window);
 }
 
-static void NamingScreen_PrintMessageOnWindowWithMargin(Window *window, NameScreenType unused, String *msg) {
+static void NamingScreen_PrintMessageOnWindowWithMargin(Window *window, NameScreenType unused, String *msg)
+{
     int x = 16;
     int width = FontID_String_GetWidth(0, msg, 0);
     int windowWidth = GetWindowWidth(window) * 8;
@@ -1312,7 +1339,8 @@ static void NamingScreen_PrintMessageOnWindowWithMargin(Window *window, NameScre
     CopyWindowToVram(window);
 }
 
-static void NamingScreen_InitWindows(NamingScreenAppData *data, OverlayManager *ovyMan, NARC *narc) {
+static void NamingScreen_InitWindows(NamingScreenAppData *data, OverlayManager *ovyMan, NARC *narc)
+{
     AddWindowParameterized(data->bgConfig, &data->windows[0], GF_BG_LYR_MAIN_0, 2, 1, 26, 12, 1, 0x100);
     AddWindowParameterized(data->bgConfig, &data->windows[1], GF_BG_LYR_MAIN_1, 2, 1, 26, 12, 1, 0x238);
 
@@ -1361,12 +1389,14 @@ static void NamingScreen_InitWindows(NamingScreenAppData *data, OverlayManager *
     FillWindowPixelBuffer(&data->windows[7], 0);
 }
 
-static void NamingScreen_SetPageBgPriorities(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos) {
+static void NamingScreen_SetPageBgPriorities(BgConfig *bgConfig, GFBgLayer bgId, VecFx32 *pos)
+{
     SetBgPriority(bgId, 1);
     SetBgPriority(bgId ^ 1, 2);
 }
 
-static void NamingScreen_SetPagePgPosVecs(VecFx32 *posVecs, GFBgLayer bgId) {
+static void NamingScreen_SetPagePgPosVecs(VecFx32 *posVecs, GFBgLayer bgId)
+{
     posVecs[bgId].x = 238;
     posVecs[bgId].y = -80;
     posVecs[bgId ^ 1].x = -11;
@@ -1383,7 +1413,8 @@ static const int sDpadMovementCoordDeltas[][2] = {
 
 // If val is outside the range, clamp to the opposite side of that range
 // The interval is right half open.
-static int NamingScreen_WrapAroundWithinInterval(int val, int lo, int hi) {
+static int NamingScreen_WrapAroundWithinInterval(int val, int lo, int hi)
+{
     if (val >= hi) {
         val = lo;
     }
@@ -1393,7 +1424,8 @@ static int NamingScreen_WrapAroundWithinInterval(int val, int lo, int hi) {
     return val;
 }
 
-static void NamingScreen_MoveKeyboardCursor(NamingScreenAppData *data, int dpadMovement) {
+static void NamingScreen_MoveKeyboardCursor(NamingScreenAppData *data, int dpadMovement)
+{
     // Only run this logic if the keyboard cursor is moving in response to dpad input.
     if (dpadMovement == 0) {
         return;
@@ -1414,7 +1446,8 @@ static void NamingScreen_MoveKeyboardCursor(NamingScreenAppData *data, int dpadM
     data->kbCursor.y = newY;
 }
 
-static void NamingScreen_GetPlayerInput(NamingScreenAppData *data) {
+static void NamingScreen_GetPlayerInput(NamingScreenAppData *data)
+{
     int doUpdateCursor = 0;
     int dpadMovement = 0;
     BOOL buttonInputIsTransition = FALSE;
@@ -1468,7 +1501,8 @@ static void NamingScreen_GetPlayerInput(NamingScreenAppData *data) {
     }
 }
 
-static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement) {
+static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement)
+{
     if (data->kbCursor.y != 0) {
         if (data->kbCursor.prevY == 0 && data->kbCursor.prevY != data->kbCursor.y) {
             Sprite_SetAnimCtrlSeq(data->uiSprites[8], 39);
@@ -1502,7 +1536,8 @@ static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, i
     }
 }
 
-static void NamingScreen_PaletteGlowEffect(u16 *pSinArg) {
+static void NamingScreen_PaletteGlowEffect(u16 *pSinArg)
+{
     *pSinArg += 20;
     if (*pSinArg > 360) {
         *pSinArg = 0;
@@ -1512,7 +1547,8 @@ static void NamingScreen_PaletteGlowEffect(u16 *pSinArg) {
     GX_LoadOBJPltt(&col, 0x3A, sizeof(col));
 }
 
-static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels) {
+static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels)
+{
     int i = 0;
     int width;
     int centerX;
@@ -1541,12 +1577,14 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
 
 static const u8 _02101D3C[] = { 0x60, 0x68, 0x50, 0x58 };
 
-static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color) {
+static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color)
+{
     AddTextPrinterParameterizedWithColor(window, fontId, string, 0, 0, TEXT_SPEED_NOTRANSFER, color, NULL);
     return window->pixelBuffer;
 }
 
-static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16 *tmpBuf, void *charBuf, String *string) {
+static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16 *tmpBuf, void *charBuf, String *string)
+{
     u16 curCharBuf[21];
     u16 i;
     void *ptr;
@@ -1577,7 +1615,8 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
     String_Delete(string2);
 }
 
-static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entryBuf, u16 cursorPos, u16 *tmpBuf, void *charBuf, String *string) {
+static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entryBuf, u16 cursorPos, u16 *tmpBuf, void *charBuf, String *string)
+{
     int i;
     int j;
     u16 character;
@@ -1629,7 +1668,8 @@ static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entry
     NamingScreen_PrintCharacterOnWindowAndOBJ(window, tmpBuf, charBuf, string);
 }
 
-static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageNum) {
+static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageNum)
+{
     int i;
     int j;
 
@@ -1643,7 +1683,8 @@ static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageN
     }
 }
 
-static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppData *data, u16 key, BOOL isButtonInput) {
+static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppData *data, u16 key, BOOL isButtonInput)
+{
     if (key == NAME_SCREEN_CONTROL_SPACE || key == NAME_SCREEN_CONTROL_SKIP) {
         key = CHAR_JP_SPACE;
     }
@@ -1746,7 +1787,8 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
     return NS_MAIN_STATE_INPUT_LOOP;
 }
 
-static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BOOL toggle) {
+static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BOOL toggle)
+{
     if (data->pMenuInputState != NULL) {
         if (toggle == TRUE) {
             MenuInputStateMgr_SetState(data->pMenuInputState, MENU_INPUT_STATE_BUTTONS);
@@ -1756,14 +1798,16 @@ static void NamingScreen_UpdateFieldMenuInputState(NamingScreenAppData *data, BO
     }
 }
 
-static int NamingScreen_SearchJpConvTableForNonSpace(const u16 *table, int pos) {
+static int NamingScreen_SearchJpConvTableForNonSpace(const u16 *table, int pos)
+{
     do {
         pos = NamingScreen_WrapAroundWithinInterval(pos + 1, 0, 3);
     } while (table[pos] == CHAR_JP_SPACE);
     return table[pos];
 }
 
-static BOOL NamingScreen_JP_FlipAlphaCase(int tableStart, int tableEnd, u16 *pmCharBuf, int cursorPos) {
+static BOOL NamingScreen_JP_FlipAlphaCase(int tableStart, int tableEnd, u16 *pmCharBuf, int cursorPos)
+{
     int i;
     int j;
     u16 key;
@@ -1785,7 +1829,8 @@ static BOOL NamingScreen_JP_FlipAlphaCase(int tableStart, int tableEnd, u16 *pmC
     return FALSE;
 }
 
-static BOOL NamingScreen_JP_FlipDiacritic(int tableStart, int tableEnd, int convColno, int mode, u16 *pmCharBuf, int cursorPos) {
+static BOOL NamingScreen_JP_FlipDiacritic(int tableStart, int tableEnd, int convColno, int mode, u16 *pmCharBuf, int cursorPos)
+{
     int i;
     u16 key;
 
@@ -1837,7 +1882,8 @@ static BOOL NamingScreen_JP_FlipDiacritic(int tableStart, int tableEnd, int conv
     return FALSE;
 }
 
-static void NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(Sprite **sprites, int cursorPos, int maxLen) {
+static void NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(Sprite **sprites, int cursorPos, int maxLen)
+{
     for (int i = 0; i < maxLen; ++i) {
         Sprite_SetAnimCtrlSeq(sprites[i], 43);
     }
@@ -1848,7 +1894,8 @@ static void NamingScreen_UpdateSprite_HighlightedCharacterInInputBuffer(Sprite *
 
 static const u8 sKeyboardFillValues[] = { 0x03, 0x06, 0x0C, 0x09, 0x09 };
 
-static void NamingScreen_DrawKeyboardOnWindow(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData) {
+static void NamingScreen_DrawKeyboardOnWindow(Window *window, u16 fillVal, int pageNum, u32 textColor, u8 *pRawData)
+{
     FillWindowPixelBuffer(window, fillVal);
 
     for (int i = 0; i < 6; ++i) {
@@ -1869,7 +1916,8 @@ static void NamingScreen_DrawKeyboardOnWindow(Window *window, u16 fillVal, int p
     CopyWindowToVram(window);
 }
 
-static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pageNum) {
+static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pageNum)
+{
     for (int i = 0; i < 3; ++i) {
         if (req[i]) {
             for (int j = 0; j < 3; ++j) {
@@ -1889,7 +1937,8 @@ static void NamingScreen_UpdateSpritesAnims(BOOL *req, Sprite **sprites, int pag
     }
 }
 
-static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data) {
+static void NamingScreen_PlaceCursorSprite(NamingScreenAppData *data)
+{
     if (Sprite_IsAnimated(data->uiSprites[8])) {
         return;
     }
@@ -1984,7 +2033,8 @@ static const NamingScreenTouchHitboxDef sTouchHitboxDef[] = {
     { .x = 0xDC, .y = 0xA4, .sizeParam = 2, .cursorX = 12, .cursorY = 5 },
 };
 
-static BOOL NamingScreen_HandleTouchInput(NamingScreenAppData *data) {
+static BOOL NamingScreen_HandleTouchInput(NamingScreenAppData *data)
+{
     int i;
     int start = 0;
     u8 x;

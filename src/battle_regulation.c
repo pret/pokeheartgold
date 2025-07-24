@@ -10,18 +10,21 @@
 
 static BOOL sub_02074C50(u16 *a0, u16 *a1, u16 *a2, int a3, int a4, int a5, int a6);
 
-PokedexData *PokedexData_CreateAndLoad(HeapID heapId) {
+PokedexData *PokedexData_CreateAndLoad(HeapID heapId)
+{
     PokedexData *pokedex = PokedexData_Create(heapId);
     PokedexData_LoadAll(pokedex, 0, heapId);
     return pokedex;
 }
 
-void PokedexData_UnloadAndDelete(PokedexData *pokedex) {
+void PokedexData_UnloadAndDelete(PokedexData *pokedex)
+{
     PokedexData_UnloadAll(pokedex);
     PokedexData_Delete(pokedex);
 }
 
-BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pokedex) {
+BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pokedex)
+{
     u16 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     if (ruleset == NULL) {
         return TRUE;
@@ -85,7 +88,8 @@ BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *p
     return TRUE;
 }
 
-BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceMessage(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex, u8 *selectedOrder) {
+BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceMessage(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex, u8 *selectedOrder)
+{
     Pokemon *mon;
     int rule;
     int numMons = 0;
@@ -174,7 +178,8 @@ BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceM
     return BTL_REG_COMPLIANCE_OK;
 }
 
-static BOOL sub_02074C50(u16 *species, u16 *levels, u16 *visited, int numMonsLeft, int curIdx, int totalLevel, int totalNumMons) {
+static BOOL sub_02074C50(u16 *species, u16 *levels, u16 *visited, int numMonsLeft, int curIdx, int totalLevel, int totalNumMons)
+{
     // called recursively
     int cur_numMonsLeft = numMonsLeft;
     int i;
@@ -199,7 +204,8 @@ static BOOL sub_02074C50(u16 *species, u16 *levels, u16 *visited, int numMonsLef
     return FALSE;
 }
 
-int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex) {
+int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
+{
     Pokemon *mon;
     int rule;
     int partyCount;

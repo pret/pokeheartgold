@@ -25,7 +25,8 @@ int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
 
-BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
+BOOL PokegearPhone_Init(OverlayManager *man, int *state)
+{
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
     PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_POKEGEAR_APP);
@@ -37,7 +38,8 @@ BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL PokegearPhone_Main(OverlayManager *man, int *state) {
+BOOL PokegearPhone_Main(OverlayManager *man, int *state)
+{
     PokegearPhoneAppData *phoneApp = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -90,7 +92,8 @@ BOOL PokegearPhone_Main(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
+BOOL PokegearPhone_Exit(OverlayManager *man, int *state)
+{
     PokegearPhoneAppData *phoneApp = OverlayManager_GetData(man);
 
     PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);
@@ -101,7 +104,8 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp) {
+static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp)
+{
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
     phoneApp->backgroundStyle = Pokegear_GetBackgroundStyle(phoneApp->pokegear->savePokegear);
@@ -122,14 +126,16 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     }
 }
 
-static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp) {
+static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp)
+{
     PokegearPhone_ContactList_FlushAndDestroyLinkedList(phoneApp);
     Heap_Free(phoneApp->saveContacts);
     phoneApp->pokegear->reselectAppCB = NULL;
     phoneApp->pokegear->unknownCB = NULL;
 }
 
-int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp)
+{
     if (!PokegearPhone_SetUp(phoneApp)) {
         return PHONE_MAIN_STATE_SETUP;
     }
@@ -140,7 +146,8 @@ int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp)
+{
     int input = PokegearPhone_HandleTouchInput(phoneApp);
     if (input == TOUCH_MENU_NO_INPUT) {
         if (phoneApp->menuInputStateBak == 0) {
@@ -168,7 +175,8 @@ int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_INPUT_LOOP;
 }
 
-int PokegearPhone_MainTask_TearDown(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_TearDown(PokegearPhoneAppData *phoneApp)
+{
     if (PokegearPhone_TearDown(phoneApp)) {
         return PHONE_MAIN_STATE_QUIT;
     } else {
@@ -176,29 +184,35 @@ int PokegearPhone_MainTask_TearDown(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-int PokegearPhone_MainTask_HandleSubmenuInput(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_HandleSubmenuInput(PokegearPhoneAppData *phoneApp)
+{
     return PokegearPhone_HandleSubmenuInput(phoneApp);
 }
 
-int PokegearPhone_MainTask_HandleSortMenuInput(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_HandleSortMenuInput(PokegearPhoneAppData *phoneApp)
+{
     return PokegearPhone_HandleSortMenuInput(phoneApp);
 }
 
-int PokegearPhone_MainTask_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp)
+{
     return PokegearPhone_HandleMoveContactsInput(phoneApp);
 }
 
-int PokegearPhone_MainTask_DimScreenBeforeCall(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_DimScreenBeforeCall(PokegearPhoneAppData *phoneApp)
+{
     ov101_021EFFBC(phoneApp);
     return PHONE_MAIN_STATE_SETUP_CALL;
 }
 
-int PokegearPhone_MainTask_SetUpPhoneCall(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_SetUpPhoneCall(PokegearPhoneAppData *phoneApp)
+{
     PokegearPhone_SetUpCallData(phoneApp);
     return PHONE_MAIN_STATE_PLAY_CALL;
 }
 
-int PokegearPhone_MainTask_DoPhoneCall(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_DoPhoneCall(PokegearPhoneAppData *phoneApp)
+{
     if (!PhoneCall_Main(phoneApp->callContext)) {
         return PHONE_MAIN_STATE_PLAY_CALL;
     }
@@ -208,7 +222,8 @@ int PokegearPhone_MainTask_DoPhoneCall(PokegearPhoneAppData *phoneApp) {
 }
 
 // unused?
-int PokegearPhone_MainTask_DebugHangupEffect(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_DebugHangupEffect(PokegearPhoneAppData *phoneApp)
+{
     if (!ov101_021F00BC(phoneApp)) {
         return PHONE_MAIN_STATE_UNUSED_DEBUG_MAYBE;
     }
@@ -221,7 +236,8 @@ int PokegearPhone_MainTask_DebugHangupEffect(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_INPUT_LOOP;
 }
 
-int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp)
+{
     if (ov101_021EFF14(phoneApp)) {
         phoneApp->subtaskState = 0;
         if (phoneApp->isIncomingCall) {
@@ -234,7 +250,8 @@ int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp)
+{
     switch (phoneApp->subtaskState) {
     case 0:
         BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapId);
@@ -253,7 +270,8 @@ int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_FADE_GEAR_CLOSE;
 }
 
-int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp)
+{
     switch (phoneApp->subtaskState) {
     case 0:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
@@ -279,7 +297,8 @@ int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_WIPE_IN;
 }
 
-int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp)
+{
     switch (phoneApp->subtaskState) {
     case 0:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);

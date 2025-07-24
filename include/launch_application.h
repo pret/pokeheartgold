@@ -81,14 +81,16 @@ typedef struct UnkStruct_0203E8C8 {
     u16 unk2;
 } UnkStruct_0203E8C8;
 
-static inline void InitUnkStructScrCmd408(UnkOv67Args *data, u16 a1, u16 a2, ScriptContext *ctx) {
+static inline void InitUnkStructScrCmd408(UnkOv67Args *data, u16 a1, u16 a2, ScriptContext *ctx)
+{
     MI_CpuClear8(data, sizeof(UnkOv67Args));
     data->unk_4 = a1;
     data->unk_6 = a2;
     data->saveData = ctx->fieldSystem->saveData;
 }
 
-static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx) {
+static inline PCBoxArgs *PCBoxAppData_New(ScriptContext *ctx)
+{
     PCBoxArgs *ret = AllocFromHeap(HEAP_ID_FIELD, sizeof(PCBoxArgs));
     ret->saveData = ctx->fieldSystem->saveData;
     ret->unk8 = ScriptReadByte(ctx);

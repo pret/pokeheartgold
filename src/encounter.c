@@ -56,7 +56,8 @@ static BOOL Task_TutorialBattle(TaskManager *taskManager);
 static u32 sub_02051474(void *param0, u32 battleType);
 static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup);
 
-static BOOL Task_StartBattle(TaskManager *taskManager) {
+static BOOL Task_StartBattle(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     BattleSetup *battleSetup = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -76,11 +77,13 @@ static BOOL Task_StartBattle(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void CallTask_StartBattle(TaskManager *taskManager, BattleSetup *setup) {
+static void CallTask_StartBattle(TaskManager *taskManager, BattleSetup *setup)
+{
     TaskManager_Call(taskManager, Task_StartBattle, setup);
 }
 
-static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
+static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag)
+{
     Encounter *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(Encounter));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
@@ -92,12 +95,14 @@ static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *wi
     return encounter;
 }
 
-static void Encounter_Delete(Encounter *encounter) {
+static void Encounter_Delete(Encounter *encounter)
+{
     BattleSetup_Delete(encounter->setup);
     Heap_Free(encounter);
 }
 
-static BOOL Encounter_GetResult(Encounter *encounter, FieldSystem *fieldSystem) {
+static BOOL Encounter_GetResult(Encounter *encounter, FieldSystem *fieldSystem)
+{
     if (encounter->winFlag != NULL) {
         *(encounter->winFlag) = encounter->setup->winFlag;
     }
@@ -105,13 +110,15 @@ static BOOL Encounter_GetResult(Encounter *encounter, FieldSystem *fieldSystem) 
     return IsBattleResultWin(encounter->setup->winFlag);
 }
 
-static void sub_02050724(BattleSetup *setup, FieldSystem *fieldSystem) {
+static void sub_02050724(BattleSetup *setup, FieldSystem *fieldSystem)
+{
     if (!(setup->battleType & BATTLE_TYPE_DEBUG)) {
         sub_0205239C(setup, fieldSystem);
     }
 }
 
-static BOOL Task_StartEncounter(TaskManager *taskManager) { // todo: better name
+static BOOL Task_StartEncounter(TaskManager *taskManager)
+{ // todo: better name
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -170,12 +177,14 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { // todo: better name
     return FALSE;
 }
 
-static void CallTask_StartEncounter(TaskManager *taskManager, BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
+static void CallTask_StartEncounter(TaskManager *taskManager, BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag)
+{
     Encounter *encounter = Encounter_New(setup, effect, bgm, winFlag);
     TaskManager_Call(taskManager, Task_StartEncounter, encounter);
 }
 
-static void sub_0205087C(s32 flag, FieldSystem *fieldSystem) {
+static void sub_0205087C(s32 flag, FieldSystem *fieldSystem)
+{
     switch (flag & 0xF) {
     case 1:
     case 6:
@@ -188,7 +197,8 @@ static void sub_0205087C(s32 flag, FieldSystem *fieldSystem) {
     }
 }
 
-static BOOL Task_020508B8(TaskManager *taskManager) {
+static BOOL Task_020508B8(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -222,7 +232,8 @@ static BOOL Task_020508B8(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_02050960(TaskManager *taskManager) {
+static BOOL Task_02050960(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -249,7 +260,8 @@ static BOOL Task_02050960(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_020509F0(TaskManager *taskManager) {
+static BOOL Task_020509F0(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -287,12 +299,14 @@ static BOOL Task_020509F0(TaskManager *taskManager) {
     return FALSE;
 }
 
-void CallTask_020509F0(TaskManager *taskManager, BattleSetup *battleSetup, s32 effect, s32 bgm, u32 *winFlag) {
+void CallTask_020509F0(TaskManager *taskManager, BattleSetup *battleSetup, s32 effect, s32 bgm, u32 *winFlag)
+{
     Encounter *encounter = Encounter_New(battleSetup, effect, bgm, winFlag);
     TaskManager_Call(taskManager, Task_020509F0, encounter);
 }
 
-static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
+static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag)
+{
     WildEncounter *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(WildEncounter));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
@@ -305,12 +319,14 @@ static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm,
     return encounter;
 }
 
-static void WildEncounter_Delete(WildEncounter *encounter) {
+static void WildEncounter_Delete(WildEncounter *encounter)
+{
     BattleSetup_Delete(encounter->setup);
     Heap_Free(encounter);
 }
 
-void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {
+void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup)
+{
     SaveVarsFlags *flags = Save_VarsFlags_Get(fieldSystem->saveData);
     s32 effect = BattleSetup_GetWildTransitionEffect(setup);
     s32 bgm = BattleSetup_GetWildBattleMusic(setup);
@@ -327,7 +343,8 @@ void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {
     }
 }
 
-void FieldSystem_StartForcedWildBattle(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup) {
+void FieldSystem_StartForcedWildBattle(FieldSystem *fieldSystem, TaskManager *taskManager, BattleSetup *setup)
+{
     SaveVarsFlags *flags = Save_VarsFlags_Get(fieldSystem->saveData);
     s32 effect = BattleSetup_GetWildTransitionEffect(setup);
     s32 bgm = BattleSetup_GetWildBattleMusic(setup);
@@ -344,7 +361,8 @@ void FieldSystem_StartForcedWildBattle(FieldSystem *fieldSystem, TaskManager *ta
     }
 }
 
-static BOOL Task_WildEncounter(TaskManager *taskManager) {
+static BOOL Task_WildEncounter(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     WildEncounter *encounter = TaskManager_GetEnvironment(taskManager);
 
@@ -396,7 +414,8 @@ static BOOL Task_WildEncounter(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_SafariEncounter(TaskManager *taskManager) {
+static BOOL Task_SafariEncounter(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -472,7 +491,8 @@ static BOOL Task_SafariEncounter(TaskManager *taskManager) {
     return FALSE;
 }
 
-static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
+static BOOL Task_BugContestEncounter(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     BugContest *contest = FieldSystem_BugContest_Get(fieldSystem);
@@ -537,7 +557,8 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
     return FALSE;
 }
 
-void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canFlee, BOOL shiny) {
+void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canFlee, BOOL shiny)
+{
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_NONE);
@@ -553,7 +574,8 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
 
-void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canRun) {
+void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canRun)
+{
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     setup = BattleSetup_New(HEAP_ID_FIELD, 0);
@@ -573,7 +595,8 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
 
-static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
+static BOOL Task_PalParkEncounter(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -623,12 +646,14 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_020511F8(FieldSystem *fieldSystem, BattleSetup *setup) {
+void sub_020511F8(FieldSystem *fieldSystem, BattleSetup *setup)
+{
     Encounter *encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
     FieldSystem_CreateTask(fieldSystem, Task_PalParkEncounter, encounter);
 }
 
-void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) { // leftover from DP, still used to setup a battle where items are not usable and the player cannot run
+void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level)
+{ // leftover from DP, still used to setup a battle where items are not usable and the player cannot run
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
@@ -642,7 +667,8 @@ void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) {
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 }
 
-static BOOL Task_TutorialBattle(TaskManager *taskManager) {
+static BOOL Task_TutorialBattle(TaskManager *taskManager)
+{
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -680,7 +706,8 @@ static BOOL Task_TutorialBattle(TaskManager *taskManager) {
     return FALSE;
 }
 
-void SetupAndStartTutorialBattle(TaskManager *taskManager) {
+void SetupAndStartTutorialBattle(TaskManager *taskManager)
+{
     Encounter *encounter;
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
@@ -691,7 +718,8 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager) {
     TaskManager_Call(taskManager, Task_TutorialBattle, encounter);
 }
 
-void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag) {
+void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag)
+{
     u32 battleType;
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
@@ -733,7 +761,8 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
     CallTask_StartEncounter(taskManager, setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), winFlag);
 }
 
-void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
+void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter;
     BattleSetup *setup;
@@ -746,7 +775,8 @@ void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
     TaskManager_Call(taskManager, Task_020508B8, encounter);
 }
 
-static u32 sub_02051474(void *param0, u32 battleType) {
+static u32 sub_02051474(void *param0, u32 battleType)
+{
     int var = sub_02029264(param0);
     u32 mode;
 
@@ -764,7 +794,8 @@ static u32 sub_02051474(void *param0, u32 battleType) {
     return mode;
 }
 
-void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 flag) {
+void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 flag)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter;
     BattleSetup *setup;
@@ -800,7 +831,8 @@ void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 f
     TaskManager_Call(taskManager, Task_02050960, encounter);
 }
 
-static BOOL sub_02051540(TaskManager *taskManager) {
+static BOOL sub_02051540(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     Encounter *encounter = TaskManager_GetEnvironment(taskManager);
     u32 *state = TaskManager_GetStatePtr(taskManager);
@@ -820,7 +852,8 @@ static BOOL sub_02051540(TaskManager *taskManager) {
     return FALSE;
 }
 
-void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType) {
+void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType)
+{
     Encounter *encounter;
     BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
     u32 var;
@@ -835,7 +868,8 @@ void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType) {
     FieldSystem_CreateTask(fieldSystem, sub_02051540, encounter);
 }
 
-void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType) {
+void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType)
+{
     Encounter *encounter;
     BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
     u32 var;
@@ -850,7 +884,8 @@ void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType) {
     FieldSystem_CreateTask(fieldSystem, sub_02051540, encounter);
 }
 
-static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
+static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup)
+{
     Pokemon *mon;
     u32 battleType = setup->battleType;
     u32 winFlag = setup->winFlag;

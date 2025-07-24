@@ -66,7 +66,8 @@ static const WindowTemplate sDataReadErrorWindowTemplate = {
     .baseTile = 0x23,
 };
 
-void ShowSaveDataReadError(HeapID heapId) {
+void ShowSaveDataReadError(HeapID heapId)
+{
     Window window;
 
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
@@ -125,7 +126,8 @@ void ShowSaveDataReadError(HeapID heapId) {
     }
 }
 
-void ShowGBACartRemovedError(HeapID heapId) {
+void ShowGBACartRemovedError(HeapID heapId)
+{
     Window window;
 
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);

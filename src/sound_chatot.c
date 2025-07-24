@@ -7,7 +7,8 @@
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 
-BOOL ChatotSoundMain(void) {
+BOOL ChatotSoundMain(void)
+{
     u8 *r4 = GF_SdatGetAttrPtr(16);
     u8 *r0 = GF_SdatGetAttrPtr(30);
 
@@ -26,7 +27,8 @@ BOOL ChatotSoundMain(void) {
     return FALSE;
 }
 
-BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
+BOOL Chatot_CheckCry(SOUND_CHATOT *a0)
+{
     u8 *r5 = GF_SdatGetAttrPtr(31);
     u8 *r4 = GF_SdatGetAttrPtr(54);
 
@@ -45,7 +47,8 @@ BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
     return FALSE;
 }
 
-BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
+BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3)
+{
     s8 *sp0 = sub_020059D8();
     s8 *sp4 = GF_SdatGetAttrPtr(30);
 
@@ -81,7 +84,8 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     return ret;
 }
 
-void sub_02006DB8() {
+void sub_02006DB8()
+{
     u8 *r5 = GF_SdatGetAttrPtr(16);
     u8 *r4 = GF_SdatGetAttrPtr(30);
 
@@ -93,7 +97,8 @@ void sub_02006DB8() {
     *r4 = 0;
 }
 
-BOOL Chatot_StartRecording(void) {
+BOOL Chatot_StartRecording(void)
+{
     MICAutoParam st0;
 
     st0.type = MIC_SAMPLING_TYPE_SIGNED_8BIT;
@@ -110,20 +115,24 @@ BOOL Chatot_StartRecording(void) {
     return GF_MIC_StartAutoSampling(&st0);
 }
 
-void Chatot_StopRecording() {
+void Chatot_StopRecording()
+{
     GF_MIC_StopAutoSampling();
 }
 
-void Chatot_SaveRecording(SOUND_CHATOT *a0) {
+void Chatot_SaveRecording(SOUND_CHATOT *a0)
+{
     Chatot_Encode(a0, sub_020059D8());
 }
 
-void sub_02006E3C(u8 a0) {
+void sub_02006E3C(u8 a0)
+{
     u8 *r0 = GF_SdatGetAttrPtr(31);
     *r0 = a0;
 }
 
-void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
+void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3)
+{
     SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
     BOOL ret;
     if (a0 == 0) {
@@ -138,7 +147,8 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
     }
 }
 
-BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
+BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4)
+{
     SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
     BOOL ret;
     if (a0 == 0) {
@@ -156,7 +166,8 @@ BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
     return ret;
 }
 
-u32 sub_02006EFC(SOUND_CHATOT *chatot) {
+u32 sub_02006EFC(SOUND_CHATOT *chatot)
+{
     if (!Chatot_Exists(chatot)) {
         return 0;
     }
@@ -171,7 +182,8 @@ u32 sub_02006EFC(SOUND_CHATOT *chatot) {
     return 0;
 }
 
-BOOL sub_02006F30(int a0) {
+BOOL sub_02006F30(int a0)
+{
     switch (a0) {
     case 0:
     case 1:

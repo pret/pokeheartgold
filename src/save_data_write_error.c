@@ -66,7 +66,8 @@ static const WindowTemplate sDataWriteErrorWindowTemplate = {
     .baseTile = 0x23,
 };
 
-void ShowSaveDataWriteError(HeapID heapId, int code) {
+void ShowSaveDataWriteError(HeapID heapId, int code)
+{
     Window window;
 
     u32 msg_no;

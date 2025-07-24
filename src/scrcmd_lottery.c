@@ -6,7 +6,8 @@
 
 u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid);
 
-BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx) {
+BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx)
+{
     MessageFormat **msg = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u8 fieldno = ScriptReadByte(ctx);
     u8 floor = ScriptReadByte(ctx);
@@ -14,7 +15,8 @@ BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
+BOOL ScrCmd_LotoIdGet(ScriptContext *ctx)
+{
     SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     u32 lotoId = Save_VarsFlags_GetLotoId(state);
@@ -22,7 +24,8 @@ BOOL ScrCmd_LotoIdGet(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
+BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     PCStorage *storage = SaveArray_PCStorage_Get(fieldSystem->saveData);
     u16 *retPtr0 = ScriptGetVarPointer(ctx);
@@ -86,7 +89,8 @@ BOOL ScrCmd_LotoIdSearch(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_LotoIdSet(ScriptContext *ctx) {
+BOOL ScrCmd_LotoIdSet(ScriptContext *ctx)
+{
     SaveVarsFlags *state = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     Save_VarsFlags_RollLotoId(state);
     return FALSE;
@@ -94,7 +98,8 @@ BOOL ScrCmd_LotoIdSet(ScriptContext *ctx) {
 
 static u16 sLotoId = 0;
 static u16 sOtId = 0;
-u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid) {
+u8 LotoId_CountDigitsMatched(u16 lotoId, u16 otid)
+{
     u8 i;
     u8 count = 0;
 

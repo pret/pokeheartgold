@@ -28,7 +28,8 @@ static BOOL TextPrinter_WaitAutoMode(TextPrinter *printer);
 static BOOL TextPrinter_WaitWithDownArrow(TextPrinter *printer);
 static u8 TextPrinter_Wait(TextPrinter *printer);
 
-static BOOL TextPrinter_ContinueInputHeld(TextPrinterSubStruct *subStruct) {
+static BOOL TextPrinter_ContinueInputHeld(TextPrinterSubStruct *subStruct)
+{
     if ((gSystem.heldKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) && subStruct->hasPrintBeenSpedUp) {
         sTextFlags.touchIsSpeedingUpPrint = FALSE;
         return TRUE;
@@ -53,7 +54,8 @@ static BOOL TextPrinter_ContinueInputHeld(TextPrinterSubStruct *subStruct) {
     return FALSE;
 }
 
-static BOOL TextPrinter_ContinueInputNew(void) {
+static BOOL TextPrinter_ContinueInputNew(void)
+{
     if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B)) {
         sTextFlags.touchIsSpeedingUpPrint = FALSE;
         return TRUE;
@@ -78,7 +80,8 @@ static BOOL TextPrinter_ContinueInputNew(void) {
     return FALSE;
 }
 
-RenderResult RenderText(TextPrinter *printer) {
+RenderResult RenderText(TextPrinter *printer)
+{
     TextPrinterSubStruct *subStruct = (TextPrinterSubStruct *)(&printer->subStructFields);
     u16 currentChar;
 
@@ -375,11 +378,13 @@ RenderResult RenderText(TextPrinter *printer) {
     return RENDER_FINISH;
 }
 
-void TextPrinter_SetDownArrowBaseTile(int tile) {
+void TextPrinter_SetDownArrowBaseTile(int tile)
+{
     sDownArrowBaseTile = tile;
 }
 
-static void TextPrinter_InitDownArrowCounters(TextPrinter *printer) {
+static void TextPrinter_InitDownArrowCounters(TextPrinter *printer)
+{
     TextPrinterSubStruct *subStruct = (TextPrinterSubStruct *)(&printer->subStructFields);
 
     if (sTextFlags.autoScroll) {
@@ -392,7 +397,8 @@ static void TextPrinter_InitDownArrowCounters(TextPrinter *printer) {
 }
 
 // Possible UB? Where does downArrowYPosIdx get reset to 0 when it reaches NELEMS(sDownArrowTileOffsets) == 4?
-static void TextPrinter_DrawDownArrow(TextPrinter *printer) {
+static void TextPrinter_DrawDownArrow(TextPrinter *printer)
+{
     TextPrinterSubStruct *subStruct = (TextPrinterSubStruct *)(&printer->subStructFields);
 
     if (sTextFlags.autoScroll || sTextFlags.useAlternateDownArrow) {
@@ -450,7 +456,8 @@ static void TextPrinter_DrawDownArrow(TextPrinter *printer) {
     subStruct->downArrowYPosIdx++;
 }
 
-static void TextPrinter_ClearDownArrow(TextPrinter *printer) {
+static void TextPrinter_ClearDownArrow(TextPrinter *printer)
+{
     if (sTextFlags.useAlternateDownArrow) {
         return;
     }
@@ -481,7 +488,8 @@ static void TextPrinter_ClearDownArrow(TextPrinter *printer) {
     BgCommitTilemapBufferToVram(printer->template.window->bgConfig, bg_id);
 }
 
-static BOOL TextPrinter_Continue(TextPrinter *printer) {
+static BOOL TextPrinter_Continue(TextPrinter *printer)
+{
 #pragma unused(printer)
     if (TextPrinter_ContinueInputNew()) {
         PlaySE(SEQ_SE_DP_SELECT);
@@ -494,7 +502,8 @@ static BOOL TextPrinter_Continue(TextPrinter *printer) {
     return FALSE;
 }
 
-static BOOL TextPrinter_WaitAutoMode(TextPrinter *printer) {
+static BOOL TextPrinter_WaitAutoMode(TextPrinter *printer)
+{
     TextPrinterSubStruct *subStruct = (TextPrinterSubStruct *)(&printer->subStructFields);
 
     if (subStruct->autoScrollDelay == 100) {
@@ -509,7 +518,8 @@ static BOOL TextPrinter_WaitAutoMode(TextPrinter *printer) {
     return FALSE;
 }
 
-static BOOL TextPrinter_WaitWithDownArrow(TextPrinter *printer) {
+static BOOL TextPrinter_WaitWithDownArrow(TextPrinter *printer)
+{
     if (sTextFlags.autoScroll) {
         return TextPrinter_WaitAutoMode(printer);
     }
@@ -518,7 +528,8 @@ static BOOL TextPrinter_WaitWithDownArrow(TextPrinter *printer) {
     return TextPrinter_Continue(printer);
 }
 
-static u8 TextPrinter_Wait(TextPrinter *printer) {
+static u8 TextPrinter_Wait(TextPrinter *printer)
+{
     if (sTextFlags.autoScroll) {
         return TextPrinter_WaitAutoMode(printer);
     }
@@ -526,40 +537,49 @@ static u8 TextPrinter_Wait(TextPrinter *printer) {
     return TextPrinter_Continue(printer);
 }
 
-void TextFlags_SetCanABSpeedUpPrint(BOOL param0) {
+void TextFlags_SetCanABSpeedUpPrint(BOOL param0)
+{
     sTextFlags.canABSpeedUpPrint = param0;
 }
 
-void TextFlags_SetAutoScrollParam(int param0) {
+void TextFlags_SetAutoScrollParam(int param0)
+{
     sTextFlags.autoScroll = param0 & 1;
     sTextFlags.autoScrollCanSpeedUp = (param0 >> 1) & 1;
 }
 
-void TextFlags_SetCanTouchSpeedUpPrint(BOOL enable) {
+void TextFlags_SetCanTouchSpeedUpPrint(BOOL enable)
+{
     sTextFlags.canTouchSpeedUpPrint = enable;
 }
 
-void TextFlags_SetAlternateDownArrow(BOOL enable) {
+void TextFlags_SetAlternateDownArrow(BOOL enable)
+{
     sTextFlags.useAlternateDownArrow = enable;
 }
 
-u8 TextFlags_GetHasSpedUpInput(void) {
+u8 TextFlags_GetHasSpedUpInput(void)
+{
     return sTextFlags.hasSpedUpInput;
 }
 
-void TextFlags_ResetHasSpedUpInput(void) {
+void TextFlags_ResetHasSpedUpInput(void)
+{
     sTextFlags.hasSpedUpInput = 0;
 }
 
-u8 TextFlags_GetHasContinuedInput(void) {
+u8 TextFlags_GetHasContinuedInput(void)
+{
     return sTextFlags.hasContinuedInput;
 }
 
-void TextFlags_ResetHasContinuedInput(void) {
+void TextFlags_ResetHasContinuedInput(void)
+{
     sTextFlags.hasContinuedInput = 0;
 }
 
-BOOL TextFlags_GetIsTouchSpeedingUpPrint(void) {
+BOOL TextFlags_GetIsTouchSpeedingUpPrint(void)
+{
     if (sTextFlags.canTouchSpeedUpPrint) {
         return sTextFlags.touchIsSpeedingUpPrint;
     } else {
@@ -567,12 +587,14 @@ BOOL TextFlags_GetIsTouchSpeedingUpPrint(void) {
     }
 }
 
-void TextFlags_SetFastForwardTouchButtonHitbox(const TouchscreenHitbox *hitbox) {
+void TextFlags_SetFastForwardTouchButtonHitbox(const TouchscreenHitbox *hitbox)
+{
     sTextFlags.touchHitboxActive = TRUE;
     sTouchScreenHitbox = *hitbox;
 }
 
-void TextFlags_UnsetFastForwardTouchButtonHitbox(void) {
+void TextFlags_UnsetFastForwardTouchButtonHitbox(void)
+{
     sTextFlags.touchHitboxActive = FALSE;
     sTouchScreenHitbox.rect.top = 0;
     sTouchScreenHitbox.rect.bottom = 192;
@@ -580,7 +602,8 @@ void TextFlags_UnsetFastForwardTouchButtonHitbox(void) {
     sTouchScreenHitbox.rect.right = 255;
 }
 
-void TextFlags_BeginAutoScroll(BOOL noSpeedUp) {
+void TextFlags_BeginAutoScroll(BOOL noSpeedUp)
+{
     if (noSpeedUp == FALSE) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetAutoScrollParam(AUTO_SCROLL_ENABLE | AUTO_SCROLL_SPEEDUP);
@@ -592,7 +615,8 @@ void TextFlags_BeginAutoScroll(BOOL noSpeedUp) {
     }
 }
 
-void TextFlags_EndAutoScroll(void) {
+void TextFlags_EndAutoScroll(void)
+{
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);

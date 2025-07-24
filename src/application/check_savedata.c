@@ -112,7 +112,8 @@ static void CheckSavedataApp_FreeTextAndWindow(CheckSavedataApp_Data *data);
 static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data);
 static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
-BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state) {
+BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     CheckSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CheckSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
@@ -127,7 +128,8 @@ BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
+BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state)
+{
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
     BOOL ret = FALSE;
 
@@ -176,7 +178,8 @@ BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
     return ret;
 }
 
-BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state) {
+BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state)
+{
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
     HeapID heapId = data->heapId;
 
@@ -190,7 +193,8 @@ BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-static void CheckSavedataApp_SetupBgConfig(CheckSavedataApp_Data *data) {
+static void CheckSavedataApp_SetupBgConfig(CheckSavedataApp_Data *data)
+{
     GraphicsBanks banks = sCheckSave_GraphicsBanks;
     GfGfx_SetBanks(&banks);
 
@@ -210,7 +214,8 @@ static void CheckSavedataApp_SetupBgConfig(CheckSavedataApp_Data *data) {
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
 
-static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data) {
+static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data)
+{
     ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
@@ -224,7 +229,8 @@ static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data) {
     Heap_Free(data->bgConfig);
 }
 
-static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data) {
+static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data)
+{
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0229_bin, data->heapId);
     ResetAllTextPrinters();
 
@@ -234,12 +240,14 @@ static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data) {
     FillWindowPixelRect(&data->window, 0xF, 0, 0, 216, 32);
 }
 
-static void CheckSavedataApp_FreeTextAndWindow(CheckSavedataApp_Data *data) {
+static void CheckSavedataApp_FreeTextAndWindow(CheckSavedataApp_Data *data)
+{
     RemoveWindow(&data->window);
     DestroyMsgData(data->msgData);
 }
 
-static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
+static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data)
+{
     BOOL ret = FALSE;
 
     switch (data->mainState) {
@@ -313,7 +321,8 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
     return ret;
 }
 
-static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed) {
+static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed)
+{
     BOOL ret = FALSE;
 
     switch (data->printState) {

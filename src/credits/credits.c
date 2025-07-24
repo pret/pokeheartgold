@@ -209,7 +209,8 @@ static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int a1);
 static void InitCutsceneSprites(CreditsAppWork *work);
 static void FreeCutsceneSprites(CreditsAppWork *work);
 
-BOOL Credits_Init(OverlayManager *man, int *state) {
+BOOL Credits_Init(OverlayManager *man, int *state)
+{
     CreditsAppWork *work;
 
     switch (*state) {
@@ -267,7 +268,8 @@ BOOL Credits_Init(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-BOOL Credits_Exit(OverlayManager *man, int *state) {
+BOOL Credits_Exit(OverlayManager *man, int *state)
+{
     CreditsAppWork *work = OverlayManager_GetData(man);
 
     switch (*state) {
@@ -303,7 +305,8 @@ BOOL Credits_Exit(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-BOOL Credits_Main(OverlayManager *man, int *state) {
+BOOL Credits_Main(OverlayManager *man, int *state)
+{
     CreditsAppWork *work = OverlayManager_GetData(man);
     GF_ASSERT(work->timer < 0xffffffff);
 
@@ -388,17 +391,20 @@ BOOL Credits_Main(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-static void VBlankCB(CreditsAppWork *work) {
+static void VBlankCB(CreditsAppWork *work)
+{
     DoScheduledBgGpuUpdates(work->bgConfig);
     OamManager_ApplyAndResetBuffers();
 }
 
-static void SetGXBanks(void) {
+static void SetGXBanks(void)
+{
     GraphicsBanks banks = sCreditsGraphicsBanks;
     GfGfx_SetBanks(&banks);
 }
 
-static void InitBgLayers(CreditsAppWork *work) {
+static void InitBgLayers(CreditsAppWork *work)
+{
     GraphicsModes modeSet;
     BgTemplate tmpl2;
     BgTemplate tmpl3;
@@ -429,7 +435,8 @@ static void InitBgLayers(CreditsAppWork *work) {
     LoadBgGraphics(work);
 }
 
-static void FreeBG(CreditsAppWork *work) {
+static void FreeBG(CreditsAppWork *work)
+{
     FreeBgTilemapBuffer(work->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(work->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(work->bgConfig, GF_BG_LYR_MAIN_3);
@@ -439,7 +446,8 @@ static void FreeBG(CreditsAppWork *work) {
     Heap_Free(work->bgConfig);
 }
 
-static void LoadBgGraphics(CreditsAppWork *work) {
+static void LoadBgGraphics(CreditsAppWork *work)
+{
     ScrnFileIds temp1 = ov76_021E6EE8;
     ScrnFileIds temp2 = ov76_021E6F00;
     BgConfig *bgConfig = work->bgConfig;
@@ -464,7 +472,8 @@ static void LoadBgGraphics(CreditsAppWork *work) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
 }
 
-static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
+static void CreateOamAndObjResMgrs(CreditsAppWork *work)
+{
     ObjCharTransferTemplate objCharTransferTemplate;
     UnkOv021E60F6 temp2;
 
@@ -487,7 +496,8 @@ static void CreateOamAndObjResMgrs(CreditsAppWork *work) {
     }
 }
 
-static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
+static void FreeOamAndObjResMgrs(CreditsAppWork *work)
+{
     for (u8 i = GF_GFX_RES_TYPE_CHAR; i < GF_GFX_RES_TYPE_ANIM + 1; i++) {
         Destroy2DGfxResObjMan(work->gf2dGfxResMan[i]);
     }
@@ -497,7 +507,8 @@ static void FreeOamAndObjResMgrs(CreditsAppWork *work) {
     ObjPlttTransfer_Destroy();
 }
 
-static void ov76_021E6170(CreditsAppWork *work) {
+static void ov76_021E6170(CreditsAppWork *work)
+{
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR] = AddCharResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], NARC_a_2_6_3, 1, TRUE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT] = AddPlttResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], NARC_a_2_6_3, 0, FALSE, 1, NNS_G2D_VRAM_TYPE_2DBOTH, 7, HEAP_ID_CREDITS);
     work->gf2dGfxResObj[GF_GFX_RES_TYPE_CELL] = AddCellOrAnimResObjFromNarc(work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], NARC_a_2_6_3, 2, TRUE, 1, GF_GFX_RES_TYPE_CELL, HEAP_ID_CREDITS);
@@ -525,7 +536,8 @@ static void ov76_021E6170(CreditsAppWork *work) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void ov76_021E62B4(CreditsAppWork *work) {
+static void ov76_021E62B4(CreditsAppWork *work)
+{
     sub_0200AEB0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
@@ -535,7 +547,8 @@ static void ov76_021E62B4(CreditsAppWork *work) {
     }
 }
 
-static void InitSprites(CreditsAppWork *work) {
+static void InitSprites(CreditsAppWork *work)
+{
     SpriteResourcesHeader header;
     SpriteTemplate tmpl;
 
@@ -600,7 +613,8 @@ static void InitSprites(CreditsAppWork *work) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
+static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header)
+{
     CreateSpriteResourcesHeader(
         header, idx, idx, idx, idx, -1, -1, FALSE, sprtResPriority, work->gf2dGfxResMan[GF_GFX_RES_TYPE_CHAR], work->gf2dGfxResMan[GF_GFX_RES_TYPE_PLTT], work->gf2dGfxResMan[GF_GFX_RES_TYPE_CELL], work->gf2dGfxResMan[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 
@@ -618,7 +632,8 @@ static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtRe
     tmpl->heapId = HEAP_ID_CREDITS;
 }
 
-static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
+static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header)
+{
     CutsceneSpriteGfx *ptr = &work->cutsceneWork.spriteGfx[idx];
 
     header->charData = NULL;
@@ -645,13 +660,15 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
     tmpl->heapId = HEAP_ID_CREDITS;
 }
 
-static void SetPageSysTasks(CreditsAppWork *work) {
+static void SetPageSysTasks(CreditsAppWork *work)
+{
     PageWork *ptr = &work->pageWork;
     ptr->pageDisplayWork.sysTask = SysTask_CreateOnVBlankQueue(TogglePageDisplayCB, &ptr->pageDisplayWork, 0);
     work->pageWork.scrFlipWork.sysTask = SysTask_CreateOnVBlankQueue(FlipScreensCB, &work->pageWork.scrFlipWork, 1);
 }
 
-static void FreePageSysTasks(CreditsAppWork *work) {
+static void FreePageSysTasks(CreditsAppWork *work)
+{
     PageWork *ptr = &work->pageWork;
     SysTask_Destroy(ptr->pageDisplayWork.sysTask);
     ptr->pageDisplayWork.sysTask = NULL;
@@ -660,7 +677,8 @@ static void FreePageSysTasks(CreditsAppWork *work) {
     work->pageWork.scrFlipWork.sysTask = NULL;
 }
 
-static void HandlePageDisplay(CreditsAppWork *work) {
+static void HandlePageDisplay(CreditsAppWork *work)
+{
     BOOL newPageFrame;
     PageWork *ptr;
     PageDisplayWork *ptr18;
@@ -707,7 +725,8 @@ static void HandlePageDisplay(CreditsAppWork *work) {
     }
 }
 
-static void HandleSceneTransition(CreditsAppWork *work) {
+static void HandleSceneTransition(CreditsAppWork *work)
+{
     SceneWork *ptr = &work->sceneWork;
     BOOL transitionFrame = FALSE;
 
@@ -771,7 +790,8 @@ static void HandleSceneTransition(CreditsAppWork *work) {
     }
 }
 
-static void HandleSceneFlip(CreditsAppWork *work) {
+static void HandleSceneFlip(CreditsAppWork *work)
+{
     BOOL transitionFrame = FALSE;
     if (work->pageWork.scrFlipWork.count < 5) {
         if (work->timer == sScreenFlipTimings[work->pageWork.scrFlipWork.count]) {
@@ -783,7 +803,8 @@ static void HandleSceneFlip(CreditsAppWork *work) {
     }
 }
 
-static void HandleCutscenes(CreditsAppWork *work) {
+static void HandleCutscenes(CreditsAppWork *work)
+{
     CutsceneSprites *cutsceneSprites = &work->cutsceneWork.sprites;
 
     if (work->cutsceneWork.cutsceneIdx >= NUM_CUTSCENES) {
@@ -806,19 +827,22 @@ static void HandleCutscenes(CreditsAppWork *work) {
     }
 }
 
-static void ActivateSprite(Sprite *sprite) {
+static void ActivateSprite(Sprite *sprite)
+{
     Sprite_SetAnimActiveFlag(sprite, TRUE);
     Sprite_SetDrawFlag(sprite, TRUE);
 }
 
 // Marks the scene transition for the SysTask callback.
-static void ov76_021E68C8(CreditsAppWork *work) {
+static void ov76_021E68C8(CreditsAppWork *work)
+{
     ScreenFlipWork *ptr = &work->pageWork.scrFlipWork;
     ptr->transitionFrame = TRUE;
     ptr->count++;
 }
 
-static void FlipScreensCB(SysTask *task, void *taskData) {
+static void FlipScreensCB(SysTask *task, void *taskData)
+{
     ScreenFlipWork *screenFlip = (ScreenFlipWork *)taskData;
     if (screenFlip->transitionFrame) {
         screenFlip->transitionFrame = FALSE;
@@ -831,14 +855,16 @@ static void FlipScreensCB(SysTask *task, void *taskData) {
     }
 }
 
-static void DisplayWindow(CreditsAppWork *work) {
+static void DisplayWindow(CreditsAppWork *work)
+{
     AddWindow(work->bgConfig, &work->pageWork.window, &ov76_021E6E98);
     BG_FillCharDataRange(work->bgConfig, GF_BG_LYR_SUB_1, 0, 1, 0);
     LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_15_OFFSET, HEAP_ID_CREDITS);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
 }
 
-static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL hidden) {
+static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL hidden)
+{
     GF_ASSERT(pageDisplay->rendering == FALSE);
     GXS_SetVisibleWnd(3);
     G2S_SetWnd0InsidePlane(30, TRUE);
@@ -852,11 +878,13 @@ static void ov76_021E6944(PageDisplayWork *pageDisplay, BgConfig *bgConfig, BOOL
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
 }
 
-static BOOL PageWindowRendering(PageDisplayWork *a0) {
+static BOOL PageWindowRendering(PageDisplayWork *a0)
+{
     return a0->rendering;
 }
 
-static void TogglePageDisplayCB(SysTask *task, void *taskData) {
+static void TogglePageDisplayCB(SysTask *task, void *taskData)
+{
     PageDisplayWork *pageDisplay = (PageDisplayWork *)taskData;
     int temp;
     int temp2;
@@ -888,7 +916,8 @@ static void TogglePageDisplayCB(SysTask *task, void *taskData) {
     BgSetPosTextAndCommit(pageDisplay->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_X, xPos);
 }
 
-static void ov76_021E6A34(int a0, int a1, int a2, int a3) {
+static void ov76_021E6A34(int a0, int a1, int a2, int a3)
+{
     if (a0 == 0 && a2 == 0xff) {
         G2S_SetWnd1Position(0, a1, 1, a3);
         G2S_SetWnd0Position(1, a1, 0, a3);
@@ -898,7 +927,8 @@ static void ov76_021E6A34(int a0, int a1, int a2, int a3) {
     G2S_SetWnd0Position(a0, a1, a2, a3);
 }
 
-static void LoadPage(PageWork *ptr) {
+static void LoadPage(PageWork *ptr)
+{
     u32 page_i;
 
     u16 nextPage = ptr->pageState.page + 1;
@@ -924,7 +954,8 @@ static void LoadPage(PageWork *ptr) {
     CopyWindowToVram(&ptr->window);
 }
 
-static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
+static void LoadCutsceneSpriteResources(CreditsAppWork *work)
+{
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     for (u8 i = 0; i < UNIQUE_SPRITES_PER_CUTSCENE; i++) {
         SpriteResource *charResObj = work->cutsceneRsrs[i].charResObj;
@@ -939,7 +970,8 @@ static void LoadCutsceneSpriteResources(CreditsAppWork *work) {
     }
 }
 
-static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int spriteId) {
+static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int spriteId)
+{
     int playerId;
     int friendId;
     BOOL playerCharacter = FALSE;
@@ -992,7 +1024,8 @@ static void LoadCutsceneSpriteGfx(CutsceneWork *a0, int spriteId) {
     a0->curSprite++;
 }
 
-static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam *spriteParam) {
+static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam *spriteParam)
+{
     SpriteResourcesHeader header;
     SpriteTemplate tmpl;
 
@@ -1020,7 +1053,8 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
 }
 
 // Initialize sprites for the current cutscene.
-static void InitCutsceneSprites(CreditsAppWork *work) {
+static void InitCutsceneSprites(CreditsAppWork *work)
+{
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     u8 idx = cutsceneWork->cutsceneIdx;
 
@@ -1046,7 +1080,8 @@ static void InitCutsceneSprites(CreditsAppWork *work) {
     GF_ASSERT(activateTime > work->timer);
 }
 
-static void FreeCutsceneSprites(CreditsAppWork *work) {
+static void FreeCutsceneSprites(CreditsAppWork *work)
+{
     u8 i;
     CutsceneWork *cutsceneWork = &work->cutsceneWork;
     CutsceneSprites *sprites = &cutsceneWork->sprites;

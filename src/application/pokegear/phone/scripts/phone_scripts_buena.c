@@ -10,7 +10,8 @@
 
 static u8 IsBuenasPasswordOnAir(u8 hour);
 
-u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     state->scriptType = 0;
     state->flag0 = CheckGameClearFlag(ctx->saveVarsFlags);
     state->sharedU8var = IsBuenasPasswordOnAir(state->time.hour);
@@ -31,7 +32,8 @@ u16 PhoneCall_GetScriptId_Buena(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
 
     switch (state->scriptState) {
@@ -57,7 +59,8 @@ BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     u8 r5;
     u8 r2;
@@ -95,7 +98,8 @@ BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-static u8 IsBuenasPasswordOnAir(u8 hour) {
+static u8 IsBuenasPasswordOnAir(u8 hour)
+{
     // Different messages at different times of day
 
     // hour % 3 == 2, so 2, 5, 8, 11 AM/PM

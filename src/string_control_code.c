@@ -4,7 +4,8 @@
 
 #include "pm_string.h"
 
-const u16 *MsgArray_SkipControlCode(const u16 *arr) {
+const u16 *MsgArray_SkipControlCode(const u16 *arr)
+{
     GF_ASSERT(*arr == EXT_CTRL_CODE_BEGIN);
     if (*arr == EXT_CTRL_CODE_BEGIN) {
         u16 size = arr[2];
@@ -14,17 +15,20 @@ const u16 *MsgArray_SkipControlCode(const u16 *arr) {
     return arr;
 }
 
-int MsgArray_GetControlCode(const u16 *arr) {
+int MsgArray_GetControlCode(const u16 *arr)
+{
     GF_ASSERT(*arr == EXT_CTRL_CODE_BEGIN);
     return arr[1];
 }
 
-BOOL MsgArray_ControlCodeIsStrVar(const u16 *arr) {
+BOOL MsgArray_ControlCodeIsStrVar(const u16 *arr)
+{
     int strcode = MsgArray_GetControlCode(arr) & 0xFF00;
     return strcode == 0x100 || strcode == 0x300 || strcode == 0x400 || strcode == 0x3400;
 }
 
-int MsgArray_ControlCodeGetField(const u16 *arr, u32 fieldno) {
+int MsgArray_ControlCodeGetField(const u16 *arr, u32 fieldno)
+{
     GF_ASSERT(*arr == EXT_CTRL_CODE_BEGIN);
     GF_ASSERT(fieldno < arr[2]);
     arr += 3;

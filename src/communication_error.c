@@ -66,12 +66,14 @@ static const WindowTemplate sCommunicationErrorWindowTemplate = {
 
 static void VBlankIntr(void);
 
-static void VBlankIntr(void) {
+static void VBlankIntr(void)
+{
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
-static BOOL sub_0203A9FC(u32 *error_code_ptr) {
+static BOOL sub_0203A9FC(u32 *error_code_ptr)
+{
     if (!sub_020393C8() || !sub_02037D78()) {
         return FALSE;
     }
@@ -89,7 +91,8 @@ static BOOL sub_0203A9FC(u32 *error_code_ptr) {
     return TRUE;
 }
 
-void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode) {
+void ShowCommunicationError(HeapID heapId, u32 error, u32 errorCode)
+{
     Window window;
 
     u32 msgNo;

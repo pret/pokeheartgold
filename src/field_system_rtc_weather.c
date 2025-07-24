@@ -19,7 +19,8 @@ const MonthDay DiamondDustDates[] = {
     { DECEMBER, 31 },
 }; //_020FA09C
 
-u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId) {
+u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId)
+{
     u8 c;
     u32 weatherType = MapHeader_GetWeatherType(mapId);
     if (mapId != MAP_MOUNT_SILVER_CAVE_SUMMIT) {

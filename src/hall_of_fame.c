@@ -10,7 +10,8 @@
     GF_ASSERT(hof->next_record < NUM_HOF_RECORDS); \
 })
 
-static inline HOFTEAM *HallOfFame_SeekBack(HallOfFame *hof, int num) {
+static inline HOFTEAM *HallOfFame_SeekBack(HallOfFame *hof, int num)
+{
     int ret = hof->next_record - 1 - num;
     if (ret < 0) {
         ret += NUM_HOF_RECORDS;
@@ -18,15 +19,18 @@ static inline HOFTEAM *HallOfFame_SeekBack(HallOfFame *hof, int num) {
     return &hof->parties[ret];
 }
 
-u32 Save_HOF_sizeof(void) {
+u32 Save_HOF_sizeof(void)
+{
     return sizeof(HallOfFame);
 }
 
-void Save_HOF_Init(HallOfFame *hof) {
+void Save_HOF_Init(HallOfFame *hof)
+{
     MI_CpuClear32(hof, sizeof(HallOfFame));
 }
 
-void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
+void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date)
+{
     ASSERT_HALL_OF_FAME(hof);
     if (hof->num_total < 9999) {
         HOFTEAM *team = &hof->parties[hof->next_record];
@@ -76,7 +80,8 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
     }
 }
 
-u32 Save_HOF_GetNumRecords(const HallOfFame *hallOfFame) {
+u32 Save_HOF_GetNumRecords(const HallOfFame *hallOfFame)
+{
     ASSERT_HALL_OF_FAME(hallOfFame);
     u32 ret = hallOfFame->num_total;
     if (ret >= NUM_HOF_RECORDS) {
@@ -85,13 +90,15 @@ u32 Save_HOF_GetNumRecords(const HallOfFame *hallOfFame) {
     return ret;
 }
 
-int Save_HOF_TranslateRecordIdx(const HallOfFame *hallOfFame, int num) {
+int Save_HOF_TranslateRecordIdx(const HallOfFame *hallOfFame, int num)
+{
     ASSERT_HALL_OF_FAME(hallOfFame);
     GF_ASSERT(num < NUM_HOF_RECORDS);
     return hallOfFame->num_total - num;
 }
 
-u32 Save_HOF_RecordCountMons(HallOfFame *hallOfFame, int num) {
+u32 Save_HOF_RecordCountMons(HallOfFame *hallOfFame, int num)
+{
     u32 i;
     HOFTEAM *team;
 
@@ -106,7 +113,8 @@ u32 Save_HOF_RecordCountMons(HallOfFame *hallOfFame, int num) {
     return i;
 }
 
-void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest) {
+void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int monNum, SHOW_HOFMON *dest)
+{
     int i;
     const HOFTEAM *team;
     const HOFMON *mon;
@@ -128,7 +136,8 @@ void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int mo
     }
 }
 
-void Save_HOF_GetClearDate(HallOfFame *hof, int num, RTCDate *dest) {
+void Save_HOF_GetClearDate(HallOfFame *hof, int num, RTCDate *dest)
+{
     HOFTEAM *party;
     ASSERT_HALL_OF_FAME(hof);
     GF_ASSERT(num < NUM_HOF_RECORDS);

@@ -6,7 +6,8 @@
 #include "overlay_26.h"
 #include "save_pokegear.h"
 
-u16 PhoneBookTrainerGetRematchInfo(u8 idx, SaveData *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay) {
+u16 PhoneBookTrainerGetRematchInfo(u8 idx, SaveData *saveData, struct PhoneBook *phoneBook, TimeOfDayWildParam timeOfDay)
+{
     PhoneCallPersistentState *callPersistentState = SaveData_GetPhoneCallPersistentState(saveData);
     BOOL isSeekingPhoneRematches = PhoneCallPersistentState_PhoneRematches_IsSeeking(callPersistentState, idx);
 

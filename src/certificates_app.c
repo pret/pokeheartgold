@@ -184,7 +184,8 @@ static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId)
 static u32 ov78_021E6688(int species, int form, int gender);
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3);
 
-BOOL Certificates_Init(OverlayManager *manager, int *state) {
+BOOL Certificates_Init(OverlayManager *manager, int *state)
+{
     CreateHeap(HEAP_ID_3, HEAP_ID_CERTIFICATES, 0x20000);
 
     CertificatesApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CertificatesApp_Data), HEAP_ID_CERTIFICATES);
@@ -232,7 +233,8 @@ BOOL Certificates_Init(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL Certificates_Main(OverlayManager *manager, int *state) {
+BOOL Certificates_Main(OverlayManager *manager, int *state)
+{
     CertificatesApp_Data *data = OverlayManager_GetData(manager);
     BOOL ret = FALSE;
 
@@ -294,7 +296,8 @@ BOOL Certificates_Main(OverlayManager *manager, int *state) {
     return ret;
 }
 
-BOOL Certificates_Exit(OverlayManager *manager, int *state) {
+BOOL Certificates_Exit(OverlayManager *manager, int *state)
+{
     CertificatesApp_Data *data = OverlayManager_GetData(manager);
     HeapID heapId = data->heapId;
 
@@ -314,7 +317,8 @@ BOOL Certificates_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-static void CertificatesApp_OnVBlank(CertificatesApp_Data *data) {
+static void CertificatesApp_OnVBlank(CertificatesApp_Data *data)
+{
     GF_ASSERT(data != NULL);
     GF_ASSERT(data->bgConfig != NULL);
 
@@ -330,7 +334,8 @@ static void CertificatesApp_OnVBlank(CertificatesApp_Data *data) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
 }
 
-static void CertificatesApp_SetupBgConfig(CertificatesApp_Data *data) {
+static void CertificatesApp_SetupBgConfig(CertificatesApp_Data *data)
+{
     GraphicsBanks banks = ov78_021E6858;
     GfGfx_SetBanks(&banks);
 
@@ -393,7 +398,8 @@ static void CertificatesApp_SetupBgConfig(CertificatesApp_Data *data) {
     ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
 }
 
-static void CertificatesApp_FreeBgConfig(CertificatesApp_Data *data) {
+static void CertificatesApp_FreeBgConfig(CertificatesApp_Data *data)
+{
     ToggleBgLayer(GF_BG_LYR_MAIN_0, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_1, GF_PLANE_TOGGLE_OFF);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_OFF);
@@ -413,7 +419,8 @@ static void CertificatesApp_FreeBgConfig(CertificatesApp_Data *data) {
     Heap_Free(data->bgConfig);
 }
 
-static void CertificatesApp_SetupWindowsAndText(CertificatesApp_Data *data) {
+static void CertificatesApp_SetupWindowsAndText(CertificatesApp_Data *data)
+{
     WindowTemplate template = ov78_021E67D8;
 
     ResetAllTextPrinters();
@@ -430,7 +437,8 @@ static void CertificatesApp_SetupWindowsAndText(CertificatesApp_Data *data) {
     FillWindowPixelRect(&data->window2, 0x00, 0, 0, GX_LCD_SIZE_X, GX_LCD_SIZE_Y);
 }
 
-static void CertificatesApp_FreeWindowsAndText(CertificatesApp_Data *data) {
+static void CertificatesApp_FreeWindowsAndText(CertificatesApp_Data *data)
+{
     RemoveWindow(&data->window2);
     RemoveWindow(&data->window1);
 
@@ -438,12 +446,14 @@ static void CertificatesApp_FreeWindowsAndText(CertificatesApp_Data *data) {
     DestroyMsgData(data->msgData);
 }
 
-void ov78_021E5E44(CertificatesApp_Data *data) {
+void ov78_021E5E44(CertificatesApp_Data *data)
+{
     data->unk40 = 0;
     ov78_021E5E54(data);
 }
 
-static void ov78_021E5E54(CertificatesApp_Data *data) {
+static void ov78_021E5E54(CertificatesApp_Data *data)
+{
     ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SET_Y, data->unk40);
     ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, data->unk40 + GX_LCD_SIZE_Y);
     ScheduleSetBgPosText(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, data->unk40);
@@ -454,7 +464,8 @@ static void ov78_021E5E54(CertificatesApp_Data *data) {
     }
 }
 
-static void ov78_021E5EA4(CertificatesApp_Data *data) {
+static void ov78_021E5EA4(CertificatesApp_Data *data)
+{
     u32 nscrFileNum;
     u32 ncgrFileNum;
     u32 nclrFileNum;
@@ -509,7 +520,8 @@ static void ov78_021E5EA4(CertificatesApp_Data *data) {
     LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, data->heapId);
 }
 
-static void ov78_021E6068(CertificatesApp_Data *data) {
+static void ov78_021E6068(CertificatesApp_Data *data)
+{
     String *string = String_New(512, data->heapId);
 
     u32 x1, x2, y1, y2;
@@ -563,7 +575,8 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
     String_Delete(string);
 }
 
-static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority) {
+static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority)
+{
     ManagedSpriteTemplate template = ov78_021E6880;
     template.x = x;
     template.y = y;
@@ -575,7 +588,8 @@ static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHa
     return unk;
 }
 
-static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y) {
+static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y)
+{
     ManagedSpriteTemplate template = ov78_021E68B4;
     template.x = x;
     template.y = y;
@@ -583,7 +597,8 @@ static ManagedSprite *ov78_021E6214(SpriteSystem *renderer, SpriteManager *gfxHa
     return SpriteSystem_NewSpriteWithYOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-static ManagedSprite *ov78_021E6250(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y) {
+static ManagedSprite *ov78_021E6250(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y)
+{
     ManagedSpriteTemplate template = ov78_021E68E8;
     template.x = x;
     template.y = y;
@@ -591,7 +606,8 @@ static ManagedSprite *ov78_021E6250(SpriteSystem *renderer, SpriteManager *gfxHa
     return SpriteSystem_NewSpriteWithYOffset(renderer, gfxHandler, &template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
+static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data)
+{
     data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
     data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
 
@@ -611,7 +627,8 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
     data->unk58 = tp_param_data[1];
 }
 
-static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data) {
+static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data)
+{
     SpriteSystem *renderer = data->spriteRenderer;
     SpriteManager *gfxHandler = data->spriteGfxHandler;
 
@@ -624,7 +641,8 @@ static void CertificatesApp_FreeSpriteRenderer(CertificatesApp_Data *data) {
     SpriteSystem_Free(renderer);
 }
 
-static void ov78_021E636C(CertificatesApp_Data *data) {
+static void ov78_021E636C(CertificatesApp_Data *data)
+{
     SpriteSystem *renderer = data->spriteRenderer;
     SpriteManager *gfxHandler = data->spriteGfxHandler;
 
@@ -667,14 +685,16 @@ static void ov78_021E636C(CertificatesApp_Data *data) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void ov78_021E652C(CertificatesApp_Data *data) {
+static void ov78_021E652C(CertificatesApp_Data *data)
+{
     for (int i = 0; i < (int)NELEMS(data->unk4C); i++) {
         GF_ASSERT(data->unk4C[i] != NULL);
         ManagedSprite_SetPositionXYWithSubscreenOffset(data->unk4C[i], ov78_021E6920[i][0], ov78_021E6920[i][1] - data->unk40, FX32_CONST(GX_LCD_SIZE_Y));
     }
 }
 
-static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u32 srcOffset) {
+static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u32 srcOffset)
+{
     GF_ASSERT(Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DBOTH);
 
     DC_FlushRange(unkBuffer, unkBufferSize);
@@ -684,7 +704,8 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
     GXS_LoadOBJ(unkBuffer, (u32)((void *)NNS_G2dGetImageLocation(proxy, NNS_G2D_VRAM_TYPE_2DSUB) + srcOffset), unkBufferSize);
 }
 
-void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
+void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId)
+{
     thunk_Sprite_SetDrawFlag(sprite, FALSE);
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapId);
@@ -710,12 +731,14 @@ void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, HeapID heapId) {
     thunk_Sprite_SetDrawFlag(sprite, TRUE);
 }
 
-static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId) {
+static void ov78_021E6664(Sprite *sprite, PlayerProfile *profile, HeapID heapId)
+{
     u32 narcMemberNum = (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) ? MMODEL_HERO : MMODEL_HEROINE;
     ov78_021E65BC(sprite, narcMemberNum, 21, heapId);
 }
 
-static u32 ov78_021E6688(int species, int form, int gender) {
+static u32 ov78_021E6688(int species, int form, int gender)
+{
     u32 ret;
     if (species <= SPECIES_NONE || species > MAX_SPECIES) {
         ret = 1;
@@ -735,7 +758,8 @@ static u32 ov78_021E6688(int species, int form, int gender) {
     return ret;
 }
 
-static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3) {
+static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, HeapID heapId, u32 a3)
+{
     u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(pokemon, MON_DATA_FORM, NULL);
     u32 gender = GetMonGender(pokemon);

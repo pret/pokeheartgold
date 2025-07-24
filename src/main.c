@@ -47,7 +47,8 @@ static void Main_RunOverlayManager(void);
 static void sub_02000FD8(u32 a0, int a1);
 static BOOL sub_02001098(int a0);
 
-void NitroMain(void) {
+void NitroMain(void)
+{
     InitSystemForTheGame();
     InitGraphicMemory();
     InitKeypadAndTouchpad();
@@ -132,14 +133,16 @@ void NitroMain(void) {
     }
 }
 
-void Main_ResetOverlayManager(void) {
+void Main_ResetOverlayManager(void)
+{
     _02111868.mainOverlayId = FS_OVERLAY_ID_NONE;
     _02111868.overlayManager = NULL;
     _02111868.queuedMainOverlayId = FS_OVERLAY_ID_NONE;
     _02111868.queuedMainOverlayTemplate = NULL;
 }
 
-static void Main_RunOverlayManager(void) {
+static void Main_RunOverlayManager(void)
+{
     if (_02111868.overlayManager == NULL) {
         if (_02111868.queuedMainOverlayTemplate == NULL) {
             return;
@@ -161,13 +164,15 @@ static void Main_RunOverlayManager(void) {
     }
 }
 
-void RegisterMainOverlay(FSOverlayID overlayId, const OverlayManagerTemplate *template) {
+void RegisterMainOverlay(FSOverlayID overlayId, const OverlayManagerTemplate *template)
+{
     GF_ASSERT(_02111868.queuedMainOverlayTemplate == NULL);
     _02111868.queuedMainOverlayId = overlayId;
     _02111868.queuedMainOverlayTemplate = template;
 }
 
-static void sub_02000F14(void) {
+static void sub_02000F14(void)
+{
     sub_02036144();
     OS_WaitIrq(TRUE, OS_IE_VBLANK);
     gSystem.vblankCounter++;
@@ -177,14 +182,16 @@ static void sub_02000F14(void) {
     }
 }
 
-static void sub_02000F40(u32 param) {
+static void sub_02000F40(u32 param)
+{
     if (sub_02039AA4() && CARD_TryWaitBackupAsync() == TRUE) {
         OS_ResetSystem(param);
     }
     sub_02000F14();
 }
 
-static void sub_02000F60(void) {
+static void sub_02000F60(void)
+{
     int r1 = sub_020399B8();
     switch (r1) {
     case 5:
@@ -202,7 +209,8 @@ static void sub_02000F60(void) {
     }
 }
 
-static void DoSoftReset(u32 param) {
+static void DoSoftReset(u32 param)
+{
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     if (sub_02038D90()) {
@@ -214,7 +222,8 @@ static void DoSoftReset(u32 param) {
     }
 }
 
-static void sub_02000FD8(u32 a0, int a1) {
+static void sub_02000FD8(u32 a0, int a1)
+{
     int sp4;
     int r7;
     int r4;
@@ -264,7 +273,8 @@ static void sub_02000FD8(u32 a0, int a1) {
     DoSoftReset(a0);
 }
 
-static BOOL sub_02001098(int a0) {
+static BOOL sub_02001098(int a0)
+{
     switch (a0) {
     case 0:
     case 7:
@@ -278,13 +288,15 @@ static BOOL sub_02001098(int a0) {
     }
 }
 
-void InitializeMainRNG(void) {
+void InitializeMainRNG(void)
+{
     u32 seed = RngSeedFromRTC();
     SetMTRNGSeed(seed);
     SetLCRNGSeed(seed);
 }
 
-void HandleDSLidAction(void) {
+void HandleDSLidAction(void)
+{
     PMBackLightSwitch top, bottom;
     PMWakeUpTrigger trigger;
     if (PAD_DetectFold()) {

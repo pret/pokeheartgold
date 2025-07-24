@@ -46,7 +46,8 @@ static const u8 sPlayerAvatarAttributes[][3] = {
     { SPRITE_GORGGEOUSW, TRAINERCLASS_LADY,          TRAINERCLASS_LADY          },
 };
 
-void BufferUnionRoomAvatarChoicesNames(u32 trainerId, u32 playerGender, MessageFormat *msgFmt) {
+void BufferUnionRoomAvatarChoicesNames(u32 trainerId, u32 playerGender, MessageFormat *msgFmt)
+{
     int idx;
     int i;
     int sprite;
@@ -59,7 +60,8 @@ void BufferUnionRoomAvatarChoicesNames(u32 trainerId, u32 playerGender, MessageF
     }
 }
 
-int UnionRoomAvatarIdxToSprite(u32 trainerId, u32 playerGender, u32 choice) {
+int UnionRoomAvatarIdxToSprite(u32 trainerId, u32 playerGender, u32 choice)
+{
     int idx;
     int sprite;
 
@@ -68,7 +70,8 @@ int UnionRoomAvatarIdxToSprite(u32 trainerId, u32 playerGender, u32 choice) {
     return sPlayerAvatarAttributes[sprite + playerGender * 8][0];
 }
 
-static int SpriteToUnionRoomAvatarIdx_Internal(int playerGender, int trclass) {
+static int SpriteToUnionRoomAvatarIdx_Internal(int playerGender, int trclass)
+{
     int i;
 
     for (i = 0; i < 8; i++) {
@@ -80,11 +83,13 @@ static int SpriteToUnionRoomAvatarIdx_Internal(int playerGender, int trclass) {
     return 0;
 }
 
-int SpriteToUnionRoomAvatarIdx(int playerGender, int trclass) {
+int SpriteToUnionRoomAvatarIdx(int playerGender, int trclass)
+{
     return SpriteToUnionRoomAvatarIdx_Internal(playerGender, trclass);
 }
 
-int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr) {
+int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr)
+{
     int idx;
 
     idx = SpriteToUnionRoomAvatarIdx_Internal(playerGender, trclass);
@@ -102,7 +107,8 @@ int GetUnionRoomAvatarAttrBySprite(int playerGender, int trclass, int attr) {
     return 0;
 }
 
-u16 *sub_0205B4A4(HeapID heapId) {
+u16 *sub_0205B4A4(HeapID heapId)
+{
     NNSG2dPaletteData *pPlttData;
     u16 *pltt_src;
     u16 *ret;

@@ -11,14 +11,16 @@
 #include "unk_0206979C.h"
 #include "update_dex_received.h"
 
-static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
+static BOOL MonNotFaintedOrEgg(Pokemon *mon)
+{
     if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
         return FALSE;
     }
     return !GetMonData(mon, MON_DATA_IS_EGG, NULL);
 }
 
-BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
+BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType)
+{
     Party *party;
     Pokemon *mon;
     PlayerProfile *profile;
@@ -47,7 +49,8 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     return result;
 }
 
-BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
+BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc)
+{
 #pragma unused(heapId)
     PlayerProfile *profile;
     Party *party;
@@ -64,11 +67,13 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
     return result;
 }
 
-void PartyMonSetMoveInSlot(Party *party, int mon_slot, int move_slot, u16 moveId) {
+void PartyMonSetMoveInSlot(Party *party, int mon_slot, int move_slot, u16 moveId)
+{
     MonSetMoveInSlot_ResetPpUp(Party_GetMonByIndex(party, mon_slot), moveId, move_slot);
 }
 
-int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {
+int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move)
+{
     int i;
     int n;
     Pokemon *mon;
@@ -89,7 +94,8 @@ int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {
     return 0xFF;
 }
 
-int CountAlivePokemon(Party *party) {
+int CountAlivePokemon(Party *party)
+{
     int i;
     int n;
     int c;
@@ -106,7 +112,8 @@ int CountAlivePokemon(Party *party) {
     return c;
 }
 
-Pokemon *GetFirstAliveMonInParty_CrashIfNone(Party *party) {
+Pokemon *GetFirstAliveMonInParty_CrashIfNone(Party *party)
+{
     int i;
     int n;
     Pokemon *mon;
@@ -122,7 +129,8 @@ Pokemon *GetFirstAliveMonInParty_CrashIfNone(Party *party) {
     return NULL;
 }
 
-u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(Party *party) {
+u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(Party *party)
+{
     int i;
     int n;
     Pokemon *mon;
@@ -138,7 +146,8 @@ u8 GetIdxOfFirstAliveMonInParty_CrashIfNone(Party *party) {
     return 0;
 }
 
-Pokemon *GetFirstNonEggInParty(Party *party) {
+Pokemon *GetFirstNonEggInParty(Party *party)
+{
     u16 i;
     u16 n;
     Pokemon *mon;
@@ -153,11 +162,13 @@ Pokemon *GetFirstNonEggInParty(Party *party) {
     return NULL;
 }
 
-BOOL HasEnoughAlivePokemonForDoubleBattle(Party *party) {
+BOOL HasEnoughAlivePokemonForDoubleBattle(Party *party)
+{
     return CountAlivePokemon(party) >= 2;
 }
 
-BOOL ApplyPoisonStep(Party *party, u16 location) {
+BOOL ApplyPoisonStep(Party *party, u16 location)
+{
     int n;
     int i;
     int n_poisoned;
@@ -197,7 +208,8 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
     }
 }
 
-BOOL SurvivePoisoning(Pokemon *mon) {
+BOOL SurvivePoisoning(Pokemon *mon)
+{
     u32 status;
     if ((GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && GetMonData(mon, MON_DATA_HP, NULL) == 1) {
         status = 0;

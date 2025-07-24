@@ -40,7 +40,8 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
 
 static const u8 sIntroMovieScene1SpriteResCounts[4] = { 1, 1, 1, 1 };
 
-BOOL IntroMovie_Scene1(IntroMovieOverlayData *data, void *pVoid) {
+BOOL IntroMovie_Scene1(IntroMovieOverlayData *data, void *pVoid)
+{
     IntroMovieScene1Data *sceneData = (IntroMovieScene1Data *)pVoid;
 
     if (IntroMovie_GetIntroSkippedFlag(data)) {
@@ -65,14 +66,16 @@ BOOL IntroMovie_Scene1(IntroMovieOverlayData *data, void *pVoid) {
     return FALSE;
 }
 
-static void IntroMovie_Scene1_VBlankCB(void *pVoid) {
+static void IntroMovie_Scene1_VBlankCB(void *pVoid)
+{
     IntroMovieOverlayData *data = (IntroMovieOverlayData *)pVoid;
 
     DoScheduledBgGpuUpdates(IntroMovie_GetBgConfig(data));
     OamManager_ApplyAndResetBuffers();
 }
 
-static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();
@@ -88,7 +91,8 @@ static void IntroMovie_Scene1_Init(IntroMovieOverlayData *data, IntroMovieScene1
     sceneData->needFreeGfx = TRUE;
 }
 
-static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData, int totalFrames) {
+static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData, int totalFrames)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *bgAnimCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 timer = IntroMovie_GetSceneStepTimer(data);
@@ -168,7 +172,8 @@ static BOOL IntroMovie_Scene1_Main(IntroMovieOverlayData *data, IntroMovieScene1
     return FALSE;
 }
 
-static void IntroMovie_Scene1_Exit(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_Exit(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
@@ -185,7 +190,8 @@ static void IntroMovie_Scene1_Exit(IntroMovieOverlayData *data, IntroMovieScene1
     }
 }
 
-static void IntroMovie_Scene1_InitBgs(IntroMovieOverlayData *data) {
+static void IntroMovie_Scene1_InitBgs(IntroMovieOverlayData *data)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
@@ -283,7 +289,8 @@ static void IntroMovie_Scene1_InitBgs(IntroMovieOverlayData *data) {
 #define INTRO_MOVIE_SCENE1_BIRD_CELLRES   NARC_gs_opening_gs_opening_00000030_NCER_lz
 #endif // HEARTGOLD
 
-static void IntroMovie_Scene1_LoadBgGfx(BgConfig *bgConfig) {
+static void IntroMovie_Scene1_LoadBgGfx(BgConfig *bgConfig)
+{
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, 4, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, 5, bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, 12, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
@@ -303,14 +310,16 @@ static void IntroMovie_Scene1_LoadBgGfx(BgConfig *bgConfig) {
     GfGfx_BothDispOn();
 }
 
-static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOverlayData *data) {
+static void IntroMovie_Scene1_SetBrightnessAndBgMaskColor(IntroMovieOverlayData *data)
+{
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
     SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
     SetMasterBrightnessNeutral(PM_LCD_TOP);
 }
 
-static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData)
+{
     IntroMovie_CreateSpriteResourceManagers(data, sIntroMovieScene1SpriteResCounts);
     GF_2DGfxResMan **ppMgr = IntroMovie_GetSpriteResourceManagersArray(data);
     sceneData->charResObj = AddCharResObjFromNarc(ppMgr[GF_GFX_RES_TYPE_CHAR], NARC_demo_opening_gs_opening, INTRO_MOVIE_SCENE1_BIRD_CHARRES, TRUE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_INTRO_MOVIE);
@@ -322,7 +331,8 @@ static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData)
+{
     Sprite_Delete(sceneData->sunSprite);
     Sprite_Delete(sceneData->birdSprite);
     sub_0200AEB0(sceneData->charResObj);
@@ -330,7 +340,8 @@ static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *
     IntroMovie_DestroySpriteResourceManagers(data);
 }
 
-static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
+static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData)
+{
     SpriteResourcesHeader spriteResourcesHeader;
     SpriteTemplate spriteTemplate;
 
@@ -353,7 +364,8 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
 }
 
 HeapID _deadstrip_01(int idx);
-HeapID _deadstrip_01(int idx) {
+HeapID _deadstrip_01(int idx)
+{
     static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }

@@ -10,7 +10,8 @@
 
 u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge);
 
-u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     u8 badgeCount;
     u8 hasPlainBadge;
     u16 scriptID;
@@ -37,7 +38,8 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     }
 }
 
-u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge) {
+u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge)
+{
     if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_998)) {
         return 0xFFFF;
     }

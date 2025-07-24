@@ -6,7 +6,8 @@
 #include "math_util.h"
 #include "save_arrays.h"
 
-u16 PhoneCall_GetScriptId_Bill(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_Bill(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     if (state->isIncomingCall != 0) {
         state->scriptType = 0;
         return PHONE_SCRIPT_093;
@@ -19,7 +20,8 @@ u16 PhoneCall_GetScriptId_Bill(PokegearPhoneCallContext *ctx, PokegearPhoneCallS
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_Bill(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_Bill(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     PCStorage *pcStorage;
     u32 count;

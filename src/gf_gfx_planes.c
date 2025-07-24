@@ -7,7 +7,8 @@
 static u32 sEngineBPlanes = 0;
 static u32 sEngineAPlanes = 0;
 
-void GfGfx_SetBanks(const GraphicsBanks *banks) {
+void GfGfx_SetBanks(const GraphicsBanks *banks)
+{
     GX_ResetBankForBG();
     GX_ResetBankForBGExtPltt();
     GX_ResetBankForSubBG();
@@ -31,12 +32,14 @@ void GfGfx_SetBanks(const GraphicsBanks *banks) {
     GX_SetBankForTexPltt(banks->texpltt);
 }
 
-void GfGfx_DisableEngineAPlanes(void) {
+void GfGfx_DisableEngineAPlanes(void)
+{
     (void)sEngineBPlanes;
     sEngineAPlanes = 0;
 }
 
-void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable) {
+void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable)
+{
     if (enable == GF_PLANE_TOGGLE_ON) {
         if (sEngineAPlanes & planeMask) {
             return;
@@ -50,16 +53,19 @@ void GfGfx_EngineATogglePlanes(u8 planeMask, u8 enable) {
     GX_SetVisiblePlane(sEngineAPlanes);
 }
 
-void GfGfx_EngineASetPlanes(u32 planes) {
+void GfGfx_EngineASetPlanes(u32 planes)
+{
     sEngineAPlanes = planes;
     GX_SetVisiblePlane(sEngineAPlanes);
 }
 
-void GfGfx_DisableEngineBPlanes(void) {
+void GfGfx_DisableEngineBPlanes(void)
+{
     sEngineBPlanes = 0;
 }
 
-void GfGfx_EngineBTogglePlanes(u8 planeMask, u8 enable) {
+void GfGfx_EngineBTogglePlanes(u8 planeMask, u8 enable)
+{
     if (enable == GF_PLANE_TOGGLE_ON) {
         if (sEngineBPlanes & planeMask) {
             return;
@@ -73,17 +79,20 @@ void GfGfx_EngineBTogglePlanes(u8 planeMask, u8 enable) {
     GXS_SetVisiblePlane(sEngineBPlanes);
 }
 
-void GfGfx_EngineBSetPlanes(u32 planes) {
+void GfGfx_EngineBSetPlanes(u32 planes)
+{
     sEngineBPlanes = planes;
     GXS_SetVisiblePlane(sEngineBPlanes);
 }
 
-void GfGfx_BothDispOn(void) {
+void GfGfx_BothDispOn(void)
+{
     GX_DispOn();
     GXS_DispOn();
 }
 
-void GfGfx_SwapDisplay(void) {
+void GfGfx_SwapDisplay(void)
+{
     if (gSystem.screensFlipped == 0) {
         GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
     } else {
@@ -91,6 +100,7 @@ void GfGfx_SwapDisplay(void) {
     }
 }
 
-u32 GfGfx_EngineAGetPlanes(void) {
+u32 GfGfx_EngineAGetPlanes(void)
+{
     return sEngineAPlanes;
 }

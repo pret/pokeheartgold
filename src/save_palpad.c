@@ -4,15 +4,18 @@
 
 #include "pm_string.h"
 
-u32 Save_PalPad_sizeof(void) {
+u32 Save_PalPad_sizeof(void)
+{
     return sizeof(SavePalPad) * NUM_PALPAD_ENTRIES;
 }
 
-SavePalPad *Save_PalPad_Get(SaveData *saveData) {
+SavePalPad *Save_PalPad_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_PALPAD);
 }
 
-void Save_PalPad_Init(SavePalPad *palPad) {
+void Save_PalPad_Init(SavePalPad *palPad)
+{
     int i;
 
     for (i = 0; i < NUM_PALPAD_ENTRIES; i++) {
@@ -21,19 +24,23 @@ void Save_PalPad_Init(SavePalPad *palPad) {
     }
 }
 
-SavePalPad *PalPad_GetNthEntry(SavePalPad *arr, int n) {
+SavePalPad *PalPad_GetNthEntry(SavePalPad *arr, int n)
+{
     return &arr[n];
 }
 
-u8 PalPadEntry_GetFromUnk68Array(SavePalPad *palPad, int n) {
+u8 PalPadEntry_GetFromUnk68Array(SavePalPad *palPad, int n)
+{
     return palPad->unk_68[n];
 }
 
-static BOOL PalPadEntry_IsEqual(SavePalPad *a, SavePalPad *b) {
+static BOOL PalPadEntry_IsEqual(SavePalPad *a, SavePalPad *b)
+{
     return !StringNotEqual(a->name, b->name) && a->otid == b->otid;
 }
 
-void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId) {
+void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId)
+{
     int i, j, k;
     int sp18[5];
     SavePalPad *c;
@@ -70,7 +77,8 @@ void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId) {
     Heap_Free(c);
 }
 
-int PalPad_PlayerIdIsFriendOrMutual(SavePalPad *palPad, u32 otId) {
+int PalPad_PlayerIdIsFriendOrMutual(SavePalPad *palPad, u32 otId)
+{
     int i, j;
 
     for (i = 0; i < NUM_PALPAD_ENTRIES; i++) {

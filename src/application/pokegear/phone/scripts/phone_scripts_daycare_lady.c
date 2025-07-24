@@ -5,7 +5,8 @@
 
 #include "get_egg.h"
 
-u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
+u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state)
+{
     int i;
     Daycare *daycare;
     DaycareMon *mon;
@@ -31,7 +32,8 @@ u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPho
     return PHONE_SCRIPT_NONE;
 }
 
-BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx) {
+BOOL GearPhoneCall_DayCareLady(PokegearPhoneCallContext *ctx)
+{
     PokegearPhoneCallState *state = &ctx->state;
     int monIdx;
 

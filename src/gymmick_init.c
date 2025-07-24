@@ -36,7 +36,8 @@ static const TrashCan sTrashCans[NUM_TRASH_CANS] = {
     [14] = { .numNeighbors = 2, .neighbors = { 9, 13, 0xFF, 0xFF } },
 };
 
-void InitEcruteakGym(FieldSystem *fieldSystem) {
+void InitEcruteakGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_ECRUTEAK);
 
@@ -46,14 +47,16 @@ void InitEcruteakGym(FieldSystem *fieldSystem) {
     }
 }
 
-void InitCianwoodGym(FieldSystem *fieldSystem) {
+void InitCianwoodGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_CIANWOOD);
 
     GymmickUnion *unused = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_CIANWOOD);
 }
 
-void InitVermilionGym(FieldSystem *fieldSystem) {
+void InitVermilionGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_VERMILION);
 
@@ -71,7 +74,8 @@ void InitVermilionGym(FieldSystem *fieldSystem) {
     data->vermilion.gates[1] = 0;
 }
 
-void PlaceVermilionGymSwitches(FieldSystem *fieldSystem) {
+void PlaceVermilionGymSwitches(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     GymmickUnion *data = Save_Gymmick_AssertMagic_GetData(gymmick, GYMMICK_VERMILION);
     data->vermilion.switches[0] = LCRandom() % NUM_TRASH_CANS;
@@ -81,7 +85,8 @@ void PlaceVermilionGymSwitches(FieldSystem *fieldSystem) {
     data->vermilion.switches[1] = trashCan->neighbors[index];
 }
 
-void InitVioletGym(FieldSystem *fieldSystem) {
+void InitVioletGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_VIOLET);
 
@@ -89,7 +94,8 @@ void InitVioletGym(FieldSystem *fieldSystem) {
     data->violet.liftState = 0;
 }
 
-void InitAzaleaGym(FieldSystem *fieldSystem) {
+void InitAzaleaGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_AZALEA);
 
@@ -101,7 +107,8 @@ void InitAzaleaGym(FieldSystem *fieldSystem) {
     data->azalea.switches = 0;
 }
 
-void InitBlackthornGym(FieldSystem *fieldSystem) {
+void InitBlackthornGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_BLACKTHORN);
 
@@ -120,16 +127,19 @@ void InitBlackthornGym(FieldSystem *fieldSystem) {
     data->blackthorn.rot[2] = 0;
 }
 
-void InitFuchsiaGym(FieldSystem *fieldSystem) {
+void InitFuchsiaGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_FUCHSIA);
 }
 
-void InitViridianGym(FieldSystem *fieldSystem) {
+void InitViridianGym(FieldSystem *fieldSystem)
+{
     Gymmick *gymmick = Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem));
     Save_Gymmick_Init(gymmick, GYMMICK_VIRIDIAN);
 }
 
-BOOL FieldSystem_IsSaveGymmickTypeEqualTo(FieldSystem *fieldSystem, int kind) {
+BOOL FieldSystem_IsSaveGymmickTypeEqualTo(FieldSystem *fieldSystem, int kind)
+{
     return Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) == kind;
 }

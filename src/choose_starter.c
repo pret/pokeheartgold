@@ -19,13 +19,15 @@ struct ChooseStarterTaskData {
 
 static BOOL CreateStarter(TaskManager *taskManager);
 
-void LaunchStarterChoiceScene(FieldSystem *fieldSystem) {
+void LaunchStarterChoiceScene(FieldSystem *fieldSystem)
+{
     struct ChooseStarterTaskData *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ChooseStarterTaskData));
     env->state = 0;
     TaskManager_Call(fieldSystem->taskman, CreateStarter, env);
 }
 
-static BOOL CreateStarter(TaskManager *taskManager) {
+static BOOL CreateStarter(TaskManager *taskManager)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ChooseStarterTaskData *env = TaskManager_GetEnvironment(taskManager);
     int i;

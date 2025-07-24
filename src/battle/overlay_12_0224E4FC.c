@@ -40,7 +40,8 @@ static int ov12_022585B8(BattleSystem *bsys, BattleContext *ctx, int battlerIdTa
 static BOOL ov12_0225865C(BattleContext *ctx, int moveNo);
 static int GetDynamicMoveType(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo);
 
-void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battlerId, u8 selectedMon) {
+void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battlerId, u8 selectedMon)
+{
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMon);
     int i;
     int side;
@@ -147,7 +148,8 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     }
 }
 
-void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int battlerId, int monIndex) {
+void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int battlerId, int monIndex)
+{
     Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, monIndex);
     int i;
 
@@ -173,7 +175,8 @@ void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int batt
     }
 }
 
-void ReadBattleScriptFromNarc(BattleContext *ctx, NarcId narcId, int fileId) {
+void ReadBattleScriptFromNarc(BattleContext *ctx, NarcId narcId, int fileId)
+{
     GF_ASSERT(GetNarcMemberSizeByIdPair(narcId, fileId) < 1600);
     ctx->scriptNarcId = narcId;
     ctx->scriptFileId = fileId;
@@ -182,7 +185,8 @@ void ReadBattleScriptFromNarc(BattleContext *ctx, NarcId narcId, int fileId) {
 }
 
 // PushBattleScriptFromNarc..?
-void ov12_0224EBDC(BattleContext *ctx, NarcId narcId, int fileId) {
+void ov12_0224EBDC(BattleContext *ctx, NarcId narcId, int fileId)
+{
     GF_ASSERT(GetNarcMemberSizeByIdPair(narcId, fileId) < 1600);
     GF_ASSERT(ctx->unk_B8 < 4);
     ctx->unk_BC[ctx->unk_B8] = ctx->scriptNarcId;
@@ -196,7 +200,8 @@ void ov12_0224EBDC(BattleContext *ctx, NarcId narcId, int fileId) {
 }
 
 // BattleScript_Pop..?
-BOOL ov12_0224EC74(BattleContext *ctx) {
+BOOL ov12_0224EC74(BattleContext *ctx)
+{
     if (ctx->unk_B8) {
         ctx->unk_B8--;
         ReadBattleScriptFromNarc(ctx, ctx->unk_BC[ctx->unk_B8], ctx->unk_CC[ctx->unk_B8]);
@@ -207,7 +212,8 @@ BOOL ov12_0224EC74(BattleContext *ctx) {
 }
 
 // Link_QueueAdd..?
-void ov12_0224ECC4(BattleContext *ctx, int id, int battlerId, int index) {
+void ov12_0224ECC4(BattleContext *ctx, int id, int battlerId, int index)
+{
     int i;
 
     for (i = 0; i < 16; i++) {
@@ -221,7 +227,8 @@ void ov12_0224ECC4(BattleContext *ctx, int id, int battlerId, int index) {
 }
 
 // Link_QueueReset..?
-void ov12_0224ED00(BattleContext *ctx, int id, int battlerId, int index) {
+void ov12_0224ED00(BattleContext *ctx, int id, int battlerId, int index)
+{
     int i;
 
     GF_ASSERT(index != 0);
@@ -236,7 +243,8 @@ void ov12_0224ED00(BattleContext *ctx, int id, int battlerId, int index) {
     GF_ASSERT(i < 16);
 }
 
-BOOL Link_QueueNotEmpty(BattleContext *ctx) {
+BOOL Link_QueueNotEmpty(BattleContext *ctx)
+{
     int i;
     int battlerId;
     int j;
@@ -256,20 +264,23 @@ BOOL Link_QueueNotEmpty(BattleContext *ctx) {
     return cnt == 0;
 }
 
-void Link_CheckTimeout(BattleContext *ctx) {
+void Link_CheckTimeout(BattleContext *ctx)
+{
     ctx->queueTimeout++;
     if (ctx->queueTimeout > 1800) {
         sub_02039AD8(1);
     }
 }
 
-void BattleBuffer_Clear(BattleContext *ctx, int battlerId) {
+void BattleBuffer_Clear(BattleContext *ctx, int battlerId)
+{
     for (int i = 0; i < 256; i++) {
         ctx->battleBuffer[battlerId][i] = 0;
     }
 }
 
-int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
+int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data)
+{
     BattleMon *mon = &ctx->battleMons[battlerId];
 
     switch (id) {
@@ -484,7 +495,8 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     return 0;
 }
 
-void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
+void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data)
+{
     u32 *data32 = (u32 *)data;
     u16 *data16 = (u16 *)data;
     s16 *datas16 = (s16 *)data;
@@ -768,11 +780,13 @@ void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     }
 }
 
-void AddBattlerVar(BattleContext *ctx, int battlerId, u32 varId, int data) {
+void AddBattlerVar(BattleContext *ctx, int battlerId, u32 varId, int data)
+{
     BattleMon_AddVar(&ctx->battleMons[battlerId], varId, data);
 }
 
-void BattleMon_AddVar(BattleMon *mon, u32 varId, int data) {
+void BattleMon_AddVar(BattleMon *mon, u32 varId, int data)
+{
     switch (varId) {
     case BMON_DATA_ATK:
         mon->atk += data;
@@ -957,7 +971,8 @@ static const u8 sSpeedHalvingItemEffects[] = {
     HOLD_EFFECT_LVLUP_SPDEF_EV_UP
 };
 
-u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int battlerId2, int flag) {
+u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int battlerId2, int flag)
+{
     u8 ret = 0; // 0 - don't sort, 1 - sort, 2 - sort (speed tie + won random check)
     u32 speed1, speed2;
     u16 moveNo1 = 0;
@@ -1233,11 +1248,13 @@ u8 CheckSortSpeed(BattleSystem *bsys, BattleContext *ctx, int battlerId1, int ba
 }
 
 // Function may be mislabeled
-void BattleSystem_ClearExperienceEarnFlags(BattleContext *ctx, int battlerId) {
+void BattleSystem_ClearExperienceEarnFlags(BattleContext *ctx, int battlerId)
+{
     ctx->unk_A4[(battlerId >> 1) & 1] = 0;
 }
 
-void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     int i = 0;
     u32 battleType = BattleSystem_GetBattleType(bsys);
 
@@ -1252,7 +1269,8 @@ void BattleSystem_SetExperienceEarnFlags(BattleSystem *bsys, BattleContext *ctx,
     }
 }
 
-BOOL ov12_022503EC(BattleSystem *bsys, BattleContext *ctx, int *out) {
+BOOL ov12_022503EC(BattleSystem *bsys, BattleContext *ctx, int *out)
+{
     BOOL ret = FALSE;
 
     if (ctx->unk_2170 & (1 << 29)) {
@@ -1272,7 +1290,8 @@ BOOL ov12_022503EC(BattleSystem *bsys, BattleContext *ctx, int *out) {
     return ret;
 }
 
-BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out) {
+BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out)
+{
     BOOL ret = FALSE;
     u16 effectChance;
 
@@ -1351,7 +1370,8 @@ BOOL ov12_02250490(BattleSystem *bsys, BattleContext *ctx, int *out) {
     return ret;
 }
 
-int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, u16 moveNo, int a4, int range) {
+int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, u16 moveNo, int a4, int range)
+{
     int battlerIdTarget = BATTLER_NONE;
     int moveRange;
 
@@ -1476,7 +1496,8 @@ int ov12_022506D4(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker,
     return battlerIdTarget;
 }
 
-void ov12_02250A18(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, u16 moveNo) {
+void ov12_02250A18(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, u16 moveNo)
+{
     int side;
     int battlerId;
     int battlerIdTarget;
@@ -1529,7 +1550,8 @@ void ov12_02250A18(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker
     }
 }
 
-BOOL ov12_02250BBC(BattleSystem *bsys, BattleContext *ctx) {
+BOOL ov12_02250BBC(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
 
     if (!(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->selfTurnData[ctx->battlerIdTarget].lightningRodFlag) {
@@ -1551,7 +1573,8 @@ BOOL ov12_02250BBC(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-void CopyBattleMonToPartyMon(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+void CopyBattleMonToPartyMon(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
 
     if (!ctx->battleMons[battlerId].item) {
         ov12_022585A8(ctx, battlerId);
@@ -1560,12 +1583,14 @@ void CopyBattleMonToPartyMon(BattleSystem *bsys, BattleContext *ctx, int battler
     BattleController_EmitBattleMonToPartyMonCopy(bsys, ctx, battlerId);
 }
 
-void LockBattlerIntoCurrentMove(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+void LockBattlerIntoCurrentMove(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     ctx->battleMons[battlerId].status2 |= STATUS2_LOCKED_INTO_MOVE;
     ctx->moveNoLockedInto[battlerId] = ctx->moveNoCur;
 }
 
-void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     ctx->battleMons[battlerId].status2 &= ~STATUS2_LOCKED_INTO_MOVE;
     ctx->battleMons[battlerId].status2 &= ~STATUS2_BIDE;
     ctx->battleMons[battlerId].moveEffectFlags &= 0xDFFBFF3F;
@@ -1573,7 +1598,8 @@ void UnlockBattlerOutOfCurrentMove(BattleSystem *bsys, BattleContext *ctx, int b
     ctx->battleMons[battlerId].unk88.furyCutterCount = 0;
 }
 
-int GetBattlerStatusCondition(BattleContext *ctx, int battlerId) {
+int GetBattlerStatusCondition(BattleContext *ctx, int battlerId)
+{
     if (ctx->battleMons[battlerId].status & STATUS_SLEEP) {
         return CONDITION_SLEEP;
     } else if (ctx->battleMons[battlerId].status & STATUS_POISON) {
@@ -1591,7 +1617,8 @@ int GetBattlerStatusCondition(BattleContext *ctx, int battlerId) {
     return CONDITION_NONE;
 }
 
-BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
+BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx)
+{
     int state = BattleSystem_GetBattleType(bsys); // note: this should be battleType for the following three if statements, but it won't match if an additional variable is used
     int trainerIndex;
 
@@ -1686,7 +1713,8 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
 
 // This is technically a correct function name but it doesn't account for the other battle context initilzation functions
 // which init different parts of the struct, so this can be more descriptive once the variables are ID'd
-void BattleContext_Init(BattleContext *ctx) {
+void BattleContext_Init(BattleContext *ctx)
+{
     int battlerId;
 
     // related to damage calculation
@@ -1744,7 +1772,8 @@ void BattleContext_Init(BattleContext *ctx) {
     }
 }
 
-void ov12_02251038(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_02251038(BattleSystem *bsys, BattleContext *ctx)
+{
     int battleType;
 
     for (int battlerId = 0; battlerId < 4; battlerId++) {
@@ -1768,7 +1797,8 @@ void ov12_02251038(BattleSystem *bsys, BattleContext *ctx) {
     ctx->safariRunAttempts = 6;
 }
 
-void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     int i;
     int maxBattlers;
     u8 *data;
@@ -1865,7 +1895,8 @@ void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     ov12_022585A8(ctx, battlerId);
 }
 
-void InitFaintedWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+void InitFaintedWork(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     int i;
     int maxBattlers;
     u8 *data;
@@ -1938,7 +1969,8 @@ void InitFaintedWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
 }
 
 // BattleContext_InitTurnData..? BattleContext_InitStartTurn..?
-void ov12_02251710(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_02251710(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
 
     for (battlerId = 0; battlerId < 4; battlerId++) {
@@ -1960,7 +1992,8 @@ void ov12_02251710(BattleSystem *bsys, BattleContext *ctx) {
     ctx->fieldSideConditionData[1].followMeFlag = 0;
 }
 
-u32 StruggleCheck(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 nonSelectableMoves, u32 struggleCheckFlags) {
+u32 StruggleCheck(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 nonSelectableMoves, u32 struggleCheckFlags)
+{
     int movePos;
     int item = GetBattlerHeldItemEffect(ctx, battlerId);
 
@@ -2005,7 +2038,8 @@ u32 StruggleCheck(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 non
 }
 
 // Buffer messages related to being unable to select moves?
-BOOL ov12_02251A28(BattleSystem *bsys, BattleContext *ctx, int battlerId, int movePos, BattleMessage *msg) {
+BOOL ov12_02251A28(BattleSystem *bsys, BattleContext *ctx, int battlerId, int movePos, BattleMessage *msg)
+{
     BOOL ret = TRUE;
 
     if (StruggleCheck(bsys, ctx, battlerId, 0, STRUGGLE_CHECK_DISABLED) & MaskOfFlagNo(movePos)) {
@@ -2059,7 +2093,8 @@ BOOL ov12_02251A28(BattleSystem *bsys, BattleContext *ctx, int battlerId, int mo
     return ret;
 }
 
-int BattleMon_GetMoveIndex(BattleMon *mon, u16 moveNo) {
+int BattleMon_GetMoveIndex(BattleMon *mon, u16 moveNo)
+{
     int movePos;
 
     for (movePos = 0; movePos < 4; movePos++) {
@@ -2193,7 +2228,8 @@ static const u8 sTypeEffectiveness[][3] = {
 };
 
 // static
-BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int index) {
+BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int index)
+{
     int item = GetBattlerHeldItemEffect(ctx, battlerIdTarget);
     BOOL ret = TRUE;
 
@@ -2222,7 +2258,8 @@ BOOL ov12_02251C74(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarge
     return ret;
 }
 
-int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag) {
+int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTypeDefault, int battlerIdAttacker, int battlerIdTarget, int damage, u32 *moveStatusFlag)
+{
     int i;
     int seffectMod; // this variable is not used but is required to match
     u8 moveType;
@@ -2325,7 +2362,8 @@ int ov12_02251D28(BattleSystem *bsys, BattleContext *ctx, int moveNo, int moveTy
     return damage;
 }
 
-void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag) {
+void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abilityAttacker, int abilityTarget, int item, int type1, int type2, u32 *moveStatusFlag)
+{
     int i;
     u8 moveType;
 
@@ -2372,7 +2410,8 @@ void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abil
     }
 }
 
-static BOOL CheckFlyingImmunity(BattleContext *ctx, int item, int index) {
+static BOOL CheckFlyingImmunity(BattleContext *ctx, int item, int index)
+{
     BOOL ret = TRUE;
 
     if (item == HOLD_EFFECT_SPEED_DOWN_GROUNDED && sTypeEffectiveness[index][1] == TYPE_FLYING && sTypeEffectiveness[index][2] == TYPE_MUL_NO_EFFECT) {
@@ -2386,7 +2425,8 @@ static BOOL CheckFlyingImmunity(BattleContext *ctx, int item, int index) {
     return ret;
 }
 
-static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag) {
+static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag)
+{
     switch (effectiveness) {
     case TYPE_MUL_NO_EFFECT:
         *moveStatusFlag |= MOVE_STATUS_NO_EFFECT;
@@ -2410,14 +2450,16 @@ static void ApplyEffectivenessFlags(int effectiveness, u32 *moveStatusFlag) {
     }
 }
 
-BOOL ov12_02252218(BattleContext *ctx, int battlerId) {
+BOOL ov12_02252218(BattleContext *ctx, int battlerId)
+{
     if (ctx->moveFail[battlerId].paralysis || ctx->moveFail[battlerId].noEffect || ctx->moveFail[battlerId].imprison || ctx->moveFail[battlerId].infatuation || ctx->moveFail[battlerId].disabled || ctx->moveFail[battlerId].unk0_5 || ctx->moveFail[battlerId].flinch || ctx->moveFail[battlerId].gravity || ctx->moveFail[battlerId].confusion) {
         return TRUE;
     }
     return FALSE;
 }
 
-u8 GetMonsHitCount(BattleSystem *bsys, BattleContext *ctx, u32 flag, int battlerId) {
+u8 GetMonsHitCount(BattleSystem *bsys, BattleContext *ctx, u32 flag, int battlerId)
+{
     int i;
     u8 cnt = 0;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -2441,11 +2483,13 @@ u8 GetMonsHitCount(BattleSystem *bsys, BattleContext *ctx, u32 flag, int battler
     return cnt;
 }
 
-int CreateNicknameTag(BattleContext *ctx, int battlerId) {
+int CreateNicknameTag(BattleContext *ctx, int battlerId)
+{
     return battlerId | (ctx->selectedMonIndex[battlerId] << 8);
 }
 
-u16 GetBattlerSelectedMove(BattleContext *ctx, int battlerId) {
+u16 GetBattlerSelectedMove(BattleContext *ctx, int battlerId)
+{
     u16 moveNo = 0;
 
     if (ctx->playerActions[battlerId].inputSelection == BATTLE_INPUT_FIGHT && ctx->playerActions[battlerId].unk8) {
@@ -2455,7 +2499,8 @@ u16 GetBattlerSelectedMove(BattleContext *ctx, int battlerId) {
     return moveNo;
 }
 
-int CheckAbilityActive(BattleSystem *bsys, BattleContext *ctx, int flag, int battlerId, int ability) {
+int CheckAbilityActive(BattleSystem *bsys, BattleContext *ctx, int flag, int battlerId, int ability)
+{
     int cnt = 0;
     int i;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -2538,7 +2583,8 @@ int CheckAbilityActive(BattleSystem *bsys, BattleContext *ctx, int flag, int bat
 }
 
 // FIXME: Function name is wrong
-BOOL BattleCtx_IsIdenticalToCurrentMove(BattleContext *ctx, int moveNo) {
+BOOL BattleCtx_IsIdenticalToCurrentMove(BattleContext *ctx, int moveNo)
+{
     switch (ctx->trainerAIData.moveData[moveNo].effect) {
     case MOVE_EFFECT_BIDE:
     case MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT:
@@ -2555,7 +2601,8 @@ BOOL BattleCtx_IsIdenticalToCurrentMove(BattleContext *ctx, int moveNo) {
     return FALSE;
 }
 
-BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff) {
+BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *typeMon, u8 *eff)
+{
     BOOL ret = TRUE;
 
     if (index >= NELEMS(sTypeEffectiveness)) {
@@ -2570,7 +2617,8 @@ BOOL GetTypeEffectivnessData(BattleSystem *bsys, int index, u8 *typeMove, u8 *ty
     return ret;
 }
 
-int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2) {
+int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2)
+{
     int i = 0;
     int damage = 40;
 
@@ -2589,18 +2637,21 @@ int CalculateTypeEffectiveness(u8 typeMove, u8 typeMon1, u8 typeMon2) {
     return damage;
 }
 
-BOOL CheckMoveCallsOtherMove(u16 moveNo) {
+BOOL CheckMoveCallsOtherMove(u16 moveNo)
+{
     if (moveNo == MOVE_NONE || moveNo == MOVE_SLEEP_TALK || moveNo == MOVE_COPYCAT || moveNo == MOVE_ASSIST || moveNo == MOVE_ME_FIRST || moveNo == MOVE_MIRROR_MOVE || moveNo == MOVE_METRONOME) {
         return TRUE;
     }
     return FALSE;
 }
 
-BOOL CurseUserIsGhost(BattleContext *ctx, u16 moveNo, int battlerId) {
+BOOL CurseUserIsGhost(BattleContext *ctx, u16 moveNo, int battlerId)
+{
     return moveNo == MOVE_CURSE && (GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_1, NULL) == TYPE_GHOST || GetBattlerVar(ctx, battlerId, BMON_DATA_TYPE_2, NULL) == TYPE_GHOST);
 }
 
-BOOL CanStealHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL CanStealHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
     int side = BattleSystem_GetFieldSide(bsys, battlerId);
 
@@ -2611,11 +2662,13 @@ BOOL CanStealHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL CanTrickHeldItem(BattleContext *ctx, int battlerId) {
+BOOL CanTrickHeldItem(BattleContext *ctx, int battlerId)
+{
     return !ItemIdIsMail(ctx->battleMons[battlerId].item);
 }
 
-BOOL WhirlwindCheck(BattleSystem *bsys, BattleContext *ctx) {
+BOOL WhirlwindCheck(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
 
     if (ctx->battleMons[ctx->battlerIdAttacker].level >= ctx->battleMons[ctx->battlerIdTarget].level) {
@@ -2631,7 +2684,8 @@ BOOL WhirlwindCheck(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-u8 GetBattlerAbility(BattleContext *ctx, int battlerId) {
+u8 GetBattlerAbility(BattleContext *ctx, int battlerId)
+{
     if ((ctx->battleMons[battlerId].moveEffectFlags & MOVE_EFFECT_FLAG_ABILITY_SUPPRESSED) && ctx->battleMons[battlerId].ability != ABILITY_MULTITYPE) {
         return ABILITY_NONE;
     } else if ((ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && ctx->battleMons[battlerId].ability == ABILITY_LEVITATE) {
@@ -2643,7 +2697,8 @@ u8 GetBattlerAbility(BattleContext *ctx, int battlerId) {
     }
 }
 
-BOOL CheckBattlerAbilityIfNotIgnored(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int ability) {
+BOOL CheckBattlerAbilityIfNotIgnored(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int ability)
+{
     BOOL ret = FALSE;
 
     if (GetBattlerAbility(ctx, battlerIdAttacker) != ABILITY_MOLD_BREAKER) {
@@ -2658,7 +2713,8 @@ BOOL CheckBattlerAbilityIfNotIgnored(BattleContext *ctx, int battlerIdAttacker, 
     return ret;
 }
 
-BOOL CanSwitchMon(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL CanSwitchMon(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret;
     Party *party;
     Pokemon *mon;
@@ -2710,7 +2766,8 @@ BOOL CanSwitchMon(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMessage *msg) {
+BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMessage *msg)
+{
     int battlerIdAbility;
     int maxBattlers;
     u8 side;
@@ -2788,7 +2845,8 @@ BOOL CantEscape(BattleSystem *bsys, BattleContext *ctx, int battlerId, BattleMes
     return FALSE;
 }
 
-BOOL BattleTryRun(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL BattleTryRun(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret;
     u8 run;
     int item;
@@ -2823,7 +2881,8 @@ BOOL BattleTryRun(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL CheckTruant(BattleContext *ctx, int battlerId) {
+BOOL CheckTruant(BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
 
     if (GetBattlerAbility(ctx, battlerId) == ABILITY_TRUANT) {
@@ -2835,7 +2894,8 @@ BOOL CheckTruant(BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
+BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo)
+{
     int maxBattlers;
     int side;
     int battlerIdCur;
@@ -2862,7 +2922,8 @@ BOOL BattleContext_CheckMoveImprisoned(BattleSystem *bsys, BattleContext *ctx, i
     return ret;
 }
 
-BOOL CheckMoveEffectOnField(BattleSystem *bsys, BattleContext *ctx, int moveEffect) {
+BOOL CheckMoveEffectOnField(BattleSystem *bsys, BattleContext *ctx, int moveEffect)
+{
     int battlerId;
     int maxBattlers;
     BOOL ret = FALSE;
@@ -2879,13 +2940,15 @@ BOOL CheckMoveEffectOnField(BattleSystem *bsys, BattleContext *ctx, int moveEffe
     return ret;
 }
 
-void ov12_02252D14(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_02252D14(BattleSystem *bsys, BattleContext *ctx)
+{
     ctx->moveStatusFlag = 0;
     ctx->criticalMultiplier = 1;
     ctx->battleStatus &= (0x100000 ^ 0xFFFFFFFF);
 }
 
-void SortMonsBySpeed(BattleSystem *bsys, BattleContext *ctx) {
+void SortMonsBySpeed(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int maxBattlers;
     int i, j;
@@ -2917,7 +2980,8 @@ static const u16 sGravityUnusableMoves[] = {
     MOVE_MAGNET_RISE
 };
 
-BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
+BOOL BattleContext_CheckMoveUnuseableInGravity(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo)
+{
     int i;
     BOOL ret = FALSE;
 
@@ -2950,7 +3014,8 @@ static const u16 sHealBlockUnusableMoves[] = {
     MOVE_WISH
 };
 
-BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
+BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo)
+{
     int i;
     BOOL ret = FALSE;
 
@@ -2966,7 +3031,8 @@ BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *bsys, BattleContext *ctx, 
     return ret;
 }
 
-void ov12_02252E30(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_02252E30(BattleSystem *bsys, BattleContext *ctx)
+{
     int i;
 
     if (ctx->moveNoTemp == MOVE_LAST_RESORT || ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount == MAX_MON_MOVES) {
@@ -2983,7 +3049,8 @@ void ov12_02252E30(BattleSystem *bsys, BattleContext *ctx) {
     ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount++;
 }
 
-int GetBattlerLearnedMoveCount(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+int GetBattlerLearnedMoveCount(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     int cnt;
 
     for (cnt = 0; cnt < MAX_MON_MOVES; cnt++) {
@@ -3011,7 +3078,8 @@ static u16 sSoundMoves[] = {
     MOVE_CHATTER
 };
 
-int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget) {
+int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget)
+{
     int script;
     int moveType;
 
@@ -3059,7 +3127,8 @@ int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerId
     return script;
 }
 
-BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
     int script;
 
@@ -3104,7 +3173,8 @@ BOOL ov12_02253068(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-int DamageDivide(int num, int denom) {
+int DamageDivide(int num, int denom)
+{
     int sign;
 
     if (num == 0) {
@@ -3126,7 +3196,8 @@ int DamageDivide(int num, int denom) {
     return num;
 }
 
-int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
+int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx)
+{
     int i;
     int j;
     int script;
@@ -3548,7 +3619,8 @@ int TryAbilityOnEntry(BattleSystem *bsys, BattleContext *ctx) {
     return script;
 }
 
-int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     u32 battleType;
     int battlerIdTarget;
     int battlerIdTargets[2];
@@ -3571,7 +3643,8 @@ int Battler_GetRandomOpposingBattlerId(BattleSystem *bsys, BattleContext *ctx, i
     return battlerIdTarget;
 }
 
-BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
+BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script)
+{
     BOOL ret = FALSE;
 
     if (ctx->battlerIdTarget == BATTLER_NONE) {
@@ -3679,7 +3752,8 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script
     return ret;
 }
 
-BOOL CheckStatusHealAbility(BattleSystem *bsys, BattleContext *ctx, int battlerId, int flag) {
+BOOL CheckStatusHealAbility(BattleSystem *bsys, BattleContext *ctx, int battlerId, int flag)
+{
     BOOL ret = FALSE;
 
     switch (GetBattlerAbility(ctx, battlerId)) {
@@ -3746,7 +3820,8 @@ BOOL CheckStatusHealAbility(BattleSystem *bsys, BattleContext *ctx, int battlerI
     return ret;
 }
 
-BOOL CheckStatusHealSwitch(BattleContext *ctx, int ability, int status) {
+BOOL CheckStatusHealSwitch(BattleContext *ctx, int ability, int status)
+{
     BOOL ret = FALSE;
 
     switch (ability) {
@@ -3781,7 +3856,8 @@ BOOL CheckStatusHealSwitch(BattleContext *ctx, int ability, int status) {
     return ret;
 }
 
-BOOL TrySyncronizeStatus(BattleSystem *bsys, BattleContext *ctx, ControllerCommand command) {
+BOOL TrySyncronizeStatus(BattleSystem *bsys, BattleContext *ctx, ControllerCommand command)
+{
     BOOL ret = FALSE;
     int script = BATTLE_SUBSCRIPT_NONE;
 
@@ -3842,7 +3918,8 @@ BOOL TrySyncronizeStatus(BattleSystem *bsys, BattleContext *ctx, ControllerComma
     return FALSE;
 }
 
-BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
     int script;
     int item;
@@ -4130,7 +4207,8 @@ BOOL TryUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
     int script;
     int item;
@@ -4174,7 +4252,8 @@ BOOL CheckItemGradualHPRestore(BattleSystem *bsys, BattleContext *ctx, int battl
     return ret;
 }
 
-BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 *script) {
+BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32 *script)
+{
     BOOL ret = FALSE;
     int item;
     int boost;
@@ -4458,7 +4537,8 @@ BOOL CheckUseHeldItem(BattleSystem *bsys, BattleContext *ctx, int battlerId, u32
     return ret;
 }
 
-BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
     int script;
     int item = GetBattlerHeldItemEffect(ctx, battlerId);
@@ -4499,7 +4579,8 @@ BOOL TryHeldItemNegativeEffect(BattleSystem *bsys, BattleContext *ctx, int battl
     return ret;
 }
 
-u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId) {
+u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId)
+{
     if (GetBattlerAbility(ctx, battlerId) == ABILITY_KLUTZ) {
         return ITEM_NONE;
     }
@@ -4509,11 +4590,13 @@ u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId) {
     return ctx->battleMons[battlerId].item;
 }
 
-BOOL ov12_0225561C(BattleContext *ctx, int battlerId) {
+BOOL ov12_0225561C(BattleContext *ctx, int battlerId)
+{
     return ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_40;
 }
 
-BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
+BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script)
+{
     BOOL ret = FALSE;
     int item;
     int boost;
@@ -4568,12 +4651,14 @@ BOOL CheckItemEffectOnHit(BattleSystem *bsys, BattleContext *ctx, int *script) {
     return ret;
 }
 
-int GetBattlerHeldItemEffect(BattleContext *ctx, int battlerId) {
+int GetBattlerHeldItemEffect(BattleContext *ctx, int battlerId)
+{
     u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
     return GetItemVar(ctx, itemNo, ITEM_VAR_HOLD_EFFECT);
 }
 
-int GetHeldItemModifier(BattleContext *ctx, int battlerId, int flag) {
+int GetHeldItemModifier(BattleContext *ctx, int battlerId, int flag)
+{
     u16 itemNo;
 
     switch (flag) {
@@ -4592,22 +4677,26 @@ int GetHeldItemModifier(BattleContext *ctx, int battlerId, int flag) {
     return GetItemVar(ctx, itemNo, ITEM_VAR_MODIFIER);
 }
 
-int GetNaturalGiftPower(BattleContext *ctx, int battlerId) {
+int GetNaturalGiftPower(BattleContext *ctx, int battlerId)
+{
     u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
     return GetItemVar(ctx, itemNo, ITEM_NATURAL_GIFT_POWER);
 }
 
-int GetNaturalGiftType(BattleContext *ctx, int battlerId) {
+int GetNaturalGiftType(BattleContext *ctx, int battlerId)
+{
     u16 itemNo = GetBattlerHeldItem(ctx, battlerId);
     return GetItemVar(ctx, itemNo, ITEM_NATURAL_GIFT_TYPE);
 }
 
-int GetHeldItemStealBerryEffect(BattleContext *ctx, int battlerId) {
+int GetHeldItemStealBerryEffect(BattleContext *ctx, int battlerId)
+{
     u16 itemNo = ctx->battleMons[battlerId].item;
     return GetItemVar(ctx, itemNo, ITEM_VAR_8);
 }
 
-int GetHeldItemFlingEffect(BattleContext *ctx, int battlerId) {
+int GetHeldItemFlingEffect(BattleContext *ctx, int battlerId)
+{
     if (ctx->battleMons[battlerId].unk88.embargoFlag) {
         return 0;
     }
@@ -4615,7 +4704,8 @@ int GetHeldItemFlingEffect(BattleContext *ctx, int battlerId) {
     return GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_9);
 }
 
-int GetHeldItemFlingPower(BattleContext *ctx, int battlerId) {
+int GetHeldItemFlingPower(BattleContext *ctx, int battlerId)
+{
     if (ctx->battleMons[battlerId].unk88.embargoFlag) {
         return 0;
     }
@@ -4623,7 +4713,8 @@ int GetHeldItemFlingPower(BattleContext *ctx, int battlerId) {
     return GetItemVar(ctx, ctx->battleMons[battlerId].item, ITEM_VAR_10);
 }
 
-BOOL BattlerCanSwitch(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL BattlerCanSwitch(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
 
     if (GetBattlerHeldItemEffect(ctx, battlerId) == HOLD_EFFECT_SWITCH) {
@@ -4645,7 +4736,8 @@ BOOL BattlerCanSwitch(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
     int script = BATTLE_SUBSCRIPT_NONE;
     int item = GetHeldItemStealBerryEffect(ctx, battlerId);
@@ -4897,7 +4989,8 @@ BOOL TryEatOpponentBerry(BattleSystem *bsys, BattleContext *ctx, int battlerId) 
     return ret;
 }
 
-BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
+BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId)
+{
     int item = GetHeldItemFlingEffect(ctx, battlerId);
     int mod = GetHeldItemModifier(ctx, battlerId, 2);
 
@@ -5154,7 +5247,8 @@ BOOL TryFling(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     return TRUE;
 }
 
-void ov12_022565E0(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_022565E0(BattleSystem *bsys, BattleContext *ctx)
+{
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
         if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAMPAGE) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             if (ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp) {
@@ -5171,7 +5265,8 @@ void ov12_022565E0(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-void ov12_02256694(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_02256694(BattleSystem *bsys, BattleContext *ctx)
+{
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
         if ((ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp && ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns && !(ctx->selfTurnData[ctx->battlerIdAttacker].rolloutCount) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAMPAGE) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             ctx->battleMons[ctx->battlerIdAttacker].unk88.metronomeTurns--;
@@ -5182,7 +5277,8 @@ void ov12_02256694(BattleSystem *bsys, BattleContext *ctx) {
 }
 
 // Related to send out Pokemon crys..?
-int ov12_02256748(BattleContext *ctx, int battlerId, int battlerType, BOOL encounter) {
+int ov12_02256748(BattleContext *ctx, int battlerId, int battlerType, BOOL encounter)
+{
     int ret;
     int color;
     BOOL half;
@@ -5208,7 +5304,8 @@ int ov12_02256748(BattleContext *ctx, int battlerId, int battlerType, BOOL encou
     return ret;
 }
 
-BOOL Battler_CanSelectAction(BattleContext *ctx, int battlerId) {
+BOOL Battler_CanSelectAction(BattleContext *ctx, int battlerId)
+{
     BOOL ret = TRUE;
 
     if ((ctx->battleMons[battlerId].status2 & STATUS2_RECHARGE) || (ctx->battleMons[battlerId].status2 & STATUS2_RAMPAGE) || (ctx->battleMons[battlerId].status2 & STATUS2_UPROAR) || (ctx->battleMons[battlerId].status2 & STATUS2_LOCKED_INTO_MOVE)) {
@@ -5218,7 +5315,8 @@ BOOL Battler_CanSelectAction(BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-void ov12_022567D4(BattleSystem *bsys, BattleContext *ctx, Pokemon *mon) {
+void ov12_022567D4(BattleSystem *bsys, BattleContext *ctx, Pokemon *mon)
+{
     PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
     int location = BattleSystem_GetLocation(bsys);
     int terrain = BattleSystem_GetTerrainId(bsys);
@@ -5233,11 +5331,13 @@ void ov12_022567D4(BattleSystem *bsys, BattleContext *ctx, Pokemon *mon) {
     sub_020720FC(mon, profile, ballId, location, terrain, HEAP_ID_BATTLE);
 }
 
-u8 BattleBuffer_GetNext(BattleContext *ctx, int battlerId) {
+u8 BattleBuffer_GetNext(BattleContext *ctx, int battlerId)
+{
     return ctx->battleBuffer[battlerId][0];
 }
 
-BOOL BattlerCheckSubstitute(BattleContext *ctx, int battlerId) {
+BOOL BattlerCheckSubstitute(BattleContext *ctx, int battlerId)
+{
     BOOL ret = FALSE;
 
     if (ctx->selfTurnData[battlerId].unk14 & (1 << 3)) {
@@ -5247,7 +5347,8 @@ BOOL BattlerCheckSubstitute(BattleContext *ctx, int battlerId) {
     return ret;
 }
 
-BOOL ov12_02256854(BattleSystem *bsys, BattleContext *ctx) {
+BOOL ov12_02256854(BattleSystem *bsys, BattleContext *ctx)
+{
     PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
     u32 trainerId = PlayerProfile_GetTrainerID(profile);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
@@ -5260,7 +5361,8 @@ BOOL ov12_02256854(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon) {
+BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon)
+{
     PlayerProfile *profile = BattleSystem_GetPlayerProfile(bsys, BATTLER_PLAYER);
     u32 trainerId = PlayerProfile_GetTrainerID(profile);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
@@ -5276,7 +5378,8 @@ BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon) {
     return FALSE;
 }
 
-BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int *script) {
+BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int *script)
+{
     int i;
     int form;
     BOOL ret = FALSE;
@@ -5407,7 +5510,8 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
     return ret;
 }
 
-void ov12_02256F28(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_02256F28(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int index;
 
@@ -5419,7 +5523,8 @@ void ov12_02256F28(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-void ov12_02256F78(BattleSystem *bsys, BattleContext *ctx, int battlerId, u8 selectedMonIndex) {
+void ov12_02256F78(BattleSystem *bsys, BattleContext *ctx, int battlerId, u8 selectedMonIndex)
+{
     int index;
     int dat;
     int flag;
@@ -5531,7 +5636,8 @@ static const u16 sPunchingMoves[] = {
     MOVE_SKY_UPPERCUT
 };
 
-int CalcMoveDamage(BattleSystem *bsys, BattleContext *ctx, u32 moveNo, u32 sideCondition, u32 fieldCondition, u16 power, u8 type, u8 battlerIdAttacker, u8 battlerIdTarget, u8 crit) {
+int CalcMoveDamage(BattleSystem *bsys, BattleContext *ctx, u32 moveNo, u32 sideCondition, u32 fieldCondition, u16 power, u8 type, u8 battlerIdAttacker, u8 battlerIdTarget, u8 crit)
+{
     int i;
     s32 dmg = 0;
     s32 dmg2 = 0;
@@ -5943,7 +6049,8 @@ int CalcMoveDamage(BattleSystem *bsys, BattleContext *ctx, u32 moveNo, u32 sideC
     return dmg + 2;
 }
 
-int ApplyDamageRange(BattleSystem *bsys, BattleContext *ctx, int damage) {
+int ApplyDamageRange(BattleSystem *bsys, BattleContext *ctx, int damage)
+{
     if (damage) {
         damage *= (100 - (BattleSystem_Random(bsys) % 16));
         damage /= 100;
@@ -5958,7 +6065,8 @@ static const u8 sCritChance[] = {
     16, 8, 4, 3, 2
 };
 
-u32 TryCriticalHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 sideCondition) {
+u32 TryCriticalHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int critCnt, u32 sideCondition)
+{
     u16 critUp;
     int item;
     u16 species;
@@ -6022,7 +6130,8 @@ static const u16 sMetronomeUnuseableMoves[] = {
     0xFFFF
 };
 
-BOOL CheckLegalMimicMove(u16 moveNo) {
+BOOL CheckLegalMimicMove(u16 moveNo)
+{
     int i = 0;
 
     do {
@@ -6035,7 +6144,8 @@ BOOL CheckLegalMimicMove(u16 moveNo) {
     return sMetronomeUnuseableMoves[i] == 0xFFFE;
 }
 
-BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BattleContext *ctx, int battlerId, u16 moveNo) {
+BOOL CheckLegalMetronomeMove(BattleSystem *bsys, BattleContext *ctx, int battlerId, u16 moveNo)
+{
     int i = 0;
 
     if (BattleContext_CheckMoveUnuseableInGravity(bsys, ctx, battlerId, moveNo) == TRUE || BattleContext_CheckMoveHealBlocked(bsys, ctx, battlerId, moveNo) == TRUE) {
@@ -6061,7 +6171,8 @@ static const u16 sEncoreFailMoves[] = {
     MOVE_STRUGGLE
 };
 
-BOOL IsMoveEncored(BattleContext *ctx, u16 moveNo) {
+BOOL IsMoveEncored(BattleContext *ctx, u16 moveNo)
+{
     int i = 0;
 
     do {
@@ -6083,7 +6194,8 @@ static const u16 sMeFirstUnuseableMoves[] = {
     MOVE_CHATTER
 };
 
-BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 moveNo) {
+BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 moveNo)
+{
     int i = 0;
 
     do {
@@ -6096,7 +6208,8 @@ BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 moveNo) {
     return i == NELEMS(sMeFirstUnuseableMoves);
 }
 
-s32 GetItemVar(BattleContext *ctx, u16 itemNo, u16 var) {
+s32 GetItemVar(BattleContext *ctx, u16 itemNo, u16 var)
+{
     ItemData *itemData;
     u32 index = GetItemIndexMapping(itemNo, 0);
     itemData = GetItemDataPtrFromArray(ctx->trainerAIData.itemData, index);
@@ -6104,7 +6217,8 @@ s32 GetItemVar(BattleContext *ctx, u16 itemNo, u16 var) {
     return GetItemAttr_PreloadedItemData(itemData, var);
 }
 
-int ov12_02257E98(BattleSystem *bsys, BattleContext *ctx, int side) {
+int ov12_02257E98(BattleSystem *bsys, BattleContext *ctx, int side)
+{
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
@@ -6117,7 +6231,8 @@ int ov12_02257E98(BattleSystem *bsys, BattleContext *ctx, int side) {
     return battlerId;
 }
 
-void SortExecutionOrderBySpeed(BattleSystem *bsys, BattleContext *ctx) {
+void SortExecutionOrderBySpeed(BattleSystem *bsys, BattleContext *ctx)
+{
     int i, j;
     int battlerId1;
     int battlerId2;
@@ -6147,7 +6262,8 @@ static const int ov12_0226CBDC[] = {
     15, 16, 17, 18, 19, 20, 21, 22, 25, 26
 };
 
-BOOL CheckStatusEffectsSubstitute(BattleContext *ctx, int battlerId, int status) {
+BOOL CheckStatusEffectsSubstitute(BattleContext *ctx, int battlerId, int status)
+{
     int i;
     BOOL ret = FALSE;
 
@@ -6165,7 +6281,8 @@ BOOL CheckStatusEffectsSubstitute(BattleContext *ctx, int battlerId, int status)
     return ret;
 }
 
-BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script) {
+BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script)
+{
     BOOL ret = FALSE;
     int itemAttacker = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
     int modAttacker = GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
@@ -6201,13 +6318,15 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx, int *script)
     return ret;
 }
 
-void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget) {
+void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget)
+{
     if (battlerIdTarget != BATTLER_NONE && GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_PRESSURE && ctx->battleMons[battlerIdAttacker].movePPCur[ctx->movePos[battlerIdAttacker]]) {
         ctx->battleMons[battlerIdAttacker].movePPCur[ctx->movePos[battlerIdAttacker]]--;
     }
 }
 
-BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ctx)
+{
     if (BattleSystem_IsRecordingPaused(bsys)) {
         ctx->command = CONTROLLER_COMMAND_43;
         return TRUE;
@@ -6215,7 +6334,8 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ct
     return FALSE;
 }
 
-int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId) {
+int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId)
+{
     switch (var) {
     case 0:
         return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)];
@@ -6253,7 +6373,8 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
     return 0;
 }
 
-void ov12_022582B8(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId, int data) {
+void ov12_022582B8(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId, int data)
+{
     switch (var) {
     case 0:
         ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)] = data;
@@ -6426,7 +6547,8 @@ static const int sMoveStatusChangeScripts[145] = {
     BATTLE_SUBSCRIPT_GIVE_TARGET_OWN_STATUS
 };
 
-static int GetMoveStatusChangeScript(BattleContext *ctx, int statChangeType, u32 flag) {
+static int GetMoveStatusChangeScript(BattleContext *ctx, int statChangeType, u32 flag)
+{
     ctx->statChangeType = statChangeType;
     ctx->statChangeParam = flag & (0x7FFFFF);
     ctx->statChangeFlag = flag & (0xFF800000);
@@ -6444,7 +6566,8 @@ static int GetMoveStatusChangeScript(BattleContext *ctx, int statChangeType, u32
     return sMoveStatusChangeScripts[flag & (0x7FFFFF)];
 }
 
-static int ov12_022583B4(BattleContext *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag) {
+static int ov12_022583B4(BattleContext *ctx, int battlerId, int typeEffectiveness, int damage, int moveDamage, u32 *flag)
+{
     if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && !(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_IMMUNITY) && damage) {
         damage = DamageDivide(damage * typeEffectiveness, 10);
     }
@@ -6478,7 +6601,8 @@ static int ov12_022583B4(BattleContext *ctx, int battlerId, int typeEffectivenes
     return damage;
 }
 
-static int ov12_02258440(BattleContext *ctx, int moveNo) {
+static int ov12_02258440(BattleContext *ctx, int moveNo)
+{
     switch (ctx->trainerAIData.moveData[moveNo].effect) {
     case MOVE_EFFECT_BIDE:
     case MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT:
@@ -6496,7 +6620,8 @@ static int ov12_02258440(BattleContext *ctx, int moveNo) {
     return TRUE;
 }
 
-static u8 Battler_GetType(BattleContext *ctx, int battlerId, int var) {
+static u8 Battler_GetType(BattleContext *ctx, int battlerId, int var)
+{
     u8 type;
 
     if (var == BMON_DATA_TYPE_1) {
@@ -6566,21 +6691,25 @@ static u8 Battler_GetType(BattleContext *ctx, int battlerId, int var) {
     return type;
 }
 
-static void ov12_02258584(BattleContext *ctx, u8 battlerId) {
+static void ov12_02258584(BattleContext *ctx, u8 battlerId)
+{
     for (int i = 0; i < MAX_MON_MOVES; i++) {
         ctx->trainerAIData.unk1C[battlerId][i] = 0;
     }
 }
 
-static void ov12_0225859C(BattleContext *ctx, u8 battlerId) {
+static void ov12_0225859C(BattleContext *ctx, u8 battlerId)
+{
     ctx->trainerAIData.unk5C[battlerId] = 0;
 }
 
-static void ov12_022585A8(BattleContext *ctx, u8 battlerId) {
+static void ov12_022585A8(BattleContext *ctx, u8 battlerId)
+{
     ctx->trainerAIData.unk60[battlerId] = 0;
 }
 
-static int ov12_022585B8(BattleSystem *bsys, BattleContext *ctx, int battlerIdTarget1, int battlerIdTarget2) {
+static int ov12_022585B8(BattleSystem *bsys, BattleContext *ctx, int battlerIdTarget1, int battlerIdTarget2)
+{
     int ret = BATTLER_NONE;
 
     if (ctx->battleMons[battlerIdTarget1].ability != ABILITY_FORECAST && ctx->battleMons[battlerIdTarget1].ability != ABILITY_TRACE && ctx->battleMons[battlerIdTarget1].ability != ABILITY_MULTITYPE && ctx->battleMons[battlerIdTarget1].hp && ctx->battleMons[battlerIdTarget2].hp && ctx->battleMons[battlerIdTarget2].ability != ABILITY_FORECAST && ctx->battleMons[battlerIdTarget2].ability != ABILITY_TRACE && ctx->battleMons[battlerIdTarget2].ability != ABILITY_MULTITYPE) {
@@ -6607,7 +6736,8 @@ static const u16 ov12_0226CB64[] = {
     MOVE_EFFECT_METAL_BURST
 };
 
-static BOOL ov12_0225865C(BattleContext *ctx, int moveNo) {
+static BOOL ov12_0225865C(BattleContext *ctx, int moveNo)
+{
     for (int i = 0; i < NELEMS(ov12_0226CB64); i++) {
         if (ov12_0226CB64[i] == ctx->trainerAIData.moveData[moveNo].effect) {
             return TRUE;
@@ -6617,7 +6747,8 @@ static BOOL ov12_0225865C(BattleContext *ctx, int moveNo) {
     return FALSE;
 }
 
-static int GetDynamicMoveType(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo) {
+static int GetDynamicMoveType(BattleSystem *bsys, BattleContext *ctx, int battlerId, int moveNo)
+{
     int type;
 
     switch (moveNo) {

@@ -79,7 +79,8 @@ void GF_SndCallback(void);
 BOOL GF_SndIsFanfarePlaying(void);
 BOOL GF_SndWorkMicCounterFull(void);
 
-void InitSoundData(SOUND_CHATOT *chatot, Options *options) {
+void InitSoundData(SOUND_CHATOT *chatot, Options *options)
+{
     SND_WORK *work = GetSoundDataPointer();
     NNS_SndInit();
     GF_SoundDataInit(work);
@@ -97,7 +98,8 @@ void InitSoundData(SOUND_CHATOT *chatot, Options *options) {
     GF_SndSetMonoFlag(options->soundMethod);
 }
 
-void DoSoundUpdateFrame(void) {
+void DoSoundUpdateFrame(void)
+{
     int i;
 
     SND_WORK *work = GetSoundDataPointer();
@@ -144,7 +146,8 @@ void DoSoundUpdateFrame(void) {
     NNS_SndMain();
 }
 
-void GF_SndCallback(void) {
+void GF_SndCallback(void)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -182,7 +185,8 @@ void GF_SndCallback(void) {
     }
 }
 
-void GF_SndSetState(u32 state) {
+void GF_SndSetState(u32 state)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -190,7 +194,8 @@ void GF_SndSetState(u32 state) {
     _0211194C = state;
 }
 
-BOOL GF_SndIsFanfarePlaying(void) {
+BOOL GF_SndIsFanfarePlaying(void)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -203,11 +208,13 @@ BOOL GF_SndIsFanfarePlaying(void) {
     return FALSE;
 }
 
-SND_WORK *GetSoundDataPointer(void) {
+SND_WORK *GetSoundDataPointer(void)
+{
     return &sSoundWork;
 }
 
-void *GF_SdatGetAttrPtr(u32 attr) {
+void *GF_SdatGetAttrPtr(u32 attr)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -335,7 +342,8 @@ void *GF_SdatGetAttrPtr(u32 attr) {
     return NULL;
 }
 
-int GF_Snd_SaveState(int *level_p) {
+int GF_Snd_SaveState(int *level_p)
+{
     SND_WORK *work;
     int level;
 
@@ -349,7 +357,8 @@ int GF_Snd_SaveState(int *level_p) {
     return level;
 }
 
-void GF_Snd_LoadState(int level) {
+void GF_Snd_LoadState(int level)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -357,14 +366,16 @@ void GF_Snd_LoadState(int level) {
     GF_SndHeapGetFreeSize();
 }
 
-void GF_SndHeapGetFreeSize(void) {
+void GF_SndHeapGetFreeSize(void)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
     sSndHeapFreeSize = NNS_SndHeapGetFreeSize(work->heap);
 }
 
-BOOL GF_Snd_LoadGroup(int groupNo) {
+BOOL GF_Snd_LoadGroup(int groupNo)
+{
     BOOL ret;
     SND_WORK *work;
 
@@ -374,7 +385,8 @@ BOOL GF_Snd_LoadGroup(int groupNo) {
     return ret;
 }
 
-BOOL GF_Snd_LoadSeq(int seqNo) {
+BOOL GF_Snd_LoadSeq(int seqNo)
+{
     BOOL ret;
     SND_WORK *work;
 
@@ -384,7 +396,8 @@ BOOL GF_Snd_LoadSeq(int seqNo) {
     return ret;
 }
 
-BOOL GF_Snd_LoadSeqEx(int seqNo, u32 loadFlag) {
+BOOL GF_Snd_LoadSeqEx(int seqNo, u32 loadFlag)
+{
     BOOL ret;
     SND_WORK *work;
 
@@ -394,7 +407,8 @@ BOOL GF_Snd_LoadSeqEx(int seqNo, u32 loadFlag) {
     return ret;
 }
 
-BOOL GF_Snd_LoadWaveArc(int waveArcNo) {
+BOOL GF_Snd_LoadWaveArc(int waveArcNo)
+{
     BOOL ret;
     SND_WORK *work;
 
@@ -404,7 +418,8 @@ BOOL GF_Snd_LoadWaveArc(int waveArcNo) {
     return ret;
 }
 
-BOOL GF_Snd_LoadBank(int bankNo) {
+BOOL GF_Snd_LoadBank(int bankNo)
+{
     BOOL ret;
     SND_WORK *work;
 
@@ -414,7 +429,8 @@ BOOL GF_Snd_LoadBank(int bankNo) {
     return ret;
 }
 
-NNSSndHandle *GF_GetSoundHandle(int playerNo) {
+NNSSndHandle *GF_GetSoundHandle(int playerNo)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
@@ -425,7 +441,8 @@ NNSSndHandle *GF_GetSoundHandle(int playerNo) {
     return &work->unk_BEB78[playerNo];
 }
 
-enum SoundHandleNo GF_GetSndHandleByPlayerNo(int playerNo) {
+enum SoundHandleNo GF_GetSndHandleByPlayerNo(int playerNo)
+{
     switch (playerNo) {
     case PLAYER_FIELD:
         return SND_HANDLE_FIELD;
@@ -449,7 +466,8 @@ enum SoundHandleNo GF_GetSndHandleByPlayerNo(int playerNo) {
     }
 }
 
-void GF_SoundDataInit(SND_WORK *work) {
+void GF_SoundDataInit(SND_WORK *work)
+{
     int i;
 
     memset(work, 0, sizeof(SND_WORK));
@@ -458,7 +476,8 @@ void GF_SoundDataInit(SND_WORK *work) {
     }
 }
 
-void GF_SndHandleInitAll(struct SND_WORK *work) {
+void GF_SndHandleInitAll(struct SND_WORK *work)
+{
     int i;
 
     for (i = 0; i < SND_HANDLE_MAX; i++) {
@@ -466,56 +485,65 @@ void GF_SndHandleInitAll(struct SND_WORK *work) {
     }
 }
 
-void sub_02004898(SND_WORK *work) {
+void sub_02004898(SND_WORK *work)
+{
     GF_Snd_SaveState(&work->stateSaveDepth[0]);
     GF_Snd_LoadGroup(GROUP_GLOBAL);
     GF_Snd_LoadBank(BANK_GAMEBOY);
     GF_Snd_SaveState(&work->stateSaveDepth[1]);
 }
 
-void GF_InitMic(SND_WORK *work) {
+void GF_InitMic(SND_WORK *work)
+{
     MIC_Init();
     PM_SetAmp(PM_AMP_ON);
     PM_SetAmpGain(PM_AMPGAIN_80);
     work->micInitDone = TRUE;
 }
 
-void GF_SndStopPlayerBgm(void) {
+void GF_SndStopPlayerBgm(void)
+{
     NNS_SndPlayerStopSeqByPlayerNo(PLAYER_BGM, 0);
     NNS_SndHandleReleaseSeq(GF_GetSoundHandle(SND_HANDLE_BGM));
 }
 
-void GF_SndStopPlayerField(void) {
+void GF_SndStopPlayerField(void)
+{
     NNS_SndPlayerStopSeqByPlayerNo(PLAYER_FIELD, 0);
     NNS_SndHandleReleaseSeq(GF_GetSoundHandle(SND_HANDLE_FIELD));
 }
 
-void sub_02004920(u16 unk) {
+void sub_02004920(u16 unk)
+{
 #pragma unused(unk)
 }
 
-BOOL GF_SndWorkMicCounterFull(void) {
+BOOL GF_SndWorkMicCounterFull(void)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
     return (work->micCounter > 90) ? TRUE : FALSE;
 }
 
-void GF_SndWorkMicCounterReset(void) {
+void GF_SndWorkMicCounterReset(void)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
     work->micCounter = 0;
 }
 
-void GF_SndWorkSetGbSoundsVolume(u8 a0) {
+void GF_SndWorkSetGbSoundsVolume(u8 a0)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();
     work->gbSoundsVolume = a0;
 }
 
-u8 GF_SndWorkGetGbSoundsVolume(void) {
+u8 GF_SndWorkGetGbSoundsVolume(void)
+{
     SND_WORK *work;
 
     work = GetSoundDataPointer();

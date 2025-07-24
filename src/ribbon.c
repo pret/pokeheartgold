@@ -109,7 +109,8 @@ static const struct RibbonData sRibbonInfo[] = {
     { MON_DATA_PREMIER_RIBBON,             119, 0, msg_0424_00079, RIBBON_DESC(TRUE,  13)             },
 };
 
-u32 GetRibbonAttr(u8 ribbon, RibbonAttr attr) {
+u32 GetRibbonAttr(u8 ribbon, RibbonAttr attr)
+{
     switch (attr) {
     case RIBBONDAT_MONDATNO:
         return sRibbonInfo[ribbon].monDataNo;
@@ -126,7 +127,8 @@ u32 GetRibbonAttr(u8 ribbon, RibbonAttr attr) {
     return 0;
 }
 
-int GetRibbonDescGmm(const u8 *a0, u8 ribbon) {
+int GetRibbonDescGmm(const u8 *a0, u8 ribbon)
+{
     int ret = sRibbonInfo[ribbon].descGmm;
     if (ret & RIBBON_DESC_SPECIAL_MASK) {
         ret = msg_0424_00146 + a0[((ret & RIBBON_DESC_ID_MASK) >> RIBBON_DESC_ID_SHIFT)];
@@ -134,7 +136,8 @@ int GetRibbonDescGmm(const u8 *a0, u8 ribbon) {
     return ret;
 }
 
-u8 GetSpecialRibbonNo(u8 ribbon) {
+u8 GetSpecialRibbonNo(u8 ribbon)
+{
     int ret = sRibbonInfo[ribbon].descGmm;
     if (ret & RIBBON_DESC_SPECIAL_MASK) {
         return (ret & RIBBON_DESC_ID_MASK) >> RIBBON_DESC_ID_SHIFT;

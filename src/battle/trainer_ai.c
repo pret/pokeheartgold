@@ -6,7 +6,8 @@
 
 #include "system.h"
 
-void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) {
+void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3)
+{
     int i;
     u8 struggleFlags;
     u8 *aiData = (u8 *)&ctx->trainerAIData;
@@ -46,7 +47,8 @@ void ov10_0221BE20(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u8 a3) 
     }
 }
 
-u8 ov10_0221BEF4(BattleSystem *bsys, u8 battlerId) {
+u8 ov10_0221BEF4(BattleSystem *bsys, u8 battlerId)
+{
     u8 ret;
     BattleContext *ctx = bsys->ctx;
 

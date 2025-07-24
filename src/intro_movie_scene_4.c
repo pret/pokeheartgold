@@ -65,7 +65,8 @@ static const int sStarterParticleResIds[3][3] = {
 
 static const u8 sIntroMovieScene4SpriteResCounts[4] = { 4, 4, 4, 4 };
 
-BOOL IntroMovie_Scene4(IntroMovieOverlayData *data, void *pVoid) {
+BOOL IntroMovie_Scene4(IntroMovieOverlayData *data, void *pVoid)
+{
     IntroMovieScene4Data *sceneData = (IntroMovieScene4Data *)pVoid;
 
     if (IntroMovie_GetIntroSkippedFlag(data)) {
@@ -90,14 +91,16 @@ BOOL IntroMovie_Scene4(IntroMovieOverlayData *data, void *pVoid) {
     return FALSE;
 }
 
-static void IntroMovie_Scene4_VBlankCB(void *pVoid) {
+static void IntroMovie_Scene4_VBlankCB(void *pVoid)
+{
     IntroMovieOverlayData *data = (IntroMovieOverlayData *)pVoid;
 
     DoScheduledBgGpuUpdates(IntroMovie_GetBgConfig(data));
     OamManager_ApplyAndResetBuffers();
 }
 
-static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
+static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();
@@ -123,7 +126,8 @@ static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4
     sceneData->needFreeGfx = TRUE;
 }
 
-static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData, int totalFrames) {
+static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData, int totalFrames)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
     u8 stepTimer = IntroMovie_GetSceneStepTimer(data);
@@ -271,7 +275,8 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
     return FALSE;
 }
 
-static void IntroMovie_Scene4_Exit(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
+static void IntroMovie_Scene4_Exit(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
@@ -294,7 +299,8 @@ static void IntroMovie_Scene4_Exit(IntroMovieOverlayData *data, IntroMovieScene4
     }
 }
 
-static void IntroMovie_Scene4_InitBgs(IntroMovieOverlayData *data) {
+static void IntroMovie_Scene4_InitBgs(IntroMovieOverlayData *data)
+{
     BgConfig *bgConfig = IntroMovie_GetBgConfig(data);
 
     {
@@ -350,7 +356,8 @@ static void IntroMovie_Scene4_InitBgs(IntroMovieOverlayData *data) {
     }
 }
 
-static void InroMovie_Scene4_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene4Data *sceneData) {
+static void InroMovie_Scene4_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene4Data *sceneData)
+{
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000054_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadCharData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000054_NCGR_lz, bgConfig, GF_BG_LYR_SUB_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
     GfGfxLoader_LoadScrnData(NARC_demo_opening_gs_opening, NARC_gs_opening_gs_opening_00000058_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_INTRO_MOVIE);
@@ -365,7 +372,8 @@ static void InroMovie_Scene4_LoadBgGfx(BgConfig *bgConfig, IntroMovieScene4Data 
     GfGfx_BothDispOn();
 }
 
-static void IntroMovie_Scene4_EnableBgLayers(IntroMovieOverlayData *data, BgConfig *bgConfig) {
+static void IntroMovie_Scene4_EnableBgLayers(IntroMovieOverlayData *data, BgConfig *bgConfig)
+{
     IntroMovieBgLinearAnims *animCnt = IntroMovie_GetBgLinearAnimsController(data);
     IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_SUB_1, -0xC0, 0, 0);
     IntroMovie_StartBgScroll_VBlank(bgConfig, animCnt->scroll, GF_BG_LYR_MAIN_1, 0xC0, 0, 0);
@@ -375,7 +383,8 @@ static void IntroMovie_Scene4_EnableBgLayers(IntroMovieOverlayData *data, BgConf
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
 }
 
-static void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
+static void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData)
+{
     int monSpritePltt[3] = {
         NARC_gs_opening_gs_opening_00000085_NCLR,
         NARC_gs_opening_gs_opening_00000093_NCLR,
@@ -424,7 +433,8 @@ static void IntroMovie_Scene4_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
+static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData)
+{
     Sprite_Delete(sceneData->hand1Sprite);
     Sprite_Delete(sceneData->hand2Sprite);
     Sprite_Delete(sceneData->sparklesSprite);
@@ -438,7 +448,8 @@ static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroM
     IntroMovie_DestroySpriteResourceManagers(data);
 }
 
-static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData) {
+static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData)
+{
     SpriteResourcesHeader header;
     SpriteTemplate template;
     int monSpriteResIds[3] = { 1, 2, 3 };
@@ -478,21 +489,24 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
     }
 }
 
-static u32 IntroMovie_Scene4_TexAlloc(u32 size, BOOL is4x4comp) {
+static u32 IntroMovie_Scene4_TexAlloc(u32 size, BOOL is4x4comp)
+{
     NNSGfdTexKey key = NNS_GfdAllocTexVram(size, is4x4comp, 0);
     sub_02015354(key);
     GF_ASSERT(key != NNS_GFD_ALLOC_ERROR_TEXKEY);
     return NNS_GfdGetTexKeyAddr(key);
 }
 
-static u32 IntroMovie_Scene4_PlttAlloc(u32 size, BOOL is4pltt) {
+static u32 IntroMovie_Scene4_PlttAlloc(u32 size, BOOL is4pltt)
+{
     NNSGfdPlttKey key = NNS_GfdAllocPlttVram(size, is4pltt, 1);
     GF_ASSERT(key != NNS_GFD_ALLOC_ERROR_PLTTKEY);
     sub_02015394(key);
     return NNS_GfdGetPlttKeyAddr(key);
 }
 
-static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter) {
+static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter)
+{
     VecFx32 pos = { 0, 0, 0 };
     SetVec(pos, 0, 0, FX32_CONST(0.015625));
 
@@ -501,21 +515,24 @@ static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter) {
     SPL_SetEmitterPositionZ(emitter, pos.z);
 }
 
-static void IntroMovie_Scene4_3DMain(void) {
+static void IntroMovie_Scene4_3DMain(void)
+{
     Thunk_G3X_Reset();
     sub_0201543C();
     sub_02015460();
     RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
 }
 
-static void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter) {
+static void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter)
+{
     sub_02015528(sceneData->particleSystem, 1);
     sub_02015494(sceneData->particleSystem, sStarterParticleResIds[whichStarter][0], IntroMovie_Scene4_SPLEmitterCB, NULL);
     sub_02015494(sceneData->particleSystem, sStarterParticleResIds[whichStarter][1], IntroMovie_Scene4_SPLEmitterCB, NULL);
     sub_02015494(sceneData->particleSystem, sStarterParticleResIds[whichStarter][2], IntroMovie_Scene4_SPLEmitterCB, NULL);
 }
 
-static void IntroMovie_Scene4_3DVRamManInit(void) {
+static void IntroMovie_Scene4_3DVRamManInit(void)
+{
     G2_SetBG0Priority(0);
     G3X_SetShading(GX_SHADING_TOON);
     G3X_AntiAlias(TRUE);
@@ -527,12 +544,14 @@ static void IntroMovie_Scene4_3DVRamManInit(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-static void IntroMovie_Scene4_FlipScreensAtNextVBlank(IntroMovieScene4Data *sceneData, int whichScreen) {
+static void IntroMovie_Scene4_FlipScreensAtNextVBlank(IntroMovieScene4Data *sceneData, int whichScreen)
+{
     sceneData->flipScreensTaskArg = whichScreen;
     sceneData->flipScreensTask = SysTask_CreateOnVBlankQueue(Task_IntroMovie_Scene4_FlipScreens, sceneData, 0);
 }
 
-static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid) {
+static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid)
+{
     IntroMovieScene4Data *sceneData = (IntroMovieScene4Data *)pVoid;
 
     if (sceneData->flipScreensTaskArg) {
@@ -554,7 +573,8 @@ static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid) {
 }
 
 HeapID _deadstrip_04(int idx);
-HeapID _deadstrip_04(int idx) {
+HeapID _deadstrip_04(int idx)
+{
     static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }

@@ -23,7 +23,8 @@ static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2
 static void ov80_02233F40(SPLEmitter *emitter);
 static BOOL ov80_02234028(FrontierContext *ctx);
 
-BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx)
+{
     u32 spC = FrontierScript_ReadVar(ctx);
     u32 r4 = FrontierScript_ReadVar(ctx);
     u32 sp10 = FrontierScript_ReadVar(ctx);
@@ -37,21 +38,24 @@ BOOL FrtCmd_ArcadeAlloc(FrontierContext *ctx) {
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadeInit(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeInit(FrontierContext *ctx)
+{
     u32 arg1 = FrontierScript_ReadVar(ctx);
     void *arg0 = Frontier_GetData(ctx->frontierSystem->unk0);
     BattleArcadeData_Init(arg0, arg1);
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeFree(FrontierContext *ctx)
+{
     BattleArcadeData_Free(Frontier_GetData(ctx->frontierSystem->unk0));
     return FALSE;
 }
 
 extern OverlayManagerTemplate gOverlayTemplate_BattleArcadeGameBoard;
 
-BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
+BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx)
+{
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
     ArcadeContext *data = Frontier_GetData(ctx->frontierSystem->unk0);
     GAME_BOARD_ARGS *args = AllocFromHeap(HEAP_ID_FIELD, sizeof(GAME_BOARD_ARGS));
@@ -63,7 +67,8 @@ BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
     return TRUE;
 }
 
-BOOL FrtCmd_187(FrontierContext *ctx) {
+BOOL FrtCmd_187(FrontierContext *ctx)
+{
     u8 monCnt;
     Pokemon *mon;
     int i, index1, index2, partyCnt, data;
@@ -128,7 +133,8 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx)
+{
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
     ArcadeContext *arcadeData = Frontier_GetData(ctx->frontierSystem->unk0);
     BattleSetup *setup = BattleArcade_NewBattleSetup(arcadeData, param);
@@ -140,7 +146,8 @@ BOOL FrtCmd_ArcadeStartBattle(FrontierContext *ctx) {
     return TRUE;
 }
 
-static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
+static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data)
+{
     args->type = data->type;
     args->unk1E = ov80_02238498(data);
 
@@ -175,25 +182,29 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
     }
 }
 
-static void ov80_02233A1C(void *data) {
+static void ov80_02233A1C(void *data)
+{
     GAME_BOARD_ARGS *args = data;
     ov80_02234550(args->work, args);
     Heap_Free(args);
 }
 
-BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx)
+{
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
     BattleArcade_SetPartyBeforeBattle(arcadeCtx);
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadeSetPartyAfterBattle(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeSetPartyAfterBattle(FrontierContext *ctx)
+{
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
     BattleArcade_SetPartyAfterBattle(arcadeCtx);
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeAction(FrontierContext *ctx)
+{
     Pokemon *mon;
     Party *party;
     int i;
@@ -431,13 +442,15 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
     return FALSE;
 }
 
-static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2) {
+static void ov80_02233F1C(FrontierContext *ctx, ArcadeContext *arcadeCtx, u32 a2)
+{
     FrontierMap *map = FrontierSystem_GetFrontierMap(ctx->frontierSystem);
     sub_02015494(ov80_02239A60(map->unk10, 0), a2, ov80_02233F40, arcadeCtx);
 }
 
 extern const VecFx32 ov80_0223BE6C; //{-1, 0, 0}
-static void ov80_02233F40(SPLEmitter *emitter) {
+static void ov80_02233F40(SPLEmitter *emitter)
+{
     VecFx16 axis;
     ArcadeContext *ctx = sub_02015504();
     const VecFx32 pos = ov80_0223BE6C;
@@ -450,7 +463,8 @@ static void ov80_02233F40(SPLEmitter *emitter) {
     }
 }
 
-BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx)
+{
     u16 *var = FrontierScript_ReadVarPtr(ctx);
 
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
@@ -459,7 +473,8 @@ BOOL FrtCmd_ArcadeGetBattleResult(FrontierContext *ctx) {
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx)
+{
     u32 unk0 = FrontierScript_ReadVar(ctx);
     u32 unk1 = FrontierScript_ReadVar(ctx);
     u16 *ret = FrontierScript_ReadVarPtr(ctx);
@@ -470,13 +485,15 @@ BOOL FrtCmd_ArcadeSendBuffer(FrontierContext *ctx) {
     return TRUE;
 }
 
-BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeReceiveBuffer(FrontierContext *ctx)
+{
     ctx->unk78[0] = FrontierScript_ReadU16(ctx);
     ov80_0222AB84(ctx, ov80_02234028);
     return TRUE;
 }
 
-static BOOL ov80_02234028(FrontierContext *ctx) {
+static BOOL ov80_02234028(FrontierContext *ctx)
+{
     ov80_0222BE9C(ctx, ctx->unk78[0]);
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
 
@@ -488,7 +505,8 @@ static BOOL ov80_02234028(FrontierContext *ctx) {
     return FALSE;
 }
 
-BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx)
+{
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
     u8 index = FrontierScript_ReadShort(ctx);
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
@@ -503,13 +521,15 @@ BOOL FrtCmd_ArcadePrintMsg(FrontierContext *ctx) {
     return TRUE;
 }
 
-BOOL FrtCmd_ArcadeSetEvent(FrontierContext *ctx) {
+BOOL FrtCmd_ArcadeSetEvent(FrontierContext *ctx)
+{
     ArcadeContext *arcadeCtx = Frontier_GetData(ctx->frontierSystem->unk0);
     ov80_02234E98(arcadeCtx, arcadeCtx->unk13);
     return TRUE;
 }
 
-BOOL FrtCmd_198(FrontierContext *ctx) {
+BOOL FrtCmd_198(FrontierContext *ctx)
+{
     FrontierMap *map = FrontierSystem_GetFrontierMap(ctx->frontierSystem);
     u32 var0 = FrontierScript_ReadVar(ctx);
     u32 var1 = FrontierScript_ReadVar(ctx);

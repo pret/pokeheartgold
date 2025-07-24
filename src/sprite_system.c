@@ -29,7 +29,8 @@ static BOOL UnregisterLoadedResources(GF_2DGfxResMan *manager, GF_2DGfxResObjLis
 static BOOL UnregisterLoadedCharResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 charId);
 static BOOL UnregisterLoadedPlttResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 plttId);
 
-SpriteSystem *SpriteSystem_Alloc(HeapID heapId) {
+SpriteSystem *SpriteSystem_Alloc(HeapID heapId)
+{
     SpriteSystem *ret = AllocFromHeap(heapId, sizeof(SpriteSystem));
     if (ret == NULL) {
         return NULL;
@@ -40,7 +41,8 @@ SpriteSystem *SpriteSystem_Alloc(HeapID heapId) {
     return ret;
 }
 
-SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem) {
+SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem)
+{
     GF_ASSERT(spriteSystem != NULL);
     SpriteManager *ret = AllocFromHeap(spriteSystem->heapId, sizeof(SpriteManager));
     if (ret == NULL) {
@@ -53,11 +55,13 @@ SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem) {
     return ret;
 }
 
-G2dRenderer *SpriteSystem_GetRenderer(SpriteSystem *spriteSystem) {
+G2dRenderer *SpriteSystem_GetRenderer(SpriteSystem *spriteSystem)
+{
     return &spriteSystem->renderer;
 }
 
-BOOL SpriteSystem_Init(SpriteSystem *spriteSystem, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int numPltts) {
+BOOL SpriteSystem_Init(SpriteSystem *spriteSystem, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int numPltts)
+{
     GF_ASSERT(spriteSystem != NULL);
     if (spriteSystem == NULL) {
         return FALSE;
@@ -79,7 +83,8 @@ BOOL SpriteSystem_Init(SpriteSystem *spriteSystem, const OamManagerParam *oamMan
     return TRUE;
 }
 
-BOOL SpriteSystem_InitSprites(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int numSprites) {
+BOOL SpriteSystem_InitSprites(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int numSprites)
+{
     if (spriteSystem == NULL || spriteManager == NULL) {
         return FALSE;
     }
@@ -87,34 +92,41 @@ BOOL SpriteSystem_InitSprites(SpriteSystem *spriteSystem, SpriteManager *spriteM
     return TRUE;
 }
 
-void thunk_Sprite_Delete(Sprite *sprite) {
+void thunk_Sprite_Delete(Sprite *sprite)
+{
     Sprite_Delete(sprite);
 }
 
-void SpriteSystem_DrawSprites(SpriteManager *spriteManager) {
+void SpriteSystem_DrawSprites(SpriteManager *spriteManager)
+{
     GF_ASSERT(spriteManager != NULL);
     SpriteList_RenderAndAnimateSprites(spriteManager->spriteList);
 }
 
-void SpriteSystem_TransferOam(void) {
+void SpriteSystem_TransferOam(void)
+{
     OamManager_ApplyAndResetBuffers();
 }
 
-void SpriteSystem_UpdateTransfer(void) {
+void SpriteSystem_UpdateTransfer(void)
+{
     thunk_UpdateCellTransferStateManager();
 }
 
-static void SpriteSystem_DeleteSpriteList(SpriteManager *spriteManager) {
+static void SpriteSystem_DeleteSpriteList(SpriteManager *spriteManager)
+{
     SpriteList_Delete(spriteManager->spriteList);
 }
 
-static void SpriteManager_FreeResourceHeaders(SpriteManager *spriteManager) {
+static void SpriteManager_FreeResourceHeaders(SpriteManager *spriteManager)
+{
     if (spriteManager->spriteHeaderList != NULL) {
         SpriteResourceHeaderList_Destroy(spriteManager->spriteHeaderList);
     }
 }
 
-static void SpriteManager_FreeResources(SpriteManager *spriteManager) {
+static void SpriteManager_FreeResources(SpriteManager *spriteManager)
+{
     for (int i = 0; i < spriteManager->numGfxResObjectTypes; ++i) {
         GF2DGfxResHeader_Reset(GF2DGfxResHeader_GetByIndex(spriteManager->_2dGfxResHeader, i));
     }
@@ -127,7 +139,8 @@ static void SpriteManager_FreeResources(SpriteManager *spriteManager) {
     }
 }
 
-static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem) {
+static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem)
+{
     sub_0202067C(spriteSystem->cellTransferState);
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
@@ -136,25 +149,29 @@ static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem) {
     }
 }
 
-static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
+static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager)
+{
     --spriteSystem->numGfxHandlers;
     Heap_Free(spriteManager);
 }
 
-void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
+void SpriteSystem_DestroySpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager)
+{
     SpriteSystem_DeleteSpriteList(spriteManager);
     SpriteManager_FreeResourceHeaders(spriteManager);
     SpriteManager_FreeResources(spriteManager);
     SpriteSystem_FreeSpriteManager(spriteSystem, spriteManager);
 }
 
-void SpriteSystem_Free(SpriteSystem *spriteSystem) {
+void SpriteSystem_Free(SpriteSystem *spriteSystem)
+{
     GF_ASSERT(spriteSystem->numGfxHandlers == 0);
     SpriteSystem_FreeVramTransfers(spriteSystem);
     Heap_Free(spriteSystem);
 }
 
-static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
+static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode)
+{
     int i;
     int numGfxResTypes;
     int size;
@@ -228,19 +245,23 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
     return TRUE;
 }
 
-BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList) {
+BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList)
+{
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, 2, 1);
 }
 
-BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
+BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode)
+{
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, loadCharMode, loadPlttMode);
 }
 
-Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *template) {
+Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *template)
+{
     return CreateSpriteFromResourceHeader(spriteSystem, spriteManager, template->resourceSet, template->x, template->y, template->x /* typo? */, template->animSeqNo, template->rotation, template->palIndex, template->whichScreen, template->unk_18, template->unk_1C, template->unk_20, template->unk_24);
 }
 
-static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13) {
+static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13)
+{
     Sprite *ret = NULL;
     SpriteTemplate template;
 
@@ -278,7 +299,8 @@ static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, Sprite
     return ret;
 }
 
-BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, SpriteResourceCountsListUnion *countsArray) {
+BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, SpriteResourceCountsListUnion *countsArray)
+{
     int i, j;
     int numGfxResTypes = GF_GFX_RES_TYPE_MAX;
     int num;
@@ -309,7 +331,8 @@ BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteMa
     return TRUE;
 }
 
-BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {
+BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
         return FALSE;
     }
@@ -323,7 +346,8 @@ BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spri
     return obj != NULL;
 }
 
-BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {
+BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
         return FALSE;
     }
@@ -337,7 +361,8 @@ BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteM
     return obj != NULL;
 }
 
-s8 SpriteSystem_LoadPlttResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId) {
+s8 SpriteSystem_LoadPlttResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], resId)) {
         return -1;
     }
@@ -351,7 +376,8 @@ s8 SpriteSystem_LoadPlttResObj(SpriteSystem *spriteSystem, SpriteManager *sprite
     return -1;
 }
 
-s8 SpriteSystem_LoadPlttResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId) {
+s8 SpriteSystem_LoadPlttResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], resId)) {
         return -1;
     }
@@ -365,7 +391,8 @@ s8 SpriteSystem_LoadPlttResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteMan
     return -1;
 }
 
-u8 SpriteSystem_LoadPaletteBuffer(PaletteData *plttData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId) {
+u8 SpriteSystem_LoadPaletteBuffer(PaletteData *plttData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     int ret = SpriteSystem_LoadPlttResObj(spriteSystem, spriteManager, narcId, fileId, compressed, pltt_num, vram, resId);
     if (ret != -1) {
         PaletteData_LoadPaletteSlotFromHardware(plttData, bufferId, ret * 16, pltt_num * 32);
@@ -373,7 +400,8 @@ u8 SpriteSystem_LoadPaletteBuffer(PaletteData *plttData, PaletteBufferId bufferI
     return ret;
 }
 
-u8 SpriteSystem_LoadPaletteBufferFromOpenNarc(PaletteData *plttData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId) {
+u8 SpriteSystem_LoadPaletteBufferFromOpenNarc(PaletteData *plttData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int pltt_num, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     int ret = SpriteSystem_LoadPlttResObjFromOpenNarc(spriteSystem, spriteManager, narc, fileId, compressed, pltt_num, vram, resId);
     if (ret != -1) {
         PaletteData_LoadPaletteSlotFromHardware(plttData, bufferId, ret * 16, pltt_num * 32);
@@ -381,31 +409,38 @@ u8 SpriteSystem_LoadPaletteBufferFromOpenNarc(PaletteData *plttData, PaletteBuff
     return ret;
 }
 
-BOOL SpriteSystem_LoadCellResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId) {
+BOOL SpriteSystem_LoadCellResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId)
+{
     return LoadResObjInternal(spriteSystem, spriteManager, narcId, fileId, compressed, GF_GFX_RES_TYPE_CELL, resId);
 }
 
-BOOL SpriteSystem_LoadCellResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId) {
+BOOL SpriteSystem_LoadCellResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)
+{
     return LoadResObjFromNarcInternal(spriteSystem, spriteManager, narc, fileId, compressed, GF_GFX_RES_TYPE_CELL, resId);
 }
 
-BOOL SpriteSystem_LoadAnimResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId) {
+BOOL SpriteSystem_LoadAnimResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId)
+{
     return LoadResObjInternal(spriteSystem, spriteManager, narcId, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
-BOOL SpriteSystem_LoadAnimResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId) {
+BOOL SpriteSystem_LoadAnimResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)
+{
     return LoadResObjFromNarcInternal(spriteSystem, spriteManager, narc, fileId, compressed, GF_GFX_RES_TYPE_ANIM, resId);
 }
 
-ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template) {
+ManagedSprite *SpriteSystem_NewSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template)
+{
     return SpriteSystem_NewSpriteInternal(spriteSystem, spriteManager, template, FX32_CONST(GX_LCD_SIZE_Y));
 }
 
-ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template, fx32 yOffset) {
+ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template, fx32 yOffset)
+{
     return SpriteSystem_NewSpriteInternal(spriteSystem, spriteManager, template, yOffset);
 }
 
-static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset) {
+static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset)
+{
     int i;
     int paletteOffset;
     ManagedSprite *ret = AllocFromHeap(spriteSystem->heapId, sizeof(ManagedSprite));
@@ -487,31 +522,38 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
     return ret;
 }
 
-NNSG2dImagePaletteProxy *SpriteManager_FindPlttResourceProxy(SpriteManager *spriteManager, int id) {
+NNSG2dImagePaletteProxy *SpriteManager_FindPlttResourceProxy(SpriteManager *spriteManager, int id)
+{
     return SpriteTransfer_GetPaletteProxy(SpriteResourceCollection_Find(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), NULL);
 }
 
-int SpriteManager_FindPlttResourceOffset(SpriteManager *spriteManager, int id, NNS_G2D_VRAM_TYPE vram) {
+int SpriteManager_FindPlttResourceOffset(SpriteManager *spriteManager, int id, NNS_G2D_VRAM_TYPE vram)
+{
     return SpriteTransfer_GetPlttOffset(SpriteResourceCollection_Find(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], id), vram);
 }
 
-BOOL SpriteManager_UnloadCharObjById(SpriteManager *spriteManager, u32 character) {
+BOOL SpriteManager_UnloadCharObjById(SpriteManager *spriteManager, u32 character)
+{
     return UnregisterLoadedCharResources(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CHAR], character);
 }
 
-BOOL SpriteManager_UnloadPlttObjById(SpriteManager *spriteManager, u32 pal) {
+BOOL SpriteManager_UnloadPlttObjById(SpriteManager *spriteManager, u32 pal)
+{
     return UnregisterLoadedPlttResources(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_PLTT], pal);
 }
 
-BOOL SpriteManager_UnloadCellObjById(SpriteManager *spriteManager, u32 cell) {
+BOOL SpriteManager_UnloadCellObjById(SpriteManager *spriteManager, u32 cell)
+{
     return UnregisterLoadedResources(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CELL], spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_CELL], cell);
 }
 
-BOOL SpriteManager_UnloadAnimObjById(SpriteManager *spriteManager, u32 animation) {
+BOOL SpriteManager_UnloadAnimObjById(SpriteManager *spriteManager, u32 animation)
+{
     return UnregisterLoadedResources(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_ANIM], spriteManager->_2dGfxResObjList[GF_GFX_RES_TYPE_ANIM], animation);
 }
 
-void SpriteSystem_FreeResourcesAndManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager) {
+void SpriteSystem_FreeResourcesAndManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager)
+{
     int i;
 
     SpriteSystem_DeleteSpriteList(spriteManager);
@@ -525,7 +567,8 @@ void SpriteSystem_FreeResourcesAndManager(SpriteSystem *spriteSystem, SpriteMana
     SpriteSystem_FreeSpriteManager(spriteSystem, spriteManager);
 }
 
-void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite) {
+void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite)
+{
     if (managedSprite->vramTransfer) {
         sub_0200AF80(managedSprite->spriteResourcesHeader->imageProxy);
     }
@@ -534,7 +577,8 @@ void Sprite_DeleteAndFreeResources(ManagedSprite *managedSprite) {
     Heap_Free(managedSprite);
 }
 
-static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId) {
+static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[a6], resId)) {
         return FALSE;
     }
@@ -548,7 +592,8 @@ static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *sprite
     return data != NULL;
 }
 
-static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, GfGfxResType a6, int resId) {
+static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, GfGfxResType a6, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[a6], resId)) {
         return FALSE;
     }
@@ -562,7 +607,8 @@ static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager
     return data != NULL;
 }
 
-static BOOL RegisterLoadedResources(GF_2DGfxResObjList *list, SpriteResource *obj) {
+static BOOL RegisterLoadedResources(GF_2DGfxResObjList *list, SpriteResource *obj)
+{
     for (int i = 0; i < list->max; ++i) {
         if (list->obj[i] == NULL) {
             list->obj[i] = obj;
@@ -573,7 +619,8 @@ static BOOL RegisterLoadedResources(GF_2DGfxResObjList *list, SpriteResource *ob
     return FALSE;
 }
 
-static BOOL UnregisterLoadedResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 cellOrAnimId) {
+static BOOL UnregisterLoadedResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 cellOrAnimId)
+{
     for (int i = 0; i < list->max; ++i) {
         if (list->obj[i] != NULL) {
             u32 test_id = GF2DGfxResObj_GetResID(list->obj[i]);
@@ -588,7 +635,8 @@ static BOOL UnregisterLoadedResources(GF_2DGfxResMan *manager, GF_2DGfxResObjLis
     return FALSE;
 }
 
-static BOOL UnregisterLoadedCharResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 charId) {
+static BOOL UnregisterLoadedCharResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 charId)
+{
     for (int i = 0; i < list->max; ++i) {
         if (list->obj[i] != NULL) {
             u32 test_id = GF2DGfxResObj_GetResID(list->obj[i]);
@@ -604,7 +652,8 @@ static BOOL UnregisterLoadedCharResources(GF_2DGfxResMan *manager, GF_2DGfxResOb
     return FALSE;
 }
 
-static BOOL UnregisterLoadedPlttResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 plttId) {
+static BOOL UnregisterLoadedPlttResources(GF_2DGfxResMan *manager, GF_2DGfxResObjList *list, u32 plttId)
+{
     for (int i = 0; i < list->max; ++i) {
         if (list->obj[i] != NULL) {
             u32 test_id = GF2DGfxResObj_GetResID(list->obj[i]);
@@ -620,147 +669,183 @@ static BOOL UnregisterLoadedPlttResources(GF_2DGfxResMan *manager, GF_2DGfxResOb
     return FALSE;
 }
 
-void Sprite_TickFrame(Sprite *sprite) {
+void Sprite_TickFrame(Sprite *sprite)
+{
     Sprite_UpdateAnim(sprite, FX32_ONE);
 }
 
-void ManagedSprite_TickFrame(ManagedSprite *managedSprite) {
+void ManagedSprite_TickFrame(ManagedSprite *managedSprite)
+{
     Sprite_TickFrame(managedSprite->sprite);
 }
 
-void ManagedSprite_TickTwoFrames(ManagedSprite *managedSprite) {
+void ManagedSprite_TickTwoFrames(ManagedSprite *managedSprite)
+{
     Sprite_UpdateAnim(managedSprite->sprite, 2 * FX32_ONE);
 }
 
-void ManagedSprite_TickNFrames(ManagedSprite *managedSprite, fx32 frames) {
+void ManagedSprite_TickNFrames(ManagedSprite *managedSprite, fx32 frames)
+{
     Sprite_UpdateAnim(managedSprite->sprite, frames);
 }
 
-u32 ManagedSprite_GetNumFrames(ManagedSprite *managedSprite) {
+u32 ManagedSprite_GetNumFrames(ManagedSprite *managedSprite)
+{
     return Sprite_GetNumAnimSeqs(managedSprite->sprite);
 }
 
-void ManagedSprite_SetAnim(ManagedSprite *managedSprite, int seqno) {
+void ManagedSprite_SetAnim(ManagedSprite *managedSprite, int seqno)
+{
     Sprite_SetAnimCtrlSeq(managedSprite->sprite, seqno);
 }
 
-void ManagedSprite_SetAnimNoRestart(ManagedSprite *managedSprite, int a1) {
+void ManagedSprite_SetAnimNoRestart(ManagedSprite *managedSprite, int a1)
+{
     Sprite_TryChangeAnimSeq(managedSprite->sprite, a1);
 }
 
-u16 ManagedSprite_GetActiveAnim(ManagedSprite *managedSprite) {
+u16 ManagedSprite_GetActiveAnim(ManagedSprite *managedSprite)
+{
     return Sprite_GetAnimationNumber(managedSprite->sprite);
 }
 
-void thunk_Sprite_SetAnimationFlag(Sprite *sprite, int a1) {
+void thunk_Sprite_SetAnimationFlag(Sprite *sprite, int a1)
+{
     Sprite_SetAnimActiveFlag(sprite, a1);
 }
 
-void ManagedSprite_SetAnimateFlag(ManagedSprite *managedSprite, int a1) {
+void ManagedSprite_SetAnimateFlag(ManagedSprite *managedSprite, int a1)
+{
     thunk_Sprite_SetAnimationFlag(managedSprite->sprite, a1);
 }
 
-void thunk_Sprite_SetAnimationSpeed(Sprite *sprite, fx32 speed) {
+void thunk_Sprite_SetAnimationSpeed(Sprite *sprite, fx32 speed)
+{
     Sprite_SetAnimSpeed(sprite, speed);
 }
 
-void ManagedSprite_SetAnimSpeed(ManagedSprite *managedSprite, fx32 speed) {
+void ManagedSprite_SetAnimSpeed(ManagedSprite *managedSprite, fx32 speed)
+{
     thunk_Sprite_SetAnimationSpeed(managedSprite->sprite, speed);
 }
 
-BOOL thunk_Sprite_IsAnimated(Sprite *sprite) {
+BOOL thunk_Sprite_IsAnimated(Sprite *sprite)
+{
     return Sprite_IsAnimated(sprite);
 }
 
-BOOL ManagedSprite_IsAnimated(ManagedSprite *managedSprite) {
+BOOL ManagedSprite_IsAnimated(ManagedSprite *managedSprite)
+{
     return thunk_Sprite_IsAnimated(managedSprite->sprite);
 }
 
-void ManagedSprite_ResetSpriteAnimCtrlState(ManagedSprite *managedSprite) {
+void ManagedSprite_ResetSpriteAnimCtrlState(ManagedSprite *managedSprite)
+{
     Sprite_ResetAnimCtrlState(managedSprite->sprite);
 }
 
-void thunk_Sprite_SetAnimationFrame(Sprite *sprite, u16 frameIndex) {
+void thunk_Sprite_SetAnimationFrame(Sprite *sprite, u16 frameIndex)
+{
     Sprite_SetAnimationFrame(sprite, frameIndex);
 }
 
-void ManagedSprite_SetAnimationFrame(ManagedSprite *managedSprite, u16 frameIndex) {
+void ManagedSprite_SetAnimationFrame(ManagedSprite *managedSprite, u16 frameIndex)
+{
     thunk_Sprite_SetAnimationFrame(managedSprite->sprite, frameIndex);
 }
 
-u16 thunk_Sprite_GetAnimationFrame(Sprite *sprite) {
+u16 thunk_Sprite_GetAnimationFrame(Sprite *sprite)
+{
     return Sprite_GetAnimationFrame(sprite);
 }
 
-u16 ManagedSprite_GetAnimationFrame(ManagedSprite *managedSprite) {
+u16 ManagedSprite_GetAnimationFrame(ManagedSprite *managedSprite)
+{
     return thunk_Sprite_GetAnimationFrame(managedSprite->sprite);
 }
 
-void thunk_Sprite_SetDrawFlag(Sprite *sprite, int flag) {
+void thunk_Sprite_SetDrawFlag(Sprite *sprite, int flag)
+{
     Sprite_SetDrawFlag(sprite, flag);
 }
 
-void ManagedSprite_SetDrawFlag(ManagedSprite *managedSprite, int flag) {
+void ManagedSprite_SetDrawFlag(ManagedSprite *managedSprite, int flag)
+{
     thunk_Sprite_SetDrawFlag(managedSprite->sprite, flag);
 }
 
-BOOL thunk_Sprite_GetDrawFlag(Sprite *sprite) {
+BOOL thunk_Sprite_GetDrawFlag(Sprite *sprite)
+{
     return Sprite_GetDrawFlag(sprite);
 }
 
-BOOL ManagedSprite_GetDrawFlag(ManagedSprite *a0) {
+BOOL ManagedSprite_GetDrawFlag(ManagedSprite *a0)
+{
     return thunk_Sprite_GetDrawFlag(a0->sprite);
 }
 
-void thunk_Sprite_SetPaletteOverride(Sprite *sprite, int a1) {
+void thunk_Sprite_SetPaletteOverride(Sprite *sprite, int a1)
+{
     Sprite_SetPaletteOverride(sprite, a1);
 }
 
-void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int a1) {
+void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int a1)
+{
     thunk_Sprite_SetPaletteOverride(managedSprite->sprite, a1);
 }
 
-void thunk_Sprite_SetPaletteOffset(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetPaletteOffset(Sprite *sprite, u8 a1)
+{
     Sprite_SetPalOffset(sprite, a1);
 }
 
-void ManagedSprite_SetPaletteOverrideOffset(ManagedSprite *managedSprite, u8 a1) {
+void ManagedSprite_SetPaletteOverrideOffset(ManagedSprite *managedSprite, u8 a1)
+{
     thunk_Sprite_SetPaletteOffset(managedSprite->sprite, a1);
 }
 
-u8 ManagedSprite_GetPaletteOverrideOffset(ManagedSprite *managedSprite) {
+u8 ManagedSprite_GetPaletteOverrideOffset(ManagedSprite *managedSprite)
+{
     return Sprite_GetPalOffset(managedSprite->sprite);
 }
 
-void thunk_Sprite_SetPriority(Sprite *sprite, int a1) {
+void thunk_Sprite_SetPriority(Sprite *sprite, int a1)
+{
     Sprite_SetPriority(sprite, a1);
 }
 
-int ManagedSprite_GetPriority(ManagedSprite *managedSprite) {
+int ManagedSprite_GetPriority(ManagedSprite *managedSprite)
+{
     return Sprite_GetPriority(managedSprite->sprite);
 }
 
-void ManagedSprite_SetPriority(ManagedSprite *managedSprite, int a1) {
+void ManagedSprite_SetPriority(ManagedSprite *managedSprite, int a1)
+{
     thunk_Sprite_SetPriority(managedSprite->sprite, a1);
 }
 
-void thunk_Sprite_SetDrawPriority(Sprite *sprite, u16 a1) {
+void thunk_Sprite_SetDrawPriority(Sprite *sprite, u16 a1)
+{
     Sprite_SetDrawPriority(sprite, a1);
 }
 
-void ManagedSprite_SetDrawPriority(ManagedSprite *managedSprite, u16 a1) {
+void ManagedSprite_SetDrawPriority(ManagedSprite *managedSprite, u16 a1)
+{
     thunk_Sprite_SetDrawPriority(managedSprite->sprite, a1);
 }
 
-u16 thunk_Sprite_GetDrawPriority(Sprite *sprite) {
+u16 thunk_Sprite_GetDrawPriority(Sprite *sprite)
+{
     return Sprite_GetDrawPriority(sprite);
 }
 
-u16 ManagedSprite_GetDrawPriority(ManagedSprite *managedSprite) {
+u16 ManagedSprite_GetDrawPriority(ManagedSprite *managedSprite)
+{
     return thunk_Sprite_GetDrawPriority(managedSprite->sprite);
 }
 
-void Sprite_SetPositionXY(Sprite *sprite, s16 x, s16 y) {
+void Sprite_SetPositionXY(Sprite *sprite, s16 x, s16 y)
+{
     VecFx32 vec;
 
     vec.x = x * FX32_ONE;
@@ -772,11 +857,13 @@ void Sprite_SetPositionXY(Sprite *sprite, s16 x, s16 y) {
     Sprite_SetMatrix(sprite, &vec);
 }
 
-void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y) {
+void ManagedSprite_SetPositionXY(ManagedSprite *managedSprite, s16 x, s16 y)
+{
     Sprite_SetPositionXY(managedSprite->sprite, x, y);
 }
 
-void Sprite_SetPositionXYWithSubscreenOffset(Sprite *sprite, s16 x, s16 y, fx32 yOffset) {
+void Sprite_SetPositionXYWithSubscreenOffset(Sprite *sprite, s16 x, s16 y, fx32 yOffset)
+{
     VecFx32 vec;
 
     vec.x = x * FX32_ONE;
@@ -788,11 +875,13 @@ void Sprite_SetPositionXYWithSubscreenOffset(Sprite *sprite, s16 x, s16 y, fx32 
     Sprite_SetMatrix(sprite, &vec);
 }
 
-void ManagedSprite_SetPositionXYWithSubscreenOffset(ManagedSprite *managedSprite, s16 x, s16 y, fx32 yOffset) {
+void ManagedSprite_SetPositionXYWithSubscreenOffset(ManagedSprite *managedSprite, s16 x, s16 y, fx32 yOffset)
+{
     Sprite_SetPositionXYWithSubscreenOffset(managedSprite->sprite, x, y, yOffset);
 }
 
-void Sprite_GetPositionXY(Sprite *sprite, s16 *x, s16 *y) {
+void Sprite_GetPositionXY(Sprite *sprite, s16 *x, s16 *y)
+{
     const VecFx32 *pos = Sprite_GetMatrixPtr(sprite);
     *x = pos->x / FX32_ONE;
     if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
@@ -802,11 +891,13 @@ void Sprite_GetPositionXY(Sprite *sprite, s16 *x, s16 *y) {
     }
 }
 
-void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y) {
+void ManagedSprite_GetPositionXY(ManagedSprite *managedSprite, s16 *x, s16 *y)
+{
     Sprite_GetPositionXY(managedSprite->sprite, x, y);
 }
 
-void Sprite_GetPositionXY_CustomScreenYOffset(Sprite *sprite, s16 *x, s16 *y, fx32 yOffset) {
+void Sprite_GetPositionXY_CustomScreenYOffset(Sprite *sprite, s16 *x, s16 *y, fx32 yOffset)
+{
     const VecFx32 *pos = Sprite_GetMatrixPtr(sprite);
     *x = pos->x / FX32_ONE;
     if (Sprite_GetVramType(sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
@@ -816,11 +907,13 @@ void Sprite_GetPositionXY_CustomScreenYOffset(Sprite *sprite, s16 *x, s16 *y, fx
     }
 }
 
-void ManagedSprite_GetPositionXYWithSubscreenOffset(ManagedSprite *managedSprite, s16 *x, s16 *y, fx32 yOffset) {
+void ManagedSprite_GetPositionXYWithSubscreenOffset(ManagedSprite *managedSprite, s16 *x, s16 *y, fx32 yOffset)
+{
     Sprite_GetPositionXY_CustomScreenYOffset(managedSprite->sprite, x, y, yOffset);
 }
 
-void Sprite_OffsetPositionXY(Sprite *sprite, s16 dx, s16 dy) {
+void Sprite_OffsetPositionXY(Sprite *sprite, s16 dx, s16 dy)
+{
     VecFx32 vec;
     const VecFx32 *pos = Sprite_GetMatrixPtr(sprite);
     vec.x = pos->x + dx * FX32_ONE;
@@ -829,11 +922,13 @@ void Sprite_OffsetPositionXY(Sprite *sprite, s16 dx, s16 dy) {
     Sprite_SetMatrix(sprite, &vec);
 }
 
-void ManagedSprite_OffsetPositionXY(ManagedSprite *managedSprite, s16 dx, s16 dy) {
+void ManagedSprite_OffsetPositionXY(ManagedSprite *managedSprite, s16 dx, s16 dy)
+{
     Sprite_OffsetPositionXY(managedSprite->sprite, dx, dy);
 }
 
-void ManagedSprite_AddSpritePrecisePositionXY(ManagedSprite *managedSprite, fx32 dx, fx32 dy) {
+void ManagedSprite_AddSpritePrecisePositionXY(ManagedSprite *managedSprite, fx32 dx, fx32 dy)
+{
     VecFx32 vec;
     const VecFx32 *pos = Sprite_GetMatrixPtr(managedSprite->sprite);
     vec.x = pos->x + dx;
@@ -842,7 +937,8 @@ void ManagedSprite_AddSpritePrecisePositionXY(ManagedSprite *managedSprite, fx32
     Sprite_SetMatrix(managedSprite->sprite, &vec);
 }
 
-void ManagedSprite_SetPositonFxXY(ManagedSprite *managedSprite, fx32 x, fx32 y) {
+void ManagedSprite_SetPositonFxXY(ManagedSprite *managedSprite, fx32 x, fx32 y)
+{
     VecFx32 vec;
     const VecFx32 *pos = Sprite_GetMatrixPtr(managedSprite->sprite);
     vec.x = x;
@@ -851,13 +947,15 @@ void ManagedSprite_SetPositonFxXY(ManagedSprite *managedSprite, fx32 x, fx32 y) 
     Sprite_SetMatrix(managedSprite->sprite, &vec);
 }
 
-void ManagedSprite_GetSpritePositionFxXY(ManagedSprite *managedSprite, fx32 *x, fx32 *y) {
+void ManagedSprite_GetSpritePositionFxXY(ManagedSprite *managedSprite, fx32 *x, fx32 *y)
+{
     const VecFx32 *pos = Sprite_GetMatrixPtr(managedSprite->sprite);
     *x = pos->x;
     *y = pos->y;
 }
 
-void ManagedSprite_SetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSprite, fx32 x, fx32 y, fx32 yOffset) {
+void ManagedSprite_SetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSprite, fx32 x, fx32 y, fx32 yOffset)
+{
     if (Sprite_GetVramType(managedSprite->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         ManagedSprite_SetPositonFxXY(managedSprite, x, y + yOffset);
     } else {
@@ -865,77 +963,93 @@ void ManagedSprite_SetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSpri
     }
 }
 
-void ManagedSprite_GetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSprite, fx32 *x, fx32 *y, fx32 yOffset) {
+void ManagedSprite_GetPositionFxXYWithSubscreenOffset(ManagedSprite *managedSprite, fx32 *x, fx32 *y, fx32 yOffset)
+{
     ManagedSprite_GetSpritePositionFxXY(managedSprite, x, y);
     if (Sprite_GetVramType(managedSprite->sprite) == NNS_G2D_VRAM_TYPE_2DSUB) {
         *y -= yOffset;
     }
 }
 
-void thunk_Sprite_SetAffineOverworldMode(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetAffineOverworldMode(Sprite *sprite, u8 a1)
+{
     Sprite_SetAffineOverwriteMode(sprite, a1);
 }
 
-void ManagedSprite_SetAffineOverwriteMode(ManagedSprite *managedSprite, u8 a1) {
+void ManagedSprite_SetAffineOverwriteMode(ManagedSprite *managedSprite, u8 a1)
+{
     thunk_Sprite_SetAffineOverworldMode(managedSprite->sprite, a1);
 }
 
-void Sprite_SetAffineScaleXY(Sprite *sprite, f32 x, f32 y) {
+void Sprite_SetAffineScaleXY(Sprite *sprite, f32 x, f32 y)
+{
     VecFx32 *scale = Sprite_GetScalePtr(sprite);
     scale->x = FX_F32_TO_FX32(x);
     scale->y = FX_F32_TO_FX32(y);
     Sprite_SetAffineScale(sprite, scale);
 }
 
-void ManagedSprite_SetAffineScale(ManagedSprite *managedSprite, f32 x, f32 y) {
+void ManagedSprite_SetAffineScale(ManagedSprite *managedSprite, f32 x, f32 y)
+{
     Sprite_SetAffineScaleXY(managedSprite->sprite, x, y);
 }
 
-void Sprite_GetAffineScaleXY(Sprite *sprite, f32 *x, f32 *y) {
+void Sprite_GetAffineScaleXY(Sprite *sprite, f32 *x, f32 *y)
+{
     VecFx32 *scale = Sprite_GetScalePtr(sprite);
     *x = FX_FX32_TO_F32(scale->x);
     *y = FX_FX32_TO_F32(scale->y);
 }
 
-void ManagedSprite_GetAffineScale(ManagedSprite *managedSprite, f32 *x, f32 *y) {
+void ManagedSprite_GetAffineScale(ManagedSprite *managedSprite, f32 *x, f32 *y)
+{
     Sprite_GetAffineScaleXY(managedSprite->sprite, x, y);
 }
 
-void thunk_Sprite_SetAffineZRotation(Sprite *sprite, u16 rotation) {
+void thunk_Sprite_SetAffineZRotation(Sprite *sprite, u16 rotation)
+{
     Sprite_SetAffineZRotation(sprite, rotation);
 }
 
-void ManagedSprite_SetAffineZRotation(ManagedSprite *managedSprite, u16 rotation) {
+void ManagedSprite_SetAffineZRotation(ManagedSprite *managedSprite, u16 rotation)
+{
     thunk_Sprite_SetAffineZRotation(managedSprite->sprite, rotation);
 }
 
-void Sprite_OffsetAffineZRotation2(Sprite *sprite, u16 offset) {
+void Sprite_OffsetAffineZRotation2(Sprite *sprite, u16 offset)
+{
     u16 rotation = Sprite_GetRotation(sprite);
     rotation += offset;
     Sprite_SetAffineZRotation(sprite, rotation);
 }
 
-void ManagedSprite_OffsetAffineZRotation(ManagedSprite *managedSprite, u16 rotation) {
+void ManagedSprite_OffsetAffineZRotation(ManagedSprite *managedSprite, u16 rotation)
+{
     Sprite_OffsetAffineZRotation2(managedSprite->sprite, rotation);
 }
 
-u16 thunk_Sprite_GetRotation(Sprite *sprite) {
+u16 thunk_Sprite_GetRotation(Sprite *sprite)
+{
     return Sprite_GetRotation(sprite);
 }
 
-u16 ManagedSprite_GetRotation(ManagedSprite *managedSprite) {
+u16 ManagedSprite_GetRotation(ManagedSprite *managedSprite)
+{
     return thunk_Sprite_GetRotation(managedSprite->sprite);
 }
 
-void thunk_Sprite_SetFlipMode(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetFlipMode(Sprite *sprite, u8 a1)
+{
     Sprite_SetFlipMode(sprite, a1);
 }
 
-void ManagedSprite_SetFlipMode(ManagedSprite *managedSprite, u8 a1) {
+void ManagedSprite_SetFlipMode(ManagedSprite *managedSprite, u8 a1)
+{
     thunk_Sprite_SetFlipMode(managedSprite->sprite, a1);
 }
 
-void ManagedSprite_SetAffineTranslation(ManagedSprite *managedSprite, s16 x, s16 y) {
+void ManagedSprite_SetAffineTranslation(ManagedSprite *managedSprite, s16 x, s16 y)
+{
     VecFx32 matrix;
     matrix.x = x * FX32_ONE;
     matrix.y = y * FX32_ONE;
@@ -943,31 +1057,38 @@ void ManagedSprite_SetAffineTranslation(ManagedSprite *managedSprite, s16 x, s16
     Sprite_SetAffineMatrix(managedSprite->sprite, &matrix);
 }
 
-void ManagedSprite_SetMosaicFlag(ManagedSprite *managedSprite, BOOL mosaic) {
+void ManagedSprite_SetMosaicFlag(ManagedSprite *managedSprite, BOOL mosaic)
+{
     Sprite_SetMosaic(managedSprite->sprite, mosaic);
 }
 
-void thunk_Sprite_SetOamMode(Sprite *sprite, GXOamMode mode) {
+void thunk_Sprite_SetOamMode(Sprite *sprite, GXOamMode mode)
+{
     Sprite_SetOamMode(sprite, mode);
 }
 
-void ManagedSprite_SetOamMode(ManagedSprite *managedSprite, GXOamMode mode) {
+void ManagedSprite_SetOamMode(ManagedSprite *managedSprite, GXOamMode mode)
+{
     thunk_Sprite_SetOamMode(managedSprite->sprite, mode);
 }
 
-GXOamMode thunk_Sprite_GetOamMode(Sprite *sprite) {
+GXOamMode thunk_Sprite_GetOamMode(Sprite *sprite)
+{
     return Sprite_GetOamMode(sprite);
 }
 
-GXOamMode ManagedSprite_GetOamMode(ManagedSprite *managedSprite) {
+GXOamMode ManagedSprite_GetOamMode(ManagedSprite *managedSprite)
+{
     return thunk_Sprite_GetOamMode(managedSprite->sprite);
 }
 
-u32 ManagedSprite_GetUserAttrForCurrentAnimFrame(ManagedSprite *managedSprite) {
+u32 ManagedSprite_GetUserAttrForCurrentAnimFrame(ManagedSprite *managedSprite)
+{
     return Sprite_GetCurrentAnimFrameExAttr(managedSprite->sprite);
 }
 
-BOOL SpriteSystem_LoadCharResObjWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {
+BOOL SpriteSystem_LoadCharResObjWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
         return FALSE;
     }
@@ -981,7 +1102,8 @@ BOOL SpriteSystem_LoadCharResObjWithHardwareMappingType(SpriteSystem *spriteSyst
     return obj != NULL;
 }
 
-BOOL SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {
+BOOL SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
         return FALSE;
     }
@@ -995,7 +1117,8 @@ BOOL SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType(SpriteSystem *sprit
     return obj != NULL;
 }
 
-BOOL SpriteSystem_LoadCharResObjFromOpenNarcWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId) {
+BOOL SpriteSystem_LoadCharResObjFromOpenNarcWithHardwareMappingType(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, NNS_G2D_VRAM_TYPE vram, int resId)
+{
     if (!GF2DGfxResObjExistsById(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId)) {
         return FALSE;
     }
@@ -1009,33 +1132,39 @@ BOOL SpriteSystem_LoadCharResObjFromOpenNarcWithHardwareMappingType(SpriteSystem
     return obj != NULL;
 }
 
-void SpriteSystem_ReplaceCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId) {
+void SpriteSystem_ReplaceCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId)
+{
     SpriteResource *obj = SpriteResourceCollection_Find(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId);
     ReplaceCharResObjFromNarc(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], obj, narcId, fileId, compressed, spriteSystem->heapId);
     sub_0200AE8C(obj);
 }
 
-void SpriteSystem_ReplacePlttResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId) {
+void SpriteSystem_ReplacePlttResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int resId)
+{
     SpriteResource *obj = SpriteResourceCollection_Find(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], resId);
     ReplacePlttResObjFromNarc(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], obj, narcId, fileId, compressed, spriteSystem->heapId);
     sub_0200B084(obj);
 }
 
-SpriteList *SpriteManager_GetSpriteList(SpriteManager *spriteManager) {
+SpriteList *SpriteManager_GetSpriteList(SpriteManager *spriteManager)
+{
     return spriteManager->spriteList;
 }
 
-void SpriteManager_SetSpriteList(SpriteManager *spriteManager, SpriteList *spriteList) {
+void SpriteManager_SetSpriteList(SpriteManager *spriteManager, SpriteList *spriteList)
+{
     spriteManager->spriteList = spriteList;
 }
 
-void sub_0200E2B8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId) {
+void sub_0200E2B8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)
+{
     SpriteResource *obj = SpriteResourceCollection_Find(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], resId);
     ReplaceCharResObjFromOpenNarc(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR], obj, narc, fileId, compressed, spriteSystem->heapId);
     sub_0200AE8C(obj);
 }
 
-void sub_0200E2EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId) {
+void sub_0200E2EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int resId)
+{
     SpriteResource *obj = SpriteResourceCollection_Find(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], resId);
     ReplacePlttResObjFromOpenNarc(spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT], obj, narc, fileId, compressed, spriteSystem->heapId);
     sub_0200B084(obj);

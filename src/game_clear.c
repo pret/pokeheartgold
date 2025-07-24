@@ -95,7 +95,8 @@ static void sub_02052E70(GameClearWork *env);
 static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int a2);
 static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env);
 
-BOOL sub_0205298C(TaskManager *taskman) {
+BOOL sub_0205298C(TaskManager *taskman)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     u32 *state = TaskManager_GetStatePtr(taskman);
 
@@ -135,7 +136,8 @@ BOOL sub_0205298C(TaskManager *taskman) {
     return FALSE;
 }
 
-static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
+static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared)
+{
     int val;
     RTCDate date;
 
@@ -153,7 +155,8 @@ static void AddHallOfFameEntry(FieldSystem *fieldSystem, BOOL gameCleared) {
 
 // Launches the Hall of Fame Congratulations app if the player beat Lance. Saves
 // the game and launches the credits.
-static BOOL Task_GameClear(TaskManager *taskman) {
+static BOOL Task_GameClear(TaskManager *taskman)
+{
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     GameClearWork *env = TaskManager_GetEnvironment(taskman);
     u32 *state = TaskManager_GetStatePtr(taskman);
@@ -260,7 +263,8 @@ static BOOL Task_GameClear(TaskManager *taskman) {
 
 // Marks the game as cleared and launches Hall of Fame Congratulations and
 // Credits.
-void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
+void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed)
+{
     FieldSystem *fieldSystem;
     GameClearWork *env;
     SaveVarsFlags *varsFlags;
@@ -299,7 +303,8 @@ void CallTask_GameClear(TaskManager *taskman, u16 vsTrainerRed) {
     TaskManager_Call(taskman, Task_GameClear, env);
 }
 
-static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env) {
+static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *env)
+{
     env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
     env->windowText = NULL;
     env->waitingIcon = NULL;
@@ -314,7 +319,8 @@ static void GameClearSave_InitGraphics(FieldSystem *fieldSystem, GameClearWork *
     BgCommitTilemapBufferToVram(env->bgConfig, 3);
 }
 
-static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env) {
+static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *env)
+{
     Options *options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     env->windowText = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, NARC_msg_msg_0040_bin, msg_0040_00015, HEAP_ID_32);
     sub_0205B514(env->bgConfig, &env->window, 3);
@@ -323,17 +329,20 @@ static void GameClearSave_PrintSaving(FieldSystem *fieldSystem, GameClearWork *e
     env->waitingIcon = WaitingIcon_New(&env->window, 0x000003e2);
 }
 
-static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
+static BOOL GameClearSave_IsPrintFinished(GameClearWork *env)
+{
     return IsPrintFinished((u8)env->printerId);
 }
 
-static void sub_02052E70(GameClearWork *env) {
+static void sub_02052E70(GameClearWork *env)
+{
     String_Delete(env->windowText);
     sub_0200F450(env->waitingIcon);
     sub_0205B5A8(&env->window);
 }
 
-static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int writeStatus) {
+static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWork *env, int writeStatus)
+{
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, HEAP_ID_4);
 
     if (writeStatus == 2) {
@@ -349,7 +358,8 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWor
     env->printerId = sub_0205B5B4(&env->window, env->windowText, options, 1);
 }
 
-static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {
+static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env)
+{
     if (env->windowText != NULL) {
         String_Delete(env->windowText);
     }

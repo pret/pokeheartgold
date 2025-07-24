@@ -36,7 +36,8 @@ const struct BadgeMartItems _020FBF22[] = {
     { ITEM_MAX_REPEL,    4 },
 };
 
-BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
+BOOL ScrCmd_MartBuy(ScriptContext *ctx)
+{
     u16 unused;
     u8 badge_count;
     u8 i;
@@ -90,7 +91,8 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_MartSell(ScriptContext *ctx) {
+BOOL ScrCmd_MartSell(ScriptContext *ctx)
+{
     u16 dummy[1];
 
     dummy[0] = 0xFFFF;
@@ -162,7 +164,8 @@ const u16 *_0210FA3C[] = {
     _020FBBD8,
 };
 
-BOOL ScrCmd_SpecialMartBuy(ScriptContext *ctx) {
+BOOL ScrCmd_SpecialMartBuy(ScriptContext *ctx)
+{
     u16 which;
 
     which = ScriptGetVar(ctx);
@@ -183,7 +186,8 @@ const u16 *_0210F9CC[] = {
     _020FBAEC,
 };
 
-BOOL ScrCmd_DecorationMart(ScriptContext *ctx) {
+BOOL ScrCmd_DecorationMart(ScriptContext *ctx)
+{
     u16 which;
 
     which = ScriptGetVar(ctx);
@@ -209,7 +213,8 @@ const u16 *_0210F9E8[] = {
     _020FBB74,
 };
 
-BOOL ScrCmd_SealMart(ScriptContext *ctx) {
+BOOL ScrCmd_SealMart(ScriptContext *ctx)
+{
     u16 which;
 
     which = ScriptGetVar(ctx);
@@ -403,7 +408,8 @@ const struct MartItem *_0210FA04[] = {
     _020FBEEE,
 };
 
-BOOL ScrCmd_771(ScriptContext *ctx) {
+BOOL ScrCmd_771(ScriptContext *ctx)
+{
     SaveVarsFlags *flagsys;
     RTCDate date;
 
@@ -470,7 +476,8 @@ const struct MartItem *_0210F9D4[] = {
     _020FBBA4,
 };
 
-BOOL ScrCmd_772(ScriptContext *ctx) {
+BOOL ScrCmd_772(ScriptContext *ctx)
+{
     POKEATHLON_SAV *pokeathlon;
     int i;
 
@@ -484,7 +491,8 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_834(ScriptContext *ctx) {
+BOOL ScrCmd_834(ScriptContext *ctx)
+{
     u16 *sp0;
     POKEATHLON_SAV *pokeathlon;
     SaveVarsFlags *varsFlags;
@@ -524,7 +532,8 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_835(ScriptContext *ctx) {
+BOOL ScrCmd_835(ScriptContext *ctx)
+{
     u16 *ret_ptr;
     int i;
     POKEATHLON_SAV *pokeathlon;

@@ -13,7 +13,8 @@ extern u32 FollowMon_GetSpriteID(int species, u16 form, u32 gender);
 
 static LocalMapObject *CreateDaycareMonSpriteInternal(MapObjectManager *object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny);
 
-BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext *ctx) {
+BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext *ctx)
+{
     SaveData *saveData = ctx->fieldSystem->saveData;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     Daycare *daycare = Save_Daycare_Get(saveData);
@@ -23,7 +24,8 @@ BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetDaycareState(ScriptContext *ctx) {
+BOOL ScrCmd_GetDaycareState(ScriptContext *ctx)
+{
     SaveData *saveData = ctx->fieldSystem->saveData;
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     Daycare *daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
@@ -33,7 +35,8 @@ BOOL ScrCmd_GetDaycareState(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_ResetDaycareEgg(ScriptContext *ctx) {
+BOOL ScrCmd_ResetDaycareEgg(ScriptContext *ctx)
+{
     Daycare *daycare = SaveArray_Get(ctx->fieldSystem->saveData, SAVE_DAYCARE);
 
     Save_Daycare_ResetEggStats(daycare);
@@ -41,7 +44,8 @@ BOOL ScrCmd_ResetDaycareEgg(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GiveDaycareEgg(ScriptContext *ctx) {
+BOOL ScrCmd_GiveDaycareEgg(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     Daycare *daycare = SaveArray_Get(fieldSystem->saveData, SAVE_DAYCARE);
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
@@ -53,7 +57,8 @@ BOOL ScrCmd_GiveDaycareEgg(ScriptContext *ctx) {
     return 0;
 }
 
-BOOL ScrCmd_RetrieveDaycareMon(ScriptContext *ctx) {
+BOOL ScrCmd_RetrieveDaycareMon(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     SaveData *saveData = fieldSystem->saveData;
@@ -67,7 +72,8 @@ BOOL ScrCmd_RetrieveDaycareMon(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext *ctx) {
+BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     SaveData *saveData = fieldSystem->saveData;
@@ -80,7 +86,8 @@ BOOL ScrCmd_BufferDaycareWithdrawCost(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferDaycareMonGrowth(ScriptContext *ctx) {
+BOOL ScrCmd_BufferDaycareMonGrowth(ScriptContext *ctx)
+{
     SaveData *saveData = ctx->fieldSystem->saveData;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
@@ -92,7 +99,8 @@ BOOL ScrCmd_BufferDaycareMonGrowth(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext *ctx) {
+BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
@@ -103,7 +111,8 @@ BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_PutMonInDaycare(ScriptContext *ctx) {
+BOOL ScrCmd_PutMonInDaycare(ScriptContext *ctx)
+{
     FieldSystem *fieldSystem = ctx->fieldSystem;
     SaveData *saveData = fieldSystem->saveData;
     u16 slot = ScriptGetVar(ctx);
@@ -115,7 +124,8 @@ BOOL ScrCmd_PutMonInDaycare(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_BufferDaycareMonStats(ScriptContext *ctx) {
+BOOL ScrCmd_BufferDaycareMonStats(ScriptContext *ctx)
+{
     SaveData *saveData = ctx->fieldSystem->saveData;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 nickname_idx = ScriptGetVar(ctx);
@@ -129,7 +139,8 @@ BOOL ScrCmd_BufferDaycareMonStats(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_GetDaycareCompatibility(ScriptContext *ctx) {
+BOOL ScrCmd_GetDaycareCompatibility(ScriptContext *ctx)
+{
     SaveData *saveData = ctx->fieldSystem->saveData;
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     Daycare *daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
@@ -139,7 +150,8 @@ BOOL ScrCmd_GetDaycareCompatibility(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx) {
+BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx)
+{
     SaveData *saveData = ctx->fieldSystem->saveData;
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     Daycare *daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
@@ -149,7 +161,8 @@ BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
+BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx)
+{
     Daycare *daycare;
     u8 form;
     u16 species;
@@ -179,7 +192,8 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
     return FALSE;
 }
 
-static LocalMapObject *CreateDaycareMonSpriteInternal(MapObjectManager *object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny) {
+static LocalMapObject *CreateDaycareMonSpriteInternal(MapObjectManager *object_man, u8 dc_mon_idx, u16 species, u8 form, u32 gender, u32 direction, u32 x, u32 y, u32 map_no, BOOL shiny)
+{
     u32 sprite_id = FollowMon_GetSpriteID(species, form, gender);
     LocalMapObject *lmo = MapObject_Create(object_man, x, y, direction, sprite_id, 11, map_no);
     GF_ASSERT(lmo != NULL);
@@ -200,7 +214,8 @@ static LocalMapObject *CreateDaycareMonSpriteInternal(MapObjectManager *object_m
     return lmo;
 }
 
-BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
+BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx)
+{
     Pokemon *mon;
 
     FieldSystem *fieldSystem = ctx->fieldSystem;

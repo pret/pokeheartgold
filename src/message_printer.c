@@ -15,7 +15,8 @@ static const u16 _020F5C24[][2] = {
     { 0x02A0, 0x0010 },
 };
 
-MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, HeapID heapId) {
+MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, HeapID heapId)
+{
     MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
     if (messagePrinter != NULL) {
         messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, TRUE, &messagePrinter->ppCharData, heapId);
@@ -57,7 +58,8 @@ MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, H
     return messagePrinter;
 }
 
-void MessagePrinter_Delete(MessagePrinter *messagePrinter) {
+void MessagePrinter_Delete(MessagePrinter *messagePrinter)
+{
     if (messagePrinter != NULL) {
         if (messagePrinter->charData != NULL) {
             Heap_Free(messagePrinter->charData);
@@ -66,11 +68,13 @@ void MessagePrinter_Delete(MessagePrinter *messagePrinter) {
     }
 }
 
-void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u32 x, u32 y) {
+void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u32 x, u32 y)
+{
     BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[glyphId][0], 0, 0, _020F5C24[glyphId][1], 8, x, y, _020F5C24[glyphId][1], 8);
 }
 
-void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y) {
+void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y)
+{
     ConvertUIntToDecimalString(messagePrinter->string, num, mode, ndigits);
     u32 i;
     for (i = 0; messagePrinter->string[i] != EOS; i++) {

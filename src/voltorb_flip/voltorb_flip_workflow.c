@@ -6,7 +6,8 @@
 
 #include "heap.h"
 
-WorkflowEngine *CreateWorkflowEngine(HeapID a0, VoltorbFlipWorkflows *workflows, int numWorkFlows, struct VoltorbFlipAppWork *work) {
+WorkflowEngine *CreateWorkflowEngine(HeapID a0, VoltorbFlipWorkflows *workflows, int numWorkFlows, struct VoltorbFlipAppWork *work)
+{
     WorkflowEngine *ptr = AllocFromHeap(a0, sizeof(WorkflowEngine));
     MI_CpuFill8(ptr, 0, sizeof(WorkflowEngine));
     ptr->workflows = workflows;
@@ -16,12 +17,14 @@ WorkflowEngine *CreateWorkflowEngine(HeapID a0, VoltorbFlipWorkflows *workflows,
     return ptr;
 }
 
-void FreeWorkflowEngine(WorkflowEngine *workflow) {
+void FreeWorkflowEngine(WorkflowEngine *workflow)
+{
     Heap_Free(workflow);
 }
 
 // Returns TRUE when the Workflow is terminated.
-BOOL RunWorkflowEngine(WorkflowEngine *workflow) {
+BOOL RunWorkflowEngine(WorkflowEngine *workflow)
+{
     VoltorbFlipWorkflows *vfWorkflows = workflow->workflows;
     VoltorbFlipWorkflow *vfWorkflow = &(*vfWorkflows)[workflow->curWorkflow];
     VoltorbFlipTask task;
@@ -85,22 +88,26 @@ BOOL RunWorkflowEngine(WorkflowEngine *workflow) {
     return FALSE;
 }
 
-void EnqueueWorkflow(WorkflowEngine *workflow, Workflow next) {
+void EnqueueWorkflow(WorkflowEngine *workflow, Workflow next)
+{
     GF_ASSERT(workflow != 0);
     GF_ASSERT(next == WORKFLOW_TERMINATE || next < workflow->size);
     workflow->nextWorkflow = next;
 }
 
-int CurrentWorkflow(WorkflowEngine *workflow) {
+int CurrentWorkflow(WorkflowEngine *workflow)
+{
     return workflow->curWorkflow;
 }
 
-int CurrentTaskState(WorkflowEngine *workflow) {
+int CurrentTaskState(WorkflowEngine *workflow)
+{
     GF_ASSERT(workflow->workflowState != 1);
     return workflow->taskState;
 }
 
-int IncrementTaskState(WorkflowEngine *workflow) {
+int IncrementTaskState(WorkflowEngine *workflow)
+{
     GF_ASSERT(workflow->workflowState != 1);
 
     int newState = workflow->taskState + 1;

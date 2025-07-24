@@ -2,13 +2,15 @@
 
 #include "global.h"
 
-void InitIGT(struct IGT *igt) {
+void InitIGT(struct IGT *igt)
+{
     igt->hours = 0;
     igt->minutes = 0;
     igt->seconds = 0;
 }
 
-void AddIGTSeconds(struct IGT *igt, u32 seconds_to_add) {
+void AddIGTSeconds(struct IGT *igt, u32 seconds_to_add)
+{
     if (igt->hours == 999 && igt->minutes == 59 && igt->seconds == 59) {
         return;
     }
@@ -40,14 +42,17 @@ void AddIGTSeconds(struct IGT *igt, u32 seconds_to_add) {
     igt->seconds = seconds;
 }
 
-u16 GetIGTHours(struct IGT *igt) {
+u16 GetIGTHours(struct IGT *igt)
+{
     return igt->hours;
 }
 
-u8 GetIGTMinutes(struct IGT *igt) {
+u8 GetIGTMinutes(struct IGT *igt)
+{
     return igt->minutes;
 }
 
-u8 GetIGTSeconds(struct IGT *igt) {
+u8 GetIGTSeconds(struct IGT *igt)
+{
     return igt->seconds;
 }

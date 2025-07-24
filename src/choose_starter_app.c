@@ -248,7 +248,8 @@ static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
 static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
 static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max);
 
-BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
+BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p)
+{
     struct ChooseStarterAppWork *work;
     struct ChooseStarterArgs *args;
     int i;
@@ -310,7 +311,8 @@ static const int sSpecies[] = {
     SPECIES_TOTODILE,
 };
 
-BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
+BOOL ChooseStarter_Main(OverlayManager *ovy, int *state)
+{
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     int cameraPathSel = CAMERA_PATH_NULL;
     int input;
@@ -535,7 +537,8 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
     return FALSE;
 }
 
-BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state) {
+BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state)
+{
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     struct ChooseStarterArgs *args = OverlayManager_GetArgs(ovy);
 
@@ -571,7 +574,8 @@ BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state) {
     return TRUE;
 }
 
-static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
+static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0)
+{
     int i;
 
     for (i = 0; i < 3; i++) {
@@ -586,12 +590,14 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
     }
 }
 
-static void vBlankCB(struct ChooseStarterAppWork *work) {
+static void vBlankCB(struct ChooseStarterAppWork *work)
+{
     OamManager_ApplyAndResetBuffers();
     DoScheduledBgGpuUpdates(work->bgConfig);
 }
 
-static void setGxBanks(void) {
+static void setGxBanks(void)
+{
     const struct GraphicsBanks cfg = {
         GX_VRAM_BG_80_EF,
         GX_VRAM_BGEXTPLTT_NONE,
@@ -607,7 +613,8 @@ static void setGxBanks(void) {
     GfGfx_SetBanks(&cfg);
 }
 
-static void createOamManager(HeapID heapId) {
+static void createOamManager(HeapID heapId)
+{
     NNS_G2dInitOamManagerModule();
     OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
     {
@@ -625,7 +632,8 @@ static void createOamManager(HeapID heapId) {
     ObjPlttTransfer_Reset();
 }
 
-static void init3dEngine(struct ChooseStarterAppWork *work) {
+static void init3dEngine(struct ChooseStarterAppWork *work)
+{
     int i;
     work->_3dMan = GF_3DVramMan_Create(work->heapId, 0, 2, 0, 4, NULL);
     G3X_AntiAlias(TRUE);
@@ -643,7 +651,8 @@ static void init3dEngine(struct ChooseStarterAppWork *work) {
     NNS_G3dGlbMaterialColorSpecEmi(RGB_WHITE, RGB_WHITE, FALSE);
 }
 
-static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
+static void update3dObjectsMain(struct ChooseStarterAppWork *work)
+{
     SpriteList_RenderAndAnimateSprites(work->monSpriteData.spriteList);
     Thunk_G3X_Reset();
     NNS_G3dGePushMtx();
@@ -653,12 +662,14 @@ static void update3dObjectsMain(struct ChooseStarterAppWork *work) {
     RequestSwap3DBuffers(GX_SORTMODE_AUTO, GX_BUFFERMODE_Z);
 }
 
-static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index) {
+static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index)
+{
     MTX_Identity33(mtx);
     MTX_RotY33(mtx, FX_SinIdx(index), FX_CosIdx(index));
 }
 
-static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
+static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work)
+{
     const VecFx32 scaleVec = { FX32_ONE, FX32_ONE, FX32_ONE };
     MtxFx33 rotMtx;
     MtxFx33 tmpMtx;
@@ -697,7 +708,8 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
+static void initBgLayers(BgConfig *bgConfig, HeapID heapId)
+{
     G2_SetBG0Priority(2);
     {
         const BgTemplate sp70 = {
@@ -741,7 +753,8 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
     }
 }
 
-static void initCameraPosition(struct ChooseStarterAppWork *work) {
+static void initCameraPosition(struct ChooseStarterAppWork *work)
+{
     VecFx32 bindTarget;
     const VecFx32 shiftVec = { 0, 0, 14 * FX32_ONE };
     CameraAngle cameraAngle;
@@ -763,7 +776,8 @@ static void initCameraPosition(struct ChooseStarterAppWork *work) {
     Camera_SetStaticPtr(work->camera);
 }
 
-static void createObjResMans(struct ChooseStarterAppWork *work) {
+static void createObjResMans(struct ChooseStarterAppWork *work)
+{
     struct StarterChooseMonSpriteData *pMonSpriteData = &work->monSpriteData;
     pMonSpriteData->spriteList = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapId);
     pMonSpriteData->charResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CHAR, work->heapId);
@@ -773,7 +787,8 @@ static void createObjResMans(struct ChooseStarterAppWork *work) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void initObjRenderers(struct ChooseStarterAppWork *work) {
+static void initObjRenderers(struct ChooseStarterAppWork *work)
+{
     int i;
     load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BALL_EF], NARC_choose_starter_main_res_03_tt_ball_ef_NSBMD, work->heapId);
     rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_TT_BALL_EF], 0, 14 * FX32_ONE, 32 * FX32_ONE);
@@ -810,7 +825,8 @@ static void initObjRenderers(struct ChooseStarterAppWork *work) {
     addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BALL3], &work->_3dObjAnm[CS_ANIM_BALL3_ROCK]);
 }
 
-static void freeAll3dAnmObj(struct ChooseStarterAppWork *work) {
+static void freeAll3dAnmObj(struct ChooseStarterAppWork *work)
+{
     int i;
 
     for (i = 0; i < CS_ANIM_MAX; i++) {
@@ -818,7 +834,8 @@ static void freeAll3dAnmObj(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
+static void freeAll3dResHeader(struct ChooseStarterAppWork *work)
+{
     int i;
 
     for (i = 0; i < CS_3DRES_MAX; i++) {
@@ -826,7 +843,8 @@ static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId) {
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId)
+{
     res->header = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
     res->mdlSet = NNS_G3dGetMdlSet(res->header);
     res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
@@ -834,12 +852,14 @@ static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int file
     GF3dRender_AllocAndLoadTexResources(res->tex);
 }
 
-static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res) {
+static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res)
+{
     GF3dRender_BindModelSet(res->header, res->tex);
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
-static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
+static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm)
+{
     void *pAnm;
     anm->hdr = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
     pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
@@ -847,15 +867,18 @@ static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocato
     NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
 }
 
-static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm)
+{
     NNS_G3dRenderObjAddAnmObj(&rnd->obj, anm->obj);
 }
 
-static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm) {
+static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm)
+{
     NNS_G3dRenderObjRemoveAnmObj(&rnd->obj, anm->obj);
 }
 
-static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm) {
+static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm)
+{
     BOOL ret = FALSE;
     fx32 frame = anm->obj->frame + FX32_ONE;
 
@@ -867,7 +890,8 @@ static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm) {
     return ret;
 }
 
-static void advance3dAnmFrameLooped(struct ChooseStarterAnm *anm, int selectState) {
+static void advance3dAnmFrameLooped(struct ChooseStarterAnm *anm, int selectState)
+{
     NNS_G3dAnmObjSetFrame(anm->obj, anm->obj->frame + FX32_ONE);
     // If in zoomed state, wait for big wobble to finish,
     // then force to small wobbles
@@ -885,48 +909,56 @@ static void advance3dAnmFrameLooped(struct ChooseStarterAnm *anm, int selectStat
     }
 }
 
-static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx) {
+static inline struct ChooseStarterAnm *GetAnmByIdx(struct ChooseStarterAppWork *work, u8 idx)
+{
     return &work->_3dObjAnm[idx];
 }
 
-static void advanceSelectedBallShakingAnim(struct ChooseStarterAppWork *work) {
+static void advanceSelectedBallShakingAnim(struct ChooseStarterAppWork *work)
+{
     u32 idx = work->curSelection;
     advance3dAnmFrameLooped(GetAnmByIdx(work, idx), work->ballWobbleState);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 1) % 3)->obj, 0);
     NNS_G3dAnmObjSetFrame(GetAnmByIdx(work, (idx + 2) % 3)->obj, 0);
 }
 
-static BOOL selectedBallIsInSmallWobbleState(struct ChooseStarterAppWork *work) {
+static BOOL selectedBallIsInSmallWobbleState(struct ChooseStarterAppWork *work)
+{
     u32 idx = work->curSelection;
     return GetAnmByIdx(work, idx)->obj->frame >= 80 * FX32_ONE;
 }
 
-static void free3dResHeader(struct ChooseStarter3dRes *res) {
+static void free3dResHeader(struct ChooseStarter3dRes *res)
+{
     if (res->header != NULL) {
         Heap_Free(res->header);
     }
 }
 
-static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
+static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc)
+{
     if (anm->hdr != NULL) {
         NNS_G3dFreeAnmObj(alloc, anm->obj);
         Heap_Free(anm->hdr);
     }
 }
 
-static void rendererTranslVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+static void rendererTranslVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z)
+{
     rnd->translVec.x = x;
     rnd->translVec.y = y;
     rnd->translVec.z = z;
 }
 
-static void rendererScaleVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z) {
+static void rendererScaleVecSet(struct ChooseStarterRnd *rnd, fx32 x, fx32 y, fx32 z)
+{
     rnd->scaleVec.x = x;
     rnd->scaleVec.y = y;
     rnd->scaleVec.z = z;
 }
 
-static void initBallModelPositions(struct ChooseStarterAppWork *work) {
+static void initBallModelPositions(struct ChooseStarterAppWork *work)
+{
     VecFx32 pos;
     const VecFx32 posNoRot = { 0, 14 * FX32_ONE, 32 * FX32_ONE };
     MtxFx33 rotMtx;
@@ -950,14 +982,16 @@ static void initBallModelPositions(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void updateModelPositionAndRotation(struct ChooseStarterRnd *render) {
+static void updateModelPositionAndRotation(struct ChooseStarterRnd *render)
+{
     MtxFx43 mtx;
     calculateModelPositionAndRotation(render, &mtx);
     NNS_G3dGeMultMtx43(&mtx);
     NNS_G3dDraw(&render->obj);
 }
 
-static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, MtxFx43 *mtx) {
+static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, MtxFx43 *mtx)
+{
     MtxFx43 rotxMtx;
     MtxFx43 rotyMtx;
     MtxFx43 tmpRotMtx;
@@ -973,7 +1007,8 @@ static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, M
     MTX_Concat43(&rotyMtx, mtx, mtx);
 }
 
-static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed) {
+static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed)
+{
     BOOL ret = FALSE;
     work->rotationAngle += speed;
     if (speed >= 0) {
@@ -994,7 +1029,8 @@ static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed) {
     return ret;
 }
 
-static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction) {
+static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction)
+{
     if (direction == 2) {
         work->curSelection = (work->curSelection + 1) % 3;
     } else if (direction == 1) {
@@ -1007,7 +1043,8 @@ static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int
     initBallModelPositions(work);
 }
 
-static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
+static void makeAndDrawWindows(struct ChooseStarterAppWork *work)
+{
     work->winTop = AllocWindows(work->heapId, 1);
     work->winBottom = AllocWindows(work->heapId, 1);
     AddWindowParameterized(work->bgConfig, work->winTop, 4, 2, 19, 27, 4, 2, 0x01F);
@@ -1020,7 +1057,8 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
-static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
+static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId)
+{
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
     GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
@@ -1039,7 +1077,8 @@ static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     G2S_SetBlendAlpha(4, 34, 5, 11);
 }
 
-static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
+static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out)
+{
     MsgData *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
@@ -1057,18 +1096,21 @@ static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msg
     return ret;
 }
 
-static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
+static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId)
+{
     String *string = NULL;
     printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MAKE_TEXT_COLOR(1, 2, 0), 0, &string);
     String_Delete(string);
 }
 
-static void freeWindow(Window *window) {
+static void freeWindow(Window *window)
+{
     RemoveWindow(window);
     Heap_Free(window);
 }
 
-static int getInput(struct ChooseStarterAppWork *work) {
+static int getInput(struct ChooseStarterAppWork *work)
+{
     int ret = 0;
     // Ignore the keypad if continuing touch input
     if (System_GetTouchHeld() == 0) {
@@ -1144,7 +1186,8 @@ static int getInput(struct ChooseStarterAppWork *work) {
     return ret;
 }
 
-static int getRotateDirection(int a0, u8 a1, int a2) {
+static int getRotateDirection(int a0, u8 a1, int a2)
+{
 #pragma unused(a2)
     if (((a1 + 1) % 3) == a0) {
         return CHOOSE_STARTER_INPUT_CYCLE_CLOCKWISE;
@@ -1153,7 +1196,8 @@ static int getRotateDirection(int a0, u8 a1, int a2) {
     }
 }
 
-static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius) {
+static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius)
+{
     u8 i;
     for (i = 0; i < 3; i++) {
         if (GetDistanceFromPointToLine(&vecs[i], near, far) <= radius) {
@@ -1163,7 +1207,8 @@ static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radi
     return i;
 }
 
-static void createMonSprites(struct ChooseStarterAppWork *work) {
+static void createMonSprites(struct ChooseStarterAppWork *work)
+{
     NARC *narc = NARC_New(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
     int i;
     struct StarterChooseMonSpriteData *spriteData = &work->monSpriteData;
@@ -1190,7 +1235,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
     NARC_Delete(narc);
 }
 
-static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
+static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx)
+{
     SpriteResource *charResObj = SpriteResourceCollection_Find(charResMan, idx);
     SpriteResource *plttResObj = SpriteResourceCollection_Find(plttResMan, idx);
     NNSG2dImageProxy *charProxy;
@@ -1210,7 +1256,8 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }
 
-static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId) {
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId)
+{
     SpriteResourcesHeader header;
     struct SpriteTemplate template;
 
@@ -1235,12 +1282,14 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     Sprite_SetDrawFlag(pMonSpriteData->sprites[idx], FALSE);
 }
 
-static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work) {
+static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work)
+{
     setAllMonSpritesInvisible(&work->monSpriteData);
     Sprite_SetDrawFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
 }
 
-static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
+static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0)
+{
     int i;
 
     for (i = 0; i < 3; i++) {
@@ -1248,7 +1297,8 @@ static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     }
 }
 
-static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to) {
+static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to)
+{
     MtxFx33 template;
     u16 angle;
     u32 selection = work->curSelection;
@@ -1273,7 +1323,8 @@ static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx
     }
 }
 
-static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max) {
+static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max)
+{
     u16 ret;
     int addend;
     if (*to >= *from) {

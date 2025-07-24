@@ -2,7 +2,8 @@
 #include "player_data.h"
 #include "scrcmd.h"
 
-BOOL ScrCmd_AddMoney(ScriptContext *ctx) {
+BOOL ScrCmd_AddMoney(ScriptContext *ctx)
+{
     SaveData *saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
 
@@ -12,7 +13,8 @@ BOOL ScrCmd_AddMoney(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SubMoneyImmediate(ScriptContext *ctx) {
+BOOL ScrCmd_SubMoneyImmediate(ScriptContext *ctx)
+{
     SaveData *saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
 
@@ -22,7 +24,8 @@ BOOL ScrCmd_SubMoneyImmediate(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_SubMoneyVar(ScriptContext *ctx) {
+BOOL ScrCmd_SubMoneyVar(ScriptContext *ctx)
+{
     SaveData *saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
 
@@ -32,7 +35,8 @@ BOOL ScrCmd_SubMoneyVar(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext *ctx) {
+BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext *ctx)
+{
     SaveData *saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
@@ -48,7 +52,8 @@ BOOL ScrCmd_HasEnoughMoneyImmediate(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_HasEnoughMoneyVar(ScriptContext *ctx) {
+BOOL ScrCmd_HasEnoughMoneyVar(ScriptContext *ctx)
+{
     SaveData *saveData = FieldSystem_GetSaveData(ctx->fieldSystem);
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     u16 *ret_ptr = ScriptGetVarPointer(ctx);

@@ -25,7 +25,8 @@ static int TCardAppRunStep_Exec(TrainerCardAppState *work);
 static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work);
 static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work);
 
-static BOOL isSubprocFinished(OverlayManager **man) {
+static BOOL isSubprocFinished(OverlayManager **man)
+{
     if (*man && OverlayManager_Run(*man)) {
         OverlayManager_Delete(*man);
         *man = NULL;
@@ -34,7 +35,8 @@ static BOOL isSubprocFinished(OverlayManager **man) {
     return FALSE;
 }
 
-BOOL TrainerCard_Init(OverlayManager *man, int *state) {
+BOOL TrainerCard_Init(OverlayManager *man, int *state)
+{
     void *ptr = OverlayManager_GetArgs(man);
     CreateHeap(HEAP_ID_3, HEAP_ID_TRAINER_CARD, 0x1000);
 
@@ -47,7 +49,8 @@ BOOL TrainerCard_Init(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-BOOL TrainerCard_Main(OverlayManager *man, int *state) {
+BOOL TrainerCard_Main(OverlayManager *man, int *state)
+{
     TrainerCardAppState *data = OverlayManager_GetData(man);
     switch (*state) {
     case TRAINERCARD_RUN_INIT:
@@ -69,7 +72,8 @@ BOOL TrainerCard_Main(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-BOOL TrainerCard_Exit(OverlayManager *man, int *state) {
+BOOL TrainerCard_Exit(OverlayManager *man, int *state)
+{
     TrainerCardAppState *data = OverlayManager_GetData(man);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));
     OverlayManager_FreeData(man);
@@ -78,7 +82,8 @@ BOOL TrainerCard_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-static int TCardAppRunStep_Init(TrainerCardAppState *work) {
+static int TCardAppRunStep_Init(TrainerCardAppState *work)
+{
     static const OverlayManagerTemplate template = {
         TrainerCardMainApp_Init,
         TrainerCardMainApp_Main,
@@ -90,7 +95,8 @@ static int TCardAppRunStep_Init(TrainerCardAppState *work) {
     return TRAINERCARD_RUN_EXEC;
 }
 
-static int TCardAppRunStep_Exec(TrainerCardAppState *work) {
+static int TCardAppRunStep_Exec(TrainerCardAppState *work)
+{
     if (!isSubprocFinished(&work->ov_mgr)) {
         return TRAINERCARD_RUN_EXEC;
     } else if (work->parentData->reqUpdateSignature != 0) {
@@ -100,7 +106,8 @@ static int TCardAppRunStep_Exec(TrainerCardAppState *work) {
     }
 }
 
-static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
+static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work)
+{
     const OverlayManagerTemplate template = {
         TrainerCardSignature_Init,
         TrainerCardSignature_Main,
@@ -111,7 +118,8 @@ static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
     return TRAINERCARD_RUN_SIGNATURE_EXEC;
 }
 
-static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work) {
+static int TCardAppRunStep_SignatureExec(TrainerCardAppState *work)
+{
     struct SaveTrainerCard *ptr;
     if (!isSubprocFinished(&work->ov_mgr)) {
         return TRAINERCARD_RUN_SIGNATURE_EXEC;

@@ -24,7 +24,8 @@ NarcId GetPokedexDataNarcID(void);
 int GetDexWeightMsgBank(void);
 int GetDexHeightMsgBank(void);
 
-static inline u32 SpeciesGetDexHeight(int species, HeapID heapId) {
+static inline u32 SpeciesGetDexHeight(int species, HeapID heapId)
+{
     u32 ret;
     struct PokedexData *zkn;
 
@@ -37,7 +38,8 @@ static inline u32 SpeciesGetDexHeight(int species, HeapID heapId) {
     return ret;
 }
 
-static inline u32 SpeciesGetDexWeight(int species, HeapID heapId) {
+static inline u32 SpeciesGetDexWeight(int species, HeapID heapId)
+{
     u32 ret;
     struct PokedexData *zkn;
 

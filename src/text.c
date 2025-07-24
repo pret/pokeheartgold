@@ -22,11 +22,13 @@ static void sub_020204B8(TextPrinter *printer);
 static u16 *LoadScreenFocusIndicatorGraphics(void);
 static void sub_02020548(TextPrinter *printer);
 
-void SetFontsPointer(const struct FontInfo *fonts) {
+void SetFontsPointer(const struct FontInfo *fonts)
+{
     sFonts = fonts;
 }
 
-static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u32 priority) {
+static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u32 priority)
+{
     int i;
     for (i = 0; i < MAX_TEXT_PRINTERS; i++) {
         if (sTextPrinterTasks[i] != NULL) {
@@ -42,7 +44,8 @@ static u8 CreateTextPrinterSysTask(SysTaskFunc taskFunc, TextPrinter *printer, u
     return i;
 }
 
-static void DestroyTextPrinterSysTask(u8 printerId) {
+static void DestroyTextPrinterSysTask(u8 printerId)
+{
     GF_ASSERT(printerId < MAX_TEXT_PRINTERS);
     GF_ASSERT(sTextPrinterTasks[printerId] != NULL);
     if (printerId >= MAX_TEXT_PRINTERS || sTextPrinterTasks[printerId] == NULL) {
@@ -59,25 +62,30 @@ static void DestroyTextPrinterSysTask(u8 printerId) {
     sTextPrinterTasks[printerId] = NULL;
 }
 
-static BOOL TextPrinterSysTaskIsActive(u8 printerId) {
+static BOOL TextPrinterSysTaskIsActive(u8 printerId)
+{
     return sTextPrinterTasks[printerId] != NULL;
 }
 
-void ResetAllTextPrinters(void) {
+void ResetAllTextPrinters(void)
+{
     for (int i = 0; i < MAX_TEXT_PRINTERS; i++) {
         sTextPrinterTasks[i] = NULL;
     }
 }
 
-u8 TextPrinterCheckActive(u8 printerId) {
+u8 TextPrinterCheckActive(u8 printerId)
+{
     return TextPrinterSysTaskIsActive(printerId);
 }
 
-void RemoveTextPrinter(u8 printerId) {
+void RemoveTextPrinter(u8 printerId)
+{
     DestroyTextPrinterSysTask(printerId);
 }
 
-u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, PrinterCallback_t callback) {
+u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, PrinterCallback_t callback)
+{
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
@@ -100,7 +108,8 @@ u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u3
     return AddTextPrinter(&template, textSpeed, callback);
 }
 
-u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback) {
+u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback)
+{
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
@@ -123,7 +132,8 @@ u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *s
     return AddTextPrinter(&template, textSpeed, callback);
 }
 
-u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback) {
+u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, u32 letterSpacing, u32 lineSpacing, PrinterCallback_t callback)
+{
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
@@ -146,7 +156,8 @@ u8 AddTextPrinterParameterizedWithColorAndSpacing(Window *window, int fontId, St
     return AddTextPrinter(&template, textSpeed, callback);
 }
 
-static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallback_t callback) {
+static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallback_t callback)
+{
     if (sFonts == NULL) {
         return 0xFF;
     }
@@ -198,7 +209,8 @@ static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallba
     return MAX_TEXT_PRINTERS;
 }
 
-static void RunTextPrinter(SysTask *task, TextPrinter *printer) {
+static void RunTextPrinter(SysTask *task, TextPrinter *printer)
+{
     if (_021D1F6C != 0) {
         return;
     }
@@ -226,7 +238,8 @@ static void RunTextPrinter(SysTask *task, TextPrinter *printer) {
     }
 }
 
-static RenderResult RenderFont(TextPrinter *printer) {
+static RenderResult RenderFont(TextPrinter *printer)
+{
     RenderResult result;
     do {
         result = FontID_RenderText(printer->template.fontId, printer);
@@ -234,7 +247,8 @@ static RenderResult RenderFont(TextPrinter *printer) {
     return result;
 }
 
-void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor) {
+void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor)
+{
     u32 colors[4];
     colors[0] = 0;
     colors[1] = fgColor;
@@ -257,7 +271,8 @@ void GenerateFontHalfRowLookupTable(u8 fgColor, u8 bgColor, u8 shadowColor) {
     }
 }
 
-void DecompressGlyphTile(const u8 *src, u8 *dest) {
+void DecompressGlyphTile(const u8 *src, u8 *dest)
+{
     const u16 *src16 = (u16 *)src;
     u16 *dest16 = (u16 *)dest;
     dest16[0] = sFontHalfRowLookupTable[(u32)src16[0] >> 8];
@@ -278,11 +293,13 @@ void DecompressGlyphTile(const u8 *src, u8 *dest) {
     dest16[15] = sFontHalfRowLookupTable[(u32)src16[7] & 0xFF];
 }
 
-static void sub_020204B8(TextPrinter *printer) {
+static void sub_020204B8(TextPrinter *printer)
+{
     printer->unk30 = NULL;
 }
 
-static u16 *LoadScreenFocusIndicatorGraphics(void) {
+static u16 *LoadScreenFocusIndicatorGraphics(void)
+{
     u16 *ret = AllocFromHeap(HEAP_ID_DEFAULT, 32 * 24 * sizeof(u16));
 
     NNSG2dCharacterData *g2dCharData;
@@ -293,7 +310,8 @@ static u16 *LoadScreenFocusIndicatorGraphics(void) {
     return ret;
 }
 
-void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unusedY, u16 fieldNum) {
+void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unusedY, u16 fieldNum)
+{
     Window *window = printer->template.window;
 
     if (printer->unk30 == NULL) {
@@ -305,7 +323,8 @@ void RenderScreenFocusIndicatorTile(TextPrinter *printer, u32 unusedX, u32 unuse
     BlitBitmapRectToWindow(window, startAddr, 0, 0, 24, 32, destX, 0, 24, 32);
 }
 
-static void sub_02020548(TextPrinter *printer) {
+static void sub_02020548(TextPrinter *printer)
+{
     if (printer->unk30 != NULL) {
         Heap_Free(printer->unk30);
         printer->unk30 = NULL;

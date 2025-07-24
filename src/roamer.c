@@ -6,11 +6,13 @@
 
 #include "math_util.h"
 
-u32 Save_Roamers_sizeof(void) {
+u32 Save_Roamers_sizeof(void)
+{
     return sizeof(RoamerSaveData);
 }
 
-void Save_Roamers_Init(RoamerSaveData *roamer) {
+void Save_Roamers_Init(RoamerSaveData *roamer)
+{
     memset(roamer, 0, sizeof(RoamerSaveData));
     roamer->rand[0] = MTRandom();
     roamer->rand[1] = MTRandom();
@@ -20,12 +22,14 @@ void Save_Roamers_Init(RoamerSaveData *roamer) {
     roamer->flutePlayed = 0;
 }
 
-void Roamers_SetRand(RoamerSaveData *roamer, u32 param) {
+void Roamers_SetRand(RoamerSaveData *roamer, u32 param)
+{
     roamer->rand[0] = param;
     roamer->rand[1] = param;
 }
 
-u32 Roamers_GetRand(RoamerSaveData *roamer, u32 which) {
+u32 Roamers_GetRand(RoamerSaveData *roamer, u32 which)
+{
     switch (which) {
     case 1:
         return roamer->rand[0];
@@ -37,55 +41,66 @@ u32 Roamers_GetRand(RoamerSaveData *roamer, u32 which) {
     }
 }
 
-RoamerSaveData *Save_Roamers_Get(SaveData *saveData) {
+RoamerSaveData *Save_Roamers_Get(SaveData *saveData)
+{
     return SaveArray_Get(saveData, SAVE_ROAMER);
 }
 
-void RoamerSave_SetOutbreakActive(SaveData *saveData) {
+void RoamerSave_SetOutbreakActive(SaveData *saveData)
+{
     RoamerSaveData *roamer = Save_Roamers_Get(saveData);
     roamer->outbreak = TRUE;
 }
 
-u8 RoamerSave_OutbreakActive(RoamerSaveData *roamerSave) {
+u8 RoamerSave_OutbreakActive(RoamerSaveData *roamerSave)
+{
     return roamerSave->outbreak;
 }
 
-void PlayerLocationHistoryPush(RoamerSaveData *roamerSave, u32 mapsec) {
+void PlayerLocationHistoryPush(RoamerSaveData *roamerSave, u32 mapsec)
+{
     if (roamerSave->playerLocationHistory[0] != mapsec) {
         roamerSave->playerLocationHistory[1] = roamerSave->playerLocationHistory[0];
         roamerSave->playerLocationHistory[0] = mapsec;
     }
 }
 
-u32 PlayerLocationHistoryGetBack(RoamerSaveData *roamerSave) {
+u32 PlayerLocationHistoryGetBack(RoamerSaveData *roamerSave)
+{
     return roamerSave->playerLocationHistory[1];
 }
 
-u8 Roamer_GetLocation(RoamerSaveData *roamerSave, int roamerId) {
+u8 Roamer_GetLocation(RoamerSaveData *roamerSave, int roamerId)
+{
     GF_ASSERT(roamerId < ROAMER_MAX);
     return roamerSave->locations[roamerId];
 }
 
-void Roamer_SetLocation(RoamerSaveData *roamerSave, int roamerId, u8 a2) {
+void Roamer_SetLocation(RoamerSaveData *roamerSave, int roamerId, u8 a2)
+{
     GF_ASSERT(roamerId < ROAMER_MAX);
     roamerSave->locations[roamerId] = a2;
 }
 
-u8 GetRoamerIsActiveByIndex(RoamerSaveData *roamerSave, int roamerId) {
+u8 GetRoamerIsActiveByIndex(RoamerSaveData *roamerSave, int roamerId)
+{
     GF_ASSERT(roamerId < ROAMER_MAX);
     return roamerSave->data[roamerId].active;
 }
 
-void RoamerMon_Init(Roamer **roamer_p) {
+void RoamerMon_Init(Roamer **roamer_p)
+{
     memset(*roamer_p, 0, sizeof(Roamer));
 }
 
-Roamer *Roamers_GetRoamMonStats(RoamerSaveData *roamerSave, int roamerId) {
+Roamer *Roamers_GetRoamMonStats(RoamerSaveData *roamerSave, int roamerId)
+{
     GF_ASSERT(roamerId < ROAMER_MAX);
     return &roamerSave->data[roamerId];
 }
 
-int GetRoamerData(Roamer *roamer, int a1) {
+int GetRoamerData(Roamer *roamer, int a1)
+{
     switch (a1) {
     case ROAMER_DATA_MET_LOCATION:
         return roamer->met_location;
@@ -109,7 +124,8 @@ int GetRoamerData(Roamer *roamer, int a1) {
     }
 }
 
-void SetRoamerData(Roamer *roamer, int a1, int val) {
+void SetRoamerData(Roamer *roamer, int a1, int val)
+{
     switch (a1) {
     case ROAMER_DATA_MET_LOCATION:
         roamer->met_location = val;
@@ -141,19 +157,23 @@ void SetRoamerData(Roamer *roamer, int a1, int val) {
     }
 }
 
-u8 *RoamerSave_GetRepelAddr(RoamerSaveData *roamerSave) {
+u8 *RoamerSave_GetRepelAddr(RoamerSaveData *roamerSave)
+{
     return &roamerSave->repelSteps;
 }
 
-BOOL RoamerSave_RepelNotInUse(RoamerSaveData *roamerSave) {
+BOOL RoamerSave_RepelNotInUse(RoamerSaveData *roamerSave)
+{
     return roamerSave->repelSteps == 0;
 }
 
-void RoamerSave_SetFlute(RoamerSaveData *roamerSave, u8 flute) {
+void RoamerSave_SetFlute(RoamerSaveData *roamerSave, u8 flute)
+{
     GF_ASSERT(flute <= 2);
     roamerSave->flutePlayed = flute;
 }
 
-u8 RoamerSave_GetFlute(RoamerSaveData *roamerSave) {
+u8 RoamerSave_GetFlute(RoamerSaveData *roamerSave)
+{
     return roamerSave->flutePlayed;
 }

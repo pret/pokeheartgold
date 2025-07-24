@@ -7,7 +7,8 @@ int _021D2210;
 
 static void sub_02025438(void);
 
-void Init_Timer3(void) {
+void Init_Timer3(void)
+{
     _021D2214 = 0;
     _021D2210 = 0;
     OS_SetTimerControl(OS_TIMER_3, 0);
@@ -17,7 +18,8 @@ void Init_Timer3(void) {
     OS_EnableIrqMask(OS_IE_TIMER3);
 }
 
-static void sub_02025438(void) {
+static void sub_02025438(void)
+{
     _021D2214++;
     if (_021D2210) {
         OS_SetTimerControl(OS_TIMER_3, 0);
@@ -29,7 +31,8 @@ static void sub_02025438(void) {
     OS_SetIrqFunction(OS_IE_TIMER3, sub_02025438);
 }
 
-u64 sub_02025488(void) {
+u64 sub_02025488(void)
+{
     vu16 count_lo;
     vu64 count_hi;
     OSIntrMode bak_psr;
@@ -45,10 +48,12 @@ u64 sub_02025488(void) {
     return (count_hi << 16) | count_lo;
 }
 
-u64 sub_020254FC(void) {
+u64 sub_020254FC(void)
+{
     return sub_02025488();
 }
 
-u64 sub_02025504(u64 a0) {
+u64 sub_02025504(u64 a0)
+{
     return (a0 * 64) / OS_SYSTEM_CLOCK;
 }

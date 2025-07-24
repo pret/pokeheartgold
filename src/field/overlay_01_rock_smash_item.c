@@ -93,7 +93,8 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
 static BOOL Task_GetRockSmashItem(TaskManager *taskman);
 static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
-void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
+void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item)
+{
     RockSmashItemCheckWork *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(RockSmashItemCheckWork));
     env->followMonKnowsHM = followMonKnowsHm != 0;
     env->itemFound = itemFound;
@@ -103,7 +104,8 @@ void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnows
     TaskManager_Call(fieldSystem->taskman, Task_RockSmashItemCheck, env);
 }
 
-static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
+static BOOL Task_RockSmashItemCheck(TaskManager *taskman)
+{
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskman);
     RockSmashItemCheckWork *env = TaskManager_GetEnvironment(taskman);
@@ -127,7 +129,8 @@ static BOOL Task_RockSmashItemCheck(TaskManager *taskman) {
     return TRUE;
 }
 
-static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckWork *env) {
+static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckWork *env)
+{
     int odds;
     int ability;
     ROCK_SMASH data;
@@ -174,7 +177,8 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
     return FALSE;
 }
 
-static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
+static BOOL Task_GetRockSmashItem(TaskManager *taskman)
+{
     LocalMapObject *obj;
 
     u32 *state_p = TaskManager_GetStatePtr(taskman);
@@ -231,7 +235,8 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman) {
     return FALSE;
 }
 
-static int DrawRockSmashIdx(FieldSystem *fieldSystem) {
+static int DrawRockSmashIdx(FieldSystem *fieldSystem)
+{
     u8 rand = LCRandom() % 100;
     if (rand < 25) {
         return 0;

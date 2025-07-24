@@ -53,7 +53,8 @@ static void ObjPlttTransferTask_ReleaseBlocks(ObjPlttTransferTask *task);
 static BOOL ObjPlttTransferTask_CheckAllocBlocks(ObjPlttTransferTask *task, u32 blockAddrMain, u32 blockAddrSub, u32 sizeMain, u32 sizeSub);
 static void ObjPlttTransferTask_ReserveBlocks(ObjPlttTransferTask *task, u32 *pBlockAddrMain, u32 *pBlockAddrSub);
 
-void ObjPlttTransfer_Init(int num, HeapID heapId) {
+void ObjPlttTransfer_Init(int num, HeapID heapId)
+{
     if (sObjPlttTransferTasksManager == NULL) {
         sObjPlttTransferTasksManager = AllocFromHeap(heapId, sizeof(ObjPlttTransferTasksManager));
         MI_CpuClear32(sObjPlttTransferTasksManager, sizeof(ObjPlttTransferTasksManager));
@@ -65,7 +66,8 @@ void ObjPlttTransfer_Init(int num, HeapID heapId) {
     }
 }
 
-void ObjPlttTransfer_SetReservedRegion(u32 flag, NNS_G2D_VRAM_TYPE type) {
+void ObjPlttTransfer_SetReservedRegion(u32 flag, NNS_G2D_VRAM_TYPE type)
+{
     if (type == NNS_G2D_VRAM_TYPE_2DMAIN) {
         sObjPlttTransferTasksManager->blocksMain |= flag;
     } else if (type == NNS_G2D_VRAM_TYPE_2DSUB) {
@@ -73,7 +75,8 @@ void ObjPlttTransfer_SetReservedRegion(u32 flag, NNS_G2D_VRAM_TYPE type) {
     }
 }
 
-void ObjPlttTransfer_Destroy(void) {
+void ObjPlttTransfer_Destroy(void)
+{
     if (sObjPlttTransferTasksManager != NULL) {
         ObjPlttTransfer_FreeAllTasks();
         Heap_Free(sObjPlttTransferTasksManager->tasks);
@@ -82,10 +85,12 @@ void ObjPlttTransfer_Destroy(void) {
     }
 }
 
-static void ObjPlttTransfer_HandleError(void) {
+static void ObjPlttTransfer_HandleError(void)
+{
 }
 
-void ObjPlttTransfer_Reset(void) {
+void ObjPlttTransfer_Reset(void)
+{
     sObjPlttTransferTasksManager->posMain = 0;
     sObjPlttTransferTasksManager->posSub = 0;
     sObjPlttTransferTasksManager->extPosMain = 0;
@@ -94,7 +99,8 @@ void ObjPlttTransfer_Reset(void) {
     ObjPlttTransfer_ReleaseAllBlocks(sObjPlttTransferTasksManager);
 }
 
-BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(const ObjPlttTransferTaskTemplate *template) {
+BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(const ObjPlttTransferTaskTemplate *template)
+{
     ObjPlttTransferTask *task = ObjPlttTransfer_GetFreeTask();
     if (task == NULL) {
         GF_ASSERT(FALSE);
@@ -114,7 +120,8 @@ BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_HandleExtPltt(const Obj
     return TRUE;
 }
 
-BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template) {
+BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template)
+{
     ObjPlttTransferTask *task = ObjPlttTransfer_GetFreeTask();
     if (task == NULL) {
         GF_ASSERT(FALSE);
@@ -133,7 +140,8 @@ BOOL ObjPlttTransfer_CreateTaskAndDoTransferFromTemplate_ExtPlttBanned(const Obj
     return TRUE;
 }
 
-void ObjPlttTransfer_CreateTransferTask(int resID, NNSG2dPaletteData *plttData) {
+void ObjPlttTransfer_CreateTransferTask(int resID, NNSG2dPaletteData *plttData)
+{
     GF_ASSERT(plttData != NULL);
     ObjPlttTransferTask *task = ObjPlttTransfer_GetTaskByID(resID);
     GF_ASSERT(task != NULL);
@@ -146,11 +154,13 @@ void ObjPlttTransfer_CreateTransferTask(int resID, NNSG2dPaletteData *plttData) 
     }
 }
 
-static BOOL ObjPlttTransfer_TaskExistsByID(int resId) {
+static BOOL ObjPlttTransfer_TaskExistsByID(int resId)
+{
     return ObjPlttTransfer_GetTaskByID(resId) != NULL;
 }
 
-void ObjPlttTransfer_FreeTaskByID(int resId) {
+void ObjPlttTransfer_FreeTaskByID(int resId)
+{
     ObjPlttTransferTask *task = ObjPlttTransfer_GetTaskByID(resId);
     GF_ASSERT(task != NULL);
     if (task->active == TRUE) {
@@ -159,7 +169,8 @@ void ObjPlttTransfer_FreeTaskByID(int resId) {
     }
 }
 
-static void ObjPlttTransfer_FreeAllTasks(void) {
+static void ObjPlttTransfer_FreeAllTasks(void)
+{
     for (int i = 0; i < sObjPlttTransferTasksManager->numTasks; ++i) {
         if (sObjPlttTransferTasksManager->tasks[i].active == TRUE) {
             ObjPlttTransferTask_ReleaseBlocks(&sObjPlttTransferTasksManager->tasks[i]);
@@ -168,7 +179,8 @@ static void ObjPlttTransfer_FreeAllTasks(void) {
     }
 }
 
-NNSG2dImagePaletteProxy *ObjPlttTransfer_GetPlttProxyByID(int resID) {
+NNSG2dImagePaletteProxy *ObjPlttTransfer_GetPlttProxyByID(int resID)
+{
     ObjPlttTransferTask *task = ObjPlttTransfer_GetTaskByID(resID);
     if (task == NULL) {
         GF_ASSERT(task != NULL);
@@ -182,7 +194,8 @@ NNSG2dImagePaletteProxy *ObjPlttTransfer_GetPlttProxyByID(int resID) {
     return NULL;
 }
 
-NNSG2dImagePaletteProxy *ObjPlttTransfer_GetPlttProxyByID_UpdateRefProxyExtFlag(int resID, NNSG2dImageProxy *imageProxy) {
+NNSG2dImagePaletteProxy *ObjPlttTransfer_GetPlttProxyByID_UpdateRefProxyExtFlag(int resID, NNSG2dImageProxy *imageProxy)
+{
     ObjPlttTransferTask *task = ObjPlttTransfer_GetTaskByID(resID);
     if (task == NULL) {
         GF_ASSERT(task != NULL);
@@ -200,7 +213,8 @@ NNSG2dImagePaletteProxy *ObjPlttTransfer_GetPlttProxyByID_UpdateRefProxyExtFlag(
     return &task->plttProxy;
 }
 
-u32 ObjPlttTransfer_GetPaletteVramOffset(NNSG2dImagePaletteProxy *proxy, NNS_G2D_VRAM_TYPE vramType) {
+u32 ObjPlttTransfer_GetPaletteVramOffset(NNSG2dImagePaletteProxy *proxy, NNS_G2D_VRAM_TYPE vramType)
+{
     u32 plttSize;
 
     if (proxy->bExtendedPlt) {
@@ -217,11 +231,13 @@ u32 ObjPlttTransfer_GetPaletteVramOffset(NNSG2dImagePaletteProxy *proxy, NNS_G2D
     return 0;
 }
 
-static void ObjPlttTransferTask_Reset(ObjPlttTransferTask *task) {
+static void ObjPlttTransferTask_Reset(ObjPlttTransferTask *task)
+{
     ObjPlttTransferTask_Init(task);
 }
 
-static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task) {
+static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task)
+{
     task->plttData = template->plttData;
     if (ObjPlttTransfer_TaskExistsByID(template->id) == TRUE) {
         GF_ASSERT(FALSE);
@@ -234,13 +250,15 @@ static BOOL ObjPlttTransfer_InitFromTemplate(const ObjPlttTransferTaskTemplate *
     return TRUE;
 }
 
-static void ObjPlttTransferTask_Init(ObjPlttTransferTask *task) {
+static void ObjPlttTransferTask_Init(ObjPlttTransferTask *task)
+{
     memset(task, 0, sizeof(ObjPlttTransferTask));
     task->resID = -1;
     NNS_G2dInitImagePaletteProxy(&task->plttProxy);
 }
 
-static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task) {
+static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task)
+{
     u32 sizeMain;
     u32 sizeSub;
     u32 *pPosMain;
@@ -263,7 +281,8 @@ static BOOL ObjPlttTransfer_ReserveAndTransfer_HandleExtPltt(const ObjPlttTransf
     return TRUE;
 }
 
-static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task) {
+static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransferTaskTemplate *template, ObjPlttTransferTask *task)
+{
     u32 loadAddrMain;
     u32 loadAddrSub;
     GF_ASSERT(!task->plttData->bExtendedPlt);
@@ -291,7 +310,8 @@ static BOOL ObjCharTransfer_ReserveAndTransfer_ExtPlttBanned(const ObjPlttTransf
     return TRUE;
 }
 
-static ObjPlttTransferTask *ObjPlttTransfer_GetTaskByID(int resID) {
+static ObjPlttTransferTask *ObjPlttTransfer_GetTaskByID(int resID)
+{
     for (int i = 0; i < sObjPlttTransferTasksManager->numTasks; ++i) {
         if (sObjPlttTransferTasksManager->tasks[i].resID == resID) {
             return &sObjPlttTransferTasksManager->tasks[i];
@@ -301,7 +321,8 @@ static ObjPlttTransferTask *ObjPlttTransfer_GetTaskByID(int resID) {
     return NULL;
 }
 
-static ObjPlttTransferTask *ObjPlttTransfer_GetFreeTask(void) {
+static ObjPlttTransferTask *ObjPlttTransfer_GetFreeTask(void)
+{
     for (int i = 0; i < sObjPlttTransferTasksManager->numTasks; ++i) {
         if (!sObjPlttTransferTasksManager->tasks[i].active) {
             return &sObjPlttTransferTasksManager->tasks[i];
@@ -311,7 +332,8 @@ static ObjPlttTransferTask *ObjPlttTransfer_GetFreeTask(void) {
     return NULL;
 }
 
-static void ObjPlttTransfer_GetExtPlttSize(void) {
+static void ObjPlttTransfer_GetExtPlttSize(void)
+{
     switch (GX_GetBankForOBJExtPltt()) {
     case GX_VRAM_OBJEXTPLTT_0_F:
     case GX_VRAM_OBJEXTPLTT_0_G:
@@ -332,12 +354,14 @@ static void ObjPlttTransfer_GetExtPlttSize(void) {
     }
 }
 
-static void ObjPlttTransferTask_PushToVRam_UpdateSzByte(ObjPlttTransferTask *task) {
+static void ObjPlttTransferTask_PushToVRam_UpdateSzByte(ObjPlttTransferTask *task)
+{
     task->plttData->szByte = task->plttSize * 32;
     ObjPlttTransferTask_PushToVRam(task);
 }
 
-static void ObjPlttTransferTask_PushToVRam(ObjPlttTransferTask *task) {
+static void ObjPlttTransferTask_PushToVRam(ObjPlttTransferTask *task)
+{
     NNS_G2dInitImagePaletteProxy(&task->plttProxy);
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         NNS_G2dLoadPalette(task->plttData, task->baseAddrMain, NNS_G2D_VRAM_TYPE_2DMAIN, &task->plttProxy);
@@ -347,19 +371,22 @@ static void ObjPlttTransferTask_PushToVRam(ObjPlttTransferTask *task) {
     }
 }
 
-static void setBlockBits(u16 *addr, int num, int offset) {
+static void setBlockBits(u16 *addr, int num, int offset)
+{
     for (int i = 0; i < num; ++i) {
         *addr |= 1 << (offset + i);
     }
 }
 
-static void resetBlockBits(u16 *addr, int num, int offset) {
+static void resetBlockBits(u16 *addr, int num, int offset)
+{
     for (int i = 0; i < num; ++i) {
         *addr &= ~(1 << (offset + i));
     }
 }
 
-static u32 ObjPlttTransfer_GetFreePlttLoadAddr(u16 blocks, int num) {
+static u32 ObjPlttTransfer_GetFreePlttLoadAddr(u16 blocks, int num)
+{
     int i;
     int j;
 
@@ -381,12 +408,14 @@ static u32 ObjPlttTransfer_GetFreePlttLoadAddr(u16 blocks, int num) {
     return i * 32;
 }
 
-static void ObjPlttTransfer_ReleaseAllBlocks(ObjPlttTransferTasksManager *manager) {
+static void ObjPlttTransfer_ReleaseAllBlocks(ObjPlttTransferTasksManager *manager)
+{
     manager->blocksMain = 0;
     manager->blocksSub = 0;
 }
 
-static void ObjPlttTransferTask_AcquireBlocks(ObjPlttTransferTask *task) {
+static void ObjPlttTransferTask_AcquireBlocks(ObjPlttTransferTask *task)
+{
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         setBlockBits(&sObjPlttTransferTasksManager->blocksMain, task->plttSize, task->baseAddrMain / 32);
     }
@@ -395,7 +424,8 @@ static void ObjPlttTransferTask_AcquireBlocks(ObjPlttTransferTask *task) {
     }
 }
 
-static void ObjPlttTransferTask_ReleaseBlocks(ObjPlttTransferTask *task) {
+static void ObjPlttTransferTask_ReleaseBlocks(ObjPlttTransferTask *task)
+{
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         resetBlockBits(&sObjPlttTransferTasksManager->blocksMain, task->plttSize, task->baseAddrMain / 32);
     }
@@ -404,7 +434,8 @@ static void ObjPlttTransferTask_ReleaseBlocks(ObjPlttTransferTask *task) {
     }
 }
 
-static BOOL ObjPlttTransferTask_CheckAllocBlocks(ObjPlttTransferTask *task, u32 blockAddrMain, u32 blockAddrSub, u32 sizeMain, u32 sizeSub) {
+static BOOL ObjPlttTransferTask_CheckAllocBlocks(ObjPlttTransferTask *task, u32 blockAddrMain, u32 blockAddrSub, u32 sizeMain, u32 sizeSub)
+{
     BOOL ret = TRUE;
 
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
@@ -430,7 +461,8 @@ static BOOL ObjPlttTransferTask_CheckAllocBlocks(ObjPlttTransferTask *task, u32 
     return ret;
 }
 
-static void ObjPlttTransferTask_ReserveBlocks(ObjPlttTransferTask *task, u32 *pBlockAddrMain, u32 *pBlockAddrSub) {
+static void ObjPlttTransferTask_ReserveBlocks(ObjPlttTransferTask *task, u32 *pBlockAddrMain, u32 *pBlockAddrSub)
+{
     if (task->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
         *pBlockAddrMain += task->plttSize * 32;
     }

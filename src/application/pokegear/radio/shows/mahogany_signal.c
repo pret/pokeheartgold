@@ -16,7 +16,8 @@ typedef struct MahoganySignalData {
 void RadioShow_MahoganySignal_Init(RadioShow *radioShow);
 void RadioShow_MahoganySignal_Unload(RadioShow *radioShow);
 
-BOOL RadioShow_MahoganySignal_Setup(RadioShow *radioShow) {
+BOOL RadioShow_MahoganySignal_Setup(RadioShow *radioShow)
+{
     MahoganySignalData *data = AllocFromHeap(radioShow->heapID, sizeof(MahoganySignalData));
     MI_CpuClear8(data, sizeof(MahoganySignalData));
     // data->heapID = radioShow->heapID;
@@ -28,7 +29,8 @@ BOOL RadioShow_MahoganySignal_Setup(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_MahoganySignal_Teardown(RadioShow *radioShow) {
+BOOL RadioShow_MahoganySignal_Teardown(RadioShow *radioShow)
+{
     RadioShow_MahoganySignal_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(MahoganySignalData));
     Heap_Free(radioShow->showData);
@@ -36,16 +38,19 @@ BOOL RadioShow_MahoganySignal_Teardown(RadioShow *radioShow) {
     return FALSE;
 }
 
-BOOL RadioShow_MahoganySignal_Print(RadioShow *radioShow) {
+BOOL RadioShow_MahoganySignal_Print(RadioShow *radioShow)
+{
     return FALSE;
 }
 
-void RadioShow_MahoganySignal_Init(RadioShow *radioShow) {
+void RadioShow_MahoganySignal_Init(RadioShow *radioShow)
+{
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0409_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0409_00000, radioShow->showTitle);
     String_SetEmpty(radioShow->showHost);
 }
 
-void RadioShow_MahoganySignal_Unload(RadioShow *radioShow) {
+void RadioShow_MahoganySignal_Unload(RadioShow *radioShow)
+{
     DestroyMsgData(radioShow->showMsgData);
 }

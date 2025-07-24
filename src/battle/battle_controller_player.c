@@ -142,7 +142,8 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
     [CONTROLLER_COMMAND_45] = ov12_0224D53C
 };
 
-BattleContext *BattleContext_New(BattleSystem *bsys) {
+BattleContext *BattleContext_New(BattleSystem *bsys)
+{
     BattleContext *ctx = (BattleContext *)AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleContext));
     MIi_CpuClearFast(0, (u32 *)ctx, sizeof(BattleContext));
 
@@ -155,7 +156,8 @@ BattleContext *BattleContext_New(BattleSystem *bsys) {
     return ctx;
 }
 
-BOOL BattleContext_Main(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BattleContext_Main(BattleSystem *bsys, BattleContext *ctx)
+{
     if (!ctx->battleEndFlag) {
         if (BattleSystem_GetBattleOutcomeFlags(bsys) && !(BattleSystem_GetBattleOutcomeFlags(bsys) & 0x40)) {
             ctx->command = CONTROLLER_COMMAND_42;
@@ -169,17 +171,20 @@ BOOL BattleContext_Main(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-void BattleContext_Delete(BattleContext *ctx) {
+void BattleContext_Delete(BattleContext *ctx)
+{
     Heap_Free(ctx->trainerAIData.itemData);
     Heap_Free(ctx);
 }
 
-void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo) {
+void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo)
+{
     BattleSystem_CheckMoveHit(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveNo);
     BattleSystem_CheckMoveEffect(bsys, ctx, battlerIdAttacker, battlerIdTarget, moveNo);
 }
 
-static void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
@@ -191,13 +196,15 @@ static void BattleControllerPlayer_GetBattleMon(BattleSystem *bsys, BattleContex
     ctx->command = CONTROLLER_COMMAND_START_ENCOUNTER;
 }
 
-static void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_StartEncounter(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_START_ENCOUNTER);
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_TRAINER_MESSAGE;
 }
 
-static void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BattleContext *ctx)
+{
     if (CheckTrainerMessage(bsys, ctx)) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_TRAINER_MESSAGE);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -209,7 +216,8 @@ static void BattleControllerPlayer_TrainerMessage(BattleSystem *bsys, BattleCont
     SortMonsBySpeed(bsys, ctx);
 }
 
-static void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BattleContext *ctx)
+{
     int script = TryAbilityOnEntry(bsys, ctx);
 
     if (script) {
@@ -223,7 +231,8 @@ static void BattleControllerPlayer_PokemonAppear(BattleSystem *bsys, BattleConte
     }
 }
 
-static void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
@@ -260,7 +269,8 @@ typedef enum BattleSelectState {
     SSI_STATE_END
 } BattleSelectState;
 
-static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int battlersMax;
     int var;
@@ -631,7 +641,8 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, Batt
     }
 }
 
-static void BattleControllerPlayer_CalcExecutionOrder(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_CalcExecutionOrder(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int maxBattlers;
     u32 battleType;
@@ -720,7 +731,8 @@ typedef enum BeforeTurnState {
     BT_STATE_END
 } BeforeTurnState;
 
-static void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext *ctx)
+{
     int flag = 0;
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -774,7 +786,8 @@ static void BattleControllerPlayer_BeforeTurn(BattleSystem *bsys, BattleContext 
     }
 }
 
-static void ov12_02249460(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_02249460(BattleSystem *bsys, BattleContext *ctx)
+{
     int maxBattlers;
     int battlerId;
 
@@ -818,7 +831,8 @@ typedef enum UpdateFieldConditionState {
     UFC_STATE_END
 } UpdateFieldConditionState;
 
-static void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *bsys, BattleContext *ctx)
+{
     int flag = 0;
     int side;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -1169,7 +1183,8 @@ typedef enum UpdateMonConditionState {
     UMC_STATE_END
 } UpdateMonConditionState;
 
-static void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_UpdateMonCondition(BattleSystem *bsys, BattleContext *ctx)
+{
     int i;
     u8 flag = 0;
     int maxBattlers;
@@ -1567,7 +1582,8 @@ typedef enum UpdateFieldConditionExtraState {
 
 // Future sight and doom desire are here due to mons being able to faint simulataneously, which means exp shouldn't be awarded like when a mon faints due to burn
 // Trick room is here due to every other update function being reliant on turn order, meaning it must be updated last
-static void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys, BattleContext *ctx)
+{
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     int battlerId;
 
@@ -1654,7 +1670,8 @@ static void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *bsys,
     ctx->command = CONTROLLER_COMMAND_TURN_END;
 }
 
-static void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BattleContext *ctx)
+{
     if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
         return;
     }
@@ -1675,7 +1692,8 @@ static void BattleControllerPlayer_TurnEnd(BattleSystem *bsys, BattleContext *ct
     ctx->command = CONTROLLER_COMMAND_TRAINER_MESSAGE;
 }
 
-static void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext *ctx)
+{
     int flag = 0;
 
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
@@ -1706,7 +1724,8 @@ static void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext 
     BattleController_EmitBlankMessage(bsys);
 }
 
-static void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *ctx)
+{
     BattleItem *item;
     int script;
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
@@ -1766,7 +1785,8 @@ static void BattleControllerPlayer_ItemInput(BattleSystem *bsys, BattleContext *
     ctx->moveStatusFlag |= MOVE_STATUS_NO_MORE_WORK;
 }
 
-static void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 9);
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
     ctx->battlerIdSwitch = ctx->battlerIdAttacker;
@@ -1776,7 +1796,8 @@ static void BattleControllerPlayer_PokemonInput(BattleSystem *bsys, BattleContex
     ctx->moveStatusFlag |= MOVE_STATUS_NO_MORE_WORK;
 }
 
-static void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *ctx)
+{
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
 
     if (BattleSystem_GetFieldSide(bsys, ctx->battlerIdAttacker) && !(BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_LINK)) {
@@ -1806,7 +1827,8 @@ static void BattleControllerPlayer_RunInput(BattleSystem *bsys, BattleContext *c
     }
 }
 
-static void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleContext *ctx)
+{
     int cnt;
 
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 275);
@@ -1820,7 +1842,8 @@ static void BattleControllerPlayer_SafariThrowBall(BattleSystem *bsys, BattleCon
     ov12_02263A1C(bsys, ctx, BATTLER_PLAYER);
 }
 
-static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 227);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
@@ -1838,7 +1861,8 @@ static void BattleControllerPlayer_SafariThrowMud(BattleSystem *bsys, BattleCont
     }
 }
 
-static void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 228);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
@@ -1853,7 +1877,8 @@ static void BattleControllerPlayer_SafariRun(BattleSystem *bsys, BattleContext *
     }
 }
 
-static void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SAFARI_ESCAPE);
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
@@ -1861,7 +1886,8 @@ static void BattleControllerPlayer_SafariWatching(BattleSystem *bsys, BattleCont
     ctx->commandNext = CONTROLLER_COMMAND_40;
 }
 
-static void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *bsys, BattleContext *ctx)
+{
     int cnt;
 
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_THROW_POKEBALL);
@@ -1875,7 +1901,8 @@ static void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *bsys, 
     ctx->moveStatusFlag |= MOVE_STATUS_NO_MORE_WORK;
 }
 
-static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) {
+static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script)
+{
     int rnd, struggleRnd;
     u32 battleType;
     u8 level;
@@ -2008,7 +2035,8 @@ static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) 
     return 1;
 }
 
-BOOL ov12_0224B1FC(BattleSystem *bsys, BattleContext *ctx) {
+BOOL ov12_0224B1FC(BattleSystem *bsys, BattleContext *ctx)
+{
     int decreasePP = 1;
     int index;
 
@@ -2065,7 +2093,8 @@ BOOL ov12_0224B1FC(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-static BOOL ov12_0224B398(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224B398(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
     BOOL quickChargeFlag = FALSE; // only for solar beam this gen
 
@@ -2088,7 +2117,8 @@ static BOOL ov12_0224B398(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-static BOOL ov12_0224B498(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224B498(BattleSystem *bsys, BattleContext *ctx)
+{
     if ((ctx->trainerAIData.moveData[ctx->moveNoCur].range != RANGE_USER && ctx->trainerAIData.moveData[ctx->moveNoCur].range != RANGE_USER_SIDE && ctx->trainerAIData.moveData[ctx->moveNoCur].power != 0 && !(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_IMMUNITY) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN)) || ctx->moveNoCur == MOVE_THUNDER_WAVE) {
         ctx->damage = ov12_02251D28(bsys, ctx, ctx->moveNoCur, ctx->moveType, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->damage, &ctx->moveStatusFlag);
         if (ctx->moveStatusFlag & MOVE_STATUS_NO_EFFECT) {
@@ -2098,7 +2128,8 @@ static BOOL ov12_0224B498(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-static BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx)
+{
     int effect = ctx->trainerAIData.moveData[ctx->moveNoCur].effect;
     int ret = 0;
 
@@ -2361,7 +2392,8 @@ static BOOL ov12_0224B528(BattleSystem *bsys, BattleContext *ctx) {
     return ret != 3;
 }
 
-static BOOL ov12_0224BC2C(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224BC2C(BattleSystem *bsys, BattleContext *ctx)
+{
     int ret = 0;
     int script;
 
@@ -2388,7 +2420,8 @@ static BOOL ov12_0224BC2C(BattleSystem *bsys, BattleContext *ctx) {
     return ret != 2;
 }
 
-static BOOL ov12_0224BCA4(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224BCA4(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_CHECK_QUICK_CLAW);
     ctx->commandNext = ctx->command;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -2411,7 +2444,8 @@ static const u8 sHitChanceTable[13][2] = {
     { 3,   1   }
 };
 
-static BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move) {
+static BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move)
+{
     u16 hitChance;
     s8 var;
     s8 attackerAccuracy;
@@ -2549,7 +2583,8 @@ static BOOL BattleSystem_CheckMoveHit(BattleSystem *bsys, BattleContext *ctx, in
     return FALSE;
 }
 
-static BOOL BattleSystem_CheckMoveEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move) {
+static BOOL BattleSystem_CheckMoveEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move)
+{
     if (ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) {
         return FALSE;
     }
@@ -2592,7 +2627,8 @@ static BOOL BattleSystem_CheckMoveEffect(BattleSystem *bsys, BattleContext *ctx,
     return FALSE;
 }
 
-static BOOL ov12_0224C204(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224C204(BattleSystem *bsys, BattleContext *ctx)
+{
     int i;
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -2636,14 +2672,16 @@ static BOOL ov12_0224C204(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-static void BattleControllerPlayer_RunScript(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_RunScript(BattleSystem *bsys, BattleContext *ctx)
+{
     if (RunBattleScript(bsys, ctx) == TRUE) {
         ctx->scriptSeqNo = 0;
         ctx->command = ctx->commandNext;
     }
 }
 
-static void ov12_0224C38C(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224C38C(BattleSystem *bsys, BattleContext *ctx)
+{
     switch (ctx->unk_48) {
     case 0:
         ov12_0224BCA4(bsys, ctx);
@@ -2715,7 +2753,8 @@ static void ov12_0224C38C(BattleSystem *bsys, BattleContext *ctx) {
     ov12_022565E0(bsys, ctx);
 }
 
-static void ov12_0224C4D8(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224C4D8(BattleSystem *bsys, BattleContext *ctx)
+{
     switch (ctx->unk_4C) {
     case 0:
         ctx->unk_4C++;
@@ -2760,7 +2799,8 @@ static void ov12_0224C4D8(BattleSystem *bsys, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_25;
 }
 
-static void ov12_0224C5C8(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224C5C8(BattleSystem *bsys, BattleContext *ctx)
+{
     int script;
 
     if (ov12_022503EC(bsys, ctx, &script) == TRUE) {
@@ -2772,7 +2812,8 @@ static void ov12_0224C5C8(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224C5F8(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224C5F8(BattleSystem *bsys, BattleContext *ctx)
+{
     if (ctx->moveStatusFlag & MOVE_STATUS_NO_MORE_WORK) {
         ctx->command = CONTROLLER_COMMAND_35;
     } else if (ctx->moveStatusFlag & MOVE_STATUS_NO_PP) {
@@ -2792,13 +2833,15 @@ static void ov12_0224C5F8(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224C678(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224C678(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_USE_MOVE);
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_HP_CALC;
 }
 
-static void BattleControllerPlayer_HpCalc(BattleSystem *bsys, BattleContext *ctx) {
+static void BattleControllerPlayer_HpCalc(BattleSystem *bsys, BattleContext *ctx)
+{
     int item;
     int itemMod;
 
@@ -2899,7 +2942,8 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *bsys, BattleContext *ctx
     }
 }
 
-static void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx)
+{
     switch (ctx->unk_38) {
     case 0:
         switch (ctx->unk_3C) {
@@ -3025,11 +3069,13 @@ static void ov12_0224CAA4(BattleSystem *bsys, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_31;
 }
 
-static void ov12_0224CC84(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224CC84(BattleSystem *bsys, BattleContext *ctx)
+{
 }
 
 // static
-void ov12_0224CC88(BattleSystem *bsys, BattleContext *ctx) {
+void ov12_0224CC88(BattleSystem *bsys, BattleContext *ctx)
+{
     switch (ctx->unk_40) {
     case 0: {
         int flag = 0;
@@ -3159,10 +3205,12 @@ void ov12_0224CC88(BattleSystem *bsys, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_32;
 }
 
-static void ov12_0224CF10(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224CF10(BattleSystem *bsys, BattleContext *ctx)
+{
 }
 
-static void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx)
+{
     if (ctx->multiHitCountTemp != 0) {
         if (ctx->battlerIdFainted == BATTLER_NONE && !(ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) && !(ctx->moveStatusFlag & MOVE_STATUS_MULTI_HIT_DISRUPTED)) {
             if (--ctx->multiHitCount) {
@@ -3195,7 +3243,8 @@ static void ov12_0224CF14(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D014(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D014(BattleSystem *bsys, BattleContext *ctx)
+{
     if (ctx->battleStatus & BATTLE_STATUS_FAINTED) {
         TryFaintMon(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
     } else {
@@ -3203,7 +3252,8 @@ static void ov12_0224D014(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx)
+{
     if (ctx->battleStatus2 & BATTLE_STATUS2_MAGIC_COAT) {
         ctx->battleStatus2 &= ~BATTLE_STATUS2_MAGIC_COAT;
         ctx->battlerIdTarget = ctx->battlerIdAttacker;
@@ -3257,7 +3307,8 @@ static void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D1DC(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D1DC(BattleSystem *bsys, BattleContext *ctx)
+{
     if (ctx->battleStatus & BATTLE_STATUS_SELFDESTRUCTED) {
         ctx->battlerIdFainted = LowestFlagNo((ctx->battleStatus & BATTLE_STATUS_SELFDESTRUCTED) >> BATTLE_STATUS_SELFDESTRUCTED_SHIFT);
         ctx->battleStatus &= ~BATTLE_STATUS_SELFDESTRUCTED;
@@ -3269,16 +3320,19 @@ static void ov12_0224D1DC(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D224(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D224(BattleSystem *bsys, BattleContext *ctx)
+{
     if (!(ov12_0224E1BC(bsys, ctx) == TRUE)) {
         ctx->command = CONTROLLER_COMMAND_39;
     }
 }
 
-static void ov12_0224D238(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D238(BattleSystem *bsys, BattleContext *ctx)
+{
 }
 
-static void ov12_0224D23C(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D23C(BattleSystem *bsys, BattleContext *ctx)
+{
     u8 item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
     if (ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN || ctx->battleStatus2 & BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE) {
         if (item == HOLD_EFFECT_CHOICE_ATK || item == HOLD_EFFECT_CHOICE_SPEED || item == HOLD_EFFECT_CHOICE_SPATK) {
@@ -3314,7 +3368,8 @@ static void ov12_0224D23C(BattleSystem *bsys, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_40;
 }
 
-static void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx)
+{
     int script;
     u32 battleType = BattleSystem_GetBattleType(bsys);
 
@@ -3360,13 +3415,15 @@ static void ov12_0224D368(BattleSystem *bsys, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_8;
 }
 
-static void ov12_0224D448(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D448(BattleSystem *bsys, BattleContext *ctx)
+{
     if (TryFaintMon(ctx, ctx->command, ctx->command, 1) != TRUE) {
         ctx->command = CONTROLLER_COMMAND_40;
     }
 }
 
-static void ov12_0224D464(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D464(BattleSystem *bsys, BattleContext *ctx)
+{
     if (BattleSystem_GetBattleOutcomeFlags(bsys) & BATTLE_RESULT_TRY_FLEE) {
         ctx->command = CONTROLLER_COMMAND_44;
     } else if (BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_RESULT_LOSE || BattleSystem_GetBattleOutcomeFlags(bsys) == BATTLE_RESULT_DRAW) {
@@ -3386,13 +3443,15 @@ static void ov12_0224D464(BattleSystem *bsys, BattleContext *ctx) {
     ctx->battleEndFlag = TRUE;
 }
 
-static void ov12_0224D4F0(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D4F0(BattleSystem *bsys, BattleContext *ctx)
+{
     if (IsPaletteFadeFinished() == TRUE) {
         ctx->command = CONTROLLER_COMMAND_44;
     }
 }
 
-static void ov12_0224D504(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D504(BattleSystem *bsys, BattleContext *ctx)
+{
     Party *party;
     u32 battleType = BattleSystem_GetBattleType(bsys);
 
@@ -3409,10 +3468,12 @@ static void ov12_0224D504(BattleSystem *bsys, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_45;
 }
 
-static void ov12_0224D53C(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224D53C(BattleSystem *bsys, BattleContext *ctx)
+{
 }
 
-static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx)
+{
     u8 flag = FALSE;
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -3491,7 +3552,8 @@ static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
     return flag;
 }
 
-static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     u32 battleType = BattleSystem_GetBattleType(bsys);
@@ -3618,7 +3680,8 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
     return battleOutcome != 0;
 }
 
-static BOOL ov12_0224DB64(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *side) {
+static BOOL ov12_0224DB64(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *side)
+{
     if (ctx->battleMons[battlerId].moves[movePos] == MOVE_CURSE && CurseUserIsGhost(ctx, ctx->battleMons[battlerId].moves[movePos], battlerId) == FALSE) {
         *out = RANGE_USER;
     } else {
@@ -3641,7 +3704,8 @@ static BOOL ov12_0224DB64(BattleSystem *bsys, BattleContext *ctx, u8 battlerId, 
     }
 }
 
-static void ov12_0224DC0C(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224DC0C(BattleSystem *bsys, BattleContext *ctx)
+{
     int battlerId;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
 
@@ -3654,7 +3718,8 @@ static void ov12_0224DC0C(BattleSystem *bsys, BattleContext *ctx) {
     ctx->conversion2Move[ctx->battlerIdAttacker] = 0;
 }
 
-static BOOL TryFaintMon(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag) {
+static BOOL TryFaintMon(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag)
+{
     int turn = 0;
     int faintedFlag = MaskOfFlagNo(ctx->turnOrder[turn]) << BATTLE_STATUS_FAINTED_SHIFT;
 
@@ -3681,7 +3746,8 @@ static BOOL TryFaintMon(BattleContext *ctx, ControllerCommand commandNext, Contr
     }
 }
 
-static BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command) {
+static BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command)
+{
     if (ctx->battleStatus2 & BATTLE_STATUS2_EXP_GAIN) {
         int flag = 1 << BATTLE_STATUS2_EXP_GAIN_SHIFT;
 
@@ -3701,7 +3767,8 @@ static BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand commandNext, Con
     }
 }
 
-static void ov12_0224DD74(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224DD74(BattleSystem *bsys, BattleContext *ctx)
+{
     int flag;
     int moveType;
     u8 item;
@@ -3769,7 +3836,8 @@ static void ov12_0224DD74(BattleSystem *bsys, BattleContext *ctx) {
     }
 }
 
-static BOOL ov12_0224DF7C(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224DF7C(BattleSystem *bsys, BattleContext *ctx)
+{
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_CRITICAL_HIT);
     ctx->commandNext = ctx->command;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -3777,7 +3845,8 @@ static BOOL ov12_0224DF7C(BattleSystem *bsys, BattleContext *ctx) {
     return TRUE;
 }
 
-static BOOL ov12_0224DF98(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224DF98(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
 
     if (ctx->moveStatusFlag) {
@@ -3798,7 +3867,8 @@ static BOOL ov12_0224DF98(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-static BOOL TryBuildRage(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL TryBuildRage(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
 
     if (ctx->battlerIdTarget == BATTLER_NONE) {
@@ -3821,7 +3891,8 @@ static BOOL TryBuildRage(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-static BOOL TryItemFlinch(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL TryItemFlinch(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
     int item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
     int itemMod = GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
@@ -3844,7 +3915,8 @@ static BOOL TryItemFlinch(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-static BOOL ov12_0224E130(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224E130(BattleSystem *bsys, BattleContext *ctx)
+{
     BOOL ret = FALSE;
     while (ctx->unk_5C < BattleSystem_GetMaxBattlers(bsys)) {
         if (!(ctx->battleMons[ctx->unk_5C].moveEffectFlags & MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE) && ctx->battleMons[ctx->unk_5C].moveEffectFlagsTemp & MOVE_EFFECT_FLAG_HIDE_SUBSTITUTE) {
@@ -3866,7 +3938,8 @@ static BOOL ov12_0224E130(BattleSystem *bsys, BattleContext *ctx) {
     return ret;
 }
 
-static BOOL ov12_0224E1BC(BattleSystem *bsys, BattleContext *ctx) {
+static BOOL ov12_0224E1BC(BattleSystem *bsys, BattleContext *ctx)
+{
     int flag = 0;
 
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
@@ -3934,7 +4007,8 @@ static BOOL ov12_0224E1BC(BattleSystem *bsys, BattleContext *ctx) {
 
 extern u32 ov10_02220AAC[];
 
-static void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx)
+{
     int i;
     int battler;
     u32 battleType = BattleSystem_GetBattleType(bsys);
@@ -3959,7 +4033,8 @@ static void ov12_0224E384(BattleSystem *bsys, BattleContext *ctx) {
     ctx->unk_2134 = ov10_02220AAC;
 }
 
-static void ov12_0224E414(BattleSystem *bsys, BattleContext *ctx) {
+static void ov12_0224E414(BattleSystem *bsys, BattleContext *ctx)
+{
     int battler;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     u32 data;

@@ -59,7 +59,8 @@ void GfGfx_BothDispOn(void);
 void GfGfx_SwapDisplay(void);
 u32 GfGfx_EngineAGetPlanes(void);
 
-static inline void GfGfx_SetMainDisplay(PMLCDTarget screen) {
+static inline void GfGfx_SetMainDisplay(PMLCDTarget screen)
+{
     gSystem.screensFlipped = (BOOL)screen;
     GfGfx_SwapDisplay();
 }

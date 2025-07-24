@@ -761,7 +761,8 @@ static void MapPreviewGraphic_LoadGfx(UnkStruct_0206A388 *unk);
 static void MapPreviewGraphic_InitWindow(UnkStruct_0206A388 *unk);
 static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys);
 
-u8 MapPreviewGraphic_GetIndex(u32 mapId) {
+u8 MapPreviewGraphic_GetIndex(u32 mapId)
+{
     u8 ret = -1;
     for (int i = 0; i < (int)NELEMS(sMapPreviewGraphicData); i++) {
         if (sMapPreviewGraphicData[i].mapId == mapId) {
@@ -772,7 +773,8 @@ u8 MapPreviewGraphic_GetIndex(u32 mapId) {
     return ret;
 }
 
-void MapPreviewGraphic_BeginShowImage(TaskManager *man, int index, u8 time, int a3) {
+void MapPreviewGraphic_BeginShowImage(TaskManager *man, int index, u8 time, int a3)
+{
     FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     UnkStruct_0206A388 *unk = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(UnkStruct_0206A388));
 
@@ -818,7 +820,8 @@ typedef enum PreviewGraphicState {
     PG_STATE_FADE_OUT
 } PreviewGraphicState;
 
-static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
+static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man)
+{
     FieldSystem *fsys = TaskManager_GetFieldSystem(man);
     UnkStruct_0206A388 *unk = TaskManager_GetEnvironment(man);
 
@@ -882,18 +885,21 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
     return FALSE;
 }
 
-static void MapPreviewGraphic_LoadGfx(UnkStruct_0206A388 *unk) {
+static void MapPreviewGraphic_LoadGfx(UnkStruct_0206A388 *unk)
+{
     GfGfxLoader_GXLoadPal(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].palNo, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x160, unk->heapId);
     GfGfxLoader_LoadCharData(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].charNo, unk->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, unk->heapId);
     GfGfxLoader_LoadScrnData(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].scrnNo, unk->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, unk->heapId);
 }
 
-static void MapPreviewGraphic_InitWindow(UnkStruct_0206A388 *unk) {
+static void MapPreviewGraphic_InitWindow(UnkStruct_0206A388 *unk)
+{
     unk->window = AllocWindows(unk->heapId, 1);
     AddWindowParameterized(unk->bgConfig, unk->window, 2, 0, 0, 28, 2, 13, 0x2C0);
 }
 
-static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
+static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys)
+{
     LocalMapObject *player;
 
     if (!unk->unk30) {
