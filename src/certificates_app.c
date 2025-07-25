@@ -205,8 +205,8 @@ BOOL Certificates_Init(OverlayManager *manager, int *state) {
     data->profile = Save_PlayerData_GetProfile(data->savedata);
     data->frontPokemon = Party_GetMonByIndex(party, slot);
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
     Main_SetVBlankIntrCB(NULL, NULL);
     Main_SetHBlankIntrCB(NULL, NULL);
