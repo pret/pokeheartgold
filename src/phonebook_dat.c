@@ -8,7 +8,7 @@
 
 #include "gear_phone.h"
 
-struct PhoneBook *AllocAndReadPhoneBook(enum HeapID heapId) {
+struct PhoneBook *AllocAndReadPhoneBook(enum HeapID heapID) {
     FSFile file;
     struct PhoneBook *ret;
     u32 flen;
@@ -22,11 +22,11 @@ struct PhoneBook *AllocAndReadPhoneBook(enum HeapID heapId) {
     // This is a waste of space
     // (flen - 4) bytes is allocated twice
     flen = FS_GetLength(&file);
-    ret = Heap_Alloc(heapId, flen);
+    ret = Heap_Alloc(heapID, flen);
     MI_CpuClear8(ret, flen);
 
     FS_ReadFile(&file, &ret->count, sizeof(ret->count));
-    ret->entries = Heap_Alloc(heapId, ret->count * sizeof(struct PhoneBookEntry));
+    ret->entries = Heap_Alloc(heapID, ret->count * sizeof(struct PhoneBookEntry));
     FS_ReadFile(&file, ret->entries, ret->count * sizeof(struct PhoneBookEntry));
     FS_CloseFile(&file);
     return ret;
@@ -40,8 +40,8 @@ void FreePhoneBook(struct PhoneBook *phoneBook) {
     Heap_Free(phoneBook);
 }
 
-u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, enum HeapID heapId) {
-    struct PhoneBook *phoneBook = AllocAndReadPhoneBook(heapId);
+u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, enum HeapID heapID) {
+    struct PhoneBook *phoneBook = AllocAndReadPhoneBook(heapID);
     int i;
 
     for (i = 0; i < phoneBook->count; i++) {

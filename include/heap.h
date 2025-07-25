@@ -13,14 +13,14 @@ typedef struct HeapParam {
 void Heap_InitSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size);
 BOOL Heap_Create(enum HeapID parent, enum HeapID child, u32 size);
 BOOL Heap_CreateAtEnd(enum HeapID parent, enum HeapID child, u32 size);
-void Heap_Destroy(enum HeapID heapId);
-void *Heap_Alloc(enum HeapID heapId, u32 size);
-void *Heap_AllocAtEnd(enum HeapID heapId, u32 size);
+void Heap_Destroy(enum HeapID heapID);
+void *Heap_Alloc(enum HeapID heapID, u32 size);
+void *Heap_AllocAtEnd(enum HeapID heapID, u32 size);
 void Heap_Free(void *ptr);
-void Heap_FreeExplicit(enum HeapID heapId, void *ptr);
-u32 HeapExp_FndGetTotalFreeSize(enum HeapID heapId);
-void HeapExp_FndInitAllocator(NNSFndAllocator *pAllocator, enum HeapID heapId, int alignment);
+void Heap_FreeExplicit(enum HeapID heapID, void *ptr);
+u32 HeapExp_FndGetTotalFreeSize(enum HeapID heapID);
+void HeapExp_FndInitAllocator(NNSFndAllocator *pAllocator, enum HeapID heapID, int alignment);
 void Heap_Realloc(void *ptr, u32 newSize);
-BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
+BOOL GF_heap_c_dummy_return_true(enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_HEAP_H

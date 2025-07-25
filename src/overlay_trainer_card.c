@@ -41,7 +41,7 @@ BOOL TrainerCard_Init(OverlayManager *man, int *state) {
     TrainerCardAppState *data = OverlayManager_CreateAndGetData(man, sizeof(TrainerCardAppState), HEAP_ID_TRAINER_CARD);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));
 
-    data->heapId = HEAP_ID_TRAINER_CARD;
+    data->heapID = HEAP_ID_TRAINER_CARD;
     data->parentData = ptr;
     data->unk10 = ptr;
     return TRUE;
@@ -86,7 +86,7 @@ static int TCardAppRunStep_Init(TrainerCardAppState *work) {
         FS_OVERLAY_ID(trainer_card_main)
     };
 
-    work->ov_mgr = OverlayManager_New(&template, work->parentData, work->heapId);
+    work->ov_mgr = OverlayManager_New(&template, work->parentData, work->heapID);
     return TRAINERCARD_RUN_EXEC;
 }
 
@@ -107,7 +107,7 @@ static int TCardAppRunStep_SignatureInit(TrainerCardAppState *work) {
         TrainerCardSignature_Exit,
         FS_OVERLAY_ID(trainer_card_signature)
     };
-    work->ov_mgr = OverlayManager_New(&template, work->parentData->saveData, work->heapId);
+    work->ov_mgr = OverlayManager_New(&template, work->parentData->saveData, work->heapID);
     return TRAINERCARD_RUN_SIGNATURE_EXEC;
 }
 

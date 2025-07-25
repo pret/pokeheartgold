@@ -615,7 +615,7 @@ static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtRe
     tmpl->rotation = 0;
     tmpl->priority = 0;
     tmpl->whichScreen = whichScreen;
-    tmpl->heapId = HEAP_ID_CREDITS;
+    tmpl->heapID = HEAP_ID_CREDITS;
 }
 
 static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
@@ -642,7 +642,7 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
     tmpl->rotation = 0;
     tmpl->priority = 0;
     tmpl->whichScreen = whichScreen;
-    tmpl->heapId = HEAP_ID_CREDITS;
+    tmpl->heapID = HEAP_ID_CREDITS;
 }
 
 static void SetPageSysTasks(CreditsAppWork *work) {

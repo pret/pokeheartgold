@@ -140,7 +140,7 @@ static void modelAnimListSetFrameIndex(Field3DModelAnimation *animation, u32 num
 static BOOL modelAnimListAdvanceNoLoop(Field3DModelAnimation *animation, u32 num);
 static void modelAnimListAdvanceLooping(Field3DModelAnimation *animation, u32 num);
 static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData, int active);
-static void loadEyeGlimmer3dModel(enum HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
+static void loadEyeGlimmer3dModel(enum HeapID heapID, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
 static void unloadEyeGlimmer3dModel(LegendCutsceneLugiaEyeGlimmerTaskData *taskData);
 static BOOL Task_LugiaEyeGlimmer(TaskManager *taskman);
 static BOOL ov02_02251320(TaskManager *taskman);
@@ -494,12 +494,12 @@ static void setBellsModelsActiveFlag(ClearBellCutscene3dObjectTaskData *taskData
     }
 }
 
-static void loadEyeGlimmer3dModel(enum HeapID heapId, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
-    HeapExp_FndInitAllocator(&taskData->allocator, heapId, 0x20);
-    Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000028_NSBMD, heapId);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000029_NSBMA, heapId, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000030_NSBTP, heapId, &taskData->allocator);
-    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[2], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000031_NSBCA, heapId, &taskData->allocator);
+static void loadEyeGlimmer3dModel(enum HeapID heapID, FieldSystem *fieldSystem, LegendCutsceneLugiaEyeGlimmerTaskData *taskData) {
+    HeapExp_FndInitAllocator(&taskData->allocator, heapID, 0x20);
+    Field3dModel_LoadFromFilesystem(&taskData->model, NARC_demo_legend, NARC_legend_legend_00000028_NSBMD, heapID);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[0], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000029_NSBMA, heapID, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[1], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000030_NSBTP, heapID, &taskData->allocator);
+    Field3dModelAnimation_LoadFromFilesystem(&taskData->anims[2], &taskData->model, NARC_demo_legend, NARC_legend_legend_00000031_NSBCA, heapID, &taskData->allocator);
     Field3dObject_InitFromModel(&taskData->object, &taskData->model);
     Field3dObject_AddAnimation(&taskData->object, &taskData->anims[0]);
     Field3dObject_AddAnimation(&taskData->object, &taskData->anims[1]);

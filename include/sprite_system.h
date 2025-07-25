@@ -36,7 +36,7 @@ typedef struct ManagedSpriteTemplate {
 } ManagedSpriteTemplate; // size=0x34
 
 typedef struct SpriteSystem {
-    enum HeapID heapId;
+    enum HeapID heapID;
     u32 numGfxHandlers;
     BOOL hasOamManager;
     NNSG2dCellTransferState *cellTransferState; // 00C
@@ -84,7 +84,7 @@ typedef union SpriteResourceCountsListUnion {
     };
 } SpriteResourceCountsListUnion;
 
-SpriteSystem *SpriteSystem_Alloc(enum HeapID heapId);
+SpriteSystem *SpriteSystem_Alloc(enum HeapID heapID);
 SpriteManager *SpriteManager_New(SpriteSystem *spriteSystem);
 G2dRenderer *SpriteSystem_GetRenderer(SpriteSystem *spriteSystem);
 BOOL SpriteSystem_Init(SpriteSystem *spriteSystem, const OamManagerParam *oamManagerParam, const OamCharTransferParam *oamTransferParam, int a3);

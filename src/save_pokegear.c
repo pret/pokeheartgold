@@ -153,9 +153,9 @@ void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact) {
     }
 }
 
-PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, enum HeapID heapId) {
+PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, enum HeapID heapID) {
     u8 num = SavePokegear_FindEmptyPhonebookSlot(pokegear);
-    PhoneContact *ret = Heap_Alloc(heapId, num * sizeof(PhoneContact));
+    PhoneContact *ret = Heap_Alloc(heapID, num * sizeof(PhoneContact));
     MI_CpuCopy8(pokegear->phoneContacts, ret, num * sizeof(PhoneContact));
     return ret;
 }
@@ -378,8 +378,8 @@ void PhoneCallPersistentState_SafariZoneArrangement_Set(PhoneCallPersistentState
     }
 }
 
-u8 *PhoneCallPersistentState_SafariZoneArrangement_AllocAndGet(PhoneCallPersistentState *callPersistentState, u8 *numAreasRet, enum HeapID heapId) {
-    u8 *ret = Heap_Alloc(heapId, callPersistentState->numSafariAreas);
+u8 *PhoneCallPersistentState_SafariZoneArrangement_AllocAndGet(PhoneCallPersistentState *callPersistentState, u8 *numAreasRet, enum HeapID heapID) {
+    u8 *ret = Heap_Alloc(heapID, callPersistentState->numSafariAreas);
     MI_CpuCopy8(callPersistentState->safariAreas, ret, callPersistentState->numSafariAreas);
     *numAreasRet = callPersistentState->numSafariAreas;
     return ret;

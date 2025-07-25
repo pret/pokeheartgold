@@ -7,7 +7,7 @@ void sub_0200B27C(NNSG2dRenderSurface *surface, NNSG2dViewRect *rect, NNS_G2D_VR
 void OamManager_ApplyAndResetBuffers(void);
 void OamManager_Free(void);
 void OamManager_Create(int, int, int, int, int, int, int, int, enum HeapID);
-void sub_0200B2E0(enum HeapID heapId);
-void sub_0200B2E8(enum HeapID heapId);
+void sub_0200B2E0(enum HeapID heapID);
+void sub_0200B2E8(enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_UNK_0200B150_H

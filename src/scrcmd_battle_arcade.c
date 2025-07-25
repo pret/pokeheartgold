@@ -242,9 +242,9 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     return 2;
 }
 
-static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, enum HeapID heapId) {
+static u32 sub_020502E0(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, enum HeapID heapID) {
     SaveData *saveData = fieldSystem->saveData;
-    PokemonSummaryArgs *unk = Heap_AllocAtEnd(heapId, sizeof(PokemonSummaryArgs));
+    PokemonSummaryArgs *unk = Heap_AllocAtEnd(heapID, sizeof(PokemonSummaryArgs));
     MI_CpuFill8(unk, 0, sizeof(PokemonSummaryArgs));
     unk->options = Save_PlayerData_GetOptionsAddr(saveData);
     unk->party = SaveArray_Party_Get(saveData);

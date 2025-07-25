@@ -249,7 +249,7 @@ BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCall_ApplyGenericNPCcallSideEffect(ctx, PhoneCall_GetScriptDefPtrByID(state->scriptID));
-        BufferSpeciesName(ctx->msgFormat, 10, getRandomTrainerMon(state->phoneBookEntry->trainerId, ctx->heapId));
+        BufferSpeciesName(ctx->msgFormat, 10, getRandomTrainerMon(state->phoneBookEntry->trainerId, ctx->heapID));
         BufferSpeciesName(ctx->msgFormat, 11, getRandomEncounterSlot(state->phoneBookEntry->mapId, state->phoneBookEntry->trainerClass, state->timeOfDay));
         if (state->phoneBookEntry->unkC == 255) {
             ++state->scriptState;

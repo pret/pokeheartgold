@@ -31,7 +31,7 @@ typedef struct {
 } Ov50_021E5A3C;
 
 typedef struct {
-    enum HeapID heapId;
+    enum HeapID heapID;
     u8 unk4[4];
     OverlayManager *ov_mgr;
     Ov50_021E5A3C *parentData;

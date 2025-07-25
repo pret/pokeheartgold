@@ -45,13 +45,13 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
-String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, enum HeapID heapId) {
+String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, enum HeapID heapID) {
     String *str;
     if (!gearPhone->active || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
-        str = String_New(8, heapId);
+        str = String_New(8, heapID);
     } else {
         int phoneMsg = GetPhoneMessageGmm(gearPhone->callerId);
-        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, phoneMsg, heapId);
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, phoneMsg, heapID);
         str = NewString_ReadMsgData(msgData, 0);
         DestroyMsgData(msgData);
     }

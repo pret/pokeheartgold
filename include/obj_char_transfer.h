@@ -9,7 +9,7 @@ typedef struct ObjCharTransferTemplate {
     int maxTasks;
     u32 sizeMain;
     u32 sizeSub;
-    enum HeapID heapId;
+    enum HeapID heapID;
 } ObjCharTransferTemplate;
 
 typedef struct UnkStruct_02021758 {

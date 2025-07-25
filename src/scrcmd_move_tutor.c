@@ -92,7 +92,7 @@ static const TutorMove sTutorMoves[] = {
 
 static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form);
 static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]);
-static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapId, u32 index);
+static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapID, u32 index);
 static BOOL ov01_0220305C(ScriptContext *ctx);
 
 // get number of pages needed to show learnable moves from move tutor
@@ -227,7 +227,7 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     return numLearnableMoves;
 }
 
-static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapId, u32 index) {
+static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapID, u32 index) {
     FSFile file;
     FS_InitFile(&file);
     if (FS_OpenFile(&file, "fielddata/wazaoshie/waza_oshie.bin") == FALSE) {
@@ -239,7 +239,7 @@ static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapId, u32 index) {
     if (file.prop.file.bottom - file.prop.file.top != filesize) {
         GF_ASSERT(FALSE);
     }
-    MoveTutorLearnset *learnset = Heap_AllocAtEnd(heapId, sizeof(MoveTutorLearnset));
+    MoveTutorLearnset *learnset = Heap_AllocAtEnd(heapID, sizeof(MoveTutorLearnset));
     FS_SeekFile(&file, index * sizeof(MoveTutorLearnset), FS_SEEK_SET);
     FS_ReadFile(&file, learnset, sizeof(MoveTutorLearnset));
     FS_CloseFile(&file);

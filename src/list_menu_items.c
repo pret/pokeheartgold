@@ -5,16 +5,16 @@
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
 LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapId) {
+LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapID) {
     int i;
-    LISTMENUITEM *ret = Heap_Alloc(heapId, (n + 1) * sizeof(LISTMENUITEM));
+    LISTMENUITEM *ret = Heap_Alloc(heapID, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
         for (i = 0; i < n; i++) {
             ret[i].text = NULL;
             ret[i].value = 0;
         }
         ret[i].text = (String *)-1;
-        ret[i].value = heapId;
+        ret[i].value = heapID;
     }
     return ret;
 }
@@ -35,11 +35,11 @@ void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int 
 }
 
 void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
-    enum HeapID heapId;
+    enum HeapID heapID;
 
-    items = ListMenuItems_SeekEnd(items, &heapId);
+    items = ListMenuItems_SeekEnd(items, &heapID);
     if (items != NULL) {
-        items->text = String_Dup(string, heapId);
+        items->text = String_Dup(string, heapID);
         items->value = value;
     }
 }

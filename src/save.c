@@ -947,7 +947,7 @@ int sub_02028230(SaveData *saveData, int idx, void *data) {
     return WRITE_STATUS_TOTAL_FAIL;
 }
 
-void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapId, int idx, int *ret_p) {
+void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapID, int idx, int *ret_p) {
     const struct ExtraSaveChunkHeader *hdr;
     u32 size;
     void *ret;
@@ -961,7 +961,7 @@ void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapId, int idx, int *r
     GF_ASSERT(hdr->id == idx);
 
     size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
-    ret = Heap_Alloc(heapId, size);
+    ret = Heap_Alloc(heapID, size);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
     valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
     saveno1 = SaveArray_GetFooterSaveNo(ret, hdr->sizeFunc());
@@ -1001,7 +1001,7 @@ void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapId, int idx, int *r
     return ret;
 }
 
-void *sub_020284A4(SaveData *saveData, enum HeapID heapId, int idx, int *ret_p, int *ret2_p) {
+void *sub_020284A4(SaveData *saveData, enum HeapID heapID, int idx, int *ret_p, int *ret2_p) {
     const struct ExtraSaveChunkHeader *hdr;
     u32 sp2C;
     u32 sp28;
@@ -1021,7 +1021,7 @@ void *sub_020284A4(SaveData *saveData, enum HeapID heapId, int idx, int *ret_p, 
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
     size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
-    ret = Heap_Alloc(heapId, size);
+    ret = Heap_Alloc(heapID, size);
     sub_020286B4(saveData, idx, &sp24, &sp20, &sp1C);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
     valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());

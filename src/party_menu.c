@@ -64,7 +64,7 @@ static void sub_02079700(void);
 static void sub_02079720(BgConfig *bgConfig);
 static void sub_02079758(BgConfig *bgConfig);
 static void sub_020798C4(BgConfig *bgConfig);
-static GF3DVramMan *Create3dVramManForPartyMenu(enum HeapID heapId);
+static GF3DVramMan *Create3dVramManForPartyMenu(enum HeapID heapID);
 static void Init3dVramManForPartyMenu(void);
 static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan);
 static void sub_02079A14(PartyMenu *partyMenu, NARC *narc);
@@ -898,8 +898,8 @@ void PartyMenu_Toggle3dEngine(PartyMenu *partyMenu, PartyMenu3dEngineToggle togg
     }
 }
 
-static GF3DVramMan *Create3dVramManForPartyMenu(enum HeapID heapId) {
-    return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, Init3dVramManForPartyMenu);
+static GF3DVramMan *Create3dVramManForPartyMenu(enum HeapID heapID) {
+    return GF_3DVramMan_Create(heapID, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, Init3dVramManForPartyMenu);
 }
 
 static void Init3dVramManForPartyMenu(void) {
@@ -2689,13 +2689,13 @@ u32 sub_0207CAA8(void) {
     return NARC_plist_gra_plist_gra_00000018_NANR;
 }
 
-void sub_0207CAAC(enum HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
+void sub_0207CAAC(enum HeapID heapID, u16 *a1, u16 *a2, u16 *a3) {
     void *pNscrFile;
     NNSG2dScreenData *screenData;
     const u16 *src;
     u32 i;
 
-    pNscrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_graphic_plist_gra, NARC_plist_gra_plist_gra_00000022_NSCR, heapId);
+    pNscrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_graphic_plist_gra, NARC_plist_gra_plist_gra_00000022_NSCR, heapID);
     NNS_G2dGetUnpackedScreenData(pNscrFile, &screenData);
     src = (const u16 *)screenData->rawData;
 

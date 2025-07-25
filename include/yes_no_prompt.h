@@ -50,7 +50,7 @@ typedef struct YesNoPrompt {
     YesNoPromptButton buttons[2];
     BgConfig *bgConfig;
     u32 bgId;
-    enum HeapID heapId;
+    enum HeapID heapID;
     fx32 unk68[2];
     u8 x;
     u8 y;

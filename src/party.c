@@ -20,8 +20,8 @@ u32 PartyCore_sizeof(void) {
     return sizeof(PartyCore);
 }
 
-Party *SaveArray_Party_Alloc(enum HeapID heapId) {
-    Party *ret = Heap_Alloc(heapId, sizeof(Party));
+Party *SaveArray_Party_Alloc(enum HeapID heapID) {
+    Party *ret = Heap_Alloc(heapID, sizeof(Party));
     SaveArray_Party_Init(ret);
     return ret;
 }

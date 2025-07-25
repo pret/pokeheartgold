@@ -691,7 +691,7 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager) {
     TaskManager_Call(taskManager, Task_TutorialBattle, encounter);
 }
 
-void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, enum HeapID heapId, u32 *winFlag) {
+void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, enum HeapID heapID, u32 *winFlag) {
     u32 battleType;
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
@@ -718,7 +718,7 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
     setup->trainerId[BATTLER_ENEMY2] = opponentTrainer2;
     setup->trainerId[BATTLER_PLAYER2] = followerTrainerNum;
 
-    EnemyTrainerSet_Init(setup, fieldSystem->saveData, heapId);
+    EnemyTrainerSet_Init(setup, fieldSystem->saveData, heapID);
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK9);
 

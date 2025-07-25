@@ -82,7 +82,7 @@ typedef struct UnkStructScr_648 {
 } SCR_648_STRUCT;
 
 static BOOL ov01_02200C6C(ScriptContext *ctx);
-static void *ov01_02200C94(enum HeapID heapId, s32 fileId, int *unkPtr);
+static void *ov01_02200C94(enum HeapID heapID, s32 fileId, int *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata);
 static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
@@ -185,9 +185,9 @@ static BOOL ov01_02200C6C(ScriptContext *ctx) {
     return *GetVarPointer(ctx->fieldSystem, ctx->data[0]) != 0xEEEE;
 }
 
-static void *ov01_02200C94(enum HeapID heapId, s32 fileId, int *unkPtr) {
+static void *ov01_02200C94(enum HeapID heapID, s32 fileId, int *unkPtr) {
     u32 size;
-    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapId, FALSE, &size);
+    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapID, FALSE, &size);
     *unkPtr = size / 2;
     return data;
 }

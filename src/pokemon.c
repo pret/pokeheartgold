@@ -54,8 +54,8 @@ void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C 
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(Pokemon *mon, u16 move_id);
-void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapId);
-void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapId);
+void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
+void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 
 #define ENCRY_ARGS_PTY(mon)    (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.pid
 #define ENCRY_ARGS_BOX(boxMon) (u16 *)&(boxMon)->substructs, sizeof((boxMon)->substructs), (boxMon)->checksum
@@ -112,8 +112,8 @@ u32 SizeOfStructPokemon(void) {
     return sizeof(Pokemon);
 }
 
-Pokemon *AllocMonZeroed(enum HeapID heapId) {
-    Pokemon *mon = (Pokemon *)Heap_Alloc(heapId, sizeof(Pokemon));
+Pokemon *AllocMonZeroed(enum HeapID heapID) {
+    Pokemon *mon = (Pokemon *)Heap_Alloc(heapID, sizeof(Pokemon));
     ZeroMonData(mon);
     return mon;
 }
@@ -1711,14 +1711,14 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     }
 }
 
-BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, enum HeapID heapId) {
-    BASE_STATS *ret = Heap_Alloc(heapId, sizeof(BASE_STATS));
+BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, enum HeapID heapID) {
+    BASE_STATS *ret = Heap_Alloc(heapID, sizeof(BASE_STATS));
     LoadMonBaseStats_HandleAlternateForm(species, form, ret);
     return ret;
 }
 
-BASE_STATS *AllocAndLoadMonPersonal(int species, enum HeapID heapId) {
-    BASE_STATS *ret = Heap_Alloc(heapId, sizeof(BASE_STATS));
+BASE_STATS *AllocAndLoadMonPersonal(int species, enum HeapID heapID) {
+    BASE_STATS *ret = Heap_Alloc(heapID, sizeof(BASE_STATS));
     LoadMonPersonal(species, ret);
     return ret;
 }
@@ -2683,7 +2683,7 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, enum HeapID heapId) {
+struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, enum HeapID heapID) {
     struct ManagedSpriteTemplate spriteResourcesTemplate;
     struct ManagedSprite *object;
     NARC *narc;
@@ -2695,7 +2695,7 @@ struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHan
     if (trainerClass == TRAINERCLASS_CASTLE_VALET) {
         plttNum = 2;
     }
-    narc = NARC_New(fileIDs.narcId, heapId);
+    narc = NARC_New(fileIDs.narcId, heapID);
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncgr_id, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2F);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, fileIDs.nclr_id, FALSE, plttNum, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2A);
     SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncer_id, FALSE, resTag + 0x4E27);
@@ -3706,9 +3706,9 @@ void sub_020720D4(Pokemon *mon) {
     PlayCry(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_FORM, NULL));
 }
 
-void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapId) {
+void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
     u32 hp;
-    sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heapId);
+    sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heapID);
     if (pokeball == ITEM_HEAL_BALL) {
         hp = GetMonData(mon, MON_DATA_MAXHP, NULL);
         SetMonData(mon, MON_DATA_HP, &hp);
@@ -3717,19 +3717,19 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
     }
 }
 
-void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapId) {
-    BoxMonSetTrainerMemo(boxMon, playerProfile, 0, a3, heapId);
+void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
+    BoxMonSetTrainerMemo(boxMon, playerProfile, 0, a3, heapID);
     SetBoxMonData(boxMon, MON_DATA_GAME_VERSION, (void *)&gGameVersion);
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &pokeball);
     SetBoxMonData(boxMon, MON_DATA_ENCOUNTER_TYPE, &encounterType);
 }
 
-void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapId) {
-    sub_02072190(&mon->box, a1, pokeball, a3, encounterType, heapId);
+void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
+    sub_02072190(&mon->box, a1, pokeball, a3, encounterType, heapID);
 }
 
-void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapId) {
-    sub_0207213C(boxMon, a1, pokeball, a3, encounterType, heapId);
+void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
+    sub_0207213C(boxMon, a1, pokeball, a3, encounterType, heapID);
 }
 
 static const u16 sItemOdds[2][2] = {
@@ -4111,13 +4111,13 @@ BOOL MonCheckFrontierIneligibility(Pokemon *mon) {
     return IsPokemonBannedFromBattleFrontier(species, form);
 }
 
-BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapId) {
+BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID) {
     u32 myId = PlayerProfile_GetTrainerID(profile);
     u32 otId = GetBoxMonData(boxMon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
     u32 otGender = GetBoxMonData(boxMon, MON_DATA_MET_GENDER, NULL);
-    String *r7 = PlayerProfile_GetPlayerName_NewString(profile, heapId);
-    String *r6 = String_New(PLAYER_NAME_LENGTH + 1, heapId);
+    String *r7 = PlayerProfile_GetPlayerName_NewString(profile, heapID);
+    String *r6 = String_New(PLAYER_NAME_LENGTH + 1, heapID);
     BOOL ret = FALSE;
     GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, r6);
     if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {
@@ -4227,14 +4227,14 @@ void sub_02072A20(NARC *narc, u8 *ret, u16 a2, u16 a3) {
     *ret = sp4.unk_58;
 }
 
-BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapId) {
+BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID) {
     CAPSULE capsule;
     int data;
     NARC *narc;
     if (a0 == 0) {
         return FALSE;
     }
-    narc = NARC_New(NARC_application_custom_ball_edit_gs_cb_data, heapId);
+    narc = NARC_New(NARC_application_custom_ball_edit_gs_cb_data, heapID);
     data = 1;
     NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
     SetMonData(mon, MON_DATA_CAPSULE, &data);
@@ -5010,8 +5010,8 @@ void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformanc
     CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(mon), dest);
 }
 
-void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapId) {
-#pragma unused(heapId)
+void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapID) {
+#pragma unused(heapID)
     int i;
     struct PokeathlonTodayPerformance basePerf;
 
@@ -5038,6 +5038,6 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokem
     }
 }
 
-void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapId) {
-    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(mon), aprijuice, heapId);
+void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapID) {
+    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(mon), aprijuice, heapID);
 }

@@ -683,7 +683,7 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     spriteTemplate.rotation = 0;
     spriteTemplate.priority = 0;
     spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-    spriteTemplate.heapId = HEAP_ID_FIELD2;
+    spriteTemplate.heapID = HEAP_ID_FIELD2;
     spriteTemplate.header = &startMenu->spriteResourcesHeader; // second assign is necessary to match
     spriteTemplate.position.x = FX32_CONST(100);
     spriteTemplate.position.y = FX32_CONST(144);

@@ -327,9 +327,9 @@ void ov101_021F017C(PokegearPhoneAppData *phoneApp) {
     InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &sBgTemplates[5], GF_BG_TYPE_TEXT, FALSE);
     for (int i = 0; i < 3; ++i) {
         BgClearTilemapBufferAndCommit(phoneApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
-        BG_ClearCharDataRange(i + GF_BG_LYR_MAIN_1, 0x20, 0, phoneApp->heapId);
+        BG_ClearCharDataRange(i + GF_BG_LYR_MAIN_1, 0x20, 0, phoneApp->heapID);
         BgClearTilemapBufferAndCommit(phoneApp->pokegear->bgConfig, i + GF_BG_LYR_SUB_1);
-        BG_ClearCharDataRange(i + GF_BG_LYR_SUB_1, 0x20, 0, phoneApp->heapId);
+        BG_ClearCharDataRange(i + GF_BG_LYR_SUB_1, 0x20, 0, phoneApp->heapID);
     }
     SetBgPriority(GF_BG_LYR_MAIN_0, 1);
     BgSetPosTextAndCommit(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0x20);
@@ -342,12 +342,12 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
-    FontID_Alloc(4, phoneApp->heapId);
-    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapId);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 28, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 16, GF_BG_LYR_SUB_3, 0, 0, 0);
-    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapId, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 22, GF_BG_LYR_SUB_3, 1, 0, 0);
-    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->backgroundStyle + 34, FALSE, &phoneApp->screenData, phoneApp->heapId);
+    FontID_Alloc(4, phoneApp->heapID);
+    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapID);
+    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 28, GF_BG_LYR_MAIN_2, 0, 0, 0);
+    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 16, GF_BG_LYR_SUB_3, 0, 0, 0);
+    sub_0208820C(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 22, GF_BG_LYR_SUB_3, 1, 0, 0);
+    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->backgroundStyle + 34, FALSE, &phoneApp->screenData, phoneApp->heapID);
     CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->screenData->rawData, 0, 0, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -360,11 +360,11 @@ void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
-    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapId);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 10, phoneApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 4, phoneApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
+    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapID);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 10, phoneApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 4, phoneApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapID, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapID, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
     PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
     PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
     PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, RGB_BLACK);
@@ -410,10 +410,10 @@ void ov101_021F05CC(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
-    phoneApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, phoneApp->heapId);
-    phoneApp->msgFormat = MessageFormat_New_Custom(2, 32, phoneApp->heapId);
-    phoneApp->msgFormatBuf = String_New(640, phoneApp->heapId);
-    phoneApp->msgReadBuf = String_New(640, phoneApp->heapId);
+    phoneApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, phoneApp->heapID);
+    phoneApp->msgFormat = MessageFormat_New_Custom(2, 32, phoneApp->heapID);
+    phoneApp->msgFormatBuf = String_New(640, phoneApp->heapID);
+    phoneApp->msgReadBuf = String_New(640, phoneApp->heapID);
     for (int i = 0; i < PHONE_TOOLTIP_MAX; ++i) {
         phoneApp->tooltipStrings[i] = NewString_ReadMsgData(phoneApp->msgData, i + msg_0271_00020);
     }
@@ -437,7 +437,7 @@ void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     PokegearPhoneCallContextParam param;
     MI_CpuClear8(&param, sizeof(PokegearPhoneCallContextParam));
-    param.heapId = phoneApp->heapId;
+    param.heapID = phoneApp->heapID;
     param.menuInputStatePtr = &phoneApp->pokegear->menuInputState;
     param.sprite = phoneApp->sprites[13];
     param.phoneApp = phoneApp;
@@ -462,7 +462,7 @@ void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F072C(PokegearPhoneAppData *phoneApp) {
     PokegearApp_CreateSpriteManager(phoneApp->pokegear, 3);
-    phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapId, phoneApp->pokegear->plttData);
+    phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapID, phoneApp->pokegear->plttData);
 }
 
 void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
