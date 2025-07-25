@@ -5,7 +5,7 @@
 .public DestroyMsgData
 .public MessageFormat_New_Custom
 .public MessageFormat_Delete
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public String_New

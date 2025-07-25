@@ -16,7 +16,7 @@ sub_02096C88: ; 0x02096C88
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x58
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02096C9E
 	bl GF_AssertFail
@@ -28,11 +28,11 @@ _02096C9E:
 	ldr r1, _02096CC4 ; =0x00001BD0
 	add r0, r6, #0
 	str r5, [r4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x4c]
 	ldr r1, _02096CC4 ; =0x00001BD0
 	add r0, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x50]
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}

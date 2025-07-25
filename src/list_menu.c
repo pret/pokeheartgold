@@ -9,17 +9,17 @@ static void ListMenuDrawCursor(struct ListMenu *list);
 static BOOL ListMenuChangeSelection(struct ListMenu *list, u8 updateCursorAndCallCallback, u8 count, u8 movingDown);
 static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onInit);
 
-struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, HeapID heapId) {
-    struct ListMenu *list = AllocFromHeap(heapId, sizeof(struct ListMenu));
+struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, enum HeapID heapID) {
+    struct ListMenu *list = Heap_Alloc(heapID, sizeof(struct ListMenu));
     list->template = *template;
-    list->cursor = ListMenuCursorNew(heapId);
+    list->cursor = ListMenuCursorNew(heapID);
     list->cursorPos = cursorPos;
     list->itemsAbove = itemsAbove;
     list->unk_30 = 0;
     list->unk_31 = 0;
     list->taskId = 0xFF;
     list->unk_33 = 0;
-    list->heapId = (u8)heapId;
+    list->heapID = (u8)heapID;
     list->cursorPal = list->template.cursorPal;
     list->fillValue = list->template.fillValue;
     list->cursorShadowPal = list->template.cursorShadowPal;
@@ -98,7 +98,7 @@ void DestroyListMenu(struct ListMenu *list, u16 *cursorPos, u16 *itemsAbove) {
         *itemsAbove = list->itemsAbove;
     }
     DestroyListMenuCursorObj(list->cursor);
-    Heap_FreeExplicit((HeapID)list->heapId, list);
+    Heap_FreeExplicit((enum HeapID)list->heapID, list);
 }
 
 void RedrawListMenu(struct ListMenu *list) {

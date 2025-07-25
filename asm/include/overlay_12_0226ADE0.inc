@@ -21,7 +21,7 @@
 .public ManagedSprite_GetOamMode
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetAnimationFrame

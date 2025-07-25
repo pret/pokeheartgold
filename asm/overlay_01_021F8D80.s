@@ -863,11 +863,11 @@ ReadMModelFromNarcInternal: ; 0x021F9374
 	cmp r5, #1
 	bne _021F9394
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	b _021F939A
 _021F9394:
 	mov r0, #4
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _021F939A:
 	add r5, r0, #0
 	add r0, r6, #0

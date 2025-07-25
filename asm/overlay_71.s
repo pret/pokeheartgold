@@ -17,11 +17,11 @@ _02246970:
 	mov r0, #3
 	mov r1, #0x38
 	lsl r2, r0, #0xf
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #3
 	mov r1, #0x39
 	lsl r2, r0, #0xf
-	bl CreateHeap
+	bl Heap_Create
 	bl ov71_022473E4
 	mov r1, #0xfd
 	mov r0, #3
@@ -262,9 +262,9 @@ TradeSequence_Exit: ; 0x02246B58
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x38
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0x39
-	bl DestroyHeap
+	bl Heap_Destroy
 	add r0, r6, #0
 	bl OS_RestoreInterrupts
 	mov r0, #1
@@ -374,7 +374,7 @@ ov71_02246C6C: ; 0x02246C6C
 	add r6, r1, #0
 	add r1, r0, #0
 	add r1, #0xc8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r0, _02246D30 ; =0x00000000
 	str r0, [r5]
@@ -667,7 +667,7 @@ ov71_02246EAC: ; 0x02246EAC
 	bne _02246F58
 	mov r0, #0x38
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _02246F58
 	add r0, r5, #0
@@ -841,7 +841,7 @@ ov71_02247000: ; 0x02247000
 	add r7, r2, #0
 	str r3, [sp, #4]
 	ldr r5, [sp, #0x28]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r0, _02247060 ; =0x00000001
 	str r0, [r5]
@@ -1006,7 +1006,7 @@ _0224713C:
 _02247140:
 	mov r0, #0x38
 	add r1, r7, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #0x24]
 	cmp r0, #0
 	beq _02247202
@@ -1471,7 +1471,7 @@ ov71_0224744C: ; 0x0224744C
 	mov r1, #0x20
 	add r5, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	beq _02247492
 	ldr r3, [sp]
@@ -1481,7 +1481,7 @@ ov71_0224744C: ; 0x0224744C
 	mov r1, #0x8c
 	mov r0, #0x39
 	mul r1, r7
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r6, #0x18]
 	mov r4, #0
 	str r7, [r6, #0x1c]
@@ -2089,7 +2089,7 @@ ov71_022478C8: ; 0x022478C8
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0x84
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224791E
 	str r5, [r4]
@@ -3041,7 +3041,7 @@ ov71_022480C0: ; 0x022480C0
 	mov r1, #0x14
 	str r2, [sp]
 	add r7, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _02248106
 	str r5, [r4]
@@ -3140,7 +3140,7 @@ ov71_0224817C: ; 0x0224817C
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _022481BC
 	str r5, [r4]
@@ -3339,7 +3339,7 @@ ov71_022482EC: ; 0x022482EC
 	add r5, r0, #0
 	mov r0, #0x39
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224834E
 	str r5, [r4]
@@ -3949,7 +3949,7 @@ ov71_02248604: ; 0x02248604
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x39
 	mov r1, #0x60
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r5, r0, #0
 	beq _0224880A
 	mov r0, #0
@@ -4599,7 +4599,7 @@ ov71_02248D0C: ; 0x02248D0C
 	add r6, r0, #0
 	mov r0, #0x39
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _02248D78
 	str r6, [r4]
@@ -4748,7 +4748,7 @@ ov71_02248E30: ; 0x02248E30
 	mov r1, #0x14
 	add r7, r2, #0
 	add r6, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _02248E70
 	lsl r0, r5, #0xc
@@ -5584,7 +5584,7 @@ ov71_022494A0: ; 0x022494A0
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0xa4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _022494CA
 	str r5, [r4]
@@ -6636,7 +6636,7 @@ ov71_02249CF0: ; 0x02249CF0
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _02249D0E
 	str r5, [r4]
@@ -7126,7 +7126,7 @@ ov71_0224A0F0: ; 0x0224A0F0
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0xb0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224A124
 	str r5, [r4]
@@ -8162,7 +8162,7 @@ ov71_0224A920: ; 0x0224A920
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224A94E
 	str r5, [r4]
@@ -8661,7 +8661,7 @@ ov71_0224AB7C: ; 0x0224AB7C
 	bl GfGfxLoader_LoadScrnData
 	mov r0, #0x39
 	mov r1, #0x60
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r5, r0, #0
 	beq _0224AD52
 	mov r0, #0
@@ -8888,7 +8888,7 @@ ov71_0224AF08: ; 0x0224AF08
 	add r5, r1, #0
 	mov r0, #0x39
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224AF48
 	str r6, [r4]
@@ -8991,7 +8991,7 @@ ov71_0224AFD4: ; 0x0224AFD4
 	add r5, r1, #0
 	mov r0, #0x39
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224B020
 	str r5, [r4]
@@ -9087,7 +9087,7 @@ ov71_0224B084: ; 0x0224B084
 	str r2, [sp, #4]
 	add r7, r3, #0
 	ldr r5, [sp, #0x20]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224B0DC
 	str r5, [r4]
@@ -9177,7 +9177,7 @@ ov71_0224B138: ; 0x0224B138
 	add r5, r0, #0
 	mov r0, #0x39
 	mov r1, #0x88
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224B194
 	str r5, [r4]
@@ -10132,7 +10132,7 @@ ov71_0224B910: ; 0x0224B910
 	mov r1, #0x14
 	str r2, [sp]
 	add r7, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224B956
 	str r5, [r4]
@@ -10232,7 +10232,7 @@ ov71_0224B9CC: ; 0x0224B9CC
 	add r6, r1, #0
 	mov r0, #0x39
 	mov r1, #0x44
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _0224BA3A
 	mov r1, #0

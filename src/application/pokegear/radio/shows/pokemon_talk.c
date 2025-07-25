@@ -17,7 +17,7 @@
 #include "unk_02097F6C.h"
 
 typedef struct PokemonTalkData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 swarmSpecies;
     u16 swarmMap;
@@ -58,7 +58,7 @@ static const u16 sFilterLandmarks[] = {
 };
 
 BOOL RadioShow_PokemonTalk_Setup(RadioShow *radioShow) {
-    PokemonTalkData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonTalkData));
+    PokemonTalkData *data = Heap_Alloc(radioShow->heapID, sizeof(PokemonTalkData));
     MI_CpuClear8(data, sizeof(PokemonTalkData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

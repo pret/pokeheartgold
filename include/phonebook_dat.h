@@ -5,9 +5,9 @@
 
 struct PhoneBookEntry;
 
-struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId);
+struct PhoneBook *AllocAndReadPhoneBook(enum HeapID heapID);
 void FreePhoneBook(struct PhoneBook *phoneBook);
-u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId);
+u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, enum HeapID heapID);
 int GetPhoneMessageGmm(int idx);
 BOOL sub_02095FF8(int x);
 

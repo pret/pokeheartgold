@@ -25,8 +25,8 @@ static Card *GetCard(GameState *, int);
 extern const u8 sBoardIdDistribution[8][80];
 extern const BoardConfig sBoardConfigs[80];
 
-GameState *CreateGameState(HeapID heapId) {
-    GameState *ptr = AllocFromHeap(heapId, sizeof(GameState));
+GameState *CreateGameState(enum HeapID heapID) {
+    GameState *ptr = Heap_Alloc(heapID, sizeof(GameState));
     MI_CpuFill8(ptr, 0, sizeof(GameState));
     return ptr;
 }

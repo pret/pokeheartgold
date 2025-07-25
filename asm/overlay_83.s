@@ -15,7 +15,7 @@ ov83_0223DD60: ; 0x0223DD60
 	mov r0, #3
 	mov r1, #0x6b
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _0223DE44 ; =0x0000086C
 	add r0, r4, #0
 	mov r2, #0x6b
@@ -304,7 +304,7 @@ ov83_0223DFBC: ; 0x0223DFBC
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x6b
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _0223E004 ; =FS_OVERLAY_ID(OVY_80)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -9972,7 +9972,7 @@ ov83_02242FE8: ; 0x02242FE8
 	mov r0, #3
 	mov r1, #0x6b
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _022430F4 ; =0x00000614
 	add r0, r4, #0
 	mov r2, #0x6b
@@ -10281,7 +10281,7 @@ ov83_02243268: ; 0x02243268
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x6b
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _022432B0 ; =FS_OVERLAY_ID(OVY_80)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -18337,7 +18337,7 @@ ov83_02247454: ; 0x02247454
 	mov r1, #8
 	add r7, r2, #0
 	str r3, [sp, #0x10]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	strb r1, [r4]
@@ -18394,7 +18394,7 @@ ov83_022474C4: ; 0x022474C4
 	mov r1, #8
 	add r7, r2, #0
 	str r3, [sp, #0x10]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	strb r1, [r4]
@@ -18631,7 +18631,7 @@ ov83_02247668: ; 0x02247668
 	mov r1, #0x32
 	mov r0, #0x6b
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	cmp r6, #0
 	beq _022476C0

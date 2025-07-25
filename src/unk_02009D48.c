@@ -73,7 +73,7 @@ void CreateSpriteResourcesHeader(struct SpriteResourcesHeader *hdr, int charId, 
     hdr->priority = priority;
 }
 
-SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, HeapID heapId, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan) {
+SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNarcEntry *resdatNarcEntry, enum HeapID heapID, GF_2DGfxResMan *charMan, GF_2DGfxResMan *plttMan, GF_2DGfxResMan *cellMan, GF_2DGfxResMan *animMan, GF_2DGfxResMan *mcelMan, GF_2DGfxResMan *manmMan) {
     int i;
     int num = 0;
     SpriteResourceHeaderList *ret;
@@ -81,8 +81,8 @@ SpriteResourceHeaderList *SpriteResourceHeaderList_Create(const struct ResdatNar
     while (resdatNarcEntry[num].charId != -2) {
         num++;
     }
-    ret = AllocFromHeap(heapId, sizeof(SpriteResourceHeaderList));
-    ret->headers = AllocFromHeap(heapId, sizeof(SpriteResourcesHeader) * num);
+    ret = Heap_Alloc(heapID, sizeof(SpriteResourceHeaderList));
+    ret->headers = Heap_Alloc(heapID, sizeof(SpriteResourcesHeader) * num);
     ret->num = num;
     for (i = 0; i < ret->num; i++) {
         CreateSpriteResourcesHeader(&ret->headers[i], resdatNarcEntry[i].charId, resdatNarcEntry[i].plttId, resdatNarcEntry[i].cellId, resdatNarcEntry[i].animId, resdatNarcEntry[i].mcelId, resdatNarcEntry[i].manmId, resdatNarcEntry[i].xferFlag, resdatNarcEntry[i].priority, charMan, plttMan, cellMan, animMan, mcelMan, manmMan);
@@ -98,7 +98,7 @@ void SpriteResourceHeaderList_Destroy(SpriteResourceHeaderList *list) {
     Heap_Free(list);
 }
 
-SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapId) {
+SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, enum HeapID heapID) {
     struct SpriteListParam param;
     NNSG2dViewRect rect;
 
@@ -115,7 +115,7 @@ SpriteList *G2dRenderer_Init(int numSprites, G2dRenderer *renderer, HeapID heapI
     sub_0200B27C(&renderer->renderSurface[1], &rect, NNS_G2D_VRAM_TYPE_2DSUB, &renderer->rendererInstance);
     param.num = numSprites;
     param.rendererInstance = &renderer->rendererInstance;
-    param.heapId = heapId;
+    param.heapID = heapID;
     return SpriteList_Create(&param);
 }
 

@@ -35,7 +35,7 @@ static const OverlayManagerTemplate ov55_021E5C04 = {
     .ovy_id = FS_OVERLAY_ID(OVY_102),
 };
 
-static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *, HeapID);
+static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *, enum HeapID);
 static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *);
 static void ov55_021E5BC4(Mail *, UnkStruct_ov55_021E5B08 *);
 
@@ -54,11 +54,11 @@ BOOL ov55_UnkApp_Init(OverlayManager *manager, int *state) {
     UseMailArgs *args;
 
     args = OverlayManager_GetArgs(manager);
-    CreateHeap(HEAP_ID_3, HEAP_ID_OV55, 0x1000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_OV55, 0x1000);
     overlayData = OverlayManager_CreateAndGetData(manager, sizeof(UnkStruct_ov55_021E5924), HEAP_ID_OV55);
     MI_CpuFill8(overlayData, 0, sizeof(UnkStruct_ov55_021E5924));
 
-    overlayData->heapId = HEAP_ID_OV55;
+    overlayData->heapID = HEAP_ID_OV55;
     overlayData->unk10 = ov55_021E5B08(args->mail, HEAP_ID_OV55);
     overlayData->unk10->options = Save_PlayerData_GetOptionsAddr(args->saveData);
     if (args->unk0 == 1) {
@@ -79,7 +79,7 @@ BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state) {
     switch (*state) {
     case 0:
         overlayData->unk10->unk0 = args->unk0;
-        overlayData->unkC = OverlayManager_New(&ov55_021E5BF4, overlayData->unk10, overlayData->heapId);
+        overlayData->unkC = OverlayManager_New(&ov55_021E5BF4, overlayData->unk10, overlayData->heapID);
         *state = 1;
         break;
 
@@ -117,14 +117,14 @@ BOOL ov55_UnkApp_Main(OverlayManager *manager, int *state) {
         return TRUE;
 
     case 3:
-        overlayData->unk8 = EasyChat_CreateArgs(2, 0, args->saveData, args->menuInputStatePtr, overlayData->heapId);
+        overlayData->unk8 = EasyChat_CreateArgs(2, 0, args->saveData, args->menuInputStatePtr, overlayData->heapID);
         if (MailMsg_IsInit(&overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx])) {
             MailMsg_Copy(&overlayData->unk14, &overlayData->unk10->mailMessages[overlayData->unk10->mailMessageIdx]);
         } else {
             MailMsg_Init_WithBank(&overlayData->unk14, MAILMSG_BANK_0293_GMM);
         }
         sub_02090D20(overlayData->unk8, &overlayData->unk14);
-        overlayData->unkC = OverlayManager_New(&ov55_021E5C04, overlayData->unk8, overlayData->heapId);
+        overlayData->unkC = OverlayManager_New(&ov55_021E5C04, overlayData->unk8, overlayData->heapID);
         *state = 4;
         break;
 
@@ -147,17 +147,17 @@ BOOL ov55_UnkApp_Exit(OverlayManager *manager, int *state) {
     UnkStruct_ov55_021E5924 *overlayData = OverlayManager_GetData(manager);
     ov55_021E5BAC(overlayData->unk10);
     OverlayManager_FreeData(manager);
-    DestroyHeap(overlayData->heapId);
+    Heap_Destroy(overlayData->heapID);
     return TRUE;
 }
 
-static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, HeapID heapId) {
-    UnkStruct_ov55_021E5B08 *ret = AllocFromHeap(heapId, sizeof(UnkStruct_ov55_021E5B08));
+static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, enum HeapID heapID) {
+    UnkStruct_ov55_021E5B08 *ret = Heap_Alloc(heapID, sizeof(UnkStruct_ov55_021E5B08));
     MI_CpuFill8(ret, 0, sizeof(UnkStruct_ov55_021E5B08));
 
     ret->unk0 = 0;
     ret->mailOTID = Mail_GetOTID(mail);
-    ret->mailAuthorName = String_New(PLAYER_NAME_LENGTH + 1, heapId);
+    ret->mailAuthorName = String_New(PLAYER_NAME_LENGTH + 1, heapID);
     CopyU16ArrayToString(ret->mailAuthorName, Mail_GetAuthorNamePtr(mail));
     ret->mailType = Mail_GetType(mail);
     ret->mailLanguage = Mail_GetLanguage(mail);

@@ -113,7 +113,7 @@ ov01_021E87E4: ; 0x021E87E4
 	str r0, [sp]
 	mov r0, #4
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	mov r0, #0
 	add r1, r7, #0
@@ -971,7 +971,7 @@ ov01_021E8DB4: ; 0x021E8DB4
 	mov r1, #0xe
 	mov r0, #4
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r2, #0xe
 	mov r0, #0

@@ -2680,7 +2680,7 @@ _021F2F88:
 	str r0, [sp]
 	mov r0, #4
 	mov r1, #0x10
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r5, r0, #0
 	mov r0, #0
 	str r0, [r5]
@@ -2852,7 +2852,7 @@ ov01_021F30D0: ; 0x021F30D0
 	add r5, r0, #0
 	mov r0, #4
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _021F30E4
 	bl GF_AssertFail

@@ -13,7 +13,7 @@ ov93_0225C540: ; 0x0225C540
 	mov r0, #3
 	mov r1, #0x75
 	lsl r2, r0, #0x11
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0x40
 	mov r2, #0x75
@@ -204,7 +204,7 @@ ov93_0225C6C0: ; 0x0225C6C0
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x75
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end ov93_0225C6C0
@@ -342,7 +342,7 @@ ov93_0225C768: ; 0x0225C768
 	add r0, #0xa8
 	mov r1, #0x75
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	mov r0, #0x75
 	bl ov93_0225CF14
 	add r1, r5, #0
@@ -2021,7 +2021,7 @@ ov93_0225D674: ; 0x0225D674
 	mov r1, #0x12
 	mov r0, #0x75
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -4296,7 +4296,7 @@ ov93_0225E7B0: ; 0x0225E7B0
 	add r5, r0, #0
 	mov r0, #0x75
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x9e
 	mov r1, #0
 	lsl r2, r2, #2
@@ -4938,13 +4938,13 @@ ov93_0225EC98: ; 0x0225EC98
 _0225ECD0:
 	mov r0, #0x75
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	mov r0, #0x75
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -4981,7 +4981,7 @@ _0225ED2A:
 	ldr r1, [r2, #0x14]
 	add r1, r2, r1
 	sub r1, r1, r0
-	bl ReallocFromHeap
+	bl Heap_Realloc
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov93_0225EC98

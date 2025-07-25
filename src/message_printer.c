@@ -15,10 +15,10 @@ static const u16 _020F5C24[][2] = {
     { 0x02A0, 0x0010 },
 };
 
-MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, HeapID heapId) {
-    MessagePrinter *messagePrinter = AllocFromHeap(heapId, sizeof(MessagePrinter));
+MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, enum HeapID heapID) {
+    MessagePrinter *messagePrinter = Heap_Alloc(heapID, sizeof(MessagePrinter));
     if (messagePrinter != NULL) {
-        messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, TRUE, &messagePrinter->ppCharData, heapId);
+        messagePrinter->charData = GfGfxLoader_GetCharData(NARC_graphic_font, 5, TRUE, &messagePrinter->ppCharData, heapID);
         int i;
         u8 *ptr = messagePrinter->ppCharData->pRawData;
         for (i = 0; i < messagePrinter->ppCharData->szByte; i++) {

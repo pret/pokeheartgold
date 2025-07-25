@@ -13,7 +13,7 @@ typedef struct Mailbox {
     Mail msgs[MAILBOX_MSG_COUNT];
 } Mailbox;
 
-Mail *Mail_New(HeapID heapId);
+Mail *Mail_New(enum HeapID heapID);
 void Mail_Copy(const Mail *src, Mail *dest);
 void Mail_Init(Mail *mail);
 BOOL Mail_TypeIsValid(Mail *mail);
@@ -33,7 +33,7 @@ void Mail_SetMessage(Mail *mail, const MailMessage *src, int i);
 Mailbox *Save_Mailbox_Get(SaveData *saveData);
 u32 Save_Mailbox_sizeof(void);
 void Save_Mailbox_Init(Mailbox *mailbox);
-Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId);
+Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, enum HeapID heapID);
 int Mailbox_GetFirstEmptySlotIdx(Mailbox *mailbox);
 void Mailbox_DeleteSlotI(Mail *msgs, int n, int i);
 void Mailbox_CopyMailToSlotI(Mail *msgs, int n, int i, const Mail *src);

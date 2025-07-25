@@ -3,6 +3,6 @@
 
 #include "heap.h"
 
-void ShowWFCUserInfoWarning(HeapID heapId, int a1);
+void ShowWFCUserInfoWarning(enum HeapID heapID, int a1);
 
 #endif // POKEHEARTGOLD_WFC_USER_INFO_WARNING_H

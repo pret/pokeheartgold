@@ -1490,7 +1490,7 @@ sub_02010B14: ; 0x02010B14
 	ldr r0, [r5, #0x20]
 	add r6, r1, #0
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	mov r2, #0x1c
 	mov r1, #0
@@ -1953,7 +1953,7 @@ sub_02010E64: ; 0x02010E64
 _02010E7A:
 	ldr r1, _02010EC0 ; =0x00000604
 	add r0, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	mov r0, #1
 	str r0, [r5, #4]
@@ -1966,7 +1966,7 @@ _02010E7A:
 _02010E94:
 	ldr r1, _02010EC4 ; =0x00000C08
 	add r0, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	mov r0, #2
 	str r0, [r5, #4]
@@ -3027,7 +3027,7 @@ sub_0201164C: ; 0x0201164C
 	ldr r0, [r5, #0x20]
 	add r6, r1, #0
 	mov r1, #0x4c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	add r4, r0, #0
 	ldr r0, [r5, #0x10]
@@ -3115,7 +3115,7 @@ sub_020116EC: ; 0x020116EC
 	add r6, r1, #0
 	mov r1, #0x98
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	add r4, r0, #0
 	ldr r0, [r5, #0x10]
@@ -3328,7 +3328,7 @@ sub_02011884: ; 0x02011884
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x38
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
@@ -3705,7 +3705,7 @@ sub_02011B5C: ; 0x02011B5C
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
@@ -3967,7 +3967,7 @@ sub_02011D60: ; 0x02011D60
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
@@ -4299,7 +4299,7 @@ sub_02011FF8: ; 0x02011FF8
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
@@ -4387,7 +4387,7 @@ sub_02012090: ; 0x02012090
 	mul r1, r2
 	str r3, [sp, #0x1c]
 	str r0, [sp, #0x44]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r6, #0xc]
 	cmp r0, #0
 	bne _020120B8
@@ -4667,7 +4667,7 @@ sub_020122B8: ; 0x020122B8
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x38
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	mov r1, #0
 	mov r2, #0x38
@@ -5087,7 +5087,7 @@ sub_020125EC: ; 0x020125EC
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x38
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	mov r1, #0
 	mov r2, #0x38
@@ -5438,7 +5438,7 @@ sub_0201289C: ; 0x0201289C
 	mov r1, #0xcd
 	ldr r0, [r5, #0x20]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xcd
 	str r0, [r5, #0x14]
 	mov r1, #0
@@ -5784,7 +5784,7 @@ sub_02012B1C: ; 0x02012B1C
 	mov r1, #0xe2
 	ldr r0, [r5, #0x20]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xe2
 	str r0, [r5, #0x14]
 	mov r1, #0

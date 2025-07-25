@@ -21,7 +21,7 @@ _021E591C:
 	mov r0, #3
 	mov r1, #0x84
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0x94
 	mov r2, #0x84
@@ -126,7 +126,7 @@ PokeathlonCourseRecord_Exit: ; 0x021E5A04
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x84
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021E5A34 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -279,7 +279,7 @@ ov99_021E5B54: ; 0x021E5B54
 	ldr r0, [r5, #0xc]
 	add r4, r1, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r4]
 	str r1, [r0]
 	ldr r1, [r4, #4]
@@ -1838,7 +1838,7 @@ _021E6798:
 	mov r0, #3
 	mov r1, #0x84
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x49
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -1925,7 +1925,7 @@ ov99_021E6840: ; 0x021E6840
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x84
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021E6884 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -2842,7 +2842,7 @@ ov99_021E6FD0: ; 0x021E6FD0
 	ldr r0, [r7, #0xc]
 	add r5, r1, #0
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
@@ -4005,7 +4005,7 @@ _021E783C:
 	mov r0, #3
 	mov r1, #0x84
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x4d
 	add r0, r4, #0
 	lsl r1, r1, #4
@@ -4101,7 +4101,7 @@ PokeathlonMedals_Exit: ; 0x021E78F0
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x84
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021E7948 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -5372,7 +5372,7 @@ _021E831E:
 	mov r0, #3
 	mov r1, #0x84
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0xe4
 	mov r2, #0x84
@@ -5445,7 +5445,7 @@ PokeathlonEventRecord_Exit: ; 0x021E83AC
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x84
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021E83F0 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -7531,7 +7531,7 @@ ov99_021E93DC: ; 0x021E93DC
 	mov r1, #7
 	ldr r0, [r5, #0xc]
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #7
 	add r4, r0, #0
 	mov r1, #0

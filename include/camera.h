@@ -71,9 +71,9 @@ typedef struct Camera {
     CameraHistory *history;
 } Camera;
 
-void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, HeapID heapId, Camera *camera);
+void Camera_History_New(s32 count, s32 initialWriteIdx, s32 updateEnableFlags, enum HeapID heapID, Camera *camera);
 void Camera_History_Delete(Camera *camera);
-Camera *Camera_New(HeapID heapId);
+Camera *Camera_New(enum HeapID heapID);
 void Camera_Delete(Camera *camera);
 void Camera_Copy(Camera *src, Camera *dest);
 void Camera_SetStaticPtr(Camera *camera);

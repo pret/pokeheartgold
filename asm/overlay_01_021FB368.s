@@ -57,12 +57,12 @@ ov01_021FB3A4: ; 0x021FB3A4
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x18
 	add r4, r0, #0
 	add r0, r6, #0
 	mul r1, r5
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #4]
 	mov r6, #0
 	str r5, [r4]

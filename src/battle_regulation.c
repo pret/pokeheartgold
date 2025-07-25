@@ -10,9 +10,9 @@
 
 static BOOL sub_02074C50(u16 *a0, u16 *a1, u16 *a2, int a3, int a4, int a5, int a6);
 
-PokedexData *PokedexData_CreateAndLoad(HeapID heapId) {
-    PokedexData *pokedex = PokedexData_Create(heapId);
-    PokedexData_LoadAll(pokedex, 0, heapId);
+PokedexData *PokedexData_CreateAndLoad(enum HeapID heapID) {
+    PokedexData *pokedex = PokedexData_Create(heapID);
+    PokedexData_LoadAll(pokedex, 0, heapID);
     return pokedex;
 }
 

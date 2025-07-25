@@ -137,7 +137,7 @@ CallTask_NPCTrade: ; 0x02067A1C
 	mov r1, #0x2c
 	add r6, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x2c
 	add r4, r0, #0

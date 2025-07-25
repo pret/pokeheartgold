@@ -61,9 +61,9 @@
 .public YesNoPrompt_Reset
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

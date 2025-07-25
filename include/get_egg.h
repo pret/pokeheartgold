@@ -20,6 +20,6 @@ void Save_Daycare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_i
 u16 Save_Daycare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt);
 u8 Save_Daycare_GetState(Daycare *dayCare);
 u8 Save_Daycare_CalcCompatibility(Daycare *dayCare);
-void sub_0206D328(Pokemon *mon, HeapID heapId);
+void sub_0206D328(Pokemon *mon, enum HeapID heapID);
 
 #endif

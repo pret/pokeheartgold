@@ -708,7 +708,7 @@ _021E5E46:
 	mov r0, #3
 	mov r1, #0x94
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0x34
 	mov r2, #0x94
@@ -808,7 +808,7 @@ _021E5F2E:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x94
-	bl DestroyHeap
+	bl Heap_Destroy
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov111_021E5F04
@@ -1388,7 +1388,7 @@ _021E63E4:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0x78
 	ldr r0, [r0]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #0x28]
 	mov r1, #0
 	mov r2, #0x78
@@ -1779,7 +1779,7 @@ ov111_021E66DC: ; 0x021E66DC
 	add r5, r0, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x20
@@ -1911,7 +1911,7 @@ ov111_021E67C4: ; 0x021E67C4
 	push {r3, r4, r5, lr}
 	mov r1, #0x34
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0

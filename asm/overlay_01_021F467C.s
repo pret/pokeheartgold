@@ -32,7 +32,7 @@ ov01_021F467C: ; 0x021F467C
 	bl GX_ResetBankForBG
 	mov r0, #4
 	add r1, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	mov r0, #0
 	add r1, r7, #0

@@ -61,8 +61,8 @@ BOOL Mail_TypeIsValid(Mail *mail) {
     return mail->mail_type <= NUM_MAIL - 1;
 }
 
-Mail *Mail_New(HeapID heapId) {
-    Mail *ret = (Mail *)AllocFromHeapAtEnd(heapId, sizeof(Mail));
+Mail *Mail_New(enum HeapID heapID) {
+    Mail *ret = (Mail *)Heap_AllocAtEnd(heapID, sizeof(Mail));
     Mail_Init(ret);
     return ret;
 }
@@ -301,9 +301,9 @@ u32 Mailbox_CountMessages(Mailbox *mailbox, int unused) {
     return MailArray_CountMessages(mailbox->msgs, MAILBOX_MSG_COUNT);
 }
 
-Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, HeapID heapId) {
+Mail *Mailbox_AllocAndFetchMailI(Mail *msgs, int n, int i, enum HeapID heapID) {
     const Mail *src = Mailbox_GetPtrToSlotI(msgs, n, i);
-    Mail *ret = Mail_New(heapId);
+    Mail *ret = Mail_New(heapID);
     if (src != NULL) {
         Mail_Copy(src, ret);
     }

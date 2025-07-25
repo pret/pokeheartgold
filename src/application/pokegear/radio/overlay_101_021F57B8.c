@@ -46,11 +46,11 @@ static const RadioFuncs sRadioShowFuncs[] = {
     { RadioShow_Commercials_Setup,         RadioShow_Commercials_Print,         RadioShow_Commercials_Teardown         },
 };
 
-RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId) {
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, enum HeapID heapID) {
     LocalFieldData *localFieldData = Save_LocalFieldData_Get(saveData);
     PlayerSaveData *playerData = LocalFieldData_GetPlayer(localFieldData);
     u16 *pMusicID = LocalFieldData_GetMusicIdAddr(localFieldData);
-    RadioShow *ret = AllocFromHeap(heapId, sizeof(RadioShow));
+    RadioShow *ret = Heap_Alloc(heapID, sizeof(RadioShow));
     MI_CpuClear8(ret, sizeof(RadioShow));
     ret->saveData = saveData;
     ret->mapID = mapID;
@@ -63,7 +63,7 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
     ret->fgColor = ret->textColor >> 16;
     ret->shadowColor = ret->textColor >> 8;
     ret->bgColor = ret->textColor;
-    ret->heapID = heapId;
+    ret->heapID = heapID;
     ret->msgData_269 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0269_bin, ret->heapID);
     ret->msgFormat = MessageFormat_New_Custom(8, 51, ret->heapID);
     ret->curLineStr = String_New(51, ret->heapID);

@@ -66,7 +66,7 @@ typedef struct WorkflowEngine {
     u8 taskState;     // The state of the Task that is currently being executed
 } WorkflowEngine;
 
-WorkflowEngine *CreateWorkflowEngine(HeapID, VoltorbFlipWorkflows *, int, struct VoltorbFlipAppWork *);
+WorkflowEngine *CreateWorkflowEngine(enum HeapID, VoltorbFlipWorkflows *, int, struct VoltorbFlipAppWork *);
 void FreeWorkflowEngine(WorkflowEngine *);
 BOOL RunWorkflowEngine(struct WorkflowEngine *);
 void EnqueueWorkflow(WorkflowEngine *, Workflow);

@@ -3,7 +3,7 @@
 
 #include "heap.h"
 
-void sub_020379A0(HeapID heapId);
+void sub_020379A0(enum HeapID heapID);
 void sub_02037AC0(u8 a0);
 BOOL sub_02037B38(u8 a0);
 void sub_02037BEC(void);

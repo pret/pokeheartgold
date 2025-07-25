@@ -14,7 +14,7 @@ sub_02054514: ; 0x02054514
 	bne _02054534
 	ldr r1, _02054538 ; =0x000080E2
 	mov r0, #0xb
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x5c]
 	ldr r0, [r5, #0x30]
 	ldr r1, [r5, #0x5c]

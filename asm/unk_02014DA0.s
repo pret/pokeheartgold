@@ -85,7 +85,7 @@ _02014DD2:
 _02014DDC:
 	ldr r0, [sp, #0x2c]
 	mov r1, #0xdc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02014DEC
 	bl GF_AssertFail
@@ -1561,7 +1561,7 @@ ListMenuCursorNew: ; 0x02015788
 	push {r3, r4, r5, lr}
 	mov r1, #8
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	beq _020157AA
 	ldr r0, _020157B0 ; =0x0001020F

@@ -39,7 +39,7 @@ void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
     if (partyMenu->iconFormChange != NULL) {
         GF_ASSERT(FALSE);
     }
-    partyMenu->iconFormChange = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(IconFormChangeData));
+    partyMenu->iconFormChange = Heap_Alloc(HEAP_ID_PARTY_MENU, sizeof(IconFormChangeData));
     MI_CpuClear8(partyMenu->iconFormChange, sizeof(IconFormChangeData));
     partyMenu->iconFormChange->partyMonIndex = partyMenu->partyMonIndex;
 }
@@ -151,7 +151,7 @@ static void _CleanupEffects(PartyMenu *partyMenu) {
 
 static void _CreateParticleSystem(IconFormChangeData *partyMenu) {
     sub_02014DA0();
-    void *particleHeap = AllocFromHeap(HEAP_ID_PARTY_MENU, PARTICLE_HEAP_SIZE);
+    void *particleHeap = Heap_Alloc(HEAP_ID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
     partyMenu->particleSystem = sub_02014DB4(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAP_ID_PARTY_MENU);
 

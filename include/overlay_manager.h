@@ -27,9 +27,9 @@ struct OverlayManager {
     u32 unk_24;
 };
 
-OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *parentWork, HeapID heapId);
+OverlayManager *OverlayManager_New(const OverlayManagerTemplate *template, void *parentWork, enum HeapID heapID);
 void OverlayManager_Delete(OverlayManager *man);
-void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, HeapID heapId);
+void *OverlayManager_CreateAndGetData(OverlayManager *man, u32 size, enum HeapID heapID);
 void *OverlayManager_GetData(OverlayManager *man);
 void OverlayManager_FreeData(OverlayManager *man);
 void *OverlayManager_GetArgs(OverlayManager *man);

@@ -5,7 +5,7 @@
 #include "overlay_manager.h"
 #include "save.h"
 
-#define HEAP_ID_TRAINER_CARD ((HeapID)94)
+#define HEAP_ID_TRAINER_CARD ((enum HeapID)94)
 
 typedef struct UnkStruct_0203F7C2 {
     MenuInputStateMgr *menuInputStatePtr;
@@ -31,7 +31,7 @@ typedef struct {
 } Ov50_021E5A3C;
 
 typedef struct {
-    HeapID heapId;
+    enum HeapID heapID;
     u8 unk4[4];
     OverlayManager *ov_mgr;
     Ov50_021E5A3C *parentData;

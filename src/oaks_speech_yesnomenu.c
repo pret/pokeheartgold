@@ -7,7 +7,7 @@
 #include "yes_no_prompt.h"
 
 struct OakSpeechYesNo {
-    HeapID heapId;
+    enum HeapID heapID;
     u8 filler_04[0x8];
     BgConfig *bgConfig;
     Sprite *sprite;
@@ -27,12 +27,12 @@ static void OakSpeechYesNo_SetCursorSpritePos(OakSpeechYesNo *yesnoMenu);
 static BOOL OakSpeechYesNo_HandleInput(OakSpeechYesNo *yesnoMenu);
 static BOOL OakSpeechYesNo_WaitCursorSpriteAnim(OakSpeechYesNo *yesnoMenu);
 
-OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId) {
+OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, enum HeapID heapID) {
     GF_ASSERT(bgConfig != NULL);
-    volatile HeapID heapId_2 = heapId;
-    OakSpeechYesNo *ret = AllocFromHeap(heapId, sizeof(OakSpeechYesNo));
+    volatile enum HeapID heapId_2 = heapID;
+    OakSpeechYesNo *ret = Heap_Alloc(heapID, sizeof(OakSpeechYesNo));
     MI_CpuClear8(ret, sizeof(OakSpeechYesNo));
-    ret->heapId = heapId;
+    ret->heapID = heapID;
     ret->bgConfig = bgConfig;
     ret->sprite = sprite;
     ret->backgroundBgId = backgroundBgId;
@@ -54,14 +54,14 @@ void OakSpeechYesNo_Delete(OakSpeechYesNo *yesnoMenu) {
 void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette) {
     NARC *narc;
     u8 bgId;
-    HeapID heapId;
+    enum HeapID heapID;
 
-    heapId = yesnoMenu->heapId;
+    heapID = yesnoMenu->heapID;
     bgId = yesnoMenu->backgroundBgId;
-    narc = NARC_New(NARC_a_2_3_7, heapId);
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)(32 * palette), 0x20, heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 1, yesnoMenu->bgConfig, (GFBgLayer)bgId, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 10, yesnoMenu->bgConfig, (GFBgLayer)bgId, 0, 0, FALSE, heapId);
+    narc = NARC_New(NARC_a_2_3_7, heapID);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)(32 * palette), 0x20, heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 1, yesnoMenu->bgConfig, (GFBgLayer)bgId, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 10, yesnoMenu->bgConfig, (GFBgLayer)bgId, 0, 0, FALSE, heapID);
     BgTilemapRectChangePalette(yesnoMenu->bgConfig, bgId, 0, 0, 32, 24, palette);
     BgCommitTilemapBufferToVram(yesnoMenu->bgConfig, bgId);
     ToggleBgLayer(bgId, GF_PLANE_TOGGLE_OFF);
@@ -117,8 +117,8 @@ static void OakSpeechYesNo_RemoveWindows(OakSpeechYesNo *yesnoMenu) {
 }
 
 static void OakSpeechYesNo_PrintMessageOnWindow(OakSpeechYesNo *yesnoMenu, Window *window, int msgId, int msgBank) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, yesnoMenu->heapId);
-    String *string = ReadMsgData_ExpandPlaceholders(yesnoMenu->msgFormat, msgData, msgId, yesnoMenu->heapId);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, yesnoMenu->heapID);
+    String *string = ReadMsgData_ExpandPlaceholders(yesnoMenu->msgFormat, msgData, msgId, yesnoMenu->heapID);
     FillWindowPixelBuffer(window, 0);
     AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     CopyWindowToVram(window);

@@ -3,8 +3,8 @@
 .public UnloadOverlayByID
 .public HandleLoadOverlay
 .public OverlayManager_GetArgs
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public LoadDwcOverlay
 .public UnloadDwcOverlay
 .public LoadOVY13

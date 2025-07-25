@@ -64,9 +64,9 @@
 .public Sys_SetSleepDisableFlag
 .public Sys_ClearSleepDisableFlag
 .public SetKeyRepeatTimers
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
