@@ -18,7 +18,7 @@ void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yR
 void ov101_021EC778(PokegearMapAppData *mapApp);
 void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y);
 void ov101_021EC944(PokegearMapAppData *mapApp);
-void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2);
+void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY);
 BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 a1);
 void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL a1);
 void PokegearMap_MarkingsMenu_ReturnToTopLevel(PokegearMapAppData *mapApp);
@@ -108,7 +108,7 @@ BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
         mapApp->cursorSpeed = 2;
         mapApp->draggingMarking = 1;
         mapApp->unk_139_2 = 1;
-        mapApp->unk_114 = object->pos;
+        mapApp->cursorPos = object->pos;
         return TRUE;
     }
     return FALSE;
@@ -164,7 +164,7 @@ int ov101_021EB818(PokegearMapAppData *mapApp) {
     }
     if (ov101_021EB654(mapApp)) {
         ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 0);
+        ov101_021EAD90(mapApp, FALSE);
         ov101_021EB1E0(mapApp, 1);
     }
     return -1;
@@ -172,17 +172,17 @@ int ov101_021EB818(PokegearMapAppData *mapApp) {
 
 int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp) {
     u32 newKeys = gSystem.newKeys;
-    int r5;
+    int flyDest;
 
     if (gSystem.heldKeys == 0 || mapApp->draggingMarking || mapApp->unk_139_2) {
         return -1;
     }
     if (newKeys & PAD_BUTTON_A) {
-        if (mapApp->flyMapState == 1) {
-            r5 = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->playerX, mapApp->playerY - 2);
-            if (r5 > 0) {
+        if (mapApp->type == PGMAP_TYPE_FLY) {
+            flyDest = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->playerX, mapApp->playerY - 2);
+            if (flyDest > 0) {
                 PlaySE(SEQ_SE_GS_GEARDECIDE);
-                return ov101_021EB784(mapApp, r5);
+                return ov101_021EB784(mapApp, flyDest);
             } else {
                 return -1;
             }
@@ -195,13 +195,13 @@ int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp) {
     if (!ov101_021EB654(mapApp)) {
         return -1;
     }
-    if (mapApp->flyMapState == 2) {
+    if (mapApp->type == PGMAP_TYPE_TOWN_MAP) {
         ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 1);
+        ov101_021EAD90(mapApp, TRUE);
         ov101_021EB1E0(mapApp, 1);
     } else {
         ov101_021EA8A8(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 0);
+        ov101_021EAD90(mapApp, FALSE);
         ov101_021EB1E0(mapApp, 1);
     }
     return -1;
@@ -213,8 +213,8 @@ const TouchscreenHitbox ov101_021F7EA4[2] = {
 };
 
 int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
-    u16 sp4;
-    int r6;
+    u16 pixel;
+    int input;
 
     static const TouchscreenHitbox ov101_021F7EAC[] = {
         { .rect = { 0x10, 0x40, 0xd8, 0xf8 } },
@@ -228,11 +228,11 @@ int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     if (mapApp->draggingMarking || mapApp->unk_139_1) {
         return -1;
     }
-    r6 = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F7EAC);
-    if (r6 != TOUCH_MENU_NO_INPUT) {
+    input = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F7EAC);
+    if (input != TOUCH_MENU_NO_INPUT) {
         *pRetIsTouch = TRUE;
         ov101_021E94C0(mapApp);
-        if (r6 == 0) {
+        if (input == 0) {
             if (!ov101_021EA6C4(mapApp, &mapApp->selectedLoc)) {
                 return -1;
             }
@@ -257,14 +257,14 @@ int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     if (!TouchscreenHitbox_TouchNewIsIn(&ov101_021F7EA4[0])) {
         return -1;
     }
-    sp4 = 1;
-    if (!DoesPixelAtScreenXYMatchPtrVal(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, gSystem.touchX, gSystem.touchY, &sp4)) {
+    pixel = 1;
+    if (!DoesPixelAtScreenXYMatchPtrVal(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, gSystem.touchX, gSystem.touchY, &pixel)) {
         return -1;
     }
     PlaySE(SEQ_SE_GS_GEARMAPTOUCH);
     ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
     ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-    ov101_021EAD90(mapApp, 0);
+    ov101_021EAD90(mapApp, FALSE);
     ov101_021EB1E0(mapApp, 1);
     mapApp->unk_146 = mapApp->unk_142 = gSystem.touchX;
     mapApp->unk_148 = mapApp->unk_144 = gSystem.touchY;
@@ -275,9 +275,9 @@ int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
 }
 
 int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
-    u16 sp1C;
+    u16 pixel;
     int flyDest;
-    int r0;
+    int input;
 
     static const TouchscreenHitbox sTouchscreenHitbox_CloseButton[2] = {
         { .rect = { 0x98, 0xb8, 0xc2, 0xfe } },
@@ -290,8 +290,8 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
     if (mapApp->draggingMarking) {
         return -1;
     }
-    r0 = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitbox_CloseButton);
-    if (r0 != -1) {
+    input = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitbox_CloseButton);
+    if (input != TOUCH_MENU_NO_INPUT) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 24, 20, 8, 4, mapApp->unk_178->rawData, 0, 24, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
         ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
         ov101_021E94C0(mapApp);
@@ -302,21 +302,21 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
     if (!TouchscreenHitbox_TouchNewIsIn(&ov101_021F7EA4[1])) {
         return -1;
     }
-    sp1C = 1;
-    if (!DoesPixelAtScreenXYMatchPtrVal(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, gSystem.touchX, gSystem.touchY, &sp1C)) {
+    pixel = 1;
+    if (!DoesPixelAtScreenXYMatchPtrVal(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, gSystem.touchX, gSystem.touchY, &pixel)) {
         return -1;
     }
     PlaySE(SEQ_SE_GS_GEARMAPTOUCH);
     *pRetIsTouch = TRUE;
-    if (mapApp->flyMapState == 2) {
+    if (mapApp->type == PGMAP_TYPE_TOWN_MAP) {
         ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
         ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 1);
+        ov101_021EAD90(mapApp, TRUE);
         ov101_021EB1E0(mapApp, 1);
     } else {
         ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
         ov101_021EA8A8(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 0);
+        ov101_021EAD90(mapApp, FALSE);
         ov101_021EB1E0(mapApp, 1);
         flyDest = PokegearMap_GetFlyDestinationAtCoord(mapApp, mapApp->playerX, mapApp->playerY - 2);
         if (flyDest > 0) {
@@ -593,7 +593,7 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
     } else {
         delta = 4;
     }
-    ov101_021E9464(mapApp, mapApp->unk_114.x, mapApp->unk_114.y, &x, &y);
+    ov101_021E9464(mapApp, mapApp->cursorPos.x, mapApp->cursorPos.y, &x, &y);
 
     // Move the cursor object.
     // Scroll the screen if this would move the cursor out of bounds.
@@ -747,7 +747,7 @@ void ov101_021EC944(PokegearMapAppData *mapApp) {
     u16 i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
-    if (mapApp->flyMapState) {
+    if (mapApp->type != PGMAP_TYPE_GEAR) {
         return;
     }
     for (i = PGMAP_SPRITE_CURSOR; i < mapApp->objManager->num; ++i) {
@@ -755,7 +755,7 @@ void ov101_021EC944(PokegearMapAppData *mapApp) {
     }
 }
 
-void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2) {
+void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY) {
     s16 r7;
     s16 r4;
 
@@ -784,11 +784,11 @@ void ov101_021EC980(PokegearMapAppData *mapApp, s16 *a1, s16 *a2) {
     }
     r7 += mapApp->cursorSpriteState.left;
     r4 += mapApp->cursorSpriteState.top;
-    if (a1 != NULL) {
-        *a1 = r7;
+    if (pX != NULL) {
+        *pX = r7;
     }
-    if (a2 != NULL) {
-        *a2 = r4;
+    if (pY != NULL) {
+        *pY = r4;
     }
     ov101_021E94C0(mapApp);
 }

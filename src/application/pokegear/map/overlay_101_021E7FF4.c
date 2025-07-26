@@ -26,8 +26,8 @@ void PokegearMap_CreateObjectsManager(PokegearMapAppData *mapApp);
 void PokegearMap_DestroyObjectsManager(PokegearMapAppData *mapApp);
 void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp);
 void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp);
-void ov101_021E8AE4(PokegearMapAppData *mapApp);
-void ov101_021E8BB8(PokegearMapAppData *mapApp);
+void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp);
+void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp);
 void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
 void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
 void PokegearMap_LoadSprites(PokegearMapAppData *mapApp);
@@ -678,9 +678,9 @@ void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp) {
          },
     };
 
-    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsMarkingsMenu, NELEMS(buttonSpecsMarkingsMenu), 0, FALSE, mapApp->heapId, objects[12].sprite, objects[13].sprite, objects[14].sprite, objects[15].sprite);
-    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsSelectIcon, NELEMS(buttonSpecsSelectIcon), 0, FALSE, mapApp->heapId, objects[16].sprite, objects[17].sprite, objects[18].sprite, objects[19].sprite);
-    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsTrashCan, NELEMS(buttonSpecsTrashCan), 0, FALSE, mapApp->heapId, objects[16].sprite, objects[17].sprite, objects[18].sprite, objects[19].sprite);
+    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsMarkingsMenu, NELEMS(buttonSpecsMarkingsMenu), 0, FALSE, mapApp->heapId, objects[PGMAP_SPRITE_MARKINGS_CURSOR_MAIN_0].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_MAIN_1].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_MAIN_2].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_MAIN_3].sprite);
+    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsSelectIcon, NELEMS(buttonSpecsSelectIcon), 0, FALSE, mapApp->heapId, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_0].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_1].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_2].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_3].sprite);
+    PokegearAppSwitch_AddButtons(mapApp->pokegear->appSwitch, buttonSpecsTrashCan, NELEMS(buttonSpecsTrashCan), 0, FALSE, mapApp->heapId, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_0].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_1].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_2].sprite, objects[PGMAP_SPRITE_MARKINGS_CURSOR_SUB_3].sprite);
 
     PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 1, FALSE);
     PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 2, FALSE);
@@ -812,23 +812,23 @@ void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp) {
     // Marker icons
     for (i = 0; i < 4; ++i) {
         PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &spriteTemplates[0]));
-        Sprite_SetPositionXY(objects[i].sprite, 0x68 * (i % 2) + 0x20, 0x15 * (i / 2) + 0xCB);
-        thunk_Sprite_SetPriority(objects[i].sprite, 0);
+        Sprite_SetPositionXY(objects[PGMAP_SPRITE_MARKER0 + i].sprite, 0x68 * (i % 2) + 0x20, 0x15 * (i / 2) + 0xCB);
+        thunk_Sprite_SetPriority(objects[PGMAP_SPRITE_MARKER0 + i].sprite, 0);
     }
 
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &spriteTemplates[1]));
-    thunk_Sprite_SetPriority(objects[4].sprite, 0);
+    thunk_Sprite_SetPriority(objects[PGMAP_SPRITE_GEAR_BATTLE].sprite, 0);
 
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &spriteTemplates[2]));
 
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &spriteTemplates[3]));
 
-    for (i = 0; i < 4; ++i) {
+    for (i = 0; i < ROAMER_MAX; ++i) {
         PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &spriteTemplates[4]));
-        Sprite_UpdateAnim(objects[i + 7].sprite, FX32_CONST(i));
+        Sprite_UpdateAnim(objects[i + PGMAP_SPRITE_ROAMER_RAIKOU].sprite, FX32_CONST(i));
     }
 
-    for (i = 0; i < 11; ++i) {
+    for (i = 0; i < PGMAP_SPRITE_ALWAYS_END; ++i) {
         idx = i;
         Sprite_GetPositionXY(objects[idx].sprite, &objects[idx].pos.x, &objects[idx].pos.y);
         Sprite_SetDrawFlag(objects[idx].sprite, FALSE);
@@ -870,7 +870,7 @@ void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp) 
     }
 }
 
-void ov101_021E8AE4(PokegearMapAppData *mapApp) {
+void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
     TextOBJTemplate template;
     u32 size;
     int i;
@@ -893,14 +893,14 @@ void ov101_021E8AE4(PokegearMapAppData *mapApp) {
     for (i = 0; i < 4; ++i) {
         sub_02021AC8(size, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, &mapApp->unk_044[i].unk_4);
         template.offset = mapApp->unk_044[i].unk_4.offset;
-        template.sprite = mapApp->objManager->objects[24 + i].sprite;
+        template.sprite = mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0 + i].sprite;
         mapApp->unk_044[i].textOBJ = TextOBJ_Create(&template, mapApp->unk_040);
         TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[i].textOBJ, FALSE);
         TextOBJ_SetPaletteNum(mapApp->unk_044[i].textOBJ, 7);
     }
 }
 
-void ov101_021E8BB8(PokegearMapAppData *mapApp) {
+void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 4; ++i) {
@@ -1025,11 +1025,11 @@ void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
 
     Sprite_SetAnimActiveFlag(objects[PGMAP_SPRITE_MARKINGS_BLINKING_ARROW].sprite, TRUE);
     PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
-    ov101_021E8AE4(mapApp);
+    PokegearMap_CreateMarkingsECWordTextOBJs(mapApp);
 }
 
 void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
-    ov101_021E8BB8(mapApp);
+    PokegearMap_DestroyMarkingsECWordTextOBJs(mapApp);
     PokegearObjectsManager_DeleteSpritesFromIndexToEnd(mapApp->objManager, PGMAP_SPRITE_ALWAYS_END);
 }
 
@@ -1078,7 +1078,7 @@ void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->unk_16C->rawData, 0, 7, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
 
     ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-    ov101_021EAD90(mapApp, 0);
+    ov101_021EAD90(mapApp, FALSE);
     ov101_021EB1E0(mapApp, 1);
     PokegearMap_LoadMapHasMarkingsIndicatorSprites(mapApp);
     ov101_021EA238(mapApp, 0);

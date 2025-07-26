@@ -616,12 +616,12 @@ void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
     // Markers
     for (i = 0; i < 4; ++i) {
         PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[0]));
-        Sprite_SetPositionXY(objects[i].sprite, 32 + 104 * (i % 2), 203 + 21 * (i / 2));
-        thunk_Sprite_SetPriority(objects[i].sprite, 0);
+        Sprite_SetPositionXY(objects[i + PGMAP_SPRITE_MARKER0].sprite, 32 + 104 * (i % 2), 203 + 21 * (i / 2));
+        thunk_Sprite_SetPriority(objects[i + PGMAP_SPRITE_MARKER0].sprite, 0);
     }
     // Battle or gift indicator
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[1]));
-    thunk_Sprite_SetPriority(objects[4].sprite, 0);
+    thunk_Sprite_SetPriority(objects[PGMAP_SPRITE_GEAR_BATTLE].sprite, 0);
     // Cursor
     PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[2]));
     // Player sprite
@@ -629,7 +629,7 @@ void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
     // Roamers
     for (i = 0; i < 4; ++i) {
         PokegearObjectsManager_AppendSprite(mapApp->objManager, SpriteSystem_CreateSpriteFromResourceHeader(mapApp->pokegear->spriteSystem, mapApp->pokegear->spriteManager, &sSpriteTemplates[4]));
-        Sprite_UpdateAnim(objects[7 + i].sprite, FX32_CONST(i));
+        Sprite_UpdateAnim(objects[PGMAP_SPRITE_ROAMER_RAIKOU + i].sprite, FX32_CONST(i));
     }
 
     // Fly menu specific sprites
@@ -682,10 +682,10 @@ void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 24, mapApp->unk_178->rawData, 0, 0, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
     ov101_021EAF40(mapApp);
     mapApp->flyDestination = -1;
-    if (mapApp->flyMapState == 2) {
+    if (mapApp->type == PGMAP_TYPE_TOWN_MAP) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 6, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
         ov101_021EA794(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 1);
+        ov101_021EAD90(mapApp, TRUE);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, -81);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, -81);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_Y, -81);
@@ -693,11 +693,11 @@ void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
         ov101_021EA4D0(mapApp, 0);
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 16, mapApp->unk_16C->rawData, 0, 8, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
         ov101_021EA8A8(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, 0);
+        ov101_021EAD90(mapApp, FALSE);
         PokegearMap_PrintLandmarkNameAndFlavorText(mapApp, -1);
     }
-    ov101_021EB1E0(mapApp, 1);
-    ov101_021EA608(mapApp, 1);
+    ov101_021EB1E0(mapApp, TRUE);
+    ov101_021EA608(mapApp, TRUE);
     textX = FontID_String_GetWidth(4, mapApp->closeString, 0);
     textX = (48 - textX) / 2;
     AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 4, mapApp->closeString, textX, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 1, 0), NULL);

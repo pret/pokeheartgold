@@ -95,7 +95,7 @@ BOOL FlyMap_Exit(OverlayManager *man, int *state) {
 void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->pokegear->childAppdata = mapApp;
     mapApp->pokegear->menuInputState = (MenuInputState)mapApp->pokegear->args->menuInputState;
-    mapApp->flyMapState = mapApp->pokegear->args->isScriptedLaunch + 1;
+    mapApp->type = mapApp->pokegear->args->isScriptedLaunch + 1;
     mapApp->pokegear->reselectAppCB = PokegearMap_ShowMapCursor;
     mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
     MapApp_LoadMarkingsLinkedListFromSave(mapApp);
