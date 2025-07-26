@@ -2033,7 +2033,7 @@ _021E6BC6:
 	add r2, sp, #0x14
 	bl SpriteSystem_InitManagerWithCapacities
 	ldr r0, [r5]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	bl sub_02074490
 	mov r1, #0
 	add r3, r0, #0

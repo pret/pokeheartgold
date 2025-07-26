@@ -2323,15 +2323,15 @@ ov12_0226739C: ; 0x0226739C
 	ldr r0, _022673F8 ; =0x000004E4
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _022673FC ; =0x000004F8
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02267400 ; =0x0000050C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -2393,11 +2393,11 @@ ov12_02267418: ; 0x02267418
 	ldr r0, _02267484 ; =0x000004E4
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02267488 ; =0x000004F8
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2657,15 +2657,15 @@ _0226767E:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02267748 ; =0x00000534
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0226774C ; =0x00000584
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 _022676AA:
 	ldrh r0, [r6, #2]
 	cmp r0, #0
@@ -2673,15 +2673,15 @@ _022676AA:
 	ldr r0, _0226772C ; =0x000004E4
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02267750 ; =0x00000548
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02267754 ; =0x00000598
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 _022676CE:
 	ldrh r0, [r6, #4]
 	cmp r0, #0
@@ -2689,15 +2689,15 @@ _022676CE:
 	ldr r0, _02267730 ; =0x000004F8
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02267758 ; =0x0000055C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0226775C ; =0x000005AC
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 _022676F2:
 	ldrh r0, [r6, #6]
 	cmp r0, #0
@@ -2705,17 +2705,17 @@ _022676F2:
 	ldr r0, _02267734 ; =0x0000050C
 	mov r1, #0
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x57
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x17
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 _0226771A:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}

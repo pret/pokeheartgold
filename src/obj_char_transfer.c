@@ -319,21 +319,21 @@ void ObjCharTransfer_DeleteTaskCopyByProxyPtr(const NNSG2dImageProxy *proxy) {
     }
 }
 
-BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3) {
+BOOL sub_02021AC8(u32 size, BOOL atEnd, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3) {
     u32 offsetMain;
     u32 offsetSub;
     u32 sizeMain;
     u32 sizeSub;
     BOOL ret;
 
-    if (!a1) {
+    if (!atEnd) {
         ret = ObjCharTransfer_TryGetDestVramOffsets(size, vram, &offsetMain, &offsetSub);
         if (ret) {
             ObjCharTransfer_ReserveVramSpace(size, vram);
             a3->vram = vram;
             a3->size = size;
             a3->offset = vram == NNS_G2D_VRAM_TYPE_2DMAIN ? offsetMain : offsetSub;
-            a3->unk_0A = FALSE;
+            a3->isAtEnd = FALSE;
         }
     } else {
         ret = ObjCharTransferInternal_GetBlockNumAndFreeSpaceForTransfer(vram, &offsetMain, &offsetSub, size, &sizeMain, &sizeSub);
@@ -347,14 +347,14 @@ BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 
                 a3->size = sizeSub;
                 a3->offset = offsetSub + sObjCharTransferTasksManager->freeSizeSub;
             }
-            a3->unk_0A = TRUE;
+            a3->isAtEnd = TRUE;
         }
     }
     return ret;
 }
 
 void sub_02021B5C(UnkStruct_02021AC8 *a0) {
-    if (a0->unk_0A) {
+    if (a0->isAtEnd) {
         if (a0->vram & NNS_G2D_VRAM_TYPE_2DMAIN) {
             u32 blockMax = ObjCharTransfer_CalcBlockNumLimit(a0->size, sObjCharTransferTasksManager->blockSizeMain);
             u32 blockCur = ObjCharTransfer_CalcBlockNumLimit(a0->offset - sObjCharTransferTasksManager->freeSizeMain, sObjCharTransferTasksManager->blockSizeMain);
