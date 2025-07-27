@@ -11,31 +11,31 @@
 #include "unk_0200FA24.h"
 #include "unk_0208805C.h"
 
-void PokegearMap_InitBGs(PokegearMapAppData *mapApp);
-void PokegearMap_UnloadBGs(PokegearMapAppData *mapApp);
-void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame);
-void PokegearMap_UnloadGraphics(PokegearMapAppData *mapApp);
-void PokegearMap_InitWindows(PokegearMapAppData *mapApp);
-void PokegearMap_RemoveWindows(PokegearMapAppData *mapApp);
-void PokegearMap_InitMsg(PokegearMapAppData *mapApp);
-void PokegearMap_DeleteMsg(PokegearMapAppData *mapApp);
-void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp);
-void PokegearMap_RemoveUIButtons(PokegearMapAppData *mapApp);
-void PokegearMap_LoadPalettes(PokegearMapAppData *mapApp, u8 frame);
-void PokegearMap_CreateObjectsManager(PokegearMapAppData *mapApp);
-void PokegearMap_DestroyObjectsManager(PokegearMapAppData *mapApp);
-void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp);
-void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp);
-void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp);
-void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp);
-void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
-void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
-void PokegearMap_LoadSprites(PokegearMapAppData *mapApp);
-void PokegearMap_RemoveAuxSprites_MapMode(PokegearMapAppData *mapApp);
-void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp);
-void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp);
-void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp);
-void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1);
+static void PokegearMap_InitBGs(PokegearMapAppData *mapApp);
+static void PokegearMap_UnloadBGs(PokegearMapAppData *mapApp);
+static void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame);
+static void PokegearMap_UnloadGraphics(PokegearMapAppData *mapApp);
+static void PokegearMap_InitWindows(PokegearMapAppData *mapApp);
+static void PokegearMap_RemoveWindows(PokegearMapAppData *mapApp);
+static void PokegearMap_InitMsg(PokegearMapAppData *mapApp);
+static void PokegearMap_DeleteMsg(PokegearMapAppData *mapApp);
+static void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp);
+static void PokegearMap_RemoveUIButtons(PokegearMapAppData *mapApp);
+static void PokegearMap_LoadPalettes(PokegearMapAppData *mapApp, u8 frame);
+static void PokegearMap_CreateObjectsManager(PokegearMapAppData *mapApp);
+static void PokegearMap_DestroyObjectsManager(PokegearMapAppData *mapApp);
+static void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp);
+static void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp);
+static void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp);
+static void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp);
+static void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
+static void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp);
+static void PokegearMap_LoadSprites(PokegearMapAppData *mapApp);
+static void PokegearMap_RemoveAuxSprites_MapMode(PokegearMapAppData *mapApp);
+static void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp);
+static void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp);
+static void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp);
+static void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1);
 
 BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
@@ -166,7 +166,7 @@ BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp) {
     return FALSE;
 }
 
-void PokegearMap_InitBGs(PokegearMapAppData *mapApp) {
+static void PokegearMap_InitBGs(PokegearMapAppData *mapApp) {
     int i;
 
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_5, GX_BG0_AS_2D);
@@ -283,12 +283,12 @@ void PokegearMap_InitBGs(PokegearMapAppData *mapApp) {
     }
 }
 
-void PokegearMap_UnloadBGs(PokegearMapAppData *mapApp) {
+static void PokegearMap_UnloadBGs(PokegearMapAppData *mapApp) {
     Pokegear_ClearAppBgLayers(mapApp->pokegear);
     G2_SetBlendAlpha(0, 0, 0, 0);
 }
 
-void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame) {
+static void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame) {
     NARC *narc = NARC_New(NARC_application_pokegear_map_pgmap_gra, mapApp->heapId);
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, frame + NARC_pgmap_gra_pgmap_gra_00000026_NCGR, GF_BG_LYR_MAIN_1, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000010_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
@@ -305,7 +305,7 @@ void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame) {
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
-void PokegearMap_UnloadGraphics(PokegearMapAppData *mapApp) {
+static void PokegearMap_UnloadGraphics(PokegearMapAppData *mapApp) {
     Heap_Free(mapApp->unk_154[5]);
     Heap_Free(mapApp->unk_154[4]);
     Heap_Free(mapApp->unk_154[3]);
@@ -314,7 +314,7 @@ void PokegearMap_UnloadGraphics(PokegearMapAppData *mapApp) {
     Heap_Free(mapApp->unk_154[0]);
 }
 
-void PokegearMap_InitWindows(PokegearMapAppData *mapApp) {
+static void PokegearMap_InitWindows(PokegearMapAppData *mapApp) {
     int i;
 
     static const WindowTemplate sWindowTemplates[] = {
@@ -401,7 +401,7 @@ void PokegearMap_InitWindows(PokegearMapAppData *mapApp) {
     FillWindowPixelBufferText_AssumeTileSize32(&mapApp->windows[8], 0);
 }
 
-void PokegearMap_RemoveWindows(PokegearMapAppData *mapApp) {
+static void PokegearMap_RemoveWindows(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 8; ++i) {
@@ -411,7 +411,7 @@ void PokegearMap_RemoveWindows(PokegearMapAppData *mapApp) {
     RemoveWindow(&mapApp->windows[8]);
 }
 
-void PokegearMap_InitMsg(PokegearMapAppData *mapApp) {
+static void PokegearMap_InitMsg(PokegearMapAppData *mapApp) {
     mapApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0273_bin, mapApp->heapId);
     mapApp->msgFormat = MessageFormat_New_Custom(2, 91, mapApp->heapId);
     mapApp->flavorTextString = String_New(91, mapApp->heapId);
@@ -422,7 +422,7 @@ void PokegearMap_InitMsg(PokegearMapAppData *mapApp) {
     mapApp->unk_0B8 = 2;
 }
 
-void PokegearMap_DeleteMsg(PokegearMapAppData *mapApp) {
+static void PokegearMap_DeleteMsg(PokegearMapAppData *mapApp) {
     String_Delete(mapApp->formatFlavorTextString);
     String_Delete(mapApp->mapNameString);
     String_Delete(mapApp->regionNameStrings[1]);
@@ -432,7 +432,7 @@ void PokegearMap_DeleteMsg(PokegearMapAppData *mapApp) {
     DestroyMsgData(mapApp->msgData);
 }
 
-void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp) {
+static void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp) {
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
     static const PokegearAppSwitchButtonSpec buttonSpecsMarkingsMenu[9] = {
@@ -693,7 +693,7 @@ void PokegearMap_InitUIButtons(PokegearMapAppData *mapApp) {
     }
 }
 
-void PokegearMap_RemoveUIButtons(PokegearMapAppData *mapApp) {
+static void PokegearMap_RemoveUIButtons(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 3; ++i) {
@@ -701,7 +701,7 @@ void PokegearMap_RemoveUIButtons(PokegearMapAppData *mapApp) {
     }
 }
 
-void PokegearMap_LoadPalettes(PokegearMapAppData *mapApp, u8 frame) {
+static void PokegearMap_LoadPalettes(PokegearMapAppData *mapApp, u8 frame) {
     NARC *narc = NARC_New(NARC_application_pokegear_map_pgmap_gra, mapApp->heapId);
 
     PaletteData_LoadFromOpenNarc(mapApp->pokegear->plttData, narc, NARC_pgmap_gra_pgmap_gra_00000020_NCLR + frame, mapApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
@@ -717,21 +717,21 @@ void PokegearMap_LoadPalettes(PokegearMapAppData *mapApp, u8 frame) {
     NARC_Delete(narc);
 }
 
-void PokegearMap_CreateObjectsManager(PokegearMapAppData *mapApp) {
+static void PokegearMap_CreateObjectsManager(PokegearMapAppData *mapApp) {
     PokegearApp_CreateSpriteManager(mapApp->pokegear, GEAR_APP_MAP);
     mapApp->objManager = PokegearObjectsManager_Create(PGMAP_SPRITE_MAX, mapApp->heapId);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(240));
     mapApp->unk_03C = sub_02013534(4, mapApp->heapId);
 }
 
-void PokegearMap_DestroyObjectsManager(PokegearMapAppData *mapApp) {
+static void PokegearMap_DestroyObjectsManager(PokegearMapAppData *mapApp) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(192));
     sub_020135AC(mapApp->unk_03C);
     PokegearObjectsManager_Release(mapApp->objManager);
     PokegearApp_DestroySpriteManager(mapApp->pokegear);
 }
 
-void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp) {
+static void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp) {
     int i;
     u16 idx;
     PokegearManagedObject *objects = mapApp->objManager->objects;
@@ -840,7 +840,7 @@ void PokegearMap_CreatePersistentSprites(PokegearMapAppData *mapApp) {
     Sprite_SetAffineOverwriteMode(objects[PGMAP_SPRITE_CURSOR].sprite, NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE);
 }
 
-void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp) {
+static void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp) {
     u16 i;
     u16 idx;
     PokegearManagedObject *objects = mapApp->objManager->objects;
@@ -870,7 +870,7 @@ void PokegearMap_LoadMapHasMarkingsIndicatorSprites(PokegearMapAppData *mapApp) 
     }
 }
 
-void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
+static void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
     TextOBJTemplate template;
     u32 size;
     int i;
@@ -900,7 +900,7 @@ void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
     }
 }
 
-void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
+static void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 4; ++i) {
@@ -911,7 +911,7 @@ void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp) {
     sub_02013938(mapApp->unk_040);
 }
 
-void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
+static void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
     u16 i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
@@ -1028,24 +1028,24 @@ void PokegearMap_CreateAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
     PokegearMap_CreateMarkingsECWordTextOBJs(mapApp);
 }
 
-void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
+static void PokegearMap_RemoveAuxSprites_MarkingsMode(PokegearMapAppData *mapApp) {
     PokegearMap_DestroyMarkingsECWordTextOBJs(mapApp);
     PokegearObjectsManager_DeleteSpritesFromIndexToEnd(mapApp->objManager, PGMAP_SPRITE_ALWAYS_END);
 }
 
-void PokegearMap_LoadSprites(PokegearMapAppData *mapApp) {
+static void PokegearMap_LoadSprites(PokegearMapAppData *mapApp) {
     PokegearMap_CreatePersistentSprites(mapApp);
 }
 
-void PokegearMap_RemoveAuxSprites_MapMode(PokegearMapAppData *mapApp) {
+static void PokegearMap_RemoveAuxSprites_MapMode(PokegearMapAppData *mapApp) {
     PokegearObjectsManager_DeleteSpritesFromIndexToEnd(mapApp->objManager, PGMAP_SPRITE_ALWAYS_END);
 }
 
-void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp) {
+static void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp) {
     PokegearObjectsManager_Reset(mapApp->objManager);
 }
 
-void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
+static void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     int i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
@@ -1103,7 +1103,7 @@ void PokegearMap_SetBgParam_MapMide(PokegearMapAppData *mapApp) {
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
 
-void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
+static void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
     int i;
 
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
@@ -1149,7 +1149,7 @@ void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
     mapApp->pokegear->deselectAppCB = PokegearMap_InMarkingsMode_HideCursor;
 }
 
-void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1) {
+static void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1) {
     if (!a1) {
         mapApp->sessionState.index = 0;
         mapApp->inMarkingsMode = 0;

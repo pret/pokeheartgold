@@ -1,15 +1,15 @@
 #include "application/pokegear/map/pokegear_map_internal.h"
 
-void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node);
-u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp);
+static void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node);
+static u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp);
 
-void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node) {
+static void MapMarkingsHeapNode_Reset(MapMarkingsHeapNode *node) {
     node->active = 0;
     node->index = node->prev = node->next = 0xFF;
     MapMarkingsRAM_Reset(&node->mapMarkings);
 }
 
-u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp) {
+static u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp) {
     u8 i;
 
     for (i = 0; i < PGMAP_NUM_LOCATIONS; ++i) {

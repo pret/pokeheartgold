@@ -12,16 +12,14 @@
 #include "unk_02068F84.h"
 #include "unk_020932A4.h"
 
-void PokegearMap_LoadState(PokegearMapAppData *mapApp);
-void ov101_021E9848(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut);
-void ov101_021E990C(PokegearMapAppData *mapApp);
-BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int a1);
-BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
-int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
-BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int a1);
-void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
-void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 a1, u16 a2);
-void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, HeapID heapId, String *dest);
+static void PokegearMap_LoadState(PokegearMapAppData *mapApp);
+static void ov101_021E9848(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut);
+static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int a1);
+static int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
+static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int a1);
+static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
+static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 a1, u16 a2);
+static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, HeapID heapId, String *dest);
 
 const TouchscreenListMenuTemplate sListMenuTemplate = {
     .wrapAround = TRUE,
@@ -77,7 +75,7 @@ void PokegearMap_SaveState(PokegearMapAppData *mapApp) {
     mapApp->sessionState.cursorRight = mapApp->cursorSpriteState.right;
 }
 
-void PokegearMap_LoadState(PokegearMapAppData *mapApp) {
+static void PokegearMap_LoadState(PokegearMapAppData *mapApp) {
     mapApp->playerX = mapApp->sessionState.playerX;
     mapApp->playerY = mapApp->sessionState.playerY;
     mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].pos.x = mapApp->sessionState.cursorSpriteX;
@@ -196,7 +194,7 @@ void ov101_021E9530(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 x
     mapApp->cursorSpriteState.dyStep = FX_Div(FX32_CONST(mapApp->cursorSpriteState.dy), FX32_CONST(mapApp->cursorSpeed));
 }
 
-void ov101_021E9848(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut) {
+static void ov101_021E9848(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut) {
     u8 r2 = 0;
     u8 r1 = 0;
     if (!mapApp->zoomed) {
@@ -620,7 +618,7 @@ void ov101_021EA608(PokegearMapAppData *mapApp, u8 enable) {
     }
 }
 
-BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int mapID) {
+static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int mapID) {
     switch (mapID) {
     case MAP_ROUTE_47:
     case MAP_ROUTE_48:
@@ -720,7 +718,7 @@ BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y) {
     }
 }
 
-int ov101_021EA81C(PokegearMapAppData *mapApp, u16 x, u16 y) {
+static int ov101_021EA81C(PokegearMapAppData *mapApp, u16 x, u16 y) {
     int i;
     const MapFlypointParam *flypoint;
 
@@ -780,7 +778,7 @@ int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8
     return mapID;
 }
 
-BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int mapID) {
+static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int mapID) {
     int i;
     TimeOfDayWildParam timeOfDay;
     PhoneBookEntry *phonebookEntry;
@@ -804,7 +802,7 @@ BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int mapID)
     return FALSE;
 }
 
-void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
+static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     u32 mapNameY;
     u32 i;
     u32 tilemap174blockId;
@@ -899,7 +897,7 @@ void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1) {
     ov101_021EAA0C(mapApp, a1, (Pokegear_Coords2Region(mapApp->playerX, mapApp->playerY - 2) / 2) ^ TRUE);
 }
 
-void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word) {
+static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word) {
     if (word == EC_WORD_NULL) {
         TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[index].textOBJ, FALSE);
     } else {
@@ -1110,6 +1108,6 @@ void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int 
     }
 }
 
-void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, HeapID heapId, String *dest) {
+static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, HeapID heapId, String *dest) {
     MapID_GetLandmarkName(mapno, heapId, dest);
 }

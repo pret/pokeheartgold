@@ -10,21 +10,21 @@
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
-void FlyMap_InitBGs(PokegearMapAppData *mapApp);
-void FlyMap_DeinitBGs(PokegearMapAppData *mapApp);
-void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp);
-void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp);
-void FlyMap_CreateWindows(PokegearMapAppData *mapApp);
-void FlyMap_RemoveWindows(PokegearMapAppData *mapApp);
-void FlyMap_LoadStrings(PokegearMapAppData *mapApp);
-void FlyMap_UnloadStrings(PokegearMapAppData *mapApp);
-void PokegearMap_LoadFlyContextMenuStrings(PokegearMapAppData *mapApp);
-void PokegearMap_UnloadFlyContextMenuStrings(PokegearMapAppData *mapApp);
-void FlyMap_CreateSpriteManager(PokegearMapAppData *mapApp);
-void FlyMap_DestroySpriteManager(PokegearMapAppData *mapApp);
-void FlyMap_CreateSprites(PokegearMapAppData *mapApp);
-void FlyMap_UnloadSprites(PokegearMapAppData *mapApp);
-void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp);
+static void FlyMap_InitBGs(PokegearMapAppData *mapApp);
+static void FlyMap_DeinitBGs(PokegearMapAppData *mapApp);
+static void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp);
+static void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp);
+static void FlyMap_CreateWindows(PokegearMapAppData *mapApp);
+static void FlyMap_RemoveWindows(PokegearMapAppData *mapApp);
+static void FlyMap_LoadStrings(PokegearMapAppData *mapApp);
+static void FlyMap_UnloadStrings(PokegearMapAppData *mapApp);
+static void PokegearMap_LoadFlyContextMenuStrings(PokegearMapAppData *mapApp);
+static void PokegearMap_UnloadFlyContextMenuStrings(PokegearMapAppData *mapApp);
+static void FlyMap_CreateSpriteManager(PokegearMapAppData *mapApp);
+static void FlyMap_DestroySpriteManager(PokegearMapAppData *mapApp);
+static void FlyMap_CreateSprites(PokegearMapAppData *mapApp);
+static void FlyMap_UnloadSprites(PokegearMapAppData *mapApp);
+static void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp);
 
 const WindowTemplate sWindowTemplates[] = {
     {
@@ -329,7 +329,7 @@ int FlyMap_HandleContextMenu(PokegearMapAppData *mapApp) {
     return PGMAP_MAIN_STATE_FLY_CONTEXT_MENU;
 }
 
-void FlyMap_InitBGs(PokegearMapAppData *mapApp) {
+static void FlyMap_InitBGs(PokegearMapAppData *mapApp) {
     int i;
 
     PokegearApp_SetGraphicsBanks();
@@ -487,7 +487,7 @@ void FlyMap_InitBGs(PokegearMapAppData *mapApp) {
     }
 }
 
-void FlyMap_DeinitBGs(PokegearMapAppData *mapApp) {
+static void FlyMap_DeinitBGs(PokegearMapAppData *mapApp) {
     BG_LoadBlankPltt(GF_PAL_LOCATION_MAIN_OBJ, 0x1C0, 0, mapApp->heapId);
     BG_LoadBlankPltt(GF_PAL_LOCATION_SUB_OBJ, 0x180, 0, mapApp->heapId);
     FreeBgTilemapBuffer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
@@ -503,7 +503,7 @@ void FlyMap_DeinitBGs(PokegearMapAppData *mapApp) {
     G2_SetBlendAlpha(0, 0, 0, 0);
 }
 
-void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp) {
+static void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp) {
     NARC *narc = NARC_New(NARC_application_pokegear_map_pgmap_gra, mapApp->heapId);
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000066_NCGR, GF_BG_LYR_MAIN_1, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapId, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000010_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
@@ -524,7 +524,7 @@ void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp) {
     FontID_Alloc(4, mapApp->heapId);
 }
 
-void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp) {
+static void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp) {
     FontID_Release(4);
     Heap_Free(mapApp->unk_154[3]);
     Heap_Free(mapApp->unk_154[2]);
@@ -532,7 +532,7 @@ void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp) {
     Heap_Free(mapApp->unk_154[0]);
 }
 
-void FlyMap_CreateWindows(PokegearMapAppData *mapApp) {
+static void FlyMap_CreateWindows(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 9; ++i) {
@@ -541,7 +541,7 @@ void FlyMap_CreateWindows(PokegearMapAppData *mapApp) {
     }
 }
 
-void FlyMap_RemoveWindows(PokegearMapAppData *mapApp) {
+static void FlyMap_RemoveWindows(PokegearMapAppData *mapApp) {
     int i;
 
     for (i = 0; i < 9; ++i) {
@@ -550,7 +550,7 @@ void FlyMap_RemoveWindows(PokegearMapAppData *mapApp) {
     }
 }
 
-void FlyMap_LoadStrings(PokegearMapAppData *mapApp) {
+static void FlyMap_LoadStrings(PokegearMapAppData *mapApp) {
     mapApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0273_bin, mapApp->heapId);
     mapApp->msgFormat = MessageFormat_New_Custom(2, 91, mapApp->heapId);
     mapApp->flavorTextString = String_New(91, mapApp->heapId);
@@ -564,7 +564,7 @@ void FlyMap_LoadStrings(PokegearMapAppData *mapApp) {
     mapApp->unk_0B8 = 2;
 }
 
-void FlyMap_UnloadStrings(PokegearMapAppData *mapApp) {
+static void FlyMap_UnloadStrings(PokegearMapAppData *mapApp) {
     String_Delete(mapApp->formatFlavorTextString);
     String_Delete(mapApp->closeString);
     String_Delete(mapApp->flyToLocationString);
@@ -577,7 +577,7 @@ void FlyMap_UnloadStrings(PokegearMapAppData *mapApp) {
     DestroyMsgData(mapApp->msgData);
 }
 
-void PokegearMap_LoadFlyContextMenuStrings(PokegearMapAppData *mapApp) {
+static void PokegearMap_LoadFlyContextMenuStrings(PokegearMapAppData *mapApp) {
     int i;
 
     mapApp->listMenuItems = ListMenuItems_New(2, mapApp->heapId);
@@ -586,12 +586,12 @@ void PokegearMap_LoadFlyContextMenuStrings(PokegearMapAppData *mapApp) {
     }
 }
 
-void PokegearMap_UnloadFlyContextMenuStrings(PokegearMapAppData *mapApp) {
+static void PokegearMap_UnloadFlyContextMenuStrings(PokegearMapAppData *mapApp) {
     ListMenuItems_Delete(mapApp->listMenuItems);
     mapApp->listMenuItems = NULL;
 }
 
-void FlyMap_CreateSpriteManager(PokegearMapAppData *mapApp) {
+static void FlyMap_CreateSpriteManager(PokegearMapAppData *mapApp) {
     PokegearApp_CreateSpriteSystem(mapApp->pokegear);
     PokegearApp_CreateSpriteManager(mapApp->pokegear, GEAR_APP_MAP);
     mapApp->objManager = PokegearObjectsManager_Create(42, mapApp->heapId);
@@ -599,7 +599,7 @@ void FlyMap_CreateSpriteManager(PokegearMapAppData *mapApp) {
     mapApp->listMenuSpawner = TouchscreenListMenuSpawner_Create(mapApp->heapId, mapApp->pokegear->plttData);
 }
 
-void FlyMap_DestroySpriteManager(PokegearMapAppData *mapApp) {
+static void FlyMap_DestroySpriteManager(PokegearMapAppData *mapApp) {
     TouchscreenListMenuSpawner_Destroy(mapApp->listMenuSpawner);
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(mapApp->pokegear->spriteSystem), 0, FX32_CONST(0xC0));
     PokegearObjectsManager_Release(mapApp->objManager);
@@ -607,7 +607,7 @@ void FlyMap_DestroySpriteManager(PokegearMapAppData *mapApp) {
     PokegearApp_DestroySpriteSystem(mapApp->pokegear);
 }
 
-void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
+static void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
     int i;
     u16 index;
     PokegearManagedObject *objects = mapApp->objManager->objects;
@@ -660,11 +660,11 @@ void FlyMap_CreateSprites(PokegearMapAppData *mapApp) {
     Sprite_SetAffineOverwriteMode(objects[PGMAP_SPRITE_CURSOR].sprite, NNS_G2D_RND_AFFINE_OVERWRITE_DOUBLE);
 }
 
-void FlyMap_UnloadSprites(PokegearMapAppData *mapApp) {
+static void FlyMap_UnloadSprites(PokegearMapAppData *mapApp) {
     PokegearObjectsManager_Reset(mapApp->objManager);
 }
 
-void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
+static void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
     int i;
     s16 textX;
     PokegearManagedObject *objects = mapApp->objManager->objects;

@@ -299,6 +299,7 @@ BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, 
 void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode);
 void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 mode);
 void ov101_021EA608(PokegearMapAppData *mapApp, u8 enable);
+BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
 const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByCoord(PokegearMapAppData *mapApp, u8 x, u8 y);
 const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByMapID(PokegearMapAppData *mapApp, u16 mapID);
 void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y);

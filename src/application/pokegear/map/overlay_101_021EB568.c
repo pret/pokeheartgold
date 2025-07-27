@@ -4,26 +4,25 @@
 
 #include "unk_02005D10.h"
 
-BOOL ov101_021EB654(PokegearMapAppData *mapApp);
-int ov101_021EB784(PokegearMapAppData *mapApp, int a1);
-int ov101_021EB818(PokegearMapAppData *mapApp);
-BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
-int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-BOOL ov101_021EBDEC(PokegearMapAppData *mapApp);
-s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 a1);
-s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 a1, s16 a2);
-s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 a1);
-s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 a1, s16 a2);
-void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yRet);
-void ov101_021EC778(PokegearMapAppData *mapApp);
-void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y);
-void ov101_021EC944(PokegearMapAppData *mapApp);
-void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY);
-BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 a1);
-void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL a1);
-void PokegearMap_MarkingsMenu_ReturnToTopLevel(PokegearMapAppData *mapApp);
-void PokegearMap_MarkingsMenu_DeleteSelected(PokegearMapAppData *mapApp, u8 a1, u8 a2);
-void ov101_021ED204(PokegearMapAppData *mapApp, u8 a1);
+static BOOL ov101_021EB654(PokegearMapAppData *mapApp);
+static int ov101_021EB784(PokegearMapAppData *mapApp, int flyDest);
+static int ov101_021EB818(PokegearMapAppData *mapApp);
+static int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+static BOOL ov101_021EBDEC(PokegearMapAppData *mapApp);
+static s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 x);
+static s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 x, s16 dxMax);
+static s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 y);
+static s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 y, s16 dyMax);
+static void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yRet);
+static void ov101_021EC778(PokegearMapAppData *mapApp);
+static void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y);
+static void ov101_021EC944(PokegearMapAppData *mapApp);
+static void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY);
+static BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot);
+static void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL state);
+static void PokegearMap_MarkingsMenu_ReturnToTopLevel(PokegearMapAppData *mapApp);
+static void PokegearMap_MarkingsMenu_DeleteSelected(PokegearMapAppData *mapApp, u8 kind, u8 index);
+static void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot);
 
 int ov101_021EB568(PokegearMapAppData *mapApp) {
     int ret;
@@ -73,7 +72,7 @@ int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     return ret;
 }
 
-BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
+static BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
     u8 flag = 0;
     int heldKeys = gSystem.heldKeys;
     PokegearManagedObject *object = &mapApp->objManager->objects[PGMAP_SPRITE_CURSOR];
@@ -114,7 +113,7 @@ BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
     return FALSE;
 }
 
-int ov101_021EB784(PokegearMapAppData *mapApp, int flyDest) {
+static int ov101_021EB784(PokegearMapAppData *mapApp, int flyDest) {
     u16 x;
     u16 y;
 
@@ -135,7 +134,7 @@ int ov101_021EB784(PokegearMapAppData *mapApp, int flyDest) {
     return 8;
 }
 
-int ov101_021EB818(PokegearMapAppData *mapApp) {
+static int ov101_021EB818(PokegearMapAppData *mapApp) {
     u32 newKeys = gSystem.newKeys;
     if (gSystem.heldKeys == 0 || mapApp->draggingMarking || mapApp->unk_139_1 || mapApp->unk_139_2) {
         return -1;
@@ -212,7 +211,7 @@ const TouchscreenHitbox ov101_021F7EA4[2] = {
     { .rect = { 0x10, 0x90, 0x28, 0xe0 } },
 };
 
-int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
+static int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     u16 pixel;
     int input;
 
@@ -331,7 +330,7 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
     return -1;
 }
 
-BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
+static BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
     s16 x;
     s16 y;
     s16 xTile;
@@ -400,7 +399,7 @@ BOOL ov101_021EBDEC(PokegearMapAppData *mapApp) {
     return FALSE;
 }
 
-s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 x) {
+static s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 x) {
     s16 xMax;
     s16 xMin;
     s16 ret;
@@ -421,7 +420,7 @@ s16 ov101_021EBF44(PokegearMapAppData *mapApp, s16 x) {
     return ret;
 }
 
-s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 x, s16 dxMax) {
+static s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 x, s16 dxMax) {
     s16 dx;
 
     if (x > 0) {
@@ -442,7 +441,7 @@ s16 ov101_021EBF98(PokegearMapAppData *mapApp, s16 x, s16 dxMax) {
     return ov101_021EBF44(mapApp, x);
 }
 
-s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 y) {
+static s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 y) {
     s16 ret;
     s16 yMin;
     s16 yMax;
@@ -463,7 +462,7 @@ s16 ov101_021EBFF8(PokegearMapAppData *mapApp, s16 y) {
     return ret;
 }
 
-s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 y, s16 dyMax) {
+static s16 ov101_021EC04C(PokegearMapAppData *mapApp, s16 y, s16 dyMax) {
     s16 dy;
 
     if (y > 0) {
@@ -643,7 +642,7 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
     }
 }
 
-void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yRet) {
+static void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yRet) {
     u16 i;
     u8 x2 = 0, y2 = 0, grid, half_grid;
     PokegearManagedObject *cursorObj = &mapApp->objManager->objects[PGMAP_SPRITE_CURSOR];
@@ -682,7 +681,7 @@ void ov101_021EC49C(PokegearMapAppData *mapApp, u16 x, u16 y, int *xRet, int *yR
     }
 }
 
-void ov101_021EC778(PokegearMapAppData *mapApp) {
+static void ov101_021EC778(PokegearMapAppData *mapApp) {
     u16 i;
     VecFx32 scale;
     PokegearManagedObject *cursorObj = &mapApp->objManager->objects[PGMAP_SPRITE_CURSOR];
@@ -732,7 +731,7 @@ void ov101_021EC778(PokegearMapAppData *mapApp) {
     mapApp->requestAffineUpdate = TRUE;
 }
 
-void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y) {
+static void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y) {
     if (!object->unk_01) {
         return;
     }
@@ -743,7 +742,7 @@ void ov101_021EC920(PokegearManagedObject *object, u16 index, s16 y) {
     }
 }
 
-void ov101_021EC944(PokegearMapAppData *mapApp) {
+static void ov101_021EC944(PokegearMapAppData *mapApp) {
     u16 i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
@@ -755,7 +754,7 @@ void ov101_021EC944(PokegearMapAppData *mapApp) {
     }
 }
 
-void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY) {
+static void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY) {
     s16 r7;
     s16 r4;
 
@@ -793,7 +792,7 @@ void ov101_021EC980(PokegearMapAppData *mapApp, s16 *pX, s16 *pY) {
     ov101_021E94C0(mapApp);
 }
 
-BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot) {
+static BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot) {
     MapMarkingsRAM *markings;
     if (mapApp->selectedLoc.markingsNode == NULL || slot >= 8) {
         return FALSE;
@@ -813,7 +812,7 @@ BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot) {
     return FALSE;
 }
 
-void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL state) {
+static void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL state) {
     mapApp->trashcanIconState = state;
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->unk_17C->rawData, 8 * mapApp->trashcanIconState + 14, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -954,7 +953,7 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
     return -1;
 }
 
-void PokegearMap_MarkingsMenu_ReturnToTopLevel(PokegearMapAppData *mapApp) {
+static void PokegearMap_MarkingsMenu_ReturnToTopLevel(PokegearMapAppData *mapApp) {
     PokegearAppSwitch_SetActiveCursorPosition(mapApp->pokegear->appSwitch, 0);
     PokegearAppSwitch_SetCursorSpritesDrawState(mapApp->pokegear->appSwitch, 0xFFFF, FALSE);
     PokegearAppSwitch_SetSpecIndexAndCursorPos(mapApp->pokegear->appSwitch, 1, PokegearAppSwitch_GetSpecCursorPos(mapApp->pokegear->appSwitch, 1));
@@ -1038,7 +1037,7 @@ int PokegearMap_HandleTouchInput_DragItemFromPool(PokegearMapAppData *mapApp) {
     return -1;
 }
 
-void PokegearMap_MarkingsMenu_DeleteSelected(PokegearMapAppData *mapApp, u8 kind, u8 index) {
+static void PokegearMap_MarkingsMenu_DeleteSelected(PokegearMapAppData *mapApp, u8 kind, u8 index) {
     u8 result;
     if (kind == 0) {
         result = MapMarkingsHeapNode_RemoveIcon(mapApp->selectedLoc.markingsNode, index);
@@ -1077,7 +1076,7 @@ int PokegearMap_HandleKeyInput_SelectedMarkingSlot(PokegearMapAppData *mapApp) {
     return -1;
 }
 
-void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot) {
+static void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot) {
     u8 index;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 

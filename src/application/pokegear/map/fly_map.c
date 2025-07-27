@@ -8,14 +8,14 @@
 FS_EXTERN_OVERLAY(OVY_26);
 FS_EXTERN_OVERLAY(OVY_100);
 
-void FlyMap_InitParam(PokegearMapAppData *mapApp);
-void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp);
-int FlyMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp);
-int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp);
-int FlyMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp);
-int FlyMap_MainTask_ContextMenu(PokegearMapAppData *mapApp);
-int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp);
-int FlyMap_MainTask_FadeOut(PokegearMapAppData *mapApp);
+static void FlyMap_InitParam(PokegearMapAppData *mapApp);
+static void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp);
+static int FlyMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp);
+static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp);
+static int FlyMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp);
+static int FlyMap_MainTask_ContextMenu(PokegearMapAppData *mapApp);
+static int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp);
+static int FlyMap_MainTask_FadeOut(PokegearMapAppData *mapApp);
 
 static const u16 sMapXScrollLimits[] = {
     26, // Johto only
@@ -92,7 +92,7 @@ BOOL FlyMap_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-void FlyMap_InitParam(PokegearMapAppData *mapApp) {
+static void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->pokegear->childAppdata = mapApp;
     mapApp->pokegear->menuInputState = (MenuInputState)mapApp->pokegear->args->menuInputState;
     mapApp->type = mapApp->pokegear->args->isScriptedLaunch + 1;
@@ -126,14 +126,14 @@ void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->curRegion = Pokegear_GetRegionFromMapCoords(mapApp->pokegear);
 }
 
-void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp) {
+static void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp) {
     Heap_Free(mapApp->phoneContact);
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->deselectAppCB = NULL;
 }
 
-int FlyMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp) {
+static int FlyMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp) {
     if (FlyMap_GraphicsInit(mapApp)) {
         return PGMAP_MAIN_STATE_FADE_IN;
     } else {
@@ -141,7 +141,7 @@ int FlyMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp) {
     }
 }
 
-int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
+static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     BOOL retIsTouch = FALSE;
     int ret;
 
@@ -181,7 +181,7 @@ int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     return PGMAP_MAIN_STATE_HANDLE_INPUT;
 }
 
-int FlyMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp) {
+static int FlyMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp) {
     if (!FlyMap_GraphicsDeinit(mapApp)) {
         return PGMAP_MAIN_STATE_UNLOAD;
     }
@@ -189,11 +189,11 @@ int FlyMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp) {
     return PGMAP_MAIN_STATE_QUIT;
 }
 
-int FlyMap_MainTask_ContextMenu(PokegearMapAppData *mapApp) {
+static int FlyMap_MainTask_ContextMenu(PokegearMapAppData *mapApp) {
     return FlyMap_HandleContextMenu(mapApp);
 }
 
-int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
+static int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
     int i;
 
     switch (mapApp->state) {
@@ -217,7 +217,7 @@ int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
     return PGMAP_MAIN_STATE_FADE_IN;
 }
 
-int FlyMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
+static int FlyMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
     int i;
 
     switch (mapApp->state) {
