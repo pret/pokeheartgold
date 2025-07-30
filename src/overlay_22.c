@@ -33,28 +33,28 @@ BOOL ScrCmd_118(ScriptContext *ctx) {
 
 BOOL ScrCmd_GetCoinAmount(ScriptContext *ctx) {
     u16 *ptr = ScriptGetVarPointer(ctx);
-    *ptr = CheckCoins(Save_PlayerData_GetCoinsAddr(ctx->fieldSystem->saveData));
+    *ptr = Coins_GetValue(Save_PlayerData_GetCoinsAddr(ctx->fieldSystem->saveData));
     return FALSE;
 }
 
 BOOL ScrCmd_GiveCoins(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 amount = ScriptGetVar(ctx);
-    GiveCoins(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
+    Coins_Add(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_TakeCoins(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 amount = ScriptGetVar(ctx);
-    TakeCoins(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
+    Coins_Subtract(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
     return FALSE;
 }
 
 BOOL ScrCmd_569(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *ptr = ScriptGetVarPointer(ctx);
-    TakeCoins(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), *ptr);
+    Coins_Subtract(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), *ptr);
     return FALSE;
 }
 
@@ -62,7 +62,7 @@ BOOL ScrCmd_CheckCoinsImmediate(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u32 amount = ScriptReadWord(ctx);
-    u16 coins = CheckCoins(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData));
+    u16 coins = Coins_GetValue(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData));
     if (coins < amount) {
         *ptr = FALSE;
     } else {
@@ -75,7 +75,7 @@ BOOL ScrCmd_CheckCoinsVar(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *resultPtr = ScriptGetVarPointer(ctx);
     u16 *amountPtr = ScriptGetVarPointer(ctx);
-    u16 coins = CheckCoins(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData));
+    u16 coins = Coins_GetValue(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData));
     if (coins < *amountPtr) {
         *resultPtr = FALSE;
     } else {
@@ -88,7 +88,7 @@ BOOL ScrCmd_CheckGiveCoins(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *ptr = ScriptGetVarPointer(ctx);
     u16 amount = ScriptGetVar(ctx);
-    *ptr = CanGiveCoins(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
+    *ptr = Coins_CanAdd(Save_PlayerData_GetCoinsAddr(fieldSystem->saveData), amount);
     return FALSE;
 }
 

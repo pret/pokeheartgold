@@ -90,7 +90,7 @@ u8 sub_0207791C(BagView *bagView) {
 }
 
 static u16 GetCoinCount(SaveData *saveData) {
-    return CheckCoins(Save_PlayerData_GetCoinsAddr(saveData));
+    return Coins_GetValue(Save_PlayerData_GetCoinsAddr(saveData));
 }
 
 static u32 GetSealCount(SaveData *saveData) {
