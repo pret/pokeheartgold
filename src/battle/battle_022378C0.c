@@ -47,7 +47,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
 
     switch (*state) {
     case BSTATE_INIT:
-        CreateHeap(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);
+        Heap_Create(HEAP_ID_3, HEAP_ID_BATTLE, 0xB0000);
         if ((setup->battleType & BATTLE_TYPE_LINK) && !(setup->battleSpecial & BATTLE_SPECIAL_RECORDING)) {
             *state = BSTATE_LINK_INIT;
         } else {
@@ -121,14 +121,14 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         if (ov12_0223A3F0(man) == TRUE) {
             *state = BSTATE_END_MAIN;
         } else {
-            DestroyHeap(HEAP_ID_BATTLE);
+            Heap_Destroy(HEAP_ID_BATTLE);
             *state = BSTATE_EVOLUTION_INIT;
         }
         break;
     case BSTATE_END_MAIN:
         if (ov12_0223A5E4(man) == TRUE) {
             UnloadOverlayByID(FS_OVERLAY_ID(OVY_5));
-            DestroyHeap(HEAP_ID_BATTLE);
+            Heap_Destroy(HEAP_ID_BATTLE);
             *state = BSTATE_END_WAIT;
         }
         break;
@@ -144,7 +144,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         evolutionSpecies = BattleSystem_CheckEvolution(setup, &selectedMonIndex, &evolutionCondition);
 
         if (evolutionSpecies) {
-            CreateHeap(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
+            Heap_Create(HEAP_ID_3, HEAP_ID_EVOLUTION, 0x30000);
             mon = Party_GetMonByIndex(setup->party[BATTLER_PLAYER], selectedMonIndex);
             setup->evolutionTaskData = sub_02075A7C(setup->party[BATTLER_PLAYER], mon, evolutionSpecies, setup->options, setup->unk_164, setup->pokedex, setup->bag, setup->gameStats, evolutionCondition, 3, HEAP_ID_EVOLUTION);
             *state = BSTATE_EVOLUTION_MAIN;
@@ -157,7 +157,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         void *data = setup->evolutionTaskData;
         if (sub_02075D3C(data) == TRUE) {
             sub_02075D4C(data);
-            DestroyHeap(HEAP_ID_EVOLUTION);
+            Heap_Destroy(HEAP_ID_EVOLUTION);
             *state = BSTATE_EVOLUTION_INIT;
         }
         break;

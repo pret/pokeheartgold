@@ -243,7 +243,7 @@ ov106_021E5AA8: ; 0x021E5AA8
 	mov r1, #0x99
 	mov r2, #4
 	str r3, [sp, #0x10]
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	mov r0, #0
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x10]
@@ -1904,7 +1904,7 @@ _021E6764:
 	mov r1, #2
 	mov r0, #0x99
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	mov r7, #0
 _021E67A6:
@@ -1981,7 +1981,7 @@ ov106_021E6814: ; 0x021E6814
 	strh r0, [r2]
 	ldr r1, _021E6898 ; =0x00006040
 	mov r0, #0x99
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _021E689C ; =0x00000418
 	ldr r2, _021E6898 ; =0x00006040
 	str r0, [r5, r1]

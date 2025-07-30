@@ -27,7 +27,7 @@ typedef enum RadioMainState {
 } RadioMainState;
 
 typedef struct RadioShow {
-    HeapID heapID;             // 0x00
+    enum HeapID heapID;             // 0x00
     SaveData *saveData;        // 0x04
     u16 mapID;                 // 0x08
     u16 mapHeader;             // 0x0A
@@ -73,7 +73,7 @@ typedef struct RadioShow {
 } RadioShow;                   // size: 0x74
 
 typedef struct PokegearRadioAppData {
-    HeapID heapId;                // 0x00
+    enum HeapID heapID;                // 0x00
     int state;                    // 0x04
     int substate;                 // 0x08
     PokegearAppData *pokegear;    // 0x0C
@@ -115,7 +115,7 @@ int Radio_HandleDragCursor(PokegearRadioAppData *radioApp);
 BOOL Radio_CoordsToStation(PokegearRadioAppData *radioApp, s16 x, s16 y);
 void Radio_SnapCursorToChannelHitbox(PokegearRadioAppData *radioApp, u8 channel);
 
-RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, HeapID heapId);
+RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL inKanto, Window *win1, Window *win2, Window *win3, u32 textColor, enum HeapID heapID);
 void RadioShow_Delete(RadioShow *radioShow);
 void RadioShow_BeginSegment(RadioShow *radioShow, int station, int statik);
 void RadioShow_EndSegment(RadioShow *radioShow);

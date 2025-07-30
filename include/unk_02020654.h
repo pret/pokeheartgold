@@ -14,7 +14,7 @@ typedef struct UnkStruct_02020654 {
     u8 unk_7;
 } UnkStruct_02020654;
 
-NNSG2dCellTransferState *sub_02020654(int a0, HeapID heapId);
+NNSG2dCellTransferState *sub_02020654(int a0, enum HeapID heapID);
 void sub_02020A0C(const UnkStruct_02020654 *a0, u8 *a1, u8 *a2);
 void thunk_UpdateCellTransferStateManager(void);
 void sub_0202067C(NNSG2dCellTransferState *state);

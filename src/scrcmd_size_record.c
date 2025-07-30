@@ -63,7 +63,7 @@ static u32 GetMonSize(int species, int rand) {
     u32 r6;
     int r4;
 
-    r6 = SpeciesGetDexHeight(species, HEAP_ID_4);
+    r6 = SpeciesGetDexHeight(species, HEAP_ID_FIELD1);
     r4 = TranslateBigMonSizeTableIndex(rand);
     return r6 * ((u64)sBigMonSizeTable[r4][0] + ((u64)rand - (u64)sBigMonSizeTable[r4][2]) / (u64)sBigMonSizeTable[r4][1]) / 10;
 }

@@ -98,7 +98,7 @@ ov04_02253ED4: ; 0x02253ED4
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [r4]
@@ -440,7 +440,7 @@ ov04_02254190: ; 0x02254190
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x54
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r4, #4]
 	mov r2, #0x54
 	str r0, [r1, #0x24]
@@ -886,7 +886,7 @@ BeginAzaleaGymSpinarakRide: ; 0x02254568
 	ldr r4, [r0, #0x24]
 	mov r0, #0xb
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	mov r1, #0
 	str r1, [r7]
@@ -1816,7 +1816,7 @@ ov04_02254CBC: ; 0x02254CBC
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r5, #4]
 	mov r2, #0x1c
 	str r0, [r1, #0x24]
@@ -1965,7 +1965,7 @@ ov04_02254DE0: ; 0x02254DE0
 	mov r1, #0x10
 	str r0, [r4, #0x18]
 	mov r0, #0xb
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r1, #0
 	str r1, [r2]
@@ -2183,7 +2183,7 @@ ov04_02254F8C: ; 0x02254F8C
 	str r0, [sp, #0x10]
 	ldr r1, _02255074 ; =0x00000754
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [sp, #4]
 	ldr r2, _02255074 ; =0x00000754
 	ldr r1, [r1, #4]
@@ -3203,7 +3203,7 @@ ov04_02255708: ; 0x02255708
 _0225571E:
 	mov r0, #0xb
 	mov r1, #0x74
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	ldr r0, [r5]
 	add r2, r4, #0
@@ -4335,7 +4335,7 @@ ov04_02255FC0: ; 0x02255FC0
 	add r4, r0, #0
 	mov r0, #4
 	add r1, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r5, #4]
 	mov r2, #4
 	str r0, [r1, #0x24]
@@ -4446,7 +4446,7 @@ ov04_0225609C: ; 0x0225609C
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [r2]
@@ -4740,7 +4740,7 @@ ov04_02256304: ; 0x02256304
 	str r0, [sp]
 	mov r0, #4
 	add r1, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r5, #4]
 	mov r2, #4
 	str r0, [r1, #0x24]
@@ -4880,7 +4880,7 @@ ov04_0225640C: ; 0x0225640C
 	add r6, r0, #0
 	mov r0, #0xb
 	mov r1, #0x18
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	cmp r7, #0
 	beq _02256438
@@ -5163,7 +5163,7 @@ ov04_02256650: ; 0x02256650
 	bl Save_Gymmick_AssertMagic_GetData
 	ldr r1, _02256698 ; =0x00001DD8
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r4, #4]
 	ldr r2, _02256698 ; =0x00001DD8
 	str r0, [r1, #0x24]
@@ -5293,7 +5293,7 @@ ov04_02256758: ; 0x02256758
 	mov r2, #0x20
 	str r0, [sp, #8]
 	str r1, [sp, #0xc]
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	mov r0, #0
 	str r0, [sp, #0x14]
 _0225676A:
@@ -5839,7 +5839,7 @@ ov04_02256B64: ; 0x02256B64
 	bl Save_Gymmick_AssertMagic_GetData
 	ldr r1, _02256B9C ; =0x00000708
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r4, #4]
 	ldr r2, _02256B9C ; =0x00000708
 	str r0, [r1, #0x24]
@@ -5932,7 +5932,7 @@ ov04_02256C20: ; 0x02256C20
 	mov r2, #0x20
 	str r0, [sp, #8]
 	str r1, [sp, #0xc]
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r4, [sp, #8]
 	ldr r6, _02256CFC ; =0x00000101
 	mov r5, #0
@@ -6235,7 +6235,7 @@ ov04_02256E60: ; 0x02256E60
 	mov r1, #0x8e
 	mov r0, #4
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r5, #4]
 	mov r2, #0x8e
 	str r0, [r1, #0x24]
@@ -6367,7 +6367,7 @@ ov04_02256F50: ; 0x02256F50
 	ldr r0, [sp, #8]
 	mov r2, #0x20
 	add r0, r0, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r4, [sp, #8]
 	mov r5, #0
 	add r4, #0x14

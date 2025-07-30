@@ -21,7 +21,7 @@ SavePalPad *Save_PalPad_Get(SaveData *saveData);
 void Save_PalPad_Init(SavePalPad *palPad);
 SavePalPad *PalPad_GetNthEntry(SavePalPad *arr, int n);
 u8 PalPadEntry_GetFromUnk68Array(SavePalPad *palPad, int n);
-void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, HeapID heapId);
+void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, enum HeapID heapID);
 int PalPad_PlayerIdIsFriendOrMutual(SavePalPad *palPad, u32 otId);
 
 #endif // POKEHEARTGOLD_SAVE_PALPAD_H

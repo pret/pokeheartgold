@@ -14,7 +14,7 @@
 #include "unk_02005D10.h"
 
 static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment);
-static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, HeapID heapId);
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, enum HeapID heapID);
 static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData);
 static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin);
 static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu);
@@ -29,13 +29,13 @@ static int TouchscreenListMenu_HandleKeyInput(TouchscreenListMenu *menu);
 static void TouchscreenListMenu_PlaySE(TouchscreenListMenu *menu, u16 sndseq);
 static void TouchscreenListMenu_InvokeCallback(TouchscreenListMenu *menu, int a1);
 
-TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData) {
-    TouchscreenListMenuSpawner *ret = AllocFromHeap(heapId, sizeof(TouchscreenListMenuSpawner));
+TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(enum HeapID heapID, PaletteData *paletteData) {
+    TouchscreenListMenuSpawner *ret = Heap_Alloc(heapID, sizeof(TouchscreenListMenuSpawner));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenuSpawner));
-    ret->heapId = heapId;
-    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCGR, FALSE, heapId, FALSE);
+    ret->heapID = heapID;
+    ret->charDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCGR, FALSE, heapID, FALSE);
     NNS_G2dGetUnpackedBGCharacterData(ret->charDataRaw, &ret->pCharData);
-    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCLR, FALSE, heapId, FALSE);
+    ret->plttDataRaw = GfGfxLoader_LoadFromNarc(NARC_data_sbox_gra, NARC_sbox_gra_sbox_gra_NCLR, FALSE, heapID, FALSE);
     NNS_G2dGetUnpackedPaletteData(ret->plttDataRaw, &ret->pPlttData);
     ret->paletteData = paletteData;
     return ret;
@@ -49,7 +49,7 @@ void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner) {
 }
 
 static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment) {
-    TouchscreenListMenu *ret = AllocFromHeap(spawner->heapId, sizeof(TouchscreenListMenu));
+    TouchscreenListMenu *ret = Heap_Alloc(spawner->heapID, sizeof(TouchscreenListMenu));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenu));
     MI_CpuCopy8(header, &ret->header, sizeof(TouchscreenListMenuHeader));
     ret->spawner = spawner;
@@ -57,7 +57,7 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
         ret->cursorPos = selection;
     }
     ret->animActive = 0;
-    ret->heapId = spawner->heapId;
+    ret->heapID = spawner->heapID;
     ret->y = y;
     ret->cursorPos = selection;
     ret->isTouch = isTouch;
@@ -92,7 +92,7 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
         break;
     }
     TouchscreenListMenu_CreateWindows(ret);
-    TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(spawner, &ret->header, ret->spawner->paletteData, ret->heapId);
+    TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(spawner, &ret->header, ret->spawner->paletteData, ret->heapID);
     TouchscreenListMenu_DrawButtons(ret);
     TouchscreenListMenu_PrintOptions(ret);
     TouchscreenListMenu_DrawButtonsAndTransfer(ret, ret->cursorPos);
@@ -166,8 +166,8 @@ typedef struct TaskData_TouchscreenListMenuGraphicsLoad {
     NNSG2dPaletteData *pPlttData;
 } TaskData_TouchscreenListMenuGraphicsLoad;
 
-static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, HeapID heapId) {
-    TaskData_TouchscreenListMenuGraphicsLoad *taskData = AllocFromHeapAtEnd(heapId, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
+static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *plttData, enum HeapID heapID) {
+    TaskData_TouchscreenListMenuGraphicsLoad *taskData = Heap_AllocAtEnd(heapID, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     MI_CpuClear8(taskData, sizeof(TaskData_TouchscreenListMenuGraphicsLoad));
     taskData->pCharData = spawner->pCharData;
     taskData->pPlttData = spawner->pPlttData;
@@ -223,8 +223,8 @@ static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u
 static void TouchscreenListMenu_CreateWindows(TouchscreenListMenu *menu) {
     int i;
     u16 tilesPerWindow;
-    menu->windows = AllocWindows(menu->heapId, menu->header.numWindows);
-    menu->touchscreenHitboxes = AllocFromHeap(menu->heapId, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
+    menu->windows = AllocWindows(menu->heapID, menu->header.numWindows);
+    menu->touchscreenHitboxes = Heap_Alloc(menu->heapID, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
     MI_CpuClear8(menu->touchscreenHitboxes, (menu->header.numWindows + 1) * sizeof(TouchscreenHitbox));
     tilesPerWindow = menu->width * 2;
     for (i = 0; i < menu->header.numWindows; ++i) {

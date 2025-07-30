@@ -30,7 +30,7 @@ typedef struct Ov122_021E7888 {
 } Ov122_021E7888;
 
 typedef struct VoltorbFlipAppWork {
-    HeapID heapId;
+    enum HeapID heapID;
     Options *options;
     u16 *coins;
     MenuInputStateMgr *menuInputStatePtr;

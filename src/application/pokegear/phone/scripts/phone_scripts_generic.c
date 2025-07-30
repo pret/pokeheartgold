@@ -19,7 +19,7 @@ static BOOL PhoneScript_Generic_GiftItemExceptDuringBugContest(PokegearPhoneCall
 static BOOL PhoneScript_Generic_OnlyTuesThursSat(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr);
 static BOOL PhoneScript_Generic_DuringRocketTakeover(PokegearPhoneCallContext *ctx, const PhoneScriptGenericHeader *hdr);
 static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay);
-static u16 getRandomTrainerMon(u16 trainerID, HeapID heapID);
+static u16 getRandomTrainerMon(u16 trainerID, enum HeapID heapID);
 
 u16 PhoneCall_GetScriptId_Generic(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     const PhoneScriptGenericHeader *genericScripts;
@@ -194,14 +194,14 @@ static u16 getRandomEncounterSlot(u16 mapId, u8 trainerClass, u8 timeOfDay) {
     }
 }
 
-static u16 getRandomTrainerMon(u16 trainerID, HeapID a1) {
+static u16 getRandomTrainerMon(u16 trainerID, enum HeapID a1) {
     int i;
     Trainer trdata;
     TRPOKE *trpoke;
     u16 teamSpecies[PARTY_SIZE];
 
     TrainerData_ReadTrData(trainerID, &trdata);
-    trpoke = AllocFromHeap(a1, sizeof(TRPOKE) * PARTY_SIZE);
+    trpoke = Heap_Alloc(a1, sizeof(TRPOKE) * PARTY_SIZE);
     MI_CpuClear8(trpoke, sizeof(TRPOKE) * PARTY_SIZE);
     TrainerData_ReadTrPoke(trainerID, trpoke);
     switch (trdata.data.trainerType) {
@@ -249,7 +249,7 @@ BOOL GearPhoneCall_Generic(PokegearPhoneCallContext *ctx) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         PhoneCall_ApplyGenericNPCcallSideEffect(ctx, PhoneCall_GetScriptDefPtrByID(state->scriptID));
-        BufferSpeciesName(ctx->msgFormat, 10, getRandomTrainerMon(state->phoneBookEntry->trainerId, ctx->heapId));
+        BufferSpeciesName(ctx->msgFormat, 10, getRandomTrainerMon(state->phoneBookEntry->trainerId, ctx->heapID));
         BufferSpeciesName(ctx->msgFormat, 11, getRandomEncounterSlot(state->phoneBookEntry->mapId, state->phoneBookEntry->trainerClass, state->timeOfDay));
         if (state->phoneBookEntry->unkC == 255) {
             ++state->scriptState;

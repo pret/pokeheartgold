@@ -161,7 +161,7 @@ typedef struct PokepicManager {
     Pokepic pics[4];
     NNSG2dImageProxy imageProxy;
     NNSG2dImagePaletteProxy paletteProxy;
-    HeapID heapId;
+    enum HeapID heapID;
     u32 charBaseAddr;
     u32 charSize;
     u32 plttBaseAddr;
@@ -179,7 +179,7 @@ typedef struct PokepicManager {
 } PokepicManager; // size: 0x338
 
 // Allocates PokepicManager and auxiliary buffers
-PokepicManager *PokepicManager_Create(HeapID heapId);
+PokepicManager *PokepicManager_Create(enum HeapID heapID);
 
 // Frame update pics
 void PokepicManager_DrawAll(PokepicManager *pokepicManager);

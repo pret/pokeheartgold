@@ -21,7 +21,7 @@ ov01_021FB5D4: ; 0x021FB5D4
 	mov r1, #0xca
 	lsl r1, r1, #2
 	add r6, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xca
 	mov r1, #0
 	lsl r2, r2, #2

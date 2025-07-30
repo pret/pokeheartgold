@@ -75,7 +75,7 @@ FrtCmd_095: ; 0x0222F678
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x24
 	add r4, r0, #0
@@ -186,7 +186,7 @@ _0222F76C:
 	blt _0222F76C
 	mov r0, #0xb
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x24
 	add r4, r0, #0

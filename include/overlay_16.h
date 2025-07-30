@@ -18,7 +18,7 @@ typedef struct UnkStruct_ov16_022014A0 {
     u8 unk2;               // yield multiplier?
 } UnkStruct_ov16_022014A0; // size: 0x3
 
-UnkStruct_ov16_022014A0 *ov16_022014A0(HeapID heapId);
+UnkStruct_ov16_022014A0 *ov16_022014A0(enum HeapID heapID);
 u8 BerryPots_GetPotGrowthStage(BerryPot *berryPots, u32 idx);
 u8 BerryPots_GetPotBerryId(BerryPot *berryPots, u32 idx);
 u32 BerryPots_GetSoilState(BerryPot *berryPots, u32 idx);
@@ -39,8 +39,8 @@ u16 BerryIdToItemId(u16 berryId);
 u16 ItemIdToBerryId(u16 itemId);
 u16 MulchIdToItemId(u16 mulchId);
 u32 ItemIdToMulchId(u16 itemId);
-u16 GetTotalBerryQuantity(Bag *bag, HeapID heapId);
-u16 GetTotalMulchQuantity(Bag *bag, HeapID heapId);
+u16 GetTotalBerryQuantity(Bag *bag, enum HeapID heapID);
+u16 GetTotalMulchQuantity(Bag *bag, enum HeapID heapID);
 
 BOOL BerryPots_Init(OverlayManager *manager, int *state);
 BOOL BerryPots_Main(OverlayManager *manager, int *state);

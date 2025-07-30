@@ -29,7 +29,7 @@ typedef struct TouchscreenListMenuHeader {
 } TouchscreenListMenuHeader;
 
 typedef struct TouchscreenListMenuSpawner {
-    HeapID heapId;
+    enum HeapID heapID;
     NNSG2dCharacterData *pCharData;
     NNSG2dPaletteData *pPlttData;
     void *charDataRaw;
@@ -55,12 +55,12 @@ struct TouchscreenListMenu {
     u8 y;
     u8 selection;
     u8 animTimer;
-    HeapID heapId;
+    enum HeapID heapID;
     TouchscreenListMenuCallback callback;
     void *callbackArg;
 };
 
-TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(HeapID heapId, PaletteData *paletteData);
+TouchscreenListMenuSpawner *TouchscreenListMenuSpawner_Create(enum HeapID heapID, PaletteData *paletteData);
 void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner);
 TouchscreenListMenu *TouchscreenListMenu_Create(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection);
 TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment);

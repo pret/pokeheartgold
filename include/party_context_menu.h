@@ -40,7 +40,7 @@ void sub_0207DF98(PartyMenu *partyMenu);
 void sub_0207E04C(PartyMenu *partyMenu);
 void sub_0207E068(PartyMenu *partyMenu);
 void sub_0207E54C(PartyMenu *partyMenu, int numItems, int selection, int state);
-PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMenu, const PartyMenuContextMenu *template, int selection, HeapID heapId, int state);
+PartyMenuContextMenuCursor *PartyMenu_CreateContextMenuCursor(PartyMenu *partyMenu, const PartyMenuContextMenu *template, int selection, enum HeapID heapID, int state);
 void PartyMenu_CloseContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *a1);
 u32 PartyMenu_HandleInput_ContextMenu(PartyMenu *partyMenu, PartyMenuContextMenuCursor *a1);
 u32 PartyMenu_HandleSubcontextMenuInput_TopLevel(PartyMenu *partyMenu, PartyMenuContextMenuCursor *a1);

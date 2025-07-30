@@ -14,6 +14,6 @@ void sub_02067BA4(FieldSystem *fieldSystem);
 void sub_02067BC0(FieldSystem *fieldSystem);
 void sub_02067BE8(FieldSystem *fieldSystem);
 BOOL sub_02068CCC(UnkStruct_0206793C *unk);
-void CallTask_NPCTrade(TaskManager *taskManager, NPCTradeAppData *tradeWork, u16 arg, HeapID heapId);
+void CallTask_NPCTrade(TaskManager *taskManager, NPCTradeAppData *tradeWork, u16 arg, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_UNK_0206793C_H

@@ -13,7 +13,7 @@ ov105_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x97
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0xa8
 	mov r2, #0x97
@@ -294,7 +294,7 @@ _021E5B28:
 	bl OverlayManager_FreeData
 	bl GF3dRender_DeleteSimpleManager
 	mov r0, #0x97
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -460,7 +460,7 @@ ov105_021E5CA4: ; 0x021E5CA4
 	add r0, #0x80
 	mov r1, #0x97
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r7, #0
 	add r0, #0x9c
 	ldrb r0, [r0]

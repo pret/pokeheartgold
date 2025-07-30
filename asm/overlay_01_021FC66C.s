@@ -20,7 +20,7 @@ CreateFishingRodTaskEnv: ; 0x021FC66C
 	add r0, r1, #0
 	mov r1, #0x18
 	add r5, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x18
@@ -636,7 +636,7 @@ ov01_021FCAC4: ; 0x021FCAC4
 	add r5, r0, #0
 	mov r0, #4
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _021FCAD8
 	bl GF_AssertFail

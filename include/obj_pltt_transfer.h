@@ -10,7 +10,7 @@ typedef struct ObjPlttTransferTaskTemplate {
     int id;
 } ObjPlttTransferTaskTemplate;
 
-void ObjPlttTransfer_Init(int num, HeapID heapId);
+void ObjPlttTransfer_Init(int num, enum HeapID heapID);
 void ObjPlttTransfer_SetReservedRegion(u32 flag, NNS_G2D_VRAM_TYPE type);
 void ObjPlttTransfer_Destroy(void);
 void ObjPlttTransfer_Reset(void);

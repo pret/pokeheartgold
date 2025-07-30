@@ -14,9 +14,9 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_Run
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public Save_GameStats_Get
 .public sub_0202FC24

@@ -24,7 +24,7 @@ sub_02034354: ; 0x02034354
 	mov r1, #0xea
 	mov r0, #0xf
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _020343E0 ; =_021D4130
 	mov r2, #0xea
 	str r0, [r1]

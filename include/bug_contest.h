@@ -17,6 +17,6 @@ BOOL BugContest_ContestantIsRegisteredN(BugContest *bugContest, u8 id, u8 n);
 void BugContest_InitOpponents(BugContest *bugContest);
 void BugContest_InitEncounters(BugContest *bugContest);
 u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *pokemon);
-ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, HeapID heapId);
+ENC_SLOT *BugContest_GetEncounterSlot(BugContest *bugContest, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_BUG_CONTEST_H

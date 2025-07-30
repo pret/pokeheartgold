@@ -232,9 +232,9 @@ void sub_0204A810(UnkStruct_Fsys_A0 **a0) {
 }
 
 UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32 a2) {
-    UnkStruct_Fsys_A0 *unkStruct = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_Fsys_A0));
+    UnkStruct_Fsys_A0 *unkStruct = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_Fsys_A0));
     MI_CpuClear8(unkStruct, sizeof(UnkStruct_Fsys_A0));
-    unkStruct->heapId = HEAP_ID_FIELD;
+    unkStruct->heapID = HEAP_ID_FIELD2;
     unkStruct->unk70 = sub_0202D908(saveData);
     unkStruct->unk74 = Save_FrontierData_Get(saveData);
     unkStruct->unk00 = 0x12345678;
@@ -269,7 +269,7 @@ UnkStruct_Fsys_A0 *sub_0204A824(SaveData *saveData, BOOL resumeFromPrevious, u32
                 300 + unkStruct->unk10_5,
                 sub_0202D284(unkStruct->unk70, 7, 0),
                 &unkStruct->unk7e8[unkStruct->unk10_5],
-                unkStruct->heapId);
+                unkStruct->heapID);
         }
     }
     unkStruct->unk11 = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(saveData));
@@ -512,7 +512,7 @@ void sub_0204AF2C(UnkStruct_Fsys_A0 *a0) {
 
 void sub_0204AFE0(UnkStruct_Fsys_A0 *a0) {
     for (s32 i = 0; i < 5; i++) {
-        a0->unk838[i] = sub_0204BA04(a0, &a0->unk298[i], 300 + i, a0->unk0e, a0->unk2e, a0->unk36, &a0->unk7e8[i], a0->heapId);
+        a0->unk838[i] = sub_0204BA04(a0, &a0->unk298[i], 300 + i, a0->unk0e, a0->unk2e, a0->unk36, &a0->unk7e8[i], a0->heapID);
     }
 }
 
@@ -715,7 +715,7 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
 }
 
 static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {
-    UnkStruct_0204B470 *unkStructs = AllocFromHeapAtEnd(a0->heapId, 3 * sizeof(UnkStruct_0204B470));
+    UnkStruct_0204B470 *unkStructs = Heap_AllocAtEnd(a0->heapID, 3 * sizeof(UnkStruct_0204B470));
     MI_CpuClear8(unkStructs, 3 * sizeof(UnkStruct_0204B470));
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 3; i++) {

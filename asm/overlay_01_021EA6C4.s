@@ -19,7 +19,7 @@ ov01_021EA724: ; 0x021EA724
 	push {r4, lr}
 	mov r0, #4
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _021EA736
 	bl GF_AssertFail
@@ -66,7 +66,7 @@ _021EA77C:
 	lsl r4, r0, #2
 	mov r0, #4
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	cmp r0, #0
 	bne _021EA798
@@ -74,7 +74,7 @@ _021EA77C:
 _021EA798:
 	mov r0, #4
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #4]
 	cmp r0, #0
 	bne _021EA7AA

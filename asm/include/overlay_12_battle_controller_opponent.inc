@@ -57,7 +57,7 @@
 .public sub_02014540
 .public sub_0201649C
 .public sub_02017068
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public ToggleBgLayer
 .public BgSetPosTextAndCommit

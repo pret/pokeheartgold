@@ -134,9 +134,9 @@ extern u32 sub_02038D80(void);
 extern u32 PmAgbCartridgeGetOffsets(u32 a0);
 extern u32 PmAgbCartridge_GetVersionInternal(void);
 extern u32 PmAgbCartridge_GetLanguage(void);
-extern void ov74_0223512C(HeapID heapId);
+extern void ov74_0223512C(enum HeapID heapID);
 extern u32 ov74_02235230(void);
-extern void ov74_022352A0(HeapID heapId);
+extern void ov74_022352A0(enum HeapID heapID);
 extern void ov74_02235308(BgConfig *bgConfig, u8 bgId, u32 screenSize, u32 screenBase, u32 charBase);
 extern void ov74_02235390(u32 a0);
 extern void ov74_0223539C(u32 a0, u32 newState, int *state, u32 waitingState);
@@ -1353,7 +1353,7 @@ static void MainMenu_OnVBlank(BgConfig *bgConfig) {
 }
 
 BOOL MainMenuApp_Init(OverlayManager *manager, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_MAIN_MENU, 0x40000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_MAIN_MENU, 0x40000);
 
     MainMenuAppData *data = OverlayManager_CreateAndGetData(manager, sizeof(MainMenuAppData), HEAP_ID_MAIN_MENU);
     memset(data, 0, sizeof(MainMenuAppData));
@@ -1525,7 +1525,7 @@ BOOL MainMenuApp_Exit(OverlayManager *manager, int *state) {
     MainMenu_QueueSelectedApp(data);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_MAIN_MENU);
+    Heap_Destroy(HEAP_ID_MAIN_MENU);
 
     ov74_02236034(FALSE);
 

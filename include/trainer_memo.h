@@ -21,7 +21,7 @@ typedef struct MemoNotepad {
 } MemoNotepad;
 
 typedef struct Unk0208E600 {
-    HeapID heapId;
+    enum HeapID heapID;
     MsgData *msgData;
     MessageFormat *msgFmt;
     Pokemon *mon;
@@ -29,10 +29,10 @@ typedef struct Unk0208E600 {
     MemoNotepad notepad;
 } Unk0208E600;
 
-void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId);
-void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId);
+void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, enum HeapID heapID);
+void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat, int mapsec, enum HeapID heapID);
 BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine);
-Unk0208E600 *sub_0208E600(Pokemon *a0, int a1, HeapID a2, int a3);
+Unk0208E600 *sub_0208E600(Pokemon *a0, int a1, enum HeapID a2, int a3);
 void sub_0208E994(Unk0208E600 *a0);
 
 #endif // POKEHEARTGOLD_TRAINER_MEMO_H

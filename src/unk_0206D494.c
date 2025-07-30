@@ -63,7 +63,7 @@ BOOL sub_0206D494(FieldSystem *fieldSystem) {
     LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
-        UnkStruct_0206D494 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0206D494));
+        UnkStruct_0206D494 *unkStruct = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206D494));
         unkStruct->unk00 = unk2;
         unkStruct->unk04 = NULL;
         unkStruct->unk08 = MapObject_GetFacingDirection(unk1);
@@ -270,7 +270,7 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
 }
 
 BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
-    NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD, TRUE);
+    NPCTrade *trade = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeNum, FALSE, HEAP_ID_FIELD2, TRUE);
     BOOL result = MonIsInGameTradePokeInternal(mon, trade, tradeNum);
     Heap_Free(trade);
     return result != FALSE;
@@ -349,8 +349,8 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     if (version != gGameVersion) {
         return FALSE;
     }
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, HEAP_ID_FIELD);
-    String *monNickname = String_New(12, HEAP_ID_FIELD);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, HEAP_ID_FIELD2);
+    String *monNickname = String_New(12, HEAP_ID_FIELD2);
     GetMonData(mon, MON_DATA_NICKNAME_STRING, monNickname);
     String *tradeNickname = NewString_ReadMsgData(messageData, tradeNum);
     BOOL differentNickname = String_Compare(monNickname, tradeNickname);
@@ -360,7 +360,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
         DestroyMsgData(messageData);
         return FALSE;
     }
-    String *monOtName = String_New(8, HEAP_ID_FIELD);
+    String *monOtName = String_New(8, HEAP_ID_FIELD2);
     GetMonData(mon, MON_DATA_OT_NAME_2, monOtName);
     String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
@@ -402,7 +402,7 @@ void BugContest_WarpToJudging(TaskManager *taskManager, FieldSystem *fieldSystem
 }
 
 void BugContest_PromptSwapPokemon(TaskManager *taskManager, Pokemon *mon) {
-    UnkStruct_0206DB94 *unkStruct = AllocFromHeapAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
+    UnkStruct_0206DB94 *unkStruct = Heap_AllocAtEnd(HEAP_ID_3, sizeof(UnkStruct_0206DB94));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206DB94));
     unkStruct->newlyCaughtMon = mon;
     TaskManager_Call(taskManager, Task_BugContest_PromptSwapPokemon, unkStruct);

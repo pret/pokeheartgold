@@ -764,7 +764,7 @@ _02237E36:
 	mov r0, #3
 	mov r1, #0x43
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	bl LoadDwcOverlay
 	bl LoadOVY38
 	mov r0, #0x43
@@ -834,7 +834,7 @@ _02237E36:
 	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _02237F90 ; =0x00020020
 	mov r0, #0x43
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x24]
 	add r0, #0x1f
 	mov r1, #0x1f
@@ -1038,7 +1038,7 @@ _02238086:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x43
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

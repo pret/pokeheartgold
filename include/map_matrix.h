@@ -36,7 +36,7 @@ u8 MapMatrix_GetHeight(MAPMATRIX *map_matrix);
 u16 MapMatrix_GetMapHeader(MAPMATRIX *map_matrix, s32 x, s32 y);
 u8 MapMatrix_GetMatrixId(MAPMATRIX *map_matrix);
 u8 MapMatrix_GetMapAltitude(MAPMATRIX *map_matrix, u8 matrix_id, u16 x, u16 y, int matrix_width);
-MAPDATA *MapMatrix_MapData_New(HeapID heapId);
+MAPDATA *MapMatrix_MapData_New(enum HeapID heapID);
 void MapMatrix_MapData_Free(MAPDATA *map_data);
 u16 GetMapModelNo(u32 map_no, MAPMATRIX *map_matrix);
 void RemoveMahoganyTownAntennaTree(MAPMATRIX *map_matrix);

@@ -125,10 +125,10 @@
 .public SetKeyRepeatTimers
 .public sub_0201A728
 .public sub_0201A738
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public Heap_FreeExplicit
 .public BgConfig_Alloc

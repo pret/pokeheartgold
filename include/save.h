@@ -113,8 +113,8 @@ u16 SaveArray_CalcCRC16(SaveData *saveData, const void *data, u32 size);
 void Save_WipeExtraChunks(SaveData *saveData);
 int WriteExtraSaveChunk(SaveData *saveData, int idx, void *data);
 int sub_02028230(SaveData *saveData, int idx, void *data);
-void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p);
-void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p);
+void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapID, int idx, int *ret_p);
+void *sub_020284A4(SaveData *saveData, enum HeapID heapID, int idx, int *ret_p, int *ret2_p);
 BOOL SaveSubstruct_AssertCRC(int idx);
 void SaveSubstruct_UpdateCRC(int idx);
 

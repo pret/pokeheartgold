@@ -90,7 +90,7 @@ FrtCmd_154: ; 0x02231C8C
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -129,7 +129,7 @@ FrtCmd_164: ; 0x02231CE0
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -258,7 +258,7 @@ FrtCmd_157: ; 0x02231DF8
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0

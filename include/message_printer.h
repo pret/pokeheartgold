@@ -13,7 +13,7 @@ typedef struct MessagePrinter {
     u32 backgroundColor;
 } MessagePrinter;
 
-MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, HeapID heapId);
+MessagePrinter *MessagePrinter_New(u32 foreground, u32 shadow, u32 background, enum HeapID heapID);
 void MessagePrinter_Delete(MessagePrinter *messagePrinter);
 void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u32 x, u32 y);
 void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y);

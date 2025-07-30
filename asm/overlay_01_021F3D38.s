@@ -18,7 +18,7 @@
 ov01_021F3D38: ; 0x021F3D38
 	push {r3, lr}
 	mov r1, #0x14
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r3, r0, #0
 	mov r2, #0x14
 	mov r1, #0

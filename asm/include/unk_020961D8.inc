@@ -4,7 +4,7 @@
 .public MessageFormat_Delete
 .public IsPaletteFadeFinished
 .public MailMsg_Init_WithBank
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public Save_Misc_Get
 .public SaveMisc_GetBattleGreeting
