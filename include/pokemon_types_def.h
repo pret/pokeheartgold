@@ -104,7 +104,7 @@ typedef struct {
     /* 0x1A */ u8 pokerus;
     /* 0x1B */ u8 pokeball;
     /* 0x1C */ u8 metLevel : 7;
-    u8 metGender : 1;
+    u8 otGender : 1;
     /* 0x1D */ u8 encounterType;
     /* 0x1E */ u8 HGSS_Pokeball;
     /* 0x1F */ s8 mood;
