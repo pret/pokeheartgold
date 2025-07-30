@@ -8110,7 +8110,7 @@ ov10_0221FD34: ; 0x0221FD34
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	add r0, r5, #0
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x24]
