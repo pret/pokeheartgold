@@ -12,7 +12,7 @@
 #include "update_dex_received.h"
 
 static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
-    if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+    if (GetMonData(mon, MON_DATA_CUR_HP, NULL) == 0) {
         return FALSE;
     }
     return !GetMonData(mon, MON_DATA_IS_EGG, NULL);
@@ -176,11 +176,11 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
         if (!(GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON))) {
             continue;
         }
-        hp = GetMonData(mon, MON_DATA_HP, NULL);
+        hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
         if (hp > 1) {
             hp--;
         }
-        SetMonData(mon, MON_DATA_HP, &hp);
+        SetMonData(mon, MON_DATA_CUR_HP, &hp);
         if (hp == 1) {
             n_fainted++;
             MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_HEAL_FIELD_PSN, location);
@@ -199,7 +199,7 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
 
 BOOL SurvivePoisoning(Pokemon *mon) {
     u32 status;
-    if ((GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && GetMonData(mon, MON_DATA_HP, NULL) == 1) {
+    if ((GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && GetMonData(mon, MON_DATA_CUR_HP, NULL) == 1) {
         status = 0;
         SetMonData(mon, MON_DATA_STATUS, &status);
         return TRUE;

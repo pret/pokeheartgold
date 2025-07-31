@@ -73,7 +73,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
         name = _GetNpcTradeName(HEAP_ID_FIELD, NPC_TRADE_OT_NUM(tradeno));
         mailno = ItemToMailId(trade_dat->heldItem);
         mail = CreateKenyaMail(mon, mailno, trade_dat->gender, name, trade_dat->otId);
-        SetMonData(kenya, MON_DATA_MAIL_STRUCT, mail);
+        SetMonData(kenya, MON_DATA_MAIL, mail);
         String_Delete(name);
         Heap_Free(mail);
     }
@@ -113,7 +113,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 1;
     }
 
-    capsule = GetMonData(mon, MON_DATA_CAPSULE, NULL);
+    capsule = GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
     if (capsule != 0) {
         return 3;
     }
@@ -122,7 +122,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
     party_count = Party_GetCount(party);
     for (i = 0; i < party_count; i++) {
         cur_poke = Party_GetMonByIndex(party, i);
-        if (GetMonData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && GetMonData(cur_poke, MON_DATA_HP, NULL) != 0 && !GetMonData(cur_poke, MON_DATA_IS_EGG, NULL)) {
+        if (GetMonData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && GetMonData(cur_poke, MON_DATA_CUR_HP, NULL) != 0 && !GetMonData(cur_poke, MON_DATA_IS_EGG, NULL)) {
             n++;
         }
     }
@@ -220,11 +220,11 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     SetMonData(mon, MON_DATA_HELD_ITEM, &trade_dat->heldItem);
 
     name = _GetNpcTradeName((HeapID)heapId_2, NPC_TRADE_OT_NUM(tradeno));
-    SetMonData(mon, MON_DATA_OT_NAME_2, name);
+    SetMonData(mon, MON_DATA_OT_NAME_STRING, name);
     String_Delete(name);
 
     SetMonData(mon, MON_DATA_OT_GENDER, &trade_dat->gender);
-    SetMonData(mon, MON_DATA_GAME_LANGUAGE, &trade_dat->language);
+    SetMonData(mon, MON_DATA_LANGUAGE, &trade_dat->language);
 
     mapsec = MapHeader_GetMapSec(mapno);
     MonSetTrainerMemo(mon, NULL, met_level_strat, mapsec, heapId);

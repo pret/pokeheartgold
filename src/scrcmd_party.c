@@ -64,7 +64,7 @@ BOOL ScrCmd_PartymonIsMine(ScriptContext *ctx) {
     u16 *mine = ScriptGetVarPointer(ctx);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), *slot);
-    u16 pokemonID = GetMonData(mon, MON_DATA_OTID, NULL);
+    u16 pokemonID = GetMonData(mon, MON_DATA_OT_ID, NULL);
     u16 playerID = PlayerProfile_GetTrainerID(profile);
 
     if (pokemonID == playerID) {
@@ -253,7 +253,7 @@ BOOL ScrCmd_MonAddFriendship(ScriptContext *ctx) {
             friendshipModifier++;
         }
 
-        if (map == GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL)) {
+        if (map == GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL)) {
             friendshipModifier++;
         }
 
@@ -358,7 +358,7 @@ BOOL ScrCmd_CountAliveMons(ScriptContext *ctx) {
     for (i = 0, count = 0; i < partyCount; i++) {
         if (i != slot) {
             Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
-            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0) {
+            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_CUR_HP, NULL) != 0) {
                 count++;
             }
         }
@@ -377,7 +377,7 @@ BOOL ScrCmd_CountAliveMonsAndPC(ScriptContext *ctx) {
     partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     for (i = 0, count = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
-        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0) {
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_CUR_HP, NULL) != 0) {
             count++;
         }
     }
@@ -505,7 +505,7 @@ BOOL ScrCmd_KenyaCheck(ScriptContext *ctx) {
     HandleLoadOverlay(FS_OVERLAY_ID(npc_trade), OVY_LOAD_ASYNC);
     Mail *kenyaMail = NPCTrade_MakeKenyaMail();
     Mail *mail = Mail_New(HEAP_ID_FIELD);
-    GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
+    GetMonData(mon, MON_DATA_MAIL, mail);
     *kenya = Mail_Compare(kenyaMail, mail);
     Heap_Free(mail);
     Heap_Free(kenyaMail);
@@ -529,7 +529,7 @@ BOOL ScrCmd_KenyaCheckPartyOrMailbox(ScriptContext *ctx) {
     for (i = 0; i < Party_GetCount(party); i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
         if (ItemIdIsMail(GetMonData(mon, MON_DATA_HELD_ITEM, NULL))) {
-            GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
+            GetMonData(mon, MON_DATA_MAIL, mail);
             if (Mail_Compare(kenyaMail, mail)) {
                 *kenya = TRUE;
                 Heap_Free(mail);
@@ -572,7 +572,7 @@ BOOL ScrCmd_MonGiveMail(ScriptContext *ctx) {
     item = ITEM_NONE;
     Mail *mail = Mail_New(HEAP_ID_FIELD);
     Mail_Init(mail);
-    SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
+    SetMonData(mon, MON_DATA_MAIL, mail);
     SetMonData(mon, MON_DATA_HELD_ITEM, &item);
     Heap_Free(mail);
 

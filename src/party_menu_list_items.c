@@ -662,7 +662,7 @@ static void PartyMonContextMenuAction_Set(PartyMenu *partyMenu, int *pState) {
 
 int PartyMenu_HandleSetMonCapsule(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    if (GetMonData(mon, MON_DATA_CAPSULE, NULL) == 0) {
+    if (GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL) == 0) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00118, partyMenu->formattedStrBuf);
         Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_MON1_CAPSULE + partyMenu->partyMonIndex], TRUE);
     } else {
