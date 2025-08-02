@@ -617,7 +617,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             if (BallToItemId(BattleSystem_GetMonBall(bsys, mon)) == ITEM_LUXURY_BALL) {
                 friendship++;
             }
-            if (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
+            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
                 friendship++;
             }
             data = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);

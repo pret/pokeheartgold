@@ -273,7 +273,7 @@
 #define MON_DATA_FORM                       112
 #define MON_DATA_UNUSED_113                 113
 #define MON_DATA_UNUSED_114                 114
-#define MON_DATA_HGSS_HATCH_LOCATION        115
+#define MON_DATA_HGSS_EGG_LOCATION          115
 #define MON_DATA_HGSS_MET_LOCATION          116
 #define MON_DATA_NICKNAME                   117
 #define MON_DATA_NICKNAME_FLAT_COMPARE      118
@@ -310,7 +310,7 @@
 #define MON_DATA_MET_YEAR                   149
 #define MON_DATA_MET_MONTH                  150
 #define MON_DATA_MET_DAY                    151
-#define MON_DATA_HATCH_LOCATION             152
+#define MON_DATA_EGG_LOCATION               152
 #define MON_DATA_MET_LOCATION               153
 #define MON_DATA_POKERUS                    154
 #define MON_DATA_POKEBALL                   155

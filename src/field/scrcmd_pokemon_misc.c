@@ -1418,7 +1418,7 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(ScriptContext *ctx) {
         u8 gameVer = GetMonData(mon, MON_DATA_MET_GAME, NULL);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)
             && !GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)
-            && !GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL)) {
+            && !GetMonData(mon, MON_DATA_EGG_LOCATION, NULL)) {
 
             switch (species) {
             case SPECIES_KYOGRE:

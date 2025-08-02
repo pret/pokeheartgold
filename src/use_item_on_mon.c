@@ -627,7 +627,7 @@ BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, He
             mod++;
         }
 
-        if (location == GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL)) {
+        if (location == GetMonData(mon, MON_DATA_EGG_LOCATION, NULL)) {
             mod++;
         }
 

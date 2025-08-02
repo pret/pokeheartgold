@@ -644,7 +644,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
 
     if (metLocation != MAPSEC_MYSTERY_ZONE) {
-        SetMonData(mon, MON_DATA_HATCH_LOCATION, &metLocation);
+        SetMonData(mon, MON_DATA_EGG_LOCATION, &metLocation);
     }
     isEgg = TRUE;
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
@@ -1048,7 +1048,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
     otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     form = GetMonData(mon, MON_DATA_FORM, NULL);
-    if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
+    if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
         if (CalcShininessByOtIdAndPersonality(otId, pid)) {
             do {
                 pid = PRandom(pid);
@@ -1074,11 +1074,11 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     SetMonData(tmpMon, MON_DATA_OT_GENDER, &otGender);
     SetMonData(tmpMon, MON_DATA_OT_ID, &otId);
     SetMonData(tmpMon, MON_DATA_FORM, &form);
-    metLoc = GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL);
+    metLoc = GetMonData(mon, MON_DATA_EGG_LOCATION, NULL);
     metYear = GetMonData(mon, MON_DATA_EGG_YEAR, NULL);
     metMonth = GetMonData(mon, MON_DATA_EGG_MONTH, NULL);
     metDay = GetMonData(mon, MON_DATA_EGG_DAY, NULL);
-    SetMonData(tmpMon, MON_DATA_HATCH_LOCATION, &metLoc);
+    SetMonData(tmpMon, MON_DATA_EGG_LOCATION, &metLoc);
     SetMonData(tmpMon, MON_DATA_EGG_YEAR, &metYear);
     SetMonData(tmpMon, MON_DATA_EGG_MONTH, &metMonth);
     SetMonData(tmpMon, MON_DATA_EGG_DAY, &metDay);

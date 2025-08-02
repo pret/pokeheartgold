@@ -253,7 +253,7 @@ BOOL ScrCmd_MonAddFriendship(ScriptContext *ctx) {
             friendshipModifier++;
         }
 
-        if (map == GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL)) {
+        if (map == GetMonData(mon, MON_DATA_EGG_LOCATION, NULL)) {
             friendshipModifier++;
         }
 

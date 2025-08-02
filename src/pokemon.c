@@ -814,8 +814,8 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_MET_DAY:
         ret = blockD->metDay;
         break;
-    case MON_DATA_HATCH_LOCATION:
-    case MON_DATA_HGSS_HATCH_LOCATION:
+    case MON_DATA_EGG_LOCATION:
+    case MON_DATA_HGSS_EGG_LOCATION:
         if (blockD->DP_EggLocation != METLOC_FARAWAY_PLACE || (ret = blockB->PlatHGSS_EggLocation) == 0) {
             ret = blockD->DP_EggLocation;
         }
@@ -1271,8 +1271,8 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_MET_DAY:
         blockD->metDay = VALUE(u8);
         break;
-    case MON_DATA_HATCH_LOCATION:
-    case MON_DATA_HGSS_HATCH_LOCATION:
+    case MON_DATA_EGG_LOCATION:
+    case MON_DATA_HGSS_EGG_LOCATION:
         if (VALUE(u16) == MAPSEC_MYSTERY_ZONE || LocationIsDiamondPearlCompatible(VALUE(u16)) == TRUE) {
             blockD->DP_EggLocation = VALUE(u16);
             blockB->PlatHGSS_EggLocation = VALUE(u16);
@@ -1669,8 +1669,8 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_MET_YEAR:
     case MON_DATA_MET_MONTH:
     case MON_DATA_MET_DAY:
-    case MON_DATA_HATCH_LOCATION:
-    case MON_DATA_HGSS_HATCH_LOCATION:
+    case MON_DATA_EGG_LOCATION:
+    case MON_DATA_HGSS_EGG_LOCATION:
     case MON_DATA_MET_LOCATION:
     case MON_DATA_HGSS_MET_LOCATION:
     case MON_DATA_POKERUS:
@@ -2055,7 +2055,7 @@ void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
     if (mod > 0 && GetMonData(mon, MON_DATA_DP_POKEBALL, NULL) == BALL_LUXURY) {
         mod++;
     }
-    if (mod > 0 && GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == location) {
+    if (mod > 0 && GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == location) {
         mod++;
     }
     if (mod > 0 && effect == HOLD_EFFECT_FRIENDSHIP_UP) {

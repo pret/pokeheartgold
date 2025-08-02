@@ -211,7 +211,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     Pokemon *tmpPokemon = NULL;
     Pokemon *pokemon = &mgData->mon;
     u8 *srcRibbons = mgData->ribbons;
-    int eggMetLocation = GetMonData(pokemon, MON_DATA_HATCH_LOCATION, NULL);
+    int eggMetLocation = GetMonData(pokemon, MON_DATA_EGG_LOCATION, NULL);
     int personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
     int otid = GetMonData(pokemon, MON_DATA_OT_ID, NULL);
     int rand = PRandom(OS_GetTick());
