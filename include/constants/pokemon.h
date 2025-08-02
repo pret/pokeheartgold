@@ -304,9 +304,9 @@
 #define MON_DATA_UNUSED_RIBBON_143          143
 #define MON_DATA_OT_NAME                    144
 #define MON_DATA_OT_NAME_STRING             145
-#define MON_DATA_HATCH_YEAR                 146
-#define MON_DATA_HATCH_MONTH                147
-#define MON_DATA_HATCH_DAY                  148
+#define MON_DATA_EGG_YEAR                   146
+#define MON_DATA_EGG_MONTH                  147
+#define MON_DATA_EGG_DAY                    148
 #define MON_DATA_MET_YEAR                   149
 #define MON_DATA_MET_MONTH                  150
 #define MON_DATA_MET_DAY                    151

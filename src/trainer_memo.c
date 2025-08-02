@@ -348,9 +348,9 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
     BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferLocationName(a0->msgFmt, 4, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
-    BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_HATCH_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_HATCH_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_HATCH_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
+    BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_HATCH_LOCATION, NULL));
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
@@ -414,9 +414,9 @@ static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
     if (!hatched) {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_HATCH_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-        BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_HATCH_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_HATCH_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
+        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
         BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_HATCH_LOCATION, NULL));
     } else {
         BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
@@ -662,7 +662,13 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
             return MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED;
         }
 
-        if ((GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE))) || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_TRAVELING_MAN))) || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_RILEY))) || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_CYNTHIA))) || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON))) || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_PRIMO)))) {
+        if ((GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE)))
+         || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE)))
+         || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_TRAVELING_MAN)))
+         || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_RILEY)))
+         || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_CYNTHIA)))
+         || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)))
+         || (GetMonData(mon, MON_DATA_HATCH_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_PRIMO)))) {
             if (isMine == TRUE) {
                 return MET_CONDITION_EGG_HATCHED_GIFT;
             }
@@ -779,13 +785,13 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
             SetBoxMonData(boxMon, MON_DATA_HATCH_LOCATION, &var);
 
             var = GetBoxMonData(boxMon, MON_DATA_MET_YEAR, NULL);
-            SetBoxMonData(boxMon, MON_DATA_HATCH_YEAR, &var);
+            SetBoxMonData(boxMon, MON_DATA_EGG_YEAR, &var);
 
             var = GetBoxMonData(boxMon, MON_DATA_MET_MONTH, NULL);
-            SetBoxMonData(boxMon, MON_DATA_HATCH_MONTH, &var);
+            SetBoxMonData(boxMon, MON_DATA_EGG_MONTH, &var);
 
             var = GetBoxMonData(boxMon, MON_DATA_MET_DAY, NULL);
-            SetBoxMonData(boxMon, MON_DATA_HATCH_DAY, &var);
+            SetBoxMonData(boxMon, MON_DATA_EGG_DAY, &var);
         }
         BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
         BoxMon_SetOriginalTrainerData(boxMon, profile, heapId);
@@ -811,9 +817,9 @@ static void BoxMon_SetMetDateAndLocation(BoxPokemon *boxMon, int mapsec, int set
     GF_RTC_CopyDate(&date);
     if (setMetDateParam == SETMETDATEPARAM_EGG) {
         SetBoxMonData(boxMon, MON_DATA_HATCH_LOCATION, &mapsec);
-        SetBoxMonData(boxMon, MON_DATA_HATCH_YEAR, &date.year);
-        SetBoxMonData(boxMon, MON_DATA_HATCH_MONTH, &date.month);
-        SetBoxMonData(boxMon, MON_DATA_HATCH_DAY, &date.day);
+        SetBoxMonData(boxMon, MON_DATA_EGG_YEAR, &date.year);
+        SetBoxMonData(boxMon, MON_DATA_EGG_MONTH, &date.month);
+        SetBoxMonData(boxMon, MON_DATA_EGG_DAY, &date.day);
     } else {
         SetBoxMonData(boxMon, MON_DATA_MET_LOCATION, &mapsec);
         SetBoxMonData(boxMon, MON_DATA_MET_YEAR, &date.year);
@@ -826,9 +832,9 @@ static void BoxMon_ClearMetDateAndLocation(BoxPokemon *boxMon, int setMetDatePar
     int zero = 0;
     if (setMetDateParam == SETMETDATEPARAM_EGG) {
         SetBoxMonData(boxMon, MON_DATA_HATCH_LOCATION, &zero);
-        SetBoxMonData(boxMon, MON_DATA_HATCH_YEAR, &zero);
-        SetBoxMonData(boxMon, MON_DATA_HATCH_MONTH, &zero);
-        SetBoxMonData(boxMon, MON_DATA_HATCH_DAY, &zero);
+        SetBoxMonData(boxMon, MON_DATA_EGG_YEAR, &zero);
+        SetBoxMonData(boxMon, MON_DATA_EGG_MONTH, &zero);
+        SetBoxMonData(boxMon, MON_DATA_EGG_DAY, &zero);
     } else {
         SetBoxMonData(boxMon, MON_DATA_MET_LOCATION, &zero);
         SetBoxMonData(boxMon, MON_DATA_MET_YEAR, &zero);

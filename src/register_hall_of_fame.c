@@ -2056,7 +2056,7 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
             ret = REGHOF_METLOC_TRADED;
         } else if (GetMonData(pokemon, MON_DATA_MET_LOCATION, NULL) >= METLOC_DAY_CARE_COUPLE) {
             ret = REGHOF_METLOC_FATEFUL;
-        } else if (GetMonData(pokemon, MON_DATA_HATCH_MONTH, NULL) == 0) {
+        } else if (GetMonData(pokemon, MON_DATA_EGG_MONTH, NULL) == 0) {
             ret = REGHOF_METLOC_CAUGHT;
         } else {
             ret = REGHOF_METLOC_HATCHED;
