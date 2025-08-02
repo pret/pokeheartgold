@@ -20,7 +20,7 @@ static void SpriteManager_FreeResources(SpriteManager *spriteManager);
 static void SpriteSystem_FreeVramTransfers(SpriteSystem *spriteSystem);
 static void SpriteSystem_FreeSpriteManager(SpriteSystem *spriteSystem, SpriteManager *spriteManager);
 static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *a2, int a3, int a4);
-static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int rotation, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
+static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13);
 static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset);
 static BOOL LoadResObjInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, GfGfxResType a6, int resId);
 static BOOL LoadResObjFromNarcInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, GfGfxResType a6, int resId);
@@ -237,10 +237,10 @@ BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, cons
 }
 
 Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *template) {
-    return CreateSpriteFromResourceHeader(spriteSystem, spriteManager, template->resourceSet, template->x, template->y, template->x /* typo? */, template->animSeqNo, template->rotation, template->palIndex, template->whichScreen, template->unk_18, template->unk_1C, template->unk_20, template->unk_24);
+    return CreateSpriteFromResourceHeader(spriteSystem, spriteManager, template->resourceSet, template->x, template->y, template->x /* typo? */, template->animation, template->drawPriority, template->pal, template->vram, template->paletteMode, template->unk_1C, template->unk_20, template->unk_24);
 }
 
-static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int a10, int a11, int a12, int a13) {
+static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int headerIndex, s16 x, s16 y, s16 z, u16 animSeqNo, int priority, int palIndex, NNS_G2D_VRAM_TYPE whichScreen, int paletteMode, int a11, int a12, int a13) {
     Sprite *ret = NULL;
     SpriteTemplate template;
 
@@ -258,13 +258,13 @@ static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, Sprite
     template.scale.y = FX32_ONE;
     template.scale.z = FX32_ONE;
     template.rotation = 0;
-    template.priority = priority;
+    template.drawPriority = priority;
     template.whichScreen = whichScreen;
     template.heapId = spriteSystem->heapId;
     ret = Sprite_CreateAffine(&template);
     if (ret != NULL) {
         Sprite_SetAnimCtrlSeq(ret, animSeqNo);
-        switch (a10) {
+        switch (paletteMode) {
         case 0:
             Sprite_SetPaletteOverride(ret, palIndex);
             break;
@@ -405,7 +405,7 @@ ManagedSprite *SpriteSystem_NewSpriteWithYOffset(SpriteSystem *spriteSystem, Spr
     return SpriteSystem_NewSpriteInternal(spriteSystem, spriteManager, template, yOffset);
 }
 
-static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *unkTemplate, fx32 yOffset) {
+static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ManagedSpriteTemplate *template, fx32 yOffset) {
     int i;
     int paletteOffset;
     ManagedSprite *ret = AllocFromHeap(spriteSystem->heapId, sizeof(ManagedSprite));
@@ -428,7 +428,7 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
         return NULL; // leaks 16 bytes
     }
     for (i = 0; i < GF_GFX_RES_TYPE_MAX; ++i) {
-        resIdList[i] = unkTemplate->resIdList[i];
+        resIdList[i] = template->resIdList[i];
     }
     if (spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_MCEL] == NULL || spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_MANM] == NULL) {
         resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
@@ -449,8 +449,8 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
         resIdList[GF_GFX_RES_TYPE_ANIM],
         resIdList[GF_GFX_RES_TYPE_MCEL],
         resIdList[GF_GFX_RES_TYPE_MANM],
-        unkTemplate->vramTransfer,
-        unkTemplate->bgPriority,
+        template->vramTransfer,
+        template->bgPriority,
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CHAR],
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_PLTT],
         spriteManager->_2dGfxResMan[GF_GFX_RES_TYPE_CELL],
@@ -460,26 +460,26 @@ static ManagedSprite *SpriteSystem_NewSpriteInternal(SpriteSystem *spriteSystem,
 
     spriteTemplate.spriteList = spriteManager->spriteList;
     spriteTemplate.header = ret->spriteResourcesHeader;
-    spriteTemplate.position.x = FX32_CONST(unkTemplate->x);
-    spriteTemplate.position.y = FX32_CONST(unkTemplate->y);
-    spriteTemplate.position.z = FX32_CONST(unkTemplate->z);
-    if (unkTemplate->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
+    spriteTemplate.position.x = FX32_CONST(template->x);
+    spriteTemplate.position.y = FX32_CONST(template->y);
+    spriteTemplate.position.z = FX32_CONST(template->z);
+    if (template->vram == NNS_G2D_VRAM_TYPE_2DSUB) {
         spriteTemplate.position.y += yOffset;
     }
     spriteTemplate.scale.x = FX32_ONE;
     spriteTemplate.scale.y = FX32_ONE;
     spriteTemplate.scale.z = FX32_ONE;
     spriteTemplate.rotation = 0;
-    spriteTemplate.priority = unkTemplate->spritePriority;
-    spriteTemplate.whichScreen = unkTemplate->vram;
+    spriteTemplate.drawPriority = template->drawPriority;
+    spriteTemplate.whichScreen = template->vram;
     spriteTemplate.heapId = spriteSystem->heapId;
     ret->sprite = Sprite_CreateAffine(&spriteTemplate);
-    ret->vramTransfer = unkTemplate->vramTransfer;
+    ret->vramTransfer = template->vramTransfer;
     if (ret->sprite != NULL) {
-        Sprite_SetAnimCtrlSeq(ret->sprite, unkTemplate->animation);
-        if (unkTemplate->pal != 0xFFFF) {
+        Sprite_SetAnimCtrlSeq(ret->sprite, template->animation);
+        if (template->pal != 0xFFFF) {
             paletteOffset = Sprite_GetPalIndex(ret->sprite);
-            Sprite_SetPaletteOverride(ret->sprite, paletteOffset + unkTemplate->pal);
+            Sprite_SetPaletteOverride(ret->sprite, paletteOffset + template->pal);
         }
     } else {
         GF_ASSERT(FALSE);

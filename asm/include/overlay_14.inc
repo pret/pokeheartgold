@@ -100,13 +100,13 @@
 .public sub_02013660
 .public sub_02013688
 .public sub_020136B4
-.public sub_020137C0
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_020137F0
 .public sub_020138B0
 .public sub_020138E0
 .public sub_02013910
 .public sub_02013938
-.public sub_020139D0
+.public TextOBJ_CopyFromBGWindow
 .public sub_02014510
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy

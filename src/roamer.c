@@ -61,17 +61,17 @@ u32 PlayerLocationHistoryGetBack(RoamerSaveData *roamerSave) {
     return roamerSave->playerLocationHistory[1];
 }
 
-u8 Roamer_GetLocation(RoamerSaveData *roamerSave, int roamerId) {
+u8 Roamer_GetLocation(RoamerSaveData *roamerSave, u8 roamerId) {
     GF_ASSERT(roamerId < ROAMER_MAX);
     return roamerSave->locations[roamerId];
 }
 
-void Roamer_SetLocation(RoamerSaveData *roamerSave, int roamerId, u8 a2) {
+void Roamer_SetLocation(RoamerSaveData *roamerSave, u8 roamerId, u8 a2) {
     GF_ASSERT(roamerId < ROAMER_MAX);
     roamerSave->locations[roamerId] = a2;
 }
 
-u8 GetRoamerIsActiveByIndex(RoamerSaveData *roamerSave, int roamerId) {
+u8 GetRoamerIsActiveByIndex(RoamerSaveData *roamerSave, u8 roamerId) {
     GF_ASSERT(roamerId < ROAMER_MAX);
     return roamerSave->data[roamerId].active;
 }
@@ -80,7 +80,7 @@ void RoamerMon_Init(Roamer **roamer_p) {
     memset(*roamer_p, 0, sizeof(Roamer));
 }
 
-Roamer *Roamers_GetRoamMonStats(RoamerSaveData *roamerSave, int roamerId) {
+Roamer *Roamers_GetRoamMonStats(RoamerSaveData *roamerSave, u8 roamerId) {
     GF_ASSERT(roamerId < ROAMER_MAX);
     return &roamerSave->data[roamerId];
 }

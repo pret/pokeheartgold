@@ -266,7 +266,7 @@ struct PokegearPhoneAppData {
     TouchscreenListMenuSpawner *contextMenuSpawner; // 0x0C0
     PokegearPhoneCallContext *callContext;          // 0x0C4 type pending
     u8 callerID;                                    // 0x0C8
-    u8 isScriptedCall;                              // 0x0C9
+    u8 callScriptType;                              // 0x0C9
     u8 callScriptID;                                // 0x0CA
     u8 isIncomingCall;                              // 0x0CB
     u8 prevMenuCursorPos;                           // 0x0CC set but not read

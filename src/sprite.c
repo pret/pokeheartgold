@@ -141,7 +141,7 @@ Sprite *Sprite_CreateAffine(const SpriteTemplate *template) {
     sprite->scale = template->scale;
     sprite->rotation = template->rotation;
     sprite->type = template->whichScreen;
-    sprite->drawPriority = template->priority;
+    sprite->drawPriority = template->drawPriority;
     sprite->affine = 0;
     sprite->flip = 0;
     sprite->mosaic = FALSE;
@@ -170,7 +170,7 @@ Sprite *Sprite_Create(const SimpleSpriteTemplate *simpleTemplate) {
     template.position = simpleTemplate->position;
     SetVecFx32(template.scale, FX32_ONE, FX32_ONE, FX32_ONE);
     template.rotation = 0;
-    template.priority = simpleTemplate->priority;
+    template.drawPriority = simpleTemplate->priority;
     template.whichScreen = simpleTemplate->whichScreen;
     template.heapId = simpleTemplate->heapId;
 

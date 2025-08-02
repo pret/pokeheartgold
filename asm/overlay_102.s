@@ -3830,7 +3830,7 @@ _021E9308:
 	lsl r1, r1, #8
 	ldr r1, [r7, r1]
 	add r0, sp, #0x30
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r2, #0x85
 	ldr r1, [sp, #0x14]
 	lsl r2, r2, #2
@@ -3838,13 +3838,13 @@ _021E9308:
 	add r0, r1, #0
 	ldr r0, [r0, r2]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r1, #0x85
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	mov r1, #0x85
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2
@@ -3892,7 +3892,7 @@ _021E938C:
 	mov r0, #0x85
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r5, #0
 	bl sub_02021B5C
 	mov r0, #0x85

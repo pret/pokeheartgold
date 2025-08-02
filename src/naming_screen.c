@@ -1115,7 +1115,7 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
         spriteTemplate.scale.y = FX32_ONE;
         spriteTemplate.scale.z = FX32_ONE;
         spriteTemplate.rotation = 0;
-        spriteTemplate.priority = 1;
+        spriteTemplate.drawPriority = 1;
         spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
         spriteTemplate.heapId = HEAP_ID_NAMING_SCREEN;
 
