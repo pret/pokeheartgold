@@ -62,24 +62,24 @@ static const u16 sCharactersticMsgs[6][5] = {
 };
 
 static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine);
-static void FormatNature(Unk0208E600 *a0);
-static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo);
-static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo);
-static void FormatCharacteristic(Unk0208E600 *a0);
-static void FormatFlavorPreference(Unk0208E600 *a0);
-static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched);
-static void FormatEggWatch(Unk0208E600 *a0);
+static void FormatNature(PokemonInfoDisplayStruct *infoDisplay);
+static void FormatDateAndLocationMet(PokemonInfoDisplayStruct *infoDisplay, int msgNo);
+static void FormatDateAndLocation_Migrated(PokemonInfoDisplayStruct *infoDisplay, int msgNo);
+static void FormatCharacteristic(PokemonInfoDisplayStruct *infoDisplay);
+static void FormatFlavorPreference(PokemonInfoDisplayStruct *infoDisplay);
+static void FormatDateAndLocation_Egg(PokemonInfoDisplayStruct *infoDisplay, int msgNo, BOOL hatched);
+static void FormatEggWatch(PokemonInfoDisplayStruct *infoDisplay);
 static void BoxMon_ClearMetDateAndLocation(BoxPokemon *boxMon, int setMetDateParam);
 static void BoxMon_SetMetDateAndLocation(BoxPokemon *boxMon, int mapsec, int setMetDateParam);
 static void BoxMon_SetFatefulEncounter(BoxPokemon *boxMon);
 static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon);
 static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId);
 
-Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
-    Unk0208E600 *ptr = AllocFromHeap(heapId, sizeof(Unk0208E600));
-    ptr->heapId = heapId;
-    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapId);
-    ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapId);
+PokemonInfoDisplayStruct *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapID, int a3) {
+    PokemonInfoDisplayStruct *ptr = AllocFromHeap(heapID, sizeof(PokemonInfoDisplayStruct));
+    ptr->heapID = heapID;
+    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapID);
+    ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapID);
     ptr->mon = mon;
     ptr->isMine = isMine;
     ptr->notepad.natureLine = 0;
@@ -93,8 +93,7 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
     ptr->notepad.eggWatchLine = 0;
     ptr->notepad.eggWatch = NULL;
 
-    int metCondition = MonMetCondition(ptr->mon, ptr->isMine);
-    switch (metCondition) {
+    switch (MonMetCondition(ptr->mon, ptr->isMine)) {
     case MET_CONDITION_WILD_ENCOUNTER:
         ptr->notepad.natureLine = 1;
         FormatNature(ptr);
@@ -277,25 +276,26 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
     return ptr;
 }
 
-void sub_0208E994(Unk0208E600 *a0) {
-    if (a0->notepad.nature) {
-        Heap_Free(a0->notepad.nature);
+void sub_0208E994(PokemonInfoDisplayStruct *infoDisplay) {
+    if (infoDisplay->notepad.nature != NULL) {
+        Heap_Free(infoDisplay->notepad.nature);
     }
-    if (a0->notepad.dateLocationMet) {
-        Heap_Free(a0->notepad.dateLocationMet);
+    if (infoDisplay->notepad.dateLocationMet != NULL) {
+        Heap_Free(infoDisplay->notepad.dateLocationMet);
     }
-    if (a0->notepad.characteristic) {
-        Heap_Free(a0->notepad.characteristic);
+    if (infoDisplay->notepad.characteristic != NULL) {
+        Heap_Free(infoDisplay->notepad.characteristic);
     }
-    if (a0->notepad.flavorPreference) {
-        Heap_Free(a0->notepad.flavorPreference);
+    if (infoDisplay->notepad.flavorPreference != NULL) {
+        Heap_Free(infoDisplay->notepad.flavorPreference);
     }
-    if (a0->notepad.eggWatch) {
-        Heap_Free(a0->notepad.eggWatch);
+    if (infoDisplay->notepad.eggWatch != NULL) {
+        Heap_Free(infoDisplay->notepad.eggWatch);
     }
-    MessageFormat_Delete(a0->msgFmt);
-    DestroyMsgData(a0->msgData);
-    Heap_Free(a0);
+
+    MessageFormat_Delete(infoDisplay->msgFmt);
+    DestroyMsgData(infoDisplay->msgData);
+    Heap_Free(infoDisplay);
 }
 
 // Returns true if the Pokemon has the proper metadata to trigger the event.
@@ -329,287 +329,276 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
     return FALSE;
 }
 
-static void FormatNature(Unk0208E600 *a0) {
-    int nature = GetMonNature(a0->mon);
-    if (nature <= NATURE_QUIRKY) {
-        a0->notepad.nature = String_New(0x48, a0->heapId);
-        ReadMsgDataIntoString(a0->msgData, msg_0302_00024 + nature, a0->notepad.nature);
+static void FormatNature(PokemonInfoDisplayStruct *infoDisplay) {
+    int nature = GetMonNature(infoDisplay->mon);
+    if (nature <= NATURE_NUM - 1) {
+        infoDisplay->notepad.nature = String_New(0x48, infoDisplay->heapID);
+        ReadMsgDataIntoString(infoDisplay->msgData, msg_0302_00024 + nature, infoDisplay->notepad.nature);
     }
 }
 
-static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
-    String *str = String_New(0x240, a0->heapId);
-    a0->notepad.dateLocationMet = String_New(0x240, a0->heapId);
+static void FormatDateAndLocationMet(PokemonInfoDisplayStruct *infoDisplay, int msgNo) {
+    String *str = String_New(0x240, infoDisplay->heapID);
+    infoDisplay->notepad.dateLocationMet = String_New(0x240, infoDisplay->heapID);
 
-    ReadMsgDataIntoString(a0->msgData, msgNo, str);
+    ReadMsgDataIntoString(infoDisplay->msgData, msgNo, str);
+    BufferIntegerAsString(infoDisplay->msgFmt, 0, GetMonData(infoDisplay->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(infoDisplay->msgFmt, 1, GetMonData(infoDisplay->mon, MON_DATA_MET_MONTH, NULL));
+    BufferIntegerAsString(infoDisplay->msgFmt, 2, GetMonData(infoDisplay->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(infoDisplay->msgFmt, 3, GetMonData(infoDisplay->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferLocationName(infoDisplay->msgFmt, 4, GetMonData(infoDisplay->mon, MON_DATA_MET_LOCATION, NULL));
+    BufferIntegerAsString(infoDisplay->msgFmt, 5, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(infoDisplay->msgFmt, 6, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_MONTH, NULL));
+    BufferIntegerAsString(infoDisplay->msgFmt, 7, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferLocationName(infoDisplay->msgFmt, 8, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_LOCATION, NULL));
 
-    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 1, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferLocationName(a0->msgFmt, 4, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
-    BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_MET_LOCATION, NULL));
-
-    StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
+    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->notepad.dateLocationMet, str);
     String_Delete(str);
 }
 
-static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
-    int version;
+static void FormatDateAndLocation_Migrated(PokemonInfoDisplayStruct *infoDisplay, int msgNo) {
+    String *str = String_New(0x120, infoDisplay->heapID);
+    infoDisplay->notepad.dateLocationMet = String_New(0x120, infoDisplay->heapID);
 
-    String *str = String_New(0x120, a0->heapId);
-    a0->notepad.dateLocationMet = String_New(0x120, a0->heapId);
+    ReadMsgDataIntoString(infoDisplay->msgData, msgNo, str);
+    BufferIntegerAsString(infoDisplay->msgFmt, 0, GetMonData(infoDisplay->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(infoDisplay->msgFmt, 1, GetMonData(infoDisplay->mon, MON_DATA_MET_MONTH, NULL));
+    BufferIntegerAsString(infoDisplay->msgFmt, 2, GetMonData(infoDisplay->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(infoDisplay->msgFmt, 3, GetMonData(infoDisplay->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
 
-    ReadMsgDataIntoString(a0->msgData, msgNo, str);
-
-    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 1, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-
-    version = GetMonData(a0->mon, MON_DATA_GAME_VERSION, NULL);
-    switch (version) {
-    case 0:
-    case 6:
-    case 9:
-    case 13:
-    case 14:
+    switch (GetMonData(infoDisplay->mon, MON_DATA_GAME_VERSION, NULL)) {
     default:
-        BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DASHES)));
+        BufferLocationName(infoDisplay->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DASHES)));
         break;
     case VERSION_FIRE_RED:
     case VERSION_LEAF_GREEN:
-        BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_KANTO)));
+        BufferLocationName(infoDisplay->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_KANTO)));
         break;
     case VERSION_HEARTGOLD:
     case VERSION_SOULSILVER:
-        BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_JOHTO)));
+        BufferLocationName(infoDisplay->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_JOHTO)));
         break;
-    case VERSION_SAPPHIRE:
     case VERSION_RUBY:
+    case VERSION_SAPPHIRE:
     case VERSION_EMERALD:
-        BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_HOENN)));
+        BufferLocationName(infoDisplay->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_HOENN)));
         break;
     case VERSION_GAMECUBE:
-        BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DISTANT_LAND)));
+        BufferLocationName(infoDisplay->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DISTANT_LAND)));
         break;
     case VERSION_DIAMOND:
     case VERSION_PEARL:
     case VERSION_PLATINUM:
-        BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DASHES /*METLOC_SINNOH*/)));
+        BufferLocationName(infoDisplay->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DASHES /*METLOC_SINNOH*/)));
         break;
     }
 
-    StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
+    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->notepad.dateLocationMet, str);
     String_Delete(str);
 }
 
-static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
-    String *str = String_New(0x168, a0->heapId);
-    a0->notepad.dateLocationMet = String_New(0x168, a0->heapId);
+static void FormatDateAndLocation_Egg(PokemonInfoDisplayStruct *infoDisplay, int msgNo, BOOL hatched) {
+    String *str = String_New(0x168, infoDisplay->heapID);
+    infoDisplay->notepad.dateLocationMet = String_New(0x168, infoDisplay->heapID);
 
-    ReadMsgDataIntoString(a0->msgData, msgNo, str);
+    ReadMsgDataIntoString(infoDisplay->msgData, msgNo, str);
 
     if (!hatched) {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-        BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MET_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_MET_LOCATION, NULL));
+        BufferIntegerAsString(infoDisplay->msgFmt, 5, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferMonthNameAbbr(infoDisplay->msgFmt, 6, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_MONTH, NULL));
+        BufferIntegerAsString(infoDisplay->msgFmt, 7, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferLocationName(infoDisplay->msgFmt, 8, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_LOCATION, NULL));
     } else {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-        BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
+        BufferIntegerAsString(infoDisplay->msgFmt, 5, GetMonData(infoDisplay->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferMonthNameAbbr(infoDisplay->msgFmt, 6, GetMonData(infoDisplay->mon, MON_DATA_MET_MONTH, NULL));
+        BufferIntegerAsString(infoDisplay->msgFmt, 7, GetMonData(infoDisplay->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferLocationName(infoDisplay->msgFmt, 8, GetMonData(infoDisplay->mon, MON_DATA_MET_LOCATION, NULL));
     }
 
-    StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
+    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->notepad.dateLocationMet, str);
     String_Delete(str);
 }
 
-static void FormatCharacteristic(Unk0208E600 *a0) {
-    int index;
-    int maxIv;
+static void FormatCharacteristic(PokemonInfoDisplayStruct *infoDisplay) {
+    int index, maxIV;
 
-    a0->notepad.characteristic = String_New(0x48, a0->heapId);
+    infoDisplay->notepad.characteristic = String_New(0x48, infoDisplay->heapID);
 
-    int hpIv = GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
-    int atkIv = GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
-    int defIv = GetMonData(a0->mon, MON_DATA_DEF_IV, NULL);
-    int speedIv = GetMonData(a0->mon, MON_DATA_SPEED_IV, NULL);
-    int spAtkIv = GetMonData(a0->mon, MON_DATA_SPATK_IV, NULL);
-    int spDefIv = GetMonData(a0->mon, MON_DATA_SPDEF_IV, NULL);
-    u32 personality = GetMonData(a0->mon, MON_DATA_PERSONALITY, NULL);
+    int hpIV = GetMonData(infoDisplay->mon, MON_DATA_HP_IV, NULL);
+    int atkIV = GetMonData(infoDisplay->mon, MON_DATA_ATK_IV, NULL);
+    int defIV = GetMonData(infoDisplay->mon, MON_DATA_DEF_IV, NULL);
+    int speedIV = GetMonData(infoDisplay->mon, MON_DATA_SPEED_IV, NULL);
+    int spAtkIV = GetMonData(infoDisplay->mon, MON_DATA_SPATK_IV, NULL);
+    int spDefIV = GetMonData(infoDisplay->mon, MON_DATA_SPDEF_IV, NULL);
+    u32 personality = GetMonData(infoDisplay->mon, MON_DATA_PERSONALITY, NULL);
 
     switch (personality % 6) {
     case 0:
     default:
         index = 0;
-        maxIv = hpIv;
-        if (maxIv < atkIv) {
+        maxIV = hpIV;
+        if (maxIV < atkIV) {
             index = 1;
-            maxIv = atkIv;
+            maxIV = atkIV;
         }
-        if (maxIv < defIv) {
+        if (maxIV < defIV) {
             index = 2;
-            maxIv = defIv;
+            maxIV = defIV;
         }
-        if (maxIv < speedIv) {
+        if (maxIV < speedIV) {
             index = 3;
-            maxIv = speedIv;
+            maxIV = speedIV;
         }
-        if (maxIv < spAtkIv) {
+        if (maxIV < spAtkIV) {
             index = 4;
-            maxIv = spAtkIv;
+            maxIV = spAtkIV;
         }
-        if (maxIv < spDefIv) {
+        if (maxIV < spDefIV) {
             index = 5;
-            maxIv = spDefIv;
+            maxIV = spDefIV;
         }
         break;
     case 1:
         index = 1;
-        maxIv = atkIv;
-        if (maxIv < defIv) {
+        maxIV = atkIV;
+        if (maxIV < defIV) {
             index = 2;
-            maxIv = defIv;
+            maxIV = defIV;
         }
-        if (maxIv < speedIv) {
+        if (maxIV < speedIV) {
             index = 3;
-            maxIv = speedIv;
+            maxIV = speedIV;
         }
-        if (maxIv < spAtkIv) {
+        if (maxIV < spAtkIV) {
             index = 4;
-            maxIv = spAtkIv;
+            maxIV = spAtkIV;
         }
-        if (maxIv < spDefIv) {
+        if (maxIV < spDefIV) {
             index = 5;
-            maxIv = spDefIv;
+            maxIV = spDefIV;
         }
-        if (maxIv < hpIv) {
+        if (maxIV < hpIV) {
             index = 0;
-            maxIv = hpIv;
+            maxIV = hpIV;
         }
         break;
     case 2:
         index = 2;
-        maxIv = defIv;
-        if (maxIv < speedIv) {
+        maxIV = defIV;
+        if (maxIV < speedIV) {
             index = 3;
-            maxIv = speedIv;
+            maxIV = speedIV;
         }
-        if (maxIv < spAtkIv) {
+        if (maxIV < spAtkIV) {
             index = 4;
-            maxIv = spAtkIv;
+            maxIV = spAtkIV;
         }
-        if (maxIv < spDefIv) {
+        if (maxIV < spDefIV) {
             index = 5;
-            maxIv = spDefIv;
+            maxIV = spDefIV;
         }
-        if (maxIv < hpIv) {
+        if (maxIV < hpIV) {
             index = 0;
-            maxIv = hpIv;
+            maxIV = hpIV;
         }
-        if (maxIv < atkIv) {
+        if (maxIV < atkIV) {
             index = 1;
-            maxIv = atkIv;
+            maxIV = atkIV;
         }
         break;
     case 3:
         index = 3;
-        maxIv = speedIv;
-        if (maxIv < spAtkIv) {
+        maxIV = speedIV;
+        if (maxIV < spAtkIV) {
             index = 4;
-            maxIv = spAtkIv;
+            maxIV = spAtkIV;
         }
-        if (maxIv < spDefIv) {
+        if (maxIV < spDefIV) {
             index = 5;
-            maxIv = spDefIv;
+            maxIV = spDefIV;
         }
-        if (maxIv < hpIv) {
+        if (maxIV < hpIV) {
             index = 0;
-            maxIv = hpIv;
+            maxIV = hpIV;
         }
-        if (maxIv < atkIv) {
+        if (maxIV < atkIV) {
             index = 1;
-            maxIv = atkIv;
+            maxIV = atkIV;
         }
-        if (maxIv < defIv) {
+        if (maxIV < defIV) {
             index = 2;
-            maxIv = defIv;
+            maxIV = defIV;
         }
         break;
     case 4:
         index = 4;
-        maxIv = spAtkIv;
-        if (maxIv < spDefIv) {
+        maxIV = spAtkIV;
+        if (maxIV < spDefIV) {
             index = 5;
-            maxIv = spDefIv;
+            maxIV = spDefIV;
         }
-        if (maxIv < hpIv) {
+        if (maxIV < hpIV) {
             index = 0;
-            maxIv = hpIv;
+            maxIV = hpIV;
         }
-        if (maxIv < atkIv) {
+        if (maxIV < atkIV) {
             index = 1;
-            maxIv = atkIv;
+            maxIV = atkIV;
         }
-        if (maxIv < defIv) {
+        if (maxIV < defIV) {
             index = 2;
-            maxIv = defIv;
+            maxIV = defIV;
         }
-        if (maxIv < speedIv) {
+        if (maxIV < speedIV) {
             index = 3;
-            maxIv = speedIv;
+            maxIV = speedIV;
         }
         break;
     case 5:
         index = 5;
-        maxIv = spDefIv;
-        if (maxIv < hpIv) {
+        maxIV = spDefIV;
+        if (maxIV < hpIV) {
             index = 0;
-            maxIv = hpIv;
+            maxIV = hpIV;
         }
-        if (maxIv < atkIv) {
+        if (maxIV < atkIV) {
             index = 1;
-            maxIv = atkIv;
+            maxIV = atkIV;
         }
-        if (maxIv < defIv) {
+        if (maxIV < defIV) {
             index = 2;
-            maxIv = defIv;
+            maxIV = defIV;
         }
-        if (maxIv < speedIv) {
+        if (maxIV < speedIV) {
             index = 3;
-            maxIv = speedIv;
+            maxIV = speedIV;
         }
-        if (maxIv < spAtkIv) {
+        if (maxIV < spAtkIV) {
             index = 4;
-            maxIv = spAtkIv;
+            maxIV = spAtkIV;
         }
         break;
     }
-    ReadMsgDataIntoString(a0->msgData, sCharactersticMsgs[index][maxIv % 5], a0->notepad.characteristic);
+    ReadMsgDataIntoString(infoDisplay->msgData, sCharactersticMsgs[index][maxIV % 5], infoDisplay->notepad.characteristic);
 }
 
-static void FormatFlavorPreference(Unk0208E600 *a0) {
-    a0->notepad.flavorPreference = String_New(0x48, a0->heapId);
+static void FormatFlavorPreference(PokemonInfoDisplayStruct *infoDisplay) {
+    infoDisplay->notepad.flavorPreference = String_New(0x48, infoDisplay->heapID);
     int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
-        int preference = MonGetFlavorPreference(a0->mon, flavor);
-        if (preference == 1) {
+        if (MonGetFlavorPreference(infoDisplay->mon, flavor) == 1) {
             index = flavor + 1;
         }
     }
-    ReadMsgDataIntoString(a0->msgData, sFlavorMsgs[index], a0->notepad.flavorPreference);
+    ReadMsgDataIntoString(infoDisplay->msgData, sFlavorMsgs[index], infoDisplay->notepad.flavorPreference);
 }
 
-static void FormatEggWatch(Unk0208E600 *a0) {
+static void FormatEggWatch(PokemonInfoDisplayStruct *infoDisplay) {
     int msgNo;
+    int eggCycles = GetMonData(infoDisplay->mon, MON_DATA_FRIENDSHIP, NULL);
 
-    int eggCycles = GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
-    a0->notepad.eggWatch = String_New(0x120, a0->heapId);
+    infoDisplay->notepad.eggWatch = String_New(0x120, infoDisplay->heapID);
+
     if (eggCycles <= 5) {
         msgNo = msg_0302_00105;
     } else if (eggCycles <= 10) {
@@ -619,7 +608,7 @@ static void FormatEggWatch(Unk0208E600 *a0) {
     } else {
         msgNo = msg_0302_00108;
     }
-    ReadMsgDataIntoString(a0->msgData, msgNo, a0->notepad.eggWatch);
+    ReadMsgDataIntoString(infoDisplay->msgData, msgNo, infoDisplay->notepad.eggWatch);
 }
 
 static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
@@ -843,6 +832,6 @@ static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon) {
 }
 
 static void BoxMon_SetFatefulEncounter(BoxPokemon *boxMon) {
-    int var = 1;
-    SetBoxMonData(boxMon, MON_DATA_FATEFUL_ENCOUNTER, &var);
+    int fatefulEncounter = 1;
+    SetBoxMonData(boxMon, MON_DATA_FATEFUL_ENCOUNTER, &fatefulEncounter);
 }
