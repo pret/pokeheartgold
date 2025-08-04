@@ -2436,7 +2436,7 @@ _020769BC:
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x28]
 	add r2, #0x66
-	add r1, #MON_DATA_MOVE1PPUP
+	add r1, #MON_DATA_MOVE1_PP_UPS
 	bl SetMonData
 	add r1, r4, #0
 	add r2, r4, #0
@@ -2847,7 +2847,7 @@ _02076D32:
 	str r1, [sp, #4]
 	cmp r1, #0x36
 	blt _02076D32
-	mov r1, #MON_DATA_HOENN_COOL_RIBBON
+	mov r1, #MON_DATA_COOL_RIBBON
 	str r1, [sp, #4]
 	add r6, sp, #0
 _02076D4A:
@@ -2859,7 +2859,7 @@ _02076D4A:
 	str r1, [sp, #4]
 	cmp r1, #0x6e
 	blt _02076D4A
-	mov r1, #MON_DATA_COOL_RIBBON
+	mov r1, #MON_DATA_SUPER_COOL_RIBBON
 	str r1, [sp, #4]
 	add r6, sp, #0
 _02076D62:
