@@ -4,8 +4,8 @@
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public LegendaryCinematic_Init
 .public LegendaryCinematic_Main
 .public LegendaryCinematic_Exit

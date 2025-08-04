@@ -24,7 +24,7 @@ typedef enum PSPEpisodeUnlockFlag {
 } PSPEpisodeUnlockFlag;
 
 typedef struct PokemonSearchPartyData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 episodeID;
     u8 episodeUnlockFlags[8];
@@ -51,7 +51,7 @@ static const u8 sEpisodeUnlockFlags[] = {
 };
 
 BOOL RadioShow_PokemonSearchParty_Setup(RadioShow *radioShow) {
-    PokemonSearchPartyData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonSearchPartyData));
+    PokemonSearchPartyData *data = Heap_Alloc(radioShow->heapID, sizeof(PokemonSearchPartyData));
     MI_CpuClear8(data, sizeof(PokemonSearchPartyData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

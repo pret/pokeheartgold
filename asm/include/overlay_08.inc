@@ -67,7 +67,7 @@
 .public sub_0200E640
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public SetScreenModeAndDisable
 .public InitBgFromTemplate

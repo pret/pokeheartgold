@@ -33,8 +33,8 @@
 .public sub_02019D18
 .public sub_02019F7C
 .public sub_0201A018
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BG_ClearCharDataRange

@@ -17,7 +17,7 @@ typedef enum BattleRegulationComplianceMessage {
     BTL_REG_COMPLIANCE_FAIL_SOUL_DEW,
 } BattleRegulationComplianceMessage;
 
-PokedexData *PokedexData_CreateAndLoad(HeapID heapId);
+PokedexData *PokedexData_CreateAndLoad(enum HeapID heapID);
 void PokedexData_UnloadAndDelete(PokedexData *pokedex);
 BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pokedex);
 BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceMessage(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex, u8 *a3);

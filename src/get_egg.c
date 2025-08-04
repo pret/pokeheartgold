@@ -47,7 +47,7 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents);
 static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare);
 static u8 sub_0206CCD8(FieldSystem *fieldSystem);
 static u8 ConvertDaycareCompatibilityScore(u32 compatibility);
-static void sub_0206D038(Pokemon *mon, HeapID heapId);
+static void sub_0206D038(Pokemon *mon, enum HeapID heapID);
 static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2);
 static BOOL PowerItemIdToInheritedIvIdx(u16 itemId, u8 *a1);
 
@@ -162,7 +162,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     DaycareMail *daycareMail;
     u16 species;
 
-    mon = AllocMonZeroed(HEAP_ID_4);
+    mon = AllocMonZeroed(HEAP_ID_FIELD1);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     daycareMail = DaycareMon_GetExtras(daycareMon);
 
@@ -200,7 +200,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     u32 exp;
     u32 level;
 
-    tmpMon = AllocMonZeroed(HEAP_ID_FIELD);
+    tmpMon = AllocMonZeroed(HEAP_ID_FIELD2);
     boxmon_tmp = Mon_GetBoxMon(tmpMon);
     CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
     exp = GetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
@@ -416,7 +416,7 @@ static u8 LoadEggMoves(Pokemon *mon, u16 *dest) {
     u16 species;
     u16 i;
 
-    kowaza_list = GfGfxLoader_LoadFromNarc(NARC_fielddata_sodateya_kowaza_list, 0, FALSE, HEAP_ID_4, TRUE);
+    kowaza_list = GfGfxLoader_LoadFromNarc(NARC_fielddata_sodateya_kowaza_list, 0, FALSE, HEAP_ID_FIELD1, TRUE);
 
     n = 0;
     offset = 0;
@@ -456,7 +456,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     u16 r5;
     struct EggMoveSearch *search;
 
-    search = AllocFromHeap(HEAP_ID_4, sizeof(struct EggMoveSearch));
+    search = Heap_Alloc(HEAP_ID_FIELD1, sizeof(struct EggMoveSearch));
     sp1C = 0;
     MI_CpuClearFast(search, sizeof(struct EggMoveSearch));
 
@@ -648,13 +648,13 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     }
     isEgg = TRUE;
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
-    name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
+    name = GetSpeciesName(SPECIES_EGG, HEAP_ID_FIELD1);
     SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
     if (trainerMemoStrat == 4) {
         otId = PlayerProfile_GetTrainerID(profile);
         gender = PlayerProfile_GetTrainerGender(profile);
-        name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
+        name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_FIELD3);
         SetMonData(mon, MON_DATA_OT_NAME_2, name);
         SetMonData(mon, MON_DATA_OTID, &otId);
         SetMonData(mon, MON_DATA_OT_GENDER, &gender);
@@ -692,7 +692,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
     SetMonData(mon, MON_DATA_FORM, &form);
-    name = GetSpeciesName(SPECIES_EGG, HEAP_ID_4);
+    name = GetSpeciesName(SPECIES_EGG, HEAP_ID_FIELD1);
     SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
     String_Delete(name);
 }
@@ -705,7 +705,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     u32 otId;
     u8 mom_form;
 
-    mon = AllocMonZeroed(HEAP_ID_4);
+    mon = AllocMonZeroed(HEAP_ID_FIELD1);
     species = Daycare_GetEggSpecies(dayCare, gender_idx);
     species = Daycare_BreedingIncenseCheck(species, dayCare);
     otId = PlayerProfile_GetTrainerID(profile);
@@ -713,7 +713,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     SetBreedEggStats(mon, species, dayCare, otId, mom_form);
     InheritIVs(mon, dayCare);
     InheritMoves(mon, Daycare_GetBoxMonI(dayCare, gender_idx[1]), Daycare_GetBoxMonI(dayCare, gender_idx[0]));
-    MonSetTrainerMemo(mon, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0), HEAP_ID_4);
+    MonSetTrainerMemo(mon, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0), HEAP_ID_FIELD1);
     if (species == SPECIES_PICHU) {
         Daycare_LightBallCheck(mon, dayCare);
     }
@@ -1005,7 +1005,7 @@ u8 Save_Daycare_CalcCompatibility(Daycare *dayCare) {
     return ConvertDaycareCompatibilityScore(Save_Daycare_CalcCompatibilityInternal(dayCare));
 }
 
-static void sub_0206D038(Pokemon *mon, HeapID heapId) {
+static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     u16 moves[MAX_MON_MOVES];
     u8 pp[MAX_MON_MOVES];
     u32 otId;
@@ -1028,8 +1028,8 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     u32 pid;
     Pokemon *tmpMon;
 
-    string = String_New(PLAYER_NAME_LENGTH + 1, heapId);
-    tmpMon = AllocMonZeroed(heapId);
+    string = String_New(PLAYER_NAME_LENGTH + 1, heapID);
+    tmpMon = AllocMonZeroed(heapID);
     species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
@@ -1095,13 +1095,13 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     Heap_Free(tmpMon);
 }
 
-void sub_0206D328(Pokemon *mon, HeapID heapId) {
+void sub_0206D328(Pokemon *mon, enum HeapID heapID) {
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 isEgg = 70;
     u8 hasNickname = FALSE;
     u8 pokeball = BALL_POKE;
     u8 metLevel = 0;
-    sub_0206D038(mon, heapId);
+    sub_0206D038(mon, heapID);
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     GetSpeciesNameIntoArray(GetMonData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
     SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);

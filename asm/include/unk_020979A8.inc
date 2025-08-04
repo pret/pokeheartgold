@@ -6,7 +6,7 @@
 .public GF_SndGetFadeTimer
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public AllocFromHeapAtEnd
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF_AssertFail
 .public sub_0203FC90

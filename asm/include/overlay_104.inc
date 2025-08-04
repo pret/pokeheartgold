@@ -13,10 +13,10 @@
 .public IsPaletteFadeFinished
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public GF3dRender_InitObjFromHeader
 .public GF3dRender_DrawModel
 .public GF3dRender_InitSimpleManager

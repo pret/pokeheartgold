@@ -162,10 +162,10 @@
 .public sub_020145B4
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF_heap_c_dummy_return_true
 .public BgConfig_Alloc

@@ -4,8 +4,8 @@
 
 #include "pokemon.h"
 
-MoveRelearnerArgs *MoveRelearner_New(HeapID heapId) {
-    MoveRelearnerArgs *ret = AllocFromHeap(heapId, sizeof(MoveRelearnerArgs));
+MoveRelearnerArgs *MoveRelearner_New(enum HeapID heapID) {
+    MoveRelearnerArgs *ret = Heap_Alloc(heapID, sizeof(MoveRelearnerArgs));
     memset(ret, 0, sizeof(MoveRelearnerArgs));
     return ret;
 }
@@ -14,7 +14,7 @@ void MoveRelearner_Delete(MoveRelearnerArgs *moveRelearner) {
     Heap_Free(moveRelearner);
 }
 
-u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
+u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, enum HeapID heapID) {
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 form = GetMonData(mon, MON_DATA_FORM, NULL);
     u8 level = GetMonData(mon, MON_DATA_LEVEL, NULL);
@@ -24,8 +24,8 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, HeapID heapId) {
         moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
     }
 
-    u16 *tableFromFile = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);
-    u16 *returnTable = AllocFromHeap(heapId, LEVEL_UP_LEARNSET_MAX * 2);
+    u16 *tableFromFile = Heap_Alloc(heapID, LEVEL_UP_LEARNSET_MAX * 2);
+    u16 *returnTable = Heap_Alloc(heapID, LEVEL_UP_LEARNSET_MAX * 2);
 
     LoadLevelUpLearnset_HandleAlternateForm(species, form, tableFromFile);
 

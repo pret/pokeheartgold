@@ -680,7 +680,7 @@ ov92_0225CAB4: ; 0x0225CAB4
 	mov r0, #3
 	mov r1, #0x71
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0xd0
 	mov r2, #0x71
@@ -1733,7 +1733,7 @@ ov92_0225D36C: ; 0x0225D36C
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x71
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0
 	mov r1, #1
 	bl sub_020398D4
@@ -1847,7 +1847,7 @@ ov92_0225D3CC: ; 0x0225D3CC
 	add r0, r4, #0
 	mov r1, #0x71
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -4636,7 +4636,7 @@ ov92_0225EB40: ; 0x0225EB40
 	add r4, r1, #0
 	mov r0, #0x71
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r3, r0, #0
 	mov r2, #0x10
 	mov r1, #0
@@ -4686,7 +4686,7 @@ ov92_0225EB88: ; 0x0225EB88
 	ldr r1, _0225EBD4 ; =0x00002BBC
 	mov r0, #0x71
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0225EBD4 ; =0x00002BBC
 	add r4, r0, #0
 	mov r1, #0
@@ -4956,7 +4956,7 @@ ov92_0225EDB4: ; 0x0225EDB4
 	add r6, r1, #0
 	mov r0, #0x71
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -5088,7 +5088,7 @@ ov92_0225EEBC: ; 0x0225EEBC
 	add r5, r0, #0
 	mov r0, #0x71
 	mov r1, #0x7c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x7c
 	add r4, r0, #0
@@ -9325,7 +9325,7 @@ ov92_022610E8: ; 0x022610E8
 	add r5, r0, #0
 	ldr r1, _02261110 ; =0x00000764
 	mov r0, #0x71
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r1, r0, #0
 	mov r2, #1
 	str r5, [r1]

@@ -10,7 +10,7 @@ ov12_0226BEC4: ; 0x0226BEC4
 	add r5, r0, #0
 	mov r0, #5
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #8
 	add r4, r0, #0

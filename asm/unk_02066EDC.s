@@ -21,7 +21,7 @@ sub_02066EDC: ; 0x02066EDC
 	add r6, r1, #0
 	add r0, r2, #0
 	mov r1, #0x44
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	ldr r7, [r6, #0xc]
 	mov r1, #0
 	mov r2, #0x44
@@ -160,7 +160,7 @@ sub_02066FEC: ; 0x02066FEC
 	ldr r5, [r7, #0xc]
 	add r0, r2, #0
 	mov r1, #0x3c
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
@@ -308,7 +308,7 @@ sub_02067118: ; 0x02067118
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x18
@@ -431,7 +431,7 @@ sub_02067200: ; 0x02067200
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x18
@@ -512,7 +512,7 @@ sub_020672A4: ; 0x020672A4
 	add r7, r0, #0
 	mov r0, #0xb
 	mov r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #4

@@ -92,7 +92,7 @@ void PrintErrorMessageAndReset(void) {
 
     OS_SetArenaHi(OS_ARENA_MAIN, OS_GetInitArenaHi(OS_ARENA_MAIN));
     OS_SetArenaLo(OS_ARENA_MAIN, OS_GetInitArenaLo(OS_ARENA_MAIN));
-    InitHeapSystem(&sErrorMessageHeapParams, 1, 1, 0);
+    Heap_InitSystem(&sErrorMessageHeapParams, 1, 1, 0);
 
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);

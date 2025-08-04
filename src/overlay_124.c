@@ -29,17 +29,17 @@ void FieldSystem_Init(OverlayManager *man, FieldSystem *fieldSystem) {
     fieldSystem->location = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
     fieldSystem->mapMatrix = MapMatrix_New();
     u32 key2 = 929 * ov123_0225F520(ov124_02260D58); // 929 is prime
-    Field_AllocateMapEvents(fieldSystem, HEAP_ID_FIELD);
-    fieldSystem->bagCursor = BagCursor_New(HEAP_ID_FIELD);
+    Field_AllocateMapEvents(fieldSystem, HEAP_ID_FIELD2);
+    fieldSystem->bagCursor = BagCursor_New(HEAP_ID_FIELD2);
     FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 
     // all combinations of the three prime multipliers above are coprime with 2441 and 4073
     if ((key + key2) % 2441) {
         ov124_02260D1C(fieldSystem);
     }
-    fieldSystem->unkA8 = sub_02092BB8(HEAP_ID_FIELD);
-    fieldSystem->unk108 = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD);
-    fieldSystem->phoneRingManager = GearPhoneRingManager_New(HEAP_ID_FIELD, fieldSystem);
+    fieldSystem->unkA8 = sub_02092BB8(HEAP_ID_FIELD2);
+    fieldSystem->unk108 = FieldSystem_UnkSub108_Alloc(HEAP_ID_FIELD2);
+    fieldSystem->phoneRingManager = GearPhoneRingManager_New(HEAP_ID_FIELD2, fieldSystem);
     fieldSystem->judgeStatPosition = 0;
     if ((key + key2) % 4073) {
         ov124_02260D1C(fieldSystem);
@@ -55,12 +55,12 @@ static void ov124_02260D1C(FieldSystem *fieldSystem) {
             ++numBadges;
         }
     }
-    AllocFromHeapAtEnd(HEAP_ID_3, numBadges == 0 ? 20000 : (20000 * numBadges));
+    Heap_AllocAtEnd(HEAP_ID_3, numBadges == 0 ? 20000 : (20000 * numBadges));
 }
 
 // you can have a little heap clobber, as a treat
 static void ov124_02260D58(void) {
-    AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+    Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static void ov124_02260D68(void) {

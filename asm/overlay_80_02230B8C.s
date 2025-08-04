@@ -84,7 +84,7 @@ FrtCmd_142: ; 0x02230C10
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x20
 	add r5, r0, #0

@@ -20,7 +20,7 @@ ov45_02229EE0: ; 0x02229EE0
 	mov r0, #3
 	mov r1, #0x6f
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0x10
 	mov r2, #0x6f
@@ -107,7 +107,7 @@ ov45_02229F94: ; 0x02229F94
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x6f
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02229FDC ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	bl UnloadOVY38
@@ -139,7 +139,7 @@ ov45_02229FF4: ; 0x02229FF4
 	add r5, r0, #0
 	add r0, r7, #0
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x53
 	mov r1, #0
 	lsl r2, r2, #4
@@ -4264,7 +4264,7 @@ ov45_0222BCE4: ; 0x0222BCE4
 	add r4, r1, #0
 	add r0, r7, #0
 	mov r1, #0x94
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	add r0, r4, #0
 	add r0, #0x20
@@ -6594,7 +6594,7 @@ ov45_0222CD1C: ; 0x0222CD1C
 	mov r1, #0x48
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x48
 	add r4, r0, #0
@@ -6870,7 +6870,7 @@ ov45_0222CF00: ; 0x0222CF00
 	add r5, r1, #0
 	add r0, r2, #0
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	mov r1, #0
 	mov r2, #0x20
@@ -7004,7 +7004,7 @@ ov45_0222CFF4: ; 0x0222CFF4
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r2, #0x10
 	mov r1, #0
@@ -7080,7 +7080,7 @@ ov45_0222D078: ; 0x0222D078
 	add r5, r1, #0
 	add r0, r2, #0
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	mov r1, #0
 	strb r1, [r0]
@@ -7155,7 +7155,7 @@ ov45_0222D0FC: ; 0x0222D0FC
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #0x14
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r2, #0x14
 	mov r1, #0
@@ -7221,7 +7221,7 @@ ov45_0222D164: ; 0x0222D164
 	add r4, r1, #0
 	add r0, r6, #0
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r1, #0
 	mov r2, #0x3c
@@ -7307,7 +7307,7 @@ ov45_0222D20C: ; 0x0222D20C
 	add r4, r1, #0
 	add r0, r6, #0
 	mov r1, #0x40
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r1, #0
 	mov r2, #0x40
@@ -7389,7 +7389,7 @@ ov45_0222D2AC: ; 0x0222D2AC
 	add r4, r1, #0
 	add r0, r6, #0
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r1, #0
 	mov r2, #0x3c
@@ -7474,7 +7474,7 @@ ov45_0222D354: ; 0x0222D354
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r1, #0
 	strb r1, [r0]
@@ -7555,7 +7555,7 @@ ov45_0222D3D8: ; 0x0222D3D8
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r1, #0
 	strb r1, [r0]
@@ -7631,7 +7631,7 @@ ov45_0222D44C: ; 0x0222D44C
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r2, #0
 	strb r2, [r0]
@@ -7662,7 +7662,7 @@ ov45_0222D484: ; 0x0222D484
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r1, #0
 	strb r1, [r0]
@@ -8227,7 +8227,7 @@ ov45_0222D860: ; 0x0222D860
 	mov r1, #0x23
 	lsl r1, r1, #4
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x23
 	add r4, r0, #0
 	mov r1, #0
@@ -10179,7 +10179,7 @@ _0222E5EA:
 _0222E5F6:
 	ldr r1, _0222E680 ; =0x00000988
 	add r0, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0222E67C ; =_022577C0
 	ldr r2, _0222E680 ; =0x00000988
 	str r0, [r1]
@@ -12699,7 +12699,7 @@ ov45_0222F848: ; 0x0222F848
 	mul r4, r0
 	add r0, r2, #0
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0222F874 ; =_022577C0
 	ldr r2, [r1]
 	str r0, [r2, #0x24]
@@ -12929,7 +12929,7 @@ _0222F9E0:
 	strh r1, [r5, r0]
 	ldr r0, [sp, #8]
 	lsl r1, r6, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -14318,7 +14318,7 @@ ov45_022303E4: ; 0x022303E4
 	add r4, r0, #0
 	add r0, r2, #0
 	lsl r1, r5, #3
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	strh r5, [r4, #4]
 	mov r0, #0
@@ -14439,7 +14439,7 @@ ov45_02230498: ; 0x02230498
 	add r0, r7, #0
 	mov r1, #0x30
 	str r3, [sp, #0xc]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -14448,7 +14448,7 @@ ov45_02230498: ; 0x02230498
 	mov r1, #0x90
 	add r0, r7, #0
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x10]
 	ldr r0, [sp, #4]
 	mov r6, #0

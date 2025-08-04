@@ -302,7 +302,7 @@ ov01_021F35C4: ; 0x021F35C4
 	mov r0, #4
 	mov r1, #0x14
 	add r7, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14

@@ -28,7 +28,7 @@ PokegearMap_Init: ; 0x021E7740
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E7794 ; =0x000009F4
 	add r0, r4, #0
 	mov r2, #0x5b
@@ -162,7 +162,7 @@ _021E7858:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021E7870 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -12492,7 +12492,7 @@ TownMap_Init: ; 0x021ED7F8
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021ED8AC ; =0x000009F4
 	add r0, r4, #0
 	mov r2, #0x5b
@@ -12503,7 +12503,7 @@ TownMap_Init: ; 0x021ED7F8
 	bl memset
 	mov r0, #0x5b
 	mov r1, #0xcc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0xcc
 	str r0, [r4, #0x10]
@@ -12647,7 +12647,7 @@ _021ED948:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021ED978 ; =FS_OVERLAY_ID(OVY_26)
 	bl UnloadOverlayByID
 	ldr r0, _021ED97C ; =FS_OVERLAY_ID(OVY_100)

@@ -9,9 +9,9 @@
 static BOOL Task_ViewRankingsApp(TaskManager *taskManager);
 
 void FieldSystem_LaunchTask_ViewRankingsApp(FieldSystem *fieldSystem, u8 pageScrollParam, u8 cursorPos) {
-    UnkStruct_02097D48 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097D48));
+    UnkStruct_02097D48 *taskData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_02097D48));
     taskData->state = 0;
-    taskData->args = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(ViewRankingsArgs));
+    taskData->args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(ViewRankingsArgs));
     taskData->args->saveData = FieldSystem_GetSaveData(fieldSystem);
     taskData->args->page_scroll = pageScrollParam;
     taskData->args->cursorPos = cursorPos;
@@ -24,7 +24,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
 
     switch (taskData->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
         taskData->state++;
 
         break;
@@ -47,7 +47,7 @@ static BOOL Task_ViewRankingsApp(TaskManager *taskManager) {
         break;
     case 3:
         if (sub_020505C8(fieldSystem)) {
-            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             taskData->state++;
         }
 

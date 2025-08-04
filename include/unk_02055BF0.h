@@ -14,7 +14,7 @@ typedef struct FieldFadeEnvironment {
     u16 unk12;
     u32 duration;
     int framesPer;
-    HeapID heapID;
+    enum HeapID heapID;
 } FieldFadeEnvironment;
 
 typedef struct FieldTransitionEnvironment {
@@ -28,7 +28,7 @@ typedef struct FieldTransitionEnvironment {
     UnkStruct_0206793C *unk24;
 } FieldTransitionEnvironment; // size: 0x28
 
-void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, HeapID heapID);
+void NewFieldFadeEnvironment(TaskManager *man, int pattern, int typeTop, int typeBottom, u16 colour, int duration, int framesPer, enum HeapID heapID);
 void NewFieldTransitionEnvironment(FieldSystem *fieldSystem, int mapID, int warpID, int x, int z, int dir, u32 transNo);
 void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int z, int dir);
 

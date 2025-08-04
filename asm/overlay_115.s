@@ -296,7 +296,7 @@ _0225F260:
 	mov r1, #0xa6
 	add r0, r7, #0
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xa6
 	str r0, [r5, #0xc]
 	mov r1, #0
@@ -1237,7 +1237,7 @@ _0225F9B8:
 	add r0, r1, #0
 	mov r1, #0xc5
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xc5
 	str r0, [r6, #0xc]
 	mov r1, #0
@@ -2267,7 +2267,7 @@ ov115_02260254: ; 0x02260254
 	add r0, r5, #0
 	mov r1, #0x20
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0x6d
 	add r1, r6, #0

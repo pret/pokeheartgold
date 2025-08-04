@@ -12,7 +12,7 @@ sub_02012DD8: ; 0x02012DD8
 	ldr r0, [r5, #0x20]
 	add r4, r1, #0
 	mov r1, #0x4c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x14]
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0

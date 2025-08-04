@@ -13,7 +13,7 @@ ov42_02227060: ; 0x02227060
 	ldr r1, _02227100 ; =0x0000230C
 	add r0, r6, #0
 	str r2, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02227100 ; =0x0000230C
 	add r7, r0, #0
 	mov r1, #0
@@ -71,7 +71,7 @@ _022270CE:
 	str r0, [r7, #0xc]
 	add r0, r6, #0
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r7, #8]
 	ldr r3, [r7, #0xc]
 	mov r2, #0x18
@@ -2024,7 +2024,7 @@ ov42_02227EE0: ; 0x02227EE0
 	add r6, r1, #0
 	add r0, r7, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02227EF8
 	bl GF_AssertFail
@@ -2036,7 +2036,7 @@ _02227EF8:
 	add r0, r7, #0
 	mul r1, r2
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #4]
 	cmp r0, #0
 	bne _02227F14
@@ -2202,7 +2202,7 @@ ov42_02228010: ; 0x02228010
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02228026
 	bl GF_AssertFail
@@ -2211,7 +2211,7 @@ _02228026:
 	add r0, r6, #0
 	mul r1, r5
 	str r5, [r4, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	cmp r0, #0
 	bne _0222803C
@@ -4246,7 +4246,7 @@ ov42_02228EDC: ; 0x02228EDC
 	mov r1, #0xc
 	add r5, r2, #0
 	add r6, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r1, [sp]
 	ldr r3, [sp, #0x18]
@@ -4259,7 +4259,7 @@ ov42_02228EDC: ; 0x02228EDC
 	mov r1, #0x14
 	ldr r0, [sp, #0x18]
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #4]
 	ldrh r3, [r4, #8]
 	mov r2, #0x14
@@ -4284,7 +4284,7 @@ ov42_02228F24: ; 0x02228F24
 	mov r1, #0xc
 	add r6, r2, #0
 	str r3, [sp, #8]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r1, [sp, #4]
 	add r0, r7, #0
@@ -4297,7 +4297,7 @@ ov42_02228F24: ; 0x02228F24
 	mov r1, #0x14
 	add r0, r5, #0
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #4]
 	ldrh r3, [r4, #8]
 	mov r2, #0x14
@@ -4952,7 +4952,7 @@ ov42_022293B8: ; 0x022293B8
 	mov r1, #0x1c
 	add r5, r2, #0
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x1c
@@ -5724,7 +5724,7 @@ ov42_02229974: ; 0x02229974
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _0222998A
 	bl GF_AssertFail
@@ -5733,7 +5733,7 @@ _0222998A:
 	str r1, [r4, #4]
 	add r0, r6, #0
 	lsl r1, r1, #3
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	ldr r2, [r4, #4]
 	mov r1, #0
@@ -5835,7 +5835,7 @@ ov42_02229A40: ; 0x02229A40
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02229A56
 	bl GF_AssertFail
@@ -5844,7 +5844,7 @@ _02229A56:
 	str r1, [r4, #4]
 	add r0, r6, #0
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	ldr r2, [r4, #4]
 	mov r1, #0

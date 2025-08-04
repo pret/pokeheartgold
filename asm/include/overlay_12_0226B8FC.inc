@@ -19,7 +19,7 @@
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public MI_CpuFill8
 .public BattleCursor_LoadResources

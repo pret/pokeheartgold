@@ -6,7 +6,7 @@
 #include "map_events_internal.h"
 #include "map_header.h"
 
-void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId);
+void Field_AllocateMapEvents(FieldSystem *work, enum HeapID heapID);
 void Field_FreeMapEvents(FieldSystem *work);
 void Field_InitMapEvents(FieldSystem *work, u32 mapno);
 void Field_InitMapObjectsFromZoneEventData(FieldSystem *fieldSystem);

@@ -2,8 +2,8 @@
 #pragma once
 .public PlayCry
 .public IsCryFinished
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF_AssertFail
 .public Save_Roamers_Get

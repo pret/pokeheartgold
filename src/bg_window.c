@@ -91,17 +91,17 @@ static void (*const sClearWindowTilemapFuncs[GF_BG_TYPE_MAX])(Window *window) = 
 
 // Make a new BgConfig object, which manages the
 // eight background layers (four on each screen).
-BgConfig *BgConfig_Alloc(HeapID heapId) {
-    BgConfig *ret = AllocFromHeap(heapId, sizeof(BgConfig));
+BgConfig *BgConfig_Alloc(enum HeapID heapID) {
+    BgConfig *ret = Heap_Alloc(heapID, sizeof(BgConfig));
     memset(ret, 0, sizeof(BgConfig));
-    ret->heapId = heapId;
+    ret->heapID = heapID;
     ret->scrollScheduled = 0;         // redundant to above memset
     ret->bufferTransferScheduled = 0; // redundant to above memset
     return ret;
 }
 
-HeapID BgConfig_GetHeapId(BgConfig *bgConfig) {
-    return bgConfig->heapId;
+enum HeapID BgConfig_GetHeapId(BgConfig *bgConfig) {
+    return bgConfig->heapID;
 }
 
 void SetBothScreensModesAndDisable(const GraphicsModes *modes) {
@@ -236,7 +236,7 @@ void InitBgFromTemplateEx(BgConfig *bgConfig, u8 bgId, const BgTemplate *templat
     bgConfig->bgs[bgId].centerY = 0;
 
     if (template->bufferSize != 0) {
-        bgConfig->bgs[bgId].tilemapBuffer = AllocFromHeap(bgConfig->heapId, template->bufferSize);
+        bgConfig->bgs[bgId].tilemapBuffer = Heap_Alloc(bgConfig->heapID, template->bufferSize);
 
         MI_CpuClear16(bgConfig->bgs[bgId].tilemapBuffer, template->bufferSize);
 
@@ -798,7 +798,7 @@ void BgCopyOrUncompressTilemapBufferRangeToVram(BgConfig *bgConfig, u8 bgId, con
         }
 
         u32 uncompSize = MI_GetUncompressedSize(buffer);
-        void *ptr = AllocFromHeapAtEnd(bgConfig->heapId, uncompSize);
+        void *ptr = Heap_AllocAtEnd(bgConfig->heapID, uncompSize);
         CopyOrUncompressTilemapData(buffer, ptr, bufferSize);
         LoadBgVramScr(bgId, ptr, baseTile * 2, uncompSize);
         Heap_Free(ptr);
@@ -853,7 +853,7 @@ void BG_LoadCharTilesData(BgConfig *bgConfig, u8 bgId, const void *data, u32 siz
 static void BG_LoadCharPixelData(BgConfig *bgConfig, u8 bgId, const void *buffer, u32 size, u32 offset) {
     if (size == 0) {
         u32 uncompressedSize = MI_GetUncompressedSize(buffer);
-        void *uncompressedBuffer = AllocFromHeapAtEnd(bgConfig->heapId, uncompressedSize);
+        void *uncompressedBuffer = Heap_AllocAtEnd(bgConfig->heapID, uncompressedSize);
         CopyOrUncompressTilemapData(buffer, uncompressedBuffer, size);
         LoadBgVramChar(bgId, uncompressedBuffer, offset, uncompressedSize);
         Heap_Free(uncompressedBuffer);
@@ -893,19 +893,19 @@ static void LoadBgVramChar(u8 bgId, const void *data, u32 offset, u32 size) {
     }
 }
 
-void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, HeapID heapId) {
-    void *buffer = AllocFromHeapAtEnd(heapId, size);
+void BG_ClearCharDataRange(u8 bgId, u32 size, u32 offset, enum HeapID heapID) {
+    void *buffer = Heap_AllocAtEnd(heapID, size);
     memset(buffer, 0, size);
 
     LoadBgVramChar(bgId, buffer, offset, size);
-    Heap_FreeExplicit(heapId, buffer);
+    Heap_FreeExplicit(heapID, buffer);
 }
 
 void BG_FillCharDataRange(BgConfig *bgConfig, GFBgLayer bgId, u32 fillValue, u32 ntiles, u32 offset) {
     void *buffer;
     u32 size = ntiles * bgConfig->bgs[bgId].tileSize;
     u32 value = fillValue;
-    buffer = AllocFromHeapAtEnd(bgConfig->heapId, size);
+    buffer = Heap_AllocAtEnd(bgConfig->heapID, size);
 
     if (bgConfig->bgs[bgId].tileSize == TILE_SIZE_4BPP) {
         value = (value << 12) | (value << 8) | (value << 4) | (value << 0);
@@ -930,8 +930,8 @@ void BG_LoadPlttData(u32 location, const void *plttData, u16 size, u16 offset) {
     GXS_LoadBGPltt(plttData, offset, size);
 }
 
-void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId) {
-    void *plttData = AllocFromHeapAtEnd(heapId, size);
+void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, enum HeapID heapID) {
+    void *plttData = Heap_AllocAtEnd(heapID, size);
     memset(plttData, 0, size);
     DC_FlushRange(plttData, size);
     if (location < GF_PAL_LOCATION_SUB_BG) {
@@ -939,7 +939,7 @@ void BG_LoadBlankPltt(u32 location, u32 size, u32 offset, HeapID heapId) {
     } else {
         GXS_LoadBGPltt(plttData, offset, size);
     }
-    Heap_FreeExplicit(heapId, plttData);
+    Heap_FreeExplicit(heapID, plttData);
 }
 
 void BG_SetMaskColor(u8 bgId, u16 value) {
@@ -1297,8 +1297,8 @@ static void Convert4bppTo8bppInternal(u8 *src4bpp, u32 size, u8 *dest8bpp, u8 pa
     }
 }
 
-u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, HeapID heapId) {
-    u8 *ptr = (u8 *)AllocFromHeap(heapId, size * 2);
+u8 *Convert4bppTo8bpp(u8 *src4Bpp, u32 size, u8 paletteNum, enum HeapID heapID) {
+    u8 *ptr = (u8 *)Heap_Alloc(heapID, size * 2);
 
     Convert4bppTo8bppInternal(src4Bpp, size, ptr, paletteNum);
 
@@ -1528,8 +1528,8 @@ static void FillBitmapRect8bit(const Bitmap *surface, u16 x, u16 y, u16 width, u
     }
 }
 
-Window *AllocWindows(HeapID heapId, s32 num) {
-    Window *ret = AllocFromHeap(heapId, num * sizeof(Window));
+Window *AllocWindows(enum HeapID heapID, s32 num) {
+    Window *ret = Heap_Alloc(heapID, num * sizeof(Window));
     for (u16 i = 0; i < num; i++) {
         InitWindow(&ret[i]);
     }
@@ -1562,7 +1562,7 @@ void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u
         return;
     }
 
-    void *buffer = AllocFromHeap(bgConfig->heapId, width * height * bgConfig->bgs[bgId].tileSize);
+    void *buffer = Heap_Alloc(bgConfig->heapID, width * height * bgConfig->bgs[bgId].tileSize);
 
     if (buffer == NULL) {
         return;
@@ -1582,7 +1582,7 @@ void AddWindowParameterized(BgConfig *bgConfig, Window *window, u8 bgId, u8 x, u
 void AddTextWindowTopLeftCorner(BgConfig *bgConfig, Window *window, u8 width, u8 height, u16 baseTile, u8 paletteNum) {
     u32 size = width * height * 32;
 
-    void *ptr = AllocFromHeap(bgConfig->heapId, size);
+    void *ptr = Heap_Alloc(bgConfig->heapID, size);
 
     paletteNum |= (paletteNum * 16);
     memset(ptr, paletteNum, size); // could cause a data protection abort if below is true
@@ -1987,7 +1987,7 @@ void CopyGlyphToWindow(Window *window, u8 *glyphPixels, u16 srcWidth, u16 srcHei
         }
     } else { // 8bpp
         u8 *convertedSrc;
-        convertedSrc = Convert4bppTo8bpp(glyphPixels, srcWidth * 4 * srcHeight * 8, window->paletteNum, window->bgConfig->heapId);
+        convertedSrc = Convert4bppTo8bpp(glyphPixels, srcWidth * 4 * srcHeight * 8, window->paletteNum, window->bgConfig->heapID);
         switch (glyphSizeParam) {
         case 0: // 1x1
             GLYPH_COPY_8BPP(convertedSrc, 0, 0, srcRight, srcBottom, windowPixels, destX, destY, ConvertPixelsToTiles(destWidth), table);
@@ -2315,7 +2315,7 @@ BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u16 x, u16 y, u
     yPixOffs = y & 7;
     if (bgConfig->bgs[bgId].colorMode == GX_BG_COLORMODE_16) {
         u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
-        u8 *tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+        u8 *tile = Heap_AllocAtEnd(bgConfig->heapID, 0x40);
 
         bgCharPtr += (tilemapBuffer[tilemapIdx] & 0x3FF) * TILE_SIZE_4BPP;
         for (i = 0; i < TILE_SIZE_4BPP; i++) {
@@ -2331,7 +2331,7 @@ BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u16 x, u16 y, u
     } else {
         if (bgConfig->bgs[bgId].mode != GF_BG_TYPE_AFFINE) {
             u16 *tilemapBuffer = bgConfig->bgs[bgId].tilemapBuffer;
-            u8 *tile = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+            u8 *tile = Heap_AllocAtEnd(bgConfig->heapID, 0x40);
 
             memcpy(tile, bgCharPtr + (tilemapBuffer[tilemapIdx] & 0x3FF) * TILE_SIZE_8BPP, TILE_SIZE_8BPP);
             ApplyFlipFlagsToTile(bgConfig, (tilemapBuffer[tilemapIdx] >> 10) & 3, tile);
@@ -2356,7 +2356,7 @@ BOOL DoesPixelAtScreenXYMatchPtrVal(BgConfig *bgConfig, u8 bgId, u16 x, u16 y, u
 static void ApplyFlipFlagsToTile(BgConfig *bgConfig, u8 flags, u8 *tile) {
     u8 i, j;
     if (flags != 0) {
-        u8 *buffer = AllocFromHeapAtEnd(bgConfig->heapId, 0x40);
+        u8 *buffer = Heap_AllocAtEnd(bgConfig->heapID, 0x40);
         if ((flags & 1) != 0) { // hflip
             for (i = 0; i < 8; i++) {
                 for (j = 0; j < 8; j++) {

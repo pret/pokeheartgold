@@ -37,7 +37,7 @@ typedef struct UnkStateMachineSubstruct_0206A388 {
 typedef struct UnkStruct_0206A388 {
     int state;
     int displayTimer;
-    HeapID heapId;
+    enum HeapID heapID;
     BgConfig *bgConfig;
     Window *window;
     u16 bgColorMode;
@@ -774,7 +774,7 @@ u8 MapPreviewGraphic_GetIndex(u32 mapId) {
 
 void MapPreviewGraphic_BeginShowImage(TaskManager *man, int index, u8 time, int a3) {
     FieldSystem *fsys = TaskManager_GetFieldSystem(man);
-    UnkStruct_0206A388 *unk = AllocFromHeapAtEnd(HEAP_ID_4, sizeof(UnkStruct_0206A388));
+    UnkStruct_0206A388 *unk = Heap_AllocAtEnd(HEAP_ID_FIELD1, sizeof(UnkStruct_0206A388));
 
     unk->state = 0;
     unk->displayTimer = 0;
@@ -803,7 +803,7 @@ void MapPreviewGraphic_BeginShowImage(TaskManager *man, int index, u8 time, int 
         break;
     }
 
-    unk->heapId = HEAP_ID_4;
+    unk->heapID = HEAP_ID_FIELD1;
     unk->unk30 = a3;
     unk->unk34.state = 0;
     unk->unk34.unk2 = 0;
@@ -836,7 +836,7 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
         MapPreviewGraphic_LoadGfx(unk);
         MapPreviewGraphic_InitWindow(unk);
         G2_SetBlendAlpha(4, 33, 16, 0);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, unk->heapId);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 16, 1, unk->heapID);
         unk->state++;
         break;
     case PG_STATE_FADE_IN:
@@ -871,7 +871,7 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
             SetBgPriority(GF_BG_LYR_MAIN_1, (u8)unk->bg1Priority);
             SetBgPriority(GF_BG_LYR_MAIN_3, (u8)unk->bg3Priority);
             reg_G2_BLDCNT = 0;
-            BG_ClearCharDataRange(2, 0x20, 0, unk->heapId);
+            BG_ClearCharDataRange(2, 0x20, 0, unk->heapID);
             BgClearTilemapBufferAndCommit(unk->bgConfig, 2);
             WindowArray_Delete(unk->window, 1);
             Heap_Free(unk);
@@ -883,13 +883,13 @@ static BOOL Task_MapPreviewGraphic_ShowImage(TaskManager *man) {
 }
 
 static void MapPreviewGraphic_LoadGfx(UnkStruct_0206A388 *unk) {
-    GfGfxLoader_GXLoadPal(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].palNo, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x160, unk->heapId);
-    GfGfxLoader_LoadCharData(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].charNo, unk->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, unk->heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].scrnNo, unk->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, unk->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].palNo, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x160, unk->heapID);
+    GfGfxLoader_LoadCharData(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].charNo, unk->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, unk->heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_1_5_0, sMapPreviewGraphicData[unk->index].files[unk->timeIndex].scrnNo, unk->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 1, unk->heapID);
 }
 
 static void MapPreviewGraphic_InitWindow(UnkStruct_0206A388 *unk) {
-    unk->window = AllocWindows(unk->heapId, 1);
+    unk->window = AllocWindows(unk->heapID, 1);
     AddWindowParameterized(unk->bgConfig, unk->window, 2, 0, 0, 28, 2, 13, 0x2C0);
 }
 

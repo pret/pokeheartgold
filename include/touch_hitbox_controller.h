@@ -20,7 +20,7 @@ typedef struct TouchHitboxController {
     TouchHitboxControllerTemplate *templates;
 } TouchHitboxController;
 
-TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hitboxes, u32 num_templates, TouchHitboxControllerCallback callback, void *callbackArg, HeapID heapId);
+TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hitboxes, u32 num_templates, TouchHitboxControllerCallback callback, void *callbackArg, enum HeapID heapID);
 BOOL TouchHitboxController_IsTriggered(TouchHitboxController *controller);
 void TouchHitboxController_Destroy(TouchHitboxController *controller);
 

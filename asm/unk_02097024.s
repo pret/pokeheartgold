@@ -16,7 +16,7 @@ sub_02097024: ; 0x02097024
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x3c
@@ -65,7 +65,7 @@ sub_0209707C: ; 0x0209707C
 	add r5, r0, #0
 	mov r0, #0xb
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x34

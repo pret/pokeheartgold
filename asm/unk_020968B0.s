@@ -17,7 +17,7 @@ sub_020968B0: ; 0x020968B0
 	add r6, r1, #0
 	mov r0, #0xb
 	mov r1, #0x28
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x28

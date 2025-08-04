@@ -84,16 +84,16 @@ typedef struct PaletteData {
     u8 unused[3];
 } PaletteData;
 
-PaletteData *PaletteData_Init(HeapID heapId);
+PaletteData *PaletteData_Init(enum HeapID heapID);
 void PaletteData_Free(PaletteData *data);
 void PaletteData_SetBuffers(PaletteData *data, PaletteBufferId bufferID, u16 *opaque, u16 *transparent, u32 size);
-void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, HeapID heapID);
+void PaletteData_AllocBuffers(PaletteData *data, PaletteBufferId bufferID, u32 size, enum HeapID heapID);
 void PaletteData_FreeBuffers(PaletteData *data, PaletteBufferId bufferID);
 void PaletteData_LoadPalette(PaletteData *data, const u16 *src, PaletteBufferId bufferID, u16 offset, u16 size);
-void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos);
-void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos);
-void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos);
-void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos);
+void PaletteData_LoadFromNarc(PaletteData *data, NarcId narcID, s32 memberNo, enum HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos);
+void PaletteData_LoadNarc(PaletteData *data, NarcId narcID, s32 memberNo, enum HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos);
+void PaletteData_LoadFromOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, enum HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, u16 readPos);
+void PaletteData_LoadOpenNarc(PaletteData *data, NARC *narc, s32 memberNo, enum HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos);
 void PaletteData_LoadPaletteSlotFromHardware(PaletteData *data, PaletteBufferId bufferID, u16 pos, u32 size);
 void PaletteData_CopyPalette(PaletteData *data, u32 srcBufferID, u16 srcPos, u32 destBufferID, u16 destPos, u16 size);
 u16 *PaletteData_GetUnfadedBuf(PaletteData *data, PaletteBufferId bufferID);
@@ -105,7 +105,7 @@ void PaletteData_PushTransparentBuffers(PaletteData *data);
 u16 PaletteData_GetSelectedBuffersBitmask(PaletteData *data);
 void PaletteData_SetAutoTransparent(PaletteData *data, BOOL autoTransparent);
 void PaletteData_SetSelectedBufferAll(PaletteData *plttData, BOOL a1);
-void ZeroPalettesByBitmask(u16 selectedBuffer, HeapID heapId);
+void ZeroPalettesByBitmask(u16 selectedBuffer, enum HeapID heapID);
 void PaletteData_FillPaletteInBuffer(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 value, u16 begin, u16 end);
 u16 PaletteData_GetBufferColorAtIndex(PaletteData *plttData, PaletteBufferId bufferID, PaletteSelector which, u16 palIdx);
 void BlendPalette(const u16 *src, u16 *dest, u16 size, u8 cur, u16 target);
@@ -113,7 +113,7 @@ void PaletteData_BlendPalette(PaletteData *data, PaletteBufferId bufferID, u16 o
 void PaletteData_BlendPalettes(PaletteData *data, PaletteBufferId bufferID, u16 selectedBuffer, u8 cur, u16 target);
 void TintPalette_GrayScale(u16 *palette, int count);
 void TintPalette_CustomTone(u16 *palette, int count, int rTone, int gTone, int bTone);
-void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 memberNo, HeapID heapId, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
+void PaletteData_LoadNarc_CustomTint(PaletteData *data, NarcId narcId, s32 memberNo, enum HeapID heapID, PaletteBufferId bufferID, u32 size, u16 pos, int rTone, int gTone, int bTone);
 void PaletteData_FadePalettesTowardsColorStep(PaletteData *plttData, int transparentBit, int opaqueBit, int duration, int step, u16 target);
 
 #endif // POKEHEARTGOLD_PALETTE_H

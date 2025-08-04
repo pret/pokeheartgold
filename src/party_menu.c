@@ -64,7 +64,7 @@ static void sub_02079700(void);
 static void sub_02079720(BgConfig *bgConfig);
 static void sub_02079758(BgConfig *bgConfig);
 static void sub_020798C4(BgConfig *bgConfig);
-static GF3DVramMan *Create3dVramManForPartyMenu(HeapID heapId);
+static GF3DVramMan *Create3dVramManForPartyMenu(enum HeapID heapID);
 static void Init3dVramManForPartyMenu(void);
 static void Delete3dVramManForPartyMenu(GF3DVramMan *gf3dVramMan);
 static void sub_02079A14(PartyMenu *partyMenu, NARC *narc);
@@ -234,7 +234,7 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
     G2S_BlendNone();
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
     SetKeyRepeatTimers(4, 8);
-    CreateHeap(HEAP_ID_3, HEAP_ID_PARTY_MENU, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_PARTY_MENU, 0x30000);
 
     narc = NARC_New(NARC_graphic_plist_gra, HEAP_ID_PARTY_MENU);
     partyMenu = sub_02079BD8(manager);
@@ -637,7 +637,7 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     }
     FontID_Release(4);
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_PARTY_MENU);
+    Heap_Destroy(HEAP_ID_PARTY_MENU);
     sub_0203A964();
     return TRUE;
 }
@@ -898,8 +898,8 @@ void PartyMenu_Toggle3dEngine(PartyMenu *partyMenu, PartyMenu3dEngineToggle togg
     }
 }
 
-static GF3DVramMan *Create3dVramManForPartyMenu(HeapID heapId) {
-    return GF_3DVramMan_Create(heapId, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, Init3dVramManForPartyMenu);
+static GF3DVramMan *Create3dVramManForPartyMenu(enum HeapID heapID) {
+    return GF_3DVramMan_Create(heapID, GF_3D_TEXALLOC_LNK, 1, GF_3D_PLTTALLOC_LNK, 2, Init3dVramManForPartyMenu);
 }
 
 static void Init3dVramManForPartyMenu(void) {
@@ -924,7 +924,7 @@ static void sub_02079A14(PartyMenu *partyMenu, NARC *narc) {
     void *nclrFile = NARC_AllocAndReadWholeMember(narc, NARC_plist_gra_plist_gra_00000016_NCLR, HEAP_ID_PARTY_MENU);
     NNSG2dPaletteData *plttData;
     NNS_G2dGetUnpackedPaletteData(nclrFile, &plttData);
-    u16 *plttBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, plttData->szByte);
+    u16 *plttBuf = Heap_Alloc(HEAP_ID_PARTY_MENU, plttData->szByte);
     memcpy(plttBuf, plttData->pRawData, plttData->szByte);
     plttBuf[0] = RGB_BLACK;
     BG_LoadPlttData(GF_PAL_LOCATION_MAIN_OBJEXT, plttBuf, plttData->szByte, 0);
@@ -1576,7 +1576,7 @@ static u8 PartyMenu_HandleInput(PartyMenu *partyMenu) {
 
 static void sub_0207AFC4(PartyMenu *partyMenu) {
     ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
-    u8 *buf = AllocFromHeap(HEAP_ID_PARTY_MENU, 8);
+    u8 *buf = Heap_Alloc(HEAP_ID_PARTY_MENU, 8);
     u8 numItems;
     switch (partyMenu->args->context) {
     case PARTY_MENU_CONTEXT_0:
@@ -2689,13 +2689,13 @@ u32 sub_0207CAA8(void) {
     return NARC_plist_gra_plist_gra_00000018_NANR;
 }
 
-void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
+void sub_0207CAAC(enum HeapID heapID, u16 *a1, u16 *a2, u16 *a3) {
     void *pNscrFile;
     NNSG2dScreenData *screenData;
     const u16 *src;
     u32 i;
 
-    pNscrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_graphic_plist_gra, NARC_plist_gra_plist_gra_00000022_NSCR, heapId);
+    pNscrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_graphic_plist_gra, NARC_plist_gra_plist_gra_00000022_NSCR, heapID);
     NNS_G2dGetUnpackedScreenData(pNscrFile, &screenData);
     src = (const u16 *)screenData->rawData;
 

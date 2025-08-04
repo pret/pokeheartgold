@@ -13,7 +13,7 @@ typedef struct String {
     u16 data[0];
 } String;
 
-String *String_New(u32 maxsize, HeapID heapId);
+String *String_New(u32 maxsize, enum HeapID heapID);
 void String_Delete(String *string);
 void CopyStringToU16Array(const String *string, u16 *dest, u32 n);
 void CopyU16ArrayToString(String *string, const u16 *src);
@@ -21,7 +21,7 @@ void CopyU16ArrayToStringN(String *string, const u16 *src, u32 n);
 int String_Compare(String *a, String *b);
 void String_Copy(String *dest, const String *src);
 void String_SetEmpty(String *str);
-String *String_Dup(const String *src, HeapID heapId);
+String *String_Dup(const String *src, enum HeapID heapID);
 void String_AddChar(String *str, u16 _char);
 void CopyU16ArrayToString(String *dest, const u16 *src);
 void CopyU16ArrayToStringN(String *dest, const u16 *src, u32 n);

@@ -8,7 +8,7 @@
 BOOL GF3dRender_ResTexIsLoaded(NNSG3dResTex *tex);
 void GF3dRender_InitObjFromHeader(NNSG3dRenderObj *obj, NNSG3dResMdl **p_mdl, NNSG3dResFileHeader **p_header);
 void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, const MtxFx33 *rotation, const VecFx32 *scale);
-void GF3dRender_InitSimpleManager(HeapID heapID);
+void GF3dRender_InitSimpleManager(enum HeapID heapID);
 void GF3dRender_DeleteSimpleManager(void);
 BOOL GF3dRender_BindModelSet(NNSG3dResFileHeader *obj, const NNSG3dResTex *tex);
 BOOL GF3dRender_AllocAndLoadTexResources(NNSG3dResTex *tex);

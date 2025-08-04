@@ -35,7 +35,7 @@ _0221BA0C:
 	mov r1, #1
 	ldr r0, [sp]
 	lsl r1, r1, #0x12
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #1
 	mov r2, #0

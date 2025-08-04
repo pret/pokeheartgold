@@ -918,7 +918,7 @@ sub_020320E0: ; 0x020320E0
 	add r0, r3, #0
 	mov r1, #0x20
 	add r6, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0

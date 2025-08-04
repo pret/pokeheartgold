@@ -17,7 +17,7 @@ void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp) {
 
     for (i = 0; i < PHONE_CONTEXT_MENU_MAX; ++i) {
         param = &sContextMenuParam[i];
-        phoneApp->listMenuItems[i] = ListMenuItems_New(param->nItems, phoneApp->heapId);
+        phoneApp->listMenuItems[i] = ListMenuItems_New(param->nItems, phoneApp->heapID);
         for (j = 0; j < param->nItems; ++j) {
             ListMenuItems_AppendFromMsgData(phoneApp->listMenuItems[i], phoneApp->msgData, param->baseMsg + j, j);
         }
@@ -216,7 +216,7 @@ int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp) {
 }
 
 void PokegearPhone_ContactList_CreateLinkedList(PokegearPhoneAppData *phoneApp) {
-    phoneApp->phoneContactListNodes = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PhoneContactListNode));
+    phoneApp->phoneContactListNodes = Heap_Alloc(phoneApp->heapID, phoneApp->numContacts * sizeof(PhoneContactListNode));
     PokegearPhone_InitContactsLinkedList(phoneApp);
 }
 

@@ -685,7 +685,7 @@ ov01_0220589C: ; 0x0220589C
 	mov r0, #0xb
 	mov r1, #0x28
 	add r5, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #4
 	add r4, r0, #0
@@ -970,7 +970,7 @@ ov01_02205AEC: ; 0x02205AEC
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x48
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r0, #0
 	strb r0, [r2]
@@ -1296,7 +1296,7 @@ _02205D78:
 _02205D94:
 	mov r0, #0xb
 	mov r1, #0x44
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [r2]
@@ -1449,7 +1449,7 @@ ov01_02205EE0: ; 0x02205EE0
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #4
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [r2]
@@ -1704,7 +1704,7 @@ _022060DA:
 _022060E2:
 	mov r0, #0xb
 	mov r1, #0x84
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x84

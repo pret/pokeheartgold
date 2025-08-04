@@ -44,9 +44,9 @@ static BOOL (*sIntroMovieSceneFuncs[])(IntroMovieOverlayData *data, void *pVoid)
     IntroMovie_Scene5,
 };
 
-HeapID _deadstrip_00(int idx);
-HeapID _deadstrip_00(int idx) {
-    static const HeapID sDeadstrippedRodata[2] = { HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE };
+enum HeapID _deadstrip_00(int idx);
+enum HeapID _deadstrip_00(int idx) {
+    static const enum HeapID sDeadstrippedRodata[2] = { HEAP_ID_INTRO_MOVIE, HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }
 
@@ -59,7 +59,7 @@ static BOOL IntroMovie_Init(OverlayManager *man, int *state) {
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
     SetKeyRepeatTimers(4, 8);
-    CreateHeap(HEAP_ID_3, HEAP_ID_INTRO_MOVIE, 0x68000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_INTRO_MOVIE, 0x68000);
 
     IntroMovieOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(IntroMovieOverlayData), HEAP_ID_INTRO_MOVIE);
     memset(data, 0, sizeof(IntroMovieOverlayData));
@@ -159,7 +159,7 @@ static BOOL IntroMovie_Exit(OverlayManager *man, int *state) {
     sub_0200FB70();
     SetLCRNGSeed(data->savedLCRngSeed);
     OverlayManager_FreeData(man);
-    DestroyHeap(HEAP_ID_INTRO_MOVIE);
+    Heap_Destroy(HEAP_ID_INTRO_MOVIE);
     RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
     return TRUE;
 }

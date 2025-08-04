@@ -51,7 +51,7 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data);
 static void SinjohGetEggCutscene_FreeResources(SinjohGetEggCutsceneData *data);
 
 void FieldSystem_BeginSinjohCutsceneTask(FieldSystem *fieldSystem) {
-    SinjohCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohCutsceneData));
+    SinjohCutsceneData *data = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(SinjohCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohCutsceneData));
     data->fieldSystem = fieldSystem;
     TaskManager_Call(fieldSystem->taskman, Task_SinjohCutscene, data);
@@ -72,13 +72,13 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
     SinjohCutsceneData *data = TaskManager_GetEnvironment(taskMan);
     switch (*state) {
     case SJC_STATE_BEGIN_PALETTE_FADE:
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
         (*state)++;
         break;
     case SJC_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohCutscene_LoadResources(data);
-            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;
@@ -99,7 +99,7 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
         break;
     case SJC_STATE_4:
         if (++data->unk227 >= 150) {
-            BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;
@@ -147,22 +147,22 @@ static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
     unkData2 = ov02_02253CF8_0;
     unownModelFiles = sUnownModelFiles;
 
-    GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
+    HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_FIELD1, 32);
 
     for (i = 0; i < NELEMS(data->unownObjects); i++) {
-        Field3dModel_LoadFromFilesystem(&data->unownModels[i], NARC_demo_legend, unownModelFiles[i], HEAP_ID_4);
+        Field3dModel_LoadFromFilesystem(&data->unownModels[i], NARC_demo_legend, unownModelFiles[i], HEAP_ID_FIELD1);
     }
 
-    Field3dModel_LoadFromFilesystem(&data->model174, NARC_demo_legend, 85, HEAP_ID_4);
+    Field3dModel_LoadFromFilesystem(&data->model174, NARC_demo_legend, 85, HEAP_ID_FIELD1);
 
     for (j = 0; j < NELEMS(data->unownAnimations[0]); j++) {
         for (i = 0; i < NELEMS(data->unownObjects); i++) {
-            Field3dModelAnimation_LoadFromFilesystem(&data->unownAnimations[j][i], &data->unownModels[j], NARC_demo_legend, unownAnimationFiles[j][i], HEAP_ID_4, &data->alloc);
+            Field3dModelAnimation_LoadFromFilesystem(&data->unownAnimations[j][i], &data->unownModels[j], NARC_demo_legend, unownAnimationFiles[j][i], HEAP_ID_FIELD1, &data->alloc);
         }
     }
 
     for (i = 0; i < NELEMS(data->animation184); i++) {
-        Field3dModelAnimation_LoadFromFilesystem(&data->animation184[i], &data->model174, NARC_demo_legend, unkData2[i], HEAP_ID_4, &data->alloc);
+        Field3dModelAnimation_LoadFromFilesystem(&data->animation184[i], &data->model174, NARC_demo_legend, unkData2[i], HEAP_ID_FIELD1, &data->alloc);
     }
 
     for (i = 0; i < NELEMS(data->unownObjects); i++) {
@@ -233,7 +233,7 @@ static BOOL sField3DModelAnimation_Array_FrameAdvanceAndCheck(Field3DModelAnimat
 }
 
 void FieldSystem_BeginSinjohGetEggCutsceneTask(FieldSystem *fieldSystem, u8 whichLegend) {
-    SinjohGetEggCutsceneData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(SinjohGetEggCutsceneData));
+    SinjohGetEggCutsceneData *data = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(SinjohGetEggCutsceneData));
     MI_CpuFill8(data, 0, sizeof(SinjohGetEggCutsceneData));
     data->fieldSystem = fieldSystem;
     data->whichLegend = whichLegend;
@@ -255,13 +255,13 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
 
     switch (*state) {
     case SGEC_STATE_BEGIN_PALETTE_FADE:
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
         (*state)++;
         break;
     case SGEC_STATE_LOAD_RESOURCES:
         if (IsPaletteFadeFinished()) {
             SinjohGetEggCutscene_LoadResources(data);
-            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(3, 1, 0, RGB_WHITE, 2, 1, HEAP_ID_FIELD1);
             (*state)++;
         }
         break;
@@ -308,11 +308,11 @@ static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {
 
     VecFx32 arceusPos;
 
-    GF_ExpHeap_FndInitAllocator(&data->alloc, HEAP_ID_4, 32);
-    Field3dModel_LoadFromFilesystem(&data->eggModel, NARC_demo_legend, modelFiles[data->whichLegend], HEAP_ID_4);
+    HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_FIELD1, 32);
+    Field3dModel_LoadFromFilesystem(&data->eggModel, NARC_demo_legend, modelFiles[data->whichLegend], HEAP_ID_FIELD1);
 
     for (u8 i = 0; i < NELEMS(data->animations); i++) {
-        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->eggModel, NARC_demo_legend, eggAnimationFiles[data->whichLegend][i], HEAP_ID_4, &data->alloc);
+        Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->eggModel, NARC_demo_legend, eggAnimationFiles[data->whichLegend][i], HEAP_ID_FIELD1, &data->alloc);
     }
 
     Field3dObject_InitFromModel(&data->object, &data->eggModel);

@@ -18,7 +18,7 @@
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_SinDegNoWrap
 .public MI_CpuFill8

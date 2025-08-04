@@ -69,7 +69,7 @@ u8 PhotoAlbum_GetNumSaved(const PhotoAlbum *photoAlbum);
 void PhotoAlbum_DeletePhotoByIndex(PhotoAlbum *photoAlbum, u8 idx);
 BOOL PhotoAlbum_SetPhotoAtIndex(PhotoAlbum *photoAlbum, const Photo *photo, u8 idx);
 BOOL PhotoAlbum_GetPhotoByIndex(const PhotoAlbum *photoAlbum, Photo *photo, u8 idx);
-Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, HeapID heapId);
+Photo *PhotoAlbum_LoadAllInUsePhotos(const PhotoAlbum *photoAlbum, enum HeapID heapID);
 void Photo_Init(Photo *photo);
 
 #endif // POKEHEARTGOLD_PHOTO_ALBUM_H
