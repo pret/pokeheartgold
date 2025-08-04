@@ -1587,12 +1587,12 @@ _02262CBC:
 	beq _02262CD2
 	ldr r0, [sp, #4]
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	b _02262CDA
 _02262CD2:
 	ldr r0, [sp, #4]
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 _02262CDA:
 	add r4, r0, #0
 	ldr r0, [sp, #4]
@@ -1662,12 +1662,12 @@ _02262D56:
 	beq _02262D6C
 	ldr r0, [sp, #4]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	b _02262D74
 _02262D6C:
 	ldr r0, [sp, #4]
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 _02262D74:
 	add r4, r0, #0
 	ldr r0, [sp, #4]

@@ -3262,7 +3262,7 @@ ov108_021E72CC: ; 0x021E72CC
 	str r0, [r4, r1]
 	ldr r1, [r4]
 	mov r0, #1
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0xe7
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3642,7 +3642,7 @@ ov108_021E756C: ; 0x021E756C
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	mov r0, #0xe9
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

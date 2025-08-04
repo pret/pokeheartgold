@@ -2328,7 +2328,7 @@ _0222B07C:
 	blt _0222B07C
 	mov r0, #1
 	mov r1, #0x35
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0xb3
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -15070,7 +15070,7 @@ ov44_02231754: ; 0x02231754
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 _02231776:
 	ldr r0, _02231784 ; =0x00000D54
 	mov r1, #0
