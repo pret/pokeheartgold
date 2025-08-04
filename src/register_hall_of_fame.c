@@ -2035,7 +2035,7 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
     int version = GetMonData(pokemon, MON_DATA_GAME_VERSION, NULL);
     if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
         ret = REGHOF_METLOC_HOENN;
-    } else if (version == VERSION_FIRE_RED || version == VERSION_LEAF_GREEN) {
+    } else if (version == VERSION_FIRERED || version == VERSION_LEAFGREEN) {
         ret = REGHOF_METLOC_KANTO;
     } else if (version == VERSION_GAMECUBE) {
         ret = REGHOF_METLOC_ORRE;
