@@ -6,19 +6,10 @@
 #include "msgdata.h"
 #include "pokemon_types_def.h"
 
-// Each string in the notepad and which line it starts on.
-typedef struct MemoNotepad {
-    int natureLine;
-    String *nature;
-    int dateLocationMetLine;
-    String *dateLocationMet;
-    int characteristicLine;
-    String *characteristic;
-    int flavorPreferenceLine;
-    String *flavorPreference;
-    int eggWatchLine;
-    String *eggWatch;
-} MemoNotepad;
+typedef struct MemoNotepadString {
+    int line;
+    String *string;
+} MemoNotepadString;
 
 typedef struct PokemonInfoDisplayStruct {
     HeapID heapID;
@@ -26,7 +17,11 @@ typedef struct PokemonInfoDisplayStruct {
     MessageFormat *msgFmt;
     Pokemon *mon;
     BOOL isMine;
-    MemoNotepad notepad;
+    MemoNotepadString nature;
+    MemoNotepadString metDateAndLocation;
+    MemoNotepadString characteristic;
+    MemoNotepadString flavorPreference;
+    MemoNotepadString eggWatch;
 } PokemonInfoDisplayStruct;
 
 void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId);

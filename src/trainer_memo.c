@@ -7,7 +7,7 @@
 #include "constants/pokemon.h"
 
 #include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0302.h"
+#include "msgdata/msg/pokemon_summary_screen.h"
 
 #include "heap.h"
 #include "map_section.h"
@@ -19,7 +19,7 @@
 #define SETMETDATEPARAM_EGG 0
 #define SETMETDATEPARAM_MON 1
 
-typedef enum MetCondition {
+enum MetCondition {
     MET_CONDITION_WILD_ENCOUNTER,
     MET_CONDITION_WILD_ENCOUNTER_TRADED,
     MET_CONDITION_WILD_GIFT,
@@ -41,27 +41,27 @@ typedef enum MetCondition {
     MET_CONDITION_FATEFUL_EGG,
     MET_CONDITION_FATEFUL_EGG_TRADED,
     MET_CONDITION_FATEFUL_EGG_ARRIVED,
-} MetCondition;
+};
 
 static const u16 sFlavorMsgs[6] = {
-    msg_0302_00070,
-    msg_0302_00065,
-    msg_0302_00066,
-    msg_0302_00067,
-    msg_0302_00068,
-    msg_0302_00069,
+    PokemonSummary_Text_HappilyEatsAnything,
+    PokemonSummary_Text_LikesSpicyFood,
+    PokemonSummary_Text_LikesDryFood,
+    PokemonSummary_Text_LikesSweetFood,
+    PokemonSummary_Text_LikesBitterFood,
+    PokemonSummary_Text_LikesSourFood,
 };
 
 static const u16 sCharactersticMsgs[6][5] = {
-    { msg_0302_00071, msg_0302_00072, msg_0302_00073, msg_0302_00074, msg_0302_00075 },
-    { msg_0302_00076, msg_0302_00077, msg_0302_00078, msg_0302_00079, msg_0302_00080 },
-    { msg_0302_00081, msg_0302_00082, msg_0302_00083, msg_0302_00084, msg_0302_00085 },
-    { msg_0302_00086, msg_0302_00087, msg_0302_00088, msg_0302_00089, msg_0302_00090 },
-    { msg_0302_00091, msg_0302_00092, msg_0302_00093, msg_0302_00094, msg_0302_00095 },
-    { msg_0302_00096, msg_0302_00097, msg_0302_00098, msg_0302_00099, msg_0302_00100 },
+    { PokemonSummary_Text_LovesToEat, PokemonSummary_Text_OftenDozesOff, PokemonSummary_Text_OftenScattersThings, PokemonSummary_Text_ScattersThingsOften, PokemonSummary_Text_LikesToRelax },
+    { PokemonSummary_Text_ProudOfItsPower, PokemonSummary_Text_LikesToTrashAbout, PokemonSummary_Text_ALittleQuickTempered, PokemonSummary_Text_LikesToFight, PokemonSummary_Text_QuickTempered },
+    { PokemonSummary_Text_SturdyBody, PokemonSummary_Text_CapableOfTakingHits, PokemonSummary_Text_HighlyPersistent, PokemonSummary_Text_GoodEndurance, PokemonSummary_Text_GoodPerseverance },
+    { PokemonSummary_Text_LikesToRun, PokemonSummary_Text_AlertToSounds, PokemonSummary_Text_ImpetuousAndSilly, PokemonSummary_Text_SomewhatOfAClown, PokemonSummary_Text_QuickToFlee },
+    { PokemonSummary_Text_HighlyCurious, PokemonSummary_Text_Mischievous, PokemonSummary_Text_ThoroughlyCunning, PokemonSummary_Text_OftenLostInThought, PokemonSummary_Text_VeryFinicky },
+    { PokemonSummary_Text_StrongWilled, PokemonSummary_Text_SomewhatVain, PokemonSummary_Text_StronglyDefiant, PokemonSummary_Text_HatesToLose, PokemonSummary_Text_SomewhatStubborn },
 };
 
-static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine);
+static enum MetCondition MonMetCondition(Pokemon *mon, BOOL isMine);
 static void FormatNature(PokemonInfoDisplayStruct *infoDisplay);
 static void FormatDateAndLocationMet(PokemonInfoDisplayStruct *infoDisplay, int msgNo);
 static void FormatDateAndLocation_Migrated(PokemonInfoDisplayStruct *infoDisplay, int msgNo);
@@ -78,198 +78,198 @@ static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *pro
 PokemonInfoDisplayStruct *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapID, int a3) {
     PokemonInfoDisplayStruct *ptr = AllocFromHeap(heapID, sizeof(PokemonInfoDisplayStruct));
     ptr->heapID = heapID;
-    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapID);
+    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_pokemon_summary_screen_bin, heapID);
     ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapID);
     ptr->mon = mon;
     ptr->isMine = isMine;
-    ptr->notepad.natureLine = 0;
-    ptr->notepad.nature = NULL;
-    ptr->notepad.dateLocationMetLine = 0;
-    ptr->notepad.dateLocationMet = NULL;
-    ptr->notepad.characteristicLine = 0;
-    ptr->notepad.characteristic = NULL;
-    ptr->notepad.flavorPreferenceLine = 0;
-    ptr->notepad.flavorPreference = NULL;
-    ptr->notepad.eggWatchLine = 0;
-    ptr->notepad.eggWatch = NULL;
+    ptr->nature.line = 0;
+    ptr->nature.string = NULL;
+    ptr->metDateAndLocation.line = 0;
+    ptr->metDateAndLocation.string = NULL;
+    ptr->characteristic.line = 0;
+    ptr->characteristic.string = NULL;
+    ptr->flavorPreference.line = 0;
+    ptr->flavorPreference.string = NULL;
+    ptr->eggWatch.line = 0;
+    ptr->eggWatch.string = NULL;
 
     switch (MonMetCondition(ptr->mon, ptr->isMine)) {
     case MET_CONDITION_WILD_ENCOUNTER:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00049);
-        ptr->notepad.characteristicLine = 6;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_WildEncounter);
+        ptr->characteristic.line = 6;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 7;
+        ptr->flavorPreference.line = 7;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_WILD_ENCOUNTER_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00050);
-        ptr->notepad.characteristicLine = 6;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_WildEncounterTraded);
+        ptr->characteristic.line = 6;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 7;
+        ptr->flavorPreference.line = 7;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_WILD_GIFT:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00051);
-        ptr->notepad.characteristicLine = 6;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_WildEncounterGift);
+        ptr->characteristic.line = 6;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 7;
+        ptr->flavorPreference.line = 7;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_EGG_HATCHED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00052);
-        ptr->notepad.characteristicLine = 8;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_EggHatched);
+        ptr->characteristic.line = 8;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 9;
+        ptr->flavorPreference.line = 9;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_EGG_HATCHED_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00053);
-        ptr->notepad.characteristicLine = 8;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_EggHatchedTraded);
+        ptr->characteristic.line = 8;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 9;
+        ptr->flavorPreference.line = 9;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_EGG_HATCHED_GIFT:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00054);
-        ptr->notepad.characteristicLine = 8;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_EggHatchedGift);
+        ptr->characteristic.line = 8;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 9;
+        ptr->flavorPreference.line = 9;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_EGG_HATCHED_GIFT_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00055);
-        ptr->notepad.characteristicLine = 8;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_EggHatchedGiftTraded);
+        ptr->characteristic.line = 8;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 9;
+        ptr->flavorPreference.line = 9;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_FATEFUL_ENCOUNTER:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00056);
-        ptr->notepad.characteristicLine = 7;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEncounter);
+        ptr->characteristic.line = 7;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 8;
+        ptr->flavorPreference.line = 8;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_FATEFUL_ENCOUNTER_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00057);
-        ptr->notepad.characteristicLine = 7;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEncounterTraded);
+        ptr->characteristic.line = 7;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 8;
+        ptr->flavorPreference.line = 8;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_HATCHED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00058);
-        ptr->notepad.characteristicLine = 9;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEggHatched);
+        ptr->characteristic.line = 9;
         FormatCharacteristic(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00059);
-        ptr->notepad.characteristicLine = 9;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEggHatchedTraded);
+        ptr->characteristic.line = 9;
         FormatCharacteristic(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00060);
-        ptr->notepad.characteristicLine = 9;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEggHatchedArrived);
+        ptr->characteristic.line = 9;
         FormatCharacteristic(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00061);
-        ptr->notepad.characteristicLine = 9;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEggHatchedArrivedTraded);
+        ptr->characteristic.line = 9;
         FormatCharacteristic(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00062);
-        ptr->notepad.characteristicLine = 9;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEggHatchedGift);
+        ptr->characteristic.line = 9;
         FormatCharacteristic(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT_TRADED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocationMet(ptr, msg_0302_00063);
-        ptr->notepad.characteristicLine = 9;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocationMet(ptr, PokemonSummary_Text_MetCondition_FatefulEggHatchedGiftTraded);
+        ptr->characteristic.line = 9;
         FormatCharacteristic(ptr);
         break;
     case MET_CONDITION_MIGRATED:
-        ptr->notepad.natureLine = 1;
+        ptr->nature.line = 1;
         FormatNature(ptr);
-        ptr->notepad.dateLocationMetLine = 2;
-        FormatDateAndLocation_Migrated(ptr, msg_0302_00064);
-        ptr->notepad.characteristicLine = 6;
+        ptr->metDateAndLocation.line = 2;
+        FormatDateAndLocation_Migrated(ptr, PokemonSummary_Text_MetCondition_Migrated);
+        ptr->characteristic.line = 6;
         FormatCharacteristic(ptr);
-        ptr->notepad.flavorPreferenceLine = 7;
+        ptr->flavorPreference.line = 7;
         FormatFlavorPreference(ptr);
         break;
     case MET_CONDITION_EGG:
-        ptr->notepad.dateLocationMetLine = 1;
-        FormatDateAndLocation_Egg(ptr, msg_0302_00101, FALSE);
-        ptr->notepad.eggWatchLine = 6;
+        ptr->metDateAndLocation.line = 1;
+        FormatDateAndLocation_Egg(ptr, PokemonSummary_Text_MetCondition_Egg, FALSE);
+        ptr->eggWatch.line = 6;
         FormatEggWatch(ptr);
         break;
     case MET_CONDITION_EGG_TRADED:
-        ptr->notepad.dateLocationMetLine = 1;
-        FormatDateAndLocation_Egg(ptr, msg_0302_00102, TRUE);
-        ptr->notepad.eggWatchLine = 6;
+        ptr->metDateAndLocation.line = 1;
+        FormatDateAndLocation_Egg(ptr, PokemonSummary_Text_MetCondition_EggTraded, TRUE);
+        ptr->eggWatch.line = 6;
         FormatEggWatch(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG:
-        ptr->notepad.dateLocationMetLine = 1;
-        FormatDateAndLocation_Egg(ptr, msg_0302_00103, FALSE);
-        ptr->notepad.eggWatchLine = 6;
+        ptr->metDateAndLocation.line = 1;
+        FormatDateAndLocation_Egg(ptr, PokemonSummary_Text_MetCondition_FatefulEgg, FALSE);
+        ptr->eggWatch.line = 6;
         FormatEggWatch(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_TRADED:
-        ptr->notepad.dateLocationMetLine = 1;
-        FormatDateAndLocation_Egg(ptr, msg_0302_00103, TRUE);
-        ptr->notepad.eggWatchLine = 6;
+        ptr->metDateAndLocation.line = 1;
+        FormatDateAndLocation_Egg(ptr, PokemonSummary_Text_MetCondition_FatefulEgg, TRUE);
+        ptr->eggWatch.line = 6;
         FormatEggWatch(ptr);
         break;
     case MET_CONDITION_FATEFUL_EGG_ARRIVED:
-        ptr->notepad.dateLocationMetLine = 1;
-        FormatDateAndLocation_Egg(ptr, msg_0302_00104, 0);
-        ptr->notepad.eggWatchLine = 6;
+        ptr->metDateAndLocation.line = 1;
+        FormatDateAndLocation_Egg(ptr, PokemonSummary_Text_MetCondition_FatefulEggArrived, FALSE);
+        ptr->eggWatch.line = 6;
         FormatEggWatch(ptr);
         break;
     }
@@ -277,20 +277,20 @@ PokemonInfoDisplayStruct *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapID,
 }
 
 void sub_0208E994(PokemonInfoDisplayStruct *infoDisplay) {
-    if (infoDisplay->notepad.nature != NULL) {
-        Heap_Free(infoDisplay->notepad.nature);
+    if (infoDisplay->nature.string != NULL) {
+        Heap_Free(infoDisplay->nature.string);
     }
-    if (infoDisplay->notepad.dateLocationMet != NULL) {
-        Heap_Free(infoDisplay->notepad.dateLocationMet);
+    if (infoDisplay->metDateAndLocation.string != NULL) {
+        Heap_Free(infoDisplay->metDateAndLocation.string);
     }
-    if (infoDisplay->notepad.characteristic != NULL) {
-        Heap_Free(infoDisplay->notepad.characteristic);
+    if (infoDisplay->characteristic.string != NULL) {
+        Heap_Free(infoDisplay->characteristic.string);
     }
-    if (infoDisplay->notepad.flavorPreference != NULL) {
-        Heap_Free(infoDisplay->notepad.flavorPreference);
+    if (infoDisplay->flavorPreference.string != NULL) {
+        Heap_Free(infoDisplay->flavorPreference.string);
     }
-    if (infoDisplay->notepad.eggWatch != NULL) {
-        Heap_Free(infoDisplay->notepad.eggWatch);
+    if (infoDisplay->eggWatch.string != NULL) {
+        Heap_Free(infoDisplay->eggWatch.string);
     }
 
     MessageFormat_Delete(infoDisplay->msgFmt);
@@ -332,14 +332,14 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
 static void FormatNature(PokemonInfoDisplayStruct *infoDisplay) {
     int nature = GetMonNature(infoDisplay->mon);
     if (nature <= NATURE_NUM - 1) {
-        infoDisplay->notepad.nature = String_New(0x48, infoDisplay->heapID);
-        ReadMsgDataIntoString(infoDisplay->msgData, msg_0302_00024 + nature, infoDisplay->notepad.nature);
+        infoDisplay->nature.string = String_New(0x48, infoDisplay->heapID);
+        ReadMsgDataIntoString(infoDisplay->msgData, PokemonSummary_Text_Nature_Hardy + nature, infoDisplay->nature.string);
     }
 }
 
 static void FormatDateAndLocationMet(PokemonInfoDisplayStruct *infoDisplay, int msgNo) {
     String *str = String_New(0x240, infoDisplay->heapID);
-    infoDisplay->notepad.dateLocationMet = String_New(0x240, infoDisplay->heapID);
+    infoDisplay->metDateAndLocation.string = String_New(0x240, infoDisplay->heapID);
 
     ReadMsgDataIntoString(infoDisplay->msgData, msgNo, str);
     BufferIntegerAsString(infoDisplay->msgFmt, 0, GetMonData(infoDisplay->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
@@ -352,13 +352,13 @@ static void FormatDateAndLocationMet(PokemonInfoDisplayStruct *infoDisplay, int 
     BufferIntegerAsString(infoDisplay->msgFmt, 7, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferLocationName(infoDisplay->msgFmt, 8, GetMonData(infoDisplay->mon, MON_DATA_EGG_MET_LOCATION, NULL));
 
-    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->notepad.dateLocationMet, str);
+    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->metDateAndLocation.string, str);
     String_Delete(str);
 }
 
 static void FormatDateAndLocation_Migrated(PokemonInfoDisplayStruct *infoDisplay, int msgNo) {
     String *str = String_New(0x120, infoDisplay->heapID);
-    infoDisplay->notepad.dateLocationMet = String_New(0x120, infoDisplay->heapID);
+    infoDisplay->metDateAndLocation.string = String_New(0x120, infoDisplay->heapID);
 
     ReadMsgDataIntoString(infoDisplay->msgData, msgNo, str);
     BufferIntegerAsString(infoDisplay->msgFmt, 0, GetMonData(infoDisplay->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
@@ -393,13 +393,13 @@ static void FormatDateAndLocation_Migrated(PokemonInfoDisplayStruct *infoDisplay
         break;
     }
 
-    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->notepad.dateLocationMet, str);
+    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->metDateAndLocation.string, str);
     String_Delete(str);
 }
 
 static void FormatDateAndLocation_Egg(PokemonInfoDisplayStruct *infoDisplay, int msgNo, BOOL hatched) {
     String *str = String_New(0x168, infoDisplay->heapID);
-    infoDisplay->notepad.dateLocationMet = String_New(0x168, infoDisplay->heapID);
+    infoDisplay->metDateAndLocation.string = String_New(0x168, infoDisplay->heapID);
 
     ReadMsgDataIntoString(infoDisplay->msgData, msgNo, str);
 
@@ -415,14 +415,14 @@ static void FormatDateAndLocation_Egg(PokemonInfoDisplayStruct *infoDisplay, int
         BufferLocationName(infoDisplay->msgFmt, 8, GetMonData(infoDisplay->mon, MON_DATA_MET_LOCATION, NULL));
     }
 
-    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->notepad.dateLocationMet, str);
+    StringExpandPlaceholders(infoDisplay->msgFmt, infoDisplay->metDateAndLocation.string, str);
     String_Delete(str);
 }
 
 static void FormatCharacteristic(PokemonInfoDisplayStruct *infoDisplay) {
     int index, maxIV;
 
-    infoDisplay->notepad.characteristic = String_New(0x48, infoDisplay->heapID);
+    infoDisplay->characteristic.string = String_New(0x48, infoDisplay->heapID);
 
     int hpIV = GetMonData(infoDisplay->mon, MON_DATA_HP_IV, NULL);
     int atkIV = GetMonData(infoDisplay->mon, MON_DATA_ATK_IV, NULL);
@@ -579,39 +579,39 @@ static void FormatCharacteristic(PokemonInfoDisplayStruct *infoDisplay) {
         }
         break;
     }
-    ReadMsgDataIntoString(infoDisplay->msgData, sCharactersticMsgs[index][maxIV % 5], infoDisplay->notepad.characteristic);
+    ReadMsgDataIntoString(infoDisplay->msgData, sCharactersticMsgs[index][maxIV % 5], infoDisplay->characteristic.string);
 }
 
 static void FormatFlavorPreference(PokemonInfoDisplayStruct *infoDisplay) {
-    infoDisplay->notepad.flavorPreference = String_New(0x48, infoDisplay->heapID);
+    infoDisplay->flavorPreference.string = String_New(0x48, infoDisplay->heapID);
     int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
         if (MonGetFlavorPreference(infoDisplay->mon, flavor) == 1) {
             index = flavor + 1;
         }
     }
-    ReadMsgDataIntoString(infoDisplay->msgData, sFlavorMsgs[index], infoDisplay->notepad.flavorPreference);
+    ReadMsgDataIntoString(infoDisplay->msgData, sFlavorMsgs[index], infoDisplay->flavorPreference.string);
 }
 
 static void FormatEggWatch(PokemonInfoDisplayStruct *infoDisplay) {
     int msgNo;
     int eggCycles = GetMonData(infoDisplay->mon, MON_DATA_FRIENDSHIP, NULL);
 
-    infoDisplay->notepad.eggWatch = String_New(0x120, infoDisplay->heapID);
+    infoDisplay->eggWatch.string = String_New(0x120, infoDisplay->heapID);
 
     if (eggCycles <= 5) {
-        msgNo = msg_0302_00105;
+        msgNo = PokemonSummary_Text_EggWatch_ItWillHatchSoon;
     } else if (eggCycles <= 10) {
-        msgNo = msg_0302_00106;
+        msgNo = PokemonSummary_Text_EggWatch_CloseToHatching;
     } else if (eggCycles <= 40) {
-        msgNo = msg_0302_00107;
+        msgNo = PokemonSummary_Text_EggWatch_NotCloseToHatching;
     } else {
-        msgNo = msg_0302_00108;
+        msgNo = PokemonSummary_Text_EggWatch_LongTimeToHatch;
     }
-    ReadMsgDataIntoString(infoDisplay->msgData, msgNo, infoDisplay->notepad.eggWatch);
+    ReadMsgDataIntoString(infoDisplay->msgData, msgNo, infoDisplay->eggWatch.string);
 }
 
-static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
+static enum MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
     if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
         if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == 0) {
             if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_NORMAL, MAPLOC(MAPSEC_PAL_PARK))) {
@@ -651,7 +651,13 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
             return MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED;
         }
 
-        if ((GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE))) || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_TRAVELING_MAN))) || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_RILEY))) || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_CYNTHIA))) || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON))) || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_PRIMO)))) {
+        if ((GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE)))
+            || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE)))
+            || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_TRAVELING_MAN)))
+            || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_RILEY)))
+            || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_CYNTHIA)))
+            || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)))
+            || (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_PRIMO)))) {
             if (isMine == TRUE) {
                 return MET_CONDITION_EGG_HATCHED_GIFT;
             }
@@ -832,6 +838,6 @@ static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon) {
 }
 
 static void BoxMon_SetFatefulEncounter(BoxPokemon *boxMon) {
-    int fatefulEncounter = 1;
+    int fatefulEncounter = TRUE;
     SetBoxMonData(boxMon, MON_DATA_FATEFUL_ENCOUNTER, &fatefulEncounter);
 }

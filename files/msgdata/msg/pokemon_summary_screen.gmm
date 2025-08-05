@@ -97,343 +97,343 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">TRAINER MEMO</language>
 	</row>
-	<row id="msg_0302_00024" index="24">
+	<row id="PokemonSummary_Text_Nature_Hardy" index="24">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Hardy{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00025" index="25">
+	<row id="PokemonSummary_Text_Nature_Lonely" index="25">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Lonely{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00026" index="26">
+	<row id="PokemonSummary_Text_Nature_Brave" index="26">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Brave{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00027" index="27">
+	<row id="PokemonSummary_Text_Nature_Adamant" index="27">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Adamant{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00028" index="28">
+	<row id="PokemonSummary_Text_Nature_Naughty" index="28">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Naughty{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00029" index="29">
+	<row id="PokemonSummary_Text_Nature_Bold" index="29">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Bold{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00030" index="30">
+	<row id="PokemonSummary_Text_Nature_Docile" index="30">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Docile{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00031" index="31">
+	<row id="PokemonSummary_Text_Nature_Relaxed" index="31">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Relaxed{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00032" index="32">
+	<row id="PokemonSummary_Text_Nature_Impish" index="32">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Impish{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00033" index="33">
+	<row id="PokemonSummary_Text_Nature_Lax" index="33">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Lax{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00034" index="34">
+	<row id="PokemonSummary_Text_Nature_Timid" index="34">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Timid{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00035" index="35">
+	<row id="PokemonSummary_Text_Nature_Hasty" index="35">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Hasty{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00036" index="36">
+	<row id="PokemonSummary_Text_Nature_Serious" index="36">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Serious{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00037" index="37">
+	<row id="PokemonSummary_Text_Nature_Jolly" index="37">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Jolly{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00038" index="38">
+	<row id="PokemonSummary_Text_Nature_Naive" index="38">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Naive{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00039" index="39">
+	<row id="PokemonSummary_Text_Nature_Modest" index="39">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Modest{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00040" index="40">
+	<row id="PokemonSummary_Text_Nature_Mild" index="40">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Mild{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00041" index="41">
+	<row id="PokemonSummary_Text_Nature_Quiet" index="41">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Quiet{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00042" index="42">
+	<row id="PokemonSummary_Text_Nature_Bashful" index="42">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Bashful{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00043" index="43">
+	<row id="PokemonSummary_Text_Nature_Rash" index="43">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Rash{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00044" index="44">
+	<row id="PokemonSummary_Text_Nature_Calm" index="44">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Calm{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00045" index="45">
+	<row id="PokemonSummary_Text_Nature_Gentle" index="45">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Gentle{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00046" index="46">
+	<row id="PokemonSummary_Text_Nature_Sassy" index="46">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Sassy{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00047" index="47">
+	<row id="PokemonSummary_Text_Nature_Careful" index="47">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Careful{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00048" index="48">
+	<row id="PokemonSummary_Text_Nature_Quirky" index="48">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{COLOR 2}Quirky{COLOR 0} nature.</language>
 	</row>
-	<row id="msg_0302_00049" index="49">
+	<row id="PokemonSummary_Text_MetCondition_WildEncounter" index="49">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nMet at Lv. {STRVAR_1 52, 3, 0}.</language>
 	</row>
-	<row id="msg_0302_00050" index="50">
+	<row id="PokemonSummary_Text_MetCondition_WildEncounterTraded" index="50">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nApparently met at\nLv. {STRVAR_1 52, 3, 0}.</language>
 	</row>
-	<row id="msg_0302_00051" index="51">
+	<row id="PokemonSummary_Text_MetCondition_WildEncounterGift" index="51">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nArrived at Lv. {STRVAR_1 52, 3, 0}.</language>
 	</row>
-	<row id="msg_0302_00052" index="52">
+	<row id="PokemonSummary_Text_MetCondition_EggHatched" index="52">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.</language>
 	</row>
-	<row id="msg_0302_00053" index="53">
+	<row id="PokemonSummary_Text_MetCondition_EggHatchedTraded" index="53">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.</language>
 	</row>
-	<row id="msg_0302_00054" index="54">
+	<row id="PokemonSummary_Text_MetCondition_EggHatchedGift" index="54">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg received.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.</language>
 	</row>
-	<row id="msg_0302_00055" index="55">
+	<row id="PokemonSummary_Text_MetCondition_EggHatchedGiftTraded" index="55">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg received.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.</language>
 	</row>
-	<row id="msg_0302_00056" index="56">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEncounter" index="56">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nHad a fateful encounter\nat Lv. {STRVAR_1 52, 3, 0}.</language>
 	</row>
-	<row id="msg_0302_00057" index="57">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEncounterTraded" index="57">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nApparently had a\nfateful encounter at\nLv. {STRVAR_1 52, 3, 0}.</language>
 	</row>
-	<row id="msg_0302_00058" index="58">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggHatched" index="58">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.\nFateful encounter.</language>
 	</row>
-	<row id="msg_0302_00059" index="59">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggHatchedTraded" index="59">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.\nFateful encounter.</language>
 	</row>
-	<row id="msg_0302_00060" index="60">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggHatchedArrived" index="60">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg arrived.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.\nFateful encounter.</language>
 	</row>
-	<row id="msg_0302_00061" index="61">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggHatchedArrivedTraded" index="61">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg arrived.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.\nFateful encounter.</language>
 	</row>
-	<row id="msg_0302_00062" index="62">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggHatchedGift" index="62">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg hatched.\nFateful encounter.</language>
 	</row>
-	<row id="msg_0302_00063" index="63">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggHatchedGiftTraded" index="63">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}\nEgg obtained.\n{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nEgg apparently hatched.\nFateful encounter.</language>
 	</row>
-	<row id="msg_0302_00064" index="64">
+	<row id="PokemonSummary_Text_MetCondition_Migrated" index="64">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, 20{STRVAR_1 51, 0, 0}\n{COLOR 2}{STRVAR_1 4, 4, 0}{COLOR 0}\nArrived at Lv. {STRVAR_1 52, 3, 0}.</language>
 	</row>
-	<row id="msg_0302_00065" index="65">
+	<row id="PokemonSummary_Text_LikesSpicyFood" index="65">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes {COLOR 2}spicy{COLOR 0} food.</language>
 	</row>
-	<row id="msg_0302_00066" index="66">
+	<row id="PokemonSummary_Text_LikesDryFood" index="66">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes {COLOR 2}dry{COLOR 0} food.</language>
 	</row>
-	<row id="msg_0302_00067" index="67">
+	<row id="PokemonSummary_Text_LikesSweetFood" index="67">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes {COLOR 2}sweet{COLOR 0} food.</language>
 	</row>
-	<row id="msg_0302_00068" index="68">
+	<row id="PokemonSummary_Text_LikesBitterFood" index="68">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes {COLOR 2}bitter{COLOR 0} food.</language>
 	</row>
-	<row id="msg_0302_00069" index="69">
+	<row id="PokemonSummary_Text_LikesSourFood" index="69">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes {COLOR 2}sour{COLOR 0} food.</language>
 	</row>
-	<row id="msg_0302_00070" index="70">
+	<row id="PokemonSummary_Text_HappilyEatsAnything" index="70">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Happily eats anything.</language>
 	</row>
-	<row id="msg_0302_00071" index="71">
+	<row id="PokemonSummary_Text_LovesToEat" index="71">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Loves to eat.</language>
 	</row>
-	<row id="msg_0302_00072" index="72">
+	<row id="PokemonSummary_Text_OftenDozesOff" index="72">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Often dozes off.</language>
 	</row>
-	<row id="msg_0302_00073" index="73">
+	<row id="PokemonSummary_Text_OftenScattersThings" index="73">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Often scatters things.</language>
 	</row>
-	<row id="msg_0302_00074" index="74">
+	<row id="PokemonSummary_Text_ScattersThingsOften" index="74">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Scatters things often.</language>
 	</row>
-	<row id="msg_0302_00075" index="75">
+	<row id="PokemonSummary_Text_LikesToRelax" index="75">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes to relax.</language>
 	</row>
-	<row id="msg_0302_00076" index="76">
+	<row id="PokemonSummary_Text_ProudOfItsPower" index="76">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Proud of its power.</language>
 	</row>
-	<row id="msg_0302_00077" index="77">
+	<row id="PokemonSummary_Text_LikesToTrashAbout" index="77">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes to thrash about.</language>
 	</row>
-	<row id="msg_0302_00078" index="78">
+	<row id="PokemonSummary_Text_ALittleQuickTempered" index="78">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">A little quick tempered.</language>
 	</row>
-	<row id="msg_0302_00079" index="79">
+	<row id="PokemonSummary_Text_LikesToFight" index="79">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes to fight.</language>
 	</row>
-	<row id="msg_0302_00080" index="80">
+	<row id="PokemonSummary_Text_QuickTempered" index="80">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Quick tempered.</language>
 	</row>
-	<row id="msg_0302_00081" index="81">
+	<row id="PokemonSummary_Text_SturdyBody" index="81">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Sturdy body.</language>
 	</row>
-	<row id="msg_0302_00082" index="82">
+	<row id="PokemonSummary_Text_CapableOfTakingHits" index="82">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Capable of taking hits.</language>
 	</row>
-	<row id="msg_0302_00083" index="83">
+	<row id="PokemonSummary_Text_HighlyPersistent" index="83">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Highly persistent.</language>
 	</row>
-	<row id="msg_0302_00084" index="84">
+	<row id="PokemonSummary_Text_GoodEndurance" index="84">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Good endurance.</language>
 	</row>
-	<row id="msg_0302_00085" index="85">
+	<row id="PokemonSummary_Text_GoodPerseverance" index="85">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Good perseverance.</language>
 	</row>
-	<row id="msg_0302_00086" index="86">
+	<row id="PokemonSummary_Text_LikesToRun" index="86">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Likes to run.</language>
 	</row>
-	<row id="msg_0302_00087" index="87">
+	<row id="PokemonSummary_Text_AlertToSounds" index="87">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Alert to sounds.</language>
 	</row>
-	<row id="msg_0302_00088" index="88">
+	<row id="PokemonSummary_Text_ImpetuousAndSilly" index="88">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Impetuous and silly.</language>
 	</row>
-	<row id="msg_0302_00089" index="89">
+	<row id="PokemonSummary_Text_SomewhatOfAClown" index="89">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Somewhat of a clown.</language>
 	</row>
-	<row id="msg_0302_00090" index="90">
+	<row id="PokemonSummary_Text_QuickToFlee" index="90">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Quick to flee.</language>
 	</row>
-	<row id="msg_0302_00091" index="91">
+	<row id="PokemonSummary_Text_HighlyCurious" index="91">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Highly curious.</language>
 	</row>
-	<row id="msg_0302_00092" index="92">
+	<row id="PokemonSummary_Text_Mischievous" index="92">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Mischievous.</language>
 	</row>
-	<row id="msg_0302_00093" index="93">
+	<row id="PokemonSummary_Text_ThoroughlyCunning" index="93">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Thoroughly cunning.</language>
 	</row>
-	<row id="msg_0302_00094" index="94">
+	<row id="PokemonSummary_Text_OftenLostInThought" index="94">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Often lost in thought.</language>
 	</row>
-	<row id="msg_0302_00095" index="95">
+	<row id="PokemonSummary_Text_VeryFinicky" index="95">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Very finicky.</language>
 	</row>
-	<row id="msg_0302_00096" index="96">
+	<row id="PokemonSummary_Text_StrongWilled" index="96">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Strong willed.</language>
 	</row>
-	<row id="msg_0302_00097" index="97">
+	<row id="PokemonSummary_Text_SomewhatVain" index="97">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Somewhat vain.</language>
 	</row>
-	<row id="msg_0302_00098" index="98">
+	<row id="PokemonSummary_Text_StronglyDefiant" index="98">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Strongly defiant.</language>
 	</row>
-	<row id="msg_0302_00099" index="99">
+	<row id="PokemonSummary_Text_HatesToLose" index="99">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Hates to lose.</language>
 	</row>
-	<row id="msg_0302_00100" index="100">
+	<row id="PokemonSummary_Text_SomewhatStubborn" index="100">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">Somewhat stubborn.</language>
 	</row>
-	<row id="msg_0302_00101" index="101">
+	<row id="PokemonSummary_Text_MetCondition_Egg" index="101">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA mysterious Pokémon\nEgg received from\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
 	</row>
-	<row id="msg_0302_00102" index="102">
+	<row id="PokemonSummary_Text_MetCondition_EggTraded" index="102">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA mysterious Pokémon\nEgg obtained in\n{COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
 	</row>
-	<row id="msg_0302_00103" index="103">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEgg" index="103">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA very mysterious\nPokémon Egg obtained\nat {COLOR 1}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
 	</row>
-	<row id="msg_0302_00104" index="104">
+	<row id="PokemonSummary_Text_MetCondition_FatefulEggArrived" index="104">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_34 16, 6, 0} {STRVAR_1 51, 7, 0}, 20{STRVAR_1 51, 5, 0}\nA very mysterious\nPokémon Egg that came\nfrom {COLOR 2}{STRVAR_1 4, 8, 0}{COLOR 0}.\n</language>
 	</row>
-	<row id="msg_0302_00105" index="105">
+	<row id="PokemonSummary_Text_EggWatch_ItWillHatchSoon" index="105">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">“The Egg Watch”\nSounds can be heard\ncoming from inside!\nIt will hatch soon!</language>
 	</row>
-	<row id="msg_0302_00106" index="106">
+	<row id="PokemonSummary_Text_EggWatch_CloseToHatching" index="106">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">“The Egg Watch”\nIt appears to move\noccasionally. It may\nbe close to hatching.</language>
 	</row>
-	<row id="msg_0302_00107" index="107">
+	<row id="PokemonSummary_Text_EggWatch_NotCloseToHatching" index="107">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">“The Egg Watch”\nWhat will hatch from\nthis? It doesn’t seem\nclose to hatching.</language>
 	</row>
-	<row id="msg_0302_00108" index="108">
+	<row id="PokemonSummary_Text_EggWatch_LongTimeToHatch" index="108">
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">“The Egg Watch”\nIt looks like this Egg\nwill take a long time to\nhatch.</language>
 	</row>
