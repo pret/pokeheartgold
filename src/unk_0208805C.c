@@ -125,15 +125,15 @@ int sub_020881C0(s16 *a0, u16 a1) {
     return 0;
 }
 
-void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offset) {
+void BgConfig_LoadAssetFromOpenNarc(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, BgGfxAssetType kind, u32 szByte, u32 offset) {
     switch (kind) {
-    case 0:
+    case GF_BG_GFX_TYPE_CHAR:
         GfGfxLoader_LoadCharDataFromOpenNarc(narc, fileId, bgConfig, layer, offset, szByte, FALSE, heapId);
         break;
-    case 1:
+    case GF_BG_GFX_TYPE_SCRN:
         GfGfxLoader_LoadScrnDataFromOpenNarc(narc, fileId, bgConfig, layer, offset, szByte, FALSE, heapId);
         break;
-    case 2:
+    case GF_BG_GFX_TYPE_PLTT:
         if (layer <= GF_BG_LYR_MAIN_3) {
             GfGfxLoader_GXLoadPalFromOpenNarc(narc, fileId, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)offset, szByte, heapId);
         } else {

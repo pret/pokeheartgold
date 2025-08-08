@@ -1925,12 +1925,12 @@ ov57_022387C0: ; 0x022387C0
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r4, r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x99
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov57_022387C0

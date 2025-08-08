@@ -29733,11 +29733,11 @@ ov14_021F4428: ; 0x021F4428
 	ldr r0, _021F44AC ; =0x00000414
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _021F44B0 ; =0x00000424
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r3, r4, r5, pc}
 	nop
 _021F44AC: .word 0x00000414
@@ -30116,12 +30116,12 @@ ov14_021F4720: ; 0x021F4720
 	ldr r0, _021F47B0 ; =0x00000414
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r4, #0x34]
 	ldr r0, _021F47B4 ; =0x00000424
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, pc}
 	nop
 _021F47B0: .word 0x00000414
@@ -30726,12 +30726,12 @@ _021F4C1C:
 	ldr r0, _021F4C98 ; =0x00000414
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F4C9C ; =0x00000424
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F4C98 ; =0x00000414
 	ldr r0, [r1, r0]
@@ -30788,12 +30788,12 @@ _021F4CDA:
 	ldr r0, _021F4D08 ; =0x00000414
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F4D0C ; =0x00000424
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, r5, r6, pc}
 	nop
 _021F4D08: .word 0x00000414
@@ -30998,7 +30998,7 @@ ov14_021F4EA0: ; 0x021F4EA0
 	ldr r0, [r1, r0]
 	add r1, r7, #0
 	mov r3, #0xa
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r7, #0
 	bl sub_02013938
 	pop {r3, r4, r5, r6, r7, pc}

@@ -3593,9 +3593,9 @@ ov59_02239938: ; 0x02239938
 	mov r3, #3
 	bl SpriteSystem_Init
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	mov r0, #0x93
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3654,7 +3654,7 @@ ov59_022399B4: ; 0x022399B4
 	str r1, [r4, r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	pop {r4, pc}
 	thumb_func_end ov59_022399B4
 
@@ -7633,9 +7633,9 @@ ov59_0223B804: ; 0x0223B804
 	mov r3, #3
 	bl SpriteSystem_Init
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	mov r0, #0x96
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -7688,7 +7688,7 @@ ov59_0223B878: ; 0x0223B878
 	str r1, [r4, r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov59_0223B878
