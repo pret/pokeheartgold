@@ -79,3 +79,17 @@ BOOL PokegearConfigure_Exit(OverlayManager *man, int *state) {
     DestroyHeap(heapID);
     return TRUE;
 }
+
+void ov101_021EE9D0(PokegearConfigureAppData *configureApp) {
+    configureApp->unk_0C->childAppdata = configureApp;
+    configureApp->unk_0C->reselectAppCB = ov101_021EF4B0;
+    configureApp->unk_12_09 = Pokegear_GetBackgroundStyle(configureApp->unk_0C->savePokegear);
+    configureApp->unk_12_00 = sub_0202EE98(configureApp->unk_0C->savePokegear);
+    configureApp->unk_12_00 = 0xFF; // nani the fuck?
+}
+
+void ov101_021EEA2C(PokegearConfigureAppData *configureApp) {
+    Pokegear_SetBackgroundStyle(configureApp->unk_0C->savePokegear, configureApp->unk_12_09);
+    configureApp->unk_0C->reselectAppCB = NULL;
+    configureApp->unk_0C->deselectAppCB = NULL;
+}
