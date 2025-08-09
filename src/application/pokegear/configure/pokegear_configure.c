@@ -1,6 +1,8 @@
 #include "application/pokegear/configure/pokegear_configure_internal.h"
 
+#include "brightness.h"
 #include "pokegear_apps.h"
+#include "unk_0200FA24.h"
 
 void ov101_021EE9D0(PokegearConfigureAppData *configureApp);
 void ov101_021EEA2C(PokegearConfigureAppData *configureApp);
@@ -92,4 +94,166 @@ void ov101_021EEA2C(PokegearConfigureAppData *configureApp) {
     Pokegear_SetBackgroundStyle(configureApp->unk_0C->savePokegear, configureApp->unk_12_09);
     configureApp->unk_0C->reselectAppCB = NULL;
     configureApp->unk_0C->deselectAppCB = NULL;
+}
+
+int ov101_021EEA4C(PokegearConfigureAppData *configureApp) {
+    if (!ov101_021EED44(configureApp)) {
+        return FALSE;
+    }
+    if (configureApp->unk_0C->isSwitchApp) {
+        return 7;
+    } else {
+        return 5;
+    }
+}
+
+int ov101_021EEA70(PokegearConfigureAppData *configureApp) {
+    int input;
+
+    input = ov101_021EF7D4(configureApp);
+    if (input == -1) {
+        PokegearApp_HandleInputModeChangeToButtons(configureApp->unk_0C);
+        if (configureApp->unk_0C->cursorInAppSwitchZone == TRUE) {
+            input = PokegearApp_HandleKeyInput_SwitchApps(configureApp->unk_0C);
+        } else {
+            input = ov101_021EF6E4(configureApp);
+        }
+    }
+    switch (input) {
+    case -1:
+        break;
+    case 4:
+        configureApp->unk_0C->appReturnCode = input;
+        return 6;
+    case 8:
+        return 3;
+    default:
+        configureApp->unk_0C->appReturnCode = input;
+        return 8;
+    }
+
+    return 1;
+}
+
+int ov101_021EEAC4(PokegearConfigureAppData *configureApp) {
+    if (ov101_021EED98(configureApp)) {
+        return 9;
+    }
+
+    return 2;
+}
+
+int ov101_021EEAD8(PokegearConfigureAppData *configureApp) {
+    return ov101_021EEDC4(configureApp);
+}
+
+int ov101_021EEAE0(PokegearConfigureAppData *configureApp) {
+    if (ov101_021EEE80(configureApp)) {
+        return 1;
+    }
+
+    return 4;
+}
+
+int ov101_021EEAF4(PokegearConfigureAppData *configureApp) {
+    switch (configureApp->unk_04) {
+    case 0:
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, configureApp->unk_00);
+        for (int i = 0; i < 8; ++i) {
+            ToggleBgLayer(i, TRUE);
+        }
+        PaletteData_SetAutoTransparent(configureApp->unk_0C->plttData, TRUE);
+        PaletteData_BlendPalette(configureApp->unk_0C->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, RGB_BLACK);
+        PaletteData_BlendPalette(configureApp->unk_0C->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, RGB_BLACK);
+        PaletteData_PushTransparentBuffers(configureApp->unk_0C->plttData);
+        PaletteData_SetAutoTransparent(configureApp->unk_0C->plttData, FALSE);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
+        ++configureApp->unk_04;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished()) {
+            configureApp->unk_04 = 0;
+            return 1;
+        }
+        break;
+    }
+
+    return 5;
+}
+
+int ov101_021EEBA4(PokegearConfigureAppData *configureApp) {
+    switch (configureApp->unk_04) {
+    case 0:
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, configureApp->unk_00);
+        ++configureApp->unk_04;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished()) {
+            for (int i = 0; i < 8; ++i) {
+                ToggleBgLayer(i, FALSE);
+            }
+            configureApp->unk_04 = 0;
+            return 2;
+        }
+        break;
+    }
+
+    return 6;
+}
+
+int ov101_021EEC04(PokegearConfigureAppData *configureApp) {
+    switch (configureApp->unk_04) {
+    case 0:
+        PaletteData_SetAutoTransparent(configureApp->unk_0C->plttData, TRUE);
+        SetBlendBrightness(0, (GXBlendPlaneMask)(GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3), SCREEN_MASK_MAIN);
+        for (int i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
+            ToggleBgLayer(i + GF_BG_LYR_SUB_1, TRUE);
+        }
+        configureApp->unk_0C->fadeCounter = 0;
+        ++configureApp->unk_04;
+        break;
+    case 1:
+        if (Pokegear_RunFadeLayers123(configureApp->unk_0C, 0)) {
+            ++configureApp->unk_04;
+        }
+        break;
+    case 2:
+        PaletteData_SetAutoTransparent(configureApp->unk_0C->plttData, FALSE);
+        configureApp->unk_0C->fadeCounter = 0;
+        configureApp->unk_04 = 0;
+        return 1;
+    }
+
+    return 7;
+}
+
+int ov101_021EEC8C(PokegearConfigureAppData *configureApp) {
+    switch (configureApp->unk_04) {
+    case 0:
+        PaletteData_SetAutoTransparent(configureApp->unk_0C->plttData, TRUE);
+        configureApp->unk_0C->fadeCounter = 0;
+        ++configureApp->unk_04;
+        break;
+    case 1:
+        if (Pokegear_RunFadeLayers123(configureApp->unk_0C, 1)) {
+            ++configureApp->unk_04;
+        }
+        break;
+    case 2:
+        PaletteData_BlendPalette(configureApp->unk_0C->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
+        PaletteData_BlendPalette(configureApp->unk_0C->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, RGB_BLACK);
+        PaletteData_PushTransparentBuffers(configureApp->unk_0C->plttData);
+        for (int i = 0; i < 3; ++i) {
+            ToggleBgLayer(i + GF_BG_LYR_MAIN_1, FALSE);
+            ToggleBgLayer(i + GF_BG_LYR_SUB_1, FALSE);
+        }
+        PaletteData_SetAutoTransparent(configureApp->unk_0C->plttData, FALSE);
+        configureApp->unk_0C->fadeCounter = 0;
+        configureApp->unk_04 = 0;
+        return 2;
+    }
+
+    return 8;
 }
