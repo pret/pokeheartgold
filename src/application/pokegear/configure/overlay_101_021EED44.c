@@ -1,5 +1,6 @@
 #include "application/pokegear/configure/pokegear_configure_internal.h"
 
+#include "font.h"
 #include "unk_0200FA24.h"
 
 void ov101_021EEE14(PokegearConfigureAppData *configureApp);
@@ -108,4 +109,53 @@ BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp) {
 
     ++configureApp->substate;
     return FALSE;
+}
+
+void ov101_021EEF0C(PokegearConfigureAppData *configureApp) {
+    int i;
+    GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
+
+    {
+        extern const BgTemplate ov101_021F8254[6];
+        BgTemplate bgTemplates[6];
+        ARRAY_ASSIGN(bgTemplates, ov101_021F8254);
+
+        InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplates[0], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplates[1], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, &bgTemplates[2], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, &bgTemplates[3], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, &bgTemplates[4], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &bgTemplates[5], GF_BG_TYPE_TEXT, FALSE);
+    }
+
+    for (i = 0; i < 3; ++i) {
+        BgClearTilemapBufferAndCommit(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1 + i);
+        BG_ClearCharDataRange(GF_BG_LYR_MAIN_1 + i, 0x20, 0, configureApp->heapId);
+        BgClearTilemapBufferAndCommit(configureApp->pokegear->bgConfig, GF_BG_LYR_SUB_1 + i);
+        BG_ClearCharDataRange(GF_BG_LYR_SUB_1 + i, 0x20, 0, configureApp->heapId);
+    }
+}
+
+void ov101_021EEFDC(PokegearConfigureAppData *configureApp) {
+    Pokegear_ClearAppBgLayers(configureApp->pokegear);
+}
+
+void ov101_021EEFE8(PokegearConfigureAppData *configureApp) {
+    FontID_Alloc(4, configureApp->heapId);
+    ov101_021EF1D8(configureApp);
+}
+
+void ov101_021EEFFC(PokegearConfigureAppData *configureApp) {
+    ov101_021EF260(configureApp);
+    FontID_Release(4);
+}
+
+void ov101_021EF00C(PokegearConfigureAppData *configureApp) {
+    PokegearApp_CreateSpriteManager(configureApp->pokegear, GEAR_APP_CONFIGURE);
+    configureApp->unk_38 = TouchscreenListMenuSpawner_Create(configureApp->heapId, configureApp->pokegear->plttData);
+}
+
+void ov101_021EF028(PokegearConfigureAppData *configureApp) {
+    TouchscreenListMenuSpawner_Destroy(configureApp->unk_38);
+    PokegearApp_DestroySpriteManager(configureApp->pokegear);
 }
