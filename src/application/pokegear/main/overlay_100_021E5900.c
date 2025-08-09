@@ -266,7 +266,7 @@ BOOL PokegearApp_GraphicsDeinit(PokegearAppData *pokegearApp) {
     return TRUE;
 }
 
-void PokegearApp_LoadSkinGraphocs(PokegearAppData *pokegearApp, int skin) {
+void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, int skin) {
     NARC *narc = NARC_New(NARC_application_pokegear_pgear_gra, pokegearApp->heapId);
     BgConfig_LoadAssetFromOpenNarc(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000048_NCGR, GF_BG_LYR_MAIN_0, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(pokegearApp->bgConfig, pokegearApp->heapId, narc, NARC_application_pokegear_pgear_gra, skin + NARC_pgear_gra_pgear_gra_00000036_NCGR, GF_BG_LYR_SUB_0, GF_BG_GFX_TYPE_CHAR, 0, 0);
@@ -378,7 +378,7 @@ static void PokegearApp_InitPaletteData(PokegearAppData *pokegearApp) {
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG, 0x200, pokegearApp->heapId);
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ, 0x200, pokegearApp->heapId);
     pokegearApp->unk_0C4 = AllocFromHeap(pokegearApp->heapId, GetNarcMemberSizeByIdPair(NARC_application_pokegear_pgear_gra, NARC_pgear_gra_pgear_gra_00000054_NSCR));
-    PokegearApp_LoadSkinGraphocs(pokegearApp, pokegearApp->backgroundStyle);
+    PokegearApp_LoadSkinGraphics(pokegearApp, pokegearApp->backgroundStyle);
     NARC_Delete(narc); // was never actually used
 }
 

@@ -3,16 +3,24 @@
 
 #include "application/pokegear/pokegear_internal.h"
 
+#include "touchscreen_list_menu.h"
+
 typedef struct PokegearConfigureAppData {
-    HeapID unk_00;
-    int unk_04;
-    int unk_08;
-    PokegearAppData *unk_0C;
-    u8 filler_10[2];
-    u16 unk_12_00 : 9;
-    u16 unk_12_09 : 7;
-    u8 filler_14[0x38];
-} PokegearConfigureAppData; // size: 0x4C
+    HeapID heapId;                      // 0x00
+    int state;                          // 0x04
+    int unk_08;                         // 0x08
+    PokegearAppData *pokegear;          // 0x0C
+    u8 unk_10;                          // 0x10
+    u8 unk_11;                          // 0x11
+    u16 unk_12_00 : 9;                  // 0x12
+    u16 backgroundStyle : 7;            // 0x12
+    Sprite *unk_14[9];                  // 0x14
+    TouchscreenListMenuSpawner *unk_38; // 0x38
+    LISTMENUITEM *unk_3C;               // 0x3C
+    TouchscreenListMenu *unk_40;        // 0x40
+    void *unk_44;                       // 0x44
+    NNSG2dScreenData *unk_48;           // 0x48
+} PokegearConfigureAppData;             // size: 0x4C
 
 BOOL ov101_021EED44(PokegearConfigureAppData *configureApp);
 BOOL ov101_021EED98(PokegearConfigureAppData *configureApp);

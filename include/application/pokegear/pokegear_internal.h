@@ -198,7 +198,7 @@ BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
 u8 PokegearApp_AppIDtoButtonIndex(PokegearAppData *pokegearApp);
 BOOL PokegearApp_GraphicsInit(PokegearAppData *pokegearApp);
 BOOL PokegearApp_GraphicsDeinit(PokegearAppData *pokegearApp);
-void PokegearApp_LoadSkinGraphocs(PokegearAppData *pokegearApp, int skin);
+void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, int skin);
 void PokegearApp_SetGraphicsBanks(void);
 
 void PokegearApp_VBlankCB(void *cb_args);

@@ -15,8 +15,6 @@
 
 	.text
 
-	// file boundary
-
 	thumb_func_start ov101_021EED44
 ov101_021EED44: ; 0x021EED44
 	push {r4, lr}
@@ -142,7 +140,7 @@ ov101_021EEE14: ; 0x021EEE14
 	lsr r1, r1, #0x19
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl PokegearApp_LoadSkinGraphocs
+	bl PokegearApp_LoadSkinGraphics
 	ldrh r1, [r4, #0x12]
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #0x10

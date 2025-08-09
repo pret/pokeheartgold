@@ -304,7 +304,7 @@
 .public Pokegear_ClearAppBgLayers
 .public Pokegear_RunFadeLayers123
 .public PokegearApp_AppIDtoButtonIndex
-.public PokegearApp_LoadSkinGraphocs
+.public PokegearApp_LoadSkinGraphics
 .public PokegearApp_SetGraphicsBanks
 .public PokegearApp_VBlankCB
 .public PokegearApp_CreateSpriteSystem
