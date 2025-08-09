@@ -8,7 +8,7 @@
 typedef struct PokegearConfigureAppData {
     HeapID heapId;                      // 0x00
     int state;                          // 0x04
-    int unk_08;                         // 0x08
+    int substate;                       // 0x08
     PokegearAppData *pokegear;          // 0x0C
     u8 unk_10;                          // 0x10
     u8 unk_11;                          // 0x11
@@ -26,7 +26,9 @@ BOOL ov101_021EED44(PokegearConfigureAppData *configureApp);
 BOOL ov101_021EED98(PokegearConfigureAppData *configureApp);
 int ov101_021EEDC4(PokegearConfigureAppData *configureApp);
 BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp);
+
 void ov101_021EF4B0(void *appData);
+void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2);
 int ov101_021EF6E4(PokegearConfigureAppData *configureApp);
 int ov101_021EF7D4(PokegearConfigureAppData *configureApp);
 

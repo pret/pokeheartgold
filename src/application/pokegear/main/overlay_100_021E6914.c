@@ -13,7 +13,6 @@ typedef struct PokegearObjResSpec {
     const u16 *resIdList;
 } PokegearObjResSpec;
 
-void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1);
 void ov100_021E6C4C(PokegearApp_UnkSub094 *a0, u16 a1);
 void ov100_021E6CF4(PokegearApp_UnkSub094 *a0);
 void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1);
@@ -152,7 +151,7 @@ void ov100_021E6A3C(PokegearApp_UnkSub094 *a0) {
     Heap_Free(a0);
 }
 
-void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1) {
+void ov100_021E6A58(PokegearApp_UnkSub094 *a0, u8 a1) {
     SpriteResource *obj;
 
     obj = a0->spriteResources[GF_GFX_RES_TYPE_CHAR]->obj[0];

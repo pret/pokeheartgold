@@ -198,7 +198,7 @@ BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
 u8 PokegearApp_AppIDtoButtonIndex(PokegearAppData *pokegearApp);
 BOOL PokegearApp_GraphicsInit(PokegearAppData *pokegearApp);
 BOOL PokegearApp_GraphicsDeinit(PokegearAppData *pokegearApp);
-void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, int skin);
+void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, u8 skin);
 void PokegearApp_SetGraphicsBanks(void);
 
 void PokegearApp_VBlankCB(void *cb_args);
@@ -211,6 +211,7 @@ void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
 PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);
+void ov100_021E6A58(PokegearApp_UnkSub094 *a0, u8 a1);
 void ov100_021E6AB0(PokegearApp_UnkSub094 *a0);
 ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(ManagedSprite *a0);

@@ -1,0 +1,111 @@
+#include "application/pokegear/configure/pokegear_configure_internal.h"
+
+#include "unk_0200FA24.h"
+
+void ov101_021EEE14(PokegearConfigureAppData *configureApp);
+BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp);
+void ov101_021EEF0C(PokegearConfigureAppData *configureApp);
+void ov101_021EEFDC(PokegearConfigureAppData *configureApp);
+void ov101_021EEFE8(PokegearConfigureAppData *configureApp);
+void ov101_021EEFFC(PokegearConfigureAppData *configureApp);
+void ov101_021EF00C(PokegearConfigureAppData *configureApp);
+void ov101_021EF028(PokegearConfigureAppData *configureApp);
+void ov101_021EF03C(PokegearConfigureAppData *configureApp);
+void ov101_021EF0C8(PokegearConfigureAppData *configureApp);
+void ov101_021EF0E0(PokegearConfigureAppData *configureApp);
+void ov101_021EF120(PokegearConfigureAppData *configureApp);
+void ov101_021EF130(PokegearConfigureAppData *configureApp);
+void ov101_021EF16C(PokegearConfigureAppData *configureApp);
+void ov101_021EF17C(PokegearConfigureAppData *configureApp);
+void ov101_021EF1D8(PokegearConfigureAppData *configureApp);
+void ov101_021EF260(PokegearConfigureAppData *configureApp);
+void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1);
+void ov101_021EF384(PokegearConfigureAppData *configureApp, u32 backgroundStyle);
+void ov101_021EF414(PokegearConfigureAppData *configureApp);
+
+BOOL ov101_021EED44(PokegearConfigureAppData *configureApp) {
+    switch (configureApp->substate) {
+    case 0:
+        ov101_021EEF0C(configureApp);
+        ov101_021EEFE8(configureApp);
+        ov101_021EF00C(configureApp);
+        ov101_021EF26C(configureApp, 1);
+        break;
+    case 1:
+        ov101_021EF03C(configureApp);
+        ov101_021EF0E0(configureApp);
+        ov101_021EF130(configureApp);
+        ov101_021EF17C(configureApp);
+        configureApp->substate = 0;
+        return TRUE;
+    }
+    ++configureApp->substate;
+    return FALSE;
+}
+
+BOOL ov101_021EED98(PokegearConfigureAppData *configureApp) {
+    ov101_021EF16C(configureApp);
+    ov101_021EF120(configureApp);
+    ov101_021EF0C8(configureApp);
+    ov101_021EF028(configureApp);
+    ov101_021EEFFC(configureApp);
+    ov101_021EEFDC(configureApp);
+    return TRUE;
+}
+
+int ov101_021EEDC4(PokegearConfigureAppData *configureApp) {
+    int input;
+
+    input = TouchscreenListMenu_HandleInput(configureApp->unk_40);
+    if (input != LIST_NOTHING_CHOSEN) {
+        configureApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(configureApp->unk_40);
+        TouchscreenListMenu_Destroy(configureApp->unk_40);
+        ov101_021EF5A4(configureApp, 0, 0);
+        PokegearAppSwitch_SetCursorSpritesAnimateFlag(configureApp->pokegear->appSwitch, 0xFFFF, TRUE);
+        if (input == 0) {
+            return 4;
+        } else {
+            return 1;
+        }
+    }
+
+    return 3;
+}
+
+void ov101_021EEE14(PokegearConfigureAppData *configureApp) {
+    ov101_021EF260(configureApp);
+    configureApp->backgroundStyle = configureApp->unk_11;
+    configureApp->pokegear->backgroundStyle = configureApp->backgroundStyle;
+    PokegearApp_LoadSkinGraphics(configureApp->pokegear, configureApp->backgroundStyle);
+    ov100_021E6A58(configureApp->pokegear->unk_094, configureApp->backgroundStyle);
+    ov101_021EF1D8(configureApp);
+    ov101_021EF26C(configureApp, 0);
+    ov101_021EF414(configureApp);
+    ov101_021EF384(configureApp, configureApp->backgroundStyle);
+}
+
+BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp) {
+    switch (configureApp->substate) {
+    case 0:
+        BeginNormalPaletteFade(1, 4, 4, RGB_BLACK, 6, 1, configureApp->heapId);
+        break;
+    case 1:
+        if (!IsPaletteFadeFinished()) {
+            return FALSE;
+        }
+        ov101_021EEE14(configureApp);
+        break;
+    case 2:
+        BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, configureApp->heapId);
+        break;
+    case 3:
+        if (!IsPaletteFadeFinished()) {
+            return FALSE;
+        }
+        configureApp->substate = 0;
+        return TRUE;
+    }
+
+    ++configureApp->substate;
+    return FALSE;
+}
