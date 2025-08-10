@@ -56,7 +56,7 @@ _02265E82:
 	ldr r0, [sp, #0x24]
 	ldr r1, [sp, #0x20]
 	add r2, r4, #0
-	bl SpriteRenderer_LoadCharResObjFromOpenNarc
+	bl SpriteSystem_LoadCharResObjFromOpenNarc
 	ldr r0, [r5, #4]
 	bl BattleSystem_GetPaletteData
 	str r4, [sp]
@@ -79,7 +79,7 @@ _02265E82:
 	ldr r1, _02265F30 ; =0x00004E29
 	str r1, [sp, #0x14]
 	mov r1, #2
-	bl sub_0200D68C
+	bl SpriteSystem_LoadPaletteBufferFromOpenNarc
 	ldr r0, [r5, #4]
 	bl BattleSystem_GetPaletteData
 	mov r1, #0
@@ -105,7 +105,7 @@ _02265E82:
 	ldr r3, [sp, #0x1c]
 	add r2, r4, #0
 	str r6, [sp, #4]
-	bl SpriteRenderer_LoadCellResObjFromOpenNarc
+	bl SpriteSystem_LoadCellResObjFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #0x24]
@@ -113,7 +113,7 @@ _02265E82:
 	ldr r3, [sp, #0x18]
 	add r2, r4, #0
 	str r6, [sp, #4]
-	bl SpriteRenderer_LoadAnimResObjFromOpenNarc
+	bl SpriteSystem_LoadAnimResObjFromOpenNarc
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x28
@@ -143,10 +143,10 @@ ov12_02265F34: ; 0x02265F34
 	ldr r5, _02265F64 ; =ov12_0226E100
 	mul r2, r3
 	add r2, r5, r2
-	bl SpriteRenderer_LoadResourcesAndCreateSprite
+	bl SpriteSystem_NewSprite
 	str r0, [r4]
 	ldr r0, [r0]
-	bl TickSpriteAnimation1Frame
+	bl Sprite_TickFrame
 	pop {r3, r4, r5, pc}
 	nop
 _02265F64: .word ov12_0226E100
@@ -159,7 +159,7 @@ ov12_02265F68: ; 0x02265F68
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _02265F7A
-	bl UnkImageStruct_Delete
+	bl Sprite_DeleteAndFreeResources
 	mov r0, #0
 	str r0, [r4]
 _02265F7A:
@@ -184,16 +184,16 @@ _02265F94:
 	add r5, r1, #0
 	add r0, r4, #0
 	sub r5, #8
-	bl SpriteGfxHandler_UnloadCharObjById
+	bl SpriteManager_UnloadCharObjById
 	ldr r1, _02265FC0 ; =0x00004E29
 	add r0, r4, #0
-	bl SpriteGfxHandler_UnloadPlttObjById
+	bl SpriteManager_UnloadPlttObjById
 	add r0, r4, #0
 	add r1, r5, #0
-	bl SpriteGfxHandler_UnloadCellObjById
+	bl SpriteManager_UnloadCellObjById
 	add r0, r4, #0
 	add r1, r5, #0
-	bl SpriteGfxHandler_UnloadAnimObjById
+	bl SpriteManager_UnloadAnimObjById
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02265FB8: .word 0x00004E2D
@@ -207,7 +207,7 @@ ov12_02265FC4: ; 0x02265FC4
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02265FD0
-	bl UnkImageStruct_SetSpriteVisibleFlag
+	bl ManagedSprite_SetDrawFlag
 _02265FD0:
 	pop {r3, pc}
 	.balign 4, 0

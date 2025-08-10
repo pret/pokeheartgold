@@ -114,11 +114,11 @@ _020679F0:
 	b _02067A16
 _020679FE:
 	ldr r0, [r4, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	mov r0, #1
 	pop {r4, r5, r6, pc}

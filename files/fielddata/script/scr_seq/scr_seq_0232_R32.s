@@ -168,7 +168,7 @@ scr_seq_R32_001:
 	check_badge BADGE_ZEPHYR, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _028C
-	goto_if_unset FLAG_UNK_070, _0297
+	goto_if_unset FLAG_GOT_EGG_FROM_ELMS_ASSISTANT, _0297
 	goto_if_unset FLAG_UNK_074, _02A5
 	npc_msg msg_0380_R32_00007
 _0284:
@@ -237,7 +237,7 @@ scr_seq_R32_002:
 	wait_movement
 	npc_msg msg_0380_R32_00000
 	closemsg
-	goto_if_set FLAG_UNK_070, _03F0
+	goto_if_set FLAG_GOT_EGG_FROM_ELMS_ASSISTANT, _03F0
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 56

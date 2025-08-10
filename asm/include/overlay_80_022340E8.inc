@@ -7,11 +7,11 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GetPlttDataFromOpenNarc
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public GfGfx_EngineATogglePlanes
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public GF_AssertFail
 .public sub_02030E7C

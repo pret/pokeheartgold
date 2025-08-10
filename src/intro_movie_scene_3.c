@@ -467,18 +467,18 @@ static void IntroMovie_Scene3_Exit(IntroMovieOverlayData *data, IntroMovieScene3
         for (i = 0; i < 3; ++i) {
             for (j = 0; j < 2; ++j) {
                 NNS_G3dFreeAnmObj(&sceneData->allocator, sceneData->mapRender[i].animObjs[j]);
-                FreeToHeap(sceneData->mapRender[i].rawData[j]);
+                Heap_Free(sceneData->mapRender[i].rawData[j]);
             }
-            FreeToHeap(sceneData->mapRender[i].resFileHeader);
+            Heap_Free(sceneData->mapRender[i].resFileHeader);
         }
         GF_3DVramMan_Delete(sceneData->gf3dVramMan);
         for (i = 0; i < 4; ++i) {
-            FreeToHeap(sceneData->rivalGraphicSectionsRawData[i]);
+            Heap_Free(sceneData->rivalGraphicSectionsRawData[i]);
         }
         for (i = 0; i < 3; ++i) {
-            FreeToHeap(sceneData->beastGraphicRawData[i]);
+            Heap_Free(sceneData->beastGraphicRawData[i]);
         }
-        FreeToHeap(sceneData->rivalGraphicWholeRawData);
+        Heap_Free(sceneData->rivalGraphicWholeRawData);
         IntroMovie_Scene3_UnloadOBJGraphics(data, sceneData);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_0);
         FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_1);
@@ -608,7 +608,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
     template.position.y = 608 * FX32_ONE;
     sceneData->silverSilhouetteSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->silverSilhouetteSprite, FALSE);
-    Sprite_SetVisibleFlag(sceneData->silverSilhouetteSprite, FALSE);
+    Sprite_SetDrawFlag(sceneData->silverSilhouetteSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->silverSilhouetteSprite, 0);
 
     IntroMovie_BuildSpriteResourcesHeaderAndTemplate(3, data, 0, NNS_G2D_VRAM_TYPE_2DSUB, &template, &header);
@@ -616,7 +616,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
     template.position.y = 608 * FX32_ONE;
     sceneData->eusineSprite = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(sceneData->eusineSprite, FALSE);
-    Sprite_SetVisibleFlag(sceneData->eusineSprite, FALSE);
+    Sprite_SetDrawFlag(sceneData->eusineSprite, FALSE);
     Sprite_SetAnimCtrlSeq(sceneData->eusineSprite, 0);
 
     for (int i = 0; i < 3; ++i) {
@@ -625,7 +625,7 @@ static void IntroMovie_Scene3_CreateSprites(IntroMovieOverlayData *data, IntroMo
         template.position.y = unownSpriteYcoords[i] * FX32_ONE;
         sceneData->unownSprites[i] = Sprite_CreateAffine(&template);
         Sprite_SetAnimActiveFlag(sceneData->unownSprites[i], FALSE);
-        Sprite_SetVisibleFlag(sceneData->unownSprites[i], FALSE);
+        Sprite_SetDrawFlag(sceneData->unownSprites[i], FALSE);
         Sprite_SetAnimCtrlSeq(sceneData->unownSprites[i], unownSpriteAnimSeqNos[i]);
     }
 }

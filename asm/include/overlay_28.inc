@@ -31,7 +31,7 @@
 .public MenuInputStateMgr_SetState
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BG_ClearCharDataRange
@@ -55,7 +55,7 @@
 .public Sprite_Delete
 .public Sprite_SetMatrix
 .public Sprite_SetRotationAndAffineType
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_GetAnimationNumber
 .public Sprite_SetPalIndexRespectVramOffset

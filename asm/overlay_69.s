@@ -907,7 +907,7 @@ GeonetGlobe_Exit: ; 0x021E6080
 	bl GF3dRender_DeleteSimpleManager
 	ldr r0, _021E60F0 ; =0x0000C010
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -1025,7 +1025,7 @@ _021E61A2:
 	blt _021E617A
 _021E61AA:
 	ldr r0, [sp, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r7, #1
 	bl LocationGmmDatCountGet
 	str r0, [sp, #0x10]
@@ -1083,7 +1083,7 @@ _021E61F0:
 	blt _021E61F0
 _021E6224:
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	add r7, r7, #1
 	cmp r7, r0
@@ -2684,19 +2684,19 @@ ov69_021E6F48: ; 0x021E6F48
 	add r4, r0, #0
 	ldr r0, _021E6F78 ; =0x0000C2A0
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E6F7C ; =0x0000C29C
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E6F80 ; =0x0000C2A8
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E6F84 ; =0x0000C2A4
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E6F88 ; =0x0000C0DC
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	nop
 _021E6F78: .word 0x0000C2A0

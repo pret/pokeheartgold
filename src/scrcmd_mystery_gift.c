@@ -292,7 +292,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         CopyPokemonToPokemon(pokemon, tmpPokemon);
         SetMonData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
         SetMonData(tmpPokemon, MON_DATA_OTID, &trainerId);
-        SetMonData(tmpPokemon, MON_DATA_MET_GENDER, &gender);
+        SetMonData(tmpPokemon, MON_DATA_OT_GENDER, &gender);
         pokemon = tmpPokemon;
         String_Delete(playerName);
     }
@@ -306,7 +306,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         UpdatePokedexWithReceivedSpecies(fieldSys->saveData, pokemon);
     }
     if (tmpPokemon != NULL) {
-        FreeToHeap(tmpPokemon);
+        Heap_Free(tmpPokemon);
     }
 }
 

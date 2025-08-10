@@ -54,7 +54,7 @@ void ov06_0221BAD8(SPLEmitter *param_1) {
 
     pvVar1 = sub_020154D0(param_1);
     sub_02014EBC(param_1);
-    FreeToHeap(pvVar1);
+    Heap_Free(pvVar1);
 }
 
 void ov06_0221BAF0(void) {

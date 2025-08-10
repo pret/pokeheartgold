@@ -62,10 +62,7 @@ _00C3:
 	end
 
 scr_seq_T30_007:
-	setvar VAR_SPECIAL_x8004, 1
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 3
-	callstd std_phone_call
+	phone_call PHONE_CONTACT_PROF__ELM, 2, 3
 	setvar VAR_UNK_407B, 2
 	end
 

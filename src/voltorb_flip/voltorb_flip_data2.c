@@ -5,7 +5,7 @@
 
 #include "bg_window.h"
 #include "gf_gfx_planes.h"
-#include "unk_0200CF18.h"
+#include "sprite_system.h"
 
 const u16 ov122_021E92A0[] = {
     0x00A0,
@@ -69,7 +69,7 @@ const Ov122_021E6C2C ov122_021E9344[4] = {
     { 0x02, 0x02, 0x24 },
 };
 
-const UnkTemplate_0200D748 ov122_021E93A8 = {
+const ManagedSpriteTemplate ov122_021E93A8 = {
     0, 0, 0, 0, 0, 0xFFFF, NNS_G2D_VRAM_TYPE_2DSUB, {
                                                      1,
                                                      1,
@@ -82,7 +82,7 @@ const UnkTemplate_0200D748 ov122_021E93A8 = {
     0
 };
 
-const UnkTemplate_0200D748 ov122_021E9374 = {
+const ManagedSpriteTemplate ov122_021E9374 = {
     0, 0, 0, 0, 0, 0xFFFF, NNS_G2D_VRAM_TYPE_2DMAIN, {
                                                       0,
                                                       0,

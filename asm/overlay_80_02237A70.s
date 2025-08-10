@@ -246,7 +246,7 @@ _02237C04:
 	blt _02237C04
 _02237C2A:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl BattleSetup_SetAllySideBattlersToPlayer
 	ldrb r1, [r5, #0x11]
@@ -257,7 +257,7 @@ _02237C2A:
 	ldrh r1, [r1, #0x30]
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r2, [sp, #0xc]
@@ -304,7 +304,7 @@ _02237C90:
 	blt _02237C90
 _02237CB0:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldrb r0, [r5, #0x10]
 	cmp r0, #2
 	beq _02237CC0
@@ -330,7 +330,7 @@ _02237CC0:
 	ldrh r1, [r1, #0x30]
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	str r0, [sp]
 	ldr r2, [sp, #0xc]
@@ -372,7 +372,7 @@ _02237D28:
 	blt _02237D28
 _02237D4E:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02237D54:
 	add r0, r4, #0
 	add sp, #0x48
@@ -550,7 +550,7 @@ _02237E5A:
 	blt _02237E5A
 _02237E7E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02237E30

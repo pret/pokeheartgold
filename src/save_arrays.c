@@ -263,8 +263,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
      SAVE_POKEGEAR,
      0,
-     (SAVESIZEFN)SaveData_GSPlayerMisc_sizeof,
-     (SAVEINITFN)SaveData_GSPlayerMisc_Init,
+     (SAVESIZEFN)SaveData_Pokegear_sizeof,
+     (SAVEINITFN)SaveData_Pokegear_Init,
      },
     {
      SAVE_SAFARI_ZONE,

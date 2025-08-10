@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_CreateNewVramTransferTask
 .public sub_02020838
 .public sub_02020888

@@ -278,7 +278,7 @@ static BOOL sub_0204F228(TaskManager *taskManager) {
         }
         break;
     case 2:
-        FreeToHeap(r4);
+        Heap_Free(r4);
         return TRUE;
     }
     return FALSE;
@@ -310,7 +310,7 @@ static BOOL sub_0204F2B8(TaskManager *taskManager) {
         r4->state = sub_0204F4D8(r4, fieldSystem);
         break;
     case 4:
-        FreeToHeap(r4);
+        Heap_Free(r4);
         return TRUE;
     }
     return FALSE;
@@ -356,7 +356,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     default:
         MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedMons, 2);
         a0->partySlot = partyMenu->partySlot;
-        FreeToHeap(partyMenu);
+        Heap_Free(partyMenu);
         *(a0->unk08) = NULL;
         return 2;
     }
@@ -390,7 +390,7 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     }
     PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk08);
     a0->partySlot = pokemonSummaryArgs->partySlot;
-    FreeToHeap(pokemonSummaryArgs);
+    Heap_Free(pokemonSummaryArgs);
     *(a0->unk08) = NULL;
     return 0;
 }
@@ -421,7 +421,7 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
         }
     }
     if (unk0 != NULL) {
-        FreeToHeap(unk0);
+        Heap_Free(unk0);
     }
     BufferIntegerAsString(*messageFormat, strIdxWinStreak, winStreak, CountDigits(winStreak), PRINTING_MODE_RIGHT_ALIGN, TRUE);
     u16 bp = 0;
@@ -483,7 +483,7 @@ BOOL ScrCmd_BattleHallCountUsedSpecies(ScriptContext *ctx) {
         }
     }
     if (unk1 != NULL) {
-        FreeToHeap(unk1);
+        Heap_Free(unk1);
     }
     *result = numSpecies;
     return FALSE;
@@ -507,7 +507,7 @@ BOOL ScrCmd_BattleHallGetTotalStreak(ScriptContext *ctx) {
         }
     }
     if (unk1 != NULL) {
-        FreeToHeap(unk1);
+        Heap_Free(unk1);
     }
     if (winStreak > BATTLE_HALL_MAX_WIN_STREAK) {
         winStreak = BATTLE_HALL_MAX_WIN_STREAK;

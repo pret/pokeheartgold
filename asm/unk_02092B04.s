@@ -66,7 +66,7 @@ _02092B52:
 	strh r0, [r1, #2]
 _02092B6A:
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl FieldSystem_LoadFieldOverlay
 	mov r0, #0x19

@@ -54,9 +54,9 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_TickAnimCtrlFrame
+.public Sprite_UpdateAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_Delete
 .public GXS_SetGraphicsMode

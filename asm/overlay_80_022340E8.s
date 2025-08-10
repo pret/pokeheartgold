@@ -470,7 +470,7 @@ _022344A6:
 	cmp r7, #4
 	blt _022344A6
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -524,19 +524,19 @@ BattleArcadeData_Free: ; 0x02234520
 	ldr r0, [r4, #0x70]
 	cmp r0, #0
 	beq _02234530
-	bl FreeToHeap
+	bl Heap_Free
 _02234530:
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _0223453A
-	bl FreeToHeap
+	bl Heap_Free
 _0223453A:
 	ldr r2, _0223454C ; =0x00000A88
 	add r0, r4, #0
 	mov r1, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0223454A:
 	pop {r4, pc}
 	.balign 4, 0
@@ -828,7 +828,7 @@ ov80_02234774: ; 0x02234774
 	mov r2, #0xb
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #0
 	ldrh r0, [r0, #4]
 	lsl r0, r0, #0x18
@@ -1152,7 +1152,7 @@ ov80_02234968: ; 0x02234968
 	bl GX_LoadBGExtPltt
 	bl GX_EndLoadBGExtPltt
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #4
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -1358,7 +1358,7 @@ ov80_02234B7C: ; 0x02234B7C
 	ldr r0, [r0, #0x30]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r4, r5, r6, pc}
 _02234BA4:
 	lsl r0, r4, #2
@@ -1366,7 +1366,7 @@ _02234BA4:
 	ldr r0, [r0, #0x30]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02234BB2:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov80_02234B7C
@@ -1389,7 +1389,7 @@ ov80_02234BB4: ; 0x02234BB4
 	ldr r0, [r0, #0x40]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r4, r5, r6, pc}
 _02234BDC:
 	lsl r0, r4, #2
@@ -1397,7 +1397,7 @@ _02234BDC:
 	ldr r0, [r0, #0x40]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02234BEA:
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov80_02234BB4
@@ -1446,7 +1446,7 @@ _02234C1A:
 	ldr r0, [r5, #0x50]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02234C4C:
 	ldr r0, [sp, #8]
 	add r6, r6, #1
@@ -1483,7 +1483,7 @@ _02234C66:
 	ldr r0, [r5, #0x60]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02234C98:
 	ldr r0, [sp, #4]
 	add r6, r6, #1
@@ -1579,7 +1579,7 @@ ov80_02234D04: ; 0x02234D04
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234D52:
 	lsl r0, r4, #2
@@ -1587,7 +1587,7 @@ _02234D52:
 	ldr r0, [r0, #0x50]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234D62:
 	lsl r0, r4, #2
@@ -1595,7 +1595,7 @@ _02234D62:
 	ldr r0, [r0, #0x50]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234D72:
 	cmp r4, r0
@@ -1617,7 +1617,7 @@ _02234D72:
 	ldr r0, [r0, #0x60]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234DA2:
 	lsl r0, r4, #2
@@ -1625,7 +1625,7 @@ _02234DA2:
 	ldr r0, [r0, #0x60]
 	mov r1, #1
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	pop {r3, r4, r5, r6, r7, pc}
 _02234DB2:
 	lsl r0, r4, #2
@@ -1633,7 +1633,7 @@ _02234DB2:
 	ldr r0, [r0, #0x60]
 	mov r1, #0
 	ldr r0, [r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02234DC0:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1696,9 +1696,9 @@ _02234DDC:
 	ldr r0, [sp, #4]
 	bl NARC_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov80_02234DC4

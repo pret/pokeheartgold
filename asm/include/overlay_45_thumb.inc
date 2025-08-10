@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public FontID_String_AllCharsValid
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetPlayerVolume
 .public PlayBGM
 .public GF_SndStartFadeOutBGM
@@ -46,7 +46,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_BindModelSet
 .public sub_0201FA34
 .public MTRandom

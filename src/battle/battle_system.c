@@ -107,11 +107,11 @@ u32 *ov12_0223A8DC(BattleSystem *bsys) {
     return bsys->unk8C;
 }
 
-SpriteRenderer *BattleSystem_GetSpriteRenderer(BattleSystem *bsys) {
+SpriteSystem *BattleSystem_GetSpriteRenderer(BattleSystem *bsys) {
     return bsys->spriteRenderer;
 }
 
-SpriteGfxHandler *BattleSystem_GetGfxHandler(BattleSystem *bsys) {
+SpriteManager *BattleSystem_GetGfxHandler(BattleSystem *bsys) {
     return bsys->gfxHandler;
 }
 
@@ -1214,7 +1214,7 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
     }
 
     ov12_0226AA8C(bsys->unk19C, flag);
-    BeginNormalPaletteFade(3, 0, 0, 0, 16, 2, HEAP_ID_BATTLE);
+    BeginNormalPaletteFade(3, 0, 0, RGB_BLACK, 16, 2, HEAP_ID_BATTLE);
     Sound_Stop();
     Sound_SetMasterVolume(0);
     bsys->isRecordingPaused = TRUE;

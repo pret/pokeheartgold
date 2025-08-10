@@ -88,7 +88,7 @@ static void Blackout_DrawMessage(FieldSystem *fieldSystem, TaskManager *taskMana
     env->state = 0;
     env->fieldSystem = fieldSystem;
     env->bgConfig = BgConfig_Alloc(HEAP_ID_FIELD);
-    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE); // are RGBs correct here?
+    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     sub_0200FBDC(0); // PM_LCD_TOP?
     sub_0200FBDC(1); // PM_LCD_TOP?
@@ -149,8 +149,8 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
         MessageFormat_Delete(env->msgFmt);
         DestroyMsgData(env->msgData);
         FreeBgTilemapBuffer(env->bgConfig, GF_BG_LYR_MAIN_3);
-        FreeToHeap(env->bgConfig);
-        FreeToHeap(env);
+        Heap_Free(env->bgConfig);
+        Heap_Free(env);
         return TRUE;
     }
 

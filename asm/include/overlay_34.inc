@@ -32,7 +32,7 @@
 .public MailMsg_IsInit
 .public MailMsg_Compare
 .public SetKeyRepeatTimers
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BgSetPosTextAndCommit
@@ -52,13 +52,13 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_CreateAffine
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_GetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_GetAnimationNumber
-.public Sprite_SetAnimCtrlCurrentFrame
-.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_SetAnimationFrame
+.public Sprite_GetAnimationFrame
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public System_GetTouchHeldCoords
 .public GF_AssertFail

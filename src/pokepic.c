@@ -334,7 +334,7 @@ PokepicManager *PokepicManager_Create(HeapID heapId) {
             ret->charRawData[dstOffs] = pRawCharData[srcOffs];
         }
     }
-    FreeToHeap(pNcgrFile);
+    Heap_Free(pNcgrFile);
     ret->needLoadImage = 1;
     ret->needLoadPltt = 1;
     return ret;
@@ -445,10 +445,10 @@ void PokepicManager_DrawAll(PokepicManager *pokepicManager) {
 }
 
 void PokepicManager_Delete(PokepicManager *pokepicManager) {
-    FreeToHeap(pokepicManager->charRawData);
-    FreeToHeap(pokepicManager->plttRawData);
-    FreeToHeap(pokepicManager->plttRawDataUnfaded);
-    FreeToHeap(pokepicManager);
+    Heap_Free(pokepicManager->charRawData);
+    Heap_Free(pokepicManager->plttRawData);
+    Heap_Free(pokepicManager->plttRawDataUnfaded);
+    Heap_Free(pokepicManager);
 }
 
 void Pokepic_StartAnim(Pokepic *pokepic) {
@@ -1209,7 +1209,7 @@ static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
                     }
                 }
             }
-            FreeToHeap(ncgrFile);
+            Heap_Free(ncgrFile);
         }
     }
     pokepicManager->needLoadImage = needCharUpdate;
@@ -1235,7 +1235,7 @@ static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager) {
                 pokepicManager->plttRawData[j + 16 * i] = src[j];
                 pokepicManager->plttRawDataUnfaded[j + 16 * i] = src[j];
             }
-            FreeToHeap(nclrFile);
+            Heap_Free(nclrFile);
             if (pokepicManager->pics[i].shadow.palSlot != 0) {
                 nclrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_poketool_pokegra_otherpoke, NARC_otherpoke_260_NCLR, pokepicManager->heapId);
                 NNS_G2dGetUnpackedPaletteData(nclrFile, &plttData);
@@ -1244,7 +1244,7 @@ static void PokepicManager_BufferPlttData(PokepicManager *pokepicManager) {
                     pokepicManager->plttRawData[j + 16 * (3 + pokepicManager->pics[i].shadow.palSlot)] = src[j];
                     pokepicManager->plttRawDataUnfaded[j + 16 * (3 + pokepicManager->pics[i].shadow.palSlot)] = src[j];
                 }
-                FreeToHeap(nclrFile);
+                Heap_Free(nclrFile);
             }
         }
         if (pokepicManager->pics[i].active && pokepicManager->pics[i].drawParam.fadeActive) {

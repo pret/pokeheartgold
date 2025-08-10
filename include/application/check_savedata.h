@@ -3,10 +3,10 @@
 
 #include "overlay_manager.h"
 
-extern const OVY_MGR_TEMPLATE gApplication_CheckSave;
+extern const OverlayManagerTemplate gApplication_CheckSave;
 
-BOOL CheckSavedataApp_Init(OVY_MANAGER *manager, int *state);
-BOOL CheckSavedataApp_Main(OVY_MANAGER *manager, int *state);
-BOOL CheckSavedataApp_Exit(OVY_MANAGER *manager, int *state);
+BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state);
+BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state);
+BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state);
 
 #endif // POKEHEARTGOLD_APPLICATION_CHECK_SAVEDATA_H

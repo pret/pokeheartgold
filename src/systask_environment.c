@@ -23,7 +23,7 @@ SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, 
 void DestroySysTaskAndEnvironment(SysTask *task) {
     void *environment = SysTask_GetData(task);
     if (environment != NULL) {
-        FreeToHeap(environment);
+        Heap_Free(environment);
     }
 
     SysTask_Destroy(task);

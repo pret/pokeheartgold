@@ -20,9 +20,9 @@
 #include "seal_case.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "trainer_data.h"
 #include "trainer_memo.h"
-#include "unk_0200CF18.h"
 #include "unk_02016EDC.h"
 #include "unk_02078834.h"
 
@@ -176,7 +176,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     SetMonData(mon, MON_DATA_LEVEL, &level);
     mail = Mail_New(HEAP_ID_DEFAULT);
     SetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
-    FreeToHeap(mail);
+    Heap_Free(mail);
     capsule = 0;
     SetMonData(mon, MON_DATA_CAPSULE, &capsule);
     MI_CpuClearFast(&seal_coords, sizeof(seal_coords));
@@ -385,7 +385,7 @@ void CalcMonStats(Pokemon *mon) {
     newSpdef = ModifyStatByNature(GetMonNature(mon), (u16)newSpdef, STAT_SPDEF);
     SetMonData(mon, MON_DATA_SPDEF, &newSpdef);
 
-    FreeToHeap(baseStats);
+    Heap_Free(baseStats);
 
     if (hp != 0 || maxHp == 0) {
         if (species == SPECIES_SHEDINJA) {
@@ -840,8 +840,8 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_MET_LEVEL:
         ret = blockD->metLevel;
         break;
-    case MON_DATA_MET_GENDER:
-        ret = blockD->metGender;
+    case MON_DATA_OT_GENDER:
+        ret = blockD->otGender;
         break;
     case MON_DATA_ENCOUNTER_TYPE:
         ret = blockD->encounterType;
@@ -987,11 +987,11 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
         boxMon->pid = VALUE(u32);
         break;
     case MON_DATA_PARTY_LOCK:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         boxMon->party_lock = VALUE(u8);
         break;
     case MON_DATA_BOX_LOCK:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         boxMon->box_lock = VALUE(u8);
         break;
     case MON_DATA_CHECKSUM_FAILED:
@@ -1308,8 +1308,8 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_MET_LEVEL:
         blockD->metLevel = VALUE(u8);
         break;
-    case MON_DATA_MET_GENDER:
-        blockD->metGender = VALUE(u8);
+    case MON_DATA_OT_GENDER:
+        blockD->otGender = VALUE(u8);
         break;
     case MON_DATA_ENCOUNTER_TYPE:
         blockD->encounterType = VALUE(u8);
@@ -1390,7 +1390,7 @@ static void AddMonDataInternal(Pokemon *mon, int attr, int value) {
     case MON_DATA_SPDEF:
     case MON_DATA_MAIL_STRUCT:
         // case MON_DATA_SEAL_COORDS:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         break;
     default:
         AddBoxMonDataInternal(&mon->box, attr, value);
@@ -1676,7 +1676,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_POKERUS:
     case MON_DATA_POKEBALL:
     case MON_DATA_MET_LEVEL:
-    case MON_DATA_MET_GENDER:
+    case MON_DATA_OT_GENDER:
     case MON_DATA_ENCOUNTER_TYPE:
     case MON_DATA_RESERVED_159:
     case MON_DATA_STATUS:
@@ -1707,7 +1707,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_SHINY_LEAF_E:
     case MON_DATA_SHINY_LEAF_CROWN:
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 
@@ -1832,7 +1832,7 @@ int GetPersonalAttr(const BASE_STATS *baseStats, int attr) {
 
 void FreeMonPersonal(BASE_STATS *personal) {
     GF_ASSERT(personal != NULL);
-    FreeToHeap(personal);
+    Heap_Free(personal);
 }
 
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
@@ -1857,7 +1857,7 @@ int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int 
     BASE_STATS *buf = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
     NARC_ReadWholeMember(narc, resolved, buf);
     ret = GetPersonalAttr(buf, attr);
-    FreeToHeap(buf);
+    Heap_Free(buf);
     return ret;
 }
 
@@ -1907,7 +1907,7 @@ u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
     table = (u32 *)AllocFromHeap(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
     LoadGrowthTable(growthRate, table);
     ret = table[level];
-    FreeToHeap(table);
+    Heap_Free(table);
     return ret;
 }
 
@@ -2674,7 +2674,7 @@ u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing
     return ret;
 }
 
-static const struct UnkTemplate_0200D748 _020FF588 = {
+static const struct ManagedSpriteTemplate _020FF588 = {
     0, 0, 0, 0, 0, 0, NNS_G2D_VRAM_TYPE_2DMAIN, { 0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u },
            2, 1
 };
@@ -2683,9 +2683,9 @@ static const int _020FF50C[] = {
     0, 1, 1, 2, 0, 3
 };
 
-struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId) {
-    struct UnkTemplate_0200D748 spriteResourcesTemplate;
-    struct UnkImageStruct *object;
+struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, HeapID heapId) {
+    struct ManagedSpriteTemplate spriteResourcesTemplate;
+    struct ManagedSprite *object;
     NARC *narc;
     struct UnkStruct_02070D3C fileIDs;
     int plttNum;
@@ -2696,10 +2696,10 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *
         plttNum = 2;
     }
     narc = NARC_New(fileIDs.narcId, heapId);
-    SpriteRenderer_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncgr_id, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2F);
-    sub_0200D68C(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, fileIDs.nclr_id, FALSE, plttNum, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2A);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncer_id, FALSE, resTag + 0x4E27);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.nanr_id, FALSE, resTag + 0x4E27);
+    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncgr_id, FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2F);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, fileIDs.nclr_id, FALSE, plttNum, NNS_G2D_VRAM_TYPE_2DMAIN, resTag + 0x4E2A);
+    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.ncer_id, FALSE, resTag + 0x4E27);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, fileIDs.nanr_id, FALSE, resTag + 0x4E27);
     NARC_Delete(narc);
     spriteResourcesTemplate = _020FF588;
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = resTag + 0x4E2F;
@@ -2707,11 +2707,11 @@ struct UnkImageStruct *sub_02070C24(SpriteRenderer *renderer, SpriteGfxHandler *
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = resTag + 0x4E27;
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = resTag + 0x4E27;
     spriteResourcesTemplate.spritePriority = _020FF50C[resTag];
-    object = SpriteRenderer_LoadResourcesAndCreateSprite(renderer, gfxHandler, &spriteResourcesTemplate);
+    object = SpriteSystem_NewSprite(renderer, gfxHandler, &spriteResourcesTemplate);
     Sprite_SetPalOffsetRespectVramOffset(object->sprite, 0);
-    UnkImageStruct_SetSpritePositionXY(object, x, y);
-    UnkImageStruct_TickSpriteAnimation1Frame(object);
-    UnkImageStruct_SetSpriteAnimActiveFlag(object, 1);
+    ManagedSprite_SetPositionXY(object, x, y);
+    ManagedSprite_TickFrame(object);
+    ManagedSprite_SetAnimateFlag(object, 1);
     return object;
 }
 
@@ -2998,7 +2998,7 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
         }
         break;
     }
-    FreeToHeap(evoTable);
+    Heap_Free(evoTable);
     return target;
 }
 
@@ -3054,7 +3054,7 @@ void InitBoxMonMoveset(BoxPokemon *boxMon) {
             DeleteBoxMonFirstMoveAndAppend(boxMon, move);
         }
     }
-    FreeToHeap(levelUpLearnset);
+    Heap_Free(levelUpLearnset);
     ReleaseBoxMonLock(boxMon, decry);
 }
 
@@ -3147,13 +3147,13 @@ u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
     LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
 
     if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
-        FreeToHeap(levelUpLearnset);
+        Heap_Free(levelUpLearnset);
         return 0;
     }
     while ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) != (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
         (*last_i)++;
         if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
-            FreeToHeap(levelUpLearnset);
+            Heap_Free(levelUpLearnset);
             return 0;
         }
     }
@@ -3162,7 +3162,7 @@ u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
         (*last_i)++;
         ret = TryAppendMonMove(mon, *sp0);
     }
-    FreeToHeap(levelUpLearnset);
+    Heap_Free(levelUpLearnset);
     return ret;
 }
 
@@ -3237,7 +3237,7 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     SetMonData(dest, MON_DATA_MAXHP, &sp0);
     mail = Mail_New(HEAP_ID_DEFAULT);
     SetMonData(dest, MON_DATA_MAIL_STRUCT, mail);
-    FreeToHeap(mail);
+    Heap_Free(mail);
     SetMonData(dest, MON_DATA_CAPSULE, &sp0);
     MI_CpuClearFast(&sp4, sizeof(sp4));
     SetMonData(dest, MON_DATA_SEAL_COORDS, &sp4);
@@ -3304,7 +3304,7 @@ int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest) {
     for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
         dest[i] = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
     }
-    FreeToHeap(levelUpLearnset);
+    Heap_Free(levelUpLearnset);
     return i;
 }
 
@@ -3857,7 +3857,7 @@ void SetMonPersonality(Pokemon *mon, u32 personality) {
     mon->box.checksum = CHECKSUM(&mon->box);
     ENCRYPT_BOX(&mon->box);
     ENCRYPT_PTY(mon);
-    FreeToHeap(tmpMon);
+    Heap_Free(tmpMon);
 }
 
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
@@ -4115,7 +4115,7 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, HeapID he
     u32 myId = PlayerProfile_GetTrainerID(profile);
     u32 otId = GetBoxMonData(boxMon, MON_DATA_OTID, NULL);
     u32 myGender = PlayerProfile_GetTrainerGender(profile);
-    u32 otGender = GetBoxMonData(boxMon, MON_DATA_MET_GENDER, NULL);
+    u32 otGender = GetBoxMonData(boxMon, MON_DATA_OT_GENDER, NULL);
     String *r7 = PlayerProfile_GetPlayerName_NewString(profile, heapId);
     String *r6 = String_New(PLAYER_NAME_LENGTH + 1, heapId);
     BOOL ret = FALSE;

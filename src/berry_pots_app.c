@@ -22,12 +22,12 @@
 #include "save_misc_data.h"
 #include "sound_02004A44.h"
 #include "sprite.h"
+#include "sprite_system.h"
 #include "system.h"
 #include "text.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_0200CF18.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
@@ -236,7 +236,7 @@ static const struct UnkStruct_ov17_02203E88 ov17_02203E88[4] = {
     { NELEMS(sMenu_Water_Exit),           sMenu_Water_Exit           },
     { NELEMS(sMenu_Take_Exit),            sMenu_Take_Exit            },
 };
-static const UnkStruct_0200D2B4 ov17_02203EA8 = { 0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 };
+static const UnmanagedSpriteTemplate ov17_02203EA8 = { 0, 27, 96, 0, 5, 13, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 };
 static const GraphicsBanks ov17_02203ED0 = {
     GX_VRAM_BG_128_A,
     GX_VRAM_BGEXTPLTT_NONE,
@@ -249,7 +249,7 @@ static const GraphicsBanks ov17_02203ED0 = {
     GX_VRAM_TEX_NONE,
     GX_VRAM_TEXPLTT_NONE,
 };
-static const UnkStruct_0200D2B4 ov17_02203EF8[5] = {
+static const UnmanagedSpriteTemplate ov17_02203EF8[5] = {
     { 0, 224, 176, 0, 0, 15, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
     { 0, 27,  96,  0, 2, 0,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
     { 0, 31,  56,  0, 8, 1,  0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, 0, 0, 0 },
@@ -267,13 +267,13 @@ void ov17_02201BC0(void) {
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
 
-    sub_0200FBF4(0, 0);
-    sub_0200FBF4(1, 0);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
     sub_0200FBDC(0);
     sub_0200FBDC(1);
 }
 
-BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state) {
+BOOL BerryPotsApp_Initialize(OverlayManager *manager, int *state) {
     BerryPotsAppData *data;
 
     switch (*state) {
@@ -302,7 +302,7 @@ BOOL BerryPotsApp_Initialize(OVY_MANAGER *manager, int *state) {
     return FALSE;
 }
 
-BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
+BOOL BerryPotsApp_Run(OverlayManager *manager, int *state) {
     BerryPotsAppData *data = OverlayManager_GetData(manager);
 
     switch (*state) {
@@ -337,11 +337,11 @@ BOOL BerryPotsApp_Run(OVY_MANAGER *manager, int *state) {
         return TRUE;
     }
 
-    SpriteGfxHandler_RenderAndAnimateSprites(data->spriteGfxHandler1);
+    SpriteSystem_DrawSprites(data->spriteGfxHandler1);
     return FALSE;
 }
 
-BOOL BerryPotsApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL BerryPotsApp_Exit(OverlayManager *manager, int *state) {
     BerryPotsAppData *data = OverlayManager_GetData(manager);
     if (!ov17_02201E3C(data)) {
         return FALSE;
@@ -373,7 +373,7 @@ static void BerryPotsApp_InitData(BerryPotsAppData *data) {
 }
 
 static void ov17_02201DD8(BerryPotsAppData *data) {
-    FreeToHeap(data->berryGrowthProperties);
+    Heap_Free(data->berryGrowthProperties);
     MenuInputStateMgr_SetState(data->args->unk4->menuInputPtr, data->fieldMenuState);
 }
 
@@ -387,7 +387,7 @@ static BOOL ov17_02201DF0(BerryPotsAppData *data) {
         ov17_02202528(data);
         sub_020210BC();
         sub_02021148(1);
-        sub_02004EC4(0x45, 0, 0);
+        Sound_SetSceneAndPlayBGM(0x45, 0, 0);
 
         data->state70 = 0;
         return TRUE;
@@ -822,7 +822,7 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
         Sprite_SetAnimCtrlSeq(data->sprites[2], 8);
         Sprite_ResetAnimCtrlState(data->sprites[2]);
         Sprite_SetAnimActiveFlag(data->sprites[2], TRUE);
-        Sprite_SetVisibleFlag(data->sprites[2], TRUE);
+        Sprite_SetDrawFlag(data->sprites[2], TRUE);
         data->waitFrames = 0;
         data->state72++;
         break;
@@ -869,7 +869,7 @@ static BOOL ov17_022025B8(BerryPotsAppData *data) {
     case 4:
         if (data->waitFrames++ >= 15) {
             ov17_0220387C(data);
-            Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+            Sprite_SetDrawFlag(data->sprites[2], FALSE);
             Sprite_SetAnimActiveFlag(data->sprites[1], FALSE);
             data->waitFrames = 0;
             data->state72 = 0;
@@ -935,7 +935,7 @@ void ov17_022028B8(BerryPotsAppData *data) {
 }
 
 static void ov17_02202900(BerryPotsAppData *data, BOOL visible) {
-    Sprite_SetVisibleFlag(data->sprites[1], visible);
+    Sprite_SetDrawFlag(data->sprites[1], visible);
 }
 
 static void ov17_02202910(BerryPotsAppData *data, BOOL active) {
@@ -992,12 +992,12 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
 
     if (sub->growthStage == BERRY_POT_GROWTH_STAGE_NONE) {
         sub->soilSpriteMaybe = NULL;
-        Sprite_SetAnimCtrlCurrentFrame(data->sprites[index + 3], 2);
+        Sprite_SetAnimationFrame(data->sprites[index + 3], 2);
         return;
     }
 
-    UnkStruct_0200D2B4 unkStruct;
-    MI_CpuCopy8(&ov17_02203EA8, &unkStruct, sizeof(UnkStruct_0200D2B4));
+    UnmanagedSpriteTemplate unkStruct;
+    MI_CpuCopy8(&ov17_02203EA8, &unkStruct, sizeof(UnmanagedSpriteTemplate));
     unkStruct.x = (index + 1) * 27;
     switch (sub->growthStage) {
     case BERRY_POT_GROWTH_STAGE_PLANTED:
@@ -1012,25 +1012,25 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
         break;
     }
 
-    sub->soilSpriteMaybe = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &unkStruct);
-    Sprite_SetVisibleFlag(sub->soilSpriteMaybe, TRUE);
+    sub->soilSpriteMaybe = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler1, &unkStruct);
+    Sprite_SetDrawFlag(sub->soilSpriteMaybe, TRUE);
     if (sub->growthStage == BERRY_POT_GROWTH_STAGE_PLANTED) {
         Sprite_SetAnimActiveFlag(sub->soilSpriteMaybe, FALSE);
-        Sprite_SetAnimCtrlCurrentFrame(sub->soilSpriteMaybe, data->unk20[index].soilState);
+        Sprite_SetAnimationFrame(sub->soilSpriteMaybe, data->unk20[index].soilState);
     } else {
         Sprite_SetAnimActiveFlag(sub->soilSpriteMaybe, TRUE);
     }
 
-    Sprite_SetAnimCtrlCurrentFrame(data->sprites[index + 3], data->unk20[index].soilState);
+    Sprite_SetAnimationFrame(data->sprites[index + 3], data->unk20[index].soilState);
 }
 
 void ov17_02202B58(BerryPotsAppData *data, u8 index) {
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[index];
     BerryPots_ResetPotMoisture(data->berryPots, index);
     ov17_0220387C(data);
-    Sprite_SetAnimCtrlCurrentFrame(data->sprites[index + 3], 2);
+    Sprite_SetAnimationFrame(data->sprites[index + 3], 2);
     if (unk->growthStage == BERRY_POT_GROWTH_STAGE_PLANTED) {
-        Sprite_SetAnimCtrlCurrentFrame(unk->soilSpriteMaybe, unk->soilState);
+        Sprite_SetAnimationFrame(unk->soilSpriteMaybe, unk->soilState);
     }
 }
 
@@ -1041,13 +1041,13 @@ static void ov17_02202B98(BerryPotsAppData *data) {
     ov17_0220387C(data);
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
-    Sprite_SetAnimCtrlCurrentFrame(data->sprites[data->unk7C + 3], 2);
+    Sprite_SetAnimationFrame(data->sprites[data->unk7C + 3], 2);
     GameStats_AddScore(data->stats, SCORE_EVENT_0);
 }
 
 static void ov17_02202BF8(BerryPotsAppData *data) {
     if (data->spriteRenderer != NULL) {
-        thunk_OamManager_ApplyAndResetBuffers();
+        SpriteSystem_TransferOam();
     }
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
@@ -1101,7 +1101,7 @@ static void BerryPotsApp_FreeBgConfig(BerryPotsAppData *data) {
     FreeBgTilemapBuffer(data->bgConfig, 0);
     FreeBgTilemapBuffer(data->bgConfig, 7);
     FreeBgTilemapBuffer(data->bgConfig, 4);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
 }
@@ -1190,27 +1190,27 @@ static void BerryPotsApp_FreeListMenuItems(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data) {
     GF_CreateVramTransferManager(32, data->heapId);
 
-    data->spriteRenderer = SpriteRenderer_Create(data->heapId);
-    SpriteRenderer_CreateOamCharPlttManagers(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
+    data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
+    SpriteSystem_Init(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
     sub_0200B2E0(data->heapId);
     sub_0200B2E8(data->heapId);
 
-    data->spriteGfxHandler1 = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
-    SpriteRenderer_CreateSpriteList(data->spriteRenderer, data->spriteGfxHandler1, 25);
+    data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
+    SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
     sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapId);
 
     SpriteResourceCountsListUnion counts = ov17_02203DAC;
-    data->spriteGfxHandler2 = SpriteRenderer_CreateGfxHandler(data->spriteRenderer);
-    SpriteRenderer_Init2DGfxResManagersFromCountsArray(data->spriteRenderer, data->spriteGfxHandler2, &counts);
-    sub_0200E2B4(data->spriteGfxHandler2, sub_0200E2B0(data->spriteGfxHandler1));
+    data->spriteGfxHandler2 = SpriteManager_New(data->spriteRenderer);
+    SpriteSystem_InitManagerWithCapacities(data->spriteRenderer, data->spriteGfxHandler2, &counts);
+    SpriteManager_SetSpriteList(data->spriteGfxHandler2, SpriteManager_GetSpriteList(data->spriteGfxHandler1));
 
-    SpriteRenderer_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIndexMapping(ITEM_CHERI_BERRY, ITEMNARC_NCGR), FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 4000);
-    SpriteRenderer_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIndexMapping(ITEM_CHERI_BERRY, ITEMNARC_NCLR), FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 4000);
-    SpriteRenderer_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIconCell(), FALSE, 4000);
-    SpriteRenderer_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIconAnim(), FALSE, 4000);
+    SpriteSystem_LoadCharResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIndexMapping(ITEM_CHERI_BERRY, ITEMNARC_NCGR), FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, 4000);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIndexMapping(ITEM_CHERI_BERRY, ITEMNARC_NCLR), FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 4000);
+    SpriteSystem_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIconCell(), FALSE, 4000);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIconAnim(), FALSE, 4000);
 
     data->menuSpawner = TouchscreenListMenuSpawner_Create(data->heapId, 0);
 }
@@ -1220,11 +1220,11 @@ static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data)
 
     NARC_Delete(data->itemIconNarc);
 
-    SpriteRenderer_UnloadResourcesAndRemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler2);
-    SpriteRenderer_RemoveGfxHandler(data->spriteRenderer, data->spriteGfxHandler1);
+    SpriteSystem_FreeResourcesAndManager(data->spriteRenderer, data->spriteGfxHandler2);
+    SpriteSystem_DestroySpriteManager(data->spriteRenderer, data->spriteGfxHandler1);
     data->spriteGfxHandler2 = NULL;
     data->spriteGfxHandler1 = NULL;
-    SpriteRenderer_Delete(data->spriteRenderer);
+    SpriteSystem_Free(data->spriteRenderer);
     data->spriteRenderer = NULL;
 
     GF_DestroyVramTransferManager();
@@ -1246,27 +1246,27 @@ static void BerryPotsApp_FreeSpriteSystem(BerryPotsAppData *data) {
 
 static void BerryPotsApp_SetupSprites(BerryPotsAppData *data) {
     for (int i = 0; i <= 1; i++) {
-        data->sprites[i] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[i]);
-        Sprite_SetVisibleFlag(data->sprites[i], TRUE);
+        data->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[i]);
+        Sprite_SetDrawFlag(data->sprites[i], TRUE);
         Sprite_SetAnimActiveFlag(data->sprites[i], TRUE);
     }
 
-    data->sprites[2] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[2]);
-    Sprite_SetVisibleFlag(data->sprites[2], FALSE);
+    data->sprites[2] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[2]);
+    Sprite_SetDrawFlag(data->sprites[2], FALSE);
     Sprite_SetAnimActiveFlag(data->sprites[2], FALSE);
 
     for (int i = 0; i < (int)NELEMS(data->unk20); i++) {
         u8 spriteIndex = i + 3;
-        data->sprites[spriteIndex] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[3]);
+        data->sprites[spriteIndex] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[3]);
         Sprite_SetPositionXY(data->sprites[spriteIndex], i * 27 + 27, 99);
-        Sprite_SetAnimCtrlCurrentFrame(data->sprites[spriteIndex], data->unk20[i].soilState);
-        Sprite_SetVisibleFlag(data->sprites[spriteIndex], TRUE);
+        Sprite_SetAnimationFrame(data->sprites[spriteIndex], data->unk20[i].soilState);
+        Sprite_SetDrawFlag(data->sprites[spriteIndex], TRUE);
         Sprite_SetAnimActiveFlag(data->sprites[spriteIndex], FALSE);
 
         spriteIndex = i + 7;
-        data->sprites[spriteIndex] = SpriteRenderer_CreateSprite(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[4]);
+        data->sprites[spriteIndex] = SpriteSystem_CreateSpriteFromResourceHeader(data->spriteRenderer, data->spriteGfxHandler1, &ov17_02203EF8[4]);
         Sprite_SetPositionXY(data->sprites[spriteIndex], i * 27 + 27, 88);
-        Sprite_SetVisibleFlag(data->sprites[spriteIndex], FALSE);
+        Sprite_SetDrawFlag(data->sprites[spriteIndex], FALSE);
         Sprite_SetAnimActiveFlag(data->sprites[spriteIndex], TRUE);
     }
 }
@@ -1296,9 +1296,9 @@ static void ov17_02203460(BerryPotsAppData *data, u8 index) {
     sub_0200E2EC(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIndexMapping(itemId, ITEMNARC_NCLR), FALSE, 4000);
 }
 
-UnkImageStruct *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused) {
-    UnkTemplate_0200D748 template;
-    MI_CpuFill8(&template, 0, sizeof(UnkTemplate_0200D748));
+ManagedSprite *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused) {
+    ManagedSpriteTemplate template;
+    MI_CpuFill8(&template, 0, sizeof(ManagedSpriteTemplate));
 
     template.x = x;
     template.y = y;
@@ -1315,7 +1315,7 @@ UnkImageStruct *ov17_022034C8(BerryPotsAppData *data, s16 x, s16 y, u8 unused) {
     template.resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
     template.resIdList[GF_GFX_RES_TYPE_MANM] = -1;
 
-    return SpriteRenderer_LoadResourcesAndCreateSprite(data->spriteRenderer, data->spriteGfxHandler2, &template);
+    return SpriteSystem_NewSprite(data->spriteRenderer, data->spriteGfxHandler2, &template);
 }
 
 u8 BerryPots_DeadstrippedFunction(int a1, int a2) {

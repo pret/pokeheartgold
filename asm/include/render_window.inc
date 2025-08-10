@@ -9,10 +9,10 @@
 .public GfGfxLoader_GetCharData
 .public PokepicManager_Create
 .public PokepicManager_Delete
-.public Get2DGfxResObjById
+.public SpriteResourceCollection_Find
 .public sub_0200AF00
-.public GF_PlttResObj_GetPlttProxy
-.public UnkImageStruct_Delete
+.public SpriteTransfer_GetPaletteProxy
+.public Sprite_DeleteAndFreeResources
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
@@ -39,8 +39,8 @@
 .public sub_020143E0
 .public sub_02014450
 .public AllocFromHeap
-.public FreeToHeap
-.public FreeToHeapExplicit
+.public Heap_Free
+.public Heap_FreeExplicit
 .public BgConfig_GetHeapId
 .public BgCommitTilemapBufferToVram
 .public BG_LoadCharTilesData
@@ -60,8 +60,8 @@
 .public GfGfx_EngineBTogglePlanes
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_SetAnimCtrlSeq
-.public Sprite_TickAnimCtrlFrame
-.public Sprite_GetAnimCtrlCurrentFrame
+.public Sprite_UpdateAnim
+.public Sprite_GetAnimationFrame
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public NNS_G2dGetUnpackedPaletteData

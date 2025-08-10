@@ -3,6 +3,6 @@
 
 #include "overlay_manager.h"
 
-extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
+extern const OverlayManagerTemplate gApplication_IntroMovie;
 
 #endif // POKEHEARTGOLD_INTRO_MOVIE_H

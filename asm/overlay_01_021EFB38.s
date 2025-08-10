@@ -226,7 +226,7 @@ ov01_021EFCDC: ; 0x021EFCDC
 	bl NARC_Delete
 	ldr r1, [r5, #0xc]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	add r0, r4, #0
 	bl DestroySysTaskAndEnvironment
 	pop {r3, r4, r5, pc}
@@ -384,7 +384,7 @@ _021EFE04:
 _021EFE14:
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 _021EFE22:
@@ -695,7 +695,7 @@ _021F0036:
 	and r0, r1
 	str r0, [r2]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	nop
 _021F004C: .word 0xFFFF1FFF
@@ -1021,7 +1021,7 @@ _021F02AA:
 	and r0, r1
 	str r0, [r2]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	nop
 _021F02C0: .word 0xFFFF1FFF
@@ -1308,7 +1308,7 @@ ov01_021F0454: ; 0x021F0454
 	add r0, r5, #0
 	bl BgTilemapRectChangePalette
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	lsl r1, r4, #0x18
 	add r0, r5, #0
 	lsr r1, r1, #0x18
@@ -1653,10 +1653,10 @@ ov01_021F0768: ; 0x021F0768
 
 	thumb_func_start ov01_021F0780
 ov01_021F0780: ; 0x021F0780
-	ldr r3, _021F0784 ; =FreeToHeap
+	ldr r3, _021F0784 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021F0784: .word FreeToHeap
+_021F0784: .word Heap_Free
 	thumb_func_end ov01_021F0780
 
 	thumb_func_start ov01_021F0788
@@ -1775,10 +1775,10 @@ ov01_021F0848: ; 0x021F0848
 
 	thumb_func_start ov01_021F0860
 ov01_021F0860: ; 0x021F0860
-	ldr r3, _021F0864 ; =FreeToHeap
+	ldr r3, _021F0864 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021F0864: .word FreeToHeap
+_021F0864: .word Heap_Free
 	thumb_func_end ov01_021F0860
 
 	thumb_func_start ov01_021F0868
@@ -2002,7 +2002,7 @@ _021F09F4:
 	cmp r4, #0x30
 	blt _021F09F4
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F09EC
@@ -2199,7 +2199,7 @@ ov01_021F0B5C: ; 0x021F0B5C
 	bl ov01_021F0CDC
 _021F0B6E:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021F0B5C
@@ -2678,7 +2678,7 @@ _021F0ECE:
 	bl ov01_021E6340
 	ldr r0, _021F0F04 ; =ov01_02209B64
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021F0F04 ; =ov01_02209B64
 	mov r1, #0
 	str r1, [r0]
@@ -2880,7 +2880,7 @@ _021F106E:
 	ldr r0, _021F1090 ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021F1090 ; =ov01_02209B64
 	mov r2, #0
 	ldr r1, [r0]

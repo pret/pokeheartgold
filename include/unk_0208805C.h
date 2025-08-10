@@ -11,6 +11,6 @@ u8 HpBar_GetColorIdx(u32 pixelsCur, u32 pixelsWide);
 u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide);
 void sub_020880CC(u8 a0, HeapID heapId);
 int sub_020881C0(s16 *a0, u16 a1);
-void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, int unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offest);
+void sub_0208820C(BgConfig *bgConfig, HeapID heapId, NARC *narc, NarcId unused, int fileId, GFBgLayer layer, int kind, u32 szByte, u32 offest);
 
 #endif

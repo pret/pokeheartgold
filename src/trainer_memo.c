@@ -279,23 +279,23 @@ Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
 
 void sub_0208E994(Unk0208E600 *a0) {
     if (a0->notepad.nature) {
-        FreeToHeap(a0->notepad.nature);
+        Heap_Free(a0->notepad.nature);
     }
     if (a0->notepad.dateLocationMet) {
-        FreeToHeap(a0->notepad.dateLocationMet);
+        Heap_Free(a0->notepad.dateLocationMet);
     }
     if (a0->notepad.characteristic) {
-        FreeToHeap(a0->notepad.characteristic);
+        Heap_Free(a0->notepad.characteristic);
     }
     if (a0->notepad.flavorPreference) {
-        FreeToHeap(a0->notepad.flavorPreference);
+        Heap_Free(a0->notepad.flavorPreference);
     }
     if (a0->notepad.eggWatch) {
-        FreeToHeap(a0->notepad.eggWatch);
+        Heap_Free(a0->notepad.eggWatch);
     }
     MessageFormat_Delete(a0->msgFmt);
     DestroyMsgData(a0->msgData);
-    FreeToHeap(a0);
+    Heap_Free(a0);
 }
 
 // Returns true if the Pokemon has the proper metadata to trigger the event.
@@ -799,7 +799,7 @@ static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *pro
     String *name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
 
     SetBoxMonData(boxMon, MON_DATA_OTID, &otId);
-    SetBoxMonData(boxMon, MON_DATA_MET_GENDER, &gender);
+    SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gender);
     SetBoxMonData(boxMon, MON_DATA_OT_NAME_2, name);
 
     String_Delete(name);

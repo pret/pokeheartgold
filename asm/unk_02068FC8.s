@@ -240,10 +240,10 @@ _020691DC: .word 0x0000067C
 
 	thumb_func_start sub_020691E0
 sub_020691E0: ; 0x020691E0
-	ldr r3, _020691E4 ; =FreeToHeap
+	ldr r3, _020691E4 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_020691E4: .word FreeToHeap
+_020691E4: .word Heap_Free
 	thumb_func_end sub_020691E0
 
 	thumb_func_start sub_020691E8
@@ -667,7 +667,7 @@ _02069500:
 	ldr r0, [r4]
 	bl sub_0205AC4C
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _0206951C:

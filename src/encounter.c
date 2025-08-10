@@ -94,7 +94,7 @@ static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *wi
 
 static void Encounter_Delete(Encounter *encounter) {
     BattleSetup_Delete(encounter->setup);
-    FreeToHeap(encounter);
+    Heap_Free(encounter);
 }
 
 static BOOL Encounter_GetResult(Encounter *encounter, FieldSystem *fieldSystem) {
@@ -230,7 +230,7 @@ static BOOL Task_02050960(TaskManager *taskManager) {
     switch (*state) {
     case 0:
         sub_02004AD8(0);
-        sub_02004EC4(5, encounter->bgm, 1);
+        Sound_SetSceneAndPlayBGM(5, encounter->bgm, 1);
         CallTask_StartBattle(taskManager, encounter->setup);
         (*state)++;
         break;
@@ -307,7 +307,7 @@ static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm,
 
 static void WildEncounter_Delete(WildEncounter *encounter) {
     BattleSetup_Delete(encounter->setup);
-    FreeToHeap(encounter);
+    Heap_Free(encounter);
 }
 
 void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {

@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public OverlayManager_New
 .public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData
@@ -53,7 +53,7 @@
 .public CreateHeap
 .public DestroyHeap
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgCommitTilemapBufferToVram
 .public CopyToBgTilemapRect
 .public FillBgTilemapRect

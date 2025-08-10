@@ -114,8 +114,8 @@ void ObjCharTransfer_Destroy(void) {
         ObjCharTransfer_FreeBlockTransferBuffer(sObjCharTransferTasksManager->blockBufMain);
         ObjCharTransfer_FreeBlockTransferBuffer(sObjCharTransferTasksManager->blockBufSub);
         ObjCharTransferInternal_ResetAllTransferTasks();
-        FreeToHeap(sObjCharTransferTasksManager->tasks);
-        FreeToHeap(sObjCharTransferTasksManager);
+        Heap_Free(sObjCharTransferTasksManager->tasks);
+        Heap_Free(sObjCharTransferTasksManager);
         sObjCharTransferTasksManager = NULL;
     }
 }
@@ -679,10 +679,10 @@ static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 num
     sObjCharTransferTasksManager->numBlocksMain = numBlocksMain;
     sObjCharTransferTasksManager->numBlocksSub = numBlocksSub;
     if (sObjCharTransferTasksManager->blockBufMain != NULL) {
-        FreeToHeap(sObjCharTransferTasksManager->blockBufMain);
+        Heap_Free(sObjCharTransferTasksManager->blockBufMain);
     }
     if (sObjCharTransferTasksManager->blockBufSub != NULL) {
-        FreeToHeap(sObjCharTransferTasksManager->blockBufSub);
+        Heap_Free(sObjCharTransferTasksManager->blockBufSub);
     }
     if (sObjCharTransferTasksManager->numBlocksMain != 0) {
         sObjCharTransferTasksManager->blockBufMain = AllocFromHeap(heapID, numBlocksMain / 8);
@@ -697,10 +697,10 @@ static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer) {
     if (buffer != NULL) {
         if (buffer == sObjCharTransferTasksManager->blockBufMain) {
             sObjCharTransferTasksManager->numBlocksMain = 0;
-            FreeToHeap(buffer);
+            Heap_Free(buffer);
         } else {
             sObjCharTransferTasksManager->numBlocksSub = 0;
-            FreeToHeap(buffer);
+            Heap_Free(buffer);
         }
     }
 }

@@ -6,7 +6,7 @@
 .public FontID_Release
 .public FontID_String_GetWidth
 .public LoadFontPal0
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetPlayerVolume
 .public PlaySE
 .public OverlayManager_CreateAndGetData
@@ -68,7 +68,7 @@
 .public SetKeyRepeatTimers
 .public CreateHeap
 .public DestroyHeap
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -111,7 +111,7 @@
 .public SpriteList_Delete
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_CreateAffine
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_ResetAnimCtrlState

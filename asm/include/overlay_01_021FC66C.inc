@@ -11,7 +11,7 @@
 .public SysTask_Destroy
 .public ClearFrameAndWindow2
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public RemoveWindow
 .public SysTask_GetData
 .public LCRandom
@@ -46,7 +46,7 @@
 .public GetMonData
 .public SaveArray_Party_Get
 .public FieldSystem_GetGearPhoneRingManager
-.public sub_02092FA8
+.public GearPhoneRingManager_ResetIfActive
 .public memset
 .public _s32_div_f
 .public gSystem

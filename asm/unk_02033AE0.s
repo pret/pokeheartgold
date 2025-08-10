@@ -743,11 +743,11 @@ sub_02033F70: ; 0x02033F70
 
 	thumb_func_start sub_02033F90
 sub_02033F90: ; 0x02033F90
-	ldr r3, _02033F98 ; =FreeToHeap
+	ldr r3, _02033F98 ; =Heap_Free
 	ldr r0, [r0, #0x18]
 	bx r3
 	nop
-_02033F98: .word FreeToHeap
+_02033F98: .word Heap_Free
 	thumb_func_end sub_02033F90
 
 	thumb_func_start sub_02033F9C
@@ -1036,7 +1036,7 @@ sub_02034154: ; 0x02034154
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02034168
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0203416C ; =_021D412C
 	mov r1, #0
 	str r1, [r0]

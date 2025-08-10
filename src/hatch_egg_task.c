@@ -25,7 +25,7 @@ typedef struct HatchEggTaskData {
 } HatchEggTaskData;
 
 FS_EXTERN_OVERLAY(OVY_95);
-static const OVY_MGR_TEMPLATE sApplication_HatchEgg = {
+static const OverlayManagerTemplate sApplication_HatchEgg = {
     .init = HatchEggApp_Init,
     .exec = HatchEggApp_Main,
     .exit = HatchEggApp_Exit,
@@ -91,7 +91,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         data->state++;
         break;
     case HATCHEGGTASKSTATE_EXIT:
-        FreeToHeap(data);
+        Heap_Free(data);
         return TRUE;
     }
 

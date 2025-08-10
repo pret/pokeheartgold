@@ -26,14 +26,14 @@
 FS_EXTERN_OVERLAY(intro_title);
 FS_EXTERN_OVERLAY(OVY_36);
 
-extern const OVY_MGR_TEMPLATE gApplication_IntroMovie;
-extern const OVY_MGR_TEMPLATE ov36_App_MainMenu_SelectOption_Continue;
+extern const OverlayManagerTemplate gApplication_IntroMovie;
+extern const OverlayManagerTemplate ov36_App_MainMenu_SelectOption_Continue;
 
 struct UnkStruct_02111868 {
     FSOverlayID mainOverlayId;
-    OVY_MANAGER *overlayManager;
+    OverlayManager *overlayManager;
     FSOverlayID queuedMainOverlayId;
-    const OVY_MGR_TEMPLATE *queuedMainOverlayTemplate;
+    const OverlayManagerTemplate *queuedMainOverlayTemplate;
     struct UnkStruct_02111868_sub unk_10;
 };
 
@@ -77,13 +77,13 @@ void NitroMain(void) {
             RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_IntroMovie);
             break;
         case 1:
-            sub_0200FBF4(0, 0);
-            sub_0200FBF4(1, 0);
+            sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+            sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
             _02111868.unk_10.unk_04 = 1;
             RegisterMainOverlay(FS_OVERLAY_ID(OVY_36), &ov36_App_MainMenu_SelectOption_Continue);
             break;
         default:
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
             break;
         }
     }
@@ -161,7 +161,7 @@ static void Main_RunOverlayManager(void) {
     }
 }
 
-void RegisterMainOverlay(FSOverlayID overlayId, const OVY_MGR_TEMPLATE *template) {
+void RegisterMainOverlay(FSOverlayID overlayId, const OverlayManagerTemplate *template) {
     GF_ASSERT(_02111868.queuedMainOverlayTemplate == NULL);
     _02111868.queuedMainOverlayId = overlayId;
     _02111868.queuedMainOverlayTemplate = template;
@@ -203,8 +203,8 @@ static void sub_02000F60(void) {
 }
 
 static void DoSoftReset(u32 param) {
-    sub_0200FBF4(0, RGB_WHITE);
-    sub_0200FBF4(1, RGB_WHITE);
+    sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
+    sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     if (sub_02038D90()) {
         Save_Cancel(SaveData_Get());
     }

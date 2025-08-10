@@ -379,8 +379,8 @@ struct PartyMenu {
     u16 unk_494[6 * 0x10];
     u16 hpBarPalettes[0x80];
     PartyMenuArgs *args; // 0x654
-    SpriteRenderer *spriteRenderer;
-    SpriteGfxHandler *spriteGfxHandler;
+    SpriteSystem *spriteRenderer;
+    SpriteManager *spriteGfxHandler;
     Sprite *sprites[PARTY_MENU_SPRITE_ID_MAX]; // 0x660
     void *unk_6D4[PARTY_MENU_SPRITE_ID_MAX];
     Sprite *mainScreenStatusSprites[29]; // 0x748
@@ -420,7 +420,7 @@ struct PartyMenu {
     u8 filler_CA0[0x8];
 }; // CA8
 
-extern const OVY_MGR_TEMPLATE gOverlayTemplate_PartyMenu;
+extern const OverlayManagerTemplate gOverlayTemplate_PartyMenu;
 
 void PartyMenu_SetTopScreenSelectionPanelVisibility(PartyMenu *partyMenu, BOOL show);
 

@@ -579,7 +579,7 @@ _021EDF08:
 	bl DestroyMsgData
 _021EDF2E:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EDF00
@@ -1446,7 +1446,7 @@ _021EE5BE:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021EE5CC: .word SEQ_SE_DP_SELECT
@@ -1730,7 +1730,7 @@ _021EE80A:
 	ldr r0, [r6, #4]
 	bl SysTask_Destroy
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 _021EE816:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2354,7 +2354,7 @@ _021EECBA:
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetCoinsAddr
-	bl CheckCoins
+	bl Coins_GetValue
 	add r2, r0, #0
 	b _021EED04
 _021EECD2:
@@ -2565,10 +2565,10 @@ ov01_021EEE44: ; 0x021EEE44
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x10]
 	ldr r0, [r7, #0xc]
-	bl SaveData_GetMomsSavingsAddr
+	bl SaveData_GetPhoneCallPersistentState
 	mov r1, #0
 	add r2, r1, #0
-	bl MomSavingsBalanceAction
+	bl PhoneCallPersistentState_MomSavings_BalanceAction
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]

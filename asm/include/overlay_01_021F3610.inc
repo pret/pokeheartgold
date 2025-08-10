@@ -3,7 +3,7 @@
 .public NARC_ReadFile
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_DrawModel
 .public sub_0201F990
 .public sub_02020D2C

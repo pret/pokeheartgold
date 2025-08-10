@@ -98,7 +98,7 @@ static const GraphicsBanks sCheckSave_GraphicsBanks = {
     .texpltt = GX_VRAM_TEXPLTT_NONE,
 };
 
-const OVY_MGR_TEMPLATE gApplication_CheckSave = {
+const OverlayManagerTemplate gApplication_CheckSave = {
     .init = CheckSavedataApp_Init,
     .exec = CheckSavedataApp_Main,
     .exit = CheckSavedataApp_Exit,
@@ -112,7 +112,7 @@ static void CheckSavedataApp_FreeTextAndWindow(CheckSavedataApp_Data *data);
 static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data);
 static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
-BOOL CheckSavedataApp_Init(OVY_MANAGER *manager, int *state) {
+BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state) {
     CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     CheckSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CheckSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
@@ -127,7 +127,7 @@ BOOL CheckSavedataApp_Init(OVY_MANAGER *manager, int *state) {
     return TRUE;
 }
 
-BOOL CheckSavedataApp_Main(OVY_MANAGER *manager, int *state) {
+BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
     BOOL ret = FALSE;
 
@@ -139,8 +139,8 @@ BOOL CheckSavedataApp_Main(OVY_MANAGER *manager, int *state) {
 
     switch (*state) {
     case STATE_SETUP:
-        sub_0200FBF4(PM_LCD_TOP, 0);
-        sub_0200FBF4(PM_LCD_BOTTOM, 0);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
         Main_SetVBlankIntrCB(NULL, NULL);
         Main_SetHBlankIntrCB(NULL, NULL);
@@ -176,7 +176,7 @@ BOOL CheckSavedataApp_Main(OVY_MANAGER *manager, int *state) {
     return ret;
 }
 
-BOOL CheckSavedataApp_Exit(OVY_MANAGER *manager, int *state) {
+BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state) {
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
     HeapID heapId = data->heapId;
 
@@ -221,7 +221,7 @@ static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data) {
     ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
 
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data) {

@@ -77,6 +77,6 @@ typedef struct TitleScreenOverlayData {
     BOOL needMasterBrightnessNeutral;
 } TitleScreenOverlayData; // size: 0x2F8
 
-extern const OVY_MGR_TEMPLATE gApplication_TitleScreen;
+extern const OverlayManagerTemplate gApplication_TitleScreen;
 
 #endif // POKEHEARTGOLD_TITLE_SCREEN_H

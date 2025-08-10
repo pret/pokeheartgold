@@ -137,12 +137,12 @@ struct ChooseStarterAnm {
 };
 
 struct StarterChooseMonObjResPtrs {
-    GF_2DGfxResObj *charResObj;
-    GF_2DGfxResObj *plttResObj;
-    GF_2DGfxResObj *cellResObj;
-    GF_2DGfxResObj *animResObj;
-    GF_2DGfxResObj *multiCellResObj;
-    GF_2DGfxResObj *multiCellAnmResObj;
+    SpriteResource *charResObj;
+    SpriteResource *plttResObj;
+    SpriteResource *cellResObj;
+    SpriteResource *animResObj;
+    SpriteResource *multiCellResObj;
+    SpriteResource *multiCellAnmResObj;
 };
 
 struct StarterChooseMonSpriteData {
@@ -157,7 +157,7 @@ struct StarterChooseMonSpriteData {
     void *plttDatas[3];
     struct PokepicTemplate pokepicTemplate;
     SpriteList *spriteList;
-    GF_G2dRenderer g2dRender;
+    G2dRenderer g2dRender;
     struct Sprite *sprites[3];
 };
 
@@ -248,7 +248,7 @@ static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
 static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
 static u16 calcBallTranslationArcStep(const fx32 *from, const fx32 *to, int step, int max);
 
-BOOL ChooseStarter_Init(OVY_MANAGER *ovy, int *state_p) {
+BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
     struct ChooseStarterAppWork *work;
     struct ChooseStarterArgs *args;
     int i;
@@ -310,7 +310,7 @@ static const int sSpecies[] = {
     SPECIES_TOTODILE,
 };
 
-BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
+BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     int cameraPathSel = CAMERA_PATH_NULL;
     int input;
@@ -535,7 +535,7 @@ BOOL ChooseStarter_Main(OVY_MANAGER *ovy, int *state) {
     return FALSE;
 }
 
-BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
+BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state) {
     struct ChooseStarterAppWork *work = OverlayManager_GetData(ovy);
     struct ChooseStarterArgs *args = OverlayManager_GetArgs(ovy);
 
@@ -564,7 +564,7 @@ BOOL ChooseStarter_Exit(OVY_MANAGER *ovy, int *state) {
     FreeBgTilemapBuffer(work->bgConfig, 4);
     FreeBgTilemapBuffer(work->bgConfig, 5);
     FreeBgTilemapBuffer(work->bgConfig, 6);
-    FreeToHeap(work->bgConfig);
+    Heap_Free(work->bgConfig);
     GF_3DVramMan_Delete(work->_3dMan);
     OverlayManager_FreeData(ovy);
     DestroyHeap(HEAP_ID_CHOOSE_STARTER);
@@ -581,8 +581,8 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
         DestroySingle2DGfxResObj(a0->plttResMan, a0->objs[i].plttResObj);
         DestroySingle2DGfxResObj(a0->cellResMan, a0->objs[i].cellResObj);
         DestroySingle2DGfxResObj(a0->animResMan, a0->objs[i].animResObj);
-        FreeToHeap(a0->charDatas[i]);
-        FreeToHeap(a0->plttDatas[i]);
+        Heap_Free(a0->charDatas[i]);
+        Heap_Free(a0->plttDatas[i]);
     }
 }
 
@@ -903,14 +903,14 @@ static BOOL selectedBallIsInSmallWobbleState(struct ChooseStarterAppWork *work) 
 
 static void free3dResHeader(struct ChooseStarter3dRes *res) {
     if (res->header != NULL) {
-        FreeToHeap(res->header);
+        Heap_Free(res->header);
     }
 }
 
 static void free3dAnmObj(struct ChooseStarterAnm *anm, NNSFndAllocator *alloc) {
     if (anm->hdr != NULL) {
         NNS_G3dFreeAnmObj(alloc, anm->obj);
-        FreeToHeap(anm->hdr);
+        Heap_Free(anm->hdr);
     }
 }
 
@@ -1065,7 +1065,7 @@ static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
 
 static void freeWindow(Window *window) {
     RemoveWindow(window);
-    FreeToHeap(window);
+    Heap_Free(window);
 }
 
 static int getInput(struct ChooseStarterAppWork *work) {
@@ -1191,8 +1191,8 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
 }
 
 static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx) {
-    GF_2DGfxResObj *charResObj = Get2DGfxResObjById(charResMan, idx);
-    GF_2DGfxResObj *plttResObj = Get2DGfxResObjById(plttResMan, idx);
+    SpriteResource *charResObj = SpriteResourceCollection_Find(charResMan, idx);
+    SpriteResource *plttResObj = SpriteResourceCollection_Find(plttResMan, idx);
     NNSG2dImageProxy *charProxy;
     const NNSG2dImagePaletteProxy *plttProxy;
     u32 imageloc;
@@ -1201,7 +1201,7 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     sub_0200ADA4(charResObj);
     sub_0200B00C(plttResObj);
     charProxy = sub_0200AF00(charResObj);
-    plttProxy = GF_PlttResObj_GetPlttProxy(plttResObj, charProxy);
+    plttProxy = SpriteTransfer_GetPaletteProxy(plttResObj, charProxy);
     imageloc = NNS_G2dGetImageLocation(charProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     plttloc = NNS_G2dGetImagePaletteLocation(plttProxy, NNS_G2D_VRAM_TYPE_2DSUB);
     DC_FlushRange(charData, 0xC80);
@@ -1232,19 +1232,19 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     pMonSpriteData->sprites[idx] = Sprite_CreateAffine(&template);
     Sprite_SetAnimActiveFlag(pMonSpriteData->sprites[idx], FALSE);
     Sprite_SetAnimCtrlSeq(pMonSpriteData->sprites[idx], 0);
-    Sprite_SetVisibleFlag(pMonSpriteData->sprites[idx], FALSE);
+    Sprite_SetDrawFlag(pMonSpriteData->sprites[idx], FALSE);
 }
 
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work) {
     setAllMonSpritesInvisible(&work->monSpriteData);
-    Sprite_SetVisibleFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
+    Sprite_SetDrawFlag(work->monSpriteData.sprites[work->curSelection], TRUE);
 }
 
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        Sprite_SetVisibleFlag(a0->sprites[i], FALSE);
+        Sprite_SetDrawFlag(a0->sprites[i], FALSE);
     }
 }
 

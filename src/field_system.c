@@ -25,14 +25,14 @@ FS_EXTERN_OVERLAY(intro_title);
 FS_EXTERN_OVERLAY(OVY_124);
 FS_EXTERN_OVERLAY(field);
 
-const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys = {
+const OverlayManagerTemplate gApplication_NewGameFieldsys = {
     .init = Field_NewGame_AppInit,
     .exec = Field_AppExec,
     .exit = Field_AppExit,
     .ovy_id = FS_OVERLAY_ID_NONE
 };
 
-const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys = {
+const OverlayManagerTemplate gApplication_ContinueFieldsys = {
     .init = Field_Continue_AppInit,
     .exec = Field_AppExec,
     .exit = Field_AppExit,
@@ -48,7 +48,7 @@ typedef struct UnkFieldSystemInit {
 
 static BOOL FieldSystem_Main(FieldSystem *fieldSystem);
 
-BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
+BOOL Field_Continue_AppInit(OverlayManager *man, int *unused) {
     FieldSystemInitWork *args = OverlayManager_GetArgs(man);
     sFieldSysPtr = FieldSystem_New(man);
 
@@ -63,28 +63,28 @@ BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused) {
     return TRUE;
 }
 
-BOOL Field_NewGame_AppInit(OVY_MANAGER *man, int *unused) {
+BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused) {
     sFieldSysPtr = FieldSystem_New(man);
     CallFieldTask_NewGame(sFieldSysPtr);
     return TRUE;
 }
 
-BOOL Field_AppExec(OVY_MANAGER *man, int *unused) {
+BOOL Field_AppExec(OverlayManager *man, int *unused) {
     if (FieldSystem_Main(OverlayManager_GetData(man))) {
         return TRUE;
     }
     return FALSE;
 }
 
-extern OVY_MGR_TEMPLATE gApplication_TitleScreen;
+extern OverlayManagerTemplate gApplication_TitleScreen;
 
-BOOL Field_AppExit(OVY_MANAGER *man, int *unused) {
+BOOL Field_AppExit(OverlayManager *man, int *unused) {
     FieldSystem_Delete(man);
     RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
     return TRUE;
 }
 
-extern OVY_MGR_TEMPLATE ov01_02206378;
+extern OverlayManagerTemplate ov01_02206378;
 
 void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem) {
     GF_ASSERT(fieldSystem->unk0->unk4 == NULL);
@@ -124,7 +124,7 @@ BOOL sub_0203DFA4(FieldSystem *fieldSystem) {
     return fieldSystem->unk0->unk4 != NULL;
 }
 
-void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OVY_MGR_TEMPLATE *template, void *parentWork) {
+void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManagerTemplate *template, void *parentWork) {
     GF_ASSERT(fieldSystem->unk0->unk4 == NULL);
 
     sub_0203DF34(fieldSystem);
@@ -132,7 +132,7 @@ void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OVY_MGR_TEMPL
     fieldSystem->unk0->unk4 = OverlayManager_New(template, parentWork, HEAP_ID_FIELD);
 }
 
-FieldSystem *FieldSystem_New(OVY_MANAGER *man) {
+FieldSystem *FieldSystem_New(OverlayManager *man) {
     CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
     CreateHeap(HEAP_ID_3, HEAP_ID_32, 0x4000);
     CreateHeap(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
@@ -154,21 +154,21 @@ FieldSystem *FieldSystem_New(OVY_MANAGER *man) {
     return fieldSystem;
 }
 
-void FieldSystem_Delete(OVY_MANAGER *man) {
+void FieldSystem_Delete(OverlayManager *man) {
     FieldSystem *fieldSystem = OverlayManager_GetData(man);
     MapMatrix_Free(fieldSystem->mapMatrix);
     Field_FreeMapEvents(fieldSystem);
-    FreeToHeap(fieldSystem->bagCursor);
+    Heap_Free(fieldSystem->bagCursor);
     sub_02092BD0(fieldSystem->unkA8);
-    sub_02092DD8(fieldSystem->phoneRingManager);
-    FreeToHeap(fieldSystem->unk0);
+    GearPhoneRingManager_Delete(fieldSystem->phoneRingManager);
+    Heap_Free(fieldSystem->unk0);
     OverlayManager_FreeData(man);
     DestroyHeap(HEAP_ID_89);
     DestroyHeap(HEAP_ID_FIELD);
     DestroyHeap(HEAP_ID_32);
 }
 
-static void ppOverlayManager_RunFrame_DeleteIfFinished(OVY_MANAGER **man) {
+static void ppOverlayManager_RunFrame_DeleteIfFinished(OverlayManager **man) {
     if (*man && OverlayManager_Run(*man)) {
         OverlayManager_Delete(*man);
         *man = NULL;
@@ -263,7 +263,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 if (newEvent != 2) {
-                    sub_02092FA8(fieldSystem->phoneRingManager);
+                    GearPhoneRingManager_ResetIfActive(fieldSystem->phoneRingManager);
                 }
             } else {
                 if (gSystem.newKeys & PAD_BUTTON_A) {

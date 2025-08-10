@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public sub_020062E0
 .public PlayFanfare
@@ -63,7 +63,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -117,13 +117,13 @@
 .public Sprite_Create
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_SetAnimSpeed
 .public Sprite_GetMatrixPtr
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPriority
-.public Sprite_IsCellAnimationRunning
+.public Sprite_IsAnimated
 .public GF_AssertFail
 .public String_New
 .public String_Delete

@@ -20,8 +20,8 @@ typedef struct NintendoWifiConnectArgs {
     int unk24;
 } NintendoWifiConnectArgs;
 
-BOOL NintendoWfc_Init(OVY_MANAGER *man, int *state);
-BOOL NintendoWfc_Main(OVY_MANAGER *man, int *state);
-BOOL NintendoWfc_Exit(OVY_MANAGER *man, int *state);
+BOOL NintendoWfc_Init(OverlayManager *man, int *state);
+BOOL NintendoWfc_Main(OverlayManager *man, int *state);
+BOOL NintendoWfc_Exit(OverlayManager *man, int *state);
 
 #endif // POKEHEARTGOLD_OVY_72_H

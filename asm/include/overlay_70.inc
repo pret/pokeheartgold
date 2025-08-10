@@ -8,7 +8,7 @@
 .public FontID_String_GetWidth
 .public LoadFontPal1
 .public BlendPalette
-.public sub_02004EC4
+.public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public StopSE
 .public CreateSysTaskAndEnvironment
@@ -113,7 +113,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -156,15 +156,15 @@
 .public Sprite_CreateAffine
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetVisibleFlag
+.public Sprite_SetDrawFlag
 .public Sprite_SetAnimActiveFlag
 .public Sprite_GetMatrixPtr
-.public Sprite_GetVisibleFlag
+.public Sprite_GetDrawFlag
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_GetAnimationNumber
 .public Sprite_SetPriority
-.public Sprite_SetPalIndex
-.public Sprite_IsCellAnimationRunning
+.public Sprite_SetPaletteOverride
+.public Sprite_IsAnimated
 .public Sprite_SetOamMode
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail

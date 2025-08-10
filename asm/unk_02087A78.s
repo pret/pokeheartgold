@@ -207,7 +207,7 @@ sub_02087BAC: ; 0x02087BAC
 	bl sub_0202FC24
 _02087BC2:
 	ldr r0, [r4, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #1
@@ -353,7 +353,7 @@ _02087CDA:
 	ldr r1, [r5, #0x10]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
 	bl BattleSetup_Delete
 	mov r0, #0
@@ -384,13 +384,13 @@ _02087D0C:
 	ldr r1, _02087E04 ; =0x0000047B
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	b _02087D46
 _02087D3C:
 	ldr r1, _02087E08 ; =0x0000045D
 	mov r0, #5
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 _02087D46:
 	ldr r0, _02087E0C ; =gOverlayTemplate_Battle
 	ldr r1, [r5, #0x10]
@@ -429,7 +429,7 @@ _02087D88:
 	ldr r1, [r5, #0x10]
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x10]
 	bl BattleSetup_Delete
 	ldr r0, [r5, #8]

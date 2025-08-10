@@ -3,10 +3,10 @@
 
 #include "overlay_manager.h"
 
-extern const OVY_MGR_TEMPLATE gApplication_DeleteSave;
+extern const OverlayManagerTemplate gApplication_DeleteSave;
 
-BOOL DeleteSavedataApp_Init(OVY_MANAGER *manager, int *state);
-BOOL DeleteSavedataApp_Main(OVY_MANAGER *manager, int *state);
-BOOL DeleteSavedataApp_Exit(OVY_MANAGER *manager, int *state);
+BOOL DeleteSavedataApp_Init(OverlayManager *manager, int *state);
+BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state);
+BOOL DeleteSavedataApp_Exit(OverlayManager *manager, int *state);
 
 #endif

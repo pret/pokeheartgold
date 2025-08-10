@@ -10,7 +10,7 @@
 .public sub_02014A60
 .public sub_02014A8C
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public G3X_SetHOffset
 .public memset

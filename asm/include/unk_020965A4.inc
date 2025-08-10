@@ -9,7 +9,7 @@
 .public OverlayManager_FreeData
 .public OverlayManager_GetArgs
 .public OverlayManager_Run
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public Frontier_GetLaunchParam
 .public sub_0209680C

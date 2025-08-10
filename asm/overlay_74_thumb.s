@@ -668,7 +668,7 @@ _022291D8:
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov74_02229190
 
@@ -728,7 +728,7 @@ ov74_02229200: ; 0x02229200
 	ldr r1, _02229290 ; =0x0000047E
 	mov r0, #9
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -1344,7 +1344,7 @@ _0222977A:
 	ldr r0, _02229A08 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02229A00 ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -1438,7 +1438,7 @@ _0222983C:
 	ldr r0, _02229A08 ; =0x00003170
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	bl ov74_02229084
 	mov r0, #0xb
@@ -1684,7 +1684,7 @@ _02229A4A:
 	ldr r0, _02229B58 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	bl sub_0200F450
@@ -1734,7 +1734,7 @@ _02229AB8:
 	ldr r0, _02229B58 ; =0x00003170
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -2187,7 +2187,7 @@ ov74_02229DF8: ; 0x02229DF8
 	ldr r1, _02229E10 ; =ov74_0223D0A4
 	mov r0, #0xf
 	ldr r1, [r1]
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	ldr r0, _02229E10 ; =ov74_0223D0A4
 	mov r1, #0
 	str r1, [r0]
@@ -2316,7 +2316,7 @@ _02229ED2:
 	mov r1, #5
 	bl FreeBgTilemapBuffer
 	ldr r0, [r7]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_02229E68
 
@@ -2363,7 +2363,7 @@ _02229F4E:
 	ldr r0, _02229F5C ; =0x000005C4
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -4320,7 +4320,7 @@ ov74_0222AE6C: ; 0x0222AE6C
 	ldr r1, _0222AF18 ; =0x0000047E
 	mov r0, #0xa
 	mov r2, #1
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #0x54
 	bl ov74_0223512C
 	bl ov74_02235230
@@ -4615,7 +4615,7 @@ _0222B114:
 	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0222B13C:
 	add r0, r4, #0
 	add sp, #0x30
@@ -4637,11 +4637,11 @@ ov74_0222B144: ; 0x0222B144
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -4649,7 +4649,7 @@ ov74_0222B144: ; 0x0222B144
 	ldr r0, _0222B198 ; =0x00003014
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	ldr r0, _0222B198 ; =0x00003014
 	ldr r0, [r4, r0]
 	bl Sprite_GetMatrixPtr
@@ -4678,11 +4678,11 @@ ov74_0222B19C: ; 0x0222B19C
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -4690,7 +4690,7 @@ ov74_0222B19C: ; 0x0222B19C
 	ldr r0, _0222B1F0 ; =0x00003060
 	mov r1, #2
 	ldr r0, [r4, r0]
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	ldr r0, _0222B1F0 ; =0x00003060
 	ldr r0, [r4, r0]
 	bl Sprite_GetMatrixPtr
@@ -4750,13 +4750,13 @@ _0222B232:
 	cmp r0, #0
 	beq _0222B242
 	add r1, r6, #0
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B242:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0222B24E
 	add r1, r6, #0
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B24E:
 	add r4, r4, #1
 	add r5, #0x4c
@@ -4769,7 +4769,7 @@ _0222B24E:
 	beq _0222B268
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B268:
 	ldr r1, _0222B284 ; =0x00003060
 	ldr r0, [sp]
@@ -4778,7 +4778,7 @@ _0222B268:
 	beq _0222B27A
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl Sprite_TickAnimCtrlFrame
+	bl Sprite_UpdateAnim
 _0222B27A:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4810,7 +4810,7 @@ _0222B292:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r4, r4, #1
 	add r5, #0x4c
 	cmp r4, #0x50
@@ -4844,7 +4844,7 @@ _0222B2CE:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	b _0222B300
 _0222B2FA:
 	add r0, r5, #0
@@ -4878,7 +4878,7 @@ _0222B316:
 	bl Sprite_TryChangeAnimSeq
 	ldr r0, [r5, r7]
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	add r4, r4, #1
 	add r5, #0x4c
 	cmp r4, #0x50
@@ -5193,7 +5193,7 @@ _0222B5A0:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B5F4 ; =ov74_0222BA48
 	ldr r1, [sp]
 	mov r2, #6
@@ -5373,7 +5373,7 @@ _0222B6AC:
 	add r0, #0x94
 	ldr r0, [r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B75C ; =ov74_0222BA48
 	add r1, r7, #0
 	mov r2, #6
@@ -5595,7 +5595,7 @@ _0222B8C0:
 	ldr r0, _0222B944 ; =0x00001854
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _0222B948 ; =ov74_0222BA48
 	add r1, r6, #0
 	mov r2, #6
@@ -5739,7 +5739,7 @@ ov74_0222BA48: ; 0x0222BA48
 	ldr r0, [r5, #0xc]
 	beq _0222BA66
 	mov r1, #0
-	bl Sprite_SetAnimCtrlCurrentFrame
+	bl Sprite_SetAnimationFrame
 	ldr r0, [r5, #0x30]
 	add sp, #0x24
 	sub r0, r0, #1
@@ -5747,7 +5747,7 @@ ov74_0222BA48: ; 0x0222BA48
 	pop {r4, r5, r6, r7, pc}
 _0222BA66:
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r5, #0xc]
 	bl Sprite_GetMatrixPtr
 	add r3, r0, #0
@@ -6567,7 +6567,7 @@ _0222C0DC:
 	ldr r0, _0222C2D8 ; =0x00003014
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0222C0EA:
 	cmp r6, #0
 	bne _0222C0F2
@@ -6697,13 +6697,13 @@ _0222C1CE:
 	str r1, [r0, #4]
 	ldr r0, _0222C2E4 ; =0x00003060
 	ldr r0, [r4, r0]
-	bl Sprite_GetVisibleFlag
+	bl Sprite_GetDrawFlag
 	cmp r0, #0
 	bne _0222C2D0
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222C2D0
 _0222C202:
 	mov r0, #7
@@ -6750,7 +6750,7 @@ _0222C250:
 	ldr r0, _0222C2E4 ; =0x00003060
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222C27E
 _0222C260:
 	cmp r5, #0x1e
@@ -6804,7 +6804,7 @@ _0222C2BC:
 	str r2, [r1]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 _0222C2D0:
 	add r0, r4, #0
@@ -8229,7 +8229,7 @@ ov74_0222CEC0: ; 0x0222CEC0
 	bl sub_02034DE0
 	ldr r0, _0222CEDC ; =ov74_0223D0A8
 	ldr r0, [r0, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203A914
 	ldr r0, _0222CEDC ; =ov74_0223D0A8
 	mov r1, #0
@@ -9824,7 +9824,7 @@ ov74_0222DB30: ; 0x0222DB30
 	add r3, r6, #0
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10078,7 +10078,7 @@ _0222DD40:
 	cmp r0, #0
 	beq _0222DDD4
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222DDD4
 _0222DD6A:
 	ldr r0, [sp, #0xc]
@@ -10123,9 +10123,9 @@ _0222DD6A:
 	ldr r0, _0222DDF0 ; =0x00002DCC
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _0222DDD4:
 	ldr r0, [sp, #0xc]
 	add r4, r4, #2
@@ -11825,7 +11825,7 @@ _0222EBA0:
 	bl FreeBgTilemapBuffer
 	ldr r0, _0222EBFC ; =0x000029FC
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222EC00 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222EC04 ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
@@ -11877,7 +11877,7 @@ ov74_0222EC08: ; 0x0222EC08
 	mov r1, #1
 	bl ov74_0222D824
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222EC54: .word 0x00003D54
@@ -12730,7 +12730,7 @@ ov74_0222F2D4: ; 0x0222F2D4
 	add r3, r6, #0
 	bl BG_LoadScreenTilemapData
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -12979,7 +12979,7 @@ _0222F4E4:
 	cmp r0, #0
 	beq _0222F56E
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0222F56E
 _0222F504:
 	ldr r0, [sp, #0xc]
@@ -13024,9 +13024,9 @@ _0222F504:
 	ldr r0, _0222F58C ; =0x00002D84
 	add r1, r1, #3
 	ldr r0, [r5, r0]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _0222F56E:
 	ldr r0, [sp, #0xc]
 	add r4, r4, #2
@@ -13828,7 +13828,7 @@ _0222FBE8:
 	bl FreeBgTilemapBuffer
 	ldr r0, _0222FC44 ; =0x000029FC
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0222FC48 ; =FS_OVERLAY_ID(OVY_74)
 	ldr r1, _0222FC4C ; =gApp_MainMenu_SelectOption_MysteryGift
 	bl RegisterMainOverlay
@@ -13878,7 +13878,7 @@ ov74_0222FC50: ; 0x0222FC50
 	mov r2, #0
 	bl ov74_0222F024
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0222FC98: .word 0x00003D0C
@@ -18458,7 +18458,7 @@ ov74_02231E00: ; 0x02231E00
 	cmp r0, #0
 	bne _02231E34
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02231E34:
@@ -18591,9 +18591,9 @@ ov74_02231EC4: ; 0x02231EC4
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r1, #8
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov74_02231EC4
 
@@ -18687,7 +18687,7 @@ _02231FC0:
 	bl GX_LoadOBJ
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #4]
-	bl Sprite_SetPalIndex
+	bl Sprite_SetPaletteOverride
 _02231FE4:
 	add r4, r4, #1
 	add r5, r5, r7
@@ -18774,7 +18774,7 @@ _02232016:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, _02232140 ; =0x0000E880
 	ldr r1, _02232144 ; =0x0000E884
 	ldr r0, [r6, r0]
@@ -18795,14 +18795,14 @@ _02232016:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0223210A
 _022320CC:
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _0223210A
 _022320DA:
 	mov r0, #0
@@ -18820,12 +18820,12 @@ _022320DA:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _0223210A:
 	ldr r0, [sp, #0xc]
 	add r7, r7, #1
@@ -18837,7 +18837,7 @@ _0223210A:
 	b _02232016
 _0223211A:
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x10]
 	bl NARC_Delete
 	ldr r1, _0223214C ; =ov74_02231FB0
@@ -18928,7 +18928,7 @@ _022321B2:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r1, r4, #0
@@ -18975,7 +18975,7 @@ _0223221C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -19040,7 +19040,7 @@ ov74_02232284: ; 0x02232284
 	bl Sprite_SetPriority
 	ldr r1, [sp, #0x48]
 	add r0, r4, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
@@ -19302,7 +19302,7 @@ ov74_022324A0: ; 0x022324A0
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _022324CC
-	bl Sprite_GetVisibleFlag
+	bl Sprite_GetDrawFlag
 	cmp r0, #0
 	bne _022324CC
 	add sp, #0x14
@@ -19433,7 +19433,7 @@ _0223256A:
 	bl Sprite_SetMatrix
 	ldr r0, [r5, r7]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0xf3
 	add r3, r4, r7
 	lsl r1, r1, #2
@@ -19466,7 +19466,7 @@ _022325F0:
 	lsl r0, r0, #2
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r2, #0
 	mov r1, #0xf3
 	mvn r2, r2
@@ -19514,14 +19514,14 @@ _02232636:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	b _02232668
 _0223265C:
 	mov r0, #0xf2
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _02232668:
 	add r4, r4, #1
 	add r5, #0xc
@@ -20203,10 +20203,10 @@ _02232BE2:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r5, r5, #1
 	add r4, #0xc
 	cmp r5, #0x1e
@@ -20218,7 +20218,7 @@ _02232BE2:
 _02232C06:
 	ldr r0, [r4, r7]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r5, r5, #1
 	add r4, #0xc
 	cmp r5, #6
@@ -20227,17 +20227,17 @@ _02232C06:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r2, #0x61
 	lsl r2, r2, #2
 	add r0, sp, #0x1c
@@ -20277,7 +20277,7 @@ _02232C54:
 	ldr r0, _02232D94 ; =0x00000414
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r1, #0x3d
 	mov r2, #0xf3
 	lsl r1, r1, #4
@@ -20442,17 +20442,17 @@ _02232DCE:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xee
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xea
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0xf3
 	mov r5, #0
 	lsl r0, r0, #2
@@ -21017,7 +21017,7 @@ ov74_02233230: ; 0x02233230
 	str r0, [r4, r1]
 	ldr r1, _022332E8 ; =0x0000047E
 	mov r0, #9
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	bl OS_IsTickAvailable
 	cmp r0, #0
 	bne _022332C6
@@ -21772,7 +21772,7 @@ ov74_022338D4: ; 0x022338D4
 	ldr r0, [r4, r0]
 	bl String_Delete
 	ldr r0, [r4, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _0223391C ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02233920 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
@@ -25171,7 +25171,7 @@ _02235182:
 	mov r0, #0
 	bl CTRDG_Enable
 	ldr r0, _022351F0 ; =ov74_02235138
-	ldr r1, _022351F4 ; =FreeToHeap
+	ldr r1, _022351F4 ; =Heap_Free
 	bl CRYPTO_SetAllocator
 	ldr r1, _022351E8 ; =0x000004A8
 	ldr r3, _022351F8 ; =_0223B690
@@ -25203,7 +25203,7 @@ _022351E4: .word ov74_0223CE9C
 _022351E8: .word 0x000004A8
 _022351EC: .word 0x08020000
 _022351F0: .word ov74_02235138
-_022351F4: .word FreeToHeap
+_022351F4: .word Heap_Free
 _022351F8: .word _0223B690
 	thumb_func_end ov74_0223514C
 
@@ -26145,7 +26145,7 @@ ov74_022358C8: ; 0x022358C8
 	bne _02235918
 	sub r0, r0, #4
 	ldr r0, [r4, r0]
-	bl Sprite_GetVisibleFlag
+	bl Sprite_GetDrawFlag
 	cmp r0, #0
 	bne _022358FC
 	cmp r5, #0
@@ -26154,7 +26154,7 @@ ov74_022358C8: ; 0x022358C8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 _022358FC:
 	mov r0, #0x82
 	lsl r0, r0, #2
@@ -26249,7 +26249,7 @@ _02235992:
 	bl Sprite_SetAnimCtrlSeq
 	add r0, r4, #0
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r0, r4, #0
 	add sp, #0x30
 	pop {r3, r4, r5, pc}
@@ -26821,7 +26821,7 @@ ov74_02235DC4: ; 0x02235DC4
 	lsl r3, r3, #8
 	bl BG_LoadScreenTilemapData
 	ldr r0, [sp, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x20
 	str r0, [sp]
 	mov r0, #0x18
@@ -26897,7 +26897,7 @@ _02235EAE:
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -26927,7 +26927,7 @@ ov74_02235ED0: ; 0x02235ED0
 	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #4
 	bl OS_GetMacAddress
 	add r0, sp, #4
@@ -26962,7 +26962,7 @@ _02235F12:
 	add r3, r7, #0
 	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -26990,7 +26990,7 @@ ov74_02235F58: ; 0x02235F58
 	bl MATH_CalcCRC16
 	add r6, r0, #0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	bl sub_02035754
 	ldrb r2, [r0, #4]
@@ -27037,7 +27037,7 @@ _02235FB2:
 	add r3, r7, #0
 	bl CRYPTO_RC4Encrypt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -28367,7 +28367,7 @@ ov74_022369C8: ; 0x022369C8
 	beq _022369D6
 	sub r0, r1, #4
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 _022369D6:
 	pop {r3, pc}
 	thumb_func_end ov74_022369C8

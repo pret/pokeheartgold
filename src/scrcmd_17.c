@@ -148,7 +148,7 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx) {
         break;
     }
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -169,7 +169,7 @@ BOOL ScrCmd_FlashAction(ScriptContext *ctx) {
         break;
     }
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }
@@ -191,7 +191,7 @@ BOOL ScrCmd_DefogAction(ScriptContext *ctx) {
         break;
     }
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
     return FALSE;
 }

@@ -134,7 +134,7 @@ static void InitPalParkMonsData(FieldSystem *fieldSystem, struct PalParkLocal *p
         palpark->mons[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
         palpark->mons[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
     }
-    FreeToHeap(mon);
+    Heap_Free(mon);
 }
 
 static int CountCaughtMons(struct PalParkLocal *palpark) {
@@ -219,7 +219,7 @@ static BOOL TryEncounter(FieldSystem *fieldSystem, struct PalParkLocal *palpark,
     }
 
     // In theory, this is unreachable.
-    GF_ASSERT(0);
+    GF_ASSERT(FALSE);
     return FALSE;
 }
 
@@ -231,7 +231,7 @@ static void HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup, struct
     case BATTLE_OUTCOME_PLAYER_FLED:
         break;
     default:
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
     }
 }
 
@@ -242,7 +242,7 @@ static BattleSetup *SetupEncounter(FieldSystem *fieldSystem, struct PalParkLocal
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
     GetMigratedPokemonByIndex(migratedMons, palpark->encounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return ret;
 }
 

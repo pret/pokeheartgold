@@ -21,11 +21,11 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetScale
+.public Sprite_SetAffineScale
 .public Sprite_SetScaleAndAffineType
-.public Sprite_SetRotation
-.public Sprite_SetVisibleFlag
-.public Sprite_SetAffineOverwriteType
+.public Sprite_SetAffineZRotation
+.public Sprite_SetDrawFlag
+.public Sprite_SetAffineOverwriteMode
 .public Sprite_GetMatrixPtr
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetDrawPriority

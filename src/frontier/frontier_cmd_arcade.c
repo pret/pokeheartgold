@@ -49,7 +49,7 @@ BOOL FrtCmd_ArcadeFree(FrontierContext *ctx) {
     return FALSE;
 }
 
-extern OVY_MGR_TEMPLATE gOverlayTemplate_BattleArcadeGameBoard;
+extern OverlayManagerTemplate gOverlayTemplate_BattleArcadeGameBoard;
 
 BOOL FrtCmd_LaunchGameBoard(FrontierContext *ctx) {
     FrontierLaunchParam *param = Frontier_GetLaunchParam(ctx->frontierSystem->unk0);
@@ -178,7 +178,7 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 static void ov80_02233A1C(void *data) {
     GAME_BOARD_ARGS *args = data;
     ov80_02234550(args->work, args);
-    FreeToHeap(args);
+    Heap_Free(args);
 }
 
 BOOL FrtCmd_ArcadeSetPartyBeforeBattle(FrontierContext *ctx) {
@@ -386,11 +386,11 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
         break;
     case 44:
         if (var0 == 0) {
-            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, 0, 0x100, var0, 0);
+            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, 0, 0x100, var0, RGB_BLACK);
         } else {
             UnkStruct_02239938 *unkStruct = ov80_02239938(ctx->frontierSystem->unk0, var1);
             u32 palNo = ov42_02229248(unkStruct->unk4);
-            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, palNo * 0x10, 0x10, var0, 0);
+            PaletteData_BlendPalette(frontierMap->paletteData, PLTTBUF_MAIN_OBJ, palNo * 0x10, 0x10, var0, RGB_BLACK);
         }
         break;
     case 45:

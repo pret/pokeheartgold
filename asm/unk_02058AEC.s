@@ -252,7 +252,7 @@ _02058CBE:
 	add r0, #0x3c
 	strb r1, [r0]
 	ldr r0, [r4, #4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #1
@@ -276,7 +276,7 @@ _02058CEA:
 	add r0, #0x3c
 	strb r1, [r0]
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4]
 	mov r0, #1
@@ -500,7 +500,7 @@ _02058E9C:
 	add r0, r4, #0
 	bl sub_02059650
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -508,7 +508,7 @@ _02058EAE:
 	add r0, r4, #0
 	bl sub_02059650
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_02057F70
 	add sp, #8
 	mov r0, #1
@@ -1445,17 +1445,17 @@ sub_02059650: ; 0x02059650
 	ldr r0, [r4, #0x50]
 	cmp r0, #0
 	beq _0205965E
-	bl FreeToHeap
+	bl Heap_Free
 _0205965E:
 	ldr r0, [r4, #0x4c]
 	cmp r0, #0
 	beq _02059668
-	bl FreeToHeap
+	bl Heap_Free
 _02059668:
 	ldr r0, [r4, #0x48]
 	cmp r0, #0
 	beq _02059672
-	bl FreeToHeap
+	bl Heap_Free
 _02059672:
 	ldr r0, [r4, #0x2c]
 	bl DestroyMsgData
@@ -2341,7 +2341,7 @@ _02059D08:
 _02059D24:
 	bl sub_02057F70
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02059D32:
@@ -2949,7 +2949,7 @@ sub_0205A1D4: ; 0x0205A1D4
 	ldr r0, [r4, #0xc]
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x1f
 	bl DestroyHeap
 _0205A1EC:

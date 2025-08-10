@@ -63,7 +63,7 @@ _02018098:
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _020180A2
-	bl FreeToHeap
+	bl Heap_Free
 _020180A2:
 	mov r1, #0x10
 	mov r0, #0
@@ -128,7 +128,7 @@ sub_020180F8: ; 0x020180F8
 	cmp r0, #0
 	bne _02018116
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 _02018116:
 	mov r1, #0x14
 	mov r0, #0

@@ -26,15 +26,15 @@ enum IntroMovieOverlayState {
     INTRO_MOVIE_DONE
 };
 
-static BOOL IntroMovie_Init(OVY_MANAGER *man, int *state);
-static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state);
-static BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state);
+static BOOL IntroMovie_Init(OverlayManager *man, int *state);
+static BOOL IntroMovie_Main(OverlayManager *man, int *state);
+static BOOL IntroMovie_Exit(OverlayManager *man, int *state);
 static void IntroMovie_SetGraphicsBanks(void);
 static void IntroMovie_HandleSpriteUpdates(IntroMovieOverlayData *data);
 static void IntroMovie_InitSpriteGraphicsHW(IntroMovieOverlayData *data);
 static void IntroMovie_TeardownSpritesManager(IntroMovieOverlayData *data);
 
-const OVY_MGR_TEMPLATE gApplication_IntroMovie = { IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE };
+const OverlayManagerTemplate gApplication_IntroMovie = { IntroMovie_Init, IntroMovie_Main, IntroMovie_Exit, FS_OVERLAY_ID_NONE };
 
 static BOOL (*sIntroMovieSceneFuncs[])(IntroMovieOverlayData *data, void *pVoid) = {
     IntroMovie_Scene1,
@@ -50,7 +50,7 @@ HeapID _deadstrip_00(int idx) {
     return sDeadstrippedRodata[idx];
 }
 
-static BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
+static BOOL IntroMovie_Init(OverlayManager *man, int *state) {
     ScreenBrightnessData_InitAll();
     sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
@@ -76,7 +76,7 @@ static BOOL IntroMovie_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
+static BOOL IntroMovie_Main(OverlayManager *man, int *state) {
     IntroMovieOverlayData *data = OverlayManager_GetData(man);
     if (data->skipAllowed && ((gSystem.newKeys & PAD_BUTTON_A) || (gSystem.newKeys & PAD_BUTTON_START) || gSystem.touchNew)) {
         data->introSkipped = TRUE;
@@ -88,7 +88,7 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     switch (*state) {
     case INTRO_MOVIE_INIT:
         data->scene1Data.skipAllowedPtr = &data->skipAllowed;
-        sub_02004EC4(2, SEQ_GS_TITLE, 1);
+        Sound_SetSceneAndPlayBGM(2, SEQ_GS_TITLE, 1);
         ++(*state);
         break;
     case INTRO_MOVIE_RUN:
@@ -118,14 +118,14 @@ static BOOL IntroMovie_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-static BOOL IntroMovie_Exit(OVY_MANAGER *man, int *state) {
+static BOOL IntroMovie_Exit(OverlayManager *man, int *state) {
     int i;
 
     IntroMovieOverlayData *data = OverlayManager_GetData(man);
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     IntroMovie_TeardownSpritesManager(data);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
     if (data->bgAnimCnt.blend[0].task != NULL) {
         SysTask_Destroy(data->bgAnimCnt.blend[0].task);
         data->bgAnimCnt.blend[0].task = NULL;

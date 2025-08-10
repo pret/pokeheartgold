@@ -312,57 +312,57 @@ ov01_0220724C:
 
 	.public ov01_02207260
 ov01_02207260: ; 0x02207260
-	.byte 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00
-	.byte 0xFF, 0x00, 0x00, 0x00
+	.word 0x00000000, 0x00000001, 0x00000002, 0x0000000A
+	.word 0x000000FF
 
 	.public ov01_02207274
 ov01_02207274:
-	.word 0x00000106
-	.word 0x00000107
-	.word 0x00000108
-	.word 0x00000109
-	.word 0x0000010A
-	.word 0x0000010B
-	.word 0x0000010C
-	.word 0x0000010D
+	.word SPRITE_BONGURI
+	.word SPRITE_BONGURI_R
+	.word SPRITE_BONGURI_Y
+	.word SPRITE_BONGURI_B
+	.word SPRITE_BONGURI_G
+	.word SPRITE_BONGURI_P
+	.word SPRITE_BONGURI_W
+	.word SPRITE_BONGURI_BK
 
 	.public ov01_02207294
 ov01_02207294: ; 0x02207294
-	.short 0x0000, 0x010A
-	.short 0x0001, 0x010B
-	.short 0x0002, 0x010C
-	.short 0x0005, 0x010D
-	.short 0x0006, 0x010E
-	.short 0x000B, 0x010F
-	.short 0x0007, 0x0110
-	.short 0x0008, 0x0111
-	.short 0x0009, 0x0112
-	.short 0x000A, 0x010D
-	.short 0x000C, 0x0114
-	.short 0x000D, 0x0116
-	.short 0x000F, 0x0117
+	.short 0x0000, 0x010A // NARC_mmodel_mmodel_00000266_NSBMD
+	.short 0x0001, 0x010B // NARC_mmodel_mmodel_00000267_NSBMD
+	.short 0x0002, 0x010C // NARC_mmodel_mmodel_00000268_NSBMD
+	.short 0x0005, 0x010D // NARC_mmodel_mmodel_00000269_NSBMD
+	.short 0x0006, 0x010E // NARC_mmodel_mmodel_00000270_NSBMD
+	.short 0x000B, 0x010F // NARC_mmodel_mmodel_00000271_NSBMD
+	.short 0x0007, 0x0110 // NARC_mmodel_mmodel_00000272_NSBMD
+	.short 0x0008, 0x0111 // NARC_mmodel_mmodel_00000273_NSBMD
+	.short 0x0009, 0x0112 // NARC_mmodel_mmodel_00000274_NSBMD
+	.short 0x000A, 0x010D // NARC_mmodel_mmodel_00000269_NSBMD
+	.short 0x000C, 0x0114 // NARC_mmodel_mmodel_00000276_NSBMD
+	.short 0x000D, 0x0116 // NARC_mmodel_mmodel_00000278_NSBMD
+	.short 0x000F, 0x0117 // NARC_mmodel_mmodel_00000279_NSBMD
 	.short 0x00FF, 0x0000
 
 	.public ov01_022072CC
 ov01_022072CC: ; 0x022072CC
-	.short 0x0000, 0x0118
-	.short 0x0001, 0x0119
-	.short 0x0003, 0x011A
-	.short 0x0004, 0x011B
-	.short 0x0005, 0x011C
-	.short 0x0006, 0x011D
-	.short 0x000A, 0x011E
-	.short 0x0017, 0x011F
-	.short 0x000B, 0x0120
-	.short 0x000D, 0x0121
-	.short 0x000E, 0x0122
-	.short 0x000F, 0x0123
-	.short 0x0015, 0x0124
-	.short 0x0016, 0x0124
-	.short 0x0018, 0x0125
-	.short 0x001A, 0x0126
-	.short 0x001B, 0x0127
-	.short 0x001C, 0x0128
+	.short 0x0000, 0x0118 // NARC_mmodel_mmodel_00000280_bin
+	.short 0x0001, 0x0119 // NARC_mmodel_mmodel_00000281_bin
+	.short 0x0003, 0x011A // NARC_mmodel_mmodel_00000282_bin
+	.short 0x0004, 0x011B // NARC_mmodel_mmodel_00000283_bin
+	.short 0x0005, 0x011C // NARC_mmodel_mmodel_00000284_bin
+	.short 0x0006, 0x011D // NARC_mmodel_mmodel_00000285_bin
+	.short 0x000A, 0x011E // NARC_mmodel_mmodel_00000286_bin
+	.short 0x0017, 0x011F // NARC_mmodel_mmodel_00000287_bin
+	.short 0x000B, 0x0120 // NARC_mmodel_mmodel_00000288_bin
+	.short 0x000D, 0x0121 // NARC_mmodel_mmodel_00000289_bin
+	.short 0x000E, 0x0122 // NARC_mmodel_mmodel_00000290_bin
+	.short 0x000F, 0x0123 // NARC_mmodel_mmodel_00000291_bin
+	.short 0x0015, 0x0124 // NARC_mmodel_mmodel_00000292_bin
+	.short 0x0016, 0x0124 // NARC_mmodel_mmodel_00000292_bin
+	.short 0x0018, 0x0125 // NARC_mmodel_mmodel_00000293_bin
+	.short 0x001A, 0x0126 // NARC_mmodel_mmodel_00000294_bin
+	.short 0x001B, 0x0127 // NARC_mmodel_mmodel_00000295_bin
+	.short 0x001C, 0x0128 // NARC_mmodel_mmodel_00000296_bin
 	.short 0x00FF, 0x0000
 
 	.public ov01_02207318

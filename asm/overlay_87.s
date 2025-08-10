@@ -79,7 +79,7 @@ _021E5980:
 	mov r0, #0x42
 	add r2, r1, #0
 	str r1, [r7]
-	bl sub_02004EC4
+	bl Sound_SetSceneAndPlayBGM
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1933,11 +1933,11 @@ _021E6816:
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xe3
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	add r0, #0x5c
 	bl ov87_021E80F0
@@ -2346,7 +2346,7 @@ ov87_021E6BB8: ; 0x021E6BB8
 	mov r1, #2
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov87_021E6BB8
 
@@ -2646,7 +2646,7 @@ ov87_021E6E44: ; 0x021E6E44
 	mov r2, #0xa0
 	bl GXS_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2674,7 +2674,7 @@ ov87_021E6E78: ; 0x021E6E78
 	lsl r2, r2, #6
 	bl GX_LoadBGPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -4920,7 +4920,7 @@ _021E7F38:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #3
-	bl Get2DGfxResObjById
+	bl SpriteResourceCollection_Find
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4992,18 +4992,18 @@ ov87_021E7FC0: ; 0x021E7FC0
 	ldr r0, [r4, #0xc]
 	bl Sprite_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	pop {r4, pc}
 	thumb_func_end ov87_021E7FC0
 
 	thumb_func_start ov87_021E7FD4
 ov87_021E7FD4: ; 0x021E7FD4
-	ldr r3, _021E7FDC ; =Sprite_SetVisibleFlag
+	ldr r3, _021E7FDC ; =Sprite_SetDrawFlag
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E7FDC: .word Sprite_SetVisibleFlag
+_021E7FDC: .word Sprite_SetDrawFlag
 	thumb_func_end ov87_021E7FD4
 
 	thumb_func_start ov87_021E7FE0
@@ -5138,11 +5138,11 @@ _021E80B0: .word Sprite_SetMosaic
 
 	thumb_func_start ov87_021E80B4
 ov87_021E80B4: ; 0x021E80B4
-	ldr r3, _021E80BC ; =Sprite_IsCellAnimationRunning
+	ldr r3, _021E80BC ; =Sprite_IsAnimated
 	ldr r0, [r0, #0xc]
 	bx r3
 	nop
-_021E80BC: .word Sprite_IsCellAnimationRunning
+_021E80BC: .word Sprite_IsAnimated
 	thumb_func_end ov87_021E80B4
 
 	thumb_func_start ov87_021E80C0

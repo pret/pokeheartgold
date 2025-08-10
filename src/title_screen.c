@@ -81,9 +81,9 @@ struct CameraScript {
     int duration;
 };
 
-static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state);
-static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state);
-static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state);
+static BOOL TitleScreen_Init(OverlayManager *man, int *state);
+static BOOL TitleScreen_Main(OverlayManager *man, int *state);
+static BOOL TitleScreen_Exit(OverlayManager *man, int *state);
 static void TitleScreen_VBlankCB(void *pVoid);
 static void TitleScreen_SetGfxBanks(void);
 static void TitleScreen_Create3DVramMan(TitleScreenOverlayData *data);
@@ -105,9 +105,9 @@ static fx32 fx32_abs(fx32 x);
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData);
 static void TitleScreenAnim_FadeInGameTitleLayer(TitleScreenAnimData *animData);
 
-const OVY_MGR_TEMPLATE gApplication_TitleScreen = { TitleScreen_Init, TitleScreen_Main, TitleScreen_Exit, FS_OVERLAY_ID_NONE };
+const OverlayManagerTemplate gApplication_TitleScreen = { TitleScreen_Init, TitleScreen_Main, TitleScreen_Exit, FS_OVERLAY_ID_NONE };
 
-static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Init(OverlayManager *man, int *state) {
     sub_0200FBF4(PM_LCD_TOP, RGB_WHITE);
     sub_0200FBF4(PM_LCD_BOTTOM, RGB_WHITE);
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -134,7 +134,7 @@ static BOOL TitleScreen_Init(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
     TitleScreenOverlayData *data = OverlayManager_GetData(man);
     switch (*state) {
     case TITLESCREEN_MAIN_WAIT_FADE:
@@ -147,7 +147,7 @@ static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
         break;
     case TITLESCREEN_MAIN_START_MUSIC:
         sub_02004AD8(0);
-        sub_02004EC4(1, SEQ_GS_POKEMON_THEME, 1);
+        Sound_SetSceneAndPlayBGM(1, SEQ_GS_POKEMON_THEME, 1);
         *state = (int)TITLESCREEN_MAIN_PLAY;
         break;
     case TITLESCREEN_MAIN_PLAY:
@@ -231,7 +231,7 @@ static BOOL TitleScreen_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-static BOOL TitleScreen_Exit(OVY_MANAGER *man, int *state) {
+static BOOL TitleScreen_Exit(OverlayManager *man, int *state) {
     TitleScreenOverlayData *data = OverlayManager_GetData(man);
     HeapID heapID = data->heapID;
     int exitMode = data->exitMode;
@@ -358,10 +358,10 @@ static void TitleScreen_Unload3DObjects(TitleScreenAnimObject *animObj) {
     for (int i = 0; i < 4; ++i) {
         if (animObj->_3dAnmObjs[i] != NULL) {
             NNS_G3dFreeAnmObj(&animObj->allocator, animObj->_3dAnmObjs[i]);
-            FreeToHeap(animObj->_3dResObjsArc[i]);
+            Heap_Free(animObj->_3dResObjsArc[i]);
         }
     }
-    FreeToHeap(animObj->resFileHeader);
+    Heap_Free(animObj->resFileHeader);
 }
 
 static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 frameBy) {
@@ -481,7 +481,7 @@ static void TitleScreen_ReleaseBgs(TitleScreenOverlayData *data) {
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_SUB_3);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static const WindowTemplate sTouchToStartWindow = { GF_BG_LYR_MAIN_3, 0, 18, 32, 2, 2, 0x001 };

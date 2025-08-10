@@ -143,7 +143,7 @@ _02066FC4:
 	ldrb r0, [r0]
 	strb r0, [r5, #0xd]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	str r1, [r0]
@@ -234,7 +234,7 @@ _0206709A:
 	ldr r0, [r0]
 	ldrb r1, [r0, #0x14]
 	strb r1, [r4, #0xd]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [r4, #0x14]
 	mov r0, #0
 	str r0, [r1]
@@ -289,7 +289,7 @@ _02067100:
 	str r0, [r4, #4]
 	b _02067112
 _0206710A:
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02067112:
@@ -373,7 +373,7 @@ _0206719E:
 	ldr r0, [r0, #0x20]
 	str r0, [r4]
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #2
 	pop {r4, pc}
 	.balign 4, 0
@@ -413,7 +413,7 @@ _020671E6:
 	ldr r1, [r4]
 	strh r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _020671FC:
@@ -498,7 +498,7 @@ _02067290:
 	strh r0, [r4]
 _0206729A:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02067238

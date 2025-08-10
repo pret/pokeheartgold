@@ -62,7 +62,7 @@ typedef struct UnkStruct_0206BCD4 {
     u8 filler05[15];
 } UnkStruct_0206BCD4;
 
-static const OVY_MGR_TEMPLATE _020FF480 = {
+static const OverlayManagerTemplate _020FF480 = {
     .init = ov57_022378DC,
     .exec = ov57_02237AF8,
     .exit = ov57_02237B20,
@@ -164,9 +164,9 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         r7->state = 6;
         break;
     case 6:
-        FreeToHeap(r7->partyMenu);
-        FreeToHeap(r7->unk04);
-        FreeToHeap(r7);
+        Heap_Free(r7->partyMenu);
+        Heap_Free(r7->unk04);
+        Heap_Free(r7);
         return TRUE;
     }
     return FALSE;
@@ -208,7 +208,7 @@ BOOL ScrCmd_234(ScriptContext *ctx) {
 BOOL ScrCmd_235(ScriptContext *ctx) {
     UnkStruct_0206BCD4 **unkStruct = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 unused = ScriptGetVar(ctx);
-    u16 unused2 = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
+    u32 unused2 = MapHeader_GetMapSec(ctx->fieldSystem->location->mapId);
     sub_0206BD00(*unkStruct);
     return FALSE;
 }
@@ -251,6 +251,6 @@ static UnkStruct_0206BCD4 *sub_0206BCEC(UnkStruct_0206BCEC *unused) {
 }
 
 static void sub_0206BD00(UnkStruct_0206BCD4 *a0) {
-    FreeToHeap(a0);
+    Heap_Free(a0);
     DestroyHeap(HEAP_ID_20);
 }

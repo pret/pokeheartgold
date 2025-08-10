@@ -4,7 +4,7 @@
 .public SysTask_Destroy
 .public GF_RTC_CopyDateTime
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public sub_02033250
 .public sub_02033298

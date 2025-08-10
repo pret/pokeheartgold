@@ -184,7 +184,7 @@ ov01_021FC14C: ; 0x021FC14C
 	mov r3, #0x20
 	bl BG_LoadCharTilesData
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r2, _021FC1A0 ; =0x00006001
 	add r0, r5, #0
 	mov r1, #2
@@ -389,7 +389,7 @@ ov01_021FC2F0: ; 0x021FC2F0
 	str r0, [r4]
 _021FC302:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FC2F0

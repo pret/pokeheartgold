@@ -171,7 +171,7 @@ NARC *NARC_New(NarcId narc_id, HeapID heapId) {
 
 void NARC_Delete(NARC *narc) {
     FS_CloseFile(&narc->file);
-    FreeToHeap(narc); // free to heap
+    Heap_Free(narc); // free to heap
 }
 
 void *NARC_AllocAndReadWholeMember(NARC *narc, u32 file_id, HeapID heapId) {

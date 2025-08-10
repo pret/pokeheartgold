@@ -94,7 +94,7 @@ static void ov84_0223F8E4(Window *window);
 static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work);
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work);
 
-BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
+BOOL BattleArcadeGameBoard_InitOverlay(OverlayManager *man, int *state) {
     int i;
     GAME_BOARD_WORK *work;
     GAME_BOARD_ARGS *args;
@@ -155,7 +155,7 @@ BOOL BattleArcadeGameBoard_InitOverlay(OVY_MANAGER *man, int *state) {
     return TRUE;
 }
 
-BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
+BOOL BattleArcadeGameBoard_Main(OverlayManager *man, int *state) {
     GAME_BOARD_WORK *work = OverlayManager_GetData(man);
 
     if (work->unkE != 0xff && *state == 1) {
@@ -209,7 +209,7 @@ BOOL BattleArcadeGameBoard_Main(OVY_MANAGER *man, int *state) {
     return FALSE;
 }
 
-BOOL ov84_0223DFF0(OVY_MANAGER *man, int *state) {
+BOOL ov84_0223DFF0(OverlayManager *man, int *state) {
     GAME_BOARD_WORK *work = OverlayManager_GetData(man);
 
     *work->returnWork = work->cursorPos;
@@ -285,7 +285,7 @@ static BOOL BattleArcadeGameBoard_Init(GAME_BOARD_WORK *work) {
                 work->substate++;
             }
         } else {
-            BeginNormalPaletteFade(0, 1, 1, 0, 6, 3, HEAP_ID_GAME_BOARD);
+            BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
             work->substate++;
         }
         break;
@@ -293,7 +293,7 @@ static BOOL BattleArcadeGameBoard_Init(GAME_BOARD_WORK *work) {
         if (BattleArcade_MultiplayerCheck(work->type) == TRUE) {
             if (work->unkF >= 2) {
                 work->unkF = 0;
-                BeginNormalPaletteFade(0, 1, 1, 0, 6, 3, HEAP_ID_GAME_BOARD);
+                BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 3, HEAP_ID_GAME_BOARD);
                 work->substate++;
             }
         } else {
@@ -476,7 +476,7 @@ static BOOL BattleArcadeGameBoard_EndMulti(GAME_BOARD_WORK *work) {
 static BOOL BattleArcadeGameBoard_End(GAME_BOARD_WORK *work) {
     switch (work->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, 0, 6, 1, HEAP_ID_GAME_BOARD);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_GAME_BOARD);
         work->substate++;
         break;
     case 1:
@@ -640,7 +640,7 @@ static void ov84_0223E958(BgConfig *config) {
     FreeBgTilemapBuffer(config, 3);
     FreeBgTilemapBuffer(config, 1);
     FreeBgTilemapBuffer(config, 4);
-    FreeToHeap(config);
+    Heap_Free(config);
 }
 
 static void BattleArcade_VBlank(void *_work) {
@@ -725,7 +725,7 @@ static void ov84_0223EB44(void) {
     DC_FlushRange(dat->pRawData, 224);
     GX_LoadBGPltt(dat->pRawData, 0, 224);
 
-    FreeToHeap(buffer);
+    Heap_Free(buffer);
 }
 
 static void ov84_0223EB78(GAME_BOARD_WORK *work, GFBgLayer layer) {
@@ -1397,12 +1397,12 @@ static BATTLE_ARCADE_OBJECT *BattleArcadeObject_Create(GAME_BOARD_SUB_3E8 *work,
 
 static void *BattleArcadeObj_Delete(BATTLE_ARCADE_OBJECT *obj) {
     Sprite_Delete(obj->sprite);
-    FreeToHeap(obj);
+    Heap_Free(obj);
     return NULL;
 }
 
 static void BattleArcadeObj_SetVisible(BATTLE_ARCADE_OBJECT *obj, int flag) {
-    Sprite_SetVisibleFlag(obj->sprite, flag);
+    Sprite_SetDrawFlag(obj->sprite, flag);
 }
 
 static void BattleArcadeObj_SetPos(BATTLE_ARCADE_OBJECT *obj, u16 x, u16 y) {

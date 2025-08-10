@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/phone_contacts.h"
+
 #include "msgdata/msg.naix"
 
 #include "gear_phone.h"
@@ -13,7 +15,7 @@ struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
 
     FS_InitFile(&file);
     if (!FS_OpenFile(&file, "tel/pmtel_book.dat")) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return NULL;
     }
 
@@ -32,10 +34,10 @@ struct PhoneBook *AllocAndReadPhoneBook(HeapID heapId) {
 
 void FreePhoneBook(struct PhoneBook *phoneBook) {
     MI_CpuClear8(phoneBook->entries, phoneBook->count * sizeof(struct PhoneBookEntry));
-    FreeToHeap(phoneBook->entries);
+    Heap_Free(phoneBook->entries);
 
     MI_CpuClear8(phoneBook, sizeof(struct PhoneBook));
-    FreeToHeap(phoneBook);
+    Heap_Free(phoneBook);
 }
 
 u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId) {
@@ -46,12 +48,12 @@ u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, HeapID heapId) {
         if (idx == phoneBook->entries[i].trainerId) {
             MI_CpuCopy8(&phoneBook->entries[i], dest, sizeof(struct PhoneBookEntry));
             FreePhoneBook(phoneBook);
-            return dest->unk0;
+            return dest->id;
         }
     }
     FreePhoneBook(phoneBook);
     MI_CpuClear8(dest, sizeof(struct PhoneBookEntry));
-    dest->unk0 = 0xFF;
+    dest->id = PHONE_CONTACT_NONE;
     return 0xFF;
 }
 

@@ -40,27 +40,27 @@ typedef struct FollowMon {
 } FollowMon;
 
 struct GearPhoneRingManager {
-    u8 unk_var0_0 : 1;
+    u8 active : 1;
     u8 unk_var0_1 : 1;
     u8 unk_var0_2 : 1;
-    u8 unk_var0_3 : 1;
+    u8 ringing : 1;
     u8 unk_var0_4 : 4;
     u8 unk_var1;
-    u8 unk_var2;
+    u8 callerId;
     u8 unk_var3;
     u8 unk_var4;
     u8 unk_arr5[2];
     u8 unk_var7;
     s32 unk_var8;
     s32 unk_varC;
-    u16 unk_var10;
+    u16 maxActiveDuration;
     u16 unk_var12;
-    s64 unk_var14;              // Seconds? see sub_02092F30
-    PhoneBookEntry entry;       // 0x1c
-    SavePokegear *pokegearData; // 0x30
-    MomsSavings *savingsData;   // 0x34
-    SaveData *saveData;         // 0x38
-    FieldSystem *sys;           // 0x3c
+    s64 activeTimer;                       // Seconds? see GearPhoneRingManager_HandleTimeAdvance
+    PhoneBookEntry entry;                  // 0x1c
+    SavePokegear *pokegearData;            // 0x30
+    PhoneCallPersistentState *savingsData; // 0x34
+    SaveData *saveData;                    // 0x38
+    FieldSystem *sys;                      // 0x3c
     struct PokegearRingingTask {
         SysTask *task;
         u8 counter;
@@ -75,8 +75,8 @@ typedef struct FieldSystemUnk108 {
 } FieldSystemUnk108;
 
 struct FieldSystemUnkSub0 {
-    OVY_MANAGER *unk0;
-    OVY_MANAGER *unk4;
+    OverlayManager *unk0;
+    OverlayManager *unk4;
     BOOL isPaused;
     BOOL unkC;
 };
@@ -184,10 +184,10 @@ typedef struct FieldInput {
     u16 unkA;
 } FieldInput;
 
-BOOL Field_Continue_AppInit(OVY_MANAGER *man, int *unused);
-BOOL Field_NewGame_AppInit(OVY_MANAGER *man, int *unused);
-BOOL Field_AppExec(OVY_MANAGER *man, int *unused);
-BOOL Field_AppExit(OVY_MANAGER *man, int *unused);
+BOOL Field_Continue_AppInit(OverlayManager *man, int *unused);
+BOOL Field_NewGame_AppInit(OverlayManager *man, int *unused);
+BOOL Field_AppExec(OverlayManager *man, int *unused);
+BOOL Field_AppExit(OverlayManager *man, int *unused);
 void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem);
 void sub_0203DF34(FieldSystem *fieldSystem);
 u8 sub_0203DF3C(FieldSystem *fieldSystem);
@@ -195,9 +195,9 @@ void sub_0203DF64(FieldSystem *fieldSystem, int a1);
 BOOL sub_0203DF7C(FieldSystem *fieldSystem);
 BOOL sub_0203DF8C(FieldSystem *fieldSystem);
 BOOL sub_0203DFA4(FieldSystem *fieldSystem);
-void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OVY_MGR_TEMPLATE *template, void *parentWork);
-FieldSystem *FieldSystem_New(OVY_MANAGER *man);
-void FieldSystem_Delete(OVY_MANAGER *man);
+void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManagerTemplate *template, void *parentWork);
+FieldSystem *FieldSystem_New(OverlayManager *man);
+void FieldSystem_Delete(OverlayManager *man);
 BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem);
 void FieldSystem_Control(FieldSystem *fieldSystem);
 void sub_0203E2F4();
@@ -209,8 +209,8 @@ SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem);
 void sub_0203E348();
 void sub_0203E354();
 
-extern const OVY_MGR_TEMPLATE gApplication_NewGameFieldsys;
-extern const OVY_MGR_TEMPLATE gApplication_ContinueFieldsys;
+extern const OverlayManagerTemplate gApplication_NewGameFieldsys;
+extern const OverlayManagerTemplate gApplication_ContinueFieldsys;
 
 static inline void InitLocation(Location *location, int mapId, int warpId, int x, int y, int direction) {
     location->mapId = mapId;

@@ -20,10 +20,7 @@
 
 scr_seq_R30_001:
 	setflag FLAG_GOT_ELMS_PANIC_CALL
-	setvar VAR_SPECIAL_x8004, 1
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 0
-	callstd std_phone_call
+	phone_call PHONE_CONTACT_PROF__ELM, 2, 0
 	setvar VAR_SCENE_ROUTE_30_OW, 3
 	end
 
@@ -186,10 +183,7 @@ scr_seq_R30_003:
 scr_seq_R30_004:
 	scrcmd_609
 	lockall
-	setvar VAR_SPECIAL_x8004, 0
-	setvar VAR_SPECIAL_x8005, 2
-	setvar VAR_SPECIAL_x8006, 0
-	callstd std_phone_call
+	phone_call PHONE_CONTACT_MOTHER, 2, 0
 	setvar VAR_SCENE_ROUTE_30_PHONE_CALL, 0
 	setflag FLAG_TALKED_TO_MOM_AFTER_NAMING_RIVAL
 	releaseall

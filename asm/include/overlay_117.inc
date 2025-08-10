@@ -15,7 +15,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public ToggleBgLayer
 .public BgSetPosTextAndCommit
@@ -33,10 +33,10 @@
 .public SpriteList_RenderAndAnimateSprites
 .public Sprite_Delete
 .public Sprite_SetMatrix
-.public Sprite_SetScale
+.public Sprite_SetAffineScale
 .public Sprite_SetScaleAndAffineType
-.public Sprite_SetRotation
-.public Sprite_SetVisibleFlag
+.public Sprite_SetAffineZRotation
+.public Sprite_SetDrawFlag
 .public Sprite_SetPriority
 .public Sprite_SetOamMode
 .public String_New

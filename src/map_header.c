@@ -110,7 +110,7 @@ u16 MapHeader_GetEventsBank(u32 mapId) {
     return sMapHeaders[mapId].eventsBank;
 }
 
-u16 MapHeader_GetMapSec(u32 mapId) {
+u32 MapHeader_GetMapSec(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
     return sMapHeaders[mapId].mapsec;
 }
@@ -160,19 +160,19 @@ BOOL MapHeader_IsBikeAllowed(u32 mapId) {
     return sMapHeaders[mapId].bikeAllowed;
 }
 
-BOOL MapHeader_GetField14_1D(u32 mapId) {
+BOOL MapHeader_CanPlacePhoneCalls(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_14_1D;
+    return sMapHeaders[mapId].outgoingCalls;
 }
 
-BOOL MapHeader_GetField14_1E(u32 mapId) {
+BOOL MapHeader_CanReceivePhoneCalls(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_14_1E;
+    return sMapHeaders[mapId].incomingCalls;
 }
 
-BOOL MapHeader_GetField14_1F(u32 mapId) {
+BOOL MapHeader_CanReceiveRadioSignal(u32 mapId) {
     mapId = MapNumberBoundsCheck(mapId);
-    return sMapHeaders[mapId].unk_14_1F;
+    return sMapHeaders[mapId].radioSignal;
 }
 
 MapType MapHeader_GetMapType(u32 mapId) {

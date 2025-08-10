@@ -130,9 +130,9 @@ ov01_021F13F4: ; 0x021F13F4
 	add r0, r4, #0
 	bl ov01_021F1490
 	ldr r0, [r4, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov01_021F13F4
 
@@ -165,10 +165,10 @@ ov01_021F1430: ; 0x021F1430
 
 	thumb_func_start ov01_021F1448
 ov01_021F1448: ; 0x021F1448
-	ldr r3, _021F144C ; =FreeToHeap
+	ldr r3, _021F144C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021F144C: .word FreeToHeap
+_021F144C: .word Heap_Free
 	thumb_func_end ov01_021F1448
 
 	thumb_func_start ov01_021F1450

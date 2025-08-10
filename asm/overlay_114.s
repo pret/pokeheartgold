@@ -83,7 +83,7 @@ _0225F04E:
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -134,7 +134,7 @@ _0225F104:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -179,7 +179,7 @@ _0225F168:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #2
-	bl Sprite_SetAffineOverwriteType
+	bl Sprite_SetAffineOverwriteMode
 	ldr r1, [r5, #0x14]
 	add r0, sp, #0x20
 	add r2, r1, #0
@@ -196,7 +196,7 @@ _0225F168:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	ldr r0, [r4, #0x10]
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0x1c]
@@ -237,7 +237,7 @@ _0225F1D8:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl Sprite_SetScale
+	bl Sprite_SetAffineScale
 	cmp r6, #1
 	bne _0225F260
 	bl IsPaletteFadeFinished
@@ -371,7 +371,7 @@ _0225F2F6:
 	add r0, r1, #0
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #4
@@ -433,7 +433,7 @@ _0225F38E:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #1
-	bl Sprite_SetVisibleFlag
+	bl Sprite_SetDrawFlag
 	add r7, r7, #1
 	add r5, r5, #4
 	cmp r7, #4

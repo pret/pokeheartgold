@@ -156,7 +156,7 @@ _0223AD30:
 _0223AD40:
 	bl SysTask_Destroy
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #4
 	pop {r3, r4, pc}
 _0223AD4E:
@@ -276,10 +276,10 @@ ov80_0223ADF4: ; 0x0223ADF4
 
 	thumb_func_start ov80_0223AE0C
 ov80_0223AE0C: ; 0x0223AE0C
-	ldr r3, _0223AE10 ; =FreeToHeap
+	ldr r3, _0223AE10 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_0223AE10: .word FreeToHeap
+_0223AE10: .word Heap_Free
 	thumb_func_end ov80_0223AE0C
 
 	thumb_func_start ov80_0223AE14
@@ -476,7 +476,7 @@ _0223AF68:
 	cmp r4, #0x60
 	blt _0223AF68
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0223AF60
@@ -1354,7 +1354,7 @@ _0223B5F2:
 	bl sub_02014A38
 _0223B602:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0223B5E8
