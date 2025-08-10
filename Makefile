@@ -3,7 +3,7 @@ PROC           := arm946e
 PROC_S         := arm5te
 PROC_LD        := v5te
 LCF_TEMPLATE   := ARM9-TS.lcf.template
-LIBS           := -Llib -lsyscall -nostdlib
+LIBS           := -Llib -Llib/dsprot -lsyscall -nostdlib
 OPTFLAGS       := -O4,p
 
 include config.mk
@@ -37,6 +37,7 @@ all:
 	$(MAKE) $(ROM)
 
 tidy:
+	@$(MAKE) -C lib/dsprot clean
 	@$(MAKE) -C lib/syscall tidy
 	@$(MAKE) -C sub tidy
 	$(RM) -r build
@@ -63,7 +64,10 @@ ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
 $(ALL_OBJS): files_for_compile
-$(ELF): files_for_compile libsyscall
+$(ELF): files_for_compile dsprot libsyscall
+
+dsprot:
+	$(MAKE) -C lib/dsprot all
 
 libsyscall: files_for_compile
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
