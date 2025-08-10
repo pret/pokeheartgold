@@ -1614,7 +1614,7 @@ _0208BE36:
 	lsl r2, r2, #8
 	bl GXS_LoadOBJ
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

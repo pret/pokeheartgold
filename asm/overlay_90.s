@@ -253,7 +253,7 @@ _02258980:
 	add r0, #0x30
 	bl ov90_02259084
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _022589B8: .word 0x000005EC
@@ -372,7 +372,7 @@ _02258A40:
 	strh r1, [r0]
 	bl GF_DestroyVramTransferManager
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02258A90: .word 0x00000644
@@ -646,7 +646,7 @@ _02258C54:
 	ldr r0, [r4, #0xc]
 	bl NARC_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02258C38
@@ -913,7 +913,7 @@ _02258E3C:
 	cmp r6, #4
 	blt _02258E3C
 	ldr r0, [r5, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02258E10
@@ -1229,7 +1229,7 @@ _0225909E:
 	blo _0225909E
 _022590B6:
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov90_02259084
@@ -2118,11 +2118,11 @@ _02259780: .word 0x00001388
 ov90_02259784: ; 0x02259784
 	mov r1, #0x7f
 	lsl r1, r1, #2
-	ldr r3, _02259790 ; =FreeToHeap
+	ldr r3, _02259790 ; =Heap_Free
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_02259790: .word FreeToHeap
+_02259790: .word Heap_Free
 	thumb_func_end ov90_02259784
 
 	thumb_func_start ov90_02259794
@@ -4419,7 +4419,7 @@ ov90_0225A960: ; 0x0225A960
 	mov r0, #0x95
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov90_0225B330
 	pop {r4, pc}
@@ -5717,12 +5717,12 @@ _0225B32C: .word 0x00000658
 	thumb_func_start ov90_0225B330
 ov90_0225B330: ; 0x0225B330
 	ldr r1, _0225B338 ; =0x00000654
-	ldr r3, _0225B33C ; =FreeToHeap
+	ldr r3, _0225B33C ; =Heap_Free
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _0225B338: .word 0x00000654
-_0225B33C: .word FreeToHeap
+_0225B33C: .word Heap_Free
 	thumb_func_end ov90_0225B330
 
 	thumb_func_start ov90_0225B340
@@ -6186,7 +6186,7 @@ _0225B698:
 	cmp r4, #0xf
 	blt _0225B698
 	ldr r0, [r6]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov90_0225B690

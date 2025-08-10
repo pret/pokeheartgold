@@ -113,7 +113,7 @@ static BOOL Task_CelebiTimeTravelCutscene(TaskManager *taskMan) {
         if (IsPaletteFadeFinished() && ov02_022526EC(data)) {
             CelebiCutscene_UnloadResources(data);
             ov01_021F46DC(&data->unk4);
-            FreeToHeap(data);
+            Heap_Free(data);
             return TRUE;
         }
     }

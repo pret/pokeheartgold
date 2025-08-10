@@ -110,7 +110,7 @@ sub_0205AD3C: ; 0x0205AD3C
 	mov r0, #0x57
 	bl DestroyHeap
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 _0205AD5C: .word 0x000004DC
@@ -931,7 +931,7 @@ sub_0205B380: ; 0x0205B380
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0205B394
@@ -979,6 +979,6 @@ sub_0205B3CC: ; 0x0205B3CC
 	add r4, r0, #0
 	bl sub_0205B3A0
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_0205B3CC

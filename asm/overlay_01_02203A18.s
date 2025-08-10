@@ -145,7 +145,7 @@ _02203B06:
 	cmp r0, #0
 	bne _02203B22
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02203B22:
@@ -332,9 +332,9 @@ ov01_02203CA0: ; 0x02203CA0
 	ldr r0, [r4, #0x3c]
 	bl sub_02023DA4
 	ldr r0, [r4, #0x54]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x58]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov01_02203CA0
 

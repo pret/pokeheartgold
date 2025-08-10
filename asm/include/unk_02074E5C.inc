@@ -4,7 +4,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy
 .public PlayerProfile_GetNamePtr

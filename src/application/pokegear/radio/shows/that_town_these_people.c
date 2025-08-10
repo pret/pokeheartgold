@@ -68,7 +68,7 @@ BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow) {
 BOOL RadioShow_ThatTownThesePeople_Teardown(RadioShow *radioShow) {
     RadioShow_ThatTownThesePeople_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(ThatTownThesePeopleData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

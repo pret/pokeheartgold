@@ -86,13 +86,13 @@ ov01_02204084: ; 0x02204084
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_02204084
@@ -385,7 +385,7 @@ ov01_02204278: ; 0x02204278
 	ldr r4, [r1, #4]
 	cmp r4, #0
 	bne _02204292
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 _02204292:
@@ -421,12 +421,12 @@ _022042C2:
 	blt _022042A8
 _022042CC:
 	ldr r0, [r4, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	ldr r4, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #4]
 	add r0, r0, #1
 	str r0, [sp, #4]
@@ -437,7 +437,7 @@ _022042CC:
 	blt _0220429E
 _022042F0:
 	ldr r0, [sp]
-	bl FreeToHeap
+	bl Heap_Free
 _022042F6:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
@@ -480,7 +480,7 @@ _0220432E:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0220433C
-	bl FreeToHeap
+	bl Heap_Free
 _0220433C:
 	mov r0, #0
 	str r0, [r4]
@@ -964,10 +964,10 @@ _02204630: .word ov01_022046A4
 
 	thumb_func_start ov01_02204634
 ov01_02204634: ; 0x02204634
-	ldr r3, _02204638 ; =FreeToHeap
+	ldr r3, _02204638 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02204638: .word FreeToHeap
+_02204638: .word Heap_Free
 	thumb_func_end ov01_02204634
 
 	thumb_func_start ov01_0220463C
@@ -1145,10 +1145,10 @@ ov01_02204744: ; 0x02204744
 
 	thumb_func_start ov01_02204764
 ov01_02204764: ; 0x02204764
-	ldr r3, _02204768 ; =FreeToHeap
+	ldr r3, _02204768 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02204768: .word FreeToHeap
+_02204768: .word Heap_Free
 	thumb_func_end ov01_02204764
 
 	thumb_func_start ov01_0220476C

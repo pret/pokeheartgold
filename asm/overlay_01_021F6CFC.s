@@ -458,7 +458,7 @@ _021F7016:
 	add r2, r4, #0
 	bl BufferPlayersName
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	mov r1, #0x41
 	bl ov01_021F71C4
@@ -641,7 +641,7 @@ _021F71AC:
 	add r0, r4, #0
 	bl ov01_021F7268
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	bl sub_0203E30C
 	mov r0, #1
 	pop {r3, r4, r5, pc}

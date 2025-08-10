@@ -182,7 +182,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     Party_AddMon(party, mon);
     ZeroBoxMonData(boxMon);
     DaycareMon_SetSteps(daycareMon, 0);
-    FreeToHeap(mon);
+    Heap_Free(mon);
     return species;
 }
 
@@ -207,7 +207,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     exp += steps;
     SetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
     level = CalcBoxMonLevel(boxmon_tmp);
-    FreeToHeap(tmpMon);
+    Heap_Free(tmpMon);
     return level;
 }
 
@@ -435,7 +435,7 @@ static u8 LoadEggMoves(Pokemon *mon, u16 *dest) {
         dest[i] = kowaza_list[offset + i];
         n++;
     }
-    FreeToHeap(kowaza_list);
+    Heap_Free(kowaza_list);
     return n;
 }
 
@@ -520,7 +520,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
             }
         }
     }
-    FreeToHeap(search);
+    Heap_Free(search);
 }
 
 void Save_Daycare_ResetEggStats(Daycare *dayCare) {
@@ -657,7 +657,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
         name = PlayerProfile_GetPlayerName_NewString(profile, HEAP_ID_32);
         SetMonData(mon, MON_DATA_OT_NAME_2, name);
         SetMonData(mon, MON_DATA_OTID, &otId);
-        SetMonData(mon, MON_DATA_MET_GENDER, &gender);
+        SetMonData(mon, MON_DATA_OT_GENDER, &gender);
         String_Delete(name);
     }
     MonSetTrainerMemo(mon, profile, trainerMemoStrat, eggLocation, HEAP_ID_DEFAULT);
@@ -721,7 +721,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     Party_AddMon(party, mon);
     Save_Daycare_ResetEggStats(dayCare);
-    FreeToHeap(mon);
+    Heap_Free(mon);
 }
 
 static u8 GetEggCyclesToSubtract(Party *party) {
@@ -1045,7 +1045,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     pokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
     fateful = GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
     GetMonData(mon, MON_DATA_OT_NAME_2, string);
-    otGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
+    otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
     otId = GetMonData(mon, MON_DATA_OTID, NULL);
     form = GetMonData(mon, MON_DATA_FORM, NULL);
     if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
@@ -1071,7 +1071,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     SetMonData(tmpMon, MON_DATA_POKERUS, &pokerus);
     SetMonData(tmpMon, MON_DATA_FATEFUL_ENCOUNTER, &fateful);
     SetMonData(tmpMon, MON_DATA_OT_NAME_2, string);
-    SetMonData(tmpMon, MON_DATA_MET_GENDER, &otGender);
+    SetMonData(tmpMon, MON_DATA_OT_GENDER, &otGender);
     SetMonData(tmpMon, MON_DATA_OTID, &otId);
     SetMonData(tmpMon, MON_DATA_FORM, &form);
     metLoc = GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL);
@@ -1092,7 +1092,7 @@ static void sub_0206D038(Pokemon *mon, HeapID heapId) {
     SetMonData(tmpMon, MON_DATA_MET_DAY, &metDay);
     CopyPokemonToPokemon(tmpMon, mon);
     String_Delete(string);
-    FreeToHeap(tmpMon);
+    Heap_Free(tmpMon);
 }
 
 void sub_0206D328(Pokemon *mon, HeapID heapId) {

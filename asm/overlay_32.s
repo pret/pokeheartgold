@@ -633,7 +633,7 @@ _0225D9D4:
 	cmp r4, #8
 	blo _0225D9D4
 	ldr r0, [sp, #0x1c]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x14]
 	bl String_Delete
 	ldr r0, [sp, #0x18]

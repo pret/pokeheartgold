@@ -449,7 +449,7 @@ _021F4A38:
 	ldr r0, [r4, #0xc]
 	str r0, [r5, #8]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_021F49FC
 
@@ -3663,7 +3663,7 @@ _021F6226:
 	ldr r0, [r1, r0]
 	cmp r0, #0
 	beq _021F6272
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, r4
 	add r0, #0x90
 	ldr r2, [r0]
@@ -3675,7 +3675,7 @@ _021F6272:
 	add r0, r5, r4
 	add r0, #0x90
 	ldr r0, [r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, r4
 	add r0, #0x90
 	str r7, [r0]
@@ -3712,7 +3712,7 @@ ov01_021F62B0: ; 0x021F62B0
 	ldr r0, [r4]
 	bl ov01_021FACB4
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov01_021F62B0
 
@@ -4382,7 +4382,7 @@ _021F6758:
 	mov r1, #0
 	str r1, [r0]
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl SysTask_Destroy
 _021F676A:

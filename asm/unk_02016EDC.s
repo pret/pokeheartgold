@@ -100,9 +100,9 @@ sub_02016F2C: ; 0x02016F2C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02016F2C
@@ -304,7 +304,7 @@ sub_02017088: ; 0x02017088
 	ldr r0, [r5]
 	add r0, r0, r4
 	ldr r0, [r0, #8]
-	bl FreeToHeap
+	bl Heap_Free
 _020170C2:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02017088
@@ -336,7 +336,7 @@ _020170DC:
 	mov r0, #0
 	str r0, [r4, #4]
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 _020170FA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020170C4

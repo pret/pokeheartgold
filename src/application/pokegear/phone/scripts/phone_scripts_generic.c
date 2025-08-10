@@ -234,10 +234,10 @@ static u16 getRandomTrainerMon(u16 trainerID, HeapID a1) {
         break;
     }
     default:
-        FreeToHeap(trpoke);
+        Heap_Free(trpoke);
         return SPECIES_RATTATA;
     }
-    FreeToHeap(trpoke);
+    Heap_Free(trpoke);
     return teamSpecies[LCRandom() % trdata.data.npoke];
 }
 

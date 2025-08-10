@@ -880,7 +880,7 @@ static void sub_020798C4(BgConfig *bgConfig) {
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_2);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_1);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeapExplicit(HEAP_ID_PARTY_MENU, bgConfig);
+    Heap_FreeExplicit(HEAP_ID_PARTY_MENU, bgConfig);
 }
 
 void PartyMenu_Toggle3dEngine(PartyMenu *partyMenu, PartyMenu3dEngineToggle toggle) {
@@ -928,9 +928,9 @@ static void sub_02079A14(PartyMenu *partyMenu, NARC *narc) {
     memcpy(plttBuf, plttData->pRawData, plttData->szByte);
     plttBuf[0] = RGB_BLACK;
     BG_LoadPlttData(GF_PAL_LOCATION_MAIN_OBJEXT, plttBuf, plttData->szByte, 0);
-    FreeToHeap(plttBuf);
+    Heap_Free(plttBuf);
     memcpy(partyMenu->hpBarPalettes, (u8 *)plttData->pRawData + 0x60, 0x100);
-    FreeToHeap(nclrFile);
+    Heap_Free(nclrFile);
     LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1A0, HEAP_ID_PARTY_MENU);
     LoadFontPal1(GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0x40, HEAP_ID_PARTY_MENU);
     LoadUserFrameGfx1(partyMenu->bgConfig, GF_BG_LYR_MAIN_0, 1, 14, 0, HEAP_ID_PARTY_MENU);
@@ -1606,7 +1606,7 @@ static void sub_0207AFC4(PartyMenu *partyMenu) {
         break;
     }
     PartyMenu_OpenContextMenu(partyMenu, buf, numItems);
-    FreeToHeapExplicit(HEAP_ID_PARTY_MENU, buf);
+    Heap_FreeExplicit(HEAP_ID_PARTY_MENU, buf);
     sub_0207D1C8(partyMenu);
     PartyMenu_PrintMessageOnWindow33(partyMenu, -1, TRUE);
     thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
@@ -2409,18 +2409,18 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
 
     if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
         partyMenu->args->species = SHAYMIN_SKY; // SPECIES_BULBASAUR
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         PartyMenu_FormChangeScene_Begin(partyMenu);
         return PARTY_MENU_STATE_FORM_CHANGE_ANIM;
     }
 
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_UP) || GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_MAX)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         PartyMenu_SelectMoveForPpRestoreOrPpUp(partyMenu, 0);
         return PARTY_MENU_STATE_SELECT_MOVE;
     }
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE) && !GetItemAttr_PreloadedItemData(itemData, ITEMATTR_PP_RESTORE_ALL)) {
-        FreeToHeap(itemData);
+        Heap_Free(itemData);
         PartyMenu_SelectMoveForPpRestoreOrPpUp(partyMenu, 1);
         return PARTY_MENU_STATE_SELECT_MOVE;
     }
@@ -2431,7 +2431,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
             Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
             partyMenu->args->species = GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, &partyMenu->args->evoMethod);
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_EVO_ITEM_USE;
-            FreeToHeap(itemData);
+            Heap_Free(itemData);
             return PARTY_MENU_STATE_BEGIN_EXIT;
         } else {
             PartyMenu_SetItemUseFuncFromBagSelection(partyMenu);
@@ -2441,7 +2441,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
         partyMenu->partyMonIndex = PARTY_MON_SELECTION_CONFIRM;
         partyMenu->itemUseCallback = PartyMenu_ItemUseFunc_WaitTextPrinterThenExit;
     }
-    FreeToHeap(itemData);
+    Heap_Free(itemData);
     return PARTY_MENU_STATE_ITEM_USE_CB;
 }
 
@@ -2704,7 +2704,7 @@ void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3) {
         memcpy(&a2[i * 16], &src[(i + 6) * 32], 32);
         memcpy(&a3[i * 16], &src[(i + 12) * 32], 32);
     }
-    FreeToHeap(pNscrFile);
+    Heap_Free(pNscrFile);
 }
 
 void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu) {

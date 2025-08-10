@@ -4,7 +4,7 @@
 .public NARC_Delete
 .public NARC_ReadFromMember
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public MapMatrix_GetMapModelNo
 .public MapMatrix_GetWidth

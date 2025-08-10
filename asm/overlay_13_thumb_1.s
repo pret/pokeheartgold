@@ -41,7 +41,7 @@ _0221BA0C:
 	mov r2, #0
 	bl ov13_0222B430
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
 	bl OS_RestoreInterrupts
 	ldr r1, _0221BA6C ; =0x04000208

@@ -149,8 +149,8 @@ BOOL DeleteSavedataApp_Main(OverlayManager *manager, int *state) {
         sub_02005AF8(0);
         sub_02004AD8(0);
 
-        sub_0200FBF4(0, 0);
-        sub_0200FBF4(1, 0);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
 
         Main_SetVBlankIntrCB(NULL, NULL);
         Main_SetHBlankIntrCB(NULL, NULL);
@@ -246,7 +246,7 @@ static void DeleteSavedataApp_FreeBgConfig(DeleteSavedataApp_Data *data) {
     ToggleBgLayer(GF_BG_LYR_SUB_3, GF_PLANE_TOGGLE_OFF);
 
     FreeBgTilemapBuffer(data->bgConfig, GF_BG_LYR_MAIN_0);
-    FreeToHeap(data->bgConfig);
+    Heap_Free(data->bgConfig);
 }
 
 static void DeleteSavedataApp_SetupTextAndWindow(DeleteSavedataApp_Data *data) {

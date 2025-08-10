@@ -127,7 +127,7 @@ _02097A7C:
 	pop {r4, r5, r6, pc}
 _02097A8A:
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02097A94:
@@ -237,7 +237,7 @@ _02097B52:
 	strb r0, [r4]
 	b _02097B72
 _02097B68:
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}

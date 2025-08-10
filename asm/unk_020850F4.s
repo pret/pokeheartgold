@@ -262,7 +262,7 @@ _02085294:
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -406,7 +406,7 @@ _0208544E:
 	ldr r0, [r4, #0x1c]
 	bl String_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end sub_02085438
 

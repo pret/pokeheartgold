@@ -159,7 +159,7 @@ static BOOL sub_020500A0(TaskManager *taskManager) {
         }
         break;
     case 2:
-        FreeToHeap(unk);
+        Heap_Free(unk);
         return TRUE;
     }
     return FALSE;
@@ -191,7 +191,7 @@ static BOOL sub_02050150(TaskManager *taskManager) {
         unk->state = sub_02050370(unk, fieldSystem);
         break;
     case 4:
-        FreeToHeap(unk);
+        Heap_Free(unk);
         return TRUE;
     }
     return FALSE;
@@ -237,7 +237,7 @@ static u32 sub_02050290(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     }
     MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedOrder, 3);
     a0->partySlot = partyMenu->partySlot;
-    FreeToHeap(partyMenu);
+    Heap_Free(partyMenu);
     *(a0->unk0c) = NULL;
     return 2;
 }
@@ -270,7 +270,7 @@ static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
     }
     PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk0c);
     a0->partySlot = pokemonSummaryArgs->partySlot;
-    FreeToHeap(pokemonSummaryArgs);
+    Heap_Free(pokemonSummaryArgs);
     *(a0->unk0c) = NULL;
     return 0;
 }

@@ -29,7 +29,7 @@ BOOL RadioShow_Unown_Setup(RadioShow *radioShow) {
 BOOL RadioShow_Unown_Teardown(RadioShow *radioShow) {
     RadioShow_Unown_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(UnownSignalData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

@@ -578,7 +578,7 @@ ov52_021E85A0: ; 0x021E85A0
 	mov r1, #0
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov52_021E85A0

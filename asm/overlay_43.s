@@ -965,7 +965,7 @@ _0222A672:
 	cmp r4, #7
 	blt _0222A672
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r5]
 	pop {r3, r4, r5, pc}
@@ -1378,7 +1378,7 @@ ov43_0222A9D8: ; 0x0222A9D8
 	lsl r6, r6, #8
 _0222A9E2:
 	ldr r0, [r5, r6]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -1552,7 +1552,7 @@ ov43_0222AB20: ; 0x0222AB20
 	add r2, r5, #0
 	bl BufferPlayersName
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222AB20
@@ -1578,7 +1578,7 @@ ov43_0222AB5C: ; 0x0222AB5C
 	add r2, r4, #0
 	bl BufferPlayersName
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222AB5C
@@ -2131,7 +2131,7 @@ _0222AF88:
 	mov r1, #0
 	bl BufferPlayersName
 	ldr r0, [sp, #0xc]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [r4, #0x5c]
 	add r1, sp, #0x10
 	bl String_atoi
@@ -2403,7 +2403,7 @@ ov43_0222B1D8: ; 0x0222B1D8
 	add r0, #0x20
 	bl RemoveWindow
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov43_0222B1D8
@@ -6295,7 +6295,7 @@ ov43_0222D008: ; 0x0222D008
 	add r0, #0x20
 	bl RemoveWindow
 	ldr r0, [r4, #0x30]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	thumb_func_end ov43_0222D008
 
@@ -7601,7 +7601,7 @@ _0222DA0E:
 	add r3, r2, #0
 	bl BlitBitmapRectToWindow
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x20
 	str r0, [sp]
 	ldr r0, [sp, #0x1c]
@@ -8024,7 +8024,7 @@ ov43_0222DD88: ; 0x0222DD88
 	mov r4, #0
 _0222DD8E:
 	ldr r0, [r5]
-	bl FreeToHeap
+	bl Heap_Free
 	add r4, r4, #1
 	add r5, #8
 	cmp r4, #4

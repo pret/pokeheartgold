@@ -50,7 +50,7 @@ _021FCEC8: ; jump table
 _021FCED8:
 	ldr r6, [r5]
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0xb
 	mov r1, #0xc
 	bl AllocFromHeapAtEnd
@@ -165,9 +165,9 @@ _021FCFBC:
 	b _021FCFDE
 _021FCFCE:
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021FCFDE:
@@ -233,7 +233,7 @@ _021FD050:
 	add r0, r5, #0
 	bl ov01_021FD128
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _021FD060:

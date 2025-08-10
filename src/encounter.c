@@ -94,7 +94,7 @@ static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *wi
 
 static void Encounter_Delete(Encounter *encounter) {
     BattleSetup_Delete(encounter->setup);
-    FreeToHeap(encounter);
+    Heap_Free(encounter);
 }
 
 static BOOL Encounter_GetResult(Encounter *encounter, FieldSystem *fieldSystem) {
@@ -307,7 +307,7 @@ static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm,
 
 static void WildEncounter_Delete(WildEncounter *encounter) {
     BattleSetup_Delete(encounter->setup);
-    FreeToHeap(encounter);
+    Heap_Free(encounter);
 }
 
 void sub_02050B08(FieldSystem *fieldSystem, BattleSetup *setup) {

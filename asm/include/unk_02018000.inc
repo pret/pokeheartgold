@@ -26,7 +26,7 @@
 .public sub_020182CC
 .public sub_020182E0
 .public sub_020182EC
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_DrawModel
 .public GF3dRender_BindModelSet
 .public GF3dRender_AllocAndLoadTexResources

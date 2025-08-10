@@ -133,7 +133,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
 }
 
 static void _DestroyLocalWork(PartyMenu *partyMenu) {
-    FreeToHeap(partyMenu->iconFormChange);
+    Heap_Free(partyMenu->iconFormChange);
     partyMenu->iconFormChange = 0;
 }
 
@@ -205,7 +205,7 @@ static s32 _RunParticleSystem(void) {
 static void _DestroyParticleSystem(IconFormChangeData *partyMenu) {
     void *unkA = sub_020154D0(partyMenu->particleSystem);
     sub_02014EBC(partyMenu->particleSystem);
-    FreeToHeap(unkA);
+    Heap_Free(unkA);
 }
 
 static u32 texAlloc(u32 szByte, BOOL is4x4comp) {

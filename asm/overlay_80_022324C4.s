@@ -575,7 +575,7 @@ _02232986:
 	cmp r7, #4
 	blt _02232986
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x18c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -711,19 +711,19 @@ ov80_02232ABC: ; 0x02232ABC
 	ldr r0, [r4, #0x28]
 	cmp r0, #0
 	beq _02232ACC
-	bl FreeToHeap
+	bl Heap_Free
 _02232ACC:
 	ldr r0, [r4, #0x2c]
 	cmp r0, #0
 	beq _02232AD6
-	bl FreeToHeap
+	bl Heap_Free
 _02232AD6:
 	ldr r2, _02232AE8 ; =0x00000A28
 	add r0, r4, #0
 	mov r1, #0
 	bl MI_CpuFill8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _02232AE6:
 	pop {r4, pc}
 	.balign 4, 0
@@ -1163,7 +1163,7 @@ ov80_02232E68: ; 0x02232E68
 	mov r2, #0xb
 	mov r3, #0xcc
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #0
 	ldrh r0, [r0, #4]
 	lsl r0, r0, #0x18

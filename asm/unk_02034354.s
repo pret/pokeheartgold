@@ -105,7 +105,7 @@ _020343F8:
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02034412
-	bl FreeToHeap
+	bl Heap_Free
 _02034412:
 	ldr r0, _0203441C ; =_021D4130
 	mov r1, #0

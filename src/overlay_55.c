@@ -179,7 +179,7 @@ static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *unk) {
         String_Delete(unk->mailAuthorName);
     }
 
-    FreeToHeap(unk);
+    Heap_Free(unk);
 }
 
 static void ov55_021E5BC4(Mail *mail, UnkStruct_ov55_021E5B08 *unk) {

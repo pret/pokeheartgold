@@ -34,7 +34,7 @@ BOOL RadioShow_TrainerProfiles_Setup(RadioShow *radioShow) {
 BOOL RadioShow_TrainerProfiles_Teardown(RadioShow *radioShow) {
     RadioShow_TrainerProfiles_Unload(radioShow);
     MI_CpuClear8(radioShow->showData, sizeof(TrainerProfilesData));
-    FreeToHeap(radioShow->showData);
+    Heap_Free(radioShow->showData);
     radioShow->showData = NULL;
     return FALSE;
 }

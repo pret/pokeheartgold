@@ -108,10 +108,10 @@ ov01_021EAC4C: ; 0x021EAC4C
 
 	thumb_func_start ov01_021EAC64
 ov01_021EAC64: ; 0x021EAC64
-	ldr r3, _021EAC68 ; =FreeToHeap
+	ldr r3, _021EAC68 ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_021EAC68: .word FreeToHeap
+_021EAC68: .word Heap_Free
 	thumb_func_end ov01_021EAC64
 
 	thumb_func_start ov01_021EAC6C

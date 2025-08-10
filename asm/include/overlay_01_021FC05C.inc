@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SetBgPriority
 .public BG_LoadCharTilesData
 .public BG_FillCharDataRange

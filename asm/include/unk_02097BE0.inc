@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public LegendaryCinematic_LaunchApp
 .public TaskManager_Call

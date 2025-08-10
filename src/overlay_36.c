@@ -234,9 +234,9 @@ static void InitGameStateAfterOakSpeech_Internal(HeapID heapId, SaveData *saveDa
     Mail_SetMessage(mail, &mail_message, 2);
     Mailbox_CopyMailToSlotI(mailbox->msgs, FALSE, 0, mail);
 
-    FreeToHeap(mon);
+    Heap_Free(mon);
     String_Delete(author_name);
-    FreeToHeap(mail);
+    Heap_Free(mail);
     DestroyMsgData(friend_names_msgdata);
 }
 

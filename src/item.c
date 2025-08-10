@@ -700,7 +700,7 @@ void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID he
         slots[j] = buf[j];
     }
 
-    FreeToHeap(buf);
+    Heap_Free(buf);
 }
 
 int GetItemIndexMapping(u16 itemId, int attrNo) {
@@ -789,7 +789,7 @@ static s32 GetItemAttrSub(ItemPartyParam *param, u16 attrno);
 s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heapId) {
     ItemData *itemData = (ItemData *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heapId);
     s32 ret = GetItemAttr_PreloadedItemData(itemData, attrno);
-    FreeToHeapExplicit(heapId, itemData);
+    Heap_FreeExplicit(heapId, itemData);
     return ret;
 }
 

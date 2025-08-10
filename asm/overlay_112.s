@@ -4386,7 +4386,7 @@ ov112_021E7AC8: ; 0x021E7AC8
 	bl FreeBgTilemapBuffer
 	mov r0, #0x9a
 	add r1, r4, #0
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov112_021E7AC8
@@ -5959,7 +5959,7 @@ _021E88D8:
 	add r0, r4, r0
 	bl ov112_021F0D48
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, sp, #0x14
 	bl RemoveWindow
 	add sp, #0x24
@@ -6409,7 +6409,7 @@ _021E8E6C:
 	lsl r2, r2, #6
 	bl MI_CpuCopy8
 	ldr r0, [sp, #0x30]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #6
 	lsl r0, r0, #6
 	add r4, r4, r0
@@ -6442,7 +6442,7 @@ _021E8E6C:
 	lsl r2, r2, #8
 	bl MI_CpuCopy8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #0x18]
 	add r4, r0, #0
@@ -6550,7 +6550,7 @@ _021E8F3A:
 	lsl r2, r2, #6
 	bl MI_CpuCopy8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, _021E9024 ; =0x0001D77C
 	ldrh r0, [r5, r0]
 	cmp r0, #0
@@ -6614,7 +6614,7 @@ _021E9060:
 	lsl r2, r2, #8
 	bl MI_CpuCopy8
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -6673,7 +6673,7 @@ _021E90DC:
 	cmp r5, #0xf
 	blo _021E90DC
 	ldr r0, [sp, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x130
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -10034,7 +10034,7 @@ ov112_021EAB78: ; 0x021EAB78
 	bl ov112_021EABE8
 	ldr r0, _021EABE0 ; =0x0001EA60
 	ldr r0, [r5, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -10417,7 +10417,7 @@ _021EAEAE:
 	mov r1, #7
 	bl ov112_021EA670
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	b _021EAF1E
 _021EAF04:
 	add r0, r5, #0
@@ -16656,7 +16656,7 @@ _021EE030:
 	mov r6, #0
 _021EE032:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -17777,7 +17777,7 @@ _021EE854:
 	bl Pokedex_SetMonCaughtFlag
 _021EE890:
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -18274,7 +18274,7 @@ _021EECB2:
 	ldr r0, [sp, #0xc]
 	bl String_Delete
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -18847,7 +18847,7 @@ ov112_021EF100: ; 0x021EF100
 	bl ObjCharTransfer_Destroy
 	bl ObjPlttTransfer_Destroy
 	ldr r0, [r4, #0x18]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl ov112_021E7768
 	ldr r0, _021EF158 ; =0x0001D778
@@ -21482,7 +21482,7 @@ _021F05A8:
 	ldr r0, [r5, #4]
 	bl SpriteList_Delete
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 	thumb_func_end ov112_021F051C
@@ -21509,7 +21509,7 @@ _021F05D8:
 	mov r0, #0x6e
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021F05CC
 
@@ -22358,7 +22358,7 @@ _021F0CEA:
 	mov r2, #0x20
 	bl MIi_CpuCopy16
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x24
 	pop {r4, r5, pc}
 	thumb_func_end ov112_021F0C8C
@@ -23833,7 +23833,7 @@ _021F181C:
 	cmp r4, #5
 	blt _021F181C
 	ldr r0, [r6, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _021F1834: .word ov112_021FF4C0
@@ -25038,7 +25038,7 @@ _021F2172:
 	cmp r7, #8
 	blt _021F2172
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	bl Sprite_GetVramType
 	ldr r0, [sp, #0x20]
@@ -25062,7 +25062,7 @@ _021F21B8:
 	mov r2, #0x20
 	bl GX_LoadOBJPltt
 	ldr r0, [sp, #0x24]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x28]
 	bl NARC_Delete
 	ldr r0, [sp, #0x1c]

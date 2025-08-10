@@ -52,8 +52,8 @@ _02078E22:
 
 	thumb_func_start sub_02078E28
 sub_02078E28: ; 0x02078E28
-	ldr r3, _02078E2C ; =FreeToHeap
+	ldr r3, _02078E2C ; =Heap_Free
 	bx r3
 	.balign 4, 0
-_02078E2C: .word FreeToHeap
+_02078E2C: .word Heap_Free
 	thumb_func_end sub_02078E28

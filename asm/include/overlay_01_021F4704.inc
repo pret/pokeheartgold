@@ -10,7 +10,7 @@
 .public sub_0201A430
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF3dRender_ResTexIsLoaded
 .public GF3dRender_DrawModel
 .public GF3dRender_BindModelSet

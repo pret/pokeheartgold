@@ -21,7 +21,7 @@ LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
 
 void ListMenuItems_Delete(LISTMENUITEM *items) {
     ListMenuItems_DestroyMenuStrings(items);
-    FreeToHeap(items);
+    Heap_Free(items);
 }
 
 void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {
@@ -49,7 +49,7 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
 
     for (; items->text != NULL; items++) {
         if (items->text == (String *)-1) {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
             return NULL;
         }
     }

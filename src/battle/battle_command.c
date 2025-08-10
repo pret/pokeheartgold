@@ -2165,7 +2165,7 @@ u32 CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx, int trainerIndex) {
 
     } while (TRUE);
 
-    FreeToHeap(trPoke);
+    Heap_Free(trPoke);
 
     return prizeMoney;
 }
@@ -6210,7 +6210,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             ov12_022484D4(data->bsys, data);
         }
 
-        FreeToHeap(data->ctx->prevLevelStats);
+        Heap_Free(data->ctx->prevLevelStats);
         data->state = STATE_GET_EXP_CHECK_LEARN_MOVE;
         break;
     }
@@ -6399,7 +6399,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
     case STATE_GET_EXP_DONE:
         data->ctx->getterWork = NULL;
-        FreeToHeap(inData);
+        Heap_Free(inData);
         SysTask_Destroy(task);
         break;
     }

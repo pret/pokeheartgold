@@ -274,7 +274,7 @@ FrontierMap_Free: ; 0x0223885C
 	ldr r0, [r4, #4]
 	bl PaletteData_Free
 	ldr r0, [r4]
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	add r0, #0x94
 	ldr r0, [r0]
@@ -295,7 +295,7 @@ FrontierMap_Free: ; 0x0223885C
 	bl ov80_0223937C
 	bl sub_02021238
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]
@@ -1289,7 +1289,7 @@ _0223915A:
 	bl GX_LoadBGExtPltt
 	bl GX_EndLoadBGExtPltt
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 _02239198:
 	mov r1, #0
 	str r1, [sp]
@@ -1374,7 +1374,7 @@ _02239198:
 	bl GX_LoadBGExtPltt
 	bl GX_EndLoadBGExtPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 _0223925E:
 	ldr r0, [r5]
 	mov r1, #3

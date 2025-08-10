@@ -6,7 +6,7 @@
 .public DestroyHeap
 .public AllocFromHeap
 .public AllocFromHeapAtEnd
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public memset
 .public ov01_021FC4C4

@@ -78,7 +78,7 @@ _021EB24E:
 	sub r1, r1, #1
 	bne _021EB24E
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021EB234
@@ -514,7 +514,7 @@ ov01_021EB578: ; 0x021EB578
 	mov r2, #4
 	bl GF2DGfxResHeader_Init
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_021EB578
 
@@ -536,7 +536,7 @@ _021EB5AC:
 	cmp r4, #4
 	blt _021EB5AC
 	ldr r0, [r6, #0x10]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r6, #0x10]
 	add r0, r6, #0
@@ -684,7 +684,7 @@ _021EB69A:
 	bl NARC_Delete
 	ldr r1, [r4]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0
 	str r0, [r4]
 _021EB6F6:
@@ -1083,7 +1083,7 @@ _021EB9C8:
 	cmp r0, #0
 	bne _021EB9E0
 	ldr r0, [r4, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [r4, #8]
 	pop {r3, r4, r5, pc}
@@ -1362,7 +1362,7 @@ _021EBBCE:
 	bl ov01_021EB968
 	ldr r1, [r4, #0xc]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #0x14]
@@ -1397,7 +1397,7 @@ _021EBC1E:
 	cmp r1, #0
 	beq _021EBC36
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	ldr r1, [r4, #8]
 	ldr r0, _021EBC98 ; =0x00000F58
 	mov r2, #0
@@ -1428,7 +1428,7 @@ _021EBC56:
 _021EBC64:
 	ldr r1, [r4, #8]
 	mov r0, #4
-	bl FreeToHeapExplicit
+	bl Heap_FreeExplicit
 	mov r0, #0
 	str r0, [r4, #8]
 _021EBC70:
@@ -2007,7 +2007,7 @@ ov01_021EC078: ; 0x021EC078
 	mov r3, #0xc0
 	bl BG_LoadPlttData
 	ldr r0, [sp]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp]
 _021EC0B8:
@@ -2050,7 +2050,7 @@ ov01_021EC0C0: ; 0x021EC0C0
 	mov r1, #2
 	bl BG_LoadCharTilesData
 	ldr r0, [sp, #8]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #8]
 _021EC10C:
@@ -2131,7 +2131,7 @@ _021EC14A:
 	ldr r0, [r0, #8]
 	bl BgCommitTilemapBufferToVram
 	ldr r0, [sp, #0x14]
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0
 	str r0, [sp, #0x14]
 _021EC1B4:

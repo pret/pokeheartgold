@@ -79,7 +79,7 @@ _021E803C:
 	add r2, r4, #0
 	bl GF2DGfxResHeader_Init
 	ldr r0, [sp, #0x28]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x1c]
 	add r6, r6, #2
 	add r0, r0, #1
@@ -169,7 +169,7 @@ _021E8102:
 	blo _021E8102
 _021E811A:
 	add r0, r7, #0
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -213,7 +213,7 @@ _021E811A:
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x20]
 	bl NARC_Delete
 	add sp, #0x30

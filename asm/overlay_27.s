@@ -1856,7 +1856,7 @@ _0225AD52:
 	mov r2, #0x40
 	bl MIi_CpuCopyFast
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4727,7 +4727,7 @@ ov27_0225C4AC: ; 0x0225C4AC
 	mov r1, #6
 	bl ScheduleBgTilemapBufferTransfer
 	add r0, r6, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r4, #0
 	bl NARC_Delete
 	add sp, #0x14

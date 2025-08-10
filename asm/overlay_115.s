@@ -2298,9 +2298,9 @@ ov115_02260254: ; 0x02260254
 	mov r2, #0x20
 	bl GX_LoadOBJPltt
 	add r0, r4, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add r0, r5, #0
-	bl FreeToHeap
+	bl Heap_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

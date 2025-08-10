@@ -403,8 +403,8 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
 
     switch (*state_p) {
     case 0:
-        sub_0200FBF4(0, 0);
-        sub_0200FBF4(1, 0);
+        sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
+        sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
         (*state_p)++;
         break;
     case 1:
@@ -431,7 +431,7 @@ static BOOL FieldTask_ContinueGame_CommError(TaskManager *taskManager) {
         }
         break;
     case 5:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -481,7 +481,7 @@ static BOOL sub_02053688(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -513,7 +513,7 @@ static BOOL sub_02053740(TaskManager *taskManager) {
         break;
     case 2:
         sub_0205316C(fieldSystem);
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -524,7 +524,7 @@ void sub_020537A8(TaskManager *taskManager, const Location *location) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct ErrorContinueEnv *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(struct ErrorContinueEnv));
     if (sub_0203DF7C(fieldSystem)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     env->state = 0;
@@ -567,7 +567,7 @@ static BOOL Task_ScriptWarp(TaskManager *taskManager) {
         env->state++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -635,7 +635,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -693,7 +693,7 @@ static void sub_02053AA0(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     struct UnkTaskEnv_02053950 *env = TaskManager_GetEnvironment(taskManager);
     if (!sub_0203DF7C(fieldSystem)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     env->unk4 = ov02_0224B418(fieldSystem, PlayerAvatar_GetGender(fieldSystem->playerAvatar));
@@ -745,13 +745,13 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         } else if (env->unk4 == 0 || env->unk4 == 1) {
             sub_02067BC0(fieldSystem);
         } else {
-            GF_ASSERT(0);
+            GF_ASSERT(FALSE);
         }
         sub_02053C24(taskManager);
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -809,7 +809,7 @@ static void sub_02053C90(TaskManager *taskManager) {
     struct UnkTaskEnv_02053B3C *env = TaskManager_GetEnvironment(taskManager);
 
     if (!sub_0203DF7C(fieldSystem)) {
-        GF_ASSERT(0);
+        GF_ASSERT(FALSE);
         return;
     }
     TaskManager_Call(taskManager, ov02_0224C1F8, ov02_0224C1D8(fieldSystem, 4, env->unk4));
@@ -874,7 +874,7 @@ static BOOL sub_02053CCC(TaskManager *taskManager) {
         }
         break;
     case 7:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -929,7 +929,7 @@ static BOOL sub_02053E5C(TaskManager *taskManager) {
         (*state_p)++;
         break;
     case 5:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -987,7 +987,7 @@ static BOOL sub_02053F70(TaskManager *taskManager) {
         }
         break;
     case 6:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 
@@ -1031,7 +1031,7 @@ static BOOL sub_020540A4(TaskManager *taskManager) {
         env->unk0++;
         break;
     case 3:
-        FreeToHeap(env);
+        Heap_Free(env);
         return TRUE;
     }
 

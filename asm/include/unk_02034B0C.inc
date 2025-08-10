@@ -4,7 +4,7 @@
 .public Sys_SetSleepDisableFlag
 .public Sys_ClearSleepDisableFlag
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public GF_AssertFail
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy

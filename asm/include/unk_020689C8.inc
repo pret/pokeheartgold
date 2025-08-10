@@ -3,7 +3,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeapExplicit
+.public Heap_FreeExplicit
 .public GF_AssertFail
 .public sub_020689C8
 .public sub_020689F8

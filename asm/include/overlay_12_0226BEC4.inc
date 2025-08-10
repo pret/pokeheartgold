@@ -6,7 +6,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public AllocFromHeap
-.public FreeToHeap
+.public Heap_Free
 .public SysTask_GetData
 .public GF_AssertFail
 .public MI_CpuFill8

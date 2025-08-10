@@ -715,7 +715,7 @@ _0222A46E:
 ov80_0222A474: ; 0x0222A474
 	push {r3, lr}
 	bl ov80_02229F04
-	bl FreeToHeap
+	bl Heap_Free
 	pop {r3, pc}
 	thumb_func_end ov80_0222A474
 
@@ -1123,7 +1123,7 @@ _0222A738:
 	blt _0222A738
 _0222A75C:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r1, [sp, #0x14]
 	add r0, sp, #0x44
 	mov r2, #0xb
@@ -1158,7 +1158,7 @@ _0222A796:
 	blt _0222A796
 _0222A7A6:
 	ldr r0, [sp, #0x20]
-	bl FreeToHeap
+	bl Heap_Free
 	ldr r0, [sp, #0x90]
 	ldr r1, [sp, #0x18]
 	str r0, [sp]

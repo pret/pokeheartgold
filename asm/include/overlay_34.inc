@@ -32,7 +32,7 @@
 .public MailMsg_IsInit
 .public MailMsg_Compare
 .public SetKeyRepeatTimers
-.public FreeToHeap
+.public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public BgSetPosTextAndCommit

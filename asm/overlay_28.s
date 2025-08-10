@@ -1020,7 +1020,7 @@ DowsingMchn_FreeHiddenItemLocs: ; 0x0225DD3C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0225DD56
-	bl FreeToHeap
+	bl Heap_Free
 	mov r0, #0x81
 	mov r1, #0
 	lsl r0, r0, #2

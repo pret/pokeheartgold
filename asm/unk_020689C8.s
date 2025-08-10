@@ -332,12 +332,12 @@ _02068C1E:
 
 	thumb_func_start sub_02068C2C
 sub_02068C2C: ; 0x02068C2C
-	ldr r3, _02068C34 ; =FreeToHeapExplicit
+	ldr r3, _02068C34 ; =Heap_FreeExplicit
 	add r1, r0, #0
 	ldr r0, [r1, #8]
 	bx r3
 	.balign 4, 0
-_02068C34: .word FreeToHeapExplicit
+_02068C34: .word Heap_FreeExplicit
 	thumb_func_end sub_02068C2C
 
 	thumb_func_start sub_02068C38
@@ -362,13 +362,13 @@ _02068C4E:
 
 	thumb_func_start sub_02068C5C
 sub_02068C5C: ; 0x02068C5C
-	ldr r3, _02068C68 ; =FreeToHeapExplicit
+	ldr r3, _02068C68 ; =Heap_FreeExplicit
 	add r1, r0, #0
 	ldr r0, [r1, #8]
 	ldr r1, [r1, #0xc]
 	bx r3
 	nop
-_02068C68: .word FreeToHeapExplicit
+_02068C68: .word Heap_FreeExplicit
 	thumb_func_end sub_02068C5C
 
 	thumb_func_start sub_02068C6C
