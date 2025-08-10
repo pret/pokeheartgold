@@ -1,4 +1,6 @@
 #include "application/pokegear/configure/pokegear_configure_internal.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0270.h"
 
 #include "font.h"
 #include "unk_0200FA24.h"
@@ -23,6 +25,9 @@ void ov101_021EF260(PokegearConfigureAppData *configureApp);
 void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1);
 void ov101_021EF384(PokegearConfigureAppData *configureApp, u32 backgroundStyle);
 void ov101_021EF414(PokegearConfigureAppData *configureApp);
+
+extern const UnmanagedSpriteTemplate ov101_021F82FC[5];
+extern const PokegearAppSwitchButtonSpec ov101_021F820C[6];
 
 BOOL ov101_021EED44(PokegearConfigureAppData *configureApp) {
     switch (configureApp->substate) {
@@ -158,4 +163,56 @@ void ov101_021EF00C(PokegearConfigureAppData *configureApp) {
 void ov101_021EF028(PokegearConfigureAppData *configureApp) {
     TouchscreenListMenuSpawner_Destroy(configureApp->unk_38);
     PokegearApp_DestroySpriteManager(configureApp->pokegear);
+}
+
+void ov101_021EF03C(PokegearConfigureAppData *configureApp) {
+    int i;
+
+    for (i = 0; i <= 4; ++i) {
+        configureApp->unk_14[i] = SpriteSystem_CreateSpriteFromResourceHeader(configureApp->pokegear->spriteSystem, configureApp->pokegear->spriteManager, &ov101_021F82FC[i]);
+        thunk_Sprite_SetPriority(configureApp->unk_14[i], 1);
+        Sprite_SetDrawFlag(configureApp->unk_14[i], FALSE);
+        Sprite_SetAnimActiveFlag(configureApp->unk_14[i], TRUE);
+    }
+    for (i = 5; i <= 8; ++i) {
+        configureApp->unk_14[i] = SpriteSystem_CreateSpriteFromResourceHeader(configureApp->pokegear->spriteSystem, configureApp->pokegear->spriteManager, &ov101_021F82FC[i - 5]);
+        thunk_Sprite_SetPriority(configureApp->unk_14[i], 1);
+        thunk_Sprite_SetDrawPriority(configureApp->unk_14[i], 0);
+        Sprite_SetDrawFlag(configureApp->unk_14[i], FALSE);
+        Sprite_SetAnimActiveFlag(configureApp->unk_14[i], FALSE);
+    }
+}
+
+void ov101_021EF0C8(PokegearConfigureAppData *configureApp) {
+    int i;
+
+    for (i = 0; i < 9; ++i) {
+        thunk_Sprite_Delete(configureApp->unk_14[i]);
+    }
+}
+
+void ov101_021EF0E0(PokegearConfigureAppData *configureApp) {
+    PokegearAppSwitch_AddButtons(configureApp->pokegear->appSwitch, ov101_021F820C, NELEMS(ov101_021F820C), 0, FALSE, configureApp->heapId, configureApp->unk_14[0], configureApp->unk_14[1], configureApp->unk_14[2], configureApp->unk_14[3]);
+    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, FALSE);
+}
+
+void ov101_021EF120(PokegearConfigureAppData *configureApp) {
+    PokegearAppSwitch_RemoveButtons(configureApp->pokegear->appSwitch, 1);
+}
+
+void ov101_021EF130(PokegearConfigureAppData *configureApp) {
+    MsgData *msgData;
+    int i;
+
+    configureApp->unk_3C = ListMenuItems_New(2, configureApp->heapId);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0270_bin, configureApp->heapId);
+    for (i = 0; i < 2; ++i) {
+        ListMenuItems_AppendFromMsgData(configureApp->unk_3C, msgData, msg_0270_00000 + i, i);
+    }
+    DestroyMsgData(msgData);
+}
+
+void ov101_021EF16C(PokegearConfigureAppData *configureApp) {
+    ListMenuItems_Delete(configureApp->unk_3C);
+    configureApp->unk_3C = NULL;
 }

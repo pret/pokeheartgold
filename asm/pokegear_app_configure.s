@@ -17,175 +17,6 @@
 
 	.extern ov101_021EEE14
 
-	thumb_func_start ov101_021EF03C
-ov101_021EF03C: ; 0x021EF03C
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	ldr r4, _021EF0C4 ; =ov101_021F82FC
-	mov r7, #0
-	add r5, r6, #0
-_021EF046:
-	ldr r1, [r6, #0xc]
-	add r2, r4, #0
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	ldr r0, [r0]
-	ldr r1, [r1]
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	str r0, [r5, #0x14]
-	mov r1, #1
-	bl thunk_Sprite_SetPriority
-	ldr r0, [r5, #0x14]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	ldr r0, [r5, #0x14]
-	mov r1, #1
-	bl Sprite_SetAnimActiveFlag
-	add r7, r7, #1
-	add r4, #0x28
-	add r5, r5, #4
-	cmp r7, #4
-	ble _021EF046
-	add r4, r6, #0
-	ldr r7, _021EF0C4 ; =ov101_021F82FC
-	mov r5, #5
-	add r4, #0x14
-_021EF082:
-	ldr r1, [r6, #0xc]
-	sub r3, r5, #5
-	add r0, r1, #0
-	add r0, #0x8c
-	add r1, #0x90
-	mov r2, #0x28
-	mul r2, r3
-	ldr r0, [r0]
-	ldr r1, [r1]
-	add r2, r7, r2
-	bl SpriteSystem_CreateSpriteFromResourceHeader
-	str r0, [r4, #0x14]
-	mov r1, #1
-	bl thunk_Sprite_SetPriority
-	ldr r0, [r4, #0x14]
-	mov r1, #0
-	bl thunk_Sprite_SetDrawPriority
-	ldr r0, [r4, #0x14]
-	mov r1, #0
-	bl Sprite_SetDrawFlag
-	ldr r0, [r4, #0x14]
-	mov r1, #0
-	bl Sprite_SetAnimActiveFlag
-	add r5, r5, #1
-	add r4, r4, #4
-	cmp r5, #8
-	ble _021EF082
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021EF0C4: .word ov101_021F82FC
-	thumb_func_end ov101_021EF03C
-
-	thumb_func_start ov101_021EF0C8
-ov101_021EF0C8: ; 0x021EF0C8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r4, #0
-_021EF0CE:
-	ldr r0, [r5, #0x14]
-	bl thunk_Sprite_Delete
-	add r4, r4, #1
-	add r5, r5, #4
-	cmp r4, #9
-	blt _021EF0CE
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021EF0C8
-
-	thumb_func_start ov101_021EF0E0
-ov101_021EF0E0: ; 0x021EF0E0
-	push {r4, lr}
-	sub sp, #0x18
-	mov r3, #0
-	add r4, r0, #0
-	str r3, [sp]
-	ldr r0, [r4]
-	ldr r1, _021EF11C ; =ov101_021F820C
-	str r0, [sp, #4]
-	ldr r0, [r4, #0x14]
-	mov r2, #6
-	str r0, [sp, #8]
-	ldr r0, [r4, #0x18]
-	str r0, [sp, #0xc]
-	ldr r0, [r4, #0x1c]
-	str r0, [sp, #0x10]
-	ldr r0, [r4, #0x20]
-	str r0, [sp, #0x14]
-	ldr r0, [r4, #0xc]
-	ldr r0, [r0, #0x7c]
-	bl PokegearAppSwitch_AddButtons
-	ldr r0, [r4, #0xc]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	mov r2, #0
-	bl PokegearAppSwitch_SetCursorSpritesDrawState
-	add sp, #0x18
-	pop {r4, pc}
-	nop
-_021EF11C: .word ov101_021F820C
-	thumb_func_end ov101_021EF0E0
-
-	thumb_func_start ov101_021EF120
-ov101_021EF120: ; 0x021EF120
-	ldr r0, [r0, #0xc]
-	ldr r3, _021EF12C ; =PokegearAppSwitch_RemoveButtons
-	ldr r0, [r0, #0x7c]
-	mov r1, #1
-	bx r3
-	nop
-_021EF12C: .word PokegearAppSwitch_RemoveButtons
-	thumb_func_end ov101_021EF120
-
-	thumb_func_start ov101_021EF130
-ov101_021EF130: ; 0x021EF130
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r1, [r5]
-	mov r0, #2
-	bl ListMenuItems_New
-	str r0, [r5, #0x3c]
-	mov r1, #0x1b
-	add r2, r1, #0
-	ldr r3, [r5]
-	mov r0, #0
-	add r2, #0xf3
-	bl NewMsgDataFromNarc
-	add r6, r0, #0
-	mov r4, #0
-_021EF150:
-	ldr r0, [r5, #0x3c]
-	add r1, r6, #0
-	add r2, r4, #0
-	add r3, r4, #0
-	bl ListMenuItems_AppendFromMsgData
-	add r4, r4, #1
-	cmp r4, #2
-	blt _021EF150
-	add r0, r6, #0
-	bl DestroyMsgData
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021EF130
-
-	thumb_func_start ov101_021EF16C
-ov101_021EF16C: ; 0x021EF16C
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0x3c]
-	bl ListMenuItems_Delete
-	mov r0, #0
-	str r0, [r4, #0x3c]
-	pop {r4, pc}
-	thumb_func_end ov101_021EF16C
-
 	thumb_func_start ov101_021EF17C
 ov101_021EF17C: ; 0x021EF17C
 	push {r4, lr}
@@ -1039,6 +870,7 @@ _021EF844: .word 0x00000941
 
     .rodata
 
+	.global ov101_021F820C
 ov101_021F820C: ; 0x021F820C
 	.short 0x0000
 	.byte 0x02, 0x01, 0x03, 0x03, 0x30, 0x2C, -22, 22, -18, 18
@@ -1084,6 +916,7 @@ ov101_021F8254: ; 0x021F8254
 	.byte 0x01, 0x00, 0x1C, 0x00, 0x00, 0x02, 0x00, 0x00
 	.word 0x00000000
 
+	.global ov101_021F82FC
 ov101_021F82FC: ; 0x021F82FC
 	.word 0x00000000
 	.short 0x0000, 0x0000, 0x0000, 0x0000
