@@ -67,7 +67,7 @@ u32 DetectFlashcart(void* callback) {
 
     ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
-    if (callback != NULL && ret != 0) {
+    if (callback != NULL && ret) {
         ((VoidFunc)callback)();
     }
 
@@ -85,7 +85,7 @@ u32 DetectNotFlashcart(void* callback) {
 
     ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 
-    if (callback != NULL && ret != 0) {
+    if (callback != NULL && ret) {
         ((VoidFunc)callback)();
     }
 
@@ -103,7 +103,7 @@ u32 DetectEmulator(void* callback) {
 
     ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
-    if (callback != NULL && ret != 0) {
+    if (callback != NULL && ret) {
         ((VoidFunc)callback)();
     }
 
@@ -121,7 +121,7 @@ u32 DetectNotEmulator(void* callback) {
 
     ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 
-    if (callback != NULL && ret != 0) {
+    if (callback != NULL && ret) {
         ((VoidFunc)callback)();
     }
 
@@ -138,7 +138,7 @@ u32 DetectDummy(void* callback) {
 
     ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
-    if (callback != NULL && ret != 0) {
+    if (callback != NULL && ret) {
         ((VoidFunc)callback)();
     }
 
@@ -155,7 +155,7 @@ u32 DetectNotDummy(void* callback) {
 
     ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 
-    if (callback != NULL && ret != 0) {
+    if (callback != NULL && ret) {
         ((VoidFunc)callback)();
     }
 
