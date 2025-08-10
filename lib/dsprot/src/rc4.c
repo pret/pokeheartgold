@@ -5,27 +5,23 @@
 
 
 void RC4_Init(RC4_Ctx* ctx, const void* key, u32 key_len) {
-    u8   tmp1;
-    u8   tmp2;
-    int  Ki;
-    int  Si;
-    int  i;
-    int  j;
+    s32 Ki = 0;
+    s32 Si = 0;
 
-    Ki = 0;
-    Si = 0;
     ctx->i = 0;
     ctx->j = 0;
 
+    int i;
+    int j;
     for (j = 0; j < 256; j++) {
         ctx->S[j] = j;
     }
 
     // Modification to RC4: i = 255 -> 0, instead of 0 -> 255
     for (i = 255; i >= 0; i--) {
-        tmp1 = ctx->S[i];
+        u8 tmp1 = ctx->S[i];
         Si = (Si + ((u8*)key)[Ki] + tmp1) & 0xFF;
-        tmp2 = ctx->S[Si];
+        u8 tmp2 = ctx->S[Si];
         ctx->S[Si] = tmp1;
         ctx->S[i] = tmp2;
 
@@ -38,20 +34,13 @@ void RC4_Init(RC4_Ctx* ctx, const void* key, u32 key_len) {
 
 
 u8 RC4_Byte(RC4_Ctx* ctx) {
-    u8   i;
-    u8*  S;
-    u8   jval;
-    u8   ival;
-    u8   j;
-    u8   out_idx;
+    u8 i = ctx->i + 1;
 
-    i = ctx->i + 1;
+    u8* S = ctx->S;
 
-    S = ctx->S;
-
-    ival = S[i];
-    j = ival + ctx->j;
-    jval = S[j];
+    u8 ival = S[i];
+    u8 j = ival + ctx->j;
+    u8 jval = S[j];
 
     ctx->i = i;
     ctx->j = j;
@@ -59,16 +48,14 @@ u8 RC4_Byte(RC4_Ctx* ctx) {
     S[j] = ival;
     S[i] = jval;
 
-    out_idx = ival + jval;
+    u8 out_idx = ival + jval;
     return ctx->S[out_idx];
 }
 
 
 u32 RC4_InitSBox(u8* sbox) {
-    int  i;
-    int  x;
-    for (i = 0; i < 256; i++) {
-        x = i & 0xFF;
+    for (s32 i = 0; i < 256; i++) {
+        s32 x = i & 0xFF;
         sbox[i] = x ^ 1;
     }
 
@@ -77,21 +64,17 @@ u32 RC4_InitSBox(u8* sbox) {
 
 
 u32 RC4_EncryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
-    u8   sbox[256];
-    u8*  src_bytes;
-    u8*  dst_bytes;
-    u32  idx;
-
     if (size & 3) {
         return -1;
     }
 
-    src_bytes = (u8*)src;
-    dst_bytes = (u8*)dst;
+    u8* src_bytes = (u8*)src;
+    u8* dst_bytes = (u8*)dst;
 
+    u8 sbox[256];
     RC4_InitSBox(&sbox[0]);
 
-    for (idx = 0; idx < size; idx += 4) {
+    for (u32 idx = 0; idx < size; idx += 4) {
         switch (Encryptor_CategorizeInstruction(*(u32*)(src_bytes + idx))) {
             case 1:
             case 2:
@@ -120,21 +103,17 @@ u32 RC4_EncryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
 
 
 u32 RC4_DecryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
-    u8   sbox[256];
-    u8*  src_bytes;
-    u8*  dst_bytes;
-    u32  idx;
-
     if (size & 3) {
         return -1;
     }
 
-    src_bytes = (u8*)src;
-    dst_bytes = (u8*)dst;
+    u8* src_bytes = (u8*)src;
+    u8* dst_bytes = (u8*)dst;
 
+    u8 sbox[256];
     RC4_InitSBox(&sbox[0]);
 
-    for (idx = 0; idx < size; idx += 4) {
+    for (u32 idx = 0; idx < size; idx += 4) {
         switch (Encryptor_CategorizeInstruction(*(u32*)(src_bytes + idx))) {
             case 1:
             case 2:

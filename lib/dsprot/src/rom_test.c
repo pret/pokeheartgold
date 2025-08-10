@@ -11,14 +11,12 @@ u32 ROMTest_IsGood(void);
 
 u32 ROMTest_IsBad(void) {
     // Extra CRC entry is required to match
-    u32  crcs[7];
-    u8   rom_buf[ROM_BLOCK_SIZE];
-    u32  rom_addr;
-    int  i;
-    u32  ret;
-    u8*  rom_buf_ptr;
+    u32 crcs[7];
+    u8 rom_buf[ROM_BLOCK_SIZE];
+    
 
-    rom_addr = 0x1000;
+    u32 rom_addr = 0x1000;
+    s32 i;
     for (i = 0; i < 6; i++) {
         RunEncrypted_ROMUtil_Read(&rom_buf[0], rom_addr, ROM_BLOCK_SIZE);
         crcs[i] = RunEncrypted_ROMUtil_CRC32(&rom_buf[0], ROM_BLOCK_SIZE);
@@ -32,6 +30,7 @@ u32 ROMTest_IsBad(void) {
         }
     }
 
+    u32 ret;
     for (i = 0; i < 3; i++) {
         if (crcs[i] != crcs[3]) {
             ret = 1;
@@ -47,7 +46,7 @@ u32 ROMTest_IsBad(void) {
     }
 
 EXIT:
-    rom_buf_ptr = &rom_buf[0];
+    u8* rom_buf_ptr = &rom_buf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
         *rom_buf_ptr++ = 0;
     }
@@ -58,14 +57,12 @@ EXIT:
 
 u32 ROMTest_IsGood(void) {
     // Extra CRC entry is required to match
-    u32  crcs[7];
-    u8   rom_buf[ROM_BLOCK_SIZE];
-    u32  rom_addr;
-    int  i;
-    u32  ret;
-    u8*  rom_buf_ptr;
+    u32 crcs[7];
+    u8 rom_buf[ROM_BLOCK_SIZE];
+    
 
-    rom_addr = 0x1000;
+    u32 rom_addr = 0x1000;
+    s32 i;
     for (i = 0; i < 6; i++) {
         RunEncrypted_ROMUtil_Read(&rom_buf[0], rom_addr, ROM_BLOCK_SIZE);
         crcs[i] = RunEncrypted_ROMUtil_CRC32(&rom_buf[0], ROM_BLOCK_SIZE);
@@ -79,6 +76,7 @@ u32 ROMTest_IsGood(void) {
         }
     }
 
+    u32 ret;
     for (i = 0; i < 3; i++) {
         if (crcs[i] != crcs[3]) {
             ret = 0;
@@ -94,7 +92,7 @@ u32 ROMTest_IsGood(void) {
     }
 
 EXIT:
-    rom_buf_ptr = &rom_buf[0];
+    u8* rom_buf_ptr = &rom_buf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
         *rom_buf_ptr++ = 0;
     }

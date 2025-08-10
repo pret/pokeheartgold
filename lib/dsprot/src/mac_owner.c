@@ -13,24 +13,19 @@ static const u8 bad_mac_addr[6] = {
 
 
 u32 MACOwner_IsBad(void) {
-    int          i;
-    u8           mac_addr[MAC_ADDR_SIZE];
-    OSOwnerInfo  owner_info;
-
+    u8 mac_addr[MAC_ADDR_SIZE];
     OS_GetMacAddress(&mac_addr[0]);
+
+    s32 i;
     for (i = 0; i < MAC_ADDR_SIZE; i++) {
         if (bad_mac_addr[i] != (mac_addr[i] ^ 0xFF)) {
             break;
         }
     }
 
+    OSOwnerInfo owner_info;
     OS_GetOwnerInfo(&owner_info);
-    if (
-        i == MAC_ADDR_SIZE &&
-        owner_info.birthday.month == 1 &&
-        owner_info.birthday.day   == 1 &&
-        owner_info.nickNameLength == 0
-    ) {
+    if (i == MAC_ADDR_SIZE && owner_info.birthday.month == 1 && owner_info.birthday.day == 1 && owner_info.nickNameLength == 0) {
         return 1;
     }
 
@@ -45,24 +40,19 @@ u32 MACOwner_IsBad(void) {
 
 
 u32 MACOwner_IsGood(void) {
-    int          i;
-    u8           mac_addr[MAC_ADDR_SIZE];
-    OSOwnerInfo  owner_info;
-
+    u8 mac_addr[MAC_ADDR_SIZE];
     OS_GetMacAddress(&mac_addr[0]);
+
+    s32 i;
     for (i = 0; i < MAC_ADDR_SIZE; i++) {
         if (bad_mac_addr[i] != (mac_addr[i] ^ 0xFF)) {
             break;
         }
     }
 
+    OSOwnerInfo owner_info;
     OS_GetOwnerInfo(&owner_info);
-    if (
-        i == MAC_ADDR_SIZE &&
-        owner_info.birthday.month == 1 &&
-        owner_info.birthday.day   == 1 &&
-        owner_info.nickNameLength == 0
-    ) {
+    if (i == MAC_ADDR_SIZE && owner_info.birthday.month == 1 && owner_info.birthday.day == 1 && owner_info.nickNameLength == 0) {
         return 0;
     }
 

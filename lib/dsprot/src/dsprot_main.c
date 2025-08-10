@@ -30,17 +30,13 @@ typedef void (*VoidFunc)(void);
 
 // This was likely not originally an inline, but an inline is able to match here nicely
 static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type) {
-    BOOL  func_result;
-    s32   compare_sum;
-    u32   i;
-    s32   func_result_sum;
-
     // These two bit arrays must be signed to match
-    compare_sum = 0;
-    func_result_sum = 0;
+    s32 compare_sum = 0;
+    u32 i;
+    s32 func_result_sum = 0;
 
     for (i = 0; func_queue[i] != 0; i++) {
-        func_result = ((U32Func)(func_queue[i] - ENC_VAL_1 - DSP_OBFS_OFFSET))() != 0;
+        BOOL func_result = ((U32Func)(func_queue[i] - ENC_VAL_1 - DSP_OBFS_OFFSET))() != 0;
 
         func_result_sum += func_result;
         func_result_sum <<= 1;
@@ -58,14 +54,13 @@ static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type) {
 
 
 u32 DetectFlashcart(void* callback) {
-    u32   func_queue[32];
-    BOOL  ret;
+    u32 func_queue[32];
 
     func_queue[2] = 0;
     func_queue[0] = (u32)&RunEncrypted_ROMTest_IsBad[ENC_VAL_1] + DSP_OBFS_OFFSET;
     func_queue[1] = (u32)&RunEncrypted_Integrity_ROMTest_IsBad[ENC_VAL_1] + DSP_OBFS_OFFSET;
 
-    ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
+    BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
     if (callback != NULL && ret) {
         ((VoidFunc)callback)();
@@ -76,14 +71,13 @@ u32 DetectFlashcart(void* callback) {
 
 
 u32 DetectNotFlashcart(void* callback) {
-    u32   func_queue[32];
-    BOOL  ret;
+    u32 func_queue[32];
 
     func_queue[2] = 0;
     func_queue[0] = (u32)&RunEncrypted_ROMTest_IsGood[ENC_VAL_1] + DSP_OBFS_OFFSET;
     func_queue[1] = (u32)&RunEncrypted_Integrity_ROMTest_IsGood[ENC_VAL_1] + DSP_OBFS_OFFSET;
 
-    ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
+    BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 
     if (callback != NULL && ret) {
         ((VoidFunc)callback)();
@@ -94,14 +88,13 @@ u32 DetectNotFlashcart(void* callback) {
 
 
 u32 DetectEmulator(void* callback) {
-    u32   func_queue[32];
-    BOOL  ret;
+    u32 func_queue[32];
 
     func_queue[2] = 0;
     func_queue[0] = (u32)&RunEncrypted_MACOwner_IsBad[ENC_VAL_1] + DSP_OBFS_OFFSET;
     func_queue[1] = (u32)&RunEncrypted_Integrity_MACOwner_IsBad[ENC_VAL_1] + DSP_OBFS_OFFSET;
 
-    ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
+    BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
     if (callback != NULL && ret) {
         ((VoidFunc)callback)();
@@ -112,14 +105,13 @@ u32 DetectEmulator(void* callback) {
 
 
 u32 DetectNotEmulator(void* callback) {
-    u32   func_queue[32];
-    BOOL  ret;
+    u32 func_queue[32];
 
     func_queue[2] = 0;
     func_queue[0] = (u32)&RunEncrypted_MACOwner_IsGood[ENC_VAL_1] + DSP_OBFS_OFFSET;
     func_queue[1] = (u32)&RunEncrypted_Integrity_MACOwner_IsGood[ENC_VAL_1] + DSP_OBFS_OFFSET;
 
-    ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
+    BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 
     if (callback != NULL && ret) {
         ((VoidFunc)callback)();
@@ -130,13 +122,12 @@ u32 DetectNotEmulator(void* callback) {
 
 
 u32 DetectDummy(void* callback) {
-    u32   func_queue[32];
-    BOOL  ret;
+    u32 func_queue[32];
 
     // Prevent optimization of the function queue processing
     *(u32*)&func_queue[0] = 0;
 
-    ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
+    BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
     if (callback != NULL && ret) {
         ((VoidFunc)callback)();
@@ -147,13 +138,12 @@ u32 DetectDummy(void* callback) {
 
 
 u32 DetectNotDummy(void* callback) {
-    u32   func_queue[32];
-    BOOL  ret;
+    u32 func_queue[32];
 
     // Prevent optimization of the function queue processing
     *(u32*)&func_queue[0] = 0;
 
-    ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
+    BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 
     if (callback != NULL && ret) {
         ((VoidFunc)callback)();

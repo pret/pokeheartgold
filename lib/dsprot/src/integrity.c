@@ -14,16 +14,11 @@ u32 Integrity_ROMTest_IsGood(void);
 
 
 u32 Integrity_MACOwner_IsBad(void) {
-    u32  base;
-    u8*  bytes;
-    u32  offset;
-    u32  ret;
-
     // Obfuscated handling of function address
-    base = (u32)&RunEncrypted_MACOwner_IsBad[ENC_VAL_1] - (ENC_VAL_1 * 2);
-    bytes = (u8*)(base + INTEGRITY_OBFS_OFFSET);
-    offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
-    ret = base + 1;
+    u32 base = (u32)&RunEncrypted_MACOwner_IsBad[ENC_VAL_1] - (ENC_VAL_1 * 2);
+    u8* bytes = (u8*)(base + INTEGRITY_OBFS_OFFSET);
+    u32 offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
+    u32 ret = base + 1;
 
     // Bytes of the first four instructions of the function
     if (bytes[offset+0x0] != 0xF0) return ret;
@@ -51,15 +46,11 @@ u32 Integrity_MACOwner_IsBad(void) {
 
 
 u32 Integrity_MACOwner_IsGood(void) {
-    u32  base;
-    u32  ret;
-    u32  offset;
-
     // Obfuscated handling of function address
-    base = (u32)&RunEncrypted_MACOwner_IsGood[ENC_VAL_1] - (ENC_VAL_1 * 2);
-    ret = base;
+    u32 base = (u32)&RunEncrypted_MACOwner_IsGood[ENC_VAL_1] - (ENC_VAL_1 * 2);
+    u32 ret = base;
     base += INTEGRITY_OBFS_OFFSET;
-    offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
+    u32 offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
 
     // Bytes of the first four instructions of the function
     // (Has to be like this to match, `(u8*)base` as a variable causes regswaps)
@@ -88,16 +79,11 @@ u32 Integrity_MACOwner_IsGood(void) {
 
 
 u32 Integrity_ROMTest_IsBad(void) {
-    u32  base;
-    u8*  bytes;
-    u32  offset;
-    u32  ret;
-
     // Obfuscated handling of function address
-    base = (u32)&RunEncrypted_ROMTest_IsBad[ENC_VAL_1] - (ENC_VAL_1 * 2);
-    bytes = (u8*)(base + INTEGRITY_OBFS_OFFSET);
-    offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
-    ret = base + 1;
+    u32 base = (u32)&RunEncrypted_ROMTest_IsBad[ENC_VAL_1] - (ENC_VAL_1 * 2);
+    u8* bytes = (u8*)(base + INTEGRITY_OBFS_OFFSET);
+    u32 offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
+    u32 ret = base + 1;
 
     // Bytes of the first four instructions of the function
     if (bytes[offset+0x0] != 0xF0) return ret;
@@ -125,15 +111,11 @@ u32 Integrity_ROMTest_IsBad(void) {
 
 
 u32 Integrity_ROMTest_IsGood(void) {
-    u32  base;
-    u32  ret;
-    u32  offset;
-
     // Obfuscated handling of function address
-    base = (u32)&RunEncrypted_ROMTest_IsGood[ENC_VAL_1] - (ENC_VAL_1 * 2);
-    ret = base;
+    u32 base = (u32)&RunEncrypted_ROMTest_IsGood[ENC_VAL_1] - (ENC_VAL_1 * 2);
+    u32 ret = base;
     base += INTEGRITY_OBFS_OFFSET;
-    offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
+    u32 offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
 
     // Bytes of the first four instructions of the function
     // (Has to be like this to match, `(u8*)base` as a variable causes regswaps)

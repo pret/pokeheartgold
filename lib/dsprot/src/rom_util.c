@@ -16,18 +16,18 @@ void ROMUtil_Read(void* dest, u32 addr, s32 num_bytes) {
     // Most/all convoluted syntax here must be that way to match.
     // Some of the comment documentation may be inaccurate here.
 
-    REGType8v*  vnull;
-    u32         register_base_1;
-    s32         addr_offset;
-    u32         card_ctrl_13;
-    REGType8v*  register_base_2;
-    u8          buffer[8];
-    u8*         bufptr;
-    u16         lock_id;
-    u16         ext_mem_register_val_original;
-    u32         output;
-    s32         card_ctrl_cmd;
-    int         i;
+    REGType8v* vnull;
+    u32 register_base_1;
+    s32 addr_offset;
+    u32 card_ctrl_13;
+    REGType8v* register_base_2;
+    u8 buffer[8];
+    u8* bufptr;
+    u16 lock_id;
+    u16 ext_mem_register_val_original;
+    u32 output;
+    s32 card_ctrl_cmd;
+    int i;
 
     lock_id = OS_GetLockID();
     CARD_LockRom(lock_id);
@@ -132,14 +132,10 @@ void ROMUtil_Read(void* dest, u32 addr, s32 num_bytes) {
 
 
 u32 ROMUtil_CRC32(void* buf, u32 size) {
-    int  i;
-    u32  crc;
-    u32  poly;
-    u8*  byteptr;
-
-    byteptr = (u8*)buf;
-    crc = 0xFFFFFFFF;
-    poly = 0xEDB88320;
+    s32 i;
+    u8* byteptr = (u8*)buf;
+    u32 crc = 0xFFFFFFFF;
+    u32 poly = 0xEDB88320;
     while (size-- != 0) {
         crc ^= *byteptr++;
         for (i = 0; i < 8; i++) {

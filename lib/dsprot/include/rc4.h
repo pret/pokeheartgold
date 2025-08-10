@@ -4,9 +4,9 @@
 #include "types.h"
 
 typedef struct {
-    int  i;
-    int  j;
-    u8   S[256];
+    int i;
+    int j;
+    u8 S[256];
 } RC4_Ctx;
 
 void RC4_Init(RC4_Ctx* ctx, const void* key, u32 key_len);

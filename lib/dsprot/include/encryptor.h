@@ -4,8 +4,8 @@
 #include "types.h"
 
 typedef struct {
-    void*  start_addr;
-    u32    size;
+    void* start_addr;
+    u32 size;
 } FuncInfo;
 
 // Nitro functions
