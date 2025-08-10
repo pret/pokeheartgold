@@ -1,3 +1,4 @@
+#include "dsprot.h"
 	.include "asm/macros.inc"
 	.include "overlay_18.inc"
 	.include "global.inc"
@@ -362,7 +363,7 @@ Pokedex_Exit: ; 0x021E5B80
 	add r1, r6, #0
 	bl FS_LoadOverlay
 	ldr r0, _021E5C0C ; =ov18_021E5C1C
-	bl ov123_0225F520
+	bl DSProt_DetectEmulator
 	cmp r0, #0
 	beq _021E5BA8
 	mov r1, #0xfa
@@ -379,7 +380,7 @@ _021E5BA8:
 	ldr r0, [r0, #8]
 	bl sub_02092BD8
 	ldr r0, _021E5C14 ; =ov18_021E5C2C
-	bl ov123_0225F430
+	bl DSProt_DetectFlashcart
 	cmp r0, #0
 	beq _021E5BD0
 	mov r1, #0xfa
@@ -396,7 +397,7 @@ _021E5BD0:
 	bl GF_SndHandleSetPlayerVolume
 	bl sub_02004B10
 	ldr r0, _021E5C18 ; =ov18_021E5C3C
-	bl ov123_0225F688
+	bl DSProt_DetectNotDummy
 	cmp r0, #0
 	bne _021E5BFC
 	mov r1, #0xfa

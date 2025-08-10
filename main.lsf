@@ -1251,7 +1251,7 @@ Overlay voltorb_flip
 Overlay OVY_123
 {
     After OVY_31
-    Object lib/asm/overlay_123.o
+    Library dsprot.a
 }
 Overlay OVY_124
 {

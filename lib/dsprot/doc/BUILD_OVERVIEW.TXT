@@ -1,0 +1,115 @@
+Module 1 (main):
+	Functions:
+		DetectFlashcart
+		DetectNotFlashcart
+		DetectEmulator
+		DetectNotEmulator
+		DetectDummy
+		DetectNotDummy
+	
+	Encrypt and create decryption wrappers (key=0x6AB2, prefix=DSProt_):
+		DetectFlashcart
+		DetectNotFlashcart
+		DetectEmulator
+		DetectNotEmulator
+		DetectDummy
+		DetectNotDummy
+	
+	Encode and create decoder function:
+		DSProt_DetectFlashcart
+		DSProt_DetectNotFlashcart
+		DSProt_DetectEmulator
+		DSProt_DetectNotEmulator
+		DSProt_DetectDummy
+		DSProt_DetectNotDummy
+
+
+Module 1.5 (BSS + garbage):
+	(no functions, only .bss and .rodata regions)
+
+
+Module 2 (integrity):
+	Functions:
+		Integrity_MACOwner_IsBad
+		Integrity_MACOwner_IsGood
+		Integrity_ROMTest_IsBad
+		Integrity_ROMTest_IsGood
+	
+	Encrypt and create decryption wrappers (key=0x9785):
+		Integrity_MACOwner_IsBad
+		Integrity_MACOwner_IsGood
+		Integrity_ROMTest_IsBad
+		Integrity_ROMTest_IsGood
+	
+	Encode and create decoder function:
+		RunEncrypted_Integrity_MACOwner_IsBad
+		RunEncrypted_Integrity_MACOwner_IsGood
+		RunEncrypted_Integrity_ROMTest_IsBad
+		RunEncrypted_Integrity_ROMTest_IsGood
+
+
+Module 3 (encryptor):
+	Functions:
+		clearDataAndInstructionCache
+		Encryptor_CategorizeInstruction
+		Encryptor_DecodeFunctionTable
+		Encryptor_DecryptFunction
+		Encryptor_EncryptFunction
+	
+	Encode and create decoder function:
+		Encryptor_EncryptFunction
+		Encryptor_DecryptFunction
+
+
+Module 4 (core tests):
+	Functions:
+		MACOwner_IsBad
+		MACOwner_IsGood
+	
+	Encrypt and create decryption wrappers (key=0x0982):
+		MACOwner_IsBad
+		MACOwner_IsGood	
+	
+	Functions:
+		ROMUtil_Read
+		ROMUtil_CRC32
+	
+	Encrypt and create decryption wrappers (key=0x0982):
+		ROMUtil_Read
+		ROMUtil_CRC32
+	
+	Functions:
+		ROMTest_IsBad
+		ROMTest_IsGood
+	
+	Encrypt and create decryption wrappers (key=0x0982):
+		ROMTest_IsBad
+		ROMTest_IsGood
+	
+	Encode and create decoder function:
+		RunEncrypted_MACOwner_IsBad
+		RunEncrypted_MACOwner_IsGood
+		RunEncrypted_ROMUtil_Read
+		RunEncrypted_ROMUtil_CRC32
+		RunEncrypted_ROMTest_IsBad
+		RunEncrypted_ROMTest_IsGood
+
+
+Module 5 (RC4):
+	Functions:
+		RC4_Init
+		RC4_Byte
+		RC4_InitSBox
+		RC4_EncryptInstructions
+		RC4_DecryptInstructions
+		RC4_InitAndEncryptInstructions
+		RC4_InitAndDecryptInstructions
+	
+	Encode and create decoder function:
+		RC4_Init
+		RC4_Byte
+		RC4_InitSBox
+		RC4_EncryptInstructions
+		RC4_DecryptInstructions
+		RC4_InitAndEncryptInstructions
+		RC4_InitAndDecryptInstructions

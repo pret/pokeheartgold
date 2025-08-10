@@ -8,12 +8,12 @@
 #include "msgdata/msg/msg_0040.h"
 
 #include "bg_window.h"
+#include "dsprot.h"
 #include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "menu_input_state.h"
 #include "overlay_01.h"
-#include "overlay_123.h"
 #include "render_text.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
@@ -217,7 +217,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
 
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 
-    if (!ov123_0225F4A8(ov30_0225DC28)) {
+    if (!DSProt_DetectNotFlashcart(ov30_0225DC28)) {
         AllocFromHeapAtEnd(HEAP_ID_3, 1000);
     }
 
@@ -226,7 +226,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
 
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
-    if (ov123_0225F520(ov30_0225DC08)) {
+    if (DSProt_DetectEmulator(ov30_0225DC08)) {
         AllocFromHeapAtEnd(HEAP_ID_3, 1000);
     }
 
@@ -241,7 +241,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
 
     DestroyHeap(HEAP_ID_8);
 
-    if (ov123_0225F610(ov30_0225DC18)) {
+    if (DSProt_DetectDummy(ov30_0225DC18)) {
         AllocFromHeapAtEnd(HEAP_ID_3, 1000);
     }
 

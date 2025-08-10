@@ -2,11 +2,11 @@
 
 #include "global.h"
 
+#include "dsprot.h"
 #include "field_system.h"
 #include "follow_mon.h"
 #include "main.h"
 #include "map_events.h"
-#include "overlay_123.h"
 #include "save_local_field_data.h"
 #include "unk_02092BB8.h"
 #include "unk_02092BE8.h"
@@ -21,14 +21,14 @@ static void ov124_02260D58(void);
 void FieldSystem_Init(OVY_MANAGER *man, FieldSystem *fieldSystem) {
     u32 key = 2441 * 4073; // these are both prime
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
-    key += 769 * (!ov123_0225F4A8(ov124_02260D68)); // 769 is prime
+    key += 769 * (!DSProt_DetectNotFlashcart(ov124_02260D68)); // 769 is prime
     UnkStruct_02111868_sub *args = OverlayManager_GetArgs(man);
     fieldSystem->saveData = args->saveData;
     fieldSystem->taskman = NULL;
-    key += 47 * (!ov123_0225F688(ov124_02260D6C)); // 47 is prime
+    key += 47 * (!DSProt_DetectNotDummy(ov124_02260D6C)); // 47 is prime
     fieldSystem->location = LocalFieldData_GetCurrentPosition(Save_LocalFieldData_Get(fieldSystem->saveData));
     fieldSystem->mapMatrix = MapMatrix_New();
-    u32 key2 = 929 * ov123_0225F520(ov124_02260D58); // 929 is prime
+    u32 key2 = 929 * DSProt_DetectEmulator(ov124_02260D58); // 929 is prime
     Field_AllocateMapEvents(fieldSystem, HEAP_ID_FIELD);
     fieldSystem->bagCursor = BagCursor_New(HEAP_ID_FIELD);
     FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
