@@ -20,11 +20,6 @@ void ov101_021EF120(PokegearConfigureAppData *configureApp);
 void ov101_021EF130(PokegearConfigureAppData *configureApp);
 void ov101_021EF16C(PokegearConfigureAppData *configureApp);
 void ov101_021EF17C(PokegearConfigureAppData *configureApp);
-void ov101_021EF1D8(PokegearConfigureAppData *configureApp);
-void ov101_021EF260(PokegearConfigureAppData *configureApp);
-void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1);
-void ov101_021EF384(PokegearConfigureAppData *configureApp, u32 backgroundStyle);
-void ov101_021EF414(PokegearConfigureAppData *configureApp);
 
 extern const UnmanagedSpriteTemplate ov101_021F82FC[5];
 extern const PokegearAppSwitchButtonSpec ov101_021F820C[6];
@@ -215,4 +210,17 @@ void ov101_021EF130(PokegearConfigureAppData *configureApp) {
 void ov101_021EF16C(PokegearConfigureAppData *configureApp) {
     ListMenuItems_Delete(configureApp->unk_3C);
     configureApp->unk_3C = NULL;
+}
+
+void ov101_021EF17C(PokegearConfigureAppData *configureApp) {
+    ov101_021EF414(configureApp);
+    if (configureApp->pokegear->cursorInAppSwitchZone == TRUE) {
+        PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, TRUE);
+        PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, FALSE);
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(configureApp->pokegear));
+    } else {
+        PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, FALSE);
+        PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, TRUE);
+        PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 1, 0);
+    }
 }
