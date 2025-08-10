@@ -30,8 +30,8 @@ typedef vu16 REGType16v;
 typedef vu32 REGType32v;
 typedef vu64 REGType64v;
 typedef int BOOL;
-#define TRUE   (1)
-#define FALSE  (0)
-#define NULL  ((void*)0)
+#define TRUE  (1)
+#define FALSE (0)
+#define NULL  ((void *)0)
 
 #endif

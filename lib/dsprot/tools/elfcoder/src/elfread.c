@@ -1,24 +1,22 @@
-#include <string.h>
+#include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/stat.h>
-#include <errno.h>
 
-#include "elf.h" // Copy included if not available already
-
-#include "encoder.h"
 #include "asmwriter.h"
+#include "elf.h" // Copy included if not available already
+#include "encoder.h"
 
 typedef struct {
-    FILE*       fhandle;
-    char*       fname;
-    Elf32_Ehdr  ex_header;
-    Elf32_Shdr  symtbl_header;
-    Elf32_Shdr  strtbl_header;
+    FILE *fhandle;
+    char *fname;
+    Elf32_Ehdr ex_header;
+    Elf32_Shdr symtbl_header;
+    Elf32_Shdr strtbl_header;
 } ElfFile;
 
-#define INDENT  "  "
-
+#define INDENT "  "
 
 // Nonfunctional on MinGW
 #if 0
@@ -33,20 +31,17 @@ static int isSameFile(FILE* f1, FILE* f2) {
 }
 #endif
 
-
-static void getSectionHeaderByIdx(ElfFile* elf, int idx, Elf32_Shdr* out_section_header) {
+static void getSectionHeaderByIdx(ElfFile *elf, int idx, Elf32_Shdr *out_section_header) {
     fseek(elf->fhandle, elf->ex_header.e_shoff + (idx * elf->ex_header.e_shentsize), SEEK_SET);
     fread(out_section_header, sizeof(Elf32_Shdr), 1, elf->fhandle);
 }
 
-
-static void getSymbolByIdx(ElfFile* elf, int idx, Elf32_Sym* out_symbol) {
+static void getSymbolByIdx(ElfFile *elf, int idx, Elf32_Sym *out_symbol) {
     fseek(elf->fhandle, elf->symtbl_header.sh_offset + (idx * elf->symtbl_header.sh_entsize), SEEK_SET);
     fread(out_symbol, sizeof(Elf32_Sym), 1, elf->fhandle);
 }
 
-
-static int symbolStringCompare(ElfFile* elf, int str_idx, const char* target_symbol) {
+static int symbolStringCompare(ElfFile *elf, int str_idx, const char *target_symbol) {
     fseek(elf->fhandle, elf->strtbl_header.sh_offset + str_idx, SEEK_SET);
 
     do {
@@ -54,13 +49,12 @@ static int symbolStringCompare(ElfFile* elf, int str_idx, const char* target_sym
         if (diff != 0) {
             return diff;
         }
-    } while(*target_symbol++ != '\0');
+    } while (*target_symbol++ != '\0');
 
     return 0;
 }
 
-
-static int getRelocationHeaderByTarget(ElfFile* elf, int target_idx, Elf32_Shdr* out_relocation_header) {
+static int getRelocationHeaderByTarget(ElfFile *elf, int target_idx, Elf32_Shdr *out_relocation_header) {
     for (int i = 0; i < elf->ex_header.e_shnum; i++) {
         if (i == target_idx) {
             continue;
@@ -76,8 +70,7 @@ static int getRelocationHeaderByTarget(ElfFile* elf, int target_idx, Elf32_Shdr*
     return 0;
 }
 
-
-static int ElfFile_Init(ElfFile* elf, char* fname) {
+static int ElfFile_Init(ElfFile *elf, char *fname) {
     elf->fname = fname;
 
     // Open file
@@ -120,13 +113,12 @@ static int ElfFile_Init(ElfFile* elf, char* fname) {
     return 0;
 }
 
-
-#define ROTL(x,a)  (((uint32_t)x << a) | (x >> (32-a)))
-static void createRC4Key(uint32_t inkey, unsigned int func_size, uint8_t* outkey) {
+#define ROTL(x, a) (((uint32_t)x << a) | (x >> (32 - a)))
+static void createRC4Key(uint32_t inkey, unsigned int func_size, uint8_t *outkey) {
     uint32_t k[4];
 
     k[0] = func_size ^ inkey;
-    k[1] = func_size ^ ROTL(inkey,  8);
+    k[1] = func_size ^ ROTL(inkey, 8);
     k[2] = func_size ^ ROTL(inkey, 16);
     k[3] = func_size ^ ROTL(inkey, 24);
 
@@ -134,14 +126,13 @@ static void createRC4Key(uint32_t inkey, unsigned int func_size, uint8_t* outkey
     memcpy(outkey, &k[0], RC4_KEY_SIZE);
 }
 
-
-static int encodeInstructions(ElfFile* elf, int start_addr, int size, EncodingTask* task) {
+static int encodeInstructions(ElfFile *elf, int start_addr, int size, EncodingTask *task) {
     Encoding_Ctx ctx;
     Encode_Init(&ctx, task);
 
     int num_ins = size / 4;
     fseek(elf->fhandle, start_addr, SEEK_SET);
-    Instruction* ins_buffer = malloc(size);
+    Instruction *ins_buffer = malloc(size);
     fread(ins_buffer, sizeof(Instruction), num_ins, elf->fhandle);
 
     // Finding last executed instruction (ignoring data at the end of the routine)
@@ -174,7 +165,7 @@ static int encodeInstructions(ElfFile* elf, int start_addr, int size, EncodingTa
     int encoded_size = encoded_instructions * 4;
 
     // RC4 setup if neccessary, else use NULL
-    RC4_Ctx* rc4 = NULL;
+    RC4_Ctx *rc4 = NULL;
     if (task->key_mode == MODE_KEYED) {
         rc4 = malloc(sizeof(RC4_Ctx));
         uint8_t rc4key[RC4_KEY_SIZE];
@@ -199,15 +190,13 @@ static int encodeInstructions(ElfFile* elf, int start_addr, int size, EncodingTa
     return encoded_size;
 }
 
-
 static void encodeRelocations(
-    ElfFile*           elf,
-    int                section_offset,
-    const Elf32_Sym*   symbol,
-    int                encoded_size,
-    const Elf32_Shdr*  relocation_header,
-    EncodingTask*      task
-) {
+    ElfFile *elf,
+    int section_offset,
+    const Elf32_Sym *symbol,
+    int encoded_size,
+    const Elf32_Shdr *relocation_header,
+    EncodingTask *task) {
     // Iterate all relocations looking for any with offsets in the bounds of the encoding
     int num_relocs = relocation_header->sh_size / relocation_header->sh_entsize;
     for (int i = 0; i < num_relocs; i++) {
@@ -217,9 +206,7 @@ static void encodeRelocations(
         fread(&reloc, sizeof(Elf32_Rela), 1, elf->fhandle);
 
         if (
-            (reloc.r_offset >= symbol->st_value) &&
-            (reloc.r_offset < (symbol->st_value + encoded_size))
-        ) {
+            (reloc.r_offset >= symbol->st_value) && (reloc.r_offset < (symbol->st_value + encoded_size))) {
             // The instruction it's relocating is needed to determine how to encode this relocation
             int instruction_addr = section_offset + reloc.r_offset;
             fseek(elf->fhandle, instruction_addr, SEEK_SET);
@@ -244,8 +231,7 @@ static void encodeRelocations(
     }
 }
 
-
-static int encodeSymbol(ElfFile* elf, const Elf32_Sym* symbol, char* symbol_name, ASMWriter_Ctx* asmw, EncodingTask* task) {
+static int encodeSymbol(ElfFile *elf, const Elf32_Sym *symbol, char *symbol_name, ASMWriter_Ctx *asmw, EncodingTask *task) {
     int ret = 0;
 
     Elf32_Shdr text_header;
@@ -260,7 +246,9 @@ static int encodeSymbol(ElfFile* elf, const Elf32_Sym* symbol, char* symbol_name
 
         if (task->verbose) {
             printf("%s: found @ %04x in %s\n",
-                symbol_name, symbol->st_value, elf->fname);
+                symbol_name,
+                symbol->st_value,
+                elf->fname);
 
             if (task->encoding_type == ENC_DECODE) {
                 if (task->key_mode == MODE_KEYED) {
@@ -296,14 +284,15 @@ static int encodeSymbol(ElfFile* elf, const Elf32_Sym* symbol, char* symbol_name
         ret++;
 
         printf("%s (@ %04x in %s): failed: could not find instruction range\n",
-            symbol_name, symbol->st_value, elf->fname);
+            symbol_name,
+            symbol->st_value,
+            elf->fname);
     }
 
     return ret;
 }
 
-
-static int processElfs(ElfFile* elfs, ASMWriter_Ctx* asmw, EncodingTask* task) {
+static int processElfs(ElfFile *elfs, ASMWriter_Ctx *asmw, EncodingTask *task) {
     int ret = 0;
 
     // Iterate all target symbols in the outermost loop so they are processed in order
@@ -346,8 +335,7 @@ static int processElfs(ElfFile* elfs, ASMWriter_Ctx* asmw, EncodingTask* task) {
     return ret;
 }
 
-
-int Elf_EncodeSymbols(EncodingTask* task) {
+int Elf_EncodeSymbols(EncodingTask *task) {
     int num_inputs = 0;
     while (task->inputs[num_inputs] != NULL) {
         num_inputs++;
@@ -360,7 +348,7 @@ int Elf_EncodeSymbols(EncodingTask* task) {
     ASMWriter_Ctx asmw;
     ASMWriter_Init(&asmw, task);
 
-    ElfFile* elfs = calloc(num_inputs + 1, sizeof(ElfFile));
+    ElfFile *elfs = calloc(num_inputs + 1, sizeof(ElfFile));
     for (int elf_idx = 0; elf_idx < num_inputs; elf_idx++) {
         int error = ElfFile_Init(&elfs[elf_idx], task->inputs[elf_idx]);
 

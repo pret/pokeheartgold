@@ -6,14 +6,12 @@
 u32 ROMTest_IsBad(void);
 u32 ROMTest_IsGood(void);
 
-#define ROM_BLOCK_SIZE  (0x200)
-
+#define ROM_BLOCK_SIZE (0x200)
 
 u32 ROMTest_IsBad(void) {
     // Extra CRC entry is required to match
     u32 crcs[7];
     u8 rom_buf[ROM_BLOCK_SIZE];
-    
 
     u32 rom_addr = 0x1000;
     s32 i;
@@ -46,7 +44,7 @@ u32 ROMTest_IsBad(void) {
     }
 
 EXIT:
-    u8* rom_buf_ptr = &rom_buf[0];
+    u8 *rom_buf_ptr = &rom_buf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
         *rom_buf_ptr++ = 0;
     }
@@ -58,7 +56,6 @@ u32 ROMTest_IsGood(void) {
     // Extra CRC entry is required to match
     u32 crcs[7];
     u8 rom_buf[ROM_BLOCK_SIZE];
-    
 
     u32 rom_addr = 0x1000;
     s32 i;
@@ -91,7 +88,7 @@ u32 ROMTest_IsGood(void) {
     }
 
 EXIT:
-    u8* rom_buf_ptr = &rom_buf[0];
+    u8 *rom_buf_ptr = &rom_buf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
         *rom_buf_ptr++ = 0;
     }

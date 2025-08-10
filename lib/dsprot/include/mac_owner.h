@@ -20,8 +20,8 @@ typedef struct {
 
 // Nitro functions
 // <nitro/os.h>
-extern void OS_GetMacAddress(u8* mac_addr);
-extern void OS_GetOwnerInfo(OSOwnerInfo* info);
+extern void OS_GetMacAddress(u8 *mac_addr);
+extern void OS_GetOwnerInfo(OSOwnerInfo *info);
 
 // Assembly decryption wrappers
 extern u32 RunEncrypted_MACOwner_IsBad(void);

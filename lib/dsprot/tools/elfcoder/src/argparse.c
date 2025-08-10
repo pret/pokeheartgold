@@ -1,40 +1,31 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 #include <errno.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "encoder.h"
 
-
-static int parseKey(const char* key_text, uint32_t* out_key) {
-    char* outptr;
+static int parseKey(const char *key_text, uint32_t *out_key) {
+    char *outptr;
     *out_key = strtoul(key_text, &outptr, 16);
     return (*outptr == '\0') && (errno != ERANGE);
 }
 
-
-static int isValidIdentifier(const char* str) {
+static int isValidIdentifier(const char *str) {
     if (str == NULL) {
         return 0;
     }
 
     // Must start with [_a-zA-Z]
     if (
-        str[0] != '_' &&
-        (str[0] < 'a' || str[0] > 'z') &&
-        (str[0] < 'A' || str[0] > 'Z')
-    ) {
+        str[0] != '_' && (str[0] < 'a' || str[0] > 'z') && (str[0] < 'A' || str[0] > 'Z')) {
         return 0;
     }
 
     // Subsequent characters must be [_a-zA-Z0-9]+
     for (int i = 1; str[i] != '\0'; i++) {
         if (
-            str[i] != '_' &&
-            (str[i] < 'a' || str[i] > 'z') &&
-            (str[i] < 'A' || str[i] > 'Z') &&
-            (str[i] < '0' || str[i] > '9')
-        ) {
+            str[i] != '_' && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && (str[i] < '0' || str[i] > '9')) {
             return 0;
         }
     }
@@ -46,11 +37,10 @@ static void printDescription(void) {
     printf(
         "Encode or decode ARM ELF files, with or without a key.                          \n"
         "If encoding, output an assembly file that will decode them.                     \n"
-        "For DS Protect version 1.23.                                                    \n"
-    );
+        "For DS Protect version 1.23.                                                    \n");
 }
 
-static void printUsage(const char* self_name) {
+static void printUsage(const char *self_name) {
     printf(
         "Usage: %s <arguments>                                                           \n"
         "  -i, --input [file1, [file2, [ ... ]]]      List of input files to process.    \n"
@@ -62,16 +52,12 @@ static void printUsage(const char* self_name) {
         "  -p, --prefix [prefix = RunEncrypted_]      Prefix for decryption wrappers.    \n"
         "  -g  --garbage [symbol]                     Optional added garbage reference.  \n"
         "  -v, --verbose                              Print encoding progress.           \n",
-        self_name
-    );
+        self_name);
 }
 
-
-static int argCompare(char* arg, char short_letter, char* long_str) {
-    return (arg[1] == short_letter && arg[2] == '\0') ||
-           (strcmp(arg, long_str) == 0);
+static int argCompare(char *arg, char short_letter, char *long_str) {
+    return (arg[1] == short_letter && arg[2] == '\0') || (strcmp(arg, long_str) == 0);
 }
-
 
 enum {
     AWAIT_INPUT_FILE,
@@ -79,22 +65,22 @@ enum {
     AWAIT_NONE
 };
 
-int ArgParse_CreateTask(EncodingTask* task, char** argv) {
+int ArgParse_CreateTask(EncodingTask *task, char **argv) {
     // Defaults
-    task->inputs          = NULL;
-    task->output_fname    = NULL;
-    task->encoding_type   = ENC_INVALID;
-    task->key_mode        = MODE_UNKEYED;
-    task->symbols         = NULL;
-    task->wrapper_prefix  = NULL;
-    task->garbage         = NULL;
-    task->key             = 0;
-    task->verbose         = 0;
+    task->inputs = NULL;
+    task->output_fname = NULL;
+    task->encoding_type = ENC_INVALID;
+    task->key_mode = MODE_UNKEYED;
+    task->symbols = NULL;
+    task->wrapper_prefix = NULL;
+    task->garbage = NULL;
+    task->key = 0;
+    task->verbose = 0;
 
     int arg_idx = 0;
 
     // No arguments?
-    char* self_name = argv[arg_idx];
+    char *self_name = argv[arg_idx];
     if (self_name == NULL) {
         return 1;
     }
@@ -108,21 +94,20 @@ int ArgParse_CreateTask(EncodingTask* task, char** argv) {
         return 1;
     }
 
-
     int max_files = 16;
     int max_symbols = 64;
 
-    task->symbols = calloc(max_symbols, sizeof(char*));
+    task->symbols = calloc(max_symbols, sizeof(char *));
     int symbol_idx = 0;
 
-    task->inputs = calloc(max_files, sizeof(FILE*));
+    task->inputs = calloc(max_files, sizeof(FILE *));
     int file_idx = 0;
 
     int await_state = AWAIT_NONE;
 
     for (; argv[arg_idx] != NULL; arg_idx++) {
-        char* curr_arg = argv[arg_idx];
-        char* next_arg = argv[arg_idx+1];
+        char *curr_arg = argv[arg_idx];
+        char *next_arg = argv[arg_idx + 1];
 
         if (curr_arg[0] == '-') {
             await_state = AWAIT_NONE;
@@ -243,54 +228,53 @@ int ArgParse_CreateTask(EncodingTask* task, char** argv) {
             }
         } else {
             switch (await_state) {
-                case AWAIT_SYMBOL:
-                    // Maintain null terminator
-                    if ((symbol_idx + 1) == max_symbols) {
-                        max_symbols += 32;
-                        task->symbols = realloc(task->symbols, max_symbols * sizeof(char*));
-                    }
+            case AWAIT_SYMBOL:
+                // Maintain null terminator
+                if ((symbol_idx + 1) == max_symbols) {
+                    max_symbols += 32;
+                    task->symbols = realloc(task->symbols, max_symbols * sizeof(char *));
+                }
 
-                    if (!isValidIdentifier(curr_arg)) {
-                        printf("Error: invalid identifier: %s\n", curr_arg);
+                if (!isValidIdentifier(curr_arg)) {
+                    printf("Error: invalid identifier: %s\n", curr_arg);
+                    return 1;
+                }
+
+                for (int i = 0; i < symbol_idx; i++) {
+                    if (strcmp(curr_arg, task->symbols[i]) == 0) {
+                        printf("Error: duplicate function: %s\n", curr_arg);
                         return 1;
                     }
+                }
 
-                    for (int i = 0; i < symbol_idx; i++) {
-                        if (strcmp(curr_arg, task->symbols[i]) == 0) {
-                            printf("Error: duplicate function: %s\n", curr_arg);
-                            return 1;
-                        }
-                    }
+                task->symbols[symbol_idx] = curr_arg;
+                symbol_idx++;
+                task->symbols[symbol_idx] = NULL;
+                break;
 
-                    task->symbols[symbol_idx] = curr_arg;
-                    symbol_idx++;
-                    task->symbols[symbol_idx] = NULL;
-                    break;
+            case AWAIT_INPUT_FILE:
+                // Maintain null terminator
+                if ((file_idx + 1) == max_files) {
+                    max_files += 8;
+                    task->inputs = realloc(task->inputs, max_files * sizeof(char *));
+                }
 
-                case AWAIT_INPUT_FILE:
-                    // Maintain null terminator
-                    if ((file_idx + 1) == max_files) {
-                        max_files += 8;
-                        task->inputs = realloc(task->inputs, max_files * sizeof(char*));
-                    }
+                // Don't check for duplicate input files here, since "foo.o" != "./foo.o" etc
+                // Instead check later when we open each file
 
-                    // Don't check for duplicate input files here, since "foo.o" != "./foo.o" etc
-                    // Instead check later when we open each file
+                task->inputs[file_idx] = curr_arg;
+                file_idx++;
+                task->inputs[file_idx] = NULL;
+                break;
 
-                    task->inputs[file_idx] = curr_arg;
-                    file_idx++;
-                    task->inputs[file_idx] = NULL;
-                    break;
-
-                default:
-                case AWAIT_NONE:
-                    printf("Unknown argument: %s\n\n", curr_arg);
-                    printUsage(self_name);
-                    return 1;
+            default:
+            case AWAIT_NONE:
+                printf("Unknown argument: %s\n\n", curr_arg);
+                printUsage(self_name);
+                return 1;
             }
         }
     }
-
 
     if (file_idx == 0) {
         printf("Error: no input file(s) provided (-i)\n");
@@ -306,7 +290,6 @@ int ArgParse_CreateTask(EncodingTask* task, char** argv) {
         printf("Error: no functions provided (-f)\n");
         return 1;
     }
-
 
     if (task->output_fname != NULL && task->encoding_type == ENC_DECODE) {
         printf("Warning: output file name provided, but no output will be generated for decoding\n");
@@ -326,8 +309,7 @@ int ArgParse_CreateTask(EncodingTask* task, char** argv) {
     return 0;
 }
 
-
-void ArgParse_DestroyTask(EncodingTask* task) {
+void ArgParse_DestroyTask(EncodingTask *task) {
     if (task != NULL) {
         free(task->symbols);
         free(task->inputs);

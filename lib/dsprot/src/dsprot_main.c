@@ -1,23 +1,22 @@
 /* No dedicated header */
 
+#include "encoding_constants.h"
+#include "integrity.h"
+#include "mac_owner.h"
+#include "rom_test.h"
 #include "types.h"
 
-#include "integrity.h"
-#include "rom_test.h"
-#include "mac_owner.h"
-#include "encoding_constants.h"
-
 // Functions to be encrypted (cannot be called directly)
-u32 DetectFlashcart(void* callback);
-u32 DetectNotFlashcart(void* callback);
-u32 DetectEmulator(void* callback);
-u32 DetectNotEmulator(void* callback);
-u32 DetectDummy(void* callback);
-u32 DetectNotDummy(void* callback);
+u32 DetectFlashcart(void *callback);
+u32 DetectNotFlashcart(void *callback);
+u32 DetectEmulator(void *callback);
+u32 DetectNotEmulator(void *callback);
+u32 DetectDummy(void *callback);
+u32 DetectNotDummy(void *callback);
 
-static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type);
+static inline BOOL executeFunctionQueue(u32 *func_queue, int compare_type);
 
-#define DSP_OBFS_OFFSET  (0x320)
+#define DSP_OBFS_OFFSET (0x320)
 
 enum {
     DETECT_POSITIVE,
@@ -28,7 +27,7 @@ typedef u32 (*U32Func)(void);
 typedef void (*VoidFunc)(void);
 
 // This was likely not originally an inline, but an inline is able to match here nicely
-static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type) {
+static inline BOOL executeFunctionQueue(u32 *func_queue, int compare_type) {
     // These two bit arrays must be signed to match
     s32 compare_sum = 0;
     u32 i;
@@ -51,7 +50,7 @@ static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type) {
     }
 }
 
-u32 DetectFlashcart(void* callback) {
+u32 DetectFlashcart(void *callback) {
     u32 func_queue[32];
 
     func_queue[2] = 0;
@@ -67,7 +66,7 @@ u32 DetectFlashcart(void* callback) {
     return (u32)ret;
 }
 
-u32 DetectNotFlashcart(void* callback) {
+u32 DetectNotFlashcart(void *callback) {
     u32 func_queue[32];
 
     func_queue[2] = 0;
@@ -83,7 +82,7 @@ u32 DetectNotFlashcart(void* callback) {
     return (u32)ret;
 }
 
-u32 DetectEmulator(void* callback) {
+u32 DetectEmulator(void *callback) {
     u32 func_queue[32];
 
     func_queue[2] = 0;
@@ -99,7 +98,7 @@ u32 DetectEmulator(void* callback) {
     return (u32)ret;
 }
 
-u32 DetectNotEmulator(void* callback) {
+u32 DetectNotEmulator(void *callback) {
     u32 func_queue[32];
 
     func_queue[2] = 0;
@@ -115,11 +114,11 @@ u32 DetectNotEmulator(void* callback) {
     return (u32)ret;
 }
 
-u32 DetectDummy(void* callback) {
+u32 DetectDummy(void *callback) {
     u32 func_queue[32];
 
     // Prevent optimization of the function queue processing
-    *(u32*)&func_queue[0] = 0;
+    *(u32 *)&func_queue[0] = 0;
 
     BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_POSITIVE);
 
@@ -130,11 +129,11 @@ u32 DetectDummy(void* callback) {
     return (u32)ret;
 }
 
-u32 DetectNotDummy(void* callback) {
+u32 DetectNotDummy(void *callback) {
     u32 func_queue[32];
 
     // Prevent optimization of the function queue processing
-    *(u32*)&func_queue[0] = 0;
+    *(u32 *)&func_queue[0] = 0;
 
     BOOL ret = executeFunctionQueue(&func_queue[0], DETECT_NEGATIVE);
 

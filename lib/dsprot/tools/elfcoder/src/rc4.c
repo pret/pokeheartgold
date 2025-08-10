@@ -1,7 +1,6 @@
 #include "rc4.h"
 
-
-void RC4_Init(RC4_Ctx* ctx, uint8_t* k) {
+void RC4_Init(RC4_Ctx *ctx, uint8_t *k) {
     ctx->i = 0;
     ctx->j = 0;
 
@@ -19,8 +18,8 @@ void RC4_Init(RC4_Ctx* ctx, uint8_t* k) {
         ctx->S[j] = tmp;
     }
     */
-//     ^^^^ This is how you init RC4.
-//     vvvv This is NOT how you init RC4, but it's what they do, so..
+    //     ^^^^ This is how you init RC4.
+    //     vvvv This is NOT how you init RC4, but it's what they do, so..
     int ki = 0;
     uint8_t j = 0;
     for (int i = 255; i >= 0; i--) {
@@ -32,8 +31,7 @@ void RC4_Init(RC4_Ctx* ctx, uint8_t* k) {
     }
 }
 
-
-uint8_t RC4_Byte(RC4_Ctx* ctx) {
+uint8_t RC4_Byte(RC4_Ctx *ctx) {
     ctx->i++;
     ctx->j += ctx->S[ctx->i];
 

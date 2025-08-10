@@ -20,25 +20,25 @@ enum {
 };
 
 typedef struct {
-    char**    inputs;
-    char*     output_fname;
-    int       encoding_type;
-    int       key_mode;
-    char**    symbols;
-    char*     wrapper_prefix;
-    char*     garbage;
-    uint32_t  key;
-    int       verbose;
+    char **inputs;
+    char *output_fname;
+    int encoding_type;
+    int key_mode;
+    char **symbols;
+    char *wrapper_prefix;
+    char *garbage;
+    uint32_t key;
+    int verbose;
 } EncodingTask;
 
 typedef struct {
-    int  unused;
+    int unused;
 } Encoding_Ctx;
 
-void Encode_Init(Encoding_Ctx* ctx, EncodingTask* task);
-void Encode_Instruction(Encoding_Ctx* ctx, Instruction* ins, RC4_Ctx* rc4);
-void Encode_Relocation(const Instruction* encoded_instruction, Elf32_Rela* reloc);
-void Decode_Instruction(Encoding_Ctx* ctx, Instruction* ins, RC4_Ctx* rc4);
-void Decode_Relocation(const Instruction* encoded_instruction, Elf32_Rela* reloc);
+void Encode_Init(Encoding_Ctx *ctx, EncodingTask *task);
+void Encode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4);
+void Encode_Relocation(const Instruction *encoded_instruction, Elf32_Rela *reloc);
+void Decode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4);
+void Decode_Relocation(const Instruction *encoded_instruction, Elf32_Rela *reloc);
 
 #endif
