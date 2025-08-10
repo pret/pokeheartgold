@@ -38,7 +38,6 @@ u32 MACOwner_IsBad(void) {
     return 1;
 }
 
-
 u32 MACOwner_IsGood(void) {
     u8 mac_addr[MAC_ADDR_SIZE];
     OS_GetMacAddress(&mac_addr[0]);

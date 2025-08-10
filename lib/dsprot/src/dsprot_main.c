@@ -27,7 +27,6 @@ enum {
 typedef u32 (*U32Func)(void);
 typedef void (*VoidFunc)(void);
 
-
 // This was likely not originally an inline, but an inline is able to match here nicely
 static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type) {
     // These two bit arrays must be signed to match
@@ -52,7 +51,6 @@ static inline BOOL executeFunctionQueue(u32* func_queue, int compare_type) {
     }
 }
 
-
 u32 DetectFlashcart(void* callback) {
     u32 func_queue[32];
 
@@ -68,7 +66,6 @@ u32 DetectFlashcart(void* callback) {
 
     return (u32)ret;
 }
-
 
 u32 DetectNotFlashcart(void* callback) {
     u32 func_queue[32];
@@ -86,7 +83,6 @@ u32 DetectNotFlashcart(void* callback) {
     return (u32)ret;
 }
 
-
 u32 DetectEmulator(void* callback) {
     u32 func_queue[32];
 
@@ -102,7 +98,6 @@ u32 DetectEmulator(void* callback) {
 
     return (u32)ret;
 }
-
 
 u32 DetectNotEmulator(void* callback) {
     u32 func_queue[32];
@@ -120,7 +115,6 @@ u32 DetectNotEmulator(void* callback) {
     return (u32)ret;
 }
 
-
 u32 DetectDummy(void* callback) {
     u32 func_queue[32];
 
@@ -135,7 +129,6 @@ u32 DetectDummy(void* callback) {
 
     return (u32)ret;
 }
-
 
 u32 DetectNotDummy(void* callback) {
     u32 func_queue[32];

@@ -130,7 +130,6 @@ void ROMUtil_Read(void* dest, u32 addr, s32 num_bytes) {
     OS_ReleaseLockID(lock_id);
 }
 
-
 u32 ROMUtil_CRC32(void* buf, u32 size) {
     s32 i;
     u8* byteptr = (u8*)buf;

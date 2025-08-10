@@ -32,7 +32,6 @@ void RC4_Init(RC4_Ctx* ctx, const void* key, u32 key_len) {
     }
 }
 
-
 u8 RC4_Byte(RC4_Ctx* ctx) {
     u8 i = ctx->i + 1;
 
@@ -52,7 +51,6 @@ u8 RC4_Byte(RC4_Ctx* ctx) {
     return ctx->S[out_idx];
 }
 
-
 u32 RC4_InitSBox(u8* sbox) {
     for (s32 i = 0; i < 256; i++) {
         s32 x = i & 0xFF;
@@ -61,7 +59,6 @@ u32 RC4_InitSBox(u8* sbox) {
 
     return 0;
 }
-
 
 u32 RC4_EncryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
     if (size & 3) {
@@ -101,7 +98,6 @@ u32 RC4_EncryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
     return 0;
 }
 
-
 u32 RC4_DecryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
     if (size & 3) {
         return -1;
@@ -140,14 +136,12 @@ u32 RC4_DecryptInstructions(RC4_Ctx* ctx, void* src, void* dst, u32 size) {
     return 0;
 }
 
-
 u32 RC4_InitAndEncryptInstructions(void* key, void* dst, void* src, u32 size) {
     RC4_Ctx ctx;
     RC4_Init(&ctx, key, 16);
     // Must coerce output to -1 or 0 like this to match
     return RC4_EncryptInstructions(&ctx, dst, src, size) == -1 ? -1 : 0;
 }
-
 
 u32 RC4_InitAndDecryptInstructions(void* key, void* dst, void* src, u32 size) {
     RC4_Ctx ctx;

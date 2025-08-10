@@ -54,7 +54,6 @@ EXIT:
     return ret;
 }
 
-
 u32 ROMTest_IsGood(void) {
     // Extra CRC entry is required to match
     u32 crcs[7];

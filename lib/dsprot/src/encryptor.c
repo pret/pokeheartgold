@@ -6,12 +6,10 @@
 
 static void clearDataAndInstructionCache(void* start_addr, u32 num_bytes);
 
-
 static void clearDataAndInstructionCache(void* start_addr, u32 num_bytes) {
     DC_FlushRange(start_addr, num_bytes);
     IC_InvalidateRange(start_addr, num_bytes);
 }
-
 
 u32 Encryptor_CategorizeInstruction(u32 instruction) {
     u8 upper_byte = (instruction >> 24) & 0xFF;
@@ -30,7 +28,6 @@ u32 Encryptor_CategorizeInstruction(u32 instruction) {
 
     return 0;
 }
-
 
 void Encryptor_DecodeFunctionTable(FuncInfo* functions) {
     if (functions == NULL) {
@@ -78,7 +75,6 @@ void Encryptor_DecodeFunctionTable(FuncInfo* functions) {
     }
 }
 
-
 void* Encryptor_DecryptFunction(u32 obfs_key, void* obfs_func_addr, u32 obfs_size) {
     u32 expanded_key[4];
 
@@ -103,7 +99,6 @@ void* Encryptor_DecryptFunction(u32 obfs_key, void* obfs_func_addr, u32 obfs_siz
 
     return func_addr;
 }
-
 
 u32 Encryptor_EncryptFunction(u32 obfs_key, void* obfs_func_addr, u32 obfs_size) {
     u32    expanded_key[4];
