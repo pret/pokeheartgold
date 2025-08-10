@@ -85,6 +85,7 @@ KEY_CORE_TESTS  := 0982
 
 .PHONY: all clean tools dsprot
 .DELETE_ON_ERROR: 
+.NOTPARALLEL: 
 
 all:
 	$(MAKE) tools
