@@ -3,6 +3,18 @@
 #include "gf_gfx_loader.h"
 #include "unk_0208805C.h"
 
+typedef struct UnkStruct_ov101_021F83D0 {
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+} UnkStruct_ov101_021F83D0;
+
+void ov101_021EF4DC(PokegearConfigureAppData *configureApp);
+void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1);
+
+extern const TouchscreenListMenuTemplate ov101_021F83C4;
+extern const UnkStruct_ov101_021F83D0 ov101_021F83D0[];
+
 void ov101_021EF1D8(PokegearConfigureAppData *configureApp) {
     NARC *narc;
 
@@ -62,4 +74,33 @@ void ov101_021EF414(PokegearConfigureAppData *configureApp) {
     }
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
     ov101_021EF384(configureApp, configureApp->backgroundStyle);
+}
+
+void ov101_021EF4B0(void *appData) {
+    PokegearConfigureAppData *configureApp = appData;
+
+    PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 1, 0xFF);
+    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, TRUE);
+}
+
+void ov101_021EF4DC(PokegearConfigureAppData *configureApp) {
+    configureApp->pokegear->cursorInAppSwitchZone = FALSE;
+    PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 1, 0xFF);
+    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, FALSE);
+    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, TRUE);
+}
+
+void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1) {
+    TouchscreenListMenuHeader sp10;
+
+    configureApp->unk_11 = a1;
+    MI_CpuClear8(&sp10, sizeof(TouchscreenListMenuHeader));
+    sp10.template = ov101_021F83C4;
+    sp10.listMenuItems = configureApp->unk_3C;
+    sp10.bgConfig = configureApp->pokegear->bgConfig;
+    sp10.numWindows = 2;
+    configureApp->unk_40 = TouchscreenListMenu_CreateWithAlignment(configureApp->unk_38, &sp10, configureApp->pokegear->menuInputState, ov101_021F83D0[a1].unk_0, ov101_021F83D0[a1].unk_1, 0, 0, ov101_021F83D0[a1].unk_2);
+    ov101_021EF5A4(configureApp, a1, 1);
+    PokegearAppSwitch_SetCursorSpritesAnimateFlag(configureApp->pokegear->appSwitch, 0xFFFF, FALSE);
 }

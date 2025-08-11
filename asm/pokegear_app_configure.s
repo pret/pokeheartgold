@@ -15,128 +15,8 @@
 
 	.text
 
-	.extern ov101_021EEE14
-	.extern ov101_021EF384
-
-	thumb_func_start ov101_021EF4B0
-ov101_021EF4B0: ; 0x021EF4B0
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0xc]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	mov r2, #0xff
-	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
-	ldr r0, [r4, #0xc]
-	mov r1, #0
-	ldr r0, [r0, #0x7c]
-	add r2, r1, #0
-	bl PokegearAppSwitch_SetCursorSpritesDrawState
-	ldr r0, [r4, #0xc]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	add r2, r1, #0
-	bl PokegearAppSwitch_SetCursorSpritesDrawState
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov101_021EF4B0
-
-	thumb_func_start ov101_021EF4DC
-ov101_021EF4DC: ; 0x021EF4DC
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #0xc]
-	mov r1, #0
-	strb r1, [r0, #6]
-	ldr r0, [r4, #0xc]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	mov r2, #0xff
-	bl PokegearAppSwitch_SetSpecIndexAndCursorPos
-	ldr r0, [r4, #0xc]
-	mov r1, #0
-	ldr r0, [r0, #0x7c]
-	add r2, r1, #0
-	bl PokegearAppSwitch_SetCursorSpritesDrawState
-	ldr r0, [r4, #0xc]
-	mov r1, #1
-	ldr r0, [r0, #0x7c]
-	add r2, r1, #0
-	bl PokegearAppSwitch_SetCursorSpritesDrawState
-	pop {r4, pc}
-	thumb_func_end ov101_021EF4DC
-
-	thumb_func_start ov101_021EF50C
-ov101_021EF50C: ; 0x021EF50C
-	push {r4, r5, r6, lr}
-	sub sp, #0x28
-	add r5, r0, #0
-	add r4, r1, #0
-	add r0, sp, #0x10
-	mov r1, #0
-	mov r2, #0x18
-	strb r4, [r5, #0x11]
-	bl MI_CpuFill8
-	ldr r2, _021EF590 ; =ov101_021F83C4
-	add r0, sp, #0x10
-	ldrh r3, [r2]
-	ldr r6, _021EF594 ; =ov101_021F83D0
-	add r1, sp, #0x10
-	strh r3, [r0]
-	ldrh r3, [r2, #2]
-	strh r3, [r0, #2]
-	ldrh r3, [r2, #4]
-	strh r3, [r0, #4]
-	ldrh r3, [r2, #6]
-	strh r3, [r0, #6]
-	ldrh r3, [r2, #8]
-	ldrh r2, [r2, #0xa]
-	strh r3, [r0, #8]
-	strh r2, [r0, #0xa]
-	ldr r2, [r5, #0x3c]
-	str r2, [sp, #0x1c]
-	ldr r2, [r5, #0xc]
-	ldr r2, [r2, #0x74]
-	str r2, [sp, #0x20]
-	mov r2, #2
-	strb r2, [r0, #0x14]
-	lsl r0, r4, #1
-	add r3, r4, r0
-	ldr r0, _021EF598 ; =ov101_021F83D0 + 1
-	ldrb r0, [r0, r3]
-	str r0, [sp]
-	mov r0, #0
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, _021EF59C ; =ov101_021F83D0 + 2
-	ldrb r0, [r0, r3]
-	ldrb r3, [r6, r3]
-	str r0, [sp, #0xc]
-	ldr r2, [r5, #0xc]
-	ldr r0, [r5, #0x38]
-	ldr r2, [r2, #0xc]
-	lsl r2, r2, #0x18
-	lsr r2, r2, #0x18
-	bl TouchscreenListMenu_CreateWithAlignment
-	str r0, [r5, #0x40]
-	add r0, r5, #0
-	add r1, r4, #0
-	mov r2, #1
-	bl ov101_021EF5A4
-	ldr r0, [r5, #0xc]
-	ldr r1, _021EF5A0 ; =0x0000FFFF
-	ldr r0, [r0, #0x7c]
-	mov r2, #0
-	bl PokegearAppSwitch_SetCursorSpritesAnimateFlag
-	add sp, #0x28
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-_021EF590: .word ov101_021F83C4
-_021EF594: .word ov101_021F83D0
-_021EF598: .word ov101_021F83D0 + 1
-_021EF59C: .word ov101_021F83D0 + 2
-_021EF5A0: .word 0x0000FFFF
-	thumb_func_end ov101_021EF50C
+	.extern ov101_021EF4DC
+	.extern ov101_021EF50C
 
 	thumb_func_start ov101_021EF5A4
 ov101_021EF5A4: ; 0x021EF5A4
@@ -537,14 +417,19 @@ ov101_021F82FC: ; 0x021F82FC
 
 	// file boundary
 
+	.global ov101_021F83C4
 ov101_021F83C4: ; 0x021F83C4
-	.short 0x0003
-	.short 0x0A01
-	.short 0x0101
+	.byte 0x03 | (0<<7)
+	.byte 0x00
+	.byte 0x01
+	.byte 0x0A
+	.byte 0x01
+	.byte 0x01
 	.short 0x001C
 	.short 0x0001
 	.short 0x0040
 
+	.global ov101_021F83D0
 ov101_021F83D0: ; 0x021F83D0
 	.byte 0x0A, 0x02, 0x00
 	.byte 0x14, 0x02, 0x00
@@ -554,6 +439,7 @@ ov101_021F83D0: ; 0x021F83D0
 	.byte 0x16, 0x0B, 0x02
 
 	.balign 4, 0
+	.global ov101_021F83E4
 ov101_021F83E4: ; 0x021F83E4
 	.byte 0x18, 0x40, 0x18, 0x48
 	.byte 0x18, 0x40, 0x68, 0x98
