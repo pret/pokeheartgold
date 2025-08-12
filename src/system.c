@@ -15,7 +15,7 @@ void VBlankCB_DmaOnly(void);
 void CallHBlankIntrCallback(void);
 void HBlankIntrRegsToggle(BOOL enable);
 void sub_0201A1B4(void);
-void sub_0201A5E8(void);
+void ApplyButtonModeToInput(void);
 
 void VBlankCB_DmaTasksFramecounter(void) {
     OS_SetIrqCheckFlag(OS_IE_VBLANK);
@@ -271,7 +271,7 @@ void ReadKeypadAndTouchpad(void) {
     gSystem.newKeys = gSystem.newKeysRaw;
     gSystem.heldKeys = gSystem.heldKeysRaw;
     gSystem.newAndRepeatedKeys = gSystem.newAndRepeatedKeysRaw;
-    sub_0201A5E8();
+    ApplyButtonModeToInput();
     if (!gSystem.touchpadReadAuto) {
         while (TP_RequestRawSampling(&rawTpData)) {}
     } else {
@@ -328,7 +328,7 @@ void ReadKeypadAndTouchpad(void) {
         adrs &= ((pat) ^ 0xFFFF); \
     }
 
-void sub_0201A5E8(void) {
+void ApplyButtonModeToInput(void) {
     switch (gSystem.buttonMode) {
     case BUTTONMODE_NORMAL:
         break;

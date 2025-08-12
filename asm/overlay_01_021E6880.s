@@ -637,7 +637,7 @@ _021E6D4C:
 	ldr r0, _021E6DC0 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r4, #0
-	bl sub_0203BC28
+	bl StartMenu_Init
 	mov r0, #2
 	pop {r3, r4, r5, r6, r7, pc}
 _021E6D6E:
@@ -1073,7 +1073,7 @@ _021E70EC:
 	ldr r0, _021E7110 ; =SEQ_SE_DP_WIN_OPEN
 	bl PlaySE
 	add r0, r4, #0
-	bl sub_0203BC28
+	bl StartMenu_Init
 	add sp, #4
 	mov r0, #1
 	pop {r3, r4, r5, r6, pc}
