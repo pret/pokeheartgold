@@ -44,7 +44,7 @@
 .public LocalFieldData_GetPoisonStepCounter
 .public Save_LocalFieldData_Get
 .public FieldSystem_MapIsNotMysteryZone
-.public sub_0203BC28
+.public StartMenu_Init
 .public sub_0203BCDC
 .public sub_0203BD20
 .public FieldSystem_ShouldDrawStartMenuIcon
