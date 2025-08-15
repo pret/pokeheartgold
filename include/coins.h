@@ -6,44 +6,52 @@
 #define MAX_COINS 50000
 
 /*
- * void InitCoins(u16 *coins)
- *
  * Initialize the player's coin case
  *
- * @param coins:       Pointer to coin case amount
+ * @param coins:    Pointer to coin case amount
  */
-void InitCoins(u16 *coins);
+void Coins_Init(u16 *coins);
 
 /*
- * u16 CheckCoins(u16* coins)
- *
  * Gets the amount of coins owned
  *
- * @param coins:       Pointer to coin case amount
+ * @param coins:    Pointer to coin case amount
  *
  * @returns: The amount of coins owned
  */
-u16 CheckCoins(u16 *coins);
+u16 Coins_GetValue(u16 *coins);
 
 /*
- * BOOL GiveCoins(u16* coins, u16 amount)
- * BOOL CanGiveCoins(u16* coins, u16 amount)
- * BOOL TakeCoins(u16* coins, u16 amount)
+ * Adds an amount of coins. It will fail if the
+ * coin case would overflow.
  *
- * GiveCoins adds an amount of coins. It will fail if the
- *   coin case would overflow.
- * CanGiveCoins follows the same logic but does not modify
- *   the coin case, instead only reports success or failure.
- * TakeCoins deducts the amount of coins. It will fail if
- *   the coin case would underflow.
- *
- * @param coins:       Pointer to coin case amount
- * @param amount:      Number of coins to adjust by
+ * @param coins:    Pointer to coin case amount
+ * @param amount:   Number of coins to add
  *
  * @returns: TRUE if success, otherwise FALSE
  */
-BOOL GiveCoins(u16 *coins, u16 amount);
-BOOL CanGiveCoins(u16 *coins, u16 amount);
-BOOL TakeCoins(u16 *coins, u16 amount);
+BOOL Coins_Add(u16 *coins, u16 amount);
+
+/*
+ * Checks if a certain amount of coins can be
+ * added to the coin case without making it overflow.
+ *
+ * @param coins:    Pointer to coin case amount
+ * @param amount:   Number of coins to add
+ *
+ * @returns: TRUE if success, otherwise FALSE
+ */
+BOOL Coins_CanAdd(u16 *coins, u16 amount);
+
+/*
+ * Subtracts an amount of coins. It will fail if the
+ * coin case would overflow.
+ *
+ * @param coins:    Pointer to coin case amount
+ * @param amount:   Number of coins to subtract
+ *
+ * @returns: TRUE if success, otherwise FALSE
+ */
+BOOL Coins_Subtract(u16 *coins, u16 amount);
 
 #endif // POKEHEARTGOLD_COINS_H
