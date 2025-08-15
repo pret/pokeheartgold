@@ -612,7 +612,7 @@ ov95_021E5DD0: ; 0x021E5DD0
 	mov r1, #0x12
 	lsl r1, r1, #0xa
 	add r4, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -712,7 +712,7 @@ ov95_021E5E90: ; 0x021E5E90
 	add r5, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _021E5EA4
 	bl GF_AssertFail
@@ -2600,7 +2600,7 @@ HatchEggApp_Init: ; 0x021E6D70
 	mov r0, #3
 	mov r1, #0x46
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0x8c
 	mov r2, #0x46
@@ -2829,7 +2829,7 @@ HatchEggApp_Exit: ; 0x021E6F0C
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x46
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -2906,7 +2906,7 @@ _021E703A:
 _021E7042:
 	ldr r0, [sp]
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0

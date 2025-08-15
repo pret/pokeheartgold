@@ -1915,10 +1915,10 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     return mapObject;
 }
 
-FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(HeapID heapId) {
+FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(enum HeapID heapID) {
     FieldSystemUnk108 *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(FieldSystemUnk108));
+    ret = Heap_Alloc(heapID, sizeof(FieldSystemUnk108));
     MI_CpuClear8(ret, sizeof(FieldSystemUnk108));
     ret->species = 0;
     ret->personality = 0;

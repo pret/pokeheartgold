@@ -7,8 +7,8 @@
 
 const u16 *ov06_0221BA00(int param_1);
 void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferId param_4, u32 param_5);
-SPLEmitter *ov06_0221BA40(HeapID heapId);
-SPLEmitter *ov06_0221BA88(HeapID heapId);
+SPLEmitter *ov06_0221BA40(enum HeapID heapID);
+SPLEmitter *ov06_0221BA88(enum HeapID heapID);
 void ov06_0221BAD8(SPLEmitter *param_1);
 void ov06_0221BAF0(void);
 u32 ov06_0221BB14(u32 szByte, BOOL is4x4comp);

@@ -321,7 +321,7 @@ ov01_021F9698: ; 0x021F9698
 	add r7, r0, #0
 	mov r0, #4
 	mul r1, r5
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	add r0, r7, #0
 	add r0, #0xe4
@@ -332,7 +332,7 @@ ov01_021F9698: ; 0x021F9698
 _021F96B8:
 	mov r0, #4
 	lsl r1, r5, #3
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r7, #0xf4
 	str r4, [r7]
@@ -2920,7 +2920,7 @@ ov01_021FA854: ; 0x021FA854
 	ldr r1, [sp, #8]
 	mov r0, #4
 	str r2, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _021FA882
 	bl GF_AssertFail
@@ -3054,7 +3054,7 @@ ov01_021FA97C: ; 0x021FA97C
 	str r0, [sp, #0x10]
 	mov r0, #4
 	mov r1, #0x58
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x58
 	add r5, r0, #0

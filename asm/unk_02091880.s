@@ -15,7 +15,7 @@ sub_02091880: ; 0x02091880
 	add r5, r1, #0
 	ldr r1, _020918B8 ; =0x0000195C
 	add r6, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r0, r6, #0
 	str r5, [r4]

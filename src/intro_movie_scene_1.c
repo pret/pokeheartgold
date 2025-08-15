@@ -352,8 +352,8 @@ static void IntroMovie_Scene1_CreateSprites(IntroMovieOverlayData *data, IntroMo
     Sprite_SetAffineOverwriteMode(sceneData->birdSprite, 2);
 }
 
-HeapID _deadstrip_01(int idx);
-HeapID _deadstrip_01(int idx) {
-    static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
+enum HeapID _deadstrip_01(int idx);
+enum HeapID _deadstrip_01(int idx) {
+    static const enum HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }

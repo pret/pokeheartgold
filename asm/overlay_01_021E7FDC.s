@@ -48,7 +48,7 @@ _021E8006:
 	add r0, r4, #0
 	add r1, r2, #0
 	mul r1, r3
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	mov r0, #0xaf
 	add r1, r4, #0
@@ -709,17 +709,17 @@ ov01_021E851C: ; 0x021E851C
 	add r4, r1, #0
 	ldrh r0, [r5, r0]
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	ldr r0, _021E86F0 ; =0x00000162
 	mov r1, #8
 	ldrh r0, [r5, r0]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r6, #8]
 	ldr r0, _021E86F0 ; =0x00000162
 	mov r1, #0x24
 	ldrh r0, [r5, r0]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r6, #8]
 	add r2, r4, #0
 	str r0, [r1]

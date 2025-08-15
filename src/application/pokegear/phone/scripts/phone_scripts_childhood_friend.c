@@ -77,7 +77,7 @@ u8 ov101_021F3D34(PokegearPhoneCallContext *ctx) {
         sp0[3] = 1; // 00-17 1A 2F-37 39
     } // UB: else, sp0[3] is undefined
 
-    ptr = AllocFromHeapAtEnd(ctx->heapId, 73);
+    ptr = Heap_AllocAtEnd(ctx->heapID, 73);
     MI_CpuClear8(ptr, 73);
     for (i = 0; i < 73; ++i) {
         if (sp0[ov101_021F8760[i]]) {

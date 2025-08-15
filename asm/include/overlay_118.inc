@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public sub_0200FC20
-.public AllocFromHeap
+.public Heap_Alloc
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer
 .public SetBgPriority

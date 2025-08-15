@@ -182,7 +182,7 @@ typedef struct IntroMovieCircleWipeEffect {
 } IntroMovieCircleWipeEffect;
 
 typedef struct IntroMovieOvyData {
-    HeapID heapID;
+    enum HeapID heapID;
     int totalFrameCount;
     BOOL introSkipped;
     BgConfig *bgConfig;

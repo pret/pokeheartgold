@@ -1345,7 +1345,7 @@ ov80_0222C7B0: ; 0x0222C7B0
 	mov r1, #0x18
 	add r7, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x18
@@ -1753,7 +1753,7 @@ ov80_0222CAD0: ; 0x0222CAD0
 _0222CAE2:
 	ldr r0, [r7, #0x34]
 	lsl r1, r4, #1
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #8]
 	add r0, r6, #0
 	bl FrontierScript_ReadVar
@@ -2156,7 +2156,7 @@ FrtCmd_110: ; 0x0222CD94
 	add r4, r0, #0
 	mov r0, #0xb
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x75
 	mov r1, #0
 	lsl r2, r2, #2
@@ -3748,7 +3748,7 @@ _0222D99A:
 	str r0, [r5, #0x10]
 	ldr r1, _0222DA9C ; =0x00000608
 	mov r0, #0x65
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0222DAA0 ; =0x00000604
 	str r0, [r5, #0x24]
 	mov r2, #1
@@ -3907,7 +3907,7 @@ _0222DAE6:
 	str r0, [r5, #0x10]
 	ldr r1, _0222DC04 ; =0x00000608
 	mov r0, #0x65
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0222DC08 ; =0x00000604
 	str r0, [r5, #0x24]
 	mov r2, #2
@@ -4114,7 +4114,7 @@ FrtCmd_063: ; 0x0222DC70
 	bl Sound_SetSceneAndPlayBGM
 	mov r0, #0xb
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
@@ -5275,7 +5275,7 @@ ov80_0222E558: ; 0x0222E558
 	ldr r0, [r5, #0x34]
 	lsl r1, r1, #2
 	add r4, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	bne _0222E578
 	add sp, #0x18
@@ -6788,7 +6788,7 @@ _0222F0DA:
 	mov r1, #0x32
 	ldr r0, [sp, #0x24]
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #0x28]
 	mov r1, #0
 	ldr r0, [sp, #0x20]

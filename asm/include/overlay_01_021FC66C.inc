@@ -10,7 +10,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public ClearFrameAndWindow2
-.public AllocFromHeapAtEnd
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public RemoveWindow
 .public SysTask_GetData

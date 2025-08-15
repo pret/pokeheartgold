@@ -12,7 +12,7 @@ sub_02020654: ; 0x02020654
 	add r0, r1, #0
 	mov r1, #0x30
 	mul r1, r4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02020670 ; =sub_02020684
 	add r1, r4, #0
 	add r5, r0, #0
@@ -53,12 +53,12 @@ sub_0202068C: ; 0x0202068C
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x14
 	add r4, r0, #0
 	add r0, r6, #0
 	mul r1, r5
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4]
 	mov r6, #0
 	str r5, [r4, #4]

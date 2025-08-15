@@ -38,8 +38,8 @@
 .public sub_02019D18
 .public sub_02019F74
 .public sub_0201A018
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

@@ -101,7 +101,7 @@ ov01_02203AB4: ; 0x02203AB4
 	mov r0, #4
 	mov r1, #8
 	add r6, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	str r6, [r2]
 	str r4, [r2, #4]

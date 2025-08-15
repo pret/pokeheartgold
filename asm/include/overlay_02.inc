@@ -74,10 +74,10 @@
 .public DeleteCameraTranslationWrapper
 .public SetCameraTranslationPath
 .public IsCameraTranslationFinished
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public GF_heap_c_dummy_return_true
 .public SetBgPriority
 .public BgSetPosTextAndCommit

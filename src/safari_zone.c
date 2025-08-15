@@ -163,14 +163,14 @@ u32 sub_0202F798(SafariZone *safari_zone, IGT *igt, s32 a2) {
     return 0;
 }
 
-void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile *profile, HeapID heapId) {
+void SafariZone_SetLinkLeaderFromProfile(SafariZone *safari_zone, PlayerProfile *profile, enum HeapID heapID) {
     SAFARIZONE_LINKLEADER *link_leader = &safari_zone->link_leader;
     link_leader->id = PlayerProfile_GetTrainerID(profile);
     link_leader->gender = PlayerProfile_GetTrainerGender(profile);
     link_leader->language = PlayerProfile_GetLanguage(profile);
     link_leader->version = PlayerProfile_GetVersion(profile);
 
-    String *name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heapId);
+    String *name = String_New((PLAYER_NAME_LENGTH + 1) * sizeof(u16), heapID);
     PlayerName_FlatToString(profile, name);
     CopyStringToU16Array(name, link_leader->name, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
     String_Delete(name);

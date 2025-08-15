@@ -4,8 +4,8 @@
 .public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public sub_02023EA4
 .public sub_02023EE0
 .public sub_02023F04

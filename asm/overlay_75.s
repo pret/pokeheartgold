@@ -13,12 +13,12 @@ ov75_02246960: ; 0x02246960
 	mov r0, #3
 	mov r1, #0x73
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	mov r2, #0x57
 	mov r0, #0
 	mov r1, #0x59
 	lsl r2, r2, #4
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x47
 	add r0, r5, #0
 	lsl r1, r1, #2
@@ -222,9 +222,9 @@ ov75_02246B00: ; 0x02246B00
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x73
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0x59
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02246B40 ; =FS_OVERLAY_ID(intro_title)
 	ldr r1, _02246B44 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
@@ -251,7 +251,7 @@ ov75_02246B48: ; 0x02246B48
 	bl sub_02039FD8
 	ldr r1, _02246B94 ; =0x00020020
 	mov r0, #0x73
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0xc]
 	add r0, #0x1f
 	mov r1, #0x1f
@@ -375,7 +375,7 @@ ov75_02246C3C: ; 0x02246C3C
 	add r5, r0, #0
 	mov r0, #0x73
 	mov r1, #0x64
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0x11
 	lsl r0, r0, #4
@@ -735,7 +735,7 @@ ov75_02246EAC: ; 0x02246EAC
 	add r5, r0, #0
 	mov r0, #0x73
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
@@ -816,7 +816,7 @@ ov75_02246F0C: ; 0x02246F0C
 	mov r0, #3
 	mov r1, #0x74
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _02247100 ; =0x0000041C
 	add r0, r4, #0
 	mov r2, #0x74
@@ -1113,7 +1113,7 @@ _022471A4:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x74
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02247230 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]
@@ -5954,7 +5954,7 @@ _02249794:
 	bne _02249794
 	add r0, r7, #0
 	mov r1, #0xc8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
@@ -6035,7 +6035,7 @@ ov75_02249838: ; 0x02249838
 	add r0, r1, #0
 	mov r1, #0xc8
 	mov r5, #1
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0

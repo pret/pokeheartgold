@@ -218,7 +218,7 @@ sub_0207753C: ; 0x0207753C
 	mov r1, #0x12
 	lsl r1, r1, #0xa
 	add r4, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -322,7 +322,7 @@ sub_02077604: ; 0x02077604
 	add r5, r0, #0
 	ldr r0, [r5]
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02077618
 	bl GF_AssertFail

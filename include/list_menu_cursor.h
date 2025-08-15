@@ -5,7 +5,7 @@
 
 struct ListMenuCursor;
 
-struct ListMenuCursor *ListMenuCursorNew(HeapID heapId);
+struct ListMenuCursor *ListMenuCursorNew(enum HeapID heapID);
 void ListMenuCursorSetColor(struct ListMenuCursor *cursor, u32 color);
 void DestroyListMenuCursorObj(struct ListMenuCursor *cursor);
 void ListMenuUpdateCursorObj(struct ListMenuCursor *cursor, Window *window, u8 x, u8 y);

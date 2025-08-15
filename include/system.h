@@ -65,7 +65,7 @@ void HBlankInterruptDisable(void);
 BOOL Main_SetHBlankIntrCB(GFIntrCB cb, void *arg);
 void InitSystemForTheGame(void);
 void InitGraphicMemory(void);
-void *Sys_AllocAndReadFile(HeapID heapId, const char *path);
+void *Sys_AllocAndReadFile(enum HeapID heapID, const char *path);
 void sub_0201A3F8(const char *path, void **mem);
 void sub_0201A430(void);
 void InitKeypadAndTouchpad(void);
@@ -76,7 +76,7 @@ void ReadKeypadAndTouchpad(void);
 void SetKeyRepeatTimers(int cont, int start);
 void sub_0201A728(int a0);
 void sub_0201A738(int a0);
-void sub_0201A748(HeapID heapId);
+void sub_0201A748(enum HeapID heapID);
 void sub_0201A774(void);
 BOOL sub_0201A79C(void);
 

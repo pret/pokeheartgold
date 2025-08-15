@@ -38,7 +38,7 @@ typedef enum CheckSavedataApp_PrintState {
 } CheckSavedataApp_PrintState;
 
 typedef struct CheckSavedataApp_Data {
-    HeapID heapId;
+    enum HeapID heapID;
     CheckSavedataApp_MainState mainState;
     u32 msgNum;
     CheckSavedataApp_PrintState printState;
@@ -113,11 +113,11 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data);
 static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNum, BOOL skipWaitingForAPress, u32 textSpeed);
 
 BOOL CheckSavedataApp_Init(OverlayManager *manager, int *state) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_DELETE_SAVEDATA, 0x20000);
 
     CheckSavedataApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(CheckSavedataApp_Data), HEAP_ID_DELETE_SAVEDATA);
     memset(data, 0, sizeof(CheckSavedataApp_Data));
-    data->heapId = HEAP_ID_DELETE_SAVEDATA;
+    data->heapID = HEAP_ID_DELETE_SAVEDATA;
     data->mainState = MAINSTATE_CHECK_SAVE_FLAGS;
     UnkStruct_02111868_sub *args = OverlayManager_GetArgs(manager);
     data->saveData = args->saveData;
@@ -178,12 +178,12 @@ BOOL CheckSavedataApp_Main(OverlayManager *manager, int *state) {
 
 BOOL CheckSavedataApp_Exit(OverlayManager *manager, int *state) {
     CheckSavedataApp_Data *data = OverlayManager_GetData(manager);
-    HeapID heapId = data->heapId;
+    enum HeapID heapID = data->heapID;
 
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(heapId);
+    Heap_Destroy(heapID);
 
     RegisterMainOverlay(FS_OVERLAY_ID(OVY_74), &gApp_MainMenu);
 
@@ -194,7 +194,7 @@ static void CheckSavedataApp_SetupBgConfig(CheckSavedataApp_Data *data) {
     GraphicsBanks banks = sCheckSave_GraphicsBanks;
     GfGfx_SetBanks(&banks);
 
-    data->bgConfig = BgConfig_Alloc(data->heapId);
+    data->bgConfig = BgConfig_Alloc(data->heapID);
 
     GraphicsModes modes = sCheckSave_GraphicsModes;
     SetBothScreensModesAndDisable(&modes);
@@ -202,10 +202,10 @@ static void CheckSavedataApp_SetupBgConfig(CheckSavedataApp_Data *data) {
     BgTemplate template = sCheckSave_BgTemplate;
     InitBgFromTemplate(data->bgConfig, GF_BG_LYR_MAIN_0, &template, GX_BGMODE_0);
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0);
-    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 0x1E2, 2, 0, data->heapId);
-    LoadUserFrameGfx1(data->bgConfig, GF_BG_LYR_MAIN_0, 0x1D9, 3, 0, data->heapId);
-    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, data->heapId);
-    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 32, 0, data->heapId);
+    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 0x1E2, 2, 0, data->heapID);
+    LoadUserFrameGfx1(data->bgConfig, GF_BG_LYR_MAIN_0, 0x1D9, 3, 0, data->heapID);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_1_OFFSET, data->heapID);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 32, 0, data->heapID);
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB_BLACK);
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB_BLACK);
 }
@@ -225,7 +225,7 @@ static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data) {
 }
 
 static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data) {
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0229_bin, data->heapId);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0229_bin, data->heapID);
     ResetAllTextPrinters();
 
     data->printState = PRINTSTATE_PRINT_TEXT;
@@ -284,7 +284,7 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
     case MAINSTATE_FADE_IN:
         BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
         BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
         data->mainState = MAINSTATE_WAIT_FOR_FADE_IN;
         break;
     case MAINSTATE_WAIT_FOR_FADE_IN:
@@ -294,7 +294,7 @@ static BOOL CheckSavedataApp_DoMainTask(CheckSavedataApp_Data *data) {
         break;
     case MAINSTATE_PRINT_ERROR_MESSAGE_FADE_OUT:
         if (CheckSavedataApp_PrintMessage(data, data->msgNum, FALSE, 4) == TRUE) {
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
             data->mainState = MAINSTATE_WAIT_FOR_FADE_OUT;
         }
         break;
@@ -321,7 +321,7 @@ static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNu
         FillWindowPixelRect(&data->window, 0xF, 0, 0, 216, 32);
         DrawFrameAndWindow2(&data->window, FALSE, 0x1E2, 2);
 
-        data->textString = String_New(1024, data->heapId);
+        data->textString = String_New(1024, data->heapID);
         ReadMsgDataIntoString(data->msgData, msgNum, data->textString);
         data->textPrinterId = AddTextPrinterParameterized(&data->window, 1, data->textString, 0, 0, textSpeed, NULL);
 

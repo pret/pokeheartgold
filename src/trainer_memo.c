@@ -73,13 +73,13 @@ static void BoxMon_ClearMetDateAndLocation(BoxPokemon *boxMon, int setMetDatePar
 static void BoxMon_SetMetDateAndLocation(BoxPokemon *boxMon, int mapsec, int setMetDateParam);
 static void BoxMon_SetFatefulEncounter(BoxPokemon *boxMon);
 static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon);
-static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId);
+static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID);
 
-Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, HeapID heapId, int a3) {
-    Unk0208E600 *ptr = AllocFromHeap(heapId, sizeof(Unk0208E600));
-    ptr->heapId = heapId;
-    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapId);
-    ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapId);
+Unk0208E600 *sub_0208E600(Pokemon *mon, BOOL isMine, enum HeapID heapID, int a3) {
+    Unk0208E600 *ptr = Heap_Alloc(heapID, sizeof(Unk0208E600));
+    ptr->heapID = heapID;
+    ptr->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0302_bin, heapID);
+    ptr->msgFmt = MessageFormat_New_Custom(9, 32, ptr->heapID);
     ptr->mon = mon;
     ptr->isMine = isMine;
     ptr->notepad.natureLine = 0;
@@ -332,14 +332,14 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
 static void FormatNature(Unk0208E600 *a0) {
     int nature = GetMonNature(a0->mon);
     if (nature <= NATURE_QUIRKY) {
-        a0->notepad.nature = String_New(0x48, a0->heapId);
+        a0->notepad.nature = String_New(0x48, a0->heapID);
         ReadMsgDataIntoString(a0->msgData, msg_0302_00024 + nature, a0->notepad.nature);
     }
 }
 
 static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
-    String *str = String_New(0x240, a0->heapId);
-    a0->notepad.dateLocationMet = String_New(0x240, a0->heapId);
+    String *str = String_New(0x240, a0->heapID);
+    a0->notepad.dateLocationMet = String_New(0x240, a0->heapID);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
@@ -360,8 +360,8 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
 static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     int version;
 
-    String *str = String_New(0x120, a0->heapId);
-    a0->notepad.dateLocationMet = String_New(0x120, a0->heapId);
+    String *str = String_New(0x120, a0->heapID);
+    a0->notepad.dateLocationMet = String_New(0x120, a0->heapID);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
@@ -408,8 +408,8 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
 }
 
 static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
-    String *str = String_New(0x168, a0->heapId);
-    a0->notepad.dateLocationMet = String_New(0x168, a0->heapId);
+    String *str = String_New(0x168, a0->heapID);
+    a0->notepad.dateLocationMet = String_New(0x168, a0->heapID);
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
@@ -433,7 +433,7 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
     int index;
     int maxIv;
 
-    a0->notepad.characteristic = String_New(0x48, a0->heapId);
+    a0->notepad.characteristic = String_New(0x48, a0->heapID);
 
     int hpIv = GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
     int atkIv = GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
@@ -594,7 +594,7 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
 }
 
 static void FormatFlavorPreference(Unk0208E600 *a0) {
-    a0->notepad.flavorPreference = String_New(0x48, a0->heapId);
+    a0->notepad.flavorPreference = String_New(0x48, a0->heapID);
     int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
         int preference = MonGetFlavorPreference(a0->mon, flavor);
@@ -609,7 +609,7 @@ static void FormatEggWatch(Unk0208E600 *a0) {
     int msgNo;
 
     int eggCycles = GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
-    a0->notepad.eggWatch = String_New(0x120, a0->heapId);
+    a0->notepad.eggWatch = String_New(0x120, a0->heapID);
     if (eggCycles <= 5) {
         msgNo = msg_0302_00105;
     } else if (eggCycles <= 10) {
@@ -690,11 +690,11 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
     return MET_CONDITION_EGG_TRADED;
 }
 
-void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId) {
-    BoxMonSetTrainerMemo(&mon->box, profile, strat, mapsec, heapId);
+void MonSetTrainerMemo(Pokemon *mon, PlayerProfile *profile, int strat, int mapsec, enum HeapID heapID) {
+    BoxMonSetTrainerMemo(&mon->box, profile, strat, mapsec, heapID);
 }
 
-void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat, int mapsec, HeapID heapId) {
+void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat, int mapsec, enum HeapID heapID) {
     int var;
 
     switch (strat) {
@@ -710,7 +710,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
             BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_EGG);
             BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_MON);
         }
-        BoxMon_SetOriginalTrainerData(boxMon, profile, heapId);
+        BoxMon_SetOriginalTrainerData(boxMon, profile, heapID);
         break;
     case 7:
         if (mapsec > sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) {
@@ -743,10 +743,10 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
     case 3:
         BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_EGG);
         BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_MON);
-        BoxMon_SetOriginalTrainerData(boxMon, profile, heapId);
+        BoxMon_SetOriginalTrainerData(boxMon, profile, heapID);
         break;
     case 4:
-        if (BoxmonBelongsToPlayer(boxMon, profile, heapId) == TRUE) {
+        if (BoxmonBelongsToPlayer(boxMon, profile, heapID) == TRUE) {
             if (!GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
                 BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
                 BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
@@ -774,7 +774,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         if (mapsec > sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) {
             mapsec = MAPSEC_MYSTERY_ZONE;
         }
-        if (!BoxmonBelongsToPlayer(boxMon, profile, heapId)) {
+        if (!BoxmonBelongsToPlayer(boxMon, profile, heapID)) {
             var = GetBoxMonData(boxMon, MON_DATA_MET_LOCATION, NULL);
             SetBoxMonData(boxMon, MON_DATA_EGG_MET_LOCATION, &var);
 
@@ -788,15 +788,15 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
             SetBoxMonData(boxMon, MON_DATA_EGG_MET_DAY, &var);
         }
         BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
-        BoxMon_SetOriginalTrainerData(boxMon, profile, heapId);
+        BoxMon_SetOriginalTrainerData(boxMon, profile, heapID);
         break;
     }
 }
 
-static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, HeapID heapId) {
+static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID) {
     u32 otId = PlayerProfile_GetTrainerID(profile);
     u32 gender = PlayerProfile_GetTrainerGender(profile);
-    String *name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
+    String *name = PlayerProfile_GetPlayerName_NewString(profile, heapID);
 
     SetBoxMonData(boxMon, MON_DATA_OTID, &otId);
     SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gender);

@@ -176,7 +176,7 @@ void SaveMysteryGift_SetFlagx7FF(MysteryGiftSave *mg);
 // effectively beginning a transaction.
 // To use this implementation, define
 // MYSTERY_GIFT_SAVE_TRANSACTION_IMPL.
-void SaveMGDataPtr_Begin(SaveData *saveData, HeapID heapId);
+void SaveMGDataPtr_Begin(SaveData *saveData, enum HeapID heapID);
 
 // Unloads the internal MysteryGiftSave pointer.
 // In the alternate implementation that clones the save

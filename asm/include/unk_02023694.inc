@@ -1,9 +1,9 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public Sys_AllocAndReadFile
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public GF3dRender_DrawModel
 .public sub_0202068C
 .public sub_020206C8

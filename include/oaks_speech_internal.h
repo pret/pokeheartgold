@@ -33,7 +33,7 @@ typedef struct OakSpeechMultichoice {
 typedef struct OakSpeechYesNo OakSpeechYesNo;
 
 typedef struct OakSpeechData {
-    HeapID heapId;
+    enum HeapID heapID;
     SaveData *saveData;
     Options *options;
     int state;
@@ -89,7 +89,7 @@ void OakSpeech_CleanupSpriteEngine(OakSpeechData *data);
 void OakSpeech_CreateSprites(OakSpeechData *data);
 void OakSpeech_SelectedGenderIndicatorSpritesAction(OakSpeechData *data, int a1);
 
-OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, HeapID heapId);
+OakSpeechYesNo *OakSpeechYesNo_Create(BgConfig *bgConfig, Sprite *sprite, int backgroundBgId, int buttonBgId, int buttonPalette, enum HeapID heapID);
 void OakSpeechYesNo_Delete(OakSpeechYesNo *yesnoMenu);
 void OakSpeechYesNo_SetBackgroundPalette(OakSpeechYesNo *yesnoMenu, int palette);
 void OakSpeechYesNo_Start(OakSpeechYesNo *yesnoMenu, int msgBank, int msgId_Yes, int msgId_No);

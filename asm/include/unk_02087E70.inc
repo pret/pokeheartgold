@@ -3,8 +3,8 @@
 .public GF_SndHandleSetPlayerVolume
 .public sub_0200616C
 .public UnloadOverlayByID
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public GfGfx_SwapDisplay
 .public Save_Misc_Get
 .public sub_0202AC0C

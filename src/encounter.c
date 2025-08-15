@@ -81,7 +81,7 @@ static void CallTask_StartBattle(TaskManager *taskManager, BattleSetup *setup) {
 }
 
 static Encounter *Encounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
-    Encounter *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(Encounter));
+    Encounter *encounter = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(Encounter));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
         *winFlag = BATTLE_OUTCOME_NONE;
@@ -293,7 +293,7 @@ void CallTask_020509F0(TaskManager *taskManager, BattleSetup *battleSetup, s32 e
 }
 
 static WildEncounter *WildEncounter_New(BattleSetup *setup, s32 effect, s32 bgm, u32 *winFlag) {
-    WildEncounter *encounter = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(WildEncounter));
+    WildEncounter *encounter = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(WildEncounter));
     encounter->winFlag = winFlag;
     if (winFlag != NULL) {
         *winFlag = BATTLE_OUTCOME_NONE;
@@ -540,7 +540,7 @@ static BOOL Task_BugContestEncounter(TaskManager *taskManager) {
 void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canFlee, BOOL shiny) {
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_NONE);
+    setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
     ov02_02247F30(fieldSystem, species, level, shiny, setup);
 
@@ -556,7 +556,7 @@ void SetupAndStartWildBattle(TaskManager *taskManager, u16 species, u8 level, u3
 void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 level, u32 *winFlag, BOOL canRun) {
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    setup = BattleSetup_New(HEAP_ID_FIELD, 0);
+    setup = BattleSetup_New(HEAP_ID_FIELD2, 0);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
     ov02_02247F30(fieldSystem, species, level, FALSE, setup);
 
@@ -630,7 +630,7 @@ void sub_020511F8(FieldSystem *fieldSystem, BattleSetup *setup) {
 
 void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level) { // leftover from DP, still used to setup a battle where items are not usable and the player cannot run
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_NONE);
+    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_NONE);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
 
     ov02_02247F30(fieldSystem, species, level, FALSE, setup);
@@ -685,13 +685,13 @@ void SetupAndStartTutorialBattle(TaskManager *taskManager) {
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
-    setup = BattleSetup_New_Tutorial(HEAP_ID_FIELD, fieldSystem);
+    setup = BattleSetup_New_Tutorial(HEAP_ID_FIELD2, fieldSystem);
     encounter = Encounter_New(setup, BattleSetup_GetWildTransitionEffect(setup), BattleSetup_GetWildBattleMusic(setup), NULL);
 
     TaskManager_Call(taskManager, Task_TutorialBattle, encounter);
 }
 
-void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag) {
+void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, enum HeapID heapID, u32 *winFlag) {
     u32 battleType;
     BattleSetup *setup;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
@@ -711,14 +711,14 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
         }
     }
 
-    setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
+    setup = BattleSetup_New(HEAP_ID_FIELD2, battleType);
     BattleSetup_InitFromFieldSystem(setup, fieldSystem);
 
     setup->trainerId[BATTLER_ENEMY] = opponentTrainer1;
     setup->trainerId[BATTLER_ENEMY2] = opponentTrainer2;
     setup->trainerId[BATTLER_PLAYER2] = followerTrainerNum;
 
-    EnemyTrainerSet_Init(setup, fieldSystem->saveData, heapId);
+    EnemyTrainerSet_Init(setup, fieldSystem->saveData, heapID);
 
     GameStats_Inc(Save_GameStats_Get(fieldSystem->saveData), GAME_STAT_UNK9);
 
@@ -738,7 +738,7 @@ void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType) {
     Encounter *encounter;
     BattleSetup *setup;
 
-    setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
+    setup = BattleSetup_New(HEAP_ID_FIELD2, battleType);
 
     sub_020522F0(setup, fieldSystem, param1);
 
@@ -772,25 +772,25 @@ void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 f
     u32 mode;
 
     if (flag == 0) {
-        setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER);
+        setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER);
         mode = 0;
     } else if (flag == 1) {
-        setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER);
+        setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER);
         mode = 7;
     } else {
-        setup = BattleSetup_New(HEAP_ID_FIELD, BATTLE_TYPE_FRONTIER | BATTLE_TYPE_MULTI | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER);
+        setup = BattleSetup_New(HEAP_ID_FIELD2, BATTLE_TYPE_FRONTIER | BATTLE_TYPE_MULTI | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER);
 
         // these don't seem right
         setup->trainerId[BATTLER_ENEMY] = TRAINER_RIVAL_SILVER;
         setup->trainerId[BATTLER_ENEMY2] = TRAINER_RIVAL_SILVER_2;
 
-        EnemyTrainerSet_Init(setup, fieldSystem->saveData, HEAP_ID_FIELD);
+        EnemyTrainerSet_Init(setup, fieldSystem->saveData, HEAP_ID_FIELD2);
         mode = 14;
     }
 
     BattleSetup_InitForFixedLevelFacility(setup, fieldSystem, maxLevel);
 
-    sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD, &result);
+    sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD2, &result);
 
     setup->unk1B2 = mode;
 
@@ -822,11 +822,11 @@ static BOOL sub_02051540(TaskManager *taskManager) {
 
 void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType) {
     Encounter *encounter;
-    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
+    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, battleType);
     u32 var;
 
     sub_020522F0(setup, fieldSystem, param1);
-    sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD, &var);
+    sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD2, &var);
 
     setup->unk1B2 = sub_02051474(fieldSystem->linkBattleRuleset, battleType);
 
@@ -837,11 +837,11 @@ void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType) {
 
 void sub_020515FC(FieldSystem *fieldSystem, Party *party, s32 battleType) {
     Encounter *encounter;
-    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD, battleType);
+    BattleSetup *setup = BattleSetup_New(HEAP_ID_FIELD2, battleType);
     u32 var;
 
     sub_020520B0(setup, fieldSystem, party, NULL);
-    sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD, &var);
+    sub_0202FBF0(fieldSystem->saveData, HEAP_ID_FIELD2, &var);
 
     setup->unk1B2 = sub_02051474(fieldSystem->linkBattleRuleset, battleType);
 

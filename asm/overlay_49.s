@@ -64,7 +64,7 @@ ov49_02258830: ; 0x02258830
 	add r6, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	add r1, r4, #0
 	add r2, r6, #0
@@ -172,7 +172,7 @@ ov49_02258958: ; 0x02258958
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	mov r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0x23
 	mov r1, #0x2a
@@ -395,7 +395,7 @@ ov49_02258AB4: ; 0x02258AB4
 	mov r1, #0x28
 	str r2, [sp]
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x28
 	add r4, r0, #0
@@ -420,7 +420,7 @@ ov49_02258AB4: ; 0x02258AB4
 	ldr r0, [sp, #4]
 	add r1, r7, #0
 	strh r5, [r4, #0xc]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r4, #8]
@@ -2594,12 +2594,12 @@ ov49_02259AA4: ; 0x02259AA4
 	mov r0, #3
 	mov r1, #0x77
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	mov r2, #0x3d
 	mov r0, #3
 	mov r1, #0x78
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0xfe
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -3187,9 +3187,9 @@ ov49_02259EF8: ; 0x02259EF8
 	add r0, r4, #0
 	bl Heap_Free
 	mov r0, #0x77
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0x78
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0
 	bl sub_0200616C
 	mov r0, #0
@@ -9123,7 +9123,7 @@ ov49_0225CB78: ; 0x0225CB78
 	sub sp, #0xc
 	mov r1, #0x14
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x14
@@ -9250,7 +9250,7 @@ ov49_0225CC4C: ; 0x0225CC4C
 	ldr r1, _0225CCBC ; =0x000004A4
 	add r0, r2, #0
 	str r2, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0225CCBC ; =0x000004A4
 	mov r1, #0
 	add r4, r0, #0
@@ -9260,7 +9260,7 @@ ov49_0225CC4C: ; 0x0225CC4C
 	str r0, [sp, #4]
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x47
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -9269,7 +9269,7 @@ ov49_0225CC4C: ; 0x0225CC4C
 	mul r7, r0
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x12
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -9484,7 +9484,7 @@ ov49_0225CDEC: ; 0x0225CDEC
 	add r1, r4, #0
 	add r0, r5, r0
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r0, _0225CE84 ; =0x00000494
 	add r1, r7, #0
 	add r0, r5, r0
@@ -11877,7 +11877,7 @@ ov49_0225DF18: ; 0x0225DF18
 	add r0, r3, #0
 	add r7, r2, #0
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0225E284 ; =0x00000614
 	mov r1, #0
 	add r4, r0, #0
@@ -13961,7 +13961,7 @@ ov49_0225EEAC: ; 0x0225EEAC
 	add r4, r0, #0
 	add r0, r6, #0
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xbf
 	mov r1, #0
 	lsl r2, r2, #2
@@ -14052,7 +14052,7 @@ ov49_0225EF40: ; 0x0225EF40
 _0225EF50:
 	ldrh r0, [r5]
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r4, #0
 	str r0, [r5, #8]
@@ -26105,7 +26105,7 @@ ov49_022652E8: ; 0x022652E8
 	str r2, [sp]
 	str r3, [sp, #4]
 	ldr r5, [sp, #0x24]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02265354 ; =0x0001082C
 	mov r1, #0
 	add r4, r0, #0
@@ -26124,7 +26124,7 @@ ov49_022652E8: ; 0x022652E8
 	add r1, r5, #0
 	add r0, r4, r0
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r1, r6, #0
 	add r2, r5, #0
@@ -32449,7 +32449,7 @@ ov49_02268490: ; 0x02268490
 	add r5, r1, #0
 	mov r1, #0x60
 	add r6, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x60
 	add r4, r0, #0
@@ -32843,7 +32843,7 @@ ov49_02268764: ; 0x02268764
 	add r5, r1, #0
 	mov r1, #0x1c
 	add r6, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x1c
@@ -33174,7 +33174,7 @@ ov49_02268A0C: ; 0x02268A0C
 	add r6, r1, #0
 	add r0, r2, #0
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x10
@@ -33919,7 +33919,7 @@ ov49_02268FAC: ; 0x02268FAC
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #0xc4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc4

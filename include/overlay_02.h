@@ -41,9 +41,9 @@ typedef struct SafariDecorationArgs {
 SysTask *ov02_0224B418(FieldSystem *fieldSystem, int gender);
 BOOL ov02_0224B43C(SysTask *unk);
 void ov02_0224B448(SysTask *unk);
-struct FieldMoveTaskEnvironment *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, HeapID heapId);
-struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
-struct FieldMoveTaskEnvironment *FieldMoveTask_CreateDigEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, HeapID heapId);
+struct FieldMoveTaskEnvironment *CreateFieldEscapeRopeTaskEnv(FieldSystem *fieldSystem, enum HeapID heapID);
+struct FieldMoveTaskEnvironment *FieldMoveTask_CreateTeleportEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, enum HeapID heapID);
+struct FieldMoveTaskEnvironment *FieldMoveTask_CreateDigEnvironment(FieldSystem *fieldSystem, Pokemon *mon, u8 slotno, enum HeapID heapID);
 BOOL Task_FieldEscapeRope(TaskManager *taskManager);
 BOOL Task_FieldTeleport(TaskManager *taskManager);
 BOOL Task_FieldDig(TaskManager *taskManager);
@@ -61,13 +61,13 @@ void ShowLegendaryWing(TaskManager *taskMan, u8 a1);
 void ov02_022462E8(TaskManager *taskMan);
 void PokecenterAnimCreate(FieldSystem *fieldSystem, u8 kind);
 void ov02_0224BDE8(FieldSystem *fieldSystem, u8 direction, u8 length);
-int ov02_0224CD38(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
-int ov02_0224CD74(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, HeapID heapId);
+int ov02_0224CD38(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, enum HeapID heapID);
+int ov02_0224CD74(PlayerProfile *profile, u16 a, u16 b, u16 c, u16 d, enum HeapID heapID);
 void ov02_0224BF58(FieldSystem *fieldSystem, u8 a1);
 void ov02_0224BFC0(FieldSystem *fieldSystem, u8 a1);
 void ov02_0224BFCC(FieldSystem *fieldSystem, u8 a1);
 void ov02_0224CDB0(FieldSystem *fieldSystem, u8 a1);
-void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int a2, HeapID heapId);
+void ov02_0224E074(FieldSystem *fieldSystem, u16 *p_ret, int a2, enum HeapID heapID);
 void ov02_0224E0BC(LocalMapObject *obj1, LocalMapObject *obj2, TaskManager *taskManager);
 void FieldSystem_FollowMonInteract(FieldSystem *fieldSystem);
 BOOL ov02_02250780(FieldSystem *fieldSystem, u8 a1);
@@ -83,6 +83,6 @@ void ov02_02246714(TaskManager *man, u32 a1, u32 a2, u32 a3, u32 a4);
 void ov02_022469B4(TaskManager *man, LocalMapObject *obj1, LocalMapObject *obj2);
 void OpenAlphHiddenRoom(TaskManager *man, u32 a1);
 
-SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, HeapID heapId);
+SafariDecorationArgs *SafariDecoration_CreateArgs(FieldSystem *fieldSystem, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_OVERLAY_02_H

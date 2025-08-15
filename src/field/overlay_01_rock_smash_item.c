@@ -94,7 +94,7 @@ static BOOL Task_GetRockSmashItem(TaskManager *taskman);
 static int DrawRockSmashIdx(FieldSystem *fieldSystem);
 
 void FieldSystem_RockSmashItemCheck(FieldSystem *fieldSystem, int followMonKnowsHm, u16 *itemFound, u16 *item) {
-    RockSmashItemCheckWork *env = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(RockSmashItemCheckWork));
+    RockSmashItemCheckWork *env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(RockSmashItemCheckWork));
     env->followMonKnowsHM = followMonKnowsHm != 0;
     env->itemFound = itemFound;
     env->item = item;

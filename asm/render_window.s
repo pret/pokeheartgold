@@ -910,7 +910,7 @@ sub_0200EA68: ; 0x0200EA68
 	str r0, [sp, #0x30]
 	ldr r1, [sp, #0x30]
 	add r0, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r5, r0, #0
 	ldr r0, [sp, #0x2c]
 	bl BgGetCharPtr
@@ -1049,7 +1049,7 @@ sub_0200EB80: ; 0x0200EB80
 	mov r1, #9
 	ldr r0, [sp, #0x2c]
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [sp, #0x10]
 	mov r2, #9
 	ldr r1, [r1, #0x14]
@@ -1689,7 +1689,7 @@ WaitingIcon_New: ; 0x0200F0AC
 	add r5, r0, #0
 	ldr r0, [sp, #0x28]
 	ldr r1, _0200F1C4 ; =0x0000048C
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [sp, #0x24]
 	add r4, r0, #0
 	ldr r0, _0200F1C8 ; =0x00000404
@@ -1701,7 +1701,7 @@ WaitingIcon_New: ; 0x0200F0AC
 	bl memcpy
 	ldr r0, [sp, #0x28]
 	mov r1, #0x80
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [sp, #0x24]
 	mov r2, #0x20
 	add r1, #0xa
@@ -2506,7 +2506,7 @@ sub_0200F748: ; 0x0200F748
 	mov r1, #0x19
 	ldrh r0, [r5, r0]
 	lsl r1, r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r2, sp, #0x18
 	ldr r3, _0200F820 ; =_020F5C50
 	add r4, r0, #0

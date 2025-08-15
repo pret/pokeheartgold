@@ -19,13 +19,13 @@ typedef struct MessageFormatFields {
 
 typedef struct MessageFormat {
     u32 count;
-    HeapID heapId;
+    enum HeapID heapID;
     MessageFormatFields *fields;
     String *buffer;
 } MessageFormat;
 
-MessageFormat *MessageFormat_New(HeapID heapId);
-MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 _strlen, HeapID heapId);
+MessageFormat *MessageFormat_New(enum HeapID heapID);
+MessageFormat *MessageFormat_New_Custom(u32 nstr, u32 _strlen, enum HeapID heapID);
 void MessageFormat_Delete(MessageFormat *messageFormat);
 void StringExpandPlaceholders(MessageFormat *messageFormat, String *dest, String *src);
 void BufferString(MessageFormat *messageFormat, u32 fieldno, const String *string, s32 a3, s32 a4, s32 a5);
