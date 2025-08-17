@@ -4,6 +4,7 @@
 #include "global.h"
 #include "frontier_data.h"
 #include "save.h"
+#include "pokemon_types_def.h"
 
 typedef struct UnkStruct_02069528 {
     u8 unk0[0xA8];
@@ -21,10 +22,6 @@ typedef struct UnkStruct_02069528 {
     u16 unkE2;
 } UnkStruct_02069528;
 
-void sub_0202D4DC(FRONTIERDATA*, s32, UnkStruct_02069528*);
-s16 sub_0202D564(FRONTIERDATA*);
-s16 sub_0202D5DC(FRONTIERDATA*, s32, s32);
-void* sub_0202D660(SaveData*, s32);
 void sub_02069528(SaveData*, s32, UnkStruct_02069528*);
 
 #endif // POKEHEARTGOLD_UNK_02069528_H

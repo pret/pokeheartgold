@@ -5,6 +5,7 @@
 #include "save_wifi_history.h"
 #include "frontier_data.h"
 #include "unk_0205B3DC.h"
+#include "unk_0202D230.h"
 
 void sub_02069528(SaveData* saveData, s32 arg2, UnkStruct_02069528* arg3) {
     FRONTIERDATA* frontierData;
