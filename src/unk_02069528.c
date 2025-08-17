@@ -1,16 +1,17 @@
 #include "unk_02069528.h"
 
 #include "global.h"
+
+#include "frontier_data.h"
 #include "player_data.h"
 #include "save_wifi_history.h"
-#include "frontier_data.h"
-#include "unk_0205B3DC.h"
 #include "unk_0202D230.h"
+#include "unk_0205B3DC.h"
 
-void sub_02069528(SaveData* saveData, s32 arg2, UnkStruct_02069528* arg3) {
-    FRONTIERDATA* frontierData;
-    PlayerProfile* playerProfile;
-    SaveWiFiHistory* saveWiFiHistory;
+void sub_02069528(SaveData *saveData, s32 arg2, UnkStruct_02069528 *arg3) {
+    FRONTIERDATA *frontierData;
+    PlayerProfile *playerProfile;
+    SaveWiFiHistory *saveWiFiHistory;
     s32 index;
     s32 position;
 
@@ -25,16 +26,16 @@ void sub_02069528(SaveData* saveData, s32 arg2, UnkStruct_02069528* arg3) {
     arg3->playerCountry = WifiHistory_GetPlayerCountry(saveWiFiHistory);
     arg3->playerRegion = WiFiHistory_GetPlayerRegion(saveWiFiHistory);
     arg3->unkC8 = ((arg3->unkC8 & ~2) | (((u32)(u8)(PlayerProfile_GetTrainerGender(playerProfile)) & 1) << 1));
-    arg3->trainerClass = GetUnionRoomAvatarAttrBySprite((u32) (arg3->unkC8 << 0x1E) >> 0x1F, PlayerProfile_GetAvatar(playerProfile), 1);
-    
+    arg3->trainerClass = GetUnionRoomAvatarAttrBySprite((u32)(arg3->unkC8 << 0x1E) >> 0x1F, PlayerProfile_GetAvatar(playerProfile), 1);
+
     index = 0;
     position = 0;
     for (index = 0, position = 0; index < 3; index++, position += 8) {
         MI_CpuCopy8(sub_0202D660(saveData, index), &arg3->unkCA[position], 8);
     }
-    
+
     MI_CpuCopy8(sub_0202D660(saveData, 3), &arg3->unkC0, sizeof(arg3->unkC0));
-    
+
     if (arg2 == 0) {
         arg3->unkE2 = sub_0202D5DC(frontierData, 7, 0);
         if (arg3->unkE2 != 0) {

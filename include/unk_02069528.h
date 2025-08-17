@@ -2,13 +2,14 @@
 #define POKEHEARTGOLD_UNK_02069528_H
 
 #include "global.h"
+
 #include "frontier_data.h"
-#include "save.h"
 #include "pokemon_types_def.h"
+#include "save.h"
 
 typedef struct UnkStruct_02069528 {
     u8 unk0[0xA8];
-    u16* playerName;
+    u16 *playerName;
     u8 unkAC[0xC];
     u8 gameVersion;
     u8 gameLanguage;
@@ -22,6 +23,6 @@ typedef struct UnkStruct_02069528 {
     u16 unkE2;
 } UnkStruct_02069528;
 
-void sub_02069528(SaveData*, s32, UnkStruct_02069528*);
+void sub_02069528(SaveData *, s32, UnkStruct_02069528 *);
 
 #endif // POKEHEARTGOLD_UNK_02069528_H
