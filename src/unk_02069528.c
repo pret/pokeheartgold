@@ -8,7 +8,7 @@
 #include "unk_0202D230.h"
 #include "unk_0205B3DC.h"
 
-void sub_02069528(SaveData *saveData, s32 arg2, UnkStruct_02069528 *arg3) {
+void sub_02069528(SaveData *saveData, s32 a1, UnkStruct_02069528 *a2) {
     FRONTIERDATA *frontierData;
     PlayerProfile *playerProfile;
     SaveWiFiHistory *saveWiFiHistory;
@@ -18,29 +18,29 @@ void sub_02069528(SaveData *saveData, s32 arg2, UnkStruct_02069528 *arg3) {
     playerProfile = Save_PlayerData_GetProfile(saveData);
     saveWiFiHistory = Save_WiFiHistory_Get(saveData);
     frontierData = Save_FrontierData_Get(saveData);
-    MI_CpuFill8(arg3, 0, sizeof(UnkStruct_02069528));
-    MI_CpuCopy8(PlayerProfile_GetNamePtr(playerProfile), &arg3->playerName, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
-    arg3->trainerId = PlayerProfile_GetTrainerID(playerProfile);
-    arg3->gameVersion = gGameVersion;
-    arg3->gameLanguage = gGameLanguage;
-    arg3->playerCountry = WifiHistory_GetPlayerCountry(saveWiFiHistory);
-    arg3->playerRegion = WiFiHistory_GetPlayerRegion(saveWiFiHistory);
-    arg3->unkC8_1 = PlayerProfile_GetTrainerGender(playerProfile);
-    arg3->trainerClass = GetUnionRoomAvatarAttrBySprite(arg3->unkC8_1, PlayerProfile_GetAvatar(playerProfile), 1);
+    MI_CpuFill8(a2, 0, sizeof(UnkStruct_02069528));
+    MI_CpuCopy8(PlayerProfile_GetNamePtr(playerProfile), &a2->playerName, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
+    a2->trainerId = PlayerProfile_GetTrainerID(playerProfile);
+    a2->gameVersion = gGameVersion;
+    a2->gameLanguage = gGameLanguage;
+    a2->playerCountry = WifiHistory_GetPlayerCountry(saveWiFiHistory);
+    a2->playerRegion = WiFiHistory_GetPlayerRegion(saveWiFiHistory);
+    a2->unkC8_1 = PlayerProfile_GetTrainerGender(playerProfile);
+    a2->trainerClass = GetUnionRoomAvatarAttrBySprite(a2->unkC8_1, PlayerProfile_GetAvatar(playerProfile), 1);
 
     for (index = 0, position = 0; index < 3; index++, position += 8) {
-        MI_CpuCopy8(sub_0202D660(saveData, index), &arg3->unkCA[position], 8);
+        MI_CpuCopy8(sub_0202D660(saveData, index), &a2->unkCA[position], 8);
     }
 
-    MI_CpuCopy8(sub_0202D660(saveData, 3), &arg3->unkC0, sizeof(arg3->unkC0));
+    MI_CpuCopy8(sub_0202D660(saveData, 3), &a2->unkC0, sizeof(a2->unkC0));
 
-    if (arg2 == 0) {
-        arg3->unkE2 = sub_0202D5DC(frontierData, 7, 0);
-        if (arg3->unkE2 != 0) {
-            sub_0202D4DC(frontierData, arg2, arg3);
+    if (a1 == 0) {
+        a2->unkE2 = sub_0202D5DC(frontierData, 7, 0);
+        if (a2->unkE2 != 0) {
+            sub_0202D4DC(frontierData, a1, a2);
         }
     } else {
-        arg3->unkE2 = sub_0202D564(frontierData);
-        sub_0202D4DC(frontierData, arg2, arg3);
+        a2->unkE2 = sub_0202D564(frontierData);
+        sub_0202D4DC(frontierData, a1, a2);
     }
 }

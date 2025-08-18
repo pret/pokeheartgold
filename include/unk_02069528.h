@@ -27,6 +27,6 @@ typedef struct UnkStruct_02069528 {
     u16 unkE2;
 } UnkStruct_02069528;
 
-void sub_02069528(SaveData *, s32, UnkStruct_02069528 *);
+void sub_02069528(SaveData *saveData, s32 a1, UnkStruct_02069528 *a2);
 
 #endif // POKEHEARTGOLD_UNK_02069528_H
