@@ -25,11 +25,9 @@ void sub_02069528(SaveData *saveData, s32 arg2, UnkStruct_02069528 *arg3) {
     arg3->gameLanguage = gGameLanguage;
     arg3->playerCountry = WifiHistory_GetPlayerCountry(saveWiFiHistory);
     arg3->playerRegion = WiFiHistory_GetPlayerRegion(saveWiFiHistory);
-    arg3->unkC8 = ((arg3->unkC8 & ~2) | (((u32)(u8)(PlayerProfile_GetTrainerGender(playerProfile)) & 1) << 1));
-    arg3->trainerClass = GetUnionRoomAvatarAttrBySprite((u32)(arg3->unkC8 << 0x1E) >> 0x1F, PlayerProfile_GetAvatar(playerProfile), 1);
+    arg3->unkC8_1 = PlayerProfile_GetTrainerGender(playerProfile);
+    arg3->trainerClass = GetUnionRoomAvatarAttrBySprite(arg3->unkC8_1, PlayerProfile_GetAvatar(playerProfile), 1);
 
-    index = 0;
-    position = 0;
     for (index = 0, position = 0; index < 3; index++, position += 8) {
         MI_CpuCopy8(sub_0202D660(saveData, index), &arg3->unkCA[position], 8);
     }
