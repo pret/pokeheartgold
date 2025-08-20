@@ -34,7 +34,10 @@ void ov101_021EF384(PokegearConfigureAppData *configureApp, int backgroundStyle)
 void ov101_021EF414(PokegearConfigureAppData *configureApp);
 
 void ov101_021EF4B0(void *appData);
+void ov101_021EF4DC(PokegearConfigureAppData *configureApp);
+void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1);
 void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2);
+
 int ov101_021EF6E4(PokegearConfigureAppData *configureApp);
 int ov101_021EF7D4(PokegearConfigureAppData *configureApp);
 

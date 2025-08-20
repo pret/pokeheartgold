@@ -9,9 +9,6 @@ typedef struct UnkStruct_ov101_021F83D0 {
     u8 unk_2;
 } UnkStruct_ov101_021F83D0;
 
-void ov101_021EF4DC(PokegearConfigureAppData *configureApp);
-void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1);
-
 extern const TouchscreenListMenuTemplate ov101_021F83C4;
 extern const UnkStruct_ov101_021F83D0 ov101_021F83D0[];
 
@@ -103,4 +100,31 @@ void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1) {
     configureApp->unk_40 = TouchscreenListMenu_CreateWithAlignment(configureApp->unk_38, &sp10, configureApp->pokegear->menuInputState, ov101_021F83D0[a1].unk_0, ov101_021F83D0[a1].unk_1, 0, 0, ov101_021F83D0[a1].unk_2);
     ov101_021EF5A4(configureApp, a1, 1);
     PokegearAppSwitch_SetCursorSpritesAnimateFlag(configureApp->pokegear->appSwitch, 0xFFFF, FALSE);
+}
+
+void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2) {
+    int x;
+    int y;
+    int width;
+
+    if (a2) {
+        G2_SetWnd0InsidePlane(31, FALSE);
+        G2_SetWnd1InsidePlane(31, FALSE);
+        G2_SetWndOutsidePlane(31, TRUE);
+
+        x = configureApp->unk_40->x * 8;
+        y = configureApp->unk_40->y * 8;
+        width = (configureApp->unk_40->width + 2) * 8;
+        G2_SetWnd0Position(x, y, x + width, y + 56);
+        G2_SetWnd1Position(24 + (a1 % 3) * 80, 24 + (a1 / 3) * 72, 72 + (a1 % 3) * 80, 64 + (a1 / 3) * 72);
+        GX_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
+        G2_SetBlendBrightness(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ, -8);
+    } else {
+        G2_SetWnd0InsidePlane(GX_WND_PLANEMASK_NONE, FALSE);
+        G2_SetWnd1InsidePlane(GX_WND_PLANEMASK_NONE, FALSE);
+        G2_SetWndOutsidePlane(GX_WND_PLANEMASK_NONE, FALSE);
+        GX_SetVisibleWnd(GX_WNDMASK_NONE);
+        G2_SetBlendBrightness(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ, 0);
+        G2_BlendNone();
+    }
 }
