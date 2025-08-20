@@ -1554,7 +1554,7 @@ _021E74C4:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E74D2:
 	add r0, r4, #0
-	bl sub_0205B7EC
+	bl MetatileBehavior_IsTownMap
 	cmp r0, #0
 	beq _021E74E0
 	ldr r0, _021E7604 ; =std_town_map

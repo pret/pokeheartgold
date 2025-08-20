@@ -845,9 +845,9 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
             ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2);
             return;
         }
-        if (locationSpec->tilemapUnk170BlockID != 0) {
+        if (locationSpec->tilemapUnk174BlockID != 0) {
             tilemap16CsrcX = 8;
-            tilemap174blockId = locationSpec->tilemapUnk170BlockID - 1;
+            tilemap174blockId = locationSpec->tilemapUnk174BlockID - 1;
         } else {
             tilemap16CsrcX = 0;
             tilemap174blockId = 0;

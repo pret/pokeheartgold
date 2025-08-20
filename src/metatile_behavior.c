@@ -92,7 +92,7 @@ BOOL sub_0205B7E0(u8 tile) {
     return tile == TILE_BEHAVIOR_131;
 }
 
-BOOL sub_0205B7EC(u8 tile) {
+BOOL MetatileBehavior_IsTownMap(u8 tile) {
     return tile == TILE_BEHAVIOR_TOWN_MAP;
 }
 

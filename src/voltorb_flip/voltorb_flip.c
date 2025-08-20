@@ -1823,35 +1823,35 @@ _021E7BE4:
 // clang-format on
 #endif // NONMATCHING
 
-static ManagedSprite *ov122_021E7C9C(SpriteSystem *a0, SpriteManager *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+static ManagedSprite *ov122_021E7C9C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u16 x, u16 y, u16 animation, u16 drawPriority) {
     ManagedSpriteTemplate temp1 = ov122_021E9374;
 
-    GF_ASSERT(a0 != NULL);
-    GF_ASSERT(a1 != NULL);
+    GF_ASSERT(spriteSystem != NULL);
+    GF_ASSERT(spriteManager != NULL);
 
-    temp1.x = a2;
-    temp1.y = a3;
-    temp1.animation = a4;
-    temp1.drawPriority = a5;
+    temp1.x = x;
+    temp1.y = y;
+    temp1.animation = animation;
+    temp1.drawPriority = drawPriority;
 
-    ManagedSprite *var1 = SpriteSystem_NewSpriteWithYOffset(a0, a1, &temp1, 0x20c000);
-    ManagedSprite_SetAnimateFlag(var1, 1);
-    ManagedSprite_SetDrawFlag(var1, 0);
-    return var1;
+    ManagedSprite *ret = SpriteSystem_NewSpriteWithYOffset(spriteSystem, spriteManager, &temp1, 0x20c000);
+    ManagedSprite_SetAnimateFlag(ret, 1);
+    ManagedSprite_SetDrawFlag(ret, 0);
+    return ret;
 }
 
-static ManagedSprite *ov122_021E7D04(SpriteSystem *a0, SpriteManager *a1, u16 a2, u16 a3, u16 a4, u16 a5) {
+static ManagedSprite *ov122_021E7D04(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u16 x, u16 y, u16 animation, u16 drawPriority) {
     ManagedSpriteTemplate temp1 = ov122_021E93A8;
 
-    GF_ASSERT(a0 != NULL);
-    GF_ASSERT(a1 != NULL);
+    GF_ASSERT(spriteSystem != NULL);
+    GF_ASSERT(spriteManager != NULL);
 
-    temp1.x = a2;
-    temp1.y = a3;
-    temp1.animation = a4;
-    temp1.drawPriority = a5;
+    temp1.x = x;
+    temp1.y = y;
+    temp1.animation = animation;
+    temp1.drawPriority = drawPriority;
 
-    ManagedSprite *var1 = SpriteSystem_NewSpriteWithYOffset(a0, a1, &temp1, 0x20c000);
+    ManagedSprite *var1 = SpriteSystem_NewSpriteWithYOffset(spriteSystem, spriteManager, &temp1, 0x20c000);
     ManagedSprite_SetAnimateFlag(var1, 1);
     ManagedSprite_SetDrawFlag(var1, 0);
     return var1;

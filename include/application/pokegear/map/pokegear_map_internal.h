@@ -151,7 +151,7 @@ typedef struct PokegearMapLocationSpec {
     u16 objXoffset : 4;
     u16 objYoffset : 4;
     u8 flavorText;
-    u8 tilemapUnk170BlockID;
+    u8 tilemapUnk174BlockID;
     u8 unk_8; // unused
     u8 unk_9; // unused
     u8 unk_A; // unused
