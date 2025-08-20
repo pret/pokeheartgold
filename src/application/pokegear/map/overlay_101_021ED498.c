@@ -21,7 +21,7 @@ static u8 PokegearMap_GetAvailableMarkingsHeapNode(PokegearMapAppData *mapApp) {
     return -1;
 }
 
-void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp) {
+void MapApp_LoadMarkingsListFromSave(PokegearMapAppData *mapApp) {
     u8 i;
     u8 index;
     MapMarkingsSaveArray *mmSave;
@@ -56,7 +56,7 @@ void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp) {
     mapApp->mapMarkingsListCount = index;
 }
 
-void PokegearMap_FlattenMapMarkingsToSaveArray(PokegearMapAppData *mapApp) {
+void PokegearMap_SaveMapMarkings(PokegearMapAppData *mapApp) {
     u8 i;
     u8 index;
     MapMarkingsSaveArray *mmSave;

@@ -6,7 +6,7 @@
 #include "unk_0200FA24.h"
 
 FS_EXTERN_OVERLAY(OVY_26);
-FS_EXTERN_OVERLAY(OVY_100);
+FS_EXTERN_OVERLAY(pokegear);
 
 static void FlyMap_InitParam(PokegearMapAppData *mapApp);
 static void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp);
@@ -25,7 +25,7 @@ static const u16 sMapXScrollLimits[] = {
 
 BOOL FlyMap_Init(OverlayManager *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
-    HandleLoadOverlay(FS_OVERLAY_ID(OVY_100), OVY_LOAD_ASYNC);
+    HandleLoadOverlay(FS_OVERLAY_ID(pokegear), OVY_LOAD_ASYNC);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
     CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x40000);
     PokegearMapAppData *mapApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearMapAppData), HEAP_ID_POKEGEAR_APP);
@@ -88,7 +88,7 @@ BOOL FlyMap_Exit(OverlayManager *man, int *state) {
     OverlayManager_FreeData(man);
     DestroyHeap(heapID);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
-    UnloadOverlayByID(FS_OVERLAY_ID(OVY_100));
+    UnloadOverlayByID(FS_OVERLAY_ID(pokegear));
     return TRUE;
 }
 
@@ -98,7 +98,7 @@ static void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->type = mapApp->pokegear->args->isScriptedLaunch + 1;
     mapApp->pokegear->reselectAppCB = PokegearMap_ShowMapCursor;
     mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
-    MapApp_LoadMarkingsLinkedListFromSave(mapApp);
+    MapApp_LoadMarkingsListFromSave(mapApp);
     mapApp->unk_138_4 = 0;
     mapApp->unk_138_1 = 0;
     mapApp->mapUnlockLevel = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
@@ -123,7 +123,7 @@ static void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->xOffset = -24;
     mapApp->canSeeSafariZone = TRUE;
     mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
-    mapApp->curRegion = Pokegear_GetRegionFromMapCoords(mapApp->pokegear);
+    mapApp->curRegion = Pokegear_GetCurrentRegion(mapApp->pokegear);
 }
 
 static void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp) {
@@ -134,7 +134,7 @@ static void FlyMap_DecouplePokegear(PokegearMapAppData *mapApp) {
 }
 
 static int FlyMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp) {
-    if (FlyMap_GraphicsInit(mapApp)) {
+    if (FlyMap_LoadGFX(mapApp)) {
         return PGMAP_MAIN_STATE_FADE_IN;
     } else {
         return PGMAP_MAIN_STATE_LOAD;
@@ -182,7 +182,7 @@ static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
 }
 
 static int FlyMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp) {
-    if (!FlyMap_GraphicsDeinit(mapApp)) {
+    if (!FlyMap_UnloadGFX(mapApp)) {
         return PGMAP_MAIN_STATE_UNLOAD;
     }
     mapApp->pokegear->mapSessionState = mapApp->sessionState;

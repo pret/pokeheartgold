@@ -21,9 +21,9 @@ static BOOL IsMapSinjoh(u16 mapID);
 static BOOL IsMapSSAqua(u16 mapID);
 static void ov101_021E78EC(PokegearMapAppData *mapApp);
 static void ov101_021E7B54(PokegearMapAppData *mapApp);
-static int PokegearMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp);
+static int PokegearMap_MainTask_LoadGFX(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_HandleInput(PokegearMapAppData *mapApp);
-static int PokegearMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp);
+static int PokegearMap_MainTask_UnloadGFX(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_EnterMarkingMode(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_HandleInput_MarkingMode(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_ExitMarkingMode(PokegearMapAppData *mapApp);
@@ -58,13 +58,13 @@ BOOL PokegearMap_Main(OverlayManager *man, int *state) {
 
     switch (*state) {
     case PGMAP_MAIN_STATE_LOAD:
-        *state = PokegearMap_MainTask_GraphicsInit(mapApp);
+        *state = PokegearMap_MainTask_LoadGFX(mapApp);
         break;
     case PGMAP_MAIN_STATE_HANDLE_INPUT:
         *state = PokegearMap_MainTask_HandleInput(mapApp);
         break;
     case PGMAP_MAIN_STATE_UNLOAD:
-        *state = PokegearMap_MainTask_GraphicsDeinit(mapApp);
+        *state = PokegearMap_MainTask_UnloadGFX(mapApp);
         break;
     case PGMAP_MAIN_STATE_FADE_IN:
         *state = PokegearMap_MainTask_FadeIn(mapApp);
@@ -159,13 +159,13 @@ static void ov101_021E78EC(PokegearMapAppData *mapApp) {
     mapApp->pokegear->childAppdata = mapApp;
     mapApp->pokegear->reselectAppCB = PokegearMap_ShowMapCursor;
     mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
-    MapApp_LoadMarkingsLinkedListFromSave(mapApp);
+    MapApp_LoadMarkingsListFromSave(mapApp);
     if (mapApp->pokegear->app != GEAR_APP_CANCEL) {
-        mapApp->inMarkingsMode = 0;
+        mapApp->inMarkingsMode = FALSE;
         mapApp->pokegear->app = GEAR_APP_MAP;
         mapApp->zoomed = sub_0202EEA4(mapApp->pokegear->savePokegear);
     } else {
-        mapApp->inMarkingsMode = 1;
+        mapApp->inMarkingsMode = TRUE;
         mapApp->sessionState = mapApp->pokegear->mapSessionState;
         mapApp->zoomed = mapApp->sessionState.zoomed;
         if (mapApp->sessionState.word != EC_WORD_NULL) {
@@ -219,12 +219,12 @@ static void ov101_021E7B54(PokegearMapAppData *mapApp) {
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->deselectAppCB = NULL;
-    PokegearMap_FlattenMapMarkingsToSaveArray(mapApp);
+    PokegearMap_SaveMapMarkings(mapApp);
     sub_0202EEA8(mapApp->pokegear->savePokegear, mapApp->zoomed);
 }
 
-static int PokegearMap_MainTask_GraphicsInit(PokegearMapAppData *mapApp) {
-    if (!PokegearMap_GraphicsInit(mapApp)) {
+static int PokegearMap_MainTask_LoadGFX(PokegearMapAppData *mapApp) {
+    if (!PokegearMap_LoadGFX(mapApp)) {
         return PGMAP_MAIN_STATE_LOAD;
     }
     if (mapApp->pokegear->isSwitchApp) {
@@ -262,8 +262,8 @@ static int PokegearMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     return PGMAP_MAIN_STATE_HANDLE_INPUT;
 }
 
-static int PokegearMap_MainTask_GraphicsDeinit(PokegearMapAppData *mapApp) {
-    if (!PokegearMaps_GraphicsDeinit(mapApp)) {
+static int PokegearMap_MainTask_UnloadGFX(PokegearMapAppData *mapApp) {
+    if (!PokegearMap_UnloadGFX(mapApp)) {
         return PGMAP_MAIN_STATE_UNLOAD;
     }
     mapApp->pokegear->mapSessionState = mapApp->sessionState;

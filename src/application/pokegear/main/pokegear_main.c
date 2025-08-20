@@ -10,7 +10,7 @@
 #include "unk_02092BE8.h"
 #include "vram_transfer_manager.h"
 
-FS_EXTERN_OVERLAY(OVY_101);
+FS_EXTERN_OVERLAY(pokegear_app);
 FS_EXTERN_OVERLAY(OVY_102);
 
 typedef enum PokegearAppMainState {
@@ -181,7 +181,7 @@ void PokegearApp_VBlankCB(void *cb_args) {
 }
 
 static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp) {
-    if (!PokegearApp_GraphicsInit(pokegearApp)) {
+    if (!PokegearApp_LoadGFX(pokegearApp)) {
         return POKEGEAR_APP_MAIN_STATE_SETUP;
     }
 
@@ -201,7 +201,7 @@ static PokegearAppMainState Pokegear_MainStep_Setup(PokegearAppData *pokegearApp
 }
 
 static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegearApp) {
-    if (PokegearApp_GraphicsDeinit(pokegearApp)) {
+    if (PokegearApp_UnloadGFX(pokegearApp)) {
         return POKEGEAR_APP_MAIN_STATE_QUIT;
     }
 
@@ -209,7 +209,7 @@ static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegear
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegearApp) {
-    static const OverlayManagerTemplate sOverlayTemplate_GearMap = { PokegearMap_Init, PokegearMap_Main, PokegearMap_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OverlayManagerTemplate sOverlayTemplate_GearMap = { PokegearMap_Init, PokegearMap_Main, PokegearMap_Exit, FS_OVERLAY_ID(pokegear_app) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearMap, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
 }
@@ -248,7 +248,7 @@ static PokegearAppMainState Pokegear_MainStep_RunMap(PokegearAppData *pokegearAp
 static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokegearApp) {
     static const OverlayManagerTemplate sOverlayTemplate_EasyChat = { EasyChat_Init, EasyChat_Main, EasyChat_Exit, FS_OVERLAY_ID(OVY_102) };
 
-    if (!PokegearApp_GraphicsDeinit(pokegearApp)) {
+    if (!PokegearApp_UnloadGFX(pokegearApp)) {
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
     }
 
@@ -275,7 +275,7 @@ static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegear
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *pokegearApp) {
-    static const OverlayManagerTemplate sOverlayTemplate_GearConfigure = { PokegearConfigure_Init, PokegearConfigure_Main, PokegearConfigure_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OverlayManagerTemplate sOverlayTemplate_GearConfigure = { PokegearConfigure_Init, PokegearConfigure_Main, PokegearConfigure_Exit, FS_OVERLAY_ID(pokegear_app) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearConfigure, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGURE;
 }
@@ -306,7 +306,7 @@ static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *poke
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchPhone(PokegearAppData *pokegearApp) {
-    static const OverlayManagerTemplate sOverlayTemplate_GearPhone = { PokegearPhone_Init, PokegearPhone_Main, PokegearPhone_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OverlayManagerTemplate sOverlayTemplate_GearPhone = { PokegearPhone_Init, PokegearPhone_Main, PokegearPhone_Exit, FS_OVERLAY_ID(pokegear_app) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearPhone, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
 }
@@ -337,7 +337,7 @@ static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegear
 }
 
 static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokegearApp) {
-    static const OverlayManagerTemplate sOverlayTemplate_GearRadio = { PokegearRadio_Init, PokegearRadio_Main, PokegearRadio_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OverlayManagerTemplate sOverlayTemplate_GearRadio = { PokegearRadio_Init, PokegearRadio_Main, PokegearRadio_Exit, FS_OVERLAY_ID(pokegear_app) };
     pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearRadio, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
 }

@@ -7,6 +7,7 @@
 
 typedef struct UnkStruct_02013534 UnkStruct_02013534; // size: 0x68
 typedef struct UnkStruct_02013910 UnkStruct_02013910;
+// TODO https://github.com/pret/pokeheartgold/issues/404: rename
 typedef struct TextOBJTemplate {
     UnkStruct_02013534 *unk_00;
     Window *window;

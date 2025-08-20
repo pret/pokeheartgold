@@ -119,8 +119,8 @@ FS_EXTERN_OVERLAY(OVY_86);
 FS_EXTERN_OVERLAY(OVY_87);
 FS_EXTERN_OVERLAY(OVY_96);
 FS_EXTERN_OVERLAY(OVY_99);
-FS_EXTERN_OVERLAY(OVY_100);
-FS_EXTERN_OVERLAY(OVY_101);
+FS_EXTERN_OVERLAY(pokegear);
+FS_EXTERN_OVERLAY(pokegear_app);
 FS_EXTERN_OVERLAY(OVY_102);
 FS_EXTERN_OVERLAY(OVY_103);
 FS_EXTERN_OVERLAY(OVY_104);
@@ -498,13 +498,13 @@ void EasyChat_LaunchApp(FieldSystem *fieldSystem, EasyChatArgs *args) {
 }
 
 static void PokegearPhone_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_Pokegear = { Pokegear_Init, Pokegear_Main, Pokegear_Exit, FS_OVERLAY_ID(OVY_100) };
+    static const OverlayManagerTemplate sOverlayTemplate_Pokegear = { Pokegear_Init, Pokegear_Main, Pokegear_Exit, FS_OVERLAY_ID(pokegear) };
     OverlayManagerTemplate template = sOverlayTemplate_Pokegear;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
 static void PokegearTownMap_LaunchApp_Impl(FieldSystem *fieldSystem, PokegearArgs *args) {
-    static const OverlayManagerTemplate sOverlayTemplate_TownMap = { FlyMap_Init, FlyMap_Main, FlyMap_Exit, FS_OVERLAY_ID(OVY_101) };
+    static const OverlayManagerTemplate sOverlayTemplate_TownMap = { FlyMap_Init, FlyMap_Main, FlyMap_Exit, FS_OVERLAY_ID(pokegear_app) };
     OverlayManagerTemplate template = sOverlayTemplate_TownMap;
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
