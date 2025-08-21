@@ -21,8 +21,87 @@ void ov101_021EF130(PokegearConfigureAppData *configureApp);
 void ov101_021EF16C(PokegearConfigureAppData *configureApp);
 void ov101_021EF17C(PokegearConfigureAppData *configureApp);
 
-extern const UnmanagedSpriteTemplate ov101_021F82FC[5];
-extern const PokegearAppSwitchButtonSpec ov101_021F820C[6];
+const UnmanagedSpriteTemplate ov101_021F82FC[5] = {
+    {
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 6,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animation = 1,
+     .drawPriority = 1,
+     .pal = 6,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animation = 2,
+     .drawPriority = 1,
+     .pal = 6,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animation = 3,
+     .drawPriority = 1,
+     .pal = 6,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+    {
+     .resourceSet = 0,
+     .x = 0,
+     .y = 0,
+     .z = 0,
+     .animation = 8,
+     .drawPriority = 1,
+     .pal = 4,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
+     .unk_1C = 0,
+     .unk_20 = 0,
+     .unk_24 = 0,
+     },
+};
+
+const PokegearAppSwitchButtonSpec ov101_021F820C[6] = {
+    { 0, 2, 1, 3, 3, 48,  44,  -22, 22, -18, 18 },
+    { 1, 0, 2, 4, 4, 128, 44,  -22, 22, -18, 18 },
+    { 2, 1, 0, 5, 5, 208, 44,  -22, 22, -18, 18 },
+    { 3, 5, 4, 0, 0, 48,  116, -22, 22, -18, 18 },
+    { 4, 3, 5, 1, 1, 128, 116, -22, 22, -18, 18 },
+    { 5, 4, 3, 2, 2, 208, 116, -22, 22, -18, 18 },
+};
 
 BOOL ov101_021EED44(PokegearConfigureAppData *configureApp) {
     switch (configureApp->substate) {
@@ -116,9 +195,92 @@ void ov101_021EEF0C(PokegearConfigureAppData *configureApp) {
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
 
     {
-        extern const BgTemplate ov101_021F8254[6];
-        BgTemplate bgTemplates[6];
-        ARRAY_ASSIGN(bgTemplates, ov101_021F8254);
+        BgTemplate bgTemplates[6] = {
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xf000,
+             .charBase = GX_BG_CHARBASE_0x10000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 1,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe800,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 2,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 3,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xf000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 0,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe800,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 1,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 2,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .mosaic = 0,
+             },
+        };
 
         InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &bgTemplates[0], GF_BG_TYPE_TEXT, FALSE);
         InitBgFromTemplateEx(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &bgTemplates[1], GF_BG_TYPE_TEXT, FALSE);

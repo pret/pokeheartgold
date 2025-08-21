@@ -9,8 +9,27 @@ typedef struct UnkStruct_ov101_021F83D0 {
     u8 unk_2;
 } UnkStruct_ov101_021F83D0;
 
-extern const TouchscreenListMenuTemplate ov101_021F83C4;
-extern const UnkStruct_ov101_021F83D0 ov101_021F83D0[];
+const TouchscreenListMenuTemplate ov101_021F83C4 = {
+    .wrapAround = TRUE,
+    .centered = TRUE,
+    .xOffset = 0,
+    .bgId = 1,
+    .plttOffset = 10,
+    .unk4 = 1,
+    .unk5 = 1,
+    .baseTile = 28,
+    .charOffset = 1,
+    .unkA = 64,
+};
+
+const UnkStruct_ov101_021F83D0 ov101_021F83D0[] = {
+    { 10, 2,  0 },
+    { 20, 2,  0 },
+    { 22, 2,  2 },
+    { 10, 11, 0 },
+    { 20, 11, 0 },
+    { 22, 11, 2 },
+};
 
 void ov101_021EF1D8(PokegearConfigureAppData *configureApp) {
     NARC *narc;

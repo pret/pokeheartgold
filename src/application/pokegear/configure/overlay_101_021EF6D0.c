@@ -4,7 +4,15 @@
 
 BOOL ov101_021EF6D0(PokegearConfigureAppData *configureApp, u8 a1);
 
-extern const TouchscreenHitbox ov101_021F83E4[];
+const TouchscreenHitbox ov101_021F83E4[] = {
+    { .rect = { 24, 64, 24, 72 } },
+    { .rect = { 24, 64, 104, 152 } },
+    { .rect = { 24, 64, 184, 232 } },
+    { .rect = { 96, 136, 24, 72 } },
+    { .rect = { 96, 136, 104, 152 } },
+    { .rect = { 96, 136, 184, 232 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
+};
 
 BOOL ov101_021EF6D0(PokegearConfigureAppData *configureApp, u8 a1) {
     u16 r2 = 1;
