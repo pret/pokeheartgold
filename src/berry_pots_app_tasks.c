@@ -26,7 +26,7 @@ static const TouchscreenHitbox ov17_02203FC0 = {
 static void ov17_022035A4(SysTask *task, SysTaskArgs_ov17_0220351C *args);
 
 void ov17_0220351C(BerryPotsAppData *data) {
-    SysTaskArgs_ov17_0220351C *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_0220351C));
+    SysTaskArgs_ov17_0220351C *args = Heap_Alloc(data->heapID, sizeof(SysTaskArgs_ov17_0220351C));
     MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_0220351C));
     args->data = data;
     args->unk6 = data->unk80;
@@ -80,7 +80,7 @@ typedef struct SysTaskArgs_ov17_02203674 {
 static void ov17_02203674(SysTask *, SysTaskArgs_ov17_02203674 *);
 
 void ov17_02203638(BerryPotsAppData *data) {
-    SysTaskArgs_ov17_02203674 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_02203674));
+    SysTaskArgs_ov17_02203674 *args = Heap_Alloc(data->heapID, sizeof(SysTaskArgs_ov17_02203674));
     MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_02203674));
 
     args->data = data;
@@ -133,7 +133,7 @@ void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action act
     case BERRY_POTS_APP_022036FC_ACTION_12:
     case BERRY_POTS_APP_022036FC_ACTION_15:
     case BERRY_POTS_APP_022036FC_ACTION_16: {
-        String *berryName = GetNutName(unk->berryId, data->heapId);
+        String *berryName = GetNutName(unk->berryId, data->heapID);
         BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
         String_Delete(berryName);
         break;
@@ -214,7 +214,7 @@ static void ov17_02203928(BerryPotsAppData *data) {
             continue;
         }
 
-        SysTaskArgs_ov17_022039A0 *args = AllocFromHeap(data->heapId, sizeof(SysTaskArgs_ov17_022039A0));
+        SysTaskArgs_ov17_022039A0 *args = Heap_Alloc(data->heapID, sizeof(SysTaskArgs_ov17_022039A0));
         MI_CpuFill8(args, 0, sizeof(SysTaskArgs_ov17_022039A0));
         args->data = data;
         args->potIndex = i;

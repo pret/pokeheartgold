@@ -329,7 +329,7 @@ _02237FD8:
 	mov r1, #0x32
 	mov r0, #5
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x1d
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -4309,7 +4309,7 @@ _0223A11C:
 _0223A130:
 	mov r0, #5
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x71
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4493,7 +4493,7 @@ _0223A290:
 	lsr r5, r0, #0x18
 	mov r0, #5
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x71
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4691,7 +4691,7 @@ _0223A41A:
 	bl HandleLoadOverlay
 	mov r0, #5
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	mov r0, #0x66
 	lsl r0, r0, #2

@@ -28,7 +28,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
         map_matrix_data->name[i] = 0;
     }
 
-    void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, matrix_id, HEAP_ID_FIELD);
+    void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, matrix_id, HEAP_ID_FIELD2);
     u8 *cursor = (u8 *)buffer;
 
     map_matrix_data->width = *(cursor++);
@@ -60,7 +60,7 @@ static void MapMatrix_MapMatrixData_Load(MAPMATRIXDATA *map_matrix_data, u16 mat
 }
 
 MAPMATRIX *MapMatrix_New(void) {
-    MAPMATRIX *map_matrix = AllocFromHeap(HEAP_ID_FIELD, sizeof(MAPMATRIX));
+    MAPMATRIX *map_matrix = Heap_Alloc(HEAP_ID_FIELD2, sizeof(MAPMATRIX));
     map_matrix->width = 0;
     map_matrix->height = 0;
     map_matrix->matrix_id = 0;
@@ -119,10 +119,10 @@ u8 MapMatrix_GetMapAltitude(MAPMATRIX *map_matrix, u8 matrix_id, u16 x, u16 y, i
     return map_matrix->data.altitudes[y * matrix_width + x];
 }
 
-MAPDATA *MapMatrix_MapData_New(HeapID heapId) {
-    MAPDATA *map_data = AllocFromHeap(heapId, sizeof(MAPDATA));
+MAPDATA *MapMatrix_MapData_New(enum HeapID heapID) {
+    MAPDATA *map_data = Heap_Alloc(heapID, sizeof(MAPDATA));
 
-    void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, 0, heapId);
+    void *buffer = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_fielddata_mapmatrix_map_matrix, 0, heapID);
     u8 *cursor = (u8 *)buffer;
     cursor += 4;
     u8 name_length = *cursor;

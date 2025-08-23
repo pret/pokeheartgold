@@ -4,9 +4,9 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public MailMsg_Init_WithBank
-.public CreateHeapAtEnd
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_CreateAtEnd
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public String_New

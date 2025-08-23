@@ -13,8 +13,8 @@ void Save_Chatot_Init(SOUND_CHATOT *chatot) {
     chatot->exists = FALSE;
 }
 
-SOUND_CHATOT *Chatot_New(HeapID heapID) {
-    SOUND_CHATOT *chatot = AllocFromHeap(heapID, sizeof(SOUND_CHATOT));
+SOUND_CHATOT *Chatot_New(enum HeapID heapID) {
+    SOUND_CHATOT *chatot = Heap_Alloc(heapID, sizeof(SOUND_CHATOT));
     Save_Chatot_Init(chatot);
     return chatot;
 }

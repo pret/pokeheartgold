@@ -56,7 +56,7 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
         return FALSE;
     }
     case 6: {
-        String *str = String_New(64, HEAP_ID_32);
+        String *str = String_New(64, HEAP_ID_FIELD3);
         PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
         PlayerName_FlatToString(profile, str);
         sub_0202C7F8(group, 0, 1, str);

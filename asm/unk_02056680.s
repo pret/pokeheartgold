@@ -240,7 +240,7 @@ _02056842: ; jump table
 _0205684E:
 	mov r0, #0xb
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [r4, #0x18]
 	mov r1, #0
 	str r1, [r0]
@@ -372,7 +372,7 @@ _0205695E: ; jump table
 _0205696A:
 	mov r0, #0xb
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [r4, #0x18]
 	mov r1, #0
 	str r1, [r0]
@@ -781,7 +781,7 @@ sub_02056D00: ; 0x02056D00
 	add r4, r1, #0
 	mov r0, #0xb
 	mov r1, #0x10
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	add r3, r2, #0
 	mov r1, #0x10

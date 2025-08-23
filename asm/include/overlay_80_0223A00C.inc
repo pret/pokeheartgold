@@ -41,7 +41,7 @@
 .public sub_020136B4
 .public TextOBJ_SetSpritesDrawFlag
 .public sub_020138E0
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public Heap_FreeExplicit
 .public BgTilemapRectChangePalette

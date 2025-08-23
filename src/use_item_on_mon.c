@@ -11,7 +11,7 @@
 #include "pokemon.h"
 #include "pokemon_mood.h"
 
-BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
+BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, enum HeapID heapID) {
     int atkEv;
     int defEv;
     int speedEv;
@@ -216,12 +216,12 @@ BOOL CanUseItemOnPokemon(Pokemon *mon, u16 itemID, s32 moveIdx, HeapID heapID) {
     return FALSE;
 }
 
-BOOL CanUseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, s32 moveIdx, HeapID heapID) {
+BOOL CanUseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, s32 moveIdx, enum HeapID heapID) {
     Pokemon *mon = Party_GetMonByIndex(party, partyIdx);
     return CanUseItemOnPokemon(mon, itemID, moveIdx, heapID);
 }
 
-BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapID heapID) {
+BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, enum HeapID heapID) {
     s32 stack_data[8];
 #define sp70 stack_data[7]
 #define sp6C stack_data[6]
@@ -472,7 +472,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, HeapI
 #undef sp58
 #undef sp54
 
-BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u8 moveIdx, u16 location, HeapID heapID) {
+BOOL UseItemOnMonInParty(Party *party, u16 itemID, s32 partyIdx, u8 moveIdx, u16 location, enum HeapID heapID) {
     Pokemon *mon = Party_GetMonByIndex(party, partyIdx);
     return UseItemOnPokemon(mon, itemID, moveIdx, location, heapID);
 }
@@ -613,7 +613,7 @@ BOOL CanItemModFriendship(Pokemon *mon, ItemData *itemData) {
     return FALSE;
 }
 
-BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, HeapID heapID) {
+BOOL DoItemFriendshipMod(Pokemon *mon, s32 friendship, s32 mod, u16 location, enum HeapID heapID) {
     if (friendship == 255 && mod > 0) {
         return FALSE;
     }

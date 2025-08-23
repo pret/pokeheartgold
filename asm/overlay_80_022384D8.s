@@ -10,7 +10,7 @@ ov80_022384D8: ; 0x022384D8
 	add r5, r0, #0
 	mov r0, #0x65
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #8
 	add r4, r0, #0
@@ -29,7 +29,7 @@ ov80_022384FC: ; 0x022384FC
 	add r5, r0, #0
 	mov r0, #0x65
 	mov r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc

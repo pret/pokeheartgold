@@ -22,7 +22,7 @@ ov01_02204004: ; 0x02204004
 	add r7, r0, #0
 	add r5, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0
 	str r0, [r4, #0x10]
@@ -32,7 +32,7 @@ ov01_02204004: ; 0x02204004
 	str r0, [r4, #4]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0
 	str r0, [r4]
 	cmp r6, #0
@@ -50,7 +50,7 @@ _0220403E:
 	mul r6, r0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #8]
 	ldr r1, [r4, #8]
 	mov r0, #0
@@ -58,7 +58,7 @@ _0220403E:
 	bl MIi_CpuClearFast
 	add r0, r7, #0
 	lsl r1, r5, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r6, #0
 	str r0, [r4, #0xc]
 	cmp r5, #0
@@ -282,7 +282,7 @@ _0220419A:
 ov01_022041C4: ; 0x022041C4
 	push {r3, lr}
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	str r1, [r0, #0xc]
 	str r1, [r0]
@@ -299,7 +299,7 @@ ov01_022041D8: ; 0x022041D8
 	add r0, r5, #0
 	mov r1, #0x24
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	strh r1, [r4, #0x22]
@@ -307,11 +307,11 @@ ov01_022041D8: ; 0x022041D8
 	str r1, [r4, #0x1c]
 	add r1, r5, #0
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	lsl r6, r7, #5
 	add r0, r5, #0
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x10]
 	ldr r1, [r4, #0x10]
 	mov r0, #0
@@ -319,7 +319,7 @@ ov01_022041D8: ; 0x022041D8
 	bl MIi_CpuClearFast
 	add r0, r5, #0
 	lsl r1, r7, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r3, #0
 	str r0, [r4, #0x14]
 	cmp r7, #0
@@ -947,7 +947,7 @@ ov01_0220460C: ; 0x0220460C
 	add r5, r0, #0
 	mov r0, #4
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #4
@@ -1130,7 +1130,7 @@ _02204740: .word ov01_022046E8
 ov01_02204744: ; 0x02204744
 	push {r4, lr}
 	mov r1, #0x78
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0

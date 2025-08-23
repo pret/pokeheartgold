@@ -88,18 +88,18 @@ static void TitleScreen_VBlankCB(void *pVoid);
 static void TitleScreen_SetGfxBanks(void);
 static void TitleScreen_Create3DVramMan(TitleScreenOverlayData *data);
 static void TitleScreen_Delete3DVramMan(TitleScreenOverlayData *data);
-static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, HeapID heapID);
+static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFileId, int anim1Id, int anim2Id, int anim3Id, int anim4Id, enum HeapID heapID);
 static void TitleScreen_Unload3DObjects(TitleScreenAnimObject *animObj);
 static void TitleScreen_AdvanceAnimObjsFrame(NNSG3dAnmObj **ppAnmObj, fx32 a1);
 static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj);
 static void TitleScreen_InitBgs(TitleScreenOverlayData *data);
 static void TitleScreen_ReleaseBgs(TitleScreenOverlayData *data);
-static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID);
-static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
+static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, enum HeapID heapID);
+static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, enum HeapID heapID);
+static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, enum HeapID heapID);
+static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, TitleScreenAnimData *animData);
 static void TitleScreenAnim_RunTopScreenGlow(TitleScreenAnimData *animData);
-static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData);
+static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, enum HeapID heapID, TitleScreenAnimData *animData);
 static void TitleScreenAnim_SetCameraInitialPos(TitleScreenAnimData *animData);
 static fx32 fx32_abs(fx32 x);
 static void TitleScreenAnim_GetCameraNextPosition(TitleScreenAnimData *animData);
@@ -117,7 +117,7 @@ static BOOL TitleScreen_Init(OverlayManager *man, int *state) {
     GX_SetVisiblePlane(0);
     GXS_SetVisiblePlane(0);
     SetKeyRepeatTimers(4, 8);
-    CreateHeap(HEAP_ID_3, HEAP_ID_TITLE_SCREEN, 0x50000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_TITLE_SCREEN, 0x50000);
     TitleScreenOverlayData *data = OverlayManager_CreateAndGetData(man, sizeof(TitleScreenOverlayData), HEAP_ID_TITLE_SCREEN);
     memset(data, 0, sizeof(TitleScreenOverlayData));
     data->heapID = HEAP_ID_TITLE_SCREEN;
@@ -233,14 +233,14 @@ static BOOL TitleScreen_Main(OverlayManager *man, int *state) {
 
 static BOOL TitleScreen_Exit(OverlayManager *man, int *state) {
     TitleScreenOverlayData *data = OverlayManager_GetData(man);
-    HeapID heapID = data->heapID;
+    enum HeapID heapID = data->heapID;
     int exitMode = data->exitMode;
 
     Main_SetVBlankIntrCB(NULL, NULL);
     TitleScreen_Delete3DVramMan(data);
     TitleScreen_ReleaseBgs(data);
     OverlayManager_FreeData(man);
-    DestroyHeap(heapID);
+    Heap_Destroy(heapID);
 
     switch (exitMode) {
     default:
@@ -304,12 +304,12 @@ static void TitleScreen_Delete3DVramMan(TitleScreenOverlayData *data) {
     GF_3DVramMan_Delete(data->_3dVramMan);
 }
 
-static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFileId, int nsbcaId, int nsbta, int nsbtp, int nsbma, HeapID heapID) {
+static void TitleScreen_Load3DObjects(TitleScreenAnimObject *animObj, int texFileId, int nsbcaId, int nsbta, int nsbtp, int nsbma, enum HeapID heapID) {
     for (int i = 0; i < 4; ++i) {
         animObj->_3dResObjsArc[i] = animObj->_3dAnmObjs[i] = NULL;
     }
 
-    GF_ExpHeap_FndInitAllocator(&animObj->allocator, heapID, 4);
+    HeapExp_FndInitAllocator(&animObj->allocator, heapID, 4);
     void *pAnim;
     animObj->resFileHeader = AllocAndReadWholeNarcMemberByIdPair(NARC_demo_title_titledemo, texFileId, heapID);
     GF3dRender_InitObjFromHeader(&animObj->renderObj, &animObj->resModel, &animObj->resFileHeader);
@@ -486,7 +486,7 @@ static void TitleScreen_ReleaseBgs(TitleScreenOverlayData *data) {
 
 static const WindowTemplate sTouchToStartWindow = { GF_BG_LYR_MAIN_3, 0, 18, 32, 2, 2, 0x001 };
 
-static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, BgConfig *bgConfig, enum HeapID heapID) {
     TitleScreenAnim_SetCameraInitialPos(animData);
     TitleScreenAnim_Load2dBgGfx(bgConfig, heapID, animData);
     if (animData->gameVersion == VERSION_HEARTGOLD) {
@@ -527,7 +527,7 @@ static BOOL TitleScreenAnim_InitObjectsAndCamera(TitleScreenAnimData *animData, 
     return TRUE;
 }
 
-static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfig, enum HeapID heapID) {
     BOOL ret = FALSE;
 
     switch (animData->state) {
@@ -575,7 +575,7 @@ static BOOL TitleScreenAnim_Run(TitleScreenAnimData *animData, BgConfig *bgConfi
     return ret;
 }
 
-static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, HeapID heapID) {
+static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimData *animData, BgConfig *bgConfig, enum HeapID heapID) {
     PaletteData_FreeBuffers(animData->plttData, PLTTBUF_SUB_BG);
     PaletteData_Free(animData->plttData);
     animData->plttData = NULL;
@@ -590,7 +590,7 @@ static BOOL TitleScreenAnim_UnloadAndRemoveTopScreenResources(TitleScreenAnimDat
     return TRUE;
 }
 
-static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
+static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, TitleScreenAnimData *animData) {
     s32 res1, res2;
 
     if (animData->gameVersion == VERSION_HEARTGOLD) {
@@ -683,7 +683,7 @@ static void TitleScreenAnim_RunTopScreenGlow(TitleScreenAnimData *animData) {
     PaletteData_FadePalettesTowardsColorStep(animData->plttData, 0x0002, 0xFF00, 160, animData->glowFadeStep, RGB(12, 12, 12));
 }
 
-static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, HeapID heapID, TitleScreenAnimData *animData) {
+static void TitleScreen_RemoveTouchToStartWindow(BgConfig *bgConfig, enum HeapID heapID, TitleScreenAnimData *animData) {
     RemoveWindow(&animData->window);
 }
 

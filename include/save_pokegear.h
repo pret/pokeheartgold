@@ -79,7 +79,7 @@ void Pokegear_GetRadioCursorCoords(SavePokegear *pokegear, s16 *px, s16 *py);
 u8 SavePokegear_FindEmptyPhonebookSlot(SavePokegear *pokegear);
 u8 SavePokegear_IsNumberRegistered(SavePokegear *pokegear, u8 contact);
 void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact);
-PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, HeapID heapId);
+PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, enum HeapID heapID);
 void SavePokegear_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *contacts, u8 num);
 
 void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx);
@@ -101,6 +101,6 @@ BOOL PhoneCallPersistentState_BlackBeltKenji_GetActiveFlag(PhoneCallPersistentSt
 int PhoneCallPersistentState_BlackBeltKenji_GetWaitDays(PhoneCallPersistentState *callPersistentState);
 void sub_0202F294(PhoneCallPersistentState *callPersistentState, int a1);
 void PhoneCallPersistentState_SafariZoneArrangement_Set(PhoneCallPersistentState *callPersistentState, u8 *areas, u8 numAreas);
-u8 *PhoneCallPersistentState_SafariZoneArrangement_AllocAndGet(PhoneCallPersistentState *callPersistentState, u8 *numAreasRet, HeapID heapId);
+u8 *PhoneCallPersistentState_SafariZoneArrangement_AllocAndGet(PhoneCallPersistentState *callPersistentState, u8 *numAreasRet, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_SAVE_GS_PLAYER_MISC_H

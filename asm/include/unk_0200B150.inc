@@ -6,7 +6,7 @@
 .public sub_0200B27C
 .public thunk_ClearMainOAM
 .public thunk_ClearSubOAM
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public ClearMainOAM
 .public ClearSubOAM

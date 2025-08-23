@@ -43,7 +43,7 @@ ov01_021F3638: ; 0x021F3638
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	ldr r1, _021F365C ; =0x00000704
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r2, _021F365C ; =0x00000704
 	mov r0, #0
@@ -198,7 +198,7 @@ ov01_021F3744: ; 0x021F3744
 	cmp r4, #0
 	beq _021F3774
 	mov r0, #4
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #4]
 	ldr r2, [sp, #4]
 	add r0, r5, #0

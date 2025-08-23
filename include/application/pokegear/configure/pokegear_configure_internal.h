@@ -6,7 +6,7 @@
 #include "touchscreen_list_menu.h"
 
 typedef struct PokegearConfigureAppData {
-    HeapID heapId;                      // 0x00
+    enum HeapID heapId;                 // 0x00
     int state;                          // 0x04
     int substate;                       // 0x08
     PokegearAppData *pokegear;          // 0x0C

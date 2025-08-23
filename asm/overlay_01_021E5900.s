@@ -139,7 +139,7 @@ _021E59F0:
 	mul r7, r1
 	mov r0, #3
 	mov r1, #4
-	bl CreateHeap
+	bl Heap_Create
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _021E5A12
@@ -150,7 +150,7 @@ _021E5A12:
 	bl FS_UnloadOverlay
 	mov r0, #4
 	mov r1, #0x28
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x28
 	str r0, [r4, #4]
@@ -594,7 +594,7 @@ _021E5E12:
 	mov r0, #0
 	str r0, [r4, #4]
 	mov r0, #4
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, [r4, #0x74]
 	ldr r0, [r0]
 	lsl r0, r0, #8
@@ -1571,7 +1571,7 @@ ov01_021E6644: ; 0x021E6644
 	add r6, r1, #0
 	add r5, r0, #0
 	mov r1, #0x64
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0x5c
 	add r1, r6, #0
@@ -1632,35 +1632,35 @@ _021E66A4: .word Heap_Free
 
 	thumb_func_start ov01_021E66A8
 ov01_021E66A8: ; 0x021E66A8
-	ldr r3, _021E66B4 ; =AllocFromHeapAtEnd
+	ldr r3, _021E66B4 ; =Heap_AllocAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_021E66B4: .word AllocFromHeapAtEnd
+_021E66B4: .word Heap_AllocAtEnd
 	thumb_func_end ov01_021E66A8
 
 	thumb_func_start ov01_021E66B8
 ov01_021E66B8: ; 0x021E66B8
-	ldr r3, _021E66C4 ; =AllocFromHeapAtEnd
+	ldr r3, _021E66C4 ; =Heap_AllocAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_021E66C4: .word AllocFromHeapAtEnd
+_021E66C4: .word Heap_AllocAtEnd
 	thumb_func_end ov01_021E66B8
 
 	thumb_func_start ov01_021E66C8
 ov01_021E66C8: ; 0x021E66C8
-	ldr r3, _021E66D4 ; =AllocFromHeapAtEnd
+	ldr r3, _021E66D4 ; =Heap_AllocAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_021E66D4: .word AllocFromHeapAtEnd
+_021E66D4: .word Heap_AllocAtEnd
 	thumb_func_end ov01_021E66C8
 
 	thumb_func_start ov01_021E66D8

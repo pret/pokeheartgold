@@ -15,7 +15,7 @@ ov47_02258800: ; 0x02258800
 	mov r0, #3
 	mov r1, #0x81
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0xa3
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -247,7 +247,7 @@ ov47_022589A8: ; 0x022589A8
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x81
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0
 	bl sub_0200616C
 	mov r0, #1
