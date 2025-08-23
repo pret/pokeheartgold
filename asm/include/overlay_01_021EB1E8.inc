@@ -33,7 +33,7 @@
 .public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public Heap_FreeExplicit
 .public BgCommitTilemapBufferToVram

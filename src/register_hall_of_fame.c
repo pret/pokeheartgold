@@ -843,7 +843,7 @@ BOOL RegisterHallOfFame_Init(OverlayManager *man, int *state) {
     G2_BlendNone();
     G2S_BlendNone();
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
-    Heap_Create(HEAP_ID_3, HEAP_ID_REGISTER_HALL_OF_FAME, 0x50000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_REGISTER_HALL_OF_FAME, 0x50000);
     RegisterHallOfFameData *data = (RegisterHallOfFameData *)OverlayManager_CreateAndGetData(man, sizeof(RegisterHallOfFameData), HEAP_ID_REGISTER_HALL_OF_FAME);
     MI_CpuFill8(data, 0, sizeof(RegisterHallOfFameData));
     data->args = OverlayManager_GetArgs(man);
@@ -875,7 +875,7 @@ BOOL RegisterHallOfFame_Exit(OverlayManager *man, int *state) {
     MessageFormat_Delete(data->msgFormat);
     DestroyMsgData(data->msgData);
     OverlayManager_FreeData(man);
-    Heap_Destroy(HEAP_ID_REGISTER_HALL_OF_FAME);
+    DestroyHeap(HEAP_ID_REGISTER_HALL_OF_FAME);
     return TRUE;
 }
 
@@ -1351,7 +1351,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
     fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
     resTex = NNS_G3dGetTex(fileData);
     texData = NNS_G3dGetTexData(resTex);
-    void *buffer = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, size);
+    void *buffer = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, size);
     for (u8 i = 0; i < 8; ++i) {
         sub_020145B4((const u8 *)texData + size * i, spriteSquareDim, 0, 0, spriteSquareDim, spriteSquareDim, buffer);
         RegisterHallOfFame_ReplaceSpriteChar(buffer, imageLoc + size * i, size);
@@ -2088,7 +2088,7 @@ static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form,
 }
 
 static void RegisterHallOfFame_CreateTask_IndivMonAnimAndCry(RegisterHallOfFameData *data, int monIdx, int picIdx, BOOL startCry, int facing) {
-    RegisterHofTaskData_IndivMonAnimAndCry *taskData = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofTaskData_IndivMonAnimAndCry));
+    RegisterHofTaskData_IndivMonAnimAndCry *taskData = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofTaskData_IndivMonAnimAndCry));
     taskData->hofMon = &data->mons[monIdx];
     taskData->startCry = startCry;
     taskData->narc = data->narcA180;
@@ -2394,7 +2394,7 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
     } else {
         sub_02070D84(TRAINERCLASS_PKMN_TRAINER_ETHAN, 2, &sp2C);
     }
-    r4 = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, 0x1900);
+    r4 = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, 0x1900);
     sub_020143E0(sp2C.narcId, sp2C.ncbr_id, HEAP_ID_REGISTER_HALL_OF_FAME, &sp1C, r4);
     RegisterHallOfFame_ReplaceSpriteChar(r4, NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 3200);
     Heap_Free(r4);
@@ -2477,7 +2477,7 @@ static void RegisterHallOfFame_G3Commit(RegisterHallOfFameData *data) {
 }
 
 static SysTask *RegisterHallOfFame_CreateSpotlightController(RegisterHallOfFameData *data) {
-    RegisterHofSpotlightTaskData *spotlight = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightTaskData));
+    RegisterHofSpotlightTaskData *spotlight = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightTaskData));
     sSpotlightsActive = TRUE;
     sNumSpotlightTasks = 2;
     spotlight->numSpotlights = 0;
@@ -2521,7 +2521,7 @@ static void RegisterHallOfFame_AddSpotlight(SysTask *task, int xOffset, fx32 ang
 }
 
 static SysTask *RegisterHallOfFame_CreateSpotlightTaskEx(RegisterHofSpotlightTaskData *spotlight, int xOffset, fx32 angle, int index) {
-    RegisterHofSpotlightChildTaskData *child = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightChildTaskData));
+    RegisterHofSpotlightChildTaskData *child = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofSpotlightChildTaskData));
     child->parent = spotlight;
     child->xOffset = xOffset;
     child->color = sSpotlightColors[index];
@@ -2597,7 +2597,7 @@ static BOOL RegisterHallOfFame_AreAllSpotlightsFinished(RegisterHallOfFameData *
 }
 
 static SysTask *RegisterHallOfFame_CreateConfettiTask(RegisterHallOfFameData *data) {
-    RegisterHofConfettiEmitterTaskData *confetti = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofConfettiEmitterTaskData));
+    RegisterHofConfettiEmitterTaskData *confetti = AllocFromHeap(HEAP_ID_REGISTER_HALL_OF_FAME, sizeof(RegisterHofConfettiEmitterTaskData));
     int i;
     int j;
     u32 rand;

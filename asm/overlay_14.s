@@ -13,7 +13,7 @@ PCBox_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #9
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	add r0, r5, #0
 	mov r1, #0x38
 	mov r2, #9
@@ -83,7 +83,7 @@ PCBox_Exit: ; 0x021E5988
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #9
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -3253,7 +3253,7 @@ ov14_021E71E8: ; 0x021E71E8
 	add r4, r0, #0
 	mov r0, #0xa
 	mov r1, #0xc
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	ldr r2, [r4, #0x34]
 	ldr r1, _021E725C ; =0x000088DC
 	str r0, [r2, r1]
@@ -3450,7 +3450,7 @@ ov14_021E7358: ; 0x021E7358
 	beq _021E7460
 	mov r0, #0xa
 	mov r1, #0x1c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r6, r0, #0
 	str r7, [r6]
 	add r0, r7, #0
@@ -6509,7 +6509,7 @@ ov14_021E89B8: ; 0x021E89B8
 	add r5, r0, #0
 	mov r0, #9
 	mov r1, #0x3c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r5, #0x18]
 	add r4, r0, #0
 	add r0, r5, #0
@@ -11415,10 +11415,10 @@ ov14_021EAFAC: ; 0x021EAFAC
 	mov r0, #3
 	mov r1, #0xa
 	lsl r2, r2, #0x12
-	bl Heap_Create
+	bl CreateHeap
 	ldr r1, _021EB0D8 ; =0x000088E0
 	mov r0, #0xa
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r2, _021EB0D8 ; =0x000088E0
 	mov r1, #0
 	str r0, [r4, #0x34]
@@ -11552,7 +11552,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	ldr r0, [r4, #0x34]
 	bl Heap_Free
 	mov r0, #0xa
-	bl Heap_Destroy
+	bl DestroyHeap
 	ldr r0, [r4, #0x30]
 	pop {r4, pc}
 	nop
@@ -22144,7 +22144,7 @@ ov14_021F08BC: ; 0x021F08BC
 	add r7, r0, #0
 	mov r0, #0xa
 	mov r1, #0xf0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [sp]
 	mov r4, #0
 	add r5, r0, #0
@@ -24870,7 +24870,7 @@ ov14_021F1F24: ; 0x021F1F24
 	add r4, r0, #0
 	mov r0, #0xa
 	mov r1, #0x1c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0xc]
 	pop {r4, pc}
@@ -27927,7 +27927,7 @@ ov14_021F3614: ; 0x021F3614
 	mov r1, #0x32
 	mov r0, #0xa
 	lsl r1, r1, #6
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r5, r0, #0
 	ldr r1, [r4]
 	add r0, sp, #0x24
@@ -29945,7 +29945,7 @@ ov14_021F462C: ; 0x021F462C
 	lsr r0, r0, #2
 	lsl r5, r0, #2
 	mov r0, #0xa
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	mov r0, #0x13
 	mov r1, #0x4a
@@ -32070,7 +32070,7 @@ ov14_021F5718: ; 0x021F5718
 	mov r0, #0xa
 	mov r1, #0x10
 	add r7, r2, #0
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	mov r3, #0
 	lsl r0, r5, #0x18
@@ -36755,7 +36755,7 @@ ov14_021F7AC4: ; 0x021F7AC4
 	bl sub_02020A0C
 	mov r0, #0xa
 	mov r1, #8
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	mov r0, #3

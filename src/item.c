@@ -671,14 +671,14 @@ static const u16 sItemNarcIds[ITEMS_COUNT][4] = {
     [ITEM_ENIGMA_STONE] = { NARC_item_data_0513_bin, NARC_item_icon_item_icon_757_NCGR, NARC_item_icon_item_icon_758_NCLR, AGB_ITEM_NONE                   },
 };
 
-void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, enum HeapID heapID) {
+void MoveItemSlotInList(ItemSlot *slots, int from, int to, int pocket, HeapID heapId) {
     ItemSlot *buf;
     int i, j;
     if (from == to) {
         return;
     }
 
-    buf = Heap_Alloc(heapID, sPocketCounts[pocket] * sizeof(ItemSlot));
+    buf = AllocFromHeap(heapId, sPocketCounts[pocket] * sizeof(ItemSlot));
 
     j = 0;
     for (i = 0; i < sPocketCounts[pocket]; i++) {
@@ -756,40 +756,40 @@ int GetItemIconAnim(void) {
     return NARC_item_icon_item_icon_000_NANR;
 }
 
-void *LoadItemDataOrGfx(u16 itemId, int attrno, enum HeapID heapID) {
+void *LoadItemDataOrGfx(u16 itemId, int attrno, HeapID heapId) {
     if (itemId > ITEM_MAX) {
         itemId = ITEM_NONE;
     }
     switch (attrno) {
     case ITEMNARC_PARAM:
-        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, sItemNarcIds[itemId][ITEMNARC_PARAM], heapID);
+        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, sItemNarcIds[itemId][ITEMNARC_PARAM], heapId);
     case ITEMNARC_NCGR:
-        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, sItemNarcIds[itemId][ITEMNARC_NCGR], heapID);
+        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, sItemNarcIds[itemId][ITEMNARC_NCGR], heapId);
     case ITEMNARC_NCLR:
-        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, sItemNarcIds[itemId][ITEMNARC_NCLR], heapID);
+        return AllocAndReadWholeNarcMemberByIdPair(NARC_itemtool_itemdata_item_icon, sItemNarcIds[itemId][ITEMNARC_NCLR], heapId);
     }
 
     return NULL;
 }
 
-void GetItemNameIntoString(String *dest, u16 itemId, enum HeapID heapID) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, heapID);
+void GetItemNameIntoString(String *dest, u16 itemId, HeapID heapId) {
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0222_bin, heapId);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
-void GetItemDescIntoString(String *dest, u16 itemId, enum HeapID heapID) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0221_bin, heapID);
+void GetItemDescIntoString(String *dest, u16 itemId, HeapID heapId) {
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0221_bin, heapId);
     ReadMsgDataIntoString(msgData, itemId, dest);
     DestroyMsgData(msgData);
 }
 
 static s32 GetItemAttrSub(ItemPartyParam *param, u16 attrno);
 
-s32 GetItemAttr(u16 itemId, u16 attrno, enum HeapID heapID) {
-    ItemData *itemData = (ItemData *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heapID);
+s32 GetItemAttr(u16 itemId, u16 attrno, HeapID heapId) {
+    ItemData *itemData = (ItemData *)LoadItemDataOrGfx(itemId, ITEMNARC_PARAM, heapId);
     s32 ret = GetItemAttr_PreloadedItemData(itemData, attrno);
-    Heap_FreeExplicit(heapID, itemData);
+    Heap_FreeExplicit(heapId, itemData);
     return ret;
 }
 
@@ -1020,21 +1020,21 @@ u16 BerryToItemId(u8 berryId) {
     return (u16)(berryId + FIRST_BERRY_IDX);
 }
 
-String *GetNutName(u16 berryId, enum HeapID heapID) {
+String *GetNutName(u16 berryId, HeapID heapId) {
     String *ret;
     MsgData *msgData;
 
     if (berryId != 0) {
         berryId--;
     }
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0251_bin, heapID);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0251_bin, heapId);
     ret = NewString_ReadMsgData(msgData, berryId);
     DestroyMsgData(msgData);
     return ret;
 }
 
-ItemData *LoadAllItemData(enum HeapID heapID) {
-    return AllocAndReadFromNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, 0, heapID, 0, GetItemIndexMapping(ITEM_MAX, ITEMNARC_PARAM) * sizeof(ItemData));
+ItemData *LoadAllItemData(HeapID heapId) {
+    return AllocAndReadFromNarcMemberByIdPair(NARC_itemtool_itemdata_item_data, 0, heapId, 0, GetItemIndexMapping(ITEM_MAX, ITEMNARC_PARAM) * sizeof(ItemData));
 }
 
 ItemData *GetItemDataPtrFromArray(ItemData *itemData, u32 itemDataIdx) {

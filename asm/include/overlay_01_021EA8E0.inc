@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_FreeExplicit
 .public NNS_G3dGlbLightVector
 .public NNS_G3dGlbLightColor

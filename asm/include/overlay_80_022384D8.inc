@@ -2,7 +2,7 @@
 #pragma once
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public LoadRectToBgTilemapRect
 .public ScheduleBgTilemapBufferTransfer

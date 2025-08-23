@@ -12,7 +12,7 @@ ov80_02239D74: ; 0x02239D74
 	add r6, r1, #0
 	mov r0, #0x65
 	mov r1, #0xc
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0xc
 	add r4, r0, #0
@@ -57,7 +57,7 @@ ov80_02239DD0: ; 0x02239DD0
 	ldr r1, _02239EAC ; =0x0002200C
 	add r4, r0, #0
 	mov r0, #0x65
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r2, _02239EAC ; =0x0002200C
 	str r0, [sp, #8]
 	mov r1, #0
@@ -228,7 +228,7 @@ ov80_02239F48: ; 0x02239F48
 	add r5, r0, #0
 	mov r0, #0x65
 	mov r1, #0x6c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x6c

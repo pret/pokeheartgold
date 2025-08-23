@@ -21,7 +21,7 @@ _021E5912:
 	mov r0, #3
 	mov r1, #0x98
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	mov r1, #0x16
 	add r0, r6, #0
 	lsl r1, r1, #4
@@ -125,7 +125,7 @@ _021E59DE:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x98
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end UnownReport_Exit

@@ -59,7 +59,7 @@ void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverl
     template->rotation = 0;
     template->drawPriority = 0;
     template->whichScreen = whichScreen;
-    template->heapID = HEAP_ID_INTRO_MOVIE;
+    template->heapId = HEAP_ID_INTRO_MOVIE;
 }
 
 void IntroMovie_RendererSetSurfaceCoords(IntroMovieOverlayData *data, int mainx, int mainy, int subx, int suby) {

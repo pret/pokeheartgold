@@ -60,7 +60,7 @@ typedef struct BerryPotsAppData_UnkSub20 {
 } BerryPotsAppData_UnkSub20;
 
 typedef struct BerryPotsAppData {
-    enum HeapID heapID;
+    HeapID heapId;
     BerryPotsAppArgs *args;
     void *unk8;
     Bag *bag;

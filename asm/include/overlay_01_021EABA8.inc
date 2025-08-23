@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public Camera_History_New
 .public Camera_History_Delete

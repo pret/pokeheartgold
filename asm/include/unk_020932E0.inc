@@ -34,8 +34,8 @@
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInput
 .public YesNoPrompt_Reset
-.public Heap_Alloc
-.public Heap_AllocAtEnd
+.public AllocFromHeap
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

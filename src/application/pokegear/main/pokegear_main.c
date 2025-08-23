@@ -56,11 +56,11 @@ static BOOL PokegearApp_RunSubapp(OverlayManager **ppOvyMan) {
 BOOL Pokegear_Init(OverlayManager *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
     sub_0200616C(0);
-    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR, 0x32000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR, 0x32000);
     PokegearAppData *pokegearApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearAppData), HEAP_ID_POKEGEAR);
     memset(pokegearApp, 0, sizeof(PokegearAppData));
     pokegearApp->args = args;
-    pokegearApp->heapID = HEAP_ID_POKEGEAR;
+    pokegearApp->heapId = HEAP_ID_POKEGEAR;
     pokegearApp->saveData = pokegearApp->args->saveData;
     pokegearApp->savePokegear = SaveData_Pokegear_Get(pokegearApp->args->saveData);
     pokegearApp->saveVarsFlags = Save_VarsFlags_Get(pokegearApp->args->saveData);
@@ -143,11 +143,11 @@ BOOL Pokegear_Exit(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetData(man);
     SavePokegear_SetLastUsedApp(pokegearApp->savePokegear, pokegearApp->app);
     MenuInputStateMgr_SetState(pokegearApp->args->menuInputStatePtr, pokegearApp->menuInputState);
-    enum HeapID heapID = pokegearApp->heapID;
+    HeapID heapId = pokegearApp->heapId;
     OverlayManager_FreeData(man);
     sub_02004B10();
     sub_0203E354();
-    Heap_Destroy(heapID);
+    DestroyHeap(heapId);
     return TRUE;
 }
 
@@ -210,7 +210,7 @@ static PokegearAppMainState Pokegear_MainStep_Teardown(PokegearAppData *pokegear
 
 static PokegearAppMainState Pokegear_MainStep_LaunchMap(PokegearAppData *pokegearApp) {
     static const OverlayManagerTemplate sOverlayTemplate_GearMap = { PokegearMap_Init, PokegearMap_Main, PokegearMap_Exit, FS_OVERLAY_ID(pokegear_app) };
-    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearMap, pokegearApp, pokegearApp->heapID);
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearMap, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_MAP;
 }
 
@@ -252,10 +252,10 @@ static PokegearAppMainState Pokegear_MainStep_LaunchDebug(PokegearAppData *pokeg
         return POKEGEAR_APP_MAIN_STATE_LAUNCH_DEBUG;
     }
 
-    pokegearApp->easyChatArgs = EasyChat_CreateArgs(0, 0, pokegearApp->args->saveData, pokegearApp->args->menuInputStatePtr, pokegearApp->heapID);
+    pokegearApp->easyChatArgs = EasyChat_CreateArgs(0, 0, pokegearApp->args->saveData, pokegearApp->args->menuInputStatePtr, pokegearApp->heapId);
     pokegearApp->mapSessionState.word = EC_WORD_NULL;
     sub_02090D14(pokegearApp->easyChatArgs, pokegearApp->mapSessionState.word);
-    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_EasyChat, pokegearApp->easyChatArgs, pokegearApp->heapID);
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_EasyChat, pokegearApp->easyChatArgs, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_DEBUG;
 }
 
@@ -276,7 +276,7 @@ static PokegearAppMainState Pokegear_MainStep_RunDebug(PokegearAppData *pokegear
 
 static PokegearAppMainState Pokegear_MainStep_LaunchConfigure(PokegearAppData *pokegearApp) {
     static const OverlayManagerTemplate sOverlayTemplate_GearConfigure = { PokegearConfigure_Init, PokegearConfigure_Main, PokegearConfigure_Exit, FS_OVERLAY_ID(pokegear_app) };
-    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearConfigure, pokegearApp, pokegearApp->heapID);
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearConfigure, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_CONFIGURE;
 }
 
@@ -307,7 +307,7 @@ static PokegearAppMainState Pokegear_MainStep_RunConfigure(PokegearAppData *poke
 
 static PokegearAppMainState Pokegear_MainStep_LaunchPhone(PokegearAppData *pokegearApp) {
     static const OverlayManagerTemplate sOverlayTemplate_GearPhone = { PokegearPhone_Init, PokegearPhone_Main, PokegearPhone_Exit, FS_OVERLAY_ID(pokegear_app) };
-    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearPhone, pokegearApp, pokegearApp->heapID);
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearPhone, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_PHONE;
 }
 
@@ -338,7 +338,7 @@ static PokegearAppMainState Pokegear_MainStep_RunPhone(PokegearAppData *pokegear
 
 static PokegearAppMainState Pokegear_MainStep_LaunchRadio(PokegearAppData *pokegearApp) {
     static const OverlayManagerTemplate sOverlayTemplate_GearRadio = { PokegearRadio_Init, PokegearRadio_Main, PokegearRadio_Exit, FS_OVERLAY_ID(pokegear_app) };
-    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearRadio, pokegearApp, pokegearApp->heapID);
+    pokegearApp->childApplication = OverlayManager_New(&sOverlayTemplate_GearRadio, pokegearApp, pokegearApp->heapId);
     return POKEGEAR_APP_MAIN_STATE_RUN_RADIO;
 }
 

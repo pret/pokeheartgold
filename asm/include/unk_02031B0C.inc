@@ -7,7 +7,7 @@
 .public DestroyMsgData
 .public ReadMsgDataIntoString
 .public NewString_ReadMsgData
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public GF_AssertFail
 .public String_New
 .public CopyU16ArrayToString

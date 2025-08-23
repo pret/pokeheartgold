@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public IsPaletteFadeFinished
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public Camera_SetFixedTarget
 .public Camera_OffsetLookAtPosAndTarget

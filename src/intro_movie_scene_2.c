@@ -428,8 +428,8 @@ static void ov60_021E8B7C(SysTask *task, void *pVoid) {
     Sprite_SetMatrix(spritePanCnt->sprite2, &sp4);
 }
 
-enum HeapID _deadstrip_02(int idx);
-enum HeapID _deadstrip_02(int idx) {
-    static const enum HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
+HeapID _deadstrip_02(int idx);
+HeapID _deadstrip_02(int idx) {
+    static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[0];
 }

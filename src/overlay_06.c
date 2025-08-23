@@ -18,13 +18,13 @@ void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferI
     PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
-SPLEmitter *ov06_0221BA40(enum HeapID heapID) {
+SPLEmitter *ov06_0221BA40(HeapID heapId) {
     void *particleHeap;
     SPLEmitter *pPVar1;
     Camera *pGVar2;
 
-    particleHeap = Heap_Alloc(heapID, 0x4800);
-    pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapID);
+    particleHeap = AllocFromHeap(heapId, 0x4800);
+    pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4800, TRUE, heapId);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
         Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);
@@ -32,16 +32,16 @@ SPLEmitter *ov06_0221BA40(enum HeapID heapID) {
     return pPVar1;
 }
 
-SPLEmitter *ov06_0221BA88(enum HeapID heapID) {
+SPLEmitter *ov06_0221BA88(HeapID heapId) {
     void *particleHeap;
     SPLEmitter *pPVar1;
     Camera *pGVar2;
 
-    particleHeap = Heap_Alloc(heapID, 0x4200);
+    particleHeap = AllocFromHeap(heapId, 0x4200);
     if (particleHeap == NULL) {
         return NULL;
     }
-    pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4200, TRUE, heapID);
+    pPVar1 = sub_02014DB4(ov06_0221BB14, ov06_0221BB30, particleHeap, 0x4200, TRUE, heapId);
     pGVar2 = sub_02015524(pPVar1);
     if (pGVar2 != NULL) {
         Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, pGVar2);

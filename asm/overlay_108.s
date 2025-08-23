@@ -14,7 +14,7 @@ SafariAreaCustomizer_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x5f
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	ldr r1, _021E5944 ; =0x000184EC
 	add r0, r4, #0
 	mov r2, #0x5f
@@ -53,7 +53,7 @@ SafariAreaCustomizer_Exit: ; 0x021E5948
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	nop
@@ -5485,7 +5485,7 @@ ov108_021E84A4: ; 0x021E84A4
 	add r5, r0, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r2, #0x59
 	add r4, r0, #0
 	mov r1, #0
@@ -5576,18 +5576,18 @@ ov108_021E8540: ; 0x021E8540
 	ldr r0, [r5]
 	mov r1, #0x10
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
 	bl MI_CpuFill8
 	ldr r0, [r5]
 	mov r1, #8
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r4, #8]
 	ldr r0, [r5]
 	mov r1, #0x24
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r1, [r4, #8]
 	mov r3, #0xe
 	str r0, [r1]

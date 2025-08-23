@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PlaySE
-.public HeapExp_FndInitAllocator
+.public GF_ExpHeap_FndInitAllocator
 .public sub_02068D74
 .public sub_02068D98
 .public sub_02068DB8

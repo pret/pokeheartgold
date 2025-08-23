@@ -21,7 +21,7 @@ sub_02013534: ; 0x02013534
 	str r0, [sp, #4]
 	add r0, r7, #0
 	mov r1, #0x68
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [sp, #8]
 	cmp r0, #0
 	bne _0201354E
@@ -54,7 +54,7 @@ _0201356E:
 	mul r4, r1
 	add r0, r7, #0
 	add r1, r4, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r1, [sp, #8]
 	cmp r0, #0
 	str r0, [r1, #0x60]
@@ -130,12 +130,12 @@ _020135F2:
 	mov r1, #0x24
 	ldr r0, [r5, #0x2c]
 	mul r1, r6
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r7, r0, #0
 	mov r1, #0xc
 	ldr r0, [r5, #0x2c]
 	mul r1, r6
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r4]
 	str r6, [r4, #4]
 	ldr r0, [r5, #0x28]
@@ -563,7 +563,7 @@ sub_02013910: ; 0x02013910
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x18
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r4, [r4, #0xc]
 	str r4, [r4, #0x10]
@@ -622,13 +622,13 @@ _0201396E:
 	ldr r2, [r6, #0x14]
 	ldr r0, [r5, #0x2c]
 	mul r1, r2
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r7, r0, #0
 	ldr r2, [r6, #0x14]
 	mov r1, #0xc
 	ldr r0, [r5, #0x2c]
 	mul r1, r2
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r4]
 	ldr r0, [r6, #0x14]
 	add r1, r6, #0
@@ -680,7 +680,7 @@ TextOBJ_CopyFromBGWindow: ; 0x020139D0
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	mov r1, #0
 	add r2, r6, #0
 	add r4, r0, #0
@@ -1097,7 +1097,7 @@ _02013CF6:
 	lsl r4, r4, #5
 	ldr r0, [sp, #0x34]
 	add r1, r4, #0
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r7, r0, #0
 	ldr r0, [r6, #4]
 	ldr r1, [sp, #0x10]
@@ -1439,7 +1439,7 @@ _02013F4C:
 sub_02013F78: ; 0x02013F78
 	push {r4, lr}
 	mov r1, #0x14
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	bne _02013F88
 	bl GF_AssertFail

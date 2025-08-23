@@ -25,7 +25,7 @@ PokegearConfigure_Init: ; 0x021EE8E8
 	mov r0, #3
 	mov r1, #0x5b
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0x5b
@@ -130,7 +130,7 @@ PokegearConfigure_Exit: ; 0x021EE9A4
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	add r0, r4, #0
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

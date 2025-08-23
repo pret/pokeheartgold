@@ -91,9 +91,9 @@
 .public sub_02016F2C
 .public sub_02017068
 .public Main_SetVBlankIntrCB
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
-.public HeapExp_FndGetTotalFreeSize
+.public GF_ExpHeap_FndGetTotalFreeSize
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

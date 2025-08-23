@@ -52,10 +52,10 @@ FrontierMap_Init: ; 0x02238648
 	mov r0, #3
 	mov r1, #0x65
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	mov r0, #0x65
 	mov r1, #0xc4
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0xc4
 	add r4, r0, #0
@@ -311,7 +311,7 @@ FrontierMap_Free: ; 0x0223885C
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	mov r0, #0x65
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0

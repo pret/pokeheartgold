@@ -21,7 +21,7 @@ _021E8862:
 	mov r0, #3
 	mov r1, #0x5f
 	lsl r2, r2, #0xe
-	bl Heap_Create
+	bl CreateHeap
 	add r0, r4, #0
 	bl OverlayManager_GetArgs
 	mov r1, #0x53
@@ -84,7 +84,7 @@ _021E88DA:
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -652,7 +652,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r1, r5, #0
 	add r1, #0xec
 	str r0, [r1]
@@ -671,7 +671,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r6, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r1, r5, #0
 	add r1, #0xe8
 	str r0, [r1]
@@ -686,7 +686,7 @@ ov108_021E8CD4: ; 0x021E8CD4
 	add r0, r5, #4
 	add r1, r4, #0
 	mov r2, #0x20
-	bl HeapExp_FndInitAllocator
+	bl GF_ExpHeap_FndInitAllocator
 	mov r0, #0x28
 	add r1, r4, #0
 	bl NARC_New
@@ -3659,7 +3659,7 @@ ov108_021EA584: ; 0x021EA584
 	ldr r0, [r5]
 	mov r1, #0x14
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x14
 	add r4, r0, #0
@@ -3799,7 +3799,7 @@ _021EA69C:
 	lsl r5, r6, #2
 	ldr r0, [sp, #0x28]
 	add r1, r6, r5
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	add r2, r6, r5
 	str r0, [sp, #0x10]

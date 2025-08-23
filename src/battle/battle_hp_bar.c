@@ -1224,8 +1224,8 @@ static void ov12_022652D0(BattleHpBar *hpBar) {
 
 static void ov12_02265354(BattleHpBar *hpBar) {
     int j, i, k;
-    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
-    u8 *r7 = Heap_Alloc(HEAP_ID_BATTLE, 0xC0);
+    u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
+    u8 *r7 = AllocFromHeap(HEAP_ID_BATTLE, 0xC0);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->bsys), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
@@ -1250,7 +1250,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
 }
 
 static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
-    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
+    u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), num, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
@@ -1262,7 +1262,7 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
 }
 
 static void ov12_02265500(BattleHpBar *hpBar) {
-    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
+    u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), hpBar->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
@@ -1678,7 +1678,7 @@ typedef struct BattleHpBarExpBarFullFlashEffectTaskData {
 
 SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
     *a1 = 0;
-    BattleHpBarExpBarFullFlashEffectTaskData *taskData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
+    BattleHpBarExpBarFullFlashEffectTaskData *taskData = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
     MI_CpuFill8(taskData, 0, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
     taskData->hpBar = hpBar;
     taskData->pDoneFlag = a1;

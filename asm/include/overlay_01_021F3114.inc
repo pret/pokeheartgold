@@ -2,7 +2,7 @@
 #pragma once
 .public PlaySE
 .public StopSE
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public Heap_FreeExplicit
 .public GF_AssertFail
 .public FieldSystem_CreateTask

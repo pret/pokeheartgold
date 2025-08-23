@@ -1108,7 +1108,7 @@ ov97_0221EE84: ; 0x0221EE84
 	mov r1, #0xbf
 	lsl r1, r1, #2
 	add r5, r0, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r2, #0xbf
 	mov r1, #0
 	lsl r2, r2, #2
@@ -2594,7 +2594,7 @@ _0221FA70:
 	mov r1, #0x32
 	ldr r0, [r5]
 	lsl r1, r1, #6
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0x96
 	lsl r1, r1, #2
 	str r0, [r5, r1]

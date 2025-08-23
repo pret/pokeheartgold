@@ -65,7 +65,7 @@ sub_0200B194: ; 0x0200B194
 _0200B1AC:
 	ldr r0, [sp, #0x30]
 	mov r1, #0x3c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r1, _0200B220 ; =_021D0EB0
 	cmp r0, #0
 	str r0, [r1]

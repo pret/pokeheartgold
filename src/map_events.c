@@ -11,9 +11,9 @@ static void MapEvents_ReadFromNarc(MapEvents *events, u32 mapno);
 static void MapEvents_ComputeRamHeader(MapEvents *events);
 static void MapScriptHeader_ReadFromNarc(MapEvents *events, u32 mapno);
 
-void Field_AllocateMapEvents(FieldSystem *work, enum HeapID heapID) {
+void Field_AllocateMapEvents(FieldSystem *work, HeapID heapId) {
     GF_ASSERT(work->mapEvents == NULL);
-    work->mapEvents = Heap_Alloc(heapID, sizeof(MapEvents));
+    work->mapEvents = AllocFromHeap(heapId, sizeof(MapEvents));
 }
 
 void Field_FreeMapEvents(FieldSystem *work) {

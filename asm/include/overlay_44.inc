@@ -111,8 +111,8 @@
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public SetKeyRepeatTimers
-.public Heap_Create
-.public Heap_Destroy
+.public CreateHeap
+.public DestroyHeap
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

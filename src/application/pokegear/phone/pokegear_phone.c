@@ -27,11 +27,11 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
 
 BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
-    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
     PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_POKEGEAR_APP);
     memset(phoneApp, 0, sizeof(PokegearPhoneAppData));
     phoneApp->pokegear = pokegearApp;
-    phoneApp->heapID = HEAP_ID_POKEGEAR_APP;
+    phoneApp->heapId = HEAP_ID_POKEGEAR_APP;
     Sound_SetSceneAndPlayBGM(55, 0, 0);
     PokegearPhone_LoadContactsAndInitFromArgs(phoneApp);
     return TRUE;
@@ -95,9 +95,9 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
 
     PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);
     phoneApp->pokegear->isSwitchApp = TRUE;
-    enum HeapID heapID = phoneApp->heapID;
+    HeapID heapId = phoneApp->heapId;
     OverlayManager_FreeData(man);
-    Heap_Destroy(heapID);
+    DestroyHeap(heapId);
     return TRUE;
 }
 
@@ -105,7 +105,7 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
     phoneApp->backgroundStyle = Pokegear_GetBackgroundStyle(phoneApp->pokegear->savePokegear);
-    phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapID);
+    phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapId);
     phoneApp->numContacts = SavePokegear_FindEmptyPhonebookSlot(phoneApp->pokegear->savePokegear);
     PokegearPhone_ContactList_CreateLinkedList(phoneApp);
     if (phoneApp->pokegear->args->isScriptedLaunch == 1) {
@@ -237,7 +237,7 @@ int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
 int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subtaskState) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapID);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapId);
         ++phoneApp->subtaskState;
         break;
     case 1:

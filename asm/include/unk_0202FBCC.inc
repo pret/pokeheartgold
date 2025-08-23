@@ -5,7 +5,7 @@
 .public sub_0201A738
 .public sub_0201A748
 .public sub_0201A774
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public _MonEncryptSegment
 .public _MonDecryptSegment

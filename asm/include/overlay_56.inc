@@ -63,10 +63,10 @@
 .public MenuInputStateMgr_SetState
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public Heap_Create
-.public Heap_Destroy
-.public Heap_Alloc
-.public Heap_AllocAtEnd
+.public CreateHeap
+.public DestroyHeap
+.public AllocFromHeap
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

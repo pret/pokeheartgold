@@ -27,11 +27,11 @@ int PokegearRadio_MainTask_FadeOutApp(PokegearRadioAppData *radioApp);
 
 BOOL PokegearRadio_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
-    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x20000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x20000);
     PokegearRadioAppData *radioApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearRadioAppData), HEAP_ID_POKEGEAR_APP);
     memset(radioApp, 0, sizeof(PokegearRadioAppData));
     radioApp->pokegear = pokegearApp;
-    radioApp->heapID = HEAP_ID_POKEGEAR_APP;
+    radioApp->heapId = HEAP_ID_POKEGEAR_APP;
     Radio_Load(radioApp);
     return TRUE;
 }
@@ -73,9 +73,9 @@ BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
 
     Radio_Unload(radioApp);
     radioApp->pokegear->isSwitchApp = TRUE;
-    enum HeapID heapID = radioApp->heapID;
+    HeapID heapId = radioApp->heapId;
     OverlayManager_FreeData(man);
-    Heap_Destroy(heapID);
+    DestroyHeap(heapId);
     return TRUE;
 }
 
@@ -225,7 +225,7 @@ int PokegearRadio_MainTask_Unload(PokegearRadioAppData *radioApp) {
 int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
     switch (radioApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, radioApp->heapID);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, radioApp->heapId);
         for (int i = 0; i < 8; ++i) {
             ToggleBgLayer(i, TRUE);
         }
@@ -254,7 +254,7 @@ int PokegearRadio_MainTask_FadeIn(PokegearRadioAppData *radioApp) {
 int PokegearRadio_MainTask_FadeOut(PokegearRadioAppData *radioApp) {
     switch (radioApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, radioApp->heapID);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, radioApp->heapId);
         ++radioApp->state;
         break;
     case 1:

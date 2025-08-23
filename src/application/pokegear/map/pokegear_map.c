@@ -42,11 +42,11 @@ static const u16 sMapXScrollLimits[] = {
 BOOL PokegearMap_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
-    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 196608);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 196608);
     PokegearMapAppData *mapApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearMapAppData), HEAP_ID_POKEGEAR_APP);
     memset(mapApp, 0, sizeof(PokegearMapAppData));
     mapApp->pokegear = pokegearApp;
-    mapApp->heapID = HEAP_ID_POKEGEAR_APP;
+    mapApp->heapId = HEAP_ID_POKEGEAR_APP;
     ov101_021E78EC(mapApp);
     mapApp->locationSpecs = sLocationSpecs;
     mapApp->numLocationSpecs = NELEMS(sLocationSpecs);
@@ -98,7 +98,7 @@ BOOL PokegearMap_Main(OverlayManager *man, int *state) {
 }
 
 BOOL PokegearMap_Exit(OverlayManager *man, int *state) {
-    enum HeapID heapID;
+    HeapID heapID;
     PokegearMapAppData *mapApp = OverlayManager_GetData(man);
 
     ov101_021E7B54(mapApp);
@@ -106,9 +106,9 @@ BOOL PokegearMap_Exit(OverlayManager *man, int *state) {
     if (mapApp->pokegear->appReturnCode != GEAR_RETURN_CANCEL) {
         mapApp->pokegear->isSwitchApp = TRUE;
     }
-    heapID = mapApp->heapID;
+    heapID = mapApp->heapId;
     OverlayManager_FreeData(man);
-    Heap_Destroy(heapID);
+    DestroyHeap(heapID);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
     return TRUE;
 }
@@ -181,10 +181,10 @@ static void ov101_021E78EC(PokegearMapAppData *mapApp) {
     mapApp->unk_138_4 = FALSE;
     mapApp->unk_138_1 = 0;
     mapApp->mapUnlockLevel = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
-    mapApp->mapData = MapMatrix_MapData_New(mapApp->heapID);
+    mapApp->mapData = MapMatrix_MapData_New(mapApp->heapId);
     mapApp->phoneCallSave = SaveData_GetPhoneCallPersistentState(mapApp->pokegear->saveData);
-    mapApp->phoneBook = AllocAndReadPhoneBook(mapApp->heapID);
-    mapApp->phoneContact = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapID);
+    mapApp->phoneBook = AllocAndReadPhoneBook(mapApp->heapId);
+    mapApp->phoneContact = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapId);
     mapApp->numPhonebookSlots = SavePokegear_FindEmptyPhonebookSlot(mapApp->pokegear->savePokegear);
     mapApp->matrixX = mapApp->pokegear->args->matrixXCoord;
     mapApp->matrixY = mapApp->pokegear->args->matrixYCoord + 2;
@@ -352,7 +352,7 @@ static int PokegearMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
 
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
         if (mapApp->inMarkingsMode == 1) {
             for (i = 0; i < 4; ++i) {
                 ToggleBgLayer(i + GF_BG_LYR_MAIN_1, TRUE);
@@ -389,7 +389,7 @@ static int PokegearMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
 static int PokegearMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapId);
         ++mapApp->state;
         break;
     case 1:

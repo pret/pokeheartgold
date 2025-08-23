@@ -115,7 +115,7 @@ int PokegearPhone_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp) {
 BOOL ov101_021EFF14(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subsubtaskState) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, phoneApp->heapID);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, phoneApp->heapId);
         if (phoneApp->isIncomingCall) {
             PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xB0, 0x30, 0, RGB_BLACK);
             PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 0, RGB_BLACK);

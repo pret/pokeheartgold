@@ -181,12 +181,12 @@ LinkBattleRuleset *sub_020291E8(SaveData *saveData, int index) {
     }
 }
 
-void sub_0202921C(SaveData *saveData, int index, String *string, enum HeapID heapID) {
+void sub_0202921C(SaveData *saveData, int index, String *string, HeapID heapId) {
     if (index == 5) {
         LinkBattleRuleset *ruleset = Save_LinkBattleRuleset_GetByIndex(saveData, 0);
         LinkBattleRuleset_CopyNameToString(ruleset, string);
     } else if (index < NELEMS(sRulesetIndexes)) {
-        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, heapID);
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, heapId);
         ReadMsgDataIntoString(msgData, msg_0182_00083 + sRulesetIndexes[index], string);
         DestroyMsgData(msgData);
     }

@@ -18,7 +18,7 @@
 sub_02067A60: ; 0x02067A60
 	push {r4, lr}
 	mov r1, #0x24
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -226,7 +226,7 @@ sub_02067BF8: ; 0x02067BF8
 	mov r1, #0x1c
 	add r4, r2, #0
 	add r6, r3, #0
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r3, r0, #0
 	mov r2, #0x1c
 	mov r1, #0

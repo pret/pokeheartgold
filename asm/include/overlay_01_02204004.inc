@@ -2,9 +2,9 @@
 #pragma once
 .public AllocAndReadWholeNarcMemberByIdPair
 .public GF_RTC_GetTimeOfDay
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
-.public HeapExp_FndInitAllocator
+.public GF_ExpHeap_FndInitAllocator
 .public GF_AssertFail
 .public NNS_FndAllocFromAllocator
 .public NNS_G3dAnmObjInit

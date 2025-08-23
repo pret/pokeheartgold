@@ -15,7 +15,7 @@ ov31_0225D520: ; 0x0225D520
 	mov r1, #8
 	lsl r2, r0, #0xf
 	str r3, [sp, #4]
-	bl Heap_Create
+	bl CreateHeap
 	mov r1, #0x19
 	ldr r0, _0225D5FC ; =ov31_0225D7A0
 	lsl r1, r1, #4
@@ -256,7 +256,7 @@ ov31_0225D710: ; 0x0225D710
 	mov r1, #4
 	bl FreeBgTilemapBuffer
 	mov r0, #8
-	bl Heap_Destroy
+	bl DestroyHeap
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov31_0225D710

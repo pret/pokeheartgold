@@ -3,7 +3,7 @@
 .public CopyU16StringArray
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public PlayerProfile_sizeof
 .public PlayerProfile_Copy

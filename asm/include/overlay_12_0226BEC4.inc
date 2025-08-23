@@ -5,7 +5,7 @@
 .public NARC_Delete
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public SysTask_GetData
 .public GF_AssertFail

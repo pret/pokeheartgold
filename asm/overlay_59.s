@@ -21,7 +21,7 @@ _02237D52:
 	mov r0, #3
 	mov r1, #0x86
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	mov r1, #0xa7
 	add r0, r6, #0
 	lsl r1, r1, #2
@@ -173,7 +173,7 @@ _02237E7E:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x86
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_02237E68
@@ -2645,7 +2645,7 @@ ov59_0223919C: ; 0x0223919C
 	add r5, r1, #0
 	mov r1, #0x20
 	add r6, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
@@ -5669,7 +5669,7 @@ _0223A8F2:
 	mov r0, #3
 	mov r1, #0x86
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	mov r1, #0xbd
 	add r0, r6, #0
 	lsl r1, r1, #2
@@ -5780,7 +5780,7 @@ _0223A9CE:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x86
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov59_0223A9B8
@@ -8448,7 +8448,7 @@ ov59_0223BE70: ; 0x0223BE70
 	add r6, r1, #0
 	mov r1, #0x20
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x20
@@ -8676,7 +8676,7 @@ ov59_0223C054: ; 0x0223C054
 	add r5, r0, #0
 	ldr r0, [r5]
 	mov r1, #8
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #8
@@ -8787,7 +8787,7 @@ ov59_0223C138: ; 0x0223C138
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #8
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	mov r2, #8
 	add r5, r0, #0
@@ -8959,7 +8959,7 @@ ov59_0223C298: ; 0x0223C298
 	sub sp, #8
 	mov r1, #0x28
 	add r5, r0, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x28
@@ -9300,7 +9300,7 @@ ov59_0223C53C: ; 0x0223C53C
 	mov r1, #0x12
 	lsl r1, r1, #0xa
 	add r4, r0, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

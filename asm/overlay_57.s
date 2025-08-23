@@ -27,7 +27,7 @@ ov57_022378DC: ; 0x022378DC
 	mov r0, #3
 	mov r1, #0x34
 	lsl r2, r2, #0x12
-	bl Heap_Create
+	bl CreateHeap
 	mov r1, #0x46
 	add r0, r5, #0
 	lsl r1, r1, #4
@@ -418,7 +418,7 @@ ov57_02237B20: ; 0x02237B20
 	bl OverlayManager_FreeData
 	bl sub_02021238
 	mov r0, #0x34
-	bl Heap_Destroy
+	bl DestroyHeap
 	ldr r0, _02237CA0 ; =FS_OVERLAY_ID(OVY_6)
 	bl UnloadOverlayByID
 	ldr r0, _02237CA4 ; =FS_OVERLAY_ID(OVY_7)
@@ -8127,7 +8127,7 @@ ov57_0223B90C: ; 0x0223B90C
 	add r5, r1, #0
 	mov r0, #0x34
 	mov r1, #0xc
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #1
 	str r0, [r4]

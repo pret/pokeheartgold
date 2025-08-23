@@ -45,7 +45,7 @@
 .public sub_020154B0
 .public sub_02015524
 .public sub_02015528
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public Heap_FreeExplicit
 .public SetBothScreensModesAndDisable

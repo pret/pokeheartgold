@@ -18,7 +18,7 @@
 ov01_021FB4C0: ; 0x021FB4C0
 	push {r4, lr}
 	mov r1, #0x1c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	bl ov01_021FB55C
 	add r0, r4, #0

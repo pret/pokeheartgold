@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public MI_CpuFill8
 .public ov01_021FAC44

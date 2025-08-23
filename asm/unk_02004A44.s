@@ -1938,7 +1938,7 @@ _020057FC:
 	bne _0200584A
 	ldr r0, [sp, #0x48]
 	add r1, r6, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r4]
 	cmp r0, #0
 	bne _02005818

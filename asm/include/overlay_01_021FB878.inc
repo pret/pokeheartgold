@@ -9,10 +9,10 @@
 .public GfGfxLoader_LoadFromNarc
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
-.public Heap_Alloc
-.public Heap_AllocAtEnd
+.public AllocFromHeap
+.public AllocFromHeapAtEnd
 .public Heap_Free
-.public Heap_Realloc
+.public ReallocFromHeap
 .public GF3dRender_DrawModel
 .public GF3dRender_BindModelSet
 .public GF3dRender_AllocAndLoadTexResources

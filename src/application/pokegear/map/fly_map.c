@@ -27,13 +27,13 @@ BOOL FlyMap_Init(OverlayManager *man, int *state) {
     PokegearArgs *args = OverlayManager_GetArgs(man);
     HandleLoadOverlay(FS_OVERLAY_ID(pokegear), OVY_LOAD_ASYNC);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_26), OVY_LOAD_ASYNC);
-    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x40000);
+    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x40000);
     PokegearMapAppData *mapApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearMapAppData), HEAP_ID_POKEGEAR_APP);
     memset(mapApp, 0, sizeof(PokegearMapAppData));
-    mapApp->pokegear = Heap_Alloc(HEAP_ID_POKEGEAR_APP, sizeof(PokegearAppData));
+    mapApp->pokegear = AllocFromHeap(HEAP_ID_POKEGEAR_APP, sizeof(PokegearAppData));
     memset(mapApp->pokegear, 0, sizeof(PokegearAppData));
-    mapApp->heapID = HEAP_ID_POKEGEAR_APP;
-    mapApp->pokegear->heapID = HEAP_ID_POKEGEAR_APP;
+    mapApp->heapId = HEAP_ID_POKEGEAR_APP;
+    mapApp->pokegear->heapId = HEAP_ID_POKEGEAR_APP;
     mapApp->pokegear->args = args;
     mapApp->pokegear->saveData = mapApp->pokegear->args->saveData;
     mapApp->pokegear->savePokegear = SaveData_Pokegear_Get(mapApp->pokegear->saveData);
@@ -76,7 +76,7 @@ BOOL FlyMap_Main(OverlayManager *man, int *state) {
 
 BOOL FlyMap_Exit(OverlayManager *man, int *state) {
     PokegearMapAppData *mapApp = OverlayManager_GetData(man);
-    enum HeapID heapID;
+    HeapID heapID;
     FlyMap_DecouplePokegear(mapApp);
     MapMatrix_MapData_Free(mapApp->mapData);
     if (mapApp->pokegear->appReturnCode != GEAR_RETURN_CANCEL) {
@@ -84,9 +84,9 @@ BOOL FlyMap_Exit(OverlayManager *man, int *state) {
     }
     MI_CpuClear8(mapApp->pokegear, sizeof(PokegearAppData));
     Heap_Free(mapApp->pokegear);
-    heapID = mapApp->heapID;
+    heapID = mapApp->heapId;
     OverlayManager_FreeData(man);
-    Heap_Destroy(heapID);
+    DestroyHeap(heapID);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_26));
     UnloadOverlayByID(FS_OVERLAY_ID(pokegear));
     return TRUE;
@@ -102,10 +102,10 @@ static void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->unk_138_4 = 0;
     mapApp->unk_138_1 = 0;
     mapApp->mapUnlockLevel = Pokegear_GetMapUnlockLevel(mapApp->pokegear->savePokegear);
-    mapApp->mapData = MapMatrix_MapData_New(mapApp->heapID);
+    mapApp->mapData = MapMatrix_MapData_New(mapApp->heapId);
     mapApp->phoneCallSave = SaveData_GetPhoneCallPersistentState(mapApp->pokegear->saveData);
-    mapApp->phoneBook = AllocAndReadPhoneBook(mapApp->heapID);
-    mapApp->phoneContact = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapID);
+    mapApp->phoneBook = AllocAndReadPhoneBook(mapApp->heapId);
+    mapApp->phoneContact = SavePokegear_AllocAndCopyPhonebook(mapApp->pokegear->savePokegear, mapApp->heapId);
     mapApp->numPhonebookSlots = SavePokegear_FindEmptyPhonebookSlot(mapApp->pokegear->savePokegear);
     mapApp->matrixX = mapApp->pokegear->args->matrixXCoord;
     mapApp->matrixY = mapApp->pokegear->args->matrixYCoord + 2;
@@ -198,7 +198,7 @@ static int FlyMap_MainTask_FadeIn(PokegearMapAppData *mapApp) {
 
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, mapApp->heapId);
         for (i = 0; i < 8; ++i) {
             ToggleBgLayer(i, GF_PLANE_TOGGLE_ON);
         }
@@ -222,7 +222,7 @@ static int FlyMap_MainTask_FadeOut(PokegearMapAppData *mapApp) {
 
     switch (mapApp->state) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapID);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, mapApp->heapId);
         ++mapApp->state;
         break;
     case 1:

@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GfGfxLoader_LoadFromNarc
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public GF_AssertFail
 .public SaveData_GetPhoneCallPersistentState

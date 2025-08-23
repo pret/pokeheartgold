@@ -21,7 +21,7 @@ ov01_021FCD2C: ; 0x021FCD2C
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x34
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x34

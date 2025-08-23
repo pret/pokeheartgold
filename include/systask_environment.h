@@ -4,7 +4,7 @@
 #include "heap.h"
 #include "sys_task_api.h"
 
-SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, enum HeapID heapID);
+SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, HeapID heapId);
 void DestroySysTaskAndEnvironment(SysTask *task);
 
 #endif

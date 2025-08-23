@@ -100,12 +100,12 @@ static const ECIdenticalPhrases sIdenticalPhrases[12] = {
     { sEasyChatYou,          NELEMS(sEasyChatYou)          },
 };
 
-EasyChatManager *EasyChatManager_New(enum HeapID heapID) {
-    EasyChatManager *ret = Heap_Alloc(heapID, sizeof(EasyChatManager));
+EasyChatManager *EasyChatManager_New(HeapID heapId) {
+    EasyChatManager *ret = AllocFromHeap(heapId, sizeof(EasyChatManager));
 
     for (s32 i = 0; i < EC_GROUP_MAX; i++) {
-        ret->heapID = heapID; // inadvertently inside the loop
-        ret->msgData[i] = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sNarcMsgBanks[i], heapID);
+        ret->heapId = heapId; // inadvertently inside the loop
+        ret->msgData[i] = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sNarcMsgBanks[i], heapId);
     }
     return ret;
 }
@@ -251,12 +251,12 @@ void Save_EasyChat_SetGreetingFlag(SaveEasyChat *saveEasyChat, u32 flag) {
     SaveSubstruct_UpdateCRC(SAVE_EASY_CHAT);
 }
 
-WallpaperPasswordBank *WallpaperPasswordBank_Create(enum HeapID heapID) {
+WallpaperPasswordBank *WallpaperPasswordBank_Create(HeapID heapId) {
     u32 size;
-    WallpaperPasswordBank *ret = Heap_Alloc(heapID, sizeof(WallpaperPasswordBank));
+    WallpaperPasswordBank *ret = AllocFromHeap(heapId, sizeof(WallpaperPasswordBank));
 
     memset(ret, 0, sizeof(WallpaperPasswordBank));
-    ret->words = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_resource_eng_pms_aikotoba_pms_aikotoba, 0, FALSE, heapID, FALSE, &size);
+    ret->words = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_resource_eng_pms_aikotoba_pms_aikotoba, 0, FALSE, heapId, FALSE, &size);
     ret->count = size / sizeof(*ret->words);
     return ret;
 }

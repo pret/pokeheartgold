@@ -5,7 +5,7 @@
 .public BeginNormalPaletteFade
 .public sub_0200FBDC
 .public sub_0200FC60
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public GF_AssertFail
 .public sub_02034434

@@ -223,7 +223,7 @@ _0223A194: ; jump table
 _0223A1BA:
 	add r0, r6, #0
 	mov r1, #0x94
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r4, #0xc]
 	mov r1, #0
 	mov r2, #0x94

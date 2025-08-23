@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public Sound_SetSceneAndPlayBGM
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public TaskManager_Call
 .public TaskManager_GetFieldSystem

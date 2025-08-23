@@ -48,7 +48,7 @@
 .public sub_02013688
 .public sub_020138E0
 .public sub_0201649C
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public SetBgPriority
 .public InitWindow

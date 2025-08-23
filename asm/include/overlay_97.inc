@@ -40,7 +40,7 @@
 .public IsPaletteFadeFinished
 .public sub_02014540
 .public Main_SetVBlankIntrCB
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

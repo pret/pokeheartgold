@@ -41,7 +41,7 @@ ov89_02258800: ; 0x02258800
 	mov r0, #3
 	mov r1, #0x7d
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	ldr r1, _02258AD0 ; =0x000019E4
 	add r0, r4, #0
 	mov r2, #0x7d
@@ -878,7 +878,7 @@ ov89_02258F00: ; 0x02258F00
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x7d
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov89_02258F00
@@ -3901,7 +3901,7 @@ ov89_0225A7BC: ; 0x0225A7BC
 	lsl r1, r1, #2
 	add r5, r2, #0
 	str r3, [sp, #0xc]
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r2, #0x91
 	mov r1, #0
 	lsl r2, r2, #2
@@ -4396,7 +4396,7 @@ ov89_0225AB64: ; 0x0225AB64
 	str r0, [sp, #8]
 	mov r0, #0x7d
 	mov r1, #0x40
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [sp, #4]
 	ldr r1, [sp]
 	ldr r0, [sp, #8]

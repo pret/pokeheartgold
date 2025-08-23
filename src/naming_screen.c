@@ -483,7 +483,7 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
         GfGfx_DisableEngineBPlanes();
         GX_SetVisiblePlane(0);
         GXS_SetVisiblePlane(0);
-        Heap_Create(HEAP_ID_3, HEAP_ID_NAMING_SCREEN, 0x28000);
+        CreateHeap(HEAP_ID_3, HEAP_ID_NAMING_SCREEN, 0x28000);
 
         data = OverlayManager_CreateAndGetData(ovyMan, sizeof(NamingScreenAppData), HEAP_ID_NAMING_SCREEN);
         memset(data, 0, sizeof(NamingScreenAppData));
@@ -747,7 +747,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     MessageFormat_Delete(data->msgFormat);
     OverlayManager_FreeData(ovyMan);
     Main_SetVBlankIntrCB(NULL, NULL);
-    Heap_Destroy(HEAP_ID_NAMING_SCREEN);
+    DestroyHeap(HEAP_ID_NAMING_SCREEN);
     GfGfx_SetMainDisplay(PM_LCD_TOP);
     return TRUE;
 }
@@ -756,14 +756,14 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
 // Public functions
 // -------------------------------
 
-NamingScreenArgs *NamingScreen_CreateArgs(enum HeapID heapID, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
-    NamingScreenArgs *ret = Heap_Alloc(heapID, sizeof(NamingScreenArgs));
+NamingScreenArgs *NamingScreen_CreateArgs(HeapID heapId, NameScreenType kind, int param, int maxLen, Options *options, MenuInputStateMgr *pMenuInputState) {
+    NamingScreenArgs *ret = AllocFromHeap(heapId, sizeof(NamingScreenArgs));
     ret->kind = kind;
     ret->playerGenderOrMonSpecies = param;
     ret->maxLen = maxLen;
     ret->noInput = FALSE;
     ret->nameInputFlat[0] = EOS;
-    ret->nameInputString = String_New(32, heapID);
+    ret->nameInputString = String_New(32, heapId);
     ret->battleMsgId = 0;
     ret->pcStorage = 0;
     ret->monGender = 0;
@@ -1041,7 +1041,7 @@ static void NamingScreen_InitObjCharPlttTransfer(void) {
         .maxTasks = 20,
         .sizeMain = 0x800,
         .sizeSub = 0x800,
-        .heapID = HEAP_ID_NAMING_SCREEN,
+        .heapId = HEAP_ID_NAMING_SCREEN,
     };
     ObjCharTransfer_Init(&tmplate);
     ObjPlttTransfer_Init(20, HEAP_ID_NAMING_SCREEN);
@@ -1117,7 +1117,7 @@ static void NamingScreen_CreateSprites(NamingScreenAppData *data) {
         spriteTemplate.rotation = 0;
         spriteTemplate.drawPriority = 1;
         spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-        spriteTemplate.heapID = HEAP_ID_NAMING_SCREEN;
+        spriteTemplate.heapId = HEAP_ID_NAMING_SCREEN;
 
         for (i = 0; i < 9; ++i) {
             spriteTemplate.position.x = sUISpritesParam[i][0] * FX32_ONE;

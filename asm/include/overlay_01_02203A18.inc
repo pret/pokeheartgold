@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PlaySE
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public GF_CreateNewVramTransferTask
 .public sub_02020838

@@ -5,7 +5,7 @@
 .public ReadMsgDataIntoU16Array
 .public MailMsg_Init_FromTemplate
 .public MailMsg_Copy
-.public Heap_Alloc
+.public AllocFromHeap
 .public GF_AssertFail
 .public sub_0202D230
 .public sub_0202D234

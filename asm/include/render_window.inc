@@ -38,7 +38,7 @@
 .public DrawPokemonPicFromMon
 .public sub_020143E0
 .public sub_02014450
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public Heap_FreeExplicit
 .public BgConfig_GetHeapId

@@ -3,7 +3,7 @@
 .public BufferBoxMonSpeciesName
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public Bg_GetYpos
 .public BgTilemapRectChangePalette

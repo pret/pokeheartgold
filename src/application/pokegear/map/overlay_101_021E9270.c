@@ -19,7 +19,7 @@ static int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int a1);
 static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 a1, u16 a2);
-static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, enum HeapID heapID, String *dest);
+static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, HeapID heapId, String *dest);
 
 const TouchscreenListMenuTemplate sListMenuTemplate = {
     .wrapAround = TRUE,
@@ -829,7 +829,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
         }
     }
     if (locationSpec != NULL) {
-        PokegearMap_GetLandmarkNameFromMapID(locationSpec->mapId, mapApp->heapID, mapApp->mapNameString);
+        PokegearMap_GetLandmarkNameFromMapID(locationSpec->mapId, mapApp->heapId, mapApp->mapNameString);
         if (mapApp->type == PGMAP_TYPE_TOWN_MAP) {
             mapNameY = 1;
         } else {
@@ -905,7 +905,7 @@ static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index,
         StringExpandPlaceholders(mapApp->msgFormat, mapApp->flavorTextString, mapApp->formatFlavorTextString);
         FillWindowPixelBufferText_AssumeTileSize32(&mapApp->windows[8], 0);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 0, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
-        TextOBJ_CopyFromBGWindow(mapApp->unk_044[index].textOBJ, mapApp->unk_040, &mapApp->windows[8], mapApp->heapID);
+        TextOBJ_CopyFromBGWindow(mapApp->unk_044[index].textOBJ, mapApp->unk_040, &mapApp->windows[8], mapApp->heapId);
         TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[index].textOBJ, TRUE);
     }
 }
@@ -924,7 +924,7 @@ void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUp
     if (forceUpdateMapName) {
         String_SetEmpty(mapApp->mapNameString);
         FillWindowPixelBuffer(&mapApp->windows[7], 0);
-        PokegearMap_GetLandmarkNameFromMapID(locationSpec->mapId, mapApp->heapID, mapApp->mapNameString);
+        PokegearMap_GetLandmarkNameFromMapID(locationSpec->mapId, mapApp->heapId, mapApp->mapNameString);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->mapNameString, 0, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     }
@@ -1101,13 +1101,13 @@ void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int 
     if (mapID < 0) {
         AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->chooseDestinationString, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
     } else {
-        PokegearMap_GetLandmarkNameFromMapID(mapID, mapApp->heapID, mapApp->mapNameString);
+        PokegearMap_GetLandmarkNameFromMapID(mapID, mapApp->heapId, mapApp->mapNameString);
         BufferString(mapApp->msgFormat, 0, mapApp->mapNameString, 0, 0, 2);
         StringExpandPlaceholders(mapApp->msgFormat, mapApp->flavorTextString, mapApp->flyToLocationString);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->flavorTextString, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
     }
 }
 
-static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, enum HeapID heapID, String *dest) {
-    MapID_GetLandmarkName(mapno, heapID, dest);
+static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, HeapID heapId, String *dest) {
+    MapID_GetLandmarkName(mapno, heapId, dest);
 }

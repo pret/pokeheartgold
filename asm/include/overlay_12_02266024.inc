@@ -69,7 +69,7 @@
 .public sub_020138E0
 .public HBlankInterruptDisable
 .public Main_SetHBlankIntrCB
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

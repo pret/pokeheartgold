@@ -3,7 +3,7 @@
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
 .public GF_RTC_CopyDateTime
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public GF_AssertFail
 .public sub_02033250

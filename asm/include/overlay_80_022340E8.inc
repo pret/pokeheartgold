@@ -6,7 +6,7 @@
 .public GfGfxLoader_LoadCharDataFromOpenNarc
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GetPlttDataFromOpenNarc
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom

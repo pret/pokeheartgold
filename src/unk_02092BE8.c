@@ -97,8 +97,8 @@ void FieldSystem_InitPokegearArgs_Map(FieldSystem *sys, PokegearArgs *pokegearAr
     FieldSystem_InitPokegearArgs(sys, pokegearArgs, TRUE);
 }
 
-GearPhoneRingManager *GearPhoneRingManager_New(enum HeapID heapID, FieldSystem *sys) {
-    GearPhoneRingManager *ptr = Heap_Alloc(heapID, sizeof(GearPhoneRingManager));
+GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys) {
+    GearPhoneRingManager *ptr = AllocFromHeap(heapId, sizeof(GearPhoneRingManager));
     MI_CpuClear8(ptr, sizeof(GearPhoneRingManager));
     gearRingingManagerReset(ptr);
     ptr->unk_varC = 10;

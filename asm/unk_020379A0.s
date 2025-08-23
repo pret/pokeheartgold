@@ -18,7 +18,7 @@ sub_020379A0: ; 0x020379A0
 	bne _020379C0
 	mov r1, #0x99
 	lsl r1, r1, #2
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r1, _020379F0 ; =_021D414C
 	mov r2, #0x99
 	str r0, [r1]

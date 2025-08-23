@@ -45,7 +45,7 @@ _021E80D6:
 	mov r0, #3
 	mov r1, #0x27
 	lsl r2, r2, #6
-	bl Heap_Create
+	bl CreateHeap
 	ldr r1, _021E8234 ; =0x00005CB0
 	add r0, r6, #0
 	mov r2, #0x27
@@ -291,7 +291,7 @@ _021E82FC:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x27
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

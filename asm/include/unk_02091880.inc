@@ -6,7 +6,7 @@
 .public GetECWordIndexByPair
 .public Save_EasyChat_GetTrendySayingFlag
 .public Save_EasyChat_GetGreetingsFlag
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public Pokedex_CheckMonSeenFlag
 .public sub_02090D7C

@@ -14,8 +14,8 @@
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
-.public Heap_Create
-.public Heap_Destroy
+.public CreateHeap
+.public DestroyHeap
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

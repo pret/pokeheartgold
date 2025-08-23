@@ -14,7 +14,7 @@ BattleArcadeData_Alloc: ; 0x022340E8
 	ldr r1, _02234370 ; =0x00000A88
 	mov r0, #0xb
 	str r3, [sp, #8]
-	bl Heap_Alloc
+	bl AllocFromHeap
 	ldr r1, _02234374 ; =ov80_0223DD4C
 	ldr r2, _02234370 ; =0x00000A88
 	str r0, [r1]
@@ -1658,7 +1658,7 @@ _02234DDC:
 	mov r1, #2
 	mov r0, #0x65
 	lsl r1, r1, #0xc
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r2, #2
 	mov r1, #0
 	lsl r2, r2, #0xc

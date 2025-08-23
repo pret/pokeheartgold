@@ -6,7 +6,7 @@
 .public IsCryFinished
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public Heap_AllocAtEnd
+.public AllocFromHeapAtEnd
 .public Heap_Free
 .public Heap_FreeExplicit
 .public SysTask_GetData

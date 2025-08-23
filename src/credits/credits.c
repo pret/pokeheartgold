@@ -214,7 +214,7 @@ BOOL Credits_Init(OverlayManager *man, int *state) {
 
     switch (*state) {
     case 0:
-        Heap_Create(HEAP_ID_3, HEAP_ID_CREDITS, 0x40000);
+        CreateHeap(HEAP_ID_3, HEAP_ID_CREDITS, 0x40000);
         work = OverlayManager_CreateAndGetData(man, sizeof(CreditsAppWork), HEAP_ID_CREDITS);
         if (work != NULL) {
             MI_CpuFill8(work, 0, sizeof(CreditsAppWork));
@@ -297,7 +297,7 @@ BOOL Credits_Exit(OverlayManager *man, int *state) {
         break;
     case 3:
         OverlayManager_FreeData(man);
-        Heap_Destroy(HEAP_ID_CREDITS);
+        DestroyHeap(HEAP_ID_CREDITS);
         return TRUE;
     }
     return FALSE;
@@ -615,7 +615,7 @@ static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtRe
     tmpl->rotation = 0;
     tmpl->drawPriority = 0;
     tmpl->whichScreen = whichScreen;
-    tmpl->heapID = HEAP_ID_CREDITS;
+    tmpl->heapId = HEAP_ID_CREDITS;
 }
 
 static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtResPriority, NNS_G2D_VRAM_TYPE whichScreen, SpriteTemplate *tmpl, SpriteResourcesHeader *header) {
@@ -642,7 +642,7 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
     tmpl->rotation = 0;
     tmpl->drawPriority = 0;
     tmpl->whichScreen = whichScreen;
-    tmpl->heapID = HEAP_ID_CREDITS;
+    tmpl->heapId = HEAP_ID_CREDITS;
 }
 
 static void SetPageSysTasks(CreditsAppWork *work) {

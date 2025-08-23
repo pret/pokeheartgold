@@ -56,7 +56,7 @@ _02266130:
 	mov r1, #2
 	mov r0, #5
 	lsl r1, r1, #0xa
-	bl Heap_Alloc
+	bl AllocFromHeap
 	lsl r1, r4, #2
 	add r1, r6, r1
 	str r0, [r1, #0x40]
@@ -107,7 +107,7 @@ _02266198:
 	mov r1, #2
 	mov r0, #5
 	lsl r1, r1, #8
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r6, #0x5c]
 	mov r0, #1
 	str r0, [sp]
@@ -179,7 +179,7 @@ _02266228:
 	bl sub_0208805C
 	add r1, r0, #0
 	mov r0, #5
-	bl Heap_Alloc
+	bl AllocFromHeap
 	lsl r1, r5, #2
 	add r1, r4, r1
 	add r1, #0x84
@@ -197,11 +197,11 @@ _0226624A:
 	blt _0226621A
 	mov r0, #5
 	mov r1, #0x40
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r6, #0x60]
 	mov r0, #5
 	mov r1, #0x40
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r6, #0x64]
 	ldr r1, [r6, #0x60]
 	ldr r0, [r6, #0x5c]
@@ -1757,7 +1757,7 @@ ov12_02266E6C: ; 0x02266E6C
 	str r0, [r1]
 	mov r0, #5
 	mov r1, #0x14
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14

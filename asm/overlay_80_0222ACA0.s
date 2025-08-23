@@ -173,7 +173,7 @@ ov80_0222ADCC: ; 0x0222ADCC
 	add r4, r1, #0
 	mov r0, #0x65
 	mov r1, #0x20
-	bl Heap_Alloc
+	bl AllocFromHeap
 	str r0, [r4]
 	pop {r4, pc}
 	thumb_func_end ov80_0222ADCC

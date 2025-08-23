@@ -17,7 +17,7 @@
 .public sub_02014BF8
 .public sub_02014C08
 .public sub_02014C40
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public GF_AssertFail
 .public DC_FlushRange

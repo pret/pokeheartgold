@@ -119,7 +119,7 @@
 .public HBlankInterruptDisable
 .public sub_0201A728
 .public sub_0201A738
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

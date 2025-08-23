@@ -8,7 +8,7 @@
 .public GfGfxLoader_GetScrnDataFromOpenNarc
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public BG_LoadScreenTilemapData
 .public BG_LoadCharTilesData

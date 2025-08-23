@@ -28,7 +28,7 @@ sub_020632B0: ; 0x020632B0
 	add r4, r0, #0
 	mov r0, #0xb
 	mov r1, #0x1c
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	mov r1, #0
 	mov r2, #0x1c
 	str r0, [r4, #8]
@@ -2581,7 +2581,7 @@ sub_020645B4: ; 0x020645B4
 	mov r1, #0x30
 	add r7, r2, #0
 	str r3, [sp]
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	add r4, r0, #0
 	bne _020645CE
 	bl GF_AssertFail

@@ -15,7 +15,7 @@ PalPad_Init: ; 0x02229EE0
 	mov r0, #3
 	mov r1, #0x33
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	ldr r1, _02229FA8 ; =0x000005A4
 	add r0, r5, #0
 	mov r2, #0x33
@@ -285,7 +285,7 @@ PalPad_Exit: ; 0x0222A0AC
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x33
-	bl Heap_Destroy
+	bl DestroyHeap
 	ldr r0, _0222A144 ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	mov r0, #1
@@ -7574,7 +7574,7 @@ _0222DA0E:
 	mov r1, #0x32
 	ldr r0, [sp, #0x1c]
 	lsl r1, r1, #6
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r3, #0
 	add r4, r0, #0
 	str r3, [sp]

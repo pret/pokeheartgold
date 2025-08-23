@@ -113,11 +113,11 @@
 .public sub_020182EC
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public Heap_Create
-.public Heap_Destroy
-.public Heap_Alloc
+.public CreateHeap
+.public DestroyHeap
+.public AllocFromHeap
 .public Heap_Free
-.public HeapExp_FndInitAllocator
+.public GF_ExpHeap_FndInitAllocator
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

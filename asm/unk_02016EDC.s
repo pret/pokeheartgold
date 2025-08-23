@@ -59,7 +59,7 @@ sub_02016EDC: ; 0x02016EDC
 	mov r1, #0xc
 	add r6, r0, #0
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	strb r7, [r4, #8]
 	mov r0, #0x1d
@@ -70,7 +70,7 @@ sub_02016EDC: ; 0x02016EDC
 	add r0, r6, #0
 	add r1, r7, #0
 	str r6, [r4, #4]
-	bl Heap_Alloc
+	bl AllocFromHeap
 	mov r1, #0
 	add r2, r7, #0
 	str r0, [r4]

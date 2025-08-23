@@ -9,7 +9,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FC20
-.public Heap_Alloc
+.public AllocFromHeap
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

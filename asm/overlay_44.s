@@ -876,13 +876,13 @@ _0222A504:
 	mov r1, #0x80
 	mov r0, #3
 	lsl r2, r1, #9
-	bl Heap_Create
+	bl CreateHeap
 	b _0222A51A
 _0222A510:
 	mov r1, #0x80
 	mov r0, #3
 	lsl r2, r1, #9
-	bl Heap_Create
+	bl CreateHeap
 _0222A51A:
 	ldr r0, _0222A608 ; =FS_OVERLAY_ID(OVY_42)
 	mov r1, #2
@@ -894,14 +894,14 @@ _0222A51A:
 	mov r0, #3
 	mov r1, #0x35
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 	b _0222A542
 _0222A536:
 	mov r2, #0xa
 	mov r0, #3
 	mov r1, #0x35
 	lsl r2, r2, #0x10
-	bl Heap_Create
+	bl CreateHeap
 _0222A542:
 	mov r1, #0x43
 	add r0, r5, #0
@@ -1184,7 +1184,7 @@ _0222A792:
 	bl sub_02021238
 	bl GF_DestroyVramTransferManager
 	mov r0, #0x35
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1212,7 +1212,7 @@ _0222A7C2: ; jump table
 	.short _0222A7DC - _0222A7C2 - 2 ; case 12
 _0222A7DC:
 	mov r0, #0x80
-	bl Heap_Destroy
+	bl DestroyHeap
 _0222A7E2:
 	bl ov44_0222E074
 	cmp r0, #1
@@ -18255,12 +18255,12 @@ _02232EC6:
 	mov r0, #3
 	mov r1, #0x67
 	lsl r2, r0, #0xf
-	bl Heap_Create
+	bl CreateHeap
 	mov r2, #0xa
 	mov r0, #3
 	mov r1, #0x68
 	lsl r2, r2, #0xc
-	bl Heap_Create
+	bl CreateHeap
 	mov r1, #0x8a
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -18500,9 +18500,9 @@ ov44_022330A8: ; 0x022330A8
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x68
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #0x67
-	bl Heap_Destroy
+	bl DestroyHeap
 	ldr r0, _022330FC ; =FS_OVERLAY_ID(OVY_42)
 	bl UnloadOverlayByID
 	mov r0, #1

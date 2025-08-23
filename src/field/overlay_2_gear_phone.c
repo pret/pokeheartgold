@@ -45,13 +45,13 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
-String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, enum HeapID heapID) {
+String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     String *str;
     if (!gearPhone->active || gearPhone->callerId >= NUM_PHONE_CONTACTS) {
-        str = String_New(8, heapID);
+        str = String_New(8, heapId);
     } else {
         int phoneMsg = GetPhoneMessageGmm(gearPhone->callerId);
-        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, phoneMsg, heapID);
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, phoneMsg, heapId);
         str = NewString_ReadMsgData(msgData, 0);
         DestroyMsgData(msgData);
     }
@@ -102,7 +102,7 @@ BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
         return FALSE;
     }
 
-    PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_FIELD1);
+    PhoneBook *phoneBook = AllocAndReadPhoneBook(HEAP_ID_4);
     u32 var = ov02_022521C0(gearPhone, phoneBook, position->mapId);
     if (var) {
         FreePhoneBook(phoneBook);
@@ -143,8 +143,8 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     Save_PlayerData_GetProfile(gearPhone->saveData);
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
     u32 slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
-    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_FIELD1);
-    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, slot);
+    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_4);
+    u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, slot);
     MI_CpuFill8(ptr, 0xFF, slot);
     u16 rand = LCRandom() % 1000;
 
@@ -236,7 +236,7 @@ asm static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBo
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x2c]
 	mov r0, #4
-	bl Heap_AllocAtEnd
+	bl AllocFromHeapAtEnd
 	ldr r2, [sp, #0x2c]
 	mov r1, #0xff
 	add r4, r0, #0
@@ -456,7 +456,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, 13);
+    u8 *ptr = AllocFromHeapAtEnd(HEAP_ID_4, 13);
     MI_CpuFill8(ptr, 0, 13);
 
     int cnt = 0;

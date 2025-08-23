@@ -69,7 +69,7 @@ static void ObjCharTransferTask_G2dLoadImageMappingVramTransfer(ObjCharTransferT
 static void ObjCharTransferTask_G2dLoadImageMappingVramTransferByScreen(ObjCharTransferTask *task, NNS_G2D_VRAM_TYPE vram);
 static ObjCharTransferTask *ObjCharTransfer_GetFreeTask(void);
 static void ObjCharTransfer_GetVramCapacityByBank(void);
-static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, enum HeapID heapID);
+static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID);
 static void ObjCharTransfer_ClearBothScreensBlockBufs(void);
 static void ObjCharTransfer_FreeBlockTransferBuffer(u8 *buffer);
 static u32 ObjCharTransfer_GetBlocksCountFromBufferPtr(u8 *buffer);
@@ -92,10 +92,10 @@ void ObjCharTransfer_Init(ObjCharTransferTemplate *template) {
 
 void ObjCharTransfer_InitEx(ObjCharTransferTemplate *template, GXOBJVRamModeChar modeMain, GXOBJVRamModeChar modeSub) {
     if (sObjCharTransferTasksManager == NULL) {
-        sObjCharTransferTasksManager = Heap_Alloc(template->heapID, sizeof(ObjCharTransferTasksManager));
+        sObjCharTransferTasksManager = AllocFromHeap(template->heapId, sizeof(ObjCharTransferTasksManager));
         MI_CpuClear32(sObjCharTransferTasksManager, sizeof(ObjCharTransferTasksManager));
         sObjCharTransferTasksManager->max = template->maxTasks;
-        sObjCharTransferTasksManager->tasks = (ObjCharTransferTask *)Heap_Alloc(template->heapID, sizeof(ObjCharTransferTask) * sObjCharTransferTasksManager->max);
+        sObjCharTransferTasksManager->tasks = (ObjCharTransferTask *)AllocFromHeap(template->heapId, sizeof(ObjCharTransferTask) * sObjCharTransferTasksManager->max);
         for (int i = 0; i < template->maxTasks; ++i) {
             ObjCharTransferTask_Init(&sObjCharTransferTasksManager->tasks[i]);
         }
@@ -105,7 +105,7 @@ void ObjCharTransfer_InitEx(ObjCharTransferTemplate *template, GXOBJVRamModeChar
         GXS_SetOBJVRamModeChar(modeSub);
         int numBlocksMain = ObjCharTransfer_CalcBlockNumLimit(template->sizeMain, sObjCharTransferTasksManager->blockSizeMain);
         int numBlocksSub = ObjCharTransfer_CalcBlockNumLimit(template->sizeSub, sObjCharTransferTasksManager->blockSizeSub);
-        ObjCharTransfer_InitBlocksTransferBuffers(numBlocksMain, numBlocksSub, template->heapID);
+        ObjCharTransfer_InitBlocksTransferBuffers(numBlocksMain, numBlocksSub, template->heapId);
     }
 }
 
@@ -675,7 +675,7 @@ static void ObjCharTransfer_ClearBothScreensBlockBufs(void) {
     ObjCharTransfer_ClearBlockBuf(sObjCharTransferTasksManager->blockBufSub);
 }
 
-static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, enum HeapID heapID) {
+static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 numBlocksSub, HeapID heapID) {
     sObjCharTransferTasksManager->numBlocksMain = numBlocksMain;
     sObjCharTransferTasksManager->numBlocksSub = numBlocksSub;
     if (sObjCharTransferTasksManager->blockBufMain != NULL) {
@@ -685,10 +685,10 @@ static void ObjCharTransfer_InitBlocksTransferBuffers(u32 numBlocksMain, u32 num
         Heap_Free(sObjCharTransferTasksManager->blockBufSub);
     }
     if (sObjCharTransferTasksManager->numBlocksMain != 0) {
-        sObjCharTransferTasksManager->blockBufMain = Heap_Alloc(heapID, numBlocksMain / 8);
+        sObjCharTransferTasksManager->blockBufMain = AllocFromHeap(heapID, numBlocksMain / 8);
     }
     if (sObjCharTransferTasksManager->numBlocksSub != 0) {
-        sObjCharTransferTasksManager->blockBufSub = Heap_Alloc(heapID, numBlocksSub / 8);
+        sObjCharTransferTasksManager->blockBufSub = AllocFromHeap(heapID, numBlocksSub / 8);
     }
     ObjCharTransfer_ClearBothScreensBlockBufs();
 }

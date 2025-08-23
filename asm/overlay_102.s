@@ -24,12 +24,12 @@ _021E7752:
 	mov r0, #3
 	mov r1, #0x22
 	lsl r2, r2, #0xe
-	bl Heap_Create
+	bl CreateHeap
 	mov r2, #0xa
 	mov r0, #3
 	mov r1, #0x23
 	lsl r2, r2, #0xe
-	bl Heap_Create
+	bl CreateHeap
 	add r0, r5, #0
 	bl ov102_021E7888
 	ldr r0, [r0, #0x14]
@@ -174,9 +174,9 @@ EasyChat_Exit: ; 0x021E7868
 	add r1, r4, #0
 	bl ov102_021E7A24
 	mov r0, #0x22
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #0x23
-	bl Heap_Destroy
+	bl DestroyHeap
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -3542,7 +3542,7 @@ ov102_021E909C: ; 0x021E909C
 	add r5, r0, #0
 	mov r0, #0x23
 	lsl r1, r1, #2
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r0, #0
@@ -3966,7 +3966,7 @@ ov102_021E940C: ; 0x021E940C
 	bhs _021E945A
 	mov r0, #0x23
 	mov r1, #0x18
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r1, r0, #0
 	beq _021E945E
 	mov r4, #0
@@ -5886,7 +5886,7 @@ ov102_021EA314: ; 0x021EA314
 	mov r0, #0x23
 	lsl r1, r1, #2
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -7763,7 +7763,7 @@ ov102_021EB1A4: ; 0x021EB1A4
 	mov r0, #0x23
 	mov r1, #0x68
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -8345,7 +8345,7 @@ ov102_021EB624: ; 0x021EB624
 	add r4, r0, #0
 	mov r0, #0x23
 	mov r1, #0x1c
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r1, r0, #0
 	str r5, [r1]
 	mov r0, #0
@@ -8410,7 +8410,7 @@ ov102_021EB694: ; 0x021EB694
 	mov r0, #0x23
 	mov r1, #0x64
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -9163,7 +9163,7 @@ ov102_021EBC34: ; 0x021EBC34
 	mov r0, #0x23
 	mov r1, #0x98
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
@@ -9920,7 +9920,7 @@ ov102_021EC20C: ; 0x021EC20C
 	mov r0, #0x23
 	mov r1, #0x30
 	add r7, r2, #0
-	bl Heap_Alloc
+	bl AllocFromHeap
 	add r4, r0, #0
 	str r5, [r4]
 	str r6, [r4, #4]
