@@ -45,7 +45,7 @@ typedef struct SavePokegear {
     u8 unk_3;
     u32 unlockedSkins : 9;
     u32 unk_4_9 : 9;
-    u32 backgroundStyle : 7;
+    u32 skin : 7;
     u32 registeredCards : 2;
     // mapUnlockLevel
     // 0: only Johto

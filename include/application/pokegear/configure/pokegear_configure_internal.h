@@ -24,9 +24,9 @@ typedef struct PokegearConfigureAppData {
     int substate;                                   // 0x08
     PokegearAppData *pokegear;                      // 0x0C
     u8 unk_10;                                      // 0x10 unused
-    u8 selectedBackgroundStyle;                     // 0x11
+    u8 selectedSkin;                                // 0x11
     u16 unlockedSkins : 9;                          // 0x12
-    u16 backgroundStyle : 7;                        // 0x12
+    u16 skin : 7;                                   // 0x12
     Sprite *sprites[9];                             // 0x14
     TouchscreenListMenuSpawner *contextMenuSpawner; // 0x38
     LISTMENUITEM *contextMenuItems;                 // 0x3C
@@ -42,14 +42,14 @@ BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp);
 
 void PokegearConfigure_LoadGraphics_Internal(PokegearConfigureAppData *configureApp);
 void PokegearConfigure_UnloadGraphics_Internal(PokegearConfigureAppData *configureApp);
-void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1);
-void ov101_021EF384(PokegearConfigureAppData *configureApp, int backgroundStyle);
+void PokegearConfigure_LoadPalettes(PokegearConfigureAppData *configureApp, BOOL isInit);
+void PokegearConfigure_SetNewSkin(PokegearConfigureAppData *configureApp, int skin);
 void PokegearConfigure_DrawUnlockedSkinsButtons(PokegearConfigureAppData *configureApp);
 
-void ov101_021EF4B0(void *appData);
-void ov101_021EF4DC(PokegearConfigureAppData *configureApp);
-void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1);
-void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2);
+void PokegearConfigure_OnReselectApp(void *appData);
+void PokegearConfigure_SetAppCursorActive(PokegearConfigureAppData *configureApp);
+void PokegearConfigure_SpawnContextMenu(PokegearConfigureAppData *configureApp, u8 a1);
+void PokegearConfigure_ToggleButtonFocusState(PokegearConfigureAppData *configureApp, int skin, int selected);
 
 int PokegearConfigure_HandleKeyInput(PokegearConfigureAppData *configureApp);
 int PokegearConfigure_HandleTouchInput(PokegearConfigureAppData *configureApp);

@@ -35,9 +35,9 @@ void PokegearConfigure_LoadGraphics_Internal(PokegearConfigureAppData *configure
     NARC *narc;
 
     narc = NARC_New(NARC_a_1_4_5, configureApp->heapId);
-    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_a_1_4_5, 10 + configureApp->backgroundStyle, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_a_1_4_5, 16 + configureApp->backgroundStyle, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
-    configureApp->scrnDataRaw = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 22 + configureApp->backgroundStyle, FALSE, &configureApp->scrnData, configureApp->heapId);
+    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_a_1_4_5, 10 + configureApp->skin, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_a_1_4_5, 16 + configureApp->skin, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
+    configureApp->scrnDataRaw = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 22 + configureApp->skin, FALSE, &configureApp->scrnData, configureApp->heapId);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
@@ -46,18 +46,18 @@ void PokegearConfigure_UnloadGraphics_Internal(PokegearConfigureAppData *configu
     Heap_Free(configureApp->scrnDataRaw);
 }
 
-void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1) {
+void PokegearConfigure_LoadPalettes(PokegearConfigureAppData *configureApp, BOOL isInit) {
     NARC *narc;
 
     narc = NARC_New(NARC_a_1_4_5, configureApp->heapId);
-    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 4 + configureApp->backgroundStyle, configureApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 4 + configureApp->backgroundStyle, configureApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
-    if (a1) {
+    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 4 + configureApp->skin, configureApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 4 + configureApp->skin, configureApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    if (isInit) {
         PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 0, configureApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
         PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 0, configureApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
     }
     PaletteData_SetAutoTransparent(configureApp->pokegear->plttData, TRUE);
-    if (a1) {
+    if (isInit) {
         PaletteData_BlendPalette(configureApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, 0);
         PaletteData_BlendPalette(configureApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, 0);
     } else {
@@ -69,10 +69,10 @@ void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1) {
     NARC_Delete(narc);
 }
 
-void ov101_021EF384(PokegearConfigureAppData *configureApp, int backgroundStyle) {
-    configureApp->backgroundStyle = backgroundStyle;
+void PokegearConfigure_SetNewSkin(PokegearConfigureAppData *configureApp, int skin) {
+    configureApp->skin = skin;
     BgClearTilemapBufferAndCommit(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
-    CopyToBgTilemapRect(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 10 * (backgroundStyle % 3) + 2, 9 * (backgroundStyle / 3) + 2, 9, 7, configureApp->scrnData->rawData, 0, 0, configureApp->scrnData->screenWidth / 8, configureApp->scrnData->screenHeight / 8);
+    CopyToBgTilemapRect(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 10 * (skin % 3) + 2, 9 * (skin / 3) + 2, 9, 7, configureApp->scrnData->rawData, 0, 0, configureApp->scrnData->screenWidth / 8, configureApp->scrnData->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
@@ -89,10 +89,10 @@ void PokegearConfigure_DrawUnlockedSkinsButtons(PokegearConfigureAppData *config
         mask <<= 1;
     }
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
-    ov101_021EF384(configureApp, configureApp->backgroundStyle);
+    PokegearConfigure_SetNewSkin(configureApp, configureApp->skin);
 }
 
-void ov101_021EF4B0(void *appData) {
+void PokegearConfigure_OnReselectApp(void *appData) {
     PokegearConfigureAppData *configureApp = appData;
 
     PokegearCursorManager_SetSpecIndexAndCursorPos(configureApp->pokegear->cursorManager, 1, 0xFF);
@@ -100,33 +100,33 @@ void ov101_021EF4B0(void *appData) {
     PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, TRUE);
 }
 
-void ov101_021EF4DC(PokegearConfigureAppData *configureApp) {
+void PokegearConfigure_SetAppCursorActive(PokegearConfigureAppData *configureApp) {
     configureApp->pokegear->cursorInAppSwitchZone = FALSE;
     PokegearCursorManager_SetSpecIndexAndCursorPos(configureApp->pokegear->cursorManager, 1, 0xFF);
     PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 0, FALSE);
     PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, TRUE);
 }
 
-void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 backgroundStyle) {
+void PokegearConfigure_SpawnContextMenu(PokegearConfigureAppData *configureApp, u8 skin) {
     TouchscreenListMenuHeader header;
 
-    configureApp->selectedBackgroundStyle = backgroundStyle;
+    configureApp->selectedSkin = skin;
     MI_CpuClear8(&header, sizeof(TouchscreenListMenuHeader));
     header.template = sContextMenuTemplate;
     header.listMenuItems = configureApp->contextMenuItems;
     header.bgConfig = configureApp->pokegear->bgConfig;
     header.numWindows = 2;
-    configureApp->contextMenu = TouchscreenListMenu_CreateWithAlignment(configureApp->contextMenuSpawner, &header, configureApp->pokegear->menuInputState, sContextMenuParam[backgroundStyle].x, sContextMenuParam[backgroundStyle].y, 0, 0, (enum TouchscreenListMenuTextAlignment)sContextMenuParam[backgroundStyle].alignment);
-    ov101_021EF5A4(configureApp, backgroundStyle, 1);
+    configureApp->contextMenu = TouchscreenListMenu_CreateWithAlignment(configureApp->contextMenuSpawner, &header, configureApp->pokegear->menuInputState, sContextMenuParam[skin].x, sContextMenuParam[skin].y, 0, 0, (enum TouchscreenListMenuTextAlignment)sContextMenuParam[skin].alignment);
+    PokegearConfigure_ToggleButtonFocusState(configureApp, skin, TRUE);
     PokegearCursorManager_SetCursorSpritesAnimateFlag(configureApp->pokegear->cursorManager, 0xFFFF, FALSE);
 }
 
-void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2) {
+void PokegearConfigure_ToggleButtonFocusState(PokegearConfigureAppData *configureApp, int skin, BOOL selected) {
     int x;
     int y;
     int width;
 
-    if (a2) {
+    if (selected) {
         G2_SetWnd0InsidePlane(31, FALSE);
         G2_SetWnd1InsidePlane(31, FALSE);
         G2_SetWndOutsidePlane(31, TRUE);
@@ -135,7 +135,7 @@ void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2) {
         y = configureApp->contextMenu->y * 8;
         width = (configureApp->contextMenu->width + 2) * 8;
         G2_SetWnd0Position(x, y, x + width, y + 56);
-        G2_SetWnd1Position(24 + (a1 % 3) * 80, 24 + (a1 / 3) * 72, 72 + (a1 % 3) * 80, 64 + (a1 / 3) * 72);
+        G2_SetWnd1Position(24 + (skin % 3) * 80, 24 + (skin / 3) * 72, 72 + (skin % 3) * 80, 64 + (skin / 3) * 72);
         GX_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
         G2_SetBlendBrightness(GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ, -8);
     } else {

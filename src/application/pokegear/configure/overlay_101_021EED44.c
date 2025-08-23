@@ -108,7 +108,7 @@ BOOL PokegearConfigure_LoadGFX(PokegearConfigureAppData *configureApp) {
         PokegearConfigure_InitBGs(configureApp);
         PokegearConfigure_LoadGraphics(configureApp);
         PokegearConfigure_CreateSpriteManager(configureApp);
-        ov101_021EF26C(configureApp, 1);
+        PokegearConfigure_LoadPalettes(configureApp, TRUE);
         break;
     case 1:
         PokegearConfigure_CreateSprites(configureApp);
@@ -139,7 +139,7 @@ int PokegearConfigure_ContextMenu(PokegearConfigureAppData *configureApp) {
     if (input != LIST_NOTHING_CHOSEN) {
         configureApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(configureApp->contextMenu);
         TouchscreenListMenu_Destroy(configureApp->contextMenu);
-        ov101_021EF5A4(configureApp, 0, 0);
+        PokegearConfigure_ToggleButtonFocusState(configureApp, 0, FALSE);
         PokegearCursorManager_SetCursorSpritesAnimateFlag(configureApp->pokegear->cursorManager, 0xFFFF, TRUE);
         if (input == 0) {
             return PGCONF_MAIN_STATE_SWAP_SKINS;
@@ -153,14 +153,14 @@ int PokegearConfigure_ContextMenu(PokegearConfigureAppData *configureApp) {
 
 static void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp) {
     PokegearConfigure_UnloadGraphics_Internal(configureApp);
-    configureApp->backgroundStyle = configureApp->selectedBackgroundStyle;
-    configureApp->pokegear->backgroundStyle = configureApp->backgroundStyle;
-    PokegearApp_LoadSkinGraphics(configureApp->pokegear, configureApp->backgroundStyle);
-    ov100_021E6A58(configureApp->pokegear->unk_094, configureApp->backgroundStyle);
+    configureApp->skin = configureApp->selectedSkin;
+    configureApp->pokegear->skin = configureApp->skin;
+    PokegearApp_LoadSkinGraphics(configureApp->pokegear, configureApp->skin);
+    ov100_021E6A58(configureApp->pokegear->unk_094, configureApp->skin);
     PokegearConfigure_LoadGraphics_Internal(configureApp);
-    ov101_021EF26C(configureApp, 0);
+    PokegearConfigure_LoadPalettes(configureApp, FALSE);
     PokegearConfigure_DrawUnlockedSkinsButtons(configureApp);
-    ov101_021EF384(configureApp, configureApp->backgroundStyle);
+    PokegearConfigure_SetNewSkin(configureApp, configureApp->skin);
 }
 
 BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp) {

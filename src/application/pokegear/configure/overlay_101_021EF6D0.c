@@ -2,9 +2,9 @@
 
 #include "unk_02005D10.h"
 
-BOOL ov101_021EF6D0(PokegearConfigureAppData *configureApp, u8 a1);
+static BOOL PokegearConfigure_IsSkinUnlocked(PokegearConfigureAppData *configureApp, u8 skin);
 
-const TouchscreenHitbox ov101_021F83E4[] = {
+static const TouchscreenHitbox sTouchscreenHitboxes[] = {
     { .rect = { 24, 64, 24, 72 } },
     { .rect = { 24, 64, 104, 152 } },
     { .rect = { 24, 64, 184, 232 } },
@@ -14,14 +14,14 @@ const TouchscreenHitbox ov101_021F83E4[] = {
     { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
-BOOL ov101_021EF6D0(PokegearConfigureAppData *configureApp, u8 a1) {
-    u16 r2 = 1;
-    r2 <<= a1;
-    return configureApp->unlockedSkins & r2;
+static BOOL PokegearConfigure_IsSkinUnlocked(PokegearConfigureAppData *configureApp, u8 skin) {
+    u16 mask = 1;
+    mask <<= skin;
+    return configureApp->unlockedSkins & mask;
 }
 
 int PokegearConfigure_HandleKeyInput(PokegearConfigureAppData *configureApp) {
-    u8 r5;
+    u8 input;
 
     if (gSystem.newKeys & PAD_BUTTON_B) {
         configureApp->pokegear->cursorInAppSwitchZone = TRUE;
@@ -32,13 +32,13 @@ int PokegearConfigure_HandleKeyInput(PokegearConfigureAppData *configureApp) {
         return -1;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        r5 = PokegearCursorManager_GetCursorPos(configureApp->pokegear->cursorManager);
-        if (!ov101_021EF6D0(configureApp, r5)) {
-            return -1;
+        input = PokegearCursorManager_GetCursorPos(configureApp->pokegear->cursorManager);
+        if (!PokegearConfigure_IsSkinUnlocked(configureApp, input)) {
+            return TOUCH_MENU_NO_INPUT;
         }
-        ov101_021EF50C(configureApp, r5);
+        PokegearConfigure_SpawnContextMenu(configureApp, input);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
-        return 8;
+        return GEAR_RETURN_8;
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
         PokegearCursorManager_MoveActiveCursor(configureApp->pokegear->cursorManager, 0);
@@ -53,29 +53,29 @@ int PokegearConfigure_HandleKeyInput(PokegearConfigureAppData *configureApp) {
         PokegearCursorManager_MoveActiveCursor(configureApp->pokegear->cursorManager, 3);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
     }
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }
 
 int PokegearConfigure_HandleTouchInput(PokegearConfigureAppData *configureApp) {
     int input;
 
     input = PokegearApp_HandleTouchInput_SwitchApps(configureApp->pokegear);
-    if (input != -1) {
+    if (input != TOUCH_MENU_NO_INPUT) {
         return input;
     }
-    input = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F83E4);
-    if (input != -1) {
-        if (!ov101_021EF6D0(configureApp, input)) {
-            return -1;
+    input = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitboxes);
+    if (input != TOUCH_MENU_NO_INPUT) {
+        if (!PokegearConfigure_IsSkinUnlocked(configureApp, input)) {
+            return TOUCH_MENU_NO_INPUT;
         }
         if (configureApp->pokegear->cursorInAppSwitchZone == TRUE) {
-            ov101_021EF4DC(configureApp);
+            PokegearConfigure_SetAppCursorActive(configureApp);
         }
         PokegearCursorManager_SetActiveCursorPosition(configureApp->pokegear->cursorManager, input);
-        ov101_021EF50C(configureApp, input);
+        PokegearConfigure_SpawnContextMenu(configureApp, input);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         configureApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
-        return 8;
+        return GEAR_RETURN_8;
     }
-    return -1;
+    return TOUCH_MENU_NO_INPUT;
 }

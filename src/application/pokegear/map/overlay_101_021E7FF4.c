@@ -43,13 +43,13 @@ BOOL PokegearMap_LoadGFX(PokegearMapAppData *mapApp) {
         PokegearMap_InitBGs(mapApp);
         break;
     case 1:
-        PokegearMap_LoadGraphics(mapApp, mapApp->pokegear->backgroundStyle);
+        PokegearMap_LoadGraphics(mapApp, mapApp->pokegear->skin);
         PokegearMap_InitWindows(mapApp);
         PokegearMap_InitMsg(mapApp);
         break;
     case 2:
         PokegearMap_CreateObjectsManager(mapApp);
-        PokegearMap_LoadPalettes(mapApp, mapApp->pokegear->backgroundStyle);
+        PokegearMap_LoadPalettes(mapApp, mapApp->pokegear->skin);
         PokegearMap_LoadSprites(mapApp);
         break;
     case 3:

@@ -84,14 +84,14 @@ BOOL PokegearConfigure_Exit(OverlayManager *man, int *state) {
 
 static void PokegearConfigure_InitInternal(PokegearConfigureAppData *configureApp) {
     configureApp->pokegear->childAppdata = configureApp;
-    configureApp->pokegear->reselectAppCB = ov101_021EF4B0;
-    configureApp->backgroundStyle = Pokegear_GetBackgroundStyle(configureApp->pokegear->savePokegear);
+    configureApp->pokegear->reselectAppCB = PokegearConfigure_OnReselectApp;
+    configureApp->skin = Pokegear_GetBackgroundStyle(configureApp->pokegear->savePokegear);
     configureApp->unlockedSkins = Pokegear_GetUnlockedSkins(configureApp->pokegear->savePokegear);
     configureApp->unlockedSkins = 0xFF; // nani the fuck?
 }
 
 static void PokegearConfigure_ExitInternal(PokegearConfigureAppData *configureApp) {
-    Pokegear_SetBackgroundStyle(configureApp->pokegear->savePokegear, configureApp->backgroundStyle);
+    Pokegear_SetBackgroundStyle(configureApp->pokegear->savePokegear, configureApp->skin);
     configureApp->pokegear->reselectAppCB = NULL;
     configureApp->pokegear->deselectAppCB = NULL;
 }
