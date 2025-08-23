@@ -23,7 +23,7 @@
 .public ManagedSprite_GetPositionFxXYWithSubscreenOffset
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_SinDeg
 .public GF_CosDeg

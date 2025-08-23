@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public GF_CreateNewVramTransferTask
 .public sub_02023E78
 .public sub_02023FB0

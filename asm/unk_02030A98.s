@@ -1564,7 +1564,7 @@ _020314A0: .word 0x01001001
 sub_020314A4: ; 0x020314A4
 	push {r4, lr}
 	mov r1, #0x80
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x80
 	add r4, r0, #0

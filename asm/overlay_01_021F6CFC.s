@@ -759,7 +759,7 @@ ov01_021F729C: ; 0x021F729C
 	ldr r5, [r6, #0x10]
 	mov r0, #0xb
 	mov r1, #0x9c
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bl ov01_021F722C
 	str r6, [r4, #0x30]

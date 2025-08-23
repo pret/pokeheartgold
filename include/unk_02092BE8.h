@@ -42,7 +42,7 @@ typedef struct UnkPokegearstruct_14 {
 
 void FieldSystem_InitPokegearArgs_Phone(FieldSystem *sys, PokegearArgs *ptr);
 void FieldSystem_InitPokegearArgs_Map(FieldSystem *sys, PokegearArgs *ptr);
-GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys);
+GearPhoneRingManager *GearPhoneRingManager_New(enum HeapID heapID, FieldSystem *sys);
 void GearPhoneRingManager_Delete(GearPhoneRingManager *ptr);
 GearPhoneRingManager *FieldSystem_GetGearPhoneRingManager(FieldSystem *sys);
 void GearPhoneRingManager_StartRinging(GearPhoneRingManager *ptr);

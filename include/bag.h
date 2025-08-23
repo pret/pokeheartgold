@@ -19,15 +19,15 @@
 u32 Save_Bag_sizeof(void);
 
 /*
- * Bag *Save_Bag_New(HeapID heapId)
+ * Bag *Save_Bag_New(enum HeapID heapID)
  *
  * Allocates a new Bag
  *
- * @param heapId:     ID of the heap to alloc from
+ * @param heapID:     ID of the heap to alloc from
  *
  * @returns: Pointer to the Bag instance
  */
-Bag *Save_Bag_New(HeapID heapId);
+Bag *Save_Bag_New(enum HeapID heapID);
 
 /*
  * void Save_Bag_Init(Bag *bagData)
@@ -89,10 +89,10 @@ RegisterItemResult Bag_TryRegisterItem(Bag *bag, u16 itemId);
 void Bag_UnregisterItem(Bag *bag, u16 itemId);
 
 /*
- * BOOL Bag_HasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
- * BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
- * BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
- * BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId)
+ * BOOL Bag_HasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID)
+ * BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID)
+ * BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID)
+ * BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID)
  *
  * Inventory checkers and modifiers.
  * HasSpaceForItem checks whether there is an empty slot
@@ -113,15 +113,15 @@ void Bag_UnregisterItem(Bag *bag, u16 itemId);
  * @param bag:         Pointer to Bag
  * @param itemId:      ID of item to act upon
  * @param quantity:    Amount to add, remove, or check
- * @param heapId:     Heap to allocate temp buffers from
+ * @param heapID:     Heap to allocate temp buffers from
  *
  * @returns: TRUE if the action succeeded or would succeed,
  *   otherwise FALSE.
  */
-BOOL Bag_HasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
-BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
-BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
-BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, HeapID heapId);
+BOOL Bag_HasSpaceForItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID);
+BOOL Bag_AddItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID);
+BOOL Bag_TakeItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID);
+BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID);
 
 /*
  * BOOL Pocket_TakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity)
@@ -151,7 +151,7 @@ BOOL Pocket_TakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity);
 BOOL Bag_PocketNotEmpty(Bag *bag, u32 pocket);
 
 /*
- * u16 Bag_GetQuantity(Bag *bag, u16 itemId, HeapID heapId)
+ * u16 Bag_GetQuantity(Bag *bag, u16 itemId, enum HeapID heapID)
  * u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId)
  *
  * Looks up the item in its pocket or the specified ItemSlot
@@ -162,26 +162,26 @@ BOOL Bag_PocketNotEmpty(Bag *bag, u32 pocket);
  * @param slots:       (Pocket_*) Pointer to ItemSlot array
  * @param count:       (Pocket_*) Number of ItemSlot in slots
  * @param itemId:      Item to look up
- * @param heapId:     (Bag_*) Heap to allocate temp buffers from
+ * @param heapID:     (Bag_*) Heap to allocate temp buffers from
  *
  * @returns: Quantity of that item in the bag or array.
  */
-u16 Bag_GetQuantity(Bag *bag, u16 itemId, HeapID heapId);
+u16 Bag_GetQuantity(Bag *bag, u16 itemId, enum HeapID heapID);
 u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId);
 
 /*
- * BagView *Bag_CreateView(Bag *bag, const u8 *pockets, HeapID heapId)
+ * BagView *Bag_CreateView(Bag *bag, const u8 *pockets, enum HeapID heapID)
  *
  * Creates a BagView with a specified subset of pockets.
  *
  * @param bag:         Pointer to Bag
  * @param pockets:     Char array of POCKET_XXX IDs, terminated
  *                     with POCKET_BAG_VIEW_END
- * @param heapId:     Heap to allocate from
+ * @param heapID:     Heap to allocate from
  *
  * @returns: Pointer to newly-allocated BagView
  */
-BagView *Bag_CreateView(Bag *bag, const u8 *pockets, HeapID heapId);
+BagView *Bag_CreateView(Bag *bag, const u8 *pockets, enum HeapID heapID);
 
 /*
  * ItemSlot *Bag_GetPocketSlotN(Bag *bag, u8 pocket, u32 slot)

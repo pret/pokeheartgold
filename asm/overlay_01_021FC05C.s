@@ -171,7 +171,7 @@ ov01_021FC14C: ; 0x021FC14C
 	bl BG_LoadPlttData
 	mov r0, #4
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x11
 	mov r2, #0x20
 	add r4, r0, #0

@@ -1,8 +1,8 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public CopyU16StringArrayN
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetIGTAddr

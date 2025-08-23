@@ -173,7 +173,7 @@ EventObjectMovementMan_Create: ; 0x02062214
 	add r6, r1, #0
 	mov r0, #4
 	mov r1, #0x14
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _0206222A
 	bl GF_AssertFail

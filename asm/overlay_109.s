@@ -21,7 +21,7 @@ _021E5912:
 	mov r0, #3
 	mov r1, #0x60
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x7d
 	add r0, r6, #0
 	lsl r1, r1, #2
@@ -146,7 +146,7 @@ _021E5A06:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x60
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end PhotoAlbum_Exit
@@ -4001,7 +4001,7 @@ ov109_021E77D4: ; 0x021E77D4
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #8
 	add r5, r0, #0

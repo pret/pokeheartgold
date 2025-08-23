@@ -28,7 +28,7 @@ ov01_022031C0: ; 0x022031C0
 	mov r1, #4
 	mov r2, #0x20
 	str r5, [r4]
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	bl ov01_022031F8
 	add r0, r4, #0

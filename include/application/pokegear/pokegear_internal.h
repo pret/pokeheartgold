@@ -118,7 +118,7 @@ typedef struct PokegearObjectsManager {
 } PokegearObjectsManager;
 
 typedef struct PokegearApp_UnkSub094 {
-    HeapID heapId;
+    enum HeapID heapID;
     int unk_004;
     u16 unk_008; // unused
     u16 unk_00A;
@@ -133,7 +133,7 @@ typedef struct PokegearApp_UnkSub094 {
 
 typedef struct PokegearAppData PokegearAppData;
 struct PokegearAppData {
-    HeapID heapId;                               // 0x000
+    enum HeapID heapID;                          // 0x000
     u8 app;                                      // 0x004
     u8 registeredCards : 7;                      // 0x005
     u8 isSwitchApp : 1;                          // 0x005
@@ -209,22 +209,22 @@ void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet
 void PokegearApp_DestroySpriteManager(PokegearAppData *pokegearApp);
 void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
-PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
+PokegearApp_UnkSub094 *ov100_021E69F8(enum HeapID heapID, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);
 void ov100_021E6AB0(PokegearApp_UnkSub094 *a0);
 ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(ManagedSprite *a0);
 
-PokegearObjectsManager *PokegearObjectsManager_Create(int count, HeapID heapId);
+PokegearObjectsManager *PokegearObjectsManager_Create(int count, enum HeapID heapID);
 void PokegearObjectsManager_Release(PokegearObjectsManager *mgr);
 void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *mgr);
 u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *sprite);
 void PokegearObjectsManager_Reset(PokegearObjectsManager *mgr);
 void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 a1);
 
-PokegearCursorManager *PokegearCursorManager_Alloc(int count, HeapID heapId);
+PokegearCursorManager *PokegearCursorManager_Alloc(int count, enum HeapID heapID);
 void PokegearCursorManager_Free(PokegearCursorManager *cursorManager);
-u16 PokegearCursorManager_AddButtons(PokegearCursorManager *cursorManager, const PokegearCursorGrid *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
+u16 PokegearCursorManager_AddButtons(PokegearCursorManager *cursorManager, const PokegearCursorGrid *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, enum HeapID heapID, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
 BOOL PokegearCursorManager_RemoveCursor(PokegearCursorManager *cursorManager, u16 a1);
 u16 PokegearCursorManager_SetCursorSpritesDrawState(PokegearCursorManager *cursorManager, u16 index, BOOL draw);
 u16 PokegearCursorManager_SetSpecIndexAndCursorPos(PokegearCursorManager *cursorManager, u16 index, u8 cursorPos);

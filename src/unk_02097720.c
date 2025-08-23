@@ -7,7 +7,7 @@ static BOOL sub_02097754(TaskManager *taskManager);
 
 void sub_02097720(TaskManager *taskManager, u16 *unknownPtr) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_02097720 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_02097720));
+    UnkStruct_02097720 *data = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_02097720));
     MI_CpuClear8(data, sizeof(UnkStruct_02097720));
     data->state = 0;
     data->unknown_4 = unknownPtr;

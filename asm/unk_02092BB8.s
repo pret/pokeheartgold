@@ -13,7 +13,7 @@
 sub_02092BB8: ; 0x02092BB8
 	push {r4, lr}
 	mov r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #2
 	add r4, r0, #0

@@ -253,7 +253,7 @@ Pokedex_Init: ; 0x021E5AA0
 	mov r0, #3
 	mov r1, #0x25
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E5B4C ; =0x00001910
 	add r0, r5, #0
 	mov r2, #0x25
@@ -368,7 +368,7 @@ Pokedex_Exit: ; 0x021E5B80
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _021E5BA8:
 	add r0, r4, #0
 	bl ov18_021F8838
@@ -385,12 +385,12 @@ _021E5BA8:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _021E5BD0:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x25
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	mov r1, #0x7f
 	bl GF_SndHandleSetPlayerVolume
@@ -402,7 +402,7 @@ _021E5BD0:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _021E5BFC:
 	mov r0, #0
 	add r1, r6, #0
@@ -419,24 +419,24 @@ _021E5C18: .word ov18_021E5C3C
 
 	thumb_func_start ov18_021E5C1C
 ov18_021E5C1C: ; 0x021E5C1C
-	ldr r3, _021E5C28 ; =AllocFromHeapAtEnd
+	ldr r3, _021E5C28 ; =Heap_AllocAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_021E5C28: .word AllocFromHeapAtEnd
+_021E5C28: .word Heap_AllocAtEnd
 	thumb_func_end ov18_021E5C1C
 
 	thumb_func_start ov18_021E5C2C
 ov18_021E5C2C: ; 0x021E5C2C
-	ldr r3, _021E5C38 ; =AllocFromHeapAtEnd
+	ldr r3, _021E5C38 ; =Heap_AllocAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_021E5C38: .word AllocFromHeapAtEnd
+_021E5C38: .word Heap_AllocAtEnd
 	thumb_func_end ov18_021E5C2C
 
 	thumb_func_start ov18_021E5C3C
@@ -2242,7 +2242,7 @@ ov18_021E6AEC: ; 0x021E6AEC
 	str r0, [sp]
 	mov r0, #0x25
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r6, r0, #0
 	ldr r0, [sp]
 	mov r1, #5
@@ -2346,7 +2346,7 @@ ov18_021E6BB8: ; 0x021E6BB8
 	add r7, r0, #0
 	mov r0, #0x25
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r6, r0, #0
 	ldr r0, [r7, #8]
 	mov r1, #5
@@ -5484,12 +5484,12 @@ ov18_021E8528: ; 0x021E8528
 	lsl r6, r0, #2
 	mov r0, #0x25
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _021E8640 ; =0x000018FC
 	str r0, [r5, r1]
 	mov r0, #0x25
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _021E8644 ; =0x00001904
 	add r2, r6, #0
 	str r0, [r5, r1]
@@ -16692,7 +16692,7 @@ ov18_021EE068: ; 0x021EE068
 _021EE080:
 	mov r0, #0x25
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #4]
 	ldr r1, [r4, #4]
 	add r0, r5, #0
@@ -23906,7 +23906,7 @@ ov18_021F1A7C: ; 0x021F1A7C
 	mov r1, #0x32
 	mov r0, #0x25
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	mov r0, #0
 	add r1, sp, #0x30
@@ -33831,7 +33831,7 @@ ov18_021F69E8: ; 0x021F69E8
 	mov r1, #0x32
 	mov r0, #0x25
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	ldr r0, _021F6AA8 ; =0x00000147
 	cmp r4, r0
@@ -36553,7 +36553,7 @@ ov18_021F7ED4: ; 0x021F7ED4
 	bl MIi_CpuClear32
 	ldr r1, _021F8160 ; =0x000003DA
 	mov r0, #0x25
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r6, r0, #0
 	bne _021F7EFC
 	bl GF_AssertFail
@@ -36566,7 +36566,7 @@ _021F7EFC:
 	str r0, [sp, #0x1c]
 	ldr r1, _021F8160 ; =0x000003DA
 	mov r0, #0x25
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _021F7F1A
 	bl GF_AssertFail
@@ -37961,7 +37961,7 @@ ov18_021F8974: ; 0x021F8974
 	mov r1, #0x96
 	ldr r0, [r5, #0x14]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x96
 	mov r1, #0
 	lsl r2, r2, #2
@@ -39639,7 +39639,7 @@ ov18_021F9694: ; 0x021F9694
 	mov r1, #0x80
 	ldr r5, [r0, #0x14]
 	add r0, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x80
 	add r4, r0, #0

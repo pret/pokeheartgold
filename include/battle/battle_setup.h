@@ -76,11 +76,11 @@ struct BattleSetup {                     // declared in trainer_data.h
     BOOL unk_1D0;
 };
 
-BattleSetup *BattleSetup_New(HeapID heapId, u32 battleFlags);
-BattleSetup *BattleSetup_New_SafariZone(HeapID heapId, int balls);
-BattleSetup *BattleSetup_New_BugContest(HeapID heapId, int balls, Pokemon *bugmon);
-BattleSetup *BattleSetup_New_PalPark(HeapID heapId, int balls);
-BattleSetup *BattleSetup_New_Tutorial(HeapID heapId, FieldSystem *fieldSystem);
+BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleFlags);
+BattleSetup *BattleSetup_New_SafariZone(enum HeapID heapID, int balls);
+BattleSetup *BattleSetup_New_BugContest(enum HeapID heapID, int balls, Pokemon *bugmon);
+BattleSetup *BattleSetup_New_PalPark(enum HeapID heapID, int balls);
+BattleSetup *BattleSetup_New_Tutorial(enum HeapID heapID, FieldSystem *fieldSystem);
 void BattleSetup_Delete(BattleSetup *setup);
 void BattleSetup_AddMonToParty(BattleSetup *setup, Pokemon *mon, int battler);
 void sub_02051D18(BattleSetup *setup, FieldSystem *fieldSystem, SaveData *savedata, u32 mapno, BagCursor *bagCursor, void *arg5);

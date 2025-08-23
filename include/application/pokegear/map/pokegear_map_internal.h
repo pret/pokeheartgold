@@ -178,7 +178,7 @@ typedef struct PokegearMapAppData_Sub118 {
 } PokegearMapAppData_Sub118;
 
 typedef struct PokegearMapAppData {
-    HeapID heapId;                                // 0x000
+    enum HeapID heapID;                           // 0x000
     int state;                                    // 0x004
     int substate;                                 // 0x008
     u8 inMarkingsMode;                            // 0x00C

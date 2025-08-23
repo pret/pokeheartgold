@@ -10,7 +10,7 @@
 #include "unk_02005D10.h"
 
 typedef struct SerialRadioDramaShowData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 episodeID;
 } SerialRadioDramaShowData;
@@ -19,7 +19,7 @@ void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow);
 void RadioShow_SerialRadioDrama_Unload(RadioShow *radioShow);
 
 BOOL RadioShow_SerialRadioDrama_Setup(RadioShow *radioShow) {
-    SerialRadioDramaShowData *data = AllocFromHeap(radioShow->heapID, sizeof(SerialRadioDramaShowData));
+    SerialRadioDramaShowData *data = Heap_Alloc(radioShow->heapID, sizeof(SerialRadioDramaShowData));
     MI_CpuClear8(data, sizeof(SerialRadioDramaShowData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

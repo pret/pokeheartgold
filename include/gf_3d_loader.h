@@ -29,11 +29,11 @@ typedef struct GF_3DGfxRawResMan {
     GF_3DGfxRawResObj *objs;
 } GF_3DGfxRawResMan;
 
-GF_2DGfxRawResMan *GF2dGfxRawResMan_Create(int num, HeapID heapId);
+GF_2DGfxRawResMan *GF2dGfxRawResMan_Create(int num, enum HeapID heapID);
 void GF2dGfxRawResObj_Destroy(GF_2DGfxRawResMan *man);
 BOOL GF2dGfxRawResMan_DoesNotHaveObjWithId(GF_2DGfxRawResMan *resourceMgr, int id);
 GF_2DGfxRawResObj *GF2dGfxRawResMan_AllocObj(GF_2DGfxRawResMan *resourceMgr, void *resource, int id);
-GF_2DGfxRawResObj *GF2dGfxRawResMan_ReadAndAllocObj(GF_2DGfxRawResMan *resourceMgr, const char *name, int id, HeapID heapId);
+GF_2DGfxRawResObj *GF2dGfxRawResMan_ReadAndAllocObj(GF_2DGfxRawResMan *resourceMgr, const char *name, int id, enum HeapID heapID);
 void GF2dGfxRawResMan_FreeObj(GF_2DGfxRawResMan *resourceMgr, GF_2DGfxRawResObj *obj);
 void GF2dGfxRawResMan_FreeAllObjs(GF_2DGfxRawResMan *resourceMgr);
 GF_2DGfxRawResObj *GF2dGfxRawResMan_GetObjById(GF_2DGfxRawResMan *resourceMgr, int id);
@@ -41,11 +41,11 @@ int Get2DGfxRawResObjId(GF_2DGfxRawResObj *resource);
 void *GF2dGfxRawResObj_GetData(GF_2DGfxRawResObj *resource);
 void GF2dGfxRawResObj_ReplaceData(GF_2DGfxRawResObj *resource, void *newPtr);
 
-GF_3DGfxRawResMan *GF3dGfxRawResMan_Create(int num, HeapID heapId);
+GF_3DGfxRawResMan *GF3dGfxRawResMan_Create(int num, enum HeapID heapID);
 void GF3dGfxRawResMan_Destroy(GF_3DGfxRawResMan *man);
 BOOL GF3dGfxRawResMan_DoesNotHaveObjWithId(GF_3DGfxRawResMan *man, int id);
-GF_3DGfxRawResObj *GF3dGfxRawResMan_AllocObj(GF_3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId);
-GF_3DGfxRawResObj *GF3dGfxRawResMan_AllocObjAndKeys(GF_3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, HeapID heapId);
+GF_3DGfxRawResObj *GF3dGfxRawResMan_AllocObj(GF_3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, enum HeapID heapID);
+GF_3DGfxRawResObj *GF3dGfxRawResMan_AllocObjAndKeys(GF_3DGfxRawResMan *man, void *resource, int id, BOOL shouldCopyWithoutTex, enum HeapID heapID);
 void GF3dGfxRawResMan_FreeObjById(GF_3DGfxRawResMan *man, int id);
 void GF3dGfxRawResMan_FreeAllObjs(GF_3DGfxRawResMan *man);
 GF_3DGfxRawResObj *GF3dGfxRawResMan_GetObjById(GF_3DGfxRawResMan *man, int id);

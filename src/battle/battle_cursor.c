@@ -6,8 +6,8 @@
 
 static void BattleCursor_Update(SysTask *task, void *data);
 
-void BattleCursor_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation) {
-    NARC *narc = NARC_New(NARC_a_0_0_8, heapId);
+void BattleCursor_LoadResources(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, enum HeapID heapID, u32 character, u32 pal, u32 cell, u32 animation) {
+    NARC *narc = NARC_New(NARC_a_0_0_8, heapID);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_SUB_OBJ, renderer, gfxHandler, narc, 80, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, pal);
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, 250, 1, NNS_G2D_VRAM_TYPE_2DSUB, character);
     SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, 251, 1, cell);
@@ -35,7 +35,7 @@ static const ManagedSpriteTemplate ov12_0226EBA0 = {
     .vramTransfer = 0
 };
 
-BattleCursor *BattleCursor_New(SpriteSystem *renderer, SpriteManager *gfxHandler, HeapID heapId, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
+BattleCursor *BattleCursor_New(SpriteSystem *renderer, SpriteManager *gfxHandler, enum HeapID heapID, u32 character, u32 pal, u32 cell, u32 animation, u32 a7, u32 a8) {
     BattleCursor *cursor;
     ManagedSpriteTemplate unkStruct;
     int i;
@@ -48,7 +48,7 @@ BattleCursor *BattleCursor_New(SpriteSystem *renderer, SpriteManager *gfxHandler
     unkStruct.drawPriority = a7;
     unkStruct.bgPriority = a8;
 
-    cursor = AllocFromHeap(heapId, sizeof(BattleCursor));
+    cursor = Heap_Alloc(heapID, sizeof(BattleCursor));
     MI_CpuFill8(cursor, 0, sizeof(BattleCursor));
 
     for (i = 0; i < 5; i++) {

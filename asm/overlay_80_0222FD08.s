@@ -13,7 +13,7 @@ ov80_0222FD08: ; 0x0222FD08
 	mov r0, #0xb
 	add r7, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0222FED8 ; =_0223DD40
 	ldr r2, _0222FED4 ; =0x00000708
 	str r0, [r1]

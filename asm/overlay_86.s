@@ -35,7 +35,7 @@ ov86_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x79
 	lsl r2, r0, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0xe5
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -245,7 +245,7 @@ ov86_021E5AA4: ; 0x021E5AA4
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x79
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -3341,7 +3341,7 @@ _021E7438:
 	ldr r1, [sp, #0xc]
 	mov r0, #0x79
 	lsl r1, r1, #1
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x26
 	lsl r1, r1, #4
 	str r0, [r5, r1]

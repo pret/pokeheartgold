@@ -43,9 +43,9 @@
 .public sub_020182A8
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public GF3dRender_BindModelSet
 .public sub_0201FA34
