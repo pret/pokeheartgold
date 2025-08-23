@@ -522,7 +522,7 @@ sub_0202B994: ; 0x0202B994
 sub_0202B998: ; 0x0202B998
 	push {r4, lr}
 	mov r1, #0x74
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x74
 	add r4, r0, #0

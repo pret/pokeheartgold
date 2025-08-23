@@ -55,7 +55,7 @@ enum {
 };
 
 typedef struct OptionsApp_Data {
-    HeapID heapId;
+    enum HeapID heapID;
     u32 exitState;
     u32 setupAndFreeState;
     u32 fadeUnused; // unused, game writes 0 here when it's about to start a fade, but never reads from here
@@ -178,11 +178,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 112,
      .y = 24,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -192,11 +192,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 112,
      .y = 48,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -206,11 +206,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 112,
      .y = 72,
      .z = 0,
-     .animSeqNo = 1,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 1,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -220,11 +220,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 112,
      .y = 96,
      .z = 0,
-     .animSeqNo = 1,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 1,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -234,11 +234,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 112,
      .y = 120,
      .z = 0,
-     .animSeqNo = 1,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 1,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -248,11 +248,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 115,
      .y = 144,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -262,11 +262,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 213,
      .y = 144,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 0,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 0,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -276,11 +276,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 188,
      .y = 170,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 1,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 1,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -290,11 +290,11 @@ static const UnmanagedSpriteTemplate ov54_021E6EAC[9] = {
      .x = 116,
      .y = 170,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 1,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 1,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -328,7 +328,7 @@ static BOOL OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(OptionsApp_Data *da
 
 BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
     OptionsApp_Args *args = OverlayManager_GetArgs(manager);
-    CreateHeap(HEAP_ID_3, HEAP_ID_OPTIONS_APP, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_OPTIONS_APP, 0x30000);
 
     OptionsApp_Data *data = OverlayManager_CreateAndGetData(manager, sizeof(OptionsApp_Data), HEAP_ID_OPTIONS_APP);
     memset(data, 0, sizeof(OptionsApp_Data));
@@ -342,10 +342,10 @@ BOOL OptionsMenu_Init(OverlayManager *manager, int *state) {
 
     data->menuInputPtr = args->menuInputStateMgr;
     data->playerOptionsUnused = args->options;
-    data->heapId = HEAP_ID_OPTIONS_APP;
+    data->heapID = HEAP_ID_OPTIONS_APP;
     data->playerOptions = args->options;
     data->menuInputState = MenuInputStateMgr_GetState(data->menuInputPtr);
-    data->frameNumText = String_New(40, data->heapId);
+    data->frameNumText = String_New(40, data->heapID);
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
@@ -385,7 +385,7 @@ BOOL OptionsMenu_Exit(OverlayManager *manager, int *state) {
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(data->heapId);
+    Heap_Destroy(data->heapID);
 
     return TRUE;
 }
@@ -399,7 +399,7 @@ BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
         }
 
         data->fadeUnused = 0;
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
         OptionsApp_SetActiveButtonsXPosition(data);
         SpriteSystem_DrawSprites(data->spriteGfxHandler);
         break;
@@ -421,7 +421,7 @@ BOOL OptionsMenu_Main(OverlayManager *manager, int *state) {
         SpriteSystem_DrawSprites(data->spriteGfxHandler);
         if (!OptionsApp_ConfirmAndQuitButtonsAreDoneAnimating(data)) {
             data->fadeUnused = 0;
-            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+            BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
             break;
         }
         return FALSE;
@@ -457,7 +457,7 @@ static void OptionsApp_SetupGraphicsBanks(void) {
 
 static void OptionsApp_OnVBlank(OptionsApp_Data *data) {
     if (data->unk10_21) {
-        LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0x6D, 15, data->menuEntries[MENU_ENTRY_FRAME].value, data->heapId);
+        LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0x6D, 15, data->menuEntries[MENU_ENTRY_FRAME].value, data->heapID);
         data->unk10_21 = FALSE;
     }
 
@@ -491,14 +491,14 @@ static BOOL ov54_021E5CE4(OptionsApp_Data *data) {
 
     case 1:
         OptionsApp_SetupGraphicsData(data);
-        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0045_bin, data->heapId);
+        data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0045_bin, data->heapID);
         OptionsApp_LoadMenuEntriesData(data);
         break;
 
     case 2:
         OptionsApp_SetupWindows(data);
         OptionsApp_SetupInterfaceText(data);
-        GF_CreateVramTransferManager(32, data->heapId);
+        GF_CreateVramTransferManager(32, data->heapID);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
         sub_0203A964();
         OptionsApp_SetupSprites(data);
@@ -546,7 +546,7 @@ static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
 }
 
 static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
-    data->bgConfig = BgConfig_Alloc(data->heapId);
+    data->bgConfig = BgConfig_Alloc(data->heapID);
     GraphicsModes modes = {
         .dispMode = GX_DISPMODE_GRAPHICS,
         .bgMode = GX_BGMODE_0,
@@ -633,10 +633,10 @@ static void OptionsApp_SetupBgConfig(OptionsApp_Data *data) {
         BgClearTilemapBufferAndCommit(data->bgConfig, sOptionsAppBgLayers[i]);
     }
 
-    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 32, 0, data->heapId);
-    BG_ClearCharDataRange(GF_BG_LYR_MAIN_1, 32, 0, data->heapId);
-    BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 32, 0, data->heapId);
-    BG_ClearCharDataRange(GF_BG_LYR_SUB_1, 32, 0, data->heapId);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_0, 32, 0, data->heapID);
+    BG_ClearCharDataRange(GF_BG_LYR_MAIN_1, 32, 0, data->heapID);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_0, 32, 0, data->heapID);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_1, 32, 0, data->heapID);
 }
 
 static void OptionsApp_FreeBgConfig(OptionsApp_Data *data) {
@@ -649,13 +649,13 @@ static void OptionsApp_FreeBgConfig(OptionsApp_Data *data) {
 }
 
 static void OptionsApp_SetupGraphicsData(OptionsApp_Data *data) {
-    GfGfxLoader_GXLoadPal(NARC_a_0_7_2, 3, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x40, data->heapId);
-    GfGfxLoader_LoadCharData(NARC_a_0_7_2, 8, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 19, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPal(NARC_a_0_7_2, 2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x40, data->heapId);
-    GfGfxLoader_LoadCharData(NARC_a_0_7_2, 7, data->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 17, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 18, data->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, data->heapId);
+    GfGfxLoader_GXLoadPal(NARC_a_0_7_2, 3, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0x40, data->heapID);
+    GfGfxLoader_LoadCharData(NARC_a_0_7_2, 8, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 19, data->bgConfig, GF_BG_LYR_SUB_0, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_GXLoadPal(NARC_a_0_7_2, 2, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0x40, data->heapID);
+    GfGfxLoader_LoadCharData(NARC_a_0_7_2, 7, data->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 17, data->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_LoadScrnData(NARC_a_0_7_2, 18, data->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, FALSE, data->heapID);
 
     BgSetPosTextAndCommit(data->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_Y, sMenuEntryBorderYCoords[data->currentMenuEntryId]);
 }
@@ -671,11 +671,11 @@ static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
     AddWindowParameterized(data->bgConfig, &data->windows.frameAndTextSpeedTest, GF_BG_LYR_SUB_1, 2, 19, 27, 4, 12, 0x1);
     AddWindowParameterized(data->bgConfig, &data->windows.confirmButton, GF_BG_LYR_MAIN_1, 15, 21, 7, 3, 13, 0x25F);
 
-    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0x6D, 15, data->options.frame, data->heapId);
-    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_13_OFFSET, data->heapId);
-    LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_13_OFFSET, data->heapId);
-    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, data->heapId);
-    LoadFontPal1(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_12_OFFSET, data->heapId);
+    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0x6D, 15, data->options.frame, data->heapID);
+    LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_13_OFFSET, data->heapID);
+    LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_13_OFFSET, data->heapID);
+    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, data->heapID);
+    LoadFontPal1(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_12_OFFSET, data->heapID);
 
     FillWindowPixelBuffer(&data->windows.optionsTitle, 0x00);
     FillWindowPixelBuffer(&data->windows.selectedOption, 0x00);
@@ -722,7 +722,7 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
 
 static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     u16 i;
-    String *tmpString = String_New(40, data->heapId);
+    String *tmpString = String_New(40, data->heapID);
 
     ReadMsgDataIntoString(data->msgData, msg_0045_00000, tmpString); // OPTIONS
     AddTextPrinterParameterizedWithColor(&data->windows.optionsTitle, 0, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
@@ -987,7 +987,7 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 
-    data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
+    data->spriteRenderer = SpriteSystem_Alloc(data->heapID);
     data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
 
     const OamManagerParam unk1 = {

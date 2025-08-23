@@ -29,7 +29,7 @@ sub_02058AEC: ; 0x02058AEC
 	str r2, [sp]
 	str r3, [sp, #4]
 	ldr r5, [r6, #0xc]
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x3c
 	add r4, r0, #0
@@ -90,7 +90,7 @@ sub_02058B84: ; 0x02058B84
 	add r5, r0, #0
 	add r0, r1, #0
 	mov r1, #0x44
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x44
 	add r4, r0, #0
@@ -1318,7 +1318,7 @@ sub_02059538: ; 0x02059538
 _02059546:
 	mov r0, #0xb
 	mov r1, #0x8c
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x8c
@@ -1393,11 +1393,11 @@ _020595F0:
 	add r6, r0, #0
 	mov r0, #0xb
 	add r1, r6, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [r4, #0x4c]
 	mov r0, #0xb
 	add r1, r6, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [r4, #0x48]
 	mov r0, #0xb
 	bl SaveArray_Party_Alloc
@@ -2383,7 +2383,7 @@ _02059D66:
 	bne _02059D9C
 	ldr r1, _02059DA8 ; =0x000006A8
 	mov r0, #0xb
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r2, r0, #0
 	str r4, [r2, #0x24]
 	mov r0, #0
@@ -2424,7 +2424,7 @@ _02059DC8:
 	mov r0, #3
 	mov r1, #0x1f
 	lsl r2, r2, #6
-	bl CreateHeapAtEnd
+	bl Heap_CreateAtEnd
 	add r0, r4, #0
 	bl sub_02059E1C
 	add r5, r0, #0
@@ -2481,7 +2481,7 @@ _02059E2E:
 	mov r1, #0x19
 	mov r0, #0x1f
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x19
 	mov r1, #0
 	lsl r2, r2, #4
@@ -2951,7 +2951,7 @@ sub_0205A1D4: ; 0x0205A1D4
 	add r0, r4, #0
 	bl Heap_Free
 	mov r0, #0x1f
-	bl DestroyHeap
+	bl Heap_Destroy
 _0205A1EC:
 	pop {r4, pc}
 	.balign 4, 0

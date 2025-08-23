@@ -35,12 +35,12 @@ typedef struct SaveRankingsSortBuffer {
 
 static void SaveRankingsEntry_Init(SaveRankingsEntry *rankingsEntry);
 static BOOL SaveRankingsEntry_IsInit(SaveRankingsEntry *rankingsEntry);
-static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId);
+static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, enum HeapID heapID);
 static void SaveRankingsEntry_InitArrayOf6(SaveRankingsEntry *rankingsEntry);
 static BOOL SaveRankingsEntry_TestEqual(const SaveRankingsEntry *lhs, const SaveRankingsEntry *rhs);
 static BOOL SaveRankingsSortBuffer_EntryAlreadyExists(const SaveRankingsSortBuffer *sortBuffer, const SaveRankingsEntry *rankingsEntry);
-static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortBuffer *sortBuffer, int groupId, u8 statIdx, u8 scope, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID heapId);
-static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID heapId);
+static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortBuffer *sortBuffer, int groupId, u8 statIdx, u8 scope, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, enum HeapID heapID);
+static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, enum HeapID heapID);
 
 static const u8 sPageOffsets[][2] = {
     { RANKINGS_RECORD_BATTLE_TOWER_COUNT, RANKINGS_RECORD_BATTLE_TOWER_BEGIN },
@@ -124,7 +124,7 @@ u32 Save_Rankings_GetMixingSize(void) {
     return RANKINGS_COUNT * sizeof(SaveRankingsEntry);
 }
 
-static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
+static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, enum HeapID heapID) {
     int i;
     u32 val;
     GameStats *gameStats;
@@ -133,7 +133,7 @@ static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
 
     gameStats = Save_GameStats_Get(saveData);
     frontierSave = Save_Frontier_GetStatic(saveData);
-    ret = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(u32));
+    ret = Heap_AllocAtEnd(heapID, RANKINGS_COUNT * sizeof(u32));
 
     for (i = 0; i < RANKINGS_COUNT; ++i) {
         switch (i) {
@@ -173,7 +173,7 @@ static u32 *Save_RankingSys_GetPlayerStats(SaveData *saveData, HeapID heapId) {
     return ret;
 }
 
-SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID heapId) {
+SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, enum HeapID heapID) {
     int i;
     int groupId;
     SaveRankingsEntry *ret;
@@ -182,11 +182,11 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID h
     PlayerProfile *profile;
 
     profile = Save_PlayerData_GetProfile(saveData);
-    ret = AllocFromHeapAtEnd(heapId, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
+    ret = Heap_AllocAtEnd(heapID, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     MI_CpuClear8(ret, RANKINGS_COUNT * sizeof(SaveRankingsEntry));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
-    name = PlayerProfile_GetPlayerName_NewString(profile, heapId);
-    tmp = Save_RankingSys_GetPlayerStats(saveData, heapId);
+    name = PlayerProfile_GetPlayerName_NewString(profile, heapID);
+    tmp = Save_RankingSys_GetPlayerStats(saveData, heapID);
 
     for (i = 0; i < RANKINGS_COUNT; ++i) {
         ret[i].groupId = groupId;
@@ -223,7 +223,7 @@ static BOOL SaveRankingsSortBuffer_EntryAlreadyExists(const SaveRankingsSortBuff
     return FALSE;
 }
 
-static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortBuffer *sortBuffer, int groupId, u8 statIdx, u8 scope, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID unused) {
+static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortBuffer *sortBuffer, int groupId, u8 statIdx, u8 scope, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, enum HeapID unused) {
     SaveRankingsEntry *saveRecordsPtr;
     int i;
     int j;
@@ -274,16 +274,16 @@ static void SaveRankings_GetSorted(SaveRankings *saveRankings, SaveRankingsSortB
     }
 }
 
-static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, HeapID heapId) {
-    SaveRankingsSortBuffer *temp = AllocFromHeapAtEnd(heapId, sizeof(SaveRankingsSortBuffer));
-    SaveRankings_GetSorted(saveRankings, temp, groupId, statIdx, RANKINGS_SCOPE_GLOBAL, filteredEntries, filteredEntriesCnt, heapId);
+static void SaveRankings_GetSortedScoped(SaveRankings *saveRankings, int groupId, u8 statIdx, SaveRankingsEntry **filteredEntries, u8 filteredEntriesCnt, enum HeapID heapID) {
+    SaveRankingsSortBuffer *temp = Heap_AllocAtEnd(heapID, sizeof(SaveRankingsSortBuffer));
+    SaveRankings_GetSorted(saveRankings, temp, groupId, statIdx, RANKINGS_SCOPE_GLOBAL, filteredEntries, filteredEntriesCnt, heapID);
     if (groupId != 0) {
-        SaveRankings_GetSorted(saveRankings, temp, groupId, statIdx, RANKINGS_SCOPE_GROUP, filteredEntries, filteredEntriesCnt, heapId);
+        SaveRankings_GetSorted(saveRankings, temp, groupId, statIdx, RANKINGS_SCOPE_GROUP, filteredEntries, filteredEntriesCnt, heapID);
     }
     Heap_Free(temp);
 }
 
-void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, HeapID heapId) {
+void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, enum HeapID heapID) {
     u8 i;
     u8 cnt;
     SaveRankingsEntry *filteredEntries[RANKINGS_PER_STAT - 1];
@@ -300,13 +300,13 @@ void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn,
     }
     if (cnt != 0) {
         for (i = 0; i < RANKINGS_COUNT; ++i) {
-            SaveRankings_GetSortedScoped(saveRankings, groupId, i, filteredEntries, cnt, heapId);
+            SaveRankings_GetSortedScoped(saveRankings, groupId, i, filteredEntries, cnt, heapID);
         }
         SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
     }
 }
 
-ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, HeapID heapId) {
+ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, enum HeapID heapID) {
     int i;
     int pageOffset;
     ViewRankingsPage *ret;
@@ -315,32 +315,32 @@ ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, He
     PlayerProfile *profile;
 
     profile = Save_PlayerData_GetProfile(saveData);
-    ret = AllocFromHeap(heapId, sizeof(ViewRankingsPage));
+    ret = Heap_Alloc(heapID, sizeof(ViewRankingsPage));
     MI_CpuClear8(ret, sizeof(ViewRankingsPage));
     groupId = Save_FriendGroup_GetGroupId(Save_FriendGroup_Get(saveData), 1);
-    tmp = Save_RankingSys_GetPlayerStats(saveData, heapId);
+    tmp = Save_RankingSys_GetPlayerStats(saveData, heapID);
     ret->count = RankingsViewSys_GetNumRecordsPerPage(page);
     pageOffset = RankingsViewSys_GetFirstRecordIndexOnPage(page);
     for (i = 0; i < ret->count; ++i) {
         ret->entries[i].groupId = groupId;
         ret->entries[i].stat = tmp[i + pageOffset];
-        ret->entries[i].playerName = PlayerProfile_GetPlayerName_NewString(profile, heapId);
+        ret->entries[i].playerName = PlayerProfile_GetPlayerName_NewString(profile, heapID);
     }
     Heap_Free(tmp);
     return ret;
 }
 
-ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, HeapID heapId) {
+ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, enum HeapID heapID) {
     int i;
     ViewRankingsPage *ret;
 
-    ret = AllocFromHeap(heapId, sizeof(ViewRankingsPage));
+    ret = Heap_Alloc(heapID, sizeof(ViewRankingsPage));
     MI_CpuClear8(ret, sizeof(ViewRankingsPage));
     for (i = 0; i < RANKINGS_PER_STAT; ++i) {
         if (SaveRankingsEntry_IsInit(&saveRankings->array[page][i])) {
             ret->entries[ret->count].groupId = saveRankings->array[page][i].groupId;
             ret->entries[ret->count].stat = saveRankings->array[page][i].stat;
-            ret->entries[ret->count].playerName = String_New(PLAYER_NAME_LENGTH + 1, heapId);
+            ret->entries[ret->count].playerName = String_New(PLAYER_NAME_LENGTH + 1, heapID);
             CopyU16ArrayToString(ret->entries[ret->count].playerName, saveRankings->array[page][i].playerName);
             ++ret->count;
         }

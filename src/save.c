@@ -71,7 +71,7 @@ SaveData *SaveData_New(void) {
     int sp4;
     int sp0;
 
-    ret = AllocFromHeap(HEAP_ID_1, sizeof(SaveData));
+    ret = Heap_Alloc(HEAP_ID_1, sizeof(SaveData));
     MI_CpuClearFast(ret, sizeof(SaveData));
     sSaveDataPtr = ret;
 
@@ -138,7 +138,7 @@ BOOL Save_DeleteAllData(SaveData *saveData) {
     u8 *r6;
     int i;
 
-    r6 = AllocFromHeapAtEnd(HEAP_ID_3, SAVE_SECTOR_SIZE);
+    r6 = Heap_AllocAtEnd(HEAP_ID_3, SAVE_SECTOR_SIZE);
     Sys_SetSleepDisableFlag(1);
     FlashClobberChunkFooter(saveData, 0, saveData->lastGoodSector == 0 ? 1 : 0);
     FlashClobberChunkFooter(saveData, 1, saveData->lastGoodSector == 0 ? 1 : 0);
@@ -441,8 +441,8 @@ static int Save_GetSaveFilesStatus(SaveData *saveData) {
     u32 numGood_sub;
     u32 __newer_main;
 
-    data1 = AllocFromHeapAtEnd(HEAP_ID_3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
-    data2 = AllocFromHeapAtEnd(HEAP_ID_3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
+    data1 = Heap_AllocAtEnd(HEAP_ID_3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
+    data2 = Heap_AllocAtEnd(HEAP_ID_3, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE);
     if (FlashLoadChunk(0 * 0x40000, data1, SAVE_PAGE_MAX * SAVE_SECTOR_SIZE)) {
         SaveSlotCheck_InitFromSavedat(&checks_main[0], saveData, data1, 0);
         SaveSlotCheck_InitFromSavedat(&checks_sub[0], saveData, data1, 1);
@@ -947,7 +947,7 @@ int sub_02028230(SaveData *saveData, int idx, void *data) {
     return WRITE_STATUS_TOTAL_FAIL;
 }
 
-void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p) {
+void *ReadExtraSaveChunk(SaveData *saveData, enum HeapID heapID, int idx, int *ret_p) {
     const struct ExtraSaveChunkHeader *hdr;
     u32 size;
     void *ret;
@@ -961,7 +961,7 @@ void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p)
     GF_ASSERT(hdr->id == idx);
 
     size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
-    ret = AllocFromHeap(heapId, size);
+    ret = Heap_Alloc(heapID, size);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
     valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());
     saveno1 = SaveArray_GetFooterSaveNo(ret, hdr->sizeFunc());
@@ -1001,7 +1001,7 @@ void *ReadExtraSaveChunk(SaveData *saveData, HeapID heapId, int idx, int *ret_p)
     return ret;
 }
 
-void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *ret2_p) {
+void *sub_020284A4(SaveData *saveData, enum HeapID heapID, int idx, int *ret_p, int *ret2_p) {
     const struct ExtraSaveChunkHeader *hdr;
     u32 sp2C;
     u32 sp28;
@@ -1021,7 +1021,7 @@ void *sub_020284A4(SaveData *saveData, HeapID heapId, int idx, int *ret_p, int *
     hdr = &gExtraSaveChunkHeaders[idx];
     GF_ASSERT(hdr->id == idx);
     size = hdr->sizeFunc() + sizeof(struct SaveArrayFooter);
-    ret = AllocFromHeap(heapId, size);
+    ret = Heap_Alloc(heapID, size);
     sub_020286B4(saveData, idx, &sp24, &sp20, &sp1C);
     FlashLoadChunk(hdr->sector * SAVE_SECTOR_SIZE, ret, size);
     valid1 = ValidateChunk(saveData, ret, idx, hdr->sizeFunc());

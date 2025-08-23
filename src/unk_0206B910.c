@@ -79,15 +79,15 @@ static void sub_0206BD00(UnkStruct_0206BCD4 *a0);
 
 void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0206B910 *r4 = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_0206B910));
+    UnkStruct_0206B910 *r4 = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206B910));
     memset(r4, 0, sizeof(UnkStruct_0206B910));
     r4->saveData = saveData;
-    r4->unk04 = AllocFromHeap(HEAP_ID_FIELD, sizeof(UnkStruct_0206B984));
+    r4->unk04 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0206B984));
     memset(r4->unk04, 0, sizeof(UnkStruct_0206B984));
     r4->unk04->options = Save_PlayerData_GetOptionsAddr(saveData);
     r4->unk04->saveData = saveData;
     r4->unk04->menuInputStatePtr = &fieldSystem->menuInputState;
-    r4->partyMenu = AllocFromHeap(HEAP_ID_FIELD, sizeof(PartyMenuArgs));
+    r4->partyMenu = Heap_Alloc(HEAP_ID_FIELD2, sizeof(PartyMenuArgs));
     memset(r4->partyMenu, 0, sizeof(PartyMenuArgs));
     TaskManager_Call(taskManager, sub_0206B984, r4);
 }
@@ -240,17 +240,17 @@ static BOOL sub_0206BCB4(UnkStruct_0206BCD4 *a0, u8 a1) {
 }
 
 static UnkStruct_0206BCD4 *sub_0206BCD4(void) {
-    UnkStruct_0206BCD4 *unkStruct = AllocFromHeap(HEAP_ID_20, sizeof(UnkStruct_0206BCD4));
+    UnkStruct_0206BCD4 *unkStruct = Heap_Alloc(HEAP_ID_20, sizeof(UnkStruct_0206BCD4));
     MI_CpuFill8(unkStruct, 0, sizeof(UnkStruct_0206BCD4));
     return unkStruct;
 }
 
 static UnkStruct_0206BCD4 *sub_0206BCEC(UnkStruct_0206BCEC *unused) {
-    CreateHeap(HEAP_ID_FIELD, HEAP_ID_20, 0x4000);
+    Heap_Create(HEAP_ID_FIELD2, HEAP_ID_20, 0x4000);
     return sub_0206BCD4();
 }
 
 static void sub_0206BD00(UnkStruct_0206BCD4 *a0) {
     Heap_Free(a0);
-    DestroyHeap(HEAP_ID_20);
+    Heap_Destroy(HEAP_ID_20);
 }

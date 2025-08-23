@@ -18,7 +18,7 @@ static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
     return !GetMonData(mon, MON_DATA_IS_EGG, NULL);
 }
 
-BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
+BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
     Party *party;
     Pokemon *mon;
     PlayerProfile *profile;
@@ -28,10 +28,10 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     {
-        mon = AllocMonZeroed(heapId);
+        mon = AllocMonZeroed(heapID);
         ZeroMonData(mon);
         CreateMon(mon, species, level, 32, FALSE, 0, 0, 0);
-        sub_020720FC(mon, profile, ITEM_POKE_BALL, ball, encounterType, heapId);
+        sub_020720FC(mon, profile, ITEM_POKE_BALL, ball, encounterType, heapID);
         sp1C = heldItem;
         SetMonData(mon, MON_DATA_HELD_ITEM, &sp1C);
         SetMonData(mon, MON_DATA_FORM, &form);
@@ -47,8 +47,8 @@ BOOL GiveMon(HeapID heapId, SaveData *saveData, int species, int level, int form
     return result;
 }
 
-BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
-#pragma unused(heapId)
+BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
+#pragma unused(heapID)
     PlayerProfile *profile;
     Party *party;
     Pokemon *mon;
@@ -56,7 +56,7 @@ BOOL GiveEgg(HeapID heapId, SaveData *saveData, int species, u8 metLocation, Map
 
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
-    mon = AllocMonZeroed(HEAP_ID_32);
+    mon = AllocMonZeroed(HEAP_ID_FIELD3);
     ZeroMonData(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);

@@ -3446,7 +3446,7 @@ ov05_0221D530: ; 0x0221D530
 	str r0, [r4, r6]
 	ldr r0, [r4, r6]
 	mov r1, #0
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	add r0, r5, #0
 	bl RemoveWindow
 	add sp, #0x40
@@ -3506,11 +3506,11 @@ _0221D62A:
 	ldr r0, _0221D65C ; =0x00000B4C
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0221D660 ; =0x00000B54
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, pc}
 	nop
 _0221D658: .word 0x00000B44
@@ -3990,7 +3990,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r1, #0x12
 	ldr r0, [r0, #0x24]
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xb6
 	lsl r2, r2, #4
 	str r0, [r4, r2]

@@ -37,7 +37,7 @@ Bag_Init: ; 0x021F9380
 	mov r0, #3
 	mov r1, #6
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021F95F4 ; =0x0000094C
 	add r0, r5, #0
 	mov r2, #6
@@ -632,7 +632,7 @@ Bag_Exit: ; 0x021F982C
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #6
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -9284,7 +9284,7 @@ ov15_021FDD70: ; 0x021FDD70
 	mov r1, #6
 	add r0, r7, r0
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r0, _021FDF18 ; =0x0000081C
 	add r4, r7, r0
 	ldr r0, _021FDF1C ; =0x00000615

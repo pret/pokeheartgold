@@ -29,8 +29,8 @@
 .public DestroyMsgData
 .public NewString_ReadMsgData
 .public MenuInputStateMgr_SetState
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

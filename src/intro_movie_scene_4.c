@@ -114,7 +114,7 @@ static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4
     IntroMovie_Scene4_CreateSprites(data, sceneData);
     sceneData->gf3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene4_3DVRamManInit);
     sub_02014DA0();
-    sceneData->particleHeap = AllocFromHeap(HEAP_ID_INTRO_MOVIE, 0x4800);
+    sceneData->particleHeap = Heap_Alloc(HEAP_ID_INTRO_MOVIE, 0x4800);
     sceneData->particleSystem = sub_02014DB4(IntroMovie_Scene4_TexAlloc, IntroMovie_Scene4_PlttAlloc, sceneData->particleHeap, 0x4800, TRUE, HEAP_ID_INTRO_MOVIE);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(1), FX32_CONST(900), sub_02015524(sceneData->particleSystem));
     sub_0201526C(sceneData->particleSystem, sub_02015264(NARC_a_0_5_9, 4, HEAP_ID_INTRO_MOVIE), 0x0A, TRUE);
@@ -553,8 +553,8 @@ static void Task_IntroMovie_Scene4_FlipScreens(SysTask *task, void *pVoid) {
     sceneData->flipScreensTask = NULL;
 }
 
-HeapID _deadstrip_04(int idx);
-HeapID _deadstrip_04(int idx) {
-    static const HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
+enum HeapID _deadstrip_04(int idx);
+enum HeapID _deadstrip_04(int idx) {
+    static const enum HeapID sDeadstrippedRodata[1] = { HEAP_ID_INTRO_MOVIE };
     return sDeadstrippedRodata[idx];
 }

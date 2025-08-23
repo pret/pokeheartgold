@@ -33,15 +33,15 @@ typedef struct BagCursor {
 } BagCursor;
 
 /*
- * BagCursor *BagCursor_New(HeapID heapId)
+ * BagCursor *BagCursor_New(enum HeapID heapID)
  *
  * Allocates a new BagCursor
  *
- * @param heapId:     Heap to allocate from
+ * @param heapID:     Heap to allocate from
  *
  * @returns: Pointer to newly-allocated BagCursor
  */
-BagCursor *BagCursor_New(HeapID heapId);
+BagCursor *BagCursor_New(enum HeapID heapID);
 
 /*
  * void BagCursor_Field_PocketGetPosition(BagCursor *cursor, u32 pocket, u8 *position, u8 *scroll)

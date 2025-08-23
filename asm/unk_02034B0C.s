@@ -25,7 +25,7 @@ sub_02034B0C: ; 0x02034B0C
 	bne _02034BCA
 	ldr r1, _02034BD0 ; =0x00000D98
 	mov r0, #0xf
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02034BCC ; =_021D4134
 	ldr r2, _02034BD0 ; =0x00000D98
 	str r0, [r1, #8]
@@ -34,7 +34,7 @@ sub_02034B0C: ; 0x02034B0C
 	bl sub_020335B4
 	add r1, r0, #0
 	mov r0, #0xf
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02034BCC ; =_021D4134
 	ldr r2, [r1, #8]
 	ldr r1, _02034BD4 ; =0x00000D64
@@ -50,7 +50,7 @@ sub_02034B0C: ; 0x02034B0C
 	bl LinkBattleRuleset_sizeof
 	add r1, r0, #0
 	mov r0, #0xf
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02034BCC ; =_021D4134
 	ldr r2, [r1, #8]
 	ldr r1, _02034BD8 ; =0x00000D7C
@@ -65,7 +65,7 @@ sub_02034B0C: ; 0x02034B0C
 	bl MI_CpuFill8
 	mov r0, #0xf
 	mov r1, #0x90
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02034BCC ; =_021D4134
 	ldr r1, _02034BDC ; =0x00000D84
 	ldr r3, [r2, #8]

@@ -112,7 +112,7 @@ static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 ico
 static BOOL FieldTask_TakePhoto(TaskManager *taskManager);
 static void sub_0206B82C(PlayerAvatar *playerAvatar, u8 state, u8 gender);
 static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo);
-static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId);
+static void drawCameraGfx(BgConfig *bgConfig, enum HeapID heapID);
 
 typedef struct Coord2U16 {
     u16 x;
@@ -146,7 +146,7 @@ static PhotoCameraParam sCameraParam = {
 };
 
 void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
-    FieldTakePhoto *takePhoto = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTakePhoto));
+    FieldTakePhoto *takePhoto = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldTakePhoto));
     MI_CpuFill8(takePhoto, 0, sizeof(FieldTakePhoto));
     takePhoto->state = 0;
     takePhoto->positionMonDelayCounter = 0;
@@ -170,7 +170,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
 }
 
 void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
-    FieldViewPhoto *photo = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldViewPhoto));
+    FieldViewPhoto *photo = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
     photo->x = GetPlayerXCoord(fieldSystem->playerAvatar);
     photo->y = GetPlayerZCoord(fieldSystem->playerAvatar);
@@ -250,7 +250,7 @@ static int ViewPhotoFieldTask_HandleAlbumSelection(FieldSystem *fieldSystem, Tas
 }
 
 static int ViewPhotoFieldTask_LoadPhotoAndBeginRender(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *viewPhoto) {
-    FieldTakePhoto3 *taskData = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(FieldTakePhoto3));
+    FieldTakePhoto3 *taskData = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldTakePhoto3));
     MI_CpuClear8(taskData, sizeof(FieldTakePhoto3));
     PhotoAlbum_GetPhotoByIndex(viewPhoto->photoAlbum, &viewPhoto->pPhoto, viewPhoto->whichPhoto);
     viewPhoto->numMons = viewPhoto->pPhoto.subjectSpriteId != 0 ? 2 : viewPhoto->pPhoto.numMons;
@@ -306,7 +306,7 @@ static int ViewPhotoFieldTask_WaitInput(FieldSystem *fieldSystem, TaskManager *t
 static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
         ++photo->substate;
         break;
     case 1:
@@ -323,7 +323,7 @@ static int ViewPhotoFieldTask_FadeInToPhoto(FieldSystem *fieldSystem, TaskManage
 static int ViewPhotoFieldTask_FadeOutFromPhoto(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *photo) {
     switch (photo->substate) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD2);
         ++photo->substate;
         break;
     case 1:
@@ -717,7 +717,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         takePhoto->state = TAKE_PHOTO_STATE_DRAW_CAMERA_GFX;
         break;
     case TAKE_PHOTO_STATE_DRAW_CAMERA_GFX:
-        drawCameraGfx(fieldSystem->bgConfig, HEAP_ID_4);
+        drawCameraGfx(fieldSystem->bgConfig, HEAP_ID_FIELD1);
         CallTask_FadeFromBlack(taskManager);
         takePhoto->shutterState = 0;
         takePhoto->state = TAKE_PHOTO_STATE_SHUTTER;
@@ -736,7 +736,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_OUT:
             PlaySE(SEQ_SE_GS_SHUTTER);
-            BeginNormalPaletteFade(3, 8, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(3, 8, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
@@ -755,7 +755,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_IN:
-            BeginNormalPaletteFade(3, 9, 0, RGB_BLACK, 6, 1, HEAP_ID_4);
+            BeginNormalPaletteFade(3, 9, 0, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN:
@@ -843,10 +843,10 @@ static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo) {
     }
 }
 
-static void drawCameraGfx(BgConfig *bgConfig, HeapID heapId) {
-    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapId);
-    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapId);
+static void drawCameraGfx(BgConfig *bgConfig, enum HeapID heapID) {
+    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapID);
+    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapID);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_MAIN_2);
     SetBgPriority(GF_BG_LYR_MAIN_2, 0);
 }

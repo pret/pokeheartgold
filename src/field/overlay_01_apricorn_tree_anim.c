@@ -65,7 +65,7 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
 static BOOL DoApricornJump(AnimApricornTreeWork *env);
 
 void FieldSystem_AnimApricornTree(FieldSystem *fieldSystem, LocalMapObject *tree, u16 *a2) {
-    AnimApricornTreeWork *env = AllocFromHeap(HEAP_ID_32, sizeof(AnimApricornTreeWork));
+    AnimApricornTreeWork *env = Heap_Alloc(HEAP_ID_FIELD3, sizeof(AnimApricornTreeWork));
     MI_CpuFill8(env, 0, sizeof(AnimApricornTreeWork));
     env->state = 0;
     env->tree = tree;
@@ -91,7 +91,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
             env->state = 10;
             break;
         }
-        AnimPlayerShakeTreeWork *ptr = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(AnimPlayerShakeTreeWork));
+        AnimPlayerShakeTreeWork *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(AnimPlayerShakeTreeWork));
         TaskManager_Call(taskman, Task_AnimPlayerShakeTree, ptr);
         env->state = 1;
         break;

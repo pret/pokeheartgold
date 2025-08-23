@@ -1,26 +1,27 @@
 #include "application/pokegear/pokegear_internal.h"
+#include "data/resdat.naix"
 
 #include "math_util.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
 #include "vram_transfer_manager.h"
 
-typedef struct UnkStruct_ov100_021E76BC {
+typedef struct PokegearObjResSpec {
     u32 maxSprites;
     const OamManagerParam *oamManagerParam;
     const OamCharTransferParam *oamCharTransferParam;
     const u16 *resIdList;
-} UnkStruct_ov100_021E76BC;
+} PokegearObjResSpec;
 
 void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1);
 void ov100_021E6C4C(PokegearApp_UnkSub094 *a0, u16 a1);
 void ov100_021E6CF4(PokegearApp_UnkSub094 *a0);
 void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1);
 
-u16 PokegearAppSwitch_GetFreeButtonSlot(PokegearAppSwitch *appSwitch);
-void ov100_021E71B4(PokegearAppSwitch *appSwitch, u16 index);
-void ov100_021E7368(PokegearAppSwitch *appSwitch, u8 move);
-u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex);
+u16 PokegearCursorManager_GetFreeCursorSlot(PokegearCursorManager *cursorManager);
+void PokegearCursorManager_UpdateCursorSpritePosition(PokegearCursorManager *cursorManager, u16 index);
+void PokegearCursorManager_UpdateActiveCursorPosition(PokegearCursorManager *cursorManager, u8 move);
+u8 PokegearCursorManager_SetCursorPosition(PokegearCursorManager *cursorManager, u16 index, u8 newIndex);
 
 extern const u8 ov100_021E764C[];
 
@@ -43,40 +44,74 @@ static const OamCharTransferParam sOamCharTransferParam = {
     .charModeSub = GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
-static const u16 ov100_021E767A[] = { 0x0022, 0x0023, 0x0021, 0x0020, 0xFFFF, 0xFFFF, 0x0050 };
-static const u16 ov100_021E7650[] = { 0x002A, 0x002B, 0x0029, 0x0028, 0xFFFF, 0xFFFF, 0x0052 };
-static const u16 ov100_021E765E[] = { 0x002E, 0x002F, 0x002D, 0x002C, 0xFFFF, 0xFFFF, 0x0053 };
-static const u16 ov100_021E766C[] = { 0x0026, 0x0027, 0x0025, 0x0024, 0xFFFF, 0xFFFF, 0x0051 };
-
-static const UnkStruct_ov100_021E76BC ov100_021E76BC[] = {
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E7650 },
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E766C },
-    { 0xC0, &sOamManagerParam, &sOamCharTransferParam, ov100_021E767A },
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E765E },
-    { 0x80, &sOamManagerParam, &sOamCharTransferParam, ov100_021E767A },
+static const u16 sResList_Map[] = {
+    NARC_resdat_resdat_00000034_bin,
+    NARC_resdat_resdat_00000035_bin,
+    NARC_resdat_resdat_00000033_bin,
+    NARC_resdat_resdat_00000032_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000080_bin,
+};
+static const u16 sResList_Configure[] = {
+    NARC_resdat_resdat_00000042_bin,
+    NARC_resdat_resdat_00000043_bin,
+    NARC_resdat_resdat_00000041_bin,
+    NARC_resdat_resdat_00000040_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000082_bin,
+};
+static const u16 sResList_Phone[] = {
+    NARC_resdat_resdat_00000046_bin,
+    NARC_resdat_resdat_00000047_bin,
+    NARC_resdat_resdat_00000045_bin,
+    NARC_resdat_resdat_00000044_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000083_bin,
+};
+static const u16 sResList_Radio[] = {
+    NARC_resdat_resdat_00000038_bin,
+    NARC_resdat_resdat_00000039_bin,
+    NARC_resdat_resdat_00000037_bin,
+    NARC_resdat_resdat_00000036_bin,
+    0xFFFF,
+    0xFFFF,
+    NARC_resdat_resdat_00000081_bin,
 };
 
-void ov100_021E6914(PokegearAppData *pokegearApp) {
-    GF_CreateVramTransferManager(32, pokegearApp->heapId);
-    pokegearApp->spriteSystem = SpriteSystem_Alloc(pokegearApp->heapId);
-    SpriteSystem_Init(pokegearApp->spriteSystem, ov100_021E76BC[0].oamManagerParam, ov100_021E76BC[0].oamCharTransferParam, 0x20);
-    sub_0200B2E0(pokegearApp->heapId);
-    sub_0200B2E8(pokegearApp->heapId);
+// clang-format off
+static const PokegearObjResSpec sPokegearObjResSpecs[] = {
+    [GEAR_APP_CONFIGURE] = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Configure },
+    [GEAR_APP_RADIO]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Radio     },
+    [GEAR_APP_MAP]       = { 0xC0, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
+    [GEAR_APP_PHONE]     = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Phone     },
+    [GEAR_APP_CANCEL]    = { 0x80, &sOamManagerParam, &sOamCharTransferParam, sResList_Map       },
+};
+// clang-format on
+
+void PokegearApp_CreateSpriteSystem(PokegearAppData *pokegearApp) {
+    GF_CreateVramTransferManager(32, pokegearApp->heapID);
+    pokegearApp->spriteSystem = SpriteSystem_Alloc(pokegearApp->heapID);
+    SpriteSystem_Init(pokegearApp->spriteSystem, sPokegearObjResSpecs[0].oamManagerParam, sPokegearObjResSpecs[0].oamCharTransferParam, 0x20);
+    thunk_ClearMainOAM(pokegearApp->heapID);
+    thunk_ClearSubOAM(pokegearApp->heapID);
 }
 
-void ov100_021E6950(PokegearAppData *pokegearApp) {
+void PokegearApp_DestroySpriteSystem(PokegearAppData *pokegearApp) {
     SpriteSystem_Free(pokegearApp->spriteSystem);
     pokegearApp->spriteSystem = NULL;
     GF_DestroyVramTransferManager();
-    sub_0200B2E0(pokegearApp->heapId);
-    sub_0200B2E8(pokegearApp->heapId);
+    thunk_ClearMainOAM(pokegearApp->heapID);
+    thunk_ClearSubOAM(pokegearApp->heapID);
 }
 
-void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int a1) {
+void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet) {
     if (pokegearApp->spriteSystem != NULL) {
         pokegearApp->spriteManager = SpriteManager_New(pokegearApp->spriteSystem);
-        SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[a1].maxSprites);
-        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, ov100_021E76BC[a1].resIdList, 1, 0);
+        SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].maxSprites);
+        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].resIdList, 1, 0);
     }
 }
 
@@ -95,10 +130,10 @@ void PokegearApp_DrawSprites(PokegearAppData *pokegearApp) {
 
 // functions for PokegearApp_UnkSub094
 
-PokegearApp_UnkSub094 *ov100_021E69F8(HeapID heapId, u16 a1, u16 a2, u16 a3, u16 a4, int a5) {
-    PokegearApp_UnkSub094 *ret = AllocFromHeap(heapId, sizeof(PokegearApp_UnkSub094));
+PokegearApp_UnkSub094 *ov100_021E69F8(enum HeapID heapID, u16 a1, u16 a2, u16 a3, u16 a4, int a5) {
+    PokegearApp_UnkSub094 *ret = Heap_Alloc(heapID, sizeof(PokegearApp_UnkSub094));
     MI_CpuClear8(ret, sizeof(PokegearApp_UnkSub094));
-    ret->heapId = heapId;
+    ret->heapID = heapID;
     if (a2 > 4) {
         ret->unk_00A = 4;
     } else {
@@ -121,11 +156,11 @@ void ov100_021E6A58(PokegearApp_UnkSub094 *a0, int a1) {
     SpriteResource *obj;
 
     obj = a0->spriteResources[GF_GFX_RES_TYPE_CHAR]->obj[0];
-    ReplaceCharResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CHAR], obj, NARC_a_1_4_3, a1 + 6, FALSE, a0->heapId);
+    ReplaceCharResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_CHAR], obj, NARC_application_pokegear_pgear_gra, a1 + 6, FALSE, a0->heapID);
     sub_0200AE8C(obj);
 
     obj = a0->spriteResources[GF_GFX_RES_TYPE_PLTT]->obj[0];
-    ReplacePlttResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_PLTT], obj, NARC_a_1_4_3, a1, FALSE, a0->heapId);
+    ReplacePlttResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_PLTT], obj, NARC_application_pokegear_pgear_gra, a1, FALSE, a0->heapID);
     sub_0200B084(obj);
 }
 
@@ -142,14 +177,14 @@ ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 x, u8 y, u8 z, u8 pr
 
     static const u8 ov100_021E770C[] = { 2, 2, 2, 3, 1, 1, 1, 1 };
 
-    ret = AllocFromHeap(a0->heapId, sizeof(ManagedSprite));
+    ret = Heap_Alloc(a0->heapID, sizeof(ManagedSprite));
     MI_CpuClear8(ret, sizeof(ManagedSprite));
-    ret->spriteResourceHeaderList = AllocFromHeap(a0->heapId, sizeof(SpriteResourceHeaderList));
-    ret->spriteResourceHeaderList->headers = AllocFromHeap(a0->heapId, sizeof(SpriteResourcesHeader));
+    ret->spriteResourceHeaderList = Heap_Alloc(a0->heapID, sizeof(SpriteResourceHeaderList));
+    ret->spriteResourceHeaderList->headers = Heap_Alloc(a0->heapID, sizeof(SpriteResourcesHeader));
     // ret->spriteResourceHeaderList->num = 1;
     ret->spriteResourcesHeader = ret->spriteResourceHeaderList->headers;
     vramType = isBottomScreen == 0 ? NNS_G2D_VRAM_TYPE_2DMAIN : NNS_G2D_VRAM_TYPE_2DSUB;
-    CreateSpriteResourcesHeader(ret->spriteResourcesHeader, 0xE000, 0xE000, 0xE000, 0xE000, -1, -1, 0, priority, a0->unk_140[GF_GFX_RES_TYPE_CHAR], a0->unk_140[GF_GFX_RES_TYPE_PLTT], a0->unk_140[GF_GFX_RES_TYPE_CELL], a0->unk_140[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
+    CreateSpriteResourcesHeader(ret->spriteResourcesHeader, 0xE000, 0xE000, 0xE000, 0xE000, -1, -1, 0, priority, a0->resourceManagers[GF_GFX_RES_TYPE_CHAR], a0->resourceManagers[GF_GFX_RES_TYPE_PLTT], a0->resourceManagers[GF_GFX_RES_TYPE_CELL], a0->resourceManagers[GF_GFX_RES_TYPE_ANIM], NULL, NULL);
 
     spriteTemplate.spriteList = a0->spriteList;
     spriteTemplate.header = ret->spriteResourcesHeader;
@@ -159,9 +194,9 @@ ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 x, u8 y, u8 z, u8 pr
     }
     SetVecFx32(spriteTemplate.scale, FX32_ONE, FX32_ONE, FX32_ONE);
     spriteTemplate.rotation = 0;
-    spriteTemplate.priority = drawPriority;
+    spriteTemplate.drawPriority = drawPriority;
     spriteTemplate.whichScreen = vramType;
-    spriteTemplate.heapId = a0->heapId;
+    spriteTemplate.heapID = a0->heapID;
     ret->sprite = Sprite_CreateAffine(&spriteTemplate);
     SpriteResource *obj = a0->spriteResources[GF_GFX_RES_TYPE_PLTT]->obj[0];
     if (ret->sprite != NULL) {
@@ -181,11 +216,11 @@ void ov100_021E6C44(ManagedSprite *managedSprite) {
 void ov100_021E6C4C(PokegearApp_UnkSub094 *a0, u16 a1) {
     u8 spC[4] = { 1, 1, 1, 1 };
 
-    a0->spriteList = G2dRenderer_Init(a0->unk_00C, &a0->unk_014, a0->heapId);
+    a0->spriteList = G2dRenderer_Init(a0->unk_00C, &a0->renderer, a0->heapID);
     spC[1] = a0->unk_00A;
     for (u32 i = 0; i < 4; ++i) {
-        a0->unk_140[i] = Create2DGfxResObjMan(spC[i], (GfGfxResType)i, a0->heapId);
-        a0->spriteResources[i] = Create2DGfxResObjList(spC[i], a0->heapId);
+        a0->resourceManagers[i] = Create2DGfxResObjMan(spC[i], (GfGfxResType)i, a0->heapID);
+        a0->spriteResources[i] = Create2DGfxResObjList(spC[i], a0->heapID);
         for (u32 j = 0; j < a0->spriteResources[i]->max; ++j) {
             a0->spriteResources[i]->obj[j] = NULL;
         }
@@ -199,7 +234,7 @@ void ov100_021E6CF4(PokegearApp_UnkSub094 *a0) {
     sub_0200B0CC(a0->spriteResources[GF_GFX_RES_TYPE_PLTT]);
     for (u32 i = 0; i < 4; ++i) {
         Delete2DGfxResObjList(a0->spriteResources[i]);
-        Destroy2DGfxResObjMan(a0->unk_140[i]);
+        Destroy2DGfxResObjMan(a0->resourceManagers[i]);
     }
 }
 
@@ -207,7 +242,7 @@ void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1) {
     GF_2DGfxResObjList *objList;
 
     objList = a0->spriteResources[GF_GFX_RES_TYPE_CHAR];
-    objList->obj[0] = AddCharResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CHAR], NARC_a_1_4_3, a1 + 6, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, a0->heapId);
+    objList->obj[0] = AddCharResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_CHAR], NARC_application_pokegear_pgear_gra, a1 + 6, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, a0->heapID);
     GF_ASSERT(objList->obj[0] != NULL);
     switch (a0->unk_004) {
     case 1:
@@ -224,144 +259,144 @@ void ov100_021E6D34(PokegearApp_UnkSub094 *a0, u16 a1) {
 
     for (int i = 0; i < 2; ++i) {
         objList = a0->spriteResources[GF_GFX_RES_TYPE_CELL + i];
-        objList->obj[0] = AddCellOrAnimResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_CELL + i], NARC_a_1_4_3, 12 + i, FALSE, 0xE000, (GfGfxResType)(GF_GFX_RES_TYPE_CELL + i), a0->heapId);
+        objList->obj[0] = AddCellOrAnimResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_CELL + i], NARC_application_pokegear_pgear_gra, 12 + i, FALSE, 0xE000, (GfGfxResType)(GF_GFX_RES_TYPE_CELL + i), a0->heapID);
         GF_ASSERT(objList->obj[0] != NULL);
     }
 
     objList = a0->spriteResources[GF_GFX_RES_TYPE_PLTT];
-    objList->obj[0] = AddPlttResObjFromNarc(a0->unk_140[GF_GFX_RES_TYPE_PLTT], NARC_a_1_4_3, a1, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, 4, a0->heapId);
+    objList->obj[0] = AddPlttResObjFromNarc(a0->resourceManagers[GF_GFX_RES_TYPE_PLTT], NARC_application_pokegear_pgear_gra, a1, FALSE, 0xE000, (NNS_G2D_VRAM_TYPE)a0->unk_00E, 4, a0->heapID);
     GF_ASSERT(objList->obj[0] != NULL);
     sub_0200B00C(objList->obj[0]);
 }
 
-// functions for UnkStruct_ov100_021E6E20
+// functions for PokegearObjectsManager
 
-UnkStruct_ov100_021E6E20 *ov100_021E6E20(int count, HeapID heapId) {
-    UnkStruct_ov100_021E6E20 *ret = (UnkStruct_ov100_021E6E20 *)AllocFromHeap(heapId, sizeof(UnkStruct_ov100_021E6E20));
-    MI_CpuClear8(ret, sizeof(UnkStruct_ov100_021E6E20));
+PokegearObjectsManager *PokegearObjectsManager_Create(int count, enum HeapID heapID) {
+    PokegearObjectsManager *ret = (PokegearObjectsManager *)Heap_Alloc(heapID, sizeof(PokegearObjectsManager));
+    MI_CpuClear8(ret, sizeof(PokegearObjectsManager));
     ret->max = count;
-    ret->unk_08 = AllocFromHeap(heapId, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    MI_CpuClear8(ret->unk_08, count * sizeof(UnkStruct_ov100_021E6E20_Sub8));
+    ret->objects = Heap_Alloc(heapID, count * sizeof(PokegearManagedObject));
+    MI_CpuClear8(ret->objects, count * sizeof(PokegearManagedObject));
     return ret;
 }
 
-void ov100_021E6E58(UnkStruct_ov100_021E6E20 *a0) {
-    MI_CpuClear8(a0->unk_08, a0->max * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    Heap_Free(a0->unk_08);
-    MI_CpuClear8(a0, sizeof(UnkStruct_ov100_021E6E20));
-    Heap_Free(a0);
+void PokegearObjectsManager_Release(PokegearObjectsManager *mgr) {
+    MI_CpuClear8(mgr->objects, mgr->max * sizeof(PokegearManagedObject));
+    Heap_Free(mgr->objects);
+    MI_CpuClear8(mgr, sizeof(PokegearObjectsManager));
+    Heap_Free(mgr);
 }
 
-void ov100_021E6E84(UnkStruct_ov100_021E6E20 *a0) {
-    for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->unk_08[i].unk_00 != 0 && a0->unk_08[i].unk_02 == 0) {
-            Sprite_SetPositionXY(a0->unk_08[i].sprite, a0->unk_08[i].unk_04, a0->unk_08[i].unk_06);
+void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *mgr) {
+    for (u16 i = 0; i < mgr->num; ++i) {
+        if (mgr->objects[i].active != 0 && mgr->objects[i].autoUpdateDisabled == 0) {
+            Sprite_SetPositionXY(mgr->objects[i].sprite, mgr->objects[i].pos.x, mgr->objects[i].pos.y);
         }
     }
 }
 
-u16 ov100_021E6EC4(UnkStruct_ov100_021E6E20 *a0, Sprite *sprite) {
-    if (a0->num >= a0->max) {
+u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *sprite) {
+    if (mgr->num >= mgr->max) {
         return 0xFFFF;
     }
 
-    UnkStruct_ov100_021E6E20_Sub8 *ptr = &a0->unk_08[a0->num];
-    ptr->sprite = sprite;
-    ptr->unk_00 = 1;
-    ptr->unk_01 = 1;
-    return a0->num++;
+    PokegearManagedObject *obj = &mgr->objects[mgr->num];
+    obj->sprite = sprite;
+    obj->active = TRUE;
+    obj->autoCull = 1;
+    return mgr->num++;
 }
 
-void ov100_021E6EF4(UnkStruct_ov100_021E6E20 *a0) {
-    for (u16 i = 0; i < a0->num; ++i) {
-        if (a0->unk_08[i].sprite != NULL) {
-            thunk_Sprite_Delete(a0->unk_08[i].sprite);
+void PokegearObjectsManager_Reset(PokegearObjectsManager *mgr) {
+    for (u16 i = 0; i < mgr->num; ++i) {
+        if (mgr->objects[i].sprite != NULL) {
+            thunk_Sprite_Delete(mgr->objects[i].sprite);
         }
     }
-    MI_CpuClear8(a0->unk_08, a0->num * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    a0->num = 0;
+    MI_CpuClear8(mgr->objects, mgr->num * sizeof(PokegearManagedObject));
+    mgr->num = 0;
 }
 
-void ov100_021E6F34(UnkStruct_ov100_021E6E20 *a0, u8 firstIndex) {
+void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 firstIndex) {
     u16 i;
     u16 clearCount;
 
-    clearCount = a0->num - firstIndex;
-    for (i = firstIndex; i < a0->num; ++i) {
-        if (a0->unk_08[i].sprite != NULL) {
-            thunk_Sprite_Delete(a0->unk_08[i].sprite);
+    clearCount = mgr->num - firstIndex;
+    for (i = firstIndex; i < mgr->num; ++i) {
+        if (mgr->objects[i].sprite != NULL) {
+            thunk_Sprite_Delete(mgr->objects[i].sprite);
         }
     }
-    MI_CpuClear8(a0->unk_08 + firstIndex, clearCount * sizeof(UnkStruct_ov100_021E6E20_Sub8));
-    a0->num -= clearCount;
+    MI_CpuClear8(mgr->objects + firstIndex, clearCount * sizeof(PokegearManagedObject));
+    mgr->num -= clearCount;
 }
 
 // functions for PokegearAppSwitchCursor
 
-PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId) {
-    PokegearAppSwitch *ret = (PokegearAppSwitch *)AllocFromHeap(heapId, sizeof(PokegearAppSwitch));
-    MI_CpuClear8(ret, sizeof(PokegearAppSwitch));
+PokegearCursorManager *PokegearCursorManager_Alloc(int count, enum HeapID heapID) {
+    PokegearCursorManager *ret = (PokegearCursorManager *)Heap_Alloc(heapID, sizeof(PokegearCursorManager));
+    MI_CpuClear8(ret, sizeof(PokegearCursorManager));
     ret->count = count;
-    ret->buttons = AllocFromHeap(heapId, count * sizeof(PokegearAppSwitchButton));
-    MI_CpuClear8(ret->buttons, count * sizeof(PokegearAppSwitchButton));
+    ret->cursors = Heap_Alloc(heapID, count * sizeof(PokegearCursor));
+    MI_CpuClear8(ret->cursors, count * sizeof(PokegearCursor));
     return ret;
 }
 
-void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch) {
-    for (int i = 0; i < appSwitch->count; ++i) {
-        if (appSwitch->buttons[i].buttonsAreActive && appSwitch->buttons[i].buttonSpec != NULL) {
-            PokegearAppSwitch_RemoveButtons(appSwitch, i);
+void PokegearCursorManager_Free(PokegearCursorManager *cursorManager) {
+    for (int i = 0; i < cursorManager->count; ++i) {
+        if (cursorManager->cursors[i].active && cursorManager->cursors[i].grid != NULL) {
+            PokegearCursorManager_RemoveCursor(cursorManager, i);
         }
     }
-    MI_CpuClear8(appSwitch->buttons, appSwitch->count * sizeof(PokegearAppSwitchButton));
-    Heap_Free(appSwitch->buttons);
-    MI_CpuClear8(appSwitch, sizeof(PokegearAppSwitch));
-    Heap_Free(appSwitch);
+    MI_CpuClear8(cursorManager->cursors, cursorManager->count * sizeof(PokegearCursor));
+    Heap_Free(cursorManager->cursors);
+    MI_CpuClear8(cursorManager, sizeof(PokegearCursorManager));
+    Heap_Free(cursorManager);
 }
 
-u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, PokegearSpriteUnion cursorSprite1, PokegearSpriteUnion cursorSprite2, PokegearSpriteUnion cursorSprite3, PokegearSpriteUnion cursorSprite4) {
-    u16 index = PokegearAppSwitch_GetFreeButtonSlot(appSwitch);
+u16 PokegearCursorManager_AddButtons(PokegearCursorManager *cursorManager, const PokegearCursorGrid *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, enum HeapID heapID, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4) {
+    u16 index = PokegearCursorManager_GetFreeCursorSlot(cursorManager);
     if (index == 0xFFFF) {
         return 0xFFFF;
     }
 
-    PokegearAppSwitchButton *button = &appSwitch->buttons[index];
-    button->buttonsAreActive = TRUE;
+    PokegearCursor *button = &cursorManager->cursors[index];
+    button->active = TRUE;
     button->buttonsAre4Tiles = TRUE;
     button->count = numSpecs;
     button->lastIndex = button->count - 1;
-    button->buttonSpec = AllocFromHeap(heapId, button->count * sizeof(PokegearAppSwitchButtonSpec));
-    MI_CpuCopy8(buttonSpec, button->buttonSpec, button->count * sizeof(PokegearAppSwitchButtonSpec));
+    button->grid = Heap_Alloc(heapID, button->count * sizeof(PokegearCursorGrid));
+    MI_CpuCopy8(buttonSpec, button->grid, button->count * sizeof(PokegearCursorGrid));
     if (cursorPos >= button->count) {
         button->cursorPos = 0;
     } else {
         button->cursorPos = cursorPos;
     }
     button->buttonsAreManagedSprite = managedSprites;
-    button->cursorSprites[0] = cursorSprite1;
-    button->cursorSprites[1] = cursorSprite2;
-    button->cursorSprites[2] = cursorSprite3;
-    button->cursorSprites[3] = cursorSprite4;
+    button->cursorSprites[0].raw = cursorSprite1;
+    button->cursorSprites[1].raw = cursorSprite2;
+    button->cursorSprites[2].raw = cursorSprite3;
+    button->cursorSprites[3].raw = cursorSprite4;
     return index;
 }
 
-BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 buttonIndex) {
-    if (buttonIndex >= appSwitch->count || !appSwitch->buttons[buttonIndex].buttonsAreActive) {
+BOOL PokegearCursorManager_RemoveCursor(PokegearCursorManager *cursorManager, u16 cursorIndex) {
+    if (cursorIndex >= cursorManager->count || !cursorManager->cursors[cursorIndex].active) {
         return FALSE;
     }
-    if (appSwitch->lastButtonIndex == buttonIndex) {
-        appSwitch->lastButtonIndex = 0xFFFF;
-        appSwitch->lastButton = NULL;
+    if (cursorManager->activeCursorIndex == cursorIndex) {
+        cursorManager->activeCursorIndex = 0xFFFF;
+        cursorManager->lastCursor = NULL;
     }
-    MI_CpuClear8(appSwitch->buttons[buttonIndex].buttonSpec, appSwitch->buttons[buttonIndex].count * sizeof(PokegearAppSwitchButtonSpec));
-    Heap_Free(appSwitch->buttons[buttonIndex].buttonSpec);
-    MI_CpuClear8(&appSwitch->buttons[buttonIndex], sizeof(PokegearAppSwitchButton));
+    MI_CpuClear8(cursorManager->cursors[cursorIndex].grid, cursorManager->cursors[cursorIndex].count * sizeof(PokegearCursorGrid));
+    Heap_Free(cursorManager->cursors[cursorIndex].grid);
+    MI_CpuClear8(&cursorManager->cursors[cursorIndex], sizeof(PokegearCursor));
     return FALSE;
 }
 
-u16 PokegearAppSwitch_GetFreeButtonSlot(PokegearAppSwitch *appSwitch) {
-    for (u16 i = 0; i < appSwitch->count; ++i) {
-        if (!appSwitch->buttons[i].buttonsAreActive) {
+u16 PokegearCursorManager_GetFreeCursorSlot(PokegearCursorManager *cursorManager) {
+    for (u16 i = 0; i < cursorManager->count; ++i) {
+        if (!cursorManager->cursors[i].active) {
             return i;
         }
     }
@@ -369,19 +404,19 @@ u16 PokegearAppSwitch_GetFreeButtonSlot(PokegearAppSwitch *appSwitch) {
     return 0xFFFF;
 }
 
-u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *cursor, u16 index, BOOL draw) {
-    PokegearAppSwitchButton *button;
+u16 PokegearCursorManager_SetCursorSpritesDrawState(PokegearCursorManager *cursorManager, u16 index, BOOL draw) {
+    PokegearCursor *button;
     if (index == 0xFFFF) {
-        button = cursor->lastButton;
-    } else if (index >= cursor->count || (button = &cursor->buttons[index], !button->buttonsAreActive)) {
+        button = cursorManager->lastCursor;
+    } else if (index >= cursorManager->count || (button = &cursorManager->cursors[index], !button->active)) {
         return 0xFFFF;
     }
     if (!button->buttonsAreManagedSprite) {
-        thunk_Sprite_SetDrawFlag(button->cursorSprites[0].sprite, draw);
+        thunk_Sprite_SetDrawFlag(button->cursorSprites[0].unmanaged, draw);
         if (button->buttonsAre4Tiles == TRUE) {
-            thunk_Sprite_SetDrawFlag(button->cursorSprites[1].sprite, draw);
-            thunk_Sprite_SetDrawFlag(button->cursorSprites[2].sprite, draw);
-            thunk_Sprite_SetDrawFlag(button->cursorSprites[3].sprite, draw);
+            thunk_Sprite_SetDrawFlag(button->cursorSprites[1].unmanaged, draw);
+            thunk_Sprite_SetDrawFlag(button->cursorSprites[2].unmanaged, draw);
+            thunk_Sprite_SetDrawFlag(button->cursorSprites[3].unmanaged, draw);
         }
     } else {
         ManagedSprite_SetDrawFlag(button->cursorSprites[0].managed, draw);
@@ -394,25 +429,25 @@ u16 PokegearAppSwitchCursor_SetCursorSpritesDrawState(PokegearAppSwitch *cursor,
     return index;
 }
 
-void ov100_021E71B4(PokegearAppSwitch *appSwitch, u16 index) {
-    PokegearAppSwitchButton *buttons;
+void PokegearCursorManager_UpdateCursorSpritePosition(PokegearCursorManager *cursorManager, u16 index) {
+    PokegearCursor *buttons;
     if (index == 0xFFFF) {
-        buttons = appSwitch->lastButton;
-    } else if (index >= appSwitch->count) {
+        buttons = cursorManager->lastCursor;
+    } else if (index >= cursorManager->count) {
         return;
     } else {
-        buttons = &appSwitch->buttons[index];
+        buttons = &cursorManager->cursors[index];
     }
 
-    PokegearAppSwitchButtonSpec *spec = &buttons->buttonSpec[buttons->cursorPos];
+    PokegearCursorGrid *spec = &buttons->grid[buttons->cursorPos];
     if (!buttons->buttonsAreManagedSprite) {
         if (!buttons->buttonsAre4Tiles) {
-            Sprite_SetPositionXY(buttons->cursorSprites[0].sprite, spec->x, spec->y);
+            Sprite_SetPositionXY(buttons->cursorSprites[0].unmanaged, spec->x, spec->y);
         } else {
-            Sprite_SetPositionXY(buttons->cursorSprites[0].sprite, spec->x + spec->leftOffset, spec->y + spec->topOffset);
-            Sprite_SetPositionXY(buttons->cursorSprites[1].sprite, spec->x + spec->leftOffset, spec->y + spec->bottomOffset);
-            Sprite_SetPositionXY(buttons->cursorSprites[2].sprite, spec->x + spec->rightOffset, spec->y + spec->topOffset);
-            Sprite_SetPositionXY(buttons->cursorSprites[3].sprite, spec->x + spec->rightOffset, spec->y + spec->bottomOffset);
+            Sprite_SetPositionXY(buttons->cursorSprites[0].unmanaged, spec->x + spec->leftOffset, spec->y + spec->topOffset);
+            Sprite_SetPositionXY(buttons->cursorSprites[1].unmanaged, spec->x + spec->leftOffset, spec->y + spec->bottomOffset);
+            Sprite_SetPositionXY(buttons->cursorSprites[2].unmanaged, spec->x + spec->rightOffset, spec->y + spec->topOffset);
+            Sprite_SetPositionXY(buttons->cursorSprites[3].unmanaged, spec->x + spec->rightOffset, spec->y + spec->bottomOffset);
         }
     } else {
         if (!buttons->buttonsAre4Tiles) {
@@ -426,40 +461,40 @@ void ov100_021E71B4(PokegearAppSwitch *appSwitch, u16 index) {
     }
 }
 
-u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16 index, u8 cursorPos) {
-    if (index >= appSwitch->count) {
+u16 PokegearCursorManager_SetSpecIndexAndCursorPos(PokegearCursorManager *cursorManager, u16 index, u8 cursorPos) {
+    if (index >= cursorManager->count) {
         return 0xFFFF;
     }
-    appSwitch->lastButton = &appSwitch->buttons[index];
-    appSwitch->lastButtonIndex = index;
+    cursorManager->lastCursor = &cursorManager->cursors[index];
+    cursorManager->activeCursorIndex = index;
     if (cursorPos != 0xFF) {
-        if (cursorPos >= appSwitch->buttons[index].count) {
-            appSwitch->buttons[index].cursorPos = 0;
+        if (cursorPos >= cursorManager->cursors[index].count) {
+            cursorManager->cursors[index].cursorPos = 0;
         } else {
-            appSwitch->buttons[index].cursorPos = cursorPos;
+            cursorManager->cursors[index].cursorPos = cursorPos;
         }
     }
-    ov100_021E71B4(appSwitch, 0xFFFF);
+    PokegearCursorManager_UpdateCursorSpritePosition(cursorManager, 0xFFFF);
     return index;
 }
 
-u8 PokegearAppSwitch_GetCursorPos(PokegearAppSwitch *appSwitch) {
-    return appSwitch->lastButton->cursorPos;
+u8 PokegearCursorManager_GetCursorPos(PokegearCursorManager *cursorManager) {
+    return cursorManager->lastCursor->cursorPos;
 }
 
-u8 PokegearAppSwitch_GetSpecCursorPos(PokegearAppSwitch *appSwitch, u16 index) {
+u8 PokegearCursorManager_GetSpecCursorPos(PokegearCursorManager *cursorManager, u16 index) {
     if (index == 0xFFFF) {
-        return appSwitch->lastButton->cursorPos;
-    } else if (index >= appSwitch->count || !appSwitch->buttons[index].buttonsAreActive) {
+        return cursorManager->lastCursor->cursorPos;
+    } else if (index >= cursorManager->count || !cursorManager->cursors[index].active) {
         return 0;
     } else {
-        return appSwitch->buttons[index].cursorPos;
+        return cursorManager->cursors[index].cursorPos;
     }
 }
 
-void ov100_021E7368(PokegearAppSwitch *appSwitch, u8 move) {
-    if (appSwitch->lastButton != NULL) {
-        PokegearAppSwitchButtonSpec *spec = &appSwitch->lastButton->buttonSpec[appSwitch->lastButton->cursorPos];
+void PokegearCursorManager_UpdateActiveCursorPosition(PokegearCursorManager *cursorManager, u8 move) {
+    if (cursorManager->lastCursor != NULL) {
+        PokegearCursorGrid *spec = &cursorManager->lastCursor->grid[cursorManager->lastCursor->cursorPos];
         u8 newIndex;
         switch (move) {
         case 1:
@@ -476,28 +511,28 @@ void ov100_021E7368(PokegearAppSwitch *appSwitch, u8 move) {
             newIndex = spec->buttonLeft;
             break;
         }
-        if (newIndex <= appSwitch->lastButton->lastIndex) {
-            appSwitch->lastButton->cursorPos = newIndex;
+        if (newIndex <= cursorManager->lastCursor->lastIndex) {
+            cursorManager->lastCursor->cursorPos = newIndex;
         }
     }
 }
 
-u8 ov100_021E73AC(PokegearAppSwitch *appSwitch, u8 move) {
-    ov100_021E7368(appSwitch, move);
-    ov100_021E71B4(appSwitch, 0xFFFF);
-    return appSwitch->lastButton->cursorPos;
+u8 PokegearCursorManager_MoveActiveCursor(PokegearCursorManager *cursorManager, u8 move) {
+    PokegearCursorManager_UpdateActiveCursorPosition(cursorManager, move);
+    PokegearCursorManager_UpdateCursorSpritePosition(cursorManager, 0xFFFF);
+    return cursorManager->lastCursor->cursorPos;
 }
 
-u8 ov100_021E73C8(PokegearAppSwitch *appSwitch, u8 newIndex) {
-    return ov100_021E73D4(appSwitch, appSwitch->lastButtonIndex, newIndex);
+u8 PokegearCursorManager_SetActiveCursorPosition(PokegearCursorManager *cursorManager, u8 newIndex) {
+    return PokegearCursorManager_SetCursorPosition(cursorManager, cursorManager->activeCursorIndex, newIndex);
 }
 
-u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex) {
-    PokegearAppSwitchButton *button;
+u8 PokegearCursorManager_SetCursorPosition(PokegearCursorManager *cursorManager, u16 index, u8 newIndex) {
+    PokegearCursor *button;
     if (index == 0xFFFF) {
-        button = appSwitch->lastButton;
-        index = appSwitch->lastButtonIndex;
-    } else if (index >= appSwitch->count || (button = &appSwitch->buttons[index], !button->buttonsAreActive)) {
+        button = cursorManager->lastCursor;
+        index = cursorManager->activeCursorIndex;
+    } else if (index >= cursorManager->count || (button = &cursorManager->cursors[index], !button->active)) {
         return 0;
     }
     if (button->lastIndex < newIndex) {
@@ -505,25 +540,25 @@ u8 ov100_021E73D4(PokegearAppSwitch *appSwitch, u16 index, u8 newIndex) {
     } else {
         button->cursorPos = newIndex;
     }
-    ov100_021E71B4(appSwitch, index);
+    PokegearCursorManager_UpdateCursorSpritePosition(cursorManager, index);
     return button->cursorPos;
 }
 
-void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active) {
+void PokegearCursorManager_SetCursorSpritesAnimateFlag(PokegearCursorManager *cursorManager, u16 index, BOOL active) {
     if (index == 0xFFFF) {
-        index = appSwitch->lastButtonIndex;
+        index = cursorManager->activeCursorIndex;
     }
-    if (index < appSwitch->count) {
-        PokegearAppSwitchButton *button = &appSwitch->buttons[index];
-        if (button->buttonsAreActive) {
+    if (index < cursorManager->count) {
+        PokegearCursor *button = &cursorManager->cursors[index];
+        if (button->active) {
             if (!button->buttonsAreManagedSprite) {
                 if (!button->buttonsAre4Tiles) {
-                    Sprite_ResetAnimCtrlState(button->cursorSprites[0].sprite);
-                    thunk_Sprite_SetAnimationFlag(button->cursorSprites[0].sprite, active);
+                    Sprite_ResetAnimCtrlState(button->cursorSprites[0].unmanaged);
+                    thunk_Sprite_SetAnimationFlag(button->cursorSprites[0].unmanaged, active);
                 } else {
                     for (int i = 0; i < 4; ++i) {
-                        Sprite_ResetAnimCtrlState(button->cursorSprites[i].sprite);
-                        thunk_Sprite_SetAnimationFlag(button->cursorSprites[i].sprite, active);
+                        Sprite_ResetAnimCtrlState(button->cursorSprites[i].unmanaged);
+                        thunk_Sprite_SetAnimationFlag(button->cursorSprites[i].unmanaged, active);
                     }
                 }
             } else {

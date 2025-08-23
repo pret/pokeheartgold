@@ -17,7 +17,7 @@ typedef enum StdLinkBattleRuleset {
 } StdLinkBattleRuleset;
 
 LinkBattleRuleset *sub_020291E8(SaveData *saveData, int a1);
-void sub_0202921C(SaveData *saveData, int a1, String *a2, HeapID heapId);
+void sub_0202921C(SaveData *saveData, int a1, String *a2, enum HeapID heapID);
 LinkBattleRuleset *sub_0202925C(void);
 int sub_02029264(const LinkBattleRuleset *ruleset);
 

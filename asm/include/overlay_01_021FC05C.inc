@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public PlaySE
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public SetBgPriority
 .public BG_LoadCharTilesData

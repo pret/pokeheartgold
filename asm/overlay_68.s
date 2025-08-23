@@ -12,7 +12,7 @@ MoveRelearner_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x42
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x77
 	add r0, r5, #0
 	lsl r1, r1, #2
@@ -171,7 +171,7 @@ MoveRelearner_Exit: ; 0x021E5A3C
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x42
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r4, pc}
 	thumb_func_end MoveRelearner_Exit
@@ -507,7 +507,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #0x42
 	add r2, r4, #0
 	mov r3, #0x6e
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #4
 	str r0, [sp]
 	mov r0, #3
@@ -522,7 +522,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #0x42
 	add r2, r4, #0
 	mov r3, #0x6e
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #3
@@ -535,7 +535,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #0x42
 	add r2, r4, #0
 	mov r3, #0x6e
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #7
@@ -548,7 +548,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #0x42
 	add r2, r4, #0
 	mov r3, #0x6e
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r0, #2
 	str r0, [sp]
 	mov r0, #7
@@ -563,7 +563,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #0x42
 	add r2, r4, #0
 	mov r3, #0x6e
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #7
@@ -576,7 +576,7 @@ ov68_021E5D24: ; 0x021E5D24
 	mov r1, #0x42
 	add r2, r4, #0
 	mov r3, #0x6e
-	bl sub_0208820C
+	bl BgConfig_LoadAssetFromOpenNarc
 	mov r3, #0x71
 	mov r0, #0x42
 	lsl r3, r3, #2

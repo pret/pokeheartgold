@@ -82,7 +82,7 @@ typedef struct UnkStructScr_648 {
 } SCR_648_STRUCT;
 
 static BOOL ov01_02200C6C(ScriptContext *ctx);
-static void *ov01_02200C94(HeapID heapId, s32 fileId, int *unkPtr);
+static void *ov01_02200C94(enum HeapID heapID, s32 fileId, int *unkPtr);
 static void ov01_02200CB4(SCR_648_STRUCT *unkPtr, MsgData *msgdata);
 static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x, u8 y, u8 a4, u8 a5, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
 static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove);
@@ -137,7 +137,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
 
     ctx->data[0] = unkC;
 
-    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, HEAP_ID_32);
+    msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, 237, HEAP_ID_FIELD3);
 
     input = GetVarPointer(fieldSystem, unkC);
 
@@ -151,7 +151,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
     unkG = sub_020312C4(fieldSystem->saveData, 0xb, &out_1);
 
     if (out_1 == 1) {
-        data = ov01_02200C94(HEAP_ID_32, ov01_02209AE0[fileIndex], &out_2);
+        data = ov01_02200C94(HEAP_ID_FIELD3, ov01_02209AE0[fileIndex], &out_2);
 
         for (i = 0; i < out_2; i++) {
             unkPtr_2 = sub_020312E0(fieldSystem->saveData, unkG, sub_0205C144(unkA), data[i]);
@@ -165,7 +165,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
         Heap_Free(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_32);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_FIELD3);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
@@ -185,9 +185,9 @@ static BOOL ov01_02200C6C(ScriptContext *ctx) {
     return *GetVarPointer(ctx->fieldSystem, ctx->data[0]) != 0xEEEE;
 }
 
-static void *ov01_02200C94(HeapID heapId, s32 fileId, int *unkPtr) {
+static void *ov01_02200C94(enum HeapID heapID, s32 fileId, int *unkPtr) {
     u32 size;
-    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapId, FALSE, &size);
+    void *data = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_data, fileId, FALSE, heapID, FALSE, &size);
     *unkPtr = size / 2;
     return data;
 }
@@ -223,14 +223,14 @@ static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x
     }
 
     for (i = 0; i < 0x78; i++) {
-        unkPtr->stringArr_1C[i] = String_New(0x50, HEAP_ID_4);
+        unkPtr->stringArr_1C[i] = String_New(0x50, HEAP_ID_FIELD1);
     }
 
     *unkPtr->input = 0xEEEE;
 }
 
 static SCR_648_STRUCT *ov01_02200D9C(FieldSystem *fieldSystem, u8 x, u8 y, u8 a3, u8 a4, u16 *input, MessageFormat *msgfmt, Window *window, MsgData *msgdata, u16 *cursorPos, u16 *itemsAbove) {
-    SCR_648_STRUCT *unkPtr = AllocFromHeap(HEAP_ID_4, sizeof(SCR_648_STRUCT));
+    SCR_648_STRUCT *unkPtr = Heap_Alloc(HEAP_ID_FIELD1, sizeof(SCR_648_STRUCT));
     if (!unkPtr) {
         return NULL;
     }
@@ -250,15 +250,15 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
     } else {
         AddWindowParameterized(unkPtr->fieldSystem->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2 * unk, 13, 1);
     }
-    LoadUserFrameGfx1(unkPtr->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_4);
+    LoadUserFrameGfx1(unkPtr->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD1);
     DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
-    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_4);
+    unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_FIELD1);
     unkPtr->sysTask = SysTask_CreateOnMainQueue(ov01_022010CC, unkPtr, 0);
 }
 
 static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
-    String *str = String_New(0x50, HEAP_ID_4);
+    String *str = String_New(0x50, HEAP_ID_FIELD1);
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
@@ -441,7 +441,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
         }
     }
     if (count > 0) {
-        if (Bag_AddItem(Save_Bag_Get(fieldSystem->saveData), ITEM_GRISEOUS_ORB, count, HEAP_ID_4) == FALSE) {
+        if (Bag_AddItem(Save_Bag_Get(fieldSystem->saveData), ITEM_GRISEOUS_ORB, count, HEAP_ID_FIELD1) == FALSE) {
             *success = 255;
             return FALSE;
         }
@@ -1048,7 +1048,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
         return FALSE;
     }
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = AllocMonZeroed(HEAP_ID_FIELD2);
     ZeroMonData(mon);
 
     SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
@@ -1114,7 +1114,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     if (Party_GetCount(party) >= 6) {
         return FALSE;
     }
-    mon = AllocMonZeroed(HEAP_ID_FIELD);
+    mon = AllocMonZeroed(HEAP_ID_FIELD2);
     ZeroMonData(mon);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
@@ -1135,7 +1135,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
 
-    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELD);
+    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELD2);
 
     Party_AddMon(party, mon);
 
@@ -1195,7 +1195,7 @@ static u32 SlotLuckiness(SaveData *saveData, u8 machineId, u8 city) {
     rngSeed = GetLCRNGSeed();
     SetLCRNGSeed(sub_0202C7DC(friendGroup));
 
-    luckValues = AllocFromHeapAtEnd(HEAP_ID_32, numMachines);
+    luckValues = Heap_AllocAtEnd(HEAP_ID_FIELD3, numMachines);
     MI_CpuFill8(luckValues, 0, numMachines);
 
     for (i = 0; i < NELEMS(sSlotLuckDistribution[city]); ++i) {
@@ -1353,7 +1353,7 @@ BOOL ScrCmd_GiveRandomSeal(ScriptContext *ctx) {
 
     sealcase = Save_SealCase_Get(ctx->fieldSystem->saveData);
 
-    sealThresholds = AllocFromHeapAtEnd(HEAP_ID_32, sizeof(u16) * SEAL_MYSTERY);
+    sealThresholds = Heap_AllocAtEnd(HEAP_ID_FIELD3, sizeof(u16) * SEAL_MYSTERY);
 
     MI_CpuFill8(sealThresholds, 0, sizeof(u16) * SEAL_MYSTERY);
     MI_CpuFill8(uniqueSeals, 0, sizeof(u8) * 3);

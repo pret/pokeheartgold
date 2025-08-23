@@ -822,7 +822,7 @@ sub_0200FF88: ; 0x0200FF88
 	mov r1, #0x10
 	add r6, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r0, #0
 	str r5, [r1]
 	str r4, [r1, #4]
@@ -844,7 +844,7 @@ sub_0200FFB4: ; 0x0200FFB4
 	add r4, r1, #0
 	add r0, r2, #0
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r0, #0
 	mov r2, #1
 	str r5, [r1]

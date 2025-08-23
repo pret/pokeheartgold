@@ -18,7 +18,7 @@ typedef struct LISTMENUITEM {
     s32 value;
 } LISTMENUITEM;
 
-LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId);
+LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapID);
 void ListMenuItems_Delete(LISTMENUITEM *items);
 void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value);
 void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value);

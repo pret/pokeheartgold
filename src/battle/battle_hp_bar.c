@@ -292,7 +292,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSinglePlayer = {
     .y = 0x74,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x17,
+    .drawPriority = 0x17,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -312,7 +312,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSingleEnemy = {
     .y = 0x24,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x18,
+    .drawPriority = 0x18,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -332,7 +332,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoublePlayerLHS = {
     .y = 0x67,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x1C,
+    .drawPriority = 0x1C,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -352,7 +352,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoubleEnemyLHS = {
     .y = 0x10,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x19,
+    .drawPriority = 0x19,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -372,7 +372,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoublePlayerRHS = {
     .y = 0x84,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x1A,
+    .drawPriority = 0x1A,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -392,7 +392,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarDoubleEnemyRHS = {
     .y = 0x2D,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x1B,
+    .drawPriority = 0x1B,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -412,7 +412,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_Arrow = {
     .y = 0,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x11,
+    .drawPriority = 0x11,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -432,7 +432,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
     .y = 0x74,
     .z = 0,
     .animation = 0,
-    .spritePriority = 0x17,
+    .drawPriority = 0x17,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
     .resIdList = {
@@ -1224,8 +1224,8 @@ static void ov12_022652D0(BattleHpBar *hpBar) {
 
 static void ov12_02265354(BattleHpBar *hpBar) {
     int j, i, k;
-    u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
-    u8 *r7 = AllocFromHeap(HEAP_ID_BATTLE, 0xC0);
+    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
+    u8 *r7 = Heap_Alloc(HEAP_ID_BATTLE, 0xC0);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->bsys), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
@@ -1250,7 +1250,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
 }
 
 static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
-    u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
+    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), num, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
@@ -1262,7 +1262,7 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
 }
 
 static void ov12_02265500(BattleHpBar *hpBar) {
-    u8 *r4 = AllocFromHeap(HEAP_ID_BATTLE, 0x60);
+    u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
     sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->bsys), hpBar->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
@@ -1678,7 +1678,7 @@ typedef struct BattleHpBarExpBarFullFlashEffectTaskData {
 
 SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
     *a1 = 0;
-    BattleHpBarExpBarFullFlashEffectTaskData *taskData = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
+    BattleHpBarExpBarFullFlashEffectTaskData *taskData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
     MI_CpuFill8(taskData, 0, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
     taskData->hpBar = hpBar;
     taskData->pDoneFlag = a1;

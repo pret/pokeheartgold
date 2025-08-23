@@ -29,7 +29,7 @@ GeonetGlobe_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x31
 	lsl r2, r2, #7
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E5A10 ; =0x0000C33C
 	add r0, r4, #0
 	mov r2, #0x31
@@ -914,7 +914,7 @@ GeonetGlobe_Exit: ; 0x021E6080
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _021E60F4 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]

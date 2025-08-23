@@ -115,7 +115,7 @@ typedef struct PhoneContactListUISlotData {
 } PhoneContactListUISlotData;
 
 typedef struct PokegearPhoneCallContextParam {
-    HeapID heapId;                                 // 0x00
+    enum HeapID heapID;                                 // 0x00
     MenuInputState *menuInputStatePtr;             // 0x04
     Sprite *sprite;                                // 0x08
     PokegearPhoneAppData *phoneApp;                // 0x0C
@@ -166,7 +166,7 @@ typedef struct PokegearPhoneCallState {
 } PokegearPhoneCallState; // size: 0x54
 
 typedef struct PokegearPhoneCallContext {
-    HeapID heapId;                                 // 0x00
+    enum HeapID heapID;                                 // 0x00
     PokegearPhoneAppData *phoneApp;                // 0x04
     BgConfig *bgConfig;                            // 0x08
     Window *phoneCallMsgWindow;                    // 0x0C
@@ -249,7 +249,7 @@ typedef struct PhoneContactListUI {
 } PhoneContactListUI;                                        // size 0x408
 
 struct PokegearPhoneAppData {
-    HeapID heapId;                                  // 0x000
+    enum HeapID heapID;                                  // 0x000
     int subtaskState;                               // 0x004
     int subsubtaskState;                            // 0x008
     PokegearAppData *pokegear;                      // 0x00C
@@ -266,7 +266,7 @@ struct PokegearPhoneAppData {
     TouchscreenListMenuSpawner *contextMenuSpawner; // 0x0C0
     PokegearPhoneCallContext *callContext;          // 0x0C4 type pending
     u8 callerID;                                    // 0x0C8
-    u8 isScriptedCall;                              // 0x0C9
+    u8 callScriptType;                              // 0x0C9
     u8 callScriptID;                                // 0x0CA
     u8 isIncomingCall;                              // 0x0CB
     u8 prevMenuCursorPos;                           // 0x0CC set but not read
