@@ -210,7 +210,7 @@ BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem) {
     return MapHeader_GetMapSec(fieldSystem->location->mapId) != MAPSEC_MYSTERY_ZONE;
 }
 
-void sub_0203BC28(FieldSystem *fieldSystem) {
+void StartMenu_Init(FieldSystem *fieldSystem) {
     StartMenuTaskData *startMenu = StartMenu_Create();
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Safari(fieldSystem);
