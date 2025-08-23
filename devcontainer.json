@@ -1,0 +1,4 @@
+{
+    "image": "ghcr.io/pret/pokeheartgold:latest",
+    "postCreateCommand": "bash scripts/setup-devcontainer.sh"
+}
