@@ -306,7 +306,7 @@ BOOL ScrCmd_BufferMapSecName(ScriptContext *ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 mapno = ScriptGetVar(ctx);
 
-    sub_02068F98(mapno, HEAP_ID_FIELD1, str);
+    MapID_GetLandmarkName(mapno, HEAP_ID_FIELD1, str);
     BufferString(*msg_fmt, idx, str, 0, 1, 2);
     String_Delete(str);
 

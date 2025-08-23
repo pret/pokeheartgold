@@ -1225,7 +1225,7 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     template.scale.z = FX32_ONE;
     template.rotation = 0;
     template.whichScreen = NNS_G2D_VRAM_TYPE_2DSUB;
-    template.priority = 0;
+    template.drawPriority = 0;
     template.heapID = heapID;
     template.position.x = 128 * FX32_ONE;
     template.position.y = 288 * FX32_ONE;

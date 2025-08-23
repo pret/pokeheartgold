@@ -4,8 +4,8 @@
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
 .public sub_0200B27C
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public Heap_Alloc
 .public Heap_Free
 .public ClearMainOAM

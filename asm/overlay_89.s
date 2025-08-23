@@ -1675,7 +1675,7 @@ _0225963E:
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x4c

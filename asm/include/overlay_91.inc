@@ -52,13 +52,13 @@
 .public sub_02013534
 .public sub_020135AC
 .public sub_02013728
-.public sub_020137C0
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948
-.public sub_02013950
-.public sub_020139C8
-.public sub_020139D0
+.public TextOBJ_Create
+.public TextOBJ_Destroy
+.public TextOBJ_CopyFromBGWindow
 .public sub_02018030
 .public sub_02018068
 .public sub_020180BC

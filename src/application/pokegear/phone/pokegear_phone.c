@@ -108,16 +108,16 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapID);
     phoneApp->numContacts = SavePokegear_FindEmptyPhonebookSlot(phoneApp->pokegear->savePokegear);
     PokegearPhone_ContactList_CreateLinkedList(phoneApp);
-    if (phoneApp->pokegear->args->incomingPhoneCall == 1) {
+    if (phoneApp->pokegear->args->isScriptedLaunch == 1) {
         phoneApp->isIncomingCall = TRUE;
         phoneApp->callerID = phoneApp->pokegear->args->callerId;
-        phoneApp->isScriptedCall = phoneApp->pokegear->args->unk05;
+        phoneApp->callScriptType = phoneApp->pokegear->args->isScriptedCall;
         phoneApp->callScriptID = phoneApp->pokegear->args->callScriptID;
         phoneApp->pokegear->cursorInAppSwitchZone = 0;
     } else {
         phoneApp->isIncomingCall = FALSE;
         phoneApp->callerID = 0;
-        phoneApp->isScriptedCall = 0;
+        phoneApp->callScriptType = 0;
         phoneApp->callScriptID = 0;
     }
 }
@@ -126,7 +126,7 @@ static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppD
     PokegearPhone_ContactList_FlushAndDestroyLinkedList(phoneApp);
     Heap_Free(phoneApp->saveContacts);
     phoneApp->pokegear->reselectAppCB = NULL;
-    phoneApp->pokegear->unknownCB = NULL;
+    phoneApp->pokegear->deselectAppCB = NULL;
 }
 
 int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {

@@ -1259,7 +1259,7 @@ static Sprite *ov84_0223F374(GAME_BOARD_SUB_3E8 *work, u32 chara, u32 pal, u32 c
         template.scale.y = 1 * FX32_ONE;
         template.scale.z = 1 * FX32_ONE;
         template.rotation = 0;
-        template.priority = prio;
+        template.drawPriority = prio;
         template.heapID = HEAP_ID_GAME_BOARD;
 
         if (display == 0) {

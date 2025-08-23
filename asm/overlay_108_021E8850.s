@@ -2760,9 +2760,9 @@ ov108_021E9E10: ; 0x021E9E10
 	ldr r2, _021E9E7C ; =ov108_021EAAB0
 	bl sub_0200D2A4
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -2791,9 +2791,9 @@ ov108_021E9E80: ; 0x021E9E80
 	str r1, [r4, r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	pop {r4, pc}
 	.balign 4, 0
 _021E9EB4: .word 0x0000043C

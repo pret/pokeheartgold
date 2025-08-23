@@ -210,7 +210,7 @@ BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem) {
     return MapHeader_GetMapSec(fieldSystem->location->mapId) != MAPSEC_MYSTERY_ZONE;
 }
 
-void sub_0203BC28(FieldSystem *fieldSystem) {
+void StartMenu_Init(FieldSystem *fieldSystem) {
     StartMenuTaskData *startMenu = StartMenu_Create();
     if (Save_VarsFlags_CheckSafariSysFlag(Save_VarsFlags_Get(fieldSystem->saveData)) == TRUE) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Safari(fieldSystem);
@@ -681,7 +681,7 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
     spriteTemplate.scale.y = FX32_ONE;
     spriteTemplate.scale.z = FX32_ONE;
     spriteTemplate.rotation = 0;
-    spriteTemplate.priority = 0;
+    spriteTemplate.drawPriority = 0;
     spriteTemplate.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
     spriteTemplate.heapID = HEAP_ID_FIELD2;
     spriteTemplate.header = &startMenu->spriteResourcesHeader; // second assign is necessary to match
@@ -1370,13 +1370,13 @@ BOOL Task_UseFlyInField(TaskManager *taskManager) {
     int partySlot = flyMap->partySlot;
     Heap_FreeExplicit(HEAP_ID_FIELD2, flyMap);
     PokegearArgs *pokegearArgs = startMenu->exitTaskEnvironment;
-    if (!pokegearArgs->unk_14) {
+    if (!pokegearArgs->setFlyDestination) {
         Heap_FreeExplicit(HEAP_ID_FIELD2, pokegearArgs);
         startMenu->exitTaskEnvironment = PartyMenu_LaunchApp_Unk1(fieldSystem, &startMenu->fieldMoveCheckData, partySlot);
         StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn_Pokemon);
     } else {
         Pokemon *pokemon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partySlot);
-        struct UnkStruct_02067BF8 *r5 = sub_02067BF8(HEAP_ID_FIELD2, fieldSystem, pokemon, partySlot, pokegearArgs->unk_20, pokegearArgs->mapCursorX * 32 + 0x10, pokegearArgs->mapCursorY * 32 + 0x10);
+        struct UnkStruct_02067BF8 *r5 = sub_02067BF8(HEAP_ID_FIELD2, fieldSystem, pokemon, partySlot, pokegearArgs->selectedFlyDest, pokegearArgs->mapCursorX * 32 + 16, pokegearArgs->mapCursorY * 32 + 16);
         Heap_FreeExplicit(HEAP_ID_FIELD2, startMenu->exitTaskEnvironment);
         FieldSystem_LoadFieldOverlay(fieldSystem);
         startMenu->exitTaskFunc = sub_02067C30;

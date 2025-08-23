@@ -4223,9 +4223,9 @@ ov51_021E7D68: ; 0x021E7D68
 	bl ObjCharTransfer_ClearBuffers
 	bl ObjPlttTransfer_Reset
 	mov r0, #0x19
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	mov r0, #0x19
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

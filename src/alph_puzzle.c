@@ -1204,8 +1204,8 @@ static void AlphPuzzle_InitSpriteGraphics(AlphPuzzleData *data) {
     GF_CreateVramTransferManager(32, data->heapID);
     data->spriteRenderer = SpriteSystem_Alloc(data->heapID);
     SpriteSystem_Init(data->spriteRenderer, &ov110_021E6EA4, &ov110_021E6DD0, 3);
-    sub_0200B2E0(data->heapID);
-    sub_0200B2E8(data->heapID);
+    thunk_ClearMainOAM(data->heapID);
+    thunk_ClearSubOAM(data->heapID);
     data->spriteGfxHandler = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler, ALPH_SPRITE_INDEX_MAX);
     sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler, sResdatInfo, 2, 1);
@@ -1217,7 +1217,7 @@ static void AlphPuzzle_DestroySpriteGraphicsEngine(AlphPuzzleData *data) {
     SpriteSystem_Free(data->spriteRenderer);
     data->spriteRenderer = NULL;
     GF_DestroyVramTransferManager();
-    sub_0200B2E0(data->heapID);
+    thunk_ClearMainOAM(data->heapID);
 }
 
 static void AlphPuzzle_CreateSpriteGraphics(AlphPuzzleData *data) {

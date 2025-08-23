@@ -253,7 +253,7 @@ static const ManagedSpriteTemplate ov62_021E67C8[5] = {
      .y = 0x60,
      .z = 0,
      .animation = 0,
-     .spritePriority = 0,
+     .drawPriority = 0,
      .pal = 0,
      .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
      .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 },
@@ -265,7 +265,7 @@ static const ManagedSpriteTemplate ov62_021E67C8[5] = {
      .y = 0x60,
      .z = 0,
      .animation = 0,
-     .spritePriority = 0,
+     .drawPriority = 0,
      .pal = 0,
      .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
      .resIdList = { 0xA01, 0xA03, 0xA02, 0xA04, 0, 0 },
@@ -277,7 +277,7 @@ static const ManagedSpriteTemplate ov62_021E67C8[5] = {
      .y = 0x60,
      .z = 0,
      .animation = 0,
-     .spritePriority = 0,
+     .drawPriority = 0,
      .pal = 0,
      .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
      .resIdList = { 0xB01, 0xB03, 0xB02, 0xB04, 0, 0 },
@@ -289,7 +289,7 @@ static const ManagedSpriteTemplate ov62_021E67C8[5] = {
      .y = 0xB0,
      .z = 0,
      .animation = 0,
-     .spritePriority = 0,
+     .drawPriority = 0,
      .pal = 0,
      .vram = NNS_G2D_VRAM_TYPE_2DSUB,
      .resIdList = { 0xD01, 0xD03, 0xD02, 0xD04, 1, 0 },
@@ -301,7 +301,7 @@ static const ManagedSpriteTemplate ov62_021E67C8[5] = {
      .y = 0,
      .z = 0,
      .animation = 0,
-     .spritePriority = 0,
+     .drawPriority = 0,
      .pal = 0,
      .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
      .resIdList = { 0xC01, 0xC03, 0xC02, 0xC04, 0, 0 },
@@ -625,8 +625,8 @@ static void MicTest_InitSpriteRenderer(MicTestData *micTest, enum HeapID heapID)
 
     micTest->spriteRenderer = spriteRender;
     SpriteSystem_Init(spriteRender, &sMicTestOamManParam, &ov62_021E6668, 0x20);
-    sub_0200B2E0(heapID);
-    sub_0200B2E8(heapID);
+    thunk_ClearMainOAM(heapID);
+    thunk_ClearSubOAM(heapID);
     micTest->gfxHandler = SpriteManager_New(micTest->spriteRenderer);
     SpriteSystem_InitSprites(micTest->spriteRenderer, micTest->gfxHandler, 7);
     SpriteSystem_InitManagerWithCapacities(micTest->spriteRenderer, micTest->gfxHandler, (SpriteResourceCountsListUnion *)&sMicTestResCountList);

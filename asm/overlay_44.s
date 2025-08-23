@@ -3849,9 +3849,9 @@ _0222BCB8:
 	cmp r2, #0x21
 	blt _0222BCB8
 	mov r0, #0x35
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	mov r0, #0x35
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 _0222BCCE:
 	add r0, r5, #0
 	bl ov44_0222F98C
@@ -14940,7 +14940,7 @@ _02231604:
 	ldr r0, [sp, #0x2c]
 	str r0, [sp, #0x64]
 	add r0, sp, #0x38
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #0xd5
 	lsl r1, r1, #4
 	str r0, [r5, r1]
@@ -14987,7 +14987,7 @@ ov44_022316B0: ; 0x022316B0
 	mov r0, #0xd5
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	ldr r0, _02231710 ; =0x00000D44
 	add r0, r5, r0
 	bl sub_02021B5C
@@ -15070,7 +15070,7 @@ ov44_02231754: ; 0x02231754
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 _02231776:
 	ldr r0, _02231784 ; =0x00000D54
 	mov r1, #0

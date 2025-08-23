@@ -149,13 +149,13 @@
 .public sub_020135AC
 .public sub_020135D8
 .public sub_02013728
-.public sub_020137C0
-.public sub_02013850
+.public TextOBJ_SetSpritesDrawFlag
+.public TextOBJ_SetPaletteNum
 .public sub_02013880
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948
-.public sub_020139C8
+.public TextOBJ_Destroy
 .public sub_02014450
 .public sub_02014510
 .public sub_0201457C

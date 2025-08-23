@@ -82,7 +82,7 @@
 .public sub_02013660
 .public sub_02013688
 .public sub_020136B4
-.public sub_020137C0
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_020138E0
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
