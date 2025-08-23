@@ -815,15 +815,15 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         ret = blockD->metDay;
         break;
     case MON_DATA_EGG_LOCATION:
-    case MON_DATA_HGSS_EGG_LOCATION:
-        if (blockD->DP_EggLocation != METLOC_FARAWAY_PLACE || (ret = blockB->PlatHGSS_EggLocation) == 0) {
-            ret = blockD->DP_EggLocation;
+    case MON_DATA_EGG_LOCATION_PTHGSS:
+        if (blockD->EggLocation_DP != METLOC_FARAWAY_PLACE || (ret = blockB->EggLocation_PtHGSS) == 0) {
+            ret = blockD->EggLocation_DP;
         }
         break;
     case MON_DATA_MET_LOCATION:
-    case MON_DATA_HGSS_MET_LOCATION:
-        if (blockD->DP_MetLocation != METLOC_FARAWAY_PLACE || (ret = blockB->PlatHGSS_MetLocation) == 0) {
-            ret = blockD->DP_MetLocation;
+    case MON_DATA_MET_LOCATION_PTHGSS:
+        if (blockD->MetLocation_DP != METLOC_FARAWAY_PLACE || (ret = blockB->MetLocation_PtHGSS) == 0) {
+            ret = blockD->MetLocation_DP;
         }
         break;
     case MON_DATA_POKERUS:
@@ -1272,23 +1272,23 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
         blockD->metDay = VALUE(u8);
         break;
     case MON_DATA_EGG_LOCATION:
-    case MON_DATA_HGSS_EGG_LOCATION:
+    case MON_DATA_EGG_LOCATION_PTHGSS:
         if (VALUE(u16) == MAPSEC_MYSTERY_ZONE || LocationIsDiamondPearlCompatible(VALUE(u16)) == TRUE) {
-            blockD->DP_EggLocation = VALUE(u16);
-            blockB->PlatHGSS_EggLocation = VALUE(u16);
+            blockD->EggLocation_DP = VALUE(u16);
+            blockB->EggLocation_PtHGSS = VALUE(u16);
         } else {
-            blockD->DP_EggLocation = METLOC_FARAWAY_PLACE;
-            blockB->PlatHGSS_EggLocation = VALUE(u16);
+            blockD->EggLocation_DP = METLOC_FARAWAY_PLACE;
+            blockB->EggLocation_PtHGSS = VALUE(u16);
         }
         break;
     case MON_DATA_MET_LOCATION:
-    case MON_DATA_HGSS_MET_LOCATION:
+    case MON_DATA_MET_LOCATION_PTHGSS:
         if (VALUE(u16) == MAPSEC_MYSTERY_ZONE || LocationIsDiamondPearlCompatible(VALUE(u16)) == TRUE) {
-            blockD->DP_MetLocation = VALUE(u16);
-            blockB->PlatHGSS_MetLocation = VALUE(u16);
+            blockD->MetLocation_DP = VALUE(u16);
+            blockB->MetLocation_PtHGSS = VALUE(u16);
         } else {
-            blockD->DP_MetLocation = METLOC_FARAWAY_PLACE;
-            blockB->PlatHGSS_MetLocation = VALUE(u16);
+            blockD->MetLocation_DP = METLOC_FARAWAY_PLACE;
+            blockB->MetLocation_PtHGSS = VALUE(u16);
         }
         break;
     case MON_DATA_POKERUS:
@@ -1670,9 +1670,9 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_MET_MONTH:
     case MON_DATA_MET_DAY:
     case MON_DATA_EGG_LOCATION:
-    case MON_DATA_HGSS_EGG_LOCATION:
+    case MON_DATA_EGG_LOCATION_PTHGSS:
     case MON_DATA_MET_LOCATION:
-    case MON_DATA_HGSS_MET_LOCATION:
+    case MON_DATA_MET_LOCATION_PTHGSS:
     case MON_DATA_POKERUS:
     case MON_DATA_POKEBALL:
     case MON_DATA_MET_LEVEL:

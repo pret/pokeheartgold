@@ -273,8 +273,8 @@
 #define MON_DATA_FORM                       112
 #define MON_DATA_UNUSED_113                 113
 #define MON_DATA_UNUSED_114                 114
-#define MON_DATA_HGSS_EGG_LOCATION          115
-#define MON_DATA_HGSS_MET_LOCATION          116
+#define MON_DATA_EGG_LOCATION_PTHGSS        115
+#define MON_DATA_MET_LOCATION_PTHGSS        116
 #define MON_DATA_NICKNAME                   117
 #define MON_DATA_NICKNAME_FLAT_COMPARE      118
 #define MON_DATA_NICKNAME_STRING            119

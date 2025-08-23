@@ -100,8 +100,8 @@ typedef struct {
                u8 unused1 : 2; //!< Unused space.
     /* 0x1A */ u16 unused2; //!< Unused space.
 
-    /* 0x1C */ u16 PlatHGSS_EggLocation; //!< Egg location for places not available in DP.
-    /* 0x1E */ u16 PlatHGSS_MetLocation; //!< Met location for places not available in DP.
+    /* 0x1C */ u16 EggLocation_PtHGSS; //!< Egg location for places not available in DP.
+    /* 0x1E */ u16 MetLocation_PtHGSS; //!< Met location for places not available in DP.
 } PokemonDataBlockB;
 
 /**
@@ -130,8 +130,8 @@ typedef struct {
     /* 0x14 */ u8 metMonth; //!< The month in which the Pokemon was first met.
     /* 0x15 */ u8 metDay; //!< The day on which the Pokemon was first met.
 
-    /* 0x16 */ u16 DP_EggLocation; //!< The location in which the Pokemon's Egg was obtained.
-    /* 0x18 */ u16 DP_MetLocation; //!< The location in which the Pokemon was first met.
+    /* 0x16 */ u16 EggLocation_DP; //!< The location in which the Pokemon's Egg was obtained.
+    /* 0x18 */ u16 MetLocation_DP; //!< The location in which the Pokemon was first met.
 
     /* 0x1A */ u8 pokerus; //!< The Pokemon's Pokerus value.
     /* 0x1B */ u8 pokeball; //!< The Pokemon's Pokeball ID.
