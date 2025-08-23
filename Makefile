@@ -62,7 +62,7 @@ sub: ; @$(MAKE) -C sub
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
-$(ALL_OBJS): files_for_compile
+$(ALL_GAME_OBJS): files_for_compile
 $(ELF): files_for_compile libsyscall
 
 libsyscall: files_for_compile
@@ -90,7 +90,9 @@ FX_CONST_H := $(WORK_DIR)/lib/include/nitro/fx/fx_const.h
 PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
 $(FX_CONST_H): $(MKFXCONST) $(TOOLSDIR)/gen_fx_consts/fx_const.csv
 	$(MKFXCONST) $@
-sdk: $(FX_CONST_H)
+
+$(ALL_LIB_OBJS): $(FX_CONST_H)
+sdk9: $(ALL_LIB_OBJS)
 $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
 
 # Convenience targets
