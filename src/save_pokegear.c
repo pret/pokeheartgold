@@ -90,8 +90,8 @@ void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 newStyle) {
     pokegear->backgroundStyle = newStyle;
 }
 
-u16 sub_0202EE98(SavePokegear *pokegear) {
-    return pokegear->unk_4_0;
+u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear) {
+    return pokegear->unlockedSkins;
 }
 
 BOOL sub_0202EEA4(SavePokegear *pokegear) {

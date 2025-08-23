@@ -5,8 +5,7 @@
 #include "font.h"
 #include "unk_0200FA24.h"
 
-void ov101_021EEE14(PokegearConfigureAppData *configureApp);
-BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp);
+void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp);
 void ov101_021EEF0C(PokegearConfigureAppData *configureApp);
 void ov101_021EEFDC(PokegearConfigureAppData *configureApp);
 void ov101_021EEFE8(PokegearConfigureAppData *configureApp);
@@ -21,7 +20,7 @@ void ov101_021EF130(PokegearConfigureAppData *configureApp);
 void ov101_021EF16C(PokegearConfigureAppData *configureApp);
 void ov101_021EF17C(PokegearConfigureAppData *configureApp);
 
-const UnmanagedSpriteTemplate ov101_021F82FC[5] = {
+static const UnmanagedSpriteTemplate sSpriteTemplates[5] = {
     {
      .resourceSet = 0,
      .x = 0,
@@ -94,7 +93,7 @@ const UnmanagedSpriteTemplate ov101_021F82FC[5] = {
      },
 };
 
-const PokegearCursorGrid ov101_021F820C[6] = {
+static const PokegearCursorGrid sCursorButtons[6] = {
     { 0, 2, 1, 3, 3, 48,  44,  -22, 22, -18, 18 },
     { 1, 0, 2, 4, 4, 128, 44,  -22, 22, -18, 18 },
     { 2, 1, 0, 5, 5, 208, 44,  -22, 22, -18, 18 },
@@ -103,7 +102,7 @@ const PokegearCursorGrid ov101_021F820C[6] = {
     { 5, 4, 3, 2, 2, 208, 116, -22, 22, -18, 18 },
 };
 
-BOOL ov101_021EED44(PokegearConfigureAppData *configureApp) {
+BOOL PokegearConfigure_LoadGFX(PokegearConfigureAppData *configureApp) {
     switch (configureApp->substate) {
     case 0:
         ov101_021EEF0C(configureApp);
@@ -123,7 +122,7 @@ BOOL ov101_021EED44(PokegearConfigureAppData *configureApp) {
     return FALSE;
 }
 
-BOOL ov101_021EED98(PokegearConfigureAppData *configureApp) {
+BOOL PokegearConfigure_UnloadGFX(PokegearConfigureAppData *configureApp) {
     ov101_021EF16C(configureApp);
     ov101_021EF120(configureApp);
     ov101_021EF0C8(configureApp);
@@ -133,28 +132,28 @@ BOOL ov101_021EED98(PokegearConfigureAppData *configureApp) {
     return TRUE;
 }
 
-int ov101_021EEDC4(PokegearConfigureAppData *configureApp) {
+int PokegearConfigure_ContextMenu(PokegearConfigureAppData *configureApp) {
     int input;
 
-    input = TouchscreenListMenu_HandleInput(configureApp->unk_40);
+    input = TouchscreenListMenu_HandleInput(configureApp->contextMenu);
     if (input != LIST_NOTHING_CHOSEN) {
-        configureApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(configureApp->unk_40);
-        TouchscreenListMenu_Destroy(configureApp->unk_40);
+        configureApp->pokegear->menuInputState = (MenuInputState)TouchscreenListMenu_WasLastInputTouch(configureApp->contextMenu);
+        TouchscreenListMenu_Destroy(configureApp->contextMenu);
         ov101_021EF5A4(configureApp, 0, 0);
         PokegearCursorManager_SetCursorSpritesAnimateFlag(configureApp->pokegear->cursorManager, 0xFFFF, TRUE);
         if (input == 0) {
-            return 4;
+            return PGCONF_MAIN_STATE_SWAP_SKINS;
         } else {
-            return 1;
+            return PGCONF_MAIN_STATE_HANDLE_INPUT;
         }
     }
 
-    return 3;
+    return PGCONF_MAIN_STATE_CONTEXT_MENU;
 }
 
-void ov101_021EEE14(PokegearConfigureAppData *configureApp) {
+void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp) {
     ov101_021EF260(configureApp);
-    configureApp->backgroundStyle = configureApp->unk_11;
+    configureApp->backgroundStyle = configureApp->selectedBackgroundStyle;
     configureApp->pokegear->backgroundStyle = configureApp->backgroundStyle;
     PokegearApp_LoadSkinGraphics(configureApp->pokegear, configureApp->backgroundStyle);
     ov100_021E6A58(configureApp->pokegear->unk_094, configureApp->backgroundStyle);
@@ -164,7 +163,7 @@ void ov101_021EEE14(PokegearConfigureAppData *configureApp) {
     ov101_021EF384(configureApp, configureApp->backgroundStyle);
 }
 
-BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp) {
+BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp) {
     switch (configureApp->substate) {
     case 0:
         BeginNormalPaletteFade(1, 4, 4, RGB_BLACK, 6, 1, configureApp->heapId);
@@ -173,7 +172,7 @@ BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp) {
         if (!IsPaletteFadeFinished()) {
             return FALSE;
         }
-        ov101_021EEE14(configureApp);
+        PokegearConfigure_LoadAndSetSkin(configureApp);
         break;
     case 2:
         BeginNormalPaletteFade(2, 3, 3, RGB_BLACK, 6, 1, configureApp->heapId);
@@ -314,11 +313,11 @@ void ov101_021EEFFC(PokegearConfigureAppData *configureApp) {
 
 void ov101_021EF00C(PokegearConfigureAppData *configureApp) {
     PokegearApp_CreateSpriteManager(configureApp->pokegear, GEAR_APP_CONFIGURE);
-    configureApp->unk_38 = TouchscreenListMenuSpawner_Create(configureApp->heapId, configureApp->pokegear->plttData);
+    configureApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(configureApp->heapId, configureApp->pokegear->plttData);
 }
 
 void ov101_021EF028(PokegearConfigureAppData *configureApp) {
-    TouchscreenListMenuSpawner_Destroy(configureApp->unk_38);
+    TouchscreenListMenuSpawner_Destroy(configureApp->contextMenuSpawner);
     PokegearApp_DestroySpriteManager(configureApp->pokegear);
 }
 
@@ -326,17 +325,17 @@ void ov101_021EF03C(PokegearConfigureAppData *configureApp) {
     int i;
 
     for (i = 0; i <= 4; ++i) {
-        configureApp->unk_14[i] = SpriteSystem_CreateSpriteFromResourceHeader(configureApp->pokegear->spriteSystem, configureApp->pokegear->spriteManager, &ov101_021F82FC[i]);
-        thunk_Sprite_SetPriority(configureApp->unk_14[i], 1);
-        Sprite_SetDrawFlag(configureApp->unk_14[i], FALSE);
-        Sprite_SetAnimActiveFlag(configureApp->unk_14[i], TRUE);
+        configureApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(configureApp->pokegear->spriteSystem, configureApp->pokegear->spriteManager, &sSpriteTemplates[i]);
+        thunk_Sprite_SetPriority(configureApp->sprites[i], 1);
+        Sprite_SetDrawFlag(configureApp->sprites[i], FALSE);
+        Sprite_SetAnimActiveFlag(configureApp->sprites[i], TRUE);
     }
     for (i = 5; i <= 8; ++i) {
-        configureApp->unk_14[i] = SpriteSystem_CreateSpriteFromResourceHeader(configureApp->pokegear->spriteSystem, configureApp->pokegear->spriteManager, &ov101_021F82FC[i - 5]);
-        thunk_Sprite_SetPriority(configureApp->unk_14[i], 1);
-        thunk_Sprite_SetDrawPriority(configureApp->unk_14[i], 0);
-        Sprite_SetDrawFlag(configureApp->unk_14[i], FALSE);
-        Sprite_SetAnimActiveFlag(configureApp->unk_14[i], FALSE);
+        configureApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(configureApp->pokegear->spriteSystem, configureApp->pokegear->spriteManager, &sSpriteTemplates[i - 5]);
+        thunk_Sprite_SetPriority(configureApp->sprites[i], 1);
+        thunk_Sprite_SetDrawPriority(configureApp->sprites[i], 0);
+        Sprite_SetDrawFlag(configureApp->sprites[i], FALSE);
+        Sprite_SetAnimActiveFlag(configureApp->sprites[i], FALSE);
     }
 }
 
@@ -344,12 +343,12 @@ void ov101_021EF0C8(PokegearConfigureAppData *configureApp) {
     int i;
 
     for (i = 0; i < 9; ++i) {
-        thunk_Sprite_Delete(configureApp->unk_14[i]);
+        thunk_Sprite_Delete(configureApp->sprites[i]);
     }
 }
 
 void ov101_021EF0E0(PokegearConfigureAppData *configureApp) {
-    PokegearCursorManager_AddButtons(configureApp->pokegear->cursorManager, ov101_021F820C, NELEMS(ov101_021F820C), 0, FALSE, configureApp->heapId, configureApp->unk_14[0], configureApp->unk_14[1], configureApp->unk_14[2], configureApp->unk_14[3]);
+    PokegearCursorManager_AddButtons(configureApp->pokegear->cursorManager, sCursorButtons, NELEMS(sCursorButtons), 0, FALSE, configureApp->heapId, configureApp->sprites[0], configureApp->sprites[1], configureApp->sprites[2], configureApp->sprites[3]);
     PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, FALSE);
 }
 
@@ -361,17 +360,17 @@ void ov101_021EF130(PokegearConfigureAppData *configureApp) {
     MsgData *msgData;
     int i;
 
-    configureApp->unk_3C = ListMenuItems_New(2, configureApp->heapId);
+    configureApp->contextMenuItems = ListMenuItems_New(2, configureApp->heapId);
     msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0270_bin, configureApp->heapId);
     for (i = 0; i < 2; ++i) {
-        ListMenuItems_AppendFromMsgData(configureApp->unk_3C, msgData, msg_0270_00000 + i, i);
+        ListMenuItems_AppendFromMsgData(configureApp->contextMenuItems, msgData, msg_0270_00000 + i, i);
     }
     DestroyMsgData(msgData);
 }
 
 void ov101_021EF16C(PokegearConfigureAppData *configureApp) {
-    ListMenuItems_Delete(configureApp->unk_3C);
-    configureApp->unk_3C = NULL;
+    ListMenuItems_Delete(configureApp->contextMenuItems);
+    configureApp->contextMenuItems = NULL;
 }
 
 void ov101_021EF17C(PokegearConfigureAppData *configureApp) {

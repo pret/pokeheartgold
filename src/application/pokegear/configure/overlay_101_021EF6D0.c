@@ -17,10 +17,10 @@ const TouchscreenHitbox ov101_021F83E4[] = {
 BOOL ov101_021EF6D0(PokegearConfigureAppData *configureApp, u8 a1) {
     u16 r2 = 1;
     r2 <<= a1;
-    return configureApp->unk_12_00 & r2;
+    return configureApp->unlockedSkins & r2;
 }
 
-int ov101_021EF6E4(PokegearConfigureAppData *configureApp) {
+int PokegearConfigure_HandleKeyInput(PokegearConfigureAppData *configureApp) {
     u8 r5;
 
     if (gSystem.newKeys & PAD_BUTTON_B) {
@@ -56,7 +56,7 @@ int ov101_021EF6E4(PokegearConfigureAppData *configureApp) {
     return -1;
 }
 
-int ov101_021EF7D4(PokegearConfigureAppData *configureApp) {
+int PokegearConfigure_HandleTouchInput(PokegearConfigureAppData *configureApp) {
     int input;
 
     input = PokegearApp_HandleTouchInput_SwitchApps(configureApp->pokegear);

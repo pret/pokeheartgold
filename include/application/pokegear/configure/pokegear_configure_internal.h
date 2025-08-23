@@ -5,27 +5,40 @@
 
 #include "touchscreen_list_menu.h"
 
-typedef struct PokegearConfigureAppData {
-    enum HeapID heapId;                 // 0x00
-    int state;                          // 0x04
-    int substate;                       // 0x08
-    PokegearAppData *pokegear;          // 0x0C
-    u8 unk_10;                          // 0x10
-    u8 unk_11;                          // 0x11
-    u16 unk_12_00 : 9;                  // 0x12
-    u16 backgroundStyle : 7;            // 0x12
-    Sprite *unk_14[9];                  // 0x14
-    TouchscreenListMenuSpawner *unk_38; // 0x38
-    LISTMENUITEM *unk_3C;               // 0x3C
-    TouchscreenListMenu *unk_40;        // 0x40
-    void *unk_44;                       // 0x44
-    NNSG2dScreenData *unk_48;           // 0x48
-} PokegearConfigureAppData;             // size: 0x4C
+enum PokegearConfigureMainState {
+    PGCONF_MAIN_STATE_LOAD,
+    PGCONF_MAIN_STATE_HANDLE_INPUT,
+    PGCONF_MAIN_STATE_UNLOAD,
+    PGCONF_MAIN_STATE_CONTEXT_MENU,
+    PGCONF_MAIN_STATE_SWAP_SKINS,
+    PGCONF_MAIN_STATE_FADE_IN,
+    PGCONF_MAIN_STATE_FADE_OUT,
+    PGCONF_MAIN_STATE_FADE_IN_APP,
+    PGCONF_MAIN_STATE_FADE_OUT_APP,
+    PGCONF_MAIN_STATE_QUIT,
+};
 
-BOOL ov101_021EED44(PokegearConfigureAppData *configureApp);
-BOOL ov101_021EED98(PokegearConfigureAppData *configureApp);
-int ov101_021EEDC4(PokegearConfigureAppData *configureApp);
-BOOL ov101_021EEE80(PokegearConfigureAppData *configureApp);
+typedef struct PokegearConfigureAppData {
+    enum HeapID heapId;                             // 0x00
+    int state;                                      // 0x04
+    int substate;                                   // 0x08
+    PokegearAppData *pokegear;                      // 0x0C
+    u8 unk_10;                                      // 0x10 unused
+    u8 selectedBackgroundStyle;                     // 0x11
+    u16 unlockedSkins : 9;                          // 0x12
+    u16 backgroundStyle : 7;                        // 0x12
+    Sprite *sprites[9];                             // 0x14
+    TouchscreenListMenuSpawner *contextMenuSpawner; // 0x38
+    LISTMENUITEM *contextMenuItems;                 // 0x3C
+    TouchscreenListMenu *contextMenu;               // 0x40
+    void *scrnDataRaw;                              // 0x44
+    NNSG2dScreenData *scrnData;                     // 0x48
+} PokegearConfigureAppData;                         // size: 0x4C
+
+BOOL PokegearConfigure_LoadGFX(PokegearConfigureAppData *configureApp);
+BOOL PokegearConfigure_UnloadGFX(PokegearConfigureAppData *configureApp);
+int PokegearConfigure_ContextMenu(PokegearConfigureAppData *configureApp);
+BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp);
 
 void ov101_021EF1D8(PokegearConfigureAppData *configureApp);
 void ov101_021EF260(PokegearConfigureAppData *configureApp);
@@ -38,7 +51,7 @@ void ov101_021EF4DC(PokegearConfigureAppData *configureApp);
 void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1);
 void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2);
 
-int ov101_021EF6E4(PokegearConfigureAppData *configureApp);
-int ov101_021EF7D4(PokegearConfigureAppData *configureApp);
+int PokegearConfigure_HandleKeyInput(PokegearConfigureAppData *configureApp);
+int PokegearConfigure_HandleTouchInput(PokegearConfigureAppData *configureApp);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEGEAR_CONFIGURE_POKEGEAR_CONFIGURE_INTERNAL_H
