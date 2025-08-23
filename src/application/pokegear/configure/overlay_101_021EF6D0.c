@@ -25,14 +25,14 @@ int ov101_021EF6E4(PokegearConfigureAppData *configureApp) {
 
     if (gSystem.newKeys & PAD_BUTTON_B) {
         configureApp->pokegear->cursorInAppSwitchZone = TRUE;
-        PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, FALSE);
-        PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(configureApp->pokegear));
+        PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, FALSE);
+        PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 0, TRUE);
+        PokegearCursorManager_SetSpecIndexAndCursorPos(configureApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(configureApp->pokegear));
         PlaySE(SEQ_SE_GS_GEARCANCEL);
         return -1;
     }
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        r5 = PokegearAppSwitch_GetCursorPos(configureApp->pokegear->appSwitch);
+        r5 = PokegearCursorManager_GetCursorPos(configureApp->pokegear->cursorManager);
         if (!ov101_021EF6D0(configureApp, r5)) {
             return -1;
         }
@@ -41,16 +41,16 @@ int ov101_021EF6E4(PokegearConfigureAppData *configureApp) {
         return 8;
     }
     if (gSystem.newKeys & PAD_KEY_LEFT) {
-        PokegearAppSwitch_MoveActiveCursor(configureApp->pokegear->appSwitch, 0);
+        PokegearCursorManager_MoveActiveCursor(configureApp->pokegear->cursorManager, 0);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        PokegearAppSwitch_MoveActiveCursor(configureApp->pokegear->appSwitch, 1);
+        PokegearCursorManager_MoveActiveCursor(configureApp->pokegear->cursorManager, 1);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
     } else if (gSystem.newKeys & PAD_KEY_UP) {
-        PokegearAppSwitch_MoveActiveCursor(configureApp->pokegear->appSwitch, 2);
+        PokegearCursorManager_MoveActiveCursor(configureApp->pokegear->cursorManager, 2);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
     } else if (gSystem.newKeys & PAD_KEY_DOWN) {
-        PokegearAppSwitch_MoveActiveCursor(configureApp->pokegear->appSwitch, 3);
+        PokegearCursorManager_MoveActiveCursor(configureApp->pokegear->cursorManager, 3);
         PlaySE(SEQ_SE_GS_GEARCURSOR);
     }
     return -1;
@@ -71,7 +71,7 @@ int ov101_021EF7D4(PokegearConfigureAppData *configureApp) {
         if (configureApp->pokegear->cursorInAppSwitchZone == TRUE) {
             ov101_021EF4DC(configureApp);
         }
-        PokegearAppSwitch_SetActiveCursorPosition(configureApp->pokegear->appSwitch, input);
+        PokegearCursorManager_SetActiveCursorPosition(configureApp->pokegear->cursorManager, input);
         ov101_021EF50C(configureApp, input);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         configureApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;

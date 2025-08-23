@@ -85,8 +85,8 @@ u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, Unk_PokegearSTRUCT_14 *a1) {
     }
     a1->unk_0 = gearPhone->unk_arr5[0];
     a1->unk_1 = gearPhone->unk_arr5[1];
-    a1->isScriptedCall = gearPhone->isScriptedCall; // 2 = scripted?
-    a1->callScriptID = gearPhone->callScriptID;     // message ID?
+    a1->isScriptedCall = gearPhone->isScriptedCall;
+    a1->callScriptID = gearPhone->callScriptID;
     a1->unk_2 = gearPhone->unk_var7;
     return gearPhone->callerId;
 }

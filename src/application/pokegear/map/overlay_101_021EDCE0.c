@@ -253,7 +253,7 @@ const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      },
 };
 
-BOOL FlyMap_GraphicsInit(PokegearMapAppData *mapApp) {
+BOOL FlyMap_LoadGFX(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
     case 0:
         Main_SetVBlankIntrCB(NULL, NULL);
@@ -294,7 +294,7 @@ BOOL FlyMap_GraphicsInit(PokegearMapAppData *mapApp) {
     return FALSE;
 }
 
-BOOL FlyMap_GraphicsDeinit(PokegearMapAppData *mapApp) {
+BOOL FlyMap_UnloadGFX(PokegearMapAppData *mapApp) {
     mapApp->pokegear->vblankCB = NULL;
     PokegearMap_UnloadFlyContextMenuStrings(mapApp);
     FlyMap_UnloadSprites(mapApp);

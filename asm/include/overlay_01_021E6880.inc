@@ -86,7 +86,7 @@
 .public sub_0205B76C
 .public sub_0205B78C
 .public sub_0205B7E0
-.public sub_0205B7EC
+.public MetatileBehavior_IsTownMap
 .public sub_0205B7F8
 .public sub_0205B804
 .public sub_0205B810

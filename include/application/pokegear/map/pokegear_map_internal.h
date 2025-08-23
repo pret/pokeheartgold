@@ -151,7 +151,7 @@ typedef struct PokegearMapLocationSpec {
     u16 objXoffset : 4;
     u16 objYoffset : 4;
     u8 flavorText;
-    u8 tilemapUnk170BlockID;
+    u8 tilemapUnk174BlockID;
     u8 unk_8; // unused
     u8 unk_9; // unused
     u8 unk_A; // unused
@@ -256,10 +256,10 @@ typedef struct PokegearMapAppData {
     s16 unk_144;                                  // 0x144
     s16 unk_146;                                  // 0x146
     s16 unk_148;                                  // 0x148
-    s16 unk_14A;                                  // 0x14A
-    s16 unk_14C;                                  // 0x14C
-    s16 unk_14E;                                  // 0x14E
-    s16 unk_150;                                  // 0x150
+    s16 pixelTop;                                 // 0x14A
+    s16 pixelBottom;                              // 0x14C
+    s16 pixelLeft;                                // 0x14E
+    s16 pixelRight;                               // 0x150
     u16 lastSelectedMapID;                        // 0x152
     void *unk_154[6];                             // 0x154
     NNSG2dScreenData *unk_16C;                    // 0x16C
@@ -277,8 +277,8 @@ typedef struct PokegearMapAppData {
     u8 mapMarkingsListCount;                      // 0x9F2
 } PokegearMapAppData;                             // size: 0x9F4
 
-BOOL PokegearMap_GraphicsInit(PokegearMapAppData *mapApp);
-BOOL PokegearMaps_GraphicsDeinit(PokegearMapAppData *mapApp);
+BOOL PokegearMap_LoadGFX(PokegearMapAppData *mapApp);
+BOOL PokegearMap_UnloadGFX(PokegearMapAppData *mapApp);
 BOOL PokegearMap_AnimateSwitchToMarkingMode(PokegearMapAppData *mapApp);
 BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp);
 
@@ -333,8 +333,8 @@ int PokegearMap_HandleTouchInput_DragItemFromPool(PokegearMapAppData *mapApp);
 int PokegearMap_HandleKeyInput_SelectedMarkingSlot(PokegearMapAppData *mapApp);
 int PokegearMap_HandleTouchInput_DragMarkingSlot(PokegearMapAppData *mapApp);
 
-void MapApp_LoadMarkingsLinkedListFromSave(PokegearMapAppData *mapApp);
-void PokegearMap_FlattenMapMarkingsToSaveArray(PokegearMapAppData *mapApp);
+void MapApp_LoadMarkingsListFromSave(PokegearMapAppData *mapApp);
+void PokegearMap_SaveMapMarkings(PokegearMapAppData *mapApp);
 MapMarkingsHeapNode *MapApp_GetMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, int mapID);
 MapMarkingsHeapNode *MapApp_GetOrCreateMarkingsHeapNodeByMapID(PokegearMapAppData *mapApp, u16 mapID);
 BOOL MapApp_RemoveMarkingsHeapNodeFromList(PokegearMapAppData *mapApp, MapMarkingsHeapNode *node);
@@ -345,8 +345,8 @@ BOOL MapMarkingsHeapNode_SetWord(MapMarkingsHeapNode *node, u8 index, u16 word);
 BOOL MapMarkingsHeapNode_RemoveWord(MapMarkingsHeapNode *node, u8 index);
 BOOL MapMarkingsHeapNode_SwapWords(MapMarkingsHeapNode *node, u8 index1, u8 index2);
 
-BOOL FlyMap_GraphicsInit(PokegearMapAppData *mapApp);
-BOOL FlyMap_GraphicsDeinit(PokegearMapAppData *mapApp);
+BOOL FlyMap_LoadGFX(PokegearMapAppData *mapApp);
+BOOL FlyMap_UnloadGFX(PokegearMapAppData *mapApp);
 int FlyMap_HandleContextMenu(PokegearMapAppData *mapApp);
 
 extern const PokegearMapLocationSpec sLocationSpecs[PGMAP_NUM_LOCATIONS];

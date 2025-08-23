@@ -377,9 +377,9 @@ void Radio_UnloadSprites(PokegearRadioAppData *radioApp) {
 
 void Radio_InitAppSwitchCursorState(PokegearRadioAppData *radioApp) {
     if (radioApp->pokegear->cursorInAppSwitchZone == TRUE) {
-        PokegearAppSwitch_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(radioApp->pokegear->appSwitch, 0, PokegearApp_AppIDtoButtonIndex(radioApp->pokegear));
+        PokegearCursorManager_SetCursorSpritesDrawState(radioApp->pokegear->cursorManager, 0, TRUE);
+        PokegearCursorManager_SetSpecIndexAndCursorPos(radioApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(radioApp->pokegear));
     } else {
-        PokegearAppSwitch_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, FALSE);
+        PokegearCursorManager_SetCursorSpritesDrawState(radioApp->pokegear->cursorManager, 0, FALSE);
     }
 }

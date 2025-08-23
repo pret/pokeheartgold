@@ -95,16 +95,16 @@ void ov101_021EF414(PokegearConfigureAppData *configureApp) {
 void ov101_021EF4B0(void *appData) {
     PokegearConfigureAppData *configureApp = appData;
 
-    PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 1, 0xFF);
-    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, FALSE);
-    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, TRUE);
+    PokegearCursorManager_SetSpecIndexAndCursorPos(configureApp->pokegear->cursorManager, 1, 0xFF);
+    PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 0, FALSE);
+    PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, TRUE);
 }
 
 void ov101_021EF4DC(PokegearConfigureAppData *configureApp) {
     configureApp->pokegear->cursorInAppSwitchZone = FALSE;
-    PokegearAppSwitch_SetSpecIndexAndCursorPos(configureApp->pokegear->appSwitch, 1, 0xFF);
-    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 0, FALSE);
-    PokegearAppSwitch_SetCursorSpritesDrawState(configureApp->pokegear->appSwitch, 1, TRUE);
+    PokegearCursorManager_SetSpecIndexAndCursorPos(configureApp->pokegear->cursorManager, 1, 0xFF);
+    PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 0, FALSE);
+    PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, TRUE);
 }
 
 void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1) {
@@ -118,7 +118,7 @@ void ov101_021EF50C(PokegearConfigureAppData *configureApp, u8 a1) {
     sp10.numWindows = 2;
     configureApp->unk_40 = TouchscreenListMenu_CreateWithAlignment(configureApp->unk_38, &sp10, configureApp->pokegear->menuInputState, ov101_021F83D0[a1].unk_0, ov101_021F83D0[a1].unk_1, 0, 0, ov101_021F83D0[a1].unk_2);
     ov101_021EF5A4(configureApp, a1, 1);
-    PokegearAppSwitch_SetCursorSpritesAnimateFlag(configureApp->pokegear->appSwitch, 0xFFFF, FALSE);
+    PokegearCursorManager_SetCursorSpritesAnimateFlag(configureApp->pokegear->cursorManager, 0xFFFF, FALSE);
 }
 
 void ov101_021EF5A4(PokegearConfigureAppData *configureApp, int a1, int a2) {

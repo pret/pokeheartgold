@@ -33,7 +33,7 @@ typedef struct Coord2S16 {
     s16 y;
 } Coord2S16;
 
-// Used to save state when
+// Used to save state when switching to the Easy Chat entry screen
 typedef struct PokegearMapSessionState {
     u8 active;
     u8 zoomed;
@@ -54,7 +54,7 @@ typedef struct PokegearMapSessionState {
     u16 word;
 } PokegearMapSessionState; // size: 0x1C
 
-typedef struct PokegearAppSwitchButtonSpec {
+typedef struct PokegearCursorGrid {
     u16 appId;
     u8 buttonLeft;
     u8 buttonRight;
@@ -66,36 +66,36 @@ typedef struct PokegearAppSwitchButtonSpec {
     s8 rightOffset;
     s8 topOffset;
     s8 bottomOffset;
-} PokegearAppSwitchButtonSpec;
+} PokegearCursorGrid;
 
 typedef union PokegearSpriteUnion {
     ManagedSprite *managed;
-    Sprite *sprite;
-    void *undisclosed;
+    Sprite *unmanaged;
+    void *raw;
 } PokegearSpriteUnion;
 
-typedef struct PokegearAppSwitchButton {
-    u8 buttonsAreActive : 1;
+typedef struct PokegearCursor {
+    u8 active : 1;
     u8 buttonsAreManagedSprite : 1;
     u8 buttonsAre4Tiles : 1;
     u8 cursorPos;
     u8 count;
     u8 lastIndex;
-    PokegearAppSwitchButtonSpec *buttonSpec;
+    PokegearCursorGrid *grid;
     u8 filler_08[0x8];
     PokegearSpriteUnion cursorSprites[4];
-} PokegearAppSwitchButton;
+} PokegearCursor;
 
-typedef struct PokegearAppSwitch {
+typedef struct PokegearCursorManager {
     u16 count;
     u16 activeCursorIndex;
-    PokegearAppSwitchButton *buttons;
-    PokegearAppSwitchButton *lastButton;
-} PokegearAppSwitch;
+    PokegearCursor *cursors;
+    PokegearCursor *lastCursor;
+} PokegearCursorManager;
 
 typedef struct PokegearManagedObject {
     u8 active;              // 0x00
-    u8 unk_01;              // 0x01
+    u8 autoCull;            // 0x01
     u16 autoUpdateDisabled; // 0x02
     Coord2S16 pos;          // 0x04
     s16 destX;              // 0x08
@@ -164,7 +164,7 @@ struct PokegearAppData {
     OverlayManager *childApplication;            // 0x070
     BgConfig *bgConfig;                          // 0x074
     PaletteData *plttData;                       // 0x078
-    PokegearAppSwitch *appSwitch;                // 0x07C
+    PokegearCursorManager *cursorManager;        // 0x07C
     RTCTime time;                                // 0x080
     SpriteSystem *spriteSystem;                  // 0x08C
     SpriteManager *spriteManager;                // 0x090
@@ -187,17 +187,17 @@ typedef enum PokegearRegion {
     POKEGEAR_REGION_JOHTO,
 } PokegearRegion;
 
-PokegearRegion Pokegear_Coords2Region(u16 x, u16 y);
-int Pokegear_GetRegionFromMapCoords(PokegearAppData *pokegearApp);
+PokegearRegion Pokegear_RegionFromCoords(u16 x, u16 y);
+int Pokegear_GetCurrentRegion(PokegearAppData *pokegearApp);
 BOOL PokegearApp_HandleInputModeChangeToButtons(PokegearAppData *pokegearApp);
 int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL PokegearApp_UpdateClockSprites(PokegearAppData *pokegearApp, BOOL force);
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
 BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
-u8 PokegearApp_AppIDtoButtonIndex(PokegearAppData *pokegearApp);
-BOOL PokegearApp_GraphicsInit(PokegearAppData *pokegearApp);
-BOOL PokegearApp_GraphicsDeinit(PokegearAppData *pokegearApp);
+u8 PokegearApp_AppIdToButtonIndex(PokegearAppData *pokegearApp);
+BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp);
+BOOL PokegearApp_UnloadGFX(PokegearAppData *pokegearApp);
 void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, u8 skin);
 void PokegearApp_SetGraphicsBanks(void);
 
@@ -223,17 +223,17 @@ u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *spr
 void PokegearObjectsManager_Reset(PokegearObjectsManager *mgr);
 void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 a1);
 
-PokegearAppSwitch *PokegearAppSwitch_Alloc(int count, HeapID heapId);
-void PokegearAppSwitch_Free(PokegearAppSwitch *appSwitch);
-u16 PokegearAppSwitch_AddButtons(PokegearAppSwitch *appSwitch, const PokegearAppSwitchButtonSpec *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
-BOOL PokegearAppSwitch_RemoveButtons(PokegearAppSwitch *appSwitch, u16 a1);
-u16 PokegearAppSwitch_SetCursorSpritesDrawState(PokegearAppSwitch *appSwitch, u16 index, BOOL draw);
-u16 PokegearAppSwitch_SetSpecIndexAndCursorPos(PokegearAppSwitch *appSwitch, u16 index, u8 cursorPos);
-u8 PokegearAppSwitch_GetCursorPos(PokegearAppSwitch *appSwitch);
-u8 PokegearAppSwitch_GetSpecCursorPos(PokegearAppSwitch *appSwitch, u16 index);
-u8 PokegearAppSwitch_MoveActiveCursor(PokegearAppSwitch *appSwitch, u8 move);
-u8 PokegearAppSwitch_SetActiveCursorPosition(PokegearAppSwitch *appSwitch, u8 newIndex);
-void PokegearAppSwitch_SetCursorSpritesAnimateFlag(PokegearAppSwitch *appSwitch, u16 index, BOOL active);
+PokegearCursorManager *PokegearCursorManager_Alloc(int count, HeapID heapId);
+void PokegearCursorManager_Free(PokegearCursorManager *cursorManager);
+u16 PokegearCursorManager_AddButtons(PokegearCursorManager *cursorManager, const PokegearCursorGrid *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, HeapID heapId, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
+BOOL PokegearCursorManager_RemoveCursor(PokegearCursorManager *cursorManager, u16 a1);
+u16 PokegearCursorManager_SetCursorSpritesDrawState(PokegearCursorManager *cursorManager, u16 index, BOOL draw);
+u16 PokegearCursorManager_SetSpecIndexAndCursorPos(PokegearCursorManager *cursorManager, u16 index, u8 cursorPos);
+u8 PokegearCursorManager_GetCursorPos(PokegearCursorManager *cursorManager);
+u8 PokegearCursorManager_GetSpecCursorPos(PokegearCursorManager *cursorManager, u16 index);
+u8 PokegearCursorManager_MoveActiveCursor(PokegearCursorManager *cursorManager, u8 move);
+u8 PokegearCursorManager_SetActiveCursorPosition(PokegearCursorManager *cursorManager, u8 newIndex);
+void PokegearCursorManager_SetCursorSpritesAnimateFlag(PokegearCursorManager *cursorManager, u16 index, BOOL active);
 
 static inline void PokegearManagedObject_SetCoordUpdateSprite(PokegearManagedObject *obj, s16 x, s16 y) {
     obj->pos.x = x;
@@ -257,7 +257,7 @@ static inline void PokegearManagedObject_AddCoord(PokegearManagedObject *obj, s1
 }
 
 static inline void PokegearManagedObject_SetUnk01(PokegearManagedObject *obj, BOOL a1) {
-    obj->unk_01 = a1;
+    obj->autoCull = a1;
 }
 
 static inline void PokegearManagedObject_SetFixCoords(PokegearManagedObject *obj, s16 x, s16 y) {
