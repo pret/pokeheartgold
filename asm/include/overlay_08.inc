@@ -169,7 +169,7 @@
 .public BattleSystem_GetBattleContext
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartyMon
-.public BattleSystem_GetSpriteRenderer
+.public BattleSystem_GetSpriteSystem
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetTrainer
 .public BattleSystem_GetBag

@@ -102,11 +102,11 @@
 .public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02013534
+.public FontSystem_NewInit
 .public sub_020135AC
 .public sub_02013688
 .public sub_020136B4
-.public sub_020137C0
+.public FontOAM_SetDrawFlag
 .public sub_020138E0
 .public sub_02013910
 .public sub_02013938

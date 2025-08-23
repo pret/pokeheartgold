@@ -109,7 +109,7 @@ static int ov122_021E7514(VoltorbFlipAppWork *);
 static void RenderTopScreen(VoltorbFlipAppWork *);
 static void AddWindows(VoltorbFlipAppWork *);
 static void ov122_021E765C(VoltorbFlipAppWork *);
-static void PaintMessageOnWindow(VoltorbFlipAppWork *, u8, u8, Window *, u8, u8);
+static void PaintMessageOnWindow(VoltorbFlipAppWork *, FontID, u8, Window *, u8, u8);
 static void PrintMessageOnWindow(VoltorbFlipAppWork *, FontID, u8, Window *, u8, u8, u32);
 static void PrintMessageToSmallWindow(VoltorbFlipAppWork *, int);
 static void PrintTextWindow(VoltorbFlipAppWork *, int, int);

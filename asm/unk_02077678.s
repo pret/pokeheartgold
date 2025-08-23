@@ -270,13 +270,13 @@ _020777D6:
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end sub_020777C8
 
-	thumb_func_start sub_020777F8
-sub_020777F8: ; 0x020777F8
+	thumb_func_start thunk_ManagedSprite_DeleteAndFreeResources
+thunk_ManagedSprite_DeleteAndFreeResources: ; 0x020777F8
 	ldr r3, _020777FC ; =Sprite_DeleteAndFreeResources
 	bx r3
 	.balign 4, 0
 _020777FC: .word Sprite_DeleteAndFreeResources
-	thumb_func_end sub_020777F8
+	thumb_func_end thunk_ManagedSprite_DeleteAndFreeResources
 
 	thumb_func_start sub_02077800
 sub_02077800: ; 0x02077800

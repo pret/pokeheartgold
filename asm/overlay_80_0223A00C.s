@@ -255,7 +255,7 @@ _0223A1BA:
 	orr r0, r2
 	str r0, [r4, r3]
 	mov r0, #4
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #0x30]
 	ldr r2, _0223A510 ; =0x000002D9
 	mov r0, #1
@@ -289,7 +289,7 @@ _0223A1BA:
 	bl ov80_0223A62C
 	ldr r0, [r5, #0x7c]
 	mov r1, #0
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [sp, #0x24]
 	bl String_Delete
 	ldr r0, [sp, #0x20]
@@ -660,7 +660,7 @@ _0223A534:
 	bl SetBlendBrightness
 	ldr r0, [r5, #0x7c]
 	mov r1, #1
-	bl sub_020137C0
+	bl FontOAM_SetDrawFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -899,7 +899,7 @@ ov80_0223A748: ; 0x0223A748
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r4, #4
 	bl sub_02021B5C
 	pop {r4, pc}
