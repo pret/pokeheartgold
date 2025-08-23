@@ -94,12 +94,12 @@
 .public sub_020182C4
 .public Main_SetVBlankIntrCB
 .public SetKeyRepeatTimers
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
-.public ReallocFromHeap
+.public HeapExp_FndInitAllocator
+.public Heap_Realloc
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate

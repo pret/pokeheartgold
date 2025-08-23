@@ -21,13 +21,14 @@
 #include "unk_02054E00.h"
 #include "unk_0206D494.h"
 
-static void sub_02092BE8(FieldSystem *sys, PokegearArgs *ptr, BOOL a2);
+static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *ptr, BOOL isMap);
 static void sub_02092E54(GearPhoneRingManager *ptr);
 static void gearRingingManagerReset(GearPhoneRingManager *ptr);
 static void GearPhoneRingManager_Reset(GearPhoneRingManager *ptr);
 static void SysTask_RingGearPhone(SysTask *task, GearPhoneRingManager *ptr);
 
-static void sub_02092BE8(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL a2) {
+static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL isMap) {
+    s16 x, y;
     Unk_PokegearSTRUCT_14 Unk_struct;
     SaveVarsFlags *state = Save_VarsFlags_Get(sys->saveData);
     LocalFieldData *points = Save_LocalFieldData_Get(sys->saveData);
@@ -45,15 +46,15 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL a2) 
     } else {
         pokegearArgs->x = warpPtr->x;
         pokegearArgs->y = warpPtr->y;
-        MapHeader_GetWorldMapCoords(pokegearArgs->mapID, &Unk_struct.x, &Unk_struct.y);
+        MapHeader_GetWorldMapCoords(pokegearArgs->mapID, &x, &y);
         MAPMATRIX *matrix = MapMatrix_New();
         MapMatrix_Load(MAP_NEW_BARK, matrix);
-        if (Unk_struct.x == 0 && Unk_struct.y == 0) {
+        if (x == 0 && y == 0) {
             pokegearArgs->matrixXCoord = pokegearArgs->x / 32;
             pokegearArgs->matrixYCoord = pokegearArgs->y / 32;
         } else {
-            pokegearArgs->matrixXCoord = Unk_struct.x;
-            pokegearArgs->matrixYCoord = Unk_struct.y;
+            pokegearArgs->matrixXCoord = x;
+            pokegearArgs->matrixYCoord = y;
         }
         pokegearArgs->mapHeader = MapMatrix_GetMapHeader(matrix, pokegearArgs->matrixXCoord, pokegearArgs->matrixYCoord);
         MapMatrix_Free(matrix);
@@ -61,43 +62,43 @@ static void sub_02092BE8(FieldSystem *sys, PokegearArgs *pokegearArgs, BOOL a2) 
 
     pokegearArgs->playerGender = PlayerProfile_GetTrainerGender(Save_PlayerData_GetProfile(FieldSystem_GetSaveData(sys)));
     pokegearArgs->menuInputStatePtr = &sys->menuInputState;
-    pokegearArgs->unk01 = sub_0203DF3C(sys);
+    pokegearArgs->menuInputState = sub_0203DF3C(sys);
     pokegearArgs->mapMusicID = FieldSystem_GetOverriddenMusicId(sys, pokegearArgs->mapID);
 
-    if (a2) {
+    if (isMap) {
         return;
     }
     if (GearPhoneRingManager_IsRinging(phoneRingMgr)) {
-        pokegearArgs->callerId = ov02_02251EE8(phoneRingMgr, &Unk_struct.unk04[0]);
+        pokegearArgs->callerId = ov02_02251EE8(phoneRingMgr, &Unk_struct);
         if (pokegearArgs->callerId >= NUM_PHONE_CONTACTS) {
-            pokegearArgs->incomingPhoneCall = 0;
+            pokegearArgs->isScriptedLaunch = 0;
         } else {
             // scripted phone call
-            pokegearArgs->callScriptID = Unk_struct.unk04[4]; // message num?
-            pokegearArgs->unk05 = Unk_struct.unk04[3];        // call type?
-            if (pokegearArgs->unk05 == 3) {
-                sub_0202F050(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.unk04[2]);
-            } else if (pokegearArgs->unk05 == 0) {
-                sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk04[0], Unk_struct.unk04[1], pokegearArgs->callerId);
+            pokegearArgs->callScriptID = Unk_struct.callScriptID;     // message num?
+            pokegearArgs->isScriptedCall = Unk_struct.isScriptedCall; // call type?
+            if (pokegearArgs->isScriptedCall == 3) {
+                sub_0202F050(SaveData_GetPhoneCallPersistentState(sys->saveData), Unk_struct.unk_2);
+            } else if (pokegearArgs->isScriptedCall == 0) {
+                sub_0202AB18(Save_Misc_Get(sys->saveData), Unk_struct.unk_0, Unk_struct.unk_1, pokegearArgs->callerId);
             }
             gearRingingManagerReset(phoneRingMgr);
-            pokegearArgs->incomingPhoneCall = 1;
+            pokegearArgs->isScriptedLaunch = 1;
         }
     } else {
-        pokegearArgs->incomingPhoneCall = 0;
+        pokegearArgs->isScriptedLaunch = 0;
     }
 }
 
-void sub_02092D80(FieldSystem *sys, PokegearArgs *pokegearArgs) {
-    sub_02092BE8(sys, pokegearArgs, FALSE);
+void FieldSystem_InitPokegearArgs_Phone(FieldSystem *sys, PokegearArgs *pokegearArgs) {
+    FieldSystem_InitPokegearArgs(sys, pokegearArgs, FALSE);
 }
 
-void sub_02092D8C(FieldSystem *sys, PokegearArgs *pokegearArgs) {
-    sub_02092BE8(sys, pokegearArgs, TRUE);
+void FieldSystem_InitPokegearArgs_Map(FieldSystem *sys, PokegearArgs *pokegearArgs) {
+    FieldSystem_InitPokegearArgs(sys, pokegearArgs, TRUE);
 }
 
-GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys) {
-    GearPhoneRingManager *ptr = AllocFromHeap(heapId, sizeof(GearPhoneRingManager));
+GearPhoneRingManager *GearPhoneRingManager_New(enum HeapID heapID, FieldSystem *sys) {
+    GearPhoneRingManager *ptr = Heap_Alloc(heapID, sizeof(GearPhoneRingManager));
     MI_CpuClear8(ptr, sizeof(GearPhoneRingManager));
     gearRingingManagerReset(ptr);
     ptr->unk_varC = 10;
@@ -225,8 +226,8 @@ static void gearRingingManagerReset(GearPhoneRingManager *ptr) {
     ptr->unk_var0_1 = FALSE;
     ptr->ringing = FALSE;
     ptr->callerId = PHONE_CONTACT_NONE;
-    ptr->unk_var3 = 0;
-    ptr->unk_var4 = 0;
+    ptr->isScriptedCall = 0;
+    ptr->callScriptID = 0;
     ptr->unk_var7 = 0;
     ptr->entry.id = PHONE_CONTACT_NONE;
     ptr->unk_var12 = 50;

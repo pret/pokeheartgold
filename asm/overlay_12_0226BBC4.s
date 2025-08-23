@@ -114,7 +114,7 @@ _0226BC78:
 	ldr r0, [sp, #0x60]
 	str r0, [sp, #0x30]
 	add r0, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0

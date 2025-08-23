@@ -26,7 +26,7 @@ sub_02058038: ; 0x02058038
 	bl sub_02091574
 	mov r0, #0xf
 	mov r1, #0x44
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02058090 ; =_021D41C8
 	mov r2, #0x44
 	str r0, [r1]
@@ -250,7 +250,7 @@ _020581FE:
 	bne _02058212
 	ldr r1, _02058250 ; =0x0000066C
 	add r0, r7, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r6]
 	str r0, [r1, r5]
 _02058212:
@@ -482,7 +482,7 @@ sub_0205838C: ; 0x0205838C
 	bl sub_02057180
 	add r1, r0, #0
 	mov r0, #0xf
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _020583E4 ; =_021D41C8
 	mov r2, #0
 	ldr r1, [r1]
@@ -628,7 +628,7 @@ sub_020584BC: ; 0x020584BC
 	bl sub_02057180
 	add r1, r0, #0
 	mov r0, #0xf
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02058510 ; =_021D41C8
 	mov r2, #0
 	ldr r1, [r1]

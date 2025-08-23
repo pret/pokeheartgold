@@ -9,14 +9,14 @@
 #include "unk_02005D10.h"
 
 typedef struct PokeFluteData {
-    HeapID heapID;
+    enum HeapID heapID;
 } PokeFluteData;
 
 void RadioShow_PokeFlute_Init(RadioShow *radioShow);
 void RadioShow_PokeFlute_Unload(RadioShow *radioShow);
 
 BOOL RadioShow_PokeFlute_Setup(RadioShow *radioShow) {
-    PokeFluteData *data = AllocFromHeap(radioShow->heapID, sizeof(PokeFluteData));
+    PokeFluteData *data = Heap_Alloc(radioShow->heapID, sizeof(PokeFluteData));
     MI_CpuClear8(data, sizeof(PokeFluteData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

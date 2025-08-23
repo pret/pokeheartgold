@@ -92,7 +92,7 @@ static const TutorMove sTutorMoves[] = {
 
 static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form);
 static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]);
-static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index);
+static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapID, u32 index);
 static BOOL ov01_0220305C(ScriptContext *ctx);
 
 // get number of pages needed to show learnable moves from move tutor
@@ -202,7 +202,7 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     }
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
-    MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD, GetMoveTutorLearnsetIndex(species, form));
+    MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD2, GetMoveTutorLearnsetIndex(species, form));
     u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
         // this is equivalent to treating `learnset` as a bitfield of 64 bits
@@ -227,7 +227,7 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     return numLearnableMoves;
 }
 
-static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index) {
+static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapID, u32 index) {
     FSFile file;
     FS_InitFile(&file);
     if (FS_OpenFile(&file, "fielddata/wazaoshie/waza_oshie.bin") == FALSE) {
@@ -239,7 +239,7 @@ static MoveTutorLearnset *GetMoveTutorLearnset(HeapID heapId, u32 index) {
     if (file.prop.file.bottom - file.prop.file.top != filesize) {
         GF_ASSERT(FALSE);
     }
-    MoveTutorLearnset *learnset = AllocFromHeapAtEnd(heapId, sizeof(MoveTutorLearnset));
+    MoveTutorLearnset *learnset = Heap_AllocAtEnd(heapID, sizeof(MoveTutorLearnset));
     FS_SeekFile(&file, index * sizeof(MoveTutorLearnset), FS_SEEK_SET);
     FS_ReadFile(&file, learnset, sizeof(MoveTutorLearnset));
     FS_CloseFile(&file);
@@ -286,8 +286,8 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     u16 *result = GetVarPointer(fieldSystem, resultVarId);
     Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
     *unk = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
-    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_32);
-    String *string = String_New(0x10, HEAP_ID_32);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_FIELD3);
+    String *string = String_New(0x10, HEAP_ID_FIELD3);
     showAsTwoColumns = (numLearnableMoves + showNextButton >= 4) ? 1 : 0;
     for (i = 0; i < numLearnableMoves; i++) {
         ReadMsgDataIntoString(messageData, sTutorMoves[learnableMoves[i + numMovesToSkip]].move, string);
@@ -326,7 +326,7 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
     *result = FALSE;
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *unk = AllocFromHeapAtEnd(HEAP_ID_FIELD, 0x2c);
+    u16 *unk = Heap_AllocAtEnd(HEAP_ID_FIELD2, 0x2c);
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
     s32 size = Species_LoadLearnsetTable(species, form, unk);

@@ -16,8 +16,8 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -59,8 +59,8 @@
 .public MenuInputStateMgr_SetState
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

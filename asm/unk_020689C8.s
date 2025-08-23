@@ -312,7 +312,7 @@ _02068C04: .word sub_02068D18
 sub_02068C08: ; 0x02068C08
 	push {r4, lr}
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02068C18
 	bl GF_AssertFail
@@ -347,7 +347,7 @@ sub_02068C38: ; 0x02068C38
 	add r5, r1, #0
 	mul r5, r2
 	add r1, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02068C4E
 	bl GF_AssertFail

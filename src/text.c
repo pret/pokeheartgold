@@ -151,7 +151,7 @@ static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallba
         return 0xFF;
     }
 
-    TextPrinter *printer = AllocFromHeap(HEAP_ID_DEFAULT, sizeof(TextPrinter));
+    TextPrinter *printer = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(TextPrinter));
     printer->active = TRUE;
     printer->state = 0;
     printer->textSpeedBottom = speed;
@@ -283,7 +283,7 @@ static void sub_020204B8(TextPrinter *printer) {
 }
 
 static u16 *LoadScreenFocusIndicatorGraphics(void) {
-    u16 *ret = AllocFromHeap(HEAP_ID_DEFAULT, 32 * 24 * sizeof(u16));
+    u16 *ret = Heap_Alloc(HEAP_ID_DEFAULT, 32 * 24 * sizeof(u16));
 
     NNSG2dCharacterData *g2dCharData;
     void *charData = GfGfxLoader_GetCharData(NARC_graphic_font, 6, FALSE, &g2dCharData, HEAP_ID_DEFAULT);

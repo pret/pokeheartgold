@@ -9,7 +9,7 @@ BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 BOOL ScrCmd_394(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     PokemonSummaryArgs **runningAppData = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    *runningAppData = LearnForgetMove_LaunchApp(HEAP_ID_32, ctx->fieldSystem, var0, 0);
+    *runningAppData = LearnForgetMove_LaunchApp(HEAP_ID_FIELD3, ctx->fieldSystem, var0, 0);
     SetupNativeScript(ctx, ScrNative_WaitApplication);
     return TRUE;
 }
@@ -34,7 +34,7 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
-    u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
+    u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_FIELD3);
     *retPtr = MoveRelearner_IsValidMove(eligibleMoves);
     Heap_Free(eligibleMoves);
     return FALSE;
@@ -42,7 +42,7 @@ BOOL ScrCmd_466(ScriptContext *ctx) {
 
 static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *eligibleMoves) {
     MoveRelearnerArgs **moveRelearnerPtr = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    MoveRelearnerArgs *moveRelearner = MoveRelearner_New(HEAP_ID_32);
+    MoveRelearnerArgs *moveRelearner = MoveRelearner_New(HEAP_ID_FIELD3);
     *moveRelearnerPtr = moveRelearner;
 
     moveRelearner->mon = mon;
@@ -59,7 +59,7 @@ static void StartMoveRelearner(ScriptContext *ctx, int type, Pokemon *mon, u16 *
 BOOL ScrCmd_MoveRelearner(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
-    u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_32);
+    u16 *eligibleMoves = MoveRelearner_GetEligibleLevelUpMoves(mon, HEAP_ID_FIELD3);
     StartMoveRelearner(ctx, 1, mon, eligibleMoves);
     return TRUE;
 }
@@ -68,7 +68,7 @@ BOOL ScrCmd_MoveTutor(ScriptContext *ctx) {
     u16 slot = ScriptGetVar(ctx);
     u16 move = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
-    u16 *eligibleMoves = AllocFromHeap(HEAP_ID_32, 2 * sizeof(u16));
+    u16 *eligibleMoves = Heap_Alloc(HEAP_ID_FIELD3, 2 * sizeof(u16));
     eligibleMoves[0] = move;
     eligibleMoves[1] = 0xffff;
     StartMoveRelearner(ctx, MOVE_RELEARNER_TUTOR, mon, eligibleMoves);

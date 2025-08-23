@@ -9,7 +9,7 @@
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
-.public AllocFromHeapAtEnd
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public WindowIsInUse
 .public RemoveWindow

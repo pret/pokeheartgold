@@ -13,7 +13,7 @@ ov91_0225C540: ; 0x0225C540
 	mov r0, #3
 	mov r1, #0x6a
 	lsl r2, r0, #0x11
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	mov r1, #0x88
 	mov r2, #0x6a
@@ -606,7 +606,7 @@ _0225CA0A:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x6a
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0
 	mov r1, #1
 	bl sub_020398D4
@@ -999,7 +999,7 @@ ov91_0225CCC4: ; 0x0225CCC4
 	mov r1, #0x38
 	add r6, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x38
@@ -1205,7 +1205,7 @@ ov91_0225CDF4: ; 0x0225CDF4
 	add r5, r0, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0225CE64 ; =0x000087E8
 	mov r1, #0
 	add r4, r0, #0
@@ -6391,7 +6391,7 @@ ov91_0225F508: ; 0x0225F508
 	mov r2, #0x20
 	add r0, r5, r0
 	add r4, r1, #0
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	bl ov91_0225F414
 	ldr r0, _0225F63C ; =0x00001AB4
 	ldr r1, [r5, #0x10]
@@ -10708,10 +10708,10 @@ _022616FA:
 	str r6, [sp, #0x58]
 	ldr r1, [r5, #0x4c]
 	add r0, sp, #0x2c
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #0
 	str r0, [r5, #0x48]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	add r0, #0x38
 	bl RemoveWindow
@@ -10752,7 +10752,7 @@ ov91_02261790: ; 0x02261790
 	add r5, r0, #0
 	ldr r0, [r5, #0x48]
 	add r4, r1, #0
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	ldr r0, [r5, #0x60]
 	bl sub_0200B0A8
 	mov r0, #0x53
@@ -10838,13 +10838,13 @@ ov91_02261808: ; 0x02261808
 	ldr r1, [r5, #0x4c]
 	ldr r3, [r3]
 	add r2, #0x38
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r5, #0
 	add r0, #0x38
 	bl RemoveWindow
 	ldr r0, [r5, #0x48]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r5, #0x34]
 	mov r1, #1
 	bl Sprite_SetDrawFlag
@@ -10928,7 +10928,7 @@ ov91_022618B0: ; 0x022618B0
 	ldr r1, [r5, #0x4c]
 	ldr r3, [r3]
 	add r2, #0x38
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r5, #0
 	add r0, #0x38
 	bl RemoveWindow
@@ -11004,7 +11004,7 @@ _0226198A:
 	add r0, #0x98
 	strh r1, [r0]
 	ldr r0, [r4, #0x48]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	bl Sprite_SetDrawFlag

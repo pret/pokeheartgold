@@ -35,7 +35,7 @@ _0225F03E: ; jump table
 _0225F050:
 	mov r0, #4
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x20
 	str r0, [r4, #0xc]

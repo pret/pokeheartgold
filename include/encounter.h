@@ -30,7 +30,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
 void sub_020511F8(FieldSystem *fieldSystem, BattleSetup *setup);
 void SetupAndStartFirstBattle(TaskManager *taskManager, u16 species, u8 level);
 void SetupAndStartTutorialBattle(TaskManager *taskManager);
-void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, HeapID heapId, u32 *winFlag);
+void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, u32 opponentTrainer2, u32 followerTrainerNum, u32 a4, u32 a5, enum HeapID heapID, u32 *winFlag);
 void CallTask_020508B8(TaskManager *taskManager, void *param1, u32 battleType);
 void CallTask_02050960(TaskManager *taskManager, s32 target, s32 maxLevel, u32 flag);
 void sub_02051598(FieldSystem *fieldSystem, void *param1, s32 battleType);

@@ -19,7 +19,7 @@ ov01_021EA8E0: ; 0x021EA8E0
 	push {r4, lr}
 	mov r0, #4
 	mov r1, #0x48
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0

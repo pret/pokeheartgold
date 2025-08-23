@@ -8,8 +8,8 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public sub_0201A430
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF3dRender_ResTexIsLoaded
 .public GF3dRender_DrawModel

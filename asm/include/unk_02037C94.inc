@@ -4,9 +4,9 @@
 .public sub_0201A728
 .public sub_0201A738
 .public sub_0201A79C
-.public CreateHeapAtEnd
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_CreateAtEnd
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public String_New

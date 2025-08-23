@@ -15,7 +15,7 @@ gTrainerPoke_{{ i }}:
 	.byte {{ poke.difficulty }}
 	.byte {{ poke.genderOverride }} | ({{ poke.abilityOverride }} << 4)
 	.short {{ poke.level }}
-	.short {{ poke.species }}{% if existsIn(poke, "item") %}
+	.short {{ poke.species }}{% if existsIn(poke, "form") %} | ({{ poke.form }} << 10){% endif %}{% if existsIn(poke, "item") %}
 	.short {{ poke.item }}{% endif %}{% if existsIn(poke, "moves") %}{% for move in poke.moves %}
 	.short {{ move }}{% endfor %}{% for k in range(4 - length(poke.moves)) %}
 	.short MOVE_NONE{% endfor %}{% endif %}

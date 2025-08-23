@@ -15,7 +15,7 @@ ov48_02258800: ; 0x02258800
 	mov r0, #3
 	mov r1, #0x70
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _0225890C ; =0x0000C724
 	add r0, r4, #0
 	mov r2, #0x70
@@ -282,7 +282,7 @@ ov48_022589FC: ; 0x022589FC
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x70
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

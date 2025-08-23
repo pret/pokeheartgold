@@ -15,7 +15,7 @@ ov33_0225D520: ; 0x0225D520
 	mov r1, #8
 	lsl r2, r0, #0xf
 	add r5, r3, #0
-	bl CreateHeap
+	bl Heap_Create
 	ldr r0, _0225D598 ; =0x04001050
 	mov r1, #0
 	strh r1, [r0]
@@ -77,7 +77,7 @@ ov33_0225D5A8: ; 0x0225D5A8
 	add r0, r5, #0
 	bl DestroySysTaskAndEnvironment
 	mov r0, #8
-	bl DestroyHeap
+	bl Heap_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov33_0225D5A8
 
