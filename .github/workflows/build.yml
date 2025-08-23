@@ -19,7 +19,7 @@ jobs:
   build-docker-image:
     runs-on: ubuntu-latest
     outputs:
-      imageid: github.event_name == 'push' && steps.build-docker.outputs.imageid || "pret/pokeheartgold:latest"
+      imageid: steps.get-changed-files.outputs.test_any_changed == 'true' && steps.build-docker.outputs.imageid || "pret/pokeheartgold:latest"
     steps:
       -
         name: Checkout
