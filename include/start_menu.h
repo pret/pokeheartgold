@@ -75,7 +75,7 @@ typedef struct UnkStruct_0203D818 {
 } UnkStruct_0203D818;
 
 BOOL FieldSystem_MapIsNotMysteryZone(FieldSystem *fieldSystem);
-void sub_0203BC28(FieldSystem *fieldSystem);
+void StartMenu_Init(FieldSystem *fieldSystem);
 void sub_0203BCDC(FieldSystem *fieldSystem);
 void sub_0203BD20(FieldSystem *fieldSystem);
 void sub_0203BD64(FieldSystem *fieldSystem);
