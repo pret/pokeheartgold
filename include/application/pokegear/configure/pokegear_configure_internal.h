@@ -40,11 +40,11 @@ BOOL PokegearConfigure_UnloadGFX(PokegearConfigureAppData *configureApp);
 int PokegearConfigure_ContextMenu(PokegearConfigureAppData *configureApp);
 BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp);
 
-void ov101_021EF1D8(PokegearConfigureAppData *configureApp);
-void ov101_021EF260(PokegearConfigureAppData *configureApp);
+void PokegearConfigure_LoadGraphics_Internal(PokegearConfigureAppData *configureApp);
+void PokegearConfigure_UnloadGraphics_Internal(PokegearConfigureAppData *configureApp);
 void ov101_021EF26C(PokegearConfigureAppData *configureApp, int a1);
 void ov101_021EF384(PokegearConfigureAppData *configureApp, int backgroundStyle);
-void ov101_021EF414(PokegearConfigureAppData *configureApp);
+void PokegearConfigure_DrawUnlockedSkinsButtons(PokegearConfigureAppData *configureApp);
 
 void ov101_021EF4B0(void *appData);
 void ov101_021EF4DC(PokegearConfigureAppData *configureApp);

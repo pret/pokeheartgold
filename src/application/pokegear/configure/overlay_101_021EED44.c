@@ -5,20 +5,20 @@
 #include "font.h"
 #include "unk_0200FA24.h"
 
-void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp);
-void ov101_021EEF0C(PokegearConfigureAppData *configureApp);
-void ov101_021EEFDC(PokegearConfigureAppData *configureApp);
-void ov101_021EEFE8(PokegearConfigureAppData *configureApp);
-void ov101_021EEFFC(PokegearConfigureAppData *configureApp);
-void ov101_021EF00C(PokegearConfigureAppData *configureApp);
-void ov101_021EF028(PokegearConfigureAppData *configureApp);
-void ov101_021EF03C(PokegearConfigureAppData *configureApp);
-void ov101_021EF0C8(PokegearConfigureAppData *configureApp);
-void ov101_021EF0E0(PokegearConfigureAppData *configureApp);
-void ov101_021EF120(PokegearConfigureAppData *configureApp);
-void ov101_021EF130(PokegearConfigureAppData *configureApp);
-void ov101_021EF16C(PokegearConfigureAppData *configureApp);
-void ov101_021EF17C(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_InitBGs(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_UnloadBGs(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_LoadGraphics(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_UnloadGraphics(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_CreateSpriteManager(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_DestroySpriteManager(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_CreateSprites(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_DeleteSprites(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_CreateCursor(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_RemoveCursor(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_LoadContextMenuText(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_UnloadContextMenuText(PokegearConfigureAppData *configureApp);
+static void PokegearConfigure_SetInitialCursorState(PokegearConfigureAppData *configureApp);
 
 static const UnmanagedSpriteTemplate sSpriteTemplates[5] = {
     {
@@ -105,16 +105,16 @@ static const PokegearCursorGrid sCursorButtons[6] = {
 BOOL PokegearConfigure_LoadGFX(PokegearConfigureAppData *configureApp) {
     switch (configureApp->substate) {
     case 0:
-        ov101_021EEF0C(configureApp);
-        ov101_021EEFE8(configureApp);
-        ov101_021EF00C(configureApp);
+        PokegearConfigure_InitBGs(configureApp);
+        PokegearConfigure_LoadGraphics(configureApp);
+        PokegearConfigure_CreateSpriteManager(configureApp);
         ov101_021EF26C(configureApp, 1);
         break;
     case 1:
-        ov101_021EF03C(configureApp);
-        ov101_021EF0E0(configureApp);
-        ov101_021EF130(configureApp);
-        ov101_021EF17C(configureApp);
+        PokegearConfigure_CreateSprites(configureApp);
+        PokegearConfigure_CreateCursor(configureApp);
+        PokegearConfigure_LoadContextMenuText(configureApp);
+        PokegearConfigure_SetInitialCursorState(configureApp);
         configureApp->substate = 0;
         return TRUE;
     }
@@ -123,12 +123,12 @@ BOOL PokegearConfigure_LoadGFX(PokegearConfigureAppData *configureApp) {
 }
 
 BOOL PokegearConfigure_UnloadGFX(PokegearConfigureAppData *configureApp) {
-    ov101_021EF16C(configureApp);
-    ov101_021EF120(configureApp);
-    ov101_021EF0C8(configureApp);
-    ov101_021EF028(configureApp);
-    ov101_021EEFFC(configureApp);
-    ov101_021EEFDC(configureApp);
+    PokegearConfigure_UnloadContextMenuText(configureApp);
+    PokegearConfigure_RemoveCursor(configureApp);
+    PokegearConfigure_DeleteSprites(configureApp);
+    PokegearConfigure_DestroySpriteManager(configureApp);
+    PokegearConfigure_UnloadGraphics(configureApp);
+    PokegearConfigure_UnloadBGs(configureApp);
     return TRUE;
 }
 
@@ -151,15 +151,15 @@ int PokegearConfigure_ContextMenu(PokegearConfigureAppData *configureApp) {
     return PGCONF_MAIN_STATE_CONTEXT_MENU;
 }
 
-void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp) {
-    ov101_021EF260(configureApp);
+static void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configureApp) {
+    PokegearConfigure_UnloadGraphics_Internal(configureApp);
     configureApp->backgroundStyle = configureApp->selectedBackgroundStyle;
     configureApp->pokegear->backgroundStyle = configureApp->backgroundStyle;
     PokegearApp_LoadSkinGraphics(configureApp->pokegear, configureApp->backgroundStyle);
     ov100_021E6A58(configureApp->pokegear->unk_094, configureApp->backgroundStyle);
-    ov101_021EF1D8(configureApp);
+    PokegearConfigure_LoadGraphics_Internal(configureApp);
     ov101_021EF26C(configureApp, 0);
-    ov101_021EF414(configureApp);
+    PokegearConfigure_DrawUnlockedSkinsButtons(configureApp);
     ov101_021EF384(configureApp, configureApp->backgroundStyle);
 }
 
@@ -189,7 +189,7 @@ BOOL PokegearConfigure_SwapSkins(PokegearConfigureAppData *configureApp) {
     return FALSE;
 }
 
-void ov101_021EEF0C(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_InitBGs(PokegearConfigureAppData *configureApp) {
     int i;
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
 
@@ -297,31 +297,31 @@ void ov101_021EEF0C(PokegearConfigureAppData *configureApp) {
     }
 }
 
-void ov101_021EEFDC(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_UnloadBGs(PokegearConfigureAppData *configureApp) {
     Pokegear_ClearAppBgLayers(configureApp->pokegear);
 }
 
-void ov101_021EEFE8(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_LoadGraphics(PokegearConfigureAppData *configureApp) {
     FontID_Alloc(4, configureApp->heapId);
-    ov101_021EF1D8(configureApp);
+    PokegearConfigure_LoadGraphics_Internal(configureApp);
 }
 
-void ov101_021EEFFC(PokegearConfigureAppData *configureApp) {
-    ov101_021EF260(configureApp);
+static void PokegearConfigure_UnloadGraphics(PokegearConfigureAppData *configureApp) {
+    PokegearConfigure_UnloadGraphics_Internal(configureApp);
     FontID_Release(4);
 }
 
-void ov101_021EF00C(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_CreateSpriteManager(PokegearConfigureAppData *configureApp) {
     PokegearApp_CreateSpriteManager(configureApp->pokegear, GEAR_APP_CONFIGURE);
     configureApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(configureApp->heapId, configureApp->pokegear->plttData);
 }
 
-void ov101_021EF028(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_DestroySpriteManager(PokegearConfigureAppData *configureApp) {
     TouchscreenListMenuSpawner_Destroy(configureApp->contextMenuSpawner);
     PokegearApp_DestroySpriteManager(configureApp->pokegear);
 }
 
-void ov101_021EF03C(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_CreateSprites(PokegearConfigureAppData *configureApp) {
     int i;
 
     for (i = 0; i <= 4; ++i) {
@@ -339,7 +339,7 @@ void ov101_021EF03C(PokegearConfigureAppData *configureApp) {
     }
 }
 
-void ov101_021EF0C8(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_DeleteSprites(PokegearConfigureAppData *configureApp) {
     int i;
 
     for (i = 0; i < 9; ++i) {
@@ -347,16 +347,16 @@ void ov101_021EF0C8(PokegearConfigureAppData *configureApp) {
     }
 }
 
-void ov101_021EF0E0(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_CreateCursor(PokegearConfigureAppData *configureApp) {
     PokegearCursorManager_AddButtons(configureApp->pokegear->cursorManager, sCursorButtons, NELEMS(sCursorButtons), 0, FALSE, configureApp->heapId, configureApp->sprites[0], configureApp->sprites[1], configureApp->sprites[2], configureApp->sprites[3]);
     PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, FALSE);
 }
 
-void ov101_021EF120(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_RemoveCursor(PokegearConfigureAppData *configureApp) {
     PokegearCursorManager_RemoveCursor(configureApp->pokegear->cursorManager, 1);
 }
 
-void ov101_021EF130(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_LoadContextMenuText(PokegearConfigureAppData *configureApp) {
     MsgData *msgData;
     int i;
 
@@ -368,13 +368,13 @@ void ov101_021EF130(PokegearConfigureAppData *configureApp) {
     DestroyMsgData(msgData);
 }
 
-void ov101_021EF16C(PokegearConfigureAppData *configureApp) {
+static void PokegearConfigure_UnloadContextMenuText(PokegearConfigureAppData *configureApp) {
     ListMenuItems_Delete(configureApp->contextMenuItems);
     configureApp->contextMenuItems = NULL;
 }
 
-void ov101_021EF17C(PokegearConfigureAppData *configureApp) {
-    ov101_021EF414(configureApp);
+static void PokegearConfigure_SetInitialCursorState(PokegearConfigureAppData *configureApp) {
+    PokegearConfigure_DrawUnlockedSkinsButtons(configureApp);
     if (configureApp->pokegear->cursorInAppSwitchZone == TRUE) {
         PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 0, TRUE);
         PokegearCursorManager_SetCursorSpritesDrawState(configureApp->pokegear->cursorManager, 1, FALSE);

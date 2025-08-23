@@ -31,7 +31,7 @@ static const PokegearConfigureContextMenuParam sContextMenuParam[] = {
     { 22, 11, TSMENU_ALN_RIGHT },
 };
 
-void ov101_021EF1D8(PokegearConfigureAppData *configureApp) {
+void PokegearConfigure_LoadGraphics_Internal(PokegearConfigureAppData *configureApp) {
     NARC *narc;
 
     narc = NARC_New(NARC_a_1_4_5, configureApp->heapId);
@@ -42,7 +42,7 @@ void ov101_021EF1D8(PokegearConfigureAppData *configureApp) {
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
 
-void ov101_021EF260(PokegearConfigureAppData *configureApp) {
+void PokegearConfigure_UnloadGraphics_Internal(PokegearConfigureAppData *configureApp) {
     Heap_Free(configureApp->scrnDataRaw);
 }
 
@@ -76,17 +76,17 @@ void ov101_021EF384(PokegearConfigureAppData *configureApp, int backgroundStyle)
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
-void ov101_021EF414(PokegearConfigureAppData *configureApp) {
+void PokegearConfigure_DrawUnlockedSkinsButtons(PokegearConfigureAppData *configureApp) {
     int i;
-    u16 r4 = 1;
+    u16 mask = 1;
 
     for (i = 0; i < 6; ++i) {
-        if (configureApp->unlockedSkins & r4) {
-            r4 <<= 1;
+        if (configureApp->unlockedSkins & mask) {
+            mask <<= 1;
             continue;
         }
         CopyToBgTilemapRect(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 10 * (i % 3) + 3, 9 * (i / 3) + 3, 6, 5, configureApp->scrnData->rawData, 6, 0, configureApp->scrnData->screenWidth / 8, configureApp->scrnData->screenHeight / 8);
-        r4 <<= 1;
+        mask <<= 1;
     }
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
     ov101_021EF384(configureApp, configureApp->backgroundStyle);
