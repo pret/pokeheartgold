@@ -22,7 +22,7 @@
 .public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
-.public sub_0200B2E0
+.public thunk_ClearMainOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString

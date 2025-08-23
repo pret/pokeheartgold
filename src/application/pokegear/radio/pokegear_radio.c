@@ -82,7 +82,7 @@ BOOL PokegearRadio_Exit(OverlayManager *man, int *state) {
 void Radio_Load(PokegearRadioAppData *radioApp) {
     radioApp->pokegear->childAppdata = radioApp;
     radioApp->pokegear->reselectAppCB = Radio_OnReselectApp;
-    radioApp->pokegear->unknownCB = Radio_UnknownCB;
+    radioApp->pokegear->deselectAppCB = Radio_UnknownCB;
     radioApp->backgroundStyle = Pokegear_GetBackgroundStyle(radioApp->pokegear->savePokegear);
     Pokegear_GetRadioCursorCoords(radioApp->pokegear->savePokegear, &radioApp->cursorX, &radioApp->cursorY);
     radioApp->selectedButton = 3;
@@ -94,7 +94,7 @@ void Radio_Load(PokegearRadioAppData *radioApp) {
 void Radio_Unload(PokegearRadioAppData *radioApp) {
     Pokegear_SetRadioCursorCoords(radioApp->pokegear->savePokegear, radioApp->cursorX, radioApp->cursorY);
     radioApp->pokegear->reselectAppCB = NULL;
-    radioApp->pokegear->unknownCB = NULL;
+    radioApp->pokegear->deselectAppCB = NULL;
 }
 
 #define RADIO_SPECIAL_MAP_TYPE_ALPH     0

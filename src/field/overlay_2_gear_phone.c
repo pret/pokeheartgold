@@ -58,7 +58,7 @@ String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, HeapID heapId) {
     return str;
 }
 
-void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u8 a4, u8 a5) {
+void GearPhoneRingManager_SetCallerParams(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u8 isScriptedCall, u8 callScriptID) {
     // a4 set to 2 when passed from script
     // a5 related to message id? when passed from script
     if (callerId >= NUM_PHONE_CONTACTS) {
@@ -72,22 +72,22 @@ void ov02_02251EB8(GearPhoneRingManager *gearPhone, u8 callerId, u8 a2, u8 a3, u
         gearPhone->unk_arr5[1] = a3;
     }
 
-    gearPhone->unk_var3 = a4;
-    gearPhone->unk_var4 = a5;
+    gearPhone->isScriptedCall = isScriptedCall;
+    gearPhone->callScriptID = callScriptID;
 }
 
-u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, u8 *a1) {
+u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, Unk_PokegearSTRUCT_14 *a1) {
     MI_CpuFill8(a1, 0, 5);
     if (gearPhone->callerId >= NUM_PHONE_CONTACTS) {
         GF_ASSERT(FALSE);
-        a1[0] = 0xFF;
+        a1->unk_0 = 0xFF;
         return 0xFF;
     }
-    a1[0] = gearPhone->unk_arr5[0];
-    a1[1] = gearPhone->unk_arr5[1];
-    a1[3] = gearPhone->unk_var3; // 2 = scripted?
-    a1[4] = gearPhone->unk_var4; // message ID?
-    a1[2] = gearPhone->unk_var7;
+    a1->unk_0 = gearPhone->unk_arr5[0];
+    a1->unk_1 = gearPhone->unk_arr5[1];
+    a1->isScriptedCall = gearPhone->isScriptedCall;
+    a1->callScriptID = gearPhone->callScriptID;
+    a1->unk_2 = gearPhone->unk_var7;
     return gearPhone->callerId;
 }
 
@@ -195,7 +195,7 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     if (ret != 0) {
         slot = (MTRandom() % (ret * 100));
         rand = slot / 100;
-        ov02_02251EB8(gearPhone, contact[(u8)rand].id, var, index, 0, 0);
+        GearPhoneRingManager_SetCallerParams(gearPhone, contact[(u8)rand].id, var, index, 0, 0);
         GearPhoneRingManager_StartRinging(gearPhone);
         ov02_022522AC(gearPhone, 1);
     }
@@ -425,7 +425,7 @@ _02252164:
 	ldrb r1, [r1, r2]
 	ldr r2, [sp, #0x24]
 	add r3, r7, #0
-	bl ov02_02251EB8
+	bl GearPhoneRingManager_SetCallerParams
 	ldr r0, [sp, #8]
 	bl GearPhoneRingManager_StartRinging
 	ldr r0, [sp, #8]
@@ -448,7 +448,7 @@ static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
     if (r6 == 0xFF) {
         return FALSE;
     }
-    ov02_02251EB8(gearPhone, ov02_02253C84[r6].unk0, 0xFF, 0, 3, ov02_02253C84[r6].unk2);
+    GearPhoneRingManager_SetCallerParams(gearPhone, ov02_02253C84[r6].unk0, 0xFF, 0, 3, ov02_02253C84[r6].unk2);
     GearPhoneRingManager_StartRinging(gearPhone);
     gearPhone->unk_var7 = r6;
     return ov02_02253C84[r6].unk4 + 1;

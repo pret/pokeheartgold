@@ -57,7 +57,7 @@ void IntroMovie_BuildSpriteResourcesHeaderAndTemplate(int resId, IntroMovieOverl
     SetVec(template->position, 0, 0, 0);
     SetVec(template->scale, FX32_ONE, FX32_ONE, FX32_ONE);
     template->rotation = 0;
-    template->priority = 0;
+    template->drawPriority = 0;
     template->whichScreen = whichScreen;
     template->heapId = HEAP_ID_INTRO_MOVIE;
 }

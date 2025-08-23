@@ -39818,10 +39818,10 @@ ov96_021F8C54: ; 0x021F8C54
 _021F8C76:
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_021F8C54
 
@@ -40065,7 +40065,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	bl sub_020135D8
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	str r4, [r6]
 	add r3, sp, #0x1c
 	ldmia r3!, {r0, r1}
@@ -40086,7 +40086,7 @@ ov96_021F8E94: ; 0x021F8E94
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021F8EAC
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0
@@ -40360,7 +40360,7 @@ _021F908C:
 	bl String_Delete
 	ldr r0, [r7, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #0x14]
 	add r0, #0x10
 	str r0, [r7, #0x48]
@@ -40483,7 +40483,7 @@ ov96_021F91CC: ; 0x021F91CC
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021F91E4
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0

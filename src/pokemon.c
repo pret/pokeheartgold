@@ -2706,7 +2706,7 @@ struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHan
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = resTag + 0x4E2A;
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = resTag + 0x4E27;
     spriteResourcesTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = resTag + 0x4E27;
-    spriteResourcesTemplate.spritePriority = _020FF50C[resTag];
+    spriteResourcesTemplate.drawPriority = _020FF50C[resTag];
     object = SpriteSystem_NewSprite(renderer, gfxHandler, &spriteResourcesTemplate);
     Sprite_SetPalOffsetRespectVramOffset(object->sprite, 0);
     ManagedSprite_SetPositionXY(object, x, y);

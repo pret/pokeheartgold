@@ -36,8 +36,8 @@
 .public sub_0200AED4
 .public sub_0200B00C
 .public sub_0200B0CC
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -80,13 +80,13 @@
 .public sub_0200FBF4
 .public sub_02013534
 .public sub_020135AC
-.public sub_020137C0
-.public sub_02013850
+.public TextOBJ_SetSpritesDrawFlag
+.public TextOBJ_SetPaletteNum
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948
-.public sub_02013950
-.public sub_020139C8
+.public TextOBJ_Create
+.public TextOBJ_Destroy
 .public GF_RTC_GetTimeOfDayByHour
 .public ListMenuItems_New
 .public ListMenuItems_Delete
@@ -196,7 +196,7 @@
 .public SafariZone_AddObjectToArea
 .public Save_VarsFlags_Get
 .public ChangeFlag99D
-.public sub_0208820C
+.public BgConfig_LoadAssetFromOpenNarc
 .public sub_02097268
 .public NNS_GfdGetLnkTexVramManagerWorkSize
 .public NNS_GfdGetLnkPlttVramManagerWorkSize

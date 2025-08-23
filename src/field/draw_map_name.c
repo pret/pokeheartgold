@@ -107,7 +107,7 @@ static void Task_MapNameAndIcon(SysTask *task, FieldDrawMapNameInfo *info) {
         if (info->layerY == 38) {
             if (info->gonnaDrawAnother) {
                 info->gonnaDrawAnother = FALSE;
-                DrawAreaIcon(info, sub_02068F84(info->mapsecMsgData, info->mapsec, info->mapNameString));
+                DrawAreaIcon(info, MsgData_ReadMsgIntoStringAndGetWidth(info->mapsecMsgData, info->mapsec, info->mapNameString));
                 PrintMapNameOnIcon(info, info->mapNameString);
                 info->positionState = POSITION_STATE_DESCENDING;
                 return;
@@ -154,7 +154,7 @@ static void FieldDrawMapName_Start(FieldDrawMapNameInfo *info, u32 mapsec, u32 a
         info->layerY = 38;
         info->task = SysTask_CreateOnMainQueue((SysTaskFunc)Task_MapNameAndIcon, info, 0);
         info->positionState = POSITION_STATE_DESCENDING;
-        int width = sub_02068F84(info->mapsecMsgData, info->mapsec, info->mapNameString);
+        int width = MsgData_ReadMsgIntoStringAndGetWidth(info->mapsecMsgData, info->mapsec, info->mapNameString);
         info->areaIcon = areaIcon;
         DrawAreaIcon(info, width);
         PrintMapNameOnIcon(info, info->mapNameString);

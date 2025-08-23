@@ -1001,14 +1001,14 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
     unkStruct.x = (index + 1) * 27;
     switch (sub->growthStage) {
     case BERRY_POT_GROWTH_STAGE_PLANTED:
-        unkStruct.animSeqNo = 5;
+        unkStruct.animation = 5;
         break;
     case BERRY_POT_GROWTH_STAGE_SPROUTED:
-        unkStruct.animSeqNo = 6;
+        unkStruct.animation = 6;
         break;
     default:
         unkStruct.resourceSet = index + 1;
-        unkStruct.animSeqNo = sub->growthStage - 3;
+        unkStruct.animation = sub->growthStage - 3;
         break;
     }
 
@@ -1193,8 +1193,8 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
     data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
     SpriteSystem_Init(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
-    sub_0200B2E0(data->heapId);
-    sub_0200B2E8(data->heapId);
+    thunk_ClearMainOAM(data->heapId);
+    thunk_ClearSubOAM(data->heapId);
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
@@ -1229,7 +1229,7 @@ static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data)
 
     GF_DestroyVramTransferManager();
 
-    sub_0200B2E0(data->heapId);
+    thunk_ClearMainOAM(data->heapId);
 }
 
 static void BerryPotsApp_SetupSpriteSystem(BerryPotsAppData *data) {

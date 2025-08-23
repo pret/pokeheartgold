@@ -60,11 +60,11 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      .x = 0,
      .y = 0,
      .z = 0,
-     .animSeqNo = 1,
-     .rotation = 1,
-     .palIndex = 5,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 1,
+     .drawPriority = 1,
+     .pal = 5,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -74,11 +74,11 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      .x = 0,
      .y = 0,
      .z = 0,
-     .animSeqNo = 2,
-     .rotation = 1,
-     .palIndex = 5,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 2,
+     .drawPriority = 1,
+     .pal = 5,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -88,11 +88,11 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      .x = 0,
      .y = 0,
      .z = 0,
-     .animSeqNo = 3,
-     .rotation = 1,
-     .palIndex = 5,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 3,
+     .drawPriority = 1,
+     .pal = 5,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -102,11 +102,11 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      .x = 0,
      .y = 0,
      .z = 0,
-     .animSeqNo = 4,
-     .rotation = 1,
-     .palIndex = 5,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 4,
+     .drawPriority = 1,
+     .pal = 5,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -116,11 +116,11 @@ static const UnmanagedSpriteTemplate sSpriteTemplates[] = {
      .x = 128,
      .y = 128,
      .z = 0,
-     .animSeqNo = 0,
-     .rotation = 1,
-     .palIndex = 4,
-     .whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN,
-     .unk_18 = 0,
+     .animation = 0,
+     .drawPriority = 1,
+     .pal = 4,
+     .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+     .paletteMode = 0,
      .unk_1C = 0,
      .unk_20 = 0,
      .unk_24 = 0,
@@ -139,7 +139,7 @@ BOOL Radio_VideoInit(PokegearRadioAppData *radioApp) {
     case 1:
         Radio_CreateSprites(radioApp);
         Radio_InitAppSwitchCursorState(radioApp);
-        radioApp->pokegear->unk_058 = Radio_Run;
+        radioApp->pokegear->vblankCB = Radio_Run;
         radioApp->substate = 0;
         return TRUE;
     }
@@ -168,7 +168,7 @@ BOOL Radio_VideoUnload(PokegearRadioAppData *radioApp) {
         ++radioApp->substate;
         break;
     case 2:
-        radioApp->pokegear->unk_058 = NULL;
+        radioApp->pokegear->vblankCB = NULL;
         Radio_UnloadSprites(radioApp);
         Radio_DestroySpriteManager(radioApp);
         Radio_UnloadWindows(radioApp);
@@ -301,11 +301,11 @@ void Radio_UnloadBGs(PokegearRadioAppData *radioApp) {
 void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
     FontID_Alloc(4, radioApp->heapId);
     NARC *narc = NARC_New(NARC_a_1_4_7, radioApp->heapId);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 16, GF_BG_LYR_MAIN_2, 0, 0, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 34, GF_BG_LYR_SUB_3, 0, 0, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 22, GF_BG_LYR_MAIN_2, 1, 0x800, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 28, GF_BG_LYR_MAIN_3, 1, 0x800, 0);
-    sub_0208820C(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 40, GF_BG_LYR_SUB_3, 1, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 16, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 34, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 22, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 28, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
+    BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapId, narc, NARC_a_1_4_7, radioApp->backgroundStyle + 40, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0x800, 0);
     radioApp->pNSCR = GfGfxLoader_GetScrnDataFromOpenNarc(narc, radioApp->backgroundStyle + 22, FALSE, &radioApp->screenData, radioApp->heapId);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(radioApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -350,7 +350,7 @@ void Radio_UnloadWindows(PokegearRadioAppData *radioApp) {
 }
 
 void Radio_CreateSpriteManager(PokegearRadioAppData *radioApp) {
-    PokegearApp_CreateSpriteManager(radioApp->pokegear, 1);
+    PokegearApp_CreateSpriteManager(radioApp->pokegear, GEAR_APP_RADIO);
 }
 
 void Radio_DestroySpriteManager(PokegearRadioAppData *radioApp) {
@@ -377,9 +377,9 @@ void Radio_UnloadSprites(PokegearRadioAppData *radioApp) {
 
 void Radio_InitAppSwitchCursorState(PokegearRadioAppData *radioApp) {
     if (radioApp->pokegear->cursorInAppSwitchZone == TRUE) {
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(radioApp->pokegear->appSwitch, 0, ov100_021E5DC8(radioApp->pokegear));
+        PokegearCursorManager_SetCursorSpritesDrawState(radioApp->pokegear->cursorManager, 0, TRUE);
+        PokegearCursorManager_SetSpecIndexAndCursorPos(radioApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(radioApp->pokegear));
     } else {
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(radioApp->pokegear->appSwitch, 0, FALSE);
+        PokegearCursorManager_SetCursorSpritesDrawState(radioApp->pokegear->cursorManager, 0, FALSE);
     }
 }

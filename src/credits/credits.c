@@ -555,14 +555,14 @@ static void InitSprites(CreditsAppWork *work) {
         }
 
         tmpl.position.y = (yIdx * 80 + 16) * FX32_ONE;
-        tmpl.priority = 1;
+        tmpl.drawPriority = 1;
         ptr->pokemon[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->pokemon[i] != NULL);
         Sprite_SetAnimActiveFlag(ptr->pokemon[i], TRUE);
         Sprite_SetDrawFlag(ptr->pokemon[i], TRUE);
         Sprite_SetAnimCtrlSeq(ptr->pokemon[i], 6);
 
-        tmpl.priority = 0;
+        tmpl.drawPriority = 0;
         ptr->cloud[i] = Sprite_CreateAffine(&tmpl);
         GF_ASSERT(ptr->cloud[i] != NULL);
         Sprite_SetAnimActiveFlag(ptr->cloud[i], TRUE);
@@ -581,14 +581,14 @@ static void InitSprites(CreditsAppWork *work) {
             tmpl.position.x = 240 * FX32_ONE;
         }
         tmpl.position.y = (yIdx * 80 + 272) * FX32_ONE;
-        tmpl.priority = 1;
+        tmpl.drawPriority = 1;
         u8 idx = i + MONS_PER_SCREEN;
         ptr->pokemon[idx] = Sprite_CreateAffine(&tmpl);
         Sprite_SetAnimActiveFlag(ptr->pokemon[idx], TRUE);
         Sprite_SetDrawFlag(ptr->pokemon[idx], TRUE);
         Sprite_SetAnimCtrlSeq(ptr->pokemon[idx], 6);
 
-        tmpl.priority = 0;
+        tmpl.drawPriority = 0;
         ptr->cloud[idx] = Sprite_CreateAffine(&tmpl);
         Sprite_SetAnimActiveFlag(ptr->cloud[idx], TRUE);
         Sprite_SetDrawFlag(ptr->cloud[idx], FALSE);
@@ -613,7 +613,7 @@ static void InitDancingSpriteResources(int idx, CreditsAppWork *work, int sprtRe
     tmpl->scale.y = FX32_ONE;
     tmpl->scale.z = FX32_ONE;
     tmpl->rotation = 0;
-    tmpl->priority = 0;
+    tmpl->drawPriority = 0;
     tmpl->whichScreen = whichScreen;
     tmpl->heapId = HEAP_ID_CREDITS;
 }
@@ -640,7 +640,7 @@ static void InitCutsceneSpriteResources(u8 idx, CreditsAppWork *work, u8 sprtRes
     tmpl->scale.y = FX32_ONE;
     tmpl->scale.z = FX32_ONE;
     tmpl->rotation = 0;
-    tmpl->priority = 0;
+    tmpl->drawPriority = 0;
     tmpl->whichScreen = whichScreen;
     tmpl->heapId = HEAP_ID_CREDITS;
 }
@@ -1006,7 +1006,7 @@ static void CreateCutsceneSprite(CreditsAppWork *work, const CutsceneSpriteParam
     // Render on non-primary display screen
     tmpl.position.x = spriteParam->xPos * FX32_ONE;
     tmpl.position.y = (spriteParam->yPos + 256) * FX32_ONE;
-    tmpl.priority = 1;
+    tmpl.drawPriority = 1;
 
     Sprite *sprite = Sprite_CreateAffine(&tmpl);
     cutsceneSprite->sprite = sprite;
