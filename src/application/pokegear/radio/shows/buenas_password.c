@@ -12,7 +12,7 @@
 #include "unk_02005D10.h"
 
 typedef struct BuenasPasswordData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u16 msgID;
 } BuenasPasswordData;
@@ -21,7 +21,7 @@ void RadioShow_BuenasPassword_Init(RadioShow *radioShow);
 void RadioShow_BuenasPassword_Unload(RadioShow *radioShow);
 
 BOOL RadioShow_BuenasPassword_Setup(RadioShow *radioShow) {
-    BuenasPasswordData *data = AllocFromHeap(radioShow->heapID, sizeof(BuenasPasswordData));
+    BuenasPasswordData *data = Heap_Alloc(radioShow->heapID, sizeof(BuenasPasswordData));
     MI_CpuClear8(data, sizeof(BuenasPasswordData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

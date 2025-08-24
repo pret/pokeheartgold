@@ -3938,7 +3938,7 @@ ov112_021E76CC: ; 0x021E76CC
 	mov r0, #3
 	mov r1, #0x9a
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E7764 ; =0x0001F378
 	add r0, r4, #0
 	mov r2, #0x9a
@@ -4182,7 +4182,7 @@ ov112_021E7910: ; 0x021E7910
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x9a
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0x10
 	bl sub_0201A738
 	ldr r0, _021E7954 ; =FS_OVERLAY_ID(intro_title)
@@ -4741,7 +4741,7 @@ ov112_021E7DFC: ; 0x021E7DFC
 	add r4, r1, #0
 	add r1, r0, #0
 	add r1, #0xe6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r3, #0
 	add r6, r0, #0
 	str r3, [sp]
@@ -6203,7 +6203,7 @@ ov112_021E8CB8: ; 0x021E8CB8
 	mov r0, #0x9a
 	add r1, r0, #0
 	add r1, #0xe6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #0x24]
 	mov r0, #0
 	ldr r6, _021E9020 ; =ov112_021F5578
@@ -21228,7 +21228,7 @@ ov112_021F039C: ; 0x021F039C
 	mov r1, #0x96
 	lsl r1, r1, #2
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x96
 	mov r1, #0
 	lsl r2, r2, #2
@@ -22173,7 +22173,7 @@ _021F0B36:
 	mov r1, #0x32
 	ldr r0, [r5]
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x6e
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -25013,7 +25013,7 @@ _021F2142:
 	str r0, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r7, #0
 	add r6, r0, #0
 	add r4, r7, #0
@@ -26684,7 +26684,7 @@ _021F2DF4:
 	mov r0, #3
 	mov r1, #0x9b
 	lsl r2, r0, #0x11
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x15
 	add r0, r4, #0
 	lsl r1, r1, #4
@@ -26750,7 +26750,7 @@ ov112_021F2E70: ; 0x021F2E70
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x9b
-	bl DestroyHeap
+	bl Heap_Destroy
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021F2EAC: .word gSystem + 0x60

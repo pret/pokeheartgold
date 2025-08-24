@@ -346,7 +346,7 @@ sub_020974C4: ; 0x020974C4
 	add r4, r2, #0
 	str r3, [sp, #0xc]
 	str r0, [sp, #0x14]
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #0x20]
 	mov r5, #0
 	add r6, r0, #0
@@ -384,7 +384,7 @@ _020974F8:
 _02097522:
 	ldr r0, [sp, #0x14]
 	mov r1, #0x64
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #0x1c]
 	ldr r1, [sp, #0x1c]
 	mov r0, #8

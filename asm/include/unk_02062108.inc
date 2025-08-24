@@ -3,7 +3,7 @@
 .public PlaySE
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public AllocFromHeapAtEnd
+.public Heap_AllocAtEnd
 .public Heap_FreeExplicit
 .public SysTask_GetData
 .public GF_AssertFail

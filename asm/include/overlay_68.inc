@@ -87,8 +87,8 @@
 .public sub_02019FF8
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public Heap_FreeExplicit
 .public BgConfig_Alloc
@@ -150,7 +150,7 @@
 .public sub_02077830
 .public sub_02077834
 .public sub_020880CC
-.public sub_0208820C
+.public BgConfig_LoadAssetFromOpenNarc
 .public sub_02089D40
 .public NNS_G2dSetupSoftwareSpriteCamera
 .public NNS_G3dGlbFlushP

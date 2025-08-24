@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_FreeExplicit
 .public G3X_SetFog
 .public G3X_SetFogTable

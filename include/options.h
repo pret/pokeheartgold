@@ -14,7 +14,7 @@ typedef struct Options {
     u16 dummy : 1;
 } Options;
 
-Options *Options_New(HeapID heapId);
+Options *Options_New(enum HeapID heapID);
 void Options_Copy(Options *src, Options *dest);
 void Options_Init(Options *options);
 void Options_SetButtonModeOnMain(SaveData *saveData, u32 buttonMode);

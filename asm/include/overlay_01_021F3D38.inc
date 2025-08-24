@@ -1,6 +1,6 @@
 #include <nitro/fs/overlay.h>
 #pragma once
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public BgSetPosTextAndCommit
 .public Bg_GetYpos

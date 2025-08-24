@@ -14,7 +14,7 @@
 .public sub_02015FE8
 .public sub_02015FF4
 .public sub_02015FF8
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public NNS_G2dDrawSpriteFast

@@ -61,8 +61,8 @@
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -92,12 +92,12 @@
 .public sub_02013534
 .public sub_020135AC
 .public sub_020136B4
-.public sub_020137C0
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948
-.public sub_02013950
-.public sub_020139C8
+.public TextOBJ_Create
+.public TextOBJ_Destroy
 .public IsNighttime
 .public ListMenuItems_New
 .public ListMenuItems_Delete
@@ -111,8 +111,8 @@
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public SetKeyRepeatTimers
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

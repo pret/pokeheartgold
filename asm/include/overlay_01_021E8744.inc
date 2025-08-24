@@ -6,7 +6,7 @@
 .public NARC_AllocAndReadWholeMember
 .public NARC_ReadWholeMember
 .public NARC_GetFileCount
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public MIi_CpuClearFast

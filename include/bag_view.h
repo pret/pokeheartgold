@@ -8,15 +8,15 @@
 #include "save.h"
 
 /*
- * BagView *BagView_New(u8 heapId)
+ * BagView *BagView_New(u8 heapID)
  *
  * Create a new BagView
  *
- * @param heapId: Heap to allocate from
+ * @param heapID: Heap to allocate from
  *
  * @returns: Pointer to new BagView
  */
-BagView *BagView_New(u8 heapId);
+BagView *BagView_New(u8 heapID);
 
 /*
  * u32 BagView_sizeof(void)
@@ -53,7 +53,7 @@ u8 sub_02077914(BagView *bagView);
 u8 sub_0207791C(BagView *bagView);
 
 /*
- * BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, u32 heapId)
+ * BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, u32 heapID)
  *
  * Some key items, when used, only print a non_npc_msg.
  * If the selected item is one of these, formats the
@@ -63,14 +63,14 @@ u8 sub_0207791C(BagView *bagView);
  * @param saveData:    Persistent game state
  * @param dest:        Output String
  * @param itemId:      ID of item to check
- * @param heapId:     Heap in which to allocate temp buffers
+ * @param heapID:     Heap in which to allocate temp buffers
  *
  * @returns: TRUE if non_npc_msg formatted, else FALSE
  */
-BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, HeapID heapId);
+BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, enum HeapID heapID);
 
 /*
- * void GetItemUseErrorMessage(PLAYERDATA *playerData, String *dest, u32 unused, enum ItemUseError code, u32 heapId)
+ * void GetItemUseErrorMessage(PLAYERDATA *playerData, String *dest, u32 unused, enum ItemUseError code, u32 heapID)
  *
  * If you can't use the item for whatever reason, this
  * routine is called to format the non_npc_msg.
@@ -83,8 +83,8 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 
  * @param dest:           Pointer to output String
  * @param itemId:         Unused
  * @param code:           Which non_npc_msg to output
- * @param heapId:        Heap to allocate temp buffers from
+ * @param heapID:        Heap to allocate temp buffers from
  */
-void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, HeapID heapId);
+void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 itemId, enum ItemUseError code, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_BAG_VIEW_H

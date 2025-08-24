@@ -61,13 +61,13 @@ void MailMsg_Init_FromTemplate(MailMessage *mailMessage, const MailMessageTempla
     }
 }
 
-String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId) {
+String *MailMsg_GetExpandedString(const MailMessage *mailMessage, enum HeapID heapID) {
     MessageFormat *msgFmt;
     MsgData *msgData;
     String *string;
     int i;
 
-    msgFmt = MessageFormat_New(heapId);
+    msgFmt = MessageFormat_New(heapID);
     for (i = 0; i < MAILMSG_FIELDS_MAX; i++) {
         if (mailMessage->fields[i] == EC_WORD_NULL) {
             break;
@@ -75,15 +75,15 @@ String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId)
         BufferECWord(msgFmt, i, mailMessage->fields[i]);
     }
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], heapId);
-    string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapId);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], heapID);
+    string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, mailMessage->msg_no, heapID);
     DestroyMsgData(msgData);
     MessageFormat_Delete(msgFmt);
     return string;
 }
 
-String *MailMsg_GetRawString(MailMessage *mailMessage, HeapID heapId) {
-    return ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], mailMessage->msg_no, heapId);
+String *MailMsg_GetRawString(MailMessage *mailMessage, enum HeapID heapID) {
+    return ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[mailMessage->msg_bank], mailMessage->msg_no, heapID);
 }
 
 BOOL MailMsg_IsInit(MailMessage *mailMessage) {

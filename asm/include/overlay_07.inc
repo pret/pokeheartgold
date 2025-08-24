@@ -131,7 +131,7 @@
 .public sub_02015720
 .public sub_02015754
 .public sub_0201576C
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public SetBgControlParam
 .public SetBgPriority

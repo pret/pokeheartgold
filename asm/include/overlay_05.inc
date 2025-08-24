@@ -69,8 +69,8 @@
 .public sub_020135D8
 .public sub_02013660
 .public sub_020136B4
-.public sub_020137C0
-.public sub_02013850
+.public TextOBJ_SetSpritesDrawFlag
+.public TextOBJ_SetPaletteNum
 .public sub_02014DA0
 .public sub_02014DB4
 .public sub_02014EBC
@@ -85,7 +85,7 @@
 .public sub_02015524
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

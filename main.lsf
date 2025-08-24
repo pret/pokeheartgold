@@ -131,6 +131,7 @@ Static main
     Object src/update_dex_received.o
     Object src/save_follow_mon.o
     Object src/save_pokegear.o
+    Object src/unk_0202F370.o
     Object src/safari_zone.o
     Object src/photo_album.o
     Object asm/unk_0202FBCC.o
@@ -1125,17 +1126,24 @@ Overlay OVY_99
     After main
     Object asm/overlay_99.o
 }
-Overlay OVY_100
+Overlay pokegear
 {
     After main
     Object src/application/pokegear/main/overlay_100_021E5900.o
     Object src/application/pokegear/main/pokegear_main.o
     Object src/application/pokegear/main/overlay_100_021E6914.o
 }
-Overlay OVY_101
+Overlay pokegear_app
 {
-    After OVY_100
-    Object asm/pokegear_app_map.o
+    After pokegear
+    Object src/application/pokegear/map/pokegear_map.o
+    Object src/application/pokegear/map/overlay_101_021F79B4.o
+    Object src/application/pokegear/map/overlay_101_021E7FF4.o
+    Object src/application/pokegear/map/overlay_101_021E9270.o
+    Object src/application/pokegear/map/overlay_101_021EB568.o
+    Object src/application/pokegear/map/overlay_101_021ED498.o
+    Object src/application/pokegear/map/fly_map.o
+    Object src/application/pokegear/map/overlay_101_021EDCE0.o
     Object asm/pokegear_app_configure.o
     Object src/application/pokegear/phone/pokegear_phone.o
     Object src/application/pokegear/phone/overlay_101_021EFD20.o
@@ -1180,7 +1188,7 @@ Overlay OVY_101
 }
 Overlay OVY_102
 {
-    After OVY_100
+    After pokegear
     Object asm/overlay_102.o
 }
 Overlay OVY_103

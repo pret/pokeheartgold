@@ -20,10 +20,10 @@
 .public DestroyListMenuCursorObj
 .public ListMenuUpdateCursorObj
 .public MailMsg_Init_Default
-.public CreateHeapAtEnd
-.public DestroyHeap
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_CreateAtEnd
+.public Heap_Destroy
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public InitWindow
 .public WindowIsInUse

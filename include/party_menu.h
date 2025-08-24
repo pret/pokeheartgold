@@ -442,7 +442,7 @@ u32 sub_0207CA9C(void);
 u32 sub_0207CAA0(void);
 u32 sub_0207CAA4(void);
 u32 sub_0207CAA8(void);
-void sub_0207CAAC(HeapID heapId, u16 *a1, u16 *a2, u16 *a3);
+void sub_0207CAAC(enum HeapID heapID, u16 *a1, u16 *a2, u16 *a3);
 void PartyMenu_FormChangeScene_End(PartyMenu *partyMenu);
 void PartyMenu_DeleteContextMenuAndList(PartyMenu *partyMenu);
 void sub_0207CB3C(PartyMenu *partyMenu, MenuInputState menuInputState);

@@ -1615,7 +1615,7 @@ sub_0203077C: ; 0x0203077C
 _0203078C:
 	add r0, r4, #0
 	mov r1, #0x64
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r0, _020307A8 ; =_021D2AF8
 	add r1, r4, #0
@@ -1641,7 +1641,7 @@ sub_020307AC: ; 0x020307AC
 _020307BC:
 	add r0, r4, #0
 	mov r1, #0x80
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r0, _020307D8 ; =_021D2AF8
 	add r1, r4, #0
@@ -1835,7 +1835,7 @@ _0203091C: .word 0x0000270F
 sub_02030920: ; 0x02030920
 	push {r4, lr}
 	mov r1, #0x64
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x64
 	add r4, r0, #0

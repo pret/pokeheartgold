@@ -28,9 +28,9 @@ typedef struct Field3dObject {
     u16 padding;
 } Field3dObject;
 
-void Field3dModel_LoadFromFilesystem(Field3dModel *model, NarcId narcId, s32 fileId, HeapID heapId);
+void Field3dModel_LoadFromFilesystem(Field3dModel *model, NarcId narcId, s32 fileId, enum HeapID heapID);
 void Field3dModel_Unload(Field3dModel *model);
-void Field3dModelAnimation_LoadFromFilesystem(Field3DModelAnimation *anim, Field3dModel *model, NarcId narcId, s32 fileId, HeapID heapId, NNSFndAllocator *alloc);
+void Field3dModelAnimation_LoadFromFilesystem(Field3DModelAnimation *anim, Field3dModel *model, NarcId narcId, s32 fileId, enum HeapID heapID, NNSFndAllocator *alloc);
 void Field3dModelAnimation_Unload(Field3DModelAnimation *anim, NNSFndAllocator *alloc);
 BOOL Field3dModelAnimation_FrameAdvanceAndLoop(Field3DModelAnimation *anim, fx32 ov01_021FC004);
 BOOL Field3dModelAnimation_FrameAdvanceAndCheck(Field3DModelAnimation *anim, fx32 framesBy);
