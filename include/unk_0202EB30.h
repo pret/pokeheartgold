@@ -14,6 +14,6 @@ typedef struct MigratedPokemon {
 
 int sub_0202EC98(MigratedPokemon *a0);
 void sub_0202EB74(MigratedPokemon *a0);
-void MigratedPokemon_ToPokemon(MigratedPokemon *a0, int i, Pokemon *mon);
+void MigratedPokemon_ConvertToPokemon(MigratedPokemon *a0, int i, Pokemon *mon);
 
 #endif // POKEHEARTGOLD_UNK_0202EB30_H

@@ -128,7 +128,7 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
 
     for (int i = 0; i < CATCHING_SHOW_MONS; i++) {
         catchingShow->caughtMonsOrder[i] = 0;
-        MigratedPokemon_ToPokemon(transferData, i, mon);
+        MigratedPokemon_ConvertToPokemon(transferData, i, mon);
 
         species = GetMonData(mon, MON_DATA_SPECIES, NULL);
 
@@ -259,7 +259,7 @@ static BattleSetup *FieldSystem_SetupCatchingShowEncounter(FieldSystem *fieldSys
     BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD2, FieldSystem_GetParkBallCount(fieldSystem));
 
     BattleSetup_InitFromFieldSystem(ret, fieldSystem);
-    MigratedPokemon_ToPokemon(migratedMons, catchingShow->currentEncounterIndex, mon);
+    MigratedPokemon_ConvertToPokemon(migratedMons, catchingShow->currentEncounterIndex, mon);
     BattleSetup_AddMonToParty(ret, mon, BATTLER_ENEMY);
     Heap_Free(mon);
     return ret;
