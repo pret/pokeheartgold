@@ -81,7 +81,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     }
     case HATCHEGGTASKSTATE_SET_MON_NAME:
         if (!data->namingScreenArgs->noInput) {
-            SetMonData(data->unkC.mon, MON_DATA_NICKNAME_STRING_COMPARE, data->namingScreenArgs->nameInputString);
+            SetMonData(data->unkC.mon, MON_DATA_NICKNAME_STRING_AND_FLAG, data->namingScreenArgs->nameInputString);
         }
         NamingScreen_DeleteArgs(data->namingScreenArgs);
         data->state++;
