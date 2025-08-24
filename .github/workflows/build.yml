@@ -57,13 +57,13 @@ jobs:
         name: Build Docker image
         id: build-docker
         if: steps.changed-files-yaml.outputs.test_any_changed == 'true'
-        uses: docker/build-and-push@v6
+        uses: docker/build-push-action@v6
         with:
           push: github.event_name == 'push'
           tags: ${{github.repository}}:${{steps.build-tag.outputs.docker-tag}}
 
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     needs: [build-docker-image]
     container: needs.build-docker-image.outputs.imageid
 
