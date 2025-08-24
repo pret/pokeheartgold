@@ -47,8 +47,8 @@ struct GearPhoneRingManager {
     u8 unk_var0_4 : 4;
     u8 unk_var1;
     u8 callerId;
-    u8 unk_var3;
-    u8 unk_var4;
+    u8 isScriptedCall;
+    u8 callScriptID;
     u8 unk_arr5[2];
     u8 unk_var7;
     s32 unk_var8;

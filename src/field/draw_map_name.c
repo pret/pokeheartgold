@@ -35,11 +35,11 @@ static void FieldDrawMapName_SetupWindow(FieldDrawMapNameInfo *info) {
 static void LoadAreaIconGraphics(FieldDrawMapNameInfo *info, u8 layer, u32 tileStart, u8 paletteOffset, u32 unused) {
     u8 memberNum = info->areaIcon * 2;
 
-    info->charData = GfGfxLoader_GetCharData(NARC_data_gs_areawindow, memberNum, FALSE, &info->g2dCharData, HEAP_ID_4);
+    info->charData = GfGfxLoader_GetCharData(NARC_data_gs_areawindow, memberNum, FALSE, &info->g2dCharData, HEAP_ID_FIELD1);
     BG_LoadCharTilesData(info->bgConfig, layer, info->g2dCharData->pRawData, info->g2dCharData->szByte, tileStart);
 
     NNSG2dPaletteData *g2dPaletteData;
-    void *paletteData = GfGfxLoader_GetPlttData(NARC_data_gs_areawindow, memberNum + 1, &g2dPaletteData, HEAP_ID_4);
+    void *paletteData = GfGfxLoader_GetPlttData(NARC_data_gs_areawindow, memberNum + 1, &g2dPaletteData, HEAP_ID_FIELD1);
     LoadAreaIconPalette(g2dPaletteData->pRawData, 1, paletteOffset);
     Heap_Free(paletteData);
 }
@@ -107,7 +107,7 @@ static void Task_MapNameAndIcon(SysTask *task, FieldDrawMapNameInfo *info) {
         if (info->layerY == 38) {
             if (info->gonnaDrawAnother) {
                 info->gonnaDrawAnother = FALSE;
-                DrawAreaIcon(info, sub_02068F84(info->mapsecMsgData, info->mapsec, info->mapNameString));
+                DrawAreaIcon(info, MsgData_ReadMsgIntoStringAndGetWidth(info->mapsecMsgData, info->mapsec, info->mapNameString));
                 PrintMapNameOnIcon(info, info->mapNameString);
                 info->positionState = POSITION_STATE_DESCENDING;
                 return;
@@ -131,11 +131,11 @@ static void FieldDrawMapName_StartAscending(FieldDrawMapNameInfo *info) {
 }
 
 FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig) {
-    FieldDrawMapNameInfo *ret = AllocFromHeap(HEAP_ID_4, sizeof(FieldDrawMapNameInfo));
-    ret->mapNameString = String_New(22, HEAP_ID_4);
+    FieldDrawMapNameInfo *ret = Heap_Alloc(HEAP_ID_FIELD1, sizeof(FieldDrawMapNameInfo));
+    ret->mapNameString = String_New(22, HEAP_ID_FIELD1);
     FieldDrawMapName_Init(ret, bgConfig);
     FieldDrawMapName_SetupWindow(ret);
-    ret->mapsecMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0279_bin, HEAP_ID_4);
+    ret->mapsecMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0279_bin, HEAP_ID_FIELD1);
     return ret;
 }
 
@@ -154,7 +154,7 @@ static void FieldDrawMapName_Start(FieldDrawMapNameInfo *info, u32 mapsec, u32 a
         info->layerY = 38;
         info->task = SysTask_CreateOnMainQueue((SysTaskFunc)Task_MapNameAndIcon, info, 0);
         info->positionState = POSITION_STATE_DESCENDING;
-        int width = sub_02068F84(info->mapsecMsgData, info->mapsec, info->mapNameString);
+        int width = MsgData_ReadMsgIntoStringAndGetWidth(info->mapsecMsgData, info->mapsec, info->mapNameString);
         info->areaIcon = areaIcon;
         DrawAreaIcon(info, width);
         PrintMapNameOnIcon(info, info->mapNameString);

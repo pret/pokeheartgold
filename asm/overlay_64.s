@@ -33,7 +33,7 @@ HallOfFameShowcase_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x3b
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x1d
 	add r0, r5, #0
 	lsl r1, r1, #4
@@ -111,7 +111,7 @@ HallOfFameShowcase_Exit: ; 0x021E59C8
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x3b
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1905,7 +1905,7 @@ _021E685E:
 	mov r1, #0x32
 	mov r0, #0x3b
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0x19
 	lsl r1, r1, #4
 	str r0, [sp, #0x28]
@@ -2486,7 +2486,7 @@ _021E6C84:
 	str r0, [sp, #0x14]
 	mov r0, #0x3b
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	mov r0, #0x66
 	lsl r0, r0, #2

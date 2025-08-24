@@ -122,7 +122,7 @@ sub_0206983C: ; 0x0206983C
 	add r1, r2, #0
 	add r0, #0x14
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r5, #0
 	ldr r1, [r5, #0xc]
 	add r0, #0x14

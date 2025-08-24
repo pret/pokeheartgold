@@ -13,7 +13,7 @@ PokeathlonCourse_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x5c
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0xd7
 	add r0, r5, #0
 	lsl r1, r1, #4
@@ -368,7 +368,7 @@ _021E5BBC:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x5c
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -456,7 +456,7 @@ ov96_021E5C90: ; 0x021E5C90
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _021E5D1C ; =0x000005DC
 	mov r4, #0
 	str r0, [r5, r1]
@@ -607,7 +607,7 @@ ov96_021E5D94: ; 0x021E5D94
 	mov r0, #0xa1
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x79
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3708,7 +3708,7 @@ _021E7416:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	ldr r1, _021E74A4 ; =0x00000D68
 	add r2, r4, #0
 	str r0, [r5, r1]
@@ -6240,7 +6240,7 @@ ov96_021E8770: ; 0x021E8770
 	mov r1, #8
 	str r2, [sp]
 	add r5, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0
 	strh r5, [r4]
@@ -6362,7 +6362,7 @@ ov96_021E883C: ; 0x021E883C
 	add r0, r3, #0
 	lsl r1, r1, #4
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x1d
 	mov r1, #0
 	lsl r2, r2, #4
@@ -6645,7 +6645,7 @@ ov96_021E8A30: ; 0x021E8A30
 	push {r4, lr}
 	ldr r1, _021E8A40 ; =0x00000958
 	add r4, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r4, [r0]
 	pop {r4, pc}
 	nop
@@ -6670,7 +6670,7 @@ _021E8A54:
 	mov r1, #0x2c
 	ldr r0, [r6]
 	mul r1, r4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r6, r1]
@@ -6776,7 +6776,7 @@ ov96_021E8B1C: ; 0x021E8B1C
 	lsl r1, r1, #2
 	add r6, r2, #0
 	add r4, r3, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	strh r7, [r0]
 	add r2, r0, #0
 	mov ip, r0
@@ -7825,7 +7825,7 @@ ov96_021E92E0: ; 0x021E92E0
 	mov r1, #0x85
 	lsl r1, r1, #2
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x85
 	mov r1, #0
 	lsl r2, r2, #2
@@ -9083,7 +9083,7 @@ _021E9BD0:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xb4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	str r5, [r7]
 	str r4, [r7, #4]
@@ -10624,7 +10624,7 @@ ov96_021EA854: ; 0x021EA854
 	add r5, r0, #0
 	add r7, r2, #0
 	str r3, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xd3
 	add r4, r0, #0
 	mov r1, #0
@@ -11939,7 +11939,7 @@ ov96_021EB180: ; 0x021EB180
 	mov r1, #0x56
 	lsl r1, r1, #2
 	add r6, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r2, #0x56
 	mov r0, #0
@@ -11957,7 +11957,7 @@ ov96_021EB180: ; 0x021EB180
 	ldr r2, [r4, #0xc]
 	add r0, r6, #0
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x15
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -11971,7 +11971,7 @@ ov96_021EB180: ; 0x021EB180
 	mov r1, #0xc
 	ldr r0, [r4]
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x55
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -14195,7 +14195,7 @@ ov96_021EC298: ; 0x021EC298
 	ldr r0, [r5]
 	add r6, r1, #0
 	mov r1, #0x10
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x10
 	add r4, r0, #0
@@ -15343,7 +15343,7 @@ ov96_021ECBB8: ; 0x021ECBB8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	mov r1, #0x70
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x70
 	str r0, [sp]
@@ -15960,7 +15960,7 @@ _021ED06C:
 	mov r1, #6
 	add r0, r7, #0
 	lsl r1, r1, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #6
 	mov r1, #0
 	lsl r2, r2, #6
@@ -16177,7 +16177,7 @@ _021ED1FC:
 	mov r0, #0x5c
 	mov r1, #0x87
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r0, _021ED46C ; =FS_OVERLAY_ID(OVY_98)
 	mov r1, #2
 	bl HandleLoadOverlay
@@ -16507,7 +16507,7 @@ ov96_021ED48C: ; 0x021ED48C
 	ldr r0, _021ED520 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #0x87
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -18767,7 +18767,7 @@ ov96_021EE5B4: ; 0x021EE5B4
 	add r5, r0, #0
 	add r0, r6, #0
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x30
@@ -18963,7 +18963,7 @@ ov96_021EE740: ; 0x021EE740
 	push {r3, r4, r5, lr}
 	mov r1, #0x38
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x38
 	add r4, r0, #0
@@ -19461,7 +19461,7 @@ _021EEAEA:
 	lsl r1, r1, #8
 	add r7, r5, r0
 	ldr r0, [sp, #0xc]
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #4
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -19639,7 +19639,7 @@ _021EEC28:
 	mov r1, #0x32
 	ldr r0, [sp, #0x50]
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	str r7, [sp]
 	ldr r0, [r4, #0xc]
@@ -20082,7 +20082,7 @@ ov96_021EEFAC: ; 0x021EEFAC
 	mov r1, #0x9f
 	mov r0, #0x5c
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -20165,7 +20165,7 @@ ov96_021EF05C: ; 0x021EF05C
 	add r0, r5, #0
 	bl ov96_021E5DAC
 	mov r0, #0x9f
-	bl DestroyHeap
+	bl Heap_Destroy
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov96_021EF05C
 
@@ -20356,7 +20356,7 @@ _021EF1EA:
 	ldr r0, _021EF238 ; =FS_OVERLAY_ID(OVY_98)
 	bl UnloadOverlayByID
 	mov r0, #0x88
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -20452,7 +20452,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	mov r0, #0x5c
 	mov r1, #0x88
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	ldr r0, _021EF390 ; =FS_OVERLAY_ID(OVY_98)
 	mov r1, #2
 	mov r6, #0x88
@@ -22237,7 +22237,7 @@ _021F013C:
 	mov r0, #0x5c
 	mov r1, #0x8c
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -22266,7 +22266,7 @@ _021F013C:
 	bl MI_CpuFill8
 	mov r0, #0x8c
 	mov r1, #0x28
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x7f
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -23233,7 +23233,7 @@ ov96_021F095C: ; 0x021F095C
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x8c
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -28143,7 +28143,7 @@ _021F30A0: .word ov96_021F2FBC
 ov96_021F30A4: ; 0x021F30A4
 	push {r4, lr}
 	mov r1, #0x84
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x84
 	add r4, r0, #0
@@ -28566,7 +28566,7 @@ ov96_021F3390: ; 0x021F3390
 	add r5, r1, #0
 	ldr r1, _021F33D4 ; =0x000004EC
 	add r6, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _021F33D4 ; =0x000004EC
 	mov r1, #0
 	add r4, r0, #0
@@ -29716,7 +29716,7 @@ ov96_021F3BF0: ; 0x021F3BF0
 	lsl r1, r1, #2
 	add r5, r0, #0
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x5d
 	add r4, r0, #0
 	mov r1, #0
@@ -32269,7 +32269,7 @@ _021F504A:
 	mov r0, #0x5c
 	mov r1, #0x8f
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -32908,7 +32908,7 @@ _021F5598:
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x8f
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -36763,7 +36763,7 @@ ov96_021F74A4: ; 0x021F74A4
 	push {r4, lr}
 	mov r1, #0x33
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x33
 	mov r1, #0
 	lsl r2, r2, #4
@@ -37031,7 +37031,7 @@ ov96_021F7684: ; 0x021F7684
 	add r4, r3, #0
 	str r1, [sp, #0x28]
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #8]
 	mov r1, #0
 	mov r2, #0x24
@@ -37408,7 +37408,7 @@ _021F7964:
 	mov r0, #0x5c
 	mov r1, #0x89
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -37784,7 +37784,7 @@ _021F7CB6:
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
 	mov r0, #0x89
-	bl DestroyHeap
+	bl Heap_Destroy
 	bl sub_0203A914
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
@@ -39104,7 +39104,7 @@ ov96_021F86E8: ; 0x021F86E8
 	lsl r1, r1, #2
 	add r7, r0, #0
 	add r6, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xcd
 	mov r1, #0
 	lsl r2, r2, #2
@@ -39818,10 +39818,10 @@ ov96_021F8C54: ; 0x021F8C54
 _021F8C76:
 	ldr r0, [r4, #0x10]
 	add r1, r5, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x20]
 	add r1, r5, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov96_021F8C54
 
@@ -40065,7 +40065,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	bl sub_020135D8
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	str r4, [r6]
 	add r3, sp, #0x1c
 	ldmia r3!, {r0, r1}
@@ -40086,7 +40086,7 @@ ov96_021F8E94: ; 0x021F8E94
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021F8EAC
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0
@@ -40104,7 +40104,7 @@ ov96_021F8EB0: ; 0x021F8EB0
 	mov r1, #0xc4
 	add r6, r0, #0
 	add r5, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc4
@@ -40360,7 +40360,7 @@ _021F908C:
 	bl String_Delete
 	ldr r0, [r7, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #0x14]
 	add r0, #0x10
 	str r0, [r7, #0x48]
@@ -40483,7 +40483,7 @@ ov96_021F91CC: ; 0x021F91CC
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021F91E4
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0
@@ -40869,7 +40869,7 @@ _021F94DE:
 	mov r0, #0x5c
 	mov r1, #0x8a
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -41918,7 +41918,7 @@ ov96_021F9D58: ; 0x021F9D58
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
 	mov r0, #0x8a
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -45939,7 +45939,7 @@ ov96_021FBE20: ; 0x021FBE20
 	lsl r5, r0, #4
 	add r0, r1, #0
 	add r1, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0
 	add r1, r4, #0
@@ -46222,7 +46222,7 @@ ov96_021FC028: ; 0x021FC028
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _021FC058 ; =0x00000C24
 	add r6, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _021FC058 ; =0x00000C24
 	mov r1, #0
 	str r0, [sp]
@@ -46429,7 +46429,7 @@ ov96_021FC188: ; 0x021FC188
 	mov r1, #0x91
 	lsl r1, r1, #2
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r2, #0x91
 	mov r0, #0
@@ -46803,7 +46803,7 @@ ov96_021FC450: ; 0x021FC450
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	ldr r1, [sp]
 	mov r3, #0x16
 	str r0, [sp, #0x10]
@@ -47004,7 +47004,7 @@ ov96_021FC5E0: ; 0x021FC5E0
 ov96_021FC618: ; 0x021FC618
 	push {r4, lr}
 	mov r1, #0x84
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x84
 	add r4, r0, #0
@@ -47216,7 +47216,7 @@ _021FC79C:
 	mov r0, #0x5c
 	mov r1, #0x90
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -48026,7 +48026,7 @@ ov96_021FCE10: ; 0x021FCE10
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x90
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -54181,7 +54181,7 @@ ov96_021FFF3C: ; 0x021FFF3C
 	lsl r1, r1, #4
 	add r6, r0, #0
 	str r2, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x1a
 	add r7, r0, #0
 	mov r1, #0
@@ -54652,7 +54652,7 @@ _0220032E:
 	mov r1, #1
 	ldr r0, [r6]
 	lsl r1, r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r4, #0
 	add r1, #0xbc
 	str r0, [r1]
@@ -56039,7 +56039,7 @@ ov96_02200E3C: ; 0x02200E3C
 	add r5, r1, #0
 	mov r1, #0xfa
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xfa
 	mov r1, #0
 	lsl r2, r2, #2
@@ -57032,7 +57032,7 @@ _02201588:
 	mov r0, #0x5c
 	mov r1, #0x92
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -57061,7 +57061,7 @@ _02201588:
 	bl MI_CpuFill8
 	mov r0, #0x92
 	mov r1, #0x28
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _022018D8 ; =0x00000598
 	mov r2, #0x28
 	str r0, [r4, r1]
@@ -57794,7 +57794,7 @@ _02201BF0:
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x92
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -61447,7 +61447,7 @@ ov96_02203A00: ; 0x02203A00
 	mov r1, #0x74
 	add r5, r0, #0
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x74
@@ -62565,7 +62565,7 @@ ov96_02204364: ; 0x02204364
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	mov r1, #0xcc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xcc
@@ -63178,7 +63178,7 @@ _02204820:
 	mov r0, #0x5c
 	mov r1, #0x8b
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -63953,7 +63953,7 @@ ov96_02204E58: ; 0x02204E58
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x8b
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -69823,7 +69823,7 @@ ov96_02207CCC: ; 0x02207CCC
 	lsl r1, r1, #2
 	add r6, r0, #0
 	str r2, [sp]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x72
 	add r7, r0, #0
 	mov r1, #0
@@ -70343,7 +70343,7 @@ _0220812A:
 	mov r1, #1
 	ldr r0, [r0]
 	lsl r1, r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -71552,7 +71552,7 @@ ov96_02208AA8: ; 0x02208AA8
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	ldr r1, _02208AE0 ; =0x0000055C
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02208AE0 ; =0x0000055C
 	mov r1, #0
 	add r4, r0, #0
@@ -72863,7 +72863,7 @@ _0220947C:
 	mov r0, #0x5c
 	mov r1, #0x8d
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -73263,7 +73263,7 @@ _022097CA:
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
 	mov r0, #0x8d
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -75166,7 +75166,7 @@ ov96_0220A744: ; 0x0220A744
 	str r0, [sp, #8]
 	add r7, r2, #0
 	add r4, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x61
 	str r0, [sp, #0xc]
 	mov r1, #0
@@ -76076,7 +76076,7 @@ _0220AE54:
 _0220AE5C:
 	add r0, r4, #0
 	mov r1, #0x14
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x14
@@ -76754,7 +76754,7 @@ ov96_0220B374: ; 0x0220B374
 	str r0, [sp, #0xc]
 	add r0, r7, #0
 	mov r1, #0x48
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x48
@@ -77358,7 +77358,7 @@ ov96_0220B7F4: ; 0x0220B7F4
 	bl ReadWholeNarcMemberByIdPair
 	add r0, r4, #0
 	mov r1, #0xc8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #0x1c]
 	mov r1, #0
 	mov r2, #0xc8
@@ -79576,7 +79576,7 @@ ov96_0220C93C: ; 0x0220C93C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x78
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x78
 	add r6, r0, #0
@@ -83093,7 +83093,7 @@ _0220E41C:
 	mov r0, #0x5c
 	mov r1, #0x8e
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -83380,7 +83380,7 @@ ov96_0220E670: ; 0x0220E670
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
 	mov r0, #0x8e
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -86951,7 +86951,7 @@ ov96_02210240: ; 0x02210240
 	mov r1, #0xe8
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xe8
@@ -87701,7 +87701,7 @@ ov96_022107F0: ; 0x022107F0
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0xc0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0xc0
 	add r7, r0, #0
@@ -88348,7 +88348,7 @@ _02210CCC:
 	mov r0, #0x5c
 	mov r1, #0x93
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -88379,7 +88379,7 @@ _02210CCC:
 	bl MI_CpuFill8
 	mov r0, #0x93
 	mov r1, #0x28
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _02211080 ; =0x0000081C
 	mov r2, #0x28
 	str r0, [r5, r1]
@@ -89569,7 +89569,7 @@ _0221172E:
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, #0x93
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -95670,7 +95670,7 @@ ov96_0221464C: ; 0x0221464C
 	mov r1, #0x50
 	add r5, r0, #0
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x50
@@ -96138,7 +96138,7 @@ ov96_02214A24: ; 0x02214A24
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	mov r1, #0xa0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xa0
@@ -98445,7 +98445,7 @@ _02215AF2:
 	mov r0, #0x5c
 	mov r1, #0x91
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
@@ -98736,7 +98736,7 @@ ov96_02215D4C: ; 0x02215D4C
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
 	mov r0, #0x91
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
@@ -105899,7 +105899,7 @@ _022194FC:
 _02219506:
 	ldr r0, [sp, #0x34]
 	mov r1, #0xc8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc8
@@ -107267,7 +107267,7 @@ ov96_02219F7C: ; 0x02219F7C
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r7, r0, #0

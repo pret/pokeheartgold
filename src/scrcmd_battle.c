@@ -110,7 +110,7 @@ BOOL ScrCmd_TrainerBattle(ScriptContext *ctx) {
         followerTrainerNum = Save_VarsFlags_GetFollowerTrainerNum(Save_VarsFlags_Get(fieldSystem->saveData));
     }
 
-    SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, HEAP_ID_FIELD, winFlag);
+    SetupAndStartTrainerBattle(ctx->taskman, var0, var1, followerTrainerNum, var2, var3, HEAP_ID_FIELD2, winFlag);
     return TRUE;
 }
 
@@ -121,7 +121,7 @@ BOOL ScrCmd_MultiBattle(ScriptContext *ctx) {
     u16 var2 = ScriptGetVar(ctx);
     u8 var3 = ScriptReadByte(ctx);
 
-    SetupAndStartTrainerBattle(ctx->taskman, var1, var2, var0, 0, var3, HEAP_ID_FIELD, winFlag);
+    SetupAndStartTrainerBattle(ctx->taskman, var1, var2, var0, 0, var3, HEAP_ID_FIELD2, winFlag);
     return TRUE;
 }
 
@@ -239,7 +239,7 @@ BOOL ScrCmd_PartyCheckForDouble(ScriptContext *ctx) {
 
 BOOL ScrCmd_223(ScriptContext *ctx) {
     u32 *winFlag = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_BATTLE_WIN_FLAG);
-    SetupAndStartTrainerBattle(ctx->taskman, 1, 0, 0, 0, 0, HEAP_ID_FIELD, winFlag);
+    SetupAndStartTrainerBattle(ctx->taskman, 1, 0, 0, 0, 0, HEAP_ID_FIELD2, winFlag);
     return TRUE;
 }
 

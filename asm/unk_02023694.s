@@ -114,7 +114,7 @@ _0202374A:
 	mov r1, #0xe0
 	add r0, r4, #0
 	mul r1, r6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r7, _02023774 ; =_021D2208
 	mov r4, #0
 	str r0, [r7]
@@ -221,7 +221,7 @@ _02023800:
 	mov r1, #0xc4
 	ldr r0, [r5, #4]
 	mul r1, r2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #4]
 	ldr r0, [r5]
 	str r0, [r4, #8]
@@ -239,7 +239,7 @@ _02023800:
 	ldr r1, [r5]
 	ldr r0, [r5, #4]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r1, r4, #0
 	add r1, #0xd0
 	str r0, [r1]
@@ -247,7 +247,7 @@ _02023800:
 	bl sub_02024248
 	ldr r0, [r5, #4]
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r1, r4, #0
 	add r1, #0xd8
 	str r0, [r1]
@@ -256,7 +256,7 @@ _02023800:
 	ldr r0, [r0]
 	ldr r1, [r5, #4]
 	mov r2, #4
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	ldr r0, [r5]
 	ldr r1, [r5, #4]
 	bl sub_0202068C

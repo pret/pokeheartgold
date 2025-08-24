@@ -13,7 +13,7 @@ PCBox_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #9
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0x38
 	mov r2, #9
@@ -83,7 +83,7 @@ PCBox_Exit: ; 0x021E5988
 	add r0, r4, #0
 	bl OverlayManager_FreeData
 	mov r0, #9
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -3253,7 +3253,7 @@ ov14_021E71E8: ; 0x021E71E8
 	add r4, r0, #0
 	mov r0, #0xa
 	mov r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	ldr r2, [r4, #0x34]
 	ldr r1, _021E725C ; =0x000088DC
 	str r0, [r2, r1]
@@ -3450,7 +3450,7 @@ ov14_021E7358: ; 0x021E7358
 	beq _021E7460
 	mov r0, #0xa
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r6, r0, #0
 	str r7, [r6]
 	add r0, r7, #0
@@ -6509,7 +6509,7 @@ ov14_021E89B8: ; 0x021E89B8
 	add r5, r0, #0
 	mov r0, #9
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x18]
 	add r4, r0, #0
 	add r0, r5, #0
@@ -11415,10 +11415,10 @@ ov14_021EAFAC: ; 0x021EAFAC
 	mov r0, #3
 	mov r1, #0xa
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021EB0D8 ; =0x000088E0
 	mov r0, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _021EB0D8 ; =0x000088E0
 	mov r1, #0
 	str r0, [r4, #0x34]
@@ -11552,7 +11552,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	ldr r0, [r4, #0x34]
 	bl Heap_Free
 	mov r0, #0xa
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, [r4, #0x30]
 	pop {r4, pc}
 	nop
@@ -22144,7 +22144,7 @@ ov14_021F08BC: ; 0x021F08BC
 	add r7, r0, #0
 	mov r0, #0xa
 	mov r1, #0xf0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp]
 	mov r4, #0
 	add r5, r0, #0
@@ -24870,7 +24870,7 @@ ov14_021F1F24: ; 0x021F1F24
 	add r4, r0, #0
 	mov r0, #0xa
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [r4, #0x34]
 	str r0, [r1, #0xc]
 	pop {r4, pc}
@@ -27927,7 +27927,7 @@ ov14_021F3614: ; 0x021F3614
 	mov r1, #0x32
 	mov r0, #0xa
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r5, r0, #0
 	ldr r1, [r4]
 	add r0, sp, #0x24
@@ -29733,11 +29733,11 @@ ov14_021F4428: ; 0x021F4428
 	ldr r0, _021F44AC ; =0x00000414
 	mov r1, #1
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _021F44B0 ; =0x00000424
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r3, r4, r5, pc}
 	nop
 _021F44AC: .word 0x00000414
@@ -29945,7 +29945,7 @@ ov14_021F462C: ; 0x021F462C
 	lsr r0, r0, #2
 	lsl r5, r0, #2
 	mov r0, #0xa
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r0, #0x13
 	mov r1, #0x4a
@@ -30116,12 +30116,12 @@ ov14_021F4720: ; 0x021F4720
 	ldr r0, _021F47B0 ; =0x00000414
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r4, #0x34]
 	ldr r0, _021F47B4 ; =0x00000424
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, pc}
 	nop
 _021F47B0: .word 0x00000414
@@ -30726,12 +30726,12 @@ _021F4C1C:
 	ldr r0, _021F4C98 ; =0x00000414
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F4C9C ; =0x00000424
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F4C98 ; =0x00000414
 	ldr r0, [r1, r0]
@@ -30788,12 +30788,12 @@ _021F4CDA:
 	ldr r0, _021F4D08 ; =0x00000414
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r1, [r5, #0x34]
 	ldr r0, _021F4D0C ; =0x00000424
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, r5, r6, pc}
 	nop
 _021F4D08: .word 0x00000414
@@ -30998,7 +30998,7 @@ ov14_021F4EA0: ; 0x021F4EA0
 	ldr r0, [r1, r0]
 	add r1, r7, #0
 	mov r3, #0xa
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r7, #0
 	bl sub_02013938
 	pop {r3, r4, r5, r6, r7, pc}
@@ -32070,7 +32070,7 @@ ov14_021F5718: ; 0x021F5718
 	mov r0, #0xa
 	mov r1, #0x10
 	add r7, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r3, #0
 	lsl r0, r5, #0x18
@@ -36755,7 +36755,7 @@ ov14_021F7AC4: ; 0x021F7AC4
 	bl sub_02020A0C
 	mov r0, #0xa
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r1, [r4, #4]
 	mov r0, #3

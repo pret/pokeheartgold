@@ -17,12 +17,12 @@
 	thumb_func_start ov01_021FB878
 ov01_021FB878: ; 0x021FB878
 	ldr r2, [r1, #0x14]
-	ldr r3, _021FB884 ; =ReallocFromHeap
+	ldr r3, _021FB884 ; =Heap_Realloc
 	add r1, r1, r2
 	sub r1, r1, r0
 	bx r3
 	nop
-_021FB884: .word ReallocFromHeap
+_021FB884: .word Heap_Realloc
 	thumb_func_end ov01_021FB878
 
 	thumb_func_start ov01_021FB888
@@ -31,11 +31,11 @@ ov01_021FB888: ; 0x021FB888
 	ldr r1, _021FB8F8 ; =0x000008C4
 	add r5, r0, #0
 	mov r0, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #4
 	mov r1, #0x10
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	ldr r1, _021FB8FC ; =0x000008B8
 	mov r2, #0
 	str r0, [r4, r1]

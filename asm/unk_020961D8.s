@@ -18,7 +18,7 @@ sub_020961D8: ; 0x020961D8
 	add r5, r0, #0
 	mov r0, #0x20
 	mov r1, #0x24
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	str r5, [r4]
 	mov r0, #0x20

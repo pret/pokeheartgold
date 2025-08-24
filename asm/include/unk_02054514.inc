@@ -3,7 +3,7 @@
 .public NARC_New
 .public NARC_Delete
 .public NARC_ReadFromMember
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public MapMatrix_GetMapModelNo

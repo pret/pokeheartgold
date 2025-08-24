@@ -45,7 +45,7 @@ TrainerCardMainApp_Init: ; 0x021E5AC0
 	mov r0, #3
 	mov r1, #0x19
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E5D4C ; =0x00003444
 	add r0, r5, #0
 	mov r2, #0x19
@@ -522,7 +522,7 @@ TrainerCardMainApp_Exit: ; 0x021E5EC8
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x19
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	mov r1, #0x7f
 	bl GF_SndHandleSetPlayerVolume
@@ -4223,9 +4223,9 @@ ov51_021E7D68: ; 0x021E7D68
 	bl ObjCharTransfer_ClearBuffers
 	bl ObjPlttTransfer_Reset
 	mov r0, #0x19
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	mov r0, #0x19
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	add sp, #0x10
 	pop {r4, pc}
 	.balign 4, 0

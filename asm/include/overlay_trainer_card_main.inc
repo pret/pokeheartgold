@@ -36,8 +36,8 @@
 .public OamManager_Create
 .public OamManager_ApplyAndResetBuffers
 .public OamManager_Free
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -66,8 +66,8 @@
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
 .public SetKeyRepeatTimers
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

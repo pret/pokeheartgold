@@ -41,9 +41,9 @@
 .public Sprite_SetPositionXYWithSubscreenOffset
 .public IsPaletteFadeFinished
 .public MenuInputStateMgr_GetState
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeapAtEnd
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

@@ -21,7 +21,7 @@ sub_020850F4: ; 0x020850F4
 	mov r0, #3
 	mov r1, #0x6c
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0xfd
 	add r0, r5, #0
 	lsl r1, r1, #2
@@ -309,7 +309,7 @@ _02085294:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x6c
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -323,7 +323,7 @@ sub_020853B4: ; 0x020853B4
 	mov r1, #0x34
 	add r5, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	ldr r1, [sp]
 	add r0, r6, #1

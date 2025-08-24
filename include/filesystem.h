@@ -33,20 +33,20 @@ typedef struct NARC {
 void ReadWholeNarcMemberByIdPair(void *dest, NarcId narc_id, s32 file_id);
 
 /*
- * void * AllocAndReadWholeNarcMemberByIdPair(Narcid narc_id, s32 file_id, HeapID heapId)
- * void * AllocAtEndAndReadWholeNarcMemberByIdPair(Narcid narc_id, s32 file_id, HeapID heapId)
+ * void * AllocAndReadWholeNarcMemberByIdPair(Narcid narc_id, s32 file_id, enum HeapID heapID)
+ * void * AllocAtEndAndReadWholeNarcMemberByIdPair(Narcid narc_id, s32 file_id, enum HeapID heapID)
  *
  * Creates a new buffer large enough to hold the content of the archive member, then reads its data.
  * The AllocAtEnd variant is preferred for very short-lived buffers.
  *
  * @param narc_id:     Ident of NARC to read
  * @param file_id:     Index of FAT member within the NARC
- * @param heapId:     ID of the heap to alloc from
+ * @param heapID:     ID of the heap to alloc from
  *
  * @returns: Pointer to the allocated buffer which contains the data that was read.
  */
-void *AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId);
-void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId);
+void *AllocAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, enum HeapID heapID);
+void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, enum HeapID heapID);
 
 /*
  * void ReadFromNarcMemberByIdPair(void * dest, NarcId narc_id, s32 file_id, u32 offset, u32 size)
@@ -62,22 +62,22 @@ void *AllocAtEndAndReadWholeNarcMemberByIdPair(NarcId narc_id, s32 file_id, Heap
 void ReadFromNarcMemberByIdPair(void *dest, NarcId narc_id, s32 file_id, u32 offset, u32 size);
 
 /*
- * void * AllocAndReadFromNarcMemberByIdPair(Narcid narc_id, s32 file_id, HeapID heapId)
- * void * AllocAtEndAndReadFromNarcMemberByIdPair(Narcid narc_id, s32 file_id, HeapID heapId)
+ * void * AllocAndReadFromNarcMemberByIdPair(Narcid narc_id, s32 file_id, enum HeapID heapID)
+ * void * AllocAtEndAndReadFromNarcMemberByIdPair(Narcid narc_id, s32 file_id, enum HeapID heapID)
  *
  * Creates a new buffer large enough to hold the size to read, then reads the specified data slice.
  * The AllocAtEnd variant is preferred for very short-lived buffers.
  *
  * @param narc_id:     Ident of NARC to read
  * @param file_id:     Index of FAT member within the NARC
- * @param heapId:     ID of the heap to alloc from
+ * @param heapID:     ID of the heap to alloc from
  * @param offset:      Byte offset to start reading, relative to start of member, up to the end of member
  * @param size:        Number of bytes to read, up to the total size of member minus offset
  *
  * @returns: Pointer to the allocated buffer which contains the data that was read.
  */
-void *AllocAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size);
-void *AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapID heapId, u32 offset, u32 size);
+void *AllocAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, enum HeapID heapID, u32 offset, u32 size);
+void *AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, enum HeapID heapID, u32 offset, u32 size);
 
 /*
  * u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx)
@@ -93,17 +93,17 @@ void *AllocAtEndAndReadFromNarcMemberByIdPair(NarcId narc_id, s32 file_id, HeapI
 u32 GetNarcMemberSizeByIdPair(NarcId narc_id, s32 file_idx);
 
 /*
- * NARC * NARC_New(NarcId narc_id, HeapID heapId)
+ * NARC * NARC_New(NarcId narc_id, enum HeapID heapID)
  *
  * Constructs a new NARC which contains an open FSFile to the corresponding archive.
  * Useful to reduce overhead when reading from the same NARC multiple times.
  *
  * @param narc_id:     Ident of NARC to open
- * @param heapId:     ID of the heap to alloc from
+ * @param heapID:     ID of the heap to alloc from
  *
  * @returns: Pointer to the newly-allocated NARC
  */
-NARC *NARC_New(NarcId narc_id, HeapID heapId);
+NARC *NARC_New(NarcId narc_id, enum HeapID heapID);
 
 /*
  * void NARC_Delete(NARC * narc)
@@ -115,17 +115,17 @@ NARC *NARC_New(NarcId narc_id, HeapID heapId);
 void NARC_Delete(NARC *narc);
 
 /*
- * void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, HeapID heapId)
+ * void * NARC_AllocAndReadWholeMember(NARC * narc, u32 file_id, enum HeapID heapID)
  *
  * Creates a new buffer large enough to hold the content of the archive member, then reads its data.
  *
  * @param narc:        Pointer to the NARC
  * @param file_id:     Index of FAT member within the NARC
- * @param heapId:     ID of the heap to alloc from
+ * @param heapID:     ID of the heap to alloc from
  *
  * @returns: Pointer to the allocated buffer which contains the data that was read.
  */
-void *NARC_AllocAndReadWholeMember(NARC *narc, u32 file_id, HeapID heapId);
+void *NARC_AllocAndReadWholeMember(NARC *narc, u32 file_id, enum HeapID heapID);
 
 /*
  * void * NARC_ReadWholeMember(NARC * narc, u32 file_id, void * dest)

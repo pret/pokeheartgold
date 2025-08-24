@@ -29,7 +29,7 @@ WirelessTradeSelectMon_Init: ; 0x0221BE20
 	ldr r2, _0221BFA4 ; =0x00070FA0
 	mov r0, #3
 	mov r1, #0x1a
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #4
 	mov r1, #0x1a
 	bl FontID_Alloc
@@ -1872,7 +1872,7 @@ WirelessTradeSelectMon_Exit: ; 0x0221CD74
 	mov r0, #4
 	bl FontID_Release
 	mov r0, #0x1a
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -2272,7 +2272,7 @@ ov65_0221D0EC: ; 0x0221D0EC
 	bl SaveArray_Party_sizeof
 	add r1, r0, #0
 	mov r0, #0x1a
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0221D1C4 ; =0x00002228
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]

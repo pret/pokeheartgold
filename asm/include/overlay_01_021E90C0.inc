@@ -11,8 +11,8 @@
 .public SetCameraTranslationPath
 .public IsCameraTranslationFinished
 .public Sys_AllocAndReadFile
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public Heap_FreeExplicit
 .public Ascii_GetDelim

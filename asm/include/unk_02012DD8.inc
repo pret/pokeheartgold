@@ -25,7 +25,7 @@
 .public sub_02013440
 .public sub_02013468
 .public sub_02013488
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public _s32_div_f

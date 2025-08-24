@@ -38,7 +38,7 @@ _021E5916:
 	mov r0, #3
 	mov r1, #0x27
 	lsl r2, r2, #6
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E5A74 ; =0x0000940C
 	add r0, r6, #0
 	mov r2, #0x27
@@ -419,7 +419,7 @@ _021E5C8E:
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x27
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #2
 	bl sub_02038C1C
 	mov r0, #1
@@ -687,7 +687,7 @@ _021E5E46:
 	mov r1, #0xf
 	mov r0, #0x27
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _021E5F18 ; =0x000043C8
 	str r0, [r7, r1]
 	mov r0, #0x27

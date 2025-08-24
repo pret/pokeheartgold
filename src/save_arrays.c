@@ -373,26 +373,26 @@ const struct ExtraSaveChunkHeader gExtraSaveChunkHeaders[] = {
 
 const int gNumExtraSaveChunkHeaders = NELEMS(gExtraSaveChunkHeaders);
 
-HallOfFame *LoadHallOfFame(SaveData *saveData, HeapID heapId, int *ret_p) {
-    return ReadExtraSaveChunk(saveData, heapId, 0, ret_p);
+HallOfFame *LoadHallOfFame(SaveData *saveData, enum HeapID heapID, int *ret_p) {
+    return ReadExtraSaveChunk(saveData, heapID, 0, ret_p);
 }
 
 int SaveHallOfFame(SaveData *saveData, HallOfFame *hallOfFame) {
     return WriteExtraSaveChunk(saveData, 0, hallOfFame);
 }
 
-struct UnkStruct_0202FBCC *sub_0202711C(SaveData *saveData, HeapID heapId, int *ret_p, int idx) {
+struct UnkStruct_0202FBCC *sub_0202711C(SaveData *saveData, enum HeapID heapID, int *ret_p, int idx) {
     int sp4;
-    return sub_020284A4(saveData, heapId, idx + 2, ret_p, &sp4);
+    return sub_020284A4(saveData, heapID, idx + 2, ret_p, &sp4);
 }
 
 int sub_02027134(SaveData *saveData, struct UnkStruct_0202FBCC *data, int idx) {
     return sub_02028230(saveData, idx + 2, data);
 }
 
-struct UnkStruct_02030A98 *sub_02027144(SaveData *saveData, HeapID heapId, int *ret_p) {
+struct UnkStruct_02030A98 *sub_02027144(SaveData *saveData, enum HeapID heapID, int *ret_p) {
     int sp4;
-    return sub_020284A4(saveData, heapId, 1, ret_p, &sp4);
+    return sub_020284A4(saveData, heapID, 1, ret_p, &sp4);
 }
 
 int sub_02027158(SaveData *saveData, struct UnkStruct_02030A98 *data) {

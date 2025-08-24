@@ -15,8 +15,8 @@
 .public GfGfxLoader_LoadScrnDataFromOpenNarc
 .public GfGfxLoader_GXLoadPalFromOpenNarc
 .public GfGfxLoader_GetScrnDataFromOpenNarc
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public NewString_ReadMsgData
@@ -65,9 +65,9 @@
 .public TouchscreenListMenu_HandleInput
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeapAtEnd
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
@@ -118,7 +118,7 @@
 .public PhotoAlbum_DeletePhotoByIndex
 .public PhotoAlbum_SetPhotoAtIndex
 .public PhotoAlbum_LoadAllInUsePhotos
-.public sub_02068F98
+.public MapID_GetLandmarkName
 .public NNS_GfdDoVramTransfer
 .public FX_Inv
 .public MI_CpuFill8

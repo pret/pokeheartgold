@@ -81,7 +81,7 @@
 .public sub_02013688
 .public sub_020136B4
 .public sub_02013728
-.public sub_02013850
+.public TextOBJ_SetPaletteNum
 .public sub_02015DDC
 .public sub_02015E20
 .public sub_02015E64
@@ -105,9 +105,9 @@
 .public MenuInputStateMgr_SetState
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

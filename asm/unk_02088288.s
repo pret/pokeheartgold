@@ -66,7 +66,7 @@ PokemonSummary_Init: ; 0x02088298
 	mov r0, #3
 	mov r1, #0x13
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0x27
 	mov r1, #0x13
 	bl NARC_New
@@ -383,7 +383,7 @@ PokemonSummary_Exit: ; 0x0208856C
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x13
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

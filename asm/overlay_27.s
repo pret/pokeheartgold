@@ -14,7 +14,7 @@ ov27_02259F80: ; 0x02259F80
 	ldr r2, _0225A170 ; =0x00018D00
 	mov r0, #3
 	mov r1, #8
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	bl GXS_SetGraphicsMode
 	mov r0, #0x80
@@ -253,7 +253,7 @@ ov27_0225A19C: ; 0x0225A19C
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _0225A1C8:
 	mov r0, #0x52
 	lsl r0, r0, #4
@@ -305,7 +305,7 @@ _0225A216:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _0225A238:
 	ldr r0, [r6, #0x18]
 	bl SpriteList_Delete
@@ -341,7 +341,7 @@ _0225A246:
 	mov r1, #4
 	bl FreeBgTilemapBuffer
 	mov r0, #8
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _0225A2C4 ; =ov27_0225C24C
 	bl ov123_0225F688
 	cmp r0, #0
@@ -349,7 +349,7 @@ _0225A246:
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _0225A2A4:
 	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
 	mov r0, #0
@@ -4369,13 +4369,13 @@ _0225C236:
 
 	thumb_func_start ov27_0225C238
 ov27_0225C238: ; 0x0225C238
-	ldr r3, _0225C244 ; =AllocFromHeapAtEnd
+	ldr r3, _0225C244 ; =Heap_AllocAtEnd
 	mov r1, #0xfa
 	mov r0, #3
 	lsl r1, r1, #2
 	bx r3
 	nop
-_0225C244: .word AllocFromHeapAtEnd
+_0225C244: .word Heap_AllocAtEnd
 	thumb_func_end ov27_0225C238
 
 	thumb_func_start ov27_0225C248
@@ -4401,7 +4401,7 @@ ov27_0225C250: ; 0x0225C250
 	mov r1, #8
 	lsl r2, r0, #0xf
 	str r3, [sp, #4]
-	bl CreateHeap
+	bl Heap_Create
 	mov r0, #0
 	bl GXS_SetGraphicsMode
 	mov r0, #0x80
@@ -4578,7 +4578,7 @@ _0225C3C4:
 	mov r1, #4
 	bl FreeBgTilemapBuffer
 	mov r0, #8
-	bl DestroyHeap
+	bl Heap_Destroy
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

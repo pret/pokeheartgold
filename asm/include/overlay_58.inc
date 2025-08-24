@@ -11,9 +11,9 @@
 .public sub_0200FBF4
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes

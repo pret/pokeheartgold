@@ -29,14 +29,14 @@ struct Field3dObjectTask {
 
 typedef struct Field3dObjectTaskManager {
     struct FieldSystem *fieldSystem;
-    HeapID heapId;
+    enum HeapID heapID;
     int max;
     Field3dObjectTask *tasks;
     SysTaskQueue *taskQueue;
 } Field3dObjectTaskManager;
 
 // @red031000: struct keyword is necessary because cannot double-typedef and cannot circular include
-Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, HeapID heapId, int num);
+Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, enum HeapID heapID, int num);
 void Field3dObjectTaskManager_Delete(Field3dObjectTaskManager *manager);
 void Field3dObjectTaskManager_RunDrawTasks(Field3dObjectTaskManager *manager);
 Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager *manager, const Field3dObjectTaskTemplate *template);

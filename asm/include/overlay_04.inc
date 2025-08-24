@@ -9,10 +9,10 @@
 .public DeleteCameraTranslationWrapper
 .public SetCameraTranslationPath
 .public IsCameraTranslationFinished
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public Camera_OffsetLookAtPosAndTarget
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance

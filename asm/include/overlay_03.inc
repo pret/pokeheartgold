@@ -47,8 +47,8 @@
 .public ListMenuItems_AppendFromMsgData
 .public ListMenuItems_AddItem
 .public MenuInputStateMgr_SetState
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public SetBgPriority
 .public FillBgTilemapRect

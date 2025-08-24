@@ -50,7 +50,7 @@ u16 HiddenItemScriptNoToFlagId(u16 script);
 u16 HiddenItemScriptNoToHiddenItemIdx(u16 script);
 u8 sub_02040578(u16 script);
 BOOL GetHiddenItemParams(ScriptEnvironment *env, u16 script);
-HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, HeapID heapId);
+HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enum HeapID heapID);
 void RunInitScript(FieldSystem *fieldSystem);
 void StartMapLoadScript(FieldSystem *fieldSystem, u16 script);
 BOOL TryStartMapScriptByType(FieldSystem *fieldSystem, u8 type);
