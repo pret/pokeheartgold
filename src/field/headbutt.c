@@ -103,7 +103,7 @@ typedef struct TaskData_TryHeadbuttEncounter {
 } TaskData_TryHeadbuttEncounter;
 
 void FieldSystem_TryHeadbuttEncounter(FieldSystem *fieldSystem, u16 *varPointer) {
-    TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(didHeadbuttStartBattle));
+    TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(didHeadbuttStartBattle));
     didHeadbuttStartBattle->resultPtr = varPointer;
     *varPointer = FALSE;
     TaskManager_Call(fieldSystem->taskman, Task_TryHeadbuttEncounter, didHeadbuttStartBattle);
@@ -113,7 +113,7 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     HeadbuttEncounterData *headbuttTable;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     TaskData_TryHeadbuttEncounter *didHeadbuttStartBattle = TaskManager_GetEnvironment(taskManager);
-    headbuttTable = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD);
+    headbuttTable = AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_arc_headbutt, fieldSystem->location->mapId, HEAP_ID_FIELD2);
     if (headbuttTable->numRegularTrees != 0 || headbuttTable->numSecretTrees != 0) {
         BattleSetup *setup;
         u32 x;

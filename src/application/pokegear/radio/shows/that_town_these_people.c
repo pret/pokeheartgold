@@ -19,7 +19,7 @@ typedef enum TTTPUnlockCondition {
 } TTTPUnlockCondition;
 
 typedef struct ThatTownThesePeopleData {
-    HeapID heapID;
+    enum HeapID heapID;
     u16 state;
     u8 msgIDs[3];
     u8 selector;
@@ -55,7 +55,7 @@ static const u8 sEpisodeUnlockFlags[] = {
 };
 
 BOOL RadioShow_ThatTownThesePeople_Setup(RadioShow *radioShow) {
-    ThatTownThesePeopleData *data = AllocFromHeap(radioShow->heapID, sizeof(ThatTownThesePeopleData));
+    ThatTownThesePeopleData *data = Heap_Alloc(radioShow->heapID, sizeof(ThatTownThesePeopleData));
     MI_CpuClear8(data, sizeof(ThatTownThesePeopleData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

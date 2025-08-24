@@ -33,10 +33,10 @@ static BOOL (*const sPhoneCallHandlers[])(PokegearPhoneCallContext *) = {
 };
 
 PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContextParam *template) {
-    PokegearPhoneCallContext *ret = AllocFromHeap(template->heapId, sizeof(PokegearPhoneCallContext));
+    PokegearPhoneCallContext *ret = Heap_Alloc(template->heapID, sizeof(PokegearPhoneCallContext));
     MI_CpuClear8(ret, sizeof(PokegearPhoneCallContext));
-    ret->heapId = template->heapId;
-    ret->phoneBook = AllocAndReadPhoneBook(template->heapId);
+    ret->heapID = template->heapID;
+    ret->phoneBook = AllocAndReadPhoneBook(template->heapID);
     ret->phoneEntries = ret->phoneBook->entries;
     ret->phoneApp = template->phoneApp;
     ret->menuInputStatePtr = template->menuInputStatePtr;
@@ -54,13 +54,13 @@ PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContext
     ret->playerMapID = template->playerMapID;
     ret->textSpeed = template->textSpeed;
     ret->playerGender = PlayerProfile_GetTrainerGender(ret->playerProfile);
-    ret->msgData_0271 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, ret->heapId);
-    ret->msgData_0640 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0640_bin, ret->heapId);
-    ret->msgFormat = MessageFormat_New_Custom(16, 37, ret->heapId);
-    ret->msgExpansionBuff = String_New(1081, ret->heapId);
-    ret->phoneCallMsgReadBuff = String_New(1081, ret->heapId);
-    ret->contactNameBuf = String_New(16, ret->heapId);
-    ret->contactClassBuf = String_New(44, ret->heapId);
+    ret->msgData_0271 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, ret->heapID);
+    ret->msgData_0640 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0640_bin, ret->heapID);
+    ret->msgFormat = MessageFormat_New_Custom(16, 37, ret->heapID);
+    ret->msgExpansionBuff = String_New(1081, ret->heapID);
+    ret->phoneCallMsgReadBuff = String_New(1081, ret->heapID);
+    ret->contactNameBuf = String_New(16, ret->heapID);
+    ret->contactClassBuf = String_New(44, ret->heapID);
     ret->buf14String = NewString_ReadMsgData(ret->msgData_0271, msg_0271_00029);
     for (int i = 0; i < 3; ++i) {
         ret->noSignalMsgs[i] = NewString_ReadMsgData(ret->msgData_0271, msg_0271_00030 + i);
@@ -92,7 +92,7 @@ String *PhoneContact_GetName(PokegearPhoneCallContext *ctx, u8 callerID) {
         callerID = PHONE_CONTACT_MOTHER;
     }
     int gmm = GetPhoneMessageGmm(callerID);
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, gmm, ctx->heapId);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, gmm, ctx->heapID);
     ReadMsgDataIntoString(msgData, 0, ctx->contactNameBuf);
     DestroyMsgData(msgData);
     return ctx->contactNameBuf;
@@ -210,7 +210,7 @@ void PhoneCall_GetCallScriptId(PokegearPhoneCallContext *ctx) {
 }
 
 void PhoneCall_InitMsgDataAndBufferNames(PokegearPhoneCallContext *ctx) {
-    ctx->msgData_PhoneContact = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, GetPhoneMessageGmm(ctx->state.callerID), ctx->heapId);
+    ctx->msgData_PhoneContact = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, GetPhoneMessageGmm(ctx->state.callerID), ctx->heapID);
     BufferPlayersName(ctx->msgFormat, 0, ctx->playerProfile);
     BufferString(ctx->msgFormat, 1, PhoneContact_GetName(ctx, ctx->state.callerID), 2, 1, 2);
     BufferLandmarkName(ctx->msgFormat, 2, MapHeader_GetMapSec(ctx->playerMapSec));

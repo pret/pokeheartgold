@@ -20,7 +20,7 @@ ov01_021EAFD4: ; 0x021EAFD4
 	mov r1, #0x63
 	mov r0, #4
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _021EAFE8
 	bl GF_AssertFail

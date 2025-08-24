@@ -105,7 +105,7 @@ typedef struct BoardConfig {
     u8 maxFreeMultipliers : 4;
 } BoardConfig;
 
-GameState *CreateGameState(HeapID);
+GameState *CreateGameState(enum HeapID);
 void FreeGameState(GameState *);
 void NewBoard(GameState *);
 void ov122_021E8528(GameState *);

@@ -303,7 +303,7 @@ ov01_021FB254: ; 0x021FB254
 	push {r3, lr}
 	mov r0, #4
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	str r1, [r0, #0x10]
 	str r1, [r0, #0x14]
@@ -323,7 +323,7 @@ ov01_021FB270: ; 0x021FB270
 	mov r0, #4
 	mov r1, #0x18
 	add r5, r2, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -403,7 +403,7 @@ ov01_021FB308: ; 0x021FB308
 	mov r1, #0x88
 	add r6, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r1, r0, #0
 	add r2, r1, #0
 	mov r0, #0

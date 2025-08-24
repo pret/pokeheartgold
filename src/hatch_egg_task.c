@@ -37,7 +37,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 
     switch (data->state) {
     case HATCHEGGTASKSTATE_LEAVE_OVERWORLD:
-        sub_0206D328(data->unkC.mon, HEAP_ID_FIELD);
+        sub_0206D328(data->unkC.mon, HEAP_ID_FIELD2);
         CallTask_LeaveOverworld(taskManager);
         data->state++;
         break;
@@ -53,7 +53,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
         u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
         BOOL isEgg = FALSE;
         SetMonData(pokemon, MON_DATA_IS_EGG, &isEgg);
-        MonSetTrainerMemo(pokemon, profile, 6, mapsec, HEAP_ID_FIELD);
+        MonSetTrainerMemo(pokemon, profile, 6, mapsec, HEAP_ID_FIELD2);
         SetMonData(pokemon, MON_DATA_SPECIES_NAME, NULL);
         sub_02093134(fieldSystem, pokemon);
         UpdatePokedexWithReceivedSpecies(FieldSystem_GetSaveData(fieldSystem), data->unkC.mon);
@@ -71,7 +71,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 
         u32 species = GetMonData(data->unkC.mon, MON_DATA_SPECIES, NULL);
         Options *options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
-        data->namingScreenArgs = NamingScreen_CreateArgs(HEAP_ID_FIELD, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, options, NULL);
+        data->namingScreenArgs = NamingScreen_CreateArgs(HEAP_ID_FIELD2, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, options, NULL);
         data->namingScreenArgs->monGender = GetMonData(data->unkC.mon, MON_DATA_GENDER, NULL);
         data->namingScreenArgs->monForm = GetMonData(data->unkC.mon, MON_DATA_FORM, NULL);
 
@@ -99,7 +99,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 }
 
 void CallTask_HatchEggInParty(TaskManager *taskManager, UnkStruct_02091240 *a1) {
-    HatchEggTaskData *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(HatchEggTaskData));
+    HatchEggTaskData *data = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(HatchEggTaskData));
     memset(data, 0, sizeof(HatchEggTaskData));
     data->unkC = *a1;
 

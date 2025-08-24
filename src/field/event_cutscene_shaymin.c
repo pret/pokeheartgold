@@ -43,7 +43,7 @@ BOOL ov02_02252334(FieldSystem *fieldSystem) {
 }
 
 void ov02_022523B4(TaskManager *taskMan) {
-    UnkStruct_022523D0 *data = AllocFromHeapAtEnd(HEAP_ID_FIELD, sizeof(UnkStruct_022523D0));
+    UnkStruct_022523D0 *data = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_022523D0));
     TaskManager_Call(taskMan, ov02_022523D0, data);
 }
 

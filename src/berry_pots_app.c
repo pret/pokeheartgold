@@ -279,11 +279,11 @@ BOOL BerryPotsApp_Initialize(OverlayManager *manager, int *state) {
     switch (*state) {
     case 0:
         ov17_02201BC0();
-        CreateHeap(HEAP_ID_3, HEAP_ID_BERRY_POTS_APP, 0x20000);
+        Heap_Create(HEAP_ID_3, HEAP_ID_BERRY_POTS_APP, 0x20000);
 
         data = OverlayManager_CreateAndGetData(manager, sizeof(BerryPotsAppData), HEAP_ID_BERRY_POTS_APP);
         MI_CpuFill8(data, 0, sizeof(BerryPotsAppData));
-        data->heapId = HEAP_ID_BERRY_POTS_APP;
+        data->heapID = HEAP_ID_BERRY_POTS_APP;
         data->args = OverlayManager_GetArgs(manager);
         BerryPotsApp_InitData(data);
 
@@ -350,7 +350,7 @@ BOOL BerryPotsApp_Exit(OverlayManager *manager, int *state) {
     ov17_02201DD8(data);
 
     OverlayManager_FreeData(manager);
-    DestroyHeap(HEAP_ID_BERRY_POTS_APP);
+    Heap_Destroy(HEAP_ID_BERRY_POTS_APP);
 
     return TRUE;
 }
@@ -362,13 +362,13 @@ static void BerryPotsApp_InitData(BerryPotsAppData *data) {
     data->frame = Options_GetFrame(options);
     data->bag = Save_Bag_Get(data->args->unk4->savedata);
     data->stats = Save_GameStats_Get(data->args->unk4->savedata);
-    data->berryGrowthProperties = ov16_022014A0(data->heapId);
+    data->berryGrowthProperties = ov16_022014A0(data->heapID);
     data->berryPots = Save_BerryPots_Get(data->args->unk4->savedata);
     data->berryDatetime = Save_BerryPotRTC_Get(data->args->unk4->savedata);
     data->unk7C = (data->args->unk14 != 0) ? data->args->unk15 : 0;
     ov17_022023B0(data);
-    data->totalBerryQuantity = GetTotalBerryQuantity(data->bag, data->heapId);
-    data->totalMulchQuantity = GetTotalMulchQuantity(data->bag, data->heapId);
+    data->totalBerryQuantity = GetTotalBerryQuantity(data->bag, data->heapID);
+    data->totalMulchQuantity = GetTotalMulchQuantity(data->bag, data->heapID);
     ov17_0220387C(data);
 }
 
@@ -405,7 +405,7 @@ static BOOL ov17_02201E3C(BerryPotsAppData *data) {
 static u32 ov17_02201E50(BerryPotsAppData *data) {
     switch (data->state70) {
     case 0:
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapId);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, data->heapID);
         data->state70++;
         break;
     case 1:
@@ -423,7 +423,7 @@ static u32 ov17_02201E50(BerryPotsAppData *data) {
 static u32 ov17_02201EA8(BerryPotsAppData *data) {
     switch (data->state70) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapId);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, data->heapID);
         data->state70++;
         break;
     case 1:
@@ -603,7 +603,7 @@ static u32 ov17_02202184(BerryPotsAppData *data) {
         }
 
         BerryPotsAppData_UnkSub20 *unkStruct = &data->unk20[data->unk7C];
-        if (Bag_HasSpaceForItem(data->bag, BerryIdToItemId(unkStruct->berryId), unkStruct->quantityOrYieldMaybe, data->heapId)) {
+        if (Bag_HasSpaceForItem(data->bag, BerryIdToItemId(unkStruct->berryId), unkStruct->quantityOrYieldMaybe, data->heapID)) {
             data->state70 = 3;
             ov17_02202900(data, FALSE);
         } else {
@@ -723,7 +723,7 @@ static void ov17_022023B0(BerryPotsAppData *data) {
         data->unk7B = 2;
     }
 
-    Bag_TakeItem(data->bag, data->args->itemId, 1, data->heapId);
+    Bag_TakeItem(data->bag, data->args->itemId, 1, data->heapID);
 }
 
 static u32 ov17_02202440(BerryPotsAppData *data) {
@@ -1001,14 +1001,14 @@ void ov17_02202A84(BerryPotsAppData *data, int index) {
     unkStruct.x = (index + 1) * 27;
     switch (sub->growthStage) {
     case BERRY_POT_GROWTH_STAGE_PLANTED:
-        unkStruct.animSeqNo = 5;
+        unkStruct.animation = 5;
         break;
     case BERRY_POT_GROWTH_STAGE_SPROUTED:
-        unkStruct.animSeqNo = 6;
+        unkStruct.animation = 6;
         break;
     default:
         unkStruct.resourceSet = index + 1;
-        unkStruct.animSeqNo = sub->growthStage - 3;
+        unkStruct.animation = sub->growthStage - 3;
         break;
     }
 
@@ -1037,7 +1037,7 @@ void ov17_02202B58(BerryPotsAppData *data, u8 index) {
 static void ov17_02202B98(BerryPotsAppData *data) {
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[data->unk7C];
     ov16_02201674(data->berryPots, data->unk7C);
-    Bag_AddItem(data->bag, BerryIdToItemId(unk->berryId), unk->quantityOrYieldMaybe, data->heapId);
+    Bag_AddItem(data->bag, BerryIdToItemId(unk->berryId), unk->quantityOrYieldMaybe, data->heapID);
     ov17_0220387C(data);
     Sprite_Delete(unk->soilSpriteMaybe);
     unk->soilSpriteMaybe = NULL;
@@ -1061,7 +1061,7 @@ static void ov17_02202C2C(void) {
 
 static void BerryPotsApp_SetupBgConfig(BerryPotsAppData *data) {
     ov17_02202C2C();
-    data->bgConfig = BgConfig_Alloc(data->heapId);
+    data->bgConfig = BgConfig_Alloc(data->heapID);
 
     GraphicsModes modes = ov17_02203D88;
     SetBothScreensModesAndDisable(&modes);
@@ -1088,11 +1088,11 @@ static void BerryPotsApp_SetupBgConfig(BerryPotsAppData *data) {
     InitBgFromTemplate(data->bgConfig, 3, &bgTemplate3, 0);
     BgClearTilemapBufferAndCommit(data->bgConfig, 3);
 
-    BG_ClearCharDataRange(4, 0x20, 0, data->heapId);
-    BG_ClearCharDataRange(7, 0x20, 0, data->heapId);
-    BG_ClearCharDataRange(0, 0x20, 0, data->heapId);
-    BG_ClearCharDataRange(2, 0x20, 0, data->heapId);
-    BG_ClearCharDataRange(3, 0x40, 0, data->heapId);
+    BG_ClearCharDataRange(4, 0x20, 0, data->heapID);
+    BG_ClearCharDataRange(7, 0x20, 0, data->heapID);
+    BG_ClearCharDataRange(0, 0x20, 0, data->heapID);
+    BG_ClearCharDataRange(2, 0x20, 0, data->heapID);
+    BG_ClearCharDataRange(3, 0x40, 0, data->heapID);
 }
 
 static void BerryPotsApp_FreeBgConfig(BerryPotsAppData *data) {
@@ -1107,19 +1107,19 @@ static void BerryPotsApp_FreeBgConfig(BerryPotsAppData *data) {
 }
 
 static void BerryPotsApp_SetupNarc(BerryPotsAppData *data) {
-    NARC *narc = NARC_New(NARC_a_2_1_6, data->heapId);
+    NARC *narc = NARC_New(NARC_a_2_1_6, data->heapID);
 
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 3, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, data->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 4, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 5, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, data->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 1, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 2, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapId);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 3, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, data->heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 4, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 5, data->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 0, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, data->heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 1, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 2, data->bgConfig, GF_BG_LYR_SUB_3, 0, 0, FALSE, data->heapID);
 
     data->berryPotsAppNarc = narc;
 
-    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 13, data->frame, data->heapId);
-    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, data->heapId);
+    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 13, data->frame, data->heapID);
+    LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, data->heapID);
 }
 
 void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
@@ -1127,11 +1127,11 @@ void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
 }
 
 static void BerryPotsApp_SetupText(BerryPotsAppData *data) {
-    FontID_Alloc(4, data->heapId);
+    FontID_Alloc(4, data->heapID);
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0248_bin, data->heapId);
-    data->msgFmt = MessageFormat_New_Custom(16, 16, data->heapId);
-    data->currentStatusString = String_New(128, data->heapId);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0248_bin, data->heapID);
+    data->msgFmt = MessageFormat_New_Custom(16, 16, data->heapID);
+    data->currentStatusString = String_New(128, data->heapID);
     data->cancelString = NewString_ReadMsgData(data->msgData, msg_0248_00000);
 
     for (int i = 0; i < (int)NELEMS(data->statusStrings); i++) {
@@ -1158,7 +1158,7 @@ static void BerryPotsApp_SetupWindows(BerryPotsAppData *data) {
         FillWindowPixelBuffer(&data->windows[i], 0x0);
     }
 
-    data->unk12C = YesNoPrompt_Create(data->heapId);
+    data->unk12C = YesNoPrompt_Create(data->heapID);
 }
 
 static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
@@ -1173,7 +1173,7 @@ static void BerryPotsApp_FreeWindows(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupListMenuItems(BerryPotsAppData *data) {
     for (int i = 0; i < (int)NELEMS(data->listMenuItems); i++) {
         const struct UnkStruct_ov17_02203E88 *unk = &ov17_02203E88[i];
-        data->listMenuItems[i] = ListMenuItems_New(unk->numButtons, data->heapId);
+        data->listMenuItems[i] = ListMenuItems_New(unk->numButtons, data->heapID);
         for (int j = 0; j < (int)unk->numButtons; j++) {
             ListMenuItems_AppendFromMsgData(data->listMenuItems[i], data->msgData, unk->msgId[j], j);
         }
@@ -1188,19 +1188,19 @@ static void BerryPotsApp_FreeListMenuItems(BerryPotsAppData *data) {
 }
 
 static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data) {
-    GF_CreateVramTransferManager(32, data->heapId);
+    GF_CreateVramTransferManager(32, data->heapID);
 
-    data->spriteRenderer = SpriteSystem_Alloc(data->heapId);
+    data->spriteRenderer = SpriteSystem_Alloc(data->heapID);
     SpriteSystem_Init(data->spriteRenderer, &ov17_02203E68, &ov17_02203D98, 8);
 
-    sub_0200B2E0(data->heapId);
-    sub_0200B2E8(data->heapId);
+    thunk_ClearMainOAM(data->heapID);
+    thunk_ClearSubOAM(data->heapID);
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
     sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
 
-    data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapId);
+    data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapID);
 
     SpriteResourceCountsListUnion counts = ov17_02203DAC;
     data->spriteGfxHandler2 = SpriteManager_New(data->spriteRenderer);
@@ -1212,7 +1212,7 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
     SpriteSystem_LoadCellResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIconCell(), FALSE, 4000);
     SpriteSystem_LoadAnimResObjFromOpenNarc(data->spriteRenderer, data->spriteGfxHandler2, data->itemIconNarc, GetItemIconAnim(), FALSE, 4000);
 
-    data->menuSpawner = TouchscreenListMenuSpawner_Create(data->heapId, 0);
+    data->menuSpawner = TouchscreenListMenuSpawner_Create(data->heapID, 0);
 }
 
 static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data) {
@@ -1229,7 +1229,7 @@ static void BerryPotsApp_FreeSpriteRendererAndGfxHandler(BerryPotsAppData *data)
 
     GF_DestroyVramTransferManager();
 
-    sub_0200B2E0(data->heapId);
+    thunk_ClearMainOAM(data->heapID);
 }
 
 static void BerryPotsApp_SetupSpriteSystem(BerryPotsAppData *data) {

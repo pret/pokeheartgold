@@ -42,7 +42,7 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
 
 BOOL ScrCmd_509(ScriptContext *ctx) {
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
@@ -56,14 +56,14 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
 BOOL ScrCmd_510(ScriptContext *ctx) {
     struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     PCStorage *storage = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_32);
+    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
         GetMigratedPokemonByIndex(unkStruct, i, mon);
-        MonSetTrainerMemo(mon, profile, 2, 0, HEAP_ID_32);
+        MonSetTrainerMemo(mon, profile, 2, 0, HEAP_ID_FIELD3);
         GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(mon)));
         UpdatePokedexWithReceivedSpecies(ctx->fieldSystem->saveData, mon);
     }

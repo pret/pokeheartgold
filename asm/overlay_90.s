@@ -582,7 +582,7 @@ ov90_02258BD4: ; 0x02258BD4
 	add r6, r0, #0
 	add r0, r5, #0
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x73
 	add r4, r0, #0
 	mov r1, #0
@@ -867,7 +867,7 @@ _02258DDC:
 	mul r4, r0
 	add r0, r7, #0
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, [sp]
 	add r2, r4, #0
 	str r0, [r1, #0x10]
@@ -1900,7 +1900,7 @@ ov90_02259588: ; 0x02259588
 	bl Sound_SetSceneAndPlayBGM
 	ldr r1, _022596A0 ; =0x000005F4
 	add r0, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _022596A0 ; =0x000005F4
 	mov r1, #0
 	add r4, r0, #0
@@ -4108,7 +4108,7 @@ ov90_0225A6B4: ; 0x0225A6B4
 	ldr r1, _0225A820 ; =0x00000664
 	add r0, r5, #0
 	str r2, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0225A820 ; =0x00000664
 	mov r1, #0
 	add r4, r0, #0

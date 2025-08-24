@@ -9,7 +9,7 @@
 #include "unk_02005D10.h"
 
 typedef struct MahoganySignalData {
-    HeapID heapID;
+    enum HeapID heapID;
     u8 state;
 } MahoganySignalData;
 
@@ -17,7 +17,7 @@ void RadioShow_MahoganySignal_Init(RadioShow *radioShow);
 void RadioShow_MahoganySignal_Unload(RadioShow *radioShow);
 
 BOOL RadioShow_MahoganySignal_Setup(RadioShow *radioShow) {
-    MahoganySignalData *data = AllocFromHeap(radioShow->heapID, sizeof(MahoganySignalData));
+    MahoganySignalData *data = Heap_Alloc(radioShow->heapID, sizeof(MahoganySignalData));
     MI_CpuClear8(data, sizeof(MahoganySignalData));
     // data->heapID = radioShow->heapID;
     radioShow->showData = data;

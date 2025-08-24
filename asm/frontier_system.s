@@ -12,7 +12,7 @@ FrontierSystem_Create: ; 0x0222A84C
 	add r0, r5, #0
 	mov r1, #0xbc
 	add r6, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xbc
@@ -147,7 +147,7 @@ FrontierSystem_AddTask: ; 0x0222A958
 	add r6, r1, #0
 	mov r1, #0x90
 	add r7, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x90
 	add r4, r0, #0
@@ -350,7 +350,7 @@ ov80_0222AAD8: ; 0x0222AAD8
 	add r4, r0, #0
 	add r0, r1, #0
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, #0x24
 	add r3, r0, #0
 	mov r2, #8

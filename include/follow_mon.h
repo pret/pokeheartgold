@@ -31,7 +31,7 @@ BOOL FollowMon_GetPermission(FieldSystem *fieldSystem);
 BOOL FollowMon_GetPermissionBySpeciesAndMap(int species, u32 mapNo);
 void sub_0206A040(LocalMapObject *mapObject, BOOL enableBit);
 void sub_0206A054(FieldSystem *fieldSystem);
-FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(HeapID heapId);
+FieldSystemUnk108 *FieldSystem_UnkSub108_Alloc(enum HeapID heapID);
 void FieldSystem_UnkSub108_AddMonMood(FieldSystemUnk108 *unk, s8 by);
 void FieldSystem_UnkSub108_SetMonMood(FieldSystemUnk108 *unk, s8 mood);
 s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnk108 *unk);

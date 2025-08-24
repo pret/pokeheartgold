@@ -11,21 +11,21 @@
 #include "sys_task_api.h"
 
 typedef struct PokegearArgs {
-    u8 incomingPhoneCall;    // 0x00
-    u8 unk01;                // One of the variables inside FieldSystem with offset 0x110 (currently unk_10C[1];)
+    u8 isScriptedLaunch;     // 0x00
+    u8 menuInputState;       // 0x01
     u16 mapMusicID;          // 0x02 (surf-overriden)
     u8 callerId;             // 0x04
-    u8 unk05;                // 0x05
+    u8 isScriptedCall;       // 0x05
     u8 callScriptID;         // 0x06
     u8 playerGender;         // 0x07
     int x;                   // 0x08
     int y;                   // 0x0c
     u16 mapID;               // 0x10
     u16 mapHeader;           // 0x12
-    BOOL unk_14;             // 0x14
+    BOOL setFlyDestination;  // 0x14
     int mapCursorX;          // 0x18
     int mapCursorY;          // 0x1C
-    u16 unk_20;              // 0x20
+    u16 selectedFlyDest;     // 0x20
     u8 matrixXCoord;         // 0x22
     u8 matrixYCoord;         // 0x23
     SaveData *saveData;      // 0x24
@@ -33,15 +33,16 @@ typedef struct PokegearArgs {
 } PokegearArgs;
 
 typedef struct UnkPokegearstruct_14 {
-    s16 y;
-    s16 x;
-    u8 unk04[5];
-    u8 padding_09[3];
+    u8 unk_0;
+    u8 unk_1;
+    u8 unk_2;
+    u8 isScriptedCall;
+    u8 callScriptID;
 } Unk_PokegearSTRUCT_14;
 
-void sub_02092D80(FieldSystem *sys, PokegearArgs *ptr);
-void sub_02092D8C(FieldSystem *sys, PokegearArgs *ptr);
-GearPhoneRingManager *GearPhoneRingManager_New(HeapID heapId, FieldSystem *sys);
+void FieldSystem_InitPokegearArgs_Phone(FieldSystem *sys, PokegearArgs *ptr);
+void FieldSystem_InitPokegearArgs_Map(FieldSystem *sys, PokegearArgs *ptr);
+GearPhoneRingManager *GearPhoneRingManager_New(enum HeapID heapID, FieldSystem *sys);
 void GearPhoneRingManager_Delete(GearPhoneRingManager *ptr);
 GearPhoneRingManager *FieldSystem_GetGearPhoneRingManager(FieldSystem *sys);
 void GearPhoneRingManager_StartRinging(GearPhoneRingManager *ptr);

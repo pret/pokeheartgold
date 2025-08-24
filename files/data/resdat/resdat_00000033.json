@@ -2,7 +2,7 @@
   "kind": "cell",
   "graphics": [
     {
-      "narc": "NARC_a_1_4_4",
+      "narc": "NARC_application_pokegear_map_pgmap_gra",
       "file": 5,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": "NARC_a_1_4_4",
+      "narc": "NARC_application_pokegear_map_pgmap_gra",
       "file": 2,
       "compressed": false,
       "id": 1,
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "narc": "NARC_a_1_4_4",
+      "narc": "NARC_application_pokegear_map_pgmap_gra",
       "file": 8,
       "compressed": false,
       "id": 2,

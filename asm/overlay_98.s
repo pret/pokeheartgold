@@ -36,7 +36,7 @@ ov98_0221E5E0: ; 0x0221E5E0
 	mov r1, #0x18
 	add r6, r0, #0
 	add r5, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	str r6, [r4]
 	add r0, r6, #0
@@ -344,7 +344,7 @@ _0221E806:
 	mov r1, #0x32
 	ldr r0, [sp, #0x50]
 	lsl r1, r1, #6
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r7, r0, #0
 	str r7, [sp]
 	ldr r0, [r4, #4]
@@ -671,7 +671,7 @@ ov98_0221EABC: ; 0x0221EABC
 	bl FontID_Alloc
 	ldr r0, [sp]
 	mov r1, #0x1c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x1c
 	add r4, r0, #0
@@ -680,7 +680,7 @@ ov98_0221EABC: ; 0x0221EABC
 	lsl r5, r0, #4
 	ldr r0, [sp]
 	add r1, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r5, #0
 	str r0, [r4, #4]

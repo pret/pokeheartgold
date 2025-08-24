@@ -36,7 +36,7 @@ typedef enum WirelessTradeState {
 } WirelessTradeState;
 
 typedef struct UnkStruct_0203E6D4 {
-    HeapID heapId;
+    enum HeapID heapID;
     PartyMenuArgs *partyMenu;
     u8 unk8[0x4];
 } UnkStruct_0203E6D4;
@@ -149,7 +149,7 @@ typedef struct UnkStruct_0203E644 {
 } UnkStruct_0203E644;
 
 typedef struct PartyMenuMoveSelectData {
-    HeapID heapId;
+    enum HeapID heapID;
     UnkStruct_0203E644 *unk4;
     PokemonSummaryArgs *pokemonSummary;
 } PartyMenuMoveSelectData;

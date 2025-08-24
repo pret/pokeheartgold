@@ -11,7 +11,7 @@
 // This file is related to handling evolutions of Pokemon
 typedef struct EvolutionTaskData EvolutionTaskData;
 
-EvolutionTaskData *sub_02075A7C(Party *party, Pokemon *mon, int species, Options *options, u32 a4, Pokedex *dex, Bag *bag, GameStats *stats, u32 evolutionCondition, u32 a9, HeapID heapId);
+EvolutionTaskData *sub_02075A7C(Party *party, Pokemon *mon, int species, Options *options, u32 a4, Pokedex *dex, Bag *bag, GameStats *stats, u32 evolutionCondition, u32 a9, enum HeapID heapID);
 BOOL sub_02075D3C(EvolutionTaskData *);
 void sub_02075D4C(EvolutionTaskData *);
 

@@ -22,7 +22,7 @@
 .public NARC_Delete
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
-.public sub_0200B2E0
+.public thunk_ClearMainOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -63,10 +63,10 @@
 .public MenuInputStateMgr_SetState
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

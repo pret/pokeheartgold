@@ -551,7 +551,7 @@ sub_0205BED8: ; 0x0205BED8
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0x14
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #0x14
 	add r4, r0, #0
@@ -656,7 +656,7 @@ sub_0205BFB4: ; 0x0205BFB4
 	str r0, [sp]
 	mov r0, #0xb
 	mov r1, #0xc
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0xc

@@ -1400,7 +1400,7 @@ sub_02006838: ; 0x02006838
 	bl sub_020068F8
 	add r0, r4, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _0200685C
 	bl GF_AssertFail

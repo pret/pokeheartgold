@@ -33,7 +33,7 @@ void ov01_021F35C4(FieldSystem *fieldSystem, int a1, int *a2);
 u32 GetHoneySweetScentWorkSize(void);
 BOOL Task_HoneyOrSweetScent(TaskManager *taskManager);
 BOOL Task_OverworldFish(TaskManager *taskManager);
-struct FishingRodWork *CreateFishingRodTaskEnv(FieldSystem *fieldSystem, HeapID heapId, int rod);
+struct FishingRodWork *CreateFishingRodTaskEnv(FieldSystem *fieldSystem, enum HeapID heapID, int rod);
 void ov01_021F4440(FieldSystem *fieldSystem);
 void ov01_021F6A9C(FieldSystem *fieldSystem, int a1, void *a2);
 int ov01_021F6B00(FieldSystem *fieldSystem);
@@ -99,7 +99,7 @@ void Field_PlayerMovementSavingClear(SysTask *task);
 
 struct SaveStatsPrinter;
 
-struct SaveStatsPrinter *Field_SaveStatsPrinter_New(FieldSystem *fieldSystem, HeapID x, int y);
+struct SaveStatsPrinter *Field_SaveStatsPrinter_New(FieldSystem *fieldSystem, enum HeapID x, int y);
 void Field_SaveStatsPrinter_Print(struct SaveStatsPrinter *printer);
 void Field_SaveStatsPrinter_RemoveFromScreen(struct SaveStatsPrinter *printer);
 void Field_SaveStatsPrinter_Delete(struct SaveStatsPrinter *printer);
@@ -137,7 +137,7 @@ BOOL ov01_02206268(FieldSystem *fieldSystem);
 
 void ov01_021F42F8(UnkStruct_field_021F4360 *a0);
 void ov01_021F434C(UnkStruct_field_021F4360 *a0);
-UnkStruct_field_021F4360 *ov01_021F4360(FieldSystem *fieldSystem, HeapID heapId, u8 a2);
+UnkStruct_field_021F4360 *ov01_021F4360(FieldSystem *fieldSystem, enum HeapID heapID, u8 a2);
 void ov01_021F43D0(UnkStruct_field_021F4360 *a0);
 
 #endif // POKEHEARTGOLD_OVERLAY_01_H

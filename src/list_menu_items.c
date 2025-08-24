@@ -3,18 +3,18 @@
 #include "global.h"
 
 void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items);
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p);
+LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p);
 
-LISTMENUITEM *ListMenuItems_New(u32 n, HeapID heapId) {
+LISTMENUITEM *ListMenuItems_New(u32 n, enum HeapID heapID) {
     int i;
-    LISTMENUITEM *ret = AllocFromHeap(heapId, (n + 1) * sizeof(LISTMENUITEM));
+    LISTMENUITEM *ret = Heap_Alloc(heapID, (n + 1) * sizeof(LISTMENUITEM));
     if (ret != NULL) {
         for (i = 0; i < n; i++) {
             ret[i].text = NULL;
             ret[i].value = 0;
         }
         ret[i].text = (String *)-1;
-        ret[i].value = heapId;
+        ret[i].value = heapID;
     }
     return ret;
 }
@@ -25,7 +25,7 @@ void ListMenuItems_Delete(LISTMENUITEM *items) {
 }
 
 void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int msgId, int value) {
-    HeapID dummy;
+    enum HeapID dummy;
 
     items = ListMenuItems_SeekEnd(items, &dummy);
     if (items != NULL) {
@@ -35,16 +35,16 @@ void ListMenuItems_AppendFromMsgData(LISTMENUITEM *items, MsgData *msgData, int 
 }
 
 void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
-    HeapID heapId;
+    enum HeapID heapID;
 
-    items = ListMenuItems_SeekEnd(items, &heapId);
+    items = ListMenuItems_SeekEnd(items, &heapID);
     if (items != NULL) {
-        items->text = String_Dup(string, heapId);
+        items->text = String_Dup(string, heapID);
         items->value = value;
     }
 }
 
-LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
+LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, enum HeapID *heapId_p) {
     LISTMENUITEM *out;
 
     for (; items->text != NULL; items++) {
@@ -55,7 +55,7 @@ LISTMENUITEM *ListMenuItems_SeekEnd(LISTMENUITEM *items, HeapID *heapId_p) {
     }
     out = items;
     for (; items->text != (String *)-1; items++) {}
-    *heapId_p = (HeapID)items->value;
+    *heapId_p = (enum HeapID)items->value;
     return out;
 }
 
