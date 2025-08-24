@@ -16,58 +16,24 @@ env:
   COMPARE: 1
 
 jobs:
-  build-docker-image:
-    runs-on: ubuntu-latest
-    outputs:
-      imageid: steps.get-changed-files.outputs.any_changed == 'true' && steps.build-docker.outputs.imageid || "pret/pokeheartgold:latest"
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v4
-      -
-        name: Get build tag
-        id: build-tag
-        run: |
-          if [ "${{ github.event_name }}" = "push" ]; then
-            echo 'docker-tag=latest' >> "$GITHUB_OUTPUT"
-          else
-            echo "docker-tag=${{ github.run_number }}-$(echo ${{ github.sha }} | head -c8)" >> "$GITHUB_OUTPUT"
-          fi
-      -
-        name: Check if Dockerfile was changed
-        id: get-changed-files
-        uses: tj-actions/changed-files@v46
-        with:
-          files: Dockerfile
-      - uses: docker/login-action@v3
-        if: steps.get-changed-files.outputs.any_changed == 'true'
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      -
-        name: Set up QEMU
-        if: steps.get-changed-files.outputs.any_changed == 'true'
-        uses: docker/setup-qemu-action@v3
-      -
-        name: Set up Docker Buildx
-        if: steps.get-changed-files.outputs.any_changed == 'true'
-        uses: docker/setup-buildx-action@v3
-      -
-        name: Build Docker image
-        id: build-docker
-        if: steps.get-changed-files.outputs.any_changed == 'true'
-        uses: docker/build-push-action@v6
-        with:
-          push: github.event_name == 'push'
-          tags: ${{github.repository}}:${{steps.build-tag.outputs.docker-tag}}
-
   build:
-    runs-on: ubuntu-latest
-    needs: [build-docker-image]
-    container: needs.build-docker-image.outputs.imageid
+    runs-on: ubuntu-22.04
 
     steps:
+      - name: Update and Install Software
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+          sudo apt update
+          sudo apt -y --allow-downgrades install g++-10-multilib linux-libc-dev binutils-arm-none-eabi p7zip-full pkg-config libpugixml-dev ppa-purge
+          sudo ppa-purge -y ppa:ubuntu-toolchain-r/test || true
+          sudo dpkg --add-architecture i386
+          sudo mkdir -pm755 /etc/apt/keyrings
+          sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+          sudo add-apt-repository ppa:cybermax-dexter/sdl2-backport
+          sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources
+          sudo apt update
+          sudo apt -y --allow-downgrades install --install-recommends winehq-stable
+
       - name: Checkout Repo
         uses: actions/checkout@v4
 
@@ -84,7 +50,7 @@ jobs:
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
           mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-        working-directory: "~"
+        working-directory: ~
 
       - name: Set Swap Space
         uses: pierotofy/set-swap-space@master

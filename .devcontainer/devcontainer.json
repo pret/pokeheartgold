@@ -1,0 +1,17 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile",
+        "options": [
+            "--platform=linux/amd64"
+        ]
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools-extension-pack",
+                "ms-python.python"
+            ]
+        }
+    },
+    "postCreateCommand": "bash ./.devcontainer/setup-devcontainer.sh"
+}
