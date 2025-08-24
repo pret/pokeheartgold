@@ -17625,11 +17625,11 @@ _022317B8:
 	str r0, [r4]
 	pop {r4, pc}
 _022317BE:
-	mov r0, #VERSION_LEAF_GREEN
+	mov r0, #VERSION_LEAFGREEN
 	str r0, [r4]
 	pop {r4, pc}
 _022317C4:
-	mov r0, #VERSION_FIRE_RED
+	mov r0, #VERSION_FIRERED
 	str r0, [r4]
 	pop {r4, pc}
 _022317CA:
