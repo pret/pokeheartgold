@@ -17,7 +17,7 @@ typedef struct UnkStruct_FieldSysC0 {
     int objectMax;
 } UnkStruct_FieldSysC0;
 
-UnkStruct_FieldSysC0 ov01_02204004(HeapID heapId, int indexMax, int objectMax, NNSG3dResFileHeader *a3);
+UnkStruct_FieldSysC0 ov01_02204004(enum HeapID heapID, int indexMax, int objectMax, NNSG3dResFileHeader *a3);
 UnkStruct_FieldSysC0_SubC *Field3dObjectList_GetRenderObjectByID(UnkStruct_FieldSysC0 *a0, int a1);
 
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_02204004_H

@@ -12,7 +12,7 @@ ov56_021E5C20: ; 0x021E5C20
 	mov r0, #3
 	mov r1, #0x29
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0xc4
 	mov r2, #0x29
@@ -93,7 +93,7 @@ ov56_021E5CB4: ; 0x021E5CB4
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	add r0, r5, #0
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov56_021E5CB4
@@ -1368,7 +1368,7 @@ ov56_021E6650: ; 0x021E6650
 	bl NARC_GetMemberSize
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r6, r0, #0
 	ldr r1, [sp, #0x1c]
 	add r0, r4, #0
@@ -1400,7 +1400,7 @@ ov56_021E6650: ; 0x021E6650
 	bl NARC_GetMemberSize
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r6, r0, #0
 	add r0, r4, #0
 	add r1, r7, #0
@@ -1533,7 +1533,7 @@ _021E6768:
 	bl NARC_GetMemberSize
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x3c]
 	ldr r1, [sp, #0x20]
 	ldr r2, [r5, #0x3c]
@@ -1548,7 +1548,7 @@ _021E6768:
 	bl NARC_GetMemberSize
 	add r1, r0, #0
 	ldr r0, [r5]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x40]
 	ldr r2, [r5, #0x40]
 	add r0, r4, #0
@@ -2033,7 +2033,7 @@ _021E6BC6:
 	add r2, sp, #0x14
 	bl SpriteSystem_InitManagerWithCapacities
 	ldr r0, [r5]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	bl sub_02074490
 	mov r1, #0
 	add r3, r0, #0

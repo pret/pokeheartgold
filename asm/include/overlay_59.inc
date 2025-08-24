@@ -26,8 +26,8 @@
 .public Pokepic_StartPaletteFade
 .public Pokepic_ResumePaletteFade
 .public PokepicManager_HandleLoadImgAndOrPltt
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -94,9 +94,9 @@
 .public TouchscreenListMenu_HandleInput
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable

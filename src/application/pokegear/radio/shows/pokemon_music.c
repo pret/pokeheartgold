@@ -29,7 +29,7 @@ typedef enum PokemonMusicState {
 } PokemonMusicState;
 
 typedef struct PokemonMusicData {
-    HeapID heapID;
+    enum HeapID heapID;
     u8 hasNationalDex : 1;
     u8 playingTrack : 7;
     u8 queuedMsg;
@@ -94,7 +94,7 @@ void RadioShow_PokemonMusic_StartPlaying(RadioShow *radioShow, u8 track) {
 }
 
 BOOL RadioShow_PokemonMusic_Setup(RadioShow *radioShow) {
-    PokemonMusicData *data = AllocFromHeap(radioShow->heapID, sizeof(PokemonMusicData));
+    PokemonMusicData *data = Heap_Alloc(radioShow->heapID, sizeof(PokemonMusicData));
     MI_CpuClear8(data, sizeof(PokemonMusicData));
     // data->heapID = radioShow->heapID;
     data->hasNationalDex = Pokedex_GetNatDexFlag(Save_Pokedex_Get(radioShow->saveData));

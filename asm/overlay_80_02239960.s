@@ -9,7 +9,7 @@ ov80_02239960: ; 0x02239960
 	push {r3, r4, r5, lr}
 	mov r1, #0x24
 	add r5, r0, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #0x24
@@ -59,7 +59,7 @@ _022399BA:
 	ldrh r0, [r5, #0x20]
 	mov r1, #0x12
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

@@ -181,7 +181,7 @@ ov01_021EDC28: ; 0x021EDC28
 	lsl r1, r1, #4
 	str r2, [sp, #0x18]
 	add r5, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _021EDC48
 	add sp, #0x1c

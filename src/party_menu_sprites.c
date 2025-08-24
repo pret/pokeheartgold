@@ -407,17 +407,17 @@ void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) 
     sp1C.x = x;
     sp1C.y = y;
     sp1C.z = 0;
-    sp1C.animSeqNo = 0;
-    sp1C.rotation = 0;
-    sp1C.palIndex = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 3;
-    sp1C.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-    sp1C.unk_18 = 0;
+    sp1C.animation = 0;
+    sp1C.drawPriority = 0;
+    sp1C.pal = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 3;
+    sp1C.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+    sp1C.paletteMode = 0;
     sp1C.unk_1C = 0;
     sp1C.unk_20 = 0;
     sp1C.unk_24 = 0;
     partyMenu->monsDrawState[partySlot].iconSprite = SpriteSystem_CreateSpriteFromResourceHeader(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
-    sp1C.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
-    sp1C.palIndex = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
+    sp1C.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+    sp1C.pal = GetMonIconPaletteEx(partyMenu->monsDrawState[partySlot].species, partyMenu->monsDrawState[partySlot].form, isEgg) + 1;
     sp1C.x = x;
     sp1C.y = y + 0x100;
     partyMenu->monsDrawState[partySlot].mainScreenIconSprite = SpriteSystem_CreateSpriteFromResourceHeader(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp1C);
@@ -483,14 +483,14 @@ void sub_0207EF5C(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y) {
     sp0.x = x;
     sp0.y = y;
     sp0.z = 0;
-    sp0.animSeqNo = 0;
-    sp0.palIndex = 0;
-    sp0.unk_18 = 0;
+    sp0.animation = 0;
+    sp0.pal = 0;
+    sp0.paletteMode = 0;
     sp0.unk_1C = 0;
     sp0.unk_20 = 0;
     sp0.unk_24 = 0;
-    sp0.rotation = 1;
-    sp0.whichScreen = NNS_G2D_VRAM_TYPE_2DMAIN;
+    sp0.drawPriority = 1;
+    sp0.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
     partyMenu->sprites[partySlot + PARTY_MENU_SPRITE_ID_BALL] = SpriteSystem_CreateSpriteFromResourceHeader(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, &sp0);
 }
 

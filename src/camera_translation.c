@@ -11,8 +11,8 @@ static void stepPerspective(Camera *camera, const u16 *first, const u16 *last, u
 static void stepPosition(Camera *camera, const VecFx32 *first, const VecFx32 *last, u8 step, u8 duration);
 static fx32 calcPositionComponentStep(fx32 component, u8 step, u8 duration);
 
-GFCameraTranslationWrapper *CreateCameraTranslationWrapper(HeapID heapId, Camera *camera) {
-    GFCameraTranslationWrapper *ret = AllocFromHeap(heapId, sizeof(GFCameraTranslationWrapper));
+GFCameraTranslationWrapper *CreateCameraTranslationWrapper(enum HeapID heapID, Camera *camera) {
+    GFCameraTranslationWrapper *ret = Heap_Alloc(heapID, sizeof(GFCameraTranslationWrapper));
     MI_CpuClear8(ret, sizeof(GFCameraTranslationWrapper));
     ret->camera = camera;
     return ret;

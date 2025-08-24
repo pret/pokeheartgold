@@ -300,7 +300,7 @@ ov01_021F3348: ; 0x021F3348
 	add r5, r0, #0
 	mov r0, #4
 	add r1, r5, #0
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	add r4, r0, #0
 	bne _021F335C
 	bl GF_AssertFail

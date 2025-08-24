@@ -4,11 +4,11 @@
 
 #include "sys_task.h"
 
-SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, HeapID heapId) {
+SysTask *CreateSysTaskAndEnvironment(SysTaskFunc function, u32 environmentSize, u32 priority, enum HeapID heapID) {
     void *environment;
 
     if (environmentSize != 0) {
-        environment = AllocFromHeap(heapId, environmentSize);
+        environment = Heap_Alloc(heapID, environmentSize);
         if (environment == NULL) {
             return NULL;
         }

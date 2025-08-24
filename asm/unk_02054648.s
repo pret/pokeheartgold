@@ -999,7 +999,7 @@ sub_02054D10: ; 0x02054D10
 	add r0, r1, #0
 	lsl r1, r7, #2
 	str r3, [sp, #4]
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	str r0, [sp, #8]
 	mov r0, #0
 	cmp r7, #0

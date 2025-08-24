@@ -14,8 +14,8 @@
 #include "save_vars_flags.h"
 #include "sys_flags.h"
 
-EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputStateMgr *menuInputStateMgr, HeapID heapId) {
-    EasyChatArgs *ptr = AllocFromHeap(heapId, sizeof(EasyChatArgs));
+EasyChatArgs *EasyChat_CreateArgs(u8 args, u8 a1, SaveData *saveData, MenuInputStateMgr *menuInputStateMgr, enum HeapID heapID) {
+    EasyChatArgs *ptr = Heap_Alloc(heapID, sizeof(EasyChatArgs));
     ptr->unk0 = args;
     ptr->unk1 = a1;
     ptr->pokedex = Save_Pokedex_Get(saveData);
@@ -163,9 +163,9 @@ void sub_02090E5C(EasyChatArgs *args, MenuInputState a1) {
     MenuInputStateMgr_SetState(args->menuInputPtr, a1);
 }
 
-UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, HeapID heapId) {
+UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, enum HeapID heapID) {
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
-    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+    UseMailArgs *ptr = Heap_AllocAtEnd(heapID, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
     ptr->mailType = mailType;
@@ -176,7 +176,7 @@ UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, 
     ptr->unkC = 0;
     ptr->saveData = saveData;
 
-    Mail *mail = Mail_New(heapId);
+    Mail *mail = Mail_New(heapID);
     ptr->mail = mail;
     Mail_Init(mail);
     Mail_SetNewMessageDetails(ptr->mail, MAIL_NONE, partyIdx, saveData);
@@ -184,8 +184,8 @@ UseMailArgs *sub_02090E68(SaveData *saveData, u16 a1, u8 partyIdx, u8 mailType, 
     return ptr;
 }
 
-UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
-    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, enum HeapID heapID) {
+    UseMailArgs *ptr = Heap_AllocAtEnd(heapID, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
     ptr->unk0 = 0;
@@ -195,33 +195,33 @@ UseMailArgs *sub_02090EC0(SaveData *saveData, int n, u16 i, HeapID heapId) {
 
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
     ptr->mailbox = mailbox;
-    ptr->mail = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapId);
+    ptr->mail = Mailbox_AllocAndFetchMailI(&mailbox->msgs[0], n, i, heapID);
 
     return ptr;
 }
 
-UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, HeapID heapId) {
-    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, enum HeapID heapID) {
+    UseMailArgs *ptr = Heap_AllocAtEnd(heapID, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
     ptr->unk0 = 0;
     ptr->saveData = saveData;
 
-    Mail *mail = Mail_New(heapId);
+    Mail *mail = Mail_New(heapID);
     ptr->mail = mail;
     GetMonData(mon, MON_DATA_MAIL_STRUCT, ptr->mail);
 
     return ptr;
 }
 
-UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, HeapID heapId) {
-    UseMailArgs *ptr = AllocFromHeapAtEnd(heapId, sizeof(UseMailArgs));
+UseMailArgs *sub_02090F38(SaveData *saveData, u8 mailType, enum HeapID heapID) {
+    UseMailArgs *ptr = Heap_AllocAtEnd(heapID, sizeof(UseMailArgs));
     MI_CpuFill8(ptr, 0, sizeof(UseMailArgs));
 
     ptr->unk0 = 0;
     ptr->saveData = saveData;
 
-    Mail *mail = Mail_New(heapId);
+    Mail *mail = Mail_New(heapID);
     ptr->mail = mail;
     Mail_SetType(mail, mailType);
 
@@ -247,12 +247,12 @@ void sub_02090F90(UseMailArgs *args) {
     Heap_Free(args);
 }
 
-int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
+int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, enum HeapID heapID) {
     int item = ITEM_NONE;
     int idx = Mailbox_GetFirstEmptySlotIdx(mailbox);
 
     if (idx != -1) {
-        Mail *mail = Mail_New(heapId);
+        Mail *mail = Mail_New(heapID);
 
         GetMonData(mon, MON_DATA_MAIL_STRUCT, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);
@@ -265,10 +265,10 @@ int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, HeapID heapId) {
     return -1;
 }
 
-int sub_02091004(Mail *msgs, int i, Pokemon *mon, HeapID heapId) {
+int sub_02091004(Mail *msgs, int i, Pokemon *mon, enum HeapID heapID) {
     int item = ITEM_NONE;
 
-    Mail *mail = Mailbox_AllocAndFetchMailI(msgs, 0, i, heapId);
+    Mail *mail = Mailbox_AllocAndFetchMailI(msgs, 0, i, heapID);
     if (mail == NULL) {
         return -1;
     }

@@ -20,7 +20,7 @@ ov01_021FAC44: ; 0x021FAC44
 	add r7, r0, #0
 	mov r0, #4
 	mov r1, #0x20
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r5, r0, #0
 	mov r4, #0
 _021FAC54:
@@ -44,7 +44,7 @@ _021FAC70:
 	mov r1, #9
 	mov r0, #4
 	lsl r1, r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r6, #0x10]
 	cmp r0, #0
 	bne _021FAC88

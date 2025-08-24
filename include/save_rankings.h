@@ -27,10 +27,10 @@ void Save_Rankings_Init(SaveRankings *saveRankings);
 SaveRankings *Save_Rankings_Get(SaveData *saveData);
 void Save_Rankings_DeleteEntryByIndex(SaveRankings *saveRankings, int stat, u8 index);
 u32 Save_Rankings_GetMixingSize(void);
-SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, HeapID heapId);
-void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, HeapID heapId);
-ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, HeapID heapId);
-ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, HeapID heapId);
+SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, enum HeapID heapID);
+void Save_UpdateRankingsFromMixing(SaveData *saveData, u8 playerIdx, u8 countIn, SaveRankingsEntry **ppEntries, enum HeapID heapID);
+ViewRankingsPage *Save_GetPlayerViewRankingPage(SaveData *saveData, int page, enum HeapID heapID);
+ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, int page, enum HeapID heapID);
 void ViewRankingsPage_Delete(ViewRankingsPage *viewRankingsPage);
 
 #endif // GUARD_POKEHEARTGOLD_UNK_0202E4B0_H

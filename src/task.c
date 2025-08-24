@@ -5,7 +5,7 @@
 static TaskManager *Task_New(FieldSystem *fieldSystem, TaskFunc taskFunc, void *env) {
     TaskManager *taskman;
 
-    taskman = AllocFromHeapAtEnd((HeapID)32, sizeof(TaskManager));
+    taskman = Heap_AllocAtEnd((enum HeapID)32, sizeof(TaskManager));
     taskman->prev = NULL;
     taskman->func = taskFunc;
     taskman->state = 0;
@@ -13,7 +13,7 @@ static TaskManager *Task_New(FieldSystem *fieldSystem, TaskFunc taskFunc, void *
     taskman->unk10 = 0;
     taskman->unk14 = NULL;
     taskman->fieldSystem = fieldSystem;
-    taskman->unk1C = AllocFromHeapAtEnd((HeapID)32, sizeof(TaskManagerUnkSub1C));
+    taskman->unk1C = Heap_AllocAtEnd((enum HeapID)32, sizeof(TaskManagerUnkSub1C));
     return taskman;
 }
 
@@ -108,7 +108,7 @@ static BOOL Task_RunApplicationUntilComplete(TaskManager *taskManager) {
 void CallApplicationAsTask(TaskManager *taskManager, const OverlayManagerTemplate *template, void *work) {
     struct UnkTaskEnv *env;
 
-    env = AllocFromHeapAtEnd((HeapID)32, sizeof(struct UnkTaskEnv));
+    env = Heap_AllocAtEnd((enum HeapID)32, sizeof(struct UnkTaskEnv));
     env->state = 0;
     env->template = template;
     env->work = work;

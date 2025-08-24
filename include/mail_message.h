@@ -29,8 +29,8 @@ void MailMsg_Copy(MailMessage *dst, const MailMessage *src);
 void MailMsg_Init_WithBank(MailMessage *mailMessage, u16 msgBank);
 void MailMsg_Init_Default(MailMessage *mailMessage);
 void MailMsg_Init_FromTemplate(MailMessage *mailMessage, const MailMessageTemplate *template);
-String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId);
-String *MailMsg_GetRawString(MailMessage *mailMessage, HeapID heapId);
+String *MailMsg_GetExpandedString(const MailMessage *mailMessage, enum HeapID heapID);
+String *MailMsg_GetRawString(MailMessage *mailMessage, enum HeapID heapID);
 BOOL MailMsg_IsInit(MailMessage *mailMessage);
 BOOL MailMsg_AllFieldsAreInit(MailMessage *mailMessage);
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no);
@@ -39,7 +39,7 @@ u16 MailMsg_GetMsgBank(const MailMessage *mailMessage);
 u16 MailMsg_GetMsgNo(const MailMessage *mailMessage);
 u32 MailMsg_NumMsgsInBank(u16 msg_bank);
 void MailMsg_SetTrailingFieldsEmpty(MailMessage *mailMessage);
-String *MailMsg_GetExpandedString(const MailMessage *mailMessage, HeapID heapId);
+String *MailMsg_GetExpandedString(const MailMessage *mailMessage, enum HeapID heapID);
 
 #endif // PM_ASM
 

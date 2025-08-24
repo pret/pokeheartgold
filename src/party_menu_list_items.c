@@ -491,7 +491,7 @@ static void PartyMenu_SwapMonsData(PartyMenu *partyMenu) {
     PartyMenuMonsDrawState *monBuf;
     s16 pos;
 
-    monBuf = AllocFromHeap(HEAP_ID_PARTY_MENU, sizeof(PartyMenuMonsDrawState));
+    monBuf = Heap_Alloc(HEAP_ID_PARTY_MENU, sizeof(PartyMenuMonsDrawState));
     *monBuf = partyMenu->monsDrawState[swapMonsData->slots[0]];
     partyMenu->monsDrawState[swapMonsData->slots[0]] = partyMenu->monsDrawState[swapMonsData->slots[1]];
     partyMenu->monsDrawState[swapMonsData->slots[1]] = *monBuf;

@@ -2,10 +2,10 @@
 #pragma once
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public GF_AssertFail
 .public memset

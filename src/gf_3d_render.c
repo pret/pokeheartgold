@@ -39,7 +39,7 @@ void GF3dRender_DrawModel(NNSG3dRenderObj *obj, const VecFx32 *translation, cons
     NNS_G3dDraw(obj);
 }
 
-void GF3dRender_InitSimpleManager(HeapID heapID) {
+void GF3dRender_InitSimpleManager(enum HeapID heapID) {
     sSimple3DVramManager = GF_3DVramMan_Create(heapID, 0, 2, 0, 4, initializeSimple3DVramManager);
 }
 
