@@ -23,4 +23,6 @@ if ! test -d $GITHUB_WORKSPACE/tools/bin; then
 fi
 
 popd
-make clean-tools && make -j$(nproc) tools
+
+# Rebuild tools if the arch changed
+tools/jsonproc/jsonproc -h &>/dev/null || { make clean-tools && make -j$(nproc) tools; }
