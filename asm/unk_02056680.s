@@ -273,7 +273,7 @@ _0205686A:
 	blt _02056932
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+	bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -405,7 +405,7 @@ _02056986:
 	blt _02056A4E
 	ldr r0, [r5, #0x40]
 	mov r1, #1
-	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+	bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]

@@ -40,7 +40,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_SetMapObjectYPosition
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
-.public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+.public PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 .public MapObjectManager_GetFirstActiveObjectByID
 .public MapObjectManager_GetObjectCount
 .public MapObjectManager_GetObjects

@@ -321,7 +321,7 @@ static LocalMapObject *PlayerAvatar_GetMapObjectConst(PlayerAvatar *avatar) {
 }
 
 void PlayerAvatar_SetState(PlayerAvatar *avatar, s32 state) {
-    GF_ASSERT(state < PLAYER_STATE_UNK_SP);
+    GF_ASSERT(state < PLAYER_STATE_USE_HM);
     avatar->state = state;
     PlayerAvatar_SetPlayerSaveDataState(avatar, state);
 }
@@ -504,18 +504,18 @@ void PlayerAvatar_ToggleAutomaticHeightUpdating(PlayerAvatar *avatar, u8 flag) {
     }
 }
 
-void PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(PlayerAvatar *avatar, BOOL state) {
-    LocalMapObject *mapObj = PlayerAvatar_GetMapObject(avatar);
-    if (state == TRUE) {
-        MapObject_SetIgnoreHeights(mapObj, FALSE);
-        sub_02061070(mapObj);
+void PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(PlayerAvatar *avatar, BOOL flag) {
+    LocalMapObject *mapObject = PlayerAvatar_GetMapObject(avatar);
+    if (flag == TRUE) {
+        MapObject_SetIgnoreHeights(mapObject, FALSE);
+        sub_02061070(mapObject);
     } else {
-        MapObject_SetIgnoreHeights(mapObj, TRUE);
+        MapObject_SetIgnoreHeights(mapObject, TRUE);
     }
 }
 
-u32 PlayerAvatar_GetSpriteByStateAndGender(s32 state, int gender) {
-    if (!gender) {
+u32 PlayerAvatar_GetSpriteByStateAndGender(s32 state, u32 gender) {
+    if (gender == PLAYER_GENDER_MALE) {
         switch (state) {
         case PLAYER_STATE_WALKING:
             return SPRITE_HERO;
@@ -523,13 +523,13 @@ u32 PlayerAvatar_GetSpriteByStateAndGender(s32 state, int gender) {
             return SPRITE_CYCLEHERO;
         case PLAYER_STATE_SURFING:
             return SPRITE_SWIMHERO;
-        case PLAYER_STATE_UNK_SP:
+        case PLAYER_STATE_USE_HM:
             return SPRITE_SPHERO;
-        case PLAYER_STATE_UNK_WATER:
+        case PLAYER_STATE_WATERING:
             return SPRITE_WATERHERO;
         case PLAYER_STATE_FISHING:
             return SPRITE_FISHINGHERO;
-        case PLAYER_STATE_UNK_POKE:
+        case PLAYER_STATE_POKETCH:
             return SPRITE_POKEHERO;
         case PLAYER_STATE_SAVING:
             return SPRITE_SAVEHERO;
@@ -556,13 +556,13 @@ u32 PlayerAvatar_GetSpriteByStateAndGender(s32 state, int gender) {
             return SPRITE_CYCLEHEROINE;
         case PLAYER_STATE_SURFING:
             return SPRITE_SWIMHEROINE;
-        case PLAYER_STATE_UNK_SP:
+        case PLAYER_STATE_USE_HM:
             return SPRITE_SPHEROINE;
-        case PLAYER_STATE_UNK_WATER:
+        case PLAYER_STATE_WATERING:
             return SPRITE_WATERHEROINE;
         case PLAYER_STATE_FISHING:
             return SPRITE_FISH_HEROINE;
-        case PLAYER_STATE_UNK_POKE:
+        case PLAYER_STATE_POKETCH:
             return SPRITE_POKEHEROINE;
         case PLAYER_STATE_SAVING:
             return SPRITE_SAVEHEROINE;
@@ -594,11 +594,11 @@ u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
         return PLAYER_TRANSITION_CYCLING;
     case PLAYER_STATE_SURFING:
         return PLAYER_TRANSITION_SURFING;
-    case PLAYER_STATE_UNK_WATER:
+    case PLAYER_STATE_WATERING:
         return PLAYER_TRANSITION_x0010;
     case PLAYER_STATE_FISHING:
         return PLAYER_TRANSITION_x0020;
-    case PLAYER_STATE_UNK_POKE:
+    case PLAYER_STATE_POKETCH:
         return PLAYER_TRANSITION_x0040;
     case PLAYER_STATE_SAVING:
         return PLAYER_TRANSITION_x0080;
@@ -616,7 +616,7 @@ u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
         return PLAYER_TRANSITION_x2000;
     case PLAYER_STATE_ROCKET_SAVING:
         return PLAYER_TRANSITION_x4000;
-    case PLAYER_STATE_UNK_SP:
+    case PLAYER_STATE_USE_HM:
     default:
         GF_ASSERT(FALSE);
         return PLAYER_TRANSITION_WALKING;

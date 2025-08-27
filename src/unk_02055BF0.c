@@ -444,7 +444,7 @@ BOOL sub_020562B0(TaskManager *man) {
         break;
     case 3:
         if (IsPaletteFadeFinished()) {
-            PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fieldSystem->playerAvatar, TRUE);
+            PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fieldSystem->playerAvatar, TRUE);
             Heap_Free(fenv->unk18);
             return TRUE;
         }
@@ -497,7 +497,7 @@ BOOL sub_02056424(TaskManager *man) {
         break;
     case 4:
         if (IsPaletteFadeFinished()) {
-            PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fieldSystem->playerAvatar, TRUE);
+            PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fieldSystem->playerAvatar, TRUE);
             Heap_Free(fenv->unk18);
             return TRUE;
         }

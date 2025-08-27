@@ -35,7 +35,7 @@
 .public PlayerAvatar_GetMapObject
 .public sub_0205C810
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
-.public PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+.public PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 .public MapObject_SetFacingDirectionDirect
 .public sub_0205F328
 .public MapObject_CopyPositionVector

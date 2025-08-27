@@ -27,11 +27,11 @@
 #define PLAYER_STATE_CYCLING        1
 #define PLAYER_STATE_SURFING        2
 #define PLAYER_STATE_ROCKET         3
-#define PLAYER_STATE_UNK_SP         4
-#define PLAYER_STATE_UNK_WATER      5
+#define PLAYER_STATE_USE_HM         4
+#define PLAYER_STATE_WATERING       5
 #define PLAYER_STATE_POKEATHLON     6
 #define PLAYER_STATE_FISHING        7
-#define PLAYER_STATE_UNK_POKE       8
+#define PLAYER_STATE_POKETCH        8
 #define PLAYER_STATE_SAVING         9
 #define PLAYER_STATE_HEAL           10
 #define PLAYER_STATE_LADDER         11

@@ -316,7 +316,7 @@ _0225408C:
 	bl ov01_021FB4A0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+	bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 	ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
@@ -414,7 +414,7 @@ _0225415C:
 	bl ov01_021FB4A0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+	bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 	ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0

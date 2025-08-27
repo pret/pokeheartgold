@@ -904,7 +904,7 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
 
     switch (unk->unk34.state) {
     case 0:
-        PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, FALSE);
+        PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fsys->playerAvatar, FALSE);
         unkSub->state++;
         break;
     case 1:
@@ -915,7 +915,7 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
         pos.y -= 2 * FX32_ONE;
         MapObject_SetPositionVector(player, &pos);
         if (unkSub->unk2 >= 16) {
-            PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fsys->playerAvatar, TRUE);
+            PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fsys->playerAvatar, TRUE);
             unkSub->state++;
         }
         break;
