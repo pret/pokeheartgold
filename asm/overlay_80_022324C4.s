@@ -14,7 +14,7 @@ ov80_022324C4: ; 0x022324C4
 	mov r0, #0xb
 	add r6, r2, #0
 	str r3, [sp, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0223281C ; =ov80_0223DD48
 	ldr r2, _02232818 ; =0x00000A28
 	str r0, [r1]

@@ -11,12 +11,12 @@ ov41_02245EA0: ; 0x02245EA0
 	add r5, r0, #0
 	add r0, r7, #0
 	mov r1, #8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	lsl r6, r5, #3
 	add r4, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r6, #0
 	str r0, [r4]
@@ -1293,7 +1293,7 @@ ov41_022467E4: ; 0x022467E4
 	mov r1, #0x76
 	ldr r0, [r4, #0xc]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #4]
 	mov r0, #0x76
 	str r0, [r5, #8]
@@ -1301,7 +1301,7 @@ ov41_022467E4: ; 0x022467E4
 	str r0, [r5, #0xc]
 	ldr r0, [r4, #0xc]
 	mov r1, #0x4c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5, #0x10]
 	mov r0, #0x13
 	str r0, [r5, #0x14]
@@ -1607,7 +1607,7 @@ ov41_02246A50: ; 0x02246A50
 	str r0, [r4, #0x34]
 	mov r0, #0xe
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x77
 	mov r1, #0
 	lsl r2, r2, #2
@@ -1995,7 +1995,7 @@ ov41_02246D54: ; 0x02246D54
 	ldr r1, [sp]
 	add r0, r7, #0
 	add r6, r2, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, [sp]
 	mov r1, #0
 	str r0, [r5]
@@ -2010,7 +2010,7 @@ ov41_02246D54: ; 0x02246D54
 	mul r4, r0
 	add r0, r7, #0
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	add r2, r4, #0
 	str r0, [r5, #8]
@@ -2063,12 +2063,12 @@ ov41_02246DE0: ; 0x02246DE0
 	mov r0, #3
 	mov r1, #0xd
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0xe
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x6f
 	add r0, r5, #0
 	lsl r1, r1, #4
@@ -2555,9 +2555,9 @@ _0224721A:
 	add r0, r6, #0
 	bl OverlayManager_FreeData
 	mov r0, #0xd
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0xe
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -5889,7 +5889,7 @@ ov41_02248A28: ; 0x02248A28
 	add r5, r0, #0
 	mov r0, #0xe
 	lsl r1, r4, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	str r4, [r5, #4]
 	mov r6, #0
@@ -6126,7 +6126,7 @@ ov41_02248B84: ; 0x02248B84
 	mov r0, #0xd
 	mul r1, r2
 	str r2, [r4, #0x2c]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r4, #0x28]
 	cmp r0, #0
 	bne _02248BE4
@@ -6614,7 +6614,7 @@ ov41_02248F18: ; 0x02248F18
 	bl ov41_02248E28
 	mov r0, #0xd
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	mov r1, #0
 	mov r2, #0x34
@@ -8033,7 +8033,7 @@ ov41_022499B4: ; 0x022499B4
 	add r5, r0, #0
 	add r0, r2, #0
 	add r1, r4, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [r5]
 	cmp r0, #0
 	bne _022499CE
@@ -8909,7 +8909,7 @@ ov41_02249FFC: ; 0x02249FFC
 	mov r1, #0x14
 	add r5, r2, #0
 	add r6, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x14
@@ -8950,7 +8950,7 @@ ov41_0224A04C: ; 0x0224A04C
 	mov r1, #0x14
 	add r5, r2, #0
 	add r6, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x14
@@ -10097,7 +10097,7 @@ ov41_0224A8D4: ; 0x0224A8D4
 	bl sub_020136B4
 	ldr r0, [r5, #0x10]
 	mov r1, #4
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	pop {r3, r4, r5, pc}
 _0224A8F0:
 	cmp r4, #1
@@ -10115,7 +10115,7 @@ _0224A8FE:
 	bl sub_020136B4
 	ldr r0, [r5, #0x10]
 	mov r1, #3
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 _0224A914:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -11873,7 +11873,7 @@ ov41_0224B630: ; 0x0224B630
 	mov r1, #0x9a
 	ldr r0, [r5, #0x68]
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x9a
 	mov r1, #0
 	lsl r2, r2, #2
@@ -12379,12 +12379,12 @@ AccessoryPortrait_Init: ; 0x0224BA10
 	mov r0, #3
 	mov r1, #0xd
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r2, #1
 	mov r0, #3
 	mov r1, #0xe
 	lsl r2, r2, #0x12
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x1a
 	add r0, r4, #0
 	lsl r1, r1, #4
@@ -12580,9 +12580,9 @@ AccessoryPortrait_Exit: ; 0x0224BBA4
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0xd
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0xe
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

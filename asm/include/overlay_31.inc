@@ -33,8 +33,8 @@
 .public YesNoPrompt_InitFromTemplate
 .public YesNoPrompt_HandleInputForSave
 .public MenuInputStateMgr_GetState
-.public CreateHeap
-.public DestroyHeap
+.public Heap_Create
+.public Heap_Destroy
 .public Heap_Free
 .public InitBgFromTemplate
 .public FreeBgTilemapBuffer

@@ -17,7 +17,7 @@ void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp) {
 
     for (i = 0; i < PHONE_CONTEXT_MENU_MAX; ++i) {
         param = &sContextMenuParam[i];
-        phoneApp->listMenuItems[i] = ListMenuItems_New(param->nItems, phoneApp->heapId);
+        phoneApp->listMenuItems[i] = ListMenuItems_New(param->nItems, phoneApp->heapID);
         for (j = 0; j < param->nItems; ++j) {
             ListMenuItems_AppendFromMsgData(phoneApp->listMenuItems[i], phoneApp->msgData, param->baseMsg + j, j);
         }
@@ -34,10 +34,10 @@ void PokegearPhone_DeleteContextMenus(PokegearPhoneAppData *phoneApp) {
 void ov101_021F0900(PokegearPhoneAppData *phoneApp) {
     ov101_021F0990(phoneApp);
     if (phoneApp->pokegear->cursorInAppSwitchZone == 0) {
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, FALSE);
+        PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, FALSE);
     } else {
-        PokegearAppSwitchCursor_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, TRUE);
-        PokegearAppSwitch_SetSpecIndexAndCursorPos(phoneApp->pokegear->appSwitch, 0, ov100_021E5DC8(phoneApp->pokegear));
+        PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, TRUE);
+        PokegearCursorManager_SetSpecIndexAndCursorPos(phoneApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(phoneApp->pokegear));
         PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, 0);
     }
 }
@@ -51,7 +51,7 @@ void PokegearPhone_OnReselectApp(void *cb_arg) {
 void ov101_021F0954(PokegearPhoneAppData *phoneApp) {
     phoneApp->pokegear->cursorInAppSwitchZone = 0;
     PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, TRUE);
-    PokegearAppSwitchCursor_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, FALSE);
+    PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, FALSE);
 }
 
 void ov101_021F0978(void *cb_arg) {
@@ -136,8 +136,8 @@ int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
         if (phoneApp->menuInputStateBak == 0) {
             phoneApp->pokegear->cursorInAppSwitchZone = 1;
             PlaySE(SEQ_SE_GS_GEARCANCEL);
-            PokegearAppSwitchCursor_SetCursorSpritesDrawState(phoneApp->pokegear->appSwitch, 0, TRUE);
-            PokegearAppSwitch_SetSpecIndexAndCursorPos(phoneApp->pokegear->appSwitch, 0, ov100_021E5DC8(phoneApp->pokegear));
+            PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, TRUE);
+            PokegearCursorManager_SetSpecIndexAndCursorPos(phoneApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(phoneApp->pokegear));
             PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, 0);
             return -1;
         }
@@ -216,7 +216,7 @@ int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp) {
 }
 
 void PokegearPhone_ContactList_CreateLinkedList(PokegearPhoneAppData *phoneApp) {
-    phoneApp->phoneContactListNodes = AllocFromHeap(phoneApp->heapId, phoneApp->numContacts * sizeof(PhoneContactListNode));
+    phoneApp->phoneContactListNodes = Heap_Alloc(phoneApp->heapID, phoneApp->numContacts * sizeof(PhoneContactListNode));
     PokegearPhone_InitContactsLinkedList(phoneApp);
 }
 

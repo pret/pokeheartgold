@@ -14,7 +14,7 @@ ScratchOffCards_Init: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x7a
 	lsl r2, r2, #0xe
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E59AC ; =0x000099FC
 	add r0, r5, #0
 	mov r2, #0x7a
@@ -236,7 +236,7 @@ ScratchOffCards_Exit: ; 0x021E5AC0
 	add r1, r0, #0
 	bl Main_SetVBlankIntrCB
 	mov r0, #0x7a
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -4251,7 +4251,7 @@ ov87_021E7A04: ; 0x021E7A04
 	ldr r1, [r4, r1]
 	mov r0, #0x7a
 	ldr r1, [r1, #0x10]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0xe3
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -4951,7 +4951,7 @@ ov87_021E7F6C: ; 0x021E7F6C
 	mov r1, #0x10
 	add r7, r2, #0
 	str r3, [sp, #8]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	add r2, r4, #0
 	mov r1, #0x10

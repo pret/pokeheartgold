@@ -241,7 +241,7 @@ ov01_021EFCF8: ; 0x021EFCF8
 	mov r1, #0x4c
 	str r2, [sp]
 	add r5, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x4c
 	add r4, r0, #0
@@ -654,7 +654,7 @@ ov01_021EFFEC: ; 0x021EFFEC
 	push {r4, lr}
 	mov r0, #4
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -972,7 +972,7 @@ ov01_021F0250: ; 0x021F0250
 	push {r4, r5, r6, lr}
 	mov r0, #4
 	mov r1, #0x48
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x48
 	add r4, r0, #0
@@ -1641,7 +1641,7 @@ ov01_021F074C: ; 0x021F074C
 ov01_021F0768: ; 0x021F0768
 	push {r4, lr}
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -1763,7 +1763,7 @@ _021F07F6:
 ov01_021F0848: ; 0x021F0848
 	push {r4, lr}
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -1968,7 +1968,7 @@ ov01_021F09BC: ; 0x021F09BC
 	add r6, r0, #0
 	mov r0, #4
 	mov r1, #0xcc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0xcc
 	add r7, r0, #0
@@ -2178,7 +2178,7 @@ ov01_021F0B44: ; 0x021F0B44
 	push {r4, lr}
 	mov r0, #4
 	mov r1, #0xe8
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0xe8
 	add r4, r0, #0
@@ -2547,7 +2547,7 @@ ov01_021F0DDC: ; 0x021F0DDC
 _021F0DEC:
 	mov r0, #4
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _021F0E5C ; =ov01_02209B64
 	mov r2, #0x18
 	str r0, [r1]
@@ -2709,7 +2709,7 @@ _021F0F2A:
 	mov r1, #0x12
 	mov r0, #4
 	lsl r1, r1, #0xa
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _021F0FAC ; =ov01_02209B64
 	mov r3, #0x12
 	ldr r1, [r2]

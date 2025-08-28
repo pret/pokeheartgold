@@ -9,7 +9,7 @@ typedef struct ObjCharTransferTemplate {
     int maxTasks;
     u32 sizeMain;
     u32 sizeSub;
-    HeapID heapId;
+    enum HeapID heapID;
 } ObjCharTransferTemplate;
 
 typedef struct UnkStruct_02021758 {
@@ -23,7 +23,7 @@ typedef struct UnkStruct_02021AC8 {
     u32 size;
     u32 offset;
     u16 vram;
-    u16 unk_0A;
+    u16 isAtEnd;
 } UnkStruct_02021AC8;
 
 typedef struct ObjCharTransferTasksManager ObjCharTransferTasksManager;
@@ -41,7 +41,7 @@ NNSG2dImageProxy *ObjCharTransfer_GetProxyPtrByResID(int resId);
 NNSG2dImageProxy *ObjCharTransfer_ResizeTaskByResID_GetProxyPtr(int resId, u32 size);
 NNSG2dImageProxy *ObjCharTransfer_CopyTransferTaskByProxyPtr(NNSG2dImageProxy *proxyIn);
 void ObjCharTransfer_DeleteTaskCopyByProxyPtr(const NNSG2dImageProxy *proxy);
-BOOL sub_02021AC8(u32 size, BOOL a1, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3);
+BOOL sub_02021AC8(u32 size, BOOL atEnd, NNS_G2D_VRAM_TYPE vram, UnkStruct_02021AC8 *a3);
 void sub_02021B5C(UnkStruct_02021AC8 *a0);
 ObjCharTransferTasksManager *ObjCharTransfer_PopTaskManager(void);
 void ObjCharTransfer_PushTaskManager(ObjCharTransferTasksManager *taskManager);

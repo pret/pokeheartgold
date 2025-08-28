@@ -1058,7 +1058,7 @@ sub_0202D8E4: ; 0x0202D8E4
 	add r0, r1, #0
 	mov r1, #0xff
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	mov r0, #0x1d
 	lsl r0, r0, #6

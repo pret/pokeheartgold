@@ -48,7 +48,7 @@ ov01_02205218: ; 0x02205218
 	add r0, r4, #4
 	mov r1, #4
 	mov r2, #0x20
-	bl GF_ExpHeap_FndInitAllocator
+	bl HeapExp_FndInitAllocator
 	add r0, r4, #0
 	add r0, #0x14
 	mov r1, #0x67

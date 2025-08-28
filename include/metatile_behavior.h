@@ -24,7 +24,7 @@ BOOL sub_0205B7BC(u8 tile);
 BOOL sub_0205B7C8(u8 tile);
 BOOL sub_0205B7D4(u8 tile);
 BOOL sub_0205B7E0(u8 tile);
-BOOL sub_0205B7EC(u8 tile);
+BOOL MetatileBehavior_IsTownMap(u8 tile);
 BOOL sub_0205B7F8(u8 tile);
 BOOL sub_0205B804(u8 tile);
 BOOL sub_0205B810(u8 tile);

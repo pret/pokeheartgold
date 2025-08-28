@@ -96,7 +96,7 @@ ov01_021EAC30: ; 0x021EAC30
 ov01_021EAC4C: ; 0x021EAC4C
 	push {r4, lr}
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0

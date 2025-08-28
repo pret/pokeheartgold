@@ -27,11 +27,11 @@ int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
 
 BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
-    CreateHeap(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEGEAR_APP, 0x30000);
     PokegearPhoneAppData *phoneApp = OverlayManager_CreateAndGetData(man, sizeof(PokegearPhoneAppData), HEAP_ID_POKEGEAR_APP);
     memset(phoneApp, 0, sizeof(PokegearPhoneAppData));
     phoneApp->pokegear = pokegearApp;
-    phoneApp->heapId = HEAP_ID_POKEGEAR_APP;
+    phoneApp->heapID = HEAP_ID_POKEGEAR_APP;
     Sound_SetSceneAndPlayBGM(55, 0, 0);
     PokegearPhone_LoadContactsAndInitFromArgs(phoneApp);
     return TRUE;
@@ -95,9 +95,9 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
 
     PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);
     phoneApp->pokegear->isSwitchApp = TRUE;
-    HeapID heapId = phoneApp->heapId;
+    enum HeapID heapID = phoneApp->heapID;
     OverlayManager_FreeData(man);
-    DestroyHeap(heapId);
+    Heap_Destroy(heapID);
     return TRUE;
 }
 
@@ -105,19 +105,19 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
     phoneApp->backgroundStyle = Pokegear_GetBackgroundStyle(phoneApp->pokegear->savePokegear);
-    phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapId);
+    phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapID);
     phoneApp->numContacts = SavePokegear_FindEmptyPhonebookSlot(phoneApp->pokegear->savePokegear);
     PokegearPhone_ContactList_CreateLinkedList(phoneApp);
-    if (phoneApp->pokegear->args->incomingPhoneCall == 1) {
+    if (phoneApp->pokegear->args->isScriptedLaunch == 1) {
         phoneApp->isIncomingCall = TRUE;
         phoneApp->callerID = phoneApp->pokegear->args->callerId;
-        phoneApp->isScriptedCall = phoneApp->pokegear->args->unk05;
+        phoneApp->callScriptType = phoneApp->pokegear->args->isScriptedCall;
         phoneApp->callScriptID = phoneApp->pokegear->args->callScriptID;
         phoneApp->pokegear->cursorInAppSwitchZone = 0;
     } else {
         phoneApp->isIncomingCall = FALSE;
         phoneApp->callerID = 0;
-        phoneApp->isScriptedCall = 0;
+        phoneApp->callScriptType = 0;
         phoneApp->callScriptID = 0;
     }
 }
@@ -126,7 +126,7 @@ static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppD
     PokegearPhone_ContactList_FlushAndDestroyLinkedList(phoneApp);
     Heap_Free(phoneApp->saveContacts);
     phoneApp->pokegear->reselectAppCB = NULL;
-    phoneApp->pokegear->unknownCB = NULL;
+    phoneApp->pokegear->deselectAppCB = NULL;
 }
 
 int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {
@@ -237,7 +237,7 @@ int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
 int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subtaskState) {
     case 0:
-        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapId);
+        BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapID);
         ++phoneApp->subtaskState;
         break;
     case 1:

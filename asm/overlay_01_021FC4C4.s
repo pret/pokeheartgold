@@ -27,7 +27,7 @@ ov01_021FC4C4: ; 0x021FC4C4
 	str r0, [sp]
 	add r7, r1, #0
 	str r3, [sp, #4]
-	bl CreateHeap
+	bl Heap_Create
 	cmp r0, #1
 	beq _021FC4E6
 	bl GF_AssertFail
@@ -35,7 +35,7 @@ _021FC4E6:
 	sub r5, r6, r5
 	add r0, r7, #0
 	add r1, r5, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _021FC4F8
 	bl GF_AssertFail
@@ -86,7 +86,7 @@ _021FC542:
 	add r0, r6, #0
 	bl Heap_Free
 	add r0, r4, #0
-	bl DestroyHeap
+	bl Heap_Destroy
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov01_021FC520
@@ -191,10 +191,10 @@ ov01_021FC5FC: ; 0x021FC5FC
 	cmp r2, #0
 	ldr r0, [r0, #4]
 	bne _021FC60A
-	bl AllocFromHeap
+	bl Heap_Alloc
 	b _021FC60E
 _021FC60A:
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 _021FC60E:
 	add r4, r0, #0
 	cmp r4, #0

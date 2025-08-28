@@ -14,6 +14,6 @@ typedef struct FieldMoveEnvironment {
     FieldMoveData *moveData;
 } FieldMoveEnvironment;
 
-FieldMoveEnvironment *FieldMove_CreateEnvironment(HeapID heapId, u8 slotNo, SaveData *saveData);
+FieldMoveEnvironment *FieldMove_CreateEnvironment(enum HeapID heapID, u8 slotNo, SaveData *saveData);
 
 #endif // POKEHEARTGOLD_FIELD_MOVE_ENVIRONMENT_H

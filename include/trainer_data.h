@@ -108,11 +108,11 @@ typedef struct BattleSetup BattleSetup;
 void TrainerData_ReadTrData(u32 trno, Trainer *dest);
 TrainerGender TrainerClass_GetGenderOrTrainerCount(int trainerClass);
 int TrainerData_GetAttr(u32 tr_idx, TrainerAttr attr_no);
-void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, HeapID heapId);
-BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, HeapID heapId);
-void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String *str, HeapID heapId);
+void EnemyTrainerSet_Init(BattleSetup *battleSetup, SaveData *saveData, enum HeapID heapID);
+BOOL TrainerMessageWithIdPairExists(u32 trainer_idx, u32 msg_id, enum HeapID heapID);
+void GetTrainerMessageByIdPair(u32 trainer_idx, u32 msg_id, String *str, enum HeapID heapID);
 void TrainerData_ReadTrPoke(u32 idx, TRPOKE *dest);
-void CreateNPCTrainerParty(BattleSetup *enemies, int party_id, HeapID heapId);
+void CreateNPCTrainerParty(BattleSetup *enemies, int party_id, enum HeapID heapID);
 void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid);
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon);
 #endif // PM_ASM

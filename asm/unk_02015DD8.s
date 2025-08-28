@@ -10,7 +10,7 @@ sub_02015DDC: ; 0x02015DDC
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #0x18
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r4, r0, #0
 	bne _02015DF0
 	bl GF_AssertFail
@@ -427,7 +427,7 @@ sub_0201605C: ; 0x0201605C
 	add r6, r0, #0
 	add r0, r1, #0
 	lsl r1, r6, #6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	bne _02016070
 	bl GF_AssertFail
@@ -456,7 +456,7 @@ sub_0201608C: ; 0x0201608C
 	add r0, r1, #0
 	mov r1, #0x28
 	mul r1, r6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	bne _020160A2
 	bl GF_AssertFail
@@ -484,7 +484,7 @@ sub_020160BC: ; 0x020160BC
 	add r0, r1, #0
 	mov r1, #0x18
 	mul r1, r6
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r7, r0, #0
 	bne _020160D2
 	bl GF_AssertFail

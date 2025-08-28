@@ -3018,7 +3018,7 @@ _0222CF2C:
 	ldr r0, _0222CF90 ; =0x00000548
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0222CF88 ; =0x00000534
 	mov r1, #1
 	ldr r0, [r5, r0]
@@ -3080,7 +3080,7 @@ _0222CFC8:
 	bne _0222CFE4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0222D03C ; =0x00000534
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3089,7 +3089,7 @@ _0222CFC8:
 _0222CFE4:
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0222D03C ; =0x00000534
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -3103,7 +3103,7 @@ _0222CFF6:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0222D044 ; =0x000005FC
 	mov r1, #0
 	ldr r0, [r5, r0]
@@ -3114,7 +3114,7 @@ _0222D016:
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0222D044 ; =0x000005FC
 	add r1, r4, #0
 	ldr r0, [r5, r0]
@@ -3542,7 +3542,7 @@ _0222D2E6:
 	ldr r1, [r4]
 	add r0, sp, #0x4c
 	ldr r1, [r1, #0x18]
-	bl sub_02013950
+	bl TextOBJ_Create
 	ldr r1, [r4]
 	str r0, [r1, #0x14]
 	ldr r0, [r4]
@@ -3554,7 +3554,7 @@ _0222D2E6:
 	ldr r0, [r4]
 	mov r1, #0
 	ldr r0, [r0, #0x14]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #0xc]
 	add r4, r4, #4
 	add r0, r0, #4
@@ -3742,7 +3742,7 @@ _0222D504:
 	ldr r1, [r1, #0x18]
 	add r2, sp, #0x1c
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r5, #0
 	bl String_Delete
 	add r0, sp, #0x1c
@@ -3775,7 +3775,7 @@ _0222D574:
 	bl sub_02013938
 	ldr r0, [r5]
 	ldr r0, [r0, #0x14]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	ldr r0, [r5]
 	add r0, #0x1c
 	bl sub_02021B5C
@@ -3869,7 +3869,7 @@ _0222D5BE:
 	str r1, [sp, #0x3c]
 	ldr r1, [r5, #0xc]
 	add r0, sp, #0x1c
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #1
 	str r0, [r5, #8]
 	bl sub_020138E0
@@ -3877,7 +3877,7 @@ _0222D5BE:
 	bl RemoveWindow
 	ldr r0, [r5, #8]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -3919,7 +3919,7 @@ ov40_0222D66C: ; 0x0222D66C
 	ldr r1, [r5, #0xc]
 	add r2, sp, #0x10
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r6, #0
 	bl String_Delete
 	add r0, sp, #0x10
@@ -3937,7 +3937,7 @@ ov40_0222D6D0: ; 0x0222D6D0
 	ldr r0, [r4, #0xc]
 	bl sub_02013938
 	ldr r0, [r4, #8]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r4, #0x10
 	add r0, r4, #0
 	bl sub_02021B5C
@@ -10358,7 +10358,7 @@ ov40_02230970: ; 0x02230970
 	bl sub_020136B4
 	ldr r0, [r4, #8]
 	ldr r1, [sp, #0x2c]
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x28]
 	bl ManagedSprite_SetAnim
@@ -11774,7 +11774,7 @@ ov40_0223142C: ; 0x0223142C
 _0223143E:
 	mov r0, #0x6d
 	mov r1, #0x54
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x54
 	add r4, r0, #0
@@ -11863,7 +11863,7 @@ _0223148C:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #4]
 	add r4, #0x10
 	add r0, r0, #4
@@ -12476,7 +12476,7 @@ _022319BA:
 _022319BC:
 	mov r0, #0x6d
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #4]
 	mov r1, #0
 	mov r2, #0x10
@@ -12503,7 +12503,7 @@ _022319BC:
 _022319F4:
 	mov r0, #0x6d
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x34
 	add r5, r0, #0
@@ -12632,7 +12632,7 @@ _02231AD2:
 _02231AF0:
 	mov r0, #0x6d
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x34
 	add r5, r0, #0
@@ -12701,7 +12701,7 @@ _02231AF0:
 	ldr r0, _02231C6C ; =0x00000548
 	ldr r0, [r1, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _02231C68 ; =0x00000534
 	mov r1, #1
 	ldr r0, [r6, r0]
@@ -12838,7 +12838,7 @@ _02231C8E:
 _02231C90:
 	mov r0, #0x6d
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #8]
 	mov r1, #0
 	mov r2, #0x10
@@ -12857,7 +12857,7 @@ _02231C90:
 _02231CB8:
 	mov r0, #0x6d
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
@@ -12955,7 +12955,7 @@ _02231D52:
 _02231D7C:
 	mov r0, #0x6d
 	mov r1, #0x34
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x34
 	add r4, r0, #0
@@ -13592,7 +13592,7 @@ ov40_02232288: ; 0x02232288
 	add r5, r0, #0
 	mov r0, #0x6d
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x67
 	mov r1, #0
 	lsl r2, r2, #2
@@ -15310,7 +15310,7 @@ ov40_02233044: ; 0x02233044
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov40_02233044
 
@@ -15453,7 +15453,7 @@ ov40_0223316C: ; 0x0223316C
 	add r0, #0xc0
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	mov r1, #2
 	bl ov40_0222D800
@@ -16775,7 +16775,7 @@ ov40_02233CAC: ; 0x02233CAC
 	bne _02233D4E
 	mov r0, #0x6d
 	mov r1, #0xdc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0xdc
 	add r5, r0, #0
@@ -17323,7 +17323,7 @@ ov40_0223414C: ; 0x0223414C
 	add r5, r0, #0
 	mov r0, #0x6d
 	lsl r1, r1, #2
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0xba
 	mov r1, #0
 	lsl r2, r2, #2
@@ -20204,7 +20204,7 @@ ov40_022359B4: ; 0x022359B4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -20222,7 +20222,7 @@ _022359E8:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -20335,12 +20335,12 @@ ov40_02235A30: ; 0x02235A30
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_022359B4
@@ -20845,7 +20845,7 @@ _02235F12:
 	ldr r1, [r4, r1]
 	mov r0, #0x6d
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x7a
 	lsl r2, r2, #2
 	str r0, [r4, r2]
@@ -21718,7 +21718,7 @@ ov40_022365A0: ; 0x022365A0
 	ldr r1, _022366A4 ; =0x00002F70
 	add r5, r0, #0
 	mov r0, #0x6d
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _022366A4 ; =0x00002F70
 	mov r1, #0
 	add r4, r0, #0
@@ -22110,7 +22110,7 @@ ov40_022368EC: ; 0x022368EC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -22128,7 +22128,7 @@ _02236920:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0xd3
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -27776,7 +27776,7 @@ ov40_022397BC: ; 0x022397BC
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -27794,7 +27794,7 @@ _022397F0:
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
@@ -27894,11 +27894,11 @@ ov40_02239838: ; 0x02239838
 	add r0, #0xac
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r4, #0xc8
 	ldr r0, [r4]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	mov r1, #1
 	bl ov40_022397BC
@@ -28009,7 +28009,7 @@ ov40_022399B8: ; 0x022399B8
 	ldr r1, _02239A48 ; =0x00000B38
 	add r5, r0, #0
 	mov r0, #0x6d
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02239A48 ; =0x00000B38
 	mov r1, #0
 	add r4, r0, #0
@@ -29332,12 +29332,12 @@ ov40_0223A430: ; 0x0223A430
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x4e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_0223B4BC
@@ -31047,7 +31047,7 @@ _0223B31A:
 	ldr r1, [r1, #0xc]
 	add r2, sp, #0x18
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r4, #0
 	bl String_Delete
 	add r0, sp, #0x18
@@ -31142,7 +31142,7 @@ _0223B3EC:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #8]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -31236,7 +31236,7 @@ ov40_0223B4BC: ; 0x0223B4BC
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -31254,7 +31254,7 @@ _0223B4F0:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -31351,7 +31351,7 @@ ov40_0223B5B0: ; 0x0223B5B0
 	ldr r1, _0223B628 ; =0x0000217C
 	add r5, r0, #0
 	mov r0, #0x6d
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0223B628 ; =0x0000217C
 	mov r1, #0
 	add r4, r0, #0
@@ -38156,7 +38156,7 @@ _0223ED14:
 	mov r0, #0x6d
 	ldr r1, [r4, r1]
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _0223EDA0 ; =0x000004DC
 	mov r1, #0
 	str r0, [r4, r2]
@@ -40683,7 +40683,7 @@ ov40_02240238: ; 0x02240238
 	add r5, r0, #0
 	mov r0, #0x6d
 	lsl r1, r1, #4
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r2, #0x7a
 	mov r1, #0
 	lsl r2, r2, #4
@@ -42095,7 +42095,7 @@ _02240DCE:
 	ldr r1, [r1, #0xc]
 	add r2, sp, #0x18
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r4, #0
 	bl String_Delete
 	add r0, sp, #0x18
@@ -42422,7 +42422,7 @@ _022410C6:
 	bl sub_020136B4
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #8]
 	add r6, r6, #1
 	add r0, r0, #4
@@ -44206,7 +44206,7 @@ ov40_02241F74: ; 0x02241F74
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x30]
 	mov r1, #0x80
 	mov r2, #0xa8
@@ -44217,7 +44217,7 @@ _02241F9C:
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x18]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x30]
 	mov r1, #0x50
 	mov r2, #0xa8
@@ -44298,10 +44298,10 @@ ov40_02241FD0: ; 0x02241FD0
 	bl sub_020136B4
 	ldr r0, [r5, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r5, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r5, #0x14]
 	mov r1, #0
 	bl ManagedSprite_SetAnim
@@ -44351,7 +44351,7 @@ ov40_022420B4: ; 0x022420B4
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0x20
 	mov r2, #0xe8
@@ -44362,7 +44362,7 @@ _022420DC:
 	bl ManagedSprite_SetDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #0
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x14]
 	mov r1, #0x50
 	mov r2, #0xe8
@@ -44474,10 +44474,10 @@ _022421B2:
 	bl sub_020136B4
 	ldr r0, [r4, #0x18]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #1
-	bl sub_020137C0
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	mov r1, #0
 	bl ov40_022420B4
@@ -46134,7 +46134,7 @@ ov40_02242FAC: ; 0x02242FAC
 	str r0, [sp]
 	add r5, r2, #0
 	add r7, r3, #0
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x20
 	add r4, r0, #0
@@ -48889,7 +48889,7 @@ ov40_022444C0: ; 0x022444C0
 	add r5, r0, #0
 	mov r0, #0x6d
 	mov r1, #0x30
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0
 	mov r2, #0x30
 	add r4, r0, #0
@@ -49422,7 +49422,7 @@ ov40_02244920: ; 0x02244920
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #4]
 	mov r1, #0x80
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r5, r0, #0
 	mov r0, #0
 	ldr r1, [sp, #0x28]

@@ -24,7 +24,7 @@ sub_02087E70: ; 0x02087E70
 	mov r0, #3
 	mov r1, #0x6d
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	bl sub_02087A78
 	add r4, r0, #0
@@ -173,7 +173,7 @@ _02087F9E:
 	add r0, r5, #0
 	bl ov40_0222B934
 	mov r0, #0x6d
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02087FCC ; =FS_OVERLAY_ID(OVY_40)
 	bl UnloadOverlayByID
 	ldr r0, _02087FD0 ; =gSystem + 0x60
