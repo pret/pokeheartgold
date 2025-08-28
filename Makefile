@@ -63,6 +63,9 @@ sub: ; @$(MAKE) -C sub
 ROMSPEC        := rom.rsf
 MAKEROM_FLAGS  := $(DEFINES)
 
+$(ALL_GAME_OBJS): files_for_compile
+$(ELF): files_for_compile dsprot libsyscall
+
 dsprot:
 	$(MAKE) -C lib/dsprot all
 
