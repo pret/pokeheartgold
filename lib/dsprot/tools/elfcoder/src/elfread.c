@@ -113,6 +113,12 @@ static int ElfFile_Init(ElfFile *elf, char *fname) {
     return 0;
 }
 
+static void ElfFile_Destroy(ElfFile *elf) {
+    if (elf->fhandle != NULL) {
+        fclose(elf->fhandle);
+    }
+}
+
 #define ROTL(x, a) (((uint32_t)x << a) | (x >> (32 - a)))
 static void createRC4Key(uint32_t inkey, unsigned int func_size, uint8_t *outkey) {
     uint32_t k[4];
@@ -336,13 +342,15 @@ static int processElfs(ElfFile *elfs, ASMWriter_Ctx *asmw, EncodingTask *task) {
 }
 
 int Elf_EncodeSymbols(EncodingTask *task) {
+    int ret_code = 0;
+
     int num_inputs = 0;
     while (task->inputs[num_inputs] != NULL) {
         num_inputs++;
     }
 
     if (num_inputs == 0) {
-        return 0;
+        return ret_code;
     }
 
     ASMWriter_Ctx asmw;
@@ -350,27 +358,25 @@ int Elf_EncodeSymbols(EncodingTask *task) {
 
     ElfFile *elfs = calloc(num_inputs + 1, sizeof(ElfFile));
     for (int elf_idx = 0; elf_idx < num_inputs; elf_idx++) {
-        int error = ElfFile_Init(&elfs[elf_idx], task->inputs[elf_idx]);
+        ret_code += ElfFile_Init(&elfs[elf_idx], task->inputs[elf_idx]);
 
 #if 0
         // This just.. doesn't work. fstat() doesn't work.
         // Whatever, just don't input the same file multiple times
-        if (!error) {
+        if (!ret_code) {
             for (int other_elf_idx = 0; other_elf_idx < elf_idx; other_elf_idx++) {
                 if (isSameFile(elfs[elf_idx].fhandle, elfs[other_elf_idx].fhandle)) {
                     printf("Error: duplicate input file: %s\n", elfs[elf_idx].fname);
-                    error = 1;
+                    ret_code += 1;
                     break;
                 }
             }
         }
 #endif
 
-        if (error) {
+        if (ret_code) {
             ASMWriter_SetInvalid(&asmw);
-            ASMWriter_Finalize(&asmw);
-            free(elfs);
-            return 1;
+            goto EXIT;
         }
     }
 
@@ -378,9 +384,14 @@ int Elf_EncodeSymbols(EncodingTask *task) {
     elfs[num_inputs].fhandle = NULL;
 
     // Process all
-    int ret_code = processElfs(elfs, &asmw, task);
+    ret_code += processElfs(elfs, &asmw, task);
+
+EXIT:
     ret_code += ASMWriter_Finalize(&asmw);
 
+    for (int elf_idx = 0; elf_idx < num_inputs; elf_idx++) {
+        ElfFile_Destroy(&elfs[elf_idx]);
+    }
     free(elfs);
 
     return ret_code;
