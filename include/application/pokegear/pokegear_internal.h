@@ -139,7 +139,7 @@ struct PokegearAppData {
     u8 isSwitchApp : 1;                          // 0x005
     u8 cursorInAppSwitchZone;                    // 0x006
     u8 needClockUpdate;                          // 0x007
-    u8 backgroundStyle;                          // 0x008
+    u8 skin;                                     // 0x008
     u8 fadeCounter;                              // 0x009
     MenuInputState menuInputState;               // 0x00C
     MenuInputState menuInputStateBak;            // 0x010
@@ -198,7 +198,7 @@ BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
 u8 PokegearApp_AppIdToButtonIndex(PokegearAppData *pokegearApp);
 BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp);
 BOOL PokegearApp_UnloadGFX(PokegearAppData *pokegearApp);
-void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, int skin);
+void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, u8 skin);
 void PokegearApp_SetGraphicsBanks(void);
 
 void PokegearApp_VBlankCB(void *cb_args);
@@ -211,6 +211,7 @@ void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
 PokegearApp_UnkSub094 *ov100_021E69F8(enum HeapID heapID, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
 void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);
+void ov100_021E6A58(PokegearApp_UnkSub094 *a0, u8 a1);
 void ov100_021E6AB0(PokegearApp_UnkSub094 *a0);
 ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
 void ov100_021E6C44(ManagedSprite *a0);

@@ -68,7 +68,7 @@ BOOL Pokegear_Init(OverlayManager *man, int *state) {
     pokegearApp->profile = Save_PlayerData_GetProfile(pokegearApp->args->saveData);
     pokegearApp->registeredCards = Pokegear_GetRegisteredCardsArray(pokegearApp->savePokegear);
     pokegearApp->menuInputState = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
-    pokegearApp->backgroundStyle = Pokegear_GetBackgroundStyle(pokegearApp->savePokegear);
+    pokegearApp->skin = Pokegear_GetBackgroundStyle(pokegearApp->savePokegear);
     switch (pokegearApp->args->isScriptedLaunch) {
     case 1: // scripted phone call
         pokegearApp->app = GEAR_APP_PHONE;

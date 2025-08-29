@@ -19,8 +19,8 @@ FS_EXTERN_OVERLAY(OVY_26);
 
 static BOOL IsMapSinjoh(u16 mapID);
 static BOOL IsMapSSAqua(u16 mapID);
-static void ov101_021E78EC(PokegearMapAppData *mapApp);
-static void ov101_021E7B54(PokegearMapAppData *mapApp);
+static void PokegearMap_InitInternal(PokegearMapAppData *mapApp);
+static void PokegearMap_ExitInternal(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_LoadGFX(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_HandleInput(PokegearMapAppData *mapApp);
 static int PokegearMap_MainTask_UnloadGFX(PokegearMapAppData *mapApp);
@@ -47,7 +47,7 @@ BOOL PokegearMap_Init(OverlayManager *man, int *state) {
     memset(mapApp, 0, sizeof(PokegearMapAppData));
     mapApp->pokegear = pokegearApp;
     mapApp->heapID = HEAP_ID_POKEGEAR_APP;
-    ov101_021E78EC(mapApp);
+    PokegearMap_InitInternal(mapApp);
     mapApp->locationSpecs = sLocationSpecs;
     mapApp->numLocationSpecs = NELEMS(sLocationSpecs);
     return TRUE;
@@ -101,7 +101,7 @@ BOOL PokegearMap_Exit(OverlayManager *man, int *state) {
     enum HeapID heapID;
     PokegearMapAppData *mapApp = OverlayManager_GetData(man);
 
-    ov101_021E7B54(mapApp);
+    PokegearMap_ExitInternal(mapApp);
     MapMatrix_MapData_Free(mapApp->mapData);
     if (mapApp->pokegear->appReturnCode != GEAR_RETURN_CANCEL) {
         mapApp->pokegear->isSwitchApp = TRUE;
@@ -151,7 +151,7 @@ static BOOL IsMapSSAqua(u16 mapID) {
     return FALSE;
 }
 
-static void ov101_021E78EC(PokegearMapAppData *mapApp) {
+static void PokegearMap_InitInternal(PokegearMapAppData *mapApp) {
     int i;
     MapMarkingsHeapNode *mapMarkingsHeapNode;
     RoamerSaveData *roamers;
@@ -214,7 +214,7 @@ static void ov101_021E78EC(PokegearMapAppData *mapApp) {
     }
 }
 
-static void ov101_021E7B54(PokegearMapAppData *mapApp) {
+static void PokegearMap_ExitInternal(PokegearMapAppData *mapApp) {
     Heap_Free(mapApp->phoneContact);
     FreePhoneBook(mapApp->phoneBook);
     mapApp->pokegear->reselectAppCB = NULL;
@@ -238,13 +238,13 @@ static int PokegearMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     BOOL isTouch = FALSE;
     int input;
 
-    input = ov101_021EB5DC(mapApp, &isTouch);
+    input = PokegearMap_HandleTouchInput(mapApp, &isTouch);
     if (!isTouch) {
         PokegearApp_HandleInputModeChangeToButtons(mapApp->pokegear);
         if (mapApp->pokegear->cursorInAppSwitchZone == TRUE) {
             input = PokegearApp_HandleKeyInput_SwitchApps(mapApp->pokegear);
         } else {
-            input = ov101_021EB568(mapApp);
+            input = PokegearMap_HandleKeyInput(mapApp);
         }
     }
     mapApp->pokegear->appReturnCode = input;
