@@ -586,8 +586,8 @@ u32 PlayerAvatar_GetSpriteByStateAndGender(s32 state, u32 gender) {
     return 0;
 }
 
-u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
-    switch (unkA) {
+u32 PlayerAvatar_GetTransitionBits(s32 state) {
+    switch (state) {
     case PLAYER_STATE_WALKING:
         return PLAYER_TRANSITION_WALKING;
     case PLAYER_STATE_CYCLING:
@@ -595,17 +595,17 @@ u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
     case PLAYER_STATE_SURFING:
         return PLAYER_TRANSITION_SURFING;
     case PLAYER_STATE_WATERING:
-        return PLAYER_TRANSITION_x0010;
+        return PLAYER_TRANSITION_WATERING;
     case PLAYER_STATE_FISHING:
-        return PLAYER_TRANSITION_x0020;
+        return PLAYER_TRANSITION_FISHING;
     case PLAYER_STATE_POKETCH:
-        return PLAYER_TRANSITION_x0040;
+        return PLAYER_TRANSITION_POKETCH;
     case PLAYER_STATE_SAVING:
-        return PLAYER_TRANSITION_x0080;
+        return PLAYER_TRANSITION_SAVING;
     case PLAYER_STATE_HEAL:
         return PLAYER_TRANSITION_HEAL;
     case PLAYER_STATE_LADDER:
-        return PLAYER_TRANSITION_x0200;
+        return PLAYER_TRANSITION_LADDER;
     case PLAYER_STATE_ROCKET:
         return PLAYER_TRANSITION_ROCKET;
     case PLAYER_STATE_ROCKET_HEAL:
@@ -613,9 +613,9 @@ u32 PlayerAvatar_GetTransitionBits(u32 unkA) {
     case PLAYER_STATE_POKEATHLON:
         return PLAYER_TRANSITION_POKEATHLON;
     case PLAYER_STATE_APRICORN_SHAKE:
-        return PLAYER_TRANSITION_x2000;
+        return PLAYER_TRANSITION_APRICORN_SHAKE;
     case PLAYER_STATE_ROCKET_SAVING:
-        return PLAYER_TRANSITION_x4000;
+        return PLAYER_TRANSITION_ROCKET_SAVING;
     case PLAYER_STATE_USE_HM:
     default:
         GF_ASSERT(FALSE);
@@ -680,7 +680,7 @@ void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock) {
     }
 }
 
-BOOL PlayerAvatar_IsBikeStateLocked(PlayerAvatar *avatar) {
+BOOL PlayerAvatar_CheckBikeStateLocked(PlayerAvatar *avatar) {
     if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_LOCK_BIKE_STATE)) {
         return TRUE;
     }
