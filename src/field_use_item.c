@@ -152,8 +152,8 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
     dat->haveRocketCostume = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(fieldSystem->saveData));
     dat->playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
-    x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     dat->standingTile = GetMetatileBehavior(fieldSystem, x, y);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {
@@ -329,7 +329,7 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
     if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
-    if (PlayerAvatar_IsBikeStateLocked(data->playerAvatar) == TRUE) {
+    if (PlayerAvatar_CheckBikeStateLocked(data->playerAvatar) == TRUE) {
         return ITEMUSEERROR_NODISMOUNT;
     }
     if (sub_0205B6F4(data->standingTile) == TRUE || sub_0205B8AC(data->standingTile) == TRUE) {

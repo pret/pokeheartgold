@@ -10,13 +10,13 @@
 
 #include "alph_checks.h"
 #include "field_move_environment.h"
-#include "field_player_avatar.h"
 #include "launch_application.h"
 #include "map_header.h"
 #include "map_object.h"
 #include "metatile_behavior.h"
 #include "overlay_01.h"
 #include "overlay_02.h"
+#include "player_avatar.h"
 #include "save_local_field_data.h"
 #include "script.h"
 #include "start_menu.h"
@@ -141,8 +141,8 @@ void FieldMove_InitCheckData(FieldSystem *fieldSystem, FieldMoveCheckData *check
         }
     }
 
-    s32 x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    s32 z = GetPlayerZCoord(fieldSystem->playerAvatar);
+    u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    u32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     u32 standingTile = GetMetatileBehavior(fieldSystem, x, z);
 
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &x, &z);

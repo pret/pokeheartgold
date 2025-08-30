@@ -7,7 +7,6 @@
 #include "msgdata/msg.naix"
 
 #include "assert.h"
-#include "field_player_avatar.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "fieldmap.h"
@@ -20,6 +19,7 @@
 #include "msgdata.h"
 #include "npc_trade.h"
 #include "overlay_111.h"
+#include "player_avatar.h"
 #include "player_data.h"
 #include "pm_string.h"
 #include "pokemon.h"
@@ -60,7 +60,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
 static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager);
 
 BOOL sub_0206D494(FieldSystem *fieldSystem) {
-    LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
+    LocalMapObject *unk1 = MapObjectManager_GetFirstActiveObjectWithMovement1(fieldSystem->mapObjectManager);
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
         UnkStruct_0206D494 *unkStruct = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206D494));
@@ -82,7 +82,7 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
     u32 *state = TaskManager_GetStatePtr(taskManager);
     switch (*state) {
     case 0:
-        if (MapObject_IsMovementPaused(sub_0205C600(fieldSystem->mapObjectManager))) {
+        if (MapObject_IsMovementPaused(MapObjectManager_GetFirstActiveObjectWithMovement1(fieldSystem->mapObjectManager))) {
             PlaySE(SEQ_SE_GS_HYOUKAI_SUBERU);
             (*state)++;
         }
@@ -260,7 +260,7 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
     if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
         if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
-            sub_0205C74C(playerAvatar);
+            PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
         }
         PlayerAvatar_SetFlag0(playerAvatar, 0);
         PlayerAvatar_SetFlag7(playerAvatar, 0);

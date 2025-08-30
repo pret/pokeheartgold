@@ -344,7 +344,7 @@ void sub_0205F9B0(LocalMapObject *object, VecFx32 *vector);
 void sub_0205F9C0(LocalMapObject *object, VecFx32 *vector);
 u32 MapObject_GetPositionVectorYCoordUInt(LocalMapObject *object);
 LocalMapObject *MapObjectManager_GetFirstObjectWithXAndZ(MapObjectManager *manager, u32 x, u32 z, BOOL checkPrevious);
-void LocalMapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction);
+void MapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32 *positionVector, u32 direction);
 void MapObject_SetPositionFromXYZAndDirection(LocalMapObject *object, u32 x, u32 y, u32 z, u32 direction);
 void sub_0205FC94(LocalMapObject *object, u32 movement);
 void sub_0205FCB4(LocalMapObject *object);

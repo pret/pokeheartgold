@@ -22,7 +22,6 @@
 #include "easy_chat.h"
 #include "encounter.h"
 #include "fashion_case.h"
-#include "field_player_avatar.h"
 #include "field_roamer.h"
 #include "field_system.h"
 #include "field_take_photo.h"
@@ -47,6 +46,7 @@
 #include "overlay_67.h"
 #include "overlay_87.h"
 #include "party_menu.h"
+#include "player_avatar.h"
 #include "pokedex.h"
 #include "pokewalker.h"
 #include "render_text.h"
@@ -1516,8 +1516,8 @@ BOOL ScrCmd_GetPlayerCoords(ScriptContext *ctx) {
     u16 *p_x = ScriptGetVarPointer(ctx);
     u16 *p_y = ScriptGetVarPointer(ctx);
 
-    *p_x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    *p_y = GetPlayerZCoord(fieldSystem->playerAvatar);
+    *p_x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    *p_y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     return FALSE;
 }
 
@@ -2303,7 +2303,7 @@ BOOL ScrCmd_183(ScriptContext *ctx) {
     void **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
-    int playerGender = PlayerAvatar_GetGender(ctx->fieldSystem->playerAvatar);
+    u32 playerGender = PlayerAvatar_GetGender(ctx->fieldSystem->playerAvatar);
     *p_work = ov02_02249458(ctx->fieldSystem, 0, mon, playerGender);
     SetupNativeScript(ctx, sub_0204378C);
     return TRUE;
@@ -2364,7 +2364,7 @@ BOOL ScrCmd_GetPlayerState(ScriptContext *ctx) {
 
 BOOL ScrCmd_SetAvatarBits(ScriptContext *ctx) {
     u16 flags = ScriptReadHalfword(ctx);
-    PlayerAvatar_OrrTransitionFlags(ctx->fieldSystem->playerAvatar, flags);
+    PlayerAvatar_SetTransitionFlagsBits(ctx->fieldSystem->playerAvatar, flags);
     return TRUE;
 }
 
