@@ -3,6 +3,6 @@
 
 #include "types.h"
 
-extern u8 BSS[32];
+extern u8 BSS[4];
 
 #endif
