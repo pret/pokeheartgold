@@ -61,21 +61,8 @@ void Encode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4) {
     }
 }
 
-void Encode_Relocation(const Instruction *encoded_instruction, Elf32_Rela *reloc) {
-    switch (categorizeOpCode(encoded_instruction->opcode)) {
-    case 0:
-        // Not possible
-        break;
-
-    case 1:
-    case 2:
-        reloc->r_addend += ENC_VAL_2 + 8;
-        break;
-
-    case 3:
-        reloc->r_addend += ENC_VAL_1 + 8;
-        break;
-    }
+void Encode_Relocation(Elf32_Rela *reloc) {
+    reloc->r_addend += ENC_VAL_1 + 8;
 }
 
 void Decode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4) {
@@ -109,19 +96,6 @@ void Decode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4) {
     }
 }
 
-void Decode_Relocation(const Instruction *encoded_instruction, Elf32_Rela *reloc) {
-    switch (categorizeOpCode(encoded_instruction->opcode)) {
-    case 0:
-        // Not possible
-        break;
-
-    case 1:
-    case 2:
-        reloc->r_addend -= ENC_VAL_1 + 8;
-        break;
-
-    case 3:
-        reloc->r_addend -= ENC_VAL_2 + 8;
-        break;
-    }
+void Decode_Relocation(Elf32_Rela *reloc) {
+    reloc->r_addend -= ENC_VAL_1 + 8;
 }

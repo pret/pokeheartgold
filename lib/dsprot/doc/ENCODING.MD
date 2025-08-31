@@ -56,7 +56,7 @@ The following instruction classification system, shared by both keyed and unkeye
 
 - If none of the other conditions matched, it is a **type-0 instruction**. This will match all instructions which are not branches, and therefore the majority of instructions.
 
-The size of the function body as reported by the ELF symbol table is not the size used for encoding. Data at the foot of the instructions is left plain. To do this, the end of the function is scanned backwards for instructions that resemble `pop` or `bx`, and the first instance of this is demarcated as the end of the function. This is done during the original encoding processing stage, and the length of the function that was encoded is written into the decryption wrappers or decoding initializer (with obfuscation as discussed previously).
+The size of the function body as reported by the ELF symbol table is not the size used for encoding. Data at the foot of the instructions is left plain. To do this, the mapping symbols `$a` and `$d` are used to find the first contiguous region of ARM instructions from the start of the function, and this range is what receives encoding. The length of the function that was encoded is then written into the decryption wrappers or decoding initializer (with obfuscation as discussed previously).
 
 ### Unkeyed encoding
 
