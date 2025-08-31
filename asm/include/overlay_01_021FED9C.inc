@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public MapObject_GetPriorityPlusValue
-.public MapObject_GetPreviousY
+.public MapObject_GetPreviousYCoord
 .public sub_020611C8
 .public sub_02068D98
 .public sub_02068DB8

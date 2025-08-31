@@ -36,7 +36,7 @@
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
 .public PlayerAvatar_CopyPositionVector
-.public PlayerAvatar_GetPositionVectorConst
+.public PlayerAvatar_GetPositionVector
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_SetMapObjectYPosition
 .public PlayerAvatar_ToggleAutomaticHeightUpdating
@@ -47,10 +47,10 @@
 .public MapObjectArray_NextObject2
 .public MapObject_GetID
 .public MapObject_CheckActive
-.public MapObject_GetCurrentX
+.public MapObject_GetXCoord
 .public MapObject_SetCurrentX
 .public MapObject_SetCurrentY
-.public MapObject_GetCurrentZ
+.public MapObject_GetZCoord
 .public MapObject_SetCurrentZ
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector

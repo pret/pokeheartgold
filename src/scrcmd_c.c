@@ -1161,8 +1161,8 @@ BOOL ScrCmd_563(ScriptContext *ctx) {
 
     GF_ASSERT(object != NULL);
     cmd = Heap_Alloc(HEAP_ID_FIELD1, 64 * sizeof(MovementScriptCommand));
-    now_x = MapObject_GetCurrentX(object);
-    now_z = MapObject_GetCurrentZ(object);
+    now_x = MapObject_GetXCoord(object);
+    now_z = MapObject_GetZCoord(object);
     i = 0;
     if (now_x < x) {
         cmd[i].command = MOVEMENT_STEP_RIGHT;
@@ -1514,10 +1514,10 @@ BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
 BOOL ScrCmd_GetPlayerCoords(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_x = ScriptGetVarPointer(ctx);
-    u16 *p_y = ScriptGetVarPointer(ctx);
+    u16 *p_z = ScriptGetVarPointer(ctx);
 
     *p_x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
-    *p_y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    *p_z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     return FALSE;
 }
 
@@ -1529,8 +1529,8 @@ BOOL ScrCmd_GetPersonCoords(ScriptContext *ctx) {
     u16 *p_z = ScriptGetVarPointer(ctx);
 
     if (object != NULL) {
-        *p_x = MapObject_GetCurrentX(object);
-        *p_z = MapObject_GetCurrentZ(object);
+        *p_x = MapObject_GetXCoord(object);
+        *p_z = MapObject_GetZCoord(object);
     } else {
         *p_x = 255;
         *p_z = 255;
@@ -3193,9 +3193,9 @@ BOOL ScrCmd_GetPlayerXYZ(ScriptContext *ctx) {
     u16 *p_y = ScriptGetVarPointer(ctx);
     u16 *p_z = ScriptGetVarPointer(ctx);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-    *p_x = MapObject_GetCurrentX(playerObj);
-    *p_y = MapObject_GetCurrentY(playerObj) / 2;
-    *p_z = MapObject_GetCurrentZ(playerObj);
+    *p_x = MapObject_GetXCoord(playerObj);
+    *p_y = MapObject_GetYCoord(playerObj) / 2;
+    *p_z = MapObject_GetZCoord(playerObj);
     return FALSE;
 }
 
@@ -4465,10 +4465,10 @@ BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
         if (ov01_022055DC(FollowMon_GetMapObject(ctx->fieldSystem))) {
             LocalMapObject *myObject = PlayerAvatar_GetMapObject(FieldSystem_GetPlayerAvatar(ctx->fieldSystem));
             int facingDirection = PlayerAvatar_GetFacingDirection(FieldSystem_GetPlayerAvatar(ctx->fieldSystem));
-            int playerX = MapObject_GetCurrentX(myObject);
+            int playerX = MapObject_GetXCoord(myObject);
             int deltaX = GetDeltaXByFacingDirection(facingDirection) * 2;
-            s32 playerY = MapObject_GetCurrentY(myObject);
-            int playerZ = MapObject_GetCurrentZ(myObject);
+            s32 playerY = MapObject_GetYCoord(myObject);
+            int playerZ = MapObject_GetZCoord(myObject);
             int deltaY = GetDeltaYByFacingDirection(facingDirection) * 2;
             u8 facingTile = GetMetatileBehavior(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
             VecFx32 posVec;

@@ -13,6 +13,7 @@
 #include "overlay_01_021FE780.h"
 #include "overlay_01_02200858.h"
 #include "player_data.h"
+#include "scrcmd.h"
 #include "unk_02034354.h"
 #include "unk_02035900.h"
 #include "unk_0205FD20.h"
@@ -217,14 +218,14 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_ClearUnk24ClearFlag2(avatar);
     PlayerAvatar_SetUnk28(avatar, -1);
     PlayerAvatar_SetUnk2C(avatar, -1);
-    PlayerAvatar_SetUnk8(avatar, 255);
+    PlayerAvatar_SetUnk8(avatar, 255); // obj_player?
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
 
 static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, u32 x, u32 z) {
     LocalMapObject *mapObject = MapObject_Create(manager, x, z, direction, sprite, 1, 1);
     GF_ASSERT(mapObject != NULL);
-    MapObject_SetID(mapObject, 255);
+    MapObject_SetID(mapObject, obj_player);
     MapObject_SetType(mapObject, 0);
     MapObject_SetEventFlag(mapObject, 0);
     MapObject_SetScriptID(mapObject, 0);
@@ -269,26 +270,26 @@ u32 PlayerAvatar_GetNextFacingDirection(PlayerAvatar *avatar) {
 }
 
 u32 PlayerAvatar_GetXCoord(PlayerAvatar *avatar) {
-    return MapObject_GetCurrentX(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetXCoord(PlayerAvatar_GetMapObject(avatar));
 }
 
 u32 PlayerAvatar_GetZCoord(PlayerAvatar *avatar) {
-    return MapObject_GetCurrentZ(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetZCoord(PlayerAvatar_GetMapObject(avatar));
 }
 
 u32 PlayerAvatar_GetPreviousXCoord(PlayerAvatar *avatar) {
-    return MapObject_GetPreviousX(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetPreviousXCoord(PlayerAvatar_GetMapObject(avatar));
 }
 
 u32 PlayerAvatar_GetPreviousZCoord(PlayerAvatar *avatar) {
-    return MapObject_GetPreviousZ(PlayerAvatar_GetMapObject(avatar));
+    return MapObject_GetPreviousZCoord(PlayerAvatar_GetMapObject(avatar));
 }
 
 void PlayerAvatar_CopyPositionVector(PlayerAvatar *avatar, VecFx32 *vector) {
     MapObject_CopyPositionVector(PlayerAvatar_GetMapObject(avatar), vector);
 }
 
-VecFx32 *PlayerAvatar_GetPositionVectorConst(PlayerAvatar *avatar) {
+VecFx32 *PlayerAvatar_GetPositionVector(PlayerAvatar *avatar) {
     return MapObject_GetPositionVector(PlayerAvatar_GetMapObjectConst(avatar));
 }
 

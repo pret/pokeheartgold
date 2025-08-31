@@ -30,8 +30,8 @@
 .public MapObject_ClearFlag3
 .public MapObject_GetInitialX
 .public MapObject_GetInitialZ
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetZCoord
 .public MapObject_GetPositionVectorYCoordUInt
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection

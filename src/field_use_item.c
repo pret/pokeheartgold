@@ -143,7 +143,7 @@ void *GetItemFieldUseFunc(int funcType, u16 itemType) {
 }
 
 void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *dat) {
-    int x, y;
+    int x, z;
     LocalMapObject *dummy;
 
     dat->fieldSystem = fieldSystem;
@@ -153,15 +153,15 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
     dat->playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
     x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
-    y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
-    dat->standingTile = GetMetatileBehavior(fieldSystem, x, y);
+    z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    dat->standingTile = GetMetatileBehavior(fieldSystem, x, z);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {
     case DIR_NORTH:
-        y--;
+        z--;
         break;
     case DIR_SOUTH:
-        y++;
+        z++;
         break;
     case DIR_EAST:
         x++;
@@ -170,7 +170,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
         x--;
         break;
     }
-    dat->facingTile = GetMetatileBehavior(fieldSystem, x, y);
+    dat->facingTile = GetMetatileBehavior(fieldSystem, x, z);
 
     FieldSystem_GetFacingObject(fieldSystem, &dummy);
     dat->playerAvatar = fieldSystem->playerAvatar;

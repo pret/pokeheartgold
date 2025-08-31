@@ -268,8 +268,8 @@
 .public MapObject_SetVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
 .public GetDeltaXByFacingDirection

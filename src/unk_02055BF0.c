@@ -414,7 +414,7 @@ BOOL sub_020562B0(TaskManager *man) {
                 break;
             }
             if (flag) {
-                ov01_02205990(var, MapObject_GetPreviousX(obj), MapObject_GetPreviousZ(obj), &fieldSystem->followMon);
+                ov01_02205990(var, MapObject_GetPreviousXCoord(obj), MapObject_GetPreviousZCoord(obj), &fieldSystem->followMon);
             }
         }
         fenv->transitionState++;

@@ -516,7 +516,7 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enu
     int num_bgs;
     int j;
     int x;
-    int y;
+    int z;
     int left;
     int right;
     int top;
@@ -540,11 +540,11 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enu
         return ret;
     }
     x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
-    y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     left = x - 17;
     right = x + 17;
-    top = y - 17;
-    bottom = y + 17;
+    top = z - 17;
+    bottom = z + 17;
     if (left < 0) {
         left = 0;
     }
@@ -562,7 +562,7 @@ HiddenItemResponse *AllocAndFetchNearbyHiddenItems(FieldSystem *fieldSystem, enu
                 && bgEvents[i].z <= bottom) {
                 ret[j].unk4 = sub_02040578(bgEvents[i].scriptId);
                 ret[j].x = bgEvents[i].x - x;
-                ret[j].y = bgEvents[i].z - y;
+                ret[j].y = bgEvents[i].z - z;
                 j++;
             }
         }

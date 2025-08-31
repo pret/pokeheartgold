@@ -81,7 +81,7 @@
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
-.public PlayerAvatar_GetPositionVectorConst
+.public PlayerAvatar_GetPositionVector
 .public sub_0205E104
 .public sub_0205E4C8
 .public sub_0205E520

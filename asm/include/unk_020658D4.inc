@@ -36,11 +36,11 @@
 .public MapObject_ClearFlag3
 .public MapObject_ClearFlag18
 .public sub_0205F73C
-.public MapObject_GetPreviousX
-.public MapObject_GetPreviousZ
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetCurrentZ
+.public MapObject_GetPreviousXCoord
+.public MapObject_GetPreviousZCoord
+.public MapObject_GetXCoord
+.public MapObject_GetYCoord
+.public MapObject_GetZCoord
 .public MapObject_SetFacingVector
 .public MapObject_SetPositionFromXYZAndDirection
 .public GetDeltaXByFacingDirection

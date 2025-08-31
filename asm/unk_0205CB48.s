@@ -996,10 +996,10 @@ _0205D2FC:
 	cmp r0, #0
 	beq _0205D33C
 	add r0, r4, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	add r5, #0xe4
 	add r2, r0, #0
 	add r0, r7, #0
@@ -1254,13 +1254,13 @@ _0205D4DE:
 	cmp r0, #0
 	beq _0205D52E
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	add r0, r7, #0
 	bl GetDeltaXByFacingDirection
 	str r0, [sp, #0xc]
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [sp, #0x10]
 	add r0, r7, #0
 	bl GetDeltaYByFacingDirection
@@ -1361,10 +1361,10 @@ _0205D5CE:
 	bl MapObject_GetFieldSystem
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	add r4, #0xe4
 	add r2, r0, #0
 	add r0, r7, #0
@@ -1986,16 +1986,16 @@ sub_0205DAA8: ; 0x0205DAA8
 	add r5, r1, #0
 	str r2, [sp, #4]
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r7, r0, #0
 	ldr r0, [sp, #4]
 	bl GetDeltaXByFacingDirection
 	str r0, [sp, #0x14]
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetYCoord
 	str r0, [sp, #8]
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #4]
 	bl GetDeltaYByFacingDirection
@@ -2085,13 +2085,13 @@ sub_0205DB68: ; 0x0205DB68
 	bl MapObject_GetFieldSystem
 	str r0, [sp]
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r5, r0, #0
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection
@@ -2155,10 +2155,10 @@ sub_0205DBF4: ; 0x0205DBF4
 	bl MapObject_GetFieldSystem
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [sp]
 	ldr r2, [sp]
 	add r0, r7, #0
@@ -2241,13 +2241,13 @@ sub_0205DCA0: ; 0x0205DCA0
 	bl MapObject_GetFieldSystem
 	str r0, [sp]
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection
@@ -2288,13 +2288,13 @@ sub_0205DCFC: ; 0x0205DCFC
 	bl MapObject_GetFieldSystem
 	str r0, [sp]
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [sp, #4]
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection

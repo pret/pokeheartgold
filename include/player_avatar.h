@@ -63,7 +63,7 @@ u32 PlayerAvatar_GetZCoord(PlayerAvatar *avatar);
 u32 PlayerAvatar_GetPreviousXCoord(PlayerAvatar *avatar);
 u32 PlayerAvatar_GetPreviousZCoord(PlayerAvatar *avatar);
 void PlayerAvatar_CopyPositionVector(PlayerAvatar *avatar, VecFx32 *vector);
-VecFx32 *PlayerAvatar_GetPositionVectorConst(PlayerAvatar *avatar);
+VecFx32 *PlayerAvatar_GetPositionVector(PlayerAvatar *avatar);
 void PlayerAvatar_SetUnk10(PlayerAvatar *avatar, u32 param1);
 u32 PlayerAvatar_GetUnk10(PlayerAvatar *avatar);
 void PlayerAvatar_SetUnk14(PlayerAvatar *avatar, u32 param1);

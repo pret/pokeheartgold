@@ -291,12 +291,12 @@ static void sub_02053324(FieldSystem *fieldSystem) {
 }
 
 static void _CopyPlayerPosToLocationWorkFacingSouth(Location *location, FieldSystem *fieldSystem) {
-    int x, y;
+    int x, z;
 
-    y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
 
-    InitLocation(location, fieldSystem->location->mapId, -1, x, y, DIR_SOUTH);
+    InitLocation(location, fieldSystem->location->mapId, -1, x, z, DIR_SOUTH);
 }
 
 static BOOL _IsPlayerStandingInFrontOfUnionRoomReception(FieldSystem *fieldSystem) {

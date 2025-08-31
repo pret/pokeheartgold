@@ -113,10 +113,10 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
 static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     MapObjectManager *manager = MapObject_GetManager(object);
     u32 direction = MapObject_GetFacingDirection(object);
-    u32 x = MapObject_GetCurrentX(object);
+    u32 x = MapObject_GetXCoord(object);
     u32 dx = GetDeltaXByFacingDirection(direction);
-    u32 y = MapObject_GetCurrentY(object);
-    u32 z = MapObject_GetCurrentZ(object);
+    u32 y = MapObject_GetYCoord(object);
+    u32 z = MapObject_GetZCoord(object);
     u32 dy = GetDeltaYByFacingDirection(direction);
     LocalMapObject *obj = sub_0206D614(manager, x + dx, y, z + dy);
     if (obj) {
@@ -139,10 +139,10 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
     do {
         if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_ACTIVE)
             && !MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK18)) {
-            u32 curX = MapObject_GetCurrentX(object);
-            u32 curZ = MapObject_GetCurrentZ(object);
+            u32 curX = MapObject_GetXCoord(object);
+            u32 curZ = MapObject_GetZCoord(object);
             if (curX == x && curZ == y) {
-                s32 y = MapObject_GetCurrentY(object) - a2;
+                s32 y = MapObject_GetYCoord(object) - a2;
                 if (y < 0) {
                     y = -y;
                 }
@@ -160,10 +160,10 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
     switch (a0->unk09) {
     case 0:
         if (MapObject_IsMovementPaused(a0->unk00)) {
-            u32 x = MapObject_GetCurrentX(a0->unk00);
+            u32 x = MapObject_GetXCoord(a0->unk00);
             u32 dx = GetDeltaXByFacingDirection(a0->unk08);
-            u32 y = MapObject_GetCurrentY(a0->unk00);
-            u32 z = MapObject_GetCurrentZ(a0->unk00);
+            u32 y = MapObject_GetYCoord(a0->unk00);
+            u32 z = MapObject_GetZCoord(a0->unk00);
             u32 dy = GetDeltaYByFacingDirection(a0->unk08);
             u32 flags = sub_0206D7B8(a0->unk00, x + dx, y, z + dy);
             if (flags & 2) {

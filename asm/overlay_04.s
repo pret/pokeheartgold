@@ -1392,7 +1392,7 @@ _0225494A:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVectorConst
+	bl PlayerAvatar_GetPositionVector
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 _0225495E:
@@ -3854,10 +3854,10 @@ _02255BA6:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r2, r0, #0
 	lsl r1, r5, #0x10
 	lsl r2, r2, #0x10

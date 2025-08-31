@@ -152,7 +152,7 @@ void FieldSystem_TakePhoto(FieldSystem *fieldSystem, u16 photo_id) {
     takePhoto->positionMonDelayCounter = 0;
     takePhoto->curMon = 0;
     takePhoto->savedX = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
-    takePhoto->savedY = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    takePhoto->savedZ = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     takePhoto->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     takePhoto->savedMapId = fieldSystem->location->mapId;
     if (FollowMon_IsActive(fieldSystem)) {
@@ -173,7 +173,7 @@ void FieldSystem_ViewSavedPhotos(FieldSystem *fieldSystem) {
     FieldViewPhoto *photo = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldViewPhoto));
     MI_CpuFill8(photo, 0, sizeof(FieldViewPhoto));
     photo->x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
-    photo->y = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    photo->z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
     photo->savedDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
     photo->savedMapId = fieldSystem->location->mapId;
     photo->photoAlbum = Save_PhotoAlbum_Get(fieldSystem->saveData);
@@ -340,7 +340,7 @@ static int ViewPhotoFieldTask_FadeOutFromPhoto(FieldSystem *fieldSystem, TaskMan
 static int ViewPhotoFieldTask_RestorePlayerOverworldPosition(FieldSystem *fieldSystem, TaskManager *taskManager, FieldViewPhoto *viewPhoto) {
     Location location;
 
-    InitLocation(&location, viewPhoto->savedMapId, -1, viewPhoto->x, viewPhoto->y, viewPhoto->savedDirection);
+    InitLocation(&location, viewPhoto->savedMapId, -1, viewPhoto->x, viewPhoto->z, viewPhoto->savedDirection);
     sub_020537A8(taskManager, &location);
     return VIEW_PHOTO_STATE_QUIT2;
 }
@@ -577,8 +577,8 @@ static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 ico
     }
 }
 
-static inline void FieldTakePhoto_SetLocationBuf(FieldTakePhoto *takePhoto, int direction, int y, int x, int mapId) {
-    InitLocation(&takePhoto->locationBuf, mapId, -1, x, y, direction);
+static inline void FieldTakePhoto_SetLocationBuf(FieldTakePhoto *takePhoto, int direction, int z, int x, int mapId) {
+    InitLocation(&takePhoto->locationBuf, mapId, -1, x, z, direction);
 }
 
 static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
@@ -784,7 +784,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
         break;
     case TAKE_PHOTO_STATE_RESTORE_PLAYER:
         sub_02067A80(fieldSystem, 0);
-        FieldTakePhoto_SetLocationBuf(takePhoto, takePhoto->savedDirection, takePhoto->savedY, takePhoto->savedX, takePhoto->savedMapId);
+        FieldTakePhoto_SetLocationBuf(takePhoto, takePhoto->savedDirection, takePhoto->savedZ, takePhoto->savedX, takePhoto->savedMapId);
         sub_020537A8(taskManager, &takePhoto->locationBuf);
         takePhoto->state = TAKE_PHOTO_STATE_RESUME_OVERWORLD_AFTER;
         break;
@@ -798,10 +798,10 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             LocalMapObject *playerObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
             MapObject_SetPositionFromVectorAndDirection(followMon, &takePhoto->followMonPositionVecBak, takePhoto->followMonFacingDirectionBak);
 
-            int playerX = MapObject_GetCurrentX(playerObj);
-            int playerZ = MapObject_GetCurrentZ(playerObj);
-            int followX = MapObject_GetCurrentX(followMon);
-            int followZ = MapObject_GetCurrentZ(followMon);
+            int playerX = MapObject_GetXCoord(playerObj);
+            int playerZ = MapObject_GetZCoord(playerObj);
+            int followX = MapObject_GetXCoord(followMon);
+            int followZ = MapObject_GetZCoord(followMon);
 
             if (playerX == followX && playerZ == followZ) {
                 sub_02069DC8(followMon, TRUE);

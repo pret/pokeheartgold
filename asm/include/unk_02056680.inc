@@ -31,7 +31,7 @@
 .public PlayerAvatar_GetXCoord
 .public PlayerAvatar_GetZCoord
 .public PlayerAvatar_CopyPositionVector
-.public PlayerAvatar_GetPositionVectorConst
+.public PlayerAvatar_GetPositionVector
 .public PlayerAvatar_GetMapObject
 .public sub_0205C810
 .public PlayerAvatar_ToggleAutomaticHeightUpdating

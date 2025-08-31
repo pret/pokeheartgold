@@ -49,10 +49,10 @@
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
 .public MapObject_CheckMovementPaused
-.public MapObject_GetPreviousX
-.public MapObject_GetPreviousZ
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentZ
+.public MapObject_GetPreviousXCoord
+.public MapObject_GetPreviousZCoord
+.public MapObject_GetXCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
 .public MapObject_SetPositionFromVectorAndDirection

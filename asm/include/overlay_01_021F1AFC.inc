@@ -65,10 +65,10 @@
 .public MapObject_UnpauseMovement
 .public sub_0205F73C
 .public MapObject_CheckFlag28
-.public MapObject_GetCurrentX
+.public MapObject_GetXCoord
 .public MapObject_SetCurrentX
 .public MapObject_SetCurrentY
-.public MapObject_GetCurrentZ
+.public MapObject_GetZCoord
 .public MapObject_SetCurrentZ
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector

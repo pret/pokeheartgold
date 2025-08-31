@@ -87,11 +87,11 @@
 .public MapObject_GetMovementCommand
 .public sub_0205F504
 .public MapObject_GetFieldSystem
-.public MapObject_GetPreviousX
-.public MapObject_GetPreviousZ
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetCurrentZ
+.public MapObject_GetPreviousXCoord
+.public MapObject_GetPreviousZCoord
+.public MapObject_GetXCoord
+.public MapObject_GetYCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public sub_02060BFC
 .public sub_02060D94
