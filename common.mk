@@ -70,8 +70,7 @@ NATIVE_TOOLS := \
 	$(ASPATCH) \
 	$(CSV2BIN) \
 	$(MKFXCONST) \
-	$(COMPSTATIC) \
-	$(MOD123ENCRY)
+	$(COMPSTATIC)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 
