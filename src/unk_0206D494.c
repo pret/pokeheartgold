@@ -289,7 +289,7 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     // to explicit variables before being compared for the function to match,
     // even though the values are never used again afterwards. Also, the same
     // variables are used for different calls to GetMonData.
-    int word = GetMonData(mon, MON_DATA_OTID, NULL);
+    int word = GetMonData(mon, MON_DATA_OT_ID, NULL);
     if (word != PlayerProfile_GetTrainerID(profile)) {
         return FALSE;
     }
@@ -297,11 +297,11 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     if (byte != PlayerProfile_GetTrainerGender(profile)) {
         return FALSE;
     }
-    byte = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    byte = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
     if (byte != gGameLanguage) {
         return FALSE;
     }
-    byte = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+    byte = GetMonData(mon, MON_DATA_MET_GAME, NULL);
     if (byte != gGameVersion) {
         return FALSE;
     }
@@ -329,7 +329,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     else if (species != trade->give_species) {
         return FALSE;
     }
-    u32 otId = GetMonData(mon, MON_DATA_OTID, NULL);
+    u32 otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     if (otId != trade->otId) {
         return FALSE;
     }
@@ -341,11 +341,11 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     if (gender != trade->gender) {
         return FALSE;
     }
-    u8 language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    u8 language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
     if (language != trade->language) {
         return FALSE;
     }
-    u8 version = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+    u8 version = GetMonData(mon, MON_DATA_MET_GAME, NULL);
     if (version != gGameVersion) {
         return FALSE;
     }
@@ -361,7 +361,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
         return FALSE;
     }
     String *monOtName = String_New(8, HEAP_ID_FIELD2);
-    GetMonData(mon, MON_DATA_OT_NAME_2, monOtName);
+    GetMonData(mon, MON_DATA_OT_NAME_STRING, monOtName);
     String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
     String_Delete(tradeOtName);
