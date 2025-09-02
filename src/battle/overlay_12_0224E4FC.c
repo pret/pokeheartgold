@@ -119,7 +119,7 @@ void BattleSystem_GetBattleMon(BattleSystem *battleSystem, BattleContext *ctx, i
     ctx->battleMons[battlerId].exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
     ctx->battleMons[battlerId].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     ctx->battleMons[battlerId].otid = GetMonData(mon, MON_DATA_OTID, NULL);
-    ctx->battleMons[battlerId].metGender = GetMonData(mon, MON_DATA_MET_GENDER, NULL);
+    ctx->battleMons[battlerId].otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
 
     ctx->battleMons[battlerId].ball = BattleSystem_GetMonBall(battleSystem, mon);
 
@@ -395,7 +395,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
     case BMON_DATA_MSG_FLAG:
         return mon->msgFlag;
     case BMON_DATA_OT_GENDER:
-        return mon->metGender;
+        return mon->otGender;
     case BMON_DATA_MOVE_EFFECT:
         return mon->moveEffectFlags;
     case BMON_DATA_MOVE_EFFECT_TEMP:
@@ -639,7 +639,7 @@ void SetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
         mon->msgFlag = *data8;
         break;
     case BMON_DATA_OT_GENDER:
-        mon->metGender = *data8;
+        mon->otGender = *data8;
         break;
     case BMON_DATA_MOVE_EFFECT:
         mon->moveEffectFlags = *data32;
@@ -5254,7 +5254,7 @@ BOOL ov12_02256854(BattleSystem *battleSystem, BattleContext *ctx) {
     u32 gender = PlayerProfile_GetTrainerGender(profile);
     const u16 *name = PlayerProfile_GetNamePtr(profile);
 
-    if (trainerId == ctx->battleMons[ctx->battlerIdAttacker].otid && gender == ctx->battleMons[ctx->battlerIdAttacker].metGender && !StringNotEqualN(name, &ctx->battleMons[ctx->battlerIdAttacker].otName[0], PLAYER_NAME_LENGTH)) {
+    if (trainerId == ctx->battleMons[ctx->battlerIdAttacker].otid && gender == ctx->battleMons[ctx->battlerIdAttacker].otGender && !StringNotEqualN(name, &ctx->battleMons[ctx->battlerIdAttacker].otName[0], PLAYER_NAME_LENGTH)) {
         return TRUE;
     }
 
@@ -5270,7 +5270,7 @@ BOOL ov12_022568B0(BattleSystem *battleSystem, Pokemon *mon) {
 
     GetMonData(mon, MON_DATA_OT_NAME, otName);
 
-    if (trainerId == GetMonData(mon, MON_DATA_OTID, NULL) && gender == GetMonData(mon, MON_DATA_MET_GENDER, NULL) && !StringNotEqualN(name, otName, PLAYER_NAME_LENGTH)) {
+    if (trainerId == GetMonData(mon, MON_DATA_OTID, NULL) && gender == GetMonData(mon, MON_DATA_OT_GENDER, NULL) && !StringNotEqualN(name, otName, PLAYER_NAME_LENGTH)) {
         return TRUE;
     }
 
