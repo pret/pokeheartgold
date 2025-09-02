@@ -662,8 +662,8 @@ TextOBJ_Destroy: ; 0x020139C8
 _020139CC: .word FontOAM_Delete
 	thumb_func_end TextOBJ_Destroy
 
-	thumb_func_start sub_020139D0
-sub_020139D0: ; 0x020139D0
+	thumb_func_start TextOBJ_CopyFromBGWindow
+TextOBJ_CopyFromBGWindow: ; 0x020139D0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	ldr r0, [r0]
@@ -718,7 +718,7 @@ _02013A46:
 	bl Heap_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_020139D0
+	thumb_func_end TextOBJ_CopyFromBGWindow
 
 	thumb_func_start sub_02013A50
 sub_02013A50: ; 0x02013A50

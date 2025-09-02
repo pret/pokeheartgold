@@ -10838,7 +10838,7 @@ ov91_02261808: ; 0x02261808
 	ldr r1, [r5, #0x4c]
 	ldr r3, [r3]
 	add r2, #0x38
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r5, #0
 	add r0, #0x38
 	bl RemoveWindow
@@ -10928,7 +10928,7 @@ ov91_022618B0: ; 0x022618B0
 	ldr r1, [r5, #0x4c]
 	ldr r3, [r3]
 	add r2, #0x38
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r5, #0
 	add r0, #0x38
 	bl RemoveWindow

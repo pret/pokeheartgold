@@ -21,7 +21,7 @@
 .public sub_02013948
 .public TextOBJ_Create
 .public TextOBJ_Destroy
-.public sub_020139D0
+.public TextOBJ_CopyFromBGWindow
 .public sub_02013A50
 .public sub_02013FD0
 .public AllocFromHeap

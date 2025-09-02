@@ -112,7 +112,7 @@
 .public sub_02013938
 .public TextOBJ_Create
 .public TextOBJ_Destroy
-.public sub_020139D0
+.public TextOBJ_CopyFromBGWindow
 .public sub_02013FD0
 .public MailMsg_GetExpandedString
 .public Main_SetVBlankIntrCB

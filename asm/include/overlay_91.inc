@@ -58,7 +58,7 @@
 .public sub_02013948
 .public TextOBJ_Create
 .public TextOBJ_Destroy
-.public sub_020139D0
+.public TextOBJ_CopyFromBGWindow
 .public sub_02018030
 .public sub_02018068
 .public sub_020180BC

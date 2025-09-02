@@ -30998,7 +30998,7 @@ ov14_021F4EA0: ; 0x021F4EA0
 	ldr r0, [r1, r0]
 	add r1, r7, #0
 	mov r3, #0xa
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r7, #0
 	bl sub_02013938
 	pop {r3, r4, r5, r6, r7, pc}

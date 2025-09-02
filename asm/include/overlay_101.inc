@@ -79,7 +79,7 @@
 .public sub_02013948
 .public TextOBJ_Create
 .public TextOBJ_Destroy
-.public sub_020139D0
+.public TextOBJ_CopyFromBGWindow
 .public GF_RTC_CopyDateTime
 .public GF_RTC_CopyDate
 .public GF_RTC_GetTimeOfDayWildParam

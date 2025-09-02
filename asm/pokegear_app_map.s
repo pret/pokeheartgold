@@ -7069,7 +7069,7 @@ _021EADDE:
 	ldr r1, [r5, #0x40]
 	ldr r3, [r5]
 	add r2, r5, r2
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	ldr r0, [r4, r6]
 	mov r1, #1
 	bl TextOBJ_SetSpritesDrawFlag

@@ -3742,7 +3742,7 @@ _0222D504:
 	ldr r1, [r1, #0x18]
 	add r2, sp, #0x1c
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r5, #0
 	bl String_Delete
 	add r0, sp, #0x1c
@@ -3919,7 +3919,7 @@ ov40_0222D66C: ; 0x0222D66C
 	ldr r1, [r5, #0xc]
 	add r2, sp, #0x10
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r6, #0
 	bl String_Delete
 	add r0, sp, #0x10
@@ -31047,7 +31047,7 @@ _0223B31A:
 	ldr r1, [r1, #0xc]
 	add r2, sp, #0x18
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r4, #0
 	bl String_Delete
 	add r0, sp, #0x18
@@ -42095,7 +42095,7 @@ _02240DCE:
 	ldr r1, [r1, #0xc]
 	add r2, sp, #0x18
 	mov r3, #0x6d
-	bl sub_020139D0
+	bl TextOBJ_CopyFromBGWindow
 	add r0, r4, #0
 	bl String_Delete
 	add r0, sp, #0x18
