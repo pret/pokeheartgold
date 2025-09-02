@@ -20,11 +20,11 @@ typedef enum RadioPrintState {
 } RadioPrintState;
 
 typedef struct RadioFuncs {
-    BOOL (*setup)
+    BOOL(*setup)
     (RadioShow *);
-    BOOL (*print)
+    BOOL(*print)
     (RadioShow *);
-    BOOL (*teardown)
+    BOOL(*teardown)
     (RadioShow *);
 } RadioFuncs;
 

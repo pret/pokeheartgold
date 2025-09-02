@@ -656,10 +656,10 @@ _0201396E:
 
 	thumb_func_start TextOBJ_Destroy
 TextOBJ_Destroy: ; 0x020139C8
-	ldr r3, _020139CC ; =sub_02013660
+	ldr r3, _020139CC ; =FontOAM_Delete
 	bx r3
 	.balign 4, 0
-_020139CC: .word sub_02013660
+_020139CC: .word FontOAM_Delete
 	thumb_func_end TextOBJ_Destroy
 
 	thumb_func_start TextOBJ_CopyFromBGWindow
