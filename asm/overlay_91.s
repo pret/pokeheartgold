@@ -10711,7 +10711,7 @@ _022616FA:
 	bl sub_02013950
 	mov r1, #0
 	str r0, [r5, #0x48]
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r5, #0
 	add r0, #0x38
 	bl RemoveWindow
@@ -10844,7 +10844,7 @@ ov91_02261808: ; 0x02261808
 	bl RemoveWindow
 	ldr r0, [r5, #0x48]
 	mov r1, #1
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r5, #0x34]
 	mov r1, #1
 	bl Sprite_SetDrawFlag
@@ -11004,7 +11004,7 @@ _0226198A:
 	add r0, #0x98
 	strh r1, [r0]
 	ldr r0, [r4, #0x48]
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x34]
 	mov r1, #0
 	bl Sprite_SetDrawFlag

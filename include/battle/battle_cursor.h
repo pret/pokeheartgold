@@ -5,7 +5,7 @@
 
 #include "sys_task_api.h"
 
-//typedef'd in battle.h
+// typedef'd in battle.h
 struct BattleCursorPosition {
     s8 commandX;
     s8 commandY;

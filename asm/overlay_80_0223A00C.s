@@ -289,7 +289,7 @@ _0223A1BA:
 	bl ov80_0223A62C
 	ldr r0, [r5, #0x7c]
 	mov r1, #0
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #0x24]
 	bl String_Delete
 	ldr r0, [sp, #0x20]
@@ -660,7 +660,7 @@ _0223A534:
 	bl SetBlendBrightness
 	ldr r0, [r5, #0x7c]
 	mov r1, #1
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]

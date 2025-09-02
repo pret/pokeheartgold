@@ -71,7 +71,7 @@
 .public FontSystem_NewInit
 .public sub_020135AC
 .public sub_020136B4
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013820
 .public sub_02013850
 .public sub_02013910

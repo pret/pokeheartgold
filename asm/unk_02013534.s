@@ -353,8 +353,8 @@ _020137B4:
 	.balign 4, 0
 	thumb_func_end sub_02013794
 
-	thumb_func_start FontOAM_SetDrawFlag
-FontOAM_SetDrawFlag: ; 0x020137C0
+	thumb_func_start TextOBJ_SetSpritesDrawFlag
+TextOBJ_SetSpritesDrawFlag: ; 0x020137C0
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -380,7 +380,7 @@ _020137D8:
 _020137EC:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end FontOAM_SetDrawFlag
+	thumb_func_end TextOBJ_SetSpritesDrawFlag
 
 	thumb_func_start sub_020137F0
 sub_020137F0: ; 0x020137F0

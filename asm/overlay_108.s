@@ -3642,7 +3642,7 @@ ov108_021E756C: ; 0x021E756C
 	str r0, [r5, r1]
 	ldr r0, [r5, r1]
 	mov r1, #1
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r0, #0xe9
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

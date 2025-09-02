@@ -31,7 +31,7 @@ void *FontSystem_NewInit(int, HeapID);
 void sub_02013A50(Window *window, int a1, int a2, int a3, int a4, void *a5);
 void sub_020135AC(void *a0);
 void sub_02013794(void *a0, u32 *a1, u32 *a2);
-void FontOAM_SetDrawFlag(void *a0, int a1);
+void TextOBJ_SetSpritesDrawFlag(void *a0, int a1);
 int sub_02013688(Window *window, NNS_G2D_VRAM_TYPE vram, int a2);
 FontOAM *sub_020135D8(FontOAMInitData *init);
 void sub_020138E0(FontOAM *fontOAM, int a1);

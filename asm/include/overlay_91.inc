@@ -52,7 +52,7 @@
 .public FontSystem_NewInit
 .public sub_020135AC
 .public sub_02013728
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948

@@ -9,7 +9,7 @@
 .public sub_020136B4
 .public sub_02013728
 .public sub_02013794
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_020137F0
 .public sub_02013820
 .public sub_02013850

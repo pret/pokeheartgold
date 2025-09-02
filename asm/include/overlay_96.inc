@@ -149,7 +149,7 @@
 .public sub_020135AC
 .public sub_020135D8
 .public sub_02013728
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013850
 .public sub_02013880
 .public sub_02013910

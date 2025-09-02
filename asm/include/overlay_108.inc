@@ -80,7 +80,7 @@
 .public sub_0200FBF4
 .public FontSystem_NewInit
 .public sub_020135AC
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013850
 .public sub_02013910
 .public sub_02013938

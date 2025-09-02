@@ -100,7 +100,7 @@
 .public FontOAM_Delete
 .public sub_02013688
 .public sub_020136B4
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_020137F0
 .public sub_020138B0
 .public sub_020138E0

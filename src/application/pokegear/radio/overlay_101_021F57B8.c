@@ -20,9 +20,12 @@ typedef enum RadioPrintState {
 } RadioPrintState;
 
 typedef struct RadioFuncs {
-    BOOL (*setup)(RadioShow *);
-    BOOL (*print)(RadioShow *);
-    BOOL (*teardown)(RadioShow *);
+    BOOL (*setup)
+    (RadioShow *);
+    BOOL (*print)
+    (RadioShow *);
+    BOOL (*teardown)
+    (RadioShow *);
 } RadioFuncs;
 
 u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station);

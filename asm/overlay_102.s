@@ -3838,7 +3838,7 @@ _021E9308:
 	add r0, r1, #0
 	ldr r0, [r0, r2]
 	mov r1, #1
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	mov r1, #0x85
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2

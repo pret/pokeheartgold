@@ -2603,7 +2603,7 @@ _021E8B66:
 	bl sub_02013950
 	str r0, [r4, #0x44]
 	mov r1, #0
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #7
 	bl sub_02013850
@@ -7020,7 +7020,7 @@ ov101_021EADC0: ; 0x021EADC0
 	add r0, r5, r0
 	ldr r0, [r0, #0x44]
 	mov r1, #0
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021EADDE:
@@ -7072,7 +7072,7 @@ _021EADDE:
 	bl sub_020139D0
 	ldr r0, [r4, r6]
 	mov r1, #1
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

@@ -69,7 +69,7 @@
 .public sub_020135D8
 .public FontOAM_Delete
 .public sub_020136B4
-.public FontOAM_SetDrawFlag
+.public TextOBJ_SetSpritesDrawFlag
 .public sub_02013850
 .public sub_02014DA0
 .public sub_02014DB4

@@ -3506,11 +3506,11 @@ _0221D62A:
 	ldr r0, _0221D65C ; =0x00000B4C
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, _0221D660 ; =0x00000B54
 	mov r1, #0
 	ldr r0, [r4, r0]
-	bl FontOAM_SetDrawFlag
+	bl TextOBJ_SetSpritesDrawFlag
 	pop {r4, pc}
 	nop
 _0221D658: .word 0x00000B44
