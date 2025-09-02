@@ -15918,7 +15918,7 @@ ov12_02260668: ; 0x02260668
 	bl BattleSystem_GetTerrainId
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl BattleSystem_GetBgId
+	bl BattleSystem_GetBackgroundId
 	lsl r1, r0, #2
 	ldr r0, _022609DC ; =ov12_0226D18C
 	ldr r0, [r0, r1]
@@ -18707,14 +18707,14 @@ _02261BCE:
 	mov r0, #7
 	str r0, [sp, #0x88]
 	ldr r0, [sp]
-	bl BattleSystem_GetBgId
+	bl BattleSystem_GetBackgroundId
 	add r0, r0, #3
 	str r0, [sp, #0x8c]
 	ldr r0, [sp]
 	bl ov12_0223B52C
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl BattleSystem_GetBgId
+	bl BattleSystem_GetBackgroundId
 	lsl r1, r0, #1
 	add r0, r0, r1
 	add r0, #0xb0

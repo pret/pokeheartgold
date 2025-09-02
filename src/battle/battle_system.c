@@ -289,7 +289,7 @@ Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem) {
     return battleSystem->terrain;
 }
 
-int BattleSystem_GetBgId(BattleSystem *battleSystem) {
+int BattleSystem_GetBackgroundId(BattleSystem *battleSystem) {
     return battleSystem->backgroundId;
 }
 

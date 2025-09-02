@@ -177,7 +177,7 @@
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetTerrainId
-.public BattleSystem_GetBgId
+.public BattleSystem_GetBackgroundId
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C

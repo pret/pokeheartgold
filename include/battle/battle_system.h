@@ -56,7 +56,7 @@ u8 BattleSystem_GetFieldSide(BattleSystem *battleSystem, int battlerId);
 void *BattleSystem_GetMessageIcon(BattleSystem *battleSystem);
 PCStorage *BattleSystem_GetPcStorage(BattleSystem *battleSystem);
 Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem);
-int BattleSystem_GetBgId(BattleSystem *battleSystem);
+int BattleSystem_GetBackgroundId(BattleSystem *battleSystem);
 int BattleSystem_GetLocation(BattleSystem *battleSystem);
 int BattleSystem_GetBattlerIdPartner(BattleSystem *battleSystem, int battlerId);
 int ov12_0223ABB8(BattleSystem *battleSystem, int battlerId, int side);

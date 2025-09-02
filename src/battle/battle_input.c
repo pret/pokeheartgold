@@ -1254,10 +1254,10 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     }
 
     PaletteData *palette = BattleSystem_GetPaletteData(battleSystem);
-    u32 bgId = BattleSystem_GetBgId(battleSystem);
+    u32 backgroundId = BattleSystem_GetBackgroundId(battleSystem);
 
-    if (bgId >= NELEMS(sBackgroundPaletteIds)) {
-        bgId = 0;
+    if (backgroundId >= NELEMS(sBackgroundPaletteIds)) {
+        backgroundId = 0;
         GF_ASSERT(FALSE);
     }
 
@@ -1288,8 +1288,8 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
 
     PaletteData_LoadNarc(palette, NARC_a_0_0_7, bottomScreenBgPaletteId, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 0, 0);
 
-    if (sBackgroundPaletteIds[bgId].baseIndex != 0xffff) {
-        PaletteData_LoadNarc(palette, NARC_a_0_0_7, sBackgroundPaletteIds[bgId].baseIndex, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 32, 0);
+    if (sBackgroundPaletteIds[backgroundId].baseIndex != 0xffff) {
+        PaletteData_LoadNarc(palette, NARC_a_0_0_7, sBackgroundPaletteIds[backgroundId].baseIndex, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 32, 0);
     }
 
     u16 *unfadedBuffer = PaletteData_GetUnfadedBuf(palette, PLTTBUF_SUB_BG);
@@ -1314,8 +1314,8 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     u16 animationIndex;
     if (BattleSystem_IsInFrontier(battleSystem)) {
         animationIndex = 0x15e;
-    } else if (sBackgroundPaletteIds[bgId].animationIndex != 0xffff) {
-        animationIndex = sBackgroundPaletteIds[bgId].animationIndex;
+    } else if (sBackgroundPaletteIds[backgroundId].animationIndex != 0xffff) {
+        animationIndex = sBackgroundPaletteIds[backgroundId].animationIndex;
     } else {
         animationIndex = 0x10f;
     }
