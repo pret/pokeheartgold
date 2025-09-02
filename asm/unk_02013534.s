@@ -654,13 +654,13 @@ _0201396E:
 	.balign 4, 0
 	thumb_func_end sub_02013950
 
-	thumb_func_start sub_020139C8
-sub_020139C8: ; 0x020139C8
+	thumb_func_start TextOBJ_Destroy
+TextOBJ_Destroy: ; 0x020139C8
 	ldr r3, _020139CC ; =FontOAM_Delete
 	bx r3
 	.balign 4, 0
 _020139CC: .word FontOAM_Delete
-	thumb_func_end sub_020139C8
+	thumb_func_end TextOBJ_Destroy
 
 	thumb_func_start sub_020139D0
 sub_020139D0: ; 0x020139D0

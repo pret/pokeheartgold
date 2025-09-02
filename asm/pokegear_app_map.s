@@ -2632,7 +2632,7 @@ ov101_021E8BB8: ; 0x021E8BB8
 	add r7, r6, #0
 _021E8BC6:
 	ldr r0, [r4, #0x44]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r5, #0
 	bl sub_02021B5C
 	str r7, [r4, #0x44]

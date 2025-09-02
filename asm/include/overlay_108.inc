@@ -86,7 +86,7 @@
 .public sub_02013938
 .public sub_02013948
 .public sub_02013950
-.public sub_020139C8
+.public TextOBJ_Destroy
 .public GF_RTC_GetTimeOfDayByHour
 .public ListMenuItems_New
 .public ListMenuItems_Delete

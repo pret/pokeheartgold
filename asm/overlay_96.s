@@ -40086,7 +40086,7 @@ ov96_021F8E94: ; 0x021F8E94
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021F8EAC
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0
@@ -40483,7 +40483,7 @@ ov96_021F91CC: ; 0x021F91CC
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021F91E4
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r4, #4
 	bl sub_02021B5C
 	mov r0, #0

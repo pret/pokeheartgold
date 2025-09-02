@@ -3775,7 +3775,7 @@ _0222D574:
 	bl sub_02013938
 	ldr r0, [r5]
 	ldr r0, [r0, #0x14]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	ldr r0, [r5]
 	add r0, #0x1c
 	bl sub_02021B5C
@@ -3937,7 +3937,7 @@ ov40_0222D6D0: ; 0x0222D6D0
 	ldr r0, [r4, #0xc]
 	bl sub_02013938
 	ldr r0, [r4, #8]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r4, #0x10
 	add r0, r4, #0
 	bl sub_02021B5C

@@ -14987,7 +14987,7 @@ ov44_022316B0: ; 0x022316B0
 	mov r0, #0xd5
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	ldr r0, _02231710 ; =0x00000D44
 	add r0, r5, r0
 	bl sub_02021B5C

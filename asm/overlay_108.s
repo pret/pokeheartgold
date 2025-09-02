@@ -3662,7 +3662,7 @@ ov108_021E7650: ; 0x021E7650
 	mov r0, #0xe9
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	mov r0, #0xea
 	lsl r0, r0, #2
 	add r0, r4, r0

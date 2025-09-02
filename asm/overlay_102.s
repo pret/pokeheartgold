@@ -3892,7 +3892,7 @@ _021E938C:
 	mov r0, #0x85
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	add r0, r5, #0
 	bl sub_02021B5C
 	mov r0, #0x85

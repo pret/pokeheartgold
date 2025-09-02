@@ -10752,7 +10752,7 @@ ov91_02261790: ; 0x02261790
 	add r5, r0, #0
 	ldr r0, [r5, #0x48]
 	add r4, r1, #0
-	bl sub_020139C8
+	bl TextOBJ_Destroy
 	ldr r0, [r5, #0x60]
 	bl sub_0200B0A8
 	mov r0, #0x53

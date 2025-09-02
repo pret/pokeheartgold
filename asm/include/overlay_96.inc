@@ -155,7 +155,7 @@
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948
-.public sub_020139C8
+.public TextOBJ_Destroy
 .public sub_02014450
 .public sub_02014510
 .public sub_0201457C
