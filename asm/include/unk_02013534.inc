@@ -19,7 +19,7 @@
 .public sub_02013910
 .public sub_02013938
 .public sub_02013948
-.public sub_02013950
+.public TextOBJ_Create
 .public TextOBJ_Destroy
 .public sub_020139D0
 .public sub_02013A50

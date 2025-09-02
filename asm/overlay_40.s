@@ -3542,7 +3542,7 @@ _0222D2E6:
 	ldr r1, [r4]
 	add r0, sp, #0x4c
 	ldr r1, [r1, #0x18]
-	bl sub_02013950
+	bl TextOBJ_Create
 	ldr r1, [r4]
 	str r0, [r1, #0x14]
 	ldr r0, [r4]
@@ -3869,7 +3869,7 @@ _0222D5BE:
 	str r1, [sp, #0x3c]
 	ldr r1, [r5, #0xc]
 	add r0, sp, #0x1c
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #1
 	str r0, [r5, #8]
 	bl sub_020138E0

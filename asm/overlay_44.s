@@ -14940,7 +14940,7 @@ _02231604:
 	ldr r0, [sp, #0x2c]
 	str r0, [sp, #0x64]
 	add r0, sp, #0x38
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #0xd5
 	lsl r1, r1, #4
 	str r0, [r5, r1]

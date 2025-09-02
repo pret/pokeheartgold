@@ -3636,7 +3636,7 @@ ov108_021E756C: ; 0x021E756C
 	str r0, [sp, #0x20]
 	ldr r1, [r5, r1]
 	add r0, sp, #0x10
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #0xe9
 	lsl r1, r1, #2
 	str r0, [r5, r1]

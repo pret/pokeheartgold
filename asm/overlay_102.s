@@ -3830,7 +3830,7 @@ _021E9308:
 	lsl r1, r1, #8
 	ldr r1, [r7, r1]
 	add r0, sp, #0x30
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r2, #0x85
 	ldr r1, [sp, #0x14]
 	lsl r2, r2, #2

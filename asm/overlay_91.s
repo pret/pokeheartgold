@@ -10708,7 +10708,7 @@ _022616FA:
 	str r6, [sp, #0x58]
 	ldr r1, [r5, #0x4c]
 	add r0, sp, #0x2c
-	bl sub_02013950
+	bl TextOBJ_Create
 	mov r1, #0
 	str r0, [r5, #0x48]
 	bl TextOBJ_SetSpritesDrawFlag

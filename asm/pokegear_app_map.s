@@ -2600,7 +2600,7 @@ _021E8B66:
 	str r0, [sp, #0x28]
 	ldr r1, [r5, #0x40]
 	add r0, sp, #0x18
-	bl sub_02013950
+	bl TextOBJ_Create
 	str r0, [r4, #0x44]
 	mov r1, #0
 	bl TextOBJ_SetSpritesDrawFlag

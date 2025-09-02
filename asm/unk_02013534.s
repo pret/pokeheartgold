@@ -596,8 +596,8 @@ sub_02013948: ; 0x02013948
 _0201394C: .word sub_02013E24
 	thumb_func_end sub_02013948
 
-	thumb_func_start sub_02013950
-sub_02013950: ; 0x02013950
+	thumb_func_start TextOBJ_Create
+TextOBJ_Create: ; 0x02013950
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -652,7 +652,7 @@ _0201396E:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02013950
+	thumb_func_end TextOBJ_Create
 
 	thumb_func_start TextOBJ_Destroy
 TextOBJ_Destroy: ; 0x020139C8
