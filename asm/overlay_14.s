@@ -30807,7 +30807,7 @@ ov14_021F4D10: ; 0x021F4D10
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0xa
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x41
 	lsl r1, r1, #4
 	str r0, [r4, r1]
@@ -30965,7 +30965,7 @@ _021F4E76:
 	add r0, r4, #0
 	bl sub_02021B5C
 	ldr r0, [r5, r7]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, #0x10

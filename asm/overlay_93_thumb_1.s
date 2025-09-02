@@ -463,7 +463,7 @@ ov93_0225C768: ; 0x0225C768
 	str r0, [r1]
 	mov r0, #0x13
 	mov r1, #0x75
-	bl sub_02013534
+	bl FontSystem_NewInit
 	add r1, r5, #0
 	add r1, #0x90
 	str r0, [r1]

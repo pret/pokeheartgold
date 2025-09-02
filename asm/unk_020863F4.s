@@ -1548,7 +1548,7 @@ sub_02086FCC: ; 0x02086FCC
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0x6c
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0xde
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1567,7 +1567,7 @@ sub_02086FE8: ; 0x02086FE8
 	mov r0, #0xdf
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02013660
+	bl FontOAM_Delete
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1575,7 +1575,7 @@ sub_02086FE8: ; 0x02086FE8
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02013660
+	bl FontOAM_Delete
 	mov r0, #0x39
 	lsl r0, r0, #4
 	add r0, r4, r0

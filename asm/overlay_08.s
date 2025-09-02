@@ -8763,7 +8763,7 @@ ov08_0222061C: ; 0x0222061C
 	stmia r2!, {r0, r1}
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r4, r0, #0
 	bl SpriteManager_New
 	ldr r1, _02220664 ; =0x00001FB4
@@ -8796,7 +8796,7 @@ ov08_02220668: ; 0x02220668
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #0x18]
 	bl sub_02074490
 	str r7, [sp]
@@ -8899,7 +8899,7 @@ ov08_02220750: ; 0x02220750
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	ldr r1, [r5]
 	add r4, r0, #0
 	ldr r1, [r1, #0xc]
@@ -8977,7 +8977,7 @@ ov08_02220800: ; 0x02220800
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r6, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -9039,7 +9039,7 @@ ov08_02220878: ; 0x02220878
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r6, r0, #0
 	bl sub_0207CAA0
 	str r4, [sp]
@@ -9112,7 +9112,7 @@ ov08_02220928: ; 0x02220928
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r4, r0, #0
 	mov r0, #0x47
 	str r0, [sp]
@@ -9182,7 +9182,7 @@ ov08_022209B8: ; 0x022209B8
 	ldr r0, [r5]
 	add r4, r1, #0
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	mov r2, #0
 	add r1, sp, #0
 	strh r2, [r1]
@@ -9256,7 +9256,7 @@ ov08_02220A50: ; 0x02220A50
 	add r7, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	ldr r6, _02220A84 ; =0x00001FB8
 	str r0, [sp]
 	mov r4, #0
@@ -9343,7 +9343,7 @@ ov08_02220AEC: ; 0x02220AEC
 	ldr r0, [r0, #8]
 	add r7, r1, #0
 	add r4, r2, #0
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #8]
 	bl sub_020776B4
 	str r0, [sp, #0xc]
@@ -9379,7 +9379,7 @@ ov08_02220B3C: ; 0x02220B3C
 	add r4, r2, #0
 	ldr r0, [r0, #8]
 	add r6, r1, #0
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r7, r0, #0
 	bl sub_02077830
 	str r0, [sp, #8]
@@ -10747,7 +10747,7 @@ ov08_0222162C: ; 0x0222162C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	ldr r1, _02221688 ; =0x0000B018
 	mov r2, #0x7a
 	str r1, [sp]
@@ -15676,7 +15676,7 @@ ov08_02223D34: ; 0x02223D34
 	stmia r2!, {r0, r1}
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r4, r0, #0
 	bl SpriteManager_New
 	mov r1, #0xc3
@@ -15710,7 +15710,7 @@ ov08_02223D80: ; 0x02223D80
 	add r7, r0, #0
 	ldr r0, [r6]
 	ldr r0, [r0]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #0x18]
 	mov r4, #0
 _02223D9E:
@@ -15794,7 +15794,7 @@ ov08_02223E3C: ; 0x02223E3C
 	add r6, r1, #0
 	ldr r0, [r0]
 	add r4, r2, #0
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #1
@@ -15848,7 +15848,7 @@ ov08_02223EA4: ; 0x02223EA4
 	ldr r0, [r5]
 	add r4, r1, #0
 	ldr r0, [r0]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	mov r2, #0
 	add r1, sp, #0
 	strh r2, [r1]
@@ -15919,7 +15919,7 @@ ov08_02223F34: ; 0x02223F34
 	add r7, r0, #0
 	ldr r0, [r7]
 	ldr r0, [r0]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	mov r6, #0x31
 	str r0, [sp]
 	mov r4, #0
@@ -16113,7 +16113,7 @@ ov08_022240A8: ; 0x022240A8
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	ldr r1, _02224104 ; =0x0000B4BE
 	add r4, r0, #0
 	str r1, [sp]
@@ -16235,7 +16235,7 @@ ov08_0222419C: ; 0x0222419C
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	ldr r1, _022241F0 ; =0x0000B4BD
 	add r4, r0, #0
 	str r1, [sp]
