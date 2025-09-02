@@ -3844,7 +3844,7 @@ _021E9308:
 	lsl r1, r1, #2
 	ldr r0, [r0, r1]
 	mov r1, #0
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	mov r1, #0x85
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2

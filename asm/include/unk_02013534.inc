@@ -12,7 +12,7 @@
 .public TextOBJ_SetSpritesDrawFlag
 .public sub_020137F0
 .public sub_02013820
-.public sub_02013850
+.public TextOBJ_SetPaletteNum
 .public sub_02013880
 .public sub_020138B0
 .public sub_020138E0

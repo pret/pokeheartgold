@@ -3647,7 +3647,7 @@ ov108_021E756C: ; 0x021E756C
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r1, #4
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	add sp, #0x40
 	pop {r4, r5, r6, pc}
 	nop

@@ -2606,7 +2606,7 @@ _021E8B66:
 	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [r4, #0x44]
 	mov r1, #7
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	ldr r0, [sp, #0x10]
 	add r7, #0x10
 	add r0, r0, #1

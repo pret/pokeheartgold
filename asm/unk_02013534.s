@@ -440,8 +440,8 @@ _0201384C:
 	.balign 4, 0
 	thumb_func_end sub_02013820
 
-	thumb_func_start sub_02013850
-sub_02013850: ; 0x02013850
+	thumb_func_start TextOBJ_SetPaletteNum
+TextOBJ_SetPaletteNum: ; 0x02013850
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r7, r1, #0
@@ -467,7 +467,7 @@ _02013868:
 _0201387C:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02013850
+	thumb_func_end TextOBJ_SetPaletteNum
 
 	thumb_func_start sub_02013880
 sub_02013880: ; 0x02013880

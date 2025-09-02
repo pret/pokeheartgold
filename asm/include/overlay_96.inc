@@ -150,7 +150,7 @@
 .public sub_020135D8
 .public sub_02013728
 .public TextOBJ_SetSpritesDrawFlag
-.public sub_02013850
+.public TextOBJ_SetPaletteNum
 .public sub_02013880
 .public sub_02013910
 .public sub_02013938

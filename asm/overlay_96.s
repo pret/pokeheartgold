@@ -40065,7 +40065,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	bl sub_020135D8
 	add r4, r0, #0
 	mov r1, #0
-	bl sub_02013850
+	bl TextOBJ_SetPaletteNum
 	str r4, [r6]
 	add r3, sp, #0x1c
 	ldmia r3!, {r0, r1}
