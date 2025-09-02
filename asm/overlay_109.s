@@ -21,7 +21,7 @@ _021E5912:
 	mov r0, #3
 	mov r1, #0x60
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0x7d
 	add r0, r6, #0
 	lsl r1, r1, #2
@@ -146,7 +146,7 @@ _021E5A06:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x60
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end PhotoAlbum_Exit
@@ -2736,9 +2736,9 @@ ov109_021E6DE4: ; 0x021E6DE4
 	mov r3, #3
 	bl SpriteSystem_Init
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, [r4]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	add r0, r4, #0
 	add r0, #0x90
 	ldr r0, [r0]
@@ -2796,7 +2796,7 @@ ov109_021E6E64: ; 0x021E6E64
 	str r1, [r0]
 	bl GF_DestroyVramTransferManager
 	ldr r0, [r4]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	pop {r4, pc}
 	thumb_func_end ov109_021E6E64
 
@@ -3328,7 +3328,7 @@ _021E728A:
 	ldrh r0, [r4, #0x32]
 	ldr r1, [r5]
 	ldr r2, [r5, #0x2c]
-	bl sub_02068F98
+	bl MapID_GetLandmarkName
 	mov r0, #0
 	str r0, [sp]
 	mov r3, #2
@@ -4001,7 +4001,7 @@ ov109_021E77D4: ; 0x021E77D4
 	add r4, r0, #0
 	ldr r0, [r4]
 	mov r1, #8
-	bl AllocFromHeapAtEnd
+	bl Heap_AllocAtEnd
 	mov r1, #0
 	mov r2, #8
 	add r5, r0, #0

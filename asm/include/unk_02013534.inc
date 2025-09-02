@@ -24,8 +24,8 @@
 .public TextOBJ_CopyFromBGWindow
 .public sub_02013A50
 .public sub_02013FD0
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
 .public ObjCharTransfer_GetBlockSizeFromMode
 .public Sprite_Create

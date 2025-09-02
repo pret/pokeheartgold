@@ -2,7 +2,7 @@
 #pragma once
 .public GfGfxLoader_LoadFromOpenNarc
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public GF3dRender_DrawModel
 .public sub_02020DA4
 .public GF_AssertFail

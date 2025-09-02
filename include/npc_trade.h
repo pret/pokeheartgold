@@ -36,10 +36,10 @@ typedef struct NPCTradeAppData {
     Pokemon *mon;
     PlayerProfile *profile;
     NpcTradeNum tradeno;
-    HeapID heapId;
+    enum HeapID heapID;
 } NPCTradeAppData;
 
-NPCTradeAppData *NPCTradeApp_Init(HeapID heapId, NpcTradeNum tradeno);
+NPCTradeAppData *NPCTradeApp_Init(enum HeapID heapID, NpcTradeNum tradeno);
 void NPCTradeApp_Delete(NPCTradeAppData *work);
 void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 level, u16 mapno);
 Mail *NPCTrade_MakeKenyaMail(void);

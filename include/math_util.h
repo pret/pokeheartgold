@@ -16,7 +16,7 @@ u32 PRandom(u32 seed);
 void MTX22_2DAffine(MtxFx22 *mtx, u16 radians, fx32 x, fx32 y, u8 type);
 u32 Math_CalcArraySum(const void *data, u32 size);
 u16 GF_CalcCRC16(const void *data, u32 size);
-void GF_CRC16Init(HeapID heapId);
+void GF_CRC16Init(enum HeapID heapID);
 u16 LCRandom(void);
 void SetLCRNGSeed(u32 seed);
 u32 GetLCRNGSeed(void);

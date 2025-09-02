@@ -168,7 +168,7 @@ static TouchSaveAppStateFunc sTouchSaveAppStateFuncs[TOUCHSAVEAPP_STATE_COUNT] =
 };
 
 SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, void *a3) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_8, 0x18000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_8, 0x18000);
 
     GXS_SetGraphicsMode(GX_BGMODE_0);
     GX_SetBankForSubBG(GX_VRAM_SUB_BG_32_H);
@@ -178,7 +178,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, v
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &ov30_0225DC2C, GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &ov30_0225DC48, GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &ov30_0225DC64, GF_BG_TYPE_TEXT);
-    BG_ClearCharDataRange(GF_BG_LYR_SUB_2, 0x20, 0, HEAP_ID_4);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_2, 0x20, 0, HEAP_ID_FIELD1);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_1);
 
@@ -218,7 +218,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
 
     if (!ov123_0225F4A8(ov30_0225DC28)) {
-        AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+        Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
     ov01_021F434C(data->unk40);
@@ -227,7 +227,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     if (ov123_0225F520(ov30_0225DC08)) {
-        AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+        Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
     TouchSaveApp_DestroyWindow(data);
@@ -239,10 +239,10 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_1);
     FreeBgTilemapBuffer(bgConfig, GF_BG_LYR_SUB_0);
 
-    DestroyHeap(HEAP_ID_8);
+    Heap_Destroy(HEAP_ID_8);
 
     if (ov123_0225F610(ov30_0225DC18)) {
-        AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+        Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
     FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
@@ -279,7 +279,7 @@ static void TouchSaveApp_SetupGraphics(TouchSaveAppData *data) {
     AddWindowParameterized(data->bgConfig, &data->window, GF_BG_LYR_SUB_1, 2, 19, 27, 4, 4, 0x80);
     FillWindowPixelBuffer(&data->window, 0xFF);
 
-    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0xEC, 5, Options_GetFrame(data->options), HEAP_ID_4);
+    LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_SUB_1, 0xEC, 5, Options_GetFrame(data->options), HEAP_ID_FIELD1);
 }
 
 static void TouchSaveApp_DestroyWindow(TouchSaveAppData *data) {
@@ -311,7 +311,7 @@ static void ov30_0225D880(TouchSaveAppData *data) {
 
     BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_2);
 
-    YesNoPrompt *unk = YesNoPrompt_Create(HEAP_ID_4);
+    YesNoPrompt *unk = YesNoPrompt_Create(HEAP_ID_FIELD1);
     data->yesNoPrompt = unk;
 
     YesNoPrompt_InitFromTemplate(unk, &template);
@@ -323,7 +323,7 @@ static void TouchSaveApp_SetupWaitForTextPrinter(TouchSaveAppData *data, enum To
 }
 
 static BOOL TouchSaveApp_DisplaySaveInformation(TouchSaveAppData *data) {
-    UnkStruct_field_021F4360 *unk = ov01_021F4360(data->fieldSystem, HEAP_ID_4, 5);
+    UnkStruct_field_021F4360 *unk = ov01_021F4360(data->fieldSystem, HEAP_ID_FIELD1, 5);
     data->unk40 = unk;
     ov01_021F42F8(unk);
 
@@ -502,11 +502,11 @@ static void TouchSaveApp_SetMenuInputState(MenuInputStateMgr *stateMgr, MenuInpu
 }
 
 static void ov30_0225DC08(void) {
-    AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+    Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static void ov30_0225DC18(void) {
-    AllocFromHeapAtEnd(HEAP_ID_3, 1000);
+    Heap_AllocAtEnd(HEAP_ID_3, 1000);
 }
 
 static void ov30_0225DC28(void) {

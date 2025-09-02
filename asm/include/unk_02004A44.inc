@@ -92,7 +92,7 @@
 .public GF_SndGetFadeTimer
 .public Sound_Stop
 .public sub_02005FD8
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GF_AssertFail
 .public sub_020378CC

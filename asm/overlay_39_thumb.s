@@ -271,7 +271,7 @@ _0222722C:
 	bl ov39_0222A2C0
 	add r1, r0, #0
 	ldr r0, [r4, #4]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0xed
 	lsl r1, r1, #2
 	str r0, [r5, r1]
@@ -1839,7 +1839,7 @@ ov39_02227DEC: ; 0x02227DEC
 	push {r4, r5, r6, lr}
 	mov r1, #2
 	lsl r1, r1, #0xc
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r5, r0, #0
 	mov r6, #2
 	lsl r6, r6, #0xc
@@ -2400,7 +2400,7 @@ ov39_02228140: ; 0x02228140
 	mov r0, #3
 	mov r1, #0x7c
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	mov r1, #0xf6
 	add r0, r4, #0
 	lsl r1, r1, #2
@@ -2666,7 +2666,7 @@ _02228394:
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x7c
-	bl DestroyHeap
+	bl Heap_Destroy
 	ldr r0, _02228414 ; =gSystem + 0x60
 	mov r1, #0
 	strb r1, [r0, #9]

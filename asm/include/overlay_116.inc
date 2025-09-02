@@ -3,7 +3,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
-.public AllocFromHeap
+.public Heap_Alloc
 .public GfGfx_EngineATogglePlanes
 .public Camera_SetPerspectiveAngle
 .public Camera_SetAnglePos

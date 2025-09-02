@@ -41,7 +41,7 @@ sub_02087A8C: ; 0x02087A8C
 	mov r0, #3
 	mov r1, #0x7e
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r5, #0
 	mov r1, #0x2c
 	mov r2, #0x7e
@@ -57,7 +57,7 @@ sub_02087A8C: ; 0x02087A8C
 	ldr r1, _02087B00 ; =0x00004170
 	str r0, [r4, #0xc]
 	mov r0, #0x7e
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r2, _02087B00 ; =0x00004170
 	str r0, [r4, #0x14]
 	mov r1, #0
@@ -217,7 +217,7 @@ _02087BC2:
 	mov r1, #0x7f
 	bl GF_SndHandleSetPlayerVolume
 	mov r0, #0x7e
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02087BAC

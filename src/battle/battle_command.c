@@ -1238,7 +1238,7 @@ static void Task_GetExp(SysTask *task, void *data);
 BOOL BtlCmd_StartGetExpTask(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    ctx->getterWork = AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
+    ctx->getterWork = Heap_Alloc(HEAP_ID_BATTLE, sizeof(GetterWork));
 
     ctx->getterWork->battleSystem = battleSystem;
     ctx->getterWork->ctx = ctx;
@@ -1405,7 +1405,7 @@ BOOL BtlCmd_StartCatchMonTask(BattleSystem *battleSystem, BattleContext *ctx) {
 
     int unkA = BattleScriptReadWord(ctx);
 
-    ctx->getterWork = (GetterWork *)AllocFromHeap(HEAP_ID_BATTLE, sizeof(GetterWork));
+    ctx->getterWork = (GetterWork *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(GetterWork));
     ctx->getterWork->battleSystem = battleSystem;
     ctx->getterWork->ctx = ctx;
     ctx->getterWork->state = 0;
@@ -2106,7 +2106,7 @@ u32 CalcPrizeMoney(BattleSystem *battleSystem, BattleContext *ctx, int trainerIn
     u8 trainerClass;
     Trainer trainer;
 
-    trPoke = AllocFromHeap(HEAP_ID_BATTLE, sizeof(TRPOKE) * 6);
+    trPoke = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TRPOKE) * 6);
 
     TrainerData_ReadTrData(battleSystem->trainerId[trainerIndex], &trainer);
     TrainerData_ReadTrPoke(battleSystem->trainerId[trainerIndex], trPoke);
@@ -6082,7 +6082,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             TempStatsStruct stats = ov12_0226C354;
             int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
             // Cache the stats from the previous level for later
-            data->ctx->prevLevelStats = AllocFromHeap(HEAP_ID_BATTLE, sizeof(PokemonStats));
+            data->ctx->prevLevelStats = Heap_Alloc(HEAP_ID_BATTLE, sizeof(PokemonStats));
             PokemonStats *oldStats = data->ctx->prevLevelStats;
             for (i = 0; i < NUM_STATS; i++) {
                 oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);

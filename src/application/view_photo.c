@@ -24,7 +24,7 @@ typedef enum ViewPhotoTaskState {
 } ViewPhotoTaskState;
 
 typedef struct ViewPhotoSysTaskData {
-    HeapID heapId;
+    enum HeapID heapID;
     int state;
     MenuInputState menuInputState;
     ViewPhotoInputResponse lastInput;
@@ -63,7 +63,7 @@ static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_DeleteSprites(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_AnimateButtonSelect(ViewPhotoSysTaskData *viewPhoto, int spriteNo);
 static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto);
-static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData);
+static void formatPhotoFlavorText(Photo *a0, MessageFormat *msgFormat, String *strBuf, enum HeapID heapID, SaveData *saveData);
 static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto);
 static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto);
 static u8 Photo_CountValidMons(Photo *a0);
@@ -133,9 +133,9 @@ static const SpriteTemplate_ov01_021E81F0 ov19_0225A0C4[3] = {
 static const u8 _0225A03C[3] = { 9, 1, 4 };
 
 SysTask *FieldSystem_CreateViewPhotoTask(FieldSystem *fieldSystem) {
-    ViewPhotoSysTaskData *viewPhoto = AllocFromHeap(HEAP_ID_FIELD, sizeof(ViewPhotoSysTaskData));
+    ViewPhotoSysTaskData *viewPhoto = Heap_Alloc(HEAP_ID_FIELD2, sizeof(ViewPhotoSysTaskData));
     MI_CpuClear8(viewPhoto, sizeof(ViewPhotoSysTaskData));
-    viewPhoto->heapId = HEAP_ID_FIELD;
+    viewPhoto->heapID = HEAP_ID_FIELD2;
     viewPhoto->fieldSystem = fieldSystem;
     viewPhoto->bgConfig = fieldSystem->bgConfig;
     viewPhoto->saveData = fieldSystem->saveData;
@@ -313,8 +313,8 @@ static void ViewPhotoSysTask_InitBgLayers(ViewPhotoSysTaskData *viewPhoto) {
         BgClearTilemapBufferAndCommit(viewPhoto->bgConfig, GF_BG_LYR_SUB_3);
     }
 
-    BG_ClearCharDataRange(GF_BG_LYR_SUB_1, 0x20, 0, viewPhoto->heapId);
-    BG_ClearCharDataRange(GF_BG_LYR_SUB_3, 0x40, 0, viewPhoto->heapId);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_1, 0x20, 0, viewPhoto->heapID);
+    BG_ClearCharDataRange(GF_BG_LYR_SUB_3, 0x40, 0, viewPhoto->heapID);
     BgSetPosTextAndCommit(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_X, -4);
 }
 
@@ -327,15 +327,15 @@ static void ViewPhotoSysTask_ReleaseBgLayers(ViewPhotoSysTaskData *viewPhoto) {
 }
 
 static void ViewPhotoSysTask_LoadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
-    NARC *narc = NARC_New(NARC_a_1_7_1, viewPhoto->heapId);
-    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, viewPhoto->heapId);
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, viewPhoto->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->heapId);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 12, viewPhoto->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->heapId);
+    NARC *narc = NARC_New(NARC_a_1_7_1, viewPhoto->heapID);
+    GfGfxLoader_GXLoadPalFromOpenNarc(narc, 4, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)0, 0, viewPhoto->heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, 11, viewPhoto->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, 12, viewPhoto->bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, viewPhoto->heapID);
 
     void *ncgrFile;
     NNSG2dCharacterData *pCharData;
     u8 r3;
-    ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->heapId);
+    ncgrFile = GfGfxLoader_GetCharDataFromOpenNarc(narc, 5, FALSE, &pCharData, viewPhoto->heapID);
     r3 = viewPhoto->scrollData.photo->iconId + 1;
     BG_LoadCharTilesData(viewPhoto->bgConfig, GF_BG_LYR_SUB_3, pCharData->pRawData + ((25 * r3 + 64) * 64), 0x640, 1);
     Heap_Free(ncgrFile);
@@ -346,10 +346,10 @@ static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
 }
 
 static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
-    FontID_Alloc(4, viewPhoto->heapId);
-    viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0000_bin, viewPhoto->heapId);
-    viewPhoto->msgFormat = MessageFormat_New_Custom(6, 22, viewPhoto->heapId);
-    viewPhoto->strBuf = String_New(128, viewPhoto->heapId);
+    FontID_Alloc(4, viewPhoto->heapID);
+    viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0000_bin, viewPhoto->heapID);
+    viewPhoto->msgFormat = MessageFormat_New_Custom(6, 22, viewPhoto->heapID);
+    viewPhoto->strBuf = String_New(128, viewPhoto->heapID);
     viewPhoto->exitMsg = NewString_ReadMsgData(viewPhoto->msgData, 0);
     for (int i = 0; i < 2; ++i) {
         viewPhoto->photoDescStringTemplates[i] = NewString_ReadMsgData(viewPhoto->msgData, 10 + i);
@@ -382,7 +382,7 @@ static void ViewPhotoSysTask_ReleaseWindows(ViewPhotoSysTaskData *viewPhoto) {
 }
 
 static void ViewPhotoSysTask_CreateSprites(ViewPhotoSysTaskData *viewPhoto) {
-    UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapId);
+    UnkFieldSpriteRenderer_ov01_021E7FDC_Init(&viewPhoto->spriteRender, ov19_0225A040, 3, viewPhoto->heapID);
     for (int i = 0; i < 3; ++i) {
         viewPhoto->sprites[i] = ov01_021E81F0(&viewPhoto->spriteRender, &ov19_0225A0C4[i]);
         Sprite_SetDrawFlag(viewPhoto->sprites[i], TRUE);
@@ -419,9 +419,9 @@ static BOOL ViewPhotoSysTask_IsButtonAnimPlaying(ViewPhotoSysTaskData *viewPhoto
     return !Sprite_IsAnimated(viewPhoto->sprites[viewPhoto->animSpriteNo]);
 }
 
-static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, HeapID heapId, SaveData *saveData) {
+static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String *strBuf, enum HeapID heapID, SaveData *saveData) {
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
-    sub_02068F98(photo->mapId, heapId, strBuf);
+    MapID_GetLandmarkName(photo->mapId, heapID, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
     CopyU16ArrayToString(strBuf, photo->leadMonNick);
     BufferString(msgFormat, 2, strBuf, 2, 0, 2);
@@ -447,7 +447,7 @@ static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto)
     AddTextPrinterParameterizedWithColor(&viewPhoto->windows[0], 4, viewPhoto->exitMsg, (64 - FontID_String_GetWidth(4, viewPhoto->exitMsg, 0)) / 2u, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 5, 0), NULL);
     ScheduleWindowCopyToVram(&viewPhoto->windows[0]);
 
-    formatPhotoFlavorText(viewPhoto->scrollData.photo, viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->heapId, viewPhoto->saveData);
+    formatPhotoFlavorText(viewPhoto->scrollData.photo, viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->heapID, viewPhoto->saveData);
     u8 numPokemon = Photo_CountValidMons(viewPhoto->scrollData.photo);
     if (numPokemon > 1) {
         StringExpandPlaceholders(viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->photoDescStringTemplates[1]);

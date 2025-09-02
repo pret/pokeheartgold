@@ -65,7 +65,7 @@ sub_0200B194: ; 0x0200B194
 _0200B1AC:
 	ldr r0, [sp, #0x30]
 	mov r1, #0x3c
-	bl AllocFromHeap
+	bl Heap_Alloc
 	ldr r1, _0200B220 ; =_021D0EB0
 	cmp r0, #0
 	str r0, [r1]
@@ -152,11 +152,11 @@ _0200B252:
 	ldr r0, _0200B278 ; =_021D0EB0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x38]
-	bl sub_0200B2E0
+	bl thunk_ClearMainOAM
 	ldr r0, _0200B278 ; =_021D0EB0
 	ldr r0, [r0]
 	ldr r0, [r0, #0x38]
-	bl sub_0200B2E8
+	bl thunk_ClearSubOAM
 	ldr r0, _0200B278 ; =_021D0EB0
 	ldr r0, [r0]
 	bl Heap_Free
@@ -216,21 +216,21 @@ _0200B2D8: .word sub_0200B310
 _0200B2DC: .word sub_0200B358
 	thumb_func_end sub_0200B27C
 
-	thumb_func_start sub_0200B2E0
-sub_0200B2E0: ; 0x0200B2E0
+	thumb_func_start thunk_ClearMainOAM
+thunk_ClearMainOAM: ; 0x0200B2E0
 	ldr r3, _0200B2E4 ; =ClearMainOAM
 	bx r3
 	.balign 4, 0
 _0200B2E4: .word ClearMainOAM
-	thumb_func_end sub_0200B2E0
+	thumb_func_end thunk_ClearMainOAM
 
-	thumb_func_start sub_0200B2E8
-sub_0200B2E8: ; 0x0200B2E8
+	thumb_func_start thunk_ClearSubOAM
+thunk_ClearSubOAM: ; 0x0200B2E8
 	ldr r3, _0200B2EC ; =ClearSubOAM
 	bx r3
 	.balign 4, 0
 _0200B2EC: .word ClearSubOAM
-	thumb_func_end sub_0200B2E8
+	thumb_func_end thunk_ClearSubOAM
 
 	thumb_func_start sub_0200B2F0
 sub_0200B2F0: ; 0x0200B2F0

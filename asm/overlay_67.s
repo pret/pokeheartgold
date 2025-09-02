@@ -14,7 +14,7 @@ ov67_021E5900: ; 0x021E5900
 	mov r0, #3
 	mov r1, #0x48
 	lsl r2, r2, #0x10
-	bl CreateHeap
+	bl Heap_Create
 	ldr r1, _021E5964 ; =0x000004AC
 	add r0, r4, #0
 	mov r2, #0x48
@@ -59,7 +59,7 @@ ov67_021E5968: ; 0x021E5968
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	ldr r0, [r4]
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

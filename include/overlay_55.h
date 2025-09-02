@@ -23,7 +23,7 @@ typedef struct UnkStruct_ov55_021E5B08 {
 } UnkStruct_ov55_021E5B08;
 
 typedef struct UnkStruct_ov55_021E5924 {
-    HeapID heapId;
+    enum HeapID heapID;
     u8 unk4[0x4];
     EasyChatArgs *unk8;
     OverlayManager *unkC;

@@ -36,8 +36,8 @@
 .public sub_0200AED4
 .public sub_0200B00C
 .public sub_0200B0CC
-.public sub_0200B2E0
-.public sub_0200B2E8
+.public thunk_ClearMainOAM
+.public thunk_ClearSubOAM
 .public NewMsgDataFromNarc
 .public DestroyMsgData
 .public ReadMsgDataIntoString
@@ -107,11 +107,11 @@
 .public TouchscreenListMenu_HandleInput
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
-.public CreateHeap
-.public DestroyHeap
-.public AllocFromHeap
+.public Heap_Create
+.public Heap_Destroy
+.public Heap_Alloc
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public BgConfig_Alloc
 .public SetBothScreensModesAndDisable
 .public InitBgFromTemplate
@@ -196,7 +196,7 @@
 .public SafariZone_AddObjectToArea
 .public Save_VarsFlags_Get
 .public ChangeFlag99D
-.public sub_0208820C
+.public BgConfig_LoadAssetFromOpenNarc
 .public sub_02097268
 .public NNS_GfdGetLnkTexVramManagerWorkSize
 .public NNS_GfdGetLnkPlttVramManagerWorkSize

@@ -144,7 +144,7 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
 };
 
 BattleContext *BattleContext_New(BattleSystem *battleSystem) {
-    BattleContext *ctx = (BattleContext *)AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleContext));
+    BattleContext *ctx = (BattleContext *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleContext));
     MIi_CpuClearFast(0, (u32 *)ctx, sizeof(BattleContext));
 
     BattleContext_Init(ctx);

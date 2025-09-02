@@ -96,14 +96,14 @@ sub_02091634: ; 0x02091634
 	mov r0, #3
 	mov r1, #0x30
 	lsl r2, r2, #0xc
-	bl CreateHeap
+	bl Heap_Create
 	add r0, r4, #0
 	bl OverlayManager_GetArgs
 	ldr r0, [r0, #8]
 	mov r1, #0x30
 	bl sub_020915F0
 	mov r0, #0x30
-	bl DestroyHeap
+	bl Heap_Destroy
 	mov r0, #0
 	bl OS_ResetSystem
 	mov r0, #1

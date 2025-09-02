@@ -7,14 +7,14 @@
 static void Task_Field3dObject_Update(SysTask *task, void *taskdata);
 static void Task_Field3dObject_Render(SysTask *task, void *taskData);
 
-Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, HeapID heapId, int num) {
-    Field3dObjectTaskManager *ret = AllocFromHeap(heapId, sizeof(Field3dObjectTaskManager));
+Field3dObjectTaskManager *Field3dObjectTaskManager_Create(struct FieldSystem *fieldSystem, enum HeapID heapID, int num) {
+    Field3dObjectTaskManager *ret = Heap_Alloc(heapID, sizeof(Field3dObjectTaskManager));
     ret->fieldSystem = fieldSystem;
-    ret->heapId = heapId;
+    ret->heapID = heapID;
     ret->max = num;
-    ret->tasks = AllocFromHeap(heapId, num * sizeof(Field3dObjectTask));
+    ret->tasks = Heap_Alloc(heapID, num * sizeof(Field3dObjectTask));
     MI_CpuClear32(ret->tasks, num * sizeof(Field3dObjectTask));
-    ret->taskQueue = (SysTaskQueue *)AllocFromHeap(heapId, SysTaskQueue_GetArenaSize(num));
+    ret->taskQueue = (SysTaskQueue *)Heap_Alloc(heapID, SysTaskQueue_GetArenaSize(num));
     ret->taskQueue = SysTaskQueue_PlacementNew(num, ret->taskQueue);
     return ret;
 }
@@ -62,7 +62,7 @@ Field3dObjectTask *Field3dObjectTaskManager_CreateTask(Field3dObjectTaskManager 
             GF_ASSERT(ret->mainTask != NULL);
             GF_ASSERT(ret->g3dRenderTask != NULL);
             if (template->dataSize != 0) {
-                ret->data = AllocFromHeap(manager->heapId, template->dataSize);
+                ret->data = Heap_Alloc(manager->heapID, template->dataSize);
             }
             if (template->initFunc != NULL) {
                 template->initFunc(ret, manager->fieldSystem, ret->data);

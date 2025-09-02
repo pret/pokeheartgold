@@ -74,10 +74,10 @@
 .public DeleteCameraTranslationWrapper
 .public SetCameraTranslationPath
 .public IsCameraTranslationFinished
-.public AllocFromHeap
-.public AllocFromHeapAtEnd
+.public Heap_Alloc
+.public Heap_AllocAtEnd
 .public Heap_Free
-.public GF_ExpHeap_FndInitAllocator
+.public HeapExp_FndInitAllocator
 .public GF_heap_c_dummy_return_true
 .public SetBgPriority
 .public BgSetPosTextAndCommit
@@ -525,7 +525,7 @@
 .public LegendCutscene_EndLugiaArrivesEffect
 .public LegendCutscene_LugiaArrivesEffectCameraPan
 .public GetPhoneBookEntryName
-.public ov02_02251EB8
+.public GearPhoneRingManager_SetCallerParams
 .public ov02_02251EE8
 .public ov02_02251F20
 .public GetRadioMusicPlayingSeq

@@ -170,7 +170,7 @@ struct ChooseStarter3dRes {
 
 struct ChooseStarterAppWork {
     u8 filler_000[0x4];
-    HeapID heapId;
+    enum HeapID heapID;
     BgConfig *bgConfig;
     struct GF3DVramMan *_3dMan;
     Camera *camera;
@@ -202,20 +202,20 @@ struct ChooseStarterAppWork {
 static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0);
 static void vBlankCB(struct ChooseStarterAppWork *work);
 static void setGxBanks(void);
-static void createOamManager(HeapID heapId);
+static void createOamManager(enum HeapID heapID);
 static void init3dEngine(struct ChooseStarterAppWork *work);
 static void update3dObjectsMain(struct ChooseStarterAppWork *work);
 static inline void id_roty_mtx33(MtxFx33 *mtx, u16 index);
 static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work);
-static void initBgLayers(BgConfig *bgConfig, HeapID heapId);
+static void initBgLayers(BgConfig *bgConfig, enum HeapID heapID);
 static void initCameraPosition(struct ChooseStarterAppWork *work);
 static void createObjResMans(struct ChooseStarterAppWork *work);
 static void initObjRenderers(struct ChooseStarterAppWork *work);
 static void freeAll3dAnmObj(struct ChooseStarterAppWork *work);
 static void freeAll3dResHeader(struct ChooseStarterAppWork *work);
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId);
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, enum HeapID heapID);
 static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter3dRes *res);
-static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
+static void loadAnmFromNarc(int fileId, enum HeapID heapID, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm);
 static void addAnmObjToRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
 static void removeAnmObjFromRenderObj(struct ChooseStarterRnd *rnd, struct ChooseStarterAnm *anm);
 static BOOL advance3dAnmFrameAndCheckFinished(struct ChooseStarterAnm *anm);
@@ -233,8 +233,8 @@ static void calculateModelPositionAndRotation(struct ChooseStarterRnd *render, M
 static BOOL updateBaseRotation(struct ChooseStarterAppWork *work, fx16 speed);
 static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int direction);
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work);
-static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId);
-static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
+static void loadBgGraphics(BgConfig *bgConfig, enum HeapID heapID);
+static u8 printMsgOnWinEx(Window *window, enum HeapID heapID, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out);
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId);
 static void freeWindow(Window *window);
 static int getInput(struct ChooseStarterAppWork *work);
@@ -242,7 +242,7 @@ static int getRotateDirection(int a0, u8 a1, int a2);
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius);
 static void createMonSprites(struct ChooseStarterAppWork *work);
 static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan, void *charData, void *plttData, u8 idx);
-static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId);
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, enum HeapID heapID);
 static void setAllButSelectedMonSpritesInvisible(struct ChooseStarterAppWork *work);
 static void setAllMonSpritesInvisible(struct StarterChooseMonSpriteData *a0);
 static BOOL yRotateSelectedBall(struct ChooseStarterAppWork *work, fx32 from, fx32 to);
@@ -253,11 +253,11 @@ BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
     struct ChooseStarterArgs *args;
     int i;
 
-    CreateHeap(HEAP_ID_3, HEAP_ID_CHOOSE_STARTER, 0x40000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_CHOOSE_STARTER, 0x40000);
     work = OverlayManager_CreateAndGetData(ovy, sizeof(struct ChooseStarterAppWork), HEAP_ID_CHOOSE_STARTER);
     MI_CpuClear8(work, sizeof(struct ChooseStarterAppWork));
-    work->heapId = HEAP_ID_CHOOSE_STARTER;
-    GF_ExpHeap_FndInitAllocator(&work->allocator, HEAP_ID_CHOOSE_STARTER, 0x20);
+    work->heapID = HEAP_ID_CHOOSE_STARTER;
+    HeapExp_FndInitAllocator(&work->allocator, HEAP_ID_CHOOSE_STARTER, 0x20);
     args = OverlayManager_GetArgs(ovy);
     work->frame = Options_GetFrame(args->options);
     for (i = 0; i < 3; i++) {
@@ -267,9 +267,9 @@ BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
     Main_SetVBlankIntrCB((GFIntrCB)vBlankCB, work);
     HBlankInterruptDisable();
     setGxBanks();
-    createOamManager(work->heapId);
+    createOamManager(work->heapID);
     init3dEngine(work);
-    work->bgConfig = BgConfig_Alloc(work->heapId);
+    work->bgConfig = BgConfig_Alloc(work->heapID);
 
     {
         struct GraphicsModes bgModeSet;
@@ -282,7 +282,7 @@ BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
         SetBothScreensModesAndDisable(&bgModeSet);
     }
 
-    initBgLayers(work->bgConfig, work->heapId);
+    initBgLayers(work->bgConfig, work->heapID);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
@@ -290,11 +290,11 @@ BOOL ChooseStarter_Init(OverlayManager *ovy, int *state_p) {
     GfGfx_SwapDisplay();
     ResetAllTextPrinters();
     makeAndDrawWindows(work);
-    loadBgGraphics(work->bgConfig, work->heapId);
+    loadBgGraphics(work->bgConfig, work->heapID);
     createObjResMans(work);
     initObjRenderers(work);
-    work->camera = Camera_New(work->heapId);
-    work->cameraTranslation = CreateCameraTranslationWrapper(work->heapId, work->camera);
+    work->camera = Camera_New(work->heapID);
+    work->cameraTranslation = CreateCameraTranslationWrapper(work->heapID, work->camera);
     initCameraPosition(work);
     initBallModelPositions(work);
     createMonSprites(work);
@@ -319,7 +319,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         printMsgOnBottom(work, msg_0190_00007);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
-        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, work->heapId);
+        BeginNormalPaletteFade(0, 1, 1, RGB_BLACK, 6, 1, work->heapID);
         *state = CHOOSE_STARTER_STATE_WAIT_FADE_IN;
         break;
     case CHOOSE_STARTER_STATE_WAIT_FADE_IN:
@@ -332,13 +332,13 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         if (!IsCameraTranslationFinished(work->cameraTranslation)) {
             break;
         }
-        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MAKE_TEXT_COLOR(1, 2, 15), work->textSpeed, &work->strbuf);
+        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapID, TRUE, NARC_msg_msg_0190_bin, msg_0190_00000, MAKE_TEXT_COLOR(1, 2, 15), work->textSpeed, &work->strbuf);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
         *state = CHOOSE_STARTER_STATE_WAIT_INIT_MSG;
         break;
     case CHOOSE_STARTER_STATE_CONFIRM_MSG:
-        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapId, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), work->textSpeed, &work->strbuf);
+        work->subPrinterId = printMsgOnWinEx(work->winTop, work->heapID, TRUE, NARC_msg_msg_0190_bin, msg_0190_00001 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), work->textSpeed, &work->strbuf);
         printMsgOnBottom(work, msg_0190_00008);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_ON);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
@@ -370,7 +370,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
             work->modelAnimState = MODEL_ANM_STATE_BALL_ROCK;
             {
                 String *baseTrans = NULL;
-                printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &baseTrans);
+                printMsgOnWinEx(work->winTop, work->heapID, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &baseTrans);
                 String_Delete(baseTrans);
             }
             PlayCry(sSpecies[work->curSelection], FALSE);
@@ -424,7 +424,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         work->modelAnimState = MODEL_ANM_STATE_BALL_ROCK;
         {
             String *sp10 = NULL;
-            printMsgOnWinEx(work->winTop, work->heapId, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &sp10);
+            printMsgOnWinEx(work->winTop, work->heapID, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &sp10);
             String_Delete(sp10);
         }
         PlayCry(sSpecies[work->curSelection], 0);
@@ -460,7 +460,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         *state = 2;
         break;
     case CHOOSE_STARTER_STATE_ZOOM_AND_FADE_OUT:
-        BeginNormalPaletteFade(4, 0, 0, RGB_WHITE, 10, 1, work->heapId);
+        BeginNormalPaletteFade(4, 0, 0, RGB_WHITE, 10, 1, work->heapID);
         work->modelAnimState = MODEL_ANM_STATE_BALL_OPEN;
         {
             struct CameraTranslationPathTemplate template;
@@ -479,7 +479,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         if (!IsPaletteFadeFinished()) {
             break;
         }
-        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 16, 1, work->heapId);
+        BeginNormalPaletteFade(3, 0, 0, RGB_WHITE, 16, 1, work->heapID);
         *state = CHOOSE_STARTER_STATE_WAIT_AND_EXIT;
         break;
     case CHOOSE_STARTER_STATE_WAIT_AND_EXIT:
@@ -567,7 +567,7 @@ BOOL ChooseStarter_Exit(OverlayManager *ovy, int *state) {
     Heap_Free(work->bgConfig);
     GF_3DVramMan_Delete(work->_3dMan);
     OverlayManager_FreeData(ovy);
-    DestroyHeap(HEAP_ID_CHOOSE_STARTER);
+    Heap_Destroy(HEAP_ID_CHOOSE_STARTER);
     return TRUE;
 }
 
@@ -607,9 +607,9 @@ static void setGxBanks(void) {
     GfGfx_SetBanks(&cfg);
 }
 
-static void createOamManager(HeapID heapId) {
+static void createOamManager(enum HeapID heapID) {
     NNS_G2dInitOamManagerModule();
-    OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapId);
+    OamManager_Create(0, 0x80, 0, 0x20, 0, 0x80, 0, 0x20, heapID);
     {
         ObjCharTransferTemplate baseTrans = {
             3,
@@ -617,17 +617,17 @@ static void createOamManager(HeapID heapId) {
             0x2800,
             HEAP_ID_DEFAULT
         };
-        baseTrans.heapId = heapId;
+        baseTrans.heapID = heapID;
         ObjCharTransfer_InitEx(&baseTrans, GX_OBJVRAMMODE_CHAR_1D_128K, GX_OBJVRAMMODE_CHAR_1D_32K);
     }
-    ObjPlttTransfer_Init(3, heapId);
+    ObjPlttTransfer_Init(3, heapID);
     ObjCharTransfer_ClearBuffers();
     ObjPlttTransfer_Reset();
 }
 
 static void init3dEngine(struct ChooseStarterAppWork *work) {
     int i;
-    work->_3dMan = GF_3DVramMan_Create(work->heapId, 0, 2, 0, 4, NULL);
+    work->_3dMan = GF_3DVramMan_Create(work->heapID, 0, 2, 0, 4, NULL);
     G3X_AntiAlias(TRUE);
     G3X_AlphaTest(FALSE, 0);
     G3X_AlphaBlend(TRUE);
@@ -697,14 +697,14 @@ static void updateBaseAndBallsRotation(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
+static void initBgLayers(BgConfig *bgConfig, enum HeapID heapID) {
     G2_SetBG0Priority(2);
     {
         const BgTemplate sp70 = {
             0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 0, 1, 0, 0, 0, 0, 0
         };
         InitBgFromTemplate(bgConfig, 1, &sp70, GF_BG_TYPE_TEXT);
-        BG_ClearCharDataRange(1, 0x20, 0, heapId);
+        BG_ClearCharDataRange(1, 0x20, 0, heapID);
         BgClearTilemapBufferAndCommit(bgConfig, 1);
     }
     {
@@ -712,7 +712,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
             0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 1, 3, 0, 1, 0, 0, 0
         };
         InitBgFromTemplate(bgConfig, 2, &sp54, GF_BG_TYPE_TEXT);
-        BG_ClearCharDataRange(2, 0x20, 0, heapId);
+        BG_ClearCharDataRange(2, 0x20, 0, heapID);
         BgClearTilemapBufferAndCommit(bgConfig, 2);
     }
     {
@@ -720,7 +720,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
             0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 2, 5, 0, 0, 0, 0, 0
         };
         InitBgFromTemplate(bgConfig, 4, &sp38, GF_BG_TYPE_TEXT);
-        BG_ClearCharDataRange(4, 0x20, 0, heapId);
+        BG_ClearCharDataRange(4, 0x20, 0, heapID);
         BgClearTilemapBufferAndCommit(bgConfig, 4);
     }
     {
@@ -728,7 +728,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
             0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 0, 4, 0, 2, 0, 0, 0
         };
         InitBgFromTemplate(bgConfig, 5, &sp1C, GF_BG_TYPE_TEXT);
-        BG_ClearCharDataRange(5, 0x20, 0, heapId);
+        BG_ClearCharDataRange(5, 0x20, 0, heapID);
         BgClearTilemapBufferAndCommit(bgConfig, 5);
     }
     {
@@ -736,7 +736,7 @@ static void initBgLayers(BgConfig *bgConfig, HeapID heapId) {
             0, 0, 0x800, 0, GF_BG_SCR_SIZE_256x256, GF_BG_CLR_4BPP, 1, 3, 0, 1, 0, 0, 0
         };
         InitBgFromTemplate(bgConfig, 6, &sp00, GF_BG_TYPE_TEXT);
-        BG_ClearCharDataRange(6, 0x20, 0, heapId);
+        BG_ClearCharDataRange(6, 0x20, 0, heapID);
         BgClearTilemapBufferAndCommit(bgConfig, 6);
     }
 }
@@ -765,26 +765,26 @@ static void initCameraPosition(struct ChooseStarterAppWork *work) {
 
 static void createObjResMans(struct ChooseStarterAppWork *work) {
     struct StarterChooseMonSpriteData *pMonSpriteData = &work->monSpriteData;
-    pMonSpriteData->spriteList = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapId);
-    pMonSpriteData->charResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CHAR, work->heapId);
-    pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_PLTT, work->heapId);
-    pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CELL, work->heapId);
-    pMonSpriteData->animResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_ANIM, work->heapId);
+    pMonSpriteData->spriteList = G2dRenderer_Init(3, &pMonSpriteData->g2dRender, work->heapID);
+    pMonSpriteData->charResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CHAR, work->heapID);
+    pMonSpriteData->plttResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_PLTT, work->heapID);
+    pMonSpriteData->cellResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_CELL, work->heapID);
+    pMonSpriteData->animResMan = Create2DGfxResObjMan(3, GF_GFX_RES_TYPE_ANIM, work->heapID);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
 static void initObjRenderers(struct ChooseStarterAppWork *work) {
     int i;
-    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BALL_EF], NARC_choose_starter_main_res_03_tt_ball_ef_NSBMD, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BALL_EF], NARC_choose_starter_main_res_03_tt_ball_ef_NSBMD, work->heapID);
     rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_TT_BALL_EF], 0, 14 * FX32_ONE, 32 * FX32_ONE);
     rendererScaleVecSet(&work->_3dObjRender[CS_MODEL_TT_BALL_EF], FX32_ONE, FX32_ONE, FX32_ONE);
-    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_TABLETOP], NARC_choose_starter_main_res_00_tt_tabletop_NSBMD, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_TABLETOP], NARC_choose_starter_main_res_00_tt_tabletop_NSBMD, work->heapID);
     rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_TABLETOP], 0, 0, 0);
     rendererScaleVecSet(&work->_3dObjRender[CS_MODEL_TABLETOP], FX32_ONE, FX32_ONE, FX32_ONE);
-    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_TURNTABLE], NARC_choose_starter_main_res_01_tt_turntable_NSBMD, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_TURNTABLE], NARC_choose_starter_main_res_01_tt_turntable_NSBMD, work->heapID);
     rendererTranslVecSet(&work->_3dObjRender[CS_MODEL_TURNTABLE], 0, 0, 0);
     rendererScaleVecSet(&work->_3dObjRender[CS_MODEL_TURNTABLE], FX32_ONE, FX32_ONE, FX32_ONE);
-    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BALLS], NARC_choose_starter_main_res_02_tt_ball_NSBMD, work->heapId);
+    load3dModelResourceFromNarc(&work->_3dObjRes[CS_3DRES_BALLS], NARC_choose_starter_main_res_02_tt_ball_NSBMD, work->heapID);
     init3dModelRender(&work->_3dObjRender[CS_MODEL_TT_BALL_EF], &work->_3dObjRes[CS_3DRES_BALL_EF]);
     init3dModelRender(&work->_3dObjRender[CS_MODEL_TABLETOP], &work->_3dObjRes[CS_3DRES_TABLETOP]);
     init3dModelRender(&work->_3dObjRender[CS_MODEL_TURNTABLE], &work->_3dObjRes[CS_3DRES_TURNTABLE]);
@@ -798,12 +798,12 @@ static void initObjRenderers(struct ChooseStarterAppWork *work) {
     work->_3dObjRender[CS_MODEL_BALL1].active = TRUE;
     work->_3dObjRender[CS_MODEL_BALL2].active = TRUE;
     work->_3dObjRender[CS_MODEL_BALL3].active = TRUE;
-    loadAnmFromNarc(NARC_choose_starter_main_res_07_tt_turntable_NSBTA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_TURNTABLE], &work->_3dObjAnm[CS_ANIM_TURNTABLE]);
-    loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL1_ROCK]);
-    loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL2_ROCK]);
-    loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL3_ROCK]);
-    loadAnmFromNarc(NARC_choose_starter_main_res_05_tt_ball_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL_OPEN]);
-    loadAnmFromNarc(NARC_choose_starter_main_res_04_tt_ball_ef_NSBCA, work->heapId, &work->allocator, &work->_3dObjRes[CS_3DRES_BALL_EF], &work->_3dObjAnm[CS_ANIM_TT_BALL_EF]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_07_tt_turntable_NSBTA, work->heapID, &work->allocator, &work->_3dObjRes[CS_3DRES_TURNTABLE], &work->_3dObjAnm[CS_ANIM_TURNTABLE]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapID, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL1_ROCK]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapID, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL2_ROCK]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_06_ball_rock_NSBCA, work->heapID, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL3_ROCK]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_05_tt_ball_NSBCA, work->heapID, &work->allocator, &work->_3dObjRes[CS_3DRES_BALLS], &work->_3dObjAnm[CS_ANIM_BALL_OPEN]);
+    loadAnmFromNarc(NARC_choose_starter_main_res_04_tt_ball_ef_NSBCA, work->heapID, &work->allocator, &work->_3dObjRes[CS_3DRES_BALL_EF], &work->_3dObjAnm[CS_ANIM_TT_BALL_EF]);
     addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_TURNTABLE], &work->_3dObjAnm[CS_ANIM_TURNTABLE]);
     addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BALL1], &work->_3dObjAnm[CS_ANIM_BALL1_ROCK]);
     addAnmObjToRenderObj(&work->_3dObjRender[CS_MODEL_BALL2], &work->_3dObjAnm[CS_ANIM_BALL2_ROCK]);
@@ -826,8 +826,8 @@ static void freeAll3dResHeader(struct ChooseStarterAppWork *work) {
     }
 }
 
-static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, HeapID heapId) {
-    res->header = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
+static void load3dModelResourceFromNarc(struct ChooseStarter3dRes *res, int fileId, enum HeapID heapID) {
+    res->header = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapID, FALSE);
     res->mdlSet = NNS_G3dGetMdlSet(res->header);
     res->mdl = NNS_G3dGetMdlByIdx(res->mdlSet, 0);
     res->tex = NNS_G3dGetTex(res->header);
@@ -839,9 +839,9 @@ static void init3dModelRender(struct ChooseStarterRnd *rnd, struct ChooseStarter
     NNS_G3dRenderObjInit(&rnd->obj, res->mdl);
 }
 
-static void loadAnmFromNarc(int fileId, HeapID heapId, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
+static void loadAnmFromNarc(int fileId, enum HeapID heapID, NNSFndAllocator *allocator, struct ChooseStarter3dRes *res, struct ChooseStarterAnm *anm) {
     void *pAnm;
-    anm->hdr = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapId, FALSE);
+    anm->hdr = GfGfxLoader_LoadFromNarc(NARC_application_choose_starter_choose_starter_main_res, fileId, FALSE, heapID, FALSE);
     pAnm = NNS_G3dGetAnmByIdx(anm->hdr, 0);
     anm->obj = NNS_G3dAllocAnmObj(allocator, pAnm, res->mdl);
     NNS_G3dAnmObjInit(anm->obj, pAnm, res->mdl, res->tex);
@@ -1008,28 +1008,28 @@ static void reinitBallModelPosInDirection(struct ChooseStarterAppWork *work, int
 }
 
 static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
-    work->winTop = AllocWindows(work->heapId, 1);
-    work->winBottom = AllocWindows(work->heapId, 1);
+    work->winTop = AllocWindows(work->heapID, 1);
+    work->winBottom = AllocWindows(work->heapID, 1);
     AddWindowParameterized(work->bgConfig, work->winTop, 4, 2, 19, 27, 4, 2, 0x01F);
     AddWindowParameterized(work->bgConfig, work->winBottom, 1, 1, 19, 29, 4, 2, 0x01F);
     FillWindowPixelBuffer(work->winTop, 15);
     FillWindowPixelBuffer(work->winBottom, 0);
-    LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapId);
+    LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapID);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapID);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapID);
     DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
 }
 
-static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
-    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_14_bgl2_NSCR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_11_bgl5_NSCR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapId);
-    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_17_bgl6_NSCR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapId);
-    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_4_OFFSET, 0x20, heapId);
+static void loadBgGraphics(BgConfig *bgConfig, enum HeapID heapID) {
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_13_bgl2_NCGR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_10_bgl5_NCGR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadCharData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_16_bgl6_NCGR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_14_bgl2_NSCR, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_11_bgl5_NSCR, bgConfig, GF_BG_LYR_SUB_1, 0, 0, FALSE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_17_bgl6_NSCR, bgConfig, GF_BG_LYR_SUB_2, 0, 0, FALSE, heapID);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_12_bgl2_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapID);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_09_bgl5_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_3_OFFSET, 0x20, heapID);
+    GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_15_bgl6_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_4_OFFSET, 0x20, heapID);
     BgTilemapRectChangePalette(bgConfig, 2, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 5, 0, 0, 0x20, 0x18, 3);
     BgTilemapRectChangePalette(bgConfig, 6, 0, 0, 0x20, 0x18, 4);
@@ -1039,11 +1039,11 @@ static void loadBgGraphics(BgConfig *bgConfig, HeapID heapId) {
     G2S_SetBlendAlpha(4, 34, 5, 11);
 }
 
-static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
+static u8 printMsgOnWinEx(Window *window, enum HeapID heapID, BOOL makeFrame, s32 msgBank, int msgno, u32 color, u32 speed, String **out) {
     MsgData *msgData;
     u8 ret;
     GF_ASSERT(*out == NULL);
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, heapId);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, heapID);
     GF_ASSERT(msgData != NULL);
     *out = NewString_ReadMsgData(msgData, msgno);
     FillWindowPixelBuffer(window, color);
@@ -1059,7 +1059,7 @@ static u8 printMsgOnWinEx(Window *window, HeapID heapId, BOOL makeFrame, s32 msg
 
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
     String *string = NULL;
-    printMsgOnWinEx(work->winBottom, work->heapId, FALSE, NARC_msg_msg_0190_bin, msgId, MAKE_TEXT_COLOR(1, 2, 0), 0, &string);
+    printMsgOnWinEx(work->winBottom, work->heapID, FALSE, NARC_msg_msg_0190_bin, msgId, MAKE_TEXT_COLOR(1, 2, 0), 0, &string);
     String_Delete(string);
 }
 
@@ -1164,15 +1164,15 @@ static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radi
 }
 
 static void createMonSprites(struct ChooseStarterAppWork *work) {
-    NARC *narc = NARC_New(NARC_application_choose_starter_choose_starter_sub_res, work->heapId);
+    NARC *narc = NARC_New(NARC_application_choose_starter_choose_starter_sub_res, work->heapID);
     int i;
     struct StarterChooseMonSpriteData *spriteData = &work->monSpriteData;
 
     for (i = 0; i < 3; i++) {
-        spriteData->objs[i].charResObj = AddCharResObjFromOpenNarc(spriteData->charResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000009_NCGR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, work->heapId);
-        spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, 1, work->heapId);
-        spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i, GF_GFX_RES_TYPE_CELL, work->heapId);
-        spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapId);
+        spriteData->objs[i].charResObj = AddCharResObjFromOpenNarc(spriteData->charResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000009_NCGR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, work->heapID);
+        spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, 1, work->heapID);
+        spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i, GF_GFX_RES_TYPE_CELL, work->heapID);
+        spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapID);
         GetMonSpriteCharAndPlttNarcIdsEx(
             &spriteData->pokepicTemplate,
             GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
@@ -1181,10 +1181,10 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
             MonIsShiny(work->choices[i]),
             0,
             0);
-        spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.charDataID, work->heapId);
-        spriteData->plttDatas[i] = sub_02014450((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.palDataID, work->heapId);
+        spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.charDataID, work->heapID);
+        spriteData->plttDatas[i] = sub_02014450((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.palDataID, work->heapID);
         loadOneMonObj(spriteData->charResMan, spriteData->plttResMan, spriteData->charDatas[i], spriteData->plttDatas[i], i);
-        createOneMonRender(spriteData, i, work->heapId);
+        createOneMonRender(spriteData, i, work->heapID);
     }
 
     NARC_Delete(narc);
@@ -1210,7 +1210,7 @@ static void loadOneMonObj(GF_2DGfxResMan *charResMan, GF_2DGfxResMan *plttResMan
     GXS_LoadOBJPltt(plttData, plttloc, 0x20);
 }
 
-static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, HeapID heapId) {
+static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData, u8 idx, enum HeapID heapID) {
     SpriteResourcesHeader header;
     struct SpriteTemplate template;
 
@@ -1225,8 +1225,8 @@ static void createOneMonRender(struct StarterChooseMonSpriteData *pMonSpriteData
     template.scale.z = FX32_ONE;
     template.rotation = 0;
     template.whichScreen = NNS_G2D_VRAM_TYPE_2DSUB;
-    template.priority = 0;
-    template.heapId = heapId;
+    template.drawPriority = 0;
+    template.heapID = heapID;
     template.position.x = 128 * FX32_ONE;
     template.position.y = 288 * FX32_ONE;
     pMonSpriteData->sprites[idx] = Sprite_CreateAffine(&template);

@@ -5,7 +5,7 @@
 .public MailMsg_SetFieldI
 .public sub_02015FCC
 .public sub_02015FF8
-.public AllocFromHeap
+.public Heap_Alloc
 .public GF_AssertFail
 .public CopyU16ArrayToString
 .public CopyStringToU16Array

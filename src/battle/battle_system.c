@@ -848,8 +848,8 @@ void BattleSystem_SetBackground(BattleSystem *battleSystem) {
     u32 *src;
     u32 *dst;
 
-    battleSystem->unk220 = AllocFromHeap(HEAP_ID_BATTLE, 0x10000);
-    battleSystem->unk224 = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
+    battleSystem->unk220 = Heap_Alloc(HEAP_ID_BATTLE, 0x10000);
+    battleSystem->unk224 = Heap_Alloc(HEAP_ID_BATTLE, 0x200);
 
     MIi_CpuCopy32((void *)0x6010000, (u32 *)battleSystem->unk220, 0x10000);
     dst = (u32 *)battleSystem->unk224;

@@ -1214,7 +1214,7 @@ static const NCLRIndex sBackgroundPaletteIds[] = {
 };
 
 BattleInput *BattleInput_New(void) {
-    BattleInput *input = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleInput));
+    BattleInput *input = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleInput));
     MI_CpuFill8(input, 0, sizeof(BattleInput));
 
     input->curMenuId = BATTLE_MENU_NONE;
@@ -1265,7 +1265,7 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
         NNSG2dScreenData *screenData;
         int bottomScreenBgTilemapId;
 
-        void *buffer = AllocFromHeap(HEAP_ID_BATTLE, 0x800);
+        void *buffer = Heap_Alloc(HEAP_ID_BATTLE, 0x800);
         battleInput->screenBuffer[i] = buffer;
 
         if (BattleSystem_IsInFrontier(battleSystem) && sBottomScreenBgTilemapId[i] == 43) {
@@ -1281,7 +1281,7 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     }
 
     int bottomScreenBgPaletteId = (BattleSystem_IsInFrontier(battleSystem)) ? 349 : 246;
-    battleInput->paletteBuffer = AllocFromHeap(HEAP_ID_BATTLE, 0x200);
+    battleInput->paletteBuffer = Heap_Alloc(HEAP_ID_BATTLE, 0x200);
 
     PaletteData_LoadNarc(palette, NARC_a_0_0_7, bottomScreenBgPaletteId, HEAP_ID_BATTLE, PLTTBUF_SUB_BG, 0, 0);
 
@@ -1298,12 +1298,12 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < MAX_MON_MOVES; j++) {
-            battleInput->moveMemory[i].typeIcon[j] = AllocFromHeap(HEAP_ID_BATTLE, sub_0208805C(6));
+            battleInput->moveMemory[i].typeIcon[j] = Heap_Alloc(HEAP_ID_BATTLE, sub_0208805C(6));
         }
     }
 
-    battleInput->bgPalNormal = AllocFromHeap(HEAP_ID_BATTLE, 0x40);
-    battleInput->bgPalTouch = AllocFromHeap(HEAP_ID_BATTLE, 0x40);
+    battleInput->bgPalNormal = Heap_Alloc(HEAP_ID_BATTLE, 0x40);
+    battleInput->bgPalTouch = Heap_Alloc(HEAP_ID_BATTLE, 0x40);
 
     MI_CpuCopy16(battleInput->paletteBuffer, battleInput->bgPalNormal, 0x20);
     MI_CpuCopy16(&battleInput->paletteBuffer[7 * 16], &battleInput->bgPalNormal[16], 0x20);
@@ -1803,7 +1803,7 @@ static void BattleInput_InitMenuSlideIn(BattleInput *battleInput, int battlerId)
     G2S_SetWnd1Position(0, (18 * 8), 255, 192);
     GXS_SetVisibleWnd(GX_WNDMASK_W0 | GX_WNDMASK_W1);
 
-    BattleMenuSlideIn *menuSlideIn = AllocFromHeap(HEAP_ID_BATTLE, sizeof(BattleMenuSlideIn));
+    BattleMenuSlideIn *menuSlideIn = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleMenuSlideIn));
     MI_CpuClear8(menuSlideIn, sizeof(BattleMenuSlideIn));
 
     menuSlideIn->battleInput = battleInput;

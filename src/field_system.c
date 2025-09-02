@@ -94,7 +94,7 @@ void FieldSystem_LoadFieldOverlayInternal(FieldSystem *fieldSystem) {
 
     fieldSystem->unk6C = FALSE;
     fieldSystem->unk0->isPaused = FALSE;
-    fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD);
+    fieldSystem->unk0->unk0 = OverlayManager_New(&ov01_02206378, fieldSystem, HEAP_ID_FIELD2);
 }
 
 void sub_0203DF34(FieldSystem *fieldSystem) {
@@ -129,16 +129,16 @@ void FieldSystem_LaunchApplication(FieldSystem *fieldSystem, const OverlayManage
 
     sub_0203DF34(fieldSystem);
 
-    fieldSystem->unk0->unk4 = OverlayManager_New(template, parentWork, HEAP_ID_FIELD);
+    fieldSystem->unk0->unk4 = OverlayManager_New(template, parentWork, HEAP_ID_FIELD2);
 }
 
 FieldSystem *FieldSystem_New(OverlayManager *man) {
-    CreateHeap(HEAP_ID_3, HEAP_ID_FIELD, 0x1C000);
-    CreateHeap(HEAP_ID_3, HEAP_ID_32, 0x4000);
-    CreateHeap(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
-    FieldSystem *fieldSystem = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD);
+    Heap_Create(HEAP_ID_3, HEAP_ID_FIELD2, 0x1C000);
+    Heap_Create(HEAP_ID_3, HEAP_ID_FIELD3, 0x4000);
+    Heap_Create(HEAP_ID_DEFAULT, HEAP_ID_89, 0x570);
+    FieldSystem *fieldSystem = OverlayManager_CreateAndGetData(man, sizeof(FieldSystem), HEAP_ID_FIELD2);
     MI_CpuFill8(fieldSystem, 0, sizeof(FieldSystem));
-    fieldSystem->unk0 = AllocFromHeap(HEAP_ID_FIELD, sizeof(struct FieldSystemUnkSub0));
+    fieldSystem->unk0 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(struct FieldSystemUnkSub0));
 
     fieldSystem->unk0->unk0 = NULL;
     fieldSystem->unk0->unk4 = NULL;
@@ -163,9 +163,9 @@ void FieldSystem_Delete(OverlayManager *man) {
     GearPhoneRingManager_Delete(fieldSystem->phoneRingManager);
     Heap_Free(fieldSystem->unk0);
     OverlayManager_FreeData(man);
-    DestroyHeap(HEAP_ID_89);
-    DestroyHeap(HEAP_ID_FIELD);
-    DestroyHeap(HEAP_ID_32);
+    Heap_Destroy(HEAP_ID_89);
+    Heap_Destroy(HEAP_ID_FIELD2);
+    Heap_Destroy(HEAP_ID_FIELD3);
 }
 
 static void ppOverlayManager_RunFrame_DeleteIfFinished(OverlayManager **man) {

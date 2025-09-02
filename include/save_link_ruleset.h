@@ -49,7 +49,7 @@ u32 Save_LinkBattleRuleset_sizeof(void);
 void LinkBattleRuleset_Copy(const LinkBattleRuleset *src, LinkBattleRuleset *dst);
 void Save_LinkBattleRuleset_Init(Save_LinkBattleRuleset *ruleset);
 void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *dest);
-String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, HeapID heapId);
+String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, enum HeapID heapID);
 int LinkBattleRuleset_GetRuleValue(const LinkBattleRuleset *ruleset, LinkBattleRule rule);
 LinkBattleRuleset *Save_LinkBattleRuleset_GetByIndex(SaveData *saveData, int a1);
 void Save_LinkBattleRuleset_Set(SaveData *saveData, const LinkBattleRuleset *rule);

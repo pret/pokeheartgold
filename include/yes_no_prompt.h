@@ -50,7 +50,7 @@ typedef struct YesNoPrompt {
     YesNoPromptButton buttons[2];
     BgConfig *bgConfig;
     u32 bgId;
-    HeapID heapId;
+    enum HeapID heapID;
     fx32 unk68[2];
     u8 x;
     u8 y;
@@ -66,7 +66,7 @@ typedef struct YesNoPrompt {
     u8 lastTouchEvent : 4;
 } YesNoPrompt;
 
-YesNoPrompt *YesNoPrompt_Create(HeapID);
+YesNoPrompt *YesNoPrompt_Create(enum HeapID);
 void YesNoPrompt_Destroy(YesNoPrompt *);
 void YesNoPrompt_Reset(YesNoPrompt *);
 void YesNoPrompt_InitFromTemplate(YesNoPrompt *, const YesNoPromptTemplate *);

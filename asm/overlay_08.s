@@ -2338,7 +2338,7 @@ ov08_0221CF38: ; 0x0221CF38
 	ldr r0, [r5]
 	mov r1, #0x20
 	ldr r0, [r0, #0xc]
-	bl AllocFromHeap
+	bl Heap_Alloc
 	mov r1, #0x1a
 	lsl r1, r1, #4
 	add r1, r6, r1
@@ -11784,7 +11784,7 @@ ov08_02221E6C: ; 0x02221E6C
 	mul r1, r7
 	ldr r0, [r0, #0xc]
 	lsl r1, r1, #1
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
@@ -17028,7 +17028,7 @@ ov08_022247E4: ; 0x022247E4
 	mul r1, r7
 	ldr r0, [r0, #0xc]
 	lsl r1, r1, #1
-	bl AllocFromHeap
+	bl Heap_Alloc
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
@@ -17467,7 +17467,7 @@ _02224B60: .word 0x0000114D
 ov08_02224B64: ; 0x02224B64
 	push {r3, lr}
 	mov r1, #0x10
-	bl AllocFromHeap
+	bl Heap_Alloc
 	add r3, r0, #0
 	mov r2, #0x10
 	mov r1, #0

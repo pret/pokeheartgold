@@ -14,7 +14,7 @@
 .public sub_020154D0
 .public sub_02015524
 .public sub_02015528
-.public AllocFromHeap
+.public Heap_Alloc
 .public Heap_Free
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
