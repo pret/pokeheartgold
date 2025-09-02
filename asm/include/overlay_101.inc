@@ -254,7 +254,7 @@
 .public Save_VarsFlags_ClearFlagInArray
 .public GetOakJohtoDexRating
 .public GetOakNationalDexRating
-.public sub_0205C7EC
+.public PlayerSaveData_GetState
 .public CheckGameClearFlag
 .public Save_VarsFlags_MomsSavingsFlagAction
 .public Save_VarsFlags_MomsSavingsFlagCheck

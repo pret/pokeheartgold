@@ -198,8 +198,8 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
     PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
     if (FollowMon_IsActive(fieldSystem)) {
         LocalMapObject *object = FollowMon_GetMapObject(fieldSystem);
-        u32 followingMonX = MapObject_GetCurrentX(object);
-        u32 followingMonZ = MapObject_GetCurrentZ(object);
+        u32 followingMonX = MapObject_GetXCoord(object);
+        u32 followingMonZ = MapObject_GetZCoord(object);
         if (inFrontX == followingMonX && inFrontY == followingMonZ) {
             u8 dir = MapObject_GetFacingDirection(object);
             inFrontX = GetDeltaXByFacingDirection(dir) + followingMonX;

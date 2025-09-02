@@ -111,7 +111,7 @@ ov04_02253ED4: ; 0x02253ED4
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r0, #2
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
@@ -290,14 +290,14 @@ _02254026:
 _02254060:
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
 	add r1, r1, r0
 	str r1, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C838
+	bl PlayerAvatar_SetMapObjectYPosition
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	bl ov01_02205A34
@@ -316,7 +316,7 @@ _0225408C:
 	bl ov01_021FB4A0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+	bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 	ldr r0, _022540BC ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
@@ -388,14 +388,14 @@ _022540F6:
 _02254130:
 	ldr r0, [r4, #0x40]
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0x10
 	sub r1, r1, r0
 	str r1, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C838
+	bl PlayerAvatar_SetMapObjectYPosition
 	ldr r1, [sp, #4]
 	add r0, r4, #0
 	bl ov01_02205A34
@@ -414,7 +414,7 @@ _0225415C:
 	bl ov01_021FB4A0
 	ldr r0, [r4, #0x40]
 	mov r1, #1
-	bl PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply
+	bl PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate
 	ldr r0, _0225418C ; =SEQ_SE_DP_KI_GASYAN
 	bl PlaySE
 	add r0, r6, #0
@@ -1392,7 +1392,7 @@ _0225494A:
 	mov r0, #0
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVector
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 _0225495E:
@@ -2313,10 +2313,10 @@ _022550A8:
 	pop {r4, r5, r6, pc}
 _022550B4:
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	lsl r1, r6, #0x10
 	lsl r2, r2, #0x10
@@ -3854,10 +3854,10 @@ _02255BA6:
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r2, r0, #0
 	lsl r1, r5, #0x10
 	lsl r2, r2, #0x10

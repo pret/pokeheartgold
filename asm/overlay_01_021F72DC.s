@@ -378,7 +378,7 @@ _021F7524:
 	add r1, sp, #0x30
 	bl MapObject_CopyPositionVector
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10
@@ -388,12 +388,12 @@ _021F7524:
 	add r0, r5, #0
 	bl MapObject_SetPreviousX
 	add r0, r5, #0
-	bl MapObject_GetCurrentY
+	bl MapObject_GetYCoord
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_SetPreviousY
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r1, r0, #0
 	mov r0, #2
 	lsl r2, r1, #0x10

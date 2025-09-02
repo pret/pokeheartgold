@@ -13,8 +13,8 @@
 .public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetZCoord
 .public MapObject_GetPositionVectorYCoord
 .public sub_0206121C
 .public sub_02068D90

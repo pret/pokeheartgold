@@ -27,9 +27,9 @@
 .public MapObject_SetPreviousX
 .public MapObject_SetPreviousY
 .public MapObject_SetPreviousZ
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetYCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
 .public MapObject_CopyFacingVector

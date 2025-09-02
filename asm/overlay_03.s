@@ -9609,13 +9609,13 @@ ScrCmd_720: ; 0x02258A18
 	bl PlayerAvatar_GetFacingDirection
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
 	add r0, r4, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	bl GetDeltaYByFacingDirection

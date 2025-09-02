@@ -243,9 +243,9 @@
 .public sub_0205BAE4
 .public sub_0205BB04
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
-.public PlayerAvatar_GetPositionVec
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
+.public PlayerAvatar_CopyPositionVector
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetGender
@@ -268,8 +268,8 @@
 .public MapObject_SetVisible
 .public MapObject_PauseMovement
 .public MapObject_UnpauseMovement
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
 .public GetDeltaXByFacingDirection

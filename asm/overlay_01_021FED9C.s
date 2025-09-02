@@ -96,7 +96,7 @@ ov01_021FEE04: ; 0x021FEE04
 	add r0, r1, r0
 	str r0, [sp, #0x18]
 	add r0, r5, #0
-	bl MapObject_GetPreviousY
+	bl MapObject_GetPreviousYCoord
 	lsl r1, r0, #0xf
 	mov r0, #2
 	lsl r0, r0, #0xe

@@ -1074,20 +1074,20 @@ _02063A90: .word _020FE164
 sub_02063A94: ; 0x02063A94
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	cmp r5, r0
 	beq _02063AAC
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 _02063AAC:
 	add r0, r4, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	cmp r5, r0
 	beq _02063AC2
 	mov r0, #1
@@ -1102,20 +1102,20 @@ _02063AC2:
 sub_02063AC8: ; 0x02063AC8
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	cmp r5, r0
 	beq _02063AE0
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _02063AE0:
 	add r0, r4, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	cmp r5, r0
 	bne _02063AF6
 	mov r0, #1
@@ -2176,10 +2176,10 @@ sub_020642C4: ; 0x020642C4
 	cmp r0, #1
 	bne _02064332
 	add r0, r4, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r7, r0, #0
 	add r0, r4, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
@@ -2220,10 +2220,10 @@ _02064332:
 	cmp r0, #2
 	bne _02064394
 	add r0, r4, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [sp, #0x10]
 	add r0, r4, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -2295,11 +2295,11 @@ sub_020643B8: ; 0x020643B8
 	add r5, r1, #0
 	add r6, r2, #0
 	add r4, r3, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	cmp r0, r6
 	bne _020643DE
 	add r0, r7, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	cmp r4, r0
 	bge _020643DE
 	sub r1, r0, r5
@@ -2320,11 +2320,11 @@ sub_020643E4: ; 0x020643E4
 	add r5, r1, #0
 	add r6, r2, #0
 	add r4, r3, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	cmp r0, r6
 	bne _0206440A
 	add r0, r7, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	cmp r4, r0
 	ble _0206440A
 	add r1, r0, r5
@@ -2345,11 +2345,11 @@ sub_02064410: ; 0x02064410
 	add r6, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	cmp r0, r4
 	bne _02064436
 	add r0, r7, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	cmp r5, r0
 	bge _02064436
 	sub r1, r0, r6
@@ -2370,11 +2370,11 @@ sub_0206443C: ; 0x0206443C
 	add r6, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	cmp r0, r4
 	bne _02064462
 	add r0, r7, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	cmp r5, r0
 	ble _02064462
 	add r1, r0, r6
@@ -2401,13 +2401,13 @@ sub_02064468: ; 0x02064468
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _0206447C:
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	ldr r0, [sp, #4]
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r7, r0, #0
 	ldr r0, [sp, #4]
-	bl MapObject_GetCurrentY
+	bl MapObject_GetYCoord
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	bl GetDeltaXByFacingDirection
@@ -2950,16 +2950,16 @@ sub_02064824: ; 0x02064824
 	ldr r0, [r5, #0x28]
 	bl PlayerAvatar_GetMapObject
 	add r4, r0, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r7, r0, #0
 	ldr r0, [r5, #0x24]
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x24]
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r3, r0, #0
 	ldr r2, [sp]
 	add r0, r6, #0
