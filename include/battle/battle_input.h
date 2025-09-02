@@ -11,16 +11,16 @@
 #include "touchscreen.h"
 #include "unk_02013534.h"
 
-typedef struct BattleInputMainScreen {
+typedef struct BattleInputMainMenu {
     u8 battlerType;
     u8 battlerId;
     u8 selectedMon;
     u8 monIconStatus;
     s16 hp;
     u16 maxHp;
-    u8 cancelRun;
+    u8 cancelRunDisplay;
     u8 unused[3];
-} BattleInputMainScreen;
+} BattleInputMainMenu;
 
 typedef struct BattleInputFightMenu {
     u16 moveNo[4];
@@ -41,7 +41,7 @@ typedef struct BattleInputTwoOptionMenu {
 } BattleInputTwoOptionMenu;
 
 typedef union BattleInputMenu {
-    BattleInputMainScreen main;
+    BattleInputMainMenu main;
     BattleInputFightMenu fight;
     BattleInputTargetMenu target;
     BattleInputTwoOptionMenu twoOption;
@@ -78,6 +78,7 @@ typedef struct BattleInputTextObject {
     UnkStruct_02021AC8 unk4;
     u16 fontLength;
 } BattleInputTextObject;
+
 typedef struct {
     BattleInput *battleInput;
     SysTask *vblankTask;
@@ -89,6 +90,7 @@ typedef struct {
     u8 battlerId;
     u8 state;
 } BattleMenuSlideIn;
+
 typedef struct BallGaugeAnimation {
     s16 xOffset;
     u8 percentExpToNextLevel;
@@ -155,6 +157,7 @@ typedef struct BattleMenuCursor {
     s8 menuX;
     u8 unused;
 } BattleMenuCursor;
+
 typedef struct BattleInputTutorial {
     BattleFinger *finger;
     u8 state;
@@ -179,7 +182,7 @@ struct BattleInput {
     BattleInputMoveMemory moveMemory[4]; // Holds the move display info for ALL the currently active pokemon
     void *fontSystem;
     BattleInputTextObject textObj[13];
-    void *unk67C; // 5B8
+    void *unk5B8;
     ManagedSprite *spriteBallGauge[6];
     ManagedSprite *spriteBallGaugeOpponent[6];
     ManagedSprite *spriteTypeIcons[4];
@@ -195,9 +198,9 @@ struct BattleInput {
     u8 monTargetType;
     u8 gender;
     u8 isTouchDisabled;
-    u8 unk6F3; // true when cancel is displayed, false when run is displayed
-    u8 unk6F4; // 670
-    s16 unk6F5;
+    u8 unk66F; // true when cancel is displayed, false when run is displayed
+    u8 unk670;
+    s16 unk671;
     u8 fadeDir;
     s16 fadeCur;
     SysTask *fadeTask;
@@ -207,9 +210,9 @@ struct BattleInput {
     s32 scrollXSpeed;
     s32 scrollXEnd;
     BattleCursor *cursor;
-    BattleMenuCursor cursorData;
+    BattleMenuCursor menuCursor;
     u8 keyPressed;
-    u8 cancelRun; // needs a better name; controls if cancel or run should be displayed as the bottom middle button in the current menu
+    u8 cancelRunDisplay;
     BattleInputTutorial tutorial;
     ManagedSprite *spriteCaughtBugIcon;
     ManagedSprite *spriteBugNet;

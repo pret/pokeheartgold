@@ -255,9 +255,9 @@ static const UnkStruct_ov12_0226D408 ov12_0226D408[] = {
     { 0,     0    },
 };
 
-static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
-static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType);
-static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHandler, int barType);
+static void ov12_02264824(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType);
+static void ov12_022648EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType);
+static ManagedSprite *ov12_02264968(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int barType);
 static void ov12_02264B28(BattleHpBar *hpBar);
 static void ov12_02264B4C(BattleHpBar *hpBar);
 static void ov12_02264B60(BattleHpBar *hpBar);
@@ -449,34 +449,34 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
 
 #include "battle/battle_hp_bar_data.h"
 
-static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
+static void ov12_02264824(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType) {
     const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
 
-    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
-    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
-    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CELL], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_CELL]);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_ANIM], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_ANIM]);
-    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20007);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CELL], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_CELL]);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_ANIM], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_ANIM]);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20007);
     if (barType == 6 || barType == 7) {
-        SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 81, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20008);
+        SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 81, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20008);
     }
 }
 
-static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
+static void ov12_022648EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType) {
     const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetArrowSpriteTemplate(barType);
 
     if (pRes != NULL) {
-        SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
-        SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
-        SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CELL], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_CELL]);
-        SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_ANIM], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_ANIM]);
+        SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
+        SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
+        SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_CELL], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_CELL]);
+        SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, pRes->resIdList[GF_GFX_RES_TYPE_ANIM], TRUE, pRes->resIdList[GF_GFX_RES_TYPE_ANIM]);
     }
 }
 
-static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHandler, int barType) {
+static ManagedSprite *ov12_02264968(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int barType) {
     const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
 
-    ManagedSprite *ret = SpriteSystem_NewSprite(renderer, gfxHandler, pRes);
+    ManagedSprite *ret = SpriteSystem_NewSprite(spriteSystem, spriteManager, pRes);
     Sprite_TickFrame(ret->sprite);
     return ret;
 }
@@ -603,44 +603,44 @@ static void ov12_02264B4C(BattleHpBar *hpBar) {
 
 static void ov12_02264B60(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
-    SpriteSystem *renderer = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
-    SpriteManager *gfxHandler = BattleSystem_GetSpriteManager(hpBar->battleSystem);
-    SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
-    SpriteManager_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
-    SpriteManager_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
+    SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
+    SpriteManager *spriteManager = BattleSystem_GetSpriteManager(hpBar->battleSystem);
+    SpriteManager_UnloadCharObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
+    SpriteManager_UnloadCellObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
+    SpriteManager_UnloadAnimObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
 }
 
 static void ov12_02264B94(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(hpBar->type);
     if (tmplate != NULL) {
-        SpriteSystem *renderer = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
-        SpriteManager *gfxHandler = BattleSystem_GetSpriteManager(hpBar->battleSystem);
-        SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
-        SpriteManager_UnloadCellObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
-        SpriteManager_UnloadAnimObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
+        SpriteSystem *spriteSystem = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
+        SpriteManager *spriteManager = BattleSystem_GetSpriteManager(hpBar->battleSystem);
+        SpriteManager_UnloadCharObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
+        SpriteManager_UnloadCellObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_CELL]);
+        SpriteManager_UnloadAnimObjById(spriteManager, tmplate->resIdList[GF_GFX_RES_TYPE_ANIM]);
     }
 }
 
 #ifdef NONMATCHING
 void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
     const ManagedSpriteTemplate *tmplate;
-    SpriteSystem *renderer;
-    SpriteManager *gfxHandler;
+    SpriteSystem *spriteSystem;
+    SpriteManager *spriteManager;
     PaletteData *plttData;
     NARC *narc;
 
     narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    renderer = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
-    gfxHandler = BattleSystem_GetSpriteManager(hpBar->battleSystem);
+    spriteSystem = BattleSystem_GetSpriteSystem(hpBar->battleSystem);
+    spriteManager = BattleSystem_GetSpriteManager(hpBar->battleSystem);
     plttData = BattleSystem_GetPaletteData(hpBar->battleSystem);
 
     tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
-    ov12_02264824(renderer, gfxHandler, narc, plttData, hpBar->type);
-    hpBar->boxObj = ov12_02264968(renderer, gfxHandler, hpBar->type);
+    ov12_02264824(spriteSystem, spriteManager, narc, plttData, hpBar->type);
+    hpBar->boxObj = ov12_02264968(spriteSystem, spriteManager, hpBar->type);
 
-    ov12_022648EC(renderer, gfxHandler, narc, plttData, hpBar->type);
+    ov12_022648EC(spriteSystem, spriteManager, narc, plttData, hpBar->type);
     if (hpBar->arrowObj != NULL) {
         Sprite_SetPositionXY(hpBar->arrowObj->sprite, tmplate->x - sHpBarArrowXOffsets[hpBar->type], tmplate->y + 0);
     }
@@ -1687,13 +1687,13 @@ SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattleHpBar *hpBar, u8 *a1) {
 
 static void Task_ExpBarFullFlash(SysTask *task, void *data) {
     BattleHpBarExpBarFullFlashEffectTaskData *taskData = data;
-    SpriteManager *gfxHandler = BattleSystem_GetSpriteManager(taskData->hpBar->battleSystem);
+    SpriteManager *spriteManager = BattleSystem_GetSpriteManager(taskData->hpBar->battleSystem);
     int plttNum;
     PaletteData *plttData = BattleSystem_GetPaletteData(taskData->hpBar->battleSystem);
 
     switch (taskData->state) {
     case 0:
-        plttNum = SpriteManager_FindPlttResourceOffset(gfxHandler, 20007, NNS_G2D_VRAM_TYPE_2DMAIN);
+        plttNum = SpriteManager_FindPlttResourceOffset(spriteManager, 20007, NNS_G2D_VRAM_TYPE_2DMAIN);
         ManagedSprite_SetPaletteOverride(taskData->hpBar->boxObj, plttNum);
         taskData->plttNum = plttNum;
         ++taskData->state;
@@ -1715,7 +1715,7 @@ static void Task_ExpBarFullFlash(SysTask *task, void *data) {
         PaletteData_BlendPalette(plttData, PLTTBUF_MAIN_OBJ, 16 * taskData->plttNum, 0x10, taskData->ev, RGB(5, 29, 28));
         break;
     default:
-        plttNum = SpriteManager_FindPlttResourceOffset(gfxHandler, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
+        plttNum = SpriteManager_FindPlttResourceOffset(spriteManager, 20006, NNS_G2D_VRAM_TYPE_2DMAIN);
         ManagedSprite_SetPaletteOverride(taskData->hpBar->boxObj, plttNum);
         *taskData->pDoneFlag = 1;
         Heap_Free(taskData);

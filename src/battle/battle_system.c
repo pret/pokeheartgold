@@ -13,7 +13,6 @@
 #include "battle/battle_hp_bar.h"
 #include "battle/battle_input.h"
 #include "battle/overlay_12_0224E4FC.h"
-#include "battle/overlay_12_02266024.h"
 #include "battle/overlay_12_0226BEC4.h"
 #include "msgdata/msg/msg_0197.h"
 
@@ -254,10 +253,10 @@ u32 BattleSystem_GetTrainerGender(BattleSystem *battleSystem, int battlerId) {
     return PlayerProfile_GetTrainerGender(battleSystem->playerProfile[battlerId]);
 }
 
-int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int a1) {
+int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int battlerType) {
     int battlerId;
     for (battlerId = 0; battlerId < battleSystem->maxBattlers; battlerId++) {
-        if (ov12_02261258(battleSystem->opponentData[battlerId]) == a1) {
+        if (ov12_02261258(battleSystem->opponentData[battlerId]) == battlerType) {
             break;
         }
     }
@@ -291,7 +290,7 @@ Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem) {
 }
 
 int BattleSystem_GetBgId(BattleSystem *battleSystem) {
-    return battleSystem->unk2404;
+    return battleSystem->backgroundId;
 }
 
 int BattleSystem_GetLocation(BattleSystem *battleSystem) {
@@ -650,7 +649,7 @@ int BattleSystem_GetTimezone(BattleSystem *battleSystem) {
 int ov12_0223B52C(BattleSystem *battleSystem) {
     int ret;
 
-    switch (battleSystem->unk2404) {
+    switch (battleSystem->backgroundId) {
     case 0:
     case 1:
     case 2:
@@ -1246,7 +1245,7 @@ u8 BattleSystem_GetChatotVoiceParam(BattleSystem *battleSystem, int battlerId) {
 }
 
 Pokemon *BattleSystem_GetBugContestCaughtMon(BattleSystem *battleSystem) {
-    return battleSystem->unk2488;
+    return battleSystem->bugContestCaughtMon;
 }
 
 u8 ov12_0223C140(BattleSystem *battleSystem, u32 battlerId) {

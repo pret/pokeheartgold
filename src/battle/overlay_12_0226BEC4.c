@@ -4,7 +4,6 @@
 
 #include "battle/battle_input.h"
 #include "battle/battle_system.h"
-#include "battle/overlay_12_02266024.h"
 
 #include "heap.h"
 #include "sys_task.h"

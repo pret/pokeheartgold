@@ -24,7 +24,7 @@ BOOL ov12_02238358(OverlayManager *man);
 void ov12_0223843C(OverlayManager *man);
 BOOL ov12_0223A3F0(OverlayManager *man);
 BOOL ov12_0223A5E4(OverlayManager *man);
-void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *);
+void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *bgConfig);
 void ov12_0223A620(BattleSystem *battleSystem);
 
 // the following functions aren't static/haven't been checked to their status and are yet to be decompiled

@@ -4,7 +4,7 @@
 #include "bg_window.h"
 #include "heap.h"
 
-typedef struct {
+typedef struct FontOAMInitData {
     void *fontSystem;
     const Window *window;
     SpriteList *spriteList;

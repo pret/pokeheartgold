@@ -614,8 +614,7 @@ static inline GXBg23ControlDCBmp G2S_GetBG3ControlDCBmp(void) {
     return *(volatile GXBg23ControlDCBmp *)&reg_G2S_DB_BG3CNT;
 }
 
-static inline void * G2S_GetOBJCharPtr (void)
-{
+static inline void *G2S_GetOBJCharPtr(void) {
 	return (void *)HW_DB_OBJ_VRAM;
 }
 

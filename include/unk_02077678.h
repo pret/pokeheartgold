@@ -4,7 +4,7 @@
 #include "sprite_system.h"
 
 int sub_02077678(int moveType);
-NarcId sub_020776B4();
+NarcId sub_020776B4(void);
 void sub_02077720(PaletteData *paletteData, int a1, SpriteSystem *spriteSystem, SpriteManager *spriteManager, int a4, int a5);
 void sub_0207775C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int a2, int a3);
 void sub_020776B8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int a4); // load type icon graphics?

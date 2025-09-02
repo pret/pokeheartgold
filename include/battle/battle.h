@@ -591,7 +591,7 @@ struct BattleSystem {
     u8 criticalHpMusic : 2;
     u8 criticalHpMusicDelay : 3;
     Terrain terrain;
-    int unk2404;
+    int backgroundId;
     int location;
     u32 battleSpecial;
     int timezone; // might be timeOfDay? unclear
@@ -626,7 +626,7 @@ struct BattleSystem {
     u32 unk2478;
     SysTask *unk247C;
     u8 chatotVoiceParam[4];
-    Pokemon *unk2488;
+    Pokemon *bugContestCaughtMon;
     u8 unk248C[4];
 };
 
