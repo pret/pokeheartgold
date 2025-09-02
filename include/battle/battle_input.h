@@ -79,7 +79,7 @@ typedef struct BattleInputTextObject {
     u16 fontLength;
 } BattleInputTextObject;
 
-typedef struct {
+typedef struct BattleMenuSlideIn {
     BattleInput *battleInput;
     SysTask *vblankTask;
     s16 x;
@@ -219,7 +219,7 @@ struct BattleInput {
     ManagedSprite *spriteSportBall;
 };
 
-BattleInput *BattleInput_New();
+BattleInput *BattleInput_New(void);
 void BgConfig_InitBattleMenuBackgrounds(BgConfig *config);
 void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config);
 void *BattleInput_NewInit(NARC *a0, NARC *a1, BattleSystem *battleSystem, u32 gender, u8 *a4);

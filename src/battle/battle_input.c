@@ -284,11 +284,13 @@ static const u8 sCursorArrayMainMenu[2][3] = {
 };
 
 static const TouchscreenHitbox ov12_0226E240[] = {
-    { .rect = {
-          .top = 0x18,
-          .bottom = 0x90,
-          .left = 0,
-          .right = 0xFF } },
+    {
+     .rect = {
+            .top = 0x18,
+            .bottom = 0x90,
+            .left = 0,
+            .right = 0xFF },
+     },
     {
      .rect = { .top = TOUCHSCREEN_RECTLIST_END, .bottom = 0, .left = 0, .right = 0 },
      },
@@ -1152,11 +1154,13 @@ static const s16 ov12_0226E228[] = { 0, 0xc0, 0x180 };
 
 ALIGN(4)
 static const TouchscreenHitbox ov12_0226E20C[] = {
-    { .rect = {
-          .top = 18,
-          .bottom = 23,
-          .left = 0,
-          .right = 31 } }
+    {
+     .rect = {
+            .top = 18,
+            .bottom = 23,
+            .left = 0,
+            .right = 31 },
+     },
 };
 
 static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
@@ -1240,7 +1244,6 @@ void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config) {
 
 void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSystem, u32 gender, u8 *a4) {
     BattleInput *battleInput = BattleInput_New();
-    ;
 
     battleInput->battleSystem = battleSystem;
     battleInput->gender = gender;
@@ -2812,8 +2815,8 @@ static void ov12_022686BC(BattleInput *battleInput) {
 }
 
 static BattleInputMoveMemory *BattleInput_GetMoveMemory(BattleInput *battleInput, int battlerType) {
-    if (battlerType >= 2) {
-        battlerType -= 2;
+    if (battlerType >= BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
+        battlerType -= BATTLER_TYPE_PLAYER_SIDE_SLOT_1;
     }
 
     return &battleInput->moveMemory[battlerType];
@@ -2955,7 +2958,7 @@ static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput) 
     SpriteSystem *renderer = BattleSystem_GetSpriteSystem(battleInput->battleSystem);
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < MAX_MON_MOVES; i++) {
         if (battleInput->spriteTypeIcons[i] != NULL) {
             thunk_ManagedSprite_DeleteAndFreeResources(battleInput->spriteTypeIcons[i]);
             battleInput->spriteTypeIcons[i] = NULL;
