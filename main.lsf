@@ -1299,29 +1299,29 @@ Overlay voltorb_flip
     Object src/voltorb_flip/voltorb_flip_data4.o
     Object src/voltorb_flip/voltorb_flip_data5.o
 }
-Overlay OVY_123
+Overlay ds_protect
 {
     After OVY_31
     Library dsprot.a
 }
 Overlay OVY_124
 {
-    After OVY_123
+    After ds_protect
     Object src/overlay_124.o
 }
 Overlay OVY_125
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_126
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_127
 {
-    After OVY_123
+    After ds_protect
 }
 Overlay OVY_128
 {
-    After OVY_123
+    After ds_protect
 }

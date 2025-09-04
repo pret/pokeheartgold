@@ -60,7 +60,7 @@ _021E594A: ; jump table
 	.short _021E5B5C - _021E594A - 2 ; case 2
 	.short _021E5B62 - _021E594A - 2 ; case 3
 _021E5952:
-	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(ds_protect)
 	mov r0, #0
 	bl FS_LoadOverlay
 	mov r0, #0
@@ -146,7 +146,7 @@ _021E59F0:
 	beq _021E5A12
 	bl GF_AssertFail
 _021E5A12:
-	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r1, _021E5BA0 ; =FS_OVERLAY_ID(ds_protect)
 	mov r0, #0
 	bl FS_UnloadOverlay
 	mov r0, #4
@@ -313,7 +313,7 @@ _021E5B8E:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5B9C: .word 0x00DCE6A1
-_021E5BA0: .word FS_OVERLAY_ID(OVY_123)
+_021E5BA0: .word FS_OVERLAY_ID(ds_protect)
 _021E5BA4: .word 0x04000050
 _021E5BA8: .word 0x04001050
 _021E5BAC: .word ov01_021E66A8
@@ -387,7 +387,7 @@ _021E5C42:
 _021E5C48:
 	b _021E5E76
 _021E5C4A:
-	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(ds_protect)
 	mov r0, #0
 	bl FS_LoadOverlay
 	add r0, r4, #0
@@ -468,7 +468,7 @@ _021E5CFA:
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x10]
 	bl ov01_021EB1BC
-	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r1, _021E5E80 ; =FS_OVERLAY_ID(ds_protect)
 	mov r0, #0
 	bl FS_UnloadOverlay
 	ldr r0, [r4, #4]
@@ -616,7 +616,7 @@ _021E5E76:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E5E7C: .word 0x002AAACF
-_021E5E80: .word FS_OVERLAY_ID(OVY_123)
+_021E5E80: .word FS_OVERLAY_ID(ds_protect)
 _021E5E84: .word ov01_021E66C8
 _021E5E88: .word 0x0000023B
 _021E5E8C: .word ov01_021E66DC

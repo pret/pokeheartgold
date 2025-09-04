@@ -23,7 +23,7 @@
 #include "unk_02005D10.h"
 #include "yes_no_prompt.h"
 
-FS_EXTERN_OVERLAY(OVY_123);
+FS_EXTERN_OVERLAY(ds_protect);
 
 enum TouchSaveApp_State {
     TOUCHSAVEAPP_STATE_DISPLAY_SAVE_INFORMATION,
@@ -215,7 +215,7 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, v
 void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     TouchSaveAppData *data = SysTask_GetData(task);
 
-    FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
+    FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
 
     if (!DSProt_DetectNotFlashcart(ov30_0225DC28)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
@@ -245,7 +245,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
-    FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
+    FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
 }
 
 BOOL ov30_0225D6FC(void *a0) {
