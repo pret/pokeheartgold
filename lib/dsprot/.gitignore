@@ -1,0 +1,8 @@
+**/build/**
+tools/mwccarm/**
+*.exe
+*.dll
+*.o
+*.so
+*.a
+*.d
