@@ -4,52 +4,35 @@
 
 MAKEFLAGS += --no-print-directory
 
-include ../../config.mk
-include ../../platform.mk
+MWCCVER := 2.0/sp2p3
 
-# Copy of fixdep from common.mk
+include ../../common.mk
+
+# Relevant directories
+BUILD_DIR  :=  ./build
+SRC_DIR    :=  ./src
+INC_DIR    :=  ./include
+TOOL_DIR   :=  ./tools
+
 ifeq ($(NODEP),)
-  ifneq ($(WINPATH),)
-    PROJECT_ROOT_NT := $(shell $(WINPATH) -w $(PROJECT_ROOT) | $(SED) 's/\\/\//g')
-    define fixdep
-    $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g; s#$(PROJECT_ROOT_NT)#$(PROJECT_ROOT)#g' $(1)
-    touch -r $(1:%.d=%.o) $(1)
-    endef
-  else
-    define fixdep
-    $(SED) -i 's/\r//g; s/\\/\//g; s/\/$$/\\/g' $(1)
-    touch -r $(1:%.d=%.o) $(1)
-    endef
-  endif
-
   DEP_PARAM := -gccdep -MD
   include $(wildcard $(BUILD_DIR)/*.d)
 else
   DEP_PARAM := 
 endif
 
-
-MWCCVER := 2.0/sp2p3
-
-# Relevant directories
-BUILD_DIR  :=  ../../build/$(buildname)/lib/dsprot
-SRC_DIR    :=  ./src
-INC_DIR    :=  ./include
-TOOL_DIR   :=  ./tools
-MW_DIR     :=  ../../tools/mwccarm/$(MWCCVER)
-
 $(shell mkdir -p $(BUILD_DIR))
+
+INSTALL_PREFIX ?= $(BUILD_DIR)
+INSTALL_LIBDIR := $(INSTALL_PREFIX)/lib
 
 ELFCODER_DIR := $(TOOL_DIR)/elfcoder
 
 # Tools
-ELFCODER  :=  $(ELFCODER_DIR)/build/elfcoder$(EXE)
-MWCC      :=  $(MW_DIR)/mwccarm.exe
-MWAS      :=  $(MW_DIR)/mwasmarm.exe
-MWLD      :=  $(MW_DIR)/mwldarm.exe
+ELFCODER := $(ELFCODER_DIR)/build/elfcoder$(EXE)
 
 # C / ASM compilation parameters
-CC_PARAM   :=  -O4,p -enum int -proc arm946E -gccext,on -fp soft -lang c99 -char signed -inline on,noauto -Cpp_exceptions off -interworking -i $(INC_DIR)
+CC_PARAM   :=  -O4,p -enum int -proc arm946E -gccext,on -fp soft -lang c99 -char signed -inline on,noauto -Cpp_exceptions off -interworking -i $(INC_DIR) -c
 ASM_PARAM  :=  -proc arm5TE -i $(INC_DIR)
 
 CC_PARAM   +=  -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
@@ -83,9 +66,10 @@ KEY_DSPROT_MAIN := 6AB2
 KEY_INTEGRITY   := 9785
 KEY_CORE_TESTS  := 0982
 
-.PHONY: all clean tools dsprot
+.PHONY: all clean tidy tools dsprot install
 .DELETE_ON_ERROR: 
 .NOTPARALLEL: 
+.SECONDARY: none
 
 all:
 	$(MAKE) tools
@@ -93,13 +77,19 @@ all:
 
 clean:
 	$(MAKE) -C $(ELFCODER_DIR) clean
-	$(RM) $(BUILD_DIR)/*
+	$(RM) -r $(BUILD_DIR)
+
+tidy: clean
 
 tools:
 	$(MAKE) -C $(ELFCODER_DIR)
 
 dsprot:
 	$(MAKE) $(BUILD_DIR)/$(LIBRARY_NAME)
+
+install: all
+	$(shell mkdir -p $(INSTALL_LIBDIR))
+	cp $(BUILD_DIR)/$(LIBRARY_NAME) $(INSTALL_LIBDIR)
 
 
 # Library output + header

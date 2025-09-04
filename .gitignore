@@ -11,6 +11,8 @@ tools/bin/**
 build/**
 sub/build/**
 
+lib/dsprot/build/**
+
 # CLion folders
 .idea/
 cmake-build-debug/
