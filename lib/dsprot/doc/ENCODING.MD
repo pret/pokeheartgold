@@ -22,9 +22,7 @@ This is likely simply to obscure the actual value of the reference.
 
 ## Function encoding and encrypting
 
-Used extensively by the library is the following function encoding scheme. It is designed to not fully scramble the instructions into apparent random noise, but rather to distort them into other, valid instructions such that a reverse engineer may not even realize they were encoded.
-
-There are two types of function encoding: unkeyed and keyed (encryption).
+Used extensively by the library is the following function encoding scheme. There are two types of function encoding: unkeyed and keyed (encryption).
 
 Unkeyed encoding is decoded using a static initializer, which is run automatically as soon as the overlay is loaded. Therefore, for almost all of the time the library is loaded into RAM, the unkeyed encoding is already removed.
 
@@ -136,8 +134,6 @@ Note the association between the two values `0x1300` and `0x4C2`. When encoding,
 Therefore, if the encoding procedure added `0x1300` to the *relocation*, the decoding procedure needs to subtract `0x4C2` from the instruction.
 
 Meanwhile, if the encoding procedure added `0x1300` to the *instruction*, the decoding procedure needs to (obviously) subtract `0x1300` from the instruction.
-
-*(In my opinion the smarter way to do this would have been to encode the relocation by incrementing it by `(0x1300 - 2) * 4 = 0x4BF8`, such that the resulting instruction would be incremented by `0x1300` and could then be decoded normally)*
 
 ### Encoding and linking
 
