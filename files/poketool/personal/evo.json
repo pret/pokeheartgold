@@ -3,7 +3,6 @@
     [
         { "baseSpecies": "SPECIES_BULBASAUR", "evos": [ { "method": "EVO_LEVEL", "param": 16, "target": "SPECIES_IVYSAUR" } ] },
         { "baseSpecies": "SPECIES_IVYSAUR", "evos": [ { "method": "EVO_LEVEL", "param": 32, "target": "SPECIES_VENUSAUR" } ] },
-        { "baseSpecies": "SPECIES_CHARMANDER", "evos": [ { "method": "EVO_LEVEL", "param": 36, "target": "SPECIES_VENUSAUR" } ] },
         { "baseSpecies": "SPECIES_CHARMANDER", "evos": [ { "method": "EVO_LEVEL", "param": 16, "target": "SPECIES_CHARMELEON" } ] },
         { "baseSpecies": "SPECIES_CHARMELEON", "evos": [ { "method": "EVO_LEVEL", "param": 36, "target": "SPECIES_CHARIZARD" } ] },
         { "baseSpecies": "SPECIES_SQUIRTLE", "evos": [ { "method": "EVO_LEVEL", "param": 16, "target": "SPECIES_WARTORTLE" } ] },
@@ -155,9 +154,9 @@
         { "baseSpecies": "SPECIES_PORYGON2", "evos": [ { "method": "EVO_TRADE_ITEM", "param": "ITEM_DUBIOUS_DISC", "target": "SPECIES_PORYGON_Z" } ] },
         { "baseSpecies": "SPECIES_TYROGUE", "evos":
             [
-                { "method": "EVO_LEVEL_ATK_LT_DEF", "param": "20", "target": "SPECIES_HITMONCHAN" },
-                { "method": "EVO_LEVEL_ATK_GT_DEF", "param": "20", "target": "SPECIES_HITMONLEE" },
-                { "method": "EVO_LEVEL_ATK_EQ_DEF", "param": "20", "target": "SPECIES_HITMONTOP" }
+                { "method": "EVO_LEVEL_ATK_LT_DEF", "param": 20, "target": "SPECIES_HITMONCHAN" },
+                { "method": "EVO_LEVEL_ATK_GT_DEF", "param": 20, "target": "SPECIES_HITMONLEE" },
+                { "method": "EVO_LEVEL_ATK_EQ_DEF", "param": 20, "target": "SPECIES_HITMONTOP" }
             ]
         },
         { "baseSpecies": "SPECIES_SMOOCHUM", "evos": [ { "method": "EVO_LEVEL", "param": 30, "target": "SPECIES_JYNX" } ] },
