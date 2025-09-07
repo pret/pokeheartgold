@@ -513,6 +513,7 @@ include files/fielddata/tsurepoke/tp_param.mk
 include files/application/choose_starter/choose_starter.mk
 include files/application/pokegear/pgear_gra.mk
 include files/application/pokegear/map/pgmap_gra.mk
+include files/application/pokegear/configure/pgconf_gra.mk
 include files/arc/ppark.mk
 include files/application/record/record.mk
 include files/application/voltorb_flip.mk
