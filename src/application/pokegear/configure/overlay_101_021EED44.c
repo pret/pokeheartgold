@@ -156,7 +156,7 @@ static void PokegearConfigure_LoadAndSetSkin(PokegearConfigureAppData *configure
     configureApp->skin = configureApp->selectedSkin;
     configureApp->pokegear->skin = configureApp->skin;
     PokegearApp_LoadSkinGraphics(configureApp->pokegear, configureApp->skin);
-    ov100_021E6A58(configureApp->pokegear->unk_094, configureApp->skin);
+    PokegearUIManager_LoadSkinGfx(configureApp->pokegear->uiManager, configureApp->skin);
     PokegearConfigure_LoadGraphics_Internal(configureApp);
     PokegearConfigure_LoadPalettes(configureApp, FALSE);
     PokegearConfigure_DrawUnlockedSkinsButtons(configureApp);

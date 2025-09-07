@@ -394,17 +394,17 @@ static void PokegearApp_FreePaletteData(PokegearAppData *pokegearApp) {
 
 static void PokegearApp_LoadGraphics(PokegearAppData *pokegearApp) {
     PokegearApp_CreateSpriteSystem(pokegearApp);
-    pokegearApp->unk_094 = ov100_021E69F8(pokegearApp->heapID, 11, 1, pokegearApp->skin, 3, 2);
+    pokegearApp->uiManager = PokegearUIManager_Create(pokegearApp->heapID, 11, 1, pokegearApp->skin, NNS_G2D_VRAM_TYPE_2DBOTH, 2);
     for (int i = 0; i < 4; ++i) {
-        pokegearApp->uiSprites[i] = ov100_021E6AC0(pokegearApp->unk_094, 0x40, 0x40, 0, 0, 0, i, i + 4, 0);
+        pokegearApp->uiSprites[i] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 64, 64, 0, 0, 0, i, i + 4, 0);
     }
-    pokegearApp->uiSprites[4] = ov100_021E6AC0(pokegearApp->unk_094, 0xAD, 0x30, 0, 0, 0, 4, 2, 1);
-    pokegearApp->uiSprites[5] = ov100_021E6AC0(pokegearApp->unk_094, 0x46, 0x2E, 0, 0, 0, 5, 0, 1);
-    pokegearApp->uiSprites[6] = ov100_021E6AC0(pokegearApp->unk_094, 0x56, 0x2E, 0, 0, 0, 6, 0, 1);
-    pokegearApp->uiSprites[7] = ov100_021E6AC0(pokegearApp->unk_094, 0x6E, 0x2E, 0, 0, 0, 7, 0, 1);
-    pokegearApp->uiSprites[8] = ov100_021E6AC0(pokegearApp->unk_094, 0x7E, 0x2E, 0, 0, 0, 8, 0, 1);
-    pokegearApp->uiSprites[9] = ov100_021E6AC0(pokegearApp->unk_094, 0x62, 0x2E, 0, 0, 0, 9, 1, 1);
-    pokegearApp->uiSprites[10] = ov100_021E6AC0(pokegearApp->unk_094, 0xC5, 0x30, 0, 0, 0, 10, 3, 1);
+    pokegearApp->uiSprites[4] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 173, 48, 0, 0, 0, 4, 2, 1);
+    pokegearApp->uiSprites[5] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 70, 46, 0, 0, 0, 5, 0, 1);
+    pokegearApp->uiSprites[6] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 86, 46, 0, 0, 0, 6, 0, 1);
+    pokegearApp->uiSprites[7] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 110, 46, 0, 0, 0, 7, 0, 1);
+    pokegearApp->uiSprites[8] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 126, 46, 0, 0, 0, 8, 0, 1);
+    pokegearApp->uiSprites[9] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 98, 46, 0, 0, 0, 9, 1, 1);
+    pokegearApp->uiSprites[10] = PokegearUIManager_CreateSprite(pokegearApp->uiManager, 197, 48, 0, 0, 0, 10, 3, 1);
     PokegearApp_UpdateClockSprites(pokegearApp, TRUE);
 
     ManagedSprite_SetAnimateFlag(pokegearApp->uiSprites[9], TRUE);
@@ -425,9 +425,9 @@ static void PokegearApp_LoadGraphics(PokegearAppData *pokegearApp) {
 static void PokegearApp_UnloadGraphics(PokegearAppData *pokegearApp) {
     for (int i = 0; i < 11; ++i) {
         ManagedSprite_SetDrawFlag(pokegearApp->uiSprites[i], FALSE);
-        ov100_021E6C44(pokegearApp->uiSprites[i]);
+        PokegearUIManager_DeleteSprite(pokegearApp->uiSprites[i]);
     }
-    ov100_021E6A3C(pokegearApp->unk_094);
+    PokegearUIManager_Delete(pokegearApp->uiManager);
     PokegearApp_DestroySpriteSystem(pokegearApp);
 }
 

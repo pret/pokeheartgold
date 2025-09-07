@@ -167,9 +167,9 @@ void PokegearApp_VBlankCB(void *cb_args) {
     }
 
     if (pokegearApp->spriteSystem != NULL) {
-        if (pokegearApp->unk_094 != NULL) {
+        if (pokegearApp->uiManager != NULL) {
             PokegearApp_UpdateClockSprites(pokegearApp, 0);
-            ov100_021E6AB0(pokegearApp->unk_094);
+            PokegearUIManager_AnimateSprites(pokegearApp->uiManager);
         }
         PokegearApp_DrawSprites(pokegearApp);
         SpriteSystem_TransferOam();
