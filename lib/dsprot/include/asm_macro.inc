@@ -10,6 +10,7 @@
 
 	.macro local_arm_func_start name
 	.balign 4, 0
+	.type \name, @function
 	.arm
 	.endm
 
