@@ -1,3 +1,4 @@
+#include "application/pokegear/configure/pgconf_gra.naix"
 #include "application/pokegear/configure/pokegear_configure_internal.h"
 
 #include "gf_gfx_loader.h"
@@ -34,10 +35,10 @@ static const PokegearConfigureContextMenuParam sContextMenuParam[] = {
 void PokegearConfigure_LoadGraphics_Internal(PokegearConfigureAppData *configureApp) {
     NARC *narc;
 
-    narc = NARC_New(NARC_a_1_4_5, configureApp->heapId);
-    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_a_1_4_5, 10 + configureApp->skin, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_a_1_4_5, 16 + configureApp->skin, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
-    configureApp->scrnDataRaw = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 22 + configureApp->skin, FALSE, &configureApp->scrnData, configureApp->heapId);
+    narc = NARC_New(NARC_application_pokegear_configure_pgconf_gra, configureApp->heapId);
+    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_application_pokegear_configure_pgconf_gra, NARC_pgconf_gra_pgconf_gra_00000010_NCGR + configureApp->skin, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(configureApp->pokegear->bgConfig, configureApp->heapId, narc, NARC_application_pokegear_configure_pgconf_gra, NARC_pgconf_gra_pgconf_gra_00000016_NSCR + configureApp->skin, GF_BG_LYR_MAIN_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
+    configureApp->scrnDataRaw = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_pgconf_gra_pgconf_gra_00000022_NSCR + configureApp->skin, FALSE, &configureApp->scrnData, configureApp->heapId);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(configureApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
 }
@@ -49,12 +50,12 @@ void PokegearConfigure_UnloadGraphics_Internal(PokegearConfigureAppData *configu
 void PokegearConfigure_LoadPalettes(PokegearConfigureAppData *configureApp, BOOL isInit) {
     NARC *narc;
 
-    narc = NARC_New(NARC_a_1_4_5, configureApp->heapId);
-    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 4 + configureApp->skin, configureApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 4 + configureApp->skin, configureApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    narc = NARC_New(NARC_application_pokegear_configure_pgconf_gra, configureApp->heapId);
+    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, NARC_pgconf_gra_pgconf_gra_00000004_NCLR + configureApp->skin, configureApp->heapId, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, NARC_pgconf_gra_pgconf_gra_00000004_NCLR + configureApp->skin, configureApp->heapId, PLTTBUF_SUB_BG, 0x180, 0, 0);
     if (isInit) {
-        PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 0, configureApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
-        PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, 0, configureApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
+        PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, NARC_pgconf_gra_pgconf_gra_00000000_NCLR, configureApp->heapId, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
+        PaletteData_LoadFromOpenNarc(configureApp->pokegear->plttData, narc, NARC_pgconf_gra_pgconf_gra_00000000_NCLR, configureApp->heapId, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
     }
     PaletteData_SetAutoTransparent(configureApp->pokegear->plttData, TRUE);
     if (isInit) {

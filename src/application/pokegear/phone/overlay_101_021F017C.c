@@ -343,10 +343,10 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
     FontID_Alloc(4, phoneApp->heapID);
-    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapID);
-    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->skin + 28, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->skin + 16, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->skin + 22, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
+    NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + 28, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + 16, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + 22, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
     phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->skin + 34, FALSE, &phoneApp->screenData, phoneApp->heapID);
     CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->screenData->rawData, 0, 0, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
     NARC_Delete(narc);
@@ -360,7 +360,7 @@ void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
-    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapID);
+    NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->skin + 10, phoneApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->skin + 4, phoneApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapID, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
