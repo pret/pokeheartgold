@@ -4,17 +4,17 @@
 u32 MACOwner_IsBad(void);
 u32 MACOwner_IsGood(void);
 
-#define MAC_ADDR_SIZE  (6)
+#define MAC_ADDR_SIZE (6)
 
-#define ENC_MAC_ADDR_BYTE  (0xFF)
+#define ENC_MAC_ADDR_BYTE (0xFF)
 
 static const u8 bad_mac_addr[MAC_ADDR_SIZE] = {
-	0x00 ^ ENC_MAC_ADDR_BYTE,
-	0x09 ^ ENC_MAC_ADDR_BYTE,
-	0xBF ^ ENC_MAC_ADDR_BYTE,
-	0x00 ^ ENC_MAC_ADDR_BYTE,
-	0x00 ^ ENC_MAC_ADDR_BYTE,
-	0x31 ^ ENC_MAC_ADDR_BYTE
+    0x00 ^ ENC_MAC_ADDR_BYTE,
+    0x09 ^ ENC_MAC_ADDR_BYTE,
+    0xBF ^ ENC_MAC_ADDR_BYTE,
+    0x00 ^ ENC_MAC_ADDR_BYTE,
+    0x00 ^ ENC_MAC_ADDR_BYTE,
+    0x31 ^ ENC_MAC_ADDR_BYTE
 };
 
 u32 MACOwner_IsBad(void) {
