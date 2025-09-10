@@ -1,9 +1,9 @@
 #include "application/pokegear/pokegear_internal.h"
 
-u16 PokegearCursorManager_GetFreeCursorSlot(PokegearCursorManager *cursorManager);
-void PokegearCursorManager_UpdateCursorSpritePosition(PokegearCursorManager *cursorManager, u16 index);
-void PokegearCursorManager_UpdateActiveCursorPosition(PokegearCursorManager *cursorManager, u8 move);
-u8 PokegearCursorManager_SetCursorPosition(PokegearCursorManager *cursorManager, u16 index, u8 newIndex);
+static u16 PokegearCursorManager_GetFreeCursorSlot(PokegearCursorManager *cursorManager);
+static void PokegearCursorManager_UpdateCursorSpritePosition(PokegearCursorManager *cursorManager, u16 index);
+static void PokegearCursorManager_UpdateActiveCursorPosition(PokegearCursorManager *cursorManager, u8 move);
+static u8 PokegearCursorManager_SetCursorPosition(PokegearCursorManager *cursorManager, u16 index, u8 newIndex);
 
 PokegearCursorManager *PokegearCursorManager_Alloc(int count, enum HeapID heapID) {
     PokegearCursorManager *ret = (PokegearCursorManager *)Heap_Alloc(heapID, sizeof(PokegearCursorManager));
@@ -66,7 +66,7 @@ BOOL PokegearCursorManager_RemoveCursor(PokegearCursorManager *cursorManager, u1
     return FALSE;
 }
 
-u16 PokegearCursorManager_GetFreeCursorSlot(PokegearCursorManager *cursorManager) {
+static u16 PokegearCursorManager_GetFreeCursorSlot(PokegearCursorManager *cursorManager) {
     for (u16 i = 0; i < cursorManager->count; ++i) {
         if (!cursorManager->cursors[i].active) {
             return i;
@@ -101,7 +101,7 @@ u16 PokegearCursorManager_SetCursorSpritesDrawState(PokegearCursorManager *curso
     return index;
 }
 
-void PokegearCursorManager_UpdateCursorSpritePosition(PokegearCursorManager *cursorManager, u16 index) {
+static void PokegearCursorManager_UpdateCursorSpritePosition(PokegearCursorManager *cursorManager, u16 index) {
     PokegearCursor *buttons;
     if (index == 0xFFFF) {
         buttons = cursorManager->lastCursor;
@@ -164,7 +164,7 @@ u8 PokegearCursorManager_GetSpecCursorPos(PokegearCursorManager *cursorManager, 
     }
 }
 
-void PokegearCursorManager_UpdateActiveCursorPosition(PokegearCursorManager *cursorManager, u8 move) {
+static void PokegearCursorManager_UpdateActiveCursorPosition(PokegearCursorManager *cursorManager, u8 move) {
     if (cursorManager->lastCursor != NULL) {
         PokegearCursorGrid *spec = &cursorManager->lastCursor->grid[cursorManager->lastCursor->cursorPos];
         u8 newIndex;
@@ -199,7 +199,7 @@ u8 PokegearCursorManager_SetActiveCursorPosition(PokegearCursorManager *cursorMa
     return PokegearCursorManager_SetCursorPosition(cursorManager, cursorManager->activeCursorIndex, newIndex);
 }
 
-u8 PokegearCursorManager_SetCursorPosition(PokegearCursorManager *cursorManager, u16 index, u8 newIndex) {
+static u8 PokegearCursorManager_SetCursorPosition(PokegearCursorManager *cursorManager, u16 index, u8 newIndex) {
     PokegearCursor *button;
     if (index == 0xFFFF) {
         button = cursorManager->lastCursor;
