@@ -121,7 +121,7 @@ typedef struct PokegearUIManager {
     enum HeapID heapID;
     int mode;
     u16 unk_008; // unused
-    u16 resCount;
+    u16 plttCount;
     u16 spriteCount;
     u16 vramType;
     SpriteList *spriteList;
