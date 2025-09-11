@@ -72,13 +72,13 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
 
     for (u32 idx = 0; idx < size; idx += 4) {
         switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + idx))) {
-        case 1:
-        case 2:
+        case INS_TYPE_BLX:
+        case INS_TYPE_BL:
             *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
             *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) + ENC_VAL_2) & 0x00FFFFFF);
             break;
 
-        case 3:
+        case INS_TYPE_B:
             *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
             *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) + ENC_VAL_1) & 0x00FFFFFF);
             break;
@@ -108,13 +108,13 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
 
     for (u32 idx = 0; idx < size; idx += 4) {
         switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + idx))) {
-        case 1:
-        case 2:
+        case INS_TYPE_BLX:
+        case INS_TYPE_BL:
             *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
             *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) - ENC_VAL_1) & 0x00FFFFFF);
             break;
 
-        case 3:
+        case INS_TYPE_B:
             *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
             *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) - ENC_VAL_2) & 0x00FFFFFF);
             break;

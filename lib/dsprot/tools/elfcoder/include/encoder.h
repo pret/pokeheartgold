@@ -31,14 +31,9 @@ typedef struct {
     int verbose;
 } EncodingTask;
 
-typedef struct {
-    int unused;
-} Encoding_Ctx;
-
-void Encode_Init(Encoding_Ctx *ctx, EncodingTask *task);
-void Encode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4);
+void Encode_Instruction(Instruction *ins, RC4_Ctx *rc4);
 void Encode_Relocation(Elf32_Rela *reloc);
-void Decode_Instruction(Encoding_Ctx *ctx, Instruction *ins, RC4_Ctx *rc4);
+void Decode_Instruction(Instruction *ins, RC4_Ctx *rc4);
 void Decode_Relocation(Elf32_Rela *reloc);
 
 #endif

@@ -8,6 +8,13 @@ typedef struct {
     u32 size;
 } FuncInfo;
 
+enum {
+    INS_TYPE_OTHER = 0,
+    INS_TYPE_BLX,
+    INS_TYPE_BL,
+    INS_TYPE_B
+};
+
 // Nitro functions
 // <nitro/os.h>
 extern void DC_FlushRange(const void *start_addr, u32 num_bytes);

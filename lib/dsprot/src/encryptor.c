@@ -4,6 +4,8 @@
 #include "encoding_constants.h"
 #include "rc4.h"
 
+#define ROTL(x, a)  ((a) == 0 ? (x) : (((x) << (a)) | ((x) >> (32 - (a)))))
+
 static void clearDataAndInstructionCache(void *start_addr, u32 num_bytes);
 
 static void clearDataAndInstructionCache(void *start_addr, u32 num_bytes) {
@@ -16,17 +18,17 @@ u32 Encryptor_CategorizeInstruction(u32 instruction) {
 
     if ((upper_byte & 0x0E) == 0x0A) {
         if ((upper_byte & 0xF0) == 0xF0) {
-            return 1;
+            return INS_TYPE_BLX;
         }
 
         if (upper_byte & 0x01) {
-            return 2;
+            return INS_TYPE_BL;
         } else {
-            return 3;
+            return INS_TYPE_B;
         }
     }
 
-    return 0;
+    return INS_TYPE_OTHER;
 }
 
 void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
@@ -48,12 +50,12 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
         u32 end_addr = addr + (size & ~3);
         for (; addr < end_addr; addr += 4) {
             switch (Encryptor_CategorizeInstruction(*(u32 *)addr)) {
-            case 1:
-            case 2:
+            case INS_TYPE_BLX:
+            case INS_TYPE_BL:
                 *(u32 *)addr = ((*(u32 *)addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)addr & 0x00FFFFFF) - ENC_VAL_1) & 0x00FFFFFF);
                 break;
 
-            case 3:
+            case INS_TYPE_B:
                 *(u32 *)addr = ((*(u32 *)addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)addr & 0x00FFFFFF) - ENC_VAL_2) & 0x00FFFFFF);
                 break;
 
@@ -83,10 +85,10 @@ void *Encryptor_DecryptFunction(u32 obfs_key, void *obfs_func_addr, u32 obfs_siz
     u32 size = obfs_size;
     size -= literal_obfs_offset;
 
-    expanded_key[0] = key ^ size;
-    expanded_key[1] = ((key << 8) | (key >> 24)) ^ size;
-    expanded_key[2] = ((key << 16) | (key >> 16)) ^ size;
-    expanded_key[3] = ((key << 24) | (key >> 8)) ^ size;
+    expanded_key[0] = ROTL(key,  0) ^ size;
+    expanded_key[1] = ROTL(key,  8) ^ size;
+    expanded_key[2] = ROTL(key, 16) ^ size;
+    expanded_key[3] = ROTL(key, 24) ^ size;
 
     void *func_addr = obfs_func_addr;
     func_addr -= ENC_VAL_1;
@@ -110,15 +112,10 @@ u32 Encryptor_EncryptFunction(u32 obfs_key, void *obfs_func_addr, u32 obfs_size)
     obfs_key = obfs_key - literal_obfs_offset + ((u32)func_addr >> 20);
     u32 new_key = obfs_key;
 
-    expanded_key[0] = new_key;
-    expanded_key[1] = new_key;
-    expanded_key[2] = new_key;
-    expanded_key[3] = new_key;
-
-    expanded_key[0] = ((expanded_key[0] << 0) | (expanded_key[1] >> 32)) ^ size;
-    expanded_key[1] = ((expanded_key[1] << 8) | (expanded_key[1] >> 24)) ^ size;
-    expanded_key[2] = ((expanded_key[2] << 16) | (expanded_key[2] >> 16)) ^ size;
-    expanded_key[3] = ((expanded_key[3] << 24) | (expanded_key[3] >> 8)) ^ size;
+    expanded_key[0] = ROTL(new_key,  0) ^ size;
+    expanded_key[1] = ROTL(new_key,  8) ^ size;
+    expanded_key[2] = ROTL(new_key, 16) ^ size;
+    expanded_key[3] = ROTL(new_key, 24) ^ size;
 
     func_addr -= ENC_VAL_1;
 
