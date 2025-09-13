@@ -10,7 +10,7 @@ typedef struct {
 
 enum {
     INS_TYPE_OTHER = 0,
-    INS_TYPE_BLX,
+    INS_TYPE_BLXIMM,
     INS_TYPE_BL,
     INS_TYPE_B
 };

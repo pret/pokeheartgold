@@ -72,16 +72,22 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
 
     for (u32 idx = 0; idx < size; idx += 4) {
         switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + idx))) {
-        case INS_TYPE_BLX:
-        case INS_TYPE_BL:
-            *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
-            *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) + ENC_VAL_2) & 0x00FFFFFF);
-            break;
+        case INS_TYPE_BLXIMM:
+        case INS_TYPE_BL: {
+            u32 *src_addr = (u32 *)(src_bytes + idx);
+            u32 *dst_addr = (u32 *)(dst_bytes + idx);
 
-        case INS_TYPE_B:
-            *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
-            *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) + ENC_VAL_1) & 0x00FFFFFF);
-            break;
+            *dst_addr = *src_addr;
+            *dst_addr = ((*dst_addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*dst_addr & 0x00FFFFFF) + ENC_VAL_2) & 0x00FFFFFF);
+        } break;
+
+        case INS_TYPE_B: {
+            u32 *src_addr = (u32 *)(src_bytes + idx);
+            u32 *dst_addr = (u32 *)(dst_bytes + idx);
+
+            *dst_addr = *src_addr;
+            *dst_addr = ((*dst_addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*dst_addr & 0x00FFFFFF) + ENC_VAL_1) & 0x00FFFFFF);
+        } break;
 
         default:
             dst_bytes[idx] = src_bytes[idx] ^ RC4_Byte(ctx);
@@ -108,16 +114,22 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
 
     for (u32 idx = 0; idx < size; idx += 4) {
         switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + idx))) {
-        case INS_TYPE_BLX:
-        case INS_TYPE_BL:
-            *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
-            *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) - ENC_VAL_1) & 0x00FFFFFF);
-            break;
+        case INS_TYPE_BLXIMM:
+        case INS_TYPE_BL: {
+            u32 *src_addr = (u32 *)(src_bytes + idx);
+            u32 *dst_addr = (u32 *)(dst_bytes + idx);
 
-        case INS_TYPE_B:
-            *(u32 *)(dst + idx) = *(u32 *)(src_bytes + idx);
-            *(u32 *)(dst + idx) = ((*(u32 *)(dst + idx) & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*(u32 *)(dst + idx) & 0x00FFFFFF) - ENC_VAL_2) & 0x00FFFFFF);
-            break;
+            *dst_addr = *src_addr;
+            *dst_addr = ((*dst_addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*dst_addr & 0x00FFFFFF) - ENC_VAL_1) & 0x00FFFFFF);
+        } break;
+
+        case INS_TYPE_B: {
+            u32 *src_addr = (u32 *)(src_bytes + idx);
+            u32 *dst_addr = (u32 *)(dst_bytes + idx);
+
+            *dst_addr = *src_addr;
+            *dst_addr = ((*dst_addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*dst_addr & 0x00FFFFFF) - ENC_VAL_2) & 0x00FFFFFF);
+        } break;
 
         default:
             dst_bytes[idx] = src_bytes[idx] ^ RC4_Byte(ctx);

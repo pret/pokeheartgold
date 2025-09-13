@@ -12,7 +12,7 @@ static const uint8_t SBox[256] = {
 
 enum {
     INS_TYPE_OTHER = 0,
-    INS_TYPE_BLX,
+    INS_TYPE_BLXIMM,
     INS_TYPE_BL,
     INS_TYPE_B
 };
@@ -20,7 +20,7 @@ enum {
 static int categorizeOpCode(unsigned int opcode) {
     if ((opcode & 0x0E) == 0x0A) {
         if ((opcode & 0xF0) == 0xF0) {
-            return INS_TYPE_BLX;
+            return INS_TYPE_BLXIMM;
         }
 
         if (opcode & 0x01) {
@@ -51,7 +51,7 @@ void Encode_Instruction(Instruction *ins, RC4_Ctx *rc4) {
         }
         break;
 
-    case INS_TYPE_BLX:
+    case INS_TYPE_BLXIMM:
     case INS_TYPE_BL:
         ins->opcode ^= ENC_OPCODE_1;
         ins->operands += ENC_VAL_2;
@@ -86,7 +86,7 @@ void Decode_Instruction(Instruction *ins, RC4_Ctx *rc4) {
         }
         break;
 
-    case INS_TYPE_BLX:
+    case INS_TYPE_BLXIMM:
     case INS_TYPE_BL:
         ins->opcode ^= ENC_OPCODE_1;
         ins->operands -= ENC_VAL_1;
