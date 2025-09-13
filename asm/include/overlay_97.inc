@@ -90,7 +90,7 @@
 .public PCStorage_GetBoxName
 .public PCStorage_GetMonByIndexPair
 .public Party_GetMonByIndex
-.public Party_GetUnkSubSlot
+.public Party_GetMonAprijuiceModifiers
 .public SaveArray_Party_Get
 .public sub_0208B85C
 .public sub_020932E0

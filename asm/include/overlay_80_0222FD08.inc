@@ -31,7 +31,7 @@
 .public SaveArray_Party_Init
 .public Party_GetCount
 .public Party_GetMonByIndex
-.public Party_SafeCopyMonToSlot_ResetUnkSub
+.public Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 .public MI_CpuFill8
 .public _s32_div_f
 .public _0223DD40
