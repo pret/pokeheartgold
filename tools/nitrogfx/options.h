@@ -24,6 +24,7 @@ struct PngToGbaOptions {
 };
 
 struct PngToNtrOptions {
+    char *cellFilePath;
     int numTiles;
     int bitDepth;
     int colsPerChunk;
@@ -41,6 +42,7 @@ struct PngToNtrOptions {
 
 struct NtrToPngOptions {
     char *paletteFilePath;
+    char *cellFilePath;
     int bitDepth;
     bool hasTransparency;
     int width;
