@@ -4551,7 +4551,7 @@ _02261EE6:
 	mov r1, #1
 	add r2, r1, #0
 	add r3, sp, #0x24
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [sp, #0xa4]
 	cmp r0, #1
 	bne _02261F42
@@ -4619,7 +4619,7 @@ ov93_02261FB0: ; 0x02261FB0
 	ldr r0, [r4]
 	bl sub_02013660
 	add r0, r4, #4
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0
 	str r0, [r4]
 	pop {r4, pc}

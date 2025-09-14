@@ -3766,7 +3766,7 @@ _021E927E:
 	ldr r0, [sp, #0x28]
 	ldr r3, [sp, #0x18]
 	add r2, r1, #0
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	mov r1, #0x87
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #2
@@ -3894,7 +3894,7 @@ _021E938C:
 	ldr r0, [r4, r0]
 	bl TextOBJ_Destroy
 	add r0, r5, #0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0x85
 	lsl r0, r0, #2
 	str r7, [r4, r0]

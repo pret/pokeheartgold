@@ -1571,7 +1571,7 @@ sub_02086FE8: ; 0x02086FE8
 	mov r0, #0xe1
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0xe
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -1579,7 +1579,7 @@ sub_02086FE8: ; 0x02086FE8
 	mov r0, #0x39
 	lsl r0, r0, #4
 	add r0, r4, r0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0xde
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1700,7 +1700,7 @@ sub_02087090: ; 0x02087090
 	add r3, r5, r3
 	add r2, r1, #0
 	add r3, r3, r6
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	add r0, r4, #0
 	add r0, #0x1a
 	lsl r0, r0, #2

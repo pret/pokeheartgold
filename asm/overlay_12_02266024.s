@@ -4514,7 +4514,7 @@ _022685DE:
 	mov r1, #1
 	mov r2, #2
 	add r3, sp, #0x30
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [sp, #0xa4]
 	cmp r0, #1
 	bne _02268602
@@ -4601,7 +4601,7 @@ _02268690:
 	beq _022686AA
 	bl sub_02013660
 	add r0, r4, #0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0x4d
 	lsl r0, r0, #4
 	str r7, [r5, r0]

@@ -830,7 +830,7 @@ _0223A6B2:
 	mov r1, #1
 	add r2, r1, #0
 	add r3, sp, #0x30
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [sp, #0xa4]
 	cmp r0, #1
 	bne _0223A6D6
@@ -901,7 +901,7 @@ ov80_0223A748: ; 0x0223A748
 	ldr r0, [r4]
 	bl sub_02013660
 	add r0, r4, #4
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov80_0223A748

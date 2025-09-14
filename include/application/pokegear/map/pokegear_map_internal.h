@@ -118,7 +118,7 @@ typedef struct MapFlypointParam {
 
 typedef struct PokegearMapAppData_Sub044 {
     TextOBJ *textOBJ;
-    UnkStruct_02021AC8 unk_4;
+    CharTransferAllocation unk_4;
 } PokegearMapAppData_Sub044;
 
 typedef struct PokegearMapCursorState {

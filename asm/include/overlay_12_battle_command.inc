@@ -59,8 +59,8 @@
 .public FillWindowPixelRect
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterizedWithColor
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public ObjCharTransfer_PopTaskManager
 .public ObjCharTransfer_PushTaskManager
 .public Sprite_SetPalOffsetRespectVramOffset

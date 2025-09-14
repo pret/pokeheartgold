@@ -30830,7 +30830,7 @@ ov14_021F4D10: ; 0x021F4D10
 	mov r1, #1
 	add r2, r1, #0
 	add r3, r5, #4
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	mov r0, #0x41
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -30898,7 +30898,7 @@ ov14_021F4D10: ; 0x021F4D10
 	mov r1, #1
 	add r2, r1, #0
 	add r3, r5, #4
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	mov r0, #0x41
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -30963,7 +30963,7 @@ ov14_021F4E68: ; 0x021F4E68
 	sub r7, r1, #4
 _021F4E76:
 	add r0, r4, #0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	ldr r0, [r5, r7]
 	bl sub_02013660
 	add r6, r6, #1

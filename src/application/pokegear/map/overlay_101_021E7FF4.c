@@ -891,7 +891,7 @@ static void PokegearMap_CreateMarkingsECWordTextOBJs(PokegearMapAppData *mapApp)
     template.heapID = mapApp->heapID;
 
     for (i = 0; i < 4; ++i) {
-        sub_02021AC8(size, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, &mapApp->unk_044[i].unk_4);
+        CharTransfer_AllocRange(size, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, &mapApp->unk_044[i].unk_4);
         template.offset = mapApp->unk_044[i].unk_4.offset;
         template.sprite = mapApp->objManager->objects[PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0 + i].sprite;
         mapApp->unk_044[i].textOBJ = TextOBJ_Create(&template, mapApp->unk_040);
@@ -905,7 +905,7 @@ static void PokegearMap_DestroyMarkingsECWordTextOBJs(PokegearMapAppData *mapApp
 
     for (i = 0; i < 4; ++i) {
         TextOBJ_Destroy(mapApp->unk_044[i].textOBJ);
-        sub_02021B5C(&mapApp->unk_044[i].unk_4);
+        CharTransfer_ClearRange(&mapApp->unk_044[i].unk_4);
         mapApp->unk_044[i].textOBJ = NULL;
     }
     sub_02013938(mapApp->unk_040);

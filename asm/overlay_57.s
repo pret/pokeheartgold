@@ -1845,7 +1845,7 @@ ov57_02238714: ; 0x02238714
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0x99
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1853,7 +1853,7 @@ ov57_02238714: ; 0x02238714
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1988,7 +1988,7 @@ ov57_022387E0: ; 0x022387E0
 	mov r1, #1
 	mov r2, #2
 	add r3, r3, r6
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	mov r0, #0x97
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

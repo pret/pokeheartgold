@@ -12,7 +12,7 @@
 #include "unk_0208805C.h"
 
 static void PokegearApp_DrawAppButtons(PokegearAppData *pokegearApp);
-static BOOL PokegearApp_UpdateAppSwitchButtonBGState(PokegearAppData *pokegearApp, u8 selection, u8 a2);
+static BOOL PokegearApp_UpdateAppSwitchButtonBGState(PokegearAppData *pokegearApp, u8 selection, u8 selected);
 static void PokegearApp_InitBGs(PokegearAppData *pokegearApp);
 static void PokegearApp_FreeBGs(PokegearAppData *pokegearApp);
 static void PokegearApp_InitPaletteData(PokegearAppData *pokegearApp);
@@ -115,14 +115,14 @@ static void PokegearApp_DrawAppButtons(PokegearAppData *pokegearApp) {
     u8 registeredCards = pokegearApp->registeredCards;
 
     // Draw the full picker
-    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 20, 32, 4, pokegearApp->unk_0C8->rawData, 0, 0, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
+    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 20, 32, 4, pokegearApp->appIconScreenData->rawData, 0, 0, pokegearApp->appIconScreenData->screenWidth / 8, pokegearApp->appIconScreenData->screenHeight / 8);
 
     // Mask out cards that have not yet been unlocked
     if (!(registeredCards & GEARCARD_MAP)) {
-        CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 13, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
+        CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 13, 20, 6, 4, pokegearApp->appIconScreenData->rawData, 0, 8, pokegearApp->appIconScreenData->screenWidth / 8, pokegearApp->appIconScreenData->screenHeight / 8);
     }
     if (!(registeredCards & GEARCARD_RADIO)) {
-        CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, pokegearApp->unk_0C8->rawData, 0, 8, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
+        CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, 7, 20, 6, 4, pokegearApp->appIconScreenData->rawData, 0, 8, pokegearApp->appIconScreenData->screenWidth / 8, pokegearApp->appIconScreenData->screenHeight / 8);
     }
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
 }
@@ -136,7 +136,7 @@ static BOOL PokegearApp_UpdateAppSwitchButtonBGState(PokegearAppData *pokegearAp
     } else {
         x = selection * 6 + 1;
     }
-    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, x, 20, 6, 4, pokegearApp->unk_0C8->rawData, x, selected * 4, pokegearApp->unk_0C8->screenWidth / 8, pokegearApp->unk_0C8->screenHeight / 8);
+    CopyToBgTilemapRect(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0, x, 20, 6, 4, pokegearApp->appIconScreenData->rawData, x, selected * 4, pokegearApp->appIconScreenData->screenWidth / 8, pokegearApp->appIconScreenData->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(pokegearApp->bgConfig, GF_BG_LYR_MAIN_0);
     return FALSE;
 }
@@ -275,8 +275,8 @@ void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, u8 skinIdx) {
     PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, skinIdx + NARC_pgear_gra_pgear_gra_00000000_NCLR, pokegearApp->heapID, PLTTBUF_MAIN_OBJ, 0x80, 0, 0);
     PaletteData_LoadFromOpenNarc(pokegearApp->plttData, narc, skinIdx + NARC_pgear_gra_pgear_gra_00000000_NCLR, pokegearApp->heapID, PLTTBUF_SUB_OBJ, 0x80, 0, 0);
 
-    NARC_ReadWholeMember(narc, skinIdx + NARC_pgear_gra_pgear_gra_00000054_NSCR, pokegearApp->unk_0C4);
-    NNS_G2dGetUnpackedScreenData(pokegearApp->unk_0C4, &pokegearApp->unk_0C8);
+    NARC_ReadWholeMember(narc, skinIdx + NARC_pgear_gra_pgear_gra_00000054_NSCR, pokegearApp->appIconNSCR);
+    NNS_G2dGetUnpackedScreenData(pokegearApp->appIconNSCR, &pokegearApp->appIconScreenData);
     if (pokegearApp->app == GEAR_APP_CANCEL) {
         PokegearApp_UpdateAppSwitchButtonBGState(pokegearApp, 2, 1);
     } else {
@@ -377,13 +377,13 @@ static void PokegearApp_InitPaletteData(PokegearAppData *pokegearApp) {
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_MAIN_OBJ, 0x200, pokegearApp->heapID);
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG, 0x200, pokegearApp->heapID);
     PaletteData_AllocBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ, 0x200, pokegearApp->heapID);
-    pokegearApp->unk_0C4 = Heap_Alloc(pokegearApp->heapID, GetNarcMemberSizeByIdPair(NARC_application_pokegear_pgear_gra, NARC_pgear_gra_pgear_gra_00000054_NSCR));
+    pokegearApp->appIconNSCR = Heap_Alloc(pokegearApp->heapID, GetNarcMemberSizeByIdPair(NARC_application_pokegear_pgear_gra, NARC_pgear_gra_pgear_gra_00000054_NSCR));
     PokegearApp_LoadSkinGraphics(pokegearApp, pokegearApp->skin);
     NARC_Delete(narc); // was never actually used
 }
 
 static void PokegearApp_FreePaletteData(PokegearAppData *pokegearApp) {
-    Heap_Free(pokegearApp->unk_0C4);
+    Heap_Free(pokegearApp->appIconNSCR);
     PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_SUB_OBJ);
     PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_SUB_BG);
     PaletteData_FreeBuffers(pokegearApp->plttData, PLTTBUF_MAIN_OBJ);

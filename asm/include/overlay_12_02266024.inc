@@ -86,8 +86,8 @@
 .public ScheduleBgTilemapBufferTransfer
 .public LCRandom
 .public AddTextPrinterParameterizedWithColorAndSpacing
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_SetPalOffsetRespectVramOffset
 .public Sprite_GetImageProxy

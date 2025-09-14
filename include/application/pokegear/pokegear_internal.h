@@ -143,7 +143,7 @@ struct PokegearAppData {
     u8 fadeCounter;                              // 0x009
     MenuInputState menuInputState;               // 0x00C
     MenuInputState menuInputStateBak;            // 0x010
-    u8 filler_014[0x4];                          // 0x014
+    u8 filler_014[4];                            // 0x014
     int substate;                                // 0x018
     int appReturnCode;                           // 0x01C
     PokegearArgs *args;                          // 0x020
@@ -153,13 +153,13 @@ struct PokegearAppData {
     Options *options;                            // 0x030
     PlayerProfile *profile;                      // 0x034
     u8 unk_038;                                  // 0x038
-    u8 filler_039[3];                            // 0x039
+    u8 filler_039[3];                            // 0x039 needed to align mapSessionState to word
     PokegearMapSessionState mapSessionState;     // 0x03C
     void (*vblankCB)(PokegearAppData *, void *); // 0x058
     void (*reselectAppCB)(void *);               // 0x05C
     void (*deselectAppCB)(void *);               // 0x060
     void *childAppdata;                          // 0x064
-    u8 filler_068[0x4];                          // 0x068
+    u8 filler_068[4];                            // 0x068
     EasyChatArgs *easyChatArgs;                  // 0x06C
     OverlayManager *childApplication;            // 0x070
     BgConfig *bgConfig;                          // 0x074
@@ -170,16 +170,9 @@ struct PokegearAppData {
     SpriteManager *spriteManager;                // 0x090
     PokegearUIManager *uiManager;                // 0x094
     ManagedSprite *uiSprites[11];                // 0x098
-    u16 *unk_0C4;                                // 0x0C4
-    NNSG2dScreenData *unk_0C8;                   // 0x0C8
+    u16 *appIconNSCR;                            // 0x0C4
+    NNSG2dScreenData *appIconScreenData;         // 0x0C8
 }; // size: 0xCC
-
-typedef struct PhoneCallScriptDef {
-    u8 msgIds[2];
-    u16 scriptType : 4;
-    u16 param0 : 12;
-    u16 param1;
-} PhoneCallScriptDef;
 
 typedef enum PokegearRegion {
     POKEGEAR_REGION_KANTO,
@@ -194,7 +187,7 @@ int PokegearApp_HandleTouchInput_SwitchApps(PokegearAppData *pokegearApp);
 int PokegearApp_HandleKeyInput_SwitchApps(PokegearAppData *pokegearApp);
 BOOL PokegearApp_UpdateClockSprites(PokegearAppData *pokegearApp, BOOL force);
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp);
-BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
+BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int direction);
 u8 PokegearApp_AppIdToButtonIndex(PokegearAppData *pokegearApp);
 BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp);
 BOOL PokegearApp_UnloadGFX(PokegearAppData *pokegearApp);
@@ -211,22 +204,22 @@ void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
 PokegearUIManager *PokegearUIManager_Create(enum HeapID heapID, u16 spriteCount, u16 resCount, u16 skin, u16 vramType, int mode);
 void PokegearUIManager_Delete(PokegearUIManager *uiManager);
-void PokegearUIManager_LoadSkinGfx(PokegearUIManager *uiManager, u8 a1);
+void PokegearUIManager_LoadSkinGfx(PokegearUIManager *uiManager, u8 skin);
 void PokegearUIManager_AnimateSprites(PokegearUIManager *uiManager);
 ManagedSprite *PokegearUIManager_CreateSprite(PokegearUIManager *uiManager, u8 x, u8 y, u8 z, u8 priority, u8 drawPriority, u8 index, u8 seq, int isBottomScreen);
-void PokegearUIManager_DeleteSprite(ManagedSprite *a0);
+void PokegearUIManager_DeleteSprite(ManagedSprite *managedSprite);
 
 PokegearObjectsManager *PokegearObjectsManager_Create(int count, enum HeapID heapID);
 void PokegearObjectsManager_Release(PokegearObjectsManager *mgr);
 void PokegearObjectsManager_UpdateAllSpritesPos(PokegearObjectsManager *mgr);
 u16 PokegearObjectsManager_AppendSprite(PokegearObjectsManager *mgr, Sprite *sprite);
 void PokegearObjectsManager_Reset(PokegearObjectsManager *mgr);
-void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 a1);
+void PokegearObjectsManager_DeleteSpritesFromIndexToEnd(PokegearObjectsManager *mgr, u8 firstIndex);
 
 PokegearCursorManager *PokegearCursorManager_Alloc(int count, enum HeapID heapID);
 void PokegearCursorManager_Free(PokegearCursorManager *cursorManager);
 u16 PokegearCursorManager_AddButtons(PokegearCursorManager *cursorManager, const PokegearCursorGrid *buttonSpec, u8 numSpecs, u8 cursorPos, BOOL managedSprites, enum HeapID heapID, void *cursorSprite1, void *cursorSprite2, void *cursorSprite3, void *cursorSprite4);
-BOOL PokegearCursorManager_RemoveCursor(PokegearCursorManager *cursorManager, u16 a1);
+BOOL PokegearCursorManager_RemoveCursor(PokegearCursorManager *cursorManager, u16 cursorIndex);
 u16 PokegearCursorManager_SetCursorSpritesDrawState(PokegearCursorManager *cursorManager, u16 index, BOOL draw);
 u16 PokegearCursorManager_SetSpecIndexAndCursorPos(PokegearCursorManager *cursorManager, u16 index, u8 cursorPos);
 u8 PokegearCursorManager_GetCursorPos(PokegearCursorManager *cursorManager);

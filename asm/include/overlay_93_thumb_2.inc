@@ -54,8 +54,8 @@
 .public GF_CosDegFX32
 .public LCRandom
 .public AddTextPrinterParameterizedWithColorAndSpacing
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public GF_AssertFail
 .public String_Delete
 .public sub_0203410C

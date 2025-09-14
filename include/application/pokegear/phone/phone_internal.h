@@ -133,6 +133,13 @@ typedef struct PokegearPhoneCallContextParam {
     u8 textSpeed;                                  // 0x38
 } PokegearPhoneCallContextParam;
 
+typedef struct PhoneCallScriptDef {
+    u8 msgIds[2];
+    u16 scriptType : 4;
+    u16 param0 : 12;
+    u16 param1;
+} PhoneCallScriptDef;
+
 typedef struct PokegearPhoneCallState {
     int mainState;                       // 0x00
     int scriptState;                     // 0x04
@@ -299,7 +306,7 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp);
 void ov101_021F0284(PokegearPhoneAppData *phoneApp);
 void ov101_021F0370(PokegearPhoneAppData *phoneApp);
 void ov101_021F0388(PokegearPhoneAppData *phoneApp);
-void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL a1);
+void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL shouldDim);
 void ov101_021F0578(PokegearPhoneAppData *phoneApp);
 void ov101_021F05CC(PokegearPhoneAppData *phoneApp);
 void ov101_021F05EC(PokegearPhoneAppData *phoneApp);

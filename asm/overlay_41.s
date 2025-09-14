@@ -9458,7 +9458,7 @@ _0224A418:
 	blt _0224A418
 	add r0, r6, #0
 	add r0, #0x54
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	add r0, r6, #0
 	add r0, #0x40
 	bl ov41_0224A1C0
@@ -9938,7 +9938,7 @@ ov41_0224A734: ; 0x0224A734
 	add r3, r5, #0
 	add r2, r1, #0
 	add r3, #0x14
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	cmp r0, #0
 	bne _0224A7D0
 	bl GF_AssertFail
