@@ -36,16 +36,16 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
         return;
     }
 
-    for (; functions->start_addr != NULL; functions++) {
-        u32 size = functions->size - (u32)&BSS - ENC_VAL_1;
+    for (; functions->obfs_addr != 0; functions++) {
+        u32 size = functions->obfs_size - (u32)&BSS - ENC_VAL_1;
 
-        u32 *addr = functions->start_addr;
+        u32 *addr = (u32 *)functions->obfs_addr;
         if (addr == NULL) {
             break;
         }
 
         addr = (void *)addr - ENC_VAL_1;
-        u32* end_addr = addr + (size / 4);
+        u32 *end_addr = addr + (size / 4);
         for (; addr < end_addr; addr++) {
             switch (Encryptor_CategorizeInstruction(*addr)) {
             case INS_TYPE_BLXIMM:
@@ -64,11 +64,11 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
             }
         }
 
-        clearDataAndInstructionCache(functions->start_addr - ENC_VAL_1, size);
+        clearDataAndInstructionCache((void *)(functions->obfs_addr - ENC_VAL_1), size);
     }
 }
 
-void *Encryptor_DecryptFunction(u32 obfs_key, void *obfs_func_addr, u32 obfs_size) {
+void *Encryptor_DecryptFunction(u32 obfs_key, u32 obfs_func_addr, u32 obfs_size) {
     u32 expanded_key[4];
 
     u32 literal_obfs_offset = (u32)&BSS + ENC_VAL_1;
@@ -84,7 +84,7 @@ void *Encryptor_DecryptFunction(u32 obfs_key, void *obfs_func_addr, u32 obfs_siz
     expanded_key[2] = ROTL(key, 16) ^ size;
     expanded_key[3] = ROTL(key, 24) ^ size;
 
-    void *func_addr = obfs_func_addr;
+    void *func_addr = (void *)obfs_func_addr;
     func_addr -= ENC_VAL_1;
 
     RC4_InitAndDecryptInstructions(&expanded_key[0], func_addr, func_addr, size);
@@ -93,17 +93,17 @@ void *Encryptor_DecryptFunction(u32 obfs_key, void *obfs_func_addr, u32 obfs_siz
     return func_addr;
 }
 
-u32 Encryptor_EncryptFunction(u32 obfs_key, void *obfs_func_addr, u32 obfs_size) {
+u32 Encryptor_EncryptFunction(u32 obfs_key, u32 obfs_func_addr, u32 obfs_size) {
     u32 expanded_key[4];
 
     u32 literal_obfs_offset = (u32)&BSS + ENC_VAL_1;
 
-    void *func_addr = obfs_func_addr;
+    void *func_addr = (void *)obfs_func_addr;
 
     obfs_size = obfs_size - literal_obfs_offset;
     u32 size = obfs_size;
 
-    obfs_key = obfs_key - literal_obfs_offset + ((u32)func_addr >> 20);
+    obfs_key = obfs_key - literal_obfs_offset + (obfs_func_addr >> 20);
     u32 new_key = obfs_key;
 
     expanded_key[0] = ROTL(new_key, 0) ^ size;
