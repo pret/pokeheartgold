@@ -69,12 +69,12 @@ void Save_SysInfo_SetMysteryGiftActive(SysInfo *sys_info, u8 isActive) {
     sys_info->mysteryGiftActive = isActive;
 }
 
-void *Save_SysInfo_GetDwcProfileId(SysInfo *sys_info) {
+s32 *Save_SysInfo_GetDwcProfileId(SysInfo *sys_info) {
     return sys_info->dwcProfileId;
 }
 
 void Save_SysInfo_SetDwcProfileId(SysInfo *sys_info, s32 profileId) {
-    if (sys_info->dwcProfileId == NULL) {
+    if (sys_info->dwcProfileId == 0) {
         sys_info->dwcProfileId = profileId;
     }
 }
