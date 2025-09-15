@@ -28,11 +28,14 @@ u32 ROMTest_IsBad(void) {
         }
     }
 
+    // Checking the ROM reading results were as expected:
+    //   0 == 1 == 2 == 3
+    //   3 != 4 and 3 != 5
+
     u32 ret;
     for (i = 0; i < 3; i++) {
         if (crcs[i] != crcs[3]) {
             ret = 1;
-            // Likely must be a goto here
             goto EXIT;
         }
     }
@@ -44,6 +47,7 @@ u32 ROMTest_IsBad(void) {
     }
 
 EXIT:
+    // Erasing read buffer
     u8 *rom_buf_ptr = &rom_buf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
         *rom_buf_ptr++ = 0;
@@ -72,11 +76,14 @@ u32 ROMTest_IsGood(void) {
         }
     }
 
+    // Checking the ROM reading results were as expected:
+    //   0 == 1 == 2 == 3
+    //   3 != 4 and 3 != 5
+
     u32 ret;
     for (i = 0; i < 3; i++) {
         if (crcs[i] != crcs[3]) {
             ret = 0;
-            // Likely must be a goto here
             goto EXIT;
         }
     }
@@ -88,6 +95,7 @@ u32 ROMTest_IsGood(void) {
     }
 
 EXIT:
+    // Erasing read buffer
     u8 *rom_buf_ptr = &rom_buf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
         *rom_buf_ptr++ = 0;
