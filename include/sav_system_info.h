@@ -37,7 +37,7 @@ u8 Save_SysInfo_GetBirthMonth(SysInfo *sys_info);
 u8 Save_SysInfo_GetBirthDay(SysInfo *sys_info);
 u8 Save_SysInfo_GetMysteryGiftActive(SysInfo *sys_info);
 void Save_SysInfo_SetMysteryGiftActive(SysInfo *sys_info, u8);
-void *Save_SysInfo_GetDwcProfileId(SysInfo *sys_info);
+s32 *Save_SysInfo_GetDwcProfileId(SysInfo *sys_info);
 void Save_SysInfo_SetDwcProfileId(SysInfo *sys_info, s32);
 void Save_SysInfo_RTC_Init(SysInfo_RTC *rtc_info);
 BOOL Save_SysInfo_RTC_HasPenalty(SysInfo_RTC *rtc_info);
