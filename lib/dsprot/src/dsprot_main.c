@@ -21,8 +21,8 @@ enum {
     EXPECT_TRUE
 };
 
-typedef u32 (*U32Func)(void);
-typedef void (*VoidFunc)(void);
+typedef u32 (*TaskFunc)(void);
+typedef void (*CallbackFunc)(void);
 
 // This was likely not originally an inline, but an inline is able to match here nicely
 static inline u32 dsprotMain(u32 *func_queue, int expected_result, void *callback) {
@@ -37,7 +37,7 @@ static inline u32 dsprotMain(u32 *func_queue, int expected_result, void *callbac
     func_result_sum = 0;
 
     for (i = 0; func_queue[i] != 0; i++) {
-        func_result = ((U32Func)(func_queue[i] - ENC_VAL_1 - DSP_OBFS_OFFSET))() != 0;
+        func_result = ((TaskFunc)(func_queue[i] - ENC_VAL_1 - DSP_OBFS_OFFSET))() != 0;
 
         func_result_sum += func_result;
         func_result_sum <<= 1;
@@ -53,7 +53,7 @@ static inline u32 dsprotMain(u32 *func_queue, int expected_result, void *callbac
     }
 
     if (callback != NULL && ret) {
-        ((VoidFunc)callback)();
+        ((CallbackFunc)callback)();
     }
 
     return (u32)ret;
