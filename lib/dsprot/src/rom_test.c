@@ -1,12 +1,13 @@
 #include "rom_test.h"
 
+#include "nitro_card.h"
 #include "rom_util.h"
 
 // Functions to be encrypted (cannot be called directly)
 u32 ROMTest_IsBad(void);
 u32 ROMTest_IsGood(void);
 
-#define ROM_BLOCK_SIZE (0x200)
+#define ROM_BLOCK_SIZE CARD_ROM_PAGE_SIZE
 
 u32 ROMTest_IsBad(void) {
     // Extra CRC entry is required to match
