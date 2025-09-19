@@ -1,7 +1,8 @@
-#ifndef IO_REG_H
-#define IO_REG_H
+#ifndef NITRO_IO_REG_H
+#define NITRO_IO_REG_H
 
-// Nitro defs
+#include "nitro_types.h"
+
 // <nitro/hw/io_reg.h>
 #define HW_REG_BASE             (0x04000000)
 #define REG_EXMEMCNT_OFFSET     (0x204)

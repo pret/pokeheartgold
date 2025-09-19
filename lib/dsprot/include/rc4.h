@@ -1,7 +1,7 @@
 #ifndef RC4_H
 #define RC4_H
 
-#include "types.h"
+#include "nitro_types.h"
 
 typedef struct {
     int i;

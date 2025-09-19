@@ -1,7 +1,7 @@
 #ifndef INTEGRITY_H
 #define INTEGRITY_H
 
-#include "types.h"
+#include "nitro_types.h"
 
 // Assembly decryption wrappers
 extern u32 RunEncrypted_Integrity_MACOwner_IsBad(void);

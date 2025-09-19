@@ -1,5 +1,7 @@
 #include "mac_owner.h"
 
+#include "nitro_os.h"
+
 // Functions to be encrypted (cannot be called directly)
 u32 MACOwner_IsBad(void);
 u32 MACOwner_IsGood(void);
