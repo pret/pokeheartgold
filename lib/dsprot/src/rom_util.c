@@ -72,8 +72,8 @@ void ROMUtil_Read(void *dest, u32 addr, s32 num_bytes) {
     card_ctrl_13 <<= 18;
     card_ctrl_13 -= 13;
 
-    // This is not a used location, should always read 0
-    if (*(REGType8v *)(register_base_1 + 0x4000) & 1) {
+    // Detect if the system is in DSi mode. If so, change the address to 0x02FFFE60
+    if (*(REGType8v *)(register_base_1 + REG_A9ROM_OFFSET) & REG_SCFG_A9ROM_SEC_MASK) {
         card_ctrl_13 |= 0x40000;
     }
 
