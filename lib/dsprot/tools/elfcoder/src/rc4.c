@@ -32,7 +32,7 @@ void RC4_Init(RC4_Ctx *ctx, uint8_t *k) {
 }
 
 uint8_t RC4_Byte(RC4_Ctx *ctx) {
-    ctx->i++;
+    ctx->i += 1;
     ctx->j += ctx->S[ctx->i];
 
     int tmp = ctx->S[ctx->i];

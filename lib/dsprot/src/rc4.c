@@ -23,6 +23,7 @@ void RC4_Init(RC4_Ctx *ctx, const void *key, u32 key_len) {
         u8 tmp1 = ctx->S[i];
         Si = (Si + ((u8 *)key)[Ki] + tmp1) & 0xFF;
         u8 tmp2 = ctx->S[Si];
+
         ctx->S[Si] = tmp1;
         ctx->S[i] = tmp2;
 
