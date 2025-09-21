@@ -64,7 +64,9 @@ void ROMUtil_Read(void *dest, u32 addr, s32 num_bytes) {
     // External memory control register (0x04000204)
     // Save value to rewrite later
     ext_mem_register_val_original = reg_MI_EXMEMCNT;
-    reg_MI_EXMEMCNT &= ~REG_MI_EXMEMCNT_MP_MASK;
+
+    // Set current processor accessing the gamecard bus to the ARM9
+    reg_MI_EXMEMCNT = (reg_MI_EXMEMCNT & ~REG_MI_EXMEMCNT_MP_MASK) | (MI_PROCESSOR_ARM9 << REG_MI_EXMEMCNT_MP_SHIFT);
 
     // Obfuscated, create address 0x027FFE60
     // This is an address in the ROM header: port 0x040001A4 / setting for normal commands
@@ -89,12 +91,14 @@ void ROMUtil_Read(void *dest, u32 addr, s32 num_bytes) {
     addr_offset = 0 - (addr & (CARD_ROM_PAGE_SIZE - 1));
 
     // Wait for card to not be busy
-    while (*(REGType32v *)(register_base_1 + REG_CARDCNT_OFFSET) & CARD_START) {}
+    while (*(REGType32v *)(register_base_1 + REG_CARDCNT_OFFSET) & CARD_START) {
+        continue;
+    }
 
     // Write enable flag to card ROM and SPI control register
     *(REGType8v *)(register_base_1 + REG_CARD_MASTER_CNT_OFFSET) = CARDMST_ENABLE;
 
-    // Obfuscated read 8-byte command out from gamecard bus, write this back later
+    // Read 8-byte command out from gamecard bus, write this back later
     bufptr = &buffer[0];
     for (i = 0; i < 8; i++) {
         *bufptr++ = *(vnull + HW_REG_BASE + REG_CARD_CMD_OFFSET + i);
@@ -136,7 +140,9 @@ void ROMUtil_Read(void *dest, u32 addr, s32 num_bytes) {
         addr += CARD_ROM_PAGE_SIZE;
     }
 
-    // Write 8-byte command back to gamecard bus
+    // Done reading, restore everything how it was before
+
+    // Write original command back to gamecard bus
     bufptr = &buffer[0];
     for (i = 0; i < 8; i++) {
         *(vnull + HW_REG_BASE + REG_CARD_CMD_OFFSET + i) = *bufptr++;
