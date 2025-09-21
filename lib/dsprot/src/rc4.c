@@ -50,8 +50,7 @@ u8 RC4_Byte(RC4_Ctx *ctx) {
 
 u32 RC4_InitSBox(u8 *sbox) {
     for (s32 i = 0; i < 256; i++) {
-        s32 x = i & 0xFF;
-        sbox[i] = x ^ 1;
+        sbox[i] = (u8)i ^ 1;
     }
 
     return 0;
