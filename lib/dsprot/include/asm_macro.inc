@@ -30,7 +30,7 @@
 	ldr    r1, func_\@                ; Get second function decrypter argument, obfuscated function address.
 	adr    r3, storage_\@             ; `lr` cannot be stored on the stack when we call the inner function,
 	str    lr, [r3]                   ; so it is stored in the pool below.
-	ldr    r2, length_\@              ; Get third function decrypter argument, obsfucated length.
+	ldr    r2, length_\@              ; Get third function decrypter argument, obfuscated length.
 	ldr    r0, key_\@                 ; Get first function decrypter argument, obfuscated key.
 	bl     Encryptor_DecryptFunction  ; Call function decrypter with args (key, addr, len).
 	mov    ip, r0                     ; Function decrypter returns the de-obfuscated function address. Save it in `ip`.
@@ -41,7 +41,7 @@
 	stmfd  sp!, {r4}                  ; `r4` about to be used as storage space for the inner function return, so save it on the stack.
 	mov    r4, r0                     ; Copy the return from the inner function into `r4` so we can can run the function re-encrypter.
 	ldr    r1, func_\@                ; Get second function encrypter argument, obfuscated function address.
-	ldr    r2, length_\@              ; Get third function encrypter argument, obsfucated length.
+	ldr    r2, length_\@              ; Get third function encrypter argument, obfuscated length.
 	ldr    r0, key_\@                 ; Get first function encrypter argument, obfuscated key.
 	bl     Encryptor_EncryptFunction  ; Call function encrypter.
 	str    r0, key_\@                 ; Function encrypter returns the new key it used, store this back into the pool for next time.
