@@ -4,23 +4,11 @@
 #include "nitro_io_reg.h"
 #include "nitro_os.h"
 
-// Not actually available from standard Nitro includes
-#define REG_CARD_MASTER_CNT_OFFSET (0x1A1)
-#define REG_CARDCNT_OFFSET         (0x1A4)
-#define REG_CARD_CMD_OFFSET        (0x1A8)
-#define REG_CARD_DATA_OFFSET       (0x100010)
-
-#define CARDMST_ENABLE (0x80)
-
-#define CARD_DATA_READY   (0x00800000)
-#define CARD_COMMAND_PAGE (0x01000000)
-#define CARD_COMMAND_MASK (0x07000000)
-#define CARD_RESET_HI     (0x20000000)
-#define CARD_ACCESS_MODE  (0x40000000)
-#define CARD_READ_MODE    (0x00000000)
-#define CARD_START        (0x80000000)
-
-#define MROMOP_G_READ_PAGE (0xB7000000)
+// Custom defs not provided by Nitro
+#define REG_CARD_MASTER_CNT_OFFSET  (0x1A1)
+#define REG_CARDCNT_OFFSET          (0x1A4)
+#define REG_CARD_CMD_OFFSET         (0x1A8)
+#define REG_CARD_DATA_OFFSET        (0x100010)
 
 // Functions to be encrypted (cannot be called directly)
 void ROMUtil_Read(void *dest, u32 addr, s32 num_bytes);
