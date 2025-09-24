@@ -7,39 +7,40 @@ Decryption wrappers and decoding static initializers are both written at least p
 Decryption wrappers take the form:
 
 ```asm
-	arm_func_start ov123_02260148
-ov123_02260148:
 	stmfd sp!, {r4-r7}
 	stmfd sp!, {r0-r3}
 	ldmfd sp!, {r4-r7}
-	ldr r1, _022601BC
-	adr r3, _022601B0
+	ldr r1, func
+	adr r3, storage
 	str lr, [r3]
-	ldr r2, _022601B4
-	ldr r0, _022601B8
-	bl ov123_0225FEA8  ; Function decryption routine
+	ldr r2, size
+	ldr r0, key
+	bl Encryptor_DecryptFunction  ; Function decryption routine
 	mov ip, r0
 	stmfd sp!, {r4-r7}
 	ldmfd sp!, {r0-r3}
 	ldmfd sp!, {r4-r7}
-	blx ip             ; Call decrypted function
+	blx ip                        ; Call decrypted function
 	stmfd sp!, {r4}
 	mov r4, r0
-	ldr r1, _022601BC
-	ldr r2, _022601B4
-	ldr r0, _022601B8
-	bl ov123_0225FF30  ; Function re-encryption routine
-	str r0, _022601B8
+	ldr r1, func
+	ldr r2, size
+	ldr r0, key
+	bl Encryptor_EncryptFunction  ; Function re-encryption routine
+	str r0, key
 	mov r0, r4
 	ldmfd sp!, {r4}
-	ldr lr, _022601B0
-	str pc, _022601B0
+	ldr lr, storage
+	str pc, storage
 	bx lr
-_022601B0: .word BSS + 1         ; Storage space for LR
-_022601B4: .word 0xAC            ; Function size
-_022601B8: .word 0x982           ; Key
-_022601BC: .word ov123_0225FFE8  ; Function to decrypt-run-encrypt
-	arm_func_end ov123_02260148
+storage:
+	.word BSS + 1         ; Storage space for LR
+size:
+	.word 0xAC            ; Function size
+key:
+	.word 0x0982          ; Key
+func:
+	.word ROMUtil_CRC32   ; Function to decrypt-run-encrypt
 ```
 
 (Data obfuscation as described in [ENCODING.MD](./ENCODING.MD) has been removed for clarity)
@@ -56,21 +57,18 @@ There are three giveaways that this is originally assembly:
 Decoding initializers take the form:
 
 ```asm
-	arm_func_start ov123_0226077C
-ov123_0226077C:
 	stmdb sp!, {lr}
-	adr r0, _0226078C  ; Function table pointer
-	bl ov123_0225FD98  ; Function decoding routine
+	adr r0, table  ; Function table pointer
+	bl Encryptor_DecodeFunctionTable  ; Function decoding routine
 	ldmia sp!, {pc}
-_0226078C:
-	.word ov123_0226068C, 0x68  ; (Function address, size) data pairs
-	.word ov123_02260704, 0x68
-	.word ov123_02260148, 0x68
-	.word ov123_022601C0, 0x68
-	.word ov123_02260414, 0x68
-	.word ov123_0226048C, 0x68
-	.word 0, 0                  ; End-of-data (0, 0)
-	arm_func_end ov123_0226077C
+table:
+	.word DSProt_DetectFlashcart, 0x68     ; (Function address, size) data pairs
+	.word DSProt_DetectNotFlashcart, 0x68
+	.word DSProt_DetectEmulator, 0x68
+	.word DSProt_DetectNotEmulator, 0x68
+	.word DSProt_DetectDummy, 0x68
+	.word DSProt_DetectNotDummy, 0x68
+	.word 0, 0                             ; End-of-data (0, 0)
 ```
 
 (Data obfuscation as described in [ENCODING.MD](./ENCODING.MD) has been removed for clarity)
