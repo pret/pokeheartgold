@@ -130,8 +130,8 @@ typedef struct PokegearMapCursorState {
     int affineY;
     fx32 dxStep;
     fx32 dyStep;
-    fx32 unk_20;
-    fx32 unk_24;
+    fx32 x_fx;
+    fx32 y_fx;
     u16 top;
     u16 bottom;
     u16 left;
@@ -170,12 +170,12 @@ typedef struct MapMarkingsHeapNode {
     u8 active;
 } MapMarkingsHeapNode;
 
-typedef struct PokegearMapAppData_Sub118 {
-    const PokegearMapLocationSpec *locationSpec;
+typedef struct PokegearMapLocation {
+    const PokegearMapLocationSpec *spec;
     MapMarkingsHeapNode *markingsNode;
     u16 x; // written but never read
     u16 y; // written but never read
-} PokegearMapAppData_Sub118;
+} PokegearMapLocation;
 
 typedef struct PokegearMapAppData {
     enum HeapID heapID;                           // 0x000
@@ -220,7 +220,7 @@ typedef struct PokegearMapAppData {
     s16 playerX;                                  // 0x110
     s16 playerY;                                  // 0x112
     Coord2S16 cursorPos;                          // 0x114
-    PokegearMapAppData_Sub118 selectedLoc;        // 0x118
+    PokegearMapLocation selectedLoc;              // 0x118
     PhoneCallPersistentState *phoneCallSave;      // 0x124
     PhoneBook *phoneBook;                         // 0x128
     PhoneContact *phoneContact;                   // 0x12C
@@ -240,7 +240,7 @@ typedef struct PokegearMapAppData {
     u8 draggingMarking : 1;                       // 0x139
     u8 unk_139_1 : 1;                             // 0x139
     u8 unk_139_2 : 1;                             // 0x139
-    u8 unk_139_3 : 1;                             // 0x139
+    u8 cursorVisible : 1;                         // 0x139
     u8 draggingIcon : 4;                          // 0x139
     u8 cursorSpeed;                               // 0x13A
     u8 moveCursorDirection;                       // 0x13B
@@ -285,28 +285,28 @@ BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp);
 void PokegearMap_VBlankCB(PokegearAppData *pokegear, void *appData);
 void PokegearMap_UpdateCursorBounds(PokegearMapAppData *mapApp);
 void PokegearMap_SaveState(PokegearMapAppData *mapApp);
-void ov101_021E9464(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut);
-void ov101_021E94C0(PokegearMapAppData *mapApp);
-void ov101_021E9530(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 xIn, s16 yIn);
-void ov101_021E990C(PokegearMapAppData *mapApp);
+void PokegearMap_GetTileCoordFromPixelCoords(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut);
+void PokegearMap_MoveCursorToPlayerPosition(PokegearMapAppData *mapApp);
+void PokegearMap_SetCursorMoveParam(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 xIn, s16 yIn);
+void PokegearMap_InitCursorAndPlayerIconPositions(PokegearMapAppData *mapApp);
 void PokegearMap_OnVBlank_UpdateCursorAffine(PokegearMapAppData *mapApp, PokegearMapCursorState *cursorState);
-void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 dx, s16 dy);
+void PokegearMap_UpdateObjects_AddCoord(PokegearMapAppData *mapApp, s16 dx, s16 dy);
 BOOL PokegearMap_FadeMapScreen(PokegearMapAppData *mapApp, u8 direction);
 void PokegearMap_BeginScrollMarkingsPanelTopScreen(PokegearMapAppData *mapApp, u8 direction);
 BOOL PokegearMap_RunScrollMarkingsPanelTopScreen(PokegearMapAppData *mapApp, u8 direction);
 void PokegearMap_BeginScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, u8 direction);
 BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, u8 direction);
-void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode);
-void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 mode);
-void ov101_021EA608(PokegearMapAppData *mapApp, u8 enable);
-BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
+void PokegearMap_UpdateStationaryIconsDrawState(PokegearMapAppData *mapApp, u8 mode); // mode: 0=init, 1=update, 2=clear?
+void PokegearMap_UpdateFlyIconsDrawState(PokegearMapAppData *mapApp, u8 mode);
+void PokegearMap_SetPlayerAndCursorSpritesDrawFlag(PokegearMapAppData *mapApp, u8 enable);
+BOOL PokegearMap_LocationIsOnMainMap(PokegearMapAppData *mapApp, PokegearMapLocation *location);
 const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByCoord(PokegearMapAppData *mapApp, u8 x, u8 y);
 const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByMapID(PokegearMapAppData *mapApp, u16 mapID);
-void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y);
-BOOL ov101_021EA7E4(PokegearMapAppData *mapApp, u16 x, u16 y);
-BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y);
-int PokegearMap_GetFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
-int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y);
+void PokegearMap_SetCurLocationFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *location, u8 x, u8 y);
+BOOL PokegearMap_CanFlyToXY(PokegearMapAppData *mapApp, u16 x, u16 y);
+BOOL PokegearMap_CanFlyToMapOrXY(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y);
+int PokegearMap_GetUnlockedFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
+int PokegearMap_SetCurLocationToFlypointFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *a1, u8 x, u8 y);
 void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1);
 void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUpdateMapName);
 void ov101_021EAF40(PokegearMapAppData *mapApp);
