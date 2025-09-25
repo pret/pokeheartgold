@@ -72,7 +72,6 @@ void sub_02055478(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date,
 }
 
 void sub_02055508(FieldSystem *fieldSystem, int days) {
-    BOOL unkFlag = FieldSystem_HasPenalty(fieldSystem);
     ClearDailyFlags(fieldSystem);
     sub_0206759C(fieldSystem->saveData, days); // reset badge shininess..?
     sub_0202C78C(Save_FriendGroup_Get(fieldSystem->saveData), days);
@@ -84,7 +83,7 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
     WiFiHistory_UpgradeAllLocationsState(Save_WiFiHistory_Get(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
     sub_0202F294(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), days);
-    if (!unkFlag) {
+    if (!FieldSystem_HasPenalty(fieldSystem)) {
         sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
         sub_0209730C(fieldSystem->saveData, days);
     }
