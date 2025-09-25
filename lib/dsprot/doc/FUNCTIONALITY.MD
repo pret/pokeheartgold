@@ -18,7 +18,7 @@ DS Protect has two methods of antipiracy detection:
 
 3. Additionally, there is a third "dummy" method which does not actually do any antipiracy detection. This is apparently purely to confuse reverse engineering.
 
-Note that modern emulators, such as [MelonDS](https://github.com/melonDS-emu/melonDS) and [DeSmuME](https://github.com/TASEmulators/desmume), correctly emulate both a MAC address and the ROM reading behavior and are therefore undetected by this library. Some flashcarts do correctly emulate the ROM reading behavior, but many still sold today do not.
+Note that modern emulators, such as [MelonDS](https://github.com/melonDS-emu/melonDS) and [DeSmuME](https://github.com/TASEmulators/desmume), correctly emulate both a MAC address and the ROM reading behavior and are therefore undetected by this library. However, due to the way flashcarts work, they cannot evade being detected by the ROM read test. Instead they will, with varying degrees of aggressiveness, seek out DS Protect and patch over its tests, neutralizing them.
 
 ## Exported functions
 
