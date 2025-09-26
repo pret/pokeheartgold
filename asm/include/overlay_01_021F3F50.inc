@@ -41,8 +41,8 @@
 .public Save_LocalFieldData_Get
 .public FieldSystem_SyncMapObjectsToSave
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public Field_SaveStatsPrinter_Print
 .public Field_SaveStatsPrinter_RemoveFromScreen
 .public Field_SaveStatsPrinter_New

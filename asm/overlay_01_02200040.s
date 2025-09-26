@@ -115,10 +115,10 @@ ov01_022000DC: ; 0x022000DC
 	str r5, [sp, #0x20]
 	bl MapObject_CopyPositionVector
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r1, r0, #0
 	add r0, r6, #0
 	add r2, sp, #8

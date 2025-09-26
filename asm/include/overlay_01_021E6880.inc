@@ -109,10 +109,10 @@
 .public sub_0205BAEC
 .public MetatileBehavior_IsHeadbutt
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
-.public sub_0205C6CC
-.public sub_0205C6D4
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
+.public PlayerAvatar_GetUnk10
+.public PlayerAvatar_GetUnk14
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar

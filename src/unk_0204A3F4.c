@@ -3,13 +3,13 @@
 #include "global.h"
 
 #include "assert.h"
-#include "field_player_avatar.h"
 #include "frontier_data.h"
 #include "game_stats.h"
 #include "heap.h"
 #include "launch_application.h"
 #include "math_util.h"
 #include "party.h"
+#include "player_avatar.h"
 #include "player_data.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
@@ -165,12 +165,12 @@ u32 sub_0204A6A0(u32 a0) {
 
 void sub_0204A6A8(FieldSystem *fieldSystem) {
     Location *warp = LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
-    u32 y = GetPlayerZCoord(fieldSystem->playerAvatar);
-    u32 x = GetPlayerXCoord(fieldSystem->playerAvatar);
+    u32 z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    u32 x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     warp->mapId = fieldSystem->location->mapId;
     warp->warpId = -1;
     warp->x = x;
-    warp->y = y;
+    warp->y = z;
     warp->direction = DIR_NORTH;
     SetFlag966(Save_VarsFlags_Get(fieldSystem->saveData));
 }

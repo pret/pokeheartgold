@@ -251,10 +251,10 @@ _021E926A:
 	cmp r0, #0
 	bne _021E92A8
 	add r0, r5, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	add r3, r6, #0
 	add r2, r0, #0
 	mov r0, #0xc
@@ -1200,10 +1200,10 @@ _021E9A00:
 	cmp r0, #0
 	beq _021E9A34
 	add r0, r7, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	str r0, [sp, #0x18]
 	add r0, r7, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	add r6, #0xe4
 	add r2, r0, #0
 	ldr r1, [sp, #0x18]

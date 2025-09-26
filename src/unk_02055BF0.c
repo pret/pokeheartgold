@@ -3,7 +3,6 @@
 #include "constants/sndseq.h"
 
 #include "camera.h"
-#include "field_player_avatar.h"
 #include "field_warp_tasks.h"
 #include "follow_mon.h"
 #include "heap.h"
@@ -17,6 +16,7 @@
 #include "overlay_01_021FB4C0.h"
 #include "overlay_01_022031C0.h"
 #include "overlay_01_022053EC.h"
+#include "player_avatar.h"
 #include "save_follow_mon.h"
 #include "script.h"
 #include "sound.h"
@@ -253,7 +253,7 @@ BOOL sub_02056040(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         fenv->unk18 = ov01_021E90C0();
-        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar), fenv->unk18);
+        ov01_021E90DC(PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
     case 1:
@@ -278,7 +278,7 @@ BOOL sub_020560C4(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         fenv->unk18 = ov01_021E90C0();
-        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar), fenv->unk18);
+        ov01_021E90DC(PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
     case 1: {
@@ -414,7 +414,7 @@ BOOL sub_020562B0(TaskManager *man) {
                 break;
             }
             if (flag) {
-                ov01_02205990(var, MapObject_GetPreviousX(obj), MapObject_GetPreviousZ(obj), &fieldSystem->followMon);
+                ov01_02205990(var, MapObject_GetPreviousXCoord(obj), MapObject_GetPreviousZCoord(obj), &fieldSystem->followMon);
             }
         }
         fenv->transitionState++;
@@ -444,7 +444,7 @@ BOOL sub_020562B0(TaskManager *man) {
         break;
     case 3:
         if (IsPaletteFadeFinished()) {
-            PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fieldSystem->playerAvatar, TRUE);
+            PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fieldSystem->playerAvatar, TRUE);
             Heap_Free(fenv->unk18);
             return TRUE;
         }
@@ -497,7 +497,7 @@ BOOL sub_02056424(TaskManager *man) {
         break;
     case 4:
         if (IsPaletteFadeFinished()) {
-            PlayerAvatar_ToggleAutomaticHeightUpdating_NowApply(fieldSystem->playerAvatar, TRUE);
+            PlayerAvatar_ToggleAutomaticHeightUpdatingImmediate(fieldSystem->playerAvatar, TRUE);
             Heap_Free(fenv->unk18);
             return TRUE;
         }
@@ -512,7 +512,7 @@ BOOL sub_02056530(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0:
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        if (sub_0205B70C(GetMetatileBehavior(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar)))) {
+        if (sub_0205B70C(GetMetatileBehavior(fieldSystem, PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(obj, TRUE);
             fenv->transitionState = 1;
             break;
@@ -522,7 +522,7 @@ BOOL sub_02056530(TaskManager *man) {
         break;
     case 1:
         fenv->unk18 = ov01_021E90C0();
-        ov01_021E90DC(GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar), fenv->unk18);
+        ov01_021E90DC(PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar), fenv->unk18);
         fenv->transitionState++;
         break;
     case 2: {
@@ -546,7 +546,7 @@ BOOL sub_020565FC(TaskManager *man) {
     switch (fenv->transitionState) {
     case 0: {
         LocalMapObject *mapObj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
-        if (sub_0205B70C(GetMetatileBehavior(fieldSystem, GetPlayerXCoord(fieldSystem->playerAvatar), GetPlayerZCoord(fieldSystem->playerAvatar)))) {
+        if (sub_0205B70C(GetMetatileBehavior(fieldSystem, PlayerAvatar_GetXCoord(fieldSystem->playerAvatar), PlayerAvatar_GetZCoord(fieldSystem->playerAvatar)))) {
             MapObject_SetVisible(mapObj, TRUE);
             fenv->transitionState = 1;
             TaskManager_Jump(man, sub_02056530, fenv);

@@ -71,7 +71,7 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
     ret->showHost = String_New(51, ret->heapID);
     ret->msgbufFormatted = String_New(1351, ret->heapID);
     ret->msgbufRaw = String_New(1351, ret->heapID);
-    if (sub_0205C7EC(playerData) != 1) {
+    if (PlayerSaveData_GetState(playerData) != PLAYER_STATE_CYCLING) {
         *pMusicID = 0;
     }
     return ret;
