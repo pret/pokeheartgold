@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "application/pokegear/phone/pgphone_gra.naix"
 #include "application/pokegear/phone/phone_internal.h"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0271.h"
@@ -343,11 +344,11 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
     FontID_Alloc(4, phoneApp->heapID);
-    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapID);
-    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 28, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 16, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_a_1_4_6, phoneApp->backgroundStyle + 22, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
-    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->backgroundStyle + 34, FALSE, &phoneApp->screenData, phoneApp->heapID);
+    NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000028_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000016_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
+    BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000022_NSCR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
+    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000034_NSCR, FALSE, &phoneApp->screenData, phoneApp->heapID);
     CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->screenData->rawData, 0, 0, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -360,11 +361,11 @@ void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
-    NARC *narc = NARC_New(NARC_a_1_4_6, phoneApp->heapID);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 10, phoneApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->backgroundStyle + 4, phoneApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapID, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
-    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, 0, phoneApp->heapID, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
+    NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000010_NCLR, phoneApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000004_NCLR, phoneApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, NARC_pgphone_gra_pgphone_gra_00000000_NCLR, phoneApp->heapID, PLTTBUF_MAIN_OBJ, 0x160, 0x40, 0);
+    PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, NARC_pgphone_gra_pgphone_gra_00000000_NCLR, phoneApp->heapID, PLTTBUF_SUB_OBJ, 0x160, 0x40, 0);
     PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
     PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 16, RGB_BLACK);
     PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x40, 0xC0, 16, RGB_BLACK);
