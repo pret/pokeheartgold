@@ -146,8 +146,8 @@
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers
 .public ObjCharTransfer_ResetTransferTasksByResID
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public ObjPlttTransfer_Init
 .public ObjPlttTransfer_Destroy
 .public ObjPlttTransfer_Reset

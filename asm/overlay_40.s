@@ -3495,7 +3495,7 @@ _0222D2E6:
 	ldr r2, [r5]
 	mov r1, #1
 	add r3, #0x1c
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [r4]
 	add r1, sp, #0x20
 	ldr r0, [r0]
@@ -3778,7 +3778,7 @@ _0222D574:
 	bl TextOBJ_Destroy
 	ldr r0, [r5]
 	add r0, #0x1c
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -3830,7 +3830,7 @@ _0222D5BE:
 	mov r1, #1
 	add r2, r7, #0
 	add r3, #0x10
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	add r1, sp, #8
 	ldr r0, [r5, #4]
 	add r1, #2
@@ -3940,7 +3940,7 @@ ov40_0222D6D0: ; 0x0222D6D0
 	bl TextOBJ_Destroy
 	add r4, #0x10
 	add r0, r4, #0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov40_0222D6D0

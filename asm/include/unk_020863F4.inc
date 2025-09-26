@@ -50,8 +50,8 @@
 .public FillWindowPixelBuffer
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public GF_AssertFail
 .public String_Delete
 .public Options_GetFrame

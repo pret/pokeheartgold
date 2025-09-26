@@ -145,7 +145,7 @@ static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     BOOL retIsTouch = FALSE;
     int ret;
 
-    if (!mapApp->unk_139_3) {
+    if (!mapApp->cursorVisible) {
         ret = FlyMap_HandleTouchInput_NotDragging(mapApp, &retIsTouch);
     } else {
         ret = FlyMap_HandleTouchInput_DraggingMap(mapApp);

@@ -13,9 +13,9 @@
 #include "unk_020932A4.h"
 
 static void PokegearMap_LoadState(PokegearMapAppData *mapApp);
-static void ov101_021E9848(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut);
+static void PokegearMap_GetPixelCoordFromTileCoords(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut);
 static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int a1);
-static int ov101_021EA81C(PokegearMapAppData *mapApp, u16 a1, u16 a2);
+static int PokegearMap_GetFlypointAtCoord(PokegearMapAppData *mapApp, u16 a1, u16 a2);
 static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int a1);
 static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 a1, u16 a2);
@@ -93,7 +93,7 @@ static void PokegearMap_LoadState(PokegearMapAppData *mapApp) {
     mapApp->sessionState.active = 0;
 }
 
-void ov101_021E9464(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut) {
+void PokegearMap_GetTileCoordFromPixelCoords(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut) {
     s16 x;
     s16 y;
 
@@ -109,7 +109,7 @@ void ov101_021E9464(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16
     }
 }
 
-void ov101_021E94C0(PokegearMapAppData *mapApp) {
+void PokegearMap_MoveCursorToPlayerPosition(PokegearMapAppData *mapApp) {
     s16 x;
     s16 y;
     u8 scale;
@@ -125,7 +125,7 @@ void ov101_021E94C0(PokegearMapAppData *mapApp) {
     PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[PGMAP_SPRITE_CURSOR], x, y);
 }
 
-void ov101_021E9530(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 xIn, s16 yIn) {
+void PokegearMap_SetCursorMoveParam(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 xIn, s16 yIn) {
     u16 x;
     u16 y;
     s16 xCenter;
@@ -140,7 +140,7 @@ void ov101_021E9530(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 x
 
     if (zoomed) {
         grid = 16;
-        ov101_021E9464(mapApp, xIn, yIn, &x, &y);
+        PokegearMap_GetTileCoordFromPixelCoords(mapApp, xIn, yIn, &x, &y);
         xCenter = 5 - x;
         yCenter = 4 - y;
         top = y0 - y - yCenter;
@@ -188,37 +188,37 @@ void ov101_021E9530(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 x
     mapApp->cursorSpriteState.dy = -(yCenter * grid);
     mapApp->cursorSpriteState.destX = mapApp->cursorSpriteState.x + mapApp->cursorSpriteState.dx;
     mapApp->cursorSpriteState.destY = mapApp->cursorSpriteState.y + mapApp->cursorSpriteState.dy;
-    mapApp->cursorSpriteState.unk_20 = FX32_CONST(mapApp->cursorSpriteState.x);
-    mapApp->cursorSpriteState.unk_24 = FX32_CONST(mapApp->cursorSpriteState.y);
+    mapApp->cursorSpriteState.x_fx = FX32_CONST(mapApp->cursorSpriteState.x);
+    mapApp->cursorSpriteState.y_fx = FX32_CONST(mapApp->cursorSpriteState.y);
     mapApp->cursorSpriteState.dxStep = FX_Div(FX32_CONST(mapApp->cursorSpriteState.dx), FX32_CONST(mapApp->cursorSpeed));
     mapApp->cursorSpriteState.dyStep = FX_Div(FX32_CONST(mapApp->cursorSpriteState.dy), FX32_CONST(mapApp->cursorSpeed));
 }
 
-static void ov101_021E9848(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut) {
-    u8 r2 = 0;
-    u8 r1 = 0;
+static void PokegearMap_GetPixelCoordFromTileCoords(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 xCenter, s16 yCenter, int *xOut, int *yOut) {
+    u8 dx = 0;
+    u8 dy = 0;
     if (!mapApp->zoomed) {
-        r2 = (a3 - mapApp->centerX) / 16;
-        r1 = (a4 - mapApp->centerY) / 16;
-        if (r2 <= 5) {
+        dx = (xCenter - mapApp->centerX) / 16;
+        dy = (yCenter - mapApp->centerY) / 16;
+        if (dx <= 5) {
             *xOut = xIn * 8 + 8;
         } else {
             *xOut = xIn * 8;
         }
-        if (r1 > 4) {
+        if (dy > 4) {
             *yOut = yIn * 8 + 8;
         } else {
             *yOut = yIn * 8;
         }
     } else {
-        r2 = ((a3 - mapApp->centerX) / 8) % 2;
-        r1 = ((a4 - mapApp->centerY) / 8) % 2;
-        *xOut = xIn * 8 + r2 * 8;
-        *yOut = yIn * 8 + r1 * 8;
+        dx = ((xCenter - mapApp->centerX) / 8) % 2;
+        dy = ((yCenter - mapApp->centerY) / 8) % 2;
+        *xOut = xIn * 8 + dx * 8;
+        *yOut = yIn * 8 + dy * 8;
     }
 }
 
-void ov101_021E990C(PokegearMapAppData *mapApp) {
+void PokegearMap_InitCursorAndPlayerIconPositions(PokegearMapAppData *mapApp) {
     s16 x;
     s16 y;
     u16 ratio;
@@ -239,14 +239,14 @@ void ov101_021E990C(PokegearMapAppData *mapApp) {
     if (mapApp->sessionState.active) {
         PokegearMap_LoadState(mapApp);
     } else {
-        ov101_021E9530(mapApp, FALSE, mapApp->playerX, mapApp->playerY, 0, 0);
+        PokegearMap_SetCursorMoveParam(mapApp, FALSE, mapApp->playerX, mapApp->playerY, 0, 0);
         mapApp->cursorSpriteState.x = mapApp->cursorSpriteState.destX;
         mapApp->cursorSpriteState.y = mapApp->cursorSpriteState.destY;
         x = (mapApp->playerX - mapApp->cursorSpriteState.left) * 8 + mapApp->centerX + 4;
         y = (mapApp->playerY - mapApp->cursorSpriteState.top) * 8 + mapApp->centerY + 4;
         if (mapApp->zoomed) {
-            ov101_021E9530(mapApp, TRUE, mapApp->playerX, mapApp->playerY, x, y);
-            ov101_021E9848(mapApp, mapApp->playerX, mapApp->playerY, x, y, &mapApp->cursorSpriteState.affineX, &mapApp->cursorSpriteState.affineY);
+            PokegearMap_SetCursorMoveParam(mapApp, TRUE, mapApp->playerX, mapApp->playerY, x, y);
+            PokegearMap_GetPixelCoordFromTileCoords(mapApp, mapApp->playerX, mapApp->playerY, x, y, &mapApp->cursorSpriteState.affineX, &mapApp->cursorSpriteState.affineY);
             mapApp->cursorSpriteState.x = mapApp->cursorSpriteState.destX;
             mapApp->cursorSpriteState.y = mapApp->cursorSpriteState.destY;
             x = (mapApp->playerX - mapApp->cursorSpriteState.left) * grid + mapApp->centerX + gridHalf;
@@ -286,13 +286,13 @@ void PokegearMap_OnVBlank_UpdateCursorAffine(PokegearMapAppData *mapApp, Pokegea
     mapApp->requestAffineUpdate = FALSE;
 }
 
-void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 dx, s16 dy) {
+void PokegearMap_UpdateObjects_AddCoord(PokegearMapAppData *mapApp, s16 dx, s16 dy) {
     u16 i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
     PokegearManagedObject_AddCoord(&objects[PGMAP_SPRITE_PLAYER], dx, dy);
 
-    if (mapApp->unk_139_3) {
+    if (mapApp->cursorVisible) {
         PokegearManagedObject_AddCoord(&objects[PGMAP_SPRITE_CURSOR], dx, dy);
     }
     if (mapApp->type != PGMAP_TYPE_GEAR) {
@@ -488,7 +488,7 @@ BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, 
     return TRUE;
 }
 
-void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
+void PokegearMap_UpdateStationaryIconsDrawState(PokegearMapAppData *mapApp, u8 mode) {
     u16 i;
     u16 index;
     s16 x;
@@ -514,10 +514,10 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
             mapApp->objManager->objects[index].pos.y = y;
             if (MapApp_GetMarkingsHeapNodeByMapID(mapApp, locationSpec->mapId) != NULL) {
                 Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, TRUE);
-                PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], TRUE);
+                PokegearManagedObject_SetAutoCullingFlag(&mapApp->objManager->objects[index], TRUE);
             } else {
                 Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, FALSE);
-                PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], FALSE);
+                PokegearManagedObject_SetAutoCullingFlag(&mapApp->objManager->objects[index], FALSE);
             }
             break;
         case 1:
@@ -526,7 +526,7 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
             break;
         case 2:
             Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, FALSE);
-            PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], FALSE);
+            PokegearManagedObject_SetAutoCullingFlag(&mapApp->objManager->objects[index], FALSE);
             break;
         }
     }
@@ -535,7 +535,7 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
     for (i = 0; i < ROAMER_MAX; ++i) {
         index = i + PGMAP_SPRITE_ROAMER_RAIKOU;
         if (mapApp->roamerLocations[i] == MAP_EVERYWHERE) {
-            PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], FALSE);
+            PokegearManagedObject_SetAutoCullingFlag(&mapApp->objManager->objects[index], FALSE);
             Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, FALSE);
             continue;
         }
@@ -546,7 +546,7 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
         case 0:
             mapApp->objManager->objects[index].pos.x = x;
             mapApp->objManager->objects[index].pos.y = y;
-            PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], TRUE);
+            PokegearManagedObject_SetAutoCullingFlag(&mapApp->objManager->objects[index], TRUE);
             Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, TRUE);
             break;
         case 1:
@@ -554,14 +554,14 @@ void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode) {
             mapApp->objManager->objects[index].destY = y;
             break;
         case 2:
-            PokegearManagedObject_SetUnk01(&mapApp->objManager->objects[index], FALSE);
+            PokegearManagedObject_SetAutoCullingFlag(&mapApp->objManager->objects[index], FALSE);
             Sprite_SetDrawFlag(mapApp->objManager->objects[index].sprite, FALSE);
             break;
         }
     }
 }
 
-void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 mode) {
+void PokegearMap_UpdateFlyIconsDrawState(PokegearMapAppData *mapApp, u8 mode) {
     u16 i;
     u16 objIndex;
     s16 x;
@@ -587,7 +587,7 @@ void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 mode) {
             } else {
                 Sprite_SetDrawFlag(mapApp->objManager->objects[objIndex].sprite, FALSE);
             }
-            if (ov101_021EA804(mapApp, flypointParam->mapIDforWarp, flypointParam->x, flypointParam->y)) {
+            if (PokegearMap_CanFlyToMapOrXY(mapApp, flypointParam->mapIDforWarp, flypointParam->x, flypointParam->y)) {
                 Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[objIndex].sprite, 10);
             }
             break;
@@ -602,7 +602,7 @@ void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 mode) {
     }
 }
 
-void ov101_021EA608(PokegearMapAppData *mapApp, u8 enable) {
+void PokegearMap_SetPlayerAndCursorSpritesDrawFlag(PokegearMapAppData *mapApp, u8 enable) {
     int i;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
@@ -641,11 +641,11 @@ static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int m
     return FALSE;
 }
 
-BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1) {
-    if (!a1->locationSpec) {
+BOOL PokegearMap_LocationIsOnMainMap(PokegearMapAppData *mapApp, PokegearMapLocation *location) {
+    if (location->spec == NULL) {
         return FALSE;
     }
-    if (a1->locationSpec->mapId == MAP_SINJOH_RUINS_EXTERIOR || a1->locationSpec->mapId == MAP_SS_AQUA_1F) {
+    if (location->spec->mapId == MAP_SINJOH_RUINS_EXTERIOR || location->spec->mapId == MAP_SS_AQUA_1F) {
         return FALSE;
     }
     return TRUE;
@@ -683,25 +683,25 @@ const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByMapID(PokegearMapApp
     return NULL;
 }
 
-void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y) {
-    a1->locationSpec = PokegearMap_GetLocationSpecByCoord(mapApp, x, y);
+void PokegearMap_SetCurLocationFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *location, u8 x, u8 y) {
+    location->spec = PokegearMap_GetLocationSpecByCoord(mapApp, x, y);
     if (mapApp->mapUnlockLevel == 0) {
         // New Bark is at x=21, anything east is Kanto. Hide if haven't unlocked it yet.
         // Carve out an exception for Mt. Silver which is at (25, 10)
         if (!(x == 25 && y == 10) && x >= 22) {
-            a1->locationSpec = NULL;
+            location->spec = NULL;
         }
     }
-    if (a1->locationSpec == NULL) {
-        a1->markingsNode = NULL;
+    if (location->spec == NULL) {
+        location->markingsNode = NULL;
     } else {
-        a1->markingsNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapApp->selectedLoc.locationSpec->mapId);
+        location->markingsNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapApp->selectedLoc.spec->mapId);
     }
-    a1->x = x;
-    a1->y = y;
+    location->x = x;
+    location->y = y;
 }
 
-BOOL ov101_021EA7E4(PokegearMapAppData *mapApp, u16 x, u16 y) {
+BOOL PokegearMap_CanFlyToXY(PokegearMapAppData *mapApp, u16 x, u16 y) {
     PokegearRegion region = Pokegear_RegionFromCoords(x, y);
     if (mapApp->curRegion == POKEGEAR_REGION_INDIGO || region == mapApp->curRegion) {
         return TRUE;
@@ -710,15 +710,15 @@ BOOL ov101_021EA7E4(PokegearMapAppData *mapApp, u16 x, u16 y) {
     }
 }
 
-BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y) {
+BOOL PokegearMap_CanFlyToMapOrXY(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y) {
     if (mapID == MAP_INDIGO_PLATEAU || mapID == MAP_ROUTE_26) {
         return TRUE;
     } else {
-        return ov101_021EA7E4(mapApp, x, y);
+        return PokegearMap_CanFlyToXY(mapApp, x, y);
     }
 }
 
-static int ov101_021EA81C(PokegearMapAppData *mapApp, u16 x, u16 y) {
+static int PokegearMap_GetFlypointAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y) {
     int i;
     const MapFlypointParam *flypoint;
 
@@ -736,23 +736,24 @@ static int ov101_021EA81C(PokegearMapAppData *mapApp, u16 x, u16 y) {
     return -1;
 }
 
-int PokegearMap_GetFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y) {
+// Returns MAP_EVERYWHERE if the coords do not correspond to an unlocked flypoint
+int PokegearMap_GetUnlockedFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y) {
     int idx;
 
-    idx = ov101_021EA81C(mapApp, x, y);
-    if (idx < 0 || !ov101_021EA804(mapApp, gMapFlypointParams[idx].mapIDforWarp, x, y)) {
-        return 0;
+    idx = PokegearMap_GetFlypointAtCoord(mapApp, x, y);
+    if (idx < 0 || !PokegearMap_CanFlyToMapOrXY(mapApp, gMapFlypointParams[idx].mapIDforWarp, x, y)) {
+        return MAP_EVERYWHERE;
     }
     return gMapFlypointParams[idx].mapIDforWarp;
 }
 
-int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y) {
+int PokegearMap_SetCurLocationToFlypointFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *location, u8 x, u8 y) {
     int mapID;
     int idx;
 
-    idx = ov101_021EA81C(mapApp, x, y - 2);
+    idx = PokegearMap_GetFlypointAtCoord(mapApp, x, y - 2);
     if (idx < 0) {
-        ov101_021EA794(mapApp, a1, x, y);
+        PokegearMap_SetCurLocationFromCoord(mapApp, location, x, y);
         if (mapApp->flyDestination >= 0) {
             Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN + mapApp->flyDestination].sprite, 10);
             mapApp->flyDestination = -1;
@@ -761,20 +762,20 @@ int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8
     }
 
     mapID = gMapFlypointParams[idx].mapIDforName;
-    a1->x = x;
-    a1->y = y;
-    a1->locationSpec = PokegearMap_GetLocationSpecByMapID(mapApp, mapID);
+    location->x = x;
+    location->y = y;
+    location->spec = PokegearMap_GetLocationSpecByMapID(mapApp, mapID);
     if (mapApp->flyDestination != idx) {
         if (mapApp->flyDestination >= 0) {
             Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN + mapApp->flyDestination].sprite, 10);
             mapApp->flyDestination = -1;
         }
-        if (ov101_021EA804(mapApp, mapID, x, y - 2)) {
+        if (PokegearMap_CanFlyToMapOrXY(mapApp, mapID, x, y - 2)) {
             Sprite_SetAnimCtrlSeq(mapApp->objManager->objects[PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN + idx].sprite, 11);
             mapApp->flyDestination = idx;
         }
     }
-    a1->markingsNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapID);
+    location->markingsNode = MapApp_GetMarkingsHeapNodeByMapID(mapApp, mapID);
     return mapID;
 }
 
@@ -807,13 +808,13 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     u32 i;
     u32 tilemap174blockId;
     u8 tilemap16CsrcX;
-    PokegearMapAppData_Sub118 *selectedLoc;
+    PokegearMapLocation *selectedLoc;
     const PokegearMapLocationSpec *locationSpec;
     MapMarkingsHeapNode *markersHeap;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
     selectedLoc = &mapApp->selectedLoc;
-    locationSpec = selectedLoc->locationSpec;
+    locationSpec = selectedLoc->spec;
     markersHeap = selectedLoc->markingsNode;
 
     String_SetEmpty(mapApp->mapNameString);
@@ -822,7 +823,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     }
     AddTextPrinterParameterizedWithColor(&mapApp->windows[0], 0, mapApp->regionNameStrings[isKanto], 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     if (mapApp->type == PGMAP_TYPE_GEAR) {
-        if (!ov101_021EA6C4(mapApp, selectedLoc)) {
+        if (!PokegearMap_LocationIsOnMainMap(mapApp, selectedLoc)) {
             ov101_021EB38C(mapApp, 0, 2);
         } else {
             ov101_021EB38C(mapApp, 0, 0);
@@ -914,11 +915,11 @@ void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUp
     u32 i;
     const PokegearMapLocationSpec *locationSpec;
     MapMarkingsHeapNode *markingsNode;
-    PokegearMapAppData_Sub118 *selectedLoc;
+    PokegearMapLocation *selectedLoc;
     PokegearManagedObject *objects = mapApp->objManager->objects;
 
     selectedLoc = &mapApp->selectedLoc;
-    locationSpec = selectedLoc->locationSpec;
+    locationSpec = selectedLoc->spec;
     markingsNode = selectedLoc->markingsNode;
 
     if (forceUpdateMapName) {
@@ -1006,21 +1007,21 @@ void ov101_021EB1E0(PokegearMapAppData *mapApp, u8 a1) {
         return;
     }
 
-    if (a1 == 0 || mapApp->selectedLoc.locationSpec == NULL) {
+    if (a1 == 0 || mapApp->selectedLoc.spec == NULL) {
         BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
         ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
         mapApp->lastSelectedMapID = MAP_EVERYWHERE;
         return;
     }
 
-    if (mapApp->selectedLoc.locationSpec->mapId == mapApp->lastSelectedMapID) {
+    if (mapApp->selectedLoc.spec->mapId == mapApp->lastSelectedMapID) {
         return;
     }
-    mapApp->lastSelectedMapID = mapApp->selectedLoc.locationSpec->mapId;
+    mapApp->lastSelectedMapID = mapApp->selectedLoc.spec->mapId;
     BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 
     for (i = 0; i < mapApp->numLocationSpecs; ++i) {
-        if (mapApp->selectedLoc.locationSpec->mapId != mapApp->locationSpecs[i].mapId) {
+        if (mapApp->selectedLoc.spec->mapId != mapApp->locationSpecs[i].mapId) {
             continue;
         }
         location = &mapApp->locationSpecs[i];
@@ -1038,14 +1039,14 @@ void ov101_021EB1E0(PokegearMapAppData *mapApp, u8 a1) {
 
 void PokegearMap_HideMapCursor(PokegearMapAppData *mapApp) {
     Sprite_SetDrawFlag(mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].sprite, FALSE);
-    mapApp->unk_139_3 = FALSE;
+    mapApp->cursorVisible = FALSE;
 }
 
 void PokegearMap_DeselectApp(void *appData) {
     PokegearMapAppData *mapApp = appData;
 
     PokegearCursorManager_SetCursorSpritesDrawState(mapApp->pokegear->cursorManager, 0, FALSE);
-    ov101_021E94C0(mapApp);
+    PokegearMap_MoveCursorToPlayerPosition(mapApp);
     Sprite_SetDrawFlag(mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].sprite, TRUE);
     ov101_021EB1E0(mapApp, 1);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_ON);
@@ -1054,9 +1055,9 @@ void PokegearMap_DeselectApp(void *appData) {
 void PokegearMap_ShowMapCursor(void *appData) {
     PokegearMapAppData *mapApp = appData;
 
-    ov101_021E94C0(mapApp);
+    PokegearMap_MoveCursorToPlayerPosition(mapApp);
     Sprite_SetDrawFlag(mapApp->objManager->objects[PGMAP_SPRITE_CURSOR].sprite, TRUE);
-    mapApp->unk_139_3 = FALSE;
+    mapApp->cursorVisible = FALSE;
 }
 
 void PokegearMap_InMarkingsMode_HideCursor(void *appData) {
@@ -1080,7 +1081,7 @@ void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state) {
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
 }
 
-void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 a1) {
+void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 x) {
     TouchscreenListMenuHeader header;
 
     MI_CpuClear8(&header, sizeof(TouchscreenListMenuHeader));
@@ -1089,7 +1090,8 @@ void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 a1) {
     header.listMenuItems = mapApp->listMenuItems;
     header.bgConfig = mapApp->pokegear->bgConfig;
     header.numWindows = 2;
-    if (a1 < 8 || a1 > 15) {
+    // If cursor x is between 8 and 15 inclusive, spawn left-of-center, else spawn right-of-center.
+    if (x < 8 || x > 15) {
         mapApp->listMenu = TouchscreenListMenu_Create(mapApp->listMenuSpawner, &header, mapApp->pokegear->menuInputState, 11, 4, 0, 0);
     } else {
         mapApp->listMenu = TouchscreenListMenu_Create(mapApp->listMenuSpawner, &header, mapApp->pokegear->menuInputState, 3, 4, 0, 0);

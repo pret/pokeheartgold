@@ -115,7 +115,7 @@ typedef struct PhoneContactListUISlotData {
 } PhoneContactListUISlotData;
 
 typedef struct PokegearPhoneCallContextParam {
-    enum HeapID heapID;                                 // 0x00
+    enum HeapID heapID;                            // 0x00
     MenuInputState *menuInputStatePtr;             // 0x04
     Sprite *sprite;                                // 0x08
     PokegearPhoneAppData *phoneApp;                // 0x0C
@@ -132,6 +132,13 @@ typedef struct PokegearPhoneCallContextParam {
     u16 playerMapID;                               // 0x36
     u8 textSpeed;                                  // 0x38
 } PokegearPhoneCallContextParam;
+
+typedef struct PhoneCallScriptDef {
+    u8 msgIds[2];
+    u16 scriptType : 4;
+    u16 param0 : 12;
+    u16 param1;
+} PhoneCallScriptDef;
 
 typedef struct PokegearPhoneCallState {
     int mainState;                       // 0x00
@@ -166,7 +173,7 @@ typedef struct PokegearPhoneCallState {
 } PokegearPhoneCallState; // size: 0x54
 
 typedef struct PokegearPhoneCallContext {
-    enum HeapID heapID;                                 // 0x00
+    enum HeapID heapID;                            // 0x00
     PokegearPhoneAppData *phoneApp;                // 0x04
     BgConfig *bgConfig;                            // 0x08
     Window *phoneCallMsgWindow;                    // 0x0C
@@ -249,12 +256,12 @@ typedef struct PhoneContactListUI {
 } PhoneContactListUI;                                        // size 0x408
 
 struct PokegearPhoneAppData {
-    enum HeapID heapID;                                  // 0x000
+    enum HeapID heapID;                             // 0x000
     int subtaskState;                               // 0x004
     int subsubtaskState;                            // 0x008
     PokegearAppData *pokegear;                      // 0x00C
     u8 menuInputStateBak;                           // 0x010
-    u8 backgroundStyle;                             // 0x011
+    u8 skin;                                        // 0x011
     MsgData *msgData;                               // 0x014
     MessageFormat *msgFormat;                       // 0x018
     String *msgFormatBuf;                           // 0x01C
@@ -299,7 +306,7 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp);
 void ov101_021F0284(PokegearPhoneAppData *phoneApp);
 void ov101_021F0370(PokegearPhoneAppData *phoneApp);
 void ov101_021F0388(PokegearPhoneAppData *phoneApp);
-void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL a1);
+void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL shouldDim);
 void ov101_021F0578(PokegearPhoneAppData *phoneApp);
 void ov101_021F05CC(PokegearPhoneAppData *phoneApp);
 void ov101_021F05EC(PokegearPhoneAppData *phoneApp);

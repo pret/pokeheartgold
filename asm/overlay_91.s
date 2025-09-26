@@ -10653,7 +10653,7 @@ _02261616:
 	add r3, r5, #0
 	add r2, r1, #0
 	add r3, #0x50
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	cmp r0, #1
 	beq _022616D2
 	bl GF_AssertFail
@@ -10762,7 +10762,7 @@ ov91_02261790: ; 0x02261790
 	bl DestroySingle2DGfxResObj
 	add r0, r5, #0
 	add r0, #0x50
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	ldr r0, [r5, #0x4c]
 	bl sub_02013938
 	ldr r0, [r5, #0x5c]

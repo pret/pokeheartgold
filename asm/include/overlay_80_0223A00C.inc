@@ -53,8 +53,8 @@
 .public ScheduleSetBgPosText
 .public SysTask_GetData
 .public AddTextPrinterParameterizedWithColorAndSpacing
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public Sprite_SetAffineScale
 .public Sprite_SetDrawFlag
 .public Sprite_SetAffineOverwriteMode
