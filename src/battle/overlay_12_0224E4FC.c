@@ -50,13 +50,13 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     ctx->battleMons[battlerId].atk = GetMonData(mon, MON_DATA_ATK, NULL);
     ctx->battleMons[battlerId].def = GetMonData(mon, MON_DATA_DEF, NULL);
     ctx->battleMons[battlerId].speed = GetMonData(mon, MON_DATA_SPEED, NULL);
-    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SPATK, NULL);
-    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SP_ATK, NULL);
+    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SP_DEF, NULL);
 
     for (i = 0; i < 4; i++) {
         ctx->battleMons[battlerId].moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1PP + i, NULL);
-        ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+        ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
+        ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL);
     }
 
     ctx->battleMons[battlerId].hpIV = GetMonData(mon, MON_DATA_HP_IV, NULL);
@@ -112,12 +112,12 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     ctx->battleMons[battlerId].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     ctx->battleMons[battlerId].friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
 
-    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_HP, NULL);
-    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
 
     ctx->battleMons[battlerId].exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
     ctx->battleMons[battlerId].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    ctx->battleMons[battlerId].otid = GetMonData(mon, MON_DATA_OTID, NULL);
+    ctx->battleMons[battlerId].otid = GetMonData(mon, MON_DATA_OT_ID, NULL);
     ctx->battleMons[battlerId].otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
 
     ctx->battleMons[battlerId].ball = BattleSystem_GetMonBall(bsys, mon);
@@ -131,7 +131,7 @@ void BattleSystem_GetBattleMon(BattleSystem *bsys, BattleContext *ctx, int battl
     PokedexData_UnloadAll(dexData);
     PokedexData_Delete(dexData);
 
-    GetMonData(mon, MON_DATA_NICKNAME_FLAT, ctx->battleMons[battlerId].nickname);
+    GetMonData(mon, MON_DATA_NICKNAME, ctx->battleMons[battlerId].nickname);
     GetMonData(mon, MON_DATA_OT_NAME, ctx->battleMons[battlerId].otName);
 
     ctx->battleMons[battlerId].unk78 = 0;
@@ -154,19 +154,19 @@ void BattleSystem_ReloadMonData(BattleSystem *bsys, BattleContext *ctx, int batt
     ctx->battleMons[battlerId].atk = GetMonData(mon, MON_DATA_ATK, NULL);
     ctx->battleMons[battlerId].def = GetMonData(mon, MON_DATA_DEF, NULL);
     ctx->battleMons[battlerId].speed = GetMonData(mon, MON_DATA_SPEED, NULL);
-    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SPATK, NULL);
-    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    ctx->battleMons[battlerId].spAtk = GetMonData(mon, MON_DATA_SP_ATK, NULL);
+    ctx->battleMons[battlerId].spDef = GetMonData(mon, MON_DATA_SP_DEF, NULL);
     ctx->battleMons[battlerId].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     ctx->battleMons[battlerId].friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_HP, NULL);
-    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    ctx->battleMons[battlerId].hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    ctx->battleMons[battlerId].maxHp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
 
     if (!(ctx->battleMons[battlerId].status2 & STATUS2_TRANSFORM)) {
         for (i = 0; i < 4; i++) {
             if (!(ctx->battleMons[battlerId].unk88.mimicedMoveIndex & MaskOfFlagNo(i))) {
                 ctx->battleMons[battlerId].moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-                ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1PP + i, NULL);
-                ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL);
+                ctx->battleMons[battlerId].movePPCur[i] = GetMonData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
+                ctx->battleMons[battlerId].movePP[i] = GetMonData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL);
             }
         }
         ctx->battleMons[battlerId].exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
@@ -1640,7 +1640,7 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (i = 0; i < Party_GetCount(party); i++) {
                     mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                    if (GetMonData(mon, MON_DATA_CUR_HP, NULL)) {
                         aliveMons++;
                     }
                 }
@@ -1664,7 +1664,7 @@ BOOL CheckTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (i = 0; i < Party_GetCount(party); i++) {
                     mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_HP, NULL)) {
+                    if (GetMonData(mon, MON_DATA_CUR_HP, NULL)) {
                         aliveMons++;
                     }
                 }
@@ -2698,7 +2698,7 @@ BOOL CanSwitchMon(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
         mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
             && !GetMonData(mon, MON_DATA_IS_EGG, NULL)
-            && GetMonData(mon, MON_DATA_HP, NULL) != 0
+            && GetMonData(mon, MON_DATA_CUR_HP, NULL) != 0
             && monIndex1 != i
             && monIndex2 != i) {
             cnt++;
@@ -5269,7 +5269,7 @@ BOOL ov12_022568B0(BattleSystem *bsys, Pokemon *mon) {
 
     GetMonData(mon, MON_DATA_OT_NAME, otName);
 
-    if (trainerId == GetMonData(mon, MON_DATA_OTID, NULL) && gender == GetMonData(mon, MON_DATA_OT_GENDER, NULL) && !StringNotEqualN(name, otName, PLAYER_NAME_LENGTH)) {
+    if (trainerId == GetMonData(mon, MON_DATA_OT_ID, NULL) && gender == GetMonData(mon, MON_DATA_OT_GENDER, NULL) && !StringNotEqualN(name, otName, PLAYER_NAME_LENGTH)) {
         return TRUE;
     }
 
@@ -5385,8 +5385,8 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *bsys, BattleContext *ctx, int 
                     ctx->battleMons[ctx->battlerIdTemp].atk = GetMonData(mon2, MON_DATA_ATK, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].def = GetMonData(mon2, MON_DATA_DEF, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].speed = GetMonData(mon2, MON_DATA_SPEED, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].spAtk = GetMonData(mon2, MON_DATA_SPATK, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].spDef = GetMonData(mon2, MON_DATA_SPDEF, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].spAtk = GetMonData(mon2, MON_DATA_SP_ATK, NULL);
+                    ctx->battleMons[ctx->battlerIdTemp].spDef = GetMonData(mon2, MON_DATA_SP_DEF, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].ability = GetMonData(mon2, MON_DATA_ABILITY, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
                     ctx->battleStatus2 |= BATTLE_STATUS2_FORM_CHANGE;

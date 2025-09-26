@@ -147,7 +147,7 @@ void BufferBoxMonNickname(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon
 }
 
 void BufferBoxMonOTName(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) {
-    GetBoxMonData(boxMon, MON_DATA_OT_NAME_2, msgFmt->buffer);
+    GetBoxMonData(boxMon, MON_DATA_OT_NAME_STRING, msgFmt->buffer);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
