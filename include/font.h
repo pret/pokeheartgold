@@ -14,7 +14,7 @@ struct GlyphInfo *FontID_TryLoadGlyph(FontID fontId, u16 glyphId);
 RenderResult FontID_RenderText(int fontId, TextPrinter *printer);
 u32 FontID_FlatArray_GetWidth(FontID fontId, const u16 *string, u32 letterSpacing);
 u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 letterSpacing);
-u32 FontID_String_GetWidth(FontID fontId, String *string, u32 letterSpacing);
+u32 FontID_String_GetWidth(u32 fontId, String *string, u32 letterSpacing);
 BOOL FontID_String_AllCharsValid(FontID fontId, String *str0, String *str1);
 u8 GetFontAttribute(FontID fontId, int attr);
 void LoadFontPal0(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotOffset, enum HeapID heapID);

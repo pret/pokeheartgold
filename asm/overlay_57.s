@@ -1817,7 +1817,7 @@ ov57_022386F0: ; 0x022386F0
 	add r4, r0, #0
 	mov r0, #2
 	mov r1, #0x34
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x97
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -1841,7 +1841,7 @@ ov57_02238714: ; 0x02238714
 	mov r0, #0x26
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_02013660
+	bl FontOAM_Delete
 	mov r0, #0x9a
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -1849,7 +1849,7 @@ ov57_02238714: ; 0x02238714
 	mov r0, #0x99
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02013660
+	bl FontOAM_Delete
 	mov r0, #0x9d
 	lsl r0, r0, #2
 	add r0, r4, r0

@@ -38,7 +38,7 @@
 .public sub_0200FB70
 .public sub_0200FC20
 .public sub_020135D8
-.public sub_02013660
+.public FontOAM_Delete
 .public sub_02013688
 .public sub_020136B4
 .public sub_02013794

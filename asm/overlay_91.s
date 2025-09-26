@@ -7048,7 +7048,7 @@ _0225FB16:
 	blt _0225FB16
 	mov r0, #8
 	add r1, r6, #0
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x63
 	lsl r1, r1, #2
 	str r0, [r7, r1]

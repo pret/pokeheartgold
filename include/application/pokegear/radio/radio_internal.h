@@ -27,7 +27,7 @@ typedef enum RadioMainState {
 } RadioMainState;
 
 typedef struct RadioShow {
-    enum HeapID heapID;             // 0x00
+    enum HeapID heapID;        // 0x00
     SaveData *saveData;        // 0x04
     u16 mapID;                 // 0x08
     u16 mapHeader;             // 0x0A
@@ -73,7 +73,7 @@ typedef struct RadioShow {
 } RadioShow;                   // size: 0x74
 
 typedef struct PokegearRadioAppData {
-    enum HeapID heapID;                // 0x00
+    enum HeapID heapID;           // 0x00
     int state;                    // 0x04
     int substate;                 // 0x08
     PokegearAppData *pokegear;    // 0x0C

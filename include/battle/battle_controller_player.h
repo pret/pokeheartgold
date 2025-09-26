@@ -3,9 +3,9 @@
 
 #include "battle/battle.h"
 
-BattleContext *BattleContext_New(BattleSystem *bsys);
-BOOL BattleContext_Main(BattleSystem *bsys, BattleContext *ctx);
+BattleContext *BattleContext_New(BattleSystem *battleSystem);
+BOOL BattleContext_Main(BattleSystem *battleSystem, BattleContext *ctx);
 void BattleContext_Delete(BattleContext *ctx);
-void BattleSystem_CheckMoveHitEffect(BattleSystem *bsys, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo);
+void BattleSystem_CheckMoveHitEffect(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int moveNo);
 
 #endif
