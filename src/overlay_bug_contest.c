@@ -214,10 +214,10 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
     // state of the Pokemon you used intact.
     mon = AllocMonZeroed(bugContest->heapID);
     CopyPokemonToPokemon(Party_GetMonByIndex(bugContest->party_cur, 0), mon);
-    Party_GetUnkSubSlot(bugContest->party_cur, &sub, 0);
+    Party_GetMonAprijuiceModifiers(bugContest->party_cur, &sub, 0);
     Party_Copy(bugContest->party_bak, bugContest->party_cur);
-    Party_SafeCopyMonToSlot_ResetUnkSub(bugContest->party_cur, bugContest->lead_mon_idx, mon);
-    Party_SetUnkSubSlot(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(bugContest->party_cur, bugContest->lead_mon_idx, mon);
+    Party_SetMonAprijuiceModifiers(bugContest->party_cur, &sub, bugContest->lead_mon_idx);
     Heap_Free(mon);
     Heap_Free(bugContest->party_bak);
     bugContest->party_bak = NULL;

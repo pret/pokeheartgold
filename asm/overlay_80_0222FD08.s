@@ -1597,7 +1597,7 @@ ov80_022309F8: ; 0x022309F8
 	ldr r0, [r4, r1]
 	add r1, #8
 	ldrh r1, [r4, r1]
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldr r1, _02230A58 ; =0x000004DE
 	ldrh r0, [r4, r1]
 	lsl r0, r0, #1

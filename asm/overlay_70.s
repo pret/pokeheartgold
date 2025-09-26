@@ -26449,17 +26449,17 @@ ov70_02244A04: ; 0x02244A04
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	cmp r0, #0
 	bne _02244A28
 	ldr r1, [r5]
 	ldr r0, [r1, #4]
 	ldr r1, [r1, #0x34]
-	bl Save_SysInfo_SetField4C
+	bl Save_SysInfo_SetDwcProfileId
 _02244A28:
 	ldr r0, [r5]
 	ldr r0, [r0, #4]
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	add r6, r0, #0
 	add r0, r4, #0
 	bl DWC_CreateFriendKey

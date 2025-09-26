@@ -844,9 +844,9 @@ BOOL Pokedex_GetNatDexFlag(const Pokedex *pokedex) {
     return pokedex->nationalDex;
 }
 
-void sub_0202A57C(Pokedex *pokedex) {
+void Pokedex_EnableFormDetection(Pokedex *pokedex) {
     ASSERT_POKEDEX(pokedex);
-    pokedex->unk_334 = TRUE;
+    pokedex->canDetectForms = TRUE;
 }
 
 BOOL Pokedex_HasCaughtMonWithLanguage(Pokedex *pokedex, u32 species, u32 language) {

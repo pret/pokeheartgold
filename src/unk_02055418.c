@@ -65,14 +65,14 @@ void sub_02055478(FieldSystem *fieldSystem, SysInfo_RTC *sysinfo, RTCDate *date,
     if (minutes <= 0) {
         return;
     }
-    Save_SysInfo_RTC_SubField34(sysinfo, minutes);
+    Save_SysInfo_RTC_DecrementPenalty(sysinfo, minutes);
     sub_020555B4(fieldSystem, minutes, time);
     sysinfo->date = *date;
     sysinfo->time = *time;
 }
 
 void sub_02055508(FieldSystem *fieldSystem, int days) {
-    BOOL unkFlag = sub_02055670(fieldSystem);
+    BOOL hasPenalty = FieldSystem_HasPenalty(fieldSystem);
     ClearDailyFlags(fieldSystem);
     sub_0206759C(fieldSystem->saveData, days); // reset badge shininess..?
     sub_0202C78C(Save_FriendGroup_Get(fieldSystem->saveData), days);
@@ -84,7 +84,7 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
     WiFiHistory_UpgradeAllLocationsState(Save_WiFiHistory_Get(fieldSystem->saveData));
     sub_020556B8(fieldSystem);
     sub_0202F294(SaveData_GetPhoneCallPersistentState(fieldSystem->saveData), days);
-    if (!unkFlag) {
+    if (!hasPenalty) {
         sub_02031CCC(Save_ApricornBox_Get(fieldSystem->saveData), days);
         sub_0209730C(fieldSystem->saveData, days);
     }
@@ -133,9 +133,9 @@ void FieldSystem_SetGameClearTime(FieldSystem *fieldSystem) {
     sysinfo->seconds_at_game_clear = GF_RTC_DateTimeToSec();
 }
 
-BOOL sub_02055670(FieldSystem *fieldSystem) {
+BOOL FieldSystem_HasPenalty(FieldSystem *fieldSystem) {
     SysInfo_RTC *sysinfo = Save_SysInfo_RTC_Get(fieldSystem->saveData);
-    return sub_02028E1C(sysinfo);
+    return Save_SysInfo_RTC_HasPenalty(sysinfo);
 }
 
 UnkStruct_020556FC *sub_02055680(FieldSystem *fieldSystem, enum HeapID heapID) {

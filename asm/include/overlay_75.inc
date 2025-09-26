@@ -112,8 +112,8 @@
 .public SaveGameNormal
 .public Save_ClearStatusFlags
 .public Save_SysInfo_Get
-.public Save_SysInfo_GetField4C
-.public Save_SysInfo_SetField4C
+.public Save_SysInfo_GetDwcProfileId
+.public Save_SysInfo_SetDwcProfileId
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
