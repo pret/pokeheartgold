@@ -6850,10 +6850,10 @@ _0221F6BC:
 	bl CopyPokemonToPokemon
 	add r0, r7, #0
 	add r1, r6, #0
-	bl Party_ResetUnkSubSlot
+	bl Party_ResetMonAprijuiceModifiers
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
-	bl Party_ResetUnkSubSlot
+	bl Party_ResetMonAprijuiceModifiers
 	ldr r0, [r5, #0x1c]
 	mov r1, #0x14
 	bl GameStats_Inc

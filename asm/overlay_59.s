@@ -7957,7 +7957,7 @@ ov59_0223BA64: ; 0x0223BA64
 	ldrb r2, [r5, #8]
 	add r0, r6, #0
 	add r1, #0x10
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov59_0223BA64
@@ -8001,7 +8001,7 @@ _0223BB18:
 	ldrb r2, [r2, #8]
 	ldr r0, [r4, #0x10]
 	add r1, #0x10
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	ldr r0, [sp]
 	ldr r2, [sp]
 	ldrh r0, [r0, #0x16]

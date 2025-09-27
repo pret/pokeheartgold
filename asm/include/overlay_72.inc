@@ -114,8 +114,8 @@
 .public String_Delete
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
-.public Save_SysInfo_GetField4C
-.public Save_SysInfo_SetField4C
+.public Save_SysInfo_GetDwcProfileId
+.public Save_SysInfo_SetDwcProfileId
 .public Options_GetFrame
 .public sub_0202D488
 .public sub_0202D568
