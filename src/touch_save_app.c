@@ -8,12 +8,12 @@
 #include "msgdata/msg/msg_0040.h"
 
 #include "bg_window.h"
+#include "dsprot.h"
 #include "field_system.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "menu_input_state.h"
 #include "overlay_01.h"
-#include "overlay_123.h"
 #include "render_text.h"
 #include "sys_task.h"
 #include "sys_task_api.h"
@@ -23,7 +23,7 @@
 #include "unk_02005D10.h"
 #include "yes_no_prompt.h"
 
-FS_EXTERN_OVERLAY(OVY_123);
+FS_EXTERN_OVERLAY(ds_protect);
 
 enum TouchSaveApp_State {
     TOUCHSAVEAPP_STATE_DISPLAY_SAVE_INFORMATION,
@@ -215,9 +215,9 @@ SysTask *ov30_0225D520(BgConfig *bgConfig, void *a1, FieldSystem *fieldSystem, v
 void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
     TouchSaveAppData *data = SysTask_GetData(task);
 
-    FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
+    FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
 
-    if (!ov123_0225F4A8(ov30_0225DC28)) {
+    if (!DSProt_DetectNotFlashcart(ov30_0225DC28)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
@@ -226,7 +226,7 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
 
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
-    if (ov123_0225F520(ov30_0225DC08)) {
+    if (DSProt_DetectEmulator(ov30_0225DC08)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
@@ -241,11 +241,11 @@ void ov30_0225D64C(BgConfig *bgConfig, SysTask *task) {
 
     Heap_Destroy(HEAP_ID_8);
 
-    if (ov123_0225F610(ov30_0225DC18)) {
+    if (DSProt_DetectDummy(ov30_0225DC18)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
 
-    FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
+    FS_UnloadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
 }
 
 BOOL ov30_0225D6FC(void *a0) {
