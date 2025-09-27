@@ -15,14 +15,17 @@ static void clearDataAndInstructionCache(void *start_addr, u32 num_bytes) {
 }
 
 u32 Encryptor_CategorizeInstruction(u32 instruction) {
-    u8 upper_byte = (instruction >> 24) & 0xFF;
+    u8 opcode = instruction >> INS_OPCODE_SHIFT;
 
-    if ((upper_byte & 0x0E) == 0x0A) {
-        if ((upper_byte & 0xF0) == 0xF0) {
+    // Branch instruction
+    if ((opcode & 0x0E) == 0x0A) {
+        // BLX immediate type
+        if ((opcode & 0xF0) == 0xF0) {
             return INS_TYPE_BLXIMM;
         }
 
-        if (upper_byte & 0x01) {
+        // Link bit
+        if (opcode & INS_OPCODE_LINKBIT) {
             return INS_TYPE_BL;
         } else {
             return INS_TYPE_B;
@@ -50,17 +53,23 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
         for (; addr < end_addr; addr++) {
             switch (Encryptor_CategorizeInstruction(*addr)) {
             case INS_TYPE_BLXIMM:
-            case INS_TYPE_BL:
-                *addr = ((*addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*addr & 0x00FFFFFF) - ENC_VAL_1) & 0x00FFFFFF);
-                break;
+            case INS_TYPE_BL: {
+                u32 opcode = (*addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
+                u32 operands = ((*addr & INS_OPERANDS_MASK) - ENC_VAL_1) & INS_OPERANDS_MASK;
 
-            case INS_TYPE_B:
-                *addr = ((*addr & 0xFF000000) ^ (ENC_OPCODE_1 << 24)) | (((*addr & 0x00FFFFFF) - ENC_VAL_2) & 0x00FFFFFF);
-                break;
+                *addr = opcode | operands;
+            } break;
+
+            case INS_TYPE_B: {
+                u32 opcode = (*addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
+                u32 operands = ((*addr & INS_OPERANDS_MASK) - ENC_VAL_2) & INS_OPERANDS_MASK;
+
+                *addr = opcode | operands;
+            } break;
 
             default: {
                 u8 *addr_bytes = (u8 *)addr;
-                *addr = (addr_bytes[0] ^ ENC_BYTE_A) | ((addr_bytes[1] ^ ENC_BYTE_B) << 8) | ((addr_bytes[2] ^ ENC_BYTE_C) << 16) | ((addr_bytes[3] ^ ENC_OPCODE_2) << 24);
+                *addr = (addr_bytes[0] ^ ENC_BYTE_A) | ((addr_bytes[1] ^ ENC_BYTE_B) << 8) | ((addr_bytes[2] ^ ENC_BYTE_C) << 16) | ((addr_bytes[3] ^ ENC_BYTE_D) << 24);
             } break;
             }
         }
