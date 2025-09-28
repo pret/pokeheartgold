@@ -425,7 +425,7 @@ void PokegearMap_BeginScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp
         }
         PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
         for (i = 0; i < 4; ++i) {
-            sub_020136B4(mapApp->unk_044[i].textOBJ, 4, -6);
+            sub_020136B4(mapApp->markingWordObjects[i].textOBJ, 4, -6);
         }
     } else {
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, BG_POS_OP_SUB_Y, 0);
@@ -459,7 +459,7 @@ BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, 
     }
     PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
     for (i = 0; i < 4; ++i) {
-        sub_020136B4(mapApp->unk_044[i].textOBJ, 4, -6);
+        sub_020136B4(mapApp->markingWordObjects[i].textOBJ, 4, -6);
     }
     if (++mapApp->markingsPanelScrollStep < 4) {
         return FALSE;
@@ -841,7 +841,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
             for (i = 0; i <= 1; ++i) {
                 CopyWindowToVram(&mapApp->windows[i]);
             }
-            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->unk_16C->rawData, 0, 0, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
+            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->scrnData56->rawData, 0, 0, mapApp->scrnData56->screenWidth / 8, mapApp->scrnData56->screenHeight / 8);
             ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1);
             ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2);
             return;
@@ -853,14 +853,14 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
             tilemap16CsrcX = 0;
             tilemap174blockId = 0;
         }
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->unk_16C->rawData, tilemap16CsrcX, 0, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, 24, 11, 7, 7, mapApp->unk_174->rawData, (tilemap174blockId % 4) * 7, (tilemap174blockId / 4) * 7, mapApp->unk_174->screenWidth / 8, mapApp->unk_174->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->scrnData56->rawData, tilemap16CsrcX, 0, mapApp->scrnData56->screenWidth / 8, mapApp->scrnData56->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, 24, 11, 7, 7, mapApp->scrnData13->rawData, (tilemap174blockId % 4) * 7, (tilemap174blockId / 4) * 7, mapApp->scrnData13->screenWidth / 8, mapApp->scrnData13->screenHeight / 8);
         String_SetEmpty(mapApp->flavorTextString);
         ReadMsgDataIntoString(mapApp->msgData, locationSpec->flavorText, mapApp->flavorTextString);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[2], 0, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_GEAR_BATTLE].sprite, PokegearMap_MapHasPhoneRematchOrGift(mapApp, locationSpec->mapId));
     } else {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->unk_16C->rawData, 0, 0, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->scrnData56->rawData, 0, 0, mapApp->scrnData56->screenWidth / 8, mapApp->scrnData56->screenHeight / 8);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_GEAR_BATTLE].sprite, FALSE);
     }
     if (markersHeap != NULL) {
@@ -900,14 +900,14 @@ void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1) {
 
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word) {
     if (word == EC_WORD_NULL) {
-        TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[index].textOBJ, FALSE);
+        TextOBJ_SetSpritesDrawFlag(mapApp->markingWordObjects[index].textOBJ, FALSE);
     } else {
         BufferECWord(mapApp->msgFormat, 0, word);
         StringExpandPlaceholders(mapApp->msgFormat, mapApp->flavorTextString, mapApp->formatFlavorTextString);
         FillWindowPixelBufferText_AssumeTileSize32(&mapApp->windows[8], 0);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 0, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
-        TextOBJ_CopyFromBGWindow(mapApp->unk_044[index].textOBJ, mapApp->unk_040, &mapApp->windows[8], mapApp->heapID);
-        TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[index].textOBJ, TRUE);
+        TextOBJ_CopyFromBGWindow(mapApp->markingWordObjects[index].textOBJ, mapApp->unk_040, &mapApp->windows[8], mapApp->heapID);
+        TextOBJ_SetSpritesDrawFlag(mapApp->markingWordObjects[index].textOBJ, TRUE);
     }
 }
 
@@ -952,14 +952,14 @@ void ov101_021EAF40(PokegearMapAppData *mapApp) {
     int i;
     const MapFlypointParam *flypoint;
 
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 47, 20, mapApp->unk_170->rawData, 0, 0, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 47, 20, mapApp->worldMapScrnData->rawData, 0, 0, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
 
     switch (mapApp->mapUnlockLevel) {
-    case 0:
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 22, 0, 6, 20, mapApp->unk_170->rawData, 48, 0, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    case 0: // hide route 27
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 22, 0, 6, 20, mapApp->worldMapScrnData->rawData, 48, 0, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
         break;
-    case 1:
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 29, 0, 3, 20, mapApp->unk_170->rawData, 54, 0, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+    case 1: // hide route 22
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 29, 0, 3, 20, mapApp->worldMapScrnData->rawData, 54, 0, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
         break;
     }
 
@@ -968,32 +968,32 @@ void ov101_021EAF40(PokegearMapAppData *mapApp) {
         if (flypoint->mapIDforName == MAP_CIANWOOD) {
             continue;
         }
-        if (flypoint->unk_05 == 0xFF) {
+        if (flypoint->flyDestDrawID == 0xFF) {
             continue;
         }
-        if (mapApp->mapUnlockLevel < 2 && !Pokegear_RegionFromCoords(flypoint->x, flypoint->y)) {
+        if (mapApp->mapUnlockLevel < 2 && Pokegear_RegionFromCoords(flypoint->x, flypoint->y) == POKEGEAR_REGION_KANTO) {
             continue;
         }
         if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypoint->flypoint)) {
             continue;
         }
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, flypoint->x - flypoint->unk170DestX, flypoint->y - flypoint->unk170DestY + 2, flypoint->unk170DestWidth, flypoint->unk170DestHeight, mapApp->unk_170->rawData, flypoint->unk170SrcX, flypoint->unk170SrcY, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, flypoint->x - flypoint->iconXoffset, flypoint->y - flypoint->iconYoffset + 2, flypoint->iconWidth, flypoint->iconHeight, mapApp->worldMapScrnData->rawData, flypoint->iconTilemapX, flypoint->iconTilemapY, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
     }
 
     if (mapApp->canSeeSafariZone) {
         if (!mapApp->canFlyToGoldenrod) {
-            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->unk_170->rawData, 48, 27, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->worldMapScrnData->rawData, 48, 27, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
         }
     } else if (mapApp->canFlyToGoldenrod) {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->unk_170->rawData, 41, 20, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->worldMapScrnData->rawData, 41, 20, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
     } else {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->unk_170->rawData, 41, 27, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 1, 9, 5, 6, mapApp->worldMapScrnData->rawData, 41, 27, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
     }
     if (mapApp->isMapSinjoh) {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 19, 1, 3, 4, mapApp->unk_170->rawData, 55, 20, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 19, 1, 3, 4, mapApp->worldMapScrnData->rawData, 55, 20, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
     }
     if (mapApp->isMapSSAqua) {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 24, 15, 3, 3, mapApp->unk_170->rawData, 55, 24, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 24, 15, 3, 3, mapApp->worldMapScrnData->rawData, 55, 24, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
     }
 }
 
@@ -1032,7 +1032,7 @@ void ov101_021EB1E0(PokegearMapAppData *mapApp, u8 a1) {
             destX = location->x;
             destY = location->y;
         }
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, destX, destY, location->tilemapUnk170DestWidth, location->tilemapUnk170DestHeight, mapApp->unk_170->rawData, location->tilemapUnk170SrcX, location->tilemapUnk170SrcY, mapApp->unk_170->screenWidth / 8, mapApp->unk_170->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, destX, destY, location->tilemapUnk170DestWidth, location->tilemapUnk170DestHeight, mapApp->worldMapScrnData->rawData, location->tilemapUnk170SrcX, location->tilemapUnk170SrcY, mapApp->worldMapScrnData->screenWidth / 8, mapApp->worldMapScrnData->screenHeight / 8);
     }
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
@@ -1074,9 +1074,9 @@ void PokegearMap_InMarkingsMode_ShowCursor(void *appData) {
 
 void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state) {
     if (button == 0) {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 2, 6, 7, mapApp->unk_178->rawData, 6 * state, 21, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 2, 6, 7, mapApp->scrnData32->rawData, 6 * state, 21, mapApp->scrnData32->screenWidth / 8, mapApp->scrnData32->screenHeight / 8);
     } else {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 11, 6, 9, mapApp->unk_178->rawData, 6 * state + 18, 21, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 11, 6, 9, mapApp->scrnData32->rawData, 6 * state + 18, 21, mapApp->scrnData32->screenWidth / 8, mapApp->scrnData32->screenHeight / 8);
     }
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
 }

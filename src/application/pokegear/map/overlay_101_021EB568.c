@@ -291,7 +291,7 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
     }
     input = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitbox_CloseButton);
     if (input != TOUCH_MENU_NO_INPUT) {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 24, 20, 8, 4, mapApp->unk_178->rawData, 0, 24, mapApp->unk_178->screenWidth / 8, mapApp->unk_178->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 24, 20, 8, 4, mapApp->scrnData32->rawData, 0, 24, mapApp->scrnData32->screenWidth / 8, mapApp->scrnData32->screenHeight / 8);
         ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
         PokegearMap_MoveCursorToPlayerPosition(mapApp);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
@@ -814,7 +814,7 @@ static BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot) {
 
 static void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL state) {
     mapApp->trashcanIconState = state;
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->unk_17C->rawData, 8 * mapApp->trashcanIconState + 14, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->scrnData38->rawData, 8 * mapApp->trashcanIconState + 14, 16, mapApp->scrnData38->screenWidth / 8, mapApp->scrnData38->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
@@ -914,7 +914,7 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
     if (slot != -1) {
         *pRetIsTouch = TRUE;
         if (slot == 16) {
-            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 23, 8, 6, 5, mapApp->unk_17C->rawData, 7, 16, mapApp->unk_17C->screenWidth / 8, mapApp->unk_17C->screenHeight / 8);
+            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 23, 8, 6, 5, mapApp->scrnData38->rawData, 7, 16, mapApp->scrnData38->screenWidth / 8, mapApp->scrnData38->screenHeight / 8);
             ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
@@ -935,7 +935,7 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
                 mapApp->draggingWordX = ((index % 2) * 104 + 40) - gSystem.touchX;
                 mapApp->draggingWordY = ((index / 2) * 21 + 31) - gSystem.touchY;
                 PokegearManagedObject_SetPriority(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0], 1);
-                sub_02013820(mapApp->unk_044[index].textOBJ, 0);
+                sub_02013820(mapApp->markingWordObjects[index].textOBJ, 0);
             }
             mapApp->draggingType = PGMAP_DRAG_FROM_SET;
             PlaySE(SEQ_SE_GS_GEARSEALGRAB);
@@ -1088,8 +1088,8 @@ static void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot) {
         index = slot - 4;
         PokegearManagedObject_SetCoordUpdateSprite(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0], 104 * (index % 2) + 40, 21 * (index / 2) + 31);
         PokegearManagedObject_SetPriority(&objects[index + PGMAP_SPRITE_MARKINGS_MENU_SLOT_WORD_0], 4);
-        sub_020136B4(mapApp->unk_044[index].textOBJ, 4, -6);
-        sub_02013820(mapApp->unk_044[index].textOBJ, 3);
+        sub_020136B4(mapApp->markingWordObjects[index].textOBJ, 4, -6);
+        sub_02013820(mapApp->markingWordObjects[index].textOBJ, 3);
     }
 }
 
@@ -1136,7 +1136,7 @@ int PokegearMap_HandleTouchInput_DragMarkingSlot(PokegearMapAppData *mapApp) {
     }
     PokegearManagedObject_SetCoordUpdateSprite(&mapApp->objManager->objects[mapApp->draggingIcon + PGMAP_SPRITE_MARKINGS_MENU_SLOT_MARK_0], gSystem.touchX + mapApp->draggingWordX, gSystem.touchY + mapApp->draggingWordY);
     if (mapApp->draggingIcon >= 4) {
-        sub_020136B4(mapApp->unk_044[mapApp->draggingIcon - 4].textOBJ, 4, -6);
+        sub_020136B4(mapApp->markingWordObjects[mapApp->draggingIcon - 4].textOBJ, 4, -6);
     }
     if (TouchscreenHitbox_PointIsIn(&touchscreenHitboxes[8], gSystem.touchX, gSystem.touchY) != mapApp->trashcanIconState) {
         PokegearMap_MarkingsMenu_SetTrashcanIconState(mapApp, mapApp->trashcanIconState ^ TRUE);
