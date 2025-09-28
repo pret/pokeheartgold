@@ -263,10 +263,10 @@ typedef struct PokegearMapAppData {
     u8 isMapSSAqua : 1;                                  // 0x13D
     s16 draggingWordX;                                   // 0x13E
     s16 draggingWordY;                                   // 0x140
-    s16 unk_142;                                         // 0x142
-    s16 unk_144;                                         // 0x144
-    s16 unk_146;                                         // 0x146
-    s16 unk_148;                                         // 0x148
+    s16 lastTouchX;                                      // 0x142
+    s16 lastTouchY;                                      // 0x144
+    s16 initTouchX;                                      // 0x146
+    s16 initTouchY;                                      // 0x148
     s16 pixelTop;                                        // 0x14A
     s16 pixelBottom;                                     // 0x14C
     s16 pixelLeft;                                       // 0x14E
@@ -318,7 +318,7 @@ BOOL PokegearMap_CanFlyToXY(PokegearMapAppData *mapApp, u16 x, u16 y);
 BOOL PokegearMap_CanFlyToMapOrXY(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y);
 int PokegearMap_GetUnlockedFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
 int PokegearMap_SetCurLocationToFlypointFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *a1, u8 x, u8 y);
-void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1);
+void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL nameOnly);
 void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUpdateMapName);
 void PokegearMap_DrawMapView(PokegearMapAppData *mapApp);
 void PokegearMap_HighlightSelectedAreaOnMap(PokegearMapAppData *mapApp, u8 enabled); // param enabled always TRUE
@@ -335,8 +335,8 @@ int PokegearMap_HandleKeyInput(PokegearMapAppData *mapApp);
 int PokegearMap_HandleTouchInput(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp);
 int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-int FlyMap_HandleTouchInput_DraggingMap(PokegearMapAppData *mapApp);
-void ov101_021EC304(PokegearMapAppData *mapApp);
+int PokegearMap_HandleTouchInput_DraggingMap(PokegearMapAppData *mapApp);
+void PokegearMap_UpdateCursorMovement(PokegearMapAppData *mapApp);
 int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp);
 int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, BOOL *a1);
 int PokegearMap_HandleKeyInput_SelectedIconFromPool(PokegearMapAppData *mapApp);

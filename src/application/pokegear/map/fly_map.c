@@ -148,7 +148,7 @@ static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     if (!mapApp->cursorVisible) {
         ret = FlyMap_HandleTouchInput_NotDragging(mapApp, &retIsTouch);
     } else {
-        ret = FlyMap_HandleTouchInput_DraggingMap(mapApp);
+        ret = PokegearMap_HandleTouchInput_DraggingMap(mapApp);
         retIsTouch = TRUE;
     }
     if (retIsTouch) {
@@ -177,7 +177,7 @@ static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     case 4:
         return PGMAP_MAIN_STATE_FADE_OUT;
     }
-    ov101_021EC304(mapApp);
+    PokegearMap_UpdateCursorMovement(mapApp);
     return PGMAP_MAIN_STATE_HANDLE_INPUT;
 }
 

@@ -685,7 +685,7 @@ static void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
     if (mapApp->type == PGMAP_TYPE_TOWN_MAP) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 6, mapApp->markingsFrameScrnData->rawData, 0, 8, mapApp->markingsFrameScrnData->screenWidth / 8, mapApp->markingsFrameScrnData->screenHeight / 8);
         PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, TRUE);
+        PokegearMap_PrintLocationInfoBox(mapApp, TRUE);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, BG_POS_OP_SET_Y, -81);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, BG_POS_OP_SET_Y, -81);
         BgSetPosTextAndCommit(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, BG_POS_OP_SET_Y, -81);
@@ -693,7 +693,7 @@ static void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
         PokegearMap_UpdateFlyIconsDrawState(mapApp, 0);
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 8, 32, 16, mapApp->markingsFrameScrnData->rawData, 0, 8, mapApp->markingsFrameScrnData->screenWidth / 8, mapApp->markingsFrameScrnData->screenHeight / 8);
         PokegearMap_SetCurLocationToFlypointFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-        ov101_021EAD90(mapApp, FALSE);
+        PokegearMap_PrintLocationInfoBox(mapApp, FALSE);
         PokegearMap_PrintLandmarkNameAndFlavorText(mapApp, -1);
     }
     PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);

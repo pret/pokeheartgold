@@ -1078,7 +1078,7 @@ static void PokegearMap_SetBgParam_MapMode(PokegearMapAppData *mapApp) {
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->markingsFrameScrnData->rawData, 0, 7, mapApp->markingsFrameScrnData->screenWidth / 8, mapApp->markingsFrameScrnData->screenHeight / 8);
 
     PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
-    ov101_021EAD90(mapApp, FALSE);
+    PokegearMap_PrintLocationInfoBox(mapApp, FALSE);
     PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     PokegearMap_LoadMapHasMarkingsIndicatorSprites(mapApp);
     PokegearMap_UpdateStationaryIconsDrawState(mapApp, 0);

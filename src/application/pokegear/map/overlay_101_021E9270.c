@@ -17,7 +17,7 @@ static void PokegearMap_GetPixelCoordFromTileCoords(PokegearMapAppData *mapApp, 
 static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int mapID);
 static int PokegearMap_GetFlypointAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
 static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int mapID);
-static void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto);
+static void PokegearMap_PrintLocationInfoBoxEx(PokegearMapAppData *mapApp, BOOL nameOnly, BOOL isKanto);
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word);
 static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, enum HeapID heapID, String *dest);
 
@@ -803,7 +803,7 @@ static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int
     return FALSE;
 }
 
-static void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
+static void PokegearMap_PrintLocationInfoBoxEx(PokegearMapAppData *mapApp, BOOL nameOnly, BOOL isKanto) {
     u32 mapNameY;
     u32 i;
     u32 miniMapId;
@@ -837,7 +837,7 @@ static void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL a1
             mapNameY = 0;
         }
         AddTextPrinterParameterizedWithColor(&mapApp->windows[1], 0, mapApp->mapNameString, 0, mapNameY, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-        if (a1) {
+        if (nameOnly) {
             for (i = 0; i <= 1; ++i) {
                 CopyWindowToVram(&mapApp->windows[i]);
             }
@@ -893,9 +893,9 @@ static void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL a1
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
 }
 
-void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1) {
+void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL nameOnly) {
     // Pokegear_RegionFromCoords returning 0 and 1 are considered Kanto, 2 is Johto
-    PokegearMap_PrintLocationInfoBox(mapApp, a1, (Pokegear_RegionFromCoords(mapApp->playerX, mapApp->playerY - 2) / 2) ^ TRUE);
+    PokegearMap_PrintLocationInfoBoxEx(mapApp, nameOnly, (Pokegear_RegionFromCoords(mapApp->playerX, mapApp->playerY - 2) / 2) ^ TRUE);
 }
 
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word) {
