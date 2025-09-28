@@ -99,6 +99,17 @@ typedef enum PokegearMapType {
     PGMAP_TYPE_TOWN_MAP,
 } PokegearMapType;
 
+typedef enum PokegearMapUIButton {
+    PGMAP_BUTTON_MARKINGS,
+    PGMAP_BUTTON_ZOOM,
+} PokegearMapUIButton;
+
+typedef enum PokegearMapUIButtonState {
+    PGMAP_BUTTON_NEUTRAL,
+    PGMAP_BUTTON_PRESSED,
+    PGMAP_BUTTON_DISABLED, // only used with PGMAP_BUTTON_MARKINGS
+} PokegearMapUIButtonState;
+
 typedef struct MapFlypointParam {
     u16 mapIDforName;
     u16 mapIDforWarp;
@@ -237,9 +248,9 @@ typedef struct PokegearMapAppData {
     u8 unk_138_4 : 1;                                    // 0x138
     u8 mapUnlockLevel : 2;                               // 0x138
     u8 requestAffineUpdate : 1;                          // 0x138
-    u8 draggingMarking : 1;                              // 0x139
-    u8 unk_139_1 : 1;                                    // 0x139
-    u8 unk_139_2 : 1;                                    // 0x139
+    u8 ignoreInputs : 1;                                 // 0x139
+    u8 zoomAnimActive : 1;                               // 0x139
+    u8 cursorMoving : 1;                                 // 0x139
     u8 cursorVisible : 1;                                // 0x139
     u8 draggingIcon : 4;                                 // 0x139
     u8 cursorSpeed;                                      // 0x13A
@@ -316,7 +327,7 @@ void PokegearMap_DeselectApp(void *appData);
 void PokegearMap_ShowMapCursor(void *appData);
 void PokegearMap_InMarkingsMode_HideCursor(void *appData);
 void PokegearMap_InMarkingsMode_ShowCursor(void *appData);
-void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state);
+void PokegearMap_SetUIButtonState(PokegearMapAppData *mapApp, PokegearMapUIButton button, PokegearMapUIButtonState state);
 void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 x);
 void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int mapID);
 

@@ -13,12 +13,12 @@
 #include "unk_020932A4.h"
 
 static void PokegearMap_LoadState(PokegearMapAppData *mapApp);
-static void PokegearMap_GetPixelCoordFromTileCoords(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 a3, s16 a4, int *xOut, int *yOut);
-static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int a1);
-static int PokegearMap_GetFlypointAtCoord(PokegearMapAppData *mapApp, u16 a1, u16 a2);
-static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int a1);
-static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
-static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 a1, u16 a2);
+static void PokegearMap_GetPixelCoordFromTileCoords(PokegearMapAppData *mapApp, u16 xIn, u16 yIn, s16 xCenter, s16 yCenter, int *xOut, int *yOut);
+static BOOL PokegearMap_ShouldLocationBeHidden(PokegearMapAppData *mapApp, int mapID);
+static int PokegearMap_GetFlypointAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
+static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int mapID);
+static void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto);
+static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word);
 static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, enum HeapID heapID, String *dest);
 
 const TouchscreenListMenuTemplate sListMenuTemplate = {
@@ -803,7 +803,7 @@ static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int
     return FALSE;
 }
 
-static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
+static void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     u32 mapNameY;
     u32 i;
     u32 miniMapId;
@@ -824,9 +824,9 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     AddTextPrinterParameterizedWithColor(&mapApp->windows[0], 0, mapApp->regionNameStrings[isKanto], 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     if (mapApp->type == PGMAP_TYPE_GEAR) {
         if (!PokegearMap_LocationIsOnMainMap(mapApp, selectedLoc)) {
-            ov101_021EB38C(mapApp, 0, 2);
+            PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_MARKINGS, PGMAP_BUTTON_DISABLED);
         } else {
-            ov101_021EB38C(mapApp, 0, 0);
+            PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_MARKINGS, PGMAP_BUTTON_NEUTRAL);
         }
     }
     if (locationSpec != NULL) {
@@ -895,7 +895,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
 
 void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1) {
     // Pokegear_RegionFromCoords returning 0 and 1 are considered Kanto, 2 is Johto
-    ov101_021EAA0C(mapApp, a1, (Pokegear_RegionFromCoords(mapApp->playerX, mapApp->playerY - 2) / 2) ^ TRUE);
+    PokegearMap_PrintLocationInfoBox(mapApp, a1, (Pokegear_RegionFromCoords(mapApp->playerX, mapApp->playerY - 2) / 2) ^ TRUE);
 }
 
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index, u16 word) {
@@ -1085,8 +1085,8 @@ void PokegearMap_InMarkingsMode_ShowCursor(void *appData) {
     PokegearCursorManager_SetCursorSpritesDrawState(mapApp->pokegear->cursorManager, 0xFFFF, TRUE);
 }
 
-void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state) {
-    if (button == 0) {
+void PokegearMap_SetUIButtonState(PokegearMapAppData *mapApp, PokegearMapUIButton button, PokegearMapUIButtonState state) {
+    if (button == PGMAP_BUTTON_MARKINGS) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 2, 6, 7, mapApp->mapUISkinScrnData->rawData, 6 * state, 21, mapApp->mapUISkinScrnData->screenWidth / 8, mapApp->mapUISkinScrnData->screenHeight / 8);
     } else {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 26, 11, 6, 9, mapApp->mapUISkinScrnData->rawData, 6 * state + 18, 21, mapApp->mapUISkinScrnData->screenWidth / 8, mapApp->mapUISkinScrnData->screenHeight / 8);

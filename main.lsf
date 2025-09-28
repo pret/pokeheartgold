@@ -1143,7 +1143,7 @@ Overlay pokegear_app
     Object src/application/pokegear/map/overlay_101_021EB568.o
     Object src/application/pokegear/map/overlay_101_021ED498.o
     Object src/application/pokegear/map/fly_map.o
-    Object src/application/pokegear/map/overlay_101_021EDCE0.o
+    Object src/application/pokegear/map/fly_map_gfx.o
     Object src/application/pokegear/configure/pokegear_configure.o
     Object src/application/pokegear/configure/overlay_101_021EED44.o
     Object src/application/pokegear/configure/overlay_101_021EF1D8.o

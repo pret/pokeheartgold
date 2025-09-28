@@ -27,7 +27,7 @@ static void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot);
 int PokegearMap_HandleKeyInput(PokegearMapAppData *mapApp) {
     int ret;
 
-    if ((gSystem.newKeys & PAD_BUTTON_B) && !mapApp->unk_139_2) {
+    if ((gSystem.newKeys & PAD_BUTTON_B) && !mapApp->cursorMoving) {
         mapApp->pokegear->cursorInAppSwitchZone = TRUE;
         PokegearCursorManager_SetCursorSpritesDrawState(mapApp->pokegear->cursorManager, 0, TRUE);
         PokegearCursorManager_SetSpecIndexAndCursorPos(mapApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(mapApp->pokegear));
@@ -105,8 +105,8 @@ static BOOL ov101_021EB654(PokegearMapAppData *mapApp) {
     }
     if (flag) {
         mapApp->cursorSpeed = 2;
-        mapApp->draggingMarking = 1;
-        mapApp->unk_139_2 = 1;
+        mapApp->ignoreInputs = TRUE;
+        mapApp->cursorMoving = TRUE;
         mapApp->cursorPos = object->pos;
         return TRUE;
     }
@@ -136,16 +136,16 @@ static int PokegearMap_SetSelectedFlyDest(PokegearMapAppData *mapApp, int flyDes
 
 static int ov101_021EB818(PokegearMapAppData *mapApp) {
     u32 newKeys = gSystem.newKeys;
-    if (gSystem.heldKeys == 0 || mapApp->draggingMarking || mapApp->unk_139_1 || mapApp->unk_139_2) {
+    if (gSystem.heldKeys == 0 || mapApp->ignoreInputs || mapApp->zoomAnimActive || mapApp->cursorMoving) {
         return -1;
     }
     if (newKeys & PAD_BUTTON_X) {
         mapApp->zoomed ^= 1;
         mapApp->cursorSpeed = 4;
         ov101_021EC49C(mapApp, mapApp->playerX, mapApp->playerY, &mapApp->cursorSpriteState.affineX, &mapApp->cursorSpriteState.affineY);
-        mapApp->draggingMarking = 1;
-        mapApp->unk_139_1 = 1;
-        ov101_021EB38C(mapApp, 1, mapApp->zoomed);
+        mapApp->ignoreInputs = TRUE;
+        mapApp->zoomAnimActive = TRUE;
+        PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_ZOOM, (PokegearMapUIButtonState)mapApp->zoomed);
         if (mapApp->zoomed == 1) {
             PlaySE(SEQ_SE_GS_GEARXBUTTON);
         } else {
@@ -157,7 +157,7 @@ static int ov101_021EB818(PokegearMapAppData *mapApp) {
         if (!PokegearMap_LocationIsOnMainMap(mapApp, &mapApp->selectedLoc)) {
             return -1;
         }
-        ov101_021EB38C(mapApp, 0, 1);
+        PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_MARKINGS, PGMAP_BUTTON_PRESSED);
         PlaySE(SEQ_SE_GS_GEARDECIDE);
         return 7;
     }
@@ -173,7 +173,7 @@ int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp) {
     u32 newKeys = gSystem.newKeys;
     int flyDest;
 
-    if (gSystem.heldKeys == 0 || mapApp->draggingMarking || mapApp->unk_139_2) {
+    if (gSystem.heldKeys == 0 || mapApp->ignoreInputs || mapApp->cursorMoving) {
         return -1;
     }
     if (newKeys & PAD_BUTTON_A) {
@@ -224,7 +224,7 @@ static int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     if (!System_GetTouchHeld()) {
         return -1;
     }
-    if (mapApp->draggingMarking || mapApp->unk_139_1) {
+    if (mapApp->ignoreInputs || mapApp->zoomAnimActive) {
         return -1;
     }
     input = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F7EAC);
@@ -235,17 +235,17 @@ static int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
             if (!PokegearMap_LocationIsOnMainMap(mapApp, &mapApp->selectedLoc)) {
                 return -1;
             }
-            ov101_021EB38C(mapApp, 0, 1);
+            PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_MARKINGS, PGMAP_BUTTON_PRESSED);
             PlaySE(SEQ_SE_GS_GEARDECIDE);
             return 7;
         } else {
             mapApp->zoomed ^= 1;
             mapApp->cursorSpeed = 4;
             ov101_021EC49C(mapApp, mapApp->playerX, mapApp->playerY, &mapApp->cursorSpriteState.affineX, &mapApp->cursorSpriteState.affineY);
-            mapApp->draggingMarking = 1;
-            mapApp->unk_139_1 = 1;
-            ov101_021EB38C(mapApp, 1, mapApp->zoomed);
-            if (mapApp->zoomed == 1) {
+            mapApp->ignoreInputs = TRUE;
+            mapApp->zoomAnimActive = TRUE;
+            PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_ZOOM, (PokegearMapUIButtonState)mapApp->zoomed);
+            if (mapApp->zoomed == TRUE) {
                 PlaySE(SEQ_SE_GS_GEARXBUTTON);
             } else {
                 PlaySE(SEQ_SE_GS_XBUTTON_SYUKUSHOU);
@@ -286,7 +286,7 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
     if (!System_GetTouchHeld()) {
         return -1;
     }
-    if (mapApp->draggingMarking) {
+    if (mapApp->ignoreInputs) {
         return -1;
     }
     input = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitbox_CloseButton);
@@ -584,7 +584,7 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
         { 16, 7  }, // y
     };
 
-    if (!mapApp->unk_139_2) {
+    if (!mapApp->cursorMoving) {
         return;
     }
     if (mapApp->zoomed) {
@@ -636,8 +636,8 @@ void ov101_021EC304(PokegearMapAppData *mapApp) {
     PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
     if (--mapApp->cursorSpeed == 0) {
         PokegearMap_UpdateCursorBounds(mapApp);
-        mapApp->draggingMarking = 0;
-        mapApp->unk_139_2 = 0;
+        mapApp->ignoreInputs = FALSE;
+        mapApp->cursorMoving = FALSE;
         mapApp->moveCursorDirection = 0;
     }
 }
@@ -689,7 +689,7 @@ static void ov101_021EC778(PokegearMapAppData *mapApp) {
     s16 x;
     s16 y;
 
-    if (!mapApp->unk_139_1) {
+    if (!mapApp->zoomAnimActive) {
         return;
     }
     if (mapApp->zoomed) {
@@ -710,8 +710,8 @@ static void ov101_021EC778(PokegearMapAppData *mapApp) {
             PokegearManagedObject_SetCoord(&objects[i], objects[i].destX, objects[i].destY);
             PokegearManagedObject_AutoCull(&objects[i], i, objects[i].destY);
         }
-        mapApp->draggingMarking = 0;
-        mapApp->unk_139_1 = 0;
+        mapApp->ignoreInputs = FALSE;
+        mapApp->zoomAnimActive = FALSE;
         mapApp->moveCursorDirection = 0;
     } else {
         mapApp->cursorSpriteState.x_fx += mapApp->cursorSpriteState.dxStep;
@@ -906,7 +906,7 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
         return -1;
     }
 
-    if (mapApp->draggingMarking) {
+    if (mapApp->ignoreInputs) {
         return -1;
     }
 

@@ -1074,7 +1074,7 @@ static void PokegearMap_SetBgParam_MapMode(PokegearMapAppData *mapApp) {
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->mapUISkinScrnData->rawData, 0, 0, mapApp->mapUISkinScrnData->screenWidth / 8, mapApp->mapUISkinScrnData->screenHeight / 8);
 
     PokegearMap_DrawMapView(mapApp);
-    ov101_021EB38C(mapApp, 1, mapApp->zoomed);
+    PokegearMap_SetUIButtonState(mapApp, PGMAP_BUTTON_ZOOM, (PokegearMapUIButtonState)mapApp->zoomed);
     CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->markingsFrameScrnData->rawData, 0, 7, mapApp->markingsFrameScrnData->screenWidth / 8, mapApp->markingsFrameScrnData->screenHeight / 8);
 
     PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);

@@ -234,7 +234,7 @@ void WritePng(char *path, struct Image *image) {
             color_type |= PNG_COLOR_MASK_PALETTE;
         }
     }
-    if (image->hasTransparency) {
+    if (image->hasTransparency && !(color_type & PNG_COLOR_MASK_PALETTE)) {
         color_type |= PNG_COLOR_MASK_ALPHA;
     }
 
