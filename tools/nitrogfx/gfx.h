@@ -3,26 +3,27 @@
 #ifndef GFX_H
 #define GFX_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
+
 #include "options.h"
 
 struct Color {
-	unsigned char red;
-	unsigned char green;
-	unsigned char blue;
+    unsigned char red;
+    unsigned char green;
+    unsigned char blue;
 };
 
 struct Palette {
-	struct Color colors[256];
-	int numColors;
-	int bitDepth;
+    struct Color colors[16 * 256];
+    int numColors;
+    int bitDepth;
 };
 
 struct Image {
-	int width;
-	int height;
-	int bitDepth;
+    int width;
+    int height;
+    int bitDepth;
     /**
      * Pseudocode for converting index in pixels to coordinates in image is as follows
      *      (where (0, 0) is the top left corner with the format (x, y) ):
@@ -44,19 +45,28 @@ struct Image {
      *          pixel = pixels[i]
      *          pixel coordinates: (xCoord, yCoord)
      */
-	unsigned char *pixels;
-	bool hasPalette;
-	struct Palette palette;
-	bool hasTransparency;
+    unsigned char *pixels;
+    bool hasPalette;
+    struct Palette palette;
+    bool hasTransparency;
+    bool pixelsAreRGB;
+};
+
+struct NSCRFile {
+    uint16_t scrnWidth;  // output width in pixels
+    uint16_t scrnHeight; // output height in pixels
+    uint16_t colorMode;  // 4bpp or 8bpp
+    uint16_t scrnMode;   // text, affine, or extpltt
+    uint32_t scrnSize;   // total data length
+    uint8_t data[];      // data
 };
 
 void ReadImage(char *path, int tilesWide, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors);
 uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors, bool scanFrontToBack);
 void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG);
+void ApplyScrnToImage(char *scrnFilePath, struct Image *image);
 void WriteImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors);
-void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image,
-                   bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, bool vram, uint32_t scanMode,
-                   uint32_t mappingType, uint32_t key, bool wrongSize);
+void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, bool vram, uint32_t scanMode, uint32_t mappingType, uint32_t key, bool wrongSize);
 void FreeImage(struct Image *image);
 void ReadGbaPalette(char *path, struct Palette *palette);
 void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIndex, bool inverted);

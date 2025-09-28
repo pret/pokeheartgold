@@ -37,6 +37,7 @@ void ConvertGbaToPng(char *inputPath, char *outputPath, struct GbaToPngOptions *
     } else {
         image.hasPalette = false;
     }
+    image.pixelsAreRGB = false;
 
     ReadImage(inputPath, options->width, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette);
 
@@ -75,6 +76,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
     } else {
         image.hasPalette = false;
     }
+    image.pixelsAreRGB = false;
 
     uint32_t key = ReadNtrImage(inputPath, options->width, 0, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->scanFrontToBack);
 
@@ -94,6 +96,8 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
 
     if (options->cellFilePath != NULL) {
         ApplyCellsToImage(options->cellFilePath, &image, true);
+    } else if (options->scrnFilePath != NULL) {
+        ApplyScrnToImage(options->scrnFilePath, &image);
     }
 
     WritePng(outputPath, &image);
@@ -251,6 +255,7 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     struct NtrToPngOptions options;
     options.paletteFilePath = NULL;
     options.cellFilePath = NULL;
+    options.scrnFilePath = NULL;
     options.hasTransparency = false;
     options.width = 0;
     options.colsPerChunk = 1;
@@ -278,6 +283,14 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             i++;
 
             options.cellFilePath = argv[i];
+        } else if (strcmp(option, "-scrn") == 0) {
+            if (i + 1 >= argc) {
+                FATAL_ERROR("No scrn file path following \"-scrn\".\n");
+            }
+
+            i++;
+
+            options.scrnFilePath = argv[i];
         } else if (strcmp(option, "-object") == 0) {
             options.hasTransparency = true;
         } else if (strcmp(option, "-palindex") == 0) {
@@ -347,6 +360,9 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 
     if (options.width != 0 && options.colsPerChunk > options.width) {
         options.width = options.colsPerChunk;
+    }
+    if (options.scrnFilePath != NULL) {
+        options.palIndex = 0;
     }
 
     ConvertNtrToPng(inputPath, outputPath, &options);
@@ -908,6 +924,8 @@ void HandleJsonToNtrMulticellAnimationCommand(char *inputPath, char *outputPath,
 void HandleLatinFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
     struct Image image;
 
+    image.pixelsAreRGB = false;
+
     ReadLatinFont(inputPath, &image);
     WritePng(outputPath, &image);
 
@@ -928,6 +946,8 @@ void HandlePngToLatinFontCommand(char *inputPath, char *outputPath, int argc UNU
 void HandleHalfwidthJapaneseFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
     struct Image image;
 
+    image.pixelsAreRGB = false;
+
     ReadHalfwidthJapaneseFont(inputPath, &image);
     WritePng(outputPath, &image);
 
@@ -947,6 +967,8 @@ void HandlePngToHalfwidthJapaneseFontCommand(char *inputPath, char *outputPath, 
 
 void HandleFullwidthJapaneseFontToPngCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
     struct Image image;
+
+    image.pixelsAreRGB = false;
 
     ReadFullwidthJapaneseFont(inputPath, &image);
     WritePng(outputPath, &image);
@@ -1185,6 +1207,9 @@ void HandleNtrFontToPngCommand(char *inputPath, char *outputPath, int argc, char
 
     struct Image image;
     struct NtrFontMetadata metadata;
+
+    image.pixelsAreRGB = false;
+
     ReadNtrFont(inputPath, &image, &metadata, options.useSubscreenPalette);
     WritePng(outputPath, &image);
 

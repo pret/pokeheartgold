@@ -745,6 +745,142 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG) {
     FreeNCERCell(options);
 }
 
+void ReadNtrScrn(char *path, struct NSCRFile **ppScrnHeader) {
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+    unsigned int offset = 0x10;
+
+    if (memcmp(data, "RCSN", 4) != 0) // NSCR
+    {
+        FATAL_ERROR("Not a valid NSCR cell file.\n");
+    }
+
+    unsigned int blockSize;
+    *ppScrnHeader = NULL;
+    offset = FindNitroDataBlock(data, "NRCS", fileSize, &blockSize);
+    if (offset != -1u) {
+        struct NSCRFile *scrnHeader = (struct NSCRFile *)malloc(sizeof(struct NSCRFile) + blockSize - 0x14);
+        memset(scrnHeader, 0, sizeof(struct NSCRFile) + blockSize - 0x14);
+        scrnHeader->scrnWidth = ReadU16(data, offset + 0x8);
+        scrnHeader->scrnHeight = ReadU16(data, offset + 0xA);
+        scrnHeader->colorMode = ReadU16(data, offset + 0xC);
+        scrnHeader->scrnMode = ReadU16(data, offset + 0xE);
+        scrnHeader->scrnSize = ReadU32(data, offset + 0x10);
+        memcpy(scrnHeader->data, data + offset + 0x14, blockSize - 0x14);
+        *ppScrnHeader = scrnHeader;
+    } else {
+        FATAL_ERROR("missing SCRN block");
+    }
+
+    free(data);
+}
+
+static inline uint32_t tileToPixelOffset(uint32_t tileIdx, uint32_t width, int bitDepth) {
+    div_t tile_yx = div(tileIdx, width / 8);
+    return tile_yx.quot * bitDepth * width + tile_yx.rem * bitDepth;
+}
+
+void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
+    char *ext = GetFileExtension(scrnFilePath);
+    if (strncmp(ext, "NSCR", 4) != 0) {
+        FATAL_ERROR("incorrect file format for NSCR\n");
+    }
+
+    struct NSCRFile *pScrnHeader;
+    ReadNtrScrn(scrnFilePath, &pScrnHeader);
+
+    switch (pScrnHeader->scrnMode) {
+    case 0:
+        if (image->bitDepth != 4) {
+            FATAL_ERROR("cannot convert %dbpp image with text scrn\n", image->bitDepth);
+        }
+        break;
+    case 1:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot convert %dbpp image with affine scrn\n", image->bitDepth);
+        }
+        break;
+    case 2:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot convert %dbpp image with extpltt scrn\n", image->bitDepth);
+        }
+        break;
+    default:
+        FATAL_ERROR("unsupported screen format %d\n", pScrnHeader->scrnMode);
+    }
+
+    // int newBitDepth = pScrnHeader->scrnMode == 2 ? 16 : 8;
+    unsigned char *newPixels = calloc(pScrnHeader->scrnHeight * pScrnHeader->scrnWidth, pScrnHeader->scrnMode == 2 && image->hasPalette ? 3 : 1);
+    uint32_t numTiles = pScrnHeader->scrnHeight * pScrnHeader->scrnWidth / 64;
+
+    uint16_t tileIdx;
+    bool hFlip = false;
+    bool vFlip = false;
+    uint8_t plttIndex = 0;
+    uint32_t dstOffset;
+    uint32_t srcOffset;
+    uint32_t dstPixelOffset;
+    uint32_t srcPixelOffset;
+    uint32_t colorIdx;
+    int i, x, y, xOffset, yOffset;
+
+    for (i = 0; i < numTiles; ++i) {
+        dstOffset = tileToPixelOffset(i, pScrnHeader->scrnWidth, 8);
+        if (pScrnHeader->scrnMode == 1) {
+            tileIdx = pScrnHeader->data[i];
+        } else {
+            uint16_t tileData = ReadU16(pScrnHeader->data, i * 2);
+            tileIdx = tileData & 0x3FF;
+            hFlip = (tileData >> 10) & 1;
+            vFlip = (tileData >> 11) & 1;
+            plttIndex = (tileData >> 12) & 0xF;
+        }
+        srcOffset = tileToPixelOffset(tileIdx, image->width, image->bitDepth);
+        for (y = 0; y < 8; ++y) {
+            yOffset = vFlip ? 7 - y : y;
+            for (x = 0; x < 8; ++x) {
+                xOffset = hFlip ? 7 - x : x;
+                dstPixelOffset = dstOffset + yOffset * pScrnHeader->scrnWidth + xOffset;
+                srcPixelOffset = srcOffset + (y * image->width + x) * image->bitDepth / 8;
+                if (image->hasPalette) {
+                    switch (pScrnHeader->scrnMode) {
+                    case 0:
+                        newPixels[dstPixelOffset] = ((image->pixels[srcPixelOffset] >> (4 * (1 - (x & 1)))) & 0xF) | (plttIndex << 4);
+                        break;
+                    case 1:
+                        newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
+                        break;
+                    case 2:
+                        colorIdx = image->pixels[srcPixelOffset] | (plttIndex << 8);
+                        newPixels[dstPixelOffset * 3 + 0] = image->palette.colors[colorIdx].red;
+                        newPixels[dstPixelOffset * 3 + 1] = image->palette.colors[colorIdx].green;
+                        newPixels[dstPixelOffset * 3 + 2] = image->palette.colors[colorIdx].blue;
+                        break;
+                    }
+                } else {
+                    switch (pScrnHeader->scrnMode) {
+                    case 0:
+                        newPixels[dstPixelOffset] = (image->pixels[srcPixelOffset] >> (4 * (1 - (x & 1)))) & 0xF;
+                        break;
+                    case 1:
+                    case 2:
+                        newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    free(image->pixels);
+    image->pixels = newPixels;
+    image->bitDepth = 8;
+    image->width = pScrnHeader->scrnWidth;
+    image->height = pScrnHeader->scrnHeight;
+    image->pixelsAreRGB = pScrnHeader->scrnMode == 2 ? true : false;
+    free(pScrnHeader);
+}
+
 void WriteImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors) {
     int tileSize = bitDepth * 8; // number of bytes per tile
 
@@ -1013,7 +1149,7 @@ void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIn
 
     unsigned char *paletteData = paletteHeader + 0x18;
 
-    for (int i = 0; i < 256; i++) {
+    for (int i = 0; i < 16 * 256; i++) {
         if (i < palette->numColors) {
             uint16_t paletteEntry = (paletteData[(32 * palIndex) + i * 2 + 1] << 8) | paletteData[(32 * palIndex) + i * 2];
             palette->colors[i].red = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_RED(paletteEntry));
@@ -1075,7 +1211,7 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     }
 
     // NCLR header
-    WriteGenericNtrHeader(fp, (ncpr ? "RPCN" : "RLCN"), extSize + pcmpSize, !ncpr, false, numSections);
+    WriteGenericNtrHeader(fp, ncpr ? "RPCN" : "RLCN", extSize + pcmpSize, !ncpr, false, numSections);
 
     unsigned char palHeader[0x18] = {
         0x54, 0x54, 0x4C, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
