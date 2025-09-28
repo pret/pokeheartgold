@@ -31,7 +31,7 @@ typedef struct Pokedex {
     u8 unownSeenOrder[28];
     u8 unownCaughtOrder[28];
     u8 caughtLanguages[ROUND_UP(NATIONAL_DEX_COUNT, 4)];
-    u8 unk_334;
+    u8 canDetectForms;
     u8 enabledInternational;
     u8 dexEnabled;
     u8 nationalDex;
@@ -68,7 +68,7 @@ int Pokedex_GetSeenFormByIdx_Shellos(Pokedex *pokedex, int a1);
 void Pokedex_SetMonSeenFlag(Pokedex *pokedex, Pokemon *mon);
 void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon);
 void Pokedex_SetNatDexFlag(Pokedex *pokedex);
-void sub_0202A57C(Pokedex *pokedex);
+void Pokedex_EnableFormDetection(Pokedex *pokedex);
 BOOL Pokedex_HasCaughtMonWithLanguage(Pokedex *pokedex, u32 species, u32 language);
 void Pokedex_SetInternationalViewFlag(Pokedex *pokedex);
 BOOL Pokedex_GetInternationalViewFlag(const Pokedex *pokedex);

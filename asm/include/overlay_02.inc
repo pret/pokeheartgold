@@ -334,7 +334,7 @@
 .public EnemyTrainerSet_Init
 .public Party_AddMon
 .public Party_GetMonByIndex
-.public Party_GetUnkSubSlot
+.public Party_GetMonAprijuiceModifiers
 .public SaveArray_Party_Get
 .public GetItemAttr
 .public GearPhoneRingManager_StartRinging
