@@ -807,7 +807,7 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
 
     unsigned outputPixelSize;
     if (pScrnHeader->scrnMode == 2) {
-        outputPixelSize = image->hasPalette ? 3 : 2;
+        outputPixelSize = 2 + image->hasPalette + image->hasTransparency;
     } else {
         outputPixelSize = 1;
     }
@@ -854,14 +854,17 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
                     newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
                     break;
                 case 2:
+                    colorIdx = image->pixels[srcPixelOffset] | (plttIndex << 8);
                     if (image->hasPalette) {
-                        colorIdx = image->pixels[srcPixelOffset] | (plttIndex << 8);
-                        newPixels[dstPixelOffset * 3 + 0] = image->palette.colors[colorIdx].red;
-                        newPixels[dstPixelOffset * 3 + 1] = image->palette.colors[colorIdx].green;
-                        newPixels[dstPixelOffset * 3 + 2] = image->palette.colors[colorIdx].blue;
+                        newPixels[dstPixelOffset * outputPixelSize + 0] = image->palette.colors[colorIdx].red;
+                        newPixels[dstPixelOffset * outputPixelSize + 1] = image->palette.colors[colorIdx].green;
+                        newPixels[dstPixelOffset * outputPixelSize + 2] = image->palette.colors[colorIdx].blue;
                     } else {
-                        newPixels[dstPixelOffset * 2 + 0] = image->pixels[srcPixelOffset];
-                        newPixels[dstPixelOffset * 2 + 1] = plttIndex;
+                        newPixels[dstPixelOffset * outputPixelSize + 0] = image->pixels[srcPixelOffset];
+                        newPixels[dstPixelOffset * outputPixelSize + 1] = plttIndex;
+                    }
+                    if (image->hasTransparency) {
+                        newPixels[dstPixelOffset * outputPixelSize + outputPixelSize - 1] = colorIdx == 0 ? 0 : 255;
                     }
                     break;
                 }
@@ -871,10 +874,10 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
 
     free(image->pixels);
     image->pixels = newPixels;
-    image->bitDepth = outputPixelSize == 2 ? 16 : 8;
+    image->bitDepth = pScrnHeader->scrnMode == 2 && !image->hasPalette ? 16 : 8;
     image->width = pScrnHeader->scrnWidth;
     image->height = pScrnHeader->scrnHeight;
-    image->pixelsAreRGB = outputPixelSize == 3 ? true : false;
+    image->pixelsAreRGB = pScrnHeader->scrnMode == 2 && image->hasPalette;
     free(pScrnHeader);
 }
 

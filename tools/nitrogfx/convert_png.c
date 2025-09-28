@@ -227,13 +227,21 @@ void WritePng(char *path, struct Image *image) {
         FATAL_ERROR("Error writing header for \"%s\".\n", path);
     }
 
-    int color_type = image->hasPalette ? (image->pixelsAreRGB ? PNG_COLOR_TYPE_RGB : PNG_COLOR_TYPE_PALETTE) : PNG_COLOR_TYPE_GRAY;
+    int color_type = PNG_COLOR_TYPE_GRAY;
+    if (image->hasPalette) {
+        color_type |= PNG_COLOR_MASK_COLOR;
+        if (!image->pixelsAreRGB) {
+            color_type |= PNG_COLOR_MASK_PALETTE;
+        }
+    }
+    if (image->hasTransparency) {
+        color_type |= PNG_COLOR_MASK_ALPHA;
+    }
 
     png_set_IHDR(png_ptr, info_ptr, image->width, image->height, image->bitDepth, color_type, PNG_INTERLACE_NONE, PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
 
     if (color_type == PNG_COLOR_TYPE_PALETTE) {
         SetPngPalette(png_ptr, info_ptr, &image->palette);
-
         if (image->hasTransparency) {
             png_byte trans = 0;
             png_set_tRNS(png_ptr, info_ptr, &trans, 1, 0);
