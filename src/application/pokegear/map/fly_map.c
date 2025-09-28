@@ -122,7 +122,7 @@ static void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->yOffset = 0;
     mapApp->xOffset = -24;
     mapApp->canSeeSafariZone = TRUE;
-    mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
+    mapApp->canFlyToCianwood = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_CIANWOOD);
     mapApp->curRegion = Pokegear_GetCurrentRegion(mapApp->pokegear);
 }
 

@@ -79,6 +79,9 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
     image.pixelsAreRGB = false;
 
     uint32_t key = ReadNtrImage(inputPath, options->width, 0, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->scanFrontToBack);
+    if (options->scrnFilePath == NULL && image.bitDepth == 4) {
+        image.palette.numColors = 16;
+    }
 
     if (key) {
         char *string = malloc(strlen(outputPath) + 5);

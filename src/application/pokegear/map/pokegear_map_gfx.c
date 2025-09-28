@@ -294,12 +294,12 @@ static void PokegearMap_LoadGraphics(PokegearMapAppData *mapApp, u8 frame) {
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapID, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000010_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapID, narc, NARC_application_pokegear_map_pgmap_gra, frame + NARC_pgmap_gra_pgmap_gra_00000050_NCGR, GF_BG_LYR_SUB_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(mapApp->pokegear->bgConfig, mapApp->heapID, narc, NARC_application_pokegear_map_pgmap_gra, NARC_pgmap_gra_pgmap_gra_00000012_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
-    mapApp->nscrFiles[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000056_NSCR, FALSE, &mapApp->scrnData56, mapApp->heapID);
+    mapApp->nscrFiles[0] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000056_NSCR, FALSE, &mapApp->markingsFrameScrnData, mapApp->heapID);
     mapApp->nscrFiles[1] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_pgmap_gra_pgmap_gra_00000011_NSCR, FALSE, &mapApp->worldMapScrnData, mapApp->heapID);
-    mapApp->nscrFiles[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_pgmap_gra_pgmap_gra_00000013_NSCR, FALSE, &mapApp->scrnData13, mapApp->heapID);
-    mapApp->nscrFiles[3] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000032_NSCR, FALSE, &mapApp->scrnData32, mapApp->heapID);
-    mapApp->nscrFiles[4] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000038_NSCR, FALSE, &mapApp->scrnData38, mapApp->heapID);
-    mapApp->nscrFiles[5] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000044_NSCR, FALSE, &mapApp->scrnData44, mapApp->heapID);
+    mapApp->nscrFiles[2] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_pgmap_gra_pgmap_gra_00000013_NSCR, FALSE, &mapApp->cityMinimapsScrnData, mapApp->heapID);
+    mapApp->nscrFiles[3] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000032_NSCR, FALSE, &mapApp->mapUISkinScrnData, mapApp->heapID);
+    mapApp->nscrFiles[4] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000038_NSCR, FALSE, &mapApp->markingsModeUISkinScrnData, mapApp->heapID);
+    mapApp->nscrFiles[5] = GfGfxLoader_GetScrnDataFromOpenNarc(narc, frame + NARC_pgmap_gra_pgmap_gra_00000044_NSCR, FALSE, &mapApp->markingsIconsSelectorSkinScrnData, mapApp->heapID);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
@@ -1071,18 +1071,18 @@ static void PokegearMap_SetBgParam_MapMode(PokegearMapAppData *mapApp) {
     mapApp->pokegear->deselectAppCB = PokegearMap_DeselectApp;
     PokegearMap_InitCursorAndPlayerIconPositions(mapApp);
     PokegearMap_OnVBlank_UpdateCursorAffine(mapApp, &mapApp->cursorSpriteState);
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->scrnData32->rawData, 0, 0, mapApp->scrnData32->screenWidth / 8, mapApp->scrnData32->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 32, 20, mapApp->mapUISkinScrnData->rawData, 0, 0, mapApp->mapUISkinScrnData->screenWidth / 8, mapApp->mapUISkinScrnData->screenHeight / 8);
 
-    ov101_021EAF40(mapApp);
+    PokegearMap_DrawMapView(mapApp);
     ov101_021EB38C(mapApp, 1, mapApp->zoomed);
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->scrnData56->rawData, 0, 7, mapApp->scrnData56->screenWidth / 8, mapApp->scrnData56->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 0, 7, 32, 17, mapApp->markingsFrameScrnData->rawData, 0, 7, mapApp->markingsFrameScrnData->screenWidth / 8, mapApp->markingsFrameScrnData->screenHeight / 8);
 
     PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
     ov101_021EAD90(mapApp, FALSE);
-    ov101_021EB1E0(mapApp, 1);
+    PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     PokegearMap_LoadMapHasMarkingsIndicatorSprites(mapApp);
     PokegearMap_UpdateStationaryIconsDrawState(mapApp, 0);
-    PokegearMap_SetPlayerAndCursorSpritesDrawFlag(mapApp, 1);
+    PokegearMap_SetPlayerAndCursorSpritesDrawFlag(mapApp, TRUE);
     if (mapApp->pokegear->cursorInAppSwitchZone == TRUE) {
         PokegearCursorManager_SetCursorSpritesDrawState(mapApp->pokegear->cursorManager, 0, TRUE);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_CURSOR].sprite, FALSE);
@@ -1123,15 +1123,15 @@ static void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
         BgClearTilemapBufferAndCommit(mapApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
     }
 
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 14, mapApp->scrnData38->rawData, 0, 0, mapApp->scrnData38->screenWidth / 8, mapApp->scrnData38->screenHeight / 8);
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 24, mapApp->scrnData44->rawData, 0, 0, mapApp->scrnData44->screenWidth / 8, mapApp->scrnData44->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 14, mapApp->markingsModeUISkinScrnData->rawData, 0, 0, mapApp->markingsModeUISkinScrnData->screenWidth / 8, mapApp->markingsModeUISkinScrnData->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 32, 24, mapApp->markingsIconsSelectorSkinScrnData->rawData, 0, 0, mapApp->markingsIconsSelectorSkinScrnData->screenWidth / 8, mapApp->markingsIconsSelectorSkinScrnData->screenHeight / 8);
     ToggleBgLayer(GF_BG_LYR_MAIN_2, GF_PLANE_TOGGLE_ON);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3);
     PokegearMap_CreateAuxSprites_MarkingsMode(mapApp);
     PokegearMap_InitUIButtons(mapApp);
-    PokegearMap_SetPlayerAndCursorSpritesDrawFlag(mapApp, 0);
+    PokegearMap_SetPlayerAndCursorSpritesDrawFlag(mapApp, FALSE);
 
     if (mapApp->inMarkingsMode == TRUE) {
         PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->sessionState.playerX, mapApp->sessionState.playerY);

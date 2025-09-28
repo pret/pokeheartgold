@@ -135,8 +135,8 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
     varsFlags = Save_VarsFlags_Get(radioShow->saveData);
     data->commercialUnlockFlags[COMM_UNLOCK_ALWAYS] = 1;
     data->commercialUnlockFlags[COMM_UNLOCK_POKEDEX] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_GOT_POKEDEX);
-    data->commercialUnlockFlags[COMM_UNLOCK_ECRUTEAK] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_ECRUTEAK);
-    data->commercialUnlockFlags[COMM_UNLOCK_CIANWOOD] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_CIANWOOD);
+    data->commercialUnlockFlags[COMM_UNLOCK_ECRUTEAK] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
+    data->commercialUnlockFlags[COMM_UNLOCK_CIANWOOD] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_ECRUTEAK);
     data->commercialUnlockFlags[COMM_UNLOCK_OLIVINE] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_OLIVINE);
     data->commercialUnlockFlags[COMM_UNLOCK_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
     data->commercialUnlockFlags[COMM_UNLOCK_GAME_CLEAR] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_GAME_CLEAR);

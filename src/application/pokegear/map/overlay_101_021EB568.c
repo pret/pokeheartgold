@@ -164,7 +164,7 @@ static int ov101_021EB818(PokegearMapAppData *mapApp) {
     if (ov101_021EB654(mapApp)) {
         PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, FALSE);
-        ov101_021EB1E0(mapApp, 1);
+        PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     }
     return -1;
 }
@@ -197,11 +197,11 @@ int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp) {
     if (mapApp->type == PGMAP_TYPE_TOWN_MAP) {
         PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, TRUE);
-        ov101_021EB1E0(mapApp, 1);
+        PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     } else {
         PokegearMap_SetCurLocationToFlypointFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, FALSE);
-        ov101_021EB1E0(mapApp, 1);
+        PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     }
     return -1;
 }
@@ -264,7 +264,7 @@ static int ov101_021EBA44(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
     PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
     ov101_021EAD90(mapApp, FALSE);
-    ov101_021EB1E0(mapApp, 1);
+    PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     mapApp->unk_146 = mapApp->unk_142 = gSystem.touchX;
     mapApp->unk_148 = mapApp->unk_144 = gSystem.touchY;
     ov101_021EBDEC(mapApp);
@@ -291,7 +291,7 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
     }
     input = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitbox_CloseButton);
     if (input != TOUCH_MENU_NO_INPUT) {
-        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 24, 20, 8, 4, mapApp->scrnData32->rawData, 0, 24, mapApp->scrnData32->screenWidth / 8, mapApp->scrnData32->screenHeight / 8);
+        CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 24, 20, 8, 4, mapApp->mapUISkinScrnData->rawData, 0, 24, mapApp->mapUISkinScrnData->screenWidth / 8, mapApp->mapUISkinScrnData->screenHeight / 8);
         ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
         PokegearMap_MoveCursorToPlayerPosition(mapApp);
         PlaySE(SEQ_SE_GS_GEARCANCEL);
@@ -311,12 +311,12 @@ int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIs
         ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
         PokegearMap_SetCurLocationFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, TRUE);
-        ov101_021EB1E0(mapApp, 1);
+        PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
     } else {
         ov101_021EC980(mapApp, &mapApp->playerX, &mapApp->playerY);
         PokegearMap_SetCurLocationToFlypointFromCoord(mapApp, &mapApp->selectedLoc, mapApp->playerX, mapApp->playerY);
         ov101_021EAD90(mapApp, FALSE);
-        ov101_021EB1E0(mapApp, 1);
+        PokegearMap_HighlightSelectedAreaOnMap(mapApp, TRUE);
         flyDest = PokegearMap_GetUnlockedFlyDestinationAtCoord(mapApp, mapApp->playerX, mapApp->playerY - 2);
         if (flyDest > 0) {
             PlaySE(SEQ_SE_GS_GEARDECIDE);
@@ -814,7 +814,7 @@ static BOOL MapApp_MarkingSlotIsSet(PokegearMapAppData *mapApp, u8 slot) {
 
 static void PokegearMap_MarkingsMenu_SetTrashcanIconState(PokegearMapAppData *mapApp, BOOL state) {
     mapApp->trashcanIconState = state;
-    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->scrnData38->rawData, 8 * mapApp->trashcanIconState + 14, 16, mapApp->scrnData38->screenWidth / 8, mapApp->scrnData38->screenHeight / 8);
+    CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 5, 8, 8, 5, mapApp->markingsModeUISkinScrnData->rawData, 8 * mapApp->trashcanIconState + 14, 16, mapApp->markingsModeUISkinScrnData->screenWidth / 8, mapApp->markingsModeUISkinScrnData->screenHeight / 8);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
 }
 
@@ -914,7 +914,7 @@ int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, 
     if (slot != -1) {
         *pRetIsTouch = TRUE;
         if (slot == 16) {
-            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 23, 8, 6, 5, mapApp->scrnData38->rawData, 7, 16, mapApp->scrnData38->screenWidth / 8, mapApp->scrnData38->screenHeight / 8);
+            CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 23, 8, 6, 5, mapApp->markingsModeUISkinScrnData->rawData, 7, 16, mapApp->markingsModeUISkinScrnData->screenWidth / 8, mapApp->markingsModeUISkinScrnData->screenHeight / 8);
             ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             return PGMAP_MAIN_STATE_EXIT_MARKING_MODE;
