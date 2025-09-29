@@ -6,7 +6,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void ov101_021F0990(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_InitAndDrawContactList(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
 void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
 
@@ -31,9 +31,9 @@ void PokegearPhone_DeleteContextMenus(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-void ov101_021F0900(PokegearPhoneAppData *phoneApp) {
-    ov101_021F0990(phoneApp);
-    if (phoneApp->pokegear->cursorInAppSwitchZone == 0) {
+void PokegearPhone_InitCursor(PokegearPhoneAppData *phoneApp) {
+    PokegearPhone_InitAndDrawContactList(phoneApp);
+    if (phoneApp->pokegear->cursorInAppSwitchZone == FALSE) {
         PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, FALSE);
     } else {
         PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, TRUE);
@@ -48,19 +48,19 @@ void PokegearPhone_OnReselectApp(void *cb_arg) {
     PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, TRUE);
 }
 
-void ov101_021F0954(PokegearPhoneAppData *phoneApp) {
-    phoneApp->pokegear->cursorInAppSwitchZone = 0;
+void PokegearPhone_ActivateContactListCursorHidden(PokegearPhoneAppData *phoneApp) {
+    phoneApp->pokegear->cursorInAppSwitchZone = FALSE;
     PhoneContactListUI_SetCursorSpritePos(&phoneApp->contactListUI, 255, TRUE);
     PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, FALSE);
 }
 
-void ov101_021F0978(void *cb_arg) {
+void PokegearPhone_UpdateContactListArrowSprites(void *cb_arg) {
     PokegearPhoneAppData *phoneApp = cb_arg;
 
     PhoneContactListUI_UpdateMoveContactArrowSprites(&phoneApp->contactListUI, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), TRUE);
 }
 
-void ov101_021F0990(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitAndDrawContactList(PokegearPhoneAppData *phoneApp) {
     PokegearPhone_InitContactListUI(phoneApp);
     PokegearPhone_ContactLinkedListToSlotsArray(phoneApp);
     PokegearPhone_SetContactListUIAndDraw(phoneApp, &phoneApp->contactListUI, 0, 0);
@@ -169,7 +169,7 @@ int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp) {
     result = PhoneContactListUI_HandleTouchInput(&phoneApp->contactListUI);
     if (result >= 0) {
         if (phoneApp->pokegear->cursorInAppSwitchZone == 1) {
-            ov101_021F0954(phoneApp);
+            PokegearPhone_ActivateContactListCursorHidden(phoneApp);
         }
         if (result == 0) {
             return -1;
