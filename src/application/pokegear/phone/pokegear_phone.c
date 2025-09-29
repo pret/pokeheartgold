@@ -8,11 +8,11 @@
 #include "sound_02004A44.h"
 #include "unk_0200FA24.h"
 
-static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp);
-static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp);
-int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp);
+static void PokegearPhone_InitInternal(PokegearPhoneAppData *phoneApp);
+static void PokegearPhone_ExitInternal(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_LoadGFX(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp);
-int PokegearPhone_MainTask_TearDown(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_UnloadGFX(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_HandleSubmenuInput(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_HandleSortMenuInput(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp);
@@ -20,10 +20,10 @@ int PokegearPhone_MainTask_DimScreenBeforeCall(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_SetUpPhoneCall(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_DoPhoneCall(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_MainTask_DebugHangupEffect(PokegearPhoneAppData *phoneApp);
-int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp);
-int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp);
-int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp);
-int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_FadeIn(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_FadeOut(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainTask_FadeInApp(PokegearPhoneAppData *phoneApp);
+int PokegearPhone_MainState_FadeOutApp(PokegearPhoneAppData *phoneApp);
 
 BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     PokegearAppData *pokegearApp = OverlayManager_GetArgs(man);
@@ -33,7 +33,7 @@ BOOL PokegearPhone_Init(OverlayManager *man, int *state) {
     phoneApp->pokegear = pokegearApp;
     phoneApp->heapID = HEAP_ID_POKEGEAR_APP;
     Sound_SetSceneAndPlayBGM(55, 0, 0);
-    PokegearPhone_LoadContactsAndInitFromArgs(phoneApp);
+    PokegearPhone_InitInternal(phoneApp);
     return TRUE;
 }
 
@@ -42,13 +42,13 @@ BOOL PokegearPhone_Main(OverlayManager *man, int *state) {
 
     switch (*state) {
     case PHONE_MAIN_STATE_SETUP:
-        *state = PokegearPhone_MainTask_Setup(phoneApp);
+        *state = PokegearPhone_MainTask_LoadGFX(phoneApp);
         break;
     case PHONE_MAIN_STATE_INPUT_LOOP:
         *state = PokegearPhone_MainTask_HandleInput(phoneApp);
         break;
     case PHONE_MAIN_STATE_TEARDOWN:
-        *state = PokegearPhone_MainTask_TearDown(phoneApp);
+        *state = PokegearPhone_MainTask_UnloadGFX(phoneApp);
         break;
     case PHONE_MAIN_STATE_CONTEXT_MENU:
         *state = PokegearPhone_MainTask_HandleSubmenuInput(phoneApp);
@@ -72,16 +72,16 @@ BOOL PokegearPhone_Main(OverlayManager *man, int *state) {
         *state = PokegearPhone_MainTask_DebugHangupEffect(phoneApp);
         break;
     case PHONE_MAIN_STATE_FADE_IN:
-        *state = PokegearPhone_MainTask_FadeInFromGearOpen(phoneApp);
+        *state = PokegearPhone_MainTask_FadeIn(phoneApp);
         break;
     case PHONE_MAIN_STATE_FADE_GEAR_CLOSE:
-        *state = PokegearPhone_MainTask_FadeOutForGearClose(phoneApp);
+        *state = PokegearPhone_MainTask_FadeOut(phoneApp);
         break;
     case PHONE_MAIN_STATE_WIPE_IN:
-        *state = PokegearPhone_MainTask_WipeInFromAppSwitch(phoneApp);
+        *state = PokegearPhone_MainTask_FadeInApp(phoneApp);
         break;
     case PHONE_MAIN_STATE_WIPE_SWITCH_APP:
-        *state = PokegearPhone_MainState_WipeOutForAppSwitch(phoneApp);
+        *state = PokegearPhone_MainState_FadeOutApp(phoneApp);
         break;
     case PHONE_MAIN_STATE_QUIT:
         return TRUE;
@@ -93,7 +93,7 @@ BOOL PokegearPhone_Main(OverlayManager *man, int *state) {
 BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
     PokegearPhoneAppData *phoneApp = OverlayManager_GetData(man);
 
-    PokegearPhone_UnloadContactsAndDeregisterCallbacks(phoneApp);
+    PokegearPhone_ExitInternal(phoneApp);
     phoneApp->pokegear->isSwitchApp = TRUE;
     enum HeapID heapID = phoneApp->heapID;
     OverlayManager_FreeData(man);
@@ -101,7 +101,7 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
     return TRUE;
 }
 
-static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp) {
+static void PokegearPhone_InitInternal(PokegearPhoneAppData *phoneApp) {
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
     phoneApp->skin = Pokegear_GetBackgroundStyle(phoneApp->pokegear->savePokegear);
@@ -122,15 +122,15 @@ static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phon
     }
 }
 
-static void PokegearPhone_UnloadContactsAndDeregisterCallbacks(PokegearPhoneAppData *phoneApp) {
+static void PokegearPhone_ExitInternal(PokegearPhoneAppData *phoneApp) {
     PokegearPhone_ContactList_FlushAndDestroyLinkedList(phoneApp);
     Heap_Free(phoneApp->saveContacts);
     phoneApp->pokegear->reselectAppCB = NULL;
     phoneApp->pokegear->deselectAppCB = NULL;
 }
 
-int PokegearPhone_MainTask_Setup(PokegearPhoneAppData *phoneApp) {
-    if (!PokegearPhone_SetUp(phoneApp)) {
+int PokegearPhone_MainTask_LoadGFX(PokegearPhoneAppData *phoneApp) {
+    if (!PokegearPhone_LoadGFX(phoneApp)) {
         return PHONE_MAIN_STATE_SETUP;
     }
     if (phoneApp->pokegear->isSwitchApp) {
@@ -168,8 +168,8 @@ int PokegearPhone_MainTask_HandleInput(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_INPUT_LOOP;
 }
 
-int PokegearPhone_MainTask_TearDown(PokegearPhoneAppData *phoneApp) {
-    if (PokegearPhone_TearDown(phoneApp)) {
+int PokegearPhone_MainTask_UnloadGFX(PokegearPhoneAppData *phoneApp) {
+    if (PokegearPhone_UnloadGFX(phoneApp)) {
         return PHONE_MAIN_STATE_QUIT;
     } else {
         return PHONE_MAIN_STATE_TEARDOWN;
@@ -221,7 +221,7 @@ int PokegearPhone_MainTask_DebugHangupEffect(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_INPUT_LOOP;
 }
 
-int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_FadeIn(PokegearPhoneAppData *phoneApp) {
     if (ov101_021EFF14(phoneApp)) {
         phoneApp->subtaskState = 0;
         if (phoneApp->isIncomingCall) {
@@ -234,7 +234,7 @@ int PokegearPhone_MainTask_FadeInFromGearOpen(PokegearPhoneAppData *phoneApp) {
     }
 }
 
-int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_FadeOut(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subtaskState) {
     case 0:
         BeginNormalPaletteFade(0, 0, 0, RGB_BLACK, 6, 1, phoneApp->heapID);
@@ -253,7 +253,7 @@ int PokegearPhone_MainTask_FadeOutForGearClose(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_FADE_GEAR_CLOSE;
 }
 
-int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainTask_FadeInApp(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subtaskState) {
     case 0:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);
@@ -279,7 +279,7 @@ int PokegearPhone_MainTask_WipeInFromAppSwitch(PokegearPhoneAppData *phoneApp) {
     return PHONE_MAIN_STATE_WIPE_IN;
 }
 
-int PokegearPhone_MainState_WipeOutForAppSwitch(PokegearPhoneAppData *phoneApp) {
+int PokegearPhone_MainState_FadeOutApp(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subtaskState) {
     case 0:
         PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, TRUE);

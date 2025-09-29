@@ -10,20 +10,20 @@ const TouchscreenHitbox ov101_021F8400 = {
     .rect = { 0x88, 0xb8, 0x08, 0xf8 }
 };
 
-BOOL PokegearPhone_SetUp(PokegearPhoneAppData *phoneApp) {
+BOOL PokegearPhone_LoadGFX(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subsubtaskState) {
     case 0:
-        ov101_021F017C(phoneApp);
-        ov101_021F0284(phoneApp);
-        ov101_021F0578(phoneApp);
-        ov101_021F05EC(phoneApp);
-        ov101_021F072C(phoneApp);
-        ov101_021F0388(phoneApp);
+        PokegearPhone_InitBGs(phoneApp);
+        PokegearPhone_LoadGraphics(phoneApp);
+        PokegearPhone_InitWindows(phoneApp);
+        PokegearPhone_InitMsg(phoneApp);
+        PokegearPhone_CreateTouchMenuSpawner(phoneApp);
+        PokegearPhone_LoadPalettes(phoneApp);
         break;
     case 1:
-        ov101_021F075C(phoneApp);
+        PokegearPhone_CreateSprites(phoneApp);
         PokegearPhone_InitContextMenus(phoneApp);
-        ov101_021F0694(phoneApp);
+        PokegearPhone_CreateContext(phoneApp);
         ov101_021F0900(phoneApp);
         phoneApp->subsubtaskState = 0;
         return TRUE;
@@ -32,15 +32,15 @@ BOOL PokegearPhone_SetUp(PokegearPhoneAppData *phoneApp) {
     return FALSE;
 }
 
-BOOL PokegearPhone_TearDown(PokegearPhoneAppData *phoneApp) {
+BOOL PokegearPhone_UnloadGFX(PokegearPhoneAppData *phoneApp) {
     PokegearPhone_DeleteContextMenus(phoneApp);
-    ov101_021F0720(phoneApp);
-    ov101_021F0864(phoneApp);
-    ov101_021F0748(phoneApp);
-    ov101_021F0658(phoneApp);
-    ov101_021F05CC(phoneApp);
-    ov101_021F0370(phoneApp);
-    ov101_021F0260(phoneApp);
+    PokegearPhone_DestroyContext(phoneApp);
+    PokegearPhone_DeleteSprites(phoneApp);
+    PokegearPhone_DestroyTouchMenuSpawner(phoneApp);
+    PokegearPhone_DeleteMsg(phoneApp);
+    PokegearPhone_RemoveWindows(phoneApp);
+    PokegearPhone_UnloadGraphics(phoneApp);
+    PokegearPhone_UnloadBGs(phoneApp);
     return TRUE;
 }
 

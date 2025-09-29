@@ -224,108 +224,109 @@ const PokegearPhoneContextMenuParam sContextMenuParam[] = {
      },
 };
 
-void ov101_021F017C(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitBGs(PokegearPhoneAppData *phoneApp) {
     GX_SetGraphicsMode(GX_DISPMODE_GRAPHICS, GX_BGMODE_0, GX_BG0_AS_2D);
+    {
+        BgTemplate sBgTemplates[6] = {
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xf000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 0,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe800,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 2,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe000,
+             .charBase = GX_BG_CHARBASE_0x10000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 3,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xf000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 0,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe800,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 1,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+            {
+             .x = 0,
+             .y = 0,
+             .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+             .baseTile = 0,
+             .size = GF_BG_SCR_SIZE_256x256,
+             .colorMode = GX_BG_COLORMODE_16,
+             .screenBase = GX_BG_SCRBASE_0xe000,
+             .charBase = GX_BG_CHARBASE_0x00000,
+             .bgExtPltt = GX_BG_EXTPLTT_01,
+             .priority = 2,
+             .areaOver = GX_BG_AREAOVER_XLU,
+             .dummy = 0,
+             .mosaic = 0,
+             },
+        };
 
-    BgTemplate sBgTemplates[6] = {
-        {
-         .x = 0,
-         .y = 0,
-         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0,
-         .size = GF_BG_SCR_SIZE_256x256,
-         .colorMode = GX_BG_COLORMODE_16,
-         .screenBase = GX_BG_SCRBASE_0xf000,
-         .charBase = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0,
-         .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0,
-         .mosaic = 0,
-         },
-        {
-         .x = 0,
-         .y = 0,
-         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0,
-         .size = GF_BG_SCR_SIZE_256x256,
-         .colorMode = GX_BG_COLORMODE_16,
-         .screenBase = GX_BG_SCRBASE_0xe800,
-         .charBase = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 2,
-         .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0,
-         .mosaic = 0,
-         },
-        {
-         .x = 0,
-         .y = 0,
-         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0,
-         .size = GF_BG_SCR_SIZE_256x256,
-         .colorMode = GX_BG_COLORMODE_16,
-         .screenBase = GX_BG_SCRBASE_0xe000,
-         .charBase = GX_BG_CHARBASE_0x10000,
-         .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 3,
-         .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0,
-         .mosaic = 0,
-         },
-        {
-         .x = 0,
-         .y = 0,
-         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0,
-         .size = GF_BG_SCR_SIZE_256x256,
-         .colorMode = GX_BG_COLORMODE_16,
-         .screenBase = GX_BG_SCRBASE_0xf000,
-         .charBase = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 0,
-         .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0,
-         .mosaic = 0,
-         },
-        {
-         .x = 0,
-         .y = 0,
-         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0,
-         .size = GF_BG_SCR_SIZE_256x256,
-         .colorMode = GX_BG_COLORMODE_16,
-         .screenBase = GX_BG_SCRBASE_0xe800,
-         .charBase = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 1,
-         .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0,
-         .mosaic = 0,
-         },
-        {
-         .x = 0,
-         .y = 0,
-         .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
-         .baseTile = 0,
-         .size = GF_BG_SCR_SIZE_256x256,
-         .colorMode = GX_BG_COLORMODE_16,
-         .screenBase = GX_BG_SCRBASE_0xe000,
-         .charBase = GX_BG_CHARBASE_0x00000,
-         .bgExtPltt = GX_BG_EXTPLTT_01,
-         .priority = 2,
-         .areaOver = GX_BG_AREAOVER_XLU,
-         .dummy = 0,
-         .mosaic = 0,
-         },
-    };
-
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &sBgTemplates[0], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &sBgTemplates[1], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, &sBgTemplates[2], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, &sBgTemplates[3], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, &sBgTemplates[4], GF_BG_TYPE_TEXT, FALSE);
-    InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &sBgTemplates[5], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, &sBgTemplates[0], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, &sBgTemplates[1], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, &sBgTemplates[2], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_1, &sBgTemplates[3], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, &sBgTemplates[4], GF_BG_TYPE_TEXT, FALSE);
+        InitBgFromTemplateEx(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, &sBgTemplates[5], GF_BG_TYPE_TEXT, FALSE);
+    }
     for (int i = 0; i < 3; ++i) {
         BgClearTilemapBufferAndCommit(phoneApp->pokegear->bgConfig, i + GF_BG_LYR_MAIN_1);
         BG_ClearCharDataRange(i + GF_BG_LYR_MAIN_1, 0x20, 0, phoneApp->heapID);
@@ -336,13 +337,13 @@ void ov101_021F017C(PokegearPhoneAppData *phoneApp) {
     BgSetPosTextAndCommit(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0x20);
 }
 
-void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_UnloadBGs(PokegearPhoneAppData *phoneApp) {
     SetBgPriority(GF_BG_LYR_MAIN_0, 0);
     BgSetPosTextAndCommit(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_3, BG_POS_OP_SET_Y, 0);
     Pokegear_ClearAppBgLayers(phoneApp->pokegear);
 }
 
-void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_LoadGraphics(PokegearPhoneAppData *phoneApp) {
     FontID_Alloc(4, phoneApp->heapID);
     NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
     BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000028_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
@@ -355,12 +356,12 @@ void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);
 }
 
-void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_UnloadGraphics(PokegearPhoneAppData *phoneApp) {
     Heap_Free(phoneApp->pNscrFile);
     FontID_Release(4);
 }
 
-void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_LoadPalettes(PokegearPhoneAppData *phoneApp) {
     NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000010_NCLR, phoneApp->heapID, PLTTBUF_MAIN_BG, 0x1C0, 0, 0);
     PaletteData_LoadFromOpenNarc(phoneApp->pokegear->plttData, narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000004_NCLR, phoneApp->heapID, PLTTBUF_SUB_BG, 0x180, 0, 0);
@@ -395,7 +396,7 @@ void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL s
     PaletteData_SetAutoTransparent(phoneApp->pokegear->plttData, FALSE);
 }
 
-void ov101_021F0578(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitWindows(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 4; ++i) {
         AddWindowParameterized(phoneApp->pokegear->bgConfig, &phoneApp->windows[i], sWindowTemplates[i].bgId, sWindowTemplates[i].left, sWindowTemplates[i].top, sWindowTemplates[i].width, sWindowTemplates[i].height, sWindowTemplates[i].palette, sWindowTemplates[i].baseTile);
         FillWindowPixelBuffer(&phoneApp->windows[i], 0);
@@ -403,14 +404,14 @@ void ov101_021F0578(PokegearPhoneAppData *phoneApp) {
     TextPrinter_SetDownArrowBaseTile(0x3E1);
 }
 
-void ov101_021F05CC(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_RemoveWindows(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 4; ++i) {
         ClearWindowTilemapAndCopyToVram(&phoneApp->windows[i]);
         RemoveWindow(&phoneApp->windows[i]);
     }
 }
 
-void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_InitMsg(PokegearPhoneAppData *phoneApp) {
     phoneApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, phoneApp->heapID);
     phoneApp->msgFormat = MessageFormat_New_Custom(2, 32, phoneApp->heapID);
     phoneApp->msgFormatBuf = String_New(640, phoneApp->heapID);
@@ -423,7 +424,7 @@ void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
     TextFlags_SetCanABSpeedUpPrint(TRUE);
 }
 
-void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_DeleteMsg(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < PHONE_TOOLTIP_MAX; ++i) {
         String_Delete(phoneApp->tooltipStrings[i]);
     }
@@ -435,7 +436,7 @@ void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
     TextFlags_SetCanABSpeedUpPrint(FALSE);
 }
 
-void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_CreateContext(PokegearPhoneAppData *phoneApp) {
     PokegearPhoneCallContextParam param;
     MI_CpuClear8(&param, sizeof(PokegearPhoneCallContextParam));
     param.heapID = phoneApp->heapID;
@@ -457,21 +458,21 @@ void ov101_021F0694(PokegearPhoneAppData *phoneApp) {
     phoneApp->callContext = PhoneCall_CreateContext(&param);
 }
 
-void ov101_021F0720(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_DestroyContext(PokegearPhoneAppData *phoneApp) {
     PhoneCall_DestroyContext(phoneApp->callContext);
 }
 
-void ov101_021F072C(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_CreateTouchMenuSpawner(PokegearPhoneAppData *phoneApp) {
     PokegearApp_CreateSpriteManager(phoneApp->pokegear, GEAR_APP_PHONE);
     phoneApp->contextMenuSpawner = TouchscreenListMenuSpawner_Create(phoneApp->heapID, phoneApp->pokegear->plttData);
 }
 
-void ov101_021F0748(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_DestroyTouchMenuSpawner(PokegearPhoneAppData *phoneApp) {
     TouchscreenListMenuSpawner_Destroy(phoneApp->contextMenuSpawner);
     PokegearApp_DestroySpriteManager(phoneApp->pokegear);
 }
 
-void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_CreateSprites(PokegearPhoneAppData *phoneApp) {
     int i;
     for (i = 0; i <= 5; ++i) {
         phoneApp->sprites[i] = SpriteSystem_CreateSpriteFromResourceHeader(phoneApp->pokegear->spriteSystem, phoneApp->pokegear->spriteManager, &sSpriteTemplates[i]);
@@ -495,7 +496,7 @@ void ov101_021F075C(PokegearPhoneAppData *phoneApp) {
     Sprite_SetAnimActiveFlag(phoneApp->sprites[13], FALSE);
 }
 
-void ov101_021F0864(PokegearPhoneAppData *phoneApp) {
+void PokegearPhone_DeleteSprites(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < 14; ++i) {
         thunk_Sprite_Delete(phoneApp->sprites[i]);
     }

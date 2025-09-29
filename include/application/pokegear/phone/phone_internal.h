@@ -289,8 +289,8 @@ struct PokegearPhoneAppData {
     NNSG2dScreenData *screenData;                   // 0x50C
 }; // size: 0x510
 
-BOOL PokegearPhone_SetUp(PokegearPhoneAppData *phoneApp);
-BOOL PokegearPhone_TearDown(PokegearPhoneAppData *phoneApp);
+BOOL PokegearPhone_LoadGFX(PokegearPhoneAppData *phoneApp);
+BOOL PokegearPhone_UnloadGFX(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleSubmenuInput(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleSortMenuInput(PokegearPhoneAppData *phoneApp);
 int PokegearPhone_HandleMoveContactsInput(PokegearPhoneAppData *phoneApp);
@@ -301,22 +301,22 @@ BOOL PhoneCall_Exit(PokegearPhoneAppData *phoneApp);
 void ov101_021F0080(PokegearPhoneAppData *phoneApp);
 BOOL ov101_021F00BC(PokegearPhoneAppData *phoneApp);
 
-void ov101_021F017C(PokegearPhoneAppData *phoneApp);
-void ov101_021F0260(PokegearPhoneAppData *phoneApp);
-void ov101_021F0284(PokegearPhoneAppData *phoneApp);
-void ov101_021F0370(PokegearPhoneAppData *phoneApp);
-void ov101_021F0388(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_InitBGs(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_UnloadBGs(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_LoadGraphics(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_UnloadGraphics(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_LoadPalettes(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL shouldDim);
-void ov101_021F0578(PokegearPhoneAppData *phoneApp);
-void ov101_021F05CC(PokegearPhoneAppData *phoneApp);
-void ov101_021F05EC(PokegearPhoneAppData *phoneApp);
-void ov101_021F0658(PokegearPhoneAppData *phoneApp);
-void ov101_021F0694(PokegearPhoneAppData *phoneApp);
-void ov101_021F0720(PokegearPhoneAppData *phoneApp);
-void ov101_021F072C(PokegearPhoneAppData *phoneApp);
-void ov101_021F0748(PokegearPhoneAppData *phoneApp);
-void ov101_021F075C(PokegearPhoneAppData *phoneApp);
-void ov101_021F0864(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_InitWindows(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_RemoveWindows(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_InitMsg(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_DeleteMsg(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_CreateContext(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_DestroyContext(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_CreateTouchMenuSpawner(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_DestroyTouchMenuSpawner(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_CreateSprites(PokegearPhoneAppData *phoneApp);
+void PokegearPhone_DeleteSprites(PokegearPhoneAppData *phoneApp);
 
 void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp);
 void PokegearPhone_DeleteContextMenus(PokegearPhoneAppData *phoneApp);

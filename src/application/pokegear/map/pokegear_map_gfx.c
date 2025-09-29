@@ -35,7 +35,7 @@ static void PokegearMap_RemoveAuxSprites_MapMode(PokegearMapAppData *mapApp);
 static void PokegearMap_RemoveAllSprites(PokegearMapAppData *mapApp);
 static void PokegearMap_SetBgParam_MapMode(PokegearMapAppData *mapApp);
 static void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp);
-static void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1);
+static void PokegearMap_SetMarkingsModeEnabled(PokegearMapAppData *mapApp, BOOL isEnabled);
 
 BOOL PokegearMap_LoadGFX(PokegearMapAppData *mapApp) {
     switch (mapApp->substate) {
@@ -101,7 +101,7 @@ BOOL PokegearMap_AnimateSwitchToMarkingMode(PokegearMapAppData *mapApp) {
         PokegearMap_RemoveAuxSprites_MapMode(mapApp);
         break;
     case 2:
-        ov101_021E9264(mapApp, TRUE);
+        PokegearMap_SetMarkingsModeEnabled(mapApp, TRUE);
         PokegearMap_SetBgParam_MarkingsMode(mapApp);
         BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
         PokegearMap_BeginScrollMarkingsPanelBottomScreen(mapApp, 0);
@@ -147,7 +147,7 @@ BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp) {
         PokegearMap_RemoveAuxSprites_MarkingsMode(mapApp);
         break;
     case 3:
-        ov101_021E9264(mapApp, FALSE);
+        PokegearMap_SetMarkingsModeEnabled(mapApp, FALSE);
         PokegearMap_SetBgParam_MapMode(mapApp);
         PokegearMap_BeginScrollMarkingsPanelTopScreen(mapApp, 0);
         BeginNormalPaletteFade(3, 1, 1, RGB_BLACK, 6, 1, mapApp->heapID);
@@ -1149,8 +1149,8 @@ static void PokegearMap_SetBgParam_MarkingsMode(PokegearMapAppData *mapApp) {
     mapApp->pokegear->deselectAppCB = PokegearMap_InMarkingsMode_HideCursor;
 }
 
-static void ov101_021E9264(PokegearMapAppData *mapApp, BOOL a1) {
-    if (!a1) {
+static void PokegearMap_SetMarkingsModeEnabled(PokegearMapAppData *mapApp, BOOL isEnabling) {
+    if (!isEnabling) {
         mapApp->sessionState.index = 0;
         mapApp->inMarkingsMode = FALSE;
     }
