@@ -33,11 +33,13 @@ ELFCODER := $(ELFCODER_DIR)/build/elfcoder$(EXE)
 # C / ASM compilation parameters
 CC_PARAM   :=  -O4,p -enum int -proc arm946E -gccext,on -fp soft -lang c99 -char signed -inline on,noauto -Cpp_exceptions off -interworking -i $(INC_DIR) -c
 ASM_PARAM  :=  -proc arm5TE -i $(INC_DIR)
+LIB_PARAM  :=  -nostdlib -library
 
 CC_PARAM   +=  -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
 
 # Output library file
-LIBRARY_NAME := dsprot.a
+LIBRARY_NAME  :=  dsprot.a
+LIBRARY       :=  $(BUILD_DIR)/$(LIBRARY_NAME)
 
 # Files (in this specific order) that will go into the library
 LIBRARY_FILES := \
@@ -84,11 +86,12 @@ tools:
 	$(MAKE) -C $(ELFCODER_DIR)
 
 dsprot:
-	$(MAKE) $(BUILD_DIR)/$(LIBRARY_NAME)
+	$(MAKE) $(LIBRARY)
 
-install: all
+install:
+	$(MAKE) all
 	$(shell mkdir -p $(INSTALL_LIBDIR))
-	cp $(BUILD_DIR)/$(LIBRARY_NAME) $(INSTALL_LIBDIR)
+	cp $(LIBRARY) $(INSTALL_LIBDIR)
 
 
 # Assembly assembling
@@ -103,8 +106,8 @@ $(C_OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 
 
 # Library output
-$(BUILD_DIR)/$(LIBRARY_NAME): $(LIBRARY_FILES)
-	$(WINE) $(MWLD) -nostdlib -library $(LIBRARY_FILES) -o $(BUILD_DIR)/$(LIBRARY_NAME)
+$(LIBRARY): $(LIBRARY_FILES)
+	$(WINE) $(MWLD) $(LIB_PARAM) $^ -o $@
 
 
 # Main module function encoding
@@ -180,7 +183,7 @@ $(BUILD_DIR)/mac_owner_encrypted.o \
 $(BUILD_DIR)/mac_owner_decrypter.s: $(C_OBJ_DIR)/mac_owner.o $(ELFCODER)
 	cp $(C_OBJ_DIR)/mac_owner.o $(BUILD_DIR)/mac_owner_encrypted.o
 	$(ELFCODER) -e -i $(BUILD_DIR)/mac_owner_encrypted.o -o $(BUILD_DIR)/mac_owner_decrypter.s -k $(KEY_CORE_TESTS) -f \
-		MACOwner_IsBad  \
+		MACOwner_IsBad   \
 		MACOwner_IsGood
 
 $(BUILD_DIR)/rom_util_encrypted.o \
