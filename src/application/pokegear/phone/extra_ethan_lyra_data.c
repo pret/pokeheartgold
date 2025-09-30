@@ -1,8 +1,8 @@
 #include "global.h"
 
-// This only exists to enforce data alignment and arrangement
+// This object is only here, all alone, in its own file, to enforce data alignment and arrangement
 
-const u8 ov101_021F8760[] = {
+const u8 gPokegearPhone_ChildhoodFriendScriptConditions[] = {
     3,
     3,
     3,

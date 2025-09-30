@@ -4,7 +4,7 @@
 .public MapHeader_IsInKanto
 .public Save_VarsFlags_Get
 .public BattleSetup_GetWildTransitionEffect
-.public BattleSetup_GetWildBattleMusic
+.public BattleSetup_GetBattleMusic
 .public GetFirstAliveMonInParty_CrashIfNone
 .public Save_VarsFlags_FlypointFlagAction
 .public GetMonData

@@ -190,7 +190,7 @@ void RadioShow_PokemonTalk_SampleMapAreasAndEncounters(RadioShow *radioShow, Pok
     Pokedex *pokedex;
 
     pokedex = Save_Pokedex_Get(radioShow->saveData);
-    visitedUnk25 = Save_VarsFlags_FlypointFlagAction(Save_VarsFlags_Get(radioShow->saveData), FLAG_ACTION_CHECK, FLYPOINT_UNK25);
+    visitedUnk25 = Save_VarsFlags_FlypointFlagAction(Save_VarsFlags_Get(radioShow->saveData), FLAG_ACTION_CHECK, VISITED_FLAG_ROUTE_47);
 
     MI_CpuClear8(data->landmarksBuffer, sizeof(data->landmarksBuffer));
     MI_CpuClear8(data->speciesBuffer, sizeof(data->speciesBuffer));

@@ -18,11 +18,11 @@
 	scrdef_end
 
 scr_seq_T08R0201_000:
-	goto_if_set FLAG_UNK_9CD, _003B
+	goto_if_set FLAG_SYS_VISITED_PAL_PARK, _003B
 	setvar VAR_PAL_PARK_HIGH_SCORE, 2000
 _003B:
 	clearflag FLAG_UNK_999
-	setflag FLAG_UNK_9CD
+	setflag FLAG_SYS_VISITED_PAL_PARK
 	compare VAR_UNK_4124, 0
 	goto_if_ne _0052
 	end

@@ -286,7 +286,7 @@ struct PokegearPhoneAppData {
     LISTMENUITEM *listMenuItems[7];                 // 0x4E8
     TouchscreenListMenu *touchscreenListMenu;       // 0x504
     void *pNscrFile;                                // 0x508
-    NNSG2dScreenData *screenData;                   // 0x50C
+    NNSG2dScreenData *frameTilemap;                 // 0x50C
 }; // size: 0x510
 
 BOOL PokegearPhone_LoadGFX(PokegearPhoneAppData *phoneApp);
@@ -400,7 +400,7 @@ BOOL GearPhoneCall_Buena(PokegearPhoneCallContext *ctx);
 BOOL GearPhoneCall_Buena2(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx);
-u8 ov101_021F3D34(PokegearPhoneCallContext *ctx);
+u8 GearPhoneCall_EthanLyra_GetSpecialMessage(PokegearPhoneCallContext *ctx);
 BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_GymLeader(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 BOOL GearPhoneCall_GymLeader_Outgoing(PokegearPhoneCallContext *ctx);
@@ -409,10 +409,10 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCall
 BOOL GearPhoneCall_Baoba(PokegearPhoneCallContext *ctx);
 u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state);
 
-extern const TouchscreenHitbox ov101_021F8400;
+extern const TouchscreenHitbox gPokegearPhone_TextAdvanceButtonHitbox;
 extern const PokegearPhoneContextMenuParam sContextMenuParam[];
 extern const PhoneScriptGenericHeader sGenericPhoneCallHeaders[];
-extern const u8 ov101_021F8760[];
+extern const u8 gPokegearPhone_ChildhoodFriendScriptConditions[73];
 
 extern const PhoneCallScriptDef gPhoneCallScriptDef[];
 extern const u8 sGreetingMsgIDs[][12];

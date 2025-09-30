@@ -6,7 +6,7 @@
 #include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 
-const TouchscreenHitbox ov101_021F8400 = {
+const TouchscreenHitbox gPokegearPhone_TextAdvanceButtonHitbox = {
     .rect = { 0x88, 0xb8, 0x08, 0xf8 }
 };
 
@@ -157,7 +157,7 @@ BOOL PokegearPhone_SetUpCallData(PokegearPhoneAppData *phoneApp) {
         PhoneCall_GetCallScriptId(phoneApp->callContext);
     }
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
-    TextFlags_SetFastForwardTouchButtonHitbox(&ov101_021F8400);
+    TextFlags_SetFastForwardTouchButtonHitbox(&gPokegearPhone_TextAdvanceButtonHitbox);
     return okay;
 }
 

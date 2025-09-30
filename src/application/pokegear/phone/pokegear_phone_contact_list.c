@@ -6,9 +6,9 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void PokegearPhone_InitAndDrawContactList(PokegearPhoneAppData *phoneApp);
-void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
-void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
+static void PokegearPhone_InitAndDrawContactList(PokegearPhoneAppData *phoneApp);
+static void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
+static void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event);
 
 void PokegearPhone_InitContextMenus(PokegearPhoneAppData *phoneApp) {
     int i;
@@ -60,7 +60,7 @@ void PokegearPhone_UpdateContactListArrowSprites(void *cb_arg) {
     PhoneContactListUI_UpdateMoveContactArrowSprites(&phoneApp->contactListUI, PhoneContactListUI_GetCursorPos(&phoneApp->contactListUI), TRUE);
 }
 
-void PokegearPhone_InitAndDrawContactList(PokegearPhoneAppData *phoneApp) {
+static void PokegearPhone_InitAndDrawContactList(PokegearPhoneAppData *phoneApp) {
     PokegearPhone_InitContactListUI(phoneApp);
     PokegearPhone_ContactLinkedListToSlotsArray(phoneApp);
     PokegearPhone_SetContactListUIAndDraw(phoneApp, &phoneApp->contactListUI, 0, 0);
@@ -94,7 +94,7 @@ TouchscreenListMenu *PokegearPhoneApp_TouchscreenListMenu_Create(PokegearPhoneAp
     return phoneApp->touchscreenListMenu;
 }
 
-void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
+static void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
     PokegearPhoneAppData *phoneApp = callbackArg;
 
     if (event != 0) {
@@ -103,7 +103,7 @@ void PokegearPhone_ContextMenu_OnCursorMove_DynamicTooltip(TouchscreenListMenu *
     PokegearPhone_PrintContextMenuTooltip(phoneApp, cursorPos + PHONE_TOOLTIP_SORT_TRAINER_TYPE, TRUE);
 }
 
-void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
+static void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *menu, u8 cursorPos, void *callbackArg, int event) {
     if (event != 0) {
         PlaySE(SEQ_SE_GS_GEARDECIDE);
     }
@@ -112,7 +112,8 @@ void PokegearPhone_ContextMenu_OnCursorMove_StaticTooltip(TouchscreenListMenu *m
 void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 tooltipId, BOOL draw) {
     if (draw) {
         u32 xpos;
-        CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->screenData->rawData, 0, 24, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
+        // black rectangle covering the app switch icons
+        CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->frameTilemap->rawData, 0, 24, phoneApp->frameTilemap->screenWidth / 8, phoneApp->frameTilemap->screenHeight / 8);
         FillWindowPixelBuffer(&phoneApp->windows[3], 5);
         xpos = (256 - FontID_String_GetWidth(0, phoneApp->tooltipStrings[tooltipId], 0)) / 2;
         AddTextPrinterParameterizedWithColor(&phoneApp->windows[3], 0, phoneApp->tooltipStrings[tooltipId], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
@@ -134,7 +135,7 @@ int PokegearPhone_HandleKeyInput_ContactList(PokegearPhoneAppData *phoneApp) {
 
     if (gSystem.newKeys & PAD_BUTTON_B) {
         if (phoneApp->menuInputStateBak == 0) {
-            phoneApp->pokegear->cursorInAppSwitchZone = 1;
+            phoneApp->pokegear->cursorInAppSwitchZone = TRUE;
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             PokegearCursorManager_SetCursorSpritesDrawState(phoneApp->pokegear->cursorManager, 0, TRUE);
             PokegearCursorManager_SetSpecIndexAndCursorPos(phoneApp->pokegear->cursorManager, 0, PokegearApp_AppIdToButtonIndex(phoneApp->pokegear));
@@ -168,7 +169,7 @@ int PokegearPhone_HandleTouchInput(PokegearPhoneAppData *phoneApp) {
 
     result = PhoneContactListUI_HandleTouchInput(&phoneApp->contactListUI);
     if (result >= 0) {
-        if (phoneApp->pokegear->cursorInAppSwitchZone == 1) {
+        if (phoneApp->pokegear->cursorInAppSwitchZone == TRUE) {
             PokegearPhone_ActivateContactListCursorHidden(phoneApp);
         }
         if (result == 0) {

@@ -26,7 +26,7 @@ _0054:
 	end
 
 scr_seq_R22R0101_007:
-	setflag FLAG_SYS_FLYPOINT_VICTORY_ROAD
+	setflag FLAG_SYS_VISITED_VICTORY_ROAD
 	goto_if_unset FLAG_UNK_189, _006B
 	clearflag FLAG_UNK_189
 	end

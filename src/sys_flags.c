@@ -263,7 +263,7 @@ BOOL SysFlagDefogCheck(SaveVarsFlags *state) {
 
 BOOL Save_VarsFlags_FlypointFlagAction(SaveVarsFlags *state, u32 action, u32 flypoint_flag_no) {
     GF_ASSERT(flypoint_flag_no < 38);
-    return FlagAction(state, action, FLAG_SYS_FLYPOINT_PALLET + flypoint_flag_no);
+    return FlagAction(state, action, FLAG_SYS_VISITED_PALLET + flypoint_flag_no);
 }
 
 void SetFlag970(SaveVarsFlags *state) {

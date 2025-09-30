@@ -131,16 +131,16 @@ u8 SafariZone_GetObjectUnlockLevel(SafariZone *safari_zone) {
     return safari_zone->objectUnlockLevel;
 }
 
-u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 a1) {
-    SafariZone_SetObjectUnlockLevel(safari_zone, (u8)(safari_zone->objectUnlockLevel + a1));
+u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 by) {
+    SafariZone_SetObjectUnlockLevel(safari_zone, (u8)(safari_zone->objectUnlockLevel + by));
     return safari_zone->objectUnlockLevel;
 }
 
-void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 a1) {
-    if (a1 > 4) {
+void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 level) {
+    if (level > 4) {
         safari_zone->objectUnlockLevel = 4;
     } else {
-        safari_zone->objectUnlockLevel = a1;
+        safari_zone->objectUnlockLevel = level;
     }
 }
 

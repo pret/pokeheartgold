@@ -1151,9 +1151,9 @@ Overlay pokegear_app
     Object src/application/pokegear/phone/pokegear_phone.o
     Object src/application/pokegear/phone/pokegear_phone_input.o
     Object src/application/pokegear/phone/pokegear_phone_gfx.o
-    Object src/application/pokegear/phone/overlay_101_021F0880.o
-    Object src/application/pokegear/phone/overlay_101_021F0F48.o
-    Object src/application/pokegear/phone/overlay_101_021F1D74.o
+    Object src/application/pokegear/phone/pokegear_phone_contact_list.o
+    Object src/application/pokegear/phone/pokegear_phone_ui.o
+    Object src/application/pokegear/phone/pokegear_phone_script.o
     Object src/application/pokegear/phone/scripts/phone_scripts_mother.o
     Object src/application/pokegear/phone/scripts/phone_scripts_prof_elm.o
     Object src/application/pokegear/phone/scripts/phone_scripts_generic.o

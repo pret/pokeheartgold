@@ -349,8 +349,8 @@ void PokegearPhone_LoadGraphics(PokegearPhoneAppData *phoneApp) {
     BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000028_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000016_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000022_NSCR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_SCRN, 0, 0);
-    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000034_NSCR, FALSE, &phoneApp->screenData, phoneApp->heapID);
-    CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->screenData->rawData, 0, 0, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
+    phoneApp->pNscrFile = GfGfxLoader_GetScrnDataFromOpenNarc(narc, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000034_NSCR, FALSE, &phoneApp->frameTilemap, phoneApp->heapID);
+    CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, 32, 20, phoneApp->frameTilemap->rawData, 0, 0, phoneApp->frameTilemap->screenWidth / 8, phoneApp->frameTilemap->screenHeight / 8);
     NARC_Delete(narc);
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(phoneApp->pokegear->bgConfig, GF_BG_LYR_SUB_3);

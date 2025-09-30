@@ -1,3 +1,4 @@
+#include "constants/flypoints.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/pokemon.h"
@@ -497,7 +498,7 @@ sub_02087E1C: ; 0x02087E1C
 	ldr r0, [r0, r1]
 	bl Save_VarsFlags_Get
 	mov r1, #2
-	mov r2, #0x1b
+	mov r2, #VISITED_FLAG_UNION_CAVE
 	bl Save_VarsFlags_FlypointFlagAction
 	pop {r3, pc}
 	.balign 4, 0

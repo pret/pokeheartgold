@@ -5,18 +5,18 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-void PhoneContactListNode_Init(PhoneContactListNode *node);
-void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slotData);
-void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow);
-void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui);
-u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot);
-void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 index, u8 selected, BOOL copyNow);
-void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui);
-BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 direction);
-BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui);
-BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction);
-BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui);
-void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui);
+static void PhoneContactListNode_Init(PhoneContactListNode *node);
+static void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slotData);
+static void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow);
+static void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui);
+static u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot);
+static void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 index, u8 selected, BOOL copyNow);
+static void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui);
+static BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 direction);
+static BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui);
+static BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction);
+static BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui);
+static void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui);
 
 static const TouchscreenHitbox ov101_021F8634[] = {
     { .rect = { 0x08, 0x20, 0x08, 0xE0 } },
@@ -433,7 +433,7 @@ void PhoneContactListUI_DeselectContact(PhoneContactListUI *ui) {
     }
 }
 
-void PhoneContactListNode_Init(PhoneContactListNode *node) {
+static void PhoneContactListNode_Init(PhoneContactListNode *node) {
     node->index = 0;
     node->contact.id = 255;
     node->next = NULL;
@@ -466,12 +466,12 @@ void PokegearPhone_InitContactsLinkedList(PokegearPhoneAppData *phoneApp) {
     phoneApp->contactListHead->prev = phoneApp->contactListTail;
 }
 
-void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slot) {
+static void PhoneContactListUISlotData_Init(PhoneContactListUISlotData *slot) {
     slot->index = 0;
     slot->node = NULL;
 }
 
-void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow) {
+static void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL colorIdx, BOOL copyNow) {
     u8 y;
     PhoneContactListUIColors *colors;
 
@@ -490,7 +490,7 @@ void PhoneContactListUI_DrawNameSlotBG(PhoneContactListUI *ui, u8 slot, BOOL col
     }
 }
 
-void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui) {
+static void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui) {
     int i;
 
     u8 bgColor = ui->firstBgColor;
@@ -500,7 +500,7 @@ void PhoneContactListUI_DrawNameSlotsBGs(PhoneContactListUI *ui) {
     }
 }
 
-u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot) {
+static u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot) {
     if (ui->firstBgColor) {
         return 1 - (slot % 2);
     } else {
@@ -508,7 +508,7 @@ u8 PhoneContactListUI_GetBackgroundIndex(PhoneContactListUI *ui, u8 slot) {
     }
 }
 
-void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 index, u8 selected, BOOL copyNow) {
+static void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 index, u8 selected, BOOL copyNow) {
     u8 colorIdx;
     u8 y;
     PhoneContactListUIColors *colorSpec;
@@ -531,7 +531,7 @@ void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 in
     }
 }
 
-void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui) {
+static void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI *ui) {
     if (ui->firstContactOnPage != 0) {
         Sprite_SetDrawFlag(ui->listScrollArrowSprites[0], TRUE);
     } else {
@@ -544,7 +544,7 @@ void PokegearContactListUI_UpdateScrollArrowSpritesVisibility(PhoneContactListUI
     }
 }
 
-BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 direction) {
+static BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 direction) {
     if (direction) {
         if (ui->firstContactOnPage < 1) {
             return FALSE;
@@ -569,7 +569,7 @@ BOOL PokegearContactListUI_StartSingleScroll(PhoneContactListUI *ui, u8 directio
     return TRUE;
 }
 
-BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui) {
+static BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui) {
     if (ui->scrollDirection) {
         ScrollWindow(ui->window, 1, 8, 0);
     } else {
@@ -583,7 +583,7 @@ BOOL PokegearContactListUI_ScrollStep(PhoneContactListUI *ui) {
     return FALSE;
 }
 
-BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction) {
+static BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction) {
     ui->pageScrollStep = 0;
     ui->isPageScroll = 1;
     ui->scrollDirection = direction;
@@ -595,7 +595,7 @@ BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direction) {
     return FALSE;
 }
 
-BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui) {
+static BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui) {
     if (!PokegearContactListUI_ScrollStep(ui)) {
         return FALSE;
     }
@@ -607,7 +607,7 @@ BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui) {
     return FALSE;
 }
 
-void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui) {
+static void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui) {
     BOOL result;
     if (ui->isPageScroll) {
         result = PhoneContactListUI_ScrollMany(ui);

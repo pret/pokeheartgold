@@ -14,7 +14,7 @@
 
 scr_seq_R47_000:
 	setvar VAR_UNK_40EB, 1
-	setflag FLAG_UNK_9C9
+	setflag FLAG_SYS_VISITED_ROUTE_47
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _004F

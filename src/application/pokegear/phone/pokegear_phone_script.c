@@ -218,7 +218,7 @@ void PhoneCall_InitMsgDataAndBufferNames(PokegearPhoneCallContext *ctx) {
 }
 
 void PhoneCall_AnimateFastForwardButtonOnTouch(PokegearPhoneCallContext *ctx) {
-    if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
+    if (TouchscreenHitbox_TouchNewIsIn(&gPokegearPhone_TextAdvanceButtonHitbox)) {
         Sprite_SetAnimActiveFlag(ctx->sprite, TRUE);
         Sprite_ResetAnimCtrlState(ctx->sprite);
     }
@@ -328,7 +328,7 @@ BOOL PhoneCall_WaitButtonBeforeHangup(PokegearPhoneCallContext *ctx) {
         return TRUE;
     }
 
-    if (TouchscreenHitbox_TouchNewIsIn(&ov101_021F8400)) {
+    if (TouchscreenHitbox_TouchNewIsIn(&gPokegearPhone_TextAdvanceButtonHitbox)) {
         PlaySE(SEQ_SE_DP_SELECT);
         ctx->state.menuInputState = MENU_INPUT_STATE_TOUCH;
         return TRUE;

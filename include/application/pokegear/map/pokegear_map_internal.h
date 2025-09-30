@@ -114,17 +114,12 @@ typedef struct MapFlypointParam {
     u16 mapIDforName;
     u16 mapIDforWarp;
     u8 flypoint;
-    u8 flyDestDrawID; // like flypoint but areas that aren't techinically cities are excluded (masked with 0xFF)
-    u8 x;
-    u8 y;
-    u8 iconTilemapX; // references into files/application/pokegear/map/pgmap_gra/pgmap_gra_00000011.NSCR
-    u8 iconTilemapY; // references into files/application/pokegear/map/pgmap_gra/pgmap_gra_00000011.NSCR
-    u8 width : 4;
-    u8 height : 4;
-    u8 iconWidth : 4;
-    u8 iconHeight : 4;
-    u8 iconXoffset : 4;
-    u8 iconYoffset : 4;
+    u8 flyDestDrawID;                    // like flypoint but areas that aren't techinically cities are excluded (masked with 0xFF)
+    u8 x, y;                             // points to top-left corner
+    u8 iconTilemapX, iconTilemapY;       // top-left corner of pgmap_gra_00000011.NSCR region with grayed-out variant
+    u8 width : 4, height : 4;            // hitbox on main map
+    u8 iconWidth : 4, iconHeight : 4;    // grayed-out variant dimensions
+    u8 iconXoffset : 4, iconYoffset : 4; // how far left and up from (x, y) to start drawing the grayed-out variant
 } MapFlypointParam;
 
 typedef struct PokegearMapMarkingWordObject {
@@ -133,6 +128,7 @@ typedef struct PokegearMapMarkingWordObject {
 } PokegearMapMarkingWordObject;
 
 typedef struct PokegearMapCursorState {
+    // These names are mostly best-guess placeholders
     fx32 x;
     fx32 y;
     fx32 xRatio;
@@ -153,26 +149,26 @@ typedef struct PokegearMapCursorState {
     s16 destY;
 } PokegearMapCursorState;
 
+// There is one of these for every location in the game.
 typedef struct PokegearMapLocationSpec {
     u16 mapId;
-    u8 x;
-    u8 y;
-    u16 width : 4;
-    u16 height : 4;
-    u16 objXoffset : 4;
-    u16 objYoffset : 4;
-    u8 flavorText;
-    u8 miniMapId;
-    u8 unk_8; // unused
-    u8 unk_9; // unused
-    u8 unk_A; // unused
-    u8 unk_B; // unused
+    u8 x, y;                            // Top-left corner of the hitbox on the map
+    u16 width : 4, height : 4;          // Defines the size of the hitbox
+    u16 objXoffset : 4, objYoffset : 4; // If you've set markings for a location, a little icon will appear here relative to (x, y)
+    u8 flavorText;                      // Message ID within msg_0273.gmm
+    u8 miniMapId;                       // Index of the minimap to draw in the HUD for cities. Layouts are in pgmap_gra_00000013.NSCR.
+    u8 filler_8[4];                     // unused
+
+    // When you hover over a location on the map, it gains a yellow accent.
+    // These parameters tell the game where to locate the accented version of each location
+    // within pgmap_gra_00000011.NSCR.
     u8 selectedIconTilemapX;
     u8 selectedIconTilemapY;
     u8 selectedIconTilemapWidth;
     u8 selectedIconTilemapHeight;
 } PokegearMapLocationSpec;
 
+// Yet another linked list implementation.
 typedef struct MapMarkingsHeapNode {
     MapMarkingsRAM mapMarkings;
     u8 index;
@@ -184,8 +180,7 @@ typedef struct MapMarkingsHeapNode {
 typedef struct PokegearMapLocation {
     const PokegearMapLocationSpec *spec;
     MapMarkingsHeapNode *markingsNode;
-    u16 x; // written but never read
-    u16 y; // written but never read
+    u16 x, y; // written but never read
 } PokegearMapLocation;
 
 typedef struct PokegearMapAppData {

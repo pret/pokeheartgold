@@ -133,10 +133,10 @@ void RadioShow_ThatTownThesePeople_Init(RadioShow *radioShow) {
     MI_CpuClear8(data->unlockedEpisodes, sizeof(data->unlockedEpisodes));
     varsFlags = Save_VarsFlags_Get(radioShow->saveData);
     data->episodeUnlockFlags[TTTP_COND_ALWAYS] = 1;
-    data->episodeUnlockFlags[TTTP_COND_GOLDENROD] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_CIANWOOD);
-    data->episodeUnlockFlags[TTTP_COND_MAHOGANY] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_MAHOGANY);
-    data->episodeUnlockFlags[TTTP_COND_BLACKTHORN] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_BLACKTHORN);
-    data->episodeUnlockFlags[TTTP_COND_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
+    data->episodeUnlockFlags[TTTP_COND_GOLDENROD] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_CIANWOOD);
+    data->episodeUnlockFlags[TTTP_COND_MAHOGANY] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_MAHOGANY);
+    data->episodeUnlockFlags[TTTP_COND_BLACKTHORN] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_BLACKTHORN);
+    data->episodeUnlockFlags[TTTP_COND_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_VERMILION);
     num = 0;
     for (i = 0; i < 20; ++i) {
         if (data->episodeUnlockFlags[sEpisodeUnlockFlags[i]]) {
