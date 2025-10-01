@@ -9,5 +9,6 @@ BOOL FieldInput_Process_Colosseum(FieldInput *a0, FieldSystem *fieldSystem);
 BOOL FieldInput_Process_UnionRoom(FieldInput *a0, FieldSystem *fieldSystem);
 BOOL FieldInput_Process_BattleTower(FieldInput *a0, FieldSystem *fieldSystem);
 void ov01_021E7F00(FieldSystem *fieldSystem, BOOL a1);
+u32 ov01_021E7F54(FieldSystem *fieldSystem);
 
 #endif

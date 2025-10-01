@@ -51,6 +51,6 @@ struct RegisteredKeyItemUseMessagePrintTaskData {
 void *GetItemFieldUseFunc(int funcType, u16 itemType);
 void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *dat);
 BOOL Leftover_CanPlantBerry(const struct ItemCheckUseData *data);
-int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot);
+int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u32 slot);
 
 #endif // POKEHEARTGOLD_FIELD_USE_ITEM_H
