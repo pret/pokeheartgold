@@ -582,7 +582,7 @@ void PokegearMap_UpdateFlyIconsDrawState(PokegearMapAppData *mapApp, u8 mode) {
         case 0:
             mapApp->objManager->objects[objIndex].pos.x = x;
             mapApp->objManager->objects[objIndex].pos.y = y;
-            if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypointParam->flypoint)) {
+            if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypointParam->visitedFlag)) {
                 Sprite_SetDrawFlag(mapApp->objManager->objects[objIndex].sprite, TRUE);
             } else {
                 Sprite_SetDrawFlag(mapApp->objManager->objects[objIndex].sprite, FALSE);
@@ -727,7 +727,7 @@ static int PokegearMap_GetFlypointAtCoord(PokegearMapAppData *mapApp, u16 x, u16
         if (x < flypoint->x || x >= flypoint->x + flypoint->width || y < flypoint->y || y >= flypoint->y + flypoint->height) {
             continue;
         }
-        if (!Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypoint->flypoint)) {
+        if (!Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypoint->visitedFlag)) {
             continue;
         }
         return i;
@@ -981,7 +981,7 @@ void PokegearMap_DrawMapView(PokegearMapAppData *mapApp) {
             continue;
         }
         // Expensive check. Has the player been there yet?
-        if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypoint->flypoint)) {
+        if (Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, flypoint->visitedFlag)) {
             continue;
         }
         // We're here, so replace the icon with its gray copy.

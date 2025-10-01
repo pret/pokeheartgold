@@ -4230,6 +4230,7 @@
 	.short \arg0
 	.endm
 
+	; Load msg_0191.gmm
 	.macro menu_init_std_gmm arg0, arg1, arg2, arg3, arg4
 	.short 749
 	.byte \arg0

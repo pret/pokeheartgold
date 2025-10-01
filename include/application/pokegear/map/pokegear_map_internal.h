@@ -113,7 +113,7 @@ typedef enum PokegearMapUIButtonState {
 typedef struct MapFlypointParam {
     u16 mapIDforName;
     u16 mapIDforWarp;
-    u8 flypoint;
+    u8 visitedFlag;
     u8 flyDestDrawID;                    // like flypoint but areas that aren't techinically cities are excluded (masked with 0xFF)
     u8 x, y;                             // points to top-left corner
     u8 iconTilemapX, iconTilemapY;       // top-left corner of pgmap_gra_00000011.NSCR region with grayed-out variant

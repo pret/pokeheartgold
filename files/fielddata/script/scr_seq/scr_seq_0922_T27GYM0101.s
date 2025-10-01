@@ -116,7 +116,7 @@ scr_seq_T27GYM0101_001:
 	give_badge BADGE_FOG
 	addvar VAR_MIDGAME_BADGES, 1
 	add_special_game_stat SCORE_EVENT_BADGE_GET
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	buffer_players_name 0
 	npc_msg msg_0614_T27GYM0101_00002
 	play_fanfare SEQ_ME_BADGE

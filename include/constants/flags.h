@@ -151,7 +151,7 @@
 #define FLAG_UNK_084                                    0x84
 #define FLAG_GOT_TM45_FROM_WHITNEY                      0x85
 #define FLAG_UNK_086                                    0x86
-#define FLAG_UNK_087                                    0x87
+#define FLAG_RETURNED_LOST_ITEM                         0x87
 #define FLAG_UNK_088                                    0x88
 #define FLAG_UNK_089                                    0x89
 #define FLAG_GOT_RADIO_CARD                             0x8A
@@ -1713,7 +1713,7 @@
 #define FLAG_SYS_SAFARI                                   0x967
 #define FLAG_UNK_968                                      0x968
 #define FLAG_SYS_ROCKET_COSTUME                           0x969
-#define FLAG_UNK_96A                                      0x96A
+#define FLAG_HEALED_AMPHAROS                              0x96A
 #define FLAG_UNK_96B                                      0x96B
 #define FLAG_UNK_96C                                      0x96C
 #define FLAG_UNK_96D                                      0x96D
@@ -1754,25 +1754,25 @@
 #define FLAG_UNK_990                                      0x990
 #define FLAG_UNK_991                                      0x991
 #define FLAG_UNK_992                                      0x992
-#define FLAG_BUG_CONTEST_ACTIVE                           0x993
+#define FLAG_SYS_BUG_CONTEST_ACTIVE                       0x993
 #define FLAG_UNK_994                                      0x994
 #define FLAG_UNK_995                                      0x995
 #define FLAG_UNK_996                                      0x996
 #define FLAG_UNK_997                                      0x997
-#define FLAG_UNK_998                                      0x998
+#define FLAG_SYS_QUEUE_IRWIN_CALL                         0x998
 #define FLAG_UNK_999                                      0x999
 #define FLAG_UNK_99A                                      0x99A
-#define FLAG_ROCKET_TAKEOVER_ACTIVE                       0x99B
+#define FLAG_SYS_ROCKET_TAKEOVER_ACTIVE                   0x99B
 #define FLAG_UNK_99C                                      0x99C
 #define FLAG_UNK_99D                                      0x99D
 #define FLAG_UNK_99E                                      0x99E
-#define FLAG_UNK_99F                                      0x99F
-#define FLAG_UNK_9A0                                      0x9A0
-#define FLAG_UNK_9A1                                      0x9A1
-#define FLAG_UNK_9A2                                      0x9A2
-#define FLAG_UNK_9A3                                      0x9A3
-#define FLAG_UNK_9A4                                      0x9A4
-#define FLAG_UNK_9A5                                      0x9A5
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_AMPHAROS             0x99F
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_RED_GYARADOS         0x9A0
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_LOST_ITEM_RETURN     0x9A1
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_SNORLAX              0x9A2
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_MARSH_BADGE          0x9A3
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_16_BADGES            0x9A4
+#define FLAG_SYS_GOT_IRWIN_CALL_POST_LANCE                0x9A5
 #define FLAG_SYS_SOLVED_LT_SURGE_GYM                      0x9A6
 #define FLAG_UNK_9A7                                      0x9A7
 #define FLAG_UNK_9A8                                      0x9A8
@@ -1783,7 +1783,7 @@
 #define FLAG_UNK_9AD                                      0x9AD
 #define FLAG_UNK_9AE                                      0x9AE
 #define FLAG_UNK_9AF                                      0x9AF
-#define FLAG_SYS_VISITED_PALLET                           0x9B0 // TODO define wrt FLYPOINT consts
+#define FLAG_SYS_VISITED_PALLET                           0x9B0 // TODO define wrt VISITED_FLAG consts
 #define FLAG_SYS_VISITED_VIRIDIAN                         0x9B1
 #define FLAG_SYS_VISITED_PEWTER                           0x9B2
 #define FLAG_SYS_VISITED_CERULEAN                         0x9B3

@@ -13,7 +13,7 @@
 
 scr_seq_P01R0104_003:
 	goto_if_set FLAG_UNK_168, _0021
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 _0021:
 	scrcmd_804 2
 	setflag FLAG_UNK_168

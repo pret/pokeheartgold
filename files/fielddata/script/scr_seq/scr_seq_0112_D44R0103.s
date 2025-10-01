@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D44R0103.h"
 #include "msgdata/msg/msg_0130_D44R0103.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -59,9 +60,9 @@ _00A0:
 	npc_msg msg_0130_D44R0103_00001
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 280, 255, 0
-	menu_item_add 281, 255, 1
-	menu_item_add 282, 255, 0
+	menu_item_add msg_0191_00280, 255, 0
+	menu_item_add msg_0191_00281, 255, 1
+	menu_item_add msg_0191_00282, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -72,9 +73,9 @@ _00DF:
 	npc_msg msg_0130_D44R0103_00002
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 283, 255, 0
-	menu_item_add 284, 255, 0
-	menu_item_add 285, 255, 1
+	menu_item_add msg_0191_00283, 255, 0
+	menu_item_add msg_0191_00284, 255, 0
+	menu_item_add msg_0191_00285, 255, 1
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -85,9 +86,9 @@ _011E:
 	npc_msg msg_0130_D44R0103_00003
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 286, 255, 1
-	menu_item_add 287, 255, 0
-	menu_item_add 288, 255, 0
+	menu_item_add msg_0191_00286, 255, 1
+	menu_item_add msg_0191_00287, 255, 0
+	menu_item_add msg_0191_00288, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -98,9 +99,9 @@ _015D:
 	npc_msg msg_0130_D44R0103_00004
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 289, 255, 0
-	menu_item_add 290, 255, 1
-	menu_item_add 291, 255, 0
+	menu_item_add msg_0191_00289, 255, 0
+	menu_item_add msg_0191_00290, 255, 1
+	menu_item_add msg_0191_00291, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -111,9 +112,9 @@ _019C:
 	npc_msg msg_0130_D44R0103_00005
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 292, 255, 1
-	menu_item_add 293, 255, 0
-	menu_item_add 294, 255, 0
+	menu_item_add msg_0191_00292, 255, 1
+	menu_item_add msg_0191_00293, 255, 0
+	menu_item_add msg_0191_00294, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -180,7 +181,7 @@ _02D6:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	setflag FLAG_UNK_0EA
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	setvar VAR_UNK_40C4, 1

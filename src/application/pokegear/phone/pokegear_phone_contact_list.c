@@ -194,12 +194,12 @@ int PokegearPhone_HandleInput_MovingContacts(PokegearPhoneAppData *phoneApp) {
     int result;
 
     isTouch = 0;
-    result = PhoneContactListUI_HandleTouchInput2(&phoneApp->contactListUI, &isTouch);
+    result = PhoneContactListUI_HandleTouchInput_MovingContacts(&phoneApp->contactListUI, &isTouch);
     if (isTouch == 0) {
         if (phoneApp->menuInputStateBak == 0) {
             PokegearApp_HandleInputModeChangeToButtons(phoneApp->pokegear);
         }
-        result = PhoneContactListUI_HandleKeyInput2(&phoneApp->contactListUI);
+        result = PhoneContactListUI_HandleKeyInput_MovingContacts(&phoneApp->contactListUI);
     } else {
         phoneApp->pokegear->menuInputState = MENU_INPUT_STATE_TOUCH;
     }

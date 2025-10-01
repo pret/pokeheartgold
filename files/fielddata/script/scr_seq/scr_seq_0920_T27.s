@@ -333,7 +333,7 @@ scr_seq_T27_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_96A, _0417
+	goto_if_set FLAG_HEALED_AMPHAROS, _0417
 	npc_msg msg_0612_T27_00008
 	goto _041A
 

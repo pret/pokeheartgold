@@ -8,7 +8,7 @@
 #include "sys_flags.h"
 #include "sys_vars.h"
 
-u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge);
+u16 PhoneCall_Irwin_GetQueuedScriptID(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge);
 
 u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     u8 badgeCount;
@@ -25,7 +25,7 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     }
     badgeCount = PlayerProfile_CountBadges(ctx->playerProfile);
     hasPlainBadge = PlayerProfile_TestBadgeFlag(ctx->playerProfile, BADGE_PLAIN);
-    scriptID = ov101_021F42E4(ctx, state, badgeCount, hasPlainBadge);
+    scriptID = PhoneCall_Irwin_GetQueuedScriptID(ctx, state, badgeCount, hasPlainBadge);
     if (scriptID != 0xFFFF) {
         return scriptID;
     } else if (!hasPlainBadge) {
@@ -37,35 +37,35 @@ u16 PhoneCall_GetScriptId_Irwin(PokegearPhoneCallContext *ctx, PokegearPhoneCall
     }
 }
 
-u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge) {
-    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_998)) {
+u16 PhoneCall_Irwin_GetQueuedScriptID(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state, u8 badgeCount, u8 hasPlainBadge) {
+    if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_QUEUE_IRWIN_CALL)) {
         return 0xFFFF;
     }
-    Save_VarsFlags_ClearFlagInArray(ctx->saveVarsFlags, FLAG_UNK_998);
+    Save_VarsFlags_ClearFlagInArray(ctx->saveVarsFlags, FLAG_SYS_QUEUE_IRWIN_CALL);
     if (badgeCount >= 16) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A4)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A4);
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_16_BADGES)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_16_BADGES);
             return PHONE_SCRIPT_168;
         } else {
             return 0xFFFF;
         }
     } else if (PlayerProfile_TestBadgeFlag(ctx->playerProfile, BADGE_MARSH)) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A3)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A3);
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_MARSH_BADGE)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_MARSH_BADGE);
             return PHONE_SCRIPT_167;
         } else {
             return 0xFFFF;
         }
     } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SNORLAX_MEET)) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A2)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A2);
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_SNORLAX)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_SNORLAX);
             return PHONE_SCRIPT_166;
         } else {
             return 0xFFFF;
         }
-    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_087)) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A1)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A1);
+    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_RETURNED_LOST_ITEM)) {
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_LOST_ITEM_RETURN)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_LOST_ITEM_RETURN);
             return PHONE_SCRIPT_165;
         } else {
             return 0xFFFF;
@@ -73,8 +73,8 @@ u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state,
     } else if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_VERMILION)) {
         return PHONE_SCRIPT_164;
     } else if (CheckGameClearFlag(ctx->saveVarsFlags)) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A5)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A5);
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_LANCE)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_LANCE);
             return PHONE_SCRIPT_163;
         } else {
             return 0xFFFF;
@@ -84,15 +84,15 @@ u16 ov101_021F42E4(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state,
     } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_BEAT_RADIO_TOWER_ROCKETS)) {
         return PHONE_SCRIPT_161;
     } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_RED_GYARADOS_MEET)) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A0)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_9A0);
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_RED_GYARADOS)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_RED_GYARADOS);
             return PHONE_SCRIPT_160;
         } else {
             return 0xFFFF;
         }
-    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_96A)) {
-        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_99F)) {
-            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_UNK_99F);
+    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_HEALED_AMPHAROS)) {
+        if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_AMPHAROS)) {
+            Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_AMPHAROS);
             return PHONE_SCRIPT_159;
         } else {
             return 0xFFFF;

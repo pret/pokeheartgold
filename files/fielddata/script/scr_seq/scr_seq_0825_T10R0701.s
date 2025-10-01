@@ -110,7 +110,7 @@ _01A8:
 
 _01B4:
 	goto_if_set FLAG_GAME_CLEAR, _01C3
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 _01C3:
 	clearflag FLAG_UNK_25F
 	return

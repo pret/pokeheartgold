@@ -434,7 +434,7 @@ _0436:
 	releaseall
 	setvar VAR_UNK_40AC, 9
 	setvar VAR_UNK_40A9, 4
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	end
 
 _0620:

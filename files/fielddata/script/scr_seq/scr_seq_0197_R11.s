@@ -54,7 +54,7 @@ _006A:
 	get_static_encounter_outcome VAR_TEMP_x4005
 	compare VAR_TEMP_x4005, 4
 	call_if_eq _00BA
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	setflag FLAG_SNORLAX_MEET
 	releaseall
 	end

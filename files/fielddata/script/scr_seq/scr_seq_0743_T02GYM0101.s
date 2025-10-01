@@ -54,7 +54,7 @@ scr_seq_T02GYM0101_000:
 	goto_if_eq _0147
 	give_badge BADGE_EARTH
 	addvar VAR_UNK_4135, 1
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	add_special_game_stat SCORE_EVENT_BADGE_GET
 	settrainerflag TRAINER_ACE_TRAINER_M_ARABELLA
 	settrainerflag TRAINER_ACE_TRAINER_F_SALMA

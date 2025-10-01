@@ -172,7 +172,7 @@ _0224:
 	buffer_players_name 0
 	npc_msg msg_0246_00014
 	npc_msg msg_0246_00015
-	setflag FLAG_BUG_CONTEST_ACTIVE
+	setflag FLAG_SYS_BUG_CONTEST_ACTIVE
 	setflag FLAG_UNK_24E
 	setvar VAR_UNK_4118, 1
 	setvar VAR_UNK_40F7, 1
@@ -364,7 +364,7 @@ _04B5:
 	scrcmd_103
 	call _04FD
 	setflag FLAG_DAILY_DID_BUG_CONTEST
-	clearflag FLAG_BUG_CONTEST_ACTIVE
+	clearflag FLAG_SYS_BUG_CONTEST_ACTIVE
 	clearflag FLAG_UNK_24E
 	clearflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
 	bug_contest_action 1, 0

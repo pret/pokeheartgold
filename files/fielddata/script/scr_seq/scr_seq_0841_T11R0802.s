@@ -81,8 +81,8 @@ _00E9:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_087
-	setflag FLAG_UNK_998
+	setflag FLAG_RETURNED_LOST_ITEM
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	setvar VAR_UNK_40FF, 2
 	end
 

@@ -13,19 +13,19 @@ struct MusicOverride {
 };
 
 static const struct MusicOverride sMusicOverrideMap[] = {
-    { MAP_NATIONAL_PARK,                                FLAG_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE_D5 },
-    { MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE, FLAG_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
-    { MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE,             FLAG_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
-    { MAP_CERULEAN_GYM,                                 FLAG_UNK_994,                SEQ_GS_EYE_ROCKET   },
-    { MAP_ROUTE_24,                                     FLAG_UNK_995,                SEQ_GS_EYE_ROCKET   },
-    { MAP_PAL_PARK,                                     FLAG_UNK_999,                SEQ_GS_SAFARI_FIELD },
-    { MAP_GOLDENROD_RADIO_TOWER_1F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_2F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_3F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_4F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_5F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK,       FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_ELEVATOR,               FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_NATIONAL_PARK,                                FLAG_SYS_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE_D5 },
+    { MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE, FLAG_SYS_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
+    { MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE,             FLAG_SYS_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
+    { MAP_CERULEAN_GYM,                                 FLAG_UNK_994,                    SEQ_GS_EYE_ROCKET   },
+    { MAP_ROUTE_24,                                     FLAG_UNK_995,                    SEQ_GS_EYE_ROCKET   },
+    { MAP_PAL_PARK,                                     FLAG_UNK_999,                    SEQ_GS_SAFARI_FIELD },
+    { MAP_GOLDENROD_RADIO_TOWER_1F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_2F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_3F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_4F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_5F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK,       FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_ELEVATOR,               FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
 };
 
 void SetScriptFlag(SaveVarsFlags *state, u16 flag_id) {
@@ -288,7 +288,7 @@ BOOL CheckGotMenuIconI(SaveVarsFlags *state, s32 icon_idx) {
 }
 
 BOOL CheckFlag96A(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_96A);
+    return CheckScriptFlag(state, FLAG_HEALED_AMPHAROS);
 }
 
 BOOL sub_020669B4(SaveVarsFlags *state, u32 a1) {

@@ -18,7 +18,7 @@ static BOOL PhoneContactListUI_StartPageScroll(PhoneContactListUI *ui, u8 direct
 static BOOL PhoneContactListUI_ScrollMany(PhoneContactListUI *ui);
 static void PhoneContactListUI_HandleScrollInProgress(PhoneContactListUI *ui);
 
-static const TouchscreenHitbox ov101_021F8634[] = {
+static const TouchscreenHitbox sTouchscreenHitboxes_SelectContact[] = {
     { .rect = { 0x08, 0x20, 0x08, 0xE0 } },
     { .rect = { 0x20, 0x38, 0x08, 0xE0 } },
     { .rect = { 0x38, 0x50, 0x08, 0xE0 } },
@@ -30,7 +30,7 @@ static const TouchscreenHitbox ov101_021F8634[] = {
     { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
-static const TouchscreenHitbox ov101_021F8658[] = {
+static const TouchscreenHitbox sTouchscreenHitboxes_MoveContact[] = {
     { .rect = { 0x08, 0x18, 0x04, 0x24 } },
     { .rect = { 0x20, 0x30, 0x04, 0x24 } },
     { .rect = { 0x38, 0x48, 0x04, 0x24 } },
@@ -118,7 +118,7 @@ void PokegearPhone_ContactLinkedListToSlotsArray(PokegearPhoneAppData *phoneApp)
 
 void PokegearPhone_SetContactListUIAndDraw(PokegearPhoneAppData *phoneApp, PhoneContactListUI *ui, u8 firstContactOnPage, u8 cursorPos) {
     int i;
-    int r4;
+    int index;
 
     if (firstContactOnPage >= ui->numContacts) {
         firstContactOnPage = 0;
@@ -128,13 +128,13 @@ void PokegearPhone_SetContactListUIAndDraw(PokegearPhoneAppData *phoneApp, Phone
     ui->firstContactOnPage = firstContactOnPage;
     ui->selectedIndex = 0xFF;
     // Check if we are drawing fewer than 6 contacts
-    for (i = 0, r4 = firstContactOnPage; i < 6; ++r4, ++i) {
-        if (r4 >= ui->numContacts) {
-            ui->lastContactIndex = r4 - 1;
+    for (i = 0, index = firstContactOnPage; i < 6; ++index, ++i) {
+        if (index >= ui->numContacts) {
+            ui->lastContactIndex = index - 1;
             ui->listBottomIndex = i;
             break;
         }
-        PhoneContactListUI_PrintNameAndClass(ui, i + 1, r4, 0, FALSE);
+        PhoneContactListUI_PrintNameAndClass(ui, i + 1, index, 0, FALSE);
     }
     if (ui->listBottomIndex == 0) {
         ui->listBottomIndex = i;
@@ -287,7 +287,7 @@ int PhoneContactListUI_HandleKeyInput(PhoneContactListUI *ui) {
     return -1;
 }
 
-int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *ui) {
+int PhoneContactListUI_HandleKeyInput_MovingContacts(PhoneContactListUI *ui) {
     u8 contactIndex;
 
     if (ui->isScrolling) {
@@ -363,7 +363,7 @@ int PhoneContactListUI_HandleTouchInput(PhoneContactListUI *ui) {
         PhoneContactListUI_HandleScrollInProgress(ui);
         return -1;
     }
-    result = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F8634);
+    result = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitboxes_SelectContact);
     if (result == -1) {
         return -1;
     }
@@ -389,13 +389,13 @@ int PhoneContactListUI_HandleTouchInput(PhoneContactListUI *ui) {
     return -1;
 }
 
-int PhoneContactListUI_HandleTouchInput2(PhoneContactListUI *ui, int *gotTouch) {
+int PhoneContactListUI_HandleTouchInput_MovingContacts(PhoneContactListUI *ui, int *gotTouch) {
     int result;
     if (ui->isScrolling) {
         PhoneContactListUI_HandleScrollInProgress(ui);
         return -1;
     }
-    result = TouchscreenHitbox_FindRectAtTouchNew(ov101_021F8658);
+    result = TouchscreenHitbox_FindRectAtTouchNew(sTouchscreenHitboxes_MoveContact);
     if (result == -1) {
         return -1;
     }

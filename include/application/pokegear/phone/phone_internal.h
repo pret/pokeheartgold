@@ -343,9 +343,9 @@ void PhoneContactListUI_ShowMainListCursorSprites(PhoneContactListUI *ui, BOOL a
 void PhoneContactListUI_UpdateMoveContactArrowSprites(PhoneContactListUI *ui, int cursorPos, BOOL show);
 void PhoneContactListUI_SetMovingContactsState(PhoneContactListUI *ui, BOOL moving);
 int PhoneContactListUI_HandleKeyInput(PhoneContactListUI *ui);
-int PhoneContactListUI_HandleKeyInput2(PhoneContactListUI *ui);
+int PhoneContactListUI_HandleKeyInput_MovingContacts(PhoneContactListUI *ui);
 int PhoneContactListUI_HandleTouchInput(PhoneContactListUI *ui);
-int PhoneContactListUI_HandleTouchInput2(PhoneContactListUI *ui, int *gotTouch);
+int PhoneContactListUI_HandleTouchInput_MovingContacts(PhoneContactListUI *ui, int *gotTouch);
 int PhoneContactListUI_GetCursorPos(PhoneContactListUI *ui);
 void PhoneContactListUI_DeselectContact(PhoneContactListUI *ui);
 void PokegearPhone_InitContactsLinkedList(PokegearPhoneAppData *phoneApp);
@@ -369,7 +369,6 @@ void PhoneCall_TouchscreenListMenu_Create(PokegearPhoneCallContext *ctx, u8 menu
 int PhoneCall_TouchscreenListMenu_HandleInput(PokegearPhoneCallContext *ctx);
 void PhoneCall_TouchscreenListMenu_Destroy(PokegearPhoneCallContext *ctx);
 const PhoneCallScriptDef *PhoneCall_GetScriptDefPtrByID(int scriptID);
-void ov101_021F2384(PokegearPhoneCallContext *ctx, BOOL undim);
 BOOL PhoneCall_WaitButtonBeforeHangup(PokegearPhoneCallContext *ctx);
 void PhoneCall_NoSignalMessage(PokegearPhoneCallContext *ctx, u8 kind, u8 stage);
 BOOL PhoneCall_InitialRing(PokegearPhoneCallContext *ctx);

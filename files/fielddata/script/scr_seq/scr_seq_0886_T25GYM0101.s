@@ -126,7 +126,7 @@ _01A0:
 	give_badge BADGE_PLAIN
 	setvar VAR_UNK_410A, 2
 	clearflag FLAG_UNK_084
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	npc_msg msg_0582_T25GYM0101_00005
 _01C4:
 	goto_if_no_item_space ITEM_TM45, 1, _01F8
