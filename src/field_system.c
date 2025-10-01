@@ -231,7 +231,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
         break;
     case 2:
         if (movementAllowed && FieldInput_Process_UnionRoom(&fieldInput, fieldSystem) != TRUE) {
-            PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->unk2C, -1, fieldInput.unk6, fieldInput.unk8, 0);
+            PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->unk2C, -1, fieldInput.newKeys, fieldInput.heldKeys, 0);
         }
         break;
     case 4:
@@ -250,7 +250,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
             if (sub_0203E324()) {
                 movementAllowed = ov35_02259DB8();
             }
-            PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->unk2C, -1, fieldInput.unk6, fieldInput.unk8, movementAllowed);
+            PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->unk2C, -1, fieldInput.newKeys, fieldInput.heldKeys, movementAllowed);
         }
         break;
     default:
@@ -273,7 +273,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
                 if (sub_0203E324()) {
                     flag = ov35_02259DB8();
                 }
-                PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->unk2C, -1, fieldInput.unk6, fieldInput.unk8, flag);
+                PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->unk2C, -1, fieldInput.newKeys, fieldInput.heldKeys, flag);
             }
         }
         break;

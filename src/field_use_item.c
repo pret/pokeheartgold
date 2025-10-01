@@ -752,7 +752,7 @@ static BOOL KeyItemIdSpawnsSubprocess(FieldSystem *fieldSystem, u16 itemId) {
     return TRUE;
 }
 
-int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u8 slot) {
+int UseRegisteredItemButtonInField(FieldSystem *fieldSystem, u32 slot) {
     struct ItemFieldUseData *data;
     u16 itemId;
     u16 funcType;

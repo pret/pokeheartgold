@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_GLOBAL_FIELDMAP_H
 
 // Facing direction
+#define DIR_NONE  -1
 #define DIR_NORTH 0
 #define DIR_SOUTH 1
 #define DIR_WEST  2

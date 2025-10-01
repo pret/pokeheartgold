@@ -178,10 +178,27 @@ struct FieldSystem {
 }; // size: 0x128
 
 typedef struct FieldInput {
-    u8 unk0[6];
-    u16 unk6;
-    u16 unk8;
-    u16 unkA;
+    u16 wantToInteract : 1;
+    u16 unk0_1 : 1;
+    u16 wantToOpenMenu : 1;
+    u16 wantedRegisteredItemSlot : 2;
+    u16 unk0_5 : 1; // related to movement
+    u16 unk0_6 : 1; // related to movement
+    u16 unk0_7 : 1;
+    u16 unk0_8 : 1;
+    u16 wantToReloadTouchscreenMenu : 1;
+    u16 unk0_10 : 1;
+    u16 unk0_11 : 1;
+    u16 unk0_12 : 1;
+    u16 unk0_13 : 1;
+    u16 unk0_14 : 1;
+    u16 unk0_15 : 1;
+    u8 unk2[2];
+    u8 nextMovingDirectionMaybe;
+    s8 currentMovingDirectionMaybe;
+    u16 newKeys;
+    u16 heldKeys;
+    u16 unkA; // is this padding?
 } FieldInput;
 
 BOOL Field_Continue_AppInit(OverlayManager *man, int *unused);
