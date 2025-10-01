@@ -521,56 +521,56 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
     [PHONE_SCRIPT_069] = {
      .msgIds = { msg_0666_00003, msg_0666_00003 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_989,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_1,
      },
     [PHONE_SCRIPT_070] = {
      .msgIds = { msg_0666_00004, msg_0666_00004 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_98A,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_2,
      },
     [PHONE_SCRIPT_071] = {
      .msgIds = { msg_0666_00005, msg_0666_00005 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_98B,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_3,
      },
     [PHONE_SCRIPT_072] = {
      .msgIds = { msg_0666_00006, msg_0666_00006 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_98C,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_4,
      },
     [PHONE_SCRIPT_073] = {
      .msgIds = { msg_0666_00007, msg_0666_00007 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_98D,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_5,
      },
     [PHONE_SCRIPT_074] = {
      .msgIds = { msg_0666_00008, msg_0666_00008 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_98E,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_6,
      },
     [PHONE_SCRIPT_075] = {
      .msgIds = { msg_0666_00009, msg_0666_00009 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_98F,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_7,
      },
     [PHONE_SCRIPT_076] = {
      .msgIds = { msg_0666_00010, msg_0666_00010 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_990,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_8,
      },
     [PHONE_SCRIPT_077] = {
      .msgIds = { msg_0666_00011, msg_0666_00011 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_991,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_OAK_ACKNOWLEDGED_DEX_PROGRESS_9,
      },
     [PHONE_SCRIPT_078] = {
      .msgIds = { msg_0666_00022, msg_0666_00023 },
@@ -621,7 +621,7 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
     [PHONE_SCRIPT_085] = {
      .msgIds = { msg_0642_00003, msg_0642_00003 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
+     .param0 = FLAG_ACTION_SET,
      .param1 = FLAG_UNK_984,
      },
 
@@ -673,7 +673,7 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
     [PHONE_SCRIPT_093] = {
      .msgIds = { msg_0665_00010, msg_0665_00011 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
+     .param0 = FLAG_ACTION_SET,
      .param1 = FLAG_UNK_985,
      },
 
@@ -687,8 +687,8 @@ const PhoneCallScriptDef gPhoneCallScriptDef[] = {
     [PHONE_SCRIPT_095] = {
      .msgIds = { msg_0661_00012, msg_0661_00012 },
      .scriptType = PHONESCRIPTTYPE_FLAG,
-     .param0 = 1,
-     .param1 = FLAG_UNK_992,
+     .param0 = FLAG_ACTION_SET,
+     .param1 = FLAG_SYS_DAYCARE_MAN_GOT_FIRST_EGG,
      },
     [PHONE_SCRIPT_096] = {
      .msgIds = { msg_0661_00013, msg_0661_00013 },

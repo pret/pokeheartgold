@@ -326,7 +326,7 @@ BOOL sub_0209316C(FieldSystem *sys) {
     if (SavePokegear_IsNumberRegistered(SaveData_Pokegear_Get(sys->saveData), PHONE_CONTACT_DAY_C_MAN) == 0xff) {
         return FALSE;
     }
-    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_992) && !Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_99E)) {
+    if (Save_VarsFlags_CheckFlagInArray(state, FLAG_SYS_DAYCARE_MAN_GOT_FIRST_EGG) && !Save_VarsFlags_CheckFlagInArray(state, FLAG_UNK_99E)) {
         return FALSE;
     }
     sub_02092E14(FieldSystem_GetGearPhoneRingManager(sys), 5, 1);

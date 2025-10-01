@@ -12,7 +12,7 @@ u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneCallContext *ctx, PokegearPhon
 
     state->scriptType = 0;
     if (state->isIncomingCall) {
-        if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_UNK_992)) {
+        if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_DAYCARE_MAN_GOT_FIRST_EGG)) {
             return PHONE_SCRIPT_096;
         } else {
             return PHONE_SCRIPT_095;
