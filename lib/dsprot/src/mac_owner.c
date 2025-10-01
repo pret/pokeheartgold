@@ -21,7 +21,6 @@ static const u8 bad_mac_addr[MAC_ADDR_SIZE] = {
 
 u32 MACOwner_IsBad(void) {
     s32 i;
-    u32 ret;
 
     u8 mac_addr[MAC_ADDR_SIZE];
     OS_GetMacAddress(&mac_addr[0]);
@@ -33,6 +32,7 @@ u32 MACOwner_IsBad(void) {
 
     OSOwnerInfo owner_info;
     OS_GetOwnerInfo(&owner_info);
+    u32 ret;
     if (i == MAC_ADDR_SIZE && owner_info.birthday.month == 1 && owner_info.birthday.day == 1 && owner_info.nickNameLength == 0) {
         ret = 1;
         goto EXIT;
@@ -53,7 +53,6 @@ EXIT:
 
 u32 MACOwner_IsGood(void) {
     s32 i;
-    u32 ret;
 
     u8 mac_addr[MAC_ADDR_SIZE];
     OS_GetMacAddress(&mac_addr[0]);
@@ -65,6 +64,7 @@ u32 MACOwner_IsGood(void) {
 
     OSOwnerInfo owner_info;
     OS_GetOwnerInfo(&owner_info);
+    u32 ret;
     if (i == MAC_ADDR_SIZE && owner_info.birthday.month == 1 && owner_info.birthday.day == 1 && owner_info.nickNameLength == 0) {
         ret = 0;
         goto EXIT;
