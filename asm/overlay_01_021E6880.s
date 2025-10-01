@@ -2954,9 +2954,6 @@ _021E7FD4:
 
 	.rodata
 
-	.public ov01_02206378
-ov01_02206378:
-	.word ov01_021E5924, ov01_021E5BE4, ov01_021E5C24, 0xFFFFFFFF
 ov01_02206388:
 	.byte 0x60, 0x40, 0x20, 0x00
 
