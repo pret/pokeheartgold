@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T24.h"
 #include "msgdata/msg/msg_0572_T24.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -297,7 +298,7 @@ scr_seq_T24_007:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -307,7 +308,7 @@ scr_seq_T24_007:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0481
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00007
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -344,7 +345,7 @@ _0449:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00008
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -357,7 +358,7 @@ _047B:
 
 _0481:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00009
 	wait_button_or_walk_away
 	closemsg
 	releaseall

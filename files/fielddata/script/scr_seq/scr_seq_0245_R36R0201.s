@@ -14,34 +14,34 @@ scr_seq_R36R0201_000:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_UNK_4118, 1
 	goto_if_ne _002D
-	clearflag FLAG_UNK_1C4
-	setflag FLAG_UNK_1C3
+	clearflag FLAG_HIDE_ROUTE_36_ARTHUR
+	setflag FLAG_HIDE_ROUTE_37_SUNNY
 	goto _0086
 
 _002D:
 	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0048
-	clearflag FLAG_UNK_1C4
-	setflag FLAG_UNK_1C3
+	clearflag FLAG_HIDE_ROUTE_36_ARTHUR
+	setflag FLAG_HIDE_ROUTE_37_SUNNY
 	goto _0086
 
 _0048:
 	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0063
-	clearflag FLAG_UNK_1C4
-	setflag FLAG_UNK_1C3
+	clearflag FLAG_HIDE_ROUTE_36_ARTHUR
+	setflag FLAG_HIDE_ROUTE_37_SUNNY
 	goto _0086
 
 _0063:
 	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _007E
-	clearflag FLAG_UNK_1C4
-	setflag FLAG_UNK_1C3
+	clearflag FLAG_HIDE_ROUTE_36_ARTHUR
+	setflag FLAG_HIDE_ROUTE_37_SUNNY
 	goto _0086
 
 _007E:
-	clearflag FLAG_UNK_1C3
-	setflag FLAG_UNK_1C4
+	clearflag FLAG_HIDE_ROUTE_37_SUNNY
+	setflag FLAG_HIDE_ROUTE_36_ARTHUR
 _0086:
 	end
 
@@ -106,7 +106,7 @@ scr_seq_R36R0201_001:
 	callstd std_bug_contest_guard_start
 	compare VAR_UNK_4118, 1
 	goto_if_ne _0231
-	goto_if_set FLAG_UNK_1C4, _01BA
+	goto_if_set FLAG_HIDE_ROUTE_36_ARTHUR, _01BA
 	get_player_facing VAR_SPECIAL_RESULT
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement

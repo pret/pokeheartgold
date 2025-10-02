@@ -16,11 +16,11 @@ scr_seq_R37_000:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _002D
-	clearflag FLAG_UNK_1C3
+	clearflag FLAG_HIDE_ROUTE_37_SUNNY
 	goto _0031
 
 _002D:
-	setflag FLAG_UNK_1C3
+	setflag FLAG_HIDE_ROUTE_37_SUNNY
 _0031:
 	end
 

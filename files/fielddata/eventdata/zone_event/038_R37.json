@@ -75,7 +75,7 @@
       "spriteId": "SPRITE_GSBABYBOY1",
       "movement": 2,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1C3",
+      "eventFlag": "FLAG_HIDE_ROUTE_37_SUNNY",
       "scriptId": "_EV_scr_seq_R37_001 + 1",
       "facingDirection": 1,
       "param0": 0,

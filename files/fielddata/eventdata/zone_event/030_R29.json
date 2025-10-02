@@ -202,7 +202,7 @@
       "spriteId": "SPRITE_GSWOMAN2",
       "movement": 2,
       "type": 0,
-      "eventFlag": "FLAG_UNK_207",
+      "eventFlag": "FLAG_HIDE_ROUTE_29_TUSCANY",
       "scriptId": "_EV_scr_seq_R29_003 + 1",
       "facingDirection": 1,
       "param0": 0,

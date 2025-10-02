@@ -22,18 +22,18 @@ scr_seq_R29_000:
 	check_badge BADGE_ZEPHYR, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 1
 	goto_if_eq _0043
-	setflag FLAG_UNK_207
+	setflag FLAG_HIDE_ROUTE_29_TUSCANY
 	end
 
 _0043:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _005E
-	clearflag FLAG_UNK_207
+	clearflag FLAG_HIDE_ROUTE_29_TUSCANY
 	goto _0062
 
 _005E:
-	setflag FLAG_UNK_207
+	setflag FLAG_HIDE_ROUTE_29_TUSCANY
 _0062:
 	end
 

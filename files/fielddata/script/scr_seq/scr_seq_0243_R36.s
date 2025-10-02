@@ -24,11 +24,11 @@ scr_seq_R36_002:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0049
-	clearflag FLAG_UNK_1C4
+	clearflag FLAG_HIDE_ROUTE_36_ARTHUR
 	goto _004D
 
 _0049:
-	setflag FLAG_UNK_1C4
+	setflag FLAG_HIDE_ROUTE_36_ARTHUR
 _004D:
 	end
 
