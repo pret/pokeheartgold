@@ -1525,7 +1525,7 @@ _1480:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _154E
 	scrcmd_831 VAR_SPECIAL_x8004
-	scrcmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
+	has_space_for_accesssory VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _155B
 	npc_msg msg_0117_D37R0102_00061

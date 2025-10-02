@@ -2305,7 +2305,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_404 arg0, arg1, arg2
+	.macro has_space_for_accesssory arg0, arg1, arg2
 	.short 404
 	.short \arg0
 	.short \arg1

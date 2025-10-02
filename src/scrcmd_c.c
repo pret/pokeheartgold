@@ -3270,7 +3270,7 @@ BOOL ScrCmd_403(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_404(ScriptContext *ctx) {
+BOOL ScrCmd_HasSpaceForAccessory(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);

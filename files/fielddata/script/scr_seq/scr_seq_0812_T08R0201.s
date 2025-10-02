@@ -1,3 +1,4 @@
+#include "constants/accessories.h"
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T08R0201.h"
 #include "msgdata/msg/msg_0516_T08R0201.h"
@@ -399,9 +400,9 @@ _051C:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
-	setvar VAR_SPECIAL_x8004, 97
+	setvar VAR_SPECIAL_x8004, ACCESSORY_CROWN
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	has_space_for_accesssory VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00035
@@ -412,9 +413,9 @@ _055D:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
-	setvar VAR_SPECIAL_x8004, 98
+	setvar VAR_SPECIAL_x8004, ACCESSORY_TIARA
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	has_space_for_accesssory VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00036

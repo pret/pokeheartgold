@@ -2492,7 +2492,7 @@
       ]
     },
     {
-      "name": "scrcmd_404",
+      "name": "has_space_for_accesssory",
       "args": [
         "var",
         "var",

@@ -403,7 +403,7 @@ BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx);
 BOOL ScrCmd_FlashAction(ScriptContext *ctx);
 BOOL ScrCmd_DefogAction(ScriptContext *ctx);
 BOOL ScrCmd_403(ScriptContext *ctx);
-BOOL ScrCmd_404(ScriptContext *ctx);
+BOOL ScrCmd_HasSpaceForAccessory(ScriptContext *ctx);
 BOOL ScrCmd_405(ScriptContext *ctx);
 BOOL ScrCmd_406(ScriptContext *ctx);
 BOOL ScrCmd_407(ScriptContext *ctx);
@@ -1258,7 +1258,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_FlashAction,
     ScrCmd_DefogAction,
     ScrCmd_403,
-    ScrCmd_404,
+    ScrCmd_HasSpaceForAccessory,
     ScrCmd_405,
     ScrCmd_406,
     ScrCmd_407,

@@ -67,7 +67,7 @@
 #define VAR_UNK_4034                       0x4034
 #define VAR_MAGIKARP_SIZE_RECORD           0x4035
 #define VAR_UNK_4036                       0x4036
-#define VAR_UNK_4037                       0x4037
+#define VAR_ALTERNATE_LAKE_OF_RAGE         0x4037
 #define VAR_UNK_4038                       0x4038
 #define VAR_UNK_4039                       0x4039
 #define VAR_UNK_403A                       0x403A

@@ -168,15 +168,15 @@ BOOL ShouldUseAlternateLakeOfRage(SaveData *saveData, u32 map_no) {
 
     if (Save_VarsFlags_CheckFlagInArray(state, FLAG_RED_GYARADOS_MEET) == FALSE) {
         // The player hasn't battled the Red Gyarados yet.
-        sub_02066C4C(state, 1);
+        sub_02066C4C(state, 1); // zero
         return FALSE;
     }
 
     if (!MapAndDayCheck(map_no, &date)) {
-        sub_02066C4C(state, 1);
+        sub_02066C4C(state, 1); // zero
         return FALSE;
     } else {
-        sub_02066C1C(state, 1);
+        sub_02066C1C(state, 1); // set sentinel
         return TRUE;
     }
 }
