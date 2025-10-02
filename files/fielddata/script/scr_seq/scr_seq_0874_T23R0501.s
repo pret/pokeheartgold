@@ -289,7 +289,7 @@ _0348:
 	check_registered_phone_number PHONE_CONTACT_KURT, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _02A2
-	goto_if_set FLAG_GAME_CLEAR, _0371
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0371
 	npc_msg msg_0571_T23R0501_00013
 	wait_button_or_walk_away
 	closemsg

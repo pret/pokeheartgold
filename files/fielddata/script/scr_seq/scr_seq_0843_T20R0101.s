@@ -287,7 +287,7 @@ scr_seq_T20R0101_000:
 	lockall
 	faceplayer
 	goto_if_set FLAG_GOT_SS_TICKET_FROM_ELM, _03BA
-	goto_if_set FLAG_GAME_CLEAR, _0526
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0526
 _03BA:
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0

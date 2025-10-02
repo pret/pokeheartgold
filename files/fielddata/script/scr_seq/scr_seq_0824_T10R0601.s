@@ -154,7 +154,7 @@ _0234:
 	wait_movement
 	wait_button
 	closemsg
-	goto_if_set FLAG_GAME_CLEAR, _0268
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0268
 	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 1
 _0268:

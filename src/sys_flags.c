@@ -66,23 +66,23 @@ BOOL CheckFlag960(SaveVarsFlags *state) {
 }
 
 void SetGameClearFlag(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_GAME_CLEAR);
+    SetScriptFlag(state, FLAG_SYS_GAME_CLEAR);
 }
 
 BOOL CheckGameClearFlag(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_GAME_CLEAR);
+    return CheckScriptFlag(state, FLAG_SYS_GAME_CLEAR);
 }
 
 void Save_VarsFlags_SetHaveFollowerFlag(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_HAVE_FOLLOWER);
+    SetScriptFlag(state, FLAG_SYS_HAVE_FOLLOWER);
 }
 
 void Save_VarsFlags_ClearHaveFollowerFlag(SaveVarsFlags *state) {
-    ClearScriptFlag(state, FLAG_HAVE_FOLLOWER);
+    ClearScriptFlag(state, FLAG_SYS_HAVE_FOLLOWER);
 }
 
 BOOL Save_VarsFlags_CheckHaveFollower(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_HAVE_FOLLOWER);
+    return CheckScriptFlag(state, FLAG_SYS_HAVE_FOLLOWER);
 }
 
 void SetFlag99C(SaveVarsFlags *state) {
@@ -234,7 +234,7 @@ void ClearFlag972(SaveVarsFlags *state) {
 }
 
 BOOL StrengthFlagAction(SaveVarsFlags *state, u32 action) {
-    return FlagAction(state, action, FLAG_STRENGTH_ACTIVE);
+    return FlagAction(state, action, FLAG_SYS_STRENGTH_ACTIVE);
 }
 
 void SysFlagFlashSet(SaveVarsFlags *state) {
@@ -263,7 +263,7 @@ BOOL SysFlagDefogCheck(SaveVarsFlags *state) {
 
 BOOL Save_VarsFlags_FlypointFlagAction(SaveVarsFlags *state, u32 action, u32 flypoint_flag_no) {
     GF_ASSERT(flypoint_flag_no < 38);
-    return FlagAction(state, action, FLAG_SYS_VISITED_PALLET + flypoint_flag_no);
+    return FlagAction(state, action, FLAG_SYS_VISITED_BASE + flypoint_flag_no);
 }
 
 void SetFlag970(SaveVarsFlags *state) {
@@ -288,7 +288,7 @@ BOOL CheckGotMenuIconI(SaveVarsFlags *state, s32 icon_idx) {
 }
 
 BOOL CheckFlag96A(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_HEALED_AMPHAROS);
+    return CheckScriptFlag(state, FLAG_SYS_HEALED_AMPHAROS);
 }
 
 BOOL sub_020669B4(SaveVarsFlags *state, u32 a1) {

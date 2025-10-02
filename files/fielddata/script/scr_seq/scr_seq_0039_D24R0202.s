@@ -36,7 +36,7 @@ _004A:
 	hide_person obj_D24R0202_babyboy1_13
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_111
-	setflag FLAG_UNK_21C
+	setflag FLAG_HIDE_ALPH_KABUTO_PUZZLE_FLOOR
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -156,14 +156,14 @@ scr_seq_D24R0202_001:
 scr_seq_D24R0202_002:
 	scrcmd_609
 	lockall
-	goto_if_set FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM, _029A
+	goto_if_set FLAG_HIDE_ALPH_ESCAPE_ROPE_SECRET_ROOM_DOOR, _029A
 	wait 2, VAR_SPECIAL_x8004
 	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02AC
 	wait_movement
 	hide_person obj_D24R0202_babyboy1_12
-	setflag FLAG_OPENED_ALPH_ESCAPE_ROPE_SECRET_ROOM
+	setflag FLAG_HIDE_ALPH_ESCAPE_ROPE_SECRET_ROOM_DOOR
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end

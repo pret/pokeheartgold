@@ -29,7 +29,7 @@ _002F:
 _004A:
 	setflag FLAG_HIDE_CAMERON
 _004E:
-	goto_if_unset FLAG_GAME_CLEAR, _00C3
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _00C3
 	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _008F

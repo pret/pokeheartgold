@@ -139,7 +139,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
     data->commercialUnlockFlags[COMM_UNLOCK_CIANWOOD] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_ECRUTEAK);
     data->commercialUnlockFlags[COMM_UNLOCK_OLIVINE] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_OLIVINE);
     data->commercialUnlockFlags[COMM_UNLOCK_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_VERMILION);
-    data->commercialUnlockFlags[COMM_UNLOCK_GAME_CLEAR] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_GAME_CLEAR);
+    data->commercialUnlockFlags[COMM_UNLOCK_GAME_CLEAR] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_SYS_GAME_CLEAR);
     data->commercialUnlockFlags[COMM_UNLOCK_RESTORED_POWER] = Save_VarsFlags_CheckFlagInArray(varsFlags, FLAG_RESTORED_POWER);
     for (i = 0; i < NELEMS(sCommercialsData); ++i) {
         if (!data->commercialUnlockFlags[sCommercialsData[i][0]]) {

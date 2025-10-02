@@ -21,7 +21,7 @@ scr_seq_T25R1006_006:
 	end
 
 _0033:
-	goto_if_unset FLAG_GAME_CLEAR, _011D
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _011D
 	get_phone_book_rematch PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _011D

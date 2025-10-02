@@ -92,7 +92,7 @@ _0162:
 	setflag FLAG_UNK_27F
 	clearflag FLAG_UNK_996
 _016E:
-	goto_if_set FLAG_GAME_CLEAR, _017F
+	goto_if_set FLAG_SYS_GAME_CLEAR, _017F
 	setflag FLAG_UNK_288
 	end
 

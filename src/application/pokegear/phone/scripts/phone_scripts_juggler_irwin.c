@@ -90,7 +90,7 @@ u16 PhoneCall_Irwin_GetQueuedScriptID(PokegearPhoneCallContext *ctx, PokegearPho
         } else {
             return 0xFFFF;
         }
-    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_HEALED_AMPHAROS)) {
+    } else if (Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_HEALED_AMPHAROS)) {
         if (!Save_VarsFlags_CheckFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_AMPHAROS)) {
             Save_VarsFlags_SetFlagInArray(ctx->saveVarsFlags, FLAG_SYS_GOT_IRWIN_CALL_POST_AMPHAROS);
             return PHONE_SCRIPT_159;

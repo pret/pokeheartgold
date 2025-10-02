@@ -88,7 +88,7 @@ _0115:
 	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01A7
-	goto_if_set FLAG_GAME_CLEAR, _0139
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0139
 	goto _01A7
 
 _0139:

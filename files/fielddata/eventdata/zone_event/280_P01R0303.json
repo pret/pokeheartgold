@@ -6,7 +6,7 @@
       "spriteId": "SPRITE_SEAMAN_2",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_21A",
+      "eventFlag": "FLAG_HIDE_SAILOR_STANLY",
       "scriptId": "_EV_scr_seq_P01R0303_000 + 1",
       "facingDirection": 1,
       "param0": 0,

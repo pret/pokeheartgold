@@ -33,7 +33,7 @@ _0042:
 	hide_person obj_D24R0208_babyboy1_13
 	play_se SEQ_SE_DP_KI_GASYAN
 	clearflag FLAG_UNK_111
-	setflag FLAG_UNK_222
+	setflag FLAG_HIDE_ALPH_HO_OH_PUZZLE_FLOOR
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -163,7 +163,7 @@ _0268:
 	apply_movement obj_player, _0298
 	wait_movement
 	hide_person obj_D24R0208_babyboy1_12
-	setflag FLAG_OPENED_ALPH_HO_OH_SECRET_ROOM
+	setflag FLAG_HIDE_ALPH_HO_OH_SECRET_ROOM_DOOR
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end

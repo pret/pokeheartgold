@@ -116,7 +116,7 @@ scr_seq_P01R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_unset FLAG_GAME_CLEAR, _0361
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _0361
 	compare VAR_TEMP_x4002, 1
 	goto_if_ge _0356
 	get_player_facing VAR_TEMP_x4001

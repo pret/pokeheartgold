@@ -13,7 +13,7 @@
 scr_seq_W40R0101_001:
 	compare VAR_UNK_40E5, 1
 	goto_if_ge _0036
-	goto_if_set FLAG_GAME_CLEAR, _0028
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0028
 	end
 
 _0028:
@@ -28,7 +28,7 @@ scr_seq_W40R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	goto_if_set FLAG_UNK_0FB, _00BE
-	goto_if_set FLAG_GAME_CLEAR, _00B1
+	goto_if_set FLAG_SYS_GAME_CLEAR, _00B1
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 3
 	goto_if_ne _0079
@@ -90,7 +90,7 @@ scr_seq_W40R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _0108
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0108
 	npc_msg msg_0745_W40R0101_00003
 	goto _010B
 

@@ -164,7 +164,7 @@ scr_seq_T24_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _0276
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0276
 	goto_if_set FLAG_GOT_HM02, _026B
 	npc_msg msg_0572_T24_00000
 	npc_msg msg_0572_T24_00001

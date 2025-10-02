@@ -333,7 +333,7 @@ scr_seq_T27_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_HEALED_AMPHAROS, _0417
+	goto_if_set FLAG_SYS_HEALED_AMPHAROS, _0417
 	npc_msg msg_0612_T27_00008
 	goto _041A
 
@@ -349,7 +349,7 @@ scr_seq_T27_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _0440
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0440
 	npc_msg msg_0612_T27_00000
 	wait_button_or_walk_away
 	closemsg
@@ -384,7 +384,7 @@ scr_seq_T27_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _04A8
+	goto_if_set FLAG_SYS_GAME_CLEAR, _04A8
 	compare VAR_UNK_40A1, 0
 	goto_if_ne _049D
 	npc_msg msg_0612_T27_00005

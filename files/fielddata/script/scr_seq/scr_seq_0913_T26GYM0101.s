@@ -19,7 +19,7 @@ scr_seq_T26GYM0101_007:
 	get_phone_book_rematch PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _015C
-	goto_if_unset FLAG_GAME_CLEAR, _015A
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _015A
 	clearflag FLAG_HIDE_JASMINE_IN_GYM
 	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1

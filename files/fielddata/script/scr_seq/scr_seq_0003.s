@@ -780,8 +780,8 @@ _0A2E:
 	call_if_unset FLAG_SYS_MET_BILL, _0A78
 	call_if_set FLAG_SYS_MET_BILL, _0A82
 	menu_item_add msg_0191_00063, 255, 1
-	goto_if_set FLAG_GAME_CLEAR, _0A8C
-	goto_if_unset FLAG_GAME_CLEAR, _0AD1
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0A8C
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _0AD1
 	goto _0AD1
 	end
 

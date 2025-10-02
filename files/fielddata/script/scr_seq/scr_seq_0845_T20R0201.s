@@ -98,7 +98,7 @@ scr_seq_T20R0201_006:
 	end
 
 scr_seq_T20R0201_001:
-	goto_if_set FLAG_GAME_CLEAR, _015C
+	goto_if_set FLAG_SYS_GAME_CLEAR, _015C
 	compare VAR_SCENE_ELMS_LAB, 4
 	goto_if_ge _0205
 	goto_if_set FLAG_GOT_STARTER, _0179

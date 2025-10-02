@@ -39,7 +39,7 @@ _0067:
 	end
 
 _009F:
-	goto_if_set FLAG_GAME_CLEAR, _00B2
+	goto_if_set FLAG_SYS_GAME_CLEAR, _00B2
 	goto _00E6
 	end
 

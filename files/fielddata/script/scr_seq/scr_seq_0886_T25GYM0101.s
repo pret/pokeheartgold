@@ -16,7 +16,7 @@ scr_seq_T25GYM0101_004:
 	get_phone_book_rematch PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0106
-	goto_if_unset FLAG_GAME_CLEAR, _0100
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _0100
 	check_registered_phone_number PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00AF

@@ -13,7 +13,7 @@ scr_seq_D46R0101_001:
 	check_registered_phone_number PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0047
-	goto_if_set FLAG_GAME_CLEAR, _0030
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0030
 	goto _0047
 	end
 

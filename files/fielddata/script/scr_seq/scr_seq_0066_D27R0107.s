@@ -101,7 +101,7 @@ _00B5:
 	following_pokemon_movement 48
 	hide_person obj_D27R0107_gsleader6
 	releaseall
-	setflag FLAG_HEALED_AMPHAROS
+	setflag FLAG_SYS_HEALED_AMPHAROS
 	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 2
 	setvar VAR_UNK_410E, 1
 	setflag FLAG_UNK_1D7

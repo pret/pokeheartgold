@@ -18,7 +18,7 @@ _001B:
 	get_phone_book_rematch PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00B8
-	goto_if_unset FLAG_GAME_CLEAR, _00B2
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _00B2
 	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _00B2
@@ -112,7 +112,7 @@ _0172:
 	end
 
 _0178:
-	goto_if_set FLAG_GAME_CLEAR, _0198
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0198
 	npc_msg msg_0622_T28GYM0101_00005
 	wait_button_or_walk_away
 	closemsg
