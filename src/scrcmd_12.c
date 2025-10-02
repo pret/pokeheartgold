@@ -70,7 +70,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
 
     Heap_Free(mon);
     sub_0202EB74(unkStruct);
-    sub_02093070(ctx->fieldSystem);
+    FieldSystem_BillPCFullCallCheck(ctx->fieldSystem);
     return FALSE;
 }
 

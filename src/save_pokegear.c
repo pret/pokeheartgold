@@ -194,7 +194,7 @@ static void PhoneCallPersistentState_Init(PhoneCallPersistentState *callPersiste
     callPersistentState->kenjiWaitDays = 7;
 }
 
-void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx) {
+void PhoneCallPersistentState_SetScriptedCallQueuedFlag(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
     if (idx >= 13) {
@@ -203,10 +203,10 @@ void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx) {
     }
     byteno = idx / 8;
     flagno = idx % 8;
-    callPersistentState->unk_14E[byteno] |= (1 << flagno);
+    callPersistentState->scriptedCallQueuedFlags[byteno] |= (1 << flagno);
 }
 
-void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx) {
+void PhoneCallPersistentState_ClearScriptedCallQueuedFlag(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 mask;
     if (idx >= 13) {
@@ -215,12 +215,12 @@ void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx) {
     }
     byteno = idx / 8;
     mask = 1 << (idx % 8);
-    if (callPersistentState->unk_14E[byteno] & mask) {
-        callPersistentState->unk_14E[byteno] ^= mask;
+    if (callPersistentState->scriptedCallQueuedFlags[byteno] & mask) {
+        callPersistentState->scriptedCallQueuedFlags[byteno] ^= mask;
     }
 }
 
-BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx) {
+BOOL PhoneCallPersistentState_CheckScriptedCallQueuedFlag(PhoneCallPersistentState *callPersistentState, u8 idx) {
     u8 byteno;
     u8 flagno;
     if (idx >= 13) {
@@ -229,7 +229,7 @@ BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx) {
     }
     byteno = idx / 8;
     flagno = idx % 8;
-    return (callPersistentState->unk_14E[byteno] >> flagno) & 1;
+    return (callPersistentState->scriptedCallQueuedFlags[byteno] >> flagno) & 1;
 }
 
 void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state) {

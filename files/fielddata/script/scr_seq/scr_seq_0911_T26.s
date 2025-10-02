@@ -34,7 +34,7 @@ _0057:
 
 scr_seq_T26_003:
 	setflag FLAG_UNK_0F5
-	setvar VAR_UNK_4057, 1
+	setvar VAR_SAFARI_ZONE_OWNER_TEST_STATE, 1
 	phone_call PHONE_CONTACT_BAOBA, 2, 0
 	setflag FLAG_UNK_249
 	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 3

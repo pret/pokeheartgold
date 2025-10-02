@@ -99,7 +99,7 @@
 #define VAR_BATTLE_HALL_WIN_STREAK_LEVEL   0x4054
 #define VAR_UNK_4055                       0x4055
 #define VAR_UNK_4056                       0x4056
-#define VAR_UNK_4057                       0x4057
+#define VAR_SAFARI_ZONE_OWNER_TEST_STATE   0x4057
 #define VAR_BUG_CONTEST_HELD_PRIZE         0x4058
 #define VAR_UNK_4059                       0x4059
 #define VAR_UNK_405A                       0x405A

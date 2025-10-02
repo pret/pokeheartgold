@@ -790,8 +790,8 @@ BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx);
 BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx);
 BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx);
 BOOL ScrCmd_IsBugContestantRegistered(ScriptContext *ctx);
-BOOL ScrCmd_791(ScriptContext *ctx);
-BOOL ScrCmd_792(ScriptContext *ctx);
+BOOL ScrCmd_CheckSafariZoneOwnerTestMonInParty(ScriptContext *ctx);
+BOOL ScrCmd_StartSafariZoneIgtTimer(ScriptContext *ctx);
 BOOL ScrCmd_BankTransaction(ScriptContext *ctx);
 BOOL ScrCmd_CheckBankBalance(ScriptContext *ctx);
 BOOL ScrCmd_795(ScriptContext *ctx);
@@ -1645,8 +1645,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferBugContestMonNick,
     ScrCmd_BugContestGetTimeLeft,
     ScrCmd_IsBugContestantRegistered,
-    ScrCmd_791,
-    ScrCmd_792,
+    ScrCmd_CheckSafariZoneOwnerTestMonInParty,
+    ScrCmd_StartSafariZoneIgtTimer,
     ScrCmd_BankTransaction,
     ScrCmd_CheckBankBalance,
     ScrCmd_795,

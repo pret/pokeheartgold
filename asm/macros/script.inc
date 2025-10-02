@@ -4445,13 +4445,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_791 arg0, arg1
+	.macro check_safari_zone_owner_test_mon_in_party arg0, arg1
 	.short 791
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_792
+	.macro start_safari_zone_igt_timer
 	.short 792
 	.endm
 

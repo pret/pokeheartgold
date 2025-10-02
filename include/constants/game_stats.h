@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_GAME_STATS_H
 
 #define GAME_STAT_UNK0                      0
-#define GAME_STAT_APRICORN_GET              1
+#define GAME_STAT_BIKE_STEPS                1
 #define GAME_STAT_SCORE                     2
 #define GAME_STAT_UNK5                      5
 #define GAME_STAT_UNK6                      6

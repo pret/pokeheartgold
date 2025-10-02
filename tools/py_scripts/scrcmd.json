@@ -4965,14 +4965,14 @@
       ]
     },
     {
-      "name": "scrcmd_791",
+      "name": "check_safari_zone_owner_test_mon_in_party",
       "args": [
         1,
         "var"
       ]
     },
     {
-      "name": "scrcmd_792",
+      "name": "start_safari_zone_igt_timer",
       "args": []
     },
     {

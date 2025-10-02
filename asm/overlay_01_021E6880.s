@@ -1,5 +1,6 @@
 #include "constants/sndseq.h"
 #include "constants/moves.h"
+#include "constants/game_stats.h"
 #include "constants/std_script.h"
 #include "constants/species.h"
 #include "constants/sprites.h"
@@ -1803,7 +1804,7 @@ _021E7706:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7714:
 	add r0, r5, #0
-	bl ov01_021E7A08
+	bl BikeShopCallCheck
 	cmp r0, #1
 	bne _021E7722
 	mov r0, #1
@@ -2184,8 +2185,8 @@ _021E7A00:
 _021E7A04: .word std_safari_balls_out
 	thumb_func_end SafariBallsOutCheck
 
-	thumb_func_start ov01_021E7A08
-ov01_021E7A08: ; 0x021E7A08
+	thumb_func_start BikeShopCallCheck
+BikeShopCallCheck: ; 0x021E7A08
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0xc]
@@ -2193,18 +2194,18 @@ ov01_021E7A08: ; 0x021E7A08
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
 	bl Save_VarsFlags_Get
-	ldr r1, _021E7A5C ; =FLAG_UNK_984
+	ldr r1, _021E7A5C ; =FLAG_SYS_GOT_BIKE_SHOP_CALL
 	bl Save_VarsFlags_CheckFlagInArray
 	cmp r0, #0
 	bne _021E7A56
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_0202F08C
+	bl PhoneCallPersistentState_CheckScriptedCallQueuedFlag
 	cmp r0, #0
 	bne _021E7A56
 	ldr r0, [r4, #0xc]
 	bl Save_GameStats_Get
-	mov r1, #1
+	mov r1, #GAME_STAT_BIKE_STEPS
 	bl GameStats_GetCapped
 	mov r1, #1
 	lsl r1, r1, #0xa
@@ -2214,15 +2215,15 @@ ov01_021E7A08: ; 0x021E7A08
 	bl FieldSystem_GetGearPhoneRingManager
 	mov r1, #2
 	mov r2, #1
-	bl sub_02092E14
+	bl GearPhoneRingManager_QueueScriptedPhoneCall
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 _021E7A56:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	nop
-_021E7A5C: .word FLAG_UNK_984
-	thumb_func_end ov01_021E7A08
+_021E7A5C: .word FLAG_SYS_GOT_BIKE_SHOP_CALL
+	thumb_func_end BikeShopCallCheck
 
 	thumb_func_start BugContestTimeoutCheck
 BugContestTimeoutCheck: ; 0x021E7A60

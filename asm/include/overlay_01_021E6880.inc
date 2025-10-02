@@ -14,7 +14,7 @@
 .public GameStats_GetCapped
 .public GameStats_AddScore
 .public SaveData_GetPhoneCallPersistentState
-.public sub_0202F08C
+.public PhoneCallPersistentState_CheckScriptedCallQueuedFlag
 .public Save_SafariZone_Get
 .public sub_0202F620
 .public Save_ApricornBox_Get
@@ -154,7 +154,7 @@
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
 .public FieldSystem_GetGearPhoneRingManager
-.public sub_02092E14
+.public GearPhoneRingManager_QueueScriptedPhoneCall
 .public ov01_021E5924
 .public ov01_021E5BE4
 .public ov01_021E5C24

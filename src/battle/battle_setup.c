@@ -409,8 +409,8 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
         } else {
             balanceResult = savingsBalance;
         }
-        if (sub_0209322C(savings, balanceResult, savingsBalance)) {
-            sub_02092E14(FieldSystem_GetGearPhoneRingManager(fieldSystem), 12, TRUE);
+        if (PhoneCallPersistentState_MomsSavings_TryBuySomething(savings, balanceResult, savingsBalance)) {
+            GearPhoneRingManager_QueueScriptedPhoneCall(FieldSystem_GetGearPhoneRingManager(fieldSystem), 12, TRUE);
         }
     }
 }

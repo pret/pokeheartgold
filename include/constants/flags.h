@@ -1740,8 +1740,8 @@
 #define FLAG_SYS_CIANWOOD_WATERFALL_DISABLE               0x981
 #define FLAG_UNK_982                                      0x982
 #define FLAG_SYS_HATCHED_TOGEPI_EGG                       0x983
-#define FLAG_UNK_984                                      0x984
-#define FLAG_UNK_985                                      0x985
+#define FLAG_SYS_GOT_BIKE_SHOP_CALL                       0x984
+#define FLAG_SYS_GOT_BILL_FULL_PC_CALL                    0x985
 #define FLAG_SYS_MOMS_SAVINGS                             0x986
 #define FLAG_SYS_OAK_ACKNOWLEDGED_JOHTO_DEX_COMPLETION    0x987
 #define FLAG_SYS_OAK_ACKNOWLEDGED_NATIONAL_DEX_COMPLETION 0x988

@@ -1767,7 +1767,7 @@ static BOOL sub_020429A0(ScriptContext *ctx) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return FALSE;
     }
-    sub_02093070(fieldSystem);
+    FieldSystem_BillPCFullCallCheck(fieldSystem);
     Heap_Free(*p_work);
     *p_work = NULL;
     return TRUE;
@@ -4729,12 +4729,12 @@ BOOL ScrCmd_GetPhoneContactGiftItem(ScriptContext *ctx) {
 
 BOOL ScrCmd_148(ScriptContext *ctx) {
     u8 r4 = ScriptReadByte(ctx);
-    sub_02092E14(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), r4, ScriptReadByte(ctx));
+    GearPhoneRingManager_QueueScriptedPhoneCall(FieldSystem_GetGearPhoneRingManager(ctx->fieldSystem), r4, ScriptReadByte(ctx));
     return FALSE;
 }
 
 BOOL ScrCmd_149(ScriptContext *ctx) {
-    sub_0202F050(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
+    PhoneCallPersistentState_ClearScriptedCallQueuedFlag(SaveData_GetPhoneCallPersistentState(ctx->fieldSystem->saveData), ScriptReadByte(ctx));
     return FALSE;
 }
 

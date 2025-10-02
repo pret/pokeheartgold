@@ -178,7 +178,7 @@ _024A:
 	npc_msg msg_0135_D47R0101_00030
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_4057, 2
+	setvar VAR_SAFARI_ZONE_OWNER_TEST_STATE, 2
 	releaseall
 	end
 
@@ -228,7 +228,7 @@ scr_seq_D47R0101_009:
 	npc_msg msg_0135_D47R0101_00036
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_4057, 5
+	setvar VAR_SAFARI_ZONE_OWNER_TEST_STATE, 5
 	clearflag FLAG_HIDE_SAFARI_ZONE_WORKERS
 	releaseall
 	end
@@ -366,15 +366,15 @@ scr_seq_D47R0101_010:
 	lockall
 	faceplayer
 	goto_if_set FLAG_UNK_183, _0599
-	compare VAR_UNK_4057, 2
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 2
 	goto_if_eq _049D
-	compare VAR_UNK_4057, 3
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 3
 	goto_if_eq _048B
-	compare VAR_UNK_4057, 5
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 5
 	goto_if_eq _04CB
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_eq _0494
-	compare VAR_UNK_4057, 7
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 7
 	goto_if_eq _058F
 	npc_msg msg_0135_D47R0101_00042
 	goto _0587
@@ -389,7 +389,7 @@ _0494:
 	goto _0587
 
 _049D:
-	scrcmd_791 0, VAR_SPECIAL_RESULT
+	check_safari_zone_owner_test_mon_in_party 0, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_ne _04B8
 	npc_msg msg_0135_D47R0101_00033
@@ -397,14 +397,14 @@ _049D:
 
 _04B8:
 	npc_msg msg_0135_D47R0101_00032
-	setvar VAR_UNK_4057, 3
-	scrcmd_792
+	setvar VAR_SAFARI_ZONE_OWNER_TEST_STATE, 3
+	start_safari_zone_igt_timer
 _04C3:
 	goto _0587
 	end
 
 _04CB:
-	scrcmd_791 1, VAR_SPECIAL_RESULT
+	check_safari_zone_owner_test_mon_in_party 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _057E
 	npc_msg msg_0135_D47R0101_00037
@@ -442,8 +442,8 @@ _054C:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	npc_msg msg_0135_D47R0101_00039
-	setvar VAR_UNK_4057, 6
-	scrcmd_792
+	setvar VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
+	start_safari_zone_igt_timer
 	goto _0587
 
 _057E:
@@ -522,7 +522,7 @@ scr_seq_D47R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _06AE
 	npc_msg msg_0135_D47R0101_00015
 	goto _06B1
@@ -556,10 +556,10 @@ scr_seq_D47R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4057, 7
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 7
 	goto_if_eq _0899
 _0707:
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _0728
 	setvar VAR_SPECIAL_RESULT, 500
 	buffer_int 1, VAR_SPECIAL_RESULT
@@ -638,7 +638,7 @@ _0846:
 
 _0853:
 	hide_money_box
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _086B
 	npc_msg msg_0135_D47R0101_00013
 	goto _086E
@@ -653,7 +653,7 @@ _086E:
 
 _0876:
 	hide_money_box
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _088E
 	npc_msg msg_0135_D47R0101_00011
 	goto _0891
@@ -700,13 +700,13 @@ scr_seq_D47R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4057, 0
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 0
 	goto_if_eq _09DC
-	compare VAR_UNK_4057, 1
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 1
 	goto_if_eq _09DC
-	compare VAR_UNK_4057, 2
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 2
 	goto_if_eq _09DC
-	compare VAR_UNK_4057, 3
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 3
 	goto_if_eq _09DC
 	npc_msg msg_0135_D47R0101_00019
 	touchscreen_menu_hide
@@ -767,14 +767,14 @@ scr_seq_D47R0101_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4057, 7
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 7
 	goto_if_eq _0C21
 _09FC:
 	scrcmd_247
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0DF2
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _0A26
 	npc_msg msg_0135_D47R0101_00065
 	goto _0A29
@@ -950,7 +950,7 @@ scr_seq_D47R0101_004:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4057, 7
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 7
 	goto_if_eq _0DFD
 _0C4C:
 	scrcmd_247
@@ -1040,7 +1040,7 @@ _0D9F:
 
 _0DAC:
 	hide_money_box
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _0DC4
 	npc_msg msg_0135_D47R0101_00013
 	goto _0DC7
@@ -1055,7 +1055,7 @@ _0DC7:
 
 _0DCF:
 	hide_money_box
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _0DE7
 	npc_msg msg_0135_D47R0101_00011
 	goto _0DEA
@@ -1091,7 +1091,7 @@ scr_seq_D47R0101_011:
 	nat_dex_flag_action 2, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0E73
-	compare VAR_UNK_4057, 6
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 6
 	goto_if_lt _0E45
 	npc_msg msg_0135_D47R0101_00093
 	goto _0E48
@@ -1128,13 +1128,13 @@ scr_seq_D47R0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4057, 0
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 0
 	goto_if_eq _0EF1
-	compare VAR_UNK_4057, 1
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 1
 	goto_if_eq _0EF1
-	compare VAR_UNK_4057, 2
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 2
 	goto_if_eq _0EF1
-	compare VAR_UNK_4057, 3
+	compare VAR_SAFARI_ZONE_OWNER_TEST_STATE, 3
 	goto_if_eq _0EF1
 	buffer_players_name 0
 	npc_msg msg_0135_D47R0101_00027

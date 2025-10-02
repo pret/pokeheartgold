@@ -118,7 +118,7 @@
 .public Save_SafariZone_Get
 .public SafariZone_GetAreaSet
 .public SafariZone_SetAreaSet
-.public sub_0202F784
+.public SafariZone_SetLastTestCompletionIGT
 .public SafariZone_SetLinkLeaderFromProfile
 .public SafariZone_RemoveObjectFromArea
 .public Save_Pokeathlon_Get
