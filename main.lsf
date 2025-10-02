@@ -1171,9 +1171,9 @@ Overlay pokegear_app
     Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
     Object src/application/pokegear/phone/extra_ethan_lyra_data.o
     Object src/application/pokegear/radio/pokegear_radio.o
-    Object src/application/pokegear/radio/overlay_101_021F49F8.o
-    Object src/application/pokegear/radio/overlay_101_021F4F34.o
-    Object src/application/pokegear/radio/overlay_101_021F57B8.o
+    Object src/application/pokegear/radio/pokegear_radio_gfx.o
+    Object src/application/pokegear/radio/pokegear_radio_input.o
+    Object src/application/pokegear/radio/pokegear_radio_shows.o
     Object src/application/pokegear/radio/shows/pokemon_music.o
     Object src/application/pokegear/radio/shows/poke_flute.o
     Object src/application/pokegear/radio/shows/unown.o
