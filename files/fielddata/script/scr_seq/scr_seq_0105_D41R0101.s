@@ -16,7 +16,7 @@ scr_seq_D41R0101_001:
 
 _001B:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0036
 	clearflag FLAG_HIDE_CAMERON
 	goto _003A

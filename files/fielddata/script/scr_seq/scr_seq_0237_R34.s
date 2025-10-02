@@ -40,9 +40,9 @@ _006E:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _009F
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _00A9
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _00A9
 _009F:
 	setflag FLAG_HIDE_CAMERON
@@ -51,18 +51,18 @@ _009F:
 _00A9:
 	clearflag FLAG_HIDE_CAMERON
 _00AD:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	get_time_of_day VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_NITE
 	goto_if_eq _00D5
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_LATE
 	goto_if_eq _00D5
-	clearflag FLAG_UNK_1D1
-	setflag FLAG_UNK_1D2
+	clearflag FLAG_HIDE_ROUTE_34_POLICEMAN_DAY
+	setflag FLAG_HIDE_ROUTE_34_POLICEMAN_NIGHT
 	end
 
 _00D5:
-	clearflag FLAG_UNK_1D2
-	setflag FLAG_UNK_1D1
+	clearflag FLAG_HIDE_ROUTE_34_POLICEMAN_NIGHT
+	setflag FLAG_HIDE_ROUTE_34_POLICEMAN_DAY
 	end
 
 scr_seq_R34_001:

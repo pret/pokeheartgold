@@ -28,9 +28,9 @@ scr_seq_T04_012:
 
 _004B:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _006F
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _006F
 	setflag FLAG_HIDE_CAMERON
 	end

@@ -87,21 +87,21 @@ scr_seq_R35R0201_012:
 	goto _0168
 
 _010F:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _012A
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0168
 
 _012A:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0145
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0168
 
 _0145:
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _0160
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
@@ -117,9 +117,9 @@ _0168:
 
 _0179:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_eq _019D
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _019D
 	setflag FLAG_HIDE_CAMERON
 	end

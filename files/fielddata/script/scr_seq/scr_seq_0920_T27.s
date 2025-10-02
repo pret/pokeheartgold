@@ -34,7 +34,7 @@ scr_seq_T27_015:
 
 _0059:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0074
 	clearflag FLAG_HIDE_CAMERON
 	goto _0078

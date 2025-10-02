@@ -159,7 +159,7 @@ scr_seq_P01R0101_000:
 
 _01FB:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SUNDAY
 	goto_if_ne _0218
 	goto _02EE
 
@@ -167,7 +167,7 @@ _0212:
 	goto _029B
 
 _0218:
-	compare VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_MONDAY
 	goto_if_ne _0231
 	goto _029B
 
@@ -175,7 +175,7 @@ _022B:
 	goto _029B
 
 _0231:
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_TUESDAY
 	goto_if_ne _024A
 	goto _02EE
 
@@ -183,7 +183,7 @@ _0244:
 	goto _029B
 
 _024A:
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_ne _0263
 	goto _02EE
 
@@ -191,7 +191,7 @@ _025D:
 	goto _029B
 
 _0263:
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_ne _027C
 	goto _02EE
 
@@ -199,7 +199,7 @@ _0276:
 	goto _029B
 
 _027C:
-	compare VAR_SPECIAL_RESULT, 5
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_ne _0295
 	goto _029B
 

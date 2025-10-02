@@ -40,7 +40,7 @@ _0054:
 
 _0080:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _00C1
 	clearflag FLAG_UNK_2C9
 	end
@@ -50,7 +50,7 @@ _0097:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00C1
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _00C1
 	clearflag FLAG_UNK_2C9
 	end

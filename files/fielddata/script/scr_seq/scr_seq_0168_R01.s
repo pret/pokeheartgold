@@ -17,11 +17,11 @@ scr_seq_R01_001:
 
 _001F:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _0050
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_eq _0050
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_eq _0050
 	setflag FLAG_HIDE_CAMERON
 	end

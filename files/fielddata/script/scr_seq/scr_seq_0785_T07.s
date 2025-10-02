@@ -33,13 +33,13 @@ scr_seq_T07_015:
 
 _005F:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _007A
 	clearflag FLAG_HIDE_CAMERON
 	goto _0095
 
 _007A:
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0091
 	clearflag FLAG_HIDE_CAMERON
 	goto _0095
@@ -58,7 +58,7 @@ _0095:
 
 _00C3:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _00E0
 	goto _0101
 
@@ -66,7 +66,7 @@ _00DA:
 	goto _00FF
 
 _00E0:
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _00F9
 	goto _0101
 
@@ -112,7 +112,7 @@ _015E:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0198
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0190
 	clearflag FLAG_UNK_25D
 	setflag FLAG_UNK_2E1

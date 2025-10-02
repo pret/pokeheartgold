@@ -26,13 +26,13 @@ scr_seq_T02_008:
 
 _0043:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_ne _005E
 	clearflag FLAG_HIDE_CAMERON
 	goto _0079
 
 _005E:
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0075
 	clearflag FLAG_HIDE_CAMERON
 	goto _0079

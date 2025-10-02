@@ -204,7 +204,7 @@ scr_seq_T29_005:
 	goto_if_eq _0349
 	goto_if_set FLAG_GOT_BLACK_BELT_FROM_WESLEY, _032B
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_eq _02DC
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 11
@@ -241,7 +241,7 @@ _033F:
 
 _0349:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_eq _036C
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 11

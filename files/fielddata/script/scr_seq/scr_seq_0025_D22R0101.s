@@ -68,15 +68,15 @@ _00F4:
 	compare VAR_UNK_40F7, 1
 	goto_if_eq _0162
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _0154
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _0154
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_eq _0162
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _0162
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _0162
 	setflag FLAG_HIDE_CAMERON
 	clearflag FLAG_UNK_27F
@@ -101,11 +101,11 @@ _017F:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _01C9
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _01C3
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _01C3
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _01C3
 	setflag FLAG_UNK_288
 	end
@@ -167,7 +167,7 @@ scr_seq_D22R0101_026:
 	lockall
 	faceplayer
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _02C7
 	buffer_players_name 0
 	npc_msg msg_0062_D22R0101_00084

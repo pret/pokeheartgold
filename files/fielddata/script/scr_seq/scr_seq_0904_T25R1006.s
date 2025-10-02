@@ -187,7 +187,7 @@ _02B5:
 	buffer_int 0, 2
 	npc_msg msg_0597_T25R1006_00012
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _02E4
 	setvar VAR_SPECIAL_x8004, 11
 	setvar VAR_SPECIAL_x8005, 1
@@ -246,7 +246,7 @@ _03AC:
 	buffer_int 0, 1
 	npc_msg msg_0597_T25R1006_00012
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _03DB
 	setvar VAR_SPECIAL_x8004, 329
 	setvar VAR_SPECIAL_x8005, 1
@@ -335,7 +335,7 @@ scr_seq_T25R1006_005:
 	lockall
 	faceplayer
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _0501
 	npc_msg msg_0597_T25R1006_00018
 	goto _0572

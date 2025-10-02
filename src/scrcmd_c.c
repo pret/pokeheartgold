@@ -3243,7 +3243,7 @@ BOOL ScrCmd_ViewRankings(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_379(ScriptContext *ctx) {
+BOOL ScrCmd_GetTimeOfDay(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
     *p_ret = Field_GetTimeOfDay(ctx->fieldSystem);
     return FALSE;

@@ -32,7 +32,7 @@ scr_seq_D11R0106_009:
 
 _0069:
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 2
+	compare VAR_TEMP_x4002, RTC_WEEK_TUESDAY
 	goto_if_ne _0084
 	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	goto _0088
@@ -44,7 +44,7 @@ _0088:
 
 _008A:
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 4
+	compare VAR_TEMP_x4002, RTC_WEEK_THURSDAY
 	goto_if_ne _00A5
 	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	goto _00A9

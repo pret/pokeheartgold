@@ -27,13 +27,13 @@ _002B:
 
 _0047:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0062
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 	goto _007D
 
 _0062:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0079
 	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
 	goto _007D

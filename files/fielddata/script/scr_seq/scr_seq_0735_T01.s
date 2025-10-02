@@ -28,11 +28,11 @@ _0044:
 	setvar VAR_UNK_4096, 0
 _004A:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _007B
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _007B
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _007B
 	setflag FLAG_HIDE_CAMERON
 	end

@@ -80,7 +80,7 @@ _00CA:
 	hide_person obj_R34R0101_tsure_poke_static_marill
 	wait_se SEQ_SE_DP_KAIDAN2
 	setvar VAR_UNK_408E, 2
-	setflag FLAG_UNK_22D
+	setflag FLAG_HIDE_ROUTE_34_FRIEND
 	releaseall
 	end
 

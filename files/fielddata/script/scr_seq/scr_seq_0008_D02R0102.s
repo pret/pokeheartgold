@@ -11,7 +11,7 @@
 scr_seq_D02R0102_000:
 	goto_if_set FLAG_UNK_AB5, _004D
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _002E
 	goto _004F
 
@@ -19,7 +19,7 @@ _0028:
 	goto _004D
 
 _002E:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0047
 	goto _008E
 
@@ -33,8 +33,8 @@ _004D:
 	end
 
 _004F:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
+	get_time_of_day VAR_TEMP_x4001
+	compare VAR_TEMP_x4001, RTC_TIMEOFDAY_NITE
 	goto_if_ne _0086
 	move_warp 1, 1, 7
 	move_warp 4, 5, 6
@@ -49,8 +49,8 @@ _008C:
 	end
 
 _008E:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
+	get_time_of_day VAR_TEMP_x4001
+	compare VAR_TEMP_x4001, RTC_TIMEOFDAY_LATE
 	goto_if_ne _00C5
 	move_warp 1, 1, 7
 	move_warp 4, 5, 6

@@ -28,7 +28,7 @@ scr_seq_T22GYM0101_000:
 
 _005B:
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
+	compare VAR_TEMP_x4001, RTC_WEEK_MONDAY
 	goto_if_ne _0076
 	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	goto _007C
@@ -41,7 +41,7 @@ _007C:
 
 _007E:
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
+	compare VAR_TEMP_x4001, RTC_WEEK_WEDNESDAY
 	goto_if_ne _0099
 	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	goto _009F

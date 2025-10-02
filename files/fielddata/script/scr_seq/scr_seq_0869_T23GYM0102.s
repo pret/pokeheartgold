@@ -38,18 +38,18 @@ _006C:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0096
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 4
+	compare VAR_TEMP_x4002, RTC_WEEK_THURSDAY
 	goto_if_ne _0096
 	setflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 _0096:
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
+	compare VAR_TEMP_x4001, RTC_WEEK_MONDAY
 	goto_if_eq _00C7
-	compare VAR_TEMP_x4001, 3
+	compare VAR_TEMP_x4001, RTC_WEEK_WEDNESDAY
 	goto_if_eq _00C7
-	compare VAR_TEMP_x4001, 5
+	compare VAR_TEMP_x4001, RTC_WEEK_FRIDAY
 	goto_if_eq _00C7
 	clearflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end

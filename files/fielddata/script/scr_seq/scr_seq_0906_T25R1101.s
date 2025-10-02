@@ -42,7 +42,7 @@
 
 scr_seq_T25R1101_032:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _00A3
 	goto _00AB
 

@@ -19,7 +19,7 @@ scr_seq_D46R0101_001:
 
 _0030:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0047
 	clearflag FLAG_UNK_263
 	end

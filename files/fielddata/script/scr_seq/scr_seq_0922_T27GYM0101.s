@@ -23,13 +23,13 @@ scr_seq_T27GYM0101_000:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0085
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0068
 	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _0083
 
 _0068:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _007F
 	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _0083
@@ -41,7 +41,7 @@ _0083:
 
 _0085:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _00A0
 	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _00A4

@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T30.h"
 #include "msgdata/msg/msg_0629_T30.h"
+#include "msgdata/msg/msg_0752.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -36,13 +37,13 @@ _005D:
 
 _006E:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _0089
 	clearflag FLAG_HIDE_CAMERON
 	goto _00A4
 
 _0089:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _00A0
 	clearflag FLAG_HIDE_CAMERON
 	goto _00A4
@@ -51,7 +52,7 @@ _00A0:
 	setflag FLAG_HIDE_CAMERON
 _00A4:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _00BF
 	clearflag FLAG_UNK_204
 	goto _00C3
@@ -79,21 +80,21 @@ scr_seq_T30_006:
 	goto_if_eq _01B7
 	goto_if_set FLAG_GOT_SOFT_SAND_FROM_SANTOS, _0199
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SATURDAY
 	goto_if_eq _014A
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 23
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00023
 	goto _0191
 
 _014A:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 20
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00020
 	goto_if_no_item_space ITEM_SOFT_SAND, 1, _01AD
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_SOFT_SAND_FROM_SANTOS
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 21
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00021
 _0191:
 	wait_button_or_walk_away
 	closemsg
@@ -102,7 +103,7 @@ _0191:
 
 _0199:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 22
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00022
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -116,17 +117,17 @@ _01AD:
 
 _01B7:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SATURDAY
 	goto_if_eq _01DA
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 23
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00023
 	goto _0191
 
 _01DA:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 48
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00048
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 50
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00050
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_SNOOZE
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -138,7 +139,7 @@ _01DA:
 
 _0209:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 49
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00049
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -146,7 +147,7 @@ _0209:
 
 _021D:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 51
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00051
 	wait_button_or_walk_away
 	closemsg
 	releaseall

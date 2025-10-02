@@ -88,15 +88,15 @@ scr_seq_0003_002:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ge _03E3
 	setvar VAR_SPECIAL_x8004, 0
-	scrcmd_379 VAR_SPECIAL_RESULT
+	get_time_of_day VAR_SPECIAL_RESULT
 	debugwatch VAR_SPECIAL_RESULT
-	setvar VAR_SPECIAL_x8004, 83
-	compare VAR_SPECIAL_RESULT, 0
+	setvar VAR_SPECIAL_x8004, msg_0040_00083
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_MORN
 	goto_if_eq _0175
-	setvar VAR_SPECIAL_x8004, 84
-	compare VAR_SPECIAL_RESULT, 1
+	setvar VAR_SPECIAL_x8004, msg_0040_00084
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_DAY
 	goto_if_eq _0175
-	setvar VAR_SPECIAL_x8004, 0
+	setvar VAR_SPECIAL_x8004, msg_0040_00000
 _0175:
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide

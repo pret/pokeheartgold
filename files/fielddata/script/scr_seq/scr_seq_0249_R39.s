@@ -22,9 +22,9 @@ scr_seq_R39_001:
 
 _0033:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _005B
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _005B
 	setflag FLAG_HIDE_CAMERON
 	goto _005F
@@ -32,10 +32,10 @@ _0033:
 _005B:
 	clearflag FLAG_HIDE_CAMERON
 _005F:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	get_time_of_day VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_NITE
 	goto_if_eq _0087
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_LATE
 	goto_if_eq _0087
 	clearflag FLAG_UNK_226
 	goto _008B

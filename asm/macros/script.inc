@@ -2147,7 +2147,7 @@
 	.short \record
 	.endm
 
-	.macro scrcmd_379 arg0
+	.macro get_time_of_day arg0
 	.short 379
 	.short \arg0
 	.endm

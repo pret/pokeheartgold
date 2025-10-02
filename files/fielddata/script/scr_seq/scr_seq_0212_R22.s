@@ -21,9 +21,9 @@ _0027:
 	compare VAR_UNK_40FE, 1
 	goto_if_eq _005E
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _0058
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _0058
 	setflag FLAG_HIDE_CAMERON
 	end

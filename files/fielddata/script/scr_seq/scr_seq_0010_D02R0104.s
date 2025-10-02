@@ -16,7 +16,7 @@
 scr_seq_D02R0104_000:
 	setflag FLAG_UNK_298
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _003B
 	goto _0060
 
@@ -24,7 +24,7 @@ _0035:
 	goto _005E
 
 _003B:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0054
 	goto _007D
 
@@ -33,29 +33,29 @@ _004E:
 
 _0054:
 	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_26E
+	setflag FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY
 _005E:
 	end
 
 _0060:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
+	get_time_of_day VAR_TEMP_x4001
+	compare VAR_TEMP_x4001, RTC_TIMEOFDAY_NITE
 	goto_if_eq _009A
 	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_26E
+	setflag FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY
 	end
 
 _007D:
-	scrcmd_379 VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 4
+	get_time_of_day VAR_TEMP_x4001
+	compare VAR_TEMP_x4001, RTC_TIMEOFDAY_LATE
 	goto_if_eq _009A
 	setvar VAR_UNK_40F6, 1
-	setflag FLAG_UNK_26E
+	setflag FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY
 	end
 
 _009A:
 	setvar VAR_UNK_40F6, 0
-	clearflag FLAG_UNK_26E
+	clearflag FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY
 	end
 
 scr_seq_D02R0104_005:
@@ -81,7 +81,7 @@ _00DC:
 _00E2:
 	compare VAR_UNK_40F6, 1
 	goto_if_eq _0141
-	setflag FLAG_UNK_26E
+	setflag FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY
 	hide_person obj_D02R0104_tsure_poke_static_clefairy
 	hide_person obj_D02R0104_tsure_poke_static_clefairy_2
 	hide_person obj_D02R0104_tsure_poke_static_clefairy_3
@@ -92,13 +92,13 @@ _00E2:
 	end
 
 _0113:
-	scrcmd_379 VAR_TEMP_x4001
+	get_time_of_day VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 3
 	goto_if_eq _0141
 	goto _00E2
 
 _012A:
-	scrcmd_379 VAR_TEMP_x4001
+	get_time_of_day VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
 	goto_if_eq _0141
 	goto _00E2
@@ -178,7 +178,7 @@ scr_seq_D02R0104_002:
 	hide_person obj_D02R0104_tsure_poke_static_clefairy_4
 	hide_person obj_D02R0104_tsure_poke_static_clefairy_5
 	hide_person obj_D02R0104_tsure_poke_static_clefairy_6
-	setflag FLAG_UNK_26E
+	setflag FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY
 	setvar VAR_UNK_40F6, 1
 	setflag FLAG_UNK_AB5
 	apply_movement 241, _0338

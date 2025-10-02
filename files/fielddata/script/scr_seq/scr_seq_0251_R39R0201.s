@@ -13,12 +13,12 @@
 	scrdef_end
 
 scr_seq_R39R0201_004:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	get_time_of_day VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_MORN
 	goto_if_eq _0047
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_DAY
 	goto_if_eq _0047
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_EVE
 	goto_if_eq _0047
 	clearflag FLAG_UNK_226
 	end

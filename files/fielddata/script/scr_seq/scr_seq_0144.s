@@ -68,10 +68,10 @@ scr_seq_0144_001:
 	mystery_gift SCR_MG_HAS_GIFT, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, FALSE
 	goto_if_eq _016D
-	scrcmd_379 VAR_SPECIAL_RESULT
+	get_time_of_day VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
-	case 0, _00FD
-	case 1, _0109
+	case RTC_TIMEOFDAY_MORN, _00FD
+	case RTC_TIMEOFDAY_DAY, _0109
 	goto _0115
 
 _00FD:
@@ -132,10 +132,10 @@ scr_seq_0144_002:
 	mom_gift_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0232
-	scrcmd_379 VAR_SPECIAL_RESULT
+	get_time_of_day VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
-	case 0, _01CF
-	case 1, _01DB
+	case RTC_TIMEOFDAY_MORN, _01CF
+	case RTC_TIMEOFDAY_DAY, _01DB
 	goto _01E7
 
 _01CF:

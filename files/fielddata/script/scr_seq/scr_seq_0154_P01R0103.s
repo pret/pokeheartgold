@@ -30,7 +30,7 @@ scr_seq_P01R0103_000:
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _0158
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SUNDAY
 	goto_if_ne _006C
 	goto _00EF
 
@@ -38,7 +38,7 @@ _0066:
 	goto _00EF
 
 _006C:
-	compare VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_MONDAY
 	goto_if_ne _0085
 	goto _0142
 
@@ -46,7 +46,7 @@ _007F:
 	goto _00EF
 
 _0085:
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_TUESDAY
 	goto_if_ne _009E
 	goto _0142
 
@@ -54,7 +54,7 @@ _0098:
 	goto _00EF
 
 _009E:
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_ne _00B7
 	goto _00EF
 
@@ -62,7 +62,7 @@ _00B1:
 	goto _00EF
 
 _00B7:
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_ne _00D0
 	goto _0142
 
@@ -70,7 +70,7 @@ _00CA:
 	goto _00EF
 
 _00D0:
-	compare VAR_SPECIAL_RESULT, 5
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_ne _00E9
 	goto _0142
 

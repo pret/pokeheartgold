@@ -23,13 +23,13 @@ _001B:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0084
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0067
 	clearflag FLAG_UNK_2CA
 	goto _0082
 
 _0067:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _007E
 	clearflag FLAG_UNK_2CA
 	goto _0082
@@ -41,7 +41,7 @@ _0082:
 
 _0084:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _009F
 	clearflag FLAG_UNK_2CA
 	goto _00A3

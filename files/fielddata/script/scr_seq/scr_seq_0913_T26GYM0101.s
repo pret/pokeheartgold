@@ -61,7 +61,7 @@ _009D:
 
 _00CB:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _00E8
 	goto _0109
 
@@ -69,7 +69,7 @@ _00E2:
 	goto _0107
 
 _00E8:
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _0101
 	goto _0109
 

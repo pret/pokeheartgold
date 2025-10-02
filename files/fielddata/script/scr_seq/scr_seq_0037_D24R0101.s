@@ -56,11 +56,11 @@ _00C6:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0104
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _010E
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_eq _010E
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _010E
 _0104:
 	setflag FLAG_HIDE_CAMERON

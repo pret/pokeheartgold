@@ -21,7 +21,7 @@ scr_seq_T02GYM0101_002:
 	compare VAR_UNK_40FD, 0
 	goto_if_eq _005F
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 5
+	compare VAR_TEMP_x4002, RTC_WEEK_FRIDAY
 	goto_if_ne _0059
 	setflag FLAG_HIDE_VIRIDIAN_GYM_BLUE
 	goto _005D

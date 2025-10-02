@@ -75,13 +75,13 @@ _00FB:
 
 _010C:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0127
 	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _0142
 
 _0127:
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _013E
 	setflag FLAG_HIDE_VERMILION_GYM_LT_SURGE
 	goto _0142

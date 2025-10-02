@@ -137,19 +137,19 @@ _01AB:
 
 _01B6:
 	get_weekday VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x8004, 1
+	compare VAR_SPECIAL_x8004, RTC_WEEK_MONDAY
 	goto_if_ne _01D8
 	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 	goto _020E
 
 _01D8:
-	compare VAR_SPECIAL_x8004, 4
+	compare VAR_SPECIAL_x8004, RTC_WEEK_THURSDAY
 	goto_if_ne _01F6
 	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 	goto _020E
 
 _01F6:
-	compare VAR_SPECIAL_x8004, 6
+	compare VAR_SPECIAL_x8004, RTC_WEEK_SATURDAY
 	goto_if_ne _020E
 	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 _020E:

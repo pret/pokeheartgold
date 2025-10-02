@@ -21,7 +21,7 @@
 
 scr_seq_R36_002:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0049
 	clearflag FLAG_UNK_1C4
 	goto _004D
@@ -311,7 +311,7 @@ scr_seq_R36_001:
 	goto_if_eq _0490
 	goto_if_set FLAG_GOT_HARD_STONE_FROM_ARTHUR, _0472
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_eq _0423
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 15
@@ -348,7 +348,7 @@ _0486:
 
 _0490:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_eq _04B3
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 15

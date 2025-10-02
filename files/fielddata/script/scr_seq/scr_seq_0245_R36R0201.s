@@ -19,21 +19,21 @@ scr_seq_R36R0201_000:
 	goto _0086
 
 _002D:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0048
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0086
 
 _0048:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0063
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3
 	goto _0086
 
 _0063:
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _007E
 	clearflag FLAG_UNK_1C4
 	setflag FLAG_UNK_1C3

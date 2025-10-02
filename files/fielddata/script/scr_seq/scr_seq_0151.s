@@ -99,19 +99,19 @@ scr_seq_0151_005:
 _0114:
 	goto_if_set FLAG_DAILY_DID_BUG_CONTEST, _02A6
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0139
 	npc_msg msg_0246_00004
 	goto _016E
 
 _0139:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _014F
 	npc_msg msg_0246_00005
 	goto _016E
 
 _014F:
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _0165
 	npc_msg msg_0246_00006
 	goto _016E

@@ -21,6 +21,7 @@
 #include "constants/species.h"
 #include "constants/sprites.h"
 #include "constants/std_script.h"
+#include "constants/time.h"
 #include "constants/trainers.h"
 #include "constants/vars.h"
 

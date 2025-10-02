@@ -48,7 +48,7 @@ _00B2:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00E6
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
+	compare VAR_TEMP_x4002, RTC_WEEK_SUNDAY
 	goto_if_ne _00E0
 	clearflag FLAG_HIDE_ROUTE_47_CHUCK
 	goto _00E4

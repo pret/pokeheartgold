@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R29.h"
 #include "msgdata/msg/msg_0373_R29.h"
+#include "msgdata/msg/msg_0752.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -26,7 +27,7 @@ scr_seq_R29_000:
 
 _0043:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _005E
 	clearflag FLAG_UNK_207
 	goto _0062
@@ -49,21 +50,21 @@ scr_seq_R29_003:
 	goto_if_eq _0138
 	goto_if_set FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY, _011A
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_TUESDAY
 	goto_if_eq _00CB
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00007
 	goto _0112
 
 _00CB:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 4
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00004
 	goto_if_no_item_space ITEM_TWISTEDSPOON, 1, _012E
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_TWISTEDSPOON_FROM_TUSCANY
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00005
 _0112:
 	wait_button_or_walk_away
 	closemsg
@@ -72,7 +73,7 @@ _0112:
 
 _011A:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00006
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -86,17 +87,17 @@ _012E:
 
 _0138:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_TUESDAY
 	goto_if_eq _015B
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00007
 	goto _0112
 
 _015B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 32
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00032
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 34
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00034
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_SHOCK
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -108,7 +109,7 @@ _015B:
 
 _018A:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 33
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00033
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -116,7 +117,7 @@ _018A:
 
 _019E:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 35
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00035
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -747,20 +748,20 @@ scr_seq_R29_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	scrcmd_379 VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
+	get_time_of_day VAR_SPECIAL_RESULT
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_MORN
 	goto_if_ne _0976
 	npc_msg msg_0373_R29_00012
 	goto _09A5
 
 _0976:
-	compare VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_DAY
 	goto_if_ne _098C
 	npc_msg msg_0373_R29_00013
 	goto _09A5
 
 _098C:
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_EVE
 	goto_if_ne _09A2
 	npc_msg msg_0373_R29_00013
 	goto _09A5

@@ -484,8 +484,8 @@
 #define FLAG_UNK_1CE                                              0x1CE
 #define FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL                        0x1CF
 #define FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL                       0x1D0
-#define FLAG_UNK_1D1                                              0x1D1
-#define FLAG_UNK_1D2                                              0x1D2
+#define FLAG_HIDE_ROUTE_34_POLICEMAN_DAY                          0x1D1
+#define FLAG_HIDE_ROUTE_34_POLICEMAN_NIGHT                        0x1D2
 #define FLAG_HIDE_FARFETCHD_1_FOUND                               0x1D3
 #define FLAG_HIDE_FARFETCHD_2_FOUND                               0x1D4
 #define FLAG_UNK_1D5                                              0x1D5
@@ -576,7 +576,7 @@
 #define FLAG_UNK_22A                                              0x22A
 #define FLAG_UNK_22B                                              0x22B
 #define FLAG_UNK_22C                                              0x22C
-#define FLAG_UNK_22D                                              0x22D
+#define FLAG_HIDE_ROUTE_34_FRIEND                                 0x22D
 #define FLAG_UNK_22E                                              0x22E
 #define FLAG_HIDE_BATTLE_TOWER_RECEPTIONIST                       0x22F
 #define FLAG_UNK_230                                              0x230
@@ -641,7 +641,7 @@
 #define FLAG_HIDE_FUCHSIA_GYM_CAMPER_BARRY_DISGUISED              0x26B
 #define FLAG_HIDE_FUCHSIA_GYM_LASS_ALICE_DISGUISED                0x26C
 #define FLAG_HIDE_FUCHSIA_GYM_PICNICKER_CINDY_DISGUISED           0x26D
-#define FLAG_UNK_26E                                              0x26E
+#define FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY                         0x26E
 #define FLAG_UNK_26F                                              0x26F
 #define FLAG_UNK_270                                              0x270
 #define FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN                     0x271

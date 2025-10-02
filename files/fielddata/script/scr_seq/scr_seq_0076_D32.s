@@ -53,9 +53,9 @@ scr_seq_D32_037:
 
 _00AF:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _00D7
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _00D7
 	setflag FLAG_HIDE_CAMERON
 	goto _00DB

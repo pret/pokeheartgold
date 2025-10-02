@@ -26,14 +26,14 @@ scr_seq_T11GYM0101_004:
 
 _0055:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0083
 	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
 
 _006C:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0083
 	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end

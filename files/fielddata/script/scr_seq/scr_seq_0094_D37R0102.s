@@ -45,43 +45,43 @@ scr_seq_D37R0102_008:
 	compare VAR_SCENE_ROCKET_TAKEOVER, 3
 	goto_if_eq _0144
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _00C0
 	clearflag FLAG_UNK_1B1
 	clearflag FLAG_UNK_1B3
 	goto _0131
 
 _00C0:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _00D7
 	clearflag FLAG_UNK_1B2
 	goto _0131
 
 _00D7:
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_ne _00EE
 	clearflag FLAG_UNK_1B3
 	goto _0131
 
 _00EE:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0105
 	clearflag FLAG_UNK_1B2
 	goto _0131
 
 _0105:
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _011C
 	clearflag FLAG_UNK_1B3
 	goto _0131
 
 _011C:
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _0131
 	clearflag FLAG_UNK_1B1
 	clearflag FLAG_UNK_1B2
 _0131:
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	call_if_eq _0161
 	clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
 	end

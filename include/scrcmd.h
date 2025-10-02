@@ -414,7 +414,7 @@ BOOL ScrCmd_MakeObjectVisible(ScriptContext *ctx);
 BOOL ScrCmd_376(ScriptContext *ctx);
 BOOL ScrCmd_377(ScriptContext *ctx);
 BOOL ScrCmd_ViewRankings(ScriptContext *ctx);
-BOOL ScrCmd_379(ScriptContext *ctx);
+BOOL ScrCmd_GetTimeOfDay(ScriptContext *ctx);
 BOOL ScrCmd_Random(ScriptContext *ctx);
 BOOL ScrCmd_381(ScriptContext *ctx);
 BOOL ScrCmd_MonGetFriendship(ScriptContext *ctx);

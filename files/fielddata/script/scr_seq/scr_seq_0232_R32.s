@@ -27,11 +27,11 @@ _003B:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0079
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_eq _0083
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _0083
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_eq _0083
 _0079:
 	setflag FLAG_HIDE_CAMERON
@@ -43,7 +43,7 @@ _0083:
 
 _008D:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _00A8
 	clearflag FLAG_UNK_208
 	goto _00AC
@@ -66,7 +66,7 @@ scr_seq_R32_005:
 	goto_if_eq _0182
 	goto_if_set FLAG_GOT_POISON_BARB_FROM_FRIEDA, _0164
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 5
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_eq _0115
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 19
@@ -103,7 +103,7 @@ _0178:
 
 _0182:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 5
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_eq _01A5
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 19

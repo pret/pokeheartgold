@@ -21,11 +21,11 @@ _0023:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0061
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
+	compare VAR_TEMP_x4001, RTC_WEEK_MONDAY
 	goto_if_eq _0067
-	compare VAR_TEMP_x4001, 2
+	compare VAR_TEMP_x4001, RTC_WEEK_TUESDAY
 	goto_if_eq _0067
-	compare VAR_TEMP_x4001, 4
+	compare VAR_TEMP_x4001, RTC_WEEK_THURSDAY
 	goto_if_eq _0067
 _0061:
 	setflag FLAG_HIDE_CAMERON
