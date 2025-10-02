@@ -81,12 +81,12 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
     u8 sbox[256];
     RC4_InitSBox(&sbox[0]);
 
-    for (u32 idx = 0; idx < size; idx += 4) {
-        switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + idx))) {
+    for (u32 offset = 0; offset < size; offset += 4) {
+        switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + offset))) {
         case INS_TYPE_BLXIMM:
         case INS_TYPE_BL: {
-            u32 *src_addr = (u32 *)(src_bytes + idx);
-            u32 *dst_addr = (u32 *)(dst_bytes + idx);
+            u32 *src_addr = (u32 *)(src_bytes + offset);
+            u32 *dst_addr = (u32 *)(dst_bytes + offset);
 
             *dst_addr = *src_addr;
 
@@ -97,8 +97,8 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
         } break;
 
         case INS_TYPE_B: {
-            u32 *src_addr = (u32 *)(src_bytes + idx);
-            u32 *dst_addr = (u32 *)(dst_bytes + idx);
+            u32 *src_addr = (u32 *)(src_bytes + offset);
+            u32 *dst_addr = (u32 *)(dst_bytes + offset);
 
             *dst_addr = *src_addr;
 
@@ -109,10 +109,10 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
         } break;
 
         default:
-            dst_bytes[idx] = src_bytes[idx] ^ RC4_Byte(ctx);
-            dst_bytes[idx + 1] = src_bytes[idx + 1] ^ RC4_Byte(ctx);
-            dst_bytes[idx + 2] = sbox[src_bytes[idx + 2]];
-            dst_bytes[idx + 3] = src_bytes[idx + 3];
+            dst_bytes[offset] = src_bytes[offset] ^ RC4_Byte(ctx);
+            dst_bytes[offset + 1] = src_bytes[offset + 1] ^ RC4_Byte(ctx);
+            dst_bytes[offset + 2] = sbox[src_bytes[offset + 2]];
+            dst_bytes[offset + 3] = src_bytes[offset + 3];
             break;
         }
     }
@@ -131,12 +131,12 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
     u8 sbox[256];
     RC4_InitSBox(&sbox[0]);
 
-    for (u32 idx = 0; idx < size; idx += 4) {
-        switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + idx))) {
+    for (u32 offset = 0; offset < size; offset += 4) {
+        switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + offset))) {
         case INS_TYPE_BLXIMM:
         case INS_TYPE_BL: {
-            u32 *src_addr = (u32 *)(src_bytes + idx);
-            u32 *dst_addr = (u32 *)(dst_bytes + idx);
+            u32 *src_addr = (u32 *)(src_bytes + offset);
+            u32 *dst_addr = (u32 *)(dst_bytes + offset);
 
             *dst_addr = *src_addr;
 
@@ -147,8 +147,8 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
         } break;
 
         case INS_TYPE_B: {
-            u32 *src_addr = (u32 *)(src_bytes + idx);
-            u32 *dst_addr = (u32 *)(dst_bytes + idx);
+            u32 *src_addr = (u32 *)(src_bytes + offset);
+            u32 *dst_addr = (u32 *)(dst_bytes + offset);
 
             *dst_addr = *src_addr;
 
@@ -159,10 +159,10 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
         } break;
 
         default:
-            dst_bytes[idx] = src_bytes[idx] ^ RC4_Byte(ctx);
-            dst_bytes[idx + 1] = src_bytes[idx + 1] ^ RC4_Byte(ctx);
-            dst_bytes[idx + 2] = sbox[src_bytes[idx + 2]];
-            dst_bytes[idx + 3] = src_bytes[idx + 3];
+            dst_bytes[offset] = src_bytes[offset] ^ RC4_Byte(ctx);
+            dst_bytes[offset + 1] = src_bytes[offset + 1] ^ RC4_Byte(ctx);
+            dst_bytes[offset + 2] = sbox[src_bytes[offset + 2]];
+            dst_bytes[offset + 3] = src_bytes[offset + 3];
             break;
         }
     }
