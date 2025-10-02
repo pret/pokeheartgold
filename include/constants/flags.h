@@ -409,7 +409,7 @@
 #define FLAG_UNK_186                                    0x186
 #define FLAG_UNK_187                                    0x187
 #define FLAG_UNK_188                                    0x188
-#define FLAG_UNK_189                                    0x189
+#define FLAG_TAKING_PHOTO                               0x189 // set to skip rerunning Cameron check code on returning from taking the photo
 #define FLAG_SPECIAL_MART_MT_MOON                       0x18A
 #define FLAG_BEAT_OR_ESCAPED_FROM_GROUDON_OR_KYOGRE     0x18B
 #define FLAG_UNK_18C                                    0x18C

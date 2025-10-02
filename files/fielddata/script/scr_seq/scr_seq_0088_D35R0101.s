@@ -23,9 +23,9 @@ scr_seq_D35R0101_001:
 	make_object_visible obj_D35R0101_stop_3
 	compare VAR_UNK_40AC, 9
 	goto_if_ge _00B7
-	compare VAR_UNK_40A8, 2
+	compare VAR_SCENE_MAHOGANY_SHOP, 2
 	goto_if_ge _006D
-	compare VAR_UNK_40A8, 1
+	compare VAR_SCENE_MAHOGANY_SHOP, 1
 	goto_if_eq _005F
 	end
 
@@ -120,7 +120,7 @@ scr_seq_D35R0101_006:
 	wait_movement
 	hide_person obj_D35R0101_tsure_poke_static_dragonite
 	setflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
-	setvar VAR_UNK_40A8, 2
+	setvar VAR_SCENE_MAHOGANY_SHOP, 2
 	releaseall
 	end
 
@@ -231,7 +231,7 @@ scr_seq_D35R0101_002:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40A8, 2
+	compare VAR_SCENE_MAHOGANY_SHOP, 2
 	goto_if_ge _031C
 	npc_msg msg_0111_D35R0101_00000
 	holdmsg
@@ -248,7 +248,7 @@ _031C:
 	end
 
 scr_seq_D35R0101_003:
-	compare VAR_UNK_40A8, 2
+	compare VAR_SCENE_MAHOGANY_SHOP, 2
 	goto_if_ge _0347
 	simple_npc_msg msg_0111_D35R0101_00002
 	end

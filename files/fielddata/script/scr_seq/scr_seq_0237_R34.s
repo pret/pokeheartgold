@@ -31,8 +31,8 @@ scr_seq_R34_000:
 _0057:
 	set_object_movement_type obj_R34_gsoldman1, 15
 _005D:
-	goto_if_unset FLAG_UNK_189, _006E
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _006E
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _006E:
@@ -529,14 +529,14 @@ _06C6:
 	apply_movement obj_partner_poke, _07A8
 	wait_movement
 _06ED:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 9
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button_or_walk_away

@@ -16,8 +16,8 @@
 	scrdef_end
 
 scr_seq_T25R1006_006:
-	goto_if_unset FLAG_UNK_189, _0033
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0033
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0033:
@@ -477,7 +477,7 @@ _067A:
 	goto_if_eq _06E6
 	npc_msg msg_0597_T25R1006_00031
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 15
@@ -485,7 +485,7 @@ _067A:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0597_T25R1006_00032
 	wait_button_or_walk_away
 	closemsg

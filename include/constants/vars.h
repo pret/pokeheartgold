@@ -180,7 +180,7 @@
 #define VAR_SCENE_LIGHTHOUSE_JASMINE       0x40A5
 #define VAR_UNK_40A6                       0x40A6
 #define VAR_UNK_40A7                       0x40A7
-#define VAR_UNK_40A8                       0x40A8
+#define VAR_SCENE_MAHOGANY_SHOP            0x40A8
 #define VAR_UNK_40A9                       0x40A9
 #define VAR_UNK_40AA                       0x40AA
 #define VAR_UNK_40AB                       0x40AB

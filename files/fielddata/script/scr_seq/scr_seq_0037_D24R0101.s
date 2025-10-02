@@ -2,6 +2,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0101.h"
 #include "msgdata/msg/msg_0072_D24R0101.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -43,8 +44,8 @@ _0080:
 	end
 
 scr_seq_D24R0101_005:
-	goto_if_unset FLAG_UNK_189, _00B3
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _00B3
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _00B3:
@@ -81,7 +82,7 @@ scr_seq_D24R0101_004:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -91,7 +92,7 @@ scr_seq_D24R0101_004:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _024D
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -123,16 +124,16 @@ _01D8:
 	apply_movement obj_partner_poke, _02A8
 	wait_movement
 _01FF:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 3
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -140,7 +141,7 @@ _01FF:
 
 _0239:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -148,7 +149,7 @@ _0239:
 
 _024D:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

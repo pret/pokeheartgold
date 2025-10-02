@@ -14,8 +14,8 @@
 	scrdef_end
 
 scr_seq_D44R0102_002:
-	goto_if_unset FLAG_UNK_189, _002B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _002B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _002B:
@@ -327,7 +327,7 @@ _03FC:
 	goto_if_eq _0468
 	npc_msg msg_0129_D44R0102_00030
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 83
@@ -335,7 +335,7 @@ _03FC:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0129_D44R0102_00031
 	wait_button_or_walk_away
 	closemsg

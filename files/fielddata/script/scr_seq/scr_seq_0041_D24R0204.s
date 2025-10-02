@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "msgdata/msg/msg_0075_D24R0204.h"
+#include "msgdata/msg/msg_0211.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -156,7 +157,7 @@ scr_seq_D24R0204_002:
 	lockall
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	get_std_msg_naix 1, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 28
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0211_00028
 	closemsg
 	scrcmd_183 VAR_SPECIAL_x8000
 	wait 2, VAR_SPECIAL_x8004

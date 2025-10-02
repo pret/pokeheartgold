@@ -31,8 +31,8 @@ scr_seq_T30_005:
 	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
 	setvar VAR_UNK_40C4, 2
 _005D:
-	goto_if_unset FLAG_UNK_189, _006E
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _006E
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _006E:
@@ -247,14 +247,14 @@ _0360:
 	apply_movement obj_partner_poke, _0430
 	wait_movement
 _0387:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 44
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button_or_walk_away

@@ -13,8 +13,8 @@
 	scrdef_end
 
 scr_seq_T09_003:
-	goto_if_unset FLAG_UNK_189, _0027
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0027
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0027:
@@ -248,7 +248,7 @@ _0304:
 	goto_if_eq _0370
 	npc_msg msg_0519_T09_00006
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 92
@@ -256,7 +256,7 @@ _0304:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0519_T09_00007
 	wait_button_or_walk_away
 	closemsg
@@ -342,7 +342,7 @@ _0429:
 	goto_if_eq _0495
 	npc_msg msg_0519_T09_00016
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 85
@@ -350,7 +350,7 @@ _0429:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0519_T09_00017
 	wait_button_or_walk_away
 	closemsg

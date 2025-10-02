@@ -4358,7 +4358,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_775 arg0, arg1
+	.macro npc_use_fly arg0, arg1
 	.short 775
 	.short \arg0
 	.short \arg1

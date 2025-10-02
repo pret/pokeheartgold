@@ -2,6 +2,7 @@
 #include "fielddata/script/scr_seq/event_0003.h"
 #include "msgdata/msg/msg_0040.h"
 #include "msgdata/msg/msg_0191.h"
+#include "msgdata/msg/msg_0435.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -1574,7 +1575,7 @@ scr_seq_0003_050:
 scr_seq_0003_051:
 	touchscreen_menu_show
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00001
 	wait_button_or_walk_away
 	closemsg
 	endstd
@@ -1582,7 +1583,7 @@ scr_seq_0003_051:
 
 _14DD:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00006
 	holdmsg
 	goto _145E
 	end
@@ -1621,7 +1622,7 @@ scr_seq_0003_055:
 	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1630
 	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1654
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00001
 _159E:
 	wait_button_or_walk_away
 	closemsg
@@ -1634,7 +1635,7 @@ _15A6:
 	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1642
 	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1666
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00006
 _15DE:
 	holdmsg
 	goto _14FB
@@ -1642,42 +1643,42 @@ _15DE:
 
 _15E8:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00002
 	goto _159E
 
 _15FA:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00007
 	goto _15DE
 
 _160C:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00003
 	goto _159E
 
 _161E:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00008
 	goto _15DE
 
 _1630:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 4
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00004
 	goto _159E
 
 _1642:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00009
 	goto _15DE
 
 _1654:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00005
 	goto _159E
 
 _1666:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 10
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00010
 	goto _15DE
 
 scr_seq_0003_056:

@@ -16,8 +16,8 @@
 	scrdef_end
 
 scr_seq_R39_001:
-	goto_if_unset FLAG_UNK_189, _0033
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0033
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0033:
@@ -249,14 +249,14 @@ _032B:
 	apply_movement obj_partner_poke, _040C
 	wait_movement
 _0352:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 28
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button_or_walk_away
@@ -339,7 +339,7 @@ scr_seq_R39_007:
 	goto_if_eq _0490
 	npc_msg msg_0396_R39_00011
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 80
@@ -347,7 +347,7 @@ scr_seq_R39_007:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0396_R39_00012
 	wait_button_or_walk_away
 	closemsg

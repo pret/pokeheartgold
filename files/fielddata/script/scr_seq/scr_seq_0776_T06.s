@@ -22,8 +22,8 @@
 	scrdef_end
 
 scr_seq_T06_009:
-	goto_if_unset FLAG_UNK_189, _004B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _004B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _004B:
@@ -648,14 +648,14 @@ _080E:
 	apply_movement obj_partner_poke, _08D8
 	wait_movement
 _0835:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 50
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button_or_walk_away

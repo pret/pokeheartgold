@@ -25,8 +25,8 @@ _002D:
 
 scr_seq_P01R0102_005:
 	scrcmd_582 MAP_OLIVINE, 279, 276
-	goto_if_unset FLAG_UNK_189, _0054
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0054
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0054:
@@ -273,7 +273,7 @@ _0322:
 	goto_if_eq _038E
 	npc_msg msg_0256_P01R0102_00010
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 88
@@ -281,7 +281,7 @@ _0322:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0256_P01R0102_00011
 	wait_button_or_walk_away
 	closemsg

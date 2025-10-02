@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T29.h"
 #include "msgdata/msg/msg_0626_T29.h"
+#include "msgdata/msg/msg_0752.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -207,18 +208,18 @@ scr_seq_T29_005:
 	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_eq _02DC
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00011
 	goto _0323
 
 _02DC:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00008
 	goto_if_no_item_space ITEM_BLACK_BELT, 1, _033F
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_BLACK_BELT_FROM_WESLEY
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00009
 _0323:
 	wait_button_or_walk_away
 	closemsg
@@ -227,7 +228,7 @@ _0323:
 
 _032B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 10
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00010
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -244,14 +245,14 @@ _0349:
 	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_eq _036C
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00011
 	goto _0323
 
 _036C:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 36
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00036
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 38
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00038
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -263,7 +264,7 @@ _036C:
 
 _039B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 37
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00037
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -271,7 +272,7 @@ _039B:
 
 _03AF:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 39
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00039
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -353,12 +354,12 @@ _04BB:
 	wait_movement
 	apply_movement obj_T29_wataru, _0544
 	wait_movement
-	scrcmd_775 8, 10
+	npc_use_fly obj_T29_wataru, obj_T29_tsure_poke_static_dragonite
 	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
 	hide_person obj_T29_tsure_poke_static_dragonite
 	clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
-	setvar VAR_UNK_40A8, 1
+	setvar VAR_SCENE_MAHOGANY_SHOP, 1
 	releaseall
 	end
 

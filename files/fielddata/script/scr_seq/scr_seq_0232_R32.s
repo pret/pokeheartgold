@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R32.h"
 #include "msgdata/msg/msg_0380_R32.h"
+#include "msgdata/msg/msg_0752.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -18,8 +19,8 @@
 	scrdef_end
 
 scr_seq_R32_004:
-	goto_if_unset FLAG_UNK_189, _003B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _003B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _003B:
@@ -69,18 +70,18 @@ scr_seq_R32_005:
 	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_eq _0115
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 19
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00019
 	goto _015C
 
 _0115:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 16
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00016
 	goto_if_no_item_space ITEM_POISON_BARB, 1, _0178
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_POISON_BARB_FROM_FRIEDA
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 17
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00017
 _015C:
 	wait_button_or_walk_away
 	closemsg
@@ -89,7 +90,7 @@ _015C:
 
 _0164:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 18
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00018
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -106,14 +107,14 @@ _0182:
 	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_eq _01A5
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 19
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00019
 	goto _015C
 
 _01A5:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 44
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00044
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 46
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00046
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_RELAX
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -125,7 +126,7 @@ _01A5:
 
 _01D4:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 45
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00045
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -133,7 +134,7 @@ _01D4:
 
 _01E8:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 47
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00047
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -459,14 +460,14 @@ _05FF:
 	apply_movement obj_partner_poke, _06E0
 	wait_movement
 _0626:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 5
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
 	msgbox_extern VAR_SPECIAL_RESULT, 2
 	wait_button_or_walk_away

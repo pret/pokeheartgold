@@ -27,8 +27,8 @@ _0054:
 
 scr_seq_R22R0101_007:
 	setflag FLAG_SYS_VISITED_VICTORY_ROAD
-	goto_if_unset FLAG_UNK_189, _006B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _006B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _006B:
@@ -465,7 +465,7 @@ _0553:
 	goto_if_eq _05BF
 	npc_msg msg_0361_R22R0101_00013
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 70
@@ -473,7 +473,7 @@ _0553:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0361_R22R0101_00014
 	wait_button_or_walk_away
 	closemsg

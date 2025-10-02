@@ -10,8 +10,8 @@
 	scrdef_end
 
 scr_seq_D17R1101_000:
-	goto_if_unset FLAG_UNK_189, _001B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _001B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _001B:
@@ -120,7 +120,7 @@ _0159:
 	goto_if_eq _01C5
 	npc_msg msg_0059_D17R1101_00006
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 20
@@ -128,7 +128,7 @@ _0159:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0059_D17R1101_00007
 	wait_button_or_walk_away
 	closemsg

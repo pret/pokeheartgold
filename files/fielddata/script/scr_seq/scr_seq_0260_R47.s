@@ -34,8 +34,8 @@ _0067:
 	goto_if_eq _00E6
 	compare VAR_SCENE_EMBEDDED_TOWER, 5
 	goto_if_ge _00EC
-	goto_if_unset FLAG_UNK_189, _009F
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _009F
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _009F:
@@ -182,7 +182,7 @@ scr_seq_R47_004:
 	goto_if_eq _02C0
 	npc_msg msg_0407_R47_00006
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 91
@@ -190,7 +190,7 @@ scr_seq_R47_004:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0407_R47_00007
 	wait_button_or_walk_away
 	closemsg

@@ -774,7 +774,7 @@ BOOL ScrCmd_771(ScriptContext *ctx);
 BOOL ScrCmd_772(ScriptContext *ctx);
 BOOL ScrCmd_Cinematic(ScriptContext *ctx);
 BOOL ScrCmd_ShowLegendaryWing(ScriptContext *ctx);
-BOOL ScrCmd_775(ScriptContext *ctx);
+BOOL ScrCmd_NpcUseFly(ScriptContext *ctx);
 BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx);
 BOOL ScrCmd_777(ScriptContext *ctx);
 BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx);
@@ -1629,7 +1629,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_772,
     ScrCmd_Cinematic,
     ScrCmd_ShowLegendaryWing,
-    ScrCmd_775,
+    ScrCmd_NpcUseFly,
     ScrCmd_GiveTogepiEgg,
     ScrCmd_777,
     ScrCmd_GiveSpikyEarPichu,
