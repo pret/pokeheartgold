@@ -2299,7 +2299,7 @@
 	.endif
 	.endm
 
-	.macro scrcmd_403 arg0, arg1
+	.macro give_accessory arg0, arg1
 	.short 403
 	.short \arg0
 	.short \arg1
@@ -2312,19 +2312,19 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_405 arg0, arg1, arg2
+	.macro has_accessory arg0, arg1, arg2
 	.short 405
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_406 arg0
+	.macro give_fashion_background arg0
 	.short 406
 	.short \arg0
 	.endm
 
-	.macro scrcmd_407 arg0, arg1
+	.macro has_space_for_fashion_background arg0, arg1
 	.short 407
 	.short \arg0
 	.short \arg1

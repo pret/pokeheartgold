@@ -3263,7 +3263,7 @@ BOOL ScrCmd_381(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_403(ScriptContext *ctx) {
+BOOL ScrCmd_GiveAccessory(ScriptContext *ctx) {
     u16 r4 = ScriptGetVar(ctx);
     u16 r6 = ScriptGetVar(ctx);
     FashionCase_GiveFashionItem(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
@@ -3271,31 +3271,31 @@ BOOL ScrCmd_403(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_HasSpaceForAccessory(ScriptContext *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
-    u16 r6 = ScriptGetVar(ctx);
+    u16 accessoryId = ScriptGetVar(ctx);
+    u16 num = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA2C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4, r6);
+    *p_ret = FashionCase_HasSpaceForAccessory(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), accessoryId, num);
     return FALSE;
 }
 
-BOOL ScrCmd_405(ScriptContext *ctx) {
-    u16 r7 = ScriptGetVar(ctx);
-    u16 r6 = ScriptGetVar(ctx);
+BOOL ScrCmd_HasAccessory(ScriptContext *ctx) {
+    u16 id = ScriptGetVar(ctx);
+    u16 quantity = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = r6 <= sub_0202BA70(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r7);
+    *p_ret = quantity <= FashionCase_GetAccessoryQuantity(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), id);
     return FALSE;
 }
 
-BOOL ScrCmd_406(ScriptContext *ctx) {
-    u16 r4 = ScriptGetVar(ctx);
-    FashionCase_GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r4);
+BOOL ScrCmd_GiveFashionBackground(ScriptContext *ctx) {
+    u16 id = ScriptGetVar(ctx);
+    FashionCase_GiveContestBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), id);
     return FALSE;
 }
 
-BOOL ScrCmd_407(ScriptContext *ctx) {
-    u16 r6 = ScriptGetVar(ctx);
+BOOL ScrCmd_HasSpaceForFashionBackground(ScriptContext *ctx) {
+    u16 id = ScriptGetVar(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = sub_0202BA5C(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), r6);
+    *p_ret = FashionCase_HasSpaceForBackground(Save_FashionData_GetFashionCase(Save_FashionData_Get(ctx->fieldSystem->saveData)), id);
     return FALSE;
 }
 
@@ -3802,7 +3802,7 @@ BOOL ScrCmd_526(ScriptContext *ctx) {
     // (though unlikely) that some element could randomly
     // be equal to 1 unintentionally on entry.
     for (i = 0; i < 16; i++) {
-        if (sub_0202BA2C(fashionCase, i + 34, 1) == TRUE) {
+        if (FashionCase_HasSpaceForAccessory(fashionCase, i + 34, 1) == TRUE) {
             sp4[i] = 1;
             n++;
         }

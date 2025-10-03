@@ -587,7 +587,7 @@ scr_seq_0003_035:
 
 _07AA:
 	play_fanfare SEQ_ME_ACCE
-	scrcmd_403 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	give_accessory VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_fashion_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare
@@ -610,7 +610,7 @@ scr_seq_0003_034:
 
 _07E4:
 	play_fanfare SEQ_ME_ACCE
-	scrcmd_406 VAR_SPECIAL_x8004
+	give_fashion_background VAR_SPECIAL_x8004
 	buffer_background_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare

@@ -14,9 +14,9 @@ typedef struct SaveFashionDataSub3FC {
 } SaveFashionDataSub3FC; // size=0x98
 
 typedef struct FashionCase {
-    u32 unk_00[40 / sizeof(u32)];
-    u32 unk_28[18 / sizeof(u32)];
-    u8 padding_3C[4];
+    u32 smallAccessoryQuantities[CEILDIV(61, 2 * sizeof(u32))]; // 61 accessories; quantities stored as nybbles
+    u32 largeAccessoryQuantities[CEILDIV(39, 8 * sizeof(u32))]; // 39 accessories; quantities stored as bits
+    u32 unk_28[CEILDIV(18, sizeof(u32))];
 } FashionCase;
 
 typedef struct SaveFashionData {      // todo: rename to SaveFashionData
@@ -34,10 +34,10 @@ BOOL sub_0202BA08(SaveFashionData *fashionData, int a1);
 SaveFashionDataSub *sub_0202B9B8(SaveFashionData *fashionData, int a1);
 void sub_0202BD7C(SaveFashionDataSub *fashionDataSub, int a1);
 void FashionCase_GiveFashionItem(FashionCase *fashionCase, int id, int quantity);
-int sub_0202BA2C(FashionCase *fashionCase, int a1, int a2);
-u32 sub_0202BA70(FashionCase *fashionCase, int a1);
+int FashionCase_HasSpaceForAccessory(FashionCase *fashionCase, int id, int quantity);
+u32 FashionCase_GetAccessoryQuantity(FashionCase *fashionCase, int id);
 void FashionCase_GiveContestBackground(FashionCase *fashionCase, int id);
-int sub_0202BA5C(FashionCase *fashionCase, int a1);
+int FashionCase_HasSpaceForBackground(FashionCase *fashionCase, int id);
 void sub_0202BB7C(FashionCase *fashionCase, int a1, int a2);
 
 #endif // POKEHEARTGOLD_FASHION_CASE_H

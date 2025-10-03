@@ -101,5 +101,6 @@
 #define ACCESSORY_CROWN           97
 #define ACCESSORY_TIARA           98
 #define ACCESSORY_COMET           99
+#define ACCESSORY_MAX             100
 
 #endif // POKEHEARTGOLD_CONSTANTS_ACCESSORIES_H

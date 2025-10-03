@@ -427,7 +427,7 @@ _059E:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 14
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	has_space_for_fashion_background VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00037
@@ -439,7 +439,7 @@ _05D7:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 15
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	has_space_for_fashion_background VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00038
@@ -451,7 +451,7 @@ _0610:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 16
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	has_space_for_fashion_background VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00039

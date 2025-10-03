@@ -6520,7 +6520,7 @@ ov41_02248E84: ; 0x02248E84
 _02248E8E:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202BA70
+	bl FashionCase_GetAccessoryQuantity
 	add r4, r4, #1
 	stmia r5!, {r0}
 	cmp r4, #0x64

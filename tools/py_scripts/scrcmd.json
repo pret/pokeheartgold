@@ -2485,7 +2485,7 @@
       "switch_arg": 0
     },
     {
-      "name": "scrcmd_403",
+      "name": "give_accessory",
       "args": [
         "var",
         "var"
@@ -2500,7 +2500,7 @@
       ]
     },
     {
-      "name": "scrcmd_405",
+      "name": "has_accessory",
       "args": [
         2,
         2,
@@ -2508,13 +2508,13 @@
       ]
     },
     {
-      "name": "scrcmd_406",
+      "name": "give_fashion_background",
       "args": [
         "var"
       ]
     },
     {
-      "name": "scrcmd_407",
+      "name": "has_space_for_fashion_background",
       "args": [
         "var",
         "var"

@@ -1,4 +1,5 @@
 #include "constants/pokemon.h"
+#include "constants/accessories.h"
 	.include "asm/macros.inc"
 	.include "unk_0202B614.inc"
 	.include "global.inc"
@@ -604,13 +605,13 @@ _0202BA16:
 _0202BA28: .word 0x000004FC
 	thumb_func_end sub_0202BA08
 
-	thumb_func_start sub_0202BA2C
-sub_0202BA2C: ; 0x0202BA2C
+	thumb_func_start FashionCase_HasSpaceForAccessory
+FashionCase_HasSpaceForAccessory: ; 0x0202BA2C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r1, #0
 	add r5, r2, #0
 	mov r4, #1
-	bl sub_0202BA70
+	bl FashionCase_GetAccessoryQuantity
 	add r6, r0, #0
 	add r0, r7, #0
 	bl sub_0202B8FC
@@ -630,10 +631,10 @@ _0202BA56:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202BA2C
+	thumb_func_end FashionCase_HasSpaceForAccessory
 
-	thumb_func_start sub_0202BA5C
-sub_0202BA5C: ; 0x0202BA5C
+	thumb_func_start FashionCase_HasSpaceForBackground
+FashionCase_HasSpaceForBackground: ; 0x0202BA5C
 	push {r3, lr}
 	bl sub_0202BAB0
 	cmp r0, #0x12
@@ -644,14 +645,14 @@ _0202BA6A:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_0202BA5C
+	thumb_func_end FashionCase_HasSpaceForBackground
 
-	thumb_func_start sub_0202BA70
-sub_0202BA70: ; 0x0202BA70
+	thumb_func_start FashionCase_GetAccessoryQuantity
+FashionCase_GetAccessoryQuantity: ; 0x0202BA70
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	cmp r5, #0x64
+	cmp r5, #ACCESSORY_MAX
 	blo _0202BA7E
 	bl GF_AssertFail
 _0202BA7E:
@@ -678,7 +679,7 @@ _0202BA9C:
 	lsr r1, r1, #0x18
 	bl sub_0202B848
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0202BA70
+	thumb_func_end FashionCase_GetAccessoryQuantity
 
 	thumb_func_start sub_0202BAB0
 sub_0202BAB0: ; 0x0202BAB0
@@ -706,10 +707,10 @@ FashionCase_CountAccessories: ; 0x0202BACC
 _0202BAD4:
 	add r0, r6, #0
 	add r1, r4, #0
-	bl sub_0202BA70
+	bl FashionCase_GetAccessoryQuantity
 	add r4, r4, #1
 	add r5, r5, r0
-	cmp r4, #0x64
+	cmp r4, #ACCESSORY_MAX
 	blt _0202BAD4
 	add r0, r5, #0
 	pop {r4, r5, r6, pc}
@@ -742,7 +743,7 @@ FashionCase_GiveFashionItem: ; 0x0202BB08
 	add r4, r1, #0
 	add r5, r0, #0
 	add r6, r2, #0
-	cmp r4, #0x64
+	cmp r4, #ACCESSORY_MAX
 	blo _0202BB18
 	bl GF_AssertFail
 _0202BB18:
@@ -802,7 +803,7 @@ sub_0202BB7C: ; 0x0202BB7C
 	add r4, r1, #0
 	add r5, r0, #0
 	add r6, r2, #0
-	cmp r4, #0x64
+	cmp r4, #ACCESSORY_MAX
 	blo _0202BB8C
 	bl GF_AssertFail
 _0202BB8C:

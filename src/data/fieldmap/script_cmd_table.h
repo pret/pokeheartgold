@@ -402,11 +402,11 @@ BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext *ctx);
 BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx);
 BOOL ScrCmd_FlashAction(ScriptContext *ctx);
 BOOL ScrCmd_DefogAction(ScriptContext *ctx);
-BOOL ScrCmd_403(ScriptContext *ctx);
+BOOL ScrCmd_GiveAccessory(ScriptContext *ctx);
 BOOL ScrCmd_HasSpaceForAccessory(ScriptContext *ctx);
-BOOL ScrCmd_405(ScriptContext *ctx);
-BOOL ScrCmd_406(ScriptContext *ctx);
-BOOL ScrCmd_407(ScriptContext *ctx);
+BOOL ScrCmd_HasAccessory(ScriptContext *ctx);
+BOOL ScrCmd_GiveFashionBackground(ScriptContext *ctx);
+BOOL ScrCmd_HasSpaceForFashionBackground(ScriptContext *ctx);
 BOOL ScrCmd_408(ScriptContext *ctx);
 BOOL ScrCmd_409(ScriptContext *ctx);
 BOOL ScrCmd_410(ScriptContext *ctx);
@@ -1257,11 +1257,11 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_StrengthFlagAction,
     ScrCmd_FlashAction,
     ScrCmd_DefogAction,
-    ScrCmd_403,
+    ScrCmd_GiveAccessory,
     ScrCmd_HasSpaceForAccessory,
-    ScrCmd_405,
-    ScrCmd_406,
-    ScrCmd_407,
+    ScrCmd_HasAccessory,
+    ScrCmd_GiveFashionBackground,
+    ScrCmd_HasSpaceForFashionBackground,
     ScrCmd_408,
     ScrCmd_409,
     ScrCmd_410,
