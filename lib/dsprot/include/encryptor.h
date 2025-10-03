@@ -17,7 +17,7 @@ enum {
 
 u32 Encryptor_CategorizeInstruction(u32 instruction);
 void Encryptor_DecodeFunctionTable(FuncInfo *functions);
-void *Encryptor_DecryptFunction(u32 obfs_key, u32 obfs_func_addr, u32 obfs_size);
-u32 Encryptor_EncryptFunction(u32 obfs_key, u32 obfs_func_addr, u32 obfs_size);
+void *Encryptor_DecryptFunction(u32 key, u32 func_addr, u32 size);
+u32 Encryptor_EncryptFunction(u32 key, u32 func_addr, u32 size);
 
 #endif

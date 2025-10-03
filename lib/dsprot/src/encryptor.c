@@ -78,53 +78,54 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
     }
 }
 
-void *Encryptor_DecryptFunction(u32 obfs_key, u32 obfs_func_addr, u32 obfs_size) {
+void *Encryptor_DecryptFunction(u32 key, u32 func_addr, u32 size) {
     u32 expanded_key[4];
+    void *func_ptr;
 
-    u32 literal_obfs_offset = (u32)&BSS + ENC_VAL_1;
+    // Deobfuscate arguments
+    size -= (u32)&BSS + ENC_VAL_1;
 
-    u32 key = obfs_key;
-    key -= literal_obfs_offset;
+    key -= (u32)&BSS + ENC_VAL_1;
 
-    u32 size = obfs_size;
-    size -= literal_obfs_offset;
+    func_ptr = (void *)func_addr;
+    func_ptr -= ENC_VAL_1;
 
+    // Derive RC4 key
     expanded_key[0] = ROTL(key, 0) ^ size;
     expanded_key[1] = ROTL(key, 8) ^ size;
     expanded_key[2] = ROTL(key, 16) ^ size;
     expanded_key[3] = ROTL(key, 24) ^ size;
 
-    void *func_addr = (void *)obfs_func_addr;
-    func_addr -= ENC_VAL_1;
+    RC4_InitAndDecryptInstructions(&expanded_key[0], func_ptr, func_ptr, size);
+    clearDataAndInstructionCache(func_ptr, size);
 
-    RC4_InitAndDecryptInstructions(&expanded_key[0], func_addr, func_addr, size);
-    clearDataAndInstructionCache(func_addr, size);
-
-    return func_addr;
+    return func_ptr;
 }
 
-u32 Encryptor_EncryptFunction(u32 obfs_key, u32 obfs_func_addr, u32 obfs_size) {
+u32 Encryptor_EncryptFunction(u32 key, u32 func_addr, u32 size) {
     u32 expanded_key[4];
+    void *func_ptr;
 
-    u32 literal_obfs_offset = (u32)&BSS + ENC_VAL_1;
+    // Deobfuscate arguments and change key
+    size -= (u32)&BSS + ENC_VAL_1;
 
-    void *func_addr = (void *)obfs_func_addr;
+    key -= (u32)&BSS + ENC_VAL_1;
+    key += func_addr >> 20;
 
-    obfs_size = obfs_size - literal_obfs_offset;
-    u32 size = obfs_size;
+    func_ptr = (void *)func_addr;
+    func_ptr -= ENC_VAL_1;
 
-    obfs_key = obfs_key - literal_obfs_offset + (obfs_func_addr >> 20);
-    u32 new_key = obfs_key;
+    // Derive RC4 key
+    expanded_key[0] = ROTL(key, 0) ^ size;
+    expanded_key[1] = ROTL(key, 8) ^ size;
+    expanded_key[2] = ROTL(key, 16) ^ size;
+    expanded_key[3] = ROTL(key, 24) ^ size;
 
-    expanded_key[0] = ROTL(new_key, 0) ^ size;
-    expanded_key[1] = ROTL(new_key, 8) ^ size;
-    expanded_key[2] = ROTL(new_key, 16) ^ size;
-    expanded_key[3] = ROTL(new_key, 24) ^ size;
+    RC4_InitAndEncryptInstructions(&expanded_key[0], func_ptr, func_ptr, size);
+    clearDataAndInstructionCache(func_ptr, size);
 
-    func_addr -= ENC_VAL_1;
+    // Re-obfuscate key
+    key += (u32)&BSS + ENC_VAL_1;
 
-    RC4_InitAndEncryptInstructions(&expanded_key[0], func_addr, func_addr, size);
-    clearDataAndInstructionCache(func_addr, size);
-
-    return new_key + literal_obfs_offset;
+    return key;
 }
