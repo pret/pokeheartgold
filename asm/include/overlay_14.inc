@@ -252,9 +252,9 @@
 .public Party_RemoveMon
 .public Party_GetCount
 .public Party_GetMonByIndex
-.public Party_GetUnkSubSlot
-.public Party_SetUnkSubSlot
-.public Party_SafeCopyMonToSlot_ResetUnkSub
+.public Party_GetMonAprijuiceModifiers
+.public Party_SetMonAprijuiceModifiers
+.public Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 .public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public Pokedex_ConvertToCurrentDexNo

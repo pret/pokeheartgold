@@ -2715,7 +2715,7 @@
 	.short 475
 	.endm
 
-	.macro scrcmd_476
+	.macro enable_pokedex_form_detection
 	.short 476
 	.endm
 
