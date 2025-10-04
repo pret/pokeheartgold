@@ -23,9 +23,9 @@ scr_seq_T08R0201_000:
 	goto_if_set FLAG_SYS_VISITED_PAL_PARK, _003B
 	setvar VAR_PAL_PARK_HIGH_SCORE, 2000
 _003B:
-	clearflag FLAG_UNK_999
+	clearflag FLAG_SYS_ALT_MUSIC_PAL_PARK
 	setflag FLAG_SYS_VISITED_PAL_PARK
-	compare VAR_UNK_4124, 0
+	compare VAR_SCENE_PAL_PARK_ENTRANCE, 0
 	goto_if_ne _0052
 	end
 
@@ -50,8 +50,8 @@ scr_seq_T08R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_136, _019B
-	setflag FLAG_UNK_136
+	goto_if_set FLAG_GOT_PAL_PARK_INTRO, _019B
+	setflag FLAG_GOT_PAL_PARK_INTRO
 	buffer_players_name 0
 	gender_msgbox msg_0516_T08R0201_00000, msg_0516_T08R0201_00001
 	touchscreen_menu_hide
@@ -206,7 +206,7 @@ _02A0:
 scr_seq_T08R0201_002:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_4124, 0
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 0
 	apply_movement obj_player, _03D4
 	wait_movement
 	apply_movement obj_T08R0201_workman, _03BC
@@ -218,7 +218,7 @@ scr_seq_T08R0201_002:
 scr_seq_T08R0201_001:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_4124, 0
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 0
 	apply_movement obj_player, _03DC
 	apply_movement obj_T08R0201_workman, _03C8
 	wait_movement

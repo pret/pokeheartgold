@@ -25,17 +25,17 @@ _001B:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0067
-	clearflag FLAG_UNK_2CA
+	clearflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	goto _0082
 
 _0067:
 	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _007E
-	clearflag FLAG_UNK_2CA
+	clearflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	goto _0082
 
 _007E:
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 _0082:
 	end
 
@@ -43,16 +43,16 @@ _0084:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _009F
-	clearflag FLAG_UNK_2CA
+	clearflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	goto _00A3
 
 _009F:
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 _00A3:
 	end
 
 _00A5:
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	end
 
 scr_seq_D17R1101_001:
@@ -86,7 +86,7 @@ _00FA:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	hide_person obj_D17R1101_gsleader4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

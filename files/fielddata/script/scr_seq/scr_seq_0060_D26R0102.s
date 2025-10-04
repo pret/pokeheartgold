@@ -55,7 +55,7 @@ scr_seq_D26R0102_002:
 	hide_person obj_D26R0102_rocketm_2
 	hide_person obj_D26R0102_rocketw
 	hide_person obj_D26R0102_rkanbum3
-	setflag FLAG_UNK_1A9
+	setflag FLAG_HIDE_AZALEA_CITY_ROCKET_ADVERTISING_SLOWPOKETAIL
 	wait 20, VAR_SPECIAL_x8004
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -98,7 +98,7 @@ _0107:
 	warp MAP_AZALEA_KURT_HOUSE, 0, 4, 5, DIR_NORTH
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_1AA
+	setflag FLAG_HIDE_ROUTE_32_SLOWPOKETAIL_SALESMAN
 	setflag FLAG_UNK_1D5
 	setflag FLAG_UNK_1AC
 	clearflag FLAG_HIDE_ILEX_APPRENTICE

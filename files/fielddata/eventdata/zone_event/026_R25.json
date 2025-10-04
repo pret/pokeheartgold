@@ -279,7 +279,7 @@
       "spriteId": "SPRITE_GSLEADER11",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2CD",
+      "eventFlag": "FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER",
       "scriptId": "_EV_scr_seq_R25_009 + 1",
       "facingDirection": 3,
       "param0": 0,

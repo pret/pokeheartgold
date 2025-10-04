@@ -90,7 +90,7 @@
       "spriteId": "SPRITE_GSBIGMAN",
       "movement": 2,
       "type": 0,
-      "eventFlag": "FLAG_UNK_19A",
+      "eventFlag": "FLAG_HIDE_VIOLET_CITY_EARL",
       "scriptId": "_EV_scr_seq_T22_001 + 1",
       "facingDirection": 1,
       "param0": 0,

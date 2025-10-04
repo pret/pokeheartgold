@@ -270,7 +270,7 @@
       "spriteId": "SPRITE_GSWOMAN1",
       "movement": 2,
       "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_035",
+      "eventFlag": "MAP_LAVENDER",
       "scriptId": 65535,
       "facingDirection": 1,
       "param0": 0,

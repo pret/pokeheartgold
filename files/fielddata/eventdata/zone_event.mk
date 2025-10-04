@@ -8,6 +8,8 @@ ZONE_EVENT_DEPS  := $(ZONE_EVENT_JSONS:%.json=%.d)
 ZONE_EVENT_BIN   := $(ZONE_EVENT_JSONS:%.json=%.bin)
 
 $(ZONE_EVENT_NARC): $(ZONE_EVENT_BIN)
+	$(KNARC) -d $(ZONE_EVENT_STEM) -p $@ -i
+	@$(SHA1SUM) -c --quiet $(ZONE_EVENT_STEM).sha1
 
 $(ZONE_EVENT_TEMPL):
 

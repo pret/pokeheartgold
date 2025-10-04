@@ -304,7 +304,7 @@
 #define VAR_UNK_4121                       0x4121
 #define VAR_UNK_4122                       0x4122
 #define VAR_PAL_PARK_HIGH_SCORE            0x4123
-#define VAR_UNK_4124                       0x4124
+#define VAR_SCENE_PAL_PARK_ENTRANCE        0x4124
 #define VAR_UNK_4125                       0x4125
 #define VAR_UNK_4126                       0x4126
 #define VAR_UNK_4127                       0x4127

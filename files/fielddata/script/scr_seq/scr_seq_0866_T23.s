@@ -28,7 +28,7 @@
 scr_seq_T23_004:
 	compare VAR_UNK_4080, 0
 	goto_if_ne _005F
-	setflag FLAG_UNK_19F
+	setflag FLAG_HIDE_AZALEA_CITY_ROCKET_BLOCKING_WELL
 	clearflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
 	clearflag FLAG_AZALEA_HARASSED_CIVILIAN
 _005F:
@@ -231,7 +231,7 @@ scr_seq_T23_003:
 	hide_person obj_T23_gsmiddleman1_2
 	setflag FLAG_AZALEA_HARASSED_CIVILIAN
 	setflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
-	clearflag FLAG_UNK_19F
+	clearflag FLAG_HIDE_AZALEA_CITY_ROCKET_BLOCKING_WELL
 	setvar VAR_UNK_4080, 1
 	releaseall
 	end

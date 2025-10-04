@@ -66,7 +66,7 @@ _00B1:
 	wait_fanfare
 	setflag FLAG_UNK_077
 	setflag FLAG_UNK_19E
-	setflag FLAG_UNK_19F
+	setflag FLAG_HIDE_AZALEA_CITY_ROCKET_BLOCKING_WELL
 	end
 
 _00C7:

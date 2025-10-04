@@ -38,11 +38,11 @@ _005F:
 	goto_if_eq _0087
 	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_LATE
 	goto_if_eq _0087
-	clearflag FLAG_UNK_226
+	clearflag FLAG_HIDE_ROUTE_39_MILTANK
 	goto _008B
 
 _0087:
-	setflag FLAG_UNK_226
+	setflag FLAG_HIDE_ROUTE_39_MILTANK
 _008B:
 	goto_if_unset FLAG_TRADE_LT_SURGE_PIKACHU, _00E3
 	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
@@ -136,7 +136,7 @@ _01C7:
 _01CF:
 	wait_movement
 	hide_person obj_R39_gsgentleman
-	setflag FLAG_UNK_228
+	setflag FLAG_HIDE_ROUTE_39_BAOBA
 	releaseall
 	setvar VAR_UNK_408F, 1
 	end

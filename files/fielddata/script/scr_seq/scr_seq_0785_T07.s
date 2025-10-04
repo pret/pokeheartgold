@@ -84,22 +84,22 @@ _0101:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _0120
-	clearflag FLAG_UNK_25D
-	clearflag FLAG_UNK_2E1
+	clearflag FLAG_HIDE_CELADON_CITY_ERIKA
+	clearflag FLAG_HIDE_CELADON_CITY_JASMINE
 	goto _015C
 
 _0120:
 	compare VAR_TEMP_x4000, 15
 	goto_if_ne _013B
-	clearflag FLAG_UNK_25D
-	clearflag FLAG_UNK_2E1
+	clearflag FLAG_HIDE_CELADON_CITY_ERIKA
+	clearflag FLAG_HIDE_CELADON_CITY_JASMINE
 	goto _015C
 
 _013B:
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _0156
-	clearflag FLAG_UNK_25D
-	clearflag FLAG_UNK_2E1
+	clearflag FLAG_HIDE_CELADON_CITY_ERIKA
+	clearflag FLAG_HIDE_CELADON_CITY_JASMINE
 	goto _015C
 
 _0156:
@@ -115,8 +115,8 @@ _015E:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0190
-	clearflag FLAG_UNK_25D
-	setflag FLAG_UNK_2E1
+	clearflag FLAG_HIDE_CELADON_CITY_ERIKA
+	setflag FLAG_HIDE_CELADON_CITY_JASMINE
 	goto _0196
 
 _0190:
@@ -126,8 +126,8 @@ _0196:
 	end
 
 _0198:
-	setflag FLAG_UNK_25D
-	setflag FLAG_UNK_2E1
+	setflag FLAG_HIDE_CELADON_CITY_ERIKA
+	setflag FLAG_HIDE_CELADON_CITY_JASMINE
 	end
 
 scr_seq_T07_000:
@@ -306,7 +306,7 @@ _03E2:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_25D
+	setflag FLAG_HIDE_CELADON_CITY_ERIKA
 	hide_person obj_T07_gsleader12
 	hide_person obj_T07_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2

@@ -80,17 +80,17 @@ _00F4:
 	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _0162
 	setflag FLAG_HIDE_CAMERON
-	clearflag FLAG_UNK_27F
+	clearflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	goto _016E
 
 _0154:
 	clearflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	goto _016E
 
 _0162:
 	setflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	clearflag FLAG_UNK_996
 _016E:
 	goto_if_set FLAG_SYS_GAME_CLEAR, _017F

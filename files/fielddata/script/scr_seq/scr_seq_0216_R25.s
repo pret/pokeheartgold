@@ -44,13 +44,13 @@ _0050:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _00BE
-	clearflag FLAG_UNK_2CD
+	clearflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	goto _00DB
 
 _00BE:
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00D5
-	clearflag FLAG_UNK_2CD
+	clearflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	goto _00DB
 
 _00D5:
@@ -63,26 +63,26 @@ _00DD:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _00F8
-	clearflag FLAG_UNK_2CD
+	clearflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	goto _0113
 
 _00F8:
 	compare VAR_TEMP_x4000, 15
 	goto_if_ne _010F
-	clearflag FLAG_UNK_2CD
+	clearflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	goto _0113
 
 _010F:
-	setflag FLAG_UNK_2CD
+	setflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 _0113:
 	end
 
 _0115:
-	setflag FLAG_UNK_2CD
+	setflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	end
 
 _011B:
-	setflag FLAG_UNK_2CD
+	setflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	end
 
 scr_seq_R25_008:
@@ -314,7 +314,7 @@ _03F7:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2CD
+	setflag FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER
 	hide_person obj_R25_gsleader11_2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

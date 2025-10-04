@@ -261,7 +261,7 @@
       "spriteId": "SPRITE_GSBIGMAN",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_031",
+      "eventFlag": "MAP_PALLET",
       "scriptId": 65535,
       "facingDirection": 1,
       "param0": 0,

@@ -20,11 +20,11 @@ scr_seq_R39R0201_004:
 	goto_if_eq _0047
 	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_EVE
 	goto_if_eq _0047
-	clearflag FLAG_UNK_226
+	clearflag FLAG_HIDE_ROUTE_39_MILTANK
 	end
 
 _0047:
-	setflag FLAG_UNK_226
+	setflag FLAG_HIDE_ROUTE_39_MILTANK
 	end
 
 scr_seq_R39R0201_000:

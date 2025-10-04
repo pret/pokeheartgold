@@ -46,17 +46,17 @@ _0066:
 	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_eq _00BF
 	setflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 _00B5:
 	clearflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 _00BF:
 	setflag FLAG_HIDE_CAMERON
-	clearflag FLAG_UNK_27F
+	clearflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 scr_seq_T11_014:

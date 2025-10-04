@@ -50,17 +50,17 @@ _0073:
 	compare VAR_UNK_40DB, 0
 	goto_if_eq _00CC
 	setflag FLAG_HIDE_CAMERON
-	clearflag FLAG_UNK_27F
+	clearflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 _00C2:
 	clearflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 _00CC:
 	setflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 scr_seq_D49_000:

@@ -84,7 +84,7 @@
       "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_258",
+      "eventFlag": "FLAG_HIDE_GUY_BLOCKING_KANTO_UNDERGROUND_PATH",
       "scriptId": "_EV_scr_seq_R06_000 + 1",
       "facingDirection": 1,
       "param0": 0,

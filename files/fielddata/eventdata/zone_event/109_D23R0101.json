@@ -143,7 +143,7 @@
       "spriteId": "SPRITE_GSLEADER3",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_318",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_CITY_BEAUTY_BLOCKING_GYM",
       "scriptId": "_EV_scr_seq_D23R0101_010 + 1",
       "facingDirection": 2,
       "param0": 0,

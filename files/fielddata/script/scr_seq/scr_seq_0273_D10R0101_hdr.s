@@ -10,7 +10,7 @@
 	.byte 0
 
 scr_seq_D10R0101_map_scripts_2:
-	.short VAR_UNK_4124, 0, _EV_scr_seq_D10R0101_001 + 1
+	.short VAR_SCENE_PAL_PARK_ENTRANCE, 0, _EV_scr_seq_D10R0101_001 + 1
 	.short 0
 
 	.balign 4, 0

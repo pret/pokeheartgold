@@ -219,7 +219,7 @@
       "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_057",
+      "eventFlag": "MAP_MAHOGANY",
       "scriptId": 65535,
       "facingDirection": 1,
       "param0": 0,
