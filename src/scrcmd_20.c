@@ -42,7 +42,7 @@ typedef struct UnkStruct_0204F284 {
     u8 challengeType;
     u8 partySlot;
     u8 selectedMons[2];
-    void **unk08;
+    void **ppAppArgs; // PartyMenuArgs**, PokemonSummaryArgs**
 } UnkStruct_0204F284;
 
 typedef struct WinStreakBP {
@@ -103,7 +103,7 @@ static const WinStreakBP battleHallWinStreakBP[] = {
 static BOOL BattleHall_DoesPartyContainEligibleMons(s32, SaveData *);
 static void sub_0204F1E4(TaskManager *, u16, u16 *);
 static BOOL sub_0204F228(TaskManager *);
-static void sub_0204F284(TaskManager *, void *, BattleHallChallengeType);
+static void sub_0204F284(TaskManager *, void **, BattleHallChallengeType);
 static BOOL sub_0204F2B8(TaskManager *);
 static u32 sub_0204F320(UnkStruct_0204F284 *, FieldSystem *, enum HeapID);
 static u32 sub_0204F3F8(UnkStruct_0204F284 *, FieldSystem *);
@@ -151,40 +151,40 @@ BOOL ScrCmd_628(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_633(ScriptContext *ctx) {
-    u16 r7 = ScriptReadHalfword(ctx);
-    u16 r5 = ScriptGetVar(ctx);
+BOOL ScrCmd_BattleHallAction(ScriptContext *ctx) {
+    u16 action = ScriptReadHalfword(ctx);
+    u16 var_challengeType = ScriptGetVar(ctx);
     u16 *resultPtr = ScriptGetVarPointer(ctx);
     sub_02030B04(ctx->fieldSystem->saveData);
     u32 sp04 = sub_02030C5C(ctx->fieldSystem->saveData);
-    void *r1 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
-    switch (r7) {
+    void **ppAppArgs = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_RUNNING_APP_DATA);
+    switch (action) {
     case 0:
-        *resultPtr = BattleHall_DoesPartyContainEligibleMons(r5, ctx->fieldSystem->saveData);
+        *resultPtr = BattleHall_DoesPartyContainEligibleMons(var_challengeType, ctx->fieldSystem->saveData);
         break;
     case 1:
-        if (r5 == 3) {
+        if (var_challengeType == 3) {
             *resultPtr = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), 0x6a, sub_0205C268(0x6a));
         } else {
-            *resultPtr = sub_02030CA0(sp04, 5, r5, 0, 0);
+            *resultPtr = sub_02030CA0(sp04, 5, var_challengeType, 0, 0);
         }
         break;
     case 2:
-        *resultPtr = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205C11C(r5), sub_0205C268(sub_0205C11C(r5)));
+        *resultPtr = FrontierSave_GetStat(Save_Frontier_GetStatic(ctx->fieldSystem->saveData), sub_0205C11C(var_challengeType), sub_0205C268(sub_0205C11C(var_challengeType)));
         break;
     case 3:
-        sub_0204F878(ctx->fieldSystem->saveData, sp04, r5);
+        sub_0204F878(ctx->fieldSystem->saveData, sp04, var_challengeType);
         break;
     case 4: {
         BattleHallChallengeType challengeType;
-        if (r5 == 0) {
+        if (var_challengeType == 0) {
             challengeType = BATTLE_HALL_CHALLENGE_TYPE_SINGLE;
-        } else if (r5 == 1) {
+        } else if (var_challengeType == 1) {
             challengeType = BATTLE_HALL_CHALLENGE_TYPE_DOUBLE;
         } else {
             challengeType = BATTLE_HALL_CHALLENGE_TYPE_MULTI;
         }
-        sub_0204F284(ctx->taskman, r1, challengeType);
+        sub_0204F284(ctx->taskman, ppAppArgs, challengeType);
         return TRUE;
     }
     default:
@@ -284,33 +284,33 @@ static BOOL sub_0204F228(TaskManager *taskManager) {
     return FALSE;
 }
 
-static void sub_0204F284(TaskManager *taskManager, void *a1, BattleHallChallengeType challengeType) {
+static void sub_0204F284(TaskManager *taskManager, void **ppAppArgs, BattleHallChallengeType challengeType) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204F284 *r4 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0204F284));
-    MI_CpuFill8(r4, 0, sizeof(UnkStruct_0204F284));
-    r4->challengeType = challengeType;
-    r4->unk08 = a1;
-    TaskManager_Call(fieldSystem->taskman, sub_0204F2B8, r4);
+    UnkStruct_0204F284 *selectMonEnv = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0204F284));
+    MI_CpuFill8(selectMonEnv, 0, sizeof(UnkStruct_0204F284));
+    selectMonEnv->challengeType = challengeType;
+    selectMonEnv->ppAppArgs = ppAppArgs;
+    TaskManager_Call(fieldSystem->taskman, sub_0204F2B8, selectMonEnv);
 }
 
 static BOOL sub_0204F2B8(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    UnkStruct_0204F284 *r4 = TaskManager_GetEnvironment(taskManager);
-    switch (r4->state) {
+    UnkStruct_0204F284 *env = TaskManager_GetEnvironment(taskManager);
+    switch (env->state) {
     case 0:
-        r4->state = sub_0204F320(r4, fieldSystem, HEAP_ID_FIELD2);
+        env->state = sub_0204F320(env, fieldSystem, HEAP_ID_FIELD2);
         break;
     case 1:
-        r4->state = sub_0204F3F8(r4, fieldSystem);
+        env->state = sub_0204F3F8(env, fieldSystem);
         break;
     case 2:
-        r4->state = sub_0204F448(r4, fieldSystem, HEAP_ID_FIELD2);
+        env->state = sub_0204F448(env, fieldSystem, HEAP_ID_FIELD2);
         break;
     case 3:
-        r4->state = sub_0204F4D8(r4, fieldSystem);
+        env->state = sub_0204F4D8(env, fieldSystem);
         break;
     case 4:
-        Heap_Free(r4);
+        Heap_Free(env);
         return TRUE;
     }
     return FALSE;
@@ -339,7 +339,7 @@ static u32 sub_0204F320(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, enum H
         partyMenuArgs->maxMonsToSelect = 2;
     }
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, partyMenuArgs);
-    *(a0->unk08) = partyMenuArgs;
+    *(a0->ppAppArgs) = partyMenuArgs;
     return 1;
 }
 
@@ -347,7 +347,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 1;
     }
-    PartyMenuArgs *partyMenu = *(a0->unk08);
+    PartyMenuArgs *partyMenu = *(a0->ppAppArgs);
     switch (partyMenu->partySlot) {
     case 7:
         return 4;
@@ -357,7 +357,7 @@ static u32 sub_0204F3F8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
         MI_CpuCopy8(partyMenu->selectedOrder, a0->selectedMons, 2);
         a0->partySlot = partyMenu->partySlot;
         Heap_Free(partyMenu);
-        *(a0->unk08) = NULL;
+        *(a0->ppAppArgs) = NULL;
         return 2;
     }
 }
@@ -380,7 +380,7 @@ static u32 sub_0204F448(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem, enum H
     sub_02089D40(args, unk_020FC224);
     sub_0208AD34(args, Save_PlayerData_GetProfile(saveData));
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PokemonSummary, args);
-    *(a0->unk08) = args;
+    *(a0->ppAppArgs) = args;
     return 3;
 }
 
@@ -388,10 +388,10 @@ static u32 sub_0204F4D8(UnkStruct_0204F284 *a0, FieldSystem *fieldSystem) {
     if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
         return 3;
     }
-    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->unk08);
+    PokemonSummaryArgs *pokemonSummaryArgs = *(a0->ppAppArgs);
     a0->partySlot = pokemonSummaryArgs->partySlot;
     Heap_Free(pokemonSummaryArgs);
-    *(a0->unk08) = NULL;
+    *(a0->ppAppArgs) = NULL;
     return 0;
 }
 

@@ -2540,7 +2540,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_444 arg0, arg1, arg2, arg3
+	.macro invalid_mons_message arg0, arg1, arg2, arg3
 	.short 444
 	.byte \arg0
 	.short \arg1
@@ -3008,7 +3008,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_527 arg0
+	.macro npc_msg_unown_font arg0
 	.short 527
 	.short \arg0
 	.endm
@@ -3572,7 +3572,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_633 arg0, arg1, arg2
+	.macro battle_hall_action arg0, arg1, arg2
 	.short 633
 	.short \arg0
 	.short \arg1

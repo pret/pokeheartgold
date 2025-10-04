@@ -72,7 +72,7 @@ scr_seq_D24R0211_001:
 	wait_fade
 	scrcmd_344 2, 2
 	npc_msg msg_0079_D24R0211_00003
-	scrcmd_527 4
+	npc_msg_unown_font msg_0079_D24R0211_00004
 	npc_msg msg_0079_D24R0211_00005
 	buffer_players_name 0
 	npc_msg msg_0079_D24R0211_00006

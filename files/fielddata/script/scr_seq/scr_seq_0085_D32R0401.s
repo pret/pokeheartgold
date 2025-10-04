@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D32R0401.h"
 #include "msgdata/msg/msg_0108_D32R0401.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -188,8 +189,8 @@ _0269:
 	call_if_eq _0872
 	compare VAR_TEMP_x4004, 1
 	call_if_eq _0891
-	menu_item_add 19, 255, 2
-	menu_item_add 20, 255, 3
+	menu_item_add msg_0108_D32R0401_00019, 255, 2
+	menu_item_add msg_0108_D32R0401_00020, 255, 3
 	menu_exec
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _030E
@@ -224,24 +225,24 @@ _02FD:
 	end
 
 _030E:
-	setvar VAR_UNK_4146, 0
-	scrcmd_633 0, 1, VAR_SPECIAL_RESULT
+	setvar VAR_BATTLE_HALL_CHALLENGE_TYPE, 0
+	battle_hall_action 0, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0377
 	goto _03A1
 	end
 
 _0331:
-	setvar VAR_UNK_4146, 1
-	scrcmd_633 0, 2, VAR_SPECIAL_RESULT
+	setvar VAR_BATTLE_HALL_CHALLENGE_TYPE, 1
+	battle_hall_action 0, 2, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _038C
 	goto _03A1
 	end
 
 _0354:
-	setvar VAR_UNK_4146, 2
-	scrcmd_633 0, 1, VAR_SPECIAL_RESULT
+	setvar VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
+	battle_hall_action 0, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0377
 	goto _03A1
@@ -249,14 +250,14 @@ _0354:
 
 _0377:
 	npc_msg msg_0108_D32R0401_00035
-	scrcmd_444 37, 1, 0, 0
+	invalid_mons_message msg_0108_D32R0401_00037, 1, 0, 0
 	touchscreen_menu_show
 	goto _02F5
 	end
 
 _038C:
 	npc_msg msg_0108_D32R0401_00036
-	scrcmd_444 37, 2, 0, 0
+	invalid_mons_message msg_0108_D32R0401_00037, 2, 0, 0
 	touchscreen_menu_show
 	goto _02F5
 	end
@@ -266,7 +267,7 @@ _03A1:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	scrcmd_633 4, VAR_UNK_4146, VAR_SPECIAL_RESULT
+	battle_hall_action 4, VAR_BATTLE_HALL_CHALLENGE_TYPE, VAR_SPECIAL_RESULT
 	scrcmd_635 VAR_TEMP_x4002, VAR_TEMP_x4005
 	compare VAR_TEMP_x4002, 255
 	goto_if_ne _03D1
@@ -280,7 +281,7 @@ _03D1:
 	day_care_sanitize_mon VAR_TEMP_x4002, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _07B9
-	compare VAR_UNK_4146, 1
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 1
 	goto_if_eq _0414
 	goto _042F
 	end
@@ -300,10 +301,10 @@ _042F:
 	goto _02F5
 
 _044A:
-	scrcmd_633 1, VAR_UNK_4146, VAR_SPECIAL_RESULT
+	battle_hall_action 1, VAR_BATTLE_HALL_CHALLENGE_TYPE, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _04D8
-	scrcmd_633 2, VAR_UNK_4146, VAR_SPECIAL_RESULT
+	battle_hall_action 2, VAR_BATTLE_HALL_CHALLENGE_TYPE, VAR_SPECIAL_RESULT
 	buffer_species_name 0, VAR_SPECIAL_RESULT, 0, 0
 	compare VAR_SPECIAL_RESULT, VAR_TEMP_x4001
 	goto_if_eq _04D8
@@ -315,8 +316,8 @@ _0484:
 	npc_msg msg_0108_D32R0401_00034
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 1, 1, VAR_SPECIAL_RESULT
-	menu_item_add 42, 255, 0
-	menu_item_add 43, 255, 1
+	menu_item_add msg_0191_00042, 255, 0
+	menu_item_add msg_0191_00043, 255, 1
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _04C8
@@ -325,7 +326,7 @@ _0484:
 	end
 
 _04C8:
-	scrcmd_633 3, VAR_UNK_4146, VAR_SPECIAL_RESULT
+	battle_hall_action 3, VAR_BATTLE_HALL_CHALLENGE_TYPE, VAR_SPECIAL_RESULT
 	goto _04D8
 	end
 
@@ -334,9 +335,9 @@ _04D8:
 	end
 
 _04E0:
-	compare VAR_UNK_4146, 0
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 0
 	call_if_eq _066C
-	compare VAR_UNK_4146, 1
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 1
 	call_if_eq _066C
 	setvar VAR_TEMP_x4000, 0
 	heal_party
@@ -344,7 +345,7 @@ _04E0:
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _02F5
-	compare VAR_UNK_4146, 2
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
 	goto_if_eq _052E
 	goto _0689
 	end
@@ -353,9 +354,9 @@ _052E:
 	npc_msg msg_0108_D32R0401_00030
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 14, 255, 0
-	menu_item_add 15, 255, 1
-	menu_item_add 5, 255, 2
+	menu_item_add msg_0191_00014, 255, 0
+	menu_item_add msg_0191_00015, 255, 1
+	menu_item_add msg_0191_00005, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _057F
@@ -423,7 +424,7 @@ _062F:
 	scrcmd_258
 	scrcmd_257 110
 	npc_msg msg_0108_D32R0401_00032
-	compare VAR_UNK_4146, 2
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
 	call_if_eq _066C
 	call _08D9
 	goto _0689
@@ -444,11 +445,11 @@ _0685:
 	return
 
 _0689:
-	compare VAR_UNK_4146, 0
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 0
 	call_if_eq _0721
-	compare VAR_UNK_4146, 1
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 1
 	call_if_eq _073C
-	compare VAR_UNK_4146, 2
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
 	call_if_eq _0757
 	play_se SEQ_SE_DP_KAIDAN2
 	goto _06BC
@@ -458,16 +459,16 @@ _06BC:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_815 0
-	compare VAR_UNK_4146, 0
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 0
 	call_if_eq _077D
-	compare VAR_UNK_4146, 1
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 1
 	call_if_eq _0791
-	compare VAR_UNK_4146, 2
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
 	call_if_eq _07A5
 	scrcmd_420 59
 	scrcmd_436
 	scrcmd_627 9
-	compare VAR_UNK_4146, 2
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
 	call_if_eq _071D
 	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
@@ -608,15 +609,15 @@ _0872:
 	npc_msg msg_0108_D32R0401_00001
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 16, 255, 0
-	menu_item_add 17, 255, 1
+	menu_item_add msg_0108_D32R0401_00016, 255, 0
+	menu_item_add msg_0108_D32R0401_00017, 255, 1
 	return
 
 _0891:
 	npc_msg msg_0108_D32R0401_00004
 	touchscreen_menu_hide
 	menu_init 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 18, 255, 4
+	menu_item_add msg_0108_D32R0401_00018, 255, 4
 	return
 
 _08A8:
@@ -647,7 +648,7 @@ _08D9:
 
 scr_seq_D32R0401_002:
 	npc_msg msg_0108_D32R0401_00012
-	scrcmd_636 VAR_UNK_4146
+	scrcmd_636 VAR_BATTLE_HALL_CHALLENGE_TYPE
 	compare VAR_BATTLE_HALL_PRINT_PROGRESS, 1
 	call_if_eq _0914
 	compare VAR_BATTLE_HALL_PRINT_PROGRESS, 3
@@ -664,9 +665,9 @@ _091C:
 	return
 
 scr_seq_D32R0401_003:
-	compare VAR_UNK_4146, 0
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 0
 	call_if_eq _0960
-	compare VAR_UNK_4146, 1
+	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 1
 	call_if_eq _0960
 	compare VAR_BATTLE_HALL_PRINT_PROGRESS, 1
 	call_if_eq _0966

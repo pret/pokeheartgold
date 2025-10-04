@@ -2763,7 +2763,7 @@
       ]
     },
     {
-      "name": "scrcmd_444",
+      "name": "invalid_mons_message",
       "args": [
         1,
         2,
@@ -3332,7 +3332,7 @@
       ]
     },
     {
-      "name": "scrcmd_527",
+      "name": "npc_msg_unown_font",
       "args": [
         2
       ]
@@ -3977,7 +3977,7 @@
       ]
     },
     {
-      "name": "scrcmd_633",
+      "name": "battle_hall_action",
       "args": [
         2,
         "var",

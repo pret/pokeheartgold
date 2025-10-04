@@ -123,14 +123,14 @@ _0199:
 
 _01C6:
 	npc_msg msg_0109_D32R0501_00008
-	scrcmd_444 9, 3, 0, 0
+	invalid_mons_message msg_0109_D32R0501_00009, 3, 0, 0
 	touchscreen_menu_show
 	goto _0126
 	end
 
 _01DB:
 	npc_msg msg_0109_D32R0501_00008
-	scrcmd_444 9, 2, 0, 0
+	invalid_mons_message msg_0109_D32R0501_00009, 2, 0, 0
 	touchscreen_menu_show
 	goto _0126
 	end

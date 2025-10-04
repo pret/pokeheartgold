@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D31R0201.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -197,18 +198,18 @@ _02A1:
 _02AC:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 143, 255, 0
-	menu_item_add 144, 255, 1
-	menu_item_add 145, 255, 2
+	menu_item_add msg_0191_00143, 255, 0
+	menu_item_add msg_0191_00144, 255, 1
+	menu_item_add msg_0191_00145, 255, 2
 	menu_exec
 	return
 
 _02D2:
 	npc_msg msg_0096_D31R0201_00004
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 475, 255, 0
-	menu_item_add 476, 255, 1
-	menu_item_add 94, 255, 2
+	menu_item_add msg_0191_00475, 255, 0
+	menu_item_add msg_0191_00476, 255, 1
+	menu_item_add msg_0191_00094, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0321
@@ -227,7 +228,7 @@ _032F:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0383
 	touchscreen_menu_show
-	scrcmd_444 91, 3, 0, 0
+	invalid_mons_message msg_0096_D31R0201_00091, 3, 0, 0
 	goto _085E
 	end
 
@@ -237,7 +238,7 @@ _0356:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _042F
 	touchscreen_menu_show
-	scrcmd_444 91, 4, 0, 0
+	invalid_mons_message msg_0096_D31R0201_00091, 4, 0, 0
 	goto _085E
 	end
 
@@ -575,10 +576,10 @@ _0903:
 	npc_msg msg_0096_D31R0201_00037
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 143, 255, 0
-	menu_item_add 155, 255, 1
-	menu_item_add 144, 255, 2
-	menu_item_add 145, 255, 3
+	menu_item_add msg_0191_00143, 255, 0
+	menu_item_add msg_0191_00155, 255, 1
+	menu_item_add msg_0191_00144, 255, 2
+	menu_item_add msg_0191_00145, 255, 3
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0B97
@@ -608,11 +609,11 @@ _0974:
 _09C1:
 	touchscreen_menu_hide
 	menu_init_std_gmm 12, 7, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 143, 255, 0
-	menu_item_add 153, 255, 1
-	menu_item_add 154, 255, 2
-	menu_item_add 144, 255, 3
-	menu_item_add 145, 255, 4
+	menu_item_add msg_0191_00143, 255, 0
+	menu_item_add msg_0191_00153, 255, 1
+	menu_item_add msg_0191_00154, 255, 2
+	menu_item_add msg_0191_00144, 255, 3
+	menu_item_add msg_0191_00145, 255, 4
 	menu_exec
 	return
 
@@ -759,7 +760,7 @@ _0C12:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0C39
 	touchscreen_menu_show
-	scrcmd_444 91, 2, 0, 0
+	invalid_mons_message msg_0096_D31R0201_00091, 2, 0, 0
 	goto _085E
 	end
 
@@ -824,9 +825,9 @@ _0D55:
 	npc_msg msg_0096_D31R0201_00027
 	touchscreen_menu_hide
 	menu_init_std_gmm 18, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 14, 255, 0
-	menu_item_add 15, 255, 1
-	menu_item_add 5, 255, 2
+	menu_item_add msg_0191_00014, 255, 0
+	menu_item_add msg_0191_00015, 255, 1
+	menu_item_add msg_0191_00005, 255, 2
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _0DA6

@@ -535,7 +535,7 @@ scr_seq_0164_005:
 	setvar VAR_UNK_4143, 0
 	setvar VAR_UNK_4144, 0
 	setvar VAR_UNK_4148, 0
-	setvar VAR_UNK_4146, 0
+	setvar VAR_BATTLE_HALL_CHALLENGE_TYPE, 0
 	setvar VAR_UNK_4149, 0
 	setvar VAR_UNK_414B, 0
 	setvar VAR_UNK_4142, 0

@@ -126,14 +126,14 @@ _01A5:
 
 _01D2:
 	npc_msg msg_0110_D32R0601_00008
-	scrcmd_444 9, 3, 0, 0
+	invalid_mons_message msg_0110_D32R0601_00009, 3, 0, 0
 	touchscreen_menu_show
 	goto _0132
 	end
 
 _01E7:
 	npc_msg msg_0110_D32R0601_00008
-	scrcmd_444 9, 2, 0, 0
+	invalid_mons_message msg_0110_D32R0601_00009, 2, 0, 0
 	touchscreen_menu_show
 	goto _0132
 	end

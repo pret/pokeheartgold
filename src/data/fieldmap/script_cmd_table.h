@@ -443,7 +443,7 @@ BOOL ScrCmd_MsgboxExtern(ScriptContext *ctx);
 BOOL ScrCmd_441(ScriptContext *ctx);
 BOOL ScrCmd_442(ScriptContext *ctx);
 BOOL ScrCmd_443(ScriptContext *ctx);
-BOOL ScrCmd_444(ScriptContext *ctx);
+BOOL ScrCmd_InvalidMonsMessage(ScriptContext *ctx);
 BOOL ScrCmd_445(ScriptContext *ctx);
 BOOL ScrCmd_446(ScriptContext *ctx);
 BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx);
@@ -526,7 +526,7 @@ BOOL ScrCmd_523(ScriptContext *ctx);
 BOOL ScrCmd_524(ScriptContext *ctx);
 BOOL ScrCmd_525(ScriptContext *ctx);
 BOOL ScrCmd_526(ScriptContext *ctx);
-BOOL ScrCmd_527(ScriptContext *ctx);
+BOOL ScrCmd_NPCMsgUnownFont(ScriptContext *ctx);
 BOOL ScrCmd_528(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyLeadAlive(ScriptContext *ctx);
 BOOL ScrCmd_530(ScriptContext *ctx);
@@ -632,7 +632,7 @@ BOOL ScrCmd_629(ScriptContext *ctx);
 BOOL ScrCmd_630(ScriptContext *ctx);
 BOOL ScrCmd_631(ScriptContext *ctx);
 BOOL ScrCmd_CountPartyMonsOfSpecies(ScriptContext *ctx);
-BOOL ScrCmd_633(ScriptContext *ctx);
+BOOL ScrCmd_BattleHallAction(ScriptContext *ctx);
 BOOL ScrCmd_634(ScriptContext *ctx);
 BOOL ScrCmd_635(ScriptContext *ctx);
 BOOL ScrCmd_636(ScriptContext *ctx);
@@ -1298,7 +1298,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_441,
     ScrCmd_442,
     ScrCmd_443,
-    ScrCmd_444,
+    ScrCmd_InvalidMonsMessage,
     ScrCmd_445,
     ScrCmd_446,
     ScrCmd_SafariZoneAction,
@@ -1381,7 +1381,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_524,
     ScrCmd_525,
     ScrCmd_526,
-    ScrCmd_527,
+    ScrCmd_NPCMsgUnownFont,
     ScrCmd_528,
     ScrCmd_GetPartyLeadAlive,
     ScrCmd_530,
@@ -1487,7 +1487,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_630,
     ScrCmd_631,
     ScrCmd_CountPartyMonsOfSpecies,
-    ScrCmd_633,
+    ScrCmd_BattleHallAction,
     ScrCmd_634,
     ScrCmd_635,
     ScrCmd_636,

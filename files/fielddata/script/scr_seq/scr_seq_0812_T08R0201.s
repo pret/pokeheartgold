@@ -2,6 +2,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T08R0201.h"
 #include "msgdata/msg/msg_0516_T08R0201.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -81,10 +82,10 @@ _00E0:
 _00E9:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 194, 255, 0
-	menu_item_add 195, 255, 1
-	menu_item_add 196, 255, 2
-	menu_item_add 198, 255, 4
+	menu_item_add msg_0191_00194, 255, 0
+	menu_item_add msg_0191_00195, 255, 1
+	menu_item_add msg_0191_00196, 255, 2
+	menu_item_add msg_0191_00198, 255, 4
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
@@ -128,9 +129,9 @@ _019B:
 _01A8:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 199, 255, 0
-	menu_item_add 200, 255, 1
-	menu_item_add 201, 255, 2
+	menu_item_add msg_0191_00199, 255, 0
+	menu_item_add msg_0191_00200, 255, 1
+	menu_item_add msg_0191_00201, 255, 2
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
@@ -484,7 +485,7 @@ _0669:
 	call_if_lt _07D3
 	return
 
-_06A5:
+_06A5:  // consolation
 	random VAR_SPECIAL_x8006, 8
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _0861
@@ -505,7 +506,7 @@ _06A5:
 	call _082F
 	return
 
-_071B:
+_071B:  // bronze
 	random VAR_SPECIAL_x8006, 5
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _08A1
@@ -520,7 +521,7 @@ _071B:
 	call _082F
 	return
 
-_076A:
+_076A:  // silver
 	random VAR_SPECIAL_x8006, 7
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _08C9
@@ -539,7 +540,7 @@ _076A:
 	call _082F
 	return
 
-_07D3:
+_07D3:  // gold
 	random VAR_SPECIAL_x8006, 6
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _0901
@@ -569,106 +570,106 @@ _084C:
 	return
 
 _0861:
-	setvar VAR_SPECIAL_x8006, 149
+	setvar VAR_SPECIAL_x8006, ITEM_CHERI_BERRY
 	return
 
 _0869:
-	setvar VAR_SPECIAL_x8006, 150
+	setvar VAR_SPECIAL_x8006, ITEM_CHESTO_BERRY
 	return
 
 _0871:
-	setvar VAR_SPECIAL_x8006, 151
+	setvar VAR_SPECIAL_x8006, ITEM_PECHA_BERRY
 	return
 
 _0879:
-	setvar VAR_SPECIAL_x8006, 152
+	setvar VAR_SPECIAL_x8006, ITEM_RAWST_BERRY
 	return
 
 _0881:
-	setvar VAR_SPECIAL_x8006, 153
+	setvar VAR_SPECIAL_x8006, ITEM_ASPEAR_BERRY
 	return
 
 _0889:
-	setvar VAR_SPECIAL_x8006, 154
+	setvar VAR_SPECIAL_x8006, ITEM_LEPPA_BERRY
 	return
 
 _0891:
-	setvar VAR_SPECIAL_x8006, 155
+	setvar VAR_SPECIAL_x8006, ITEM_ORAN_BERRY
 	return
 
 _0899:
-	setvar VAR_SPECIAL_x8006, 156
+	setvar VAR_SPECIAL_x8006, ITEM_PERSIM_BERRY
 	return
 
 _08A1:
-	setvar VAR_SPECIAL_x8006, 159
+	setvar VAR_SPECIAL_x8006, ITEM_FIGY_BERRY
 	return
 
 _08A9:
-	setvar VAR_SPECIAL_x8006, 160
+	setvar VAR_SPECIAL_x8006, ITEM_WIKI_BERRY
 	return
 
 _08B1:
-	setvar VAR_SPECIAL_x8006, 161
+	setvar VAR_SPECIAL_x8006, ITEM_MAGO_BERRY
 	return
 
 _08B9:
-	setvar VAR_SPECIAL_x8006, 162
+	setvar VAR_SPECIAL_x8006, ITEM_AGUAV_BERRY
 	return
 
 _08C1:
-	setvar VAR_SPECIAL_x8006, 163
+	setvar VAR_SPECIAL_x8006, ITEM_IAPAPA_BERRY
 	return
 
 _08C9:
-	setvar VAR_SPECIAL_x8006, 164
+	setvar VAR_SPECIAL_x8006, ITEM_RAZZ_BERRY
 	return
 
 _08D1:
-	setvar VAR_SPECIAL_x8006, 165
+	setvar VAR_SPECIAL_x8006, ITEM_BLUK_BERRY
 	return
 
 _08D9:
-	setvar VAR_SPECIAL_x8006, 166
+	setvar VAR_SPECIAL_x8006, ITEM_NANAB_BERRY
 	return
 
 _08E1:
-	setvar VAR_SPECIAL_x8006, 167
+	setvar VAR_SPECIAL_x8006, ITEM_WEPEAR_BERRY
 	return
 
 _08E9:
-	setvar VAR_SPECIAL_x8006, 168
+	setvar VAR_SPECIAL_x8006, ITEM_PINAP_BERRY
 	return
 
 _08F1:
-	setvar VAR_SPECIAL_x8006, 157
+	setvar VAR_SPECIAL_x8006, ITEM_LUM_BERRY
 	return
 
 _08F9:
-	setvar VAR_SPECIAL_x8006, 158
+	setvar VAR_SPECIAL_x8006, ITEM_SITRUS_BERRY
 	return
 
 _0901:
-	setvar VAR_SPECIAL_x8006, 169
+	setvar VAR_SPECIAL_x8006, ITEM_POMEG_BERRY
 	return
 
 _0909:
-	setvar VAR_SPECIAL_x8006, 170
+	setvar VAR_SPECIAL_x8006, ITEM_KELPSY_BERRY
 	return
 
 _0911:
-	setvar VAR_SPECIAL_x8006, 171
+	setvar VAR_SPECIAL_x8006, ITEM_QUALOT_BERRY
 	return
 
 _0919:
-	setvar VAR_SPECIAL_x8006, 172
+	setvar VAR_SPECIAL_x8006, ITEM_HONDEW_BERRY
 	return
 
 _0921:
-	setvar VAR_SPECIAL_x8006, 173
+	setvar VAR_SPECIAL_x8006, ITEM_GREPA_BERRY
 	return
 
 _0929:
-	setvar VAR_SPECIAL_x8006, 174
+	setvar VAR_SPECIAL_x8006, ITEM_TAMATO_BERRY
 	return
 	.balign 4, 0

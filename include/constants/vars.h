@@ -338,7 +338,7 @@
 #define VAR_UNK_4143                       0x4143
 #define VAR_UNK_4144                       0x4144
 #define VAR_UNK_4145                       0x4145
-#define VAR_UNK_4146                       0x4146
+#define VAR_BATTLE_HALL_CHALLENGE_TYPE     0x4146
 #define VAR_UNK_4147                       0x4147
 #define VAR_UNK_4148                       0x4148
 #define VAR_UNK_4149                       0x4149
