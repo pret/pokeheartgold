@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T24GYM0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T24GYM0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T24GYM0101_002 + 1",
@@ -35,9 +37,6 @@
       "eventFlag": "FLAG_HIDE_CIANWOOD_GYM_CHUCK",
       "scriptId": "_EV_scr_seq_T24GYM0101_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 13,
@@ -52,14 +51,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BLACK_BELT_YOSHI)",
       "facingDirection": 2,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 3,
       "yRange": 0,
       "x": 6,
       "z": 9,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_T24GYM0101_gsfighter_2",
@@ -69,14 +68,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BLACK_BELT_LAO)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
       "z": 7,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_T24GYM0101_gsfighter_3",
@@ -86,14 +85,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BLACK_BELT_NOB)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
       "z": 5,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_T24GYM0101_gsfighter_4",
@@ -103,14 +102,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BLACK_BELT_LUNG)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 4,
       "yRange": 0,
       "x": 15,
       "z": 3,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     }
   ],
   "warps": [

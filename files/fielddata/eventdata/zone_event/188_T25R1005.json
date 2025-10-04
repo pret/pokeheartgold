@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T25R1005.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T25R1005.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T25R1005_004 + 1",
@@ -19,9 +21,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1005_000 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 23,
@@ -36,9 +35,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1005_001 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,
@@ -53,9 +49,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1005_003 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 2,
@@ -70,9 +63,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1005_002 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 2,
       "yRange": 0,
       "x": 12,
@@ -87,9 +77,6 @@
       "eventFlag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY",
       "scriptId": "_EV_scr_seq_T25R1005_006 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 23,

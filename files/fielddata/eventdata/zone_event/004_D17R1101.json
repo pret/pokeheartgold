@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R1101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D17R1101.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d17r1101_tinymushroom",
@@ -51,9 +53,6 @@
       "eventFlag": "FLAG_HIDE_BELLTIME_TOWER_MORTY",
       "scriptId": "_EV_scr_seq_D17R1101_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 30,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D35R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D35R0102.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D35R0102_004 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D35R0102_001 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 44,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_UNK_1E8",
       "scriptId": "_EV_scr_seq_D35R0102_002 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 34,
@@ -61,9 +57,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D35R0102_009 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
@@ -78,9 +71,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D35R0102_010 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 44,
@@ -95,9 +85,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D35R0102_011 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 44,
@@ -112,9 +99,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D35R0102_012 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
@@ -129,14 +113,14 @@
       "eventFlag": "FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN",
       "scriptId": "std_trainer(TRAINER_TEAM_ROCKET_GRUNT_15)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 12,
       "z": 5,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D35R0102_assistantm",
@@ -146,14 +130,14 @@
       "eventFlag": "FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN",
       "scriptId": "std_trainer(TRAINER_SCIENTIST_GS_GREGG)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 36,
       "z": 22,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D35R0102_monstarball",
@@ -163,9 +147,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D35R0102_HYPER_POTION",
       "scriptId": "std_itemball_d35r0102_hyper_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 52,
@@ -180,9 +161,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D35R0102_GUARD_SPEC_",
       "scriptId": "std_itemball_d35r0102_guard_spec_",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 40,
@@ -197,9 +175,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D35R0102_NUGGET",
       "scriptId": "std_itemball_d35r0102_nugget",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 30,

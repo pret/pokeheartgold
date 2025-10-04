@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D25R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D25R0102.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d25r0102_x_speed",
@@ -27,14 +29,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_PHILLIP)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 13,
       "z": 4,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_D25R0102_mount_2_2",
@@ -44,14 +46,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_LEONARD)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 21,
       "z": 19,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D25R0102_mania",
@@ -61,14 +63,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_ANDREW)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
       "z": 59,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_D25R0102_mania_2",
@@ -78,14 +80,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_CALVIN)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 26,
       "z": 58,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D25R0102_rock",
@@ -95,9 +97,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_strength",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
@@ -112,9 +111,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0102_TM39",
       "scriptId": "std_itemball_d25r0102_tm39",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 11,
@@ -129,9 +125,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0102_X_DEFENSE",
       "scriptId": "std_itemball_d25r0102_x_defense",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 27,

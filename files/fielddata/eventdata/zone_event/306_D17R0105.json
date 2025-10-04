@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R0105.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D17R0105.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d17r0105_full_restore",
@@ -19,9 +21,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0105_RARE_CANDY",
       "scriptId": "std_itemball_d17r0105_rare_candy",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,

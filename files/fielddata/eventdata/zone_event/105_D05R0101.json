@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D05R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D05R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d05r0101_x_defense",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D05R0101_ELIXIR",
       "scriptId": "std_itemball_d05r0101_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D05R0101_TM56",
       "scriptId": "std_itemball_d05r0101_tm56",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,

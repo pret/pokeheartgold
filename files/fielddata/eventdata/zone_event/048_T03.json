@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T03.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T03.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T03_006 + 1",
@@ -67,9 +69,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T03_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1069,
@@ -84,9 +83,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T03_001 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 1,
       "x": 1056,
@@ -101,9 +97,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T03_002 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 3,
       "yRange": 2,
       "x": 1050,
@@ -118,9 +111,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1035,
@@ -135,14 +125,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 26,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1072,
       "z": 77,
-      "y": 0
+      "y": 0,
+      "data": [
+        26
+      ]
     },
     {
       "id": "obj_T03_bonguri_2",
@@ -152,14 +142,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 27,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1074,
       "z": 77,
-      "y": 0
+      "y": 0,
+      "data": [
+        27
+      ]
     },
     {
       "id": "obj_T03_monstarball",
@@ -169,9 +159,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_T03_WISE_GLASSES",
       "scriptId": "std_itemball_t03_wise_glasses",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1029,
@@ -186,9 +173,6 @@
       "eventFlag": "FLAG_HIDE_CAMERON",
       "scriptId": "_EV_scr_seq_T03_007 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1047,
@@ -203,9 +187,6 @@
       "eventFlag": "FLAG_HIDE_PEWTER_CITY_STEVEN",
       "scriptId": "_EV_scr_seq_T03_009 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1044,
@@ -220,9 +201,6 @@
       "eventFlag": "FLAG_HIDE_PEWTER_CITY_LATIOS",
       "scriptId": "_EV_scr_seq_T03_010 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1039,
@@ -237,9 +215,6 @@
       "eventFlag": "FLAG_HIDE_PEWTER_CITY_LATIAS",
       "scriptId": "_EV_scr_seq_T03_010 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1039,

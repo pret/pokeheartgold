@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T20R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T20R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T20R0101_005 + 1",
@@ -99,9 +101,6 @@
       "eventFlag": "FLAG_HIDE_ELMS_LAB_ELM",
       "scriptId": "_EV_scr_seq_T20R0101_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
@@ -116,9 +115,6 @@
       "eventFlag": "FLAG_HIDE_ELMS_LAB_OFFICER",
       "scriptId": 0,
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 3,
@@ -133,9 +129,6 @@
       "eventFlag": "FLAG_HIDE_ELMS_LAB_AIDE",
       "scriptId": "_EV_scr_seq_T20R0101_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
@@ -150,9 +143,6 @@
       "eventFlag": "FLAG_HIDE_ELMS_LAB_FRIEND",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,

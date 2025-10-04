@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T10R0701.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T10R0701.h"
+  ],
   "objects": [
     {
       "id": "obj_T10R0701_wataru",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,

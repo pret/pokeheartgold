@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R16.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R16.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R16_001 + 1",

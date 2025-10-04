@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_W41.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_W41.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_w41_max_ether",
@@ -51,14 +53,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_CHARLIE)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 249,
       "z": 334,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W41_gsswimmerm_2",
@@ -68,14 +70,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_GEORGE)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 8,
       "yRange": 0,
       "x": 219,
       "z": 328,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_W41_gsswimmerm_3",
@@ -85,14 +87,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_BERKE)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 222,
       "z": 351,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W41_gsswimmerm_4",
@@ -102,14 +104,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_MATTHEW)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 241,
       "z": 351,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_W41_gsswimmerm_5",
@@ -119,14 +121,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_RONALD)",
       "facingDirection": 2,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 4,
       "yRange": 3,
       "x": 224,
       "z": 377,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_W41_gsswimmerw",
@@ -136,14 +138,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_KAYLEE)",
       "facingDirection": 0,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 250,
       "z": 354,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_W41_gsswimmerw_2",
@@ -153,14 +155,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_SUSIE)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 207,
       "z": 326,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_W41_gsswimmerw_3",
@@ -170,14 +172,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_DENISE)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 208,
       "z": 377,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_W41_gsswimmerw_4",
@@ -187,14 +189,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_KARA)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 226,
       "z": 361,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W41_gsswimmerw_5",
@@ -204,14 +206,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_WENDY)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 6,
       "yRange": 0,
       "x": 219,
       "z": 341,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     }
   ],
   "warps": [

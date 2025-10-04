@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R26.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R26.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R26_002 + 1",
@@ -43,14 +45,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_SCOTT)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 913,
       "z": 403,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R26_mystery_2",
@@ -60,14 +62,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_VERNON)",
       "facingDirection": 2,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 923,
       "z": 374,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R26_gswoman3",
@@ -77,14 +79,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_JOYCE)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 917,
       "z": 344,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R26_gsman3",
@@ -94,14 +96,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_GAVEN)",
       "facingDirection": 2,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 926,
       "z": 330,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R26_gsman3_2",
@@ -111,14 +113,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_JAKE)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 921,
       "z": 322,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R26_gswoman3_2",
@@ -128,14 +130,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_JAMIE)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 913,
       "z": 302,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R26_monstarball",
@@ -145,9 +147,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R26_MAX_ELIXIR",
       "scriptId": "std_itemball_r26_max_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 910,
@@ -162,14 +161,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 920,
       "z": 342,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R26_gsmiddleman1",
@@ -179,9 +178,6 @@
       "eventFlag": "FLAG_HIDE_CAMERON",
       "scriptId": "_EV_scr_seq_R26_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 914,

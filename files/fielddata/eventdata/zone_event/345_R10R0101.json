@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R10R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R10R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R10R0101_000 + 1",
@@ -19,14 +21,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_JIM)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 6,
       "yRange": 0,
       "x": 1416,
       "z": 201,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R10R0101_gsmiddleman1",
@@ -36,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKEFAN_M_ROBERT)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1430,
       "z": 205,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R10R0101_rock",
@@ -53,9 +55,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_strength",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1419,
@@ -70,9 +69,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R10R0101_TM69",
       "scriptId": "std_itemball_r10r0101_tm69",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1417,

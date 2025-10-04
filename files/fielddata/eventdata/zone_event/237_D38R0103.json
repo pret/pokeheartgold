@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D38R0103.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D38R0103.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d38r0103_full_restore",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0103_RARE_CANDY",
       "scriptId": "std_itemball_d38r0103_rare_candy",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
@@ -60,9 +59,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0103_MAX_POTION",
       "scriptId": "std_itemball_d38r0103_max_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 45,
@@ -77,9 +73,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0103_TM40",
       "scriptId": "std_itemball_d38r0103_tm40",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 29,
@@ -94,9 +87,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0103_ELIXIR",
       "scriptId": "std_itemball_d38r0103_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,
@@ -111,9 +101,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0103_DRAGON_SCALE",
       "scriptId": "std_itemball_d38r0103_dragon_scale",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 27,
@@ -128,9 +115,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0103_ESCAPE_ROPE",
       "scriptId": "std_itemball_d38r0103_escape_rope",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 45,
@@ -145,14 +129,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SUPER_NERD_HUGH)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,
       "z": 46,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     }
   ],
   "warps": [

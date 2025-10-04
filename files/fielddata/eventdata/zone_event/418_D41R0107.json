@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D41R0107.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D41R0107.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d41r0107_max_revive",

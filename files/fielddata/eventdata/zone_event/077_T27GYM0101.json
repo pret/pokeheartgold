@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T27GYM0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T27GYM0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T27GYM0101_005 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T27GYM0101_003 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_HIDE_ECRUTEAK_GYM_MORTY",
       "scriptId": "_EV_scr_seq_T27GYM0101_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -61,14 +57,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_MEDIUM_GEORGINA)",
       "facingDirection": 2,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 17,
       "z": 39,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_T27GYM0101_itako_2",
@@ -78,14 +74,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_MEDIUM_GRACE)",
       "facingDirection": 1,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,
       "z": 30,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_T27GYM0101_itako_3",
@@ -95,14 +91,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_MEDIUM_EDITH)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
       "z": 29,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_T27GYM0101_itako_4",
@@ -112,14 +108,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_MEDIUM_MARTHA)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 11,
       "z": 19,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_T27GYM0101_gsoldman1",
@@ -129,9 +125,6 @@
       "eventFlag": "FLAG_UNK_247",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,

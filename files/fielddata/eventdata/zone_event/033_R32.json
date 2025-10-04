@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R32.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R32.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R32_006 + 1",
@@ -59,9 +61,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R32_000 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 471,
@@ -76,9 +75,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R32_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 477,
@@ -93,9 +89,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 462,
@@ -110,14 +103,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_ALBERT)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 470,
       "z": 329,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R32_picnicgirl_2",
@@ -127,14 +120,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_LIZ)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 466,
       "z": 342,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R32_fishing_2",
@@ -144,9 +137,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_HENRY)",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 461,
@@ -161,9 +151,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_JUSTIN)",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 463,
@@ -178,14 +165,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_RALPH)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 468,
       "z": 387,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R32_campboy_2",
@@ -195,14 +182,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_ROLAND)",
       "facingDirection": 0,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 452,
       "z": 385,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R32_gsboy2_2",
@@ -212,14 +199,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_GORDON)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 460,
       "z": 403,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R32_gsbigman_2",
@@ -229,9 +216,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_32_SLOWPOKETAIL_SALESMAN",
       "scriptId": "_EV_scr_seq_R32_003 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 462,
@@ -246,14 +230,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_PETER)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 468,
       "z": 433,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R32_monstarball",
@@ -263,9 +247,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R32_REPEL",
       "scriptId": "std_itemball_r32_repel",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 456,
@@ -280,9 +261,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R32_GREAT_BALL",
       "scriptId": "std_itemball_r32_great_ball",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 459,
@@ -297,9 +275,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_32_FREIDA",
       "scriptId": "_EV_scr_seq_R32_005 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 471,
@@ -314,9 +289,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 471,
@@ -331,9 +303,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R32_TM09",
       "scriptId": "std_itemball_r32_tm09",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 451,
@@ -348,9 +317,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R32_SHELL_BELL",
       "scriptId": "std_itemball_r32_shell_bell",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 475,
@@ -365,9 +331,6 @@
       "eventFlag": "FLAG_HIDE_CAMERON",
       "scriptId": "_EV_scr_seq_R32_009 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 468,

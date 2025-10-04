@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R14.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R14.h"
+  ],
   "objects": [
     {
       "id": "obj_R14_gsmiddleman1",
@@ -9,14 +11,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKEFAN_M_TREVOR)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1361,
       "z": 400,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R14_middlewoman1_2",
@@ -26,14 +28,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TEACHER_CLARICE)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1350,
       "z": 406,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R14_gsman2",
@@ -43,14 +45,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_ROY)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1353,
       "z": 432,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R14_gsmiddleman1_2",
@@ -60,14 +62,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKEFAN_M_CARTER)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1359,
       "z": 422,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R14_gsman2_2",
@@ -77,14 +79,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_JOSH)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1354,
       "z": 396,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R14_gsboy1",
@@ -94,14 +96,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_TORIN)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1345,
       "z": 406,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R14_gsboy1_2",
@@ -111,14 +113,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_CONNOR)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1345,
       "z": 409,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R14_gsboy1_3",
@@ -128,14 +130,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_TRAVIS)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1345,
       "z": 403,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R14_tree",
@@ -145,9 +147,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1345,
@@ -162,9 +161,6 @@
       "eventFlag": "FLAG_MAPTEMP_011",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1352,
@@ -179,9 +175,6 @@
       "eventFlag": "FLAG_HIDE_CAMERON",
       "scriptId": "_EV_scr_seq_R14_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1357,
@@ -196,9 +189,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_14_SUICUNE",
       "scriptId": 0,
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1365,
@@ -213,9 +203,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_14_EUSINE",
       "scriptId": "_EV_scr_seq_R14_003 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1358,
@@ -230,9 +217,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_14_EUSINE_2",
       "scriptId": "_EV_scr_seq_R14_004 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1358,
@@ -247,9 +231,6 @@
       "eventFlag": "FLAG_MAPTEMP_012",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1353,
@@ -264,9 +245,6 @@
       "eventFlag": "FLAG_MAPTEMP_013",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1353,
@@ -281,9 +259,6 @@
       "eventFlag": "FLAG_MAPTEMP_014",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1352,
@@ -298,9 +273,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R14_005 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1348,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D48R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D48R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D48R0101_003 + 1",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_UNK_249",
       "scriptId": "_EV_scr_seq_D48R0101_001 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 30,
@@ -60,9 +59,6 @@
       "eventFlag": "FLAG_UNK_249",
       "scriptId": "_EV_scr_seq_D48R0101_002 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 30,
@@ -77,9 +73,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D48R0101_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 34,
@@ -94,9 +87,6 @@
       "eventFlag": "FLAG_HIDE_CLIFFS_EDGE_GATE_CHUCK",
       "scriptId": 0,
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 35,

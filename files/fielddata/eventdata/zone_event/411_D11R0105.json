@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D11R0105.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D11R0105.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d11r0105_zinc",
@@ -19,9 +21,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0105_ULTRA_BALL",
       "scriptId": "std_itemball_d11r0105_ultra_ball",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 29,
@@ -36,9 +35,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0105_TM13",
       "scriptId": "std_itemball_d11r0105_tm13",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 42,
@@ -53,9 +49,6 @@
       "eventFlag": "FLAG_HIDE_SEAFOAM_ISLAND_ARTICUNO",
       "scriptId": "_EV_scr_seq_D11R0105_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 27,

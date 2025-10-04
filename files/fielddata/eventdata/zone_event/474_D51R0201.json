@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D51R0201.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D51R0201.h"
+  ],
   "objects": [
     {
       "id": "obj_D51R0201_champion",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA",
       "scriptId": "_EV_scr_seq_D51R0201_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,

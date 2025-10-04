@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_W20.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_W20.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_W20_000 + 1",
@@ -51,14 +53,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_FRANKIE)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1067,
       "z": 493,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W20_campboy_2",
@@ -68,14 +70,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_PEDRO)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1119,
       "z": 497,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_W20_picnicgirl_2",
@@ -85,14 +87,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_ADRIAN)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1129,
       "z": 503,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_W20_picnicgirl_2_2",
@@ -102,14 +104,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_CHEYENNE)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1085,
       "z": 502,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_W20_gsman2",
@@ -119,14 +121,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_BERT)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1077,
       "z": 502,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_W20_gsman2_2",
@@ -136,14 +138,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_ERNIE)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1094,
       "z": 504,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W20_gsswimmerw",
@@ -153,14 +155,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_NICOLE)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1174,
       "z": 493,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_W20_gsswimmerw_2",
@@ -170,14 +172,15 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_LORI)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 3,
-      "param2": 0,
       "xRange": 9,
       "yRange": 0,
       "x": 1151,
       "z": 500,
-      "y": 0
+      "y": 0,
+      "data": [
+        3,
+        3
+      ]
     },
     {
       "id": "obj_W20_gsswimmerm_2",
@@ -187,14 +190,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_ELMO)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1142,
       "z": 491,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W20_gsswimmerm_3",
@@ -204,14 +207,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_M_LUIS)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1105,
       "z": 483,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_W20_gsswimmerw_3",
@@ -221,14 +224,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_LEONA)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1111,
       "z": 504,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_W20_gsswimmerw_4",
@@ -238,14 +241,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_MINA)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1081,
       "z": 494,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     }
   ],
   "warps": [

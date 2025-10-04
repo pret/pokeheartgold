@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R06.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R06.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R06_001 + 1",
@@ -19,14 +21,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_VIRGIL)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1291,
       "z": 272,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R06_picnicgirl_2",
@@ -36,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_SELINA)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1295,
       "z": 285,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R06_gsbabygirl1",
@@ -53,14 +55,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TWINS_DAY_AND_DANI)",
       "facingDirection": 0,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1303,
       "z": 274,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R06_gsbabygirl1_2",
@@ -70,14 +72,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer_2(TRAINER_TWINS_DAY_AND_DANI)",
       "facingDirection": 0,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1304,
       "z": 274,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R06_gsmiddleman1",
@@ -87,9 +89,6 @@
       "eventFlag": "FLAG_HIDE_GUY_BLOCKING_KANTO_UNDERGROUND_PATH",
       "scriptId": "_EV_scr_seq_R06_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1309,
@@ -104,9 +103,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R06_TM62",
       "scriptId": "std_itemball_r06_tm62",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1291,

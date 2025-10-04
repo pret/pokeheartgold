@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R25.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R25.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R25_002 + 1",
@@ -27,14 +29,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_DUDLEY)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1335,
       "z": 46,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R25_gsgirl1",
@@ -44,14 +46,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_LASS_ELLEN)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1346,
       "z": 49,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R25_gsboy1_2",
@@ -61,14 +63,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_JOE)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1364,
       "z": 46,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R25_gsgirl1_2",
@@ -78,14 +80,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_LASS_LAURA)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1372,
       "z": 46,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R25_gsgirl1_3",
@@ -95,14 +97,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_LASS_SHANNON)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1376,
       "z": 49,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R25_campboy_2",
@@ -112,14 +114,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_LLOYD)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1367,
       "z": 38,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R25_gsassistantm",
@@ -129,14 +131,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SUPER_NERD_PAT)",
       "facingDirection": 2,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1384,
       "z": 43,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_R25_gsman3",
@@ -146,9 +148,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R25_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1392,
@@ -163,9 +162,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_25_MISTY",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1421,
@@ -180,9 +176,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_25_MISTYS_BOYFRIEND",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1420,
@@ -197,9 +190,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1388,
@@ -214,9 +204,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R25_PROTEIN",
       "scriptId": "std_itemball_r25_protein",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1380,
@@ -231,9 +218,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_25_SUICUNE",
       "scriptId": "_EV_scr_seq_R25_007 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1421,
@@ -248,9 +232,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_25_EUSINE",
       "scriptId": "_EV_scr_seq_R25_005 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1409,
@@ -265,9 +246,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_25_EUSINE_2",
       "scriptId": "_EV_scr_seq_R25_006 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1422,
@@ -282,9 +260,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_25_MISTY_FOR_PHONE_NUMBER",
       "scriptId": "_EV_scr_seq_R25_009 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1422,

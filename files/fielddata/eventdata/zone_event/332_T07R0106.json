@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T07R0106.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T07R0106.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T07R0106_002 + 1",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T07R0106_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,
@@ -60,9 +59,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T07R0106_001 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 1,
       "x": 18,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R07.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R07.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R07_000 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R07_MENTAL_HERB",
       "scriptId": "std_itemball_r07_mental_herb",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1263,

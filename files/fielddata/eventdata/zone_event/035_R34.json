@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R34.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R34.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R34_009 + 1",
@@ -59,14 +61,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_SAMUEL)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 375,
       "z": 443,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R34_picnicgirl_2",
@@ -76,14 +78,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_GINA)",
       "facingDirection": 3,
-      "param0": 7,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 366,
       "z": 429,
-      "y": 0
+      "y": 0,
+      "data": [
+        7
+      ]
     },
     {
       "id": "obj_R34_gsboy2_2",
@@ -93,14 +95,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_IAN)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 376,
       "z": 418,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R34_policeman",
@@ -110,14 +112,14 @@
       "eventFlag": "FLAG_HIDE_ROUTE_34_POLICEMAN_NIGHT",
       "scriptId": "std_trainer(TRAINER_POLICEMAN_KEITH)",
       "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 364,
       "z": 404,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_R34_campboy_2",
@@ -127,14 +129,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_TODD)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 365,
       "z": 395,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R34_gswoman3",
@@ -144,9 +146,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R34_006 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 375,
@@ -161,9 +160,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R34_007 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 365,
@@ -178,9 +174,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R34_008 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 370,
@@ -195,9 +188,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R34_NUGGET",
       "scriptId": "std_itemball_r34_nugget",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 364,
@@ -212,9 +202,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_34_POLICEMAN_DAY",
       "scriptId": "_EV_scr_seq_R34_002 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 364,
@@ -229,9 +216,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_daycare_man",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 365,
@@ -246,9 +230,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_34_FRIEND",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 361,
@@ -263,9 +244,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_34_FRIEND",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 361,
@@ -280,14 +258,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKEFAN_M_BRANDON)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 381,
       "z": 431,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R34_monstarball_2",
@@ -297,9 +275,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R34_TM63",
       "scriptId": "std_itemball_r34_tm63",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 372,
@@ -314,9 +289,6 @@
       "eventFlag": "FLAG_HIDE_CAMERON",
       "scriptId": "_EV_scr_seq_R34_012 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 363,

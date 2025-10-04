@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R33.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R33.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R33_001 + 1",
@@ -19,14 +21,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_ANTHONY)",
       "facingDirection": 0,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 458,
       "z": 467,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R33_bonguri",
@@ -36,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 9,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 471,
       "z": 474,
-      "y": 0
+      "y": 0,
+      "data": [
+        9
+      ]
     },
     {
       "id": "obj_R33_bonguri_2",
@@ -53,14 +55,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 10,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 472,
       "z": 474,
-      "y": 0
+      "y": 0,
+      "data": [
+        10
+      ]
     },
     {
       "id": "obj_R33_gsgirl1",
@@ -70,9 +72,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R33_000 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 1,
       "x": 469,

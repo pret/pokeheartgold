@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0216.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D24R0216.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D24R0216_000 + 1",
@@ -251,9 +253,6 @@
       "eventFlag": "FLAG_HIDE_ALPH_MAIN_CHAMBER_ARCEUS_EVENT_PEOPLE",
       "scriptId": 0,
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R30.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R30.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R30_005 + 1",
@@ -59,9 +61,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R30_009 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 554,
@@ -76,9 +75,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R30_010 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 548,
@@ -93,9 +89,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 559,
@@ -110,14 +103,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_DON)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 550,
       "z": 298,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R30_gsboy2",
@@ -127,14 +120,14 @@
       "eventFlag": "FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_JOEY)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 553,
       "z": 332,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R30_gsboy2_2",
@@ -144,14 +137,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_MIKEY)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 552,
       "z": 325,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R30_tsure_poke_static_rattata",
@@ -161,9 +154,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_30_BATTLERS",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 552,
@@ -178,9 +168,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_30_BATTLERS",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 552,
@@ -195,9 +182,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_30_BATTLERS",
       "scriptId": "_EV_scr_seq_R30_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 552,
@@ -212,9 +196,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R30_ANTIDOTE",
       "scriptId": "std_itemball_r30_antidote",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 554,
@@ -229,9 +210,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R30_POTION",
       "scriptId": "std_itemball_r30_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 564,
@@ -246,14 +224,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 553,
       "z": 355,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_R30_bonguri_2",
@@ -263,14 +241,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 7,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 562,
       "z": 293,
-      "y": 0
+      "y": 0,
+      "data": [
+        7
+      ]
     },
     {
       "id": "obj_R30_gsmiddleman1",
@@ -280,9 +258,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_30_APRICORN_MAN",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 555,
@@ -297,9 +272,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R30_003 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 557,

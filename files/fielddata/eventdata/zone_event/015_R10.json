@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R10.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R10.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_r10_carbos",
@@ -35,9 +37,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_10_LT_SURGE",
       "scriptId": "_EV_scr_seq_R10_002 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1430,
@@ -52,9 +51,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_10_ZAPDOS",
       "scriptId": "_EV_scr_seq_R10_003 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1419,

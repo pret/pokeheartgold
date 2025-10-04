@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R15.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R15.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R15_000 + 1",
@@ -19,14 +21,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_KIPP)",
       "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1266,
       "z": 432,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_R15_gsboy1_2",
@@ -36,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_TOMMY)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1267,
       "z": 437,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R15_middlewoman1_2",
@@ -53,14 +55,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TEACHER_HILLARY)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1280,
       "z": 432,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R15_gsbabygirl1",
@@ -70,14 +72,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer_2(TRAINER_TWINS_KAY_AND_TIA)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1276,
       "z": 421,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R15_gsbabygirl1_2",
@@ -87,14 +89,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TWINS_KAY_AND_TIA)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1277,
       "z": 421,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R15_middlewoman1_2_2",
@@ -104,14 +106,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKEFAN_ELEANOR)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1270,
       "z": 420,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R15_gsmiddleman1",
@@ -121,14 +123,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKEFAN_M_BOONE)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1303,
       "z": 437,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R15_middlewoman1_2_3",
@@ -138,14 +140,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TEACHER_COLETTE)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1289,
       "z": 423,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R15_gsboy1_3",
@@ -155,14 +157,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_JOHNNY)",
       "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1318,
       "z": 433,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_R15_gsboy1_4",
@@ -172,14 +174,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_BILLY)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1314,
       "z": 422,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R15_tree",
@@ -189,9 +191,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1333,
@@ -206,9 +205,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R15_PP_UP",
       "scriptId": "std_itemball_r15_pp_up",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1263,
@@ -223,9 +219,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R15_ROSE_INCENSE",
       "scriptId": "std_itemball_r15_rose_incense",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1290,

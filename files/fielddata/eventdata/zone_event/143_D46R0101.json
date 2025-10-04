@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D46R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D46R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d46r0101_max_ether",
@@ -67,9 +69,6 @@
       "eventFlag": "FLAG_UNK_263",
       "scriptId": "_EV_scr_seq_D46R0101_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,
@@ -84,9 +83,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D46R0101_DIRE_HIT",
       "scriptId": "std_itemball_d46r0101_dire_hit",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 23,
@@ -101,9 +97,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D46R0101_BLUE_FLUTE",
       "scriptId": "std_itemball_d46r0101_blue_flute",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 42,
@@ -118,9 +111,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D46R0101_LEAF_STONE",
       "scriptId": "std_itemball_d46r0101_leaf_stone",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 20,
@@ -135,9 +125,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D46R0101_TM77",
       "scriptId": "std_itemball_d46r0101_tm77",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 50,
@@ -152,9 +139,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 23,
@@ -169,9 +153,6 @@
       "eventFlag": "FLAG_MAPTEMP_011",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 42,
@@ -186,14 +167,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_DANE)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 48,
       "z": 73,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_D46R0101_gsboy3_2",
@@ -203,14 +184,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_DION)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 47,
       "z": 54,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_D46R0101_gsboy3_3",
@@ -220,14 +201,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_STACEY)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 47,
       "z": 39,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_D46R0101_gsboy3_4",
@@ -237,14 +218,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_ELLIS)",
       "facingDirection": 0,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 5,
       "yRange": 1,
       "x": 37,
       "z": 17,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_D46R0101_gsboy3_5",
@@ -254,14 +235,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_ABNER)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,
       "z": 28,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     }
   ],
   "warps": [

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D23R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D23R0102.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D23R0102_002 + 1",
@@ -35,9 +37,6 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "_EV_scr_seq_D23R0102_005 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 5,
@@ -52,9 +51,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D23R0102_004 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
@@ -69,9 +65,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D23R0102_003 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 20,
@@ -86,9 +79,6 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "_EV_scr_seq_D23R0102_006 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 3,
@@ -103,14 +93,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
       "scriptId": "std_trainer(TRAINER_TEAM_ROCKET_GRUNT_5)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 13,
       "z": 5,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_D23R0102_rocketw",
@@ -120,14 +110,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
       "scriptId": "std_trainer(TRAINER_TEAM_ROCKET_F_GRUNT_2)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,
       "z": 12,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D23R0102_rocketm_2",
@@ -137,14 +127,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
       "scriptId": "std_trainer(TRAINER_TEAM_ROCKET_GRUNT_6)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
       "z": 10,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_D23R0102_rocketm_3",
@@ -154,14 +144,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
       "scriptId": "std_trainer(TRAINER_TEAM_ROCKET_GRUNT_4)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 3,
       "z": 14,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_D23R0102_gswoman2_2",
@@ -171,9 +161,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D23R0102_010 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
@@ -188,9 +175,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D23R0102_009 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,

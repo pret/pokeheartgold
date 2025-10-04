@@ -1,6 +1,5 @@
 {{ doNotModifyHeader }}
 #include "constants/scrcmd.h"
-{% if exists("header") %}#include "{{ header }}"{% endif %}
 {% if exists("headers") %}{% for hdr in headers %}
 #include "{{ hdr }}"
 {% endfor %}{% endif %}
@@ -45,10 +44,6 @@
 ## for i in range(3 - length(object.data))
 	.short 0
 ## endfor
-## else if existsIn(object, "param0")
-	.short {{ object.param0 }}
-	.short {{ object.param1 }}
-	.short {{ object.param2 }}
 ## else
 	.short 0
 	.short 0

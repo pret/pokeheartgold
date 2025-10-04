@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D44R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D44R0102.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d44r0102_revive",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_HIDE_VICTORY_ROAD_CLAIR",
       "scriptId": "_EV_scr_seq_D44R0102_003 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
@@ -60,14 +59,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_KOBE)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 30,
       "z": 10,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_D44R0102_gswoman3",
@@ -77,14 +76,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_PIPER)",
       "facingDirection": 3,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 12,
       "z": 20,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_D44R0102_gsbabygirl1",
@@ -94,14 +93,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TWINS_CLEA_AND_GIL)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
       "z": 30,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_D44R0102_gsbabygirl1_2",
@@ -111,14 +110,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer_2(TRAINER_TWINS_CLEA_AND_GIL)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
       "z": 31,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_D44R0102_monstarball",
@@ -128,9 +127,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D44R0102_DRAGON_FANG",
       "scriptId": "std_itemball_d44r0102_dragon_fang",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 50,
@@ -145,9 +141,6 @@
       "eventFlag": "FLAG_HIDE_CHAMPIONS_ROOM_RETREAT",
       "scriptId": "_EV_scr_seq_D44R0102_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,
@@ -162,9 +155,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D44R0102_CALCIUM",
       "scriptId": "std_itemball_d44r0102_calcium",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 42,
@@ -179,9 +169,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D44R0102_MAX_ELIXIR",
       "scriptId": "std_itemball_d44r0102_max_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
@@ -196,9 +183,6 @@
       "eventFlag": "FLAG_HIDE_DRAGONS_DEN_RIVAL",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
@@ -213,9 +197,6 @@
       "eventFlag": "FLAG_HIDE_DRAGONS_DEN_RIVAL",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
@@ -230,9 +211,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 51,
@@ -247,9 +225,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 53,

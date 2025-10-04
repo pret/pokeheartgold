@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0102.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_p01r0102_protein",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0102_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 27,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0102_003 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -61,9 +57,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0102_004 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -78,9 +71,6 @@
       "eventFlag": "FLAG_UNK_2C9",
       "scriptId": "_EV_scr_seq_P01R0102_006 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,

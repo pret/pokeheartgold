@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R37.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R37.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R37_002 + 1",
@@ -27,14 +29,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_TWINS_TORI_AND_TIL)",
       "facingDirection": 1,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 390,
       "z": 211,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_R37_gsbabygirl1_2",
@@ -44,14 +46,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer_2(TRAINER_TWINS_TORI_AND_TIL)",
       "facingDirection": 1,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 391,
       "z": 211,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_R37_mystery_2",
@@ -61,14 +63,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_GREG)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 402,
       "z": 210,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R37_gsbabyboy1",
@@ -78,9 +80,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_37_SUNNY",
       "scriptId": "_EV_scr_seq_R37_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 404,
@@ -95,14 +94,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 13,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 401,
       "z": 202,
-      "y": 0
+      "y": 0,
+      "data": [
+        13
+      ]
     },
     {
       "id": "obj_R37_bonguri_2",
@@ -112,14 +111,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 14,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 406,
       "z": 202,
-      "y": 0
+      "y": 0,
+      "data": [
+        14
+      ]
     },
     {
       "id": "obj_R37_bonguri_3",
@@ -129,14 +128,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 15,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 404,
       "z": 204,
-      "y": 0
+      "y": 0,
+      "data": [
+        15
+      ]
     },
     {
       "id": "obj_R37_gswoman2",
@@ -146,14 +145,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BEAUTY_CALLIE)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 386,
       "z": 204,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R37_gswoman2_2",
@@ -163,14 +162,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BEAUTY_KASSANDRA)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 395,
       "z": 204,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     }
   ]
 }

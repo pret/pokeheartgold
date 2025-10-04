@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0215.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D24R0215.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D24R0215_001 + 1",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0215_STARDUST",
       "scriptId": "std_itemball_d24r0215_stardust",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
@@ -60,9 +59,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0215_STAR_PIECE",
       "scriptId": "std_itemball_d24r0215_star_piece",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 8,
@@ -77,9 +73,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0215_LEPPA_BERRY",
       "scriptId": "std_itemball_d24r0215_leppa_berry",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
@@ -94,9 +87,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0215_MYSTIC_WATER",
       "scriptId": "std_itemball_d24r0215_mystic_water",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 8,

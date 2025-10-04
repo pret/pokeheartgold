@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0304.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0304.h"
+  ],
   "objects": [
     {
       "id": "obj_P01R0304_mount_2",
@@ -9,14 +11,14 @@
       "eventFlag": "FLAG_UNK_22A",
       "scriptId": "std_trainer(TRAINER_HIKER_NOLAND)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 21,
       "z": 8,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_P01R0304_gsman3",
@@ -26,14 +28,14 @@
       "eventFlag": "FLAG_UNK_22B",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_SHAYE)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 5,
       "z": 4,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_P01R0304_gswoman3",
@@ -43,14 +45,14 @@
       "eventFlag": "FLAG_UNK_22B",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_CAROL)",
       "facingDirection": 0,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
       "z": 8,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_P01R0304_mania",
@@ -60,9 +62,6 @@
       "eventFlag": "FLAG_UNK_22C",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_MORGAN)",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,

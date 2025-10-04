@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R43.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R43.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R43_001 + 1",
@@ -35,14 +37,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_SPENCER)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 526,
       "z": 149,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R43_picnicgirl_2",
@@ -52,14 +54,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_TIFFANY)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 526,
       "z": 127,
-      "y": 262144
+      "y": 262144,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R43_mania",
@@ -69,14 +71,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_BRENT)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 531,
       "z": 122,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R43_mania_2",
@@ -86,14 +88,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_BECKETT)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 537,
       "z": 111,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R43_mania_3",
@@ -103,14 +105,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_RON)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 530,
       "z": 104,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R43_fishing_2",
@@ -120,14 +122,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_MARVIN)",
       "facingDirection": 3,
-      "param0": 7,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 520,
       "z": 113,
-      "y": 0
+      "y": 0,
+      "data": [
+        7
+      ]
     },
     {
       "id": "obj_R43_bonguri",
@@ -137,14 +139,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 21,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 513,
       "z": 125,
-      "y": 0
+      "y": 0,
+      "data": [
+        21
+      ]
     },
     {
       "id": "obj_R43_monstarball",
@@ -154,9 +156,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R43_MAX_ETHER",
       "scriptId": "std_itemball_r43_max_ether",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 532,
@@ -171,9 +170,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 515,

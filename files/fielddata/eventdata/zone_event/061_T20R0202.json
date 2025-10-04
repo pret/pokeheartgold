@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T20R0202.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T20R0202.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T20R0202_000 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 8,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
@@ -61,9 +57,6 @@
       "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,

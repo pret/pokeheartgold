@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T25R1006.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T25R1006.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T25R1006_002 + 1",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1006_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -60,9 +59,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1006_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 17,
@@ -77,9 +73,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1006_004 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 23,
@@ -94,9 +87,6 @@
       "eventFlag": "FLAG_UNK_26F",
       "scriptId": "_EV_scr_seq_T25R1006_007 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 3,
@@ -111,9 +101,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T25R1006_005 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 23,

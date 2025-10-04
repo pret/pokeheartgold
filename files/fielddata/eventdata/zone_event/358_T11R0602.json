@@ -1,3 +1,5 @@
 {
-  "header": "fielddata/script/scr_seq/event_T11R0602.h"
+  "headers": [
+    "fielddata/script/scr_seq/event_T11R0602.h"
+  ]
 }

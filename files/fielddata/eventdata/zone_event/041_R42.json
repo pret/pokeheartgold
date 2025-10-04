@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R42.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R42.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R42_002 + 1",
@@ -51,14 +53,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_TULLY)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 483,
       "z": 175,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R42_mania",
@@ -68,14 +70,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_SHANE)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 495,
       "z": 172,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R42_mount_2",
@@ -85,14 +87,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_BENJAMIN)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 501,
       "z": 177,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R42_bonguri",
@@ -102,14 +104,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 18,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 464,
       "z": 184,
-      "y": 0
+      "y": 0,
+      "data": [
+        18
+      ]
     },
     {
       "id": "obj_R42_bonguri_2",
@@ -119,14 +121,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 19,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 465,
       "z": 184,
-      "y": 0
+      "y": 0,
+      "data": [
+        19
+      ]
     },
     {
       "id": "obj_R42_bonguri_3",
@@ -136,14 +138,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 20,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 466,
       "z": 184,
-      "y": 0
+      "y": 0,
+      "data": [
+        20
+      ]
     },
     {
       "id": "obj_R42_monstarball",
@@ -153,9 +155,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R42_SUPER_POTION",
       "scriptId": "std_itemball_r42_super_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 472,
@@ -170,9 +169,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R42_DUBIOUS_DISC",
       "scriptId": "std_itemball_r42_dubious_disc",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 477,
@@ -187,9 +183,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R42_TM65",
       "scriptId": "std_itemball_r42_tm65",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 430,
@@ -204,9 +197,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 460,
@@ -221,9 +211,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_42_HIKER",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 436,
@@ -238,9 +225,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_42_SUICUNE",
       "scriptId": 0,
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 466,
@@ -255,9 +239,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_42_EUSINE",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 452,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D27R0104.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D27R0104.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d27r0104_hyper_potion",
@@ -19,14 +21,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SAILOR_KENT)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 11,
       "z": 13,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_EVERYWHERE_gsman2",
@@ -36,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_DENIS)",
       "facingDirection": 3,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1,
       "z": 8,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_EVERYWHERE_gsman2_2",
@@ -53,14 +55,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_THEO)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 12,
       "z": 4,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_EVERYWHERE_monstarball",
@@ -70,9 +72,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER",
       "scriptId": "std_itemball_d27r0104_ether",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,

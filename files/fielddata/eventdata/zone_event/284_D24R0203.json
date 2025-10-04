@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0203.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D24R0203.h"
+  ],
   "coords": [
     {
       "scriptId": "_EV_scr_seq_D24R0203_002 + 1",

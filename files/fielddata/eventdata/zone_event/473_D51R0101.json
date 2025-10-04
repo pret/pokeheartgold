@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D51R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D51R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D51R0101_003 + 1",
@@ -19,9 +21,6 @@
       "eventFlag": "FLAG_UNK_2DB",
       "scriptId": "_EV_scr_seq_D51R0101_001 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,

@@ -38,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_PHIL)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 558,
       "z": 177,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R44_fishing_2",
@@ -55,9 +55,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_EDGAR)",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 576,
@@ -72,14 +69,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FISHERMAN_WILTON)",
       "facingDirection": 1,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 595,
       "z": 164,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_R44_gswoman3",
@@ -89,14 +86,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_CYBIL)",
       "facingDirection": 2,
-      "param0": 7,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 592,
       "z": 186,
-      "y": 0
+      "y": 0,
+      "data": [
+        7
+      ]
     },
     {
       "id": "obj_R44_gsman3",
@@ -106,14 +103,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_ALLEN)",
       "facingDirection": 2,
-      "param0": 7,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 604,
       "z": 185,
-      "y": 0
+      "y": 0,
+      "data": [
+        7
+      ]
     },
     {
       "id": "obj_R44_mania",
@@ -123,14 +120,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_ZACH)",
       "facingDirection": 2,
-      "param0": 7,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 603,
       "z": 163,
-      "y": 0
+      "y": 0,
+      "data": [
+        7
+      ]
     },
     {
       "id": "obj_R44_gsman2",
@@ -140,14 +137,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_VANCE)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 629,
       "z": 173,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R44_bonguri",
@@ -157,14 +154,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 22,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 557,
       "z": 171,
-      "y": 0
+      "y": 0,
+      "data": [
+        22
+      ]
     },
     {
       "id": "obj_R44_monstarball",
@@ -174,9 +171,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R44_MAX_REPEL",
       "scriptId": "std_itemball_r44_max_repel",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 564,
@@ -191,9 +185,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R44_MAX_REVIVE",
       "scriptId": "std_itemball_r44_max_revive",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 589,
@@ -208,9 +199,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R44_ULTRA_BALL",
       "scriptId": "std_itemball_r44_ultra_ball",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 607,
@@ -226,9 +214,6 @@
       "eventFlag": "MAP_MAHOGANY",
       "scriptId": 65535,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 540,

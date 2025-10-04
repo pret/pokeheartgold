@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R03.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R03.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R03_000 + 1",
@@ -75,14 +77,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_WARREN)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1110,
       "z": 99,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R03_fire",
@@ -92,14 +94,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FIREBREATHER_OTIS)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1122,
       "z": 111,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R03_gsboy2_2",
@@ -109,14 +111,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_JIMMY)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1114,
       "z": 98,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R03_gsman3",
@@ -126,14 +128,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_DOUBLE_TEAM_ZAC_AND_JEN)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1104,
       "z": 107,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R03_gswoman3",
@@ -143,14 +145,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer_2(TRAINER_DOUBLE_TEAM_ZAC_AND_JEN)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1105,
       "z": 107,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R03_fire_2",
@@ -160,14 +162,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_FIREBREATHER_BURT)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1165,
       "z": 114,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R03_mount_2",
@@ -177,14 +179,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_BRUCE)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1134,
       "z": 113,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R03_gsfighter",
@@ -194,14 +196,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BLACK_BELT_MANFORD)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1143,
       "z": 118,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R03_gsfighter_2",
@@ -211,14 +213,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BLACK_BELT_ANDER)",
       "facingDirection": 0,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1158,
       "z": 123,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R03_mount_2_2",
@@ -228,14 +230,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_DWIGHT)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1164,
       "z": 124,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R03_gsboy2_3",
@@ -245,14 +247,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_REGIS)",
       "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1103,
       "z": 103,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_R03_monstarball",
@@ -262,9 +264,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R03_BIG_ROOT",
       "scriptId": "std_itemball_r03_big_root",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1132,
@@ -279,9 +278,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1161,
@@ -296,9 +292,6 @@
       "eventFlag": "FLAG_MAPTEMP_011",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1160,
@@ -313,9 +306,6 @@
       "eventFlag": "FLAG_MAPTEMP_012",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1164,
@@ -330,9 +320,6 @@
       "eventFlag": "FLAG_MAPTEMP_013",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1162,
@@ -347,9 +334,6 @@
       "eventFlag": "FLAG_MAPTEMP_014",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1160,
@@ -364,9 +348,6 @@
       "eventFlag": "FLAG_MAPTEMP_015",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1174,
@@ -381,9 +362,6 @@
       "eventFlag": "FLAG_MAPTEMP_016",
       "scriptId": "std_field_rock_smash",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1171,

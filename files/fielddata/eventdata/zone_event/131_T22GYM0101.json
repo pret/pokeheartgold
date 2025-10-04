@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T22GYM0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T22GYM0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T22GYM0101_003 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_VIOLET_GYM_FALKNER",
       "scriptId": "_EV_scr_seq_T22GYM0101_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 15,
@@ -44,14 +43,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_ABE)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 12,
       "z": 15,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_T22GYM0101_gsman2_2",
@@ -61,14 +60,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_ROD)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
       "z": 11,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_T22GYM0101_sunglasses",
@@ -78,9 +77,6 @@
       "eventFlag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT",
       "scriptId": "_EV_scr_seq_T22GYM0101_002 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 17,
@@ -95,9 +91,6 @@
       "eventFlag": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT",
       "scriptId": "_EV_scr_seq_T22GYM0101_005 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 15,

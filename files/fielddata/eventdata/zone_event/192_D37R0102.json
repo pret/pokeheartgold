@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D37R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D37R0102.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D37R0102_007 + 1",
@@ -107,9 +109,6 @@
       "eventFlag": "FLAG_UNK_1B0",
       "scriptId": "_EV_scr_seq_D37R0102_003 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -124,9 +123,6 @@
       "eventFlag": "FLAG_UNK_1B2",
       "scriptId": "_EV_scr_seq_D37R0102_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -141,9 +137,6 @@
       "eventFlag": "FLAG_UNK_1B3",
       "scriptId": "_EV_scr_seq_D37R0102_002 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -158,9 +151,6 @@
       "eventFlag": "FLAG_UNK_1B1",
       "scriptId": "_EV_scr_seq_D37R0102_000 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -175,14 +165,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_DONALD)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
       "z": 7,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D37R0102_gsassistantm",
@@ -192,14 +182,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "std_trainer(TRAINER_SUPER_NERD_TERU)",
       "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 11,
       "z": 9,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D37R0102_mania_2",
@@ -209,14 +199,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "std_trainer(TRAINER_POKE_MANIAC_ISSAC)",
       "facingDirection": 3,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
       "z": 30,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_D37R0102_gsassistantm_2",
@@ -226,14 +216,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "std_trainer(TRAINER_SUPER_NERD_ERIC)",
       "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
       "z": 34,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_D37R0102_rocketm",
@@ -243,9 +233,6 @@
       "eventFlag": "FLAG_UNK_1B4",
       "scriptId": "_EV_scr_seq_D37R0102_009 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 15,
@@ -260,9 +247,6 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "_EV_scr_seq_D37R0102_005 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 22,
@@ -277,9 +261,6 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "_EV_scr_seq_D37R0102_006 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 22,
@@ -294,9 +275,6 @@
       "eventFlag": "FLAG_UNK_1C0",
       "scriptId": "_EV_scr_seq_D37R0102_010 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,
@@ -311,9 +289,6 @@
       "eventFlag": "FLAG_HIDE_UNDERGROUND_KIMONO_GIRL",
       "scriptId": 0,
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,
@@ -328,9 +303,6 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
       "scriptId": "_EV_scr_seq_D37R0102_023 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D41R0104.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D41R0104.h"
+  ],
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D41R0104_EXPERT_BELT",
       "scriptId": "std_itemball_d41r0104_expert_belt",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 5,

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R22R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R22R0101.h"
+  ],
   "objects": [
     {
       "id": "obj_R22R0101_policeman",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R22R0101_003 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R22R0101_005 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 8,
@@ -43,9 +39,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R22R0101_004 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,
@@ -60,9 +53,6 @@
       "eventFlag": "FLAG_UNK_270",
       "scriptId": "_EV_scr_seq_R22R0101_008 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 17,

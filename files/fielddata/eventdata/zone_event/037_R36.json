@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R36.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R36.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R36_005 + 1",
@@ -51,9 +53,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R36_008 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 426,
@@ -68,9 +67,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R36_009 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 2,
       "yRange": 0,
       "x": 435,
@@ -85,14 +81,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_MARK)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 380,
       "z": 244,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R36_gsboy1",
@@ -102,14 +98,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_ALAN)",
       "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 401,
       "z": 248,
-      "y": 0
+      "y": 0,
+      "data": [
+        6
+      ]
     },
     {
       "id": "obj_R36_usokky",
@@ -119,9 +115,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_36_SUDOWOODO",
       "scriptId": "_EV_scr_seq_R36_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 415,
@@ -136,9 +129,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL",
       "scriptId": "_EV_scr_seq_R36_007 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 415,
@@ -153,9 +143,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_36_ARTHUR",
       "scriptId": "_EV_scr_seq_R36_001 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 431,
@@ -170,14 +157,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 12,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 382,
       "z": 233,
-      "y": 0
+      "y": 0,
+      "data": [
+        12
+      ]
     },
     {
       "id": "obj_R36_monstarball",
@@ -187,9 +174,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R36_HYPER_POTION",
       "scriptId": "std_itemball_r36_hyper_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 393,

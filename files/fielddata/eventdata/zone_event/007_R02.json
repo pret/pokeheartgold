@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R02.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R02.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R02_000 + 1",
@@ -19,14 +21,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_ROB)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1038,
       "z": 210,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R02_gsboy3_2",
@@ -36,14 +38,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_DOUG)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1031,
       "z": 203,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R02_tree",
@@ -53,9 +55,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1041,
@@ -70,9 +69,6 @@
       "eventFlag": "FLAG_MAPTEMP_011",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1041,
@@ -87,9 +83,6 @@
       "eventFlag": "FLAG_MAPTEMP_012",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1041,
@@ -104,9 +97,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R02_ELIXIR",
       "scriptId": "std_itemball_r02_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1045,
