@@ -41,15 +41,16 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
     }
 
     for (; functions->obfs_addr != 0; functions++) {
+        u32 *addr = (u32 *)functions->obfs_addr;
         u32 size = functions->obfs_size - (u32)&BSS - ENC_VAL_1;
 
-        u32 *addr = (u32 *)functions->obfs_addr;
         if (addr == NULL) {
             break;
         }
 
         addr = (void *)addr - ENC_VAL_1;
         u32 *end_addr = addr + (size / 4);
+
         for (; addr < end_addr; addr++) {
             switch (Encryptor_CategorizeInstruction(*addr)) {
             case INS_TYPE_BLXIMM:
