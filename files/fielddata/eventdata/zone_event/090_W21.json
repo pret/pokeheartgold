@@ -1,5 +1,8 @@
 {
-  "header": "fielddata/script/scr_seq/event_W21.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_W21.h",
+    "fielddata/script/scr_seq/event_T01.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_w21_stardust",
@@ -258,6 +261,7 @@
     },
     {
       "id": "obj_W21_gsbigman",
+      "cloneId": "obj_T01_gsbigman",
       "spriteId": "SPRITE_GSBIGMAN",
       "movement": 0,
       "type": 0,

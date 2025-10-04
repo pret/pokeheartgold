@@ -17,6 +17,6 @@
 #define obj_W21_gsman2       10
 #define obj_W21_gsman2_2     11
 #define obj_W21_gsmiddleman1 12
-#define obj_W21_gsbigman     1
+#define obj_W21_gsbigman     13
 
 #endif // SCR_SEQ_W21_H_

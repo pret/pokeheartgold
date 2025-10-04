@@ -1,5 +1,8 @@
 {
-  "header": "fielddata/script/scr_seq/event_R44.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R44.h",
+    "fielddata/script/scr_seq/event_T28.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R44_001 + 1",
@@ -216,6 +219,7 @@
     },
     {
       "id": "obj_R44_gsmiddleman1",
+      "cloneId": "obj_T28_gsmiddleman1",
       "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 15,
       "type": 0,

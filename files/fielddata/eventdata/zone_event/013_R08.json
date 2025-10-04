@@ -1,5 +1,8 @@
 {
-  "header": "fielddata/script/scr_seq/event_R08.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R08.h",
+    "fielddata/script/scr_seq/event_T05.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R08_001 + 1",
@@ -225,6 +228,7 @@
     },
     {
       "id": "obj_R08_gsboy1",
+      "cloneId": "obj_T05_gsboy1",
       "spriteId": "SPRITE_GSBOY1",
       "movement": 2,
       "type": 0,

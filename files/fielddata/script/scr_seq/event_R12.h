@@ -22,7 +22,7 @@
 #define obj_R12_tree          11
 #define obj_R12_tree_2        12
 #define obj_R12_gsmiddleman1  13
-#define obj_R12_gswoman1      0
+#define obj_R12_gswoman1      14
 #define obj_R12_kabigon       15
 #define obj_R12_gsbabyboy1    16
 #define obj_R12_gsbabyboy1_2  17

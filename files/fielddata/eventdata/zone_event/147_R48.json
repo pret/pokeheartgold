@@ -43,6 +43,7 @@
       "y": 0
     },
     {
+      "id": "obj_D48_gsman1",
       "cloneId": "obj_D47_gsman1",
       "spriteId": "SPRITE_GSMAN1",
       "movement": 2,
@@ -57,6 +58,7 @@
       "y": 0
     },
     {
+      "id": "obj_D48_gswoman2",
       "cloneId": "obj_D47_gswoman2",
       "spriteId": "SPRITE_GSWOMAN2",
       "movement": 16,
@@ -71,6 +73,7 @@
       "y": 0
     },
     {
+      "id": "obj_D48_tsure_poke_static_slowpoke",
       "cloneId": "obj_D47_tsure_poke_static_slowpoke",
       "spriteId": "SPRITE_FOLLOWER_MON_STATIC_SLOWPOKE",
       "movement": 16,
@@ -85,6 +88,7 @@
       "y": 0
     },
     {
+      "id": "obj_D48_gsoldman1",
       "cloneId": "obj_D47_gsoldman1",
       "spriteId": "SPRITE_GSOLDMAN1",
       "movement": 15,

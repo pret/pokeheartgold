@@ -1,5 +1,8 @@
 {
-  "header": "fielddata/script/scr_seq/event_T26.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T26.h",
+    "fielddata/script/scr_seq/event_W40.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T26_004 + 1",
@@ -189,6 +192,7 @@
     },
     {
       "id": "obj_T26_gsmiddleman1_2",
+      "cloneId": "obj_W40_gsmiddleman1",
       "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 0,
       "type": 0,

@@ -17,6 +17,6 @@
 #define obj_R13_gsman2_2       9
 #define obj_R13_gsman2_3       10
 #define obj_R13_tree           11
-#define obj_R13_gswoman1       17
+#define obj_R13_gswoman1       12
 
 #endif // SCR_SEQ_R13_H_

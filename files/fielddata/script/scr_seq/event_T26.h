@@ -23,6 +23,6 @@
 #define obj_T26_seaman_2_3     5
 #define obj_T26_gswoman2       6
 #define obj_T26_gsmiddleman1   7
-#define obj_T26_gsmiddleman1_2 5
+#define obj_T26_gsmiddleman1_2 8
 
 #endif // SCR_SEQ_T26_H_

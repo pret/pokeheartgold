@@ -16,6 +16,6 @@
 #define obj_R44_monstarball   8
 #define obj_R44_monstarball_2 9
 #define obj_R44_monstarball_3 10
-#define obj_R44_gsmiddleman1  0
+#define obj_R44_gsmiddleman1  11
 
 #endif // SCR_SEQ_R44_H_

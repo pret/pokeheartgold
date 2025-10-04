@@ -1,5 +1,8 @@
 {
-  "header": "fielddata/script/scr_seq/event_R12.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R12.h",
+    "fielddata/script/scr_seq/event_T05.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R12_003 + 1",
@@ -267,6 +270,7 @@
     },
     {
       "id": "obj_R12_gswoman1",
+      "cloneId": "obj_T05_gswoman1",
       "spriteId": "SPRITE_GSWOMAN1",
       "movement": 2,
       "type": 0,

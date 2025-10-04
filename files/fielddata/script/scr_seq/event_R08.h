@@ -16,6 +16,6 @@
 #define obj_R08_tree_2         9
 #define obj_R08_bonguri        10
 #define obj_R08_monstarball    11
-#define obj_R08_gsboy1         1
+#define obj_R08_gsboy1         12
 
 #endif // SCR_SEQ_R08_H_
