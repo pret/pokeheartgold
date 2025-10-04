@@ -78,24 +78,24 @@ void Encryptor_DecodeFunctionTable(FuncInfo *functions) {
     }
 }
 
-void *Encryptor_DecryptFunction(u32 key, u32 func_addr, u32 size) {
-    u32 expanded_key[4];
-    void *func_ptr;
+static inline void expandRC4Key(u32 seed_key, u32 size, u32 *expanded_key) {
+    expanded_key[0] = ROTL(seed_key, 0) ^ size;
+    expanded_key[1] = ROTL(seed_key, 8) ^ size;
+    expanded_key[2] = ROTL(seed_key, 16) ^ size;
+    expanded_key[3] = ROTL(seed_key, 24) ^ size;
+}
 
+void *Encryptor_DecryptFunction(u32 key, u32 func_addr, u32 size) {
     // Deobfuscate arguments
     size -= (u32)&BSS + ENC_VAL_1;
 
     key -= (u32)&BSS + ENC_VAL_1;
 
-    func_ptr = (void *)func_addr;
+    void *func_ptr = (void *)func_addr;
     func_ptr -= ENC_VAL_1;
 
-    // Derive RC4 key
-    expanded_key[0] = ROTL(key, 0) ^ size;
-    expanded_key[1] = ROTL(key, 8) ^ size;
-    expanded_key[2] = ROTL(key, 16) ^ size;
-    expanded_key[3] = ROTL(key, 24) ^ size;
-
+    u32 expanded_key[4];
+    expandRC4Key(key, size, &expanded_key[0]);
     RC4_InitAndDecryptInstructions(&expanded_key[0], func_ptr, func_ptr, size);
     clearDataAndInstructionCache(func_ptr, size);
 
@@ -103,24 +103,17 @@ void *Encryptor_DecryptFunction(u32 key, u32 func_addr, u32 size) {
 }
 
 u32 Encryptor_EncryptFunction(u32 key, u32 func_addr, u32 size) {
-    u32 expanded_key[4];
-    void *func_ptr;
-
     // Deobfuscate arguments and change key
     size -= (u32)&BSS + ENC_VAL_1;
 
     key -= (u32)&BSS + ENC_VAL_1;
     key += func_addr >> 20;
 
-    func_ptr = (void *)func_addr;
+    void *func_ptr = (void *)func_addr;
     func_ptr -= ENC_VAL_1;
 
-    // Derive RC4 key
-    expanded_key[0] = ROTL(key, 0) ^ size;
-    expanded_key[1] = ROTL(key, 8) ^ size;
-    expanded_key[2] = ROTL(key, 16) ^ size;
-    expanded_key[3] = ROTL(key, 24) ^ size;
-
+    u32 expanded_key[4];
+    expandRC4Key(key, size, &expanded_key[0]);
     RC4_InitAndEncryptInstructions(&expanded_key[0], func_ptr, func_ptr, size);
     clearDataAndInstructionCache(func_ptr, size);
 
