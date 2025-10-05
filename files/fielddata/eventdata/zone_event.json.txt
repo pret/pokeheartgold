@@ -53,7 +53,7 @@
 	.short {{ object.yRange }}
 	.short {{ object.x }}
 	.short {{ object.z }}
-	.word {{ object.y }}
+	.word {{ object.y }} * 0x10000
 ## endfor
 ## else
 	.word 0
