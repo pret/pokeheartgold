@@ -27,10 +27,10 @@
 	scrdef_end
 
 scr_seq_T30_005:
-	compare VAR_UNK_40C4, 1
+	compare VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 1
 	goto_if_ne _005D
 	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
-	setvar VAR_UNK_40C4, 2
+	setvar VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 2
 _005D:
 	goto_if_unset FLAG_TAKING_PHOTO, _006E
 	clearflag FLAG_TAKING_PHOTO

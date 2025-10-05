@@ -264,7 +264,7 @@
       "h": 1,
       "y": 0,
       "val": 1,
-      "var": "VAR_UNK_40C4"
+      "var": "VAR_SCENE_DRAGONS_DEN_CLAIR_TM"
     },
     {
       "scriptId": "_EV_scr_seq_D44R0102_004 + 1",
@@ -274,7 +274,7 @@
       "h": 1,
       "y": 0,
       "val": 1,
-      "var": "VAR_UNK_40FC"
+      "var": "VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE"
     }
   ]
 }

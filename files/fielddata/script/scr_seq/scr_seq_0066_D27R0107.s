@@ -13,7 +13,7 @@
 	scrdef_end
 
 scr_seq_D27R0107_003:
-	setvar VAR_UNK_4125, 0
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 0
 	end
 
 scr_seq_D27R0107_004:

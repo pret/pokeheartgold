@@ -15,7 +15,7 @@ scr_seq_D24R0218_map_scripts_2:
 	.short VAR_SCENE_SINJOH_MYSTRI_ROOM, 2, _EV_scr_seq_D24R0218_001 + 1
 	.short VAR_SCENE_SINJOH_MYSTRI_ROOM, 9, _EV_scr_seq_D24R0218_002 + 1
 	.short VAR_SCENE_SINJOH_MYSTRI_ROOM, 11, _EV_scr_seq_D24R0218_003 + 1
-	.short VAR_UNK_40CE, 1, _EV_scr_seq_D24R0218_006 + 1
+	.short VAR_SCENE_ALPH_UNDERGROUND_HALL, 1, _EV_scr_seq_D24R0218_006 + 1
 	.short 0
 
 	.balign 4, 0

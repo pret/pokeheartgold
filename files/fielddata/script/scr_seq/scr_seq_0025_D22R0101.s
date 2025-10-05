@@ -36,7 +36,7 @@
 	scrdef_end
 
 scr_seq_D22R0101_011:
-	compare VAR_UNK_40F7, 1
+	compare VAR_SCENE_NATIONAL_PARK, 1
 	call_if_eq _007D
 	end
 
@@ -66,7 +66,7 @@ scr_seq_D22R0101_025:
 	end
 
 _00F4:
-	compare VAR_UNK_40F7, 1
+	compare VAR_SCENE_NATIONAL_PARK, 1
 	goto_if_eq _0162
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY

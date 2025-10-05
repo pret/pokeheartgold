@@ -10,7 +10,7 @@
 	.byte 0
 
 scr_seq_D24R0203_map_scripts_2:
-	.short VAR_UNK_40CD, 1, _EV_scr_seq_D24R0203_000 + 1
+	.short VAR_SCENE_ALPH_NORTHEAST_HIDDEN_ROOM, 1, _EV_scr_seq_D24R0203_000 + 1
 	.short 0
 
 	.balign 4, 0

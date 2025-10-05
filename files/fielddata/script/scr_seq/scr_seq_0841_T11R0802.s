@@ -18,11 +18,11 @@ scr_seq_T11R0802_004:
 	get_player_gender VAR_TEMP_x4009
 	compare VAR_TEMP_x4009, 0
 	goto_if_ne _003B
-	setvar VAR_OBJ_0, 0
+	setvar VAR_OBJ_0, SPRITE_HERO
 	goto _0041
 
 _003B:
-	setvar VAR_OBJ_0, 97
+	setvar VAR_OBJ_0, SPRITE_HEROINE
 _0041:
 	end
 

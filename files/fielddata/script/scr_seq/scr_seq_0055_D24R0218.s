@@ -256,12 +256,12 @@ scr_seq_D24R0218_006:
 	wait_movement
 	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
-	setvar VAR_UNK_40CE, 0
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 0
 	releaseall
 	end
 
 scr_seq_D24R0218_005:
-	compare VAR_UNK_40CE, 1
+	compare VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	goto_if_ne _0387
 	make_object_visible obj_player
 _0387:

@@ -37,15 +37,15 @@ _008A:
 	return
 
 _008E:
-	setvar VAR_OBJ_10, 282
+	setvar VAR_OBJ_10, SPRITE_BFSM
 	return
 
 _0096:
-	setvar VAR_OBJ_10, 286
+	setvar VAR_OBJ_10, SPRITE_WIFISF
 	return
 
 _009E:
-	setvar VAR_OBJ_10, 283
+	setvar VAR_OBJ_10, SPRITE_BFSW1
 	return
 
 _00A6:

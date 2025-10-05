@@ -175,7 +175,7 @@ _0224:
 	setflag FLAG_SYS_BUG_CONTEST_ACTIVE
 	setflag FLAG_HIDE_NATIONAL_PARK_POPULATION
 	setvar VAR_UNK_4118, 1
-	setvar VAR_UNK_40F7, 1
+	setvar VAR_SCENE_NATIONAL_PARK, 1
 	script_overlay_cmd 1, 0
 	bug_contest_action 0, VAR_TEMP_x4000
 	call _0268
@@ -265,7 +265,7 @@ scr_seq_0151_007:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_4118, 0
-	setvar VAR_UNK_40F7, 0
+	setvar VAR_SCENE_NATIONAL_PARK, 0
 	script_overlay_cmd 1, 0
 	judge_bug_contest VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_TEMP_x4002
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005

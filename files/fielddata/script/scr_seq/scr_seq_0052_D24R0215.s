@@ -12,7 +12,7 @@
 scr_seq_D24R0215_000:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_40D5, 1
+	setvar VAR_SCENE_ALPH_NORTHWEST_HIDDEN_ROOM, 1
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0034

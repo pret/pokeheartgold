@@ -63,7 +63,7 @@ scr_seq_D24R0205_000:
 	wait_movement
 	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
-	goto_if_set FLAG_UNK_111, _016F
+	goto_if_set FLAG_SKIP_UNOWN_REPORT_CHECK, _016F
 	goto_if_set FLAG_GOT_UNOWN_REPORT, _016F
 	wait 5, VAR_SPECIAL_RESULT
 	apply_movement obj_D24R0205_gsassistantm, _0194
@@ -93,12 +93,12 @@ scr_seq_D24R0205_000:
 	wait_button_or_walk_away
 	closemsg
 _016F:
-	setvar VAR_UNK_40CE, 0
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 0
 	releaseall
 	end
 
 scr_seq_D24R0205_001:
-	compare VAR_UNK_40CE, 1
+	compare VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	goto_if_ne _018A
 	make_object_visible obj_player
 _018A:

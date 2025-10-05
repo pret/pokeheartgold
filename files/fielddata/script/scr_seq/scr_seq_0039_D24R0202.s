@@ -35,7 +35,7 @@ _004A:
 	wait_movement
 	hide_person obj_D24R0202_babyboy1_13
 	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_111
+	clearflag FLAG_SKIP_UNOWN_REPORT_CHECK
 	setflag FLAG_HIDE_ALPH_KABUTO_PUZZLE_FLOOR
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	scrcmd_729 VAR_SPECIAL_RESULT
@@ -55,7 +55,7 @@ _00B2:
 	apply_movement obj_partner_poke, _0240
 	wait_movement
 _00C4:
-	setvar VAR_UNK_40CE, 1
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	compare VAR_UNK_40EC, 1
 	goto_if_ge _010F
 	play_se SEQ_SE_GS_RAKKA01
@@ -102,7 +102,7 @@ _017F:
 	apply_movement obj_partner_poke, _0240
 	wait_movement
 _0191:
-	setvar VAR_UNK_40CE, 1
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	play_se SEQ_SE_GS_RAKKA01
 	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _01DD

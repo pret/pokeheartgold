@@ -185,7 +185,7 @@ _0305:
 	npc_msg msg_0506_T07R0206_00004
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_4125, 1
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 1
 	releaseall
 	end
 
@@ -196,7 +196,7 @@ _032E:
 	npc_msg msg_0506_T07R0206_00001
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_4125, 1
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 1
 	releaseall
 	end
 

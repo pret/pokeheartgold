@@ -10,7 +10,7 @@
 	.byte 0
 
 scr_seq_T20R0101_map_scripts_2:
-	.short VAR_UNK_40FC, 2, _EV_scr_seq_T20R0101_015 + 1
+	.short VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 2, _EV_scr_seq_T20R0101_015 + 1
 	.short VAR_SCENE_ELMS_LAB, 3, _EV_scr_seq_T20R0101_002 + 1
 	.short VAR_SCENE_ELMS_LAB, 8, _EV_scr_seq_T20R0101_014 + 1
 	.short 0

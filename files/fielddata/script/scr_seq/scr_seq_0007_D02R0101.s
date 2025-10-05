@@ -24,13 +24,13 @@ scr_seq_D02R0101_000:
 	npc_msg msg_0049_D02R0101_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _005A
 	trainer_battle TRAINER_RIVAL_SILVER_15, 0, 0, 0
 	goto _007D
 
 _005A:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _0075
 	trainer_battle TRAINER_RIVAL_SILVER_16, 0, 0, 0
 	goto _007D
@@ -52,8 +52,8 @@ _007D:
 	callstd std_fade_end_rival_outro_music
 	setflag FLAG_HIDE_MT_MOON_RIVAL
 	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL_FOR_DOUBLE_BATTLE
-	setvar VAR_UNK_40FC, 1
-	setvar VAR_UNK_40F5, 1
+	setvar VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 1
+	setvar VAR_SCENE_MT_MOON, 1
 	setflag FLAG_UNK_0E3
 	end
 

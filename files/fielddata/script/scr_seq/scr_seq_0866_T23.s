@@ -102,13 +102,13 @@ _018E:
 	npc_msg msg_0564_T23_00001
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _01B7
 	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
 	goto _01DA
 
 _01B7:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _01D2
 	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
 	goto _01DA

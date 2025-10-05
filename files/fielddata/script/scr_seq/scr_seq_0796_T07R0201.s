@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_T07R0201_005:
-	setvar VAR_UNK_4125, 0
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 0
 	end
 
 scr_seq_T07R0201_000:

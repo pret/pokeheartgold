@@ -17,7 +17,7 @@ scr_seq_D24R0207_000:
 	wait_movement
 	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
-	setvar VAR_UNK_40D5, 0
+	setvar VAR_SCENE_ALPH_NORTHWEST_HIDDEN_ROOM, 0
 	compare VAR_UNK_40EF, 1
 	goto_if_eq _004D
 	setvar VAR_UNK_40EF, 1
@@ -26,9 +26,9 @@ _004D:
 	end
 
 scr_seq_D24R0207_001:
-	compare VAR_UNK_40D5, 1
+	compare VAR_SCENE_ALPH_NORTHWEST_HIDDEN_ROOM, 1
 	goto_if_ne _0064
-	debug_print_var VAR_UNK_40D5
+	debug_print_var VAR_SCENE_ALPH_NORTHWEST_HIDDEN_ROOM
 	make_object_visible obj_player
 _0064:
 	end
@@ -41,8 +41,8 @@ _0068:
 scr_seq_D24R0207_002:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_40CE, 1
-	setflag FLAG_UNK_111
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
+	setflag FLAG_SKIP_UNOWN_REPORT_CHECK
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _009E

@@ -19,9 +19,9 @@ scr_seq_D44R0102_002:
 	end
 
 _002B:
-	compare VAR_UNK_40FC, 2
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 2
 	goto_if_ge _0047
-	compare VAR_UNK_40FC, 1
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 1
 	call_if_eq _015E
 	end
 
@@ -106,19 +106,19 @@ _0158:
 
 _015E:
 	get_starter_choice VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 152
+	compare VAR_TEMP_x4000, SPECIES_CHIKORITA
 	goto_if_ne _017B
-	setvar VAR_OBJ_0, 1048
+	setvar VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_TYPHLOSION
 	goto _019A
 
 _017B:
-	compare VAR_TEMP_x4000, 155
+	compare VAR_TEMP_x4000, SPECIES_CYNDAQUIL
 	goto_if_ne _0194
-	setvar VAR_OBJ_0, 1049
+	setvar VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_FERALIGATR
 	goto _019A
 
 _0194:
-	setvar VAR_OBJ_0, 1047
+	setvar VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_MEGANIUM
 _019A:
 	return
 
@@ -178,7 +178,7 @@ _0287:
 _0297:
 	wait_movement
 	hide_person obj_D44R0102_gsleader8
-	setvar VAR_UNK_40C4, 2
+	setvar VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 2
 	releaseall
 	end
 
@@ -418,13 +418,13 @@ _04B2:
 	apply_movement obj_player, _0770
 	apply_movement obj_D44R0102_gsleader8_2, _0718
 	wait_movement
-	compare VAR_OBJ_0, 1048
+	compare VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_TYPHLOSION
 	goto_if_ne _05AC
 	multi_battle TRAINER_PARTNER_RIVAL_2, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
 
 _05AC:
-	compare VAR_OBJ_0, 1049
+	compare VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_FERALIGATR
 	goto_if_ne _05C8
 	multi_battle TRAINER_PARTNER_RIVAL_3, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
@@ -463,7 +463,7 @@ _05D1:
 	wait_fade
 	apply_movement obj_partner_poke, _06DC
 	wait_movement
-	setvar VAR_UNK_40FC, 2
+	setvar VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 2
 	setvar VAR_UNK_4119, 1
 	releaseall
 	end

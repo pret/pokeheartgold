@@ -68,7 +68,7 @@ _00E2:
 _00E5:
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_4125, 1
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 1
 	releaseall
 	end
 

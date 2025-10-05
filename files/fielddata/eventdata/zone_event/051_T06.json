@@ -411,7 +411,7 @@
       "h": 3,
       "y": 0,
       "val": 1,
-      "var": "VAR_UNK_4070"
+      "var": "VAR_SCENE_VERMILION_SUICNE_ENCOUNTER"
     },
     {
       "scriptId": "_EV_scr_seq_T06_012 + 1",
@@ -421,7 +421,7 @@
       "h": 1,
       "y": 0,
       "val": 1,
-      "var": "VAR_UNK_4071"
+      "var": "VAR_SCENE_VERMILION_SUICNE_ENCOUNTER_2"
     },
     {
       "scriptId": "_EV_scr_seq_T06_011 + 1",
@@ -431,7 +431,7 @@
       "h": 3,
       "y": 0,
       "val": 1,
-      "var": "VAR_UNK_4070"
+      "var": "VAR_SCENE_VERMILION_SUICNE_ENCOUNTER"
     }
   ]
 }

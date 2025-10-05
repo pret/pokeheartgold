@@ -556,7 +556,7 @@ scr_seq_T20R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40FC, 3
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 3
 	goto_if_eq _080F
 	compare VAR_SCENE_ELMS_LAB, 0
 	goto_if_ne _07B2
@@ -1374,7 +1374,7 @@ scr_seq_T20R0101_015:
 	closemsg
 	apply_movement obj_T20R0101_assistantm, _1148
 	wait_movement
-	setvar VAR_UNK_40FC, 3
+	setvar VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 3
 	releaseall
 	end
 

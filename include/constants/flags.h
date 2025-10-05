@@ -289,7 +289,7 @@
 #define FLAG_GOT_QUICK_CLAW_FROM_NATIONAL_PARK_WOMAN    0x10E
 #define FLAG_UNK_10F                                    0x10F
 #define FLAG_GOT_UNOWN_REPORT                           0x110
-#define FLAG_UNK_111                                    0x111
+#define FLAG_SKIP_UNOWN_REPORT_CHECK                    0x111
 #define FLAG_UNK_112                                    0x112
 #define FLAG_UNK_113                                    0x113
 #define FLAG_UNK_114                                    0x114
