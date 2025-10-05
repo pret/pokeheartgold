@@ -37,7 +37,7 @@ scr_seq_T27PC0101_001:
 	apply_movement obj_player, _00C0
 	wait_movement
 	hide_person obj_T27PC0101_masaki
-	setflag FLAG_UNK_1C5
+	setflag FLAG_HIDE_ECRUTEAK_CENTER_BILL
 	clearflag FLAG_HIDE_GOLDENROD_BILL
 	setflag FLAG_SYS_MET_BILL
 	setvar VAR_UNK_410D, 1

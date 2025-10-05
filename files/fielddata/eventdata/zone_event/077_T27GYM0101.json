@@ -122,7 +122,7 @@
       "spriteId": "SPRITE_GSOLDMAN1",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_247",
+      "eventFlag": "FLAG_HIDE_ECRUTEAK_GYM_OLD_MAN",
       "scriptId": 0,
       "facingDirection": 1,
       "xRange": 0,

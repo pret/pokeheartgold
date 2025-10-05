@@ -74,7 +74,7 @@
       "spriteId": "SPRITE_MASAKI",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1C5",
+      "eventFlag": "FLAG_HIDE_ECRUTEAK_CENTER_BILL",
       "scriptId": 0,
       "facingDirection": 0,
       "xRange": 0,

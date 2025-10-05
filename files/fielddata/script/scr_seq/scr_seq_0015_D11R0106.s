@@ -91,7 +91,7 @@ scr_seq_D11R0106_000:
 	goto_if_eq _01CC
 	give_badge BADGE_VOLCANO
 	addvar VAR_UNK_4135, 1
-	setflag FLAG_UNK_265
+	setflag FLAG_HIDE_ROUTE_19_BLOCKADE
 	setflag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
 	clearflag FLAG_HIDE_ROUTE_19_WORKMEN_OPEN
 	add_special_game_stat SCORE_EVENT_BADGE_GET

@@ -22,11 +22,11 @@ scr_seq_W40_000:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0045
-	clearflag FLAG_UNK_206
+	clearflag FLAG_HIDE_ROUTE_40_MONICA
 	goto _0049
 
 _0045:
-	setflag FLAG_UNK_206
+	setflag FLAG_HIDE_ROUTE_40_MONICA
 _0049:
 	end
 

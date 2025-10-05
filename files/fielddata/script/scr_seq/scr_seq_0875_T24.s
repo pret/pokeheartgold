@@ -124,7 +124,7 @@ scr_seq_T24_002:
 	following_pokemon_movement 48
 	hide_person obj_T24_tsure_poke_static_suicune
 	setflag FLAG_HIDE_CIANWOOD_SUICUNE
-	addvar VAR_UNK_4076, 1
+	addvar VAR_SCENE_CIANWOOD_CITY, 1
 	clearflag FLAG_HIDE_CIANWOOD_EUSINE
 	show_person obj_T24_minaki
 	callstd std_play_eusine_music

@@ -94,7 +94,7 @@ _0162:
 	clearflag FLAG_UNK_996
 _016E:
 	goto_if_set FLAG_SYS_GAME_CLEAR, _017F
-	setflag FLAG_UNK_288
+	setflag FLAG_HIDE_NATIONAL_PARK_BUGSY
 	end
 
 _017F:
@@ -108,15 +108,15 @@ _017F:
 	goto_if_eq _01C3
 	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _01C3
-	setflag FLAG_UNK_288
+	setflag FLAG_HIDE_NATIONAL_PARK_BUGSY
 	end
 
 _01C3:
-	clearflag FLAG_UNK_288
+	clearflag FLAG_HIDE_NATIONAL_PARK_BUGSY
 	end
 
 _01C9:
-	setflag FLAG_UNK_288
+	setflag FLAG_HIDE_NATIONAL_PARK_BUGSY
 	end
 
 scr_seq_D22R0101_012:

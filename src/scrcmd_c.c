@@ -3039,12 +3039,12 @@ BOOL ScrCmd_347(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_307(ScriptContext *ctx) {
-    u16 r4 = ScriptReadHalfword(ctx);
-    u16 r6 = ScriptReadHalfword(ctx);
-    u16 r7 = ScriptGetVar(ctx);
-    u16 r2 = ScriptGetVar(ctx);
+    u16 y0 = ScriptReadHalfword(ctx);
+    u16 y1 = ScriptReadHalfword(ctx);
+    u16 x0 = ScriptGetVar(ctx);
+    u16 x1 = ScriptGetVar(ctx);
     u8 r3 = ScriptReadByte(ctx);
-    ov01_021E9AE8(ctx->fieldSystem, r7 + 32 * r4, r2 + 32 * r6, r3);
+    ov01_021E9AE8(ctx->fieldSystem, x0 + 32 * y0, x1 + 32 * y1, r3);
     return FALSE;
 }
 

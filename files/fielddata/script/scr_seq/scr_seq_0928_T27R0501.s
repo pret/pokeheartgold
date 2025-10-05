@@ -275,7 +275,7 @@ _03EA:
 _03F2:
 	wait_movement
 	hide_person obj_T27R0501_rocketm_2
-	setflag FLAG_UNK_23A
+	setflag FLAG_HIDE_DANCE_STUDIO_GRUNT
 	releaseall
 	setvar VAR_UNK_410C, 2
 	setvar VAR_TEMP_x400A, 10

@@ -69,7 +69,7 @@ scr_seq_T27GYM0101_004:
 	apply_movement obj_T27GYM0101_gsoldman1, _0118
 	apply_movement obj_player, _0128
 	wait_movement
-	setvar VAR_UNK_4079, 1
+	setvar VAR_SCENE_ECRUTEAK_CITY, 1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_ECRUTEAK, 7, 376, 182, DIR_SOUTH

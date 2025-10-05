@@ -162,7 +162,7 @@
       "spriteId": "SPRITE_GSBOY2",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_204",
+      "eventFlag": "FLAG_HIDE_BLACKTHORN_DEN_GUARD_IN_FRONT",
       "scriptId": "_EV_scr_seq_T30_006 + 1",
       "facingDirection": 1,
       "xRange": 0,

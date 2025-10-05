@@ -55,11 +55,11 @@ _00A4:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _00BF
-	clearflag FLAG_UNK_204
+	clearflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_IN_FRONT
 	goto _00C3
 
 _00BF:
-	setflag FLAG_UNK_204
+	setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_IN_FRONT
 _00C3:
 	end
 

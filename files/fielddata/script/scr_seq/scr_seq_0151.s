@@ -173,7 +173,7 @@ _0224:
 	npc_msg msg_0246_00014
 	npc_msg msg_0246_00015
 	setflag FLAG_SYS_BUG_CONTEST_ACTIVE
-	setflag FLAG_UNK_24E
+	setflag FLAG_HIDE_NATIONAL_PARK_POPULATION
 	setvar VAR_UNK_4118, 1
 	setvar VAR_UNK_40F7, 1
 	script_overlay_cmd 1, 0
@@ -365,7 +365,7 @@ _04B5:
 	call _04FD
 	setflag FLAG_DAILY_DID_BUG_CONTEST
 	clearflag FLAG_SYS_BUG_CONTEST_ACTIVE
-	clearflag FLAG_UNK_24E
+	clearflag FLAG_HIDE_NATIONAL_PARK_POPULATION
 	clearflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
 	bug_contest_action 1, 0
 	script_overlay_cmd 1, 1

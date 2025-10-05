@@ -64,7 +64,7 @@ _00B6:
 	scrcmd_607
 _00B8:
 	release obj_partner_poke
-	setvar VAR_UNK_4079, 0
+	setvar VAR_SCENE_ECRUTEAK_CITY, 0
 	scrcmd_311 1
 	scrcmd_308 1
 	scrcmd_309 1
@@ -119,10 +119,10 @@ scr_seq_T27_005:
 	hide_person obj_T27_gsrivel
 	setflag FLAG_HIDE_ECRUTEAK_RIVAL
 	releaseall
-	setvar VAR_UNK_4079, 4
+	setvar VAR_SCENE_ECRUTEAK_CITY, 4
 	setvar VAR_UNK_410C, 4
 	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
-	setflag FLAG_UNK_241
+	setflag FLAG_HIDE_DANCE_STUDIO_PATRONS
 	end
 
 	.balign 4, 0
@@ -386,7 +386,7 @@ scr_seq_T27_006:
 	lockall
 	faceplayer
 	goto_if_set FLAG_SYS_GAME_CLEAR, _04A8
-	compare VAR_UNK_40A1, 0
+	compare VAR_SCENE_BURNED_TOWER_BASEMENT, 0
 	goto_if_ne _049D
 	npc_msg msg_0612_T27_00005
 	goto _04A0
