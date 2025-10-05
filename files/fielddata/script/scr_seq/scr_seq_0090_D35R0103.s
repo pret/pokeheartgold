@@ -112,7 +112,7 @@ scr_seq_D35R0103_000:
 	wait_movement
 	hide_person obj_D35R0103_wataru
 	hide_person obj_D35R0103_tsure_poke_static_dragonite
-	setflag FLAG_UNK_1E5
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_LANCE
 	releaseall
 	setvar VAR_UNK_40A9, 1
 	end
@@ -347,7 +347,7 @@ _0436:
 	wait_movement
 	npc_msg msg_0113_D35R0103_00004
 	closemsg
-	clearflag FLAG_UNK_1E5
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_LANCE
 	show_person obj_D35R0103_wataru
 	show_person obj_D35R0103_tsure_poke_static_dragonite
 	move_person_facing obj_D35R0103_wataru, 20, 1, 25, DIR_EAST
@@ -392,7 +392,7 @@ _0436:
 	hide_person obj_D35R0103_rocketm
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
 	setflag FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN
-	setflag FLAG_UNK_1E8
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	apply_movement obj_D35R0103_wataru, _06BC
@@ -440,7 +440,7 @@ _0436:
 _0620:
 	white_out
 	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
-	setflag FLAG_UNK_1E5
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_LANCE
 	releaseall
 	end
 
@@ -704,7 +704,7 @@ _08F0:
 	wait_movement
 	hide_person obj_D35R0103_wataru
 	hide_person obj_D35R0103_tsure_poke_static_dragonite
-	setflag FLAG_UNK_1E5
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_LANCE
 	releaseall
 	stop_se SEQ_SE_GS_N_MOTER
 	setflag FLAG_RED_GYARADOS_MEET

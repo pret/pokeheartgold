@@ -412,7 +412,7 @@ BOOL ScrCmd_409(ScriptContext *ctx);
 BOOL ScrCmd_410(ScriptContext *ctx);
 BOOL ScrCmd_411(ScriptContext *ctx);
 BOOL ScrCmd_412(ScriptContext *ctx);
-BOOL ScrCmd_413(ScriptContext *ctx);
+BOOL ScrCmd_GetBattleTowerPartnerMonAndMove(ScriptContext *ctx);
 BOOL ScrCmd_414(ScriptContext *ctx);
 BOOL ScrCmd_415(ScriptContext *ctx);
 BOOL ScrCmd_416(ScriptContext *ctx);
@@ -489,7 +489,7 @@ BOOL ScrCmd_Dummy(ScriptContext *ctx);
 BOOL ScrCmd_PokeCenAnim(ScriptContext *ctx);
 BOOL ScrCmd_ElevatorAnim(ScriptContext *ctx);
 BOOL ScrCmd_MysteryGift(ScriptContext *ctx);
-BOOL ScrCmd_NopVar490(ScriptContext *ctx);
+BOOL ScrCmd_DebugPrintVar(ScriptContext *ctx);
 BOOL ScrCmd_491(ScriptContext *ctx);
 BOOL ScrCmd_492(ScriptContext *ctx);
 BOOL ScrCmd_PromptEasyChat(ScriptContext *ctx);
@@ -1267,7 +1267,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_410,
     ScrCmd_411,
     ScrCmd_412,
-    ScrCmd_413,
+    ScrCmd_GetBattleTowerPartnerMonAndMove,
     ScrCmd_414,
     ScrCmd_415,
     ScrCmd_416,
@@ -1344,7 +1344,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PokeCenAnim,
     ScrCmd_ElevatorAnim,
     ScrCmd_MysteryGift,
-    ScrCmd_NopVar490,
+    ScrCmd_DebugPrintVar,
     ScrCmd_491,
     ScrCmd_492,
     ScrCmd_PromptEasyChat,

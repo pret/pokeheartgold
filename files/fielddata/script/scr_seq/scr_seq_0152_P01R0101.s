@@ -122,7 +122,7 @@ scr_seq_P01R0101_000:
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _0320
-	compare VAR_UNK_40CB, 7
+	compare VAR_SCENE_SS_AQUA, 7
 	goto_if_ge _01FB
 	npc_msg msg_0255_P01R0101_00001
 	closemsg
@@ -152,8 +152,8 @@ scr_seq_P01R0101_000:
 	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
 	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22C
-	setflag FLAG_UNK_22B
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_EASTBOUND
 	releaseall
 	end
 
@@ -226,9 +226,9 @@ _029B:
 	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
 	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22A
-	clearflag FLAG_UNK_22B
-	setflag FLAG_UNK_22C
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_FIRST_VOYAGE
+	clearflag FLAG_HIDE_SS_AQUA_TRAINERS_EASTBOUND
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND
 	releaseall
 	end
 

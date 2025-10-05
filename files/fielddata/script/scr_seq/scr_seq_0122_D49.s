@@ -47,7 +47,7 @@ _0073:
 	goto_if_eq _00C2
 	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _00CC
-	compare VAR_UNK_40DB, 0
+	compare VAR_SCENE_POKEATHLON_DOME, 0
 	goto_if_eq _00CC
 	setflag FLAG_HIDE_CAMERON
 	clearflag FLAG_HIDE_SAFFRON_CITY_CAMERON
@@ -233,9 +233,9 @@ _033E:
 	scrcmd_308 77
 	scrcmd_309 77
 	releaseall
-	setvar VAR_UNK_40DB, 1
-	setflag FLAG_UNK_225
-	setflag FLAG_UNK_982
+	setvar VAR_SCENE_POKEATHLON_DOME, 1
+	setflag FLAG_HIDE_POKEATHLON_DOME_OWNER
+	setflag FLAG_SYS_MET_POKEATHLON_OWNER
 	end
 
 	.balign 4, 0

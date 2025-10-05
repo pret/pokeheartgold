@@ -118,7 +118,7 @@
       "spriteId": "SPRITE_MONSTARBALL",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_298",
+      "eventFlag": "FLAG_HIDE_MT_MOON_SQUARE_MOON_STONE_ITEMBALL",
       "scriptId": "_EV_scr_seq_D02R0104_003 + 1",
       "facingDirection": 0,
       "xRange": 0,

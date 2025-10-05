@@ -24,7 +24,7 @@ scr_seq_D31R0207_006:
 	compare VAR_TEMP_x4009, 0
 	goto_if_eq _00EA
 _004C:
-	clearflag FLAG_UNK_2AD
+	clearflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_CHERYL
 _0050:
 	compare VAR_UNK_4151, 2
 	goto_if_ne _0072
@@ -32,7 +32,7 @@ _0050:
 	compare VAR_TEMP_x4009, 1
 	goto_if_eq _00F6
 _0072:
-	clearflag FLAG_UNK_2AE
+	clearflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_MIRA
 _0076:
 	compare VAR_UNK_4151, 2
 	goto_if_ne _0098
@@ -40,7 +40,7 @@ _0076:
 	compare VAR_TEMP_x4009, 2
 	goto_if_eq _0102
 _0098:
-	clearflag FLAG_UNK_2AF
+	clearflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_RILEY
 _009C:
 	compare VAR_UNK_4151, 2
 	goto_if_ne _00BE
@@ -48,7 +48,7 @@ _009C:
 	compare VAR_TEMP_x4009, 3
 	goto_if_eq _010E
 _00BE:
-	clearflag FLAG_UNK_2B0
+	clearflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_MARLEY
 _00C2:
 	compare VAR_UNK_4151, 2
 	goto_if_ne _00E4
@@ -56,32 +56,32 @@ _00C2:
 	compare VAR_TEMP_x4009, 4
 	goto_if_eq _011A
 _00E4:
-	clearflag FLAG_UNK_2B1
+	clearflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_BUCK
 _00E8:
 	end
 
 _00EA:
-	setflag FLAG_UNK_2AD
+	setflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_CHERYL
 	goto _0050
 	end
 
 _00F6:
-	setflag FLAG_UNK_2AE
+	setflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_MIRA
 	goto _0076
 	end
 
 _0102:
-	setflag FLAG_UNK_2AF
+	setflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_RILEY
 	goto _009C
 	end
 
 _010E:
-	setflag FLAG_UNK_2B0
+	setflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_MARLEY
 	goto _00C2
 	end
 
 _011A:
-	setflag FLAG_UNK_2B1
+	setflag FLAG_HIDE_BATTLE_TOWER_PARTNER_ROOM_BUCK
 	goto _00E8
 	end
 
@@ -155,10 +155,10 @@ scr_seq_D31R0207_009:
 	end
 
 _0216:
-	scrcmd_413 VAR_TEMP_x4009, 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	get_battle_tower_partner_mon_and_move VAR_TEMP_x4009, 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name 0, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 1, VAR_SPECIAL_x8005
-	scrcmd_413 VAR_TEMP_x4009, 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	get_battle_tower_partner_mon_and_move VAR_TEMP_x4009, 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name 2, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 3, VAR_SPECIAL_x8005
 	return
@@ -170,10 +170,10 @@ scr_seq_D31R0207_001:
 	compare VAR_UNK_4151, 2
 	goto_if_eq _02A7
 	setvar VAR_TEMP_x4009, 0
-	scrcmd_413 VAR_TEMP_x4009, 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	get_battle_tower_partner_mon_and_move VAR_TEMP_x4009, 0, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name_indef 0, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 1, VAR_SPECIAL_x8005
-	scrcmd_413 VAR_TEMP_x4009, 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	get_battle_tower_partner_mon_and_move VAR_TEMP_x4009, 1, VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_species_name_indef 2, VAR_SPECIAL_x8004, 0, 0
 	buffer_move_name 3, VAR_SPECIAL_x8005
 	npc_msg msg_0099_D31R0207_00006

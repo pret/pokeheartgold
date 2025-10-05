@@ -45,7 +45,7 @@ scr_seq_T03R0101_014:
 	scrcmd_546 0, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _00F4
-	nop_var_490 VAR_TEMP_x4007
+	debug_print_var VAR_TEMP_x4007
 	setvar VAR_UNK_4083, 1
 	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
@@ -68,7 +68,7 @@ _00E8:
 	end
 
 _00F4:
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4006
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	goto _0104
 	end
@@ -95,7 +95,7 @@ scr_seq_T03R0101_017:
 	end
 
 _0141:
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4006
 	end
 
 scr_seq_T03R0101_000:
@@ -526,7 +526,7 @@ _07BF:
 	end
 
 _07C1:
-	nop_var_490 VAR_UNK_4083
+	debug_print_var VAR_UNK_4083
 	scrcmd_344 0, 0
 	move_person_facing obj_T03R0101_daigo, 26, 0, 7, DIR_SOUTH
 	goto _07BF

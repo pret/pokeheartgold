@@ -28,7 +28,7 @@ _004D:
 scr_seq_D24R0207_001:
 	compare VAR_UNK_40D5, 1
 	goto_if_ne _0064
-	nop_var_490 VAR_UNK_40D5
+	debug_print_var VAR_UNK_40D5
 	make_object_visible obj_player
 _0064:
 	end

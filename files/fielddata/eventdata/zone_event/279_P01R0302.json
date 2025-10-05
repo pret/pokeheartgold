@@ -22,7 +22,7 @@
       "spriteId": "SPRITE_GSBABYGIRL1",
       "movement": 16,
       "type": 0,
-      "eventFlag": "FLAG_UNK_217",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_CAPTAINS_QUARTERS_GRANDDAUGHTER",
       "scriptId": "_EV_scr_seq_P01R0302_001 + 1",
       "facingDirection": 2,
       "xRange": 0,

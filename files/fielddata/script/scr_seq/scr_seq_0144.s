@@ -14,7 +14,7 @@
 scr_seq_0144_000:
 	mystery_gift SCR_MG_BEGIN
 	mom_gift_check VAR_TEMP_x4000
-	nop_var_490 VAR_TEMP_x4000
+	debug_print_var VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0035
 	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
@@ -38,7 +38,7 @@ _005A:
 scr_seq_0144_003:
 	mystery_gift SCR_MG_BEGIN
 	mom_gift_check VAR_TEMP_x4000
-	nop_var_490 VAR_TEMP_x4000
+	debug_print_var VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0083
 	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN

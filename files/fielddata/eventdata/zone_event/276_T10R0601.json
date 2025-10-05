@@ -50,7 +50,7 @@
       "spriteId": "SPRITE_BABYBOY1_11",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_210",
+      "eventFlag": "FLAG_HIDE_LANCE_ROOM_RETREAT",
       "scriptId": 0,
       "facingDirection": 0,
       "xRange": 0,

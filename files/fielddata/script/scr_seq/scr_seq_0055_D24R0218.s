@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_D24R0218_004:
-	nop_var_490 VAR_TEMP_x4004
+	debug_print_var VAR_TEMP_x4004
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
 	goto_if_eq _0035
 	goto _0095
@@ -33,16 +33,16 @@ _0059:
 	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 1
 	call_if_eq _0097
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4007
+	debug_print_var VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4007
 	end
 
 _0077:
 	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	call_if_eq _0097
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4006
 	end
 
 _0095:

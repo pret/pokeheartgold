@@ -50,7 +50,7 @@
       "spriteId": "SPRITE_GSGENTLEMAN",
       "movement": 16,
       "type": 0,
-      "eventFlag": "FLAG_UNK_215",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_GRANDPA",
       "scriptId": "_EV_scr_seq_P01R0301_003 + 1",
       "facingDirection": 2,
       "xRange": 0,
@@ -162,7 +162,7 @@
       "h": 1,
       "y": 0,
       "val": 0,
-      "var": "VAR_UNK_40CB"
+      "var": "VAR_SCENE_SS_AQUA"
     }
   ]
 }

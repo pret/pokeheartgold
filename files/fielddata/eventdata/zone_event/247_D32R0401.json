@@ -186,7 +186,7 @@
       "spriteId": "SPRITE_VAR_2",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_234",
+      "eventFlag": "FLAG_HIDE_BATTLE_HALL_FRIEND",
       "scriptId": "_EV_scr_seq_D32R0401_019 + 1",
       "facingDirection": 1,
       "xRange": 1,

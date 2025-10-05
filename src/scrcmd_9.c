@@ -195,14 +195,14 @@ BOOL ScrCmd_412(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_413(ScriptContext *ctx) {
+BOOL ScrCmd_GetBattleTowerPartnerMonAndMove(ScriptContext *ctx) {
     UnkStruct_Fsys_A0 *unkStruct = ctx->fieldSystem->unkA0;
-    u16 unk6 = ScriptGetVar(ctx);
-    u16 unk7 = ScriptGetVar(ctx);
+    u16 partner = ScriptGetVar(ctx);
+    u16 monIdx = ScriptGetVar(ctx);
     u16 *speciesPtr = ScriptGetVarPointer(ctx);
     u16 *movePtr = ScriptGetVarPointer(ctx);
-    *speciesPtr = unkStruct->unk298[unk6].unk30[unk7].species;
-    *movePtr = unkStruct->unk298[unk6].unk30[unk7].moves[0];
+    *speciesPtr = unkStruct->unk298[partner].unk30[monIdx].species;
+    *movePtr = unkStruct->unk298[partner].unk30[monIdx].moves[0];
     return FALSE;
 }
 

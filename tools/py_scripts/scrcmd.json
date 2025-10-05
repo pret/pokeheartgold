@@ -2551,7 +2551,7 @@
       ]
     },
     {
-      "name": "scrcmd_413",
+      "name": "get_battle_tower_partner_mon_and_move",
       "args": [
         "var",
         2,
@@ -3094,7 +3094,7 @@
       "switch_arg": 0
     },
     {
-      "name": "nop_var_490",
+      "name": "debug_print_var",
       "args": [
         "var"
       ]

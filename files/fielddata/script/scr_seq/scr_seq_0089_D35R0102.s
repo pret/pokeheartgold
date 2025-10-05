@@ -171,7 +171,7 @@ _02C4:
 
 _02D0:
 	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _0460
@@ -201,7 +201,7 @@ _02D0:
 
 _036C:
 	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _046C
@@ -229,7 +229,7 @@ _036C:
 	wait_movement
 _0402:
 	move_person_facing obj_D35R0102_rocketm, 37, 0, 0, DIR_WEST
-	setflag FLAG_UNK_1E8
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	setvar VAR_UNK_40AD, 2
 	apply_movement obj_D35R0102_aji_peru, _049C
 	wait_movement
@@ -325,7 +325,7 @@ _04F7:
 
 _0503:
 	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _0668
@@ -357,7 +357,7 @@ _0503:
 
 _05A9:
 	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _0674
@@ -387,7 +387,7 @@ _05A9:
 	wait_movement
 _0649:
 	hide_person obj_D35R0102_rocketm
-	setflag FLAG_UNK_1E8
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	setvar VAR_UNK_40AE, 2
 	apply_movement obj_D35R0102_aji_peru_2, _049C
 	wait_movement
@@ -490,7 +490,7 @@ _073B:
 
 _0747:
 	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _0680
@@ -522,7 +522,7 @@ _0747:
 
 _07ED:
 	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _068C
@@ -552,7 +552,7 @@ _07ED:
 	wait_movement
 _088D:
 	hide_person obj_D35R0102_rocketm
-	setflag FLAG_UNK_1E8
+	setflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	setvar VAR_UNK_40AF, 2
 	apply_movement obj_D35R0102_aji_peru_3, _049C
 	wait_movement
@@ -583,7 +583,7 @@ _08EC:
 
 _08F8:
 	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _0698
@@ -615,7 +615,7 @@ _08F8:
 
 _099E:
 	move_person obj_D35R0102_rocketm, 33, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 33, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _06A4
@@ -675,7 +675,7 @@ _0A99:
 
 _0AA5:
 	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _06B0
@@ -707,7 +707,7 @@ _0AA5:
 
 _0B4B:
 	move_person obj_D35R0102_rocketm, 27, 0
-	clearflag FLAG_UNK_1E8
+	clearflag FLAG_HIDE_ROCKET_HIDEOUT_TRAP_ROCKET
 	show_person obj_D35R0102_rocketm
 	move_person_facing obj_D35R0102_rocketm, 27, 0, VAR_TEMP_x4001, DIR_WEST
 	apply_movement obj_D35R0102_rocketm, _06BC

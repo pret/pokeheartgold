@@ -53,13 +53,13 @@ _00A5:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _00C0
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _00DD
 
 _00C0:
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00D7
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _00DD
 
 _00D7:
@@ -75,13 +75,13 @@ _00DF:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _010D
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _012A
 
 _010D:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _0124
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _012A
 
 _0124:
@@ -91,7 +91,7 @@ _012A:
 	end
 
 _012C:
-	setflag FLAG_UNK_270
+	setflag FLAG_HIDE_ROUTE_22_JANINE
 	end
 
 scr_seq_R22R0101_000:
@@ -431,7 +431,7 @@ _04F4:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_270
+	setflag FLAG_HIDE_ROUTE_22_JANINE
 	hide_person obj_R22R0101_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

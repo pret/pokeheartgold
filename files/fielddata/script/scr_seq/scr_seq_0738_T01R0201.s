@@ -12,7 +12,7 @@ scr_seq_T01R0201_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	nop_var_490 VAR_UNK_4122
+	debug_print_var VAR_UNK_4122
 	compare VAR_UNK_4122, 7
 	goto_if_eq _003B
 _001F:
@@ -62,7 +62,7 @@ _00A7:
 	restore_overworld
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	nop_var_490 VAR_SPECIAL_x8004
+	debug_print_var VAR_SPECIAL_x8004
 	compare VAR_SPECIAL_x8004, 255
 	goto_if_eq _0147
 	get_partymon_species VAR_SPECIAL_x8004, VAR_TEMP_x4000

@@ -14,7 +14,7 @@
 	scrdef_end
 
 scr_seq_D02R0104_000:
-	setflag FLAG_UNK_298
+	setflag FLAG_HIDE_MT_MOON_SQUARE_MOON_STONE_ITEMBALL
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _003B
@@ -109,7 +109,7 @@ _0141:
 scr_seq_D02R0104_002:
 	scrcmd_609
 	lockall
-	clearflag FLAG_UNK_298
+	clearflag FLAG_HIDE_MT_MOON_SQUARE_MOON_STONE_ITEMBALL
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_102 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	apply_movement 241, _0330

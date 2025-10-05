@@ -215,7 +215,7 @@
 #define VAR_UNK_40C8                       0x40C8
 #define VAR_UNK_40C9                       0x40C9
 #define VAR_UNK_40CA                       0x40CA
-#define VAR_UNK_40CB                       0x40CB
+#define VAR_SCENE_SS_AQUA                  0x40CB
 #define VAR_UNK_40CC                       0x40CC
 #define VAR_UNK_40CD                       0x40CD
 #define VAR_UNK_40CE                       0x40CE
@@ -231,7 +231,7 @@
 #define VAR_UNK_40D8                       0x40D8
 #define VAR_UNK_40D9                       0x40D9
 #define VAR_UNK_40DA                       0x40DA
-#define VAR_UNK_40DB                       0x40DB
+#define VAR_SCENE_POKEATHLON_DOME          0x40DB
 #define VAR_UNK_40DC                       0x40DC
 #define VAR_UNK_40DD                       0x40DD
 #define VAR_UNK_40DE                       0x40DE

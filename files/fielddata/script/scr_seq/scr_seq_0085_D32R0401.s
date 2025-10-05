@@ -55,14 +55,14 @@ scr_seq_D32R0401_020:
 
 _00B5:
 	random VAR_TEMP_x4007, 100
-	call_if_unset FLAG_UNK_234, _00D5
+	call_if_unset FLAG_HIDE_BATTLE_HALL_FRIEND, _00D5
 	compare VAR_TEMP_x4007, 30
 	goto_if_lt _00DF
 	end
 
 _00D5:
 	hide_person obj_D32R0401_var_2
-	setflag FLAG_UNK_234
+	setflag FLAG_HIDE_BATTLE_HALL_FRIEND
 	return
 
 _00DF:
@@ -96,7 +96,7 @@ _0139:
 	end
 
 _0147:
-	clearflag FLAG_UNK_234
+	clearflag FLAG_HIDE_BATTLE_HALL_FRIEND
 	call _017D
 	show_person obj_D32R0401_var_2
 	end
@@ -130,31 +130,31 @@ _01B3:
 	return
 
 _01D3:
-	setvar VAR_OBJ_1, 97
+	setvar VAR_OBJ_1, SPRITE_HEROINE
 	return
 
 _01DB:
-	setvar VAR_OBJ_1, 0
+	setvar VAR_OBJ_1, SPRITE_HERO
 	return
 
 _01E3:
-	setvar VAR_OBJ_1, 365
+	setvar VAR_OBJ_1, SPRITE_GSMAMA
 	return
 
 _01EB:
-	setvar VAR_OBJ_1, 366
+	setvar VAR_OBJ_1, SPRITE_OOKIDO
 	return
 
 _01F3:
-	setvar VAR_OBJ_1, 354
+	setvar VAR_OBJ_1, SPRITE_GSLEADER3
 	return
 
 _01FB:
-	setvar VAR_OBJ_9, 320
+	setvar VAR_OBJ_9, SPRITE_GSGIRL2
 	return
 
 _0203:
-	setvar VAR_OBJ_9, 317
+	setvar VAR_OBJ_9, SPRITE_GSBOY2
 	return
 
 scr_seq_D32R0401_000:
@@ -991,15 +991,15 @@ scr_seq_D32R0401_019:
 	faceplayer
 	buffer_players_name 0
 	copyvar VAR_TEMP_x4001, VAR_OBJ_1
-	compare VAR_TEMP_x4001, 0
+	compare VAR_TEMP_x4001, SPRITE_HERO
 	goto_if_eq _0D90
-	compare VAR_TEMP_x4001, 97
+	compare VAR_TEMP_x4001, SPRITE_HEROINE
 	goto_if_eq _0D9B
-	compare VAR_TEMP_x4001, 365
+	compare VAR_TEMP_x4001, SPRITE_GSMAMA
 	goto_if_eq _0DA6
-	compare VAR_TEMP_x4001, 366
+	compare VAR_TEMP_x4001, SPRITE_OOKIDO
 	goto_if_eq _0DB1
-	compare VAR_TEMP_x4001, 354
+	compare VAR_TEMP_x4001, SPRITE_GSLEADER3
 	goto_if_eq _0DBC
 	end
 

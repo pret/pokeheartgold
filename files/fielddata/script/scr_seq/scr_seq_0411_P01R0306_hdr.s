@@ -10,7 +10,7 @@
 	.byte 0
 
 scr_seq_P01R0306_map_scripts_2:
-	.short VAR_UNK_40CB, 5, _EV_scr_seq_P01R0306_003 + 1
+	.short VAR_SCENE_SS_AQUA, 5, _EV_scr_seq_P01R0306_003 + 1
 	.short 0
 
 	.balign 4, 0

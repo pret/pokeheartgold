@@ -100,7 +100,7 @@ _0101:
 	closemsg
 	apply_movement obj_P01R0301_seaman_2_2, _0180
 	wait_movement
-	setvar VAR_UNK_40CB, 7
+	setvar VAR_SCENE_SS_AQUA, 7
 	setvar VAR_TEMP_x4000, 1
 	releaseall
 	end
@@ -191,8 +191,8 @@ _023C:
 	apply_movement obj_P01R0301_gsgentleman, _02C0
 	wait_movement
 	hide_person obj_P01R0301_gsgentleman
-	setflag FLAG_UNK_215
-	setvar VAR_UNK_40CB, 2
+	setflag FLAG_HIDE_SS_AQUA_GRANDPA
+	setvar VAR_SCENE_SS_AQUA, 2
 	stop_se SEQ_SE_GS_N_UMIBE
 	releaseall
 	end
@@ -238,8 +238,8 @@ scr_seq_P01R0301_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	nop_var_490 VAR_UNK_40CB
-	compare VAR_UNK_40CB, 7
+	debug_print_var VAR_SCENE_SS_AQUA
+	compare VAR_SCENE_SS_AQUA, 7
 	goto_if_lt _02FA
 	npc_msg msg_0259_P01R0301_00009
 	goto _02FD

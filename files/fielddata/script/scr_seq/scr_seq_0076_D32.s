@@ -64,7 +64,7 @@ _00AF:
 _00D7:
 	setflag FLAG_HIDE_CAMERON
 _00DB:
-	setflag FLAG_UNK_234
+	setflag FLAG_HIDE_BATTLE_HALL_FRIEND
 	end
 
 scr_seq_D32_038:

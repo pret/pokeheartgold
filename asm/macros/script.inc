@@ -2357,7 +2357,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_413 arg0, arg1, arg2, arg3
+	.macro get_battle_tower_partner_mon_and_move arg0, arg1, arg2, arg3
 	.short 413
 	.short \arg0
 	.short \arg1
@@ -2799,7 +2799,7 @@
 	.endif
 	.endm
 
-	.macro nop_var_490 arg0
+	.macro debug_print_var arg0
 	.short 490
 	.short \arg0
 	.endm

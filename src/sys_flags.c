@@ -308,7 +308,7 @@ BOOL CheckSolvedLtSurgeGym(SaveVarsFlags *state) {
 }
 
 BOOL CheckFlag982(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_982);
+    return CheckScriptFlag(state, FLAG_SYS_MET_POKEATHLON_OWNER);
 }
 
 BOOL CheckFlag09A(SaveVarsFlags *state) {

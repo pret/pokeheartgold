@@ -119,7 +119,7 @@ const u8 unk_020FC224[] = {
 };
 
 // Essentially a nop
-BOOL ScrCmd_NopVar490(ScriptContext *ctx) {
+BOOL ScrCmd_DebugPrintVar(ScriptContext *ctx) {
     u16 *unused = ScriptGetVarPointer(ctx);
     return FALSE;
 }

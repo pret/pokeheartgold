@@ -377,8 +377,8 @@ _04EC:
 	end
 
 _04F8:
-	nop_var_490 VAR_TEMP_x4001
-	nop_var_490 VAR_TEMP_x4002
+	debug_print_var VAR_TEMP_x4001
+	debug_print_var VAR_TEMP_x4002
 	compare VAR_UNK_412F, 0
 	goto_if_ne _0516
 	npc_msg msg_0267_00029

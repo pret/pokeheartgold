@@ -29,17 +29,17 @@ _0047:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0062
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL_TRAINING
 	goto _007D
 
 _0062:
 	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0079
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL_TRAINING
 	goto _007D
 
 _0079:
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+	setflag FLAG_HIDE_DRAGONS_DEN_RIVAL_TRAINING
 _007D:
 	check_registered_phone_number PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
@@ -244,13 +244,13 @@ scr_seq_D44R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0E2, _0340
+	goto_if_set FLAG_SPOKE_TO_RIVAL_IN_DRAGONS_DEN, _0340
 	buffer_players_name 0
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00007
 	wait_button_or_walk_away
 	closemsg
-	setflag FLAG_UNK_0E2
+	setflag FLAG_SPOKE_TO_RIVAL_IN_DRAGONS_DEN
 	releaseall
 	end
 

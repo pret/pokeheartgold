@@ -38,7 +38,7 @@ scr_seq_P01R0303_000:
 	closemsg
 	apply_movement obj_P01R0303_seaman_2, _0160
 	wait_movement
-	setvar VAR_UNK_40CB, 3
+	setvar VAR_SCENE_SS_AQUA, 3
 	hide_person obj_P01R0303_seaman_2
 	setflag FLAG_HIDE_SAILOR_STANLY
 	releaseall
@@ -66,7 +66,7 @@ _009D:
 	closemsg
 	apply_movement obj_P01R0303_seaman_2, _01AC
 	wait_movement
-	setvar VAR_UNK_40CB, 3
+	setvar VAR_SCENE_SS_AQUA, 3
 	hide_person obj_P01R0303_seaman_2
 	setflag FLAG_HIDE_SAILOR_STANLY
 	releaseall
@@ -193,7 +193,7 @@ _0247:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 _0268:
-	compare VAR_UNK_40CB, 7
+	compare VAR_SCENE_SS_AQUA, 7
 	goto_if_ge _0279
 	releaseall
 	end
