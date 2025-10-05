@@ -37,7 +37,7 @@ _004E:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _0087
-	clearflag FLAG_UNK_2CB
+	clearflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	goto _008D
 
 _0087:
@@ -53,16 +53,16 @@ _008F:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _00BD
-	clearflag FLAG_UNK_2CB
+	clearflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	goto _00C1
 
 _00BD:
-	setflag FLAG_UNK_2CB
+	setflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 _00C1:
 	end
 
 _00C3:
-	setflag FLAG_UNK_2CB
+	setflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	end
 
 scr_seq_T26R0701_006:
@@ -250,7 +250,7 @@ _032B:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2CB
+	setflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	hide_person obj_T26R0701_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

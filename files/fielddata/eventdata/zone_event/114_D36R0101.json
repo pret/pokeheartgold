@@ -266,7 +266,7 @@
       "spriteId": "SPRITE_DANCER",
       "movement": 2,
       "type": 0,
-      "eventFlag": "FLAG_UNK_23D",
+      "eventFlag": "FLAG_HIDE_ILEX_FOREST_KIMONO_GIRL",
       "scriptId": 0,
       "facingDirection": 1,
       "xRange": 0,

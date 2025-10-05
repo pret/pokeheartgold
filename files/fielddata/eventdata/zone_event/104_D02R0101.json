@@ -18,7 +18,7 @@
       "spriteId": "SPRITE_GSRIVEL",
       "movement": 16,
       "type": 0,
-      "eventFlag": "FLAG_UNK_25C",
+      "eventFlag": "FLAG_HIDE_MT_MOON_RIVAL",
       "scriptId": 0,
       "facingDirection": 2,
       "xRange": 0,

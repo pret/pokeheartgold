@@ -32,11 +32,11 @@
 	scrdef_end
 
 scr_seq_D37R0102_008:
-	setflag FLAG_UNK_1B0
-	setflag FLAG_UNK_1B1
-	setflag FLAG_UNK_1B2
-	setflag FLAG_UNK_1B3
-	setflag FLAG_UNK_1B4
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_BARGAIN_SHOP_GUY
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_HERB_SHOP_LADY
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BRO
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BRO
+	setflag FLAG_HIDE_DRESSUP_ATTENDANT_IN_DISGUISE
 	setflag FLAG_HIDE_ROCKET_TAKEOVER_2
 	compare VAR_SCENE_ROCKET_TAKEOVER, 2
 	goto_if_eq _0144
@@ -47,39 +47,39 @@ scr_seq_D37R0102_008:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _00C0
-	clearflag FLAG_UNK_1B1
-	clearflag FLAG_UNK_1B3
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_HERB_SHOP_LADY
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BRO
 	goto _0131
 
 _00C0:
 	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _00D7
-	clearflag FLAG_UNK_1B2
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BRO
 	goto _0131
 
 _00D7:
 	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_ne _00EE
-	clearflag FLAG_UNK_1B3
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BRO
 	goto _0131
 
 _00EE:
 	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0105
-	clearflag FLAG_UNK_1B2
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BRO
 	goto _0131
 
 _0105:
 	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _011C
-	clearflag FLAG_UNK_1B3
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BRO
 	goto _0131
 
 _011C:
 	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _0131
-	clearflag FLAG_UNK_1B1
-	clearflag FLAG_UNK_1B2
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_HERB_SHOP_LADY
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BRO
 _0131:
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	call_if_eq _0161
@@ -89,11 +89,11 @@ _0131:
 _0144:
 	compare VAR_UNK_409F, 1
 	goto_if_ne _015B
-	setflag FLAG_UNK_1B4
+	setflag FLAG_HIDE_DRESSUP_ATTENDANT_IN_DISGUISE
 	goto _015F
 
 _015B:
-	clearflag FLAG_UNK_1B4
+	clearflag FLAG_HIDE_DRESSUP_ATTENDANT_IN_DISGUISE
 _015F:
 	end
 
@@ -101,17 +101,17 @@ _0161:
 	scrcmd_522 VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 4
 	goto_if_ge _017C
-	setflag FLAG_UNK_1B0
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_BARGAIN_SHOP_GUY
 	goto _0197
 
 _017C:
 	compare VAR_TEMP_x4001, 9
 	goto_if_le _0193
-	setflag FLAG_UNK_1B0
+	setflag FLAG_HIDE_GOLDENROD_UNDERGROUND_BARGAIN_SHOP_GUY
 	goto _0197
 
 _0193:
-	clearflag FLAG_UNK_1B0
+	clearflag FLAG_HIDE_GOLDENROD_UNDERGROUND_BARGAIN_SHOP_GUY
 _0197:
 	return
 
@@ -378,7 +378,7 @@ scr_seq_D37R0102_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_AB7, _0895
+	goto_if_set FLAG_DAILY_BARGAIN_SHOP, _0895
 	show_money_box 20, 2
 	npc_msg msg_0117_D37R0102_00001
 	setvar VAR_TEMP_x4003, 0
@@ -389,12 +389,12 @@ scr_seq_D37R0102_003:
 _0522:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 445, 255, 0
-	menu_item_add 446, 255, 1
-	menu_item_add 447, 255, 2
-	menu_item_add 448, 255, 3
-	menu_item_add 449, 255, 4
-	menu_item_add 450, 255, 7
+	menu_item_add msg_0191_00445, 255, 0
+	menu_item_add msg_0191_00446, 255, 1
+	menu_item_add msg_0191_00447, 255, 2
+	menu_item_add msg_0191_00448, 255, 3
+	menu_item_add msg_0191_00449, 255, 4
+	menu_item_add msg_0191_00450, 255, 7
 	menu_exec
 	switch VAR_SPECIAL_RESULT
 	case 0, _05AB
@@ -407,7 +407,7 @@ _0522:
 _05AB:
 	compare VAR_TEMP_x4003, 1
 	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 92
+	setvar VAR_SPECIAL_x8004, ITEM_NUGGET
 	setvar VAR_SPECIAL_x8005, 1
 	setvar VAR_SPECIAL_x8006, 4500
 	goto _0664
@@ -415,7 +415,7 @@ _05AB:
 _05D0:
 	compare VAR_TEMP_x4004, 1
 	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 88
+	setvar VAR_SPECIAL_x8004, ITEM_PEARL
 	setvar VAR_SPECIAL_x8005, 1
 	setvar VAR_SPECIAL_x8006, 650
 	goto _0664
@@ -423,7 +423,7 @@ _05D0:
 _05F5:
 	compare VAR_TEMP_x4005, 1
 	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 89
+	setvar VAR_SPECIAL_x8004, ITEM_BIG_PEARL
 	setvar VAR_SPECIAL_x8005, 1
 	setvar VAR_SPECIAL_x8006, 3500
 	goto _0664
@@ -431,7 +431,7 @@ _05F5:
 _061A:
 	compare VAR_TEMP_x4006, 1
 	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 90
+	setvar VAR_SPECIAL_x8004, ITEM_STARDUST
 	setvar VAR_SPECIAL_x8005, 1
 	setvar VAR_SPECIAL_x8006, 900
 	goto _0664
@@ -439,7 +439,7 @@ _061A:
 _063F:
 	compare VAR_TEMP_x4007, 1
 	goto_if_eq _086B
-	setvar VAR_SPECIAL_x8004, 91
+	setvar VAR_SPECIAL_x8004, ITEM_STAR_PIECE
 	setvar VAR_SPECIAL_x8005, 1
 	setvar VAR_SPECIAL_x8006, 4600
 	goto _0664
@@ -455,7 +455,7 @@ _0664:
 	goto _0522
 
 _068A:
-	compare VAR_SPECIAL_x8004, 92
+	compare VAR_SPECIAL_x8004, ITEM_NUGGET
 	goto_if_ne _06CD
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 4500
 	compare VAR_SPECIAL_RESULT, 0
@@ -467,7 +467,7 @@ _068A:
 	goto _07C6
 
 _06CD:
-	compare VAR_SPECIAL_x8004, 88
+	compare VAR_SPECIAL_x8004, ITEM_PEARL
 	goto_if_ne _0710
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 650
 	compare VAR_SPECIAL_RESULT, 0
@@ -479,7 +479,7 @@ _06CD:
 	goto _07C6
 
 _0710:
-	compare VAR_SPECIAL_x8004, 89
+	compare VAR_SPECIAL_x8004, ITEM_BIG_PEARL
 	goto_if_ne _0753
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 3500
 	compare VAR_SPECIAL_RESULT, 0
@@ -491,7 +491,7 @@ _0710:
 	goto _07C6
 
 _0753:
-	compare VAR_SPECIAL_x8004, 90
+	compare VAR_SPECIAL_x8004, ITEM_STARDUST
 	goto_if_ne _0796
 	hasenoughmoneyimmediate VAR_SPECIAL_RESULT, 900
 	compare VAR_SPECIAL_RESULT, 0
@@ -519,35 +519,35 @@ _07C6:
 	npc_msg msg_0117_D37R0102_00003
 	npc_msg msg_0117_D37R0102_00004
 	giveitem VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_x8004, 92
+	compare VAR_SPECIAL_x8004, ITEM_NUGGET
 	goto_if_ne _0803
 	setvar VAR_TEMP_x4003, 1
 	goto _0861
 
 _0803:
-	compare VAR_SPECIAL_x8004, 88
+	compare VAR_SPECIAL_x8004, ITEM_PEARL
 	goto_if_ne _081C
 	setvar VAR_TEMP_x4004, 1
 	goto _0861
 
 _081C:
-	compare VAR_SPECIAL_x8004, 89
+	compare VAR_SPECIAL_x8004, ITEM_BIG_PEARL
 	goto_if_ne _0835
 	setvar VAR_TEMP_x4005, 1
 	goto _0861
 
 _0835:
-	compare VAR_SPECIAL_x8004, 90
+	compare VAR_SPECIAL_x8004, ITEM_STARDUST
 	goto_if_ne _084E
 	setvar VAR_TEMP_x4006, 1
 	goto _0861
 
 _084E:
-	compare VAR_SPECIAL_x8004, 91
+	compare VAR_SPECIAL_x8004, ITEM_STAR_PIECE
 	goto_if_ne _0861
 	setvar VAR_TEMP_x4007, 1
 _0861:
-	setflag FLAG_UNK_AB7
+	setflag FLAG_DAILY_BARGAIN_SHOP
 	goto _0522
 
 _086B:
@@ -839,7 +839,7 @@ scr_seq_D37R0102_005:
 	lockall
 	faceplayer
 	setvar VAR_SPECIAL_x8007, 0
-	call_if_unset FLAG_UNK_08C, _0C0E
+	call_if_unset FLAG_GOT_UNDERGROUND_DRESSUP_TUTORIAL, _0C0E
 	compare VAR_TEMP_x400A, 0
 	goto_if_eq _0C16
 	compare VAR_TEMP_x400A, 1
@@ -945,7 +945,7 @@ _0D55:
 	goto _0D5B
 
 _0D5B:
-	setflag FLAG_UNK_08C
+	setflag FLAG_GOT_UNDERGROUND_DRESSUP_TUTORIAL
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_154 VAR_TEMP_x4002, VAR_SPECIAL_x8005, VAR_SPECIAL_x8007
@@ -1239,7 +1239,7 @@ _109C:
 	setflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
 	callstd std_fade_end_kimono_girl_music
 	releaseall
-	setvar VAR_UNK_40E7, 3
+	setvar VAR_SCENE_ROCKET_UNDERGROUND, 3
 	end
 
 	.balign 4, 0
@@ -1320,7 +1320,7 @@ _1189:
 	apply_movement obj_D37R0102_babyboy1_8, _11A4
 	wait_movement
 	releaseall
-	setflag FLAG_UNK_1C0
+	setflag FLAG_HIDE_BASEMENT_KEY_DOOR
 	end
 
 	.balign 4, 0

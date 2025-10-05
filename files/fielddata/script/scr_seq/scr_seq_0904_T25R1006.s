@@ -31,25 +31,25 @@ _0033:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _007F
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _007F:
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _0096
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _0096:
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _00AD
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _00AD:
 	compare VAR_TEMP_x4000, 15
 	goto_if_ne _00C4
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _00C4:
@@ -62,19 +62,19 @@ _00CC:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00E7
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _011B
 
 _00E7:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00FE
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _011B
 
 _00FE:
 	compare VAR_TEMP_x4000, 20
 	goto_if_ne _0115
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _011B
 
 _0115:
@@ -84,7 +84,7 @@ _011B:
 	end
 
 _011D:
-	setflag FLAG_UNK_26F
+	setflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	end
 
 scr_seq_T25R1006_004:
@@ -443,7 +443,7 @@ _061B:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_26F
+	setflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	hide_person obj_T25R1006_gsleader3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

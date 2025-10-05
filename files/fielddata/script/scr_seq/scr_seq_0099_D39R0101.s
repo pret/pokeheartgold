@@ -158,7 +158,7 @@ _0193:
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	callstd std_fade_end_kimono_girl_music
-	setflag FLAG_UNK_239
+	setflag FLAG_HIDE_ICE_PATH_KIMONO_GIRL
 	setvar VAR_UNK_40E8, 1
 	apply_movement 241, _024C
 	wait_movement

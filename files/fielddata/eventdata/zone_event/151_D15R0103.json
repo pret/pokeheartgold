@@ -101,7 +101,7 @@
       "spriteId": "SPRITE_GSRIVEL",
       "movement": 14,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1A3",
+      "eventFlag": "FLAG_HIDE_SPROUT_TOWER_RIVAL",
       "scriptId": 0,
       "facingDirection": 0,
       "xRange": 0,

@@ -146,7 +146,7 @@
       "spriteId": "SPRITE_BABYBOY1_9",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1C1",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_BASEMENT_DOOR_TO_UNDERGROUND",
       "scriptId": 0,
       "facingDirection": 0,
       "xRange": 0,

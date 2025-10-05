@@ -256,7 +256,7 @@
       "spriteId": "SPRITE_GSGENTLEMAN",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2DA",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_GAME_CORNER_SKEWED_ODDS_GUY",
       "scriptId": "_EV_scr_seq_T25R1101_003 + 1",
       "facingDirection": 2,
       "xRange": 0,

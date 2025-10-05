@@ -150,7 +150,7 @@ _01B4:
 	apply_movement obj_D23R0103_babyboy1_9_2, _01F8
 	wait_movement
 	releaseall
-	setflag FLAG_UNK_1BF
+	setflag FLAG_HIDE_RADIO_TOWER_CARD_KEY_DOOR
 	hide_person obj_D23R0103_babyboy1_9
 	hide_person obj_D23R0103_babyboy1_9_2
 	setflag FLAG_UNK_090

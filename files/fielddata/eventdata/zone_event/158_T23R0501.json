@@ -26,7 +26,7 @@
       "spriteId": "SPRITE_GANTETSU",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_19E",
+      "eventFlag": "FLAG_HIDE_KURTS_HOUSE_KURT",
       "scriptId": "_EV_scr_seq_T23R0501_001 + 1",
       "facingDirection": 1,
       "xRange": 0,

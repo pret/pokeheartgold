@@ -106,7 +106,7 @@
       "spriteId": "SPRITE_GSOLDMAN1",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1B0",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_UNDERGROUND_BARGAIN_SHOP_GUY",
       "scriptId": "_EV_scr_seq_D37R0102_003 + 1",
       "facingDirection": 2,
       "xRange": 0,
@@ -120,7 +120,7 @@
       "spriteId": "SPRITE_GSMAN3",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1B2",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_UNDERGROUND_OLDER_HAIRCUT_BRO",
       "scriptId": "_EV_scr_seq_D37R0102_001 + 1",
       "facingDirection": 2,
       "xRange": 0,
@@ -134,7 +134,7 @@
       "spriteId": "SPRITE_GSMAN2",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1B3",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_UNDERGROUND_YOUNGER_HAIRCUT_BRO",
       "scriptId": "_EV_scr_seq_D37R0102_002 + 1",
       "facingDirection": 2,
       "xRange": 0,
@@ -148,7 +148,7 @@
       "spriteId": "SPRITE_GSOLDWOMAN1",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1B1",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_UNDERGROUND_HERB_SHOP_LADY",
       "scriptId": "_EV_scr_seq_D37R0102_000 + 1",
       "facingDirection": 2,
       "xRange": 0,
@@ -230,7 +230,7 @@
       "spriteId": "SPRITE_ROCKETM",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1B4",
+      "eventFlag": "FLAG_HIDE_DRESSUP_ATTENDANT_IN_DISGUISE",
       "scriptId": "_EV_scr_seq_D37R0102_009 + 1",
       "facingDirection": 1,
       "xRange": 0,
@@ -272,7 +272,7 @@
       "spriteId": "SPRITE_BABYBOY1_8",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_1C0",
+      "eventFlag": "FLAG_HIDE_BASEMENT_KEY_DOOR",
       "scriptId": "_EV_scr_seq_D37R0102_010 + 1",
       "facingDirection": 0,
       "xRange": 0,
@@ -380,7 +380,7 @@
       "h": 2,
       "y": 0,
       "val": 2,
-      "var": "VAR_UNK_40E7"
+      "var": "VAR_SCENE_ROCKET_UNDERGROUND"
     }
   ]
 }

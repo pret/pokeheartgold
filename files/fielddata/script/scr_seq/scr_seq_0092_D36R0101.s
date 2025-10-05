@@ -1293,8 +1293,8 @@ scr_seq_D36R0101_011:
 	goto_if_no_item_space ITEM_HM01, 1, _11FD
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_HM01
-	clearflag FLAG_UNK_1AE
-	clearflag FLAG_UNK_1AC
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_MASTER
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_APPRENTICE
 	npc_msg msg_0115_D36R0101_00008
 	wait_button_or_walk_away
 	closemsg
@@ -1342,8 +1342,8 @@ _1207:
 	setflag FLAG_HIDE_FARFETCHD_1_FOUND
 	setflag FLAG_HIDE_FARFETCHD_2_FOUND
 	setflag FLAG_GOT_HM01
-	clearflag FLAG_UNK_1AE
-	clearflag FLAG_UNK_1AC
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_MASTER
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_APPRENTICE
 	npc_msg msg_0115_D36R0101_00008
 	wait_button_or_walk_away
 	closemsg
@@ -1465,7 +1465,7 @@ _142D:
 	apply_movement obj_D36R0101_dancer, _159C
 	wait_movement
 	hide_person obj_D36R0101_dancer
-	setflag FLAG_UNK_23D
+	setflag FLAG_HIDE_ILEX_FOREST_KIMONO_GIRL
 	callstd std_fade_end_kimono_girl_music
 	release obj_partner_poke
 	apply_movement obj_partner_poke, _1584

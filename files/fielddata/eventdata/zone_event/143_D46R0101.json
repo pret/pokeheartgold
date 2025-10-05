@@ -66,7 +66,7 @@
       "spriteId": "SPRITE_GSLEADER2",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_263",
+      "eventFlag": "FLAG_HIDE_VIRIDIAN_FOREST_BUGSY",
       "scriptId": "_EV_scr_seq_D46R0101_000 + 1",
       "facingDirection": 1,
       "xRange": 0,

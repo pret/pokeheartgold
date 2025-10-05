@@ -11,12 +11,12 @@
 	scrdef_end
 
 scr_seq_D15R0103_000:
-	clearflag FLAG_UNK_1A3
+	clearflag FLAG_HIDE_SPROUT_TOWER_RIVAL
 	goto_if_set FLAG_UNK_078, _001F
 	end
 
 _001F:
-	setflag FLAG_UNK_1A3
+	setflag FLAG_HIDE_SPROUT_TOWER_RIVAL
 	end
 
 scr_seq_D15R0103_001:

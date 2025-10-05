@@ -84,7 +84,7 @@
       "spriteId": "SPRITE_GSLEADER3",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_26F",
+      "eventFlag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY",
       "scriptId": "_EV_scr_seq_T25R1006_007 + 1",
       "facingDirection": 1,
       "xRange": 0,

@@ -243,7 +243,7 @@
 #define VAR_UNK_40E4                       0x40E4
 #define VAR_UNK_40E5                       0x40E5
 #define VAR_UNK_40E6                       0x40E6
-#define VAR_UNK_40E7                       0x40E7
+#define VAR_SCENE_ROCKET_UNDERGROUND       0x40E7
 #define VAR_UNK_40E8                       0x40E8
 #define VAR_UNK_40E9                       0x40E9
 #define VAR_UNK_40EA                       0x40EA

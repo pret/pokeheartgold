@@ -54,7 +54,7 @@
       "spriteId": "SPRITE_DANCER",
       "movement": 15,
       "type": 0,
-      "eventFlag": "FLAG_UNK_239",
+      "eventFlag": "FLAG_HIDE_ICE_PATH_KIMONO_GIRL",
       "scriptId": "_EV_scr_seq_D39R0101_002 + 1",
       "facingDirection": 1,
       "xRange": 0,

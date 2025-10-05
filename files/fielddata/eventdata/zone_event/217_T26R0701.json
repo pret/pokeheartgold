@@ -64,7 +64,7 @@
       "spriteId": "SPRITE_GSLEADER6",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2CB",
+      "eventFlag": "FLAG_HIDE_OLIVINE_CAFE_JASMINE",
       "scriptId": "_EV_scr_seq_T26R0701_005 + 1",
       "facingDirection": 3,
       "xRange": 0,

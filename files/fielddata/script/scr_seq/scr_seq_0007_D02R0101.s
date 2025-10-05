@@ -50,7 +50,7 @@ _007D:
 	wait_movement
 	hide_person obj_D02R0101_gsrivel
 	callstd std_fade_end_rival_outro_music
-	setflag FLAG_UNK_25C
+	setflag FLAG_HIDE_MT_MOON_RIVAL
 	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL
 	setvar VAR_UNK_40FC, 1
 	setvar VAR_UNK_40F5, 1

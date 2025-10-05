@@ -59,19 +59,19 @@ _00AB:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _00C6
-	setflag FLAG_UNK_2DA
+	setflag FLAG_HIDE_GOLDENROD_GAME_CORNER_SKEWED_ODDS_GUY
 	goto _00FA
 
 _00C6:
 	compare VAR_TEMP_x4000, 8
 	goto_if_ne _00DD
-	setflag FLAG_UNK_2DA
+	setflag FLAG_HIDE_GOLDENROD_GAME_CORNER_SKEWED_ODDS_GUY
 	goto _00FA
 
 _00DD:
 	compare VAR_TEMP_x4000, 9
 	goto_if_ne _00F4
-	setflag FLAG_UNK_2DA
+	setflag FLAG_HIDE_GOLDENROD_GAME_CORNER_SKEWED_ODDS_GUY
 	goto _00FA
 
 _00F4:
@@ -81,7 +81,7 @@ _00FA:
 	end
 
 _00FC:
-	clearflag FLAG_UNK_2DA
+	clearflag FLAG_HIDE_GOLDENROD_GAME_CORNER_SKEWED_ODDS_GUY
 	end
 
 scr_seq_T25R1101_010:

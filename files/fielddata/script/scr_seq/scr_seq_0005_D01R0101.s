@@ -29,19 +29,19 @@ _004D:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _0068
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _009C
 
 _0068:
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _007F
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _009C
 
 _007F:
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _0096
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _009C
 
 _0096:
@@ -57,19 +57,19 @@ _009E:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00CC
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _0100
 
 _00CC:
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00E3
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _0100
 
 _00E3:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00FA
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _0100
 
 _00FA:
@@ -79,7 +79,7 @@ _0100:
 	end
 
 _0102:
-	setflag FLAG_UNK_262
+	setflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	end
 
 scr_seq_D01R0101_001:
@@ -113,7 +113,7 @@ _0157:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_262
+	setflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	hide_person obj_D01R0101_gsleader14
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

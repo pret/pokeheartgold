@@ -131,7 +131,7 @@ _01DA:
 	callstd std_obtain_item_verbose
 	closemsg
 	releaseall
-	setvar VAR_UNK_40E7, 2
+	setvar VAR_SCENE_ROCKET_UNDERGROUND, 2
 	clearflag FLAG_HIDE_UNDERGROUND_KIMONO_GIRL
 	end
 

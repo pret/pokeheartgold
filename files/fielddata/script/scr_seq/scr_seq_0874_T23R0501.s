@@ -65,7 +65,7 @@ _00B1:
 	hide_person obj_T23R0501_gantetsu
 	wait_fanfare
 	setflag FLAG_UNK_077
-	setflag FLAG_UNK_19E
+	setflag FLAG_HIDE_KURTS_HOUSE_KURT
 	setflag FLAG_HIDE_AZALEA_CITY_ROCKET_BLOCKING_WELL
 	end
 
