@@ -46,131 +46,131 @@ scr_seq_T11R0101_003:
 	get_phone_book_rematch PHONE_CONTACT_PRYCE, VAR_TEMP_x400F
 	compare VAR_TEMP_x4003, 0
 	goto_if_ne _00C9
-	setflag FLAG_UNK_2B8
+	setflag FLAG_HIDE_SAFFRON_DOJO_ERIKA
 	goto _00CD
 
 _00C9:
-	clearflag FLAG_UNK_2B8
+	clearflag FLAG_HIDE_SAFFRON_DOJO_ERIKA
 _00CD:
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _00E4
-	setflag FLAG_UNK_2B5
+	setflag FLAG_HIDE_SAFFRON_DOJO_WHITNEY
 	goto _00E8
 
 _00E4:
-	clearflag FLAG_UNK_2B5
+	clearflag FLAG_HIDE_SAFFRON_DOJO_WHITNEY
 _00E8:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00FF
-	setflag FLAG_UNK_2B6
+	setflag FLAG_HIDE_SAFFRON_DOJO_JANINE
 	goto _0103
 
 _00FF:
-	clearflag FLAG_UNK_2B6
+	clearflag FLAG_HIDE_SAFFRON_DOJO_JANINE
 _0103:
 	compare VAR_TEMP_x4002, 0
 	goto_if_ne _011A
-	setflag FLAG_UNK_2B7
+	setflag FLAG_HIDE_SAFFRON_DOJO_CLAIR
 	goto _011E
 
 _011A:
-	clearflag FLAG_UNK_2B7
+	clearflag FLAG_HIDE_SAFFRON_DOJO_CLAIR
 _011E:
 	compare VAR_TEMP_x4004, 0
 	goto_if_ne _0135
-	setflag FLAG_UNK_2B9
+	setflag FLAG_HIDE_SAFFRON_DOJO_MISTY
 	goto _0139
 
 _0135:
-	clearflag FLAG_UNK_2B9
+	clearflag FLAG_HIDE_SAFFRON_DOJO_MISTY
 _0139:
 	compare VAR_TEMP_x4005, 0
 	goto_if_ne _0150
-	setflag FLAG_UNK_2BA
+	setflag FLAG_HIDE_SAFFRON_DOJO_BLAINE
 	goto _0154
 
 _0150:
-	clearflag FLAG_UNK_2BA
+	clearflag FLAG_HIDE_SAFFRON_DOJO_BLAINE
 _0154:
 	compare VAR_TEMP_x4006, 0
 	goto_if_ne _016B
-	setflag FLAG_UNK_2BB
+	setflag FLAG_HIDE_SAFFRON_DOJO_BLUE
 	goto _016F
 
 _016B:
-	clearflag FLAG_UNK_2BB
+	clearflag FLAG_HIDE_SAFFRON_DOJO_BLUE
 _016F:
 	compare VAR_TEMP_x4007, 0
 	goto_if_ne _0186
-	setflag FLAG_UNK_2BC
+	setflag FLAG_HIDE_SAFFRON_DOJO_CHUCK
 	goto _018A
 
 _0186:
-	clearflag FLAG_UNK_2BC
+	clearflag FLAG_HIDE_SAFFRON_DOJO_CHUCK
 _018A:
 	compare VAR_TEMP_x4008, 0
 	goto_if_ne _01A1
-	setflag FLAG_UNK_2BD
+	setflag FLAG_HIDE_SAFFRON_DOJO_BROCK
 	goto _01A5
 
 _01A1:
-	clearflag FLAG_UNK_2BD
+	clearflag FLAG_HIDE_SAFFRON_DOJO_BROCK
 _01A5:
 	compare VAR_TEMP_x4009, 0
 	goto_if_ne _01BC
-	setflag FLAG_UNK_2BE
+	setflag FLAG_HIDE_SAFFRON_DOJO_BUGSY
 	goto _01C0
 
 _01BC:
-	clearflag FLAG_UNK_2BE
+	clearflag FLAG_HIDE_SAFFRON_DOJO_BUGSY
 _01C0:
 	compare VAR_TEMP_x400A, 0
 	goto_if_ne _01D7
-	setflag FLAG_UNK_2BF
+	setflag FLAG_HIDE_SAFFRON_DOJO_SABRINA
 	goto _01DB
 
 _01D7:
-	clearflag FLAG_UNK_2BF
+	clearflag FLAG_HIDE_SAFFRON_DOJO_SABRINA
 _01DB:
 	compare VAR_TEMP_x400B, 0
 	goto_if_ne _01F2
-	setflag FLAG_UNK_2C0
+	setflag FLAG_HIDE_SAFFRON_DOJO_FALKNER
 	goto _01F6
 
 _01F2:
-	clearflag FLAG_UNK_2C0
+	clearflag FLAG_HIDE_SAFFRON_DOJO_FALKNER
 _01F6:
 	compare VAR_TEMP_x400C, 0
 	goto_if_ne _020D
-	setflag FLAG_UNK_2C1
+	setflag FLAG_HIDE_SAFFRON_DOJO_LT__SURGE
 	goto _0211
 
 _020D:
-	clearflag FLAG_UNK_2C1
+	clearflag FLAG_HIDE_SAFFRON_DOJO_LT__SURGE
 _0211:
 	compare VAR_TEMP_x400D, 0
 	goto_if_ne _0228
-	setflag FLAG_UNK_2C2
+	setflag FLAG_HIDE_SAFFRON_DOJO_MORTY
 	goto _022C
 
 _0228:
-	clearflag FLAG_UNK_2C2
+	clearflag FLAG_HIDE_SAFFRON_DOJO_MORTY
 _022C:
 	compare VAR_TEMP_x400E, 0
 	goto_if_ne _0243
-	setflag FLAG_UNK_2C3
+	setflag FLAG_HIDE_SAFFRON_DOJO_JASMINE
 	goto _0247
 
 _0243:
-	clearflag FLAG_UNK_2C3
+	clearflag FLAG_HIDE_SAFFRON_DOJO_JASMINE
 _0247:
 	compare VAR_TEMP_x400F, 0
 	goto_if_ne _025E
-	setflag FLAG_UNK_2C4
+	setflag FLAG_HIDE_SAFFRON_DOJO_PRYCE
 	goto _0262
 
 _025E:
-	clearflag FLAG_UNK_2C4
+	clearflag FLAG_HIDE_SAFFRON_DOJO_PRYCE
 _0262:
 	end
 
@@ -190,7 +190,7 @@ scr_seq_T11R0101_004:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 17
-	setflag FLAG_UNK_2B5
+	setflag FLAG_HIDE_SAFFRON_DOJO_WHITNEY
 	hide_person obj_T11R0101_gsleader3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -220,7 +220,7 @@ scr_seq_T11R0101_005:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 26
-	setflag FLAG_UNK_2B6
+	setflag FLAG_HIDE_SAFFRON_DOJO_JANINE
 	hide_person obj_T11R0101_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -250,7 +250,7 @@ scr_seq_T11R0101_006:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 27
-	setflag FLAG_UNK_2B7
+	setflag FLAG_HIDE_SAFFRON_DOJO_CLAIR
 	hide_person obj_T11R0101_gsleader8
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -280,7 +280,7 @@ scr_seq_T11R0101_007:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 28
-	setflag FLAG_UNK_2B8
+	setflag FLAG_HIDE_SAFFRON_DOJO_ERIKA
 	hide_person obj_T11R0101_gsleader12
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -310,7 +310,7 @@ scr_seq_T11R0101_008:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 29
-	setflag FLAG_UNK_2B9
+	setflag FLAG_HIDE_SAFFRON_DOJO_MISTY
 	hide_person obj_T11R0101_gsleader11
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -340,7 +340,7 @@ scr_seq_T11R0101_009:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 30
-	setflag FLAG_UNK_2BA
+	setflag FLAG_HIDE_SAFFRON_DOJO_BLAINE
 	hide_person obj_T11R0101_gsleader15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -370,7 +370,7 @@ scr_seq_T11R0101_010:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 31
-	setflag FLAG_UNK_2BB
+	setflag FLAG_HIDE_SAFFRON_DOJO_BLUE
 	hide_person obj_T11R0101_gsleader16
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -400,7 +400,7 @@ scr_seq_T11R0101_011:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 32
-	setflag FLAG_UNK_2BC
+	setflag FLAG_HIDE_SAFFRON_DOJO_CHUCK
 	hide_person obj_T11R0101_gsleader5
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -430,7 +430,7 @@ scr_seq_T11R0101_012:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 33
-	setflag FLAG_UNK_2BD
+	setflag FLAG_HIDE_SAFFRON_DOJO_BROCK
 	hide_person obj_T11R0101_gsleader14
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -460,7 +460,7 @@ scr_seq_T11R0101_013:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 34
-	setflag FLAG_UNK_2BE
+	setflag FLAG_HIDE_SAFFRON_DOJO_BUGSY
 	hide_person obj_T11R0101_gsleader2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -490,7 +490,7 @@ scr_seq_T11R0101_014:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 35
-	setflag FLAG_UNK_2BF
+	setflag FLAG_HIDE_SAFFRON_DOJO_SABRINA
 	hide_person obj_T11R0101_gsleader10
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -520,7 +520,7 @@ scr_seq_T11R0101_015:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 18
-	setflag FLAG_UNK_2C0
+	setflag FLAG_HIDE_SAFFRON_DOJO_FALKNER
 	hide_person obj_T11R0101_gsleader1
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -550,7 +550,7 @@ scr_seq_T11R0101_016:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 36
-	setflag FLAG_UNK_2C1
+	setflag FLAG_HIDE_SAFFRON_DOJO_LT__SURGE
 	hide_person obj_T11R0101_gsleader9
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -580,7 +580,7 @@ scr_seq_T11R0101_017:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 37
-	setflag FLAG_UNK_2C2
+	setflag FLAG_HIDE_SAFFRON_DOJO_MORTY
 	hide_person obj_T11R0101_gsleader4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -610,7 +610,7 @@ scr_seq_T11R0101_018:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 38
-	setflag FLAG_UNK_2C3
+	setflag FLAG_HIDE_SAFFRON_DOJO_JASMINE
 	hide_person obj_T11R0101_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -640,7 +640,7 @@ scr_seq_T11R0101_019:
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	scrcmd_462 39
-	setflag FLAG_UNK_2C4
+	setflag FLAG_HIDE_SAFFRON_DOJO_PRYCE
 	hide_person obj_T11R0101_gsleader7
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

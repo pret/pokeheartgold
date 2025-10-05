@@ -1909,7 +1909,7 @@ sub_0205DA1C: ; 0x0205DA1C
 	add r4, r2, #0
 	add r5, r1, #0
 	add r1, r4, #0
-	bl sub_0205C79C
+	bl PlayerAvatar_SetHeldMovement
 	add r0, r5, #0
 	add r1, r4, #0
 	bl MapObject_SetHeldMovement
@@ -2513,7 +2513,7 @@ _0205DE92:
 	thumb_func_start sub_0205DE98
 sub_0205DE98: ; 0x0205DE98
 	push {r3, lr}
-	bl sub_0205C7A0
+	bl PlayerAvatar_GetHeldMovement  // get unk8
 	sub r0, #0x58
 	cmp r0, #3
 	bhi _0205DEBC

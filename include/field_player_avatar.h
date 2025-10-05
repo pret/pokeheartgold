@@ -25,8 +25,8 @@ typedef struct PlayerSaveData {
 
 struct PlayerAvatar {
     PlayerAvatarFlags flags;
-    u32 transFlag;
-    u32 unk8;
+    u32 transFlag; // 🏳️‍⚧️
+    u32 heldMovement;
     u32 unkc;
     u32 unk10;
     u32 unk14;
@@ -98,8 +98,8 @@ void sub_0205C78C(PlayerAvatar *avatar, u32 unkA);
 u32 sub_0205C790(PlayerAvatar *avatar);
 void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData);
 PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar);
-void sub_0205C79C(PlayerAvatar *avatar, u32 unkA);
-u32 sub_0205C7A0(PlayerAvatar *avatar);
+void PlayerAvatar_SetHeldMovement(PlayerAvatar *avatar, u32 heldMovement);
+u32 PlayerAvatar_GetHeldMovement(PlayerAvatar *avatar);
 u32 sub_0205C7A4(PlayerAvatar *avatar);
 void sub_0205C7A8(PlayerAvatar *avatar);
 void sub_0205C7B4(PlayerAvatar *avatar);

@@ -8,7 +8,7 @@
       "spriteId": "SPRITE_CHAMPION",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2DD",
+      "eventFlag": "FLAG_HIDE_SINJOH_CABIN_CYNTHIA",
       "scriptId": "_EV_scr_seq_D51R0301_000 + 1",
       "facingDirection": 2,
       "xRange": 0,

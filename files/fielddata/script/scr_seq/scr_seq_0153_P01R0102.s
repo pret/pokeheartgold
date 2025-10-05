@@ -42,7 +42,7 @@ _0080:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _00C1
-	clearflag FLAG_UNK_2C9
+	clearflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	end
 
 _0097:
@@ -52,11 +52,11 @@ _0097:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _00C1
-	clearflag FLAG_UNK_2C9
+	clearflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	end
 
 _00C1:
-	setflag FLAG_UNK_2C9
+	setflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	end
 
 scr_seq_P01R0102_002:
@@ -239,7 +239,7 @@ _02C3:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2C9
+	setflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	hide_person obj_P01R0102_gsleader10
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

@@ -42,8 +42,8 @@
 .public sub_0205C774
 .public sub_0205C778
 .public PlayerAvatar_GetPlayerSaveData
-.public sub_0205C79C
-.public sub_0205C7A0
+.public PlayerAvatar_SetHeldMovement
+.public PlayerAvatar_GetHeldMovement
 .public sub_0205C7A4
 .public sub_0205C7A8
 .public sub_0205C7B4

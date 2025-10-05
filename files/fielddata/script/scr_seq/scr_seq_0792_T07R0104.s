@@ -32,8 +32,8 @@ _005B:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _007A
-	clearflag FLAG_UNK_260
-	clearflag FLAG_UNK_2E2
+	clearflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
+	clearflag FLAG_HIDE_CELADON_DEPT_STORE_JANINE
 	goto _0080
 
 _007A:
@@ -49,8 +49,8 @@ _0082:
 	get_weekday VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_ne _00BA
-	clearflag FLAG_UNK_260
-	setflag FLAG_UNK_2E2
+	clearflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_JANINE
 	set_object_facing obj_T07R0104_gsleader1, DIR_SOUTH
 	goto _00C0
 
@@ -61,8 +61,8 @@ _00C0:
 	end
 
 _00C2:
-	setflag FLAG_UNK_260
-	setflag FLAG_UNK_2E2
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_JANINE
 	end
 
 _00CC:
@@ -109,7 +109,7 @@ _013F:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_260
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
 	hide_person obj_T07R0104_gsleader1
 	hide_person obj_T07R0104_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2

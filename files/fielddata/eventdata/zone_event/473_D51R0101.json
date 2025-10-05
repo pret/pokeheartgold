@@ -18,7 +18,7 @@
       "spriteId": "SPRITE_MOUNT_2",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_2DB",
+      "eventFlag": "FLAG_HIDE_SINJOH_EXTERIOR_HIKER",
       "scriptId": "_EV_scr_seq_D51R0101_001 + 1",
       "facingDirection": 3,
       "xRange": 0,

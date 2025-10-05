@@ -81,7 +81,7 @@ scr_seq_D51R0101_001:
 	apply_movement obj_D51R0101_mount_2, _0114
 	wait_movement
 	hide_person obj_D51R0101_mount_2
-	setflag FLAG_UNK_2DB
+	setflag FLAG_HIDE_SINJOH_EXTERIOR_HIKER
 	scrcmd_311 77
 	scrcmd_308 77
 	scrcmd_309 77
