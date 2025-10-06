@@ -56,7 +56,7 @@ _0087:
 _00A4:
 	clearflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 _00A8:
-	setvar VAR_UNK_40E5, 2
+	setvar VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	mystery_gift SCR_MG_END
 	end
 

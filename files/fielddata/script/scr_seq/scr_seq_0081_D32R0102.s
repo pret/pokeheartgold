@@ -18,7 +18,7 @@
 	scrdef_end
 
 scr_seq_D32R0102_002:
-	compare VAR_UNK_40E5, 2
+	compare VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	goto_if_eq _0035
 	end
 
@@ -48,7 +48,7 @@ scr_seq_D32R0102_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40E5, 2
+	compare VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	goto_if_eq _009E
 	npc_msg msg_0104_D32R0102_00002
 	wait_button_or_walk_away
@@ -113,8 +113,8 @@ _0183:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setvar VAR_UNK_40E5, 1
-	setflag FLAG_UNK_25B
+	setvar VAR_SCENE_BATTLE_FRONTIER_ACCESS, 1
+	setflag FLAG_HIDE_ROUTE_40_MAN_QUEUING_FOR_BATTLE_FRONTIER
 	end
 
 	.balign 4, 0

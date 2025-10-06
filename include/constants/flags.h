@@ -267,7 +267,7 @@
 #define FLAG_GOT_RARE_CANDY_FROM_FAN_CLUB_CHAIRMAN      0xF8
 #define FLAG_SNORLAX_MEET                               0xF9
 #define FLAG_UNK_0FA                                    0xFA
-#define FLAG_UNK_0FB                                    0xFB
+#define FLAG_TALKED_TO_ROUTE_40_MAN_SLEEPING            0xFB
 #define FLAG_UNK_0FC                                    0xFC
 #define FLAG_GOT_ALL_FOUR_FRONTIER_PRINTS               0xFD
 #define FLAG_MET_HALL_STREAK_TRACKER_DUDE               0xFE
@@ -622,11 +622,11 @@
 #define FLAG_HIDE_GUY_BLOCKING_KANTO_UNDERGROUND_PATH               0x258
 #define FLAG_HIDE_LAVENDER_RADIO_TOWER_DIRECTOR                     0x259
 #define FLAG_HIDE_CINNABAR_ISLAND_BLUE                              0x25A
-#define FLAG_UNK_25B                                                0x25B
+#define FLAG_HIDE_ROUTE_40_MAN_QUEUING_FOR_BATTLE_FRONTIER          0x25B
 #define FLAG_HIDE_MT_MOON_RIVAL                                     0x25C
 #define FLAG_HIDE_CELADON_CITY_ERIKA                                0x25D
-#define FLAG_UNK_25E                                                0x25E
-#define FLAG_UNK_25F                                                0x25F
+#define FLAG_HIDE_UNUSED_25E                                        0x25E
+#define FLAG_HIDE_MT_SILVER_RED                                     0x25F
 #define FLAG_HIDE_CELADON_DEPT_STORE_FALKNER                        0x260
 #define FLAG_HIDE_ROUTE_11_SNORLAX                                  0x261
 #define FLAG_HIDE_DIGLETTS_CAVE_BROCK                               0x262

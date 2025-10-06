@@ -247,7 +247,7 @@
 #define VAR_UNK_40E2                                0x40E2
 #define VAR_SCENE_SAFARI_ZONE_ENTRANCE              0x40E3
 #define VAR_UNK_40E4                                0x40E4
-#define VAR_UNK_40E5                                0x40E5
+#define VAR_SCENE_BATTLE_FRONTIER_ACCESS            0x40E5
 #define VAR_UNK_40E6                                0x40E6
 #define VAR_SCENE_ROCKET_UNDERGROUND                0x40E7
 #define VAR_UNK_40E8                                0x40E8
@@ -323,7 +323,7 @@
 #define VAR_UNK_412E                                0x412E
 #define VAR_UNK_412F                                0x412F
 #define VAR_UNK_4130                                0x4130
-#define VAR_UNK_4131                                0x4131
+#define VAR_SCENE_OAKS_LAB                          0x4131
 #define VAR_UNK_4132                                0x4132
 #define VAR_UNK_4133                                0x4133
 #define VAR_MIDGAME_BADGES                          0x4134

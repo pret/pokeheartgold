@@ -21,7 +21,7 @@
 
 scr_seq_D32R0101_011:
 	setflag FLAG_SYS_VISITED_UNION_CAVE
-	setvar VAR_UNK_40E5, 2
+	setvar VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	end
 
 scr_seq_D32R0101_000:

@@ -8,7 +8,7 @@
       "spriteId": "SPRITE_RED",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_25F",
+      "eventFlag": "FLAG_HIDE_MT_SILVER_RED",
       "scriptId": "_EV_scr_seq_D41R0108_000 + 1",
       "facingDirection": 0,
       "xRange": 0,

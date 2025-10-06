@@ -10,7 +10,7 @@
 	.byte 0
 
 scr_seq_T01R0301_map_scripts_2:
-	.short VAR_UNK_4131, 1, _EV_scr_seq_T01R0301_006 + 1
+	.short VAR_SCENE_OAKS_LAB, 1, _EV_scr_seq_T01R0301_006 + 1
 	.short 0
 
 	.balign 4, 0

@@ -112,7 +112,7 @@ _01B4:
 	goto_if_set FLAG_SYS_GAME_CLEAR, _01C3
 	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 _01C3:
-	clearflag FLAG_UNK_25F
+	clearflag FLAG_HIDE_MT_SILVER_RED
 	return
 
 _01C9:

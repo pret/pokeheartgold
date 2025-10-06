@@ -8,7 +8,7 @@
       "spriteId": "SPRITE_GSMIDDLEMAN1",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_25B",
+      "eventFlag": "FLAG_HIDE_ROUTE_40_MAN_QUEUING_FOR_BATTLE_FRONTIER",
       "scriptId": "_EV_scr_seq_W40R0101_000 + 1",
       "facingDirection": 0,
       "xRange": 0,

@@ -11,7 +11,7 @@
 	scrdef_end
 
 scr_seq_W40R0101_001:
-	compare VAR_UNK_40E5, 1
+	compare VAR_SCENE_BATTLE_FRONTIER_ACCESS, 1
 	goto_if_ge _0036
 	goto_if_set FLAG_SYS_GAME_CLEAR, _0028
 	end
@@ -21,13 +21,13 @@ _0028:
 	end
 
 _0036:
-	setvar VAR_UNK_40E5, 2
+	setvar VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	end
 
 scr_seq_W40R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
-	goto_if_set FLAG_UNK_0FB, _00BE
+	goto_if_set FLAG_TALKED_TO_ROUTE_40_MAN_SLEEPING, _00BE
 	goto_if_set FLAG_SYS_GAME_CLEAR, _00B1
 	get_player_facing VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 3
@@ -56,7 +56,7 @@ _00B1:
 	npc_msg msg_0745_W40R0101_00001
 	closemsg
 	releaseall
-	setflag FLAG_UNK_0FB
+	setflag FLAG_TALKED_TO_ROUTE_40_MAN_SLEEPING
 	end
 
 _00BE:
