@@ -508,7 +508,7 @@ _0817:
 	return
 
 _0829:
-	scrcmd_420 59
+	inc_game_stat GAME_STAT_UNK59
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_BATTLE_TOWER_ELEVATOR, 0, 3, 6, DIR_NORTH

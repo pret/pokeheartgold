@@ -465,7 +465,7 @@ _06BC:
 	call_if_eq _0791
 	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2
 	call_if_eq _07A5
-	scrcmd_420 59
+	inc_game_stat GAME_STAT_UNK59
 	scrcmd_436
 	scrcmd_627 9
 	compare VAR_BATTLE_HALL_CHALLENGE_TYPE, 2

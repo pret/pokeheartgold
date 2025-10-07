@@ -24,7 +24,7 @@ scr_seq_0166_000:
 	scrcmd_609
 	lockall
 	setvar VAR_SPECIAL_RESULT, 7
-	clearflag FLAG_UNK_966
+	clearflag FLAG_SYS_UNK_966
 	setvar VAR_UNK_4133, 0
 	releaseall
 	end
@@ -95,7 +95,7 @@ _00DA:
 _0118:
 	scrcmd_283
 	setvar VAR_UNK_4133, 0
-	clearflag FLAG_UNK_966
+	clearflag FLAG_SYS_UNK_966
 	npc_msg msg_0043_00011
 	wait_button_or_walk_away
 	closemsg
@@ -248,7 +248,7 @@ _038D:
 	goto _03B4
 	end
 _0395:
-	setflag FLAG_UNK_966
+	setflag FLAG_SYS_UNK_966
 	setvar VAR_UNK_4133, 5
 	goto _03B4
 	end
@@ -293,7 +293,7 @@ _03FE:
 	scrcmd_587
 	wait 10, VAR_SPECIAL_RESULT
 	scrcmd_235 VAR_TEMP_x4002
-	clearflag FLAG_UNK_966
+	clearflag FLAG_SYS_UNK_966
 	setvar VAR_UNK_4133, 0
 	goto _0443
 

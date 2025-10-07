@@ -178,15 +178,15 @@ u16 GetOverriddenMapMusic(SaveVarsFlags *state, u32 map_no) {
 }
 
 void SetFlag966(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_UNK_966);
+    SetScriptFlag(state, FLAG_SYS_UNK_966);
 }
 
 void ClearFlag966(SaveVarsFlags *state) {
-    ClearScriptFlag(state, FLAG_UNK_966);
+    ClearScriptFlag(state, FLAG_SYS_UNK_966);
 }
 
 BOOL CheckFlag966(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_966);
+    return CheckScriptFlag(state, FLAG_SYS_UNK_966);
 }
 
 BOOL CheckMetBill(SaveVarsFlags *state) {

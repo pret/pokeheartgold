@@ -644,8 +644,8 @@
 #define FLAG_HIDE_MT_MOON_SQUARE_CLEFAIRY                           0x26E
 #define FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY                   0x26F
 #define FLAG_HIDE_ROUTE_22_JANINE                                   0x270
-#define FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN                       0x271
-#define FLAG_AZALEA_HARASSED_CIVILIAN                               0x272
+#define FLAG_HIDE_AZALEA_ROCKET_HARASSING_CIVILIAN                  0x271
+#define FLAG_HIDE_AZALEA_HARASSED_CIVILIAN                          0x272
 #define FLAG_HIDE_BUG_CONTESTANT_BUG_CATCHER_DON                    0x273
 #define FLAG_HIDE_BUG_CONTESTANT_BUG_CATCHER_ED                     0x274
 #define FLAG_HIDE_BUG_CONTESTANT_ACE_TRAINER_ABBY                   0x275
@@ -1710,8 +1710,8 @@
 #define FLAG_SYS_STRENGTH_ACTIVE                          0x962
 #define FLAG_UNK_963                                      0x963
 #define FLAG_SYS_GAME_CLEAR                               0x964
-#define FLAG_UNK_965                                      0x965
-#define FLAG_UNK_966                                      0x966
+#define FLAG_UNK_965                                      0x965 // set by an unused scrcmd
+#define FLAG_SYS_UNK_966                                  0x966
 #define FLAG_SYS_SAFARI                                   0x967
 #define FLAG_UNK_968                                      0x968
 #define FLAG_SYS_ROCKET_COSTUME                           0x969

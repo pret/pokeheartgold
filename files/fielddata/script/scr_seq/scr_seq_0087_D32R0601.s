@@ -338,7 +338,7 @@ _050A:
 	call_if_eq _05DF
 	compare VAR_UNK_4149, 2
 	call_if_eq _05F3
-	scrcmd_420 59
+	inc_game_stat GAME_STAT_UNK59
 	scrcmd_436
 	scrcmd_627 15
 	compare VAR_UNK_4149, 2

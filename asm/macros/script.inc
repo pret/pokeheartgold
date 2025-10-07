@@ -2399,19 +2399,19 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_420 arg0
+	.macro inc_game_stat arg0
 	.short 420
 	.short \arg0
 	.endm
 
-	.macro scrcmd_421 arg0, arg1, arg2
+	.macro get_game_stat arg0, arg1, arg2
 	.short 421
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_422 arg0, arg1, arg2, arg3
+	.macro update_game_stat arg0, arg1, arg2, arg3
 	.short 422
 	.short \arg0
 	.short \arg1

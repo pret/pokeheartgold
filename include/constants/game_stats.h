@@ -21,9 +21,11 @@
 #define GAME_STAT_BATTLE_TOWER_WIN_COUNT    30
 #define GAME_STAT_OPPONENT_MON_FAINTED      42
 #define GAME_STAT_UNK46                     46
+#define GAME_STAT_UNK50                     50
+#define GAME_STAT_UNK59                     59
 #define GAME_STAT_BATTLE_POINTS             69
 #define GAME_STAT_UNK70                     70
-#define GAME_STAT_UNK74                     74
+#define GAME_STAT_ENTERED_HALL_OF_FAME      74
 #define GAME_STAT_UNK77                     77
 #define GAME_STAT_UNK79                     79
 #define GAME_STAT_UNK80                     80
@@ -37,6 +39,7 @@
 #define GAME_STAT_UNK98                     98
 #define GAME_STAT_UNK100                    100
 #define GAME_STAT_UNK114                    114
+#define GAME_STAT_FOSSIL_REVIVE             116
 
 #define NUM_GAME_STATS_WORD 72
 #define NUM_GAME_STATS      149

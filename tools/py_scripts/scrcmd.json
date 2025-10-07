@@ -2600,13 +2600,13 @@
       ]
     },
     {
-      "name": "scrcmd_420",
+      "name": "inc_game_stat",
       "args": [
         2
       ]
     },
     {
-      "name": "scrcmd_421",
+      "name": "get_game_stat",
       "args": [
         2,
         2,
@@ -2614,7 +2614,7 @@
       ]
     },
     {
-      "name": "scrcmd_422",
+      "name": "update_game_stat",
       "args": [
         2,
         2,

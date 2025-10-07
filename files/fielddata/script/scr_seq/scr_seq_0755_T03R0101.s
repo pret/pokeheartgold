@@ -358,7 +358,7 @@ _0575:
 	npc_msg msg_0464_T03R0101_00008
 	wait_fanfare
 	give_mon VAR_UNK_407F, 20, 0, 0, 0, VAR_SPECIAL_RESULT
-	scrcmd_420 116
+	inc_game_stat GAME_STAT_FOSSIL_REVIVE
 	setvar VAR_UNK_407F, 0
 	npc_msg msg_0464_T03R0101_00009
 	touchscreen_menu_hide
@@ -374,7 +374,7 @@ _0575:
 	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _05E8
-	scrcmd_420 50
+	inc_game_stat GAME_STAT_UNK50
 _05E8:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade

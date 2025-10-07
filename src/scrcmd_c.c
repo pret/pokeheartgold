@@ -3333,13 +3333,13 @@ BOOL ScrCmd_427(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_420(ScriptContext *ctx) {
+BOOL ScrCmd_IncGameStat(ScriptContext *ctx) {
     u16 statno = ScriptReadHalfword(ctx);
     GameStats_Inc(Save_GameStats_Get(ctx->fieldSystem->saveData), statno);
     return FALSE;
 }
 
-BOOL ScrCmd_421(ScriptContext *ctx) {
+BOOL ScrCmd_GetGameStat(ScriptContext *ctx) {
     u16 r7 = ScriptReadHalfword(ctx);
     u16 r4 = ScriptReadHalfword(ctx);
     u16 r6 = ScriptReadHalfword(ctx);
@@ -3351,7 +3351,7 @@ BOOL ScrCmd_421(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_422(ScriptContext *ctx) {
+BOOL ScrCmd_UpdateGameStat(ScriptContext *ctx) {
     u16 statIdx = ScriptReadHalfword(ctx);
     u16 value_hi = ScriptReadHalfword(ctx);
     u16 value_lo = ScriptReadHalfword(ctx);

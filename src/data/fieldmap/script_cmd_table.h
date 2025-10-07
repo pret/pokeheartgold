@@ -419,9 +419,9 @@ BOOL ScrCmd_416(ScriptContext *ctx);
 BOOL ScrCmd_417(ScriptContext *ctx);
 BOOL ScrCmd_418(ScriptContext *ctx);
 BOOL ScrCmd_419(ScriptContext *ctx);
-BOOL ScrCmd_420(ScriptContext *ctx);
-BOOL ScrCmd_421(ScriptContext *ctx);
-BOOL ScrCmd_422(ScriptContext *ctx);
+BOOL ScrCmd_IncGameStat(ScriptContext *ctx);
+BOOL ScrCmd_GetGameStat(ScriptContext *ctx);
+BOOL ScrCmd_UpdateGameStat(ScriptContext *ctx);
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx);
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx);
 BOOL ScrCmd_ShowCertificate(ScriptContext *ctx);
@@ -1274,9 +1274,9 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_417,
     ScrCmd_418,
     ScrCmd_419,
-    ScrCmd_420,
-    ScrCmd_421,
-    ScrCmd_422,
+    ScrCmd_IncGameStat,
+    ScrCmd_GetGameStat,
+    ScrCmd_UpdateGameStat,
     ScrCmd_CheckJohtoDexComplete,
     ScrCmd_CheckNationalDexComplete,
     ScrCmd_ShowCertificate,
