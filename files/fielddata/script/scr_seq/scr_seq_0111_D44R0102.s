@@ -14,32 +14,32 @@
 	scrdef_end
 
 scr_seq_D44R0102_002:
-	goto_if_unset FLAG_UNK_189, _002B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _002B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _002B:
-	compare VAR_UNK_40FC, 2
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 2
 	goto_if_ge _0047
-	compare VAR_UNK_40FC, 1
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 1
 	call_if_eq _015E
 	end
 
 _0047:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0062
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL_TRAINING
 	goto _007D
 
 _0062:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0079
-	clearflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+	clearflag FLAG_HIDE_DRAGONS_DEN_RIVAL_TRAINING
 	goto _007D
 
 _0079:
-	setflag FLAG_HIDE_CHAMPIONS_ROOM_RETREAT
+	setflag FLAG_HIDE_DRAGONS_DEN_RIVAL_TRAINING
 _007D:
 	check_registered_phone_number PHONE_CONTACT_CLAIR, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
@@ -106,19 +106,19 @@ _0158:
 
 _015E:
 	get_starter_choice VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 152
+	compare VAR_TEMP_x4000, SPECIES_CHIKORITA
 	goto_if_ne _017B
-	setvar VAR_OBJ_0, 1048
+	setvar VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_TYPHLOSION
 	goto _019A
 
 _017B:
-	compare VAR_TEMP_x4000, 155
+	compare VAR_TEMP_x4000, SPECIES_CYNDAQUIL
 	goto_if_ne _0194
-	setvar VAR_OBJ_0, 1049
+	setvar VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_FERALIGATR
 	goto _019A
 
 _0194:
-	setvar VAR_OBJ_0, 1047
+	setvar VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_MEGANIUM
 _019A:
 	return
 
@@ -178,7 +178,7 @@ _0287:
 _0297:
 	wait_movement
 	hide_person obj_D44R0102_gsleader8
-	setvar VAR_UNK_40C4, 2
+	setvar VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 2
 	releaseall
 	end
 
@@ -244,13 +244,13 @@ scr_seq_D44R0102_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_0E2, _0340
+	goto_if_set FLAG_SPOKE_TO_RIVAL_IN_DRAGONS_DEN, _0340
 	buffer_players_name 0
 	buffer_rivals_name 1
 	npc_msg msg_0129_D44R0102_00007
 	wait_button_or_walk_away
 	closemsg
-	setflag FLAG_UNK_0E2
+	setflag FLAG_SPOKE_TO_RIVAL_IN_DRAGONS_DEN
 	releaseall
 	end
 
@@ -327,7 +327,7 @@ _03FC:
 	goto_if_eq _0468
 	npc_msg msg_0129_D44R0102_00030
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 83
@@ -335,7 +335,7 @@ _03FC:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0129_D44R0102_00031
 	wait_button_or_walk_away
 	closemsg
@@ -418,13 +418,13 @@ _04B2:
 	apply_movement obj_player, _0770
 	apply_movement obj_D44R0102_gsleader8_2, _0718
 	wait_movement
-	compare VAR_OBJ_0, 1048
+	compare VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_TYPHLOSION
 	goto_if_ne _05AC
 	multi_battle TRAINER_PARTNER_RIVAL_2, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
 
 _05AC:
-	compare VAR_OBJ_0, 1049
+	compare VAR_OBJ_0, SPRITE_FOLLOWER_MON_STATIC_FERALIGATR
 	goto_if_ne _05C8
 	multi_battle TRAINER_PARTNER_RIVAL_3, TRAINER_CHAMPION_LANCE_3, TRAINER_LEADER_CLAIR_CLAIR_3, 1
 	goto _05D1
@@ -463,7 +463,7 @@ _05D1:
 	wait_fade
 	apply_movement obj_partner_poke, _06DC
 	wait_movement
-	setvar VAR_UNK_40FC, 2
+	setvar VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 2
 	setvar VAR_UNK_4119, 1
 	releaseall
 	end

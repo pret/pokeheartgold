@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D11R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D11R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d11r0101_escape_rope",

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0212.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D24R0212.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D24R0212_001 + 1",
@@ -43,9 +45,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0212_HEAL_POWDER",
       "scriptId": "std_itemball_d24r0212_heal_powder",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
@@ -60,14 +59,11 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0212_ENERGYPOWDER",
       "scriptId": "std_itemball_d24r0212_energypowder",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 8,
       "z": 8,
-      "y": 655360
+      "y": 10
     },
     {
       "id": "obj_D24R0212_monstarball_3",
@@ -77,9 +73,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0212_ORAN_BERRY",
       "scriptId": "std_itemball_d24r0212_oran_berry",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
@@ -94,9 +87,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0212_PECHA_BERRY",
       "scriptId": "std_itemball_d24r0212_pecha_berry",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 8,
@@ -122,7 +112,7 @@
       "h": 1,
       "y": 0,
       "val": 0,
-      "var": "VAR_UNK_40CC"
+      "var": "VAR_SCENE_ALPH_NORTHEAST_TREASURE_ROOM_HOLE"
     }
   ]
 }

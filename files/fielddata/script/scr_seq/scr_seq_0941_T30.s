@@ -1,6 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T30.h"
 #include "msgdata/msg/msg_0629_T30.h"
+#include "msgdata/msg/msg_0752.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -25,24 +27,24 @@
 	scrdef_end
 
 scr_seq_T30_005:
-	compare VAR_UNK_40C4, 1
+	compare VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 1
 	goto_if_ne _005D
 	setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
-	setvar VAR_UNK_40C4, 2
+	setvar VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 2
 _005D:
-	goto_if_unset FLAG_UNK_189, _006E
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _006E
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _006E:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _0089
 	clearflag FLAG_HIDE_CAMERON
 	goto _00A4
 
 _0089:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _00A0
 	clearflag FLAG_HIDE_CAMERON
 	goto _00A4
@@ -51,13 +53,13 @@ _00A0:
 	setflag FLAG_HIDE_CAMERON
 _00A4:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _00BF
-	clearflag FLAG_UNK_204
+	clearflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_IN_FRONT
 	goto _00C3
 
 _00BF:
-	setflag FLAG_UNK_204
+	setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_IN_FRONT
 _00C3:
 	end
 
@@ -79,21 +81,21 @@ scr_seq_T30_006:
 	goto_if_eq _01B7
 	goto_if_set FLAG_GOT_SOFT_SAND_FROM_SANTOS, _0199
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SATURDAY
 	goto_if_eq _014A
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 23
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00023
 	goto _0191
 
 _014A:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 20
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00020
 	goto_if_no_item_space ITEM_SOFT_SAND, 1, _01AD
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_SOFT_SAND_FROM_SANTOS
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 21
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00021
 _0191:
 	wait_button_or_walk_away
 	closemsg
@@ -102,7 +104,7 @@ _0191:
 
 _0199:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 22
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00022
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -116,17 +118,17 @@ _01AD:
 
 _01B7:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 6
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SATURDAY
 	goto_if_eq _01DA
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 23
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00023
 	goto _0191
 
 _01DA:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 48
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00048
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 50
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00050
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_SNOOZE
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -138,7 +140,7 @@ _01DA:
 
 _0209:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 49
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00049
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -146,7 +148,7 @@ _0209:
 
 _021D:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 51
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00051
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -204,7 +206,7 @@ scr_seq_T30_016:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -214,7 +216,7 @@ scr_seq_T30_016:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03D5
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -246,16 +248,16 @@ _0360:
 	apply_movement obj_partner_poke, _0430
 	wait_movement
 _0387:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 44
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -263,7 +265,7 @@ _0387:
 
 _03C1:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -271,7 +273,7 @@ _03C1:
 
 _03D5:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

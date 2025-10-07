@@ -25,7 +25,7 @@ u16 PhoneCall_GetScriptId_Baoba(PokegearPhoneCallContext *ctx, PokegearPhoneCall
         case PHONE_SCRIPT_143:
         case PHONE_SCRIPT_144:
             SafariZone_IncObjectUnlockLevel(safariZone, 1);
-            sub_0202F784(safariZone, Save_PlayerData_GetIGTAddr(ctx->saveData));
+            SafariZone_SetLastTestCompletionIGT(safariZone, Save_PlayerData_GetIGTAddr(ctx->saveData));
             break;
         case PHONE_SCRIPT_145:
         case PHONE_SCRIPT_146:

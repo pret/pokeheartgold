@@ -8,11 +8,11 @@
 #include "math_util.h"
 #include "sys_flags.h"
 
-u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId);
+static u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId);
 
 u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
     ALIGN(4)
-    static const u16 ov101_021F86C8[] = {
+    static const u16 sGenderSpecificScriptIDs[] = {
         PHONE_SCRIPT_102,
         PHONE_SCRIPT_101,
     };
@@ -23,7 +23,7 @@ u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhone
     }
     if (state->phoneBookEntry->mapId == ctx->playerMapSec) {
         state->scriptType = 0;
-        return ov101_021F86C8[ctx->playerGender];
+        return sGenderSpecificScriptIDs[ctx->playerGender];
     }
     state->scriptType = 10;
     return PHONE_SCRIPT_NONE;
@@ -57,30 +57,30 @@ BOOL GearPhoneCall_EthanLyra(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-u8 ov101_021F3D34(PokegearPhoneCallContext *ctx) {
+u8 GearPhoneCall_EthanLyra_GetSpecialMessage(PokegearPhoneCallContext *ctx) {
     int i;
     u8 count;
     u8 *ptr;
     u8 unlockLevel;
-    u8 sp0[4];
+    u8 filterFlags[4];
 
     count = 0;
     unlockLevel = Pokegear_GetMapUnlockLevel(SaveData_Pokegear_Get(ctx->saveData));
-    sp0[0] = 1;
-    if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_UNK25)) {
-        sp0[1] = 1; // 2D 2E 48
+    filterFlags[0] = 1;
+    if (Save_VarsFlags_FlypointFlagAction(ctx->saveVarsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_ROUTE_47)) {
+        filterFlags[1] = 1; // 2D 2E 48
     } // UB: else, sp0[1] is undefined
     if (unlockLevel != 0) {
-        sp0[2] = 1; // 19 1A 39
+        filterFlags[2] = 1; // 19 1A 39
     } // UB: else, sp0[2] is undefined
     if (unlockLevel > 1) {
-        sp0[3] = 1; // 00-17 1A 2F-37 39
+        filterFlags[3] = 1; // 00-17 1A 2F-37 39
     } // UB: else, sp0[3] is undefined
 
-    ptr = Heap_AllocAtEnd(ctx->heapID, 73);
-    MI_CpuClear8(ptr, 73);
-    for (i = 0; i < 73; ++i) {
-        if (sp0[ov101_021F8760[i]]) {
+    ptr = Heap_AllocAtEnd(ctx->heapID, NELEMS(gPokegearPhone_ChildhoodFriendScriptConditions));
+    MI_CpuClear8(ptr, NELEMS(gPokegearPhone_ChildhoodFriendScriptConditions));
+    for (i = 0; i < (int)NELEMS(gPokegearPhone_ChildhoodFriendScriptConditions); ++i) {
+        if (filterFlags[gPokegearPhone_ChildhoodFriendScriptConditions[i]]) {
             ptr[count++] = i;
         }
     }
@@ -96,17 +96,18 @@ BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         break;
-    case 1:
+    case 1: // greeting
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0662_00007 + state->timeOfDay);
         break;
-    case 2:
+    case 2: // body
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
+        // 50% chance to sample a special message based on where the player has been.
         if ((LCRandom() % 1000) < 500) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0662_00010 + ((LCRandom() % 900) / 300));
         } else {
-            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, ov101_021F3D34(ctx));
+            PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, GearPhoneCall_EthanLyra_GetSpecialMessage(ctx));
         }
         break;
     default:
@@ -121,10 +122,10 @@ BOOL GearPhoneCall_EthanLyra2(PokegearPhoneCallContext *ctx) {
     return FALSE;
 }
 
-u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId) {
+static u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId) {
     int i;
 
-    static const u16 ov101_021F86CC[] = {
+    static const u16 sMapIDs[] = {
         MAP_ROUTE_1,
         MAP_ROUTE_2,
         MAP_ROUTE_3,
@@ -200,8 +201,8 @@ u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId) {
         MAP_SAFARI_ZONE_GATE,
     };
 
-    for (i = 0; i < 73; ++i) {
-        if (mapId == ov101_021F86CC[i]) {
+    for (i = 0; i < (int)NELEMS(sMapIDs); ++i) {
+        if (mapId == sMapIDs[i]) {
             return msg_0662_00013 + i;
         }
     }

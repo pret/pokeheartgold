@@ -154,7 +154,7 @@ scr_seq_D23R0101_002:
 	apply_movement obj_player, _036C
 	wait_movement
 	hide_person obj_D23R0101_gsleader3
-	setflag FLAG_UNK_318
+	setflag FLAG_HIDE_GOLDENROD_CITY_BEAUTY_BLOCKING_GYM
 	releaseall
 	end
 

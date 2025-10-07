@@ -5,8 +5,8 @@
 .public Heap_Free
 .public GF_AssertFail
 .public SaveData_GetPhoneCallPersistentState
-.public sub_0202F01C
-.public sub_0202F050
+.public PhoneCallPersistentState_SetScriptedCallQueuedFlag
+.public PhoneCallPersistentState_ClearScriptedCallQueuedFlag
 .public PhoneCallPersistentState_SafariZoneArrangement_Set
 .public Save_SafariZone_Get
 .public SafariZone_GetAreaSet

@@ -14,7 +14,7 @@
 
 scr_seq_R47_000:
 	setvar VAR_UNK_40EB, 1
-	setflag FLAG_UNK_9C9
+	setflag FLAG_SYS_VISITED_ROUTE_47
 	get_game_version VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 7
 	goto_if_ne _004F
@@ -34,12 +34,12 @@ _0067:
 	goto_if_eq _00E6
 	compare VAR_SCENE_EMBEDDED_TOWER, 5
 	goto_if_ge _00EC
-	goto_if_unset FLAG_UNK_189, _009F
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _009F
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _009F:
-	goto_if_set FLAG_GAME_CLEAR, _00B2
+	goto_if_set FLAG_SYS_GAME_CLEAR, _00B2
 	goto _00E6
 	end
 
@@ -48,7 +48,7 @@ _00B2:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00E6
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 0
+	compare VAR_TEMP_x4002, RTC_WEEK_SUNDAY
 	goto_if_ne _00E0
 	clearflag FLAG_HIDE_ROUTE_47_CHUCK
 	goto _00E4
@@ -182,7 +182,7 @@ scr_seq_R47_004:
 	goto_if_eq _02C0
 	npc_msg msg_0407_R47_00006
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 91
@@ -190,7 +190,7 @@ scr_seq_R47_004:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0407_R47_00007
 	wait_button_or_walk_away
 	closemsg

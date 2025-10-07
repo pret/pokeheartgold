@@ -13,30 +13,30 @@
 	scrdef_end
 
 scr_seq_T09_003:
-	goto_if_unset FLAG_UNK_189, _0027
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0027
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0027:
 	goto_if_set FLAG_UNK_129, _0038
-	setflag FLAG_UNK_27D
+	setflag FLAG_HIDE_CINNABAR_ISLAND_BLAINE
 	end
 
 _0038:
-	setflag FLAG_UNK_25A
+	setflag FLAG_HIDE_CINNABAR_ISLAND_BLUE
 	get_phone_book_rematch PHONE_CONTACT_BLUE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _007B
 	compare VAR_UNK_40FD, 0
 	goto_if_eq _007B
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 5
+	compare VAR_TEMP_x4002, RTC_WEEK_FRIDAY
 	goto_if_ne _0077
-	clearflag FLAG_UNK_25A
+	clearflag FLAG_HIDE_CINNABAR_ISLAND_BLUE
 	goto _007B
 
 _0077:
-	setflag FLAG_UNK_25A
+	setflag FLAG_HIDE_CINNABAR_ISLAND_BLUE
 _007B:
 	check_registered_phone_number PHONE_CONTACT_BLAINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
@@ -49,9 +49,9 @@ _007B:
 
 _00A9:
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 2
+	compare VAR_TEMP_x4002, RTC_WEEK_TUESDAY
 	goto_if_ne _00C4
-	clearflag FLAG_UNK_27D
+	clearflag FLAG_HIDE_CINNABAR_ISLAND_BLAINE
 	goto _00CA
 
 _00C4:
@@ -65,9 +65,9 @@ _00CC:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _0102
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 4
+	compare VAR_TEMP_x4002, RTC_WEEK_THURSDAY
 	goto_if_ne _00FA
-	clearflag FLAG_UNK_27D
+	clearflag FLAG_HIDE_CINNABAR_ISLAND_BLAINE
 	goto _0100
 
 _00FA:
@@ -77,7 +77,7 @@ _0100:
 	end
 
 _0102:
-	setflag FLAG_UNK_27D
+	setflag FLAG_HIDE_CINNABAR_ISLAND_BLAINE
 	end
 
 scr_seq_T09_000:
@@ -160,7 +160,7 @@ _0233:
 _024B:
 	wait_movement
 	hide_person obj_T09_gsleader16
-	setflag FLAG_UNK_25A
+	setflag FLAG_HIDE_CINNABAR_ISLAND_BLUE
 	setflag FLAG_UNK_129
 	setflag FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_LOCKED
 	clearflag FLAG_HIDE_VIRIDIAN_CITY_OLD_MAN_OUTSIDE_GYM_UNLOCKED
@@ -248,7 +248,7 @@ _0304:
 	goto_if_eq _0370
 	npc_msg msg_0519_T09_00006
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 92
@@ -256,7 +256,7 @@ _0304:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0519_T09_00007
 	wait_button_or_walk_away
 	closemsg
@@ -308,7 +308,7 @@ _03CA:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_27D
+	setflag FLAG_HIDE_CINNABAR_ISLAND_BLAINE
 	hide_person obj_T09_gsleader15
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -342,7 +342,7 @@ _0429:
 	goto_if_eq _0495
 	npc_msg msg_0519_T09_00016
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 85
@@ -350,7 +350,7 @@ _0429:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0519_T09_00017
 	wait_button_or_walk_away
 	closemsg

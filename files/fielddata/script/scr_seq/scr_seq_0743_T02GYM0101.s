@@ -21,7 +21,7 @@ scr_seq_T02GYM0101_002:
 	compare VAR_UNK_40FD, 0
 	goto_if_eq _005F
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 5
+	compare VAR_TEMP_x4002, RTC_WEEK_FRIDAY
 	goto_if_ne _0059
 	setflag FLAG_HIDE_VIRIDIAN_GYM_BLUE
 	goto _005D
@@ -54,7 +54,7 @@ scr_seq_T02GYM0101_000:
 	goto_if_eq _0147
 	give_badge BADGE_EARTH
 	addvar VAR_UNK_4135, 1
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	add_special_game_stat SCORE_EVENT_BADGE_GET
 	settrainerflag TRAINER_ACE_TRAINER_M_ARABELLA
 	settrainerflag TRAINER_ACE_TRAINER_F_SALMA

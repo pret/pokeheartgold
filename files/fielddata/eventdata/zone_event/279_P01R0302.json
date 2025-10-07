@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0302.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0302.h"
+  ],
   "objects": [
     {
       "id": "obj_P01R0302_captain",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0302_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
@@ -23,12 +22,9 @@
       "spriteId": "SPRITE_GSBABYGIRL1",
       "movement": 16,
       "type": 0,
-      "eventFlag": "FLAG_UNK_217",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_CAPTAINS_QUARTERS_GRANDDAUGHTER",
       "scriptId": "_EV_scr_seq_P01R0302_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,

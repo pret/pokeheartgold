@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R27.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R27.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R27_002 + 1",
@@ -51,9 +53,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R27_000 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 739,
@@ -68,14 +67,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_MEGAN)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 757,
       "z": 396,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R27_gsman3",
@@ -85,14 +84,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_BLAKE)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 778,
       "z": 397,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R27_gsman2",
@@ -102,14 +101,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_JOSE_2)",
       "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 789,
       "z": 408,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R27_gsman3_2",
@@ -119,14 +118,15 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_BRIAN)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 2,
-      "param2": 0,
       "xRange": 7,
       "yRange": 0,
       "x": 805,
       "z": 399,
-      "y": 0
+      "y": 0,
+      "data": [
+        3,
+        2
+      ]
     },
     {
       "id": "obj_R27_mystery_2",
@@ -136,14 +136,15 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_ELI)",
       "facingDirection": 0,
-      "param0": 2,
-      "param1": 2,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 854,
       "z": 400,
-      "y": 0
+      "y": 0,
+      "data": [
+        2,
+        2
+      ]
     },
     {
       "id": "obj_R27_gswoman3_2",
@@ -153,14 +154,15 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_REENA)",
       "facingDirection": 0,
-      "param0": 2,
-      "param1": 2,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 874,
       "z": 403,
-      "y": 0
+      "y": 0,
+      "data": [
+        2,
+        2
+      ]
     },
     {
       "id": "obj_R27_monstarball",
@@ -170,9 +172,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R27_RARE_CANDY",
       "scriptId": "std_itemball_r27_rare_candy",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 783,
@@ -187,9 +186,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R27_TM02",
       "scriptId": "std_itemball_r27_tm02",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 793,
@@ -204,9 +200,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R27_DESTINY_KNOT",
       "scriptId": "std_itemball_r27_destiny_knot",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 843,

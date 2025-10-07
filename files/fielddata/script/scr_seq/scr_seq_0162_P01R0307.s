@@ -12,13 +12,13 @@
 	scrdef_end
 
 scr_seq_P01R0307_002:
-	compare VAR_UNK_40CB, 4
+	compare VAR_SCENE_SS_AQUA, 4
 	goto_if_ne _0029
-	clearflag FLAG_UNK_219
+	clearflag FLAG_HIDE_SS_AQUA_ENGINE_ROOM_GRANDDAUGHTER
 	goto _002D
 
 _0029:
-	setflag FLAG_UNK_219
+	setflag FLAG_HIDE_SS_AQUA_ENGINE_ROOM_GRANDDAUGHTER
 _002D:
 	end
 
@@ -105,7 +105,7 @@ scr_seq_P01R0307_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40CB, 3
+	compare VAR_SCENE_SS_AQUA, 3
 	goto_if_ge _0148
 	npc_msg msg_0263_P01R0307_00001
 	wait_button_or_walk_away
@@ -156,7 +156,7 @@ _01D0:
 	closemsg
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
-	setvar VAR_UNK_40CB, 5
+	setvar VAR_SCENE_SS_AQUA, 5
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_SS_AQUA_1F_NORTHWEST_ROOMS, 0, 9, 10, DIR_NORTH

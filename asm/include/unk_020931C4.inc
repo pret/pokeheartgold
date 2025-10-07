@@ -6,6 +6,6 @@
 .public sub_0202F1B4
 .public PhoneCallPersistentState_MomGiftQueue_Put
 .public PhoneCallPersistentState_MomGiftQueue_IsFull
-.public sub_0209322C
+.public PhoneCallPersistentState_MomsSavings_TryBuySomething
 .public _s32_div_f
 .public _u32_div_f

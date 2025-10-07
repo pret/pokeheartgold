@@ -22256,7 +22256,7 @@ _02250336:
 	add r0, r7, #0
 	add r1, r5, #0
 	mov r2, #1
-	bl sub_0202BA2C
+	bl FashionCase_HasSpaceForAccessory
 	cmp r0, #0
 	beq _02250364
 	add r0, r7, #0

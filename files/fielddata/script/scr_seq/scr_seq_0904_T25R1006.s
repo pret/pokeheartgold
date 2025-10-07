@@ -16,12 +16,12 @@
 	scrdef_end
 
 scr_seq_T25R1006_006:
-	goto_if_unset FLAG_UNK_189, _0033
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0033
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0033:
-	goto_if_unset FLAG_GAME_CLEAR, _011D
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _011D
 	get_phone_book_rematch PHONE_CONTACT_WHITNEY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _011D
@@ -31,25 +31,25 @@ _0033:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _007F
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _007F:
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _0096
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _0096:
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _00AD
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _00AD:
 	compare VAR_TEMP_x4000, 15
 	goto_if_ne _00C4
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _00CA
 
 _00C4:
@@ -62,19 +62,19 @@ _00CC:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00E7
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _011B
 
 _00E7:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00FE
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _011B
 
 _00FE:
 	compare VAR_TEMP_x4000, 20
 	goto_if_ne _0115
-	clearflag FLAG_UNK_26F
+	clearflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	goto _011B
 
 _0115:
@@ -84,7 +84,7 @@ _011B:
 	end
 
 _011D:
-	setflag FLAG_UNK_26F
+	setflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	end
 
 scr_seq_T25R1006_004:
@@ -187,7 +187,7 @@ _02B5:
 	buffer_int 0, 2
 	npc_msg msg_0597_T25R1006_00012
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _02E4
 	setvar VAR_SPECIAL_x8004, 11
 	setvar VAR_SPECIAL_x8005, 1
@@ -246,7 +246,7 @@ _03AC:
 	buffer_int 0, 1
 	npc_msg msg_0597_T25R1006_00012
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _03DB
 	setvar VAR_SPECIAL_x8004, 329
 	setvar VAR_SPECIAL_x8005, 1
@@ -335,7 +335,7 @@ scr_seq_T25R1006_005:
 	lockall
 	faceplayer
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _0501
 	npc_msg msg_0597_T25R1006_00018
 	goto _0572
@@ -443,7 +443,7 @@ _061B:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_26F
+	setflag FLAG_HIDE_GOLDENROD_DEPT_STORE_6F_WHITNEY
 	hide_person obj_T25R1006_gsleader3
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -477,7 +477,7 @@ _067A:
 	goto_if_eq _06E6
 	npc_msg msg_0597_T25R1006_00031
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 15
@@ -485,7 +485,7 @@ _067A:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0597_T25R1006_00032
 	wait_button_or_walk_away
 	closemsg

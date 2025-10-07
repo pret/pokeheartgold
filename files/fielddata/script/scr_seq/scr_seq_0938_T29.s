@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T29.h"
 #include "msgdata/msg/msg_0626_T29.h"
+#include "msgdata/msg/msg_0752.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -28,59 +29,59 @@
 
 scr_seq_T29_000:
 	goto_if_set FLAG_GOT_RED_SCALE, _007F
-	setflag FLAG_UNK_1FC
-	setflag FLAG_UNK_1FE
+	setflag FLAG_HIDE_LAKE_OF_RAGE_WESLEY
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_ALTON
 	setflag FLAG_MAPTEMP_011
 	setflag FLAG_MAPTEMP_013
 	setflag FLAG_MAPTEMP_014
 	setflag FLAG_MAPTEMP_015
-	setflag FLAG_UNK_289
-	setflag FLAG_UNK_28B
-	setflag FLAG_UNK_28C
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_HEAL
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_MAX_REVIVE
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_RESTORE
 	end
 
 _007F:
 	goto _0115
 
 _0085:
-	compare VAR_UNK_4037, 61993
+	compare VAR_ALTERNATE_LAKE_OF_RAGE, 61993
 	goto_if_eq _00BC
-	setflag FLAG_UNK_1FC
-	setflag FLAG_UNK_1FE
+	setflag FLAG_HIDE_LAKE_OF_RAGE_WESLEY
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_ALTON
 	clearflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
 	setflag FLAG_MAPTEMP_011
 	setflag FLAG_MAPTEMP_013
 	setflag FLAG_MAPTEMP_014
 	setflag FLAG_MAPTEMP_015
-	setflag FLAG_UNK_289
-	setflag FLAG_UNK_28B
-	setflag FLAG_UNK_28C
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_HEAL
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_MAX_REVIVE
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_RESTORE
 	end
 
 _00BC:
-	clearflag FLAG_UNK_1FC
-	clearflag FLAG_UNK_1FE
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_WESLEY
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_ALTON
 	setflag FLAG_HIDE_LAKE_OF_RAGE_FISHERMEN
-	clearflag FLAG_UNK_289
-	clearflag FLAG_UNK_28B
-	clearflag FLAG_UNK_28C
-	goto_if_set FLAG_UNK_146, _00E5
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_HEAL
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_MAX_REVIVE
+	clearflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_RESTORE
+	goto_if_set FLAG_GOT_LAKE_OF_RAGE_ITEMBALL_FULL_HEAL, _00E5
 	goto _00E9
 
 _00E5:
-	setflag FLAG_UNK_289
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_HEAL
 _00E9:
-	goto_if_set FLAG_UNK_147, _00FA
+	goto_if_set FLAG_GOT_LAKE_OF_RAGE_ITEMBALL_MAX_REVIVE, _00FA
 	goto _00FE
 
 _00FA:
-	setflag FLAG_UNK_28B
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_MAX_REVIVE
 _00FE:
-	goto_if_set FLAG_UNK_148, _010F
+	goto_if_set FLAG_GOT_LAKE_OF_RAGE_ITEMBALL_FULL_RESTORE, _010F
 	goto _0113
 
 _010F:
-	setflag FLAG_UNK_28C
+	setflag FLAG_HIDE_LAKE_OF_RAGE_ITEMBALL_FULL_RESTORE
 _0113:
 	end
 
@@ -88,7 +89,7 @@ _0115:
 	check_registered_phone_number PHONE_CONTACT_PRYCE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _01A7
-	goto_if_set FLAG_GAME_CLEAR, _0139
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0139
 	goto _01A7
 
 _0139:
@@ -204,21 +205,21 @@ scr_seq_T29_005:
 	goto_if_eq _0349
 	goto_if_set FLAG_GOT_BLACK_BELT_FROM_WESLEY, _032B
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_eq _02DC
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00011
 	goto _0323
 
 _02DC:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00008
 	goto_if_no_item_space ITEM_BLACK_BELT, 1, _033F
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_BLACK_BELT_FROM_WESLEY
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00009
 _0323:
 	wait_button_or_walk_away
 	closemsg
@@ -227,7 +228,7 @@ _0323:
 
 _032B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 10
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00010
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -241,17 +242,17 @@ _033F:
 
 _0349:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_eq _036C
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 11
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00011
 	goto _0323
 
 _036C:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 36
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00036
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 38
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00038
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_DOWNCAST
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -263,7 +264,7 @@ _036C:
 
 _039B:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 37
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00037
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -271,7 +272,7 @@ _039B:
 
 _03AF:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 39
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00039
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -353,12 +354,12 @@ _04BB:
 	wait_movement
 	apply_movement obj_T29_wataru, _0544
 	wait_movement
-	scrcmd_775 8, 10
+	npc_use_fly obj_T29_wataru, obj_T29_tsure_poke_static_dragonite
 	setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
 	hide_person obj_T29_wataru
 	hide_person obj_T29_tsure_poke_static_dragonite
 	clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
-	setvar VAR_UNK_40A8, 1
+	setvar VAR_SCENE_MAHOGANY_SHOP, 1
 	releaseall
 	end
 
@@ -443,21 +444,21 @@ _0597:
 
 scr_seq_T29_014:
 	setvar VAR_TEMP_x4001, 1
-	setvar VAR_SPECIAL_x8008, 27
+	setvar VAR_SPECIAL_x8008, ITEM_FULL_HEAL
 	setvar VAR_SPECIAL_x8009, 1
 	goto _061B
 	end
 
 scr_seq_T29_015:
 	setvar VAR_TEMP_x4001, 2
-	setvar VAR_SPECIAL_x8008, 29
+	setvar VAR_SPECIAL_x8008, ITEM_MAX_REVIVE
 	setvar VAR_SPECIAL_x8009, 1
 	goto _061B
 	end
 
 scr_seq_T29_016:
 	setvar VAR_TEMP_x4001, 3
-	setvar VAR_SPECIAL_x8008, 23
+	setvar VAR_SPECIAL_x8008, ITEM_FULL_RESTORE
 	setvar VAR_SPECIAL_x8009, 1
 	goto _061B
 	end
@@ -481,17 +482,17 @@ _0657:
 	hide_person VAR_SPECIAL_LAST_TALKED
 	compare VAR_TEMP_x4001, 1
 	goto_if_ne _0676
-	setflag FLAG_UNK_146
+	setflag FLAG_GOT_LAKE_OF_RAGE_ITEMBALL_FULL_HEAL
 	goto _0691
 
 _0676:
 	compare VAR_TEMP_x4001, 2
 	goto_if_ne _068D
-	setflag FLAG_UNK_147
+	setflag FLAG_GOT_LAKE_OF_RAGE_ITEMBALL_MAX_REVIVE
 	goto _0691
 
 _068D:
-	setflag FLAG_UNK_148
+	setflag FLAG_GOT_LAKE_OF_RAGE_ITEMBALL_FULL_RESTORE
 _0691:
 	giveitem VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	buffer_players_name 0

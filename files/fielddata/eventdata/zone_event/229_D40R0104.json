@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D40R0104.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D40R0104.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d40r0104_full_restore",
@@ -19,9 +21,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D40R0104_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 36,
@@ -36,9 +35,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_REVIVE",
       "scriptId": "std_itemball_d40r0104_max_revive",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,
@@ -53,9 +49,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0104_FULL_RESTORE",
       "scriptId": "std_itemball_d40r0104_full_restore",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 29,
@@ -70,9 +63,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_ELIXIR",
       "scriptId": "std_itemball_d40r0104_max_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,

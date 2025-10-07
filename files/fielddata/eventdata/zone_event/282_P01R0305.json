@@ -1,68 +1,67 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0305.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0305.h"
+  ],
   "objects": [
     {
       "id": "obj_P01R0305_fire",
       "spriteId": "SPRITE_FIRE",
       "movement": 18,
       "type": 1,
-      "eventFlag": "FLAG_UNK_22A",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_TRAINERS_FIRST_VOYAGE",
       "scriptId": "std_trainer(TRAINER_FIREBREATHER_LYLE)",
       "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
       "z": 6,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_P01R0305_gswoman2",
       "spriteId": "SPRITE_GSWOMAN2",
       "movement": 0,
       "type": 1,
-      "eventFlag": "FLAG_UNK_22B",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_TRAINERS_EASTBOUND",
       "scriptId": "std_trainer(TRAINER_BEAUTY_CASSIE)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
       "z": 6,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_P01R0305_gsman2",
       "spriteId": "SPRITE_GSMAN2",
       "movement": 0,
       "type": 1,
-      "eventFlag": "FLAG_UNK_22C",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND",
       "scriptId": "std_trainer(TRAINER_GUITARIST_CLYDE)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
       "z": 6,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_P01R0305_gsboy3",
       "spriteId": "SPRITE_GSBOY3",
       "movement": 0,
       "type": 1,
-      "eventFlag": "FLAG_UNK_22C",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND",
       "scriptId": "std_trainer(TRAINER_BUG_CATCHER_KEN)",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,

@@ -13,7 +13,7 @@
 	scrdef_end
 
 scr_seq_D32PC0101_004:
-	setvar VAR_UNK_40E5, 2
+	setvar VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	end
 
 scr_seq_D32PC0101_000:

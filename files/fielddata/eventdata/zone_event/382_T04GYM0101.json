@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T04GYM0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T04GYM0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_T04GYM0101_002 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "_EV_scr_seq_T04GYM0101_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 13,
@@ -44,14 +43,14 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_DIANA)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 6,
       "yRange": 0,
       "x": 7,
       "z": 16,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_T04GYM0101_gsswimmerw_2",
@@ -61,14 +60,15 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_JOY)",
       "facingDirection": 3,
-      "param0": 1,
-      "param1": 2,
-      "param2": 0,
       "xRange": 9,
       "yRange": 0,
       "x": 6,
       "z": 13,
-      "y": 0
+      "y": 0,
+      "data": [
+        1,
+        2
+      ]
     },
     {
       "id": "obj_T04GYM0101_gsswimmerw_3",
@@ -78,14 +78,15 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "std_trainer(TRAINER_SWIMMER_F_BRIANA)",
       "facingDirection": 2,
-      "param0": 2,
-      "param1": 2,
-      "param2": 0,
       "xRange": 7,
       "yRange": 0,
       "x": 14,
       "z": 10,
-      "y": 0
+      "y": 0,
+      "data": [
+        2,
+        2
+      ]
     },
     {
       "id": "obj_T04GYM0101_seaman_2",
@@ -95,14 +96,14 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "std_trainer(TRAINER_SAILOR_EDDIE)",
       "facingDirection": 1,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,
       "z": 8,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_T04GYM0101_seaman_2_2",
@@ -112,14 +113,14 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "std_trainer(TRAINER_SAILOR_PARKER)",
       "facingDirection": 3,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 18,
       "z": 18,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_T04GYM0101_gsleader11",
@@ -129,9 +130,6 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_POPULATION",
       "scriptId": "_EV_scr_seq_T04GYM0101_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -146,9 +144,6 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_ROCKET",
       "scriptId": 0,
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 10,
@@ -163,9 +158,6 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_MACHINE_PART",
       "scriptId": "_EV_scr_seq_T04GYM0101_005 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 3,
@@ -180,9 +172,6 @@
       "eventFlag": "FLAG_HIDE_CERULEAN_GYM_MACHINE_PART",
       "scriptId": "_EV_scr_seq_T04GYM0101_005 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,

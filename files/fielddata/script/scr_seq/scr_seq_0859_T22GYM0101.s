@@ -28,7 +28,7 @@ scr_seq_T22GYM0101_000:
 
 _005B:
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
+	compare VAR_TEMP_x4001, RTC_WEEK_MONDAY
 	goto_if_ne _0076
 	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	goto _007C
@@ -41,7 +41,7 @@ _007C:
 
 _007E:
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 3
+	compare VAR_TEMP_x4001, RTC_WEEK_WEDNESDAY
 	goto_if_ne _0099
 	setflag FLAG_HIDE_VIOLET_GYM_FALKNER
 	goto _009F
@@ -78,7 +78,7 @@ scr_seq_T22GYM0101_001:
 	settrainerflag TRAINER_BIRD_KEEPER_GS_ROD
 	settrainerflag TRAINER_BIRD_KEEPER_GS_ABE
 	setvar VAR_SCENE_VIOLET_CITY_OW, 1
-	setflag FLAG_UNK_192
+	setflag FLAG_HIDE_VIOLET_GYM_UNUSED
 	setvar VAR_SCENE_ELMS_LAB, 6
 	setflag FLAG_UNK_0F4
 	setflag FLAG_HIDE_WIFI_CLUB_CLOSED_LADY

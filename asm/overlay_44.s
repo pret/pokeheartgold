@@ -1,3 +1,4 @@
+#include "constants/flypoints.h"
 	.include "asm/macros.inc"
 	.include "overlay_44.inc"
 	.include "global.inc"
@@ -12,7 +13,7 @@ ov44_02229EE0: ; 0x02229EE0
 	ldr r0, [r0, r1]
 	bl Save_VarsFlags_Get
 	mov r1, #2
-	mov r2, #0x1b
+	mov r2, #VISITED_FLAG_UNION_CAVE
 	bl Save_VarsFlags_FlypointFlagAction
 	pop {r3, pc}
 	.balign 4, 0
@@ -14900,7 +14901,7 @@ _0223153E:
 	mov r1, #1
 	mov r2, #2
 	add r3, r5, r3
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	cmp r0, #0
 	bne _02231604
 	bl GF_AssertFail
@@ -14990,7 +14991,7 @@ ov44_022316B0: ; 0x022316B0
 	bl TextOBJ_Destroy
 	ldr r0, _02231710 ; =0x00000D44
 	add r0, r5, r0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	ldr r7, _02231714 ; =0x00000D38
 	mov r6, #0
 	add r4, r5, #0

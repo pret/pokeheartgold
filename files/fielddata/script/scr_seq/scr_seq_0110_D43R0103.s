@@ -49,13 +49,13 @@ _007C:
 	npc_msg msg_0128_D43R0103_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _00C1
 	trainer_battle TRAINER_RIVAL_SILVER_9, 0, 0, 0
 	goto _00E4
 
 _00C1:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _00DC
 	trainer_battle TRAINER_RIVAL_SILVER_13, 0, 0, 0
 	goto _00E4

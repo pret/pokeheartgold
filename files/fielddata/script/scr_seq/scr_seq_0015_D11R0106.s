@@ -32,7 +32,7 @@ scr_seq_D11R0106_009:
 
 _0069:
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 2
+	compare VAR_TEMP_x4002, RTC_WEEK_TUESDAY
 	goto_if_ne _0084
 	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	goto _0088
@@ -44,7 +44,7 @@ _0088:
 
 _008A:
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 4
+	compare VAR_TEMP_x4002, RTC_WEEK_THURSDAY
 	goto_if_ne _00A5
 	setflag FLAG_HIDE_SEAFOAM_GYM_BLAINE
 	goto _00A9
@@ -91,7 +91,7 @@ scr_seq_D11R0106_000:
 	goto_if_eq _01CC
 	give_badge BADGE_VOLCANO
 	addvar VAR_UNK_4135, 1
-	setflag FLAG_UNK_265
+	setflag FLAG_HIDE_ROUTE_19_BLOCKADE
 	setflag FLAG_HIDE_ROUTE_19_WORKMEN_CLOSED
 	clearflag FLAG_HIDE_ROUTE_19_WORKMEN_OPEN
 	add_special_game_stat SCORE_EVENT_BADGE_GET

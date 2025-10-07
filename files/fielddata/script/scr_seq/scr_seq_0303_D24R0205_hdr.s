@@ -12,7 +12,7 @@
 	.byte 0
 
 scr_seq_D24R0205_map_scripts_2:
-	.short VAR_UNK_40CE, 1, _EV_scr_seq_D24R0205_000 + 1
+	.short VAR_SCENE_ALPH_UNDERGROUND_HALL, 1, _EV_scr_seq_D24R0205_000 + 1
 	.short VAR_SCENE_SINJOH_MYSTRI_ROOM, 2, _EV_scr_seq_D24R0205_006 + 1
 	.short VAR_SCENE_SINJOH_MYSTRI_ROOM, 9, _EV_scr_seq_D24R0205_007 + 1
 	.short VAR_SCENE_SINJOH_MYSTRI_ROOM, 11, _EV_scr_seq_D24R0205_009 + 1

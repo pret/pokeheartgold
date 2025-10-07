@@ -1,3 +1,4 @@
+#include "constants/flypoints.h"
 #include "constants/sndseq.h"
 #include "constants/species.h"
 #include "constants/trainer_class.h"
@@ -219,8 +220,8 @@ sub_020517F8: ; 0x020517F8
 	bx lr
 	thumb_func_end sub_020517F8
 
-	thumb_func_start BattleSetup_GetWildBattleMusic
-BattleSetup_GetWildBattleMusic: ; 0x020517FC
+	thumb_func_start BattleSetup_GetBattleMusic
+BattleSetup_GetBattleMusic: ; 0x020517FC
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	bl BattleSetup_GetTransitionAndMusicParam
@@ -233,7 +234,7 @@ BattleSetup_GetWildBattleMusic: ; 0x020517FC
 	ldr r0, [r5, r0]
 	bl Save_VarsFlags_Get
 	mov r1, #2
-	mov r2, #5
+	mov r2, #VISITED_FLAG_VERMILION
 	bl Save_VarsFlags_FlypointFlagAction
 	cmp r0, #1
 	bne _0205185C
@@ -243,35 +244,35 @@ BattleSetup_GetWildBattleMusic: ; 0x020517FC
 	bl MapHeader_IsInKanto
 	cmp r0, #0
 	beq _0205185C
-	ldr r1, _02051860 ; =0x0000045C
+	ldr r1, _02051860 ; =SEQ_GS_VS_NORAPOKE
 	cmp r4, r1
 	bne _0205183E
 	add r4, r1, #0
-	add r4, #9
+	add r4, #SEQ_GS_VS_NORAPOKE_KANTO-SEQ_GS_VS_NORAPOKE
 	b _0205185C
 _0205183E:
-	add r0, r1, #1
+	add r0, r1, #SEQ_GS_VS_TRAINER-SEQ_GS_VS_NORAPOKE
 	cmp r4, r0
 	bne _0205184A
 	add r4, r1, #0
-	add r4, #0xa
+	add r4, #SEQ_GS_VS_TRAINER_KANTO-SEQ_GS_VS_NORAPOKE
 	b _0205185C
 _0205184A:
-	add r0, r1, #2
+	add r0, r1, #SEQ_GS_VS_GYMREADER-SEQ_GS_VS_NORAPOKE
 	cmp r4, r0
 	bne _0205185C
 	add r0, r6, #0
 	bl sub_020517F8
 	cmp r0, #0
 	bne _0205185C
-	ldr r4, _02051864 ; =0x00000467
+	ldr r4, _02051864 ; =SEQ_GS_VS_GYMREADER_KANTO
 _0205185C:
 	add r0, r4, #0
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_02051860: .word 0x0000045C
-_02051864: .word 0x00000467
-	thumb_func_end BattleSetup_GetWildBattleMusic
+_02051860: .word SEQ_GS_VS_NORAPOKE
+_02051864: .word SEQ_GS_VS_GYMREADER_KANTO
+	thumb_func_end BattleSetup_GetBattleMusic
 
 	thumb_func_start NPCTrainerGetBattleIntroAndMusicParam
 NPCTrainerGetBattleIntroAndMusicParam: ; 0x02051868

@@ -17,7 +17,7 @@ BOOL ov02_02253134(SaveData *saveData) {
     FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(saveData));
 
     for (i = 0; i < 39; i++) {
-        if (sub_0202BA2C(fashionCase, ov02_02253D54[i], 1) == TRUE) {
+        if (FashionCase_HasSpaceForAccessory(fashionCase, ov02_02253D54[i], 1) == TRUE) {
             return FALSE;
         }
     }
@@ -34,7 +34,7 @@ BOOL ov02_02253188(SaveData *saveData) {
     FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(saveData));
 
     for (u8 i = 0; i < 14; i++) {
-        if (sub_0202BA5C(fashionCase, i) == FALSE) {
+        if (FashionCase_HasSpaceForBackground(fashionCase, i) == FALSE) {
             return FALSE;
         }
     }
@@ -53,7 +53,7 @@ u8 ov02_022531B4(SaveData *saveData) {
     FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(saveData));
 
     for (u8 i = 0; i < 14; i++) {
-        if (sub_0202BA5C(fashionCase, i) == 0) {
+        if (FashionCase_HasSpaceForBackground(fashionCase, i) == 0) {
             data[cnt] = i;
             cnt++;
         }

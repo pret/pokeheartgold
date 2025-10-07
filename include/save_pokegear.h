@@ -34,7 +34,7 @@ typedef struct PhoneCallPersistentState {
     u8 kenjiActive : 1;
     u8 numSafariAreas;
     u8 safariAreas[6];
-    u8 unk_14E[2];
+    u8 scriptedCallQueuedFlags[2];
     u8 filler_150[4];
 } PhoneCallPersistentState; // size=0x154
 
@@ -43,9 +43,9 @@ typedef struct SavePokegear {
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
-    u32 unk_4_0 : 9;
+    u32 unlockedSkins : 9;
     u32 unk_4_9 : 9;
-    u32 backgroundStyle : 7;
+    u32 skin : 7;
     u32 registeredCards : 2;
     // mapUnlockLevel
     // 0: only Johto
@@ -71,7 +71,7 @@ void Pokegear_SetMapUnlockLevel(SavePokegear *pokegear, u8 mapUnlockMenu);
 u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear);
 u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear);
 void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 a1);
-u16 sub_0202EE98(SavePokegear *pokegear);
+u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear);
 BOOL sub_0202EEA4(SavePokegear *pokegear);
 void sub_0202EEA8(SavePokegear *pokegear, u8 a1);
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y);
@@ -82,9 +82,9 @@ void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact);
 PhoneContact *SavePokegear_AllocAndCopyPhonebook(SavePokegear *pokegear, enum HeapID heapID);
 void SavePokegear_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *contacts, u8 num);
 
-void sub_0202F01C(PhoneCallPersistentState *callPersistentState, u8 idx);
-void sub_0202F050(PhoneCallPersistentState *callPersistentState, u8 idx);
-BOOL sub_0202F08C(PhoneCallPersistentState *callPersistentState, u8 idx);
+void PhoneCallPersistentState_SetScriptedCallQueuedFlag(PhoneCallPersistentState *callPersistentState, u8 idx);
+void PhoneCallPersistentState_ClearScriptedCallQueuedFlag(PhoneCallPersistentState *callPersistentState, u8 idx);
+BOOL PhoneCallPersistentState_CheckScriptedCallQueuedFlag(PhoneCallPersistentState *callPersistentState, u8 idx);
 void PhoneCallPersistentState_PhoneRematches_SetSeeking(PhoneCallPersistentState *callPersistentState, u8 idx, BOOL state);
 BOOL PhoneCallPersistentState_PhoneRematches_IsSeeking(PhoneCallPersistentState *callPersistentState, u8 idx);
 void PhoneCallPersistentState_PhoneRematches_GiftItemIdSet(PhoneCallPersistentState *callPersistentState, u8 idx, u16 itemId);

@@ -179,7 +179,7 @@ _02C1:
 	warp MAP_SAFFRON_SILPH_CO_ROTOM_ROOM, 0, VAR_SPECIAL_x8006, VAR_SPECIAL_x8007, VAR_SPECIAL_RESULT
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	nop_var_490 VAR_TEMP_x400B
+	debug_print_var VAR_TEMP_x400B
 	compare VAR_TEMP_x400A, 1
 	call_if_eq _07BA
 	goto _08A4
@@ -310,7 +310,7 @@ _04BE:
 	end
 
 _04CC:
-	nop_var_490 VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4005
 	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 479
@@ -330,13 +330,13 @@ _050C:
 	end
 
 _051C:
-	nop_var_490 VAR_TEMP_x4007
+	debug_print_var VAR_TEMP_x4007
 	get_party_lead_alive VAR_TEMP_x4000
 	get_partymon_species VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 479
 	goto_if_ne _0564
-	nop_var_490 VAR_TEMP_x4000
-	nop_var_490 VAR_SPECIAL_x8000
+	debug_print_var VAR_TEMP_x4000
+	debug_print_var VAR_SPECIAL_x8000
 	compare VAR_TEMP_x4000, VAR_SPECIAL_x8000
 	goto_if_ne _055E
 	release obj_partner_poke
@@ -405,7 +405,7 @@ _0649:
 	wait_button_or_walk_away
 	compare VAR_TEMP_x400A, 1
 	call_if_eq _07BA
-	nop_var_490 VAR_TEMP_x400D
+	debug_print_var VAR_TEMP_x400D
 	goto _089C
 	end
 
@@ -506,7 +506,7 @@ _073D:
 	call_if_eq _07B3
 	compare VAR_TEMP_x400A, 1
 	call_if_eq _07BA
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4006
 	goto _089C
 	end
 

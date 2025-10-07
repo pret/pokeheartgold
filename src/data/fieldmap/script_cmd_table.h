@@ -378,7 +378,7 @@ BOOL ScrCmd_MakeObjectVisible(ScriptContext *ctx);
 BOOL ScrCmd_376(ScriptContext *ctx);
 BOOL ScrCmd_377(ScriptContext *ctx);
 BOOL ScrCmd_ViewRankings(ScriptContext *ctx);
-BOOL ScrCmd_379(ScriptContext *ctx);
+BOOL ScrCmd_GetTimeOfDay(ScriptContext *ctx);
 BOOL ScrCmd_Random(ScriptContext *ctx);
 BOOL ScrCmd_381(ScriptContext *ctx);
 BOOL ScrCmd_MonGetFriendship(ScriptContext *ctx);
@@ -402,26 +402,26 @@ BOOL ScrCmd_BufferPartyMonMoveName(ScriptContext *ctx);
 BOOL ScrCmd_StrengthFlagAction(ScriptContext *ctx);
 BOOL ScrCmd_FlashAction(ScriptContext *ctx);
 BOOL ScrCmd_DefogAction(ScriptContext *ctx);
-BOOL ScrCmd_403(ScriptContext *ctx);
-BOOL ScrCmd_404(ScriptContext *ctx);
-BOOL ScrCmd_405(ScriptContext *ctx);
-BOOL ScrCmd_406(ScriptContext *ctx);
-BOOL ScrCmd_407(ScriptContext *ctx);
+BOOL ScrCmd_GiveAccessory(ScriptContext *ctx);
+BOOL ScrCmd_HasSpaceForAccessory(ScriptContext *ctx);
+BOOL ScrCmd_HasAccessory(ScriptContext *ctx);
+BOOL ScrCmd_GiveFashionBackground(ScriptContext *ctx);
+BOOL ScrCmd_HasSpaceForFashionBackground(ScriptContext *ctx);
 BOOL ScrCmd_408(ScriptContext *ctx);
 BOOL ScrCmd_409(ScriptContext *ctx);
 BOOL ScrCmd_410(ScriptContext *ctx);
 BOOL ScrCmd_411(ScriptContext *ctx);
 BOOL ScrCmd_412(ScriptContext *ctx);
-BOOL ScrCmd_413(ScriptContext *ctx);
+BOOL ScrCmd_GetBattleTowerPartnerMonAndMove(ScriptContext *ctx);
 BOOL ScrCmd_414(ScriptContext *ctx);
 BOOL ScrCmd_415(ScriptContext *ctx);
 BOOL ScrCmd_416(ScriptContext *ctx);
 BOOL ScrCmd_417(ScriptContext *ctx);
 BOOL ScrCmd_418(ScriptContext *ctx);
 BOOL ScrCmd_419(ScriptContext *ctx);
-BOOL ScrCmd_420(ScriptContext *ctx);
-BOOL ScrCmd_421(ScriptContext *ctx);
-BOOL ScrCmd_422(ScriptContext *ctx);
+BOOL ScrCmd_IncGameStat(ScriptContext *ctx);
+BOOL ScrCmd_GetGameStat(ScriptContext *ctx);
+BOOL ScrCmd_UpdateGameStat(ScriptContext *ctx);
 BOOL ScrCmd_CheckJohtoDexComplete(ScriptContext *ctx);
 BOOL ScrCmd_CheckNationalDexComplete(ScriptContext *ctx);
 BOOL ScrCmd_ShowCertificate(ScriptContext *ctx);
@@ -443,7 +443,7 @@ BOOL ScrCmd_MsgboxExtern(ScriptContext *ctx);
 BOOL ScrCmd_441(ScriptContext *ctx);
 BOOL ScrCmd_442(ScriptContext *ctx);
 BOOL ScrCmd_443(ScriptContext *ctx);
-BOOL ScrCmd_444(ScriptContext *ctx);
+BOOL ScrCmd_InvalidMonsMessage(ScriptContext *ctx);
 BOOL ScrCmd_445(ScriptContext *ctx);
 BOOL ScrCmd_446(ScriptContext *ctx);
 BOOL ScrCmd_SafariZoneAction(ScriptContext *ctx);
@@ -489,7 +489,7 @@ BOOL ScrCmd_Dummy(ScriptContext *ctx);
 BOOL ScrCmd_PokeCenAnim(ScriptContext *ctx);
 BOOL ScrCmd_ElevatorAnim(ScriptContext *ctx);
 BOOL ScrCmd_MysteryGift(ScriptContext *ctx);
-BOOL ScrCmd_NopVar490(ScriptContext *ctx);
+BOOL ScrCmd_DebugPrintVar(ScriptContext *ctx);
 BOOL ScrCmd_491(ScriptContext *ctx);
 BOOL ScrCmd_492(ScriptContext *ctx);
 BOOL ScrCmd_PromptEasyChat(ScriptContext *ctx);
@@ -526,7 +526,7 @@ BOOL ScrCmd_523(ScriptContext *ctx);
 BOOL ScrCmd_524(ScriptContext *ctx);
 BOOL ScrCmd_525(ScriptContext *ctx);
 BOOL ScrCmd_526(ScriptContext *ctx);
-BOOL ScrCmd_527(ScriptContext *ctx);
+BOOL ScrCmd_NPCMsgUnownFont(ScriptContext *ctx);
 BOOL ScrCmd_528(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyLeadAlive(ScriptContext *ctx);
 BOOL ScrCmd_530(ScriptContext *ctx);
@@ -632,7 +632,7 @@ BOOL ScrCmd_629(ScriptContext *ctx);
 BOOL ScrCmd_630(ScriptContext *ctx);
 BOOL ScrCmd_631(ScriptContext *ctx);
 BOOL ScrCmd_CountPartyMonsOfSpecies(ScriptContext *ctx);
-BOOL ScrCmd_633(ScriptContext *ctx);
+BOOL ScrCmd_BattleHallAction(ScriptContext *ctx);
 BOOL ScrCmd_634(ScriptContext *ctx);
 BOOL ScrCmd_635(ScriptContext *ctx);
 BOOL ScrCmd_636(ScriptContext *ctx);
@@ -774,7 +774,7 @@ BOOL ScrCmd_771(ScriptContext *ctx);
 BOOL ScrCmd_772(ScriptContext *ctx);
 BOOL ScrCmd_Cinematic(ScriptContext *ctx);
 BOOL ScrCmd_ShowLegendaryWing(ScriptContext *ctx);
-BOOL ScrCmd_775(ScriptContext *ctx);
+BOOL ScrCmd_NpcUseFly(ScriptContext *ctx);
 BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx);
 BOOL ScrCmd_777(ScriptContext *ctx);
 BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx);
@@ -790,8 +790,8 @@ BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx);
 BOOL ScrCmd_BufferBugContestMonNick(ScriptContext *ctx);
 BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx);
 BOOL ScrCmd_IsBugContestantRegistered(ScriptContext *ctx);
-BOOL ScrCmd_791(ScriptContext *ctx);
-BOOL ScrCmd_792(ScriptContext *ctx);
+BOOL ScrCmd_CheckSafariZoneOwnerTestMonInParty(ScriptContext *ctx);
+BOOL ScrCmd_StartSafariZoneIgtTimer(ScriptContext *ctx);
 BOOL ScrCmd_BankTransaction(ScriptContext *ctx);
 BOOL ScrCmd_CheckBankBalance(ScriptContext *ctx);
 BOOL ScrCmd_795(ScriptContext *ctx);
@@ -1233,7 +1233,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_376,
     ScrCmd_377,
     ScrCmd_ViewRankings,
-    ScrCmd_379,
+    ScrCmd_GetTimeOfDay,
     ScrCmd_Random,
     ScrCmd_381,
     ScrCmd_MonGetFriendship,
@@ -1257,26 +1257,26 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_StrengthFlagAction,
     ScrCmd_FlashAction,
     ScrCmd_DefogAction,
-    ScrCmd_403,
-    ScrCmd_404,
-    ScrCmd_405,
-    ScrCmd_406,
-    ScrCmd_407,
+    ScrCmd_GiveAccessory,
+    ScrCmd_HasSpaceForAccessory,
+    ScrCmd_HasAccessory,
+    ScrCmd_GiveFashionBackground,
+    ScrCmd_HasSpaceForFashionBackground,
     ScrCmd_408,
     ScrCmd_409,
     ScrCmd_410,
     ScrCmd_411,
     ScrCmd_412,
-    ScrCmd_413,
+    ScrCmd_GetBattleTowerPartnerMonAndMove,
     ScrCmd_414,
     ScrCmd_415,
     ScrCmd_416,
     ScrCmd_417,
     ScrCmd_418,
     ScrCmd_419,
-    ScrCmd_420,
-    ScrCmd_421,
-    ScrCmd_422,
+    ScrCmd_IncGameStat,
+    ScrCmd_GetGameStat,
+    ScrCmd_UpdateGameStat,
     ScrCmd_CheckJohtoDexComplete,
     ScrCmd_CheckNationalDexComplete,
     ScrCmd_ShowCertificate,
@@ -1298,7 +1298,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_441,
     ScrCmd_442,
     ScrCmd_443,
-    ScrCmd_444,
+    ScrCmd_InvalidMonsMessage,
     ScrCmd_445,
     ScrCmd_446,
     ScrCmd_SafariZoneAction,
@@ -1344,7 +1344,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_PokeCenAnim,
     ScrCmd_ElevatorAnim,
     ScrCmd_MysteryGift,
-    ScrCmd_NopVar490,
+    ScrCmd_DebugPrintVar,
     ScrCmd_491,
     ScrCmd_492,
     ScrCmd_PromptEasyChat,
@@ -1381,7 +1381,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_524,
     ScrCmd_525,
     ScrCmd_526,
-    ScrCmd_527,
+    ScrCmd_NPCMsgUnownFont,
     ScrCmd_528,
     ScrCmd_GetPartyLeadAlive,
     ScrCmd_530,
@@ -1487,7 +1487,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_630,
     ScrCmd_631,
     ScrCmd_CountPartyMonsOfSpecies,
-    ScrCmd_633,
+    ScrCmd_BattleHallAction,
     ScrCmd_634,
     ScrCmd_635,
     ScrCmd_636,
@@ -1629,7 +1629,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_772,
     ScrCmd_Cinematic,
     ScrCmd_ShowLegendaryWing,
-    ScrCmd_775,
+    ScrCmd_NpcUseFly,
     ScrCmd_GiveTogepiEgg,
     ScrCmd_777,
     ScrCmd_GiveSpikyEarPichu,
@@ -1645,8 +1645,8 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_BufferBugContestMonNick,
     ScrCmd_BugContestGetTimeLeft,
     ScrCmd_IsBugContestantRegistered,
-    ScrCmd_791,
-    ScrCmd_792,
+    ScrCmd_CheckSafariZoneOwnerTestMonInParty,
+    ScrCmd_StartSafariZoneIgtTimer,
     ScrCmd_BankTransaction,
     ScrCmd_CheckBankBalance,
     ScrCmd_795,

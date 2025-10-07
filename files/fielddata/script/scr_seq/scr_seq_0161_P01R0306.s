@@ -12,28 +12,28 @@
 	scrdef_end
 
 scr_seq_P01R0306_001:
-	compare VAR_UNK_40CB, 7
+	compare VAR_SCENE_SS_AQUA, 7
 	goto_if_ge _003C
-	compare VAR_UNK_40CB, 4
+	compare VAR_SCENE_SS_AQUA, 4
 	goto_if_gt _0036
-	setflag FLAG_UNK_218
+	setflag FLAG_HIDE_SS_AQUA_CABIN_GRANDDAUGHTER
 	goto _003A
 
 _0036:
-	clearflag FLAG_UNK_218
+	clearflag FLAG_HIDE_SS_AQUA_CABIN_GRANDDAUGHTER
 _003A:
 	end
 
 _003C:
-	setflag FLAG_UNK_216
-	setflag FLAG_UNK_218
+	setflag FLAG_HIDE_SS_AQUA_CABIN_GRANDPA
+	setflag FLAG_HIDE_SS_AQUA_CABIN_GRANDDAUGHTER
 	end
 
 scr_seq_P01R0306_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40CB, 3
+	compare VAR_SCENE_SS_AQUA, 3
 	goto_if_gt _006E
 	apply_movement obj_P01R0306_gsgentleman, _0090
 	wait_movement
@@ -41,7 +41,7 @@ scr_seq_P01R0306_000:
 	goto _0087
 
 _006E:
-	compare VAR_UNK_40CB, 4
+	compare VAR_SCENE_SS_AQUA, 4
 	goto_if_ne _0084
 	npc_msg msg_0262_P01R0306_00000
 	goto _0087
@@ -73,8 +73,8 @@ scr_seq_P01R0306_003:
 	goto_if_no_item_space ITEM_METAL_COAT, 1, _0103
 	callstd std_give_item_verbose
 _00E2:
-	setvar VAR_UNK_40CB, 6
-	setflag FLAG_UNK_22A
+	setvar VAR_SCENE_SS_AQUA, 6
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_FIRST_VOYAGE
 	play_se SEQ_SE_DP_PINPON
 	wait_se SEQ_SE_DP_PINPON
 	setflag FLAG_BOAT_ARRIVED

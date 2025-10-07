@@ -2,6 +2,7 @@
 #include "fielddata/script/scr_seq/event_0003.h"
 #include "msgdata/msg/msg_0040.h"
 #include "msgdata/msg/msg_0191.h"
+#include "msgdata/msg/msg_0435.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -88,15 +89,15 @@ scr_seq_0003_002:
 	compare VAR_SPECIAL_RESULT, 4
 	goto_if_ge _03E3
 	setvar VAR_SPECIAL_x8004, 0
-	scrcmd_379 VAR_SPECIAL_RESULT
+	get_time_of_day VAR_SPECIAL_RESULT
 	debugwatch VAR_SPECIAL_RESULT
-	setvar VAR_SPECIAL_x8004, 83
-	compare VAR_SPECIAL_RESULT, 0
+	setvar VAR_SPECIAL_x8004, msg_0040_00083
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_MORN
 	goto_if_eq _0175
-	setvar VAR_SPECIAL_x8004, 84
-	compare VAR_SPECIAL_RESULT, 1
+	setvar VAR_SPECIAL_x8004, msg_0040_00084
+	compare VAR_SPECIAL_RESULT, RTC_TIMEOFDAY_DAY
 	goto_if_eq _0175
-	setvar VAR_SPECIAL_x8004, 0
+	setvar VAR_SPECIAL_x8004, msg_0040_00000
 _0175:
 	non_npc_msg_var VAR_SPECIAL_x8004
 	touchscreen_menu_hide
@@ -586,7 +587,7 @@ scr_seq_0003_035:
 
 _07AA:
 	play_fanfare SEQ_ME_ACCE
-	scrcmd_403 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
+	give_accessory VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	buffer_fashion_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare
@@ -609,7 +610,7 @@ scr_seq_0003_034:
 
 _07E4:
 	play_fanfare SEQ_ME_ACCE
-	scrcmd_406 VAR_SPECIAL_x8004
+	give_fashion_background VAR_SPECIAL_x8004
 	buffer_background_name 0, VAR_SPECIAL_x8004
 	npc_msg msg_0040_00025
 	wait_fanfare
@@ -780,8 +781,8 @@ _0A2E:
 	call_if_unset FLAG_SYS_MET_BILL, _0A78
 	call_if_set FLAG_SYS_MET_BILL, _0A82
 	menu_item_add msg_0191_00063, 255, 1
-	goto_if_set FLAG_GAME_CLEAR, _0A8C
-	goto_if_unset FLAG_GAME_CLEAR, _0AD1
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0A8C
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _0AD1
 	goto _0AD1
 	end
 
@@ -1574,7 +1575,7 @@ scr_seq_0003_050:
 scr_seq_0003_051:
 	touchscreen_menu_show
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00001
 	wait_button_or_walk_away
 	closemsg
 	endstd
@@ -1582,7 +1583,7 @@ scr_seq_0003_051:
 
 _14DD:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00006
 	holdmsg
 	goto _145E
 	end
@@ -1621,7 +1622,7 @@ scr_seq_0003_055:
 	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1630
 	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1654
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00001
 _159E:
 	wait_button_or_walk_away
 	closemsg
@@ -1634,7 +1635,7 @@ _15A6:
 	goto_if_set FLAG_SPECIAL_MART_MAHOGANY_GOOD, _1642
 	goto_if_set FLAG_SPECIAL_MART_MT_MOON, _1666
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00006
 _15DE:
 	holdmsg
 	goto _14FB
@@ -1642,42 +1643,42 @@ _15DE:
 
 _15E8:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00002
 	goto _159E
 
 _15FA:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00007
 	goto _15DE
 
 _160C:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00003
 	goto _159E
 
 _161E:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00008
 	goto _15DE
 
 _1630:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 4
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00004
 	goto _159E
 
 _1642:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00009
 	goto _15DE
 
 _1654:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00005
 	goto _159E
 
 _1666:
 	get_std_msg_naix 3, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 10
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0435_00010
 	goto _15DE
 
 scr_seq_0003_056:

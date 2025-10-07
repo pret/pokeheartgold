@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R09.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R09.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R09_000 + 1",
@@ -27,14 +29,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_SID)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1355,
       "z": 140,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R09_picnicgirl_2",
@@ -44,14 +46,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_EDNA)",
       "facingDirection": 0,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1361,
       "z": 155,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R09_campboy_2_2",
@@ -61,14 +63,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_CAMPER_DEAN)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1387,
       "z": 150,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R09_mount_2",
@@ -78,14 +80,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_CLARKE)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1410,
       "z": 153,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R09_mount_2_2",
@@ -95,14 +97,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_HIKER_EOIN)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1402,
       "z": 137,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R09_picnicgirl_2_2",
@@ -112,14 +114,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PICNICKER_HEIDI)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1412,
       "z": 144,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R09_tree",
@@ -129,9 +131,6 @@
       "eventFlag": "FLAG_MAPTEMP_010",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1422,
@@ -146,9 +145,6 @@
       "eventFlag": "FLAG_MAPTEMP_011",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1424,
@@ -163,9 +159,6 @@
       "eventFlag": "FLAG_MAPTEMP_012",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1426,
@@ -180,9 +173,6 @@
       "eventFlag": "FLAG_MAPTEMP_013",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1428,
@@ -197,9 +187,6 @@
       "eventFlag": "FLAG_MAPTEMP_014",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1408,
@@ -214,9 +201,6 @@
       "eventFlag": "FLAG_MAPTEMP_015",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1382,
@@ -231,9 +215,6 @@
       "eventFlag": "FLAG_MAPTEMP_016",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1416,
@@ -248,9 +229,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R09_TM91",
       "scriptId": "std_itemball_r09_tm91",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1415,
@@ -265,9 +243,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R09_FULL_RESTORE",
       "scriptId": "std_itemball_r09_full_restore",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1413,
@@ -282,9 +257,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R09_LIGHT_CLAY",
       "scriptId": "std_itemball_r09_light_clay",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1376,
@@ -299,9 +271,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R09_MAX_POTION",
       "scriptId": "std_itemball_r09_max_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1356,

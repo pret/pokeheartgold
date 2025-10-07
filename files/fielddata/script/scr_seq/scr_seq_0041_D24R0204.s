@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "msgdata/msg/msg_0075_D24R0204.h"
+#include "msgdata/msg/msg_0211.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -33,8 +34,8 @@ _0046:
 	wait_movement
 	hide_person obj_D24R0204_babyboy1_13
 	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_111
-	setflag FLAG_UNK_21E
+	clearflag FLAG_SKIP_UNOWN_REPORT_CHECK
+	setflag FLAG_HIDE_ALPH_AERODACTYL_PUZZLE_FLOOR
 	clearflag FLAG_HIDE_RUINS_OF_ALPH_ASSISTANTS
 	scrcmd_729 VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -53,7 +54,7 @@ _00AA:
 	apply_movement obj_partner_poke, _0238
 	wait_movement
 _00BC:
-	setvar VAR_UNK_40CE, 1
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	compare VAR_UNK_40EC, 1
 	goto_if_ge _0107
 	play_se SEQ_SE_GS_RAKKA01
@@ -100,7 +101,7 @@ _0177:
 	apply_movement obj_partner_poke, _0238
 	wait_movement
 _0189:
-	setvar VAR_UNK_40CE, 1
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	play_se SEQ_SE_GS_RAKKA01
 	compare VAR_UNOWN_REPORT_LEVEL, 7
 	goto_if_ge _01D5
@@ -156,17 +157,17 @@ scr_seq_D24R0204_002:
 	lockall
 	bufferpartymonnick 0, VAR_SPECIAL_x8000
 	get_std_msg_naix 1, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 28
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0211_00028
 	closemsg
 	scrcmd_183 VAR_SPECIAL_x8000
 	wait 2, VAR_SPECIAL_x8004
-	goto_if_set FLAG_OPENED_ALPH_FLASH_SECRET_ROOM, _02A9
+	goto_if_set FLAG_HIDE_ALPH_FLASH_SECRET_ROOM_DOOR, _02A9
 	screen_shake 0, 2, 10, 6
 	wait 10, VAR_SPECIAL_x8004
 	apply_movement obj_player, _02BC
 	wait_movement
 	hide_person obj_D24R0204_babyboy1_12
-	setflag FLAG_OPENED_ALPH_FLASH_SECRET_ROOM
+	setflag FLAG_HIDE_ALPH_FLASH_SECRET_ROOM_DOOR
 	play_se SEQ_SE_DP_UG_008
 	releaseall
 	end

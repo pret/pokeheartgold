@@ -136,7 +136,7 @@ void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow) {
     if (badgeCount >= 16) {
         data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_16BADGES] = 1;
     }
-    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, FLYPOINT_VERMILION);
+    data->episodeUnlockFlags[PSP_EPISODE_UNLOCK_VERMILION] = Save_VarsFlags_FlypointFlagAction(varsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_VERMILION);
     for (i = 0; i < NELEMS(sEpisodeUnlockFlags); ++i) {
         if (data->episodeUnlockFlags[sEpisodeUnlockFlags[i]]) {
             data->unlockedEpisodes[num++] = i;

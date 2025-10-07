@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R0108.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D17R0108.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d17r0108_carbos",
@@ -19,9 +21,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0108_FULL_RESTORE",
       "scriptId": "std_itemball_d17r0108_full_restore",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
@@ -36,9 +35,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0108_MAX_ELIXIR",
       "scriptId": "std_itemball_d17r0108_max_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 17,
@@ -53,9 +49,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0108_NUGGET",
       "scriptId": "std_itemball_d17r0108_nugget",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 19,

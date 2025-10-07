@@ -19,11 +19,11 @@
 	scrdef_end
 
 scr_seq_T01R0301_010:
-	compare VAR_UNK_4131, 3
+	compare VAR_SCENE_OAKS_LAB, 3
 	goto_if_eq _0057
-	compare VAR_UNK_4131, 4
+	compare VAR_SCENE_OAKS_LAB, 4
 	goto_if_eq _0057
-	compare VAR_UNK_4131, 5
+	compare VAR_SCENE_OAKS_LAB, 5
 	goto_if_eq _0057
 	end
 
@@ -31,7 +31,7 @@ _0057:
 	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
 	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
 	setflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
-	setvar VAR_UNK_4131, 6
+	setvar VAR_SCENE_OAKS_LAB, 6
 	end
 
 scr_seq_T01R0301_006:
@@ -58,7 +58,7 @@ scr_seq_T01R0301_006:
 	npc_msg msg_0451_T01R0301_00042
 	wait_button_or_walk_away
 	closemsg
-	setvar VAR_UNK_4131, 2
+	setvar VAR_SCENE_OAKS_LAB, 2
 	releaseall
 	end
 
@@ -95,13 +95,13 @@ scr_seq_T01R0301_000:
 	faceplayer
 	compare VAR_UNK_4096, 2
 	goto_if_eq _0282
-	compare VAR_UNK_4131, 3
+	compare VAR_SCENE_OAKS_LAB, 3
 	goto_if_eq _0277
-	compare VAR_UNK_4131, 4
+	compare VAR_SCENE_OAKS_LAB, 4
 	goto_if_eq _0277
-	compare VAR_UNK_4131, 5
+	compare VAR_SCENE_OAKS_LAB, 5
 	goto_if_eq _0277
-	compare VAR_UNK_4131, 2
+	compare VAR_SCENE_OAKS_LAB, 2
 	goto_if_eq _026C
 	compare VAR_SCENE_EMBEDDED_TOWER, 7
 	goto_if_eq _04B1
@@ -488,18 +488,18 @@ scr_seq_T01R0301_005:
 	end
 
 scr_seq_T01R0301_007:
-	compare VAR_UNK_4131, 6
+	compare VAR_SCENE_OAKS_LAB, 6
 	goto_if_eq _0979
-	compare VAR_UNK_4131, 0
+	compare VAR_SCENE_OAKS_LAB, 0
 	goto_if_eq _097B
-	compare VAR_UNK_4131, 3
+	compare VAR_SCENE_OAKS_LAB, 3
 	goto_if_eq _097B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4131, 4
+	compare VAR_SCENE_OAKS_LAB, 4
 	goto_if_eq _097D
-	compare VAR_UNK_4131, 5
+	compare VAR_SCENE_OAKS_LAB, 5
 	goto_if_eq _097D
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 8
@@ -519,24 +519,24 @@ _066B:
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _096C
-	setvar VAR_SPECIAL_x8004, 1
+	setvar VAR_SPECIAL_x8004, SPECIES_BULBASAUR
 	setvar VAR_SPECIAL_x8006, 3
 	call _0801
 	end
 
 scr_seq_T01R0301_008:
-	compare VAR_UNK_4131, 6
+	compare VAR_SCENE_OAKS_LAB, 6
 	goto_if_eq _0979
-	compare VAR_UNK_4131, 0
+	compare VAR_SCENE_OAKS_LAB, 0
 	goto_if_eq _097B
-	compare VAR_UNK_4131, 4
+	compare VAR_SCENE_OAKS_LAB, 4
 	goto_if_eq _097B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4131, 3
+	compare VAR_SCENE_OAKS_LAB, 3
 	goto_if_eq _097D
-	compare VAR_UNK_4131, 5
+	compare VAR_SCENE_OAKS_LAB, 5
 	goto_if_eq _097D
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 8
@@ -556,24 +556,24 @@ _0719:
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _096C
-	setvar VAR_SPECIAL_x8004, 7
+	setvar VAR_SPECIAL_x8004, SPECIES_SQUIRTLE
 	setvar VAR_SPECIAL_x8006, 4
 	call _0801
 	end
 
 scr_seq_T01R0301_009:
-	compare VAR_UNK_4131, 6
+	compare VAR_SCENE_OAKS_LAB, 6
 	goto_if_eq _0979
-	compare VAR_UNK_4131, 0
+	compare VAR_SCENE_OAKS_LAB, 0
 	goto_if_eq _097B
-	compare VAR_UNK_4131, 5
+	compare VAR_SCENE_OAKS_LAB, 5
 	goto_if_eq _097B
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_4131, 3
+	compare VAR_SCENE_OAKS_LAB, 3
 	goto_if_eq _097D
-	compare VAR_UNK_4131, 4
+	compare VAR_SCENE_OAKS_LAB, 4
 	goto_if_eq _097D
 	get_person_coords 0, VAR_TEMP_x4000, VAR_TEMP_x4001
 	compare VAR_TEMP_x4000, 8
@@ -593,7 +593,7 @@ _07C7:
 	getmenuchoice VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _096C
-	setvar VAR_SPECIAL_x8004, 4
+	setvar VAR_SPECIAL_x8004, SPECIES_CHARMANDER
 	setvar VAR_SPECIAL_x8006, 5
 	call _0801
 	end
@@ -603,14 +603,14 @@ _0801:
 	get_party_count VAR_SPECIAL_x8005
 	compare VAR_SPECIAL_x8005, 6
 	goto_if_eq _098B
-	compare VAR_SPECIAL_x8004, 1
+	compare VAR_SPECIAL_x8004, SPECIES_BULBASAUR
 	goto_if_ne _082F
 	hide_person obj_T01R0301_monstarball_3
 	setflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
 	goto _0852
 
 _082F:
-	compare VAR_SPECIAL_x8004, 7
+	compare VAR_SPECIAL_x8004, SPECIES_SQUIRTLE
 	goto_if_ne _084A
 	hide_person obj_T01R0301_monstarball_2
 	setflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL
@@ -641,13 +641,13 @@ _0852:
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
 	following_pokemon_movement 55
-	compare VAR_SPECIAL_x8004, 1
+	compare VAR_SPECIAL_x8004, SPECIES_BULBASAUR
 	goto_if_ne _08D3
 	apply_movement obj_player, _0998
 	goto _08F6
 
 _08D3:
-	compare VAR_SPECIAL_x8004, 7
+	compare VAR_SPECIAL_x8004, SPECIES_SQUIRTLE
 	goto_if_ne _08EE
 	apply_movement obj_player, _09A4
 	goto _08F6
@@ -669,7 +669,7 @@ _0912:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	copyvar VAR_UNK_4131, VAR_SPECIAL_x8006
+	copyvar VAR_SCENE_OAKS_LAB, VAR_SPECIAL_x8006
 	setvar VAR_SCENE_EMBEDDED_TOWER, 1
 	return
 

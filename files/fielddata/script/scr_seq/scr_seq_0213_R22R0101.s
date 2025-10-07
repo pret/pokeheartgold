@@ -26,9 +26,9 @@ _0054:
 	end
 
 scr_seq_R22R0101_007:
-	setflag FLAG_SYS_FLYPOINT_VICTORY_ROAD
-	goto_if_unset FLAG_UNK_189, _006B
-	clearflag FLAG_UNK_189
+	setflag FLAG_SYS_VISITED_VICTORY_ROAD
+	goto_if_unset FLAG_TAKING_PHOTO, _006B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _006B:
@@ -53,13 +53,13 @@ _00A5:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 16
 	goto_if_ne _00C0
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _00DD
 
 _00C0:
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00D7
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _00DD
 
 _00D7:
@@ -75,13 +75,13 @@ _00DF:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _010D
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _012A
 
 _010D:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _0124
-	clearflag FLAG_UNK_270
+	clearflag FLAG_HIDE_ROUTE_22_JANINE
 	goto _012A
 
 _0124:
@@ -91,7 +91,7 @@ _012A:
 	end
 
 _012C:
-	setflag FLAG_UNK_270
+	setflag FLAG_HIDE_ROUTE_22_JANINE
 	end
 
 scr_seq_R22R0101_000:
@@ -431,7 +431,7 @@ _04F4:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_270
+	setflag FLAG_HIDE_ROUTE_22_JANINE
 	hide_person obj_R22R0101_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -465,7 +465,7 @@ _0553:
 	goto_if_eq _05BF
 	npc_msg msg_0361_R22R0101_00013
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 70
@@ -473,7 +473,7 @@ _0553:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0361_R22R0101_00014
 	wait_button_or_walk_away
 	closemsg

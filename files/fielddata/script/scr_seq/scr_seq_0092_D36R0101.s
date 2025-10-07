@@ -10,6 +10,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D36R0101.h"
 #include "msgdata/msg/msg_0115_D36R0101.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -41,8 +42,8 @@
 
 scr_seq_D36R0101_000:
 	get_friend_sprite VAR_OBJ_0
-	goto_if_unset FLAG_UNK_189, _0077
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0077
+	clearflag FLAG_TAKING_PHOTO
 	goto _00C3
 
 _0077:
@@ -50,11 +51,11 @@ _0077:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _00B5
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_eq _00BF
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_eq _00BF
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _00BF
 _00B5:
 	setflag FLAG_HIDE_CAMERON
@@ -1292,8 +1293,8 @@ scr_seq_D36R0101_011:
 	goto_if_no_item_space ITEM_HM01, 1, _11FD
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_HM01
-	clearflag FLAG_UNK_1AE
-	clearflag FLAG_UNK_1AC
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_MASTER
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_APPRENTICE
 	npc_msg msg_0115_D36R0101_00008
 	wait_button_or_walk_away
 	closemsg
@@ -1341,8 +1342,8 @@ _1207:
 	setflag FLAG_HIDE_FARFETCHD_1_FOUND
 	setflag FLAG_HIDE_FARFETCHD_2_FOUND
 	setflag FLAG_GOT_HM01
-	clearflag FLAG_UNK_1AE
-	clearflag FLAG_UNK_1AC
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_MASTER
+	clearflag FLAG_HIDE_AZALEA_CHARCOAL_APPRENTICE
 	npc_msg msg_0115_D36R0101_00008
 	wait_button_or_walk_away
 	closemsg
@@ -1464,7 +1465,7 @@ _142D:
 	apply_movement obj_D36R0101_dancer, _159C
 	wait_movement
 	hide_person obj_D36R0101_dancer
-	setflag FLAG_UNK_23D
+	setflag FLAG_HIDE_ILEX_FOREST_KIMONO_GIRL
 	callstd std_fade_end_kimono_girl_music
 	release obj_partner_poke
 	apply_movement obj_partner_poke, _1584
@@ -1598,7 +1599,7 @@ scr_seq_D36R0101_018:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -1608,7 +1609,7 @@ scr_seq_D36R0101_018:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _16EC
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -1648,16 +1649,16 @@ _1677:
 	apply_movement obj_partner_poke, _1758
 	wait_movement
 _169E:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 8
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -1665,7 +1666,7 @@ _169E:
 
 _16D8:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -1673,7 +1674,7 @@ _16D8:
 
 _16EC:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -1922,7 +1923,7 @@ _1A51:
 	get_party_count VAR_TEMP_x4009
 	subvar VAR_TEMP_x4009, 1
 	setvar VAR_TEMP_x400A, 0
-	nop_var_490 VAR_TEMP_x4009
+	debug_print_var VAR_TEMP_x4009
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	nickname_input VAR_TEMP_x4009, VAR_TEMP_x400A

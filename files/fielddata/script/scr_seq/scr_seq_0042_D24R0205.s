@@ -35,16 +35,16 @@ _0061:
 	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 1
 	call_if_eq _009F
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4007
+	debug_print_var VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4007
 	end
 
 _007F:
 	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	call_if_eq _009F
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4006
 	end
 
 _009D:
@@ -63,7 +63,7 @@ scr_seq_D24R0205_000:
 	wait_movement
 	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
-	goto_if_set FLAG_UNK_111, _016F
+	goto_if_set FLAG_SKIP_UNOWN_REPORT_CHECK, _016F
 	goto_if_set FLAG_GOT_UNOWN_REPORT, _016F
 	wait 5, VAR_SPECIAL_RESULT
 	apply_movement obj_D24R0205_gsassistantm, _0194
@@ -93,12 +93,12 @@ scr_seq_D24R0205_000:
 	wait_button_or_walk_away
 	closemsg
 _016F:
-	setvar VAR_UNK_40CE, 0
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 0
 	releaseall
 	end
 
 scr_seq_D24R0205_001:
-	compare VAR_UNK_40CE, 1
+	compare VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	goto_if_ne _018A
 	make_object_visible obj_player
 _018A:
@@ -309,8 +309,8 @@ scr_seq_D24R0205_009:
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
 	setvar VAR_UNK_4104, 1
 	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
-	setflag FLAG_UNK_2DD
-	setflag FLAG_UNK_2DB
+	setflag FLAG_HIDE_SINJOH_CABIN_CYNTHIA
+	setflag FLAG_HIDE_SINJOH_EXTERIOR_HIKER
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade

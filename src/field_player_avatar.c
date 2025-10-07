@@ -209,7 +209,7 @@ void sub_0205C500(PlayerAvatar *avatar, int state, u32 gender, PlayerSaveData *p
     sub_0205C74C(avatar);
     sub_0205C768(avatar, -1);
     sub_0205C770(avatar, -1);
-    sub_0205C79C(avatar, 255);
+    PlayerAvatar_SetHeldMovement(avatar, 255);
     PlayerAvatar_SetFlag1(avatar, TRUE);
 }
 
@@ -422,12 +422,12 @@ PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar) {
     return avatar->playerSaveData;
 }
 
-void sub_0205C79C(PlayerAvatar *avatar, u32 unkA) {
-    avatar->unk8 = unkA;
+void PlayerAvatar_SetHeldMovement(PlayerAvatar *avatar, u32 heldMovement) {
+    avatar->heldMovement = heldMovement;
 }
 
-u32 sub_0205C7A0(PlayerAvatar *avatar) {
-    return avatar->unk8;
+u32 PlayerAvatar_GetHeldMovement(PlayerAvatar *avatar) {
+    return avatar->heldMovement;
 }
 
 u32 sub_0205C7A4(PlayerAvatar *avatar) {

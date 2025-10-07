@@ -18,9 +18,9 @@
 .public Save_FashionData_GetFashionCase
 .public sub_0202B9EC
 .public sub_0202BA08
-.public sub_0202BA2C
-.public sub_0202BA5C
-.public sub_0202BA70
+.public FashionCase_HasSpaceForAccessory
+.public FashionCase_HasSpaceForBackground
+.public FashionCase_GetAccessoryQuantity
 .public sub_0202BAB0
 .public FashionCase_CountAccessories
 .public FashionCase_CountWallpapers

@@ -122,7 +122,7 @@ static void FlyMap_InitParam(PokegearMapAppData *mapApp) {
     mapApp->yOffset = 0;
     mapApp->xOffset = -24;
     mapApp->canSeeSafariZone = TRUE;
-    mapApp->canFlyToGoldenrod = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, FLYPOINT_GOLDENROD);
+    mapApp->canFlyToCianwood = Save_VarsFlags_FlypointFlagAction(mapApp->pokegear->saveVarsFlags, FLAG_ACTION_CHECK, VISITED_FLAG_CIANWOOD);
     mapApp->curRegion = Pokegear_GetCurrentRegion(mapApp->pokegear);
 }
 
@@ -145,10 +145,10 @@ static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     BOOL retIsTouch = FALSE;
     int ret;
 
-    if (!mapApp->unk_139_3) {
+    if (!mapApp->cursorVisible) {
         ret = FlyMap_HandleTouchInput_NotDragging(mapApp, &retIsTouch);
     } else {
-        ret = FlyMap_HandleTouchInput_DraggingMap(mapApp);
+        ret = PokegearMap_HandleTouchInput_DraggingMap(mapApp);
         retIsTouch = TRUE;
     }
     if (retIsTouch) {
@@ -177,7 +177,7 @@ static int FlyMap_MainTask_HandleInput(PokegearMapAppData *mapApp) {
     case 4:
         return PGMAP_MAIN_STATE_FADE_OUT;
     }
-    ov101_021EC304(mapApp);
+    PokegearMap_UpdateCursorMovement(mapApp);
     return PGMAP_MAIN_STATE_HANDLE_INPUT;
 }
 

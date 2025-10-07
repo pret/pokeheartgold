@@ -24,9 +24,9 @@ scr_seq_D41R0108_000:
 	wait_fade
 	closemsg
 	hide_person obj_D41R0108_red
-	setflag FLAG_UNK_25F
+	setflag FLAG_HIDE_MT_SILVER_RED
 	setvar VAR_UNK_40FD, 1
-	compare VAR_UNK_4131, 0
+	compare VAR_SCENE_OAKS_LAB, 0
 	call_if_eq _009E
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -47,7 +47,7 @@ _0098:
 	end
 
 _009E:
-	setvar VAR_UNK_4131, 1
+	setvar VAR_SCENE_OAKS_LAB, 1
 	clearflag FLAG_HIDE_OAKS_LAB_BULBASAUR_BALL
 	clearflag FLAG_HIDE_OAKS_LAB_CHARMANDER_BALL
 	clearflag FLAG_HIDE_OAKS_LAB_SQUIRTLE_BALL

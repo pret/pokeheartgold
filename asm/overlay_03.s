@@ -1,3 +1,5 @@
+#include "constants/species.h"
+#include "constants/maps.h"
 	.include "asm/macros.inc"
 	.include "overlay_03.inc"
 	.include "global.inc"
@@ -9822,11 +9824,11 @@ ScrCmd_721: ; 0x02258BDC
 	pop {r3, r4, r5, pc}
 	thumb_func_end ScrCmd_721
 
-	thumb_func_start ScrCmd_791
-ScrCmd_791: ; 0x02258C00
+	thumb_func_start ScrCmd_CheckSafariZoneOwnerTestMonInParty
+ScrCmd_CheckSafariZoneOwnerTestMonInParty: ; 0x02258C00
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
-	ldr r2, _02258CD4 ; =ov03_02259808
+	ldr r2, _02258CD4 ; =sSafariZoneOwnerTestSpecies
 	add r1, sp, #0x14
 	ldrh r3, [r2]
 	ldrh r2, [r2, #2]
@@ -9856,7 +9858,7 @@ ScrCmd_791: ; 0x02258C00
 	bl Save_PlayerData_GetProfile
 	bl PlayerProfile_GetTrainerID
 	str r0, [sp, #0xc]
-	ldr r0, _02258CD8 ; =0x00000165
+	ldr r0, _02258CD8 ; =MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR
 	bl MapHeader_GetMapSec
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
@@ -9921,12 +9923,12 @@ _02258CCA:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_02258CD4: .word ov03_02259808
-_02258CD8: .word 0x00000165
-	thumb_func_end ScrCmd_791
+_02258CD4: .word sSafariZoneOwnerTestSpecies
+_02258CD8: .word MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR
+	thumb_func_end ScrCmd_CheckSafariZoneOwnerTestMonInParty
 
-	thumb_func_start ScrCmd_792
-ScrCmd_792: ; 0x02258CDC
+	thumb_func_start ScrCmd_StartSafariZoneIgtTimer
+ScrCmd_StartSafariZoneIgtTimer: ; 0x02258CDC
 	push {r3, r4, r5, lr}
 	add r0, #0x80
 	ldr r5, [r0]
@@ -9937,10 +9939,10 @@ ScrCmd_792: ; 0x02258CDC
 	bl Save_PlayerData_GetIGTAddr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl sub_0202F784
+	bl SafariZone_SetLastTestCompletionIGT
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end ScrCmd_792
+	thumb_func_end ScrCmd_StartSafariZoneIgtTimer
 
 	thumb_func_start ov03_02258CFC
 ov03_02258CFC: ; 0x02258CFC
@@ -10691,8 +10693,9 @@ ov03_022597FC: ; 0x022597FC
 	.byte 0x4D, 0x88, 0x25, 0x02
 	.byte 0x29, 0x88, 0x25, 0x02, 0x31, 0x88, 0x25, 0x02
 
-ov03_02259808: ; 0x02259808
-	.byte 0x4A, 0x00, 0x1B, 0x00
+sSafariZoneOwnerTestSpecies: ; 0x02259808
+	.short SPECIES_GEODUDE
+	.short SPECIES_SANDSHREW
 
 ov03_0225980C: ; 0x0225980C
 	.byte 0x0A, 0x00, 0x00, 0x00

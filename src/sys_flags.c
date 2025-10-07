@@ -13,19 +13,19 @@ struct MusicOverride {
 };
 
 static const struct MusicOverride sMusicOverrideMap[] = {
-    { MAP_NATIONAL_PARK,                                FLAG_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE_D5 },
-    { MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE, FLAG_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
-    { MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE,             FLAG_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
-    { MAP_CERULEAN_GYM,                                 FLAG_UNK_994,                SEQ_GS_EYE_ROCKET   },
-    { MAP_ROUTE_24,                                     FLAG_UNK_995,                SEQ_GS_EYE_ROCKET   },
-    { MAP_PAL_PARK,                                     FLAG_UNK_999,                SEQ_GS_SAFARI_FIELD },
-    { MAP_GOLDENROD_RADIO_TOWER_1F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_2F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_3F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_4F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_5F,                     FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK,       FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
-    { MAP_GOLDENROD_RADIO_TOWER_ELEVATOR,               FLAG_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_NATIONAL_PARK,                                FLAG_SYS_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE_D5 },
+    { MAP_ROUTE_35_NATIONAL_PARK_POKEATHALON_GATEHOUSE, FLAG_SYS_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
+    { MAP_ROUTE_36_NATIONAL_PARK_GATEHOUSE,             FLAG_SYS_BUG_CONTEST_ACTIVE,     SEQ_GS_TAIKAIMAE    },
+    { MAP_CERULEAN_GYM,                                 FLAG_SYS_ALT_MUSIC_CERULEAN_GYM, SEQ_GS_EYE_ROCKET   },
+    { MAP_ROUTE_24,                                     FLAG_SYS_ALT_MUSIC_ROUTE_24,     SEQ_GS_EYE_ROCKET   },
+    { MAP_PAL_PARK,                                     FLAG_SYS_ALT_MUSIC_PAL_PARK,     SEQ_GS_SAFARI_FIELD },
+    { MAP_GOLDENROD_RADIO_TOWER_1F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_2F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_3F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_4F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_5F,                     FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_OBSERVATION_DECK,       FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
+    { MAP_GOLDENROD_RADIO_TOWER_ELEVATOR,               FLAG_SYS_ROCKET_TAKEOVER_ACTIVE, SEQ_GS_SENKYO       },
 };
 
 void SetScriptFlag(SaveVarsFlags *state, u16 flag_id) {
@@ -66,23 +66,23 @@ BOOL CheckFlag960(SaveVarsFlags *state) {
 }
 
 void SetGameClearFlag(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_GAME_CLEAR);
+    SetScriptFlag(state, FLAG_SYS_GAME_CLEAR);
 }
 
 BOOL CheckGameClearFlag(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_GAME_CLEAR);
+    return CheckScriptFlag(state, FLAG_SYS_GAME_CLEAR);
 }
 
 void Save_VarsFlags_SetHaveFollowerFlag(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_HAVE_FOLLOWER);
+    SetScriptFlag(state, FLAG_SYS_HAVE_FOLLOWER);
 }
 
 void Save_VarsFlags_ClearHaveFollowerFlag(SaveVarsFlags *state) {
-    ClearScriptFlag(state, FLAG_HAVE_FOLLOWER);
+    ClearScriptFlag(state, FLAG_SYS_HAVE_FOLLOWER);
 }
 
 BOOL Save_VarsFlags_CheckHaveFollower(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_HAVE_FOLLOWER);
+    return CheckScriptFlag(state, FLAG_SYS_HAVE_FOLLOWER);
 }
 
 void SetFlag99C(SaveVarsFlags *state) {
@@ -178,15 +178,15 @@ u16 GetOverriddenMapMusic(SaveVarsFlags *state, u32 map_no) {
 }
 
 void SetFlag966(SaveVarsFlags *state) {
-    SetScriptFlag(state, FLAG_UNK_966);
+    SetScriptFlag(state, FLAG_SYS_UNK_966);
 }
 
 void ClearFlag966(SaveVarsFlags *state) {
-    ClearScriptFlag(state, FLAG_UNK_966);
+    ClearScriptFlag(state, FLAG_SYS_UNK_966);
 }
 
 BOOL CheckFlag966(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_966);
+    return CheckScriptFlag(state, FLAG_SYS_UNK_966);
 }
 
 BOOL CheckMetBill(SaveVarsFlags *state) {
@@ -234,7 +234,7 @@ void ClearFlag972(SaveVarsFlags *state) {
 }
 
 BOOL StrengthFlagAction(SaveVarsFlags *state, u32 action) {
-    return FlagAction(state, action, FLAG_STRENGTH_ACTIVE);
+    return FlagAction(state, action, FLAG_SYS_STRENGTH_ACTIVE);
 }
 
 void SysFlagFlashSet(SaveVarsFlags *state) {
@@ -263,7 +263,7 @@ BOOL SysFlagDefogCheck(SaveVarsFlags *state) {
 
 BOOL Save_VarsFlags_FlypointFlagAction(SaveVarsFlags *state, u32 action, u32 flypoint_flag_no) {
     GF_ASSERT(flypoint_flag_no < 38);
-    return FlagAction(state, action, FLAG_SYS_FLYPOINT_PALLET + flypoint_flag_no);
+    return FlagAction(state, action, FLAG_SYS_VISITED_BASE + flypoint_flag_no);
 }
 
 void SetFlag970(SaveVarsFlags *state) {
@@ -288,7 +288,7 @@ BOOL CheckGotMenuIconI(SaveVarsFlags *state, s32 icon_idx) {
 }
 
 BOOL CheckFlag96A(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_96A);
+    return CheckScriptFlag(state, FLAG_SYS_HEALED_AMPHAROS);
 }
 
 BOOL sub_020669B4(SaveVarsFlags *state, u32 a1) {
@@ -308,7 +308,7 @@ BOOL CheckSolvedLtSurgeGym(SaveVarsFlags *state) {
 }
 
 BOOL CheckFlag982(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_982);
+    return CheckScriptFlag(state, FLAG_SYS_MET_POKEATHLON_OWNER);
 }
 
 BOOL CheckFlag09A(SaveVarsFlags *state) {

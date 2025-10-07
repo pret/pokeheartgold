@@ -10,12 +10,12 @@
 	scrdef_end
 
 scr_seq_D17R1101_000:
-	goto_if_unset FLAG_UNK_189, _001B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _001B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _001B:
-	goto_if_unset FLAG_GAME_CLEAR, _00A5
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _00A5
 	get_phone_book_rematch PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00A5
@@ -23,36 +23,36 @@ _001B:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0084
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0067
-	clearflag FLAG_UNK_2CA
+	clearflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	goto _0082
 
 _0067:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _007E
-	clearflag FLAG_UNK_2CA
+	clearflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	goto _0082
 
 _007E:
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 _0082:
 	end
 
 _0084:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _009F
-	clearflag FLAG_UNK_2CA
+	clearflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	goto _00A3
 
 _009F:
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 _00A3:
 	end
 
 _00A5:
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	end
 
 scr_seq_D17R1101_001:
@@ -86,7 +86,7 @@ _00FA:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2CA
+	setflag FLAG_HIDE_BELLTIME_TOWER_MORTY
 	hide_person obj_D17R1101_gsleader4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -120,7 +120,7 @@ _0159:
 	goto_if_eq _01C5
 	npc_msg msg_0059_D17R1101_00006
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 20
@@ -128,7 +128,7 @@ _0159:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0059_D17R1101_00007
 	wait_button_or_walk_away
 	closemsg

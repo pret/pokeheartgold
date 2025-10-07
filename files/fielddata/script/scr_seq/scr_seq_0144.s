@@ -14,7 +14,7 @@
 scr_seq_0144_000:
 	mystery_gift SCR_MG_BEGIN
 	mom_gift_check VAR_TEMP_x4000
-	nop_var_490 VAR_TEMP_x4000
+	debug_print_var VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0035
 	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
@@ -38,7 +38,7 @@ _005A:
 scr_seq_0144_003:
 	mystery_gift SCR_MG_BEGIN
 	mom_gift_check VAR_TEMP_x4000
-	nop_var_490 VAR_TEMP_x4000
+	debug_print_var VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_ne _0083
 	setflag FLAG_HIDE_MOM_GIFT_DELIVERYMAN
@@ -56,7 +56,7 @@ _0087:
 _00A4:
 	clearflag FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN
 _00A8:
-	setvar VAR_UNK_40E5, 2
+	setvar VAR_SCENE_BATTLE_FRONTIER_ACCESS, 2
 	mystery_gift SCR_MG_END
 	end
 
@@ -68,10 +68,10 @@ scr_seq_0144_001:
 	mystery_gift SCR_MG_HAS_GIFT, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, FALSE
 	goto_if_eq _016D
-	scrcmd_379 VAR_SPECIAL_RESULT
+	get_time_of_day VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
-	case 0, _00FD
-	case 1, _0109
+	case RTC_TIMEOFDAY_MORN, _00FD
+	case RTC_TIMEOFDAY_DAY, _0109
 	goto _0115
 
 _00FD:
@@ -132,10 +132,10 @@ scr_seq_0144_002:
 	mom_gift_check VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0232
-	scrcmd_379 VAR_SPECIAL_RESULT
+	get_time_of_day VAR_SPECIAL_RESULT
 	switch VAR_SPECIAL_RESULT
-	case 0, _01CF
-	case 1, _01DB
+	case RTC_TIMEOFDAY_MORN, _01CF
+	case RTC_TIMEOFDAY_DAY, _01DB
 	goto _01E7
 
 _01CF:

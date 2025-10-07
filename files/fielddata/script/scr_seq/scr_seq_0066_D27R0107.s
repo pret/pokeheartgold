@@ -13,11 +13,11 @@
 	scrdef_end
 
 scr_seq_D27R0107_003:
-	setvar VAR_UNK_4125, 0
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 0
 	end
 
 scr_seq_D27R0107_004:
-	goto_if_set FLAG_UNK_1D8, _002D
+	goto_if_set FLAG_HIDE_OLIVINE_LIGHTHOUSE_ELEVATOR_DOOR, _002D
 	make_object_visible obj_D27R0107_stop
 _002D:
 	end
@@ -56,7 +56,7 @@ _0062:
 	wait_movement
 	releaseall
 	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 1
-	setflag FLAG_UNK_1D8
+	setflag FLAG_HIDE_OLIVINE_LIGHTHOUSE_ELEVATOR_DOOR
 	end
 
 _00B5:
@@ -101,16 +101,16 @@ _00B5:
 	following_pokemon_movement 48
 	hide_person obj_D27R0107_gsleader6
 	releaseall
-	setflag FLAG_UNK_96A
+	setflag FLAG_SYS_HEALED_AMPHAROS
 	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 2
 	setvar VAR_UNK_410E, 1
-	setflag FLAG_UNK_1D7
+	setflag FLAG_HIDE_LIGHTHOUSE_ROOF_JASMINE
 	clearflag FLAG_HIDE_JASMINE_IN_GYM
-	setflag FLAG_UNK_1DA
-	setflag FLAG_UNK_1DB
+	setflag FLAG_HIDE_LIGHTHOUSE_GENTLEMAN_PRESTON
+	setflag FLAG_HIDE_LIGHTHOUSE_LASS_CONNIE
 	clearflag FLAG_HIDE_OLIVINE_GYM_GENTLEMAN
 	clearflag FLAG_HIDE_OLIVINE_GYM_GIRL
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	end
 
 _017F:

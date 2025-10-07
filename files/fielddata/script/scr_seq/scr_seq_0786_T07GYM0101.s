@@ -25,7 +25,7 @@ scr_seq_T07GYM0101_002:
 
 _004F:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _006C
 	goto _008D
 
@@ -33,7 +33,7 @@ _0066:
 	goto _008B
 
 _006C:
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_ne _0085
 	goto _008D
 
@@ -73,7 +73,7 @@ _00DC:
 
 _00DE:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _00F9
 	setflag FLAG_HIDE_CELADON_GYM_ERIKA
 	goto _00FF

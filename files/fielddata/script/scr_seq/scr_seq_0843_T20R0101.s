@@ -287,7 +287,7 @@ scr_seq_T20R0101_000:
 	lockall
 	faceplayer
 	goto_if_set FLAG_GOT_SS_TICKET_FROM_ELM, _03BA
-	goto_if_set FLAG_GAME_CLEAR, _0526
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0526
 _03BA:
 	get_party_count VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
@@ -556,7 +556,7 @@ scr_seq_T20R0101_001:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40FC, 3
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 3
 	goto_if_eq _080F
 	compare VAR_SCENE_ELMS_LAB, 0
 	goto_if_ne _07B2
@@ -943,8 +943,8 @@ _0BF3:
 	closemsg
 	releaseall
 	setvar VAR_SCENE_ELMS_LAB, 9
-	setvar VAR_UNK_4079, 3
-	setflag FLAG_UNK_23B
+	setvar VAR_SCENE_ECRUTEAK_CITY, 3
+	setflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRL_BEING_HARASSED
 	clearflag FLAG_HIDE_NEW_BARK_FRIEND_2
 	setvar VAR_SCENE_NEW_BARK_EAST_EXIT, 2
 	setvar VAR_UNK_407B, 2
@@ -1374,7 +1374,7 @@ scr_seq_T20R0101_015:
 	closemsg
 	apply_movement obj_T20R0101_assistantm, _1148
 	wait_movement
-	setvar VAR_UNK_40FC, 3
+	setvar VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 3
 	releaseall
 	end
 

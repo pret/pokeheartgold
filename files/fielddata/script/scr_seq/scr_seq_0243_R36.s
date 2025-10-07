@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R36.h"
 #include "msgdata/msg/msg_0390_R36.h"
+#include "msgdata/msg/msg_0752.h"
 #include "constants/battle.h"
 	.include "asm/macros/script.inc"
 
@@ -21,13 +22,13 @@
 
 scr_seq_R36_002:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0049
-	clearflag FLAG_UNK_1C4
+	clearflag FLAG_HIDE_ROUTE_36_ARTHUR
 	goto _004D
 
 _0049:
-	setflag FLAG_UNK_1C4
+	setflag FLAG_HIDE_ROUTE_36_ARTHUR
 _004D:
 	end
 
@@ -311,21 +312,21 @@ scr_seq_R36_001:
 	goto_if_eq _0490
 	goto_if_set FLAG_GOT_HARD_STONE_FROM_ARTHUR, _0472
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_eq _0423
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 15
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00015
 	goto _046A
 
 _0423:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 12
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00012
 	goto_if_no_item_space ITEM_HARD_STONE, 1, _0486
 	callstd std_give_item_verbose
 	setflag FLAG_GOT_HARD_STONE_FROM_ARTHUR
 	addvar VAR_NUM_MET_WEEKDAY_SIBLINGS, 1
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 13
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00013
 _046A:
 	wait_button_or_walk_away
 	closemsg
@@ -334,7 +335,7 @@ _046A:
 
 _0472:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 14
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00014
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -348,17 +349,17 @@ _0486:
 
 _0490:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_eq _04B3
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 15
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00015
 	goto _046A
 
 _04B3:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 40
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00040
 	buffer_mon_species_name 0, VAR_SPECIAL_x8002
-	msgbox_extern VAR_SPECIAL_RESULT, 42
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00042
 	give_ribbon VAR_SPECIAL_x8002, RIBBON_CARELESS
 	play_fanfare SEQ_ME_ITEM
 	wait_fanfare
@@ -370,7 +371,7 @@ _04B3:
 
 _04E2:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 41
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00041
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -378,7 +379,7 @@ _04E2:
 
 _04F6:
 	get_std_msg_naix 0, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 43
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0752_00043
 	wait_button_or_walk_away
 	closemsg
 	releaseall

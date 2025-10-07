@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R28.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R28.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_r28_rare_candy",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R28_TM35",
       "scriptId": "std_itemball_r28_tm35",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 865,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_MAPTEMP_011",
       "scriptId": "std_field_cut",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 840,

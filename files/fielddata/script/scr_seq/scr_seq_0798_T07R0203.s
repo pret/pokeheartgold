@@ -23,7 +23,7 @@
 
 scr_seq_T07R0203_008:
 	get_friend_sprite VAR_OBJ_0
-	setvar VAR_UNK_4125, 0
+	setvar VAR_SCENE_RADIO_TOWER_ELEVATOR, 0
 	end
 
 scr_seq_T07R0203_011:

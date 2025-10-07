@@ -15,8 +15,8 @@
 	scrdef_end
 
 scr_seq_T07R0104_004:
-	goto_if_unset FLAG_UNK_189, _002F
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _002F
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _002F:
@@ -30,10 +30,10 @@ _002F:
 
 _005B:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _007A
-	clearflag FLAG_UNK_260
-	clearflag FLAG_UNK_2E2
+	clearflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
+	clearflag FLAG_HIDE_CELADON_DEPT_STORE_JANINE
 	goto _0080
 
 _007A:
@@ -47,10 +47,10 @@ _0082:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00C2
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_ne _00BA
-	clearflag FLAG_UNK_260
-	setflag FLAG_UNK_2E2
+	clearflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_JANINE
 	set_object_facing obj_T07R0104_gsleader1, DIR_SOUTH
 	goto _00C0
 
@@ -61,8 +61,8 @@ _00C0:
 	end
 
 _00C2:
-	setflag FLAG_UNK_260
-	setflag FLAG_UNK_2E2
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_JANINE
 	end
 
 _00CC:
@@ -109,7 +109,7 @@ _013F:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_260
+	setflag FLAG_HIDE_CELADON_DEPT_STORE_FALKNER
 	hide_person obj_T07R0104_gsleader1
 	hide_person obj_T07R0104_gsleader13
 	play_se SEQ_SE_DP_KAIDAN2
@@ -155,7 +155,7 @@ _01CD:
 	goto_if_eq _0241
 	npc_msg msg_0497_T07R0104_00011
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 2
@@ -163,7 +163,7 @@ _01CD:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0497_T07R0104_00012
 	wait_button_or_walk_away
 	closemsg

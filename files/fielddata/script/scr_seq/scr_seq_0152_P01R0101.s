@@ -116,13 +116,13 @@ scr_seq_P01R0101_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_unset FLAG_GAME_CLEAR, _0361
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _0361
 	compare VAR_TEMP_x4002, 1
 	goto_if_ge _0356
 	get_player_facing VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_eq _0320
-	compare VAR_UNK_40CB, 7
+	compare VAR_SCENE_SS_AQUA, 7
 	goto_if_ge _01FB
 	npc_msg msg_0255_P01R0101_00001
 	closemsg
@@ -152,14 +152,14 @@ scr_seq_P01R0101_000:
 	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
 	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22C
-	setflag FLAG_UNK_22B
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_EASTBOUND
 	releaseall
 	end
 
 _01FB:
 	get_weekday VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 0
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_SUNDAY
 	goto_if_ne _0218
 	goto _02EE
 
@@ -167,7 +167,7 @@ _0212:
 	goto _029B
 
 _0218:
-	compare VAR_SPECIAL_RESULT, 1
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_MONDAY
 	goto_if_ne _0231
 	goto _029B
 
@@ -175,7 +175,7 @@ _022B:
 	goto _029B
 
 _0231:
-	compare VAR_SPECIAL_RESULT, 2
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_TUESDAY
 	goto_if_ne _024A
 	goto _02EE
 
@@ -183,7 +183,7 @@ _0244:
 	goto _029B
 
 _024A:
-	compare VAR_SPECIAL_RESULT, 3
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_WEDNESDAY
 	goto_if_ne _0263
 	goto _02EE
 
@@ -191,7 +191,7 @@ _025D:
 	goto _029B
 
 _0263:
-	compare VAR_SPECIAL_RESULT, 4
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_THURSDAY
 	goto_if_ne _027C
 	goto _02EE
 
@@ -199,7 +199,7 @@ _0276:
 	goto _029B
 
 _027C:
-	compare VAR_SPECIAL_RESULT, 5
+	compare VAR_SPECIAL_RESULT, RTC_WEEK_FRIDAY
 	goto_if_ne _0295
 	goto _029B
 
@@ -226,9 +226,9 @@ _029B:
 	setvar VAR_BOAT_DIRECTION, 1
 	setvar VAR_UNK_40DC, 0
 	clearflag FLAG_BOAT_ARRIVED
-	setflag FLAG_UNK_22A
-	clearflag FLAG_UNK_22B
-	setflag FLAG_UNK_22C
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_FIRST_VOYAGE
+	clearflag FLAG_HIDE_SS_AQUA_TRAINERS_EASTBOUND
+	setflag FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND
 	releaseall
 	end
 

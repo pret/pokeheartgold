@@ -1,11 +1,13 @@
 {{ doNotModifyHeader }}
 #include "constants/scrcmd.h"
-{% if exists("header") %}#include "{{ header }}"{% endif %}
+{% if exists("headers") %}{% for hdr in headers %}
+#include "{{ hdr }}"
+{% endfor %}{% endif %}
 
 	.rodata
 
 ## if exists("bgs")
-	.word {{ length(bgs) }};
+	.word {{ length(bgs) }}
 ## for bg in bgs
 	.short {{ bg.scriptId }}
 	.short {{ bg.type }}
@@ -20,21 +22,38 @@
 ## if exists("objects")
 	.word {{ length(objects) }}
 ## for object in objects
+## if existsIn(object, "cloneId")
+	.short {{ object.cloneId }}
+## else
 	.short {{ object.id }}
+## endif
 	.short {{ object.spriteId }}
 	.short {{ object.movement }}
 	.short {{ object.type }}
 	.short {{ object.eventFlag }}
 	.short {{ object.scriptId }}
 	.short {{ object.facingDirection }}
-	.short {{ object.param0 }}
-	.short {{ object.param1 }}
-	.short {{ object.param2 }}
+## if existsIn(object, "data")
+## if length(object.data) > 3
+	{{ "object.data is too long!" }}
+	{{ freak_out }}
+## endif
+## for x in object.data
+	.short {{ x }}
+## endfor
+## for i in range(3 - length(object.data))
+	.short 0
+## endfor
+## else
+	.short 0
+	.short 0
+	.short 0
+## endif
 	.short {{ object.xRange }}
 	.short {{ object.yRange }}
 	.short {{ object.x }}
 	.short {{ object.z }}
-	.word {{ object.y }}
+	.word {{ object.y }} * 0x10000
 ## endfor
 ## else
 	.word 0

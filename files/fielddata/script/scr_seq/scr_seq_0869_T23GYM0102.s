@@ -29,7 +29,7 @@ scr_seq_T23GYM0102_016:
 	get_phone_book_rematch PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00CD
-	goto_if_set FLAG_GAME_CLEAR, _006C
+	goto_if_set FLAG_SYS_GAME_CLEAR, _006C
 	clearflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
@@ -38,18 +38,18 @@ _006C:
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0096
 	get_weekday VAR_TEMP_x4002
-	compare VAR_TEMP_x4002, 4
+	compare VAR_TEMP_x4002, RTC_WEEK_THURSDAY
 	goto_if_ne _0096
 	setflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end
 
 _0096:
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
+	compare VAR_TEMP_x4001, RTC_WEEK_MONDAY
 	goto_if_eq _00C7
-	compare VAR_TEMP_x4001, 3
+	compare VAR_TEMP_x4001, RTC_WEEK_WEDNESDAY
 	goto_if_eq _00C7
-	compare VAR_TEMP_x4001, 5
+	compare VAR_TEMP_x4001, RTC_WEEK_FRIDAY
 	goto_if_eq _00C7
 	clearflag FLAG_HIDE_AZALEA_GYM_BUGSY
 	end

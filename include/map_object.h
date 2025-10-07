@@ -52,7 +52,7 @@ struct LocalMapObject { // declared field_system.h
     /*0x00C*/ u32 mapId;
     /*0x010*/ u32 spriteId;
     /*0x014*/ u32 movement;
-    /*0x018*/ u32 type;
+    /*0x018*/ u32 type; // 0 = normal, 1 = trainer, 2 = unused
     /*0x01C*/ u32 eventFlag;
     /*0x020*/ u32 scriptId;
     /*0x024*/ u32 initialFacing;

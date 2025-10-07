@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0101.h"
+  ],
   "objects": [
     {
       "id": "obj_P01R0101_seaman_2",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0101_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_HIDE_OLIVINE_PORT_OAK",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 11,
@@ -43,9 +39,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0101_004 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 2,
@@ -60,9 +53,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0101_003 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 12,

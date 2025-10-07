@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T24.h"
 #include "msgdata/msg/msg_0572_T24.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -78,7 +79,7 @@ _00E4:
 _00F0:
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	setflag FLAG_UNK_0C5
-	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
+	setflag FLAG_SYS_ROCKET_TAKEOVER_ACTIVE
 	compare VAR_UNK_40F8, 0
 	goto_if_ne _0111
 	setvar VAR_UNK_40F8, 2
@@ -123,7 +124,7 @@ scr_seq_T24_002:
 	following_pokemon_movement 48
 	hide_person obj_T24_tsure_poke_static_suicune
 	setflag FLAG_HIDE_CIANWOOD_SUICUNE
-	addvar VAR_UNK_4076, 1
+	addvar VAR_SCENE_CIANWOOD_CITY, 1
 	clearflag FLAG_HIDE_CIANWOOD_EUSINE
 	show_person obj_T24_minaki
 	callstd std_play_eusine_music
@@ -164,7 +165,7 @@ scr_seq_T24_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _0276
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0276
 	goto_if_set FLAG_GOT_HM02, _026B
 	npc_msg msg_0572_T24_00000
 	npc_msg msg_0572_T24_00001
@@ -297,7 +298,7 @@ scr_seq_T24_007:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 6
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00006
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -307,7 +308,7 @@ scr_seq_T24_007:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0481
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 7
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00007
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -344,7 +345,7 @@ _0449:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 8
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00008
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -357,7 +358,7 @@ _047B:
 
 _0481:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 9
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00009
 	wait_button_or_walk_away
 	closemsg
 	releaseall

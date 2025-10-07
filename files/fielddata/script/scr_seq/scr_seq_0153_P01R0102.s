@@ -25,8 +25,8 @@ _002D:
 
 scr_seq_P01R0102_005:
 	scrcmd_582 MAP_OLIVINE, 279, 276
-	goto_if_unset FLAG_UNK_189, _0054
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0054
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0054:
@@ -40,9 +40,9 @@ _0054:
 
 _0080:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _00C1
-	clearflag FLAG_UNK_2C9
+	clearflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	end
 
 _0097:
@@ -50,13 +50,13 @@ _0097:
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00C1
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _00C1
-	clearflag FLAG_UNK_2C9
+	clearflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	end
 
 _00C1:
-	setflag FLAG_UNK_2C9
+	setflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	end
 
 scr_seq_P01R0102_002:
@@ -239,7 +239,7 @@ _02C3:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2C9
+	setflag FLAG_HIDE_OLIVINE_PORT_SABRINA
 	hide_person obj_P01R0102_gsleader10
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -273,7 +273,7 @@ _0322:
 	goto_if_eq _038E
 	npc_msg msg_0256_P01R0102_00010
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 88
@@ -281,7 +281,7 @@ _0322:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0256_P01R0102_00011
 	wait_button_or_walk_away
 	closemsg

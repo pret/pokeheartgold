@@ -13,7 +13,7 @@
 scr_seq_D25R0103_002:
 	goto_if_set FLAG_DAILY_CAUGHT_LAPRAS, _003A
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0034
 	clearflag FLAG_HIDE_UNION_CAVE_LAPRAS
 	goto _0038

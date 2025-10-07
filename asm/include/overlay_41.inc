@@ -146,8 +146,8 @@
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers
 .public ObjCharTransfer_ResetTransferTasksByResID
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public ObjPlttTransfer_Init
 .public ObjPlttTransfer_Destroy
 .public ObjPlttTransfer_Reset
@@ -195,7 +195,7 @@
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0202B9B8
-.public sub_0202BA70
+.public FashionCase_GetAccessoryQuantity
 .public sub_0202BAB0
 .public sub_0202BC38
 .public sub_0202BC60

@@ -148,7 +148,7 @@ Static main
     Object asm/unk_02034354.o
     Object asm/unk_02034B0C.o
     Object asm/unk_02035900.o
-    Object asm/unk_020379A0.o
+    Object src/unk_020379A0.o
     Object asm/unk_02037C94.o
     Object asm/unk_0203A3B0.o
     Object src/communication_error.o
@@ -1129,28 +1129,31 @@ Overlay OVY_99
 Overlay pokegear
 {
     After main
-    Object src/application/pokegear/main/overlay_100_021E5900.o
+    Object src/application/pokegear/main/pokegear_sys.o
     Object src/application/pokegear/main/pokegear_main.o
-    Object src/application/pokegear/main/overlay_100_021E6914.o
+    Object src/application/pokegear/main/pokegear_ui.o
+    Object src/application/pokegear/main/pokegear_cursor.o
 }
 Overlay pokegear_app
 {
     After pokegear
     Object src/application/pokegear/map/pokegear_map.o
-    Object src/application/pokegear/map/overlay_101_021F79B4.o
-    Object src/application/pokegear/map/overlay_101_021E7FF4.o
-    Object src/application/pokegear/map/overlay_101_021E9270.o
-    Object src/application/pokegear/map/overlay_101_021EB568.o
-    Object src/application/pokegear/map/overlay_101_021ED498.o
+    Object src/application/pokegear/map/pokegear_map_gfx.o
+    Object src/application/pokegear/map/pokegear_map_util.o
+    Object src/application/pokegear/map/pokegear_map_input.o
+    Object src/application/pokegear/map/pokegear_map_markings.o
     Object src/application/pokegear/map/fly_map.o
-    Object src/application/pokegear/map/overlay_101_021EDCE0.o
-    Object asm/pokegear_app_configure.o
+    Object src/application/pokegear/map/fly_map_gfx.o
+    Object src/application/pokegear/configure/pokegear_configure.o
+    Object src/application/pokegear/configure/pokegear_configure_gfx.o
+    Object src/application/pokegear/configure/pokegear_configure_ui.o
+    Object src/application/pokegear/configure/pokegear_configure_input.o
     Object src/application/pokegear/phone/pokegear_phone.o
-    Object src/application/pokegear/phone/overlay_101_021EFD20.o
-    Object src/application/pokegear/phone/overlay_101_021F017C.o
-    Object src/application/pokegear/phone/overlay_101_021F0880.o
-    Object src/application/pokegear/phone/overlay_101_021F0F48.o
-    Object src/application/pokegear/phone/overlay_101_021F1D74.o
+    Object src/application/pokegear/phone/pokegear_phone_input.o
+    Object src/application/pokegear/phone/pokegear_phone_gfx.o
+    Object src/application/pokegear/phone/pokegear_phone_contact_list.o
+    Object src/application/pokegear/phone/pokegear_phone_ui.o
+    Object src/application/pokegear/phone/pokegear_phone_script.o
     Object src/application/pokegear/phone/scripts/phone_scripts_mother.o
     Object src/application/pokegear/phone/scripts/phone_scripts_prof_elm.o
     Object src/application/pokegear/phone/scripts/phone_scripts_generic.o
@@ -1168,9 +1171,9 @@ Overlay pokegear_app
     Object src/application/pokegear/phone/scripts/phone_scripts_juggler_irwin.o
     Object src/application/pokegear/phone/extra_ethan_lyra_data.o
     Object src/application/pokegear/radio/pokegear_radio.o
-    Object src/application/pokegear/radio/overlay_101_021F49F8.o
-    Object src/application/pokegear/radio/overlay_101_021F4F34.o
-    Object src/application/pokegear/radio/overlay_101_021F57B8.o
+    Object src/application/pokegear/radio/pokegear_radio_gfx.o
+    Object src/application/pokegear/radio/pokegear_radio_input.o
+    Object src/application/pokegear/radio/pokegear_radio_shows.o
     Object src/application/pokegear/radio/shows/pokemon_music.o
     Object src/application/pokegear/radio/shows/poke_flute.o
     Object src/application/pokegear/radio/shows/unown.o

@@ -32,4 +32,7 @@ typedef struct {
 
 #define ARRAY_ASSIGN(dest, src) ARRAY_ASSIGN_EX(dest, src, typeof(*(dest)), NELEMS(dest))
 
+#define ROUND_UP(x, n) (((x) + (n) - 1) & ~((n) - 1))
+#define CEILDIV(x, n)  (((x) + (n) - 1) / (n))
+
 #endif // POKEHEARTGOLD_GLOBAL_H

@@ -1,6 +1,8 @@
+#include "constants/accessories.h"
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T08R0201.h"
 #include "msgdata/msg/msg_0516_T08R0201.h"
+#include "msgdata/msg/msg_0191.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -18,12 +20,12 @@
 	scrdef_end
 
 scr_seq_T08R0201_000:
-	goto_if_set FLAG_UNK_9CD, _003B
+	goto_if_set FLAG_SYS_VISITED_PAL_PARK, _003B
 	setvar VAR_PAL_PARK_HIGH_SCORE, 2000
 _003B:
-	clearflag FLAG_UNK_999
-	setflag FLAG_UNK_9CD
-	compare VAR_UNK_4124, 0
+	clearflag FLAG_SYS_ALT_MUSIC_PAL_PARK
+	setflag FLAG_SYS_VISITED_PAL_PARK
+	compare VAR_SCENE_PAL_PARK_ENTRANCE, 0
 	goto_if_ne _0052
 	end
 
@@ -48,8 +50,8 @@ scr_seq_T08R0201_003:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_136, _019B
-	setflag FLAG_UNK_136
+	goto_if_set FLAG_GOT_PAL_PARK_INTRO, _019B
+	setflag FLAG_GOT_PAL_PARK_INTRO
 	buffer_players_name 0
 	gender_msgbox msg_0516_T08R0201_00000, msg_0516_T08R0201_00001
 	touchscreen_menu_hide
@@ -80,10 +82,10 @@ _00E0:
 _00E9:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 194, 255, 0
-	menu_item_add 195, 255, 1
-	menu_item_add 196, 255, 2
-	menu_item_add 198, 255, 4
+	menu_item_add msg_0191_00194, 255, 0
+	menu_item_add msg_0191_00195, 255, 1
+	menu_item_add msg_0191_00196, 255, 2
+	menu_item_add msg_0191_00198, 255, 4
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
@@ -127,9 +129,9 @@ _019B:
 _01A8:
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	menu_item_add 199, 255, 0
-	menu_item_add 200, 255, 1
-	menu_item_add 201, 255, 2
+	menu_item_add msg_0191_00199, 255, 0
+	menu_item_add msg_0191_00200, 255, 1
+	menu_item_add msg_0191_00201, 255, 2
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 0
@@ -204,7 +206,7 @@ _02A0:
 scr_seq_T08R0201_002:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_4124, 0
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 0
 	apply_movement obj_player, _03D4
 	wait_movement
 	apply_movement obj_T08R0201_workman, _03BC
@@ -216,7 +218,7 @@ scr_seq_T08R0201_002:
 scr_seq_T08R0201_001:
 	scrcmd_609
 	lockall
-	setvar VAR_UNK_4124, 0
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 0
 	apply_movement obj_player, _03DC
 	apply_movement obj_T08R0201_workman, _03C8
 	wait_movement
@@ -399,9 +401,9 @@ _051C:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
-	setvar VAR_SPECIAL_x8004, 97
+	setvar VAR_SPECIAL_x8004, ACCESSORY_CROWN
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	has_space_for_accesssory VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00035
@@ -412,9 +414,9 @@ _055D:
 	hasitem ITEM_FASHION_CASE, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
-	setvar VAR_SPECIAL_x8004, 98
+	setvar VAR_SPECIAL_x8004, ACCESSORY_TIARA
 	setvar VAR_SPECIAL_x8005, 1
-	scrcmd_404 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
+	has_space_for_accesssory VAR_SPECIAL_x8004, VAR_SPECIAL_x8005, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00036
@@ -426,7 +428,7 @@ _059E:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 14
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	has_space_for_fashion_background VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00037
@@ -438,7 +440,7 @@ _05D7:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 15
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	has_space_for_fashion_background VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00038
@@ -450,7 +452,7 @@ _0610:
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0506
 	setvar VAR_SPECIAL_x8004, 16
-	scrcmd_407 VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
+	has_space_for_fashion_background VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0506
 	npc_msg msg_0516_T08R0201_00039
@@ -483,7 +485,7 @@ _0669:
 	call_if_lt _07D3
 	return
 
-_06A5:
+_06A5:  // consolation
 	random VAR_SPECIAL_x8006, 8
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _0861
@@ -504,7 +506,7 @@ _06A5:
 	call _082F
 	return
 
-_071B:
+_071B:  // bronze
 	random VAR_SPECIAL_x8006, 5
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _08A1
@@ -519,7 +521,7 @@ _071B:
 	call _082F
 	return
 
-_076A:
+_076A:  // silver
 	random VAR_SPECIAL_x8006, 7
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _08C9
@@ -538,7 +540,7 @@ _076A:
 	call _082F
 	return
 
-_07D3:
+_07D3:  // gold
 	random VAR_SPECIAL_x8006, 6
 	compare VAR_SPECIAL_x8006, 0
 	call_if_eq _0901
@@ -568,106 +570,106 @@ _084C:
 	return
 
 _0861:
-	setvar VAR_SPECIAL_x8006, 149
+	setvar VAR_SPECIAL_x8006, ITEM_CHERI_BERRY
 	return
 
 _0869:
-	setvar VAR_SPECIAL_x8006, 150
+	setvar VAR_SPECIAL_x8006, ITEM_CHESTO_BERRY
 	return
 
 _0871:
-	setvar VAR_SPECIAL_x8006, 151
+	setvar VAR_SPECIAL_x8006, ITEM_PECHA_BERRY
 	return
 
 _0879:
-	setvar VAR_SPECIAL_x8006, 152
+	setvar VAR_SPECIAL_x8006, ITEM_RAWST_BERRY
 	return
 
 _0881:
-	setvar VAR_SPECIAL_x8006, 153
+	setvar VAR_SPECIAL_x8006, ITEM_ASPEAR_BERRY
 	return
 
 _0889:
-	setvar VAR_SPECIAL_x8006, 154
+	setvar VAR_SPECIAL_x8006, ITEM_LEPPA_BERRY
 	return
 
 _0891:
-	setvar VAR_SPECIAL_x8006, 155
+	setvar VAR_SPECIAL_x8006, ITEM_ORAN_BERRY
 	return
 
 _0899:
-	setvar VAR_SPECIAL_x8006, 156
+	setvar VAR_SPECIAL_x8006, ITEM_PERSIM_BERRY
 	return
 
 _08A1:
-	setvar VAR_SPECIAL_x8006, 159
+	setvar VAR_SPECIAL_x8006, ITEM_FIGY_BERRY
 	return
 
 _08A9:
-	setvar VAR_SPECIAL_x8006, 160
+	setvar VAR_SPECIAL_x8006, ITEM_WIKI_BERRY
 	return
 
 _08B1:
-	setvar VAR_SPECIAL_x8006, 161
+	setvar VAR_SPECIAL_x8006, ITEM_MAGO_BERRY
 	return
 
 _08B9:
-	setvar VAR_SPECIAL_x8006, 162
+	setvar VAR_SPECIAL_x8006, ITEM_AGUAV_BERRY
 	return
 
 _08C1:
-	setvar VAR_SPECIAL_x8006, 163
+	setvar VAR_SPECIAL_x8006, ITEM_IAPAPA_BERRY
 	return
 
 _08C9:
-	setvar VAR_SPECIAL_x8006, 164
+	setvar VAR_SPECIAL_x8006, ITEM_RAZZ_BERRY
 	return
 
 _08D1:
-	setvar VAR_SPECIAL_x8006, 165
+	setvar VAR_SPECIAL_x8006, ITEM_BLUK_BERRY
 	return
 
 _08D9:
-	setvar VAR_SPECIAL_x8006, 166
+	setvar VAR_SPECIAL_x8006, ITEM_NANAB_BERRY
 	return
 
 _08E1:
-	setvar VAR_SPECIAL_x8006, 167
+	setvar VAR_SPECIAL_x8006, ITEM_WEPEAR_BERRY
 	return
 
 _08E9:
-	setvar VAR_SPECIAL_x8006, 168
+	setvar VAR_SPECIAL_x8006, ITEM_PINAP_BERRY
 	return
 
 _08F1:
-	setvar VAR_SPECIAL_x8006, 157
+	setvar VAR_SPECIAL_x8006, ITEM_LUM_BERRY
 	return
 
 _08F9:
-	setvar VAR_SPECIAL_x8006, 158
+	setvar VAR_SPECIAL_x8006, ITEM_SITRUS_BERRY
 	return
 
 _0901:
-	setvar VAR_SPECIAL_x8006, 169
+	setvar VAR_SPECIAL_x8006, ITEM_POMEG_BERRY
 	return
 
 _0909:
-	setvar VAR_SPECIAL_x8006, 170
+	setvar VAR_SPECIAL_x8006, ITEM_KELPSY_BERRY
 	return
 
 _0911:
-	setvar VAR_SPECIAL_x8006, 171
+	setvar VAR_SPECIAL_x8006, ITEM_QUALOT_BERRY
 	return
 
 _0919:
-	setvar VAR_SPECIAL_x8006, 172
+	setvar VAR_SPECIAL_x8006, ITEM_HONDEW_BERRY
 	return
 
 _0921:
-	setvar VAR_SPECIAL_x8006, 173
+	setvar VAR_SPECIAL_x8006, ITEM_GREPA_BERRY
 	return
 
 _0929:
-	setvar VAR_SPECIAL_x8006, 174
+	setvar VAR_SPECIAL_x8006, ITEM_TAMATO_BERRY
 	return
 	.balign 4, 0

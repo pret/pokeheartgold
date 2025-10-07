@@ -173,7 +173,7 @@ _0222:
 	wait_movement
 	call _0BCA
 	scrcmd_606
-	clearflag FLAG_UNK_966
+	clearflag FLAG_SYS_UNK_966
 	setvar VAR_UNK_4133, 0
 	setvar VAR_UNK_4133, 0
 	releaseall
@@ -662,7 +662,7 @@ _0AAB:
 
 _0ABA:
 	setvar VAR_UNK_4133, 1
-	setflag FLAG_UNK_966
+	setflag FLAG_SYS_UNK_966
 	npc_msg_var msg_0046_00066
 	wait_button_or_delay 45
 	scrcmd_257 96
@@ -831,18 +831,18 @@ _0D14:
 	compare VAR_SPECIAL_RESULT, 255
 	goto_if_eq _0E34
 	setvar VAR_UNK_4133, 2
-	setflag FLAG_UNK_966
+	setflag FLAG_SYS_UNK_966
 	callstd std_prompt_save
 	copyvar VAR_SPECIAL_RESULT, VAR_TEMP_x4000
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0D70
 	setvar VAR_UNK_4133, 0
-	clearflag FLAG_UNK_966
+	clearflag FLAG_SYS_UNK_966
 	goto _0359
 
 _0D70:
 	setvar VAR_UNK_4133, 2
-	setflag FLAG_UNK_966
+	setflag FLAG_SYS_UNK_966
 	npc_msg msg_0046_00077
 	closemsg
 	scrcmd_600

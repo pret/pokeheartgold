@@ -1,6 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D44R0103.h"
 #include "msgdata/msg/msg_0130_D44R0103.h"
+#include "msgdata/msg/msg_0191.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -14,8 +16,8 @@
 	scrdef_end
 
 scr_seq_D44R0103_004:
-	goto_if_unset FLAG_UNK_189, _002B
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _002B
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _002B:
@@ -24,9 +26,9 @@ _002B:
 
 _003C:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _0064
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _0064
 _005A:
 	setflag FLAG_HIDE_CAMERON
@@ -59,9 +61,9 @@ _00A0:
 	npc_msg msg_0130_D44R0103_00001
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 280, 255, 0
-	menu_item_add 281, 255, 1
-	menu_item_add 282, 255, 0
+	menu_item_add msg_0191_00280, 255, 0
+	menu_item_add msg_0191_00281, 255, 1
+	menu_item_add msg_0191_00282, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -72,9 +74,9 @@ _00DF:
 	npc_msg msg_0130_D44R0103_00002
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 283, 255, 0
-	menu_item_add 284, 255, 0
-	menu_item_add 285, 255, 1
+	menu_item_add msg_0191_00283, 255, 0
+	menu_item_add msg_0191_00284, 255, 0
+	menu_item_add msg_0191_00285, 255, 1
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -85,9 +87,9 @@ _011E:
 	npc_msg msg_0130_D44R0103_00003
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 286, 255, 1
-	menu_item_add 287, 255, 0
-	menu_item_add 288, 255, 0
+	menu_item_add msg_0191_00286, 255, 1
+	menu_item_add msg_0191_00287, 255, 0
+	menu_item_add msg_0191_00288, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -98,9 +100,9 @@ _015D:
 	npc_msg msg_0130_D44R0103_00004
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 289, 255, 0
-	menu_item_add 290, 255, 1
-	menu_item_add 291, 255, 0
+	menu_item_add msg_0191_00289, 255, 0
+	menu_item_add msg_0191_00290, 255, 1
+	menu_item_add msg_0191_00291, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -111,9 +113,9 @@ _019C:
 	npc_msg msg_0130_D44R0103_00005
 	touchscreen_menu_hide
 	menu_init_std_gmm 1, 1, 0, 0, VAR_SPECIAL_RESULT
-	menu_item_add 292, 255, 1
-	menu_item_add 293, 255, 0
-	menu_item_add 294, 255, 0
+	menu_item_add msg_0191_00292, 255, 1
+	menu_item_add msg_0191_00293, 255, 0
+	menu_item_add msg_0191_00294, 255, 0
 	menu_exec
 	touchscreen_menu_show
 	compare VAR_SPECIAL_RESULT, 1
@@ -180,10 +182,10 @@ _02D6:
 	wait_button_or_walk_away
 	closemsg
 	releaseall
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	setflag FLAG_UNK_0EA
 	clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
-	setvar VAR_UNK_40C4, 1
+	setvar VAR_SCENE_DRAGONS_DEN_CLAIR_TM, 1
 	setflag FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND
 	setvar VAR_UNK_40C3, 1
 	setvar VAR_UNK_407B, 1
@@ -401,7 +403,7 @@ scr_seq_D44R0103_005:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -411,7 +413,7 @@ scr_seq_D44R0103_005:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _06B2
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -450,16 +452,16 @@ _063D:
 	apply_movement obj_partner_poke, _0720
 	wait_movement
 _0664:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 46
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -467,7 +469,7 @@ _0664:
 
 _069E:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -475,7 +477,7 @@ _069E:
 
 _06B2:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

@@ -63,8 +63,8 @@ _02093222:
 _02093228: .word sGiftNormalTable
 	thumb_func_end sub_020931C4
 
-	thumb_func_start sub_0209322C
-sub_0209322C: ; 0x0209322C
+	thumb_func_start PhoneCallPersistentState_MomsSavings_TryBuySomething
+PhoneCallPersistentState_MomsSavings_TryBuySomething: ; 0x0209322C
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	add r5, r1, #0
@@ -118,7 +118,7 @@ _0209326A:
 	nop
 _0209329C: .word 0x00000BB8
 _020932A0: .word sGiftBerryTable
-	thumb_func_end sub_0209322C
+	thumb_func_end PhoneCallPersistentState_MomsSavings_TryBuySomething
 
 	.rodata
 

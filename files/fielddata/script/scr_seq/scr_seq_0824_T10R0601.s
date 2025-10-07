@@ -22,7 +22,7 @@ scr_seq_T10R0601_001:
 	toggle_following_pokemon_movement 1
 	following_pokemon_movement 48
 	play_se SEQ_SE_DP_KI_GASYAN
-	clearflag FLAG_UNK_210
+	clearflag FLAG_HIDE_LANCE_ROOM_RETREAT
 	show_person obj_T10R0601_babyboy1_11
 	setvar VAR_UNK_40C8, 1
 	releaseall
@@ -34,7 +34,7 @@ _0048:
 	step_end
 
 scr_seq_T10R0601_002:
-	setflag FLAG_UNK_210
+	setflag FLAG_HIDE_LANCE_ROOM_RETREAT
 	setvar VAR_UNK_40C8, 0
 	end
 
@@ -154,7 +154,7 @@ _0234:
 	wait_movement
 	wait_button
 	closemsg
-	goto_if_set FLAG_GAME_CLEAR, _0268
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0268
 	clearflag FLAG_HIDE_OLIVINE_PORT_OAK
 	setvar VAR_UNK_411A, 1
 _0268:

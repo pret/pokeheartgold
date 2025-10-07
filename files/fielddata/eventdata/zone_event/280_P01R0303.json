@@ -1,17 +1,16 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0303.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0303.h"
+  ],
   "objects": [
     {
       "id": "obj_P01R0303_seaman_2",
       "spriteId": "SPRITE_SEAMAN_2",
       "movement": 0,
       "type": 0,
-      "eventFlag": "FLAG_UNK_21A",
+      "eventFlag": "FLAG_HIDE_SAILOR_STANLY",
       "scriptId": "_EV_scr_seq_P01R0303_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 7,
@@ -23,34 +22,34 @@
       "spriteId": "SPRITE_GSGENTLEMAN",
       "movement": 0,
       "type": 1,
-      "eventFlag": "FLAG_UNK_22B",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_TRAINERS_EASTBOUND",
       "scriptId": "std_trainer(TRAINER_GENTLEMAN_EDWARD)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1,
       "z": 9,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_P01R0303_thief",
       "spriteId": "SPRITE_THIEF",
       "movement": 0,
       "type": 1,
-      "eventFlag": "FLAG_UNK_22C",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_TRAINERS_WESTBOUND",
       "scriptId": "std_trainer(TRAINER_BURGLAR_COREY)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 9,
       "z": 7,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     }
   ],
   "warps": [

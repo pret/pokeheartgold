@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T31.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T31.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_t31_full_restore",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_T31_REAPER_CLOTH",
       "scriptId": "std_itemball_t31_reaper_cloth",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 808,
@@ -44,9 +43,6 @@
       "eventFlag": "FLAG_HIDE_CAMERON",
       "scriptId": "_EV_scr_seq_T31_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 820,

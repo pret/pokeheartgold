@@ -13,19 +13,19 @@ scr_seq_D46R0101_001:
 	check_registered_phone_number PHONE_CONTACT_BUGSY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0047
-	goto_if_set FLAG_GAME_CLEAR, _0030
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0030
 	goto _0047
 	end
 
 _0030:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _0047
-	clearflag FLAG_UNK_263
+	clearflag FLAG_HIDE_VIRIDIAN_FOREST_BUGSY
 	end
 
 _0047:
-	setflag FLAG_UNK_263
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_BUGSY
 	end
 
 scr_seq_D46R0101_000:
@@ -56,7 +56,7 @@ _0089:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_263
+	setflag FLAG_HIDE_VIRIDIAN_FOREST_BUGSY
 	hide_person obj_D46R0101_gsleader2
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2

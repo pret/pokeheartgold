@@ -26,14 +26,14 @@ scr_seq_T11GYM0101_004:
 
 _0055:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0083
 	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
 
 _006C:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0083
 	setflag FLAG_HIDE_SAFFRON_GYM_SABRINA
 	end
@@ -62,7 +62,7 @@ scr_seq_T11GYM0101_000:
 	give_badge BADGE_MARSH
 	addvar VAR_UNK_4135, 1
 	add_special_game_stat SCORE_EVENT_BADGE_GET
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	settrainerflag TRAINER_PSYCHIC_M_FRANKLIN
 	settrainerflag TRAINER_PSYCHIC_M_JARED
 	settrainerflag TRAINER_MEDIUM_REBECCA

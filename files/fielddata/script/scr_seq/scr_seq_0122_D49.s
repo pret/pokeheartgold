@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D49.h"
 #include "msgdata/msg/msg_0137_D49.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -32,34 +33,34 @@
 	scrdef_end
 
 scr_seq_D49_018:
-	goto_if_unset FLAG_UNK_189, _0073
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0073
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0073:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _00C2
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_eq _00C2
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _00C2
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _00CC
-	compare VAR_UNK_40DB, 0
+	compare VAR_SCENE_POKEATHLON_DOME, 0
 	goto_if_eq _00CC
 	setflag FLAG_HIDE_CAMERON
-	clearflag FLAG_UNK_27F
+	clearflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 _00C2:
 	clearflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 _00CC:
 	setflag FLAG_HIDE_CAMERON
-	setflag FLAG_UNK_27F
+	setflag FLAG_HIDE_SAFFRON_CITY_CAMERON
 	end
 
 scr_seq_D49_000:
@@ -232,9 +233,9 @@ _033E:
 	scrcmd_308 77
 	scrcmd_309 77
 	releaseall
-	setvar VAR_UNK_40DB, 1
-	setflag FLAG_UNK_225
-	setflag FLAG_UNK_982
+	setvar VAR_SCENE_POKEATHLON_DOME, 1
+	setflag FLAG_HIDE_POKEATHLON_DOME_OWNER
+	setflag FLAG_SYS_MET_POKEATHLON_OWNER
 	end
 
 	.balign 4, 0
@@ -971,7 +972,7 @@ scr_seq_D49_016:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -981,7 +982,7 @@ scr_seq_D49_016:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0E58
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -1020,16 +1021,16 @@ _0CC3:
 	apply_movement obj_partner_poke, _0EC4
 	wait_movement
 _0CEA:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 13
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -1040,7 +1041,7 @@ scr_seq_D49_017:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -1050,7 +1051,7 @@ scr_seq_D49_017:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0E58
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -1096,7 +1097,7 @@ _0E12:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -1104,7 +1105,7 @@ _0E12:
 
 _0E44:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -1112,7 +1113,7 @@ _0E44:
 
 _0E58:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

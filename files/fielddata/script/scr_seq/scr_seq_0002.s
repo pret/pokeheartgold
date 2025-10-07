@@ -82,16 +82,16 @@ _011F:
 _0125:
 	setvar VAR_SPECIAL_x8004, 0
 	touchscreen_menu_hide
-	nop_var_490 VAR_SPECIAL_x8000
-	nop_var_490 VAR_SPECIAL_x8001
-	nop_var_490 VAR_SPECIAL_x8002
-	nop_var_490 VAR_SPECIAL_x8003
+	debug_print_var VAR_SPECIAL_x8000
+	debug_print_var VAR_SPECIAL_x8001
+	debug_print_var VAR_SPECIAL_x8002
+	debug_print_var VAR_SPECIAL_x8003
 _013D:
 	move_tutor_choose_move VAR_SPECIAL_x8001, VAR_SPECIAL_x8000, VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	nop_var_490 VAR_SPECIAL_x8000
-	nop_var_490 VAR_SPECIAL_x8001
-	nop_var_490 VAR_SPECIAL_x8002
-	nop_var_490 VAR_SPECIAL_x8003
+	debug_print_var VAR_SPECIAL_x8000
+	debug_print_var VAR_SPECIAL_x8001
+	debug_print_var VAR_SPECIAL_x8002
+	debug_print_var VAR_SPECIAL_x8003
 	copyvar VAR_SPECIAL_x8003, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_x8003, 65533
 	goto_if_ne _018F
@@ -162,14 +162,14 @@ _0241:
 	scrcmd_117
 	pokemon_summary_screen 1, VAR_SPECIAL_x8001, VAR_SPECIAL_x8003
 	get_move_selection 1, VAR_SPECIAL_x8006
-	nop_var_490 VAR_SPECIAL_x8006
+	debug_print_var VAR_SPECIAL_x8006
 	restore_overworld
 	scrcmd_116 1, 21, 1
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	compare VAR_SPECIAL_x8006, 4
 	goto_if_eq _03A4
-	nop_var_490 VAR_SPECIAL_x8006
+	debug_print_var VAR_SPECIAL_x8006
 	buffer_party_mon_move_name 2, VAR_SPECIAL_x8001, VAR_SPECIAL_x8006
 	setvar VAR_SPECIAL_x8004, 9
 	addvar VAR_SPECIAL_x8004, VAR_TEMP_x400F

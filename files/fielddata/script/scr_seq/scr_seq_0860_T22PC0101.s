@@ -168,7 +168,7 @@ scr_seq_T22PC0101_005:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_2C5, _0280
+	goto_if_set FLAG_SET_UNION_ROOM_APPEARANCE, _0280
 	npc_msg msg_0559_T22PC0101_00021
 	goto _028C
 
@@ -205,7 +205,7 @@ _0313:
 	touchscreen_menu_show
 	buffer_trainer_class_name_indef 0, VAR_SPECIAL_x8005
 	npc_msg msg_0559_T22PC0101_00024
-	setflag FLAG_UNK_2C5
+	setflag FLAG_SET_UNION_ROOM_APPEARANCE
 	scrcmd_558 VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
 	scrcmd_289 VAR_SPECIAL_x8005
 	goto _0333

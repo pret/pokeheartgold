@@ -88,7 +88,7 @@ scr_seq_T25_000:
 	faceplayer
 	compare VAR_UNK_40DA, 1
 	goto_if_ne _013E
-	compare VAR_UNK_40DB, 0
+	compare VAR_SCENE_POKEATHLON_DOME, 0
 	goto_if_eq _0149
 _013E:
 	npc_msg msg_0581_T25_00009
@@ -169,7 +169,7 @@ scr_seq_T25_005:
 	faceplayer
 	compare VAR_UNK_40DA, 1
 	goto_if_ne _020A
-	compare VAR_UNK_40DB, 0
+	compare VAR_SCENE_POKEATHLON_DOME, 0
 	goto_if_eq _0215
 _020A:
 	npc_msg msg_0581_T25_00000
@@ -191,7 +191,7 @@ scr_seq_T25_006:
 	faceplayer
 	compare VAR_UNK_40DA, 1
 	goto_if_ne _0242
-	compare VAR_UNK_40DB, 0
+	compare VAR_SCENE_POKEATHLON_DOME, 0
 	goto_if_eq _024D
 _0242:
 	npc_msg msg_0581_T25_00011

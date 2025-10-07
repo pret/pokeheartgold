@@ -259,11 +259,11 @@ BOOL Save_VarsFlags_IsInRocketTakeover(SaveVarsFlags *state) {
 }
 
 u16 Save_VarsFlags_GetVar4057(SaveVarsFlags *state) {
-    return GetScriptVar(state, VAR_UNK_4057);
+    return GetScriptVar(state, VAR_SAFARI_ZONE_OWNER_TEST_STATE);
 }
 
 void Save_VarsFlags_SetVar4057(SaveVarsFlags *state, u16 value) {
-    SetScriptVar(state, VAR_UNK_4057, value);
+    SetScriptVar(state, VAR_SAFARI_ZONE_OWNER_TEST_STATE, value);
 }
 
 void Save_VarsFlags_UpdateBuenasPasswordSet(SaveVarsFlags *state) {

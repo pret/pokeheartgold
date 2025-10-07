@@ -99,19 +99,19 @@ scr_seq_0151_005:
 _0114:
 	goto_if_set FLAG_DAILY_DID_BUG_CONTEST, _02A6
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _0139
 	npc_msg msg_0246_00004
 	goto _016E
 
 _0139:
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_ne _014F
 	npc_msg msg_0246_00005
 	goto _016E
 
 _014F:
-	compare VAR_TEMP_x4000, 6
+	compare VAR_TEMP_x4000, RTC_WEEK_SATURDAY
 	goto_if_ne _0165
 	npc_msg msg_0246_00006
 	goto _016E
@@ -172,10 +172,10 @@ _0224:
 	buffer_players_name 0
 	npc_msg msg_0246_00014
 	npc_msg msg_0246_00015
-	setflag FLAG_BUG_CONTEST_ACTIVE
-	setflag FLAG_UNK_24E
+	setflag FLAG_SYS_BUG_CONTEST_ACTIVE
+	setflag FLAG_HIDE_NATIONAL_PARK_POPULATION
 	setvar VAR_UNK_4118, 1
-	setvar VAR_UNK_40F7, 1
+	setvar VAR_SCENE_NATIONAL_PARK, 1
 	script_overlay_cmd 1, 0
 	bug_contest_action 0, VAR_TEMP_x4000
 	call _0268
@@ -265,7 +265,7 @@ scr_seq_0151_007:
 	scrcmd_609
 	lockall
 	setvar VAR_UNK_4118, 0
-	setvar VAR_UNK_40F7, 0
+	setvar VAR_SCENE_NATIONAL_PARK, 0
 	script_overlay_cmd 1, 0
 	judge_bug_contest VAR_TEMP_x4000, VAR_TEMP_x4001, VAR_TEMP_x4002
 	get_player_coords VAR_SPECIAL_x8004, VAR_SPECIAL_x8005
@@ -364,8 +364,8 @@ _04B5:
 	scrcmd_103
 	call _04FD
 	setflag FLAG_DAILY_DID_BUG_CONTEST
-	clearflag FLAG_BUG_CONTEST_ACTIVE
-	clearflag FLAG_UNK_24E
+	clearflag FLAG_SYS_BUG_CONTEST_ACTIVE
+	clearflag FLAG_HIDE_NATIONAL_PARK_POPULATION
 	clearflag FLAG_BUG_CONTEST_OTHER_POKES_HELD
 	bug_contest_action 1, 0
 	script_overlay_cmd 1, 1

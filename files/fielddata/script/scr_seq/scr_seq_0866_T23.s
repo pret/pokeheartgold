@@ -28,9 +28,9 @@
 scr_seq_T23_004:
 	compare VAR_UNK_4080, 0
 	goto_if_ne _005F
-	setflag FLAG_UNK_19F
-	clearflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
-	clearflag FLAG_AZALEA_HARASSED_CIVILIAN
+	setflag FLAG_HIDE_AZALEA_CITY_ROCKET_BLOCKING_WELL
+	clearflag FLAG_HIDE_AZALEA_ROCKET_HARASSING_CIVILIAN
+	clearflag FLAG_HIDE_AZALEA_HARASSED_CIVILIAN
 _005F:
 	end
 
@@ -102,13 +102,13 @@ _018E:
 	npc_msg msg_0564_T23_00001
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _01B7
 	trainer_battle TRAINER_RIVAL_SILVER_7, 0, 0, 0
 	goto _01DA
 
 _01B7:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _01D2
 	trainer_battle TRAINER_RIVAL_SILVER_10, 0, 0, 0
 	goto _01DA
@@ -229,9 +229,9 @@ scr_seq_T23_003:
 	apply_movement obj_T23_rocketm_3, _0374
 	wait_movement
 	hide_person obj_T23_gsmiddleman1_2
-	setflag FLAG_AZALEA_HARASSED_CIVILIAN
-	setflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
-	clearflag FLAG_UNK_19F
+	setflag FLAG_HIDE_AZALEA_HARASSED_CIVILIAN
+	setflag FLAG_HIDE_AZALEA_ROCKET_HARASSING_CIVILIAN
+	clearflag FLAG_HIDE_AZALEA_CITY_ROCKET_BLOCKING_WELL
 	setvar VAR_UNK_4080, 1
 	releaseall
 	end

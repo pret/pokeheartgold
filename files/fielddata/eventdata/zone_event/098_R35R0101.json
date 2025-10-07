@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R35R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R35R0101.h"
+  ],
   "objects": [
     {
       "id": "obj_R35R0101_counterm",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R35R0101_000 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_R35R0101_001 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 2,
       "x": 6,

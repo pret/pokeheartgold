@@ -115,12 +115,12 @@ BOOL ScrCmd_443(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_444(ScriptContext *ctx) {
+BOOL ScrCmd_InvalidMonsMessage(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 baseMessageNum = ScriptReadByte(ctx);
     u16 numEligiblePokemon = ScriptGetVar(ctx);
-    u16 r2 = ScriptReadHalfword(ctx);
-    u8 r3 = ScriptReadByte(ctx);
+    u16 r2 = ScriptReadHalfword(ctx); // passed to unused BufferString args; always 0
+    u8 r3 = ScriptReadByte(ctx);      // passed to unused BufferString args; always 0
     u8 numLegendaryPokemonSeen = 0;
     MessageFormat *messageFormat = sub_0204B538(fieldSystem->saveData, numEligiblePokemon, r2, r3, &numLegendaryPokemonSeen);
     ov01_021EF5C8(ctx, messageFormat, baseMessageNum + numLegendaryPokemonSeen, TRUE);
@@ -129,7 +129,7 @@ BOOL ScrCmd_444(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_527(ScriptContext *ctx) {
+BOOL ScrCmd_NPCMsgUnownFont(ScriptContext *ctx) {
     struct UnkStruct_Ov01_021EF4C4 unkStruct;
     u16 messageNum = ScriptReadHalfword(ctx);
     ov01_021EF4C4(&unkStruct, ctx);

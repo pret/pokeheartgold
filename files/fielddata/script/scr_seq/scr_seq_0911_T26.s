@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T26.h"
 #include "msgdata/msg/msg_0604_T26.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -23,7 +24,7 @@
 scr_seq_T26_002:
 	setvar VAR_SCENE_ROCKET_TAKEOVER, 2
 	setflag FLAG_UNK_0C5
-	setflag FLAG_ROCKET_TAKEOVER_ACTIVE
+	setflag FLAG_SYS_ROCKET_TAKEOVER_ACTIVE
 	compare VAR_UNK_40F8, 0
 	goto_if_ne _0057
 	setvar VAR_UNK_40F8, 2
@@ -34,26 +35,26 @@ _0057:
 
 scr_seq_T26_003:
 	setflag FLAG_UNK_0F5
-	setvar VAR_UNK_4057, 1
+	setvar VAR_SAFARI_ZONE_OWNER_TEST_STATE, 1
 	phone_call PHONE_CONTACT_BAOBA, 2, 0
-	setflag FLAG_UNK_249
+	setflag FLAG_HIDE_CLIFF_EDGE_GATE_WORKERS
 	setvar VAR_SCENE_LIGHTHOUSE_JASMINE, 3
 	end
 
 scr_seq_T26_012:
-	goto_if_unset FLAG_UNK_189, _00B2
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _00B2
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _00B2:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _00CD
 	clearflag FLAG_HIDE_CAMERON
 	goto _00E8
 
 _00CD:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _00E4
 	clearflag FLAG_HIDE_CAMERON
 	goto _00E8
@@ -300,7 +301,7 @@ scr_seq_T26_011:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -310,7 +311,7 @@ scr_seq_T26_011:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0530
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -349,16 +350,16 @@ _04BB:
 	apply_movement obj_partner_poke, _059C
 	wait_movement
 _04E2:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 23
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -366,7 +367,7 @@ _04E2:
 
 _051C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -374,7 +375,7 @@ _051C:
 
 _0530:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

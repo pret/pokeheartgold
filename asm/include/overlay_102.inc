@@ -114,8 +114,8 @@
 .public ObjCharTransfer_Init
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers
-.public sub_02021AC8
-.public sub_02021B5C
+.public CharTransfer_AllocRange
+.public CharTransfer_ClearRange
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

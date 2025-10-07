@@ -32,7 +32,7 @@
 	scrdef_end
 
 scr_seq_D49R0101_023:
-	setflag FLAG_SYS_FLYPOINT_POKEATHLON
+	setflag FLAG_SYS_VISITED_POKEATHLON
 	end
 
 	.balign 4, 0

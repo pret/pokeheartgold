@@ -72,7 +72,7 @@ _0094:
 	goto_if_ne _00EB
 	npc_msg msg_0439_00012
 	setvar VAR_UNK_408E, 4
-	setflag FLAG_UNK_992
+	setflag FLAG_SYS_DAYCARE_MAN_GOT_FIRST_EGG
 	goto _0057
 
 _00EB:
@@ -104,7 +104,7 @@ _0114:
 	goto_if_ne _0146
 	npc_msg msg_0439_00011
 	setvar VAR_UNK_408E, 4
-	setflag FLAG_UNK_992
+	setflag FLAG_SYS_DAYCARE_MAN_GOT_FIRST_EGG
 	goto _0057
 
 _0146:

@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T27.h"
 #include "msgdata/msg/msg_0612_T27.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -28,13 +29,13 @@ scr_seq_T27_000:
 	end
 
 scr_seq_T27_015:
-	goto_if_unset FLAG_UNK_189, _0059
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0059
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0059:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _0074
 	clearflag FLAG_HIDE_CAMERON
 	goto _0078
@@ -63,7 +64,7 @@ _00B6:
 	scrcmd_607
 _00B8:
 	release obj_partner_poke
-	setvar VAR_UNK_4079, 0
+	setvar VAR_SCENE_ECRUTEAK_CITY, 0
 	scrcmd_311 1
 	scrcmd_308 1
 	scrcmd_309 1
@@ -118,10 +119,10 @@ scr_seq_T27_005:
 	hide_person obj_T27_gsrivel
 	setflag FLAG_HIDE_ECRUTEAK_RIVAL
 	releaseall
-	setvar VAR_UNK_4079, 4
+	setvar VAR_SCENE_ECRUTEAK_CITY, 4
 	setvar VAR_UNK_410C, 4
 	clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
-	setflag FLAG_UNK_241
+	setflag FLAG_HIDE_DANCE_STUDIO_PATRONS
 	end
 
 	.balign 4, 0
@@ -180,7 +181,7 @@ scr_seq_T27_014:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -190,7 +191,7 @@ scr_seq_T27_014:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0328
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -222,16 +223,16 @@ _02B3:
 	apply_movement obj_partner_poke, _0380
 	wait_movement
 _02DA:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 19
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -239,7 +240,7 @@ _02DA:
 
 _0314:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -247,7 +248,7 @@ _0314:
 
 _0328:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -333,7 +334,7 @@ scr_seq_T27_008:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_UNK_96A, _0417
+	goto_if_set FLAG_SYS_HEALED_AMPHAROS, _0417
 	npc_msg msg_0612_T27_00008
 	goto _041A
 
@@ -349,7 +350,7 @@ scr_seq_T27_009:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _0440
+	goto_if_set FLAG_SYS_GAME_CLEAR, _0440
 	npc_msg msg_0612_T27_00000
 	wait_button_or_walk_away
 	closemsg
@@ -384,8 +385,8 @@ scr_seq_T27_006:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	goto_if_set FLAG_GAME_CLEAR, _04A8
-	compare VAR_UNK_40A1, 0
+	goto_if_set FLAG_SYS_GAME_CLEAR, _04A8
+	compare VAR_SCENE_BURNED_TOWER_BASEMENT, 0
 	goto_if_ne _049D
 	npc_msg msg_0612_T27_00005
 	goto _04A0

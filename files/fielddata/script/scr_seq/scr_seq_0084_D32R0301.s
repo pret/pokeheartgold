@@ -274,7 +274,7 @@ _03D4:
 	call_if_eq _04A9
 	compare VAR_UNK_4143, 2
 	call_if_eq _04BD
-	scrcmd_420 59
+	inc_game_stat GAME_STAT_UNK59
 	scrcmd_436
 	scrcmd_627 3
 	compare VAR_UNK_4143, 2

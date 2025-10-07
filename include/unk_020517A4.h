@@ -4,6 +4,6 @@
 #include "battle/battle_setup.h"
 
 int BattleSetup_GetWildTransitionEffect(BattleSetup *setup);
-int BattleSetup_GetWildBattleMusic(BattleSetup *setup);
+int BattleSetup_GetBattleMusic(BattleSetup *setup);
 
 #endif

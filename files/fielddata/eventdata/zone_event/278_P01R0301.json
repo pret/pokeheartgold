@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0301.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_P01R0301.h"
+  ],
   "objects": [
     {
       "id": "obj_P01R0301_seaman_2",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0301_002 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 16,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0301_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
@@ -43,9 +39,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_P01R0301_001 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 37,
@@ -57,12 +50,9 @@
       "spriteId": "SPRITE_GSGENTLEMAN",
       "movement": 16,
       "type": 0,
-      "eventFlag": "FLAG_UNK_215",
+      "eventFlag": "FLAG_HIDE_SS_AQUA_GRANDPA",
       "scriptId": "_EV_scr_seq_P01R0301_003 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 35,
@@ -172,7 +162,7 @@
       "h": 1,
       "y": 0,
       "val": 0,
-      "var": "VAR_UNK_40CB"
+      "var": "VAR_SCENE_SS_AQUA"
     }
   ]
 }

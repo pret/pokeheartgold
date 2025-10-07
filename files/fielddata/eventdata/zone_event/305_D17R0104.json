@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R0104.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D17R0104.h"
+  ],
   "objects": [
     {
       "id": "obj_EVERYWHERE_monstarball",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0104_ESCAPE_ROPE",
       "scriptId": "std_itemball_d17r0104_escape_rope",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0104_ULTRA_BALL",
       "scriptId": "std_itemball_d17r0104_ultra_ball",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 22,
@@ -43,9 +39,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0104_PP_UP",
       "scriptId": "std_itemball_d17r0104_pp_up",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,

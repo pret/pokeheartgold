@@ -99,29 +99,36 @@ typedef enum PokegearMapType {
     PGMAP_TYPE_TOWN_MAP,
 } PokegearMapType;
 
+typedef enum PokegearMapUIButton {
+    PGMAP_BUTTON_MARKINGS,
+    PGMAP_BUTTON_ZOOM,
+} PokegearMapUIButton;
+
+typedef enum PokegearMapUIButtonState {
+    PGMAP_BUTTON_NEUTRAL,
+    PGMAP_BUTTON_PRESSED,
+    PGMAP_BUTTON_DISABLED, // only used with PGMAP_BUTTON_MARKINGS
+} PokegearMapUIButtonState;
+
 typedef struct MapFlypointParam {
     u16 mapIDforName;
     u16 mapIDforWarp;
-    u8 flypoint;
-    u8 unk_05;
-    u8 x;
-    u8 y;
-    u8 unk170SrcX;
-    u8 unk170SrcY;
-    u8 width : 4;
-    u8 height : 4;
-    u8 unk170DestWidth : 4;
-    u8 unk170DestHeight : 4;
-    u8 unk170DestX : 4;
-    u8 unk170DestY : 4;
+    u8 visitedFlag;
+    u8 flyDestDrawID;                    // like flypoint but areas that aren't techinically cities are excluded (masked with 0xFF)
+    u8 x, y;                             // points to top-left corner
+    u8 iconTilemapX, iconTilemapY;       // top-left corner of pgmap_gra_00000011.NSCR region with grayed-out variant
+    u8 width : 4, height : 4;            // hitbox on main map
+    u8 iconWidth : 4, iconHeight : 4;    // grayed-out variant dimensions
+    u8 iconXoffset : 4, iconYoffset : 4; // how far left and up from (x, y) to start drawing the grayed-out variant
 } MapFlypointParam;
 
-typedef struct PokegearMapAppData_Sub044 {
+typedef struct PokegearMapMarkingWordObject {
     TextOBJ *textOBJ;
-    UnkStruct_02021AC8 unk_4;
-} PokegearMapAppData_Sub044;
+    CharTransferAllocation charTransferAlloc;
+} PokegearMapMarkingWordObject;
 
 typedef struct PokegearMapCursorState {
+    // These names are mostly best-guess placeholders
     fx32 x;
     fx32 y;
     fx32 xRatio;
@@ -130,8 +137,8 @@ typedef struct PokegearMapCursorState {
     int affineY;
     fx32 dxStep;
     fx32 dyStep;
-    fx32 unk_20;
-    fx32 unk_24;
+    fx32 x_fx;
+    fx32 y_fx;
     u16 top;
     u16 bottom;
     u16 left;
@@ -142,26 +149,26 @@ typedef struct PokegearMapCursorState {
     s16 destY;
 } PokegearMapCursorState;
 
+// There is one of these for every location in the game.
 typedef struct PokegearMapLocationSpec {
     u16 mapId;
-    u8 x;
-    u8 y;
-    u16 width : 4;
-    u16 height : 4;
-    u16 objXoffset : 4;
-    u16 objYoffset : 4;
-    u8 flavorText;
-    u8 tilemapUnk174BlockID;
-    u8 unk_8; // unused
-    u8 unk_9; // unused
-    u8 unk_A; // unused
-    u8 unk_B; // unused
-    u8 tilemapUnk170SrcX;
-    u8 tilemapUnk170SrcY;
-    u8 tilemapUnk170DestWidth;
-    u8 tilemapUnk170DestHeight;
+    u8 x, y;                            // Top-left corner of the hitbox on the map
+    u16 width : 4, height : 4;          // Defines the size of the hitbox
+    u16 objXoffset : 4, objYoffset : 4; // If you've set markings for a location, a little icon will appear here relative to (x, y)
+    u8 flavorText;                      // Message ID within msg_0273.gmm
+    u8 miniMapId;                       // Index of the minimap to draw in the HUD for cities. Layouts are in pgmap_gra_00000013.NSCR.
+    u8 filler_8[4];                     // unused
+
+    // When you hover over a location on the map, it gains a yellow accent.
+    // These parameters tell the game where to locate the accented version of each location
+    // within pgmap_gra_00000011.NSCR.
+    u8 selectedIconTilemapX;
+    u8 selectedIconTilemapY;
+    u8 selectedIconTilemapWidth;
+    u8 selectedIconTilemapHeight;
 } PokegearMapLocationSpec;
 
+// Yet another linked list implementation.
 typedef struct MapMarkingsHeapNode {
     MapMarkingsRAM mapMarkings;
     u8 index;
@@ -170,112 +177,111 @@ typedef struct MapMarkingsHeapNode {
     u8 active;
 } MapMarkingsHeapNode;
 
-typedef struct PokegearMapAppData_Sub118 {
-    const PokegearMapLocationSpec *locationSpec;
+typedef struct PokegearMapLocation {
+    const PokegearMapLocationSpec *spec;
     MapMarkingsHeapNode *markingsNode;
-    u16 x; // written but never read
-    u16 y; // written but never read
-} PokegearMapAppData_Sub118;
+    u16 x, y; // written but never read
+} PokegearMapLocation;
 
 typedef struct PokegearMapAppData {
-    enum HeapID heapID;                           // 0x000
-    int state;                                    // 0x004
-    int substate;                                 // 0x008
-    u8 inMarkingsMode;                            // 0x00C
-    u8 type;                                      // 0x00D PokegearMapType
-    u8 curRegion;                                 // 0x00E
-    s8 flyDestination;                            // 0x00F
-    PokegearAppData *pokegear;                    // 0x010
-    PokegearMapSessionState sessionState;         // 0x014
-    int markingsPanelScrollActive;                // 0x030
-    int markingsPanelScrollStep;                  // 0x034
-    MAPDATA *mapData;                             // 0x038
-    UnkStruct_02013534 *unk_03C;                  // 0x03C
-    UnkStruct_02013910 *unk_040;                  // 0x040
-    PokegearMapAppData_Sub044 unk_044[4];         // 0x044
-    PokegearObjectsManager *objManager;           // 0x084
-    MsgData *msgData;                             // 0x088
-    MessageFormat *msgFormat;                     // 0x08C
-    String *flavorTextString;                     // 0x090
-    u8 filler_094[8];                             // 0x094
-    String *regionNameStrings[2];                 // 0x09C
-    String *mapNameString;                        // 0x0A4
-    String *chooseDestinationString;              // 0x0A8
-    String *flyToLocationString;                  // 0x0AC
-    String *closeString;                          // 0x0B0
-    String *formatFlavorTextString;               // 0x0B4
-    u8 unk_0B8;                                   // 0x0B8, set 2 but never used
-    TouchscreenListMenuSpawner *listMenuSpawner;  // 0x0BC
-    LISTMENUITEM *listMenuItems;                  // 0x0C0
-    TouchscreenListMenu *listMenu;                // 0x0C4
-    PokegearMapCursorState cursorSpriteState;     // 0x0C8
-    u16 minXscroll;                               // 0x100
-    u16 maxXscroll;                               // 0x102
-    u16 minYscroll;                               // 0x104
-    u16 maxYscroll;                               // 0x106
-    s16 matrixX;                                  // 0x108
-    s16 matrixY;                                  // 0x10A
-    u16 mapID;                                    // 0x10C
-    u16 playerGender;                             // 0x10E
-    s16 playerX;                                  // 0x110
-    s16 playerY;                                  // 0x112
-    Coord2S16 cursorPos;                          // 0x114
-    PokegearMapAppData_Sub118 selectedLoc;        // 0x118
-    PhoneCallPersistentState *phoneCallSave;      // 0x124
-    PhoneBook *phoneBook;                         // 0x128
-    PhoneContact *phoneContact;                   // 0x12C
-    u8 numPhonebookSlots;                         // 0x130
-    u8 centerY;                                   // 0x131
-    u8 centerX;                                   // 0x132
-    s8 yOffset;                                   // 0x133
-    s8 xOffset;                                   // 0x134
-    u8 fadeStep;                                  // 0x135
-    u8 numLocationSpecs;                          // 0x136
-    u8 unk_137;                                   // 0x137
-    u8 zoomed : 1;                                // 0x138
-    u8 unk_138_1 : 3;                             // 0x138 set to 0, never read
-    u8 unk_138_4 : 1;                             // 0x138
-    u8 mapUnlockLevel : 2;                        // 0x138
-    u8 requestAffineUpdate : 1;                   // 0x138
-    u8 draggingMarking : 1;                       // 0x139
-    u8 unk_139_1 : 1;                             // 0x139
-    u8 unk_139_2 : 1;                             // 0x139
-    u8 unk_139_3 : 1;                             // 0x139
-    u8 draggingIcon : 4;                          // 0x139
-    u8 cursorSpeed;                               // 0x13A
-    u8 moveCursorDirection;                       // 0x13B
-    u8 draggingType : 7;                          // 0x13C
-    u8 trashcanIconState : 1;                     // 0x13C
-    u8 canFlyToGoldenrod : 1;                     // 0x13D
-    u8 canSeeSafariZone : 1;                      // 0x13D
-    u8 isMapSinjoh : 1;                           // 0x13D
-    u8 isMapSSAqua : 1;                           // 0x13D
-    s16 draggingWordX;                            // 0x13E
-    s16 draggingWordY;                            // 0x140
-    s16 unk_142;                                  // 0x142
-    s16 unk_144;                                  // 0x144
-    s16 unk_146;                                  // 0x146
-    s16 unk_148;                                  // 0x148
-    s16 pixelTop;                                 // 0x14A
-    s16 pixelBottom;                              // 0x14C
-    s16 pixelLeft;                                // 0x14E
-    s16 pixelRight;                               // 0x150
-    u16 lastSelectedMapID;                        // 0x152
-    void *unk_154[6];                             // 0x154
-    NNSG2dScreenData *unk_16C;                    // 0x16C
-    NNSG2dScreenData *unk_170;                    // 0x170
-    NNSG2dScreenData *unk_174;                    // 0x174
-    NNSG2dScreenData *unk_178;                    // 0x178
-    NNSG2dScreenData *unk_17C;                    // 0x17C
-    NNSG2dScreenData *unk_180;                    // 0x180
-    Window windows[9];                            // 0x184
-    const PokegearMapLocationSpec *locationSpecs; // 0x214
-    MapMarkingsHeapNode mapMarkingsHeap[100];     // 0x218
-    u16 roamerLocations[ROAMER_MAX];              // 0x9E8
-    u8 mapMarkingsListHead;                       // 0x9F0
-    u8 mapMarkingsListTail;                       // 0x9F1
-    u8 mapMarkingsListCount;                      // 0x9F2
-} PokegearMapAppData;                             // size: 0x9F4
+    enum HeapID heapID;                                  // 0x000
+    int state;                                           // 0x004
+    int substate;                                        // 0x008
+    u8 inMarkingsMode;                                   // 0x00C
+    u8 type;                                             // 0x00D PokegearMapType
+    u8 curRegion;                                        // 0x00E
+    s8 flyDestination;                                   // 0x00F
+    PokegearAppData *pokegear;                           // 0x010
+    PokegearMapSessionState sessionState;                // 0x014
+    int markingsPanelScrollActive;                       // 0x030
+    int markingsPanelScrollStep;                         // 0x034
+    MAPDATA *mapData;                                    // 0x038
+    UnkStruct_02013534 *unk_03C;                         // 0x03C
+    UnkStruct_02013910 *unk_040;                         // 0x040
+    PokegearMapMarkingWordObject markingWordObjects[4];  // 0x044
+    PokegearObjectsManager *objManager;                  // 0x084
+    MsgData *msgData;                                    // 0x088
+    MessageFormat *msgFormat;                            // 0x08C
+    String *flavorTextString;                            // 0x090
+    u8 filler_094[8];                                    // 0x094
+    String *regionNameStrings[2];                        // 0x09C
+    String *mapNameString;                               // 0x0A4
+    String *chooseDestinationString;                     // 0x0A8
+    String *flyToLocationString;                         // 0x0AC
+    String *closeString;                                 // 0x0B0
+    String *formatFlavorTextString;                      // 0x0B4
+    u8 unk_0B8;                                          // 0x0B8, set 2 but never used
+    TouchscreenListMenuSpawner *listMenuSpawner;         // 0x0BC
+    LISTMENUITEM *listMenuItems;                         // 0x0C0
+    TouchscreenListMenu *listMenu;                       // 0x0C4
+    PokegearMapCursorState cursorSpriteState;            // 0x0C8
+    u16 minXscroll;                                      // 0x100
+    u16 maxXscroll;                                      // 0x102
+    u16 minYscroll;                                      // 0x104
+    u16 maxYscroll;                                      // 0x106
+    s16 matrixX;                                         // 0x108
+    s16 matrixY;                                         // 0x10A
+    u16 mapID;                                           // 0x10C
+    u16 playerGender;                                    // 0x10E
+    s16 playerX;                                         // 0x110
+    s16 playerY;                                         // 0x112
+    Coord2S16 cursorPos;                                 // 0x114
+    PokegearMapLocation selectedLoc;                     // 0x118
+    PhoneCallPersistentState *phoneCallSave;             // 0x124
+    PhoneBook *phoneBook;                                // 0x128
+    PhoneContact *phoneContact;                          // 0x12C
+    u8 numPhonebookSlots;                                // 0x130
+    u8 centerY;                                          // 0x131
+    u8 centerX;                                          // 0x132
+    s8 yOffset;                                          // 0x133
+    s8 xOffset;                                          // 0x134
+    u8 fadeStep;                                         // 0x135
+    u8 numLocationSpecs;                                 // 0x136
+    u8 unk_137;                                          // 0x137
+    u8 zoomed : 1;                                       // 0x138
+    u8 unk_138_1 : 3;                                    // 0x138 set to 0, never read
+    u8 unk_138_4 : 1;                                    // 0x138
+    u8 mapUnlockLevel : 2;                               // 0x138
+    u8 requestAffineUpdate : 1;                          // 0x138
+    u8 ignoreInputs : 1;                                 // 0x139
+    u8 zoomAnimActive : 1;                               // 0x139
+    u8 cursorMoving : 1;                                 // 0x139
+    u8 cursorVisible : 1;                                // 0x139
+    u8 draggingIcon : 4;                                 // 0x139
+    u8 cursorSpeed;                                      // 0x13A
+    u8 moveCursorDirection;                              // 0x13B
+    u8 draggingType : 7;                                 // 0x13C
+    u8 trashcanIconState : 1;                            // 0x13C
+    u8 canFlyToCianwood : 1;                             // 0x13D
+    u8 canSeeSafariZone : 1;                             // 0x13D
+    u8 isMapSinjoh : 1;                                  // 0x13D
+    u8 isMapSSAqua : 1;                                  // 0x13D
+    s16 draggingWordX;                                   // 0x13E
+    s16 draggingWordY;                                   // 0x140
+    s16 lastTouchX;                                      // 0x142
+    s16 lastTouchY;                                      // 0x144
+    s16 initTouchX;                                      // 0x146
+    s16 initTouchY;                                      // 0x148
+    s16 pixelTop;                                        // 0x14A
+    s16 pixelBottom;                                     // 0x14C
+    s16 pixelLeft;                                       // 0x14E
+    s16 pixelRight;                                      // 0x150
+    u16 lastSelectedMapID;                               // 0x152
+    void *nscrFiles[6];                                  // 0x154
+    NNSG2dScreenData *markingsFrameScrnData;             // 0x16C
+    NNSG2dScreenData *worldMapScrnData;                  // 0x170
+    NNSG2dScreenData *cityMinimapsScrnData;              // 0x174
+    NNSG2dScreenData *mapUISkinScrnData;                 // 0x178
+    NNSG2dScreenData *markingsModeUISkinScrnData;        // 0x17C
+    NNSG2dScreenData *markingsIconsSelectorSkinScrnData; // 0x180
+    Window windows[9];                                   // 0x184
+    const PokegearMapLocationSpec *locationSpecs;        // 0x214
+    MapMarkingsHeapNode mapMarkingsHeap[100];            // 0x218
+    u16 roamerLocations[ROAMER_MAX];                     // 0x9E8
+    u8 mapMarkingsListHead;                              // 0x9F0
+    u8 mapMarkingsListTail;                              // 0x9F1
+    u8 mapMarkingsListCount;                             // 0x9F2
+} PokegearMapAppData;                                    // size: 0x9F4
 
 BOOL PokegearMap_LoadGFX(PokegearMapAppData *mapApp);
 BOOL PokegearMap_UnloadGFX(PokegearMapAppData *mapApp);
@@ -285,47 +291,47 @@ BOOL PokegearMap_AnimateSwitchFromMarkingMode(PokegearMapAppData *mapApp);
 void PokegearMap_VBlankCB(PokegearAppData *pokegear, void *appData);
 void PokegearMap_UpdateCursorBounds(PokegearMapAppData *mapApp);
 void PokegearMap_SaveState(PokegearMapAppData *mapApp);
-void ov101_021E9464(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut);
-void ov101_021E94C0(PokegearMapAppData *mapApp);
-void ov101_021E9530(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 xIn, s16 yIn);
-void ov101_021E990C(PokegearMapAppData *mapApp);
+void PokegearMap_GetTileCoordFromPixelCoords(PokegearMapAppData *mapApp, s16 xIn, s16 yIn, u16 *xOut, u16 *yOut);
+void PokegearMap_MoveCursorToPlayerPosition(PokegearMapAppData *mapApp);
+void PokegearMap_SetCursorMoveParam(PokegearMapAppData *mapApp, u8 zoomed, u16 x0, u16 y0, s16 xIn, s16 yIn);
+void PokegearMap_InitCursorAndPlayerIconPositions(PokegearMapAppData *mapApp);
 void PokegearMap_OnVBlank_UpdateCursorAffine(PokegearMapAppData *mapApp, PokegearMapCursorState *cursorState);
-void ov101_021E9BF4(PokegearMapAppData *mapApp, s16 dx, s16 dy);
+void PokegearMap_UpdateObjects_AddCoord(PokegearMapAppData *mapApp, s16 dx, s16 dy);
 BOOL PokegearMap_FadeMapScreen(PokegearMapAppData *mapApp, u8 direction);
 void PokegearMap_BeginScrollMarkingsPanelTopScreen(PokegearMapAppData *mapApp, u8 direction);
 BOOL PokegearMap_RunScrollMarkingsPanelTopScreen(PokegearMapAppData *mapApp, u8 direction);
 void PokegearMap_BeginScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, u8 direction);
 BOOL PokegearMap_RunScrollMarkingsPanelBottomScreen(PokegearMapAppData *mapApp, u8 direction);
-void ov101_021EA238(PokegearMapAppData *mapApp, u8 mode);
-void ov101_021EA4D0(PokegearMapAppData *mapApp, u8 mode);
-void ov101_021EA608(PokegearMapAppData *mapApp, u8 enable);
-BOOL ov101_021EA6C4(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1);
+void PokegearMap_UpdateStationaryIconsDrawState(PokegearMapAppData *mapApp, u8 mode); // mode: 0=init, 1=update, 2=clear?
+void PokegearMap_UpdateFlyIconsDrawState(PokegearMapAppData *mapApp, u8 mode);
+void PokegearMap_SetPlayerAndCursorSpritesDrawFlag(PokegearMapAppData *mapApp, u8 enable);
+BOOL PokegearMap_LocationIsOnMainMap(PokegearMapAppData *mapApp, PokegearMapLocation *location);
 const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByCoord(PokegearMapAppData *mapApp, u8 x, u8 y);
 const PokegearMapLocationSpec *PokegearMap_GetLocationSpecByMapID(PokegearMapAppData *mapApp, u16 mapID);
-void ov101_021EA794(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y);
-BOOL ov101_021EA7E4(PokegearMapAppData *mapApp, u16 x, u16 y);
-BOOL ov101_021EA804(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y);
-int PokegearMap_GetFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
-int ov101_021EA8A8(PokegearMapAppData *mapApp, PokegearMapAppData_Sub118 *a1, u8 x, u8 y);
-void ov101_021EAD90(PokegearMapAppData *mapApp, BOOL a1);
+void PokegearMap_SetCurLocationFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *location, u8 x, u8 y);
+BOOL PokegearMap_CanFlyToXY(PokegearMapAppData *mapApp, u16 x, u16 y);
+BOOL PokegearMap_CanFlyToMapOrXY(PokegearMapAppData *mapApp, u16 mapID, u16 x, u16 y);
+int PokegearMap_GetUnlockedFlyDestinationAtCoord(PokegearMapAppData *mapApp, u16 x, u16 y);
+int PokegearMap_SetCurLocationToFlypointFromCoord(PokegearMapAppData *mapApp, PokegearMapLocation *a1, u8 x, u8 y);
+void PokegearMap_PrintLocationInfoBox(PokegearMapAppData *mapApp, BOOL nameOnly);
 void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUpdateMapName);
-void ov101_021EAF40(PokegearMapAppData *mapApp);
-void ov101_021EB1E0(PokegearMapAppData *mapApp, u8 a1);
+void PokegearMap_DrawMapView(PokegearMapAppData *mapApp);
+void PokegearMap_HighlightSelectedAreaOnMap(PokegearMapAppData *mapApp, u8 enabled); // param enabled always TRUE
 void PokegearMap_HideMapCursor(PokegearMapAppData *mapApp);
 void PokegearMap_DeselectApp(void *appData);
 void PokegearMap_ShowMapCursor(void *appData);
 void PokegearMap_InMarkingsMode_HideCursor(void *appData);
 void PokegearMap_InMarkingsMode_ShowCursor(void *appData);
-void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state);
+void PokegearMap_SetUIButtonState(PokegearMapAppData *mapApp, PokegearMapUIButton button, PokegearMapUIButtonState state);
 void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 x);
 void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int mapID);
 
-int ov101_021EB568(PokegearMapAppData *mapApp);
-int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+int PokegearMap_HandleKeyInput(PokegearMapAppData *mapApp);
+int PokegearMap_HandleTouchInput(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp);
 int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
-int FlyMap_HandleTouchInput_DraggingMap(PokegearMapAppData *mapApp);
-void ov101_021EC304(PokegearMapAppData *mapApp);
+int PokegearMap_HandleTouchInput_DraggingMap(PokegearMapAppData *mapApp);
+void PokegearMap_UpdateCursorMovement(PokegearMapAppData *mapApp);
 int PokegearMap_HandleKeyInput_SelectMarkingsSlot(PokegearMapAppData *mapApp);
 int PokegearMap_HandleTouchInput_SelectMarkingsSlot(PokegearMapAppData *mapApp, BOOL *a1);
 int PokegearMap_HandleKeyInput_SelectedIconFromPool(PokegearMapAppData *mapApp);

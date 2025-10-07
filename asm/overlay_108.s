@@ -3626,7 +3626,7 @@ ov108_021E756C: ; 0x021E756C
 	str r0, [sp, #0x3c]
 	add r0, r6, #0
 	add r3, r5, r3
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	mov r1, #0xeb
 	lsl r1, r1, #2
 	ldr r0, [r5, r1]
@@ -3666,7 +3666,7 @@ ov108_021E7650: ; 0x021E7650
 	mov r0, #0xea
 	lsl r0, r0, #2
 	add r0, r4, r0
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0xe9
 	mov r1, #0
 	lsl r0, r0, #2

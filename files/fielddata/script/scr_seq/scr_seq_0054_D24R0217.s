@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D24R0217.h"
 #include "msgdata/msg/msg_0085_D24R0217.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -12,8 +13,8 @@
 	scrdef_end
 
 scr_seq_D24R0217_002:
-	goto_if_unset FLAG_UNK_189, _0023
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0023
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0023:
@@ -21,11 +22,11 @@ _0023:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _0061
 	get_weekday VAR_TEMP_x4001
-	compare VAR_TEMP_x4001, 1
+	compare VAR_TEMP_x4001, RTC_WEEK_MONDAY
 	goto_if_eq _0067
-	compare VAR_TEMP_x4001, 2
+	compare VAR_TEMP_x4001, RTC_WEEK_TUESDAY
 	goto_if_eq _0067
-	compare VAR_TEMP_x4001, 4
+	compare VAR_TEMP_x4001, RTC_WEEK_THURSDAY
 	goto_if_eq _0067
 _0061:
 	setflag FLAG_HIDE_CAMERON
@@ -52,7 +53,7 @@ scr_seq_D24R0217_003:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -62,7 +63,7 @@ scr_seq_D24R0217_003:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01AB
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -97,16 +98,16 @@ _0147:
 	following_pokemon_movement 48
 	apply_movement obj_partner_poke, _0218
 	wait_movement
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 4
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -114,7 +115,7 @@ _0147:
 
 _0197:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -122,7 +123,7 @@ _0197:
 
 _01AB:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

@@ -81,7 +81,7 @@ _00F2:
 	check_return_loan_mon 6, VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	call_if_ne _019A
-	nop_var_490 VAR_SPECIAL_RESULT
+	debug_print_var VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_ne _0120
 	npc_msg msg_0576_T24R0201_00008

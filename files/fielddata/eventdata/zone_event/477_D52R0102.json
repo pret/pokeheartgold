@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D52R0102.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D52R0102.h"
+  ],
   "objects": [
     {
       "id": "obj_D52R0102_tsure_poke_static_kyogre",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE",
       "scriptId": "_EV_scr_seq_D52R0102_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_HIDE_EMBEDDED_TOWER_KYOGRE_HIKER",
       "scriptId": 0,
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,

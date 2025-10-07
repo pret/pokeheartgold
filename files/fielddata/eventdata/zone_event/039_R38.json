@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R38.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R38.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R38_001 + 1",
@@ -35,14 +37,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SCHOOL_KID_M_CHAD)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 299,
       "z": 161,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_R38_gsman2",
@@ -52,14 +54,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_TOBY)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 320,
       "z": 173,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R38_gsgirl1",
@@ -69,14 +71,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_LASS_DANA)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 321,
       "z": 162,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R38_gswoman2",
@@ -86,14 +88,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_BEAUTY_VALERIE)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 310,
       "z": 168,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_R38_seaman_2",
@@ -103,14 +105,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_SAILOR_HARRY)",
       "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 336,
       "z": 166,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R38_bonguri",
@@ -120,14 +122,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 16,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 315,
       "z": 172,
-      "y": 0
+      "y": 0,
+      "data": [
+        16
+      ]
     },
     {
       "id": "obj_R38_monstarball",
@@ -137,9 +139,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R38_MAX_POTION",
       "scriptId": "std_itemball_r38_max_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 329,
@@ -154,9 +153,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R38_LAX_INCENSE",
       "scriptId": "std_itemball_r38_lax_incense",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 297,

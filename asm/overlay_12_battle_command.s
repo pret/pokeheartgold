@@ -4015,7 +4015,7 @@ _022483C6:
 	mov r1, #1
 	add r2, r1, #0
 	add r3, sp, #0x5c
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [r5, #0x50]
 	str r0, [sp, #0x2c]
 	add r0, sp, #0x68
@@ -4087,7 +4087,7 @@ ov12_022484D4: ; 0x022484D4
 	bl sub_02013660
 	add r0, r5, #0
 	add r0, #0x18
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	ldr r1, _02248540 ; =0x00004E35
 	add r0, r4, #0
 	bl SpriteManager_UnloadCharObjById

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T07R0206.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T07R0206.h"
+  ],
   "warps": [
     {
       "x": 3,

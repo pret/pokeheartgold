@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D52R0103.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D52R0103.h"
+  ],
   "objects": [
     {
       "id": "obj_D52R0103_tsure_poke_static_rayquaza",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_HIDE_EMBEDDED_TOWER_RAYQUAZA",
       "scriptId": "_EV_scr_seq_D52R0103_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,

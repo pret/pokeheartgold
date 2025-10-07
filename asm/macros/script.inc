@@ -2147,7 +2147,7 @@
 	.short \record
 	.endm
 
-	.macro scrcmd_379 arg0
+	.macro get_time_of_day arg0
 	.short 379
 	.short \arg0
 	.endm
@@ -2299,32 +2299,32 @@
 	.endif
 	.endm
 
-	.macro scrcmd_403 arg0, arg1
+	.macro give_accessory arg0, arg1
 	.short 403
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_404 arg0, arg1, arg2
+	.macro has_space_for_accesssory arg0, arg1, arg2
 	.short 404
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_405 arg0, arg1, arg2
+	.macro has_accessory arg0, arg1, arg2
 	.short 405
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_406 arg0
+	.macro give_fashion_background arg0
 	.short 406
 	.short \arg0
 	.endm
 
-	.macro scrcmd_407 arg0, arg1
+	.macro has_space_for_fashion_background arg0, arg1
 	.short 407
 	.short \arg0
 	.short \arg1
@@ -2357,7 +2357,7 @@
 	.short \arg2
 	.endm
 
-	.macro scrcmd_413 arg0, arg1, arg2, arg3
+	.macro get_battle_tower_partner_mon_and_move arg0, arg1, arg2, arg3
 	.short 413
 	.short \arg0
 	.short \arg1
@@ -2399,19 +2399,19 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_420 arg0
+	.macro inc_game_stat arg0
 	.short 420
 	.short \arg0
 	.endm
 
-	.macro scrcmd_421 arg0, arg1, arg2
+	.macro get_game_stat arg0, arg1, arg2
 	.short 421
 	.short \arg0
 	.short \arg1
 	.short \arg2
 	.endm
 
-	.macro scrcmd_422 arg0, arg1, arg2, arg3
+	.macro update_game_stat arg0, arg1, arg2, arg3
 	.short 422
 	.short \arg0
 	.short \arg1
@@ -2540,7 +2540,7 @@
 	.byte \arg0
 	.endm
 
-	.macro scrcmd_444 arg0, arg1, arg2, arg3
+	.macro invalid_mons_message arg0, arg1, arg2, arg3
 	.short 444
 	.byte \arg0
 	.short \arg1
@@ -2799,7 +2799,7 @@
 	.endif
 	.endm
 
-	.macro nop_var_490 arg0
+	.macro debug_print_var arg0
 	.short 490
 	.short \arg0
 	.endm
@@ -3008,7 +3008,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_527 arg0
+	.macro npc_msg_unown_font arg0
 	.short 527
 	.short \arg0
 	.endm
@@ -3572,7 +3572,7 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_633 arg0, arg1, arg2
+	.macro battle_hall_action arg0, arg1, arg2
 	.short 633
 	.short \arg0
 	.short \arg1
@@ -4230,6 +4230,7 @@
 	.short \arg0
 	.endm
 
+	; Load msg_0191.gmm
 	.macro menu_init_std_gmm arg0, arg1, arg2, arg3, arg4
 	.short 749
 	.byte \arg0
@@ -4357,7 +4358,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_775 arg0, arg1
+	.macro npc_use_fly arg0, arg1
 	.short 775
 	.short \arg0
 	.short \arg1
@@ -4444,13 +4445,13 @@
 	.short \arg1
 	.endm
 
-	.macro scrcmd_791 arg0, arg1
+	.macro check_safari_zone_owner_test_mon_in_party arg0, arg1
 	.short 791
 	.byte \arg0
 	.short \arg1
 	.endm
 
-	.macro scrcmd_792
+	.macro start_safari_zone_igt_timer
 	.short 792
 	.endm
 

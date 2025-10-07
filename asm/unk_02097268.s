@@ -307,7 +307,7 @@ _02097476:
 	bne _020974A6
 	ldr r0, [sp, #0x2c]
 	mov r1, #6
-	bl sub_0202F050
+	bl PhoneCallPersistentState_ClearScriptedCallQueuedFlag
 	mov r1, #0
 	ldr r0, [sp, #0x2c]
 	add r2, r1, #0
@@ -317,7 +317,7 @@ _02097476:
 _020974A6:
 	ldr r0, [sp, #0x2c]
 	mov r1, #6
-	bl sub_0202F01C
+	bl PhoneCallPersistentState_SetScriptedCallQueuedFlag
 	ldr r2, [sp, #0x20]
 	ldr r0, [sp, #0x2c]
 	lsl r2, r2, #0x18

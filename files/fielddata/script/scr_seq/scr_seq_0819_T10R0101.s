@@ -29,17 +29,17 @@ scr_seq_T10R0101_005:
 	clearflag FLAG_DEFEATED_KOGA
 	clearflag FLAG_DEFEATED_BRUNO
 	clearflag FLAG_DEFEATED_KAREN
-	compare VAR_UNK_40FC, 1
+	compare VAR_SCENE_DRAGONS_DEN_DOUBLE_BATTLE, 1
 	goto_if_le _00AC
 	goto_if_set FLAG_UNK_AA9, _00AC
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _008B
 	setvar VAR_UNK_4119, 1
 	goto _00AA
 
 _008B:
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_ne _00A4
 	setvar VAR_UNK_4119, 1
 	goto _00AA
@@ -96,13 +96,13 @@ scr_seq_T10R0101_006:
 	npc_msg msg_0522_T10R0101_00003
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _016E
 	trainer_battle TRAINER_RIVAL_SILVER_20, 0, 0, 0
 	goto _0191
 
 _016E:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _0189
 	trainer_battle TRAINER_RIVAL_SILVER_21, 0, 0, 0
 	goto _0191

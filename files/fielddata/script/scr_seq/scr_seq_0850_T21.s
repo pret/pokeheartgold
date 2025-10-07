@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T21.h"
 #include "msgdata/msg/msg_0550_T21.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -19,8 +20,8 @@
 	scrdef_end
 
 scr_seq_T21_010:
-	goto_if_unset FLAG_UNK_189, _003F
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _003F
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _003F:
@@ -28,11 +29,11 @@ _003F:
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _007D
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _0083
-	compare VAR_TEMP_x4000, 3
+	compare VAR_TEMP_x4000, RTC_WEEK_WEDNESDAY
 	goto_if_eq _0083
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _0083
 _007D:
 	setflag FLAG_HIDE_CAMERON
@@ -546,13 +547,13 @@ scr_seq_T21_003:
 	npc_msg msg_0550_T21_00013
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _070C
 	trainer_battle TRAINER_PASSERBY_BOY_2, 0, 1, 0
 	goto _072F
 
 _070C:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _0727
 	trainer_battle TRAINER_PASSERBY_BOY_3, 0, 1, 0
 	goto _072F
@@ -716,7 +717,7 @@ scr_seq_T21_009:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -726,7 +727,7 @@ scr_seq_T21_009:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0A55
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -765,16 +766,16 @@ _09E0:
 	apply_movement obj_partner_poke, _0ACC
 	wait_movement
 _0A07:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 1
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -782,7 +783,7 @@ _0A07:
 
 _0A41:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -790,7 +791,7 @@ _0A41:
 
 _0A55:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

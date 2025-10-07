@@ -17,6 +17,8 @@ u32 GameStats_Add(GameStats *gameStats, int statIdx, u32 addend);
 u32 GameStats_AddScore(GameStats *gameStats, int statIdx);
 void GameStats_IncSpeciesCaught(GameStats *gameStats, const Pokedex *pokedex, u16 species);
 u32 GameStats_SetCapped(GameStats *gameStats, int statIdx, u32 value);
+
+// Set if the new value is higher than the current. Cap as needed.
 u32 GameStats_UpdateBounded(GameStats *gameStats, int statIdx, u32 value);
 u32 GameStats_GetScore(GameStats *gameStat);
 

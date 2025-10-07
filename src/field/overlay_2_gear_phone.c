@@ -1,4 +1,5 @@
 #include "constants/maps.h"
+#include "constants/phone_scripts.h"
 #include "constants/sndseq.h"
 
 #include "overlay_2/overlay_02_gear_phone.h"
@@ -16,33 +17,46 @@
 #include "sys_vars.h"
 #include "unk_02092BE8.h"
 
-typedef struct UnkStruct_02253C86 {
-    u8 unk0;
-    u8 unk1;
-    u16 unk2;
+typedef struct ScriptedPhoneCallSpec {
+    u8 contactId;
+    // 1 byte filler
+    u16 scriptId;
     u8 unk4;
-    u8 unk5;
-} UnkStruct_02253C86;
+    // 1 byte padding
+} ScriptedPhoneCallSpec;
 
-static const UnkStruct_02253C86 ov02_02253C84[] = {
-    { 1,  0, 13,  0, 0 },
-    { 1,  0, 7,   0, 0 },
-    { 15, 0, 85,  1, 0 },
-    { 9,  0, 93,  1, 0 },
-    { 2,  0, 0,   0, 0 },
-    { 6,  0, 0,   0, 0 },
-    { 24, 0, 0,   0, 0 },
-    { 24, 0, 142, 1, 0 },
-    { 24, 0, 143, 1, 0 },
-    { 24, 0, 144, 1, 0 },
-    { 24, 0, 145, 1, 0 },
-    { 24, 0, 146, 1, 0 },
-    { 0,  0, 27,  0, 0 }
+static const ScriptedPhoneCallSpec sScriptedPhoneCalls[] = {
+    // Togepi hatched
+    { PHONE_CONTACT_PROF__ELM, PHONE_SCRIPT_013,  0 },
+    // Pokerus
+    { PHONE_CONTACT_PROF__ELM, PHONE_SCRIPT_007,  0 },
+    // Took 1024 steps on the bike
+    { PHONE_CONTACT_BIKE_SHOP, PHONE_SCRIPT_085,  1 },
+    // Completely filled up your PC boxes
+    { PHONE_CONTACT_BILL,      PHONE_SCRIPT_093,  1 },
+    // Oak acknowledged dex completion
+    { PHONE_CONTACT_PROF__OAK, PHONE_SCRIPT_NONE, 0 },
+    // Day Care has an egg
+    { PHONE_CONTACT_DAY_C_MAN, PHONE_SCRIPT_NONE, 0 },
+    // Unreferenced
+    { PHONE_CONTACT_BAOBA,     PHONE_SCRIPT_NONE, 0 },
+    // "I've come up with a new test"
+    { PHONE_CONTACT_BAOBA,     PHONE_SCRIPT_142,  1 },
+    // "It's called Object Arrangement!"
+    { PHONE_CONTACT_BAOBA,     PHONE_SCRIPT_143,  1 },
+    // "We've come up with new objects"
+    { PHONE_CONTACT_BAOBA,     PHONE_SCRIPT_144,  1 },
+    // "More new objects! There's so many now!"
+    { PHONE_CONTACT_BAOBA,     PHONE_SCRIPT_145,  1 },
+    // Deja vu (on IGT overflow)
+    { PHONE_CONTACT_BAOBA,     PHONE_SCRIPT_146,  1 },
+    // Mom spent your money :3
+    { PHONE_CONTACT_MOTHER,    PHONE_SCRIPT_027,  0 },
 };
 
 static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
-static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
+static u8 GearPhoneRingManager_GetRandomQueuedScriptedCaller(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
 
 String *GetPhoneBookEntryName(GearPhoneRingManager *gearPhone, enum HeapID heapID) {
@@ -87,7 +101,7 @@ u8 ov02_02251EE8(GearPhoneRingManager *gearPhone, Unk_PokegearSTRUCT_14 *a1) {
     a1->unk_1 = gearPhone->unk_arr5[1];
     a1->isScriptedCall = gearPhone->isScriptedCall;
     a1->callScriptID = gearPhone->callScriptID;
-    a1->unk_2 = gearPhone->unk_var7;
+    a1->unk_2 = gearPhone->scriptedCallId;
     return gearPhone->callerId;
 }
 
@@ -444,27 +458,27 @@ _022521AC:
 #endif
 
 static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    u8 r6 = ov02_02252218(gearPhone, phoneBook, mapId);
-    if (r6 == 0xFF) {
+    u8 idx = GearPhoneRingManager_GetRandomQueuedScriptedCaller(gearPhone, phoneBook, mapId);
+    if (idx == 0xFF) {
         return FALSE;
     }
-    GearPhoneRingManager_SetCallerParams(gearPhone, ov02_02253C84[r6].unk0, 0xFF, 0, 3, ov02_02253C84[r6].unk2);
+    GearPhoneRingManager_SetCallerParams(gearPhone, sScriptedPhoneCalls[idx].contactId, 0xFF, 0, 3, sScriptedPhoneCalls[idx].scriptId);
     GearPhoneRingManager_StartRinging(gearPhone);
-    gearPhone->unk_var7 = r6;
-    return ov02_02253C84[r6].unk4 + 1;
+    gearPhone->scriptedCallId = idx;
+    return sScriptedPhoneCalls[idx].unk4 + 1;
 }
 
 // FIXME: This is a fakematch from decomp.me, it doesn't match locally without the label https://decomp.me/scratch/YdDak
-static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
+static u8 GearPhoneRingManager_GetRandomQueuedScriptedCaller(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
     u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, 13);
     MI_CpuFill8(ptr, 0, 13);
 
     int cnt = 0;
     for (int i = 0; i < 13; i++) {
-        if (sub_0202F08C(gearPhone->savingsData, i) == 0) {
+        if (PhoneCallPersistentState_CheckScriptedCallQueuedFlag(gearPhone->savingsData, i) == 0) {
             continue;
         }
-        PhoneBookEntry *entry = &phoneBook->entries[ov02_02253C84[i].unk0];
+        PhoneBookEntry *entry = &phoneBook->entries[sScriptedPhoneCalls[i].contactId];
         if (entry->id == PHONE_CONTACT_DAY_C_MAN) {
             if (SavePokegear_IsNumberRegistered(gearPhone->pokegearData, PHONE_CONTACT_DAY_C_MAN) != 0xFF) {
                 // had to do this to match

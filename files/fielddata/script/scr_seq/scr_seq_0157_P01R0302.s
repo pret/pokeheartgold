@@ -11,21 +11,21 @@
 	scrdef_end
 
 scr_seq_P01R0302_002:
-	compare VAR_UNK_40CB, 4
+	compare VAR_SCENE_SS_AQUA, 4
 	goto_if_ge _001D
 	end
 
 _001D:
-	setflag FLAG_UNK_217
+	setflag FLAG_HIDE_SS_AQUA_CAPTAINS_QUARTERS_GRANDDAUGHTER
 	end
 
 scr_seq_P01R0302_000:
 	play_se SEQ_SE_DP_SELECT
 	lockall
 	faceplayer
-	compare VAR_UNK_40CB, 6
+	compare VAR_SCENE_SS_AQUA, 6
 	goto_if_ge _005B
-	compare VAR_UNK_40CB, 4
+	compare VAR_SCENE_SS_AQUA, 4
 	goto_if_eq _0050
 	npc_msg msg_0260_P01R0302_00004
 	wait_button_or_walk_away
@@ -212,11 +212,11 @@ _0305:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setvar VAR_UNK_40CB, 4
+	setvar VAR_SCENE_SS_AQUA, 4
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
 	hide_person obj_P01R0302_gsbabygirl1
-	setflag FLAG_UNK_217
+	setflag FLAG_HIDE_SS_AQUA_CAPTAINS_QUARTERS_GRANDDAUGHTER
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
 	releaseall

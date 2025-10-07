@@ -131,28 +131,28 @@ u8 SafariZone_GetObjectUnlockLevel(SafariZone *safari_zone) {
     return safari_zone->objectUnlockLevel;
 }
 
-u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 a1) {
-    SafariZone_SetObjectUnlockLevel(safari_zone, (u8)(safari_zone->objectUnlockLevel + a1));
+u8 SafariZone_IncObjectUnlockLevel(SafariZone *safari_zone, s32 by) {
+    SafariZone_SetObjectUnlockLevel(safari_zone, (u8)(safari_zone->objectUnlockLevel + by));
     return safari_zone->objectUnlockLevel;
 }
 
-void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 a1) {
-    if (a1 > 4) {
+void SafariZone_SetObjectUnlockLevel(SafariZone *safari_zone, u8 level) {
+    if (level > 4) {
         safari_zone->objectUnlockLevel = 4;
     } else {
-        safari_zone->objectUnlockLevel = a1;
+        safari_zone->objectUnlockLevel = level;
     }
 }
 
-void sub_0202F784(SafariZone *safari_zone, IGT *igt) {
+void SafariZone_SetLastTestCompletionIGT(SafariZone *safari_zone, IGT *igt) {
     safari_zone->unk5FA = (igt->hours * 60) + igt->minutes;
 }
 
-u32 sub_0202F798(SafariZone *safari_zone, IGT *igt, s32 a2) {
+u32 SafariZone_HasIGTHoursElapsedSinceLastTestCompletion(SafariZone *safari_zone, IGT *igt, s32 hours) {
     u16 minutes = (igt->hours * 60) + igt->minutes;
     s32 delta = minutes - safari_zone->unk5FA;
 
-    if (delta >= a2 * 60) {
+    if (delta >= hours * 60) {
         return 1;
     }
 

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_T21R0301.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_T21R0301.h"
+  ],
   "objects": [
     {
       "id": "obj_T21R0301_gsmiddleman1",
@@ -9,9 +11,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T21R0301_001 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 5,
@@ -26,9 +25,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_T21R0301_002 + 1",
       "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 1,
       "yRange": 0,
       "x": 2,

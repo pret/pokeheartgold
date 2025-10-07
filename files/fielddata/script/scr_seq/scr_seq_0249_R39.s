@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R39.h"
 #include "msgdata/msg/msg_0396_R39.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -16,15 +17,15 @@
 	scrdef_end
 
 scr_seq_R39_001:
-	goto_if_unset FLAG_UNK_189, _0033
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0033
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0033:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_WEEK_THURSDAY
 	goto_if_eq _005B
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _005B
 	setflag FLAG_HIDE_CAMERON
 	goto _005F
@@ -32,16 +33,16 @@ _0033:
 _005B:
 	clearflag FLAG_HIDE_CAMERON
 _005F:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	get_time_of_day VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_NITE
 	goto_if_eq _0087
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_LATE
 	goto_if_eq _0087
-	clearflag FLAG_UNK_226
+	clearflag FLAG_HIDE_ROUTE_39_MILTANK
 	goto _008B
 
 _0087:
-	setflag FLAG_UNK_226
+	setflag FLAG_HIDE_ROUTE_39_MILTANK
 _008B:
 	goto_if_unset FLAG_TRADE_LT_SURGE_PIKACHU, _00E3
 	get_phone_book_rematch PHONE_CONTACT_LT__SURGE, VAR_TEMP_x4001
@@ -135,7 +136,7 @@ _01C7:
 _01CF:
 	wait_movement
 	hide_person obj_R39_gsgentleman
-	setflag FLAG_UNK_228
+	setflag FLAG_HIDE_ROUTE_39_BAOBA
 	releaseall
 	setvar VAR_UNK_408F, 1
 	end
@@ -200,7 +201,7 @@ scr_seq_R39_006:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -210,7 +211,7 @@ scr_seq_R39_006:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _03A0
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -249,16 +250,16 @@ _032B:
 	apply_movement obj_partner_poke, _040C
 	wait_movement
 _0352:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 28
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -266,7 +267,7 @@ _0352:
 
 _038C:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -274,7 +275,7 @@ _038C:
 
 _03A0:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -339,7 +340,7 @@ scr_seq_R39_007:
 	goto_if_eq _0490
 	npc_msg msg_0396_R39_00011
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 80
@@ -347,7 +348,7 @@ scr_seq_R39_007:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0396_R39_00012
 	wait_button_or_walk_away
 	closemsg

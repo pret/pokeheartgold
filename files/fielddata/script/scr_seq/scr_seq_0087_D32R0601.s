@@ -126,14 +126,14 @@ _01A5:
 
 _01D2:
 	npc_msg msg_0110_D32R0601_00008
-	scrcmd_444 9, 3, 0, 0
+	invalid_mons_message msg_0110_D32R0601_00009, 3, 0, 0
 	touchscreen_menu_show
 	goto _0132
 	end
 
 _01E7:
 	npc_msg msg_0110_D32R0601_00008
-	scrcmd_444 9, 2, 0, 0
+	invalid_mons_message msg_0110_D32R0601_00009, 2, 0, 0
 	touchscreen_menu_show
 	goto _0132
 	end
@@ -338,7 +338,7 @@ _050A:
 	call_if_eq _05DF
 	compare VAR_UNK_4149, 2
 	call_if_eq _05F3
-	scrcmd_420 59
+	inc_game_stat GAME_STAT_UNK59
 	scrcmd_436
 	scrcmd_627 15
 	compare VAR_UNK_4149, 2

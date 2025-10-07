@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T26R0701.h"
 #include "msgdata/msg/msg_0611_T26R0701.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -15,13 +16,13 @@
 	scrdef_end
 
 scr_seq_T26R0701_004:
-	goto_if_unset FLAG_UNK_189, _002F
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _002F
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _002F:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _004A
 	setflag FLAG_HIDE_CAMERON
 	goto _004E
@@ -29,14 +30,14 @@ _002F:
 _004A:
 	setflag FLAG_HIDE_CAMERON
 _004E:
-	goto_if_unset FLAG_GAME_CLEAR, _00C3
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _00C3
 	check_registered_phone_number PHONE_CONTACT_JASMINE, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _008F
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _0087
-	clearflag FLAG_UNK_2CB
+	clearflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	goto _008D
 
 _0087:
@@ -52,16 +53,16 @@ _008F:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _00BD
-	clearflag FLAG_UNK_2CB
+	clearflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	goto _00C1
 
 _00BD:
-	setflag FLAG_UNK_2CB
+	setflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 _00C1:
 	end
 
 _00C3:
-	setflag FLAG_UNK_2CB
+	setflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	end
 
 scr_seq_T26R0701_006:
@@ -90,7 +91,7 @@ scr_seq_T26R0701_003:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -100,7 +101,7 @@ scr_seq_T26R0701_003:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0272
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -132,16 +133,16 @@ _01B7:
 	apply_movement obj_partner_poke, _02CC
 	wait_movement
 _01DE:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 25
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -168,7 +169,7 @@ _025A:
 
 _025E:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -176,7 +177,7 @@ _025E:
 
 _0272:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -249,7 +250,7 @@ _032B:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_2CB
+	setflag FLAG_HIDE_OLIVINE_CAFE_JASMINE
 	hide_person obj_T26R0701_gsleader6
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -283,7 +284,7 @@ _038A:
 	goto_if_eq _03F6
 	npc_msg msg_0611_T26R0701_00010
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 89
@@ -291,7 +292,7 @@ _038A:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0611_T26R0701_00011
 	wait_button_or_walk_away
 	closemsg

@@ -421,13 +421,13 @@ scr_seq_D37R0104_004:
 	npc_msg msg_0119_D37R0104_00000
 	closemsg
 	get_starter_choice VAR_SPECIAL_RESULT
-	compare VAR_SPECIAL_RESULT, 152
+	compare VAR_SPECIAL_RESULT, SPECIES_CHIKORITA
 	goto_if_ne _067D
 	trainer_battle TRAINER_RIVAL_SILVER_18, 0, 0, 0
 	goto _06A0
 
 _067D:
-	compare VAR_SPECIAL_RESULT, 155
+	compare VAR_SPECIAL_RESULT, SPECIES_CYNDAQUIL
 	goto_if_ne _0698
 	trainer_battle TRAINER_RIVAL_SILVER_12, 0, 0, 0
 	goto _06A0

@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D42R0101.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D42R0101.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d42r0101_max_revive",
@@ -35,9 +37,6 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "_EV_scr_seq_D42R0101_000 + 1",
       "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 16,
@@ -52,9 +51,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D42R0101_TM54",
       "scriptId": "std_itemball_d42r0101_tm54",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 14,
@@ -69,9 +65,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D42R0101_REVIVE",
       "scriptId": "std_itemball_d42r0101_revive",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 42,

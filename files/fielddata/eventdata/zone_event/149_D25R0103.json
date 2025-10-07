@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D25R0103.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D25R0103.h"
+  ],
   "bgs": [
     {
       "scriptId": "std_hiddenitem_d25r0103_ultra_ball",
@@ -27,14 +29,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_M_NICK)",
       "facingDirection": 2,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 24,
       "z": 77,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_D25R0103_gswoman3",
@@ -44,14 +46,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_GWEN)",
       "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 6,
       "z": 62,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_D25R0103_gswoman3_2",
@@ -61,14 +63,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_ACE_TRAINER_F_EMMA)",
       "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 4,
       "z": 83,
-      "y": 0
+      "y": 0,
+      "data": [
+        5
+      ]
     },
     {
       "id": "obj_D25R0103_rapurasu",
@@ -78,9 +80,6 @@
       "eventFlag": "FLAG_HIDE_UNION_CAVE_LAPRAS",
       "scriptId": "_EV_scr_seq_D25R0103_000 + 1",
       "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 2,
       "yRange": 2,
       "x": 18,
@@ -95,9 +94,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0103_ELIXIR",
       "scriptId": "std_itemball_d25r0103_elixir",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 25,
@@ -112,9 +108,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0103_HYPER_POTION",
       "scriptId": "std_itemball_d25r0103_hyper_potion",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 17,

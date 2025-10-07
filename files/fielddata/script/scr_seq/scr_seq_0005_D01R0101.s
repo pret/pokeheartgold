@@ -11,8 +11,8 @@
 	scrdef_end
 
 scr_seq_D01R0101_000:
-	goto_if_unset FLAG_UNK_189, _001F
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _001F
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _001F:
@@ -29,19 +29,19 @@ _004D:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 12
 	goto_if_ne _0068
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _009C
 
 _0068:
 	compare VAR_TEMP_x4000, 13
 	goto_if_ne _007F
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _009C
 
 _007F:
 	compare VAR_TEMP_x4000, 14
 	goto_if_ne _0096
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _009C
 
 _0096:
@@ -57,19 +57,19 @@ _009E:
 	scrcmd_522 VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 17
 	goto_if_ne _00CC
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _0100
 
 _00CC:
 	compare VAR_TEMP_x4000, 18
 	goto_if_ne _00E3
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _0100
 
 _00E3:
 	compare VAR_TEMP_x4000, 19
 	goto_if_ne _00FA
-	clearflag FLAG_UNK_262
+	clearflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	goto _0100
 
 _00FA:
@@ -79,7 +79,7 @@ _0100:
 	end
 
 _0102:
-	setflag FLAG_UNK_262
+	setflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	end
 
 scr_seq_D01R0101_001:
@@ -113,7 +113,7 @@ _0157:
 	closemsg
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
-	setflag FLAG_UNK_262
+	setflag FLAG_HIDE_DIGLETTS_CAVE_BROCK
 	hide_person obj_D01R0101_gsleader14
 	play_se SEQ_SE_DP_KAIDAN2
 	wait_se SEQ_SE_DP_KAIDAN2
@@ -137,19 +137,19 @@ _01AB:
 
 _01B6:
 	get_weekday VAR_SPECIAL_x8004
-	compare VAR_SPECIAL_x8004, 1
+	compare VAR_SPECIAL_x8004, RTC_WEEK_MONDAY
 	goto_if_ne _01D8
 	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 	goto _020E
 
 _01D8:
-	compare VAR_SPECIAL_x8004, 4
+	compare VAR_SPECIAL_x8004, RTC_WEEK_THURSDAY
 	goto_if_ne _01F6
 	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 	goto _020E
 
 _01F6:
-	compare VAR_SPECIAL_x8004, 6
+	compare VAR_SPECIAL_x8004, RTC_WEEK_SATURDAY
 	goto_if_ne _020E
 	goto_if_unset FLAG_TRADE_BROCK_BONSLY_RHYHORN, _0292
 _020E:
@@ -166,7 +166,7 @@ _020E:
 	goto_if_eq _0287
 	npc_msg msg_0047_D01R0101_00007
 	closemsg
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 86
@@ -174,7 +174,7 @@ _020E:
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	npc_msg msg_0047_D01R0101_00008
 	wait_button_or_walk_away
 	closemsg

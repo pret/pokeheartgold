@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0203.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D24R0203.h"
+  ],
   "coords": [
     {
       "scriptId": "_EV_scr_seq_D24R0203_002 + 1",
@@ -9,7 +11,7 @@
       "h": 1,
       "y": 0,
       "val": 0,
-      "var": "VAR_UNK_40CF"
+      "var": "VAR_SCENE_ALPH_NORTHEAST_HIDDEN_ROOM_HOLE"
     }
   ]
 }

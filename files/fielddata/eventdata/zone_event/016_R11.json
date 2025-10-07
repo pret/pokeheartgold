@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_R11.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_R11.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_R11_003 + 1",
@@ -35,14 +37,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_FIDEL)",
       "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1363,
       "z": 300,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R11_mystery_2_2",
@@ -52,14 +54,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_PSYCHIC_M_HERMAN)",
       "facingDirection": 1,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
       "xRange": 10,
       "yRange": 5,
       "x": 1380,
       "z": 301,
-      "y": 0
+      "y": 0,
+      "data": [
+        2
+      ]
     },
     {
       "id": "obj_R11_gsboy2",
@@ -69,14 +71,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_OWEN)",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1372,
       "z": 302,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R11_gsboy2_2",
@@ -86,14 +88,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_trainer(TRAINER_YOUNGSTER_JASON)",
       "facingDirection": 3,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
       "xRange": 9,
       "yRange": 0,
       "x": 1372,
       "z": 295,
-      "y": 0
+      "y": 0,
+      "data": [
+        1
+      ]
     },
     {
       "id": "obj_R11_kabigon",
@@ -103,9 +105,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_11_SNORLAX",
       "scriptId": "_EV_scr_seq_R11_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1354,
@@ -120,14 +119,14 @@
       "eventFlag": "FLAG_NOTHING",
       "scriptId": "std_apricorn_tree",
       "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1378,
       "z": 305,
-      "y": 0
+      "y": 0,
+      "data": [
+        3
+      ]
     },
     {
       "id": "obj_R11_monstarball",
@@ -137,9 +136,6 @@
       "eventFlag": "FLAG_HIDE_ITEMBALL_R11_TM86",
       "scriptId": "std_itemball_r11_tm86",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1393,
@@ -154,9 +150,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_11_SNORLAX",
       "scriptId": "_EV_scr_seq_R11_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1355,
@@ -171,9 +164,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_11_SNORLAX",
       "scriptId": "_EV_scr_seq_R11_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1354,
@@ -188,9 +178,6 @@
       "eventFlag": "FLAG_HIDE_ROUTE_11_SNORLAX",
       "scriptId": "_EV_scr_seq_R11_000 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 1355,

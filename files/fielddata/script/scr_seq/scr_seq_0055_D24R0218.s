@@ -16,7 +16,7 @@
 	scrdef_end
 
 scr_seq_D24R0218_004:
-	nop_var_490 VAR_TEMP_x4004
+	debug_print_var VAR_TEMP_x4004
 	compare VAR_SCENE_SINJOH_MYSTRI_ROOM, 10
 	goto_if_eq _0035
 	goto _0095
@@ -33,16 +33,16 @@ _0059:
 	follower_poke_is_event_trigger EVENT_ARCEUS_HALL_OF_ORIGIN, VAR_TEMP_x4005, VAR_TEMP_x4007
 	compare VAR_TEMP_x4007, 1
 	call_if_eq _0097
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4007
+	debug_print_var VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4007
 	end
 
 _0077:
 	follower_poke_is_event_trigger EVENT_ARCEUS_MOVIE_GIFT, VAR_TEMP_x4005, VAR_TEMP_x4006
 	compare VAR_TEMP_x4006, 1
 	call_if_eq _0097
-	nop_var_490 VAR_TEMP_x4005
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4005
+	debug_print_var VAR_TEMP_x4006
 	end
 
 _0095:
@@ -221,8 +221,8 @@ scr_seq_D24R0218_003:
 	setvar VAR_SCENE_SINJOH_MYSTRI_ROOM, 12
 	setvar VAR_UNK_4104, 1
 	setflag FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA
-	setflag FLAG_UNK_2DD
-	setflag FLAG_UNK_2DB
+	setflag FLAG_HIDE_SINJOH_CABIN_CYNTHIA
+	setflag FLAG_HIDE_SINJOH_EXTERIOR_HIKER
 	play_se SEQ_SE_DP_KAIDAN2
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
@@ -256,12 +256,12 @@ scr_seq_D24R0218_006:
 	wait_movement
 	screen_shake 0, 1, 1, 8
 	play_se SEQ_SE_DP_SUTYA2
-	setvar VAR_UNK_40CE, 0
+	setvar VAR_SCENE_ALPH_UNDERGROUND_HALL, 0
 	releaseall
 	end
 
 scr_seq_D24R0218_005:
-	compare VAR_UNK_40CE, 1
+	compare VAR_SCENE_ALPH_UNDERGROUND_HALL, 1
 	goto_if_ne _0387
 	make_object_visible obj_player
 _0387:

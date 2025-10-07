@@ -256,7 +256,7 @@ _0354:
 	call _03C2
 	call _03C2
 	call _03C2
-	scrcmd_406 0
+	give_fashion_background 0
 	setvar VAR_TEMP_x4001, 9999
 	call _03DC
 	call _03DC
@@ -266,14 +266,14 @@ _03A8:
 	random VAR_SPECIAL_RESULT, 6
 	setvar VAR_SPECIAL_x8004, 0
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_403 VAR_SPECIAL_x8004, 1
+	give_accessory VAR_SPECIAL_x8004, 1
 	return
 
 _03C2:
 	random VAR_SPECIAL_RESULT, 6
 	setvar VAR_SPECIAL_x8004, 18
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_403 VAR_SPECIAL_x8004, 1
+	give_accessory VAR_SPECIAL_x8004, 1
 	return
 
 _03DC:
@@ -283,7 +283,7 @@ _03DC:
 	copyvar VAR_TEMP_x4001, VAR_SPECIAL_RESULT
 	setvar VAR_SPECIAL_x8004, 1
 	addvar VAR_SPECIAL_x8004, VAR_SPECIAL_RESULT
-	scrcmd_406 VAR_SPECIAL_x8004
+	give_fashion_background VAR_SPECIAL_x8004
 	return
 
 scr_seq_D37R0101_000:

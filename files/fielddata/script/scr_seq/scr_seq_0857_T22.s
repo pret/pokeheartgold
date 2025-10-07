@@ -253,7 +253,7 @@ _0343:
 	scrcmd_308 77
 	scrcmd_309 77
 	hide_person obj_T22_gsbigman
-	setflag FLAG_UNK_19A
+	setflag FLAG_HIDE_VIOLET_CITY_EARL
 	clearflag FLAG_HIDE_EARL_IN_SCHOOL
 	releaseall
 	end

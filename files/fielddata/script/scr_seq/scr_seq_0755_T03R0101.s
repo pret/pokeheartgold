@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T03R0101.h"
 #include "msgdata/msg/msg_0464_T03R0101.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -44,7 +45,7 @@ scr_seq_T03R0101_014:
 	scrcmd_546 0, VAR_TEMP_x4000
 	compare VAR_TEMP_x4000, 0
 	goto_if_eq _00F4
-	nop_var_490 VAR_TEMP_x4007
+	debug_print_var VAR_TEMP_x4007
 	setvar VAR_UNK_4083, 1
 	clearflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_AFTER_LATIS
@@ -67,21 +68,21 @@ _00E8:
 	end
 
 _00F4:
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4006
 	setflag FLAG_HIDE_STEVEN_IN_HOUSE_BEFORE_LATIS
 	goto _0104
 	end
 
 _0104:
-	goto_if_unset FLAG_UNK_189, _0115
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0115
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0115:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _0139
-	compare VAR_TEMP_x4000, 0
+	compare VAR_TEMP_x4000, RTC_WEEK_SUNDAY
 	goto_if_eq _0139
 	setflag FLAG_HIDE_CAMERON
 	end
@@ -94,7 +95,7 @@ scr_seq_T03R0101_017:
 	end
 
 _0141:
-	nop_var_490 VAR_TEMP_x4006
+	debug_print_var VAR_TEMP_x4006
 	end
 
 scr_seq_T03R0101_000:
@@ -357,7 +358,7 @@ _0575:
 	npc_msg msg_0464_T03R0101_00008
 	wait_fanfare
 	give_mon VAR_UNK_407F, 20, 0, 0, 0, VAR_SPECIAL_RESULT
-	scrcmd_420 116
+	inc_game_stat GAME_STAT_FOSSIL_REVIVE
 	setvar VAR_UNK_407F, 0
 	npc_msg msg_0464_T03R0101_00009
 	touchscreen_menu_hide
@@ -373,7 +374,7 @@ _0575:
 	nickname_input VAR_TEMP_x4000, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _05E8
-	scrcmd_420 50
+	inc_game_stat GAME_STAT_UNK50
 _05E8:
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
@@ -394,7 +395,7 @@ scr_seq_T03R0101_013:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -404,7 +405,7 @@ scr_seq_T03R0101_013:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _0721
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -436,16 +437,16 @@ _06AC:
 	apply_movement obj_partner_poke, _077C
 	wait_movement
 _06D3:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 65
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -453,7 +454,7 @@ _06D3:
 
 _070D:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -461,7 +462,7 @@ _070D:
 
 _0721:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -525,7 +526,7 @@ _07BF:
 	end
 
 _07C1:
-	nop_var_490 VAR_UNK_4083
+	debug_print_var VAR_UNK_4083
 	scrcmd_344 0, 0
 	move_person_facing obj_T03R0101_daigo, 26, 0, 7, DIR_SOUTH
 	goto _07BF

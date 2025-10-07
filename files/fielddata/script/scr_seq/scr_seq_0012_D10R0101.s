@@ -35,14 +35,14 @@ scr_seq_D10R0101_001:
 	play_se SEQ_SE_DP_CON_016
 	wait 30, VAR_SPECIAL_RESULT
 	palpark_action 0
-	setvar VAR_UNK_4124, 1
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 1
 	closemsg
 	releaseall
 	end
 
 	; unreferenced
 	palpark_action 0
-	setvar VAR_UNK_4124, 1
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 1
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -59,7 +59,7 @@ scr_seq_D10R0101_002:
 	wait_fanfare
 	closemsg
 	releaseall
-	setvar VAR_UNK_4124, 1
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 1
 	call _01D4
 	end
 
@@ -77,7 +77,7 @@ scr_seq_D10R0101_003:
 	end
 
 _00D5:
-	setvar VAR_UNK_4124, 2
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 2
 	releaseall
 	call _01D4
 	end
@@ -89,7 +89,7 @@ scr_seq_D10R0101_004:
 	closemsg
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0110
-	setvar VAR_UNK_4124, 2
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 2
 	releaseall
 	call _01D4
 	end
@@ -119,7 +119,7 @@ scr_seq_D10R0101_005:
 	closemsg
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _0169
-	setvar VAR_UNK_4124, 2
+	setvar VAR_SCENE_PAL_PARK_ENTRANCE, 2
 	releaseall
 	call _01D4
 	end

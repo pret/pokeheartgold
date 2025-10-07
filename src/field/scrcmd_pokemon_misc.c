@@ -731,7 +731,7 @@ BOOL ScrCmd_ScreenShake(ScriptContext *ctx) {
 }
 
 // Related to Lance flying off on his dragonite in the Lake of Rage
-BOOL ScrCmd_775(ScriptContext *ctx) {
+BOOL ScrCmd_NpcUseFly(ScriptContext *ctx) {
     u32 objIdA = ScriptGetVar(ctx);
     u32 objIdB = ScriptGetVar(ctx);
 
@@ -1464,7 +1464,7 @@ BOOL ScrCmd_BugContestAction(ScriptContext *ctx) {
     } else {
         BugContest_Delete(fieldSystem->bugContest);
         fieldSystem->bugContest = NULL;
-        sub_02093070(fieldSystem);
+        FieldSystem_BillPCFullCallCheck(fieldSystem);
     }
     return FALSE;
 }

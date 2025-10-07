@@ -1,6 +1,7 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_R35.h"
 #include "msgdata/msg/msg_0387_R35.h"
+#include "msgdata/msg/msg_0030.h"
 	.include "asm/macros/script.inc"
 
 	.rodata
@@ -13,17 +14,17 @@
 	scrdef_end
 
 scr_seq_R35_001:
-	goto_if_unset FLAG_UNK_189, _0027
-	clearflag FLAG_UNK_189
+	goto_if_unset FLAG_TAKING_PHOTO, _0027
+	clearflag FLAG_TAKING_PHOTO
 	end
 
 _0027:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_eq _005C
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_eq _005C
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_eq _005C
 	setflag FLAG_HIDE_CAMERON
 	goto _0060
@@ -31,18 +32,18 @@ _0027:
 _005C:
 	clearflag FLAG_HIDE_CAMERON
 _0060:
-	scrcmd_379 VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 3
+	get_time_of_day VAR_TEMP_x4000
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_NITE
 	goto_if_eq _0088
-	compare VAR_TEMP_x4000, 4
+	compare VAR_TEMP_x4000, RTC_TIMEOFDAY_LATE
 	goto_if_eq _0088
-	clearflag FLAG_UNK_1CD
-	setflag FLAG_UNK_1CE
+	clearflag FLAG_HIDE_ROUTE_35_POLICEMAN_DIRK_DAY
+	setflag FLAG_HIDE_ROUTE_35_POLICEMAN_DIRK_NIGHT
 	end
 
 _0088:
-	clearflag FLAG_UNK_1CE
-	setflag FLAG_UNK_1CD
+	clearflag FLAG_HIDE_ROUTE_35_POLICEMAN_DIRK_NIGHT
+	setflag FLAG_HIDE_ROUTE_35_POLICEMAN_DIRK_DAY
 	end
 
 scr_seq_R35_003:
@@ -50,7 +51,7 @@ scr_seq_R35_003:
 	lockall
 	faceplayer
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 0
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00000
 	touchscreen_menu_hide
 	getmenuchoice VAR_SPECIAL_RESULT
 	touchscreen_menu_show
@@ -60,7 +61,7 @@ scr_seq_R35_003:
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _01AB
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 1
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00001
 	closemsg
 	toggle_following_pokemon_movement 0
 	wait_following_pokemon_movement
@@ -92,16 +93,16 @@ _0136:
 	apply_movement obj_partner_poke, _0200
 	wait_movement
 _015D:
-	setflag FLAG_UNK_189
+	setflag FLAG_TAKING_PHOTO
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	cameron_photo 11
 	lockall
 	fade_screen 6, 1, 1, RGB_BLACK
 	wait_fade
-	clearflag FLAG_UNK_189
+	clearflag FLAG_TAKING_PHOTO
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 2
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00002
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -109,7 +110,7 @@ _015D:
 
 _0197:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 5
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00005
 	wait_button_or_walk_away
 	closemsg
 	releaseall
@@ -117,7 +118,7 @@ _0197:
 
 _01AB:
 	get_std_msg_naix 2, VAR_SPECIAL_RESULT
-	msgbox_extern VAR_SPECIAL_RESULT, 3
+	msgbox_extern VAR_SPECIAL_RESULT, msg_0030_00003
 	wait_button_or_walk_away
 	closemsg
 	releaseall

@@ -18,18 +18,18 @@ scr_seq_T27GYM0101_000:
 	get_phone_book_rematch PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 0
 	goto_if_ne _00AC
-	goto_if_unset FLAG_GAME_CLEAR, _00A6
+	goto_if_unset FLAG_SYS_GAME_CLEAR, _00A6
 	check_registered_phone_number PHONE_CONTACT_MORTY, VAR_TEMP_x4001
 	compare VAR_TEMP_x4001, 1
 	goto_if_eq _0085
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 1
+	compare VAR_TEMP_x4000, RTC_WEEK_MONDAY
 	goto_if_ne _0068
 	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _0083
 
 _0068:
-	compare VAR_TEMP_x4000, 2
+	compare VAR_TEMP_x4000, RTC_WEEK_TUESDAY
 	goto_if_ne _007F
 	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _0083
@@ -41,7 +41,7 @@ _0083:
 
 _0085:
 	get_weekday VAR_TEMP_x4000
-	compare VAR_TEMP_x4000, 5
+	compare VAR_TEMP_x4000, RTC_WEEK_FRIDAY
 	goto_if_ne _00A0
 	setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
 	goto _00A4
@@ -69,7 +69,7 @@ scr_seq_T27GYM0101_004:
 	apply_movement obj_T27GYM0101_gsoldman1, _0118
 	apply_movement obj_player, _0128
 	wait_movement
-	setvar VAR_UNK_4079, 1
+	setvar VAR_SCENE_ECRUTEAK_CITY, 1
 	fade_screen 6, 1, 0, RGB_BLACK
 	wait_fade
 	warp MAP_ECRUTEAK, 7, 376, 182, DIR_SOUTH
@@ -116,7 +116,7 @@ scr_seq_T27GYM0101_001:
 	give_badge BADGE_FOG
 	addvar VAR_MIDGAME_BADGES, 1
 	add_special_game_stat SCORE_EVENT_BADGE_GET
-	setflag FLAG_UNK_998
+	setflag FLAG_SYS_QUEUE_IRWIN_CALL
 	buffer_players_name 0
 	npc_msg msg_0614_T27GYM0101_00002
 	play_fanfare SEQ_ME_BADGE

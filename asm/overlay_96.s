@@ -40031,7 +40031,7 @@ ov96_021F8DF4: ; 0x021F8DF4
 	ldr r0, [r4, #0x14]
 	add r2, r1, #0
 	add r3, sp, #0x1c
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [r5, #0x10]
 	mov r1, #0
 	str r0, [sp, #0x28]
@@ -40088,7 +40088,7 @@ ov96_021F8E94: ; 0x021F8E94
 	beq _021F8EAC
 	bl TextOBJ_Destroy
 	add r0, r4, #4
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0
 	str r0, [r4]
 _021F8EAC:
@@ -40433,7 +40433,7 @@ ov96_021F9134: ; 0x021F9134
 	mov r1, #1
 	mov r2, #2
 	add r3, sp, #0x1c
-	bl sub_02021AC8
+	bl CharTransfer_AllocRange
 	ldr r0, [r5, #8]
 	str r4, [sp, #0x2c]
 	str r0, [sp, #0x28]
@@ -40485,7 +40485,7 @@ ov96_021F91CC: ; 0x021F91CC
 	beq _021F91E4
 	bl TextOBJ_Destroy
 	add r0, r4, #4
-	bl sub_02021B5C
+	bl CharTransfer_ClearRange
 	mov r0, #0
 	str r0, [r4]
 _021F91E4:

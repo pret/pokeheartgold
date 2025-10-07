@@ -1,5 +1,7 @@
 {
-  "header": "fielddata/script/scr_seq/event_D23R0105.h",
+  "headers": [
+    "fielddata/script/scr_seq/event_D23R0105.h"
+  ],
   "bgs": [
     {
       "scriptId": "_EV_scr_seq_D23R0105_001 + 1",
@@ -27,9 +29,6 @@
       "eventFlag": "FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR",
       "scriptId": "_EV_scr_seq_D23R0105_002 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 5,
@@ -44,14 +43,14 @@
       "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
       "scriptId": "std_trainer(TRAINER_EXECUTIVE_ARIANA_ARIANA)",
       "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 11,
       "z": 4,
-      "y": 0
+      "y": 0,
+      "data": [
+        4
+      ]
     },
     {
       "id": "obj_D23R0105_rkanbum2",
@@ -61,9 +60,6 @@
       "eventFlag": "FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED",
       "scriptId": "_EV_scr_seq_D23R0105_002 + 1",
       "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
       "xRange": 0,
       "yRange": 0,
       "x": 5,
