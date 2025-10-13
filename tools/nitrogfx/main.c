@@ -900,6 +900,8 @@ void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char *
     int overflowSize = 0;
     int minDistance = 2; // default, for compatibility with LZ77UnCompVram()
     bool forwardIteration = true;
+    bool extFormat = false;
+    bool nopad = false;
 
     for (int i = 3; i < argc; i++) {
         char *option = argv[i];
@@ -934,6 +936,10 @@ void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char *
             }
         } else if (strcmp(option, "-reverse") == 0) {
             forwardIteration = false;
+        } else if (strcmp(option, "-extfmt") == 0) {
+            extFormat = true;
+        } else if (strcmp(option, "-nopad") == 0) {
+            nopad = true;
         } else {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
@@ -949,7 +955,7 @@ void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char *
     unsigned char *buffer = ReadWholeFileZeroPadded(inputPath, &fileSize, overflowSize);
 
     int compressedSize;
-    unsigned char *compressedData = LZCompress(buffer, fileSize + overflowSize, &compressedSize, minDistance, forwardIteration);
+    unsigned char *compressedData = LZCompress(buffer, fileSize + overflowSize, &compressedSize, minDistance, forwardIteration, !nopad, extFormat);
 
     compressedData[1] = (unsigned char)fileSize;
     compressedData[2] = (unsigned char)(fileSize >> 8);
