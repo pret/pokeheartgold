@@ -3,8 +3,8 @@
 #ifndef OPTIONS_H
 #define OPTIONS_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
 struct GbaToPngOptions {
     char *paletteFilePath;
@@ -24,6 +24,7 @@ struct PngToGbaOptions {
 };
 
 struct PngToNtrOptions {
+    char *cellFilePath;
     int numTiles;
     int bitDepth;
     int colsPerChunk;
@@ -41,6 +42,8 @@ struct PngToNtrOptions {
 
 struct NtrToPngOptions {
     char *paletteFilePath;
+    char *cellFilePath;
+    char *scrnFilePath;
     int bitDepth;
     bool hasTransparency;
     int width;
@@ -85,10 +88,10 @@ struct OAM {
 };
 
 struct CellAttributes {
-    bool hFlip; // 1 << 8
-    bool vFlip; // 1 << 9
-    bool hvFlip; // 1 << 10
-    bool boundingRect; // 1 << 11
+    bool hFlip;               // 1 << 8
+    bool vFlip;               // 1 << 9
+    bool hvFlip;              // 1 << 10
+    bool boundingRect;        // 1 << 11
     int boundingSphereRadius; // 1 << 0 (6 bits);
 };
 
@@ -148,7 +151,7 @@ struct AnimationDataSRT {
 
 struct AnimationDataT {
     short index;
-    //unsigned short rotation;
+    // unsigned short rotation;
     short positionX;
     short positionY;
 };
