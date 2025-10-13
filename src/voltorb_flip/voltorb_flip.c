@@ -157,7 +157,7 @@ extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
 
 static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     int payout = GamePayout(work->game);
     u16 coins = (u32)Coins_GetValue(work->coins);
@@ -173,7 +173,7 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
 
 static void RenderHowToPlayScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000008_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000008_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     // "Quit" (on blue button)
     PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wTutorialQuit, 0, 0);
@@ -187,7 +187,7 @@ static void RenderHowToPlayScreen(VoltorbFlipAppWork *work) {
 
 static void RenderHintScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000007_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000007_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     // "By looking at the numbers on the sides of..."
     PaintMessageOnWindow(work, 0, msg_0039_00009, &work->wHint, 0, 0);
@@ -195,7 +195,7 @@ static void RenderHintScreen(VoltorbFlipAppWork *work) {
 
 static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000009_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000009_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     // "Open Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wAboutMemoOpen, 0, 0);
@@ -1667,18 +1667,18 @@ static void ov122_021E79D0(VoltorbFlipAppWork *work) {
     FontID_Alloc(4, work->heapID);
     GF_ASSERT(work->narc != 0);
 
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000000_bin, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, work->heapID);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000000_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_14_OFFSET, 32, work->heapID);
     LoadFontPal1(GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_12_OFFSET, work->heapID);
     LoadFontPal0(GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_12_OFFSET, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_13_OFFSET, 32, work->heapID);
     LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_MAIN_3, 1, 13, work->unk229, work->heapID);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000002_bin, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, work->heapID);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000004_bin, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, work->heapID);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000002_bin, work->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, work->heapID);
-    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000001_bin, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, work->heapID);
-    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000003_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_bin, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000002_NCGR_lz, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000004_NSCR_lz, work->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000002_NCGR_lz, work->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000001_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_0_OFFSET, 0, work->heapID);
+    GfGfxLoader_LoadCharDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000003_NCGR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 }
 
 static void ov122_021E7AEC(VoltorbFlipAppWork *work) {
@@ -1714,15 +1714,15 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     SpriteSystem *renderer = work->spriteRenderer;
     SpriteManager *gfxHandler = work->spriteGfxHandler;
 
-    SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_bin, FALSE, 5, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
-    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_bin, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
-    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_bin, TRUE, 0);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_bin, TRUE, 0);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000010_NCLR, FALSE, 5, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
+    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000011_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, 0);
+    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000012_NCER_lz, TRUE, 0);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000013_NANR_lz, TRUE, 0);
 
-    SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_bin, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 1);
-    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_bin, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 1);
-    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_bin, TRUE, 1);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_bin, TRUE, 1);
+    SpriteSystem_LoadPlttResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000014_NCLR, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 1);
+    SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000015_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 1);
+    SpriteSystem_LoadCellResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000016_NCER_lz, TRUE, 1);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_NANR_lz, TRUE, 1);
 }
 #else
 // clang-format off
