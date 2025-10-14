@@ -12,9 +12,11 @@ $(8BPP_NOPAD_NCLR_PNG_FILES): GFX_FLAGS = -bitdepth 8 -nopad
 $(8BPP_COMP10_NOPAD_NCLR_PAL_FILES): GFX_FLAGS = -bitdepth 8 -nopad -comp 10
 $(4BPP_NOPAD_PCMP_NCLR_FILES): GFX_FLAGS = -bitdepth 4 -nopad -pcmp
 
-LZ_FLAGS                     := -nopad
-$(PADDED_LZ_FILES): LZ_FLAGS = $(filter-out -nopad,$(LZ_FLAGS))
-$(EXTFMT_LZ_FILES): LZ_FLAGS += -extfmt
+LZ_FLAGS                     = -nopad
+$(EXTFMT_LZ_FILES): LZ_FLAGS = -nopad -extfmt
+
+# note: this is as of yet unused
+$(PADDED_LZ_FILES): LZ_FLAGS =
 
 %.NCGR: %.png
 	$(GFX) $< $@ $(GFX_FLAGS)
