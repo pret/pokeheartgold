@@ -139,21 +139,6 @@ static void ov122_021E8068(void);
 static void ov122_021E8094(OverlayManager *);
 static void FreeOverlayData(OverlayManager *);
 
-extern const GraphicsBanks sVoltorbFlipGraphicsBanks;
-extern const MsgNoList sMenuMsgNos[];
-extern const u16 ov122_021E92A0[8];
-extern const u8 ov122_021E92B0[4][4];
-extern const struct GraphicsModes sVoltorbFlipBgModeSet;
-extern const OamCharTransferParam ov122_021E92D0;
-extern const SpriteResourceCountsListUnion ov122_021E92E4;
-extern const OamManagerParam ov122_021E92FC;
-extern const Ov122_021E6C2C ov122_021E9344[4];
-extern const ManagedSpriteTemplate ov122_021E9374;
-extern const ManagedSpriteTemplate ov122_021E93A8;
-extern const WindowTemplate sVoltorbFlipWindowTemplates[];
-extern const BgTemplates sVoltorbFlipBgTemplates;
-extern VoltorbFlipWorkflows sVoltorbFlipWorkflows;
-
 const u8 sMainMenuMsgNos[] = { msg_0039_00017, msg_0039_00018, msg_0039_00019 };
 const u8 sGameInfoMsgNos[] = { msg_0039_00021, msg_0039_00022, msg_0039_00023, msg_0039_00024 };
 

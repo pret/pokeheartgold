@@ -47,4 +47,6 @@ BOOL ov122_021E6900(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 BOOL AwaitQuitYesNoSelection(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 BOOL ov122_021E69DC(WorkflowEngine *a0, VoltorbFlipAppWork *a1);
 
+extern const VoltorbFlipWorkflows sVoltorbFlipWorkflows;
+
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
