@@ -8,7 +8,6 @@
 #include "application/voltorb_flip.naix"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0039.h"
-#include "voltorb_flip/voltorb_flip_data.h"
 #include "voltorb_flip/voltorb_flip_game.h"
 #include "voltorb_flip/voltorb_flip_input.h"
 #include "voltorb_flip/voltorb_flip_internal.h"
@@ -70,6 +69,17 @@ typedef enum CoinDisplay {
 #define wAboutMemoTouchOpen       windows[16]
 
 typedef void (*RenderScreenCB)(VoltorbFlipAppWork *a0);
+
+typedef struct MsgNoList {
+    const u8 *msgNos;
+    int size;
+} MsgNoList;
+
+typedef struct Ov122_021E6C2C {
+    int unk0;
+    int unk4;
+    int unk8;
+} Ov122_021E6C2C;
 
 static void RenderCoinPayoutScreen(VoltorbFlipAppWork *);
 static void RenderHowToPlayScreen(VoltorbFlipAppWork *);
@@ -445,101 +455,6 @@ const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
      .baseTile = 0x0025,
 
      },
-};
-
-const BgTemplates sVoltorbFlipBgTemplates = {
-    {
-     {
-            .x = 0,
-            .y = 0,
-            .bufferSize = 0x0800,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0000,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 3,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .dummy = 0,
-            .mosaic = FALSE,
-        },
-     {
-            .x = 0,
-            .y = 0,
-            .bufferSize = 0x0800,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0800,
-            .charBase = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 2,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .dummy = 0,
-            .mosaic = FALSE,
-        },
-     {
-            .x = 0,
-            .y = 0,
-            .bufferSize = 0x0800,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x1000,
-            .charBase = GX_BG_CHARBASE_0x0c000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .dummy = 0,
-            .mosaic = FALSE,
-        },
-     {
-            .x = 0,
-            .y = 0,
-            .bufferSize = 0x0800,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x1800,
-            .charBase = GX_BG_CHARBASE_0x10000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 0,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .dummy = 0,
-            .mosaic = FALSE,
-        },
-     {
-            .x = 0,
-            .y = 0,
-            .bufferSize = 0x0800,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0000,
-            .charBase = GX_BG_CHARBASE_0x04000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 1,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .dummy = 0,
-            .mosaic = FALSE,
-        },
-     {
-            .x = 0,
-            .y = 0,
-            .bufferSize = 0x0800,
-            .baseTile = 0,
-            .size = GF_BG_SCR_SIZE_256x256,
-            .colorMode = GX_BG_COLORMODE_16,
-            .screenBase = GX_BG_SCRBASE_0x0800,
-            .charBase = GX_BG_CHARBASE_0x08000,
-            .bgExtPltt = GX_BG_EXTPLTT_01,
-            .priority = 0,
-            .areaOver = GX_BG_AREAOVER_XLU,
-            .dummy = 0,
-            .mosaic = FALSE,
-        },
-     }
 };
 
 static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
@@ -2031,10 +1946,101 @@ static void ov122_021E7928(VoltorbFlipAppWork *work) {
     const struct GraphicsModes temp1 = sVoltorbFlipBgModeSet;
     SetBothScreensModesAndDisable(&temp1);
 
-    BgTemplates temp2 = sVoltorbFlipBgTemplates;
+    BgTemplate temp2[] = {
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x0800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x0000,
+         .charBase = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 3,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .dummy = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x0800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x0800,
+         .charBase = GX_BG_CHARBASE_0x08000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 2,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .dummy = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x0800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x1000,
+         .charBase = GX_BG_CHARBASE_0x0c000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 1,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .dummy = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x0800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x1800,
+         .charBase = GX_BG_CHARBASE_0x10000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 0,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .dummy = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x0800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x0000,
+         .charBase = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 1,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .dummy = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x0800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x0800,
+         .charBase = GX_BG_CHARBASE_0x08000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 0,
+         .areaOver = GX_BG_AREAOVER_XLU,
+         .dummy = 0,
+         .mosaic = FALSE,
+         },
+    };
 
     for (int i = 0; i < 6; i++) {
-        InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2.unk0[i], 0);
+        InitBgFromTemplate(work->bgConfig, ov122_021E9270[i], &temp2[i], 0);
         BgClearTilemapBufferAndCommit(work->bgConfig, ov122_021E9270[i]);
         BG_FillCharDataRange(work->bgConfig, (GFBgLayer)ov122_021E9270[i], 0, 1, 0);
         ToggleBgLayer(ov122_021E9270[i], GF_PLANE_TOGGLE_ON);

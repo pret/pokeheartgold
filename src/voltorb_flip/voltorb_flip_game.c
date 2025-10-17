@@ -2,9 +2,6 @@
 
 #include "global.h"
 
-#include "voltorb_flip/voltorb_flip.h"
-#include "voltorb_flip/voltorb_flip_data.h"
-
 #include "heap.h"
 #include "math_util.h"
 

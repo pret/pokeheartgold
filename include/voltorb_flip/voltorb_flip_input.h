@@ -2,11 +2,12 @@
 #define POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
 
 #include "sprite_system.h"
+#include "unk_020192D0.h"
 
 typedef struct Ov122_021E8CFC {
     struct ManagedSprite *unk0;
     struct ManagedSprite *unk4;
-    void *unk8;
+    UnkStruct_02019BA4 *unk8;
     u8 unkC;
     u8 unkD;
     u8 unkEx : 4;
@@ -16,8 +17,6 @@ typedef struct Ov122_021E8CFC {
     u8 unkFz : 1;
     u8 unkFp : 5;
 } Ov122_021E8CFC;
-
-typedef void (*Ov122UnkCB)(struct Ov122_021E8CFC *a0, int a1, int a2);
 
 Ov122_021E8CFC *ov122_021E8CFC(enum HeapID, struct ManagedSprite *, struct ManagedSprite *);
 void ov122_021E8D58(Ov122_021E8CFC *);
@@ -32,11 +31,9 @@ void ov122_021E8E40(Ov122_021E8CFC *);
 void ov122_021E8E58(Ov122_021E8CFC *);
 int ov122_021E8E70(Ov122_021E8CFC *);
 
-struct Ov122_021E8CFC;
-
-void ov122_021E91D0(struct Ov122_021E8CFC *a0, int a1, int a2);
-void ov122_021E91F4(struct Ov122_021E8CFC *a0, int a1, int a2);
-void ov122_021E91F8(struct Ov122_021E8CFC *a0, int a1, int a2);
-void ov122_021E925C(struct Ov122_021E8CFC *a0, int a1, int a2);
+void ov122_021E91D0(void *a0, int a1, int a2);
+void ov122_021E91F4(void *a0, int a1, int a2);
+void ov122_021E91F8(void *a0, int a1, int a2);
+void ov122_021E925C(void *a0, int a1, int a2);
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
