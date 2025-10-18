@@ -712,12 +712,12 @@ BOOL ManagedSprite_GetDrawFlag(ManagedSprite *a0) {
     return thunk_Sprite_GetDrawFlag(a0->sprite);
 }
 
-void thunk_Sprite_SetPaletteOverride(Sprite *sprite, int a1) {
-    Sprite_SetPaletteOverride(sprite, a1);
+void thunk_Sprite_SetPaletteOverride(Sprite *sprite, int index) {
+    Sprite_SetPaletteOverride(sprite, index);
 }
 
-void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int a1) {
-    thunk_Sprite_SetPaletteOverride(managedSprite->sprite, a1);
+void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int index) {
+    thunk_Sprite_SetPaletteOverride(managedSprite->sprite, index);
 }
 
 void thunk_Sprite_SetPaletteOffset(Sprite *sprite, u8 a1) {

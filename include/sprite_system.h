@@ -143,7 +143,7 @@ void ManagedSprite_SetDrawFlag(ManagedSprite *managedSprite, int flag);
 BOOL thunk_Sprite_GetDrawFlag(Sprite *sprite);
 BOOL ManagedSprite_GetDrawFlag(ManagedSprite *managedSprite);
 void thunk_Sprite_SetPaletteOverride(Sprite *sprite, int flag);
-void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int flag);
+void ManagedSprite_SetPaletteOverride(ManagedSprite *managedSprite, int index);
 void thunk_Sprite_SetPaletteOffset(Sprite *sprite, u8 a1);
 void ManagedSprite_SetPaletteOverrideOffset(ManagedSprite *managedSprite, u8 a1);
 u8 ManagedSprite_GetPaletteOverrideOffset(ManagedSprite *managedSprite);

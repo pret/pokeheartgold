@@ -17,21 +17,28 @@ typedef struct UnkStruct_0203FC14 {
 
 typedef void (*UnkStruct_02019BA4_unk18_func)(void *data, int a1, int a2);
 
+typedef struct UnkStruct_02019BA4_callbacks {
+    UnkStruct_02019BA4_unk18_func onButton;
+    UnkStruct_02019BA4_unk18_func onSwitchToTouchMode;
+    UnkStruct_02019BA4_unk18_func onKeyMove;
+    UnkStruct_02019BA4_unk18_func onTouch;
+} UnkStruct_02019BA4_callbacks;
+
 typedef struct UnkStruct_02019BA4 {
-    const TouchscreenHitbox *unk_00;
+    const TouchscreenHitbox *hitboxes;
     const UnkStruct_02020654 *unk_04;
     int unk_08;
-    u8 unk_0C;
-    u8 unk_0D;
-    u8 unk_0E;
+    u8 inputState;
+    u8 nextInput;
+    u8 lastInput;
     u8 unk_0F;
     int unk_10;
     int unk_14;
-    UnkStruct_02019BA4_unk18_func *unk_18;
+    const UnkStruct_02019BA4_callbacks *unk_18;
     void *unk_1C; // passed as data to unk_18
 } UnkStruct_02019BA4;
 
-UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *, const UnkStruct_02020654 *, const UnkStruct_02019BA4_unk18_func *, void *, int, u8, enum HeapID);
+UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *, const UnkStruct_02020654 *, const UnkStruct_02019BA4_callbacks *, void *, int, u8, enum HeapID);
 void sub_02019BDC(UnkStruct_02019BA4 *);
 int sub_02019F74(UnkStruct_02019BA4 *);
 void sub_02019F7C(UnkStruct_02019BA4 *, int);

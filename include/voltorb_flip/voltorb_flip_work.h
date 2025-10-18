@@ -15,7 +15,7 @@
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;
-    GameState *game;
+    VoltorbFlipGameState *game;
     Ov122_021E8CFC *unk8;
     int unkC;
     u8 unk10;
@@ -60,7 +60,7 @@ typedef struct VoltorbFlipAppWork {
     int unk238;
     struct WorkflowEngine *workflow;
     struct Ov122_021E8CFC *unk240;
-    GameState *game;
+    VoltorbFlipGameState *game;
     Ov122_021E70B8 unk248;
     Ov122_021E7888 unk25C;
 } VoltorbFlipAppWork;

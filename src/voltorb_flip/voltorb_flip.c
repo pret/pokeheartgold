@@ -97,8 +97,8 @@ static void PrintBoardVoltorbs(VoltorbFlipAppWork *);
 static void PrintBoardPoints(VoltorbFlipAppWork *);
 static int ov122_021E6E10(u8, u8);
 static void ov122_021E6E34(u16 *, int);
-static void ov122_021E6E60(BgConfig *, GameState *, int, int);
-static void ov122_021E6F04(BgConfig *, GameState *, int, int);
+static void ov122_021E6E60(BgConfig *, VoltorbFlipGameState *, int, int);
+static void ov122_021E6F04(BgConfig *, VoltorbFlipGameState *, int, int);
 static void ov122_021E6F9C(Ov122_021E70B8 *);
 static BOOL ov122_021E6FB0(Ov122_021E70B8 *);
 static void ov122_021E6FE4(Ov122_021E70B8 *);
@@ -461,7 +461,7 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000006_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
-    int payout = GamePayout(work->game);
+    int payout = VoltorbFlipGameState_GetGamePayout(work->game);
     u16 coins = (u32)Coins_GetValue(work->coins);
 
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
@@ -592,14 +592,14 @@ BOOL ov122_021E5BE4(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 }
 
 BOOL GenerateBoardAndPrintNewLevel(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    NewBoard(work->game);
+    VoltorbFlipGameState_NewBoard(work->game);
     EnqueueWorkflow(workflow, WORKFLOW_SELECT_MAIN_MENU);
 
     if (work->unk230 == 0) {
         return TRUE;
     }
 
-    int levelDiff = LevelsGained(work->game);
+    int levelDiff = VoltorbFlipGameState_CalculateLevelsGained(work->game);
     FormatGameLevel(work, 0);
     // "VOLTORB Flip Lv. {}"
     PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, 0x000f0100);
@@ -632,7 +632,7 @@ BOOL PrintYouCanEarnEvenMoreCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *
     case 0: {
         BOOL printerFinished = IsPrinterFinished(work);
         if (printerFinished) {
-            if (LevelsGained(work->game) > 0) {
+            if (VoltorbFlipGameState_CalculateLevelsGained(work->game) > 0) {
                 if (work->unk234 != 0) {
                     return TRUE;
                 }
@@ -805,7 +805,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         break;
     case 1: {
         int cardId = ov122_021E8DF0(work->unk240);
-        if (IsCardFlipped(work->game, cardId)) {
+        if (VoltorbFlipGameState_IsCardFlipped(work->game, cardId)) {
             PlaySE(SEQ_SE_DP_BOX03);
         } else {
             EnqueueWorkflow(workflow, WORKFLOW_FLIP_CARD);
@@ -853,21 +853,21 @@ BOOL PlaySuspensefulFanfare(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         s16 row = var2 / 5;
 
         // Unused
-        MultiplierCardsFlipped(work->game);
-        MultiplierCards(work->game);
+        VoltorbFlipGameState_GetMultiplierCardsFlipped(work->game);
+        VoltorbFlipGameState_GetMultiplierCards(work->game);
 
-        int voltorbsInCol = VoltorbsAlongAxis(work->game, AXIS_COL, col);
-        int voltorbsInRow = VoltorbsAlongAxis(work->game, AXIS_ROW, row);
+        int voltorbsInCol = VoltorbFlipGameState_GetVoltorbsAlongAxis(work->game, AXIS_COL, col);
+        int voltorbsInRow = VoltorbFlipGameState_GetVoltorbsAlongAxis(work->game, AXIS_ROW, row);
 
         // Unused
-        PointsAlongAxis(work->game, AXIS_COL, col);
-        PointsAlongAxis(work->game, AXIS_ROW, row);
+        VoltorbFlipGameStates_GetPointsAlongAxis(work->game, AXIS_COL, col);
+        VoltorbFlipGameStates_GetPointsAlongAxis(work->game, AXIS_ROW, row);
 
         if (voltorbsInCol != 0 && voltorbsInRow != 0) {
             MTRandom(); // unused
 
-            int flippedInCol = FlippedCardsAlongAxis(work->game, AXIS_COL, col);
-            int flippedInRow = FlippedCardsAlongAxis(work->game, AXIS_ROW, row);
+            int flippedInCol = VoltorbFlipGameState_CountFlippedCardsAlongAxis(work->game, AXIS_COL, col);
+            int flippedInRow = VoltorbFlipGameState_CountFlippedCardsAlongAxis(work->game, AXIS_ROW, row);
 
             if ((100 * voltorbsInCol / (5 - flippedInCol)) >= 75 || (voltorbsInRow * 100) / (5 - flippedInRow) >= 75) {
                 // "Is this what you were expecting?!"
@@ -904,7 +904,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         break;
     case 1: {
         int cardId = ov122_021E8DF0(work->unk240);
-        CardType type = GetCardType(work->game, cardId);
+        CardType type = VoltorbFlipGameState_GetCardType(work->game, cardId);
 
         s16 var4 = ((cardId % 5) * 4 + 1);
         s16 var5 = var4 * 8 + 12;
@@ -913,18 +913,18 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         s16 var7 = var6 * 8 + 12;
 
         ManagedSprite_SetDrawFlag(work->unk14C[1], 1);
-        FlipCard(work->game, cardId);
+        VoltorbFlipGameState_FlipCard(work->game, cardId);
         if (type == CARD_TYPE_VOLTORB) {
             ManagedSprite_SetPositionXY(work->unk14C[1], var5, var7);
             ManagedSprite_SetAnim(work->unk14C[1], 1);
             // Plays Voltorb explosion SE
             PlaySE(SEQ_SE_GS_COIN_HAZURE);
         } else {
-            int var8 = GamePayout(work->game);
+            int var8 = VoltorbFlipGameState_GetGamePayout(work->game);
 
-            MultiplyPayoutAndUpdateCardsFlipped(work->game, type);
+            VoltorbFlipGameState_MultiplyPayoutAndUpdateCardsFlipped(work->game, type);
 
-            int var9 = GamePayout(work->game);
+            int var9 = VoltorbFlipGameState_GetGamePayout(work->game);
 
             BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
             BufferIntegerAsString(work->msgFmt, 1, var9, 5, PRINTING_MODE_LEFT_ALIGN, 1);
@@ -974,9 +974,9 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 
 BOOL ov122_021E6358(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     if (ov122_021E7FA8(work) == CARD_TYPE_VOLTORB) {
-        SetRoundOutcome(work->game, ROUND_OUTCOME_LOST);
+        VoltorbFlipGameState_SetRoundOutcome(work->game, ROUND_OUTCOME_LOST);
         EnqueueWorkflow(workflow, WORKFLOW_REVEAL_BOARD);
-    } else if (EarnedMaxPayout(work->game)) {
+    } else if (VoltorbFlipGameState_HasEarnedMaxPayout(work->game)) {
         EnqueueWorkflow(workflow, WORKFLOW_UNK_10);
     } else {
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
@@ -997,7 +997,7 @@ BOOL PlayWinRoundFanfare(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         // fallthrough
     case 1:
         if (!IsFanfarePlaying() && IsPrinterFinished(work)) {
-            SetRoundOutcome(work->game, ROUND_OUTCOME_WON);
+            VoltorbFlipGameState_SetRoundOutcome(work->game, ROUND_OUTCOME_WON);
             EnqueueWorkflow(workflow, WORKFLOW_AWARD_COINS);
             return TRUE;
         }
@@ -1012,7 +1012,7 @@ BOOL AwardCoins(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int state = CurrentTaskState(workflow);
     switch (state) {
     case 0: {
-        int var2 = GamePayout(work->game);
+        int var2 = VoltorbFlipGameState_GetGamePayout(work->game);
         BufferIntegerAsString(work->msgFmt, 0, var2, 5, PRINTING_MODE_LEFT_ALIGN, 1);
         BufferPlayersName(work->msgFmt, 1, work->profile);
         // "{} received {} Coin(s)!"
@@ -1075,11 +1075,11 @@ BOOL ov122_021E64E8(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 }
 
 BOOL ov122_021E6594(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    ov122_021E8528(work->game);
+    VoltorbFlipGameState_UpdateHistoryAndReset(work->game);
     ov122_021E8D8C(work->unk240, 0);
     ov122_021E8E40(work->unk240);
 
-    int payout = GamePayout(work->game);
+    int payout = VoltorbFlipGameState_GetGamePayout(work->game);
     u16 coins = (u32)Coins_GetValue(work->coins);
 
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
@@ -1234,7 +1234,7 @@ BOOL PrintAreYouSureYouWantToQuit(WorkflowEngine *workflow, VoltorbFlipAppWork *
     int state = CurrentTaskState(workflow);
     switch (state) {
     case 0: {
-        int payout = GamePayout(work->game);
+        int payout = VoltorbFlipGameState_GetGamePayout(work->game);
         if (payout == 0) {
             // "You haven’t found any Coins! Are you sure you..."
             msgNo = msg_0039_00037;
@@ -1278,9 +1278,9 @@ BOOL AwaitQuitYesNoSelection(WorkflowEngine *workflow, VoltorbFlipAppWork *work)
     int var1 = YesNoPrompt_HandleInput(work->unk13C);
     switch (var1) {
     case YESNORESPONSE_YES: {
-        int payout = GamePayout(work->game);
+        int payout = VoltorbFlipGameState_GetGamePayout(work->game);
 
-        SetRoundOutcome(work->game, ROUND_OUTCOME_QUIT);
+        VoltorbFlipGameState_SetRoundOutcome(work->game, ROUND_OUTCOME_QUIT);
         if (payout == 0) {
             BgClearTilemapBufferAndCommit(work->bgConfig, 3);
             ov122_021E78B4(&work->unk25C);
@@ -1309,7 +1309,7 @@ BOOL ov122_021E69DC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 }
 
 static BOOL AddCoinsToPayout(VoltorbFlipAppWork *work) {
-    u32 payout = GamePayout(work->game);
+    u32 payout = VoltorbFlipGameState_GetGamePayout(work->game);
     if (System_GetTouchNew() || gSystem.newKeys != 0) {
         PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
     } else if (payout > work->payoutDisplay) {
@@ -1329,10 +1329,10 @@ static BOOL AwardPayoutToPlayer(VoltorbFlipAppWork *work) {
     BOOL payoutDeducted; // only TRUE for incremental deduction
 
     u16 coins = (u32)Coins_GetValue(work->coins);
-    u16 payout = GamePayout(work->game);
+    u16 payout = VoltorbFlipGameState_GetGamePayout(work->game);
 
     if (System_GetTouchNew() || gSystem.newKeys != 0 || coins >= 50000) {
-        DeductFromPayout(work->game, (u8)payout);
+        VoltorbFlipGameState_DeductFromPayout(work->game, (u8)payout);
         Coins_Add(work->coins, payout);
 
         int newTotal = coins + payout;
@@ -1344,7 +1344,7 @@ static BOOL AwardPayoutToPlayer(VoltorbFlipAppWork *work) {
         PrintCoins(work, COIN_DISPLAY_TOTAL, (u16)newTotal);
         payoutDeducted = FALSE;
     } else {
-        payoutDeducted = DeductFromPayout(work->game, 1);
+        payoutDeducted = VoltorbFlipGameState_DeductFromPayout(work->game, 1);
     }
 
     if (payoutDeducted) {
@@ -1409,7 +1409,7 @@ static void RenderCardMemo(VoltorbFlipAppWork *work, int cardId, int memoFlag) {
     int var3 = (cardId % 5) * 4 + 1 + ov122_021E9344[idx].unk0;
     int var5 = (cardId / 5) * 4 + 1 + ov122_021E9344[idx].unk4;
 
-    if (IsCardMemoFlagOn(work->game, cardId, memoFlag) != 0) {
+    if (VoltorbFlipGameState_IsCardMemoFlagOn(work->game, cardId, memoFlag) != 0) {
         temp1[0] = ov122_021E9344[idx].unk8;
         LoadRectToBgTilemapRect(work->bgConfig, 2, temp1, var3, var5, 1, 1);
     } else {
@@ -1427,7 +1427,7 @@ static void PrintBoardVoltorbs(VoltorbFlipAppWork *work) {
     i = 0;
     int y = 2;
     for (; i < 5; i++) {
-        int voltorbs = VoltorbsAlongAxis(work->game, AXIS_ROW, i);
+        int voltorbs = VoltorbFlipGameState_GetVoltorbsAlongAxis(work->game, AXIS_ROW, i);
         buf[2] = voltorbs + 203;
         buf[3] = voltorbs + 235;
         LoadRectToBgTilemapRect(work->bgConfig, 2, &buf[2], 23, y, 1, 2);
@@ -1439,7 +1439,7 @@ static void PrintBoardVoltorbs(VoltorbFlipAppWork *work) {
     i = 0;
     int x = 3;
     for (; i < 5; i++) {
-        int voltorbs = VoltorbsAlongAxis(work->game, AXIS_COL, i);
+        int voltorbs = VoltorbFlipGameState_GetVoltorbsAlongAxis(work->game, AXIS_COL, i);
         buf[0] = voltorbs + 203;
         buf[1] = voltorbs + 235;
         LoadRectToBgTilemapRect(work->bgConfig, 2, buf, x, 22, 1, 2);
@@ -1456,7 +1456,7 @@ static void PrintBoardPoints(VoltorbFlipAppWork *work) {
     i = 0;
     int y = 1;
     for (; i < 5; i++) {
-        int points = PointsAlongAxis(work->game, AXIS_ROW, i);
+        int points = VoltorbFlipGameStates_GetPointsAlongAxis(work->game, AXIS_ROW, i);
 
         buf[2] = points / 10 + 1;
         buf[3] = points % 10 + 1;
@@ -1469,7 +1469,7 @@ static void PrintBoardPoints(VoltorbFlipAppWork *work) {
     i = 0;
     int x = 2;
     for (; i < 5; i++) {
-        int points = PointsAlongAxis(work->game, AXIS_COL, i);
+        int points = VoltorbFlipGameStates_GetPointsAlongAxis(work->game, AXIS_COL, i);
 
         buf[0] = points / 10 + 1;
         buf[1] = points % 10 + 1;
@@ -1479,25 +1479,25 @@ static void PrintBoardPoints(VoltorbFlipAppWork *work) {
     }
 }
 
-static int ov122_021E6E10(u8 a0, u8 a1) {
+static int ov122_021E6E10(u8 cardType, u8 a1) {
     GF_ASSERT(a1 < 2);
-    GF_ASSERT(a0 < 5);
+    GF_ASSERT(cardType < 5);
 
-    return ov122_021E9278[a0][a1];
+    return ov122_021E9278[cardType][a1];
 }
 
-static void ov122_021E6E34(u16 *a0, int a1) {
+static void ov122_021E6E34(u16 *tiles3x3, int baseTile) {
     for (int i = 0; i < 9; i++) {
-        a0[i] = a1 + (i / 3) * 32 + i % 3;
+        tiles3x3[i] = baseTile + (i / 3) * 32 + i % 3;
     }
 }
 
-static void ov122_021E6E60(BgConfig *bgConfig, GameState *game, int cardId, int a3) {
+static void ov122_021E6E60(BgConfig *bgConfig, VoltorbFlipGameState *game, int cardId, int a3) {
     u16 temp1[9];
 
     int x = (cardId % 5) * 4 + 1;
     int y = (cardId / 5) * 4 + 1;
-    int cardType = GetCardType(game, cardId);
+    int cardType = VoltorbFlipGameState_GetCardType(game, cardId);
 
     switch (a3) {
     case 0:
@@ -1516,19 +1516,19 @@ static void ov122_021E6E60(BgConfig *bgConfig, GameState *game, int cardId, int 
         GF_ASSERT(FALSE);
     }
 
-    LoadRectToBgTilemapRect(bgConfig, 0, temp1, x, y, 3, 3);
+    LoadRectToBgTilemapRect(bgConfig, GF_BG_LYR_MAIN_0, temp1, x, y, 3, 3);
 }
 
-static void ov122_021E6F04(BgConfig *a0, GameState *game, int cardId, int a3) {
+static void ov122_021E6F04(BgConfig *bgConfig, VoltorbFlipGameState *game, int cardId, int a3) {
     u16 temp1[9];
 
-    int var1 = (cardId % 5) * 4 + 1;
-    int var2 = (cardId / 5) * 4 + 1;
-    int var3 = GetCardType(game, cardId);
+    int x = (cardId % 5) * 4 + 1;
+    int y = (cardId / 5) * 4 + 1;
+    int cardType = VoltorbFlipGameState_GetCardType(game, cardId);
 
     switch (a3) {
     case 0:
-        ov122_021E6E34(temp1, ov122_021E6E10(var3, 0));
+        ov122_021E6E34(temp1, ov122_021E6E10(cardType, 0));
         break;
     case 1:
         ov122_021E6E34(temp1, 26);
@@ -1543,7 +1543,7 @@ static void ov122_021E6F04(BgConfig *a0, GameState *game, int cardId, int a3) {
         GF_ASSERT(FALSE);
     }
 
-    LoadRectToBgTilemapRect(a0, 0, temp1, var1, var2, 3, 3);
+    LoadRectToBgTilemapRect(bgConfig, GF_BG_LYR_MAIN_0, temp1, x, y, 3, 3);
 }
 
 static void ov122_021E6F9C(Ov122_021E70B8 *a0) {
@@ -1554,7 +1554,7 @@ static BOOL ov122_021E6FB0(Ov122_021E70B8 *a0) {
     BOOL ret = FALSE;
 
     for (int i = 0; i < 25; i++) {
-        if (!IsCardFlipped(a0->game, i & 0xFF)) {
+        if (!VoltorbFlipGameState_IsCardFlipped(a0->game, i & 0xFF)) {
             ret = TRUE;
             ov122_021E6E60(a0->bgConfig, a0->game, (u8)i, a0->unk10);
         }
@@ -1564,13 +1564,8 @@ static BOOL ov122_021E6FB0(Ov122_021E70B8 *a0) {
 }
 
 static void ov122_021E6FE4(Ov122_021E70B8 *a0) {
-    int i;
-
-    i = 0;
-    int var1 = 0;
-    for (; i < 5; i++) {
-        ov122_021E6F04(a0->bgConfig, a0->game, (u8)(a0->unk13 + var1), a0->unk10);
-        var1 += 5;
+    for (int i = 0; i < 5; i++) {
+        ov122_021E6F04(a0->bgConfig, a0->game, (u8)(a0->unk13 + 5 * i), a0->unk10);
     }
 }
 
@@ -1578,7 +1573,7 @@ static BOOL ov122_021E7008(Ov122_021E70B8 *a0) {
     BOOL ret = FALSE;
 
     for (int i = 0; i < 25; i++) {
-        if (!IsCardFlipped(a0->game, i & 0xFF)) {
+        if (!VoltorbFlipGameState_IsCardFlipped(a0->game, i & 0xFF)) {
             ret = TRUE;
             ov122_021E6F04(a0->bgConfig, a0->game, (u8)i, a0->unk10);
         }
@@ -1717,7 +1712,7 @@ static void ov122_021E72D0(VoltorbFlipAppWork *work) {
 
             int var3 = ov122_021E92B0[i][2];
             void *var2 = work->unk14C[var3];
-            int var4 = IsCardMemoFlagOn(work->game, var1, ov122_021E92B0[i][3]);
+            int var4 = VoltorbFlipGameState_IsCardMemoFlagOn(work->game, var1, ov122_021E92B0[i][3]);
             ManagedSprite_SetAnim(var2, ov122_021E92B0[i][var4]);
         }
         ov122_021E7274(work, 1);
@@ -1728,7 +1723,7 @@ static void ov122_021E72D0(VoltorbFlipAppWork *work) {
 
 // Returns TRUE if the player pressed the Back button.
 static BOOL TryToggleCardMemo(VoltorbFlipAppWork *work, int cardId, int a2) {
-    if (IsCardFlipped(work->game, cardId)) {
+    if (VoltorbFlipGameState_IsCardFlipped(work->game, cardId)) {
         PlaySE(SEQ_SE_DP_BOX03);
         return FALSE;
     }
@@ -1738,19 +1733,19 @@ static BOOL TryToggleCardMemo(VoltorbFlipAppWork *work, int cardId, int a2) {
     case 4: // Back button
         return TRUE;
     case 0: // Voltorb button
-        ToggleCardMemo(work->game, cardId, MEMO_VOLTORB);
+        VoltorbFlipGameState_ToggleCardMemo(work->game, cardId, MEMO_VOLTORB);
         RenderCardMemo(work, cardId, MEMO_VOLTORB);
         break;
     case 1: // 1 button
-        ToggleCardMemo(work->game, cardId, MEMO_ONE);
+        VoltorbFlipGameState_ToggleCardMemo(work->game, cardId, MEMO_ONE);
         RenderCardMemo(work, cardId, MEMO_ONE);
         break;
     case 2: // 2 button
-        ToggleCardMemo(work->game, cardId, MEMO_TWO);
+        VoltorbFlipGameState_ToggleCardMemo(work->game, cardId, MEMO_TWO);
         RenderCardMemo(work, cardId, MEMO_TWO);
         break;
     case 3: // 3 button
-        ToggleCardMemo(work->game, cardId, MEMO_THREE);
+        VoltorbFlipGameState_ToggleCardMemo(work->game, cardId, MEMO_THREE);
         RenderCardMemo(work, cardId, MEMO_THREE);
         break;
     default:
@@ -1907,7 +1902,7 @@ static BOOL IsPrinterFinished(VoltorbFlipAppWork *work) {
 }
 
 static void FormatGameLevel(VoltorbFlipAppWork *work, int idx) {
-    u8 displayLevel = 8 - GameLevel(work->game);
+    u8 displayLevel = 8 - VoltorbFlipGameState_GetGameLevel(work->game);
 
     BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, PRINTING_MODE_LEFT_ALIGN, 1);
 }
@@ -2289,7 +2284,7 @@ static BOOL ov122_021E7F70(VoltorbFlipAppWork *work) {
 }
 
 static CardType ov122_021E7FA8(VoltorbFlipAppWork *work) {
-    return GetCardType(work->game, ov122_021E8DF0(work->unk240));
+    return VoltorbFlipGameState_GetCardType(work->game, ov122_021E8DF0(work->unk240));
 }
 
 static int MemoFlagToIdx(int memoFlag) {
@@ -2382,7 +2377,7 @@ static void ov122_021E8094(OverlayManager *man) {
 
     work->workflow = CreateWorkflowEngine(work->heapID, (VoltorbFlipWorkflows *)&sVoltorbFlipWorkflows, NELEMS(sVoltorbFlipWorkflows), work);
     work->unk240 = ov122_021E8CFC(work->heapID, work->unk14C[0], work->unk14C[10]);
-    work->game = CreateGameState(work->heapID);
+    work->game = VoltorbFlip_CreateGameState(work->heapID);
     PrintBoardVoltorbsAndPoints(work);
 
     Sound_SetSceneAndPlayBGM(0x46, 0, 0);
@@ -2400,7 +2395,7 @@ static void ov122_021E8094(OverlayManager *man) {
 static void FreeOverlayData(OverlayManager *man) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     Main_SetVBlankIntrCB(NULL, NULL);
-    FreeGameState(work->game);
+    VoltorbFlip_FreeGameState(work->game);
     ov122_021E8D58(work->unk240);
     FreeWorkflowEngine(work->workflow);
     ov122_021E7B94(work);
