@@ -62,6 +62,8 @@ Static main
     Object src/touchscreen_list_menu.o
     Object src/camera_translation.o
     Object asm/unk_020192D0.o
+    Object asm/unk_0201956C.o
+    Object asm/unk_02019BA4.o
     Object src/system.o
     Object src/heap.o
     Object src/bg_window.o

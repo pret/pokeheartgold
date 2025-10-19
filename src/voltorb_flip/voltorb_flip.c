@@ -793,18 +793,18 @@ BOOL CloseTutorialScreen(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 BOOL RenderBoard(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 3);
     PrintBoardVoltorbsAndPoints(work);
-    ov122_021E8D8C(work->unk240, 1);
+    ov122_021E8D8C(work->inputHandler, 1);
     EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
     return TRUE;
 }
 
 BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    int var1 = ov122_021E8D74(work->unk240);
+    int var1 = ov122_021E8D74(work->inputHandler);
     switch (var1) {
     case 0:
         break;
     case 1: {
-        int cardId = ov122_021E8DF0(work->unk240);
+        int cardId = ov122_021E8DF0(work->inputHandler);
         if (VoltorbFlipGameState_IsCardFlipped(work->game, cardId)) {
             PlaySE(SEQ_SE_DP_BOX03);
         } else {
@@ -816,7 +816,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         ManagedSprite_SetAnim(work->unk14C[2], 6);
-        if (ov122_021E8E70(work->unk240)) {
+        if (ov122_021E8E70(work->inputHandler)) {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_13); // open memo
         } else {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_14);
@@ -848,7 +848,7 @@ BOOL PlaySuspensefulFanfare(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
     int state = CurrentTaskState(workflow);
     switch (state) {
     case 0: {
-        int var2 = ov122_021E8DF0(work->unk240);
+        int var2 = ov122_021E8DF0(work->inputHandler);
         s16 col = var2 % 5;
         s16 row = var2 / 5;
 
@@ -888,7 +888,7 @@ BOOL PlaySuspensefulFanfare(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 }
 
 BOOL StartCardFlipEffect(WorkflowEngine *work, VoltorbFlipAppWork *workflow) {
-    int var1 = ov122_021E8DF0(workflow->unk240);
+    int var1 = ov122_021E8DF0(workflow->inputHandler);
     ov122_021E70B8(&workflow->unk248, var1, 0, workflow);
     PlaySE(SEQ_SE_GS_PANERU_MEKURU);
     return TRUE;
@@ -903,7 +903,7 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         }
         break;
     case 1: {
-        int cardId = ov122_021E8DF0(work->unk240);
+        int cardId = ov122_021E8DF0(work->inputHandler);
         CardType type = VoltorbFlipGameState_GetCardType(work->game, cardId);
 
         s16 var4 = ((cardId % 5) * 4 + 1);
@@ -1076,8 +1076,8 @@ BOOL ov122_021E64E8(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 
 BOOL ov122_021E6594(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     VoltorbFlipGameState_UpdateHistoryAndReset(work->game);
-    ov122_021E8D8C(work->unk240, 0);
-    ov122_021E8E40(work->unk240);
+    ov122_021E8D8C(work->inputHandler, 0);
+    ov122_021E8E40(work->inputHandler);
 
     int payout = VoltorbFlipGameState_GetGamePayout(work->game);
     u16 coins = (u32)Coins_GetValue(work->coins);
@@ -1095,11 +1095,11 @@ BOOL ov122_021E65F4(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 }
 
 BOOL ov122_021E65FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    int var1 = ov122_021E8D74(work->unk240);
+    int var1 = ov122_021E8D74(work->inputHandler);
     switch (var1) {
     case 1:
         PlaySE(SEQ_SE_DP_SELECT);
-        if (!ov122_021E8E70(work->unk240)) {
+        if (!ov122_021E8E70(work->inputHandler)) {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_14);
             return TRUE;
         }
@@ -1121,7 +1121,7 @@ BOOL ov122_021E65FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 6:
     case 7:
     case 8: {
-        int cardId = ov122_021E8DF0(work->unk240);
+        int cardId = ov122_021E8DF0(work->inputHandler);
 
         u8 var3 = var1 - 5;
         TryToggleCardMemo(work, cardId, var3);
@@ -1140,7 +1140,7 @@ BOOL ov122_021E66CC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     int state = CurrentTaskState(workflow);
     if (state == 0) {
         ov122_021E78DC(&work->unk25C);
-        SetMemoFocused(work->unk240, TRUE);
+        VoltorbFlipInputHandler_SetMemoFocused(work->inputHandler, TRUE);
     }
     return ov122_021E5B5C(workflow, work);
 }
@@ -1150,11 +1150,11 @@ BOOL ov122_021E66FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
 }
 
 BOOL ov122_021E6700(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
-    int var1 = ov122_021E8D74(work->unk240);
+    int var1 = ov122_021E8D74(work->inputHandler);
     switch (var1) {
     case 1: {
-        int cardId = ov122_021E8DF0(work->unk240);
-        int var3 = ov122_021E8E0C(work->unk240);
+        int cardId = ov122_021E8DF0(work->inputHandler);
+        int var3 = ov122_021E8E0C(work->inputHandler);
         if (TryToggleCardMemo(work, cardId, var3)) {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_13);
             return TRUE;
@@ -1201,8 +1201,8 @@ BOOL ov122_021E67E0(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 1:
         if (ov122_021E7F70(work)) {
             if (CurrentWorkflow(workflow) == WORKFLOW_UNK_14) {
-                ov122_021E8E58(work->unk240);
-                SetMemoFocused(work->unk240, FALSE);
+                ov122_021E8E58(work->inputHandler);
+                VoltorbFlipInputHandler_SetMemoFocused(work->inputHandler, FALSE);
                 ov122_021E7904(&work->unk25C);
             }
             IncrementTaskState(workflow);
@@ -1616,7 +1616,7 @@ static void PrintBoardVoltorbsAndPoints(VoltorbFlipAppWork *work) {
 
 static void ov122_021E70B8(Ov122_021E70B8 *a0, int a1, int a2, VoltorbFlipAppWork *work) {
     a0->bgConfig = work->bgConfig;
-    a0->unk8 = work->unk240;
+    a0->unk8 = work->inputHandler;
     a0->game = work->game;
     a0->unkC = a2;
     a0->unk11 = a1;
@@ -1664,8 +1664,8 @@ static BOOL ov122_021E7168(Ov122_021E70B8 *a0) {
 static void AnimateOpenMenu(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->unk238 == 0);
 
-    ov122_021E8E58(work->unk240);
-    SetMemoOpen(work->unk240, TRUE);
+    ov122_021E8E58(work->inputHandler);
+    VoltorbFlipInputHandler_SetMemoOpen(work->inputHandler, TRUE);
     ManagedSprite_SetDrawFlag(work->unk14C[4], 1);
     ManagedSprite_SetAnim(work->unk14C[4], 20);
     // "Close Memo" (text in button)
@@ -1677,8 +1677,8 @@ static void AnimateOpenMenu(VoltorbFlipAppWork *work) {
 static void AnimateCloseMenu(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->unk238 == 0);
 
-    SetMemoOpen(work->unk240, FALSE);
-    ov122_021E8E58(work->unk240);
+    VoltorbFlipInputHandler_SetMemoOpen(work->inputHandler, FALSE);
+    ov122_021E8E58(work->inputHandler);
     ov122_021E7274(work, 0);
     ManagedSprite_SetAnim(work->unk14C[4], 21);
     // "Open Memo" (text in button)
@@ -1704,9 +1704,9 @@ static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
 }
 
 static void ov122_021E72D0(VoltorbFlipAppWork *work) {
-    int var1 = ov122_021E8DF0(work->unk240);
+    int var1 = ov122_021E8DF0(work->inputHandler);
 
-    if (ov122_021E8E28(work->unk240) != 0) {
+    if (ov122_021E8E28(work->inputHandler) != 0) {
         for (int i = 0; i < 4; i++) {
             GF_ASSERT(ov122_021E92B0[i][2] < 13);
 
@@ -2284,7 +2284,7 @@ static BOOL ov122_021E7F70(VoltorbFlipAppWork *work) {
 }
 
 static CardType ov122_021E7FA8(VoltorbFlipAppWork *work) {
-    return VoltorbFlipGameState_GetCardType(work->game, ov122_021E8DF0(work->unk240));
+    return VoltorbFlipGameState_GetCardType(work->game, ov122_021E8DF0(work->inputHandler));
 }
 
 static int MemoFlagToIdx(int memoFlag) {
@@ -2376,7 +2376,7 @@ static void ov122_021E8094(OverlayManager *man) {
     ov122_021E7D6C(work);
 
     work->workflow = CreateWorkflowEngine(work->heapID, (VoltorbFlipWorkflows *)&sVoltorbFlipWorkflows, NELEMS(sVoltorbFlipWorkflows), work);
-    work->unk240 = ov122_021E8CFC(work->heapID, work->unk14C[0], work->unk14C[10]);
+    work->inputHandler = VoltorbFlip_CreateInputHandler(work->heapID, work->unk14C[0], work->unk14C[10]);
     work->game = VoltorbFlip_CreateGameState(work->heapID);
     PrintBoardVoltorbsAndPoints(work);
 
@@ -2396,7 +2396,7 @@ static void FreeOverlayData(OverlayManager *man) {
     VoltorbFlipAppWork *work = OverlayManager_GetData(man);
     Main_SetVBlankIntrCB(NULL, NULL);
     VoltorbFlip_FreeGameState(work->game);
-    ov122_021E8D58(work->unk240);
+    VoltorbFlipInputHandler_Free(work->inputHandler);
     FreeWorkflowEngine(work->workflow);
     ov122_021E7B94(work);
 

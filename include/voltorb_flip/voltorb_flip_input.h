@@ -1,8 +1,7 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
 
-#include "sprite_system.h"
-#include "unk_020192D0.h"
+#include "unk_02019BA4.h"
 
 typedef enum VoltorbFlipInput {
     VOLTORB_FLIP_INPUT_GRID_BEGIN = 0,
@@ -19,30 +18,30 @@ typedef enum VoltorbFlipInput {
     VOLTORB_FLIP_INPUT_GRID_NUM = VOLTORB_FLIP_INPUT_GRID_END + 1,
 } VoltorbFlipInput;
 
-typedef struct Ov122_021E8CFC {
+typedef struct VoltorbFlipInputHandler {
     struct ManagedSprite *unk0; // 0x0
     struct ManagedSprite *unk4; // 0x4
     UnkStruct_02019BA4 *unk8;   // 0x8
     u8 selectedRow;             // 0xC
     u8 focus;                   // 0xD
-    u8 unk_E_0 : 4;             // 0xE:0
-    u8 unk_E_4 : 4;             // 0xE:4
+    u8 memoButtonID : 4;        // 0xE:0
+    u8 lastMemoButtonID : 4;    // 0xE:4
     u8 memoOpen : 1;            // 0xF:0
     u8 memoFocused : 1;         // 0xF:1
-    u8 unk_F_2 : 1;             // 0xF:2
-} Ov122_021E8CFC;
+    u8 touchNew : 1;            // 0xF:2
+} VoltorbFlipInputHandler;
 
-Ov122_021E8CFC *ov122_021E8CFC(enum HeapID, struct ManagedSprite *, struct ManagedSprite *);
-void ov122_021E8D58(Ov122_021E8CFC *);
-int ov122_021E8D74(Ov122_021E8CFC *);
-void ov122_021E8D8C(Ov122_021E8CFC *, int);
-void SetMemoOpen(Ov122_021E8CFC *, BOOL);
-void SetMemoFocused(Ov122_021E8CFC *, BOOL);
-int ov122_021E8DF0(Ov122_021E8CFC *);
-int ov122_021E8E0C(Ov122_021E8CFC *);
-BOOL ov122_021E8E28(Ov122_021E8CFC *);
-void ov122_021E8E40(Ov122_021E8CFC *);
-void ov122_021E8E58(Ov122_021E8CFC *);
-int ov122_021E8E70(Ov122_021E8CFC *);
+VoltorbFlipInputHandler *VoltorbFlip_CreateInputHandler(enum HeapID, struct ManagedSprite *, struct ManagedSprite *);
+void VoltorbFlipInputHandler_Free(VoltorbFlipInputHandler *inputHandler);
+int ov122_021E8D74(VoltorbFlipInputHandler *inputHandler);
+void ov122_021E8D8C(VoltorbFlipInputHandler *inputHandler, BOOL draw);
+void VoltorbFlipInputHandler_SetMemoOpen(VoltorbFlipInputHandler *inputHandler, BOOL);
+void VoltorbFlipInputHandler_SetMemoFocused(VoltorbFlipInputHandler *inputHandler, BOOL);
+int ov122_021E8DF0(VoltorbFlipInputHandler *inputHandler);
+int ov122_021E8E0C(VoltorbFlipInputHandler *inputHandler);
+BOOL ov122_021E8E28(VoltorbFlipInputHandler *inputHandler);
+void ov122_021E8E40(VoltorbFlipInputHandler *inputHandler);
+void ov122_021E8E58(VoltorbFlipInputHandler *inputHandler);
+int ov122_021E8E70(VoltorbFlipInputHandler *inputHandler);
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_INPUT_H
