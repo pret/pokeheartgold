@@ -37,7 +37,7 @@ int ov122_021E8D74(VoltorbFlipInputHandler *inputHandler);
 void ov122_021E8D8C(VoltorbFlipInputHandler *inputHandler, BOOL draw);
 void VoltorbFlipInputHandler_SetMemoOpen(VoltorbFlipInputHandler *inputHandler, BOOL);
 void VoltorbFlipInputHandler_SetMemoFocused(VoltorbFlipInputHandler *inputHandler, BOOL);
-int ov122_021E8DF0(VoltorbFlipInputHandler *inputHandler);
+int VoltorbFlipInputHandler_GetCursorPos(VoltorbFlipInputHandler *inputHandler);
 int ov122_021E8E0C(VoltorbFlipInputHandler *inputHandler);
 BOOL ov122_021E8E28(VoltorbFlipInputHandler *inputHandler);
 void ov122_021E8E40(VoltorbFlipInputHandler *inputHandler);

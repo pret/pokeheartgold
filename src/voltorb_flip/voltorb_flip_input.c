@@ -161,7 +161,7 @@ void VoltorbFlipInputHandler_SetMemoFocused(VoltorbFlipInputHandler *inputHandle
     ManagedSprite_SetDrawFlag(inputHandler->unk4, val);
 }
 
-int ov122_021E8DF0(VoltorbFlipInputHandler *inputHandler) {
+int VoltorbFlipInputHandler_GetCursorPos(VoltorbFlipInputHandler *inputHandler) {
     GF_ASSERT(inputHandler != 0);
     GF_ASSERT(inputHandler->unk8 != 0);
     // This seems to return which touch screen hitbox was pressed/clicked

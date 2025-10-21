@@ -26,7 +26,6 @@ typedef struct Ov122_021E70B8 {
 
 typedef struct Ov122_021E7888 {
     u8 unk0;
-    u8 unk1[0x3];
 } Ov122_021E7888;
 
 typedef struct VoltorbFlipAppWork {
@@ -62,7 +61,7 @@ typedef struct VoltorbFlipAppWork {
     VoltorbFlipInputHandler *inputHandler;
     VoltorbFlipGameState *game;
     Ov122_021E70B8 unk248;
-    Ov122_021E7888 unk25C;
+    u8 unk25C;
 } VoltorbFlipAppWork;
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_WORK_H
