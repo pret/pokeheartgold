@@ -135,10 +135,10 @@ static void ov122_021E79D0(VoltorbFlipAppWork *);
 static void ov122_021E7AEC(VoltorbFlipAppWork *);
 static void ov122_021E7B94(VoltorbFlipAppWork *);
 static void ov122_021E7BD4(VoltorbFlipAppWork *);
-static ManagedSprite *ov122_021E7C9C(SpriteSystem *, SpriteManager *, u16, u16, u16, u16);
-static ManagedSprite *ov122_021E7D04(SpriteSystem *, SpriteManager *, u16, u16, u16, u16);
-static void ov122_021E7D6C(VoltorbFlipAppWork *);
-static void ov122_021E7F48(VoltorbFlipAppWork *);
+static ManagedSprite *VoltorbFlip_CreateSprite_Main(SpriteSystem *, SpriteManager *, u16, u16, u16, u16);
+static ManagedSprite *VoltorbFlip_CreateSprite_Sub(SpriteSystem *, SpriteManager *, u16, u16, u16, u16);
+static void VoltorbFlip_CreateSprites(VoltorbFlipAppWork *);
+static void VoltorbFlip_DeleteSprites(VoltorbFlipAppWork *);
 static void ov122_021E7F64(Sprite *, fx32);
 static BOOL ov122_021E7F70(VoltorbFlipAppWork *);
 static CardType VoltorbFlip_GetSelectedCardType(VoltorbFlipAppWork *);
@@ -244,7 +244,7 @@ const Ov122_021E6C2C ov122_021E9344[4] = {
     { 0x02, 0x02, 0x24 },
 };
 
-const ManagedSpriteTemplate ov122_021E93A8 = {
+const ManagedSpriteTemplate sSpriteTemplate_Sub = {
     0,
     0,
     0,
@@ -264,7 +264,7 @@ const ManagedSpriteTemplate ov122_021E93A8 = {
     0,
 };
 
-const ManagedSpriteTemplate ov122_021E9374 = {
+const ManagedSpriteTemplate sSpriteTemplate_Main = {
     0,
     0,
     0,
@@ -467,8 +467,8 @@ static void RenderCoinPayoutScreen(VoltorbFlipAppWork *work) {
     PrintCoins(work, COIN_DISPLAY_PAYOUT, payout);
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
 
-    ManagedSprite_SetDrawFlag(work->unk14C[11], 0);
-    ManagedSprite_SetDrawFlag(work->unk14C[12], 0);
+    ManagedSprite_SetDrawFlag(work->sprites[11], 0);
+    ManagedSprite_SetDrawFlag(work->sprites[12], 0);
 
     RenderTopScreen(work);
 }
@@ -504,8 +504,8 @@ static void RenderAboutMemoScreen(VoltorbFlipAppWork *work) {
     // "Touch 'Open Memo' to open the Memo Window..."
     PaintMessageOnWindow(work, 0, msg_0039_00010, &work->wAboutMemoTouchOpen, 0, 0);
 
-    ManagedSprite_SetDrawFlag(work->unk14C[11], 1);
-    ManagedSprite_SetDrawFlag(work->unk14C[12], 1);
+    ManagedSprite_SetDrawFlag(work->sprites[11], 1);
+    ManagedSprite_SetDrawFlag(work->sprites[12], 1);
 }
 
 static BOOL PrintAndAwaitMessage(WorkflowEngine *workflow, VoltorbFlipAppWork *work, int msgNo) {
@@ -562,7 +562,7 @@ static BOOL ov122_021E5B5C(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         IncrementTaskState(workflow);
         break;
     case 1:
-        if (ManagedSprite_IsAnimated(work->unk14C[4]) == 0) {
+        if (ManagedSprite_IsAnimated(work->sprites[4]) == 0) {
             return TRUE;
         }
         break;
@@ -815,7 +815,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     }
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
-        ManagedSprite_SetAnim(work->unk14C[2], 6);
+        ManagedSprite_SetAnim(work->sprites[2], 6);
         if (ov122_021E8E70(work->inputHandler)) {
             EnqueueWorkflow(workflow, WORKFLOW_UNK_13); // open memo
         } else {
@@ -825,7 +825,7 @@ BOOL AwaitBoardInteraction(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 2:
     case 3:
         PlaySE(SEQ_SE_DP_DECIDE);
-        ManagedSprite_SetAnim(work->unk14C[3], 3);
+        ManagedSprite_SetAnim(work->sprites[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     default:
@@ -912,11 +912,11 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
         s16 row = ((cardId / 5) * 4 + 1);
         s16 y = row * 8 + 12;
 
-        ManagedSprite_SetDrawFlag(work->unk14C[1], 1);
+        ManagedSprite_SetDrawFlag(work->sprites[1], 1);
         VoltorbFlipGameState_FlipCard(work->game, cardId);
         if (type == CARD_TYPE_VOLTORB) {
-            ManagedSprite_SetPositionXY(work->unk14C[1], x, y);
-            ManagedSprite_SetAnim(work->unk14C[1], 1);
+            ManagedSprite_SetPositionXY(work->sprites[1], x, y);
+            ManagedSprite_SetAnim(work->sprites[1], 1);
             // Plays Voltorb explosion SE
             PlaySE(SEQ_SE_GS_COIN_HAZURE);
         } else {
@@ -928,8 +928,8 @@ BOOL AwaitCardFlipAndResult(WorkflowEngine *workflow, VoltorbFlipAppWork *work) 
 
             BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
             BufferIntegerAsString(work->msgFmt, 1, payoutAfter, 5, PRINTING_MODE_LEFT_ALIGN, 1);
-            ManagedSprite_SetPositionXY(work->unk14C[1], x, y);
-            ManagedSprite_SetAnim(work->unk14C[1], 0);
+            ManagedSprite_SetPositionXY(work->sprites[1], x, y);
+            ManagedSprite_SetAnim(work->sprites[1], 0);
 
             if (payoutBefore == 0) {
                 PrintMessageToSmallWindow(work, msg_0039_00030);
@@ -1108,13 +1108,13 @@ BOOL ov122_021E65FC(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         work->unk238 = 0;
-        ManagedSprite_SetAnim(work->unk14C[2], 6);
+        ManagedSprite_SetAnim(work->sprites[2], 6);
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
         return TRUE;
     case 2:
         PlaySE(SEQ_SE_DP_DECIDE);
         work->unk238 = 0;
-        ManagedSprite_SetAnim(work->unk14C[3], 3);
+        ManagedSprite_SetAnim(work->sprites[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     case 5:
@@ -1164,18 +1164,18 @@ BOOL ov122_021E6700(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
     case 4:
         PlaySE(SEQ_SE_DP_SELECT);
         work->unk238 = 0;
-        ManagedSprite_SetAnim(work->unk14C[2], 6);
+        ManagedSprite_SetAnim(work->sprites[2], 6);
         EnqueueWorkflow(workflow, WORKFLOW_AWAIT_BOARD_INTERACT);
         return TRUE;
     case 3:
         PlaySE(SEQ_SE_DP_BUTTON3);
-        ManagedSprite_SetAnim(work->unk14C[9], 17);
+        ManagedSprite_SetAnim(work->sprites[9], 17);
         EnqueueWorkflow(workflow, WORKFLOW_UNK_13);
         return TRUE;
     case 2:
         PlaySE(SEQ_SE_DP_DECIDE);
         work->unk238 = 0;
-        ManagedSprite_SetAnim(work->unk14C[3], 3);
+        ManagedSprite_SetAnim(work->sprites[3], 3);
         EnqueueWorkflow(workflow, WORKFLOW_QUIT_ROUND);
         return TRUE;
     case 0:
@@ -1217,8 +1217,8 @@ BOOL ov122_021E67E0(WorkflowEngine *workflow, VoltorbFlipAppWork *work) {
         }
         break;
     case 3:
-        if (ManagedSprite_IsAnimated(work->unk14C[4]) == 0) {
-            ManagedSprite_SetDrawFlag(work->unk14C[4], 0);
+        if (ManagedSprite_IsAnimated(work->sprites[4]) == 0) {
+            ManagedSprite_SetDrawFlag(work->sprites[4], 0);
             return TRUE;
         }
         break;
@@ -1666,8 +1666,8 @@ static void AnimateOpenMenu(VoltorbFlipAppWork *work) {
 
     ov122_021E8E58(work->inputHandler);
     VoltorbFlipInputHandler_SetMemoOpen(work->inputHandler, TRUE);
-    ManagedSprite_SetDrawFlag(work->unk14C[4], 1);
-    ManagedSprite_SetAnim(work->unk14C[4], 20);
+    ManagedSprite_SetDrawFlag(work->sprites[4], 1);
+    ManagedSprite_SetAnim(work->sprites[4], 20);
     // "Close Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00007, &work->wMemo, 0, 0);
     work->unk238 = 1;
@@ -1680,17 +1680,17 @@ static void AnimateCloseMenu(VoltorbFlipAppWork *work) {
     VoltorbFlipInputHandler_SetMemoOpen(work->inputHandler, FALSE);
     ov122_021E8E58(work->inputHandler);
     ov122_021E7274(work, 0);
-    ManagedSprite_SetAnim(work->unk14C[4], 21);
+    ManagedSprite_SetAnim(work->sprites[4], 21);
     // "Open Memo" (text in button)
     PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
     PlaySE(SEQ_SE_DP_CARD2);
 }
 
 static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
-    ManagedSprite_SetDrawFlag(work->unk14C[5], a1);
-    ManagedSprite_SetDrawFlag(work->unk14C[6], a1);
-    ManagedSprite_SetDrawFlag(work->unk14C[7], a1);
-    ManagedSprite_SetDrawFlag(work->unk14C[8], a1);
+    ManagedSprite_SetDrawFlag(work->sprites[5], a1);
+    ManagedSprite_SetDrawFlag(work->sprites[6], a1);
+    ManagedSprite_SetDrawFlag(work->sprites[7], a1);
+    ManagedSprite_SetDrawFlag(work->sprites[8], a1);
 
     if (a1 != 0) {
         if (CurrentWorkflow(work->workflow) == WORKFLOW_UNK_14) {
@@ -1700,7 +1700,7 @@ static void ov122_021E7274(VoltorbFlipAppWork *work, int a1) {
         }
     }
 
-    ManagedSprite_SetDrawFlag(work->unk14C[9], a1);
+    ManagedSprite_SetDrawFlag(work->sprites[9], a1);
 }
 
 static void ov122_021E72D0(VoltorbFlipAppWork *work) {
@@ -1711,7 +1711,7 @@ static void ov122_021E72D0(VoltorbFlipAppWork *work) {
             GF_ASSERT(ov122_021E92B0[i][2] < 13);
 
             int var3 = ov122_021E92B0[i][2];
-            void *var2 = work->unk14C[var3];
+            void *var2 = work->sprites[var3];
             int var4 = VoltorbFlipGameState_IsCardMemoFlagOn(work->game, var1, ov122_021E92B0[i][3]);
             ManagedSprite_SetAnim(var2, ov122_021E92B0[i][var4]);
         }
@@ -2089,7 +2089,7 @@ static void ov122_021E7B94(VoltorbFlipAppWork *work) {
     GF_ASSERT(work->spriteRenderer != 0);
     GF_ASSERT(work->spriteGfxHandler != 0);
 
-    ov122_021E7F48(work);
+    VoltorbFlip_DeleteSprites(work);
     SpriteSystem_FreeResourcesAndManager(work->spriteRenderer, work->spriteGfxHandler);
     SpriteSystem_Free(work->spriteRenderer);
 }
@@ -2115,66 +2115,66 @@ static void ov122_021E7BD4(VoltorbFlipAppWork *work) {
     SpriteSystem_LoadAnimResObjFromOpenNarc(renderer, gfxHandler, work->narc, NARC_voltorb_flip_voltorb_flip_00000017_NANR_lz, TRUE, 1);
 }
 
-static ManagedSprite *ov122_021E7C9C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u16 x, u16 y, u16 animation, u16 drawPriority) {
-    ManagedSpriteTemplate temp1 = ov122_021E9374;
+static ManagedSprite *VoltorbFlip_CreateSprite_Main(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u16 x, u16 y, u16 animation, u16 drawPriority) {
+    ManagedSpriteTemplate spriteTemplate = sSpriteTemplate_Main;
 
     GF_ASSERT(spriteSystem != NULL);
     GF_ASSERT(spriteManager != NULL);
 
-    temp1.x = x;
-    temp1.y = y;
-    temp1.animation = animation;
-    temp1.drawPriority = drawPriority;
+    spriteTemplate.x = x;
+    spriteTemplate.y = y;
+    spriteTemplate.animation = animation;
+    spriteTemplate.drawPriority = drawPriority;
 
-    ManagedSprite *ret = SpriteSystem_NewSpriteWithYOffset(spriteSystem, spriteManager, &temp1, 0x20c000);
-    ManagedSprite_SetAnimateFlag(ret, 1);
-    ManagedSprite_SetDrawFlag(ret, 0);
-    return ret;
+    ManagedSprite *sprite = SpriteSystem_NewSpriteWithYOffset(spriteSystem, spriteManager, &spriteTemplate, FX32_CONST(524));
+    ManagedSprite_SetAnimateFlag(sprite, TRUE);
+    ManagedSprite_SetDrawFlag(sprite, FALSE);
+    return sprite;
 }
 
-static ManagedSprite *ov122_021E7D04(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u16 x, u16 y, u16 animation, u16 drawPriority) {
-    ManagedSpriteTemplate temp1 = ov122_021E93A8;
+static ManagedSprite *VoltorbFlip_CreateSprite_Sub(SpriteSystem *spriteSystem, SpriteManager *spriteManager, u16 x, u16 y, u16 animation, u16 drawPriority) {
+    ManagedSpriteTemplate spriteTemplate = sSpriteTemplate_Sub;
 
     GF_ASSERT(spriteSystem != NULL);
     GF_ASSERT(spriteManager != NULL);
 
-    temp1.x = x;
-    temp1.y = y;
-    temp1.animation = animation;
-    temp1.drawPriority = drawPriority;
+    spriteTemplate.x = x;
+    spriteTemplate.y = y;
+    spriteTemplate.animation = animation;
+    spriteTemplate.drawPriority = drawPriority;
 
-    ManagedSprite *var1 = SpriteSystem_NewSpriteWithYOffset(spriteSystem, spriteManager, &temp1, 0x20c000);
-    ManagedSprite_SetAnimateFlag(var1, 1);
-    ManagedSprite_SetDrawFlag(var1, 0);
-    return var1;
+    ManagedSprite *sprite = SpriteSystem_NewSpriteWithYOffset(spriteSystem, spriteManager, &spriteTemplate, FX32_CONST(524));
+    ManagedSprite_SetAnimateFlag(sprite, TRUE);
+    ManagedSprite_SetDrawFlag(sprite, FALSE);
+    return sprite;
 }
 
-static void ov122_021E7D6C(VoltorbFlipAppWork *work) {
-    work->unk14C[0] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0, 0, 18, 1);
-    work->unk14C[1] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0, 0, 0, 0);
-    work->unk14C[2] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x28, 5, 2);
-    work->unk14C[3] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0xb0, 2, 2);
-    work->unk14C[4] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0x80, 0x60, 20, 5);
-    work->unk14C[5] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x50, 12, 4);
-    work->unk14C[6] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x50, 15, 4);
-    work->unk14C[7] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x68, 14, 4);
-    work->unk14C[8] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x68, 13, 4);
-    work->unk14C[9] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x80, 16, 3);
-    work->unk14C[10] = ov122_021E7C9C(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x50, 18, 1);
-    work->unk14C[11] = ov122_021E7D04(work->spriteRenderer, work->spriteGfxHandler, 0x48, 0x38, 0, 0);
-    work->unk14C[12] = ov122_021E7D04(work->spriteRenderer, work->spriteGfxHandler, 0x88, 0x28, 0, 0);
+static void VoltorbFlip_CreateSprites(VoltorbFlipAppWork *work) {
+    work->sprites[0] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0, 0, 18, 1);
+    work->sprites[1] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0, 0, 0, 0);
+    work->sprites[2] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x28, 5, 2);
+    work->sprites[3] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0xb0, 2, 2);
+    work->sprites[4] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0x80, 0x60, 20, 5);
+    work->sprites[5] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x50, 12, 4);
+    work->sprites[6] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x50, 15, 4);
+    work->sprites[7] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x68, 14, 4);
+    work->sprites[8] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x68, 13, 4);
+    work->sprites[9] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xe0, 0x80, 16, 3);
+    work->sprites[10] = VoltorbFlip_CreateSprite_Main(work->spriteRenderer, work->spriteGfxHandler, 0xc8, 0x50, 18, 1);
+    work->sprites[11] = VoltorbFlip_CreateSprite_Sub(work->spriteRenderer, work->spriteGfxHandler, 0x48, 0x38, 0, 0);
+    work->sprites[12] = VoltorbFlip_CreateSprite_Sub(work->spriteRenderer, work->spriteGfxHandler, 0x88, 0x28, 0, 0);
 
-    ov122_021E7F64(work->unk14C[12]->sprite, 0x20000);
+    ov122_021E7F64(work->sprites[12]->sprite, FX32_CONST(32));
 
-    ManagedSprite_SetDrawFlag(work->unk14C[2], 1);
-    ManagedSprite_SetDrawFlag(work->unk14C[3], 1);
-    ManagedSprite_SetPriority(work->unk14C[1], 1);
-    ManagedSprite_SetPaletteOverride(work->unk14C[10], 4);
+    ManagedSprite_SetDrawFlag(work->sprites[2], TRUE);
+    ManagedSprite_SetDrawFlag(work->sprites[3], TRUE);
+    ManagedSprite_SetPriority(work->sprites[1], 1);
+    ManagedSprite_SetPaletteOverride(work->sprites[10], 4);
 }
 
-static void ov122_021E7F48(VoltorbFlipAppWork *work) {
+static void VoltorbFlip_DeleteSprites(VoltorbFlipAppWork *work) {
     for (int i = 0; i < 13; i++) {
-        Sprite_DeleteAndFreeResources(work->unk14C[i]);
+        Sprite_DeleteAndFreeResources(work->sprites[i]);
     }
 }
 
@@ -2184,7 +2184,7 @@ static void ov122_021E7F64(Sprite *sprite, fx32 animCtrlTime) {
 }
 
 static BOOL ov122_021E7F70(VoltorbFlipAppWork *work) {
-    return !ManagedSprite_IsAnimated(work->unk14C[3]) && !ManagedSprite_IsAnimated(work->unk14C[2]) && !ManagedSprite_IsAnimated(work->unk14C[9]);
+    return !ManagedSprite_IsAnimated(work->sprites[3]) && !ManagedSprite_IsAnimated(work->sprites[2]) && !ManagedSprite_IsAnimated(work->sprites[9]);
 }
 
 static CardType VoltorbFlip_GetSelectedCardType(VoltorbFlipAppWork *work) {
@@ -2272,10 +2272,10 @@ static void ov122_021E8094(OverlayManager *man) {
     PrintCoins(work, COIN_DISPLAY_TOTAL, coins);
     ov122_021E7AEC(work);
     ov122_021E7BD4(work);
-    ov122_021E7D6C(work);
+    VoltorbFlip_CreateSprites(work);
 
     work->workflow = CreateWorkflowEngine(work->heapID, (VoltorbFlipWorkflows *)&sVoltorbFlipWorkflows, NELEMS(sVoltorbFlipWorkflows), work);
-    work->inputHandler = VoltorbFlip_CreateInputHandler(work->heapID, work->unk14C[0], work->unk14C[10]);
+    work->inputHandler = VoltorbFlip_CreateInputHandler(work->heapID, work->sprites[0], work->sprites[10]);
     work->game = VoltorbFlip_CreateGameState(work->heapID);
     PrintBoardVoltorbsAndPoints(work);
 

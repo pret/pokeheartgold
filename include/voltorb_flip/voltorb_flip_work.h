@@ -44,7 +44,7 @@ typedef struct VoltorbFlipAppWork {
     String *string;
     SpriteSystem *spriteRenderer;
     SpriteManager *spriteGfxHandler;
-    ManagedSprite *unk14C[0xd];
+    ManagedSprite *sprites[0xd];
     MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];
