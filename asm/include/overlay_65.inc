@@ -205,7 +205,7 @@
 .public Party_InitWithMaxSize
 .public Party_GetCount
 .public Party_GetMonByIndex
-.public Party_ResetUnkSubSlot
+.public Party_ResetMonAprijuiceModifiers
 .public Party_HasMon
 .public GetItemNameIntoString
 .public ItemIdIsMail

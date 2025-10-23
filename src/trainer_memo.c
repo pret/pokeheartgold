@@ -380,8 +380,8 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     default:
         BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DASHES)));
         break;
-    case VERSION_FIRE_RED:
-    case VERSION_LEAF_GREEN:
+    case VERSION_FIRERED:
+    case VERSION_LEAFGREEN:
         BufferLocationName(a0->msgFmt, 4, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_KANTO)));
         break;
     case VERSION_HEARTGOLD:

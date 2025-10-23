@@ -45,7 +45,7 @@ static u8 GetEggCyclesToSubtract(Party *party);
 static BOOL sub_0206CB88(const u16 *a0, const u16 *a1);
 static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents);
 static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare);
-static u8 sub_0206CCD8(FieldSystem *fieldSystem);
+static u8 Daycare_GetEggCycleLength(FieldSystem *fieldSystem);
 static u8 ConvertDaycareCompatibilityScore(u32 compatibility);
 static void sub_0206D038(Pokemon *mon, enum HeapID heapID);
 static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2);
@@ -818,33 +818,33 @@ static u8 Save_Daycare_CalcCompatibilityInternal(Daycare *dayCare) {
     return ComputeCompatibilityBetweenBoxMons(parents);
 }
 
-static const u16 _020FF490[] = {
-    112,
-    214,
-    303,
-    401,
-    501,
-    611,
-    707,
-    821,
-    907,
-    928,
-    1031,
-    1121,
-    1214,
-    1224,
-    1225,
+static const u16 sEggCycleSpecialDates[] = {
+    112, // Jan 1st, New Years
+    214, // Feb 14th, Valentine's Day
+    303, // March 3rd
+    401, // April 1st, April Fools
+    501, // May 1st, Emerald US release date
+    611, // June 11th
+    707, // July 7th
+    821, // August 21st
+    907, // September 7th
+    928, // September 28th, Diamond/Pearl JP release date
+    1031, // October 31st, Halloween
+    1121, // November 21st, Ruby/Sapphire JP release date
+    1214, // December 14th, Crystal JP release date
+    1224, // December 24th, Christmas Eve
+    1225, // December 25th, Christmas Day
 };
 
-static u8 sub_0206CCD8(FieldSystem *fieldSystem) {
+static u8 Daycare_GetEggCycleLength(FieldSystem *fieldSystem) {
     int day, i;
 
     day = Field_GetDay(fieldSystem) + Field_GetMonth(fieldSystem) * 100;
-    if (sub_02055670(fieldSystem)) {
+    if (FieldSystem_HasPenalty(fieldSystem)) {
         return 255;
     }
-    for (i = 0; i < NELEMS(_020FF490); i++) {
-        if (day == _020FF490[i]) {
+    for (i = 0; i < NELEMS(sEggCycleSpecialDates); i++) {
+        if (day == sEggCycleSpecialDates[i]) {
             return 230;
         }
     }
@@ -881,7 +881,7 @@ BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem)
     }
     cycle_ctr = Save_Daycare_GetEggCycleCounter(dayCare);
     Save_Daycare_SetEggCycleCounter(dayCare, cycle_ctr + 1);
-    if (cycle_ctr + 1 == sub_0206CCD8(fieldSystem)) {
+    if (cycle_ctr + 1 == Daycare_GetEggCycleLength(fieldSystem)) {
         Save_Daycare_SetEggCycleCounter(dayCare, 0);
         to_sub = GetEggCyclesToSubtract(party);
         for (i = 0; i < Party_GetCount(party); i++) {

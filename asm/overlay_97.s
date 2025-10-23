@@ -617,7 +617,7 @@ ov97_0221EA88: ; 0x0221EA88
 	add r6, r0, #0
 	add r1, sp, #8
 	add r2, r5, #0
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	add r0, r6, #0
 	add r1, r5, #0
 	bl Party_GetMonByIndex
@@ -891,7 +891,7 @@ _0221EC3C:
 	add r0, r7, #0
 	add r1, #2
 	add r2, r4, #0
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	add r2, sp, #0x14
 	add r0, sp, #0x1c
 	add r1, sp, #0x24

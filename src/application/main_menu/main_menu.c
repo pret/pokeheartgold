@@ -541,10 +541,10 @@ static void DetectInsertedGBACart(MainMenuAppData *data) {
         version = VERSION_SAPPHIRE;
         break;
     case 2:
-        version = VERSION_LEAF_GREEN;
+        version = VERSION_LEAFGREEN;
         break;
     case 3:
-        version = VERSION_FIRE_RED;
+        version = VERSION_FIRERED;
         break;
     case 4:
         version = VERSION_EMERALD;
