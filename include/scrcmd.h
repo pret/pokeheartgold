@@ -511,7 +511,7 @@ BOOL ScrCmd_NPCTradeGetReqSpecies(ScriptContext *ctx);
 BOOL ScrCmd_NPCTradeExec(ScriptContext *ctx);
 BOOL ScrCmd_NPCTradeEnd(ScriptContext *ctx);
 BOOL ScrCmd_475(ScriptContext *ctx);
-BOOL ScrCmd_476(ScriptContext *ctx);
+BOOL ScrCmd_EnablePokedexFormDetection(ScriptContext *ctx);
 BOOL ScrCmd_NatDexFlagAction(ScriptContext *ctx);
 BOOL ScrCmd_MonGetRibbonCount(ScriptContext *ctx);
 BOOL ScrCmd_GetPartyRibbonCount(ScriptContext *ctx);

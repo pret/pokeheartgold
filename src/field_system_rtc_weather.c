@@ -30,7 +30,7 @@ u32 FieldSystem_GetWeather_HandleDiamondDust(FieldSystem *fieldSystem, u32 mapId
         u8 month = DiamondDustDates[c].month;
         u8 day = DiamondDustDates[c].day;
         if ((sysinfo_rtc->date.month == month) && (sysinfo_rtc->date.day == day)) {
-            if (!sub_02055670(fieldSystem)) {
+            if (!FieldSystem_HasPenalty(fieldSystem)) {
                 weatherType = MAP_WEATHER_DIAMOND_DUST;
             }
             return weatherType;

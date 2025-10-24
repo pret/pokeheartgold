@@ -3297,17 +3297,17 @@ ov72_02239370: ; 0x02239370
 	add r5, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	cmp r0, #0
 	bne _0223938A
 	ldr r1, [r5]
 	ldr r0, [r1, #8]
 	ldr r1, [r1, #0x1c]
-	bl Save_SysInfo_SetField4C
+	bl Save_SysInfo_SetDwcProfileId
 _0223938A:
 	ldr r0, [r5]
 	ldr r0, [r0, #8]
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0x14]

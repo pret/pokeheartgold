@@ -4066,17 +4066,17 @@ ov75_02248994: ; 0x02248994
 	bl sub_0202C08C
 	add r7, r0, #0
 	add r0, r4, #0
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	cmp r0, #0
 	bne _022489CC
 	add r0, r6, #0
 	bl sub_0203A040
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Save_SysInfo_SetField4C
+	bl Save_SysInfo_SetDwcProfileId
 _022489CC:
 	add r0, r4, #0
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	add r4, r0, #0
 	add r0, r7, #0
 	bl DWC_CreateFriendKey

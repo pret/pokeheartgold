@@ -25,7 +25,7 @@ u32 Field_GetHour(FieldSystem *fieldSystem);
 void sub_02055624(FieldSystem *fieldSystem, RTCDate *date, RTCTime *time);
 void FieldSystem_GetGameClearTime(FieldSystem *fieldSystem, RTCDate *date, RTCTime *time);
 void FieldSystem_SetGameClearTime(FieldSystem *fieldSystem);
-BOOL sub_02055670(FieldSystem *fieldSystem);
+BOOL FieldSystem_HasPenalty(FieldSystem *fieldSystem);
 UnkStruct_020556FC *sub_02055680(FieldSystem *fieldSystem, enum HeapID heapID);
 void sub_020556A8(UnkStruct_020556FC *unkPtr);
 void sub_020556B8(FieldSystem *fieldSystem);

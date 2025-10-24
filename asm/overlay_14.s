@@ -1082,7 +1082,7 @@ ov14_021E611C: ; 0x021E611C
 	ldr r0, [r5, #8]
 	ldr r2, [r6]
 	add r1, r7, #0
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldr r0, [r4]
 	bl Mon_GetBoxMon
 	add r3, r0, #0
@@ -1184,31 +1184,31 @@ ov14_021E6210: ; 0x021E6210
 	ldr r0, [r5, #8]
 	add r1, #1
 	add r2, r7, #0
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	ldr r0, [r5, #8]
 	add r1, sp, #0
 	add r2, r4, #0
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	ldr r0, [r5, #8]
 	add r1, r4, #0
 	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r5, #8]
 	add r1, r7, #0
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldr r0, [r5, #8]
 	ldr r2, [r6]
 	add r1, r4, #0
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldr r0, [r5, #8]
 	add r1, sp, #0
 	add r2, r7, #0
-	bl Party_SetUnkSubSlot
+	bl Party_SetMonAprijuiceModifiers
 	add r1, sp, #4
 	ldr r0, [r5, #8]
 	add r1, #1
 	add r2, r4, #0
-	bl Party_SetUnkSubSlot
+	bl Party_SetMonAprijuiceModifiers
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1230,7 +1230,7 @@ ov14_021E627C: ; 0x021E627C
 	ldr r0, [r5, #8]
 	add r1, sp, #0
 	add r2, r6, #0
-	bl Party_GetUnkSubSlot
+	bl Party_GetMonAprijuiceModifiers
 	ldrb r1, [r5, #0x1f]
 	ldr r2, [r4, #4]
 	add r0, r5, #0
@@ -1243,7 +1243,7 @@ ov14_021E627C: ; 0x021E627C
 	sub r2, r0, #1
 	ldr r0, [r5, #8]
 	add r1, sp, #0
-	bl Party_SetUnkSubSlot
+	bl Party_SetMonAprijuiceModifiers
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
