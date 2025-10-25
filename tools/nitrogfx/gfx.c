@@ -697,22 +697,15 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG) {
             bool hFlip = options->cells[i]->attributes.hFlip && rotationScaling;
             bool vFlip = options->cells[i]->attributes.vFlip && rotationScaling;
             bool hvFlip = options->cells[i]->attributes.hvFlip && rotationScaling;
+            // int plttNum = options->cells[i]->oam[j].attr2.Palette;
 
             switch (image->bitDepth) {
             case 4:
-                if (toPNG) {
-                    ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, true);
-                } else {
-                    ConvertFromTiles4BppCell(image->pixels, newPixels + pixelOffset, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, false);
-                }
+                ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG);
                 break;
             case 8:
                 pixelOffset *= 2;
-                if (toPNG) {
-                    ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, true);
-                } else {
-                    ConvertFromTiles8BppCell(image->pixels, newPixels + pixelOffset, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, false);
-                }
+                ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG);
                 break;
             }
         }
@@ -785,36 +778,45 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
     struct NSCRFile *pScrnHeader;
     ReadNtrScrn(scrnFilePath, &pScrnHeader);
 
+    // 3 screen modes
+    // Mode 0: 4bpp, 16x16 pltt
+    //   If has palette: output PNG is 8bpp
+    // Mode 1: 8bpp, 1x256 pltt
+    //   If has palette: no change
+    // Mode 2: 8bpp, 16x256 pltt
+    //   If has palette: output PNG is RBGA
+    unsigned outSizeMul, outSizeDiv;
     switch (pScrnHeader->scrnMode) {
     case 0:
         if (image->bitDepth != 4) {
             FATAL_ERROR("cannot convert %dbpp image with text scrn\n", image->bitDepth);
         }
+        outSizeMul = 1;
+        outSizeDiv = 2 - image->hasPalette;
         break;
     case 1:
         if (image->bitDepth != 8) {
             FATAL_ERROR("cannot convert %dbpp image with affine scrn\n", image->bitDepth);
         }
+        outSizeMul = 1;
+        outSizeDiv = 1;
         break;
     case 2:
         if (image->bitDepth != 8) {
             FATAL_ERROR("cannot convert %dbpp image with extpltt scrn\n", image->bitDepth);
         }
+        outSizeMul = image->hasPalette ? 3 + image->hasTransparency : 1;
+        outSizeDiv = 1;
         break;
     default:
         FATAL_ERROR("unsupported screen format %d\n", pScrnHeader->scrnMode);
     }
 
-    unsigned outputPixelSize;
-    if (pScrnHeader->scrnMode == 2) {
-        outputPixelSize = 2 + image->hasPalette + image->hasTransparency;
-    } else {
-        outputPixelSize = 1;
-    }
-    unsigned char *newPixels = calloc(pScrnHeader->scrnHeight * pScrnHeader->scrnWidth, outputPixelSize);
+    unsigned char *newPixels = malloc(pScrnHeader->scrnHeight * pScrnHeader->scrnWidth * outSizeMul / outSizeDiv);
     if (newPixels == NULL) {
         FATAL_ERROR("unable to allocate new pixel buffer\n");
     }
+    memset(newPixels, 0, pScrnHeader->scrnHeight * pScrnHeader->scrnWidth * outSizeMul / outSizeDiv);
     uint32_t numTiles = pScrnHeader->scrnHeight * pScrnHeader->scrnWidth / 64;
 
     uint16_t tileIdx;
@@ -829,7 +831,7 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
     int i, x, y, xOffset, yOffset;
 
     for (i = 0; i < numTiles; ++i) {
-        dstOffset = tileToPixelOffset(i, pScrnHeader->scrnWidth, 8);
+        dstOffset = tileToPixelOffset(i, pScrnHeader->scrnWidth, 8 * outSizeMul / outSizeDiv);
         if (pScrnHeader->scrnMode == 1) {
             tileIdx = pScrnHeader->data[i];
         } else {
@@ -844,27 +846,34 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
             yOffset = vFlip ? 7 - y : y;
             for (x = 0; x < 8; ++x) {
                 xOffset = hFlip ? 7 - x : x;
-                dstPixelOffset = dstOffset + yOffset * pScrnHeader->scrnWidth + xOffset;
+                dstPixelOffset = dstOffset + (yOffset * pScrnHeader->scrnWidth + xOffset) * outSizeMul / outSizeDiv;
                 srcPixelOffset = srcOffset + (y * image->width + x) * image->bitDepth / 8;
                 switch (pScrnHeader->scrnMode) {
-                case 0:
-                    newPixels[dstPixelOffset] = ((image->pixels[srcPixelOffset] >> (4 * (1 - (x & 1)))) & 0xF) | (plttIndex << 4);
-                    break;
+                case 0: {
+                    unsigned shift = (4 * (1 - (x & 1)));
+                    unsigned pixelVal = (image->pixels[srcPixelOffset] >> shift) & 0xF;
+                    if (image->hasPalette) {
+                        newPixels[dstPixelOffset] = pixelVal | (plttIndex << 4);
+                    } else {
+                        unsigned dstShift = hFlip ? 4 - shift : shift;
+                        unsigned dstMask = ~(0xF << dstShift);
+                        newPixels[dstPixelOffset] = (newPixels[dstPixelOffset] & dstMask) | (pixelVal << dstShift);
+                    }
+                } break;
                 case 1:
                     newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
                     break;
                 case 2:
-                    colorIdx = image->pixels[srcPixelOffset] | (plttIndex << 8);
                     if (image->hasPalette) {
-                        newPixels[dstPixelOffset * outputPixelSize + 0] = image->palette.colors[colorIdx].red;
-                        newPixels[dstPixelOffset * outputPixelSize + 1] = image->palette.colors[colorIdx].green;
-                        newPixels[dstPixelOffset * outputPixelSize + 2] = image->palette.colors[colorIdx].blue;
+                        colorIdx = image->pixels[srcPixelOffset] | (plttIndex << 8);
+                        newPixels[dstPixelOffset + 0] = image->palette.colors[colorIdx].red;
+                        newPixels[dstPixelOffset + 1] = image->palette.colors[colorIdx].green;
+                        newPixels[dstPixelOffset + 2] = image->palette.colors[colorIdx].blue;
+                        if (image->hasTransparency) {
+                            newPixels[dstPixelOffset + 3] = colorIdx == 0 ? 0 : 255;
+                        }
                     } else {
-                        newPixels[dstPixelOffset * outputPixelSize + 0] = image->pixels[srcPixelOffset];
-                        newPixels[dstPixelOffset * outputPixelSize + 1] = plttIndex;
-                    }
-                    if (image->hasTransparency) {
-                        newPixels[dstPixelOffset * outputPixelSize + outputPixelSize - 1] = colorIdx == 0 ? 0 : 255;
+                        newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
                     }
                     break;
                 }
@@ -874,7 +883,9 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
 
     free(image->pixels);
     image->pixels = newPixels;
-    image->bitDepth = pScrnHeader->scrnMode == 2 && !image->hasPalette ? 16 : 8;
+    if (image->hasPalette) {
+        image->bitDepth = 8;
+    }
     image->width = pScrnHeader->scrnWidth;
     image->height = pScrnHeader->scrnHeight;
     image->pixelsAreRGB = pScrnHeader->scrnMode == 2 && image->hasPalette;
