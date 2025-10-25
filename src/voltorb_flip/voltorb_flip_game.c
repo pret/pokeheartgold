@@ -338,23 +338,18 @@ CardType VoltorbFlipGameState_GetCardType(VoltorbFlipGameState *game, CardID car
     return card->type;
 }
 
-int VoltorbFlipGameState_IsCardMemoFlagOn(VoltorbFlipGameState *game, CardID cardId, int memoFlag) {
+BOOL VoltorbFlipGameState_IsCardMemoFlagOn(VoltorbFlipGameState *game, CardID cardId, int memoFlag) {
     Card *card = VoltorbFlipGameState_GetCard(game, cardId);
-    int cardMemoFlag = card->memo & memoFlag;
-    if (cardMemoFlag == memoFlag) {
-        return 1;
-    }
-    return 0;
+    return (card->memo & memoFlag) == memoFlag;
 }
 
 void VoltorbFlipGameState_ToggleCardMemo(VoltorbFlipGameState *game, CardID cardId, int memoFlag) {
     Card *card = VoltorbFlipGameState_GetCard(game, cardId);
-    int var2 = card->memo;
-    if (var2 & memoFlag) {
+    if (card->memo & memoFlag) {
         card->memo -= memoFlag;
-        return;
+    } else {
+        card->memo |= memoFlag;
     }
-    card->memo |= memoFlag;
 }
 
 int VoltorbFlipGameStates_GetPointsAlongAxis(VoltorbFlipGameState *game, Axis axis, u8 i) {

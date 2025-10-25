@@ -1,6 +1,23 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_INTERNAL_H
 
+typedef enum VoltorbFlipSpriteID {
+    VF_SPRITE_00,
+    VF_SPRITE_FLIPPING_CARD,
+    VF_SPRITE_02,
+    VF_SPRITE_03,
+    VF_SPRITE_04,
+    VF_SPRITE_TOGGLE_MEMO_VOLTORB,
+    VF_SPRITE_TOGGLE_MEMO_ONE,
+    VF_SPRITE_TOGGLE_MEMO_TWO,
+    VF_SPRITE_TOGGLE_MEMO_THREE,
+    VF_SPRITE_09,
+    VF_SPRITE_10,
+    VF_SPRITE_11,
+    VF_SPRITE_12,
+    VF_SPRITE_NUM,
+} VoltorbFlipSpriteID;
+
 #include "voltorb_flip/voltorb_flip_work.h"
 #include "voltorb_flip/voltorb_flip_workflow.h"
 

@@ -174,7 +174,7 @@ int ov122_021E8E0C(VoltorbFlipInputHandler *inputHandler) {
     return inputHandler->memoButtonID;
 }
 
-BOOL ov122_021E8E28(VoltorbFlipInputHandler *inputHandler) {
+BOOL VoltorbFlipInputHandler_IsCursorInGridRange(VoltorbFlipInputHandler *inputHandler) {
     int input = sub_02019F74(inputHandler->unk8);
     return input != VOLTORB_FLIP_INPUT_MEMO && input != VOLTORB_FLIP_INPUT_QUIT;
 }

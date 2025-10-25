@@ -116,7 +116,7 @@ BOOL VoltorbFlipGameState_DeductFromPayout(VoltorbFlipGameState *, u8);
 BOOL VoltorbFlipGameState_IsCardFlipped(VoltorbFlipGameState *, int);
 BOOL VoltorbFlipGameState_HasEarnedMaxPayout(VoltorbFlipGameState *);
 CardType VoltorbFlipGameState_GetCardType(VoltorbFlipGameState *, int);
-int VoltorbFlipGameState_IsCardMemoFlagOn(VoltorbFlipGameState *, int, int);
+BOOL VoltorbFlipGameState_IsCardMemoFlagOn(VoltorbFlipGameState *, int, int);
 void VoltorbFlipGameState_ToggleCardMemo(VoltorbFlipGameState *, int, int);
 int VoltorbFlipGameStates_GetPointsAlongAxis(VoltorbFlipGameState *, Axis, u8);
 int VoltorbFlipGameState_GetVoltorbsAlongAxis(VoltorbFlipGameState *, Axis, u8);

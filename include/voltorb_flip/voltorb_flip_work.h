@@ -36,7 +36,7 @@ typedef struct VoltorbFlipAppWork {
     PlayerProfile *profile;
     NARC *narc;
     BgConfig *bgConfig;
-    void *unk1C;
+    void *listMenuSpawner;
     TouchscreenListMenu *menu;
     Window windows[17];
     LISTMENUITEM *menuItems[2];
@@ -48,7 +48,7 @@ typedef struct VoltorbFlipAppWork {
     MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];
-    u8 unk228;
+    u8 menuInputState;
     u8 unk229;
     u8 unk22A;
     u8 printerId;
