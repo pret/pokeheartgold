@@ -131,8 +131,8 @@
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
 .public SaveSubstruct_UpdateCRC
-.public Save_SysInfo_GetField4C
-.public Save_SysInfo_SetField4C
+.public Save_SysInfo_GetDwcProfileId
+.public Save_SysInfo_SetDwcProfileId
 .public Save_PlayerData_GetProfile
 .public PlayerProfile_GetNamePtr
 .public PlayerName_FlatToString

@@ -168,14 +168,14 @@ FrtCmd_155: ; 0x02231D34
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #0
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldr r0, [r5, #4]
 	mov r1, #1
 	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #1
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldrb r0, [r4, #0x10]
 	bl ov80_02237D8C
 	cmp r0, #0
@@ -186,7 +186,7 @@ FrtCmd_155: ; 0x02231D34
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #2
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	b _02231DA8
 _02231D84:
 	ldr r0, [r5, #0xc]
@@ -195,14 +195,14 @@ _02231D84:
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #2
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 	ldr r0, [r5, #0xc]
 	mov r1, #1
 	bl Party_GetMonByIndex
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #3
-	bl Party_SafeCopyMonToSlot_ResetUnkSub
+	bl Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 _02231DA8:
 	ldr r0, [r5, #0x14]
 	bl IsBattleResultWin
