@@ -110,12 +110,12 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
     }
 }
 
-static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG) {
+static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG, int plttNum, UNUSED int mappingType, struct Image *image) {
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
-    int pitch = imageWidth / 2;
+    int pitch = image->hasPalette ? imageWidth / 2 : imageWidth;
 
     for (int i = 0; i < oamHeight * oamWidth; i++) {
         for (int j = 0; j < 8; j++) {
@@ -126,23 +126,30 @@ static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, in
             if (hvFlip) {
                 idxComponentY += 8 - j * 2;
             }
+            if (image->hasPalette) {
+                idxComponentY *= 2;
+            }
 
             for (int k = 0; k < 4; k++) {
                 int idxComponentX = (chunkStartX + tilesSoFar) * 4 + k + startX / 2;
+                unsigned char srcPixelPair;
+                unsigned char leftPixel;
+                unsigned char rightPixel;
 
                 if (hFlip) {
                     idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + -k + startX / 2 - 1;
-
-                    unsigned char srcPixelPair = *src;
-                    unsigned char leftPixel = srcPixelPair & 0xF;
-                    unsigned char rightPixel = srcPixelPair >> 4;
 
                     if (toPNG) {
                         srcPixelPair = *src++;
                         leftPixel = srcPixelPair & 0xF;
                         rightPixel = srcPixelPair >> 4;
 
-                        dest[idxComponentY * pitch + idxComponentX] = (leftPixel << 4) | rightPixel;
+                        if (image->hasPalette) {
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 0] = leftPixel | (plttNum << 4);
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 1] = rightPixel | (plttNum << 4);
+                        } else {
+                            dest[idxComponentY * pitch + idxComponentX] = (leftPixel << 4) | rightPixel;
+                        }
                     } else {
                         srcPixelPair = src[idxComponentY * pitch + idxComponentX];
                         leftPixel = srcPixelPair & 0xF;
@@ -152,7 +159,15 @@ static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, in
                     }
                 } else {
                     if (toPNG) {
-                        dest[idxComponentY * pitch + idxComponentX] = *src++;
+                        if (image->hasPalette) {
+                            srcPixelPair = *src++;
+                            leftPixel = srcPixelPair & 0xF;
+                            rightPixel = srcPixelPair >> 4;
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 0] = rightPixel | (plttNum << 4);
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 1] = leftPixel | (plttNum << 4);
+                        } else {
+                            dest[idxComponentY * pitch + idxComponentX] = *src++;
+                        }
                     } else {
                         *dest++ = src[idxComponentY * pitch + idxComponentX];
                     }
@@ -229,12 +244,14 @@ static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int nu
     }
 }
 
-static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG) {
+static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG, int plttNum, int mappingType, struct Image *image) {
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
     int chunkStartY = 0;
     int pitch = imageWidth;
+    int pitchFactor = mappingType == 2 ? (image->hasTransparency ? 4 : 3) : 1;
+    pitch *= pitchFactor;
 
     for (int i = 0; i < oamHeight * oamWidth; i++) {
         for (int j = 0; j < 8; j++) {
@@ -245,6 +262,7 @@ static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, in
             if (hvFlip) {
                 idxComponentY += 8 - j * 2;
             }
+            idxComponentY *= pitchFactor;
 
             for (int k = 0; k < 8; k++) {
                 int idxComponentX = (chunkStartX + tilesSoFar) * 8 + k + startX;
@@ -253,7 +271,18 @@ static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, in
                 }
 
                 if (toPNG) {
-                    dest[idxComponentY * pitch + idxComponentX] = *src++;
+                    if (mappingType == 2) {
+                        int colorIdx = plttNum * 256 + (*src++);
+                        struct Color *color = &image->palette.colors[colorIdx];
+                        dest[idxComponentY * pitch + idxComponentX * pitchFactor + 0] = color->red;
+                        dest[idxComponentY * pitch + idxComponentX * pitchFactor + 1] = color->green;
+                        dest[idxComponentY * pitch + idxComponentX * pitchFactor + 2] = color->blue;
+                        if (image->hasTransparency) {
+                            dest[idxComponentY * pitch + idxComponentX * pitchFactor + 3] = colorIdx == 0 ? 0 : 255;
+                        }
+                    } else {
+                        dest[idxComponentY * pitch + idxComponentX] = *src++;
+                    }
                 } else {
                     *dest++ = src[idxComponentY * pitch + idxComponentX];
                 }
@@ -583,8 +612,35 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG) {
     if (outputHeight == 0 || outputWidth == 0) {
         FATAL_ERROR("No cells. Incompatible NCER\n");
     }
-    unsigned char *newPixels = malloc(outputHeight * outputWidth);
-    memset(newPixels, 255, outputHeight * outputWidth);
+
+    uint32_t outSizeFactor_numer = 1, outSizeFactor_denom = 1;
+    switch (options->mappingType) {
+    case 0:
+        if (image->bitDepth != 4) {
+            FATAL_ERROR("cannot parse %dbpp image with mapping type 0\n", image->bitDepth);
+        }
+        if (!image->hasPalette) {
+            outSizeFactor_denom = 2;
+        }
+        break;
+    case 1:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot parse %dbpp image with mapping type 0\n", image->bitDepth);
+        }
+        break;
+    case 2:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot parse %dbpp image with mapping type 0\n", image->bitDepth);
+        }
+        if (image->hasPalette) {
+            outSizeFactor_numer = image->hasTransparency ? 4 : 3;
+        }
+        break;
+    default:
+        FATAL_ERROR("invalid mappingType %d\n", options->mappingType);
+    }
+    unsigned char *newPixels = malloc(outputHeight * outputWidth * outSizeFactor_numer / outSizeFactor_denom);
+    memset(newPixels, image->hasPalette ? 0 : 255, outputHeight * outputWidth * outSizeFactor_numer / outSizeFactor_denom);
 
     int scanHeight = 0;
     int maxTile = 0;
@@ -697,15 +753,15 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG) {
             bool hFlip = options->cells[i]->attributes.hFlip && rotationScaling;
             bool vFlip = options->cells[i]->attributes.vFlip && rotationScaling;
             bool hvFlip = options->cells[i]->attributes.hvFlip && rotationScaling;
-            // int plttNum = options->cells[i]->oam[j].attr2.Palette;
+            int plttNum = options->cells[i]->oam[j].attr2.Palette;
 
             switch (image->bitDepth) {
             case 4:
-                ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG);
+                ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG, plttNum, options->mappingType, image);
                 break;
             case 8:
                 pixelOffset *= 2;
-                ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG);
+                ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG, plttNum, options->mappingType, image);
                 break;
             }
         }
@@ -726,6 +782,12 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG) {
         image->pixels = newPixels;
         image->height = outputHeight;
         image->width = outputWidth;
+        if (image->hasPalette) {
+            image->bitDepth = 8;
+            if (options->mappingType == 2) {
+                image->pixelsAreRGB = true;
+            }
+        }
     } else {
         image->pixels = newPixels;
         image->height = numTiles * 8;
