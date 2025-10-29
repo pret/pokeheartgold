@@ -151,10 +151,14 @@ static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, in
                             dest[idxComponentY * pitch + idxComponentX] = (leftPixel << 4) | rightPixel;
                         }
                     } else {
-                        srcPixelPair = src[idxComponentY * pitch + idxComponentX];
-                        leftPixel = srcPixelPair & 0xF;
-                        rightPixel = srcPixelPair >> 4;
-
+                        if (image->hasPalette) {
+                            leftPixel = src[idxComponentY * pitch + idxComponentX * 2 + 0] & 0xF;
+                            rightPixel = src[idxComponentY * pitch + idxComponentX * 2 + 1] & 0xF;
+                        } else {
+                            srcPixelPair = src[idxComponentY * pitch + idxComponentX];
+                            leftPixel = srcPixelPair & 0xF;
+                            rightPixel = srcPixelPair >> 4;
+                        }
                         *dest++ = (leftPixel << 4) | rightPixel;
                     }
                 } else {
@@ -169,7 +173,13 @@ static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, in
                             dest[idxComponentY * pitch + idxComponentX] = *src++;
                         }
                     } else {
-                        *dest++ = src[idxComponentY * pitch + idxComponentX];
+                        if (image->hasPalette) {
+                            rightPixel = src[idxComponentY * pitch + idxComponentX * 2 + 0] & 0xF;
+                            leftPixel = src[idxComponentY * pitch + idxComponentX * 2 + 1] & 0xF;
+                            *dest++ = leftPixel | (rightPixel << 4);
+                        } else {
+                            *dest++ = src[idxComponentY * pitch + idxComponentX];
+                        }
                     }
                 }
             }
@@ -245,6 +255,8 @@ static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int nu
 }
 
 static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG, int plttNum, int mappingType, struct Image *image) {
+    static bool setTransparencyColor = false;
+
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
@@ -271,20 +283,71 @@ static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, in
                 }
 
                 if (toPNG) {
-                    if (mappingType == 2) {
+                    if (image->hasPalette && mappingType == 2) {
+                        // Color mode 256x16 extpltt is handled specially
+                        // The underlying PNG image is 24-bit RGB or 32-bit RGBA
                         int colorIdx = plttNum * 256 + (*src++);
                         struct Color *color = &image->palette.colors[colorIdx];
                         dest[idxComponentY * pitch + idxComponentX * pitchFactor + 0] = color->red;
                         dest[idxComponentY * pitch + idxComponentX * pitchFactor + 1] = color->green;
                         dest[idxComponentY * pitch + idxComponentX * pitchFactor + 2] = color->blue;
                         if (image->hasTransparency) {
+                            // Alpha on DS is binary. Alpha in PNG is 8-bit. Scale accordingly.
                             dest[idxComponentY * pitch + idxComponentX * pitchFactor + 3] = colorIdx == 0 ? 0 : 255;
                         }
                     } else {
                         dest[idxComponentY * pitch + idxComponentX] = *src++;
                     }
                 } else {
-                    *dest++ = src[idxComponentY * pitch + idxComponentX];
+                    if (image->hasPalette && mappingType == 2) {
+                        // Color mode 256x16 extpltt is handled specially
+                        // The underlying PNG image is 24-bit RGB or 32-bit RGBA
+                        int colorIdx;
+                        struct Color color = {
+                            .red = src[idxComponentY * pitch + idxComponentX * pitchFactor + 0],
+                            .green = src[idxComponentY * pitch + idxComponentX * pitchFactor + 1],
+                            .blue = src[idxComponentY * pitch + idxComponentX * pitchFactor + 2],
+                        };
+                        if (image->hasTransparency && src[idxComponentY * pitch + idxComponentX * pitchFactor + 3] == 0) {
+                            // First color is hardcoded to be transparency
+                            colorIdx = 0;
+                            if (!setTransparencyColor) {
+                                memcpy(&image->palette.colors[0], &color, sizeof(struct Color));
+                                setTransparencyColor = true;
+                                if (image->palette.numColors == 0) {
+                                    image->palette.numColors = 1;
+                                }
+                            } else {
+                                // No other color is permitted to be transparency
+                                if (memcmp(&image->palette.colors[0], &color, sizeof(struct Color)) != 0) {
+                                    FATAL_ERROR("Transparency color is not uniform\n");
+                                }
+                            }
+                        } else if (image->palette.numColors == 0) {
+                            // Haven't registered a color yet, and the very first pixel is not transparency
+                            memcpy(&image->palette.colors[1], &color, sizeof(struct Color));
+                            image->palette.numColors = 2;
+                            colorIdx = 1;
+                        } else {
+                            // Assume that palette is arranged in order of use, excluding transparency
+                            // It is not known whether this holds for retail ROMs
+                            for (colorIdx = 1; colorIdx < 4096 && colorIdx < image->palette.numColors; colorIdx++) {
+                                if (memcmp(&image->palette.colors[colorIdx], &color, sizeof(struct Color)) == 0) {
+                                    break;
+                                }
+                            }
+                            if (colorIdx == image->palette.numColors) {
+                                if (colorIdx == 4096) {
+                                    FATAL_ERROR("Too many unique colors for DS object extpltt\n");
+                                }
+                                memcpy(&image->palette.colors[colorIdx], &color, sizeof(struct Color));
+                                image->palette.numColors++;
+                            }
+                        }
+                        *dest++ = colorIdx & 0xFF;
+                    } else {
+                        *dest++ = src[idxComponentY * pitch + idxComponentX];
+                    }
                 }
             }
         }
@@ -826,7 +889,7 @@ void ReadNtrScrn(char *path, struct NSCRFile **ppScrnHeader) {
     free(data);
 }
 
-static inline uint32_t tileToPixelOffset(uint32_t tileIdx, uint32_t width, int bitDepth) {
+static inline uint32_t NSCR_tileToPixelOffset(uint32_t tileIdx, uint32_t width, int bitDepth) {
     div_t tile_yx = div(tileIdx, width / 8);
     return tile_yx.quot * bitDepth * width + tile_yx.rem * bitDepth;
 }
@@ -893,7 +956,7 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
     int i, x, y, xOffset, yOffset;
 
     for (i = 0; i < numTiles; ++i) {
-        dstOffset = tileToPixelOffset(i, pScrnHeader->scrnWidth, 8 * outSizeMul / outSizeDiv);
+        dstOffset = NSCR_tileToPixelOffset(i, pScrnHeader->scrnWidth, 8 * outSizeMul / outSizeDiv);
         if (pScrnHeader->scrnMode == 1) {
             tileIdx = pScrnHeader->data[i];
         } else {
@@ -903,7 +966,7 @@ void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
             vFlip = (tileData >> 11) & 1;
             plttIndex = (tileData >> 12) & 0xF;
         }
-        srcOffset = tileToPixelOffset(tileIdx, image->width, image->bitDepth);
+        srcOffset = NSCR_tileToPixelOffset(tileIdx, image->width, image->bitDepth);
         for (y = 0; y < 8; ++y) {
             yOffset = vFlip ? 7 - y : y;
             for (x = 0; x < 8; ++x) {

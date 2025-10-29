@@ -166,6 +166,10 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
 
     if (options->cellFilePath != NULL) {
         ApplyCellsToImage(options->cellFilePath, &image, false);
+    } else {
+        if (image.pixelsAreRGB || (image.bitDepth != 4 && image.bitDepth != 8)) {
+            FATAL_ERROR("PNG image %s has unsupported mapping type\n", inputPath);
+        }
     }
 
     WriteNtrImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101, options->sopc, options->vramTransfer, options->scanMode, options->mappingType, key, options->wrongSize);

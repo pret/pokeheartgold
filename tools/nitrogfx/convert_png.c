@@ -94,13 +94,21 @@ void ReadPng(char *path, struct Image *image) {
 
     int color_type = png_get_color_type(png_ptr, info_ptr);
 
-    if (color_type != PNG_COLOR_TYPE_GRAY && color_type != PNG_COLOR_TYPE_PALETTE) {
+    switch (color_type) {
+    case PNG_COLOR_TYPE_GRAY:
+    case PNG_COLOR_TYPE_GA:
+    case PNG_COLOR_TYPE_PALETTE:
+    case PNG_COLOR_TYPE_RGB:
+    case PNG_COLOR_TYPE_RGBA:
+        break;
+    default:
         FATAL_ERROR("\"%s\" has an unsupported color type.\n", path);
     }
 
     // Check if the image has a palette so that we can tell if the colors need to be inverted later.
     // Don't read the palette because it's not needed for now.
-    image->hasPalette = (color_type == PNG_COLOR_TYPE_PALETTE);
+    image->hasPalette = (color_type & PNG_COLOR_MASK_COLOR) != 0;
+    image->hasTransparency = color_type == PNG_COLOR_TYPE_PALETTE || ((color_type & PNG_COLOR_MASK_ALPHA) != 0);
 
     image->width = png_get_image_width(png_ptr, info_ptr);
     image->height = png_get_image_height(png_ptr, info_ptr);
@@ -134,7 +142,7 @@ void ReadPng(char *path, struct Image *image) {
     free(row_pointers);
     fclose(fp);
 
-    if (bit_depth != image->bitDepth) {
+    if ((color_type == PNG_COLOR_TYPE_GRAY || color_type == PNG_COLOR_TYPE_PALETTE) && bit_depth != image->bitDepth) {
         unsigned char *src = image->pixels;
 
         if (bit_depth != 1 && bit_depth != 2 && bit_depth != 4 && bit_depth != 8) {
