@@ -168,7 +168,7 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
         ApplyCellsToImage(options->cellFilePath, &image, false);
     } else {
         if (image.pixelsAreRGB || (image.bitDepth != 4 && image.bitDepth != 8)) {
-            FATAL_ERROR("PNG image %s has unsupported mapping type\n", inputPath);
+            FATAL_ERROR("PNG image %s has unsupported mapping type: bitDepth=%d and pixels %s RGB\n", inputPath, image.bitDepth, image.pixelsAreRGB ? "are" : "are not");
         }
     }
 

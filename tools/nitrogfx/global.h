@@ -18,10 +18,11 @@
 
 #else
 
-#define FATAL_ERROR(format, ...)                \
-    do {                                        \
-        fprintf(stderr, format, ##__VA_ARGS__); \
-        abort();                                \
+#define FATAL_ERROR(format, ...)                             \
+    do {                                                     \
+        fprintf(stderr, format, ##__VA_ARGS__);              \
+        fprintf(stderr, "  -- %s:%d\n", __FILE__, __LINE__); \
+        abort();                                             \
     } while (0)
 
 #define UNUSED __attribute__((__unused__))
