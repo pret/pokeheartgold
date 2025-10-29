@@ -109,6 +109,7 @@ void ReadPng(char *path, struct Image *image) {
     // Don't read the palette because it's not needed for now.
     image->hasPalette = (color_type & PNG_COLOR_MASK_COLOR) != 0;
     image->hasTransparency = color_type == PNG_COLOR_TYPE_PALETTE || ((color_type & PNG_COLOR_MASK_ALPHA) != 0);
+    image->pixelsAreRGB = (color_type & PNG_COLOR_MASK_COLOR) != 0 && (color_type & PNG_COLOR_MASK_PALETTE) == 0;
 
     image->width = png_get_image_width(png_ptr, info_ptr);
     image->height = png_get_image_height(png_ptr, info_ptr);
