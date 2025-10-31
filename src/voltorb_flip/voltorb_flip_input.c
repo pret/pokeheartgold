@@ -14,8 +14,8 @@
 
 static void ov122_021E8E78(VoltorbFlipInputHandler *);
 static void ov122_021E8F58(VoltorbFlipInputHandler *);
-static int ov122_021E8F6C(VoltorbFlipInputHandler *);
-static int ov122_021E9020(VoltorbFlipInputHandler *);
+static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *);
+static int VoltorbFlipInputHandler_HandleInput_NoMemo(VoltorbFlipInputHandler *);
 static void ov122_021E9108(VoltorbFlipInputHandler *, int);
 static void ov122_021E9134(VoltorbFlipInputHandler *);
 static void ov122_021E9154(VoltorbFlipInputHandler *, int);
@@ -114,7 +114,7 @@ u8 ov122_021E9BA0[5][2] = {
 };
 // clang-format on
 
-VoltorbFlipInputHandler *VoltorbFlip_CreateInputHandler(enum HeapID heapID, struct ManagedSprite *a1, struct ManagedSprite *a2) {
+VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapID, struct ManagedSprite *a1, struct ManagedSprite *a2) {
     GF_ASSERT(a1 != NULL);
 
     VoltorbFlipInputHandler *ptr = Heap_Alloc(heapID, sizeof(VoltorbFlipInputHandler));
@@ -134,11 +134,12 @@ void VoltorbFlipInputHandler_Free(VoltorbFlipInputHandler *inputHandler) {
     Heap_Free(inputHandler);
 }
 
-int ov122_021E8D74(VoltorbFlipInputHandler *inputHandler) {
+int VoltorbFlipInputHandler_HandleInput(VoltorbFlipInputHandler *inputHandler) {
     if (inputHandler->memoFocused) {
-        return ov122_021E8F6C(inputHandler);
+        return VoltorbFlipInputHandler_HandleInput_Memo(inputHandler);
+    } else {
+        return VoltorbFlipInputHandler_HandleInput_NoMemo(inputHandler);
     }
-    return ov122_021E9020(inputHandler);
 }
 
 void ov122_021E8D8C(VoltorbFlipInputHandler *inputHandler, BOOL draw) {
@@ -168,7 +169,7 @@ int VoltorbFlipInputHandler_GetCursorPos(VoltorbFlipInputHandler *inputHandler) 
     return sub_02019F74(inputHandler->unk8);
 }
 
-int ov122_021E8E0C(VoltorbFlipInputHandler *inputHandler) {
+int VoltorbFlipInputHandler_GetMemoButtonID(VoltorbFlipInputHandler *inputHandler) {
     GF_ASSERT(inputHandler != 0);
     GF_ASSERT(inputHandler->unk8 != 0);
     return inputHandler->memoButtonID;
@@ -241,7 +242,7 @@ static void ov122_021E8F58(VoltorbFlipInputHandler *inputHandler) {
     ov122_021E9134(inputHandler);
 }
 
-static int ov122_021E8F6C(VoltorbFlipInputHandler *inputHandler) {
+static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *inputHandler) {
     inputHandler->touchNew = FALSE;
 
     if (gSystem.newKeys & PAD_BUTTON_X) {
@@ -282,7 +283,7 @@ static int ov122_021E8F6C(VoltorbFlipInputHandler *inputHandler) {
     return 0;
 }
 
-static int ov122_021E9020(VoltorbFlipInputHandler *inputHandler) {
+static int VoltorbFlipInputHandler_HandleInput_NoMemo(VoltorbFlipInputHandler *inputHandler) {
     int newFocus = sub_02019F74(inputHandler->unk8);
     int elementId = sub_02019D18(inputHandler->unk8);
     sub_02019F74(inputHandler->unk8);

@@ -19,9 +19,9 @@ typedef struct Ov122_021E70B8 {
     VoltorbFlipInputHandler *unk8;
     int unkC;
     u8 unk10;
-    u8 unk11;
+    u8 cursorPos;
     u8 unk12;
-    u8 unk13;
+    u8 row;
 } Ov122_021E70B8;
 
 typedef struct Ov122_021E7888 {
@@ -53,10 +53,9 @@ typedef struct VoltorbFlipAppWork {
     u8 unk22A;
     u8 printerId;
     u16 payoutDisplay;
-    u8 unk22E[0x2];
-    int unk230;
-    int unk234;
-    int unk238;
+    BOOL hasPlayedOneLeve;
+    BOOL printedCanGetMoreCoinsMessage;
+    BOOL unk238;
     struct WorkflowEngine *workflow;
     VoltorbFlipInputHandler *inputHandler;
     VoltorbFlipGameState *game;

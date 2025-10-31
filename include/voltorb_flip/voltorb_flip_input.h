@@ -31,14 +31,14 @@ typedef struct VoltorbFlipInputHandler {
     u8 touchNew : 1;            // 0xF:2
 } VoltorbFlipInputHandler;
 
-VoltorbFlipInputHandler *VoltorbFlip_CreateInputHandler(enum HeapID, struct ManagedSprite *, struct ManagedSprite *);
+VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID, struct ManagedSprite *, struct ManagedSprite *);
 void VoltorbFlipInputHandler_Free(VoltorbFlipInputHandler *inputHandler);
-int ov122_021E8D74(VoltorbFlipInputHandler *inputHandler);
+int VoltorbFlipInputHandler_HandleInput(VoltorbFlipInputHandler *inputHandler);
 void ov122_021E8D8C(VoltorbFlipInputHandler *inputHandler, BOOL draw);
 void VoltorbFlipInputHandler_SetMemoOpen(VoltorbFlipInputHandler *inputHandler, BOOL);
 void VoltorbFlipInputHandler_SetMemoFocused(VoltorbFlipInputHandler *inputHandler, BOOL);
 int VoltorbFlipInputHandler_GetCursorPos(VoltorbFlipInputHandler *inputHandler);
-int ov122_021E8E0C(VoltorbFlipInputHandler *inputHandler);
+int VoltorbFlipInputHandler_GetMemoButtonID(VoltorbFlipInputHandler *inputHandler);
 BOOL VoltorbFlipInputHandler_IsCursorInGridRange(VoltorbFlipInputHandler *inputHandler);
 void ov122_021E8E40(VoltorbFlipInputHandler *inputHandler);
 void ov122_021E8E58(VoltorbFlipInputHandler *inputHandler);

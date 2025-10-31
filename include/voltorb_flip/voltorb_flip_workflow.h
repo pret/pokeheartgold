@@ -4,7 +4,7 @@
 #include "voltorb_flip/voltorb_flip_work.h"
 
 typedef enum Workflow {
-    WORKFLOW_UNK_0,
+    WORKFLOW_COIN_CASE_FULL,
     WORKFLOW_NEW_ROUND,
     WORKFLOW_SELECT_MAIN_MENU,
     WORKFLOW_SELECT_GAME_INFO,
@@ -14,19 +14,18 @@ typedef enum Workflow {
     WORKFLOW_RENDER_BOARD,
     WORKFLOW_AWAIT_BOARD_INTERACT,
     WORKFLOW_FLIP_CARD,
-    WORKFLOW_UNK_10,
+    WORKFLOW_WIN_ROUND,
     WORKFLOW_AWARD_COINS,
     WORKFLOW_REVEAL_BOARD,
     WORKFLOW_UNK_13,
     WORKFLOW_UNK_14,
     WORKFLOW_QUIT_ROUND,
-    WORKFLOW_UNK_16,
 
     WORKFLOW_TERMINATE = 65534,
     WORKFLOW_NONE = 65535,
 } Workflow;
 
-typedef BOOL (*VoltorbFlipTask)(struct WorkflowEngine *a0, VoltorbFlipAppWork *a1);
+typedef BOOL (*VoltorbFlipTask)(struct WorkflowEngine *workflow, VoltorbFlipAppWork *work);
 
 // A list of Tasks which will be executed synchronously and in order by the
 // WorkflowEngine.
@@ -34,15 +33,15 @@ typedef BOOL (*VoltorbFlipTask)(struct WorkflowEngine *a0, VoltorbFlipAppWork *a
 // The WorkflowEngine starts with the first non-NULL task provided.
 typedef struct VoltorbFlipWorkflow {
     // Optional. Runs over multiple frames.
-    VoltorbFlipTask task1;
+    VoltorbFlipTask setup;
     // Optional. Runs over 1 frame.
-    VoltorbFlipTask task2;
+    VoltorbFlipTask begin;
     // Required. Runs over multiple frames.
-    VoltorbFlipTask task3;
+    VoltorbFlipTask wait;
     // Optional. Runs over 1 frame.
-    VoltorbFlipTask task4;
+    VoltorbFlipTask end;
     // Optional. Runs over multiple frames.
-    VoltorbFlipTask task5;
+    VoltorbFlipTask tidy;
 } VoltorbFlipWorkflow;
 
 typedef VoltorbFlipWorkflow VoltorbFlipWorkflows[16];
@@ -66,12 +65,12 @@ typedef struct WorkflowEngine {
     u8 taskState;     // The state of the Task that is currently being executed
 } WorkflowEngine;
 
-WorkflowEngine *CreateWorkflowEngine(enum HeapID, VoltorbFlipWorkflows *, int, struct VoltorbFlipAppWork *);
-void FreeWorkflowEngine(WorkflowEngine *);
-BOOL RunWorkflowEngine(struct WorkflowEngine *);
-void EnqueueWorkflow(WorkflowEngine *, Workflow);
-int CurrentWorkflow(WorkflowEngine *);
-int CurrentTaskState(WorkflowEngine *);
-int IncrementTaskState(WorkflowEngine *);
+WorkflowEngine *VoltorbFlipWorkflow_Create(enum HeapID, VoltorbFlipWorkflows *, int, struct VoltorbFlipAppWork *);
+void VoltorbFlipWorkflow_Free(WorkflowEngine *);
+BOOL VoltorbFlipWorkflow_Run(struct WorkflowEngine *);
+void VoltorbFlipWorkflow_Enqueue(WorkflowEngine *, Workflow);
+int VoltorbFlipWorkflow_CurrentWorkflow(WorkflowEngine *);
+int VoltorbFlipWorkflow_CurrentTaskState(WorkflowEngine *);
+int VoltorbFlipWorkflow_IncrementTaskState(WorkflowEngine *);
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
