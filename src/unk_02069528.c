@@ -19,8 +19,8 @@ void sub_02069528(SaveData *saveData, s32 a1, UnkStruct_02069528 *a2) {
     a2->gameLanguage = gGameLanguage;
     a2->playerCountry = WifiHistory_GetPlayerCountry(saveWiFiHistory);
     a2->playerRegion = WiFiHistory_GetPlayerRegion(saveWiFiHistory);
-    a2->unkC8_1 = PlayerProfile_GetTrainerGender(playerProfile);
-    a2->trainerClass = GetUnionRoomAvatarAttrBySprite(a2->unkC8_1, PlayerProfile_GetAvatar(playerProfile), 1);
+    a2->playerGender = PlayerProfile_GetTrainerGender(playerProfile);
+    a2->trainerClass = GetUnionRoomAvatarAttrBySprite(a2->playerGender, PlayerProfile_GetAvatar(playerProfile), 1);
 
     for (s32 index = 0, position = 0; index < 3; index++, position += 8) {
         MI_CpuCopy8(sub_0202D660(saveData, index), &a2->unkCA[position], 8);

@@ -19,7 +19,7 @@ typedef struct UnkStruct_02069528 {
     u8 unkC0[0x8];
     struct {
         u8 unkC8_0 : 1;
-        u8 unkC8_1 : 1;
+        u8 playerGender : 1;
         u8 unkC8_2 : 6;
     };
     u8 trainerClass;
