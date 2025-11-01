@@ -100,7 +100,7 @@
 .public MapSceneScriptCheck
 .public Save_VarsFlags_Get
 .public FieldSystem_TaskIsRunning
-.public PalPark_CountMonsNotCaught
+.public FieldSystem_GetParkBallCount
 .public sub_02056EE0
 .public sub_02057A0C
 .public sub_02057F18
