@@ -21,8 +21,8 @@
 .public Save_Mailbox_Get
 .public sub_02031DA0
 .public Party_GetMonByIndex
-.public Party_GetUnkSubSlot
-.public Party_SetUnkSubSlot
+.public Party_GetMonAprijuiceModifiers
+.public Party_SetMonAprijuiceModifiers
 .public SaveArray_Party_Get
 .public Save_Bag_Get
 .public ApplyMonMoodModifier

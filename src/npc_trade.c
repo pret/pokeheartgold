@@ -151,7 +151,7 @@ int NPCTradeApp_GetUnusedFlag(NPCTradeAppData *work) {
 }
 
 void NPCTrade_ReceiveMonToSlot(FieldSystem *fieldSystem, NPCTradeAppData *work, int slot) {
-    Party_SafeCopyMonToSlot_ResetUnkSub(SaveArray_Party_Get(fieldSystem->saveData), slot, work->mon);
+    Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(SaveArray_Party_Get(fieldSystem->saveData), slot, work->mon);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, work->mon);
 }
 

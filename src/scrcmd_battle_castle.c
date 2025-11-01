@@ -4,7 +4,6 @@
 
 #include "assert.h"
 #include "bag.h"
-#include "field_player_avatar.h"
 #include "field_system.h"
 #include "fieldmap.h"
 #include "frontier_data.h"
@@ -15,6 +14,7 @@
 #include "message_format.h"
 #include "party.h"
 #include "party_menu.h"
+#include "player_avatar.h"
 #include "player_data.h"
 #include "pokedex_util.h"
 #include "save.h"

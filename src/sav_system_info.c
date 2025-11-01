@@ -65,17 +65,17 @@ u8 Save_SysInfo_GetMysteryGiftActive(SysInfo *sys_info) {
     return sys_info->mysteryGiftActive;
 }
 
-void Save_SysInfo_SetMysteryGiftActive(SysInfo *sys_info, u8 a1) {
-    sys_info->mysteryGiftActive = a1;
+void Save_SysInfo_SetMysteryGiftActive(SysInfo *sys_info, u8 isActive) {
+    sys_info->mysteryGiftActive = isActive;
 }
 
-void *Save_SysInfo_GetField4C(SysInfo *sys_info) {
-    return sys_info->unk4C;
+s32 Save_SysInfo_GetDwcProfileId(SysInfo *sys_info) {
+    return sys_info->dwcProfileId;
 }
 
-void Save_SysInfo_SetField4C(SysInfo *sys_info, void *a1) {
-    if (sys_info->unk4C == NULL) {
-        sys_info->unk4C = a1;
+void Save_SysInfo_SetDwcProfileId(SysInfo *sys_info, s32 profileId) {
+    if (sys_info->dwcProfileId == 0) {
+        sys_info->dwcProfileId = profileId;
     }
 }
 
@@ -85,28 +85,28 @@ void Save_SysInfo_RTC_Init(SysInfo_RTC *rtc_info) {
     rtc_info->days_since_nitro_epoch = RTC_ConvertDateToDay(&rtc_info->date);
     rtc_info->seconds_since_nitro_epoch = RTC_ConvertDateTimeToSecond(&rtc_info->date, &rtc_info->time);
     rtc_info->seconds_at_game_clear = 0;
-    rtc_info->unk34 = 0;
+    rtc_info->penaltyInMinutes = 0;
 }
 
-BOOL sub_02028E1C(SysInfo_RTC *rtc_info) {
-    return rtc_info->unk34 != 0;
+BOOL Save_SysInfo_RTC_HasPenalty(SysInfo_RTC *rtc_info) {
+    return rtc_info->penaltyInMinutes != 0;
 }
 
-void Save_SysInfo_RTC_SubField34(SysInfo_RTC *rtc_info, u32 a1) {
-    if (rtc_info->unk34 > 1440) {
-        rtc_info->unk34 = 1440;
+void Save_SysInfo_RTC_DecrementPenalty(SysInfo_RTC *rtc_info, u32 minutes) {
+    if (rtc_info->penaltyInMinutes > 1440) {
+        rtc_info->penaltyInMinutes = 1440;
     }
 
-    if (rtc_info->unk34 < a1) {
-        rtc_info->unk34 = 0;
+    if (rtc_info->penaltyInMinutes < minutes) {
+        rtc_info->penaltyInMinutes = 0;
         return;
     }
 
-    rtc_info->unk34 -= a1;
+    rtc_info->penaltyInMinutes -= minutes;
 }
 
 void SysInfoRTC_HandleContinueOnNewConsole(SysInfo_RTC *rtc_info) {
-    rtc_info->unk34 = 1440;
+    rtc_info->penaltyInMinutes = 1440;
     GF_RTC_CopyDateTime(&rtc_info->date, &rtc_info->time);
     rtc_info->days_since_nitro_epoch = RTC_ConvertDateToDay(&rtc_info->date);
 }

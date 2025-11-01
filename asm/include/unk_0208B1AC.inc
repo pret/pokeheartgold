@@ -38,7 +38,7 @@
 .public Boxmon_GetIconPalette
 .public Pokemon_GetIconPalette
 .public Party_GetMonByIndex
-.public Party_GetUnkSubSlot
+.public Party_GetMonAprijuiceModifiers
 .public sub_02077678
 .public sub_0207769C
 .public sub_020776B4

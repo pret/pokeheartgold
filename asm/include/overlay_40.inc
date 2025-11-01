@@ -186,7 +186,7 @@
 .public Save_NumModifiedPCBoxesIsMany
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_Get
-.public Save_SysInfo_GetField4C
+.public Save_SysInfo_GetDwcProfileId
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr
 .public Pokedex_CheckMonSeenFlag

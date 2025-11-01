@@ -79,9 +79,9 @@
 .public sub_0205B4EC
 .public sub_0205C46C
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
-.public PlayerAvatar_GetPositionVecConst
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
+.public PlayerAvatar_GetPositionVector
 .public sub_0205E104
 .public sub_0205E4C8
 .public sub_0205E520

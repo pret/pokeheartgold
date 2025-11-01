@@ -174,8 +174,8 @@
 .public SetAllPCBoxesModified
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
-.public Save_SysInfo_GetField4C
-.public Save_SysInfo_SetField4C
+.public Save_SysInfo_GetDwcProfileId
+.public Save_SysInfo_SetDwcProfileId
 .public PlayerProfile_New
 .public PlayerProfile_Init
 .public Save_Profile_PlayerName_Set
