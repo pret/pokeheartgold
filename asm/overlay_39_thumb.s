@@ -4010,17 +4010,17 @@ ov39_02228E54: ; 0x02228E54
 	add r0, r6, #0
 	bl sub_0202C08C
 	add r0, r4, #0
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	cmp r0, #0
 	bne _02228E8E
 	add r0, r6, #0
 	bl sub_0203A040
 	add r1, r0, #0
 	add r0, r4, #0
-	bl Save_SysInfo_SetField4C
+	bl Save_SysInfo_SetDwcProfileId
 _02228E8E:
 	add r0, r4, #0
-	bl Save_SysInfo_GetField4C
+	bl Save_SysInfo_GetDwcProfileId
 	mov r0, #9
 	str r0, [r5, #8]
 	ldr r0, [r5]

@@ -184,7 +184,7 @@
 .public CalcMonPokeathlonStars
 .public Party_GetCount
 .public Party_GetMonByIndex
-.public Party_GetUnkSubSlot
+.public Party_GetMonAprijuiceModifiers
 .public SaveArray_Party_Get
 .public NNS_GfdDoVramTransfer
 .public NNS_G2dSetupSoftwareSpriteCamera

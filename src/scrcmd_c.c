@@ -3509,8 +3509,8 @@ BOOL ScrCmd_475(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_476(ScriptContext *ctx) {
-    sub_0202A57C(Save_Pokedex_Get(ctx->fieldSystem->saveData));
+BOOL ScrCmd_EnablePokedexFormDetection(ScriptContext *ctx) {
+    Pokedex_EnableFormDetection(Save_Pokedex_Get(ctx->fieldSystem->saveData));
     return FALSE;
 }
 

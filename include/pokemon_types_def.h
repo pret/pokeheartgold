@@ -274,11 +274,11 @@ typedef struct PartyCore {
 } PartyCore;
 
 typedef struct PartyExtraSub {
-    u8 unk_00[5];
+    u8 unk_00[PERFORMANCE_MAX];
 } PartyExtraSub;
 
 typedef struct PartyExtra {
-    PartyExtraSub unk_00[PARTY_SIZE];
+    PartyExtraSub aprijuiceModifiers[PARTY_SIZE];
 } PartyExtra;
 
 typedef struct Party {
@@ -287,9 +287,9 @@ typedef struct Party {
 } Party;
 
 struct PokeathlonBasePerformance {
-    u8 base[5];
+    u8 base[PERFORMANCE_MAX];
     u8 dummy[4];
-    u8 minmax[5][2];
+    u8 minmax[PERFORMANCE_MAX][2];
     u8 dummy2;
 };
 
@@ -302,12 +302,12 @@ struct TodayPerformanceStat {
 };
 
 struct PokeathlonTodayPerformance {
-    struct TodayPerformanceStat stats[5];
+    struct TodayPerformanceStat stats[PERFORMANCE_MAX];
 };
 
 struct PokeathlonPerformanceStars {
     u16 stars;
-    u8 color[5];
+    u8 color[PERFORMANCE_MAX];
     u8 dummy;
 };
 
