@@ -399,11 +399,11 @@ _021E5C4A:
 	add r5, r5, r1
 	bl ov01_021F6304
 	ldr r0, [r4, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #8]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r1, [r4, #0x20]
 	str r0, [r1, #0xc]
 	ldr r0, [r4, #0x40]
@@ -652,10 +652,10 @@ ov01_021E5ED4: ; 0x021E5ED4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r2, [r5, #0x20]
 	ldr r1, [r2, #8]
 	cmp r4, r1
@@ -681,13 +681,13 @@ ov01_021E5F04: ; 0x021E5F04
 	sub sp, #8
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	asr r1, r0, #4
 	lsr r1, r1, #0x1b
 	add r1, r0, r1
 	ldr r0, [r5, #0x40]
 	asr r4, r1, #5
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	asr r1, r0, #4
 	lsr r1, r1, #0x1b
 	add r1, r0, r1
@@ -1472,7 +1472,7 @@ _021E6566:
 	bl sub_0205F568
 _021E656A:
 	ldr r0, [r5, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVector
 	ldr r1, [r5, #0x2c]
 	bl ov01_021F62E8
 	add sp, #0x14
@@ -1499,7 +1499,7 @@ ov01_021E6580: ; 0x021E6580
 	bl LocalFieldData_GetCameraType
 	add r5, r0, #0
 	ldr r0, [r4, #0x40]
-	bl PlayerAvatar_GetPositionVecConst
+	bl PlayerAvatar_GetPositionVector
 	add r1, r4, #0
 	add r2, r5, #0
 	mov r3, #1

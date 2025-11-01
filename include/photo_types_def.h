@@ -22,7 +22,7 @@ typedef struct FieldTakePhoto {
     u8 curMon;
     LocalMapObject *mapObjects[6];
     u16 savedX;
-    u16 savedY;
+    u16 savedZ;
     u16 savedDirection;
     u16 savedMapId;
     u8 filler_38[0x8];
@@ -45,7 +45,7 @@ typedef struct FieldViewPhoto {
     Photo pPhoto;
     ViewPhotoInputResponse input;
     u16 x;
-    u16 y;
+    u16 z;
     u16 savedDirection;
     u16 savedMapId;
     LocalMapObject *mapObjects[6];
