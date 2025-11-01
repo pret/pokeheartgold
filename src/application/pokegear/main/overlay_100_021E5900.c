@@ -181,7 +181,7 @@ PokegearRegion Pokegear_RegionFromCoords(u16 x, u16 y) {
 }
 
 int Pokegear_GetCurrentRegion(PokegearAppData *pokegearApp) {
-    return Pokegear_RegionFromCoords(pokegearApp->args->x / 32, pokegearApp->args->y / 32);
+    return Pokegear_RegionFromCoords(pokegearApp->args->x / 32, pokegearApp->args->z / 32);
 }
 
 void Pokegear_ClearAppBgLayers(PokegearAppData *pokegearApp) {

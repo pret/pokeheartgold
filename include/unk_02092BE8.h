@@ -19,7 +19,7 @@ typedef struct PokegearArgs {
     u8 callScriptID;         // 0x06
     u8 playerGender;         // 0x07
     int x;                   // 0x08
-    int y;                   // 0x0c
+    int z;                   // 0x0c
     u16 mapID;               // 0x10
     u16 mapHeader;           // 0x12
     BOOL setFlyDestination;  // 0x14

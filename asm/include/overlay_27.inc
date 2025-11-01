@@ -100,14 +100,14 @@
 .public MapSceneScriptCheck
 .public Save_VarsFlags_Get
 .public FieldSystem_TaskIsRunning
-.public PalPark_CountMonsNotCaught
+.public FieldSystem_GetParkBallCount
 .public sub_02056EE0
 .public sub_02057A0C
 .public sub_02057F18
 .public sub_02058258
 .public sub_02058740
 .public sub_02058AA0
-.public sub_0205C6D4
+.public PlayerAvatar_GetUnk14
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerSaveData_CheckRunningShoes

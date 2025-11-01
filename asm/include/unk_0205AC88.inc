@@ -25,8 +25,8 @@
 .public sub_0205AD24
 .public sub_0205AD3C
 .public sub_0205B27C
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetMapObject
 .public sub_0205E3AC
 .public MapObjectManager_GetFirstActiveObjectByID

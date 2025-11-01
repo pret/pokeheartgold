@@ -205,7 +205,7 @@ Static main
     Object asm/unk_020551B8.o
     Object asm/unk_02055244.o
     Object src/unk_02055418.o
-    Object src/pal_park.o
+    Object src/catching_show.o
     Object asm/unk_02055BF0_data.o
     Object src/unk_02055BF0.o
     Object asm/unk_02056680.o
@@ -219,7 +219,7 @@ Static main
     Object src/metatile_behavior.o
     Object asm/unk_0205BB1C.o
     Object asm/unk_0205BFF0.o
-    Object src/field_player_avatar.o
+    Object src/player_avatar.o
     Object asm/unk_0205CB48.o
     Object src/map_object.o
     Object asm/unk_data_020FCBD8.o

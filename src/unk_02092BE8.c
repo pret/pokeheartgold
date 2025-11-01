@@ -38,20 +38,20 @@ static void FieldSystem_InitPokegearArgs(FieldSystem *sys, PokegearArgs *pokegea
     pokegearArgs->saveData = sys->saveData;
     pokegearArgs->mapID = PosPtr->mapId;
     if (MapHeader_MapIsOnMainMatrix(pokegearArgs->mapID)) {
-        pokegearArgs->x = GetPlayerXCoord(sys->playerAvatar);
-        pokegearArgs->y = GetPlayerZCoord(sys->playerAvatar);
+        pokegearArgs->x = PlayerAvatar_GetXCoord(sys->playerAvatar);
+        pokegearArgs->z = PlayerAvatar_GetZCoord(sys->playerAvatar);
         pokegearArgs->matrixXCoord = pokegearArgs->x / 32;
-        pokegearArgs->matrixYCoord = pokegearArgs->y / 32;
+        pokegearArgs->matrixYCoord = pokegearArgs->z / 32;
         pokegearArgs->mapHeader = pokegearArgs->mapID;
     } else {
         pokegearArgs->x = warpPtr->x;
-        pokegearArgs->y = warpPtr->y;
+        pokegearArgs->z = warpPtr->y;
         MapHeader_GetWorldMapCoords(pokegearArgs->mapID, &x, &y);
         MAPMATRIX *matrix = MapMatrix_New();
         MapMatrix_Load(MAP_NEW_BARK, matrix);
         if (x == 0 && y == 0) {
             pokegearArgs->matrixXCoord = pokegearArgs->x / 32;
-            pokegearArgs->matrixYCoord = pokegearArgs->y / 32;
+            pokegearArgs->matrixYCoord = pokegearArgs->z / 32;
         } else {
             pokegearArgs->matrixXCoord = x;
             pokegearArgs->matrixYCoord = y;

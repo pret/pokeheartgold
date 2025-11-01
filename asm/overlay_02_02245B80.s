@@ -740,7 +740,7 @@ _02246116:
 	ldr r0, [r4, #4]
 	add r1, sp, #0
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r4, #8]
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
@@ -860,7 +860,7 @@ _02246204:
 	ldr r0, [r4, #4]
 	add r1, sp, #0
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r4, #8]
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
@@ -2212,10 +2212,10 @@ ov02_02246C8C: ; 0x02246C8C
 	pop {r3, r4, r5, r6, r7, pc}
 _02246CA0:
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2799,10 +2799,10 @@ ov02_02247170: ; 0x02247170
 	bl Save_VarsFlags_Get
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -15376,10 +15376,10 @@ ov02_0224CFD8: ; 0x0224CFD8
 	add r1, sp, #0
 	bl MapObject_CopyPositionVector
 	add r0, r6, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl MapObject_GetFacingDirection
@@ -15431,12 +15431,12 @@ ov02_0224D044: ; 0x0224D044
 	add r7, r1, #0
 	add r6, r0, #0
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	add r0, r6, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r4, r0, #0
 	add r0, r6, #0
 	bl PlayerAvatar_GetFacingDirection
@@ -15487,7 +15487,7 @@ ov02_0224D0AC: ; 0x0224D0AC
 	sub sp, #0xc
 	add r4, r1, #0
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r1, [sp]
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
@@ -16333,7 +16333,7 @@ ov02_0224D698: ; 0x0224D698
 _0224D6B0:
 	add r0, r6, #0
 	add r1, sp, #0
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r2, [sp, #4]
 	ldr r3, [sp, #8]
 	ldr r1, [sp]
@@ -16473,7 +16473,7 @@ ov02_0224D7B0: ; 0x0224D7B0
 	ldr r0, [r4, r0]
 	add r1, sp, #0
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	mov r1, #0xcf
 	lsl r1, r1, #4
 	ldr r2, [sp]
@@ -16640,7 +16640,7 @@ _0224D8D8:
 	add r1, #0x10
 	ldr r0, [r0, #0x40]
 	add r1, r5, r1
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, _0224D910 ; =0x00000D0C
 	mov r1, #0
 	str r1, [r5, r0]
@@ -17502,7 +17502,7 @@ ov02_0224DF1C: ; 0x0224DF1C
 	ldr r0, [r4, r1]
 	add r1, sp, #0xc
 	ldr r0, [r0, #0x40]
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, _0224E004 ; =0x00000E9A
 	ldrh r1, [r4, r0]
 	cmp r1, #0
@@ -17787,19 +17787,19 @@ _0224E130:
 	b _0224E21E
 _0224E156:
 	ldr r0, [r4, #4]
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	str r0, [r4, #0xc]
 	ldr r0, [r4, #4]
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [r4, #0x10]
 	ldr r0, [r4, #4]
 	bl MapObject_GetFacingDirection
 	str r0, [r4, #0x14]
 	ldr r0, [r4, #8]
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	str r0, [r4, #0x18]
 	ldr r0, [r4, #8]
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [r4, #0x1c]
 	add r0, r4, #0
 	add r1, r4, #0
@@ -18065,10 +18065,10 @@ ov02_0224E340: ; 0x0224E340
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov02_0224E31C
@@ -18126,10 +18126,10 @@ _0224E3BE:
 	bl PlayerAvatar_GetFacingDirection
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [sp, #8]
 	add r0, r7, #0
 	bl GetDeltaXByFacingDirection
@@ -18166,7 +18166,7 @@ _0224E40E:
 _0224E414:
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x10
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	add r0, sp, #0xc
 	str r0, [sp]
 	ldr r1, [sp, #0x14]
@@ -18316,17 +18316,17 @@ _0224E52A:
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	str r0, [sp, #0x14]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	lsl r0, r0, #0x10
 	asr r7, r0, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x20
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [sp, #0x14]
 	add r1, r7, #0
 	bl ov02_0224E31C
@@ -18496,16 +18496,16 @@ ov02_0224E698: ; 0x0224E698
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	lsl r0, r0, #0x10
 	asr r6, r0, #0x10
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x14
-	bl PlayerAvatar_GetPositionVec
+	bl PlayerAvatar_CopyPositionVector
 	ldr r0, [r5, #0xc]
 	bl Save_SafariZone_Get
 	mov r1, #0
@@ -18589,13 +18589,13 @@ ov02_0224E754: ; 0x0224E754
 	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r4, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl GetDeltaXByFacingDirection
 	add r7, r5, r0
 	ldr r0, [r4, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r5, r0, #0
 	add r0, r6, #0
 	bl GetDeltaYByFacingDirection
@@ -20322,10 +20322,10 @@ ov02_0224F4BC: ; 0x0224F4BC
 	strb r0, [r5, #0xf]
 	strb r0, [r5, #0x10]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [sp]
 	ldr r0, [r4, #0x3c]
 	bl MapObjectManager_GetObjectCount
@@ -20346,10 +20346,10 @@ _0224F4FC:
 	cmp r0, #1
 	bne _0224F568
 	ldr r0, [sp, #0x10]
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	ldr r1, [sp, #4]
 	sub r6, r1, r4
 	ldr r1, [sp]
@@ -20484,11 +20484,11 @@ ov02_0224F5FC: ; 0x0224F5FC
 	add r5, r0, #0
 	add r4, r1, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
@@ -21718,10 +21718,10 @@ ov02_0224FF04: ; 0x0224FF04
 	add r4, r2, #0
 	add r6, r1, #0
 	add r5, r3, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	str r0, [r4]
 	add r0, r7, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [r5]
 	cmp r6, #3
 	bhi _0224FF54
