@@ -522,7 +522,7 @@ static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
     PlayerSaveData *player = LocalFieldData_GetPlayer(Save_LocalFieldData_Get(fieldSystem->saveData));
     setup->battleBg = MapHeader_GetBattleBg(fieldSystem->location->mapId);
 
-    if (player->unk4 == 2) {
+    if (player->state == PLAYER_STATE_SURFING) {
         setup->battleBg = BATTLE_BG_OCEAN;
     }
 

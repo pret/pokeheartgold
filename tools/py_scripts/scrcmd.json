@@ -5393,11 +5393,11 @@
       "prefix": "BADGE_"
     },
     "player_transition":  {
-      "header": "include/constants/global.fieldmap.h",
+      "header": "include/constants/global_fieldmap.h",
       "prefix": "PLAYER_TRANSITION_"
     },
     "direction": {
-      "header": "include/constants/global.fieldmap.h",
+      "header": "include/constants/global_fieldmap.h",
       "prefix": "DIR_"
     }
   }

@@ -2649,7 +2649,7 @@ ov27_0225B4D8: ; 0x0225B4D8
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
 	ldr r0, [r0, #0x40]
-	bl sub_0205C6D4
+	bl PlayerAvatar_GetUnk14
 	cmp r0, #0
 	bne _0225B4F2
 	ldr r0, _0225B624 ; =gSystem
@@ -4111,7 +4111,7 @@ ov27_0225C06C: ; 0x0225C06C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl PalPark_CountMonsNotCaught
+	bl FieldSystem_GetParkBallCount
 	add r3, r0, #0
 	mov r1, #0xe
 	lsl r3, r3, #0x10
