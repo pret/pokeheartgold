@@ -3682,7 +3682,7 @@ ov102_021E91C4: ; 0x021E91C4
 	add r7, r0, #0
 	mov r0, #2
 	mov r1, #0x23
-	bl sub_02013534
+	bl FontSystem_NewInit
 	mov r1, #0x7f
 	lsl r1, r1, #2
 	str r0, [r7, r1]

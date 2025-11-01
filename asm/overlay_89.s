@@ -138,7 +138,7 @@ ov89_02258800: ; 0x02258800
 	str r0, [r5, #0x30]
 	mov r0, #4
 	mov r1, #0x7d
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r5, #0x10]
 	mov r0, #0xd2
 	mov r1, #0x7d
@@ -3279,7 +3279,7 @@ ov89_0225A354: ; 0x0225A354
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r4, #4
 	bl sub_02021B5C
 	pop {r4, pc}

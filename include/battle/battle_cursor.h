@@ -5,6 +5,18 @@
 
 #include "sys_task_api.h"
 
+// typedef'd in battle.h
+struct BattleCursorPosition {
+    s8 commandX;
+    s8 commandY;
+    s8 moveX;
+    s8 moveY;
+    s8 targetX;
+    s8 targetY;
+    s8 monTargetType;
+    u8 unk_07[1];
+};
+
 typedef struct BattleCursor {
     void *unk0[5];
     SysTask *task;

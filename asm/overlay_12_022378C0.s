@@ -361,7 +361,7 @@ _02237FD8:
 	str r0, [sp]
 	add r0, r5, #0
 	add r2, r4, #0
-	bl ov12_022660D0
+	bl BattleInput_NewInit
 	mov r1, #0x67
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -446,7 +446,7 @@ _02237FD8:
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl ov12_02266390
+	bl BattleInput_LoadDefaultResources
 	mov r0, #7
 	mov r1, #5
 	bl NARC_New
@@ -464,12 +464,12 @@ _02237FD8:
 	ldr r2, [r4, r2]
 	add r0, r6, #0
 	add r1, r5, #0
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	mov r1, #0x67
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
 	add r0, r5, #0
-	bl ov12_02266644
+	bl BattleInput_LoadBallGaugeResources
 	add r0, r6, #0
 	bl NARC_Delete
 	add r0, r5, #0
@@ -1299,7 +1299,7 @@ _02238838:
 	add r1, r0, #0
 	bl GfGfx_EngineATogglePlanes
 	add r0, r4, #0
-	bl ov12_0226604C
+	bl BgConfig_InitBattleMenuBackgrounds
 	add r0, r5, #0
 	bl BattleSystem_GetFrame
 	add r7, r0, #0
@@ -1501,7 +1501,7 @@ ov12_02238A30: ; 0x02238A30
 	mov r1, #3
 	bl FreeBgTilemapBuffer
 	add r0, r4, #0
-	bl ov12_022660A8
+	bl BgConfig_CleanupBattleMenuBackgrounds
 	pop {r4, pc}
 	thumb_func_end ov12_02238A30
 
