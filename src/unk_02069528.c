@@ -9,15 +9,9 @@
 #include "unk_0205B3DC.h"
 
 void sub_02069528(SaveData *saveData, s32 a1, UnkStruct_02069528 *a2) {
-    FRONTIERDATA *frontierData;
-    PlayerProfile *playerProfile;
-    SaveWiFiHistory *saveWiFiHistory;
-    s32 index;
-    s32 position;
-
-    playerProfile = Save_PlayerData_GetProfile(saveData);
-    saveWiFiHistory = Save_WiFiHistory_Get(saveData);
-    frontierData = Save_FrontierData_Get(saveData);
+    PlayerProfile *playerProfile = Save_PlayerData_GetProfile(saveData);
+    SaveWiFiHistory *saveWiFiHistory = Save_WiFiHistory_Get(saveData);
+    FRONTIERDATA *frontierData = Save_FrontierData_Get(saveData);
     MI_CpuFill8(a2, 0, sizeof(UnkStruct_02069528));
     MI_CpuCopy8(PlayerProfile_GetNamePtr(playerProfile), &a2->playerName, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
     a2->trainerId = PlayerProfile_GetTrainerID(playerProfile);
@@ -28,7 +22,7 @@ void sub_02069528(SaveData *saveData, s32 a1, UnkStruct_02069528 *a2) {
     a2->unkC8_1 = PlayerProfile_GetTrainerGender(playerProfile);
     a2->trainerClass = GetUnionRoomAvatarAttrBySprite(a2->unkC8_1, PlayerProfile_GetAvatar(playerProfile), 1);
 
-    for (index = 0, position = 0; index < 3; index++, position += 8) {
+    for (s32 index = 0, position = 0; index < 3; index++, position += 8) {
         MI_CpuCopy8(sub_0202D660(saveData, index), &a2->unkCA[position], 8);
     }
 
