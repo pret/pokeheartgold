@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_CONSTANTS_GLOBAL_H
 
 #include "constants/charcode.h"
-#include "constants/global.fieldmap.h"
+#include "constants/global_fieldmap.h"
 #include "constants/gx.h"
 #include "constants/sdk_extras.h"
 

@@ -14,8 +14,8 @@
 .public GetMetatileBehavior
 .public sub_0205B700
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetMapObject
 .public MapObject_CheckFlag19Disabled
 .public MapObject_GetPositionVectorYCoordUInt

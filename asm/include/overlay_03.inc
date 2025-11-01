@@ -188,8 +188,8 @@
 .public sub_0205B5B4
 .public IsPrintFinished
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public sub_020669B4

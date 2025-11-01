@@ -16,7 +16,7 @@ typedef struct SimpleSpriteTemplate {
     VecFx32 position;                    // 008
     u32 priority;                        // 014
     NNS_G2D_VRAM_TYPE whichScreen;       // 018
-    enum HeapID heapID;                       // 01C
+    enum HeapID heapID;                  // 01C
 } SimpleSpriteTemplate;
 
 typedef struct SpriteTemplate {
@@ -27,7 +27,7 @@ typedef struct SpriteTemplate {
     u16 rotation;                        // 020
     u32 drawPriority;                    // 024
     NNS_G2D_VRAM_TYPE whichScreen;       // 028
-    enum HeapID heapID;                       // 02C
+    enum HeapID heapID;                  // 02C
 } SpriteTemplate;
 
 typedef struct SpriteAnimationData {

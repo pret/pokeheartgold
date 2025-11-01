@@ -325,7 +325,7 @@ MysteryGiftSave *Save_MysteryGift_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_MYSTERY_GIFT);
 }
 
-struct MigratedPokemonSav *Save_MigratedPokemon_Get(SaveData *saveData) {
+MigratedPokemon *Save_MigratedPokemon_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_UNK_28);
 }
 

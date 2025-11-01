@@ -35,7 +35,7 @@ extern const int gNumExtraSaveChunkHeaders;
 UnkStruct_0202E474 *sub_020270C4(SaveData *saveData);
 PCStorage *SaveArray_PCStorage_Get(SaveData *saveData);
 MysteryGiftSave *Save_MysteryGift_Get(SaveData *saveData);
-struct MigratedPokemonSav *Save_MigratedPokemon_Get(SaveData *saveData);
+struct MigratedPokemon *Save_MigratedPokemon_Get(SaveData *saveData);
 HallOfFame *LoadHallOfFame(SaveData *saveData, enum HeapID heapID, int *ret_p);
 int SaveHallOfFame(SaveData *saveData, HallOfFame *hallOfFame);
 struct UnkStruct_0202FBCC *sub_0202711C(SaveData *saveData, enum HeapID heapID, int *ret_p, int idx);
