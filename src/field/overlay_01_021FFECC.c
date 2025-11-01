@@ -1,7 +1,7 @@
 #include "overlay_01_021FFECC.h"
 
-#include "field_player_avatar.h"
 #include "map_object.h"
+#include "player_avatar.h"
 #include "unk_0205FD20.h"
 #include "unk_020658D4.h"
 #include "unk_020689C8.h"
@@ -56,8 +56,8 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     FieldSystem *fieldSystem = ov01_021F146C(mapObject);
     TaskManager *taskman = ov01_021F1468(fieldSystem);
 
-    int x = MapObject_GetCurrentX(mapObject);
-    int z = MapObject_GetCurrentZ(mapObject);
+    int x = MapObject_GetXCoord(mapObject);
+    int z = MapObject_GetZCoord(mapObject);
 
     sub_020611C8(x, z, &temp);
     sub_0206121C(taskman, &temp);

@@ -3,7 +3,7 @@
 
 #include "battle/battle_setup.h"
 
-#include "field_player_avatar.h"
+#include "player_avatar.h"
 #include "task.h"
 
 typedef struct Encounter {

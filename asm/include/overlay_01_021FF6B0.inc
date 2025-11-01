@@ -8,8 +8,8 @@
 .public MapObject_GetID
 .public MapObject_GetMapID
 .public MapObject_GetFieldSystem
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public sub_020611C8
 .public sub_02068D98
