@@ -7,10 +7,10 @@
 int sub_02019E4C(UnkStruct_02019BA4 *a0, u16 a1);
 int sub_02019E98(UnkStruct_02019BA4 *a0);
 int sub_02019EB8(UnkStruct_02019BA4 *a0, int a1, u8 a2);
-BOOL sub_0201A06C(int *a0, u16 a1);
-BOOL sub_0201A020(const UnkStruct_02020654 *a0, int a1);
+BOOL sub_0201A020(const UnkStruct_02020654 *a0, u32 a1);
+BOOL sub_0201A06C(int *a0, u32 a1);
 
-UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStruct_02020654 *dpadBoxes, const UnkStruct_02019BA4_callbacks *callbacks, void *callbackParam, int a4, u8 initialPos, enum HeapID heapId) {
+UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStruct_02020654 *dpadBoxes, const UnkStruct_02019BA4_callbacks *callbacks, void *callbackParam, BOOL a4, u8 initialPos, enum HeapID heapId) {
     UnkStruct_02019BA4 *ret = Heap_Alloc(heapId, sizeof(UnkStruct_02019BA4));
 
     ret->touchscreenHitboxes = hitBoxes;
@@ -221,4 +221,91 @@ int sub_02019EB8(UnkStruct_02019BA4 *a0, int a1, u8 a2) {
     }
 
     return LIST_NOTHING_CHOSEN;
+}
+
+int sub_02019F74(UnkStruct_02019BA4 *a0) {
+    return a0->nextInput;
+}
+
+int sub_02019F78(UnkStruct_02019BA4 *a0) {
+    return a0->unk_0F;
+}
+
+void sub_02019F7C(UnkStruct_02019BA4 *a0, int a1) {
+    a0->nextInput = a1;
+    a0->lastInput = 0xFF;
+    a0->unk_0F = 0xFF;
+}
+
+void sub_02019F88(UnkStruct_02019BA4 *a0, int a1, int a2, int a3) {
+    a0->nextInput = a1;
+    a0->lastInput = a2;
+    a0->unk_0F = a3;
+}
+
+BOOL sub_02019F90(UnkStruct_02019BA4 *a0) {
+    return a0->unk_08;
+}
+
+void sub_02019F94(UnkStruct_02019BA4 *a0, BOOL a1) {
+    a0->unk_08 = a1;
+    if (a1 == TRUE) {
+        a0->lastInput = 0xFF;
+        a0->unk_0F = 0xFF;
+        a0->callbacks->onButton(a0->data, a0->nextInput, -1);
+    } else {
+        a0->callbacks->onSwitchToTouchMode(a0->data, a0->nextInput, -1);
+    }
+}
+
+void sub_02019FC4(UnkStruct_02019BA4 *a0) {
+    a0->unk_10[0] = -1;
+    a0->unk_10[1] = -1;
+}
+
+void sub_02019FD0(UnkStruct_02019BA4 *a0, u32 a1) {
+    if (a0->unk_10[a1 / 32] & (1 << (a1 % 32))) {
+        a0->unk_10[a1 / 32] &= ((1 << (a1 % 32)) ^ -1);
+    }
+}
+
+void sub_02019FF8(UnkStruct_02019BA4 *a0, u32 a1) {
+    if (!(a0->unk_10[a1 / 32] & (1 << (a1 % 32)))) {
+        a0->unk_10[a1 / 32] ^= (1 << (a1 % 32));
+    }
+}
+
+const UnkStruct_02020654 *sub_0201A018(UnkStruct_02019BA4 *a0, int a1) {
+    return &a0->dpadPositions[a1];
+}
+
+BOOL sub_0201A020(const UnkStruct_02020654 *a0, u32 a1) {
+    switch (a1) {
+    case 0:
+        if (a0->buttonDown & 0x80) {
+            return TRUE;
+        }
+        break;
+    case 1:
+        if (a0->buttonUp & 0x80) {
+            return TRUE;
+        }
+        break;
+    case 2:
+        if (a0->buttonRight & 0x80) {
+            return TRUE;
+        }
+        break;
+    case 3:
+        if (a0->buttonLeft & 0x80) {
+            return TRUE;
+        }
+        break;
+    }
+
+    return FALSE;
+}
+
+BOOL sub_0201A06C(int *a0, u32 a1) {
+    return (a0[a1 / 32] & (1 << (a1 % 32))) != 0;
 }
