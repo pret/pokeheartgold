@@ -72,7 +72,7 @@ typedef struct {
     /* 0x1A */ u8 tough;
     /* 0x1B */ u8 sheen;
 
-    /* 0x1C */ u32 ribbonsA; //!< A bitmask of non-Super Contest ribbons introduced in Generation 4. Sinnoh Champ, Ability, Great Ability, Double Ability, Multi Ability, Pair Ability, World Ability, Alert, Shock, Downcast, Careless, Relax, Snooze, Smile, Gorgeous, Royal, Gorgeous Royal, Footprint, Record, History, Legend, Red, Green, Blue, Festival, Carnival, Classic and Premier Ribbons.
+    /* 0x1C */ u32 ribbonsDS1; //!< A bitmask of non-Super Contest ribbons introduced in Generation 4. Sinnoh Champ, Ability, Great Ability, Double Ability, Multi Ability, Pair Ability, World Ability, Alert, Shock, Downcast, Careless, Relax, Snooze, Smile, Gorgeous, Royal, Gorgeous Royal, Footprint, Record, History, Legend, Red, Green, Blue, Festival, Carnival, Classic and Premier Ribbons.
 } PokemonDataBlockA;
 
 /**
@@ -92,7 +92,7 @@ typedef struct {
                u32 isEgg : 1;
                u32 hasNickname : 1;
 
-    /* 0x14 */ u32 ribbonsB; //!< A bitmask of ribbons introduced in Generation 3. Cool, Beauty, Cute, Smart, Tough, Champion, Winning, Victory, Artist, Effort, Marine, Land, Sky, Country, National, Earth and World Ribbons.
+    /* 0x14 */ u32 ribbonsGBA; //!< A bitmask of ribbons introduced in Generation 3. Cool, Beauty, Cute, Smart, Tough, Champion, Winning, Victory, Artist, Effort, Marine, Land, Sky, Country, National, Earth and World Ribbons.
     /* 0x18 */ u8 fatefulEncounter : 1;
                u8 gender : 2;
                u8 form : 5;
@@ -113,7 +113,7 @@ typedef struct {
     /* 0x16 */ u8 unused;
     /* 0x17 */ u8 originGame;
 
-    /* 0x18 */ u64 ribbonsC;
+    /* 0x18 */ u64 ribbonsDS2;
 } PokemonDataBlockC;
 
 /**

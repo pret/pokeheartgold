@@ -618,7 +618,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_CLASSIC_RIBBON:
     case MON_DATA_PREMIER_RIBBON:
     case MON_DATA_UNUSED_RIBBON_53: {
-        if (blockA->ribbonsA & (1ll << (attr - MON_DATA_SINNOH_CHAMP_RIBBON))) {
+        if (blockA->ribbonsDS1 & (1ll << (attr - MON_DATA_SINNOH_CHAMP_RIBBON))) {
             ret = TRUE;
         } else {
             ret = FALSE;
@@ -707,7 +707,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_NATIONAL_RIBBON:
     case MON_DATA_EARTH_RIBBON:
     case MON_DATA_WORLD_RIBBON:
-        if (blockB->ribbonsB & (1ll << (attr - MON_DATA_COOL_RIBBON))) {
+        if (blockB->ribbonsGBA & (1ll << (attr - MON_DATA_COOL_RIBBON))) {
             ret = TRUE;
         } else {
             ret = FALSE;
@@ -780,7 +780,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_SUPER_TOUGH_RIBBON_ULTRA:
     case MON_DATA_SUPER_TOUGH_RIBBON_MASTER:
     case MON_DATA_UNUSED_RIBBON_143:
-        if (blockC->ribbonsC & (1ll << (attr - MON_DATA_SUPER_COOL_RIBBON))) {
+        if (blockC->ribbonsDS2 & (1ll << (attr - MON_DATA_SUPER_COOL_RIBBON))) {
             ret = TRUE;
         } else {
             ret = FALSE;
@@ -1091,9 +1091,9 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_UNUSED_RIBBON_53:
         mask = 1 << (attr - MON_DATA_SINNOH_CHAMP_RIBBON);
         if (VALUE(u8)) {
-            blockA->ribbonsA |= mask;
+            blockA->ribbonsDS1 |= mask;
         } else {
-            blockA->ribbonsA &= mask ^ 0xFFFFFFFF;
+            blockA->ribbonsDS1 &= mask ^ 0xFFFFFFFF;
         }
         break;
     case MON_DATA_MOVE1:
@@ -1172,9 +1172,9 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_WORLD_RIBBON:
         mask = 1 << (attr - MON_DATA_COOL_RIBBON);
         if (VALUE(u8)) {
-            blockB->ribbonsB |= mask;
+            blockB->ribbonsGBA |= mask;
         } else {
-            blockB->ribbonsB &= mask ^ 0xFFFFFFFF;
+            blockB->ribbonsGBA &= mask ^ 0xFFFFFFFF;
         }
         break;
     case MON_DATA_FATEFUL_ENCOUNTER:
@@ -1239,9 +1239,9 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_UNUSED_RIBBON_143:
         mask = 1 << (attr - MON_DATA_SUPER_COOL_RIBBON);
         if (VALUE(u8)) {
-            blockC->ribbonsC |= mask;
+            blockC->ribbonsDS2 |= mask;
         } else {
-            blockC->ribbonsC &= mask ^ 0xFFFFFFFFFFFFFFFF;
+            blockC->ribbonsDS2 &= mask ^ 0xFFFFFFFFFFFFFFFF;
         }
         break;
     case MON_DATA_OT_NAME:
