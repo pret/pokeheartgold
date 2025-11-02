@@ -1,5 +1,5 @@
 #include "field_system.h"
-#include "pal_park.h"
+#include "catching_show.h"
 #include "pokedex.h"
 #include "save_arrays.h"
 #include "save_pokegear.h"
@@ -27,12 +27,12 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
     u16 var0 = ScriptGetVar(ctx);
     if (var0 == 2) {
         Save_VarsFlags_SetPalParkSysFlag(script);
-        PalPark_ClearState(ctx->fieldSystem);
+        CatchingShow_ClearState(ctx->fieldSystem);
     } else if (var0 == 0) {
-        PalPark_InitFromSave(ctx->fieldSystem);
+        CatchingShow_Start(ctx->fieldSystem);
     } else if (var0 == 1) {
         Save_VarsFlags_ClearPalParkSysFlag(script);
-        PalPark_StopClock(ctx->fieldSystem);
+        CatchingShow_End(ctx->fieldSystem);
     } else {
         GF_ASSERT(FALSE);
     }
@@ -41,7 +41,7 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_509(ScriptContext *ctx) {
-    struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
+    struct MigratedPokemon *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
@@ -54,7 +54,7 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_510(ScriptContext *ctx) {
-    struct MigratedPokemonSav *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
+    MigratedPokemon *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     PCStorage *storage = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
     PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
@@ -62,7 +62,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     int i;
 
     for (i = 0; i < PARTY_SIZE; i++) {
-        GetMigratedPokemonByIndex(unkStruct, i, mon);
+        MigratedPokemon_ConvertToPokemon(unkStruct, i, mon);
         MonSetTrainerMemo(mon, profile, 2, 0, HEAP_ID_FIELD3);
         GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(mon)));
         UpdatePokedexWithReceivedSpecies(ctx->fieldSystem->saveData, mon);
@@ -80,18 +80,18 @@ BOOL ScrCmd_PalParkScoreGet(ScriptContext *ctx) {
 
     switch (var0) {
     case 0:
-        *retPtr = PalPark_CalcSpeciesScore(ctx->fieldSystem);
+        *retPtr = CatchingShow_CalcCatchingPoints(ctx->fieldSystem);
         break;
     case 1:
-        *retPtr = PalPark_CalcTimeScore(ctx->fieldSystem);
+        *retPtr = CatchingShow_GetTimePoints(ctx->fieldSystem);
         break;
     case 2:
-        *retPtr = PalPark_CalcTypesScore(ctx->fieldSystem);
+        *retPtr = CatchingShow_GetTypePoints(ctx->fieldSystem);
         break;
     case 3: {
-        int val0 = PalPark_CalcTimeScore(ctx->fieldSystem);
-        int val1 = PalPark_CalcSpeciesScore(ctx->fieldSystem);
-        int val2 = PalPark_CalcTypesScore(ctx->fieldSystem);
+        int val0 = CatchingShow_GetTimePoints(ctx->fieldSystem);
+        int val1 = CatchingShow_CalcCatchingPoints(ctx->fieldSystem);
+        int val2 = CatchingShow_GetTypePoints(ctx->fieldSystem);
         *retPtr = val1 + val2 + val0;
         break;
     }

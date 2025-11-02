@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_OVERLAY_01_021F1AFC_H
 #define POKEHEARTGOLD_OVERLAY_01_021F1AFC_H
 
-#include "field_player_avatar.h"
+#include "player_avatar.h"
 
 void Field_PlayerAvatar_OrrTransitionFlags(PlayerAvatar *playerAvatar, int flags);
 void Field_PlayerAvatar_ApplyTransitionFlags(PlayerAvatar *playerAvatar);

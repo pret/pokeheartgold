@@ -192,13 +192,13 @@ _0220099A:
 	str r0, [r5, #0x20]
 _022009A4:
 	add r0, r6, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #4]
 	bl GetDeltaXByFacingDirection
 	add r7, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
 	bl GetDeltaYByFacingDirection

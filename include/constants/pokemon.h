@@ -607,4 +607,6 @@ typedef enum {
 #define GROWTH_UNUSED_6    6
 #define GROWTH_UNUSED_7    7
 
+#define CATCHING_SHOW_MONS 6
+
 #endif // POKEHEARTGOLD_CONSTANTS_POKEMON_H
