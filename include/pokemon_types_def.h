@@ -47,30 +47,30 @@ typedef struct BaseStats {
  * @brief Block A of the BoxPokemon data structure
  */
 typedef struct {
-    /* 0x00 */ u16 species; //!< The Pokemon's species; their National Pokedex number.
-    /* 0x02 */ u16 heldItem; //!< The Pokemon's held item.
+    /* 0x00 */ u16 species;
+    /* 0x02 */ u16 heldItem;
 
-    /* 0x04 */ u32 otID; //!< The ID of the Pokemon's original trainer (who caught/hatched it). Low 16: visible; High 16: secret
-    /* 0x08 */ u32 exp; //!< The Pokemon's current total EXP value. Level is computed from this value according to the species' EXP curve.
+    /* 0x04 */ u32 otID;
+    /* 0x08 */ u32 exp;
 
-    /* 0x0C */ u8 friendship; //!< The Pokemon's current friendship value; affects certain evolutions and the power of Return and Frustration.
-    /* 0x0D */ u8 ability; //!< The Pokemon's ability. See enum Ability for definitions.
-    /* 0x0E */ u8 markings; //!< A bitmask of marks applied to the Pokemon (Circle, Triangle, Square, Heart, Star, Diamond)
-    /* 0x0F */ u8 originLanguage; //!< The language of the Pokemon's originating game.
+    /* 0x0C */ u8 friendship;
+    /* 0x0D */ u8 ability;
+    /* 0x0E */ u8 markings;
+    /* 0x0F */ u8 originLanguage;
 
-    /* 0x10 */ u8 hpEV; //!< The Pokemon's current HP EVs.
-    /* 0x11 */ u8 atkEV; //!< The Pokemon's current Attack EVs.
-    /* 0x12 */ u8 defEV; //!< The Pokemon's current Defense EVs.
-    /* 0x13 */ u8 speedEV; //!< The Pokemon's current Speed EVs.
-    /* 0x14 */ u8 spAtkEV; //!< The Pokemon's current Special Attack EVs.
-    /* 0x15 */ u8 spDefEV; //!< The Pokemon's current Special Defense EVs.
+    /* 0x10 */ u8 hpEV;
+    /* 0x11 */ u8 atkEV;
+    /* 0x12 */ u8 defEV;
+    /* 0x13 */ u8 speedEV;
+    /* 0x14 */ u8 spAtkEV;
+    /* 0x15 */ u8 spDefEV;
 
-    /* 0x16 */ u8 cool; //!< The Pokemon's current Cool stat.
-    /* 0x17 */ u8 beauty; //!< The Pokemon's current Beauty stat.
-    /* 0x18 */ u8 cute; //!< The Pokemon's current Cute stat.
-    /* 0x19 */ u8 smart; //!< The Pokemon's current Smart stat.
-    /* 0x1A */ u8 tough; //!< The Pokemon's current Tough stat.
-    /* 0x1B */ u8 sheen; //!< The Pokemon's current Sheen. Effectively controls the maximum number of Poffins that can be eaten.
+    /* 0x16 */ u8 cool;
+    /* 0x17 */ u8 beauty;
+    /* 0x18 */ u8 cute;
+    /* 0x19 */ u8 smart;
+    /* 0x1A */ u8 tough;
+    /* 0x1B */ u8 sheen;
 
     /* 0x1C */ u32 ribbonsA; //!< A bitmask of non-Super Contest ribbons introduced in Generation 4. Sinnoh Champ, Ability, Great Ability, Double Ability, Multi Ability, Pair Ability, World Ability, Alert, Shock, Downcast, Careless, Relax, Snooze, Smile, Gorgeous, Royal, Gorgeous Royal, Footprint, Record, History, Legend, Red, Green, Blue, Festival, Carnival, Classic and Premier Ribbons.
 } PokemonDataBlockA;
@@ -79,65 +79,65 @@ typedef struct {
  * @brief Block B of the BoxPokemon data structure
  */
 typedef struct {
-    /* 0x00 */ u16 moves[MAX_MON_MOVES]; //!< List of moves currently known by the Pokemon.
-    /* 0x08 */ u8 moveCurrentPPs[MAX_MON_MOVES]; //!< The current PP of each of the Pokemon's moves.
-    /* 0x0C */ u8 movePPUps[MAX_MON_MOVES]; //!< The number of PP Ups applied to each of the Pokemon's moves.
+    /* 0x00 */ u16 moves[MAX_MON_MOVES];
+    /* 0x08 */ u8 moveCurrentPPs[MAX_MON_MOVES];
+    /* 0x0C */ u8 movePPUps[MAX_MON_MOVES];
 
-    /* 0x10 */ u32 hpIV : 5; //!< The Pokemon's HP IV.
-               u32 atkIV : 5; //!< The Pokemon's Attack IV.
-               u32 defIV : 5; //!< The Pokemon's Defense IV.
-               u32 speedIV : 5; //!< The Pokemon's Speed IV.
-               u32 spAtkIV : 5; //!< The Pokemon's Special Attack IV.
-               u32 spDefIV : 5; //!< The Pokemon's Special Defense IV.
-               u32 isEgg : 1; //!< Whether or not the Pokemon is an egg.
-               u32 hasNickname : 1; //!< Whether or not the Pokemon has a nickname.
+    /* 0x10 */ u32 hpIV : 5;
+               u32 atkIV : 5;
+               u32 defIV : 5;
+               u32 speedIV : 5;
+               u32 spAtkIV : 5;
+               u32 spDefIV : 5;
+               u32 isEgg : 1;
+               u32 hasNickname : 1;
 
     /* 0x14 */ u32 ribbonsB; //!< A bitmask of ribbons introduced in Generation 3. Cool, Beauty, Cute, Smart, Tough, Champion, Winning, Victory, Artist, Effort, Marine, Land, Sky, Country, National, Earth and World Ribbons.
-    /* 0x18 */ u8 fatefulEncounter : 1; //!< Whether or not the Pokemon is a Fateful Encounter (i.e., received via out-of-game event).
-               u8 gender : 2; //!< The Pokemon's gender; should only ever be 0, 1, or 2. See enum Gender.
-               u8 form : 5; //!< The Pokemon's form.
-    /* 0x19 */ u8 HGSS_shinyLeaves : 6; //!< Shiny Leaves collected by the Pok�mon.
-               u8 unused1 : 2; //!< Unused space.
-    /* 0x1A */ u16 unused2; //!< Unused space.
+    /* 0x18 */ u8 fatefulEncounter : 1;
+               u8 gender : 2;
+               u8 form : 5;
+    /* 0x19 */ u8 HGSS_shinyLeaves : 6;
+               u8 unused1 : 2;
+    /* 0x1A */ u16 unused2;
 
-    /* 0x1C */ u16 EggLocation_PtHGSS; //!< Egg location for places not available in DP.
-    /* 0x1E */ u16 MetLocation_PtHGSS; //!< Met location for places not available in DP.
+    /* 0x1C */ u16 EggLocation_PtHGSS;
+    /* 0x1E */ u16 MetLocation_PtHGSS;
 } PokemonDataBlockB;
 
 /**
  * @brief Block C of the BoxPokemon data structure
  */
 typedef struct {
-    /* 0x00 */ u16 nickname[11]; //!< The Pokemon's nickname.
+    /* 0x00 */ u16 nickname[11];
 
-    /* 0x16 */ u8 unused; //!< Unused space.
-    /* 0x17 */ u8 originGame; //!< The game code for the Pokemon's originating game.
+    /* 0x16 */ u8 unused;
+    /* 0x17 */ u8 originGame;
 
-    /* 0x18 */ u64 ribbonsC; //!< A bitmask of ribbons given to the Pokemon from Sinnoh's Super Contests.
+    /* 0x18 */ u64 ribbonsC;
 } PokemonDataBlockC;
 
 /**
  * @brief Block D of the BoxPokemon data structure
  */
 typedef struct {
-    /* 0x00 */ u16 otName[PLAYER_NAME_LENGTH + 1]; //!< The name of the Pokemon's original trainer (who caught/hatched it).
+    /* 0x00 */ u16 otName[PLAYER_NAME_LENGTH + 1];
 
-    /* 0x10 */ u8 eggYear; //!< The year in which the Pokemon's Egg was obtained.
-    /* 0x11 */ u8 eggMonth; //!< The month in which the Pokemon's Egg was obtained.
-    /* 0x12 */ u8 eggDay; //!< The day on which the Pokemon's Egg was obtained.
+    /* 0x10 */ u8 eggYear;
+    /* 0x11 */ u8 eggMonth;
+    /* 0x12 */ u8 eggDay;
 
-    /* 0x13 */ u8 metYear; //!< The year in which the Pokemon was first met.
-    /* 0x14 */ u8 metMonth; //!< The month in which the Pokemon was first met.
-    /* 0x15 */ u8 metDay; //!< The day on which the Pokemon was first met.
+    /* 0x13 */ u8 metYear;
+    /* 0x14 */ u8 metMonth;
+    /* 0x15 */ u8 metDay;
 
-    /* 0x16 */ u16 EggLocation_DP; //!< The location in which the Pokemon's Egg was obtained.
-    /* 0x18 */ u16 MetLocation_DP; //!< The location in which the Pokemon was first met.
+    /* 0x16 */ u16 EggLocation_DP;
+    /* 0x18 */ u16 MetLocation_DP;
 
-    /* 0x1A */ u8 pokerus; //!< The Pokemon's Pokerus value.
-    /* 0x1B */ u8 pokeball; //!< The Pokemon's Pokeball ID.
-    /* 0x1C */ u8 metLevel : 7; //!< The level at which this Pokemon was first met.
-               u8 otGender : 1; //!< The gender of the Pokemon's original trainer; 0 for male, 1 for female.
-    /* 0x1D */ u8 metTerrain; //!< The terrain ID of the location where the Pokemon was first met. Used by Burmy for its aesthetic forms.
+    /* 0x1A */ u8 pokerus;
+    /* 0x1B */ u8 pokeball;
+    /* 0x1C */ u8 metLevel : 7;
+               u8 otGender : 1;
+    /* 0x1D */ u8 metTerrain;
     /* 0x1E */ u8 HGSS_Pokeball;
     /* 0x1F */ s8 mood;
 } PokemonDataBlockD;
