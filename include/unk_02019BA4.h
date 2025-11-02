@@ -27,11 +27,12 @@ typedef struct UnkStruct_02019BA4 {
     void *data;                                    // 0x1C, passed as data to unk_18
 } UnkStruct_02019BA4;
 
-UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *, const UnkStruct_02020654 *, const UnkStruct_02019BA4_callbacks *, void *, int, u8, enum HeapID);
-void sub_02019BDC(UnkStruct_02019BA4 *);
-int sub_02019F74(UnkStruct_02019BA4 *);
-void sub_02019F7C(UnkStruct_02019BA4 *, int);
-int sub_02019D18(UnkStruct_02019BA4 *);
-const UnkStruct_02020654 *sub_0201A018(UnkStruct_02019BA4 *, int);
+UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStruct_02020654 *dpadBoxes, const UnkStruct_02019BA4_callbacks *callbacks, void *callbackParam, int a4, u8 initialPos, enum HeapID heapId);
+void sub_02019BDC(UnkStruct_02019BA4 *a0);
+int sub_02019BE4(UnkStruct_02019BA4 *a0);
+int sub_02019D18(UnkStruct_02019BA4 *a0);
+int sub_02019F74(UnkStruct_02019BA4 *a0);
+void sub_02019F7C(UnkStruct_02019BA4 *a0, int a1);
+const UnkStruct_02020654 *sub_0201A018(UnkStruct_02019BA4 *a0, int a1);
 
 #endif // POKEHEARTGOLD_UNK_02019BA4_H

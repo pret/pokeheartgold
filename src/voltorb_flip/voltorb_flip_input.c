@@ -16,7 +16,7 @@ static void ov122_021E8E78(VoltorbFlipInputHandler *);
 static void ov122_021E8F58(VoltorbFlipInputHandler *);
 static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *);
 static int VoltorbFlipInputHandler_HandleInput_NoMemo(VoltorbFlipInputHandler *);
-static void ov122_021E9108(VoltorbFlipInputHandler *, int);
+static void VoltorbFlipInputHandler_SetFocus(VoltorbFlipInputHandler *, int);
 static void ov122_021E9134(VoltorbFlipInputHandler *);
 static void ov122_021E9154(VoltorbFlipInputHandler *, int);
 static void ov122_021E91AC(VoltorbFlipInputHandler *inputHandler, int newFocus, int oldFocus, MenuInputState inputMode);
@@ -124,7 +124,7 @@ VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapID, stru
     ptr->unk4 = a2;
     ptr->unk8 = sub_02019BA4(sTouchscreenHitboxes, sDpadButtonSpecs, &sInputCallbacks, ptr, 1, ptr->focus, heapID);
 
-    ov122_021E9108(ptr, 0);
+    VoltorbFlipInputHandler_SetFocus(ptr, 0);
     return ptr;
 }
 
@@ -182,7 +182,7 @@ BOOL VoltorbFlipInputHandler_IsCursorInGridRange(VoltorbFlipInputHandler *inputH
 
 void ov122_021E8E40(VoltorbFlipInputHandler *inputHandler) {
     sub_02019F7C(inputHandler->unk8, 0);
-    ov122_021E9108(inputHandler, 0);
+    VoltorbFlipInputHandler_SetFocus(inputHandler, 0);
 }
 
 void ov122_021E8E58(VoltorbFlipInputHandler *inputHandler) {
@@ -336,7 +336,7 @@ static int VoltorbFlipInputHandler_HandleInput_NoMemo(VoltorbFlipInputHandler *i
     return 0;
 }
 
-static void ov122_021E9108(VoltorbFlipInputHandler *inputHandler, int newFocus) {
+static void VoltorbFlipInputHandler_SetFocus(VoltorbFlipInputHandler *inputHandler, int newFocus) {
     u8 x;
     u8 y;
 
@@ -380,7 +380,7 @@ static void ov122_021E9154(VoltorbFlipInputHandler *inputHandler, int newFocus) 
 static void ov122_021E91AC(VoltorbFlipInputHandler *inputHandler, int newFocus, int oldFocus, MenuInputState inputMode) {
     if ((inputMode == MENU_INPUT_STATE_BUTTONS || newFocus != VOLTORB_FLIP_INPUT_MEMO) && newFocus != oldFocus && newFocus < NELEMS(sTouchscreenHitboxes)) {
         // Updates visual focus indicator
-        ov122_021E9108(inputHandler, newFocus);
+        VoltorbFlipInputHandler_SetFocus(inputHandler, newFocus);
         // Plays when you switch focus
         PlaySE(SEQ_SE_DP_SELECT);
     }
@@ -392,7 +392,7 @@ static void VoltorbFlipInputCB_OnButtonPress(void *data, int new, int prev) {
     VoltorbFlipInputHandler *inputHandler = data;
 
     sub_02019F7C(inputHandler->unk8, (u8)new);
-    ov122_021E9108(inputHandler, new);
+    VoltorbFlipInputHandler_SetFocus(inputHandler, new);
     PlaySE(SEQ_SE_DP_SELECT);
 }
 
