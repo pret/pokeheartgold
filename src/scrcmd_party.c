@@ -358,7 +358,7 @@ BOOL ScrCmd_CountAliveMons(ScriptContext *ctx) {
     for (i = 0, count = 0; i < partyCount; i++) {
         if (i != slot) {
             Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
-            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_CUR_HP, NULL) != 0) {
+            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0) {
                 count++;
             }
         }
@@ -377,7 +377,7 @@ BOOL ScrCmd_CountAliveMonsAndPC(ScriptContext *ctx) {
     partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     for (i = 0, count = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
-        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_CUR_HP, NULL) != 0) {
+        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_HP, NULL) != 0) {
             count++;
         }
     }

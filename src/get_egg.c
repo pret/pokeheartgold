@@ -1033,7 +1033,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        pp[i] = GetMonData(mon, MON_DATA_MOVE1_CUR_PP + i, NULL);
+        pp[i] = GetMonData(mon, MON_DATA_MOVE1_PP + i, NULL);
     }
     pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     for (i = 0; i < NUM_STATS; i++) {
@@ -1058,7 +1058,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     CreateMon(tmpMon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         SetMonData(tmpMon, MON_DATA_MOVE1 + i, &moves[i]);
-        SetMonData(tmpMon, MON_DATA_MOVE1_CUR_PP + i, &pp[i]);
+        SetMonData(tmpMon, MON_DATA_MOVE1_PP + i, &pp[i]);
     }
     for (i = 0; i < NUM_STATS; i++) {
         SetMonData(tmpMon, MON_DATA_HP_IV + i, &ivs[i]);

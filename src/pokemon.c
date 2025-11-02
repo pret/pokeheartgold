@@ -339,7 +339,7 @@ void CalcMonStats(Pokemon *mon) {
     BOOL decry = AcquireMonLock(mon);
     level = (int)GetMonData(mon, MON_DATA_LEVEL, NULL);
     maxHp = (int)GetMonData(mon, MON_DATA_MAX_HP, NULL);
-    hp = (int)GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    hp = (int)GetMonData(mon, MON_DATA_HP, NULL);
     hpIv = (int)GetMonData(mon, MON_DATA_HP_IV, NULL);
     hpEv = (int)GetMonData(mon, MON_DATA_HP_EV, NULL);
     atkIv = (int)GetMonData(mon, MON_DATA_ATK_IV, NULL);
@@ -401,7 +401,7 @@ void CalcMonStats(Pokemon *mon) {
         }
     }
     if (hp != 0) {
-        SetMonData(mon, MON_DATA_CUR_HP, &hp);
+        SetMonData(mon, MON_DATA_HP, &hp);
     }
     ReleaseMonLock(mon, decry);
 }
@@ -434,7 +434,7 @@ static u32 GetMonDataInternal(Pokemon *mon, int attr, void *dest) {
         return mon->party.level;
     case MON_DATA_BALL_CAPSULE_ID:
         return mon->party.ballCapsuleID;
-    case MON_DATA_CUR_HP:
+    case MON_DATA_HP:
         return mon->party.hp;
     case MON_DATA_MAX_HP:
         return mon->party.maxHP;
@@ -630,11 +630,11 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     case MON_DATA_MOVE4:
         ret = blockB->moves[attr - MON_DATA_MOVE1];
         break;
-    case MON_DATA_MOVE1_CUR_PP:
-    case MON_DATA_MOVE2_CUR_PP:
-    case MON_DATA_MOVE3_CUR_PP:
-    case MON_DATA_MOVE4_CUR_PP:
-        ret = blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_CUR_PP];
+    case MON_DATA_MOVE1_PP:
+    case MON_DATA_MOVE2_PP:
+    case MON_DATA_MOVE3_PP:
+    case MON_DATA_MOVE4_PP:
+        ret = blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP];
         break;
     case MON_DATA_MOVE1_PP_UPS:
     case MON_DATA_MOVE2_PP_UPS:
@@ -915,7 +915,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void *value) {
     case MON_DATA_BALL_CAPSULE_ID:
         mon->party.ballCapsuleID = VALUE(u8);
         break;
-    case MON_DATA_CUR_HP:
+    case MON_DATA_HP:
         mon->party.hp = VALUE(u16);
         break;
     case MON_DATA_MAX_HP:
@@ -1102,11 +1102,11 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_MOVE4:
         blockB->moves[attr - MON_DATA_MOVE1] = VALUE(u16);
         break;
-    case MON_DATA_MOVE1_CUR_PP:
-    case MON_DATA_MOVE2_CUR_PP:
-    case MON_DATA_MOVE3_CUR_PP:
-    case MON_DATA_MOVE4_CUR_PP:
-        blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_CUR_PP] = VALUE(u8);
+    case MON_DATA_MOVE1_PP:
+    case MON_DATA_MOVE2_PP:
+    case MON_DATA_MOVE3_PP:
+    case MON_DATA_MOVE4_PP:
+        blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] = VALUE(u8);
         break;
     case MON_DATA_MOVE1_PP_UPS:
     case MON_DATA_MOVE2_PP_UPS:
@@ -1371,7 +1371,7 @@ void AddMonData(Pokemon *mon, int attr, int value) {
 static void AddMonDataInternal(Pokemon *mon, int attr, int value) {
     s32 maxHP;
     switch (attr) {
-    case MON_DATA_CUR_HP:
+    case MON_DATA_HP:
         maxHP = mon->party.maxHP;
         if ((s32)(mon->party.hp + value) > maxHP) {
             mon->party.hp = (u16)maxHP;
@@ -1483,15 +1483,15 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
             blockA->sheen += value;
         }
         break;
-    case MON_DATA_MOVE1_CUR_PP:
-    case MON_DATA_MOVE2_CUR_PP:
-    case MON_DATA_MOVE3_CUR_PP:
-    case MON_DATA_MOVE4_CUR_PP:
-        if (blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_CUR_PP] + value > GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1_CUR_PP], blockB->movePPUps[attr - MON_DATA_MOVE1_CUR_PP])) {
-            blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_CUR_PP] = (u8)GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1_CUR_PP],
-                blockB->movePPUps[attr - MON_DATA_MOVE1_CUR_PP]);
+    case MON_DATA_MOVE1_PP:
+    case MON_DATA_MOVE2_PP:
+    case MON_DATA_MOVE3_PP:
+    case MON_DATA_MOVE4_PP:
+        if (blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] + value > GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1_PP], blockB->movePPUps[attr - MON_DATA_MOVE1_PP])) {
+            blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] = (u8)GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1_PP],
+                blockB->movePPUps[attr - MON_DATA_MOVE1_PP]);
         } else {
-            blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_CUR_PP] += value;
+            blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] += value;
         }
         break;
     case MON_DATA_MOVE1_PP_UPS:
@@ -1682,7 +1682,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_STATUS:
     case MON_DATA_LEVEL:
     case MON_DATA_BALL_CAPSULE_ID:
-    case MON_DATA_CUR_HP:
+    case MON_DATA_HP:
     case MON_DATA_MAX_HP:
     case MON_DATA_ATK:
     case MON_DATA_DEF:
@@ -3096,7 +3096,7 @@ void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move) {
 
     for (i = 0; i < MAX_MON_MOVES - 1; i++) {
         moves[i] = (u16)GetBoxMonData(boxMon, MON_DATA_MOVE1 + i + 1, NULL);
-        pp[i] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + i + 1, NULL);
+        pp[i] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP + i + 1, NULL);
         ppUp[i] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + i + 1, NULL);
     }
 
@@ -3106,7 +3106,7 @@ void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move) {
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         SetBoxMonData(boxMon, MON_DATA_MOVE1 + i, &moves[i]);
-        SetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + i, &pp[i]);
+        SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + i, &pp[i]);
         SetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + i, &ppUp[i]);
     }
 
@@ -3121,7 +3121,7 @@ void MonSetMoveInSlot_ResetPpUp(Pokemon *mon, u16 move, u8 slot) {
     ppUp = 0;
     SetMonData(mon, MON_DATA_MOVE1_PP_UPS + slot, &ppUp);
     pp = GetMoveMaxPP(move, 0);
-    SetMonData(mon, MON_DATA_MOVE1_CUR_PP + slot, &pp);
+    SetMonData(mon, MON_DATA_MOVE1_PP + slot, &pp);
 }
 
 void MonSetMoveInSlot(Pokemon *mon, u16 move, u8 slot) {
@@ -3135,7 +3135,7 @@ void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
     SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot, &move);
     ppUp = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot, NULL);
     pp = (u8)GetMoveMaxPP(move, ppUp);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + slot, &pp);
+    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot, &pp);
 }
 
 u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
@@ -3176,17 +3176,17 @@ void BoxMonSwapMoves(BoxPokemon *boxMon, int slot1, int slot2) {
     u8 ppUp[2];
 
     moves[0] = (u16)GetBoxMonData(boxMon, MON_DATA_MOVE1 + slot1, NULL);
-    pp[0] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + slot1, NULL);
+    pp[0] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot1, NULL);
     ppUp[0] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot1, NULL);
     moves[1] = (u16)GetBoxMonData(boxMon, MON_DATA_MOVE1 + slot2, NULL);
-    pp[1] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + slot2, NULL);
+    pp[1] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot2, NULL);
     ppUp[1] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, NULL);
 
     SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot1, &moves[1]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + slot1, &pp[1]);
+    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot1, &pp[1]);
     SetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot1, &ppUp[1]);
     SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot2, &moves[0]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + slot2, &pp[0]);
+    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot2, &pp[0]);
     SetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, &ppUp[0]);
 }
 
@@ -3196,17 +3196,17 @@ void MonDeleteMoveSlot(Pokemon *mon, u32 slot) {
     u8 ppUp;
     for (; slot < MAX_MON_MOVES - 1; slot++) {
         move = (u16)GetMonData(mon, (int)(MON_DATA_MOVE1 + slot + 1), NULL);
-        pp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1_CUR_PP + slot + 1), NULL);
+        pp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1_PP + slot + 1), NULL);
         ppUp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot + 1), NULL);
         SetMonData(mon, (int)(MON_DATA_MOVE1 + slot), &move);
-        SetMonData(mon, (int)(MON_DATA_MOVE1_CUR_PP + slot), &pp);
+        SetMonData(mon, (int)(MON_DATA_MOVE1_PP + slot), &pp);
         SetMonData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot), &ppUp);
     }
     move = MOVE_NONE;
     pp = 0;
     ppUp = 0;
     SetMonData(mon, MON_DATA_MOVE1 + 3, &move);
-    SetMonData(mon, MON_DATA_MOVE1_CUR_PP + 3, &pp);
+    SetMonData(mon, MON_DATA_MOVE1_PP + 3, &pp);
     SetMonData(mon, MON_DATA_MOVE1_PP_UPS + 3, &ppUp);
 }
 
@@ -3233,7 +3233,7 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
         dest->box.partyDecrypted = TRUE;
     }
     SetMonData(dest, MON_DATA_STATUS, &sp0);
-    SetMonData(dest, MON_DATA_CUR_HP, &sp0);
+    SetMonData(dest, MON_DATA_HP, &sp0);
     SetMonData(dest, MON_DATA_MAX_HP, &sp0);
     mail = Mail_New(HEAP_ID_DEFAULT);
     SetMonData(dest, MON_DATA_MAIL, mail);
@@ -3559,7 +3559,7 @@ BOOL Mon_CanUseGracidea(Pokemon *mon) {
     int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     int form = GetMonData(mon, MON_DATA_FORM, NULL);
     int status = GetMonData(mon, MON_DATA_STATUS, NULL);
-    int hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    int hp = GetMonData(mon, MON_DATA_HP, NULL);
     BOOL fatefulEncounter = GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
     GF_RTC_CopyTime(&time);
 
@@ -3711,7 +3711,7 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
     sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heapID);
     if (pokeball == ITEM_HEAL_BALL) {
         hp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
-        SetMonData(mon, MON_DATA_CUR_HP, &hp);
+        SetMonData(mon, MON_DATA_HP, &hp);
         hp = 0;
         SetMonData(mon, MON_DATA_STATUS, &hp);
     }
@@ -4178,7 +4178,7 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetBoxMonData(boxMon, MON_DATA_MOVE1 + i, NULL) != MOVE_NONE) {
             pp = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_MAX_PP + i, NULL);
-            SetBoxMonData(boxMon, MON_DATA_MOVE1_CUR_PP + i, &pp);
+            SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + i, &pp);
         }
     }
     ReleaseBoxMonLock(boxMon, decry);

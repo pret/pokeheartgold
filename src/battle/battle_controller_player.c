@@ -3432,7 +3432,7 @@ static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
                     for (i = 0; i < Party_GetCount(party); i++) {
                         Pokemon *mon = Party_GetMonByIndex(party, i);
                         if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                            u32 hpTemp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+                            u32 hpTemp = GetMonData(mon, MON_DATA_HP, NULL);
                             if (hpTemp != 0 && ctx->selectedMonIndex[battlerId ^ 2] != i) {
                                 hp += hpTemp;
                             }
@@ -3458,7 +3458,7 @@ static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
             for (i = 0; i < Party_GetCount(party); i++) {
                 Pokemon *mon = Party_GetMonByIndex(party, i);
                 if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
-                    hp += GetMonData(mon, MON_DATA_CUR_HP, NULL);
+                    hp += GetMonData(mon, MON_DATA_HP, NULL);
                 }
             }
 
@@ -3507,7 +3507,7 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
                 for (int i = 0; i < Party_GetCount(party); i++) {
                     Pokemon *mon = Party_GetMonByIndex(party, i);
                     if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_CUR_HP, NULL);
+                        hp += GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
@@ -3526,14 +3526,14 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
                 for (i = 0; i < Party_GetCount(party); i++) {
                     Pokemon *mon = Party_GetMonByIndex(party, i);
                     if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_CUR_HP, NULL);
+                        hp += GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
                 for (i = 0; i < Party_GetCount(partnerParty); i++) {
                     Pokemon *mon = Party_GetMonByIndex(partnerParty, i);
                     if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_CUR_HP, NULL);
+                        hp += GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
@@ -3554,7 +3554,7 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
                 for (int i = 0; i < Party_GetCount(party); i++) {
                     Pokemon *mon = Party_GetMonByIndex(party, i);
                     if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_CUR_HP, NULL);
+                        hp += GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 

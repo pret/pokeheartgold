@@ -110,7 +110,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
         mon = Party_GetMonByIndex(arcadeData->playerParty, i);
         data = arcadeData->savedHp[i];
         SetMonData(mon, MON_DATA_MAX_HP, &data);
-        SetMonData(mon, MON_DATA_CUR_HP, &data);
+        SetMonData(mon, MON_DATA_HP, &data);
         data = arcadeData->savedAtk[i];
         SetMonData(mon, MON_DATA_ATK, &data);
         data = arcadeData->savedDef[i];

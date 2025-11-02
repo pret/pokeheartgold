@@ -216,10 +216,10 @@
 #define MON_DATA_MOVE2                      55
 #define MON_DATA_MOVE3                      56
 #define MON_DATA_MOVE4                      57
-#define MON_DATA_MOVE1_CUR_PP               58
-#define MON_DATA_MOVE2_CUR_PP               59
-#define MON_DATA_MOVE3_CUR_PP               60
-#define MON_DATA_MOVE4_CUR_PP               61
+#define MON_DATA_MOVE1_PP                   58
+#define MON_DATA_MOVE2_PP                   59
+#define MON_DATA_MOVE3_PP                   60
+#define MON_DATA_MOVE4_PP                   61
 #define MON_DATA_MOVE1_PP_UPS               62
 #define MON_DATA_MOVE2_PP_UPS               63
 #define MON_DATA_MOVE3_PP_UPS               64
@@ -321,7 +321,7 @@
 #define MON_DATA_STATUS                     160
 #define MON_DATA_LEVEL                      161
 #define MON_DATA_BALL_CAPSULE_ID            162
-#define MON_DATA_CUR_HP                     163
+#define MON_DATA_HP                         163
 #define MON_DATA_MAX_HP                     164
 #define MON_DATA_ATK                        165
 #define MON_DATA_DEF                        166

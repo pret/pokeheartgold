@@ -1035,7 +1035,7 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
     }
     PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
     partyMenu->monsDrawState[partySlot].species = species;
-    partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
     partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAX_HP, NULL);
     partyMenu->monsDrawState[partySlot].level = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
     partyMenu->monsDrawState[partySlot].heldItem = (u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
@@ -1276,7 +1276,7 @@ void sub_0207A7F4(PartyMenu *partyMenu, u8 partySlot) {
         } else {
             paletteSlot = 0;
         }
-        if (GetMonData(mon, MON_DATA_CUR_HP, NULL) == 0) {
+        if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
             paletteSlot += 2;
         } else if (sub_0207A880(partyMenu, partySlot) == TRUE) {
             paletteSlot += 1;
@@ -2323,7 +2323,7 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenu *partyMenu, u8 partySlo
     if (partyMenu->levelUpStatsTmp[0] == partyMenu->levelUpStatsTmp[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
         u32 hp = partyMenu->monsDrawState[partySlot].hp;
-        SetMonData(mon, MON_DATA_CUR_HP, &hp);
+        SetMonData(mon, MON_DATA_HP, &hp);
         return TRUE;
     }
 

@@ -443,7 +443,7 @@ static int PartyMenu_ItemUseFunc_EVDown(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    int hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    int hp = GetMonData(mon, MON_DATA_HP, NULL);
     String *string;
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0) {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
@@ -469,7 +469,7 @@ static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
 }
 
 static int PartyMenu_ItemUseFunc_HPRestoreAnimLoop(PartyMenu *partyMenu) {
-    int hp = GetMonData(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), MON_DATA_CUR_HP, NULL);
+    int hp = GetMonData(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), MON_DATA_HP, NULL);
     // Hook: Speed up HP restore here
     // This currently animates 1 HP per frame
     if (hp != partyMenu->monsDrawState[partyMenu->partyMonIndex].hp) {
@@ -525,7 +525,7 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
     case 1:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
         UseItemOnPokemon(mon, partyMenu->args->itemId, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
-        hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+        hp = GetMonData(mon, MON_DATA_HP, NULL);
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
         BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
@@ -540,7 +540,7 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
         break;
     case 2:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-        hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+        hp = GetMonData(mon, MON_DATA_HP, NULL);
         ++partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
         PartyMenu_ClearMonHpTextWindow(partyMenu, partyMenu->partyMonIndex);
         FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_HPBAR + 5 * partyMenu->partyMonIndex], 0);
@@ -581,7 +581,7 @@ static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
     partyMenu->levelUpStatsTmp[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-    partyMenu->monsDrawState[partyMenu->partyMonIndex].hp = GetMonData(mon, MON_DATA_CUR_HP, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].hp = GetMonData(mon, MON_DATA_HP, NULL);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00177);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
@@ -899,7 +899,7 @@ void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) 
     data = 0;
     SetMonData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
     data = GetMoveMaxPP(partyMenu->args->moveId, 0);
-    SetMonData(mon, MON_DATA_MOVE1_CUR_PP + moveIdx, &data);
+    SetMonData(mon, MON_DATA_MOVE1_PP + moveIdx, &data);
     if (partyMenu->args->itemId != ITEM_NONE) {
         if (!MoveIsHM(partyMenu->args->moveId)) {
             Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);

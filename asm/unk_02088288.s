@@ -5364,7 +5364,7 @@ Pokemon_GetStatusIconId: ; 0x0208AD64
 	bl GetMonData
 	add r4, r0, #0
 	add r0, r5, #0
-	mov r1, #MON_DATA_CUR_HP
+	mov r1, #MON_DATA_HP
 	mov r2, #0
 	bl GetMonData
 	cmp r0, #0

@@ -1067,7 +1067,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     SetMonData(mon, MON_DATA_MOVE1 + i, &moveData);
 
     pp = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
-    SetMonData(mon, MON_DATA_MOVE1_CUR_PP + i, &pp);
+    SetMonData(mon, MON_DATA_MOVE1_PP + i, &pp);
 
     Party_AddMon(party, mon);
 
@@ -1127,7 +1127,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     for (i = 0; i < MAX_MON_MOVES; i++) {
         SetMonData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
         maxPP = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
-        SetMonData(mon, MON_DATA_MOVE1_CUR_PP + i, &maxPP);
+        SetMonData(mon, MON_DATA_MOVE1_PP + i, &maxPP);
     }
 
     heldItem = ITEM_ZAP_PLATE;
