@@ -21,8 +21,7 @@ typedef struct UnkStruct_02019BA4 {
     u8 nextInput;                                  // 0x0D
     u8 lastInput;                                  // 0x0E
     u8 unk_0F;                                     // 0x0F
-    int unk_10;                                    // 0x10
-    int unk_14;                                    // 0x14
+    int unk_10[2];                                 // 0x10
     const UnkStruct_02019BA4_callbacks *callbacks; // 0x18
     void *data;                                    // 0x1C, passed as data to unk_18
 } UnkStruct_02019BA4;

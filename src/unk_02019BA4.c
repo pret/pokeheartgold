@@ -7,6 +7,8 @@
 int sub_02019E4C(UnkStruct_02019BA4 *a0, u16 a1);
 int sub_02019E98(UnkStruct_02019BA4 *a0);
 int sub_02019EB8(UnkStruct_02019BA4 *a0, int a1, u8 a2);
+BOOL sub_0201A06C(int *a0, u16 a1);
+BOOL sub_0201A020(const UnkStruct_02020654 *a0, int a1);
 
 UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStruct_02020654 *dpadBoxes, const UnkStruct_02019BA4_callbacks *callbacks, void *callbackParam, int a4, u8 initialPos, enum HeapID heapId) {
     UnkStruct_02019BA4 *ret = Heap_Alloc(heapId, sizeof(UnkStruct_02019BA4));
@@ -20,8 +22,8 @@ UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStr
     ret->nextInput = initialPos;
     ret->lastInput = 0xFF;
     ret->unk_0F = 0xFF;
-    ret->unk_10 = -1;
-    ret->unk_14 = -1;
+    ret->unk_10[0] = -1;
+    ret->unk_10[1] = -1;
     return ret;
 }
 
@@ -152,6 +154,70 @@ int sub_02019D18(UnkStruct_02019BA4 *a0) {
         return a0->nextInput;
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
         return LIST_CANCEL;
+    }
+
+    return LIST_NOTHING_CHOSEN;
+}
+
+int sub_02019E4C(UnkStruct_02019BA4 *a0, u16 a1) {
+    if (sub_0201A06C(a0->unk_10, a1) == TRUE) {
+        a0->nextInput = a1;
+        a0->lastInput = 0xFF;
+        a0->unk_0F = 0xFF;
+        if (a0->unk_08 == TRUE && a0->inputState == MENU_INPUT_STATE_TOUCH) {
+            a0->unk_08 = FALSE;
+            a0->callbacks->onSwitchToTouchMode(a0->data, a0->nextInput, a0->lastInput);
+        }
+        a0->callbacks->onTouch(a0->data, a0->nextInput, a0->lastInput);
+        return a1;
+    }
+    return -1;
+}
+
+int sub_02019E98(UnkStruct_02019BA4 *a0) {
+    a0->unk_08 = TRUE;
+    a0->lastInput = 0xFF;
+    a0->unk_0F = 0xFF;
+    a0->callbacks->onButton(a0->data, a0->nextInput, a0->lastInput);
+    return -4;
+}
+
+int sub_02019EB8(UnkStruct_02019BA4 *a0, int a1, u8 a2) {
+    u8 spC;
+    u32 mask;
+    u8 r1;
+
+    if (a2 & 0x80) {
+        if (a0->unk_0F != 0xFF) {
+            a2 = a0->unk_0F;
+        } else {
+            a2 ^= 0x80;
+        }
+    }
+    spC = TRUE;
+    while (TRUE) {
+        mask = 1 << (a2 % 32);
+        if (a0->unk_10[a2 / 32] & mask) {
+            break;
+        }
+        spC = FALSE;
+        r1 = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a2, a1) & 0x7F;
+        if (r1 == a2 || r1 == a0->nextInput) {
+            a2 = a0->nextInput;
+            break;
+        }
+        a2 = r1;
+    }
+    if (a0->nextInput != a2) {
+        if (sub_0201A020(&a0->dpadPositions[a2], a1) == TRUE && spC) {
+            a0->unk_0F = a0->nextInput;
+        } else {
+            a0->unk_0F = 0xFF;
+        }
+        a0->lastInput = a0->nextInput;
+        a0->nextInput = a2;
+        a0->callbacks->onKeyMove(a0->data, a0->nextInput, a0->lastInput);
+        return -3;
     }
 
     return LIST_NOTHING_CHOSEN;
