@@ -1909,7 +1909,7 @@ _0223ED0E:
 _0223ED1C:
 	ldr r0, _0223EF48 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r5, r0, #0
 	mov r0, #2
 	mvn r0, r0
@@ -2004,7 +2004,7 @@ _0223EDDA:
 	bl ov81_02241C0C
 	ldr r0, _0223EF48 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	mov r1, #0xf
 	lsl r1, r1, #6
 	add r2, r0, #0
@@ -2014,7 +2014,7 @@ _0223EDDA:
 	bl ov81_02242218
 	ldr r0, _0223EF48 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #6
@@ -2023,7 +2023,7 @@ _0223EDDA:
 _0223EE12:
 	ldr r0, _0223EF48 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #6
 	blo _0223EE30
 	ldr r0, _0223EF4C ; =0x000005DC
@@ -2266,7 +2266,7 @@ ov81_0223EF5C: ; 0x0223EF5C
 	bl ov81_0224218C
 	ldr r0, _0223F034 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #6
@@ -2725,7 +2725,7 @@ _0223F3B8:
 _0223F3CC:
 	ldr r0, _0223F66C ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r5, r0, #0
 	mov r0, #2
 	mvn r0, r0
@@ -2852,7 +2852,7 @@ _0223F4DC:
 	bl PlaySE
 	ldr r0, _0223F66C ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r2, r0, #0
 	cmp r2, #3
 	bne _0223F51C
@@ -2897,7 +2897,7 @@ _0223F540:
 _0223F548:
 	ldr r0, _0223F66C ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #4
 	ldr r0, _0223F670 ; =0x000005DC
 	blo _0223F56E
@@ -3199,7 +3199,7 @@ _0223F798:
 _0223F7BC:
 	ldr r0, _0223FB10 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019BE4
+	bl GridInputHandler_HandleInput_NoHold
 	add r5, r0, #0
 	mov r0, #2
 	mvn r0, r0
@@ -3388,7 +3388,7 @@ _0223F956:
 	bl PlaySE
 	ldr r0, _0223FB10 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r5, r0, #0
 	sub r0, r5, #4
 	cmp r0, #1
@@ -3461,7 +3461,7 @@ _0223F9C4:
 _0223FA02:
 	ldr r0, _0223FB10 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #6
 	ldr r0, _0223FB14 ; =0x000005DC
 	blo _0223FA28
@@ -3614,10 +3614,10 @@ ov81_0223FB3C: ; 0x0223FB3C
 	add r3, #0x9c
 	str r1, [r0, r2]
 	ldr r0, [r0, r3]
-	ldr r3, _0223FB60 ; =sub_02019F7C
+	ldr r3, _0223FB60 ; =GridInputHandler_SetNextInput
 	bx r3
 	.balign 4, 0
-_0223FB60: .word sub_02019F7C
+_0223FB60: .word GridInputHandler_SetNextInput
 	thumb_func_end ov81_0223FB3C
 
 	thumb_func_start ov81_0223FB64
@@ -6828,7 +6828,7 @@ _022414A2:
 	ldr r0, _022414DC ; =0x00000464
 	mov r1, #6
 	ldr r0, [r4, r0]
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r4, #0
 	mov r1, #6
 	bl ov81_0224141C
@@ -6865,7 +6865,7 @@ ov81_022414E0: ; 0x022414E0
 	ldr r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	ldr r0, _02241520 ; =0x00000464
 	mov r1, #0
 	ldr r0, [r4, r0]
@@ -7170,7 +7170,7 @@ ov81_0224174C: ; 0x0224174C
 	ldr r0, _022417B0 ; =0x00000464
 	mov r1, #4
 	ldr r0, [r4, r0]
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r4, #0
 	mov r1, #4
 	bl ov81_0224141C
@@ -7211,7 +7211,7 @@ ov81_022417B4: ; 0x022417B4
 	ldr r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	ldr r0, _02241800 ; =0x00000464
 	ldrb r2, [r4, #9]
 	ldr r0, [r4, r0]
@@ -7233,7 +7233,7 @@ ov81_02241804: ; 0x02241804
 	add r5, r0, #0
 	ldr r0, _0224183C ; =0x00000464
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	mov r1, #0xf7
 	lsl r1, r1, #2
 	add r4, r0, #0
@@ -7431,7 +7431,7 @@ ov81_02241980: ; 0x02241980
 	ldr r0, _022419DC ; =0x00000464
 	mov r1, #6
 	ldr r0, [r4, r0]
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	add r0, r4, #0
 	mov r1, #6
 	bl ov81_0224141C
@@ -7475,7 +7475,7 @@ ov81_022419E0: ; 0x022419E0
 	ldr r1, [r4, r1]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	ldr r0, _02241A34 ; =0x00000464
 	ldrb r2, [r4, #9]
 	ldr r0, [r4, r0]
@@ -7497,7 +7497,7 @@ ov81_02241A38: ; 0x02241A38
 	add r5, r0, #0
 	ldr r0, _02241A78 ; =0x00000464
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	mov r1, #0xf7
 	lsl r1, r1, #2
 	add r4, r0, #0
@@ -7729,7 +7729,7 @@ ov81_02241C0C: ; 0x02241C0C
 	add r4, r0, #0
 	ldr r0, _02241C80 ; =0x00000464
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r2, r0, #0
 	cmp r2, #6
 	bhs _02241C7C
@@ -7814,7 +7814,7 @@ ov81_02241CA0: ; 0x02241CA0
 	add r4, r1, #0
 	ldr r0, [r5, r0]
 	add r7, r2, #0
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	cmp r0, #6
 	bhs _02241CE2
 	ldrb r2, [r5, #0x11]
@@ -7900,7 +7900,7 @@ ov81_02241D38: ; 0x02241D38
 	add r5, r0, #0
 	ldr r0, _02241D8C ; =0x00000464
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r4, r0, #0
 	cmp r4, #4
 	bhs _02241D88
@@ -7945,7 +7945,7 @@ ov81_02241D94: ; 0x02241D94
 	add r5, r0, #0
 	ldr r0, _02241DD8 ; =0x00000464
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r4, r0, #0
 	cmp r4, #6
 	bhs _02241DD4
@@ -10727,10 +10727,10 @@ _022431F4:
 
 	thumb_func_start ov81_02243220
 ov81_02243220: ; 0x02243220
-	ldr r3, _02243224 ; =sub_02019BDC
+	ldr r3, _02243224 ; =GridInputHandler_Free
 	bx r3
 	.balign 4, 0
-_02243224: .word sub_02019BDC
+_02243224: .word GridInputHandler_Free
 	thumb_func_end ov81_02243220
 
 	thumb_func_start ov81_02243228
@@ -10738,7 +10738,7 @@ ov81_02243228: ; 0x02243228
 	push {r3, r4, r5, lr}
 	add r5, r2, #0
 	add r4, r3, #0
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	ldrb r1, [r0]
 	str r1, [r5]
 	ldrb r0, [r0, #1]
@@ -10767,7 +10767,7 @@ ov81_02243240: ; 0x02243240
 	ldr r0, _02243264 ; =ov81_022436F0
 	ldr r1, _02243268 ; =ov81_02243808
 	ldr r2, _0224326C ; =ov81_02243658
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {pc}
 	nop
@@ -10782,17 +10782,17 @@ ov81_02243270: ; 0x02243270
 	add r4, r0, #0
 	cmp r1, #1
 	bne _0224327E
-	bl sub_02019FC4
+	bl GridInputHandler_SetAllEnabled
 	pop {r4, pc}
 _0224327E:
 	mov r1, #6
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r4, #0
 	mov r1, #7
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r4, #0
 	mov r1, #8
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov81_02243270
@@ -10825,7 +10825,7 @@ ov81_022432AC: ; 0x022432AC
 	ldr r0, _022432D0 ; =ov81_02243668
 	ldr r1, _022432D4 ; =ov81_02243750
 	ldr r2, _022432D8 ; =ov81_02243648
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {pc}
 	nop
@@ -10849,10 +10849,10 @@ ov81_022432DC: ; 0x022432DC
 	ldr r0, _02243308 ; =ov81_02243688
 	ldr r1, _0224330C ; =ov81_02243718
 	ldr r2, _02243310 ; =ov81_02243648
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	mov r1, #2
 	add r4, r0, #0
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r3, r4, pc}
@@ -10869,22 +10869,22 @@ ov81_02243314: ; 0x02243314
 	add r4, r2, #0
 	cmp r1, #1
 	bne _0224332C
-	bl sub_02019FC4
+	bl GridInputHandler_SetAllEnabled
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	b _02243348
 _0224332C:
-	bl sub_02019FC4
+	bl GridInputHandler_SetAllEnabled
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 _02243348:
 	add r0, r4, #0
 	bl ov81_02242704
@@ -10892,7 +10892,7 @@ _02243348:
 	bne _0224335A
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 _0224335A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov81_02243314
@@ -10952,7 +10952,7 @@ ov81_02243398: ; 0x02243398
 	ldr r1, _022433EC ; =ov81_02243788
 	ldr r2, _022433F0 ; =ov81_02243638
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {r3, r4, pc}
 _022433CA:
@@ -10966,7 +10966,7 @@ _022433CA:
 	ldr r1, _022433F8 ; =ov81_022437C8
 	ldr r2, _022433F0 ; =ov81_02243638
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	add sp, #0xc
 	pop {r3, r4, pc}
 	nop
@@ -10984,22 +10984,22 @@ ov81_022433FC: ; 0x022433FC
 	add r4, r2, #0
 	cmp r1, #1
 	bne _0224341C
-	bl sub_02019FC4
+	bl GridInputHandler_SetAllEnabled
 	add r0, r5, #0
 	mov r1, #4
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r5, #0
 	mov r1, #5
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	b _02243430
 _0224341C:
-	bl sub_02019FC4
+	bl GridInputHandler_SetAllEnabled
 	add r0, r5, #0
 	mov r1, #6
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r5, #0
 	mov r1, #7
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 _02243430:
 	add r0, r4, #0
 	bl ov81_02242704
@@ -11007,7 +11007,7 @@ _02243430:
 	bne _02243442
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 _02243442:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov81_022433FC

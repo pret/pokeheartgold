@@ -1,42 +1,42 @@
 #include "unk_02020A0C.h"
 
-void sub_02020A0C(const UnkStruct_02020A0C *a0, u8 *px, u8 *py) {
-    *px = a0->left;
-    *py = a0->top;
+void DpadMenuBox_GetPosition(const DpadMenuBox *dpadBoxes, u8 *px, u8 *py) {
+    *px = dpadBoxes->left;
+    *py = dpadBoxes->top;
 }
 
-void sub_02020A18(const UnkStruct_02020A0C *a0, u8 *pw, u8 *ph) {
-    *pw = a0->width;
-    *ph = a0->height;
+void DpadMenuBox_GetDimensions(const DpadMenuBox *dpadBoxes, u8 *pw, u8 *ph) {
+    *pw = dpadBoxes->width;
+    *ph = dpadBoxes->height;
 }
 
-u8 sub_02020A24(const UnkStruct_02020A0C *a0, u8 *px, u8 *py, u8 *pw, u8 *ph, u8 partyMonIndex, u8 direction) {
-    u8 r4 = partyMonIndex;
+u8 DpadMenuBox_GetNeighborInDirection(const DpadMenuBox *dpadBoxes, u8 *px, u8 *py, u8 *pw, u8 *ph, u8 partyMonIndex, u8 direction) {
+    u8 neighbor = partyMonIndex;
     switch (direction) {
     case 0:
-        r4 = a0[r4].buttonUp;
+        neighbor = dpadBoxes[neighbor].buttonUp;
         break;
     case 1:
-        r4 = a0[r4].buttonDown;
+        neighbor = dpadBoxes[neighbor].buttonDown;
         break;
     case 2:
-        r4 = a0[r4].buttonLeft;
+        neighbor = dpadBoxes[neighbor].buttonLeft;
         break;
     case 3:
-        r4 = a0[r4].buttonRight;
+        neighbor = dpadBoxes[neighbor].buttonRight;
         break;
     }
     if (px != NULL) {
-        *px = a0[r4].left;
+        *px = dpadBoxes[neighbor].left;
     }
     if (py != NULL) {
-        *py = a0[r4].top;
+        *py = dpadBoxes[neighbor].top;
     }
     if (pw != NULL) {
-        *pw = a0[r4].width;
+        *pw = dpadBoxes[neighbor].width;
     }
     if (ph != NULL) {
-        *ph = a0[r4].height;
+        *ph = dpadBoxes[neighbor].height;
     }
-    return r4;
+    return neighbor;
 }

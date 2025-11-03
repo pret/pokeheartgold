@@ -21,7 +21,7 @@ typedef enum VoltorbFlipInput {
 typedef struct VoltorbFlipInputHandler {
     struct ManagedSprite *unk0; // 0x0
     struct ManagedSprite *unk4; // 0x4
-    UnkStruct_02019BA4 *unk8;   // 0x8
+    GridInputHandler *unk8;     // 0x8
     u8 selectedRow;             // 0xC
     u8 focus;                   // 0xD
     u8 memoButtonID : 4;        // 0xE:0

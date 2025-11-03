@@ -3,7 +3,7 @@
 
 #include "heap.h"
 
-typedef struct UnkStruct_02020A0C {
+typedef struct DpadMenuBox {
     u8 left;
     u8 top;
     u8 width;
@@ -12,10 +12,10 @@ typedef struct UnkStruct_02020A0C {
     u8 buttonDown;
     u8 buttonLeft;
     u8 buttonRight;
-} UnkStruct_02020A0C;
+} DpadMenuBox;
 
-void sub_02020A0C(const UnkStruct_02020A0C *a0, u8 *px, u8 *py);
-void sub_02020A18(const UnkStruct_02020A0C *a0, u8 *pw, u8 *ph);
-u8 sub_02020A24(const UnkStruct_02020A0C *a0, u8 *px, u8 *py, u8 *pw, u8 *ph, u8 partyMonIndex, u8 direction);
+void DpadMenuBox_GetPosition(const DpadMenuBox *dpadBoxes, u8 *px, u8 *py);
+void DpadMenuBox_GetDimensions(const DpadMenuBox *dpadBoxes, u8 *pw, u8 *ph);
+u8 DpadMenuBox_GetNeighborInDirection(const DpadMenuBox *dpadBoxes, u8 *px, u8 *py, u8 *pw, u8 *ph, u8 partyMonIndex, u8 direction);
 
 #endif // POKEHEARTGOLD_UNK_02020A0C_H

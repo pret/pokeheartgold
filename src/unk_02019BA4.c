@@ -4,21 +4,21 @@
 #include "menu_input_state.h"
 #include "system.h"
 
-int sub_02019E4C(UnkStruct_02019BA4 *a0, u16 a1);
-int sub_02019E98(UnkStruct_02019BA4 *a0);
-int sub_02019EB8(UnkStruct_02019BA4 *a0, u8 direction, u8 input);
-BOOL sub_0201A020(const UnkStruct_02020A0C *a0, u32 a1);
-BOOL sub_0201A06C(int *a0, u32 a1);
+static int GridInputHandler_HandleTouch(GridInputHandler *inputHandler, u16 hitboxId);
+static int GridInputHandler_HandleButton(GridInputHandler *inputHandler);
+static int GridInputHandler_HandleDpad(GridInputHandler *inputHandler, u8 direction, u8 input);
+static BOOL DpadBox_IsForcedInDirection(const DpadMenuBox *dpadBox, u32 direction);
+static BOOL GridInputHandlerFlagArray_CheckFlag(u32 *flags, u32 bitPos);
 
-UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStruct_02020A0C *dpadBoxes, const UnkStruct_02019BA4_callbacks *callbacks, void *callbackParam, BOOL a4, u8 initialPos, enum HeapID heapId) {
-    UnkStruct_02019BA4 *ret = Heap_Alloc(heapId, sizeof(UnkStruct_02019BA4));
+GridInputHandler *GridInputHandler_Create(const TouchscreenHitbox *hitBoxes, const DpadMenuBox *dpadBoxes, const GridCallbacks *callbacks, void *callbackParam, BOOL inputState, u8 initialPos, enum HeapID heapId) {
+    GridInputHandler *ret = Heap_Alloc(heapId, sizeof(GridInputHandler));
 
     ret->touchscreenHitboxes = hitBoxes;
     ret->dpadPositions = dpadBoxes;
     ret->callbacks = callbacks;
     ret->data = callbackParam;
-    ret->inputState = MENU_INPUT_STATE_BUTTONS;
-    ret->unk_08 = a4;
+    ret->modeSwitchLagFrame = FALSE;
+    ret->isButtons = inputState;
     ret->nextInput = initialPos;
     ret->lastInput = 0xFF;
     ret->unk_0F = 0xFF;
@@ -27,11 +27,11 @@ UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStr
     return ret;
 }
 
-void sub_02019BDC(UnkStruct_02019BA4 *a0) {
-    Heap_Free(a0);
+void GridInputHandler_Free(GridInputHandler *inputHandler) {
+    Heap_Free(inputHandler);
 }
 
-int sub_02019BE4(UnkStruct_02019BA4 *a0) {
+int GridInputHandler_HandleInput_NoHold(GridInputHandler *inputHandler) {
     u16 i = 0;
     BOOL r6 = FALSE;
     int r0;
@@ -40,11 +40,11 @@ int sub_02019BE4(UnkStruct_02019BA4 *a0) {
 
     // Handle touch input
     while (TRUE) {
-        if (a0->touchscreenHitboxes[i].rect.top == TOUCHSCREEN_RECTLIST_END) {
+        if (inputHandler->touchscreenHitboxes[i].rect.top == TOUCHSCREEN_RECTLIST_END) {
             break;
         }
-        if (TouchscreenHitbox_TouchNewIsIn(&a0->touchscreenHitboxes[i]) == TRUE) {
-            r0 = sub_02019E4C(a0, i);
+        if (TouchscreenHitbox_TouchNewIsIn(&inputHandler->touchscreenHitboxes[i]) == TRUE) {
+            r0 = GridInputHandler_HandleTouch(inputHandler, i);
             if (r0 != GRID_MENU_NOTHING_CHOSEN) {
                 return r0;
             }
@@ -57,9 +57,9 @@ int sub_02019BE4(UnkStruct_02019BA4 *a0) {
     }
 
     // Switch to button input mode
-    if (!a0->unk_08 && a0->inputState == MENU_INPUT_STATE_TOUCH) {
+    if (inputHandler->isButtons == FALSE && inputHandler->modeSwitchLagFrame == TRUE) {
         if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) {
-            return sub_02019E98(a0);
+            return GridInputHandler_HandleButton(inputHandler);
         } else {
             return GRID_MENU_NOTHING_CHOSEN;
         }
@@ -67,27 +67,27 @@ int sub_02019BE4(UnkStruct_02019BA4 *a0) {
 
     // Handle cursor move
     if (gSystem.newKeys & PAD_KEY_UP) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 0);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 0);
         direction = 0;
     } else if (gSystem.newKeys & PAD_KEY_DOWN) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 1);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 1);
         direction = 1;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 2);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 2);
         direction = 2;
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 3);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 3);
         direction = 3;
     } else {
         input = 0xFF;
     }
     if (input != 0xFF) {
-        return sub_02019EB8(a0, direction, input);
+        return GridInputHandler_HandleDpad(inputHandler, direction, input);
     }
 
     // Handle select or cancel
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        return a0->nextInput;
+        return inputHandler->nextInput;
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
         return GRID_MENU_CANCEL;
     }
@@ -95,7 +95,7 @@ int sub_02019BE4(UnkStruct_02019BA4 *a0) {
     return GRID_MENU_NOTHING_CHOSEN;
 }
 
-int sub_02019D18(UnkStruct_02019BA4 *a0) {
+int GridInputHandler_HandleInput_AllowHold(GridInputHandler *inputHandler) {
     u16 i = 0;
     BOOL r6 = FALSE;
     int r0;
@@ -104,11 +104,11 @@ int sub_02019D18(UnkStruct_02019BA4 *a0) {
 
     // Handle touch input
     while (TRUE) {
-        if (a0->touchscreenHitboxes[i].rect.top == TOUCHSCREEN_RECTLIST_END) {
+        if (inputHandler->touchscreenHitboxes[i].rect.top == TOUCHSCREEN_RECTLIST_END) {
             break;
         }
-        if (TouchscreenHitbox_TouchNewIsIn(&a0->touchscreenHitboxes[i]) == TRUE) {
-            r0 = sub_02019E4C(a0, i);
+        if (TouchscreenHitbox_TouchNewIsIn(&inputHandler->touchscreenHitboxes[i]) == TRUE) {
+            r0 = GridInputHandler_HandleTouch(inputHandler, i);
             if (r0 != GRID_MENU_NOTHING_CHOSEN) {
                 return r0;
             }
@@ -121,9 +121,9 @@ int sub_02019D18(UnkStruct_02019BA4 *a0) {
     }
 
     // Switch to button input mode
-    if (!a0->unk_08 && a0->inputState == MENU_INPUT_STATE_TOUCH) {
+    if (inputHandler->isButtons == FALSE && inputHandler->modeSwitchLagFrame == TRUE) {
         if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) {
-            return sub_02019E98(a0);
+            return GridInputHandler_HandleButton(inputHandler);
         } else {
             return GRID_MENU_NOTHING_CHOSEN;
         }
@@ -131,27 +131,27 @@ int sub_02019D18(UnkStruct_02019BA4 *a0) {
 
     // Handle cursor move
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 0);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 0);
         direction = 0;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 1);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 1);
         direction = 1;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 2);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 2);
         direction = 2;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 3);
+        input = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, inputHandler->nextInput, 3);
         direction = 3;
     } else {
         input = 0xFF;
     }
     if (input != 0xFF) {
-        return sub_02019EB8(a0, direction, input);
+        return GridInputHandler_HandleDpad(inputHandler, direction, input);
     }
 
     // Handle select or cancel
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        return a0->nextInput;
+        return inputHandler->nextInput;
     } else if (gSystem.newKeys & PAD_BUTTON_B) {
         return GRID_MENU_CANCEL;
     }
@@ -159,145 +159,145 @@ int sub_02019D18(UnkStruct_02019BA4 *a0) {
     return GRID_MENU_NOTHING_CHOSEN;
 }
 
-int sub_02019E4C(UnkStruct_02019BA4 *a0, u16 a1) {
-    if (sub_0201A06C(a0->enabledFlag, a1) == TRUE) {
-        a0->nextInput = a1;
-        a0->lastInput = 0xFF;
-        a0->unk_0F = 0xFF;
-        if (a0->unk_08 == TRUE && a0->inputState == MENU_INPUT_STATE_TOUCH) {
-            a0->unk_08 = FALSE;
-            a0->callbacks->onSwitchToTouchMode(a0->data, a0->nextInput, a0->lastInput);
+static int GridInputHandler_HandleTouch(GridInputHandler *inputHandler, u16 hitboxId) {
+    if (GridInputHandlerFlagArray_CheckFlag(inputHandler->enabledFlag, hitboxId) == TRUE) {
+        inputHandler->nextInput = hitboxId;
+        inputHandler->lastInput = 0xFF;
+        inputHandler->unk_0F = 0xFF;
+        if (inputHandler->isButtons == TRUE && inputHandler->modeSwitchLagFrame == TRUE) {
+            inputHandler->isButtons = FALSE;
+            inputHandler->callbacks->onSwitchToTouchMode(inputHandler->data, inputHandler->nextInput, inputHandler->lastInput);
         }
-        a0->callbacks->onTouch(a0->data, a0->nextInput, a0->lastInput);
-        return a1;
+        inputHandler->callbacks->onTouch(inputHandler->data, inputHandler->nextInput, inputHandler->lastInput);
+        return hitboxId;
     }
     return GRID_MENU_NOTHING_CHOSEN;
 }
 
-int sub_02019E98(UnkStruct_02019BA4 *a0) {
-    a0->unk_08 = TRUE;
-    a0->lastInput = 0xFF;
-    a0->unk_0F = 0xFF;
-    a0->callbacks->onButton(a0->data, a0->nextInput, a0->lastInput);
+static int GridInputHandler_HandleButton(GridInputHandler *inputHandler) {
+    inputHandler->isButtons = TRUE;
+    inputHandler->lastInput = 0xFF;
+    inputHandler->unk_0F = 0xFF;
+    inputHandler->callbacks->onButton(inputHandler->data, inputHandler->nextInput, inputHandler->lastInput);
     return GRID_MENU_BUTTON_MODE;
 }
 
-int sub_02019EB8(UnkStruct_02019BA4 *a0, u8 direction, u8 input) {
-    u8 spC;
+static int GridInputHandler_HandleDpad(GridInputHandler *inputHandler, u8 direction, u8 input) {
+    u8 neighborIsEnabled;
     u32 mask;
     u8 r1;
 
     if (input & 0x80) {
-        if (a0->unk_0F != 0xFF) {
-            input = a0->unk_0F;
+        if (inputHandler->unk_0F != 0xFF) {
+            input = inputHandler->unk_0F;
         } else {
             input ^= 0x80;
         }
     }
-    spC = TRUE;
+    neighborIsEnabled = TRUE;
     while (TRUE) {
         mask = 1 << (input % 32);
-        if (a0->enabledFlag[input / 32] & mask) {
+        if (inputHandler->enabledFlag[input / 32] & mask) {
             break;
         }
-        spC = FALSE;
-        r1 = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, input, direction) & 0x7F;
-        if (r1 == input || r1 == a0->nextInput) {
-            input = a0->nextInput;
+        neighborIsEnabled = FALSE;
+        r1 = DpadMenuBox_GetNeighborInDirection(inputHandler->dpadPositions, NULL, NULL, NULL, NULL, input, direction) & 0x7F;
+        if (r1 == input || r1 == inputHandler->nextInput) {
+            input = inputHandler->nextInput;
             break;
         }
         input = r1;
     }
-    if (a0->nextInput != input) {
-        if (sub_0201A020(&a0->dpadPositions[input], direction) == TRUE && spC) {
-            a0->unk_0F = a0->nextInput;
+    if (inputHandler->nextInput != input) {
+        if (DpadBox_IsForcedInDirection(&inputHandler->dpadPositions[input], direction) == TRUE && neighborIsEnabled) {
+            inputHandler->unk_0F = inputHandler->nextInput;
         } else {
-            a0->unk_0F = 0xFF;
+            inputHandler->unk_0F = 0xFF;
         }
-        a0->lastInput = a0->nextInput;
-        a0->nextInput = input;
-        a0->callbacks->onKeyMove(a0->data, a0->nextInput, a0->lastInput);
+        inputHandler->lastInput = inputHandler->nextInput;
+        inputHandler->nextInput = input;
+        inputHandler->callbacks->onKeyMove(inputHandler->data, inputHandler->nextInput, inputHandler->lastInput);
         return GRID_MENU_CURSOR_MOVE;
     }
 
     return GRID_MENU_NOTHING_CHOSEN;
 }
 
-int sub_02019F74(UnkStruct_02019BA4 *a0) {
-    return a0->nextInput;
+int GridInputHandler_GetNextInput(GridInputHandler *inputHandler) {
+    return inputHandler->nextInput;
 }
 
-int sub_02019F78(UnkStruct_02019BA4 *a0) {
-    return a0->unk_0F;
+int GridInputHandler_GetUnk0F(GridInputHandler *inputHandler) {
+    return inputHandler->unk_0F;
 }
 
-void sub_02019F7C(UnkStruct_02019BA4 *a0, int a1) {
-    a0->nextInput = a1;
-    a0->lastInput = 0xFF;
-    a0->unk_0F = 0xFF;
+void GridInputHandler_SetNextInput(GridInputHandler *inputHandler, int nextInput) {
+    inputHandler->nextInput = nextInput;
+    inputHandler->lastInput = 0xFF;
+    inputHandler->unk_0F = 0xFF;
 }
 
-void sub_02019F88(UnkStruct_02019BA4 *a0, int a1, int a2, int a3) {
-    a0->nextInput = a1;
-    a0->lastInput = a2;
-    a0->unk_0F = a3;
+void GridInputHandler_SetNextLastUnk0FInputs(GridInputHandler *inputHandler, int nextInput, int lastInput, int unk0F) {
+    inputHandler->nextInput = nextInput;
+    inputHandler->lastInput = lastInput;
+    inputHandler->unk_0F = unk0F;
 }
 
-BOOL sub_02019F90(UnkStruct_02019BA4 *a0) {
-    return a0->unk_08;
+BOOL GridInputHandler_IsButtonInputMode(GridInputHandler *inputHandler) {
+    return inputHandler->isButtons;
 }
 
-void sub_02019F94(UnkStruct_02019BA4 *a0, BOOL a1) {
-    a0->unk_08 = a1;
-    if (a1 == TRUE) {
-        a0->lastInput = 0xFF;
-        a0->unk_0F = 0xFF;
-        a0->callbacks->onButton(a0->data, a0->nextInput, -1);
+void GridInputHandler_SetButtonInputMode(GridInputHandler *inputHandler, BOOL isButtons) {
+    inputHandler->isButtons = isButtons;
+    if (isButtons == TRUE) {
+        inputHandler->lastInput = 0xFF;
+        inputHandler->unk_0F = 0xFF;
+        inputHandler->callbacks->onButton(inputHandler->data, inputHandler->nextInput, -1);
     } else {
-        a0->callbacks->onSwitchToTouchMode(a0->data, a0->nextInput, -1);
+        inputHandler->callbacks->onSwitchToTouchMode(inputHandler->data, inputHandler->nextInput, -1);
     }
 }
 
-void sub_02019FC4(UnkStruct_02019BA4 *a0) {
-    a0->enabledFlag[0] = -1u;
-    a0->enabledFlag[1] = -1u;
+void GridInputHandler_SetAllEnabled(GridInputHandler *inputHandler) {
+    inputHandler->enabledFlag[0] = -1u;
+    inputHandler->enabledFlag[1] = -1u;
 }
 
-void sub_02019FD0(UnkStruct_02019BA4 *a0, u32 a1) {
-    if (a0->enabledFlag[a1 / 32] & (1 << (a1 % 32))) {
-        a0->enabledFlag[a1 / 32] &= ((1 << (a1 % 32)) ^ -1);
+void GridInputHandler_ClearEnabledFlag(GridInputHandler *inputHandler, u32 target) {
+    if (inputHandler->enabledFlag[target / 32] & (1 << (target % 32))) {
+        inputHandler->enabledFlag[target / 32] &= ((1 << (target % 32)) ^ -1);
     }
 }
 
-void sub_02019FF8(UnkStruct_02019BA4 *a0, u32 a1) {
-    if (!(a0->enabledFlag[a1 / 32] & (1 << (a1 % 32)))) {
-        a0->enabledFlag[a1 / 32] ^= (1 << (a1 % 32));
+void GridInputHandler_SetEnabledFlag(GridInputHandler *inputHandler, u32 target) {
+    if (!(inputHandler->enabledFlag[target / 32] & (1 << (target % 32)))) {
+        inputHandler->enabledFlag[target / 32] ^= (1 << (target % 32));
     }
 }
 
-const UnkStruct_02020A0C *sub_0201A018(UnkStruct_02019BA4 *a0, int a1) {
-    return &a0->dpadPositions[a1];
+const DpadMenuBox *GridInputHandler_GetDpadBox(GridInputHandler *inputHandler, int target) {
+    return &inputHandler->dpadPositions[target];
 }
 
-BOOL sub_0201A020(const UnkStruct_02020A0C *a0, u32 a1) {
-    switch (a1) {
+static BOOL DpadBox_IsForcedInDirection(const DpadMenuBox *dpadBox, u32 direction) {
+    switch (direction) {
     case 0:
-        if (a0->buttonDown & 0x80) {
+        if (dpadBox->buttonDown & 0x80) {
             return TRUE;
         }
         break;
     case 1:
-        if (a0->buttonUp & 0x80) {
+        if (dpadBox->buttonUp & 0x80) {
             return TRUE;
         }
         break;
     case 2:
-        if (a0->buttonRight & 0x80) {
+        if (dpadBox->buttonRight & 0x80) {
             return TRUE;
         }
         break;
     case 3:
-        if (a0->buttonLeft & 0x80) {
+        if (dpadBox->buttonLeft & 0x80) {
             return TRUE;
         }
         break;
@@ -306,6 +306,6 @@ BOOL sub_0201A020(const UnkStruct_02020A0C *a0, u32 a1) {
     return FALSE;
 }
 
-BOOL sub_0201A06C(int *a0, u32 a1) {
-    return (a0[a1 / 32] & (1 << (a1 % 32))) != 0;
+static BOOL GridInputHandlerFlagArray_CheckFlag(u32 *flags, u32 bitPos) {
+    return (flags[bitPos / 32] & (1 << (bitPos % 32))) != 0;
 }

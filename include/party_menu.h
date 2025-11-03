@@ -393,7 +393,7 @@ struct PartyMenu {
     LISTMENUITEM *listMenuItems;                                    // 0x820
     PartyMenuContextMenuCursor *contextMenuCursor;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; // 0x828
-    const UnkStruct_02020A0C *unk_948;
+    const DpadMenuBox *unk_948;
     PartyMenuSwapMonsData swapMonsData;
     int (*itemUseCallback)(PartyMenu *);
     int (*yesCallback)(PartyMenu *); // 0xc58

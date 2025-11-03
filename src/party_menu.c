@@ -157,7 +157,7 @@ static const UnkStruct_0207A22C _0210150C[2][6] = {
      }
 };
 
-static const UnkStruct_02020A0C _0210140C[8] = {
+static const DpadMenuBox _0210140C[8] = {
     { 0x40, 0x19, 0x00, 0x00, 0x07, 0x02, 0x07, 0x01 },
     { 0xC0, 0x21, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02 },
     { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03 },
@@ -168,7 +168,7 @@ static const UnkStruct_02020A0C _0210140C[8] = {
     { 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x01, 0x05, 0x00 },
 };
 
-static const UnkStruct_02020A0C _0210144C[8] = {
+static const DpadMenuBox _0210144C[8] = {
     { 0x40, 0x19, 0x00, 0x00, 0x04, 0x02, 0x01, 0x01 },
     { 0xC0, 0x19, 0x00, 0x00, 0x07, 0x03, 0x00, 0x00 },
     { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x03, 0x03 },
@@ -179,7 +179,7 @@ static const UnkStruct_02020A0C _0210144C[8] = {
     { 0xE0, 0xA8, 0x00, 0x00, 0x05, 0x01, 0xFF, 0xFF },
 };
 
-static const UnkStruct_02020A0C _0210148C[8] = {
+static const DpadMenuBox _0210148C[8] = {
     { 0x40, 0x19, 0x00, 0x00, 0x07, 0x02, 0x07, 0x01 },
     { 0xC0, 0x21, 0x00, 0x00, 0x07, 0x03, 0x00, 0x02 },
     { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03 },
@@ -190,7 +190,7 @@ static const UnkStruct_02020A0C _0210148C[8] = {
     { 0xE0, 0xB8, 0x00, 0x00, 0x06, 0x01, 0x06, 0x00 },
 };
 
-static const UnkStruct_02020A0C _021014CC[8] = {
+static const DpadMenuBox _021014CC[8] = {
     { 0x40, 0x19, 0x00, 0x00, 0x05, 0x02, 0x05, 0x01 },
     { 0xC0, 0x21, 0x00, 0x00, 0x05, 0x03, 0x00, 0x02 },
     { 0x40, 0x49, 0x00, 0x00, 0x00, 0x04, 0x01, 0x03 },
@@ -1292,7 +1292,7 @@ static BOOL sub_0207A880(PartyMenu *partyMenu, u8 partySlot) {
 static void sub_0207A89C(PartyMenu *partyMenu) {
     u8 x;
     u8 y;
-    sub_02020A24(partyMenu->unk_948, &x, &y, NULL, NULL, partyMenu->partyMonIndex, 4);
+    DpadMenuBox_GetNeighborInDirection(partyMenu->unk_948, &x, &y, NULL, NULL, partyMenu->partyMonIndex, 4);
     Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->partyMonIndex));
     Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);
 }
@@ -1384,7 +1384,7 @@ static BOOL PartyMenu_HandleDpadInput(PartyMenu *partyMenu) {
 static u8 PartyMenu_GetSelectionInDirection(PartyMenu *partyMenu, u8 *px, u8 *py, u8 direction) {
     u8 result = partyMenu->partyMonIndex;
     while (TRUE) {
-        result = sub_02020A24(partyMenu->unk_948, px, py, NULL, NULL, result, direction);
+        result = DpadMenuBox_GetNeighborInDirection(partyMenu->unk_948, px, py, NULL, NULL, result, direction);
         if (result == 6 || result == 7 || result == 0xFF) {
             break;
         }
@@ -1402,12 +1402,12 @@ static u8 PartyMenu_GetNewSelectionFromTable(PartyMenu *partyMenu, u8 *px, u8 *p
             break;
         }
         if (PartyMenu_IsMonDrawStateActive(partyMenu, table[i])) {
-            sub_02020A24(partyMenu->unk_948, px, py, NULL, NULL, table[i], DIR_MAX);
+            DpadMenuBox_GetNeighborInDirection(partyMenu->unk_948, px, py, NULL, NULL, table[i], DIR_MAX);
             return table[i];
         }
         ++i;
     }
-    sub_02020A24(partyMenu->unk_948, px, py, NULL, NULL, 0, DIR_MAX);
+    DpadMenuBox_GetNeighborInDirection(partyMenu->unk_948, px, py, NULL, NULL, 0, DIR_MAX);
     return 0;
 }
 
@@ -1416,7 +1416,7 @@ void sub_0207AB84(PartyMenu *partyMenu, u8 partySlot) {
         Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], FALSE);
     } else {
         u8 x, y;
-        sub_02020A24(partyMenu->unk_948, &x, &y, NULL, NULL, partyMenu->partyMonIndex, DIR_MAX);
+        DpadMenuBox_GetNeighborInDirection(partyMenu->unk_948, &x, &y, NULL, NULL, partyMenu->partyMonIndex, DIR_MAX);
         Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partySlot));
         Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], TRUE);
         Sprite_SetPositionXY(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], x, y);

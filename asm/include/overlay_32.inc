@@ -33,11 +33,11 @@
 .public BufferPlayersName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public sub_02019BA4
-.public sub_02019BDC
-.public sub_02019D18
-.public sub_02019F74
-.public sub_0201A018
+.public GridInputHandler_Create
+.public GridInputHandler_Free
+.public GridInputHandler_HandleInput_AllowHold
+.public GridInputHandler_GetNextInput
+.public GridInputHandler_GetDpadBox
 .public Heap_Create
 .public Heap_Destroy
 .public Heap_Free

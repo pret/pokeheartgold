@@ -9,41 +9,41 @@
 #define GRID_MENU_CURSOR_MOVE    -3
 #define GRID_MENU_BUTTON_MODE    -4
 
-typedef void (*UnkStruct_02019BA4_unk18_func)(void *data, int newTarget, int prevTarget);
+typedef void (*DpadGridCallback)(void *data, int newTarget, int prevTarget);
 
-typedef struct UnkStruct_02019BA4_callbacks {
-    UnkStruct_02019BA4_unk18_func onButton;
-    UnkStruct_02019BA4_unk18_func onSwitchToTouchMode;
-    UnkStruct_02019BA4_unk18_func onKeyMove;
-    UnkStruct_02019BA4_unk18_func onTouch;
-} UnkStruct_02019BA4_callbacks;
+typedef struct GridCallbacks {
+    DpadGridCallback onButton;
+    DpadGridCallback onSwitchToTouchMode;
+    DpadGridCallback onKeyMove;
+    DpadGridCallback onTouch;
+} GridCallbacks;
 
-typedef struct UnkStruct_02019BA4 {
-    const TouchscreenHitbox *touchscreenHitboxes;  // 0x00
-    const UnkStruct_02020A0C *dpadPositions;       // 0x04
-    BOOL unk_08;                                   // 0x08
-    u8 inputState;                                 // 0x0C
-    u8 nextInput;                                  // 0x0D
-    u8 lastInput;                                  // 0x0E
-    u8 unk_0F;                                     // 0x0F
-    u32 enabledFlag[2];                            // 0x10
-    const UnkStruct_02019BA4_callbacks *callbacks; // 0x18
-    void *data;                                    // 0x1C, passed as data to unk_18
-} UnkStruct_02019BA4;
+typedef struct GridInputHandler {
+    const TouchscreenHitbox *touchscreenHitboxes; // 0x00
+    const DpadMenuBox *dpadPositions;             // 0x04
+    BOOL isButtons;                               // 0x08
+    u8 modeSwitchLagFrame;                        // 0x0C
+    u8 nextInput;                                 // 0x0D
+    u8 lastInput;                                 // 0x0E
+    u8 unk_0F;                                    // 0x0F
+    u32 enabledFlag[2];                           // 0x10
+    const GridCallbacks *callbacks;               // 0x18
+    void *data;                                   // 0x1C, passed as data to unk_18
+} GridInputHandler;
 
-UnkStruct_02019BA4 *sub_02019BA4(const TouchscreenHitbox *hitBoxes, const UnkStruct_02020A0C *dpadBoxes, const UnkStruct_02019BA4_callbacks *callbacks, void *callbackParam, BOOL a4, u8 initialPos, enum HeapID heapId);
-void sub_02019BDC(UnkStruct_02019BA4 *a0);
-int sub_02019BE4(UnkStruct_02019BA4 *a0);
-int sub_02019D18(UnkStruct_02019BA4 *a0);
-int sub_02019F74(UnkStruct_02019BA4 *a0);
-int sub_02019F78(UnkStruct_02019BA4 *a0);
-void sub_02019F7C(UnkStruct_02019BA4 *a0, int a1);
-void sub_02019F88(UnkStruct_02019BA4 *a0, int a1, int a2, int a3);
-BOOL sub_02019F90(UnkStruct_02019BA4 *a0);
-void sub_02019F94(UnkStruct_02019BA4 *a0, BOOL a1);
-void sub_02019FC4(UnkStruct_02019BA4 *a0);
-void sub_02019FD0(UnkStruct_02019BA4 *a0, u32 a1);
-void sub_02019FF8(UnkStruct_02019BA4 *a0, u32 a1);
-const UnkStruct_02020A0C *sub_0201A018(UnkStruct_02019BA4 *a0, int a1);
+GridInputHandler *GridInputHandler_Create(const TouchscreenHitbox *hitBoxes, const DpadMenuBox *dpadBoxes, const GridCallbacks *callbacks, void *callbackParam, BOOL inputState, u8 initialPos, enum HeapID heapId);
+void GridInputHandler_Free(GridInputHandler *inputHandler);
+int GridInputHandler_HandleInput_NoHold(GridInputHandler *inputHandler);
+int GridInputHandler_HandleInput_AllowHold(GridInputHandler *inputHandler);
+int GridInputHandler_GetNextInput(GridInputHandler *inputHandler);
+int GridInputHandler_GetUnk0F(GridInputHandler *inputHandler);
+void GridInputHandler_SetNextInput(GridInputHandler *inputHandler, int nextInput);
+void GridInputHandler_SetNextLastUnk0FInputs(GridInputHandler *inputHandler, int nextInput, int lastInput, int unk0F);
+BOOL GridInputHandler_IsButtonInputMode(GridInputHandler *inputHandler);
+void GridInputHandler_SetButtonInputMode(GridInputHandler *inputHandler, BOOL isButtons);
+void GridInputHandler_SetAllEnabled(GridInputHandler *inputHandler);
+void GridInputHandler_ClearEnabledFlag(GridInputHandler *inputHandler, u32 target);
+void GridInputHandler_SetEnabledFlag(GridInputHandler *inputHandler, u32 target);
+const DpadMenuBox *GridInputHandler_GetDpadBox(GridInputHandler *inputHandler, int target);
 
 #endif // POKEHEARTGOLD_UNK_02019BA4_H
