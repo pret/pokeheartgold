@@ -1,4 +1,4 @@
-// Copyright (c) 2021-2024 red031000
+// Copyright (c) 2021-2025 red031000
 
 #include "global.h"
 #include "cJSON.h"
@@ -47,13 +47,17 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
     }
 
     cJSON *labelBool = cJSON_GetObjectItemCaseSensitive(json, "labelEnabled");
+    cJSON *dontPadKbecBool = cJSON_GetObjectItemCaseSensitive(json, "dontPadKbec");
     cJSON *vramTransferBool = cJSON_GetObjectItemCaseSensitive(json, "vramTransferEnabled");
+    cJSON *ucatBool = cJSON_GetObjectItemCaseSensitive(json, "ucatEnabled");
     cJSON *extended = cJSON_GetObjectItemCaseSensitive(json, "extended");
     cJSON *cellCount = cJSON_GetObjectItemCaseSensitive(json, "cellCount");
     cJSON *mappingType = cJSON_GetObjectItemCaseSensitive(json, "mappingType");
 
     options->labelEnabled = GetBool(labelBool);
+    options->dontPadKbec = GetBool(dontPadKbecBool);
     options->vramTransferEnabled = GetBool(vramTransferBool);
+    options->ucatEnabled = GetBool(ucatBool);
     options->extended = GetBool(extended);
     options->cellCount = GetInt(cellCount);
     options->mappingType = GetInt(mappingType);
@@ -79,17 +83,19 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
         }
     }
 
-    if (options->vramTransferEnabled) {
+    if (options->vramTransferEnabled) 
+    {
         cJSON *vramTransferMaxSize = cJSON_GetObjectItemCaseSensitive(json, "vramTransferMaxSize");
         options->vramTransferMaxSize = GetInt(vramTransferMaxSize);
-
+        
         options->transferData = malloc(sizeof(struct CellVramTransferData *) * options->cellCount);
 
         cJSON *transfers = cJSON_GetObjectItemCaseSensitive(json, "transferData");
         cJSON *transfer = NULL;
 
         int j = 0;
-        cJSON_ArrayForEach(transfer, transfers) {
+        cJSON_ArrayForEach(transfer, transfers)
+        {
             cJSON *vramTransferOffset = cJSON_GetObjectItemCaseSensitive(transfer, "offset");
             cJSON *vramTransferSize = cJSON_GetObjectItemCaseSensitive(transfer, "size");
 
@@ -98,6 +104,16 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             options->transferData[j]->size = GetInt(vramTransferSize);
 
             j++;
+        }
+    }
+
+    if (options->ucatEnabled) {
+        cJSON *ucatCells = cJSON_GetObjectItemCaseSensitive(json, "cellAttributes");
+
+        options->ucatCellAttribtes = malloc(sizeof(uint32_t) * options->cellCount);
+
+        for (int i = 0; i < options->cellCount; i++) {
+            options->ucatCellAttribtes[i] = GetInt(cJSON_GetArrayItem(ucatCells, i));
         }
     }
 
@@ -172,7 +188,11 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             cJSON *Colours = cJSON_GetObjectItemCaseSensitive(Attr0, "Colours");
             cJSON *Shape = cJSON_GetObjectItemCaseSensitive(Attr0, "Shape");
 
-            options->cells[i]->oam[j].attr0.YCoordinate = GetInt(YCoordinate);
+            int y = GetInt(YCoordinate);
+            if (y & (1 << 7)) {
+                y &= 0xFF;
+            }
+            options->cells[i]->oam[j].attr0.YCoordinate = y;
             options->cells[i]->oam[j].attr0.Rotation = GetBool(Rotation);
             options->cells[i]->oam[j].attr0.SizeDisable = GetBool(SizeDisable);
             options->cells[i]->oam[j].attr0.Mode = GetInt(Mode);
@@ -187,7 +207,11 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             cJSON *RotationScaling = cJSON_GetObjectItemCaseSensitive(Attr1, "RotationScaling");
             cJSON *Size = cJSON_GetObjectItemCaseSensitive(Attr1, "Size");
 
-            options->cells[i]->oam[j].attr1.XCoordinate = GetInt(XCoordinate);
+            int x = GetInt(XCoordinate);
+            if (x & (1 << 8)) {
+                x &= 0x1FF;
+            }
+            options->cells[i]->oam[j].attr1.XCoordinate = x;
             options->cells[i]->oam[j].attr1.RotationScaling = GetInt(RotationScaling);
             options->cells[i]->oam[j].attr1.Size = GetInt(Size);
 
@@ -218,8 +242,10 @@ char *GetNCERJson(struct JsonToCellOptions *options)
     cJSON *ncer = cJSON_CreateObject();
 
     cJSON_AddBoolToObject(ncer, "labelEnabled", options->labelEnabled);
+    cJSON_AddBoolToObject(ncer, "dontPadKbec", options->dontPadKbec);
     cJSON_AddBoolToObject(ncer, "extended", options->extended);
     cJSON_AddBoolToObject(ncer, "vramTransferEnabled", options->vramTransferEnabled);
+    cJSON_AddBoolToObject(ncer, "ucatEnabled", options->ucatEnabled);
     cJSON_AddNumberToObject(ncer, "cellCount", options->cellCount);
     cJSON_AddNumberToObject(ncer, "mappingType", options->mappingType);
     
@@ -255,7 +281,11 @@ char *GetNCERJson(struct JsonToCellOptions *options)
 
             cJSON *Attr0 = cJSON_AddObjectToObject(OAM, "Attr0");
 
-            cJSON_AddNumberToObject(Attr0, "YCoordinate", options->cells[i]->oam[j].attr0.YCoordinate);
+            int y = options->cells[i]->oam[j].attr0.YCoordinate;
+            if (y & (1 << 7)) {
+                y |= ~0xFF;
+            }
+            cJSON_AddNumberToObject(Attr0, "YCoordinate", y);
             cJSON_AddBoolToObject(Attr0, "Rotation", options->cells[i]->oam[j].attr0.Rotation);
             cJSON_AddBoolToObject(Attr0, "SizeDisable", options->cells[i]->oam[j].attr0.SizeDisable);
             cJSON_AddNumberToObject(Attr0, "Mode", options->cells[i]->oam[j].attr0.Mode);
@@ -265,7 +295,11 @@ char *GetNCERJson(struct JsonToCellOptions *options)
 
             cJSON *Attr1 = cJSON_AddObjectToObject(OAM, "Attr1");
 
-            cJSON_AddNumberToObject(Attr1, "XCoordinate", options->cells[i]->oam[j].attr1.XCoordinate);
+            int x = options->cells[i]->oam[j].attr1.XCoordinate;
+            if (x & (1 << 8)) {
+                x |= ~0x1FF;
+            }
+            cJSON_AddNumberToObject(Attr1, "XCoordinate", x);
             cJSON_AddNumberToObject(Attr1, "RotationScaling", options->cells[i]->oam[j].attr1.RotationScaling);
             cJSON_AddNumberToObject(Attr1, "Size", options->cells[i]->oam[j].attr1.Size);
 
@@ -288,15 +322,25 @@ char *GetNCERJson(struct JsonToCellOptions *options)
         cJSON_AddNumberToObject(ncer, "labelCount", options->labelCount);
     }
 
-    if (options->vramTransferEnabled) {
+    if (options->vramTransferEnabled) 
+    {
         cJSON_AddNumberToObject(ncer, "vramTransferMaxSize", options->vramTransferMaxSize);
         cJSON *transfers = cJSON_AddArrayToObject(ncer, "transferData");
 
-        for (int idx = 0; idx < options->cellCount; idx++) {
+        for (int idx = 0; idx < options->cellCount; idx++)
+        {
             cJSON *transfer = cJSON_CreateObject();
             cJSON_AddNumberToObject(transfer, "offset", options->transferData[idx]->sourceDataOffset);
             cJSON_AddNumberToObject(transfer, "size", options->transferData[idx]->size);
             cJSON_AddItemToArray(transfers, transfer);
+        }
+    }
+
+    if (options->ucatEnabled) {
+        cJSON *ucatCells = cJSON_AddArrayToObject(ncer, "cellAttributes");
+
+        for (int i = 0; i < options->cellCount; i++) {
+            cJSON_AddNumberToObject(ucatCells, "cellAttr", options->ucatCellAttribtes[i]);
         }
     }
 
@@ -473,6 +517,9 @@ struct JsonToAnimationOptions *ParseNANRJson(char *path)
         if (i > options->resultCount - 1)
             FATAL_ERROR("Frame count is incorrect.\n");
 
+        // init padding to false, this is used in gfx.c to control padding, and is therefore checked there
+        options->animationResults[i]->padded = false;
+
         cJSON *resultType = cJSON_GetObjectItemCaseSensitive(animationResult, "resultType");
         options->animationResults[i]->resultType = GetInt(resultType);
         switch (options->animationResults[i]->resultType) {
@@ -538,6 +585,27 @@ struct JsonToAnimationOptions *ParseNANRJson(char *path)
         }
     }
 
+    cJSON *uaatBool = cJSON_GetObjectItemCaseSensitive(json, "uaatEnabled");
+    options->uaatEnabled = GetBool(uaatBool);
+
+    if (options->uaatEnabled) {
+        cJSON *uaatData = cJSON_GetObjectItemCaseSensitive(json, "uaatData");
+
+        cJSON *uaatSequences = cJSON_GetObjectItemCaseSensitive(uaatData, "sequenceAttributes");
+        options->uaatData.sequenceAttributes = malloc(sizeof(uint32_t) * options->sequenceCount);
+        for (int i = 0; i < options->sequenceCount; i++) {
+            cJSON *uaatSeq = cJSON_GetArrayItem(uaatSequences, i);
+            options->uaatData.sequenceAttributes[i] = GetInt(uaatSeq);
+        }
+
+        cJSON *uaatFrames = cJSON_GetObjectItemCaseSensitive(uaatData, "frameAttributes");
+        options->uaatData.frameAttributes = malloc(sizeof(uint32_t) * options->frameCount);
+        for (int i = 0; i < options->frameCount; i++) {
+            cJSON *uaatFra = cJSON_GetArrayItem(uaatFrames, i);
+            options->uaatData.frameAttributes[i] = GetInt(uaatFra);
+        }
+    }
+
     cJSON_Delete(json);
     free(jsonString);
     return options;
@@ -548,6 +616,7 @@ char *GetNANRJson(struct JsonToAnimationOptions *options)
     cJSON *nanr = cJSON_CreateObject();
 
     cJSON_AddBoolToObject(nanr, "labelEnabled", options->labelEnabled);
+    cJSON_AddBoolToObject(nanr, "uaatEnabled", options->uaatEnabled);
     cJSON_AddNumberToObject(nanr, "sequenceCount", options->sequenceCount);
     cJSON_AddNumberToObject(nanr, "frameCount", options->frameCount);
 
@@ -617,6 +686,20 @@ char *GetNANRJson(struct JsonToAnimationOptions *options)
         cJSON_AddNumberToObject(nanr, "labelCount", options->labelCount);
     }
 
+    if (options->uaatEnabled) {
+        cJSON *uaat = cJSON_AddObjectToObject(nanr, "uaatData");
+
+        cJSON *uaatSequences = cJSON_AddArrayToObject(uaat, "sequenceAttributes");
+        for (int i = 0; i < options->sequenceCount; i++) {
+            cJSON_AddNumberToObject(uaatSequences, "seqAttr", options->uaatData.sequenceAttributes[i]);
+        }
+
+        cJSON *uaatFrames = cJSON_AddArrayToObject(uaat, "frameAttributes");
+        for (int i = 0; i < options->frameCount; i++) {
+            cJSON_AddNumberToObject(uaatFrames, "fraAttr", options->uaatData.frameAttributes[i]);
+        }
+    }
+
     char *jsonString = cJSON_Print(nanr);
     cJSON_Delete(nanr);
     return jsonString;
@@ -637,11 +720,16 @@ void FreeNCERCell(struct JsonToCellOptions *options)
         }
         free(options->labels);
     }
-    if (options->vramTransferEnabled) {
-        for (int j = 0; j < options->cellCount; j++) {
+    if (options->vramTransferEnabled)
+    {
+        for (int j = 0; j < options->cellCount; j++)
+        {
             free(options->transferData[j]);
         }
         free(options->transferData);
+    }
+    if (options->ucatEnabled) {
+        free(options->ucatCellAttribtes);
     }
     free(options->cells);
     free(options);
@@ -669,6 +757,10 @@ void FreeNANRAnimation(struct JsonToAnimationOptions *options)
     {
         free(options->animationResults[i]);
     }
+    if (options->uaatEnabled) {
+        free(options->uaatData.sequenceAttributes);
+        free(options->uaatData.frameAttributes);
+    }
     if (options->labelEnabled)
     {
         for (int j = 0; j < options->labelCount; j++)
@@ -682,14 +774,16 @@ void FreeNANRAnimation(struct JsonToAnimationOptions *options)
     free(options);
 }
 
-char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata) {
+char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata)
+{
     cJSON *json = cJSON_CreateObject();
 
     cJSON_AddNumberToObject(json, "maxGlyphWidth", metadata->maxWidth);
     cJSON_AddNumberToObject(json, "maxGlyphHeight", metadata->maxHeight);
 
     cJSON *glyphWidths = cJSON_AddArrayToObject(json, "glyphWidths");
-    for (int i = 0; i < metadata->numGlyphs; i++) {
+    for (int i = 0; i < metadata->numGlyphs; i++)
+    {
         cJSON *width = cJSON_CreateNumber(metadata->glyphWidthTable[i]);
         cJSON_AddItemToArray(glyphWidths, width);
     }
@@ -699,18 +793,20 @@ char *GetNtrFontMetadataJson(struct NtrFontMetadata *metadata) {
     return jsonString;
 }
 
-#define TILE_DIMENSION_PIXELS     8
+#define TILE_DIMENSION_PIXELS 8
 #define PIXELS_FOR_DIMENSION(dim) ((dim) * TILE_DIMENSION_PIXELS)
-#define TILES_FOR_PIXELS(num)     (((num) + TILE_DIMENSION_PIXELS - 1) / TILE_DIMENSION_PIXELS)
-#define PIXELS_PER_BYTE_2BPP      4
-#define NTR_FONT_HEADER_SIZE      16
+#define TILES_FOR_PIXELS(num) (((num) + TILE_DIMENSION_PIXELS - 1) / TILE_DIMENSION_PIXELS)
+#define PIXELS_PER_BYTE_2BPP 4
+#define NTR_FONT_HEADER_SIZE 16
 
-struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path) {
+struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path)
+{
     int fileLength;
     unsigned char *jsonString = ReadWholeFile(path, &fileLength);
 
     cJSON *json = cJSON_Parse((const char *)jsonString);
-    if (json == NULL) {
+    if (json == NULL)
+    {
         const char *errorPtr = cJSON_GetErrorPtr();
         FATAL_ERROR("Error in line \"%s\"\n", errorPtr);
     }
@@ -737,8 +833,10 @@ struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path) {
 
     uint8_t *glyphWidthCursor = metadata->glyphWidthTable;
     cJSON *glyphWidthIter = NULL;
-    cJSON_ArrayForEach(glyphWidthIter, labelGlyphWidths) {
-        if (!cJSON_IsNumber(glyphWidthIter)) {
+    cJSON_ArrayForEach(glyphWidthIter, labelGlyphWidths)
+    {
+        if (!cJSON_IsNumber(glyphWidthIter))
+        {
             const char *errorPtr = cJSON_GetErrorPtr();
             FATAL_ERROR("Error in line \"%s\"\n", errorPtr);
         }
