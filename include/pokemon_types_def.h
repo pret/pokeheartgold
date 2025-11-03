@@ -153,13 +153,13 @@ typedef union {
  * @brief Boxed Pokemon data structure
  */
 typedef struct BoxPokemon {
-    /* 0x000 */ u32 personality; //!< The Pokemon's personality value (or PID).
-    /* 0x004 */ u16 partyDecrypted : 1; //!< Whether the Pokemon's party data is currently decrypted.
-                u16 boxDecrypted : 1; //!< Whether the Pokemon's boxed data is currently decrypted.
-                u16 checksumFailed : 1; //!< Whether the Pokemon's data is invalid. If set to 1, this Pokemon will appear in-game as a Bad Egg.
-                u16 unused : 13; //!< Leftover padding-space. Might be used for validity checks.
-    /* 0x006 */ u16 checksum; //!< Checksum for the Pokemon's data blocks.
-    /* 0x008 */ PokemonDataBlock dataBlocks[4]; //!< Data blocks containing the Pokemon's boxed data, stored encrypted.
+    /* 0x000 */ u32 personality;
+    /* 0x004 */ u16 partyDecrypted : 1;
+                u16 boxDecrypted : 1;
+                u16 checksumFailed : 1;
+                u16 unused : 13;
+    /* 0x006 */ u16 checksum;
+    /* 0x008 */ PokemonDataBlock dataBlocks[4];
 } BoxPokemon;
 
 union MailPatternData {
