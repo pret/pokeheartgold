@@ -10,7 +10,6 @@
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_020192D0.h"
-#include "unk_02020654.h"
 
 static void ov122_021E8E78(VoltorbFlipInputHandler *);
 static void ov122_021E8F58(VoltorbFlipInputHandler *);
@@ -75,7 +74,7 @@ const TouchscreenHitbox sTouchscreenHitboxes[] = {
     { .rect = TOUCHSCREEN_RECTLIST_END },
 };
 
-const UnkStruct_02020654 sDpadButtonSpecs[] = {
+const UnkStruct_02020A0C sDpadButtonSpecs[] = {
     {   8,   8, 24, 24, 20,  5, 25, 1  },
     {  40,   8, 24, 24, 21,  6,  0, 2  },
     {  72,   8, 24, 24, 22,  7,  1, 3  },

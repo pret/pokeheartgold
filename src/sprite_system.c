@@ -12,7 +12,7 @@
 #include "unk_02009D48.h"
 #include "unk_0200ACF0.h"
 #include "unk_0200B150.h"
-#include "unk_02020654.h"
+#include "vram_transfer_manager.h"
 
 static void SpriteSystem_DeleteSpriteList(SpriteManager *spriteManager);
 static void SpriteManager_FreeResourceHeaders(SpriteManager *spriteManager);
