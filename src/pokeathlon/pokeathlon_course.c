@@ -17,74 +17,62 @@ extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
 extern const OverlayManagerTemplate ov96_0221A7E4; // Sub-overlay template
 extern const void *ov96_0221A984;                  // Other data table
 
-BOOL PokeathlonCourse_Init(OverlayManager *man, int *state) {
-    PokeathlonCourseWork *work;
+BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
+    PokeathlonCourseData *data;
     PokeathlonCourseArgs *args;
     OverlayManager *subOverlay;
-    int specialMode;
+    BOOL specialMode;
     OverlayManagerTemplate subTemplate;
     void *system;
     int param1, param2;
 
-    // Create heap
     Heap_Create(HEAP_ID_3, HEAP_ID_92, 0x72000);
 
-    // Allocate and zero work structure
-    work = OverlayManager_CreateAndGetData(man, sizeof(PokeathlonCourseWork), HEAP_ID_92);
-    MI_CpuFill8(work, 0, sizeof(PokeathlonCourseWork));
+    data = OverlayManager_CreateAndGetData(manager, sizeof(PokeathlonCourseData), HEAP_ID_92);
+    MI_CpuFill8(data, 0, sizeof(PokeathlonCourseData));
 
-    // Store heap ID
-    *PokeathlonWork_GetHeapIdPtr(work) = HEAP_ID_92;
+    *PokeathlonWork_GetHeapIdPtr(data) = HEAP_ID_92;
 
-    // Get arguments
-    args = OverlayManager_GetArgs(man);
-    *PokeathlonWork_GetArgsPtr(work) = args;
+    args = OverlayManager_GetArgs(manager);
+    *PokeathlonWork_GetArgsPtr(data) = args;
 
-    // Copy sub-overlay template
     subTemplate = ov96_0221A7E4;
 
-    // Create sub-overlay manager
-    subOverlay = OverlayManager_New(&subTemplate, PokeathlonWork_GetArgsPtr(work), HEAP_ID_92);
-    *PokeathlonWork_GetSubOverlayPtr(work) = subOverlay;
+    subOverlay = OverlayManager_New(&subTemplate, PokeathlonWork_GetArgsPtr(data), HEAP_ID_92);
+    *PokeathlonWork_GetSubOverlayPtr(data) = subOverlay;
 
-    // Initialize state
-    specialMode = 0;
-    *PokeathlonWork_GetField288Ptr(work) = specialMode;
-    args = *PokeathlonWork_GetArgsPtr(work);
+    specialMode = FALSE;
+    *PokeathlonWork_GetField288Ptr(data) = specialMode;
+    args = *PokeathlonWork_GetArgsPtr(data);
     param1 = args->field_4;
 
-    // Check mode
     if (param1 == 1) {
-        specialMode = 1;
-        *PokeathlonWork_GetField1EEPtr(work) = sub_02037454();
-        *PokeathlonWork_GetField72APtr(work) = 4;
+        specialMode = TRUE;
+        *PokeathlonWork_GetField1EEPtr(data) = sub_02037454();
+        *PokeathlonWork_GetField72APtr(data) = 4;
     } else {
-        *PokeathlonWork_GetField1EEPtr(work) = 1;
-        *PokeathlonWork_GetField72APtr(work) = 3;
+        *PokeathlonWork_GetField1EEPtr(data) = 1;
+        *PokeathlonWork_GetField72APtr(data) = 3;
     }
 
-    // Initialize subsystems
     param1 = ov96_021E8A24();
     param2 = ov96_021E8A2C();
 
-    system = ov96_021E8770(param1, param2, work, specialMode, *PokeathlonWork_GetHeapIdPtr(work));
-    *((void **)((u8 *)work + 0x288)) = system; // field_288
+    system = ov96_021E8770(param1, param2, data, specialMode, *PokeathlonWork_GetHeapIdPtr(data));
+    *(void **)((u8 *)data + 0x288) = system;
 
-    // More initialization
-    ov96_021E5C80(&ov96_0221A984, PokeathlonWork_GetField3C4Ptr(work));
+    ov96_021E5C80(&ov96_0221A984, PokeathlonWork_GetField3C4Ptr(data));
 
-    // Additional setup
-    *PokeathlonWork_GetField3CAPtr(work) = 0;
-    *((void **)((u8 *)work + 0x3B4)) = PokeathlonWork_GetField3C4Ptr(work);
-    *((u32 *)((u8 *)work + 0x3C0)) = 0;
+    *PokeathlonWork_GetField3CAPtr(data) = 0;
+    *(void **)((u8 *)data + 0x3B4) = PokeathlonWork_GetField3C4Ptr(data);
+    *(u32 *)((u8 *)data + 0x3C0) = 0;
 
-    ov96_021E5C90(work);
+    ov96_021E5C90(data);
 
     system = ov96_021E92E0(HEAP_ID_92);
-    *PokeathlonWork_GetField614Ptr(work) = (u32)system;
+    *PokeathlonWork_GetField614Ptr(data) = (u32)system;
 
-    // Text flags setup based on mode
-    if ((*PokeathlonWork_GetArgsPtr(work))->field_4 != 1) {
+    if ((*PokeathlonWork_GetArgsPtr(data))->field_4 != 1) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetAutoScrollParam(0);
         TextFlags_SetCanTouchSpeedUpPrint(TRUE);
@@ -94,9 +82,8 @@ BOOL PokeathlonCourse_Init(OverlayManager *man, int *state) {
         TextFlags_SetCanTouchSpeedUpPrint(FALSE);
     }
 
-    // Final initialization
-    ov96_021E5DFC(work, 0);
-    ov96_021E5DE0(work, 0);
+    ov96_021E5DFC(data, 0);
+    ov96_021E5DE0(data, 0);
 
     return TRUE;
 }
