@@ -6,7 +6,7 @@
 
 int sub_02019E4C(UnkStruct_02019BA4 *a0, u16 a1);
 int sub_02019E98(UnkStruct_02019BA4 *a0);
-int sub_02019EB8(UnkStruct_02019BA4 *a0, int direction, u8 input);
+int sub_02019EB8(UnkStruct_02019BA4 *a0, u8 direction, u8 input);
 BOOL sub_0201A020(const UnkStruct_02020A0C *a0, u32 a1);
 BOOL sub_0201A06C(int *a0, u32 a1);
 
@@ -67,16 +67,16 @@ int sub_02019BE4(UnkStruct_02019BA4 *a0) {
 
     // Handle cursor move
     if (gSystem.newKeys & PAD_KEY_UP) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 0);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 0);
         direction = 0;
     } else if (gSystem.newKeys & PAD_KEY_DOWN) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 1);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 1);
         direction = 1;
     } else if (gSystem.newKeys & PAD_KEY_LEFT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 2);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 2);
         direction = 2;
     } else if (gSystem.newKeys & PAD_KEY_RIGHT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 3);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 3);
         direction = 3;
     } else {
         input = 0xFF;
@@ -131,16 +131,16 @@ int sub_02019D18(UnkStruct_02019BA4 *a0) {
 
     // Handle cursor move
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 0);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 0);
         direction = 0;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 1);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 1);
         direction = 1;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 2);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 2);
         direction = 2;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        input = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, a0->nextInput, 3);
+        input = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, a0->nextInput, 3);
         direction = 3;
     } else {
         input = 0xFF;
@@ -182,7 +182,7 @@ int sub_02019E98(UnkStruct_02019BA4 *a0) {
     return GRID_MENU_BUTTON_MODE;
 }
 
-int sub_02019EB8(UnkStruct_02019BA4 *a0, int direction, u8 input) {
+int sub_02019EB8(UnkStruct_02019BA4 *a0, u8 direction, u8 input) {
     u8 spC;
     u32 mask;
     u8 r1;
@@ -201,7 +201,7 @@ int sub_02019EB8(UnkStruct_02019BA4 *a0, int direction, u8 input) {
             break;
         }
         spC = FALSE;
-        r1 = sub_02020A24(a0->dpadPositions, NULL, NULL, 0, 0, input, direction) & 0x7F;
+        r1 = sub_02020A24(a0->dpadPositions, NULL, NULL, NULL, NULL, input, direction) & 0x7F;
         if (r1 == input || r1 == a0->nextInput) {
             input = a0->nextInput;
             break;

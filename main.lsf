@@ -75,7 +75,7 @@ Static main
     Object src/text.o
     Object src/vram_transfer_manager.o
     Object asm/unk_0202068C.o
-    Object asm/unk_02020A0C.o
+    Object src/unk_02020A0C.o
     Object src/ascii_util.o
     Object asm/unk_02020B8C.o
     Object asm/unk_020210A0.o
