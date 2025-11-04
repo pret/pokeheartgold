@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_POKEATHLON_H
 
 #include "overlay_manager.h"
+#include "constants/heap.h"
 
 // Pokeathlon course arguments structure
 typedef struct PokeathlonCourseArgs {
@@ -22,7 +23,7 @@ typedef struct PokeathlonCourseData {
     PokeathlonCourseArgs *args;      // 0x1F8
     u8 filler_1FC[0x84];             // 0x1FC
     OverlayManager *subOverlay;      // 0x280
-    u32 heapId;                      // 0x284
+    enum HeapID heapId;              // 0x284
     void *system;                    // 0x288
     u8 filler_28C[0x128];            // 0x28C
     u32 field_3B4;                   // 0x3B4
@@ -46,10 +47,10 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state);
 // Internal overlay 96 functions (stubs for now, in assembly)
 void ov96_021E5C80(const void *src, void *dest);
 void ov96_021E5C90(PokeathlonCourseData *data);
-void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, int heapId);
+void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);
 int ov96_021E8A24(void);
 int ov96_021E8A2C(void);
-void *ov96_021E92E0(int heapId);
+void *ov96_021E92E0(enum HeapID heapId);
 void ov96_021E5DFC(PokeathlonCourseData *data, int param);
 void ov96_021E5DE0(PokeathlonCourseData *data, int param);
 
