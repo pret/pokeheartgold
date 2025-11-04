@@ -64,13 +64,13 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     ov96_021E5C80(&ov96_0221A984, &data->field_3C4);
 
     data->field_3CA = 0;
-    data->field_3B4 = (u32)&data->field_3C4;
+    data->field_3B4 = &data->field_3C4;
     data->field_3C0 = 0;
 
     ov96_021E5C90(data);
 
     system = ov96_021E92E0(HEAP_ID_92);
-    data->field_614 = (u32)system;
+    data->field_614 = system;
 
     if (data->args->mode != 1) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);

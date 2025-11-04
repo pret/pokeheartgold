@@ -26,14 +26,14 @@ typedef struct PokeathlonCourseData {
     enum HeapID heapId;              // 0x284
     void *system;                    // 0x288
     u8 filler_28C[0x128];            // 0x28C
-    u32 field_3B4;                   // 0x3B4
+    void *field_3B4;                 // 0x3B4
     u8 filler_3B8[8];                // 0x3B8
     u32 field_3C0;                   // 0x3C0
     void *field_3C4;                 // 0x3C4
     u8 filler_3C8[2];                // 0x3C8
     u8 field_3CA;                    // 0x3CA
     u8 filler_3CB[0x249];            // 0x3CB
-    u32 field_614;                   // 0x614
+    void *field_614;                 // 0x614
     u8 filler_618[0x112];            // 0x618
     u8 field_72A;                    // 0x72A
     u8 filler_72B[0x645];            // 0x72B
