@@ -340,6 +340,6 @@ u16 BugContest_JudgePlayerMon(BugContest *bugContest, Pokemon *mon) {
         stat_total += GetMonData(mon, MON_DATA_HP_IV + i, NULL);
     }
     score += stat_total * 100 / (31 * NUM_STATS);
-    score += GetMonData(mon, MON_DATA_HP, NULL) * 100 / GetMonData(mon, MON_DATA_MAXHP, NULL);
+    score += GetMonData(mon, MON_DATA_HP, NULL) * 100 / GetMonData(mon, MON_DATA_MAX_HP, NULL);
     return score;
 }
