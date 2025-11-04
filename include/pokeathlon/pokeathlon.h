@@ -6,68 +6,37 @@
 // Pokeathlon course arguments structure
 typedef struct PokeathlonCourseArgs {
     u8 filler_0[4]; // 0x000
-    u32 field_4;    // 0x004 - Mode flag (1 = special mode)
+    u32 mode;       // 0x004 - Mode flag (1 = special mode)
     // ... more fields to be discovered
 } PokeathlonCourseArgs;
 
 // Pokeathlon course data structure (0xD70 = 3440 bytes)
 typedef struct PokeathlonCourseData {
-    u8 data[0xD70]; // Complete data structure (will be refined during decompilation)
+    u8 filler_0[0x15C];              // 0x000
+    u8 field_15C;                    // 0x15C
+    u8 filler_15D[0x83];             // 0x15D
+    u32 state;                       // 0x1E0
+    u8 filler_1E4[0xA];              // 0x1E4
+    u8 field_1EE;                    // 0x1EE
+    u8 filler_1EF[9];                // 0x1EF
+    PokeathlonCourseArgs *args;      // 0x1F8
+    u8 filler_1FC[0x84];             // 0x1FC
+    OverlayManager *subOverlay;      // 0x280
+    u32 heapId;                      // 0x284
+    void *system;                    // 0x288
+    u8 filler_28C[0x128];            // 0x28C
+    u32 field_3B4;                   // 0x3B4
+    u8 filler_3B8[8];                // 0x3B8
+    u32 field_3C0;                   // 0x3C0
+    void *field_3C4;                 // 0x3C4
+    u8 filler_3C8[2];                // 0x3C8
+    u8 field_3CA;                    // 0x3CA
+    u8 filler_3CB[0x249];            // 0x3CB
+    u32 field_614;                   // 0x614
+    u8 filler_618[0x112];            // 0x618
+    u8 field_72A;                    // 0x72A
+    u8 filler_72B[0x645];            // 0x72B
 } PokeathlonCourseData;
-
-// Helper inline functions to access data structure fields
-// These will be replaced with proper struct members as we discover the layout
-static inline u32 *PokeathlonWork_GetHeapIdPtr(PokeathlonCourseData *data) {
-    return (u32 *)((u8 *)data + 0x284); // 0xa1 << 2
-}
-
-static inline PokeathlonCourseArgs **PokeathlonWork_GetArgsPtr(PokeathlonCourseData *data) {
-    return (PokeathlonCourseArgs **)((u8 *)data + 0x1F8); // 0x7e << 2
-}
-
-static inline OverlayManager **PokeathlonWork_GetSubOverlayPtr(PokeathlonCourseData *data) {
-    return (OverlayManager **)((u8 *)data + 0x280); // 0xa << 6
-}
-
-static inline u8 *PokeathlonWork_GetField15CPtr(PokeathlonCourseData *data) {
-    return (u8 *)data + 0x15C;
-}
-
-static inline u8 *PokeathlonWork_GetField1EEPtr(PokeathlonCourseData *data) {
-    return (u8 *)data + 0x1EE;
-}
-
-static inline u8 *PokeathlonWork_GetField72APtr(PokeathlonCourseData *data) {
-    return (u8 *)data + 0x72A;
-}
-
-static inline u32 *PokeathlonWork_GetField3C0Ptr(PokeathlonCourseData *data) {
-    return (u32 *)((u8 *)data + 0x3C0);
-}
-
-static inline u32 *PokeathlonWork_GetField614Ptr(PokeathlonCourseData *data) {
-    return (u32 *)((u8 *)data + 0x614);
-}
-
-static inline u32 *PokeathlonWork_GetField288Ptr(PokeathlonCourseData *data) {
-    return (u32 *)((u8 *)data + 0x1E0); // 0xa << 6 - 0xa0 for state field
-}
-
-static inline u32 *PokeathlonWork_GetField3B4Ptr(PokeathlonCourseData *data) {
-    return (u32 *)((u8 *)data + 0x3B4); // 0xa << 6 - 0x88
-}
-
-static inline void **PokeathlonWork_GetField3C4Ptr(PokeathlonCourseData *data) {
-    return (void **)((u8 *)data + 0x3C4); // 0xf1 << 2 + 0x3c
-}
-
-static inline u32 *PokeathlonWork_GetField3C0Ptr2(PokeathlonCourseData *data) {
-    return (u32 *)((u8 *)data + 0x3C0); // 0xf1 << 2 + 0x38 - 0xa
-}
-
-static inline u8 *PokeathlonWork_GetField3CAPtr(PokeathlonCourseData *data) {
-    return (u8 *)data + 0x3CA;
-}
 
 // Function declarations
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state);

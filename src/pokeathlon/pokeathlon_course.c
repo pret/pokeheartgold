@@ -31,48 +31,48 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     data = OverlayManager_CreateAndGetData(manager, sizeof(PokeathlonCourseData), HEAP_ID_92);
     MI_CpuFill8(data, 0, sizeof(PokeathlonCourseData));
 
-    *PokeathlonWork_GetHeapIdPtr(data) = HEAP_ID_92;
+    data->heapId = HEAP_ID_92;
 
     args = OverlayManager_GetArgs(manager);
-    *PokeathlonWork_GetArgsPtr(data) = args;
+    data->args = args;
 
     subTemplate = ov96_0221A7E4;
 
-    subOverlay = OverlayManager_New(&subTemplate, PokeathlonWork_GetArgsPtr(data), HEAP_ID_92);
-    *PokeathlonWork_GetSubOverlayPtr(data) = subOverlay;
+    subOverlay = OverlayManager_New(&subTemplate, &data->args, HEAP_ID_92);
+    data->subOverlay = subOverlay;
 
     specialMode = FALSE;
-    *PokeathlonWork_GetField288Ptr(data) = specialMode;
-    args = *PokeathlonWork_GetArgsPtr(data);
-    param1 = args->field_4;
+    data->state = specialMode;
+    args = data->args;
+    param1 = args->mode;
 
     if (param1 == 1) {
         specialMode = TRUE;
-        *PokeathlonWork_GetField1EEPtr(data) = sub_02037454();
-        *PokeathlonWork_GetField72APtr(data) = 4;
+        data->field_1EE = sub_02037454();
+        data->field_72A = 4;
     } else {
-        *PokeathlonWork_GetField1EEPtr(data) = 1;
-        *PokeathlonWork_GetField72APtr(data) = 3;
+        data->field_1EE = 1;
+        data->field_72A = 3;
     }
 
     param1 = ov96_021E8A24();
     param2 = ov96_021E8A2C();
 
-    system = ov96_021E8770(param1, param2, data, specialMode, *PokeathlonWork_GetHeapIdPtr(data));
-    *(void **)((u8 *)data + 0x288) = system;
+    system = ov96_021E8770(param1, param2, data, specialMode, data->heapId);
+    data->system = system;
 
-    ov96_021E5C80(&ov96_0221A984, PokeathlonWork_GetField3C4Ptr(data));
+    ov96_021E5C80(&ov96_0221A984, &data->field_3C4);
 
-    *PokeathlonWork_GetField3CAPtr(data) = 0;
-    *(void **)((u8 *)data + 0x3B4) = PokeathlonWork_GetField3C4Ptr(data);
-    *(u32 *)((u8 *)data + 0x3C0) = 0;
+    data->field_3CA = 0;
+    data->field_3B4 = (u32)&data->field_3C4;
+    data->field_3C0 = 0;
 
     ov96_021E5C90(data);
 
     system = ov96_021E92E0(HEAP_ID_92);
-    *PokeathlonWork_GetField614Ptr(data) = (u32)system;
+    data->field_614 = (u32)system;
 
-    if ((*PokeathlonWork_GetArgsPtr(data))->field_4 != 1) {
+    if (data->args->mode != 1) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetAutoScrollParam(0);
         TextFlags_SetCanTouchSpeedUpPrint(TRUE);
