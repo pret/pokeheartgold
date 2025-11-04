@@ -44,7 +44,7 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                 team->party[j].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
                 team->party[j].form = GetMonData(mon, MON_DATA_FORM, NULL);
                 team->party[j].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-                team->party[j].otid = GetMonData(mon, MON_DATA_OTID, NULL);
+                team->party[j].otid = GetMonData(mon, MON_DATA_OT_ID, NULL);
                 team->party[j].moves[0] = GetMonData(mon, MON_DATA_MOVE1, NULL);
                 team->party[j].moves[1] = GetMonData(mon, MON_DATA_MOVE2, NULL);
                 team->party[j].moves[2] = GetMonData(mon, MON_DATA_MOVE3, NULL);
@@ -52,7 +52,7 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                 if (string != NULL) {
                     GetMonData(mon, MON_DATA_NICKNAME_STRING, string);
                     CopyStringToU16Array(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
-                    GetMonData(mon, MON_DATA_OT_NAME_2, string);
+                    GetMonData(mon, MON_DATA_OT_NAME_STRING, string);
                     CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
                     team->party[j].nickname[0] = EOS;
