@@ -61,11 +61,11 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     system = ov96_021E8770(param1, param2, data, specialMode, data->heapId);
     data->system = system;
 
-    ov96_021E5C80(&ov96_0221A984, &data->field_3C4);
+    ov96_021E5C80(&ov96_0221A984, &data->stateData);
 
     data->field_3CA = 0;
-    data->field_3B4 = &data->field_3C4;
-    data->field_3C0 = 0;
+    data->courseState.argsPtr = &data->stateData;
+    data->courseState.exitFlag = 0;
 
     ov96_021E5C90(data);
 
@@ -101,68 +101,75 @@ extern void ov96_021E67AC(PokeathlonCourseData *data);
 
 BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
-    u32 *statePtr;
+    PokeathlonCourseState *courseState;
 
     data = OverlayManager_GetData(manager);
-    statePtr = (u32 *)&data->field_3B4;
+    courseState = &data->courseState;
 
-    if (*(u32 *)((u8 *)data + 0xD2C) != 0) {
-        (*(u16 *)((u8 *)data + 0xD28))++;
-        if (*(u16 *)((u8 *)data + 0xD28) >= 0x708) {
-            if (*(s32 *)((u8 *)data + 0xD24) < 0xEA5F) {
-                (*(s32 *)((u8 *)data + 0xD24))++;
+    // Frame counter system: increments frameTimer each frame, and frameCounter every 0x708 frames (up to max 0xEA5F)
+    if (data->counterEnabled != 0) {
+        data->frameTimer++;
+        if (data->frameTimer >= 0x708) {
+            if (data->frameCounter < 0xEA5F) {
+                data->frameCounter++;
             }
-            *(u16 *)((u8 *)data + 0xD28) = 0;
+            data->frameTimer = 0;
         }
     }
 
-    switch (statePtr[2]) {
-    case 0:
+    // Main state machine
+    switch (courseState->mainState) {
+    case 0: // Idle state - waiting for transitions
         if (ov96_021E5C2C(data)) {
             return TRUE;
         }
 
-        if (statePtr[3] != 0) {
+        // Handle exit flag
+        if (courseState->exitFlag != 0) {
             PokeathlonCourseArgs *args;
-            args = (PokeathlonCourseArgs *)statePtr[0];
+            args = (PokeathlonCourseArgs *)courseState->argsPtr;
             args->filler_0[6] = args->filler_0[7];
             args->filler_0[5] = 0;
-            statePtr[3] = 0;
+            courseState->exitFlag = 0;
         }
 
-        if (statePtr[1] != 0) {
-            if (statePtr[1] == 0x10) {
-                statePtr[2] = 3;
+        // Check for state transitions
+        if (courseState->transitionType != 0) {
+            if (courseState->transitionType == 0x10) { // Special exit transition
+                courseState->mainState = 3; // Go to state 3
             } else {
-                statePtr[2] = 1;
+                courseState->mainState = 1; // Go to state 1
             }
         }
         break;
 
-    case 1:
-        sub_02037AC0((u8)statePtr[1]);
-        statePtr[2] = 2;
+    case 1: // Start transition
+        sub_02037AC0((u8)courseState->transitionType);
+        courseState->mainState = 2;
+        // Fallthrough to case 2
 
-    case 2:
-        if (sub_02037B38((u8)statePtr[1])) {
-            statePtr[2] = 0;
-            statePtr[1] = 0;
+    case 2: // Wait for transition to complete
+        if (sub_02037B38((u8)courseState->transitionType)) {
+            courseState->mainState = 0; // Return to idle
+            courseState->transitionType = 0; // Clear transition type
         }
         break;
 
-    case 3:
-        if (statePtr[1] != 0x10) {
+    case 3: // Start exit transition (special case for transition type 0x10)
+        if (courseState->transitionType != 0x10) {
             GF_AssertFail();
         }
-        sub_02037AC0((u8)statePtr[1]);
-        statePtr[2] = 4;
+        sub_02037AC0((u8)courseState->transitionType);
+        courseState->mainState = 4;
+        // Fallthrough to case 4
 
-    case 4:
-        if (!sub_02037B38((u8)statePtr[1])) {
+    case 4: // Exit sequence
+        if (!sub_02037B38((u8)courseState->transitionType)) {
             if (ov96_021E5F24(data)) {
                 break;
             }
 
+            // Copy data between buffers
             {
                 void *src;
                 u8 *dest1;
@@ -170,12 +177,13 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
                 u32 copyCount;
 
                 src = ov96_021E9A14();
-                dest1 = (u8 *)data + 0x2B4;
+                dest1 = data->dataCopyBuffer1; // Destination buffer 1
                 ov96_021E87B4(0x1B, dest1, src, (int)data->system);
 
-                dest1 = ov96_021E8A20((u8 *)data + 0x2DC);
-                dest2 = ov96_021E8A20((u8 *)data + 0x28C);
+                dest1 = ov96_021E8A20(data->dataCopyBuffer2); // Destination buffer 2
+                dest2 = ov96_021E8A20(data->dataCopySource); // Source buffer
 
+                // Copy 0x28 bytes from source to dest
                 for (copyCount = 0x28; copyCount != 0; copyCount--) {
                     u8 byte;
                     byte = dest2[0];
@@ -185,8 +193,8 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
                 }
             }
         } else {
-            statePtr[2] = 0;
-            statePtr[1] = 0;
+            courseState->mainState = 0; // Return to idle
+            courseState->transitionType = 0; // Clear transition type
         }
         break;
     }
