@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_POKEATHLON_H
 #define POKEHEARTGOLD_POKEATHLON_H
 
-#include "overlay_manager.h"
 #include "constants/heap.h"
+
+#include "overlay_manager.h"
 
 // Pokeathlon course arguments structure
 typedef struct PokeathlonCourseArgs {
@@ -14,44 +15,44 @@ typedef struct PokeathlonCourseArgs {
 // State machine structure (overlays stateArgsPtr at 0x3B4)
 // This struct maps to a u32 array view for code generation compatibility
 typedef struct PokeathlonCourseState {
-    void **argsPtr;                 // [0] 0x3B4 - Pointer to state data pointer
-    u32 transitionType;             // [1] 0x3B8 - Transition type (0x10 = exit)
-    u32 mainState;                  // [2] 0x3BC - Main state machine state
-    u32 exitFlag;                   // [3] 0x3C0 - Exit flag
+    void **argsPtr;     // [0] 0x3B4 - Pointer to state data pointer
+    u32 transitionType; // [1] 0x3B8 - Transition type (0x10 = exit)
+    u32 mainState;      // [2] 0x3BC - Main state machine state
+    u32 exitFlag;       // [3] 0x3C0 - Exit flag
 } PokeathlonCourseState;
 
 // Pokeathlon course data structure (0xD70 = 3440 bytes)
 typedef struct PokeathlonCourseData {
-    u8 filler_0[0x15C];              // 0x000
-    u8 field_15C;                    // 0x15C
-    u8 filler_15D[0x83];             // 0x15D
-    u32 state;                       // 0x1E0
-    u8 filler_1E4[0xA];              // 0x1E4
-    u8 field_1EE;                    // 0x1EE
-    u8 filler_1EF[9];                // 0x1EF
-    PokeathlonCourseArgs *args;      // 0x1F8
-    u8 filler_1FC[0x84];             // 0x1FC
-    OverlayManager *subOverlay;      // 0x280
-    enum HeapID heapId;              // 0x284
-    void *system;                    // 0x288
-    u8 dataCopySource[0x28];         // 0x28C - Source buffer for exit data copy
-    u8 dataCopyBuffer1[0x28];        // 0x2B4 - Destination buffer 1
-    u8 dataCopyBuffer2[0x28];        // 0x2DC - Destination buffer 2
-    u8 filler_304[0xB0];             // 0x304
+    u8 filler_0[0x15C];                // 0x000
+    u8 field_15C;                      // 0x15C
+    u8 filler_15D[0x83];               // 0x15D
+    u32 state;                         // 0x1E0
+    u8 filler_1E4[0xA];                // 0x1E4
+    u8 field_1EE;                      // 0x1EE
+    u8 filler_1EF[9];                  // 0x1EF
+    PokeathlonCourseArgs *args;        // 0x1F8
+    u8 filler_1FC[0x84];               // 0x1FC
+    OverlayManager *subOverlay;        // 0x280
+    enum HeapID heapId;                // 0x284
+    void *system;                      // 0x288
+    u8 dataCopySource[0x28];           // 0x28C - Source buffer for exit data copy
+    u8 dataCopyBuffer1[0x28];          // 0x2B4 - Destination buffer 1
+    u8 dataCopyBuffer2[0x28];          // 0x2DC - Destination buffer 2
+    u8 filler_304[0xB0];               // 0x304
     PokeathlonCourseState courseState; // 0x3B4 - State machine structure (16 bytes: 4 fields x 4 bytes)
-    void *stateData;                 // 0x3C4 - Pointer to state data structure
-    u8 filler_3C8[2];                // 0x3C8
-    u8 field_3CA;                    // 0x3CA
-    u8 filler_3CB[0x249];            // 0x3CB
-    void *field_614;                 // 0x614
-    u8 filler_618[0x112];            // 0x618
-    u8 field_72A;                    // 0x72A
-    u8 filler_72B[0x5F9];            // 0x72B
-    s32 frameCounter;                // 0xD24 - Increments every 0x708 frames (max 0xEA5F)
-    u16 frameTimer;                  // 0xD28 - Frame counter, resets at 0x708
-    u16 filler_D2A;                  // 0xD2A - Alignment padding
-    u32 counterEnabled;              // 0xD2C - Flag to enable frame counters
-    u8 filler_D30[0x40];             // 0xD30
+    void *stateData;                   // 0x3C4 - Pointer to state data structure
+    u8 filler_3C8[2];                  // 0x3C8
+    u8 field_3CA;                      // 0x3CA
+    u8 filler_3CB[0x249];              // 0x3CB
+    void *field_614;                   // 0x614
+    u8 filler_618[0x112];              // 0x618
+    u8 field_72A;                      // 0x72A
+    u8 filler_72B[0x5F9];              // 0x72B
+    s32 frameCounter;                  // 0xD24 - Increments every 0x708 frames (max 0xEA5F)
+    u16 frameTimer;                    // 0xD28 - Frame counter, resets at 0x708
+    u16 filler_D2A;                    // 0xD2A - Alignment padding
+    u32 counterEnabled;                // 0xD2C - Flag to enable frame counters
+    u8 filler_D30[0x40];               // 0xD30
 } PokeathlonCourseData;
 
 // Function declarations

@@ -136,7 +136,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
         // Check for state transitions
         if (courseState->transitionType != 0) {
             if (courseState->transitionType == 0x10) { // Special exit transition
-                courseState->mainState = 3; // Go to state 3
+                courseState->mainState = 3;            // Go to state 3
             } else {
                 courseState->mainState = 1; // Go to state 1
             }
@@ -150,7 +150,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
 
     case 2: // Wait for transition to complete
         if (sub_02037B38((u8)courseState->transitionType)) {
-            courseState->mainState = 0; // Return to idle
+            courseState->mainState = 0;      // Return to idle
             courseState->transitionType = 0; // Clear transition type
         }
         break;
@@ -181,7 +181,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
                 ov96_021E87B4(0x1B, dest1, src, (int)data->system);
 
                 dest1 = ov96_021E8A20(data->dataCopyBuffer2); // Destination buffer 2
-                dest2 = ov96_021E8A20(data->dataCopySource); // Source buffer
+                dest2 = ov96_021E8A20(data->dataCopySource);  // Source buffer
 
                 // Copy 0x28 bytes from source to dest
                 for (copyCount = 0x28; copyCount != 0; copyCount--) {
@@ -193,7 +193,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
                 }
             }
         } else {
-            courseState->mainState = 0; // Return to idle
+            courseState->mainState = 0;      // Return to idle
             courseState->transitionType = 0; // Clear transition type
         }
         break;
