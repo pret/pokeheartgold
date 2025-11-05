@@ -87,3 +87,110 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     return TRUE;
 }
+
+// External functions used by Main (in assembly for now)
+extern void sub_02037AC0(u8 param);
+extern BOOL sub_02037B38(u8 param);
+extern void GF_AssertFail(void);
+extern BOOL ov96_021E5C2C(PokeathlonCourseData *data);
+extern BOOL ov96_021E5F24(PokeathlonCourseData *data);
+extern void *ov96_021E9A14(void);
+extern void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
+extern u8 *ov96_021E8A20(void *ptr);
+extern void ov96_021E67AC(PokeathlonCourseData *data);
+
+BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
+    PokeathlonCourseData *data;
+    u32 *statePtr;
+
+    data = OverlayManager_GetData(manager);
+    statePtr = (u32 *)&data->field_3B4;
+
+    if (*(u32 *)((u8 *)data + 0xD2C) != 0) {
+        (*(u16 *)((u8 *)data + 0xD28))++;
+        if (*(u16 *)((u8 *)data + 0xD28) >= 0x708) {
+            if (*(s32 *)((u8 *)data + 0xD24) < 0xEA5F) {
+                (*(s32 *)((u8 *)data + 0xD24))++;
+            }
+            *(u16 *)((u8 *)data + 0xD28) = 0;
+        }
+    }
+
+    switch (statePtr[2]) {
+    case 0:
+        if (ov96_021E5C2C(data)) {
+            return TRUE;
+        }
+
+        if (statePtr[3] != 0) {
+            PokeathlonCourseArgs *args;
+            args = (PokeathlonCourseArgs *)statePtr[0];
+            args->filler_0[6] = args->filler_0[7];
+            args->filler_0[5] = 0;
+            statePtr[3] = 0;
+        }
+
+        if (statePtr[1] != 0) {
+            if (statePtr[1] == 0x10) {
+                statePtr[2] = 3;
+            } else {
+                statePtr[2] = 1;
+            }
+        }
+        break;
+
+    case 1:
+        sub_02037AC0((u8)statePtr[1]);
+        statePtr[2] = 2;
+
+    case 2:
+        if (sub_02037B38((u8)statePtr[1])) {
+            statePtr[2] = 0;
+            statePtr[1] = 0;
+        }
+        break;
+
+    case 3:
+        if (statePtr[1] != 0x10) {
+            GF_AssertFail();
+        }
+        sub_02037AC0((u8)statePtr[1]);
+        statePtr[2] = 4;
+
+    case 4:
+        if (!sub_02037B38((u8)statePtr[1])) {
+            if (ov96_021E5F24(data)) {
+                break;
+            }
+
+            {
+                void *src;
+                u8 *dest1;
+                u8 *dest2;
+                u32 copyCount;
+
+                src = ov96_021E9A14();
+                dest1 = (u8 *)data + 0x2B4;
+                ov96_021E87B4(0x1B, dest1, src, (int)data->system);
+
+                dest1 = ov96_021E8A20((u8 *)data + 0x2DC);
+                dest2 = ov96_021E8A20((u8 *)data + 0x28C);
+
+                for (copyCount = 0x28; copyCount != 0; copyCount--) {
+                    u8 byte;
+                    byte = dest2[0];
+                    dest2++;
+                    dest1[0] = byte;
+                    dest1++;
+                }
+            }
+        } else {
+            statePtr[2] = 0;
+            statePtr[1] = 0;
+        }
+        break;
+    }
+
+    ov96_021E67AC(data);
+    return FALSE;
+}
