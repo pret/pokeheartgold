@@ -43,7 +43,9 @@ typedef struct PokeathlonCourseData {
     void *stateData;                   // 0x3C4 - Pointer to state data structure
     u8 filler_3C8[2];                  // 0x3C8
     u8 field_3CA;                      // 0x3CA
-    u8 filler_3CB[0x249];              // 0x3CB
+    u8 filler_3CB[0x211];              // 0x3CB
+    void *heapAllocPtr1;               // 0x5DC - Heap allocated pointer (freed in Exit)
+    u8 filler_5E0[0x34];               // 0x5E0
     void *field_614;                   // 0x614
     u8 filler_618[0x112];              // 0x618
     u8 field_72A;                      // 0x72A
@@ -52,7 +54,10 @@ typedef struct PokeathlonCourseData {
     u16 frameTimer;                    // 0xD28 - Frame counter, resets at 0x708
     u16 filler_D2A;                    // 0xD2A - Alignment padding
     u32 counterEnabled;                // 0xD2C - Flag to enable frame counters
-    u8 filler_D30[0x40];               // 0xD30
+    u8 filler_D30[0x34];               // 0xD30
+    void *heapAllocPtr2;               // 0xD64 - Heap allocated pointer (freed in Exit if mode == 0)
+    void *heapAllocPtr3;               // 0xD68 - Heap allocated pointer (freed in Exit if mode == 0)
+    u8 filler_D6C[4];                  // 0xD6C
 } PokeathlonCourseData;
 
 // Function declarations

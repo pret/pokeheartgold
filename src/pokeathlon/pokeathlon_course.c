@@ -6,6 +6,7 @@
 
 #include "heap.h"
 #include "render_text.h"
+#include "unk_02031904.h"
 #include "unk_02035900.h"
 
 // External overlay 97 function declarations (in assembly for now)
@@ -201,4 +202,55 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
 
     ov96_021E67AC(data);
     return FALSE;
+}
+
+// External functions for Exit
+extern BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
+extern void ov96_021E7F98(s32 frameCount, u32 maxValue, Pokeathlon_UnkSubStruct_B00 *result);
+extern void ov96_021E9320(void *ptr);
+extern void ov96_021E8810(void *ptr);
+
+BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
+    PokeathlonCourseData *data;
+    PokeathlonCourseArgs *args;
+    POKEATHLON_SAV *pokeathlonSave;
+    Pokeathlon_UnkSubStruct_B00 *result;
+    SaveData *saveData;
+
+    data = OverlayManager_GetData(manager);
+
+    // Verify heap is valid
+    if (!GF_heap_c_dummy_return_true(HEAP_ID_92)) {
+        GF_AssertFail();
+    }
+
+    // Check if we need to free certain allocations
+    args = data->args;
+    if (args->filler_0[0xE] == 0) {
+        // Free two heap allocations
+        Heap_Free(data->heapAllocPtr2);
+        Heap_Free(data->heapAllocPtr3);
+    }
+
+    // Get Pokeathlon save data and process result
+    saveData = *(SaveData **)data->args;
+    pokeathlonSave = Save_Pokeathlon_Get(saveData);
+    result = sub_020319F0(pokeathlonSave);
+    ov96_021E7F98(data->frameCounter, 0xEA5F, result);
+
+    // Reset text flags
+    TextFlags_SetCanABSpeedUpPrint(FALSE);
+    TextFlags_SetAutoScrollParam(0);
+    TextFlags_SetCanTouchSpeedUpPrint(FALSE);
+
+    // Free system objects
+    ov96_021E9320(data->field_614);
+    Heap_Free(data->heapAllocPtr1);
+    ov96_021E8810(data->system);
+
+    // Clean up overlay data and heap
+    OverlayManager_FreeData(manager);
+    Heap_Destroy(HEAP_ID_92);
+
+    return TRUE;
 }
