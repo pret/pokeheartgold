@@ -131,8 +131,8 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
         if (courseState->exitFlag != 0) {
             PokeathlonCourseArgs *args;
             args = (PokeathlonCourseArgs *)courseState->argsPtr;
-            args->filler_0[6] = args->filler_0[7];
-            args->filler_0[5] = 0;
+            args->modeBytes[2] = args->modeBytes[3];
+            args->modeBytes[1] = 0;
             courseState->exitFlag = 0;
         }
 
@@ -222,7 +222,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 
     // Check if we need to free certain allocations
     args = data->args;
-    if (args->filler_0[0xE] == 0) {
+    if (args->shouldFreeHeap == 0) {
         // Free two heap allocations
         Heap_Free(data->heapAllocPtr2);
         Heap_Free(data->heapAllocPtr3);
