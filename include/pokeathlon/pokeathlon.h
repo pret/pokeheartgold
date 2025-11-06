@@ -6,8 +6,10 @@
 #include "overlay_manager.h"
 
 // Pokeathlon course arguments structure
+// Note: Original code accesses this as a byte array (filler_0[index])
+// Offsets: 0x0-0x3=SaveData*, 0x4-0x7=mode, 0x8=field_8, 0x9=field_9, 0xE=shouldFreeHeap
 typedef struct PokeathlonCourseArgs {
-    u8 filler_0[4]; // 0x000
+    u8 filler_0[4]; // 0x000 - SaveData pointer (accessed via *(SaveData **)args)
     u32 mode;       // 0x004 - Mode flag (1 = special mode)
     // ... more fields to be discovered
 } PokeathlonCourseArgs;

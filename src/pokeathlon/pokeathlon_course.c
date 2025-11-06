@@ -9,10 +9,23 @@
 #include "unk_02031904.h"
 #include "unk_02035900.h"
 
-// External overlay 97 function declarations (in assembly for now)
+// External functions used throughout this file (in assembly for now)
 extern int ov97_0221E5C0(OverlayManager *man, int *state); // Init
 extern int ov97_0221E5D4(OverlayManager *man, int *state); // Main/Exec
 extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
+extern void sub_02037AC0(u8 param);
+extern BOOL sub_02037B38(u8 param);
+extern void GF_AssertFail(void);
+extern BOOL ov96_021E5C2C(PokeathlonCourseData *data);
+extern BOOL ov96_021E5F24(PokeathlonCourseData *data);
+extern void *ov96_021E9A14(void);
+extern void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
+extern u8 *ov96_021E8A20(void *ptr);
+extern void ov96_021E67AC(PokeathlonCourseData *data);
+extern BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
+extern void ov96_021E7F98(s32 frameCount, u32 maxValue, Pokeathlon_UnkSubStruct_B00 *result);
+extern void ov96_021E9320(void *ptr);
+extern void ov96_021E8810(void *ptr);
 
 // Data tables in assembly
 extern const OverlayManagerTemplate ov96_0221A7E4; // Sub-overlay template
@@ -88,17 +101,6 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     return TRUE;
 }
-
-// External functions used by Main (in assembly for now)
-extern void sub_02037AC0(u8 param);
-extern BOOL sub_02037B38(u8 param);
-extern void GF_AssertFail(void);
-extern BOOL ov96_021E5C2C(PokeathlonCourseData *data);
-extern BOOL ov96_021E5F24(PokeathlonCourseData *data);
-extern void *ov96_021E9A14(void);
-extern void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
-extern u8 *ov96_021E8A20(void *ptr);
-extern void ov96_021E67AC(PokeathlonCourseData *data);
 
 BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
@@ -203,12 +205,6 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
     ov96_021E67AC(data);
     return FALSE;
 }
-
-// External functions for Exit
-extern BOOL GF_heap_c_dummy_return_true(enum HeapID heapId);
-extern void ov96_021E7F98(s32 frameCount, u32 maxValue, Pokeathlon_UnkSubStruct_B00 *result);
-extern void ov96_021E9320(void *ptr);
-extern void ov96_021E8810(void *ptr);
 
 BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     PokeathlonCourseData *data;
