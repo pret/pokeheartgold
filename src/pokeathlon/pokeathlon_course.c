@@ -4,6 +4,7 @@
 
 #include "pokeathlon/pokeathlon.h"
 
+#include "assert.h"
 #include "heap.h"
 #include "render_text.h"
 #include "unk_02031904.h"
@@ -15,7 +16,6 @@ extern int ov97_0221E5D4(OverlayManager *man, int *state); // Main/Exec
 extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
 extern void sub_02037AC0(u8 param);
 extern BOOL sub_02037B38(u8 param);
-extern void GF_AssertFail(void);
 extern BOOL ov96_021E5C2C(PokeathlonCourseData *data);
 extern BOOL ov96_021E5F24(PokeathlonCourseData *data);
 extern void *ov96_021E9A14(void);
@@ -103,17 +103,14 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 }
 
 BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
-    PokeathlonCourseData *data;
-    PokeathlonCourseState *courseState;
+    PokeathlonCourseData *data = OverlayManager_GetData(manager);
+    PokeathlonCourseState *courseState = &data->courseState;
 
-    data = OverlayManager_GetData(manager);
-    courseState = &data->courseState;
-
-    // Frame counter system: increments frameTimer each frame, and frameCounter every 0x708 frames (up to max 0xEA5F)
+    // Frame counter system: increments frameTimer each frame, and frameCounter every 1800 frames (up to max 59999)
     if (data->counterEnabled != 0) {
         data->frameTimer++;
-        if (data->frameTimer >= 0x708) {
-            if (data->frameCounter < 0xEA5F) {
+        if (data->frameTimer >= 1800) {
+            if (data->frameCounter < 59999) {
                 data->frameCounter++;
             }
             data->frameTimer = 0;
@@ -122,15 +119,14 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
 
     // Main state machine
     switch (courseState->mainState) {
-    case 0: // Idle state - waiting for transitions
+    case POKEATHLON_STATE_IDLE:
         if (ov96_021E5C2C(data)) {
             return TRUE;
         }
 
         // Handle exit flag
         if (courseState->exitFlag != 0) {
-            PokeathlonCourseArgs *args;
-            args = (PokeathlonCourseArgs *)courseState->argsPtr;
+            PokeathlonCourseArgs *args = (PokeathlonCourseArgs *)courseState->argsPtr;
             args->modeBytes[2] = args->modeBytes[3];
             args->modeBytes[1] = 0;
             courseState->exitFlag = 0;
@@ -139,34 +135,32 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
         // Check for state transitions
         if (courseState->transitionType != 0) {
             if (courseState->transitionType == 0x10) { // Special exit transition
-                courseState->mainState = 3;            // Go to state 3
+                courseState->mainState = POKEATHLON_STATE_START_EXIT;
             } else {
-                courseState->mainState = 1; // Go to state 1
+                courseState->mainState = POKEATHLON_STATE_START_TRANSITION;
             }
         }
         break;
 
-    case 1: // Start transition
+    case POKEATHLON_STATE_START_TRANSITION:
         sub_02037AC0((u8)courseState->transitionType);
-        courseState->mainState = 2;
-        // Fallthrough to case 2
+        courseState->mainState = POKEATHLON_STATE_WAIT_TRANSITION;
+        // Fallthrough to case POKEATHLON_STATE_WAIT_TRANSITION
 
-    case 2: // Wait for transition to complete
+    case POKEATHLON_STATE_WAIT_TRANSITION:
         if (sub_02037B38((u8)courseState->transitionType)) {
-            courseState->mainState = 0;      // Return to idle
+            courseState->mainState = POKEATHLON_STATE_IDLE;
             courseState->transitionType = 0; // Clear transition type
         }
         break;
 
-    case 3: // Start exit transition (special case for transition type 0x10)
-        if (courseState->transitionType != 0x10) {
-            GF_AssertFail();
-        }
+    case POKEATHLON_STATE_START_EXIT:
+        GF_ASSERT(courseState->transitionType == 0x10);
         sub_02037AC0((u8)courseState->transitionType);
-        courseState->mainState = 4;
-        // Fallthrough to case 4
+        courseState->mainState = POKEATHLON_STATE_EXIT_SEQUENCE;
+        // Fallthrough to case POKEATHLON_STATE_EXIT_SEQUENCE
 
-    case 4: // Exit sequence
+    case POKEATHLON_STATE_EXIT_SEQUENCE:
         if (!sub_02037B38((u8)courseState->transitionType)) {
             if (ov96_021E5F24(data)) {
                 break;
@@ -196,7 +190,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
                 }
             }
         } else {
-            courseState->mainState = 0;      // Return to idle
+            courseState->mainState = POKEATHLON_STATE_IDLE;
             courseState->transitionType = 0; // Clear transition type
         }
         break;
@@ -216,9 +210,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     data = OverlayManager_GetData(manager);
 
     // Verify heap is valid
-    if (!GF_heap_c_dummy_return_true(HEAP_ID_92)) {
-        GF_AssertFail();
-    }
+    GF_ASSERT(GF_heap_c_dummy_return_true(HEAP_ID_92));
 
     // Check if we need to free certain allocations
     args = data->args;
@@ -232,7 +224,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     saveData = *(SaveData **)data->args;
     pokeathlonSave = Save_Pokeathlon_Get(saveData);
     result = sub_020319F0(pokeathlonSave);
-    ov96_021E7F98(data->frameCounter, 0xEA5F, result);
+    ov96_021E7F98(data->frameCounter, 59999, result);
 
     // Reset text flags
     TextFlags_SetCanABSpeedUpPrint(FALSE);

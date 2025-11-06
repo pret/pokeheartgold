@@ -7,17 +7,26 @@
 
 // Pokeathlon course arguments structure
 typedef struct PokeathlonCourseArgs {
-    void *saveData;     // 0x000 - Save data pointer (SaveData *)
+    void *saveData; // 0x000 - Save data pointer (SaveData *)
     union {
-        u32 mode;       // 0x004 - Mode flag (1 = special mode) - accessed as u32
+        u32 mode;        // 0x004 - Mode flag (1 = special mode) - accessed as u32
         u8 modeBytes[4]; // 0x004-0x007 - Individual byte access: [0]=0x4, [1]=0x5, [2]=0x6, [3]=0x7
     };
-    u8 field_8;         // 0x008
-    u8 field_9;         // 0x009
-    u8 filler_A[4];     // 0x00A
-    u8 shouldFreeHeap;  // 0x00E - Flag: if 0, free heap allocations in Exit
+    u8 field_8;        // 0x008
+    u8 field_9;        // 0x009
+    u8 filler_A[4];    // 0x00A
+    u8 shouldFreeHeap; // 0x00E - Flag: if 0, free heap allocations in Exit
     // ... more fields to be discovered
 } PokeathlonCourseArgs;
+
+// Main state machine states
+typedef enum PokeathlonCourseMainState {
+    POKEATHLON_STATE_IDLE = 0,         // Idle state - waiting for transitions
+    POKEATHLON_STATE_START_TRANSITION, // Start transition
+    POKEATHLON_STATE_WAIT_TRANSITION,  // Wait for transition to complete
+    POKEATHLON_STATE_START_EXIT,       // Start exit transition (for type 0x10)
+    POKEATHLON_STATE_EXIT_SEQUENCE     // Exit sequence
+} PokeathlonCourseMainState;
 
 // State machine structure (overlays stateArgsPtr at 0x3B4)
 // This struct maps to a u32 array view for code generation compatibility
