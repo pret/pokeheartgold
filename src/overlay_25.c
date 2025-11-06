@@ -315,12 +315,12 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
         u16 move = trainerHouseMon->moves[i];
         SetMonData(mon, MON_DATA_MOVE1 + i, &move);
         tempByte = trainerHouseMon->ppUp >> (i * 2) & 3;
-        SetMonData(mon, MON_DATA_MOVE1PPUP + i, &tempByte);
-        u8 pp = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, NULL);
-        SetMonData(mon, MON_DATA_MOVE1PP + i, &pp);
+        SetMonData(mon, MON_DATA_MOVE1_PP_UPS + i, &tempByte);
+        u8 pp = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, NULL);
+        SetMonData(mon, MON_DATA_MOVE1_PP + i, &pp);
     }
     u32 otid = trainerHouseMon->otid;
-    SetMonData(mon, MON_DATA_OTID, &otid);
+    SetMonData(mon, MON_DATA_OT_ID, &otid);
     for (i = 0; i < NUM_STATS; i++) {
         tempByte = *(&trainerHouseMon->hpEv + i);
         SetMonData(mon, MON_DATA_HP_EV + i, &tempByte);
@@ -330,8 +330,8 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     StringFillEOS(nickname, NELEMS(nickname));
     CopyU16StringArrayN(nickname, trainerHouseMon->nickname, POKEMON_NAME_LENGTH);
-    SetMonData(mon, MON_DATA_NICKNAME_FLAT, nickname);
-    SetMonData(mon, MON_DATA_GAME_LANGUAGE, &(trainerHouseMon->language));
+    SetMonData(mon, MON_DATA_NICKNAME, nickname);
+    SetMonData(mon, MON_DATA_LANGUAGE, &(trainerHouseMon->language));
     CalcMonLevelAndStats(mon);
 }
 
