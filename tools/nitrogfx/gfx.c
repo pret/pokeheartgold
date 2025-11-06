@@ -1,15 +1,12 @@
 // Copyright (c) 2015 YamaArashi, 2021-2025 red031000
 
-#include "gfx.h"
-
-#include <stdbool.h>
-#include <stdint.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
+#include <stdint.h>
+#include <stdbool.h>
 #include "global.h"
-
+#include "gfx.h"
 #include "json.h"
 #include "util.h"
 
@@ -117,7 +114,8 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
     }
 }
 
-static void Convert8BppFrom4BppTiles(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors, int palIndex) {
+static void Convert8BppFrom4BppTiles(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors, int palIndex)
+{
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
@@ -149,7 +147,8 @@ static void Convert8BppFrom4BppTiles(unsigned char *src, unsigned char *dest, in
     }
 }
 
-static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG) {
+static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG)
+{
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
@@ -159,40 +158,51 @@ static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, in
     for (int i = 0; i < oamHeight * oamWidth; i++) {
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY + rowsSoFar) * 8 + j + startY;
-            if (vFlip) {
+            if (vFlip)
+            {
                 idxComponentY = (rowsSoFar + oamHeight - chunkStartY) * 8 + j + startY;
             }
-            if (hvFlip) {
+            if (hvFlip)
+            {
                 idxComponentY += 8 - j * 2;
             }
 
             for (int k = 0; k < 4; k++) {
-                int idxComponentX = (chunkStartX + tilesSoFar) * 4 + k + startX / 2;
+                int idxComponentX = (chunkStartX + tilesSoFar) * 4 + k + startX/2;
 
-                if (hFlip) {
-                    idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + -k + startX / 2 - 1;
+                if (hFlip)
+                {
+                    idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + - k + startX/2 - 1;
 
                     unsigned char srcPixelPair = *src;
                     unsigned char leftPixel = srcPixelPair & 0xF;
                     unsigned char rightPixel = srcPixelPair >> 4;
 
-                    if (toPNG) {
+                    if (toPNG)
+                    {
                         srcPixelPair = *src++;
                         leftPixel = srcPixelPair & 0xF;
                         rightPixel = srcPixelPair >> 4;
 
                         dest[idxComponentY * pitch + idxComponentX] = (leftPixel << 4) | rightPixel;
-                    } else {
+                    }
+                    else
+                    {
                         srcPixelPair = src[idxComponentY * pitch + idxComponentX];
                         leftPixel = srcPixelPair & 0xF;
                         rightPixel = srcPixelPair >> 4;
-
+                        
                         *dest++ = (leftPixel << 4) | rightPixel;
                     }
-                } else {
-                    if (toPNG) {
+                }
+                else
+                {
+                    if (toPNG)
+                    {
                         dest[idxComponentY * pitch + idxComponentX] = *src++;
-                    } else {
+                    }
+                    else
+                    {
                         *dest++ = src[idxComponentY * pitch + idxComponentX];
                     }
                 }
@@ -203,8 +213,10 @@ static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, in
     }
 }
 
-static void ConvertScanned4Bpp(unsigned char *src, unsigned char *dest, int charDataSize, bool invertColours) {
-    for (int i = 0; i < charDataSize; i++) {
+static void ConvertScanned4Bpp(unsigned char *src, unsigned char *dest, int charDataSize, bool invertColours)
+{
+    for (int i = 0; i < charDataSize; i++)
+    {
         unsigned char srcPixelPair = src[i];
         unsigned char leftPixel = srcPixelPair & 0xF;
         unsigned char rightPixel = srcPixelPair >> 4;
@@ -245,7 +257,8 @@ static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int nu
     }
 }
 
-static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG) {
+static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG)
+{
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
@@ -255,22 +268,28 @@ static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, in
     for (int i = 0; i < oamHeight * oamWidth; i++) {
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY + rowsSoFar) * 8 + j + startY;
-            if (vFlip) {
+            if (vFlip)
+            {
                 idxComponentY = (rowsSoFar + oamHeight - chunkStartY) * 8 + j + startY;
             }
-            if (hvFlip) {
+            if (hvFlip)
+            {
                 idxComponentY += 8 - j * 2;
             }
 
             for (int k = 0; k < 8; k++) {
                 int idxComponentX = (chunkStartX + tilesSoFar) * 8 + k + startX;
-                if (hFlip) {
-                    idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + -k + startX;
+                if (hFlip)
+                {
+                    idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + - k + startX;
                 }
 
-                if (toPNG) {
+                if (toPNG)
+                {
                     dest[idxComponentY * pitch + idxComponentX] = *src++;
-                } else {
+                }
+                else
+                {
                     *dest++ = src[idxComponentY * pitch + idxComponentX];
                 }
             }
@@ -280,8 +299,10 @@ static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, in
     }
 }
 
-static void ConvertScanned8Bpp(unsigned char *src, unsigned char *dest, int charDataSize, bool invertColours) {
-    for (int i = 0; i < charDataSize; i++) {
+static void ConvertScanned8Bpp(unsigned char *src, unsigned char *dest, int charDataSize, bool invertColours)
+{
+    for (int i = 0; i < charDataSize; i++)
+    {
         unsigned char srcPixel = src[i];
 
         if (invertColours) {
@@ -349,7 +370,8 @@ static void ConvertToTiles4Bpp(unsigned char *src, unsigned char *dest, int numT
     }
 }
 
-static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
+static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors)
+{
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
@@ -364,9 +386,8 @@ static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numT
                 int idxComponentX = (chunkStartX * colsPerChunk + tilesSoFar) * 8 + k;
                 unsigned char srcPixel = src[idxComponentY * pitch + idxComponentX];
 
-                if (invertColors) {
+                if (invertColors)
                     srcPixel = 255 - srcPixel;
-                }
 
                 *dest++ = srcPixel;
             }
@@ -376,11 +397,13 @@ static void ConvertToTiles8Bpp(unsigned char *src, unsigned char *dest, int numT
     }
 }
 
-static uint32_t Decode(unsigned char *src, int charDataSize, uint32_t encodeMode) {
+static uint32_t Decode(unsigned char *src, int charDataSize, uint32_t encodeMode)
+{
     uint32_t encValue = 0;
     if (encodeMode == 2) { // front to back
         encValue = (src[1] << 8) | src[0];
-        for (int i = 0; i < charDataSize; i += 2) {
+        for (int i = 0; i < charDataSize; i += 2)
+        {
             uint16_t val = src[i] | (src[i + 1] << 8);
             val ^= (encValue & 0xFFFF);
             src[i] = val;
@@ -390,7 +413,8 @@ static uint32_t Decode(unsigned char *src, int charDataSize, uint32_t encodeMode
         }
     } else if (encodeMode == 1) { // back to front
         encValue = (src[charDataSize - 1] << 8) | src[charDataSize - 2];
-        for (int i = charDataSize; i > 0; i -= 2) {
+        for (int i = charDataSize; i > 0; i -= 2)
+        {
             uint16_t val = (src[i - 1] << 8) | src[i - 2];
             val ^= (encValue & 0xFFFF);
             src[i - 1] = (val >> 8);
@@ -402,17 +426,21 @@ static uint32_t Decode(unsigned char *src, int charDataSize, uint32_t encodeMode
     return encValue;
 }
 
-static void Encode(unsigned char *dest, int charDataSize, uint32_t encValue, uint32_t encodeMode) {
+static void Encode(unsigned char *dest, int charDataSize, uint32_t encValue, uint32_t encodeMode)
+{
     if (encodeMode == 2) { // front to back
-        for (int i = charDataSize - 1; i > 0; i -= 2) {
+        for (int i = charDataSize - 1; i > 0; i -= 2)
+        {
             uint16_t val = dest[i - 1] | (dest[i] << 8);
             encValue = (encValue - 24691) * 4005161829;
             val ^= (encValue & 0xFFFF);
             dest[i] = (val >> 8);
             dest[i - 1] = val;
         }
-    } else if (encodeMode == 1) { // back to front
-        for (int i = 1; i < charDataSize; i += 2) {
+    }
+    else if (encodeMode == 1) { // back to front
+        for (int i = 1; i < charDataSize; i += 2)
+        {
             uint16_t val = (dest[i] << 8) | dest[i - 1];
             encValue = (encValue - 24691) * 4005161829;
             val ^= (encValue & 0xFFFF);
@@ -421,8 +449,9 @@ static void Encode(unsigned char *dest, int charDataSize, uint32_t encValue, uin
         }
     }
 }
-
-static void Convert8BppTo4BppTiles(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors) {
+      
+static void Convert8BppTo4BppTiles(unsigned char *src, unsigned char *dest, int numTiles, int chunksWide, int colsPerChunk, int rowsPerChunk, bool invertColors)
+{
     int tilesSoFar = 0;
     int rowsSoFar = 0;
     int chunkStartX = 0;
@@ -493,7 +522,8 @@ void ReadImage(char *path, int tilesWide, int bitDepth, int colsPerChunk, int ro
     free(buffer);
 }
 
-uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors, uint32_t encodeMode, bool convertTo8Bpp, int palIndex, bool verbose) {
+uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors, uint32_t encodeMode, bool convertTo8Bpp, int palIndex, bool verbose)
+{
     int fileSize;
     unsigned char *buffer = ReadWholeFile(path, &fileSize);
 
@@ -515,7 +545,8 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
 
     bool scanned = charHeader[0x14];
 
-    if (verbose) {
+    if (verbose)
+    {
         if (!convertTo8Bpp) {
             printf("-bitdepth %d ", bitDepth);
         } else {
@@ -526,7 +557,8 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
             printf("-version101 ");
         }
 
-        if (charHeader[0x8] == 0xFF && charHeader[0x9] == 0xFF && charHeader[0xA] == 0xFF && charHeader[0xB] == 0xFF) {
+        if (charHeader[0x8] == 0xFF && charHeader[0x9] == 0xFF && charHeader[0xA] == 0xFF && charHeader[0xB] == 0xFF)
+        {
             printf("-clobbersize ");
         }
 
@@ -538,7 +570,8 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
             printf("-mappingtype %d ", 1 << (5 + (charHeader[0x12] >> 4)));
         }
 
-        if (scanned) {
+        if (scanned)
+        {
             printf("-scanned ");
         }
 
@@ -547,14 +580,14 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
         }
     }
 
-    if (bitDepth == 4 && (scanned || !convertTo8Bpp)) {
+    if (bitDepth == 4 && (scanned || !convertTo8Bpp))
+    {
         image->palette.numColors = 16;
     }
 
     int tileSize = bitDepth * 8; // number of bytes per tile
-    if (bitDepth == 4 && convertTo8Bpp && !scanned) {
+    if (bitDepth == 4 && convertTo8Bpp && !scanned)
         tileSize *= 2;
-    }
 
     if (tilesWide == 0) {
         tilesWide = ReadS16(charHeader, 0xA);
@@ -588,7 +621,8 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
 
     uint32_t key = 0;
     uint32_t charDataSize = ReadS32(charHeader, 0x4) - 0x20; // read explicitly to account for possible SOPC chunk
-    if (encodeMode) {
+    if (encodeMode)
+    {
         key = Decode(imageData, charDataSize, encodeMode);
     }
     if (scanned)
@@ -608,10 +642,15 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
         switch (bitDepth)
         {
             case 4:
-                if (convertTo8Bpp) {
-                    Convert8BppFrom4BppTiles(imageData, image->pixels, numTiles, chunksWide, colsPerChunk, rowsPerChunk, invertColors, palIndex);
-                } else {
-                    ConvertFromTiles4Bpp(imageData, image->pixels, numTiles, chunksWide, colsPerChunk, rowsPerChunk, invertColors);
+                if (convertTo8Bpp)
+                {
+                    Convert8BppFrom4BppTiles(imageData, image->pixels, numTiles, chunksWide, colsPerChunk, rowsPerChunk,
+                                             invertColors, palIndex);
+                }
+                else
+                {
+                    ConvertFromTiles4Bpp(imageData, image->pixels, numTiles, chunksWide, colsPerChunk, rowsPerChunk,
+                                         invertColors);
                 }
                 break;
             case 8:
@@ -626,11 +665,15 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
 }
 
 // accounts for OAMs overlapping by a few pixels
-static int SnapToTile(int val) {
+static int SnapToTile(int val)
+{
     int displacement = val % 8;
-    if (displacement < 4) {
+    if (displacement < 4)
+    {
         val -= displacement;
-    } else {
+    }
+    else
+    {
         val += 8 - displacement;
     }
     return val;
@@ -641,23 +684,27 @@ struct Dimensions {
     int height;
 };
 
-static struct Dimensions CalculateOAMDimensions(struct OAM *oam) {
+static struct Dimensions CalculateOAMDimensions(struct OAM *oam)
+{
     struct Dimensions oamdim = {
         .width = 0,
         .height = 0,
     };
 
     int oamSize = oam->attr1.Size;
-    if (oamSize > 3) {
+    if (oamSize > 3)
+    {
         FATAL_ERROR("oamSize greater than expected\n");
     }
-    switch (oam->attr0.Shape) {
+    switch (oam->attr0.Shape)
+    {
     case 0:
         oamdim.height = 1 << oamSize;
         oamdim.width = oamdim.height;
         break;
     case 1:
-        switch (oamSize) {
+        switch (oamSize)
+        {
         case 0:
             oamdim.height = 1;
             oamdim.width = 2;
@@ -677,7 +724,8 @@ static struct Dimensions CalculateOAMDimensions(struct OAM *oam) {
         }
         break;
     case 2:
-        switch (oamSize) {
+        switch (oamSize)
+        {
         case 0:
             oamdim.height = 2;
             oamdim.width = 1;
@@ -707,20 +755,28 @@ struct CellInfo {
     int minY;
 };
 
-void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG, bool snap) {
+void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG, bool snap)
+{
     char *cellFileExtension = GetFileExtension(cellFilePath);
-    if (cellFileExtension == NULL) {
+    if (cellFileExtension == NULL)
+    {
         FATAL_ERROR("NULL cell file path\n");
     }
     struct JsonToCellOptions *options;
 
-    if (strcmp(cellFileExtension, "NCER") == 0) {
+    if (strcmp(cellFileExtension, "NCER") == 0)
+    {
         options = malloc(sizeof(struct JsonToCellOptions));
         ReadNtrCell(cellFilePath, options);
-    } else {
-        if (strcmp(cellFileExtension, "json") == 0) {
+    }
+    else
+    {
+        if (strcmp(cellFileExtension, "json") == 0)
+        {
             options = ParseNCERJson(cellFilePath);
-        } else {
+        }
+        else
+        {
             FATAL_ERROR("Incompatible cell file type\n");
         }
     }
@@ -730,46 +786,54 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG, bool
     int numTiles = 0;
     struct CellInfo *cellInfo = malloc(sizeof(struct CellInfo) * options->cellCount);
 
-    for (int i = 0; i < options->cellCount; i++) {
-        if (options->cells[i]->oamCount == 0) {
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        if (options->cells[i]->oamCount == 0)
+        {
             continue;
         }
         int cellHeight = 0;
         int cellWidth = 0;
-        if (options->cells[i]->attributes.boundingRect) {
+        if (options->cells[i]->attributes.boundingRect)
+        {
             cellHeight = options->cells[i]->maxY - options->cells[i]->minY;
             cellWidth = options->cells[i]->maxX - options->cells[i]->minX;
-            if (snap) {
-                cellHeight = SnapToTile(cellHeight);
-                cellWidth = SnapToTile(cellWidth);
-            }
             cellInfo[i].minX = options->cells[i]->minX;
             cellInfo[i].minY = options->cells[i]->minY;
-        } else {
+        }
+        else
+        {
             int minX = 0;
             int minY = 0;
             int maxX = 0;
             int maxY = 0;
-            for (int j = 0; j < options->cells[i]->oamCount; j++) {
+            for (int j = 0; j < options->cells[i]->oamCount; j++)
+            {
                 struct Dimensions oamdim = CalculateOAMDimensions(&options->cells[i]->oam[j]);
                 int xCoord = options->cells[i]->oam[j].attr1.XCoordinate;
-                if (xCoord & (1 << 8)) {
+                if (xCoord & (1 << 8))
+                {
                     xCoord |= ~0x1FF;
                 }
                 int yCoord = options->cells[i]->oam[j].attr0.YCoordinate;
-                if (yCoord & (1 << 7)) {
+                if (yCoord & (1 << 7))
+                {
                     yCoord |= ~0xFF;
                 }
-                if (xCoord < minX || j == 0) {
+                if (xCoord < minX || j == 0)
+                {
                     minX = xCoord;
                 }
-                if (yCoord < minY || j == 0) {
+                if (yCoord < minY || j == 0)
+                {
                     minY = yCoord;
                 }
-                if (xCoord + (oamdim.width * 8) > maxX || j == 0) {
+                if (xCoord + (oamdim.width * 8) > maxX || j == 0)
+                {
                     maxX = xCoord + (oamdim.width * 8);
                 }
-                if (yCoord + (oamdim.height * 8) > maxY || j == 0) {
+                if (yCoord + (oamdim.height * 8) > maxY || j == 0)
+                {
                     maxY = yCoord + (oamdim.height * 8);
                 }
             }
@@ -778,15 +842,22 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG, bool
             cellInfo[i].minX = minX;
             cellInfo[i].minY = minY;
         }
+        if (snap)
+        {
+            cellHeight = SnapToTile(cellHeight);
+            cellWidth = SnapToTile(cellWidth);
+        }
 
         outputHeight += cellHeight + 1;
-        if (outputWidth < cellWidth) {
+        if (outputWidth < cellWidth)
+        {
             outputWidth = cellWidth;
         }
         cellInfo[i].height = cellHeight;
     }
 
-    if (outputHeight < 1 || outputWidth == 0) {
+    if (outputHeight < 1 || outputWidth == 0)
+    {
         FATAL_ERROR("No cells. Incompatible NCER\n");
     }
     unsigned char *newPixels = malloc(outputHeight * outputWidth);
@@ -795,56 +866,66 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG, bool
     int scanHeight = -1;
     int tileMask[outputHeight * outputWidth]; // check for unused (starting) tiles
     memset(tileMask, 0, outputHeight * outputWidth * sizeof(int));
-    for (int i = 0; i < options->cellCount; i++) {
-        if (options->cells[i]->oamCount == 0) {
+    for (int i = 0; i < options->cellCount; i++)
+    {
+        if (options->cells[i]->oamCount == 0)
+        {
             continue;
         }
         scanHeight++;
         int cellHeight = cellInfo[i].height;
-        if (snap) {
+        if (snap)
+        {
             cellHeight = SnapToTile(cellHeight);
         }
         int uniqueOAMs = options->cells[i]->oamCount;
 
-        for (int j = 0; j < options->cells[i]->oamCount; j++) {
+        for (int j = 0; j < options->cells[i]->oamCount; j++)
+        {
             struct Dimensions oamdim = CalculateOAMDimensions(&options->cells[i]->oam[j]);
 
             int x = options->cells[i]->oam[j].attr1.XCoordinate;
-            if (x & (1 << 8)) {
+            if (x & (1 << 8))
+            {
                 x |= ~0x1FF;
             }
             int y = options->cells[i]->oam[j].attr0.YCoordinate;
-            if (y & (1 << 7)) {
+            if (y & (1 << 7))
+            {
                 y |= ~0xFF;
             }
             x -= cellInfo[i].minX;
             y -= cellInfo[i].minY;
 
-            if (snap) {
+            if (snap)
+            {
                 x = SnapToTile(x);
                 y = SnapToTile(y);
             }
 
             int pixelOffset = 0;
-            switch (options->mappingType) {
-            case 0:
-                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 32;
-                break;
-            case 1:
-                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 64;
-                break;
-            case 2:
-                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 128;
-                break;
-            case 3:
-                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 256;
-                break;
+            switch (options->mappingType)
+            {
+                case 0:
+                    pixelOffset = options->cells[i]->oam[j].attr2.CharName * 32;
+                    break;
+                case 1:
+                    pixelOffset = options->cells[i]->oam[j].attr2.CharName * 64;
+                    break;
+                case 2:
+                    pixelOffset = options->cells[i]->oam[j].attr2.CharName * 128;
+                    break;
+                case 3:
+                    pixelOffset = options->cells[i]->oam[j].attr2.CharName * 256;
+                    break;
             }
-
-            if (options->vramTransferEnabled) {
+            
+            if (options->vramTransferEnabled)
+            {
                 pixelOffset += options->transferData[i]->sourceDataOffset;
             }
-            if (tileMask[pixelOffset]) {
+            if (tileMask[pixelOffset])
+            {
                 uniqueOAMs--;
                 continue;
             }
@@ -856,40 +937,53 @@ void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG, bool
             bool vFlip = options->cells[i]->attributes.vFlip && rotationScaling;
             bool hvFlip = options->cells[i]->attributes.hvFlip && rotationScaling;
 
-            switch (image->bitDepth) {
-            case 4:
-                if (toPNG) {
-                    ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, true);
-                } else {
-                    ConvertFromTiles4BppCell(image->pixels, newPixels + pixelOffset, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, false);
-                }
-                break;
-            case 8:
-                pixelOffset *= 2;
-                if (toPNG) {
-                    ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, true);
-                } else {
-                    ConvertFromTiles8BppCell(image->pixels, newPixels + pixelOffset, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, false);
-                }
-                break;
+            switch (image->bitDepth)
+            {
+                case 4:
+                    if (toPNG)
+                    {
+                        ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, true);
+                    }
+                    else
+                    {
+                        ConvertFromTiles4BppCell(image->pixels, newPixels + pixelOffset, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, false);
+                    }
+                    break;
+                case 8:
+                    pixelOffset *= 2;
+                    if (toPNG)
+                    {
+                        ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, true);
+                    }
+                    else
+                    {
+                        ConvertFromTiles8BppCell(image->pixels, newPixels + pixelOffset, oamdim.width, oamdim.height, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, false);
+                    }
+                    break;
             }
         }
 
-        if (uniqueOAMs == 0) {
+        if (uniqueOAMs == 0)
+        {
             outputHeight -= cellHeight + 1;
             scanHeight--;
-        } else {
+        }
+        else
+        {
             scanHeight += cellHeight;
         }
     }
 
     free(image->pixels);
     free(cellInfo);
-    if (toPNG) {
+    if (toPNG)
+    {
         image->pixels = newPixels;
         image->height = outputHeight;
         image->width = outputWidth;
-    } else {
+    }
+    else
+    {
         image->pixels = newPixels;
         image->height = numTiles * 8;
         image->width = 8;
@@ -948,16 +1042,18 @@ void WriteImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int ro
     free(buffer);
 }
 
-void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, bool vram, bool scan, uint32_t encodeMode, uint32_t mappingType, uint32_t key, bool wrongSize, bool convertTo4Bpp) {
+void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image,
+                   bool invertColors, bool clobberSize, bool byteOrder, bool version101, bool sopc, bool vram, bool scan,
+                   uint32_t encodeMode, uint32_t mappingType, uint32_t key, bool wrongSize, bool convertTo4Bpp)
+{
     FILE *fp = fopen(path, "wb");
 
     if (fp == NULL)
         FATAL_ERROR("Failed to open \"%s\" for writing.\n", path);
 
     int tileSize = bitDepth * 8; // number of bytes per tile
-    if (bitDepth == 8 && convertTo4Bpp && !scan) {
+    if (bitDepth == 8 && convertTo4Bpp && !scan)
         tileSize /= 2;
-    }
 
     if (image->width % 8 != 0)
         FATAL_ERROR("The width in pixels (%d) isn't a multiple of 8.\n", image->width);
@@ -989,7 +1085,8 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int
 
     int chunksWide = tilesWide / colsPerChunk; // how many chunks side-by-side are needed for the full width of the image
 
-    if (scan) {
+    if (scan)
+    {
         switch (bitDepth)
         {
             case 4:
@@ -999,7 +1096,9 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int
                 ConvertScanned8Bpp(image->pixels, pixelBuffer, bufferSize, invertColors);
                 break;
         }
-    } else {
+    }
+    else
+    {
         switch (bitDepth)
         {
             case 4:
@@ -1007,15 +1106,21 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int
                                    invertColors);
                 break;
             case 8:
-                if (convertTo4Bpp) {
-                    Convert8BppTo4BppTiles(image->pixels, pixelBuffer, numTiles, chunksWide, colsPerChunk, rowsPerChunk, invertColors);
-                } else {
-                    ConvertToTiles8Bpp(image->pixels, pixelBuffer, numTiles, chunksWide, colsPerChunk, rowsPerChunk, invertColors);
+                if (convertTo4Bpp)
+                {
+                    Convert8BppTo4BppTiles(image->pixels, pixelBuffer, numTiles, chunksWide, colsPerChunk, rowsPerChunk,
+                                           invertColors);
+                }
+                else
+                {
+                    ConvertToTiles8Bpp(image->pixels, pixelBuffer, numTiles, chunksWide, colsPerChunk, rowsPerChunk,
+                                       invertColors);
                 }
                 break;
         }
     }
-    if (encodeMode) {
+    if (encodeMode)
+    {
         Encode(pixelBuffer, bufferSize, key, encodeMode);
     }
 
@@ -1077,7 +1182,8 @@ void WriteNtrImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int
         charHeader[18] = val;
     }
 
-    if (scan) {
+    if (scan)
+    {
         charHeader[20] = 1; //implies BMP
     }
 
@@ -1138,7 +1244,8 @@ void ReadGbaPalette(char *path, struct Palette *palette)
     free(data);
 }
 
-void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIndex, bool inverted, bool convertTo8Bpp) {
+void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIndex, bool inverted, bool convertTo8Bpp)
+{
     int fileSize;
     unsigned char *data = ReadWholeFile(path, &fileSize);
 
@@ -1166,7 +1273,7 @@ void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIn
     if (palIndex == 0) {
         palette->numColors = paletteSize / 2;
     } else {
-        palette->numColors = bitdepth == 4 && !convertTo8Bpp ? 16 : 256; // remove header and divide by 2
+        palette->numColors = bitdepth == 4 && !convertTo8Bpp ? 16 : 256; //remove header and divide by 2
         --palIndex;
     }
 
@@ -1213,7 +1320,8 @@ void WriteGbaPalette(char *path, struct Palette *palette)
     fclose(fp);
 }
 
-void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, int bitdepth, bool pad, int compNum, bool pcmp, int pcmpStartIndex, bool inverted, bool convertTo4Bpp) {
+void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, int bitdepth, bool pad, int compNum, bool pcmp, int pcmpStartIndex, bool inverted, bool convertTo4Bpp)
+{
     FILE *fp = fopen(path, "wb");
 
     if (fp == NULL)
@@ -1446,11 +1554,13 @@ void ReadNtrCell_CEBK(unsigned char * restrict data, unsigned int blockOffset, u
         }
     }
 
-    if (options->ucatEnabled) {
+    if (options->ucatEnabled)
+    {
         offset = blockOffset + 0x18 + ucatOffset + 0x04 * options->cellCount;
 
         options->ucatCellAttribtes = malloc(sizeof(uint32_t) * options->cellCount);
-        for (int i = 0; i < options->cellCount; i++) {
+        for (int i = 0; i < options->cellCount; i++)
+        {
             options->ucatCellAttribtes[i] = data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24);
             offset += 0x04;
         }
@@ -1482,7 +1592,7 @@ void ReadNtrCell_LABL(unsigned char * restrict data, unsigned int blockOffset, u
         {
             FATAL_ERROR("corrupted LABL block\n");
         }
-        unsigned long slen = strnlen((char *)data + offset, blockSize - offset);
+        unsigned long slen = strnlen((char *)data + offset, (blockOffset + blockSize) - offset);
         options->labels[i] = malloc(slen + 1);
         strncpy(options->labels[i], (char *)data + offset, slen + 1);
     }
@@ -1539,7 +1649,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
     }
     // if UCAT is enabled add size to KBEC
     unsigned int ucatSize = 0;
-    if (options->ucatEnabled) {
+    if (options->ucatEnabled)
+    {
         ucatSize = options->cellCount * 0x08 + 0x10;
         kbecSize += ucatSize;
     }
@@ -1549,7 +1660,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
         kbecSize += options->cells[idx / iterNum]->oamCount * 0x06;
     }
 
-    if (!options->dontPadKbec) {
+    if (!options->dontPadKbec)
+    {
         // KBEC size is padded to be 4-byte aligned
         kbecSize = (kbecSize + 3) & ~3;
     }
@@ -1585,7 +1697,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
     KBECHeader[16] = (options->mappingType & 0xFF); //not possible to be more than 8 bits, though 32 are allocated
 
     // offset to UCAT data within KBEC section (offset from KBEC start + 0x1c)
-    if (options->ucatEnabled) {
+    if (options->ucatEnabled) 
+    {
         unsigned int ucatOffset = (kbecSize + 0x20) - ucatSize - 0x08;
         KBECHeader[28] = ucatOffset & 0xFF;
         KBECHeader[29] = (ucatOffset >> 8) & 0xFF;
@@ -1695,7 +1808,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
     }
 
     // word-aligned
-    if (offset % 4 > 0) {
+    if (offset % 4 > 0)
+    {
         offset += 4 - (offset % 4);
     }
 
@@ -1731,9 +1845,10 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
     }
 
     // UCAT data
-    if (options->ucatEnabled) {
+    if (options->ucatEnabled)
+    {
         // UCAT magic
-        strcpy((char *)(KBECContents + offset), "TACU");
+        strcpy((char *) (KBECContents + offset), "TACU");
         offset += 0x04;
 
         // ucat size
@@ -1758,7 +1873,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
 
         // *attr
         unsigned int attributeAddress = options->cellCount * 0x04 + 0x08;
-        for (int i = 0; i < options->cellCount; i++) {
+        for (int i = 0; i < options->cellCount; i++)
+        {
             KBECContents[offset] = attributeAddress & 0xFF;
             KBECContents[offset + 1] = (attributeAddress >> 8) & 0xFF;
             KBECContents[offset + 2] = (attributeAddress >> 16) & 0xFF;
@@ -1768,7 +1884,8 @@ void WriteNtrCell(char *path, struct JsonToCellOptions *options)
         }
 
         // attr
-        for (int i = 0; i < options->cellCount; i++) {
+        for (int i = 0; i < options->cellCount; i++)
+        {
             unsigned int ucatAttribute = options->ucatCellAttribtes[i];
             KBECContents[offset] = ucatAttribute & 0xFF;
             KBECContents[offset + 1] = (ucatAttribute >> 8) & 0xFF;
@@ -1960,17 +2077,20 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options)
 
     free(frameOffsets);
 
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         offset = 0x28 + uaatOffset + 0x0c * options->sequenceCount + 0x04 * options->frameCount; // index of first attribute
 
         options->uaatData.sequenceAttributes = malloc(sizeof(uint32_t) * options->sequenceCount);
-        for (int i = 0; i < options->sequenceCount; i++) {
+        for (int i = 0; i < options->sequenceCount; i++)
+        {
             options->uaatData.sequenceAttributes[i] = data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24);
             offset += 0x04;
         }
 
         options->uaatData.frameAttributes = malloc(sizeof(uint32_t) * options->frameCount);
-        for (int i = 0; i < options->frameCount; i++) {
+        for (int i = 0; i < options->frameCount; i++)
+        {
             options->uaatData.frameAttributes[i] = data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24);
             offset += 0x04;
         }
@@ -2062,7 +2182,7 @@ void ReadNtrAnimation(char *path, struct JsonToAnimationOptions *options)
         }
     }
 
-    offset = 0x10 + (data[0x14] | (data[0x15] << 8) | (data[0x26] << 16) | (data[0x17] << 24)); // start of label results
+    offset = 0x10 + (data[0x14] | (data[0x15] << 8) | (data[0x26] << 16) | (data[0x17] << 24)); //start of label results
 
     if (options->labelEnabled)
     {
@@ -2153,7 +2273,8 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
     free(usedResults);
 
     unsigned int uaatSize = 0;
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         uaatSize = 0x10 + 0x10 * options->sequenceCount + 0x08 * options->frameCount;
         totalSize += uaatSize;
     }
@@ -2203,7 +2324,8 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
     KBNAHeader[23] = resultsOffset >> 24;
 
     unsigned int uaatOffset = 0;
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         uaatOffset = KNBASize - uaatSize - 0x08;
         KBNAHeader[28] = uaatOffset & 0xff;
         KBNAHeader[29] = (uaatOffset >> 8) & 0xff;
@@ -2322,11 +2444,12 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
     }
 
     // UAAT data
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         int offset = uaatOffset - 0x18;
-
+        
         // UAAT magic
-        strcpy((char *)(KBNAContents + offset), "TAAU");
+        strcpy((char *) (KBNAContents + offset), "TAAU");
         offset += 0x04;
 
         // uaat size
@@ -2351,7 +2474,8 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
 
         unsigned int uaatSinglePointer = 0x08 + 0x0c * options->sequenceCount + 0x04 * options->frameCount;
         unsigned int uaatDoublePointer = 0x08 + 0x0c * options->sequenceCount;
-        for (int i = 0; i < options->sequenceCount; i++) {
+        for (int i = 0; i < options->sequenceCount; i++)
+        {
             // frame count in this sequence
             KBNAContents[offset] = options->sequenceData[i]->frameCount & 0xFF;
             KBNAContents[offset + 1] = (options->sequenceData[i]->frameCount >> 8) & 0xFF;
@@ -2379,7 +2503,8 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
             uaatDoublePointer += options->sequenceData[i]->frameCount * 0x04;
         }
 
-        for (int i = 0; i < options->frameCount; i++) {
+        for (int i = 0; i < options->frameCount; i++)
+        {
             // frame attributes *
             KBNAContents[offset] = uaatSinglePointer & 0xFF;
             KBNAContents[offset + 1] = (uaatSinglePointer >> 8) & 0xFF;
@@ -2389,7 +2514,8 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
             uaatSinglePointer += 0x04;
         }
 
-        for (int i = 0; i < options->sequenceCount; i++) {
+        for (int i = 0; i < options->sequenceCount; i++)
+        {
             // sequence attributes
             unsigned int uaatSequenceAttribute = options->uaatData.sequenceAttributes[i];
             KBNAContents[offset] = uaatSequenceAttribute & 0xFF;
@@ -2399,7 +2525,8 @@ void WriteNtrAnimation(char *path, struct JsonToAnimationOptions *options)
             offset += 0x04;
         }
 
-        for (int i = 0; i < options->frameCount; i++) {
+        for (int i = 0; i < options->frameCount; i++)
+        {
             // frame attributes
             unsigned int uaatFrameAttribute = options->uaatData.frameAttributes[i];
             KBNAContents[offset] = uaatFrameAttribute & 0xFF;
