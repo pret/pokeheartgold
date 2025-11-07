@@ -17,8 +17,8 @@ typedef enum Workflow {
     WORKFLOW_WIN_ROUND,
     WORKFLOW_AWARD_COINS,
     WORKFLOW_REVEAL_BOARD,
-    WORKFLOW_UNK_13,
-    WORKFLOW_UNK_14,
+    WORKFLOW_MEMO_TOUCH,
+    WORKFLOW_MEMO_BUTTONS,
     WORKFLOW_QUIT_ROUND,
 
     WORKFLOW_TERMINATE = 65534,
@@ -37,7 +37,7 @@ typedef struct VoltorbFlipWorkflow {
     // Optional. Runs over 1 frame.
     VoltorbFlipTask begin;
     // Required. Runs over multiple frames.
-    VoltorbFlipTask wait;
+    VoltorbFlipTask main;
     // Optional. Runs over 1 frame.
     VoltorbFlipTask end;
     // Optional. Runs over multiple frames.

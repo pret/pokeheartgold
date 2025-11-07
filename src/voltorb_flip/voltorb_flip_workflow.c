@@ -10,112 +10,112 @@ const VoltorbFlipWorkflows sVoltorbFlipWorkflows = {
     [WORKFLOW_COIN_CASE_FULL] = {
                                  .setup = NULL,
                                  .begin = VoltorbFlipWorkflow_InitChecks_Begin,
-                                 .wait = VoltorbFlipWorkflow_InitChecks_Wait,
+                                 .main = VoltorbFlipWorkflow_InitChecks_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_NEW_ROUND] = {
                                  .setup = NULL,
                                  .begin = VoltorbFlipWorkflow_NewRound_Begin,
-                                 .wait = VoltorbFlipWorkflow_NewRound_Wait,
+                                 .main = VoltorbFlipWorkflow_NewRound_Main,
                                  .end = NULL,
                                  .tidy = VoltorbFlipWorkflow_NewRound_TidyUp,
                                  },
     [WORKFLOW_SELECT_MAIN_MENU] = {
                                  .setup = VoltorbFlipWorkflow_SelectMainMenu_SetUp,
                                  .begin = VoltorbFlipWorkflow_SelectMainMenu_Begin,
-                                 .wait = VoltorbFlipWorkflow_SelectMainMenu_Wait,
+                                 .main = VoltorbFlipWorkflow_SelectMainMenu_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_SELECT_GAME_INFO] = {
                                  .setup = VoltorbFlipWorkflow_SelectGameInfo_SetUp,
                                  .begin = VoltorbFlipWorkflow_SelectGameInfo_Begin,
-                                 .wait = VoltorbFlipWorkflow_SelectGameInfo_Wait,
+                                 .main = VoltorbFlipWorkflow_SelectGameInfo_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_HOW_TO_PLAY] = {
                                  .setup = VoltorbFlipWorkflow_HowToPlayScreen_SetUp,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_HowToPlayScreen_Wait,
+                                 .main = VoltorbFlipWorkflow_HowToPlayScreen_Main,
                                  .end = NULL,
                                  .tidy = VoltorbFlipWorkflow_TutorialScreens_TidyUp,
                                  },
     [WORKFLOW_HINT] = {
                                  .setup = VoltorbFlipWorkflow_HintScreen_SetUp,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_HintScreen_Wait,
+                                 .main = VoltorbFlipWorkflow_HintScreen_Main,
                                  .end = NULL,
                                  .tidy = VoltorbFlipWorkflow_TutorialScreens_TidyUp,
                                  },
     [WORKFLOW_ABOUT_MEMO] = {
                                  .setup = VoltorbFlipWorkflow_AboutMemoScreen_SetUp,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_AboutMemoScreen_Wait,
+                                 .main = VoltorbFlipWorkflow_AboutMemoScreen_Main,
                                  .end = NULL,
                                  .tidy = VoltorbFlipWorkflow_TutorialScreens_TidyUp,
                                  },
     [WORKFLOW_RENDER_BOARD] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_RenderBoard_Wait,
+                                 .main = VoltorbFlipWorkflow_RenderBoard_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_AWAIT_BOARD_INTERACT] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_BoardInteraction_Wait,
+                                 .main = VoltorbFlipWorkflow_BoardInteraction_Main,
                                  .end = NULL,
                                  .tidy = VoltorbFlipWorkflow_BoardInteraction_TidyUp,
                                  },
     [WORKFLOW_FLIP_CARD] = {
                                  .setup = VoltrbFlipWorkflow_CardFlipEffect_SetUp,
                                  .begin = VoltorbFlipWorkflow_CardFlipEffect_Begin,
-                                 .wait = VoltorbFlipWorkflow_CardFlipEffect_Wait,
+                                 .main = VoltorbFlipWorkflow_CardFlipEffect_Main,
                                  .end = VoltorbFlipWorkflow_CardFlipEffect_End,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_WIN_ROUND] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_WinRound_Wait,
+                                 .main = VoltorbFlipWorkflow_WinRound_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_AWARD_COINS] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_AwardCoins_Wait,
+                                 .main = VoltorbFlipWorkflow_AwardCoins_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_REVEAL_BOARD] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .wait = VoltorbFlipWorkflow_RevealBoard_Wait,
+                                 .main = VoltorbFlipWorkflow_RevealBoard_Main,
                                  .end = VoltorbFlipWorkflow_RevealBoard_End,
                                  .tidy = NULL,
                                  },
-    [WORKFLOW_UNK_13] = {
-                                 .setup = ov122_021E65F4,
+    [WORKFLOW_MEMO_TOUCH] = {
+                                 .setup = VoltorbFlipWorkflow_MemoTouch_SetUp,
                                  .begin = NULL,
-                                 .wait = ov122_021E65FC,
+                                 .main = VoltorbFlipWorkflow_MemoTouch_Run,
                                  .end = NULL,
-                                 .tidy = ov122_021E67E0,
+                                 .tidy = VoltorbFlipWorkflow_Memo_TidyUp,
                                  },
-    [WORKFLOW_UNK_14] = {
-                                 .setup = ov122_021E66CC,
-                                 .begin = ov122_021E66FC,
-                                 .wait = ov122_021E6700,
-                                 .end = ov122_021E67DC,
-                                 .tidy = ov122_021E67E0,
+    [WORKFLOW_MEMO_BUTTONS] = {
+                                 .setup = VoltorbFlipWorkflow_MemoButtons_SetUp,
+                                 .begin = VoltorbFlipWorkflow_MemoButtons_Begin,
+                                 .main = VoltorbFlipWorkflow_MemoTouch_Main,
+                                 .end = VoltorbFlipWorkflow_MemoTouch_End,
+                                 .tidy = VoltorbFlipWorkflow_Memo_TidyUp,
                                  },
     [WORKFLOW_QUIT_ROUND] = {
                                  .setup = VoltorbFlipWorkflow_QuitRound_SetUp,
                                  .begin = VoltorbFlipWorkflow_QuitRound_Begin,
-                                 .wait = VoltorbFlipWorkflow_QuitRound_Wait,
+                                 .main = VoltorbFlipWorkflow_QuitRound_Run,
                                  .end = VoltorbFlipWorkflow_QuitRound_End,
                                  .tidy = NULL,
                                  },
@@ -160,8 +160,8 @@ BOOL VoltorbFlipWorkflow_Run(WorkflowEngine *workflow) {
         }
         workflow->workflowState = 2;
     case 2:
-        GF_ASSERT(vfWorkflow->wait != NULL);
-        task = vfWorkflow->wait;
+        GF_ASSERT(vfWorkflow->main != NULL);
+        task = vfWorkflow->main;
         if (task(workflow, workflow->work)) {
             workflow->taskState = 0;
             if (vfWorkflow->end != NULL) {

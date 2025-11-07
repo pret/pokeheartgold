@@ -12,6 +12,7 @@
 #include "player_data.h"
 #include "sprite_system.h"
 #include "touchscreen_list_menu.h"
+#include "yes_no_prompt.h"
 
 typedef struct Ov122_021E70B8 {
     BgConfig *bgConfig;
@@ -40,7 +41,7 @@ typedef struct VoltorbFlipAppWork {
     TouchscreenListMenu *menu;
     Window windows[17];
     LISTMENUITEM *menuItems[2];
-    void *unk13C;
+    YesNoPrompt *yesNoPrompt;
     String *string;
     SpriteSystem *spriteRenderer;
     SpriteManager *spriteGfxHandler;
@@ -55,12 +56,12 @@ typedef struct VoltorbFlipAppWork {
     u16 payoutDisplay;
     BOOL hasPlayedOneLeve;
     BOOL printedCanGetMoreCoinsMessage;
-    BOOL unk238;
+    BOOL memoOpen;
     struct WorkflowEngine *workflow;
     VoltorbFlipInputHandler *inputHandler;
     VoltorbFlipGameState *game;
     Ov122_021E70B8 unk248;
-    u8 unk25C;
+    u8 screenIsDimmed;
 } VoltorbFlipAppWork;
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_WORK_H
