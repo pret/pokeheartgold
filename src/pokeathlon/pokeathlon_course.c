@@ -107,7 +107,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
     PokeathlonCourseState *courseState = &data->courseState;
 
     // Frame counter system: increments frameTimer each frame, and frameCounter every 1800 frames (up to max 59999)
-    if (data->counterEnabled != 0) {
+    if (data->counterEnabled != FALSE) {
         data->frameTimer++;
         if (data->frameTimer >= 1800) {
             if (data->frameCounter < 59999) {
@@ -214,7 +214,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 
     // Check if we need to free certain allocations
     args = data->args;
-    if (args->shouldFreeHeap == 0) {
+    if (args->shouldFreeHeap == FALSE) {
         // Free two heap allocations
         Heap_Free(data->heapAllocPtr2);
         Heap_Free(data->heapAllocPtr3);
