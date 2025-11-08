@@ -143,12 +143,12 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
         break;
 
     case POKEATHLON_STATE_START_TRANSITION:
-        sub_02037AC0((u8)courseState->transitionType);
+        sub_02037AC0(courseState->transitionType);
         courseState->mainState = POKEATHLON_STATE_WAIT_TRANSITION;
         // Fallthrough to case POKEATHLON_STATE_WAIT_TRANSITION
 
     case POKEATHLON_STATE_WAIT_TRANSITION:
-        if (sub_02037B38((u8)courseState->transitionType)) {
+        if (sub_02037B38(courseState->transitionType)) {
             courseState->mainState = POKEATHLON_STATE_IDLE;
             courseState->transitionType = 0; // Clear transition type
         }
@@ -156,12 +156,12 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
 
     case POKEATHLON_STATE_START_EXIT:
         GF_ASSERT(courseState->transitionType == 0x10);
-        sub_02037AC0((u8)courseState->transitionType);
+        sub_02037AC0(courseState->transitionType);
         courseState->mainState = POKEATHLON_STATE_EXIT_SEQUENCE;
         // Fallthrough to case POKEATHLON_STATE_EXIT_SEQUENCE
 
     case POKEATHLON_STATE_EXIT_SEQUENCE:
-        if (!sub_02037B38((u8)courseState->transitionType)) {
+        if (!sub_02037B38(courseState->transitionType)) {
             if (ov96_021E5F24(data)) {
                 break;
             }
