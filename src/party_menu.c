@@ -1036,10 +1036,10 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
     PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
     partyMenu->monsDrawState[partySlot].species = species;
     partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAX_HP, NULL);
     partyMenu->monsDrawState[partySlot].level = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
     partyMenu->monsDrawState[partySlot].heldItem = (u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-    partyMenu->monsDrawState[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_CAPSULE, NULL);
+    partyMenu->monsDrawState[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
     partyMenu->monsDrawState[partySlot].isEgg = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
     partyMenu->monsDrawState[partySlot].form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
     if (GetMonData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
@@ -1081,34 +1081,34 @@ static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat) {
     u32 result;
     switch (contestStat) {
     case COOL:
-        result = GetMonData(mon, MON_DATA_COOL_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_COOL_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_COOL_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_COOL_RIBBON_MASTER, NULL);
+        result = GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_MASTER, NULL);
         break;
     case BEAUTY:
-        result = GetMonData(mon, MON_DATA_BEAUTY_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_BEAUTY_RIBBON_MASTER, NULL);
+        result = GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_MASTER, NULL);
         break;
     case CUTE:
-        result = GetMonData(mon, MON_DATA_CUTE_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_CUTE_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_CUTE_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_CUTE_RIBBON_MASTER, NULL);
+        result = GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_MASTER, NULL);
         break;
     case SMART:
-        result = GetMonData(mon, MON_DATA_SMART_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SMART_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SMART_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SMART_RIBBON_MASTER, NULL);
+        result = GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_MASTER, NULL);
         break;
     case TOUGH:
-        result = GetMonData(mon, MON_DATA_TOUGH_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_TOUGH_RIBBON_MASTER, NULL);
+        result = GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_GREAT, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_ULTRA, NULL);
+        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_MASTER, NULL);
         break;
     }
     return result;

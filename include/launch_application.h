@@ -31,7 +31,7 @@
 #include "overlay_73.h"
 #include "overlay_86.h"
 #include "overlay_87.h"
-#include "overlay_96.h"
+#include "pokeathlon/pokeathlon.h"
 #include "overlay_99.h"
 #include "overlay_trainer_card.h"
 #include "party_menu.h"

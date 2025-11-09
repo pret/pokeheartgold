@@ -4,147 +4,6 @@
 
 	.text
 
-	thumb_func_start PokeathlonCourse_Init
-PokeathlonCourse_Init: ; 0x021E5900
-	push {r3, r4, r5, r6, lr}
-	sub sp, #0x14
-	mov r2, #0x72
-	add r5, r0, #0
-	mov r0, #3
-	mov r1, #0x5c
-	lsl r2, r2, #0xc
-	bl Heap_Create
-	mov r1, #0xd7
-	add r0, r5, #0
-	lsl r1, r1, #4
-	mov r2, #0x5c
-	bl OverlayManager_CreateAndGetData
-	mov r2, #0xd7
-	mov r1, #0
-	lsl r2, r2, #4
-	add r4, r0, #0
-	bl MI_CpuFill8
-	mov r0, #0xa1
-	mov r1, #0x5c
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	add r0, r5, #0
-	bl OverlayManager_GetArgs
-	mov r2, #0x7e
-	lsl r2, r2, #2
-	add r5, sp, #4
-	ldr r6, _021E5A28 ; =ov96_0221A7E4
-	str r0, [r4, r2]
-	add r3, r5, #0
-	ldmia r6!, {r0, r1}
-	stmia r5!, {r0, r1}
-	ldmia r6!, {r0, r1}
-	stmia r5!, {r0, r1}
-	add r1, r4, r2
-	add r0, r3, #0
-	mov r2, #0x5c
-	bl OverlayManager_New
-	mov r1, #0xa
-	lsl r1, r1, #6
-	str r0, [r4, r1]
-	add r0, r1, #0
-	mov r5, #0
-	sub r0, #0xa0
-	str r5, [r4, r0]
-	add r0, r1, #0
-	sub r0, #0x88
-	ldr r0, [r4, r0]
-	ldr r0, [r0, #4]
-	cmp r0, #1
-	bne _021E597E
-	mov r5, #1
-	bl sub_02037454
-	ldr r1, _021E5A2C ; =0x000001EE
-	strb r0, [r4, r1]
-	mov r1, #4
-	b _021E5986
-_021E597E:
-	mov r0, #1
-	sub r1, #0x92
-	strb r0, [r4, r1]
-	mov r1, #3
-_021E5986:
-	ldr r0, _021E5A30 ; =0x0000072A
-	strb r1, [r4, r0]
-	bl ov96_021E8A24
-	add r6, r0, #0
-	bl ov96_021E8A2C
-	add r1, r0, #0
-	mov r0, #0xa1
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	add r2, r4, #0
-	str r0, [sp]
-	add r0, r6, #0
-	add r3, r5, #0
-	bl ov96_021E8770
-	mov r1, #0xa2
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	mov r1, #0xf1
-	lsl r1, r1, #2
-	ldr r0, _021E5A34 ; =ov96_0221A984
-	add r1, r4, r1
-	bl ov96_021E5C80
-	ldr r1, _021E5A38 ; =0x000003CA
-	mov r3, #0
-	sub r0, r1, #6
-	add r2, r4, r0
-	add r0, r1, #0
-	strb r3, [r4, r1]
-	sub r0, #0x16
-	str r2, [r4, r0]
-	sub r1, #0xa
-	add r0, r4, #0
-	str r3, [r4, r1]
-	bl ov96_021E5C90
-	mov r0, #0x5c
-	bl ov96_021E92E0
-	ldr r1, _021E5A3C ; =0x00000614
-	str r0, [r4, r1]
-	mov r0, #0x7e
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	ldr r0, [r0, #4]
-	cmp r0, #1
-	beq _021E59FE
-	mov r0, #1
-	bl TextFlags_SetCanABSpeedUpPrint
-	mov r0, #0
-	bl TextFlags_SetAutoScrollParam
-	mov r0, #1
-	bl TextFlags_SetCanTouchSpeedUpPrint
-	b _021E5A10
-_021E59FE:
-	mov r0, #0
-	bl TextFlags_SetCanABSpeedUpPrint
-	mov r0, #1
-	bl TextFlags_SetAutoScrollParam
-	mov r0, #0
-	bl TextFlags_SetCanTouchSpeedUpPrint
-_021E5A10:
-	add r0, r4, #0
-	mov r1, #0
-	bl ov96_021E5DFC
-	add r0, r4, #0
-	mov r1, #0
-	bl ov96_021E5DE0
-	mov r0, #1
-	add sp, #0x14
-	pop {r3, r4, r5, r6, pc}
-	nop
-_021E5A28: .word ov96_0221A7E4
-_021E5A2C: .word 0x000001EE
-_021E5A30: .word 0x0000072A
-_021E5A34: .word ov96_0221A984
-_021E5A38: .word 0x000003CA
-_021E5A3C: .word 0x00000614
-	thumb_func_end PokeathlonCourse_Init
 
 	thumb_func_start PokeathlonCourse_Main
 PokeathlonCourse_Main: ; 0x021E5A40
@@ -108361,6 +108220,7 @@ _0221A7D8:
 	.byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.word 0
 
+	.global ov96_0221A7E4
 ov96_0221A7E4: ; 0x0221A7E4
 	.word ov97_0221E5C0
 	.word ov97_0221E5D4
@@ -108487,6 +108347,7 @@ ov96_0221A95C: ; 0x0221A95C
 	.byte 0x01, 0x02, 0x09, 0x04, 0x02, 0x06, 0x05, 0x03, 0x00, 0x07, 0x03, 0x09, 0x09, 0x08, 0x04, 0x01
 	.byte 0x06, 0x03, 0x07, 0x00
 
+	.global ov96_0221A984
 ov96_0221A984: ; 0x0221A984
 	.word ov96_021E67C4
 	.word ov96_021E6814
