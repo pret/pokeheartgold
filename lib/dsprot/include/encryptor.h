@@ -1,23 +1,23 @@
-#ifndef ENCRYPTOR_H
-#define ENCRYPTOR_H
+#ifndef DSPROT_ENCRYPTOR_H
+#define DSPROT_ENCRYPTOR_H
 
-#include "nitro_types.h"
+#include "sdk.h"
 
-typedef struct {
-    u32 obfs_addr;
-    u32 obfs_size;
+typedef struct FuncInfo {
+    u32 obfsAddr;
+    u32 obfsSize;
 } FuncInfo;
 
-enum {
+typedef enum InsType {
     INS_TYPE_OTHER = 0,
     INS_TYPE_BLXIMM,
     INS_TYPE_BL,
     INS_TYPE_B
-};
+} InsType;
 
-u32 Encryptor_CategorizeInstruction(u32 instruction);
+InsType Encryptor_CategorizeInstruction(u32 instruction);
 void Encryptor_DecodeFunctionTable(FuncInfo *functions);
-void *Encryptor_DecryptFunction(u32 key, u32 func_addr, u32 size);
-u32 Encryptor_EncryptFunction(u32 key, u32 func_addr, u32 size);
+void *Encryptor_DecryptFunction(u32 key, u32 funcAddr, u32 size);
+u32 Encryptor_EncryptFunction(u32 key, u32 funcAddr, u32 size);
 
-#endif
+#endif // DSPROT_ENCRYPTOR_H

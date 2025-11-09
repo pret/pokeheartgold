@@ -4,16 +4,10 @@
 #include "mac_owner.h"
 #include "rom_test.h"
 
-// Functions to be encrypted (cannot be called directly)
-u32 Integrity_MACOwner_IsBad(void);
-u32 Integrity_MACOwner_IsGood(void);
-u32 Integrity_ROMTest_IsBad(void);
-u32 Integrity_ROMTest_IsGood(void);
-
 #define INTEGRITY_OBFS_OFFSET (ENC_VAL_1 & ~0xFFF)
 
 // This was likely not originally an inline, but an inline is able to match here nicely
-static inline u32 checkDecryptionWrapper(u8 *addr, u32 match_ret, u32 mismatch_ret) {
+static inline u32 checkDecryptionWrapper(u8 *addr, u32 matchRet, u32 mismatchRet) {
     addr += INTEGRITY_OBFS_OFFSET;
     u32 offset = ENC_VAL_1 - INTEGRITY_OBFS_OFFSET;
 
@@ -23,58 +17,58 @@ static inline u32 checkDecryptionWrapper(u8 *addr, u32 match_ret, u32 mismatch_r
     //   e8bd00f0    ldmfd  sp!, {r4-r7}
     //   e59f103c    ldr    r1, [pc, #60]
     if (addr[offset++] != 0xF0) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x00) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x2D) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0xE9) {
-        return mismatch_ret;
+        return mismatchRet;
     }
 
     if (addr[offset++] != 0x0F) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x00) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x2D) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0xE9) {
-        return mismatch_ret;
+        return mismatchRet;
     }
 
     if (addr[offset++] != 0xF0) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x00) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0xBD) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0xE8) {
-        return mismatch_ret;
+        return mismatchRet;
     }
 
     if (addr[offset++] != 0x60) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x10) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0x9F) {
-        return mismatch_ret;
+        return mismatchRet;
     }
     if (addr[offset++] != 0xE5) {
-        return mismatch_ret;
+        return mismatchRet;
     }
 
-    return match_ret;
+    return matchRet;
 }
 
 u32 Integrity_MACOwner_IsBad(void) {

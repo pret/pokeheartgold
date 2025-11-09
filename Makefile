@@ -26,7 +26,7 @@ BANNER_SPEC     := $(buildname)/banner.bsf
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
 
-.PHONY: main sub libsyscall sdk sdk9 sdk7
+.PHONY: main sub dsprot libsyscall sdk sdk9 sdk7
 .PRECIOUS: $(ROM)
 
 MAKEFLAGS += --no-print-directory

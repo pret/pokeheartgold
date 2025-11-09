@@ -19,7 +19,15 @@
 	.endm
 
 
-	.public BSS
+	.macro sinit sinit_func
+	.type  NitroStaticInit_, @object
+NitroStaticInit_:
+	.word  \sinit_func
+	.size  NitroStaticInit_, .-NitroStaticInit_
+	.endm
+
+
+	.public DSProt_BSS
 	.public Encryptor_DecryptFunction
 	.public Encryptor_EncryptFunction
 
@@ -51,11 +59,11 @@
 	str    pc, storage_\@             ; Store `pc` in its place, presumably just to overwrite the return address.
 	bx     lr                         ; Return with return value from inner function.
 storage_\@:
-	.word  BSS + 1
+	.word  DSProt_BSS + 1
 length_\@:
-	.word  BSS + \length + ENC_VAL_1
+	.word  DSProt_BSS + \length + ENC_VAL_1
 key_\@:
-	.word  BSS + \key + ENC_VAL_1
+	.word  DSProt_BSS + \key + ENC_VAL_1
 func_\@:
 	.word  \func + ENC_VAL_1
 	.endm
@@ -71,7 +79,7 @@ func_\@:
 	.endm
 
 	.macro func_table_entry func, size
-	.word  \func + ENC_VAL_1, BSS + \size + ENC_VAL_1
+	.word  \func + ENC_VAL_1, DSProt_BSS + \size + ENC_VAL_1
 	.endm
 
 	.macro func_table_end

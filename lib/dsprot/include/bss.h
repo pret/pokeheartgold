@@ -1,8 +1,8 @@
-#ifndef BSS_H
-#define BSS_H
+#ifndef DSPROT_BSS_H
+#define DSPROT_BSS_H
 
-#include "nitro_types.h"
+#include "sdk.h"
 
-extern u8 BSS[4];
+extern u8 DSProt_BSS[4];
 
-#endif
+#endif // DSPROT_BSS_H

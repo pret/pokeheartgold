@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "asmwriter.h"
 #include "encoder.h"
 
 static int parseKey(const char *key_text, uint32_t *out_key) {
@@ -50,6 +51,7 @@ static void printUsage(const char *self_name) {
         "  -f, --functions [func1, [func2, [ ... ]]]  List of functions to encode/decode.\n"
         "  -k, --key [key]                            Optional encryption key.           \n"
         "  -p, --prefix [prefix = RunEncrypted_]      Prefix for decryption wrappers.    \n"
+        "  -r, --replace-prefix [prefix]              Remove prefix from input functions.\n"
         "  -g  --garbage [symbol]                     Optional added garbage reference.  \n"
         "  -v, --verbose                              Print encoding progress.           \n",
         self_name);
@@ -73,6 +75,7 @@ int ArgParse_CreateTask(EncodingTask *task, char **argv) {
     task->key_mode = MODE_UNKEYED;
     task->symbols = NULL;
     task->wrapper_prefix = NULL;
+    task->replace_prefix = NULL;
     task->garbage = NULL;
     task->key = 0;
     task->verbose = 0;
@@ -199,6 +202,25 @@ int ArgParse_CreateTask(EncodingTask *task, char **argv) {
                 task->wrapper_prefix = next_arg;
                 arg_idx++;
 
+            } else if (argCompare(curr_arg, 'r', "--replace-prefix")) {
+                if (next_arg == NULL || next_arg[0] == '-') {
+                    printf("Error: %s but no prefix string provided\n", curr_arg);
+                    return 1;
+                }
+
+                if (task->replace_prefix != NULL) {
+                    printf("Error: multiple prefix strings provided\n");
+                    return 1;
+                }
+
+                if (!isValidIdentifier(next_arg)) {
+                    printf("Error: invalid identifier: %s\n", next_arg);
+                    return 1;
+                }
+
+                task->replace_prefix = next_arg;
+                arg_idx++;
+
             } else if (argCompare(curr_arg, 'g', "--garbage")) {
                 if (next_arg == NULL || next_arg[0] == '-') {
                     printf("Error: %s but no reference provided\n", curr_arg);
@@ -291,6 +313,14 @@ int ArgParse_CreateTask(EncodingTask *task, char **argv) {
         return 1;
     }
 
+    if (task->replace_prefix != NULL && task->encoding_type == ENC_ENCODE && task->key_mode == MODE_KEYED) {
+        if ((task->wrapper_prefix == NULL && strcmp(task->replace_prefix, DEFAULT_ADDED_PREFIX) == 0) ||
+            (task->wrapper_prefix != NULL && strcmp(task->wrapper_prefix, task->replace_prefix) == 0)) {
+            printf("Error: replaced prefix and added prefix cannot be the same\n");
+            return 1;
+        }
+    }
+
     if (task->output_fname != NULL && task->encoding_type == ENC_DECODE) {
         printf("Warning: output file name provided, but no output will be generated for decoding\n");
         task->output_fname = NULL;
@@ -299,6 +329,11 @@ int ArgParse_CreateTask(EncodingTask *task, char **argv) {
     if (task->wrapper_prefix != NULL && !(task->encoding_type == ENC_ENCODE && task->key_mode == MODE_KEYED)) {
         printf("Warning: decryption wrapper prefix provided, but will not be used unless encoding with key\n");
         task->wrapper_prefix = NULL;
+    }
+
+    if (task->replace_prefix != NULL && !(task->encoding_type == ENC_ENCODE && task->key_mode == MODE_KEYED)) {
+        printf("Warning: replaced prefix provided, but will not be used unless encoding with key\n");
+        task->replace_prefix = NULL;
     }
 
     if (task->garbage != NULL && task->encoding_type == ENC_DECODE) {

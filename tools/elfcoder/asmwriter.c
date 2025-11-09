@@ -3,10 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ASM_COMMON_INCLUDE "asm_macro.inc"
-
-char *default_prefix = "RunEncrypted_";
-
 static int *allocSizeArray(char **first_symbol) {
     int symbol_count = 0;
     while (*first_symbol++ != NULL) {
@@ -56,7 +52,21 @@ static void writeAssembly(ASMWriter_Ctx *asmw, FILE *output) {
         "\n");
 
     if (asmw->key_mode == MODE_KEYED) {
+        int replace_prefix_len = 0;
+        if (asmw->replace_prefix != NULL) {
+            replace_prefix_len = strlen(asmw->replace_prefix);
+        }
+
         for (int symbol_idx = 0; asmw->symbols[symbol_idx] != NULL; symbol_idx++) {
+            int prefix_skip = 0;
+
+            // Skip over replace prefix, if the base symbol name starts with it
+            if (asmw->replace_prefix != NULL) {
+                if (strncmp(asmw->symbols[symbol_idx], asmw->replace_prefix, replace_prefix_len) == 0) {
+                    prefix_skip = replace_prefix_len;
+                }
+            }
+
             fprintf(output,
                 "\tarm_func_start %s%s\n"
                 "%s%s:\n"
@@ -64,14 +74,14 @@ static void writeAssembly(ASMWriter_Ctx *asmw, FILE *output) {
                 "\tarm_func_end %s%s\n"
                 "\n",
                 asmw->wrapper_prefix,
-                asmw->symbols[symbol_idx],
+                asmw->symbols[symbol_idx] + prefix_skip,
                 asmw->wrapper_prefix,
-                asmw->symbols[symbol_idx],
+                asmw->symbols[symbol_idx] + prefix_skip,
                 asmw->symbols[symbol_idx],
                 asmw->symbol_sizes[symbol_idx],
                 asmw->key,
                 asmw->wrapper_prefix,
-                asmw->symbols[symbol_idx]);
+                asmw->symbols[symbol_idx] + prefix_skip);
         }
 
         if (asmw->garbage != NULL) {
@@ -109,7 +119,7 @@ static void writeAssembly(ASMWriter_Ctx *asmw, FILE *output) {
 
         fprintf(output,
             "\t.section .sinit, 4\n"
-            "\t.word NitroStaticInit\n"
+            "\tsinit NitroStaticInit\n"
             "\n");
     }
 }
@@ -118,12 +128,13 @@ void ASMWriter_Init(ASMWriter_Ctx *asmw, EncodingTask *task) {
     asmw->key = task->key;
     asmw->key_mode = task->key_mode;
     asmw->output_fname = task->output_fname;
+    asmw->replace_prefix = task->replace_prefix;
     asmw->symbols = task->symbols;
     asmw->garbage = task->garbage;
     asmw->valid = 1;
 
     if (task->wrapper_prefix == NULL) {
-        asmw->wrapper_prefix = default_prefix;
+        asmw->wrapper_prefix = DEFAULT_ADDED_PREFIX;
     } else {
         asmw->wrapper_prefix = task->wrapper_prefix;
     }

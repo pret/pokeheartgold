@@ -1,19 +1,19 @@
 Module 1 (main):
 	Functions:
-		DetectFlashcart
-		DetectNotFlashcart
-		DetectEmulator
-		DetectNotEmulator
-		DetectDummy
-		DetectNotDummy
+		DSProtInternal_DetectFlashcart
+		DSProtInternal_DetectNotFlashcart
+		DSProtInternal_DetectEmulator
+		DSProtInternal_DetectNotEmulator
+		DSProtInternal_DetectDummy
+		DSProtInternal_DetectNotDummy
 	
-	Encrypt and create decryption wrappers (key=0x6AB2, prefix=DSProt_):
-		DetectFlashcart
-		DetectNotFlashcart
-		DetectEmulator
-		DetectNotEmulator
-		DetectDummy
-		DetectNotDummy
+	Encrypt and create decryption wrappers (key=0x6AB2, replace_prefix=DSProtInternal_, prefix=DSProt_):
+		DSProtInternal_DetectFlashcart
+		DSProtInternal_DetectNotFlashcart
+		DSProtInternal_DetectEmulator
+		DSProtInternal_DetectNotEmulator
+		DSProtInternal_DetectDummy
+		DSProtInternal_DetectNotDummy
 	
 	Encode and create decoder function:
 		DSProt_DetectFlashcart

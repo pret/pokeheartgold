@@ -5,10 +5,15 @@
 
 #include "encoder.h"
 
+#define ASM_COMMON_INCLUDE "asm_macro.inc"
+
+#define DEFAULT_ADDED_PREFIX "RunEncrypted_"
+
 typedef struct {
     char *output_fname;
     char **symbols;
     char *wrapper_prefix;
+    char *replace_prefix;
     char *garbage;
     int *symbol_sizes;
     int key_mode;

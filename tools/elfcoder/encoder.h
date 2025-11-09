@@ -26,6 +26,7 @@ typedef struct {
     int key_mode;
     char **symbols;
     char *wrapper_prefix;
+    char *replace_prefix;
     char *garbage;
     uint32_t key;
     int verbose;

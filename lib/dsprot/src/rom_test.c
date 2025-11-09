@@ -1,32 +1,27 @@
 #include "rom_test.h"
 
-#include "nitro_card.h"
 #include "rom_util.h"
-
-// Functions to be encrypted (cannot be called directly)
-u32 ROMTest_IsBad(void);
-u32 ROMTest_IsGood(void);
 
 #define ROM_BLOCK_SIZE CARD_ROM_PAGE_SIZE
 
-static inline u32 testROM(u32 pass_ret, u32 fail_ret) {
+static inline u32 testROM(u32 passRet, u32 failRet) {
     // Extra CRC entry is required to match
     u32 crcs[7];
-    u8 rom_buf[ROM_BLOCK_SIZE];
+    u8 romBuf[ROM_BLOCK_SIZE];
     s32 i;
 
-    u32 rom_addr = 0x1000;
+    u32 romAddr = 0x1000;
 
     for (i = 0; i < 6; i++) {
-        RunEncrypted_ROMUtil_Read(&rom_buf[0], rom_addr, ROM_BLOCK_SIZE);
-        crcs[i] = RunEncrypted_ROMUtil_CRC32(&rom_buf[0], ROM_BLOCK_SIZE);
+        RunEncrypted_ROMUtil_Read(&romBuf[0], romAddr, ROM_BLOCK_SIZE);
+        crcs[i] = RunEncrypted_ROMUtil_CRC32(&romBuf[0], ROM_BLOCK_SIZE);
 
         if (i == 2) {
             // Has to be like this to match
-            rom_addr = 1;
-            rom_addr <<= 15;
+            romAddr = 1;
+            romAddr <<= 15;
         } else {
-            rom_addr += ROM_BLOCK_SIZE;
+            romAddr += ROM_BLOCK_SIZE;
         }
     }
 
@@ -37,22 +32,22 @@ static inline u32 testROM(u32 pass_ret, u32 fail_ret) {
     u32 ret;
     for (i = 0; i < 3; i++) {
         if (crcs[i] != crcs[3]) {
-            ret = fail_ret;
+            ret = failRet;
             goto EXIT;
         }
     }
 
     if (crcs[3] == crcs[4] && crcs[3] == crcs[5]) {
-        ret = fail_ret;
+        ret = failRet;
     } else {
-        ret = pass_ret;
+        ret = passRet;
     }
 
 EXIT:
     // Erasing read buffer
-    u8 *buf_ptr = &rom_buf[0];
+    u8 *bufPtr = &romBuf[0];
     for (i = 0; i < ROM_BLOCK_SIZE; i++) {
-        *buf_ptr++ = 0;
+        *bufPtr++ = 0;
     }
 
     return ret;

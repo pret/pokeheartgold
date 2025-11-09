@@ -53,6 +53,7 @@ MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
 ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
+ELFCODER     := $(TOOLSDIR)/elfcoder/elfcoder$(EXE)
 
 # Decompiled NitroSDK tools
 COMPSTATIC   := $(TOOLSDIR)/compstatic/compstatic$(EXE)
@@ -70,7 +71,8 @@ NATIVE_TOOLS := \
 	$(ASPATCH) \
 	$(CSV2BIN) \
 	$(MKFXCONST) \
-	$(COMPSTATIC)
+	$(COMPSTATIC) \
+	$(ELFCODER)
 
 TOOLDIRS := $(foreach tool,$(NATIVE_TOOLS),$(dir $(tool)))
 

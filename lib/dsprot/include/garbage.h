@@ -1,8 +1,8 @@
-#ifndef GARBAGE_H
-#define GARBAGE_H
+#ifndef DSPROT_GARBAGE_H
+#define DSPROT_GARBAGE_H
 
-#include "nitro_types.h"
+#include "sdk.h"
 
-extern const u32 Garbage[6];
+extern const u32 DSProt_Garbage[6];
 
-#endif
+#endif // DSPROT_GARBAGE_H

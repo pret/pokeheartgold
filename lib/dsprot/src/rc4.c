@@ -3,22 +3,13 @@
 #include "encoding_constants.h"
 #include "encryptor.h"
 
-#define RC4_KEY_SIZE (16)
-
-typedef struct {
+struct RC4_Ctx {
     int i;
     int j;
     u8 S[256];
-} RC4_Ctx;
+};
 
-// Functions to be encoded (cannot be static)
-void RC4_Init(RC4_Ctx *ctx, const void *key, u32 key_len);
-u8 RC4_Byte(RC4_Ctx *ctx);
-u32 RC4_InitSBox(u8 *sbox);
-u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size);
-u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size);
-
-void RC4_Init(RC4_Ctx *ctx, const void *key, u32 key_len) {
+void RC4_Init(RC4_Ctx *ctx, const void *key, u32 keyLen) {
     s32 Ki = 0;
     u8 Si = 0;
 
@@ -41,7 +32,7 @@ void RC4_Init(RC4_Ctx *ctx, const void *key, u32 key_len) {
         ctx->S[i] = tmp2;
 
         Ki++;
-        if (Ki >= key_len) {
+        if (Ki >= keyLen) {
             Ki = 0;
         }
     }
@@ -75,44 +66,46 @@ u32 RC4_EncryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
         return -1;
     }
 
-    u8 *src_bytes = (u8 *)src;
-    u8 *dst_bytes = (u8 *)dst;
+    u8 *srcBytes = (u8 *)src;
+    u8 *dstBytes = (u8 *)dst;
 
     u8 sbox[256];
     RC4_InitSBox(&sbox[0]);
 
     for (u32 offset = 0; offset < size; offset += 4) {
-        switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + offset))) {
+        switch (Encryptor_CategorizeInstruction(*(u32 *)(srcBytes + offset))) {
         case INS_TYPE_BLXIMM:
         case INS_TYPE_BL: {
-            u32 *src_addr = (u32 *)(src_bytes + offset);
-            u32 *dst_addr = (u32 *)(dst_bytes + offset);
+            u32 *srcAddr = (u32 *)(srcBytes + offset);
+            u32 *dstAddr = (u32 *)(dstBytes + offset);
 
-            *dst_addr = *src_addr;
+            *dstAddr = *srcAddr;
 
-            u32 opcode = (*dst_addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
-            u32 operands = ((*dst_addr & INS_OPERANDS_MASK) + ENC_VAL_2) & INS_OPERANDS_MASK;
+            u32 opcode = (*dstAddr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
+            u32 operands = ((*dstAddr & INS_OPERANDS_MASK) + ENC_VAL_2) & INS_OPERANDS_MASK;
 
-            *dst_addr = opcode | operands;
-        } break;
+            *dstAddr = opcode | operands;
+        }
+        break;
 
         case INS_TYPE_B: {
-            u32 *src_addr = (u32 *)(src_bytes + offset);
-            u32 *dst_addr = (u32 *)(dst_bytes + offset);
+            u32 *srcAddr = (u32 *)(srcBytes + offset);
+            u32 *dstAddr = (u32 *)(dstBytes + offset);
 
-            *dst_addr = *src_addr;
+            *dstAddr = *srcAddr;
 
-            u32 opcode = (*dst_addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
-            u32 operands = ((*dst_addr & INS_OPERANDS_MASK) + ENC_VAL_1) & INS_OPERANDS_MASK;
+            u32 opcode = (*dstAddr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
+            u32 operands = ((*dstAddr & INS_OPERANDS_MASK) + ENC_VAL_1) & INS_OPERANDS_MASK;
 
-            *dst_addr = opcode | operands;
-        } break;
+            *dstAddr = opcode | operands;
+        }
+        break;
 
         default:
-            dst_bytes[offset] = src_bytes[offset] ^ RC4_Byte(ctx);
-            dst_bytes[offset + 1] = src_bytes[offset + 1] ^ RC4_Byte(ctx);
-            dst_bytes[offset + 2] = sbox[src_bytes[offset + 2]];
-            dst_bytes[offset + 3] = src_bytes[offset + 3];
+            dstBytes[offset] = srcBytes[offset] ^ RC4_Byte(ctx);
+            dstBytes[offset + 1] = srcBytes[offset + 1] ^ RC4_Byte(ctx);
+            dstBytes[offset + 2] = sbox[srcBytes[offset + 2]];
+            dstBytes[offset + 3] = srcBytes[offset + 3];
             break;
         }
     }
@@ -125,44 +118,46 @@ u32 RC4_DecryptInstructions(RC4_Ctx *ctx, void *src, void *dst, u32 size) {
         return -1;
     }
 
-    u8 *src_bytes = (u8 *)src;
-    u8 *dst_bytes = (u8 *)dst;
+    u8 *srcBytes = (u8 *)src;
+    u8 *dstBytes = (u8 *)dst;
 
     u8 sbox[256];
     RC4_InitSBox(&sbox[0]);
 
     for (u32 offset = 0; offset < size; offset += 4) {
-        switch (Encryptor_CategorizeInstruction(*(u32 *)(src_bytes + offset))) {
+        switch (Encryptor_CategorizeInstruction(*(u32 *)(srcBytes + offset))) {
         case INS_TYPE_BLXIMM:
         case INS_TYPE_BL: {
-            u32 *src_addr = (u32 *)(src_bytes + offset);
-            u32 *dst_addr = (u32 *)(dst_bytes + offset);
+            u32 *srcAddr = (u32 *)(srcBytes + offset);
+            u32 *dstAddr = (u32 *)(dstBytes + offset);
 
-            *dst_addr = *src_addr;
+            *dstAddr = *srcAddr;
 
-            u32 opcode = (*dst_addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
-            u32 operands = ((*dst_addr & INS_OPERANDS_MASK) - ENC_VAL_1) & INS_OPERANDS_MASK;
+            u32 opcode = (*dstAddr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
+            u32 operands = ((*dstAddr & INS_OPERANDS_MASK) - ENC_VAL_1) & INS_OPERANDS_MASK;
 
-            *dst_addr = opcode | operands;
-        } break;
+            *dstAddr = opcode | operands;
+        }
+        break;
 
         case INS_TYPE_B: {
-            u32 *src_addr = (u32 *)(src_bytes + offset);
-            u32 *dst_addr = (u32 *)(dst_bytes + offset);
+            u32 *srcAddr = (u32 *)(srcBytes + offset);
+            u32 *dstAddr = (u32 *)(dstBytes + offset);
 
-            *dst_addr = *src_addr;
+            *dstAddr = *srcAddr;
 
-            u32 opcode = (*dst_addr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
-            u32 operands = ((*dst_addr & INS_OPERANDS_MASK) - ENC_VAL_2) & INS_OPERANDS_MASK;
+            u32 opcode = (*dstAddr & INS_OPCODE_MASK) ^ (INS_OPCODE_LINKBIT << INS_OPCODE_SHIFT);
+            u32 operands = ((*dstAddr & INS_OPERANDS_MASK) - ENC_VAL_2) & INS_OPERANDS_MASK;
 
-            *dst_addr = opcode | operands;
-        } break;
+            *dstAddr = opcode | operands;
+        }
+        break;
 
         default:
-            dst_bytes[offset] = src_bytes[offset] ^ RC4_Byte(ctx);
-            dst_bytes[offset + 1] = src_bytes[offset + 1] ^ RC4_Byte(ctx);
-            dst_bytes[offset + 2] = sbox[src_bytes[offset + 2]];
-            dst_bytes[offset + 3] = src_bytes[offset + 3];
+            dstBytes[offset] = srcBytes[offset] ^ RC4_Byte(ctx);
+            dstBytes[offset + 1] = srcBytes[offset + 1] ^ RC4_Byte(ctx);
+            dstBytes[offset + 2] = sbox[srcBytes[offset + 2]];
+            dstBytes[offset + 3] = srcBytes[offset + 3];
             break;
         }
     }

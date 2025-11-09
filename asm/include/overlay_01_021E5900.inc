@@ -213,3 +213,7 @@
 .public ov01_02208BFC
 .public ov02_0224F864
 .public ov02_0224F8F4
+.public DSProt_DetectFlashcart
+.public DSProt_DetectDummy
+.public DSProt_DetectNotFlashcart
+.public DSProt_DetectNotEmulator
