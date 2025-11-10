@@ -1,4 +1,4 @@
-// Copyright (c) 2018 huderlem, 2021-2024 red031000
+// Copyright (c) 2018 huderlem, 2021-2025 red031000
 
 #ifndef OPTIONS_H
 #define OPTIONS_H
@@ -24,6 +24,8 @@ struct PngToGbaOptions {
 };
 
 struct PngToNtrOptions {
+    char *cellFilePath;
+    bool cellSnap;
     int numTiles;
     int bitDepth;
     int colsPerChunk;
@@ -32,23 +34,29 @@ struct PngToNtrOptions {
     bool byteOrder;
     bool version101;
     bool sopc;
-    uint32_t scanMode;
+    bool scan;
     bool wrongSize;
     bool handleEmpty;
     bool vramTransfer;
     int mappingType;
+    uint32_t encodeMode;
+    bool convertTo4Bpp;
 };
 
 struct NtrToPngOptions {
     char *paletteFilePath;
+    char *cellFilePath;
+    bool cellSnap;
     int bitDepth;
     bool hasTransparency;
     int width;
     int colsPerChunk;
     int rowsPerChunk;
     int palIndex;
-    bool scanFrontToBack;
     bool handleEmpty;
+    uint32_t encodeMode;
+    bool convertTo8Bpp;
+    bool verbose;
 };
 
 struct CellVramTransferData {
@@ -104,8 +112,10 @@ struct Cell {
 
 struct JsonToCellOptions {
     bool labelEnabled;
+    bool dontPadKbec;
     bool extended;
     bool vramTransferEnabled;
+    bool ucatEnabled;
     int mappingType;
     int cellCount;
     struct Cell **cells;
@@ -113,6 +123,7 @@ struct JsonToCellOptions {
     struct CellVramTransferData **transferData;
     char **labels;
     int labelCount;
+    int *ucatCellAttribtes;
 };
 
 struct JsonToScreenOptions {
@@ -163,6 +174,11 @@ struct AnimationResults {
     };
 };
 
+struct UaatData {
+    int *sequenceAttributes;
+    int *frameAttributes;
+};
+
 struct JsonToAnimationOptions {
     bool multiCell;
     short sequenceCount;
@@ -173,6 +189,8 @@ struct JsonToAnimationOptions {
     char **labels;
     int labelCount;
     short resultCount;
+    bool uaatEnabled;
+    struct UaatData uaatData;
 };
 
 struct NtrFontOptions {
