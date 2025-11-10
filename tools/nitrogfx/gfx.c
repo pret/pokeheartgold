@@ -10,6 +10,7 @@
 
 #include "global.h"
 
+#include "json.h"
 #include "util.h"
 
 static unsigned int FindNitroDataBlock(const unsigned char *data, const char *ident, unsigned int fileSize, unsigned int *blockSize_out) {
@@ -109,6 +110,85 @@ static void ConvertFromTiles4Bpp(unsigned char *src, unsigned char *dest, int nu
     }
 }
 
+static void ConvertFromTiles4BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG, int plttNum, UNUSED int mappingType, struct Image *image) {
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
+    int chunkStartX = 0;
+    int chunkStartY = 0;
+    int pitch = image->hasPalette ? imageWidth / 2 : imageWidth;
+
+    for (int i = 0; i < oamHeight * oamWidth; i++) {
+        for (int j = 0; j < 8; j++) {
+            int idxComponentY = (chunkStartY + rowsSoFar) * 8 + j + startY;
+            if (vFlip) {
+                idxComponentY = (rowsSoFar + oamHeight - chunkStartY) * 8 + j + startY;
+            }
+            if (hvFlip) {
+                idxComponentY += 8 - j * 2;
+            }
+            if (image->hasPalette) {
+                idxComponentY *= 2;
+            }
+
+            for (int k = 0; k < 4; k++) {
+                int idxComponentX = (chunkStartX + tilesSoFar) * 4 + k + startX / 2;
+                unsigned char srcPixelPair;
+                unsigned char leftPixel;
+                unsigned char rightPixel;
+
+                if (hFlip) {
+                    idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + -k + startX / 2 - 1;
+
+                    if (toPNG) {
+                        srcPixelPair = *src++;
+                        leftPixel = srcPixelPair & 0xF;
+                        rightPixel = srcPixelPair >> 4;
+
+                        if (image->hasPalette) {
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 0] = leftPixel | (plttNum << 4);
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 1] = rightPixel | (plttNum << 4);
+                        } else {
+                            dest[idxComponentY * pitch + idxComponentX] = (leftPixel << 4) | rightPixel;
+                        }
+                    } else {
+                        if (image->hasPalette) {
+                            leftPixel = src[idxComponentY * pitch + idxComponentX * 2 + 0] & 0xF;
+                            rightPixel = src[idxComponentY * pitch + idxComponentX * 2 + 1] & 0xF;
+                        } else {
+                            srcPixelPair = src[idxComponentY * pitch + idxComponentX];
+                            leftPixel = srcPixelPair & 0xF;
+                            rightPixel = srcPixelPair >> 4;
+                        }
+                        *dest++ = (leftPixel << 4) | rightPixel;
+                    }
+                } else {
+                    if (toPNG) {
+                        if (image->hasPalette) {
+                            srcPixelPair = *src++;
+                            leftPixel = srcPixelPair & 0xF;
+                            rightPixel = srcPixelPair >> 4;
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 0] = rightPixel | (plttNum << 4);
+                            dest[idxComponentY * pitch + idxComponentX * 2 + 1] = leftPixel | (plttNum << 4);
+                        } else {
+                            dest[idxComponentY * pitch + idxComponentX] = *src++;
+                        }
+                    } else {
+                        if (image->hasPalette) {
+                            rightPixel = src[idxComponentY * pitch + idxComponentX * 2 + 0] & 0xF;
+                            leftPixel = src[idxComponentY * pitch + idxComponentX * 2 + 1] & 0xF;
+                            *dest++ = leftPixel | (rightPixel << 4);
+                        } else {
+                            *dest++ = src[idxComponentY * pitch + idxComponentX];
+                        }
+                    }
+                }
+            }
+        }
+
+        AdvanceTilePosition(&tilesSoFar, &rowsSoFar, &chunkStartX, &chunkStartY, oamWidth, 1, 1);
+    }
+}
+
 static uint32_t ConvertFromScanned4Bpp(unsigned char *src, unsigned char *dest, int fileSize, bool invertColours, bool scanFrontToBack) {
     uint32_t encValue = 0;
     if (scanFrontToBack) {
@@ -171,6 +251,108 @@ static void ConvertFromTiles8Bpp(unsigned char *src, unsigned char *dest, int nu
         }
 
         AdvanceTilePosition(&tilesSoFar, &rowsSoFar, &chunkStartX, &chunkStartY, chunksWide, colsPerChunk, rowsPerChunk);
+    }
+}
+
+static void ConvertFromTiles8BppCell(unsigned char *src, unsigned char *dest, int oamWidth, int oamHeight, int imageWidth, int startX, int startY, bool hFlip, bool vFlip, bool hvFlip, bool toPNG, int plttNum, int mappingType, struct Image *image) {
+    static bool setTransparencyColor = false;
+
+    int tilesSoFar = 0;
+    int rowsSoFar = 0;
+    int chunkStartX = 0;
+    int chunkStartY = 0;
+    int pitch = imageWidth;
+    int pitchFactor = mappingType == 2 ? (image->hasTransparency ? 4 : 3) : 1;
+    pitch *= pitchFactor;
+
+    for (int i = 0; i < oamHeight * oamWidth; i++) {
+        for (int j = 0; j < 8; j++) {
+            int idxComponentY = (chunkStartY + rowsSoFar) * 8 + j + startY;
+            if (vFlip) {
+                idxComponentY = (rowsSoFar + oamHeight - chunkStartY) * 8 + j + startY;
+            }
+            if (hvFlip) {
+                idxComponentY += 8 - j * 2;
+            }
+            idxComponentY *= pitchFactor;
+
+            for (int k = 0; k < 8; k++) {
+                int idxComponentX = (chunkStartX + tilesSoFar) * 8 + k + startX;
+                if (hFlip) {
+                    idxComponentX = (tilesSoFar + oamWidth - chunkStartX) * 4 + -k + startX;
+                }
+
+                if (toPNG) {
+                    if (image->hasPalette && mappingType == 2) {
+                        // Color mode 256x16 extpltt is handled specially
+                        // The underlying PNG image is 24-bit RGB or 32-bit RGBA
+                        int colorIdx = plttNum * 256 + (*src++);
+                        struct Color *color = &image->palette.colors[colorIdx];
+                        dest[idxComponentY * pitch + idxComponentX * pitchFactor + 0] = color->red;
+                        dest[idxComponentY * pitch + idxComponentX * pitchFactor + 1] = color->green;
+                        dest[idxComponentY * pitch + idxComponentX * pitchFactor + 2] = color->blue;
+                        if (image->hasTransparency) {
+                            // Alpha on DS is binary. Alpha in PNG is 8-bit. Scale accordingly.
+                            dest[idxComponentY * pitch + idxComponentX * pitchFactor + 3] = colorIdx == 0 ? 0 : 255;
+                        }
+                    } else {
+                        dest[idxComponentY * pitch + idxComponentX] = *src++;
+                    }
+                } else {
+                    if (image->hasPalette && mappingType == 2) {
+                        // Color mode 256x16 extpltt is handled specially
+                        // The underlying PNG image is 24-bit RGB or 32-bit RGBA
+                        int colorIdx;
+                        struct Color color = {
+                            .red = src[idxComponentY * pitch + idxComponentX * pitchFactor + 0],
+                            .green = src[idxComponentY * pitch + idxComponentX * pitchFactor + 1],
+                            .blue = src[idxComponentY * pitch + idxComponentX * pitchFactor + 2],
+                        };
+                        if (image->hasTransparency && src[idxComponentY * pitch + idxComponentX * pitchFactor + 3] == 0) {
+                            // First color is hardcoded to be transparency
+                            colorIdx = 0;
+                            if (!setTransparencyColor) {
+                                memcpy(&image->palette.colors[0], &color, sizeof(struct Color));
+                                setTransparencyColor = true;
+                                if (image->palette.numColors == 0) {
+                                    image->palette.numColors = 1;
+                                }
+                            } else {
+                                // No other color is permitted to be transparency
+                                if (memcmp(&image->palette.colors[0], &color, sizeof(struct Color)) != 0) {
+                                    FATAL_ERROR("Transparency color is not uniform\n");
+                                }
+                            }
+                        } else if (image->palette.numColors == 0) {
+                            // Haven't registered a color yet, and the very first pixel is not transparency
+                            memcpy(&image->palette.colors[1], &color, sizeof(struct Color));
+                            image->palette.numColors = 2;
+                            colorIdx = 1;
+                        } else {
+                            // Assume that palette is arranged in order of use, excluding transparency
+                            // It is not known whether this holds for retail ROMs
+                            for (colorIdx = 1; colorIdx < 4096 && colorIdx < image->palette.numColors; colorIdx++) {
+                                if (memcmp(&image->palette.colors[colorIdx], &color, sizeof(struct Color)) == 0) {
+                                    break;
+                                }
+                            }
+                            if (colorIdx == image->palette.numColors) {
+                                if (colorIdx == 4096) {
+                                    FATAL_ERROR("Too many unique colors for DS object extpltt\n");
+                                }
+                                memcpy(&image->palette.colors[colorIdx], &color, sizeof(struct Color));
+                                image->palette.numColors++;
+                            }
+                        }
+                        *dest++ = colorIdx & 0xFF;
+                    } else {
+                        *dest++ = src[idxComponentY * pitch + idxComponentX];
+                    }
+                }
+            }
+        }
+
+        AdvanceTilePosition(&tilesSoFar, &rowsSoFar, &chunkStartX, &chunkStartY, oamWidth, 1, 1);
     }
 }
 
@@ -382,10 +564,6 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
 
     bitDepth = bitDepth ? bitDepth : (charHeader[0xC] == 3 ? 4 : 8);
 
-    if (bitDepth == 4) {
-        image->palette.numColors = 16;
-    }
-
     unsigned char *imageData = charHeader + 0x20;
 
     bool scanned = charHeader[0x14];
@@ -448,6 +626,395 @@ uint32_t ReadNtrImage(char *path, int tilesWide, int bitDepth, int colsPerChunk,
 
     free(buffer);
     return key;
+}
+
+void ApplyCellsToImage(char *cellFilePath, struct Image *image, bool toPNG) {
+    char *cellFileExtension = GetFileExtension(cellFilePath);
+    if (cellFileExtension == NULL) {
+        FATAL_ERROR("NULL cell file path\n");
+    }
+    struct JsonToCellOptions *options;
+
+    if (strcmp(cellFileExtension, "NCER") == 0) {
+        options = malloc(sizeof(struct JsonToCellOptions));
+        ReadNtrCell(cellFilePath, options);
+    } else {
+        if (strcmp(cellFileExtension, "json") == 0) {
+            options = ParseNCERJson(cellFilePath);
+        } else {
+            FATAL_ERROR("Incompatible cell file type\n");
+        }
+    }
+
+    int outputHeight = 0;
+    int outputWidth = 0;
+    int numTiles = 0;
+
+    for (int i = 0; i < options->cellCount; i++) {
+        if (options->cells[i]->oamCount == 0) {
+            continue;
+        }
+        int cellHeight = 0;
+        int cellWidth = 0;
+        if (options->cells[i]->attributes.boundingRect) {
+            cellHeight = options->cells[i]->maxY - options->cells[i]->minY + 1;
+            cellWidth = options->cells[i]->maxX - options->cells[i]->minX + 1;
+        } else {
+            FATAL_ERROR("No bounding rectangle. Incompatible NCER\n");
+        }
+
+        outputHeight += cellHeight;
+        if (outputWidth < cellWidth) {
+            outputWidth = cellWidth;
+        }
+        if (i) {
+            outputHeight++;
+        }
+    }
+
+    if (outputHeight == 0 || outputWidth == 0) {
+        FATAL_ERROR("No cells. Incompatible NCER\n");
+    }
+
+    uint32_t outSizeFactor_numer = 1, outSizeFactor_denom = 1;
+    switch (options->mappingType) {
+    case 0:
+        if (image->bitDepth != 4) {
+            FATAL_ERROR("cannot parse %dbpp image with mapping type 0\n", image->bitDepth);
+        }
+        if (!image->hasPalette) {
+            outSizeFactor_denom = 2;
+        }
+        break;
+    case 1:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot parse %dbpp image with mapping type 0\n", image->bitDepth);
+        }
+        break;
+    case 2:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot parse %dbpp image with mapping type 0\n", image->bitDepth);
+        }
+        if (image->hasPalette) {
+            outSizeFactor_numer = image->hasTransparency ? 4 : 3;
+        }
+        break;
+    default:
+        FATAL_ERROR("invalid mappingType %d\n", options->mappingType);
+    }
+    unsigned char *newPixels = malloc(outputHeight * outputWidth * outSizeFactor_numer / outSizeFactor_denom);
+    memset(newPixels, image->hasPalette ? 0 : 255, outputHeight * outputWidth * outSizeFactor_numer / outSizeFactor_denom);
+
+    int scanHeight = 0;
+    int maxTile = 0;
+    int tileMask[outputHeight * outputWidth]; // check for unused (starting) tiles
+    memset(tileMask, 0, outputHeight * outputWidth * sizeof(int));
+    for (int i = 0; i < options->cellCount; i++) {
+        if (options->cells[i]->oamCount == 0) {
+            continue;
+        }
+        if (i) {
+            scanHeight++;
+        }
+        int cellHeight = options->cells[i]->maxY - options->cells[i]->minY + 1;
+        int uniqueOAMs = options->cells[i]->oamCount;
+
+        for (int j = 0; j < options->cells[i]->oamCount; j++) {
+            int oamHeight = 0;
+            int oamWidth = 0;
+            int oamSize = options->cells[i]->oam[j].attr1.Size;
+            switch (options->cells[i]->oam[j].attr0.Shape) {
+            case 0:
+                oamHeight = 1 << oamSize;
+                oamWidth = oamHeight;
+                break;
+            case 1:
+                switch (oamSize) {
+                case 0:
+                    oamHeight = 1;
+                    oamWidth = 2;
+                    break;
+                case 1:
+                    oamHeight = 1;
+                    oamWidth = 4;
+                    break;
+                case 2:
+                    oamHeight = 2;
+                    oamWidth = 4;
+                    break;
+                case 3:
+                    oamHeight = 4;
+                    oamWidth = 8;
+                    break;
+                }
+                break;
+            case 2:
+                switch (oamSize) {
+                case 0:
+                    oamHeight = 2;
+                    oamWidth = 1;
+                    break;
+                case 1:
+                    oamHeight = 4;
+                    oamWidth = 1;
+                    break;
+                case 2:
+                    oamHeight = 4;
+                    oamWidth = 2;
+                    break;
+                case 3:
+                    oamHeight = 8;
+                    oamWidth = 4;
+                    break;
+                }
+                break;
+            }
+
+            int x = options->cells[i]->oam[j].attr1.XCoordinate; // 8 bits
+            if ((x & 0x80) != 0) {
+                x = (x | ~0xFF);
+            }
+            int y = options->cells[i]->oam[j].attr0.YCoordinate; // 7 bits
+            if ((y & 0x40) != 0) {
+                y = (y | ~0x7F);
+            }
+            x -= options->cells[i]->minX;
+            y -= options->cells[i]->minY;
+
+            int pixelOffset = 0;
+            switch (options->mappingType) {
+            case 0:
+                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 32;
+                maxTile = options->cells[i]->oam[j].attr2.CharName + oamHeight * oamWidth;
+                if (maxTile > numTiles) {
+                    numTiles = maxTile;
+                }
+                if (tileMask[options->cells[i]->oam[j].attr2.CharName]) {
+                    uniqueOAMs--;
+                    continue;
+                }
+                tileMask[options->cells[i]->oam[j].attr2.CharName]++;
+                break;
+            case 1:
+                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 64 + (scanHeight - i) * outputWidth / 2;
+                numTiles += oamHeight * oamWidth;
+                break;
+            case 2:
+                pixelOffset = options->cells[i]->oam[j].attr2.CharName * 128;
+                maxTile = options->cells[i]->oam[j].attr2.CharName * 4 + oamHeight * oamWidth;
+                if (maxTile > numTiles) {
+                    numTiles = maxTile;
+                }
+                if (tileMask[options->cells[i]->oam[j].attr2.CharName]) {
+                    uniqueOAMs--;
+                    continue;
+                }
+                tileMask[options->cells[i]->oam[j].attr2.CharName]++;
+                break;
+            }
+            bool rotationScaling = options->cells[i]->oam[j].attr1.RotationScaling;
+            bool hFlip = options->cells[i]->attributes.hFlip && rotationScaling;
+            bool vFlip = options->cells[i]->attributes.vFlip && rotationScaling;
+            bool hvFlip = options->cells[i]->attributes.hvFlip && rotationScaling;
+            int plttNum = options->cells[i]->oam[j].attr2.Palette;
+
+            switch (image->bitDepth) {
+            case 4:
+                ConvertFromTiles4BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG, plttNum, options->mappingType, image);
+                break;
+            case 8:
+                pixelOffset *= 2;
+                ConvertFromTiles8BppCell(image->pixels + pixelOffset, newPixels, oamWidth, oamHeight, outputWidth, x, y + scanHeight, hFlip, vFlip, hvFlip, toPNG, plttNum, options->mappingType, image);
+                break;
+            }
+        }
+
+        if (uniqueOAMs == 0) {
+            outputHeight -= cellHeight;
+            if (i) {
+                scanHeight--;
+                outputHeight--;
+            }
+        } else {
+            scanHeight += cellHeight;
+        }
+    }
+
+    free(image->pixels);
+    if (toPNG) {
+        image->pixels = newPixels;
+        image->height = outputHeight;
+        image->width = outputWidth;
+        if (image->hasPalette) {
+            image->bitDepth = 8;
+            if (options->mappingType == 2) {
+                image->pixelsAreRGB = true;
+            }
+        }
+    } else {
+        image->pixels = newPixels;
+        image->height = numTiles * 8;
+        image->width = 8;
+    }
+    FreeNCERCell(options);
+}
+
+void ReadNtrScrn(char *path, struct NSCRFile **ppScrnHeader) {
+    int fileSize;
+    unsigned char *data = ReadWholeFile(path, &fileSize);
+    unsigned int offset = 0x10;
+
+    if (memcmp(data, "RCSN", 4) != 0) // NSCR
+    {
+        FATAL_ERROR("Not a valid NSCR cell file.\n");
+    }
+
+    unsigned int blockSize;
+    *ppScrnHeader = NULL;
+    offset = FindNitroDataBlock(data, "NRCS", fileSize, &blockSize);
+    if (offset != -1u) {
+        struct NSCRFile *scrnHeader = (struct NSCRFile *)malloc(sizeof(struct NSCRFile) + blockSize - 0x14);
+        memset(scrnHeader, 0, sizeof(struct NSCRFile) + blockSize - 0x14);
+        scrnHeader->scrnWidth = ReadU16(data, offset + 0x8);
+        scrnHeader->scrnHeight = ReadU16(data, offset + 0xA);
+        scrnHeader->colorMode = ReadU16(data, offset + 0xC);
+        scrnHeader->scrnMode = ReadU16(data, offset + 0xE);
+        scrnHeader->scrnSize = ReadU32(data, offset + 0x10);
+        memcpy(scrnHeader->data, data + offset + 0x14, blockSize - 0x14);
+        *ppScrnHeader = scrnHeader;
+    } else {
+        FATAL_ERROR("missing SCRN block");
+    }
+
+    free(data);
+}
+
+static inline uint32_t NSCR_tileToPixelOffset(uint32_t tileIdx, uint32_t width, int bitDepth) {
+    div_t tile_yx = div(tileIdx, width / 8);
+    return tile_yx.quot * bitDepth * width + tile_yx.rem * bitDepth;
+}
+
+void ApplyScrnToImage(char *scrnFilePath, struct Image *image) {
+    char *ext = GetFileExtension(scrnFilePath);
+    if (strncmp(ext, "NSCR", 4) != 0) {
+        FATAL_ERROR("incorrect file format for NSCR\n");
+    }
+
+    struct NSCRFile *pScrnHeader;
+    ReadNtrScrn(scrnFilePath, &pScrnHeader);
+
+    // 3 screen modes
+    // Mode 0: 4bpp, 16x16 pltt
+    //   If has palette: output PNG is 8bpp
+    // Mode 1: 8bpp, 1x256 pltt
+    //   If has palette: no change
+    // Mode 2: 8bpp, 16x256 pltt
+    //   If has palette: output PNG is RBGA
+    unsigned outSizeMul, outSizeDiv;
+    switch (pScrnHeader->scrnMode) {
+    case 0:
+        if (image->bitDepth != 4) {
+            FATAL_ERROR("cannot convert %dbpp image with text scrn\n", image->bitDepth);
+        }
+        outSizeMul = 1;
+        outSizeDiv = 2 - image->hasPalette;
+        break;
+    case 1:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot convert %dbpp image with affine scrn\n", image->bitDepth);
+        }
+        outSizeMul = 1;
+        outSizeDiv = 1;
+        break;
+    case 2:
+        if (image->bitDepth != 8) {
+            FATAL_ERROR("cannot convert %dbpp image with extpltt scrn\n", image->bitDepth);
+        }
+        outSizeMul = image->hasPalette ? 3 + image->hasTransparency : 1;
+        outSizeDiv = 1;
+        break;
+    default:
+        FATAL_ERROR("unsupported screen format %d\n", pScrnHeader->scrnMode);
+    }
+
+    unsigned char *newPixels = malloc(pScrnHeader->scrnHeight * pScrnHeader->scrnWidth * outSizeMul / outSizeDiv);
+    if (newPixels == NULL) {
+        FATAL_ERROR("unable to allocate new pixel buffer\n");
+    }
+    memset(newPixels, 0, pScrnHeader->scrnHeight * pScrnHeader->scrnWidth * outSizeMul / outSizeDiv);
+    uint32_t numTiles = pScrnHeader->scrnHeight * pScrnHeader->scrnWidth / 64;
+
+    uint16_t tileIdx;
+    bool hFlip = false;
+    bool vFlip = false;
+    uint8_t plttIndex = 0;
+    uint32_t dstOffset;
+    uint32_t srcOffset;
+    uint32_t dstPixelOffset;
+    uint32_t srcPixelOffset;
+    uint32_t colorIdx;
+    int i, x, y, xOffset, yOffset;
+
+    for (i = 0; i < numTiles; ++i) {
+        dstOffset = NSCR_tileToPixelOffset(i, pScrnHeader->scrnWidth, 8 * outSizeMul / outSizeDiv);
+        if (pScrnHeader->scrnMode == 1) {
+            tileIdx = pScrnHeader->data[i];
+        } else {
+            uint16_t tileData = ReadU16(pScrnHeader->data, i * 2);
+            tileIdx = tileData & 0x3FF;
+            hFlip = (tileData >> 10) & 1;
+            vFlip = (tileData >> 11) & 1;
+            plttIndex = (tileData >> 12) & 0xF;
+        }
+        srcOffset = NSCR_tileToPixelOffset(tileIdx, image->width, image->bitDepth);
+        for (y = 0; y < 8; ++y) {
+            yOffset = vFlip ? 7 - y : y;
+            for (x = 0; x < 8; ++x) {
+                xOffset = hFlip ? 7 - x : x;
+                dstPixelOffset = dstOffset + (yOffset * pScrnHeader->scrnWidth + xOffset) * outSizeMul / outSizeDiv;
+                srcPixelOffset = srcOffset + (y * image->width + x) * image->bitDepth / 8;
+                switch (pScrnHeader->scrnMode) {
+                case 0: {
+                    unsigned shift = (4 * (1 - (x & 1)));
+                    unsigned pixelVal = (image->pixels[srcPixelOffset] >> shift) & 0xF;
+                    if (image->hasPalette) {
+                        newPixels[dstPixelOffset] = pixelVal | (plttIndex << 4);
+                    } else {
+                        unsigned dstShift = hFlip ? 4 - shift : shift;
+                        unsigned dstMask = ~(0xF << dstShift);
+                        newPixels[dstPixelOffset] = (newPixels[dstPixelOffset] & dstMask) | (pixelVal << dstShift);
+                    }
+                } break;
+                case 1:
+                    newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
+                    break;
+                case 2:
+                    if (image->hasPalette) {
+                        colorIdx = image->pixels[srcPixelOffset] | (plttIndex << 8);
+                        newPixels[dstPixelOffset + 0] = image->palette.colors[colorIdx].red;
+                        newPixels[dstPixelOffset + 1] = image->palette.colors[colorIdx].green;
+                        newPixels[dstPixelOffset + 2] = image->palette.colors[colorIdx].blue;
+                        if (image->hasTransparency) {
+                            newPixels[dstPixelOffset + 3] = colorIdx == 0 ? 0 : 255;
+                        }
+                    } else {
+                        newPixels[dstPixelOffset] = image->pixels[srcPixelOffset];
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    free(image->pixels);
+    image->pixels = newPixels;
+    if (image->hasPalette) {
+        image->bitDepth = 8;
+    }
+    image->width = pScrnHeader->scrnWidth;
+    image->height = pScrnHeader->scrnHeight;
+    image->pixelsAreRGB = pScrnHeader->scrnMode == 2 && image->hasPalette;
+    free(pScrnHeader);
 }
 
 void WriteImage(char *path, int numTiles, int bitDepth, int colsPerChunk, int rowsPerChunk, struct Image *image, bool invertColors) {
@@ -718,7 +1285,7 @@ void ReadNtrPalette(char *path, struct Palette *palette, int bitdepth, int palIn
 
     unsigned char *paletteData = paletteHeader + 0x18;
 
-    for (int i = 0; i < 256; i++) {
+    for (int i = 0; i < 16 * 256; i++) {
         if (i < palette->numColors) {
             uint16_t paletteEntry = (paletteData[(32 * palIndex) + i * 2 + 1] << 8) | paletteData[(32 * palIndex) + i * 2];
             palette->colors[i].red = UPCONVERT_BIT_DEPTH(GET_GBA_PAL_RED(paletteEntry));
@@ -780,7 +1347,7 @@ void WriteNtrPalette(char *path, struct Palette *palette, bool ncpr, bool ir, in
     }
 
     // NCLR header
-    WriteGenericNtrHeader(fp, (ncpr ? "RPCN" : "RLCN"), extSize + pcmpSize, !ncpr, false, numSections);
+    WriteGenericNtrHeader(fp, ncpr ? "RPCN" : "RLCN", extSize + pcmpSize, !ncpr, false, numSections);
 
     unsigned char palHeader[0x18] = {
         0x54, 0x54, 0x4C, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00

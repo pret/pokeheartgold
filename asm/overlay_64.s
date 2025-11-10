@@ -1110,7 +1110,7 @@ ov64_021E622C: ; 0x021E622C
 	ldr r1, _021E6258 ; =ov64_021E7008
 	ldr r2, _021E625C ; =ov64_021E6EA8
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	mov r1, #6
 	lsl r1, r1, #6
 	str r0, [r4, r1]
@@ -1126,11 +1126,11 @@ _021E625C: .word ov64_021E6EA8
 ov64_021E6260: ; 0x021E6260
 	mov r1, #6
 	lsl r1, r1, #6
-	ldr r3, _021E626C ; =sub_02019BDC
+	ldr r3, _021E626C ; =GridInputHandler_Free
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E626C: .word sub_02019BDC
+_021E626C: .word GridInputHandler_Free
 	thumb_func_end ov64_021E6260
 
 	thumb_func_start ov64_021E6270
@@ -1278,7 +1278,7 @@ _021E635E:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	mov r1, #2
 	add r5, r0, #0
 	mvn r1, r1
@@ -1360,7 +1360,7 @@ _021E63F6:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r1, r0, #0
 	add r0, r4, #0
 	bl ov64_021E677C
@@ -1371,7 +1371,7 @@ _021E6410:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	ldr r1, _021E64F0 ; =gSystem
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x10
@@ -1662,7 +1662,7 @@ _021E6656:
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	add r1, r0, #0
 	add r0, r5, #0
 	bl ov64_021E677C
@@ -2331,7 +2331,7 @@ ov64_021E6BD8: ; 0x021E6BD8
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
 	add r5, r1, #0
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	add r2, r0, #0
 	mov r0, #0x17
 	lsl r0, r0, #4

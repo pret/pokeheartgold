@@ -92,11 +92,11 @@
 .public TouchscreenListMenu_Destroy
 .public TouchscreenListMenu_DestroyButtons
 .public TouchscreenListMenu_HandleInput
-.public sub_02019BA4
-.public sub_02019BDC
-.public sub_02019BE4
-.public sub_02019F74
-.public sub_02019F88
+.public GridInputHandler_Create
+.public GridInputHandler_Free
+.public GridInputHandler_HandleInput_NoHold
+.public GridInputHandler_GetNextInput
+.public GridInputHandler_SetNextLastUnk0FInputs
 .public Main_SetVBlankIntrCB
 .public Main_SetHBlankIntrCB
 .public Heap_Create
