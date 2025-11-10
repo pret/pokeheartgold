@@ -526,8 +526,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
 
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
-        if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
-            AddMonData(mon, MON_DATA_MOVE1PP + movePos, data);
+        if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
+            AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
                     AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
@@ -540,8 +540,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE_ALL, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
         for (movePos = 0; movePos < MAX_MON_MOVES; movePos++) {
-            if (GetMonData(mon, MON_DATA_MOVE1PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1MAXPP + movePos, NULL)) {
-                AddMonData(mon, MON_DATA_MOVE1PP + movePos, data);
+            if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
+                AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
                 if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                     if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
                         AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
@@ -561,20 +561,20 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
         } else {
             data = GetMonData(mon, MON_DATA_HP, NULL);
         }
-        if (data && GetMonData(mon, MON_DATA_HP, NULL) != GetMonData(mon, MON_DATA_MAXHP, NULL)) {
+        if (data && GetMonData(mon, MON_DATA_HP, NULL) != GetMonData(mon, MON_DATA_MAX_HP, NULL)) {
             data = GetItemAttr(item, ITEMATTR_HP_RESTORE_PARAM, HEAP_ID_BATTLE);
             switch (data) {
             case HP_RESTORE_ALL:
-                data = GetMonData(mon, MON_DATA_MAXHP, NULL);
+                data = GetMonData(mon, MON_DATA_MAX_HP, NULL);
                 break;
             case HP_RESTORE_HALF:
-                data = GetMonData(mon, MON_DATA_MAXHP, NULL) / 2;
+                data = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
                 if (data == 0) {
                     data = 1;
                 }
                 break;
             case HP_RESTORE_QTR:
-                data = GetMonData(mon, MON_DATA_MAXHP, NULL) * 25 / 100;
+                data = GetMonData(mon, MON_DATA_MAX_HP, NULL) * 25 / 100;
                 if (data == 0) {
                     data = 1;
                 }
@@ -617,7 +617,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             if (BallToItemId(BattleSystem_GetMonBall(bsys, mon)) == ITEM_LUXURY_BALL) {
                 friendship++;
             }
-            if (GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
+            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
                 friendship++;
             }
             data = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);

@@ -700,18 +700,18 @@ static void sub_0204B34C(UnkStruct_0204B470 *a0, Pokemon *mon) {
     a0->item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
     for (s32 i = 0; i < MAX_MON_MOVES; i++) {
         a0->moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        a0->ppUp |= GetMonData(mon, MON_DATA_MOVE1PPUP + i, NULL) << (i * 2);
+        a0->ppUp |= GetMonData(mon, MON_DATA_MOVE1_PP_UPS + i, NULL) << (i * 2);
     }
-    a0->language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
-    a0->otId = GetMonData(mon, MON_DATA_OTID, NULL);
+    a0->language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
+    a0->otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     a0->pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    a0->ivsWord = GetMonData(mon, MON_DATA_IVS_WORD, NULL);
+    a0->ivsWord = GetMonData(mon, MON_DATA_COMBINED_IVS, NULL);
     for (s32 i = 0; i < NUM_STATS; i++) {
         a0->evs[i] = GetMonData(mon, MON_DATA_HP_EV + i, NULL);
     }
     a0->ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
     a0->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
-    GetMonData(mon, MON_DATA_NICKNAME_FLAT, a0->nickname);
+    GetMonData(mon, MON_DATA_NICKNAME, a0->nickname);
 }
 
 static void sub_0204B470(UnkStruct_Fsys_A0 *a0, SaveData *saveData, u32 a2) {

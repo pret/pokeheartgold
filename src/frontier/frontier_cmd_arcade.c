@@ -109,7 +109,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     for (i = 0; i < partyCnt; i++) {
         mon = Party_GetMonByIndex(arcadeData->playerParty, i);
         data = arcadeData->savedHp[i];
-        SetMonData(mon, MON_DATA_MAXHP, &data);
+        SetMonData(mon, MON_DATA_MAX_HP, &data);
         SetMonData(mon, MON_DATA_HP, &data);
         data = arcadeData->savedAtk[i];
         SetMonData(mon, MON_DATA_ATK, &data);
@@ -118,9 +118,9 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
         data = arcadeData->savedSpd[i];
         SetMonData(mon, MON_DATA_SPEED, &data);
         data = arcadeData->savedSpAtk[i];
-        SetMonData(mon, MON_DATA_SPATK, &data);
+        SetMonData(mon, MON_DATA_SP_ATK, &data);
         data = arcadeData->savedSpDef[i];
-        SetMonData(mon, MON_DATA_SPDEF, &data);
+        SetMonData(mon, MON_DATA_SP_DEF, &data);
     }
 
     BattleSetup_Delete(setup);
@@ -166,12 +166,12 @@ static void GameBoardArgs_Set(GAME_BOARD_ARGS *args, ArcadeContext *data) {
 
     for (int i = 0; i < partyCnt; i++) {
         Pokemon *mon = Party_GetMonByIndex(data->playerParty, i);
-        data->savedHp[i] = GetMonData(mon, MON_DATA_MAXHP, NULL);
+        data->savedHp[i] = GetMonData(mon, MON_DATA_MAX_HP, NULL);
         data->savedAtk[i] = GetMonData(mon, MON_DATA_ATK, NULL);
         data->savedDef[i] = GetMonData(mon, MON_DATA_DEF, NULL);
         data->savedSpd[i] = GetMonData(mon, MON_DATA_SPEED, NULL);
-        data->savedSpAtk[i] = GetMonData(mon, MON_DATA_SPATK, NULL);
-        data->savedSpDef[i] = GetMonData(mon, MON_DATA_SPDEF, NULL);
+        data->savedSpAtk[i] = GetMonData(mon, MON_DATA_SP_ATK, NULL);
+        data->savedSpDef[i] = GetMonData(mon, MON_DATA_SP_DEF, NULL);
     }
 }
 
