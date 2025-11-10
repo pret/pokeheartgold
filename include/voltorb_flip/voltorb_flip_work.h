@@ -14,16 +14,16 @@
 #include "touchscreen_list_menu.h"
 #include "yes_no_prompt.h"
 
-typedef struct Ov122_021E70B8 {
+typedef struct VFCardFlipAnim {
     BgConfig *bgConfig;
     VoltorbFlipGameState *game;
-    VoltorbFlipInputHandler *unk8;
-    int unkC;
-    u8 unk10;
+    VoltorbFlipInputHandler *inputHandler;
+    int mode;
+    u8 step;
     u8 cursorPos;
-    u8 unk12;
+    u8 frame;
     u8 row;
-} Ov122_021E70B8;
+} VFCardFlipAnim;
 
 typedef struct Ov122_021E7888 {
     u8 unk0;
@@ -60,7 +60,7 @@ typedef struct VoltorbFlipAppWork {
     struct WorkflowEngine *workflow;
     VoltorbFlipInputHandler *inputHandler;
     VoltorbFlipGameState *game;
-    Ov122_021E70B8 unk248;
+    VFCardFlipAnim cardFlipControl;
     u8 screenIsDimmed;
 } VoltorbFlipAppWork;
 
