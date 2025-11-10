@@ -2982,7 +2982,7 @@
       "args": []
     },
     {
-      "name": "scrcmd_476",
+      "name": "enable_pokedex_form_detection",
       "args": []
     },
     {
@@ -5393,11 +5393,11 @@
       "prefix": "BADGE_"
     },
     "player_transition":  {
-      "header": "include/constants/global.fieldmap.h",
+      "header": "include/constants/global_fieldmap.h",
       "prefix": "PLAYER_TRANSITION_"
     },
     "direction": {
-      "header": "include/constants/global.fieldmap.h",
+      "header": "include/constants/global_fieldmap.h",
       "prefix": "DIR_"
     }
   }

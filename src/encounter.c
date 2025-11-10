@@ -11,6 +11,7 @@
 #include "frontier/overlay_80.h"
 
 #include "blackout.h"
+#include "catching_show.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "game_clear.h"
@@ -20,7 +21,6 @@
 #include "map_object.h"
 #include "overlay_02.h"
 #include "overlay_03.h"
-#include "pal_park.h"
 #include "pokedex_util.h"
 #include "save_arrays.h"
 #include "save_local_field_data.h"
@@ -595,7 +595,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
         break;
     case 3:
         sub_02050724(encounter->setup, fieldSystem);
-        PalPark_HandleBattleEnd(fieldSystem, encounter->setup);
+        FieldSystem_UpdateCatchingShowResult(fieldSystem, encounter->setup);
         sub_02051660(fieldSystem, encounter->setup);
         (*state)++;
         break;
@@ -610,7 +610,7 @@ static BOOL Task_PalParkEncounter(TaskManager *taskManager) {
         break;
     case 6:
         Encounter_Delete(encounter);
-        if (PalPark_CountMonsNotCaught(fieldSystem) == 0) {
+        if (FieldSystem_GetParkBallCount(fieldSystem) == 0) {
             // Ding-dong!
             // Congratulations!
             // $PLAYER has successfully

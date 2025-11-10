@@ -67,8 +67,8 @@
 .public GetMetatileBehavior
 .public MapModel_IsHeadbuttTree
 .public MapCoordToMatrixIndex
-.public PalPark_TryEncounter
-.public PalPark_SetupEncounter
+.public CatchingShow_CheckWildEncounter
+.public CatchingShow_GetBattleDataTransfer
 .public NewFieldTransitionEnvironment
 .public sub_02055CD8
 .public sub_02057F18
@@ -109,10 +109,10 @@
 .public sub_0205BAEC
 .public MetatileBehavior_IsHeadbutt
 .public PlayerAvatar_GetFacingDirection
-.public GetPlayerXCoord
-.public GetPlayerZCoord
-.public sub_0205C6CC
-.public sub_0205C6D4
+.public PlayerAvatar_GetXCoord
+.public PlayerAvatar_GetZCoord
+.public PlayerAvatar_GetUnk10
+.public PlayerAvatar_GetUnk14
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public FieldSystem_GetPlayerAvatar

@@ -143,7 +143,7 @@ void *GetItemFieldUseFunc(int funcType, u16 itemType) {
 }
 
 void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *dat) {
-    int x, y;
+    int x, z;
     LocalMapObject *dummy;
 
     dat->fieldSystem = fieldSystem;
@@ -152,16 +152,16 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
     dat->haveRocketCostume = Save_VarsFlags_CheckRocketCostumeFlag(Save_VarsFlags_Get(fieldSystem->saveData));
     dat->playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
-    x = GetPlayerXCoord(fieldSystem->playerAvatar);
-    y = GetPlayerZCoord(fieldSystem->playerAvatar);
-    dat->standingTile = GetMetatileBehavior(fieldSystem, x, y);
+    x = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
+    z = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
+    dat->standingTile = GetMetatileBehavior(fieldSystem, x, z);
 
     switch (PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) {
     case DIR_NORTH:
-        y--;
+        z--;
         break;
     case DIR_SOUTH:
-        y++;
+        z++;
         break;
     case DIR_EAST:
         x++;
@@ -170,7 +170,7 @@ void ItemCheckUseData_Init(FieldSystem *fieldSystem, struct ItemCheckUseData *da
         x--;
         break;
     }
-    dat->facingTile = GetMetatileBehavior(fieldSystem, x, y);
+    dat->facingTile = GetMetatileBehavior(fieldSystem, x, z);
 
     FieldSystem_GetFacingObject(fieldSystem, &dummy);
     dat->playerAvatar = fieldSystem->playerAvatar;
@@ -329,7 +329,7 @@ static enum ItemUseError ItemCheckUseFunc_Bicycle(const struct ItemCheckUseData 
     if (data->haveRocketCostume == TRUE) {
         return ITEMUSEERROR_NOTNOW;
     }
-    if (PlayerAvatar_IsBikeStateLocked(data->playerAvatar) == TRUE) {
+    if (PlayerAvatar_CheckBikeStateLocked(data->playerAvatar) == TRUE) {
         return ITEMUSEERROR_NODISMOUNT;
     }
     if (sub_0205B6F4(data->standingTile) == TRUE || sub_0205B8AC(data->standingTile) == TRUE) {

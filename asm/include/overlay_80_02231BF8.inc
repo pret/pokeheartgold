@@ -16,7 +16,7 @@
 .public sub_0205C268
 .public SetMonData
 .public Party_GetMonByIndex
-.public Party_SafeCopyMonToSlot_ResetUnkSub
+.public Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 .public SaveArray_Party_Get
 .public Frontier_GetLaunchParam
 .public Frontier_GetData

@@ -804,7 +804,7 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender_ct;
 
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
     personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     gender = GetMonGender(mon);
 
@@ -844,9 +844,9 @@ BOOL Pokedex_GetNatDexFlag(const Pokedex *pokedex) {
     return pokedex->nationalDex;
 }
 
-void sub_0202A57C(Pokedex *pokedex) {
+void Pokedex_EnableFormDetection(Pokedex *pokedex) {
     ASSERT_POKEDEX(pokedex);
-    pokedex->unk_334 = TRUE;
+    pokedex->canDetectForms = TRUE;
 }
 
 BOOL Pokedex_HasCaughtMonWithLanguage(Pokedex *pokedex, u32 species, u32 language) {

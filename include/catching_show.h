@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_PAL_PARK_H
-#define POKEHEARTGOLD_PAL_PARK_H
+#ifndef POKEHEARTGOLD_CATCHING_SHOW_H
+#define POKEHEARTGOLD_CATCHING_SHOW_H
 
 #include "battle/battle_setup.h"
 
@@ -46,24 +46,24 @@ struct PalParkMonsData {
 // Resets the Pal Park state. fieldSystem is unused.
 // Called when entering the park game, right
 // after the countdown finishes.
-void PalPark_ClearState(FieldSystem *fieldSystem);
+void CatchingShow_ClearState(FieldSystem *fieldSystem);
 
 // Initializes where your migrated Pokemon will spawn, and starts the timer.
 // Called on entry into Pal Park.
-void PalPark_InitFromSave(FieldSystem *fieldSystem);
+void CatchingShow_Start(FieldSystem *fieldSystem);
 
 // Calculates how long you've been in Pal Park.
 // Called when returning to the gate from the park.
-void PalPark_StopClock(FieldSystem *fieldSystem);
+void CatchingShow_End(FieldSystem *fieldSystem);
 
 // Your species score is the sum of point values ascribed to each species.
 // See files/arc/ppark.json for the point values of each.
-int PalPark_CalcSpeciesScore(FieldSystem *fieldSystem);
+int CatchingShow_CalcCatchingPoints(FieldSystem *fieldSystem);
 
 // There is a soft time limit of 1000 seconds.
 // If you catch all 6 Pokemon within that time,
 // you earn 2 points per second left on the clock.
-int PalPark_CalcTimeScore(FieldSystem *fieldSystem);
+int CatchingShow_GetTimePoints(FieldSystem *fieldSystem);
 
 // This is computed in two phases.
 // First, the types of each Pokemon you caught are compared
@@ -71,7 +71,7 @@ int PalPark_CalcTimeScore(FieldSystem *fieldSystem);
 // the park. You earn 200 points if none of them match.
 // Second, you earn an extra 50 points for each unique type
 // among the Pokemon caught.
-u32 PalPark_CalcTypesScore(FieldSystem *fieldSystem);
+int CatchingShow_GetTypePoints(FieldSystem *fieldSystem);
 
 // Determines whether to generate an encounter on the
 // current step. x and z are the player's coordinates.
@@ -90,20 +90,20 @@ u32 PalPark_CalcTypesScore(FieldSystem *fieldSystem);
 // random (LCRNG) based on the cumulative weights.
 // If the chosen bucket corresponds to a Pokemon, it will
 // be encountered.
-BOOL PalPark_TryEncounter(FieldSystem *fieldSystem, int x, int z);
+BOOL CatchingShow_CheckWildEncounter(FieldSystem *fieldSystem, int playerX, int playerY);
 
-// Called if PalPark_TryEncounter succeeds. Loads the
+// Called if CatchingShow_CheckWildEncounter succeeds. Loads the
 // migrated Pokemon as the opponent and sets the Pal Park
 // state.
-BattleSetup *PalPark_SetupEncounter(FieldSystem *fieldSystem);
+BattleSetup *CatchingShow_GetBattleDataTransfer(FieldSystem *fieldSystem);
 
 // Called on return from the battle. Action is based on
 // whether the player caught the Pokemon or fled from it.
 // Other outcomes are unexpected and trip an assert.
-void PalPark_HandleBattleEnd(FieldSystem *fieldSystem, BattleSetup *setup);
+void FieldSystem_UpdateCatchingShowResult(FieldSystem *fieldSystem, BattleSetup *setup);
 
 // Determines how many of the Pokemon in Pal Park were not
 // caught.
-int PalPark_CountMonsNotCaught(FieldSystem *fieldSystem);
+int FieldSystem_GetParkBallCount(FieldSystem *fieldSystem);
 
-#endif // POKEHEARTGOLD_PAL_PARK_H
+#endif // POKEHEARTGOLD_CATCHING_SHOW_H

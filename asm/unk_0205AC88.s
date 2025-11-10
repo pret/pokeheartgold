@@ -418,11 +418,11 @@ sub_0205AF78: ; 0x0205AF78
 _0205AF8A:
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [sp, #0xc]
 	ldr r0, [sp]
 	ldr r0, [r0, #8]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	ldr r4, [sp]
 	str r0, [sp, #8]
 	add r6, r4, #0

@@ -302,10 +302,10 @@ _021FFE36:
 	pop {r3, r4, r5, r6, r7, pc}
 _021FFE50:
 	add r0, r7, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	ldr r1, [r5, #0x18]
 	cmp r1, r4
 	bne _021FFE6A

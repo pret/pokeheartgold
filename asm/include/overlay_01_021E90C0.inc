@@ -34,8 +34,8 @@
 .public PlayerAvatar_GetFacingDirection
 .public PlayerAvatar_GetMapObject
 .public MapObject_SetVisible
-.public MapObject_GetPreviousX
-.public MapObject_GetPreviousZ
+.public MapObject_GetPreviousXCoord
+.public MapObject_GetPreviousZCoord
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement
 .public MapObject_IsMovementPaused

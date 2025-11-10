@@ -7,7 +7,6 @@
 #include "msgdata/msg.naix"
 
 #include "assert.h"
-#include "field_player_avatar.h"
 #include "field_system.h"
 #include "field_warp_tasks.h"
 #include "fieldmap.h"
@@ -20,6 +19,7 @@
 #include "msgdata.h"
 #include "npc_trade.h"
 #include "overlay_111.h"
+#include "player_avatar.h"
 #include "player_data.h"
 #include "pm_string.h"
 #include "pokemon.h"
@@ -60,7 +60,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
 static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager);
 
 BOOL sub_0206D494(FieldSystem *fieldSystem) {
-    LocalMapObject *unk1 = sub_0205C600(fieldSystem->mapObjectManager);
+    LocalMapObject *unk1 = MapObjectManager_GetFirstActiveObjectWithMovement1(fieldSystem->mapObjectManager);
     LocalMapObject *unk2 = sub_0206D590(unk1);
     if (unk2) {
         UnkStruct_0206D494 *unkStruct = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206D494));
@@ -82,7 +82,7 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
     u32 *state = TaskManager_GetStatePtr(taskManager);
     switch (*state) {
     case 0:
-        if (MapObject_IsMovementPaused(sub_0205C600(fieldSystem->mapObjectManager))) {
+        if (MapObject_IsMovementPaused(MapObjectManager_GetFirstActiveObjectWithMovement1(fieldSystem->mapObjectManager))) {
             PlaySE(SEQ_SE_GS_HYOUKAI_SUBERU);
             (*state)++;
         }
@@ -113,10 +113,10 @@ static BOOL sub_0206D4E4(TaskManager *taskManager) {
 static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     MapObjectManager *manager = MapObject_GetManager(object);
     u32 direction = MapObject_GetFacingDirection(object);
-    u32 x = MapObject_GetCurrentX(object);
+    u32 x = MapObject_GetXCoord(object);
     u32 dx = GetDeltaXByFacingDirection(direction);
-    u32 y = MapObject_GetCurrentY(object);
-    u32 z = MapObject_GetCurrentZ(object);
+    u32 y = MapObject_GetYCoord(object);
+    u32 z = MapObject_GetZCoord(object);
     u32 dy = GetDeltaYByFacingDirection(direction);
     LocalMapObject *obj = sub_0206D614(manager, x + dx, y, z + dy);
     if (obj) {
@@ -139,10 +139,10 @@ static LocalMapObject *sub_0206D614(MapObjectManager *manager, u32 x, u32 a2, u3
     do {
         if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_ACTIVE)
             && !MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK18)) {
-            u32 curX = MapObject_GetCurrentX(object);
-            u32 curZ = MapObject_GetCurrentZ(object);
+            u32 curX = MapObject_GetXCoord(object);
+            u32 curZ = MapObject_GetZCoord(object);
             if (curX == x && curZ == y) {
-                s32 y = MapObject_GetCurrentY(object) - a2;
+                s32 y = MapObject_GetYCoord(object) - a2;
                 if (y < 0) {
                     y = -y;
                 }
@@ -160,10 +160,10 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
     switch (a0->unk09) {
     case 0:
         if (MapObject_IsMovementPaused(a0->unk00)) {
-            u32 x = MapObject_GetCurrentX(a0->unk00);
+            u32 x = MapObject_GetXCoord(a0->unk00);
             u32 dx = GetDeltaXByFacingDirection(a0->unk08);
-            u32 y = MapObject_GetCurrentY(a0->unk00);
-            u32 z = MapObject_GetCurrentZ(a0->unk00);
+            u32 y = MapObject_GetYCoord(a0->unk00);
+            u32 z = MapObject_GetZCoord(a0->unk00);
             u32 dy = GetDeltaYByFacingDirection(a0->unk08);
             u32 flags = sub_0206D7B8(a0->unk00, x + dx, y, z + dy);
             if (flags & 2) {
@@ -260,7 +260,7 @@ static void sub_0206D850(PlayerAvatar *playerAvatar) {
     if (PlayerAvatar_CheckFlag0(playerAvatar) == TRUE) {
         MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
         if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
-            sub_0205C74C(playerAvatar);
+            PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
         }
         PlayerAvatar_SetFlag0(playerAvatar, 0);
         PlayerAvatar_SetFlag7(playerAvatar, 0);
@@ -289,7 +289,7 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     // to explicit variables before being compared for the function to match,
     // even though the values are never used again afterwards. Also, the same
     // variables are used for different calls to GetMonData.
-    int word = GetMonData(mon, MON_DATA_OTID, NULL);
+    int word = GetMonData(mon, MON_DATA_OT_ID, NULL);
     if (word != PlayerProfile_GetTrainerID(profile)) {
         return FALSE;
     }
@@ -297,11 +297,11 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     if (byte != PlayerProfile_GetTrainerGender(profile)) {
         return FALSE;
     }
-    byte = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    byte = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
     if (byte != gGameLanguage) {
         return FALSE;
     }
-    byte = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+    byte = GetMonData(mon, MON_DATA_MET_GAME, NULL);
     if (byte != gGameVersion) {
         return FALSE;
     }
@@ -329,7 +329,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     else if (species != trade->give_species) {
         return FALSE;
     }
-    u32 otId = GetMonData(mon, MON_DATA_OTID, NULL);
+    u32 otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     if (otId != trade->otId) {
         return FALSE;
     }
@@ -341,11 +341,11 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     if (gender != trade->gender) {
         return FALSE;
     }
-    u8 language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    u8 language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
     if (language != trade->language) {
         return FALSE;
     }
-    u8 version = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+    u8 version = GetMonData(mon, MON_DATA_MET_GAME, NULL);
     if (version != gGameVersion) {
         return FALSE;
     }
@@ -361,7 +361,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
         return FALSE;
     }
     String *monOtName = String_New(8, HEAP_ID_FIELD2);
-    GetMonData(mon, MON_DATA_OT_NAME_2, monOtName);
+    GetMonData(mon, MON_DATA_OT_NAME_STRING, monOtName);
     String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
     String_Delete(tradeOtName);

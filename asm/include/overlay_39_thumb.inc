@@ -84,8 +84,8 @@
 .public CopyStringToU16Array
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_Get
-.public Save_SysInfo_GetField4C
-.public Save_SysInfo_SetField4C
+.public Save_SysInfo_GetDwcProfileId
+.public Save_SysInfo_SetDwcProfileId
 .public Save_PlayerData_GetOptionsAddr
 .public Save_PlayerData_GetIGTAddr
 .public Options_GetTextFrameDelay
