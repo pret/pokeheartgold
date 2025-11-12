@@ -126,7 +126,7 @@ static void Convert8BppFrom4BppTiles(unsigned char *src, unsigned char *dest, in
         for (int j = 0; j < 8; j++) {
             int idxComponentY = (chunkStartY * rowsPerChunk + rowsSoFar) * 8 + j;
 
-            for (int k = 0; k < 8; k++) {
+            for (int k = 0; k < 8; k += 2) {
                 int idxComponentX = (chunkStartX * colsPerChunk + tilesSoFar) * 8 + k;
                 unsigned char srcPixelPair = *src++;
                 unsigned char leftPixel = srcPixelPair & 0xF;
@@ -139,7 +139,6 @@ static void Convert8BppFrom4BppTiles(unsigned char *src, unsigned char *dest, in
 
                 dest[idxComponentY * pitch + idxComponentX] = ((palIndex - 1) << 4) | leftPixel;
                 dest[idxComponentY * pitch + idxComponentX + 1] = ((palIndex - 1) << 4) | rightPixel;
-                k++;
             }
         }
 
