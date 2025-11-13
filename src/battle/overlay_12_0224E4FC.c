@@ -1764,8 +1764,8 @@ void ov12_02251038(BattleSystem *bsys, BattleContext *ctx) {
         ctx->switchInFlag |= MaskOfFlagNo(3);
     }
 
-    ctx->unk_311C = 6;
-    ctx->safariRunAttempts = 6;
+    ctx->safariCatchStage = 6;
+    ctx->safariFleeStage = 6;
 }
 
 void InitSwitchWork(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
@@ -6228,7 +6228,7 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
     case 4:
         return ctx->levelUpMons;
     case 5:
-        return ctx->safariRunAttempts;
+        return ctx->safariFleeStage;
     case 6:
         return ctx->totalTimesFainted[battlerId];
     case 7:
