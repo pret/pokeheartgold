@@ -16,46 +16,10 @@
 	.extern ov96_021E5D78
 	.extern ov96_021E5D88
 	.extern ov96_021E5D94
-
-	thumb_func_start ov96_021E5DAC
-ov96_021E5DAC: ; 0x021E5DAC
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0x79
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl Heap_Free
-	mov r0, #0x79
-	mov r1, #0
-	lsl r0, r0, #2
-	str r1, [r4, r0]
-	pop {r4, pc}
-	thumb_func_end ov96_021E5DAC
-
-	thumb_func_start ov96_021E5DC4
-ov96_021E5DC4: ; 0x021E5DC4
-	mov r1, #0x79
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	bx lr
-	thumb_func_end ov96_021E5DC4
-
-	thumb_func_start PokeathlonOvy_GetHeapID
-PokeathlonOvy_GetHeapID: ; 0x021E5DCC
-	mov r1, #0xa1
-	lsl r1, r1, #2
-	ldr r0, [r0, r1]
-	bx lr
-	thumb_func_end PokeathlonOvy_GetHeapID
-
-	thumb_func_start ov96_021E5DD4
-ov96_021E5DD4: ; 0x021E5DD4
-	ldr r1, _021E5DDC ; =0x000001ED
-	ldrb r0, [r0, r1]
-	bx lr
-	nop
-_021E5DDC: .word 0x000001ED
-	thumb_func_end ov96_021E5DD4
+	.extern ov96_021E5DAC
+	.extern ov96_021E5DC4
+	.extern PokeathlonOvy_GetHeapID
+	.extern ov96_021E5DD4
 
 	thumb_func_start ov96_021E5DE0
 ov96_021E5DE0: ; 0x021E5DE0

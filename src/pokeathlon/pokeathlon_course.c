@@ -349,3 +349,20 @@ void *ov96_021E5D94(PokeathlonCourseData *data, u32 size) {
     data->heapAllocPtr4 = Heap_Alloc(data->heapId, size);
     return data->heapAllocPtr4;
 }
+
+void ov96_021E5DAC(PokeathlonCourseData *data) {
+    Heap_Free(data->heapAllocPtr4);
+    data->heapAllocPtr4 = NULL;
+}
+
+void *ov96_021E5DC4(PokeathlonCourseData *data) {
+    return data->heapAllocPtr4;
+}
+
+enum HeapID PokeathlonOvy_GetHeapID(PokeathlonCourseData *data) {
+    return data->heapId;
+}
+
+u8 ov96_021E5DD4(PokeathlonCourseData *data) {
+    return data->field_1ED;
+}
