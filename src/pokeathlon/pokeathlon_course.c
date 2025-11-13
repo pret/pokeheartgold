@@ -314,7 +314,7 @@ void ov96_021E5C90(PokeathlonCourseData *data) {
 }
 
 void *ov96_021E5D24(void *profiles, int index) {
-    return (void *)((u8 *)profiles + (PlayerProfile_sizeof() * index));
+    return (u8 *)profiles + (PlayerProfile_sizeof() * index);
 }
 
 u8 ov96_021E5D34(PokeathlonCourseData *data) {
