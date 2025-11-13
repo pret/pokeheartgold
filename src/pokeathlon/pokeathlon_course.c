@@ -332,3 +332,20 @@ void *ov96_021E5D50(PokeathlonCourseData *data, int index) {
 void *ov96_021E5D60(PokeathlonCourseData *data) {
     return data->args->saveData;
 }
+
+void *ov96_021E5D6C(PokeathlonCourseData *data) {
+    return (u8 *)data + 0x72C;
+}
+
+void *ov96_021E5D78(PokeathlonCourseData *data, int index) {
+    return (u8 *)data + 0x72C + (0x60 * index);
+}
+
+void *ov96_021E5D88(PokeathlonCourseData *data) {
+    return (u8 *)data + 0xBA4;
+}
+
+void *ov96_021E5D94(PokeathlonCourseData *data, u32 size) {
+    data->heapAllocPtr4 = Heap_Alloc(data->heapId, size);
+    return data->heapAllocPtr4;
+}

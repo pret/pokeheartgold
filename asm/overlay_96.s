@@ -12,51 +12,10 @@
 	.extern ov96_021E5D40
 	.extern ov96_021E5D50
 	.extern ov96_021E5D60
-
-	thumb_func_start ov96_021E5D6C
-ov96_021E5D6C: ; 0x021E5D6C
-	ldr r1, _021E5D74 ; =0x0000072C
-	add r0, r0, r1
-	bx lr
-	nop
-_021E5D74: .word 0x0000072C
-	thumb_func_end ov96_021E5D6C
-
-	thumb_func_start ov96_021E5D78
-ov96_021E5D78: ; 0x021E5D78
-	ldr r2, _021E5D84 ; =0x0000072C
-	add r2, r0, r2
-	mov r0, #0x60
-	mul r0, r1
-	add r0, r2, r0
-	bx lr
-	.balign 4, 0
-_021E5D84: .word 0x0000072C
-	thumb_func_end ov96_021E5D78
-
-	thumb_func_start ov96_021E5D88
-ov96_021E5D88: ; 0x021E5D88
-	ldr r1, _021E5D90 ; =0x00000BA4
-	add r0, r0, r1
-	bx lr
-	nop
-_021E5D90: .word 0x00000BA4
-	thumb_func_end ov96_021E5D88
-
-	thumb_func_start ov96_021E5D94
-ov96_021E5D94: ; 0x021E5D94
-	push {r4, lr}
-	add r4, r0, #0
-	mov r0, #0xa1
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	bl Heap_Alloc
-	mov r1, #0x79
-	lsl r1, r1, #2
-	str r0, [r4, r1]
-	ldr r0, [r4, r1]
-	pop {r4, pc}
-	thumb_func_end ov96_021E5D94
+	.extern ov96_021E5D6C
+	.extern ov96_021E5D78
+	.extern ov96_021E5D88
+	.extern ov96_021E5D94
 
 	thumb_func_start ov96_021E5DAC
 ov96_021E5DAC: ; 0x021E5DAC
