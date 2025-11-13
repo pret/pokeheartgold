@@ -60,7 +60,8 @@ typedef struct PokeathlonCourseData {
     u8 field_3C8;                      // 0x3C8
     u8 stateArgsBase;                  // 0x3C9 - Base for state function args pointer (passed as &stateArgsBase)
     u8 stateIndex;                     // 0x3CA - State function index
-    u8 filler_3CB[0x211];              // 0x3CB
+    u8 filler_3CB[0x21];               // 0x3CB
+    u8 field_3EC[0x1F0];               // 0x3EC - Array (4 elements of 0x7C bytes each)
     void *heapAllocPtr1;               // 0x5DC - Heap allocated pointer (freed in Exit)
     u8 filler_5E0[0x34];               // 0x5E0
     void *field_614;                   // 0x614
@@ -88,6 +89,7 @@ void ov96_021E5C80(const void *src, void *dest);
 void ov96_021E5C90(PokeathlonCourseData *data);
 void *ov96_021E5D24(void *profiles, int index);
 u8 ov96_021E5D34(PokeathlonCourseData *data);
+void *ov96_021E5D40(PokeathlonCourseData *data, int index);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);

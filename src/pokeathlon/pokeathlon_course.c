@@ -320,3 +320,7 @@ void *ov96_021E5D24(void *profiles, int index) {
 u8 ov96_021E5D34(PokeathlonCourseData *data) {
     return data->field_1EE;
 }
+
+void *ov96_021E5D40(PokeathlonCourseData *data, int index) {
+    return &data->field_3EC[0x7C * index];
+}

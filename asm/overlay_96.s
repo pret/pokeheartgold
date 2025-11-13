@@ -9,18 +9,7 @@
 	.extern ov96_021E5C90
 	.extern ov96_021E5D24
 	.extern ov96_021E5D34
-
-	thumb_func_start ov96_021E5D40
-ov96_021E5D40: ; 0x021E5D40
-	mov r2, #0xfb
-	lsl r2, r2, #2
-	add r2, r0, r2
-	mov r0, #0x7c
-	mul r0, r1
-	add r0, r2, r0
-	bx lr
-	.balign 4, 0
-	thumb_func_end ov96_021E5D40
+	.extern ov96_021E5D40
 
 	thumb_func_start ov96_021E5D50
 ov96_021E5D50: ; 0x021E5D50
