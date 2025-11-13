@@ -76,7 +76,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     ov96_021E5C80(&ov96_0221A984, &data->stateData);
 
-    data->field_3CA = 0;
+    data->stateIndex = 0;
     data->courseState.argsPtr = &data->stateData;
     data->courseState.exitFlag = 0;
 
@@ -243,21 +243,12 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 }
 
 BOOL ov96_021E5C2C(PokeathlonCourseData *data) {
-    void **stateDataPtr;
-    u8 index;
-    void **functionTable;
     typedef BOOL (*StateFunc)(PokeathlonCourseData *, void **);
-    StateFunc func;
-    BOOL result;
+    void **stateDataPtr = (void **)&data->stateArgsBase;
+    u8 index = data->stateIndex;
+    void **functionTable = data->stateData;
+    StateFunc func = functionTable[index];
+    BOOL result = func(data, stateDataPtr);
 
-    stateDataPtr = (void **)((u8 *)data + 0x3C9);
-    index = *((u8 *)data + 0x3CA);
-    functionTable = *(void ***)((u8 *)data + 0x3C4);
-    func = (StateFunc)functionTable[index];
-    result = func(data, stateDataPtr);
-
-    if (result == FALSE) {
-        return FALSE;
-    }
-    return TRUE;
+    return result != FALSE;
 }

@@ -57,8 +57,9 @@ typedef struct PokeathlonCourseData {
     u8 filler_304[0xB0];               // 0x304
     PokeathlonCourseState courseState; // 0x3B4 - State machine structure (16 bytes: 4 fields x 4 bytes)
     void *stateData;                   // 0x3C4 - Pointer to state data structure
-    u8 filler_3C8[2];                  // 0x3C8
-    u8 field_3CA;                      // 0x3CA
+    u8 field_3C8;                      // 0x3C8
+    u8 stateArgsBase;                  // 0x3C9 - Base for state function args pointer (passed as &stateArgsBase)
+    u8 stateIndex;                     // 0x3CA - State function index
     u8 filler_3CB[0x211];              // 0x3CB
     void *heapAllocPtr1;               // 0x5DC - Heap allocated pointer (freed in Exit)
     u8 filler_5E0[0x34];               // 0x5E0
