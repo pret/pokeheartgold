@@ -47,7 +47,8 @@ typedef struct PokeathlonCourseData {
     u8 filler_1E8[0x5];                // 0x1E8
     u8 field_1ED;                      // 0x1ED
     u8 field_1EE;                      // 0x1EE
-    u8 filler_1EF[9];                  // 0x1EF
+    u8 filler_1EF[5];                  // 0x1EF
+    u32 field_1F4;                     // 0x1F4
     PokeathlonCourseArgs *args;        // 0x1F8
     u8 filler_1FC[0x84];               // 0x1FC
     OverlayManager *subOverlay;        // 0x280
@@ -105,13 +106,14 @@ void ov96_021E5DAC(PokeathlonCourseData *data);
 void *ov96_021E5DC4(PokeathlonCourseData *data);
 enum HeapID PokeathlonOvy_GetHeapID(PokeathlonCourseData *data);
 u8 ov96_021E5DD4(PokeathlonCourseData *data);
+void ov96_021E5DE0(PokeathlonCourseData *data, int param);
+void ov96_021E5DEC(PokeathlonCourseData *data);
+void ov96_021E5DFC(PokeathlonCourseData *data, int param);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);
 int ov96_021E8A24(void);
 int ov96_021E8A2C(void);
 void *ov96_021E92E0(enum HeapID heapId);
-void ov96_021E5DFC(PokeathlonCourseData *data, int param);
-void ov96_021E5DE0(PokeathlonCourseData *data, int param);
 
 #endif // POKEHEARTGOLD_POKEATHLON_H

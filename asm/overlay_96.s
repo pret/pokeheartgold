@@ -20,34 +20,9 @@
 	.extern ov96_021E5DC4
 	.extern PokeathlonOvy_GetHeapID
 	.extern ov96_021E5DD4
-
-	thumb_func_start ov96_021E5DE0
-ov96_021E5DE0: ; 0x021E5DE0
-	ldr r2, _021E5DE8 ; =0x000001ED
-	strb r1, [r0, r2]
-	bx lr
-	nop
-_021E5DE8: .word 0x000001ED
-	thumb_func_end ov96_021E5DE0
-
-	thumb_func_start ov96_021E5DEC
-ov96_021E5DEC: ; 0x021E5DEC
-	ldr r1, _021E5DF8 ; =0x000001ED
-	ldrb r2, [r0, r1]
-	add r2, r2, #1
-	strb r2, [r0, r1]
-	bx lr
-	nop
-_021E5DF8: .word 0x000001ED
-	thumb_func_end ov96_021E5DEC
-
-	thumb_func_start ov96_021E5DFC
-ov96_021E5DFC: ; 0x021E5DFC
-	mov r2, #0x7d
-	lsl r2, r2, #2
-	str r1, [r0, r2]
-	bx lr
-	thumb_func_end ov96_021E5DFC
+	.extern ov96_021E5DE0
+	.extern ov96_021E5DEC
+	.extern ov96_021E5DFC
 
 	thumb_func_start ov96_021E5E04
 ov96_021E5E04: ; 0x021E5E04

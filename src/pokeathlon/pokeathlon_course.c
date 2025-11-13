@@ -366,3 +366,15 @@ enum HeapID PokeathlonOvy_GetHeapID(PokeathlonCourseData *data) {
 u8 ov96_021E5DD4(PokeathlonCourseData *data) {
     return data->field_1ED;
 }
+
+void ov96_021E5DE0(PokeathlonCourseData *data, int param) {
+    data->field_1ED = param;
+}
+
+void ov96_021E5DEC(PokeathlonCourseData *data) {
+    data->field_1ED++;
+}
+
+void ov96_021E5DFC(PokeathlonCourseData *data, int param) {
+    data->field_1F4 = param;
+}
