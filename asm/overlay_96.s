@@ -5,18 +5,7 @@
 	.text
 
 	.extern ov96_021E5C50
-
-	thumb_func_start ov96_021E5C80
-ov96_021E5C80: ; 0x021E5C80
-	str r0, [r1]
-	mov r0, #1
-	strb r0, [r1, #4]
-	mov r0, #0
-	strb r0, [r1, #5]
-	strb r0, [r1, #6]
-	strb r0, [r1, #7]
-	bx lr
-	thumb_func_end ov96_021E5C80
+	.extern ov96_021E5C80
 
 	thumb_func_start ov96_021E5C90
 ov96_021E5C90: ; 0x021E5C90

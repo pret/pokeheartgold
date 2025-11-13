@@ -275,3 +275,16 @@ BOOL ov96_021E5C50(PokeathlonCourseData *data) {
 
     return FALSE;
 }
+
+void ov96_021E5C80(const void *src, void *dest) {
+    struct {
+        void *ptr;
+        u8 bytes[4];
+    } *stateInfo = dest;
+
+    stateInfo->ptr = (void *)src;
+    stateInfo->bytes[0] = 1;
+    stateInfo->bytes[1] = 0;
+    stateInfo->bytes[2] = 0;
+    stateInfo->bytes[3] = 0;
+}
