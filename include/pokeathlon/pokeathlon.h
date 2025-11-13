@@ -69,7 +69,9 @@ typedef struct PokeathlonCourseData {
     void *field_614;                   // 0x614
     u8 filler_618[0x112];              // 0x618
     u8 field_72A;                      // 0x72A
-    u8 filler_72B[0x5F9];              // 0x72B
+    u8 filler_72B[1];                  // 0x72B
+    u8 field_72C[0x478];               // 0x72C - Array accessed with 0x60 byte stride
+    u8 filler_BA4[0x180];              // 0xBA4
     s32 frameCounter;                  // 0xD24 - Increments every 0x708 frames (max 0xEA5F)
     u16 frameTimer;                    // 0xD28 - Frame counter, resets at 0x708
     u16 filler_D2A;                    // 0xD2A - Alignment padding

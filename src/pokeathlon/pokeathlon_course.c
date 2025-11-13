@@ -334,15 +334,15 @@ void *ov96_021E5D60(PokeathlonCourseData *data) {
 }
 
 void *ov96_021E5D6C(PokeathlonCourseData *data) {
-    return (u8 *)data + 0x72C;
+    return data->field_72C;
 }
 
 void *ov96_021E5D78(PokeathlonCourseData *data, int index) {
-    return (u8 *)data + 0x72C + (0x60 * index);
+    return &data->field_72C[0x60 * index];
 }
 
 void *ov96_021E5D88(PokeathlonCourseData *data) {
-    return (u8 *)data + 0xBA4;
+    return data->filler_BA4;
 }
 
 void *ov96_021E5D94(PokeathlonCourseData *data, u32 size) {
