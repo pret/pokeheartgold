@@ -4,28 +4,6 @@
 
 	.text
 
-	thumb_func_start ov96_021E5C2C
-ov96_021E5C2C: ; 0x021E5C2C
-	push {r3, lr}
-	ldr r2, _021E5C4C ; =0x000003C9
-	sub r3, r2, #5
-	add r1, r0, r2
-	add r2, r2, #1
-	ldrb r2, [r0, r2]
-	ldr r3, [r0, r3]
-	lsl r2, r2, #2
-	ldr r2, [r3, r2]
-	blx r2
-	cmp r0, #0
-	beq _021E5C48
-	mov r0, #1
-	pop {r3, pc}
-_021E5C48:
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-_021E5C4C: .word 0x000003C9
-	thumb_func_end ov96_021E5C2C
 
 	thumb_func_start ov96_021E5C50
 ov96_021E5C50: ; 0x021E5C50

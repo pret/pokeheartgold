@@ -16,7 +16,6 @@ extern int ov97_0221E5D4(OverlayManager *man, int *state); // Main/Exec
 extern int ov97_0221E69C(OverlayManager *man, int *state); // Exit
 extern void sub_02037AC0(u8 param);
 extern BOOL sub_02037B38(u8 param);
-extern BOOL ov96_021E5C2C(PokeathlonCourseData *data);
 extern BOOL ov96_021E5F24(PokeathlonCourseData *data);
 extern void *ov96_021E9A14(void);
 extern void ov96_021E87B4(int a0, void *a1, void *a2, int a3);
@@ -240,5 +239,25 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     OverlayManager_FreeData(manager);
     Heap_Destroy(HEAP_ID_92);
 
+    return TRUE;
+}
+
+BOOL ov96_021E5C2C(PokeathlonCourseData *data) {
+    void **stateDataPtr;
+    u8 index;
+    void **functionTable;
+    typedef BOOL (*StateFunc)(PokeathlonCourseData *, void **);
+    StateFunc func;
+    BOOL result;
+
+    stateDataPtr = (void **)((u8 *)data + 0x3C9);
+    index = *((u8 *)data + 0x3CA);
+    functionTable = *(void ***)((u8 *)data + 0x3C4);
+    func = (StateFunc)functionTable[index];
+    result = func(data, stateDataPtr);
+
+    if (result == FALSE) {
+        return FALSE;
+    }
     return TRUE;
 }
