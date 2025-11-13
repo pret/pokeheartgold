@@ -252,3 +252,26 @@ BOOL ov96_021E5C2C(PokeathlonCourseData *data) {
 
     return result != FALSE;
 }
+
+BOOL ov96_021E5C50(PokeathlonCourseData *data) {
+    typedef BOOL (*StateHandlerFunc)(PokeathlonCourseData *, int);
+    void **statePtr;
+    StateHandlerFunc func;
+    BOOL result;
+
+    do {
+        statePtr = (void **)data->state;
+        func = (StateHandlerFunc)statePtr[0];
+        result = func(data, 0);
+
+        if (result == 1) {
+            return TRUE;
+        }
+
+        if (result == 0) {
+            break;
+        }
+    } while (data->args->mode == 0);
+
+    return FALSE;
+}

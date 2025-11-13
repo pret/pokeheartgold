@@ -83,6 +83,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state);
 BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state);
 
 BOOL ov96_021E5C2C(PokeathlonCourseData *data);
+BOOL ov96_021E5C50(PokeathlonCourseData *data);
 
 // Internal overlay 96 functions (stubs for now, in assembly)
 void ov96_021E5C80(const void *src, void *dest);

@@ -4,37 +4,7 @@
 
 	.text
 
-
-	thumb_func_start ov96_021E5C50
-ov96_021E5C50: ; 0x021E5C50
-	push {r3, r4, r5, r6, r7, lr}
-	mov r6, #0x7e
-	lsl r6, r6, #2
-	add r4, r6, #0
-	add r5, r0, #0
-	mov r7, #0
-	sub r4, #0x18
-_021E5C5E:
-	ldr r2, [r5, r4]
-	add r0, r5, #0
-	ldr r2, [r2]
-	add r1, r7, #0
-	blx r2
-	cmp r0, #1
-	bne _021E5C70
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_021E5C70:
-	cmp r0, #0
-	beq _021E5C7C
-	ldr r0, [r5, r6]
-	ldr r0, [r0, #4]
-	cmp r0, #0
-	beq _021E5C5E
-_021E5C7C:
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov96_021E5C50
+	.extern ov96_021E5C50
 
 	thumb_func_start ov96_021E5C80
 ov96_021E5C80: ; 0x021E5C80
