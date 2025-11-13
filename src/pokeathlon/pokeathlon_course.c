@@ -6,8 +6,10 @@
 
 #include "assert.h"
 #include "heap.h"
+#include "player_data.h"
 #include "render_text.h"
 #include "unk_02031904.h"
+#include "unk_02034354.h"
 #include "unk_02035900.h"
 
 // External functions used throughout this file (in assembly for now)
@@ -287,4 +289,36 @@ void ov96_021E5C80(const void *src, void *dest) {
     stateInfo->bytes[1] = 0;
     stateInfo->bytes[2] = 0;
     stateInfo->bytes[3] = 0;
+}
+
+void ov96_021E5C90(PokeathlonCourseData *data) {
+    void *profiles;
+    int i;
+
+    profiles = Heap_Alloc(data->heapId, PlayerProfile_sizeof() * 4);
+    data->heapAllocPtr1 = profiles;
+
+    for (i = 0; i < 4; i++) {
+        PlayerProfile_Init(ov96_021E5D24(data->heapAllocPtr1, i));
+    }
+
+    if (data->args->mode == 0) {
+        void *dest;
+        void *src;
+        dest = ov96_021E5D24(data->heapAllocPtr1, 0);
+        src = Save_PlayerData_GetProfile(data->args->saveData);
+        PlayerProfile_Copy(src, dest);
+    } else {
+        for (i = 0; i < data->field_1EE; i++) {
+            void *dest;
+            void *src;
+            dest = ov96_021E5D24(data->heapAllocPtr1, i);
+            src = sub_02034818(i);
+            PlayerProfile_Copy(src, dest);
+        }
+    }
+}
+
+void *ov96_021E5D24(void *profiles, int index) {
+    return (void *)((u8 *)profiles + (PlayerProfile_sizeof() * index));
 }

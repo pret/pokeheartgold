@@ -6,87 +6,8 @@
 
 	.extern ov96_021E5C50
 	.extern ov96_021E5C80
-
-	thumb_func_start ov96_021E5C90
-ov96_021E5C90: ; 0x021E5C90
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	bl PlayerProfile_sizeof
-	add r1, r0, #0
-	mov r0, #0xa1
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	lsl r1, r1, #2
-	bl Heap_Alloc
-	ldr r1, _021E5D1C ; =0x000005DC
-	mov r4, #0
-	str r0, [r5, r1]
-	add r6, r1, #0
-_021E5CAE:
-	ldr r0, [r5, r6]
-	add r1, r4, #0
-	bl ov96_021E5D24
-	bl PlayerProfile_Init
-	add r4, r4, #1
-	cmp r4, #4
-	blt _021E5CAE
-	mov r0, #0x7e
-	lsl r0, r0, #2
-	ldr r1, [r5, r0]
-	ldr r1, [r1, #4]
-	cmp r1, #0
-	bne _021E5CEC
-	ldr r0, _021E5D1C ; =0x000005DC
-	mov r1, #0
-	ldr r0, [r5, r0]
-	bl ov96_021E5D24
-	add r4, r0, #0
-	mov r0, #0x7e
-	lsl r0, r0, #2
-	ldr r0, [r5, r0]
-	ldr r0, [r0]
-	bl Save_PlayerData_GetProfile
-	add r1, r4, #0
-	bl PlayerProfile_Copy
-	pop {r3, r4, r5, r6, r7, pc}
-_021E5CEC:
-	sub r0, #0xa
-	ldrb r0, [r5, r0]
-	mov r6, #0
-	cmp r0, #0
-	ble _021E5D18
-	ldr r7, _021E5D20 ; =0x000001EE
-_021E5CF8:
-	ldr r0, _021E5D1C ; =0x000005DC
-	add r1, r6, #0
-	ldr r0, [r5, r0]
-	bl ov96_021E5D24
-	add r4, r0, #0
-	add r0, r6, #0
-	bl sub_02034818
-	add r1, r4, #0
-	bl PlayerProfile_Copy
-	ldrb r0, [r5, r7]
-	add r6, r6, #1
-	cmp r6, r0
-	blt _021E5CF8
-_021E5D18:
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E5D1C: .word 0x000005DC
-_021E5D20: .word 0x000001EE
-	thumb_func_end ov96_021E5C90
-
-	thumb_func_start ov96_021E5D24
-ov96_021E5D24: ; 0x021E5D24
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl PlayerProfile_sizeof
-	mul r0, r4
-	add r0, r5, r0
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov96_021E5D24
+	.extern ov96_021E5C90
+	.extern ov96_021E5D24
 
 	thumb_func_start ov96_021E5D34
 ov96_021E5D34: ; 0x021E5D34

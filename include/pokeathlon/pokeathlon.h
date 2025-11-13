@@ -84,10 +84,11 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state);
 
 BOOL ov96_021E5C2C(PokeathlonCourseData *data);
 BOOL ov96_021E5C50(PokeathlonCourseData *data);
-
-// Internal overlay 96 functions (stubs for now, in assembly)
 void ov96_021E5C80(const void *src, void *dest);
 void ov96_021E5C90(PokeathlonCourseData *data);
+void *ov96_021E5D24(void *profiles, int index);
+
+// Internal overlay 96 functions (stubs for now, in assembly)
 void *ov96_021E8770(int a0, int a1, PokeathlonCourseData *data, int a3, enum HeapID heapId);
 int ov96_021E8A24(void);
 int ov96_021E8A2C(void);
