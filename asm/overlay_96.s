@@ -8,15 +8,7 @@
 	.extern ov96_021E5C80
 	.extern ov96_021E5C90
 	.extern ov96_021E5D24
-
-	thumb_func_start ov96_021E5D34
-ov96_021E5D34: ; 0x021E5D34
-	ldr r1, _021E5D3C ; =0x000001EE
-	ldrb r0, [r0, r1]
-	bx lr
-	nop
-_021E5D3C: .word 0x000001EE
-	thumb_func_end ov96_021E5D34
+	.extern ov96_021E5D34
 
 	thumb_func_start ov96_021E5D40
 ov96_021E5D40: ; 0x021E5D40

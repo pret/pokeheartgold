@@ -292,28 +292,22 @@ void ov96_021E5C80(const void *src, void *dest) {
 }
 
 void ov96_021E5C90(PokeathlonCourseData *data) {
-    void *profiles;
     int i;
 
-    profiles = Heap_Alloc(data->heapId, PlayerProfile_sizeof() * 4);
-    data->heapAllocPtr1 = profiles;
+    data->heapAllocPtr1 = Heap_Alloc(data->heapId, PlayerProfile_sizeof() * 4);
 
     for (i = 0; i < 4; i++) {
         PlayerProfile_Init(ov96_021E5D24(data->heapAllocPtr1, i));
     }
 
     if (data->args->mode == 0) {
-        void *dest;
-        void *src;
-        dest = ov96_021E5D24(data->heapAllocPtr1, 0);
-        src = Save_PlayerData_GetProfile(data->args->saveData);
+        void *dest = ov96_021E5D24(data->heapAllocPtr1, 0);
+        void *src = Save_PlayerData_GetProfile(data->args->saveData);
         PlayerProfile_Copy(src, dest);
     } else {
         for (i = 0; i < data->field_1EE; i++) {
-            void *dest;
-            void *src;
-            dest = ov96_021E5D24(data->heapAllocPtr1, i);
-            src = sub_02034818(i);
+            void *dest = ov96_021E5D24(data->heapAllocPtr1, i);
+            void *src = sub_02034818(i);
             PlayerProfile_Copy(src, dest);
         }
     }
@@ -321,4 +315,8 @@ void ov96_021E5C90(PokeathlonCourseData *data) {
 
 void *ov96_021E5D24(void *profiles, int index) {
     return (void *)((u8 *)profiles + (PlayerProfile_sizeof() * index));
+}
+
+u8 ov96_021E5D34(PokeathlonCourseData *data) {
+    return data->field_1EE;
 }
