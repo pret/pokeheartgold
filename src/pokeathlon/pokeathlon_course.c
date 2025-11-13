@@ -63,11 +63,11 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     if (param1 == 1) {
         specialMode = TRUE;
-        data->field_1EE = sub_02037454();
-        data->field_72A = 4;
+        data->participantCount = sub_02037454();
+        data->maxParticipants = 4;
     } else {
-        data->field_1EE = 1;
-        data->field_72A = 3;
+        data->participantCount = 1;
+        data->maxParticipants = 3;
     }
 
     param1 = ov96_021E8A24();
@@ -85,7 +85,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     PokeathlonCourse_InitPlayerProfiles(data);
 
     system = ov96_021E92E0(HEAP_ID_92);
-    data->field_614 = system;
+    data->graphicsSystem = system;
 
     if (data->args->mode != 1) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);
@@ -233,7 +233,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
 
     // Free system objects
-    ov96_021E9320(data->field_614);
+    ov96_021E9320(data->graphicsSystem);
     Heap_Free(data->heapAllocPtr1);
     ov96_021E8810(data->system);
 
@@ -305,7 +305,7 @@ void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
         void *src = Save_PlayerData_GetProfile(data->args->saveData);
         PlayerProfile_Copy(src, dest);
     } else {
-        for (i = 0; i < data->field_1EE; i++) {
+        for (i = 0; i < data->participantCount; i++) {
             void *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i);
             void *src = sub_02034818(i);
             PlayerProfile_Copy(src, dest);
@@ -318,7 +318,7 @@ void *PokeathlonCourse_GetPlayerProfile(void *profiles, int index) {
 }
 
 u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
-    return data->field_1EE;
+    return data->participantCount;
 }
 
 void *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index) {

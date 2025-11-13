@@ -46,7 +46,7 @@ typedef struct PokeathlonCourseData {
     void *heapAllocPtr4;               // 0x1E4 - Heap allocated pointer
     u8 filler_1E8[0x5];                // 0x1E8
     u8 field_1ED;                      // 0x1ED
-    u8 field_1EE;                      // 0x1EE
+    u8 participantCount;               // 0x1EE - Number of active participants (1-4)
     u8 filler_1EF[1];                  // 0x1EF
     u32 field_1F0;                     // 0x1F0
     u32 field_1F4;                     // 0x1F4
@@ -74,9 +74,9 @@ typedef struct PokeathlonCourseData {
     u8 field_3F0[0x1EC];               // 0x3F0 - Array (4 elements of 0x7C bytes each)
     void *heapAllocPtr1;               // 0x5DC - Heap allocated pointer (freed in Exit)
     u8 filler_5E0[0x34];               // 0x5E0
-    void *field_614;                   // 0x614
+    void *graphicsSystem;              // 0x614 - Graphics/UI subsystem pointer
     u8 filler_618[0x112];              // 0x618
-    u8 field_72A;                      // 0x72A
+    u8 maxParticipants;                // 0x72A - Maximum participant limit (3 or 4)
     u8 filler_72B[1];                  // 0x72B
     u8 field_72C[0x478];               // 0x72C - Array accessed with 0x60 byte stride
     u8 filler_BA4[0x180];              // 0xBA4
