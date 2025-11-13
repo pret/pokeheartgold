@@ -1133,6 +1133,7 @@ Overlay pokegear
     Object src/application/pokegear/main/overlay_100_021E5900.o
     Object src/application/pokegear/main/pokegear_main.o
     Object src/application/pokegear/main/overlay_100_021E6914.o
+    Object src/application/pokegear/main/pokegear_cursor.o
 }
 Overlay pokegear_app
 {
@@ -1145,7 +1146,10 @@ Overlay pokegear_app
     Object src/application/pokegear/map/overlay_101_021ED498.o
     Object src/application/pokegear/map/fly_map.o
     Object src/application/pokegear/map/overlay_101_021EDCE0.o
-    Object asm/pokegear_app_configure.o
+    Object src/application/pokegear/configure/pokegear_configure.o
+    Object src/application/pokegear/configure/overlay_101_021EED44.o
+    Object src/application/pokegear/configure/overlay_101_021EF1D8.o
+    Object src/application/pokegear/configure/overlay_101_021EF6D0.o
     Object src/application/pokegear/phone/pokegear_phone.o
     Object src/application/pokegear/phone/overlay_101_021EFD20.o
     Object src/application/pokegear/phone/overlay_101_021F017C.o

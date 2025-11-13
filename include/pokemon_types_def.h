@@ -84,20 +84,20 @@ typedef struct {
     /* 0x0C */ u8 movePPUps[MAX_MON_MOVES];
 
     /* 0x10 */ u32 hpIV : 5;
-               u32 atkIV : 5;
-               u32 defIV : 5;
-               u32 speedIV : 5;
-               u32 spAtkIV : 5;
-               u32 spDefIV : 5;
-               u32 isEgg : 1;
-               u32 hasNickname : 1;
+    u32 atkIV : 5;
+    u32 defIV : 5;
+    u32 speedIV : 5;
+    u32 spAtkIV : 5;
+    u32 spDefIV : 5;
+    u32 isEgg : 1;
+    u32 hasNickname : 1;
 
     /* 0x14 */ u32 ribbonsGBA; //!< A bitmask of ribbons introduced in Generation 3. Cool, Beauty, Cute, Smart, Tough, Champion, Winning, Victory, Artist, Effort, Marine, Land, Sky, Country, National, Earth and World Ribbons.
     /* 0x18 */ u8 fatefulEncounter : 1;
-               u8 gender : 2;
-               u8 form : 5;
+    u8 gender : 2;
+    u8 form : 5;
     /* 0x19 */ u8 HGSS_shinyLeaves : 6;
-               u8 unused1 : 2;
+    u8 unused1 : 2;
     /* 0x1A */ u16 unused2;
 
     /* 0x1C */ u16 EggLocation_PtHGSS;
@@ -136,7 +136,7 @@ typedef struct {
     /* 0x1A */ u8 pokerus;
     /* 0x1B */ u8 pokeball;
     /* 0x1C */ u8 metLevel : 7;
-               u8 otGender : 1;
+    u8 otGender : 1;
     /* 0x1D */ u8 metTerrain;
     /* 0x1E */ u8 HGSS_Pokeball;
     /* 0x1F */ s8 mood;
@@ -155,9 +155,9 @@ typedef union {
 typedef struct BoxPokemon {
     /* 0x000 */ u32 personality;
     /* 0x004 */ u16 partyDecrypted : 1;
-                u16 boxDecrypted : 1;
-                u16 checksumFailed : 1;
-                u16 unused : 13;
+    u16 boxDecrypted : 1;
+    u16 checksumFailed : 1;
+    u16 unused : 13;
     /* 0x006 */ u16 checksum;
     /* 0x008 */ PokemonDataBlock dataBlocks[4];
 } BoxPokemon;
@@ -198,15 +198,15 @@ typedef struct Mail {
  */
 typedef struct PartyPokemon {
     /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
-    /* 0x08C */ u8 level; //!< The Pokemon's current level, as computed from its total EXP value and its species' level curve.
+    /* 0x08C */ u8 level;   //!< The Pokemon's current level, as computed from its total EXP value and its species' level curve.
     /* 0x08D */ u8 ballCapsuleID; //!< The ID of the ball capsule attached to the Pokemon.
-    /* 0x08E */ u16 hp; //!< The Pokemon's current HP.
-    /* 0x090 */ u16 maxHP; //!< The Pokemon's maximum HP.
-    /* 0x092 */ u16 atk; //!< The Pokemon's Attack stat.
-    /* 0x094 */ u16 def; //!< The Pokemon's Defense stat.
-    /* 0x096 */ u16 speed; //!< The Pokemon's Speed stat.
-    /* 0x098 */ u16 spatk; //!< The Pokemon's Special Attack stat.
-    /* 0x09A */ u16 spdef; //!< The Pokemon's Special Defense stat.
+    /* 0x08E */ u16 hp;           //!< The Pokemon's current HP.
+    /* 0x090 */ u16 maxHP;        //!< The Pokemon's maximum HP.
+    /* 0x092 */ u16 atk;          //!< The Pokemon's Attack stat.
+    /* 0x094 */ u16 def;          //!< The Pokemon's Defense stat.
+    /* 0x096 */ u16 speed;        //!< The Pokemon's Speed stat.
+    /* 0x098 */ u16 spatk;        //!< The Pokemon's Special Attack stat.
+    /* 0x09A */ u16 spdef;        //!< The Pokemon's Special Defense stat.
     /* 0x09C */ Mail mail;
     /* 0x0D4 */ CAPSULE sealCoords; // seal coords
 } PartyPokemon;
@@ -219,8 +219,8 @@ typedef struct {
 struct UnkPokemonStruct_02072A98 {
     /* 0x00 */ u32 personality;
     /* 0x04 */ u16 partyDecrypted : 1;
-               u16 boxDecrypted : 1;
-               u16 checksumFailed : 1;
+    u16 boxDecrypted : 1;
+    u16 checksumFailed : 1;
     /* 0x06 */ u16 species;
     /* 0x08 */ u16 heldItem;
     /* 0x0C */ u32 otID;
@@ -237,16 +237,16 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x24 */ u8 moveCurrentPPs[MAX_MON_MOVES];
     /* 0x28 */ u8 movePPUps[MAX_MON_MOVES];
     /* 0x2C */ u32 hpIV : 5;
-               u32 atkIV : 5;
-               u32 defIV : 5;
-               u32 speedIV : 5;
-               u32 spAtkIV : 5;
-               u32 spDefIV : 5;
-               u32 isEgg : 1;
-               u32 hasNickname : 1;
+    u32 atkIV : 5;
+    u32 defIV : 5;
+    u32 speedIV : 5;
+    u32 spAtkIV : 5;
+    u32 spDefIV : 5;
+    u32 isEgg : 1;
+    u32 hasNickname : 1;
     /* 0x30 */ u8 fatefulEncounter : 1;
-               u8 gender : 2;
-               u8 form : 5;
+    u8 gender : 2;
+    u8 form : 5;
     /* 0x32 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
     /* 0x48 */ u16 otName[PLAYER_NAME_LENGTH + 1];
     /* 0x58 */ u8 pokeball;
