@@ -4,7 +4,6 @@
 #define FONT_H
 
 #include <stdbool.h>
-
 #include "gfx.h"
 #include "options.h"
 
