@@ -244,7 +244,7 @@ Static main
     Object src/gymmick_init.o
     Object src/unk_02068F84.o
     Object asm/unk_02068FC8.o
-    Object asm/unk_02069528.o
+    Object src/unk_02069528.o
     Object asm/unk_02069660.o
     Object asm/unk_0206979C.o
     Object src/follow_mon.o
