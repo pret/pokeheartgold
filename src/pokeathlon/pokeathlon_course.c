@@ -322,5 +322,13 @@ u8 ov96_021E5D34(PokeathlonCourseData *data) {
 }
 
 void *ov96_021E5D40(PokeathlonCourseData *data, int index) {
-    return &data->field_3EC[0x7C * index];
+    return (u8 *)&data->field_3EC + (0x7C * index);
+}
+
+void *ov96_021E5D50(PokeathlonCourseData *data, int index) {
+    return &data->field_3F0[0x7C * index];
+}
+
+void *ov96_021E5D60(PokeathlonCourseData *data) {
+    return data->args->saveData;
 }
