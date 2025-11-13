@@ -76,13 +76,13 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
     system = ov96_021E8770(param1, param2, data, specialMode, data->heapId);
     data->system = system;
 
-    ov96_021E5C80(&ov96_0221A984, &data->stateData);
+    PokeathlonCourse_InitStateInfo(&ov96_0221A984, &data->stateData);
 
     data->stateIndex = 0;
     data->courseState.argsPtr = &data->stateData;
     data->courseState.exitFlag = 0;
 
-    ov96_021E5C90(data);
+    PokeathlonCourse_InitPlayerProfiles(data);
 
     system = ov96_021E92E0(HEAP_ID_92);
     data->field_614 = system;
@@ -121,7 +121,7 @@ BOOL PokeathlonCourse_Main(OverlayManager *manager, int *state) {
     // Main state machine
     switch (courseState->mainState) {
     case POKEATHLON_STATE_IDLE:
-        if (ov96_021E5C2C(data)) {
+        if (PokeathlonCourse_RunStateFunc(data)) {
             return TRUE;
         }
 
@@ -244,7 +244,7 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
     return TRUE;
 }
 
-BOOL ov96_021E5C2C(PokeathlonCourseData *data) {
+BOOL PokeathlonCourse_RunStateFunc(PokeathlonCourseData *data) {
     typedef BOOL (*StateFunc)(PokeathlonCourseData *, void **);
     void **stateDataPtr = (void **)&data->stateArgsBase;
     u8 index = data->stateIndex;
@@ -255,7 +255,7 @@ BOOL ov96_021E5C2C(PokeathlonCourseData *data) {
     return result != FALSE;
 }
 
-BOOL ov96_021E5C50(PokeathlonCourseData *data) {
+BOOL PokeathlonCourse_RunSubStateLoop(PokeathlonCourseData *data) {
     typedef BOOL (*StateHandlerFunc)(PokeathlonCourseData *, int);
     void **statePtr;
     StateHandlerFunc func;
@@ -278,7 +278,7 @@ BOOL ov96_021E5C50(PokeathlonCourseData *data) {
     return FALSE;
 }
 
-void ov96_021E5C80(const void *src, void *dest) {
+void PokeathlonCourse_InitStateInfo(const void *src, void *dest) {
     struct {
         void *ptr;
         u8 bytes[4];
@@ -291,45 +291,45 @@ void ov96_021E5C80(const void *src, void *dest) {
     stateInfo->bytes[3] = 0;
 }
 
-void ov96_021E5C90(PokeathlonCourseData *data) {
+void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
     int i;
 
     data->heapAllocPtr1 = Heap_Alloc(data->heapId, PlayerProfile_sizeof() * 4);
 
     for (i = 0; i < 4; i++) {
-        PlayerProfile_Init(ov96_021E5D24(data->heapAllocPtr1, i));
+        PlayerProfile_Init(PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i));
     }
 
     if (data->args->mode == 0) {
-        void *dest = ov96_021E5D24(data->heapAllocPtr1, 0);
+        void *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, 0);
         void *src = Save_PlayerData_GetProfile(data->args->saveData);
         PlayerProfile_Copy(src, dest);
     } else {
         for (i = 0; i < data->field_1EE; i++) {
-            void *dest = ov96_021E5D24(data->heapAllocPtr1, i);
+            void *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i);
             void *src = sub_02034818(i);
             PlayerProfile_Copy(src, dest);
         }
     }
 }
 
-void *ov96_021E5D24(void *profiles, int index) {
+void *PokeathlonCourse_GetPlayerProfile(void *profiles, int index) {
     return (u8 *)profiles + (PlayerProfile_sizeof() * index);
 }
 
-u8 ov96_021E5D34(PokeathlonCourseData *data) {
+u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
     return data->field_1EE;
 }
 
-void *ov96_021E5D40(PokeathlonCourseData *data, int index) {
+void *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index) {
     return (u8 *)&data->field_3EC + (0x7C * index);
 }
 
-void *ov96_021E5D50(PokeathlonCourseData *data, int index) {
+void *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index) {
     return &data->field_3F0[0x7C * index];
 }
 
-void *ov96_021E5D60(PokeathlonCourseData *data) {
+void *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
     return data->args->saveData;
 }
 
@@ -345,21 +345,21 @@ void *ov96_021E5D88(PokeathlonCourseData *data) {
     return data->filler_BA4;
 }
 
-void *ov96_021E5D94(PokeathlonCourseData *data, u32 size) {
+void *PokeathlonCourse_AllocFromHeap(PokeathlonCourseData *data, u32 size) {
     data->heapAllocPtr4 = Heap_Alloc(data->heapId, size);
     return data->heapAllocPtr4;
 }
 
-void ov96_021E5DAC(PokeathlonCourseData *data) {
+void PokeathlonCourse_FreeHeapAlloc(PokeathlonCourseData *data) {
     Heap_Free(data->heapAllocPtr4);
     data->heapAllocPtr4 = NULL;
 }
 
-void *ov96_021E5DC4(PokeathlonCourseData *data) {
+void *PokeathlonCourse_GetHeapAllocPtr(PokeathlonCourseData *data) {
     return data->heapAllocPtr4;
 }
 
-enum HeapID PokeathlonOvy_GetHeapID(PokeathlonCourseData *data) {
+enum HeapID PokeathlonCourse_GetHeapID(PokeathlonCourseData *data) {
     return data->heapId;
 }
 
