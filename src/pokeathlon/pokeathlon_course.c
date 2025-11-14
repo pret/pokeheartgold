@@ -322,11 +322,11 @@ u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
 }
 
 void *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index) {
-    return (u8 *)&data->field_3EC + (0x7C * index);
+    return (u8 *)&data->participantData1Base + (0x7C * index);
 }
 
 void *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index) {
-    return &data->field_3F0[0x7C * index];
+    return &data->participantData2[0x7C * index];
 }
 
 void *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {

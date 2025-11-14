@@ -70,8 +70,8 @@ typedef struct PokeathlonCourseData {
     u8 filler_3CB[0xD];                // 0x3CB
     u32 field_3D8[4];                  // 0x3D8 - Array of 4 u32s (16 bytes)
     void *field_3E8;                   // 0x3E8
-    u32 field_3EC;                     // 0x3EC
-    u8 field_3F0[0x1EC];               // 0x3F0 - Array (4 elements of 0x7C bytes each)
+    u32 participantData1Base;          // 0x3EC - Participant data set 1 base (accessed with 0x7C stride)
+    u8 participantData2[0x1EC];        // 0x3F0 - Participant data set 2 (4 elements of 0x7C bytes each)
     void *heapAllocPtr1;               // 0x5DC - Heap allocated pointer (freed in Exit)
     u8 filler_5E0[0x34];               // 0x5E0
     void *graphicsSystem;              // 0x614 - Graphics/UI subsystem pointer
