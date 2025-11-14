@@ -3,6 +3,7 @@
 
 #include "battle/battle_setup.h"
 #include "credits/credits.h"
+#include "pokeathlon/pokeathlon.h"
 #include "voltorb_flip/voltorb_flip.h"
 
 #include "alph_puzzle.h"
@@ -31,7 +32,6 @@
 #include "overlay_73.h"
 #include "overlay_86.h"
 #include "overlay_87.h"
-#include "pokeathlon/pokeathlon.h"
 #include "overlay_99.h"
 #include "overlay_trainer_card.h"
 #include "party_menu.h"

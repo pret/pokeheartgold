@@ -7,6 +7,7 @@
 #include "application/pokegear/pokegear_main.h"
 #include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
+#include "pokeathlon/pokeathlon.h"
 
 #include "alph_puzzle.h"
 #include "bag_view.h"
@@ -52,7 +53,6 @@
 #include "overlay_73.h"
 #include "overlay_86.h"
 #include "overlay_87.h"
-#include "pokeathlon/pokeathlon.h"
 #include "overlay_99.h"
 #include "overlay_manager.h"
 #include "overlay_trainer_card.h"
