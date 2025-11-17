@@ -47,8 +47,8 @@ sub_02017FCC: ; 0x02017FCC
 _02017FE0: .word _020F6280
 	thumb_func_end sub_02017FCC
 
-	thumb_func_start sub_02017FE4
-sub_02017FE4: ; 0x02017FE4
+	thumb_func_start MetLocation
+MetLocation: ; 0x02017FE4
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -63,7 +63,7 @@ _02017FF2:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02017FFC: .word _020F6280
-	thumb_func_end sub_02017FE4
+	thumb_func_end MetLocation
 
 	thumb_func_start LocationIsDiamondPearlCompatible
 LocationIsDiamondPearlCompatible: ; 0x02018000

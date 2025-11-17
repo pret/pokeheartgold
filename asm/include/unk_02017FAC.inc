@@ -2,6 +2,6 @@
 #pragma once
 .public sub_02017FAC
 .public sub_02017FCC
-.public sub_02017FE4
+.public MetLocation
 .public LocationIsDiamondPearlCompatible
 .public GF_AssertFail
