@@ -54,8 +54,8 @@ void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C 
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(Pokemon *mon, u16 move_id);
-void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
-void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
+void InitializeBoxPokemonAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID);
+void PostCaptureBoxPokemonProcessing(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID);
 
 #define ENCRY_ARGS_PTY(mon)    (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.personality
 #define ENCRY_ARGS_BOX(boxMon) (u16 *)&(boxMon)->dataBlocks, sizeof((boxMon)->dataBlocks), (boxMon)->checksum
@@ -3708,7 +3708,7 @@ void sub_020720D4(Pokemon *mon) {
 
 void Pokemon_SetCatchData(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
     u32 hp;
-    sub_0207213C(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
+    InitializeBoxPokemonAfterCapture(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
     if (pokeball == ITEM_HEAL_BALL) {
         hp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
         SetMonData(mon, MON_DATA_HP, &hp);
@@ -3717,19 +3717,19 @@ void Pokemon_SetCatchData(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeba
     }
 }
 
-void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
-    BoxMonSetTrainerMemo(boxMon, playerProfile, 0, a3, heapID);
+void InitializeBoxPokemonAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
+    BoxMonSetTrainerMemo(boxMon, playerProfile, 0, location, heapID);
     SetBoxMonData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &pokeball);
     SetBoxMonData(boxMon, MON_DATA_MET_TERRAIN, &encounterType);
 }
 
-void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
-    sub_02072190(&mon->box, a1, pokeball, a3, encounterType, heapID);
+void sub_0207217C(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
+    PostCaptureBoxPokemonProcessing(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
 }
 
-void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
-    sub_0207213C(boxMon, a1, pokeball, a3, encounterType, heapID);
+void PostCaptureBoxPokemonProcessing(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
+    InitializeBoxPokemonAfterCapture(boxMon, playerProfile, pokeball, location, encounterType, heapID);
 }
 
 static const u16 sItemOdds[2][2] = {
