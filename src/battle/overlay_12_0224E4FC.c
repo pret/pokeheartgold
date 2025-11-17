@@ -5230,7 +5230,7 @@ void ov12_022567D4(BattleSystem *bsys, BattleContext *ctx, Pokemon *mon) {
         ballId = ctx->itemTemp;
     }
 
-    sub_020720FC(mon, profile, ballId, location, terrain, HEAP_ID_BATTLE);
+    Pokemon_SetCatchData(mon, profile, ballId, location, terrain, HEAP_ID_BATTLE);
 }
 
 u8 BattleBuffer_GetNext(BattleContext *ctx, int battlerId) {
