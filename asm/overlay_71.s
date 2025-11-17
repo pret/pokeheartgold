@@ -2917,7 +2917,7 @@ ov71_02247F9C: ; 0x02247F9C
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0
-	bl sub_02070854
+	bl BoxPokemon_SpriteYOffset
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -10008,7 +10008,7 @@ ov71_0224B7EC: ; 0x0224B7EC
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0
-	bl sub_02070854
+	bl BoxPokemon_SpriteYOffset
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
