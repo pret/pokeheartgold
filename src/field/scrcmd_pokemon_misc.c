@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "constants/balls.h"
 #include "constants/items.h"
 #include "constants/map_sections.h"
 #include "constants/moves.h"
@@ -1133,9 +1134,9 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     heldItem = ITEM_ZAP_PLATE;
     SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
 
-    u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
+    u32 location = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
 
-    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELD2);
+    Pokemon_SetCatchData(mon, profile, BALL_POKE, location, 0x18, HEAP_ID_FIELD2);
 
     Party_AddMon(party, mon);
 

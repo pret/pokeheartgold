@@ -3706,9 +3706,9 @@ void sub_020720D4(Pokemon *mon) {
     PlayCry(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_FORM, NULL));
 }
 
-void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
+void Pokemon_SetCatchData(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
     u32 hp;
-    sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heapID);
+    sub_0207213C(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
     if (pokeball == ITEM_HEAL_BALL) {
         hp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
         SetMonData(mon, MON_DATA_HP, &hp);
