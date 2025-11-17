@@ -47,7 +47,7 @@ BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int
     return result;
 }
 
-BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int maploc) {
+BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 eggLocation, MapsecType mapsecType, int maploc) {
 #pragma unused(heapID)
     PlayerProfile *profile;
     Party *party;
@@ -58,7 +58,7 @@ BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 metLocation
     party = SaveArray_Party_Get(saveData);
     mon = AllocMonZeroed(HEAP_ID_FIELD3);
     ZeroMonData(mon);
-    SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
+    SetEggStats(mon, species, eggLocation, profile, 4, MetLocation(mapsecType, maploc));
     result = Party_AddMon(party, mon);
     Heap_Free(mon);
     return result;

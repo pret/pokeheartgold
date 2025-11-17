@@ -624,7 +624,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
     return pms;
 }
 
-void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profile, int trainerMemoStrat, int eggLocation) {
+void SetEggStats(Pokemon *mon, int species, u8 eggLocation, PlayerProfile *profile, int trainerMemoStrat, int metLocation) {
     u32 otId;
     u32 gender;
     u16 pokeball;
@@ -643,8 +643,8 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
     SetMonData(mon, MON_DATA_MET_LEVEL, &metLevel);
 
-    if (metLocation != MAPSEC_MYSTERY_ZONE) {
-        SetMonData(mon, MON_DATA_EGG_LOCATION, &metLocation);
+    if (eggLocation != MAPSEC_MYSTERY_ZONE) {
+        SetMonData(mon, MON_DATA_EGG_LOCATION, &eggLocation);
     }
     isEgg = TRUE;
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
@@ -660,7 +660,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
         SetMonData(mon, MON_DATA_OT_GENDER, &gender);
         String_Delete(name);
     }
-    MonSetTrainerMemo(mon, profile, trainerMemoStrat, eggLocation, HEAP_ID_DEFAULT);
+    MonSetTrainerMemo(mon, profile, trainerMemoStrat, metLocation, HEAP_ID_DEFAULT);
 }
 
 static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 otId, u8 form) {
@@ -713,7 +713,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     SetBreedEggStats(mon, species, dayCare, otId, mom_form);
     InheritIVs(mon, dayCare);
     InheritMoves(mon, Daycare_GetBoxMonI(dayCare, gender_idx[1]), Daycare_GetBoxMonI(dayCare, gender_idx[0]));
-    MonSetTrainerMemo(mon, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, 0), HEAP_ID_FIELD1);
+    MonSetTrainerMemo(mon, profile, 3, MetLocation(MAPSECTYPE_GIFT, 0), HEAP_ID_FIELD1);
     if (species == SPECIES_PICHU) {
         Daycare_LightBallCheck(mon, dayCare);
     }
@@ -1048,7 +1048,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
     otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
     form = GetMonData(mon, MON_DATA_FORM, NULL);
-    if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
+    if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_EXTERNAL, 1)) {
         if (CalcShininessByOtIdAndPersonality(otId, pid)) {
             do {
                 pid = PRandom(pid);

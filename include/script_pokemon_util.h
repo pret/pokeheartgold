@@ -5,7 +5,7 @@
 #include "pokemon.h"
 
 BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, u32 location, int encounterType);
-BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 metLocation, MapsecType mapsecType, int mapLoc);
+BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 eggLocation, MapsecType mapsecType, int mapLoc);
 void PartyMonSetMoveInSlot(Party *party, int mon_slot, int move_slot, u16 moveId);
 int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move);
 int CountAlivePokemon(Party *party);

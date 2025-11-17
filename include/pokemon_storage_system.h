@@ -56,7 +56,7 @@ void PCStorage_SetBoxModified(PCStorage *storage, u8 boxno);
 void PCStorage_SetAllBoxesModified(PCStorage *storage);
 void PCStorage_ResetBoxModifiedFlags(PCStorage *storage);
 u32 PCStorage_GetBoxModifiedFlags(PCStorage *storage);
-u32 sub_02074120(void);
+u32 PCStorage_BoxSize(void);
 void sub_02074128(PCStorage *storage);
 
 #endif // POKEHEARTGOLD_POKEMON_STORAGE_SYSTEM_H
