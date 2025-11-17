@@ -566,7 +566,7 @@ ov80_0222A334: ; 0x0222A334
 	str r0, [sp, #4]
 	add r0, r4, #0
 	mov r2, #4
-	bl sub_0207217C
+	bl Pokemon_UpdateAfterCatch
 	ldr r0, _0222A3B8 ; =0x00000113
 	bl MapHeader_GetMapSec
 	add r3, r0, #0

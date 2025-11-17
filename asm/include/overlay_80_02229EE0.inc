@@ -35,7 +35,7 @@
 .public GetMonBaseStat
 .public GetNatureFromPersonality
 .public CalcShininessByOtIdAndPersonality
-.public sub_0207217C
+.public Pokemon_UpdateAfterCatch
 .public MaskOfFlagNo
 .public Party_AddMon
 .public CalculateHpBarColor

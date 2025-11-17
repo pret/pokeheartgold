@@ -35,7 +35,7 @@
 .public Pokepic_SetAttr
 .public Pokepic_GetAttr
 .public Pokepic_AddAttr
-.public sub_0200914C
+.public Pokepic_AdjustYOffset
 .public PokepicManager_HandleLoadImgAndOrPltt
 .public NewMsgDataFromNarc
 .public DestroyMsgData
