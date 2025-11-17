@@ -26,7 +26,7 @@
 .public Pokepic_StartPaletteFade
 .public Pokepic_StartPaletteFadeAll
 .public Pokepic_ResumePaletteFade
-.public sub_0200914C
+.public Pokepic_AdjustYOffset
 .public Pokepic_ScheduleReloadFromNarc
 .public Pokepic_GetTemplate
 .public PokepicManager_SetG3UpdateFlagsMask

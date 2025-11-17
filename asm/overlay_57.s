@@ -8336,7 +8336,7 @@ _0223BA8E:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200914C
+	bl Pokepic_AdjustYOffset
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0
@@ -8397,7 +8397,7 @@ _0223BB04:
 	ldr r0, [r4, r1]
 	add r1, r1, #4
 	ldr r1, [r4, r1]
-	bl sub_0200914C
+	bl Pokepic_AdjustYOffset
 	mov r0, #1
 	pop {r4, pc}
 	.balign 4, 0

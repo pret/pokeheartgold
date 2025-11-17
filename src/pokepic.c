@@ -964,7 +964,7 @@ BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic) {
     return pokepic->drawParam.fadeActive == TRUE;
 }
 
-void sub_0200914C(Pokepic *pokepic, int y) {
+void Pokepic_AdjustYOffset(Pokepic *pokepic, int y) {
     pokepic->drawParam.yOffset = (40 - y) - (((40 - y) * pokepic->drawParam.affineHeight) >> 8);
 }
 

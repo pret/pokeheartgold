@@ -3724,7 +3724,7 @@ void InitializeBoxPokemonAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerP
     SetBoxMonData(boxMon, MON_DATA_MET_TERRAIN, &encounterType);
 }
 
-void sub_0207217C(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
+void Pokemon_UpdateAfterCatch(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
     PostCaptureBoxPokemonProcessing(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
 }
 

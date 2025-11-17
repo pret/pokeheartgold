@@ -6863,7 +6863,7 @@ _0225BD16:
 	mov r1, #0x90
 	ldrsb r1, [r4, r1]
 	ldr r0, [r0, #0x20]
-	bl sub_0200914C
+	bl Pokepic_AdjustYOffset
 	add sp, #0xb0
 	pop {r3, r4, r5, pc}
 _0225BD3C:
@@ -7845,7 +7845,7 @@ _0225C52C:
 	mov r1, #0x90
 	ldrsb r1, [r4, r1]
 	ldr r0, [r0, #0x20]
-	bl sub_0200914C
+	bl Pokepic_AdjustYOffset
 	add sp, #0x1d8
 	pop {r4, r5, r6, pc}
 _0225C552:
@@ -8668,7 +8668,7 @@ _0225CBCA:
 	add r1, #0x6c
 	ldrb r1, [r1]
 	ldr r0, [r4, #8]
-	bl sub_0200914C
+	bl Pokepic_AdjustYOffset
 	ldr r0, [r4, #8]
 	mov r1, #0xc
 	bl Pokepic_GetAttr
