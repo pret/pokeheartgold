@@ -104,7 +104,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         work->state++;
         break;
     case 7:
-        sub_020720D4(mon);
+        PlayMonCry(mon);
         work->state++;
         break;
     case 8:

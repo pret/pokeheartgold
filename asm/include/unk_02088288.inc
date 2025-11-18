@@ -104,8 +104,8 @@
 .public GetMonNature
 .public GetMonGender
 .public MonIsShiny
-.public sub_02070D90
-.public sub_02070D94
+.public GetSizeOfBoxAndPartyStorages
+.public GetSizeOfBoxStorage
 .public Mon_GetBoxMon
 .public MonSwapMoves
 .public BoxMonSwapMoves

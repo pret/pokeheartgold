@@ -127,7 +127,7 @@
 .public sub_0205F55C
 .public MapObject_IsMovementPaused
 .public GetMonData
-.public sub_02070D90
+.public GetSizeOfBoxAndPartyStorages
 .public Mon_GetBoxMon
 .public SaveArray_Party_Alloc
 .public Party_InitWithMaxSize

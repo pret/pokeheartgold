@@ -7515,7 +7515,7 @@ ov41_02249604: ; 0x02249604
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #2
-	bl DP_GetPokemonSpriteCharAndPlttNarcIds
+	bl GetPokemonSpriteCharAndPlttNarcIds_DP
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

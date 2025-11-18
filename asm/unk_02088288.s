@@ -4029,7 +4029,7 @@ sub_0208A310: ; 0x0208A310
 	beq _0208A396
 	b _0208A3C6
 _0208A32C:
-	bl sub_02070D90
+	bl GetSizeOfBoxAndPartyStorages
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -4078,7 +4078,7 @@ _0208A392:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0208A396:
-	bl sub_02070D94
+	bl GetSizeOfBoxStorage
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -4158,7 +4158,7 @@ _0208A41A:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0208A420:
-	bl sub_02070D90
+	bl GetSizeOfBoxAndPartyStorages
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -4264,7 +4264,7 @@ _0208A4DE:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0208A4E4:
-	bl sub_02070D94
+	bl GetSizeOfBoxStorage
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -4308,7 +4308,7 @@ sub_0208A520: ; 0x0208A520
 	beq _0208A550
 	b _0208A55E
 _0208A538:
-	bl sub_02070D90
+	bl GetSizeOfBoxAndPartyStorages
 	ldrb r1, [r4, #0x14]
 	ldr r2, [r4]
 	mul r0, r1
@@ -4320,7 +4320,7 @@ _0208A546:
 	bl Party_GetMonByIndex
 	pop {r4, pc}
 _0208A550:
-	bl sub_02070D94
+	bl GetSizeOfBoxStorage
 	ldrb r1, [r4, #0x14]
 	ldr r2, [r4]
 	mul r0, r1
