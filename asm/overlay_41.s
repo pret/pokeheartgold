@@ -7561,7 +7561,7 @@ ov41_02249604: ; 0x02249604
 	bl ov41_02249978
 	add r0, r6, #0
 	mov r1, #2
-	bl sub_02070848
+	bl MonPicHeight_DP
 	mov r2, #0
 	str r2, [sp]
 	add r7, r0, #0

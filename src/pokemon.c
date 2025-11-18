@@ -2466,11 +2466,11 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 s
     }
 }
 
-u8 sub_0207083C(BoxPokemon *boxMon, u8 whichFacing) {
+u8 MonPicHeight(BoxPokemon *boxMon, u8 whichFacing) {
     return BoxPokemon_SpriteYOffset(boxMon, whichFacing, FALSE);
 }
 
-u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing) {
+u8 MonPicHeight_DP(BoxPokemon *boxMon, u8 whichFacing) {
     return BoxPokemon_SpriteYOffset(boxMon, whichFacing, TRUE);
 }
 

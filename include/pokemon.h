@@ -145,8 +145,8 @@ void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 spec
 u8 Pokemon_SanitizeFormId(u16 species, u8 form);
 void UseDPFormPokepicTemplate(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny);
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality);
-u8 sub_0207083C(BoxPokemon *boxMon, u8 whichFacing);
-u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing);
+u8 MonPicHeight(BoxPokemon *boxMon, u8 whichFacing);
+u8 MonPicHeight_DP(BoxPokemon *boxMon, u8 whichFacing);
 u8 BoxPokemon_SpriteYOffset(BoxPokemon *boxMon, u8 whichFacing, BOOL preferDP);
 u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 u8 GetMonPicHeightBySpeciesGenderForme_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);

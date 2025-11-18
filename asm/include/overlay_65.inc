@@ -193,7 +193,7 @@
 .public SetMonData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public sub_0207083C
+.public MonPicHeight
 .public Mon_GetBoxMon
 .public CopyPokemonToPokemon
 .public Mon_UpdateShayminForm

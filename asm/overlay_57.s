@@ -8182,7 +8182,7 @@ ov57_0223B950: ; 0x0223B950
 	ldr r0, _0223B9BC ; =0x00000458
 	mov r1, #2
 	ldr r0, [r5, r0]
-	bl sub_0207083C
+	bl MonPicHeight
 	add r6, r0, #0
 	mov r0, #0x73
 	lsl r0, r0, #2
