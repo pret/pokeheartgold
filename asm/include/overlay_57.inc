@@ -194,7 +194,7 @@
 .public SetMonData
 .public GetMonNature
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public sub_0207083C
+.public MonPicHeight
 .public CopyPokemonToPokemon
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C

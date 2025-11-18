@@ -221,7 +221,7 @@
 .public AllocMonZeroed
 .public GetMonData
 .public DP_GetPokemonSpriteCharAndPlttNarcIds
-.public sub_02070848
+.public MonPicHeight_DP
 .public NNS_GfdResetFrmTexVramState
 .public NNS_GfdResetFrmPlttVramState
 .public NNS_G2dGetUnpackedCharacterData

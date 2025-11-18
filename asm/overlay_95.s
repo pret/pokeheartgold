@@ -1195,7 +1195,7 @@ ov95_021E623C: ; 0x021E623C
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0207083C
+	bl MonPicHeight
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]

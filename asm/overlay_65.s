@@ -2896,7 +2896,7 @@ ov65_0221D674: ; 0x0221D674
 	ldr r4, [sp, #0x50]
 	bl Party_GetMonByIndex
 	mov r1, #2
-	bl sub_0207083C
+	bl MonPicHeight
 	str r0, [sp, #0x10]
 	ldr r0, _0221D8AC ; =0x0000040C
 	mov r1, #1
