@@ -2154,7 +2154,7 @@ void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemo
     GetBoxmonSpriteCharAndPlttNarcIds(pokepicTemplate, &mon->box, whichFacing, FALSE);
 }
 
-void DP_GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing) {
+void GetPokemonSpriteCharAndPlttNarcIds_DP(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing) {
     GetBoxmonSpriteCharAndPlttNarcIds(pokepicTemplate, boxMon, whichFacing, TRUE);
 }
 
@@ -2738,11 +2738,11 @@ void sub_02070D84(s32 trainer_class, s32 battlerSide, struct UnkStruct_02070D3C 
     sub_02070D3C(trainer_class, battlerSide, FALSE, a2);
 }
 
-u32 sub_02070D90(void) {
+u32 GetSizeOfBoxAndPartyStorages(void) {
     return sizeof(Pokemon);
 }
 
-u32 sub_02070D94(void) {
+u32 GetSizeOfBoxStorage(void) {
     return sizeof(BoxPokemon);
 }
 
@@ -3702,7 +3702,7 @@ void sub_0207204C(SOUND_CHATOT *r7, u32 r6, u16 r5, s32 r4, s32 sp20, u32 sp24, 
     }
 }
 
-void sub_020720D4(Pokemon *mon) {
+void PlayMonCry(Pokemon *mon) {
     PlayCry(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_FORM, NULL));
 }
 

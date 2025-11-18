@@ -878,8 +878,8 @@ static void InitWirelessTradeSelectMonArgs(WirelessTradeSelectMonArgs *args, Fie
     args->saveData = fieldSystem->saveData;
     args->gameStats = Save_GameStats_Get(fieldSystem->saveData);
     args->partnerProfile = Heap_Alloc(HEAP_ID_FIELD3, PlayerProfile_sizeof());
-    args->unk38 = Heap_Alloc(HEAP_ID_FIELD3, sub_02070D90());
-    args->unk3C = Heap_Alloc(HEAP_ID_FIELD3, sub_02070D90());
+    args->unk38 = Heap_Alloc(HEAP_ID_FIELD3, GetSizeOfBoxAndPartyStorages());
+    args->unk3C = Heap_Alloc(HEAP_ID_FIELD3, GetSizeOfBoxAndPartyStorages());
     args->fieldSystem = fieldSystem;
     args->unk30 = 0;
 }
