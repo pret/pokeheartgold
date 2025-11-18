@@ -59,8 +59,8 @@
 .public Save_Frontier_GetStatic
 .public AllocMonZeroed
 .public SetMonData
-.public sub_02072A98
-.public sub_02072D64
+.public GetPokemonData
+.public SavePokemonData
 .public Party_InitWithMaxSize
 .public Party_AddMon
 .public Party_GetMaxCount

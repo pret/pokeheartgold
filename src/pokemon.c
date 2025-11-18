@@ -4243,7 +4243,7 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID) {
     return TRUE;
 }
 
-void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
+void GetPokemonData(Pokemon *mon, struct PokemonData *monData) {
     PokemonDataBlockA *dbA; // r5
     PokemonDataBlockB *dbB; // sp4
     PokemonDataBlockC *dbC; // r7
@@ -4261,61 +4261,61 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     dbC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
     dbD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
 
-    dest->personality = boxMon->personality;
-    dest->partyDecrypted = FALSE;
-    dest->boxDecrypted = FALSE;
-    dest->checksumFailed = boxMon->checksumFailed;
+    monData->personality = boxMon->personality;
+    monData->partyDecrypted = FALSE;
+    monData->boxDecrypted = FALSE;
+    monData->checksumFailed = boxMon->checksumFailed;
 
-    dest->species = dbA->species;
-    dest->heldItem = dbA->heldItem;
-    dest->otID = dbA->otID;
-    dest->exp = dbA->exp;
-    dest->friendship = dbA->friendship;
-    dest->ability = dbA->ability;
-    dest->hpEV = dbA->hpEV;
-    dest->atkEV = dbA->atkEV;
-    dest->defEV = dbA->defEV;
-    dest->speedEV = dbA->speedEV;
-    dest->spAtkEV = dbA->spAtkEV;
-    dest->spDefEV = dbA->spDefEV;
-    dest->originLanguage = dbA->originLanguage;
+    monData->species = dbA->species;
+    monData->heldItem = dbA->heldItem;
+    monData->otID = dbA->otID;
+    monData->exp = dbA->exp;
+    monData->friendship = dbA->friendship;
+    monData->ability = dbA->ability;
+    monData->hpEV = dbA->hpEV;
+    monData->atkEV = dbA->atkEV;
+    monData->defEV = dbA->defEV;
+    monData->speedEV = dbA->speedEV;
+    monData->spAtkEV = dbA->spAtkEV;
+    monData->spDefEV = dbA->spDefEV;
+    monData->originLanguage = dbA->originLanguage;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        dest->moves[i] = dbB->moves[i];
-        dest->moveCurrentPPs[i] = dbB->moveCurrentPPs[i];
-        dest->movePPUps[i] = dbB->movePPUps[i];
+        monData->moves[i] = dbB->moves[i];
+        monData->moveCurrentPPs[i] = dbB->moveCurrentPPs[i];
+        monData->movePPUps[i] = dbB->movePPUps[i];
     }
-    dest->hpIV = dbB->hpIV;
-    dest->atkIV = dbB->atkIV;
-    dest->defIV = dbB->defIV;
-    dest->speedIV = dbB->speedIV;
-    dest->spAtkIV = dbB->spAtkIV;
-    dest->spDefIV = dbB->spDefIV;
-    dest->isEgg = dbB->isEgg;
-    dest->hasNickname = dbB->hasNickname;
-    dest->fatefulEncounter = dbB->fatefulEncounter;
-    dest->gender = dbB->gender;
-    dest->form = dbB->form;
+    monData->hpIV = dbB->hpIV;
+    monData->atkIV = dbB->atkIV;
+    monData->defIV = dbB->defIV;
+    monData->speedIV = dbB->speedIV;
+    monData->spAtkIV = dbB->spAtkIV;
+    monData->spDefIV = dbB->spDefIV;
+    monData->isEgg = dbB->isEgg;
+    monData->hasNickname = dbB->hasNickname;
+    monData->fatefulEncounter = dbB->fatefulEncounter;
+    monData->gender = dbB->gender;
+    monData->form = dbB->form;
 
     for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
-        dest->nickname[i] = dbC->nickname[i];
+        monData->nickname[i] = dbC->nickname[i];
     }
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
-        dest->otName[i] = dbD->otName[i];
+        monData->otName[i] = dbD->otName[i];
     }
-    dest->pokeball = dbD->pokeball;
+    monData->pokeball = dbD->pokeball;
 
-    dest->status = mon->party.status;
-    dest->level = mon->party.level;
-    dest->ballCapsuleID = mon->party.ballCapsuleID;
-    dest->hp = mon->party.hp;
-    dest->maxHP = mon->party.maxHP;
-    dest->atk = mon->party.atk;
-    dest->def = mon->party.def;
-    dest->speed = mon->party.speed;
-    dest->spatk = mon->party.spatk;
-    dest->spdef = mon->party.spdef;
+    monData->status = mon->party.status;
+    monData->level = mon->party.level;
+    monData->ballCapsuleID = mon->party.ballCapsuleID;
+    monData->hp = mon->party.hp;
+    monData->maxHP = mon->party.maxHP;
+    monData->atk = mon->party.atk;
+    monData->def = mon->party.def;
+    monData->speed = mon->party.speed;
+    monData->spatk = mon->party.spatk;
+    monData->spdef = mon->party.spdef;
 
     if (!mon->box.partyDecrypted) {
         ENCRYPT_PTY(mon);
@@ -4323,7 +4323,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     }
 }
 
-void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
+void SavePokemonData(const struct PokemonData *monData, Pokemon *mon) {
     PokemonDataBlockA *dbA; // r5
     PokemonDataBlockB *dbB; // r6
     PokemonDataBlockC *dbC; // r7
@@ -4333,71 +4333,71 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
 
     MI_CpuClearFast(mon, sizeof(Pokemon));
     boxMon = Mon_GetBoxMon(mon);
-    dbA = &GetSubstruct(boxMon, src->personality, 0)->blockA;
-    dbB = &GetSubstruct(boxMon, src->personality, 1)->blockB;
-    dbC = &GetSubstruct(boxMon, src->personality, 2)->blockC;
-    dbD = &GetSubstruct(boxMon, src->personality, 3)->blockD;
+    dbA = &GetSubstruct(boxMon, monData->personality, 0)->blockA;
+    dbB = &GetSubstruct(boxMon, monData->personality, 1)->blockB;
+    dbC = &GetSubstruct(boxMon, monData->personality, 2)->blockC;
+    dbD = &GetSubstruct(boxMon, monData->personality, 3)->blockD;
 
-    boxMon->personality = src->personality;
+    boxMon->personality = monData->personality;
     boxMon->partyDecrypted = FALSE;
     boxMon->boxDecrypted = FALSE;
-    boxMon->checksumFailed = src->checksumFailed;
+    boxMon->checksumFailed = monData->checksumFailed;
 
-    dbA->species = src->species;
-    dbA->heldItem = src->heldItem;
-    dbA->otID = src->otID;
-    dbA->exp = src->exp;
-    dbA->friendship = src->friendship;
-    dbA->ability = src->ability;
-    dbA->hpEV = src->hpEV;
-    dbA->atkEV = src->atkEV;
-    dbA->defEV = src->defEV;
-    dbA->speedEV = src->speedEV;
-    dbA->spAtkEV = src->spAtkEV;
-    dbA->spDefEV = src->spDefEV;
-    dbA->originLanguage = src->originLanguage;
+    dbA->species = monData->species;
+    dbA->heldItem = monData->heldItem;
+    dbA->otID = monData->otID;
+    dbA->exp = monData->exp;
+    dbA->friendship = monData->friendship;
+    dbA->ability = monData->ability;
+    dbA->hpEV = monData->hpEV;
+    dbA->atkEV = monData->atkEV;
+    dbA->defEV = monData->defEV;
+    dbA->speedEV = monData->speedEV;
+    dbA->spAtkEV = monData->spAtkEV;
+    dbA->spDefEV = monData->spDefEV;
+    dbA->originLanguage = monData->originLanguage;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        dbB->moves[i] = src->moves[i];
-        dbB->moveCurrentPPs[i] = src->moveCurrentPPs[i];
-        dbB->movePPUps[i] = src->movePPUps[i];
+        dbB->moves[i] = monData->moves[i];
+        dbB->moveCurrentPPs[i] = monData->moveCurrentPPs[i];
+        dbB->movePPUps[i] = monData->movePPUps[i];
     }
-    dbB->hpIV = src->hpIV;
-    dbB->atkIV = src->atkIV;
-    dbB->defIV = src->defIV;
-    dbB->speedIV = src->speedIV;
-    dbB->spAtkIV = src->spAtkIV;
-    dbB->spDefIV = src->spDefIV;
-    dbB->isEgg = src->isEgg;
-    dbB->hasNickname = src->hasNickname;
-    dbB->fatefulEncounter = src->fatefulEncounter;
-    dbB->gender = src->gender;
-    dbB->form = src->form;
+    dbB->hpIV = monData->hpIV;
+    dbB->atkIV = monData->atkIV;
+    dbB->defIV = monData->defIV;
+    dbB->speedIV = monData->speedIV;
+    dbB->spAtkIV = monData->spAtkIV;
+    dbB->spDefIV = monData->spDefIV;
+    dbB->isEgg = monData->isEgg;
+    dbB->hasNickname = monData->hasNickname;
+    dbB->fatefulEncounter = monData->fatefulEncounter;
+    dbB->gender = monData->gender;
+    dbB->form = monData->form;
 
     for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
-        dbC->nickname[i] = src->nickname[i];
+        dbC->nickname[i] = monData->nickname[i];
     }
 
     for (i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
-        dbD->otName[i] = src->otName[i];
+        dbD->otName[i] = monData->otName[i];
     }
-    dbD->HGSS_Pokeball = src->pokeball;
-    if (src->pokeball <= BALL_CHERISH) {
-        dbD->pokeball = src->pokeball;
+    dbD->HGSS_Pokeball = monData->pokeball;
+    if (monData->pokeball <= BALL_CHERISH) {
+        dbD->pokeball = monData->pokeball;
     } else {
         dbD->pokeball = BALL_POKE;
     }
 
-    mon->party.status = src->status;
-    mon->party.level = src->level;
-    mon->party.ballCapsuleID = src->ballCapsuleID;
-    mon->party.hp = src->hp;
-    mon->party.maxHP = src->maxHP;
-    mon->party.atk = src->atk;
-    mon->party.def = src->def;
-    mon->party.speed = src->speed;
-    mon->party.spatk = src->spatk;
-    mon->party.spdef = src->spdef;
+    mon->party.status = monData->status;
+    mon->party.level = monData->level;
+    mon->party.ballCapsuleID = monData->ballCapsuleID;
+    mon->party.hp = monData->hp;
+    mon->party.maxHP = monData->maxHP;
+    mon->party.atk = monData->atk;
+    mon->party.def = monData->def;
+    mon->party.speed = monData->speed;
+    mon->party.spatk = monData->spatk;
+    mon->party.spdef = monData->spdef;
 
     ENCRYPT_PTY(mon);
     mon->box.checksum = CHECKSUM(&mon->box);

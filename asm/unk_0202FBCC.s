@@ -1548,7 +1548,7 @@ _02030708:
 	add r1, r4, #0
 	bl Party_GetMonByIndex
 	add r1, r5, #0
-	bl sub_02072A98
+	bl GetPokemonData
 	ldrh r0, [r6, #2]
 	add r4, r4, #1
 	add r5, #0x70
@@ -1582,7 +1582,7 @@ sub_02030724: ; 0x02030724
 _0203074C:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02072D64
+	bl SavePokemonData
 	add r0, r4, #0
 	mov r1, #0xa2
 	add r2, sp, #4
