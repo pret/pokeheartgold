@@ -153,7 +153,7 @@ void sub_020556A8(UnkStruct_020556FC *unkPtr) {
 
 void sub_020556B8(FieldSystem *fieldSystem) {
     APRICORN_TREE *trees = Save_FieldApricornTrees_Get(fieldSystem->saveData);
-    sub_0202AE74(trees);
+    ApricornTrees_AwakenTrees(trees);
 }
 
 void sub_020556C8(FieldSystem *fieldSystem, UnkStruct_020556FC *unkPtrB) {
@@ -182,7 +182,7 @@ BOOL sub_02055708(FieldSystem *fieldSystem, LocalMapObject *mapObject) {
 }
 
 BOOL sub_02055760(FieldSystem *fieldSystem, LocalMapObject *mapObj) {
-    sub_0202AE68(Save_FieldApricornTrees_Get(fieldSystem->saveData), MapObject_GetParam(mapObj, 0));
+    ApricornTrees_ResetTreeIndex(Save_FieldApricornTrees_Get(fieldSystem->saveData), MapObject_GetParam(mapObj, 0));
     return TRUE;
 }
 
