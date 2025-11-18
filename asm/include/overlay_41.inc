@@ -220,7 +220,7 @@
 .public GameStats_AddScore
 .public AllocMonZeroed
 .public GetMonData
-.public sub_02070130
+.public DP_GetPokemonSpriteCharAndPlttNarcIds
 .public sub_02070848
 .public NNS_GfdResetFrmTexVramState
 .public NNS_GfdResetFrmPlttVramState

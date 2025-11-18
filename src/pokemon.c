@@ -43,7 +43,7 @@ void LoadMonPersonal(int species, BASE_STATS *dest);
 int ResolveMonForm(int species, int form);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
-void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
+void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL useDP);
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
 void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
 u8 Pokemon_SanitizeFormId(u16 species, u8 form);
@@ -2154,11 +2154,11 @@ void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemo
     GetBoxmonSpriteCharAndPlttNarcIds(pokepicTemplate, &mon->box, whichFacing, FALSE);
 }
 
-void sub_02070130(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing) {
+void DP_GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing) {
     GetBoxmonSpriteCharAndPlttNarcIds(pokepicTemplate, boxMon, whichFacing, TRUE);
 }
 
-void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
+void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL useDP) {
     BOOL decry = AcquireBoxMonLock(boxMon);
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = GetBoxMonGender(boxMon);
@@ -2174,7 +2174,7 @@ void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPoke
     } else {
         form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
     }
-    if (sp14 == TRUE) {
+    if (useDP == TRUE) {
         DP_GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, pid);
     } else {
         GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, pid);
@@ -2352,7 +2352,7 @@ u8 Pokemon_SanitizeFormId(u16 species, u8 form) {
     return form;
 }
 
-void sub_02070560(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
+void UseDPFormPokepicTemplate(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
     pokepicTemplate->narcID = NARC_pbr_pokegra;
     pokepicTemplate->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
     pokepicTemplate->palDataID = (u16)(shiny + (species * 6 + 4));
@@ -2425,7 +2425,7 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 s
             pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
             pokepicTemplate->palDataID = (u16)(shiny + 0xEA);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            UseDPFormPokepicTemplate(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
@@ -2434,7 +2434,7 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 s
             pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
             pokepicTemplate->palDataID = (u16)(shiny + 0xEC + form * 2);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            UseDPFormPokepicTemplate(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     case SPECIES_GIRATINA: // altered, origin
@@ -2443,20 +2443,20 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 s
             pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
             pokepicTemplate->palDataID = (u16)(shiny + 0xF8 + form * 2);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            UseDPFormPokepicTemplate(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
-    case SPECIES_PICHU: // spiky-ear
+    case SPECIES_PICHU: // normal, spiky-ear
         if (form != 0) {
             pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
             pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x9C);
             pokepicTemplate->palDataID = (u16)(shiny + 0xFE);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            UseDPFormPokepicTemplate(pokepicTemplate, species, whichFacing, gender, shiny);
         }
         break;
     default:
-        sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+        UseDPFormPokepicTemplate(pokepicTemplate, species, whichFacing, gender, shiny);
         if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT) {
             pokepicTemplate->species = SPECIES_SPINDA;
             pokepicTemplate->isAnimated = FALSE;
