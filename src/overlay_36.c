@@ -200,7 +200,7 @@ static void InitGameStateAfterOakSpeech_Internal(enum HeapID heapID, SaveData *s
 
     PlayerProfile_SetAvatar(profile, UnionRoomAvatarIdxToSprite(rand, PlayerProfile_GetTrainerGender(profile), 0));
 
-    sub_0202AE0C(Save_FieldApricornTrees_Get(saveData));
+    ApricornTrees_SetToDefaultState(Save_FieldApricornTrees_Get(saveData));
 
     u32 *pokewalker_unk = sub_02032728(Save_Pokewalker_Get(saveData));
     for (i = 0; i < 10; i++) {

@@ -39,7 +39,7 @@ static const u8 sTreeApricorns[NUM_APRICORN_TREE] = {
     APRICORN_WHT, // Azalea Town
 };
 
-void sub_0202AE30(APRICORN_TREE *tree);
+void ApricornTrees_ResetTree(APRICORN_TREE *tree);
 
 void ApricornTrees_Init(APRICORN_TREE *trees) {
     int i;
@@ -49,16 +49,16 @@ void ApricornTrees_Init(APRICORN_TREE *trees) {
     }
 }
 
-void sub_0202AE0C(APRICORN_TREE *trees) {
+void ApricornTrees_SetToDefaultState(APRICORN_TREE *trees) {
     int i;
     for (i = 0; i < MAX_APRICORN_TREE || i < NUM_APRICORN_TREE; i++) {
-        sub_0202AE30(&trees[i]);
+        ApricornTrees_ResetTree(&trees[i]);
         trees[i].unk_0 = 1;
         trees[i].unk_1 = 1;
     }
 }
 
-void sub_0202AE30(APRICORN_TREE *tree) {
+void ApricornTrees_ResetTree(APRICORN_TREE *tree) {
     tree->unk_0 = 0;
     tree->unk_1 = 0;
 }
@@ -86,11 +86,11 @@ int ApricornTrees_GetApricorn(const APRICORN_TREE *trees, int idx) {
     return ret - 1;
 }
 
-void sub_0202AE68(APRICORN_TREE *trees, int idx) {
-    sub_0202AE30(&trees[idx]);
+void ApricornTrees_ResetTreeIndex(APRICORN_TREE *trees, int idx) {
+    ApricornTrees_ResetTree(&trees[idx]);
 }
 
-void sub_0202AE74(APRICORN_TREE *trees) {
+void ApricornTrees_AwakenTrees(APRICORN_TREE *trees) {
     int i;
     for (i = 0; i < MAX_APRICORN_TREE; i++) {
         if (!trees[i].unk_0) {
