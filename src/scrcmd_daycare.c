@@ -16,7 +16,7 @@ static LocalMapObject *CreateDaycareMonSpriteInternal(MapObjectManager *object_m
 BOOL ScrCmd_BufferDaycareMonNicks(ScriptContext *ctx) {
     SaveData *saveData = ctx->fieldSystem->saveData;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
-    Daycare *daycare = Save_Daycare_Get(saveData);
+    Daycare *daycare = Daycare_GetSaveArray(saveData);
 
     Save_Daycare_BufferStoredMonNicks(daycare, *msg_fmt);
 
@@ -96,7 +96,7 @@ BOOL ScrCmd_GetTailDaycareMonSpeciesAndNick(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     MessageFormat **msg_fmt = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
-    Daycare *daycare = Save_Daycare_Get(fieldSystem->saveData);
+    Daycare *daycare = Daycare_GetSaveArray(fieldSystem->saveData);
 
     *ret_ptr = Save_Daycare_BufferTailMonNick(daycare, *msg_fmt);
 
@@ -122,7 +122,7 @@ BOOL ScrCmd_BufferDaycareMonStats(ScriptContext *ctx) {
     u16 level_idx = ScriptGetVar(ctx);
     u16 gender_idx = ScriptGetVar(ctx);
     u16 slot = ScriptGetVar(ctx);
-    Daycare *daycare = Save_Daycare_Get(saveData);
+    Daycare *daycare = Daycare_GetSaveArray(saveData);
 
     Save_Daycare_BufferMonStats(daycare, (u8)nickname_idx, (u8)level_idx, (u8)gender_idx, (u8)slot, *msg_fmt);
 
@@ -144,7 +144,7 @@ BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx) {
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     Daycare *daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
-    *ret_ptr = Save_Daycare_HasEgg(daycare);
+    *ret_ptr = Daycare_HasEgg(daycare);
 
     return FALSE;
 }
@@ -155,7 +155,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
     u16 species;
 
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    daycare = Save_Daycare_Get(fieldSystem->saveData);
+    daycare = Daycare_GetSaveArray(fieldSystem->saveData);
 
     for (s32 dc_mon_idx = 0, y = 5, x = 8; dc_mon_idx < 2; dc_mon_idx++, y += 4, x += 2) {
         LocalMapObject *mon_map_object = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_daycare_poke_1 + dc_mon_idx);
@@ -163,7 +163,7 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
             MapObject_Delete(mon_map_object);
         }
 
-        BoxPokemon *boxMon = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, dc_mon_idx));
+        BoxPokemon *boxMon = DaycareMon_GetBoxMon(Daycare_GetMonX(daycare, dc_mon_idx));
         if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             continue;
         }

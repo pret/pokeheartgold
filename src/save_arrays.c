@@ -101,8 +101,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
      SAVE_DAYCARE,
      0,
-     (SAVESIZEFN)Save_Daycare_sizeof,
-     (SAVEINITFN)Save_Daycare_Init,
+     (SAVESIZEFN)Daycare_GetSizeOfDaycare,
+     (SAVEINITFN)Daycare_Init,
      },
     {
      SAVE_PALPAD,
