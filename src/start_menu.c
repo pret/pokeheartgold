@@ -1025,11 +1025,11 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     memcpy(bagView, startMenu->exitTaskEnvironment, BagView_sizeof());
     Heap_Free(startMenu->exitTaskEnvironment);
 
-    switch (sub_0207790C(bagView)) {
+    switch (BagView_GetUnk68(bagView)) {
     case 0: {
         ItemMenuUseData itemMenuUseData;
         itemMenuUseData.itemId = BagView_GetItemId(bagView);
-        itemMenuUseData.partySlot = sub_02077914(bagView);
+        itemMenuUseData.partySlot = BagView_GetUnk74(bagView);
         itemMenuUseData.taskManager = taskManager;
         ItemMenuUseFunc func = GetItemFieldUseFunc(USE_ITEM_TASK_MENU, GetItemAttr(itemMenuUseData.itemId, ITEMATTR_FIELDUSEFUNC, HEAP_ID_FIELD2));
         func(&itemMenuUseData, &startMenu->itemCheckUseData);
