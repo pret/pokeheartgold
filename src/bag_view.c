@@ -77,15 +77,15 @@ u16 BagView_GetItemId(BagView *bagView) {
     return bagView->itemId;
 }
 
-u16 sub_0207790C(BagView *bagView) {
+u16 BagView_GetUnk68(BagView *bagView) {
     return bagView->unk68;
 }
 
-u8 sub_02077914(BagView *bagView) {
+u8 BagView_GetUnk74(BagView *bagView) {
     return bagView->unk74;
 }
 
-u8 sub_0207791C(BagView *bagView) {
+u8 BagView_GetUnk75(BagView *bagView) {
     return bagView->unk75;
 }
 

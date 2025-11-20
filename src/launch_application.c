@@ -228,7 +228,7 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
 
 int BagView_SelectResult(BagView *bagView) {
     int result = BagView_GetItemId(bagView);
-    GF_ASSERT(result == 0 || sub_0207790C(bagView) != 5);
+    GF_ASSERT(result == 0 || BagView_GetUnk73(bagView) != 5);
     return result;
 }
 

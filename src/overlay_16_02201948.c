@@ -178,7 +178,7 @@ static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
         return 3;
     }
 
-    unk->unk16 = ((u8)sub_0207790C(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
+    unk->unk16 = ((u8)BagView_GetUnk68(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
     Heap_Free(unk->bagView);
     unk->bagView = NULL;
 
