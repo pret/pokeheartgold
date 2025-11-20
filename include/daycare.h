@@ -24,24 +24,24 @@ typedef struct Daycare {
     u8 padding_1DD[3];
 } Daycare;
 
-u32 Save_Daycare_sizeof(void);
-void Save_Daycare_Init(Daycare *daycare);
-DaycareMon *Save_Daycare_GetMonX(Daycare *daycare, s32 i);
+u32 Daycare_GetSizeOfDaycare(void);
+void Daycare_Init(Daycare *daycare);
+DaycareMon *Daycare_GetMonX(Daycare *daycare, s32 i);
 BoxPokemon *DaycareMon_GetBoxMon(DaycareMon *dcmon);
 DaycareMail *DaycareMon_GetExtras(DaycareMon *dcmon);
 u32 DaycareMon_GetSteps(DaycareMon *dcmon);
 Mail *DaycareMail_GetMailPtr(DaycareMail *dcmail);
-u32 Save_Daycare_GetEggPID(Daycare *daycare);
-u8 Save_Daycare_GetEggCycleCounter(Daycare *daycare);
+u32 Daycare_GetEggPID(Daycare *daycare);
+u8 Daycare_GetEggCycleCounter(Daycare *daycare);
 void DaycareMon_SetSteps(DaycareMon *dcmon, u32 steps);
 void DaycareMon_AddSteps(DaycareMon *dcmon, u32 steps);
 void Save_Daycare_SetEggPID(Daycare *daycare, u32 pid);
-void Save_Daycare_SetEggCycleCounter(Daycare *daycare, s32 count);
-BOOL Save_Daycare_MasudaCheck(Daycare *daycare);
+void Daycare_SetEggCycleCounter(Daycare *daycare, s32 count);
+BOOL Daycare_MasudaCheck(Daycare *daycare);
 void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src);
 void DaycareMon_Extras_Init(DaycareMail *mail);
 void DaycareMon_Init(DaycareMon *mon);
-Daycare *Save_Daycare_Get(SaveData *saveData);
-BOOL Save_Daycare_HasEgg(Daycare *daycare);
+Daycare *Daycare_GetSaveArray(SaveData *saveData);
+BOOL Daycare_HasEgg(Daycare *daycare);
 
 #endif

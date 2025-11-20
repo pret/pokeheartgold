@@ -176,10 +176,10 @@
 .public PlayerProfile_GetTrainerGender
 .public PlayerProfile_TestBadgeFlag
 .public PlayerProfile_CountBadges
-.public Save_Daycare_GetMonX
+.public Daycare_GetMonX
 .public DaycareMon_GetBoxMon
-.public Save_Daycare_HasEgg
-.public Save_Daycare_Get
+.public Daycare_HasEgg
+.public Daycare_GetSaveArray
 .public Pokedex_CountNationalDexOwned
 .public Pokedex_CountNationalDexSeen
 .public Pokedex_CountJohtoDexOwned
