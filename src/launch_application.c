@@ -282,11 +282,11 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk4(enum HeapID heapID, FieldSystem *fieldSy
     return args;
 }
 
-int sub_0203E5F8(PartyMenuArgs *partyWork) {
+int PartyMenu_GetSelectedAction(PartyMenuArgs *partyWork) {
     return partyWork->selectedAction;
 }
 
-u16 sub_0203E600(UnkStruct_0203E600 *a0) {
+u16 PartyMenu_GetUnk14(UnkStruct_0203E600 *a0) {
     return a0->unk14;
 }
 

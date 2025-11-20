@@ -135,7 +135,7 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
             0xFFFF,
             NARC_resdat_resdat_00000078_bin,
         };
-        sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
+        SpriteSystem_LoadResourceDataFromFilepathsOakSpeechMode(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
     }
 }
 

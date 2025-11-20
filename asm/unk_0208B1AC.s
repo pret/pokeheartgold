@@ -84,7 +84,7 @@ _0208B22A:
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	add r2, sp, #0
-	bl sub_0200D294
+	bl SpriteSystem_LoadResourceDataFromFilepathsOakSpeechMode
 	add sp, #0x44
 	pop {r4, r5, r6, r7, pc}
 	nop

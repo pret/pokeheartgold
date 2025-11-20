@@ -3616,7 +3616,7 @@ ov59_02239938: ; 0x02239938
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r2, _022399B0 ; =ov59_0223C648
-	bl sub_0200D2A4
+	bl SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 	ldr r0, [r4]
 	mov r1, #0
 	bl TouchscreenListMenuSpawner_Create
@@ -7656,7 +7656,7 @@ ov59_0223B804: ; 0x0223B804
 	add r1, r1, #4
 	ldr r1, [r4, r1]
 	ldr r2, _0223B874 ; =ov59_0223C968
-	bl sub_0200D2A4
+	bl SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 	add sp, #4
 	pop {r3, r4, pc}
 	nop

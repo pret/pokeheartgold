@@ -388,7 +388,7 @@ void sub_0207EB24(PartyMenu *partyMenu) {
         0xFFFF,
         NARC_resdat_resdat_00000084_bin,
     };
-    sub_0200D294(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, _021018B4);
+    SpriteSystem_LoadResourceDataFromFilepathsOakSpeechMode(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, _021018B4);
 }
 
 void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) {
