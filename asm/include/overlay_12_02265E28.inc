@@ -28,3 +28,6 @@
 .public ov12_0226E0D0
 .public ov12_0226E0A0
 .public ov12_0226E168
+.public ov12_02265F68
+.public ov12_02265F7C
+.public ov12_0226E100

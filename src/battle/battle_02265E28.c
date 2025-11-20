@@ -18,8 +18,15 @@
 extern u16 ov12_0226E0D0[];
 extern u16 ov12_0226E0A0[];
 extern u16 ov12_0226E168[][3] __attribute__((aligned(4)));
+extern ManagedSpriteTemplate ov12_0226E100[];
 
 void ov12_02265E28(UnkBattleSystemSub17C *a0);
+void ov12_02265F34(UnkBattleSystemSub17C *arg0);
+void ov12_02265F68(UnkBattleSystemSub17C *arg0);
+void ov12_02265F7C(UnkBattleSystemSub17C *arg0);
+void ov12_02265FC4(UnkBattleSystemSub17C *arg0, s32 flag);
+void ov12_02265FD4(UnkBattleSystemSub17C *arg0, BattleSystem *bsys, s32 unk8, s32 unk9);
+void ov12_02266008(UnkBattleSystemSub17C *arg0);
 
 void ov12_02265E28(UnkBattleSystemSub17C *a0) {
     u32 r6;
@@ -59,4 +66,57 @@ void ov12_02265E28(UnkBattleSystemSub17C *a0) {
     SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, animFile, TRUE, r6);
 
     NARC_Delete(narc);
+}
+
+void ov12_02265F34(UnkBattleSystemSub17C *arg0) {
+    SpriteSystem *spriteSystem; // r5
+    ManagedSprite *managed;
+
+    spriteSystem = BattleSystem_GetSpriteRenderer(arg0->bsys);
+    managed = SpriteSystem_NewSprite(spriteSystem, BattleSystem_GetGfxHandler(arg0->bsys), &ov12_0226E100[arg0->unk8]);
+    arg0->unk0 = managed;
+    Sprite_TickFrame(managed->sprite);
+}
+
+void ov12_02265F68(UnkBattleSystemSub17C *arg0) {
+    if (arg0->unk0) {
+        Sprite_DeleteAndFreeResources(arg0->unk0);
+        arg0->unk0 = NULL;
+    }
+}
+
+void ov12_02265F7C(UnkBattleSystemSub17C *arg0) {
+    SpriteManager *manager = BattleSystem_GetGfxHandler(arg0->bsys);
+    s32 resId = arg0->unk8 == 0 ? UNK_RES_4E2D : UNK_RES_4E2E;
+    u32 temp = resId - 8;
+    SpriteManager_UnloadCharObjById(manager, resId);
+    SpriteManager_UnloadPlttObjById(manager, UNK_RES_4E29);
+    SpriteManager_UnloadCellObjById(manager, temp);
+    SpriteManager_UnloadAnimObjById(manager, temp);
+}
+
+void ov12_02265FC4(UnkBattleSystemSub17C *arg0, s32 flag) {
+    ManagedSprite *sprite = arg0->unk0;
+    if (sprite) {
+        ManagedSprite_SetDrawFlag(sprite, flag);
+    }
+}
+
+void ov12_02265FD4(UnkBattleSystemSub17C *arg0, BattleSystem *bsys, s32 unk8, s32 unk9) {
+    MIi_CpuClearFast(0, (void *)arg0, sizeof(UnkBattleSystemSub17C));
+    arg0->bsys = bsys;
+    arg0->unk8 = unk8;
+    arg0->unk9 = unk9;
+    if (unk9 >= 0x18) {
+        GF_AssertFail();
+        arg0->unk9 = 0;
+    }
+    ov12_02265E28(arg0);
+    ov12_02265F34(arg0);
+}
+
+void ov12_02266008(UnkBattleSystemSub17C *arg0) {
+    ov12_02265F68(arg0);
+    ov12_02265F7C(arg0);
+    MIi_CpuClearFast(0, (void *)arg0, sizeof(UnkBattleSystemSub17C));
 }
