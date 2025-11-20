@@ -5403,7 +5403,7 @@ ov108_021E83F0: ; 0x021E83F0
 	ldr r1, [r4, r1]
 	ldr r2, _021E8448 ; =ov108_021EA97C
 	mov r3, #2
-	bl sub_0200D2A4
+	bl SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 	mov r0, #0x35
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

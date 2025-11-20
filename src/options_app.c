@@ -1019,7 +1019,7 @@ static void OptionsApp_SetupSpriteRenderer(OptionsApp_Data *data) {
         0xFFFF,
         NARC_resdat_resdat_00000077_bin,
     };
-    sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
+    SpriteSystem_LoadResourceDataFromFilepathsOakSpeechMode(data->spriteRenderer, data->spriteGfxHandler, fileIdList);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(256));
 }

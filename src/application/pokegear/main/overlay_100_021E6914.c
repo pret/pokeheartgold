@@ -111,7 +111,7 @@ void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet
     if (pokegearApp->spriteSystem != NULL) {
         pokegearApp->spriteManager = SpriteManager_New(pokegearApp->spriteSystem);
         SpriteSystem_InitSprites(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].maxSprites);
-        sub_0200D2A4(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].resIdList, 1, 0);
+        SpriteSystem_LoadResourceDataFromFilepathsCustomMode(pokegearApp->spriteSystem, pokegearApp->spriteManager, sPokegearObjResSpecs[spriteSet].resIdList, 1, 0);
     }
 }
 

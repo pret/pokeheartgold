@@ -47,7 +47,7 @@
 .public SpriteSystem_TransferOam
 .public SpriteSystem_DestroySpriteManager
 .public SpriteSystem_Free
-.public sub_0200D2A4
+.public SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 .public SpriteSystem_CreateSpriteFromResourceHeader
 .public Sprite_SetPositionXY
 .public Sprite_GetPositionXY

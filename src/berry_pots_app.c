@@ -1198,7 +1198,7 @@ static void BerryPotsApp_SetupSpriteRendererAndGfxHandler(BerryPotsAppData *data
 
     data->spriteGfxHandler1 = SpriteManager_New(data->spriteRenderer);
     SpriteSystem_InitSprites(data->spriteRenderer, data->spriteGfxHandler1, 25);
-    sub_0200D2A4(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
+    SpriteSystem_LoadResourceDataFromFilepathsCustomMode(data->spriteRenderer, data->spriteGfxHandler1, ov17_02203D78, 0, 0);
 
     data->itemIconNarc = NARC_New(NARC_itemtool_itemdata_item_icon, data->heapID);
 

@@ -7,7 +7,7 @@
 .public SpriteSystem_InitSprites
 .public SpriteSystem_DestroySpriteManager
 .public SpriteSystem_Free
-.public sub_0200D294
+.public SpriteSystem_LoadResourceDataFromFilepathsOakSpeechMode
 .public SpriteSystem_CreateSpriteFromResourceHeader
 .public thunk_Sprite_SetDrawFlag
 .public thunk_Sprite_SetPaletteOverride

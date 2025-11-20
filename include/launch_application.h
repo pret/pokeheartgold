@@ -106,13 +106,13 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk2(enum HeapID heapID, FieldSystem *fieldSy
 PartyMenuArgs *PartyMenu_LaunchApp_InGameTrade(enum HeapID heapID, FieldSystem *fieldSystem); // todo: party trade screen
 PartyMenuArgs *SelectPartyMonAndLearnMove(TaskManager *taskManager, enum HeapID heapID);      // todo: union party select screen
 int PartyMenuArgs_GetSlot(struct PartyMenuArgs *partyWork);
-int sub_0203E5F8(struct PartyMenuArgs *partyWork);
+int PartyMenu_GetSelectedAction(struct PartyMenuArgs *partyWork);
 void sub_0203F570(FieldSystem *fieldSystem, SaveData *saveData);
 SafariDecorationArgs *SafariDecoration_LaunchApp(FieldSystem *fieldSystem);
 void GeonetGlobe_LaunchApp(FieldSystem *fieldSystem);
 void ChooseStarter_LaunchApp(FieldSystem *fieldSystem, ChooseStarterArgs *args);
 u16 sub_0203E864(UnkStruct_0203E600 *a0);
-u16 sub_0203E600(UnkStruct_0203E600 *a0);
+u16 PartyMenu_GetUnk14(UnkStruct_0203E600 *a0);
 PokemonSummaryArgs *LearnForgetMove_LaunchApp(enum HeapID heapID, FieldSystem *fieldSystem, u8 partySlot, u16 moveToLearn);
 ApricornBoxArgs *sub_0203ED80(FieldSystem *fieldSystem, u32 a1, u16 *a2);
 BugContestSwapMonArgs *BugContestSwapMon_LaunchApp(FieldSystem *fieldSystem, Pokemon *a1, Pokemon *a2, BOOL a3);

@@ -1712,7 +1712,7 @@ BOOL ScrCmd_GetMoveSelection(ScriptContext *ctx) {
     if (r6 == 1) {
         *r5 = sub_0203E864(*p_work);
     } else {
-        *r5 = sub_0203E600(*p_work);
+        *r5 = PartyMenu_GetUnk14(*p_work);
     }
     Heap_Free(*p_work);
     *p_work = NULL;
@@ -3963,7 +3963,7 @@ BOOL ScrCmd_552(ScriptContext *ctx) {
     if (*r6 == 7) {
         *r6 = 255;
     }
-    *r5 = sub_0203E5F8(*partyMenu);
+    *r5 = PartyMenu_GetSelectedAction(*partyMenu);
     *r5 = (*r5 == TRUE);
     Heap_Free(*partyMenu);
     *partyMenu = NULL;
