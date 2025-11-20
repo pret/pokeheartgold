@@ -1255,7 +1255,7 @@ void MoveRelearner_LaunchApp(FieldSystem *menuInputStatePtr, MoveRelearnerArgs *
 void HatchEggInParty(FieldSystem *fieldSystem) {
     UnkStruct_02091240 data;
 
-    Pokemon *mon = sub_0206CE44(SaveArray_Party_Get(fieldSystem->saveData));
+    Pokemon *mon = GetEggInParty(SaveArray_Party_Get(fieldSystem->saveData));
     GF_ASSERT(mon != NULL);
 
     data.mon = mon;
