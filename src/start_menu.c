@@ -967,9 +967,9 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         if (partyMenuArgs->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenuArgs->context == PARTY_MENU_CONTEXT_TM_HM || partyMenuArgs->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenuArgs->context == PARTY_MENU_CONTEXT_EVO_STONE || partyMenuArgs->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP) {
             startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
             if (partyMenuArgs->partySlot >= 6) {
-                sub_020778E0(startMenu->exitTaskEnvironment, 0);
+                BagView_SetUnk74(startMenu->exitTaskEnvironment, 0);
             } else {
-                sub_020778E0(startMenu->exitTaskEnvironment, partyMenuArgs->partySlot);
+                BagView_SetUnk74(startMenu->exitTaskEnvironment, partyMenuArgs->partySlot);
             }
             StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         } else if (partyMenuArgs->context == PARTY_MENU_CONTEXT_9) {
@@ -999,7 +999,7 @@ static BOOL Task_StartMenu_Bag(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-    sub_020778E0(startMenu->exitTaskEnvironment, 0);
+    BagView_SetUnk74(startMenu->exitTaskEnvironment, 0);
     startMenu->exitTaskFunc = Task_StartMenu_HandleReturn;
     ov01_021F4440(fieldSystem);
     return FALSE;
@@ -1492,7 +1492,7 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
         sub_02055164(fieldSystem, fieldSystem->location->mapId);
         startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
         StartMenuAfterEvoPartySlotBak *unk = startMenu->exitTaskEnvironment2;
-        sub_020778E0(startMenu->exitTaskEnvironment, unk->partySlot);
+        BagView_SetUnk74(startMenu->exitTaskEnvironment, unk->partySlot);
         Heap_Free(startMenu->exitTaskEnvironment2);
         StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     }
