@@ -37,7 +37,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 
     switch (data->state) {
     case HATCHEGGTASKSTATE_LEAVE_OVERWORLD:
-        sub_0206D328(data->unkC.mon, HEAP_ID_FIELD2);
+        Daycare_BuildHatchedMon(data->unkC.mon, HEAP_ID_FIELD2);
         CallTask_LeaveOverworld(taskManager);
         data->state++;
         break;
