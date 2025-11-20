@@ -24,3 +24,7 @@
 .public ov12_02265FC4
 .public ov12_02265FD4
 .public ov12_02266008
+.public ov12_02265E28
+.public ov12_0226E0D0
+.public ov12_0226E0A0
+.public ov12_0226E168
