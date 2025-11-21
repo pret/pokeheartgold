@@ -3615,7 +3615,7 @@ ov65_0221DC34: ; 0x0221DC34
 	mov r1, #0
 	mov r2, #0x64
 	add r3, r1, #0
-	bl sub_02006E4C
+	bl Chatot_PlayChatterRecordingEx
 	b _0221DC96
 _0221DC8E:
 	lsl r1, r2, #0x18
