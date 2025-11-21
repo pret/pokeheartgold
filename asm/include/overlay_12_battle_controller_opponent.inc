@@ -271,7 +271,7 @@
 .public ov12_02264E84
 .public ov12_02264EB4
 .public BattlerInfoBox_SetBoxObjectEnabled
-.public ov12_02264FB0
+.public BattlerInfoBox_SetBoxPosition
 .public BattlerInfoBox_Util_GetBarTypeFromBattlerSide
 .public BattlerInfoBox_BeginExpBarFullFlashEffect
 .public ov12_02265D70

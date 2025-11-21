@@ -3775,7 +3775,7 @@ ov12_0225A4DC: ; 0x0225A4DC
 	strb r1, [r0]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_02264FB0
+	bl BattlerInfoBox_SetBoxPosition
 	mov r2, #0xfa
 	ldr r0, _0225A520 ; =ov12_0225DA8C
 	add r1, r4, #0
@@ -10427,7 +10427,7 @@ _0225DA2A:
 _0225DA42:
 	add r0, r4, #0
 	mov r1, #0
-	bl ov12_02264FB0
+	bl BattlerInfoBox_SetBoxPosition
 	add r0, r4, #0
 	mov r1, #1
 	bl BattlerInfoBox_SetBoxObjectEnabled
