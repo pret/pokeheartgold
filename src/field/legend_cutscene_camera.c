@@ -754,7 +754,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
     case BIRD_FINAL_APPROACH_TASK_STATE_DELAY__ALT_ANIM:
         ++taskData->delayTimer;
         if (taskData->delayTimer >= 60) {
-            sub_0205F328(mapObject, 1);
+            MapObject_SetUnkA0(mapObject, 1);
             taskData->delayTimer = 0;
             ++(*pState);
         }
@@ -773,7 +773,7 @@ static BOOL Task_BirdFinalApproach(TaskManager *taskman) {
         BOOL animDone = modelAnimListAdvanceNoLoop(taskData->anims, 3);
         ++taskData->animTimer;
         if (animDone && taskData->animTimer >= 65) {
-            sub_0205F328(mapObject, 0);
+            MapObject_SetUnkA0(mapObject, 0);
             taskData->delayTimer = 0;
             ++(*pState);
         }

@@ -83,7 +83,7 @@
 .public MapObject_GetFacingDirection
 .public MapObject_SetNextFacingDirection
 .public MapObject_GetNextFacingDirection
-.public sub_0205F328
+.public MapObject_SetUnkA0
 .public MapObject_GetMovementCommand
 .public sub_0205F504
 .public MapObject_GetFieldSystem
