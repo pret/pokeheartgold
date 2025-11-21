@@ -163,7 +163,7 @@ static void ov101_021E78EC(PokegearMapAppData *mapApp) {
     if (mapApp->pokegear->app != GEAR_APP_CANCEL) {
         mapApp->inMarkingsMode = FALSE;
         mapApp->pokegear->app = GEAR_APP_MAP;
-        mapApp->zoomed = sub_0202EEA4(mapApp->pokegear->savePokegear);
+        mapApp->zoomed = Pokegear_IsZoomed(mapApp->pokegear->savePokegear);
     } else {
         mapApp->inMarkingsMode = TRUE;
         mapApp->sessionState = mapApp->pokegear->mapSessionState;
@@ -220,7 +220,7 @@ static void ov101_021E7B54(PokegearMapAppData *mapApp) {
     mapApp->pokegear->reselectAppCB = NULL;
     mapApp->pokegear->deselectAppCB = NULL;
     PokegearMap_SaveMapMarkings(mapApp);
-    sub_0202EEA8(mapApp->pokegear->savePokegear, mapApp->zoomed);
+    Pokegear_SetZoom(mapApp->pokegear->savePokegear, mapApp->zoomed);
 }
 
 static int PokegearMap_MainTask_LoadGFX(PokegearMapAppData *mapApp) {
