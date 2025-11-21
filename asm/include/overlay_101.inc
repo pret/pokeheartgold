@@ -204,9 +204,9 @@
 .public Pokegear_GetMapUnlockLevel
 .public Pokegear_GetBackgroundStyle
 .public Pokegear_SetBackgroundStyle
-.public sub_0202EE98
-.public Pokegear_IsZoomed
-.public Pokegear_SetZoom
+.public Pokegear_GetUnk_4_0
+.public Pokegear_IsMapZoomed
+.public Pokegear_SetMapZoom
 .public Pokegear_SetRadioCursorCoords
 .public Pokegear_GetRadioCursorCoords
 .public SavePokegear_FindEmptyPhonebookSlot

@@ -29,7 +29,7 @@ static void SavePokegear_Init_Internal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
     pokegear->lastUsedApp = 3;
     pokegear->backgroundStyle = 0;
-    pokegear->zoom = 0;
+    pokegear->mapZoom = 0;
     pokegear->unk_3 = 128;
     pokegear->unk_2 = pokegear->unk_3;
     pokegear->registeredCards = 0;
@@ -90,16 +90,16 @@ void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 newStyle) {
     pokegear->backgroundStyle = newStyle;
 }
 
-u16 sub_0202EE98(SavePokegear *pokegear) {
+u16 Pokegear_GetUnk_4_0(SavePokegear *pokegear) {
     return pokegear->unk_4_0;
 }
 
-BOOL Pokegear_IsZoomed(SavePokegear *pokegear) {
-    return pokegear->zoom;
+BOOL Pokegear_IsMapZoomed(SavePokegear *pokegear) {
+    return pokegear->mapZoom;
 }
 
-void Pokegear_SetZoom(SavePokegear *pokegear, u8 zoomLevel) {
-    pokegear->zoom = zoomLevel;
+void Pokegear_SetMapZoom(SavePokegear *pokegear, u8 zoomLevel) {
+    pokegear->mapZoom = zoomLevel;
 }
 
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y) {

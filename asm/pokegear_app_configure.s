@@ -159,7 +159,7 @@ ov101_021EE9D0: ; 0x021EE9D0
 	strh r0, [r4, #0x12]
 	ldr r0, [r4, #0xc]
 	ldr r0, [r0, #0x28]
-	bl sub_0202EE98
+	bl Pokegear_GetUnk_4_0
 	ldrh r1, [r4, #0x12]
 	ldr r2, _021EEA28 ; =0xFFFFFE00
 	add r3, r1, #0

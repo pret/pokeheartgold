@@ -15,7 +15,7 @@ void Chatot_SaveRecording(SOUND_CHATOT *a0);
 void sub_02006E3C(u8 a0);
 void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3);
 BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4);
-u32 sub_02006EFC(SOUND_CHATOT *chatot);
+u32 Chatot_GetVolume(SOUND_CHATOT *chatot);
 BOOL sub_02006F30(int a0);
 
 void PlayCry(u16 species, u8 form);
