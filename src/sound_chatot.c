@@ -149,7 +149,7 @@ BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
 
     if (ret == 0) {
         sub_02006E3C(1);
-        sub_02006920(0, SPECIES_CHATOT, a3, a2, 11, a4, 0);
+        PlayCryVariant(0, SPECIES_CHATOT, a3, a2, 11, a4, 0);
         ret = 1;
     }
 
@@ -161,10 +161,10 @@ u32 Chatot_GetVolume(SOUND_CHATOT *chatot) {
         return 0;
     }
 
-    s8 r0 = Chatot_GetData(chatot)[15];
-    if (r0 < -30) {
+    s8 volume = Chatot_GetData(chatot)[15];
+    if (volume < -30) {
         return 1;
-    } else if (r0 >= 30 && r0 < 128) {
+    } else if (volume >= 30 && volume < 128) {
         return 2;
     }
 
