@@ -856,7 +856,7 @@ ov12_02258E7C: ; 0x02258E7C
 	beq _02258E8C
 	add r0, r4, #0
 	add r0, #0x28
-	bl BattleHpBar_FreeResources
+	bl BattlerInfoBox_FreeResources
 _02258E8C:
 	ldr r0, [r4, #0x18]
 	cmp r0, #0
@@ -3678,7 +3678,7 @@ ov12_0225A414: ; 0x0225A414
 	add r1, r0, #0
 	ldr r0, _0225A4D4 ; =0x00000195
 	ldrb r0, [r6, r0]
-	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
+	bl BattlerInfoBox_Util_GetBarTypeFromBattlerSide
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -3732,7 +3732,7 @@ ov12_0225A414: ; 0x0225A414
 	add r0, #0x27
 	strb r2, [r0]
 	add r0, r4, #0
-	bl BattleHpBar_SetEnabled
+	bl BattlerInfoBox_SetBoxObjectEnabled
 	mov r2, #0
 	ldr r1, [r4, #0x28]
 	add r0, r4, #0
@@ -4445,7 +4445,7 @@ _0225A9F2:
 	add r1, r0, #0
 	ldr r0, _0225AA60 ; =0x00000195
 	ldrb r0, [r6, r0]
-	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
+	bl BattlerInfoBox_Util_GetBarTypeFromBattlerSide
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -5147,7 +5147,7 @@ ov12_0225AF74: ; 0x0225AF74
 	add r1, r0, #0
 	ldr r0, _0225B024 ; =0x00000195
 	ldrb r0, [r6, r0]
-	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
+	bl BattlerInfoBox_Util_GetBarTypeFromBattlerSide
 	add r1, r4, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -10430,7 +10430,7 @@ _0225DA42:
 	bl ov12_02264FB0
 	add r0, r4, #0
 	mov r1, #1
-	bl BattleHpBar_SetEnabled
+	bl BattlerInfoBox_SetBoxObjectEnabled
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -10496,7 +10496,7 @@ _0225DAAC:
 	bl SysTask_Destroy
 	add r0, r4, #0
 	mov r1, #0
-	bl BattleHpBar_SetEnabled
+	bl BattlerInfoBox_SetBoxObjectEnabled
 _0225DAD0:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -13192,7 +13192,7 @@ _0225F070:
 	bl BattleSystem_GetBattleType
 	add r1, r0, #0
 	ldr r0, [sp, #0x18]
-	bl BattleHpBar_Util_GetBarTypeFromBattlerSide
+	bl BattlerInfoBox_Util_GetBarTypeFromBattlerSide
 	add r1, r5, #0
 	add r1, #0x25
 	strb r0, [r1]
@@ -15802,7 +15802,7 @@ ov12_02260584: ; 0x02260584
 _02260596:
 	ldr r0, [r4, #4]
 	add r1, #0xb
-	bl BattleHpBar_BeginExpBarFullFlashEffect
+	bl BattlerInfoBox_BeginExpBarFullFlashEffect
 	ldr r0, _022605CC ; =0x0000070C
 	bl PlaySE
 	ldrb r0, [r4, #0xa]

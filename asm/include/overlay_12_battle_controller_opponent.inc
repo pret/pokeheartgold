@@ -262,7 +262,7 @@
 .public ov12_0226430C
 .public ov12_022643C8
 .public ov12_0226498C
-.public BattleHpBar_FreeResources
+.public BattlerInfoBox_FreeResources
 .public ov12_02264C84
 .public ov12_02264DCC
 .public ov12_02264E00
@@ -270,10 +270,10 @@
 .public ov12_02264E68
 .public ov12_02264E84
 .public ov12_02264EB4
-.public BattleHpBar_SetEnabled
+.public BattlerInfoBox_SetBoxObjectEnabled
 .public ov12_02264FB0
-.public BattleHpBar_Util_GetBarTypeFromBattlerSide
-.public BattleHpBar_BeginExpBarFullFlashEffect
+.public BattlerInfoBox_Util_GetBarTypeFromBattlerSide
+.public BattlerInfoBox_BeginExpBarFullFlashEffect
 .public ov12_02265D70
 .public ov12_02265D74
 .public BattleInput_ChangeMenu
