@@ -205,7 +205,7 @@
 .public ov12_0223BBA8
 .public ov12_0223BBC0
 .public ov12_0223BBD8
-.public BattleSystem_GetHpBar
+.public BattleSystem_GetBattlerInfoBox
 .public BattleSystem_SetHpBarEnabled
 .public BattleSystem_SetHpBarDisabled
 .public BattleSystem_GetBattleOutcomeFlags
@@ -248,7 +248,7 @@
 .public ov12_02261258
 .public ov12_02261264
 .public ov12_02261270
-.public OpponentData_GetHpBar
+.public OpponentData_GetBattlerInfoBox
 .public ov12_02261280
 .public ov12_02261294
 .public ov12_02261FD4

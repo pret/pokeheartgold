@@ -3310,7 +3310,7 @@ _022398BE:
 	beq _022398FE
 _022398D6:
 	add r0, r7, #0
-	bl OpponentData_GetHpBar
+	bl OpponentData_GetBattlerInfoBox
 	add r1, r0, #0
 	beq _022398FE
 	ldr r0, [r1, #0x28]
