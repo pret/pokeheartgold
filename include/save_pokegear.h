@@ -40,7 +40,7 @@ typedef struct PhoneCallPersistentState {
 
 typedef struct SavePokegear {
     u8 lastUsedApp;
-    u8 unk_1;
+    u8 zoom;
     u8 unk_2;
     u8 unk_3;
     u32 unlockedSkins : 9;
@@ -72,8 +72,8 @@ u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear);
 u32 Pokegear_GetSkin(SavePokegear *pokegear);
 void Pokegear_SetSkin(SavePokegear *pokegear, u32 skin);
 u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear);
-BOOL sub_0202EEA4(SavePokegear *pokegear);
-void sub_0202EEA8(SavePokegear *pokegear, u8 a1);
+BOOL Pokegear_IsZoomed(SavePokegear *pokegear);
+void Pokegear_SetZoom(SavePokegear *pokegear, u8 a1);
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y);
 void Pokegear_GetRadioCursorCoords(SavePokegear *pokegear, s16 *px, s16 *py);
 u8 SavePokegear_FindEmptyPhonebookSlot(SavePokegear *pokegear);

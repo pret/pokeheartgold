@@ -29,7 +29,7 @@ static void SavePokegear_Init_Internal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
     pokegear->lastUsedApp = 3;
     pokegear->skin = 0;
-    pokegear->unk_1 = 0;
+    pokegear->zoom = 0;
     pokegear->unk_3 = 128;
     pokegear->unk_2 = pokegear->unk_3;
     pokegear->registeredCards = 0;
@@ -94,12 +94,12 @@ u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear) {
     return pokegear->unlockedSkins;
 }
 
-BOOL sub_0202EEA4(SavePokegear *pokegear) {
-    return pokegear->unk_1;
+BOOL Pokegear_IsZoomed(SavePokegear *pokegear) {
+    return pokegear->zoom;
 }
 
-void sub_0202EEA8(SavePokegear *pokegear, u8 a1) {
-    pokegear->unk_1 = a1;
+void Pokegear_SetZoom(SavePokegear *pokegear, u8 zoomLevel) {
+    pokegear->zoom = zoomLevel;
 }
 
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y) {
