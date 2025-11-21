@@ -12,7 +12,7 @@
 .public sub_02005448
 .public PlaySE
 .public PlayCry
-.public sub_02006E4C
+.public Chatot_PlayChatterRecordingEx
 .public OverlayManager_New
 .public OverlayManager_Delete
 .public OverlayManager_CreateAndGetData

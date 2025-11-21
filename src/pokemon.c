@@ -3679,7 +3679,7 @@ void Mon_ChatterPlayCryEx(SOUND_CHATOT *soundChatot, u32 r5, u16 species, s32 un
             if (sp20) {
                 sub_02006E3C(1);
             }
-            sub_02006E4C(soundChatot, 0, sp1C, sp18);
+            Chatot_PlayChatterRecordingEx(soundChatot, 0, sp1C, sp18);
         }
     } else {
         PlayCryEx(r5, species, sp18, sp1C, sp24, 0);
@@ -3695,7 +3695,7 @@ void Mon_ChatterPlayCryVariant(SOUND_CHATOT *soundChatot, u32 r6, u16 species, s
             if (sp28) {
                 sub_02006E3C(1);
             }
-            sub_02006EA0(soundChatot, 0, sp24, sp20, sp30);
+            Chatot_PlayerChatterRecordingVariant(soundChatot, 0, sp24, sp20, sp30);
         }
     } else {
         PlayCryVariant(r6, species, sp20, sp24, sp2C, sp30, r4);

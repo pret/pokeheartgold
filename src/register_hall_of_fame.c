@@ -2111,7 +2111,7 @@ static void Task_RegisterHallOfFame_IndivMonAnimAndCry(SysTask *task, void *task
     if (showPic->startCry == TRUE) {
         sub_020729A4(showPic->narc, &sp4, showPic->hofMon->species, showPic->isFrontpic);
         if (showPic->hofMon->species == SPECIES_CHATOT) {
-            sub_02006EA0(NULL, 0, 100, 0, sp4);
+            Chatot_PlayerChatterRecordingVariant(NULL, 0, 100, 0, sp4);
         } else {
             sub_020062E0(showPic->hofMon->species, sp4, showPic->hofMon->form);
         }

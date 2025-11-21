@@ -3176,7 +3176,7 @@ sub_02089C50: ; 0x02089C50
 	mov r2, #0x64
 	ldr r0, [r0, #0x28]
 	add r3, r1, #0
-	bl sub_02006EA0
+	bl Chatot_PlayerChatterRecordingVariant
 	add sp, #8
 	pop {r4, pc}
 _02089C9A:

@@ -123,13 +123,13 @@ void sub_02006E3C(u8 a0) {
     *r0 = a0;
 }
 
-void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
+void Chatot_PlayChatterRecordingEx(SOUND_CHATOT *soundChatot, u32 a1, u32 a2, s32 a3) {
     SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
     BOOL ret;
-    if (a0 == 0) {
+    if (soundChatot == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
     } else {
-        ret = sub_02006D04(a0, a1, a2, a3);
+        ret = sub_02006D04(soundChatot, a1, a2, a3);
     }
 
     if (ret == 0) {
@@ -138,13 +138,13 @@ void sub_02006E4C(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3) {
     }
 }
 
-BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
+BOOL Chatot_PlayerChatterRecordingVariant(SOUND_CHATOT *soundChatot, u32 a1, u32 a2, s32 a3, u8 a4) {
     SOUND_CHATOT **r0 = GF_SdatGetAttrPtr(36);
     BOOL ret;
-    if (a0 == 0) {
+    if (soundChatot == 0) {
         ret = sub_02006D04(*r0, a1, a2, a3);
     } else {
-        ret = sub_02006D04(a0, a1, a2, a3);
+        ret = sub_02006D04(soundChatot, a1, a2, a3);
     }
 
     if (ret == 0) {

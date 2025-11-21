@@ -8,7 +8,7 @@
 .public Sound_SetSceneAndPlayBGM
 .public PlaySE
 .public sub_020062E0
-.public sub_02006EA0
+.public Chatot_PlayerChatterRecordingVariant
 .public OverlayManager_CreateAndGetData
 .public OverlayManager_GetData
 .public OverlayManager_FreeData
