@@ -106,7 +106,7 @@ void ov12_0223BC08(BattleSystem *bsys, u8 *a1);
 void ov12_0223BC14(BattleSystem *bsys, u8 a1);
 void ov12_0223BC20(BattleSystem *bsys, u8 a1);
 void ov12_0223BC2C(BattleSystem *bsys, u8 a1);
-BattleHpBar *BattleSystem_GetHpBar(BattleSystem *bsys, int battlerId);
+BattlerInfoBox *BattleSystem_GetBattlerInfoBox(BattleSystem *bsys, int battlerId);
 void BattleSystem_HpBar_Init(BattleSystem *bsys);
 void BattleSystem_SetHpBarEnabled(BattleSystem *bsys);
 void BattleSystem_SetHpBarDisabled(BattleSystem *bsys);

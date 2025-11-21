@@ -238,7 +238,7 @@
 .public ov12_02258E7C
 .public ov12_02260EA4
 .public ov12_02261264
-.public OpponentData_GetHpBar
+.public OpponentData_GetBattlerInfoBox
 .public ov12_022621C4
 .public ov12_02265FD4
 .public ov12_0226604C
