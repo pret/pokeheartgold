@@ -577,7 +577,7 @@ ov01_021F772C: ; 0x021F772C
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r5, r0, #0
 	cmp r5, #9
 	blt _021F7760
@@ -600,7 +600,7 @@ _021F7760:
 	ldr r0, [sp]
 	strb r1, [r0, #2]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	ldr r1, [sp]
 	strb r0, [r1, #3]
 	add r0, r4, #0
@@ -1208,7 +1208,7 @@ ov01_021F7C14: ; 0x021F7C14
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r5, r0, #0
 	cmp r5, #0xa
 	blt _021F7C48
@@ -1226,7 +1226,7 @@ _021F7C48:
 	ldr r0, [sp]
 	strb r1, [r0, #2]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	ldr r1, [sp]
 	strb r0, [r1, #3]
 	add r0, r4, #0
@@ -1314,7 +1314,7 @@ ov01_021F7CE4: ; 0x021F7CE4
 	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	cmp r0, #0
 	bne _021F7D56
 	cmp r7, #1
@@ -1378,7 +1378,7 @@ _021F7D7E:
 _021F7D88:
 	strb r7, [r6, #2]
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	strb r0, [r6, #3]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1512,7 +1512,7 @@ ov01_021F7E6C: ; 0x021F7E6C
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r5, r0, #0
 	cmp r5, #0xa
 	blt _021F7EA0
@@ -1535,7 +1535,7 @@ _021F7EA0:
 	ldr r0, [sp]
 	strb r1, [r0]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	ldr r1, [sp]
 	strb r0, [r1, #2]
 	add r0, r4, #0
@@ -2091,7 +2091,7 @@ ov01_021F82F0: ; 0x021F82F0
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	str r0, [sp, #4]
 	cmp r0, #0xc
 	blt _021F8328
@@ -2345,7 +2345,7 @@ ov01_021F84F4: ; 0x021F84F4
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r5, r0, #0
 	cmp r5, #4
 	blt _021F8528
@@ -2367,7 +2367,7 @@ _021F8528:
 	ldr r0, [sp]
 	strb r1, [r0]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	ldr r1, [sp]
 	strb r0, [r1, #2]
 	add r0, r4, #0
@@ -2691,7 +2691,7 @@ ov01_021F878C: ; 0x021F878C
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r5, r0, #0
 	cmp r5, #2
 	blt _021F87C0
@@ -2713,7 +2713,7 @@ _021F87C0:
 	ldr r0, [sp]
 	strb r1, [r0]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	ldr r1, [sp]
 	strb r0, [r1, #2]
 	add r0, r4, #0
@@ -2878,7 +2878,7 @@ ov01_021F88F0: ; 0x021F88F0
 	add r7, r0, #0
 	strb r7, [r6]
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	strb r0, [r6, #2]
 	add r0, r7, #0
 	bl ov01_021FA44C
@@ -2918,7 +2918,7 @@ ov01_021F894C: ; 0x021F894C
 	bl MapObject_GetFacingDirection
 	strb r0, [r6]
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	strb r0, [r6, #2]
 	add r0, r4, #0
 	bl sub_02023EF4
@@ -2967,7 +2967,7 @@ ov01_021F89B8: ; 0x021F89B8
 	bl MapObject_GetFacingDirection
 	add r7, r0, #0
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	cmp r0, #0
 	bne _021F8A0A
 	add r0, r4, #0
@@ -3005,7 +3005,7 @@ _021F8A24:
 _021F8A2E:
 	strb r7, [r6]
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	strb r0, [r6, #2]
 	add r0, r5, #0
 	add r1, r4, #0
@@ -3058,7 +3058,7 @@ _021F8A8A:
 	bl ov01_021F8C88
 	add r0, r6, #0
 	strb r7, [r4]
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	strb r0, [r4, #2]
 _021F8AAE:
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3081,7 +3081,7 @@ ov01_021F8AB0: ; 0x021F8AB0
 	bl MapObject_GetFacingDirection
 	str r0, [sp]
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r7, r0, #0
 	mov r0, #2
 	ldrsb r0, [r6, r0]
@@ -3143,7 +3143,7 @@ ov01_021F8B30: ; 0x021F8B30
 	bl MapObject_GetFacingDirection
 	str r0, [sp, #4]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r5, r0, #0
 	cmp r5, #1
 	blt _021F8B64
@@ -3165,7 +3165,7 @@ _021F8B64:
 	ldr r0, [sp]
 	strb r1, [r0]
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	ldr r1, [sp]
 	strb r0, [r1, #2]
 	add r0, r4, #0

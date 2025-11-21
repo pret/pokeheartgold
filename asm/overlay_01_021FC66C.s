@@ -226,7 +226,7 @@ ov01_021FC7DC: ; 0x021FC7DC
 	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r6, #0
 	mov r1, #1
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	mov r0, #2
 	str r0, [r5, #0xc]
 _021FC80E:
@@ -327,7 +327,7 @@ _021FC8A8:
 _021FC8B2:
 	add r0, r4, #0
 	mov r1, #2
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl ov01_021FCC2C
 	cmp r0, #0
@@ -387,7 +387,7 @@ ov01_021FC914: ; 0x021FC914
 	bl ov01_02200400
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	mov r0, #0
 	str r0, [r4, #0x10]
 	mov r1, #7
@@ -458,7 +458,7 @@ ov01_021FC98C: ; 0x021FC98C
 	add r4, r0, #0
 	add r0, r2, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	mov r1, #0x33
 	bl ov01_021FCB90
@@ -476,7 +476,7 @@ ov01_021FC9AC: ; 0x021FC9AC
 	add r4, r0, #0
 	add r0, r2, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	mov r1, #0x32
 	bl ov01_021FCB90
@@ -528,7 +528,7 @@ _021FCA04:
 _021FCA0E:
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	mov r1, #0x31
 	bl ov01_021FCB90

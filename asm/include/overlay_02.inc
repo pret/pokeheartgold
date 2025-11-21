@@ -260,7 +260,7 @@
 .public MapObject_GetSpriteID
 .public MapObject_SetFacingDirectionDirect
 .public MapObject_GetFacingDirection
-.public sub_0205F328
+.public MapObject_SetUnkA0
 .public MapObject_GetManager
 .public sub_0205F484
 .public MapObject_GetFieldSystem

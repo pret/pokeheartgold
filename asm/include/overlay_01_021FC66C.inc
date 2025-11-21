@@ -33,7 +33,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetTransitionBits
-.public sub_0205F328
+.public MapObject_SetUnkA0
 .public MapObjectManager_PauseAllMovement
 .public MapObjectManager_UnpauseAllMovement
 .public MapObject_UnpauseMovement

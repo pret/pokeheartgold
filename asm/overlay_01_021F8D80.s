@@ -453,7 +453,7 @@ ov01_021F9078: ; 0x021F9078
 	cmp r4, #0
 	beq _021F90C0
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r3, r0, #0
 	lsl r6, r3, #2
 	ldr r3, _021F90C4 ; =ov01_02208B5C
@@ -463,7 +463,7 @@ ov01_021F9078: ; 0x021F9078
 	add r2, r7, #0
 	blx r3
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	str r0, [r7, #0x10]
 	add r0, r5, #0
 	add r1, r4, #0

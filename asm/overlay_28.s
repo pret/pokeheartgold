@@ -2477,7 +2477,7 @@ _0225E828:
 	cmp r0, #1
 	bhi _0225E858
 	add r0, r4, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	cmp r0, #1
 	bne _0225E854
 	mov r4, #3

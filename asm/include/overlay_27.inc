@@ -116,7 +116,7 @@
 .public PlayerAvatar_SetRunningShoesLock
 .public MapObject_GetSpriteID
 .public MapObject_GetScriptID
-.public sub_0205F330
+.public MapObject_GetUnkA0
 .public Save_VarsFlags_CheckSafariSysFlag
 .public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag

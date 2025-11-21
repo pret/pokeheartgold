@@ -21,7 +21,7 @@
 .public MapObject_GetParam
 .public MapObject_GetXRange
 .public MapObject_GetYRange
-.public sub_0205F328
+.public MapObject_SetUnkA0
 .public sub_0205F370
 .public sub_0205F394
 .public MapObject_GetFieldSystem

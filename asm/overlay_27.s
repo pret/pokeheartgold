@@ -752,7 +752,7 @@ _0225A5A8:
 	bl FieldSystem_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r6, r0, #0
 	add r0, r7, #0
 	bl MapObject_GetSpriteID
