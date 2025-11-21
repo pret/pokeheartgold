@@ -32,7 +32,7 @@ void Chatot_Invalidate(SOUND_CHATOT *chatot) {
 }
 
 s8 *Chatot_GetData(SOUND_CHATOT *chatot) {
-    return chatot->data;
+    return chatot->soundRecording;
 }
 
 static inline s8 transform(u8 val) {
@@ -70,11 +70,11 @@ void Chatot_Encode(SOUND_CHATOT *chatot, const s8 *data) {
     for (src_i = 0; src_i < 2000; src_i += 2) {
         val = data[src_i + 0];
         val2 = untransform(val);
-        chatot->data[i] = (s8)val2;
+        chatot->soundRecording[i] = (s8)val2;
 
         val = data[src_i + 1];
         val2 = untransform(val);
-        chatot->data[i] |= val2 << 4;
+        chatot->soundRecording[i] |= val2 << 4;
 
         i++;
     }

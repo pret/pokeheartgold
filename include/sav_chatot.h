@@ -5,7 +5,7 @@
 
 typedef struct SOUND_CHATOT {
     BOOL exists;
-    s8 data[1000];
+    s8 soundRecording[1000];
 } SOUND_CHATOT;
 
 u32 Save_Chatot_sizeof(void);

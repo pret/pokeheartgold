@@ -3669,36 +3669,36 @@ void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUp
     ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
 }
 
-void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
+void Mon_ChatterPlayCryEx(SOUND_CHATOT *soundChatot, u32 r5, u16 species, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
 #pragma unused(unused)
-    if (r4 == SPECIES_CHATOT) {
+    if (species == SPECIES_CHATOT) {
         if (!sub_02006F30((int)r5)) {
             sub_02006E3C(1);
-            PlayCryEx(r5, r4, sp18, sp1C, sp24, 0);
+            PlayCryEx(r5, species, sp18, sp1C, sp24, 0);
         } else {
             if (sp20) {
                 sub_02006E3C(1);
             }
-            sub_02006E4C(r6, 0, sp1C, sp18);
+            sub_02006E4C(soundChatot, 0, sp1C, sp18);
         }
     } else {
-        PlayCryEx(r5, r4, sp18, sp1C, sp24, 0);
+        PlayCryEx(r5, species, sp18, sp1C, sp24, 0);
     }
 }
 
-void sub_0207204C(SOUND_CHATOT *r7, u32 r6, u16 r5, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30) {
-    if (r5 == SPECIES_CHATOT) {
+void Mon_ChatterPlayCryVariant(SOUND_CHATOT *soundChatot, u32 r6, u16 species, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30) {
+    if (species == SPECIES_CHATOT) {
         if (!sub_02006F30((int)r6)) {
             sub_02006E3C(1);
-            sub_02006920(r6, r5, sp20, sp24, sp2C, sp30, r4);
+            PlayCryVariant(r6, species, sp20, sp24, sp2C, sp30, r4);
         } else {
             if (sp28) {
                 sub_02006E3C(1);
             }
-            sub_02006EA0(r7, 0, sp24, sp20, sp30);
+            sub_02006EA0(soundChatot, 0, sp24, sp20, sp30);
         }
     } else {
-        sub_02006920(r6, r5, sp20, sp24, sp2C, sp30, r4);
+        PlayCryVariant(r6, species, sp20, sp24, sp2C, sp30, r4);
     }
 }
 

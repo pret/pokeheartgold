@@ -7974,7 +7974,7 @@ ov07_0221F81C: ; 0x0221F81C
 	ldrb r3, [r3]
 	ldr r0, [r6, r0]
 	add r1, r4, #0
-	bl sub_02071FDC
+	bl Mon_ChatterPlayCryEx
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov07_0221F81C
