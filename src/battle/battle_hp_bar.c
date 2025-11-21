@@ -8,16 +8,16 @@
 #include "math_util.h"
 #include "unk_0208805C.h"
 
-typedef enum HPBarType {
-    HP_BAR_TYPE_SINGLE_PLAYER,
-    HP_BAR_TYPE_SINGLE_ENEMY,
-    HP_BAR_TYPE_DOUBLE_PLAYER_LHS,
-    HP_BAR_TYPE_DOUBLE_ENEMY_LHS,
-    HP_BAR_TYPE_DOUBLE_PLAYER_RHS,
-    HP_BAR_TYPE_DOUBLE_ENEMY_RHS,
-    HP_BAR_TYPE_SAFARI,
-    HP_BAR_TYPE_PALPARK,
-} HPBarType;
+typedef enum BattlerInfoBoxType {
+    INFO_BOX_TYPE_SINGLE_PLAYER,
+    INFO_BOX_TYPE_SINGLE_ENEMY,
+    INFO_BOX_TYPE_DOUBLE_PLAYER_LHS,
+    INFO_BOX_TYPE_DOUBLE_ENEMY_LHS,
+    INFO_BOX_TYPE_DOUBLE_PLAYER_RHS,
+    INFO_BOX_TYPE_DOUBLE_ENEMY_RHS,
+    INFO_BOX_TYPE_SAFARI,
+    INFO_BOX_TYPE_PALPARK,
+} BattlerInfoBoxType;
 
 #ifdef FAST_HP_BARS
 #define USE_SUBPIXELS_TEST (TRUE)
@@ -263,8 +263,8 @@ static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B60(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B94(BattlerInfoBox *battlerInfoBox);
 static void BattlerInfoBox_SetArrowObjectEnabled(BattlerInfoBox *battlerInfoBox, int enabled);
-static void ov12_02264F44(BattlerInfoBox *battlerInfoBox, int x, int y);
-static void ov12_02265054(SysTask *task, void *data);
+static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y);
+static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data);
 static void ov12_0226516C(BattlerInfoBox *battlerInfoBox);
 static void ov12_022652D0(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265354(BattlerInfoBox *battlerInfoBox);
@@ -280,7 +280,7 @@ static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 d
 static u8 BattlerInfoBox_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
 static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
 static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId);
-static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetHpBoxSpriteTemplate(u8 barType);
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(u8 barType);
 static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType);
 static void Task_ExpBarFullFlash(SysTask *task, void *data);
 static void ov12_02265D78(BattlerInfoBox *battlerInfoBox);
@@ -450,7 +450,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
 #include "battle/battle_hp_bar_data.h"
 
 static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(barType);
 
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
@@ -474,7 +474,7 @@ static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NAR
 }
 
 static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHandler, int barType) {
-    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(barType);
 
     ManagedSprite *ret = SpriteSystem_NewSprite(renderer, gfxHandler, pRes);
     Sprite_TickFrame(ret->sprite);
@@ -483,21 +483,21 @@ static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHa
 
 void ov12_0226498C(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
     GF_ASSERT(battlerInfoBox->boxObj != NULL);
-    if (battlerInfoBox->type == HP_BAR_TYPE_SAFARI) {
+    if (battlerInfoBox->type == INFO_BOX_TYPE_SAFARI) {
         flag &= 0xC00;
-    } else if (battlerInfoBox->type == HP_BAR_TYPE_PALPARK) {
+    } else if (battlerInfoBox->type == INFO_BOX_TYPE_PALPARK) {
         flag &= 0x3000;
     } else {
         flag &= ~0x3C00;
     }
     switch (battlerInfoBox->type) {
-    case HP_BAR_TYPE_SINGLE_ENEMY:
-    case HP_BAR_TYPE_DOUBLE_ENEMY_LHS:
-    case HP_BAR_TYPE_DOUBLE_ENEMY_RHS:
+    case INFO_BOX_TYPE_SINGLE_ENEMY:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_LHS:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_RHS:
         flag &= ~0x26;
         break;
-    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
-    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
         flag &= ~0x220;
         if (battlerInfoBox->unk_4F_3 == 0) {
             flag &= ~6;
@@ -505,11 +505,11 @@ void ov12_0226498C(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
             flag &= ~1;
         }
         break;
-    case HP_BAR_TYPE_SINGLE_PLAYER:
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
         flag &= ~0x200;
         break;
-    case HP_BAR_TYPE_SAFARI:
-    case HP_BAR_TYPE_PALPARK:
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
         break;
     }
     if (BattleSystem_GetBattleType(battlerInfoBox->bsys) & BATTLE_TYPE_TRAINER) {
@@ -602,7 +602,7 @@ static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox) {
 }
 
 static void ov12_02264B60(BattlerInfoBox *battlerInfoBox) {
-    const ManagedSpriteTemplate *tmplate = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    const ManagedSpriteTemplate *tmplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
     SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(battlerInfoBox->bsys);
     SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(battlerInfoBox->bsys);
     SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -635,7 +635,7 @@ void BattlerInfoBox_LoadResources(BattlerInfoBox *battlerInfoBox) {
     gfxHandler = BattleSystem_GetGfxHandler(battlerInfoBox->bsys);
     plttData = BattleSystem_GetPaletteData(battlerInfoBox->bsys);
 
-    tmplate = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    tmplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
 
     ov12_02264824(renderer, gfxHandler, narc, plttData, battlerInfoBox->type);
     battlerInfoBox->boxObj = ov12_02264968(renderer, gfxHandler, battlerInfoBox->type);
@@ -668,7 +668,7 @@ asm void BattlerInfoBox_LoadResources(BattlerInfoBox *battlerInfoBox) {
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0, #0]
-	bl BattlerInfoBox_Util_GetHpBoxSpriteTemplate
+	bl BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
@@ -733,8 +733,8 @@ void ov12_02264C84(BattlerInfoBox *battlerInfoBox) {
     NNSG2dImageProxy *imgProxy;
 
     switch (battlerInfoBox->type) {
-    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
-    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
         battlerInfoBox->unk_4F_3 ^= 1;
         vramBaseAddr = G2_GetOBJCharPtr();
         imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
@@ -855,12 +855,10 @@ void BattlerInfoBox_SetBoxObjectEnabled(BattlerInfoBox *battlerInfoBox, BOOL ena
 }
 
 #ifdef NONMATCHING
-static void ov12_02264F44(BattlerInfoBox *battlerInfoBox, int x, int y) {
+static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y) {
     const ManagedSpriteTemplate *tmplate;
-
     GF_ASSERT(battlerInfoBox->boxObj != NULL);
-
-    tmplate = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    tmplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
 
     Sprite_SetPositionXY(battlerInfoBox->boxObj->sprite, tmplate->x + x, tmplate->y + y);
     if (battlerInfoBox->arrowObj != NULL) {
@@ -871,7 +869,7 @@ static void ov12_02264F44(BattlerInfoBox *battlerInfoBox, int x, int y) {
 }
 #else
 // clang-format off
-asm static void ov12_02264F44(BattlerInfoBox *battlerInfoBox, int x, int y) {
+asm static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y) {
     push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #4]
@@ -884,7 +882,7 @@ _02264F56:
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0, #0]
-	bl BattlerInfoBox_Util_GetHpBoxSpriteTemplate
+	bl BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #2
@@ -925,83 +923,83 @@ _02264FA8:
 // clang-format on
 #endif // NONMATCHING
 
-void ov12_02264FB0(BattlerInfoBox *battlerInfoBox, BOOL a1) {
+void BattlerInfoBox_SetBoxPosition(BattlerInfoBox *battlerInfoBox, BOOL a1) {
     GF_ASSERT(battlerInfoBox != NULL);
     GF_ASSERT(battlerInfoBox->boxObj != NULL);
     battlerInfoBox->unk_4F_1 = FALSE;
     battlerInfoBox->unk_4F_0 = a1;
     if (!a1) {
         switch (battlerInfoBox->type) {
-        case HP_BAR_TYPE_SINGLE_PLAYER:
-        case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
-        case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
-        case HP_BAR_TYPE_SAFARI:
-        case HP_BAR_TYPE_PALPARK:
-            ov12_02264F44(battlerInfoBox, 160, 0);
+        case INFO_BOX_TYPE_SINGLE_PLAYER:
+        case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+        case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+        case INFO_BOX_TYPE_SAFARI:
+        case INFO_BOX_TYPE_PALPARK:
+            BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 160, 0);
             break;
         default:
-            ov12_02264F44(battlerInfoBox, -160, 0);
+            BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, -160, 0);
             break;
         }
     } else {
-        ov12_02264F44(battlerInfoBox, 0, 0);
+        BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, 0);
     }
-    SysTask_CreateOnMainQueue(ov12_02265054, battlerInfoBox, 990);
+    SysTask_CreateOnMainQueue(BattlerInfoBox_ShiftXPosition, battlerInfoBox, 990);
 }
 
 #ifdef NONMATCHING
-static void ov12_02265054(SysTask *task, void *data) {
+static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data) {
     BattlerInfoBox *battlerInfoBox = data;
     s16 x, y;
-    const ManagedSpriteTemplate *r6;
-    int r4;
+    const ManagedSpriteTemplate *spriteTemplate;
+    int count;
 
-    r4 = 0;
-    r6 = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    count = 0;
+    spriteTemplate = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(battlerInfoBox->type);
     ManagedSprite_GetPositionXY(battlerInfoBox->boxObj, &x, &y);
 
     switch (battlerInfoBox->type) {
-    case HP_BAR_TYPE_SINGLE_PLAYER:
-    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
-    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
-    case HP_BAR_TYPE_SAFARI:
-    case HP_BAR_TYPE_PALPARK:
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
         if (battlerInfoBox->unk_4F_0 == 0) {
             x -= 24;
-            if (x < r6->x) {
-                x = r6->x;
-                r4++;
+            if (x < spriteTemplate->x) {
+                x = spriteTemplate->x;
+                count++;
             }
         } else {
             x += 24;
-            if (x > r6->x + 160) {
-                x = r6->x + 160;
-                r4++;
+            if (x > spriteTemplate->x + 160) {
+                x = spriteTemplate->x + 160;
+                count++;
             }
         }
         break;
     default:
         if (battlerInfoBox->unk_4F_0 == 0) {
             x += 24;
-            if (x > r6->x) {
-                x = r6->x;
-                r4++;
+            if (x > spriteTemplate->x) {
+                x = spriteTemplate->x;
+                count++;
             }
         } else {
             x -= 24;
-            if (x < r6->x - 24) {
-                x = r6->x - 24;
-                r4++;
+            if (x < spriteTemplate->x - 24) {
+                x = spriteTemplate->x - 24;
+                count++;
             }
         }
         break;
     }
     ManagedSprite_SetPositionXY(battlerInfoBox->boxObj, x, y);
     if (battlerInfoBox->arrowObj != NULL) {
-        ManagedSprite_SetPositionXY(battlerInfoBox->arrowObj, x - sHpBarArrowXOffsets[battlerInfoBox->type], y + 0);
+        ManagedSprite_SetPositionXY(battlerInfoBox->arrowObj, x - sHpBarArrowXOffsets[battlerInfoBox->type], y);
     }
 
-    if (r4 > 0) {
+    if (count > 0) {
         battlerInfoBox->unk_4F_1 = TRUE;
         SysTask_Destroy(task);
         return;
@@ -1009,7 +1007,7 @@ static void ov12_02265054(SysTask *task, void *data) {
 }
 #else
 // clang-format off
-asm static void ov12_02265054(SysTask *task, void *data) {
+asm static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data) {
     push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r7, r0, #0
@@ -1017,7 +1015,7 @@ asm static void ov12_02265054(SysTask *task, void *data) {
 	add r0, #0x25
 	ldrb r0, [r0, #0]
 	mov r4, #0
-	bl BattlerInfoBox_Util_GetHpBoxSpriteTemplate
+	bl BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
 	add r6, r0, #0
 	add r1, sp, #0
 	ldr r0, [r5, #4]
@@ -1596,51 +1594,51 @@ u8 BattlerInfoBox_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
     switch (bside) {
     case 0:
         if (battleType & BATTLE_TYPE_PAL_PARK) {
-            return HP_BAR_TYPE_PALPARK;
+            return INFO_BOX_TYPE_PALPARK;
         }
         if (battleType & BATTLE_TYPE_SAFARI) {
-            return HP_BAR_TYPE_SAFARI;
+            return INFO_BOX_TYPE_SAFARI;
         }
-        return HP_BAR_TYPE_SINGLE_PLAYER;
+        return INFO_BOX_TYPE_SINGLE_PLAYER;
     case 1:
-        return HP_BAR_TYPE_SINGLE_ENEMY;
+        return INFO_BOX_TYPE_SINGLE_ENEMY;
     case 2:
-        return HP_BAR_TYPE_DOUBLE_PLAYER_LHS;
+        return INFO_BOX_TYPE_DOUBLE_PLAYER_LHS;
     case 3:
-        return HP_BAR_TYPE_DOUBLE_ENEMY_LHS;
+        return INFO_BOX_TYPE_DOUBLE_ENEMY_LHS;
     case 4:
-        return HP_BAR_TYPE_DOUBLE_PLAYER_RHS;
+        return INFO_BOX_TYPE_DOUBLE_PLAYER_RHS;
     case 5:
-        return HP_BAR_TYPE_DOUBLE_ENEMY_RHS;
+        return INFO_BOX_TYPE_DOUBLE_ENEMY_RHS;
     default:
         GF_ASSERT(FALSE);
-        return HP_BAR_TYPE_SINGLE_PLAYER;
+        return INFO_BOX_TYPE_SINGLE_PLAYER;
     }
 }
 
-static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetHpBoxSpriteTemplate(u8 barType) {
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(u8 barType) {
     const ManagedSpriteTemplate *ret;
     switch (barType) {
-    case HP_BAR_TYPE_SINGLE_PLAYER:
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
         ret = &sSpriteTemplate_HpBarSinglePlayer;
         break;
-    case HP_BAR_TYPE_SINGLE_ENEMY:
+    case INFO_BOX_TYPE_SINGLE_ENEMY:
         ret = &sSpriteTemplate_HpBarSingleEnemy;
         break;
-    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
         ret = &sSpriteTemplate_HpBarDoublePlayerLHS;
         break;
-    case HP_BAR_TYPE_DOUBLE_ENEMY_LHS:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_LHS:
         ret = &sSpriteTemplate_HpBarDoubleEnemyLHS;
         break;
-    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
         ret = &sSpriteTemplate_HpBarDoublePlayerRHS;
         break;
-    case HP_BAR_TYPE_DOUBLE_ENEMY_RHS:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_RHS:
         ret = &sSpriteTemplate_HpBarDoubleEnemyRHS;
         break;
-    case HP_BAR_TYPE_SAFARI:
-    case HP_BAR_TYPE_PALPARK:
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
         ret = &sSpriteTemplate_HpBarSafariOrPark;
         break;
     default:
@@ -1652,15 +1650,15 @@ static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetHpBoxSpriteTemplate(u
 
 static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType) {
     switch (barType) {
-    case HP_BAR_TYPE_SINGLE_PLAYER:
-    case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
-    case HP_BAR_TYPE_DOUBLE_PLAYER_RHS:
-    case HP_BAR_TYPE_SAFARI:
-    case HP_BAR_TYPE_PALPARK:
+    case INFO_BOX_TYPE_SINGLE_PLAYER:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_LHS:
+    case INFO_BOX_TYPE_DOUBLE_PLAYER_RHS:
+    case INFO_BOX_TYPE_SAFARI:
+    case INFO_BOX_TYPE_PALPARK:
         return &sSpriteTemplate_Arrow;
-    case HP_BAR_TYPE_SINGLE_ENEMY:
-    case HP_BAR_TYPE_DOUBLE_ENEMY_LHS:
-    case HP_BAR_TYPE_DOUBLE_ENEMY_RHS:
+    case INFO_BOX_TYPE_SINGLE_ENEMY:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_LHS:
+    case INFO_BOX_TYPE_DOUBLE_ENEMY_RHS:
         return NULL;
     default:
         GF_ASSERT(FALSE);
@@ -1743,7 +1741,7 @@ static void ov12_02265DA0(BattlerInfoBox *battlerInfoBox) {
         battlerInfoBox->sysTask = NULL;
     }
     battlerInfoBox->unk54 = 0;
-    ov12_02264F44(battlerInfoBox, 0, 0);
+    BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, 0);
 }
 
 static void ov12_02265DC4(SysTask *task, void *data) {
@@ -1752,5 +1750,5 @@ static void ov12_02265DC4(SysTask *task, void *data) {
     if (battlerInfoBox->unk54 >= 360) {
         battlerInfoBox->unk54 -= 360;
     }
-    ov12_02264F44(battlerInfoBox, 0, FX_Mul(GF_SinDegNoWrap(battlerInfoBox->unk54), FX32_CONST(1.5)) / FX32_ONE);
+    BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, FX_Mul(GF_SinDegNoWrap(battlerInfoBox->unk54), FX32_CONST(1.5)) / FX32_ONE);
 }
