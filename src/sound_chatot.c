@@ -156,7 +156,7 @@ BOOL sub_02006EA0(SOUND_CHATOT *a0, u32 a1, u32 a2, s32 a3, u8 a4) {
     return ret;
 }
 
-u32 sub_02006EFC(SOUND_CHATOT *chatot) {
+u32 Chatot_GetVolume(SOUND_CHATOT *chatot) {
     if (!Chatot_Exists(chatot)) {
         return 0;
     }

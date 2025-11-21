@@ -90,16 +90,21 @@ void Pokegear_SetSkin(SavePokegear *pokegear, u32 skin) {
     pokegear->skin = skin;
 }
 
+<<<<<<< HEAD
 u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear) {
     return pokegear->unlockedSkins;
+=======
+u16 Pokegear_GetUnk_4_0(SavePokegear *pokegear) {
+    return pokegear->unk_4_0;
+>>>>>>> a678a3997 (Pokegear_GetUnk_4_0, Chatot_GetVolume renames)
 }
 
-BOOL Pokegear_IsZoomed(SavePokegear *pokegear) {
-    return pokegear->zoom;
+BOOL Pokegear_IsMapZoomed(SavePokegear *pokegear) {
+    return pokegear->mapZoom;
 }
 
-void Pokegear_SetZoom(SavePokegear *pokegear, u8 zoomLevel) {
-    pokegear->zoom = zoomLevel;
+void Pokegear_SetMapZoom(SavePokegear *pokegear, u8 zoomLevel) {
+    pokegear->mapZoom = zoomLevel;
 }
 
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y) {

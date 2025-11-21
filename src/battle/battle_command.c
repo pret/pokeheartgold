@@ -5039,16 +5039,13 @@ BOOL BtlCmd_CheckEffectActivation(BattleSystem *battleSystem, BattleContext *ctx
 
 BOOL BtlCmd_CheckChatterActivation(BattleSystem *battleSystem, BattleContext *ctx) {
     u16 effectChance;
-
     BattleScriptIncrementPointer(ctx, 1);
-
     int adrs = BattleScriptReadWord(ctx);
-
     int param;
 
     if (ctx->battleMons[ctx->battlerIdAttacker].species == SPECIES_CHATOT && ctx->battleMons[ctx->battlerIdTarget].hp && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & (1 << 21))) {
         if ((BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_RECORDING) == FALSE) {
-            param = sub_02006EFC(BattleSystem_GetChatotVoice(battleSystem, ctx->battlerIdAttacker));
+            param = Chatot_GetVolume(BattleSystem_GetChatotVoice(battleSystem, ctx->battlerIdAttacker));
         } else {
             param = BattleSystem_GetChatotVoiceParam(battleSystem, ctx->battlerIdAttacker);
         }

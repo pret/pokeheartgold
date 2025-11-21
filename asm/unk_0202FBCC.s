@@ -1195,7 +1195,7 @@ _0203043E:
 	mov r0, #0x46
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02006EFC
+	bl Chatot_GetVolume
 	mov r1, #0x53
 	add r2, r7, r5
 	lsl r1, r1, #2
