@@ -262,7 +262,7 @@ static void ov12_02264B28(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B60(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B94(BattlerInfoBox *battlerInfoBox);
-static void ov12_02264F00(BattlerInfoBox *battlerInfoBox, int a1);
+static void BattlerInfoBox_SetArrowObjectEnabled(BattlerInfoBox *battlerInfoBox, int enabled);
 static void ov12_02264F44(BattlerInfoBox *battlerInfoBox, int x, int y);
 static void ov12_02265054(SysTask *task, void *data);
 static void ov12_0226516C(BattlerInfoBox *battlerInfoBox);
@@ -276,12 +276,12 @@ static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerI
 static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *battlerInfoBox, u32 flag);
 static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp);
 static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp);
-static int BattleHpBar_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange);
-static u8 BattleHpBar_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
-static u32 BattleHpBar_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
-static const u8 *BattleHpBar_Util_GetComponentRawGraphic(int componentId);
-static const ManagedSpriteTemplate *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType);
-static const ManagedSpriteTemplate *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType);
+static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange);
+static u8 BattlerInfoBox_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
+static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
+static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId);
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetHpBoxSpriteTemplate(u8 barType);
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType);
 static void Task_ExpBarFullFlash(SysTask *task, void *data);
 static void ov12_02265D78(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265DA0(BattlerInfoBox *battlerInfoBox);
@@ -450,7 +450,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
 #include "battle/battle_hp_bar_data.h"
 
 static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(barType);
 
     SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(plttData, PLTTBUF_MAIN_OBJ, renderer, gfxHandler, narc, 71, FALSE, 1, NNS_G2D_VRAM_TYPE_2DMAIN, 20006);
@@ -463,7 +463,7 @@ static void ov12_02264824(SpriteSystem *renderer, SpriteManager *gfxHandler, NAR
 }
 
 static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NARC *narc, PaletteData *plttData, int barType) {
-    const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetArrowSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetArrowSpriteTemplate(barType);
 
     if (pRes != NULL) {
         SpriteSystem_LoadCharResObjFromOpenNarc(renderer, gfxHandler, narc, pRes->resIdList[GF_GFX_RES_TYPE_CHAR], TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, pRes->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -474,7 +474,7 @@ static void ov12_022648EC(SpriteSystem *renderer, SpriteManager *gfxHandler, NAR
 }
 
 static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHandler, int barType) {
-    const ManagedSpriteTemplate *pRes = BattleHpBar_Util_GetHpBoxSpriteTemplate(barType);
+    const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(barType);
 
     ManagedSprite *ret = SpriteSystem_NewSprite(renderer, gfxHandler, pRes);
     Sprite_TickFrame(ret->sprite);
@@ -602,7 +602,7 @@ static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox) {
 }
 
 static void ov12_02264B60(BattlerInfoBox *battlerInfoBox) {
-    const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    const ManagedSpriteTemplate *tmplate = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
     SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(battlerInfoBox->bsys);
     SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(battlerInfoBox->bsys);
     SpriteManager_UnloadCharObjById(gfxHandler, tmplate->resIdList[GF_GFX_RES_TYPE_CHAR]);
@@ -611,7 +611,7 @@ static void ov12_02264B60(BattlerInfoBox *battlerInfoBox) {
 }
 
 static void ov12_02264B94(BattlerInfoBox *battlerInfoBox) {
-    const ManagedSpriteTemplate *tmplate = BattleHpBar_Util_GetArrowSpriteTemplate(battlerInfoBox->type);
+    const ManagedSpriteTemplate *tmplate = BattlerInfoBox_Util_GetArrowSpriteTemplate(battlerInfoBox->type);
     if (tmplate != NULL) {
         SpriteSystem *renderer = BattleSystem_GetSpriteRenderer(battlerInfoBox->bsys);
         SpriteManager *gfxHandler = BattleSystem_GetGfxHandler(battlerInfoBox->bsys);
@@ -622,7 +622,7 @@ static void ov12_02264B94(BattlerInfoBox *battlerInfoBox) {
 }
 
 #ifdef NONMATCHING
-void BattleHpBar_LoadResources(BattlerInfoBox *battlerInfoBox) {
+void BattlerInfoBox_LoadResources(BattlerInfoBox *battlerInfoBox) {
     const ManagedSpriteTemplate *tmplate;
     SpriteSystem *renderer;
     SpriteManager *gfxHandler;
@@ -635,7 +635,7 @@ void BattleHpBar_LoadResources(BattlerInfoBox *battlerInfoBox) {
     gfxHandler = BattleSystem_GetGfxHandler(battlerInfoBox->bsys);
     plttData = BattleSystem_GetPaletteData(battlerInfoBox->bsys);
 
-    tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    tmplate = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
 
     ov12_02264824(renderer, gfxHandler, narc, plttData, battlerInfoBox->type);
     battlerInfoBox->boxObj = ov12_02264968(renderer, gfxHandler, battlerInfoBox->type);
@@ -648,7 +648,7 @@ void BattleHpBar_LoadResources(BattlerInfoBox *battlerInfoBox) {
 }
 #else
 // clang-format off
-asm void BattleHpBar_LoadResources(BattlerInfoBox *battlerInfoBox) {
+asm void BattlerInfoBox_LoadResources(BattlerInfoBox *battlerInfoBox) {
     push {r4, r5, r6, r7, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -668,7 +668,7 @@ asm void BattleHpBar_LoadResources(BattlerInfoBox *battlerInfoBox) {
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0, #0]
-	bl BattleHpBar_Util_GetHpBoxSpriteTemplate
+	bl BattlerInfoBox_Util_GetHpBoxSpriteTemplate
 	add r4, r0, #0
 	add r0, r5, #0
 	add r0, #0x25
@@ -720,7 +720,7 @@ _02264C5A:
 // clang-format on
 #endif // NONMATCHING
 
-void BattleHpBar_FreeResources(BattlerInfoBox *battlerInfoBox) {
+void BattlerInfoBox_FreeResources(BattlerInfoBox *battlerInfoBox) {
     ov12_02264B28(battlerInfoBox);
     ov12_02264B60(battlerInfoBox);
     ov12_02264B4C(battlerInfoBox);
@@ -739,34 +739,34 @@ void ov12_02264C84(BattlerInfoBox *battlerInfoBox) {
         vramBaseAddr = G2_GetOBJCharPtr();
         imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
         if (battlerInfoBox->unk_4F_3 == 1) {
-            src = BattleHpBar_Util_GetComponentRawGraphic(70);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(70);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
-            src = BattleHpBar_Util_GetComponentRawGraphic(71);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(71);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
-            src = BattleHpBar_Util_GetComponentRawGraphic(69);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(69);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D408[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D408[battlerInfoBox->type].size);
             ov12_0226498C(battlerInfoBox, battlerInfoBox->hp, 6);
         } else {
-            src = BattleHpBar_Util_GetComponentRawGraphic(66);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(66);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3A8[battlerInfoBox->type].size);
-            src = BattleHpBar_Util_GetComponentRawGraphic(68);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(68);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3D8[battlerInfoBox->type].size);
-            src = BattleHpBar_Util_GetComponentRawGraphic(38);
+            src = BattlerInfoBox_Util_GetComponentRawGraphic(38);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             ov12_0226498C(battlerInfoBox, battlerInfoBox->hp, 1);
         }
     }
 }
 
-void ov12_02264DCC(BattlerInfoBox *battlerInfoBox, int hp) {
+void ov12_02264DCC(BattlerInfoBox *battlerInfoBox, int hpChange) {
     battlerInfoBox->hpCalc = 0x80000000;
-    if (battlerInfoBox->hp + hp < 0) {
-        hp -= (battlerInfoBox->hp + hp);
+    if (battlerInfoBox->hp + hpChange < 0) {
+        hpChange -= (battlerInfoBox->hp + hpChange);
     }
-    if (battlerInfoBox->hp + hp > battlerInfoBox->maxHp) {
-        hp -= ((battlerInfoBox->hp + hp) - battlerInfoBox->maxHp);
+    if (battlerInfoBox->hp + hpChange > battlerInfoBox->maxHp) {
+        hpChange -= ((battlerInfoBox->hp + hpChange) - battlerInfoBox->maxHp);
     }
-    battlerInfoBox->gainedHp = -hp;
+    battlerInfoBox->gainedHp = -hpChange;
     if (battlerInfoBox->hp < 0) {
         battlerInfoBox->hp = 0;
     }
@@ -786,15 +786,15 @@ int ov12_02264E00(BattlerInfoBox *battlerInfoBox) {
     return hp;
 }
 
-void ov12_02264E34(BattlerInfoBox *battlerInfoBox, int exp) {
+void ov12_02264E34(BattlerInfoBox *battlerInfoBox, int expChange) {
     battlerInfoBox->expCalc = 0x80000000;
-    if (battlerInfoBox->exp + exp < 0) {
-        exp -= (battlerInfoBox->exp + exp);
+    if (battlerInfoBox->exp + expChange < 0) {
+        expChange -= (battlerInfoBox->exp + expChange);
     }
-    if (battlerInfoBox->exp + exp > battlerInfoBox->maxExp) {
-        exp -= ((battlerInfoBox->exp + exp) - battlerInfoBox->maxExp);
+    if (battlerInfoBox->exp + expChange > battlerInfoBox->maxExp) {
+        expChange -= ((battlerInfoBox->exp + expChange) - battlerInfoBox->maxExp);
     }
-    battlerInfoBox->gainedExp = -exp;
+    battlerInfoBox->gainedExp = -expChange;
     if (battlerInfoBox->exp < 0) {
         battlerInfoBox->exp = 0;
     }
@@ -804,17 +804,17 @@ void ov12_02264E34(BattlerInfoBox *battlerInfoBox, int exp) {
 }
 
 int ov12_02264E68(BattlerInfoBox *battlerInfoBox) {
-    int ret = ov12_022657E4(battlerInfoBox, TRUE);
-    if (ret == -1) {
+    int exp = ov12_022657E4(battlerInfoBox, TRUE);
+    if (exp == -1) {
         battlerInfoBox->exp -= battlerInfoBox->gainedExp;
     }
-    return ret;
+    return exp;
 }
 
 void ov12_02264E84(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->arrowObj != NULL) {
         Sprite_SetAnimActiveFlag(battlerInfoBox->arrowObj->sprite, TRUE);
-        ov12_02264F00(battlerInfoBox, 1);
+        BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, 1);
     }
     if (!(BattleSystem_GetBattleType(battlerInfoBox->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
         ov12_02265D78(battlerInfoBox);
@@ -825,7 +825,7 @@ void ov12_02264EB4(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->arrowObj != NULL) {
         Sprite_SetAnimActiveFlag(battlerInfoBox->arrowObj->sprite, FALSE);
         Sprite_SetAnimationFrame(battlerInfoBox->arrowObj->sprite, 0);
-        ov12_02264F00(battlerInfoBox, 0);
+        BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, 0);
     }
     ov12_02265DA0(battlerInfoBox);
 }
@@ -839,18 +839,18 @@ void ov12_02264EE0(BattlerInfoBox *battlerInfoBox, int prio) {
     }
 }
 
-static void ov12_02264F00(BattlerInfoBox *battlerInfoBox, int a1) {
+static void BattlerInfoBox_SetArrowObjectEnabled(BattlerInfoBox *battlerInfoBox, int enabled) {
     if (battlerInfoBox->arrowObj != NULL) {
-        if (!(BattleSystem_GetBattleType(battlerInfoBox->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || a1 != TRUE) {
-            ManagedSprite_SetDrawFlag(battlerInfoBox->arrowObj, a1);
+        if (!(BattleSystem_GetBattleType(battlerInfoBox->bsys) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI)) || enabled != TRUE) {
+            ManagedSprite_SetDrawFlag(battlerInfoBox->arrowObj, enabled);
         }
     }
 }
 
-void BattleHpBar_SetEnabled(BattlerInfoBox *battlerInfoBox, BOOL a1) {
+void BattlerInfoBox_SetBoxObjectEnabled(BattlerInfoBox *battlerInfoBox, BOOL enabled) {
     if (battlerInfoBox->boxObj != NULL) {
-        ManagedSprite_SetDrawFlag(battlerInfoBox->boxObj, a1);
-        ov12_02264F00(battlerInfoBox, a1);
+        ManagedSprite_SetDrawFlag(battlerInfoBox->boxObj, enabled);
+        BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, enabled);
     }
 }
 
@@ -860,7 +860,7 @@ static void ov12_02264F44(BattlerInfoBox *battlerInfoBox, int x, int y) {
 
     GF_ASSERT(battlerInfoBox->boxObj != NULL);
 
-    tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    tmplate = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
 
     Sprite_SetPositionXY(battlerInfoBox->boxObj->sprite, tmplate->x + x, tmplate->y + y);
     if (battlerInfoBox->arrowObj != NULL) {
@@ -884,7 +884,7 @@ _02264F56:
 	add r0, r5, #0
 	add r0, #0x25
 	ldrb r0, [r0, #0]
-	bl BattleHpBar_Util_GetHpBoxSpriteTemplate
+	bl BattlerInfoBox_Util_GetHpBoxSpriteTemplate
 	add r4, r0, #0
 	mov r1, #0
 	mov r2, #2
@@ -957,7 +957,7 @@ static void ov12_02265054(SysTask *task, void *data) {
     int r4;
 
     r4 = 0;
-    r6 = BattleHpBar_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
+    r6 = BattlerInfoBox_Util_GetHpBoxSpriteTemplate(battlerInfoBox->type);
     ManagedSprite_GetPositionXY(battlerInfoBox->boxObj, &x, &y);
 
     switch (battlerInfoBox->type) {
@@ -1017,7 +1017,7 @@ asm static void ov12_02265054(SysTask *task, void *data) {
 	add r0, #0x25
 	ldrb r0, [r0, #0]
 	mov r4, #0
-	bl BattleHpBar_Util_GetHpBoxSpriteTemplate
+	bl BattlerInfoBox_Util_GetHpBoxSpriteTemplate
 	add r6, r0, #0
 	add r1, sp, #0
 	ldr r0, [r5, #4]
@@ -1214,8 +1214,8 @@ static void ov12_022652D0(BattlerInfoBox *battlerInfoBox) {
         r0 = 76;
         r4 = 64;
     }
-    const u8 *sp0 = BattleHpBar_Util_GetComponentRawGraphic(r0);
-    const u8 *r7 = BattleHpBar_Util_GetComponentRawGraphic(r4);
+    const u8 *sp0 = BattlerInfoBox_Util_GetComponentRawGraphic(r0);
+    const u8 *r7 = BattlerInfoBox_Util_GetComponentRawGraphic(r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
     MI_CpuCopy16(r7, (void *)((u32)vramAddr + ov12_0226D4B0[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[battlerInfoBox->type][0].size);
@@ -1275,9 +1275,9 @@ static void ov12_02265500(BattlerInfoBox *battlerInfoBox) {
 static void ov12_02265560(BattlerInfoBox *battlerInfoBox) {
     const u8 *r4;
     if (battlerInfoBox->unk4B == 1) {
-        r4 = BattleHpBar_Util_GetComponentRawGraphic(59);
+        r4 = BattlerInfoBox_Util_GetComponentRawGraphic(59);
     } else {
-        r4 = BattleHpBar_Util_GetComponentRawGraphic(38);
+        r4 = BattlerInfoBox_Util_GetComponentRawGraphic(38);
     }
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
@@ -1286,7 +1286,7 @@ static void ov12_02265560(BattlerInfoBox *battlerInfoBox) {
 }
 
 static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int a1) {
-    const u8 *r4 = BattleHpBar_Util_GetComponentRawGraphic(a1);
+    const u8 *r4 = BattlerInfoBox_Util_GetComponentRawGraphic(a1);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
@@ -1381,14 +1381,14 @@ static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *ba
 static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp) {
     int ret;
     if (isExp == FALSE) {
-        ret = BattleHpBar_CalculatePixelsChangeFrame(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, 6, 1);
+        ret = BattlerInfoBox_CalculatePixelsChangeFrame(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, 6, 1);
     } else {
         // Supposedly this will make the exp bar move at a consistent speed regardless of the gauge size.
-        int denom = BattleHpBar_Util_GetPixelsToGain(battlerInfoBox->exp, battlerInfoBox->gainedExp, battlerInfoBox->maxExp, 12);
+        int denom = BattlerInfoBox_Util_GetPixelsToGain(battlerInfoBox->exp, battlerInfoBox->gainedExp, battlerInfoBox->maxExp, 12);
         if (denom == 0) {
             denom = 1;
         }
-        ret = BattleHpBar_CalculatePixelsChangeFrame(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, 12, abs(battlerInfoBox->gainedExp / denom));
+        ret = BattlerInfoBox_CalculatePixelsChangeFrame(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, 12, abs(battlerInfoBox->gainedExp / denom));
     }
     if (isExp != FALSE || battlerInfoBox->unk_4F_3 != TRUE) {
         UpdateHpExpBar(battlerInfoBox, isExp);
@@ -1418,7 +1418,7 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
     switch (isExp) {
     case FALSE:
         // hp
-        switch (HpBar_GetColorIdx(BattleHpBar_Util_MakeHpBarPixelBuffer(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, pixelBuffer, 6), 0x30)) {
+        switch (HpBar_GetColorIdx(BattlerInfoBox_Util_MakeHpBarPixelBuffer(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, pixelBuffer, 6), 0x30)) {
         case 3: // Green
             tmp = 2;
             break;
@@ -1430,7 +1430,7 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
             tmp = 20;
             break;
         }
-        src = BattleHpBar_Util_GetComponentRawGraphic(tmp);
+        src = BattlerInfoBox_Util_GetComponentRawGraphic(tmp);
         sizeTop = ov12_0226D480[battlerInfoBox->type][0].size / 32;
         for (i = 0; i < 6; ++i) {
             if (i < sizeTop) {
@@ -1442,14 +1442,14 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
         break;
     case TRUE:
         // exp
-        BattleHpBar_Util_MakeHpBarPixelBuffer(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, pixelBuffer, 12);
+        BattlerInfoBox_Util_MakeHpBarPixelBuffer(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, pixelBuffer, 12);
         if (battlerInfoBox->level == 100) {
             // Don't fill an exp bar for a level 100 mon
             for (i = 0; i < 12; ++i) {
                 pixelBuffer[i] = 0;
             }
         }
-        src = BattleHpBar_Util_GetComponentRawGraphic(29);
+        src = BattlerInfoBox_Util_GetComponentRawGraphic(29);
         for (i = 0; i < 12; ++i) {
             if (i < 5) {
                 MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + 0x660 + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
@@ -1461,7 +1461,7 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
     }
 }
 
-static int BattleHpBar_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange) {
+static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange) {
     s32 nowHp;
     s32 ret;
     u8 pixelsWide;
@@ -1530,7 +1530,7 @@ static int BattleHpBar_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 delt
     return ret;
 }
 
-static u8 BattleHpBar_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide) {
+static u8 BattlerInfoBox_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide) {
     int i;
     int targetHp;
     u32 pixelsWide;
@@ -1570,7 +1570,7 @@ static u8 BattleHpBar_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, 
     return ret;
 }
 
-static u32 BattleHpBar_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide) {
+static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide) {
     s8 curPixels, targetPixels;
     u8 pixelsWide;
     s32 targetExp;
@@ -1588,11 +1588,11 @@ static u32 BattleHpBar_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, 
     return abs(curPixels - targetPixels);
 }
 
-static const u8 *BattleHpBar_Util_GetComponentRawGraphic(int componentId) {
-    return gBattleHpBar_RawGraphicComponents + componentId * 32;
+static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId) {
+    return gBattlerInfoBox_RawGraphicComponents + componentId * 32;
 }
 
-u8 BattleHpBar_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
+u8 BattlerInfoBox_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
     switch (bside) {
     case 0:
         if (battleType & BATTLE_TYPE_PAL_PARK) {
@@ -1618,7 +1618,7 @@ u8 BattleHpBar_Util_GetBarTypeFromBattlerSide(u8 bside, u32 battleType) {
     }
 }
 
-static const ManagedSpriteTemplate *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 barType) {
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetHpBoxSpriteTemplate(u8 barType) {
     const ManagedSpriteTemplate *ret;
     switch (barType) {
     case HP_BAR_TYPE_SINGLE_PLAYER:
@@ -1650,7 +1650,7 @@ static const ManagedSpriteTemplate *BattleHpBar_Util_GetHpBoxSpriteTemplate(u8 b
     return ret;
 }
 
-static const ManagedSpriteTemplate *BattleHpBar_Util_GetArrowSpriteTemplate(u8 barType) {
+static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType) {
     switch (barType) {
     case HP_BAR_TYPE_SINGLE_PLAYER:
     case HP_BAR_TYPE_DOUBLE_PLAYER_LHS:
@@ -1676,7 +1676,7 @@ typedef struct BattleHpBarExpBarFullFlashEffectTaskData {
     s8 ev;
 } BattleHpBarExpBarFullFlashEffectTaskData;
 
-SysTask *BattleHpBar_BeginExpBarFullFlashEffect(BattlerInfoBox *battlerInfoBox, u8 *a1) {
+SysTask *BattlerInfoBox_BeginExpBarFullFlashEffect(BattlerInfoBox *battlerInfoBox, u8 *a1) {
     *a1 = 0;
     BattleHpBarExpBarFullFlashEffectTaskData *taskData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));
     MI_CpuFill8(taskData, 0, sizeof(BattleHpBarExpBarFullFlashEffectTaskData));

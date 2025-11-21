@@ -1042,9 +1042,9 @@ void BattleSystem_HpBar_Init(BattleSystem *bsys) {
     for (i = 0; i < bsys->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
         battlerInfoBox->bsys = bsys;
-        battlerInfoBox->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
-        BattleHpBar_LoadResources(battlerInfoBox);
-        BattleHpBar_SetEnabled(battlerInfoBox, FALSE);
+        battlerInfoBox->type = BattlerInfoBox_Util_GetBarTypeFromBattlerSide(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
+        BattlerInfoBox_LoadResources(battlerInfoBox);
+        BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, FALSE);
     }
 }
 
@@ -1055,7 +1055,7 @@ void BattleSystem_SetHpBarEnabled(BattleSystem *bsys) {
     for (i = 0; i < bsys->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
         if (battlerInfoBox->hp) {
-            BattleHpBar_SetEnabled(battlerInfoBox, TRUE);
+            BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, TRUE);
         }
     }
 }
@@ -1066,7 +1066,7 @@ void BattleSystem_SetHpBarDisabled(BattleSystem *bsys) {
 
     for (i = 0; i < bsys->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
-        BattleHpBar_SetEnabled(battlerInfoBox, FALSE);
+        BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, FALSE);
     }
 }
 
@@ -1076,7 +1076,7 @@ void BattleSystem_HpBar_Delete(BattleSystem *bsys) {
 
     for (i = 0; i < bsys->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
-        BattleHpBar_FreeResources(battlerInfoBox);
+        BattlerInfoBox_FreeResources(battlerInfoBox);
     }
 }
 
