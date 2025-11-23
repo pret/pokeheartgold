@@ -10716,7 +10716,7 @@ _0225DC6A:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225DC80:
 	ldr r0, [r4, #4]
-	bl ov12_02264E84
+	bl BattlerInfoBox_DoAnimation
 	ldr r0, [sp, #0xc]
 	ldr r1, [r4]
 	bl ov12_02261FD4

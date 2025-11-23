@@ -268,7 +268,7 @@
 .public BattlerInfoBox_UpdateHpBar
 .public ov12_02264E34
 .public BattlerInfoBox_UpdateExpBar
-.public ov12_02264E84
+.public BattlerInfoBox_DoAnimation
 .public BattlerInfoBox_ClearInfoBox
 .public BattlerInfoBox_SetBoxObjectEnabled
 .public BattlerInfoBox_SetBoxPosition
