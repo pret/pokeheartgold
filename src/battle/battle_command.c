@@ -6129,7 +6129,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         SetBgPriority(GF_BG_LYR_MAIN_1, 1);
         SetBgPriority(GF_BG_LYR_MAIN_2, 0);
 
-        ov12_0223C224(data->bsys, 1);
+        BattleSystem_SetOpponentInfoBoxPriorties(data->bsys, 1);
 
         sub_0200E398(bgConfig, 2, 1, 0, HEAP_ID_BATTLE);
         PaletteData_LoadNarc(palette, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 8 * 0x10);
@@ -6201,7 +6201,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         SetBgPriority(GF_BG_LYR_MAIN_1, 0);
         SetBgPriority(GF_BG_LYR_MAIN_2, 1);
 
-        ov12_0223C224(data->bsys, 0);
+        BattleSystem_SetOpponentInfoBoxPriorties(data->bsys, 0);
 
         if (data->ctx->selectedMonIndex[expBattler] != slot) {
             ov12_022484D4(data->bsys, data);

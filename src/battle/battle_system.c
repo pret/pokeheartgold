@@ -1300,13 +1300,13 @@ void ov12_0223C1F4(BattleSystem *bsys, void **a1) {
     }
 }
 
-void ov12_0223C224(BattleSystem *bsys, int a1) {
+void BattleSystem_SetOpponentInfoBoxPriorties(BattleSystem *bsys, int priority) {
     int i;
     BattlerInfoBox *battlerInfoBox;
 
     for (i = 0; i < bsys->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
-        BattlerInfoBox_SetBoxArrowObjPriorities(battlerInfoBox, a1);
+        BattlerInfoBox_SetBoxArrowObjPriorities(battlerInfoBox, priority);
     }
 }
 

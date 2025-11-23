@@ -151,7 +151,7 @@
 .public ov12_0223BD8C
 .public BattleSystem_Random
 .public ov12_0223C134
-.public ov12_0223C224
+.public BattleSystem_SetOpponentInfoBoxPriorties
 .public BattleSystem_SetPokedexCaught
 .public BattleSystem_CheckMonCaught
 .public BattleSystem_PrintBattleMessage
