@@ -3737,7 +3737,7 @@ ov12_0225A414: ; 0x0225A414
 	ldr r1, [r4, #0x28]
 	add r0, r4, #0
 	mvn r2, r2
-	bl ov12_0226498C
+	bl BattlerInfoBox_ConfigureInfoBoxComponents
 	mov r2, #0xfa
 	ldr r0, _0225A4D8 ; =ov12_0225DA18
 	add r1, r4, #0
@@ -4803,7 +4803,7 @@ _0225ACC2:
 	ldr r1, [r5, #0x50]
 	add r0, #0x28
 	lsl r2, r2, #8
-	bl ov12_0226498C
+	bl BattlerInfoBox_ConfigureInfoBoxComponents
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
@@ -5199,7 +5199,7 @@ ov12_0225AF74: ; 0x0225AF74
 	strb r1, [r0]
 	ldr r1, [r4, #0x28]
 	add r0, r4, #0
-	bl ov12_0226498C
+	bl BattlerInfoBox_ConfigureInfoBoxComponents
 	add r1, r4, #0
 	ldr r0, [r4, #0xc]
 	add r1, #0x24
@@ -11021,7 +11021,7 @@ _0225DF04:
 	add r1, r5, #0
 	bl BattleSystem_GetOpponentData
 	add r0, #0x28
-	bl ov12_02264C84
+	bl BattlerInfoBox_ConfigureInfoBoxForDoubles
 	ldr r0, [r4]
 	add r5, r5, #1
 	bl BattleSystem_GetMaxBattlers
@@ -13257,7 +13257,7 @@ _0225F128:
 	add r0, r5, #0
 	mov r1, #0
 	lsl r2, r2, #8
-	bl ov12_0226498C
+	bl BattlerInfoBox_ConfigureInfoBoxComponents
 	ldrb r0, [r4, #0xe]
 	add sp, #0x1fc
 	add sp, #0x14
@@ -13355,7 +13355,7 @@ _0225F1EE:
 	add r1, r0, #0
 	ldr r1, [r1, #0x28]
 	lsl r2, r2, #8
-	bl ov12_0226498C
+	bl BattlerInfoBox_ConfigureInfoBoxComponents
 	mov r1, #2
 	add r0, sp, #0x1c
 	strb r1, [r0, #5]

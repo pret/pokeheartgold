@@ -271,7 +271,7 @@ static void ov12_02265354(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265474(BattlerInfoBox *battlerInfoBox, u32 hp);
 static void ov12_02265500(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265560(BattlerInfoBox *battlerInfoBox);
-static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int a1);
+static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int componentId);
 static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerInfoBox, u32 flag);
 static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *battlerInfoBox, u32 flag);
 static int BattlerInfoBox_UpdateBar(BattlerInfoBox *battlerInfoBox, BOOL isExp);
@@ -481,7 +481,7 @@ static ManagedSprite *ov12_02264968(SpriteSystem *renderer, SpriteManager *gfxHa
     return ret;
 }
 
-void ov12_0226498C(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
+void BattlerInfoBox_ConfigureInfoBoxComponents(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
     GF_ASSERT(battlerInfoBox->boxObj != NULL);
     if (battlerInfoBox->type == INFO_BOX_TYPE_SAFARI) {
         flag &= 0xC00;
@@ -727,7 +727,7 @@ void BattlerInfoBox_FreeResources(BattlerInfoBox *battlerInfoBox) {
     ov12_02264B94(battlerInfoBox);
 }
 
-void ov12_02264C84(BattlerInfoBox *battlerInfoBox) {
+void BattlerInfoBox_ConfigureInfoBoxForDoubles(BattlerInfoBox *battlerInfoBox) {
     const u8 *src;
     void *vramBaseAddr;
     NNSG2dImageProxy *imgProxy;
@@ -745,7 +745,7 @@ void ov12_02264C84(BattlerInfoBox *battlerInfoBox) {
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             src = BattlerInfoBox_Util_GetComponentRawGraphic(69);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D408[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D408[battlerInfoBox->type].size);
-            ov12_0226498C(battlerInfoBox, battlerInfoBox->hp, 6);
+            BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, battlerInfoBox->hp, 6);
         } else {
             src = BattlerInfoBox_Util_GetComponentRawGraphic(66);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3A8[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3A8[battlerInfoBox->type].size);
@@ -753,7 +753,7 @@ void ov12_02264C84(BattlerInfoBox *battlerInfoBox) {
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3D8[battlerInfoBox->type].size);
             src = BattlerInfoBox_Util_GetComponentRawGraphic(38);
             MI_CpuCopy16(src, (void *)((u32)vramBaseAddr + ov12_0226D3D8[battlerInfoBox->type].offset + 0x20 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
-            ov12_0226498C(battlerInfoBox, battlerInfoBox->hp, 1);
+            BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, battlerInfoBox->hp, 1);
         }
     }
 }
@@ -779,9 +779,9 @@ int BattlerInfoBox_UpdateHpBar(BattlerInfoBox *battlerInfoBox) {
     int hp = BattlerInfoBox_UpdateBar(battlerInfoBox, FALSE);
     if (hp == -1) {
         battlerInfoBox->hp -= battlerInfoBox->gainedHp;
-        ov12_0226498C(battlerInfoBox, battlerInfoBox->hp, 2);
+        BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, battlerInfoBox->hp, 2);
     } else {
-        ov12_0226498C(battlerInfoBox, hp, 2);
+        BattlerInfoBox_ConfigureInfoBoxComponents(battlerInfoBox, hp, 2);
     }
     return hp;
 }
@@ -1283,12 +1283,12 @@ static void ov12_02265560(BattlerInfoBox *battlerInfoBox) {
     MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D3C0[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3C0[battlerInfoBox->type].size);
 }
 
-static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int a1) {
-    const u8 *r4 = BattlerInfoBox_Util_GetComponentRawGraphic(a1);
+static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int componentId) {
+    const u8 *graphicComponent = BattlerInfoBox_Util_GetComponentRawGraphic(componentId);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
-    MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D390[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[battlerInfoBox->type].size);
+    MI_CpuCopy16(graphicComponent, (void *)((u32)vramAddr + ov12_0226D390[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D390[battlerInfoBox->type].size);
 }
 
 static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerInfoBox, u32 flag) {
