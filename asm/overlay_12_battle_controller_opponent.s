@@ -6121,7 +6121,7 @@ _0225B71E:
 	pop {r4, r5, r6, pc}
 _0225B728:
 	ldr r0, [r4]
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	ldrb r1, [r4, #0x11]
 	bl sub_02017068
 	cmp r0, #1
@@ -6326,7 +6326,7 @@ _0225B83A:
 	pop {r4, r5, r6, pc}
 _0225B8D0:
 	ldr r0, [r4]
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	ldrb r1, [r4, #0x11]
 	bl sub_02017068
 	cmp r0, #1
@@ -6878,7 +6878,7 @@ _0225BD3C:
 	pop {r3, r4, r5, pc}
 _0225BD50:
 	ldr r0, [r4]
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	add r1, r4, #0
 	add r1, #0x81
 	ldrb r1, [r1]
@@ -7290,7 +7290,7 @@ _0225C068:
 	pop {r4, r5, pc}
 _0225C0B0:
 	ldr r0, [r4]
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	add r1, r4, #0
 	add r1, #0x81
 	ldrb r1, [r1]
@@ -7860,7 +7860,7 @@ _0225C552:
 	pop {r4, r5, r6, pc}
 _0225C566:
 	ldr r0, [r4]
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	add r1, r4, #0
 	add r1, #0x81
 	ldrb r1, [r1]
@@ -8226,7 +8226,7 @@ _0225C810:
 	pop {r3, r4, r5, r6, pc}
 _0225C858:
 	ldr r0, [r4]
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	add r1, r4, #0
 	add r1, #0x81
 	ldrb r1, [r1]
@@ -10596,7 +10596,7 @@ _0225DB7C:
 	tst r1, r0
 	beq _0225DC00
 	ldr r0, [r4]
-	bl ov12_0223BB04
+	bl BattleSystem_GetUnk2421
 	cmp r0, #0
 	beq _0225DBA0
 	cmp r0, #1
@@ -11287,7 +11287,7 @@ ov12_0225E154: ; 0x0225E154
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223B694
+	bl BattleSystem_GetSafariRunAttempts
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleContext
@@ -11590,7 +11590,7 @@ _0225E3D0:
 	bne _0225E3F8
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223BB10
+	bl BattleSystem_SetUnk2421
 	ldrb r1, [r4, #0x1d]
 	ldrb r2, [r4, #0x1c]
 	ldr r0, [r4]
@@ -16061,7 +16061,7 @@ _02260798:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAE0
+	bl BattleSystem_GetUnk2228
 	add r1, r5, #0
 	mov r2, #0xe0
 	bl MIi_CpuCopy16
@@ -16074,7 +16074,7 @@ _02260798:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0xa0
 	bl MIi_CpuCopy16
@@ -16089,7 +16089,7 @@ _022607DA:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0xe0
 	bl MIi_CpuCopy16
@@ -16105,7 +16105,7 @@ _022607FE:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0xa0
 	bl MIi_CpuCopy16
@@ -16116,7 +16116,7 @@ _02260824:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0x80
 	bl MIi_CpuCopy16
@@ -16216,7 +16216,7 @@ _022608FA:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAE0
+	bl BattleSystem_GetUnk2228
 	add r1, r5, #0
 	mov r2, #0xe0
 	bl MIi_CpuCopy16
@@ -16229,7 +16229,7 @@ _022608FA:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0xa0
 	bl MIi_CpuCopy16
@@ -16244,7 +16244,7 @@ _02260936:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0xe0
 	bl MIi_CpuCopy16
@@ -16260,7 +16260,7 @@ _0226095A:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0xa0
 	bl MIi_CpuCopy16
@@ -16271,7 +16271,7 @@ _02260980:
 	bl PaletteData_GetUnfadedBuf
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BAEC
+	bl BattleSystem_GetUnk2308
 	add r1, r5, #0
 	mov r2, #0x80
 	bl MIi_CpuCopy16
@@ -18699,10 +18699,10 @@ _02261BCE:
 	bl BattleSystem_GetChatotVoice
 	str r0, [sp, #0xa0]
 	ldr r0, [sp]
-	bl ov12_0223BAD0
+	bl BattleSystem_GetUnk220
 	str r0, [sp, #0xa4]
 	ldr r0, [sp]
-	bl ov12_0223BAD8
+	bl BattleSystem_GetUnk224
 	str r0, [sp, #0xa8]
 	mov r0, #7
 	str r0, [sp, #0x88]
@@ -19107,7 +19107,7 @@ ov12_02261F38: ; 0x02261F38
 	mov r1, #1
 	bl Pokepic_StartAnim
 	add r0, r7, #0
-	bl ov12_0223B750
+	bl BattleSystem_GetUnk1C8
 	add r1, r0, #0
 	ldr r0, [sp, #0x3c]
 	ldr r3, [sp, #0x34]

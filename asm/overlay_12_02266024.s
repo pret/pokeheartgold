@@ -9167,7 +9167,7 @@ ov12_0226A8F4: ; 0x0226A8F4
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
 	ldr r0, [r4]
-	bl ov12_0223BB04
+	bl BattleSystem_GetUnk2421
 	cmp r0, #0
 	bne _0226A930
 	ldr r0, _0226A954 ; =0x000006E8

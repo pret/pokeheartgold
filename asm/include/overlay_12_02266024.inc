@@ -141,7 +141,7 @@
 .public ov12_0223AAD8
 .public BattleSystem_GetUnk2404
 .public BattleSystem_GetSafariBallCount
-.public ov12_0223BB04
+.public BattleSystem_GetUnk2421
 .public ov12_0223BB64
 .public ov12_0223C134
 .public ov12_0223C1A0

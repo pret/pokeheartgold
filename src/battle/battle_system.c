@@ -728,7 +728,7 @@ u8 BattleSystem_GetUnk23FC(BattleSystem *bsys) {
     return bsys->unk23FC;
 }
 
-u8 ov12_0223B694(BattleSystem *bsys) {
+u8 BattleSystem_GetSafariRunAttempts(BattleSystem *bsys) {
     GF_ASSERT(bsys->ctx != NULL);
     return BattleSystem_GetBattleContextData(bsys, bsys->ctx, 5, 0);
 }
@@ -767,7 +767,7 @@ u32 BattleSystem_GetBattleStyle(BattleSystem *bsys) {
     return Options_GetBattleStyle(bsys->options);
 }
 
-void *ov12_0223B750(BattleSystem *bsys) {
+void *BattleSystem_GetUnk1C8(BattleSystem *bsys) {
     return bsys->unk1C8;
 }
 
@@ -921,19 +921,19 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     ov12_02266008(&bsys->unk17C[1]);
 }
 
-u8 *ov12_0223BAD0(BattleSystem *bsys) {
+u8 *BattleSystem_GetUnk220(BattleSystem *bsys) {
     return bsys->unk220;
 }
 
-u16 *ov12_0223BAD8(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk224(BattleSystem *bsys) {
     return bsys->unk224;
 }
 
-u16 *ov12_0223BAE0(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk2228(BattleSystem *bsys) {
     return &bsys->unk2228[0];
 }
 
-u16 *ov12_0223BAEC(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk2308(BattleSystem *bsys) {
     return &bsys->unk2308[0];
 }
 
@@ -941,15 +941,15 @@ int BattleSystem_GetWeather(BattleSystem *bsys) {
     return bsys->weather;
 }
 
-u8 ov12_0223BB04(BattleSystem *bsys) {
+u8 BattleSystem_GetUnk2421(BattleSystem *bsys) {
     return bsys->unk2421;
 }
 
-void ov12_0223BB10(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk2421(BattleSystem *bsys, u8 a1) {
     bsys->unk2421 = a1;
 }
 
-int ov12_0223BB1C(BattleSystem *bsys) {
+int BattleSystem_GetUnk2430(BattleSystem *bsys) {
     return bsys->unk2430;
 }
 

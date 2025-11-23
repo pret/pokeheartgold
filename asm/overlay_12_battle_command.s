@@ -1169,7 +1169,7 @@ _02246D4E:
 	b _02246DB0
 _02246DA6:
 	ldr r0, [r4]
-	bl ov12_0223BB1C
+	bl BattleSystem_GetUnk2430
 	ldr r1, _02247068 ; =0x00000496
 	add r0, r0, r1
 _02246DB0:
@@ -1414,7 +1414,7 @@ _02246FB4:
 	cmp r1, r0
 	ldr r0, [r4]
 	bne _02246FEC
-	bl ov12_0223BB1C
+	bl BattleSystem_GetUnk2430
 	ldr r1, _02247068 ; =0x00000496
 	add r1, r0, r1
 	add r0, sp, #0x9c
@@ -1426,7 +1426,7 @@ _02246FB4:
 	str r0, [sp, #0xa4]
 	b _02247006
 _02246FEC:
-	bl ov12_0223BB1C
+	bl BattleSystem_GetUnk2430
 	ldr r1, _02247070 ; =0x00000498
 	add r1, r0, r1
 	add r0, sp, #0x9c
