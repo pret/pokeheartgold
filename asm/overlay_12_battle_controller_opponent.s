@@ -11675,7 +11675,7 @@ _0225E462:
 	ldrh r3, [r3, #0xc]
 	ldr r0, [r6]
 	ldr r1, [sp, #0xc]
-	bl ov12_022506D4
+	bl GetBattlerIdTarget
 	str r0, [sp]
 	ldrb r3, [r6, #0x1d]
 	ldr r0, [r6]

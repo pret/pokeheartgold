@@ -1702,7 +1702,7 @@ static void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext 
     }
     ctx->moveNoCur = ctx->moveNoTemp;
     ctx->command = CONTROLLER_COMMAND_23;
-    ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
+    ctx->battlerIdTarget = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
     BattleController_EmitBlankMessage(bsys);
 }
 
@@ -1966,7 +1966,7 @@ static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) 
         ctx->movePos[ctx->battlerIdAttacker] = struggleRnd;
         ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]];
         ctx->moveNoCur = ctx->moveNoTemp;
-        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, 1, 0);
+        ctx->battlerIdTarget = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, 1, 0);
 
         if (ctx->battlerIdTarget == BATTLER_NONE) {
             ctx->playerActions[ctx->battlerIdAttacker].unk4 = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);

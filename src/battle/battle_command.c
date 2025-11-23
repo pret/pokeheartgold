@@ -1154,7 +1154,7 @@ BOOL BtlCmd_GoToMoveScript(BattleSystem *bsys, BattleContext *ctx) {
     ctx->moveNoCur = ctx->moveTemp;
 
     if (unkA == 0) {
-        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveTemp, 1, 0);
+        ctx->battlerIdTarget = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveTemp, 1, 0);
         ov12_02250A18(bsys, ctx, ctx->battlerIdAttacker, ctx->moveTemp);
         ctx->playerActions[ctx->battlerIdAttacker].unk4 = ctx->battlerIdTarget;
     }
@@ -2026,7 +2026,7 @@ BOOL BtlCmd_SetMirrorMove(BattleSystem *bsys, BattleContext *ctx) {
         ctx->battleStatus &= ~BATTLE_STATUS_NO_ATTACK_MESSAGE;
         ctx->battleStatus &= ~BATTLE_STATUS_MOVE_ANIMATIONS_OFF;
         ctx->moveNoCur = move;
-        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
+        ctx->battlerIdTarget = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, move, 1, 0);
         if (ctx->battlerIdTarget == BATTLER_NONE) {
             ctx->commandNext = CONTROLLER_COMMAND_39;
             BattleScriptJump(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
@@ -3910,7 +3910,7 @@ BOOL BtlCmd_MagicCoat(BattleSystem *bsys, BattleContext *ctx) {
     } else if (ctx->trainerAIData.moveData[ctx->moveNoCur].range == RANGE_ADJACENT_OPPONENTS || ctx->trainerAIData.moveData[ctx->moveNoCur].range == RANGE_ALL_ADJACENT) {
         ctx->battlerIdTarget = battlerId;
     } else {
-        side = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveNoCur, 1, 0);
+        side = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, (u16)ctx->moveNoCur, 1, 0);
         if (ctx->selfTurnData[side].lightningRodFlag || ctx->selfTurnData[side].stormDrainFlag) {
             ctx->battlerIdTarget = side;
         } else {
@@ -4012,8 +4012,8 @@ BOOL BtlCmd_TryImprison(BattleSystem *bsys, BattleContext *ctx) {
 
     adrs = BattleScriptReadWord(ctx);
 
-    battlerIdA = ov12_0223ABB8(bsys, ctx->battlerIdAttacker, 0);
-    battlerIdB = ov12_0223ABB8(bsys, ctx->battlerIdAttacker, 2);
+    battlerIdA = BattleSystem_GetBattlerIdOpponent(bsys, ctx->battlerIdAttacker, 0);
+    battlerIdB = BattleSystem_GetBattlerIdOpponent(bsys, ctx->battlerIdAttacker, 2);
 
     ctx->battleMons[battlerIdA].moveEffectFlags |= MOVE_EFFECT_FLAG_IMPRISON;
     ctx->battleMons[battlerIdB].moveEffectFlags |= MOVE_EFFECT_FLAG_IMPRISON;

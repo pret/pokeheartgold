@@ -225,7 +225,7 @@
 .public BattleSystem_PrintTrainerMessage
 .public BattleSystem_PrintBattleMessage
 .public GetBattlerVar
-.public ov12_022506D4
+.public GetBattlerIdTarget
 .public ov12_02251D28
 .public ov12_02252054
 .public CheckAbilityActive
