@@ -36,7 +36,7 @@
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattlerIdOpponent
-.public ov12_0223B688
+.public BattleSystem_GetUnk23FC
 .public BattleSystem_GetSafariBallCount
 .public ov12_0223B854
 .public BattleSystem_GetBattleOutcomeFlags

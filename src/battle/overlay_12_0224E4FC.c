@@ -5625,7 +5625,7 @@ int CalcMoveDamage(BattleSystem *bsys, BattleContext *ctx, u32 moveNo, u32 sideC
         monAtk *= 2;
     }
 
-    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(bsys, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
+    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(BattleSystem_GetBattleContextData(bsys, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
         monAtk /= 2;
     }
 
@@ -6215,7 +6215,7 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *bsys, BattleContext *ct
     return FALSE;
 }
 
-int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId) {
+int BattleSystem_GetBattleContextData(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId) {
     switch (var) {
     case 0:
         return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(bsys, battlerId)];
@@ -6241,7 +6241,7 @@ int ov12_022581D4(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId
         return ctx->switchInFlag;
     case 11:
         return ctx->trainerAIData.unkA4[battlerId];
-    case BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE:
+    case 12:
         return ctx->playerActions[battlerId].unk8;
     case 13:
         return (int)ctx->command;

@@ -180,7 +180,7 @@
 .public BattleSystem_RecoverStatus
 .public BattleSystem_GetFrame
 .public BattleSystem_GetTextFrameDelay
-.public ov12_022581D4
+.public BattleSystem_GetBattleContextData
 .public BattleCursor_LoadResources
 .public BattleCursor_FreeResources
 .public BattleCursor_New

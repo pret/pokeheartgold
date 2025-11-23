@@ -14418,7 +14418,7 @@ ov08_02223374: ; 0x02223374
 	ldr r3, [r4, #0x10]
 	ldr r0, [r0]
 	mov r2, #2
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov08_02223374
 

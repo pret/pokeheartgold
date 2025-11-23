@@ -30,7 +30,7 @@ _022660F4:
 	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0xc]
-	bl ov12_0223AB54
+	bl BattleSystem_GetUnk2404
 	str r0, [sp, #0x14]
 	cmp r0, #0x17
 	blo _02266110

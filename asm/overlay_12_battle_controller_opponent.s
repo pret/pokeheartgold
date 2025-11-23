@@ -6451,7 +6451,7 @@ _0225B9C8:
 	tst r0, r1
 	bne _0225BA06
 	ldr r0, [r4]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #1
 	bne _0225B9F2
 	add r0, r4, #0
@@ -7038,7 +7038,7 @@ _0225BE9E:
 	tst r0, r1
 	bne _0225BEDC
 	ldr r0, [r4]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #1
 	bne _0225BEC8
 	add r0, r4, #0
@@ -11986,7 +11986,7 @@ ov12_0225E6FC: ; 0x0225E6FC
 	ldrb r3, [r5, #0xd]
 	ldr r0, [r5]
 	mov r2, #0xb
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	add r4, r0, #1
 	cmp r4, #5
 	blt _0225E71E
@@ -15918,7 +15918,7 @@ ov12_02260668: ; 0x02260668
 	bl BattleSystem_GetTerrainId
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223AB54
+	bl BattleSystem_GetUnk2404
 	lsl r1, r0, #2
 	ldr r0, _022609DC ; =ov12_0226D18C
 	ldr r0, [r0, r1]
@@ -17004,7 +17004,7 @@ _02260F2C:
 	tst r1, r3
 	beq _02260F88
 	add r0, r6, #0
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #0
 	beq _02260F68
 	ldr r0, _022611E8 ; =ov12_0225E104
@@ -18707,14 +18707,14 @@ _02261BCE:
 	mov r0, #7
 	str r0, [sp, #0x88]
 	ldr r0, [sp]
-	bl ov12_0223AB54
+	bl BattleSystem_GetUnk2404
 	add r0, r0, #3
 	str r0, [sp, #0x8c]
 	ldr r0, [sp]
 	bl ov12_0223B52C
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223AB54
+	bl BattleSystem_GetUnk2404
 	lsl r1, r0, #1
 	add r0, r0, r1
 	add r0, #0xb0
