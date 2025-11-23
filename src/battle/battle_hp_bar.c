@@ -22,7 +22,7 @@ typedef enum BattlerInfoBoxType {
 #ifdef FAST_HP_BARS
 #define USE_SUBPIXELS_TEST (TRUE)
 #else
-#define USE_SUBPIXELS_TEST (maxHp < pixelsWide)
+#define USE_SUBPIXELS_TEST (maxBarVal < pixelsWide)
 #endif // FAST_HP_BARS
 
 ALIGN(4)
@@ -258,7 +258,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D408[] = {
 static void ov12_02264824(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType);
 static void ov12_022648EC(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType);
 static ManagedSprite *ov12_02264968(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int barType);
-static void ov12_02264B28(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_FreeSysTaskAndBoxObject(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B4C(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B60(BattlerInfoBox *battlerInfoBox);
 static void ov12_02264B94(BattlerInfoBox *battlerInfoBox);
@@ -277,7 +277,7 @@ static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *ba
 static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp);
 static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp);
 static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange);
-static u8 BattlerInfoBox_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
+static u8 BattlerInfoBox_Util_MakeBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
 static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
 static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId);
 static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(u8 barType);
@@ -583,7 +583,7 @@ void ov12_0226498C(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
     }
 }
 
-static void ov12_02264B28(BattlerInfoBox *battlerInfoBox) {
+static void BattlerInfoBox_FreeSysTaskAndBoxObject(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->sysTask != NULL) {
         SysTask_Destroy(battlerInfoBox->sysTask);
         battlerInfoBox->sysTask = NULL;
@@ -721,7 +721,7 @@ _02264C5A:
 #endif // NONMATCHING
 
 void BattlerInfoBox_FreeResources(BattlerInfoBox *battlerInfoBox) {
-    ov12_02264B28(battlerInfoBox);
+    BattlerInfoBox_FreeSysTaskAndBoxObject(battlerInfoBox);
     ov12_02264B60(battlerInfoBox);
     ov12_02264B4C(battlerInfoBox);
     ov12_02264B94(battlerInfoBox);
@@ -1416,7 +1416,7 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
     switch (isExp) {
     case FALSE:
         // hp
-        switch (HpBar_GetColorIdx(BattlerInfoBox_Util_MakeHpBarPixelBuffer(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, pixelBuffer, 6), 0x30)) {
+        switch (HpBar_GetColorIdx(BattlerInfoBox_Util_MakeBarPixelBuffer(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, pixelBuffer, 6), 0x30)) {
         case 3: // Green
             tmp = 2;
             break;
@@ -1440,7 +1440,7 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
         break;
     case TRUE:
         // exp
-        BattlerInfoBox_Util_MakeHpBarPixelBuffer(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, pixelBuffer, 12);
+        BattlerInfoBox_Util_MakeBarPixelBuffer(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, pixelBuffer, 12);
         if (battlerInfoBox->level == 100) {
             // Don't fill an exp bar for a level 100 mon
             for (i = 0; i < 12; ++i) {
@@ -1459,99 +1459,99 @@ static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
     }
 }
 
-static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange) {
+static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxBarVal, s32 curBarVal, s32 gainedBarVal, s32 *barValCalc, u8 tilesWide, u16 hpChange) {
     s32 nowHp;
     s32 ret;
     u8 pixelsWide;
     s32 hpPerPixel;
 
     pixelsWide = tilesWide * 8;
-    if (*pHpCalc == 0x80000000) {
+    if (*barValCalc == 0x80000000) {
         // Initialize
         if (USE_SUBPIXELS_TEST) {
-            *pHpCalc = curHp << 8;
+            *barValCalc = curBarVal << 8;
         } else {
-            *pHpCalc = curHp;
+            *barValCalc = curBarVal;
         }
     }
-    nowHp = curHp - deltaHp;
+    nowHp = curBarVal - gainedBarVal;
     if (nowHp < 0) {
         nowHp = 0;
-    } else if (nowHp > maxHp) {
-        nowHp = maxHp;
+    } else if (nowHp > maxBarVal) {
+        nowHp = maxBarVal;
     }
     if (USE_SUBPIXELS_TEST) {
         // Use subpixel mode
-        if (nowHp == (*pHpCalc >> 8) && (*pHpCalc & 0xFF) == 0) {
+        if (nowHp == (*barValCalc >> 8) && (*barValCalc & 0xFF) == 0) {
             return -1;
         }
     } else {
         // Use integer pixel mode
-        if (nowHp == *pHpCalc) {
+        if (nowHp == *barValCalc) {
             return -1;
         }
     }
     if (USE_SUBPIXELS_TEST) {
-        hpPerPixel = (maxHp << 8) / pixelsWide;
-        if (deltaHp < 0) {
-            *pHpCalc += hpPerPixel;
-            ret = *pHpCalc >> 8;
+        hpPerPixel = (maxBarVal << 8) / pixelsWide;
+        if (gainedBarVal < 0) {
+            *barValCalc += hpPerPixel;
+            ret = *barValCalc >> 8;
             if (ret >= nowHp) {
-                *pHpCalc = nowHp << 8;
+                *barValCalc = nowHp << 8;
                 ret = nowHp;
             }
         } else {
-            *pHpCalc -= hpPerPixel;
-            ret = *pHpCalc >> 8;
-            if ((*pHpCalc & 0xFF) > 0) {
+            *barValCalc -= hpPerPixel;
+            ret = *barValCalc >> 8;
+            if ((*barValCalc & 0xFF) > 0) {
                 ++ret;
             }
             if (ret <= nowHp) {
-                *pHpCalc = nowHp << 8;
+                *barValCalc = nowHp << 8;
                 ret = nowHp;
             }
         }
     } else {
-        if (deltaHp < 0) {
-            *pHpCalc += hpChange;
-            if (*pHpCalc > nowHp) {
-                *pHpCalc = nowHp;
+        if (gainedBarVal < 0) {
+            *barValCalc += hpChange;
+            if (*barValCalc > nowHp) {
+                *barValCalc = nowHp;
             }
         } else {
-            *pHpCalc -= hpChange;
-            if (*pHpCalc < nowHp) {
-                *pHpCalc = nowHp;
+            *barValCalc -= hpChange;
+            if (*barValCalc < nowHp) {
+                *barValCalc = nowHp;
             }
         }
-        ret = *pHpCalc;
+        ret = *barValCalc;
     }
     return ret;
 }
 
-static u8 BattlerInfoBox_Util_MakeHpBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide) {
+static u8 BattlerInfoBox_Util_MakeBarPixelBuffer(s32 maxBarVal, s32 barVal, s32 gainedBarVal, s32 *barValCalc, u8 *pixelBuf, u8 tilesWide) {
     int i;
-    int targetHp;
+    int targetBarVal;
     u32 pixelsWide;
     u32 curPixels;
     u32 ret;
 
-    targetHp = hp - deltaHp;
-    if (targetHp < 0) {
-        targetHp = 0;
-    } else if (targetHp > maxHp) {
-        targetHp = maxHp;
+    targetBarVal = barVal - gainedBarVal;
+    if (targetBarVal < 0) {
+        targetBarVal = 0;
+    } else if (targetBarVal > maxBarVal) {
+        targetBarVal = maxBarVal;
     }
     pixelsWide = tilesWide * 8;
     for (i = 0; i < tilesWide; ++i) {
         pixelBuf[i] = 0;
     }
     if (USE_SUBPIXELS_TEST) {
-        curPixels = (*pHpCalc * pixelsWide / maxHp) >> 8;
+        curPixels = (*barValCalc * pixelsWide / maxBarVal) >> 8;
     } else {
-        curPixels = *pHpCalc * pixelsWide / maxHp;
+        curPixels = *barValCalc * pixelsWide / maxBarVal;
     }
     ret = curPixels;
-    if (curPixels == 0 && targetHp > 0) {
+    if (curPixels == 0 && targetBarVal > 0) {
         pixelBuf[0] = 1;
         ret = 1;
     } else {
