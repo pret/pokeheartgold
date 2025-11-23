@@ -269,7 +269,7 @@
 .public ov12_02264E34
 .public BattlerInfoBox_UpdateExpBar
 .public ov12_02264E84
-.public ov12_02264EB4
+.public BattlerInfoBox_ClearInfoBox
 .public BattlerInfoBox_SetBoxObjectEnabled
 .public BattlerInfoBox_SetBoxPosition
 .public BattlerInfoBox_Util_GetBarTypeFromBattlerSide

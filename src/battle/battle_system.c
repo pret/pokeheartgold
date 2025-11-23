@@ -1306,7 +1306,7 @@ void ov12_0223C224(BattleSystem *bsys, int a1) {
 
     for (i = 0; i < bsys->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
-        ov12_02264EE0(battlerInfoBox, a1);
+        BattlerInfoBox_SetBoxArrowObjPriorities(battlerInfoBox, a1);
     }
 }
 

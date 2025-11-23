@@ -1526,7 +1526,7 @@ ov12_02259328: ; 0x02259328
 	add r5, r0, #0
 	add r0, r4, #0
 	add r0, #0x28
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	add r0, r4, #0
 	bl ov12_02262014
 	mov r1, #0x65
@@ -1814,7 +1814,7 @@ ov12_02259514: ; 0x02259514
 _02259586:
 	add r0, r4, #0
 	add r0, #0x28
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	ldr r0, [sp, #8]
 	bl ov12_02266B34
 	add r0, r4, #0
@@ -11103,7 +11103,7 @@ _0225DF84:
 	ldr r0, [sp, #8]
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r5, #0
@@ -11133,7 +11133,7 @@ _0225DFD0:
 	ldr r0, [sp, #8]
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r5, #0
@@ -11204,7 +11204,7 @@ _0225E06E:
 	ldr r0, [sp, #8]
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r6, #0
@@ -11556,7 +11556,7 @@ _0225E376:
 	add r0, r5, #0
 	bl ov12_02265D74
 	ldr r0, [r4, #4]
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	ldr r0, [sp, #0x10]
 	bl ov12_02262014
 _0225E3A2:
@@ -11905,7 +11905,7 @@ _0225E662:
 	cmp r0, #0xff
 	beq _0225E68C
 	ldr r0, [r4, #4]
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	add r0, r7, #0
 	bl ov12_02262014
 	add r0, r6, #0
@@ -14585,7 +14585,7 @@ _0225FBE4:
 	bl NARC_New
 	add r6, r0, #0
 	ldr r0, [r4, #4]
-	bl ov12_02264EB4
+	bl BattlerInfoBox_ClearInfoBox
 	ldr r0, [sp, #0xc]
 	bl ov12_02262014
 	add r0, r7, #0

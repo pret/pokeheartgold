@@ -284,7 +284,7 @@ static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
 static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType);
 static void Task_ExpBarFullFlash(SysTask *task, void *data);
 static void ov12_02265D78(BattlerInfoBox *battlerInfoBox);
-static void ov12_02265DA0(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265DC4(SysTask *task, void *data);
 
 static const ManagedSpriteTemplate sSpriteTemplate_HpBarSinglePlayer = {
@@ -821,16 +821,16 @@ void ov12_02264E84(BattlerInfoBox *battlerInfoBox) {
     }
 }
 
-void ov12_02264EB4(BattlerInfoBox *battlerInfoBox) {
+void BattlerInfoBox_ClearInfoBox(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->arrowObj != NULL) {
         Sprite_SetAnimActiveFlag(battlerInfoBox->arrowObj->sprite, FALSE);
         Sprite_SetAnimationFrame(battlerInfoBox->arrowObj->sprite, 0);
         BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, 0);
     }
-    ov12_02265DA0(battlerInfoBox);
+    BattlerInfoBox_ClearMoreInfoBox(battlerInfoBox);
 }
 
-void ov12_02264EE0(BattlerInfoBox *battlerInfoBox, int prio) {
+void BattlerInfoBox_SetBoxArrowObjPriorities(BattlerInfoBox *battlerInfoBox, int prio) {
     if (battlerInfoBox->boxObj != NULL) {
         ManagedSprite_SetPriority(battlerInfoBox->boxObj, prio);
         if (battlerInfoBox->arrowObj != NULL) {
@@ -1735,7 +1735,7 @@ static void ov12_02265D78(BattlerInfoBox *battlerInfoBox) {
     }
 }
 
-static void ov12_02265DA0(BattlerInfoBox *battlerInfoBox) {
+static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->sysTask != NULL) {
         SysTask_Destroy(battlerInfoBox->sysTask);
         battlerInfoBox->sysTask = NULL;
