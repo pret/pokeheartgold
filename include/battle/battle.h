@@ -460,7 +460,7 @@ typedef struct BattlerInfoBox {
     s32 gainedExp;
     s32 expCalc;
     u8 level;
-    u8 unk49;
+    u8 gender;
     u8 unk_4A;
     u8 unk4B;
     u8 unk4C;

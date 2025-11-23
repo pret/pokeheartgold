@@ -196,7 +196,7 @@ static const BattlerInfoBox_ComponentCoordinates infoBox_CurrentHpBarComponentCo
      },
 };
 
-static const BattlerInfoBox_ComponentCoordinates ov12_0226D3C0[] = { // status or pokerus component coordinates?
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3C0[] = { // status or caught or pokerus component coordinates?
     { 0x460, 0x20 },
     { 0x420, 0x20 },
     { 0x440, 0x20 },
@@ -205,7 +205,7 @@ static const BattlerInfoBox_ComponentCoordinates ov12_0226D3C0[] = { // status o
     { 0x420, 0x20 },
 };
 
-static const BattlerInfoBox_ComponentCoordinates ov12_0226D390[] = { // status or pokerus component coordinates?
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D390[] = { // status or caught or pokerus component coordinates?
     { 0x480, 0x60 },
     { 0x440, 0x60 },
     { 0x460, 0x60 },
@@ -266,7 +266,7 @@ static void BattlerInfoBox_SetArrowObjectEnabled(BattlerInfoBox *battlerInfoBox,
 static void BattlerInfoBox_SetBoxSpritePosition(BattlerInfoBox *battlerInfoBox, int x, int y);
 static void BattlerInfoBox_ShiftXPosition(SysTask *task, void *data);
 static void ov12_0226516C(BattlerInfoBox *battlerInfoBox);
-static void ov12_022652D0(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_SetUpGenderLevelLabelComponent(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265354(BattlerInfoBox *battlerInfoBox);
 static void ov12_02265474(BattlerInfoBox *battlerInfoBox, u32 hp);
 static void ov12_02265500(BattlerInfoBox *battlerInfoBox);
@@ -283,9 +283,9 @@ static const u8 *BattlerInfoBox_Util_GetComponentRawGraphic(int componentId);
 static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(u8 barType);
 static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetArrowSpriteTemplate(u8 barType);
 static void Task_ExpBarFullFlash(SysTask *task, void *data);
-static void ov12_02265D78(BattlerInfoBox *battlerInfoBox);
+static void BattlerInfoBox_DoShakeAnimation(BattlerInfoBox *battlerInfoBox);
 static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox);
-static void ov12_02265DC4(SysTask *task, void *data);
+static void BattlerInfoBox_ShakeAnimation(SysTask *task, void *data);
 
 static const ManagedSpriteTemplate sSpriteTemplate_HpBarSinglePlayer = {
     .x = 0xC0,
@@ -530,7 +530,7 @@ void BattlerInfoBox_ConfigureInfoBoxComponents(BattlerInfoBox *battlerInfoBox, u
     }
 
     if (flag & 0x80 || flag & 0x40) {
-        ov12_022652D0(battlerInfoBox);
+        BattlerInfoBox_SetUpGenderLevelLabelComponent(battlerInfoBox);
     }
 
     if (flag & 8) {
@@ -811,13 +811,13 @@ int BattlerInfoBox_UpdateExpBar(BattlerInfoBox *battlerInfoBox) {
     return exp;
 }
 
-void ov12_02264E84(BattlerInfoBox *battlerInfoBox) {
+void BattlerInfoBox_DoAnimation(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->arrowObj != NULL) {
         Sprite_SetAnimActiveFlag(battlerInfoBox->arrowObj->sprite, TRUE);
         BattlerInfoBox_SetArrowObjectEnabled(battlerInfoBox, 1);
     }
     if (!(BattleSystem_GetBattleType(battlerInfoBox->battleSystem) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_SAFARI))) {
-        ov12_02265D78(battlerInfoBox);
+        BattlerInfoBox_DoShakeAnimation(battlerInfoBox);
     }
 }
 
@@ -1199,25 +1199,25 @@ static void ov12_0226516C(BattlerInfoBox *battlerInfoBox) {
     String_Delete(string2);
 }
 
-static void ov12_022652D0(BattlerInfoBox *battlerInfoBox) {
-    int r0, r4;
+static void BattlerInfoBox_SetUpGenderLevelLabelComponent(BattlerInfoBox *battlerInfoBox) {
+    int componentIdBot, componentIdTop;
 
-    if (battlerInfoBox->unk49 == 0) {
-        r0 = 74;
-        r4 = 62;
-    } else if (battlerInfoBox->unk49 == 1) {
-        r0 = 72;
-        r4 = 60;
-    } else {
-        r0 = 76;
-        r4 = 64;
+    if (battlerInfoBox->gender == 0) { // male
+        componentIdBot = 74;
+        componentIdTop = 62;
+    } else if (battlerInfoBox->gender == 1) { // female
+        componentIdBot = 72;
+        componentIdTop = 60;
+    } else { // ungendered
+        componentIdBot = 76;
+        componentIdTop = 64;
     }
-    const u8 *sp0 = BattlerInfoBox_Util_GetComponentRawGraphic(r0);
-    const u8 *r7 = BattlerInfoBox_Util_GetComponentRawGraphic(r4);
+    const u8 *graphicBot = BattlerInfoBox_Util_GetComponentRawGraphic(componentIdBot);
+    const u8 *graphicTop = BattlerInfoBox_Util_GetComponentRawGraphic(componentIdTop);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
-    MI_CpuCopy16(r7, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].size);
-    MI_CpuCopy16(sp0, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].size);
+    MI_CpuCopy16(graphicTop, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(graphicBot, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].size);
 }
 
 static void ov12_02265354(BattlerInfoBox *battlerInfoBox) {
@@ -1728,10 +1728,10 @@ void ov12_02265D70(BattlerInfoBox *battlerInfoBox) {
 void ov12_02265D74(BattlerInfoBox *battlerInfoBox) {
 }
 
-static void ov12_02265D78(BattlerInfoBox *battlerInfoBox) {
+static void BattlerInfoBox_DoShakeAnimation(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->sysTask == NULL) {
         battlerInfoBox->unk54 = 0;
-        battlerInfoBox->sysTask = SysTask_CreateOnMainQueue(ov12_02265DC4, battlerInfoBox, 1010);
+        battlerInfoBox->sysTask = SysTask_CreateOnMainQueue(BattlerInfoBox_ShakeAnimation, battlerInfoBox, 1010);
     }
 }
 
@@ -1744,7 +1744,7 @@ static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox) {
     BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, 0);
 }
 
-static void ov12_02265DC4(SysTask *task, void *data) {
+static void BattlerInfoBox_ShakeAnimation(SysTask *task, void *data) {
     BattlerInfoBox *battlerInfoBox = data;
     battlerInfoBox->unk54 += 20;
     if (battlerInfoBox->unk54 >= 360) {

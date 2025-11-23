@@ -11,7 +11,7 @@ void ov12_02264DCC(BattlerInfoBox *battlerInfoBox, int hp);
 void ov12_02264E34(BattlerInfoBox *battlerInfoBox, int a1);
 int BattlerInfoBox_UpdateHpBar(BattlerInfoBox *battlerInfoBox);
 int BattlerInfoBox_UpdateExpBar(BattlerInfoBox *battlerInfoBox);
-void ov12_02264E84(BattlerInfoBox *battlerInfoBox);
+void BattlerInfoBox_DoAnimation(BattlerInfoBox *battlerInfoBox);
 void BattlerInfoBox_ClearInfoBox(BattlerInfoBox *battlerInfoBox);
 void BattlerInfoBox_SetBoxArrowObjPriorities(BattlerInfoBox *battlerInfoBox, int prio);
 void BattlerInfoBox_SetBoxObjectEnabled(BattlerInfoBox *battlerInfoBox, BOOL enabled);
