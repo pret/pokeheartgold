@@ -10,7 +10,7 @@
 #include "battle/battle_02265E28.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
-#include "battle/battle_hp_bar.h"
+#include "battle/battler_info_box.h"
 #include "battle/battle_input.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"

@@ -632,7 +632,7 @@ Overlay OVY_12
     Object asm/overlay_12_battle_controller_opponent.o
     Object src/battle/battle_02261FD4.o
     Object asm/overlay_12_battle_controller.o
-    Object src/battle/battle_hp_bar.o
+    Object src/battle/battler_info_box.o
     Object asm/overlay_12_02265E28.o
     Object src/battle/battle_input.o
     Object asm/overlay_12_0226ADE0.o
@@ -1141,7 +1141,7 @@ Overlay pokegear_app
 {
     After pokegear
     Object src/application/pokegear/map/pokegear_map.o
-    Object src/application/pokegear/map/overlay_101_021F79B4.o
+    Object src/application/pokegear/map/fly_point_parameters.o
     Object src/application/pokegear/map/overlay_101_021E7FF4.o
     Object src/application/pokegear/map/overlay_101_021E9270.o
     Object src/application/pokegear/map/overlay_101_021EB568.o

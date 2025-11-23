@@ -1,4 +1,4 @@
-#include "battle/battle_hp_bar.h"
+#include "battle/battler_info_box.h"
 
 #include "global.h"
 
@@ -447,7 +447,7 @@ static const ManagedSpriteTemplate sSpriteTemplate_HpBarSafariOrPark = {
     .vramTransfer = 0
 };
 
-#include "battle/battle_hp_bar_data.h"
+#include "battle/battler_info_box_data.h"
 
 static void ov12_02264824(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, PaletteData *plttData, int barType) {
     const ManagedSpriteTemplate *pRes = BattlerInfoBox_Util_GetInfoBoxSpriteTemplate(barType);
