@@ -274,8 +274,8 @@ static void ov12_02265560(BattlerInfoBox *battlerInfoBox);
 static void ov12_022655B0(BattlerInfoBox *battlerInfoBox, int a1);
 static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerInfoBox, u32 flag);
 static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *battlerInfoBox, u32 flag);
-static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp);
-static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp);
+static int BattlerInfoBox_UpdateBar(BattlerInfoBox *battlerInfoBox, BOOL isExp);
+static void BattlerInfoBox_UpdateBarDisplay(BattlerInfoBox *battlerInfoBox, u8 isExp);
 static int BattlerInfoBox_CalculatePixelsChangeFrame(s32 maxHp, s32 curHp, s32 deltaHp, s32 *pHpCalc, u8 tilesWide, u16 hpChange);
 static u8 BattlerInfoBox_Util_MakeBarPixelBuffer(s32 maxHp, s32 hp, s32 deltaHp, s32 *pHpCalc, u8 *pixelBuf, u8 tilesWide);
 static u32 BattlerInfoBox_Util_GetPixelsToGain(s32 exp, s32 gainedExp, s32 maxExp, u8 tilesWide);
@@ -518,7 +518,7 @@ void ov12_0226498C(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
 
     if (flag & 1) {
         ov12_02264DCC(battlerInfoBox, 0);
-        ov12_022657E4(battlerInfoBox, FALSE);
+        BattlerInfoBox_UpdateBar(battlerInfoBox, FALSE);
     }
 
     if (flag & 2) {
@@ -543,7 +543,7 @@ void ov12_0226498C(BattlerInfoBox *battlerInfoBox, u32 hp, u32 flag) {
 
     if (flag & 0x20) {
         ov12_02264E34(battlerInfoBox, 0);
-        ov12_022657E4(battlerInfoBox, TRUE);
+        BattlerInfoBox_UpdateBar(battlerInfoBox, TRUE);
     }
 
     if (flag & 0x200) {
@@ -775,8 +775,8 @@ void ov12_02264DCC(BattlerInfoBox *battlerInfoBox, int hpChange) {
     }
 }
 
-int ov12_02264E00(BattlerInfoBox *battlerInfoBox) {
-    int hp = ov12_022657E4(battlerInfoBox, FALSE);
+int BattlerInfoBox_UpdateHpBar(BattlerInfoBox *battlerInfoBox) {
+    int hp = BattlerInfoBox_UpdateBar(battlerInfoBox, FALSE);
     if (hp == -1) {
         battlerInfoBox->hp -= battlerInfoBox->gainedHp;
         ov12_0226498C(battlerInfoBox, battlerInfoBox->hp, 2);
@@ -803,8 +803,8 @@ void ov12_02264E34(BattlerInfoBox *battlerInfoBox, int expChange) {
     }
 }
 
-int ov12_02264E68(BattlerInfoBox *battlerInfoBox) {
-    int exp = ov12_022657E4(battlerInfoBox, TRUE);
+int BattlerInfoBox_UpdateExpBar(BattlerInfoBox *battlerInfoBox) {
+    int exp = BattlerInfoBox_UpdateBar(battlerInfoBox, TRUE);
     if (exp == -1) {
         battlerInfoBox->exp -= battlerInfoBox->gainedExp;
     }
@@ -1376,7 +1376,7 @@ static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *ba
     String_Delete(string2);
 }
 
-static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp) {
+static int BattlerInfoBox_UpdateBar(BattlerInfoBox *battlerInfoBox, BOOL isExp) {
     int ret;
     if (isExp == FALSE) {
         ret = BattlerInfoBox_CalculatePixelsChangeFrame(battlerInfoBox->maxHp, battlerInfoBox->hp, battlerInfoBox->gainedHp, &battlerInfoBox->hpCalc, 6, 1);
@@ -1389,7 +1389,7 @@ static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp) {
         ret = BattlerInfoBox_CalculatePixelsChangeFrame(battlerInfoBox->maxExp, battlerInfoBox->exp, battlerInfoBox->gainedExp, &battlerInfoBox->expCalc, 12, abs(battlerInfoBox->gainedExp / denom));
     }
     if (isExp != FALSE || battlerInfoBox->unk_4F_3 != TRUE) {
-        UpdateHpExpBar(battlerInfoBox, isExp);
+        BattlerInfoBox_UpdateBarDisplay(battlerInfoBox, isExp);
     }
     if (ret == -1) {
         // we done
@@ -1402,7 +1402,7 @@ static int ov12_022657E4(BattlerInfoBox *battlerInfoBox, BOOL isExp) {
     return ret;
 }
 
-static void UpdateHpExpBar(BattlerInfoBox *battlerInfoBox, u8 isExp) {
+static void BattlerInfoBox_UpdateBarDisplay(BattlerInfoBox *battlerInfoBox, u8 isExp) {
     u8 i;
     u8 pixelBuffer[12];
     u8 tmp;
