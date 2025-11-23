@@ -187,39 +187,39 @@ static MapObjectManager *MapObjectManager_New(u32 objectCount) {
 }
 
 static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager, ObjectEvent *objectEvent, u32 mapNo) {
-    LocalMapObject *ret;
+    LocalMapObject *mapObject;
     ObjectEvent event = *objectEvent;
     ObjectEvent *eventPtr = &event;
 
     u32 objectId = ObjectEvent_GetID(eventPtr);
     if (!ObjectEvent_ScriptIDIsUnset(eventPtr)) {
-        ret = MapObject_FindLocalMapObject(manager, objectId, mapNo);
-        if (ret != NULL) {
-            sub_0205F014(ret, eventPtr, mapNo);
-            return ret;
+        mapObject = MapObject_FindLocalMapObject(manager, objectId, mapNo);
+        if (mapObject != NULL) {
+            sub_0205F014(mapObject, eventPtr, mapNo);
+            return mapObject;
         }
     } else {
-        ret = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(eventPtr));
-        if (ret != NULL) {
-            sub_0205F058(ret, mapNo, eventPtr);
-            return ret;
+        mapObject = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(eventPtr));
+        if (mapObject != NULL) {
+            sub_0205F058(mapObject, mapNo, eventPtr);
+            return mapObject;
         }
     }
 
-    ret = MapObjectManager_GetFirstInactiveObject(manager);
-    if (ret == NULL) {
-        return ret;
+    mapObject = MapObjectManager_GetFirstInactiveObject(manager);
+    if (mapObject == NULL) {
+        return mapObject;
     }
 
-    MapObject_InitFromObjectEvent(ret, eventPtr, MapObjectManager_GetFieldSystem(manager));
-    sub_0205EC90(ret, manager);
-    MapObject_SetMapID(ret, mapNo);
-    sub_0205EFA4(ret);
-    sub_0205EFB4(ret);
-    MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK2);
-    sub_0205EAF0(manager, ret);
+    MapObject_InitFromObjectEvent(mapObject, eventPtr, MapObjectManager_GetFieldSystem(manager));
+    sub_0205EC90(mapObject, manager);
+    MapObject_SetMapID(mapObject, mapNo);
+    sub_0205EFA4(mapObject);
+    sub_0205EFB4(mapObject);
+    MapObject_SetFlagsBits(mapObject, MAPOBJECTFLAG_UNK2);
+    sub_0205EAF0(manager, mapObject);
     sub_0205F16C(MapObjectManager_Get(manager));
-    return ret;
+    return mapObject;
 }
 
 LocalMapObject *MapObject_Create(MapObjectManager *manager, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo) {
