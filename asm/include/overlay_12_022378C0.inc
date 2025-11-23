@@ -230,7 +230,7 @@
 .public BattleContext_Main
 .public BattleContext_Delete
 .public ov12_02256F28
-.public ov12_022581D4
+.public BattleSystem_GetBattleContextData
 .public ov12_022582B8
 .public ov12_02258D74
 .public ov12_02258DB0

@@ -6451,7 +6451,7 @@ _0225B9C8:
 	tst r0, r1
 	bne _0225BA06
 	ldr r0, [r4]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #1
 	bne _0225B9F2
 	add r0, r4, #0
@@ -7038,7 +7038,7 @@ _0225BE9E:
 	tst r0, r1
 	bne _0225BEDC
 	ldr r0, [r4]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #1
 	bne _0225BEC8
 	add r0, r4, #0
@@ -11986,7 +11986,7 @@ ov12_0225E6FC: ; 0x0225E6FC
 	ldrb r3, [r5, #0xd]
 	ldr r0, [r5]
 	mov r2, #0xb
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	add r4, r0, #1
 	cmp r4, #5
 	blt _0225E71E
@@ -17004,7 +17004,7 @@ _02260F2C:
 	tst r1, r3
 	beq _02260F88
 	add r0, r6, #0
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #0
 	beq _02260F68
 	ldr r0, _022611E8 ; =ov12_0225E104

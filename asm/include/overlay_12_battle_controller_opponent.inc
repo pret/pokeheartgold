@@ -182,7 +182,7 @@
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223B52C
 .public ov12_0223B580
-.public ov12_0223B688
+.public BattleSystem_GetUnk23FC
 .public ov12_0223B694
 .public BattleSystem_AreBattleAnimationsOn
 .public BattleSystem_GetTextFrameDelay
@@ -236,7 +236,7 @@
 .public CalcMoveDamage
 .public GetItemVar
 .public BattleController_TryEmitExitRecording
-.public ov12_022581D4
+.public BattleSystem_GetBattleContextData
 .public ov12_022582B8
 .public ov12_02258800
 .public ov12_02258BB4

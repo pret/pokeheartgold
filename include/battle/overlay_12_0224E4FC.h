@@ -119,7 +119,7 @@ BOOL CheckStatusEffectsSubstitute(BattleContext *battleSystem, int battlerId, in
 BOOL CheckItemEffectOnUTurn(BattleSystem *battleSystem, BattleContext *ctx, int *script);
 void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget);
 BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleContext *ctx);
-int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId);
+int BattleSystem_GetBattleContextData(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId);
 void ov12_022582B8(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId, int data);
 
 // The following functions are static, but the rest of the file is still being worked on

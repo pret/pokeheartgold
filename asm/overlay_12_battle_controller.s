@@ -153,7 +153,7 @@ _022621A2:
 	bne _022621C0
 	ldrb r7, [r3, #4]
 	ldrb r6, [r3, #5]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #0
 	beq _022621BE
 	ldr r0, [r5, #0x30]
@@ -4642,7 +4642,7 @@ _022643A6:
 	bne _022643C2
 	ldrb r7, [r5, #4]
 	ldrb r5, [r5, #5]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #0
 	beq _022643C2
 	ldr r0, [r4, #0x30]

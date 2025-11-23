@@ -972,7 +972,7 @@ _022384D6:
 	ldr r1, [r4, #0x30]
 	add r0, r4, #0
 	mov r3, #0
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -980,7 +980,7 @@ _022384D6:
 	add r0, r4, #0
 	mov r2, #3
 	mov r3, #0
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	mov r1, #0x4e
 	lsl r1, r1, #2
 	ldr r2, [r7, r1]
@@ -990,13 +990,13 @@ _022384D6:
 	ldr r1, [r4, #0x30]
 	add r0, r4, #0
 	mov r2, #6
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	add r5, r0, #0
 	ldr r1, [r4, #0x30]
 	add r0, r4, #0
 	mov r2, #6
 	mov r3, #2
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	mov r1, #0x4f
 	lsl r1, r1, #2
 	ldr r2, [r7, r1]
@@ -1007,13 +1007,13 @@ _022384D6:
 	add r0, r4, #0
 	mov r2, #7
 	mov r3, #0
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	add r5, r0, #0
 	ldr r1, [r4, #0x30]
 	add r0, r4, #0
 	mov r2, #7
 	mov r3, #2
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	mov r1, #5
 	lsl r1, r1, #6
 	ldr r2, [r7, r1]
@@ -1024,7 +1024,7 @@ _022384D6:
 	add r0, r4, #0
 	mov r2, #3
 	mov r3, #0
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	mov r1, #0x6d
 	lsl r1, r1, #2
 	str r0, [r7, r1]
@@ -1457,7 +1457,7 @@ _022389F4:
 	add r0, r5, #0
 	mov r2, #2
 	add r3, r4, #0
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	add r7, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2154,7 +2154,7 @@ _02238F7C:
 	ldr r3, [sp, #0x30]
 	add r0, r4, #0
 	mov r2, #2
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	cmp r6, r0
 	beq _02238FF0
 	add r0, r5, #0
@@ -2609,7 +2609,7 @@ _0223932C:
 	ldr r3, [sp, #0x2c]
 	add r0, r4, #0
 	mov r2, #2
-	bl ov12_022581D4
+	bl BattleSystem_GetBattleContextData
 	cmp r6, r0
 	beq _022393A0
 	add r0, r5, #0

@@ -3558,15 +3558,9 @@ int Battler_GetRandomOpposingBattlerId(BattleSystem *battleSystem, BattleContext
     battleType = BattleSystem_GetBattleType(battleSystem);
 
     if (battleType & BATTLE_TYPE_DOUBLES) {
-<<<<<<< HEAD
-        battlerIdTargets[0] = ov12_0223ABB8(battleSystem, battlerId, 0);
-        battlerIdTargets[1] = ov12_0223ABB8(battleSystem, battlerId, 2);
+        battlerIdTargets[0] = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerId, 0);
+        battlerIdTargets[1] = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerId, 2);
         i = BattleSystem_Random(battleSystem) & 1;
-=======
-        battlerIdTargets[0] = BattleSystem_GetBattlerIdOpponent(bsys, battlerId, 0);
-        battlerIdTargets[1] = BattleSystem_GetBattlerIdOpponent(bsys, battlerId, 2);
-        i = BattleSystem_Random(bsys) & 1;
->>>>>>> 5bf5e15e1 (Battle02261FD4_ShakeAnimation, GetBattlerIdTarget, BattleSystem_GetBattlerIdOpponent renames)
         battlerIdTarget = battlerIdTargets[i];
         if (!ctx->battleMons[battlerIdTarget].hp) {
             battlerIdTarget = battlerIdTargets[i ^ 1];
@@ -5632,7 +5626,11 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         monAtk *= 2;
     }
 
+<<<<<<< HEAD
     if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(battleSystem, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
+=======
+    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(BattleSystem_GetBattleContextData(bsys, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
+>>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
         monAtk /= 2;
     }
 
@@ -6222,7 +6220,11 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleCon
     return FALSE;
 }
 
+<<<<<<< HEAD
 int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId) {
+=======
+int BattleSystem_GetBattleContextData(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId) {
+>>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
     switch (var) {
     case 0:
         return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerId)];
@@ -6248,7 +6250,7 @@ int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int b
         return ctx->switchInFlag;
     case 11:
         return ctx->trainerAIData.unkA4[battlerId];
-    case BATTLE_SUBSCRIPT_UPDATE_STAT_STAGE:
+    case 12:
         return ctx->playerActions[battlerId].unk8;
     case 13:
         return (int)ctx->command;
