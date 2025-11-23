@@ -261,9 +261,9 @@
 .public ov12_02263A00
 .public ov12_0226430C
 .public ov12_022643C8
-.public ov12_0226498C
+.public BattlerInfoBox_ConfigureInfoBoxComponents
 .public BattlerInfoBox_FreeResources
-.public ov12_02264C84
+.public BattlerInfoBox_ConfigureInfoBoxForDoubles
 .public ov12_02264DCC
 .public BattlerInfoBox_UpdateHpBar
 .public ov12_02264E34
