@@ -35,12 +35,12 @@ static const s8 sHpBarArrowXOffsets[] = {
     0,
 };
 
-typedef struct UnkStruct_ov12_0226D408 {
+typedef struct BattlerInfoBox_ComponentCoordinates {
     u16 offset;
     u16 size;
-} UnkStruct_ov12_0226D408;
+} BattlerInfoBox_ComponentCoordinates;
 
-static const UnkStruct_ov12_0226D408 infoBox_ComponentCoordinates[][4] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_NameComponentCoordinates[][4] = {
     {
      { 0x260, 0xA0 },
      { 0x360, 0xA0 },
@@ -79,7 +79,7 @@ static const UnkStruct_ov12_0226D408 infoBox_ComponentCoordinates[][4] = {
      },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D4B0[][2] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_LevelLabelComponentCoordinates[][2] = {
     {
      { 0xA60, 0x40 },
      { 0xB60, 0x40 },
@@ -106,7 +106,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D4B0[][2] = {
      },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D420[][2] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_LevelValueComponentCoordinates[][2] = {
     {
      { 0xAA0, 0x60 },
      { 0xBA0, 0x60 },
@@ -133,7 +133,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D420[][2] = {
      },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D450[][2] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_CurrentHpComponentCoordinates[][2] = {
     {
      { 0, 0 },
      { 0xD00, 0x60 },
@@ -160,7 +160,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D450[][2] = {
      },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D3F0[] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_MaxHpComponentCoordinates[] = {
     { 0xD80, 0x60 },
     { 0x6A0, 0x60 },
     { 0xC80, 0x60 },
@@ -169,7 +169,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D3F0[] = {
     { 0x6A0, 0x60 },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D480[][2] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_CurrentHpBarComponentCoordinates[][2] = {
     {
      { 0x4E0, 0 },
      { 0xC20, 0xC0 },
@@ -196,7 +196,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D480[][2] = {
      },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D3C0[] = {
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3C0[] = { // status or pokerus component coordinates?
     { 0x460, 0x20 },
     { 0x420, 0x20 },
     { 0x440, 0x20 },
@@ -205,7 +205,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D3C0[] = {
     { 0x420, 0x20 },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D390[] = {
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D390[] = { // status or pokerus component coordinates?
     { 0x480, 0x60 },
     { 0x440, 0x60 },
     { 0x460, 0x60 },
@@ -214,21 +214,21 @@ static const UnkStruct_ov12_0226D408 ov12_0226D390[] = {
     { 0x440, 0x60 },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D370[] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_BallStringComponentCoordinates[] = {
     { 0x240, 0xC0 },
     { 0x340, 0xC0 },
     { 0xA00, 0xE0 },
     { 0xB00, 0xE0 },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D380[] = {
+static const BattlerInfoBox_ComponentCoordinates infoBox_BallNumComponentCoordinates[] = {
     { 0x440, 0xC0 },
     { 0x540, 0xC0 },
     { 0xC00, 0xE0 },
     { 0xD00, 0xE0 },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D3A8[] = {
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3A8[] = {
     { 0,     0    },
     { 0,     0    },
     { 0x4C0, 0x40 },
@@ -237,7 +237,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D3A8[] = {
     { 0,     0    },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D3D8[] = {
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D3D8[] = {
     { 0,     0    },
     { 0,     0    },
     { 0xCC0, 0x20 },
@@ -246,7 +246,7 @@ static const UnkStruct_ov12_0226D408 ov12_0226D3D8[] = {
     { 0,     0    },
 };
 
-static const UnkStruct_ov12_0226D408 ov12_0226D408[] = {
+static const BattlerInfoBox_ComponentCoordinates ov12_0226D408[] = {
     { 0,     0    },
     { 0,     0    },
     { 0xC60, 0x20 },
@@ -1189,10 +1189,10 @@ static void ov12_0226516C(BattlerInfoBox *battlerInfoBox) {
         pixelBuffer = srcBuf;
         pixelBuffer2 = srcBuf + 0x100;
 
-        MI_CpuCopy16(pixelBuffer, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][0].size);
-        MI_CpuCopy16(pixelBuffer2, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][1].size);
-        MI_CpuCopy16(pixelBuffer + infoBox_ComponentCoordinates[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][2].size);
-        MI_CpuCopy16(pixelBuffer2 + infoBox_ComponentCoordinates[battlerInfoBox->type][1].size, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][3].size);
+        MI_CpuCopy16(pixelBuffer, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][0].size);
+        MI_CpuCopy16(pixelBuffer2, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][1].size);
+        MI_CpuCopy16(pixelBuffer + infoBox_NameComponentCoordinates[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][2].size);
+        MI_CpuCopy16(pixelBuffer2 + infoBox_NameComponentCoordinates[battlerInfoBox->type][1].size, (void *)((u32)vramAddr + infoBox_NameComponentCoordinates[battlerInfoBox->type][3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_NameComponentCoordinates[battlerInfoBox->type][3].size);
     }
     RemoveWindow(&window);
     String_Delete(string);
@@ -1216,8 +1216,8 @@ static void ov12_022652D0(BattlerInfoBox *battlerInfoBox) {
     const u8 *r7 = BattlerInfoBox_Util_GetComponentRawGraphic(r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
-    MI_CpuCopy16(r7, (void *)((u32)vramAddr + ov12_0226D4B0[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[battlerInfoBox->type][0].size);
-    MI_CpuCopy16(sp0, (void *)((u32)vramAddr + ov12_0226D4B0[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D4B0[battlerInfoBox->type][1].size);
+    MI_CpuCopy16(r7, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(sp0, (void *)((u32)vramAddr + infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelLabelComponentCoordinates[battlerInfoBox->type][1].size);
 }
 
 static void ov12_02265354(BattlerInfoBox *battlerInfoBox) {
@@ -1228,8 +1228,8 @@ static void ov12_02265354(BattlerInfoBox *battlerInfoBox) {
     sub_0200CEB0(BattleSystem_GetLevelNumPrinter(battlerInfoBox->battleSystem), battlerInfoBox->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
-    MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, ov12_0226D420[battlerInfoBox->type][0].size);
-    MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7 + 0x60, ov12_0226D420[battlerInfoBox->type][1].size);
+    MI_CpuCopy16((void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16((void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7 + 0x60, infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].size);
     k = 0;
     for (i = 0; i < 0x60; i += 0x20) {
         for (j = 0; j < 0x10; ++j) {
@@ -1241,8 +1241,8 @@ static void ov12_02265354(BattlerInfoBox *battlerInfoBox) {
     }
     u8 *buf1 = r7;
     u8 *buf2 = r7 + 0x60;
-    MI_CpuCopy16(buf1, (void *)((u32)vramAddr + ov12_0226D420[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D420[battlerInfoBox->type][0].size);
-    MI_CpuCopy16(buf2, (void *)((u32)vramAddr + ov12_0226D420[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D420[battlerInfoBox->type][1].size);
+    MI_CpuCopy16(buf1, (void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(buf2, (void *)((u32)vramAddr + infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_LevelValueComponentCoordinates[battlerInfoBox->type][1].size);
     Heap_Free(r4);
     Heap_Free(r7);
 }
@@ -1254,8 +1254,8 @@ static void ov12_02265474(BattlerInfoBox *battlerInfoBox, u32 hp) {
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
-    MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D450[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D450[battlerInfoBox->type][0].size);
-    MI_CpuCopy16(r4 + ov12_0226D450[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + ov12_0226D450[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D450[battlerInfoBox->type][1].size);
+    MI_CpuCopy16(r4, (void *)((u32)vramAddr + infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][0].size);
+    MI_CpuCopy16(r4 + infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_CurrentHpComponentCoordinates[battlerInfoBox->type][1].size);
     Heap_Free(r4);
 }
 
@@ -1266,7 +1266,7 @@ static void ov12_02265500(BattlerInfoBox *battlerInfoBox) {
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
-    MI_CpuCopy16(r4, (void *)((u32)vramAddr + ov12_0226D3F0[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D3F0[battlerInfoBox->type].size);
+    MI_CpuCopy16(r4, (void *)((u32)vramAddr + infoBox_MaxHpComponentCoordinates[battlerInfoBox->type].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_MaxHpComponentCoordinates[battlerInfoBox->type].size);
     Heap_Free(r4);
 }
 
@@ -1320,10 +1320,10 @@ static void BattlerInfoBox_PrintSafariOrParkBallsString(BattlerInfoBox *battlerI
         imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
         ptr1 = windowBuf;
         ptr2 = windowBuf + 0x1A0;
-        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D370[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[0].size);
-        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + ov12_0226D370[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[1].size);
-        MI_CpuCopy16(ptr1 + ov12_0226D370[0].size, (void *)((u32)vramAddr + ov12_0226D370[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[2].size);
-        MI_CpuCopy16(ptr2 + ov12_0226D370[1].size, (void *)((u32)vramAddr + ov12_0226D370[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D370[3].size);
+        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[0].size);
+        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[1].size);
+        MI_CpuCopy16(ptr1 + infoBox_BallStringComponentCoordinates[0].size, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[2].size);
+        MI_CpuCopy16(ptr2 + infoBox_BallStringComponentCoordinates[1].size, (void *)((u32)vramAddr + infoBox_BallStringComponentCoordinates[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallStringComponentCoordinates[3].size);
     }
 
     RemoveWindow(&window);
@@ -1365,10 +1365,10 @@ static void BattlerInfoBox_PrintNumRemainingSafariOrParkBalls(BattlerInfoBox *ba
         imgProxy = Sprite_GetImageProxy(battlerInfoBox->boxObj->sprite);
         ptr1 = windowBuf;
         ptr2 = windowBuf + 0x1A0;
-        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + ov12_0226D380[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[0].size);
-        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + ov12_0226D380[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[1].size);
-        MI_CpuCopy16(ptr1 + ov12_0226D380[0].size, (void *)((u32)vramAddr + ov12_0226D380[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[2].size);
-        MI_CpuCopy16(ptr2 + ov12_0226D380[1].size, (void *)((u32)vramAddr + ov12_0226D380[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D380[3].size);
+        MI_CpuCopy16(ptr1, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[0].size);
+        MI_CpuCopy16(ptr2, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[1].size);
+        MI_CpuCopy16(ptr1 + infoBox_BallNumComponentCoordinates[0].size, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[2].size);
+        MI_CpuCopy16(ptr2 + infoBox_BallNumComponentCoordinates[1].size, (void *)((u32)vramAddr + infoBox_BallNumComponentCoordinates[3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_BallNumComponentCoordinates[3].size);
     }
 
     RemoveWindow(&window);
@@ -1429,12 +1429,12 @@ static void BattlerInfoBox_UpdateBarDisplay(BattlerInfoBox *battlerInfoBox, u8 i
             break;
         }
         src = BattlerInfoBox_Util_GetComponentRawGraphic(tmp);
-        sizeTop = ov12_0226D480[battlerInfoBox->type][0].size / 32;
+        sizeTop = infoBox_CurrentHpBarComponentCoordinates[battlerInfoBox->type][0].size / 32;
         for (i = 0; i < 6; ++i) {
             if (i < sizeTop) {
-                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[battlerInfoBox->type][0].offset + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + infoBox_CurrentHpBarComponentCoordinates[battlerInfoBox->type][0].offset + i * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             } else {
-                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + ov12_0226D480[battlerInfoBox->type][1].offset + (i - sizeTop) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
+                MI_CpuCopy16(src + pixelBuffer[i] * 32, (void *)((u32)vramAddr + infoBox_CurrentHpBarComponentCoordinates[battlerInfoBox->type][1].offset + (i - sizeTop) * 32 + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), 0x20);
             }
         }
         break;
