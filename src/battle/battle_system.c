@@ -289,13 +289,8 @@ Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem) {
     return battleSystem->terrain;
 }
 
-<<<<<<< HEAD
 int BattleSystem_GetBackgroundId(BattleSystem *battleSystem) {
     return battleSystem->backgroundId;
-=======
-int BattleSystem_GetUnk2404(BattleSystem *bsys) {
-    return bsys->unk2404;
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
 }
 
 int BattleSystem_GetLocation(BattleSystem *battleSystem) {
@@ -343,21 +338,12 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     Pokemon *mon;
     BOOL ret = FALSE;
     int data;
-<<<<<<< HEAD
-    int index1 = ov12_022581D4(battleSystem, ctx, 2, battlerId);
+    int index1 = BattleSystem_GetBattleContextData(battleSystem, ctx, 2, battlerId);
     int index2;
     int friendship;
 
     if (BattleSystem_GetBattleType(battleSystem) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(battleSystem, battlerId) & 1))) {
-        index2 = ov12_022581D4(battleSystem, ctx, 2, BattleSystem_GetBattlerIdPartner(battleSystem, battlerId));
-=======
-    int index1 = BattleSystem_GetBattleContextData(bsys, ctx, 2, battlerId);
-    int index2;
-    int friendship;
-
-    if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
-        index2 = BattleSystem_GetBattleContextData(bsys, ctx, 2, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+        index2 = BattleSystem_GetBattleContextData(battleSystem, ctx, 2, BattleSystem_GetBattlerIdPartner(battleSystem, battlerId));
         if (index2 == selectedMonIndex) {
             battlerId = BattleSystem_GetBattlerIdPartner(battleSystem, battlerId);
         }
@@ -463,15 +449,9 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_GUARD_SPEC, HEAP_ID_BATTLE)) {
-<<<<<<< HEAD
-        data = ov12_022581D4(battleSystem, ctx, 1, battlerId);
+        data = BattleSystem_GetBattleContextData(battleSystem, ctx, 1, battlerId);
         if (!data) {
-            data = ov12_022581D4(battleSystem, ctx, 0, battlerId);
-=======
-        data = BattleSystem_GetBattleContextData(bsys, ctx, 1, battlerId);
-        if (!data) {
-            data = BattleSystem_GetBattleContextData(bsys, ctx, 0, battlerId);
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+            data = BattleSystem_GetBattleContextData(battleSystem, ctx, 0, battlerId);
             data |= SIDE_CONDITION_MIST;
             ov12_022582B8(battleSystem, ctx, 0, battlerId, data);
             ov12_022582B8(battleSystem, ctx, 1, battlerId, 5);
@@ -707,13 +687,8 @@ u8 ov12_0223B580(BattleSystem *battleSystem, int battlerId, u8 a2) {
                 return 1;
             }
         } else {
-<<<<<<< HEAD
-            item = ov12_022581D4(battleSystem, battleSystem->ctx, 12, 0);
-            if ((ov12_022581D4(battleSystem, battleSystem->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
-=======
-            item = BattleSystem_GetBattleContextData(bsys, bsys->ctx, 12, 0);
-            if ((BattleSystem_GetBattleContextData(bsys, bsys->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+            item = BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 12, 0);
+            if ((BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
                 return 0;
             } else {
                 return 1;
@@ -749,23 +724,13 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
     return species;
 }
 
-<<<<<<< HEAD
-u8 ov12_0223B688(BattleSystem *battleSystem) {
+u8 BattleSystem_GetUnk23FC(BattleSystem *battleSystem) {
     return battleSystem->unk23FC;
 }
 
-u8 ov12_0223B694(BattleSystem *battleSystem) {
+u8 BattleSystem_GetSafariRunAttempts(BattleSystem *battleSystem) {
     GF_ASSERT(battleSystem->ctx != NULL);
     return ov12_022581D4(battleSystem, battleSystem->ctx, 5, 0);
-=======
-u8 BattleSystem_GetUnk23FC(BattleSystem *bsys) {
-    return bsys->unk23FC;
-}
-
-u8 ov12_0223B694(BattleSystem *bsys) {
-    GF_ASSERT(bsys->ctx != NULL);
-    return BattleSystem_GetBattleContextData(bsys, bsys->ctx, 5, 0);
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
 }
 
 int BattleSystem_GetSafariBallCount(BattleSystem *battleSystem) {
@@ -802,7 +767,7 @@ u32 BattleSystem_GetBattleStyle(BattleSystem *battleSystem) {
     return Options_GetBattleStyle(battleSystem->options);
 }
 
-void *ov12_0223B750(BattleSystem *battleSystem) {
+void *BattleSystem_GetUnk1C8(BattleSystem *battleSystem) {
     return battleSystem->unk1C8;
 }
 
@@ -956,19 +921,19 @@ void BattleSystem_SetBackground(BattleSystem *battleSystem) {
     ov12_02266008(&battleSystem->unk17C[1]);
 }
 
-u8 *ov12_0223BAD0(BattleSystem *battleSystem) {
+u8 *BattleSystem_GetUnk220(BattleSystem *battleSystem) {
     return battleSystem->unk220;
 }
 
-u16 *ov12_0223BAD8(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetUnk224(BattleSystem *battleSystem) {
     return battleSystem->unk224;
 }
 
-u16 *ov12_0223BAE0(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetUnk2228(BattleSystem *battleSystem) {
     return &battleSystem->unk2228[0];
 }
 
-u16 *ov12_0223BAEC(BattleSystem *battleSystem) {
+u16 *BattleSystem_GetUnk2308(BattleSystem *battleSystem) {
     return &battleSystem->unk2308[0];
 }
 
@@ -976,15 +941,15 @@ int BattleSystem_GetWeather(BattleSystem *battleSystem) {
     return battleSystem->weather;
 }
 
-u8 ov12_0223BB04(BattleSystem *battleSystem) {
+u8 BattleSystem_GetUnk2421(BattleSystem *battleSystem) {
     return battleSystem->unk2421;
 }
 
-void ov12_0223BB10(BattleSystem *battleSystem, u8 a1) {
+void BattleSystem_SetUnk2421(BattleSystem *battleSystem, u8 a1) {
     battleSystem->unk2421 = a1;
 }
 
-int ov12_0223BB1C(BattleSystem *battleSystem) {
+int BattleSystem_GetUnk2430(BattleSystem *battleSystem) {
     return battleSystem->unk2430;
 }
 
@@ -1243,13 +1208,8 @@ BOOL BattleSystem_IsRecordingPaused(BattleSystem *battleSystem) {
     return battleSystem->isRecordingPaused;
 }
 
-<<<<<<< HEAD
 void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
-    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || ov12_022581D4(battleSystem, battleSystem->ctx, 13, 0) == 44 || ov12_022581D4(battleSystem, battleSystem->ctx, 14, 0) == 44) {
-=======
-void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->isRecordingPaused || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 13, 0) == 44 || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 14, 0) == 44) {
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 13, 0) == 44 || BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 14, 0) == 44) {
         return;
     }
 
@@ -1260,13 +1220,8 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
     battleSystem->isRecordingPaused = TRUE;
 }
 
-<<<<<<< HEAD
 BOOL ov12_0223C080(BattleSystem *battleSystem) {
-    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || ov12_022581D4(battleSystem, battleSystem->ctx, 13, 0) == 44 || ov12_022581D4(battleSystem, battleSystem->ctx, 14, 0) == 44) {
-=======
-BOOL ov12_0223C080(BattleSystem *bsys) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->isRecordingPaused || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 13, 0) == 44 || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 14, 0) == 44) {
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 13, 0) == 44 || BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 14, 0) == 44) {
         return FALSE;
     }
     return TRUE;
@@ -1373,15 +1328,9 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
     return loss;
 }
 
-<<<<<<< HEAD
 void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
     u32 flag = ov12_02261258(battleSystem->opponentData[battlerId]);
-    Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, ov12_022581D4(battleSystem, battleSystem->ctx, 2, battlerId));
-=======
-void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
-    u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
-    Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, BattleSystem_GetBattleContextData(bsys, bsys->ctx, 2, battlerId));
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+    Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 2, battlerId));
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
         if ((flag & 1) || battleSystem->battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI) || battleSystem->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) {
@@ -1396,17 +1345,10 @@ void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
 void BattleSystem_SetPokedexCaught(BattleSystem *battleSystem, int battlerId) {
     u32 flag = ov12_02261258(battleSystem->opponentData[battlerId]);
 
-<<<<<<< HEAD
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
-        int selectedMonIndex = ov12_022581D4(battleSystem, battleSystem->ctx, 2, battlerId);
+        int selectedMonIndex = BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 2, battlerId);
         Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, selectedMonIndex);
         Pokedex_SetMonCaughtFlag(battleSystem->pokedex, mon);
-=======
-    if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
-        int selectedMonIndex = BattleSystem_GetBattleContextData(bsys, bsys->ctx, 2, battlerId);
-        Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
-        Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
     }
 }
 
