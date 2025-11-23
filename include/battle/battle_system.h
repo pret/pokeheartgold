@@ -138,7 +138,7 @@ u8 ov12_0223C140(BattleSystem *battleSystem, u32 battlerId);
 void ov12_0223C1A0(BattleSystem *battleSystem, u8 *buffer);
 void ov12_0223C1C4(BattleSystem *battleSystem, u8 *buffer);
 void ov12_0223C1F4(BattleSystem *battleSystem, void **a1);
-void ov12_0223C224(BattleSystem *battleSystem, int a1);
+void BattleSystem_SetOpponentInfoBoxPriorties(BattleSystem *battleSystem, int priority);
 u32 CalcMoneyLoss(Party *party, PlayerProfile *profile);
 void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId);
 void BattleSystem_SetPokedexCaught(BattleSystem *battleSystem, int battlerId);

@@ -40,7 +40,7 @@ typedef struct UnkStruct_ov12_0226D408 {
     u16 size;
 } UnkStruct_ov12_0226D408;
 
-static const UnkStruct_ov12_0226D408 ov12_0226D680[][4] = {
+static const UnkStruct_ov12_0226D408 infoBox_ComponentCoordinates[][4] = {
     {
      { 0x260, 0xA0 },
      { 0x360, 0xA0 },
@@ -1189,10 +1189,10 @@ static void ov12_0226516C(BattlerInfoBox *battlerInfoBox) {
         pixelBuffer = srcBuf;
         pixelBuffer2 = srcBuf + 0x100;
 
-        MI_CpuCopy16(pixelBuffer, (void *)((u32)vramAddr + ov12_0226D680[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D680[battlerInfoBox->type][0].size);
-        MI_CpuCopy16(pixelBuffer2, (void *)((u32)vramAddr + ov12_0226D680[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D680[battlerInfoBox->type][1].size);
-        MI_CpuCopy16(pixelBuffer + ov12_0226D680[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + ov12_0226D680[battlerInfoBox->type][2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D680[battlerInfoBox->type][2].size);
-        MI_CpuCopy16(pixelBuffer2 + ov12_0226D680[battlerInfoBox->type][1].size, (void *)((u32)vramAddr + ov12_0226D680[battlerInfoBox->type][3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D680[battlerInfoBox->type][3].size);
+        MI_CpuCopy16(pixelBuffer, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][0].size);
+        MI_CpuCopy16(pixelBuffer2, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][1].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][1].size);
+        MI_CpuCopy16(pixelBuffer + infoBox_ComponentCoordinates[battlerInfoBox->type][0].size, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][2].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][2].size);
+        MI_CpuCopy16(pixelBuffer2 + infoBox_ComponentCoordinates[battlerInfoBox->type][1].size, (void *)((u32)vramAddr + infoBox_ComponentCoordinates[battlerInfoBox->type][3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), infoBox_ComponentCoordinates[battlerInfoBox->type][3].size);
     }
     RemoveWindow(&window);
     String_Delete(string);
