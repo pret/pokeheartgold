@@ -13246,7 +13246,7 @@ _0225F10A:
 	lsl r1, r1, #1
 	bl BattleSystem_GetBattlerInfoBox
 	add r5, r0, #0
-	bl ov12_02264E00
+	bl BattlerInfoBox_UpdateHpBar
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -15081,7 +15081,7 @@ _0225FFEE:
 	strb r0, [r4]
 _0225FFFC:
 	add r0, r4, #0
-	bl ov12_02264E00
+	bl BattlerInfoBox_UpdateHpBar
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -15148,7 +15148,7 @@ _02260062:
 	strb r1, [r0]
 _0226007A:
 	add r0, r4, #0
-	bl ov12_02264E68
+	bl BattlerInfoBox_UpdateExpBar
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
