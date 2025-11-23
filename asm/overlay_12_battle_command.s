@@ -762,7 +762,7 @@ _022469E6:
 	mov r0, #0xb
 	str r0, [r4, #0x28]
 	ldr r0, [r4]
-	bl ov12_0223BB44
+	bl BattleSystem_GameStatAddScoreSpeciesCaught
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02246A18:
@@ -1223,7 +1223,7 @@ _02246E18:
 	bl ov12_02237B6C
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223BBF0
+	bl BattleSystem_SetUnk23FD
 	add sp, #0x158
 	pop {r3, r4, r5, r6, r7, pc}
 _02246E2A:
@@ -1255,7 +1255,7 @@ _02246E5C:
 	bl OverlayManager_Delete
 	ldr r0, [r4]
 	mov r1, #2
-	bl ov12_0223BBF0
+	bl BattleSystem_SetUnk23FD
 	mov r0, #0x18
 	add sp, #0x158
 	str r0, [r4, #0x28]
