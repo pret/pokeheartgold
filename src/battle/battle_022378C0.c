@@ -173,7 +173,7 @@ void ov12_02237B0C(BattleSystem *bsys) {
     ov12_022660A8(bsys->bgConfig);
     bsys->unk240E_F = 1;
     FontID_Release(4);
-    ov12_0223BBF0(bsys, 3);
+    BattleSystem_SetUnk23FD(bsys, 3);
 
     if (bsys->unk2445 == 0) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
@@ -204,7 +204,7 @@ void ov12_02237BB8(BattleSystem *bsys) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), OVY_LOAD_ASYNC);
     }
 
-    ov12_0223BBF0(bsys, 0);
+    BattleSystem_SetUnk23FD(bsys, 0);
 
     int size = sub_02026E9C();
     void *data = GetSubBgPlttAddr();

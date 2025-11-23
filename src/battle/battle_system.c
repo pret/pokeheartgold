@@ -960,74 +960,74 @@ void BattleSystem_GameStatIncrement(BattleSystem *bsys, int id) {
     GameStats_Inc(bsys->gameStats, id);
 }
 
-void ov12_0223BB44(BattleSystem *bsys) {
+void BattleSystem_GameStatAddScoreSpeciesCaught(BattleSystem *bsys) {
     if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) {
         return;
     }
     GameStats_AddScore(bsys->gameStats, SCORE_EVENT_REGISTER_SPECIES_CAUGHT);
 }
 
-void ov12_0223BB64(BattleSystem *bsys, int a1) {
+void BattleSystem_SetUnk2440(BattleSystem *bsys, int a1) {
     bsys->unk2440 = a1;
 }
 
-void ov12_0223BB6C(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk2442(BattleSystem *bsys, u8 a1) {
     bsys->unk2442 = a1;
 }
 
-void *ov12_0223BB78(BattleSystem *bsys) {
+void *BattleSystem_GetUnk1BC(BattleSystem *bsys) {
     return bsys->unk1BC;
 }
 
-void ov12_0223BB80(BattleSystem *bsys, void *a1) {
+void BattleSystem_SetUnk1BC(BattleSystem *bsys, void *a1) {
     bsys->unk1BC = a1;
 }
 
-UnkBattleSystemSub1D0 *ov12_0223BB88(BattleSystem *bsys, int index) {
+UnkBattleSystemSub1D0 *BattleSystem_GetUnk1D0Index(BattleSystem *bsys, int index) {
     return &bsys->unk1D0[index];
 }
 
-u8 *ov12_0223BB94(UnkBattleSystemSub1D0 *ptr, int index) {
+u8 *BattleSystem_GetUnk0(UnkBattleSystemSub1D0 *ptr, int index) {
     GF_ASSERT(index < 4);
     return ptr[index].unk0;
 }
 
-void ov12_0223BBA8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnk4(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
     GF_ASSERT(index < 4);
     ptr[index].unk4 = a2;
 }
 
-void ov12_0223BBC0(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnk8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
     GF_ASSERT(index < 4);
     ptr[index].unk8 = a2;
 }
 
-void ov12_0223BBD8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnkC(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
     GF_ASSERT(index < 4);
     ptr[index].unkC = a2;
 }
 
-void ov12_0223BBF0(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23FD(BattleSystem *bsys, u8 a1) {
     bsys->unk23FD = a1;
 }
 
-void ov12_0223BBFC(BattleSystem *bsys, u8 *a1) {
+void BattleSystem_SetUnk23F4(BattleSystem *bsys, u8 *a1) {
     bsys->unk23F4 = a1;
 }
 
-void ov12_0223BC08(BattleSystem *bsys, u8 *a1) {
+void BattleSystem_SetUnk23F8(BattleSystem *bsys, u8 *a1) {
     bsys->unk23F8 = a1;
 }
 
-void ov12_0223BC14(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23F4_2(BattleSystem *bsys, u8 a1) {
     *bsys->unk23F4 = a1;
 }
 
-void ov12_0223BC20(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23F8_2(BattleSystem *bsys, u8 a1) {
     *bsys->unk23F8 = a1;
 }
 
-void ov12_0223BC2C(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23FE(BattleSystem *bsys, u8 a1) {
     bsys->unk23FE = a1;
 }
 

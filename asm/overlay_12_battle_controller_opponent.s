@@ -1060,7 +1060,7 @@ ov12_02258FD8: ; 0x02258FD8
 	add r1, #0x29
 	ldrb r1, [r1]
 	add r5, r0, #0
-	bl ov12_0223BB6C
+	bl BattleSystem_SetUnk2442
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0
@@ -1679,7 +1679,7 @@ _02259418:
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
-	bl ov12_0223BB94
+	bl BattleSystem_GetUnk0
 	add r3, r0, #0
 	ldr r0, [r4, #8]
 	mov r2, #5
@@ -1698,14 +1698,14 @@ _02259418:
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	ldrh r2, [r7]
-	bl ov12_0223BBA8
+	bl BattleSystem_SetUnk4
 	ldr r0, [sp, #0x10]
 	bl ov12_0223A99C
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	ldrh r2, [r7, #4]
-	bl ov12_0223BBC0
+	bl BattleSystem_SetUnk8
 	ldr r0, [r4, #8]
 	lsl r2, r6, #0x18
 	str r0, [sp]
@@ -1721,7 +1721,7 @@ _02259418:
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	add r2, r6, #0
-	bl ov12_0223BBD8
+	bl BattleSystem_SetUnkC
 	ldr r0, _022594F0 ; =0x00000195
 	mov r1, #1
 	ldrb r0, [r5, r0]
@@ -5442,7 +5442,7 @@ ov12_0225B1A8: ; 0x0225B1A8
 	bl WaitingIcon_New
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov12_0223BB80
+	bl BattleSystem_SetUnk1BC
 _0225B1E6:
 	mov r1, #0x65
 	lsl r1, r1, #2
@@ -10872,7 +10872,7 @@ _0225DDB4:
 _0225DDC8:
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223BB64
+	bl BattleSystem_SetUnk2440
 	b _0225DE98
 _0225DDD2:
 	ldr r0, [r4]
@@ -15833,15 +15833,15 @@ ov12_022605D0: ; 0x022605D0
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223BB78
+	bl BattleSystem_GetUnk1BC
 	cmp r0, #0
 	beq _022605F2
 	ldr r0, [r4]
-	bl ov12_0223BB78
+	bl BattleSystem_GetUnk1BC
 	bl sub_0200F450
 	ldr r0, [r4]
 	mov r1, #0
-	bl ov12_0223BB80
+	bl BattleSystem_SetUnk1BC
 _022605F2:
 	ldrb r0, [r4, #6]
 	bl TextPrinterCheckActive
@@ -17462,7 +17462,7 @@ ov12_022612A4: ; 0x022612A4
 	str r3, [sp, #0x18]
 	bl ov12_0223A99C
 	add r1, r4, #0
-	bl ov12_0223BB94
+	bl BattleSystem_GetUnk0
 	str r0, [sp, #0x20]
 	add r0, r7, #0
 	add r1, r4, #0
@@ -17493,17 +17493,17 @@ _022612D6:
 	bl ov12_0223A99C
 	ldrh r2, [r5]
 	add r1, r4, #0
-	bl ov12_0223BBA8
+	bl BattleSystem_SetUnk4
 	add r0, r7, #0
 	bl ov12_0223A99C
 	ldrh r2, [r5, #4]
 	add r1, r4, #0
-	bl ov12_0223BBC0
+	bl BattleSystem_SetUnk8
 	add r0, r7, #0
 	bl ov12_0223A99C
 	ldr r2, [sp, #0x40]
 	add r1, r4, #0
-	bl ov12_0223BBD8
+	bl BattleSystem_SetUnkC
 	ldr r0, [sp, #0x3c]
 	ldr r3, [sp, #0x40]
 	str r0, [sp]
@@ -18639,7 +18639,7 @@ _02261BA8:
 _02261BCE:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl ov12_0223BB88
+	bl BattleSystem_GetUnk1D0Index
 	str r0, [r5, #0xc]
 	ldr r0, [sp, #0x14]
 	ldrh r1, [r0, #0x18]
@@ -18754,7 +18754,7 @@ ov12_02261CA8: ; 0x02261CA8
 _02261CC0:
 	ldr r0, [sp]
 	add r1, r4, #0
-	bl ov12_0223BB88
+	bl BattleSystem_GetUnk1D0Index
 	str r0, [r5, #8]
 	ldr r0, [sp, #0xc]
 	ldrh r1, [r0, #0x18]

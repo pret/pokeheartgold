@@ -237,7 +237,7 @@
 .public BattleSystem_GetSpriteRenderer
 .public BattleSystem_GetGfxHandler
 .public BattleSystem_GetPaletteData
-.public ov12_0223BB88
+.public BattleSystem_GetUnk1D0Index
 .public ov12_0223C1C4
 .public ov12_0223C1F4
 .public BattleSystem_SetDefaultBlend

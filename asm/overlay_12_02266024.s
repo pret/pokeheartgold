@@ -6639,7 +6639,7 @@ _02269606:
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0]
-	bl ov12_0223BB64
+	bl BattleSystem_SetUnk2440
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0

@@ -144,8 +144,8 @@
 .public ov12_0223B870
 .public BattleSystem_GetUnk2430
 .public BattleSystem_GameStatIncrement
-.public ov12_0223BB44
-.public ov12_0223BBF0
+.public BattleSystem_GameStatAddScoreSpeciesCaught
+.public BattleSystem_SetUnk23FD
 .public BattleSystem_HpBar_Delete
 .public BattleSystem_SetCriticalHpMusicFlag
 .public ov12_0223BD8C

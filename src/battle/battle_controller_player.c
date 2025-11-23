@@ -233,7 +233,7 @@ static void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, Battl
         ctx->unk_314C[battlerId] = 0;
     }
 
-    ov12_0223BB64(bsys, 0);
+    BattleSystem_SetUnk2440(bsys, 0);
     ov12_02237ED0(bsys, 1);
 
     ctx->command = CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT;

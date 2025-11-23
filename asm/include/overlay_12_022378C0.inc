@@ -216,7 +216,7 @@
 .public BattleSystem_GetFrame
 .public BattleSystem_TryChangeForm
 .public ov12_0223B870
-.public ov12_0223BBF0
+.public BattleSystem_SetUnk23FD
 .public BattleSystem_HpBar_Init
 .public BattleSystem_SetHpBarDisabled
 .public BattleSystem_GetCriticalHpMusicFlag

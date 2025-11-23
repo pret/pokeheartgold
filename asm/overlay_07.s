@@ -8521,7 +8521,7 @@ _0221FBD6:
 	str r0, [r5, #0x24]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl ov12_0223BB88
+	bl BattleSystem_GetUnk1D0Index
 	str r0, [r5, #0x34]
 	add r6, r6, #1
 	add r5, r5, #4
