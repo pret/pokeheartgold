@@ -1735,7 +1735,7 @@ _02262DF4:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
 	mov r2, #2
-	bl ov12_0223ABB8
+	bl BattleSystem_GetBattlerIdOpponent
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r4, #0

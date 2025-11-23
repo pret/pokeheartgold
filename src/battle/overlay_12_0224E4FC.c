@@ -1352,7 +1352,7 @@ BOOL ov12_02250490(BattleSystem *battleSystem, BattleContext *ctx, int *out) {
     return ret;
 }
 
-int ov12_022506D4(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdAttacker, u16 moveNo, int a4, int range) {
+int GetBattlerIdTarget(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdAttacker, u16 moveNo, int a4, int range) {
     int battlerIdTarget = BATTLER_NONE;
     int moveRange;
 
@@ -1439,8 +1439,8 @@ int ov12_022506D4(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdA
         int battleType = BattleSystem_GetBattleType(battleSystem);
         int side = BattleSystem_GetFieldSide(battleSystem, battlerIdAttacker) ^ 1;
         int battlerIdOpponents[2];
-        battlerIdOpponents[0] = ov12_0223ABB8(battleSystem, battlerIdAttacker, 0);
-        battlerIdOpponents[1] = ov12_0223ABB8(battleSystem, battlerIdAttacker, 2);
+        battlerIdOpponents[0] = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerIdAttacker, 0);
+        battlerIdOpponents[1] = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerIdAttacker, 2);
 
         if (battleType & BATTLE_TYPE_DOUBLES) {
             if (ctx->fieldSideConditionData[side].followMeFlag && ctx->battleMons[ctx->fieldSideConditionData[side].battlerIdFollowMe].hp) {
@@ -3188,8 +3188,8 @@ int TryAbilityOnEntry(BattleSystem *battleSystem, BattleContext *ctx) {
 
             for (i = 0; i < maxBattlers; i++) {
                 battlerId = ctx->turnOrder[i];
-                battlerIdTargetR = ov12_0223ABB8(battleSystem, battlerId, 0);
-                battlerIdTargetL = ov12_0223ABB8(battleSystem, battlerId, 2);
+                battlerIdTargetR = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerId, 0);
+                battlerIdTargetL = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerId, 2);
                 ctx->battlerIdLeechSeeded = ov12_022585B8(battleSystem, ctx, battlerIdTargetR, battlerIdTargetL);
                 if (!ctx->battleMons[battlerId].traceFlag && ctx->battlerIdLeechSeeded != 0xFF && ctx->battleMons[battlerId].hp && ctx->battleMons[battlerId].item != ITEM_GRISEOUS_ORB && ctx->battleMons[ctx->battlerIdLeechSeeded].hp && GetBattlerAbility(ctx, battlerId) == ABILITY_TRACE) {
                     ctx->battleMons[battlerId].traceFlag = TRUE;
@@ -3417,8 +3417,8 @@ int TryAbilityOnEntry(BattleSystem *battleSystem, BattleContext *ctx) {
                     if (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) {
                         int battlerIdTargets[2];
 
-                        battlerIdTargets[0] = ov12_0223ABB8(battleSystem, battlerId, 0);
-                        battlerIdTargets[1] = ov12_0223ABB8(battleSystem, battlerId, 2);
+                        battlerIdTargets[0] = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerId, 0);
+                        battlerIdTargets[1] = BattleSystem_GetBattlerIdOpponent(battleSystem, battlerId, 2);
 
                         if (ctx->battleMons[battlerIdTargets[0]].hp && ctx->battleMons[battlerIdTargets[0]].item && ctx->battleMons[battlerIdTargets[1]].hp && ctx->battleMons[battlerIdTargets[1]].item) {
                             ctx->itemTemp = ctx->battleMons[battlerIdTargets[BattleSystem_Random(battleSystem) & 1]].item;
@@ -3558,9 +3558,15 @@ int Battler_GetRandomOpposingBattlerId(BattleSystem *battleSystem, BattleContext
     battleType = BattleSystem_GetBattleType(battleSystem);
 
     if (battleType & BATTLE_TYPE_DOUBLES) {
+<<<<<<< HEAD
         battlerIdTargets[0] = ov12_0223ABB8(battleSystem, battlerId, 0);
         battlerIdTargets[1] = ov12_0223ABB8(battleSystem, battlerId, 2);
         i = BattleSystem_Random(battleSystem) & 1;
+=======
+        battlerIdTargets[0] = BattleSystem_GetBattlerIdOpponent(bsys, battlerId, 0);
+        battlerIdTargets[1] = BattleSystem_GetBattlerIdOpponent(bsys, battlerId, 2);
+        i = BattleSystem_Random(bsys) & 1;
+>>>>>>> 5bf5e15e1 (Battle02261FD4_ShakeAnimation, GetBattlerIdTarget, BattleSystem_GetBattlerIdOpponent renames)
         battlerIdTarget = battlerIdTargets[i];
         if (!ctx->battleMons[battlerIdTarget].hp) {
             battlerIdTarget = battlerIdTargets[i ^ 1];

@@ -59,7 +59,7 @@ Terrain BattleSystem_GetTerrainId(BattleSystem *battleSystem);
 int BattleSystem_GetBackgroundId(BattleSystem *battleSystem);
 int BattleSystem_GetLocation(BattleSystem *battleSystem);
 int BattleSystem_GetBattlerIdPartner(BattleSystem *battleSystem, int battlerId);
-int ov12_0223ABB8(BattleSystem *battleSystem, int battlerId, int side);
+int BattleSystem_GetBattlerIdOpponent(BattleSystem *battleSystem, int battlerId, int side);
 BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int selectedMonIndex, int movePos, int item);
 u32 BattleSystem_GetBattleSpecial(BattleSystem *battleSystem);
 int BattleSystem_GetTimezone(BattleSystem *battleSystem);

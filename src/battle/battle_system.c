@@ -315,7 +315,7 @@ int BattleSystem_GetBattlerIdPartner(BattleSystem *battleSystem, int battlerId) 
     return battlerIdPartner;
 }
 
-int ov12_0223ABB8(BattleSystem *battleSystem, int battlerId, int side) {
+int BattleSystem_GetBattlerIdOpponent(BattleSystem *battleSystem, int battlerId, int side) {
     int battlerIdOpponent;
     int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
     u32 battleType = BattleSystem_GetBattleType(battleSystem);

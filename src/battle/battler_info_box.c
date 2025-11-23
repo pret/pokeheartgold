@@ -1730,7 +1730,7 @@ void ov12_02265D74(BattlerInfoBox *battlerInfoBox) {
 
 static void BattlerInfoBox_DoShakeAnimation(BattlerInfoBox *battlerInfoBox) {
     if (battlerInfoBox->sysTask == NULL) {
-        battlerInfoBox->unk54 = 0;
+        battlerInfoBox->yOffset = 0;
         battlerInfoBox->sysTask = SysTask_CreateOnMainQueue(BattlerInfoBox_ShakeAnimation, battlerInfoBox, 1010);
     }
 }
@@ -1740,15 +1740,15 @@ static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox) {
         SysTask_Destroy(battlerInfoBox->sysTask);
         battlerInfoBox->sysTask = NULL;
     }
-    battlerInfoBox->unk54 = 0;
+    battlerInfoBox->yOffset = 0;
     BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, 0);
 }
 
 static void BattlerInfoBox_ShakeAnimation(SysTask *task, void *data) {
     BattlerInfoBox *battlerInfoBox = data;
-    battlerInfoBox->unk54 += 20;
-    if (battlerInfoBox->unk54 >= 360) {
-        battlerInfoBox->unk54 -= 360;
+    battlerInfoBox->yOffset += 20;
+    if (battlerInfoBox->yOffset >= 360) {
+        battlerInfoBox->yOffset -= 360;
     }
-    BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, FX_Mul(GF_SinDegNoWrap(battlerInfoBox->unk54), FX32_CONST(1.5)) / FX32_ONE);
+    BattlerInfoBox_SetBoxSpritePosition(battlerInfoBox, 0, FX_Mul(GF_SinDegNoWrap(battlerInfoBox->yOffset), FX32_CONST(1.5)) / FX32_ONE);
 }
