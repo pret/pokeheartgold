@@ -19,7 +19,7 @@ u16 PhoneCall_GetScriptId_DayCareMan(PokegearPhoneCallContext *ctx, PokegearPhon
         }
     }
 
-    daycare = Save_GetDaycareData(ctx->saveData);
+    daycare = Save_Daycare_Get(ctx->saveData);
     state->miscPtr.daycare = daycare;
     state->sharedU8var = 0;
     for (i = 0; i < 2; ++i) {
@@ -48,7 +48,7 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneCallContext *ctx) {
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (Daycare_HasEgg(state->miscPtr.daycare)) {
+        if (Save_Daycare_HasEgg(state->miscPtr.daycare)) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0661_00003);
             state->scriptState = 255;
         } else if (state->sharedU8var == 0) {

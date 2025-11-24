@@ -33,7 +33,7 @@ Mail *DaycareMail_GetMailPtr(DaycareMail *dcmail) {
     return &dcmail->mail;
 }
 
-BOOL Daycare_HasEgg(Daycare *daycare) {
+BOOL Save_Daycare_HasEgg(Daycare *daycare) {
     return daycare->egg_pid != 0;
 }
 
@@ -94,6 +94,6 @@ void DaycareMon_Init(DaycareMon *mon) {
     DaycareMon_Extras_Init(&mon->mail);
 }
 
-Daycare *Save_GetDaycareData(SaveData *saveData) {
+Daycare *Save_Daycare_Get(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_DAYCARE);
 }
