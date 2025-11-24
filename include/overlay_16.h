@@ -12,27 +12,27 @@ typedef struct BerryPotsArgs {
     SaveData *saveData;
 } BerryPotsArgs;
 
-typedef struct UnkStruct_ov16_022014A0 {
+typedef struct BerryGrowthProperties {
     u8 defaultGrowthTimeInHours;
     u8 defaultDrainRate;
-    u8 unk2;               // yield multiplier?
-} UnkStruct_ov16_022014A0; // size: 0x3
+    u8 yieldRatio;
+} BerryGrowthProperties; // size: 0x3
 
-UnkStruct_ov16_022014A0 *ov16_022014A0(enum HeapID heapID);
+BerryGrowthProperties *ov16_022014A0(enum HeapID heapID);
 u8 BerryPots_GetPotGrowthStage(BerryPot *berryPots, u32 idx);
 u8 BerryPots_GetPotBerryId(BerryPot *berryPots, u32 idx);
 u32 BerryPots_GetSoilState(BerryPot *berryPots, u32 idx);
 u8 BerryPots_GetPotMoisture(BerryPot *berryPots, u32 idx);
-u8 ov16_022015EC(BerryPot *berryPots, u32 idx);
-u16 ov16_022015F8(BerryPot *berryPots, u32 idx);
-u16 ov16_02201604(BerryPot *berryPots, u32 idx);
-void ov16_02201610(BerryPot *berryPots, u32 idx, UnkStruct_ov16_022014A0 *a2, u32 a3);
+u8 BerryPots_GetUnk_AIndex(BerryPot *berryPots, u32 idx);
+u16 BerryPots_GetUnk_2Index(BerryPot *berryPots, u32 idx);
+u16 BerryPots_GetUnk_4Index(BerryPot *berryPots, u32 idx);
+void BerryPots_PlantNewBerry(BerryPot *berryPots, u32 idx, BerryGrowthProperties *growthProperties, u32 berryId);
 void BerryPots_ResetPotMoisture(BerryPot *berryPots, u32 idx);
 u8 BerryPots_GetPotMulch(BerryPot *berryPots, u32 idx);
 void BerryPots_SetPotMulch(BerryPot *berryPots, u32 idx, u32 mulch);
-u16 ov16_02201668(BerryPot *berryPots, u32 idx);
-u16 ov16_02201674(BerryPot *berryPots, u32 idx);
-void ov16_02201760(BerryPot *berryPots, UnkStruct_ov16_022014A0 *a1, s32 a2);
+u16 BerryPots_GetYieldIndex(BerryPot *berryPots, u32 idx);
+u16 BerryPots_GetYieldIndexAndClearPot(BerryPot *berryPots, u32 idx);
+void BerryPots_DoTimedTasks(BerryPot *berryPots, BerryGrowthProperties *growthProperties, s32 a2);
 void BerryPots_SetBerryDatetime(struct GF_RTC_DateTime *dest, RTCDate srcDate, RTCTime srcTime);
 void BerryPots_CopyBerryDatetime(struct GF_RTC_DateTime *datetime, RTCDate *date, RTCTime *time);
 u16 BerryIdToItemId(u16 berryId);
