@@ -5406,9 +5406,9 @@ BOOL ScrCmd_830(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_831(ScriptContext *ctx) {
+BOOL ScrCmd_DrawRandomAccessory(ScriptContext *ctx) {
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov02_0225316C();
+    *p_ret = AccessoryDraw();
     return FALSE;
 }
 

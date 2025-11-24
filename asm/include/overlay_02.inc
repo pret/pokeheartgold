@@ -535,7 +535,7 @@
 .public FieldSystem_BeginSinjohCutsceneTask
 .public FieldSystem_BeginSinjohGetEggCutsceneTask
 .public ov02_02253134
-.public ov02_0225316C
+.public AccessoryDraw
 .public ov02_02253188
 .public ov02_022531B4
 .public BugContest_GetEncounterSlot

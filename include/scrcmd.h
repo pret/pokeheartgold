@@ -866,7 +866,7 @@ BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx);
 BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx);
 BOOL ScrCmd_829(ScriptContext *ctx);
 BOOL ScrCmd_830(ScriptContext *ctx);
-BOOL ScrCmd_831(ScriptContext *ctx);
+BOOL ScrCmd_DrawRandomAccessory(ScriptContext *ctx);
 BOOL ScrCmd_832(ScriptContext *ctx);
 BOOL ScrCmd_833(ScriptContext *ctx);
 BOOL ScrCmd_834(ScriptContext *ctx);

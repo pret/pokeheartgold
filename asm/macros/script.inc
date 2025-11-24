@@ -4643,7 +4643,7 @@
 	.short \arg0
 	.endm
 
-	.macro scrcmd_831 arg0
+	.macro draw_random_accessory arg0
 	.short 831
 	.short \arg0
 	.endm
