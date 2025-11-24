@@ -349,7 +349,7 @@ _02237FD8:
 	bl NARC_New
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ov12_0223BFC0
+	bl BattleSystem_GetUnk2446
 	add r1, r0, #0
 	add r0, r4, #0
 	bl BattleSystem_GetTrainerGender
@@ -486,7 +486,7 @@ _02237FD8:
 	mov r2, #0xc0
 	bl PokepicManager_SetPlttBaseAddrAndSize
 	add r0, r4, #0
-	bl BattleSystem_HpBar_Init
+	bl BattleSystem_BattlerInfoBox_Init
 	bl ov12_022396F0
 	mov r0, #5
 	bl ov07_0221BEDC
@@ -1858,7 +1858,7 @@ _02238D1E:
 	add r0, r4, #0
 	bl sub_02074E5C
 	add r0, r4, #0
-	bl ov12_0223BFC0
+	bl BattleSystem_GetUnk2446
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x38]
@@ -1984,12 +1984,12 @@ _02238E2C:
 	strb r5, [r0]
 	ldr r1, [sp, #0x38]
 	add r0, r4, #0
-	bl ov12_0223BFCC
+	bl BattleSystem_GetUnk2464WithBattlerId
 	lsl r1, r5, #0x10
 	add r7, r0, #0
 	add r0, r4, #0
 	lsr r1, r1, #0x10
-	bl ov12_0223BFCC
+	bl BattleSystem_GetUnk2464WithBattlerId
 	ldr r1, _022390DC ; =ov12_0226C008
 	lsl r2, r7, #2
 	add r1, r1, r2

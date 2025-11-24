@@ -212,7 +212,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
     NARC *unkNarcB = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
+    battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, BattleSystem_GetUnk2446(battleSystem)), battleSystem->unk1C0);
 
     FontID_Alloc(4, HEAP_ID_BATTLE);
 

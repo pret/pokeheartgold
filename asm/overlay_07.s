@@ -8530,7 +8530,7 @@ _0221FBD6:
 	add r1, r4, #0
 	add r0, r7, #0
 	add r1, #0x44
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	add r1, r4, #0
 	add r0, r7, #0
 	add r1, #0x48

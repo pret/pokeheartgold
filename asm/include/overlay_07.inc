@@ -238,6 +238,6 @@
 .public BattleSystem_GetSpriteManager
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetUnk1D0Index
-.public ov12_0223C1C4
+.public BattleSystem_ListOpponentsFlags
 .public ov12_0223C1F4
 .public BattleSystem_SetDefaultBlend

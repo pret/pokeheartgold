@@ -610,7 +610,7 @@ _0224689E:
 _022468A2:
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223BD8C
+	bl BattleSystem_SetUnk243C
 	ldr r2, [r4, #4]
 	ldr r0, [r4]
 	add r3, r2, r7

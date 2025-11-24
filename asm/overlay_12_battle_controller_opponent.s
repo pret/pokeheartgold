@@ -4002,7 +4002,7 @@ ov12_0225A674: ; 0x0225A674
 	strb r1, [r0]
 	ldr r0, [sp]
 	add r1, sp, #4
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	ldr r0, [sp]
 	bl BattleSystem_GetMaxBattlers
 	add r4, r0, #0
@@ -17062,7 +17062,7 @@ _02260F88:
 	pop {r4, r5, r6, pc}
 _02260FAE:
 	add r0, r6, #0
-	bl ov12_0223BFC0
+	bl BattleSystem_GetUnk2446
 	add r1, r0, #0
 	add r0, r6, #0
 	lsl r1, r1, #1
@@ -17129,7 +17129,7 @@ _02261006:
 	pop {r4, r5, r6, pc}
 _02261032:
 	add r0, r6, #0
-	bl ov12_0223BFC0
+	bl BattleSystem_GetUnk2446
 	add r1, r0, #0
 	add r0, r6, #0
 	bl ov12_0223AB0C
@@ -17387,14 +17387,14 @@ _02261250: .word ov12_0225E1D4
 _02261254: .word ov12_0225E154
 	thumb_func_end ov12_02260EA4
 
-	thumb_func_start ov12_02261258
-ov12_02261258: ; 0x02261258
+	thumb_func_start BattleController_GetOpponentFlags
+BattleController_GetOpponentFlags: ; 0x02261258
 	ldr r1, _02261260 ; =0x00000195
 	ldrb r0, [r0, r1]
 	bx lr
 	nop
 _02261260: .word 0x00000195
-	thumb_func_end ov12_02261258
+	thumb_func_end BattleController_GetOpponentFlags
 
 	thumb_func_start ov12_02261264
 ov12_02261264: ; 0x02261264
@@ -18071,7 +18071,7 @@ _02261758:
 	str r0, [sp, #0xc]
 	beq _022617EC
 	ldr r0, [sp]
-	bl ov12_0223BFC0
+	bl BattleSystem_GetUnk2446
 	lsl r0, r0, #0x18
 	lsr r2, r0, #0x18
 	ldr r0, [sp, #0x14]
@@ -18081,7 +18081,7 @@ _02261758:
 	beq _022617C2
 	ldr r0, [sp]
 	add r1, r2, #0
-	bl ov12_0223BFCC
+	bl BattleSystem_GetUnk2464WithBattlerId
 	cmp r0, #3
 	bhi _02261832
 	add r0, r0, r0
@@ -18523,10 +18523,10 @@ ov12_02261AD4: ; 0x02261AD4
 	tst r0, r1
 	beq _02261B1A
 	add r0, r5, #0
-	bl ov12_0223BFC0
+	bl BattleSystem_GetUnk2446
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov12_0223BFCC
+	bl BattleSystem_GetUnk2464WithBattlerId
 	cmp r0, #0
 	beq _02261B0E
 	add r0, r5, #0
@@ -18684,7 +18684,7 @@ _02261BCE:
 	blt _02261BCE
 	ldr r0, [sp]
 	add r1, sp, #0x38
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	ldr r0, [sp]
 	add r1, sp, #0x3c
 	bl ov12_0223C1F4
@@ -18797,7 +18797,7 @@ _02261CC0:
 	add r1, r6, #0
 	ldr r0, [sp]
 	add r1, #0x4c
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	add r6, #0x18
 	ldr r0, [sp]
 	add r1, r6, #0

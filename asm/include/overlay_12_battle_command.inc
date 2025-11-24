@@ -148,7 +148,7 @@
 .public BattleSystem_SetUnk23FD
 .public BattleSystem_HpBar_Delete
 .public BattleSystem_SetCriticalHpMusicFlag
-.public ov12_0223BD8C
+.public BattleSystem_SetUnk243C
 .public BattleSystem_Random
 .public BattleSystem_GetBugContestCaughtMon
 .public BattleSystem_SetOpponentInfoBoxPriorties

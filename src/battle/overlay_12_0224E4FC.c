@@ -1366,13 +1366,13 @@ int GetBattlerIdTarget(BattleSystem *battleSystem, BattleContext *ctx, int battl
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
         OpponentData *opponent = BattleSystem_GetOpponentData(battleSystem, battlerIdAttacker);
-        u8 flag = ov12_02261258(opponent);
+        u8 flag = BattleController_GetOpponentFlags(opponent);
 
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
             battlerId = ctx->turnOrder[ctx->unk_217E];
             if (ctx->battleMons[battlerId].hp) {
                 opponent = BattleSystem_GetOpponentData(battleSystem, battlerId);
-                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && (ov12_02261258(opponent) & 1))) {
+                if (((flag & 1) && !(BattleController_GetOpponentFlags(opponent) & 1)) || (!(flag & 1) && (BattleController_GetOpponentFlags(opponent) & 1))) {
                     battlerIdTarget = battlerId;
                     break;
                 }
@@ -5626,11 +5626,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         monAtk *= 2;
     }
 
-<<<<<<< HEAD
-    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(battleSystem, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
-=======
-    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(BattleSystem_GetBattleContextData(bsys, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(BattleSystem_GetBattleContextData(battleSystem, ctx, 3, 0) - GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
         monAtk /= 2;
     }
 
@@ -6220,11 +6216,7 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleCon
     return FALSE;
 }
 
-<<<<<<< HEAD
-int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId) {
-=======
-int BattleSystem_GetBattleContextData(BattleSystem *bsys, BattleContext *ctx, int var, int battlerId) {
->>>>>>> b8bb7ace6 (BattleSystem_GetUnk2404, BattleSystem_GetBattleContextData, BattleSystem_GetUnk23FC renames)
+int BattleSystem_GetBattleContextData(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId) {
     switch (var) {
     case 0:
         return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerId)];

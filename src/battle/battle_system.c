@@ -43,7 +43,7 @@ static void BattleMessage_BufferTrainerClass(BattleSystem *battleSystem, int buf
 static void BattleMessage_BufferTrainerName(BattleSystem *battleSystem, int bufferIndex, int param);
 static void BattleMessage_BufferBoxName(BattleSystem *battleSystem, int bufferIndex, int param);
 static void BattleMessage_ExpandPlaceholders(BattleSystem *battleSystem, MsgData *data, BattleMessage *msg);
-static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId);
+static BOOL BattleMessage_PrinterCallback(struct TextPrinterTemplate *template, u16 glyphId);
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *battleSystem) {
     return battleSystem->bgConfig;
@@ -256,7 +256,7 @@ u32 BattleSystem_GetTrainerGender(BattleSystem *battleSystem, int battlerId) {
 int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int battlerType) {
     int battlerId;
     for (battlerId = 0; battlerId < battleSystem->maxBattlers; battlerId++) {
-        if (ov12_02261258(battleSystem->opponentData[battlerId]) == battlerType) {
+        if (BattleController_GetOpponentFlags(battleSystem->opponentData[battlerId]) == battlerType) {
             break;
         }
     }
@@ -267,11 +267,11 @@ int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int battl
 }
 
 u8 ov12_0223AB0C(BattleSystem *battleSystem, int battlerId) {
-    return ov12_02261258(battleSystem->opponentData[battlerId]);
+    return BattleController_GetOpponentFlags(battleSystem->opponentData[battlerId]);
 }
 
 u8 BattleSystem_GetFieldSide(BattleSystem *battleSystem, int battlerId) {
-    return ov12_02261258(battleSystem->opponentData[battlerId]) & 1;
+    return BattleController_GetOpponentFlags(battleSystem->opponentData[battlerId]) & 1;
 }
 
 void *BattleSystem_GetMessageIcon(BattleSystem *battleSystem) {
@@ -1042,7 +1042,7 @@ void BattleSystem_HpBar_Init(BattleSystem *battleSystem) {
     for (i = 0; i < battleSystem->maxBattlers; i++) {
         battlerInfoBox = OpponentData_GetBattlerInfoBox(battleSystem->opponentData[i]);
         battlerInfoBox->battleSystem = battleSystem;
-        battlerInfoBox->type = BattlerInfoBox_Util_GetBarTypeFromBattlerSide(ov12_02261258(battleSystem->opponentData[i]), BattleSystem_GetBattleType(battleSystem));
+        battlerInfoBox->type = BattlerInfoBox_Util_GetBarTypeFromBattlerSide(BattleController_GetOpponentFlags(battleSystem->opponentData[i]), BattleSystem_GetBattleType(battleSystem));
         BattlerInfoBox_LoadResources(battlerInfoBox);
         BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, FALSE);
     }
@@ -1105,7 +1105,7 @@ void BattleSystem_SetCriticalHpMusicDelay(BattleSystem *battleSystem, u8 delay) 
     battleSystem->criticalHpMusicDelay = delay;
 }
 
-void ov12_0223BD8C(BattleSystem *battleSystem, int a1) {
+void BattleSystem_SetUnk243C(BattleSystem *battleSystem, int a1) {
     battleSystem->unk243C = a1;
 }
 
@@ -1192,11 +1192,11 @@ static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size) {
     return buffer[(*index)++];
 }
 
-u16 ov12_0223BFC0(BattleSystem *battleSystem) {
+u16 BattleSystem_GetUnk2446(BattleSystem *battleSystem) {
     return battleSystem->unk2446;
 }
 
-int ov12_0223BFCC(BattleSystem *battleSystem, u16 battlerId) {
+int BattleSystem_GetUnk2464WithBattlerId(BattleSystem *battleSystem, u16 battlerId) {
     return battleSystem->unk2464[battlerId];
 }
 
@@ -1272,11 +1272,11 @@ u8 ov12_0223C140(BattleSystem *battleSystem, u32 battlerId) {
 void ov12_0223C1A0(BattleSystem *battleSystem, u8 *buffer) {
     int i;
     for (i = 0; i < battleSystem->maxBattlers; i++) {
-        buffer[ov12_02261258(battleSystem->opponentData[i])] = i;
+        buffer[BattleController_GetOpponentFlags(battleSystem->opponentData[i])] = i;
     }
 }
 
-void ov12_0223C1C4(BattleSystem *battleSystem, u8 *buffer) {
+void BattleSystem_ListOpponentsFlags(BattleSystem *battleSystem, u8 *buffer) {
     int i;
 
     for (i = 0; i < 4; i++) {
@@ -1284,7 +1284,7 @@ void ov12_0223C1C4(BattleSystem *battleSystem, u8 *buffer) {
     }
 
     for (i = 0; i < battleSystem->maxBattlers; i++) {
-        buffer[i] = ov12_02261258(battleSystem->opponentData[i]);
+        buffer[i] = BattleController_GetOpponentFlags(battleSystem->opponentData[i]);
     }
 }
 
@@ -1329,7 +1329,7 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
 }
 
 void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
-    u32 flag = ov12_02261258(battleSystem->opponentData[battlerId]);
+    u32 flag = BattleController_GetOpponentFlags(battleSystem->opponentData[battlerId]);
     Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 2, battlerId));
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
@@ -1343,7 +1343,7 @@ void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
 }
 
 void BattleSystem_SetPokedexCaught(BattleSystem *battleSystem, int battlerId) {
-    u32 flag = ov12_02261258(battleSystem->opponentData[battlerId]);
+    u32 flag = BattleController_GetOpponentFlags(battleSystem->opponentData[battlerId]);
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
         int selectedMonIndex = BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 2, battlerId);
@@ -1375,7 +1375,7 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *battleSystem, int trainerId, i
             }
             FillWindowPixelBuffer(window, 0xFF);
             String_Copy(battleSystem->msgBuffer, msg);
-            index = AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, ov12_0223CF14);
+            index = AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
             String_Delete(msg);
         } else {
             MsgData *data;
@@ -1406,14 +1406,14 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *battleSystem, int trainerId, i
             msg = NewString_ReadMsgData(data, stringId);
             FillWindowPixelBuffer(window, 0xFF);
             String_Copy(battleSystem->msgBuffer, msg);
-            index = AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, ov12_0223CF14);
+            index = AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
             String_Delete(msg);
             DestroyMsgData(data);
         }
     } else {
         GetTrainerMessageByIdPair(trainerId, a2, battleSystem->msgBuffer, HEAP_ID_BATTLE);
         FillWindowPixelBuffer(window, 0xFF);
-        index = AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, ov12_0223CF14);
+        index = AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
     }
     return index;
 }
@@ -1424,7 +1424,7 @@ u32 BattleSystem_PrintBattleMessage(BattleSystem *battleSystem, MsgData *data, B
     BattleSystem_BufferMessage(battleSystem, msg);
     BattleMessage_ExpandPlaceholders(battleSystem, data, msg);
     FillWindowPixelBuffer(window, 0xFF);
-    return AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, ov12_0223CF14);
+    return AddTextPrinterParameterized(window, 1, battleSystem->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
 }
 
 u32 ov12_0223C4E8(BattleSystem *battleSystem, Window *window, MsgData *data, BattleMessage *msg, int x, int y, int flag, int width, int delay) {
@@ -1444,7 +1444,7 @@ u32 ov12_0223C4E8(BattleSystem *battleSystem, Window *window, MsgData *data, Bat
         dx = 0;
     }
 
-    return AddTextPrinterParameterized(window, 0, battleSystem->msgBuffer, x + dx, y, delay, ov12_0223CF14);
+    return AddTextPrinterParameterized(window, 0, battleSystem->msgBuffer, x + dx, y, delay, BattleMessage_PrinterCallback);
 }
 
 static void BattleSystem_AdjustMessageForSide(BattleSystem *battleSystem, BattleMessage *msg) {
@@ -1932,7 +1932,7 @@ static void BattleMessage_ExpandPlaceholders(BattleSystem *battleSystem, MsgData
     String_Delete(str);
 }
 
-static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId) {
+static BOOL BattleMessage_PrinterCallback(struct TextPrinterTemplate *template, u16 glyphId) {
     BOOL ret = FALSE;
 
     switch (glyphId) {
