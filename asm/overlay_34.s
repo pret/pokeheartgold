@@ -432,7 +432,7 @@ ov34_0225D87C: ; 0x0225D87C
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

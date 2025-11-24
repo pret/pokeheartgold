@@ -44,7 +44,7 @@
 .public SpriteResourceCollection_Find
 .public sub_0200ACF0
 .public sub_0200AE8C
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B084
 .public sub_0200B0A8

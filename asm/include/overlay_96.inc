@@ -68,7 +68,7 @@
 .public sub_0200A740
 .public GF2DGfxResObj_GetCharDataPtr
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF00
 .public sub_0200AF94
 .public sub_0200B0A8

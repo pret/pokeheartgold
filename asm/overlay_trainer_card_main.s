@@ -4132,11 +4132,11 @@ _021E7CAE:
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x15
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

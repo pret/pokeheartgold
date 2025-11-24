@@ -18047,7 +18047,7 @@ _02247206:
 	lsl r0, r4, #4
 	add r0, r5, r0
 	ldr r0, [r0, r6]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	add r0, r4, #1
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18

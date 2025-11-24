@@ -37,7 +37,7 @@
 .public DestroySingle2DGfxResObj
 .public SpriteResourceCollection_Find
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF00
 .public sub_0200B00C
 .public sub_0200B0A8

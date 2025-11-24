@@ -41,7 +41,7 @@
 .public AddPlttResObjFromNarc
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200ACF0
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B00C
 .public sub_0200B0A8

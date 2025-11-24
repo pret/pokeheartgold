@@ -20554,7 +20554,7 @@ _02232EB4:
 	mov r0, #0x5b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -26280,7 +26280,7 @@ _022359DA:
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _022359EA
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _022359EA:
 	mov r1, #0x57
 	ldr r0, _02235A64 ; =ov74_0223D488
@@ -26288,7 +26288,7 @@ _022359EA:
 	ldr r0, [r0, r1]
 	cmp r0, #0
 	beq _022359FA
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _022359FA:
 	mov r1, #0x52
 	ldr r0, _02235A64 ; =ov74_0223D488

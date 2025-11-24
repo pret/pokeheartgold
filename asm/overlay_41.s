@@ -11114,7 +11114,7 @@ ov41_0224B084: ; 0x0224B084
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #4]
 	bl sub_0200B0A8
 	ldr r0, [r4]

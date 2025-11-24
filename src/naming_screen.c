@@ -715,8 +715,8 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     for (int i = 0; i < 7; ++i) {
         DestroySysTaskAndEnvironment(data->tasks[i]);
     }
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
     sub_0200B0A8(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 4; ++i) {

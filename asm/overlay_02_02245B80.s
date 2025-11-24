@@ -5884,7 +5884,7 @@ _0224887C:
 	cmp r2, r1
 	beq _02248892
 	ldr r0, [r0, #4]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _02248892:
 	ldrb r0, [r5]
 	add r6, r6, #1
@@ -9403,7 +9403,7 @@ _0224A294:
 	ldr r0, [r5, r7]
 	cmp r0, #0
 	beq _0224A29E
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _0224A29E:
 	add r4, r4, #1
 	add r5, r5, #4
@@ -10264,7 +10264,7 @@ ov02_0224A8D4: ; 0x0224A8D4
 	mov r1, #3
 	bl SpriteResourceCollection_Find
 	add r4, r0, #0
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

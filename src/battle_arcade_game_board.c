@@ -1282,7 +1282,7 @@ static void ov84_0223F418(GAME_BOARD_SUB_3E8 *work) {
     u8 i;
 
     for (i = 0; i < 11; i++) {
-        sub_0200AEB0(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteResource_ResetTransferTasks(work->resourceObj[i][GF_GFX_RES_TYPE_CHAR]);
     }
 
     for (i = 0; i < 4; i++) {

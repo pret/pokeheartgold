@@ -52,7 +52,7 @@
 .public SpriteResourceCollection_Find
 .public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public SpriteTransfer_GetPaletteProxy

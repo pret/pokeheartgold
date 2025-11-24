@@ -791,7 +791,7 @@ ov28_0225DB54: ; 0x0225DB54
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -875,7 +875,7 @@ _0225DC08:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r7, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

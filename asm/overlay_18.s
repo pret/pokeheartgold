@@ -38911,7 +38911,7 @@ ov18_021F9108: ; 0x021F9108
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]
@@ -39131,7 +39131,7 @@ ov18_021F92DC: ; 0x021F92DC
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #4]
 	bl sub_0200B0A8
 	ldr r0, [r4]

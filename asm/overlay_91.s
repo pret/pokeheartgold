@@ -5963,7 +5963,7 @@ ov91_0225F1E8: ; 0x0225F1E8
 	add r4, r1, #0
 	bl Sprite_Delete
 	ldr r0, [r5]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #4]
 	bl sub_0200B0A8
 	mov r0, #0x52
@@ -7218,7 +7218,7 @@ ov91_0225FC84: ; 0x0225FC84
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #6
 	lsl r0, r0, #6
 	ldr r0, [r4, r0]
@@ -8515,7 +8515,7 @@ _0226067C:
 	blt _0226067C
 	ldr r0, _02260714 ; =0x0000075C
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x76
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -10770,7 +10770,7 @@ ov91_02261790: ; 0x02261790
 	ldr r0, [r5, #0x34]
 	bl Sprite_Delete
 	ldr r0, [r5]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #4]
 	bl sub_0200B0A8
 	mov r0, #0x52
