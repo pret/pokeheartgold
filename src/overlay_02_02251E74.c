@@ -10,14 +10,14 @@
 #include "unk_02062108.h"
 #include "unk_020689C8.h"
 
-static const u8 ov02_02253D54[] = { 47, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 95, 96 };
+static const u8 AccessoryDrawList[] = { 47, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 95, 96 };
 
 BOOL ov02_02253134(SaveData *saveData) {
     u8 i;
     FashionCase *fashionCase = Save_FashionData_GetFashionCase(Save_FashionData_Get(saveData));
 
     for (i = 0; i < 39; i++) {
-        if (sub_0202BA2C(fashionCase, ov02_02253D54[i], 1) == TRUE) {
+        if (sub_0202BA2C(fashionCase, AccessoryDrawList[i], 1) == TRUE) {
             return FALSE;
         }
     }
@@ -25,9 +25,9 @@ BOOL ov02_02253134(SaveData *saveData) {
     return TRUE;
 }
 
-u8 ov02_0225316C(void) {
+u8 AccessoryDraw(void) {
     u8 rand = LCRandom() % 39;
-    return ov02_02253D54[rand];
+    return AccessoryDrawList[rand];
 }
 
 BOOL ov02_02253188(SaveData *saveData) {
