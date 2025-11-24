@@ -15,7 +15,7 @@ u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPho
         return PHONE_SCRIPT_097;
     }
 
-    daycare = Save_GetDaycareData(ctx->saveData);
+    daycare = Save_Daycare_Get(ctx->saveData);
     state->miscPtr.daycare = daycare;
     state->sharedU8var = 0;
     for (i = 0; i < 2; ++i) {

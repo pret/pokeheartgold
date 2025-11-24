@@ -178,8 +178,8 @@
 .public PlayerProfile_CountBadges
 .public Daycare_GetMonX
 .public DaycareMon_GetBoxMon
-.public Daycare_HasEgg
-.public Save_GetDaycareData
+.public Save_Daycare_HasEgg
+.public Save_Daycare_Get
 .public Pokedex_CountNationalDexOwned
 .public Pokedex_CountNationalDexSeen
 .public Pokedex_CountJohtoDexOwned
