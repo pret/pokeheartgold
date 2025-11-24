@@ -610,7 +610,7 @@ _0224689E:
 _022468A2:
 	ldr r0, [r4]
 	add r1, r7, #0
-	bl ov12_0223BD8C
+	bl BattleSystem_SetUnk243C
 	ldr r2, [r4, #4]
 	ldr r0, [r4]
 	add r3, r2, r7
@@ -1312,7 +1312,7 @@ _02246E84:
 	bl ov12_02237D00
 _02246EEC:
 	ldr r0, [r4]
-	bl ov12_0223C134
+	bl BattleSystem_GetUnk2488
 	add r1, r0, #0
 	add r0, r6, #0
 	bl CopyPokemonToPokemon

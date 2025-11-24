@@ -217,14 +217,14 @@
 .public BattleSystem_TryChangeForm
 .public ov12_0223B870
 .public BattleSystem_SetUnk23FD
-.public BattleSystem_HpBar_Init
+.public BattleSystem_BattlerInfoBox_Init
 .public BattleSystem_SetHpBarDisabled
 .public BattleSystem_GetCriticalHpMusicFlag
 .public BattleSystem_SetCriticalHpMusicFlag
 .public BattleSystem_GetCriticalHpMusicDelay
 .public BattleSystem_SetCriticalHpMusicDelay
-.public ov12_0223BFC0
-.public ov12_0223BFCC
+.public BattleSystem_GetUnk2446
+.public BattleSystem_GetUnk2464WithBattlerId
 .public BattleSystem_IsRecordingPaused
 .public BattleContext_New
 .public BattleContext_Main

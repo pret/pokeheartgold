@@ -3217,13 +3217,13 @@ static void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         OpponentData *opponent = BattleSystem_GetOpponentData(bsys, ctx->battlerIdAttacker);
-        u8 flag = ov12_02261258(opponent);
+        u8 flag = BattleController_GetOpponentFlags(opponent);
 
         do {
             battlerId = ctx->turnOrder[ctx->unk_217E++];
             if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp != 0) {
                 opponent = BattleSystem_GetOpponentData(bsys, battlerId);
-                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && ov12_02261258(opponent) & 1)) {
+                if (((flag & 1) && !(BattleController_GetOpponentFlags(opponent) & 1)) || (!(flag & 1) && BattleController_GetOpponentFlags(opponent) & 1)) {
                     ov12_02252D14(bsys, ctx);
                     ctx->battlerIdTarget = battlerId;
                     ctx->command = CONTROLLER_COMMAND_23;
@@ -3538,7 +3538,7 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
                 }
 
                 if (hp == 0) {
-                    if (ov12_02261258(opponent) & 1) {
+                    if (BattleController_GetOpponentFlags(opponent) & 1) {
                         battleOutcome |= BATTLE_RESULT_WIN;
                     } else {
                         battleOutcome |= BATTLE_RESULT_LOSE;
@@ -3559,7 +3559,7 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
                 }
 
                 if (hp == 0) {
-                    if (ov12_02261258(opponent) & 1) {
+                    if (BattleController_GetOpponentFlags(opponent) & 1) {
                         battleOutcome |= BATTLE_RESULT_WIN;
                     } else {
                         battleOutcome |= BATTLE_RESULT_LOSE;

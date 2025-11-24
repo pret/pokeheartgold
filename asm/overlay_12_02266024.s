@@ -2106,7 +2106,7 @@ _022671C4:
 	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223C134
+	bl BattleSystem_GetUnk2488
 	str r0, [sp, #0x24]
 	cmp r0, #0
 	beq _022672B6
@@ -3303,7 +3303,7 @@ ov12_02267C24: ; 0x02267C24
 	add r1, sp, #0x38
 	ldr r0, [r5]
 	add r1, #2
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	ldr r0, [r5]
 	add r1, sp, #0x34
 	bl ov12_0223C1A0

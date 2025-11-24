@@ -148,9 +148,9 @@
 .public BattleSystem_SetUnk23FD
 .public BattleSystem_HpBar_Delete
 .public BattleSystem_SetCriticalHpMusicFlag
-.public ov12_0223BD8C
+.public BattleSystem_SetUnk243C
 .public BattleSystem_Random
-.public ov12_0223C134
+.public BattleSystem_GetUnk2488
 .public BattleSystem_SetOpponentInfoBoxPriorties
 .public BattleSystem_SetPokedexCaught
 .public BattleSystem_CheckMonCaught

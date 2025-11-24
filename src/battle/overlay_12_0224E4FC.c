@@ -1365,13 +1365,13 @@ int GetBattlerIdTarget(BattleSystem *bsys, BattleContext *ctx, int battlerIdAtta
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         OpponentData *opponent = BattleSystem_GetOpponentData(bsys, battlerIdAttacker);
-        u8 flag = ov12_02261258(opponent);
+        u8 flag = BattleController_GetOpponentFlags(opponent);
 
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
             battlerId = ctx->turnOrder[ctx->unk_217E];
             if (ctx->battleMons[battlerId].hp) {
                 opponent = BattleSystem_GetOpponentData(bsys, battlerId);
-                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && (ov12_02261258(opponent) & 1))) {
+                if (((flag & 1) && !(BattleController_GetOpponentFlags(opponent) & 1)) || (!(flag & 1) && (BattleController_GetOpponentFlags(opponent) & 1))) {
                     battlerIdTarget = battlerId;
                     break;
                 }

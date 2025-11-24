@@ -143,9 +143,9 @@
 .public BattleSystem_GetSafariBallCount
 .public BattleSystem_GetUnk2421
 .public BattleSystem_SetUnk2440
-.public ov12_0223C134
+.public BattleSystem_GetUnk2488
 .public ov12_0223C1A0
-.public ov12_0223C1C4
+.public BattleSystem_ListOpponentsFlags
 .public ov12_02261280
 .public ov12_0226604C
 .public ov12_022660A8

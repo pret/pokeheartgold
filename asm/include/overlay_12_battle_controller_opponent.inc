@@ -215,12 +215,12 @@
 .public BattleSystem_SetRandTemp
 .public ov12_0223BE0C
 .public ov12_0223BF14
-.public ov12_0223BFC0
-.public ov12_0223BFCC
+.public BattleSystem_GetUnk2446
+.public BattleSystem_GetUnk2464WithBattlerId
 .public ov12_0223BFFC
 .public ov12_0223C140
 .public ov12_0223C1A0
-.public ov12_0223C1C4
+.public BattleSystem_ListOpponentsFlags
 .public ov12_0223C1F4
 .public BattleSystem_PrintTrainerMessage
 .public BattleSystem_PrintBattleMessage
@@ -245,7 +245,7 @@
 .public ov12_02258E54
 .public ov12_02258E7C
 .public ov12_02260EA4
-.public ov12_02261258
+.public BattleController_GetOpponentFlags
 .public ov12_02261264
 .public ov12_02261270
 .public OpponentData_GetBattlerInfoBox
