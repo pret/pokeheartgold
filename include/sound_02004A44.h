@@ -36,7 +36,7 @@ BOOL sub_020056E8(UnkStruct_02004A44_0 *wavParam, int);
 void sub_02005774(int, int);
 BOOL GF_MIC_StartAutoSampling(MICAutoParam *param);
 void GF_MIC_StopAutoSampling(void);
-void PlayCryEx(int, int species, int, int, int, int);
+void PlayCryEx(int unk1, int species, int unk2, int unk3, int unk4, int unk5);
 void sub_02004B24(int);
 void BGM_SaveStateAndPlayNew(int a0);
 u16 GF_GetCurrentPlayingBGM(void);

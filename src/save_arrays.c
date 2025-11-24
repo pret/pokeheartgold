@@ -400,7 +400,7 @@ int sub_02027158(SaveData *saveData, struct UnkStruct_02030A98 *data) {
 }
 
 u32 PCStorage_GetSizeOfBox(void) {
-    return PCStorage_BoxSize();
+    return PCStorage_GetBoxSize();
 }
 
 u32 PCStorage_GetNumBoxes(void) {

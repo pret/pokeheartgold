@@ -161,7 +161,7 @@
 .public GetMonData
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
-.public Mon_ChatterPlayCryEx
+.public Pokemon_ChatterPlayCryEx
 .public sub_020729D8
 .public sub_020729FC
 .public sub_02072A20

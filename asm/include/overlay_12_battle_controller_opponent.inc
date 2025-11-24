@@ -77,7 +77,7 @@
 .public sub_02070C24
 .public sub_02070D84
 .public CopyPokemonToPokemon
-.public Mon_ChatterPlayCryVariant
+.public Pokemon_ChatterPlayCryVariant
 .public MaskOfFlagNo
 .public TrainerClassToBackpicID
 .public NARC_ReadPokepicAnimScript
