@@ -179,7 +179,7 @@
 .public Daycare_GetMonX
 .public DaycareMon_GetBoxMon
 .public Daycare_HasEgg
-.public Daycare_GetSaveArray
+.public Save_GetDaycareSaveData
 .public Pokedex_CountNationalDexOwned
 .public Pokedex_CountNationalDexSeen
 .public Pokedex_CountJohtoDexOwned

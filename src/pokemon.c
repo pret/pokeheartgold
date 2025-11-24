@@ -54,8 +54,8 @@ void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C 
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
 BOOL MonHasMove(Pokemon *mon, u16 move_id);
-void InitializeBoxPokemonAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID);
-void PostCaptureBoxPokemonProcessing(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID);
+void BoxPokemon_InitializeAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID);
+void BoxPokemon_PostCaptureProcessing(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID);
 
 #define ENCRY_ARGS_PTY(mon)    (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.personality
 #define ENCRY_ARGS_BOX(boxMon) (u16 *)&(boxMon)->dataBlocks, sizeof((boxMon)->dataBlocks), (boxMon)->checksum
@@ -3669,7 +3669,7 @@ void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUp
     ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
 }
 
-void Mon_ChatterPlayCryEx(SOUND_CHATOT *soundChatot, u32 r5, u16 species, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
+void Pokemon_ChatterPlayCryEx(SOUND_CHATOT *soundChatot, u32 r5, u16 species, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
 #pragma unused(unused)
     if (species == SPECIES_CHATOT) {
         if (!sub_02006F30((int)r5)) {
@@ -3686,7 +3686,7 @@ void Mon_ChatterPlayCryEx(SOUND_CHATOT *soundChatot, u32 r5, u16 species, s32 un
     }
 }
 
-void Mon_ChatterPlayCryVariant(SOUND_CHATOT *soundChatot, u32 r6, u16 species, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30) {
+void Pokemon_ChatterPlayCryVariant(SOUND_CHATOT *soundChatot, u32 r6, u16 species, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30) {
     if (species == SPECIES_CHATOT) {
         if (!sub_02006F30((int)r6)) {
             sub_02006E3C(1);
@@ -3702,13 +3702,13 @@ void Mon_ChatterPlayCryVariant(SOUND_CHATOT *soundChatot, u32 r6, u16 species, s
     }
 }
 
-void PlayMonCry(Pokemon *mon) {
+void Pokemon_PlayMonCry(Pokemon *mon) {
     PlayCry(GetMonData(mon, MON_DATA_SPECIES, NULL), GetMonData(mon, MON_DATA_FORM, NULL));
 }
 
 void Pokemon_SetCatchData(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
     u32 hp;
-    InitializeBoxPokemonAfterCapture(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
+    BoxPokemon_InitializeAfterCapture(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
     if (pokeball == ITEM_HEAL_BALL) {
         hp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
         SetMonData(mon, MON_DATA_HP, &hp);
@@ -3717,7 +3717,7 @@ void Pokemon_SetCatchData(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeba
     }
 }
 
-void InitializeBoxPokemonAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
+void BoxPokemon_InitializeAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
     BoxMonSetTrainerMemo(boxMon, playerProfile, 0, location, heapID);
     SetBoxMonData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
     SetBoxMonData(boxMon, MON_DATA_POKEBALL, &pokeball);
@@ -3725,11 +3725,11 @@ void InitializeBoxPokemonAfterCapture(BoxPokemon *boxMon, PlayerProfile *playerP
 }
 
 void Pokemon_UpdateAfterCatch(Pokemon *mon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
-    PostCaptureBoxPokemonProcessing(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
+    BoxPokemon_PostCaptureProcessing(&mon->box, playerProfile, pokeball, location, encounterType, heapID);
 }
 
-void PostCaptureBoxPokemonProcessing(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
-    InitializeBoxPokemonAfterCapture(boxMon, playerProfile, pokeball, location, encounterType, heapID);
+void BoxPokemon_PostCaptureProcessing(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 location, u32 encounterType, enum HeapID heapID) {
+    BoxPokemon_InitializeAfterCapture(boxMon, playerProfile, pokeball, location, encounterType, heapID);
 }
 
 static const u16 sItemOdds[2][2] = {

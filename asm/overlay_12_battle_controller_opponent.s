@@ -15371,7 +15371,7 @@ _0226020C:
 	add r3, #0x6b
 	ldrh r2, [r2]
 	ldrb r3, [r3]
-	bl Mon_ChatterPlayCryVariant
+	bl Pokemon_ChatterPlayCryVariant
 	add r0, r4, #0
 	add r0, #0x66
 	ldrb r0, [r0]
@@ -19163,7 +19163,7 @@ _02261FA6:
 	str r1, [sp, #0x10]
 	ldr r1, [sp, #0x40]
 	lsr r2, r2, #0x10
-	bl Mon_ChatterPlayCryVariant
+	bl Pokemon_ChatterPlayCryVariant
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov12_02261F38

@@ -26,11 +26,11 @@ BOOL Chatot_SoundMain(void) {
     return FALSE;
 }
 
-BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
+BOOL Chatot_CheckCry(SOUND_CHATOT *soundChatot) {
     u8 *r5 = GF_SdatGetAttrPtr(31);
     u8 *r4 = GF_SdatGetAttrPtr(54);
 
-    if (!Chatot_Exists(a0)) {
+    if (!Chatot_Exists(soundChatot)) {
         return FALSE;
     }
 
@@ -114,8 +114,8 @@ void Chatot_StopRecording() {
     GF_MIC_StopAutoSampling();
 }
 
-void Chatot_SaveRecording(SOUND_CHATOT *a0) {
-    Chatot_Encode(a0, sub_020059D8());
+void Chatot_SaveRecording(SOUND_CHATOT *soundChatot) {
+    Chatot_Encode(soundChatot, sub_020059D8());
 }
 
 void sub_02006E3C(u8 a0) {
@@ -156,12 +156,12 @@ BOOL Chatot_PlayerChatterRecordingVariant(SOUND_CHATOT *soundChatot, u32 a1, u32
     return ret;
 }
 
-u32 Chatot_GetVolume(SOUND_CHATOT *chatot) {
-    if (!Chatot_Exists(chatot)) {
+u32 Chatot_GetVolume(SOUND_CHATOT *soundChatot) {
+    if (!Chatot_Exists(soundChatot)) {
         return 0;
     }
 
-    s8 volume = Chatot_GetData(chatot)[15];
+    s8 volume = Chatot_GetData(soundChatot)[15];
     if (volume < -30) {
         return 1;
     } else if (volume >= 30 && volume < 128) {

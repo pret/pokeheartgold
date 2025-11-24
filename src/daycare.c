@@ -94,6 +94,6 @@ void DaycareMon_Init(DaycareMon *mon) {
     DaycareMon_Extras_Init(&mon->mail);
 }
 
-Daycare *Daycare_GetSaveArray(SaveData *saveData) {
+Daycare *Save_GetDaycareSaveData(SaveData *saveData) {
     return SaveArray_Get(saveData, SAVE_DAYCARE);
 }

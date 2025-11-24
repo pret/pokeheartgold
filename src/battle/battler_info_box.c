@@ -287,7 +287,7 @@ static void BattlerInfoBox_DoShakeAnimation(BattlerInfoBox *battlerInfoBox);
 static void BattlerInfoBox_ClearMoreInfoBox(BattlerInfoBox *battlerInfoBox);
 static void BattlerInfoBox_ShakeAnimation(SysTask *task, void *data);
 
-static const ManagedSpriteTemplate sSpriteTemplate_HpBarSinglePlayer = {
+static const ManagedSpriteTemplate sSpriteTemplate_BattlerInfoBoxSinglePlayer = {
     .x = 0xC0,
     .y = 0x74,
     .z = 0,
@@ -1620,7 +1620,7 @@ static const ManagedSpriteTemplate *BattlerInfoBox_Util_GetInfoBoxSpriteTemplate
     const ManagedSpriteTemplate *ret;
     switch (barType) {
     case INFO_BOX_TYPE_SINGLE_PLAYER:
-        ret = &sSpriteTemplate_HpBarSinglePlayer;
+        ret = &sSpriteTemplate_BattlerInfoBoxSinglePlayer;
         break;
     case INFO_BOX_TYPE_SINGLE_ENEMY:
         ret = &sSpriteTemplate_HpBarSingleEnemy;

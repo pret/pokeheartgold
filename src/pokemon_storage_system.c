@@ -353,7 +353,7 @@ u32 PCStorage_GetBoxModifiedFlags(PCStorage *storage) {
     return storage->boxModifiedFlag;
 }
 
-u32 PCStorage_BoxSize(void) {
+u32 PCStorage_GetBoxSize(void) {
     return sizeof(PC_BOX);
 }
 
