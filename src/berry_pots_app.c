@@ -718,7 +718,7 @@ static void ov17_022023B0(BerryPotsAppData *data) {
             return;
         }
 
-        ov16_02201610(data->berryPots, data->unk7C, data->berryGrowthProperties, ItemIdToBerryId(data->args->itemId));
+        BerryPots_PlantNewBerry(data->berryPots, data->unk7C, data->berryGrowthProperties, ItemIdToBerryId(data->args->itemId));
         GameStats_Inc(data->stats, GAME_STAT_UNK5);
         data->unk7B = 2;
     }
@@ -1036,7 +1036,7 @@ void ov17_02202B58(BerryPotsAppData *data, u8 index) {
 
 static void ov17_02202B98(BerryPotsAppData *data) {
     BerryPotsAppData_UnkSub20 *unk = &data->unk20[data->unk7C];
-    ov16_02201674(data->berryPots, data->unk7C);
+    BerryPots_GetYieldIndexAndClearPot(data->berryPots, data->unk7C);
     Bag_AddItem(data->bag, BerryIdToItemId(unk->berryId), unk->quantityOrYieldMaybe, data->heapID);
     ov17_0220387C(data);
     Sprite_Delete(unk->soilSpriteMaybe);
