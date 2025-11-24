@@ -1353,7 +1353,7 @@ _0221F092:
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

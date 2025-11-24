@@ -2825,11 +2825,11 @@ ov70_02238E98: ; 0x02238E98
 	mov r0, #0xd3
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x35
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _02238EF8 ; =0x00000D34
 	ldr r0, [r6, r0]
 	bl sub_0200B0A8

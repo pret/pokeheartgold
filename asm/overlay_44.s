@@ -15003,7 +15003,7 @@ _022316D6:
 	blt _022316D6
 	ldr r0, _02231718 ; =0x00000D28
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _0223171C ; =0x00000D2C
 	ldr r0, [r5, r0]
 	bl sub_0200B0A8
@@ -16830,7 +16830,7 @@ ov44_0223247C: ; 0x0223247C
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #5
 	lsl r0, r0, #6
 	ldr r0, [r5, r0]

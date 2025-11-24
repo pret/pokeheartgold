@@ -4826,7 +4826,7 @@ _0225AC4A:
 	ldr r0, [r0, #0x3c]
 	bl Sprite_Delete
 	ldr r0, [r7, #0x6c]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [sp, #8]
 	cmp r0, #0
 	bne _0225AC72

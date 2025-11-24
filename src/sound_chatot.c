@@ -7,7 +7,7 @@
 #include "sound_02004A44.h"
 #include "unk_02005D10.h"
 
-BOOL ChatotSoundMain(void) {
+BOOL Chatot_SoundMain(void) {
     u8 *r4 = GF_SdatGetAttrPtr(16);
     u8 *r0 = GF_SdatGetAttrPtr(30);
 
@@ -45,11 +45,11 @@ BOOL Chatot_CheckCry(SOUND_CHATOT *a0) {
     return FALSE;
 }
 
-BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
+BOOL sub_02006D04(SOUND_CHATOT *soundChatot, u32 unused, s32 a2, s32 a3) {
     s8 *sp0 = sub_020059D8();
     s8 *sp4 = GF_SdatGetAttrPtr(30);
 
-    if (!Chatot_CheckCry(a0)) {
+    if (!Chatot_CheckCry(soundChatot)) {
         return FALSE;
     }
 
@@ -58,7 +58,7 @@ BOOL sub_02006D04(SOUND_CHATOT *a0, u32 a1, s32 a2, s32 a3) {
     sub_02005600(14);
     u16 r4 = (LCRandom() % 8192);
 
-    Chatot_Decode(sp0, Chatot_GetData(a0));
+    Chatot_Decode(sp0, Chatot_GetData(soundChatot));
 
     UnkStruct_02004A44_0 sp8;
 

@@ -693,7 +693,7 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
 }
 
 static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu) {
-    sub_0200AEB0(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     for (u16 i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(startMenu->gfxResMan[i]);

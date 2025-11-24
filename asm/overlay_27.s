@@ -271,7 +271,7 @@ _0225A1C8:
 	lsl r7, r7, #2
 _0225A1EA:
 	ldr r0, [r5, r7]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xb
@@ -4540,7 +4540,7 @@ ov27_0225C398: ; 0x0225C398
 	mov r0, #0xd5
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

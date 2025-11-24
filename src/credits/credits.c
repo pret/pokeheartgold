@@ -526,11 +526,11 @@ static void ov76_021E6170(CreditsAppWork *work) {
 }
 
 static void ov76_021E62B4(CreditsAppWork *work) {
-    sub_0200AEB0(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(work->gf2dGfxResObj[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(work->gf2dGfxResObj[GF_GFX_RES_TYPE_PLTT]);
 
     for (u8 i = 0; i < 6; i++) {
-        sub_0200AEB0(work->cutsceneRsrs[i].charResObj);
+        SpriteResource_ResetTransferTasks(work->cutsceneRsrs[i].charResObj);
         sub_0200B0A8(work->cutsceneRsrs[i].plttResObj);
     }
 }

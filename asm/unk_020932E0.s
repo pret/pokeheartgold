@@ -92,7 +92,7 @@ sub_02093354: ; 0x02093354
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

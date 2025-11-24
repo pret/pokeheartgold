@@ -1910,10 +1910,10 @@ ov72_02238800: ; 0x02238800
 	add r6, r0, #0
 	ldr r0, _02238854 ; =0x00000D34
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _02238858 ; =0x00000D44
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _0223885C ; =0x00000D38
 	ldr r0, [r6, r0]
 	bl sub_0200B0A8

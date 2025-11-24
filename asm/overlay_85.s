@@ -6731,7 +6731,7 @@ ov85_021E8B08: ; 0x021E8B08
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #7
 	lsl r0, r0, #6
 	ldr r0, [r6, r0]

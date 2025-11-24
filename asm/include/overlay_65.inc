@@ -36,7 +36,7 @@
 .public AddPlttResObjFromOpenNarc
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200ACF0
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B0A8
 .public OamManager_Create

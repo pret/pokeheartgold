@@ -706,7 +706,7 @@ Overlay bug_contest
 Overlay OVY_25
 {
     After OVY_3
-    Object src/overlay_25.o
+    Object src/trainer_house.o
 }
 Overlay OVY_26
 {

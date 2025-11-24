@@ -575,7 +575,7 @@ static void freeAllMonSprite2dResObj(struct StarterChooseMonSpriteData *a0) {
     int i;
 
     for (i = 0; i < 3; i++) {
-        sub_0200AEB0(a0->objs[i].charResObj);
+        SpriteResource_ResetTransferTasks(a0->objs[i].charResObj);
         sub_0200B0A8(a0->objs[i].plttResObj);
         DestroySingle2DGfxResObj(a0->charResMan, a0->objs[i].charResObj);
         DestroySingle2DGfxResObj(a0->plttResMan, a0->objs[i].plttResObj);
