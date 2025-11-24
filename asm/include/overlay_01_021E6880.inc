@@ -8,7 +8,7 @@
 .public GF_AssertFail
 .public Save_PlayerData_GetProfile
 .public PlayerProfile_TestBadgeFlag
-.public Save_GetDaycareSaveData
+.public Save_GetDaycareData
 .public Save_GameStats_Get
 .public GameStats_Inc
 .public GameStats_GetCapped

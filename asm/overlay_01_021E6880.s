@@ -1997,7 +1997,7 @@ ov01_021E788C: ; 0x021E788C
 	bl SaveArray_Party_Get
 	add r5, r0, #0
 	ldr r0, [r4, #0xc]
-	bl Save_GetDaycareSaveData
+	bl Save_GetDaycareData
 	add r1, r5, #0
 	add r2, r4, #0
 	bl HandleDaycareStep
