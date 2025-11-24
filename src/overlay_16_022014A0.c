@@ -7,7 +7,7 @@
 typedef struct BerryFile {
     u16 sizeInMillimeters;
     u8 firmness;
-    u8 unk3; // yield multiplier?
+    u8 yieldMultiplier;
     u8 defaultGrowthInterval;
     u8 defaultDrainRate;
     u8 spiciness;
@@ -21,7 +21,7 @@ typedef struct BerryFile {
 enum BerryAttr {
     BERRY_ATTR_SIZE,
     BERRY_ATTR_FIRMNESS,
-    BERRY_ATTR_UNK2,
+    BERRY_ATTR_YIELD_MULTIPLIER,
     BERRY_ATTR_GROWTH_INTERVAL,
     BERRY_ATTR_DRAIN_RATE,
     BERRY_ATTR_SPICINESS,
@@ -57,7 +57,7 @@ BerryGrowthProperties *ov16_022014A0(enum HeapID heapID) {
         BerryFile *berryFile = GetBerryFileFromNarc(narc, fileId, heapID);
         unk[fileId].defaultGrowthTimeInHours = GetBerryAttr(berryFile, BERRY_ATTR_GROWTH_INTERVAL);
         unk[fileId].defaultDrainRate = GetBerryAttr(berryFile, BERRY_ATTR_DRAIN_RATE);
-        unk[fileId].yieldRatio = GetBerryAttr(berryFile, BERRY_ATTR_UNK2);
+        unk[fileId].yieldMultiplier = GetBerryAttr(berryFile, BERRY_ATTR_YIELD_MULTIPLIER);
 
         Heap_Free(berryFile);
     }
@@ -80,7 +80,7 @@ static void BerryPot_Clear(BerryPot *berryPot) {
 }
 
 static u32 BerryPots_CalculateYield(BerryPot *berryPot, BerryGrowthProperties *growthProperties) {
-    return berryPot->baseYield * growthProperties[berryPot->berryId - 1].yieldRatio;
+    return berryPot->baseYield * growthProperties[berryPot->berryId - 1].yieldMultiplier;
 }
 
 static u32 CalculateBerryPotGrowthInterval(BerryGrowthProperties *a0, int berryId, int mulch) {
@@ -306,8 +306,8 @@ static u16 GetBerryAttr(BerryFile *unk, enum BerryAttr attr) {
         return unk->sizeInMillimeters;
     case BERRY_ATTR_FIRMNESS:
         return unk->firmness;
-    case BERRY_ATTR_UNK2:
-        return unk->unk3;
+    case BERRY_ATTR_YIELD_MULTIPLIER:
+        return unk->yieldMultiplier;
     case BERRY_ATTR_GROWTH_INTERVAL:
         return unk->defaultGrowthInterval;
     case BERRY_ATTR_DRAIN_RATE:

@@ -15,7 +15,7 @@ typedef struct BerryPotsArgs {
 typedef struct BerryGrowthProperties {
     u8 defaultGrowthTimeInHours;
     u8 defaultDrainRate;
-    u8 yieldRatio;
+    u8 yieldMultiplier;
 } BerryGrowthProperties; // size: 0x3
 
 BerryGrowthProperties *ov16_022014A0(enum HeapID heapID);
