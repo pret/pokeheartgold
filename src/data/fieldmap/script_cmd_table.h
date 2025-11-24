@@ -568,7 +568,7 @@ BOOL ScrCmd_565(ScriptContext *ctx);
 BOOL ScrCmd_566(ScriptContext *ctx);
 BOOL ScrCmd_GetDPPlPrizeItemIdAndCost(ScriptContext *ctx);
 BOOL ScrCmd_568(ScriptContext *ctx);
-BOOL ScrCmd_569(ScriptContext *ctx);
+BOOL ScrCmd_TakeCoinsPointer(ScriptContext *ctx);
 BOOL ScrCmd_CheckCoinsVar(ScriptContext *ctx);
 BOOL ScrCmd_571(ScriptContext *ctx);
 BOOL ScrCmd_GetUniqueSealsQuantity(ScriptContext *ctx);
@@ -1423,7 +1423,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_566,
     ScrCmd_GetDPPlPrizeItemIdAndCost,
     ScrCmd_568,
-    ScrCmd_569,
+    ScrCmd_TakeCoinsPointer,
     ScrCmd_CheckCoinsVar,
     ScrCmd_571,
     ScrCmd_GetUniqueSealsQuantity,
