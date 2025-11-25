@@ -186,10 +186,10 @@
 .public sub_0205C174
 .public sub_0205C1F0
 .public sub_0205C268
-.public AcquireMonLock
-.public ReleaseMonLock
-.public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_AcquireMonLock
+.public Pokemon_ReleaseMonLock
+.public Pokemon_CalcMonLevelAndStats
+.public Pokemon_GetMonData
 .public SetMonData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature

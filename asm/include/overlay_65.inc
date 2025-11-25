@@ -187,9 +187,9 @@
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
 .public AllocMonZeroed
-.public AcquireMonLock
-.public ReleaseMonLock
-.public GetMonData
+.public Pokemon_AcquireMonLock
+.public Pokemon_ReleaseMonLock
+.public Pokemon_GetMonData
 .public SetMonData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds

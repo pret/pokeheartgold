@@ -15,12 +15,12 @@ u32 Boxmon_GetIconNaix(BoxPokemon *boxMon) {
     int form;
     u32 ret;
 
-    encry = AcquireBoxMonLock(boxMon);
+    encry = BoxPokemon_AcquireBoxMonLock(boxMon);
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
     form = BoxMonGetForm(boxMon);
     ret = GetMonIconNaixEx(species, isEgg, form);
-    ReleaseBoxMonLock(boxMon, encry);
+    BoxPokemon_ReleaseBoxMonLock(boxMon, encry);
     return ret;
 }
 
@@ -701,11 +701,11 @@ const u8 Boxmon_GetIconPalette(BoxPokemon *boxMon) {
     u32 form;
     BOOL isEgg;
 
-    encry = AcquireBoxMonLock(boxMon);
+    encry = BoxPokemon_AcquireBoxMonLock(boxMon);
     form = BoxMonGetForm(boxMon);
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     isEgg = GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL);
-    ReleaseBoxMonLock(boxMon, encry);
+    BoxPokemon_ReleaseBoxMonLock(boxMon, encry);
     return GetMonIconPaletteEx(species, form, isEgg);
 }
 

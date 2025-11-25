@@ -2290,7 +2290,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	bl Party_GetMonByIndex
 	mov r1, #0xb3
 	add r2, sp, #0x10
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #0x30
 	ldrb r1, [r1, #0x18]
 	add r0, r5, #0
@@ -3353,7 +3353,7 @@ _0223F790:
 	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, _0223F7B0 ; =0x0000022A
 	strh r0, [r5, r1]
 	pop {r3, r4, r5, pc}

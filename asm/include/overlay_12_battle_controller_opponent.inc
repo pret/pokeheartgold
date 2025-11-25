@@ -67,8 +67,8 @@
 .public GF_AssertFail
 .public PlayerProfile_GetVersion
 .public AllocMonZeroed
-.public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_CalcMonLevelAndStats
+.public Pokemon_GetMonData
 .public SetMonData
 .public GetMonBaseStat
 .public GetNatureFromPersonality

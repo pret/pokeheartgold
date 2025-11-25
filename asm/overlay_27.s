@@ -4031,7 +4031,7 @@ ov27_0225BFCC: ; 0x0225BFCC
 	ldr r0, [r1, #0x10]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]

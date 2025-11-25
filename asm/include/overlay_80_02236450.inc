@@ -15,8 +15,8 @@
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
 .public AllocMonZeroed
-.public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_CalcMonLevelAndStats
+.public Pokemon_GetMonData
 .public SetMonData
 .public GetMonBaseStat
 .public GetMonExpBySpeciesAndLevel

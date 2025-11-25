@@ -27,10 +27,10 @@
 .public sub_0203769C
 .public sub_02039F68
 .public MapHeader_GetMapSec
-.public ZeroMonData
-.public CreateMon
-.public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_ZeroMonData
+.public Pokemon_CreateMon
+.public Pokemon_CalcMonLevelAndStats
+.public Pokemon_GetMonData
 .public SetMonData
 .public GetMonBaseStat
 .public GetNatureFromPersonality

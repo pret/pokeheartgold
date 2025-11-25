@@ -575,7 +575,7 @@ _0221C266:
 	add r0, r5, r1
 	ldr r0, [r0, #4]
 	mov r1, #0xa3
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x20]
 	ldrb r1, [r4, #0x11]
 	mov r0, #0x50
@@ -1651,7 +1651,7 @@ _0221CAB6:
 	ldr r0, [r0, #4]
 	add r1, #0x3a
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r7, #4
 	strh r0, [r4, r1]
 	mov r2, #2
@@ -1707,7 +1707,7 @@ _0221CB56:
 	add r0, r4, r0
 	ldr r0, [r0, #4]
 	mov r1, #0xa3
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, _0221CC30 ; =0x0000207E
 	mov r2, #4
 	strh r0, [r4, r1]
@@ -1863,7 +1863,7 @@ _0221CC7C:
 	add r1, r7, #0
 	add r1, #0x3a
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x82
 	lsl r1, r1, #6
 	strh r0, [r4, r1]
@@ -2477,7 +2477,7 @@ _0221D19E:
 	str r0, [r4, #4]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #8]
 	ldrh r0, [r4, #8]
 	cmp r0, #0
@@ -2493,54 +2493,54 @@ _0221D1C8:
 	add r4, r0, r5
 	ldr r0, [r4, #4]
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0xa]
 	ldr r0, [r4, #4]
 	mov r1, #0xa6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0xc]
 	ldr r0, [r4, #4]
 	mov r1, #0xa7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0xe]
 	ldr r0, [r4, #4]
 	mov r1, #0xa8
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x10]
 	ldr r0, [r4, #4]
 	mov r1, #0xa9
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x12]
 	ldr r0, [r4, #4]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x14]
 	ldr r0, [r4, #4]
 	mov r1, #0xa4
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x16]
 	ldr r0, [r4, #4]
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strb r0, [r4, #0x18]
 	ldr r0, [r4, #4]
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r6, [sp]
 	strb r0, [r4, #0x19]
 	ldr r0, [r4, #4]
 	add r6, #0x1a
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldrb r1, [r6, r5]
 	mov r2, #0x7f
 	lsl r0, r0, #0x18
@@ -2553,7 +2553,7 @@ _0221D1C8:
 	ldr r0, [r4, #4]
 	mov r1, #0xb0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #1
 	ldrb r1, [r6, r5]
 	bne _0221D278
@@ -2593,7 +2593,7 @@ _0221D27E:
 	ldr r0, [r4, #4]
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	lsl r0, r0, #0x1f
@@ -2606,17 +2606,17 @@ _0221D27E:
 	ldr r0, [r4, #4]
 	mov r1, #0xa
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x1c]
 	ldr r0, [r4, #4]
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r4, #0x1e]
 	ldr r0, [r4, #4]
 	mov r1, #8
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r6, [sp]
 	str r0, [r4, #0x20]
 	add r6, #0x1a
@@ -2646,49 +2646,49 @@ _0221D322:
 	ldr r0, [r4, #4]
 	mov r1, #0x13
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x2c
 	strb r0, [r1]
 	ldr r0, [r4, #4]
 	mov r1, #0x14
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x2d
 	strb r0, [r1]
 	ldr r0, [r4, #4]
 	mov r1, #0x15
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x2e
 	strb r0, [r1]
 	ldr r0, [r4, #4]
 	mov r1, #0x16
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x2f
 	strb r0, [r1]
 	ldr r0, [r4, #4]
 	mov r1, #0x17
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x30
 	strb r0, [r1]
 	ldr r0, [r4, #4]
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x31
 	strb r0, [r1]
 	ldr r0, [r4, #4]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r4, #0x32
 	strb r0, [r4]
 	ldr r1, [sp]
@@ -2706,7 +2706,7 @@ _0221D3A0:
 	ldr r0, [r6, #4]
 	add r1, #0x36
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, [sp, #0xc]
 	strh r0, [r7, r1]
 	add r0, r1, #0
@@ -2717,13 +2717,13 @@ _0221D3A0:
 	ldr r0, [r6, #4]
 	add r1, #0x3a
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strb r0, [r5, #2]
 	add r1, r4, #0
 	ldr r0, [r6, #4]
 	add r1, #0x3e
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strb r0, [r5, #3]
 	ldrh r0, [r5]
 	ldrb r1, [r5, #3]
@@ -8319,7 +8319,7 @@ ov08_02220224: ; 0x02220224
 	mov r1, #0xa3
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #8]

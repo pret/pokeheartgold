@@ -2597,7 +2597,7 @@ _0222A10E:
 	add r0, #8
 	mov r1, #0x98
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #3
 	blt _0222A120
 	cmp r0, #0xe
@@ -24379,9 +24379,9 @@ MigrateBoxMon: ; 0x02234A9C
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ZeroBoxMonData
+	bl BoxPokemon_ZeroBoxMonData
 	add r0, r4, #0
-	bl AcquireBoxMonLock
+	bl BoxPokemon_AcquireBoxMonLock
 	mov r1, #0
 	str r0, [sp]
 	add r0, r6, #0
@@ -25095,7 +25095,7 @@ _0223506E:
 	bl SetBoxMonData
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl ReleaseBoxMonLock
+	bl BoxPokemon_ReleaseBoxMonLock
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -26469,7 +26469,7 @@ ov74_02235B14: ; 0x02235B14
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #0xa
@@ -26605,12 +26605,12 @@ _02235C6C:
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r4, r0, #0
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x85
 	lsl r1, r1, #2
 	add r3, r0, #0

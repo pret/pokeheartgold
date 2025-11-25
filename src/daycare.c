@@ -7,8 +7,8 @@ u32 Daycare_GetSizeOfDaycare(void) {
 
 void Daycare_Init(Daycare *daycare) {
     memset(daycare, 0, sizeof(Daycare));
-    ZeroBoxMonData(&daycare->mons[0].mon);
-    ZeroBoxMonData(&daycare->mons[1].mon);
+    BoxPokemon_ZeroBoxMonData(&daycare->mons[0].mon);
+    BoxPokemon_ZeroBoxMonData(&daycare->mons[1].mon);
     daycare->egg_pid = 0;
     daycare->egg_cycles = 0;
 }
@@ -89,7 +89,7 @@ void DaycareMon_Extras_Init(DaycareMail *mail) {
 }
 
 void DaycareMon_Init(DaycareMon *mon) {
-    ZeroBoxMonData(&mon->mon);
+    BoxPokemon_ZeroBoxMonData(&mon->mon);
     mon->steps = 0;
     DaycareMon_Extras_Init(&mon->mail);
 }

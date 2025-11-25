@@ -101,7 +101,7 @@
 .public String_Delete
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonGender
 .public Mon_GetBoxMon
 .public Pokemon_GetIconNaix

@@ -208,7 +208,7 @@
 .public sub_02069998
 .public sub_020699BC
 .public sub_020699D0
-.public GetMonData
+.public Pokemon_GetMonData
 .public CopyPokemonToPokemon
 .public Party_GetCount
 .public Party_GetMonByIndex

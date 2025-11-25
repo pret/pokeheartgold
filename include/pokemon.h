@@ -32,23 +32,23 @@
 
 extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 
-void ZeroMonData(Pokemon *mon);
-void ZeroBoxMonData(BoxPokemon *boxMon);
+void Pokemon_ZeroMonData(Pokemon *mon);
+void BoxPokemon_ZeroBoxMonData(BoxPokemon *boxMon);
 u32 SizeOfStructPokemon(void);
 Pokemon *AllocMonZeroed(enum HeapID heapID);
-BOOL AcquireMonLock(Pokemon *mon);
-BOOL ReleaseMonLock(Pokemon *mon, BOOL decrypt_result);
-BOOL AcquireBoxMonLock(BoxPokemon *boxMon);
-BOOL ReleaseBoxMonLock(BoxPokemon *boxMon, BOOL decrypt_result);
-void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId);
-void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId);
-void CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nature);
-void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter);
+BOOL Pokemon_AcquireMonLock(Pokemon *mon);
+BOOL Pokemon_ReleaseMonLock(Pokemon *mon, BOOL decrypt_result);
+BOOL BoxPokemon_AcquireBoxMonLock(BoxPokemon *boxMon);
+BOOL BoxPokemon_ReleaseBoxMonLock(BoxPokemon *boxMon, BOOL decrypt_result);
+void Pokemon_CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId);
+void BoxPokemon_CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId);
+void Pokemon_CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nature);
+void Pokemon_CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter);
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature);
-void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality);
-void CalcMonLevelAndStats(Pokemon *mon);
-void CalcMonStats(Pokemon *mon);
-u32 GetMonData(Pokemon *mon, int attr, void *ptr);
+void Pokemon_CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality);
+void Pokemon_CalcMonLevelAndStats(Pokemon *mon);
+void Pokemon_CalcMonStats(Pokemon *mon);
+u32 Pokemon_GetMonData(Pokemon *mon, int attr, void *ptr);
 u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *ptr);
 void SetMonData(Pokemon *mon, int attr, const void *ptr);
 void SetBoxMonData(BoxPokemon *boxMon, int attr, const void *ptr);
@@ -185,7 +185,7 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
 void LoadMonPersonal(int species, BASE_STATS *personal);
 void LoadMonBaseStats_HandleAlternateForm(int species, int form, BASE_STATS *personal);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evo);
-void MonEncryptSegment(void *data, u32 size, u32 seed);
+void Pokemon_EncryptSegment(void *data, u32 size, u32 seed);
 void MonDecryptSegment(void *data, u32 size, u32 seed);
 u32 CalcMonChecksum(void *_data, u32 size);
 int ResolveMonForm(int species, int form);

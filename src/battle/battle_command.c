@@ -1198,11 +1198,11 @@ BOOL BtlCmd_CalcExpGain(BattleSystem *battleSystem, BattleContext *ctx) {
         Pokemon *mon;
         for (int i = 0; i < Party_GetCount(BattleSystem_GetParty(battleSystem, 0)); i++) {
             mon = BattleSystem_GetPartyMon(battleSystem, 0, i);
-            if (GetMonData(mon, MON_DATA_SPECIES, 0) && GetMonData(mon, MON_DATA_HP, 0)) {
+            if (Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0) && Pokemon_GetMonData(mon, MON_DATA_HP, 0)) {
                 if (ctx->unk_A4[(ctx->battlerIdFainted >> 1) & 1] & MaskOfFlagNo(i)) {
                     expMonsCnt++;
                 }
-                itemNo = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
+                itemNo = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, 0);
                 if (GetItemVar(ctx, itemNo, ITEM_VAR_HOLD_EFFECT) == HOLD_EFFECT_EXP_SHARE) {
                     expShareMonsCnt++;
                 }
@@ -3158,9 +3158,9 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *battleSystem, BattleContext *ctx) {
 
         for (monIndex = index0; monIndex < indexEnd; monIndex++) {
             mon = Party_GetMonByIndex(party, monIndex);
-            if (GetMonData(mon, MON_DATA_SPECIES, 0) != SPECIES_NONE
-                && !GetMonData(mon, MON_DATA_IS_EGG, 0)
-                && GetMonData(mon, MON_DATA_HP, 0) != 0) {
+            if (Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0) != SPECIES_NONE
+                && !Pokemon_GetMonData(mon, MON_DATA_IS_EGG, 0)
+                && Pokemon_GetMonData(mon, MON_DATA_HP, 0) != 0) {
                 cnt++;
             }
         }
@@ -3174,9 +3174,9 @@ BOOL BtlCmd_TryWhirlwind(BattleSystem *battleSystem, BattleContext *ctx) {
                     monIndex += index0;
                 } while (monIndex == monIndexA || monIndex == monIndexB);
                 mon = Party_GetMonByIndex(party, monIndex);
-            } while (GetMonData(mon, MON_DATA_SPECIES, 0) == SPECIES_NONE
-                || GetMonData(mon, MON_DATA_IS_EGG, 0) == TRUE
-                || GetMonData(mon, MON_DATA_HP, 0) == 0);
+            } while (Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0) == SPECIES_NONE
+                || Pokemon_GetMonData(mon, MON_DATA_IS_EGG, 0) == TRUE
+                || Pokemon_GetMonData(mon, MON_DATA_HP, 0) == 0);
             ctx->unk_21A0[ctx->battlerIdTarget] = monIndex;
         } else {
             BattleScriptIncrementPointer(ctx, adrs);
@@ -3712,10 +3712,10 @@ BOOL BtlCmd_BeatUp(BattleSystem *battleSystem, BattleContext *ctx) {
         while (TRUE) {
             mon = BattleSystem_GetPartyMon(battleSystem, ctx->battlerIdAttacker, ctx->beatUpCount);
             if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker]
-                || (GetMonData(mon, MON_DATA_HP, 0) != 0
-                    && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
-                    && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG
-                    && GetMonData(mon, MON_DATA_STATUS, 0) == STATUS_NONE)) {
+                || (Pokemon_GetMonData(mon, MON_DATA_HP, 0) != 0
+                    && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                    && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG
+                    && Pokemon_GetMonData(mon, MON_DATA_STATUS, 0) == STATUS_NONE)) {
                 break;
             }
             ctx->beatUpCount++;
@@ -3723,9 +3723,9 @@ BOOL BtlCmd_BeatUp(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 
     mon = BattleSystem_GetPartyMon(battleSystem, ctx->battlerIdAttacker, ctx->beatUpCount);
-    species = GetMonData(mon, MON_DATA_SPECIES, 0);
-    form = GetMonData(mon, MON_DATA_FORM, 0);
-    level = GetMonData(mon, MON_DATA_LEVEL, 0);
+    species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0);
+    form = Pokemon_GetMonData(mon, MON_DATA_FORM, 0);
+    level = Pokemon_GetMonData(mon, MON_DATA_LEVEL, 0);
 
     ctx->damage = GetMonBaseStat_HandleAlternateForm(species, form, BASE_ATK);
     ctx->damage *= ctx->trainerAIData.moveData[ctx->moveNoCur].power;
@@ -3751,10 +3751,10 @@ BOOL BtlCmd_BeatUp(BattleSystem *battleSystem, BattleContext *ctx) {
         while (TRUE) {
             mon = BattleSystem_GetPartyMon(battleSystem, ctx->battlerIdAttacker, ctx->beatUpCount);
             if (ctx->beatUpCount == ctx->selectedMonIndex[ctx->battlerIdAttacker]
-                || (GetMonData(mon, MON_DATA_HP, 0) != 0
-                    && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
-                    && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG
-                    && GetMonData(mon, MON_DATA_STATUS, 0) == STATUS_NONE)) {
+                || (Pokemon_GetMonData(mon, MON_DATA_HP, 0) != 0
+                    && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                    && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG
+                    && Pokemon_GetMonData(mon, MON_DATA_STATUS, 0) == STATUS_NONE)) {
                 break;
             }
             ctx->beatUpCount++;
@@ -3858,10 +3858,10 @@ BOOL BtlCmd_TryAssist(BattleSystem *battleSystem, BattleContext *ctx) {
     for (i = 0; i < monCnt; i++) {
         if (i != ctx->selectedMonIndex[ctx->battlerIdAttacker]) {
             mon = BattleSystem_GetPartyMon(battleSystem, ctx->battlerIdAttacker, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
-                && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+            if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
                 for (j = 0; j < MAX_MON_MOVES; j++) {
-                    move = GetMonData(mon, MON_DATA_MOVE1 + j, 0);
+                    move = Pokemon_GetMonData(mon, MON_DATA_MOVE1 + j, 0);
                     if (CheckMoveCallsOtherMove(move) == FALSE && CheckLegalMetronomeMove(battleSystem, ctx, ctx->battlerIdAttacker, move) == TRUE) {
                         avaliableMoves[moveCnt] = move;
                         moveCnt++;
@@ -4685,16 +4685,16 @@ BOOL BtlCmd_GenerateEndOfBattleItem(BattleSystem *battleSystem, BattleContext *c
 
     for (i = 0; i < BattleSystem_GetPartySize(battleSystem, 0); i++) {
         mon = BattleSystem_GetPartyMon(battleSystem, 0, i);
-        species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
-        item = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
-        ability = GetMonData(mon, MON_DATA_ABILITY, 0);
+        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
+        item = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, 0);
+        ability = Pokemon_GetMonData(mon, MON_DATA_ABILITY, 0);
         if (ability == ABILITY_PICKUP
             && species != SPECIES_NONE
             && species != SPECIES_EGG
             && item == ITEM_NONE
             && !(BattleSystem_Random(battleSystem) % 10)) {
             rnd = BattleSystem_Random(battleSystem) % 100;
-            lvl = (GetMonData(mon, MON_DATA_LEVEL, 0) - 1) / 10;
+            lvl = (Pokemon_GetMonData(mon, MON_DATA_LEVEL, 0) - 1) / 10;
             if (lvl >= 10) {
                 lvl = 9;
             }
@@ -4714,7 +4714,7 @@ BOOL BtlCmd_GenerateEndOfBattleItem(BattleSystem *battleSystem, BattleContext *c
             && item == ITEM_NONE) {
             j = 0;
             k = 10;
-            lvl = GetMonData(mon, MON_DATA_LEVEL, 0);
+            lvl = Pokemon_GetMonData(mon, MON_DATA_LEVEL, 0);
             while (lvl > k) {
                 j++;
                 k += 10;
@@ -5324,9 +5324,9 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
 
         for (i = 0; i < Party_GetCount(party1); i++) {
             mon = Party_GetMonByIndex(party1, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
-                && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
-                partyHp += GetMonData(mon, MON_DATA_HP, 0);
+            if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+                partyHp += Pokemon_GetMonData(mon, MON_DATA_HP, 0);
             }
         }
 
@@ -5335,9 +5335,9 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
         } else {
             for (i = 0; i < Party_GetCount(party2); i++) {
                 mon = Party_GetMonByIndex(party2, i);
-                if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
-                    && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
-                    partyHp += GetMonData(mon, MON_DATA_HP, 0);
+                if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                    && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+                    partyHp += Pokemon_GetMonData(mon, MON_DATA_HP, 0);
                 }
             }
         }
@@ -5352,9 +5352,9 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
 
         for (i = 0; i < Party_GetCount(party); i++) {
             mon = Party_GetMonByIndex(party, i);
-            if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
-                && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
-                partyHp += GetMonData(mon, MON_DATA_HP, 0);
+            if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE
+                && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+                partyHp += Pokemon_GetMonData(mon, MON_DATA_HP, 0);
             }
         }
 
@@ -5490,8 +5490,8 @@ BOOL BtlCmd_TryRestoreStatusOnSwitch(BattleSystem *battleSystem, BattleContext *
     int battlerId = GetBattlerIDBySide(battleSystem, ctx, side);
     if (ctx->battleMons[battlerId].hp && ctx->selectedMonIndex[battlerId] != 6) {
         Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, ctx->selectedMonIndex[battlerId]);
-        int ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
-        int status = GetMonData(mon, MON_DATA_STATUS, NULL);
+        int ability = Pokemon_GetMonData(mon, MON_DATA_ABILITY, NULL);
+        int status = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (ctx->battleMons[battlerId].ability != ABILITY_NATURAL_CURE && !CheckStatusHealSwitch(ctx, ability, status)) {
             BattleScriptIncrementPointer(ctx, adrs);
         }
@@ -5939,7 +5939,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
     // Figure out which mon we're working on
     for (slot = data->unk30[6]; slot < BattleSystem_GetPartySize(data->battleSystem, expBattler); slot++) {
         mon = BattleSystem_GetPartyMon(data->battleSystem, expBattler, slot);
-        item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        item = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
         itemEffect = GetItemAttr(item, ITEM_VAR_HOLD_EFFECT, HEAP_ID_BATTLE);
 
         if (itemEffect == HOLD_EFFECT_EXP_SHARE || (data->ctx->unk_A4[side] & MaskOfFlagNo(slot))) {
@@ -5957,7 +5957,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
     switch (data->state) {
     case STATE_GET_EXP_START:
-        item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+        item = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
         itemEffect = GetItemAttr(item, ITEM_VAR_HOLD_EFFECT, HEAP_ID_BATTLE);
 
         // Declare victory if all wild mons have been defeated
@@ -5965,7 +5965,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             && data->ctx->battleMons[BATTLER_ENEMY].hp
                     + data->ctx->battleMons[BATTLER_ENEMY2].hp
                 == 0
-            && GetMonData(mon, MON_DATA_HP, NULL)
+            && Pokemon_GetMonData(mon, MON_DATA_HP, NULL)
             && !data->ctx->unk_3144) {
             PlayBGM(SEQ_GS_WIN2);
             data->ctx->unk_3144 = TRUE;
@@ -5975,7 +5975,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         u32 totalExp = 0;
         msg.id = msg_0197_00001; // "{0} gained {1} Exp. Points!"
 
-        if (GetMonData(mon, MON_DATA_HP, NULL) && GetMonData(mon, MON_DATA_LEVEL, NULL) != 100) {
+        if (Pokemon_GetMonData(mon, MON_DATA_HP, NULL) && Pokemon_GetMonData(mon, MON_DATA_LEVEL, NULL) != 100) {
             if (data->ctx->unk_A4[side] & MaskOfFlagNo(slot)) {
                 totalExp = data->ctx->gainedExp;
             }
@@ -5993,7 +5993,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             }
 
             if (!ov12_022568B0(data->battleSystem, mon)) {
-                if (GetMonData(mon, MON_DATA_LANGUAGE, NULL) != gGameLanguage) {
+                if (Pokemon_GetMonData(mon, MON_DATA_LANGUAGE, NULL) != gGameLanguage) {
                     totalExp = totalExp * 170 / 100;
                 } else {
                     totalExp = totalExp * 150 / 100;
@@ -6002,7 +6002,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 msg.id = msg_0197_00002; // "{0} gained a boosted {1} Exp. Points!"
             }
 
-            u32 newExp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+            u32 newExp = Pokemon_GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
             data->unk30[3] = newExp - GetMonBaseExperienceAtCurrentLevel(mon);
             newExp += totalExp;
 
@@ -6077,17 +6077,17 @@ static void Task_GetExp(SysTask *task, void *inData) {
     case STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT:
         if (Link_QueueNotEmpty(data->ctx)) {
             TempStatsStruct stats = ov12_0226C354;
-            int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
+            int level = Pokemon_GetMonData(mon, MON_DATA_LEVEL, NULL);
             // Cache the stats from the previous level for later
             data->ctx->prevLevelStats = Heap_Alloc(HEAP_ID_BATTLE, sizeof(PokemonStats));
             PokemonStats *oldStats = data->ctx->prevLevelStats;
             for (i = 0; i < NUM_STATS; i++) {
-                oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
+                oldStats->stats[i] = Pokemon_GetMonData(mon, stats.stats[i], NULL);
             }
 
             MonApplyFriendshipMod(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->battleSystem));
             ApplyMonMoodModifier(mon, 0);
-            CalcMonStats(mon);
+            Pokemon_CalcMonStats(mon);
 
             if (data->ctx->selectedMonIndex[expBattler] == slot) {
                 BattleSystem_ReloadMonData(data->battleSystem, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);
@@ -6157,7 +6157,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
             msg.id = msg_0197_00948; // "+{0}"
             msg.tag = TAG_NUMBERS;
-            msg.param[0] = GetMonData(mon, monData.stats[i], NULL) - oldStats->stats[i];
+            msg.param[0] = Pokemon_GetMonData(mon, monData.stats[i], NULL) - oldStats->stats[i];
             msg.numDigits = 2;
 
             ov12_0223C4E8(data->battleSystem, window, msgLoader, &msg, 80, 16 * i, 0, 0, 0);
@@ -6175,7 +6175,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         for (i = 0; i < NUM_STATS; i++) {
             msg.id = msg_0197_00949; // just a number
             msg.tag = TAG_NUMBERS;
-            msg.param[0] = GetMonData(mon, monData.stats[i], NULL);
+            msg.param[0] = Pokemon_GetMonData(mon, monData.stats[i], NULL);
             msg.numDigits = 3;
 
             ov12_0223C4E8(data->battleSystem, window, msgLoader, &msg, 72, 16 * i, 0x2, 36, 0);
@@ -6352,7 +6352,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         msg.id = msg_0197_01190; // "{0} forgot how to use {1}."
         msg.tag = TAG_NICKNAME_MOVE;
         msg.param[0] = expBattler | (slot << 8);
-        msg.param[1] = GetMonData(mon, MON_DATA_MOVE1 + data->unk30[5], NULL);
+        msg.param[1] = Pokemon_GetMonData(mon, MON_DATA_MOVE1 + data->unk30[5], NULL);
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->battleSystem, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->battleSystem));
         data->state++;
         break;

@@ -237,11 +237,17 @@ BagCursor *BattleSystem_GetBagCursor(BattleSystem *battleSystem) {
     return battleSystem->bagCursor;
 }
 
+<<<<<<< HEAD
 u16 BattleSystem_GetMonBall(BattleSystem *battleSystem, Pokemon *mon) {
     if (battleSystem->unk2474_2) {
         return GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
+=======
+u16 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon) {
+    if (bsys->unk2474_2) {
+        return Pokemon_GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
+>>>>>>> 21acff13d (labelled various func names)
     } else {
-        return GetMonData(mon, MON_DATA_POKEBALL, NULL);
+        return Pokemon_GetMonData(mon, MON_DATA_POKEBALL, NULL);
     }
 }
 
@@ -354,7 +360,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     friendship = 0;
 
     if (GetItemAttr(item, ITEMATTR_SLP_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_SLEEP) {
             data &= ~STATUS_SLEEP;
             SetMonData(mon, MON_DATA_STATUS, &data);
@@ -371,7 +377,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_PSN_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_POISON_ALL) {
             data &= ~STATUS_POISON_ALL;
             SetMonData(mon, MON_DATA_STATUS, &data);
@@ -385,7 +391,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_BRN_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_BURN) {
             data &= ~STATUS_BURN;
             SetMonData(mon, MON_DATA_STATUS, &data);
@@ -399,7 +405,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_FRZ_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_FREEZE) {
             data &= ~STATUS_FREEZE;
             SetMonData(mon, MON_DATA_STATUS, &data);
@@ -413,7 +419,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_PRZ_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_PARALYSIS) {
             data &= ~STATUS_PARALYSIS;
             SetMonData(mon, MON_DATA_STATUS, &data);
@@ -526,7 +532,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
 
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
-        if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
+        if (Pokemon_GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != Pokemon_GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
             AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
@@ -540,7 +546,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE_ALL, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
         for (movePos = 0; movePos < MAX_MON_MOVES; movePos++) {
-            if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
+            if (Pokemon_GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != Pokemon_GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
                 AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
                 if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                     if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
@@ -555,26 +561,26 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     if (GetItemAttr(item, ITEMATTR_HP_RESTORE, HEAP_ID_BATTLE)) {
         data = 0;
         if (GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
-            if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+            if (Pokemon_GetMonData(mon, MON_DATA_HP, NULL) == 0) {
                 data = 1;
             }
         } else {
-            data = GetMonData(mon, MON_DATA_HP, NULL);
+            data = Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
         }
-        if (data && GetMonData(mon, MON_DATA_HP, NULL) != GetMonData(mon, MON_DATA_MAX_HP, NULL)) {
+        if (data && Pokemon_GetMonData(mon, MON_DATA_HP, NULL) != Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL)) {
             data = GetItemAttr(item, ITEMATTR_HP_RESTORE_PARAM, HEAP_ID_BATTLE);
             switch (data) {
             case HP_RESTORE_ALL:
-                data = GetMonData(mon, MON_DATA_MAX_HP, NULL);
+                data = Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL);
                 break;
             case HP_RESTORE_HALF:
-                data = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
+                data = Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
                 if (data == 0) {
                     data = 1;
                 }
                 break;
             case HP_RESTORE_QTR:
-                data = GetMonData(mon, MON_DATA_MAX_HP, NULL) * 25 / 100;
+                data = Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL) * 25 / 100;
                 if (data == 0) {
                     data = 1;
                 }
@@ -595,19 +601,19 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO, HEAP_ID_BATTLE)) {
-        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100 && ret == TRUE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO_PARAM, HEAP_ID_BATTLE);
         }
     }
 
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_MED, HEAP_ID_BATTLE)) {
-        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200 && ret == TRUE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_MED_PARAM, HEAP_ID_BATTLE);
         }
     }
 
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI, HEAP_ID_BATTLE)) {
-        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200 && ret == TRUE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM, HEAP_ID_BATTLE);
         }
     }
@@ -617,10 +623,14 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             if (BallToItemId(BattleSystem_GetMonBall(battleSystem, mon)) == ITEM_LUXURY_BALL) {
                 friendship++;
             }
+<<<<<<< HEAD
             if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(battleSystem)) {
+=======
+            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
+>>>>>>> 21acff13d (labelled various func names)
                 friendship++;
             }
-            data = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+            data = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
             if (GetItemAttr(data, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE) == HOLD_EFFECT_FRIENDSHIP_UP) {
                 friendship = friendship * 150 / 100;
             }
@@ -791,11 +801,19 @@ void BattleSystem_TryChangeForm(BattleSystem *battleSystem) {
         return;
     }
 
+<<<<<<< HEAD
     for (i = 0; i < BattleSystem_GetPartySize(battleSystem, BATTLER_PLAYER); i++) {
         mon = BattleSystem_GetPartyMon(battleSystem, BATTLER_PLAYER, i);
         species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
         if (species == SPECIES_BURMY && battleSystem->unk2418[BATTLER_PLAYER] & MaskOfFlagNo(i)) {
             switch (BattleSystem_GetTerrainId(battleSystem)) {
+=======
+    for (i = 0; i < BattleSystem_GetPartySize(bsys, BATTLER_PLAYER); i++) {
+        mon = BattleSystem_GetPartyMon(bsys, BATTLER_PLAYER, i);
+        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+        if (species == SPECIES_BURMY && bsys->unk2418[BATTLER_PLAYER] & MaskOfFlagNo(i)) {
+            switch (BattleSystem_GetTerrainId(bsys)) {
+>>>>>>> 21acff13d (labelled various func names)
             case TERRAIN_GRASS:
             case TERRAIN_PUDDLE:
             case TERRAIN_SNOW:
@@ -1337,8 +1355,13 @@ void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
             Pokedex_SetMonSeenFlag(battleSystem->pokedex, mon);
         }
     }
+<<<<<<< HEAD
     if (!(flag & 1) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
         Pokedex_SetMonCaughtFlag(battleSystem->pokedex, mon);
+=======
+    if (!(flag & 1) && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
+        Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
+>>>>>>> 21acff13d (labelled various func names)
     }
 }
 

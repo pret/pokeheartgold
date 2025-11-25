@@ -219,7 +219,7 @@
 .public sub_0202BF08
 .public GameStats_AddScore
 .public AllocMonZeroed
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetPokemonSpriteCharAndPlttNarcIds_DP
 .public MonPicHeight_DP
 .public NNS_GfdResetFrmTexVramState

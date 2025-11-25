@@ -337,12 +337,12 @@ _021F7524:
 	str r0, [sp, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
 	bl GetMonGender
@@ -445,7 +445,7 @@ _021F7636:
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r3, r0, #0
 	mov r1, #0x42
 	lsl r2, r7, #0x10

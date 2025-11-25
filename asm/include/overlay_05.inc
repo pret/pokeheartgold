@@ -140,7 +140,7 @@
 .public sub_02037AC0
 .public sub_02037B38
 .public sub_0203A880
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonGender
 .public Mon_GetBoxMon
 .public Pokemon_GetIconNaix

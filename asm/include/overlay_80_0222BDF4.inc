@@ -148,7 +148,7 @@
 .public Save_VarsFlags_GetVarAddr
 .public sub_02058284
 .public sub_0205C298
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

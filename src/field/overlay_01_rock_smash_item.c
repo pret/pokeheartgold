@@ -142,8 +142,8 @@ static BOOL CheckRockSmashItemDrop(FieldSystem *fieldSystem, RockSmashItemCheckW
         return FALSE;
     }
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), 0);
-    if (GetMonData(mon, MON_DATA_IS_EGG, NULL) == 0) {
-        ability = GetMonData(mon, MON_DATA_ABILITY, NULL);
+    if (Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL) == 0) {
+        ability = Pokemon_GetMonData(mon, MON_DATA_ABILITY, NULL);
     } else {
         ability = NUM_ABILITIES;
     }

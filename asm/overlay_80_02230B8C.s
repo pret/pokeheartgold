@@ -505,7 +505,7 @@ _02230F6C:
 	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r5]
 	b _02230FB6
 _02230F8A:

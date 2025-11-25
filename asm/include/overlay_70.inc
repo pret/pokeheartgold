@@ -228,9 +228,9 @@
 .public Save_VarsFlags_SetVar404C
 .public SizeOfStructPokemon
 .public AllocMonZeroed
-.public AcquireBoxMonLock
-.public ReleaseBoxMonLock
-.public GetMonData
+.public BoxPokemon_AcquireBoxMonLock
+.public BoxPokemon_ReleaseBoxMonLock
+.public Pokemon_GetMonData
 .public GetBoxMonData
 .public SetMonData
 .public GetMonBaseStat

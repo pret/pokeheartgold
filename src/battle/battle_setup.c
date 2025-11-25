@@ -124,9 +124,9 @@ BattleSetup *BattleSetup_New_Tutorial(enum HeapID heapID, FieldSystem *fieldSyst
     Bag_AddItem(setup->bag, ITEM_POKE_BALL, 20, heapID);
     {
         Pokemon *pokemon = AllocMonZeroed(heapID);
-        CreateMon(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+        Pokemon_CreateMon(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
         Party_AddMon(setup->party[BATTLER_PLAYER], pokemon);
-        CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+        Pokemon_CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
         Party_AddMon(setup->party[BATTLER_ENEMY], pokemon);
         Heap_Free(pokemon);
     }
@@ -282,10 +282,10 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], Party_GetCount(party));
     for (int i = 0; i < Party_GetCount(party); ++i) {
         CopyPokemonToPokemon(Party_GetMonByIndex(party, i), pokemon);
-        if (level != GetMonData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
-            u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), level);
+        if (level != Pokemon_GetMonData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
+            u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetMonData(pokemon, MON_DATA_SPECIES, NULL), level);
             SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
-            CalcMonLevelAndStats(pokemon);
+            Pokemon_CalcMonLevelAndStats(pokemon);
         }
         BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
     }
@@ -349,10 +349,10 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
         Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], cnt);
         for (i = 0; i < cnt; ++i) {
             CopyPokemonToPokemon(Party_GetMonByIndex(party, partySlots_cpy[i] - 1), pokemon);
-            if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
-                u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), 50);
+            if (Pokemon_GetMonData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
+                u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetMonData(pokemon, MON_DATA_SPECIES, NULL), 50);
                 SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
-                CalcMonLevelAndStats(pokemon);
+                Pokemon_CalcMonLevelAndStats(pokemon);
             }
             BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
         }
