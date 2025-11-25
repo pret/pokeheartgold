@@ -236,8 +236,8 @@
 .public Pokemon_ReleaseMonLock
 .public Pokemon_GetMonData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public GetBattleMonIconNaixEx
 .public GetBattleMonIconPaletteEx

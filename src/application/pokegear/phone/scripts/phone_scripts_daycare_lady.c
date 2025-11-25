@@ -20,7 +20,7 @@ u16 PhoneCall_GetScriptId_DayCareLady(PokegearPhoneCallContext *ctx, PokegearPho
     state->sharedU8var = 0;
     for (i = 0; i < 2; ++i) {
         mon = Daycare_GetMonX(daycare, i);
-        if (GetBoxMonData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
+        if (BoxPokemon_GetData(DaycareMon_GetBoxMon(mon), MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
             ++state->sharedU8var;
             state->daycareMonsLevelGrowth[i] = DaycareMon_CalcLevelGrowth(mon);
         } else {

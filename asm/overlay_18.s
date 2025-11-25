@@ -23938,7 +23938,7 @@ _021F1AC8:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x30
 	add r1, r4, #0
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -33855,7 +33855,7 @@ _021F6A22:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x2c
 	add r1, r4, #0
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -39509,7 +39509,7 @@ ov18_021F95CC: ; 0x021F95CC
 	ldr r1, [r4, #0xc]
 	add r0, sp, #0x10
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

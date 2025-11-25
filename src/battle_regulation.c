@@ -77,7 +77,7 @@ BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *p
 
     rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_UBERS_CLAUSE);
     if (rule == 0) {
-        if (MonCheckFrontierIneligibility(pokemon)) {
+        if (Pokemon_CheckFrontierIneligibility(pokemon)) {
             return FALSE;
         }
     }

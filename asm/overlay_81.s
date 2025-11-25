@@ -4350,7 +4350,7 @@ _02240114:
 	ldrh r1, [r4, r1]
 	add r1, r1, #2
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -4361,7 +4361,7 @@ _02240114:
 	add r1, r1, #6
 	ldrh r1, [r4, r1]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2
@@ -5456,7 +5456,7 @@ ov81_022409B0: ; 0x022409B0
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #0
@@ -5500,7 +5500,7 @@ ov81_022409B0: ; 0x022409B0
 	cmp r0, #1
 	bne _02240AC8
 	add r0, r7, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	add r7, r0, #0
 	add r0, r4, #0
 	bl GetWindowWidth
@@ -9911,7 +9911,7 @@ ov81_02242C80: ; 0x02242C80
 	add r0, sp, #0x10
 	mov r2, #2
 	add r6, r3, #0
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	ldr r0, [sp, #0x34]
 	ldr r3, [sp, #0x30]
 	str r0, [sp]

@@ -54,7 +54,7 @@ void PCStorage_InitializeBoxes(PCStorage *storage) {
 BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PCStorage *storage, BoxPokemon *boxMon) {
     u32 i = storage->curBox;
     do {
-        RestoreBoxMonPP(boxMon);
+        BoxPokemon_RestorePP(boxMon);
         if (PCStorage_PlaceMonInBoxFirstEmptySlot(storage, i, boxMon)) {
             PCStorage_SetBoxModified(storage, i);
             return TRUE;
@@ -69,12 +69,12 @@ BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PCStorage *storage, BoxPokemon *
 
 BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PCStorage *storage, u32 boxno, BoxPokemon *boxMon) {
     u32 i;
-    RestoreBoxMonPP(boxMon);
+    BoxPokemon_RestorePP(boxMon);
     if (boxno == -1u) {
         boxno = storage->curBox;
     }
     for (i = 0; i < MONS_PER_BOX; i++) {
-        if (GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        if (BoxPokemon_GetData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             storage->boxes[boxno].mons[i] = *boxMon;
             PCStorage_SetBoxModified(storage, boxno);
             return TRUE;
@@ -84,7 +84,7 @@ BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PCStorage *storage, u32 boxno, BoxPok
 }
 
 BOOL PCStorage_PlaceMonInBoxByIndexPair(PCStorage *storage, u32 boxno, u32 slotno, BoxPokemon *boxMon) {
-    RestoreBoxMonPP(boxMon);
+    BoxPokemon_RestorePP(boxMon);
     if (boxno == -1u) {
         boxno = storage->curBox;
     }
@@ -129,7 +129,7 @@ int PCStorage_FindFirstBoxWithEmptySlot(PCStorage *storage) {
 
     do {
         for (i = 0; i < MONS_PER_BOX; i++) {
-            if (!GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
+            if (!BoxPokemon_GetData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
                 return boxno;
             }
         }
@@ -153,7 +153,7 @@ BOOL PCStorage_FindFirstEmptySlot(PCStorage *storage, int *boxno_p, int *slotno_
 
     do {
         while (j < MONS_PER_BOX) {
-            if (!GetBoxMonData(&storage->boxes[i].mons[j], MON_DATA_SPECIES_EXISTS, NULL)) {
+            if (!BoxPokemon_GetData(&storage->boxes[i].mons[j], MON_DATA_SPECIES_EXISTS, NULL)) {
                 *boxno_p = i;
                 *slotno_p = j;
                 return TRUE;
@@ -180,7 +180,7 @@ int PCStorage_CountEmptySpotsInAllBoxes(PCStorage *storage) {
     int i, j, count = 0;
     for (i = 0; i < NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
-            if (!GetBoxMonData(&storage->boxes[i].mons[j], MON_DATA_SPECIES_EXISTS, NULL)) {
+            if (!BoxPokemon_GetData(&storage->boxes[i].mons[j], MON_DATA_SPECIES_EXISTS, NULL)) {
                 count++;
             }
         }
@@ -197,7 +197,7 @@ int PCStorage_CountEmptySpotsInBox(PCStorage *storage, u32 boxno) {
     GF_ASSERT(boxno < NUM_BOXES);
     count = 0;
     for (i = 0; i < MONS_PER_BOX; i++) {
-        if (!GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
+        if (!BoxPokemon_GetData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
             count++;
         }
     }
@@ -264,7 +264,7 @@ int PCStorage_CountMonsAndEggsInBox(PCStorage *storage, u32 boxno) {
     if (boxno < NUM_BOXES) {
         count = 0;
         for (i = 0; i < MONS_PER_BOX; i++) {
-            if (GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
+            if (BoxPokemon_GetData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)) {
                 count++;
             }
         }
@@ -283,8 +283,8 @@ int PCStorage_CountMonsInBox(PCStorage *storage, u32 boxno) {
     if (boxno < NUM_BOXES) {
         count = 0;
         for (i = 0; i < MONS_PER_BOX; i++) {
-            if (GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)
-                && !GetBoxMonData(&storage->boxes[boxno].mons[i], MON_DATA_IS_EGG, NULL)) {
+            if (BoxPokemon_GetData(&storage->boxes[boxno].mons[i], MON_DATA_SPECIES_EXISTS, NULL)
+                && !BoxPokemon_GetData(&storage->boxes[boxno].mons[i], MON_DATA_IS_EGG, NULL)) {
                 count++;
             }
         }
@@ -311,7 +311,7 @@ u32 PCStorage_GetMonDataByIndexPair(PCStorage *storage, u32 boxno, u32 slotno, i
     if (boxno == -1u) {
         boxno = storage->curBox;
     }
-    return GetBoxMonData(&storage->boxes[boxno].mons[slotno], attr, ptr);
+    return BoxPokemon_GetData(&storage->boxes[boxno].mons[slotno], attr, ptr);
 }
 
 BoxPokemon *PCStorage_GetMonByIndexPair(PCStorage *storage, u32 boxno, u32 slotno) {

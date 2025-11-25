@@ -60,7 +60,7 @@ static BOOL CreateStarter(TaskManager *taskManager) {
                 Pokemon_SetCatchData(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD2);
                 {
                     int item = ITEM_NONE;
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+                    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item);
                 }
             }
         }

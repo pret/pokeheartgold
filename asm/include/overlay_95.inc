@@ -149,11 +149,11 @@
 .public Options_GetFrame
 .public sub_0203E354
 .public Pokemon_GetMonData
-.public SetMonData
-.public GetMonNature
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public MonPicHeight
-.public Mon_GetBoxMon
+.public Pokemon_SetData
+.public Pokemon_GetNature
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public BoxPokemon_GetPicHeight
+.public Pokemon_GetBox
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public sub_020729A4

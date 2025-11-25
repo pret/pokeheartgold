@@ -164,14 +164,14 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
         }
 
         BoxPokemon *boxMon = DaycareMon_GetBoxMon(Daycare_GetMonX(daycare, dc_mon_idx));
-        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             continue;
         }
 
-        form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
-        species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-        u32 gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
-        BOOL shiny = BoxMonIsShiny(boxMon);
+        form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
+        species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+        u32 gender = BoxPokemon_GetData(boxMon, MON_DATA_GENDER, NULL);
+        BOOL shiny = BoxPokemon_IsShiny(boxMon);
 
         CreateDaycareMonSpriteInternal(fieldSystem->mapObjectManager, (u8)dc_mon_idx, species, form, gender, 1, x, y, fieldSystem->location->mapId, shiny);
     }
@@ -224,7 +224,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         }
 
         u32 no_item = ITEM_NONE;
-        SetMonData(mon, MON_DATA_HELD_ITEM, &no_item);
+        Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &no_item);
     }
 
     s32 form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
@@ -232,13 +232,13 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         u32 species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
         switch (species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForm(mon);
+            Pokemon_UpdateGiratinaForm(mon);
             break;
         case SPECIES_ROTOM:
-            Mon_UpdateRotomForm(mon, 0, 0);
+            Pokemon_UpdateRotomForm(mon, 0, 0);
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForm(mon, 0);
+            Pokemon_UpdateShayminForm(mon, 0);
             break;
         }
     }

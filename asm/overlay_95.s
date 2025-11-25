@@ -489,7 +489,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0
@@ -1195,18 +1195,18 @@ ov95_021E623C: ; 0x021E623C
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #2
-	bl MonPicHeight
+	bl BoxPokemon_GetPicHeight
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #0x4c
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, sp, #0x3c
 	add r1, r4, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	lsl r2, r6, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x14
@@ -1244,7 +1244,7 @@ ov95_021E62A4: ; 0x021E62A4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl GetMonNature
+	bl Pokemon_GetNature
 	ldr r0, [r5, #0x70]
 	mov r1, #1
 	bl Pokepic_StartAnim

@@ -3630,7 +3630,7 @@ ov57_022394D8: ; 0x022394D8
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 _02239504:
 	cmp r7, #0xff
 	beq _0223951E
@@ -3643,7 +3643,7 @@ _02239504:
 	add r0, r1, r0
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
-	bl SetMonData
+	bl Pokemon_SetData
 _0223951E:
 	add r2, r5, #4
 	ldr r1, [r2, r6]
@@ -5469,7 +5469,7 @@ _0223A39A:
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0xab
-	bl SetMonData
+	bl Pokemon_SetData
 _0223A3E2:
 	mov r0, #0xff
 	mov r1, #0xb
@@ -6499,12 +6499,12 @@ _0223AC4A:
 	mov r1, #0xa2
 	ldr r0, [r4, r0]
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, _0223AEA0 ; =0x00000458
 	mov r1, #0xab
 	ldr r0, [r4, r0]
 	add r2, sp, #0x44
-	bl SetMonData
+	bl Pokemon_SetData
 	mov r0, #0x34
 	add r1, sp, #0x38
 	bl ov07_02232694
@@ -8172,7 +8172,7 @@ ov57_0223B950: ; 0x0223B950
 	ldr r1, [r5, r1]
 	add r0, sp, #0x38
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	ldr r0, _0223B9BC ; =0x00000458
 	mov r1, #5
 	ldr r0, [r5, r0]
@@ -8182,7 +8182,7 @@ ov57_0223B950: ; 0x0223B950
 	ldr r0, _0223B9BC ; =0x00000458
 	mov r1, #2
 	ldr r0, [r5, r0]
-	bl MonPicHeight
+	bl BoxPokemon_GetPicHeight
 	add r6, r0, #0
 	mov r0, #0x73
 	lsl r0, r0, #2
@@ -8233,7 +8233,7 @@ ov57_0223B9C8: ; 0x0223B9C8
 	add r4, r0, #0
 	ldr r0, _0223BA14 ; =0x00000458
 	ldr r0, [r5, r0]
-	bl GetMonNature
+	bl Pokemon_GetNature
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -8570,7 +8570,7 @@ ov57_0223BC4C: ; 0x0223BC4C
 	ldr r0, [r0, #4]
 	mov r1, #0xa2
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _0223BC70:
 	mov r0, #0xff
 	str r0, [r4, r6]

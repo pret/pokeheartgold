@@ -14,7 +14,7 @@
 .public IsBattleResultWin
 .public AllocMonZeroed
 .public Pokemon_GetMonData
-.public Mon_GetBoxMon
+.public Pokemon_GetBox
 .public Party_GetMonByIndex
 .public Frontier_GetLaunchParam
 .public Frontier_GetData

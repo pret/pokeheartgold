@@ -10,7 +10,7 @@
 .public BattleSetup_Delete
 .public IsBattleResultWin
 .public Pokemon_GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public SaveArray_Party_Init
 .public Party_AddMon
 .public Party_GetMonByIndex

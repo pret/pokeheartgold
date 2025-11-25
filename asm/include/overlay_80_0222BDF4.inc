@@ -149,7 +149,7 @@
 .public sub_02058284
 .public sub_0205C298
 .public Pokemon_GetMonData
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

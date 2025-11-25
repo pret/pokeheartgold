@@ -562,7 +562,7 @@ void SetupAndStartFatefulWildBattle(TaskManager *taskManager, u16 species, u8 le
 
     u32 var = 1;
 
-    SetMonData(Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0), MON_DATA_FATEFUL_ENCOUNTER, &var);
+    Pokemon_SetData(Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0), MON_DATA_FATEFUL_ENCOUNTER, &var);
 
     if (canRun) {
         setup->battleSpecial |= 8;

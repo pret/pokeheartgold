@@ -1831,12 +1831,12 @@ _02238CE2:
 	add r1, r5, #0
 	bl Party_GetMonByIndex
 	add r7, r0, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	str r0, [sp, #0x44]
 	add r0, r7, #0
 	mov r1, #0x6f
 	add r2, sp, #0x44
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r6, #4]
 	add r5, r5, #1
 	bl Party_GetCount
@@ -2813,7 +2813,7 @@ _022394EC:
 	lsl r2, r2, #0x10
 	mov r1, #3
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_ApplyFriendshipMod
 	add r0, r6, #0
 	mov r1, #2
 	bl ApplyMonMoodModifier
@@ -2838,7 +2838,7 @@ _02239524:
 	lsl r2, r2, #0x10
 	mov r1, #3
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_ApplyFriendshipMod
 	add r0, r6, #0
 	mov r1, #2
 	bl ApplyMonMoodModifier

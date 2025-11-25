@@ -180,12 +180,12 @@ sub_0202B730: ; 0x0202B730
 	add r0, r4, #0
 	mov r1, #0x75
 	add r2, #0xa
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, #0x33
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, r5, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

@@ -219,7 +219,7 @@ _02246568:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x10]
 	add r0, r0, #1
 	str r0, [sp, #0x10]
@@ -1007,7 +1007,7 @@ _02246C00:
 	add r0, sp, #0xc0
 	add r1, r6, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1244,7 +1244,7 @@ _02246E2A:
 	bne _02246E5C
 	ldr r2, [r5, #0x18]
 	mov r1, #0x78
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r4]
 	mov r1, #0x32
 	bl BattleSystem_GameStatIncrement
@@ -1386,12 +1386,12 @@ _02246F7E:
 	add r0, r6, #0
 	add r1, #0x3a
 	add r2, sp, #0x2c
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, r5, #1
 	cmp r5, #4
 	blt _02246F7E
 	add r0, r6, #0
-	bl Mon_UpdateGiratinaForm
+	bl Pokemon_UpdateGiratinaForm
 	mov r1, #0
 	mvn r1, r1
 	cmp r0, r1
@@ -1401,7 +1401,7 @@ _02246F7E:
 	bl BattleSystem_SetPokedexCaught
 _02246FB4:
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]
@@ -2248,7 +2248,7 @@ _02247622:
 	bl BattleSystem_GetPartyMon
 	mov r1, #9
 	add r2, sp, #8
-	bl SetMonData
+	bl Pokemon_SetData
 _02247646:
 	add r0, r5, #0
 	add sp, #0xc
@@ -3964,7 +3964,7 @@ _022483BC:
 	add r6, r0, #0
 _022483C6:
 	ldr r0, [sp, #0x18]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
@@ -4199,7 +4199,7 @@ _022485B4:
 	add r0, r7, #0
 	mov r1, #8
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_ApplyFriendshipMod
 	add r0, r7, #0
 	mov r1, #6
 	bl ApplyMonMoodModifier
@@ -4212,7 +4212,7 @@ _02248602:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_ApplyFriendshipMod
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4225,7 +4225,7 @@ _02248620:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_ApplyFriendshipMod
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier

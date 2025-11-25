@@ -587,7 +587,7 @@ _0223772C:
 	add r1, r6, #0
 	bl ov80_0222A140
 	add r0, r6, #0
-	bl UpdateMonAbility
+	bl Pokemon_UpdateAbility
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #1
@@ -659,7 +659,7 @@ _022377D0:
 	lsr r2, r2, #0x18
 	bl ov80_0222A140
 	add r0, r6, #0
-	bl UpdateMonAbility
+	bl Pokemon_UpdateAbility
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #3

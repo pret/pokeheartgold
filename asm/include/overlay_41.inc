@@ -220,8 +220,8 @@
 .public GameStats_AddScore
 .public AllocMonZeroed
 .public Pokemon_GetMonData
-.public GetPokemonSpriteCharAndPlttNarcIds_DP
-.public MonPicHeight_DP
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds_DP
+.public BoxPokemon_GetPicHeight_DP
 .public NNS_GfdResetFrmTexVramState
 .public NNS_GfdResetFrmPlttVramState
 .public NNS_G2dGetUnpackedCharacterData

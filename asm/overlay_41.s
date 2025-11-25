@@ -7515,7 +7515,7 @@ ov41_02249604: ; 0x02249604
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds_DP
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds_DP
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -7561,7 +7561,7 @@ ov41_02249604: ; 0x02249604
 	bl ov41_02249978
 	add r0, r6, #0
 	mov r1, #2
-	bl MonPicHeight_DP
+	bl BoxPokemon_GetPicHeight_DP
 	mov r2, #0
 	str r2, [sp]
 	add r7, r0, #0

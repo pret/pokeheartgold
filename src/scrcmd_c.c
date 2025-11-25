@@ -1593,7 +1593,7 @@ BOOL ScrCmd_574(ScriptContext *ctx) {
 BOOL ScrCmd_136(ScriptContext *ctx) {
     u16 partyIdx = ScriptGetVar(ctx);
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = GetMonUnownLetter(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
+    *p_dest = Pokemon_GetUnownLetter(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
     return FALSE;
 }
 
@@ -3702,7 +3702,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
     for (i = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
         if (Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
             Pokemon_CalcMonLevelAndStats(mon);
             Pokedex_SetMonCaughtFlag(pokedex, mon);
         }
@@ -4288,8 +4288,8 @@ u32 sub_020467A8(SaveData *saveData) {
     Daycare *dayCare = Save_Daycare_Get(saveData);
     for (i = 0; i < 2; i++) {
         BoxPokemon *boxMon = DaycareMon_GetBoxMon(Daycare_GetMonX(dayCare, i));
-        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+        if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
         }
     }
 
@@ -4297,18 +4297,18 @@ u32 sub_020467A8(SaveData *saveData) {
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
-            if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-                ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+            if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
+                ret |= 1 << BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
             }
         }
     }
 
     Pokemon *walkerMon = AllocMonZeroed(HEAP_ID_FIELD3);
-    BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
+    BoxPokemon *walkerBoxMon = Pokemon_GetBox(walkerMon);
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
-        if (GetBoxMonData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORM, NULL);
+        if (BoxPokemon_GetData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << BoxPokemon_GetData(walkerBoxMon, MON_DATA_FORM, NULL);
         }
     }
     Heap_Free(walkerMon);
@@ -4395,7 +4395,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
     switch (event) {
     case EVENT_SPIKY_EARED_PICHU:
-        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(mon)) {
+        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && Pokemon_IsShiny(mon)) {
             *r6 = 1;
         }
         break;

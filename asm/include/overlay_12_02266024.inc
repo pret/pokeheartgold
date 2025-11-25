@@ -96,8 +96,8 @@
 .public String_New
 .public String_Delete
 .public Pokemon_GetMonData
-.public GetMonGender
-.public Mon_GetBoxMon
+.public Pokemon_GetGender
+.public Pokemon_GetBox
 .public GetMoveAttr
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

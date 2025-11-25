@@ -206,7 +206,7 @@ BOOL ScrCmd_MonGetNature(ScriptContext *ctx) {
         return FALSE;
     }
 
-    *nature = GetMonNature(mon);
+    *nature = Pokemon_GetNature(mon);
     return FALSE;
 }
 
@@ -219,7 +219,7 @@ BOOL ScrCmd_GetPartySlotWithNature(ScriptContext *ctx) {
     u8 partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     for (i = 0, *slot = 255; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
-        if (!Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonNature(mon) == nature) {
+        if (!Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL) && Pokemon_GetNature(mon) == nature) {
             *slot = i;
             break;
         }
@@ -265,7 +265,7 @@ BOOL ScrCmd_MonAddFriendship(ScriptContext *ctx) {
     if (friendship > FRIENDSHIP_MAX) {
         friendship = FRIENDSHIP_MAX;
     }
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
 
     return FALSE;
 }
@@ -282,7 +282,7 @@ BOOL ScrCmd_MonSubtractFriendship(ScriptContext *ctx) {
     } else {
         friendship -= friendshipModifier;
     }
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
 
     return FALSE;
 }
@@ -467,7 +467,7 @@ BOOL ScrCmd_MonForgetMove(ScriptContext *ctx) {
     u16 moveSlot = ScriptGetVar(ctx);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), pokemonSlot);
-    MonDeleteMoveSlot(mon, moveSlot);
+    Pokemon_DeleteMoveSlot(mon, moveSlot);
 
     return FALSE;
 }
@@ -571,8 +571,8 @@ BOOL ScrCmd_MonGiveMail(ScriptContext *ctx) {
     item = ITEM_NONE;
     Mail *mail = Mail_New(HEAP_ID_FIELD2);
     Mail_Init(mail);
-    SetMonData(mon, MON_DATA_MAIL, mail);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+    Pokemon_SetData(mon, MON_DATA_MAIL, mail);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item);
     Heap_Free(mail);
 
     return FALSE;
@@ -702,7 +702,7 @@ BOOL ScrCmd_GiveRibbon(ScriptContext *ctx) {
     u8 hasRibbon = TRUE;
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), slot);
-    SetMonData(mon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), &hasRibbon);
+    Pokemon_SetData(mon, GetRibbonAttr(ribbon, RIBBONDAT_MONDATNO), &hasRibbon);
 
     return FALSE;
 }
@@ -800,7 +800,7 @@ BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx) {
     } else {
         contestValue += contestModifier;
     }
-    SetMonData(mon, contestAttribute, &contestValue);
+    Pokemon_SetData(mon, contestAttribute, &contestValue);
 
     return FALSE;
 }

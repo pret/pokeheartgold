@@ -33,10 +33,10 @@ BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int
         Pokemon_CreateMon(mon, species, level, 32, FALSE, 0, 0, 0);
         Pokemon_SetCatchData(mon, profile, ITEM_POKE_BALL, location, encounterType, heapID);
         sp1C = heldItem;
-        SetMonData(mon, MON_DATA_HELD_ITEM, &sp1C);
-        SetMonData(mon, MON_DATA_FORM, &form);
+        Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &sp1C);
+        Pokemon_SetData(mon, MON_DATA_FORM, &form);
         if (ability != 0) {
-            SetMonData(mon, MON_DATA_ABILITY, &ability);
+            Pokemon_SetData(mon, MON_DATA_ABILITY, &ability);
         }
         result = Party_AddMon(party, mon);
         if (result) {
@@ -65,7 +65,7 @@ BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 eggLocation
 }
 
 void PartyMonSetMoveInSlot(Party *party, int mon_slot, int move_slot, u16 moveId) {
-    MonSetMoveInSlot_ResetPpUp(Party_GetMonByIndex(party, mon_slot), moveId, move_slot);
+    Pokemon_SetMoveInSlot_ResetPpUp(Party_GetMonByIndex(party, mon_slot), moveId, move_slot);
 }
 
 int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {
@@ -180,10 +180,10 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
         if (hp > 1) {
             hp--;
         }
-        SetMonData(mon, MON_DATA_HP, &hp);
+        Pokemon_SetData(mon, MON_DATA_HP, &hp);
         if (hp == 1) {
             n_fainted++;
-            MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_HEAL_FIELD_PSN, location);
+            Pokemon_ApplyFriendshipMod(mon, FRIENDSHIP_EVENT_HEAL_FIELD_PSN, location);
             ApplyMonMoodModifier(mon, MON_MOOD_MODIFIER_SURVIVED_PSN);
         }
         n_poisoned++;
@@ -201,7 +201,7 @@ BOOL SurvivePoisoning(Pokemon *mon) {
     u32 status;
     if ((Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && Pokemon_GetMonData(mon, MON_DATA_HP, NULL) == 1) {
         status = 0;
-        SetMonData(mon, MON_DATA_STATUS, &status);
+        Pokemon_SetData(mon, MON_DATA_STATUS, &status);
         return TRUE;
     } else {
         return FALSE;

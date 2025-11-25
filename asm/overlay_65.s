@@ -662,7 +662,7 @@ _0221C3F0:
 	add r0, r5, #0
 	add r1, r4, #0
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	add r0, r7, #0
 	add r1, r4, r6
@@ -970,7 +970,7 @@ _0221C64A:
 	beq _0221C678
 	add r0, r6, #0
 	mov r1, #0
-	bl Mon_UpdateShayminForm
+	bl Pokemon_UpdateShayminForm
 _0221C678:
 	ldr r0, [r4, #8]
 	add r5, r5, #1
@@ -2769,7 +2769,7 @@ ov65_0221D57C: ; 0x0221D57C
 	mov r2, #2
 	add r5, r1, #0
 	str r3, [sp, #0x20]
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0
@@ -2896,7 +2896,7 @@ ov65_0221D674: ; 0x0221D674
 	ldr r4, [sp, #0x50]
 	bl Party_GetMonByIndex
 	mov r1, #2
-	bl MonPicHeight
+	bl BoxPokemon_GetPicHeight
 	str r0, [sp, #0x10]
 	ldr r0, _0221D8AC ; =0x0000040C
 	mov r1, #1
@@ -5270,7 +5270,7 @@ ov65_0221E9A8: ; 0x0221E9A8
 	ldr r0, [r4, r0]
 	ldr r1, [r1]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6062,7 +6062,7 @@ ov65_0221F028: ; 0x0221F028
 	ldr r0, [r4, r0]
 	ldr r1, [r1]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6076,7 +6076,7 @@ ov65_0221F028: ; 0x0221F028
 	ldr r0, [r4, r0]
 	sub r1, r1, #6
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6530,7 +6530,7 @@ ov65_0221F3F4: ; 0x0221F3F4
 	ldr r0, [r4, r0]
 	sub r1, r1, #6
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	mov r0, #0x62
 	lsl r0, r0, #2
@@ -6778,7 +6778,7 @@ _0221F62C:
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
@@ -6794,11 +6794,11 @@ _0221F62C:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, #1
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 _0221F664:
 	bl sub_0203769C
 	bl sub_02034818

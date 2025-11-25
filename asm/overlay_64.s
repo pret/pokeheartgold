@@ -1928,7 +1928,7 @@ _021E685E:
 	str r0, [sp, #8]
 	ldrh r1, [r5, r1]
 	add r0, sp, #0x50
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [sp, #0x28]
 	mov r2, #0x3b
 	str r0, [sp]

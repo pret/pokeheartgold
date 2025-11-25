@@ -43,8 +43,8 @@
 .public FieldSystem_SetFollowerPokeParam
 .public FieldSystem_UnkSub108_Set
 .public Pokemon_GetMonData
-.public GetMonGender
-.public MonIsShiny
+.public Pokemon_GetGender
+.public Pokemon_IsShiny
 .public SaveArray_Party_Get
 .public _s32_div_f
 .public ov01_021F1640

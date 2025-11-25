@@ -2116,7 +2116,7 @@ _022671C4:
 	cmp r0, #0
 	beq _022672B6
 	ldr r0, [sp, #0x24]
-	bl GetMonGender
+	bl Pokemon_GetGender
 	cmp r0, #0
 	beq _02267200
 	cmp r0, #1
@@ -3361,7 +3361,7 @@ _02267CDA:
 	add r1, r6, #0
 	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x20]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r1, #0

@@ -180,9 +180,9 @@
 .public sub_0203A914
 .public Pokemon_GetMonData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetMonGender
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetGender
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_GetBox
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

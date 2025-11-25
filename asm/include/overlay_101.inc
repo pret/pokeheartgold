@@ -267,7 +267,7 @@
 .public MapID_GetLandmarkName
 .public DaycareMon_CalcLevelGrowth
 .public Save_Daycare_CalcCompatibility
-.public GetBoxMonData
+.public BoxPokemon_GetData
 .public TrainerData_ReadTrData
 .public TrainerData_ReadTrPoke
 .public PCStorage_GetActiveBox

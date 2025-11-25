@@ -29,7 +29,7 @@
 .public Sprite_SetDrawPriority
 .public Sprite_GetImageProxy
 .public GetMonBaseStat_HandleAlternateForm
-.public CalcBoxMonPokeathlonPerformance
+.public BoxPokemon_CalcPokeathlonPerformance
 .public CalcBoxmonPokeathlonStars
 .public GetMoveAttr
 .public Boxmon_GetIconNaix
