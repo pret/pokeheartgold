@@ -14,7 +14,7 @@
 .public Pokemon_GetMonData
 .public CalcShininessByOtIdAndPersonality
 .public CopyPokemonToPokemon
-.public UpdateMonAbility
+.public Pokemon_UpdateAbility
 .public Party_InitWithMaxSize
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

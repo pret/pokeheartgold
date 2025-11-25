@@ -1173,12 +1173,12 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
         spriteData->objs[i].plttResObj = AddPlttResObjFromOpenNarc(spriteData->plttResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000006_NCLR, FALSE, i, NNS_G2D_VRAM_TYPE_2DSUB, 1, work->heapID);
         spriteData->objs[i].cellResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->cellResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000010_NCER, FALSE, i, GF_GFX_RES_TYPE_CELL, work->heapID);
         spriteData->objs[i].animResObj = AddCellOrAnimResObjFromOpenNarc(spriteData->animResMan, narc, NARC_choose_starter_sub_res_choose_starter_sub_res_00000016_NANR, FALSE, i, GF_GFX_RES_TYPE_ANIM, work->heapID);
-        GetMonSpriteCharAndPlttNarcIdsEx(
+        PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx(
             &spriteData->pokepicTemplate,
             Pokemon_GetMonData(work->choices[i], MON_DATA_SPECIES, NULL),
             Pokemon_GetMonData(work->choices[i], MON_DATA_GENDER, NULL),
             2,
-            MonIsShiny(work->choices[i]),
+            Pokemon_IsShiny(work->choices[i]),
             0,
             0);
         spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.charDataID, work->heapID);

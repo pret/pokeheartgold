@@ -1527,7 +1527,7 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
         if (FollowMon_GetPermissionBySpeciesAndMap(species, mapNo)) {
             int form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
             int gender = Pokemon_GetMonData(mon, MON_DATA_GENDER, NULL); // must be int to match, even though gender is u8
-            int shiny = MonIsShiny(mon);
+            int shiny = Pokemon_IsShiny(mon);
 
             fieldSystem->followMon.mapObject = FollowMon_CreateMapObject(mapObjectManager, species, form, gender, direction, x, y, shiny);
             fieldSystem->followMon.active = TRUE;
@@ -1584,8 +1584,8 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
                 fieldSystem->followMon.unk15 = 1;
             } else {
                 form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
-                gender = GetMonGender(mon);
-                shiny = MonIsShiny(mon);
+                gender = Pokemon_GetGender(mon);
+                shiny = Pokemon_IsShiny(mon);
                 fieldSystem->followMon.mapObject = followPokeObj;
                 fieldSystem->followMon.active = TRUE;
 
@@ -1620,8 +1620,8 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
 
             if (followPokeObj != NULL) {
                 form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
-                gender = GetMonGender(mon);
-                shiny = MonIsShiny(mon);
+                gender = Pokemon_GetGender(mon);
+                shiny = Pokemon_IsShiny(mon);
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);
@@ -1943,7 +1943,7 @@ void FieldSystem_UnkSub108_AddMonMood(FieldSystemUnk108 *unk, s8 by) {
     } else {
         mood += by;
     }
-    SetMonData(unk->mon, MON_DATA_MOOD, &mood);
+    Pokemon_SetData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
 void FieldSystem_UnkSub108_SetMonMood(FieldSystemUnk108 *unk, s8 mood) {
@@ -1952,7 +1952,7 @@ void FieldSystem_UnkSub108_SetMonMood(FieldSystemUnk108 *unk, s8 mood) {
         return;
     }
 
-    SetMonData(unk->mon, MON_DATA_MOOD, &mood);
+    Pokemon_SetData(unk->mon, MON_DATA_MOOD, &mood);
 }
 
 s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnk108 *unk) {
@@ -1972,7 +1972,7 @@ void FieldSystem_UnkSub108_Set(FieldSystemUnk108 *a0, Pokemon *mon, u16 species,
         mood = 0;
         a0->isRegistered = TRUE;
         a0->mon = mon;
-        SetMonData(mon, MON_DATA_MOOD, &mood);
+        Pokemon_SetData(mon, MON_DATA_MOOD, &mood);
     }
 }
 
@@ -1989,7 +1989,7 @@ void FieldSystem_UnkSub108_MoveMoodTowardsNeutral(FieldSystemUnk108 *a0) {
     } else if (mood > 0) {
         mood--;
     }
-    SetMonData(a0->mon, MON_DATA_MOOD, &mood);
+    Pokemon_SetData(a0->mon, MON_DATA_MOOD, &mood);
 }
 
 // following three might be better off in another file? they're not explicitly related to following mons

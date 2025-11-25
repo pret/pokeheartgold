@@ -7974,7 +7974,7 @@ ov07_0221F81C: ; 0x0221F81C
 	ldrb r3, [r3]
 	ldr r0, [r6, r0]
 	add r1, r4, #0
-	bl Pokemon_ChatterPlayCryEx
+	bl Chatot_ChatterPlayCryEx
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov07_0221F81C
@@ -50910,7 +50910,7 @@ _022347D4:
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5]
 	lsl r0, r0, #2
 	add r0, r5, r0

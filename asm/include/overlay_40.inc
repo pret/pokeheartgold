@@ -248,12 +248,12 @@
 .public Save_VarsFlags_GetBattleArcadePrintProgress
 .public Save_VarsFlags_GetBattleTowerPrintProgress
 .public Pokemon_GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public AllocAndLoadMonPersonal
 .public FreeMonPersonal
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public PCStorage_IsBonusWallpaperUnlocked
 .public GetMonIconNaixEx

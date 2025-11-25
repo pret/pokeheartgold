@@ -104,8 +104,8 @@
 .public String_Delete
 .public Pokemon_GetMonData
 .public GetMonExpBySpeciesAndLevel
-.public GetMonGender
-.public Mon_GetBoxMon
+.public Pokemon_GetGender
+.public Pokemon_GetBox
 .public GetMoveAttr
 .public GetMoveMaxPP
 .public PCStorage_FindFirstBoxWithEmptySlot

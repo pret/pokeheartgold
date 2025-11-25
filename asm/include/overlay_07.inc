@@ -159,9 +159,9 @@
 .public SealOnCapsuleGetX
 .public SealOnCapsuleGetY
 .public Pokemon_GetMonData
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
-.public Pokemon_ChatterPlayCryEx
+.public Chatot_ChatterPlayCryEx
 .public sub_020729D8
 .public sub_020729FC
 .public sub_02072A20

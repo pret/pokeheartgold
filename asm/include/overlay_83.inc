@@ -190,12 +190,12 @@
 .public Pokemon_ReleaseMonLock
 .public Pokemon_CalcMonLevelAndStats
 .public Pokemon_GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel
-.public GetMonNature
-.public GetMonGender
-.public GetBoxmonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetNature
+.public Pokemon_GetGender
+.public PokepicTemplate_GetBoxmonSpriteCharAndPlttNarcIds
+.public Pokemon_GetBox
 .public GetMoveMaxPP
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

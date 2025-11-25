@@ -95,7 +95,7 @@
 .public sub_020316F0
 .public sub_02031700
 .public GetUnionRoomAvatarAttrBySprite
-.public Pokemon_SanitizeFormId
+.public SanitizeFormId
 .public LocationGmmDatRegionCountGetByCountryMsgNo
 .public OS_GetOwnerInfo
 .public MI_CpuFill8

@@ -1745,7 +1745,7 @@ _02031600:
 	ldrb r1, [r2, #0x1b]
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x19
-	bl Pokemon_SanitizeFormId
+	bl SanitizeFormId
 	pop {r3, pc}
 	.balign 4, 0
 _0203160C: .word 0x000001EF

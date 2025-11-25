@@ -57,12 +57,12 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         work->species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
         switch (work->species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForm(mon);
+            Pokemon_UpdateGiratinaForm(mon);
             work->duration = 65;
             work->fileId = NARC_particle_giratina;
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForm(mon, SHAYMIN_SKY);
+            Pokemon_UpdateShayminForm(mon, SHAYMIN_SKY);
             work->duration = 35;
             work->fileId = NARC_particle_shaymin;
             break;
@@ -114,7 +114,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         break;
     case 9: {
         String *str = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00188); //" changed Form!"
-        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBox(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str);
         String_Delete(str);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);

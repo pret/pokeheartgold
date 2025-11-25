@@ -256,7 +256,7 @@ _022342E4:
 	add r4, r0, #0
 	mov r1, #6
 	add r2, sp, #0x18
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
@@ -273,7 +273,7 @@ _022342E4:
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	bl Pokemon_CalcMonLevelAndStats
 _02234344:
@@ -506,7 +506,7 @@ _022344EA:
 	add r0, r6, #0
 	mov r1, #6
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	add r4, r4, #1
 	cmp r4, r7
 	blt _022344EA
@@ -1808,7 +1808,7 @@ _02234EDA:
 	add r0, r6, #0
 	mov r1, #0xa3
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, r5, #1
 	cmp r5, r7
 	blt _02234EDA
@@ -1871,7 +1871,7 @@ _02234F82:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 _02234F90:
 	ldr r0, [sp, #8]
 	add r5, r5, #1
@@ -1937,7 +1937,7 @@ _02234FFC:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 _0223500A:
 	ldr r0, [sp, #8]
 	add r5, r5, #1
@@ -2002,7 +2002,7 @@ _02235074:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 _02235082:
 	ldr r0, [sp, #8]
 	add r5, r5, #1
@@ -2071,7 +2071,7 @@ _022350E4:
 	ldr r0, [sp, #8]
 	mov r1, #0xa0
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 	b _0223510A
 _02235104:
 	add r7, r7, #1
@@ -2146,7 +2146,7 @@ _02235182:
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 	b _0223519C
 _02235192:
 	ldr r0, [sp, #8]
@@ -2207,7 +2207,7 @@ _022351EC:
 	bl Party_GetMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r4, r4, #1
 	cmp r4, r5
 	blt _022351EC
@@ -2258,7 +2258,7 @@ _02235248:
 	bl Party_GetMonByIndex
 	add r1, r7, #0
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r4, r4, #1
 	cmp r4, r5
 	blt _02235248
@@ -2301,7 +2301,7 @@ _02235290:
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	bl Pokemon_CalcMonLevelAndStats
 	add r4, r4, #1
@@ -2473,7 +2473,7 @@ ov80_02235364: ; 0x02235364
 	bl Party_GetMonByIndex
 	mov r1, #6
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov80_02235364

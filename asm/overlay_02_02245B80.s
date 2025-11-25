@@ -3892,7 +3892,7 @@ _02247970:
 	lsr r0, r0, #0x10
 	bne _02247994
 	ldr r0, [sp, #0x44]
-	bl GetMonNature
+	bl Pokemon_GetNature
 	str r0, [sp, #0x20]
 	mov r7, #1
 _02247994:
@@ -4034,7 +4034,7 @@ _02247A90:
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x40]
 	add r1, r7, #0
@@ -4105,7 +4105,7 @@ _02247B3C:
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x40]
 	add r1, r7, #0
@@ -5163,15 +5163,15 @@ ov02_022482BC: ; 0x022482BC
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #0x30
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0xa3
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r6, #8]
 	add r1, r4, #0
 	bl Party_AddMon
@@ -5468,7 +5468,7 @@ _02248576:
 _02248578:
 	ldr r1, [r6]
 	add r0, r4, #0
-	bl WildMonSetRandomHeldItem
+	bl Pokemon_SetRandomHeldItem
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
@@ -5482,7 +5482,7 @@ _02248578:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _022485A2:
 	lsl r0, r7, #2
 	add r0, r6, r0
@@ -10095,14 +10095,14 @@ _0224A7A4: .word 0x0400004A
 
 	thumb_func_start ov02_0224A7A8
 ov02_0224A7A8: ; 0x0224A7A8
-	ldr r3, _0224A7B4 ; =GetPokemonSpriteCharAndPlttNarcIds
+	ldr r3, _0224A7B4 ; =PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	add r2, r0, #0
 	add r0, r1, #0
 	ldr r1, [r2, #0x5c]
 	mov r2, #2
 	bx r3
 	.balign 4, 0
-_0224A7B4: .word GetPokemonSpriteCharAndPlttNarcIds
+_0224A7B4: .word PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	thumb_func_end ov02_0224A7A8
 
 	thumb_func_start ov02_0224A7B8
@@ -20259,7 +20259,7 @@ _0224F420:
 	bl Pokemon_GetMonData
 	strb r0, [r5, #7]
 	add r0, r7, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	lsl r1, r0, #2
 	ldr r0, _0224F4B4 ; =ov02_02253AC0
 	mov r2, #0
@@ -21486,7 +21486,7 @@ _0224FD30:
 _0224FD3E:
 	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetProfile
@@ -22343,7 +22343,7 @@ _022503BA:
 	add r0, r7, #0
 	add r1, r5, #0
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -22432,7 +22432,7 @@ FollowMon_PlaceholdersSet: ; 0x022504A0
 	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0
@@ -22531,7 +22531,7 @@ _0225057E:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	pop {r3, r4, r5, pc}
 	nop
 _0225058C: .word 0x00000815

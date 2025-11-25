@@ -191,10 +191,10 @@
 .public GameStats_AddScore
 .public AllocMonZeroed
 .public Pokemon_GetMonData
-.public SetMonData
-.public GetMonNature
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public MonPicHeight
+.public Pokemon_SetData
+.public Pokemon_GetNature
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public BoxPokemon_GetPicHeight
 .public CopyPokemonToPokemon
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C

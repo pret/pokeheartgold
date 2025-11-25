@@ -22,7 +22,7 @@
 .public sub_0205C268
 .public AllocMonZeroed
 .public Pokemon_GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public CopyPokemonToPokemon
 .public Pokemon_UpdateAfterCatch
 .public SaveArray_Party_Init

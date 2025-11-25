@@ -672,7 +672,7 @@ static BOOL sub_0204B2B8(SaveData *saveData, u32 ribbon, UnkStruct_Fsys_A0 *a2) 
     for (s32 i = 0; i < a2->unk0e; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a2->unk2a[i]);
         if (Pokemon_GetMonData(mon, ribbon, NULL) == FALSE) {
-            SetMonData(mon, ribbon, &value);
+            Pokemon_SetData(mon, ribbon, &value);
             count++;
         }
     }

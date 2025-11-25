@@ -2660,7 +2660,7 @@ sub_0208981C: ; 0x0208981C
 	bl Pokemon_GetMonData
 	strh r0, [r4, #0xc]
 	add r0, r5, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	mov r2, #0x7a
 	lsl r2, r2, #4
 	add r6, r0, #0
@@ -2773,7 +2773,7 @@ _0208992C:
 	strb r0, [r4, #0x12]
 _02089934:
 	add r0, r5, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldrb r1, [r4, #0x13]
 	mov r2, #3
 	bic r1, r2
@@ -2883,7 +2883,7 @@ _020899C8:
 	add r1, #0x32
 	strb r0, [r1]
 	add r0, r5, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	add r1, r4, #0
 	add r1, #0x33
 	strb r0, [r1]
@@ -2975,7 +2975,7 @@ _02089A3C:
 _02089AF6:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl MonGetFlavorPreference
+	bl Pokemon_GetFlavorPreference
 	cmp r0, #1
 	bne _02089B0A
 	add r0, r4, #0
@@ -3055,7 +3055,7 @@ _02089B92:
 	str r0, [r4, #0x50]
 _02089B9A:
 	add r0, r5, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	cmp r0, #1
 	ldr r1, [r4, #0x50]
 	bne _02089BAE
@@ -4088,13 +4088,13 @@ _0208A396:
 	add r0, r4, r6
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A3C6
 	add r0, r4, r6
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A3C6
 	mov r0, #1
@@ -4274,13 +4274,13 @@ _0208A4E4:
 	add r0, r6, r7
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A4C8
 	add r0, r6, r7
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A51A
 	add r0, r5, #0
@@ -4702,7 +4702,7 @@ sub_0208A834: ; 0x0208A834
 	lsl r2, r2, #0x18
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x1c
-	bl BoxMonSwapMoves
+	bl BoxPokemon_SwapMoves
 	b _0208A868
 _0208A85A:
 	ldrb r2, [r4, r1]
@@ -4710,7 +4710,7 @@ _0208A85A:
 	lsl r2, r2, #0x18
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x1c
-	bl MonSwapMoves
+	bl Pokemon_SwapMoves
 _0208A868:
 	ldr r0, _0208A8F0 ; =0x000007BD
 	mov r1, #0x99

@@ -53,7 +53,7 @@
 .public Save_FashionData_Get
 .public Pokemon_CreateMon
 .public Pokemon_GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public MATHi_CRC32InitTableRev
 .public MATH_CalcCRC32
 .public memcpy

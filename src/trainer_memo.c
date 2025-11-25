@@ -330,7 +330,7 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
 }
 
 static void FormatNature(Unk0208E600 *a0) {
-    int nature = GetMonNature(a0->mon);
+    int nature = Pokemon_GetNature(a0->mon);
     if (nature <= NATURE_QUIRKY) {
         a0->notepad.nature = String_New(0x48, a0->heapID);
         ReadMsgDataIntoString(a0->msgData, msg_0302_00024 + nature, a0->notepad.nature);
@@ -597,7 +597,7 @@ static void FormatFlavorPreference(Unk0208E600 *a0) {
     a0->notepad.flavorPreference = String_New(0x48, a0->heapID);
     int index = 0;
     for (int flavor = FLAVOR_START; flavor < FLAVOR_MAX; flavor++) {
-        int preference = MonGetFlavorPreference(a0->mon, flavor);
+        int preference = Pokemon_GetFlavorPreference(a0->mon, flavor);
         if (preference == 1) {
             index = flavor + 1;
         }
@@ -708,7 +708,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         if (mapsec > MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) {
             mapsec = MetLocation(MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_FARAWAY_PLACE));
         }
-        if (!GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+        if (!BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
             BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
             BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
             BoxMon_CopyLevelToMetLevel(boxMon);
@@ -722,7 +722,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         if (mapsec > MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) {
             mapsec = MetLocation(MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_FARAWAY_PLACE));
         }
-        if (!GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+        if (!BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
             BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
             BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
             BoxMon_CopyLevelToMetLevel(boxMon);
@@ -732,7 +732,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_MON);
         break;
     case 1:
-        if (!GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+        if (!BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
             BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
             BoxMon_SetMetDateAndLocation(boxMon, MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE)), SETMETDATEPARAM_MON);
             BoxMon_CopyLevelToMetLevel(boxMon);
@@ -752,8 +752,8 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         BoxMon_SetOriginalTrainerData(boxMon, profile, heapID);
         break;
     case 4:
-        if (BoxmonBelongsToPlayer(boxMon, profile, heapID) == TRUE) {
-            if (!GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+        if (BoxPokemon_BelongsToPlayer(boxMon, profile, heapID) == TRUE) {
+            if (!BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
                 BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
                 BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
                 BoxMon_CopyLevelToMetLevel(boxMon);
@@ -761,7 +761,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
                 BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_EGG);
                 BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_MON);
             }
-        } else if (!GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+        } else if (!BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
             BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
             BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
             BoxMon_CopyLevelToMetLevel(boxMon);
@@ -772,7 +772,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         BoxMon_SetFatefulEncounter(boxMon);
         break;
     case 5:
-        if (GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
+        if (BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
             BoxMon_SetMetDateAndLocation(boxMon, MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE_2)), SETMETDATEPARAM_MON);
         }
         break;
@@ -780,18 +780,18 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         if (mapsec > MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) {
             mapsec = MAPSEC_MYSTERY_ZONE;
         }
-        if (!BoxmonBelongsToPlayer(boxMon, profile, heapID)) {
-            var = GetBoxMonData(boxMon, MON_DATA_MET_LOCATION, NULL);
-            SetBoxMonData(boxMon, MON_DATA_EGG_LOCATION, &var);
+        if (!BoxPokemon_BelongsToPlayer(boxMon, profile, heapID)) {
+            var = BoxPokemon_GetData(boxMon, MON_DATA_MET_LOCATION, NULL);
+            BoxPokemon_SetData(boxMon, MON_DATA_EGG_LOCATION, &var);
 
-            var = GetBoxMonData(boxMon, MON_DATA_MET_YEAR, NULL);
-            SetBoxMonData(boxMon, MON_DATA_EGG_YEAR, &var);
+            var = BoxPokemon_GetData(boxMon, MON_DATA_MET_YEAR, NULL);
+            BoxPokemon_SetData(boxMon, MON_DATA_EGG_YEAR, &var);
 
-            var = GetBoxMonData(boxMon, MON_DATA_MET_MONTH, NULL);
-            SetBoxMonData(boxMon, MON_DATA_EGG_MONTH, &var);
+            var = BoxPokemon_GetData(boxMon, MON_DATA_MET_MONTH, NULL);
+            BoxPokemon_SetData(boxMon, MON_DATA_EGG_MONTH, &var);
 
-            var = GetBoxMonData(boxMon, MON_DATA_MET_DAY, NULL);
-            SetBoxMonData(boxMon, MON_DATA_EGG_DAY, &var);
+            var = BoxPokemon_GetData(boxMon, MON_DATA_MET_DAY, NULL);
+            BoxPokemon_SetData(boxMon, MON_DATA_EGG_DAY, &var);
         }
         BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
         BoxMon_SetOriginalTrainerData(boxMon, profile, heapID);
@@ -804,9 +804,9 @@ static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *pro
     u32 gender = PlayerProfile_GetTrainerGender(profile);
     String *name = PlayerProfile_GetPlayerName_NewString(profile, heapID);
 
-    SetBoxMonData(boxMon, MON_DATA_OT_ID, &otId);
-    SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gender);
-    SetBoxMonData(boxMon, MON_DATA_OT_NAME_STRING, name);
+    BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &otId);
+    BoxPokemon_SetData(boxMon, MON_DATA_OT_GENDER, &gender);
+    BoxPokemon_SetData(boxMon, MON_DATA_OT_NAME_STRING, name);
 
     String_Delete(name);
 }
@@ -816,39 +816,39 @@ static void BoxMon_SetMetDateAndLocation(BoxPokemon *boxMon, int mapsec, int set
 
     GF_RTC_CopyDate(&date);
     if (setMetDateParam == SETMETDATEPARAM_EGG) {
-        SetBoxMonData(boxMon, MON_DATA_EGG_LOCATION, &mapsec);
-        SetBoxMonData(boxMon, MON_DATA_EGG_YEAR, &date.year);
-        SetBoxMonData(boxMon, MON_DATA_EGG_MONTH, &date.month);
-        SetBoxMonData(boxMon, MON_DATA_EGG_DAY, &date.day);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_LOCATION, &mapsec);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_YEAR, &date.year);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_MONTH, &date.month);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_DAY, &date.day);
     } else {
-        SetBoxMonData(boxMon, MON_DATA_MET_LOCATION, &mapsec);
-        SetBoxMonData(boxMon, MON_DATA_MET_YEAR, &date.year);
-        SetBoxMonData(boxMon, MON_DATA_MET_MONTH, &date.month);
-        SetBoxMonData(boxMon, MON_DATA_MET_DAY, &date.day);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_LOCATION, &mapsec);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_YEAR, &date.year);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_MONTH, &date.month);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_DAY, &date.day);
     }
 }
 
 static void BoxMon_ClearMetDateAndLocation(BoxPokemon *boxMon, int setMetDateParam) {
     int zero = 0;
     if (setMetDateParam == SETMETDATEPARAM_EGG) {
-        SetBoxMonData(boxMon, MON_DATA_EGG_LOCATION, &zero);
-        SetBoxMonData(boxMon, MON_DATA_EGG_YEAR, &zero);
-        SetBoxMonData(boxMon, MON_DATA_EGG_MONTH, &zero);
-        SetBoxMonData(boxMon, MON_DATA_EGG_DAY, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_LOCATION, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_YEAR, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_MONTH, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_EGG_DAY, &zero);
     } else {
-        SetBoxMonData(boxMon, MON_DATA_MET_LOCATION, &zero);
-        SetBoxMonData(boxMon, MON_DATA_MET_YEAR, &zero);
-        SetBoxMonData(boxMon, MON_DATA_MET_MONTH, &zero);
-        SetBoxMonData(boxMon, MON_DATA_MET_DAY, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_LOCATION, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_YEAR, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_MONTH, &zero);
+        BoxPokemon_SetData(boxMon, MON_DATA_MET_DAY, &zero);
     }
 }
 
 static void BoxMon_CopyLevelToMetLevel(BoxPokemon *boxMon) {
-    int level = GetBoxMonData(boxMon, MON_DATA_LEVEL, NULL);
-    SetBoxMonData(boxMon, MON_DATA_MET_LEVEL, &level);
+    int level = BoxPokemon_GetData(boxMon, MON_DATA_LEVEL, NULL);
+    BoxPokemon_SetData(boxMon, MON_DATA_MET_LEVEL, &level);
 }
 
 static void BoxMon_SetFatefulEncounter(BoxPokemon *boxMon) {
     int var = 1;
-    SetBoxMonData(boxMon, MON_DATA_FATEFUL_ENCOUNTER, &var);
+    BoxPokemon_SetData(boxMon, MON_DATA_FATEFUL_ENCOUNTER, &var);
 }

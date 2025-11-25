@@ -893,7 +893,7 @@ _0208B8AC:
 	add r1, sp, #0x18
 	add r0, r4, #0
 	add r1, #2
-	bl CalcBoxMonPokeathlonPerformance
+	bl BoxPokemon_CalcPokeathlonPerformance
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r2, [r5, r0]

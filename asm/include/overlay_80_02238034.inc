@@ -12,7 +12,7 @@
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
 .public AllocMonZeroed
-.public SetMonData
+.public Pokemon_SetData
 .public CopyPokemonToPokemon
 .public Pokemon_UpdateAfterCatch
 .public SaveArray_Party_Init

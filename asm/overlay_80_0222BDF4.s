@@ -6803,7 +6803,7 @@ _0222F0DA:
 	ldr r1, [sp, #0x20]
 	add r0, sp, #0x6c
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa

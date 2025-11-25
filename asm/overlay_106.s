@@ -1872,7 +1872,7 @@ _021E6720:
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	str r0, [sp, #0x14]
 	b _021E6764
 _021E675E:

@@ -559,14 +559,14 @@ static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 ico
             } else {
                 photo->party[i].species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
                 photo->party[i].form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
-                photo->party[i].shiny = MonIsShiny(mon);
+                photo->party[i].shiny = Pokemon_IsShiny(mon);
                 photo->party[i].gender = Pokemon_GetMonData(mon, MON_DATA_GENDER, NULL);
             }
         }
     } else {
         photo->party[0].species = Pokemon_GetMonData(leadMon, MON_DATA_SPECIES, NULL);
         photo->party[0].form = Pokemon_GetMonData(leadMon, MON_DATA_FORM, NULL);
-        photo->party[0].shiny = MonIsShiny(leadMon);
+        photo->party[0].shiny = Pokemon_IsShiny(leadMon);
         photo->party[0].gender = Pokemon_GetMonData(leadMon, MON_DATA_GENDER, NULL);
         for (i = 1; i < PARTY_SIZE; ++i) {
             photo->party[i].species = SPECIES_NONE;

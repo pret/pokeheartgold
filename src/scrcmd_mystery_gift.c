@@ -225,27 +225,27 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
             rand = personality;
         }
     }
-    SetMonPersonality(pokemon, rand);
+    Pokemon_SetPersonality(pokemon, rand);
 
-    int gender = GetMonGender(pokemon);
-    SetMonData(pokemon, MON_DATA_GENDER, &gender);
+    int gender = Pokemon_GetGender(pokemon);
+    Pokemon_SetData(pokemon, MON_DATA_GENDER, &gender);
 
     gender = Pokemon_GetMonData(pokemon, MON_DATA_HP_IV, NULL) + Pokemon_GetMonData(pokemon, MON_DATA_ATK_IV, NULL) + Pokemon_GetMonData(pokemon, MON_DATA_DEF_IV, NULL) + Pokemon_GetMonData(pokemon, MON_DATA_SPEED_IV, NULL) + Pokemon_GetMonData(pokemon, MON_DATA_SPATK_IV, NULL) + Pokemon_GetMonData(pokemon, MON_DATA_SPDEF_IV, NULL);
     if (gender == 0) {
         u16 ivRand = LCRandom();
         rand = ivRand & 0x1Fu;
-        SetMonData(pokemon, MON_DATA_HP_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_HP_IV, &rand);
         rand = (ivRand & 0x3E0u) >> 5;
-        SetMonData(pokemon, MON_DATA_ATK_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_ATK_IV, &rand);
         rand = (ivRand & 0x7C00u) >> 10;
-        SetMonData(pokemon, MON_DATA_DEF_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_DEF_IV, &rand);
         ivRand = LCRandom();
         rand = ivRand & 0x1Fu;
-        SetMonData(pokemon, MON_DATA_SPEED_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_SPEED_IV, &rand);
         rand = (ivRand & 0x3E0u) >> 5;
-        SetMonData(pokemon, MON_DATA_SPATK_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_SPATK_IV, &rand);
         rand = (ivRand & 0x7C00u) >> 10;
-        SetMonData(pokemon, MON_DATA_SPDEF_IV, &rand);
+        Pokemon_SetData(pokemon, MON_DATA_SPDEF_IV, &rand);
     }
 
     SaveSpecialRibbons *ribbons = Save_SpecialRibbons_Get(fieldSys->saveData);
@@ -290,9 +290,9 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         GF_ASSERT(tmpPokemon != NULL);
 #endif
         CopyPokemonToPokemon(pokemon, tmpPokemon);
-        SetMonData(tmpPokemon, MON_DATA_OT_NAME_STRING, playerName);
-        SetMonData(tmpPokemon, MON_DATA_OT_ID, &trainerId);
-        SetMonData(tmpPokemon, MON_DATA_OT_GENDER, &gender);
+        Pokemon_SetData(tmpPokemon, MON_DATA_OT_NAME_STRING, playerName);
+        Pokemon_SetData(tmpPokemon, MON_DATA_OT_ID, &trainerId);
+        Pokemon_SetData(tmpPokemon, MON_DATA_OT_GENDER, &gender);
         pokemon = tmpPokemon;
         String_Delete(playerName);
     }
@@ -315,7 +315,7 @@ static void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState *gmmState, u1
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00007;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Pokemon_GetBox(&mgData->mon));
 }
 
 static void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -332,7 +332,7 @@ static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState *gmmState, u16 *p
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00008;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Pokemon_GetBox(&mgData->mon));
 }
 
 static BOOL MGCheck_Item(FieldSystem *fieldSys, MysteryGiftData *unused) {

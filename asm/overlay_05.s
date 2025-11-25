@@ -4743,7 +4743,7 @@ _0221E036:
 	ldr r0, _0221E074 ; =0x00000222
 	strb r1, [r7, r0]
 	add r0, r4, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldr r1, _0221E078 ; =0x00000221
 	strb r0, [r5, r1]
 	add r0, r4, #0
@@ -5528,7 +5528,7 @@ _0221E656:
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x20]
 	ldr r0, [sp, #0x18]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	ldr r0, [sp, #0x14]
 	mov r1, #0

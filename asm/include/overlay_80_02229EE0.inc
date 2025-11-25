@@ -31,7 +31,7 @@
 .public Pokemon_CreateMon
 .public Pokemon_CalcMonLevelAndStats
 .public Pokemon_GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonBaseStat
 .public GetNatureFromPersonality
 .public CalcShininessByOtIdAndPersonality

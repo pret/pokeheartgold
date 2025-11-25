@@ -331,7 +331,7 @@
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
 .public GetMonBaseStat
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

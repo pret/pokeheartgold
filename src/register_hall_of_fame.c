@@ -1211,7 +1211,7 @@ static void RegisterHallOfFame_IndivMonsScene_UnloadSpriteGfx(RegisterHallOfFame
 
 static void RegisterHallOfFame_IndivMonsScene_SetPicGfxAndPltt(RegisterHallOfFameData *data, RegisterHofMon *hofMon, u8 whichFacing, int picIdx) {
     PokepicTemplate drawMonStruct;
-    GetPokemonSpriteCharAndPlttNarcIds(&drawMonStruct, hofMon->mon, whichFacing);
+    PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds(&drawMonStruct, hofMon->mon, whichFacing);
     RegisterHallOfFame_ReplaceSpriteChar(
         whichFacing == MON_PIC_FACING_FRONT ? hofMon->frontspriteCharbuf : hofMon->backspriteCharbuf,
         NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN),
@@ -1360,7 +1360,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
 
     u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
-    if (MonIsShiny(hofMon->mon) == TRUE) {
+    if (Pokemon_IsShiny(hofMon->mon) == TRUE) {
         loadPos = (const u8 *)loadPos + 0x20;
     }
     RegisterHallOfFame_ReplaceSpritePltt(loadPos, plttLoc, 0x20);
@@ -1432,7 +1432,7 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     Window *windows = &data->windows[windowIdx];
     RegisterHofMon *hofMon = &data->mons[monIdx];
     Pokemon *mon = hofMon->mon;
-    BoxPokemon *boxmon = Mon_GetBoxMon(mon);
+    BoxPokemon *boxmon = Pokemon_GetBox(mon);
 
     FillWindowPixelBuffer(&windows[0], 0);
     ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->strbuf1);
@@ -2014,10 +2014,10 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
                 hofMon->printGender = TRUE;
             }
             ReadWholeNarcMemberByIdPair(hofMon->followPokeParam, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(hofMon->species));
-            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_FRONT);
+            PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_FRONT);
             sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf[0], hofMon->personality, TRUE, 2, hofMon->species);
             sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->frontspriteCharbuf[1], hofMon->personality, TRUE, 2, hofMon->species);
-            GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_BACK);
+            PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_BACK);
             sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf[0], hofMon->personality, TRUE, 0, hofMon->species);
             sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->backspriteCharbuf[1], hofMon->personality, TRUE, 0, hofMon->species);
             NARC_ReadPokepicAnimScript(narc, hofMon->frontspriteAnim, hofMon->species, 1);

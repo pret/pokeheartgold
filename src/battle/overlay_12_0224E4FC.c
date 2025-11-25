@@ -91,8 +91,8 @@ void BattleSystem_GetBattleMon(BattleSystem *battleSystem, BattleContext *ctx, i
     ctx->battleMons[battlerId].type1 = Pokemon_GetMonData(mon, MON_DATA_TYPE_1, NULL);
     ctx->battleMons[battlerId].type2 = Pokemon_GetMonData(mon, MON_DATA_TYPE_2, NULL);
 
-    ctx->battleMons[battlerId].gender = GetMonGender(mon);
-    ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
+    ctx->battleMons[battlerId].gender = Pokemon_GetGender(mon);
+    ctx->battleMons[battlerId].shiny = Pokemon_IsShiny(mon);
 
     if (BattleSystem_GetBattleType(battleSystem) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) { // No abilities battle
         ctx->battleMons[battlerId].ability = 0;
@@ -5379,10 +5379,10 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     }
                     CopyPokemonToPokemon(BattleSystem_GetPartyMon(battleSystem, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
                     dat = 0;
-                    SetMonData(mon2, MON_DATA_HELD_ITEM, &dat);
+                    Pokemon_SetData(mon2, MON_DATA_HELD_ITEM, &dat);
                     dat = (u8)GIRATINA_ALTERED;
-                    SetMonData(mon2, MON_DATA_FORM, &dat);
-                    Mon_UpdateGiratinaForm(mon2);
+                    Pokemon_SetData(mon2, MON_DATA_FORM, &dat);
+                    Pokemon_UpdateGiratinaForm(mon2);
                     ctx->battleMons[ctx->battlerIdTemp].atk = Pokemon_GetMonData(mon2, MON_DATA_ATK, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].def = Pokemon_GetMonData(mon2, MON_DATA_DEF, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].speed = Pokemon_GetMonData(mon2, MON_DATA_SPEED, NULL);
