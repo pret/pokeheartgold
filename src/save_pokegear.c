@@ -82,12 +82,12 @@ u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear) {
     return pokegear->mapUnlockLevel;
 }
 
-u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear) {
+u32 Pokegear_GetSkin(SavePokegear *pokegear) {
     return pokegear->skin;
 }
 
-void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 newStyle) {
-    pokegear->skin = newStyle;
+void Pokegear_SetSkin(SavePokegear *pokegear, u32 skin) {
+    pokegear->skin = skin;
 }
 
 u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear) {

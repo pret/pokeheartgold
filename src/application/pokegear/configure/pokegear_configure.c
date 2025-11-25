@@ -85,13 +85,13 @@ BOOL PokegearConfigure_Exit(OverlayManager *man, int *state) {
 static void PokegearConfigure_InitInternal(PokegearConfigureAppData *configureApp) {
     configureApp->pokegear->childAppdata = configureApp;
     configureApp->pokegear->reselectAppCB = PokegearConfigure_OnReselectApp;
-    configureApp->skin = Pokegear_GetBackgroundStyle(configureApp->pokegear->savePokegear);
+    configureApp->skin = Pokegear_GetSkin(configureApp->pokegear->savePokegear);
     configureApp->unlockedSkins = Pokegear_GetUnlockedSkins(configureApp->pokegear->savePokegear);
-    configureApp->unlockedSkins = 0xFF; // nani the fuck?
+    configureApp->unlockedSkins = 0xFF; // the ability to unlock skins was likely removed late in development, and dev was lazy
 }
 
 static void PokegearConfigure_ExitInternal(PokegearConfigureAppData *configureApp) {
-    Pokegear_SetBackgroundStyle(configureApp->pokegear->savePokegear, configureApp->skin);
+    Pokegear_SetSkin(configureApp->pokegear->savePokegear, configureApp->skin);
     configureApp->pokegear->reselectAppCB = NULL;
     configureApp->pokegear->deselectAppCB = NULL;
 }

@@ -8,9 +8,9 @@
 #include "touchscreen.h"
 
 enum TouchscreenListMenuTextAlignment {
-    TSMENU_ALN_LEFT,
-    TSMENU_ALN_CENTER,
-    TSMENU_ALN_RIGHT,
+    TSMENU_ALIGN_LEFT,
+    TSMENU_ALIGN_CENTER,
+    TSMENU_ALIGN_RIGHT,
 };
 
 typedef struct TouchscreenListMenuTemplate {

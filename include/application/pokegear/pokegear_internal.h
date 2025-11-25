@@ -214,7 +214,7 @@ void PokegearUIManager_Delete(PokegearUIManager *uiManager);
 void PokegearUIManager_LoadSkinGfx(PokegearUIManager *uiManager, u8 a1);
 void PokegearUIManager_AnimateSprites(PokegearUIManager *uiManager);
 ManagedSprite *PokegearUIManager_CreateSprite(PokegearUIManager *uiManager, u8 x, u8 y, u8 z, u8 priority, u8 drawPriority, u8 index, u8 seq, int isBottomScreen);
-void PokegearUIManager_DeleteSprite(ManagedSprite *a0);
+void PokegearUIManager_DeleteSprite(ManagedSprite *managedSprite);
 
 PokegearObjectsManager *PokegearObjectsManager_Create(int count, enum HeapID heapID);
 void PokegearObjectsManager_Release(PokegearObjectsManager *mgr);

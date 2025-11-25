@@ -24,12 +24,12 @@ static const TouchscreenListMenuTemplate sContextMenuTemplate = {
 };
 
 static const PokegearConfigureContextMenuParam sContextMenuParam[] = {
-    { 10, 2,  TSMENU_ALN_LEFT  },
-    { 20, 2,  TSMENU_ALN_LEFT  },
-    { 22, 2,  TSMENU_ALN_RIGHT },
-    { 10, 11, TSMENU_ALN_LEFT  },
-    { 20, 11, TSMENU_ALN_LEFT  },
-    { 22, 11, TSMENU_ALN_RIGHT },
+    { 10, 2,  TSMENU_ALIGN_LEFT  },
+    { 20, 2,  TSMENU_ALIGN_LEFT  },
+    { 22, 2,  TSMENU_ALIGN_RIGHT },
+    { 10, 11, TSMENU_ALIGN_LEFT  },
+    { 20, 11, TSMENU_ALIGN_LEFT  },
+    { 22, 11, TSMENU_ALIGN_RIGHT },
 };
 
 void PokegearConfigure_LoadGraphics_Internal(PokegearConfigureAppData *configureApp) {
