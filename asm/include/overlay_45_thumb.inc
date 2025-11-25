@@ -128,7 +128,7 @@
 .public sub_020393C8
 .public sub_020397FC
 .public sub_02039FD8
-.public GetMonData
+.public Pokemon_GetMonData
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

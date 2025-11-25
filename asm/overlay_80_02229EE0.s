@@ -317,7 +317,7 @@ ov80_0222A140: ; 0x0222A140
 	add r6, r0, #0
 	add r0, r5, #0
 	add r4, r2, #0
-	bl ZeroMonData
+	bl Pokemon_ZeroMonData
 	cmp r4, #0x78
 	bne _0222A158
 	mov r4, #0x32
@@ -345,13 +345,13 @@ _0222A15E:
 	add r0, r5, #0
 	lsl r1, r1, #0x15
 	lsr r1, r1, #0x15
-	bl CreateMon
+	bl Pokemon_CreateMon
 	add r0, r5, #0
 	mov r1, #0xaf
 	add r2, sp, #0x1c
 	bl SetMonData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 	ldrh r0, [r6]
 	add r2, sp, #0x14
 	add r2, #1
@@ -397,7 +397,7 @@ _0222A1BC:
 	add r0, r5, #0
 	add r1, #0x42
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #0x14
 	strb r0, [r1]
 	add r1, r4, #0
@@ -513,7 +513,7 @@ _0222A2F0:
 	add r2, r6, #0
 	bl SetMonData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 	add sp, #0x20
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -555,7 +555,7 @@ ov80_0222A334: ; 0x0222A334
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl Save_PlayerData_GetProfile

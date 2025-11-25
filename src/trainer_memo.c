@@ -301,7 +301,7 @@ void sub_0208E994(Unk0208E600 *a0) {
 // Returns true if the Pokemon has the proper metadata to trigger the event.
 BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
     u8 metCondition = MonMetCondition(mon, isMine);
-    u8 version = GetMonData(mon, MON_DATA_MET_GAME, NULL);
+    u8 version = Pokemon_GetMonData(mon, MON_DATA_MET_GAME, NULL);
 
     if ((metCondition == MET_CONDITION_FATEFUL_ENCOUNTER || metCondition == MET_CONDITION_FATEFUL_ENCOUNTER_TRADED) && (eventNo != EVENT_ARCEUS_HALL_OF_ORIGIN)) {
         return TRUE;
@@ -316,7 +316,7 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
             case VERSION_DIAMOND:
             case VERSION_PEARL:
             case VERSION_PLATINUM:
-                if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == MetLocation(MAPSECTYPE_NORMAL, MAPSEC_HALL_OF_ORIGIN)) {
+                if (Pokemon_GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == MetLocation(MAPSECTYPE_NORMAL, MAPSEC_HALL_OF_ORIGIN)) {
                     return TRUE;
                 }
             }
@@ -343,15 +343,15 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
-    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 1, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferLocationName(a0->msgFmt, 4, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
-    BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
+    BufferIntegerAsString(a0->msgFmt, 0, Pokemon_GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(a0->msgFmt, 1, Pokemon_GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
+    BufferIntegerAsString(a0->msgFmt, 2, Pokemon_GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 3, Pokemon_GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferLocationName(a0->msgFmt, 4, Pokemon_GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
+    BufferIntegerAsString(a0->msgFmt, 5, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(a0->msgFmt, 6, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
+    BufferIntegerAsString(a0->msgFmt, 7, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferLocationName(a0->msgFmt, 8, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
     String_Delete(str);
@@ -365,12 +365,12 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
-    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferMonthNameAbbr(a0->msgFmt, 1, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 0, Pokemon_GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferMonthNameAbbr(a0->msgFmt, 1, Pokemon_GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
+    BufferIntegerAsString(a0->msgFmt, 2, Pokemon_GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 3, Pokemon_GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
 
-    version = GetMonData(a0->mon, MON_DATA_MET_GAME, NULL);
+    version = Pokemon_GetMonData(a0->mon, MON_DATA_MET_GAME, NULL);
     switch (version) {
     case 0:
     case 6:
@@ -414,15 +414,15 @@ static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
     if (!hatched) {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-        BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
+        BufferIntegerAsString(a0->msgFmt, 5, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferMonthNameAbbr(a0->msgFmt, 6, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
+        BufferIntegerAsString(a0->msgFmt, 7, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferLocationName(a0->msgFmt, 8, Pokemon_GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
     } else {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
-        BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
+        BufferIntegerAsString(a0->msgFmt, 5, Pokemon_GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferMonthNameAbbr(a0->msgFmt, 6, Pokemon_GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
+        BufferIntegerAsString(a0->msgFmt, 7, Pokemon_GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferLocationName(a0->msgFmt, 8, Pokemon_GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
     }
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
@@ -435,13 +435,13 @@ static void FormatCharacteristic(Unk0208E600 *a0) {
 
     a0->notepad.characteristic = String_New(0x48, a0->heapID);
 
-    int hpIv = GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
-    int atkIv = GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
-    int defIv = GetMonData(a0->mon, MON_DATA_DEF_IV, NULL);
-    int speedIv = GetMonData(a0->mon, MON_DATA_SPEED_IV, NULL);
-    int spAtkIv = GetMonData(a0->mon, MON_DATA_SPATK_IV, NULL);
-    int spDefIv = GetMonData(a0->mon, MON_DATA_SPDEF_IV, NULL);
-    u32 personality = GetMonData(a0->mon, MON_DATA_PERSONALITY, NULL);
+    int hpIv = Pokemon_GetMonData(a0->mon, MON_DATA_HP_IV, NULL);
+    int atkIv = Pokemon_GetMonData(a0->mon, MON_DATA_ATK_IV, NULL);
+    int defIv = Pokemon_GetMonData(a0->mon, MON_DATA_DEF_IV, NULL);
+    int speedIv = Pokemon_GetMonData(a0->mon, MON_DATA_SPEED_IV, NULL);
+    int spAtkIv = Pokemon_GetMonData(a0->mon, MON_DATA_SPATK_IV, NULL);
+    int spDefIv = Pokemon_GetMonData(a0->mon, MON_DATA_SPDEF_IV, NULL);
+    u32 personality = Pokemon_GetMonData(a0->mon, MON_DATA_PERSONALITY, NULL);
 
     switch (personality % 6) {
     case 0:
@@ -608,7 +608,7 @@ static void FormatFlavorPreference(Unk0208E600 *a0) {
 static void FormatEggWatch(Unk0208E600 *a0) {
     int msgNo;
 
-    int eggCycles = GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
+    int eggCycles = Pokemon_GetMonData(a0->mon, MON_DATA_FRIENDSHIP, NULL);
     a0->notepad.eggWatch = String_New(0x120, a0->heapID);
     if (eggCycles <= 5) {
         msgNo = msg_0302_00105;
@@ -623,19 +623,19 @@ static void FormatEggWatch(Unk0208E600 *a0) {
 }
 
 static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
-    if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-        if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == 0) {
-            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == MetLocation(MAPSECTYPE_NORMAL, MAPLOC(MAPSEC_PAL_PARK))) {
+    if (!Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == 0) {
+            if (Pokemon_GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == MetLocation(MAPSECTYPE_NORMAL, MAPLOC(MAPSEC_PAL_PARK))) {
                 return MET_CONDITION_MIGRATED;
             }
-            if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
+            if (Pokemon_GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
                 if (isMine == TRUE) {
                     return MET_CONDITION_FATEFUL_ENCOUNTER;
                 }
                 return MET_CONDITION_FATEFUL_ENCOUNTER_TRADED;
             }
 
-            if (GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE))) {
+            if (Pokemon_GetMonData(mon, MON_DATA_MET_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE))) {
                 return MET_CONDITION_WILD_GIFT;
             }
             if (isMine == TRUE) {
@@ -643,14 +643,14 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
             }
             return MET_CONDITION_WILD_ENCOUNTER_TRADED;
         }
-        if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
-            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE_2))) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
+            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE_2))) {
                 if (isMine == TRUE) {
                     return MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT;
                 }
                 return MET_CONDITION_FATEFUL_EGG_HATCHED_GIFT_TRADED;
             }
-            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER))) {
+            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER))) {
                 if (isMine == TRUE) {
                     return MET_CONDITION_FATEFUL_EGG_HATCHED_ARRIVED;
                 }
@@ -662,13 +662,13 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
             return MET_CONDITION_FATEFUL_EGG_HATCHED_TRADED;
         }
 
-        if ((GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE)))
-         || (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE)))
-         || (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_TRAVELING_MAN)))
-         || (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_RILEY)))
-         || (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_CYNTHIA)))
-         || (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)))
-         || (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_PRIMO)))) {
+        if ((Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_LINK_TRADE)))
+         || (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE)))
+         || (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_TRAVELING_MAN)))
+         || (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_RILEY)))
+         || (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_CYNTHIA)))
+         || (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)))
+         || (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_PRIMO)))) {
             if (isMine == TRUE) {
                 return MET_CONDITION_EGG_HATCHED_GIFT;
             }
@@ -682,15 +682,15 @@ static MetCondition MonMetCondition(Pokemon *mon, BOOL isMine) {
     }
 
     if (isMine == TRUE) {
-        if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
-            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER))) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
+            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == MetLocation(MAPSECTYPE_EXTERNAL, MAPLOC(METLOC_POKEMON_RANGER))) {
                 return MET_CONDITION_FATEFUL_EGG_ARRIVED;
             }
             return MET_CONDITION_FATEFUL_EGG;
         }
         return MET_CONDITION_EGG;
     }
-    if (GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
+    if (Pokemon_GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE) {
         return MET_CONDITION_FATEFUL_EGG_TRADED;
     }
     return MET_CONDITION_EGG_TRADED;

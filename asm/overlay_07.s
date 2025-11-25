@@ -46368,7 +46368,7 @@ ov07_022326C0: ; 0x022326C0
 	str r0, [r2]
 	ldr r0, [r4, #0xc]
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -46397,7 +46397,7 @@ _022326EE:
 _0223270C:
 	ldr r0, [r4, #0xc]
 	mov r1, #0x9b
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r4, #0x98
 	str r0, [r4]
 	pop {r4, pc}
@@ -46410,7 +46410,7 @@ _0223271A:
 	add r4, #0xa0
 	mov r1, #0xab
 	add r2, r4, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	pop {r4, pc}
 	thumb_func_end ov07_022326C0
 

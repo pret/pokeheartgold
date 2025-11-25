@@ -448,13 +448,13 @@ _02237DAC:
 	mov r1, #0xac
 	mov r2, #0
 	add r5, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02237DEC
 	add r0, r5, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _02237DDE
 	mov r0, #1

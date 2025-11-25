@@ -21,7 +21,7 @@
 .public sub_0205C218
 .public sub_0205C268
 .public AllocMonZeroed
-.public GetMonData
+.public Pokemon_GetMonData
 .public SetMonData
 .public CopyPokemonToPokemon
 .public Pokemon_UpdateAfterCatch

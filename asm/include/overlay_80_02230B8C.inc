@@ -9,7 +9,7 @@
 .public sub_02030BF4
 .public BattleSetup_Delete
 .public IsBattleResultWin
-.public GetMonData
+.public Pokemon_GetMonData
 .public SetMonData
 .public SaveArray_Party_Init
 .public Party_AddMon

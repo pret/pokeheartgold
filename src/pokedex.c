@@ -324,7 +324,7 @@ static BOOL Pokedex_CheckSeenDeoxysForm(Pokedex *pokedex, u32 form) {
 static void Pokedex_SetSeenDeoxysForm(Pokedex *pokedex, u16 species, Pokemon *mon) {
     u8 form;
 
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
     if (species == SPECIES_DEOXYS) {
         if (!Pokedex_CheckSeenDeoxysForm(pokedex, form)) {
             Pokedex_DeoxysFormFlagAction(pokedex, form, Pokedex_CountSeenDeoxysForms(pokedex));
@@ -387,7 +387,7 @@ static void Pokedex_SetSeenRotomForm(Pokedex *pokedex, u32 species, u32 form) {
 static void Pokedex_TryAppendSeenForm(Pokedex *pokedex, u16 species, Pokemon *mon) {
     u32 form;
 
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
     switch (species) {
     case SPECIES_UNOWN:
         Pokedex_TryAppendUnownLetter(pokedex, form, FALSE);
@@ -774,8 +774,8 @@ void Pokedex_SetMonSeenFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender;
     u8 seenGender;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
+    personality = Pokemon_GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     gender = GetMonGender(mon);
 
     ASSERT_POKEDEX(pokedex);
@@ -803,9 +803,9 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender;
     u32 gender_ct;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
-    personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
+    language = Pokemon_GetMonData(mon, MON_DATA_LANGUAGE, NULL);
+    personality = Pokemon_GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     gender = GetMonGender(mon);
 
     ASSERT_POKEDEX(pokedex);

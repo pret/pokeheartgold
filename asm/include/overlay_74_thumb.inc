@@ -264,10 +264,10 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930
-.public ZeroBoxMonData
-.public AcquireBoxMonLock
-.public ReleaseBoxMonLock
-.public GetMonData
+.public BoxPokemon_ZeroBoxMonData
+.public BoxPokemon_AcquireBoxMonLock
+.public BoxPokemon_ReleaseBoxMonLock
+.public Pokemon_GetMonData
 .public GetBoxMonData
 .public SetBoxMonData
 .public GetMonBaseStat

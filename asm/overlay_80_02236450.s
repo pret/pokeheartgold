@@ -670,13 +670,13 @@ _02236964:
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0x32
 	bls _022369A6
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x32
 	bl GetMonExpBySpeciesAndLevel
 	str r0, [sp, #0xc]
@@ -685,7 +685,7 @@ _02236964:
 	add r2, sp, #0xc
 	bl SetMonData
 	add r0, r4, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 _022369A6:
 	add r0, r7, #0
 	add r1, r4, #0

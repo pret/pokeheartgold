@@ -78,7 +78,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

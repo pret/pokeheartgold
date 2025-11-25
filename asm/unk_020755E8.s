@@ -682,14 +682,14 @@ sub_02075A7C: ; 0x02075A7C
 	mov r1, #5
 	mov r2, #0
 	str r7, [r4, #0x28]
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x60
 	strh r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x80
 	strb r0, [r1]
@@ -1760,7 +1760,7 @@ _020763FC:
 	ldr r0, [r4, #0x28]
 	bl UpdateMonAbility
 	ldr r0, [r4, #0x28]
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 	ldr r0, [r4, #0x28]
 	bl Mon_GetBoxMon
 	add r2, r0, #0
@@ -1822,7 +1822,7 @@ _02076478:
 	ldr r0, [r4, #0x28]
 	mov r1, #0x4d
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _020764CE
 	ldr r0, [r4, #0x28]
@@ -2354,7 +2354,7 @@ _02076906:
 	ldr r0, [r4, #0x28]
 	mov r2, #0
 	add r1, #0x36
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #1
@@ -2935,7 +2935,7 @@ _02076D62:
 	add r0, r5, #0
 	bl UpdateMonAbility
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 	ldr r0, [r4, #0x24]
 	add r1, r5, #0
 	bl Party_AddMon
@@ -3401,7 +3401,7 @@ sub_020771E8: ; 0x020771E8
 	add r2, #0x62
 	bl SetMonData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 	add r0, sp, #0x10
 	add r1, r5, #0
 	mov r2, #2

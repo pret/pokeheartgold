@@ -208,9 +208,9 @@
 .public Options_GetFrame
 .public Save_SpecialRibbons_Get
 .public AllocMonZeroed
-.public AcquireBoxMonLock
-.public ReleaseBoxMonLock
-.public GetMonData
+.public BoxPokemon_AcquireBoxMonLock
+.public BoxPokemon_ReleaseBoxMonLock
+.public Pokemon_GetMonData
 .public GetBoxMonData
 .public SetMonData
 .public SetBoxMonData

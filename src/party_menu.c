@@ -1029,20 +1029,20 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
         return FALSE;
     }
     mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-    species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = (u16)Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
     if (species == SPECIES_NONE) {
         return FALSE;
     }
     PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
     partyMenu->monsDrawState[partySlot].species = species;
-    partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAX_HP, NULL);
-    partyMenu->monsDrawState[partySlot].level = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
-    partyMenu->monsDrawState[partySlot].heldItem = (u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-    partyMenu->monsDrawState[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
-    partyMenu->monsDrawState[partySlot].isEgg = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    partyMenu->monsDrawState[partySlot].form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
-    if (GetMonData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
+    partyMenu->monsDrawState[partySlot].hp = (u16)Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
+    partyMenu->monsDrawState[partySlot].maxHp = (u16)Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL);
+    partyMenu->monsDrawState[partySlot].level = (u16)Pokemon_GetMonData(mon, MON_DATA_LEVEL, NULL);
+    partyMenu->monsDrawState[partySlot].heldItem = (u16)Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    partyMenu->monsDrawState[partySlot].capsule = (u16)Pokemon_GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
+    partyMenu->monsDrawState[partySlot].isEgg = (u8)Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    partyMenu->monsDrawState[partySlot].form = (u8)Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
+    if (Pokemon_GetMonData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = FALSE;
     } else {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = TRUE;
@@ -1064,7 +1064,7 @@ static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenu *partyMenu, Poke
             u32 numRibbons = Pokemon_CountRibbonsByCategory(mon, partyMenu->args->contestStat);
             u32 i;
             for (i = 0; i < 4; ++i) {
-                if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
+                if (Pokemon_GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
                     break;
                 }
             }
@@ -1081,34 +1081,34 @@ static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat) {
     u32 result;
     switch (contestStat) {
     case COOL:
-        result = GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_MASTER, NULL);
+        result = Pokemon_GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_GREAT, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_MASTER, NULL);
         break;
     case BEAUTY:
-        result = GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_MASTER, NULL);
+        result = Pokemon_GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_GREAT, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_MASTER, NULL);
         break;
     case CUTE:
-        result = GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_MASTER, NULL);
+        result = Pokemon_GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_GREAT, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_MASTER, NULL);
         break;
     case SMART:
-        result = GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_MASTER, NULL);
+        result = Pokemon_GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_GREAT, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_MASTER, NULL);
         break;
     case TOUGH:
-        result = GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_MASTER, NULL);
+        result = Pokemon_GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_GREAT, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_MASTER, NULL);
         break;
     }
     return result;
@@ -1276,7 +1276,7 @@ void sub_0207A7F4(PartyMenu *partyMenu, u8 partySlot) {
         } else {
             paletteSlot = 0;
         }
-        if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+        if (Pokemon_GetMonData(mon, MON_DATA_HP, NULL) == 0) {
             paletteSlot += 2;
         } else if (sub_0207A880(partyMenu, partySlot) == TRUE) {
             paletteSlot += 1;
@@ -1635,7 +1635,7 @@ static u8 sub_0207B0B0(PartyMenu *partyMenu, u8 *buf) {
             buf[count] = PARTY_MON_CONTEXT_MENU_QUIT;
             ++count;
             for (i = 0; i < MAX_MON_MOVES; ++i) {
-                move = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
+                move = Pokemon_GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
                 if (move == MOVE_NONE) {
                     break;
                 }
@@ -2461,7 +2461,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
     FieldSystem *fieldSystem = partyMenu->args->fieldSystem;
 
     if (partyMenu->args->itemId == ITEM_GRISEOUS_ORB) {
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_GIRATINA) {
+        if (Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_GIRATINA) {
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00189, partyMenu->unformattedStrBuf);
             BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
             BufferItemNameWithIndefArticle(partyMenu->msgFormat, 1, partyMenu->args->itemId);

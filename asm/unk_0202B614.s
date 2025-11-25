@@ -78,27 +78,27 @@ sub_0202B684: ; 0x0202B684
 	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	add r7, r3, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r2, r5, #0
 	strh r0, [r5, #8]
 	add r0, r4, #0
 	mov r1, #MON_DATA_NICKNAME
 	add r2, #0xa
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #MON_DATA_PERSONALITY
 	add r0, r4, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [r5]
 	add r0, r4, #0
 	mov r1, #MON_DATA_OT_ID
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #MON_DATA_FORM
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r5, #0
 	add r1, #0x33
 	strb r0, [r1]
@@ -175,7 +175,7 @@ sub_0202B730: ; 0x0202B730
 	str r0, [sp, #0xc]
 	ldrh r1, [r5, #8]
 	add r0, r4, #0
-	bl CreateMon
+	bl Pokemon_CreateMon
 	add r2, r5, #0
 	add r0, r4, #0
 	mov r1, #0x75

@@ -209,7 +209,7 @@ UseMailArgs *sub_02090F00(SaveData *saveData, Pokemon *mon, enum HeapID heapID) 
 
     Mail *mail = Mail_New(heapID);
     ptr->mail = mail;
-    GetMonData(mon, MON_DATA_MAIL, ptr->mail);
+    Pokemon_GetMonData(mon, MON_DATA_MAIL, ptr->mail);
 
     return ptr;
 }
@@ -254,7 +254,7 @@ int Mailbox_MoveMessageFromMon(Mailbox *mailbox, Pokemon *mon, enum HeapID heapI
     if (idx != -1) {
         Mail *mail = Mail_New(heapID);
 
-        GetMonData(mon, MON_DATA_MAIL, mail);
+        Pokemon_GetMonData(mon, MON_DATA_MAIL, mail);
         Mailbox_CopyMailToSlotI(&mailbox->msgs[0], 0, idx, mail);
         Mail_Init(mail);
         SetMonData(mon, MON_DATA_MAIL, mail);

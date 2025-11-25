@@ -96,9 +96,9 @@
 .public Save_VarsFlags_Get
 .public CheckFlag982
 .public AllocMonZeroed
-.public AcquireMonLock
-.public ReleaseMonLock
-.public GetMonData
+.public Pokemon_AcquireMonLock
+.public Pokemon_ReleaseMonLock
+.public Pokemon_GetMonData
 .public GetBoxMonData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature

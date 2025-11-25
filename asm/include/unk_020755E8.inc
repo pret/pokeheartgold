@@ -135,8 +135,8 @@
 .public GameStats_AddScore
 .public sub_0203A880
 .public AllocMonZeroed
-.public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_CalcMonLevelAndStats
+.public Pokemon_GetMonData
 .public SetMonData
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon

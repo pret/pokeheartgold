@@ -1754,7 +1754,7 @@ _0205988E:
 	mov r1, #5
 	add r0, r0, r6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r0, #0
 	ldr r0, [sp, #0x18]
 	ldr r2, [r5, #0xc]

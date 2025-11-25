@@ -123,7 +123,7 @@
 .public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
-.public GetMonData
+.public Pokemon_GetMonData
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

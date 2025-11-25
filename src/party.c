@@ -38,7 +38,7 @@ void Party_InitWithMaxSize(Party *party, int maxSize) {
     party->core.curCount = 0;
     party->core.maxCount = maxSize;
     for (i = 0; i < PARTY_SIZE; i++) {
-        ZeroMonData(&party->core.mons[i]);
+        Pokemon_ZeroMonData(&party->core.mons[i]);
     }
     MI_CpuClear8(&party->extra, 5 * party->core.maxCount);
 }
@@ -60,7 +60,7 @@ BOOL Party_RemoveMon(Party *party, int slot) {
         party->core.mons[slot] = party->core.mons[slot + 1];
         party->extra.aprijuiceModifiers[slot] = party->extra.aprijuiceModifiers[slot + 1];
     }
-    ZeroMonData(&party->core.mons[slot]);
+    Pokemon_ZeroMonData(&party->core.mons[slot]);
     MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyExtraSub));
     party->core.curCount--;
     return TRUE;
@@ -97,7 +97,7 @@ void Party_ResetMonAprijuiceModifiers(Party *party, int slot) {
 void Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(Party *party, int slot, Pokemon *src) {
     PARTY_ASSERT_SLOT(party, slot);
     {
-        BOOL valid = GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
+        BOOL valid = Pokemon_GetMonData(&party->core.mons[slot], MON_DATA_SPECIES_EXISTS, NULL) - Pokemon_GetMonData(src, MON_DATA_SPECIES_EXISTS, NULL);
         party->core.mons[slot] = *src;
         MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyExtraSub));
         party->core.curCount += valid;
@@ -130,7 +130,7 @@ BOOL Party_HasMon(Party *party, u16 species) {
     int i;
 
     for (i = 0; i < party->core.curCount; i++) {
-        if (species == GetMonData(&party->core.mons[i], MON_DATA_SPECIES_OR_EGG, NULL)) {
+        if (species == Pokemon_GetMonData(&party->core.mons[i], MON_DATA_SPECIES_OR_EGG, NULL)) {
             break;
         }
     }

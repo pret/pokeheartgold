@@ -212,7 +212,7 @@ static void InitGameStateAfterOakSpeech_Internal(enum HeapID heapID, SaveData *s
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
     Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
 
-    CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    Pokemon_CreateMon(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
 
     Mail *mail;
     if (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) {

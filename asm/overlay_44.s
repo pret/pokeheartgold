@@ -447,13 +447,13 @@ _0222A184:
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _0222A1AA
 	add r0, r6, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _0222A1AA
 	add r5, r5, #1
@@ -3201,13 +3201,13 @@ _0222B7C0:
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, [r5, #4]
 	mov r2, #0
 	strh r0, [r1, r4]
 	add r0, r7, #0
 	mov r1, #6
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, [r5, #4]
 	add r6, r6, #1
 	add r1, r1, r4
