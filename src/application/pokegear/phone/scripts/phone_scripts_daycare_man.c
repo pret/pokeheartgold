@@ -48,7 +48,7 @@ BOOL GearPhoneCall_DayCareMan(PokegearPhoneCallContext *ctx) {
         if (!PhoneCall_IsMessageDonePrinting(ctx)) {
             return FALSE;
         }
-        if (Save_Daycare_HasEgg(state->miscPtr.daycare)) {
+        if (Daycare_HasEgg(state->miscPtr.daycare)) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0661_00003);
             state->scriptState = 255;
         } else if (state->sharedU8var == 0) {

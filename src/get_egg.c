@@ -866,7 +866,7 @@ BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem)
             n++;
         }
     }
-    if (!Save_Daycare_HasEgg(dayCare) && n == 2) {
+    if (!Daycare_HasEgg(dayCare) && n == 2) {
         steps = DaycareMon_GetSteps(Daycare_GetMonX(dayCare, 1));
         if (steps == 255) {
             compat = Daycare_CalcCompatibilityInternal(dayCare);
@@ -973,7 +973,7 @@ u16 Save_Daycare_BufferTailMonNick(Daycare *dayCare, MessageFormat *msgFmt) {
 
 u8 Save_Daycare_GetState(Daycare *dayCare) {
     u8 count;
-    if (Save_Daycare_HasEgg(dayCare)) {
+    if (Daycare_HasEgg(dayCare)) {
         return 1;
     }
     count = Daycare_CountMonsInDaycare(dayCare);

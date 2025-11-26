@@ -42,6 +42,6 @@ void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src);
 void DaycareMon_Extras_Init(DaycareMail *mail);
 void DaycareMon_Init(DaycareMon *mon);
 Daycare *Save_Daycare_Get(SaveData *saveData);
-BOOL Save_Daycare_HasEgg(Daycare *daycare);
+BOOL Daycare_HasEgg(Daycare *daycare);
 
 #endif

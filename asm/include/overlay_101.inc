@@ -178,7 +178,7 @@
 .public PlayerProfile_CountBadges
 .public Daycare_GetMonX
 .public DaycareMon_GetBoxMon
-.public Save_Daycare_HasEgg
+.public Daycare_HasEgg
 .public Save_Daycare_Get
 .public Pokedex_CountNationalDexOwned
 .public Pokedex_CountNationalDexSeen

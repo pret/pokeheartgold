@@ -144,7 +144,7 @@ BOOL ScrCmd_CheckDaycareEgg(ScriptContext *ctx) {
     u16 *ret_ptr = ScriptGetVarPointer(ctx);
     Daycare *daycare = SaveArray_Get(saveData, SAVE_DAYCARE);
 
-    *ret_ptr = Save_Daycare_HasEgg(daycare);
+    *ret_ptr = Daycare_HasEgg(daycare);
 
     return FALSE;
 }
