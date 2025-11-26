@@ -4950,4 +4950,92 @@
 	.short 254, 0
 	.endm
 
+	    /*
+     * This flag is used by ScriptEntry and ScriptEntryEnd to control where
+     * a user can add ScriptEntry commands (i.e., only at the start of the
+     * input file). It is NOT meant for direct usage.
+     */
+    .set F_ACCEPT_SCRIPT_ENTRIES, TRUE
+
+    .macro ScriptEntry name
+    .if F_ACCEPT_SCRIPT_ENTRIES == TRUE
+        .long \name-.-4
+    .else
+        .error "cannot specify ScriptEntry after ScriptEntryEnd"
+    .endif
+    .endm
+
+    .macro ScriptEntryEnd
+    .set F_ACCEPT_SCRIPT_ENTRIES, FALSE
+    .short 0xFD13
+    .endm
+
+    .set F_INIT_SCRIPT_FRAME_TABLE_OPENED, FALSE
+    .set F_INIT_SCRIPT_FRAME_TABLE_CLOSED, FALSE
+
+    .macro InitScriptEntry_Fixed type, scriptID
+    .if F_ACCEPT_SCRIPT_ENTRIES == TRUE
+        .byte \type
+        .short \scriptID, 0
+    .else
+        .error "cannot specify InitScriptEntry after InitScriptEntryEnd"
+    .endif
+    .endm
+
+    .macro InitScriptEntry_OnFrameTable checksLabel
+    .if F_ACCEPT_SCRIPT_ENTRIES == TRUE
+        .set F_INIT_SCRIPT_FRAME_TABLE_OPENED, TRUE
+        .byte INIT_SCRIPT_ON_FRAME_TABLE
+        ScriptEntry \checksLabel
+    .else
+        .error "cannot specify InitScriptEntry after InitScriptEntryEnd"
+    .endif
+    .endm
+
+    .macro InitScriptEntry_OnTransition scriptID
+    InitScriptEntry_Fixed INIT_SCRIPT_ON_TRANSITION, \scriptID
+    .endm
+
+    .macro InitScriptEntry_OnResume scriptID
+    InitScriptEntry_Fixed INIT_SCRIPT_ON_RESUME, \scriptID
+    .endm
+
+    .macro InitScriptEntry_OnLoad scriptID
+    InitScriptEntry_Fixed INIT_SCRIPT_ON_LOAD, \scriptID
+    .endm
+
+    .macro InitScriptEntryEnd
+    .set F_ACCEPT_SCRIPT_ENTRIES, FALSE
+    .byte 0
+    .endm
+
+    .macro InitScriptGoToIfEqual var1, var2, scriptID
+    .if F_INIT_SCRIPT_FRAME_TABLE_OPENED == TRUE
+        .if F_INIT_SCRIPT_FRAME_TABLE_CLOSED == FALSE
+            .short \var1, \var2, \scriptID
+        .else
+            .error "cannot specify InitScriptGoToIfEqual after InitScriptFrameTableEnd"
+        .endif
+    .else
+        .error "cannot specify InitScriptGoToIfEqual before InitScriptEntry_OnFrameTable"
+    .endif
+    .endm
+
+    .macro InitScriptFrameTableEnd
+    .set F_INIT_SCRIPT_FRAME_TABLE_CLOSED, TRUE
+    .short 0
+    .endm
+
+    .macro InitScriptEnd
+    .if F_ACCEPT_SCRIPT_ENTRIES == TRUE
+        .error "cannot specify InitScriptEnd before InitScriptEntryEnd"
+    .endif
+    .if F_INIT_SCRIPT_FRAME_TABLE_OPENED == TRUE
+        .if F_INIT_SCRIPT_FRAME_TABLE_CLOSED == FALSE
+            .error "must close InitScriptEntry_OnFrameTable with InitScriptFrameTableEnd before InitScriptEnd"
+        .endif
+    .endif
+    .balign 4, 0
+    .endm
+
 	.endif ; ASM_SCRIPT_INC
