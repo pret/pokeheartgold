@@ -3907,8 +3907,8 @@ _021E76C0:
 _021E76C8: .word ov112_021FFAA4
 	thumb_func_end ov112_021E76A8
 
-	thumb_func_start ov112_021E76CC
-ov112_021E76CC: ; 0x021E76CC
+	thumb_func_start PokeWalker_InitConnectToPokewalker
+PokeWalker_InitConnectToPokewalker: ; 0x021E76CC
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
 	mov r0, #0
@@ -3952,7 +3952,7 @@ ov112_021E76CC: ; 0x021E76CC
 	ldr r0, [r0, #8]
 	str r0, [r5, #0x20]
 	add r0, r5, #0
-	bl ov112_021E795C
+	bl PokeWalker_FetchSaveData_maybe
 	mov r0, #3
 	mov r1, #8
 	bl SetKeyRepeatTimers
@@ -3969,7 +3969,7 @@ ov112_021E76CC: ; 0x021E76CC
 _021E775C: .word 0xFFFFE0FF
 _021E7760: .word 0x04001000
 _021E7764: .word 0x0001F378
-	thumb_func_end ov112_021E76CC
+	thumb_func_end PokeWalker_InitConnectToPokewalker
 
 	thumb_func_start ov112_021E7768
 ov112_021E7768: ; 0x021E7768
@@ -4052,8 +4052,8 @@ ov112_021E77E4: ; 0x021E77E4
 _021E782C: .word 0x0001E52C
 	thumb_func_end ov112_021E77E4
 
-	thumb_func_start ov112_021E7830
-ov112_021E7830: ; 0x021E7830
+	thumb_func_start PokeWalker_ExecConnectToPokewalker
+PokeWalker_ExecConnectToPokewalker: ; 0x021E7830
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r1, #0
@@ -4162,10 +4162,10 @@ _021E7900: .word 0x0001F2E0
 _021E7904: .word ov112_021FF554
 _021E7908: .word 0x00007FFF
 _021E790C: .word 0x0001E52C
-	thumb_func_end ov112_021E7830
+	thumb_func_end PokeWalker_ExecConnectToPokewalker
 
-	thumb_func_start ov112_021E7910
-ov112_021E7910: ; 0x021E7910
+	thumb_func_start PokeWalker_ExitConnectToPokewalker
+PokeWalker_ExitConnectToPokewalker: ; 0x021E7910
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl OverlayManager_GetData
@@ -4193,10 +4193,11 @@ ov112_021E7910: ; 0x021E7910
 	nop
 _021E7954: .word FS_OVERLAY_ID(intro_title)
 _021E7958: .word gApplication_TitleScreen
-	thumb_func_end ov112_021E7910
+	thumb_func_end PokeWalker_ExitConnectToPokewalker
 
-	thumb_func_start ov112_021E795C
-ov112_021E795C: ; 0x021E795C
+	; Only referenced by PokeWalker_InitConnectToPokewalker
+    thumb_func_start PokeWalker_FetchSaveData_maybe
+PokeWalker_FetchSaveData_maybe: ; 0x021E795C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x20]
@@ -4226,7 +4227,7 @@ _021E7998: .word 0x0001E438
 _021E799C: .word 0x0001E43C
 _021E79A0: .word 0x0001E440
 _021E79A4: .word 0x0001E444
-	thumb_func_end ov112_021E795C
+	thumb_func_end PokeWalker_FetchSaveData_maybe
 
 	thumb_func_start ov112_021E79A8
 ov112_021E79A8: ; 0x021E79A8
@@ -4247,7 +4248,8 @@ _021E79C8: .word 0x027E0000
 _021E79CC: .word 0x00003FF8
 	thumb_func_end ov112_021E79A8
 
-	thumb_func_start ov112_021E79D0
+	; Only referenced by ov112_021E7768
+    thumb_func_start ov112_021E79D0
 ov112_021E79D0: ; 0x021E79D0
 	push {r4, lr}
 	sub sp, #0x28
@@ -4396,7 +4398,7 @@ ov112_021E7B18: ; 0x021E7B18
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	mov r0, #0xf9
+	mov r0, #0xf9 ; NARC_a_2_4_7
 	mov r1, #0x9a
 	bl NARC_New
 	mov r1, #0
@@ -4508,21 +4510,22 @@ _021E7C10: .word 0x0001E43C
 _021E7C14: .word 0x000003E2
 	thumb_func_end ov112_021E7B18
 
-	thumb_func_start ov112_021E7C18
+	; Only referenced by ov112_021E7768
+    thumb_func_start ov112_021E7C18
 ov112_021E7C18: ; 0x021E7C18
 	push {r4, lr}
-	mov r1, #0x1b
+	mov r1, #0x1b   ; NARC_msgdata_msg
 	add r2, r1, #0
 	add r4, r0, #0
-	mov r0, #0
-	add r2, #0xf7
+	mov r0, #0      ; "Welcome! From here, you can select a Pokemon..."
+	add r2, #0xf7   ; files/msgdata/msg/msg_0247.gmm
 	mov r3, #0x9a
 	bl NewMsgDataFromNarc
 	ldr r1, _021E7C5C ; =0x0001E44C
-	mov r2, #0xde
+	mov r2, #0xde    
 	str r0, [r4, r1]
-	mov r0, #1
-	mov r1, #0x1b
+	mov r0, #1    ;
+	mov r1, #0x1b ; NARC_msgdata_msg
 	mov r3, #0x9a
 	bl NewMsgDataFromNarc
 	ldr r1, _021E7C60 ; =0x0001E450
@@ -7680,7 +7683,7 @@ ov112_021E98A4: ; 0x021E98A4
 	push {r3, r4, r5, lr}
 	sub sp, #0x10
 	add r5, r0, #0
-	mov r0, #0xf9
+	mov r0, #0xf9 ; NARC_a_2_4_7
 	mov r1, #0x9a
 	bl NARC_New
 	add r4, r0, #0
@@ -10068,14 +10071,15 @@ ov112_021EABE8: ; 0x021EABE8
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov112_021EABE8
 
-	thumb_func_start ov112_021EAC18
+	; Only referenced by ov112_021FF54C
+    thumb_func_start ov112_021EAC18
 ov112_021EAC18: ; 0x021EAC18
 	push {r3, lr}
-	ldr r1, _021EAC30 ; =0x00000497
+	ldr r1, _021EAC30 ; =0x00000497 = SEQ_GS_PHC
 	mov r0, #0x49
 	mov r2, #0
 	bl Sound_SetSceneAndPlayBGM
-	ldr r0, _021EAC30 ; =0x00000497
+	ldr r0, _021EAC30 ; =0x00000497 = SEQ_GS_PHC
 	bl PlayBGM
 	mov r0, #2
 	pop {r3, pc}
@@ -10083,7 +10087,8 @@ ov112_021EAC18: ; 0x021EAC18
 _021EAC30: .word 0x00000497
 	thumb_func_end ov112_021EAC18
 
-	thumb_func_start ov112_021EAC34
+	; Only referenced by ov112_021FF550
+    thumb_func_start ov112_021EAC34
 ov112_021EAC34: ; 0x021EAC34
 	push {r4, lr}
 	add r4, r0, #0
@@ -19418,7 +19423,8 @@ _021EF5A4: .word 0x00007FFF
 _021EF5A8: .word 0x00009DFC
 	thumb_func_end ov112_021EF568
 
-	thumb_func_start ov112_021EF5AC
+	; Only referenced by ov112_021FF554
+    thumb_func_start ov112_021EF5AC
 ov112_021EF5AC: ; 0x021EF5AC
 	push {r4, lr}
 	add r4, r0, #0
@@ -24988,7 +24994,7 @@ _021F2124:
 	str r4, [r0, #4]
 	mov r0, #0x51
 	add r1, r7, #0
-	bl NARC_New
+	bl NARC_New ; NARC_data_mmodel_mmodel
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r6, #0
@@ -26672,6 +26678,7 @@ _021F2DDC: .word 0x0000013D
 _021F2DE0: .word 0xFFFFFBFF
 	thumb_func_end ov112_021F2CD4
 
+    ; Only called from ov112_021F2EF4
 	thumb_func_start ov112_021F2DE4
 ov112_021F2DE4: ; 0x021F2DE4
 	push {r3, r4, r5, lr}
@@ -26707,7 +26714,7 @@ _021F2DF4:
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
 	ldr r1, [r4, #4]
-	mov r0, #0xfb
+	mov r0, #0xfb ; NARC_a_2_4_9
 	bl NARC_New
 	str r0, [r4, #0x10]
 	add r0, r4, #0
@@ -26729,6 +26736,7 @@ _021F2E68: .word gSystem + 0x60
 _021F2E6C: .word ov112_021F2EB0
 	thumb_func_end ov112_021F2DE4
 
+    ; Only called from ov112_021F2FAC
 	thumb_func_start ov112_021F2E70
 ov112_021F2E70: ; 0x021F2E70
 	push {r3, r4, r5, lr}
@@ -26756,6 +26764,7 @@ ov112_021F2E70: ; 0x021F2E70
 _021F2EAC: .word gSystem + 0x60
 	thumb_func_end ov112_021F2E70
 
+    ; Only referenced by ov112_021F2DE4 (as vblank function pointer)
 	thumb_func_start ov112_021F2EB0
 ov112_021F2EB0: ; 0x021F2EB0
 	push {r4, lr}
@@ -26790,7 +26799,8 @@ _021F2EEC: .word 0x027E0000
 _021F2EF0: .word 0x00003FF8
 	thumb_func_end ov112_021F2EB0
 
-	thumb_func_start ov112_021F2EF4
+	; Only referenced by rodata array ov112_021FF124
+    thumb_func_start ov112_021F2EF4
 ov112_021F2EF4: ; 0x021F2EF4
 	push {r3, r4, r5, r6, lr}
 	sub sp, #0xc
@@ -26882,7 +26892,8 @@ _021F2FA0:
 _021F2FA8: .word 0x00007FFF
 	thumb_func_end ov112_021F2EF4
 
-	thumb_func_start ov112_021F2FAC
+	; Only referenced by rodata array ov112_021FF124
+    thumb_func_start ov112_021F2FAC
 ov112_021F2FAC: ; 0x021F2FAC
 	push {r4, r5, lr}
 	sub sp, #0xc
@@ -26939,7 +26950,8 @@ _021F3012:
 	pop {r4, r5, pc}
 	thumb_func_end ov112_021F2FAC
 
-	thumb_func_start ov112_021F3018
+	; Only referend by rodata array ov112_021FF124
+    thumb_func_start ov112_021F3018
 ov112_021F3018: ; 0x021F3018
 	push {r4, lr}
 	bl OverlayManager_GetData
@@ -27789,6 +27801,7 @@ ov112_021F36B8:
 	.byte 0x40, 0x5F, 0x0B, 0xEF, 0x60, 0x7F, 0x0B, 0xEF, 0x80, 0x9F, 0x0B, 0xEF, 0xA0, 0xBF, 0xC0, 0xFF
 	.byte 0xA2, 0xBF, 0x0C, 0x23, 0xA2, 0xBF, 0x24, 0x41, 0xFF, 0x00, 0x00, 0x00
 
+; Only referenced by ov112_021E79D0
 ov112_021F36DC: ; 0x021F36DC
 	.byte 0x02, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
@@ -28429,7 +28442,7 @@ ov112_021F5718: ; 0x021F5718
 
 	.public ov112_App_MainMenu_SelectOption_ConnectToPokewalker
 ov112_App_MainMenu_SelectOption_ConnectToPokewalker:
-	.word ov112_021E76CC, ov112_021E7830, ov112_021E7910, 0xFFFFFFFF
+	.word PokeWalker_InitConnectToPokewalker, PokeWalker_ExecConnectToPokewalker, PokeWalker_ExitConnectToPokewalker, 0xFFFFFFFF
 ov112_021F5738:
 	.byte 0x00, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C
 	.byte 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x1C, 0x00, 0x1C
@@ -31545,6 +31558,7 @@ ov112_021FF0FC: ; 0x021FF0FC
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 	.byte 0x60, 0x00, 0x00, 0x00
 
+; Only referenced by ov112_021EF5AC
 ov112_021FF124: ; 0x021FF124
 	.word ov112_021F2EF4, ov112_021F3018, ov112_021F2FAC, 0xFFFFFFFF
 
@@ -31745,12 +31759,14 @@ ov112_021FF528: ; 0x021FF528
 	.word ov112_021F6B98
 	.word ov112_021F6AD8
 
+    ; Only referenced by PokeWalker_ExecConnectToPokewalker
 ov112_021FF54C: ; 0x021FF54C
 	.word ov112_021EAC18
 
 ov112_021FF550: ; 0x021FF550
 	.word ov112_021EAC34
 
+    ; Only referenced by PokeWalker_ExecConnectToPokewalker
 ov112_021FF554: ; 0x021FF554
 	.word ov112_021EAC58
 	.word ov112_021EBA08
