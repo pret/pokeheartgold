@@ -33,7 +33,7 @@ Mail *DaycareMail_GetMailPtr(DaycareMail *dcmail) {
     return &dcmail->mail;
 }
 
-BOOL Save_Daycare_HasEgg(Daycare *daycare) {
+BOOL Daycare_HasEgg(Daycare *daycare) {
     return daycare->egg_pid != 0;
 }
 
