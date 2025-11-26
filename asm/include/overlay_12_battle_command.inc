@@ -263,7 +263,7 @@
 .public BtlCmd_TrySpikes
 .public BtlCmd_CheckSpikes
 .public BtlCmd_TryPerishSong
-.public BtlCmd_GetTurnOrderBySpeed
+.public BtlCmd_GetCurrentTurnOrderIteratorMon
 .public BtlCmd_GoToIfValidMon
 .public BtlCmd_EndOfTurnWeatherEffect
 .public BtlCmd_CalcRolloutPower
@@ -360,7 +360,7 @@
 .public BtlCmd_BoostRandomStatBy2
 .public BtlCmd_RemoveItem
 .public BtlCmd_TryRecycle
-.public BtlCmd_CheckItemHoldEffectOnHit
+.public BtlCmd_TriggerHeldItemOnHit
 .public BtlCmd_PrintBattleResultMessage
 .public BtlCmd_PrintEscapeMessage
 .public BtlCmd_PrintForfeitMessage
@@ -369,7 +369,7 @@
 .public BtlCmd_CheckSubstitute
 .public BtlCmd_CheckIgnoreWeather
 .public BtlCmd_SetRandomTarget
-.public BtlCmd_CheckItemHoldEffectOnUTurn
+.public BtlCmd_TriggerHeldItemOnPivotMove
 .public BtlCmd_RefreshSprite
 .public BtlCmd_PlayMoveHitSound
 .public BtlCmd_PlayBGM
@@ -425,3 +425,9 @@
 .public ov18_021F89D0
 .public ov18_021F95AC
 .public ov18_021F95F8
+
+.public aov12_0226C428
+.public ov12_0226C45C
+.public ov12_0226C3CE
+.public ov12_0226C3E8
+.public ov12_0226C2EC

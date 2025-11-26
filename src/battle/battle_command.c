@@ -14,6 +14,7 @@
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 
+#include "battle/battle_command2.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_player.h"
 #include "battle/overlay_12_0224E4FC.h"
@@ -43,7 +44,521 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, i
 
 u8 GetBattlerIDBySide(BattleSystem *bsys, BattleContext *ctx, u32 a2);
 
-extern BtlCmdFunc sBattleScriptCommandTable[];
+
+enum {
+    STATE_GET_EXP_START = 0,
+    STATE_GET_EXP_WAIT_MESSAGE_PRINT,
+    STATE_GET_EXP_WAIT_MESSAGE_DELAY,
+    STATE_GET_EXP_GAUGE,
+    STATE_GET_EXP_WAIT_GAUGE,
+    STATE_GET_EXP_CHECK_LEVEL_UP,
+    STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT,
+    STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT,
+    STATE_GET_EXP_LEVEL_UP_SUMMARY_LOAD_ICON,
+    STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT,
+    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF,
+    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT,
+    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE,
+    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE_WAIT,
+    STATE_GET_EXP_LEVEL_UP_CLEAR,
+    STATE_GET_EXP_CHECK_LEARN_MOVE,
+    STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT,
+    STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT_WAIT,
+    STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT,
+    STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT_WAIT,
+    STATE_GET_EXP_MAKE_IT_FORGET_PROMPT,
+    STATE_GET_EXP_MAKE_IT_FORGET_ANSWER,
+    STATE_GET_EXP_MAKE_IT_FORGET_WAIT,
+    STATE_GET_EXP_MAKE_IT_FORGET_INPUT_TAKEN,
+    STATE_GET_EXP_ONE_TWO_POOF,
+    STATE_GET_EXP_ONE_TWO_POOF_WAIT,
+    STATE_GET_EXP_FORGOT_HOW_TO_USE,
+    STATE_GET_EXP_FORGOT_HOW_TO_USE_WAIT,
+    STATE_GET_EXP_AND_DOTDOTDOT,
+    STATE_GET_EXP_AND_DOTDOTDOT_WAIT,
+    STATE_GET_EXP_LEARNED_MOVE,
+    STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED,
+    STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED_WAIT,
+    STATE_GET_EXP_GIVE_UP_LEARNING_PROMPT,
+    STATE_GET_EXP_GIVE_UP_LEARNING_ANSWER,
+    STATE_GET_EXP_GIVE_UP_LEARNING_WAIT,
+    STATE_GET_EXP_LEARNED_MOVE_WAIT,
+    STATE_GET_EXP_CHECK_DONE,
+    STATE_GET_EXP_DONE,
+};
+
+
+const u8 ov12_0226C2EC[];
+const u32 sSecretPowerEffectTable[];
+const u16 sPrizeMoneyTbl[0x81][2];
+const BtlCmdFunc sBattleScriptCommandTable[];
+
+// TODO: Make this static.
+// This small struct is noteworthy because its placement in .rodata proves this huge file
+// was one single file in the original source code. It's placed first in .rodata and is
+// used by one of the last functions.
+const u8 ov12_0226C2EC[] = { 20, 15, 10, 15 };
+
+
+const u16 sLowKickDamageTable[][2] = {
+    { 100, 20 },
+    { 250, 40 },
+    { 500, 60 },
+    { 1000, 80 },
+    { 2000, 100 },
+    { 0xFFFF, 0xFFFF }
+};
+
+
+// TODO: Change this to use declarative [LOCATION] = MOVE syntax.
+const u16 sNaturePowerMoveTable[] = {
+    MOVE_EARTHQUAKE,
+    MOVE_EARTHQUAKE,
+    MOVE_SEED_BOMB,
+    MOVE_SEED_BOMB,
+    MOVE_ROCK_SLIDE,
+    MOVE_ROCK_SLIDE,
+    MOVE_BLIZZARD,
+    MOVE_HYDRO_PUMP,
+    MOVE_ICE_BEAM,
+    MOVE_TRI_ATTACK,
+    MOVE_MUD_BOMB,
+    MOVE_AIR_SLASH,
+    MOVE_TRI_ATTACK
+};
+
+// Stat change multipliers
+// TODO: Confirm that positive/negative comments are the right way around
+const u8 ov12_0226C3CE[][2] = {
+    { 10, 40 }, // -6
+    { 10, 35 }, // -5
+    { 10, 30 }, // -4
+    { 10, 25 }, // -3
+    { 10, 20 }, // -2
+    { 10, 15 }, // -1
+    { 10, 10 }, // +0
+    { 15, 10 }, // +1
+    { 20, 10 }, // +2
+    { 25, 10 }, // +3
+    { 30, 10 }, // +4
+    { 35, 10 }, // +5
+    { 40, 10 }  // +6
+};
+
+const u16 ov12_0226C3E8[] = {
+    SPECIES_NIDORAN_F,
+    SPECIES_NIDORINA,
+    SPECIES_NIDOQUEEN,
+    SPECIES_NIDORAN_M,
+    SPECIES_NIDORINO,
+    SPECIES_NIDOKING,
+    SPECIES_CLEFFA,
+    SPECIES_CLEFAIRY,
+    SPECIES_CLEFABLE,
+    SPECIES_IGGLYBUFF,
+    SPECIES_JIGGLYPUFF,
+    SPECIES_WIGGLYTUFF,
+    SPECIES_SKITTY,
+    SPECIES_DELCATTY
+};
+
+
+const ManagedSpriteTemplate aov12_0226C428 = {
+    .x=0x80, .y=0, .z=0,
+    .animation=0,
+    .drawPriority=200,
+    .pal=0,
+    .vram=NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = { 20021, 20016, 20013, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
+};
+
+const ManagedSpriteTemplate ov12_0226C45C = {
+    .x=0x98, .y=0x18, .z=0,
+    .animation=0,
+    .drawPriority=100,
+    .pal=0,
+    .vram=NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = { 20022, 20017, 20014, -1, -1 },
+    .bgPriority = 1,
+    .vramTransfer = 0
+};
+
+const u32 sSecretPowerEffectTable[] = {
+    [TERRAIN_PLAIN] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_ACCURACY_DOWN_1_STAGE,
+    [TERRAIN_SAND] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_ACCURACY_DOWN_1_STAGE,
+    [TERRAIN_GRASS] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_SLEEP,
+    [TERRAIN_PUDDLE] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_SLEEP,
+    [TERRAIN_MOUNTAIN] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_FLINCH,
+    [TERRAIN_CAVE] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_FLINCH,
+    [TERRAIN_SNOW] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_FREEZE,
+    [TERRAIN_WATER] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_ATTACK_DOWN_1_STAGE,
+    [TERRAIN_ICE] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_FREEZE,
+    [TERRAIN_BUILDING] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_PARALYZE,
+    [TERRAIN_GREAT_MARSH] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_SPEED_DOWN_1_STAGE,
+    [TERRAIN_UNKNOWN] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_EVASION_DOWN_1_STAGE,
+    [TERRAIN_WILL] = MOVE_SIDE_EFFECT_TO_DEFENDER|MOVE_SUBSCRIPT_PTR_PARALYZE
+};
+
+const u16 sPrizeMoneyTbl[][2] = {
+    { TRAINERCLASS_PKMN_TRAINER_ETHAN, 0 },
+    { TRAINERCLASS_PKMN_TRAINER_LYRA, 0 },
+    { TRAINERCLASS_YOUNGSTER, 4 },
+    { TRAINERCLASS_LASS, 4 },
+    { TRAINERCLASS_CAMPER, 4 },
+    { TRAINERCLASS_PICNICKER, 4 },
+    { TRAINERCLASS_BUG_CATCHER, 8 },
+    { TRAINERCLASS_TWINS, 4 },
+    { TRAINERCLASS_HIKER, 8 },
+    { TRAINERCLASS_BATTLE_GIRL, 4 },
+    { TRAINERCLASS_FISHERMAN, 8 },
+    { TRAINERCLASS_CYCLIST_M, 8 },
+    { TRAINERCLASS_CYCLIST_F, 8 },
+    { TRAINERCLASS_BLACK_BELT, 6 },
+    { TRAINERCLASS_ARTIST, 12 },
+    { TRAINERCLASS_PKMN_BREEDER_M, 12 },
+    { TRAINERCLASS_PKMN_BREEDER_F, 12 },
+    { TRAINERCLASS_COWGIRL, 4 },
+    { TRAINERCLASS_JOGGER, 8 },
+    { TRAINERCLASS_POKEFAN_M, 16 },
+    { TRAINERCLASS_POKEFAN, 16 },
+    { TRAINERCLASS_POKE_KID, 2 },
+    { TRAINERCLASS_RIVAL, 16 },
+    { TRAINERCLASS_ACE_TRAINER_M, 15 },
+    { TRAINERCLASS_ACE_TRAINER_F, 15 },
+    { TRAINERCLASS_WAITRESS, 8 },
+    { TRAINERCLASS_VETERAN, 20 },
+    { TRAINERCLASS_NINJA_BOY, 2 },
+    { TRAINERCLASS_DRAGON_TAMER, 8 },
+    { TRAINERCLASS_BIRD_KEEPER_GS, 8 },
+    { TRAINERCLASS_JUGGLER, 8 },
+    { TRAINERCLASS_RICH_BOY, 40 },
+    { TRAINERCLASS_LADY, 40 },
+    { TRAINERCLASS_GENTLEMAN, 50 },
+    { TRAINERCLASS_SOCIALITE, 50 },
+    { TRAINERCLASS_BEAUTY, 14 },
+    { TRAINERCLASS_COLLECTOR, 16 },
+    { TRAINERCLASS_POLICEMAN, 10 },
+    { TRAINERCLASS_PKMN_RANGER_M, 15 },
+    { TRAINERCLASS_PKMN_RANGER_F, 15 },
+    { TRAINERCLASS_SCIENTIST, 12 },
+    { TRAINERCLASS_SWIMMER_M, 4 },
+    { TRAINERCLASS_SWIMMER_F, 4 },
+    { TRAINERCLASS_TUBER_M, 1 },
+    { TRAINERCLASS_TUBER_F, 1 },
+    { TRAINERCLASS_SAILOR, 8 },
+    { TRAINERCLASS_KIMONO_GIRL, 30 },
+    { TRAINERCLASS_RUIN_MANIAC, 12 },
+    { TRAINERCLASS_PSYCHIC_M, 8 },
+    { TRAINERCLASS_PSYCHIC_F, 8 },
+    { TRAINERCLASS_PI, 30 },
+    { TRAINERCLASS_GUITARIST, 6 },
+    { TRAINERCLASS_ACE_TRAINER_M_GS, 15 },
+    { TRAINERCLASS_ACE_TRAINER_F_GS, 15 },
+    { TRAINERCLASS_TEAM_ROCKET, 10 },
+    { TRAINERCLASS_SKIER, 8 },
+    { TRAINERCLASS_ROUGHNECK, 6 },
+    { TRAINERCLASS_CLOWN, 6 },
+    { TRAINERCLASS_WORKER, 10 },
+    { TRAINERCLASS_SCHOOL_KID_M, 5 },
+    { TRAINERCLASS_SCHOOL_KID_F, 5 },
+    { TRAINERCLASS_TEAM_ROCKET_F, 10 },
+    { TRAINERCLASS_BURGLAR, 4 },
+    { TRAINERCLASS_FIREBREATHER, 8 },
+    { TRAINERCLASS_BIKER, 4 },
+    { TRAINERCLASS_LEADER_FALKNER, 30 },
+    { TRAINERCLASS_LEADER_BUGSY, 30 },
+    { TRAINERCLASS_POKE_MANIAC, 16 },
+    { TRAINERCLASS_LEADER_WHITNEY, 30 },
+    { TRAINERCLASS_LEADER_MORTY, 30 },
+    { TRAINERCLASS_RANCHER, 10 },
+    { TRAINERCLASS_LEADER_PRYCE, 30 },
+    { TRAINERCLASS_LEADER_JASMINE, 30 },
+    { TRAINERCLASS_LEADER_CHUCK, 30 },
+    { TRAINERCLASS_LEADER_CLAIR, 30 },
+    { TRAINERCLASS_TEACHER, 12 },
+    { TRAINERCLASS_SUPER_NERD, 12 },
+    { TRAINERCLASS_SAGE, 12 },
+    { TRAINERCLASS_MEDIUM, 12 },
+    { TRAINERCLASS_PARASOL_LADY, 8 },
+    { TRAINERCLASS_WAITER, 8 },
+    { TRAINERCLASS_CHAMPION, 50 },
+    { TRAINERCLASS_CAMERAMAN, 8 },
+    { TRAINERCLASS_REPORTER, 10 },
+    { TRAINERCLASS_IDOL, 18 },
+    { TRAINERCLASS_ELITE_FOUR_WILL, 30 },
+    { TRAINERCLASS_ELITE_FOUR_KAREN, 30 },
+    { TRAINERCLASS_ELITE_FOUR_KOGA, 30 },
+    { TRAINERCLASS_LEADER_BROCK, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_CHERYL, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_RILEY, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_BUCK, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_MIRA, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_MARLEY, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_FTR_LUCAS, 25 },
+    { TRAINERCLASS_PKMN_TRAINER_FTR_DAWN, 25 },
+    { TRAINERCLASS_TOWER_TYCOON, 0 },
+    { TRAINERCLASS_LEADER_MISTY, 30 },
+    { TRAINERCLASS_HALL_MATRON, 0 },
+    { TRAINERCLASS_FACTORY_HEAD, 0 },
+    { TRAINERCLASS_ARCADE_STAR, 0 },
+    { TRAINERCLASS_CASTLE_VALET, 0 },
+    { TRAINERCLASS_LEADER_LT_SURGE, 30 },
+    { TRAINERCLASS_LEADER_ERIKA, 30 },
+    { TRAINERCLASS_LEADER_JANINE, 30 },
+    { TRAINERCLASS_LEADER_SABRINA, 30 },
+    { TRAINERCLASS_LEADER_BLAINE, 30 },
+    { TRAINERCLASS_PKMN_TRAINER_RED, 50 },
+    { TRAINERCLASS_LEADER_BLUE, 40 },
+    { TRAINERCLASS_ELDER, 30 },
+    { TRAINERCLASS_ELITE_FOUR_BRUNO, 30 },
+    { TRAINERCLASS_SCIENTIST_GS, 8 },
+    { TRAINERCLASS_EXECUTIVE_ARIANA, 20 },
+    { TRAINERCLASS_BOARDER, 8 },
+    { TRAINERCLASS_EXECUTIVE_ARCHER, 20 },
+    { TRAINERCLASS_EXECUTIVE_PROTON, 10 },
+    { TRAINERCLASS_EXECUTIVE_PETREL, 10 },
+    { TRAINERCLASS_PASSERBY, 25 },
+    { TRAINERCLASS_MYSTERY_MAN, 30 },
+    { TRAINERCLASS_DOUBLE_TEAM, 30 },
+    { TRAINERCLASS_YOUNG_COUPLE, 16 },
+    { TRAINERCLASS_PKMN_TRAINER_LANCE, 0 },
+    { TRAINERCLASS_ROCKET_BOSS, 45 },
+    { TRAINERCLASS_PKMN_TRAINER_LUCAS_DP, 0 },
+    { TRAINERCLASS_PKMN_TRAINER_DAWN_DP, 0 },
+    { TRAINERCLASS_PKMN_TRAINER_LUCAS_PT, 0 },
+    { TRAINERCLASS_PKMN_TRAINER_DAWN_PT, 0 },
+    { TRAINERCLASS_BIRD_KEEPER, 8 }
+};
+
+const BtlCmdFunc sBattleScriptCommandTable[] = {
+    [BTLCMD_PLAY_ENCOUNTER_ANIMATION] = BtlCmd_PlayEncounterAnimation,
+    [BTLCMD_SET_POKEMON_ENCOUNTER] = BtlCmd_SetPokemonEncounter,
+    [BTLCMD_POKEMON_SLIDE_IN] = BtlCmd_PokemonSlideIn,
+    [BTLCMD_POKEMON_SEND_OUT] = BtlCmd_PokemonSendOut,
+    [BTLCMD_RECALL_POKEMON] = BtlCmd_RecallPokemon,
+    [BTLCMD_DELETE_POKEMON] = BtlCmd_DeletePokemon,
+    [BTLCMD_SET_TRAINER_ENCOUNTER] = BtlCmd_SetTrainerEncounter,
+    [BTLCMD_THROW_POKEBALL] = BtlCmd_ThrowPokeball,
+    [BTLCMD_TRAINER_SLIDE_OUT] = BtlCmd_TrainerSlideOut,
+    [BTLCMD_TRAINER_SLIDE_IN] = BtlCmd_TrainerSlideIn,
+    [BTLCMD_BACKGROUND_SLIDE_IN] = BtlCmd_BackgroundSlideIn,
+    [BTLCMD_HEALTHBAR_SLIDE_IN] = BtlCmd_HealthbarSlideIn,
+    [BTLCMD_HEALTHBAR_SLIDE_IN_DELAY] = BtlCmd_HealthbarSlideInDelay,
+    [BTLCMD_HEALTHBAR_SLIDE_OUT] = BtlCmd_HealthbarSlideOut,
+    [BTLCMD_WAIT] = BtlCmd_Wait,
+    [BTLCMD_CALC_DAMAGE] = BtlCmd_CalcDamage,
+    [BTLCMD_CALC_MAX_DAMAGE] = BtlCmd_CalcDamageRaw,
+    [BTLCMD_PRINT_ATTACK_MESSAGE] = BtlCmd_PrintAttackMessage,
+    [BTLCMD_PRINT_MESSAGE] = BtlCmd_PrintMessage,
+    [BTLCMD_PRINT_GLOBAL_MESSAGE] = BtlCmd_PrintGlobalMessage,
+    [BTLCMD_PRINT_BUFFERED_MESSAGE] = BtlCmd_PrintBufferedMessage,
+    [BTLCMD_BUFFER_MESSAGE] = BtlCmd_BufferMessage,
+    [BTLCMD_BUFFER_LOCAL_MESSAGE] = BtlCmd_BufferLocalMessage,
+    [BTLCMD_PLAY_MOVE_ANIMATION] = BtlCmd_PlayMoveAnimation,
+    [BTLCMD_PLAY_MOVE_ANIMATION_ON_MONS] = BtlCmd_PlayMoveAnimationOnMons,
+    [BTLCMD_FLICKER_MON] = BtlCmd_FlickerMon,
+    [BTLCMD_UPDATE_HEALTHBAR_VALUE] = BtlCmd_UpdateHealthbarValue,
+    [BTLCMD_UPDATE_HEALTHBAR] = BtlCmd_UpdateHealthbar,
+    [BTLCMD_TRY_FAINT_MON] = BtlCmd_TryFaintMon,
+    [BTLCMD_PLAY_FAINT_ANIMATION] = BtlCmd_PlayFaintAnimation,
+    [BTLCMD_WAIT_BUTTON_AB_TIME] = BtlCmd_WaitButtonABTime,
+    [BTLCMD_PLAY_SOUND] = BtlCmd_PlaySound,
+    [BTLCMD_COMPARE_VAR_TO_VALUE] = BtlCmd_CompareVarToValue,
+    [BTLCMD_COMPARE_MON_DATA_TO_VALUE] = BtlCmd_CompareMonDataToValue,
+    [BTLCMD_FADE_OUT_BATTLE] = BtlCmd_FadeOutBattle,
+    [BTLCMD_GOTO_SUBSCRIPT] = BtlCmd_GoToSubscript,
+    [BTLCMD_GOTO_EFFECT_SCRIPT] = BtlCmd_GoToEffectScript,
+    [BTLCMD_GOTO_MOVE_SCRIPT] = BtlCmd_GoToMoveScript,
+    [BTLCMD_CALC_CRIT] = BtlCmd_CalcCrit,
+    [BTLCMD_CALC_EXP_GAIN] = BtlCmd_CalcExpGain,
+    [BTLCMD_START_GET_EXP_TASK] = BtlCmd_StartGetExpTask,
+    [BTLCMD_WAIT_GET_EXP_TASK] = BtlCmd_WaitGetExpTask,
+    [BTLCMD_WAIT_GET_EXP_TASK_LOOP] = BtlCmd_WaitGetExpTaskLoop,
+    [BTLCMD_SHOW_PARTY] = BtlCmd_ShowParty,
+    [BTLCMD_WAIT_MON_SELECTION] = BtlCmd_WaitMonSelection,
+    [BTLCMD_SWITCH_AND_UPDATE_MON] = BtlCmd_SwitchAndUpdateMon,
+    [BTLCMD_GOTO_IF_ANY_SWITCHES] = BtlCmd_GoToIfAnySwitches,
+    [BTLCMD_START_CATCH_MON_TASK] = BtlCmd_StartCatchMonTask,
+    [BTLCMD_WAIT_CATCH_MON_TASK] = BtlCmd_WaitCatchMonTask,
+    [BTLCMD_SET_MULTI_HIT] = BtlCmd_SetMultiHit,
+    [BTLCMD_UPDATE_VAR] = BtlCmd_UpdateVar,
+    [BTLCMD_CHANGE_STAT_STAGE] = BtlCmd_ChangeStatStage,
+    [BTLCMD_UPDATE_MON_DATA] = BtlCmd_UpdateMonData,
+    [BTLCMD_CLEAR_VOLATILE_STATUS] = BtlCmd_ClearVolatileStatus,
+    [BTLCMD_TOGGLE_VANISH] = BtlCmd_ToggleVanish,
+    [BTLCMD_CHECK_ABILITY] = BtlCmd_CheckAbility,
+    [BTLCMD_RANDOM] = BtlCmd_Random,
+    [BTLCMD_UPDATE_VAR_FROM_VAR] = BtlCmd_UpdateVar2,
+    [BTLCMD_UPDATE_MON_DATA_FROM_VAR] = BtlCmd_UpdateMonDataFromVar,
+    [BTLCMD_GOTO] = BtlCmd_Goto,
+    [BTLCMD_CALL] = BtlCmd_Call,
+    [BTLCMD_CALL_FROM_VAR] = BtlCmd_CallFromVar,
+    [BTLCMD_SET_MIRROR_MOVE] = BtlCmd_SetMirrorMove,
+    [BTLCMD_RESET_ALL_STAT_CHANGES] = BtlCmd_ResetAllStatChanges,
+    [BTLCMD_LOCK_MOVE_CHOICE] = BtlCmd_LockMoveChoice,
+    [BTLCMD_UNLOCK_MOVE_CHOICE] = BtlCmd_UnlockMoveChoice,
+    [BTLCMD_SET_HEALTHBAR_STATUS] = BtlCmd_SetHealthbarStatus,
+    [BTLCMD_PRINT_TRAINER_MESSAGE] = BtlCmd_PrintTrainerMessage,
+    [BTLCMD_PAY_PRIZE_MONEY] = BtlCmd_PayPrizeMoney,
+    [BTLCMD_PLAY_BATTLE_ANIMATION] = BtlCmd_PlayBattleAnimation,
+    [BTLCMD_PLAY_BATTLE_ANIMATION_ON_MONS] = BtlCmd_PlayBattleAnimationOnMons,
+    [BTLCMD_PLAY_BATTLE_ANIMATION_FROM_VAR] = BtlCmd_PlayBattleAnimationFromVar,
+    [BTLCMD_PRINT_RECALL_MESSAGE] = BtlCmd_PrintRecallMessage,
+    [BTLCMD_PRINT_SEND_OUT_MESSAGE] = BtlCmd_PrintSendOutMessage,
+    [BTLCMD_PRINT_ENCOUNTER_MESSAGE] = BtlCmd_PrintEncounterMessage,
+    [BTLCMD_PRINT_FIRST_SEND_OUT_MESSAGE] = BtlCmd_PrintFirstSendOutMessage,
+    [BTLCMD_PRINT_BUFFERED_TRAINER_MESSAGE] = BtlCmd_PrintBufferedTrainerMessage,
+    [BTLCMD_TRY_CONVERSION] = BtlCmd_TryConversion,
+    [BTLCMD_COMPARE_VAR_TO_VAR] = BtlCmd_CompareVarToVar,
+    [BTLCMD_COMPARE_MON_DATA_TO_VAR] = BtlCmd_CompareMonDataToVar,
+    [BTLCMD_ADD_PAY_DAY_MONEY] = BtlCmd_AddPayDayMoney,
+    [BTLCMD_TRY_LIGHT_SCREEN] = BtlCmd_TryLightScreen,
+    [BTLCMD_TRY_REFLECT] = BtlCmd_TryReflect,
+    [BTLCMD_TRY_MIST] = BtlCmd_TryMist,
+    [BTLCMD_TRY_OHKO_MOVE] = BtlCmd_TryOHKOMove,
+    [BTLCMD_DIVIDE_VAR_BY_VALUE] = BtlCmd_DivideVarByValue,
+    [BTLCMD_DIVIDE_VAR_BY_VAR] = BtlCmd_DivideVarByVar,
+    [BTLCMD_TRY_MIMIC] = BtlCmd_TryMimic,
+    [BTLCMD_METRONOME] = BtlCmd_Metronome,
+    [BTLCMD_TRY_DISABLE] = BtlCmd_TryDisable,
+    [BTLCMD_COUNTER] = BtlCmd_Counter,
+    [BTLCMD_MIRROR_COAT] = BtlCmd_MirrorCoat,
+    [BTLCMD_TRY_ENCORE] = BtlCmd_TryEncore,
+    [BTLCMD_TRY_CONVERSION2] = BtlCmd_TryConversion2,
+    [BTLCMD_TRY_SKETCH] = BtlCmd_TrySketch,
+    [BTLCMD_TRY_SLEEP_TALK] = BtlCmd_TrySleepTalk,
+    [BTLCMD_CALC_FLAIL_POWER] = BtlCmd_CalcFlailPower,
+    [BTLCMD_TRY_SPITE] = BtlCmd_TrySpite,
+    [BTLCMD_TRY_PARTY_STATUS_REFRESH] = BtlCmd_TryPartyStatusRefresh,
+    [BTLCMD_TRY_STEAL_ITEM] = BtlCmd_TryStealItem,
+    [BTLCMD_TRY_PROTECTION] = BtlCmd_TryProtection,
+    [BTLCMD_TRY_SUBSTITUTE] = BtlCmd_TrySubstitute,
+    [BTLCMD_TRY_WHIRLWIND] = BtlCmd_TryWhirlwind,
+    [BTLCMD_TRANSFORM] = BtlCmd_Transform,
+    [BTLCMD_TRY_SPIKES] = BtlCmd_TrySpikes,
+    [BTLCMD_CHECK_SPIKES] = BtlCmd_CheckSpikes,
+    [BTLCMD_TRY_PERISH_SONG] = BtlCmd_TryPerishSong,
+    [BTLCMD_GET_CURRENT_TURN_ORDER_ITERATION_MON] = BtlCmd_GetCurrentTurnOrderIteratorMon,
+    [BTLCMD_GOTO_IF_VALID_MON] = BtlCmd_GoToIfValidMon,
+    [BTLCMD_END_OF_TURN_WEATHER_EFFECT] = BtlCmd_EndOfTurnWeatherEffect,
+    [BTLCMD_CALC_ROLLOUT_POWER] = BtlCmd_CalcRolloutPower,
+    [BTLCMD_CALC_FURY_CUTTER_POWER] = BtlCmd_CalcFuryCutterPower,
+    [BTLCMD_TRY_ATTRACT] = BtlCmd_TryAttract,
+    [BTLCMD_TRY_SAFEGUARD] = BtlCmd_TrySafeguard,
+    [BTLCMD_PRESENT] = BtlCmd_Present,
+    [BTLCMD_CALC_MAGNITUDE_POWER] = BtlCmd_CalcMagnitudePower,
+    [BTLCMD_TRY_REPLACE_FAINTED_MON] = BtlCmd_TryReplaceFaintedMon,
+    [BTLCMD_RAPID_SPIN] = BtlCmd_RapidSpin,
+    [BTLCMD_WEATHER_HP_RECOVERY] = BtlCmd_WeatherHPRecovery,
+    [BTLCMD_CALC_HIDDEN_POWER_PARAMS] = BtlCmd_CalcHiddenPowerParams,
+    [BTLCMD_COPY_STAT_STAGES] = BtlCmd_CopyStatStages,
+    [BTLCMD_TRY_FUTURE_SIGHT] = BtlCmd_TryFutureSight,
+    [BTLCMD_CHECK_MOVE_HIT] = BtlCmd_CheckMoveHit,
+    [BTLCMD_TRY_TELEPORT] = BtlCmd_TryTeleport,
+    [BTLCMD_BEAT_UP] = BtlCmd_BeatUp,
+    [BTLCMD_FOLLOW_ME] = BtlCmd_FollowMe,
+    [BTLCMD_TRY_HELPING_HAND] = BtlCmd_TryHelpingHand,
+    [BTLCMD_TRY_SWAP_ITEMS] = BtlCmd_TrySwapItems,
+    [BTLCMD_TRY_WISH] = BtlCmd_TryWish,
+    [BTLCMD_TRY_ASSIST] = BtlCmd_TryAssist,
+    [BTLCMD_TRY_SET_MAGIC_COAT] = BtlCmd_TrySetMagicCoat,
+    [BTLCMD_MAGIC_COAT] = BtlCmd_MagicCoat,
+	[BTLCMD_CALC_REVENGE_POWER_MUL] = BtlCmd_CalcRevengeDamageMul,
+    [BTLCMD_TRY_BREAK_SCREENS] = BtlCmd_TryBreakScreens,
+    [BTLCMD_TRY_YAWN] = BtlCmd_TryYawn,
+    [BTLCMD_TRY_KNOCK_OFF] = BtlCmd_TryKnockOff,
+    [BTLCMD_CALC_HP_FALLOFF_POWER] = BtlCmd_CalcHPFalloffPower,
+    [BTLCMD_TRY_IMPRISON] = BtlCmd_TryImprison,
+    [BTLCMD_TRY_GRUDGE] = BtlCmd_TryGrudge,
+    [BTLCMD_TRY_SNATCH] = BtlCmd_TrySnatch,
+    [BTLCMD_CALC_WEIGHT_BASED_POWER] = BtlCmd_CalcWeightBasedPower,
+    [BTLCMD_CALC_WEATHER_BALL_PARAMS] = BtlCmd_CalcWeatherBallParams,
+    [BTLCMD_TRY_PURSUIT] = BtlCmd_TryPursuit,
+    [BTLCMD_APPLY_TYPE_EFFECTIVENESS] = BtlCmd_ApplyTypeEffectiveness,
+    [BTLCMD_IF_TURN_FLAG] = BtlCmd_IfTurnFlag,
+    [BTLCMD_SET_TURN_FLAG] = BtlCmd_SetTurnFlag,
+    [BTLCMD_CALC_GYRO_BALL_POWER] = BtlCmd_CalcGyroBallPower,
+    [BTLCMD_TRY_METAL_BURST] = BtlCmd_TryMetalBurst,
+    [BTLCMD_CALC_PAYBACK_POWER] = BtlCmd_CalcPaybackPower,
+    [BTLCMD_CALC_TRUMP_CARD_POWER] = BtlCmd_CalcTrumpCardPower,
+    [BTLCMD_CALC_WRING_OUT_POWER] = BtlCmd_CalcWringOutPower,
+    [BTLCMD_TRY_ME_FIRST] = BtlCmd_TryMeFirst,
+    [BTLCMD_TRY_COPYCAT] = BtlCmd_TryCopycat,
+    [BTLCMD_CALC_PUNISHMENT_POWER] = BtlCmd_CalcPunishmentPower,
+    [BTLCMD_TRY_SUCKER_PUNCH] = BtlCmd_TrySuckerPunch,
+    [BTLCMD_CHECK_SIDE_CONDITION] = BtlCmd_CheckSideCondition,
+    [BTLCMD_TRY_FEINT] = BtlCmd_TryFeint,
+    [BTLCMD_TRY_PYSCHO_SHIFT] = BtlCmd_TryPyschoShift,
+    [BTLCMD_TRY_LAST_RESORT] = BtlCmd_TryLastResort,
+    [BTLCMD_TRY_TOXIC_SPIKES] = BtlCmd_TryToxicSpikes,
+    [BTLCMD_CHECK_TOXIC_SPIKES] = BtlCmd_CheckToxicSpikes,
+    [BTLCMD_CHECK_IGNORABLE_ABILITY] = BtlCmd_CheckIgnorableAbility,
+    [BTLCMD_IF_SAME_SIDE] = BtlCmd_IfSameSide,
+    [BTLCMD_GENERATE_END_OF_BATTLE_ITEM] = BtlCmd_GenerateEndOfBattleItem,
+    [BTLCMD_TRICK_ROOM] = BtlCmd_TrickRoom,
+    [BTLCMD_IF_MOVED_THIS_TURN] = BtlCmd_IfMovedThisTurn,
+    [BTLCMD_CHECK_ITEM_HOLD_EFFECT] = BtlCmd_CheckItemHoldEffect,
+    [BTLCMD_GET_ITEM_HOLD_EFFECT] = BtlCmd_GetItemHoldEffect,
+    [BTLCMD_GET_ITEM_EFFECT_PARAM] = BtlCmd_GetItemEffectParam,
+    [BTLCMD_TRY_CAMOUFLAGE] = BtlCmd_TryCamouflage,
+    [BTLCMD_GET_TERRAIN_MOVE] = BtlCmd_GetTerrainMove,
+    [BTLCMD_GET_TERRAIN_SECONDARY_EFFECT] = BtlCmd_GetTerrainSecondaryEffect,
+    [BTLCMD_CALC_NATURAL_GIFT_PARAMS] = BtlCmd_CalcNaturalGiftParams,
+    [BTLCMD_TRY_PLUCK] = BtlCmd_TryPluck,
+    [BTLCMD_TRY_FLING] = BtlCmd_TryFling,
+    [BTLCMD_YES_NO_MENU] = BtlCmd_YesNoMenu,
+    [BTLCMD_WAIT_YES_NO_RESULT] = BtlCmd_WaitYesNoResult,
+    [BTLCMD_CHOOSE_POKEMON_MENU] = BtlCmd_ChoosePokemonMenu,
+    [BTLCMD_WAIT_POKEMON_MENU_RESULT] = BtlCmd_WaitPokemonMenuResult,
+    [BTLCMD_SET_LINK_BATTLE_RESULT] = BtlCmd_SetLinkBattleResult,
+    [BTLCMD_CHECK_STEALTH_ROCK] = BtlCmd_CheckStealthRock,
+    [BTLCMD_CHECK_EFFECT_ACTIVATION] = BtlCmd_CheckEffectActivation,
+    [BTLCMD_CHECK_CHATTER_ACTIVATION] = BtlCmd_CheckChatterActivation,
+    [BTLCMD_GET_CURRENT_MOVE_DATA] = BtlCmd_GetCurrentMoveData,
+    [BTLCMD_SET_MOSAIC] = BtlCmd_SetMosaic,
+    [BTLCMD_CHANGE_FORM] = BtlCmd_ChangeForm,
+    [BTLCMD_SET_BATTLE_BACKGROUND] = BtlCmd_SetBattleBackground,
+    [BTLCMD_USE_BAG_ITEM] = BtlCmd_UseBagItem,
+    [BTLCMD_TRY_ESCAPE] = BtlCmd_TryEscape,
+    [BTLCMD_SHOW_BATTLE_START_PARTY_GAUGE] = BtlCmd_ShowBattleStartPartyGauge,
+    [BTLCMD_HIDE_BATTLE_START_PARTY_GAUGE] = BtlCmd_HideBattleStartPartyGauge,
+    [BTLCMD_SHOW_PARTY_GAUGE] = BtlCmd_ShowPartyGauge,
+    [BTLCMD_HIDE_PARTY_GAUGE] = BtlCmd_HidePartyGauge,
+    [BTLCMD_LOAD_PARTY_GAUGE_GRAPHICS] = BtlCmd_LoadPartyGaugeGraphics,
+    [BTLCMD_FREE_PARTY_GAUGE_GRAPHICS] = BtlCmd_FreePartyGaugeGraphics,
+    [BTLCMD_INCREMENT_GAME_STAT] = BtlCmd_IncrementGameStat,
+    [BTLCMD_RESTORE_SPRITE] = BtlCmd_RestoreSprite,
+    [BTLCMD_TRIGGER_ABILITY_ON_HIT] = BtlCmd_TriggerAbilityOnHit,
+    [BTLCMD_SPRITE_TO_OAM] = BtlCmd_SpriteToOAM,
+    [BTLCMD_OAM_TO_SPRITE] = BtlCmd_OAMToSprite,
+    [BTLCMD_CHECK_WHITEOUT] = BtlCmd_CheckWhiteout,
+    [BTLCMD_BOOST_RANDOM_STAT_BY_2] = BtlCmd_BoostRandomStatBy2,
+    [BTLCMD_REMOVE_ITEM] = BtlCmd_RemoveItem,
+    [BTLCMD_TRY_RECYCLE] = BtlCmd_TryRecycle,
+    [BTLCMD_TRIGGER_HELD_ITEM_ON_HIT] = BtlCmd_TriggerHeldItemOnHit,
+    [BTLCMD_PRINT_BATTLE_RESULT_MESSAGE] = BtlCmd_PrintBattleResultMessage,
+    [BTLCMD_PRINT_ESCAPE_MESSAGE] = BtlCmd_PrintEscapeMessage,
+    [BTLCMD_PRINT_FORFEIT_MESSAGE] = BtlCmd_PrintForfeitMessage,
+    [BTLCMD_CHECK_HOLD_ON_WITH_1HP] = BtlCmd_CheckHoldOnWith1HP,
+    [BTLCMD_TRY_RESTORE_STATUS_ON_SWITCH] = BtlCmd_TryRestoreStatusOnSwitch,
+    [BTLCMD_CHECK_SUBSTITUTE] = BtlCmd_CheckSubstitute,
+    [BTLCMD_CHECK_IGNORE_WEATHER] = BtlCmd_CheckIgnoreWeather,
+    [BTLCMD_SET_RANDOM_TARGET] = BtlCmd_SetRandomTarget,
+    [BTLCMD_TRIGGER_HELD_ITEM_ON_PIVOT_MOVE] = BtlCmd_TriggerHeldItemOnPivotMove,
+    [BTLCMD_REFRESH_SPRITE] = BtlCmd_RefreshSprite,
+    [BTLCMD_PLAY_MOVE_HIT_SOUND] = BtlCmd_PlayMoveHitSound,
+    [BTLCMD_PLAY_BGM] = BtlCmd_PlayBGM,
+    [BTLCMD_CHECK_SAFARI_GAME_DONE] = BtlCmd_CheckSafariGameDone,
+    [BTLCMD_WAIT_TIME] = BtlCmd_WaitTime,
+    [BTLCMD_CHECK_CUR_MOVE_IS_TYPE] = BtlCmd_CheckCurMoveIsType,
+    [BTLCMD_LOAD_ARCHIVED_MON_DATA] = BtlCmd_LoadArchivedMonData,
+    [BTLCMD_REFRESH_MON_DATA] = BtlCmd_RefreshMonData,
+    [BTLCMD_222] = BtlCmd_222,
+    [BTLCMD_223] = BtlCmd_223,
+    [BTLCMD_END_SCRIPT] = BtlCmd_EndScript
+};
 
 BOOL RunBattleScript(BattleSystem *bsys, BattleContext *ctx) {
     BOOL ret;
@@ -2096,7 +2611,6 @@ BOOL BtlCmd_PrintTrainerMessage(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern u16 sPrizeMoneyTbl[0x81][2];
 
 u32 CalcPrizeMoney(BattleSystem *bsys, BattleContext *ctx, int trainerIndex) {
     int i;
@@ -2925,9 +3439,18 @@ BOOL BtlCmd_TrySleepTalk(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern u8 sFlailDamageTable[6][2];
-
 BOOL BtlCmd_CalcFlailPower(BattleSystem *bsys, BattleContext *ctx) {
+    // First byte: HP threshold as 64ths of max
+    // Second byte: Damage value
+    static const u8 sFlailDamageTable[6][2] = {
+        { 1, 200 }, // 1.5625%
+        { 5, 150 }, // 7.8125%
+        { 12, 100 }, // 18.75%
+        { 21, 80 }, // 32.8125%
+        { 42, 40 }, // 65.625%
+        { 64, 20 }  // 100%
+    };
+
     int i;
     int hpBarPixels;
 
@@ -3053,9 +3576,13 @@ BOOL BtlCmd_TryStealItem(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern u16 sProtectSuccessChance[4];
-
 BOOL BtlCmd_TryProtection(BattleSystem *bsys, BattleContext *ctx) {
+    static const u16 sProtectSuccessChance[4] = {
+        0xFFFF, // 100%
+        0x7FFF, // 49.99924%
+        0x3FFF, // 24.99886%
+        0x1FFF, // 12.49866%
+    };
     int flag;
 
     BattleScriptIncrementPointer(ctx, 1);
@@ -3297,7 +3824,7 @@ BOOL BtlCmd_TryPerishSong(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_GetTurnOrderBySpeed(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BtlCmd_GetCurrentTurnOrderIteratorMon(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     u32 *unkPtr = BattleScriptGetVarPointer(bsys, ctx, BattleScriptReadWord(ctx));
@@ -4095,8 +4622,6 @@ BOOL BtlCmd_TrySnatch(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern u16 sLowKickDamageTable[6][2];
-
 BOOL BtlCmd_CalcWeightBasedPower(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
@@ -4350,9 +4875,9 @@ BOOL BtlCmd_CalcPaybackPower(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern u8 sTrumpCardPowerTable[];
-
 BOOL BtlCmd_CalcTrumpCardPower(BattleSystem *bsys, BattleContext *ctx) {
+    static const u8 sTrumpCardPowerTable[] = { 200, 80, 60, 50, 40 };
+
     BattleScriptIncrementPointer(ctx, 1);
 
     u8 pp = ctx->battleMons[ctx->battlerIdAttacker].movePPCur[ctx->movePos[ctx->battlerIdAttacker]];
@@ -4670,12 +5195,43 @@ BOOL BtlCmd_IfSameSide(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern const u16 sPickupTable1[18];
-extern const u16 sPickupTable2[11];
 extern const u8 sPickupWeightTable[9];
 extern const u8 sHoneyGatherChanceTable[10];
 
 BOOL BtlCmd_GenerateEndOfBattleItem(BattleSystem *bsys, BattleContext *ctx) {
+    static const u16 sPickupTable2[] = {
+        ITEM_HYPER_POTION,
+        ITEM_NUGGET,
+        ITEM_KINGS_ROCK,
+        ITEM_FULL_RESTORE,
+        ITEM_ETHER,
+        ITEM_IRON_BALL,
+        ITEM_TM56,
+        ITEM_ELIXIR,
+        ITEM_TM86,
+        ITEM_LEFTOVERS,
+        ITEM_TM26
+    };
+    static const u16 sPickupTable1[] = {
+        ITEM_POTION,
+        ITEM_ANTIDOTE,
+        ITEM_SUPER_POTION,
+        ITEM_GREAT_BALL,
+        ITEM_REPEL,
+        ITEM_ESCAPE_ROPE,
+        ITEM_FULL_HEAL,
+        ITEM_HYPER_POTION,
+        ITEM_ULTRA_BALL,
+        ITEM_REVIVE,
+        ITEM_RARE_CANDY,
+        ITEM_SUN_STONE,
+        ITEM_MOON_STONE,
+        ITEM_HEART_SCALE,
+        ITEM_FULL_RESTORE,
+        ITEM_MAX_REVIVE,
+        ITEM_PP_UP,
+        ITEM_MAX_ELIXIR
+    };
     int rnd, i, j, k;
     u16 species, item;
     u8 ability, lvl;
@@ -4830,28 +5386,25 @@ BOOL BtlCmd_TryCamouflage(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-extern u16 sNaturePowerMoveTable[];
-
 BOOL BtlCmd_GetTerrainMove(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int terrain = BattleSystem_GetTerrainId(bsys);
-    if (terrain > 12) {
-        terrain = 12;
+    Terrain terrain = BattleSystem_GetTerrainId(bsys);
+    if (terrain > TERRAIN_OTHERS) {
+        terrain = TERRAIN_OTHERS;
     }
     ctx->moveTemp = sNaturePowerMoveTable[terrain];
 
     return FALSE;
 }
 
-extern u32 sSecretPowerEffectTable[];
 
 BOOL BtlCmd_GetTerrainSecondaryEffect(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
-    int terrain = BattleSystem_GetTerrainId(bsys);
-    if (terrain > 12) {
-        terrain = 12;
+    Terrain terrain = BattleSystem_GetTerrainId(bsys);
+    if (terrain > TERRAIN_OTHERS) {
+        terrain = TERRAIN_OTHERS;
     }
     ctx->unk_2174 = sSecretPowerEffectTable[terrain];
 
@@ -5423,7 +5976,7 @@ BOOL BtlCmd_TryRecycle(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckItemHoldEffectOnHit(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BtlCmd_TriggerHeldItemOnHit(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5545,7 +6098,7 @@ BOOL BtlCmd_SetRandomTarget(BattleSystem *bsys, BattleContext *ctx) {
     return FALSE;
 }
 
-BOOL BtlCmd_CheckItemHoldEffectOnUTurn(BattleSystem *bsys, BattleContext *ctx) {
+BOOL BtlCmd_TriggerHeldItemOnPivotMove(BattleSystem *bsys, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
 
     int adrs = BattleScriptReadWord(ctx);
@@ -5799,7 +6352,7 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, i
         return &ctx->abilityTemp;
     case BSCRIPT_VAR_WEATHER_TURNS:
         return &ctx->fieldConditionData.weatherTurns;
-    case BSCRIPT_VAR_BATTLER_SPEED_TEMP:
+    case BSCRIPT_VAR_MONS_IN_TURN_ORDER_ITERATOR:
         return &ctx->unk_3104;
     case BSCRIPT_VAR_MULTI_HIT_LOOP:
         return &ctx->unk_2180;
@@ -5868,58 +6421,6 @@ static void *BattleScriptGetVarPointer(BattleSystem *bsys, BattleContext *ctx, i
     return NULL;
 }
 
-enum {
-    STATE_GET_EXP_START = 0,
-    STATE_GET_EXP_WAIT_MESSAGE_PRINT,
-    STATE_GET_EXP_WAIT_MESSAGE_DELAY,
-    STATE_GET_EXP_GAUGE,
-    STATE_GET_EXP_WAIT_GAUGE,
-    STATE_GET_EXP_CHECK_LEVEL_UP,
-    STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT,
-    STATE_GET_EXP_WAIT_LEVEL_UP_MESSAGE_PRINT,
-    STATE_GET_EXP_LEVEL_UP_SUMMARY_LOAD_ICON,
-    STATE_GET_EXP_LEVEL_UP_SUMMARY_INIT,
-    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF,
-    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF_WAIT,
-    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE,
-    STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE_WAIT,
-    STATE_GET_EXP_LEVEL_UP_CLEAR,
-    STATE_GET_EXP_CHECK_LEARN_MOVE,
-    STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT,
-    STATE_GET_EXP_WANTS_TO_LEARN_MOVE_PRINT_WAIT,
-    STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT,
-    STATE_GET_EXP_CANT_LEARN_MORE_MOVES_PRINT_WAIT,
-    STATE_GET_EXP_MAKE_IT_FORGET_PROMPT,
-    STATE_GET_EXP_MAKE_IT_FORGET_ANSWER,
-    STATE_GET_EXP_MAKE_IT_FORGET_WAIT,
-    STATE_GET_EXP_MAKE_IT_FORGET_INPUT_TAKEN,
-    STATE_GET_EXP_ONE_TWO_POOF,
-    STATE_GET_EXP_ONE_TWO_POOF_WAIT,
-    STATE_GET_EXP_FORGOT_HOW_TO_USE,
-    STATE_GET_EXP_FORGOT_HOW_TO_USE_WAIT,
-    STATE_GET_EXP_AND_DOTDOTDOT,
-    STATE_GET_EXP_AND_DOTDOTDOT_WAIT,
-    STATE_GET_EXP_LEARNED_MOVE,
-    STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED,
-    STATE_GET_EXP_MAKE_IT_FORGET_CANCELLED_WAIT,
-    STATE_GET_EXP_GIVE_UP_LEARNING_PROMPT,
-    STATE_GET_EXP_GIVE_UP_LEARNING_ANSWER,
-    STATE_GET_EXP_GIVE_UP_LEARNING_WAIT,
-    STATE_GET_EXP_LEARNED_MOVE_WAIT,
-    STATE_GET_EXP_CHECK_DONE,
-    STATE_GET_EXP_DONE,
-};
-
-// Note: these structs are needed to match *only as long as the data is in the assembly*
-// when the data gets decompiled, they should be embeded in the function as arrays
-typedef struct TempStatsStruct {
-    u32 stats[6];
-} TempStatsStruct;
-
-extern TempStatsStruct ov12_0226C354;
-extern TempStatsStruct ov12_0226C36C;
-extern TempStatsStruct ov12_0226C384;
-extern TempStatsStruct ov12_0226C33C;
 
 static void Task_GetExp(SysTask *task, void *inData) {
     int i;
@@ -6078,13 +6579,33 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
     case STATE_GET_EXP_WAIT_LEVEL_UP_EFFECT:
         if (Link_QueueNotEmpty(data->ctx)) {
-            TempStatsStruct stats = ov12_0226C354;
+        /* This is an unused array that should appear somewhere inside this function. It's optimized
+         * out of the code but its data is still put into the .rodata section.
+         */
+        static const TempStatsStruct statsUnused = {
+           .stats = { 
+                NUM_BATTLE_STATS,
+                STAT_ATK,
+                STAT_DEF,
+                STAT_SPATK,
+                STAT_SPDEF,
+                STAT_SPEED
+           }
+        };
+            const TempStatsStruct monData = { .stats = {
+                MON_DATA_MAX_HP,
+                MON_DATA_ATK,
+                MON_DATA_DEF,
+                MON_DATA_SP_ATK,
+                MON_DATA_SP_DEF,
+                MON_DATA_SPEED
+            }};
             int level = GetMonData(mon, MON_DATA_LEVEL, NULL);
             // Cache the stats from the previous level for later
             data->ctx->prevLevelStats = Heap_Alloc(HEAP_ID_BATTLE, sizeof(PokemonStats));
             PokemonStats *oldStats = data->ctx->prevLevelStats;
             for (i = 0; i < NUM_STATS; i++) {
-                oldStats->stats[i] = GetMonData(mon, stats.stats[i], NULL);
+                oldStats->stats[i] = GetMonData(mon, monData.stats[i], NULL);
             }
 
             MonApplyFriendshipMod(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->bsys));
@@ -6144,8 +6665,26 @@ static void Task_GetExp(SysTask *task, void *inData) {
         break;
     }
     case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF: {
-        TempStatsStruct stats = ov12_0226C36C;
-        TempStatsStruct monData = ov12_0226C384;
+        const TempStatsStruct stats = {
+           .stats = { 
+                NUM_BATTLE_STATS,
+                STAT_ATK,
+                STAT_DEF,
+                STAT_SPATK,
+                STAT_SPDEF,
+                STAT_SPEED
+           }
+        };
+        const TempStatsStruct monData = {
+            .stats = {
+                MON_DATA_MAX_HP,
+                MON_DATA_ATK,
+                MON_DATA_DEF,
+                MON_DATA_SP_ATK,
+                MON_DATA_SP_DEF,
+                MON_DATA_SPEED
+            }
+        };
 
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
         PokemonStats *oldStats = data->ctx->prevLevelStats;
@@ -6169,7 +6708,16 @@ static void Task_GetExp(SysTask *task, void *inData) {
         break;
     }
     case STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_TRUE: {
-        TempStatsStruct monData = ov12_0226C33C;
+        const TempStatsStruct monData = {
+            .stats = {
+                MON_DATA_MAX_HP,
+                MON_DATA_ATK,
+                MON_DATA_DEF,
+                MON_DATA_SP_ATK,
+                MON_DATA_SP_DEF,
+                MON_DATA_SPEED
+            }
+        };
         Window *window = BattleSystem_GetWindow(data->bsys, 1);
 
         FillWindowPixelRect(window, 0xF, 80, 0, 36, 96); // clear out the diff section (keep the printed stat names)
@@ -6404,3 +6952,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         break;
     }
 }
+
+
+
+
