@@ -437,6 +437,9 @@ $(eval $(call arc_strip_name,files/poketool/johtozukan.narc,files/a/1/3/8))
 $(eval $(call arc_strip_name,files/fielddata/tsurepoke/tp_param.narc,files/a/1/4/1))
 $(eval $(call arc_strip_name,files/application/pokegear/pgear_gra.narc,files/a/1/4/3))
 $(eval $(call arc_strip_name,files/application/pokegear/map/pgmap_gra.narc,files/a/1/4/4))
+$(eval $(call arc_strip_name,files/application/pokegear/configure/pgconf_gra.narc,files/a/1/4/5))
+$(eval $(call arc_strip_name,files/application/pokegear/phone/pgphone_gra.narc,files/a/1/4/6))
+$(eval $(call arc_strip_name,files/application/pokegear/radio/pgradio_gra.narc,files/a/1/4/7))
 $(eval $(call arc_strip_name,files/fielddata/graphic/preview_graphic/preview_graphic.narc,files/a/1/5/0))
 $(eval $(call arc_strip_name,files/system/touch_subwindow.narc,files/a/1/5/2))
 $(eval $(call arc_strip_name,files/data/gs_areawindow.narc,files/a/1/6/3))
@@ -510,6 +513,9 @@ include files/fielddata/tsurepoke/tp_param.mk
 include files/application/choose_starter/choose_starter.mk
 include files/application/pokegear/pgear_gra.mk
 include files/application/pokegear/map/pgmap_gra.mk
+include files/application/pokegear/configure/pgconf_gra.mk
+include files/application/pokegear/phone/pgphone_gra.mk
+include files/application/pokegear/radio/pgradio_gra.mk
 include files/arc/ppark.mk
 include files/application/record/record.mk
 include files/application/voltorb_flip.mk
