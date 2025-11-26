@@ -28,7 +28,7 @@ PhoneCallPersistentState *SaveData_GetPhoneCallPersistentState(SaveData *saveDat
 static void SavePokegear_Init_Internal(SavePokegear *pokegear) {
     MI_CpuClear8(pokegear, sizeof(SavePokegear));
     pokegear->lastUsedApp = 3;
-    pokegear->backgroundStyle = 0;
+    pokegear->skin = 0;
     pokegear->unk_1 = 0;
     pokegear->unk_3 = 128;
     pokegear->unk_2 = pokegear->unk_3;
@@ -82,16 +82,16 @@ u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear) {
     return pokegear->mapUnlockLevel;
 }
 
-u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear) {
-    return pokegear->backgroundStyle;
+u32 Pokegear_GetSkin(SavePokegear *pokegear) {
+    return pokegear->skin;
 }
 
-void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 newStyle) {
-    pokegear->backgroundStyle = newStyle;
+void Pokegear_SetSkin(SavePokegear *pokegear, u32 skin) {
+    pokegear->skin = skin;
 }
 
-u16 sub_0202EE98(SavePokegear *pokegear) {
-    return pokegear->unk_4_0;
+u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear) {
+    return pokegear->unlockedSkins;
 }
 
 BOOL sub_0202EEA4(SavePokegear *pokegear) {
