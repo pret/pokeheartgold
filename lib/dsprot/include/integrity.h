@@ -15,4 +15,6 @@ extern u32 RunEncrypted_Integrity_MACOwner_IsGood(void);
 extern u32 RunEncrypted_Integrity_ROMTest_IsBad(void);
 extern u32 RunEncrypted_Integrity_ROMTest_IsGood(void);
 
+#define INTEGRITY_OBFS_OFFSET (ENC_VAL_1 & ~0xFFF)
+
 #endif // DSPROT_INTEGRITY_H

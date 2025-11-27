@@ -5,7 +5,11 @@
 
 #define RC4_KEY_SIZE (16)
 
-typedef struct RC4_Ctx RC4_Ctx;
+typedef struct RC4_Ctx {
+    int i;
+    int j;
+    u8 S[256];
+} RC4_Ctx;
 
 // Functions to be encoded (cannot be static)
 void RC4_Init(RC4_Ctx *ctx, const void *key, u32 keyLen);

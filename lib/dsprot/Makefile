@@ -33,7 +33,7 @@ CC_PARAM   +=  -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W 
 
 ASM_PARAM  :=  -proc arm5TE -i $(INC_DIR)
 
-# Files (in this specific order) that will go into the library
+# Files that will go into the library, to be copied to INSTALL_LIBDIR
 LIBRARY_FILES := \
 	$(BUILD_DIR)/dsprot_main_encrypted.o          \
 	$(BUILD_DIR)/dsprot_main_decrypter_encoded.o  \

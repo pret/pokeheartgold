@@ -1,9 +1,5 @@
 #include "mac_owner.h"
 
-#define MAC_ADDR_SIZE (6)
-
-#define ENC_MAC_ADDR_BYTE (0xFF)
-
 static const u8 badMacAddr[MAC_ADDR_SIZE] = {
     0x00 ^ ENC_MAC_ADDR_BYTE,
     0x09 ^ ENC_MAC_ADDR_BYTE,

@@ -4,8 +4,6 @@
 #include "mac_owner.h"
 #include "rom_test.h"
 
-#define INTEGRITY_OBFS_OFFSET (ENC_VAL_1 & ~0xFFF)
-
 // This was likely not originally an inline, but an inline is able to match here nicely
 static inline u32 checkDecryptionWrapper(u8 *addr, u32 matchRet, u32 mismatchRet) {
     addr += INTEGRITY_OBFS_OFFSET;

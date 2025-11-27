@@ -1,11 +1,5 @@
 #include "rom_util.h"
 
-// Custom defs not provided by SDK
-#define REG_CARD_MASTER_CNT_OFFSET (0x1A1)
-#define REG_CARDCNT_OFFSET         (0x1A4)
-#define REG_CARD_CMD_OFFSET        (0x1A8)
-#define REG_CARD_DATA_OFFSET       (0x100010)
-
 void ROMUtil_Read(void *dest, u32 addr, s32 numBytes) {
     // This function is executing an obfuscated manual cartridge ROM read.
     // Nitro SDK usually does this for you with CARD_ReadRom* and friends.

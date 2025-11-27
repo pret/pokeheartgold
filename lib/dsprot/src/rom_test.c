@@ -2,8 +2,6 @@
 
 #include "rom_util.h"
 
-#define ROM_BLOCK_SIZE CARD_ROM_PAGE_SIZE
-
 static inline u32 testROM(u32 passRet, u32 failRet) {
     // Extra CRC entry is required to match
     u32 crcs[7];

@@ -3,12 +3,6 @@
 #include "encoding_constants.h"
 #include "encryptor.h"
 
-struct RC4_Ctx {
-    int i;
-    int j;
-    u8 S[256];
-};
-
 void RC4_Init(RC4_Ctx *ctx, const void *key, u32 keyLen) {
     s32 Ki = 0;
     u8 Si = 0;

@@ -5,18 +5,6 @@
 #include "mac_owner.h"
 #include "rom_test.h"
 
-#define DSP_OBFS_OFFSET (0x320)
-
-#define FUNC_QUEUE_END (0)
-
-typedef u32 (*TaskFunc)(void);
-typedef void (*CallbackFunc)(void);
-
-typedef enum ExpectedResult {
-    EXPECT_FALSE,
-    EXPECT_TRUE
-} ExpectedResult;
-
 // This was likely not originally an inline, but an inline is able to match here nicely
 static inline u32 dsprotMain(u32 *funcQueue, ExpectedResult expectedResult, void *callback) {
     // These two bit arrays must be signed to match
