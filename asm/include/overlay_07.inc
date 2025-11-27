@@ -158,10 +158,10 @@
 .public SealOnCapsuleGetID
 .public SealOnCapsuleGetX
 .public SealOnCapsuleGetY
-.public GetMonData
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public Pokemon_GetMonData
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
-.public sub_02071FDC
+.public Chatot_ChatterPlayCryEx
 .public sub_020729D8
 .public sub_020729FC
 .public sub_02072A20
@@ -237,7 +237,7 @@
 .public BattleSystem_GetSpriteRenderer
 .public BattleSystem_GetGfxHandler
 .public BattleSystem_GetPaletteData
-.public ov12_0223BB88
-.public ov12_0223C1C4
+.public BattleSystem_GetUnk1D0Index
+.public BattleSystem_ListOpponentsFlags
 .public ov12_0223C1F4
 .public BattleSystem_SetDefaultBlend

@@ -216,7 +216,7 @@ typedef struct {
     /* 0x088 */ PartyPokemon party;
 } Pokemon; // size: 0xEC
 
-struct UnkPokemonStruct_02072A98 {
+struct PokemonData {
     /* 0x00 */ u32 personality;
     /* 0x04 */ u16 partyDecrypted : 1;
     u16 boxDecrypted : 1;

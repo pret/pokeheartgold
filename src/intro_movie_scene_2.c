@@ -296,7 +296,7 @@ static void IntroMovie_Scene2_DeleteSprites(IntroMovieOverlayData *data, IntroMo
         Sprite_Delete(sceneData->flowerSprites[i]);
     }
     for (u8 i = 0; i < 2; ++i) {
-        sub_0200AEB0(sceneData->spriteGfxRes[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteResource_ResetTransferTasks(sceneData->spriteGfxRes[i][GF_GFX_RES_TYPE_CHAR]);
         sub_0200B0A8(sceneData->spriteGfxRes[i][GF_GFX_RES_TYPE_PLTT]);
     }
     IntroMovie_DestroySpriteResourceManagers(data);

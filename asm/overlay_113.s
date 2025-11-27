@@ -1903,7 +1903,7 @@ ov113_021E677C: ; 0x021E677C
 	ldr r0, [r0]
 	ldr r1, [r1]
 	ldr r2, _021E6928 ; =ov113_021E6B74
-	bl sub_0200D2A4
+	bl SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 	ldr r3, _021E692C ; =ov113_021E6BB8
 	add r2, sp, #0x10
 	ldmia r3!, {r0, r1}

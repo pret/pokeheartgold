@@ -587,7 +587,7 @@ _0223772C:
 	add r1, r6, #0
 	bl ov80_0222A140
 	add r0, r6, #0
-	bl UpdateMonAbility
+	bl Pokemon_UpdateAbility
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #1
@@ -659,7 +659,7 @@ _022377D0:
 	lsr r2, r2, #0x18
 	bl ov80_0222A140
 	add r0, r6, #0
-	bl UpdateMonAbility
+	bl Pokemon_UpdateAbility
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #3
@@ -873,7 +873,7 @@ ov80_0223793C: ; 0x0223793C
 	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0xa
 	bl _s32_div_f
 	lsl r0, r0, #0x18
@@ -958,7 +958,7 @@ ov80_022379C8: ; 0x022379C8
 	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	lsr r4, r0, #0x10
 	ldrb r0, [r5, #4]
@@ -971,7 +971,7 @@ ov80_022379C8: ; 0x022379C8
 	bl Party_GetMonByIndex
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	cmp r4, r0

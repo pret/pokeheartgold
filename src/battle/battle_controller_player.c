@@ -233,7 +233,7 @@ static void BattleControllerPlayer_SelectionScreenInit(BattleSystem *bsys, Battl
         ctx->unk_314C[battlerId] = 0;
     }
 
-    ov12_0223BB64(bsys, 0);
+    BattleSystem_SetUnk2440(bsys, 0);
     ov12_02237ED0(bsys, 1);
 
     ctx->command = CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT;
@@ -1702,7 +1702,7 @@ static void BattleControllerPlayer_FightInput(BattleSystem *bsys, BattleContext 
     }
     ctx->moveNoCur = ctx->moveNoTemp;
     ctx->command = CONTROLLER_COMMAND_23;
-    ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
+    ctx->battlerIdTarget = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
     BattleController_EmitBlankMessage(bsys);
 }
 
@@ -1966,7 +1966,7 @@ static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) 
         ctx->movePos[ctx->battlerIdAttacker] = struggleRnd;
         ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]];
         ctx->moveNoCur = ctx->moveNoTemp;
-        ctx->battlerIdTarget = ov12_022506D4(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, 1, 0);
+        ctx->battlerIdTarget = GetBattlerIdTarget(bsys, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, 1, 0);
 
         if (ctx->battlerIdTarget == BATTLER_NONE) {
             ctx->playerActions[ctx->battlerIdAttacker].unk4 = Battler_GetRandomOpposingBattlerId(bsys, ctx, ctx->battlerIdAttacker);
@@ -3217,13 +3217,13 @@ static void ov12_0224D03C(BattleSystem *bsys, BattleContext *ctx) {
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
         OpponentData *opponent = BattleSystem_GetOpponentData(bsys, ctx->battlerIdAttacker);
-        u8 flag = ov12_02261258(opponent);
+        u8 flag = BattleController_GetOpponentFlags(opponent);
 
         do {
             battlerId = ctx->turnOrder[ctx->unk_217E++];
             if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp != 0) {
                 opponent = BattleSystem_GetOpponentData(bsys, battlerId);
-                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && ov12_02261258(opponent) & 1)) {
+                if (((flag & 1) && !(BattleController_GetOpponentFlags(opponent) & 1)) || (!(flag & 1) && BattleController_GetOpponentFlags(opponent) & 1)) {
                     ov12_02252D14(bsys, ctx);
                     ctx->battlerIdTarget = battlerId;
                     ctx->command = CONTROLLER_COMMAND_23;
@@ -3431,8 +3431,8 @@ static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
 
                     for (i = 0; i < Party_GetCount(party); i++) {
                         Pokemon *mon = Party_GetMonByIndex(party, i);
-                        if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                            u32 hpTemp = GetMonData(mon, MON_DATA_HP, NULL);
+                        if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
+                            u32 hpTemp = Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
                             if (hpTemp != 0 && ctx->selectedMonIndex[battlerId ^ 2] != i) {
                                 hp += hpTemp;
                             }
@@ -3457,8 +3457,8 @@ static BOOL ov12_0224D540(BattleSystem *bsys, BattleContext *ctx) {
 
             for (i = 0; i < Party_GetCount(party); i++) {
                 Pokemon *mon = Party_GetMonByIndex(party, i);
-                if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
-                    hp += GetMonData(mon, MON_DATA_HP, NULL);
+                if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_NONE && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0) != SPECIES_EGG) {
+                    hp += Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
                 }
             }
 
@@ -3506,8 +3506,8 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (int i = 0; i < Party_GetCount(party); i++) {
                     Pokemon *mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_HP, NULL);
+                    if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
+                        hp += Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
@@ -3525,20 +3525,20 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (i = 0; i < Party_GetCount(party); i++) {
                     Pokemon *mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_HP, NULL);
+                    if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
+                        hp += Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
                 for (i = 0; i < Party_GetCount(partnerParty); i++) {
                     Pokemon *mon = Party_GetMonByIndex(partnerParty, i);
-                    if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_HP, NULL);
+                    if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
+                        hp += Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
                 if (hp == 0) {
-                    if (ov12_02261258(opponent) & 1) {
+                    if (BattleController_GetOpponentFlags(opponent) & 1) {
                         battleOutcome |= BATTLE_RESULT_WIN;
                     } else {
                         battleOutcome |= BATTLE_RESULT_LOSE;
@@ -3553,13 +3553,13 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
 
                 for (int i = 0; i < Party_GetCount(party); i++) {
                     Pokemon *mon = Party_GetMonByIndex(party, i);
-                    if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
-                        hp += GetMonData(mon, MON_DATA_HP, NULL);
+                    if (Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG) {
+                        hp += Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
                     }
                 }
 
                 if (hp == 0) {
-                    if (ov12_02261258(opponent) & 1) {
+                    if (BattleController_GetOpponentFlags(opponent) & 1) {
                         battleOutcome |= BATTLE_RESULT_WIN;
                     } else {
                         battleOutcome |= BATTLE_RESULT_LOSE;

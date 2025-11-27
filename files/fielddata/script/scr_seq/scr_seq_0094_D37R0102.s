@@ -1524,7 +1524,7 @@ _1480:
 	scrcmd_553 5, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 1
 	goto_if_eq _154E
-	scrcmd_831 VAR_SPECIAL_x8004
+	draw_random_accessory VAR_SPECIAL_x8004
 	scrcmd_404 VAR_SPECIAL_x8004, 1, VAR_SPECIAL_RESULT
 	compare VAR_SPECIAL_RESULT, 0
 	goto_if_eq _155B

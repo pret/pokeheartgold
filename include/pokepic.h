@@ -230,7 +230,7 @@ void Pokepic_StartPaletteFadeAll(PokepicManager *pokepicManager, int start, int 
 BOOL Pokepic_ResumePaletteFade(Pokepic *pokepic);
 
 // The purpose of this routine is not clear
-void sub_0200914C(Pokepic *pokepic, int y);
+void Pokepic_AdjustYOffset(Pokepic *pokepic, int y);
 
 // Starts the PokepicAnim
 void PokepicAnim_Init(PokepicAnim *anim, PokepicAnimScript *animScript);

@@ -73,10 +73,10 @@ sub_02074E5C: ; 0x02074E5C
 	strb r0, [r6, #4]
 	add r0, r5, #0
 	add r1, r4, #4
-	bl ov12_0223BBFC
+	bl BattleSystem_SetUnk23F4
 	add r0, r5, #0
 	add r1, r6, #4
-	bl ov12_0223BC08
+	bl BattleSystem_SetUnk23F8
 	ldr r0, _02074EBC ; =sub_02075434
 	add r1, r4, #0
 	mov r2, #0
@@ -1058,13 +1058,13 @@ sub_02075534: ; 0x02075534
 	add r4, r3, #0
 	add r0, r4, #0
 	mov r1, #0xff
-	bl ov12_0223BC14
+	bl BattleSystem_SetUnk23F4_2
 	add r0, r4, #0
 	mov r1, #0xff
-	bl ov12_0223BC20
+	bl BattleSystem_SetUnk23F8_2
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0223BC2C
+	bl BattleSystem_SetUnk23FE
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02075534

@@ -82,8 +82,8 @@
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
-.public GetMonData
-.public MonIsShiny
+.public Pokemon_GetMonData
+.public Pokemon_IsShiny
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

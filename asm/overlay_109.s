@@ -2763,7 +2763,7 @@ ov109_021E6DE4: ; 0x021E6DE4
 	ldr r1, [r4]
 	ldr r2, _021E6E60 ; =ov109_021E78A8
 	mov r3, #2
-	bl sub_0200D2A4
+	bl SpriteSystem_LoadResourceDataFromFilepathsCustomMode
 	add sp, #4
 	pop {r3, r4, pc}
 	nop

@@ -529,7 +529,7 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
 
     if (data->certificateId == CERTIFICATE_SHINY_LEAVES) {
         GF_ASSERT(data->frontPokemon != NULL);
-        BoxPokemon *boxMon = Mon_GetBoxMon(data->frontPokemon);
+        BoxPokemon *boxMon = Pokemon_GetBox(data->frontPokemon);
         ReadMsgDataIntoString(data->msgData, msg_0004_00004, tempString);
         BufferBoxMonNickname(data->msgFmt, 1, boxMon);
     } else {
@@ -607,7 +607,7 @@ static void CertificatesApp_SetupSpriteRenderer(CertificatesApp_Data *data) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(data->spriteRenderer), FX32_CONST(0), FX32_CONST(GX_LCD_SIZE_Y));
 
     u8 tp_param_data[4];
-    ReadWholeNarcMemberByIdPair(tp_param_data, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(GetMonData(data->frontPokemon, MON_DATA_SPECIES, NULL)));
+    ReadWholeNarcMemberByIdPair(tp_param_data, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(Pokemon_GetMonData(data->frontPokemon, MON_DATA_SPECIES, NULL)));
     data->unk58 = tp_param_data[1];
 }
 
@@ -736,10 +736,10 @@ static u32 ov78_021E6688(int species, int form, int gender) {
 }
 
 static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, enum HeapID heapID, u32 a3) {
-    u32 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(pokemon, MON_DATA_FORM, NULL);
-    u32 gender = GetMonGender(pokemon);
-    BOOL shiny = MonIsShiny(pokemon);
+    u32 species = Pokemon_GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetMonData(pokemon, MON_DATA_FORM, NULL);
+    u32 gender = Pokemon_GetGender(pokemon);
+    BOOL shiny = Pokemon_IsShiny(pokemon);
 
     u32 bufferSize, unk;
     if (a3 != 0) {
@@ -752,7 +752,7 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, enum HeapID heapID, 
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapID);
 
-    if (sub_02070438(species, form) == 0) {
+    if (SanitizeFormId(species, form) == 0) {
         form = 0;
     }
 

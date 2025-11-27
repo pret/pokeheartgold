@@ -17,7 +17,7 @@
 .public GF2DGfxResObj_GetCharDataPtr
 .public GF2DGfxResObj_GetPlttDataPtr
 .public sub_0200AE18
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public SpriteTransfer_GetPlttOffset

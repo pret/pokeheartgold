@@ -1,20 +1,19 @@
 #include "daycare.h"
-
 #include "global.h"
 
-u32 Save_Daycare_sizeof(void) {
+u32 Daycare_GetSizeOfDaycare(void) {
     return sizeof(Daycare);
 }
 
-void Save_Daycare_Init(Daycare *daycare) {
+void Daycare_Init(Daycare *daycare) {
     memset(daycare, 0, sizeof(Daycare));
-    ZeroBoxMonData(&daycare->mons[0].mon);
-    ZeroBoxMonData(&daycare->mons[1].mon);
+    BoxPokemon_ZeroBoxMonData(&daycare->mons[0].mon);
+    BoxPokemon_ZeroBoxMonData(&daycare->mons[1].mon);
     daycare->egg_pid = 0;
     daycare->egg_cycles = 0;
 }
 
-DaycareMon *Save_Daycare_GetMonX(Daycare *daycare, s32 i) {
+DaycareMon *Daycare_GetMonX(Daycare *daycare, s32 i) {
     return &daycare->mons[i];
 }
 
@@ -34,15 +33,15 @@ Mail *DaycareMail_GetMailPtr(DaycareMail *dcmail) {
     return &dcmail->mail;
 }
 
-BOOL Save_Daycare_HasEgg(Daycare *daycare) {
+BOOL Daycare_HasEgg(Daycare *daycare) {
     return daycare->egg_pid != 0;
 }
 
-u32 Save_Daycare_GetEggPID(Daycare *daycare) {
+u32 Daycare_GetEggPID(Daycare *daycare) {
     return daycare->egg_pid;
 }
 
-u8 Save_Daycare_GetEggCycleCounter(Daycare *daycare) {
+u8 Daycare_GetEggCycleCounter(Daycare *daycare) {
     return daycare->egg_cycles;
 }
 
@@ -58,16 +57,16 @@ void Save_Daycare_SetEggPID(Daycare *daycare, u32 pid) {
     daycare->egg_pid = pid;
 }
 
-void Save_Daycare_SetEggCycleCounter(Daycare *daycare, s32 count) {
+void Daycare_SetEggCycleCounter(Daycare *daycare, s32 count) {
     daycare->egg_cycles = count;
 }
 
-BOOL Save_Daycare_MasudaCheck(Daycare *daycare) {
+BOOL Daycare_MasudaCheck(Daycare *daycare) {
     // Checks if the pokemon come from different countries.
     // Uses language as a proxy for country, even though it
     // only accounts for European languages and Japanese.
     // If true, shiny odds are increased.
-    return GetBoxMonData(&daycare->mons[0].mon, MON_DATA_LANGUAGE, NULL) != GetBoxMonData(&daycare->mons[1].mon, MON_DATA_LANGUAGE, NULL);
+    return BoxPokemon_GetData(&daycare->mons[0].mon, MON_DATA_LANGUAGE, NULL) != BoxPokemon_GetData(&daycare->mons[1].mon, MON_DATA_LANGUAGE, NULL);
 }
 
 void DaycareMon_Copy(DaycareMon *dest, const DaycareMon *src) {
@@ -90,7 +89,7 @@ void DaycareMon_Extras_Init(DaycareMail *mail) {
 }
 
 void DaycareMon_Init(DaycareMon *mon) {
-    ZeroBoxMonData(&mon->mon);
+    BoxPokemon_ZeroBoxMonData(&mon->mon);
     mon->steps = 0;
     DaycareMon_Extras_Init(&mon->mail);
 }

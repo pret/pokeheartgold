@@ -97,7 +97,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         break;
     case 1:
         MapObject_UnpauseMovement(env->tree);
-        sub_0205F328(env->tree, 1);
+        MapObject_SetUnkA0(env->tree, 1);
         env->treeWiggles = 0;
         env->wiggleTimer = TREE_WIGGLE_FRAMES;
         env->state = 2;
@@ -111,7 +111,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         if (env->treeWiggles < NUM_TREE_WIGGLES) {
             break;
         }
-        sub_0205F328(env->tree, 0);
+        MapObject_SetUnkA0(env->tree, 0);
         MapObject_PauseMovement(env->tree);
         if (sub_02055708(fieldSystem, env->tree)) {
             sub_02055760(fieldSystem, env->tree);
@@ -167,7 +167,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
             break;
         }
         env->expelTimer = TREE_EXPEL_FRAMES;
-        sub_0205F328(env->tree, 2);
+        MapObject_SetUnkA0(env->tree, 2);
         MapObject_UnpauseMovement(env->tree);
         env->state = 8;
         break;
@@ -184,7 +184,7 @@ static BOOL Task_AnimApricornTree(TaskManager *taskman) {
         if (!DoApricornJump(env)) {
             break;
         }
-        sub_0205F328(env->tree, 0);
+        MapObject_SetUnkA0(env->tree, 0);
         env->state = 10;
         break;
     case 10:
@@ -242,7 +242,7 @@ static BOOL Task_AnimPlayerShakeTree(TaskManager *taskman) {
             MapObject_ClearHeldMovementIfActive(playerObj);
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 0x2000);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-            sub_0205F328(playerObj, 0);
+            MapObject_SetUnkA0(playerObj, 0);
             env->timer = 0;
             ++(*state_p);
         }

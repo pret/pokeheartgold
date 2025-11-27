@@ -3737,21 +3737,21 @@ _0222B910:
 	mov r1, #5
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r6, #0
 	add r1, #0x40
 	strh r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r5, r4
 	add r1, #0x4c
 	strb r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r5, r4
 	add r1, #0x52
 	strb r0, [r1]

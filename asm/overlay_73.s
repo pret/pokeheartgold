@@ -315,7 +315,7 @@ ov73_021E5BAC: ; 0x021E5BAC
 	mov r0, #0x6b
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x1b
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
@@ -5533,7 +5533,7 @@ ov73_021E847C: ; 0x021E847C
 	add r6, r0, #0
 	ldr r0, _021E84C0 ; =0x00000D34
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, _021E84C4 ; =0x00000D38
 	ldr r0, [r6, r0]
 	bl sub_0200B0A8

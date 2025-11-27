@@ -30,7 +30,7 @@ _022660F4:
 	bl BattleSystem_GetPaletteData
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0xc]
-	bl ov12_0223AB54
+	bl BattleSystem_GetUnk2404
 	str r0, [sp, #0x14]
 	cmp r0, #0x17
 	blo _02266110
@@ -2106,17 +2106,17 @@ _022671C4:
 	bl String_New
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223C134
+	bl BattleSystem_GetUnk2488
 	str r0, [sp, #0x24]
 	cmp r0, #0
 	beq _022672B6
 	mov r1, #5
 	add r2, r6, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _022672B6
 	ldr r0, [sp, #0x24]
-	bl GetMonGender
+	bl Pokemon_GetGender
 	cmp r0, #0
 	beq _02267200
 	cmp r0, #1
@@ -2167,7 +2167,7 @@ _02267252:
 	ldr r0, [sp, #0x24]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3303,7 +3303,7 @@ ov12_02267C24: ; 0x02267C24
 	add r1, sp, #0x38
 	ldr r0, [r5]
 	add r1, #2
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	ldr r0, [r5]
 	add r1, sp, #0x34
 	bl ov12_0223C1A0
@@ -3361,7 +3361,7 @@ _02267CDA:
 	add r1, r6, #0
 	bl BattleSystem_GetPartyMon
 	str r0, [sp, #0x20]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	mov r1, #0
@@ -6639,7 +6639,7 @@ _02269606:
 	ldr r0, [r5]
 	mov r1, #1
 	ldr r0, [r0]
-	bl ov12_0223BB64
+	bl BattleSystem_SetUnk2440
 	add r0, r5, #0
 	bl Heap_Free
 	add r0, r6, #0
@@ -9167,7 +9167,7 @@ ov12_0226A8F4: ; 0x0226A8F4
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
 	ldr r0, [r4]
-	bl ov12_0223BB04
+	bl BattleSystem_GetUnk2421
 	cmp r0, #0
 	bne _0226A930
 	ldr r0, _0226A954 ; =0x000006E8

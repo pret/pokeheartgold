@@ -700,7 +700,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     data->entryBuf[data->textCursorPos] = EOS;
     if (data->type == NAME_SCREEN_POKEMON) {
         Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
-        CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
+        Pokemon_CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
         // wtf
         Heap_Free(mon);
     }
@@ -715,8 +715,8 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     for (int i = 0; i < 7; ++i) {
         DestroySysTaskAndEnvironment(data->tasks[i]);
     }
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
-    sub_0200AEB0(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(data->gfxResObjs[PM_LCD_TOP][GF_GFX_RES_TYPE_PLTT]);
     sub_0200B0A8(data->gfxResObjs[PM_LCD_BOTTOM][GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 4; ++i) {
@@ -942,8 +942,8 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     MI_CpuFill16(data->entryBuf, 1, sizeof(data->entryBuf));
     if (data->type == NAME_SCREEN_POKEMON) {
         Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
-        CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
-        BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
+        Pokemon_CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
+        BufferBoxMonSpeciesName(data->msgFormat, 0, Pokemon_GetBox(mon));
         Heap_Free(mon);
     }
     if (args->battleMsgId != 0) {
@@ -989,8 +989,8 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
         }
         if (data->textCursorPos == 0 || NamingScreen_PMCharArrayIsAllSpaces(data->entryBuf)) {
             Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
-            CreateMon(mon, data->playerGenderOrMonSpecies, 1, 0, 0, 0, 0, 0);
-            BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
+            Pokemon_CreateMon(mon, data->playerGenderOrMonSpecies, 1, 0, 0, 0, 0, 0);
+            BufferBoxMonSpeciesName(data->msgFormat, 0, Pokemon_GetBox(mon));
             Heap_Free(mon);
         } else {
             data->entryBuf[data->textCursorPos] = EOS;

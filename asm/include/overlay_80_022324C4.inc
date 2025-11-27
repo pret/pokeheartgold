@@ -47,9 +47,9 @@
 .public sub_0205C268
 .public Save_VarsFlags_GetVar4052
 .public AllocMonZeroed
-.public CalcMonLevelAndStats
-.public GetMonData
-.public SetMonData
+.public Pokemon_CalcMonLevelAndStats
+.public Pokemon_GetMonData
+.public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel
 .public SaveArray_Party_Alloc
 .public Party_AddMon

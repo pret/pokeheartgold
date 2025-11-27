@@ -7,7 +7,7 @@
 .public sub_02037030
 .public sub_0203769C
 .public sub_0205C268
-.public GetMonData
+.public Pokemon_GetMonData
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
 .public sub_02096910

@@ -49,7 +49,7 @@
 .public AddPlttResObjFromOpenNarc
 .public AddCellOrAnimResObjFromOpenNarc
 .public sub_0200ACF0
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200AF94
 .public sub_0200B0A8
 .public OamManager_Create
@@ -208,7 +208,7 @@
 .public sub_02069998
 .public sub_020699BC
 .public sub_020699D0
-.public GetMonData
+.public Pokemon_GetMonData
 .public CopyPokemonToPokemon
 .public Party_GetCount
 .public Party_GetMonByIndex

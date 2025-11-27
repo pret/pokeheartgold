@@ -432,7 +432,7 @@ static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroM
         Sprite_Delete(sceneData->starterSprites[i]);
     }
     for (u8 i = 0; i < 4; ++i) {
-        sub_0200AEB0(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
+        SpriteResource_ResetTransferTasks(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_CHAR]);
         sub_0200B0A8(sceneData->spriteResObjs[i][GF_GFX_RES_TYPE_PLTT]);
     }
     IntroMovie_DestroySpriteResourceManagers(data);

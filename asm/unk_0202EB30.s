@@ -26,11 +26,11 @@ sub_0202EB38: ; 0x0202EB38
 	add r7, r4, #0
 _0202EB4C:
 	add r0, r5, #0
-	bl ZeroMonData
+	bl Pokemon_ZeroMonData
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r7, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _0202EB64
 	bl GF_AssertFail
@@ -57,11 +57,11 @@ sub_0202EB74: ; 0x0202EB74
 	add r7, r4, #0
 _0202EB88:
 	add r0, r5, #0
-	bl ZeroMonData
+	bl Pokemon_ZeroMonData
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r7, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _0202EBA0
 	bl GF_AssertFail
@@ -214,7 +214,7 @@ _0202ECA2:
 	add r0, r5, #0
 	add r1, r7, #0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _0202ECB2
 	add r4, r4, #1

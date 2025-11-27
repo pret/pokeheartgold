@@ -1033,7 +1033,7 @@ ov01_021EB968: ; 0x021EB968
 	ldr r0, [r4]
 	cmp r0, #0
 	beq _021EB97E
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 _021EB97E:
 	ldr r0, [r4, #4]
 	cmp r0, #0

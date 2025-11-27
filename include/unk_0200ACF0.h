@@ -11,7 +11,7 @@ void sub_0200ADE4(GF_2DGfxResObjList *charResObjList);
 BOOL sub_0200AE18(SpriteResource *obj);
 void sub_0200AE58(GF_2DGfxResObjList *charResObjList);
 void sub_0200AE8C(SpriteResource *charResObj);
-void sub_0200AEB0(SpriteResource *charResObj);
+void SpriteResource_ResetTransferTasks(SpriteResource *charResObj);
 void sub_0200AED4(GF_2DGfxResObjList *charResObjList);
 NNSG2dImageProxy *sub_0200AF00(SpriteResource *charResObj);
 NNSG2dImageProxy *sub_0200AF24(SpriteResource *charResObj, SpriteResource *cellResObj);
