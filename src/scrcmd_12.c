@@ -1,5 +1,5 @@
-#include "field_system.h"
 #include "catching_show.h"
+#include "field_system.h"
 #include "pokedex.h"
 #include "save_arrays.h"
 #include "save_pokegear.h"

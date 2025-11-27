@@ -13,7 +13,7 @@
 #include "text.h"
 #include "unk_02005D10.h"
 
-static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment);
+static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, enum TouchscreenListMenuTextAlignment alignment);
 static void TouchscreenListMenuSpawner_ScheduleLoadGraphicsToVram(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, PaletteData *paletteData, enum HeapID heapID);
 static void Task_LoadTouchscreenListMenuGraphicsToVram(SysTask *task, void *taskData);
 static u8 TouchscreenListMenu_GetItemsTextMaxWidth(LISTMENUITEM *listMenuItem, u8 num, FontID fontId, u8 margin);
@@ -48,7 +48,7 @@ void TouchscreenListMenuSpawner_Destroy(TouchscreenListMenuSpawner *spawner) {
     Heap_Free(spawner);
 }
 
-static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, int alignment) {
+static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent, enum TouchscreenListMenuTextAlignment alignment) {
     TouchscreenListMenu *ret = Heap_Alloc(spawner->heapID, sizeof(TouchscreenListMenu));
     MI_CpuClear8(ret, sizeof(TouchscreenListMenu));
     MI_CpuCopy8(header, &ret->header, sizeof(TouchscreenListMenuHeader));
@@ -72,10 +72,10 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
     switch (alignment) {
     default:
         GF_ASSERT(FALSE);
-    case 0:
+    case TSMENU_ALIGN_LEFT:
         ret->x = x;
         break;
-    case 1:
+    case TSMENU_ALIGN_CENTER:
         ret->width = (ret->width + 1) & ~1;
         if (x - (ret->width + 2) / 2 < 0) {
             ret->x = 0;
@@ -83,7 +83,7 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
             ret->x = x - (ret->width + 2) / 2;
         }
         break;
-    case 2:
+    case TSMENU_ALIGN_RIGHT:
         if (x - (ret->width + 2) < 0) {
             ret->x = 0;
         } else {
@@ -102,15 +102,15 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
 }
 
 TouchscreenListMenu *TouchscreenListMenu_Create(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection) {
-    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, 0);
+    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, TSMENU_ALIGN_LEFT);
 }
 
-TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, int alignment) {
+TouchscreenListMenu *TouchscreenListMenu_CreateWithAlignment(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, enum TouchscreenListMenuTextAlignment alignment) {
     return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, NULL, NULL, FALSE, alignment);
 }
 
 TouchscreenListMenu *TouchscreenListMenu_CreateWithCallback(TouchscreenListMenuSpawner *spawner, TouchscreenListMenuHeader *header, u8 isTouch, u8 x, u8 y, u8 width, u8 selection, TouchscreenListMenuCallback callback, void *callbackArg, BOOL silent) {
-    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, callback, callbackArg, silent, 0);
+    return TouchscreenListMenu_CreateInternal(spawner, header, isTouch, x, y, width, selection, callback, callbackArg, silent, TSMENU_ALIGN_LEFT);
 }
 
 u8 TouchscreenListMenu_WasLastInputTouch(TouchscreenListMenu *menu) {
