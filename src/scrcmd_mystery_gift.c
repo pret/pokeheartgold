@@ -211,9 +211,9 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     Pokemon *tmpPokemon = NULL;
     Pokemon *pokemon = &mgData->mon;
     u8 *srcRibbons = mgData->ribbons;
-    int eggMetLocation = GetMonData(pokemon, MON_DATA_EGG_MET_LOCATION, NULL);
+    int eggMetLocation = GetMonData(pokemon, MON_DATA_EGG_LOCATION, NULL);
     int personality = GetMonData(pokemon, MON_DATA_PERSONALITY, NULL);
-    int otid = GetMonData(pokemon, MON_DATA_OTID, NULL);
+    int otid = GetMonData(pokemon, MON_DATA_OT_ID, NULL);
     int rand = PRandom(OS_GetTick());
 
     if (personality != 0) {
@@ -270,13 +270,13 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     if (GetMonData(pokemon, MON_DATA_PREMIER_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_PREMIER)] = srcRibbons[6];
     }
-    if (GetMonData(pokemon, MON_DATA_HOENN_MARINE_RIBBON, NULL)) {
+    if (GetMonData(pokemon, MON_DATA_MARINE_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_HOENN_MARINE)] = srcRibbons[7];
     }
-    if (GetMonData(pokemon, MON_DATA_HOENN_LAND_RIBBON, NULL)) {
+    if (GetMonData(pokemon, MON_DATA_LAND_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_HOENN_LAND)] = srcRibbons[8];
     }
-    if (GetMonData(pokemon, MON_DATA_HOENN_SKY_RIBBON, NULL)) {
+    if (GetMonData(pokemon, MON_DATA_SKY_RIBBON, NULL)) {
         ribbons->ribbons[GetSpecialRibbonNo(RIBBON_HOENN_SKY)] = srcRibbons[9];
     }
 
@@ -290,8 +290,8 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         GF_ASSERT(tmpPokemon != NULL);
 #endif
         CopyPokemonToPokemon(pokemon, tmpPokemon);
-        SetMonData(tmpPokemon, MON_DATA_OT_NAME_2, playerName);
-        SetMonData(tmpPokemon, MON_DATA_OTID, &trainerId);
+        SetMonData(tmpPokemon, MON_DATA_OT_NAME_STRING, playerName);
+        SetMonData(tmpPokemon, MON_DATA_OT_ID, &trainerId);
         SetMonData(tmpPokemon, MON_DATA_OT_GENDER, &gender);
         pokemon = tmpPokemon;
         String_Delete(playerName);

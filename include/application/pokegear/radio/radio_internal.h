@@ -81,7 +81,7 @@ typedef struct PokegearRadioAppData {
     u8 unk_24_0 : 1;              // 0x24 unused
     u8 isDraggingCursor : 4;      // 0x24
     u8 selectedButton : 3;        // 0x24
-    u8 backgroundStyle;           // 0x25
+    u8 skin;                      // 0x25
     u8 stationSelection : 4;      // 0x26
     u8 signalStrength : 2;        // 0x26
     u8 stationActive : 2;         // 0x26

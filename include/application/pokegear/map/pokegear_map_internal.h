@@ -320,8 +320,8 @@ void ov101_021EB38C(PokegearMapAppData *mapApp, int button, int state);
 void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 x);
 void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int mapID);
 
-int ov101_021EB568(PokegearMapAppData *mapApp);
-int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
+int PokegearMap_HandleKeyInput(PokegearMapAppData *mapApp);
+int PokegearMap_HandleTouchInput(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int FlyMap_HandleKeyInput(PokegearMapAppData *mapApp);
 int FlyMap_HandleTouchInput_NotDragging(PokegearMapAppData *mapApp, BOOL *pRetIsTouch);
 int FlyMap_HandleTouchInput_DraggingMap(PokegearMapAppData *mapApp);

@@ -68,7 +68,7 @@ BOOL Pokegear_Init(OverlayManager *man, int *state) {
     pokegearApp->profile = Save_PlayerData_GetProfile(pokegearApp->args->saveData);
     pokegearApp->registeredCards = Pokegear_GetRegisteredCardsArray(pokegearApp->savePokegear);
     pokegearApp->menuInputState = MenuInputStateMgr_GetState(pokegearApp->args->menuInputStatePtr);
-    pokegearApp->backgroundStyle = Pokegear_GetBackgroundStyle(pokegearApp->savePokegear);
+    pokegearApp->skin = Pokegear_GetSkin(pokegearApp->savePokegear);
     switch (pokegearApp->args->isScriptedLaunch) {
     case 1: // scripted phone call
         pokegearApp->app = GEAR_APP_PHONE;
@@ -167,9 +167,9 @@ void PokegearApp_VBlankCB(void *cb_args) {
     }
 
     if (pokegearApp->spriteSystem != NULL) {
-        if (pokegearApp->unk_094 != NULL) {
+        if (pokegearApp->uiManager != NULL) {
             PokegearApp_UpdateClockSprites(pokegearApp, 0);
-            ov100_021E6AB0(pokegearApp->unk_094);
+            PokegearUIManager_AnimateSprites(pokegearApp->uiManager);
         }
         PokegearApp_DrawSprites(pokegearApp);
         SpriteSystem_TransferOam();

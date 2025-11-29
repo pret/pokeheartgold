@@ -1,8 +1,11 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_P01R0303.h"
+#include "constants/init_script_types.h"
+	.include "asm/macros/script.inc"
+
 	.rodata
 	.option alignment off
 
-	.byte 0
+	InitScriptEntryEnd
 
-	.balign 4, 0
+	InitScriptEnd
