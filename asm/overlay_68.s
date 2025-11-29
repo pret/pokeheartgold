@@ -784,13 +784,13 @@ ov68_021E5F68: ; 0x021E5F68
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	mov r1, #0x73
 	lsl r1, r1, #2
 	strh r0, [r4, r1]
 	sub r0, r1, #4
 	ldr r0, [r4, r0]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	mov r1, #2
 	add r5, r0, #0
 	mvn r1, r1
@@ -3607,7 +3607,7 @@ ov68_021E75C0: ; 0x021E75C0
 	ldr r1, _021E75FC ; =ov68_021E7D64
 	ldr r2, _021E7600 ; =ov68_021E7C08
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	mov r1, #0x72
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -3628,11 +3628,11 @@ _021E7600: .word ov68_021E7C08
 ov68_021E7604: ; 0x021E7604
 	mov r1, #0x72
 	lsl r1, r1, #2
-	ldr r3, _021E7610 ; =sub_02019BDC
+	ldr r3, _021E7610 ; =GridInputHandler_Free
 	ldr r0, [r0, r1]
 	bx r3
 	nop
-_021E7610: .word sub_02019BDC
+_021E7610: .word GridInputHandler_Free
 	thumb_func_end ov68_021E7604
 
 	thumb_func_start ov68_021E7614
@@ -3699,7 +3699,7 @@ _021E766A:
 	mov r4, #3
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	ldr r1, [r5]
 	ldrh r0, [r1, #0x16]
 	add r0, r0, #1
@@ -3749,7 +3749,7 @@ _021E7700:
 	mov r4, #0
 	ldr r0, [r5, r0]
 	add r1, r4, #0
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	b _021E7728
 _021E7710:
 	ldr r0, _021E7738 ; =0x000005DD
@@ -3845,7 +3845,7 @@ _021E7792:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	b _021E7884
 _021E77E8:
 	cmp r4, #5
@@ -3881,7 +3881,7 @@ _021E77E8:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	b _021E7884
 _021E7840:
 	cmp r4, #6
@@ -3902,7 +3902,7 @@ _021E7840:
 	ldr r0, [r5, r0]
 	lsl r1, r4, #0x18
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 	b _021E7884
 _021E786E:
 	cmp r4, #7
@@ -3914,7 +3914,7 @@ _021E786E:
 	lsl r1, r4, #0x18
 	ldr r0, [r5, r0]
 	lsr r1, r1, #0x18
-	bl sub_02019F7C
+	bl GridInputHandler_SetNextInput
 _021E7884:
 	lsl r1, r4, #0x18
 	add r0, r5, #0
@@ -3937,7 +3937,7 @@ ov68_021E7898: ; 0x021E7898
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #7
-	bl sub_02019FF8
+	bl GridInputHandler_SetEnabledFlag
 	add r0, r4, #0
 	add r0, #0x88
 	bl ScheduleWindowCopyToVram
@@ -3961,7 +3961,7 @@ _021E78D6:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #7
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	add r0, r4, #0
 	add r0, #0x88
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -3997,12 +3997,12 @@ ov68_021E7910: ; 0x021E7910
 	add r0, #0x10
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	pop {r4, pc}
 _021E7936:
 	ldr r1, [r4]
@@ -4012,13 +4012,13 @@ _021E7936:
 	add r0, #0x10
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	b _021E7954
 _021E794A:
 	add r0, #0x10
 	ldr r0, [r4, r0]
 	mov r1, #5
-	bl sub_02019FF8
+	bl GridInputHandler_SetEnabledFlag
 _021E7954:
 	ldr r0, [r4]
 	ldrh r0, [r0, #0x16]
@@ -4031,13 +4031,13 @@ _021E7954:
 	add r0, #0x10
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_02019FD0
+	bl GridInputHandler_ClearEnabledFlag
 	pop {r4, pc}
 _021E7970:
 	add r0, #0x10
 	ldr r0, [r4, r0]
 	mov r1, #4
-	bl sub_02019FF8
+	bl GridInputHandler_SetEnabledFlag
 	pop {r4, pc}
 	thumb_func_end ov68_021E7910
 

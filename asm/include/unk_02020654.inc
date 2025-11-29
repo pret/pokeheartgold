@@ -17,9 +17,9 @@
 .public sub_02020910
 .public sub_020209AC
 .public sub_020209E0
-.public sub_02020A0C
-.public sub_02020A18
-.public sub_02020A24
+.public DpadMenuBox_GetPosition
+.public DpadMenuBox_GetDimensions
+.public DpadMenuBox_GetNeighborInDirection
 .public sub_02020B3C
 .public sub_02026DE0
 .public NNS_G2dInitCellTransferStateManager

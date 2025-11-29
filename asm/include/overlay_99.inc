@@ -37,12 +37,12 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
-.public sub_02019BA4
-.public sub_02019BDC
-.public sub_02019D18
-.public sub_02019F74
-.public sub_02019F7C
-.public sub_0201A018
+.public GridInputHandler_Create
+.public GridInputHandler_Free
+.public GridInputHandler_HandleInput_AllowHold
+.public GridInputHandler_GetNextInput
+.public GridInputHandler_SetNextInput
+.public GridInputHandler_GetDpadBox
 .public Main_SetVBlankIntrCB
 .public SetKeyRepeatTimers
 .public Heap_Create
@@ -63,7 +63,7 @@
 .public FillWindowPixelBuffer
 .public DoScheduledBgGpuUpdates
 .public ScheduleSetBgPosText
-.public sub_02020A0C
+.public DpadMenuBox_GetPosition
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_DisableEngineBPlanes

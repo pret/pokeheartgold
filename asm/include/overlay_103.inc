@@ -86,11 +86,11 @@
 .public sub_02019B08
 .public sub_02019B1C
 .public sub_02019B44
-.public sub_02019BA4
-.public sub_02019BDC
-.public sub_02019BE4
-.public sub_02019F74
-.public sub_0201A018
+.public GridInputHandler_Create
+.public GridInputHandler_Free
+.public GridInputHandler_HandleInput_NoHold
+.public GridInputHandler_GetNextInput
+.public GridInputHandler_GetDpadBox
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Heap_Create
