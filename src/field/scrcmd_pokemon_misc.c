@@ -1066,8 +1066,8 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     moveData = MOVE_EXTRASENSORY;
     SetMonData(mon, MON_DATA_MOVE1 + i, &moveData);
 
-    pp = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, 0);
-    SetMonData(mon, MON_DATA_MOVE1PP + i, &pp);
+    pp = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
+    SetMonData(mon, MON_DATA_MOVE1_PP + i, &pp);
 
     Party_AddMon(party, mon);
 
@@ -1126,8 +1126,8 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         SetMonData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
-        maxPP = GetMonData(mon, MON_DATA_MOVE1MAXPP + i, 0);
-        SetMonData(mon, MON_DATA_MOVE1PP + i, &maxPP);
+        maxPP = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
+        SetMonData(mon, MON_DATA_MOVE1_PP + i, &maxPP);
     }
 
     heldItem = ITEM_ZAP_PLATE;
@@ -1415,10 +1415,10 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(ScriptContext *ctx) {
     for (c = 0; c < partyCount; c++) {
         Pokemon *mon = Party_GetMonByIndex(playerParty, c);
         u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u8 gameVer = GetMonData(mon, MON_DATA_GAME_VERSION, NULL);
+        u8 gameVer = GetMonData(mon, MON_DATA_MET_GAME, NULL);
         if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)
             && !GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)
-            && !GetMonData(mon, MON_DATA_EGG_MET_LOCATION, NULL)) {
+            && !GetMonData(mon, MON_DATA_EGG_LOCATION, NULL)) {
 
             switch (species) {
             case SPECIES_KYOGRE:

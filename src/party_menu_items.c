@@ -573,16 +573,16 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
 
 static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    partyMenu->levelUpStatsTmp[0] = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->levelUpStatsTmp[0] = GetMonData(mon, MON_DATA_MAX_HP, NULL);
     partyMenu->levelUpStatsTmp[1] = GetMonData(mon, MON_DATA_ATK, NULL);
     partyMenu->levelUpStatsTmp[2] = GetMonData(mon, MON_DATA_DEF, NULL);
-    partyMenu->levelUpStatsTmp[3] = GetMonData(mon, MON_DATA_SPATK, NULL);
-    partyMenu->levelUpStatsTmp[4] = GetMonData(mon, MON_DATA_SPDEF, NULL);
+    partyMenu->levelUpStatsTmp[3] = GetMonData(mon, MON_DATA_SP_ATK, NULL);
+    partyMenu->levelUpStatsTmp[4] = GetMonData(mon, MON_DATA_SP_DEF, NULL);
     partyMenu->levelUpStatsTmp[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].hp = GetMonData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = GetMonData(mon, MON_DATA_MAXHP, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00177);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
@@ -897,9 +897,9 @@ void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) 
     int data = partyMenu->args->moveId;
     SetMonData(mon, MON_DATA_MOVE1 + moveIdx, &data);
     data = 0;
-    SetMonData(mon, MON_DATA_MOVE1PPUP + moveIdx, &data);
+    SetMonData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
     data = GetMoveMaxPP(partyMenu->args->moveId, 0);
-    SetMonData(mon, MON_DATA_MOVE1PP + moveIdx, &data);
+    SetMonData(mon, MON_DATA_MOVE1_PP + moveIdx, &data);
     if (partyMenu->args->itemId != ITEM_NONE) {
         if (!MoveIsHM(partyMenu->args->moveId)) {
             Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);

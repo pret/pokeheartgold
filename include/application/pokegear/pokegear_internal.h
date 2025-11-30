@@ -117,19 +117,19 @@ typedef struct PokegearObjectsManager {
     PokegearManagedObject *objects;
 } PokegearObjectsManager;
 
-typedef struct PokegearApp_UnkSub094 {
+typedef struct PokegearUIManager {
     enum HeapID heapID;
-    int unk_004;
+    int mode;
     u16 unk_008; // unused
-    u16 unk_00A;
-    u16 unk_00C;
-    u16 unk_00E;
+    u16 plttCount;
+    u16 spriteCount;
+    u16 vramType;
     SpriteList *spriteList;
     G2dRenderer renderer;
     u8 filler_13C[4];
     GF_2DGfxResMan *resourceManagers[4];
     GF_2DGfxResObjList *spriteResources[4];
-} PokegearApp_UnkSub094; // size: 0x160
+} PokegearUIManager; // size: 0x160
 
 typedef struct PokegearAppData PokegearAppData;
 struct PokegearAppData {
@@ -139,7 +139,7 @@ struct PokegearAppData {
     u8 isSwitchApp : 1;                          // 0x005
     u8 cursorInAppSwitchZone;                    // 0x006
     u8 needClockUpdate;                          // 0x007
-    u8 backgroundStyle;                          // 0x008
+    u8 skin;                                     // 0x008
     u8 fadeCounter;                              // 0x009
     MenuInputState menuInputState;               // 0x00C
     MenuInputState menuInputStateBak;            // 0x010
@@ -168,7 +168,7 @@ struct PokegearAppData {
     RTCTime time;                                // 0x080
     SpriteSystem *spriteSystem;                  // 0x08C
     SpriteManager *spriteManager;                // 0x090
-    PokegearApp_UnkSub094 *unk_094;              // 0x094
+    PokegearUIManager *uiManager;                // 0x094
     ManagedSprite *uiSprites[11];                // 0x098
     u16 *unk_0C4;                                // 0x0C4
     NNSG2dScreenData *unk_0C8;                   // 0x0C8
@@ -198,7 +198,7 @@ BOOL Pokegear_RunFadeLayers123(PokegearAppData *pokegearApp, int a1);
 u8 PokegearApp_AppIdToButtonIndex(PokegearAppData *pokegearApp);
 BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp);
 BOOL PokegearApp_UnloadGFX(PokegearAppData *pokegearApp);
-void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, int skin);
+void PokegearApp_LoadSkinGraphics(PokegearAppData *pokegearApp, u8 skin);
 void PokegearApp_SetGraphicsBanks(void);
 
 void PokegearApp_VBlankCB(void *cb_args);
@@ -209,11 +209,12 @@ void PokegearApp_CreateSpriteManager(PokegearAppData *pokegearApp, int spriteSet
 void PokegearApp_DestroySpriteManager(PokegearAppData *pokegearApp);
 void PokegearApp_DrawSprites(PokegearAppData *pokegearApp);
 
-PokegearApp_UnkSub094 *ov100_021E69F8(enum HeapID heapID, u16 a1, u16 a2, u16 a3, u16 a4, int a5);
-void ov100_021E6A3C(PokegearApp_UnkSub094 *a0);
-void ov100_021E6AB0(PokegearApp_UnkSub094 *a0);
-ManagedSprite *ov100_021E6AC0(PokegearApp_UnkSub094 *a0, u8 a1, u8 a2, u8 a3, u8 a4, u8 a5, u8 a6, u8 a7, int a8);
-void ov100_021E6C44(ManagedSprite *a0);
+PokegearUIManager *PokegearUIManager_Create(enum HeapID heapID, u16 spriteCount, u16 resCount, u16 skin, u16 vramType, int mode);
+void PokegearUIManager_Delete(PokegearUIManager *uiManager);
+void PokegearUIManager_LoadSkinGfx(PokegearUIManager *uiManager, u8 a1);
+void PokegearUIManager_AnimateSprites(PokegearUIManager *uiManager);
+ManagedSprite *PokegearUIManager_CreateSprite(PokegearUIManager *uiManager, u8 x, u8 y, u8 z, u8 priority, u8 drawPriority, u8 index, u8 seq, int isBottomScreen);
+void PokegearUIManager_DeleteSprite(ManagedSprite *managedSprite);
 
 PokegearObjectsManager *PokegearObjectsManager_Create(int count, enum HeapID heapID);
 void PokegearObjectsManager_Release(PokegearObjectsManager *mgr);

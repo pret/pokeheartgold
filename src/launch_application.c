@@ -7,6 +7,7 @@
 #include "application/pokegear/pokegear_main.h"
 #include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
+#include "pokeathlon/pokeathlon.h"
 
 #include "alph_puzzle.h"
 #include "bag_view.h"
@@ -52,7 +53,6 @@
 #include "overlay_73.h"
 #include "overlay_86.h"
 #include "overlay_87.h"
-#include "overlay_96.h"
 #include "overlay_99.h"
 #include "overlay_manager.h"
 #include "overlay_trainer_card.h"
@@ -485,7 +485,7 @@ void sub_0203E960(TaskManager *taskman, int a1, UnkStruct_0203E8C8 *a2, u16 *a3,
         args = EasyChat_CreateArgs(2, 0, fieldSystem->saveData, &fieldSystem->menuInputState, HEAP_ID_FIELD3);
         data->easyChat = args;
         sub_02090D40(args);
-        MailMessage *mailMessage = sub_0202D660(fieldSystem->saveData, a1 - 2);
+        MailMessage *mailMessage = sub_0202D660(fieldSystem->saveData, (u8)(a1 - 2));
         sub_02090D20(data->easyChat, mailMessage);
         sub_02090D34(data->easyChat);
     }

@@ -210,9 +210,9 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     CreateMon(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
     SetRoamerData(roamerStats, ROAMER_DATA_STATUS, 0);
     SetRoamerData(roamerStats, ROAMER_DATA_ACTIVE, TRUE);
-    SetRoamerData(roamerStats, ROAMER_DATA_IVS, GetMonData(mon, MON_DATA_IVS_WORD, NULL));
+    SetRoamerData(roamerStats, ROAMER_DATA_IVS, GetMonData(mon, MON_DATA_COMBINED_IVS, NULL));
     SetRoamerData(roamerStats, ROAMER_DATA_PERSONALITY, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
-    SetRoamerData(roamerStats, ROAMER_DATA_HP, GetMonData(mon, MON_DATA_MAXHP, NULL));
+    SetRoamerData(roamerStats, ROAMER_DATA_HP, GetMonData(mon, MON_DATA_MAX_HP, NULL));
     Heap_Free(mon);
     RoamerLocationSetRandom(roamerSave, idx, PlayerLocationHistoryGetBack(roamerSave));
 }

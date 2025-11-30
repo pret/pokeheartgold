@@ -43,9 +43,9 @@ typedef struct SavePokegear {
     u8 unk_1;
     u8 unk_2;
     u8 unk_3;
-    u32 unk_4_0 : 9;
+    u32 unlockedSkins : 9;
     u32 unk_4_9 : 9;
-    u32 backgroundStyle : 7;
+    u32 skin : 7;
     u32 registeredCards : 2;
     // mapUnlockLevel
     // 0: only Johto
@@ -69,9 +69,9 @@ void SavePokegear_RegisterCard(SavePokegear *pokegear, int card);
 u8 Pokegear_GetRegisteredCardsArray(SavePokegear *pokegear);
 void Pokegear_SetMapUnlockLevel(SavePokegear *pokegear, u8 mapUnlockMenu);
 u8 Pokegear_GetMapUnlockLevel(SavePokegear *pokegear);
-u32 Pokegear_GetBackgroundStyle(SavePokegear *pokegear);
-void Pokegear_SetBackgroundStyle(SavePokegear *pokegear, u32 a1);
-u16 sub_0202EE98(SavePokegear *pokegear);
+u32 Pokegear_GetSkin(SavePokegear *pokegear);
+void Pokegear_SetSkin(SavePokegear *pokegear, u32 skin);
+u16 Pokegear_GetUnlockedSkins(SavePokegear *pokegear);
 BOOL sub_0202EEA4(SavePokegear *pokegear);
 void sub_0202EEA8(SavePokegear *pokegear, u8 a1);
 void Pokegear_SetRadioCursorCoords(SavePokegear *pokegear, u8 x, u8 y);
