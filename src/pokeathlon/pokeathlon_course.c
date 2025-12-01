@@ -245,25 +245,23 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 }
 
 BOOL PokeathlonCourse_RunStateFunc(PokeathlonCourseData *data) {
-    typedef BOOL (*StateFunc)(PokeathlonCourseData *, void **);
     void **stateDataPtr = (void **)&data->stateArgsBase;
     u8 index = data->stateIndex;
-    void **functionTable = data->stateData;
-    StateFunc func = functionTable[index];
+    PokeathlonStateFunc *functionTable = (PokeathlonStateFunc *)data->stateData;
+    PokeathlonStateFunc func = functionTable[index];
     BOOL result = func(data, stateDataPtr);
 
     return result != FALSE;
 }
 
 BOOL PokeathlonCourse_RunSubStateLoop(PokeathlonCourseData *data) {
-    typedef BOOL (*StateHandlerFunc)(PokeathlonCourseData *, int);
-    void **statePtr;
-    StateHandlerFunc func;
+    PokeathlonStateHandlerFunc *statePtr;
+    PokeathlonStateHandlerFunc func;
     BOOL result;
 
     do {
-        statePtr = (void **)data->state;
-        func = (StateHandlerFunc)statePtr[0];
+        statePtr = (PokeathlonStateHandlerFunc *)data->state;
+        func = statePtr[0];
         result = func(data, 0);
 
         if (result == 1) {
@@ -313,8 +311,8 @@ void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
     }
 }
 
-void *PokeathlonCourse_GetPlayerProfile(void *profiles, int index) {
-    return (u8 *)profiles + (PlayerProfile_sizeof() * index);
+PlayerProfile *PokeathlonCourse_GetPlayerProfile(PlayerProfile *profiles, int index) {
+    return (PlayerProfile *)((u8 *)profiles + (PlayerProfile_sizeof() * index));
 }
 
 u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
@@ -329,7 +327,7 @@ void *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index
     return &data->participantData2[0x7C * index];
 }
 
-void *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
+SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
     return data->args->saveData;
 }
 

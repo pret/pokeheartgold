@@ -4,10 +4,19 @@
 #include "constants/heap.h"
 
 #include "overlay_manager.h"
+#include "player_data.h"
+#include "save.h"
+
+// Forward declaration
+typedef struct PokeathlonCourseData PokeathlonCourseData;
+
+// Function pointer types for state management
+typedef BOOL (*PokeathlonStateFunc)(PokeathlonCourseData *, void **);
+typedef BOOL (*PokeathlonStateHandlerFunc)(PokeathlonCourseData *, int);
 
 // Pokeathlon course arguments structure
 typedef struct PokeathlonCourseArgs {
-    void *saveData; // 0x000 - Save data pointer (SaveData *)
+    SaveData *saveData; // 0x000 - Save data pointer
     union {
         u32 mode;        // 0x004 - Mode flag (1 = special mode) - accessed as u32
         u8 modeBytes[4]; // 0x004-0x007 - Individual byte access: [0]=0x4, [1]=0x5, [2]=0x6, [3]=0x7
@@ -38,7 +47,7 @@ typedef struct PokeathlonCourseState {
 } PokeathlonCourseState;
 
 // Pokeathlon course data structure (0xD70 = 3440 bytes)
-typedef struct PokeathlonCourseData {
+struct PokeathlonCourseData {
     u8 filler_0[0x15C];                // 0x000
     u8 field_15C;                      // 0x15C
     u8 filler_15D[0x83];               // 0x15D
@@ -88,7 +97,7 @@ typedef struct PokeathlonCourseData {
     void *heapAllocPtr2;               // 0xD64 - Heap allocated pointer (freed in Exit if mode == 0)
     void *heapAllocPtr3;               // 0xD68 - Heap allocated pointer (freed in Exit if mode == 0)
     u8 filler_D6C[4];                  // 0xD6C
-} PokeathlonCourseData;
+};
 
 // Function declarations
 BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state);
@@ -99,11 +108,11 @@ BOOL PokeathlonCourse_RunStateFunc(PokeathlonCourseData *data);
 BOOL PokeathlonCourse_RunSubStateLoop(PokeathlonCourseData *data);
 void PokeathlonCourse_InitStateInfo(const void *src, void *dest);
 void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data);
-void *PokeathlonCourse_GetPlayerProfile(void *profiles, int index);
+PlayerProfile *PokeathlonCourse_GetPlayerProfile(PlayerProfile *profiles, int index);
 u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data);
 void *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index);
 void *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index);
-void *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data);
+SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data);
 void *ov96_021E5D6C(PokeathlonCourseData *data);
 void *ov96_021E5D78(PokeathlonCourseData *data, int index);
 void *ov96_021E5D88(PokeathlonCourseData *data);
