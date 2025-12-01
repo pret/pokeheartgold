@@ -420,6 +420,7 @@ $(eval $(call arc_strip_name,files/demo/title/titledemo.narc,files/a/0/4/6))
 $(eval $(call arc_strip_name,files/poketool/trainer/trdata.narc,files/a/0/5/5))
 $(eval $(call arc_strip_name,files/poketool/trainer/trpoke.narc,files/a/0/5/6))
 $(eval $(call arc_strip_name,files/poketool/trmsg/trtbl.narc,files/a/0/5/7))
+$(eval $(call arc_strip_name,files/poketool/pokefoot/pokefoot.narc,files/a/0/6/9))
 $(eval $(call arc_strip_name,files/application/zukanlist/zukan_data/zukan_data.narc,files/a/0/7/4))
 $(eval $(call arc_strip_name,files/a/0/7/5.$(buildname),files/a/0/7/5))
 $(eval $(call arc_strip_name,files/data/mmodel/mmodel.narc,files/a/0/8/1))
@@ -504,6 +505,7 @@ include files/poketool/personal/growtbl.mk
 include files/poketool/pokegra/otherpoke.mk
 include files/poketool/pokegra/pokegra.mk
 include files/poketool/trainer/trainer.mk
+include files/poketool/pokefoot/pokefoot.mk
 include files/fielddata/mapmatrix/map_matrix.mk
 include files/resource/eng/pms_aikotoba/pms_aikotoba.mk
 include files/data/mmodel/mmodel.mk

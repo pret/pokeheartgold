@@ -2,25 +2,11 @@
 	.include "overlay_18.inc"
 	.include "global.inc"
 
+	.extern ov18_021E5900
+	.extern ov18_021E5904
+	.extern ov18_021E5908
+
 	.text
-
-	thumb_func_start ov18_021E5900
-ov18_021E5900: ; 0x021E5900
-	mov r0, #0x45
-	bx lr
-	thumb_func_end ov18_021E5900
-
-	thumb_func_start ov18_021E5904
-ov18_021E5904: ; 0x021E5904
-	add r0, r0, #3
-	bx lr
-	thumb_func_end ov18_021E5904
-
-	thumb_func_start ov18_021E5908
-ov18_021E5908: ; 0x021E5908
-	mov r0, #0
-	bx lr
-	thumb_func_end ov18_021E5908
 
 	thumb_func_start ov18_021E590C
 ov18_021E590C: ; 0x021E590C

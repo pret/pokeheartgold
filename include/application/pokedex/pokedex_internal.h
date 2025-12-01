@@ -1,0 +1,12 @@
+#ifndef GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H
+#define GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H
+
+#include "global.h"
+
+typedef struct PokedexAppData PokedexAppData;
+
+struct PokedexAppData {
+    u8 filler_0000[0x1910];
+}; // size: 0x1910
+
+#endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H

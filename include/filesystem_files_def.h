@@ -73,7 +73,7 @@ typedef enum NarcId {
     NARC_a_0_6_6 = 66,
     NARC_a_0_6_7 = 67,
     NARC_a_0_6_8 = 68,
-    NARC_a_0_6_9 = 69,
+    NARC_poketool_pokefoot_pokefoot = 69,
     NARC_a_0_7_0 = 70,
     NARC_a_0_7_1 = 71,
     NARC_a_0_7_2 = 72,
