@@ -1,4 +1,3 @@
-#include "application/pokedex/pokedex_internal.h"
 #include "poketool/pokefoot/pokefoot.naix"
 
 #include "filesystem.h"
