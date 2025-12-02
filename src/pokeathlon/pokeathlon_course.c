@@ -78,8 +78,8 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     PokeathlonCourse_InitStateInfo(&ov96_0221A984, &data->stateData);
 
-    data->stateIndex = 0;
-    data->courseState.argsPtr = &data->stateData;
+    data->stateData.stateIndex = 0;
+    data->courseState.argsPtr = (void **)&data->stateData;
     data->courseState.exitFlag = 0;
 
     PokeathlonCourse_InitPlayerProfiles(data);
@@ -245,9 +245,9 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state) {
 }
 
 BOOL PokeathlonCourse_RunStateFunc(PokeathlonCourseData *data) {
-    void **stateDataPtr = (void **)&data->stateArgsBase;
-    u8 index = data->stateIndex;
-    PokeathlonStateFunc *functionTable = (PokeathlonStateFunc *)data->stateData;
+    void **stateDataPtr = (void **)&data->stateData.stateArgsBase;
+    u8 index = data->stateData.stateIndex;
+    PokeathlonStateFunc *functionTable = (PokeathlonStateFunc *)data->stateData.ptr;
     PokeathlonStateFunc func = functionTable[index];
     BOOL result = func(data, stateDataPtr);
 
@@ -276,17 +276,12 @@ BOOL PokeathlonCourse_RunSubStateLoop(PokeathlonCourseData *data) {
     return FALSE;
 }
 
-void PokeathlonCourse_InitStateInfo(const void *src, void *dest) {
-    struct {
-        void *ptr;
-        u8 bytes[4];
-    } *stateInfo = dest;
-
-    stateInfo->ptr = (void *)src;
-    stateInfo->bytes[0] = 1;
-    stateInfo->bytes[1] = 0;
-    stateInfo->bytes[2] = 0;
-    stateInfo->bytes[3] = 0;
+void PokeathlonCourse_InitStateInfo(const void *src, PokeathlonStateInfo *dest) {
+    dest->ptr = (void *)src;
+    dest->field_04 = 1;
+    dest->stateArgsBase = 0;
+    dest->stateIndex = 0;
+    dest->field_07 = 0;
 }
 
 void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
@@ -299,13 +294,13 @@ void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data) {
     }
 
     if (data->args->mode == 0) {
-        void *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, 0);
-        void *src = Save_PlayerData_GetProfile(data->args->saveData);
+        PlayerProfile *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, 0);
+        PlayerProfile *src = Save_PlayerData_GetProfile(data->args->saveData);
         PlayerProfile_Copy(src, dest);
     } else {
         for (i = 0; i < data->participantCount; i++) {
-            void *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i);
-            void *src = sub_02034818(i);
+            PlayerProfile *dest = PokeathlonCourse_GetPlayerProfile(data->heapAllocPtr1, i);
+            PlayerProfile *src = sub_02034818(i);
             PlayerProfile_Copy(src, dest);
         }
     }
@@ -319,24 +314,24 @@ u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data) {
     return data->participantCount;
 }
 
-void *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index) {
-    return (u8 *)&data->participantData1Base + (0x7C * index);
+PokeathlonParticipantData *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index) {
+    return (PokeathlonParticipantData *)((u8 *)&data->participantData1Base + (0x7C * index));
 }
 
-void *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index) {
-    return &data->participantData2[0x7C * index];
+PokeathlonParticipantData *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index) {
+    return (PokeathlonParticipantData *)&data->participantData2[0x7C * index];
 }
 
 SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data) {
     return data->args->saveData;
 }
 
-void *ov96_021E5D6C(PokeathlonCourseData *data) {
-    return data->field_72C;
+PokeathlonFieldData *ov96_021E5D6C(PokeathlonCourseData *data) {
+    return (PokeathlonFieldData *)data->field_72C;
 }
 
-void *ov96_021E5D78(PokeathlonCourseData *data, int index) {
-    return &data->field_72C[0x60 * index];
+PokeathlonFieldData *ov96_021E5D78(PokeathlonCourseData *data, int index) {
+    return (PokeathlonFieldData *)&data->field_72C[0x60 * index];
 }
 
 void *ov96_021E5D88(PokeathlonCourseData *data) {

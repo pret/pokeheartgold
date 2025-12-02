@@ -14,6 +14,25 @@ typedef struct PokeathlonCourseData PokeathlonCourseData;
 typedef BOOL (*PokeathlonStateFunc)(PokeathlonCourseData *, void **);
 typedef BOOL (*PokeathlonStateHandlerFunc)(PokeathlonCourseData *, int);
 
+// State info structure (8 bytes)
+typedef struct PokeathlonStateInfo {
+    void *ptr;        // 0x00 - Pointer to state function table
+    u8 field_04;      // 0x04 - Field at offset 4 (initialized to 1)
+    u8 stateArgsBase; // 0x05 - Base for state function args
+    u8 stateIndex;    // 0x06 - State function index
+    u8 field_07;      // 0x07 - Field at offset 7
+} PokeathlonStateInfo;
+
+// Participant data structure (0x7C = 124 bytes each)
+typedef struct PokeathlonParticipantData {
+    u8 data[0x7C]; // Opaque data for now
+} PokeathlonParticipantData;
+
+// Field data structure (0x60 = 96 bytes each)
+typedef struct PokeathlonFieldData {
+    u8 data[0x60]; // Opaque data for now
+} PokeathlonFieldData;
+
 // Pokeathlon course arguments structure
 typedef struct PokeathlonCourseArgs {
     SaveData *saveData; // 0x000 - Save data pointer
@@ -72,11 +91,8 @@ struct PokeathlonCourseData {
     u8 dataCopyBuffer2[0x28];          // 0x2DC - Destination buffer 2
     u8 filler_304[0xB0];               // 0x304
     PokeathlonCourseState courseState; // 0x3B4 - State machine structure (16 bytes: 4 fields x 4 bytes)
-    void *stateData;                   // 0x3C4 - Pointer to state data structure
-    u8 field_3C8;                      // 0x3C8
-    u8 stateArgsBase;                  // 0x3C9 - Base for state function args pointer (passed as &stateArgsBase)
-    u8 stateIndex;                     // 0x3CA - State function index
-    u8 filler_3CB[0xD];                // 0x3CB
+    PokeathlonStateInfo stateData;     // 0x3C4 - State information (8 bytes)
+    u8 filler_3CC[0xC];                // 0x3CC
     u32 field_3D8[4];                  // 0x3D8 - Array of 4 u32s (16 bytes)
     void *field_3E8;                   // 0x3E8
     u32 participantData1Base;          // 0x3EC - Participant data set 1 base (accessed with 0x7C stride)
@@ -106,15 +122,15 @@ BOOL PokeathlonCourse_Exit(OverlayManager *manager, int *state);
 
 BOOL PokeathlonCourse_RunStateFunc(PokeathlonCourseData *data);
 BOOL PokeathlonCourse_RunSubStateLoop(PokeathlonCourseData *data);
-void PokeathlonCourse_InitStateInfo(const void *src, void *dest);
+void PokeathlonCourse_InitStateInfo(const void *src, PokeathlonStateInfo *dest);
 void PokeathlonCourse_InitPlayerProfiles(PokeathlonCourseData *data);
 PlayerProfile *PokeathlonCourse_GetPlayerProfile(PlayerProfile *profiles, int index);
 u8 PokeathlonCourse_GetParticipantCount(PokeathlonCourseData *data);
-void *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index);
-void *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index);
+PokeathlonParticipantData *PokeathlonCourse_GetParticipantData1(PokeathlonCourseData *data, int index);
+PokeathlonParticipantData *PokeathlonCourse_GetParticipantData2(PokeathlonCourseData *data, int index);
 SaveData *PokeathlonCourse_GetSaveData(PokeathlonCourseData *data);
-void *ov96_021E5D6C(PokeathlonCourseData *data);
-void *ov96_021E5D78(PokeathlonCourseData *data, int index);
+PokeathlonFieldData *ov96_021E5D6C(PokeathlonCourseData *data);
+PokeathlonFieldData *ov96_021E5D78(PokeathlonCourseData *data, int index);
 void *ov96_021E5D88(PokeathlonCourseData *data);
 void *PokeathlonCourse_AllocFromHeap(PokeathlonCourseData *data, u32 size);
 void PokeathlonCourse_FreeHeapAlloc(PokeathlonCourseData *data);
