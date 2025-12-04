@@ -262,11 +262,11 @@ static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *inp
     VoltorbFlipInputHandler_HandleDpad(inputHandler);
     inputHandler->touchNew = TRUE;
 
-    u8 var1 = TouchscreenHitbox_FindRectAtTouchNew(sMemoTouchscreenHitboxes);
-    if (var1 < NELEMS(sMemoTouchscreenHitboxes)) { // bug: limit should be 1 fewer
-        switch (var1) {
+    u8 input = TouchscreenHitbox_FindRectAtTouchNew(sMemoTouchscreenHitboxes);
+    if (input < NELEMS(sMemoTouchscreenHitboxes)) { // bug: limit should be 1 fewer
+        switch (input) {
         case 4:
-            inputHandler->memoButtonID = var1;
+            inputHandler->memoButtonID = input;
             VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
             return 3;
         case 5:
@@ -274,7 +274,7 @@ static int VoltorbFlipInputHandler_HandleInput_Memo(VoltorbFlipInputHandler *inp
         case 6:
             return 2;
         default: // 0-3
-            inputHandler->memoButtonID = var1;
+            inputHandler->memoButtonID = input;
             VoltorbFlipInputHandler_SetMemoCursorSpritePos(inputHandler);
             return 1;
         }
@@ -385,7 +385,7 @@ static void VoltorbFlipInputHandler_HandleChangeFocus(VoltorbFlipInputHandler *i
     }
 }
 
-// UnkStruct_02019BA4_unk18_func callbacks
+// DpadGridCallbacks
 
 static void VoltorbFlipInputCB_OnButtonPress(void *data, int new, int prev) {
     VoltorbFlipInputHandler *inputHandler = data;

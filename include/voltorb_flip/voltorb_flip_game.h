@@ -106,8 +106,8 @@ typedef struct BoardConfig {
 } BoardConfig;
 
 VoltorbFlipGameState *VoltorbFlip_CreateGameState(enum HeapID);
-void VoltorbFlip_FreeGameState(VoltorbFlipGameState *);
-void VoltorbFlipGameState_NewBoard(VoltorbFlipGameState *);
+void VoltorbFlip_FreeGameState(VoltorbFlipGameState *gameState);
+void VoltorbFlipGameState_NewBoard(VoltorbFlipGameState *gameState);
 void VoltorbFlipGameState_UpdateHistoryAndReset(VoltorbFlipGameState *);
 void VoltorbFlipGameState_SetRoundOutcome(VoltorbFlipGameState *, VoltorbFlipRoundOutcome);
 void VoltorbFlipGameState_MultiplyPayoutAndUpdateCardsFlipped(VoltorbFlipGameState *, CardType);

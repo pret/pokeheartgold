@@ -29,7 +29,7 @@ typedef struct Ov122_021E7888 {
     u8 unk0;
 } Ov122_021E7888;
 
-typedef struct VoltorbFlipAppWork {
+typedef struct VoltorbFlipAppData {
     enum HeapID heapID;
     Options *options;
     u16 *coins;
@@ -45,7 +45,7 @@ typedef struct VoltorbFlipAppWork {
     String *string;
     SpriteSystem *spriteRenderer;
     SpriteManager *spriteGfxHandler;
-    ManagedSprite *sprites[0xd];
+    ManagedSprite *sprites[13];
     MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];
@@ -57,11 +57,11 @@ typedef struct VoltorbFlipAppWork {
     BOOL hasPlayedOneLeve;
     BOOL printedCanGetMoreCoinsMessage;
     BOOL memoOpen;
-    struct WorkflowEngine *workflow;
+    struct VoltorbFlipTaskEngine *workflow;
     VoltorbFlipInputHandler *inputHandler;
     VoltorbFlipGameState *game;
     VFCardFlipAnim cardFlipControl;
     u8 screenIsDimmed;
-} VoltorbFlipAppWork;
+} VoltorbFlipAppData;
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_WORK_H

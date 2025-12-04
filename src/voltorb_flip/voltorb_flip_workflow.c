@@ -6,124 +6,124 @@
 
 #include "heap.h"
 
-const VoltorbFlipWorkflows sVoltorbFlipWorkflows = {
+const VoltorbFlipTasks sVoltorbFlipWorkflows = {
     [WORKFLOW_COIN_CASE_FULL] = {
                                  .setup = NULL,
-                                 .begin = VoltorbFlipWorkflow_InitChecks_Begin,
-                                 .main = VoltorbFlipWorkflow_InitChecks_Main,
+                                 .begin = VoltorbFlipTaskEngine_InitChecks_Begin,
+                                 .main = VoltorbFlipTaskEngine_InitChecks_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_NEW_ROUND] = {
                                  .setup = NULL,
-                                 .begin = VoltorbFlipWorkflow_NewRound_Begin,
-                                 .main = VoltorbFlipWorkflow_NewRound_Main,
+                                 .begin = VoltorbFlipTaskEngine_NewRound_Begin,
+                                 .main = VoltorbFlipTaskEngine_NewRound_Main,
                                  .end = NULL,
-                                 .tidy = VoltorbFlipWorkflow_NewRound_TidyUp,
+                                 .tidy = VoltorbFlipTaskEngine_NewRound_TidyUp,
                                  },
     [WORKFLOW_SELECT_MAIN_MENU] = {
-                                 .setup = VoltorbFlipWorkflow_SelectMainMenu_SetUp,
-                                 .begin = VoltorbFlipWorkflow_SelectMainMenu_Begin,
-                                 .main = VoltorbFlipWorkflow_SelectMainMenu_Main,
+                                 .setup = VoltorbFlipTaskEngine_SelectMainMenu_SetUp,
+                                 .begin = VoltorbFlipTaskEngine_SelectMainMenu_Begin,
+                                 .main = VoltorbFlipTaskEngine_SelectMainMenu_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_SELECT_GAME_INFO] = {
-                                 .setup = VoltorbFlipWorkflow_SelectGameInfo_SetUp,
-                                 .begin = VoltorbFlipWorkflow_SelectGameInfo_Begin,
-                                 .main = VoltorbFlipWorkflow_SelectGameInfo_Main,
+                                 .setup = VoltorbFlipTaskEngine_SelectGameInfo_SetUp,
+                                 .begin = VoltorbFlipTaskEngine_SelectGameInfo_Begin,
+                                 .main = VoltorbFlipTaskEngine_SelectGameInfo_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_HOW_TO_PLAY] = {
-                                 .setup = VoltorbFlipWorkflow_HowToPlayScreen_SetUp,
+                                 .setup = VoltorbFlipTaskEngine_HowToPlayScreen_SetUp,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_HowToPlayScreen_Main,
+                                 .main = VoltorbFlipTaskEngine_HowToPlayScreen_Main,
                                  .end = NULL,
-                                 .tidy = VoltorbFlipWorkflow_TutorialScreens_TidyUp,
+                                 .tidy = VoltorbFlipTaskEngine_TutorialScreens_TidyUp,
                                  },
     [WORKFLOW_HINT] = {
-                                 .setup = VoltorbFlipWorkflow_HintScreen_SetUp,
+                                 .setup = VoltorbFlipTaskEngine_HintScreen_SetUp,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_HintScreen_Main,
+                                 .main = VoltorbFlipTaskEngine_HintScreen_Main,
                                  .end = NULL,
-                                 .tidy = VoltorbFlipWorkflow_TutorialScreens_TidyUp,
+                                 .tidy = VoltorbFlipTaskEngine_TutorialScreens_TidyUp,
                                  },
     [WORKFLOW_ABOUT_MEMO] = {
-                                 .setup = VoltorbFlipWorkflow_AboutMemoScreen_SetUp,
+                                 .setup = VoltorbFlipTaskEngine_AboutMemoScreen_SetUp,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_AboutMemoScreen_Main,
+                                 .main = VoltorbFlipTaskEngine_AboutMemoScreen_Main,
                                  .end = NULL,
-                                 .tidy = VoltorbFlipWorkflow_TutorialScreens_TidyUp,
+                                 .tidy = VoltorbFlipTaskEngine_TutorialScreens_TidyUp,
                                  },
     [WORKFLOW_RENDER_BOARD] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_RenderBoard_Main,
+                                 .main = VoltorbFlipTaskEngine_RenderBoard_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_AWAIT_BOARD_INTERACT] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_BoardInteraction_Main,
+                                 .main = VoltorbFlipTaskEngine_BoardInteraction_Main,
                                  .end = NULL,
-                                 .tidy = VoltorbFlipWorkflow_BoardInteraction_TidyUp,
+                                 .tidy = VoltorbFlipTaskEngine_BoardInteraction_TidyUp,
                                  },
     [WORKFLOW_FLIP_CARD] = {
                                  .setup = VoltrbFlipWorkflow_CardFlipEffect_SetUp,
-                                 .begin = VoltorbFlipWorkflow_CardFlipEffect_Begin,
-                                 .main = VoltorbFlipWorkflow_CardFlipEffect_Main,
-                                 .end = VoltorbFlipWorkflow_CardFlipEffect_End,
+                                 .begin = VoltorbFlipTaskEngine_CardFlipEffect_Begin,
+                                 .main = VoltorbFlipTaskEngine_CardFlipEffect_Main,
+                                 .end = VoltorbFlipTaskEngine_CardFlipEffect_End,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_WIN_ROUND] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_WinRound_Main,
+                                 .main = VoltorbFlipTaskEngine_WinRound_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_AWARD_COINS] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_AwardCoins_Main,
+                                 .main = VoltorbFlipTaskEngine_AwardCoins_Main,
                                  .end = NULL,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_REVEAL_BOARD] = {
                                  .setup = NULL,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_RevealBoard_Main,
-                                 .end = VoltorbFlipWorkflow_RevealBoard_End,
+                                 .main = VoltorbFlipTaskEngine_RevealBoard_Main,
+                                 .end = VoltorbFlipTaskEngine_RevealBoard_End,
                                  .tidy = NULL,
                                  },
     [WORKFLOW_MEMO_TOUCH] = {
-                                 .setup = VoltorbFlipWorkflow_MemoTouch_SetUp,
+                                 .setup = VoltorbFlipTaskEngine_MemoTouch_SetUp,
                                  .begin = NULL,
-                                 .main = VoltorbFlipWorkflow_MemoTouch_Run,
+                                 .main = VoltorbFlipTaskEngine_MemoTouch_Run,
                                  .end = NULL,
-                                 .tidy = VoltorbFlipWorkflow_Memo_TidyUp,
+                                 .tidy = VoltorbFlipTaskEngine_Memo_TidyUp,
                                  },
     [WORKFLOW_MEMO_BUTTONS] = {
-                                 .setup = VoltorbFlipWorkflow_MemoButtons_SetUp,
-                                 .begin = VoltorbFlipWorkflow_MemoButtons_Begin,
-                                 .main = VoltorbFlipWorkflow_MemoTouch_Main,
-                                 .end = VoltorbFlipWorkflow_MemoTouch_End,
-                                 .tidy = VoltorbFlipWorkflow_Memo_TidyUp,
+                                 .setup = VoltorbFlipTaskEngine_MemoButtons_SetUp,
+                                 .begin = VoltorbFlipTaskEngine_MemoButtons_Begin,
+                                 .main = VoltorbFlipTaskEngine_MemoTouch_Main,
+                                 .end = VoltorbFlipTaskEngine_MemoTouch_End,
+                                 .tidy = VoltorbFlipTaskEngine_Memo_TidyUp,
                                  },
     [WORKFLOW_QUIT_ROUND] = {
-                                 .setup = VoltorbFlipWorkflow_QuitRound_SetUp,
-                                 .begin = VoltorbFlipWorkflow_QuitRound_Begin,
-                                 .main = VoltorbFlipWorkflow_QuitRound_Run,
-                                 .end = VoltorbFlipWorkflow_QuitRound_End,
+                                 .setup = VoltorbFlipTaskEngine_QuitRound_SetUp,
+                                 .begin = VoltorbFlipTaskEngine_QuitRound_Begin,
+                                 .main = VoltorbFlipTaskEngine_QuitRound_Run,
+                                 .end = VoltorbFlipTaskEngine_QuitRound_End,
                                  .tidy = NULL,
                                  },
 };
 
-WorkflowEngine *VoltorbFlipWorkflow_Create(enum HeapID heapId, VoltorbFlipWorkflows *workflows, int numWorkFlows, struct VoltorbFlipAppWork *work) {
-    WorkflowEngine *ptr = Heap_Alloc(heapId, sizeof(WorkflowEngine));
-    MI_CpuFill8(ptr, 0, sizeof(WorkflowEngine));
+VoltorbFlipTaskEngine *VoltorbFlipTaskEngine_Create(enum HeapID heapId, VoltorbFlipTasks *workflows, int numWorkFlows, struct VoltorbFlipAppData *work) {
+    VoltorbFlipTaskEngine *ptr = Heap_Alloc(heapId, sizeof(VoltorbFlipTaskEngine));
+    MI_CpuFill8(ptr, 0, sizeof(VoltorbFlipTaskEngine));
     ptr->workflows = workflows;
     ptr->size = numWorkFlows;
     ptr->work = work;
@@ -131,15 +131,15 @@ WorkflowEngine *VoltorbFlipWorkflow_Create(enum HeapID heapId, VoltorbFlipWorkfl
     return ptr;
 }
 
-void VoltorbFlipWorkflow_Free(WorkflowEngine *workflow) {
+void VoltorbFlipTaskEngine_Free(VoltorbFlipTaskEngine *workflow) {
     Heap_Free(workflow);
 }
 
 // Returns TRUE when the Workflow is terminated.
-BOOL VoltorbFlipWorkflow_Run(WorkflowEngine *workflow) {
-    VoltorbFlipWorkflows *vfWorkflows = workflow->workflows;
-    VoltorbFlipWorkflow *vfWorkflow = &(*vfWorkflows)[workflow->curWorkflow];
-    VoltorbFlipTask task;
+BOOL VoltorbFlipTaskEngine_Run(VoltorbFlipTaskEngine *workflow) {
+    VoltorbFlipTasks *vfWorkflows = workflow->workflows;
+    VoltorbFlipTask *vfWorkflow = &(*vfWorkflows)[workflow->curWorkflow];
+    VoltorbFlipTaskFunc task;
 
     switch (workflow->workflowState) {
     case 0:
@@ -200,22 +200,22 @@ BOOL VoltorbFlipWorkflow_Run(WorkflowEngine *workflow) {
     return FALSE;
 }
 
-void VoltorbFlipWorkflow_Enqueue(WorkflowEngine *workflow, Workflow next) {
+void VoltorbFlipTaskEngine_Enqueue(VoltorbFlipTaskEngine *workflow, VoltorbFlipTaskId next) {
     GF_ASSERT(workflow != 0);
     GF_ASSERT(next == WORKFLOW_TERMINATE || next < workflow->size);
     workflow->nextWorkflow = next;
 }
 
-int VoltorbFlipWorkflow_CurrentWorkflow(WorkflowEngine *workflow) {
+int VoltorbFlipTaskEngine_CurrentWorkflow(VoltorbFlipTaskEngine *workflow) {
     return workflow->curWorkflow;
 }
 
-int VoltorbFlipWorkflow_CurrentTaskState(WorkflowEngine *workflow) {
+int VoltorbFlipTaskEngine_CurrentTaskState(VoltorbFlipTaskEngine *workflow) {
     GF_ASSERT(workflow->workflowState != 1);
     return workflow->taskState;
 }
 
-int VoltorbFlipWorkflow_IncrementTaskState(WorkflowEngine *workflow) {
+int VoltorbFlipTaskEngine_IncrementTaskState(VoltorbFlipTaskEngine *workflow) {
     GF_ASSERT(workflow->workflowState != 1);
 
     int newState = workflow->taskState + 1;
