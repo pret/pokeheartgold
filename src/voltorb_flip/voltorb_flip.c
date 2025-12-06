@@ -8,11 +8,11 @@
 #include "application/voltorb_flip.naix"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0039.h"
+#include "voltorb_flip/voltorb_flip_app_data.h"
 #include "voltorb_flip/voltorb_flip_game.h"
 #include "voltorb_flip/voltorb_flip_input.h"
 #include "voltorb_flip/voltorb_flip_internal.h"
-#include "voltorb_flip/voltorb_flip_work.h"
-#include "voltorb_flip/voltorb_flip_workflow.h"
+#include "voltorb_flip/voltorb_flip_tasks.h"
 
 #include "bg_window.h"
 #include "brightness.h"
@@ -154,8 +154,24 @@ static void VF_RenderingOff(void);
 static void ov122_021E8094(OverlayManager *man);
 static void FreeOverlayData(OverlayManager *man);
 
-const u8 sMainMenuMsgNos[] = { msg_0039_00017, msg_0039_00018, msg_0039_00019 };
-const u8 sGameInfoMsgNos[] = { msg_0039_00021, msg_0039_00022, msg_0039_00023, msg_0039_00024 };
+const u8 sMainMenuMsgNos[] = {
+    // Play
+    msg_0039_00017,
+    // Game Info
+    msg_0039_00018,
+    // Quit
+    msg_0039_00019
+};
+const u8 sGameInfoMsgNos[] = {
+    // How to Play
+    msg_0039_00021,
+    // Hint!
+    msg_0039_00022,
+    // About Memos
+    msg_0039_00023,
+    // Return
+    msg_0039_00024
+};
 
 const u8 ov122_021E9270[] = {
     GF_BG_LYR_MAIN_0,
@@ -496,7 +512,7 @@ static void VoltorbFlip_RenderHintScreen(VoltorbFlipAppData *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000007_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
-    // "By looking at the numbers on the sides of..."
+    // {ALN_CENTER}By looking at the numbers on the sides of\n{ALN_CENTER}the cards, you can see the hidden number\n{ALN_CENTER}and VOLTORB totals.
     VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00009, &work->wHint, 0, 0);
 }
 
@@ -504,9 +520,9 @@ static void VoltorbFlip_RenderAboutMemoScreen(VoltorbFlipAppData *work) {
     BgClearTilemapBufferAndCommit(work->bgConfig, 5);
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000009_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
-    // "Open Memo" (text in button)
+    // {ALN_CENTER}Open\n{ALN_CENTER}Memo
     VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wAboutMemoOpen, 0, 0);
-    // "Touch 'Open Memo' to open the Memo Window..."
+    // {ALN_CENTER}Touch "Open Memo" to open the Memo Window.\n{ALN_CENTER}Touch the cards to add and remove marks.
     VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00010, &work->wAboutMemoTouchOpen, 0, 0);
 
     ManagedSprite_SetDrawFlag(work->sprites[VF_SPRITE_11], 1);
@@ -580,7 +596,7 @@ static BOOL VoltorbFlipTaskEngine_Memo_SetUp(VoltorbFlipTaskEngine *workflow, Vo
 BOOL VoltorbFlipTaskEngine_InitChecks_Begin(VoltorbFlipTaskEngine *workflow, VoltorbFlipAppData *work) {
     u32 coins = Coins_GetValue(work->coins);
     if (coins >= 50000) {
-        // "You’ve gathered 50,000 Coins. You cannot gather..."
+        // You've gathered 50,000 Coins.\nYou cannot gather any more.\r
         VoltorbFlip_PrintTextWindow(work, msg_0039_00014, TRUE);
         VoltorbFlipTaskEngine_Enqueue(workflow, WORKFLOW_TERMINATE);
     } else {
@@ -606,20 +622,20 @@ BOOL VoltorbFlipTaskEngine_NewRound_Begin(VoltorbFlipTaskEngine *workflow, Volto
 
     int levelDiff = VoltorbFlipGameState_CalculateLevelsGained(work->game);
     VoltorbFlip_FormatGameLevel(work, 0);
-    // "VOLTORB Flip Lv. {}"
-    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, 0x000f0100);
+    // {ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}
+    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
     BgCommitTilemapBufferToVram(work->bgConfig, 5);
     Sound_SetSceneAndPlayBGM(64, 0, 0);
 
     if (levelDiff != 0) {
         if (levelDiff > 0) {
             VoltorbFlip_DimLayersExceptBG3(&work->screenIsDimmed);
-            // "Advanced to Game Lv..."
+            // Advanced to Game Lv. {STRVAR_1 50, 0, 0}!\r
             VoltorbFlip_PrintTextWindow(work, msg_0039_00041, TRUE);
             PlaySE(SEQ_SE_GS_SLOT01);
         } else {
             VoltorbFlip_DimLayersExceptBG3(&work->screenIsDimmed);
-            // "Dropped to Game Lv..."
+            // Dropped to Game Lv. {STRVAR_1 50, 0, 0}.\r
             VoltorbFlip_PrintTextWindow(work, msg_0039_00043, TRUE);
             PlaySE(SEQ_SE_GS_SLOT03);
         }
@@ -642,7 +658,7 @@ BOOL VoltorbFlipTaskEngine_NewRound_Main(VoltorbFlipTaskEngine *workflow, Voltor
                     return TRUE;
                 }
                 work->printedCanGetMoreCoinsMessage = TRUE;
-                // "Congratulations! You can receive even more Coins in the next..."
+                // Congratulations!\rYou can receive even more Coins\nin the next game!\r
                 VoltorbFlip_PrintTextWindow(work, msg_0039_00042, TRUE);
                 VoltorbFlipTaskEngine_IncrementTaskState(workflow);
             } else {
@@ -691,8 +707,10 @@ BOOL VoltorbFlipTaskEngine_SelectMainMenu_SetUp(VoltorbFlipTaskEngine *workflow,
 
     VoltorbFlip_FormatGameLevel(work, 0);
     if (work->hasPlayedOneLeve) {
+        // Play VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}?
         msgNo = msg_0039_00016;
     } else {
+        // Play VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}?
         msgNo = msg_0039_00015;
     }
 
@@ -727,7 +745,7 @@ BOOL VoltorbFlipTaskEngine_SelectMainMenu_Main(VoltorbFlipTaskEngine *workflow, 
 }
 
 BOOL VoltorbFlipTaskEngine_SelectGameInfo_SetUp(VoltorbFlipTaskEngine *workflow, VoltorbFlipAppData *work) {
-    // "Which set of info?"
+    // Which set of info?
     return VoltorbFlip_PrintAndAwaitMessage(workflow, work, msg_0039_00020);
 }
 
@@ -765,7 +783,7 @@ BOOL VoltorbFlipTaskEngine_HowToPlayScreen_SetUp(VoltorbFlipTaskEngine *workflow
 }
 
 BOOL VoltorbFlipTaskEngine_HowToPlayScreen_Main(VoltorbFlipTaskEngine *workflow, VoltorbFlipAppData *work) {
-    // "VOLTORB Flip is a game in which you flip over..."
+    // VOLTORB Flip is a game in which you flip\nover cards to find numbers hidden\fbeneath them.\rThe cards are hiding the numbers\n1 through 3...and VOLTORB as well.\rThe first number you flip over will give\nyou that many Coins.\rFrom then on, the next number you\nfind will multiply the total amount of\fCoins you've collected by that number.\rIf it's a 2, your total will be multiplied\nby "x2."\rIf it's a 3, your total will be multiplied\nby "x3."\rBut if you flip over a VOLTORB, it's\ngame over.\rWhen that happens, you'll lose all the\nCoins you've collected in the\fcurrent game.\rIf you select "Quit," you'll withdraw\nfrom the game.\rIf you get to a difficult spot, you might\nwant to end the game early.\rOnce you've found all the hidden\n2 and 3 cards, you've cleared\fthe game.\rOnce you've flipped over all these\ncards, then you'll advance to the\fnext level.\rAs you move up in levels, you will be\nable to receive more Coins.\fDo your best!\r
     return VoltorbFlip_PrintAndAwaitMessage(workflow, work, msg_0039_00025);
 }
 
@@ -774,7 +792,7 @@ BOOL VoltorbFlipTaskEngine_HintScreen_SetUp(VoltorbFlipTaskEngine *workflow, Vol
 }
 
 BOOL VoltorbFlipTaskEngine_HintScreen_Main(VoltorbFlipTaskEngine *workflow, VoltorbFlipAppData *work) {
-    // "The numbers at the side of the board give..."
+    // The numbers at the side of the board\ngive you a clue about the numbers\fhidden on the backs of the panels.\rThe larger the number, the more likely\nit is that there are many large numbers\fhidden in that row or column.\rIn the same way, you can tell how many\nVOLTORB are hidden in the row\for column.\rConsider the hidden number totals and\nthe VOLTORB totals carefully as you flip\fover panels.\r
     return VoltorbFlip_PrintAndAwaitMessage(workflow, work, msg_0039_00026);
 }
 
@@ -783,7 +801,7 @@ BOOL VoltorbFlipTaskEngine_AboutMemoScreen_SetUp(VoltorbFlipTaskEngine *workflow
 }
 
 BOOL VoltorbFlipTaskEngine_AboutMemoScreen_Main(VoltorbFlipTaskEngine *workflow, VoltorbFlipAppData *work) {
-    // "Select 'Open Memo' to mark the cards. You..."
+    // Select "Open Memo" to mark\nthe cards.\rYou can mark the cards with the\nnumbers 1 through 3, but also with a\fVOLTORB mark.\rWhen you have an idea of the numbers\nhidden on the back of the cards, touch\r"Open Memo" and select the cards\nto mark.\rIf you want to remove a mark, touch the\nmark again, and it will disappear.\r
     return VoltorbFlip_PrintAndAwaitMessage(workflow, work, msg_0039_00027);
 }
 
@@ -875,7 +893,7 @@ BOOL VoltrbFlipWorkflow_CardFlipEffect_SetUp(VoltorbFlipTaskEngine *workflow, Vo
             int flippedInRow = VoltorbFlipGameState_CountFlippedCardsAlongAxis(work->game, AXIS_ROW, row);
 
             if ((100 * voltorbsInCol / (5 - flippedInCol)) >= 75 || (voltorbsInRow * 100) / (5 - flippedInRow) >= 75) {
-                // "Is this what you were expecting?!"
+                // Is this what you're expecting?!
                 VoltorbFlip_PrintMessageToSmallWindow(work, msg_0039_00029);
                 PlayFanfare(SEQ_ME_CARDGAME1);
             }
@@ -937,8 +955,10 @@ BOOL VoltorbFlipTaskEngine_CardFlipEffect_Main(VoltorbFlipTaskEngine *workflow, 
             ManagedSprite_SetAnim(work->sprites[VF_SPRITE_FLIPPING_CARD], 0);
 
             if (payoutBefore == 0) {
+                // {STRVAR_1 50, 0, 0}! Received {STRVAR_1 50, 0, 0} Coin(s)!
                 VoltorbFlip_PrintMessageToSmallWindow(work, msg_0039_00030);
             } else if (IS_NOT_ONE_CARD(VoltorbFlip_GetSelectedCardType(work))) {
+                // x{STRVAR_1 50, 0, 0}! Received {STRVAR_1 53, 1, 0} Coins!
                 VoltorbFlip_PrintMessageToSmallWindow(work, msg_0039_00031);
             } else {
                 return TRUE;
@@ -955,6 +975,7 @@ BOOL VoltorbFlipTaskEngine_CardFlipEffect_Main(VoltorbFlipTaskEngine *workflow, 
     case 3:
         if (VoltorbFlip_GetSelectedCardType(work) == CARD_TYPE_VOLTORB) {
             PlayFanfare(SEQ_ME_CARDGAME2);
+            // Oh no! You get 0 Coins!
             VoltorbFlip_PrintMessageToSmallWindow(work, msg_0039_00032);
             VoltorbFlip_PrintCoins(work, COIN_DISPLAY_PAYOUT, 0);
             VoltorbFlipTaskEngine_IncrementTaskState(workflow);
@@ -994,7 +1015,7 @@ BOOL VoltorbFlipTaskEngine_WinRound_Main(VoltorbFlipTaskEngine *workflow, Voltor
     int state = VoltorbFlipTaskEngine_CurrentTaskState(workflow);
     switch (state) {
     case 0:
-        // "Game clear! You’ve found all of the hidden x2 and x3 cards..."
+        // Game clear!\rYou've found all of the hidden x2 and\nx3 cards.\rThis means you've found all the Coins\nin this game, so the game is now over.\r
         VoltorbFlip_PrintTextWindow(work, msg_0039_00033, TRUE);
         VoltorbFlip_DimLayersExceptBG3(&work->screenIsDimmed);
         PlayFanfare(SEQ_ME_MUSHITORI3);
@@ -1020,7 +1041,7 @@ BOOL VoltorbFlipTaskEngine_AwardCoins_Main(VoltorbFlipTaskEngine *workflow, Volt
         int var2 = VoltorbFlipGameState_GetGamePayout(work->game);
         BufferIntegerAsString(work->msgFmt, 0, var2, 5, PRINTING_MODE_LEFT_ALIGN, 1);
         BufferPlayersName(work->msgFmt, 1, work->profile);
-        // "{} received {} Coin(s)!"
+        // {STRVAR_1 3, 1, 0}\nreceived {STRVAR_1 53, 0, 0} Coin(s)!\r
         VoltorbFlip_PrintTextWindow(work, msg_0039_00040, TRUE);
         VoltorbFlip_DimLayersExceptBG3(&work->screenIsDimmed);
         Sound_SetSceneAndPlayBGM(64, 0, 0);
@@ -1241,10 +1262,10 @@ BOOL VoltorbFlipTaskEngine_QuitRound_SetUp(VoltorbFlipTaskEngine *workflow, Volt
     case 0: {
         int payout = VoltorbFlipGameState_GetGamePayout(work->game);
         if (payout == 0) {
-            // "You haven’t found any Coins! Are you sure you..."
+            // You haven't found any Coins!\nAre you sure you want to quit?
             msgNo = msg_0039_00037;
         } else {
-            // "If you quit now, you will receive {} Coin(s)..."
+            // If you quit now, you will\nreceive {STRVAR_1 53, 0, 0} Coin(s).\fWill you quit?
             msgNo = msg_0039_00034;
             BufferIntegerAsString(work->msgFmt, 0, payout, 5, PRINTING_MODE_LEFT_ALIGN, 1);
         }
@@ -1674,7 +1695,7 @@ static void VoltorbFlip_AnimateOpenMenu(VoltorbFlipAppData *work) {
     VoltorbFlipInputHandler_SetMemoOpen(work->inputHandler, TRUE);
     ManagedSprite_SetDrawFlag(work->sprites[VF_SPRITE_MEMO], TRUE);
     ManagedSprite_SetAnim(work->sprites[VF_SPRITE_MEMO], 20);
-    // "Close Memo" (text in button)
+    // {ALN_CENTER}Close\n{ALN_CENTER}Memo
     VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00007, &work->wMemo, 0, 0);
     work->memoOpen = TRUE;
     PlaySE(SEQ_SE_DP_CARD2);
@@ -1687,7 +1708,7 @@ static void VoltorbFlip_AnimateCloseMenu(VoltorbFlipAppData *work) {
     VoltorbFlipInputHandler_SetMemoCursor0(work->inputHandler);
     VoltorbFlip_SetMemoSpritesDrawFlag(work, FALSE);
     ManagedSprite_SetAnim(work->sprites[VF_SPRITE_MEMO], 21);
-    // "Open Memo" (text in button)
+    // {ALN_CENTER}Open\n{ALN_CENTER}Memo
     VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
     PlaySE(SEQ_SE_DP_CARD2);
 }
@@ -1807,19 +1828,27 @@ static int VoltorbFlip_HandleListMenuInput(VoltorbFlipAppData *work) {
 }
 
 static void VoltorbFlip_RenderTopScreen(VoltorbFlipAppData *work) {
+    // {ALN_CENTER}Open\n{ALN_CENTER}Memo
     VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
+    // {ALN_CENTER}Quit
     VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wQuit, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, GF_BG_LYR_MAIN_1);
 
     BufferIntegerAsString(work->msgFmt, 0, 1, 1, PRINTING_MODE_LEFT_ALIGN, 1);
 
+    // {ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}
     VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
+    // {ALN_CENTER}Flip the Cards and Collect Coins!
     VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00001, &work->wFlipCardsAndCollectCoins, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
     BufferPlayersName(work->msgFmt, 0, work->profile);
 
+    // ...x1! ...x2! ...x3!
     VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00002, &work->wx1x2x3, 0, 4, MAKE_TEXT_COLOR(15, 1, 0));
+    // Game Over! 0!
     VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00003, &work->wGameOver, 0, 4, MAKE_TEXT_COLOR(15, 1, 0));
+    // {ALN_CENTER}{STRVAR_1 3, 0, 0}'\n{ALN_CENTER}Collected Coins
     VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00004, &work->wCollectedCoins, 0, 0);
+    // {ALN_CENTER}Coins Collected in\n{ALN_CENTER}Current Game
     VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00005, &work->wPayout, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, GF_BG_LYR_SUB_1);
 }
@@ -1841,7 +1870,7 @@ static void VoltorbFlip_RemoveWindows(VoltorbFlipAppData *work) {
 
 // Like PrintMessageOnWindow but it gets printed all at once.
 static void VoltorbFlip_PaintMessageOnWindow(VoltorbFlipAppData *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y) {
-    VoltorbFlip_PrintMessageOnWindow(work, fontId, msgNo, window, x, y, 0x00010200);
+    VoltorbFlip_PrintMessageOnWindow(work, fontId, msgNo, window, x, y, MAKE_TEXT_COLOR(1, 2, 0));
 }
 
 static void VoltorbFlip_PrintMessageOnWindow(VoltorbFlipAppData *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textColor) {

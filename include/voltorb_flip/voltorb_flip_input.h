@@ -31,7 +31,7 @@ typedef struct VoltorbFlipInputHandler {
     u8 touchNew : 1;                         // 0xF:2
 } VoltorbFlipInputHandler;
 
-VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapId, struct ManagedSprite *a1, struct ManagedSprite *a2);
+VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapID, struct ManagedSprite *boardCursorSprite, struct ManagedSprite *memoCursorSprite);
 void VoltorbFlipInputHandler_Free(VoltorbFlipInputHandler *inputHandler);
 int VoltorbFlipInputHandler_HandleInput(VoltorbFlipInputHandler *inputHandler);
 void VoltorbFlipInputHandler_SetBoardFocused(VoltorbFlipInputHandler *inputHandler, BOOL draw);

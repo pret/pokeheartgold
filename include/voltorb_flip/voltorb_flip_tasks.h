@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
 #define POKEHEARTGOLD_VOLTORB_FLIP_WORKFLOW_H
 
-#include "voltorb_flip/voltorb_flip_work.h"
+#include "voltorb_flip/voltorb_flip_app_data.h"
 
 typedef enum VoltorbFlipTaskId {
     WORKFLOW_COIN_CASE_FULL,
@@ -56,7 +56,7 @@ typedef VoltorbFlipTask VoltorbFlipTasks[16];
 // At a given time, only one Workflow and one Task within that Workflow will
 // be active. An enqueued Workflow starts once the current Workflow finishes.
 typedef struct VoltorbFlipTaskEngine {
-    VoltorbFlipTasks *workflows;
+    VoltorbFlipTasks *tasks;
     struct VoltorbFlipAppData *work;
     u16 curWorkflow;
     u16 nextWorkflow;

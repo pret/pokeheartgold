@@ -1,4 +1,4 @@
-#include "voltorb_flip/voltorb_flip_workflow.h"
+#include "voltorb_flip/voltorb_flip_tasks.h"
 
 #include "global.h"
 
@@ -124,7 +124,7 @@ const VoltorbFlipTasks sVoltorbFlipWorkflows = {
 VoltorbFlipTaskEngine *VoltorbFlipTaskEngine_Create(enum HeapID heapId, VoltorbFlipTasks *workflows, int numWorkFlows, struct VoltorbFlipAppData *work) {
     VoltorbFlipTaskEngine *ptr = Heap_Alloc(heapId, sizeof(VoltorbFlipTaskEngine));
     MI_CpuFill8(ptr, 0, sizeof(VoltorbFlipTaskEngine));
-    ptr->workflows = workflows;
+    ptr->tasks = workflows;
     ptr->size = numWorkFlows;
     ptr->work = work;
     ptr->nextWorkflow = WORKFLOW_NONE;
@@ -137,7 +137,7 @@ void VoltorbFlipTaskEngine_Free(VoltorbFlipTaskEngine *workflow) {
 
 // Returns TRUE when the Workflow is terminated.
 BOOL VoltorbFlipTaskEngine_Run(VoltorbFlipTaskEngine *workflow) {
-    VoltorbFlipTasks *vfWorkflows = workflow->workflows;
+    VoltorbFlipTasks *vfWorkflows = workflow->tasks;
     VoltorbFlipTask *vfWorkflow = &(*vfWorkflows)[workflow->curWorkflow];
     VoltorbFlipTaskFunc task;
 

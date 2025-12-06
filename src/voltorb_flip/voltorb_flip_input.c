@@ -113,14 +113,14 @@ u8 sMemoCursorPos[5][2] = {
 };
 // clang-format on
 
-VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapID, struct ManagedSprite *a1, struct ManagedSprite *a2) {
-    GF_ASSERT(a1 != NULL);
+VoltorbFlipInputHandler *VoltorbFlipInputHandler_Create(enum HeapID heapID, struct ManagedSprite *boardCursorSprite, struct ManagedSprite *memoCursorSprite) {
+    GF_ASSERT(boardCursorSprite != NULL);
 
     VoltorbFlipInputHandler *ptr = Heap_Alloc(heapID, sizeof(VoltorbFlipInputHandler));
     MI_CpuFill8(ptr, 0, sizeof(VoltorbFlipInputHandler));
 
-    ptr->boardCursorSprite = a1;
-    ptr->memoCursorSprite = a2;
+    ptr->boardCursorSprite = boardCursorSprite;
+    ptr->memoCursorSprite = memoCursorSprite;
     ptr->gridInputHandler = GridInputHandler_Create(sTouchscreenHitboxes, sDpadButtonSpecs, &sInputCallbacks, ptr, 1, ptr->focus, heapID);
 
     VoltorbFlipInputHandler_SetFocus(ptr, 0);

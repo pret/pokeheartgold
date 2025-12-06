@@ -1298,7 +1298,7 @@ Overlay voltorb_flip
 {
     After main
     Object src/voltorb_flip/voltorb_flip.o
-    Object src/voltorb_flip/voltorb_flip_workflow.o
+    Object src/voltorb_flip/voltorb_flip_tasks.o
     Object src/voltorb_flip/voltorb_flip_game.o
     Object src/voltorb_flip/voltorb_flip_input.o
 }
