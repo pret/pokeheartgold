@@ -13,7 +13,7 @@
 #include "pokemon_types_def.h"
 #include "task.h"
 #include "unk_02014DA0.h"
-#include "unk_02020654.h"
+#include "unk_02020A0C.h"
 #include "unk_0202E41C.h"
 #include "yes_no_prompt.h"
 
@@ -393,7 +393,7 @@ struct PartyMenu {
     LISTMENUITEM *listMenuItems;                                    // 0x820
     PartyMenuContextMenuCursor *contextMenuCursor;
     PartyMenuMonsDrawState monsDrawState[PARTY_SIZE]; // 0x828
-    const UnkStruct_02020654 *unk_948;
+    const DpadMenuBox *dpadMenuBox;
     PartyMenuSwapMonsData swapMonsData;
     int (*itemUseCallback)(PartyMenu *);
     int (*yesCallback)(PartyMenu *); // 0xc58

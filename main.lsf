@@ -62,6 +62,8 @@ Static main
     Object src/touchscreen_list_menu.o
     Object src/camera_translation.o
     Object asm/unk_020192D0.o
+    Object asm/unk_0201956C.o
+    Object src/unk_02019BA4.o
     Object src/system.o
     Object src/heap.o
     Object src/bg_window.o
@@ -72,7 +74,8 @@ Static main
     Object src/math_util.o
     Object src/text.o
     Object src/vram_transfer_manager.o
-    Object asm/unk_02020654.o
+    Object asm/unk_0202068C.o
+    Object src/unk_02020A0C.o
     Object src/ascii_util.o
     Object asm/unk_02020B8C.o
     Object asm/unk_020210A0.o
@@ -1295,14 +1298,9 @@ Overlay voltorb_flip
 {
     After main
     Object src/voltorb_flip/voltorb_flip.o
-    Object src/voltorb_flip/voltorb_flip_workflow.o
+    Object src/voltorb_flip/voltorb_flip_tasks.o
     Object src/voltorb_flip/voltorb_flip_game.o
     Object src/voltorb_flip/voltorb_flip_input.o
-    Object src/voltorb_flip/voltorb_flip_data1.o
-    Object src/voltorb_flip/voltorb_flip_data2.o
-    Object src/voltorb_flip/voltorb_flip_data3.o
-    Object src/voltorb_flip/voltorb_flip_data4.o
-    Object src/voltorb_flip/voltorb_flip_data5.o
 }
 Overlay OVY_123
 {

@@ -1004,7 +1004,7 @@ ov32_0225DD24: ; 0x0225DD24
 	add r5, r0, #0
 	ldr r0, [r5, #0x18]
 	add r4, r1, #0
-	bl sub_0201A018
+	bl GridInputHandler_GetDpadBox
 	ldrb r1, [r0]
 	lsl r1, r1, #0xc
 	str r1, [sp]
@@ -1053,7 +1053,7 @@ ov32_0225DD74: ; 0x0225DD74
 	ldr r1, _0225DDA4 ; =ov32_0225E204
 	ldr r2, _0225DDA8 ; =ov32_0225E168
 	add r3, r4, #0
-	bl sub_02019BA4
+	bl GridInputHandler_Create
 	str r0, [r4, #0x18]
 	add r0, r4, #0
 	mov r1, #0
@@ -1068,11 +1068,11 @@ _0225DDA8: .word ov32_0225E168
 
 	thumb_func_start ov32_0225DDAC
 ov32_0225DDAC: ; 0x0225DDAC
-	ldr r3, _0225DDB4 ; =sub_02019BDC
+	ldr r3, _0225DDB4 ; =GridInputHandler_Free
 	ldr r0, [r0, #0x18]
 	bx r3
 	nop
-_0225DDB4: .word sub_02019BDC
+_0225DDB4: .word GridInputHandler_Free
 	thumb_func_end ov32_0225DDAC
 
 	thumb_func_start ov32_0225DDB8
@@ -1177,7 +1177,7 @@ _0225DE56:
 	pop {r3, r4, r5, pc}
 _0225DE6C:
 	ldr r0, [r5, #0x18]
-	bl sub_02019D18
+	bl GridInputHandler_HandleInput_AllowHold
 	mov r1, #2
 	add r4, r0, #0
 	mvn r1, r1
@@ -1258,7 +1258,7 @@ _0225DEEA:
 	pop {r3, r4, r5, pc}
 _0225DF0A:
 	ldr r0, [r5, #0x18]
-	bl sub_02019F74
+	bl GridInputHandler_GetNextInput
 	ldr r1, _0225DF78 ; =gSystem
 	ldr r2, [r1, #0x4c]
 	mov r1, #0x10
