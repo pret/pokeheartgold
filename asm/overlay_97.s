@@ -2759,7 +2759,7 @@ ov97_0221FBDC: ; 0x0221FBDC
 	ldrh r1, [r1, #6]
 	ldr r2, [r4]
 	ldr r3, [r4, r3]
-	bl sub_02014540
+	bl DrawPokemonSprite
 	add r1, sp, #0x10
 	ldrh r0, [r1, #4]
 	ldrh r1, [r1, #8]

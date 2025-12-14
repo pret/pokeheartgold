@@ -63,7 +63,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014450
-.public sub_02014540
+.public DrawPokemonSprite
 .public GF_RTC_GetTimeOfDay
 .public GF_RTC_GetTimeOfDayWildParam
 .public WallpaperPasswordBank_Create

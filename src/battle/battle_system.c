@@ -992,9 +992,9 @@ u8 *BattleSystem_GetUnk0(UnkBattleSystemSub1D0 *ptr, int index) {
     return ptr[index].unk0;
 }
 
-void BattleSystem_SetUnk4(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnk4(UnkBattleSystemSub1D0 *ptr, int index, int narcId) {
     GF_ASSERT(index < 4);
-    ptr[index].unk4 = a2;
+    ptr[index].unk4 = narcId;
 }
 
 void BattleSystem_SetUnk8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {

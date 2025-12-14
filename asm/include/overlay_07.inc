@@ -92,7 +92,7 @@
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
 .public sub_02014400
-.public sub_02014540
+.public DrawPokemonSprite
 .public sub_02014A08
 .public sub_02014A38
 .public sub_02014A4C

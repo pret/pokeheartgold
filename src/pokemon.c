@@ -4191,15 +4191,15 @@ void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species
     MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
-void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6) {
+void sub_0207294C(NARC *narc, void *a1, Pokepic *pokepic, u16 species, int a4, int a5, int battlerId) {
     struct UnkStruct_02072914 spA;
     struct UnkStruct_0207294C sp4;
     int r4 = (a4 == 2 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a3 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &spA);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &spA);
     sp4.unk_0 = spA.unk0[r4].unk_1;
     sp4.unk_2 = spA.unk0[r4].unk_2;
     sp4.unk_4 = a5;
-    sub_02016F40(a1, a2, &sp4, a6);
+    sub_02016F40(a1, pokepic, &sp4, battlerId);
 }
 
 void sub_020729A4(NARC *narc, u8 *ret, u16 species, u16 isFrontpic) {

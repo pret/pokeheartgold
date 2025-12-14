@@ -17,7 +17,6 @@
 .public Pokepic_StartAnim
 .public Pokepic_IsAnimFinished
 .public PokepicManager_CreatePokepic
-.public PokepicManager_CreatePokepicAt
 .public Pokepic_Delete
 .public Pokepic_SetAttr
 .public Pokepic_GetAttr
@@ -54,7 +53,7 @@
 .public SysTask_Destroy
 .public WaitingIcon_New
 .public sub_0200F450
-.public sub_02014540
+.public DrawPokemonSprite
 .public sub_0201649C
 .public sub_02017068
 .public Heap_Alloc
@@ -299,3 +298,5 @@
 .public ov12_0226AFA4
 .public ov12_0226AFC8
 .public ov12_02261F38
+.public BattleSystem_GetBattleContextUnk21A4
+.public BattleSystem_CreatePokemonSprite

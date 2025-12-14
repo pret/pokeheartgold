@@ -195,7 +195,7 @@ BOOL Pokemon_CheckFrontierIneligibility(Pokemon *mon);
 BOOL BoxPokemon_BelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID);
 int TrainerClassToBackpicID(int trainerClass, BOOL a1);
 void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3);
-void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6);
+void sub_0207294C(NARC *narc, void *a1, Pokepic *pokepic, u16 species, int a4, int a5, int battlerId);
 void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3);
 void sub_020729D8(NARC *narc, s8 *ret, u16 a2, u16 a3);
 void sub_020729FC(NARC *narc, s8 *ret, u16 a2, u16 a3);

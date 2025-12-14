@@ -16,6 +16,7 @@ static void *sub_02014178(NarcId narcId, s32 fileId, enum HeapID heapID, int x, 
 static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest);
 static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest);
 static void sub_02014374(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, int width, int height, void *dest);
+void DrawPokemonSprite(NarcId narcId, s32 fileId, enum HeapID heapID, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species);
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize) {
     for (int i = 0; i < 8; ++i) {
@@ -220,14 +221,14 @@ void sub_02014510(NarcId narcId, s32 fileId, enum HeapID heapID, UnkStruct_02014
     sub_02014494(narcId, fileId, heapID, a3->x, a3->y, a3->w, a3->h, dest, personality, isAnimated, whichFacing, species);
 }
 
-void sub_02014540(NarcId narcId, s32 fileId, enum HeapID heapID, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+void DrawPokemonSprite(NarcId narcId, s32 fileId, enum HeapID heapID, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
     UnkStruct_02014E30 sp14 = { 0, 0, 10, 10 };
     sub_02014510(narcId, fileId, heapID, &sp14, dest, personality, isAnimated, whichFacing, species);
 }
 
 void *sub_0201457C(NarcId narcId, s32 fileId, enum HeapID heapID, u32 personality, BOOL isAnimated, int whichFacing, int species) {
     void *ret = Heap_Alloc(heapID, 3200);
-    sub_02014540(narcId, fileId, heapID, ret, personality, isAnimated, whichFacing, species);
+    DrawPokemonSprite(narcId, fileId, heapID, ret, personality, isAnimated, whichFacing, species);
     return ret;
 }
 

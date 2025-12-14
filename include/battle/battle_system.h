@@ -97,7 +97,7 @@ void *BattleSystem_GetUnk1BC(BattleSystem *bsys);
 void BattleSystem_SetUnk1BC(BattleSystem *bsys, void *a1);
 UnkBattleSystemSub1D0 *BattleSystem_GetUnk1D0Index(BattleSystem *bsys, int index);
 u8 *BattleSystem_GetUnk0(UnkBattleSystemSub1D0 *ptr, int index);
-void BattleSystem_SetUnk4(UnkBattleSystemSub1D0 *ptr, int index, int a2);
+void BattleSystem_SetUnk4(UnkBattleSystemSub1D0 *ptr, int index, int narcId);
 void BattleSystem_SetUnk8(UnkBattleSystemSub1D0 *ptr, int index, int a2);
 void BattleSystem_SetUnkC(UnkBattleSystemSub1D0 *ptr, int index, int a2);
 void BattleSystem_SetUnk23FD(BattleSystem *bsys, u8 a1);

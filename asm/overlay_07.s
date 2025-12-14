@@ -50943,7 +50943,7 @@ _022347D4:
 	ldr r3, [r3, #8]
 	ldrh r1, [r7, #2]
 	ldr r3, [r3]
-	bl sub_02014540
+	bl DrawPokemonSprite
 	ldr r1, [r5]
 	ldr r3, [sp, #0x18]
 	lsl r1, r1, #2
@@ -51123,7 +51123,7 @@ _022349A0:
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	ldr r3, [r3]
-	bl sub_02014540
+	bl DrawPokemonSprite
 	ldr r1, [r5]
 	ldrh r0, [r4]
 	lsl r1, r1, #2
