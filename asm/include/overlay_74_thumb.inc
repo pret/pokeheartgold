@@ -75,7 +75,7 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBF4
-.public sub_02014494
+.public DrawPokemonSprite
 .public GF_RTC_CopyDate
 .public ListMenuItems_New
 .public ListMenuItems_Delete

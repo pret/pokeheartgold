@@ -77,7 +77,7 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData

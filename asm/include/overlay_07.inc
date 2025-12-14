@@ -91,8 +91,8 @@
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
-.public sub_02014400
-.public DrawPokemonSprite
+.public DrawSprite_Battle
+.public DrawPokemonSprite_Battle
 .public sub_02014A08
 .public sub_02014A38
 .public sub_02014A4C

@@ -23952,7 +23952,7 @@ _021F1AC8:
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x12]
 	add r3, sp, #0x20
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r0, #0x67
 	lsl r0, r0, #4
 	add r4, r5, r0
@@ -33868,7 +33868,7 @@ _021F6A22:
 	ldrh r1, [r1, #0x12]
 	mov r2, #0x25
 	add r3, sp, #0x1c
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r1, #0x32
 	add r0, r7, #0
 	lsl r1, r1, #6

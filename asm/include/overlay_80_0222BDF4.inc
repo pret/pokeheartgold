@@ -72,7 +72,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
 .public sub_0200FBF4
-.public sub_02014494
+.public DrawPokemonSprite
 .public sub_02015494
 .public MailMsg_Init
 .public MailMsg_GetExpandedString

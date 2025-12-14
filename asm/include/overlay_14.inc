@@ -107,7 +107,7 @@
 .public sub_02013910
 .public sub_02013938
 .public TextOBJ_CopyFromBGWindow
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate

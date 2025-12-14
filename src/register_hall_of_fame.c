@@ -396,7 +396,7 @@ static const WindowTemplate sWholePartySceneWindowTemplates[2] = {
      },
 };
 
-static const UnkStruct_02014E30 ov63_0221FAF0 = {
+static const SpritePosSize ov63_0221FAF0 = {
     0,
     0,
     10,
@@ -555,7 +555,7 @@ static const BgTemplate sBgTemplate_IndivMons_Main2 = {
     .mosaic = FALSE,
 };
 
-static const UnkStruct_02014E30 ov63_0221FC38[2] = {
+static const SpritePosSize ov63_0221FC38[2] = {
     {
      0,
      0,
@@ -608,7 +608,7 @@ static const GXRgb sSpritePltt_Red[16] = {
     RGB(31, 0, 0),
 };
 
-static const UnkStruct_02014E30 sDeadstrippedData_0221FCD8[2] = {
+static const SpritePosSize sDeadstrippedData_0221FCD8[2] = {
     {
      0,
      0,
@@ -1987,7 +1987,7 @@ static BOOL RegisterHallOfFame_ShowMon_RightSide(RegisterHallOfFameData *data) {
 static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
     u32 i;
     PokepicTemplate sp40;
-    UnkStruct_02014E30 sp20[2];
+    SpritePosSize sp20[2];
     ARRAY_ASSIGN(sp20, ov63_0221FC38);
     NARC *narc = NARC_New(NARC_a_1_8_0, HEAP_ID_REGISTER_HALL_OF_FAME);
     BOOL encry;
@@ -2015,11 +2015,11 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
             }
             ReadWholeNarcMemberByIdPair(hofMon->followPokeParam, NARC_fielddata_tsurepoke_tp_param, SpeciesToOverworldModelIndexOffset(hofMon->species));
             PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_FRONT);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf[0], hofMon->personality, TRUE, 2, hofMon->species);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->frontspriteCharbuf[1], hofMon->personality, TRUE, 2, hofMon->species);
+            DrawPokemonSpriteWithPosSize_Battle((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->frontspriteCharbuf[0], hofMon->personality, TRUE, 2, hofMon->species);
+            DrawPokemonSpriteWithPosSize_Battle((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->frontspriteCharbuf[1], hofMon->personality, TRUE, 2, hofMon->species);
             PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds(&sp40, pokemon, MON_PIC_FACING_BACK);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf[0], hofMon->personality, TRUE, 0, hofMon->species);
-            sub_02014510((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->backspriteCharbuf[1], hofMon->personality, TRUE, 0, hofMon->species);
+            DrawPokemonSpriteWithPosSize_Battle((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[0], hofMon->backspriteCharbuf[0], hofMon->personality, TRUE, 0, hofMon->species);
+            DrawPokemonSpriteWithPosSize_Battle((NarcId)sp40.narcID, sp40.charDataID, HEAP_ID_REGISTER_HALL_OF_FAME, &sp20[1], hofMon->backspriteCharbuf[1], hofMon->personality, TRUE, 0, hofMon->species);
             NARC_ReadPokepicAnimScript(narc, hofMon->frontspriteAnim, hofMon->species, 1);
             NARC_ReadPokepicAnimScript(narc, hofMon->backspriteAnim, hofMon->species, 0);
             ++data->numMons;
@@ -2343,7 +2343,7 @@ static void RegisterHallOfFame_WholePartyScene_DeleteWindows(RegisterHallOfFameD
 static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameData *data) {
 
     UnkStruct_02070D3C sp2C;
-    UnkStruct_02014E30 sp1C = ov63_0221FAF0;
+    SpritePosSize sp1C = ov63_0221FAF0;
     NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_REGISTER_HALL_OF_FAME);
     u32 i;
     int tag;
@@ -2395,7 +2395,7 @@ static void RegisterHallOfFame_WholePartyScene_CreateSprites(RegisterHallOfFameD
         sub_02070D84(TRAINERCLASS_PKMN_TRAINER_ETHAN, 2, &sp2C);
     }
     r4 = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, 0x1900);
-    sub_020143E0(sp2C.narcId, sp2C.ncbr_id, HEAP_ID_REGISTER_HALL_OF_FAME, &sp1C, r4);
+    DrawSpriteWithPosSize_Battle(sp2C.narcId, sp2C.ncbr_id, HEAP_ID_REGISTER_HALL_OF_FAME, &sp1C, r4);
     RegisterHallOfFame_ReplaceSpriteChar(r4, NNS_G2dGetImageLocation(Sprite_GetImageProxy(data->monPics[REGHOF_PIC_WHOLE_PLAYER]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN), 3200);
     Heap_Free(r4);
 

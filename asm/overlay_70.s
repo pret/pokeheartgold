@@ -5977,7 +5977,7 @@ ov70_0223A7E4: ; 0x0223A7E4
 	ldrh r0, [r1]
 	ldrh r1, [r1, #2]
 	mov r2, #0x3d
-	bl sub_02014494
+	bl DrawPokemonSprite
 	mov r1, #0x32
 	add r0, r4, #0
 	lsl r1, r1, #6

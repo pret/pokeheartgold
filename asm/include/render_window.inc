@@ -36,7 +36,7 @@
 .public sub_0200F478
 .public DrawPokemonPicFromSpecies
 .public DrawPokemonPicFromMon
-.public sub_020143E0
+.public DrawSpriteWithPosSize_Battle
 .public sub_02014450
 .public Heap_Alloc
 .public Heap_Free

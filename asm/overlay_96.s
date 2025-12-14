@@ -19279,7 +19279,7 @@ _021EEC28:
 	str r0, [sp, #0x10]
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x12]
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r2, #0x32
 	ldr r0, [r5]
 	add r1, r7, #0

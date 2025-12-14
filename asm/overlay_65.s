@@ -2809,7 +2809,7 @@ _0221D5C0:
 	ldrh r0, [r0]
 	ldrh r1, [r1, #2]
 	mov r2, #0x1a
-	bl sub_02014494
+	bl DrawPokemonSprite
 	mov r1, #0x32
 	add r0, r6, #0
 	lsl r1, r1, #6

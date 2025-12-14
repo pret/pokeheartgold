@@ -10135,7 +10135,7 @@ _0224A7D4:
 	str r0, [sp, #0xc]
 	ldrh r0, [r5]
 	ldrh r1, [r5, #2]
-	bl DrawPokemonSprite
+	bl DrawPokemonSprite_Battle
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}

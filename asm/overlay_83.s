@@ -18652,7 +18652,7 @@ ov83_02247668: ; 0x02247668
 	ldrh r1, [r1, #0x16]
 	mov r2, #0x6b
 	add r3, sp, #0x20
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	add r0, sp, #0x1c
 	ldrh r7, [r0, #0x14]
 	ldrh r6, [r0, #0x18]

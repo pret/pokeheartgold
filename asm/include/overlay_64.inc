@@ -53,7 +53,7 @@
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public sub_020145B4
 .public sub_02019BA4
 .public sub_02019BDC

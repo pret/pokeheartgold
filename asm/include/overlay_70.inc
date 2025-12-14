@@ -78,7 +78,7 @@
 .public sub_0200F450
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014494
+.public DrawPokemonSprite
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData

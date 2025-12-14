@@ -157,7 +157,7 @@
 .public sub_02013948
 .public TextOBJ_Destroy
 .public sub_02014450
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public sub_0201457C
 .public sub_020145B4
 .public Main_SetVBlankIntrCB

@@ -41,7 +41,7 @@
 .public ManagedSprite_SetDrawFlag
 .public ManagedSprite_SetPaletteOverride
 .public sub_0200FBF4
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Heap_Alloc

@@ -53,7 +53,7 @@
 .public SysTask_Destroy
 .public WaitingIcon_New
 .public sub_0200F450
-.public DrawPokemonSprite
+.public DrawPokemonSprite_Battle
 .public sub_0201649C
 .public sub_02017068
 .public Heap_Alloc

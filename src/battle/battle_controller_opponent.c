@@ -57,7 +57,7 @@ Pokepic *BattleSystem_CreatePokemonSprite(BattleSystem *bsys, PokepicManager *po
     } else {
         whichFacing = 0;
     }
-    DrawPokemonSprite((NarcId)template->narcID, template->charDataID, HEAP_ID_BATTLE, sp20, template->personality, 0, whichFacing, (s32) template->species);
+    DrawPokemonSprite_Battle((NarcId)template->narcID, template->charDataID, HEAP_ID_BATTLE, sp20, template->personality, 0, whichFacing, (s32) template->species);
     BattleSystem_SetUnk4(ov12_0223A99C(bsys), index, template->narcID);
     BattleSystem_SetUnk8(ov12_0223A99C(bsys), index, template->palDataID);
     BattleSystem_SetUnkC(ov12_0223A99C(bsys), index, arg6);

@@ -6821,7 +6821,7 @@ _0222F0DA:
 	str r7, [sp, #0x1c]
 	ldrh r0, [r1, #0x34]
 	ldrh r1, [r1, #0x36]
-	bl sub_02014494
+	bl DrawPokemonSprite
 	ldr r0, [r6]
 	bl Sprite_GetImageProxy
 	add r7, r0, #0

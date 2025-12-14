@@ -56,7 +56,7 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Heap_Create

@@ -38,7 +38,7 @@
 .public BufferPokeathlonCourseName
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public DrawPokemonSprite
+.public DrawPokemonSprite_Battle
 .public Main_SetVBlankIntrCB
 .public Heap_Alloc
 .public Heap_Free

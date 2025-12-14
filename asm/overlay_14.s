@@ -27961,7 +27961,7 @@ _021F365A:
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x12]
 	add r3, sp, #0x14
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r0, #0xbf
 	lsl r0, r0, #2
 	add r4, r6, r0

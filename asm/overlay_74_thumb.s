@@ -26486,7 +26486,7 @@ ov74_02235B14: ; 0x02235B14
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	ldr r2, [r2, #8]
-	bl sub_02014494
+	bl DrawPokemonSprite
 	mov r1, #0x32
 	ldr r0, [sp, #0x40]
 	lsl r1, r1, #6

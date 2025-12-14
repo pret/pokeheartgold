@@ -1678,7 +1678,7 @@ _02259418:
 	str r0, [sp, #0xc]
 	ldrh r0, [r7]
 	ldrh r1, [r7, #2]
-	bl DrawPokemonSprite
+	bl DrawPokemonSprite_Battle
 	ldr r0, [sp, #0x10]
 	bl ov12_0223A99C
 	mov r1, #0x65

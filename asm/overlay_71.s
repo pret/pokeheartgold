@@ -1076,7 +1076,7 @@ _022471B8:
 	str r6, [sp, #0x10]
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x12]
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	ldr r0, [sp, #0x24]
 	add r1, r7, #0
 	bl DC_FlushRange

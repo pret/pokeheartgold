@@ -114,8 +114,8 @@
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
-.public sub_02014494
 .public DrawPokemonSprite
+.public DrawPokemonSprite_Battle
 .public sub_020145B4
 .public GF_RTC_TimeToSec
 .public GF_RTC_DateTimeToSec

@@ -122,7 +122,7 @@
 .public SysTask_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public MenuInputStateMgr_GetState
 .public MenuInputStateMgr_SetState
 .public sub_0201956C

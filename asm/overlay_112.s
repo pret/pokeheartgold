@@ -6901,7 +6901,7 @@ ov112_021E9290: ; 0x021E9290
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	mov r2, #0x9a
-	bl sub_02014494
+	bl DrawPokemonSprite
 	mov r1, #0x32
 	add r0, r5, #0
 	lsl r1, r1, #6
@@ -22337,7 +22337,7 @@ ov112_021F0C8C: ; 0x021F0C8C
 	ldrh r1, [r1, #6]
 	ldr r2, [r4]
 	ldr r3, [r4, r3]
-	bl DrawPokemonSprite
+	bl DrawPokemonSprite_Battle
 	add r1, sp, #0x10
 	ldrh r0, [r1, #4]
 	ldrh r1, [r1, #8]
