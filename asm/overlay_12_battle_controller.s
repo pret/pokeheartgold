@@ -17,19 +17,19 @@ BattleController_SendData: ; 0x02262098
 	bl BattleSystem_GetRecvBufferPtr
 	add r4, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A984
+	bl BattleSystem_GetUnk23F0
 	add r5, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A990
+	bl BattleSystem_GetUnk23F2
 	b _022620D2
 _022620BE:
 	bl BattleSystem_GetSendBufferPtr
 	add r4, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A960
+	bl BattleSystem_GetUnk23EA
 	add r5, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A96C
+	bl BattleSystem_GetUnk23EC
 _022620D2:
 	add r7, r0, #0
 	add r0, sp, #0x10
@@ -177,25 +177,25 @@ ov12_022621C4: ; 0x022621C4
 	bl BattleSystem_GetRecvBufferPtr
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A978
+	bl BattleSystem_GetUnk23EE
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A984
+	bl BattleSystem_GetUnk23F0
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A990
+	bl BattleSystem_GetUnk23F2
 	b _02262206
 _022621EA:
 	bl BattleSystem_GetSendBufferPtr
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A954
+	bl BattleSystem_GetUnk23E8
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A960
+	bl BattleSystem_GetUnk23EA
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A96C
+	bl BattleSystem_GetUnk23EC
 _02262206:
 	ldrh r1, [r4]
 	ldrh r2, [r7]
@@ -378,7 +378,7 @@ BattleController_EmitPokemonEncounter: ; 0x022622F0
 	sub r2, #0x16
 	ldr r2, [r3, r2]
 	str r2, [sp, #8]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	add r2, r0, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
@@ -503,7 +503,7 @@ BattleController_EmitPokemonSlideIn: ; 0x022623F0
 	sub r2, #0x16
 	ldr r2, [r3, r2]
 	str r2, [sp, #8]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	add r2, r0, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
@@ -674,7 +674,7 @@ _0226258E:
 	add r1, r7, #0
 	strh r0, [r3, #2]
 	add r0, r4, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	add r2, r0, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
@@ -4985,12 +4985,12 @@ _02264646:
 _0226464C:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #2
 	beq _02264664
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #3
 	bne _02264672
 _02264664:

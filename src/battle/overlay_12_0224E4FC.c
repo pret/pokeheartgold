@@ -2677,7 +2677,7 @@ BOOL CanSwitchMon(BattleSystem *bsys, BattleContext *ctx, int battlerId) {
     party = BattleSystem_GetParty(bsys, battlerId);
     partySize = BattleSystem_GetPartySize(bsys, battlerId);
 
-    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         start = 0;
         cntMax = 1;
         monIndex1 = ctx->selectedMonIndex[battlerId];
@@ -5425,8 +5425,8 @@ void ov12_02256F78(BattleSystem *bsys, BattleContext *ctx, int battlerId, u8 sel
     int flag;
     u32 battleType = BattleSystem_GetBattleType(bsys);
 
-    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
-        if (ov12_0223AB0C(bsys, battlerId) == 4 || ov12_0223AB0C(bsys, battlerId) == 5) {
+    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
+        if (BattleSystem_GetOpponentFlags(bsys, battlerId) == 4 || BattleSystem_GetOpponentFlags(bsys, battlerId) == 5) {
             flag = 1;
         } else {
             flag = 0;

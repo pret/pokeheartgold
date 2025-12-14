@@ -44,13 +44,13 @@ Pokepic *BattleSystem_CreatePokemonSprite(BattleSystem *bsys, PokepicManager *po
     s32 temp_r0;
     Pokepic *pokepic;
     s32 whichFacing;
-    s32 var_r6;
+    s32 opponentFlags;
 
     ppm = pokepicManager;
     x = xPos;
-    sp20 = BattleSystem_GetUnk0(ov12_0223A99C(bsys), index);
-    var_r6 = ov12_0223AB0C(bsys, index);
-    temp_r0 = 1 & var_r6;
+    sp20 = BattleSystem_GetUnk0(BattleSystem_GetUnk1DFirstElement(bsys), index);
+    opponentFlags = BattleSystem_GetOpponentFlags(bsys, index);
+    temp_r0 = 1 & opponentFlags;
     sp1C = temp_r0;
     if (temp_r0 != 0) {
         whichFacing = 2;
@@ -58,15 +58,15 @@ Pokepic *BattleSystem_CreatePokemonSprite(BattleSystem *bsys, PokepicManager *po
         whichFacing = 0;
     }
     DrawPokemonSprite_Battle((NarcId)template->narcID, template->charDataID, HEAP_ID_BATTLE, sp20, template->personality, 0, whichFacing, (s32) template->species);
-    BattleSystem_SetUnk4(ov12_0223A99C(bsys), index, template->narcID);
-    BattleSystem_SetUnk8(ov12_0223A99C(bsys), index, template->palDataID);
-    BattleSystem_SetUnkC(ov12_0223A99C(bsys), index, arg6);
+    BattleSystem_SetUnk4(BattleSystem_GetUnk1DFirstElement(bsys), index, template->narcID);
+    BattleSystem_SetUnk8(BattleSystem_GetUnk1DFirstElement(bsys), index, template->palDataID);
+    BattleSystem_SetUnkC(BattleSystem_GetUnk1DFirstElement(bsys), index, arg6);
     pokepic = PokepicManager_CreatePokepicAt(ppm, template, x, arg4 + arg6, arg5, index, index, animScript, callback);
     if (sp1C != 0) {
-        if (var_r6 > 1) {
-            var_r6 = var_r6 >> 1;
+        if (opponentFlags > 1) {
+            opponentFlags = opponentFlags >> 1;
         }
-        Pokepic_SetAttr(pokepic, 0x2A, var_r6);
+        Pokepic_SetAttr(pokepic, 0x2A, opponentFlags);
         Pokepic_SetAttr(pokepic, 0x2E, arg9);
         Pokepic_SetAttr(pokepic, 0x14, arg4 + 0x24);
         Pokepic_SetAttr(pokepic, 0x15, arg8);

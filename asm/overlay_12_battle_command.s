@@ -251,7 +251,7 @@ Task_GetPokemon: ; 0x022465A8
 	bl BattleSystem_GetPaletteData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	mov r7, #1
 	str r0, [sp, #0x24]
 	add r0, r7, #0
@@ -816,12 +816,12 @@ _02246A72:
 	bl ov12_02237CC4
 	ldr r0, [r4]
 	mov r1, #0
-	bl ov12_0223A8F4
+	bl BattleSystem_GetUnk17Index
 	mov r1, #0
 	bl ov12_02265FC4
 	ldr r0, [r4]
 	mov r1, #1
-	bl ov12_0223A8F4
+	bl BattleSystem_GetUnk17Index
 	mov r1, #0
 	bl ov12_02265FC4
 	ldr r0, [r4]

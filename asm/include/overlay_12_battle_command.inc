@@ -122,10 +122,10 @@
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
-.public ov12_0223A8D4
+.public BattleSystem_GetUnk88
 .public BattleSystem_GetSpriteRenderer
 .public BattleSystem_GetGfxHandler
-.public ov12_0223A8F4
+.public BattleSystem_GetUnk17Index
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetPokedex

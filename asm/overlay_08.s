@@ -50,7 +50,7 @@ _0221BE2E:
 	strb r2, [r4, r0]
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #0x28]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	ldr r1, _0221BE94 ; =0x0000208F
 	strb r0, [r4, r1]
 	pop {r3, r4, r5, pc}

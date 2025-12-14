@@ -8104,7 +8104,7 @@ ov10_0221FD34: ; 0x0221FD34
 	add r1, r6, #0
 	add r5, r0, #0
 	str r3, [sp, #0x10]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	mov r1, #1
 	eor r0, r1
 	lsl r0, r0, #0x18
@@ -9318,7 +9318,7 @@ ov10_022206B0: ; 0x022206B0
 	str r1, [sp]
 	cmp r2, #0x4b
 	bne _022206E6
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #4
 	bne _022206E6
 	add sp, #0x20

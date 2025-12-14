@@ -26,7 +26,7 @@ void ov12_0226BEF0(SysTask *task) {
 
 static void ov12_0226BF04(SysTask *task, void *_data) {
     UnkBattleStruct_0226BEC4 *data = _data;
-    u32 *unkPtr = ov12_0223A900(data->bsys);
+    u32 *unkPtr = BattleSystem_GetUnk19C(data->bsys);
 
     switch (data->state) {
     case 0:

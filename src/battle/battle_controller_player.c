@@ -511,7 +511,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *bsys, Batt
 
             v8 = BattlerCanSwitch(bsys, ctx, battlerId);
 
-            if (((ov12_0223AB0C(bsys, battlerId) == 4) || (ov12_0223AB0C(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_FRONTIER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG)) && (ov12_0223AB0C(bsys, battlerId) == 4)))) {
+            if (((BattleSystem_GetOpponentFlags(bsys, battlerId) == 4) || (BattleSystem_GetOpponentFlags(bsys, battlerId) == 5)) && ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_FRONTIER)) || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TAG)) && (BattleSystem_GetOpponentFlags(bsys, battlerId) == 4)))) {
                 partnerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
 
                 if (ctx->playerActions[partnerId].command == CONTROLLER_COMMAND_POKEMON_INPUT) {
@@ -1892,7 +1892,7 @@ static u32 TryDisobedience(BattleSystem *bsys, BattleContext *ctx, int *script) 
         return 0;
     }
 
-    if ((battleType & BATTLE_TYPE_AI) && ov12_0223AB0C(bsys, ctx->battlerIdAttacker) == 4) {
+    if ((battleType & BATTLE_TYPE_AI) && BattleSystem_GetOpponentFlags(bsys, ctx->battlerIdAttacker) == 4) {
         return 0;
     }
 
@@ -3499,7 +3499,7 @@ static BOOL ov12_0224D7EC(BattleSystem *bsys, BattleContext *ctx) {
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         if ((battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) && BattleSystem_GetFieldSide(bsys, battlerId) == 0) {
-            if (ov12_0223AB0C(bsys, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
+            if (BattleSystem_GetOpponentFlags(bsys, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
                 int hp = 0;
                 Party *party = BattleSystem_GetParty(bsys, battlerId);
                 BattleSystem_GetOpponentData(bsys, battlerId);

@@ -1471,7 +1471,7 @@ ov12_022592D0: ; 0x022592D0
 	bl BattleSystem_GetBattleType
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	ldr r2, _02259320 ; =0x00000196
 	ldrb r1, [r4, r2]
 	cmp r1, #0
@@ -1662,7 +1662,7 @@ _02259418:
 	ldr r0, [r5, #0x20]
 	bl Pokepic_ScheduleReloadFromNarc
 	ldr r0, [sp, #0x10]
-	bl ov12_0223A99C
+	bl BattleSystem_GetUnk1DFirstElement
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
@@ -1680,14 +1680,14 @@ _02259418:
 	ldrh r1, [r7, #2]
 	bl DrawPokemonSprite_Battle
 	ldr r0, [sp, #0x10]
-	bl ov12_0223A99C
+	bl BattleSystem_GetUnk1DFirstElement
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
 	ldrh r2, [r7]
 	bl BattleSystem_SetUnk4
 	ldr r0, [sp, #0x10]
-	bl ov12_0223A99C
+	bl BattleSystem_GetUnk1DFirstElement
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
@@ -1703,7 +1703,7 @@ _02259418:
 	bl GetMonPicHeightBySpeciesGenderForm
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
-	bl ov12_0223A99C
+	bl BattleSystem_GetUnk1DFirstElement
 	mov r1, #0x65
 	lsl r1, r1, #2
 	ldrb r1, [r5, r1]
@@ -1768,7 +1768,7 @@ ov12_02259514: ; 0x02259514
 	bl NARC_New
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	str r0, [sp, #8]
 	mov r3, #0
 	str r3, [sp]
@@ -2326,7 +2326,7 @@ ov12_02259968: ; 0x02259968
 	str r0, [sp, #0x24]
 	add r6, r1, #0
 	add r5, r2, #0
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	str r0, [sp, #0x28]
 	ldr r0, [sp, #0x24]
 	bl BattleSystem_GetBattleType
@@ -2344,7 +2344,7 @@ ov12_02259968: ; 0x02259968
 	mov r0, #2
 	strb r0, [r4, #0x13]
 	ldr r0, [sp, #0x24]
-	bl ov12_0223A8F4
+	bl BattleSystem_GetUnk17Index
 	str r0, [r4, #0xc]
 	ldr r1, _02259B8C ; =0x00000195
 	ldr r0, [r0]
@@ -2363,7 +2363,7 @@ _022599BE:
 	ldr r0, [sp, #0x24]
 	add r1, r2, #0
 	strb r2, [r4, #0x13]
-	bl ov12_0223A8F4
+	bl BattleSystem_GetUnk17Index
 	str r0, [r4, #0xc]
 	ldr r1, _02259B8C ; =0x00000195
 	ldr r0, [r0]
@@ -3217,7 +3217,7 @@ ov12_0225A07C: ; 0x0225A07C
 	mov r0, #2
 	strb r0, [r4, #0x13]
 	add r0, r6, #0
-	bl ov12_0223A8F4
+	bl BattleSystem_GetUnk17Index
 	str r0, [r4, #8]
 	ldr r1, _0225A288 ; =0x00000195
 	ldr r0, [r0]
@@ -3235,7 +3235,7 @@ _0225A0C4:
 	add r0, r6, #0
 	add r1, r2, #0
 	strb r2, [r4, #0x13]
-	bl ov12_0223A8F4
+	bl BattleSystem_GetUnk17Index
 	str r0, [r4, #8]
 	ldr r1, _0225A288 ; =0x00000195
 	ldr r0, [r0]
@@ -3372,7 +3372,7 @@ _0225A166:
 	bne _0225A23A
 _0225A1E8:
 	add r0, r6, #0
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	str r0, [sp, #0x24]
 	ldrh r0, [r7, #2]
 	ldrb r1, [r4, #0x13]
@@ -3575,7 +3575,7 @@ ov12_0225A37C: ; 0x0225A37C
 	add r7, r0, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	mov r0, #5
 	mov r1, #0x10
 	bl Heap_Alloc
@@ -4211,7 +4211,7 @@ ov12_0225A85C: ; 0x0225A85C
 	add r6, r0, #0
 	add r7, r1, #0
 	add r5, r2, #0
-	bl ov12_0223A934
+	bl BattleSystem_GetUnk10
 	str r0, [sp]
 	mov r0, #5
 	mov r1, #8
@@ -4320,7 +4320,7 @@ ov12_0225A914: ; 0x0225A914
 	add r0, #0x69
 	strb r1, [r0]
 	add r0, r7, #0
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r3, r6, #0
 	str r0, [r6, #0xc]
 	add r7, r4, #0
@@ -5786,7 +5786,7 @@ ov12_0225B494: ; 0x0225B494
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	ldrb r1, [r4, #0x12]
 	add r5, r0, #0
 	cmp r1, #4
@@ -6180,7 +6180,7 @@ ov12_0225B7B8: ; 0x0225B7B8
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	ldrb r1, [r4, #0x12]
 	add r5, r0, #0
 	cmp r1, #4
@@ -6545,7 +6545,7 @@ _0225BAA4:
 	strb r1, [r0]
 _0225BAAC:
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -7083,7 +7083,7 @@ _0225BF10:
 	strb r1, [r0]
 _0225BF18:
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -7381,7 +7381,7 @@ ov12_0225C18C: ; 0x0225C18C
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r1, r4, #0
 	add r1, #0x83
 	ldrb r1, [r1]
@@ -7450,7 +7450,7 @@ _0225C214:
 	bl ov07_02233DB8
 	str r0, [r4, #0xc]
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -8022,7 +8022,7 @@ ov12_0225C6C8: ; 0x0225C6C8
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r1, r4, #0
 	add r1, #0x83
 	ldrb r1, [r1]
@@ -8050,7 +8050,7 @@ _0225C6F0: ; jump table
 	.short _0225C8C0 - _0225C6F0 - 2 ; case 9
 _0225C704:
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	add r2, r4, #0
 	add r3, r4, #0
 	add r5, r0, #0
@@ -8388,7 +8388,7 @@ ov12_0225C9BC: ; 0x0225C9BC
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r1, r4, #0
 	add r1, #0x6b
 	ldrb r1, [r1]
@@ -8710,7 +8710,7 @@ ov12_0225CC58: ; 0x0225CC58
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r1, r4, #0
 	add r1, #0x6b
 	ldrb r1, [r1]
@@ -10498,7 +10498,7 @@ ov12_0225DAD4: ; 0x0225DAD4
 	ldr r0, [r4]
 	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	add r6, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
@@ -10564,7 +10564,7 @@ _0225DB46:
 	cmp r0, #4
 	blt _0225DB46
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	add r1, r4, #0
 	add r1, #0x34
 	ldrb r1, [r1]
@@ -11396,7 +11396,7 @@ ov12_0225E250: ; 0x0225E250
 	ldr r0, [r4]
 	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	add r7, r0, #0
 	ldrb r1, [r4, #0x1d]
 	ldr r0, [r4]
@@ -11780,7 +11780,7 @@ ov12_0225E568: ; 0x0225E568
 	bl BattleSystem_GetOpponentData
 	add r7, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	add r5, r0, #0
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
@@ -12174,7 +12174,7 @@ _0225E858: ; jump table
 	.short _0225F354 - _0225E858 - 2 ; case 30
 _0225E896:
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	bl ov12_0226A8E4
 	strb r0, [r4, #0x10]
 	ldr r0, [r4]
@@ -12532,7 +12532,7 @@ _0225EB6E:
 	ldr r0, [r4]
 	bl ov12_02237BB8
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	ldrb r1, [r4, #0x10]
 	bl ov12_0226A8EC
 	mov r0, #7
@@ -12903,7 +12903,7 @@ _0225EE3E:
 	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -12935,7 +12935,7 @@ _0225EE7E:
 	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -12968,7 +12968,7 @@ _0225EEC4:
 	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -12993,7 +12993,7 @@ _0225EF02:
 	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -13016,7 +13016,7 @@ _0225EF3A:
 	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -13144,7 +13144,7 @@ _0225F02A:
 	bl BattleSystem_GetOpponentData
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r2, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
@@ -13173,7 +13173,7 @@ _0225F070:
 	bl MI_CpuFill8
 	ldr r0, [r4]
 	add r1, r6, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleType
@@ -13501,15 +13501,15 @@ _0225F2FA:
 	pop {r3, r4, r5, r6, r7, pc}
 _0225F326:
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	bl ov07_0221C394
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	bl ov07_0221C3B0
 	cmp r0, #0
 	bne _0225F376
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	bl ov07_0221C3C0
 	ldrb r0, [r4, #0xe]
 	add sp, #0x1fc
@@ -13730,7 +13730,7 @@ _0225F50A:
 	add r0, r6, #0
 	bl CopyWindowPixelsToVram_TextMode
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	bl ov12_0226A8E4
 	strb r0, [r4, #0x17]
 	ldr r0, [r4]
@@ -13796,7 +13796,7 @@ _0225F57E:
 _0225F5B2:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #2
 	bne _0225F5CE
 	ldrb r0, [r4, #9]
@@ -13911,7 +13911,7 @@ _0225F66A:
 _0225F6AA:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #4
 	bne _0225F6BE
 	ldr r0, [r4, #4]
@@ -13944,7 +13944,7 @@ _0225F6E8:
 	add r7, r1, #0
 _0225F6EC:
 	ldr r0, [r4]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #4
 	bne _0225F6FA
 	mov r1, #1
@@ -14076,7 +14076,7 @@ _0225F7EA:
 	ldr r0, [r4]
 	bl ov12_02237BB8
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	ldr r1, [r4, #4]
 	add r1, #0x32
 	ldrb r1, [r1]
@@ -14361,7 +14361,7 @@ ov12_0225FA44: ; 0x0225FA44
 	ldr r0, [r4]
 	bl BattleSystem_GetBgConfig
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetUnk19C
 	add r5, r0, #0
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
@@ -14838,7 +14838,7 @@ _0225FE1A:
 	cmp r0, #0
 	beq _0225FE30
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	mov r1, #1
 	bl PokepicManager_SetG3UpdateFlagsMask
 _0225FE30:
@@ -14875,7 +14875,7 @@ _0225FE68:
 	cmp r0, #0
 	beq _0225FE7E
 	ldr r0, [r4]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	mov r1, #1
 	bl PokepicManager_ResetG3UpdateFlagsMask
 _0225FE7E:
@@ -15200,7 +15200,7 @@ ov12_022600F0: ; 0x022600F0
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r1, r4, #0
 	add r1, #0x66
 	ldrb r1, [r1]
@@ -15528,7 +15528,7 @@ ov12_0226037C: ; 0x0226037C
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	add r7, r0, #0
 	ldrb r0, [r5, #6]
 	cmp r0, #0
@@ -15599,7 +15599,7 @@ ov12_02260418: ; 0x02260418
 	add r4, r1, #0
 	add r6, r0, #0
 	ldr r0, [r4]
-	bl ov12_0223A8DC
+	bl BattleSystem_GetUnk8C
 	add r1, r4, #0
 	add r1, #0x62
 	ldrb r1, [r1]
@@ -16583,7 +16583,7 @@ _02260BEE:
 	add r2, r0, #0
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl ov12_0223A914
+	bl BattleSystem_SetUnk1A0Index
 	ldrb r0, [r5, #7]
 	add sp, #0xc
 	add r0, r0, #1
@@ -16592,7 +16592,7 @@ _02260BEE:
 _02260C22:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl ov12_0223A908
+	bl BattleSystem_GetUnk1A0
 	bl ov12_0226AF48
 	cmp r0, #1
 	bne _02260C52
@@ -16633,7 +16633,7 @@ _02260C6E:
 _02260C70:
 	ldr r0, [r5]
 	add r1, r4, #0
-	bl ov12_0223A908
+	bl BattleSystem_GetUnk1A0
 	ldrb r1, [r5, #7]
 	add r6, r0, #0
 	cmp r1, #0
@@ -16666,7 +16666,7 @@ _02260CA2:
 	ldr r0, [r5]
 	add r1, r4, #0
 	mov r2, #0
-	bl ov12_0223A914
+	bl BattleSystem_SetUnk1A0Index
 	ldrb r0, [r5, #7]
 	add r0, r0, #1
 	strb r0, [r5, #7]
@@ -16780,7 +16780,7 @@ ov12_02260D84: ; 0x02260D84
 	bl BattleSystem_GetPaletteData
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A8D4
+	bl BattleSystem_GetUnk88
 	add r7, r0, #0
 	ldrb r0, [r5, #6]
 	cmp r0, #0
@@ -17053,7 +17053,7 @@ _02260FAE:
 	add r1, r0, #0
 	add r0, r6, #0
 	lsl r1, r1, #1
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	ldr r1, _02261230 ; =0x00000195
 	ldrb r2, [r5, r1]
 	cmp r2, r0
@@ -17119,7 +17119,7 @@ _02261032:
 	bl BattleSystem_GetUnk2446
 	add r1, r0, #0
 	add r0, r6, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	ldr r1, _02261230 ; =0x00000195
 	ldrb r2, [r5, r1]
 	cmp r2, r0
