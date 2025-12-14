@@ -12,24 +12,24 @@
 #include "player_data.h"
 #include "sprite_system.h"
 #include "touchscreen_list_menu.h"
+#include "yes_no_prompt.h"
 
-typedef struct Ov122_021E70B8 {
+typedef struct VFCardFlipAnim {
     BgConfig *bgConfig;
-    GameState *game;
-    Ov122_021E8CFC *unk8;
-    int unkC;
-    u8 unk10;
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
-} Ov122_021E70B8;
+    VoltorbFlipGameState *game;
+    VoltorbFlipInputHandler *inputHandler;
+    int mode;
+    u8 step;
+    u8 cursorPos;
+    u8 frame;
+    u8 row;
+} VFCardFlipAnim;
 
 typedef struct Ov122_021E7888 {
     u8 unk0;
-    u8 unk1[0x3];
 } Ov122_021E7888;
 
-typedef struct VoltorbFlipAppWork {
+typedef struct VoltorbFlipAppData {
     enum HeapID heapID;
     Options *options;
     u16 *coins;
@@ -37,32 +37,31 @@ typedef struct VoltorbFlipAppWork {
     PlayerProfile *profile;
     NARC *narc;
     BgConfig *bgConfig;
-    void *unk1C;
+    void *listMenuSpawner;
     TouchscreenListMenu *menu;
     Window windows[17];
     LISTMENUITEM *menuItems[2];
-    void *unk13C;
+    YesNoPrompt *yesNoPrompt;
     String *string;
     SpriteSystem *spriteRenderer;
     SpriteManager *spriteGfxHandler;
-    ManagedSprite *unk14C[0xd];
+    ManagedSprite *sprites[13];
     MsgData *msgData;
     MessageFormat *msgFmt;
     u16 unk188[10][8];
-    u8 unk228;
+    u8 menuInputState;
     u8 unk229;
     u8 unk22A;
     u8 printerId;
     u16 payoutDisplay;
-    u8 unk22E[0x2];
-    int unk230;
-    int unk234;
-    int unk238;
-    struct WorkflowEngine *workflow;
-    struct Ov122_021E8CFC *unk240;
-    GameState *game;
-    Ov122_021E70B8 unk248;
-    Ov122_021E7888 unk25C;
-} VoltorbFlipAppWork;
+    BOOL hasPlayedOneLeve;
+    BOOL printedCanGetMoreCoinsMessage;
+    BOOL memoOpen;
+    struct VoltorbFlipTaskEngine *workflow;
+    VoltorbFlipInputHandler *inputHandler;
+    VoltorbFlipGameState *game;
+    VFCardFlipAnim cardFlipControl;
+    u8 screenIsDimmed;
+} VoltorbFlipAppData;
 
 #endif // POKEHEARTGOLD_VOLTORB_FLIP_WORK_H
