@@ -3283,7 +3283,7 @@ _0225A11C:
 	lsl r2, r2, #0x18
 	add r0, r6, #0
 	lsr r2, r2, #0x18
-	bl ov12_02261EF0
+	bl BattleSystem_ModifyTrainerClass
 	strh r0, [r7, #2]
 	add r0, r6, #0
 	bl BattleSystem_GetBattleType
@@ -3500,7 +3500,7 @@ _0225A2DA:
 	ldrb r1, [r5, r1]
 	ldrb r2, [r2, #1]
 	add r0, r6, #0
-	bl ov12_02261EF0
+	bl BattleSystem_ModifyTrainerClass
 	mov r1, #0
 	bl TrainerClassToBackpicID
 _0225A2FC:
@@ -18832,140 +18832,6 @@ _02261E34:
 _02261E38: .word 0x00000FFF
 _02261E3C: .word ov12_02261E40
 	thumb_func_end ov12_02261DC8
-
-	thumb_func_start ov12_02261E40
-ov12_02261E40: ; 0x02261E40
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	ldr r0, [r4]
-	cmp r0, #0
-	beq _02261E56
-	cmp r0, #1
-	beq _02261E7E
-	cmp r0, #2
-	beq _02261EA0
-	pop {r3, r4, r5, pc}
-_02261E56:
-	mov r0, #1
-	bl IsBrightnessTransitionActive
-	cmp r0, #0
-	bne _02261E66
-	mov r0, #2
-	str r0, [r4]
-	pop {r3, r4, r5, pc}
-_02261E66:
-	mov r0, #1
-	str r0, [sp]
-	mov r0, #4
-	mov r1, #0x10
-	mov r2, #0
-	mov r3, #0x3d
-	bl StartBrightnessTransition
-	ldr r0, [r4]
-	add r0, r0, #1
-	str r0, [r4]
-	pop {r3, r4, r5, pc}
-_02261E7E:
-	mov r0, #1
-	bl IsBrightnessTransitionActive
-	cmp r0, #1
-	bne _02261EB6
-	mov r0, #1
-	str r0, [sp]
-	mov r0, #4
-	mov r1, #0
-	mov r2, #0x10
-	mov r3, #0x3d
-	bl StartBrightnessTransition
-	ldr r0, [r4]
-	add r0, r0, #1
-	str r0, [r4]
-	pop {r3, r4, r5, pc}
-_02261EA0:
-	mov r0, #1
-	bl IsBrightnessTransitionActive
-	cmp r0, #1
-	bne _02261EB6
-	add r0, r4, #0
-	bl Heap_Free
-	add r0, r5, #0
-	bl SysTask_Destroy
-_02261EB6:
-	pop {r3, r4, r5, pc}
-	thumb_func_end ov12_02261E40
-
-	thumb_func_start ov12_02261EB8
-ov12_02261EB8: ; 0x02261EB8
-	push {r4, lr}
-	add r4, r0, #0
-	mov r1, #1
-	bl ov12_0223BFFC
-	add r0, r4, #0
-	bl BattleSystem_GetBattleContext
-	add r1, r0, #0
-	add r0, r4, #0
-	bl BattleController_TryEmitExitRecording
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02261EB8
-
-	thumb_func_start ov12_02261ED4
-ov12_02261ED4: ; 0x02261ED4
-	push {r4, lr}
-	add r4, r0, #0
-	mov r1, #2
-	bl ov12_0223BFFC
-	add r0, r4, #0
-	bl BattleSystem_GetBattleContext
-	add r1, r0, #0
-	add r0, r4, #0
-	bl BattleController_TryEmitExitRecording
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02261ED4
-
-	thumb_func_start ov12_02261EF0
-ov12_02261EF0: ; 0x02261EF0
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	add r4, r2, #0
-	bl BattleSystem_GetBattleType
-	mov r1, #4
-	tst r0, r1
-	beq _02261F0A
-	cmp r4, #0
-	beq _02261F0E
-	cmp r4, #1
-	beq _02261F0E
-_02261F0A:
-	add r0, r4, #0
-	pop {r4, r5, r6, pc}
-_02261F0E:
-	add r0, r5, #0
-	add r1, r6, #0
-	bl BattleSystem_GetPlayerProfile
-	bl PlayerProfile_GetVersion
-	cmp r0, #0
-	beq _02261F24
-	cmp r0, #0xc
-	beq _02261F2C
-	b _02261F32
-_02261F24:
-	add r4, #0x7d
-	lsl r0, r4, #0x18
-	lsr r4, r0, #0x18
-	b _02261F32
-_02261F2C:
-	add r4, #0x7f
-	lsl r0, r4, #0x18
-	lsr r4, r0, #0x18
-_02261F32:
-	add r0, r4, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov12_02261EF0
 
     .rodata
 

@@ -857,7 +857,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     MIi_CpuCopy32(src, dst, 0x200);
 
     vram = (u8 *)0x6400000;
-    image = Sprite_GetImageProxy(bsys->unk17C[1].unk0->sprite);
+    image = Sprite_GetImageProxy(bsys->unk17C[1].managedSprite->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
 
     for (bgY = 20; bgY < 28; bgY++) {
@@ -884,7 +884,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     }
 
     vram = (u8 *)0x6400000;
-    image = Sprite_GetImageProxy(bsys->unk17C[0].unk0->sprite);
+    image = Sprite_GetImageProxy(bsys->unk17C[0].managedSprite->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
 
     for (i = 0; i < 0x800; i++) {

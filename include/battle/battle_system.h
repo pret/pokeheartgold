@@ -44,7 +44,7 @@ MessageFormat *BattleSystem_GetMessageFormat(BattleSystem *bsys);
 String *BattleSystem_GetMessageBuffer(BattleSystem *bsys);
 u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId);
 Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId);
-PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int a1);
+PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int battlerId);
 Bag *BattleSystem_GetBag(BattleSystem *bsys);
 BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys);
 u16 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon);

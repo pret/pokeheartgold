@@ -300,3 +300,10 @@
 .public ov12_02261F38
 .public BattleSystem_GetBattleContextUnk21A4
 .public BattleSystem_CreatePokemonSprite
+.public ov12_0225D644
+.public ov12_0225D138
+.public BattleSystem_ModifyTrainerClass
+.public ov12_0225DA8C
+.public ov12_02261EB8
+.public ov12_02261ED4
+.public ov12_02261E40

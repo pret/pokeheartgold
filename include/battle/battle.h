@@ -483,7 +483,7 @@ typedef struct OpponentData {
     BattlerInfoBox battlerInfoBox;
     void *unk80;
     u8 unk84[0x110];
-    u8 unk194;
+    u8 battlerId;
     u8 unk195;
     u8 unk196;
     u8 unk197;
@@ -496,7 +496,7 @@ typedef struct OpponentData {
 } OpponentData;
 
 typedef struct UnkBattleSystemSub17C {
-    ManagedSprite *unk0;
+    ManagedSprite *managedSprite;
     BattleSystem *bsys;
     u8 unk8;
     u8 unk9;
