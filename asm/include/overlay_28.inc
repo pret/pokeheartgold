@@ -22,7 +22,7 @@
 .public sub_0200A740
 .public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public NewMsgDataFromNarc
@@ -78,7 +78,7 @@
 .public PlayerAvatar_SetRunningShoesLock
 .public MapObject_GetSpriteID
 .public MapObject_GetScriptID
-.public sub_0205F330
+.public MapObject_GetUnkA0
 .public FX_Atan2Idx
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG

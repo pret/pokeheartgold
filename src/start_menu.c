@@ -693,7 +693,7 @@ static void StartMenu_CreateCursor(StartMenuTaskData *startMenu, u8 *a1, u32 a2,
 }
 
 static void StartMenu_DestroyCursor(StartMenuTaskData *startMenu) {
-    sub_0200AEB0(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(startMenu->gfxResObj[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(startMenu->gfxResObj[GF_GFX_RES_TYPE_PLTT]);
     for (u16 i = 0; i < 4; ++i) {
         Destroy2DGfxResObjMan(startMenu->gfxResMan[i]);
@@ -967,9 +967,9 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
         if (partyMenuArgs->context == PARTY_MENU_CONTEXT_USE_ITEM || partyMenuArgs->context == PARTY_MENU_CONTEXT_TM_HM || partyMenuArgs->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenuArgs->context == PARTY_MENU_CONTEXT_EVO_STONE || partyMenuArgs->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP) {
             startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
             if (partyMenuArgs->partySlot >= 6) {
-                sub_020778E0(startMenu->exitTaskEnvironment, 0);
+                BagView_SetUnk74(startMenu->exitTaskEnvironment, 0);
             } else {
-                sub_020778E0(startMenu->exitTaskEnvironment, partyMenuArgs->partySlot);
+                BagView_SetUnk74(startMenu->exitTaskEnvironment, partyMenuArgs->partySlot);
             }
             StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn);
         } else if (partyMenuArgs->context == PARTY_MENU_CONTEXT_9) {
@@ -999,7 +999,7 @@ static BOOL Task_StartMenu_Bag(TaskManager *taskManager) {
     StartMenuTaskData *startMenu = (StartMenuTaskData *)TaskManager_GetEnvironment(taskManager);
 
     startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
-    sub_020778E0(startMenu->exitTaskEnvironment, 0);
+    BagView_SetUnk74(startMenu->exitTaskEnvironment, 0);
     startMenu->exitTaskFunc = Task_StartMenu_HandleReturn;
     ov01_021F4440(fieldSystem);
     return FALSE;
@@ -1025,11 +1025,11 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
     memcpy(bagView, startMenu->exitTaskEnvironment, BagView_sizeof());
     Heap_Free(startMenu->exitTaskEnvironment);
 
-    switch (sub_0207790C(bagView)) {
+    switch (BagView_GetUnk68(bagView)) {
     case 0: {
         ItemMenuUseData itemMenuUseData;
         itemMenuUseData.itemId = BagView_GetItemId(bagView);
-        itemMenuUseData.partySlot = sub_02077914(bagView);
+        itemMenuUseData.partySlot = BagView_GetUnk74(bagView);
         itemMenuUseData.taskManager = taskManager;
         ItemMenuUseFunc func = GetItemFieldUseFunc(USE_ITEM_TASK_MENU, GetItemAttr(itemMenuUseData.itemId, ITEMATTR_FIELDUSEFUNC, HEAP_ID_FIELD2));
         func(&itemMenuUseData, &startMenu->itemCheckUseData);
@@ -1056,7 +1056,7 @@ static BOOL Task_StartMenu_HandleReturn(TaskManager *taskManager) {
         u16 itemId = BagView_GetItemId(bagView);
         Pokemon *pokemon = Party_GetMonByIndex(party, monSlot);
         Heap_Free(startMenu->exitTaskEnvironment2);
-        if (ItemIdIsMail(itemId) == TRUE && !GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
+        if (ItemIdIsMail(itemId) == TRUE && !Pokemon_GetMonData(pokemon, MON_DATA_HELD_ITEM, NULL)) {
             startMenu->exitTaskEnvironment = sub_0203EFEC(fieldSystem, 2, monSlot, ItemToMailId(itemId), HEAP_ID_FIELD2);
             startMenu->exitTaskEnvironment2 = sub_0203D818(itemId, 0, monSlot);
             StartMenu_SetExitTaskFunc(startMenu, Task_ReturnToMenuFromMail);
@@ -1492,7 +1492,7 @@ static void Task_StartMenu_WaitEvolution(TaskManager *taskManager) {
         sub_02055164(fieldSystem, fieldSystem->location->mapId);
         startMenu->exitTaskEnvironment = sub_0203E3FC(fieldSystem, &startMenu->itemCheckUseData);
         StartMenuAfterEvoPartySlotBak *unk = startMenu->exitTaskEnvironment2;
-        sub_020778E0(startMenu->exitTaskEnvironment, unk->partySlot);
+        BagView_SetUnk74(startMenu->exitTaskEnvironment, unk->partySlot);
         Heap_Free(startMenu->exitTaskEnvironment2);
         StartMenu_SetExitTaskFunc(startMenu, Task_StartMenu_HandleReturn);
     }

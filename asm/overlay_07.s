@@ -7974,7 +7974,7 @@ ov07_0221F81C: ; 0x0221F81C
 	ldrb r3, [r3]
 	ldr r0, [r6, r0]
 	add r1, r4, #0
-	bl sub_02071FDC
+	bl Chatot_ChatterPlayCryEx
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov07_0221F81C
@@ -8521,7 +8521,7 @@ _0221FBD6:
 	str r0, [r5, #0x24]
 	add r0, r7, #0
 	add r1, r6, #0
-	bl ov12_0223BB88
+	bl BattleSystem_GetUnk1D0Index
 	str r0, [r5, #0x34]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -8530,7 +8530,7 @@ _0221FBD6:
 	add r1, r4, #0
 	add r0, r7, #0
 	add r1, #0x44
-	bl ov12_0223C1C4
+	bl BattleSystem_ListOpponentsFlags
 	add r1, r4, #0
 	add r0, r7, #0
 	add r1, #0x48
@@ -46368,7 +46368,7 @@ ov07_022326C0: ; 0x022326C0
 	str r0, [r2]
 	ldr r0, [r4, #0xc]
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r4, #0
 	add r1, #0x9c
 	str r0, [r1]
@@ -46397,7 +46397,7 @@ _022326EE:
 _0223270C:
 	ldr r0, [r4, #0xc]
 	mov r1, #0x9b
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r4, #0x98
 	str r0, [r4]
 	pop {r4, pc}
@@ -46410,7 +46410,7 @@ _0223271A:
 	add r4, #0xa0
 	mov r1, #0xab
 	add r2, r4, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	pop {r4, pc}
 	thumb_func_end ov07_022326C0
 
@@ -50910,7 +50910,7 @@ _022347D4:
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
 	lsr r3, r3, #0x18
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5]
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -50943,7 +50943,7 @@ _022347D4:
 	ldr r3, [r3, #8]
 	ldrh r1, [r7, #2]
 	ldr r3, [r3]
-	bl sub_02014540
+	bl DrawPokemonSprite_Battle
 	ldr r1, [r5]
 	ldr r3, [sp, #0x18]
 	lsl r1, r1, #2
@@ -51123,7 +51123,7 @@ _022349A0:
 	ldrh r0, [r4]
 	ldrh r1, [r4, #2]
 	ldr r3, [r3]
-	bl sub_02014540
+	bl DrawPokemonSprite_Battle
 	ldr r1, [r5]
 	ldrh r0, [r4]
 	lsl r1, r1, #2
@@ -51234,7 +51234,7 @@ _02234A64:
 	ldrh r1, [r7, #2]
 	ldr r3, [r3]
 	add r2, r6, #0
-	bl sub_02014400
+	bl DrawSprite_Battle
 	ldr r2, [r5]
 	add r1, sp, #0
 	lsl r2, r2, #2

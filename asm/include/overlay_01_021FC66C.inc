@@ -33,7 +33,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetTransitionBits
-.public sub_0205F328
+.public MapObject_SetUnkA0
 .public MapObjectManager_PauseAllMovement
 .public MapObjectManager_UnpauseAllMovement
 .public MapObject_UnpauseMovement
@@ -43,7 +43,7 @@
 .public FollowMon_GetMapObject
 .public FollowMon_IsActive
 .public FieldSystem_UnkSub108_GetMonMood
-.public GetMonData
+.public Pokemon_GetMonData
 .public SaveArray_Party_Get
 .public FieldSystem_GetGearPhoneRingManager
 .public GearPhoneRingManager_ResetIfActive

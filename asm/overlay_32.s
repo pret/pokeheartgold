@@ -969,7 +969,7 @@ _0225DCE0:
 	mov r0, #0xa2
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0xa3
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

@@ -25,6 +25,6 @@ struct UnkStruct_0207294C {
     u8 unk_4;
 };
 
-void sub_02016F40(void *, void *, struct UnkStruct_0207294C *, u8);
+void sub_02016F40(void *unk, Pokepic *pokepic, struct UnkStruct_0207294C *unkStruct_0207294C, u8 battlerId);
 
 #endif // POKEHEARTGOLD_UNK_02016EDC_H

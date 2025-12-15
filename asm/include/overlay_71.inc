@@ -56,7 +56,7 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Heap_Create
@@ -134,12 +134,12 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A948
-.public AcquireBoxMonLock
-.public ReleaseBoxMonLock
-.public GetBoxMonData
+.public BoxPokemon_AcquireBoxMonLock
+.public BoxPokemon_ReleaseBoxMonLock
+.public BoxPokemon_GetData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetBoxmonSpriteCharAndPlttNarcIds
-.public sub_02070854
+.public PokepicTemplate_GetBoxmonSpriteCharAndPlttNarcIds
+.public BoxPokemon_SpriteYOffset
 .public NARC_ReadPokepicAnimScript
 .public sub_020729A4
 .public NNS_G2dSetupSoftwareSpriteCamera

@@ -10,7 +10,7 @@
 #include "battle/battle_02265E28.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
-#include "battle/battle_hp_bar.h"
+#include "battle/battler_info_box.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_02266024.h"
 #include "battle/overlay_12_0226BEC4.h"
@@ -43,7 +43,7 @@ static void BattleMessage_BufferTrainerClass(BattleSystem *bsys, int bufferIndex
 static void BattleMessage_BufferTrainerName(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_BufferBoxName(BattleSystem *bsys, int bufferIndex, int param);
 static void BattleMessage_ExpandPlaceholders(BattleSystem *bsys, MsgData *data, BattleMessage *msg);
-static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId);
+static BOOL BattleMessage_PrinterCallback(struct TextPrinterTemplate *template, u16 glyphId);
 
 BgConfig *BattleSystem_GetBgConfig(BattleSystem *bsys) {
     return bsys->bgConfig;
@@ -70,7 +70,7 @@ int BattleSystem_GetMaxBattlers(BattleSystem *bsys) {
 }
 
 Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return bsys->trainerParty[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->trainerParty[battlerId & 1];
@@ -80,7 +80,7 @@ Party *BattleSystem_GetParty(BattleSystem *bsys, int battlerId) {
 }
 
 int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return Party_GetCount(bsys->trainerParty[battlerId]);
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return Party_GetCount(bsys->trainerParty[battlerId & 1]);
@@ -90,7 +90,7 @@ int BattleSystem_GetPartySize(BattleSystem *bsys, int battlerId) {
 }
 
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return Party_GetMonByIndex(bsys->trainerParty[battlerId], index);
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return Party_GetMonByIndex(bsys->trainerParty[battlerId & 1], index);
@@ -99,11 +99,11 @@ Pokemon *BattleSystem_GetPartyMon(BattleSystem *bsys, int battlerId, int index) 
     }
 }
 
-u32 *ov12_0223A8D4(BattleSystem *bsys) {
+u32 *BattleSystem_GetUnk88(BattleSystem *bsys) {
     return bsys->unk88;
 }
 
-u32 *ov12_0223A8DC(BattleSystem *bsys) {
+u32 *BattleSystem_GetUnk8C(BattleSystem *bsys) {
     return bsys->unk8C;
 }
 
@@ -115,19 +115,19 @@ SpriteManager *BattleSystem_GetGfxHandler(BattleSystem *bsys) {
     return bsys->gfxHandler;
 }
 
-UnkBattleSystemSub17C *ov12_0223A8F4(BattleSystem *bsys, int index) {
+UnkBattleSystemSub17C *BattleSystem_GetUnk17Index(BattleSystem *bsys, int index) {
     return &bsys->unk17C[index];
 }
 
-u32 *ov12_0223A900(BattleSystem *bsys) {
+u32 *BattleSystem_GetUnk19C(BattleSystem *bsys) {
     return bsys->unk19C;
 }
 
-u32 *ov12_0223A908(BattleSystem *bsys, int index) {
+u32 *BattleSystem_GetUnk1A0(BattleSystem *bsys, int index) {
     return bsys->unk1A0[index];
 }
 
-void ov12_0223A914(BattleSystem *bsys, int index, u32 *a2) {
+void BattleSystem_SetUnk1A0Index(BattleSystem *bsys, int index, u32 *a2) {
     bsys->unk1A0[index] = a2;
 }
 
@@ -143,7 +143,7 @@ MsgData *BattleSystem_GetMessageData(BattleSystem *bsys) {
     return bsys->msgData;
 }
 
-u32 *ov12_0223A934(BattleSystem *bsys) {
+u32 *BattleSystem_GetUnk10(BattleSystem *bsys) {
     return bsys->unk10;
 }
 
@@ -163,31 +163,31 @@ u8 *BattleSystem_GetRecvBufferPtr(BattleSystem *bsys) {
     return &bsys->recvBuffer[0];
 }
 
-u16 *ov12_0223A954(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk23E8(BattleSystem *bsys) {
     return &bsys->unk23E8;
 }
 
-u16 *ov12_0223A960(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk23EA(BattleSystem *bsys) {
     return &bsys->unk23EA;
 }
 
-u16 *ov12_0223A96C(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk23EC(BattleSystem *bsys) {
     return &bsys->unk23EC;
 }
 
-u16 *ov12_0223A978(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk23EE(BattleSystem *bsys) {
     return &bsys->unk23EE;
 }
 
-u16 *ov12_0223A984(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk23F0(BattleSystem *bsys) {
     return &bsys->unk23F0;
 }
 
-u16 *ov12_0223A990(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk23F2(BattleSystem *bsys) {
     return &bsys->unk23F2;
 }
 
-UnkBattleSystemSub1D0 *ov12_0223A99C(BattleSystem *bsys) {
+UnkBattleSystemSub1D0 *BattleSystem_GetUnk1DFirstElement(BattleSystem *bsys) {
     return &bsys->unk1D0[0];
 }
 
@@ -200,7 +200,7 @@ String *BattleSystem_GetMessageBuffer(BattleSystem *bsys) {
 }
 
 u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return bsys->trainerId[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->trainerId[battlerId & 1];
@@ -210,7 +210,7 @@ u16 BattleSystem_GetTrainerIndex(BattleSystem *bsys, int battlerId) {
 }
 
 Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return &bsys->trainers[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return &bsys->trainers[battlerId & 1];
@@ -220,7 +220,7 @@ Trainer *BattleSystem_GetTrainer(BattleSystem *bsys, int battlerId) {
 }
 
 PlayerProfile *BattleSystem_GetPlayerProfile(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return bsys->playerProfile[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->playerProfile[battlerId & 1];
@@ -239,9 +239,9 @@ BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys) {
 
 u16 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon) {
     if (bsys->unk2474_2) {
-        return GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
+        return Pokemon_GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
     } else {
-        return GetMonData(mon, MON_DATA_POKEBALL, NULL);
+        return Pokemon_GetMonData(mon, MON_DATA_POKEBALL, NULL);
     }
 }
 
@@ -253,10 +253,10 @@ u32 BattleSystem_GetTrainerGender(BattleSystem *bsys, int battlerId) {
     return PlayerProfile_GetTrainerGender(bsys->playerProfile[battlerId]);
 }
 
-int ov12_0223AAD8(BattleSystem *bsys, int a1) {
+int BattleSystem_FindFirstBattlerWithFlag(BattleSystem *bsys, int flag) {
     int battlerId;
     for (battlerId = 0; battlerId < bsys->maxBattlers; battlerId++) {
-        if (ov12_02261258(bsys->opponentData[battlerId]) == a1) {
+        if (BattleController_GetOpponentFlags(bsys->opponentData[battlerId]) == flag) {
             break;
         }
     }
@@ -266,12 +266,12 @@ int ov12_0223AAD8(BattleSystem *bsys, int a1) {
     return battlerId;
 }
 
-u8 ov12_0223AB0C(BattleSystem *bsys, int battlerId) {
-    return ov12_02261258(bsys->opponentData[battlerId]);
+u8 BattleSystem_GetOpponentFlags(BattleSystem *bsys, int battlerId) {
+    return BattleController_GetOpponentFlags(bsys->opponentData[battlerId]);
 }
 
 u8 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId) {
-    return ov12_02261258(bsys->opponentData[battlerId]) & 1;
+    return BattleController_GetOpponentFlags(bsys->opponentData[battlerId]) & 1;
 }
 
 void *BattleSystem_GetMessageIcon(BattleSystem *bsys) {
@@ -289,7 +289,7 @@ Terrain BattleSystem_GetTerrainId(BattleSystem *bsys) {
     return bsys->terrain;
 }
 
-int ov12_0223AB54(BattleSystem *bsys) {
+int BattleSystem_GetUnk2404(BattleSystem *bsys) {
     return bsys->unk2404;
 }
 
@@ -315,7 +315,7 @@ int BattleSystem_GetBattlerIdPartner(BattleSystem *bsys, int battlerId) {
     return battlerIdPartner;
 }
 
-int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
+int BattleSystem_GetBattlerIdOpponent(BattleSystem *bsys, int battlerId, int side) {
     int battlerIdOpponent;
     int maxBattlers = BattleSystem_GetMaxBattlers(bsys);
     u32 battleType = BattleSystem_GetBattleType(bsys);
@@ -325,7 +325,7 @@ int ov12_0223ABB8(BattleSystem *bsys, int battlerId, int side) {
     }
 
     for (battlerIdOpponent = 0; battlerIdOpponent < maxBattlers; battlerIdOpponent++) {
-        if (battlerIdOpponent != battlerId && (ov12_0223AB0C(bsys, battlerIdOpponent) & 2) == side && BattleSystem_GetFieldSide(bsys, battlerIdOpponent) != BattleSystem_GetFieldSide(bsys, battlerId)) {
+        if (battlerIdOpponent != battlerId && (BattleSystem_GetOpponentFlags(bsys, battlerIdOpponent) & 2) == side && BattleSystem_GetFieldSide(bsys, battlerIdOpponent) != BattleSystem_GetFieldSide(bsys, battlerId)) {
             break;
         }
     }
@@ -338,12 +338,12 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     Pokemon *mon;
     BOOL ret = FALSE;
     int data;
-    int index1 = ov12_022581D4(bsys, ctx, 2, battlerId);
+    int index1 = BattleSystem_GetBattleContextData(bsys, ctx, 2, battlerId);
     int index2;
     int friendship;
 
-    if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(bsys, battlerId) & 1))) {
-        index2 = ov12_022581D4(bsys, ctx, 2, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
+    if (BattleSystem_GetBattleType(bsys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(bsys) & BATTLE_TYPE_TAG) && !(BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
+        index2 = BattleSystem_GetBattleContextData(bsys, ctx, 2, BattleSystem_GetBattlerIdPartner(bsys, battlerId));
         if (index2 == selectedMonIndex) {
             battlerId = BattleSystem_GetBattlerIdPartner(bsys, battlerId);
         }
@@ -354,10 +354,10 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     friendship = 0;
 
     if (GetItemAttr(item, ITEMATTR_SLP_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_SLEEP) {
             data &= ~STATUS_SLEEP;
-            SetMonData(mon, MON_DATA_STATUS, &data);
+            Pokemon_SetData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_SLEEP;
@@ -371,10 +371,10 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
 
     if (GetItemAttr(item, ITEMATTR_PSN_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_POISON_ALL) {
             data &= ~STATUS_POISON_ALL;
-            SetMonData(mon, MON_DATA_STATUS, &data);
+            Pokemon_SetData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_POISON_ALL;
@@ -385,10 +385,10 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
 
     if (GetItemAttr(item, ITEMATTR_BRN_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_BURN) {
             data &= ~STATUS_BURN;
-            SetMonData(mon, MON_DATA_STATUS, &data);
+            Pokemon_SetData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_BURN;
@@ -399,10 +399,10 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
 
     if (GetItemAttr(item, ITEMATTR_FRZ_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_FREEZE) {
             data &= ~STATUS_FREEZE;
-            SetMonData(mon, MON_DATA_STATUS, &data);
+            Pokemon_SetData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_FREEZE;
@@ -413,10 +413,10 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
 
     if (GetItemAttr(item, ITEMATTR_PRZ_HEAL, HEAP_ID_BATTLE)) {
-        data = GetMonData(mon, MON_DATA_STATUS, NULL);
+        data = Pokemon_GetMonData(mon, MON_DATA_STATUS, NULL);
         if (data & STATUS_PARALYSIS) {
             data &= ~STATUS_PARALYSIS;
-            SetMonData(mon, MON_DATA_STATUS, &data);
+            Pokemon_SetData(mon, MON_DATA_STATUS, &data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 data = GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS, NULL);
                 data &= ~STATUS_PARALYSIS;
@@ -449,9 +449,9 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
 
     if (GetItemAttr(item, ITEMATTR_GUARD_SPEC, HEAP_ID_BATTLE)) {
-        data = ov12_022581D4(bsys, ctx, 1, battlerId);
+        data = BattleSystem_GetBattleContextData(bsys, ctx, 1, battlerId);
         if (!data) {
-            data = ov12_022581D4(bsys, ctx, 0, battlerId);
+            data = BattleSystem_GetBattleContextData(bsys, ctx, 0, battlerId);
             data |= SIDE_CONDITION_MIST;
             ov12_022582B8(bsys, ctx, 0, battlerId, data);
             ov12_022582B8(bsys, ctx, 1, battlerId, 5);
@@ -526,8 +526,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
 
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
-        if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
-            AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
+        if (Pokemon_GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != Pokemon_GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
+            Pokemon_AddData(mon, MON_DATA_MOVE1_PP + movePos, data);
             if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                 if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
                     AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
@@ -540,8 +540,8 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     if (GetItemAttr(item, ITEMATTR_PP_RESTORE_ALL, HEAP_ID_BATTLE)) {
         data = GetItemAttr(item, ITEMATTR_PP_RESTORE_PARAM, HEAP_ID_BATTLE);
         for (movePos = 0; movePos < MAX_MON_MOVES; movePos++) {
-            if (GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
-                AddMonData(mon, MON_DATA_MOVE1_PP + movePos, data);
+            if (Pokemon_GetMonData(mon, MON_DATA_MOVE1_PP + movePos, NULL) != Pokemon_GetMonData(mon, MON_DATA_MOVE1_MAX_PP + movePos, NULL)) {
+                Pokemon_AddData(mon, MON_DATA_MOVE1_PP + movePos, data);
                 if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
                     if (!(GetBattlerVar(ctx, battlerId, BMON_DATA_STATUS2, NULL) & STATUS2_TRANSFORM) && !(GetBattlerVar(ctx, battlerId, BMON_DATA_MIMICED_MOVE, NULL) & MaskOfFlagNo(movePos))) {
                         AddBattlerVar(ctx, battlerId, BMON_DATA_CUR_PP_1 + movePos, data);
@@ -555,26 +555,26 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     if (GetItemAttr(item, ITEMATTR_HP_RESTORE, HEAP_ID_BATTLE)) {
         data = 0;
         if (GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
-            if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+            if (Pokemon_GetMonData(mon, MON_DATA_HP, NULL) == 0) {
                 data = 1;
             }
         } else {
-            data = GetMonData(mon, MON_DATA_HP, NULL);
+            data = Pokemon_GetMonData(mon, MON_DATA_HP, NULL);
         }
-        if (data && GetMonData(mon, MON_DATA_HP, NULL) != GetMonData(mon, MON_DATA_MAX_HP, NULL)) {
+        if (data && Pokemon_GetMonData(mon, MON_DATA_HP, NULL) != Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL)) {
             data = GetItemAttr(item, ITEMATTR_HP_RESTORE_PARAM, HEAP_ID_BATTLE);
             switch (data) {
             case HP_RESTORE_ALL:
-                data = GetMonData(mon, MON_DATA_MAX_HP, NULL);
+                data = Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL);
                 break;
             case HP_RESTORE_HALF:
-                data = GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
+                data = Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL) / 2;
                 if (data == 0) {
                     data = 1;
                 }
                 break;
             case HP_RESTORE_QTR:
-                data = GetMonData(mon, MON_DATA_MAX_HP, NULL) * 25 / 100;
+                data = Pokemon_GetMonData(mon, MON_DATA_MAX_HP, NULL) * 25 / 100;
                 if (data == 0) {
                     data = 1;
                 }
@@ -582,7 +582,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             default:
                 break;
             }
-            AddMonData(mon, MON_DATA_HP, data);
+            Pokemon_AddData(mon, MON_DATA_HP, data);
             if (!GetItemAttr(item, ITEMATTR_REVIVE, HEAP_ID_BATTLE)) {
                 if (BattleSystem_GetFieldSide(bsys, battlerId)) {
                     SetBattlerVar(ctx, battlerId, BMON_DATA_HELD_ITEM_RESTORE_HP, &data);
@@ -595,19 +595,19 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
     }
 
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO, HEAP_ID_BATTLE)) {
-        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100 && ret == TRUE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 100 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_LO_PARAM, HEAP_ID_BATTLE);
         }
     }
 
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_MED, HEAP_ID_BATTLE)) {
-        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200 && ret == TRUE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 100 && Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) < 200 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_MED_PARAM, HEAP_ID_BATTLE);
         }
     }
 
     if (GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI, HEAP_ID_BATTLE)) {
-        if (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200 && ret == TRUE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) >= 200 && ret == TRUE) {
             friendship = GetItemAttr(item, ITEMATTR_FRIENDSHIP_MOD_HI_PARAM, HEAP_ID_BATTLE);
         }
     }
@@ -617,15 +617,15 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *bsys, int battlerId, int selectedM
             if (BallToItemId(BattleSystem_GetMonBall(bsys, mon)) == ITEM_LUXURY_BALL) {
                 friendship++;
             }
-            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
+            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
                 friendship++;
             }
-            data = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+            data = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
             if (GetItemAttr(data, ITEMATTR_HOLD_EFFECT, HEAP_ID_BATTLE) == HOLD_EFFECT_FRIENDSHIP_UP) {
                 friendship = friendship * 150 / 100;
             }
         }
-        AddMonData(mon, MON_DATA_FRIENDSHIP, friendship);
+        Pokemon_AddData(mon, MON_DATA_FRIENDSHIP, friendship);
         if (index1 == selectedMonIndex || index2 == selectedMonIndex) {
             AddBattlerVar(ctx, battlerId, BMON_DATA_FRIENDSHIP, friendship);
         }
@@ -681,14 +681,14 @@ int ov12_0223B52C(BattleSystem *bsys) {
 u8 ov12_0223B580(BattleSystem *bsys, int battlerId, u8 a2) {
     u16 item;
 
-    if (ov12_0223AB0C(bsys, battlerId) == 4 && !(bsys->battleType & BATTLE_TYPE_MULTI)) {
+    if (BattleSystem_GetOpponentFlags(bsys, battlerId) == 4 && !(bsys->battleType & BATTLE_TYPE_MULTI)) {
         if (bsys->battleType & BATTLE_TYPE_LINK) {
             if (!(a2 & MaskOfFlagNo(BattleSystem_GetBattlerIdPartner(bsys, battlerId)))) {
                 return 1;
             }
         } else {
-            item = ov12_022581D4(bsys, bsys->ctx, 12, 0);
-            if ((ov12_022581D4(bsys, bsys->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
+            item = BattleSystem_GetBattleContextData(bsys, bsys->ctx, 12, 0);
+            if ((BattleSystem_GetBattleContextData(bsys, bsys->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
                 return 0;
             } else {
                 return 1;
@@ -715,7 +715,7 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
         }
         if (*selectedMonIndex < PARTY_SIZE) {
             mon = Party_GetMonByIndex(setup->party[0], *selectedMonIndex);
-            species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
+            species = Pokemon_GetEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
             if (species) {
                 return species;
             }
@@ -724,13 +724,13 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
     return species;
 }
 
-u8 ov12_0223B688(BattleSystem *bsys) {
+u8 BattleSystem_GetUnk23FC(BattleSystem *bsys) {
     return bsys->unk23FC;
 }
 
-u8 ov12_0223B694(BattleSystem *bsys) {
+u8 BattleSystem_GetSafariRunAttempts(BattleSystem *bsys) {
     GF_ASSERT(bsys->ctx != NULL);
-    return ov12_022581D4(bsys, bsys->ctx, 5, 0);
+    return BattleSystem_GetBattleContextData(bsys, bsys->ctx, 5, 0);
 }
 
 int BattleSystem_GetSafariBallCount(BattleSystem *bsys) {
@@ -767,12 +767,12 @@ u32 BattleSystem_GetBattleStyle(BattleSystem *bsys) {
     return Options_GetBattleStyle(bsys->options);
 }
 
-void *ov12_0223B750(BattleSystem *bsys) {
+void *BattleSystem_GetUnk1C8(BattleSystem *bsys) {
     return bsys->unk1C8;
 }
 
 SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return bsys->chatotVoice[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->chatotVoice[battlerId & 1];
@@ -793,7 +793,7 @@ void BattleSystem_TryChangeForm(BattleSystem *bsys) {
 
     for (i = 0; i < BattleSystem_GetPartySize(bsys, BATTLER_PLAYER); i++) {
         mon = BattleSystem_GetPartyMon(bsys, BATTLER_PLAYER, i);
-        species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
         if (species == SPECIES_BURMY && bsys->unk2418[BATTLER_PLAYER] & MaskOfFlagNo(i)) {
             switch (BattleSystem_GetTerrainId(bsys)) {
             case TERRAIN_GRASS:
@@ -828,7 +828,7 @@ void BattleSystem_TryChangeForm(BattleSystem *bsys) {
                 form = BURMY_TRASH;
                 break;
             }
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
         }
     }
 }
@@ -857,7 +857,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     MIi_CpuCopy32(src, dst, 0x200);
 
     vram = (u8 *)0x6400000;
-    image = Sprite_GetImageProxy(bsys->unk17C[1].unk0->sprite);
+    image = Sprite_GetImageProxy(bsys->unk17C[1].managedSprite->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
 
     for (bgY = 20; bgY < 28; bgY++) {
@@ -884,7 +884,7 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     }
 
     vram = (u8 *)0x6400000;
-    image = Sprite_GetImageProxy(bsys->unk17C[0].unk0->sprite);
+    image = Sprite_GetImageProxy(bsys->unk17C[0].managedSprite->sprite);
     vram += image->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN];
 
     for (i = 0; i < 0x800; i++) {
@@ -921,19 +921,19 @@ void BattleSystem_SetBackground(BattleSystem *bsys) {
     ov12_02266008(&bsys->unk17C[1]);
 }
 
-u8 *ov12_0223BAD0(BattleSystem *bsys) {
+u8 *BattleSystem_GetUnk220(BattleSystem *bsys) {
     return bsys->unk220;
 }
 
-u16 *ov12_0223BAD8(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk224(BattleSystem *bsys) {
     return bsys->unk224;
 }
 
-u16 *ov12_0223BAE0(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk2228(BattleSystem *bsys) {
     return &bsys->unk2228[0];
 }
 
-u16 *ov12_0223BAEC(BattleSystem *bsys) {
+u16 *BattleSystem_GetUnk2308(BattleSystem *bsys) {
     return &bsys->unk2308[0];
 }
 
@@ -941,15 +941,15 @@ int BattleSystem_GetWeather(BattleSystem *bsys) {
     return bsys->weather;
 }
 
-u8 ov12_0223BB04(BattleSystem *bsys) {
+u8 BattleSystem_GetUnk2421(BattleSystem *bsys) {
     return bsys->unk2421;
 }
 
-void ov12_0223BB10(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk2421(BattleSystem *bsys, u8 a1) {
     bsys->unk2421 = a1;
 }
 
-int ov12_0223BB1C(BattleSystem *bsys) {
+int BattleSystem_GetUnk2430(BattleSystem *bsys) {
     return bsys->unk2430;
 }
 
@@ -960,123 +960,123 @@ void BattleSystem_GameStatIncrement(BattleSystem *bsys, int id) {
     GameStats_Inc(bsys->gameStats, id);
 }
 
-void ov12_0223BB44(BattleSystem *bsys) {
+void BattleSystem_GameStatAddScoreSpeciesCaught(BattleSystem *bsys) {
     if (bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) {
         return;
     }
     GameStats_AddScore(bsys->gameStats, SCORE_EVENT_REGISTER_SPECIES_CAUGHT);
 }
 
-void ov12_0223BB64(BattleSystem *bsys, int a1) {
+void BattleSystem_SetUnk2440(BattleSystem *bsys, int a1) {
     bsys->unk2440 = a1;
 }
 
-void ov12_0223BB6C(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk2442(BattleSystem *bsys, u8 a1) {
     bsys->unk2442 = a1;
 }
 
-void *ov12_0223BB78(BattleSystem *bsys) {
+void *BattleSystem_GetUnk1BC(BattleSystem *bsys) {
     return bsys->unk1BC;
 }
 
-void ov12_0223BB80(BattleSystem *bsys, void *a1) {
+void BattleSystem_SetUnk1BC(BattleSystem *bsys, void *a1) {
     bsys->unk1BC = a1;
 }
 
-UnkBattleSystemSub1D0 *ov12_0223BB88(BattleSystem *bsys, int index) {
+UnkBattleSystemSub1D0 *BattleSystem_GetUnk1D0Index(BattleSystem *bsys, int index) {
     return &bsys->unk1D0[index];
 }
 
-u8 *ov12_0223BB94(UnkBattleSystemSub1D0 *ptr, int index) {
+u8 *BattleSystem_GetUnk0(UnkBattleSystemSub1D0 *ptr, int index) {
     GF_ASSERT(index < 4);
     return ptr[index].unk0;
 }
 
-void ov12_0223BBA8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnk4(UnkBattleSystemSub1D0 *ptr, int index, int narcId) {
     GF_ASSERT(index < 4);
-    ptr[index].unk4 = a2;
+    ptr[index].unk4 = narcId;
 }
 
-void ov12_0223BBC0(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnk8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
     GF_ASSERT(index < 4);
     ptr[index].unk8 = a2;
 }
 
-void ov12_0223BBD8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
+void BattleSystem_SetUnkC(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
     GF_ASSERT(index < 4);
     ptr[index].unkC = a2;
 }
 
-void ov12_0223BBF0(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23FD(BattleSystem *bsys, u8 a1) {
     bsys->unk23FD = a1;
 }
 
-void ov12_0223BBFC(BattleSystem *bsys, u8 *a1) {
+void BattleSystem_SetUnk23F4(BattleSystem *bsys, u8 *a1) {
     bsys->unk23F4 = a1;
 }
 
-void ov12_0223BC08(BattleSystem *bsys, u8 *a1) {
+void BattleSystem_SetUnk23F8(BattleSystem *bsys, u8 *a1) {
     bsys->unk23F8 = a1;
 }
 
-void ov12_0223BC14(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23F4_2(BattleSystem *bsys, u8 a1) {
     *bsys->unk23F4 = a1;
 }
 
-void ov12_0223BC20(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23F8_2(BattleSystem *bsys, u8 a1) {
     *bsys->unk23F8 = a1;
 }
 
-void ov12_0223BC2C(BattleSystem *bsys, u8 a1) {
+void BattleSystem_SetUnk23FE(BattleSystem *bsys, u8 a1) {
     bsys->unk23FE = a1;
 }
 
-BattleHpBar *BattleSystem_GetHpBar(BattleSystem *bsys, int battlerId) {
-    return OpponentData_GetHpBar(bsys->opponentData[battlerId]);
+BattlerInfoBox *BattleSystem_GetBattlerInfoBox(BattleSystem *bsys, int battlerId) {
+    return OpponentData_GetBattlerInfoBox(bsys->opponentData[battlerId]);
 }
 
-void BattleSystem_HpBar_Init(BattleSystem *bsys) {
+void BattleSystem_BattlerInfoBox_Init(BattleSystem *bsys) {
     int i;
-    BattleHpBar *hpBar;
+    BattlerInfoBox *battlerInfoBox;
 
     for (i = 0; i < bsys->maxBattlers; i++) {
-        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
-        hpBar->bsys = bsys;
-        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(ov12_02261258(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
-        BattleHpBar_LoadResources(hpBar);
-        BattleHpBar_SetEnabled(hpBar, FALSE);
+        battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
+        battlerInfoBox->bsys = bsys;
+        battlerInfoBox->type = BattlerInfoBox_Util_GetBarTypeFromBattlerSide(BattleController_GetOpponentFlags(bsys->opponentData[i]), BattleSystem_GetBattleType(bsys));
+        BattlerInfoBox_LoadResources(battlerInfoBox);
+        BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, FALSE);
     }
 }
 
 void BattleSystem_SetHpBarEnabled(BattleSystem *bsys) {
     int i;
-    BattleHpBar *hpBar;
+    BattlerInfoBox *battlerInfoBox;
 
     for (i = 0; i < bsys->maxBattlers; i++) {
-        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
-        if (hpBar->hp) {
-            BattleHpBar_SetEnabled(hpBar, TRUE);
+        battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
+        if (battlerInfoBox->hp) {
+            BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, TRUE);
         }
     }
 }
 
 void BattleSystem_SetHpBarDisabled(BattleSystem *bsys) {
     int i;
-    BattleHpBar *hpBar;
+    BattlerInfoBox *battlerInfoBox;
 
     for (i = 0; i < bsys->maxBattlers; i++) {
-        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
-        BattleHpBar_SetEnabled(hpBar, FALSE);
+        battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
+        BattlerInfoBox_SetBoxObjectEnabled(battlerInfoBox, FALSE);
     }
 }
 
 void BattleSystem_HpBar_Delete(BattleSystem *bsys) {
     int i;
-    BattleHpBar *hpBar;
+    BattlerInfoBox *battlerInfoBox;
 
     for (i = 0; i < bsys->maxBattlers; i++) {
-        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
-        BattleHpBar_FreeResources(hpBar);
+        battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
+        BattlerInfoBox_FreeResources(battlerInfoBox);
     }
 }
 
@@ -1105,7 +1105,7 @@ void BattleSystem_SetCriticalHpMusicDelay(BattleSystem *bsys, u8 delay) {
     bsys->criticalHpMusicDelay = delay;
 }
 
-void ov12_0223BD8C(BattleSystem *bsys, int a1) {
+void BattleSystem_SetUnk243C(BattleSystem *bsys, int a1) {
     bsys->unk243C = a1;
 }
 
@@ -1192,11 +1192,11 @@ static u8 ov12_0223BFB0(u8 *buffer, u8 *index, u16 *size) {
     return buffer[(*index)++];
 }
 
-u16 ov12_0223BFC0(BattleSystem *bsys) {
+u16 BattleSystem_GetUnk2446(BattleSystem *bsys) {
     return bsys->unk2446;
 }
 
-int ov12_0223BFCC(BattleSystem *bsys, u16 battlerId) {
+int BattleSystem_GetUnk2464WithBattlerId(BattleSystem *bsys, u16 battlerId) {
     return bsys->unk2464[battlerId];
 }
 
@@ -1209,7 +1209,7 @@ BOOL BattleSystem_IsRecordingPaused(BattleSystem *bsys) {
 }
 
 void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->isRecordingPaused || ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 || ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->isRecordingPaused || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 13, 0) == 44 || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 14, 0) == 44) {
         return;
     }
 
@@ -1221,7 +1221,7 @@ void ov12_0223BFFC(BattleSystem *bsys, u32 flag) {
 }
 
 BOOL ov12_0223C080(BattleSystem *bsys) {
-    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->isRecordingPaused || ov12_022581D4(bsys, bsys->ctx, 13, 0) == 44 || ov12_022581D4(bsys, bsys->ctx, 14, 0) == 44) {
+    if (!(bsys->battleSpecial & BATTLE_SPECIAL_RECORDING) || bsys->isRecordingPaused || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 13, 0) == 44 || BattleSystem_GetBattleContextData(bsys, bsys->ctx, 14, 0) == 44) {
         return FALSE;
     }
     return TRUE;
@@ -1235,7 +1235,7 @@ void ov12_0223C0C4(BattleSystem *bsys) {
 }
 
 u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId) {
-    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(bsys, battlerId) & 1))) {
+    if ((bsys->battleType & BATTLE_TYPE_MULTI) || ((bsys->battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1))) {
         return bsys->chatotVoiceParam[battlerId];
     } else if (bsys->battleType & BATTLE_TYPE_DOUBLES) {
         return bsys->chatotVoiceParam[battlerId & 1];
@@ -1244,7 +1244,7 @@ u8 BattleSystem_GetChatotVoiceParam(BattleSystem *bsys, int battlerId) {
     }
 }
 
-u32 ov12_0223C134(BattleSystem *bsys) {
+u32 BattleSystem_GetUnk2488(BattleSystem *bsys) {
     return bsys->unk2488;
 }
 
@@ -1256,7 +1256,7 @@ u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId) {
         return 0xFF;
     }
 
-    if ((bsys->battleType & BATTLE_TYPE_DOUBLES) && (ov12_0223AB0C(bsys, battlerId) & 1)) {
+    if ((bsys->battleType & BATTLE_TYPE_DOUBLES) && (BattleSystem_GetOpponentFlags(bsys, battlerId) & 1)) {
         return 0xFF;
     }
 
@@ -1272,11 +1272,11 @@ u8 ov12_0223C140(BattleSystem *bsys, u32 battlerId) {
 void ov12_0223C1A0(BattleSystem *bsys, u8 *buffer) {
     int i;
     for (i = 0; i < bsys->maxBattlers; i++) {
-        buffer[ov12_02261258(bsys->opponentData[i])] = i;
+        buffer[BattleController_GetOpponentFlags(bsys->opponentData[i])] = i;
     }
 }
 
-void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer) {
+void BattleSystem_ListOpponentsFlags(BattleSystem *bsys, u8 *buffer) {
     int i;
 
     for (i = 0; i < 4; i++) {
@@ -1284,7 +1284,7 @@ void ov12_0223C1C4(BattleSystem *bsys, u8 *buffer) {
     }
 
     for (i = 0; i < bsys->maxBattlers; i++) {
-        buffer[i] = ov12_02261258(bsys->opponentData[i]);
+        buffer[i] = BattleController_GetOpponentFlags(bsys->opponentData[i]);
     }
 }
 
@@ -1300,13 +1300,13 @@ void ov12_0223C1F4(BattleSystem *bsys, void **a1) {
     }
 }
 
-void ov12_0223C224(BattleSystem *bsys, int a1) {
+void BattleSystem_SetOpponentInfoBoxPriorties(BattleSystem *bsys, int priority) {
     int i;
-    BattleHpBar *hpBar;
+    BattlerInfoBox *battlerInfoBox;
 
     for (i = 0; i < bsys->maxBattlers; i++) {
-        hpBar = OpponentData_GetHpBar(bsys->opponentData[i]);
-        ov12_02264EE0(hpBar, a1);
+        battlerInfoBox = OpponentData_GetBattlerInfoBox(bsys->opponentData[i]);
+        BattlerInfoBox_SetBoxArrowObjPriorities(battlerInfoBox, priority);
     }
 }
 
@@ -1329,24 +1329,24 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
 }
 
 void BattleSystem_SetPokedexSeen(BattleSystem *bsys, int battlerId) {
-    u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
-    Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, ov12_022581D4(bsys, bsys->ctx, 2, battlerId));
+    u32 flag = BattleController_GetOpponentFlags(bsys->opponentData[battlerId]);
+    Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, BattleSystem_GetBattleContextData(bsys, bsys->ctx, 2, battlerId));
 
     if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
         if ((flag & 1) || bsys->battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI) || bsys->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) {
             Pokedex_SetMonSeenFlag(bsys->pokedex, mon);
         }
     }
-    if (!(flag & 1) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
+    if (!(flag & 1) && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
         Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
     }
 }
 
 void BattleSystem_SetPokedexCaught(BattleSystem *bsys, int battlerId) {
-    u32 flag = ov12_02261258(bsys->opponentData[battlerId]);
+    u32 flag = BattleController_GetOpponentFlags(bsys->opponentData[battlerId]);
 
     if (!(bsys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
-        int selectedMonIndex = ov12_022581D4(bsys, bsys->ctx, 2, battlerId);
+        int selectedMonIndex = BattleSystem_GetBattleContextData(bsys, bsys->ctx, 2, battlerId);
         Pokemon *mon = BattleSystem_GetPartyMon(bsys, battlerId, selectedMonIndex);
         Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
     }
@@ -1375,7 +1375,7 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battl
             }
             FillWindowPixelBuffer(window, 0xFF);
             String_Copy(bsys->msgBuffer, msg);
-            index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+            index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
             String_Delete(msg);
         } else {
             MsgData *data;
@@ -1406,14 +1406,14 @@ u8 BattleSystem_PrintTrainerMessage(BattleSystem *bsys, int trainerId, int battl
             msg = NewString_ReadMsgData(data, stringId);
             FillWindowPixelBuffer(window, 0xFF);
             String_Copy(bsys->msgBuffer, msg);
-            index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+            index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
             String_Delete(msg);
             DestroyMsgData(data);
         }
     } else {
         GetTrainerMessageByIdPair(trainerId, a2, bsys->msgBuffer, HEAP_ID_BATTLE);
         FillWindowPixelBuffer(window, 0xFF);
-        index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+        index = AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
     }
     return index;
 }
@@ -1424,7 +1424,7 @@ u32 BattleSystem_PrintBattleMessage(BattleSystem *bsys, MsgData *data, BattleMes
     BattleSystem_BufferMessage(bsys, msg);
     BattleMessage_ExpandPlaceholders(bsys, data, msg);
     FillWindowPixelBuffer(window, 0xFF);
-    return AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, ov12_0223CF14);
+    return AddTextPrinterParameterized(window, 1, bsys->msgBuffer, 0, 0, delay, BattleMessage_PrinterCallback);
 }
 
 u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessage *msg, int x, int y, int flag, int width, int delay) {
@@ -1444,7 +1444,7 @@ u32 ov12_0223C4E8(BattleSystem *bsys, Window *window, MsgData *data, BattleMessa
         dx = 0;
     }
 
-    return AddTextPrinterParameterized(window, 0, bsys->msgBuffer, x + dx, y, delay, ov12_0223CF14);
+    return AddTextPrinterParameterized(window, 0, bsys->msgBuffer, x + dx, y, delay, BattleMessage_PrinterCallback);
 }
 
 static void BattleSystem_AdjustMessageForSide(BattleSystem *bsys, BattleMessage *msg) {
@@ -1932,7 +1932,7 @@ static void BattleMessage_ExpandPlaceholders(BattleSystem *bsys, MsgData *data, 
     String_Delete(str);
 }
 
-static BOOL ov12_0223CF14(struct TextPrinterTemplate *template, u16 glyphId) {
+static BOOL BattleMessage_PrinterCallback(struct TextPrinterTemplate *template, u16 glyphId) {
     BOOL ret = FALSE;
 
     switch (glyphId) {

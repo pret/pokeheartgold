@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "constants/balls.h"
 #include "constants/items.h"
 #include "constants/map_sections.h"
 #include "constants/moves.h"
@@ -385,12 +386,12 @@ BOOL ScrCmd_StatJudge(ScriptContext *ctx) {
     u16 *highestIvIndex = ScriptGetVarPointer(ctx);
     u16 *highestIv = ScriptGetVarPointer(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), monIndex);
-    ivList[0] = GetMonData(mon, MON_DATA_HP_IV, 0);
-    ivList[1] = GetMonData(mon, MON_DATA_ATK_IV, 0);
-    ivList[2] = GetMonData(mon, MON_DATA_DEF_IV, 0);
-    ivList[3] = GetMonData(mon, MON_DATA_SPEED_IV, 0);
-    ivList[4] = GetMonData(mon, MON_DATA_SPATK_IV, 0);
-    ivList[5] = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
+    ivList[0] = Pokemon_GetMonData(mon, MON_DATA_HP_IV, 0);
+    ivList[1] = Pokemon_GetMonData(mon, MON_DATA_ATK_IV, 0);
+    ivList[2] = Pokemon_GetMonData(mon, MON_DATA_DEF_IV, 0);
+    ivList[3] = Pokemon_GetMonData(mon, MON_DATA_SPEED_IV, 0);
+    ivList[4] = Pokemon_GetMonData(mon, MON_DATA_SPATK_IV, 0);
+    ivList[5] = Pokemon_GetMonData(mon, MON_DATA_SPDEF_IV, 0);
 
     highestIvValue = 0;
     *ivTotal = 0;
@@ -435,7 +436,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
 
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(party, i);
-        heldItems[i] = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
+        heldItems[i] = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, 0);
         if (heldItems[i] == ITEM_GRISEOUS_ORB) {
             count++;
         }
@@ -450,25 +451,25 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
         for (i = 0; i < partyCount; i++) {
             if (heldItems[i] == ITEM_GRISEOUS_ORB) {
                 mon = Party_GetMonByIndex(party, i);
-                SetMonData(mon, MON_DATA_HELD_ITEM, &data);
+                Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &data);
             }
         }
     }
 
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(party, i);
-        form = GetMonData(mon, MON_DATA_FORM, 0);
+        form = Pokemon_GetMonData(mon, MON_DATA_FORM, 0);
         if (form > 0) {
-            species = GetMonData(mon, MON_DATA_SPECIES, 0);
+            species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0);
             switch (species) {
             case SPECIES_GIRATINA:
-                Mon_UpdateGiratinaForm(mon);
+                Pokemon_UpdateGiratinaForm(mon);
                 break;
             case SPECIES_ROTOM:
-                Mon_UpdateRotomForm(mon, 0, 0);
+                Pokemon_UpdateRotomForm(mon, 0, 0);
                 break;
             case SPECIES_SHAYMIN:
-                Mon_UpdateShayminForm(mon, 0);
+                Pokemon_UpdateShayminForm(mon, 0);
                 break;
             }
         }
@@ -481,7 +482,7 @@ BOOL ScrCmd_SetMonForm(ScriptContext *ctx) {
     u16 index = ScriptGetVar(ctx);
     u16 form = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
-    SetMonData(mon, MON_DATA_FORM, &form);
+    Pokemon_SetData(mon, MON_DATA_FORM, &form);
     return FALSE;
 }
 
@@ -501,9 +502,9 @@ BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
     partyCount = Party_GetCount(party);
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(party, i);
-        species = GetMonData(mon, MON_DATA_SPECIES, 0);
-        form = GetMonData(mon, MON_DATA_FORM, 0);
-        isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
+        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0);
+        form = Pokemon_GetMonData(mon, MON_DATA_FORM, 0);
+        isEgg = Pokemon_GetMonData(mon, MON_DATA_IS_EGG, 0);
         if (species == SPECIES_ROTOM && form && !isEgg) {
             if (*firstIndex == 255) {
                 *firstIndex = i;
@@ -522,7 +523,7 @@ BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx) {
     ScriptGetVar(ctx); // unsused variable
     u32 form = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), rotomIndex);
-    Mon_UpdateRotomForm(mon, form, defaultSlot);
+    Pokemon_UpdateRotomForm(mon, form, defaultSlot);
     Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fieldSystem->saveData), mon);
     return FALSE;
 }
@@ -534,9 +535,9 @@ BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx) {
     u16 *typePtr = ScriptGetVarPointer(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyIndex);
 
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
+    u16 species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0);
 
-    if (GetMonData(mon, MON_DATA_IS_EGG, 0) == FALSE) {
+    if (Pokemon_GetMonData(mon, MON_DATA_IS_EGG, 0) == FALSE) {
         switch (species) {
         case SPECIES_CATERPIE:
         case SPECIES_METAPOD:
@@ -566,12 +567,12 @@ BOOL ScrCmd_GetHiddenPowerType(ScriptContext *ctx) {
 }
 
 static void GetHiddenPowerPowerType(Pokemon *mon, s32 *power, s32 *type) {
-    int hpIv = GetMonData(mon, MON_DATA_HP_IV, 0);
-    int atkIv = GetMonData(mon, MON_DATA_ATK_IV, 0);
-    int defIv = GetMonData(mon, MON_DATA_DEF_IV, 0);
-    int spdIv = GetMonData(mon, MON_DATA_SPEED_IV, 0);
-    int spatkIv = GetMonData(mon, MON_DATA_SPATK_IV, 0);
-    int spdefIv = GetMonData(mon, MON_DATA_SPDEF_IV, 0);
+    int hpIv = Pokemon_GetMonData(mon, MON_DATA_HP_IV, 0);
+    int atkIv = Pokemon_GetMonData(mon, MON_DATA_ATK_IV, 0);
+    int defIv = Pokemon_GetMonData(mon, MON_DATA_DEF_IV, 0);
+    int spdIv = Pokemon_GetMonData(mon, MON_DATA_SPEED_IV, 0);
+    int spatkIv = Pokemon_GetMonData(mon, MON_DATA_SPATK_IV, 0);
+    int spdefIv = Pokemon_GetMonData(mon, MON_DATA_SPDEF_IV, 0);
     if (power) {
         *power = ((hpIv & 2) >> 1) | (atkIv & 2) | ((defIv & 2) << 1) | ((spdIv & 2) << 2) | ((spatkIv & 2) << 3) | ((spdefIv & 2) << 4);
         *power = ((*power) * 40 / 63) + 30;
@@ -590,9 +591,9 @@ BOOL ScrCmd_SetFavoriteMon(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), 0);
     SAVE_MISC_DATA *data = Save_Misc_Get(fieldSystem->saveData);
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
-    u32 form = GetMonData(mon, MON_DATA_FORM, 0);
-    u32 isEgg = GetMonData(mon, MON_DATA_IS_EGG, 0);
+    u32 species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, 0);
+    u32 form = Pokemon_GetMonData(mon, MON_DATA_FORM, 0);
+    u32 isEgg = Pokemon_GetMonData(mon, MON_DATA_IS_EGG, 0);
     SaveMisc_SetFavoriteMon(data, species, form, isEgg);
     return FALSE;
 }
@@ -616,7 +617,7 @@ BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx) {
     u32 index = ScriptGetVar(ctx);
     u16 *form = ScriptGetVarPointer(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
-    *form = GetMonData(mon, MON_DATA_FORM, 0);
+    *form = Pokemon_GetMonData(mon, MON_DATA_FORM, 0);
     return FALSE;
 }
 
@@ -1049,12 +1050,12 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     }
 
     mon = AllocMonZeroed(HEAP_ID_FIELD2);
-    ZeroMonData(mon);
+    Pokemon_ZeroMonData(mon);
 
-    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
+    SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, MetLocation(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        if (GetMonData(mon, MON_DATA_MOVE1 + i, 0) == MOVE_NONE) {
+        if (Pokemon_GetMonData(mon, MON_DATA_MOVE1 + i, 0) == MOVE_NONE) {
             break;
         }
     }
@@ -1064,16 +1065,16 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     }
 
     moveData = MOVE_EXTRASENSORY;
-    SetMonData(mon, MON_DATA_MOVE1 + i, &moveData);
+    Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &moveData);
 
-    pp = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
-    SetMonData(mon, MON_DATA_MOVE1_PP + i, &pp);
+    pp = Pokemon_GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + i, &pp);
 
     Party_AddMon(party, mon);
 
     Heap_Free(mon);
 
-    SaveMisc_SetTogepiPersonalityGender(Save_Misc_Get(fieldSystem->saveData), GetMonData(mon, MON_DATA_PERSONALITY, 0), GetMonData(mon, MON_DATA_GENDER, 0));
+    SaveMisc_SetTogepiPersonalityGender(Save_Misc_Get(fieldSystem->saveData), Pokemon_GetMonData(mon, MON_DATA_PERSONALITY, 0), Pokemon_GetMonData(mon, MON_DATA_GENDER, 0));
 
     return FALSE;
 }
@@ -1115,27 +1116,27 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
         return FALSE;
     }
     mon = AllocMonZeroed(HEAP_ID_FIELD2);
-    ZeroMonData(mon);
+    Pokemon_ZeroMonData(mon);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
     u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
-    CreateMon(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
+    Pokemon_CreateMon(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
 
     form = 1;
-    SetMonData(mon, MON_DATA_FORM, &form);
+    Pokemon_SetData(mon, MON_DATA_FORM, &form);
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        SetMonData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
-        maxPP = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
-        SetMonData(mon, MON_DATA_MOVE1_PP + i, &maxPP);
+        Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
+        maxPP = Pokemon_GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP + i, &maxPP);
     }
 
     heldItem = ITEM_ZAP_PLATE;
-    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &heldItem);
 
-    u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
+    u32 location = MetLocation(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
 
-    sub_020720FC(mon, profile, 4, unkB, 0x18, HEAP_ID_FIELD2);
+    Pokemon_SetCatchData(mon, profile, BALL_POKE, location, 0x18, HEAP_ID_FIELD2);
 
     Party_AddMon(party, mon);
 
@@ -1266,9 +1267,9 @@ static u32 MonGetShinyLeafCount(Pokemon *mon) {
     u32 shinyLeafCount = 0;
 
     for (c = 0; c < 5; c++) {
-        shinyLeafCount += GetMonData(mon, MON_DATA_SHINY_LEAF_A + c, NULL);
+        shinyLeafCount += Pokemon_GetMonData(mon, MON_DATA_SHINY_LEAF_A + c, NULL);
     }
-    if (shinyLeafCount == 5 && GetMonData(mon, MON_DATA_SHINY_LEAF_CROWN, NULL) != 0) {
+    if (shinyLeafCount == 5 && Pokemon_GetMonData(mon, MON_DATA_SHINY_LEAF_CROWN, NULL) != 0) {
         shinyLeafCount = 6;
     }
 
@@ -1288,7 +1289,7 @@ BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx) {
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), monIndex);
     if (MonGetShinyLeafCount(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), monIndex)) == 5) {
         u8 data = TRUE;
-        SetMonData(mon, MON_DATA_SHINY_LEAF_CROWN, &data);
+        Pokemon_SetData(mon, MON_DATA_SHINY_LEAF_CROWN, &data);
     }
 
     return FALSE;
@@ -1414,11 +1415,11 @@ BOOL ScrCmd_CheckKyogreGroudonInParty(ScriptContext *ctx) {
 
     for (c = 0; c < partyCount; c++) {
         Pokemon *mon = Party_GetMonByIndex(playerParty, c);
-        u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u8 gameVer = GetMonData(mon, MON_DATA_MET_GAME, NULL);
-        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)
-            && !GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)
-            && !GetMonData(mon, MON_DATA_EGG_LOCATION, NULL)) {
+        u16 species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u8 gameVer = Pokemon_GetMonData(mon, MON_DATA_MET_GAME, NULL);
+        if (!Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL)
+            && !Pokemon_GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)
+            && !Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL)) {
 
             switch (species) {
             case SPECIES_KYOGRE:
@@ -1500,7 +1501,7 @@ BOOL ScrCmd_JudgeBugContest(ScriptContext *ctx) {
     if (bugContest->caught_poke == 0) {
         *species = 0;
     } else {
-        *species = GetMonData(bugContest->mon, MON_DATA_SPECIES, NULL);
+        *species = Pokemon_GetMonData(bugContest->mon, MON_DATA_SPECIES, NULL);
     }
 
     return FALSE;

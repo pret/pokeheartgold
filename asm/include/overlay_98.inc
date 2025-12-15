@@ -41,7 +41,7 @@
 .public ManagedSprite_SetDrawFlag
 .public ManagedSprite_SetPaletteOverride
 .public sub_0200FBF4
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public Main_SetVBlankIntrCB
 .public HBlankInterruptDisable
 .public Heap_Alloc
@@ -69,7 +69,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

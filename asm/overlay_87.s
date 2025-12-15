@@ -4849,7 +4849,7 @@ _021E7EA2:
 	mov r0, #0x4f
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r6, r7]
 	bl sub_0200B0A8
 	add r0, r4, #1

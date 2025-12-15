@@ -334,7 +334,7 @@ _0221E806:
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r3, _0221E8A4 ; =ov98_0221F19C
 	add r2, sp, #0x18
 	ldmia r3!, {r0, r1}
@@ -362,7 +362,7 @@ _0221E806:
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x12]
 	add r3, sp, #0x18
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r2, #0x32
 	add r0, r5, #0
 	add r1, r7, #0

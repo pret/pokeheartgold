@@ -38,21 +38,21 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
 
         for (i = 0, j = 0; i < npokes; i++) {
             Pokemon *mon = Party_GetMonByIndex(party, i);
-            BOOL lock = AcquireMonLock(mon);
-            if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-                team->party[j].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-                team->party[j].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-                team->party[j].form = GetMonData(mon, MON_DATA_FORM, NULL);
-                team->party[j].personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-                team->party[j].otid = GetMonData(mon, MON_DATA_OT_ID, NULL);
-                team->party[j].moves[0] = GetMonData(mon, MON_DATA_MOVE1, NULL);
-                team->party[j].moves[1] = GetMonData(mon, MON_DATA_MOVE2, NULL);
-                team->party[j].moves[2] = GetMonData(mon, MON_DATA_MOVE3, NULL);
-                team->party[j].moves[3] = GetMonData(mon, MON_DATA_MOVE4, NULL);
+            BOOL lock = Pokemon_AcquireMonLock(mon);
+            if (!Pokemon_GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+                team->party[j].species = Pokemon_GetMonData(mon, MON_DATA_SPECIES, NULL);
+                team->party[j].level = Pokemon_GetMonData(mon, MON_DATA_LEVEL, NULL);
+                team->party[j].form = Pokemon_GetMonData(mon, MON_DATA_FORM, NULL);
+                team->party[j].personality = Pokemon_GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+                team->party[j].otid = Pokemon_GetMonData(mon, MON_DATA_OT_ID, NULL);
+                team->party[j].moves[0] = Pokemon_GetMonData(mon, MON_DATA_MOVE1, NULL);
+                team->party[j].moves[1] = Pokemon_GetMonData(mon, MON_DATA_MOVE2, NULL);
+                team->party[j].moves[2] = Pokemon_GetMonData(mon, MON_DATA_MOVE3, NULL);
+                team->party[j].moves[3] = Pokemon_GetMonData(mon, MON_DATA_MOVE4, NULL);
                 if (string != NULL) {
-                    GetMonData(mon, MON_DATA_NICKNAME_STRING, string);
+                    Pokemon_GetMonData(mon, MON_DATA_NICKNAME_STRING, string);
                     CopyStringToU16Array(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
-                    GetMonData(mon, MON_DATA_OT_NAME_STRING, string);
+                    Pokemon_GetMonData(mon, MON_DATA_OT_NAME_STRING, string);
                     CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
                     team->party[j].nickname[0] = EOS;
@@ -60,7 +60,7 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                 }
                 j++;
             }
-            ReleaseMonLock(mon, lock);
+            Pokemon_ReleaseMonLock(mon, lock);
         }
         team->year = date->year;
         team->month = date->month;

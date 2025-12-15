@@ -1,7 +1,7 @@
 #include <nitro/fs/overlay.h>
 #pragma once
 .public GF_AssertFail
-.public GetMonData
+.public Pokemon_GetMonData
 .public GetMonBaseStat
 .public MaskOfFlagNo
 .public Party_GetCount
@@ -17,8 +17,8 @@
 .public BattleSystem_GetParty
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
-.public ov12_0223AAD8
-.public ov12_0223AB0C
+.public BattleSystem_FindFirstBattlerWithFlag
+.public BattleSystem_GetOpponentFlags
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_Random

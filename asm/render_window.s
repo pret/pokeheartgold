@@ -2459,7 +2459,7 @@ sub_0200F6D4: ; 0x0200F6D4
 	add r1, r4, #0
 	add r2, r6, #0
 	mov r3, #2
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	add r0, r5, #0
 	add r1, sp, #0xc
 	bl sub_0200F748
@@ -2484,7 +2484,7 @@ sub_0200F714: ; 0x0200F714
 	add r0, sp, #0
 	add r1, r4, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	add r0, r5, #0
 	add r1, sp, #0
 	bl sub_0200F748
@@ -2521,7 +2521,7 @@ sub_0200F748: ; 0x0200F748
 	ldrh r1, [r6, #2]
 	ldrh r2, [r5, r2]
 	add r3, r7, #0
-	bl sub_020143E0
+	bl DrawSpriteWithPosSize_Battle
 	ldr r3, _0200F824 ; =_020F5C40
 	add r2, sp, #8
 	add r7, r2, #0
@@ -2538,7 +2538,7 @@ sub_0200F748: ; 0x0200F748
 	ldrh r1, [r6, #2]
 	ldrh r2, [r5, r2]
 	add r3, r7, #0
-	bl sub_020143E0
+	bl DrawSpriteWithPosSize_Battle
 	mov r0, #0x13
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]

@@ -88,7 +88,7 @@ void sub_0200AE8C(SpriteResource *obj) {
     ObjCharTransfer_ReplaceGraphicsFromChardataByResID(id, charData);
 }
 
-void sub_0200AEB0(SpriteResource *obj) {
+void SpriteResource_ResetTransferTasks(SpriteResource *obj) {
     GF_ASSERT(obj != NULL);
     GF_ASSERT(GF2DGfxResObj_GetResType(obj) == GF_GFX_RES_TYPE_CHAR);
 
@@ -99,7 +99,7 @@ void sub_0200AED4(GF_2DGfxResObjList *charResObjList) {
     GF_ASSERT(charResObjList != NULL);
     for (int i = 0; i < charResObjList->max; ++i) {
         if (charResObjList->obj[i] != NULL) {
-            sub_0200AEB0(charResObjList->obj[i]);
+            SpriteResource_ResetTransferTasks(charResObjList->obj[i]);
         }
     }
 }

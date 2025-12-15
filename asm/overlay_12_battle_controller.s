@@ -17,19 +17,19 @@ BattleController_SendData: ; 0x02262098
 	bl BattleSystem_GetRecvBufferPtr
 	add r4, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A984
+	bl BattleSystem_GetUnk23F0
 	add r5, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A990
+	bl BattleSystem_GetUnk23F2
 	b _022620D2
 _022620BE:
 	bl BattleSystem_GetSendBufferPtr
 	add r4, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A960
+	bl BattleSystem_GetUnk23EA
 	add r5, r0, #0
 	add r0, r7, #0
-	bl ov12_0223A96C
+	bl BattleSystem_GetUnk23EC
 _022620D2:
 	add r7, r0, #0
 	add r0, sp, #0x10
@@ -153,7 +153,7 @@ _022621A2:
 	bne _022621C0
 	ldrb r7, [r3, #4]
 	ldrb r6, [r3, #5]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #0
 	beq _022621BE
 	ldr r0, [r5, #0x30]
@@ -177,25 +177,25 @@ ov12_022621C4: ; 0x022621C4
 	bl BattleSystem_GetRecvBufferPtr
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A978
+	bl BattleSystem_GetUnk23EE
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A984
+	bl BattleSystem_GetUnk23F0
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A990
+	bl BattleSystem_GetUnk23F2
 	b _02262206
 _022621EA:
 	bl BattleSystem_GetSendBufferPtr
 	add r6, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A954
+	bl BattleSystem_GetUnk23E8
 	add r4, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A960
+	bl BattleSystem_GetUnk23EA
 	add r7, r0, #0
 	add r0, r5, #0
-	bl ov12_0223A96C
+	bl BattleSystem_GetUnk23EC
 _02262206:
 	ldrh r1, [r4]
 	ldrh r2, [r7]
@@ -378,7 +378,7 @@ BattleController_EmitPokemonEncounter: ; 0x022622F0
 	sub r2, #0x16
 	ldr r2, [r3, r2]
 	str r2, [sp, #8]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	add r2, r0, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
@@ -503,7 +503,7 @@ BattleController_EmitPokemonSlideIn: ; 0x022623F0
 	sub r2, #0x16
 	ldr r2, [r3, r2]
 	str r2, [sp, #8]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	add r2, r0, #0
 	ldr r0, [r6, #0x30]
 	add r1, r7, #0
@@ -674,7 +674,7 @@ _0226258E:
 	add r1, r7, #0
 	strh r0, [r3, #2]
 	add r0, r4, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	add r2, r0, #0
 	ldr r0, [r4, #0x30]
 	add r1, r7, #0
@@ -1273,12 +1273,12 @@ BattleController_EmitHealthbarSlideIn: ; 0x02262A2C
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #0x10]
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #0xc]
 	mov r0, #0xc
 	add r3, sp, #0x14
@@ -1516,7 +1516,7 @@ _02262C32:
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262C90
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1525,13 +1525,13 @@ _02262C32:
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262C78
 	add r0, r4, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262C72
 	mov r0, #3
@@ -1552,7 +1552,7 @@ _02262C7C:
 	b _02262C8C
 _02262C86:
 	add r0, r4, #0
-	bl GetPercentProgressTowardsNextLevel
+	bl Pokemon_GetPercentProgressTowardsNextLevel
 _02262C8C:
 	strb r0, [r5, #2]
 	add r5, r5, #1
@@ -1587,12 +1587,12 @@ _02262CBC:
 	beq _02262CD2
 	ldr r0, [sp, #4]
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	b _02262CDA
 _02262CD2:
 	ldr r0, [sp, #4]
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 _02262CDA:
 	add r4, r0, #0
 	ldr r0, [sp, #4]
@@ -1617,7 +1617,7 @@ _02262CFC:
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262D48
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1626,13 +1626,13 @@ _02262CFC:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262D42
 	add r0, r6, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262D3C
 	mov r0, #3
@@ -1662,12 +1662,12 @@ _02262D56:
 	beq _02262D6C
 	ldr r0, [sp, #4]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	b _02262D74
 _02262D6C:
 	ldr r0, [sp, #4]
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 _02262D74:
 	add r4, r0, #0
 	ldr r0, [sp, #4]
@@ -1693,7 +1693,7 @@ _02262D98:
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262DE4
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1702,13 +1702,13 @@ _02262D98:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262DDE
 	add r0, r6, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262DD8
 	mov r0, #3
@@ -1735,7 +1735,7 @@ _02262DF4:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0xc]
 	mov r2, #2
-	bl ov12_0223ABB8
+	bl BattleSystem_GetBattlerIdOpponent
 	add r4, r0, #0
 	ldr r0, [sp, #4]
 	add r1, r4, #0
@@ -1759,7 +1759,7 @@ _02262E20:
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262E6C
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1768,13 +1768,13 @@ _02262E20:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262E66
 	add r0, r6, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02262E60
 	mov r0, #3
@@ -2624,12 +2624,12 @@ BattleController_EmitHealthbarUpdate: ; 0x02263488
 	add r4, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r6, r0, #0
 	mov r0, #0x18
 	add r3, sp, #0xc
@@ -2729,12 +2729,12 @@ ov12_02263564: ; 0x02263564
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r6, r0, #0
 	mov r1, #0x19
 	add r0, sp, #0xc
@@ -3370,12 +3370,12 @@ ov12_02263A1C: ; 0x02263A1C
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #8]
 	mov r0, #0x26
 	add r3, sp, #0x10
@@ -4642,7 +4642,7 @@ _022643A6:
 	bne _022643C2
 	ldrb r7, [r5, #4]
 	ldrb r5, [r5, #5]
-	bl ov12_0223B688
+	bl BattleSystem_GetUnk23FC
 	cmp r0, #0
 	beq _022643C2
 	ldr r0, [r4, #0x30]
@@ -4985,12 +4985,12 @@ _02264646:
 _0226464C:
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #2
 	beq _02264664
 	ldr r0, [sp]
 	ldr r1, [sp, #0x38]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetOpponentFlags
 	cmp r0, #3
 	bne _02264672
 _02264664:
@@ -5028,7 +5028,7 @@ _0226469C:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x14]
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _022646EE
 	ldr r1, _02264820 ; =0x000001EE
@@ -5037,13 +5037,13 @@ _0226469C:
 	ldr r0, [sp, #0x14]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _022646E6
 	ldr r0, [sp, #0x14]
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _022646DE
 	add r1, r5, r4
@@ -5093,7 +5093,7 @@ _0226471E:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x18]
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02264770
 	ldr r1, _02264820 ; =0x000001EE
@@ -5102,13 +5102,13 @@ _0226471E:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02264768
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02264760
 	add r1, r5, r4
@@ -5169,7 +5169,7 @@ _022647B6:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x1c]
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02264808
 	ldr r1, _02264820 ; =0x000001EE
@@ -5178,13 +5178,13 @@ _022647B6:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _02264800
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _022647F8
 	add r1, r5, r4

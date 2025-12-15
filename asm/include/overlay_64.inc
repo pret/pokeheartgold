@@ -53,7 +53,7 @@
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014510
+.public DrawPokemonSpriteWithPosSize_Battle
 .public sub_020145B4
 .public GridInputHandler_Create
 .public GridInputHandler_Free
@@ -104,7 +104,7 @@
 .public OverworldModelLookupHasFemaleForm
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public sub_020729D8
 .public NNS_G2dGetImageLocation

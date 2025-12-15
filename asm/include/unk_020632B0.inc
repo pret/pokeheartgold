@@ -35,8 +35,8 @@
 .public MapObject_GetFacingDirection
 .public MapObject_SetOrQueueFacing
 .public MapObject_GetParam
-.public sub_0205F328
-.public sub_0205F330
+.public MapObject_SetUnkA0
+.public MapObject_GetUnkA0
 .public sub_0205F394
 .public sub_0205F398
 .public sub_0205F3BC

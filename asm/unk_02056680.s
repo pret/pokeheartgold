@@ -703,7 +703,7 @@ sub_02056BC8: ; 0x02056BC8
 	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02056BC8
@@ -769,7 +769,7 @@ sub_02056C64: ; 0x02056C64
 	bl Field_PlayerAvatar_ApplyTransitionFlags
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add sp, #0x30
 	pop {r4, r5, r6, pc}
 	thumb_func_end sub_02056C64

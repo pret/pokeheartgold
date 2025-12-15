@@ -1928,7 +1928,7 @@ _021E685E:
 	str r0, [sp, #8]
 	ldrh r1, [r5, r1]
 	add r0, sp, #0x50
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [sp, #0x28]
 	mov r2, #0x3b
 	str r0, [sp]
@@ -1947,7 +1947,7 @@ _021E685E:
 	str r0, [sp, #0x10]
 	ldrh r0, [r1, #0x14]
 	ldrh r1, [r1, #0x16]
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	ldr r0, [sp, #0x24]
 	ldr r0, [r0, r6]
 	ldr r0, [r0]

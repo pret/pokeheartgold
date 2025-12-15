@@ -72,7 +72,7 @@
 .public IsPaletteFadeFinished
 .public sub_0200FBDC
 .public sub_0200FBF4
-.public sub_02014494
+.public DrawPokemonSprite
 .public sub_02015494
 .public MailMsg_Init
 .public MailMsg_GetExpandedString
@@ -148,8 +148,8 @@
 .public Save_VarsFlags_GetVarAddr
 .public sub_02058284
 .public sub_0205C298
-.public GetMonData
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_GetMonData
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

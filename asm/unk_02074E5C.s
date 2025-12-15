@@ -73,10 +73,10 @@ sub_02074E5C: ; 0x02074E5C
 	strb r0, [r6, #4]
 	add r0, r5, #0
 	add r1, r4, #4
-	bl ov12_0223BBFC
+	bl BattleSystem_SetUnk23F4
 	add r0, r5, #0
 	add r1, r6, #4
-	bl ov12_0223BC08
+	bl BattleSystem_SetUnk23F8
 	ldr r0, _02074EBC ; =sub_02075434
 	add r1, r4, #0
 	mov r2, #0
@@ -279,10 +279,10 @@ sub_02074F9C: ; 0x02074F9C
 	bl BattleSystem_GetSendBufferPtr
 	add r5, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A960
+	bl BattleSystem_GetUnk23EA
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A96C
+	bl BattleSystem_GetUnk23EC
 	mov ip, r0
 	add r0, sp, #0x10
 	ldrh r3, [r4]
@@ -346,10 +346,10 @@ sub_02075028: ; 0x02075028
 	bl BattleSystem_GetRecvBufferPtr
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A984
+	bl BattleSystem_GetUnk23F0
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A990
+	bl BattleSystem_GetUnk23F2
 	ldrh r1, [r4]
 	add r2, r1, r5
 	add r3, r2, #1
@@ -933,13 +933,13 @@ sub_02075434: ; 0x02075434
 	bl BattleSystem_GetSendBufferPtr
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A954
+	bl BattleSystem_GetUnk23E8
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A960
+	bl BattleSystem_GetUnk23EA
 	str r0, [sp, #4]
 	ldr r0, [r5]
-	bl ov12_0223A96C
+	bl BattleSystem_GetUnk23EC
 	add r7, r0, #0
 	ldrb r0, [r5, #4]
 	cmp r0, #0
@@ -1002,13 +1002,13 @@ sub_020754C0: ; 0x020754C0
 	bl BattleSystem_GetRecvBufferPtr
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A978
+	bl BattleSystem_GetUnk23EE
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A984
+	bl BattleSystem_GetUnk23F0
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A990
+	bl BattleSystem_GetUnk23F2
 	ldrb r1, [r5, #4]
 	cmp r1, #0
 	beq _020754EE
@@ -1058,13 +1058,13 @@ sub_02075534: ; 0x02075534
 	add r4, r3, #0
 	add r0, r4, #0
 	mov r1, #0xff
-	bl ov12_0223BC14
+	bl BattleSystem_SetUnk23F4_2
 	add r0, r4, #0
 	mov r1, #0xff
-	bl ov12_0223BC20
+	bl BattleSystem_SetUnk23F8_2
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0223BC2C
+	bl BattleSystem_SetUnk23FE
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02075534

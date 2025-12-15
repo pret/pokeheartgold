@@ -10,7 +10,7 @@
 .public SysTask_GetData
 .public GF_AssertFail
 .public MI_CpuFill8
-.public ov12_0223A900
+.public BattleSystem_GetUnk19C
 .public ov12_0223BFFC
 .public ov12_0223C080
 .public ov12_02266508

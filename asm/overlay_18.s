@@ -23938,7 +23938,7 @@ _021F1AC8:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x30
 	add r1, r4, #0
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -23952,7 +23952,7 @@ _021F1AC8:
 	ldrh r0, [r1, #0x10]
 	ldrh r1, [r1, #0x12]
 	add r3, sp, #0x20
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r0, #0x67
 	lsl r0, r0, #4
 	add r4, r5, r0
@@ -33855,7 +33855,7 @@ _021F6A22:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x2c
 	add r1, r4, #0
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -33868,7 +33868,7 @@ _021F6A22:
 	ldrh r1, [r1, #0x12]
 	mov r2, #0x25
 	add r3, sp, #0x1c
-	bl sub_02014510
+	bl DrawPokemonSpriteWithPosSize_Battle
 	mov r1, #0x32
 	add r0, r7, #0
 	lsl r1, r1, #6
@@ -38122,39 +38122,39 @@ ov18_021F8AB8: ; 0x021F8AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl AcquireMonLock
+	bl Pokemon_AcquireMonLock
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl ReleaseMonLock
+	bl Pokemon_ReleaseMonLock
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8AB8
@@ -38911,7 +38911,7 @@ ov18_021F9108: ; 0x021F9108
 	mov r0, #0x87
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r1, #0x1e
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]
@@ -39131,7 +39131,7 @@ ov18_021F92DC: ; 0x021F92DC
 	add r5, r0, #0
 	ldr r0, [r5]
 	add r4, r1, #0
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #4]
 	bl sub_0200B0A8
 	ldr r0, [r4]
@@ -39509,7 +39509,7 @@ ov18_021F95CC: ; 0x021F95CC
 	ldr r1, [r4, #0xc]
 	add r0, sp, #0x10
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

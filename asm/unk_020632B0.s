@@ -159,7 +159,7 @@ _020633B2:
 	add r1, sp, #0x10
 	ldrh r1, [r1, #0x18]
 	ldr r0, [sp]
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	ldr r0, [sp]
 	bl MapObject_IncrementMovementStep
 	ldr r0, [sp]
@@ -429,7 +429,7 @@ _02063624:
 	bl sub_0205F484
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_IncrementMovementStep
 	add r0, r5, #0
@@ -1710,7 +1710,7 @@ _02063F22:
 	cmp r0, #0
 	bne _02063FD4
 	add r0, r5, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	cmp r0, #0
 	beq _02063F58
 	cmp r0, #1

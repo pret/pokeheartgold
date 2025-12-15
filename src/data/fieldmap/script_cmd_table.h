@@ -568,7 +568,7 @@ BOOL ScrCmd_565(ScriptContext *ctx);
 BOOL ScrCmd_566(ScriptContext *ctx);
 BOOL ScrCmd_GetDPPlPrizeItemIdAndCost(ScriptContext *ctx);
 BOOL ScrCmd_568(ScriptContext *ctx);
-BOOL ScrCmd_569(ScriptContext *ctx);
+BOOL ScrCmd_TakeCoinsPointer(ScriptContext *ctx);
 BOOL ScrCmd_CheckCoinsVar(ScriptContext *ctx);
 BOOL ScrCmd_571(ScriptContext *ctx);
 BOOL ScrCmd_GetUniqueSealsQuantity(ScriptContext *ctx);
@@ -830,7 +830,7 @@ BOOL ScrCmd_GetPartymonForm(ScriptContext *ctx);
 BOOL ScrCmd_MonAddContestValue(ScriptContext *ctx);
 BOOL ScrCmd_829(ScriptContext *ctx);
 BOOL ScrCmd_830(ScriptContext *ctx);
-BOOL ScrCmd_831(ScriptContext *ctx);
+BOOL ScrCmd_DrawRandomAccessory(ScriptContext *ctx);
 BOOL ScrCmd_832(ScriptContext *ctx);
 BOOL ScrCmd_833(ScriptContext *ctx);
 BOOL ScrCmd_834(ScriptContext *ctx);
@@ -1423,7 +1423,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_566,
     ScrCmd_GetDPPlPrizeItemIdAndCost,
     ScrCmd_568,
-    ScrCmd_569,
+    ScrCmd_TakeCoinsPointer,
     ScrCmd_CheckCoinsVar,
     ScrCmd_571,
     ScrCmd_GetUniqueSealsQuantity,
@@ -1685,7 +1685,7 @@ const ScrCmdFunc gScriptCmdTable[] = {
     ScrCmd_MonAddContestValue,
     ScrCmd_829,
     ScrCmd_830,
-    ScrCmd_831,
+    ScrCmd_DrawRandomAccessory,
     ScrCmd_832,
     ScrCmd_833,
     ScrCmd_834,

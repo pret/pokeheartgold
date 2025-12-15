@@ -22,7 +22,7 @@
 .public MapObject_GetMapID
 .public MapObject_GetType
 .public MapObject_GetFacingDirection
-.public sub_0205F328
+.public MapObject_SetUnkA0
 .public MapObject_GetManager
 .public sub_0205F370
 .public sub_0205F394

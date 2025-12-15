@@ -36,7 +36,7 @@
 .public sub_0200F478
 .public DrawPokemonPicFromSpecies
 .public DrawPokemonPicFromMon
-.public sub_020143E0
+.public DrawSpriteWithPosSize_Battle
 .public sub_02014450
 .public Heap_Alloc
 .public Heap_Free
@@ -62,8 +62,8 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_UpdateAnim
 .public Sprite_GetAnimationFrame
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public NNS_G2dGetUnpackedPaletteData
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation

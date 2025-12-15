@@ -64,7 +64,7 @@ BOOL ScrCmd_510(ScriptContext *ctx) {
     for (i = 0; i < PARTY_SIZE; i++) {
         MigratedPokemon_ConvertToPokemon(unkStruct, i, mon);
         MonSetTrainerMemo(mon, profile, 2, 0, HEAP_ID_FIELD3);
-        GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Mon_GetBoxMon(mon)));
+        GF_ASSERT(PCStorage_PlaceMonInFirstEmptySlotInAnyBox(storage, Pokemon_GetBox(mon)));
         UpdatePokedexWithReceivedSpecies(ctx->fieldSystem->saveData, mon);
     }
 

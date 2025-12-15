@@ -30,7 +30,7 @@ sub_02061284: ; 0x02061284
 	add r0, r5, #0
 	mov r1, #0
 	str r6, [r4, #4]
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	pop {r4, r5, r6, pc}
@@ -239,7 +239,7 @@ sub_020613D0: ; 0x020613D0
 	str r6, [r0, #0xc]
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	pop {r3, r4, r5, r6, r7, pc}
@@ -559,7 +559,7 @@ sub_02061648: ; 0x02061648
 	str r4, [r0]
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
@@ -634,7 +634,7 @@ sub_020616C0: ; 0x020616C0
 	strb r4, [r0]
 	add r0, r5, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
