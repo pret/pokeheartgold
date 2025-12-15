@@ -30,7 +30,7 @@
 .public BattleSystem_GetUnk23EE
 .public BattleSystem_GetUnk23F0
 .public BattleSystem_GetUnk23F2
-.public ov12_0223AAD8
+.public BattleSystem_FindFirstBattlerWithFlag
 .public BattleSystem_GetOpponentFlags
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetTerrainId

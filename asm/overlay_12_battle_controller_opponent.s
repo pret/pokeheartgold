@@ -17674,16 +17674,16 @@ ov12_02261544: ; 0x02261544
 	beq _0226156A
 	add r0, r7, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	b _02261574
 _0226156A:
 	add r0, r7, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r6, r0, #0
 _02261574:
 	mov r1, #4
@@ -17976,21 +17976,21 @@ _0226178E: ; jump table
 _02261796:
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r7, r0, #0
 	b _02261832
 _022617AC:
 	ldr r0, [sp]
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r7, r0, #0
 	b _02261832
 _022617C2:
@@ -17999,17 +17999,17 @@ _022617C2:
 	tst r0, r1
 	beq _022617DE
 	ldr r0, [sp]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r7, r0, #0
 	b _02261832
 _022617DE:
 	ldr r0, [sp]
 	mov r1, #0
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r5, r0, #0
 	add r7, r5, #0
 	b _02261832
@@ -18036,11 +18036,11 @@ _0226180E:
 	tst r0, r1
 	beq _0226182A
 	ldr r0, [sp]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r5, r0, #0
 	ldr r0, [sp]
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r7, r0, #0
 	b _02261832
 _0226182A:
@@ -18185,16 +18185,16 @@ ov12_02261928: ; 0x02261928
 	beq _02261956
 	ldr r0, [sp]
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	b _02261960
 _02261956:
 	ldr r0, [sp]
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r4, r0, #0
 _02261960:
 	cmp r7, #1
@@ -18344,11 +18344,11 @@ _02261A62:
 	strb r0, [r7, #1]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	str r0, [r7, #4]
 	add r0, r5, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	str r0, [r7, #8]
 	b _02261ABE
 _02261A8E:
@@ -18363,7 +18363,7 @@ _02261A8E:
 	strb r0, [r7, #1]
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	str r0, [r7, #4]
 	b _02261ABE
 _02261AAE:
@@ -18372,7 +18372,7 @@ _02261AAE:
 	strb r0, [r7, #1]
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	str r0, [r7, #4]
 _02261ABE:
 	add r0, r5, #0
@@ -18409,13 +18409,13 @@ ov12_02261AD4: ; 0x02261AD4
 	beq _02261B0E
 	add r0, r5, #0
 	mov r1, #4
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	str r0, [r4, #4]
 	b _02261B22
 _02261B0E:
 	add r0, r5, #0
 	mov r1, #2
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	str r0, [r4, #4]
 	b _02261B22
 _02261B1A:
@@ -18429,50 +18429,6 @@ _02261B22:
 	bl BattleSystem_SetBattleOutcomeFlags
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov12_02261AD4
-
-	thumb_func_start ov12_02261B2C
-ov12_02261B2C: ; 0x02261B2C
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x20
-	add r5, r0, #0
-	add r4, r1, #0
-	add r6, r2, #0
-	add r7, r3, #0
-	bl BattleSystem_GetSpriteRenderer
-	str r0, [sp, #0x1c]
-	add r0, r5, #0
-	bl BattleSystem_GetGfxHandler
-	str r0, [sp, #0x18]
-	add r0, r5, #0
-	bl BattleSystem_GetPaletteData
-	add r2, r0, #0
-	mov r0, #1
-	tst r0, r4
-	beq _02261B58
-	mov r1, #2
-	b _02261B5A
-_02261B58:
-	mov r1, #0
-_02261B5A:
-	add r3, sp, #0x28
-	mov r0, #0x18
-	ldrsh r0, [r3, r0]
-	mov r4, #0x14
-	str r0, [sp]
-	str r6, [sp, #4]
-	str r1, [sp, #8]
-	ldr r0, [sp, #0x38]
-	ldr r1, [sp, #0x18]
-	str r0, [sp, #0xc]
-	str r7, [sp, #0x10]
-	mov r0, #5
-	str r0, [sp, #0x14]
-	ldrsh r3, [r3, r4]
-	ldr r0, [sp, #0x1c]
-	bl sub_02070C24
-	add sp, #0x20
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end ov12_02261B2C
 
 	thumb_func_start ov12_02261B80
 ov12_02261B80: ; 0x02261B80

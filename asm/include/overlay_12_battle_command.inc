@@ -132,7 +132,7 @@
 .public BattleSystem_GetMessageFormat
 .public BattleSystem_GetMessageBuffer
 .public ov12_0223AAB8
-.public ov12_0223AAD8
+.public BattleSystem_FindFirstBattlerWithFlag
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetPcStorage

@@ -138,7 +138,7 @@
 .public BattleSystem_GetMessageData
 .public BattleSystem_GetPaletteData
 .public BattleSystem_GetMessageFormat
-.public ov12_0223AAD8
+.public BattleSystem_FindFirstBattlerWithFlag
 .public BattleSystem_GetUnk2404
 .public BattleSystem_GetSafariBallCount
 .public BattleSystem_GetUnk2421

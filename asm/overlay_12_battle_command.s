@@ -4141,12 +4141,12 @@ UpdateFrienshipFainted: ; 0x02248558
 	beq _022485A8
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	mov r2, #0xc0
@@ -4165,7 +4165,7 @@ UpdateFrienshipFainted: ; 0x02248558
 _022485A8:
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 _022485B4:

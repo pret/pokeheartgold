@@ -15,6 +15,7 @@ u8 *BattleSystem_GetBattleContextUnk21A4(BattleSystem *bsys);
 void ov12_02261F38(BattleSystem *bsys, s32 battlerId, u16 arg2, Pokepic *pokepic, NARC *narc, s32 species, s32 arg6, s32 arg7, s32 arg8);
 Pokepic *BattleSystem_CreatePokemonSprite(BattleSystem *bsys, PokepicManager *pokepicManager, PokepicTemplate *template, s32 xPos, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 index, PokepicAnimScript *animScript, PokepicCallback callback);
 u8 BattleSystem_ModifyTrainerClass(BattleSystem *bsys, s32 battlerId, u8 trainerClass);
+void ov12_02261B2C(BattleSystem *bsys, s32 arg1, int trainerClass, int resTag, BOOL isLink, int x, int y);
 void ov12_02261E40(SysTask *task, s32* arg1);
 void ov12_02261EB8(BattleSystem *bsys);
 void ov12_02261ED4(BattleSystem *bsys);
@@ -103,6 +104,23 @@ u8 BattleSystem_ModifyTrainerClass(BattleSystem *bsys, s32 battlerId, u8 trainer
         break;
     }
     return newTrainerClass;
+}
+
+void ov12_02261B2C(BattleSystem *bsys, s32 arg1, int trainerClass, int resTag, BOOL isLink, int x, int y) {
+    SpriteSystem *spriteSystem;
+    SpriteManager *spriteManager;
+    PaletteData *paletteData;
+    int battlerPosition;
+
+    spriteSystem = BattleSystem_GetSpriteRenderer(bsys);
+    spriteManager = BattleSystem_GetGfxHandler(bsys);
+    paletteData = BattleSystem_GetPaletteData(bsys);
+    if (1 & arg1) {
+        battlerPosition = 2;
+    } else {
+        battlerPosition = 0;
+    }
+    sub_02070C24(spriteSystem, spriteManager, paletteData, x, y, trainerClass, battlerPosition, isLink, resTag, HEAP_ID_BATTLE);
 }
 
 void ov12_02261E40(SysTask *task, s32* arg1) {

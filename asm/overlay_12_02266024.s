@@ -7217,7 +7217,7 @@ ov12_02269A9C: ; 0x02269A9C
 	add r7, r0, r2
 	ldrb r1, [r6, r1]
 	ldr r0, [r6]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r1, r0, #0
 	ldr r0, [r6]
 	bl BattleSystem_GetOpponentData
@@ -7452,7 +7452,7 @@ ov12_02269C7C: ; 0x02269C7C
 	ldr r1, _02269CD0 ; =0x0000068A
 	ldr r0, [r5]
 	ldrb r1, [r5, r1]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r1, r0, #0
 	cmp r4, #3
 	bne _02269C9A
@@ -7636,7 +7636,7 @@ ov12_02269DD4: ; 0x02269DD4
 	ldr r1, _02269F40 ; =0x0000068A
 	ldr r0, [r5]
 	ldrb r1, [r5, r1]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl BattleSystem_GetOpponentData
@@ -7835,7 +7835,7 @@ ov12_02269F54: ; 0x02269F54
 	ldr r1, _02269F9C ; =0x0000068A
 	ldr r0, [r5]
 	ldrb r1, [r5, r1]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl BattleSystem_GetOpponentData
@@ -7883,7 +7883,7 @@ ov12_02269FA4: ; 0x02269FA4
 	str r0, [sp, #0x44]
 	ldrb r1, [r6, r1]
 	ldr r0, [r6]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r1, r0, #0
 	ldr r0, [r6]
 	bl BattleSystem_GetOpponentData
@@ -8687,7 +8687,7 @@ ov12_0226A594: ; 0x0226A594
 	ldr r1, _0226A5E4 ; =0x0000068A
 	ldr r0, [r5]
 	ldrb r1, [r5, r1]
-	bl ov12_0223AAD8
+	bl BattleSystem_FindFirstBattlerWithFlag
 	add r1, r0, #0
 	ldr r0, [r5]
 	bl BattleSystem_GetOpponentData

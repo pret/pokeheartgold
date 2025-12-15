@@ -253,10 +253,10 @@ u32 BattleSystem_GetTrainerGender(BattleSystem *bsys, int battlerId) {
     return PlayerProfile_GetTrainerGender(bsys->playerProfile[battlerId]);
 }
 
-int ov12_0223AAD8(BattleSystem *bsys, int a1) {
+int BattleSystem_FindFirstBattlerWithFlag(BattleSystem *bsys, int flag) {
     int battlerId;
     for (battlerId = 0; battlerId < bsys->maxBattlers; battlerId++) {
-        if (BattleController_GetOpponentFlags(bsys->opponentData[battlerId]) == a1) {
+        if (BattleController_GetOpponentFlags(bsys->opponentData[battlerId]) == flag) {
             break;
         }
     }

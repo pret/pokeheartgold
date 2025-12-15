@@ -50,7 +50,7 @@ BagCursor *BattleSystem_GetBagCursor(BattleSystem *bsys);
 u16 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon);
 u32 ov12_0223AAB8(BattleSystem *bsys);
 u32 BattleSystem_GetTrainerGender(BattleSystem *bsys, int battlerId);
-int ov12_0223AAD8(BattleSystem *bsys, int a1);
+int BattleSystem_FindFirstBattlerWithFlag(BattleSystem *bsys, int flag);
 u8 BattleSystem_GetOpponentFlags(BattleSystem *bsys, int battlerId);
 u8 BattleSystem_GetFieldSide(BattleSystem *bsys, int battlerId);
 void *BattleSystem_GetMessageIcon(BattleSystem *bsys);

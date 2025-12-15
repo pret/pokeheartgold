@@ -171,7 +171,7 @@
 .public BattleSystem_GetPlayerProfile
 .public BattleSystem_GetBag
 .public BattleSystem_GetTrainerGender
-.public ov12_0223AAD8
+.public BattleSystem_FindFirstBattlerWithFlag
 .public BattleSystem_GetOpponentFlags
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
@@ -307,3 +307,4 @@
 .public ov12_02261EB8
 .public ov12_02261ED4
 .public ov12_02261E40
+.public ov12_02261B2C
