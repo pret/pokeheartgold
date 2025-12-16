@@ -3,13 +3,18 @@
 
 #include "global.h"
 
+#include "bg_window.h"
 #include "overlay_18.h"
+#include "palette.h"
 
 typedef struct PokedexAppData PokedexAppData;
 
 struct PokedexAppData {
     PokedexArgs *unk_0000;
-    u8 filler_0004[0x858];
+    BgConfig *unk_0004;
+    u8 filler_0008[0x848];
+    PaletteData *unk_0850;
+    u8 filler_0854[8];
     int unk_085C;
     u8 filler_0860[0xFF8];
     u8 unk_1858;
@@ -19,6 +24,17 @@ struct PokedexAppData {
     u8 filler_1864[0xAC];
 }; // size: 0x1910
 
+void ov18_021E5C74(void);
+void ov18_021E5C84(PokedexAppData *pokedexApp);
+void ov18_021E7A3C(PokedexAppData *pokedexApp);
+void ov18_021E5E70(PokedexAppData *pokedexApp, BOOL a1);
+void ov18_021E5F58(PokedexAppData *pokedexApp);
+void ov18_021E5FA4(void);
+void ov18_021E5FE8(void);
+void ov18_021E602C(void);
+void ov18_021E6070(void);
+void ov18_021E60B4(void);
+void ov18_021E60F8(void);
 BOOL ov18_021E8BF4(struct PokedexAppData *appData, int *pState);
 u16 ov18_021F8838(struct PokedexAppData *appData);
 
