@@ -14,11 +14,11 @@ void ov18_021E5C2C(void);
 void ov18_021E5C3C(void);
 
 BOOL Pokedex_Init(OverlayManager *man, int *state) {
-    struct PokedexAppData *appData;
+    PokedexAppData *appData;
 
     Heap_Create(HEAP_ID_3, HEAP_ID_37, 0x61000);
-    appData = OverlayManager_CreateAndGetData(man, sizeof(struct PokedexAppData), HEAP_ID_37);
-    MI_CpuClear8(appData, sizeof(struct PokedexAppData));
+    appData = OverlayManager_CreateAndGetData(man, sizeof(PokedexAppData), HEAP_ID_37);
+    MI_CpuClear8(appData, sizeof(PokedexAppData));
     appData->unk_0000 = OverlayManager_GetArgs(man);
     appData->unk_085C = 5;
     appData->unk_1858 = sub_02092BE0(appData->unk_0000->unk_08);
@@ -44,7 +44,7 @@ BOOL Pokedex_Init(OverlayManager *man, int *state) {
 }
 
 BOOL Pokedex_Main(OverlayManager *man, int *state) {
-    struct PokedexAppData *appData = OverlayManager_GetData(man);
+    PokedexAppData *appData = OverlayManager_GetData(man);
 
     if (!ov18_021E8BF4(appData, state)) {
         return TRUE;
@@ -54,7 +54,7 @@ BOOL Pokedex_Main(OverlayManager *man, int *state) {
 }
 
 BOOL Pokedex_Exit(OverlayManager *man, int *state) {
-    struct PokedexAppData *appData = OverlayManager_GetData(man);
+    PokedexAppData *appData = OverlayManager_GetData(man);
 
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(OVY_123));
     // DSProt_DetectEmulator

@@ -3,7 +3,6 @@
 #include "sprite_system.h"
 
 void ov18_021E5C40(void *cb_arg);
-void ov18_021E613C(PokedexAppData *pokedexApp, GFBgLayer layer);
 
 extern const GraphicsBanks ov18_021F98B0;
 
@@ -241,4 +240,42 @@ void ov18_021E60F8(void) {
     SetBgPriority(GF_BG_LYR_SUB_1, 1);
     SetBgPriority(GF_BG_LYR_SUB_2, 3);
     SetBgPriority(GF_BG_LYR_SUB_3, 2);
+}
+
+void ov18_021E613C(PokedexAppData *pokedexApp, u8 bgId) {
+    u8 width;
+
+    if (bgId == GF_BG_LYR_MAIN_0 || bgId == GF_BG_LYR_SUB_0) {
+        width = 0x40;
+    } else {
+        width = 0x20;
+    }
+
+    FillBgTilemapRect(pokedexApp->unk_0004, bgId, 0, 0, 0, width, 0x20, 0);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, bgId);
+}
+
+void ov18_021E6174(void) {
+    G2_SetBlendAlpha(0, GX_PLANEMASK_BG0 | GX_PLANEMASK_BG1 | GX_PLANEMASK_BG2 | GX_PLANEMASK_BG3, 6, 10);
+}
+
+void ov18_021E618C(int ev1, int ev2) {
+    G2_SetBlendAlpha(GX_PLANEMASK_BG2, GX_PLANEMASK_BG3, ev1, ev2);
+}
+
+void ov18_021E61A4(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_0850 = PaletteData_Init(HEAP_ID_37);
+    ZeroPalettesByBitmask(PLTTBUF_MAIN_BG_F | PLTTBUF_SUB_BG_F | PLTTBUF_MAIN_OBJ_F | PLTTBUF_SUB_OBJ_F, HEAP_ID_37);
+    PaletteData_AllocBuffers(pokedexApp->unk_0850, PLTTBUF_MAIN_BG, 0x200, HEAP_ID_37);
+    PaletteData_AllocBuffers(pokedexApp->unk_0850, PLTTBUF_SUB_BG, 0x200, HEAP_ID_37);
+    PaletteData_AllocBuffers(pokedexApp->unk_0850, PLTTBUF_MAIN_OBJ, 0x200, HEAP_ID_37);
+    PaletteData_AllocBuffers(pokedexApp->unk_0850, PLTTBUF_SUB_OBJ, 0x200, HEAP_ID_37);
+}
+
+void ov18_021E6204(PokedexAppData *pokedexApp) {
+    PaletteData_FreeBuffers(pokedexApp->unk_0850, PLTTBUF_SUB_OBJ);
+    PaletteData_FreeBuffers(pokedexApp->unk_0850, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(pokedexApp->unk_0850, PLTTBUF_SUB_BG);
+    PaletteData_FreeBuffers(pokedexApp->unk_0850, PLTTBUF_MAIN_BG);
+    PaletteData_Free(pokedexApp->unk_0850);
 }

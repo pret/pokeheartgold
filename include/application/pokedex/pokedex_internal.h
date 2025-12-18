@@ -35,7 +35,12 @@ void ov18_021E602C(void);
 void ov18_021E6070(void);
 void ov18_021E60B4(void);
 void ov18_021E60F8(void);
-BOOL ov18_021E8BF4(struct PokedexAppData *appData, int *pState);
-u16 ov18_021F8838(struct PokedexAppData *appData);
+void ov18_021E613C(PokedexAppData *pokedexApp, u8 bgId);
+void ov18_021E6174(void);
+void ov18_021E618C(int ev1, int ev2);
+void ov18_021E61A4(PokedexAppData *appData);
+void ov18_021E6204(PokedexAppData *pokedexApp);
+BOOL ov18_021E8BF4(PokedexAppData *appData, int *pState);
+u16 ov18_021F8838(PokedexAppData *appData);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H
