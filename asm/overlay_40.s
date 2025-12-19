@@ -220,7 +220,7 @@ _0222B826:
 	bl sub_020879E0
 	mov r0, #0x14
 	mov r1, #0x6d
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #0x50]
 	mov r0, #0
 	mov r1, #0x1b

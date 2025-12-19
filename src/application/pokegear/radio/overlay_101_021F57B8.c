@@ -19,11 +19,13 @@ typedef enum RadioPrintState {
     RADIO_PRINT_STATE_EXIT,
 } RadioPrintState;
 
+// clang-format off
 typedef struct RadioFuncs {
-    BOOL (*setup)(RadioShow *);
-    BOOL (*print)(RadioShow *);
-    BOOL (*teardown)(RadioShow *);
+    BOOL(*setup) (RadioShow *);
+    BOOL(*print) (RadioShow *);
+    BOOL(*teardown) (RadioShow *);
 } RadioFuncs;
+// clang-format on
 
 u8 RadioShow_TranslateStationID(RadioShow *radioShow, int station);
 BOOL RadioShow_ScrollTextOffWindow(RadioShow *radioShow);

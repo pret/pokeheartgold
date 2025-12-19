@@ -901,7 +901,7 @@ void ManagedSprite_GetAffineScale(ManagedSprite *managedSprite, f32 *x, f32 *y) 
     Sprite_GetAffineScaleXY(managedSprite->sprite, x, y);
 }
 
-void thunk_Sprite_SetAffineZRotation(Sprite *sprite, u16 rotation) {
+void thunk_Sprite_SetAffineZRotation(Sprite *sprite, u32 rotation) {
     Sprite_SetAffineZRotation(sprite, rotation);
 }
 
@@ -909,13 +909,13 @@ void ManagedSprite_SetAffineZRotation(ManagedSprite *managedSprite, u16 rotation
     thunk_Sprite_SetAffineZRotation(managedSprite->sprite, rotation);
 }
 
-void Sprite_OffsetAffineZRotation2(Sprite *sprite, u16 offset) {
+void Sprite_OffsetAffineZRotation2(Sprite *sprite, u32 offset) {
     u16 rotation = Sprite_GetRotation(sprite);
     rotation += offset;
     Sprite_SetAffineZRotation(sprite, rotation);
 }
 
-void ManagedSprite_OffsetAffineZRotation(ManagedSprite *managedSprite, u16 rotation) {
+void ManagedSprite_OffsetAffineZRotation(ManagedSprite *managedSprite, u32 rotation) {
     Sprite_OffsetAffineZRotation2(managedSprite->sprite, rotation);
 }
 

@@ -4,7 +4,6 @@
 
 #include "battle/battle_input.h"
 #include "battle/battle_system.h"
-#include "battle/overlay_12_02266024.h"
 
 #include "filesystem_files_def.h"
 #include "gf_gfx_planes.h"
@@ -168,14 +167,14 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-void ov12_02237B0C(BattleSystem *bsys) {
-    ov12_0226631C(bsys->unk19C);
-    ov12_022660A8(bsys->bgConfig);
-    bsys->unk240E_F = 1;
+void ov12_02237B0C(BattleSystem *battleSystem) {
+    BattleInput_Free(battleSystem->battleInput);
+    BgConfig_CleanupBattleMenuBackgrounds(battleSystem->bgConfig);
+    battleSystem->unk240E_F = 1;
     FontID_Release(4);
-    ov12_0223BBF0(bsys, 3);
+    ov12_0223BBF0(battleSystem, 3);
 
-    if (bsys->unk2445 == 0) {
+    if (battleSystem->unk2445 == 0) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
     } else {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_10));
@@ -183,28 +182,28 @@ void ov12_02237B0C(BattleSystem *bsys) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_8), OVY_LOAD_ASYNC);
 }
 
-void ov12_02237B6C(BattleSystem *bsys) {
+void ov12_02237B6C(BattleSystem *battleSystem) {
     Main_SetVBlankIntrCB(NULL, NULL);
-    ov12_0226631C(bsys->unk19C);
-    RemoveWindow(bsys->window);
-    ov12_02238A30(bsys->bgConfig);
-    ov12_02238A64(bsys);
-    SpriteSystem_FreeResourcesAndManager(bsys->spriteRenderer, bsys->gfxHandler);
-    SpriteSystem_Free(bsys->spriteRenderer);
+    BattleInput_Free(battleSystem->battleInput);
+    RemoveWindow(battleSystem->window);
+    ov12_02238A30(battleSystem->bgConfig);
+    ov12_02238A64(battleSystem);
+    SpriteSystem_FreeResourcesAndManager(battleSystem->spriteRenderer, battleSystem->gfxHandler);
+    SpriteSystem_Free(battleSystem->spriteRenderer);
     GF_DestroyVramTransferManager();
     FontID_Release(4);
 }
 
-void ov12_02237BB8(BattleSystem *bsys) {
+void ov12_02237BB8(BattleSystem *battleSystem) {
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_8));
 
-    if (bsys->unk2445 == 0) {
+    if (battleSystem->unk2445 == 0) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), OVY_LOAD_ASYNC);
     } else {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), OVY_LOAD_ASYNC);
     }
 
-    ov12_0223BBF0(bsys, 0);
+    ov12_0223BBF0(battleSystem, 0);
 
     int size = sub_02026E9C();
     void *data = GetSubBgPlttAddr();
@@ -213,34 +212,34 @@ void ov12_02237BB8(BattleSystem *bsys) {
     NARC *unkNarcA = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
     NARC *unkNarcB = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-    bsys->unk19C = ov12_022660D0(unkNarcA, unkNarcB, bsys, BattleSystem_GetTrainerGender(bsys, ov12_0223BFC0(bsys)), bsys->unk1C0);
+    battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
 
     FontID_Alloc(4, HEAP_ID_BATTLE);
 
-    bsys->unk240F_1 = 1;
+    battleSystem->unk240F_1 = 1;
 
-    ov12_0226604C(bsys->bgConfig);
+    BgConfig_InitBattleMenuBackgrounds(battleSystem->bgConfig);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-    ov12_02266390(bsys->unk19C);
-    ov12_02266508(unkNarcA, unkNarcB, bsys->unk19C, 0, TRUE, NULL);
-    ov12_02266644(unkNarcB, bsys->unk19C);
+    BattleInput_LoadDefaultResources(battleSystem->battleInput);
+    BattleInput_ChangeMenu(unkNarcA, unkNarcB, battleSystem->battleInput, 0, TRUE, NULL);
+    BattleInput_LoadBallGaugeResources(unkNarcB, battleSystem->battleInput);
 
     NARC_Delete(unkNarcA);
     NARC_Delete(unkNarcB);
 
     TextPrinter_SetDownArrowBaseTile(1);
-    ov12_0223A620(bsys);
+    ov12_0223A620(battleSystem);
 
-    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(bsys->spriteRenderer), 0, FX32_CONST(272));
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(battleSystem->spriteRenderer), 0, FX32_CONST(272));
 }
 
-void ov12_02237CC4(BattleSystem *bsys) {
-    RemoveWindow(bsys->window);
+void ov12_02237CC4(BattleSystem *battleSystem) {
+    RemoveWindow(battleSystem->window);
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
-    FreeBgTilemapBuffer(bsys->bgConfig, GF_BG_LYR_MAIN_1);
-    FreeBgTilemapBuffer(bsys->bgConfig, GF_BG_LYR_MAIN_2);
-    FreeBgTilemapBuffer(bsys->bgConfig, GF_BG_LYR_MAIN_3);
-    BattleSystem_SetHpBarDisabled(bsys);
+    FreeBgTilemapBuffer(battleSystem->bgConfig, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(battleSystem->bgConfig, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(battleSystem->bgConfig, GF_BG_LYR_MAIN_3);
+    BattleSystem_SetHpBarDisabled(battleSystem);
 }

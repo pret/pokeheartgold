@@ -10,11 +10,11 @@
 .public SysTask_GetData
 .public GF_AssertFail
 .public MI_CpuFill8
-.public ov12_0223A900
+.public BattleSystem_GetBattleInput
 .public ov12_0223BFFC
 .public ov12_0223C080
-.public ov12_02266508
-.public ov12_02266B78
-.public ov12_02266C64
+.public BattleInput_ChangeMenu
+.public BattleInput_CheckTouch
+.public BattleInput_CheckFeedbackDone
 .public ov12_0226BEC4
 .public ov12_0226BEF0
