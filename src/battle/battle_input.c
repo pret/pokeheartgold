@@ -129,35 +129,35 @@ static const u16 sTypeIconPositions[][2] = {
 
 ALIGN(4)
 static const u16 sMovePPTextPositions[4][2] = {
-    { 0x3B, 0x3D },
-    { 0xBB, 0x3C },
-    { 0x3B, 0x7C },
-    { 0xBB, 0x7B }
+    { 59, 61 },
+    { 187, 60 },
+    { 59, 124 },
+    { 187, 123 }
 };
 
 ALIGN(4)
 static const u16 sMovePPMaxTextPositions[4][2] = {
-    { 0x4c, 0x3D },
-    { 0xCC, 0x3C },
-    { 0x4C, 0x7C },
-    { 0xCC, 0x7B }
+    { 76, 61 },
+    { 204, 60 },
+    { 76, 124 },
+    { 204, 123 }
 };
 
 ALIGN(4)
 static const u16 sTargetPokemonMenuPositions[][2] = {
-    { 0x3c, 0x74 },
-    { 0xc4, 0x20 },
-    { 0xc4, 0x74 },
-    { 0x3C, 0x20 },
-    { 0x80, 0xAF }
+    { 60, 116 },
+    { 196, 32 },
+    { 196, 116 },
+    { 60, 32 },
+    { 128, 175 }
 };
 
 ALIGN(4)
 static const u16 sPokemonIconPositions[][2] = {
-    { 0x3C, 0x74 },
-    { 0xC4, 0x38 },
-    { 0xC4, 0x74 },
-    { 0x3C, 0x38 }
+    { 60, 116 },
+    { 196, 56 },
+    { 196, 116 },
+    { 60, 56 }
 };
 
 static const BgTemplate sBattleMenuBackgroundTemplates[] = {
@@ -222,34 +222,34 @@ static const BgTemplate sBattleMenuBackgroundTemplates[] = {
 static const TouchscreenHitbox sTouchscreenRectMainMenuButtons[] = {
     {
      .rect = {
-            .top = 0x18,
-            .bottom = 0x90,
-            .left = 0x0,
-            .right = 0xFF,
+            .top = 24,
+            .bottom = 144,
+            .left = 0,
+            .right = 255,
         },
      },
     {
      .rect = {
-            .top = 0x90,
-            .bottom = 0xC0,
-            .left = 0x0,
-            .right = 0x50,
+            .top = 144,
+            .bottom = 192,
+            .left = 0,
+            .right = 80,
         },
      },
     {
      .rect = {
-            .top = 0x90,
-            .bottom = 0xC0,
-            .left = 0xB0,
-            .right = 0xff,
+            .top = 144,
+            .bottom = 192,
+            .left = 176,
+            .right = 255,
         },
      },
     {
      .rect = {
-            .top = 0x98,
-            .bottom = 0xC0,
-            .left = 0x58,
-            .right = 0xA8,
+            .top = 152,
+            .bottom = 192,
+            .left = 88,
+            .right = 168,
         },
      },
     {
@@ -286,10 +286,10 @@ static const u8 sCursorArrayMainMenu[2][3] = {
 static const TouchscreenHitbox ov12_0226E240[] = {
     {
      .rect = {
-            .top = 0x18,
-            .bottom = 0x90,
+            .top = 24,
+            .bottom = 144,
             .left = 0,
-            .right = 0xFF },
+            .right = 255 },
      },
     {
      .rect = { .top = TOUCHSCREEN_RECTLIST_END, .bottom = 0, .left = 0, .right = 0 },
@@ -299,18 +299,18 @@ static const TouchscreenHitbox ov12_0226E240[] = {
 static const TouchscreenHitbox sTouchscreenRectPalParkButtons[] = {
     {
      .rect = {
-            .top = 0x28,
-            .bottom = 0x80,
-            .left = 0x18,
-            .right = 0xE8,
+            .top = 40,
+            .bottom = 128,
+            .left = 24,
+            .right = 232,
         },
      },
     {
      .rect = {
-            .top = 0x98,
-            .bottom = 0xC0,
-            .left = 0x58,
-            .right = 0xA8,
+            .top = 152,
+            .bottom = 192,
+            .left = 88,
+            .right = 168,
         },
      },
     {
@@ -345,42 +345,42 @@ static const u8 sCursorArrayPalParkMenu[2][1] = {
 static const TouchscreenHitbox sTouchscreenRectFightMenuButtons[] = {
     {
      .rect = {
-            .top = 0x98,
-            .bottom = 0xC0,
-            .left = 0x08,
-            .right = 0xF8,
+            .top = 152,
+            .bottom = 192,
+            .left = 8,
+            .right = 248,
         },
      },
     {
      .rect = {
-            .top = 0x18,
-            .bottom = 0x50,
-            .left = 0x0,
-            .right = 0x80,
+            .top = 24,
+            .bottom = 80,
+            .left = 0,
+            .right = 128,
         },
      },
     {
      .rect = {
-            .top = 0x18,
-            .bottom = 0x50,
-            .left = 0x80,
-            .right = 0xff,
+            .top = 24,
+            .bottom = 80,
+            .left = 128,
+            .right = 255,
         },
      },
     {
      .rect = {
-            .top = 0x58,
-            .bottom = 0x90,
-            .left = 0x00,
-            .right = 0x80,
+            .top = 88,
+            .bottom = 144,
+            .left = 0,
+            .right = 128,
         },
      },
     {
      .rect = {
-            .top = 0x58,
-            .bottom = 0x90,
-            .left = 0x80,
-            .right = 0xFF,
+            .top = 88,
+            .bottom = 144,
+            .left = 128,
+            .right = 255,
         },
      },
     {
@@ -420,18 +420,18 @@ static const u8 sCursorArrayFightMenu[][2] = {
 static const TouchscreenHitbox sTouchscreenRectTwoOptionsMenuButtons[] = {
     {
      .rect = {
-            .top = 0x28,
+            .top = 40,
             .bottom = 0x60,
             .left = 8,
-            .right = 0xF8,
+            .right = 248,
         },
      },
     {
      .rect = {
-            .top = 0x70,
-            .bottom = 0xA8,
+            .top = 112,
+            .bottom = 168,
             .left = 8,
-            .right = 0xF8,
+            .right = 248,
         },
      },
     {
@@ -464,42 +464,42 @@ static const u8 sTwoOptionsMenuCursorInput[2][1] = {
 static const TouchscreenHitbox sTouchscreenRectTargetMenuButtons[] = {
     {
      .rect = {
-            .top = 0x58,
-            .bottom = 0x90,
-            .left = 0x00,
-            .right = 0x78,
+            .top = 88,
+            .bottom = 144,
+            .left = 0,
+            .right = 120,
         },
      },
     {
      .rect = {
-            .top = 0x8,
-            .bottom = 0x50,
-            .left = 0x88,
-            .right = 0xFF,
+            .top = 8,
+            .bottom = 80,
+            .left = 136,
+            .right = 255,
         },
      },
     {
      .rect = {
-            .top = 0x58,
-            .bottom = 0x90,
-            .left = 0x88,
-            .right = 0xff,
+            .top = 88,
+            .bottom = 144,
+            .left = 136,
+            .right = 255,
         },
      },
     {
      .rect = {
-            .top = 0x8,
-            .bottom = 0x50,
-            .left = 0x00,
-            .right = 0x78,
+            .top = 8,
+            .bottom = 80,
+            .left = 0,
+            .right = 120,
         },
      },
     {
      .rect = {
-            .top = 0x98,
-            .bottom = 0xC0,
-            .left = 0x8,
-            .right = 0xF8,
+            .top = 152,
+            .bottom = 192,
+            .left = 8,
+            .right = 248,
         },
      },
     {
@@ -539,10 +539,10 @@ static const u8 sTargetMenuButtonInputArray[][2] = {
 static const TouchscreenHitbox sTouchscreenRectVsRecorderPlaybackButton[] = {
     {
      .rect = {
-            .top = 0x98,
-            .bottom = 0xC0,
+            .top = 152,
+            .bottom = 192,
             .left = 0,
-            .right = 0xFF,
+            .right = 255,
         },
      },
     {
@@ -862,7 +862,7 @@ static const ManagedSpriteTemplate sBallGaugeTemplate = {
     .drawPriority = 10,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = { 0x4e37, 0x4e37, 0x4e2f, 0x4e2f, -1, -1 },
+    .resIdList = { 20023, 20023, 20015, 20015, -1, -1 },
     .bgPriority = 1,
     .vramTransfer = 0
 };
@@ -875,7 +875,7 @@ static const ManagedSpriteTemplate sBallGaugeOpponentTemplate = {
     .drawPriority = 11,
     .pal = 1,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = { 0x4e38, 0x4e37, 0x4e30, 0x4e30, -1, -1 },
+    .resIdList = { 20024, 20023, 20016, 20016, -1, -1 },
     .bgPriority = 1,
     .vramTransfer = 0
 };
@@ -888,7 +888,7 @@ static const ManagedSpriteTemplate ov12_0226E4B0 = {
     .drawPriority = 100,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = { 0x4e39, 0x4e34, 0x4e31, 0x4e31, -1, -1 },
+    .resIdList = { 20025, 20020, 20017, 20017, -1, -1 },
     .bgPriority = 1,
     .vramTransfer = 0
 };
@@ -901,43 +901,43 @@ static const ManagedSpriteTemplate ov12_0226E4E4 = {
     .drawPriority = 100,
     .pal = 0,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = { 0x4e45, 0x4e36, 0x4e35, 0x4e35, -1, -1 },
+    .resIdList = { 20037, 20022, 20021, 20021, -1, -1 },
     .bgPriority = 1,
     .vramTransfer = 0
 };
 
 static const ManagedSpriteTemplate sSpriteTemplateBugNet = {
-    .x = 0x58,
+    .x = 88,
     .y = 8,
     .z = 0,
     .animation = 0,
     .drawPriority = 10,
     .pal = 4,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = { 0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1 },
+    .resIdList = { 20040, 20023, 20022, 20022, -1, -1 },
     .bgPriority = 1,
     .vramTransfer = 0
 };
 
 static const ManagedSpriteTemplate sSpriteTemplateSportBall = {
-    .x = 0xd0,
+    .x = 208,
     .y = 8,
     .z = 0,
     .animation = 0,
     .drawPriority = 10,
     .pal = 5,
     .vram = NNS_G2D_VRAM_TYPE_2DSUB,
-    .resIdList = { 0x4e48, 0x4e37, 0x4e36, 0x4e36, -1, -1 },
+    .resIdList = { 20040, 20023, 20022, 20022, -1, -1 },
     .bgPriority = 1,
     .vramTransfer = 0
 };
 
 ALIGN(4)
 static const s16 sMainMenuButtonsScreenOffsets[][3] = {
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 }
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 }
 };
 
 ALIGN(4)
@@ -950,11 +950,11 @@ static const u8 sMainMenuButtonsTouchscreenRect[][4] = {
 
 ALIGN(4)
 static const s16 sFightMenuButtonsScreenOffsets[5][3] = {
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 }
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 }
 };
 
 ALIGN(4)
@@ -1042,53 +1042,53 @@ static const TouchscreenHitbox ov12_0226E2A8[] = {
 
 ALIGN(4)
 static const s16 sTargetMenuButtonsScreenOffsets[][3] = {
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 },
-    { 0, 0xc0, 0x180 }
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 },
+    { 0, 192, 384 }
 };
 
 ALIGN(4)
 static const TouchscreenHitbox ov12_0226E348[] = {
     {
      .rect = {
-            .top = 0xa,
-            .bottom = 0x11,
+            .top = 10,
+            .bottom = 17,
             .left = 0,
-            .right = 0xe,
+            .right = 14,
         },
      },
     {
      .rect = {
             .top = 0,
-            .bottom = 0x9,
-            .left = 0x11,
-            .right = 0x1f,
+            .bottom = 9,
+            .left = 17,
+            .right = 31,
         },
      },
     {
      .rect = {
-            .top = 0xa,
-            .bottom = 0x11,
-            .left = 0x11,
-            .right = 0x1f,
+            .top = 10,
+            .bottom = 17,
+            .left = 17,
+            .right = 31,
         },
      },
     {
      .rect = {
-            .top = 0x0,
-            .bottom = 0x9,
+            .top = 0,
+            .bottom = 9,
             .left = 0,
-            .right = 0xe,
+            .right = 14,
         },
      },
     {
      .rect = {
-            .top = 0x12,
-            .bottom = 0x17,
-            .left = 0x1,
-            .right = 0x1e,
+            .top = 18,
+            .bottom = 23,
+            .left = 1,
+            .right = 30,
         },
      },
 };
@@ -1106,33 +1106,33 @@ static const TouchscreenHitbox ov12_0226E2F8[] = {
     {
      .rect = {
             .top = 0xB,
-            .bottom = 0x11,
+            .bottom = 17,
             .left = 0,
-            .right = 0xe,
+            .right = 14,
         },
      },
     {
      .rect = {
             .top = 1,
             .bottom = 9,
-            .left = 0x11,
-            .right = 0x1F,
+            .left = 17,
+            .right = 31,
         },
      },
     {
      .rect = {
             .top = 0xB,
-            .bottom = 0x11,
-            .left = 0x11,
-            .right = 0x1f,
+            .bottom = 17,
+            .left = 17,
+            .right = 31,
         },
      },
     {
      .rect = {
-            .top = 0x1,
-            .bottom = 0x9,
+            .top = 1,
+            .bottom = 9,
             .left = 0,
-            .right = 0xe,
+            .right = 14,
         },
      },
 };
@@ -1140,17 +1140,17 @@ static const TouchscreenHitbox ov12_0226E2F8[] = {
 ALIGN(4)
 static const s16 ov12_0226E286[][3] = {
     { 0, 5,    10    },
-    { 0, 0xC0, 0x180 }
+    { 0, 192, 384 }
 };
 
 ALIGN(4)
 static const u8 ov12_0226E24C[][4] = {
-    { 0xd, 0x14, 0, 0x1f },
-    { 0x4, 0xb,  0, 0x1f }
+    { 0xd, 0x14, 0, 31 },
+    { 0x4, 0xb,  0, 31 }
 };
 
 ALIGN(4)
-static const s16 ov12_0226E228[] = { 0, 0xc0, 0x180 };
+static const s16 ov12_0226E228[] = { 0, 192, 384 };
 
 ALIGN(4)
 static const TouchscreenHitbox ov12_0226E20C[] = {
@@ -1164,10 +1164,10 @@ static const TouchscreenHitbox ov12_0226E20C[] = {
 };
 
 static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
-    { 0x80, 0x4C },
-    { 0x28, 0xA4 },
+    { 128, 76 },
+    { 40, 0xA4 },
     { 0xD8, 0xA4 },
-    { 0x80, 0xA8 }
+    { 128, 168 }
 };
 
 ALIGN(4)
@@ -1193,14 +1193,14 @@ typedef struct NCLRIndex {
 
 static const NCLRIndex sBackgroundPaletteIds[] = {
     { 0xF7,  0x10F },
-    { 0xF8,  0x110 },
+    { 248,  0x110 },
     { 0xF9,  0x111 },
     { 0xFA,  0x112 },
     { 0xFB,  0x113 },
     { 0xFC,  0x114 },
     { 0xFD,  0x115 },
     { 0xFE,  0x116 },
-    { 0xFF,  0x117 },
+    { 255,  0x117 },
     { 0x100, 0x118 },
     { 0x101, 0x119 },
     { 0x102, 0x11A },
@@ -1313,11 +1313,11 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
 
     u16 animationIndex;
     if (BattleSystem_IsInFrontier(battleSystem)) {
-        animationIndex = 0x15e;
+        animationIndex = 350;
     } else if (sBackgroundPaletteIds[backgroundId].animationIndex != 0xffff) {
         animationIndex = sBackgroundPaletteIds[backgroundId].animationIndex;
     } else {
-        animationIndex = 0x10f;
+        animationIndex = 271;
     }
 
     NNSG2dPaletteData *nnsgPalette;
@@ -1372,9 +1372,9 @@ void BattleInput_LoadDefaultResources(BattleInput *battleInput) {
     int bottomScreenBgTilesId;
 
     if (BattleSystem_IsInFrontier(battleInput->battleSystem)) {
-        bottomScreenBgTilesId = 0xad;
+        bottomScreenBgTilesId = 173;
     } else {
-        bottomScreenBgTilesId = 0x1c;
+        bottomScreenBgTilesId = 28;
     }
 
     GfGfxLoader_LoadCharData(NARC_a_0_0_7, bottomScreenBgTilesId, bgConfig, GF_BG_LYR_SUB_0, 0, 0x6000, 1, HEAP_ID_BATTLE);
@@ -1718,16 +1718,16 @@ BOOL BattleInput_CheckFeedbackDone(BattleInput *battleInput) {
 
 int ov12_02266C84(int moveRange, int battlerId) {
     switch (moveRange) {
-    case 0x0:
+    case 0:
         return (battlerId == 4) ? 9 : 8;
-    case 0x1:
+    case 1:
     case 0x2:
     case 0x10:
         return (battlerId == 4) ? 6 : 4;
     case 0x4:
     case 0x80:
         return 1;
-    case 0x8:
+    case 8:
         return (battlerId == 4) ? 7 : 2;
     case 0x100:
         return (battlerId == 4) ? 4 : 6;
@@ -1930,14 +1930,14 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                     }
 
                     if (strMonGender != NULL) {
-                        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 0x4e37, 0x88, 0x10, 0, 0);
+                        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 20023, 136, 0x10, 0, 0);
                         String_Delete(strMonGender);
                     }
                     int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
                     BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, msg_0197_01274);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);
-                    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, 0, 0x90800, 3, 0x4e37, 0x90, 0x10, 0, 0);
+                    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, 0, 0x90800, 3, 20023, 144, 0x10, 0, 0);
                     String_Delete(strMonLevel);
                     BattleInput_SetBugContestPokemonIcon(battleInput, caughtMon);
                 }
@@ -1946,7 +1946,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
             BufferIntegerAsString(format, 0, ballsRemaining, 2, PRINTING_MODE_LEFT_ALIGN, 1);
             String *strBallsRemaining = NewString_ReadMsgData(msgLoader, msg_0197_01271);
             StringExpandPlaceholders(format, strFormated, strBallsRemaining);
-            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, 0, 0x90800, 3, 0x4e37, 0xE0, 0x10, 0, 0);
+            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, 0, 0x90800, 3, 20023, 224, 0x10, 0, 0);
             String_Delete(strBallsRemaining);
             BattleInput_CreateBugContestGraphics(battleInput);
             String_Delete(strFormated);
@@ -2624,7 +2624,7 @@ static ManagedSprite *BattleInput_SetBugContestPokemonIcon(BattleInput *battleIn
 
     ManagedSpriteTemplate spriteTemplate = ov12_0226E4E4;
     spriteTemplate.resIdList[0] = 20039;
-    spriteTemplate.x = 0x78;
+    spriteTemplate.x = 120;
     spriteTemplate.y = 8;
     ManagedSprite *sprite = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
 
@@ -2995,7 +2995,7 @@ static void ov12_02268C4C(BattleInput *battleInput, int movePos) {
 
     for (i = movePos; i < 4; i++) {
         ov12_02268EE4(battleInput, &ov12_0226E258[i], &ov12_0226E2A8[i], 3, 0);
-        PaletteData_LoadPalette(palette, &battleInput->paletteBuffer[0xe * 16], PLTTBUF_SUB_BG, (8 + i) * 16, 0x20);
+        PaletteData_LoadPalette(palette, &battleInput->paletteBuffer[14 * 16], PLTTBUF_SUB_BG, (8 + i) * 16, 0x20);
     }
 }
 
@@ -4516,19 +4516,19 @@ static void BattleInput_CreateBugContestGraphics(BattleInput *battleInput) {
     NARC *narc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
     // Bug catching contest net/ball graphics
-    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x157, 1, NNS_G2D_VRAM_TYPE_2DSUB, 0x4e48);
-    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x158, 1, 0x4e36);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 0x159, 1, 0x4e36);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 343, 1, NNS_G2D_VRAM_TYPE_2DSUB, 20040);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 344, 1, 20022);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 345, 1, 20022);
 
     NARC_Delete(narc);
 
     battleInput->spriteSportBall = SpriteSystem_NewSprite(spriteSystem, spriteManager, &sSpriteTemplateSportBall);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteSportBall, 0xd0, 16, 0x110000);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteSportBall, 208, 16, 0x110000);
     ManagedSprite_TickFrame(battleInput->spriteSportBall);
 
     battleInput->spriteBugNet = SpriteSystem_NewSprite(spriteSystem, spriteManager, &sSpriteTemplateBugNet);
     Sprite_SetAnimCtrlSeq(battleInput->spriteBugNet->sprite, 1);
-    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBugNet, 0x58, 8, 0x110000);
+    ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteBugNet, 88, 8, 0x110000);
     ManagedSprite_TickFrame(battleInput->spriteBugNet);
 }
 
@@ -4545,9 +4545,9 @@ static void BattleInput_DeleteBugContestGraphics(BattleInput *battleInput) {
     battleInput->spriteBugNet = NULL;
     battleInput->spriteSportBall = NULL;
 
-    SpriteManager_UnloadCharObjById(spriteManager, 0x4e48);
-    SpriteManager_UnloadCellObjById(spriteManager, 0x4e36);
-    SpriteManager_UnloadAnimObjById(spriteManager, 0x4e36);
+    SpriteManager_UnloadCharObjById(spriteManager, 20040);
+    SpriteManager_UnloadCellObjById(spriteManager, 20022);
+    SpriteManager_UnloadAnimObjById(spriteManager, 20022);
 }
 
 static BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem) {
