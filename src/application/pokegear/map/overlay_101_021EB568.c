@@ -24,7 +24,7 @@ static void PokegearMap_MarkingsMenu_ReturnToTopLevel(PokegearMapAppData *mapApp
 static void PokegearMap_MarkingsMenu_DeleteSelected(PokegearMapAppData *mapApp, u8 kind, u8 index);
 static void ov101_021ED204(PokegearMapAppData *mapApp, u8 slot);
 
-int ov101_021EB568(PokegearMapAppData *mapApp) {
+int PokegearMap_HandleKeyInput(PokegearMapAppData *mapApp) {
     int ret;
 
     if ((gSystem.newKeys & PAD_BUTTON_B) && !mapApp->unk_139_2) {
@@ -45,7 +45,7 @@ int ov101_021EB568(PokegearMapAppData *mapApp) {
     return -1;
 }
 
-int ov101_021EB5DC(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
+int PokegearMap_HandleTouchInput(PokegearMapAppData *mapApp, BOOL *pRetIsTouch) {
     int ret = -1;
 
     if (!mapApp->unk_139_3) {

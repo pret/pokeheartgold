@@ -13,9 +13,9 @@
 .public MapObject_GetMapID
 .public MapObject_GetSpriteID
 .public MapObject_GetFacingDirection
-.public MapObject_GetCurrentX
-.public MapObject_GetCurrentY
-.public MapObject_GetCurrentZ
+.public MapObject_GetXCoord
+.public MapObject_GetYCoord
+.public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public MapObject_GetPositionVectorYCoord
 .public sub_0206121C

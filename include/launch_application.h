@@ -3,6 +3,7 @@
 
 #include "battle/battle_setup.h"
 #include "credits/credits.h"
+#include "pokeathlon/pokeathlon.h"
 #include "voltorb_flip/voltorb_flip.h"
 
 #include "alph_puzzle.h"
@@ -31,7 +32,6 @@
 #include "overlay_73.h"
 #include "overlay_86.h"
 #include "overlay_87.h"
-#include "overlay_96.h"
 #include "overlay_99.h"
 #include "overlay_trainer_card.h"
 #include "party_menu.h"
@@ -63,6 +63,13 @@ typedef enum PocketType {
     POCKET_TYPE_ITEMS,
     POCKET_TYPE_BERRIES,
 } PocketType;
+
+typedef struct UnkStruct_0203FC14 {
+    FieldSystem *fieldSystem;
+    SaveData *saveData;
+    int unk8;
+    u8 unkC;
+} UnkStruct_0203FC14;
 
 struct UnkStruct_ScrCmd230 {
     u8 filler_00[0x30];

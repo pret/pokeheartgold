@@ -5996,7 +5996,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             }
 
             if (!ov12_022568B0(data->battleSystem, mon)) {
-                if (GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL) != gGameLanguage) {
+                if (GetMonData(mon, MON_DATA_LANGUAGE, NULL) != gGameLanguage) {
                     totalExp = totalExp * 170 / 100;
                 } else {
                     totalExp = totalExp * 150 / 100;
@@ -6375,7 +6375,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->battleSystem, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->battleSystem));
 
         i = 0;
-        SetMonData(mon, MON_DATA_MOVE1PPUP + data->unk30[5], &i);
+        SetMonData(mon, MON_DATA_MOVE1_PP_UPS + data->unk30[5], &i);
         MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
 
         if (data->ctx->selectedMonIndex[expBattler] == slot) {

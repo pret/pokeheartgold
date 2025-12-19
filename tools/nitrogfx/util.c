@@ -14,29 +14,24 @@ bool ParseNumber(char *s, char **end, int radix, int *intValue)
 {
     char *localEnd;
 
-    if (end == NULL) {
+    if (end == NULL)
         end = &localEnd;
-    }
 
     errno = 0;
 
     const long longValue = strtol(s, end, radix);
 
-    if (*end == s) {
+    if (*end == s)
         return false; // not a number
-    }
 
-    if ((longValue == LONG_MIN || longValue == LONG_MAX) && errno == ERANGE) {
+    if ((longValue == LONG_MIN || longValue == LONG_MAX) && errno == ERANGE)
         return false;
-    }
 
-    if (longValue > INT_MAX) {
+    if (longValue > INT_MAX)
         return false;
-    }
 
-    if (longValue < INT_MIN) {
+    if (longValue < INT_MIN)
         return false;
-    }
 
     *intValue = (int)longValue;
 
@@ -47,22 +42,29 @@ char *GetFileExtension(char *path)
 {
     char *extension = path;
 
-    while (*extension != 0) {
+    while (*extension != 0)
         extension++;
-    }
 
-    while (extension > path && *extension != '.') {
+    while (extension > path && *extension != '.')
         extension--;
-    }
 
-    if (extension == path) {
+    if (extension == path)
         return NULL;
-    }
 
     extension++;
 
-    if (*extension == 0) {
+    if (*extension == 0)
         return NULL;
+
+    if (strcmp(extension, "lz") == 0) {
+        char *plainName = malloc(strlen(path) + 1);
+        strcpy(plainName, path);
+        plainName[strlen(path) - 3] = 0;
+        char *newExtension = GetFileExtension(plainName);
+        if (newExtension != NULL) {
+            extension -= strlen(newExtension) + 1;
+        }
+        free(plainName);
     }
 
     return extension;
@@ -72,9 +74,8 @@ unsigned char *ReadWholeFile(char *path, int *size)
 {
     FILE *fp = fopen(path, "rb");
 
-    if (fp == NULL) {
+    if (fp == NULL)
         FATAL_ERROR("Failed to open \"%s\" for reading.\n", path);
-    }
 
     fseek(fp, 0, SEEK_END);
 
@@ -82,15 +83,13 @@ unsigned char *ReadWholeFile(char *path, int *size)
 
     unsigned char *buffer = malloc(*size);
 
-    if (buffer == NULL) {
+    if (buffer == NULL)
         FATAL_ERROR("Failed to allocate memory for reading \"%s\".\n", path);
-    }
 
     rewind(fp);
 
-    if (fread(buffer, *size, 1, fp) != 1) {
+    if (fread(buffer, *size, 1, fp) != 1)
         FATAL_ERROR("Failed to read \"%s\".\n", path);
-    }
 
     fclose(fp);
 
@@ -101,9 +100,8 @@ unsigned char *ReadWholeFileZeroPadded(char *path, int *size, int padAmount)
 {
     FILE *fp = fopen(path, "rb");
 
-    if (fp == NULL) {
+    if (fp == NULL)
         FATAL_ERROR("Failed to open \"%s\" for reading.\n", path);
-    }
 
     fseek(fp, 0, SEEK_END);
 
@@ -111,15 +109,13 @@ unsigned char *ReadWholeFileZeroPadded(char *path, int *size, int padAmount)
 
     unsigned char *buffer = calloc(*size + padAmount, 1);
 
-    if (buffer == NULL) {
+    if (buffer == NULL)
         FATAL_ERROR("Failed to allocate memory for reading \"%s\".\n", path);
-    }
 
     rewind(fp);
 
-    if (fread(buffer, *size, 1, fp) != 1) {
+    if (fread(buffer, *size, 1, fp) != 1)
         FATAL_ERROR("Failed to read \"%s\".\n", path);
-    }
 
     fclose(fp);
 
@@ -130,13 +126,11 @@ void WriteWholeStringToFile(char *path, char *string)
 {
     FILE *fp = fopen(path, "wb");
 
-    if (fp == NULL) {
+    if (fp == NULL)
         FATAL_ERROR("Failed to open \"%s\" for writing.\n", path);
-    }
 
-    if (fputs(string, fp) == EOF) {
+    if (fputs(string, fp) == EOF)
         FATAL_ERROR("Failed to write to \"%s\".\n", path);
-    }
 
     fclose(fp);
 }
@@ -145,13 +139,11 @@ void WriteWholeFile(char *path, void *buffer, int bufferSize)
 {
     FILE *fp = fopen(path, "wb");
 
-    if (fp == NULL) {
+    if (fp == NULL)
         FATAL_ERROR("Failed to open \"%s\" for writing.\n", path);
-    }
 
-    if (fwrite(buffer, bufferSize, 1, fp) != 1) {
+    if (fwrite(buffer, bufferSize, 1, fp) != 1)
         FATAL_ERROR("Failed to write to \"%s\".\n", path);
-    }
 
     fclose(fp);
 }

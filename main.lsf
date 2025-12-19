@@ -62,6 +62,8 @@ Static main
     Object src/touchscreen_list_menu.o
     Object src/camera_translation.o
     Object asm/unk_020192D0.o
+    Object asm/unk_0201956C.o
+    Object src/unk_02019BA4.o
     Object src/system.o
     Object src/heap.o
     Object src/bg_window.o
@@ -72,7 +74,8 @@ Static main
     Object src/math_util.o
     Object src/text.o
     Object src/vram_transfer_manager.o
-    Object asm/unk_02020654.o
+    Object asm/unk_0202068C.o
+    Object src/unk_02020A0C.o
     Object src/ascii_util.o
     Object asm/unk_02020B8C.o
     Object asm/unk_020210A0.o
@@ -205,7 +208,7 @@ Static main
     Object asm/unk_020551B8.o
     Object asm/unk_02055244.o
     Object src/unk_02055418.o
-    Object src/pal_park.o
+    Object src/catching_show.o
     Object asm/unk_02055BF0_data.o
     Object src/unk_02055BF0.o
     Object asm/unk_02056680.o
@@ -219,7 +222,7 @@ Static main
     Object src/metatile_behavior.o
     Object asm/unk_0205BB1C.o
     Object asm/unk_0205BFF0.o
-    Object src/field_player_avatar.o
+    Object src/player_avatar.o
     Object asm/unk_0205CB48.o
     Object src/map_object.o
     Object asm/unk_data_020FCBD8.o
@@ -244,7 +247,7 @@ Static main
     Object src/gymmick_init.o
     Object src/unk_02068F84.o
     Object asm/unk_02068FC8.o
-    Object asm/unk_02069528.o
+    Object src/unk_02069528.o
     Object asm/unk_02069660.o
     Object asm/unk_0206979C.o
     Object src/follow_mon.o
@@ -1108,6 +1111,7 @@ Overlay OVY_95
 Overlay OVY_96
 {
     After main
+    Object src/pokeathlon/pokeathlon_course.o
     Object asm/overlay_96.o
 }
 Overlay OVY_97
@@ -1131,6 +1135,7 @@ Overlay pokegear
     Object src/application/pokegear/main/overlay_100_021E5900.o
     Object src/application/pokegear/main/pokegear_main.o
     Object src/application/pokegear/main/overlay_100_021E6914.o
+    Object src/application/pokegear/main/pokegear_cursor.o
 }
 Overlay pokegear_app
 {
@@ -1143,7 +1148,10 @@ Overlay pokegear_app
     Object src/application/pokegear/map/overlay_101_021ED498.o
     Object src/application/pokegear/map/fly_map.o
     Object src/application/pokegear/map/overlay_101_021EDCE0.o
-    Object asm/pokegear_app_configure.o
+    Object src/application/pokegear/configure/pokegear_configure.o
+    Object src/application/pokegear/configure/overlay_101_021EED44.o
+    Object src/application/pokegear/configure/overlay_101_021EF1D8.o
+    Object src/application/pokegear/configure/overlay_101_021EF6D0.o
     Object src/application/pokegear/phone/pokegear_phone.o
     Object src/application/pokegear/phone/overlay_101_021EFD20.o
     Object src/application/pokegear/phone/overlay_101_021F017C.o
@@ -1289,14 +1297,9 @@ Overlay voltorb_flip
 {
     After main
     Object src/voltorb_flip/voltorb_flip.o
-    Object src/voltorb_flip/voltorb_flip_workflow.o
+    Object src/voltorb_flip/voltorb_flip_tasks.o
     Object src/voltorb_flip/voltorb_flip_game.o
     Object src/voltorb_flip/voltorb_flip_input.o
-    Object src/voltorb_flip/voltorb_flip_data1.o
-    Object src/voltorb_flip/voltorb_flip_data2.o
-    Object src/voltorb_flip/voltorb_flip_data3.o
-    Object src/voltorb_flip/voltorb_flip_data4.o
-    Object src/voltorb_flip/voltorb_flip_data5.o
 }
 Overlay OVY_123
 {

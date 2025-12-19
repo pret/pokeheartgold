@@ -319,10 +319,10 @@ ov01_02205604: ; 0x02205604
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r7, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	str r0, [r4]
 	add r0, r7, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	str r0, [r5]
 	cmp r6, #3
 	bhi _0220565C
@@ -373,10 +373,10 @@ ov01_02205664: ; 0x02205664
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r7, #0
-	bl MapObject_GetPreviousX
+	bl MapObject_GetPreviousXCoord
 	str r0, [r4]
 	add r0, r7, #0
-	bl MapObject_GetPreviousZ
+	bl MapObject_GetPreviousZCoord
 	str r0, [r5]
 	cmp r6, #3
 	bhi _022056BC
@@ -425,10 +425,10 @@ ov01_022056C4: ; 0x022056C4
 	bl MapObject_GetFieldSystem
 	add r7, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	add r0, r6, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r2, r0, #0
 	cmp r5, #5
 	bhi _02205716
@@ -524,7 +524,7 @@ _02205776:
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r6, #0
-	bl LocalMapObject_SetPositionFromVectorAndDirection
+	bl MapObject_SetPositionFromVectorAndDirection
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov01_02205720
@@ -557,7 +557,7 @@ ov01_02205790: ; 0x02205790
 	add r0, r6, #0
 	add r1, sp, #0
 	add r2, r4, #0
-	bl LocalMapObject_SetPositionFromVectorAndDirection
+	bl MapObject_SetPositionFromVectorAndDirection
 _022057BE:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
@@ -820,10 +820,10 @@ ov01_022059AC: ; 0x022059AC
 	cmp r0, #0
 	bne _02205A02
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetFacingDirection
@@ -1221,19 +1221,19 @@ ov01_02205CF0: ; 0x02205CF0
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	str r0, [sp]
 	ldr r0, [r5, #0x40]
 	bl PlayerAvatar_GetMapObject
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r7, r0, #0
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	bl FollowMon_GetMapObject
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	ldr r1, [sp]
 	cmp r6, r1
 	bne _02205D38
@@ -1606,16 +1606,16 @@ ov01_02206028: ; 0x02206028
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
 	add r5, r1, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r7, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r4, r0, #0
 	add r0, r5, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	sub r6, r6, r4
 	sub r4, r7, r0
 	ldr r0, [sp]
@@ -1901,16 +1901,16 @@ _02206278:
 	add r5, #0xe4
 	add r4, r0, #0
 	ldr r7, [r5]
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r5, r0, #0
 	add r0, r4, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	add r4, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetCurrentX
+	bl MapObject_GetXCoord
 	add r6, r0, #0
 	add r0, r7, #0
-	bl MapObject_GetCurrentZ
+	bl MapObject_GetZCoord
 	cmp r5, r6
 	bne _022062B4
 	add r1, r4, #1

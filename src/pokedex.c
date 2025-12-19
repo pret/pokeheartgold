@@ -804,7 +804,7 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender_ct;
 
     species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    language = GetMonData(mon, MON_DATA_GAME_LANGUAGE, NULL);
+    language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
     personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
     gender = GetMonGender(mon);
 

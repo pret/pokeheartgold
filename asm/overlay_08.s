@@ -17696,7 +17696,7 @@ _02224CAA:
 	str r0, [sp, #4]
 	str r1, [sp, #8]
 	ldr r0, [r5, #4]
-	bl sub_02020A24
+	bl DpadMenuBox_GetNeighborInDirection
 	add r4, r0, #0
 	mov r6, #0
 	b _02224D36
@@ -17713,7 +17713,7 @@ _02224CCE:
 	mov r0, #1
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
-	bl sub_02020A24
+	bl DpadMenuBox_GetNeighborInDirection
 	add r4, r0, #0
 	mov r6, #1
 	b _02224D36
@@ -17730,7 +17730,7 @@ _02224CF0:
 	mov r0, #2
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
-	bl sub_02020A24
+	bl DpadMenuBox_GetNeighborInDirection
 	add r4, r0, #0
 	mov r6, #2
 	b _02224D36
@@ -17747,7 +17747,7 @@ _02224D12:
 	mov r0, #3
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
-	bl sub_02020A24
+	bl DpadMenuBox_GetNeighborInDirection
 	add r4, r0, #0
 	mov r6, #3
 	b _02224D36
@@ -17787,7 +17787,7 @@ _02224D58:
 	add r1, r7, #0
 	add r2, r7, #0
 	add r3, r7, #0
-	bl sub_02020A24
+	bl DpadMenuBox_GetNeighborInDirection
 	mov r1, #0x7f
 	and r0, r1
 	lsl r0, r0, #0x18
@@ -17814,13 +17814,13 @@ _02224D90:
 	add r0, r0, r7
 	add r1, #3
 	add r2, #2
-	bl sub_02020A0C
+	bl DpadMenuBox_GetPosition
 	ldr r0, [r5, #4]
 	add r1, sp, #0x10
 	add r0, r0, r7
 	add r1, #1
 	add r2, sp, #0x10
-	bl sub_02020A18
+	bl DpadMenuBox_GetDimensions
 	ldr r0, [r5, #4]
 	add r1, r6, #0
 	add r0, r0, r7

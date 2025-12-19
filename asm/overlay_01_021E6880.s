@@ -125,10 +125,10 @@ FieldInput_Update: ; 0x021E6928
 	lsr r6, r0, #0x10
 _021E694E:
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6D4
+	bl PlayerAvatar_GetUnk14
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x40]
-	bl sub_0205C6CC
+	bl PlayerAvatar_GetUnk10
 	str r0, [sp, #8]
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetFacingDirection
@@ -1116,11 +1116,11 @@ _021E7132:
 	ldr r1, [sp, #4]
 	ldr r2, [sp]
 	add r0, r4, #0
-	bl PalPark_TryEncounter
+	bl CatchingShow_CheckWildEncounter
 	cmp r0, #1
 	bne _021E716C
 	add r0, r4, #0
-	bl PalPark_SetupEncounter
+	bl CatchingShow_GetBattleDataTransfer
 	add r1, r0, #0
 	add r0, r4, #0
 	bl sub_020511F8
@@ -1471,10 +1471,10 @@ GetInteractedMetatileScript: ; 0x021E7418
 	bl PlayerAvatar_GetFacingDirection
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r7, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
@@ -1728,10 +1728,10 @@ _021E7644:
 	mov r0, #1
 	pop {r3, r4, r5, r6, r7, pc}
 _021E7672:
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r4, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -2277,10 +2277,10 @@ PlayerAvatar_GetStandingTileCoords: ; 0x021E7AB8
 	ldr r0, [r5, #0x40]
 	add r4, r1, #0
 	add r6, r2, #0
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	str r0, [r4]
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	str r0, [r6]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -2844,10 +2844,10 @@ ov01_021E7F00: ; 0x021E7F00
 	cmp r0, #0
 	bne _021E7F34
 	ldr r0, [r5, #0x40]
-	bl GetPlayerXCoord
+	bl PlayerAvatar_GetXCoord
 	add r6, r0, #0
 	ldr r0, [r5, #0x40]
-	bl GetPlayerZCoord
+	bl PlayerAvatar_GetZCoord
 	add r2, r0, #0
 	cmp r4, #0
 	beq _021E7F2C

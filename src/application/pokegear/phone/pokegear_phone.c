@@ -104,7 +104,7 @@ BOOL PokegearPhone_Exit(OverlayManager *man, int *state) {
 static void PokegearPhone_LoadContactsAndInitFromArgs(PokegearPhoneAppData *phoneApp) {
     phoneApp->pokegear->childAppdata = phoneApp;
     phoneApp->pokegear->reselectAppCB = PokegearPhone_OnReselectApp;
-    phoneApp->backgroundStyle = Pokegear_GetBackgroundStyle(phoneApp->pokegear->savePokegear);
+    phoneApp->skin = Pokegear_GetSkin(phoneApp->pokegear->savePokegear);
     phoneApp->saveContacts = SavePokegear_AllocAndCopyPhonebook(phoneApp->pokegear->savePokegear, phoneApp->heapID);
     phoneApp->numContacts = SavePokegear_FindEmptyPhonebookSlot(phoneApp->pokegear->savePokegear);
     PokegearPhone_ContactList_CreateLinkedList(phoneApp);
