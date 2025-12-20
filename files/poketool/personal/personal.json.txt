@@ -7,10 +7,10 @@
 #include "constants/abilities.h"
 #include "constants/items.h"
 
-u32 __size = sizeof(struct BaseStats);
+u32 __size = sizeof(struct SpeciesData);
 
-const struct BaseStats __data[] = {
-## for mon in baseStats
+const struct SpeciesData __data[] = {
+## for mon in speciesData
 	// {{ mon.species }}
     {
         // Stats

@@ -6,7 +6,7 @@
 #include "filesystem.h"
 #include "seal_case.h"
 
-typedef struct BaseStats {
+typedef struct SpeciesData {
     /* 0x00 */ u8 hp;
     /* 0x01 */ u8 atk;
     /* 0x02 */ u8 def;
@@ -39,7 +39,7 @@ typedef struct BaseStats {
     /* 0x20 */ u32 tmhm_2;
     /* 0x24 */ u32 tmhm_3;
     /* 0x28 */ u32 tmhm_4;
-} BASE_STATS;
+} SpeciesData;
 
 // Structs
 

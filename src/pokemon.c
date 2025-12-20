@@ -30,7 +30,7 @@ void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BoxPokemon *boxMon);
-void LoadMonBaseStats_HandleAlternateForm(int species, int form, BASE_STATS *dest);
+void LoadMonBaseStats_HandleAlternateForm(int species, int form, SpeciesData *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest);
 static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest);
@@ -39,9 +39,9 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
 static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
-void LoadMonPersonal(int species, BASE_STATS *dest);
+void LoadMonPersonal(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
-u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid);
+u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
 void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
@@ -311,7 +311,7 @@ void Pokemon_CalcLevelAndStats(Pokemon *mon) {
 }
 
 void CalcMonStats(Pokemon *mon) {
-    BASE_STATS *baseStats;
+    SpeciesData *speciesData;
     int level;
     int maxHp;
     int hpIv;
@@ -355,37 +355,37 @@ void CalcMonStats(Pokemon *mon) {
     form = (int)Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     species = (int)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
 
-    baseStats = (BASE_STATS *)Heap_Alloc(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
-    LoadMonBaseStats_HandleAlternateForm(species, form, baseStats);
+    speciesData = (SpeciesData *)Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
+    LoadMonBaseStats_HandleAlternateForm(species, form, speciesData);
 
     if (species == SPECIES_SHEDINJA) {
         newMaxHp = 1;
     } else {
-        newMaxHp = (baseStats->hp * 2 + hpIv + hpEv / 4) * level / 100 + level + 10;
+        newMaxHp = (speciesData->hp * 2 + hpIv + hpEv / 4) * level / 100 + level + 10;
     }
     Pokemon_SetData(mon, MON_DATA_MAX_HP, &newMaxHp);
 
-    newAtk = (baseStats->atk * 2 + atkIv + atkEv / 4) * level / 100 + 5;
+    newAtk = (speciesData->atk * 2 + atkIv + atkEv / 4) * level / 100 + 5;
     newAtk = ModifyStatByNature(GetMonNature(mon), (u16)newAtk, STAT_ATK);
     Pokemon_SetData(mon, MON_DATA_ATK, &newAtk);
 
-    newDef = (baseStats->def * 2 + defIv + defEv / 4) * level / 100 + 5;
+    newDef = (speciesData->def * 2 + defIv + defEv / 4) * level / 100 + 5;
     newDef = ModifyStatByNature(GetMonNature(mon), (u16)newDef, STAT_DEF);
     Pokemon_SetData(mon, MON_DATA_DEF, &newDef);
 
-    newSpeed = (baseStats->speed * 2 + speedIv + speedEv / 4) * level / 100 + 5;
+    newSpeed = (speciesData->speed * 2 + speedIv + speedEv / 4) * level / 100 + 5;
     newSpeed = ModifyStatByNature(GetMonNature(mon), (u16)newSpeed, STAT_SPEED);
     Pokemon_SetData(mon, MON_DATA_SPEED, &newSpeed);
 
-    newSpatk = (baseStats->spatk * 2 + spatkIv + spatkEv / 4) * level / 100 + 5;
+    newSpatk = (speciesData->spatk * 2 + spatkIv + spatkEv / 4) * level / 100 + 5;
     newSpatk = ModifyStatByNature(GetMonNature(mon), (u16)newSpatk, STAT_SPATK);
     Pokemon_SetData(mon, MON_DATA_SP_ATK, &newSpatk);
 
-    newSpdef = (baseStats->spdef * 2 + spdefIv + spdefEv / 4) * level / 100 + 5;
+    newSpdef = (speciesData->spdef * 2 + spdefIv + spdefEv / 4) * level / 100 + 5;
     newSpdef = ModifyStatByNature(GetMonNature(mon), (u16)newSpdef, STAT_SPDEF);
     Pokemon_SetData(mon, MON_DATA_SP_DEF, &newSpdef);
 
-    Heap_Free(baseStats);
+    Heap_Free(speciesData);
 
     if (hp != 0 || maxHp == 0) {
         if (species == SPECIES_SHEDINJA) {
@@ -1712,133 +1712,133 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     }
 }
 
-BASE_STATS *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, enum HeapID heapID) {
-    BASE_STATS *ret = Heap_Alloc(heapID, sizeof(BASE_STATS));
+SpeciesData *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, enum HeapID heapID) {
+    SpeciesData *ret = Heap_Alloc(heapID, sizeof(SpeciesData));
     LoadMonBaseStats_HandleAlternateForm(species, form, ret);
     return ret;
 }
 
-BASE_STATS *AllocAndLoadMonPersonal(int species, enum HeapID heapID) {
-    BASE_STATS *ret = Heap_Alloc(heapID, sizeof(BASE_STATS));
+SpeciesData *AllocAndLoadMonPersonal(int species, enum HeapID heapID) {
+    SpeciesData *ret = Heap_Alloc(heapID, sizeof(SpeciesData));
     LoadMonPersonal(species, ret);
     return ret;
 }
 
-int GetPersonalAttr(const BASE_STATS *baseStats, int attr) {
+int GetPersonalAttr(const SpeciesData *speciesData, int attr) {
     int ret;
-    GF_ASSERT(baseStats != NULL);
+    GF_ASSERT(speciesData != NULL);
     switch (attr) {
     case BASE_HP:
-        ret = baseStats->hp;
+        ret = speciesData->hp;
         break;
     case BASE_ATK:
-        ret = baseStats->atk;
+        ret = speciesData->atk;
         break;
     case BASE_DEF:
-        ret = baseStats->def;
+        ret = speciesData->def;
         break;
     case BASE_SPEED:
-        ret = baseStats->speed;
+        ret = speciesData->speed;
         break;
     case BASE_SPATK:
-        ret = baseStats->spatk;
+        ret = speciesData->spatk;
         break;
     case BASE_SPDEF:
-        ret = baseStats->spdef;
+        ret = speciesData->spdef;
         break;
     case BASE_TYPE1:
-        ret = baseStats->types[0];
+        ret = speciesData->types[0];
         break;
     case BASE_TYPE2:
-        ret = baseStats->types[1];
+        ret = speciesData->types[1];
         break;
     case BASE_CATCH_RATE:
-        ret = baseStats->catchRate;
+        ret = speciesData->catchRate;
         break;
     case BASE_EXP_YIELD:
-        ret = baseStats->expYield;
+        ret = speciesData->expYield;
         break;
     case BASE_HP_YIELD:
-        ret = baseStats->hp_yield;
+        ret = speciesData->hp_yield;
         break;
     case BASE_ATK_YIELD:
-        ret = baseStats->atk_yield;
+        ret = speciesData->atk_yield;
         break;
     case BASE_DEF_YIELD:
-        ret = baseStats->def_yield;
+        ret = speciesData->def_yield;
         break;
     case BASE_SPEED_YIELD:
-        ret = baseStats->speed_yield;
+        ret = speciesData->speed_yield;
         break;
     case BASE_SPATK_YIELD:
-        ret = baseStats->spatk_yield;
+        ret = speciesData->spatk_yield;
         break;
     case BASE_SPDEF_YIELD:
-        ret = baseStats->spdef_yield;
+        ret = speciesData->spdef_yield;
         break;
     case BASE_ITEM_1:
-        ret = baseStats->item1;
+        ret = speciesData->item1;
         break;
     case BASE_ITEM_2:
-        ret = baseStats->item2;
+        ret = speciesData->item2;
         break;
     case BASE_GENDER_RATIO:
-        ret = baseStats->genderRatio;
+        ret = speciesData->genderRatio;
         break;
     case BASE_EGG_CYCLES:
-        ret = baseStats->eggCycles;
+        ret = speciesData->eggCycles;
         break;
     case BASE_FRIENDSHIP:
-        ret = baseStats->friendship;
+        ret = speciesData->friendship;
         break;
     case BASE_GROWTH_RATE:
-        ret = baseStats->growthRate;
+        ret = speciesData->growthRate;
         break;
     case BASE_EGG_GROUP_1:
-        ret = baseStats->eggGroups[0];
+        ret = speciesData->eggGroups[0];
         break;
     case BASE_EGG_GROUP_2:
-        ret = baseStats->eggGroups[1];
+        ret = speciesData->eggGroups[1];
         break;
     case BASE_ABILITY_1:
-        ret = baseStats->abilities[0];
+        ret = speciesData->abilities[0];
         break;
     case BASE_ABILITY_2:
-        ret = baseStats->abilities[1];
+        ret = speciesData->abilities[1];
         break;
     case BASE_GREAT_MARSH_RATE:
-        ret = baseStats->greatMarshRate;
+        ret = speciesData->greatMarshRate;
         break;
     case BASE_COLOR:
-        ret = baseStats->color;
+        ret = speciesData->color;
         break;
     case BASE_FLIP:
-        ret = baseStats->flip;
+        ret = speciesData->flip;
         break;
     case BASE_TMHM_1:
-        ret = (int)baseStats->tmhm_1;
+        ret = (int)speciesData->tmhm_1;
         break;
     case BASE_TMHM_2:
-        ret = (int)baseStats->tmhm_2;
+        ret = (int)speciesData->tmhm_2;
         break;
     case BASE_TMHM_3:
-        ret = (int)baseStats->tmhm_3;
+        ret = (int)speciesData->tmhm_3;
         break;
     case BASE_TMHM_4:
-        ret = (int)baseStats->tmhm_4;
+        ret = (int)speciesData->tmhm_4;
         break;
     }
     return ret;
 }
 
-void FreeMonPersonal(BASE_STATS *personal) {
+void FreeMonPersonal(SpeciesData *personal) {
     GF_ASSERT(personal != NULL);
     Heap_Free(personal);
 }
 
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
     int ret;
-    BASE_STATS *personal = AllocAndLoadMonPersonal(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
+    SpeciesData *personal = AllocAndLoadMonPersonal(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
     FreeMonPersonal(personal);
     return ret;
@@ -1846,7 +1846,7 @@ int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
 
 int GetMonBaseStat(int species, int attr) {
     int ret;
-    BASE_STATS *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
+    SpeciesData *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
     FreeMonPersonal(personal);
     return ret;
@@ -1855,7 +1855,7 @@ int GetMonBaseStat(int species, int attr) {
 int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int attr) {
     int resolved = ResolveMonForm(species, form);
     int ret;
-    BASE_STATS *buf = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(BASE_STATS));
+    SpeciesData *buf = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
     NARC_ReadWholeMember(narc, resolved, buf);
     ret = GetPersonalAttr(buf, attr);
     Heap_Free(buf);
@@ -1926,13 +1926,13 @@ int CalcBoxMonLevel(BoxPokemon *boxMon) {
 
 int CalcLevelBySpeciesAndExp(u16 species, u32 exp) {
     int level;
-    BASE_STATS *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
+    SpeciesData *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
     level = CalcLevelBySpeciesAndExp_PreloadedPersonal(personal, species, exp);
     FreeMonPersonal(personal);
     return level;
 }
 
-int CalcLevelBySpeciesAndExp_PreloadedPersonal(BASE_STATS *personal, u16 species, u32 exp) {
+int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 species, u32 exp) {
 #pragma unused(species)
     static u32 table[101];
     int i;
@@ -2085,13 +2085,13 @@ u8 BoxPokemon_GetGender(BoxPokemon *boxMon) {
 }
 
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
-    BASE_STATS *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
+    SpeciesData *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
     u8 gender = GetGenderBySpeciesAndPersonality_PreloadedPersonal(personal, species, pid);
     FreeMonPersonal(personal);
     return gender;
 }
 
-u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const BASE_STATS *personal, u16 species, u32 pid) {
+u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid) {
     int gender;
     u8 ratio = GetPersonalAttr(personal, BASE_GENDER_RATIO);
     switch (ratio) {
@@ -3918,11 +3918,11 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
     return pid;
 }
 
-void LoadMonPersonal(int species, BASE_STATS *personal) {
+void LoadMonPersonal(int species, SpeciesData *personal) {
     ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, species);
 }
 
-void LoadMonBaseStats_HandleAlternateForm(int species, int form, BASE_STATS *personal) {
+void LoadMonBaseStats_HandleAlternateForm(int species, int form, SpeciesData *personal) {
     ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, ResolveMonForm(species, form));
 }
 
