@@ -32,7 +32,7 @@ u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BoxPokemon *boxMon);
 void LoadMonBaseStats_HandleAlternateForm(int species, int form, BASE_STATS *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
-static u32 GetMonDataInternal(Pokemon *mon, int attr, void *dest);
+static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest);
 static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest);
 static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *data);
 static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void *data);
@@ -418,7 +418,7 @@ u32 Pokemon_GetData(Pokemon *mon, int attr, void *dest) {
             mon->box.checksumFailed = TRUE;
         }
     }
-    ret = GetMonDataInternal(mon, attr, dest);
+    ret = Pokemon_GetDataInternal(mon, attr, dest);
     if (!mon->box.partyDecrypted) {
         ENCRYPT_PTY(mon);
         ENCRYPT_BOX(&mon->box);
@@ -426,7 +426,7 @@ u32 Pokemon_GetData(Pokemon *mon, int attr, void *dest) {
     return ret;
 }
 
-static u32 GetMonDataInternal(Pokemon *mon, int attr, void *dest) {
+static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest) {
     switch (attr) {
     case MON_DATA_STATUS:
         return mon->party.status;
