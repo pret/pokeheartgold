@@ -37,7 +37,7 @@ static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest);
 static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *data);
 static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void *data);
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
-static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value);
+static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value);
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
 void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
@@ -1377,18 +1377,18 @@ static void AddMonDataInternal(Pokemon *mon, int attr, int value) {
         GF_ASSERT(FALSE);
         break;
     default:
-        AddBoxMonDataInternal(&mon->box, attr, value);
+        BoxPokemon_AddDataInternal(&mon->box, attr, value);
         break;
     }
 }
 
-static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
+static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value) {
     PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
     PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
     PokemonDataBlockC *blockC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
     PokemonDataBlockD *blockD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
 
-    switch (attr) {
+    switch (param) {
     case MON_DATA_EXPERIENCE:
         if (blockA->exp + value > GetMonExpBySpeciesAndLevel(blockA->species, 100)) {
             blockA->exp = GetMonExpBySpeciesAndLevel(blockA->species, 100);
@@ -1396,7 +1396,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
             blockA->exp += value;
         }
         break;
-    case MON_DATA_FRIENDSHIP: {
+    case MON_DATA_FRIENDSHIP:
         int friendship = blockA->friendship;
         if (friendship + value > FRIENDSHIP_MAX) {
             friendship = FRIENDSHIP_MAX;
@@ -1406,7 +1406,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
             friendship = 0;
         }
         blockA->friendship = friendship;
-    } break;
+        break;
     case MON_DATA_HP_EV:
         blockA->hpEV += value;
         break;
@@ -1471,21 +1471,21 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     case MON_DATA_MOVE2_PP:
     case MON_DATA_MOVE3_PP:
     case MON_DATA_MOVE4_PP:
-        if (blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] + value > GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1_PP], blockB->movePPUps[attr - MON_DATA_MOVE1_PP])) {
-            blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] = (u8)GetMoveMaxPP(blockB->moves[attr - MON_DATA_MOVE1_PP],
-                blockB->movePPUps[attr - MON_DATA_MOVE1_PP]);
+        if (blockB->moveCurrentPPs[param - MON_DATA_MOVE1_PP] + value > GetMoveMaxPP(blockB->moves[param - MON_DATA_MOVE1_PP], blockB->movePPUps[param - MON_DATA_MOVE1_PP])) {
+            blockB->moveCurrentPPs[param - MON_DATA_MOVE1_PP] = (u8)GetMoveMaxPP(blockB->moves[param - MON_DATA_MOVE1_PP],
+                blockB->movePPUps[param - MON_DATA_MOVE1_PP]);
         } else {
-            blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] += value;
+            blockB->moveCurrentPPs[param - MON_DATA_MOVE1_PP] += value;
         }
         break;
     case MON_DATA_MOVE1_PP_UPS:
     case MON_DATA_MOVE2_PP_UPS:
     case MON_DATA_MOVE3_PP_UPS:
     case MON_DATA_MOVE4_PP_UPS:
-        if (blockB->movePPUps[attr - MON_DATA_MOVE1_PP_UPS] + value > 3) {
-            blockB->movePPUps[attr - MON_DATA_MOVE1_PP_UPS] = 3;
+        if (blockB->movePPUps[param - MON_DATA_MOVE1_PP_UPS] + value > 3) {
+            blockB->movePPUps[param - MON_DATA_MOVE1_PP_UPS] = 3;
         } else {
-            blockB->movePPUps[attr - MON_DATA_MOVE1_PP_UPS] += value;
+            blockB->movePPUps[param - MON_DATA_MOVE1_PP_UPS] += value;
         }
         break;
     case MON_DATA_MOVE1_MAX_PP:
