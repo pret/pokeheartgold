@@ -4064,7 +4064,7 @@ _02247AE0:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl CreateMonWithNature
+	bl Pokemon_InitWithNature
 	mov r5, #0
 _02247AF8:
 	add r1, r5, #0
@@ -4100,7 +4100,7 @@ _02247B26:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl CreateMonWithNature
+	bl Pokemon_InitWithNature
 _02247B3C:
 	add r0, r4, #0
 	mov r1, #7

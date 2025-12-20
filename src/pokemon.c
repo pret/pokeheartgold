@@ -254,12 +254,12 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
     ReleaseBoxMonLock(boxMon, decry);
 }
 
-void CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nature) {
+void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 nature) {
     u32 personality;
     do {
         personality = (u32)(LCRandom() | (LCRandom() << 16));
     } while (nature != GetNatureFromPersonality(personality));
-    Pokemon_InitWith(mon, (int)species, (int)level, (int)fixedIv, TRUE, (int)personality, (int)0, (int)0);
+    Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
 void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter) {

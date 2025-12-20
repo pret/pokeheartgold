@@ -317,7 +317,7 @@
 .public Pokemon_Init
 .public AllocMonZeroed
 .public Pokemon_InitWith
-.public CreateMonWithNature
+.public Pokemon_InitWithNature
 .public CreateMonWithGenderNatureLetter
 .public CreateMonWithFixedIVs
 .public Pokemon_GetData
