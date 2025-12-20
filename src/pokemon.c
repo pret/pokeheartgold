@@ -34,7 +34,7 @@ void LoadMonBaseStats_HandleAlternateForm(int species, int form, BASE_STATS *des
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 static u32 GetMonDataInternal(Pokemon *mon, int attr, void *dest);
 static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest);
-static void SetMonDataInternal(Pokemon *mon, int attr, const void *data);
+static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *data);
 static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *data);
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
 static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value);
@@ -896,7 +896,7 @@ void Pokemon_SetData(Pokemon *mon, int attr, const void *value) {
             return;
         }
     }
-    SetMonDataInternal(mon, attr, value);
+    Pokemon_SetDataInternal(mon, attr, value);
     if (!mon->box.partyDecrypted) {
         ENCRYPT_PTY(mon);
         mon->box.checksum = CHECKSUM(&mon->box);
@@ -904,7 +904,7 @@ void Pokemon_SetData(Pokemon *mon, int attr, const void *value) {
     }
 }
 
-static void SetMonDataInternal(Pokemon *mon, int attr, const void *value) {
+static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *value) {
 #define VALUE(type) (*(const type *)value)
     switch (attr) {
     case MON_DATA_STATUS:
