@@ -409,8 +409,8 @@ u32 Pokemon_GetData(Pokemon *mon, int attr, void *dest) {
     return ret;
 }
 
-static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest) {
-    switch (attr) {
+static u32 Pokemon_GetDataInternal(Pokemon *mon, int param, void *dest) {
+    switch (param) {
     case MON_DATA_STATUS:
         return mon->party.status;
     case MON_DATA_LEVEL:
@@ -433,12 +433,12 @@ static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest) {
         return mon->party.spdef;
     case MON_DATA_MAIL:
         Mail_Copy(&mon->party.mail, dest);
-        return 1;
+        return TRUE;
     case MON_DATA_BALL_CAPSULE:
         CopyCapsule(&mon->party.sealCoords, dest);
-        return 1;
+        return TRUE;
     default:
-        return BoxPokemon_GetDataInternal(&mon->box, attr, dest);
+        return BoxPokemon_GetDataInternal(&mon->box, param, dest);
     }
 }
 
