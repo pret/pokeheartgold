@@ -164,12 +164,12 @@ BOOL ReleaseBoxMonLock(BoxPokemon *boxMon, BOOL locked) {
     }
     return prev;
 }
-void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
+void Pokemon_InitWith(Pokemon *mon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
     Mail *mail;
     u32 capsule;
     CAPSULE seal_coords;
     Pokemon_Init(mon);
-    BoxPokemon_InitWith(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
+    BoxPokemon_InitWith(&mon->box, species, level, ivs, hasFixedPersonality, personality, otIDType, otID);
     // Not your average encryption call
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
     ENCRYPT_PTY(mon);
@@ -259,7 +259,7 @@ void CreateMonWithNature(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 nat
     do {
         personality = (u32)(LCRandom() | (LCRandom() << 16));
     } while (nature != GetNatureFromPersonality(personality));
-    CreateMon(mon, (int)species, (int)level, (int)fixedIv, TRUE, (int)personality, (int)0, (int)0);
+    Pokemon_InitWith(mon, (int)species, (int)level, (int)fixedIv, TRUE, (int)personality, (int)0, (int)0);
 }
 
 void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter) {
@@ -273,7 +273,7 @@ void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fix
     } else {
         pid = GenPersonalityByGenderAndNature(species, gender, nature);
     }
-    CreateMon(mon, (int)species, (int)level, (int)fixedIv, 1, (int)pid, 0, 0);
+    Pokemon_InitWith(mon, (int)species, (int)level, (int)fixedIv, 1, (int)pid, 0, 0);
 }
 
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
@@ -297,7 +297,7 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
 }
 
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
-    CreateMon(mon, species, level, 0, 1, personality, 0, 0);
+    Pokemon_InitWith(mon, species, level, 0, 1, personality, 0, 0);
     Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &ivs);
     Pokemon_CalcLevelAndStats(mon);
 }

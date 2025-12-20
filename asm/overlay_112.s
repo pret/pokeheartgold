@@ -17981,7 +17981,7 @@ _021EEA06:
 	ldrb r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r3, #0x20
-	bl CreateMon
+	bl Pokemon_InitWith
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #2

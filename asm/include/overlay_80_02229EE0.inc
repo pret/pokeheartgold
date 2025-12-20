@@ -28,7 +28,7 @@
 .public sub_02039F68
 .public MapHeader_GetMapSec
 .public Pokemon_Init
-.public CreateMon
+.public Pokemon_InitWith
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
