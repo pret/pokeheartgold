@@ -17900,7 +17900,7 @@ ov112_021EE970: ; 0x021EE970
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 _021EE99C:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -18208,11 +18208,11 @@ _021EEBA4:
 	strb r1, [r0, #1]
 	add r0, r6, #0
 	mov r1, #0x9d
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	mov r1, #0x91
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	mov r1, #0x9a
@@ -18227,19 +18227,19 @@ _021EEBA4:
 	add r0, r6, #0
 	mov r1, #0xa
 	add r2, r5, r2
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	mov r1, #1
 	add r0, sp, #0x18
 	strb r1, [r0]
 	add r0, r6, #0
 	mov r1, #0x6e
 	add r2, sp, #0x18
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	ldr r2, _021EECE8 ; =0x0000AD30
 	add r0, r6, #0
 	mov r1, #0x9b
 	add r2, r5, r2
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20

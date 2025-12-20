@@ -990,7 +990,7 @@ ov14_021E6094: ; 0x021E6094
 	beq _021E60BE
 	add r1, r6, #0
 	add r2, r7, #0
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	cmp r4, #0x1e
 	bhs _021E60BE
 	ldrb r1, [r5, #0x1f]

@@ -269,7 +269,7 @@
 .public ReleaseBoxMonLock
 .public GetMonData
 .public GetBoxMonData
-.public SetBoxMonData
+.public BoxPokemon_SetData
 .public GetMonBaseStat
 .public CalcLevelBySpeciesAndExp
 .public GetMonGender

@@ -205,7 +205,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
     exp = GetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
     exp += steps;
-    SetBoxMonData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
+    BoxPokemon_SetData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
     level = CalcBoxMonLevel(boxmon_tmp);
     Heap_Free(tmpMon);
     return level;

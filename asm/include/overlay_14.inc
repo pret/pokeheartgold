@@ -213,7 +213,7 @@
 .public GetMonData
 .public GetBoxMonData
 .public SetMonData
-.public SetBoxMonData
+.public BoxPokemon_SetData
 .public GetMonBaseStatEx_HandleAlternateForm
 .public GetBoxMonNature
 .public GetBoxMonGender

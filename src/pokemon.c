@@ -193,7 +193,7 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
     if (hasFixedPersonality == 0) {
         fixedPersonality = (LCRandom() | (LCRandom() << 16));
     }
-    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &fixedPersonality);
+    BoxPokemon_SetData(boxMon, MON_DATA_PERSONALITY, &fixedPersonality);
     if (otIdType == 2) {
         do {
             fixedOtId = (LCRandom() | (LCRandom() << 16));
@@ -201,55 +201,55 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
     } else if (otIdType != 1) {
         fixedOtId = 0;
     }
-    SetBoxMonData(boxMon, MON_DATA_OT_ID, &fixedOtId);
-    SetBoxMonData(boxMon, MON_DATA_LANGUAGE, (void *)&gGameLanguage);
-    SetBoxMonData(boxMon, MON_DATA_SPECIES, &species);
-    SetBoxMonData(boxMon, MON_DATA_SPECIES_NAME, NULL);
+    BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &fixedOtId);
+    BoxPokemon_SetData(boxMon, MON_DATA_LANGUAGE, (void *)&gGameLanguage);
+    BoxPokemon_SetData(boxMon, MON_DATA_SPECIES, &species);
+    BoxPokemon_SetData(boxMon, MON_DATA_SPECIES_NAME, NULL);
     exp = GetMonExpBySpeciesAndLevel(species, level);
-    SetBoxMonData(boxMon, MON_DATA_EXPERIENCE, &exp);
+    BoxPokemon_SetData(boxMon, MON_DATA_EXPERIENCE, &exp);
     exp = (u32)GetMonBaseStat(species, BASE_FRIENDSHIP);
-    SetBoxMonData(boxMon, MON_DATA_FRIENDSHIP, &exp);
-    SetBoxMonData(boxMon, MON_DATA_MET_LEVEL, &level);
-    SetBoxMonData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
+    BoxPokemon_SetData(boxMon, MON_DATA_FRIENDSHIP, &exp);
+    BoxPokemon_SetData(boxMon, MON_DATA_MET_LEVEL, &level);
+    BoxPokemon_SetData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
     exp = ITEM_POKE_BALL;
-    SetBoxMonData(boxMon, MON_DATA_POKEBALL, &exp);
-    SetBoxMonData(boxMon, MON_DATA_DP_POKEBALL, &exp);
+    BoxPokemon_SetData(boxMon, MON_DATA_POKEBALL, &exp);
+    BoxPokemon_SetData(boxMon, MON_DATA_DP_POKEBALL, &exp);
     if (fixedIV < 0x20) {
-        SetBoxMonData(boxMon, MON_DATA_HP_IV, &fixedIV);
-        SetBoxMonData(boxMon, MON_DATA_ATK_IV, &fixedIV);
-        SetBoxMonData(boxMon, MON_DATA_DEF_IV, &fixedIV);
-        SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &fixedIV);
-        SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &fixedIV);
-        SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &fixedIV);
+        BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &fixedIV);
+        BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &fixedIV);
+        BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &fixedIV);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &fixedIV);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &fixedIV);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &fixedIV);
     } else {
         exp = LCRandom();
         iv = exp & 0x1F;
-        SetBoxMonData(boxMon, MON_DATA_HP_IV, &iv);
+        BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &iv);
         iv = (exp & 0x3E0) >> 5;
-        SetBoxMonData(boxMon, MON_DATA_ATK_IV, &iv);
+        BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &iv);
         iv = (exp & 0x7C00) >> 10;
-        SetBoxMonData(boxMon, MON_DATA_DEF_IV, &iv);
+        BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &iv);
         exp = LCRandom();
         iv = exp & 0x1F;
-        SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &iv);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &iv);
         iv = (exp & 0x3E0) >> 5;
-        SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &iv);
         iv = (exp & 0x7C00) >> 10;
-        SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &iv);
     }
     exp = (u32)GetMonBaseStat(species, BASE_ABILITY_1);
     iv = (u32)GetMonBaseStat(species, BASE_ABILITY_2);
     if (iv != 0) {
         if (fixedPersonality & 1) {
-            SetBoxMonData(boxMon, MON_DATA_ABILITY, &iv);
+            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &iv);
         } else {
-            SetBoxMonData(boxMon, MON_DATA_ABILITY, &exp);
+            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &exp);
         }
     } else {
-        SetBoxMonData(boxMon, MON_DATA_ABILITY, &exp);
+        BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &exp);
     }
     exp = GetBoxMonGender(boxMon);
-    SetBoxMonData(boxMon, MON_DATA_GENDER, &exp);
+    BoxPokemon_SetData(boxMon, MON_DATA_GENDER, &exp);
     InitBoxMonMoveset(boxMon);
     ReleaseBoxMonLock(boxMon, decry);
 }
@@ -950,7 +950,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void *value) {
 #undef VALUE
 }
 
-void SetBoxMonData(BoxPokemon *boxMon, int attr, const void *value) {
+void BoxPokemon_SetData(BoxPokemon *boxMon, int attr, const void *value) {
     u32 checksum;
     if (!boxMon->boxDecrypted) {
         DECRYPT_BOX(boxMon);
@@ -3106,9 +3106,9 @@ void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move) {
     ppUp[3] = 0;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        SetBoxMonData(boxMon, MON_DATA_MOVE1 + i, &moves[i]);
-        SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + i, &pp[i]);
-        SetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + i, &ppUp[i]);
+        BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + i, &moves[i]);
+        BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + i, &pp[i]);
+        BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP_UPS + i, &ppUp[i]);
     }
 
     ReleaseBoxMonLock(boxMon, decry);
@@ -3133,10 +3133,10 @@ void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
     u8 ppUp;
     u8 pp;
 
-    SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot, &move);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + slot, &move);
     ppUp = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot, NULL);
     pp = (u8)GetMoveMaxPP(move, ppUp);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot, &pp);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + slot, &pp);
 }
 
 u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
@@ -3183,12 +3183,12 @@ void BoxMonSwapMoves(BoxPokemon *boxMon, int slot1, int slot2) {
     pp[1] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot2, NULL);
     ppUp[1] = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, NULL);
 
-    SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot1, &moves[1]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot1, &pp[1]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot1, &ppUp[1]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1 + slot2, &moves[0]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + slot2, &pp[0]);
-    SetBoxMonData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, &ppUp[0]);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + slot1, &moves[1]);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + slot1, &pp[1]);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot1, &ppUp[1]);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + slot2, &moves[0]);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + slot2, &pp[0]);
+    BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, &ppUp[0]);
 }
 
 void MonDeleteMoveSlot(Pokemon *mon, u32 slot) {
@@ -3451,7 +3451,7 @@ void BoxMon_UpdateArceusForm(BoxPokemon *boxMon) {
     u32 form;
     if (species == SPECIES_ARCEUS && ability == ABILITY_MULTITYPE) {
         form = GetArceusTypeByHeldItemEffect((u16)GetItemAttr((u16)heldItem, 1, HEAP_ID_DEFAULT));
-        SetBoxMonData(boxMon, MON_DATA_FORM, &form);
+        BoxPokemon_SetData(boxMon, MON_DATA_FORM, &form);
     }
 }
 
@@ -3512,7 +3512,7 @@ s32 BoxMon_UpdateGiratinaForm(BoxPokemon *boxMon) {
         } else {
             form = GIRATINA_ALTERED;
         }
-        SetBoxMonData(boxMon, MON_DATA_FORM, &form);
+        BoxPokemon_SetData(boxMon, MON_DATA_FORM, &form);
         UpdateBoxMonAbility(boxMon);
         return form;
     }
@@ -3522,7 +3522,7 @@ s32 BoxMon_UpdateGiratinaForm(BoxPokemon *boxMon) {
 void Mon_ForceSetGiratinaOriginForm(Pokemon *mon) {
     s32 form = GIRATINA_ORIGIN;
     if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_GIRATINA) {
-        SetBoxMonData(&mon->box, MON_DATA_FORM, &form);
+        BoxPokemon_SetData(&mon->box, MON_DATA_FORM, &form);
         UpdateBoxMonAbility(&mon->box);
         CalcMonLevelAndStats(mon);
     }
@@ -3550,7 +3550,7 @@ void Mon_UpdateShayminForm(Pokemon *mon, int form) {
 void BoxMon_UpdateShayminForm(BoxPokemon *boxMon, int form) {
     if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_SHAYMIN) {
         GF_ASSERT(form <= 1);
-        SetBoxMonData(boxMon, MON_DATA_FORM, &form);
+        BoxPokemon_SetData(boxMon, MON_DATA_FORM, &form);
         UpdateBoxMonAbility(boxMon);
     }
 }
@@ -3720,9 +3720,9 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
 
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
     BoxMonSetTrainerMemo(boxMon, playerProfile, 0, a3, heapID);
-    SetBoxMonData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
-    SetBoxMonData(boxMon, MON_DATA_POKEBALL, &pokeball);
-    SetBoxMonData(boxMon, MON_DATA_MET_TERRAIN, &encounterType);
+    BoxPokemon_SetData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
+    BoxPokemon_SetData(boxMon, MON_DATA_POKEBALL, &pokeball);
+    BoxPokemon_SetData(boxMon, MON_DATA_MET_TERRAIN, &encounterType);
 }
 
 void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID) {
@@ -3815,12 +3815,12 @@ void UpdateBoxMonAbility(BoxPokemon *boxMon) {
     int ability2 = GetMonBaseStat_HandleAlternateForm(species, form, BASE_ABILITY_2);
     if (ability2 != ABILITY_NONE) {
         if (pid & 1) {
-            SetBoxMonData(boxMon, MON_DATA_ABILITY, &ability2);
+            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &ability2);
         } else {
-            SetBoxMonData(boxMon, MON_DATA_ABILITY, &ability1);
+            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &ability1);
         }
     } else {
-        SetBoxMonData(boxMon, MON_DATA_ABILITY, &ability1);
+        BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &ability1);
     }
     ReleaseBoxMonLock(boxMon, decry);
 }
@@ -4179,7 +4179,7 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (GetBoxMonData(boxMon, MON_DATA_MOVE1 + i, NULL) != MOVE_NONE) {
             pp = (u8)GetBoxMonData(boxMon, MON_DATA_MOVE1_MAX_PP + i, NULL);
-            SetBoxMonData(boxMon, MON_DATA_MOVE1_PP + i, &pp);
+            BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + i, &pp);
         }
     }
     ReleaseBoxMonLock(boxMon, decry);

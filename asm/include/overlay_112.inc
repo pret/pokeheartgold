@@ -259,7 +259,7 @@
 .public GetMonData
 .public GetBoxMonData
 .public SetMonData
-.public SetBoxMonData
+.public BoxPokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm
 .public AllocAndLoadMonPersonal
 .public GetPersonalAttr
