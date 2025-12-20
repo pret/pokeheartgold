@@ -30,7 +30,7 @@ void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BoxPokemon *boxMon);
-void LoadMonBaseStats_HandleAlternateForm(int species, int form, SpeciesData *dest);
+void SpeciesData_LoadForm(int species, int form, SpeciesData *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest);
 static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest);
@@ -338,7 +338,7 @@ void Pokemon_CalcStats(Pokemon *mon) {
     species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
 
     SpeciesData *speciesData = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
-    LoadMonBaseStats_HandleAlternateForm(species, form, speciesData);
+    SpeciesData_LoadForm(species, form, speciesData);
 
     if (species == SPECIES_SHEDINJA) {
         newMaxHp = 1;
@@ -1697,7 +1697,7 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
 
 SpeciesData *SpeciesData_NewFromForm(int species, int form, enum HeapID heapID) {
     SpeciesData *speciesData = Heap_Alloc(heapID, sizeof(SpeciesData));
-    LoadMonBaseStats_HandleAlternateForm(species, form, speciesData);
+    SpeciesData_LoadForm(species, form, speciesData);
     return speciesData;
 }
 
@@ -3901,12 +3901,12 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
     return pid;
 }
 
-void SpeciesData_LoadSpecies(int species, SpeciesData *personal) {
-    ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, species);
+void SpeciesData_LoadSpecies(int species, SpeciesData *speciesData) {
+    ReadWholeNarcMemberByIdPair(speciesData, NARC_poketool_personal_personal, species);
 }
 
-void LoadMonBaseStats_HandleAlternateForm(int species, int form, SpeciesData *personal) {
-    ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, ResolveMonForm(species, form));
+void SpeciesData_LoadForm(int species, int form, SpeciesData *speciesData) {
+    ReadWholeNarcMemberByIdPair(speciesData, NARC_poketool_personal_personal, ResolveMonForm(species, form));
 }
 
 void LoadMonEvolutionTable(u16 species, struct Evolution *evo) {

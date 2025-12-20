@@ -183,7 +183,7 @@ BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm);
 void SetMonPersonality(Pokemon *mon, u32 personality);
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
 void SpeciesData_LoadSpecies(int species, SpeciesData *personal);
-void LoadMonBaseStats_HandleAlternateForm(int species, int form, SpeciesData *personal);
+void SpeciesData_LoadForm(int species, int form, SpeciesData *speciesData);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evo);
 void MonEncryptSegment(void *data, u32 size, u32 seed);
 void MonDecryptSegment(void *data, u32 size, u32 seed);
