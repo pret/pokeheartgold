@@ -35,7 +35,7 @@ u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest);
 static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest);
 static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *data);
-static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void *data);
+static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int param, const void *data);
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
 static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value);
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
@@ -952,7 +952,7 @@ void BoxPokemon_SetData(BoxPokemon *boxMon, int attr, const void *value) {
     }
 }
 
-static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void *value) {
+static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int param, const void *value) {
 #define VALUE(type) (*(const type *)value)
     u64 mask;
     u32 i;
@@ -966,7 +966,7 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
     PokemonDataBlockC *blockC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
     PokemonDataBlockD *blockD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
 
-    switch (attr) {
+    switch (param) {
     case MON_DATA_PERSONALITY:
         boxMon->personality = VALUE(u32);
         break;
@@ -1073,7 +1073,7 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
     case MON_DATA_CLASSIC_RIBBON:
     case MON_DATA_PREMIER_RIBBON:
     case MON_DATA_UNUSED_RIBBON_53:
-        mask = 1 << (attr - MON_DATA_SINNOH_CHAMP_RIBBON);
+        mask = 1 << (param - MON_DATA_SINNOH_CHAMP_RIBBON);
         if (VALUE(u8)) {
             blockA->ribbonsDS1 |= mask;
         } else {
@@ -1084,19 +1084,19 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
     case MON_DATA_MOVE2:
     case MON_DATA_MOVE3:
     case MON_DATA_MOVE4:
-        blockB->moves[attr - MON_DATA_MOVE1] = VALUE(u16);
+        blockB->moves[param - MON_DATA_MOVE1] = VALUE(u16);
         break;
     case MON_DATA_MOVE1_PP:
     case MON_DATA_MOVE2_PP:
     case MON_DATA_MOVE3_PP:
     case MON_DATA_MOVE4_PP:
-        blockB->moveCurrentPPs[attr - MON_DATA_MOVE1_PP] = VALUE(u8);
+        blockB->moveCurrentPPs[param - MON_DATA_MOVE1_PP] = VALUE(u8);
         break;
     case MON_DATA_MOVE1_PP_UPS:
     case MON_DATA_MOVE2_PP_UPS:
     case MON_DATA_MOVE3_PP_UPS:
     case MON_DATA_MOVE4_PP_UPS:
-        blockB->movePPUps[attr - MON_DATA_MOVE1_PP_UPS] = VALUE(u8);
+        blockB->movePPUps[param - MON_DATA_MOVE1_PP_UPS] = VALUE(u8);
         break;
     case MON_DATA_HP_IV:
         blockB->hpIV = VALUE(u8);
@@ -1154,7 +1154,7 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
     case MON_DATA_NATIONAL_RIBBON:
     case MON_DATA_EARTH_RIBBON:
     case MON_DATA_WORLD_RIBBON:
-        mask = 1 << (attr - MON_DATA_COOL_RIBBON);
+        mask = 1 << (param - MON_DATA_COOL_RIBBON);
         if (VALUE(u8)) {
             blockB->ribbonsGBA |= mask;
         } else {
@@ -1221,7 +1221,7 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
     case MON_DATA_SUPER_TOUGH_RIBBON_ULTRA:
     case MON_DATA_SUPER_TOUGH_RIBBON_MASTER:
     case MON_DATA_UNUSED_RIBBON_143:
-        mask = 1 << (attr - MON_DATA_SUPER_COOL_RIBBON);
+        mask = 1 << (param - MON_DATA_SUPER_COOL_RIBBON);
         if (VALUE(u8)) {
             blockC->ribbonsDS2 |= mask;
         } else {
@@ -1318,11 +1318,11 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
     case MON_DATA_SHINY_LEAF_E:
     case MON_DATA_SHINY_LEAF_CROWN:
         if (value == NULL) {
-            blockB->HGSS_shinyLeaves |= 1 << (attr - MON_DATA_SHINY_LEAF_A);
+            blockB->HGSS_shinyLeaves |= 1 << (param - MON_DATA_SHINY_LEAF_A);
         } else if (VALUE(u8) != 0) {
-            blockB->HGSS_shinyLeaves |= 1 << (attr - MON_DATA_SHINY_LEAF_A);
+            blockB->HGSS_shinyLeaves |= 1 << (param - MON_DATA_SHINY_LEAF_A);
         } else {
-            blockB->HGSS_shinyLeaves &= (1 << (attr - MON_DATA_SHINY_LEAF_A)) ^ 0x3F;
+            blockB->HGSS_shinyLeaves &= (1 << (param - MON_DATA_SHINY_LEAF_A)) ^ 0x3F;
         }
         break;
     case MON_DATA_MOOD:
