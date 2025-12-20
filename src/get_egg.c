@@ -206,7 +206,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     exp = BoxPokemon_GetData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
     exp += steps;
     BoxPokemon_SetData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
-    level = CalcBoxMonLevel(boxmon_tmp);
+    level = BoxPokemon_CalcLevel(boxmon_tmp);
     Heap_Free(tmpMon);
     return level;
 }
@@ -217,7 +217,7 @@ int DaycareMon_CalcLevelGrowth(DaycareMon *daycareMon) {
     u8 new_level;
 
     boxMon = DaycareMon_GetBoxMon(daycareMon);
-    cur_level = CalcBoxMonLevel(boxMon);
+    cur_level = BoxPokemon_CalcLevel(boxMon);
     new_level = GetDaycareUpdatedLevel(boxMon, DaycareMon_GetSteps(daycareMon));
     return new_level - cur_level;
 }

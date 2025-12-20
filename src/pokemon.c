@@ -1862,7 +1862,7 @@ u32 CalcMonExpToNextLevel(Pokemon *mon) {
 
 u32 CalcBoxMonExpToNextLevel(BoxPokemon *boxMon) {
     u16 species = (u16)BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
-    u16 level = (u16)(CalcBoxMonLevel(boxMon) + 1);
+    u16 level = (u16)(BoxPokemon_CalcLevel(boxMon) + 1);
     u32 cur = BoxPokemon_GetData(boxMon, MON_DATA_EXPERIENCE, NULL);
     u32 hi = GetMonExpBySpeciesAndLevel(species, level);
     return hi - cur;
@@ -1896,15 +1896,15 @@ u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
 }
 
 int CalcMonLevel(Pokemon *mon) {
-    return CalcBoxMonLevel(&mon->box);
+    return BoxPokemon_CalcLevel(&mon->box);
 }
 
-int CalcBoxMonLevel(BoxPokemon *boxMon) {
-    BOOL decry = AcquireBoxMonLock(boxMon);
-    int species = (int)BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
-    int exp = (int)BoxPokemon_GetData(boxMon, MON_DATA_EXPERIENCE, NULL);
-    ReleaseBoxMonLock(boxMon, decry);
-    return CalcLevelBySpeciesAndExp((u16)species, (u32)exp);
+int BoxPokemon_CalcLevel(BoxPokemon *boxMon) {
+    BOOL reencrypt = AcquireBoxMonLock(boxMon);
+    int species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+    int exp = BoxPokemon_GetData(boxMon, MON_DATA_EXPERIENCE, NULL);
+    ReleaseBoxMonLock(boxMon, reencrypt);
+    return CalcLevelBySpeciesAndExp(species, exp);
 }
 
 int CalcLevelBySpeciesAndExp(u16 species, u32 exp) {
@@ -3027,7 +3027,7 @@ void InitBoxMonMoveset(BoxPokemon *boxMon) {
     decry = AcquireBoxMonLock(boxMon);
     species = (u16)BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
     form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
-    level = (u8)CalcBoxMonLevel(boxMon);
+    level = (u8)BoxPokemon_CalcLevel(boxMon);
     LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
     for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
         if ((levelUpLearnset[i] & LEVEL_UP_LEARNSET_LEVEL_MASK) > (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
