@@ -305,3 +305,49 @@ void ov18_021E62E8(PokedexAppData *pokedexApp) {
     Heap_Free(pokedexApp->unk_1854);
     Heap_Free(pokedexApp->unk_1850);
 }
+
+void ov18_021E6308(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_0008 = sub_0201956C(pokedexApp->unk_0004, 2, 24, HEAP_ID_37);
+    sub_020195F4(pokedexApp->unk_0008, 0, 2, 32, 5);
+    sub_020195F4(pokedexApp->unk_0008, 1, 2, 32, 5);
+    sub_020195F4(pokedexApp->unk_0008, 2, 0, 22, 4);
+    sub_020195F4(pokedexApp->unk_0008, 3, 0, 22, 4);
+    sub_020195F4(pokedexApp->unk_0008, 4, 2, 32, 4);
+    sub_020195F4(pokedexApp->unk_0008, 5, 3, 32, 5);
+    sub_020195F4(pokedexApp->unk_0008, 6, 1, 32, 4);
+    sub_020195F4(pokedexApp->unk_0008, 7, 1, 32, 4);
+    sub_020195F4(pokedexApp->unk_0008, 8, 2, 32, 5);
+    sub_020195F4(pokedexApp->unk_0008, 9, 0, 32, 24);
+    sub_020195F4(pokedexApp->unk_0008, 10, 2, 32, 24);
+    sub_020195F4(pokedexApp->unk_0008, 11, 5, 32, 24);
+    sub_020195F4(pokedexApp->unk_0008, 12, 6, 32, 24);
+    sub_020195F4(pokedexApp->unk_0008, 13, 4, 32, 24);
+    sub_020195F4(pokedexApp->unk_0008, 15, 0, 32, 24);
+    sub_020195F4(pokedexApp->unk_0008, 14, 0, 3, 24);
+    sub_020195F4(pokedexApp->unk_0008, 16, 1, 32, 4);
+    sub_020195F4(pokedexApp->unk_0008, 23, 7, 20, 4);
+    sub_020196B8(pokedexApp->unk_0008, 0, pokedexApp->unk_0854, 5, 1);
+    sub_020196B8(pokedexApp->unk_0008, 1, pokedexApp->unk_0854, 6, 1);
+    sub_020196B8(pokedexApp->unk_0008, 2, pokedexApp->unk_0854, 7, 1);
+    sub_020196B8(pokedexApp->unk_0008, 3, pokedexApp->unk_0854, 8, 1);
+    sub_020196B8(pokedexApp->unk_0008, 4, pokedexApp->unk_0854, 9, 1);
+    sub_020196B8(pokedexApp->unk_0008, 5, pokedexApp->unk_0854, 10, 1);
+    sub_020196B8(pokedexApp->unk_0008, 6, pokedexApp->unk_0854, 69, 1);
+    sub_020196B8(pokedexApp->unk_0008, 7, pokedexApp->unk_0854, 70, 1);
+    sub_020196B8(pokedexApp->unk_0008, 8, pokedexApp->unk_0854, 71, 1);
+    sub_020196B8(pokedexApp->unk_0008, 13, pokedexApp->unk_0854, 16, 1);
+    sub_020196B8(pokedexApp->unk_0008, 16, pokedexApp->unk_0854, 11, 1);
+    sub_020196B8(pokedexApp->unk_0008, 23, pokedexApp->unk_0854, 88, 1);
+    sub_02019B70(pokedexApp->unk_0008, 11, 0, 32, 0, 19);
+    sub_02019B70(pokedexApp->unk_0008, 12, 0, 32, 0, 19);
+    ov18_021F0168(pokedexApp);
+}
+
+void ov18_021E6540(PokedexAppData *pokedexApp) {
+    sub_020195C0(pokedexApp->unk_0008);
+}
+
+void ov18_021E654C(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 0, 0, 24);
+    sub_020198FC(pokedexApp->unk_0008, 0, 0, -1, 5);
+}

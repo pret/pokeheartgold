@@ -7,19 +7,22 @@
 #include "msgdata.h"
 #include "overlay_18.h"
 #include "palette.h"
+#include "unk_0201956C.h"
 
 typedef struct PokedexAppData PokedexAppData;
 
 struct PokedexAppData {
     PokedexArgs *unk_0000;
     BgConfig *unk_0004;
-    u8 filler_0008[0x654];
+    UnkStruct_0201956C *unk_0008;
+    u8 filler_000C[0x650];
     MsgData *unk_065C;
     MessageFormat *unk_0660;
     String *unk_0664;
     u8 filler_0668[0x1E8];
     PaletteData *unk_0850;
-    u8 filler_0854[8];
+    NARC *unk_0854;
+    u8 filler_0858[4];
     int unk_085C;
     u8 filler_0860[0xFF0];
     void *unk_1850;
@@ -51,7 +54,11 @@ void ov18_021E6244(PokedexAppData *pokedexApp);
 void ov18_021E6280(PokedexAppData *pokedexApp);
 void ov18_021E62A8(PokedexAppData *pokedexApp);
 void ov18_021E62E8(PokedexAppData *pokedexApp);
+void ov18_021E6308(PokedexAppData *pokedexApp);
+void ov18_021E6540(PokedexAppData *pokedexApp);
+void ov18_021E654C(PokedexAppData *pokedexApp);
 BOOL ov18_021E8BF4(PokedexAppData *appData, int *pState);
+void ov18_021F0168(PokedexAppData *pokedexApp);
 u16 ov18_021F8838(PokedexAppData *appData);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H

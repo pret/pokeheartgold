@@ -1,0 +1,17 @@
+#ifndef GUARD_POKEHEARTGOLD_UNK_0201956C_H
+#define GUARD_POKEHEARTGOLD_UNK_0201956C_H
+
+#include "bg_window.h"
+#include "filesystem.h"
+
+typedef struct UnkStruct_0201956C UnkStruct_0201956C;
+
+UnkStruct_0201956C *sub_0201956C(BgConfig *bgConfig, int a1, int a2, enum HeapID a3);
+void sub_020195C0(UnkStruct_0201956C *a0);
+void sub_020195F4(UnkStruct_0201956C *a0, int a1, int a2, int a3, int a4);
+void sub_020196B8(UnkStruct_0201956C *a0, int a1, NARC *a2, int a3, int a4);
+void sub_020196E8(UnkStruct_0201956C *a0, int a1, int a2, int a3);
+void sub_020198FC(UnkStruct_0201956C *a0, int a1, int a2, int a3, int a4);
+void sub_02019B70(UnkStruct_0201956C *a0, int a1, int a2, int a3, int a4, int a5);
+
+#endif // GUARD_POKEHEARTGOLD_UNK_0201956C_H
