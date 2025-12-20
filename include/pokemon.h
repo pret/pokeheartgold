@@ -57,7 +57,7 @@ void AddMonData(Pokemon *mon, int attr, int amount);
 SpeciesData *SpeciesData_NewFromForm(int species, int form, enum HeapID heapID);
 SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID);
 int GetPersonalAttr(const SpeciesData *speciesData, int attr);
-void FreeMonPersonal(SpeciesData *personal);
+void SpeciesData_Free(SpeciesData *speciesData);
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int stat_id);
 int Species_GetValue(int species, int param);
 u8 GetPercentProgressTowardsNextLevel(Pokemon *mon);

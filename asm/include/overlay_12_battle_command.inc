@@ -72,7 +72,7 @@
 .public Pokemon_SetData
 .public SpeciesData_NewFromForm
 .public GetPersonalAttr
-.public FreeMonPersonal
+.public SpeciesData_Free
 .public Species_GetValue
 .public GetMonBaseExperienceAtCurrentLevel
 .public MonApplyFriendshipMod

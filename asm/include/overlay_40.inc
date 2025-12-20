@@ -250,7 +250,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public SpeciesData_NewFromSpecies
-.public FreeMonPersonal
+.public SpeciesData_Free
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx

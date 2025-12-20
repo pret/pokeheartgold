@@ -263,7 +263,7 @@
 .public SpeciesData_NewFromForm
 .public SpeciesData_NewFromSpecies
 .public GetPersonalAttr
-.public FreeMonPersonal
+.public SpeciesData_Free
 .public CalcBoxMonExpToNextLevel
 .public MonApplyFriendshipMod
 .public BoxPokemon_GetGender

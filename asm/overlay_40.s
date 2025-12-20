@@ -23622,7 +23622,7 @@ _022374D0:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [sp, #0x18]
-	bl FreeMonPersonal
+	bl SpeciesData_Free
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop

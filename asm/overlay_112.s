@@ -6120,7 +6120,7 @@ _021E8BDA:
 	ldr r0, [sp, #4]
 	strb r1, [r0, r7]
 	ldr r0, [sp, #0xc]
-	bl FreeMonPersonal
+	bl SpeciesData_Free
 	ldr r0, [sp, #8]
 	add r7, r7, #1
 	add r0, r0, #2
@@ -6322,7 +6322,7 @@ _021E8D24:
 	orr r0, r1
 	strb r0, [r7, #0xe]
 	add r0, r4, #0
-	bl FreeMonPersonal
+	bl SpeciesData_Free
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
 	bl BoxPokemon_GetGender

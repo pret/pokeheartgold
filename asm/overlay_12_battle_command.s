@@ -231,7 +231,7 @@ _02246568:
 	b _0224646C
 _0224659A:
 	add r0, r7, #0
-	bl FreeMonPersonal
+	bl SpeciesData_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

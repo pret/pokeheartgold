@@ -1814,23 +1814,23 @@ int GetPersonalAttr(const SpeciesData *speciesData, int attr) {
     return ret;
 }
 
-void FreeMonPersonal(SpeciesData *personal) {
-    GF_ASSERT(personal != NULL);
-    Heap_Free(personal);
+void SpeciesData_Free(SpeciesData *speciesData) {
+    GF_ASSERT(speciesData != NULL);
+    Heap_Free(speciesData);
 }
 
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
     int ret;
-    SpeciesData *personal = SpeciesData_NewFromSpecies(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
-    ret = GetPersonalAttr(personal, attr);
-    FreeMonPersonal(personal);
+    SpeciesData *speciesData = SpeciesData_NewFromSpecies(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
+    ret = GetPersonalAttr(speciesData, attr);
+    SpeciesData_Free(speciesData);
     return ret;
 }
 
 int Species_GetValue(int species, int param) {
     SpeciesData *speciesData = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
     int result = GetPersonalAttr(speciesData, param);
-    FreeMonPersonal(speciesData);
+    SpeciesData_Free(speciesData);
     return result;
 }
 
@@ -1908,9 +1908,9 @@ int BoxPokemon_CalcLevel(BoxPokemon *boxMon) {
 
 int CalcLevelBySpeciesAndExp(u16 species, u32 exp) {
     int level;
-    SpeciesData *personal = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
-    level = CalcLevelBySpeciesAndExp_PreloadedPersonal(personal, species, exp);
-    FreeMonPersonal(personal);
+    SpeciesData *speciesData = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
+    level = CalcLevelBySpeciesAndExp_PreloadedPersonal(speciesData, species, exp);
+    SpeciesData_Free(speciesData);
     return level;
 }
 
@@ -2067,9 +2067,9 @@ u8 BoxPokemon_GetGender(BoxPokemon *boxMon) {
 }
 
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
-    SpeciesData *personal = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
-    u8 gender = GetGenderBySpeciesAndPersonality_PreloadedPersonal(personal, species, pid);
-    FreeMonPersonal(personal);
+    SpeciesData *speciesData = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
+    u8 gender = GetGenderBySpeciesAndPersonality_PreloadedPersonal(speciesData, species, pid);
+    SpeciesData_Free(speciesData);
     return gender;
 }
 
