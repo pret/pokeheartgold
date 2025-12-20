@@ -245,7 +245,7 @@ Task_GetPokemon: ; 0x022465A8
 	add r4, r1, #0
 	str r0, [sp, #0x10]
 	ldr r0, [r4]
-	bl BattleSystem_GetMessageData
+	bl BattleSystem_GetMessageLoader
 	str r0, [sp, #0x20]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -323,7 +323,7 @@ _02246636:
 	ldr r0, [r4, #0x2c]
 	str r0, [sp, #0x140]
 	ldr r0, [r4]
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #0x14c]
 	ldr r0, [r4]
 	bl BattleSystem_GetPaletteData
@@ -1312,7 +1312,7 @@ _02246E84:
 	bl ov12_02237D00
 _02246EEC:
 	ldr r0, [r4]
-	bl ov12_0223C134
+	bl BattleSystem_GetBugContestCaughtMon
 	add r1, r0, #0
 	add r0, r6, #0
 	bl CopyPokemonToPokemon
@@ -3787,7 +3787,7 @@ ov12_02248228: ; 0x02248228
 	add r7, r0, #0
 	add r5, r1, #0
 	str r2, [sp, #0x18]
-	bl BattleSystem_GetMessageData
+	bl BattleSystem_GetMessageLoader
 	str r0, [sp, #0x28]
 	add r0, r7, #0
 	bl BattleSystem_GetMessageBuffer
@@ -3799,10 +3799,10 @@ ov12_02248228: ; 0x02248228
 	bl BattleSystem_GetBgConfig
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	bl BattleSystem_GetSpriteRenderer
+	bl BattleSystem_GetSpriteSystem
 	add r6, r0, #0
 	add r0, r7, #0
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	add r4, r0, #0
 	add r0, r7, #0
 	bl BattleSystem_GetPaletteData
@@ -3925,7 +3925,7 @@ ov12_02248228: ; 0x02248228
 	bl ManagedSprite_TickFrame
 	mov r0, #1
 	mov r1, #5
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r5, #0x50]
 	ldr r0, [sp, #0x18]
 	mov r1, #0xb0
@@ -4077,14 +4077,14 @@ _022484D0: .word 0x00010200
 ov12_022484D4: ; 0x022484D4
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
-	bl BattleSystem_GetGfxHandler
+	bl BattleSystem_GetSpriteManager
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	bl Sprite_DeleteAndFreeResources
 	ldr r0, [r5, #0x10]
 	bl Sprite_DeleteAndFreeResources
 	ldr r0, [r5, #0x14]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r5, #0
 	add r0, #0x18
 	bl sub_02021B5C
@@ -4141,12 +4141,12 @@ UpdateFrienshipFainted: ; 0x02248558
 	beq _022485A8
 	add r0, r5, #0
 	mov r1, #3
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
 	mov r1, #5
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	mov r2, #0xc0
@@ -4165,7 +4165,7 @@ UpdateFrienshipFainted: ; 0x02248558
 _022485A8:
 	add r0, r5, #0
 	mov r1, #1
-	bl ov12_0223AAD8
+	bl BattleSystem_GetBattlerFromBattlerType
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 _022485B4:

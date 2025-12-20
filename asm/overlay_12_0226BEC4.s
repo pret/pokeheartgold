@@ -43,7 +43,7 @@ ov12_0226BF04: ; 0x0226BF04
 	sub sp, #8
 	add r4, r1, #0
 	ldr r0, [r4]
-	bl ov12_0223A900
+	bl BattleSystem_GetBattleInput
 	mov r1, #4
 	ldrsh r1, [r4, r1]
 	add r5, r0, #0
@@ -81,7 +81,7 @@ _0226BF38:
 	add r1, r7, #0
 	add r2, r5, #0
 	mov r3, #0x12
-	bl ov12_02266508
+	bl BattleInput_ChangeMenu
 	add r0, r6, #0
 	bl NARC_Delete
 	add r0, r7, #0
@@ -93,7 +93,7 @@ _0226BF38:
 	strh r0, [r4, #4]
 	pop {r3, r4, r5, r6, r7, pc}
 _0226BF76:
-	bl ov12_02266C64
+	bl BattleInput_CheckFeedbackDone
 	cmp r0, #1
 	bne _0226BFCE
 	mov r0, #4
@@ -108,7 +108,7 @@ _0226BF8A:
 	cmp r0, #1
 	bne _0226BFCE
 	add r0, r5, #0
-	bl ov12_02266B78
+	bl BattleInput_CheckTouch
 	cmp r0, #1
 	bne _0226BFCE
 	ldr r0, _0226BFD4 ; =0x000005DD

@@ -126,7 +126,7 @@ u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 let
     return GetStringWidthFirstLine(sFontWork->fontDataMan[fontId], string, letterSpacing);
 }
 
-u32 FontID_String_GetWidth(FontID fontId, String *string, u32 letterSpacing) {
+u32 FontID_String_GetWidth(u32 fontId, String *string, u32 letterSpacing) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     return GetStringWidth(sFontWork->fontDataMan[fontId], String_cstr(string), letterSpacing);
 }

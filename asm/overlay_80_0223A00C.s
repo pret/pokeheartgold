@@ -255,7 +255,7 @@ _0223A1BA:
 	orr r0, r2
 	str r0, [r4, r3]
 	mov r0, #4
-	bl sub_02013534
+	bl FontSystem_NewInit
 	str r0, [r4, #0x30]
 	ldr r2, _0223A510 ; =0x000002D9
 	mov r0, #1
@@ -899,7 +899,7 @@ ov80_0223A748: ; 0x0223A748
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02013660
+	bl FontOAM_Delete
 	add r0, r4, #4
 	bl sub_02021B5C
 	pop {r4, pc}

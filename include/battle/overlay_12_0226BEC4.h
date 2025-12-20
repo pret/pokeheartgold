@@ -6,12 +6,12 @@
 #include "sys_task_api.h"
 
 typedef struct UnkBattleStruct_0226BEC4 {
-    BattleSystem *bsys;
+    BattleSystem *battleSystem;
     s16 state;
     s16 delay;
 } UnkBattleStruct_0226BEC4;
 
-SysTask *ov12_0226BEC4(BattleSystem *bsys);
+SysTask *ov12_0226BEC4(BattleSystem *battleSystem);
 void ov12_0226BEF0(SysTask *task);
 
 #endif
