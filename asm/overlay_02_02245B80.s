@@ -4030,7 +4030,7 @@ _02247A90:
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	mov r3, #0x20
-	bl CreateMonWithGenderNatureLetter
+	bl Pokemon_InitWithGenderNatureLetter
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0

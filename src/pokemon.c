@@ -262,18 +262,18 @@ void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 natu
     Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
-void CreateMonWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 fixedIv, u8 gender, u8 nature, u8 letter) {
-    u32 pid = 0;
-    u16 test = 0;
-    if (letter != 0 && letter < 29) {
+void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 gender, u8 nature, u8 letter) {
+    u32 personality = 0;
+    u16 unownLetter = 0;
+    if (letter != 0 && letter < UNOWN_FORM_MAX + 1) {
         do {
-            pid = (u32)(LCRandom() | (LCRandom() << 16));
-            test = (u16)CALC_UNOWN_LETTER(pid);
-        } while (nature != GetNatureFromPersonality(pid) || gender != GetGenderBySpeciesAndPersonality(species, pid) || test != letter - 1);
+            personality = (u32)(LCRandom() | (LCRandom() << 16));
+            unownLetter = CALC_UNOWN_LETTER(personality);
+        } while (nature != GetNatureFromPersonality(personality) || gender != GetGenderBySpeciesAndPersonality(species, personality) || unownLetter != letter - 1);
     } else {
-        pid = GenPersonalityByGenderAndNature(species, gender, nature);
+        personality = GenPersonalityByGenderAndNature(species, gender, nature);
     }
-    Pokemon_InitWith(mon, (int)species, (int)level, (int)fixedIv, 1, (int)pid, 0, 0);
+    Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
