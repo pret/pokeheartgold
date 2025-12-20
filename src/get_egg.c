@@ -592,7 +592,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
         if ((parent_species[i] = GetBoxMonData(parents[i], MON_DATA_SPECIES, NULL)) == SPECIES_DITTO) {
             gender_idx[0] = i ^ 1;
             gender_idx[1] = i;
-        } else if (GetBoxMonGender(parents[i]) == MON_FEMALE) {
+        } else if (BoxPokemon_GetGender(parents[i]) == MON_FEMALE) {
             gender_idx[0] = i;
             gender_idx[1] = i ^ 1;
         }
@@ -616,7 +616,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
     if (pms == SPECIES_MANAPHY) {
         pms = SPECIES_PHIONE;
     }
-    if (parent_species[gender_idx[1]] == SPECIES_DITTO && GetBoxMonGender(parents[gender_idx[0]]) != MON_FEMALE) {
+    if (parent_species[gender_idx[1]] == SPECIES_DITTO && BoxPokemon_GetGender(parents[gender_idx[0]]) != MON_FEMALE) {
         swp = gender_idx[1];
         gender_idx[1] = gender_idx[0];
         gender_idx[0] = swp;

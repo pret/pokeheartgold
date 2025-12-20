@@ -3518,7 +3518,7 @@ ov14_021E7358: ; 0x021E7358
 	orr r0, r1
 	strb r0, [r6, #0x12]
 	add r0, r7, #0
-	bl GetBoxMonGender
+	bl BoxPokemon_GetGender
 	add r2, r6, #0
 	ldrb r1, [r6, #0x13]
 	mov r3, #0x7f

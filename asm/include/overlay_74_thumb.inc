@@ -273,7 +273,7 @@
 .public GetMonBaseStat
 .public CalcLevelBySpeciesAndExp
 .public GetMonGender
-.public GetBoxMonGender
+.public BoxPokemon_GetGender
 .public MonIsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public Mon_GetBoxMon

@@ -248,7 +248,7 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
     } else {
         BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &exp);
     }
-    exp = GetBoxMonGender(boxMon);
+    exp = BoxPokemon_GetGender(boxMon);
     BoxPokemon_SetData(boxMon, MON_DATA_GENDER, &exp);
     InitBoxMonMoveset(boxMon);
     ReleaseBoxMonLock(boxMon, decry);
@@ -2073,10 +2073,10 @@ void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
 }
 
 u8 GetMonGender(Pokemon *mon) {
-    return GetBoxMonGender(&mon->box);
+    return BoxPokemon_GetGender(&mon->box);
 }
 
-u8 GetBoxMonGender(BoxPokemon *boxMon) {
+u8 BoxPokemon_GetGender(BoxPokemon *boxMon) {
     BOOL decry = AcquireBoxMonLock(boxMon);
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
@@ -2162,7 +2162,7 @@ void sub_02070130(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 which
 void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
     BOOL decry = AcquireBoxMonLock(boxMon);
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
-    u8 gender = GetBoxMonGender(boxMon);
+    u8 gender = BoxPokemon_GetGender(boxMon);
     u8 shiny = BoxMonIsShiny(boxMon);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
     u8 form;
@@ -2477,7 +2477,7 @@ u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing) {
 
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2) {
     u16 species = GetBoxMonData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
-    u8 gender = GetBoxMonGender(boxMon);
+    u8 gender = BoxPokemon_GetGender(boxMon);
     u32 pid = GetBoxMonData(boxMon, MON_DATA_PERSONALITY, NULL);
     u8 form;
     if (species == SPECIES_EGG) {

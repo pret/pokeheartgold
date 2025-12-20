@@ -76,7 +76,7 @@ u8 GetMonNature(Pokemon *mon);
 u8 GetNatureFromPersonality(u32 pid);
 void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location);
 u8 GetMonGender(Pokemon *mon);
-u8 GetBoxMonGender(BoxPokemon *boxMon);
+u8 BoxPokemon_GetGender(BoxPokemon *boxMon);
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid);
 u8 MonIsShiny(Pokemon *mon);
 u8 BoxMonIsShiny(BoxPokemon *boxMon);

@@ -266,7 +266,7 @@
 .public FreeMonPersonal
 .public CalcBoxMonExpToNextLevel
 .public MonApplyFriendshipMod
-.public GetBoxMonGender
+.public BoxPokemon_GetGender
 .public MonIsShiny
 .public BoxMonIsShiny
 .public GetBoxmonSpriteCharAndPlttNarcIds

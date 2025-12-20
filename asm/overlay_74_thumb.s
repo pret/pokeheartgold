@@ -24912,7 +24912,7 @@ _02234E62:
 	add r2, sp, #8
 	bl BoxPokemon_SetData
 	add r0, r4, #0
-	bl GetBoxMonGender
+	bl BoxPokemon_GetGender
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x6f

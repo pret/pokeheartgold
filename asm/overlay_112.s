@@ -6325,7 +6325,7 @@ _021E8D24:
 	bl FreeMonPersonal
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl GetBoxMonGender
+	bl BoxPokemon_GetGender
 	ldrb r2, [r7, #0xd]
 	mov r1, #0x60
 	lsl r0, r0, #0x1e
