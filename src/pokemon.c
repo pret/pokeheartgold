@@ -39,7 +39,7 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void 
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
 static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value);
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
-void LoadMonPersonal(int species, SpeciesData *dest);
+void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
@@ -1703,7 +1703,7 @@ SpeciesData *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, 
 
 SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID) {
     SpeciesData *speciesData = Heap_Alloc(heapID, sizeof(SpeciesData));
-    LoadMonPersonal(species, speciesData);
+    SpeciesData_LoadSpecies(species, speciesData);
     return speciesData;
 }
 
@@ -3901,7 +3901,7 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
     return pid;
 }
 
-void LoadMonPersonal(int species, SpeciesData *personal) {
+void SpeciesData_LoadSpecies(int species, SpeciesData *personal) {
     ReadWholeNarcMemberByIdPair(personal, NARC_poketool_personal_personal, species);
 }
 

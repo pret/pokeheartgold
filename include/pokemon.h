@@ -182,7 +182,7 @@ BOOL GetBoxMonTMHMCompat(BoxPokemon *boxMon, u8 tmhm);
 BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm);
 void SetMonPersonality(Pokemon *mon, u32 personality);
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
-void LoadMonPersonal(int species, SpeciesData *personal);
+void SpeciesData_LoadSpecies(int species, SpeciesData *personal);
 void LoadMonBaseStats_HandleAlternateForm(int species, int form, SpeciesData *personal);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evo);
 void MonEncryptSegment(void *data, u32 size, u32 seed);
