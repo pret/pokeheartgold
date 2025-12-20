@@ -6090,7 +6090,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
             MonApplyFriendshipMod(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->battleSystem));
             ApplyMonMoodModifier(mon, 0);
-            CalcMonStats(mon);
+            Pokemon_CalcStats(mon);
 
             if (data->ctx->selectedMonIndex[expBattler] == slot) {
                 BattleSystem_ReloadMonData(data->battleSystem, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);

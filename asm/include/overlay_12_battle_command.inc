@@ -67,7 +67,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_Delete
-.public CalcMonStats
+.public Pokemon_CalcStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm

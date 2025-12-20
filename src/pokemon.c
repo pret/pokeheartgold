@@ -306,84 +306,66 @@ void Pokemon_CalcLevelAndStats(Pokemon *mon) {
     BOOL decry = AcquireMonLock(mon);
     u32 level = (u32)CalcMonLevel(mon);
     Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
-    CalcMonStats(mon);
+    Pokemon_CalcStats(mon);
     ReleaseMonLock(mon, decry);
 }
 
-void CalcMonStats(Pokemon *mon) {
-    SpeciesData *speciesData;
-    int level;
-    int maxHp;
-    int hpIv;
-    int hpEv;
-    int atkIv;
-    int defIv;
-    int speedIv;
-    int spatkIv;
-    int spdefIv;
-    int atkEv;
-    int defEv;
-    int speedEv;
-    int spatkEv;
-    int spdefEv;
-    int form;
-    int hp;
-    int species;
+void Pokemon_CalcStats(Pokemon *mon) {
+    int maxHp, hp;
+    int hpIV, atkIV, defIV, speedIV, spAtkIV, spDefIV;
+    int hpEV, atkEV, defEV, speedEV, spAtkEV, spDefEV;
+    int form, species;
     int newMaxHp;
-    int newAtk;
-    int newDef;
-    int newSpeed;
-    int newSpatk;
-    int newSpdef;
 
-    BOOL decry = AcquireMonLock(mon);
-    level = (int)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
-    maxHp = (int)Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
-    hp = (int)Pokemon_GetData(mon, MON_DATA_HP, NULL);
-    hpIv = (int)Pokemon_GetData(mon, MON_DATA_HP_IV, NULL);
-    hpEv = (int)Pokemon_GetData(mon, MON_DATA_HP_EV, NULL);
-    atkIv = (int)Pokemon_GetData(mon, MON_DATA_ATK_IV, NULL);
-    atkEv = (int)Pokemon_GetData(mon, MON_DATA_ATK_EV, NULL);
-    defIv = (int)Pokemon_GetData(mon, MON_DATA_DEF_IV, NULL);
-    defEv = (int)Pokemon_GetData(mon, MON_DATA_DEF_EV, NULL);
-    speedIv = (int)Pokemon_GetData(mon, MON_DATA_SPEED_IV, NULL);
-    speedEv = (int)Pokemon_GetData(mon, MON_DATA_SPEED_EV, NULL);
-    spatkIv = (int)Pokemon_GetData(mon, MON_DATA_SPATK_IV, NULL);
-    spatkEv = (int)Pokemon_GetData(mon, MON_DATA_SPATK_EV, NULL);
-    spdefIv = (int)Pokemon_GetData(mon, MON_DATA_SPDEF_IV, NULL);
-    spdefEv = (int)Pokemon_GetData(mon, MON_DATA_SPDEF_EV, NULL);
-    form = (int)Pokemon_GetData(mon, MON_DATA_FORM, NULL);
-    species = (int)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    BOOL reencrypt = AcquireMonLock(mon);
 
-    speciesData = (SpeciesData *)Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
+    int level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    maxHp = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
+    hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
+    hpIV = Pokemon_GetData(mon, MON_DATA_HP_IV, NULL);
+    hpEV = Pokemon_GetData(mon, MON_DATA_HP_EV, NULL);
+    atkIV = Pokemon_GetData(mon, MON_DATA_ATK_IV, NULL);
+    atkEV = Pokemon_GetData(mon, MON_DATA_ATK_EV, NULL);
+    defIV = Pokemon_GetData(mon, MON_DATA_DEF_IV, NULL);
+    defEV = Pokemon_GetData(mon, MON_DATA_DEF_EV, NULL);
+    speedIV = Pokemon_GetData(mon, MON_DATA_SPEED_IV, NULL);
+    speedEV = Pokemon_GetData(mon, MON_DATA_SPEED_EV, NULL);
+    spAtkIV = Pokemon_GetData(mon, MON_DATA_SPATK_IV, NULL);
+    spAtkEV = Pokemon_GetData(mon, MON_DATA_SPATK_EV, NULL);
+    spDefIV = Pokemon_GetData(mon, MON_DATA_SPDEF_IV, NULL);
+    spDefEV = Pokemon_GetData(mon, MON_DATA_SPDEF_EV, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+
+    SpeciesData *speciesData = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
     LoadMonBaseStats_HandleAlternateForm(species, form, speciesData);
 
     if (species == SPECIES_SHEDINJA) {
         newMaxHp = 1;
     } else {
-        newMaxHp = (speciesData->hp * 2 + hpIv + hpEv / 4) * level / 100 + level + 10;
+        newMaxHp = (speciesData->hp * 2 + hpIV + hpEV / 4) * level / 100 + level + 10;
     }
     Pokemon_SetData(mon, MON_DATA_MAX_HP, &newMaxHp);
 
-    newAtk = (speciesData->atk * 2 + atkIv + atkEv / 4) * level / 100 + 5;
-    newAtk = ModifyStatByNature(GetMonNature(mon), (u16)newAtk, STAT_ATK);
+    int newAtk = (speciesData->atk * 2 + atkIV + atkEV / 4) * level / 100 + 5;
+    newAtk = ModifyStatByNature(GetMonNature(mon), newAtk, STAT_ATK);
     Pokemon_SetData(mon, MON_DATA_ATK, &newAtk);
 
-    newDef = (speciesData->def * 2 + defIv + defEv / 4) * level / 100 + 5;
-    newDef = ModifyStatByNature(GetMonNature(mon), (u16)newDef, STAT_DEF);
+    int newDef = (speciesData->def * 2 + defIV + defEV / 4) * level / 100 + 5;
+    newDef = ModifyStatByNature(GetMonNature(mon), newDef, STAT_DEF);
     Pokemon_SetData(mon, MON_DATA_DEF, &newDef);
 
-    newSpeed = (speciesData->speed * 2 + speedIv + speedEv / 4) * level / 100 + 5;
-    newSpeed = ModifyStatByNature(GetMonNature(mon), (u16)newSpeed, STAT_SPEED);
+    int newSpeed = (speciesData->speed * 2 + speedIV + speedEV / 4) * level / 100 + 5;
+    newSpeed = ModifyStatByNature(GetMonNature(mon), newSpeed, STAT_SPEED);
     Pokemon_SetData(mon, MON_DATA_SPEED, &newSpeed);
 
-    newSpatk = (speciesData->spatk * 2 + spatkIv + spatkEv / 4) * level / 100 + 5;
-    newSpatk = ModifyStatByNature(GetMonNature(mon), (u16)newSpatk, STAT_SPATK);
-    Pokemon_SetData(mon, MON_DATA_SP_ATK, &newSpatk);
+    int newSpAtk = (speciesData->spatk * 2 + spAtkIV + spAtkEV / 4) * level / 100 + 5;
+    newSpAtk = ModifyStatByNature(GetMonNature(mon), newSpAtk, STAT_SPATK);
+    Pokemon_SetData(mon, MON_DATA_SP_ATK, &newSpAtk);
 
-    newSpdef = (speciesData->spdef * 2 + spdefIv + spdefEv / 4) * level / 100 + 5;
-    newSpdef = ModifyStatByNature(GetMonNature(mon), (u16)newSpdef, STAT_SPDEF);
-    Pokemon_SetData(mon, MON_DATA_SP_DEF, &newSpdef);
+    int newSpDef = (speciesData->spdef * 2 + spDefIV + spDefEV / 4) * level / 100 + 5;
+    newSpDef = ModifyStatByNature(GetMonNature(mon), newSpDef, STAT_SPDEF);
+    Pokemon_SetData(mon, MON_DATA_SP_DEF, &newSpDef);
 
     Heap_Free(speciesData);
 
@@ -400,10 +382,11 @@ void CalcMonStats(Pokemon *mon) {
             hp += newMaxHp - maxHp;
         }
     }
+
     if (hp != 0) {
         Pokemon_SetData(mon, MON_DATA_HP, &hp);
     }
-    ReleaseMonLock(mon, decry);
+    ReleaseMonLock(mon, reencrypt);
 }
 
 u32 Pokemon_GetData(Pokemon *mon, int attr, void *dest) {

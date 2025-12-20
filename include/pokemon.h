@@ -47,7 +47,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature);
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality);
 void Pokemon_CalcLevelAndStats(Pokemon *mon);
-void CalcMonStats(Pokemon *mon);
+void Pokemon_CalcStats(Pokemon *mon);
 u32 Pokemon_GetData(Pokemon *mon, int attr, void *ptr);
 u32 BoxPokemon_GetData(BoxPokemon *boxMon, int attr, void *ptr);
 void Pokemon_SetData(Pokemon *mon, int attr, const void *ptr);
