@@ -169,7 +169,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     u32 capsule;
     CAPSULE seal_coords;
     Pokemon_Init(mon);
-    CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
+    BoxPokemon_InitWith(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
     // Not your average encryption call
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
     ENCRYPT_PTY(mon);
@@ -184,24 +184,24 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     CalcMonLevelAndStats(mon);
 }
 
-void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
+void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
     BOOL decry;
     u32 exp;
     u32 iv;
     BoxPokemon_Init(boxMon);
     decry = AcquireBoxMonLock(boxMon);
     if (hasFixedPersonality == 0) {
-        fixedPersonality = (LCRandom() | (LCRandom() << 16));
+        personality = (LCRandom() | (LCRandom() << 16));
     }
-    BoxPokemon_SetData(boxMon, MON_DATA_PERSONALITY, &fixedPersonality);
-    if (otIdType == 2) {
+    BoxPokemon_SetData(boxMon, MON_DATA_PERSONALITY, &personality);
+    if (otIDType == 2) {
         do {
-            fixedOtId = (LCRandom() | (LCRandom() << 16));
-        } while (SHINY_CHECK(fixedOtId, fixedPersonality));
-    } else if (otIdType != 1) {
-        fixedOtId = 0;
+            otID = (LCRandom() | (LCRandom() << 16));
+        } while (SHINY_CHECK(otID, personality));
+    } else if (otIDType != 1) {
+        otID = 0;
     }
-    BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &fixedOtId);
+    BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &otID);
     BoxPokemon_SetData(boxMon, MON_DATA_LANGUAGE, (void *)&gGameLanguage);
     BoxPokemon_SetData(boxMon, MON_DATA_SPECIES, &species);
     BoxPokemon_SetData(boxMon, MON_DATA_SPECIES_NAME, NULL);
@@ -214,13 +214,13 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
     exp = ITEM_POKE_BALL;
     BoxPokemon_SetData(boxMon, MON_DATA_POKEBALL, &exp);
     BoxPokemon_SetData(boxMon, MON_DATA_DP_POKEBALL, &exp);
-    if (fixedIV < 0x20) {
-        BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &fixedIV);
-        BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &fixedIV);
-        BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &fixedIV);
-        BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &fixedIV);
-        BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &fixedIV);
-        BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &fixedIV);
+    if (ivs < 0x20) {
+        BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &ivs);
+        BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &ivs);
+        BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &ivs);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &ivs);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &ivs);
+        BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &ivs);
     } else {
         exp = LCRandom();
         iv = exp & 0x1F;
@@ -240,7 +240,7 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
     exp = (u32)GetMonBaseStat(species, BASE_ABILITY_1);
     iv = (u32)GetMonBaseStat(species, BASE_ABILITY_2);
     if (iv != 0) {
-        if (fixedPersonality & 1) {
+        if (personality & 1) {
             BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &iv);
         } else {
             BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &exp);
