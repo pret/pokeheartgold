@@ -29,7 +29,7 @@
 .public MapHeader_GetMapSec
 .public Pokemon_Init
 .public CreateMon
-.public CalcMonLevelAndStats
+.public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat

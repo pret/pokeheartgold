@@ -181,7 +181,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE_ID, &capsule);
     MI_CpuClearFast(&seal_coords, sizeof(seal_coords));
     Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &seal_coords);
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
@@ -299,10 +299,10 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
     CreateMon(mon, species, level, 0, 1, personality, 0, 0);
     Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &ivs);
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
-void CalcMonLevelAndStats(Pokemon *mon) {
+void Pokemon_CalcLevelAndStats(Pokemon *mon) {
     BOOL decry = AcquireMonLock(mon);
     u32 level = (u32)CalcMonLevel(mon);
     Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
@@ -3242,7 +3242,7 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE_ID, &sp0);
     MI_CpuClearFast(&sp4, sizeof(sp4));
     Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE, &sp4);
-    CalcMonLevelAndStats(dest);
+    Pokemon_CalcLevelAndStats(dest);
 }
 
 u8 Party_GetMaxLevel(Party *party) {
@@ -3497,7 +3497,7 @@ u32 GetArceusTypeByHeldItemEffect(u16 heldEffect) {
 s32 Mon_UpdateGiratinaForm(Pokemon *mon) {
     s32 ret = BoxMon_UpdateGiratinaForm(&mon->box);
     if (ret != -1) {
-        CalcMonLevelAndStats(mon);
+        Pokemon_CalcLevelAndStats(mon);
     }
     return ret;
 }
@@ -3524,7 +3524,7 @@ void Mon_ForceSetGiratinaOriginForm(Pokemon *mon) {
     if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) == SPECIES_GIRATINA) {
         BoxPokemon_SetData(&mon->box, MON_DATA_FORM, &form);
         UpdateBoxMonAbility(&mon->box);
-        CalcMonLevelAndStats(mon);
+        Pokemon_CalcLevelAndStats(mon);
     }
 }
 
@@ -3544,7 +3544,7 @@ void Party_UpdateAllGiratina_DistortionWorld(Party *party, BOOL force_origin) {
 
 void Mon_UpdateShayminForm(Pokemon *mon, int form) {
     BoxMon_UpdateShayminForm(&mon->box, form);
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 void BoxMon_UpdateShayminForm(BoxPokemon *boxMon, int form) {
@@ -3662,7 +3662,7 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
     }
     Pokemon_SetData(mon, MON_DATA_FORM, &form);
     UpdateMonAbility(mon);
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
     return TRUE;
 }
 

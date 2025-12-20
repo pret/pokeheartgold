@@ -17829,7 +17829,7 @@ _021EE8E6:
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	cmp r6, #0
 	beq _021EE91C
 	add r0, r5, #0

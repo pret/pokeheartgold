@@ -152,7 +152,7 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
             }
         }
     }
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, MessageFormat *msgFmt) {
@@ -1108,7 +1108,7 @@ void sub_0206D328(Pokemon *mon, enum HeapID heapID) {
     Pokemon_SetData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
     Pokemon_SetData(mon, MON_DATA_POKEBALL, &pokeball);
     Pokemon_SetData(mon, MON_DATA_MET_LEVEL, &metLevel);
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 static BOOL Daycare_TryGetForcedInheritedIV(Daycare *dayCare, u8 *a1, u8 *a2) {

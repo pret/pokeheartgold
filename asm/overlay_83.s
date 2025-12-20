@@ -15053,7 +15053,7 @@ _022458D6:
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r4, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	b _02245968
 _0224590E:
 	ldrb r0, [r5, #0x14]
@@ -15077,7 +15077,7 @@ _0224590E:
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r4, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	b _02245968
 _02245946:
 	add r0, r4, #0
@@ -15092,7 +15092,7 @@ _02245946:
 	add r2, sp, #0
 	bl Pokemon_SetData
 	add r0, r4, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 _02245968:
 	add r1, r5, #0
 	add r0, r5, #0

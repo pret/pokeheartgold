@@ -301,7 +301,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     if (Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL) == SPECIES_ARCEUS && Pokemon_GetData(pokemon, MON_DATA_FATEFUL_ENCOUNTER, NULL) == TRUE && !Save_VarsFlags_GetVar404C(vars_flags)) {
         Save_VarsFlags_SetVar404C(vars_flags, TRUE);
     }
-    CalcMonLevelAndStats(pokemon);
+    Pokemon_CalcLevelAndStats(pokemon);
     if (Party_AddMon(SaveArray_Party_Get(fieldSys->saveData), pokemon)) {
         UpdatePokedexWithReceivedSpecies(fieldSys->saveData, pokemon);
     }

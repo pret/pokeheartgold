@@ -285,7 +285,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
         if (level != Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
             u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL), level);
             Pokemon_SetData(pokemon, MON_DATA_EXPERIENCE, &exp);
-            CalcMonLevelAndStats(pokemon);
+            Pokemon_CalcLevelAndStats(pokemon);
         }
         BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
     }
@@ -352,7 +352,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
             if (Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
                 u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL), 50);
                 Pokemon_SetData(pokemon, MON_DATA_EXPERIENCE, &exp);
-                CalcMonLevelAndStats(pokemon);
+                Pokemon_CalcLevelAndStats(pokemon);
             }
             BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
         }

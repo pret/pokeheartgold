@@ -283,7 +283,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
         if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
             u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
             Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
         }
         BattleSetup_AddMonToParty(setup, mon, BATTLER_PLAYER);
     }
@@ -332,7 +332,7 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     CopyU16StringArrayN(nickname, trainerHouseMon->nickname, POKEMON_NAME_LENGTH);
     Pokemon_SetData(mon, MON_DATA_NICKNAME, nickname);
     Pokemon_SetData(mon, MON_DATA_LANGUAGE, &(trainerHouseMon->language));
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
 }
 
 static void TrainerHouse_InitTrainer(TrainerHouseSet *set, Trainer *trainer) {

@@ -32,7 +32,7 @@
 .public sub_0205C2E8
 .public Save_VarsFlags_GetVar4052
 .public AllocMonZeroed
-.public CalcMonLevelAndStats
+.public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel

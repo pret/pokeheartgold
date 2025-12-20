@@ -275,7 +275,7 @@ _022342E4:
 	add r2, sp, #0x14
 	bl Pokemon_SetData
 	add r0, r4, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 _02234344:
 	add r0, r5, #1
 	lsl r0, r0, #0x10
@@ -2303,7 +2303,7 @@ _02235290:
 	add r2, sp, #4
 	bl Pokemon_SetData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 	add r4, r4, #1
 	cmp r4, r7
 	blt _02235272

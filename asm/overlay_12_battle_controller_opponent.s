@@ -1461,7 +1461,7 @@ _0225929E:
 	add r2, #0x24
 	bl Pokemon_SetData
 	add r0, r7, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 _022592B6:
 	mov r2, #0x65
 	ldr r1, [sp, #4]

@@ -101,7 +101,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
             u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
             u32 exp = GetMonExpBySpeciesAndLevel(species, level - 3);
             Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
-            CalcMonLevelAndStats(mon);
+            Pokemon_CalcLevelAndStats(mon);
         }
     }
 

@@ -229,6 +229,6 @@ static void _CreateTradeMon(Pokemon *mon, NPCTrade *trade_dat, u32 level, NpcTra
     mapsec = MapHeader_GetMapSec(mapno);
     MonSetTrainerMemo(mon, NULL, met_level_strat, mapsec, heapID);
 
-    CalcMonLevelAndStats(mon);
+    Pokemon_CalcLevelAndStats(mon);
     GF_ASSERT(!MonIsShiny(mon));
 }
