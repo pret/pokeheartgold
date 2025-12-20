@@ -67,7 +67,7 @@ u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon);
 u32 GetMonExpBySpeciesAndLevel(int species, int level);
 void LoadGrowthTable(int growthRate, u32 *table);
 u32 GetExpByGrowthRateAndLevel(int rate, int level);
-int CalcMonLevel(Pokemon *mon);
+int Pokemon_CalcLevel(Pokemon *mon);
 int BoxPokemon_CalcLevel(BoxPokemon *boxMon);
 int CalcLevelBySpeciesAndExp(u16 species, u32 experience);
 int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 species, u32 experience);

@@ -304,7 +304,7 @@ void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int pe
 
 void Pokemon_CalcLevelAndStats(Pokemon *mon) {
     BOOL decry = AcquireMonLock(mon);
-    u32 level = (u32)CalcMonLevel(mon);
+    u32 level = (u32)Pokemon_CalcLevel(mon);
     Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
     Pokemon_CalcStats(mon);
     ReleaseMonLock(mon, decry);
@@ -1895,7 +1895,7 @@ u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
     return ret;
 }
 
-int CalcMonLevel(Pokemon *mon) {
+int Pokemon_CalcLevel(Pokemon *mon) {
     return BoxPokemon_CalcLevel(&mon->box);
 }
 
