@@ -180,7 +180,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
         SetMonData(mon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
     }
     Party_AddMon(party, mon);
-    ZeroBoxMonData(boxMon);
+    BoxPokemon_Init(boxMon);
     DaycareMon_SetSteps(daycareMon, 0);
     Heap_Free(mon);
     return species;

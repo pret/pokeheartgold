@@ -24379,7 +24379,7 @@ MigrateBoxMon: ; 0x02234A9C
 	add r4, r1, #0
 	add r6, r0, #0
 	add r0, r4, #0
-	bl ZeroBoxMonData
+	bl BoxPokemon_Init
 	add r0, r4, #0
 	bl AcquireBoxMonLock
 	mov r1, #0

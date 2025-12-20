@@ -103,7 +103,7 @@ void ZeroMonData(Pokemon *mon) {
     ENCRYPT_PTY(mon);
 }
 
-void ZeroBoxMonData(BoxPokemon *boxMon) {
+void BoxPokemon_Init(BoxPokemon *boxMon) {
     MI_CpuClearFast(boxMon, sizeof(BoxPokemon));
     ENCRYPT_BOX(boxMon);
 }
@@ -188,7 +188,7 @@ void CreateBoxMon(BoxPokemon *boxMon, int species, int level, int fixedIV, int h
     BOOL decry;
     u32 exp;
     u32 iv;
-    ZeroBoxMonData(boxMon);
+    BoxPokemon_Init(boxMon);
     decry = AcquireBoxMonLock(boxMon);
     if (hasFixedPersonality == 0) {
         fixedPersonality = (LCRandom() | (LCRandom() << 16));

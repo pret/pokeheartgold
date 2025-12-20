@@ -264,7 +264,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930
-.public ZeroBoxMonData
+.public BoxPokemon_Init
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public GetMonData
