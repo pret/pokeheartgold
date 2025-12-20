@@ -1,5 +1,7 @@
 #include "application/pokedex/pokedex_internal.h"
+#include "msgdata/msg.naix"
 
+#include "gf_gfx_loader.h"
 #include "sprite_system.h"
 
 void ov18_021E5C40(void *cb_arg);
@@ -278,4 +280,28 @@ void ov18_021E6204(PokedexAppData *pokedexApp) {
     PaletteData_FreeBuffers(pokedexApp->unk_0850, PLTTBUF_SUB_BG);
     PaletteData_FreeBuffers(pokedexApp->unk_0850, PLTTBUF_MAIN_BG);
     PaletteData_Free(pokedexApp->unk_0850);
+}
+
+void ov18_021E6244(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_065C = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0802_bin, HEAP_ID_37);
+    pokedexApp->unk_0660 = MessageFormat_New(HEAP_ID_37);
+    pokedexApp->unk_0664 = String_New(0x400, HEAP_ID_37);
+}
+
+void ov18_021E6280(PokedexAppData *pokedexApp) {
+    String_Delete(pokedexApp->unk_0664);
+    MessageFormat_Delete(pokedexApp->unk_0660);
+    DestroyMsgData(pokedexApp->unk_065C);
+}
+
+void ov18_021E62A8(PokedexAppData *pokedexApp) {
+    NARC *narc = NARC_New(NARC_a_0_7_5, HEAP_ID_37);
+    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, 0, FALSE, HEAP_ID_37, FALSE);
+    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, HEAP_ID_37, FALSE);
+    NARC_Delete(narc);
+}
+
+void ov18_021E62E8(PokedexAppData *pokedexApp) {
+    Heap_Free(pokedexApp->unk_1854);
+    Heap_Free(pokedexApp->unk_1850);
 }

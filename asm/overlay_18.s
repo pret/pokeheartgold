@@ -24,104 +24,12 @@
 	.extern ov18_021E618C
 	.extern ov18_021E61A4
 	.extern ov18_021E6204
+	.extern ov18_021E6244
+	.extern ov18_021E6280
+	.extern ov18_021E62A8
+	.extern ov18_021E62E8
 
 	.text
-
-	thumb_func_start ov18_021E6244
-ov18_021E6244: ; 0x021E6244
-	push {r4, lr}
-	ldr r2, _021E6274 ; =0x00000322
-	add r4, r0, #0
-	mov r0, #0
-	mov r1, #0x1b
-	mov r3, #0x25
-	bl NewMsgDataFromNarc
-	ldr r1, _021E6278 ; =0x0000065C
-	str r0, [r4, r1]
-	mov r0, #0x25
-	bl MessageFormat_New
-	mov r1, #0x66
-	lsl r1, r1, #4
-	str r0, [r4, r1]
-	mov r0, #1
-	lsl r0, r0, #0xa
-	mov r1, #0x25
-	bl String_New
-	ldr r1, _021E627C ; =0x00000664
-	str r0, [r4, r1]
-	pop {r4, pc}
-	.balign 4, 0
-_021E6274: .word 0x00000322
-_021E6278: .word 0x0000065C
-_021E627C: .word 0x00000664
-	thumb_func_end ov18_021E6244
-
-	thumb_func_start ov18_021E6280
-ov18_021E6280: ; 0x021E6280
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _021E62A0 ; =0x00000664
-	ldr r0, [r4, r0]
-	bl String_Delete
-	mov r0, #0x66
-	lsl r0, r0, #4
-	ldr r0, [r4, r0]
-	bl MessageFormat_Delete
-	ldr r0, _021E62A4 ; =0x0000065C
-	ldr r0, [r4, r0]
-	bl DestroyMsgData
-	pop {r4, pc}
-	.balign 4, 0
-_021E62A0: .word 0x00000664
-_021E62A4: .word 0x0000065C
-	thumb_func_end ov18_021E6280
-
-	thumb_func_start ov18_021E62A8
-ov18_021E62A8: ; 0x021E62A8
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r0, #0x4b
-	mov r1, #0x25
-	bl NARC_New
-	mov r1, #0
-	add r2, r1, #0
-	mov r3, #0x25
-	add r4, r0, #0
-	str r1, [sp]
-	bl GfGfxLoader_LoadFromOpenNarc
-	ldr r1, _021E62E0 ; =0x00001850
-	mov r2, #0
-	str r0, [r5, r1]
-	add r0, r4, #0
-	mov r1, #1
-	mov r3, #0x25
-	str r2, [sp]
-	bl GfGfxLoader_LoadFromOpenNarc
-	ldr r1, _021E62E4 ; =0x00001854
-	str r0, [r5, r1]
-	add r0, r4, #0
-	bl NARC_Delete
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-_021E62E0: .word 0x00001850
-_021E62E4: .word 0x00001854
-	thumb_func_end ov18_021E62A8
-
-	thumb_func_start ov18_021E62E8
-ov18_021E62E8: ; 0x021E62E8
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _021E6300 ; =0x00001854
-	ldr r0, [r4, r0]
-	bl Heap_Free
-	ldr r0, _021E6304 ; =0x00001850
-	ldr r0, [r4, r0]
-	bl Heap_Free
-	pop {r4, pc}
-	nop
-_021E6300: .word 0x00001854
-_021E6304: .word 0x00001850
-	thumb_func_end ov18_021E62E8
 
 	thumb_func_start ov18_021E6308
 ov18_021E6308: ; 0x021E6308
