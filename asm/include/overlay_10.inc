@@ -2,7 +2,7 @@
 #pragma once
 .public GF_AssertFail
 .public Pokemon_GetData
-.public GetMonBaseStat
+.public Species_GetValue
 .public MaskOfFlagNo
 .public Party_GetCount
 .public Party_GetMonByIndex

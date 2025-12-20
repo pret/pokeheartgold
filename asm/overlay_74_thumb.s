@@ -24334,7 +24334,7 @@ AGB_GetBoxMonAbility: ; 0x02234A34
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #0x19
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r0, #0
 	beq _02234A8E
 	ldr r2, _02234A98 ; =ov74_0223CBA0
@@ -24345,7 +24345,7 @@ _02234A62:
 	bne _02234A72
 	add r0, r5, #0
 	mov r1, #0x18
-	bl GetMonBaseStat
+	bl Species_GetValue
 	b _02234A7A
 _02234A72:
 	add r4, r4, #1
@@ -24360,12 +24360,12 @@ _02234A7A:
 	bne _02234A96
 	add r0, r5, #0
 	mov r1, #0x18
-	bl GetMonBaseStat
+	bl Species_GetValue
 	pop {r4, r5, r6, pc}
 _02234A8E:
 	add r0, r5, #0
 	mov r1, #0x18
-	bl GetMonBaseStat
+	bl Species_GetValue
 _02234A96:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

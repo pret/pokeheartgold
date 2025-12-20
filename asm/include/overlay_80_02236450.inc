@@ -18,7 +18,7 @@
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonBaseStat
+.public Species_GetValue
 .public GetMonExpBySpeciesAndLevel
 .public GetNatureFromPersonality
 .public CalcShininessByOtIdAndPersonality

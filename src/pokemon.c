@@ -207,7 +207,7 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
     BoxPokemon_SetData(boxMon, MON_DATA_SPECIES_NAME, NULL);
     exp = GetMonExpBySpeciesAndLevel(species, level);
     BoxPokemon_SetData(boxMon, MON_DATA_EXPERIENCE, &exp);
-    exp = (u32)GetMonBaseStat(species, BASE_FRIENDSHIP);
+    exp = (u32)Species_GetValue(species, BASE_FRIENDSHIP);
     BoxPokemon_SetData(boxMon, MON_DATA_FRIENDSHIP, &exp);
     BoxPokemon_SetData(boxMon, MON_DATA_MET_LEVEL, &level);
     BoxPokemon_SetData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
@@ -237,8 +237,8 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
         iv = (exp & 0x7C00) >> 10;
         BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &iv);
     }
-    exp = (u32)GetMonBaseStat(species, BASE_ABILITY_1);
-    iv = (u32)GetMonBaseStat(species, BASE_ABILITY_2);
+    exp = (u32)Species_GetValue(species, BASE_ABILITY_1);
+    iv = (u32)Species_GetValue(species, BASE_ABILITY_2);
     if (iv != 0) {
         if (personality & 1) {
             BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &iv);
@@ -278,7 +278,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
 
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
     int pid = nature;
-    u8 ratio = (u8)GetMonBaseStat(species, BASE_GENDER_RATIO);
+    u8 ratio = (u8)Species_GetValue(species, BASE_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:
     case MON_RATIO_FEMALE:
@@ -1827,12 +1827,11 @@ int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
     return ret;
 }
 
-int GetMonBaseStat(int species, int attr) {
-    int ret;
-    SpeciesData *personal = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
-    ret = GetPersonalAttr(personal, attr);
-    FreeMonPersonal(personal);
-    return ret;
+int Species_GetValue(int species, int param) {
+    SpeciesData *speciesData = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
+    int result = GetPersonalAttr(speciesData, param);
+    FreeMonPersonal(speciesData);
+    return result;
 }
 
 int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int attr) {
@@ -1875,7 +1874,7 @@ u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon) {
 }
 
 u32 GetMonExpBySpeciesAndLevel(int species, int level) {
-    return GetExpByGrowthRateAndLevel(GetMonBaseStat(species, BASE_GROWTH_RATE), level);
+    return GetExpByGrowthRateAndLevel(Species_GetValue(species, BASE_GROWTH_RATE), level);
 }
 
 void LoadGrowthTable(int growthRate, u32 *dest) {
@@ -2746,7 +2745,7 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     u16 species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     u8 level = (u8)(Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) + 1);
     u32 exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
-    u32 growthrate = (u32)GetMonBaseStat(species, BASE_GROWTH_RATE);
+    u32 growthrate = (u32)Species_GetValue(species, BASE_GROWTH_RATE);
     u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, 100);
     if (exp > maxexp) {
         exp = maxexp;
@@ -3862,7 +3861,7 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
         pid |= ((u16)pid ^ r4) << 16;
     } else {
         u32 r1;
-        u8 ratio = GetMonBaseStat(species, BASE_GENDER_RATIO);
+        u8 ratio = Species_GetValue(species, BASE_GENDER_RATIO);
         GF_ASSERT((nature & 1) == ability);
         r1 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
         pid = (0xFF00 ^ (r1 & 0xFF00)) << 16;

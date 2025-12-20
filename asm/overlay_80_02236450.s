@@ -561,7 +561,7 @@ _0223686E:
 	ldrh r0, [r5]
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r0, #0
 	beq _022368B2
 	ldr r2, [r5, #0x10]
@@ -577,7 +577,7 @@ _0223689E:
 	mov r1, #0x18
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl GetMonBaseStat
+	bl Species_GetValue
 	add r1, r5, #0
 	add r1, #0x20
 	strb r0, [r1]
@@ -587,7 +587,7 @@ _022368B2:
 	mov r1, #0x18
 	lsl r0, r0, #0x15
 	lsr r0, r0, #0x15
-	bl GetMonBaseStat
+	bl Species_GetValue
 	add r1, r5, #0
 	add r1, #0x20
 	strb r0, [r1]

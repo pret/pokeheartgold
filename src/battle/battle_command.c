@@ -1208,7 +1208,7 @@ BOOL BtlCmd_CalcExpGain(BattleSystem *battleSystem, BattleContext *ctx) {
                 }
             }
         }
-        totalExp = GetMonBaseStat(ctx->battleMons[ctx->battlerIdFainted].species, BASE_EXP_YIELD);
+        totalExp = Species_GetValue(ctx->battleMons[ctx->battlerIdFainted].species, BASE_EXP_YIELD);
         totalExp = (totalExp * ctx->battleMons[ctx->battlerIdFainted].level) / 7;
         if (expShareMonsCnt) {
             ctx->gainedExp = (totalExp / 2) / expMonsCnt;

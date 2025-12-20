@@ -32,7 +32,7 @@
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonBaseStat
+.public Species_GetValue
 .public GetNatureFromPersonality
 .public CalcShininessByOtIdAndPersonality
 .public sub_0207217C

@@ -270,7 +270,7 @@
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public BoxPokemon_SetData
-.public GetMonBaseStat
+.public Species_GetValue
 .public CalcLevelBySpeciesAndExp
 .public GetMonGender
 .public BoxPokemon_GetGender

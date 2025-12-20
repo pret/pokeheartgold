@@ -1719,7 +1719,7 @@ _02247242:
 	lsl r0, r0, #6
 	ldrh r0, [r1, r0]
 	mov r1, #8
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r1, _02247528 ; =0x0000311C
 	ldr r2, _0224752C ; =ov12_0226C3CE
 	ldrb r1, [r4, r1]
@@ -1739,7 +1739,7 @@ _02247278:
 	lsl r0, r0, #6
 	ldrh r0, [r1, r0]
 	mov r1, #8
-	bl GetMonBaseStat
+	bl Species_GetValue
 _0224728A:
 	add r5, r0, #0
 	mov r0, #0xa
@@ -1961,7 +1961,7 @@ _02247410:
 	lsl r0, r0, #6
 	ldrh r0, [r1, r0]
 	mov r1, #3
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r0, #0x64
 	blo _02247512
 	lsl r5, r5, #2

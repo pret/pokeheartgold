@@ -73,7 +73,7 @@
 .public SpeciesData_NewFromForm
 .public GetPersonalAttr
 .public FreeMonPersonal
-.public GetMonBaseStat
+.public Species_GetValue
 .public GetMonBaseExperienceAtCurrentLevel
 .public MonApplyFriendshipMod
 .public GetPokemonSpriteCharAndPlttNarcIds

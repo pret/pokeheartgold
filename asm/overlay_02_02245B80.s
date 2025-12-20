@@ -3856,7 +3856,7 @@ ov02_02247910: ; 0x02247910
 	bne _02247970
 	ldr r0, [sp, #0x10]
 	mov r1, #0x12
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r0, #0
 	beq _02247994
 	cmp r0, #0xfe
@@ -3977,7 +3977,7 @@ ov02_02247A18: ; 0x02247A18
 	ldr r0, [sp, #0xc]
 	mov r1, #0x12
 	mov r5, #1
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r0, #0
 	beq _02247A4C
 	cmp r0, #0xfe
@@ -4849,14 +4849,14 @@ _022480E6:
 	str r0, [sp, #0xc]
 	ldr r0, [r6, r0]
 	mov r1, #6
-	bl GetMonBaseStat
+	bl Species_GetValue
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	ldr r0, [sp, #0xc]
 	mov r1, #7
 	ldr r0, [r6, r0]
-	bl GetMonBaseStat
+	bl Species_GetValue
 	lsl r0, r0, #0x18
 	lsr r1, r0, #0x18
 	ldr r0, [sp, #8]

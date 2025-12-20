@@ -322,7 +322,7 @@
 .public CreateMonWithFixedIVs
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonBaseStat
+.public Species_GetValue
 .public GetMonNature
 .public GetNatureFromPersonality
 .public GetGenderBySpeciesAndPersonality

@@ -2326,11 +2326,11 @@ _0221D122:
 	add r7, r5, r3
 	ldrh r0, [r7, r6]
 	mov r1, #0x18
-	bl GetMonBaseStat
+	bl Species_GetValue
 	add r4, r0, #0
 	ldrh r0, [r7, r6]
 	mov r1, #0x19
-	bl GetMonBaseStat
+	bl Species_GetValue
 	add r6, r0, #0
 	cmp r4, #0
 	beq _0221D15E
@@ -2438,12 +2438,12 @@ _0221D1E2:
 	ldrh r0, [r6, r1]
 	str r1, [sp]
 	mov r1, #0x18
-	bl GetMonBaseStat
+	bl Species_GetValue
 	add r4, r0, #0
 	ldr r0, [sp]
 	mov r1, #0x19
 	ldrh r0, [r6, r0]
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r4, #0
 	beq _0221D228
 	cmp r0, #0

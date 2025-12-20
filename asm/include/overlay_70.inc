@@ -233,7 +233,7 @@
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public Pokemon_SetData
-.public GetMonBaseStat
+.public Species_GetValue
 .public BoxPokemon_CalcLevel
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon

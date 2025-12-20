@@ -8584,7 +8584,7 @@ _0223BDC2:
 	cmp r0, #0
 	beq _0223BDF0
 	mov r1, #0x12
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r1, _0223BE7C ; =0x000011C4
 	ldr r2, [r4, r1]
 	str r0, [r2, #0x20]
@@ -9569,7 +9569,7 @@ _0223C56E:
 	bl ov70_0223F1D8
 	add r0, r5, #0
 	mov r1, #0x12
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r1, _0223C600 ; =0x000011C4
 	ldr r2, [r4, r1]
 	str r0, [r2, #0x20]
@@ -14657,7 +14657,7 @@ _0223EE5E:
 	ldr r1, _0223EEDC ; =0x00000B84
 	strh r0, [r4, r1]
 	mov r1, #0x12
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r1, _0223EED8 ; =0x000011C4
 	ldr r2, [r4, r1]
 	str r0, [r2, #0x20]

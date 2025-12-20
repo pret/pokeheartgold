@@ -11298,7 +11298,7 @@ ov12_0225E154: ; 0x0225E154
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0x1a
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r2, _0225E1CC ; =ov12_0226D140
 	lsl r1, r5, #1
 	ldrb r2, [r2, r1]
