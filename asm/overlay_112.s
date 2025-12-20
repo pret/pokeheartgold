@@ -6308,7 +6308,7 @@ _021E8D24:
 	bl ReleaseBoxMonLock
 	ldrh r0, [r7]
 	mov r1, #0x9a
-	bl AllocAndLoadMonPersonal
+	bl SpeciesData_NewFromSpecies
 	mov r1, #0x1c
 	add r4, r0, #0
 	bl GetPersonalAttr

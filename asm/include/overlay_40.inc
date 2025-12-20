@@ -249,7 +249,7 @@
 .public Save_VarsFlags_GetBattleTowerPrintProgress
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public AllocAndLoadMonPersonal
+.public SpeciesData_NewFromSpecies
 .public FreeMonPersonal
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality

@@ -23579,7 +23579,7 @@ _022374CE:
 _022374D0:
 	add r0, r5, #0
 	mov r1, #0x6d
-	bl AllocAndLoadMonPersonal
+	bl SpeciesData_NewFromSpecies
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r1, r6, #0

@@ -261,7 +261,7 @@
 .public Pokemon_SetData
 .public BoxPokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm
-.public AllocAndLoadMonPersonal
+.public SpeciesData_NewFromSpecies
 .public GetPersonalAttr
 .public FreeMonPersonal
 .public CalcBoxMonExpToNextLevel

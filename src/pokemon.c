@@ -1701,10 +1701,10 @@ SpeciesData *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, 
     return ret;
 }
 
-SpeciesData *AllocAndLoadMonPersonal(int species, enum HeapID heapID) {
-    SpeciesData *ret = Heap_Alloc(heapID, sizeof(SpeciesData));
-    LoadMonPersonal(species, ret);
-    return ret;
+SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID) {
+    SpeciesData *speciesData = Heap_Alloc(heapID, sizeof(SpeciesData));
+    LoadMonPersonal(species, speciesData);
+    return speciesData;
 }
 
 int GetPersonalAttr(const SpeciesData *speciesData, int attr) {
@@ -1821,7 +1821,7 @@ void FreeMonPersonal(SpeciesData *personal) {
 
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
     int ret;
-    SpeciesData *personal = AllocAndLoadMonPersonal(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
+    SpeciesData *personal = SpeciesData_NewFromSpecies(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
     FreeMonPersonal(personal);
     return ret;
@@ -1829,7 +1829,7 @@ int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
 
 int GetMonBaseStat(int species, int attr) {
     int ret;
-    SpeciesData *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
+    SpeciesData *personal = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
     FreeMonPersonal(personal);
     return ret;
@@ -1909,7 +1909,7 @@ int BoxPokemon_CalcLevel(BoxPokemon *boxMon) {
 
 int CalcLevelBySpeciesAndExp(u16 species, u32 exp) {
     int level;
-    SpeciesData *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
+    SpeciesData *personal = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
     level = CalcLevelBySpeciesAndExp_PreloadedPersonal(personal, species, exp);
     FreeMonPersonal(personal);
     return level;
@@ -2068,7 +2068,7 @@ u8 BoxPokemon_GetGender(BoxPokemon *boxMon) {
 }
 
 u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
-    SpeciesData *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
+    SpeciesData *personal = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
     u8 gender = GetGenderBySpeciesAndPersonality_PreloadedPersonal(personal, species, pid);
     FreeMonPersonal(personal);
     return gender;
