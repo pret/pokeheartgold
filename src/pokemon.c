@@ -33,7 +33,7 @@ void InitBoxMonMoveset(BoxPokemon *boxMon);
 void LoadMonBaseStats_HandleAlternateForm(int species, int form, BASE_STATS *dest);
 u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
 static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest);
-static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest);
+static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest);
 static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *data);
 static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int attr, const void *data);
 static void AddMonDataInternal(Pokemon *mon, int attr, int value);
@@ -455,7 +455,7 @@ static u32 Pokemon_GetDataInternal(Pokemon *mon, int attr, void *dest) {
         CopyCapsule(&mon->party.sealCoords, dest);
         return 1;
     default:
-        return GetBoxMonDataInternal(&mon->box, attr, dest);
+        return BoxPokemon_GetDataInternal(&mon->box, attr, dest);
     }
 }
 
@@ -470,14 +470,14 @@ u32 BoxPokemon_GetData(BoxPokemon *boxMon, int attr, void *dest) {
             boxMon->checksumFailed = TRUE;
         }
     }
-    ret = GetBoxMonDataInternal(boxMon, attr, dest);
+    ret = BoxPokemon_GetDataInternal(boxMon, attr, dest);
     if (!boxMon->boxDecrypted) {
         ENCRYPT_BOX(boxMon);
     }
     return ret;
 }
 
-static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
+static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     u32 ret = 0;
     PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
     PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
