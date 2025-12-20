@@ -164,13 +164,13 @@ BOOL ScrCmd_UpdateDaycareMonObjects(ScriptContext *ctx) {
         }
 
         BoxPokemon *boxMon = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(daycare, dc_mon_idx));
-        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
+        if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_NONE) {
             continue;
         }
 
-        form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
-        species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
-        u32 gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
+        form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
+        species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+        u32 gender = BoxPokemon_GetData(boxMon, MON_DATA_GENDER, NULL);
         BOOL shiny = BoxMonIsShiny(boxMon);
 
         CreateDaycareMonSpriteInternal(fieldSystem->mapObjectManager, (u8)dc_mon_idx, species, form, gender, 1, x, y, fieldSystem->location->mapId, shiny);

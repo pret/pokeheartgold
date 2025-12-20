@@ -257,7 +257,7 @@
 .public Pokemon_InitWith
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
-.public GetBoxMonData
+.public BoxPokemon_GetData
 .public Pokemon_SetData
 .public BoxPokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm

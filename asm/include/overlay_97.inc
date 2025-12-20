@@ -79,7 +79,7 @@
 .public sub_020319A8
 .public sub_0203A994
 .public Pokemon_GetData
-.public GetBoxMonData
+.public BoxPokemon_GetData
 .public MonIsShiny
 .public BoxMonIsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx

@@ -4288,8 +4288,8 @@ u32 sub_020467A8(SaveData *saveData) {
     Daycare *dayCare = Save_Daycare_Get(saveData);
     for (i = 0; i < 2; i++) {
         BoxPokemon *boxMon = DaycareMon_GetBoxMon(Save_Daycare_GetMonX(dayCare, i));
-        if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+        if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
         }
     }
 
@@ -4297,8 +4297,8 @@ u32 sub_020467A8(SaveData *saveData) {
     for (i = 0; i < (u32)NUM_BOXES; i++) {
         for (j = 0; j < MONS_PER_BOX; j++) {
             BoxPokemon *boxMon = PCStorage_GetMonByIndexPair(pcStorage, i, j);
-            if (GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(boxMon, MON_DATA_IS_EGG, NULL)) {
-                ret |= 1 << GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
+            if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
+                ret |= 1 << BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
             }
         }
     }
@@ -4307,8 +4307,8 @@ u32 sub_020467A8(SaveData *saveData) {
     BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
-        if (GetBoxMonData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetBoxMonData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetBoxMonData(walkerBoxMon, MON_DATA_FORM, NULL);
+        if (BoxPokemon_GetData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << BoxPokemon_GetData(walkerBoxMon, MON_DATA_FORM, NULL);
         }
     }
     Heap_Free(walkerMon);

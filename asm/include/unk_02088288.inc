@@ -99,7 +99,7 @@
 .public AcquireMonLock
 .public ReleaseMonLock
 .public Pokemon_GetData
-.public GetBoxMonData
+.public BoxPokemon_GetData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature
 .public GetMonGender

@@ -4088,13 +4088,13 @@ _0208A396:
 	add r0, r4, r6
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A3C6
 	add r0, r4, r6
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A3C6
 	mov r0, #1
@@ -4274,13 +4274,13 @@ _0208A4E4:
 	add r0, r6, r7
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A4C8
 	add r0, r6, r7
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _0208A51A
 	add r0, r5, #0

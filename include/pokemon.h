@@ -49,7 +49,7 @@ void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int pe
 void Pokemon_CalcLevelAndStats(Pokemon *mon);
 void CalcMonStats(Pokemon *mon);
 u32 Pokemon_GetData(Pokemon *mon, int attr, void *ptr);
-u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *ptr);
+u32 BoxPokemon_GetData(BoxPokemon *boxMon, int attr, void *ptr);
 void Pokemon_SetData(Pokemon *mon, int attr, const void *ptr);
 void BoxPokemon_SetData(BoxPokemon *boxMon, int attr, const void *ptr);
 void AddMonData(Pokemon *mon, int attr, int amount);

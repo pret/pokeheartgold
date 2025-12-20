@@ -1442,7 +1442,7 @@ _021E64A2:
 	ldr r0, [sp, #0x18]
 	add r1, #0x36
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x14]
@@ -1500,7 +1500,7 @@ _021E64C4:
 	ldr r0, [sp, #0x18]
 	add r1, #0x3a
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1515,7 +1515,7 @@ _021E64C4:
 	ldr r0, [sp, #0x18]
 	add r1, #0x42
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1607,7 +1607,7 @@ _021E65AE:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

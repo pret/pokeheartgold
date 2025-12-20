@@ -24324,7 +24324,7 @@ AGB_GetBoxMonAbility: ; 0x02234A34
 	add r0, r1, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
@@ -24610,7 +24610,7 @@ _02234C8E:
 	add r0, r4, #0
 	add r1, #0x42
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r1, r5, #0
 	str r0, [sp, #8]
 	add r0, r4, #0
@@ -24921,7 +24921,7 @@ _02234E62:
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0xc9
 	bne _02234FDE
 	mov r1, #0
@@ -24956,7 +24956,7 @@ _02234FDE:
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	ldr r1, _02235120 ; =0x00000182
 	cmp r0, r1
 	bne _0223502E

@@ -132,7 +132,7 @@
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Pokemon_GetData
-.public GetBoxMonData
+.public BoxPokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
