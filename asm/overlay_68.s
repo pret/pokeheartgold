@@ -2337,7 +2337,7 @@ ov68_021E6BFC: ; 0x021E6BFC
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x36
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, pc}
@@ -2458,7 +2458,7 @@ _021E6CE0:
 	ldr r0, [r0]
 	add r1, #0x36
 	add r2, r6, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E6CFC
 	add r0, r4, #1
@@ -3167,12 +3167,12 @@ ov68_021E7224: ; 0x021E7224
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0x1c

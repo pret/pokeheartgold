@@ -10,7 +10,7 @@
 .public MigratedPokemon_ConvertToPokemon
 .public sub_0202EC98
 .public Pokemon_Init
-.public GetMonData
+.public Pokemon_GetData
 .public CopyBoxPokemonToPokemon
 .public OS_GetMacAddress
 .public OS_GetOwnerRtcOffset

@@ -267,7 +267,7 @@
 .public BoxPokemon_Init
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
-.public GetMonData
+.public Pokemon_GetData
 .public GetBoxMonData
 .public BoxPokemon_SetData
 .public GetMonBaseStat

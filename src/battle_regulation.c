@@ -22,16 +22,16 @@ void PokedexData_UnloadAndDelete(PokedexData *pokedex) {
 }
 
 BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *pokemon, PokedexData *pokedex) {
-    u16 species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+    u16 species = Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL);
     if (ruleset == NULL) {
         return TRUE;
     }
 
     int rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_MAX_LEVEL);
-    if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > rule) {
+    if (Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL) > rule) {
         return FALSE;
     }
-    if (GetMonData(pokemon, MON_DATA_IS_EGG, NULL)) {
+    if (Pokemon_GetData(pokemon, MON_DATA_IS_EGG, NULL)) {
         return FALSE;
     }
 
@@ -117,9 +117,9 @@ BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceM
             if (!LinkBattleRuleset_CheckDexBasedRules(ruleset, mon, pokedex)) {
                 return BTL_REG_COMPLIANCE_FAIL_SPECIAL_CONSTRAINTS;
             }
-            species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
-            heldItems[i] = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-            totalLevel += GetMonData(mon, MON_DATA_LEVEL, NULL);
+            species[i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+            heldItems[i] = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
+            totalLevel += Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
         }
     }
     rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_MAX_TOTAL_LEVEL);
@@ -216,8 +216,8 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
     MI_CpuClear8(sp30, sizeof(sp30));
     for (i = 0; i < partyCount; ++i) {
         mon = Party_GetMonByIndex(party, i);
-        species[i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        levels[i] = GetMonData(mon, MON_DATA_LEVEL, NULL);
+        species[i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        levels[i] = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
         if (!LinkBattleRuleset_CheckDexBasedRules(ruleset, mon, pokedex)) {
             species[i] = SPECIES_NONE;
             --numLegalMons;

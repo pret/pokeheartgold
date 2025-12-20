@@ -256,7 +256,7 @@
 .public ReleaseBoxMonLock
 .public CreateMon
 .public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_GetData
 .public GetBoxMonData
 .public Pokemon_SetData
 .public BoxPokemon_SetData

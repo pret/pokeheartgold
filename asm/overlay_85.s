@@ -6353,13 +6353,13 @@ _021E8800:
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E8828
 	add r0, r4, #0
 	mov r1, #3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E8828
 	mov r0, #1

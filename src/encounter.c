@@ -864,7 +864,7 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
             GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_9);
         } else if (winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
             mon = Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0);
-            if (Pokedex_ConvertToCurrentDexNo(FALSE, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
+            if (Pokedex_ConvertToCurrentDexNo(FALSE, Pokemon_GetData(mon, MON_DATA_SPECIES, NULL)) != 0) {
                 GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_10);
             } else {
                 GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_11);
@@ -876,7 +876,7 @@ static void sub_02051660(FieldSystem *fieldSystem, BattleSetup *setup) {
         }
     } else if ((battleType & BATTLE_TYPE_SAFARI || battleType & BATTLE_TYPE_PAL_PARK) && winFlag == BATTLE_OUTCOME_MON_CAUGHT) {
         mon = Party_GetMonByIndex(setup->party[BATTLER_ENEMY], 0);
-        if (Pokedex_ConvertToCurrentDexNo(FALSE, GetMonData(mon, MON_DATA_SPECIES, NULL)) != 0) {
+        if (Pokedex_ConvertToCurrentDexNo(FALSE, Pokemon_GetData(mon, MON_DATA_SPECIES, NULL)) != 0) {
             GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_10);
         } else {
             GameStats_AddScore(Save_GameStats_Get(fieldSystem->saveData), SCORE_EVENT_11);

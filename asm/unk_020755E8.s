@@ -682,14 +682,14 @@ sub_02075A7C: ; 0x02075A7C
 	mov r1, #5
 	mov r2, #0
 	str r7, [r4, #0x28]
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r4, #0
 	add r1, #0x60
 	strh r0, [r1]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r4, #0
 	add r1, #0x80
 	strb r0, [r1]
@@ -1822,7 +1822,7 @@ _02076478:
 	ldr r0, [r4, #0x28]
 	mov r1, #0x4d
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _020764CE
 	ldr r0, [r4, #0x28]
@@ -2354,7 +2354,7 @@ _02076906:
 	ldr r0, [r4, #0x28]
 	mov r2, #0
 	add r1, #0x36
-	bl GetMonData
+	bl Pokemon_GetData
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #1

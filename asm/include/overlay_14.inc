@@ -210,7 +210,7 @@
 .public AllocMonZeroed
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
-.public GetMonData
+.public Pokemon_GetData
 .public GetBoxMonData
 .public Pokemon_SetData
 .public BoxPokemon_SetData

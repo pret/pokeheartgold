@@ -69,11 +69,11 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     case HATCHEGGTASKSTATE_OPEN_NAMING_SCREEN: {
         FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
 
-        u32 species = GetMonData(data->unkC.mon, MON_DATA_SPECIES, NULL);
+        u32 species = Pokemon_GetData(data->unkC.mon, MON_DATA_SPECIES, NULL);
         Options *options = Save_PlayerData_GetOptionsAddr(FieldSystem_GetSaveData(fieldSystem));
         data->namingScreenArgs = NamingScreen_CreateArgs(HEAP_ID_FIELD2, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, options, NULL);
-        data->namingScreenArgs->monGender = GetMonData(data->unkC.mon, MON_DATA_GENDER, NULL);
-        data->namingScreenArgs->monForm = GetMonData(data->unkC.mon, MON_DATA_FORM, NULL);
+        data->namingScreenArgs->monGender = Pokemon_GetData(data->unkC.mon, MON_DATA_GENDER, NULL);
+        data->namingScreenArgs->monForm = Pokemon_GetData(data->unkC.mon, MON_DATA_FORM, NULL);
 
         CallApplicationAsTask(taskManager, &gOverlayTemplate_NamingScreen, data->namingScreenArgs);
         data->state++;

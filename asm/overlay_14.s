@@ -1302,7 +1302,7 @@ ov14_021E6318: ; 0x021E6318
 	ldr r0, [r4]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x7b
 	lsl r1, r1, #2
 	cmp r0, r1
@@ -1481,13 +1481,13 @@ _021E6492:
 	mov r1, #0x4c
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _021E64BE
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E64BE
 	mov r0, #1
@@ -2148,7 +2148,7 @@ _021E699C:
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -2160,7 +2160,7 @@ _021E69C4:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E6A36
 	mov r0, #0
@@ -2177,7 +2177,7 @@ _021E69D6:
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -2189,7 +2189,7 @@ _021E6A02:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021E6A14
 	mov r0, #0
@@ -2246,7 +2246,7 @@ _021E6A66:
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -2258,7 +2258,7 @@ _021E6A8A:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _021E6A9C
 	mov r0, #1
@@ -13355,7 +13355,7 @@ _021EBFF8:
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -13382,7 +13382,7 @@ _021EC03C:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021EC090
 	ldr r0, _021EC0E4 ; =0x000005F3
@@ -15065,7 +15065,7 @@ _021ECE3A:
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -15086,7 +15086,7 @@ _021ECE82:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021ECEAA
 	ldr r0, _021ECF54 ; =0x000005F3
@@ -15245,7 +15245,7 @@ _021ECFC2:
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -15280,7 +15280,7 @@ _021ED022:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021ED06C
 	ldr r0, _021ED1A8 ; =0x000005F3
@@ -17547,7 +17547,7 @@ _021EE29A:
 	mov r1, #6
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -17568,7 +17568,7 @@ _021EE2D2:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021EE2FA
 	ldr r0, _021EE320 ; =0x000005F3
@@ -21803,7 +21803,7 @@ _021F05E4:
 	add r0, r6, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -21818,7 +21818,7 @@ _021F0606:
 	add r0, r6, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021F0620
 	add r0, r5, #0
@@ -21928,7 +21928,7 @@ _021F06EE:
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -21943,7 +21943,7 @@ _021F0710:
 	add r0, r4, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021F072A
 	add r0, r5, #0
@@ -23882,7 +23882,7 @@ _021F168A:
 	mov r1, #6
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl ItemIdIsMail
@@ -23895,7 +23895,7 @@ _021F16E2:
 	add r0, r7, #0
 	mov r1, #0xa2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _021F16F8
 	ldr r0, [r5, #0x34]

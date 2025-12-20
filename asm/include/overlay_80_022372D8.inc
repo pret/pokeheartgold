@@ -11,7 +11,7 @@
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
 .public AllocMonZeroed
-.public GetMonData
+.public Pokemon_GetData
 .public CalcShininessByOtIdAndPersonality
 .public CopyPokemonToPokemon
 .public UpdateMonAbility

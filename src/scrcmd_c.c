@@ -2125,9 +2125,9 @@ BOOL ScrCmd_NicknameInput(ScriptContext *ctx) {
     } else {
         mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), partyPos);
     }
-    GetMonData(mon, MON_DATA_NICKNAME, nickname);
+    Pokemon_GetData(mon, MON_DATA_NICKNAME, nickname);
     var_ret = ScriptGetVarPointer(ctx);
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     CallTask_NamingScreen(ctx->taskman, NAME_SCREEN_POKEMON, species, POKEMON_NAME_LENGTH, partyPos, nickname, var_ret);
     return TRUE;
 }
@@ -3534,12 +3534,12 @@ BOOL ScrCmd_GetEVTotal(ScriptContext *ctx) {
     u16 partyIdx = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
 
-    int hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
-    int atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
-    int defEv = GetMonData(mon, MON_DATA_DEF_EV, NULL);
-    int speedEv = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
-    int spAtkEv = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
-    int spDefEv = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
+    int hpEv = Pokemon_GetData(mon, MON_DATA_HP_EV, NULL);
+    int atkEv = Pokemon_GetData(mon, MON_DATA_ATK_EV, NULL);
+    int defEv = Pokemon_GetData(mon, MON_DATA_DEF_EV, NULL);
+    int speedEv = Pokemon_GetData(mon, MON_DATA_SPEED_EV, NULL);
+    int spAtkEv = Pokemon_GetData(mon, MON_DATA_SPATK_EV, NULL);
+    int spDefEv = Pokemon_GetData(mon, MON_DATA_SPDEF_EV, NULL);
     *p_ret = hpEv + atkEv + defEv + speedEv + spAtkEv + spDefEv;
     return FALSE;
 }
@@ -3701,7 +3701,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
 
     for (i = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
+        if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
             Pokemon_SetData(mon, MON_DATA_FORM, &form);
             CalcMonLevelAndStats(mon);
             Pokedex_SetMonCaughtFlag(pokedex, mon);
@@ -3730,8 +3730,8 @@ BOOL ScrCmd_519(ScriptContext *ctx) {
         int j;
         BOOL hasMultiple;
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+        u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         if (species == SPECIES_BURMY) {
             hasMultiple = FALSE;
             for (j = 0, sp18[i] = form; j < i; j++) {
@@ -4280,8 +4280,8 @@ u32 sub_020467A8(SaveData *saveData) {
 
     for (i = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
-            ret |= 1 << GetMonData(mon, MON_DATA_FORM, NULL);
+        if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
+            ret |= 1 << Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         }
     }
 
@@ -4365,7 +4365,7 @@ BOOL ScrCmd_696(ScriptContext *ctx) {
     partyCount = Party_GetCount(party);
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(party, i);
-        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
             Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fieldSystem->saveData), mon);
         }
     }
@@ -4385,14 +4385,14 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     if (event >= NUM_EVENTS) {
         return FALSE;
     }
-    if (GetMonData(mon, MON_DATA_IS_EGG, NULL) || GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
+    if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) || Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
         return FALSE;
     }
-    if (!MonMetadataMatchesEvent(event, mon, GetMonData(mon, MON_DATA_OT_ID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)))) {
+    if (!MonMetadataMatchesEvent(event, mon, Pokemon_GetData(mon, MON_DATA_OT_ID, NULL) == PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(ctx->fieldSystem->saveData)))) {
         return FALSE;
     }
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     switch (event) {
     case EVENT_SPIKY_EARED_PICHU:
         if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(mon)) {

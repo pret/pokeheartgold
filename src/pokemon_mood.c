@@ -21,7 +21,7 @@ static void MonAdjustMood(Pokemon *mon, s8 by) {
     s8 mood;
     s32 adjustedMood;
 
-    mood = GetMonData(mon, MON_DATA_MOOD, NULL);
+    mood = Pokemon_GetData(mon, MON_DATA_MOOD, NULL);
     adjustedMood = mood + by;
 
     if (adjustedMood > 127) {
@@ -100,10 +100,10 @@ void ApplyMonMoodModifier(Pokemon *mon, int modifierId) {
     u16 species;
     s32 adjustedMood;
 
-    species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
 
     if (species != SPECIES_NONE && species != SPECIES_EGG) {
-        mood = GetMonData(mon, MON_DATA_MOOD, NULL);
+        mood = Pokemon_GetData(mon, MON_DATA_MOOD, NULL);
 
         adjustedMood = mood + sMoodModifiers[modifierId];
 

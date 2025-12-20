@@ -130,7 +130,7 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
         catchingShow->caughtMonsOrder[i] = 0;
         MigratedPokemon_ConvertToPokemon(transferData, i, mon);
 
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
 
         catchingShow->pokemon[i].species = species;
         BufferSpeciesData(species, narc_data);
@@ -142,8 +142,8 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
         }
         catchingShow->pokemon[i].rarity = narc_data[PPMONDAT_OFFSET_ENCOUTER_RATE];
         catchingShow->pokemon[i].catchingPoints = narc_data[PPMONDAT_OFFSET_SCORE];
-        catchingShow->pokemon[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
-        catchingShow->pokemon[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
+        catchingShow->pokemon[i].type1 = Pokemon_GetData(mon, MON_DATA_TYPE_1, NULL);
+        catchingShow->pokemon[i].type2 = Pokemon_GetData(mon, MON_DATA_TYPE_2, NULL);
     }
 
     Heap_Free(mon);

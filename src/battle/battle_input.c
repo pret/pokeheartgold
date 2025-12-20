@@ -1911,7 +1911,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
             strFormated = String_New(32, HEAP_ID_BATTLE);
             caughtMon = BattleSystem_GetBugContestCaughtMon(battleInput->battleSystem);
             if (caughtMon != NULL) {
-                int species = GetMonData(caughtMon, MON_DATA_SPECIES, NULL);
+                int species = Pokemon_GetData(caughtMon, MON_DATA_SPECIES, NULL);
                 if (species != SPECIES_NONE) {
                     int gender = GetMonGender(caughtMon);
 
@@ -1933,7 +1933,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                         BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 20023, 136, 0x10, 0, 0);
                         String_Delete(strMonGender);
                     }
-                    int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
+                    int level = Pokemon_GetData(caughtMon, MON_DATA_LEVEL, NULL);
                     BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, msg_0197_01274);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);

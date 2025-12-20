@@ -136,7 +136,7 @@
 .public sub_0203A880
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_SetData
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon

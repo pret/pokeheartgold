@@ -28,7 +28,7 @@ BattleScript_CalcEffortValues: ; 0x022463E8
 	mov r1, #6
 	add r2, r4, #0
 	str r0, [sp, #0x14]
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r6, #0
@@ -51,7 +51,7 @@ _02246436:
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
 	add r0, r1, #0
@@ -680,7 +680,7 @@ _02246950:
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_CheckMonCaught
@@ -1146,7 +1146,7 @@ _02246D4E:
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetOptions
@@ -1177,7 +1177,7 @@ _02246DB0:
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #8]
 	ldr r0, [r4]
 	bl BattleSystem_GetPcStorage
@@ -1185,7 +1185,7 @@ _02246DB0:
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #0x10]
 	ldr r0, _0224706C ; =gOverlayTemplate_NamingScreen
 	add r1, r5, #0
@@ -1380,7 +1380,7 @@ _02246F7E:
 	add r0, r6, #0
 	add r1, #0x42
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	str r0, [sp, #0x2c]
 	add r0, r6, #0
@@ -3930,7 +3930,7 @@ ov12_02248228: ; 0x02248228
 	ldr r0, [sp, #0x18]
 	mov r1, #0xb0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02248390
 	mov r0, #2
@@ -3939,7 +3939,7 @@ _02248390:
 	ldr r0, [sp, #0x18]
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 _0224839A:
 	cmp r0, #0
 	bne _022483AC
@@ -3972,7 +3972,7 @@ _022483C6:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]

@@ -1515,12 +1515,12 @@ _021E64EA:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x10]
 	add r0, r6, #0
 	mov r1, #0xa4
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	bl Mon_GetBoxMon
@@ -1575,7 +1575,7 @@ _021E6554:
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

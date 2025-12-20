@@ -95,9 +95,9 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     daycareMail = DaycareMon_GetExtras(daycareMon);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfile(saveData));
-    GetMonData(partyMon, MON_DATA_NICKNAME, nickname);
+    Pokemon_GetData(partyMon, MON_DATA_NICKNAME, nickname);
     if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
-        GetMonData(partyMon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
+        Pokemon_GetData(partyMon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
     }
     mood = 0;
     Pokemon_SetData(partyMon, MON_DATA_MOOD, &mood);
@@ -170,8 +170,8 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
 
     CopyBoxPokemonToPokemon(boxMon, mon);
-    if (GetMonData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
-        exp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
+    if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
+        exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
         exp += DaycareMon_GetSteps(daycareMon);
         Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
         Daycare_LearnLevelUpMoves(mon);
@@ -421,7 +421,7 @@ static u8 LoadEggMoves(Pokemon *mon, u16 *dest) {
     n = 0;
     offset = 0;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < 0x7FD; i++) {
         if (species + 20000 == kowaza_list[i]) {
             offset = i + 1;
@@ -460,8 +460,8 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
     sp1C = 0;
     MI_CpuClearFast(search, sizeof(struct EggMoveSearch));
 
-    egg_species = GetMonData(egg, MON_DATA_SPECIES, NULL);
-    egg_form = GetMonData(egg, MON_DATA_FORM, NULL);
+    egg_species = Pokemon_GetData(egg, MON_DATA_SPECIES, NULL);
+    egg_form = Pokemon_GetData(egg, MON_DATA_FORM, NULL);
     learnset_size = Species_LoadLearnsetTable(egg_species, egg_form, search->baby_learnset);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         search->dad_moves[i] = GetBoxMonData(father, MON_DATA_MOVE1 + i, NULL);
@@ -731,8 +731,8 @@ static u8 GetEggCyclesToSubtract(Party *party) {
 
     party_n = Party_GetCount(party);
     for (i = 0; i < party_n; i++) {
-        if (!GetMonData(Party_GetMonByIndex(party, i), MON_DATA_SANITY_IS_EGG, NULL)) {
-            ability = GetMonData(Party_GetMonByIndex(party, i), MON_DATA_ABILITY, NULL);
+        if (!Pokemon_GetData(Party_GetMonByIndex(party, i), MON_DATA_SANITY_IS_EGG, NULL)) {
+            ability = Pokemon_GetData(Party_GetMonByIndex(party, i), MON_DATA_ABILITY, NULL);
             if (ability == ABILITY_MAGMA_ARMOR || ability == ABILITY_FLAME_BODY) {
                 return 2;
             }
@@ -886,8 +886,8 @@ BOOL HandleDaycareStep(Daycare *dayCare, Party *party, FieldSystem *fieldSystem)
         to_sub = GetEggCyclesToSubtract(party);
         for (i = 0; i < Party_GetCount(party); i++) {
             mon = Party_GetMonByIndex(party, i);
-            if (GetMonData(mon, MON_DATA_IS_EGG, NULL) && !GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
-                friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+            if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) && !Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL)) {
+                friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
                 if (friendship != 0) {
                     if (friendship >= to_sub) {
                         friendship -= to_sub;
@@ -911,7 +911,7 @@ Pokemon *sub_0206CE44(Party *party) {
     n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
         mon = Party_GetMonByIndex(party, i);
-        if (!GetMonData(mon, MON_DATA_CHECKSUM_FAILED, NULL) && GetMonData(mon, MON_DATA_IS_EGG, NULL) && GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) == 0) {
+        if (!Pokemon_GetData(mon, MON_DATA_CHECKSUM_FAILED, NULL) && Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) && Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL) == 0) {
             return mon;
         }
     }
@@ -1030,25 +1030,25 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
 
     string = String_New(PLAYER_NAME_LENGTH + 1, heapID);
     tmpMon = AllocMonZeroed(heapID);
-    species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        moves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
-        pp[i] = GetMonData(mon, MON_DATA_MOVE1_PP + i, NULL);
+        moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
+        pp[i] = Pokemon_GetData(mon, MON_DATA_MOVE1_PP + i, NULL);
     }
-    pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    pid = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
     for (i = 0; i < NUM_STATS; i++) {
-        ivs[i] = GetMonData(mon, MON_DATA_HP_IV + i, NULL);
+        ivs[i] = Pokemon_GetData(mon, MON_DATA_HP_IV + i, NULL);
     }
-    language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
-    version = GetMonData(mon, MON_DATA_MET_GAME, NULL);
-    markings = GetMonData(mon, MON_DATA_MARKINGS, NULL);
-    pokerus = GetMonData(mon, MON_DATA_POKERUS, NULL);
-    fateful = GetMonData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
-    GetMonData(mon, MON_DATA_OT_NAME_STRING, string);
-    otGender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
-    otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
-    if (species == SPECIES_MANAPHY && GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
+    language = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
+    version = Pokemon_GetData(mon, MON_DATA_MET_GAME, NULL);
+    markings = Pokemon_GetData(mon, MON_DATA_MARKINGS, NULL);
+    pokerus = Pokemon_GetData(mon, MON_DATA_POKERUS, NULL);
+    fateful = Pokemon_GetData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
+    Pokemon_GetData(mon, MON_DATA_OT_NAME_STRING, string);
+    otGender = Pokemon_GetData(mon, MON_DATA_OT_GENDER, NULL);
+    otId = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    if (species == SPECIES_MANAPHY && Pokemon_GetData(mon, MON_DATA_EGG_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
         if (CalcShininessByOtIdAndPersonality(otId, pid)) {
             do {
                 pid = PRandom(pid);
@@ -1074,18 +1074,18 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     Pokemon_SetData(tmpMon, MON_DATA_OT_GENDER, &otGender);
     Pokemon_SetData(tmpMon, MON_DATA_OT_ID, &otId);
     Pokemon_SetData(tmpMon, MON_DATA_FORM, &form);
-    metLoc = GetMonData(mon, MON_DATA_EGG_LOCATION, NULL);
-    metYear = GetMonData(mon, MON_DATA_EGG_YEAR, NULL);
-    metMonth = GetMonData(mon, MON_DATA_EGG_MONTH, NULL);
-    metDay = GetMonData(mon, MON_DATA_EGG_DAY, NULL);
+    metLoc = Pokemon_GetData(mon, MON_DATA_EGG_LOCATION, NULL);
+    metYear = Pokemon_GetData(mon, MON_DATA_EGG_YEAR, NULL);
+    metMonth = Pokemon_GetData(mon, MON_DATA_EGG_MONTH, NULL);
+    metDay = Pokemon_GetData(mon, MON_DATA_EGG_DAY, NULL);
     Pokemon_SetData(tmpMon, MON_DATA_EGG_LOCATION, &metLoc);
     Pokemon_SetData(tmpMon, MON_DATA_EGG_YEAR, &metYear);
     Pokemon_SetData(tmpMon, MON_DATA_EGG_MONTH, &metMonth);
     Pokemon_SetData(tmpMon, MON_DATA_EGG_DAY, &metDay);
-    metLoc = GetMonData(mon, MON_DATA_MET_LOCATION, NULL);
-    metYear = GetMonData(mon, MON_DATA_MET_YEAR, NULL);
-    metMonth = GetMonData(mon, MON_DATA_MET_MONTH, NULL);
-    metDay = GetMonData(mon, MON_DATA_MET_DAY, NULL);
+    metLoc = Pokemon_GetData(mon, MON_DATA_MET_LOCATION, NULL);
+    metYear = Pokemon_GetData(mon, MON_DATA_MET_YEAR, NULL);
+    metMonth = Pokemon_GetData(mon, MON_DATA_MET_MONTH, NULL);
+    metDay = Pokemon_GetData(mon, MON_DATA_MET_DAY, NULL);
     Pokemon_SetData(tmpMon, MON_DATA_MET_LOCATION, &metLoc);
     Pokemon_SetData(tmpMon, MON_DATA_MET_YEAR, &metYear);
     Pokemon_SetData(tmpMon, MON_DATA_MET_MONTH, &metMonth);
@@ -1103,7 +1103,7 @@ void sub_0206D328(Pokemon *mon, enum HeapID heapID) {
     u8 metLevel = 0;
     sub_0206D038(mon, heapID);
     Pokemon_SetData(mon, MON_DATA_IS_EGG, &isEgg);
-    GetSpeciesNameIntoArray(GetMonData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
+    GetSpeciesNameIntoArray(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), HEAP_ID_DEFAULT, nickname);
     Pokemon_SetData(mon, MON_DATA_NICKNAME, nickname);
     Pokemon_SetData(mon, MON_DATA_HAS_NICKNAME, &hasNickname);
     Pokemon_SetData(mon, MON_DATA_POKEBALL, &pokeball);

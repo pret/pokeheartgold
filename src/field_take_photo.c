@@ -547,27 +547,27 @@ static void Photo_InitFromArcData(Photo *photo, FieldSystem *fieldSystem, u8 ico
     photo->numMons = photo->subjectSpriteId != 0 ? 1 : partySize;
 
     Pokemon *leadMon = GetFirstAliveMonInParty_CrashIfNone(party);
-    GetMonData(leadMon, MON_DATA_NICKNAME, photo->leadMonNick);
+    Pokemon_GetData(leadMon, MON_DATA_NICKNAME, photo->leadMonNick);
     if (!photo->subjectSpriteId) {
         for (i = 0; i < partySize; ++i) {
             Pokemon *mon = Party_GetMonByIndex(party, i);
-            if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+            if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
                 photo->party[i].species = SPECIES_NONE;
                 photo->party[i].form = 0;
                 photo->party[i].shiny = FALSE;
                 photo->party[i].gender = 0;
             } else {
-                photo->party[i].species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-                photo->party[i].form = GetMonData(mon, MON_DATA_FORM, NULL);
+                photo->party[i].species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+                photo->party[i].form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
                 photo->party[i].shiny = MonIsShiny(mon);
-                photo->party[i].gender = GetMonData(mon, MON_DATA_GENDER, NULL);
+                photo->party[i].gender = Pokemon_GetData(mon, MON_DATA_GENDER, NULL);
             }
         }
     } else {
-        photo->party[0].species = GetMonData(leadMon, MON_DATA_SPECIES, NULL);
-        photo->party[0].form = GetMonData(leadMon, MON_DATA_FORM, NULL);
+        photo->party[0].species = Pokemon_GetData(leadMon, MON_DATA_SPECIES, NULL);
+        photo->party[0].form = Pokemon_GetData(leadMon, MON_DATA_FORM, NULL);
         photo->party[0].shiny = MonIsShiny(leadMon);
-        photo->party[0].gender = GetMonData(leadMon, MON_DATA_GENDER, NULL);
+        photo->party[0].gender = Pokemon_GetData(leadMon, MON_DATA_GENDER, NULL);
         for (i = 1; i < PARTY_SIZE; ++i) {
             photo->party[i].species = SPECIES_NONE;
             photo->party[i].form = 0;

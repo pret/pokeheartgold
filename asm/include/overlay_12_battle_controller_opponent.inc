@@ -68,7 +68,7 @@
 .public PlayerProfile_GetVersion
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
 .public GetNatureFromPersonality

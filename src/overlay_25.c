@@ -280,8 +280,8 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
     for (i = 0; i < partyCount; i++) {
         CopyPokemonToPokemon(Party_GetMonByIndex(party, i), mon);
-        if (GetMonData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
-            u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
+        if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
+            u32 exp = GetMonExpBySpeciesAndLevel(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
             Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
             CalcMonLevelAndStats(mon);
         }
@@ -316,7 +316,7 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
         Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &move);
         tempByte = trainerHouseMon->ppUp >> (i * 2) & 3;
         Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + i, &tempByte);
-        u8 pp = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, NULL);
+        u8 pp = Pokemon_GetData(mon, MON_DATA_MOVE1_MAX_PP + i, NULL);
         Pokemon_SetData(mon, MON_DATA_MOVE1_PP + i, &pp);
     }
     u32 otid = trainerHouseMon->otid;

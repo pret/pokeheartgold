@@ -113,7 +113,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 1;
     }
 
-    capsule = GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
+    capsule = Pokemon_GetData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
     if (capsule != 0) {
         return 3;
     }
@@ -122,7 +122,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
     party_count = Party_GetCount(party);
     for (i = 0; i < party_count; i++) {
         cur_poke = Party_GetMonByIndex(party, i);
-        if (GetMonData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && GetMonData(cur_poke, MON_DATA_HP, NULL) != 0 && !GetMonData(cur_poke, MON_DATA_IS_EGG, NULL)) {
+        if (Pokemon_GetData(cur_poke, MON_DATA_CHECKSUM_FAILED, NULL) != TRUE && Pokemon_GetData(cur_poke, MON_DATA_HP, NULL) != 0 && !Pokemon_GetData(cur_poke, MON_DATA_IS_EGG, NULL)) {
             n++;
         }
     }
@@ -130,7 +130,7 @@ int NPCTrade_CanGiveUpLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, u8 
         return 4;
     }
 
-    heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    heldItem = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     if (heldItem != ITEM_NONE) {
         return 2;
     }
@@ -160,7 +160,7 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     u32 time_of_day;
 
     my_poke = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), slot);
-    _CreateTradeMon(work->mon, work->trade_dat, GetMonData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapID);
+    _CreateTradeMon(work->mon, work->trade_dat, Pokemon_GetData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapID);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
     anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);

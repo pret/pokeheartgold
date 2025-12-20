@@ -16,7 +16,7 @@
 .public BattleSetup_SetAllySideBattlersToPlayer
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
 .public GetMonExpBySpeciesAndLevel

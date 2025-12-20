@@ -198,10 +198,10 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     s32 i, j;
     u16 currentMoves[MAX_MON_MOVES];
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        currentMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        currentMoves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
     }
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD2, GetMoveTutorLearnsetIndex(species, form));
     u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
@@ -327,8 +327,8 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u16 *unk = Heap_AllocAtEnd(HEAP_ID_FIELD2, 0x2c);
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     s32 size = Species_LoadLearnsetTable(species, form, unk);
     for (s32 i = 0; i < size; i++) {
         if (move == unk[i]) {

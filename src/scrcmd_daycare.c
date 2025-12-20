@@ -215,7 +215,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         return FALSE;
     }
 
-    u32 held_item = GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
+    u32 held_item = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
     if (held_item == ITEM_GRISEOUS_ORB) {
         Bag *bag = Save_Bag_Get(fieldSystem->saveData);
         if (!Bag_AddItem(bag, ITEM_GRISEOUS_ORB, 1, HEAP_ID_FIELD2)) {
@@ -227,9 +227,9 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &no_item);
     }
 
-    s32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    s32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     if (form > 0) {
-        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         switch (species) {
         case SPECIES_GIRATINA:
             Mon_UpdateGiratinaForm(mon);

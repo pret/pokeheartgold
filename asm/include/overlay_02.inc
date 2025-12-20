@@ -320,7 +320,7 @@
 .public CreateMonWithNature
 .public CreateMonWithGenderNatureLetter
 .public CreateMonWithFixedIVs
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
 .public GetMonNature

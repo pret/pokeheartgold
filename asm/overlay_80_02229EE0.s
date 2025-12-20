@@ -397,7 +397,7 @@ _0222A1BC:
 	add r0, r5, #0
 	add r1, #0x42
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, sp, #0x14
 	strb r0, [r1]
 	add r1, r4, #0
@@ -555,7 +555,7 @@ ov80_0222A334: ; 0x0222A334
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #8]
 	add r0, r5, #0
 	bl Save_PlayerData_GetProfile

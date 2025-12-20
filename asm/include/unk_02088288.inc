@@ -98,7 +98,7 @@
 .public AllocMonZeroed
 .public AcquireMonLock
 .public ReleaseMonLock
-.public GetMonData
+.public Pokemon_GetData
 .public GetBoxMonData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature

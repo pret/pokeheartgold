@@ -279,44 +279,44 @@ BOOL MonIsInGameTradePoke(Pokemon *mon, NpcTradeNum tradeNum) {
 BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
     PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
     SAVE_MISC_DATA *misc = Save_Misc_Get(saveData);
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     if (!(species == SPECIES_TOGEPI
             || species == SPECIES_TOGETIC
             || species == SPECIES_TOGEKISS)) {
         return FALSE;
     }
-    // For some reason, the result of calls to GetMonData must be assigned
+    // For some reason, the result of calls to Pokemon_GetData must be assigned
     // to explicit variables before being compared for the function to match,
     // even though the values are never used again afterwards. Also, the same
-    // variables are used for different calls to GetMonData.
-    int word = GetMonData(mon, MON_DATA_OT_ID, NULL);
+    // variables are used for different calls to Pokemon_GetData.
+    int word = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
     if (word != PlayerProfile_GetTrainerID(profile)) {
         return FALSE;
     }
-    u8 byte = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
+    u8 byte = Pokemon_GetData(mon, MON_DATA_OT_GENDER, NULL);
     if (byte != PlayerProfile_GetTrainerGender(profile)) {
         return FALSE;
     }
-    byte = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
+    byte = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
     if (byte != gGameLanguage) {
         return FALSE;
     }
-    byte = GetMonData(mon, MON_DATA_MET_GAME, NULL);
+    byte = Pokemon_GetData(mon, MON_DATA_MET_GAME, NULL);
     if (byte != gGameVersion) {
         return FALSE;
     }
     SaveMisc_GetTogepiPersonalityGender(misc, &word, &byte);
-    if (word != GetMonData(mon, MON_DATA_PERSONALITY, NULL)) {
+    if (word != Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL)) {
         return FALSE;
     }
-    if (byte != GetMonData(mon, MON_DATA_GENDER, NULL)) {
+    if (byte != Pokemon_GetData(mon, MON_DATA_GENDER, NULL)) {
         return FALSE;
     }
     return TRUE;
 }
 
 static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTradeNum tradeNum) {
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+    u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     // The game calls this function only for Kenya the Spearow from the
     // Route 35-Goldenrod City Gate, and Shuckie the Shuckle from Cianwood City,
     // thus possible evolutions from other in game trades are not considered here.
@@ -329,29 +329,29 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     else if (species != trade->give_species) {
         return FALSE;
     }
-    u32 otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
+    u32 otId = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
     if (otId != trade->otId) {
         return FALSE;
     }
-    u32 pid = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
+    u32 pid = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
     if (pid != trade->pid) {
         return FALSE;
     }
-    u8 gender = GetMonData(mon, MON_DATA_OT_GENDER, NULL);
+    u8 gender = Pokemon_GetData(mon, MON_DATA_OT_GENDER, NULL);
     if (gender != trade->gender) {
         return FALSE;
     }
-    u8 language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
+    u8 language = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
     if (language != trade->language) {
         return FALSE;
     }
-    u8 version = GetMonData(mon, MON_DATA_MET_GAME, NULL);
+    u8 version = Pokemon_GetData(mon, MON_DATA_MET_GAME, NULL);
     if (version != gGameVersion) {
         return FALSE;
     }
     MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, HEAP_ID_FIELD2);
     String *monNickname = String_New(12, HEAP_ID_FIELD2);
-    GetMonData(mon, MON_DATA_NICKNAME_STRING, monNickname);
+    Pokemon_GetData(mon, MON_DATA_NICKNAME_STRING, monNickname);
     String *tradeNickname = NewString_ReadMsgData(messageData, tradeNum);
     BOOL differentNickname = String_Compare(monNickname, tradeNickname);
     String_Delete(tradeNickname);
@@ -361,7 +361,7 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
         return FALSE;
     }
     String *monOtName = String_New(8, HEAP_ID_FIELD2);
-    GetMonData(mon, MON_DATA_OT_NAME_STRING, monOtName);
+    Pokemon_GetData(mon, MON_DATA_OT_NAME_STRING, monOtName);
     String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
     String_Delete(tradeOtName);

@@ -131,7 +131,7 @@
 .public Thunk_G3X_Reset
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
-.public GetMonData
+.public Pokemon_GetData
 .public GetBoxMonData
 .public Pokemon_SetData
 .public GetMonBaseStat_HandleAlternateForm

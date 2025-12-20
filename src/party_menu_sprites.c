@@ -401,7 +401,7 @@ void sub_0207EBE4(PartyMenu *partyMenu, u8 partySlot, u16 x, u16 y, NARC *narc) 
 
     sub_0200E2B8(partyMenu->spriteRenderer, partyMenu->spriteGfxHandler, narc, Pokemon_GetIconNaix(mon), FALSE, partySlot + 4);
 
-    isEgg = GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    isEgg = Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
 
     sp1C.resourceSet = partySlot + 4;
     sp1C.x = x;
@@ -434,8 +434,8 @@ void sub_0207ECE0(PartyMenu *partyMenu, u8 partySlot) {
     NNSG2dCharacterData *pCharData;
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     narc = NARC_New(NARC_poketool_icongra_poke_icon, HEAP_ID_PARTY_MENU);
     imageLocation = NNS_G2dGetImageLocation(Sprite_GetImageProxy(partyMenu->monsDrawState[partySlot].iconSprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     ncgrFile = GfGfxLoader_LoadFromOpenNarc(narc, Pokemon_GetIconNaix(mon), FALSE, HEAP_ID_PARTY_MENU, TRUE);

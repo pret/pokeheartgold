@@ -178,7 +178,7 @@
 .public sub_02037BEC
 .public sub_0203A880
 .public sub_0203A914
-.public GetMonData
+.public Pokemon_GetData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetMonGender
 .public GetPokemonSpriteCharAndPlttNarcIds

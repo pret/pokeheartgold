@@ -459,7 +459,7 @@ void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon) {
     int i;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_FRUSTRATION) {
+        if (Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_FRUSTRATION) {
             friendship = 0;
         }
     }

@@ -4,7 +4,7 @@
 .public sub_0202FC48
 .public sub_02037454
 .public sub_0203769C
-.public GetMonData
+.public Pokemon_GetData
 .public GetPercentProgressTowardsNextLevel
 .public GetMonExpBySpeciesAndLevel
 .public GetMonPicHeightBySpeciesGenderForm

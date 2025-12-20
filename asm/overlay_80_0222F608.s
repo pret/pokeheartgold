@@ -457,7 +457,7 @@ _0222F954:
 	add r0, r6, #0
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0x18]
 	strh r0, [r1]
 	add r0, r6, #0
@@ -497,12 +497,12 @@ _0222F9BC:
 	add r0, r5, #0
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r7, r0
 	bne _0222F9E8
 	mov r0, #0xff

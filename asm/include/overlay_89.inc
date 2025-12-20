@@ -185,7 +185,7 @@
 .public Options_GetFrame
 .public sub_0203A880
 .public sub_0203A914
-.public GetMonData
+.public Pokemon_GetData
 .public GetNatureFromPersonality
 .public Party_GetCount
 .public Party_GetMonByIndex

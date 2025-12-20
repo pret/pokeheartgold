@@ -141,7 +141,7 @@
 .public sub_0203A880
 .public sub_0203A914
 .public sub_0203A930
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_SetData
 .public MonApplyFriendshipMod
 .public GetMonGender

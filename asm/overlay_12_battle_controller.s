@@ -1273,12 +1273,12 @@ BattleController_EmitHealthbarSlideIn: ; 0x02262A2C
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x10]
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0xc]
 	mov r0, #0xc
 	add r3, sp, #0x14
@@ -1516,7 +1516,7 @@ _02262C32:
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262C90
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1525,13 +1525,13 @@ _02262C32:
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262C78
 	add r0, r4, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262C72
 	mov r0, #3
@@ -1617,7 +1617,7 @@ _02262CFC:
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262D48
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1626,13 +1626,13 @@ _02262CFC:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262D42
 	add r0, r6, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262D3C
 	mov r0, #3
@@ -1693,7 +1693,7 @@ _02262D98:
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262DE4
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1702,13 +1702,13 @@ _02262D98:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262DDE
 	add r0, r6, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262DD8
 	mov r0, #3
@@ -1759,7 +1759,7 @@ _02262E20:
 	mov r1, #0xae
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262E6C
 	ldr r1, _02262ED8 ; =0x000001EE
@@ -1768,13 +1768,13 @@ _02262E20:
 	add r0, r6, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262E66
 	add r0, r6, #0
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02262E60
 	mov r0, #3
@@ -2624,12 +2624,12 @@ BattleController_EmitHealthbarUpdate: ; 0x02263488
 	add r4, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r6, r0, #0
 	mov r0, #0x18
 	add r3, sp, #0xc
@@ -2729,12 +2729,12 @@ ov12_02263564: ; 0x02263564
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r6, r0, #0
 	mov r1, #0x19
 	add r0, sp, #0xc
@@ -3370,12 +3370,12 @@ ov12_02263A1C: ; 0x02263A1C
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0xc]
 	add r0, r6, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #8]
 	mov r0, #0x26
 	add r3, sp, #0x10
@@ -5028,7 +5028,7 @@ _0226469C:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x14]
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _022646EE
 	ldr r1, _02264820 ; =0x000001EE
@@ -5037,13 +5037,13 @@ _0226469C:
 	ldr r0, [sp, #0x14]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _022646E6
 	ldr r0, [sp, #0x14]
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _022646DE
 	add r1, r5, r4
@@ -5093,7 +5093,7 @@ _0226471E:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x18]
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02264770
 	ldr r1, _02264820 ; =0x000001EE
@@ -5102,13 +5102,13 @@ _0226471E:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02264768
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02264760
 	add r1, r5, r4
@@ -5169,7 +5169,7 @@ _022647B6:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x1c]
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02264808
 	ldr r1, _02264820 ; =0x000001EE
@@ -5178,13 +5178,13 @@ _022647B6:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02264800
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _022647F8
 	add r1, r5, r4

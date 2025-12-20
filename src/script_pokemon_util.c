@@ -12,10 +12,10 @@
 #include "update_dex_received.h"
 
 static BOOL MonNotFaintedOrEgg(Pokemon *mon) {
-    if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+    if (Pokemon_GetData(mon, MON_DATA_HP, NULL) == 0) {
         return FALSE;
     }
-    return !GetMonData(mon, MON_DATA_IS_EGG, NULL);
+    return !Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
 }
 
 BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int ball, int encounterType) {
@@ -76,13 +76,13 @@ int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {
     n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
         mon = Party_GetMonByIndex(party, i);
-        if (GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
             continue;
         }
-        if (GetMonData(mon, MON_DATA_MOVE1, NULL) == move
-            || GetMonData(mon, MON_DATA_MOVE2, NULL) == move
-            || GetMonData(mon, MON_DATA_MOVE3, NULL) == move
-            || GetMonData(mon, MON_DATA_MOVE4, NULL) == move) {
+        if (Pokemon_GetData(mon, MON_DATA_MOVE1, NULL) == move
+            || Pokemon_GetData(mon, MON_DATA_MOVE2, NULL) == move
+            || Pokemon_GetData(mon, MON_DATA_MOVE3, NULL) == move
+            || Pokemon_GetData(mon, MON_DATA_MOVE4, NULL) == move) {
             return i;
         }
     }
@@ -146,7 +146,7 @@ Pokemon *GetFirstNonEggInParty(Party *party) {
     n = Party_GetCount(party);
     for (i = 0; i < n; i++) {
         mon = Party_GetMonByIndex(party, i);
-        if (!GetMonData(mon, MON_DATA_IS_EGG, NULL)) {
+        if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
             return mon;
         }
     }
@@ -173,10 +173,10 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
         if (!MonNotFaintedOrEgg(mon)) {
             continue;
         }
-        if (!(GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON))) {
+        if (!(Pokemon_GetData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON))) {
             continue;
         }
-        hp = GetMonData(mon, MON_DATA_HP, NULL);
+        hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
         if (hp > 1) {
             hp--;
         }
@@ -199,7 +199,7 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
 
 BOOL SurvivePoisoning(Pokemon *mon) {
     u32 status;
-    if ((GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && GetMonData(mon, MON_DATA_HP, NULL) == 1) {
+    if ((Pokemon_GetData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && Pokemon_GetData(mon, MON_DATA_HP, NULL) == 1) {
         status = 0;
         Pokemon_SetData(mon, MON_DATA_STATUS, &status);
         return TRUE;

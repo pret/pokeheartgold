@@ -30,7 +30,7 @@
 .public Pokemon_Init
 .public CreateMon
 .public CalcMonLevelAndStats
-.public GetMonData
+.public Pokemon_GetData
 .public Pokemon_SetData
 .public GetMonBaseStat
 .public GetNatureFromPersonality

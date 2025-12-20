@@ -2658,22 +2658,22 @@ _02259E78:
 	mov r1, #0xae
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0
 	strh r0, [r5, #2]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strb r0, [r5, #8]
 	add r0, r4, #0
 	mov r1, #7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl ov89_0225C830

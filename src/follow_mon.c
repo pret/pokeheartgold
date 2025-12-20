@@ -1521,19 +1521,19 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
         } else {
             mon = GetFirstAliveMonInParty_CrashIfNone(party);
         }
-        int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        int species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         fieldSystem->followMon.mapObject = NULL;
 
         if (FollowMon_GetPermissionBySpeciesAndMap(species, mapNo)) {
-            int form = GetMonData(mon, MON_DATA_FORM, NULL);
-            int gender = GetMonData(mon, MON_DATA_GENDER, NULL); // must be int to match, even though gender is u8
+            int form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+            int gender = Pokemon_GetData(mon, MON_DATA_GENDER, NULL); // must be int to match, even though gender is u8
             int shiny = MonIsShiny(mon);
 
             fieldSystem->followMon.mapObject = FollowMon_CreateMapObject(mapObjectManager, species, form, gender, direction, x, y, shiny);
             fieldSystem->followMon.active = TRUE;
 
             FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
-            FieldSystem_UnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+            FieldSystem_UnkSub108_Set(fieldSystem->unk108, mon, species, Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL));
             int playerState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
 
             if (playerState == PLAYER_STATE_WALKING || playerState == PLAYER_STATE_ROCKET) {
@@ -1568,14 +1568,14 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
 
     if (partyCount != 0) {
         Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(party);
-        int species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        int species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         int form;
         u8 gender;
         int shiny;
         int playerState;
         LocalMapObject *followPokeObj;
 
-        FieldSystem_UnkSub108_Set(fieldSystem->unk108, mon, species, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
+        FieldSystem_UnkSub108_Set(fieldSystem->unk108, mon, species, Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL));
 
         if (FollowMon_GetPermissionBySpeciesAndMap(species, mapno)) {
             followPokeObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
@@ -1583,7 +1583,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
             if (followPokeObj == NULL) {
                 fieldSystem->followMon.unk15 = 1;
             } else {
-                form = GetMonData(mon, MON_DATA_FORM, NULL);
+                form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
                 fieldSystem->followMon.mapObject = followPokeObj;
@@ -1619,7 +1619,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
             followPokeObj = MapObjectManager_GetFirstActiveObjectByID(fieldSystem->mapObjectManager, obj_partner_poke);
 
             if (followPokeObj != NULL) {
-                form = GetMonData(mon, MON_DATA_FORM, NULL);
+                form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
                 gender = GetMonGender(mon);
                 shiny = MonIsShiny(mon);
 
@@ -1935,7 +1935,7 @@ void FieldSystem_UnkSub108_AddMonMood(FieldSystemUnk108 *unk, s8 by) {
         return;
     }
 
-    mood = GetMonData(unk->mon, MON_DATA_MOOD, NULL);
+    mood = Pokemon_GetData(unk->mon, MON_DATA_MOOD, NULL);
     if (mood + by > 127) {
         mood = 127;
     } else if (mood + by < -127) {
@@ -1961,7 +1961,7 @@ s8 FieldSystem_UnkSub108_GetMonMood(FieldSystemUnk108 *unk) {
         return 0;
     }
 
-    return GetMonData(unk->mon, MON_DATA_MOOD, NULL);
+    return Pokemon_GetData(unk->mon, MON_DATA_MOOD, NULL);
 }
 
 void FieldSystem_UnkSub108_Set(FieldSystemUnk108 *a0, Pokemon *mon, u16 species, u32 personality) {
@@ -1983,7 +1983,7 @@ void FieldSystem_UnkSub108_MoveMoodTowardsNeutral(FieldSystemUnk108 *a0) {
         return;
     }
 
-    mood = GetMonData(a0->mon, MON_DATA_MOOD, NULL);
+    mood = Pokemon_GetData(a0->mon, MON_DATA_MOOD, NULL);
     if (mood < 0) {
         mood++;
     } else if (mood > 0) {
