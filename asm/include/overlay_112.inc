@@ -260,7 +260,7 @@
 .public BoxPokemon_GetData
 .public Pokemon_SetData
 .public BoxPokemon_SetData
-.public AllocAndLoadMonPersonal_HandleAlternateForm
+.public SpeciesData_NewFromForm
 .public SpeciesData_NewFromSpecies
 .public GetPersonalAttr
 .public FreeMonPersonal

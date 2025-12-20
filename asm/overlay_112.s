@@ -6061,7 +6061,7 @@ _021E8B94:
 	ldr r0, [sp, #0x14]
 	ldrb r1, [r4, #6]
 	ldrh r0, [r6, r0]
-	bl AllocAndLoadMonPersonal_HandleAlternateForm
+	bl SpeciesData_NewFromForm
 	str r0, [sp, #0xc]
 	ldr r0, [sp, #0x14]
 	mov r1, #0

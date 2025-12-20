@@ -1695,10 +1695,10 @@ static void AddBoxMonDataInternal(BoxPokemon *boxMon, int attr, int value) {
     }
 }
 
-SpeciesData *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, enum HeapID heapID) {
-    SpeciesData *ret = Heap_Alloc(heapID, sizeof(SpeciesData));
-    LoadMonBaseStats_HandleAlternateForm(species, form, ret);
-    return ret;
+SpeciesData *SpeciesData_NewFromForm(int species, int form, enum HeapID heapID) {
+    SpeciesData *speciesData = Heap_Alloc(heapID, sizeof(SpeciesData));
+    LoadMonBaseStats_HandleAlternateForm(species, form, speciesData);
+    return speciesData;
 }
 
 SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID) {

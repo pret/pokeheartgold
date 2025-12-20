@@ -54,7 +54,7 @@ void Pokemon_SetData(Pokemon *mon, int attr, const void *ptr);
 void BoxPokemon_SetData(BoxPokemon *boxMon, int attr, const void *ptr);
 void AddMonData(Pokemon *mon, int attr, int amount);
 // void AddBoxMonData(BoxPokemon *boxMon, int attr, int amount);
-SpeciesData *AllocAndLoadMonPersonal_HandleAlternateForm(int species, int form, enum HeapID heapID);
+SpeciesData *SpeciesData_NewFromForm(int species, int form, enum HeapID heapID);
 SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID);
 int GetPersonalAttr(const SpeciesData *speciesData, int attr);
 void FreeMonPersonal(SpeciesData *personal);

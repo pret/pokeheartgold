@@ -70,7 +70,7 @@
 .public Pokemon_CalcStats
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public AllocAndLoadMonPersonal_HandleAlternateForm
+.public SpeciesData_NewFromForm
 .public GetPersonalAttr
 .public FreeMonPersonal
 .public GetMonBaseStat

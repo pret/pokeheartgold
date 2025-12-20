@@ -20,7 +20,7 @@ BattleScript_CalcEffortValues: ; 0x022463E8
 	add r1, r3, #0
 	mov r2, #5
 	mov r4, #0
-	bl AllocAndLoadMonPersonal_HandleAlternateForm
+	bl SpeciesData_NewFromForm
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
