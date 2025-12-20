@@ -57,11 +57,11 @@ BOOL MonHasMove(Pokemon *mon, u16 move_id);
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 
-#define ENCRY_ARGS_PTY(mon)    (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.personality
+#define ENCRY_ARGS_PARTY(mon)  (u16 *)&(mon)->party, sizeof((mon)->party), (mon)->box.personality
 #define ENCRY_ARGS_BOX(boxMon) (u16 *)&(boxMon)->dataBlocks, sizeof((boxMon)->dataBlocks), (boxMon)->checksum
-#define ENCRYPT_PTY(mon)       MonEncryptSegment(ENCRY_ARGS_PTY(mon))
+#define ENCRYPT_PARTY(mon)     MonEncryptSegment(ENCRY_ARGS_PARTY(mon))
 #define ENCRYPT_BOX(boxMon)    MonEncryptSegment(ENCRY_ARGS_BOX(boxMon))
-#define DECRYPT_PTY(mon)       MonDecryptSegment(ENCRY_ARGS_PTY(mon))
+#define DECRYPT_PARTY(mon)     MonDecryptSegment(ENCRY_ARGS_PARTY(mon))
 #define DECRYPT_BOX(boxMon)    MonDecryptSegment(ENCRY_ARGS_BOX(boxMon))
 #define CHECKSUM(boxMon)       CalcMonChecksum((u16 *)(boxMon)->dataBlocks, sizeof((boxMon)->dataBlocks))
 #define SHINY_CHECK(otid, pid) ((                                                                                                              \
@@ -100,7 +100,7 @@ static const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX] = {
 void Pokemon_Init(Pokemon *mon) {
     MI_CpuClearFast(mon, sizeof(Pokemon));
     ENCRYPT_BOX(&mon->box);
-    ENCRYPT_PTY(mon);
+    ENCRYPT_PARTY(mon);
 }
 
 void BoxPokemon_Init(BoxPokemon *boxMon) {
@@ -125,7 +125,7 @@ BOOL AcquireMonLock(Pokemon *mon) {
         GF_ASSERT(!mon->box.boxDecrypted);
         mon->box.partyDecrypted = TRUE;
         mon->box.boxDecrypted = TRUE;
-        DECRYPT_PTY(mon);
+        DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
     }
     return locked;
@@ -137,7 +137,7 @@ BOOL ReleaseMonLock(Pokemon *mon, BOOL locked) {
         prev = TRUE;
         mon->box.partyDecrypted = FALSE;
         mon->box.boxDecrypted = FALSE;
-        ENCRYPT_PTY(mon);
+        ENCRYPT_PARTY(mon);
         mon->box.checksum = CHECKSUM(&mon->box);
         ENCRYPT_BOX(&mon->box);
     }
@@ -172,7 +172,7 @@ void Pokemon_InitWith(Pokemon *mon, int species, int level, int ivs, BOOL hasFix
     BoxPokemon_InitWith(&mon->box, species, level, ivs, hasFixedPersonality, personality, otIDType, otID);
     // Not your average encryption call
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
-    ENCRYPT_PTY(mon);
+    ENCRYPT_PARTY(mon);
     Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
     mail = Mail_New(HEAP_ID_DEFAULT);
     Pokemon_SetData(mon, MON_DATA_MAIL, mail);
@@ -393,7 +393,7 @@ u32 Pokemon_GetData(Pokemon *mon, int attr, void *dest) {
     u32 ret;
     u32 checksum;
     if (!mon->box.partyDecrypted) {
-        DECRYPT_PTY(mon);
+        DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
         checksum = CHECKSUM(&mon->box);
         if (checksum != mon->box.checksum) {
@@ -403,7 +403,7 @@ u32 Pokemon_GetData(Pokemon *mon, int attr, void *dest) {
     }
     ret = Pokemon_GetDataInternal(mon, attr, dest);
     if (!mon->box.partyDecrypted) {
-        ENCRYPT_PTY(mon);
+        ENCRYPT_PARTY(mon);
         ENCRYPT_BOX(&mon->box);
     }
     return ret;
@@ -869,7 +869,7 @@ static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest) 
 void Pokemon_SetData(Pokemon *mon, int attr, const void *value) {
     u32 checksum;
     if (!mon->box.partyDecrypted) {
-        DECRYPT_PTY(mon);
+        DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
         checksum = CHECKSUM(&mon->box);
         if (checksum != mon->box.checksum) {
@@ -881,7 +881,7 @@ void Pokemon_SetData(Pokemon *mon, int attr, const void *value) {
     }
     Pokemon_SetDataInternal(mon, attr, value);
     if (!mon->box.partyDecrypted) {
-        ENCRYPT_PTY(mon);
+        ENCRYPT_PARTY(mon);
         mon->box.checksum = CHECKSUM(&mon->box);
         ENCRYPT_BOX(&mon->box);
     }
@@ -933,7 +933,7 @@ static void Pokemon_SetDataInternal(Pokemon *mon, int attr, const void *value) {
 #undef VALUE
 }
 
-void BoxPokemon_SetData(BoxPokemon *boxMon, int attr, const void *value) {
+void BoxPokemon_SetData(BoxPokemon *boxMon, int param, const void *value) {
     u32 checksum;
     if (!boxMon->boxDecrypted) {
         DECRYPT_BOX(boxMon);
@@ -945,7 +945,7 @@ void BoxPokemon_SetData(BoxPokemon *boxMon, int attr, const void *value) {
             return;
         }
     }
-    BoxPokemon_SetDataInternal(boxMon, attr, value);
+    BoxPokemon_SetDataInternal(boxMon, param, value);
     if (!boxMon->boxDecrypted) {
         boxMon->checksum = CHECKSUM(boxMon);
         ENCRYPT_BOX(boxMon);
@@ -1332,10 +1332,10 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int param, const void
 #undef VALUE
 }
 
-void AddMonData(Pokemon *mon, int attr, int value) {
+void AddMonData(Pokemon *mon, int param, int value) {
     u32 checksum;
     if (!mon->box.partyDecrypted) {
-        DECRYPT_PTY(mon);
+        DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
         checksum = CHECKSUM(&mon->box);
         if (checksum != mon->box.checksum) {
@@ -1344,9 +1344,9 @@ void AddMonData(Pokemon *mon, int attr, int value) {
             return;
         }
     }
-    AddMonDataInternal(mon, attr, value);
+    AddMonDataInternal(mon, param, value);
     if (!mon->box.partyDecrypted) {
-        ENCRYPT_PTY(mon);
+        ENCRYPT_PARTY(mon);
         mon->box.checksum = CHECKSUM(&mon->box);
         ENCRYPT_BOX(&mon->box);
     }
@@ -3831,7 +3831,7 @@ void SetMonPersonality(Pokemon *mon, u32 personality) {
     sp18 = &GetSubstruct(&mon->box, personality, 3)->blockD;
 
     DECRYPT_BOX(&tmpMon->box);
-    DECRYPT_PTY(mon);
+    DECRYPT_PARTY(mon);
     DECRYPT_BOX(&mon->box);
     mon->box.personality = personality;
     *spC = *r4;
@@ -3840,7 +3840,7 @@ void SetMonPersonality(Pokemon *mon, u32 personality) {
     *sp18 = *sp8;
     mon->box.checksum = CHECKSUM(&mon->box);
     ENCRYPT_BOX(&mon->box);
-    ENCRYPT_PTY(mon);
+    ENCRYPT_PARTY(mon);
     Heap_Free(tmpMon);
 }
 
@@ -4236,7 +4236,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     int i;
 
     if (!mon->box.partyDecrypted) {
-        DECRYPT_PTY(mon);
+        DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
     }
     boxMon = Mon_GetBoxMon(mon);
@@ -4302,7 +4302,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
     dest->spdef = mon->party.spdef;
 
     if (!mon->box.partyDecrypted) {
-        ENCRYPT_PTY(mon);
+        ENCRYPT_PARTY(mon);
         ENCRYPT_BOX(&mon->box);
     }
 }
@@ -4383,7 +4383,7 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
     mon->party.spatk = src->spatk;
     mon->party.spdef = src->spdef;
 
-    ENCRYPT_PTY(mon);
+    ENCRYPT_PARTY(mon);
     mon->box.checksum = CHECKSUM(&mon->box);
     ENCRYPT_BOX(&mon->box);
 }
