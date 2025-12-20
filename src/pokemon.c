@@ -504,11 +504,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         ret = boxMon->checksum;
         break;
     case MON_DATA_SPECIES_EXISTS:
-        if (blockA->species != SPECIES_NONE) {
-            ret = TRUE;
-        } else {
-            ret = FALSE;
-        }
+        ret = (blockA->species != SPECIES_NONE);
         break;
     case MON_DATA_SANITY_IS_EGG:
         ret = boxMon->checksumFailed;
@@ -847,7 +843,12 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         ret = blockD->metTerrain;
         break;
     case MON_DATA_COMBINED_IVS:
-        ret = (blockB->hpIV) | (blockB->atkIV << 5) | (blockB->defIV << 10) | (blockB->speedIV << 15) | (blockB->spAtkIV << 20) | (blockB->spDefIV << 25);
+        ret = (blockB->hpIV << 0)
+            | (blockB->atkIV << 5)
+            | (blockB->defIV << 10)
+            | (blockB->speedIV << 15)
+            | (blockB->spAtkIV << 20)
+            | (blockB->spDefIV << 25);
         break;
     case MON_DATA_NO_PRINT_GENDER:
         if ((blockA->species == SPECIES_NIDORAN_F || blockA->species == SPECIES_NIDORAN_M) && !blockB->hasNickname) {
