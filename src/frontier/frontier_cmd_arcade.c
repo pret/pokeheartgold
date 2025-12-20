@@ -100,7 +100,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
             u32 level = GetMonData(mon, MON_DATA_LEVEL, 0);
             u32 species = GetMonData(mon, MON_DATA_SPECIES, 0);
             u32 exp = GetMonExpBySpeciesAndLevel(species, level - 3);
-            SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
+            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
             CalcMonLevelAndStats(mon);
         }
     }
@@ -109,18 +109,18 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
     for (i = 0; i < partyCnt; i++) {
         mon = Party_GetMonByIndex(arcadeData->playerParty, i);
         data = arcadeData->savedHp[i];
-        SetMonData(mon, MON_DATA_MAX_HP, &data);
-        SetMonData(mon, MON_DATA_HP, &data);
+        Pokemon_SetData(mon, MON_DATA_MAX_HP, &data);
+        Pokemon_SetData(mon, MON_DATA_HP, &data);
         data = arcadeData->savedAtk[i];
-        SetMonData(mon, MON_DATA_ATK, &data);
+        Pokemon_SetData(mon, MON_DATA_ATK, &data);
         data = arcadeData->savedDef[i];
-        SetMonData(mon, MON_DATA_DEF, &data);
+        Pokemon_SetData(mon, MON_DATA_DEF, &data);
         data = arcadeData->savedSpd[i];
-        SetMonData(mon, MON_DATA_SPEED, &data);
+        Pokemon_SetData(mon, MON_DATA_SPEED, &data);
         data = arcadeData->savedSpAtk[i];
-        SetMonData(mon, MON_DATA_SP_ATK, &data);
+        Pokemon_SetData(mon, MON_DATA_SP_ATK, &data);
         data = arcadeData->savedSpDef[i];
-        SetMonData(mon, MON_DATA_SP_DEF, &data);
+        Pokemon_SetData(mon, MON_DATA_SP_DEF, &data);
     }
 
     BattleSetup_Delete(setup);
@@ -252,7 +252,7 @@ BOOL FrtCmd_ArcadeAction(FrontierContext *ctx) {
         party = SaveArray_Party_Get(param->saveData);
         for (i = 0; i < 3; i++) {
             mon = Party_GetMonByIndex(party, arcadeCtx->unk2C[i]);
-            SetMonData(mon, MON_DATA_HELD_ITEM, &arcadeCtx->unk412[i]);
+            Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &arcadeCtx->unk412[i]);
         }
         break;
     case 19:

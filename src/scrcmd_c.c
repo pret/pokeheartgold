@@ -3702,7 +3702,7 @@ BOOL ScrCmd_518(ScriptContext *ctx) {
     for (i = 0; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
         if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_DEOXYS) {
-            SetMonData(mon, MON_DATA_FORM, &form);
+            Pokemon_SetData(mon, MON_DATA_FORM, &form);
             CalcMonLevelAndStats(mon);
             Pokedex_SetMonCaughtFlag(pokedex, mon);
         }

@@ -1202,7 +1202,7 @@ ov95_021E623C: ; 0x021E623C
 	add r0, r4, #0
 	mov r1, #0x4c
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, sp, #0x3c
 	add r1, r4, #0
 	mov r2, #2

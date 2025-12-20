@@ -69,7 +69,7 @@
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
 .public GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonBaseStat
 .public GetNatureFromPersonality
 .public GetMonSpriteCharAndPlttNarcIdsEx

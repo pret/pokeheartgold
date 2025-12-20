@@ -52,9 +52,9 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
 
         u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
         BOOL isEgg = FALSE;
-        SetMonData(pokemon, MON_DATA_IS_EGG, &isEgg);
+        Pokemon_SetData(pokemon, MON_DATA_IS_EGG, &isEgg);
         MonSetTrainerMemo(pokemon, profile, 6, mapsec, HEAP_ID_FIELD2);
-        SetMonData(pokemon, MON_DATA_SPECIES_NAME, NULL);
+        Pokemon_SetData(pokemon, MON_DATA_SPECIES_NAME, NULL);
         sub_02093134(fieldSystem, pokemon);
         UpdatePokedexWithReceivedSpecies(FieldSystem_GetSaveData(fieldSystem), data->unkC.mon);
 
@@ -81,7 +81,7 @@ static BOOL Task_HatchEggInParty(TaskManager *taskManager) {
     }
     case HATCHEGGTASKSTATE_SET_MON_NAME:
         if (!data->namingScreenArgs->noInput) {
-            SetMonData(data->unkC.mon, MON_DATA_NICKNAME_STRING_AND_FLAG, data->namingScreenArgs->nameInputString);
+            Pokemon_SetData(data->unkC.mon, MON_DATA_NICKNAME_STRING_AND_FLAG, data->namingScreenArgs->nameInputString);
         }
         NamingScreen_DeleteArgs(data->namingScreenArgs);
         data->state++;

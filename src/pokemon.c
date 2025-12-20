@@ -173,14 +173,14 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     // Not your average encryption call
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
     ENCRYPT_PTY(mon);
-    SetMonData(mon, MON_DATA_LEVEL, &level);
+    Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
     mail = Mail_New(HEAP_ID_DEFAULT);
-    SetMonData(mon, MON_DATA_MAIL, mail);
+    Pokemon_SetData(mon, MON_DATA_MAIL, mail);
     Heap_Free(mail);
     capsule = 0;
-    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &capsule);
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE_ID, &capsule);
     MI_CpuClearFast(&seal_coords, sizeof(seal_coords));
-    SetMonData(mon, MON_DATA_BALL_CAPSULE, &seal_coords);
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &seal_coords);
     CalcMonLevelAndStats(mon);
 }
 
@@ -298,14 +298,14 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
 
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
     CreateMon(mon, species, level, 0, 1, personality, 0, 0);
-    SetMonData(mon, MON_DATA_COMBINED_IVS, &ivs);
+    Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &ivs);
     CalcMonLevelAndStats(mon);
 }
 
 void CalcMonLevelAndStats(Pokemon *mon) {
     BOOL decry = AcquireMonLock(mon);
     u32 level = (u32)CalcMonLevel(mon);
-    SetMonData(mon, MON_DATA_LEVEL, &level);
+    Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
     CalcMonStats(mon);
     ReleaseMonLock(mon, decry);
 }
@@ -363,27 +363,27 @@ void CalcMonStats(Pokemon *mon) {
     } else {
         newMaxHp = (baseStats->hp * 2 + hpIv + hpEv / 4) * level / 100 + level + 10;
     }
-    SetMonData(mon, MON_DATA_MAX_HP, &newMaxHp);
+    Pokemon_SetData(mon, MON_DATA_MAX_HP, &newMaxHp);
 
     newAtk = (baseStats->atk * 2 + atkIv + atkEv / 4) * level / 100 + 5;
     newAtk = ModifyStatByNature(GetMonNature(mon), (u16)newAtk, STAT_ATK);
-    SetMonData(mon, MON_DATA_ATK, &newAtk);
+    Pokemon_SetData(mon, MON_DATA_ATK, &newAtk);
 
     newDef = (baseStats->def * 2 + defIv + defEv / 4) * level / 100 + 5;
     newDef = ModifyStatByNature(GetMonNature(mon), (u16)newDef, STAT_DEF);
-    SetMonData(mon, MON_DATA_DEF, &newDef);
+    Pokemon_SetData(mon, MON_DATA_DEF, &newDef);
 
     newSpeed = (baseStats->speed * 2 + speedIv + speedEv / 4) * level / 100 + 5;
     newSpeed = ModifyStatByNature(GetMonNature(mon), (u16)newSpeed, STAT_SPEED);
-    SetMonData(mon, MON_DATA_SPEED, &newSpeed);
+    Pokemon_SetData(mon, MON_DATA_SPEED, &newSpeed);
 
     newSpatk = (baseStats->spatk * 2 + spatkIv + spatkEv / 4) * level / 100 + 5;
     newSpatk = ModifyStatByNature(GetMonNature(mon), (u16)newSpatk, STAT_SPATK);
-    SetMonData(mon, MON_DATA_SP_ATK, &newSpatk);
+    Pokemon_SetData(mon, MON_DATA_SP_ATK, &newSpatk);
 
     newSpdef = (baseStats->spdef * 2 + spdefIv + spdefEv / 4) * level / 100 + 5;
     newSpdef = ModifyStatByNature(GetMonNature(mon), (u16)newSpdef, STAT_SPDEF);
-    SetMonData(mon, MON_DATA_SP_DEF, &newSpdef);
+    Pokemon_SetData(mon, MON_DATA_SP_DEF, &newSpdef);
 
     Heap_Free(baseStats);
 
@@ -401,7 +401,7 @@ void CalcMonStats(Pokemon *mon) {
         }
     }
     if (hp != 0) {
-        SetMonData(mon, MON_DATA_HP, &hp);
+        Pokemon_SetData(mon, MON_DATA_HP, &hp);
     }
     ReleaseMonLock(mon, decry);
 }
@@ -883,7 +883,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     return ret;
 }
 
-void SetMonData(Pokemon *mon, int attr, const void *value) {
+void Pokemon_SetData(Pokemon *mon, int attr, const void *value) {
     u32 checksum;
     if (!mon->box.partyDecrypted) {
         DECRYPT_PTY(mon);
@@ -2069,7 +2069,7 @@ void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
     if (friendship > FRIENDSHIP_MAX) {
         friendship = FRIENDSHIP_MAX;
     }
-    SetMonData(mon, MON_DATA_FRIENDSHIP, &friendship);
+    Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
 }
 
 u8 GetMonGender(Pokemon *mon) {
@@ -2767,13 +2767,13 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, 100);
     if (exp > maxexp) {
         exp = maxexp;
-        SetMonData(mon, MON_DATA_EXPERIENCE, &exp);
+        Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
     }
     if (level > 100) {
         return FALSE;
     }
     if (exp >= GetExpByGrowthRateAndLevel((int)growthrate, level)) {
-        SetMonData(mon, MON_DATA_LEVEL, &level);
+        Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
         return TRUE;
     }
     return FALSE;
@@ -3120,9 +3120,9 @@ void MonSetMoveInSlot_ResetPpUp(Pokemon *mon, u16 move, u8 slot) {
 
     MonSetMoveInSlot(mon, move, slot);
     ppUp = 0;
-    SetMonData(mon, MON_DATA_MOVE1_PP_UPS + slot, &ppUp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + slot, &ppUp);
     pp = GetMoveMaxPP(move, 0);
-    SetMonData(mon, MON_DATA_MOVE1_PP + slot, &pp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + slot, &pp);
 }
 
 void MonSetMoveInSlot(Pokemon *mon, u16 move, u8 slot) {
@@ -3199,16 +3199,16 @@ void MonDeleteMoveSlot(Pokemon *mon, u32 slot) {
         move = (u16)GetMonData(mon, (int)(MON_DATA_MOVE1 + slot + 1), NULL);
         pp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1_PP + slot + 1), NULL);
         ppUp = (u8)GetMonData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot + 1), NULL);
-        SetMonData(mon, (int)(MON_DATA_MOVE1 + slot), &move);
-        SetMonData(mon, (int)(MON_DATA_MOVE1_PP + slot), &pp);
-        SetMonData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot), &ppUp);
+        Pokemon_SetData(mon, (int)(MON_DATA_MOVE1 + slot), &move);
+        Pokemon_SetData(mon, (int)(MON_DATA_MOVE1_PP + slot), &pp);
+        Pokemon_SetData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot), &ppUp);
     }
     move = MOVE_NONE;
     pp = 0;
     ppUp = 0;
-    SetMonData(mon, MON_DATA_MOVE1 + 3, &move);
-    SetMonData(mon, MON_DATA_MOVE1_PP + 3, &pp);
-    SetMonData(mon, MON_DATA_MOVE1_PP_UPS + 3, &ppUp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1 + 3, &move);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + 3, &pp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + 3, &ppUp);
 }
 
 BOOL MonHasMove(Pokemon *mon, u16 move) {
@@ -3233,15 +3233,15 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     if (dest->box.boxDecrypted) {
         dest->box.partyDecrypted = TRUE;
     }
-    SetMonData(dest, MON_DATA_STATUS, &sp0);
-    SetMonData(dest, MON_DATA_HP, &sp0);
-    SetMonData(dest, MON_DATA_MAX_HP, &sp0);
+    Pokemon_SetData(dest, MON_DATA_STATUS, &sp0);
+    Pokemon_SetData(dest, MON_DATA_HP, &sp0);
+    Pokemon_SetData(dest, MON_DATA_MAX_HP, &sp0);
     mail = Mail_New(HEAP_ID_DEFAULT);
-    SetMonData(dest, MON_DATA_MAIL, mail);
+    Pokemon_SetData(dest, MON_DATA_MAIL, mail);
     Heap_Free(mail);
-    SetMonData(dest, MON_DATA_BALL_CAPSULE_ID, &sp0);
+    Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE_ID, &sp0);
     MI_CpuClearFast(&sp4, sizeof(sp4));
-    SetMonData(dest, MON_DATA_BALL_CAPSULE, &sp4);
+    Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE, &sp4);
     CalcMonLevelAndStats(dest);
 }
 
@@ -3332,7 +3332,7 @@ void Party_GivePokerusAtRandom(Party *party) {
             sp0 |= sp0 << 4;
             sp0 &= 0xF3;
             sp0++;
-            SetMonData(mon, MON_DATA_POKERUS, &sp0);
+            Pokemon_SetData(mon, MON_DATA_POKERUS, &sp0);
         }
     }
 }
@@ -3381,7 +3381,7 @@ void Party_UpdatePokerus(Party *party, int r5) {
                 if (pokerus == 0) {
                     pokerus = 0x10; // immune
                 }
-                SetMonData(mon, MON_DATA_POKERUS, &pokerus);
+                Pokemon_SetData(mon, MON_DATA_POKERUS, &pokerus);
             }
         }
     }
@@ -3401,13 +3401,13 @@ void Party_SpreadPokerus(Party *party) {
                     if (i != 0) {
                         mon = Party_GetMonByIndex(party, i - 1);
                         if (!(GetMonData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
-                            SetMonData(mon, MON_DATA_POKERUS, &pokerus);
+                            Pokemon_SetData(mon, MON_DATA_POKERUS, &pokerus);
                         }
                     }
                     if (i < count - 1) {
                         mon = Party_GetMonByIndex(party, i + 1);
                         if (!(GetMonData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
-                            SetMonData(mon, MON_DATA_POKERUS, &pokerus);
+                            Pokemon_SetData(mon, MON_DATA_POKERUS, &pokerus);
                             i++; // don't infect the rest of the party
                         }
                     }
@@ -3660,7 +3660,7 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
     if (GetMonData(mon, MON_DATA_MOVE1, NULL) == MOVE_NONE) {
         MonSetMoveInSlot_ResetPpUp(mon, MOVE_THUNDER_SHOCK, 0);
     }
-    SetMonData(mon, MON_DATA_FORM, &form);
+    Pokemon_SetData(mon, MON_DATA_FORM, &form);
     UpdateMonAbility(mon);
     CalcMonLevelAndStats(mon);
     return TRUE;
@@ -3712,9 +3712,9 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
     sub_0207213C(&mon->box, a1, pokeball, a3, encounterType, heapID);
     if (pokeball == ITEM_HEAL_BALL) {
         hp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
-        SetMonData(mon, MON_DATA_HP, &hp);
+        Pokemon_SetData(mon, MON_DATA_HP, &hp);
         hp = 0;
-        SetMonData(mon, MON_DATA_STATUS, &hp);
+        Pokemon_SetData(mon, MON_DATA_STATUS, &hp);
     }
 }
 
@@ -3751,13 +3751,13 @@ void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
         item1 = (u16)GetMonBaseStat_HandleAlternateForm(species, form, BASE_ITEM_1);
         item2 = (u16)GetMonBaseStat_HandleAlternateForm(species, form, BASE_ITEM_2);
         if (item1 == item2 && item1 != ITEM_NONE) {
-            SetMonData(mon, MON_DATA_HELD_ITEM, &item1);
+            Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item1);
         } else {
             if (chance >= sItemOdds[a2][0]) {
                 if (chance < sItemOdds[a2][1]) {
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &item1);
+                    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item1);
                 } else {
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &item2);
+                    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item2);
                 }
             }
         }
@@ -4168,8 +4168,8 @@ void Pokemon_RemoveCapsule(Pokemon *mon) {
     u8 sp0 = 0;
     CAPSULE sp1;
     MI_CpuClearFast(&sp1, sizeof(sp1));
-    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &sp0);
-    SetMonData(mon, MON_DATA_BALL_CAPSULE, &sp1);
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE_ID, &sp0);
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &sp1);
 }
 
 void RestoreBoxMonPP(BoxPokemon *boxMon) {
@@ -4238,8 +4238,8 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID) {
     narc = NARC_New(NARC_application_custom_ball_edit_gs_cb_data, heapID);
     data = 1;
     NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
-    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &data);
-    SetMonData(mon, MON_DATA_BALL_CAPSULE, &capsule);
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE_ID, &data);
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &capsule);
     NARC_Delete(narc);
     return TRUE;
 }

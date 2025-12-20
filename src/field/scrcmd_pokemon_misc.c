@@ -450,7 +450,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
         for (i = 0; i < partyCount; i++) {
             if (heldItems[i] == ITEM_GRISEOUS_ORB) {
                 mon = Party_GetMonByIndex(party, i);
-                SetMonData(mon, MON_DATA_HELD_ITEM, &data);
+                Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &data);
             }
         }
     }
@@ -481,7 +481,7 @@ BOOL ScrCmd_SetMonForm(ScriptContext *ctx) {
     u16 index = ScriptGetVar(ctx);
     u16 form = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), index);
-    SetMonData(mon, MON_DATA_FORM, &form);
+    Pokemon_SetData(mon, MON_DATA_FORM, &form);
     return FALSE;
 }
 
@@ -1064,10 +1064,10 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     }
 
     moveData = MOVE_EXTRASENSORY;
-    SetMonData(mon, MON_DATA_MOVE1 + i, &moveData);
+    Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &moveData);
 
     pp = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
-    SetMonData(mon, MON_DATA_MOVE1_PP + i, &pp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + i, &pp);
 
     Party_AddMon(party, mon);
 
@@ -1122,16 +1122,16 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
     CreateMon(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
 
     form = 1;
-    SetMonData(mon, MON_DATA_FORM, &form);
+    Pokemon_SetData(mon, MON_DATA_FORM, &form);
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        SetMonData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
+        Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &sSpikyEarPichuMoveset[i]);
         maxPP = GetMonData(mon, MON_DATA_MOVE1_MAX_PP + i, 0);
-        SetMonData(mon, MON_DATA_MOVE1_PP + i, &maxPP);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP + i, &maxPP);
     }
 
     heldItem = ITEM_ZAP_PLATE;
-    SetMonData(mon, MON_DATA_HELD_ITEM, &heldItem);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &heldItem);
 
     u32 unkB = sub_02017FE4(MAPSECTYPE_NORMAL, MapHeader_GetMapSec(ctx->fieldSystem->location->mapId));
 
@@ -1288,7 +1288,7 @@ BOOL ScrCmd_TryGiveShinyLeafCrown(ScriptContext *ctx) {
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), monIndex);
     if (MonGetShinyLeafCount(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), monIndex)) == 5) {
         u8 data = TRUE;
-        SetMonData(mon, MON_DATA_SHINY_LEAF_CROWN, &data);
+        Pokemon_SetData(mon, MON_DATA_SHINY_LEAF_CROWN, &data);
     }
 
     return FALSE;

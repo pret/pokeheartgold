@@ -191,7 +191,7 @@
 .public GameStats_AddScore
 .public AllocMonZeroed
 .public GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonNature
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C

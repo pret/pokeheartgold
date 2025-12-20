@@ -219,7 +219,7 @@ _02246568:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x10]
 	add r0, r0, #1
 	str r0, [sp, #0x10]
@@ -1244,7 +1244,7 @@ _02246E2A:
 	bne _02246E5C
 	ldr r2, [r5, #0x18]
 	mov r1, #0x78
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r4]
 	mov r1, #0x32
 	bl BattleSystem_GameStatIncrement
@@ -1386,7 +1386,7 @@ _02246F7E:
 	add r0, r6, #0
 	add r1, #0x3a
 	add r2, sp, #0x2c
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, r5, #1
 	cmp r5, #4
 	blt _02246F7E
@@ -2248,7 +2248,7 @@ _02247622:
 	bl BattleSystem_GetPartyMon
 	mov r1, #9
 	add r2, sp, #8
-	bl SetMonData
+	bl Pokemon_SetData
 _02247646:
 	add r0, r5, #0
 	add sp, #0xc

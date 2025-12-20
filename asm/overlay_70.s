@@ -18434,11 +18434,11 @@ _02240B0E:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r5]
 	mov r1, #0
 	ldr r0, [r0]
@@ -18561,11 +18561,11 @@ _02240C16:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x20]
 	cmp r0, #0x12
 	bne _02240C58

@@ -1836,7 +1836,7 @@ _02238CE2:
 	add r0, r7, #0
 	mov r1, #0x6f
 	add r2, sp, #0x44
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r6, #4]
 	add r5, r5, #1
 	bl Party_GetCount

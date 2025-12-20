@@ -2323,7 +2323,7 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenu *partyMenu, u8 partySlo
     if (partyMenu->levelUpStatsTmp[0] == partyMenu->levelUpStatsTmp[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
         u32 hp = partyMenu->monsDrawState[partySlot].hp;
-        SetMonData(mon, MON_DATA_HP, &hp);
+        Pokemon_SetData(mon, MON_DATA_HP, &hp);
         return TRUE;
     }
 
@@ -2515,7 +2515,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
 static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokemon *mon, s32 *transformResult) {
     u32 itemToBeHeld = partyMenu->args->itemId;
     Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
     Pokemon_UpdateArceusForm(mon);
     *transformResult = Mon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = partyMenu->args->itemId;
@@ -2529,7 +2529,7 @@ static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokem
 
 static void PartyMenu_SwapMonHeldItem(PartyMenu *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId) {
     Bag_AddItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &newItemId);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &newItemId);
     Pokemon_UpdateArceusForm(mon);
     Mon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = newItemId;

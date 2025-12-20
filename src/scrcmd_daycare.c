@@ -224,7 +224,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         }
 
         u32 no_item = ITEM_NONE;
-        SetMonData(mon, MON_DATA_HELD_ITEM, &no_item);
+        Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &no_item);
     }
 
     s32 form = GetMonData(mon, MON_DATA_FORM, NULL);

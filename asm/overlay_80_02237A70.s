@@ -462,14 +462,14 @@ _02237DAC:
 	add r0, r5, #0
 	mov r1, #0xa3
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02237DDE:
 	mov r0, #0
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #0xa0
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02237DEC:
 	add r4, r4, #1
 	cmp r4, r6

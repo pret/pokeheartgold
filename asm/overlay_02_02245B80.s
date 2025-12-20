@@ -4034,7 +4034,7 @@ _02247A90:
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x40]
 	add r1, r7, #0
@@ -4105,7 +4105,7 @@ _02247B3C:
 	add r0, r4, #0
 	mov r1, #7
 	add r2, r7, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x40]
 	add r1, r7, #0
@@ -5163,15 +5163,15 @@ ov02_022482BC: ; 0x022482BC
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #0x30
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0xa0
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0xa3
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r6, #8]
 	add r1, r4, #0
 	bl Party_AddMon
@@ -5482,7 +5482,7 @@ _02248578:
 	add r0, r4, #0
 	mov r1, #0x70
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _022485A2:
 	lsl r0, r7, #2
 	add r0, r6, r0
@@ -22343,7 +22343,7 @@ _022503BA:
 	add r0, r7, #0
 	add r1, r5, #0
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	mov r1, #0x12
 	lsl r1, r1, #4
 	ldr r1, [r4, r1]
@@ -22531,7 +22531,7 @@ _0225057E:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	pop {r3, r4, r5, pc}
 	nop
 _0225058C: .word 0x00000815

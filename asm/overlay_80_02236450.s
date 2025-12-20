@@ -683,7 +683,7 @@ _02236964:
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 _022369A6:

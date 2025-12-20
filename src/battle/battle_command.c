@@ -4700,10 +4700,10 @@ BOOL BtlCmd_GenerateEndOfBattleItem(BattleSystem *battleSystem, BattleContext *c
             }
             for (j = 0; j < 9; j++) {
                 if (sPickupWeightTable[j] > rnd) {
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &sPickupTable1[lvl + j]);
+                    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &sPickupTable1[lvl + j]);
                     break;
                 } else if (rnd >= 98 && rnd <= 99) {
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &sPickupTable2[lvl + (99 - rnd)]);
+                    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &sPickupTable2[lvl + (99 - rnd)]);
                     break;
                 }
             }
@@ -4724,7 +4724,7 @@ BOOL BtlCmd_GenerateEndOfBattleItem(BattleSystem *battleSystem, BattleContext *c
 
             if ((BattleSystem_Random(battleSystem) % 100) < sHoneyGatherChanceTable[j]) {
                 j = ITEM_HONEY;
-                SetMonData(mon, MON_DATA_HELD_ITEM, &j);
+                Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &j);
             }
         }
     }
@@ -6013,7 +6013,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 data->ctx->battleMons[expBattler].exp = newExp;
             }
 
-            SetMonData(mon, MON_DATA_EXPERIENCE, &newExp);
+            Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &newExp);
 
             BattleScript_CalcEffortValues(BattleSystem_GetParty(data->battleSystem, expBattler),
                 slot,
@@ -6375,7 +6375,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         data->unk30[0] = BattleSystem_PrintBattleMessage(data->battleSystem, msgLoader, &msg, BattleSystem_GetTextFrameDelay(data->battleSystem));
 
         i = 0;
-        SetMonData(mon, MON_DATA_MOVE1_PP_UPS + data->unk30[5], &i);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + data->unk30[5], &i);
         MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
 
         if (data->ctx->selectedMonIndex[expBattler] == slot) {

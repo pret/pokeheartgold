@@ -349,7 +349,7 @@ _0222A15E:
 	add r0, r5, #0
 	mov r1, #0xaf
 	add r2, sp, #0x1c
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	bl CalcMonLevelAndStats
 	ldrh r0, [r6]
@@ -361,11 +361,11 @@ _0222A15E:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x70
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r6, #2
-	bl SetMonData
+	bl Pokemon_SetData
 	mov r4, #0
 	str r6, [sp, #0x10]
 	add r7, r4, #0
@@ -379,7 +379,7 @@ _0222A1BC:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x36
-	bl SetMonData
+	bl Pokemon_SetData
 	ldrb r0, [r6, #0x1e]
 	add r2, sp, #0x14
 	add r2, #1
@@ -392,7 +392,7 @@ _0222A1BC:
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x3e
-	bl SetMonData
+	bl Pokemon_SetData
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x42
@@ -404,7 +404,7 @@ _0222A1BC:
 	add r0, r5, #0
 	add r1, #0x3a
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x10]
 	add r4, r4, #1
 	add r0, r0, #2
@@ -417,7 +417,7 @@ _0222A1BC:
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r2, sp, #0x18
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x18]
 	add r0, sp, #0x14
@@ -425,7 +425,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xd
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x19]
 	add r0, sp, #0x14
@@ -433,7 +433,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xe
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1a]
 	add r0, sp, #0x14
@@ -441,7 +441,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0xf
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1b]
 	add r0, sp, #0x14
@@ -449,7 +449,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1c]
 	add r0, sp, #0x14
@@ -457,7 +457,7 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x11
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, sp, #0x14
 	ldrb r1, [r6, #0x1d]
 	add r0, sp, #0x14
@@ -465,17 +465,17 @@ _0222A1BC:
 	strb r1, [r0, #1]
 	add r0, r5, #0
 	mov r1, #0x12
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, r6, #0
 	add r0, r5, #0
 	mov r1, #0xa
 	add r2, #0x20
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, r6, #0
 	add r0, r5, #0
 	mov r1, #9
 	add r2, #0x21
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r6, #0x14]
 	lsl r0, r0, #1
 	lsr r0, r0, #0x1f
@@ -494,7 +494,7 @@ _0222A1BC:
 	add r0, r5, #0
 	mov r1, #0x77
 	add r2, r7, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r7, #0
 	bl String_Delete
 	add r0, r4, #0
@@ -505,13 +505,13 @@ _0222A2E4:
 	add r0, r5, #0
 	mov r1, #0x75
 	add r2, #0x22
-	bl SetMonData
+	bl Pokemon_SetData
 _0222A2F0:
 	add r6, #0x1f
 	add r0, r5, #0
 	mov r1, #0xc
 	add r2, r6, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	bl CalcMonLevelAndStats
 	add sp, #0x20
@@ -588,11 +588,11 @@ ov80_0222A334: ; 0x0222A334
 	add r0, r4, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #8
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r6, #0
 	bl String_Delete
 	add r0, r5, #0

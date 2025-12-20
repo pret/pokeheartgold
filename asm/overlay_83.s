@@ -6951,7 +6951,7 @@ ov83_022416A0: ; 0x022416A0
 	mov r1, #6
 	add r2, sp, #0x18
 	add r6, r0, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldrb r0, [r5, #0xd]
 	cmp r0, r4
 	bne _022416D6
@@ -15051,7 +15051,7 @@ _022458D6:
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 	b _02245968
@@ -15075,7 +15075,7 @@ _0224590E:
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 	b _02245968
@@ -15090,7 +15090,7 @@ _02245946:
 	add r0, r4, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	bl CalcMonLevelAndStats
 _02245968:

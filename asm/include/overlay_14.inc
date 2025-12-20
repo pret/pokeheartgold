@@ -212,7 +212,7 @@
 .public ReleaseBoxMonLock
 .public GetMonData
 .public GetBoxMonData
-.public SetMonData
+.public Pokemon_SetData
 .public BoxPokemon_SetData
 .public GetMonBaseStatEx_HandleAlternateForm
 .public GetBoxMonNature

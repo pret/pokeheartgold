@@ -17827,7 +17827,7 @@ _021EE8E6:
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	bl CalcMonLevelAndStats
 	cmp r6, #0
@@ -17932,7 +17932,7 @@ ov112_021EE9A4: ; 0x021EE9A4
 	add r0, r5, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r6, #0
 	bl String_Delete
 	add sp, #8
@@ -17985,29 +17985,29 @@ _021EEA06:
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #2
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #0x36
 	add r2, r4, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #0x37
 	add r2, r4, #6
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x38
 	add r2, #8
-	bl SetMonData
+	bl Pokemon_SetData
 	add r4, #0xa
 	add r0, r5, #0
 	mov r1, #0x39
 	add r2, r4, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #0x70
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021EE9E4

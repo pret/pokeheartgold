@@ -137,7 +137,7 @@
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
 .public GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon
 .public MonSetMoveInSlot

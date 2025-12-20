@@ -1035,7 +1035,7 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x36
-	bl SetMonData
+	bl Pokemon_SetData
 	mov r0, #0
 	str r0, [sp]
 	ldr r1, [r4]
@@ -1043,7 +1043,7 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x3e
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	bl ov68_021E6BEC
 	mov r1, #0
@@ -1054,7 +1054,7 @@ ov68_021E614C: ; 0x021E614C
 	ldr r0, [r1]
 	ldrb r1, [r1, #0x1b]
 	add r1, #0x3a
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r4]
 	mov r1, #0
 	strb r1, [r0, #0x1a]

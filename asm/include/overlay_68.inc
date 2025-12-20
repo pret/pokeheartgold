@@ -133,7 +133,7 @@
 .public Options_GetFrame
 .public GetMonData
 .public GetBoxMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonBaseStat_HandleAlternateForm
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon

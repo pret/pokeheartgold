@@ -1078,7 +1078,7 @@ ov14_021E611C: ; 0x021E611C
 	ldr r0, [r4]
 	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r5, #8]
 	ldr r2, [r6]
 	add r1, r7, #0
@@ -1142,7 +1142,7 @@ ov14_021E61BC: ; 0x021E61BC
 	add r6, r0, #0
 	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r6, #0
 	bl Mon_GetBoxMon
 	add r3, r0, #0

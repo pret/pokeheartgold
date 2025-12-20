@@ -33,10 +33,10 @@ BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int
         CreateMon(mon, species, level, 32, FALSE, 0, 0, 0);
         sub_020720FC(mon, profile, ITEM_POKE_BALL, ball, encounterType, heapID);
         sp1C = heldItem;
-        SetMonData(mon, MON_DATA_HELD_ITEM, &sp1C);
-        SetMonData(mon, MON_DATA_FORM, &form);
+        Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &sp1C);
+        Pokemon_SetData(mon, MON_DATA_FORM, &form);
         if (ability != 0) {
-            SetMonData(mon, MON_DATA_ABILITY, &ability);
+            Pokemon_SetData(mon, MON_DATA_ABILITY, &ability);
         }
         result = Party_AddMon(party, mon);
         if (result) {
@@ -180,7 +180,7 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
         if (hp > 1) {
             hp--;
         }
-        SetMonData(mon, MON_DATA_HP, &hp);
+        Pokemon_SetData(mon, MON_DATA_HP, &hp);
         if (hp == 1) {
             n_fainted++;
             MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_HEAL_FIELD_PSN, location);
@@ -201,7 +201,7 @@ BOOL SurvivePoisoning(Pokemon *mon) {
     u32 status;
     if ((GetMonData(mon, MON_DATA_STATUS, NULL) & (STATUS_POISON | STATUS_BAD_POISON)) && GetMonData(mon, MON_DATA_HP, NULL) == 1) {
         status = 0;
-        SetMonData(mon, MON_DATA_STATUS, &status);
+        Pokemon_SetData(mon, MON_DATA_STATUS, &status);
         return TRUE;
     } else {
         return FALSE;

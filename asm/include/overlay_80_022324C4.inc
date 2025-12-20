@@ -49,7 +49,7 @@
 .public AllocMonZeroed
 .public CalcMonLevelAndStats
 .public GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel
 .public SaveArray_Party_Alloc
 .public Party_AddMon

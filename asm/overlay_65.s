@@ -6778,7 +6778,7 @@ _0221F62C:
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
@@ -6794,11 +6794,11 @@ _0221F62C:
 	add r0, r4, #0
 	mov r1, #9
 	add r2, #1
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r4, #0
 	mov r1, #MON_DATA_MOOD
 	add r2, sp, #0x14
-	bl SetMonData
+	bl Pokemon_SetData
 _0221F664:
 	bl sub_0203769C
 	bl sub_02034818

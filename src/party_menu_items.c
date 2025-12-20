@@ -895,11 +895,11 @@ static int PartyMenu_ItemUseFunc_TMHMAskAgainToForget(PartyMenu *partyMenu) {
 
 void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) {
     int data = partyMenu->args->moveId;
-    SetMonData(mon, MON_DATA_MOVE1 + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1 + moveIdx, &data);
     data = 0;
-    SetMonData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
     data = GetMoveMaxPP(partyMenu->args->moveId, 0);
-    SetMonData(mon, MON_DATA_MOVE1_PP + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + moveIdx, &data);
     if (partyMenu->args->itemId != ITEM_NONE) {
         if (!MoveIsHM(partyMenu->args->moveId)) {
             Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);

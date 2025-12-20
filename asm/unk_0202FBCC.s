@@ -1586,7 +1586,7 @@ _0203074C:
 	add r0, r4, #0
 	mov r1, #0xa2
 	add r2, sp, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp]
 	add r1, r4, #0
 	bl Party_AddMon

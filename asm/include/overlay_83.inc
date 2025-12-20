@@ -190,7 +190,7 @@
 .public ReleaseMonLock
 .public CalcMonLevelAndStats
 .public GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonNature
 .public GetMonGender

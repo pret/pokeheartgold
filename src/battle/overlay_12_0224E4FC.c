@@ -5379,9 +5379,9 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     }
                     CopyPokemonToPokemon(BattleSystem_GetPartyMon(battleSystem, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
                     dat = 0;
-                    SetMonData(mon2, MON_DATA_HELD_ITEM, &dat);
+                    Pokemon_SetData(mon2, MON_DATA_HELD_ITEM, &dat);
                     dat = (u8)GIRATINA_ALTERED;
-                    SetMonData(mon2, MON_DATA_FORM, &dat);
+                    Pokemon_SetData(mon2, MON_DATA_FORM, &dat);
                     Mon_UpdateGiratinaForm(mon2);
                     ctx->battleMons[ctx->battlerIdTemp].atk = GetMonData(mon2, MON_DATA_ATK, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].def = GetMonData(mon2, MON_DATA_DEF, NULL);

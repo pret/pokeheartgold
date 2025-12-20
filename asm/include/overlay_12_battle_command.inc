@@ -69,7 +69,7 @@
 .public String_Delete
 .public CalcMonStats
 .public GetMonData
-.public SetMonData
+.public Pokemon_SetData
 .public AllocAndLoadMonPersonal_HandleAlternateForm
 .public GetPersonalAttr
 .public FreeMonPersonal
