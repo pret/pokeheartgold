@@ -38,7 +38,7 @@ void Party_InitWithMaxSize(Party *party, int maxSize) {
     party->core.curCount = 0;
     party->core.maxCount = maxSize;
     for (i = 0; i < PARTY_SIZE; i++) {
-        ZeroMonData(&party->core.mons[i]);
+        Pokemon_Init(&party->core.mons[i]);
     }
     MI_CpuClear8(&party->extra, 5 * party->core.maxCount);
 }
@@ -60,7 +60,7 @@ BOOL Party_RemoveMon(Party *party, int slot) {
         party->core.mons[slot] = party->core.mons[slot + 1];
         party->extra.aprijuiceModifiers[slot] = party->extra.aprijuiceModifiers[slot + 1];
     }
-    ZeroMonData(&party->core.mons[slot]);
+    Pokemon_Init(&party->core.mons[slot]);
     MI_CpuClear8(&party->extra.aprijuiceModifiers[slot], sizeof(PartyExtraSub));
     party->core.curCount--;
     return TRUE;

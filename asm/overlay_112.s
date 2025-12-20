@@ -18180,7 +18180,7 @@ _021EEBA4:
 	add r1, r5, r2
 	bl CopyU16ArrayToString
 	add r0, r4, #0
-	bl ZeroMonData
+	bl Pokemon_Init
 	add r0, r4, #0
 	bl Mon_GetBoxMon
 	add r6, r0, #0

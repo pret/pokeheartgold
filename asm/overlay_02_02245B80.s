@@ -1858,7 +1858,7 @@ _022469F8:
 	str r0, [r4]
 	bl AllocMonZeroed
 	str r0, [r4, #0xc]
-	bl ZeroMonData
+	bl Pokemon_Init
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -3846,7 +3846,7 @@ ov02_02247910: ; 0x02247910
 	add r5, r3, #0
 	bl AllocMonZeroed
 	str r0, [sp, #0x1c]
-	bl ZeroMonData
+	bl Pokemon_Init
 	ldrb r0, [r6, #0xd]
 	mov r7, #0
 	cmp r0, #0
@@ -3973,7 +3973,7 @@ ov02_02247A18: ; 0x02247A18
 	ldr r7, [sp, #0x38]
 	bl AllocMonZeroed
 	add r4, r0, #0
-	bl ZeroMonData
+	bl Pokemon_Init
 	ldr r0, [sp, #0xc]
 	mov r1, #0x12
 	mov r5, #1

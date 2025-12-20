@@ -9,7 +9,7 @@
 .public sub_0202EC28
 .public MigratedPokemon_ConvertToPokemon
 .public sub_0202EC98
-.public ZeroMonData
+.public Pokemon_Init
 .public GetMonData
 .public CopyBoxPokemonToPokemon
 .public OS_GetMacAddress

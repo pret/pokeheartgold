@@ -27,7 +27,7 @@
 .public sub_0203769C
 .public sub_02039F68
 .public MapHeader_GetMapSec
-.public ZeroMonData
+.public Pokemon_Init
 .public CreateMon
 .public CalcMonLevelAndStats
 .public GetMonData

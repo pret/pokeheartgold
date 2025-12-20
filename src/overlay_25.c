@@ -299,7 +299,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
 static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon *mon) {
     s32 i;
     u8 tempByte;
-    ZeroMonData(mon);
+    Pokemon_Init(mon);
     u32 level = trainerHouseMon->level > MAX_TRAINER_HOUSE_LEVEL
         ? MAX_TRAINER_HOUSE_LEVEL
         : trainerHouseMon->level;

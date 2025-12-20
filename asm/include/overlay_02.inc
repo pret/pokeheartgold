@@ -314,7 +314,7 @@
 .public FieldSystem_UnkSub108_GetMonMood
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
-.public ZeroMonData
+.public Pokemon_Init
 .public AllocMonZeroed
 .public CreateMon
 .public CreateMonWithNature

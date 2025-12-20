@@ -1049,7 +1049,7 @@ BOOL ScrCmd_GiveTogepiEgg(ScriptContext *ctx) {
     }
 
     mon = AllocMonZeroed(HEAP_ID_FIELD2);
-    ZeroMonData(mon);
+    Pokemon_Init(mon);
 
     SetEggStats(mon, SPECIES_TOGEPI, 1, profile, 3, sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_MR_POKEMON)));
 
@@ -1115,7 +1115,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
         return FALSE;
     }
     mon = AllocMonZeroed(HEAP_ID_FIELD2);
-    ZeroMonData(mon);
+    Pokemon_Init(mon);
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
     u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);

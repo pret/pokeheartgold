@@ -317,7 +317,7 @@ ov80_0222A140: ; 0x0222A140
 	add r6, r0, #0
 	add r0, r5, #0
 	add r4, r2, #0
-	bl ZeroMonData
+	bl Pokemon_Init
 	cmp r4, #0x78
 	bne _0222A158
 	mov r4, #0x32

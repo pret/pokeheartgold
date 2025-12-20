@@ -32,7 +32,7 @@
 
 extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 
-void ZeroMonData(Pokemon *mon);
+void Pokemon_Init(Pokemon *mon);
 void BoxPokemon_Init(BoxPokemon *boxMon);
 u32 SizeOfStructPokemon(void);
 Pokemon *AllocMonZeroed(enum HeapID heapID);

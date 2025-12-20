@@ -97,7 +97,7 @@ static const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX] = {
     { 0,  0,  0,  0,  0  },
 };
 
-void ZeroMonData(Pokemon *mon) {
+void Pokemon_Init(Pokemon *mon) {
     MI_CpuClearFast(mon, sizeof(Pokemon));
     ENCRYPT_BOX(&mon->box);
     ENCRYPT_PTY(mon);
@@ -114,7 +114,7 @@ u32 SizeOfStructPokemon(void) {
 
 Pokemon *AllocMonZeroed(enum HeapID heapID) {
     Pokemon *mon = (Pokemon *)Heap_Alloc(heapID, sizeof(Pokemon));
-    ZeroMonData(mon);
+    Pokemon_Init(mon);
     return mon;
 }
 
@@ -168,7 +168,7 @@ void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPe
     Mail *mail;
     u32 capsule;
     CAPSULE seal_coords;
-    ZeroMonData(mon);
+    Pokemon_Init(mon);
     CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
     // Not your average encryption call
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
