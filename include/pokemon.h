@@ -77,7 +77,7 @@ u8 GetNatureFromPersonality(u32 pid);
 void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location);
 u8 Pokemon_GetGender(Pokemon *mon);
 u8 BoxPokemon_GetGender(BoxPokemon *boxMon);
-u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid);
+u8 Species_GetGenderFromPersonality(u16 species, u32 personality);
 u8 MonIsShiny(Pokemon *mon);
 u8 BoxMonIsShiny(BoxPokemon *boxMon);
 u8 CalcShininessByOtIdAndPersonality(u32 otid, u32 pid);
@@ -136,7 +136,7 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID);
 
 int Species_GetFormValueFromNarc(NARC *narc, int species, int form, int param);
 u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex);
-u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid);
+u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 unused_species, u32 pid);
 BOOL BoxMonIsHoldingMail(BoxPokemon *boxMon);
 void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing);
 void sub_02070130(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing);

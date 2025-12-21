@@ -3907,7 +3907,7 @@ _022479A0:
 	bne _022479C8
 	ldr r0, [sp, #0x10]
 	add r1, r4, #0
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGenderFromPersonality
 	add r7, r0, #0
 	cmp r7, #2
 	bne _022479B8

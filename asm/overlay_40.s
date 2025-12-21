@@ -23583,7 +23583,7 @@ _022374D0:
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGenderFromPersonality
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0

@@ -763,7 +763,7 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents) {
     for (i = 0; i < 2; i++) {
         species[i] = BoxPokemon_GetData(parents[i], MON_DATA_SPECIES, NULL);
         otIds[i] = BoxPokemon_GetData(parents[i], MON_DATA_OT_ID, NULL);
-        genders[i] = GetGenderBySpeciesAndPersonality(species[i], BoxPokemon_GetData(parents[i], MON_DATA_PERSONALITY, NULL));
+        genders[i] = Species_GetGenderFromPersonality(species[i], BoxPokemon_GetData(parents[i], MON_DATA_PERSONALITY, NULL));
         eggGroups[i][0] = Species_GetValue(species[i], SPECIES_DATA_EGG_GROUP_1);
         eggGroups[i][1] = Species_GetValue(species[i], SPECIES_DATA_EGG_GROUP_2);
     }

@@ -41,7 +41,7 @@ static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value)
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
 void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
-u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid);
+u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
 void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
@@ -269,7 +269,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
         do {
             personality = (u32)(LCRandom() | (LCRandom() << 16));
             unownLetter = CALC_UNOWN_LETTER(personality);
-        } while (nature != GetNatureFromPersonality(personality) || gender != GetGenderBySpeciesAndPersonality(species, personality) || unownLetter != letter - 1);
+        } while (nature != GetNatureFromPersonality(personality) || gender != Species_GetGenderFromPersonality(species, personality) || unownLetter != letter - 1);
     } else {
         personality = GenPersonalityByGenderAndNature(species, gender, nature);
     }
@@ -696,7 +696,7 @@ static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int param, void *dest)
         ret = blockB->fatefulEncounter;
         break;
     case MON_DATA_GENDER:
-        ret = GetGenderBySpeciesAndPersonality(blockA->species, boxMon->personality);
+        ret = Species_GetGenderFromPersonality(blockA->species, boxMon->personality);
         blockB->gender = (u8)ret;
         boxMon->checksum = CHECKSUM(boxMon);
         break;
@@ -1165,7 +1165,7 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int param, const void
         blockB->fatefulEncounter = VALUE(u8);
         break;
     case MON_DATA_GENDER:
-        blockB->gender = GetGenderBySpeciesAndPersonality(blockA->species, boxMon->personality);
+        blockB->gender = Species_GetGenderFromPersonality(blockA->species, boxMon->personality);
         break;
     case MON_DATA_FORM:
         blockB->form = VALUE(u8);
@@ -2061,23 +2061,22 @@ u8 Pokemon_GetGender(Pokemon *mon) {
 }
 
 u8 BoxPokemon_GetGender(BoxPokemon *boxMon) {
-    BOOL decry = AcquireBoxMonLock(boxMon);
+    BOOL reencrypt = AcquireBoxMonLock(boxMon);
     u16 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
-    u32 pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
-    ReleaseBoxMonLock(boxMon, decry);
-    return GetGenderBySpeciesAndPersonality(species, pid);
+    u32 personality = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
+    ReleaseBoxMonLock(boxMon, reencrypt);
+    return Species_GetGenderFromPersonality(species, personality);
 }
 
-u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
+u8 Species_GetGenderFromPersonality(u16 species, u32 personality) {
     SpeciesData *speciesData = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
-    u8 gender = GetGenderBySpeciesAndPersonality_PreloadedPersonal(speciesData, species, pid);
+    u8 gender = SpeciesData_GetGenderFromPersonality(speciesData, species, personality);
     SpeciesData_Free(speciesData);
     return gender;
 }
 
-u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid) {
-    int gender;
-    u8 ratio = SpeciesData_GetValue(personal, SPECIES_DATA_GENDER_RATIO);
+u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 unused_species, u32 personality) {
+    u8 ratio = SpeciesData_GetValue(speciesData, SPECIES_DATA_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:
         return MON_MALE;
@@ -2086,12 +2085,11 @@ u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *persona
     case MON_RATIO_UNKNOWN:
         return MON_GENDERLESS;
     default:
-        if (ratio > (u8)pid) {
-            gender = MON_FEMALE;
+        if (ratio > (personality & 0xff)) {
+            return MON_FEMALE;
         } else {
-            gender = MON_MALE;
+            return MON_MALE;
         }
-        return gender;
     }
 }
 

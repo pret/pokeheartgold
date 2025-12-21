@@ -325,7 +325,7 @@
 .public Species_GetValue
 .public GetMonNature
 .public GetNatureFromPersonality
-.public GetGenderBySpeciesAndPersonality
+.public Species_GetGenderFromPersonality
 .public GenerateShinyPersonality
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon
