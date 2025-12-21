@@ -185,15 +185,14 @@ void Pokemon_InitWith(Pokemon *mon, int species, int level, int ivs, BOOL hasFix
 }
 
 void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
-    BOOL decry;
-    u32 exp;
-    u32 iv;
+    u32 var1, var2;
     BoxPokemon_Init(boxMon);
-    decry = AcquireBoxMonLock(boxMon);
-    if (hasFixedPersonality == 0) {
+    BOOL reencrypt = AcquireBoxMonLock(boxMon);
+    if (!hasFixedPersonality) {
         personality = (LCRandom() | (LCRandom() << 16));
     }
     BoxPokemon_SetData(boxMon, MON_DATA_PERSONALITY, &personality);
+
     if (otIDType == 2) {
         do {
             otID = (LCRandom() | (LCRandom() << 16));
@@ -202,18 +201,22 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
         otID = 0;
     }
     BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &otID);
-    BoxPokemon_SetData(boxMon, MON_DATA_LANGUAGE, (void *)&gGameLanguage);
+    BoxPokemon_SetData(boxMon, MON_DATA_LANGUAGE, &gGameLanguage);
     BoxPokemon_SetData(boxMon, MON_DATA_SPECIES, &species);
     BoxPokemon_SetData(boxMon, MON_DATA_SPECIES_NAME, NULL);
-    exp = Species_GetExpAtLevel(species, level);
-    BoxPokemon_SetData(boxMon, MON_DATA_EXPERIENCE, &exp);
-    exp = (u32)Species_GetValue(species, SPECIES_DATA_BASE_FRIENDSHIP);
-    BoxPokemon_SetData(boxMon, MON_DATA_FRIENDSHIP, &exp);
+    var1 = Species_GetExpAtLevel(species, level);
+    BoxPokemon_SetData(boxMon, MON_DATA_EXPERIENCE, &var1);
+
+    var1 = Species_GetValue(species, SPECIES_DATA_BASE_FRIENDSHIP);
+    BoxPokemon_SetData(boxMon, MON_DATA_FRIENDSHIP, &var1);
+
     BoxPokemon_SetData(boxMon, MON_DATA_MET_LEVEL, &level);
-    BoxPokemon_SetData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
-    exp = ITEM_POKE_BALL;
-    BoxPokemon_SetData(boxMon, MON_DATA_POKEBALL, &exp);
-    BoxPokemon_SetData(boxMon, MON_DATA_DP_POKEBALL, &exp);
+    BoxPokemon_SetData(boxMon, MON_DATA_MET_GAME, &gGameVersion);
+
+    var1 = ITEM_POKE_BALL;
+    BoxPokemon_SetData(boxMon, MON_DATA_POKEBALL, &var1);
+    BoxPokemon_SetData(boxMon, MON_DATA_DP_POKEBALL, &var1);
+
     if (ivs < 0x20) {
         BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &ivs);
         BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &ivs);
@@ -222,36 +225,38 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
         BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &ivs);
         BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &ivs);
     } else {
-        exp = LCRandom();
-        iv = exp & 0x1F;
-        BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &iv);
-        iv = (exp & 0x3E0) >> 5;
-        BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &iv);
-        iv = (exp & 0x7C00) >> 10;
-        BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &iv);
-        exp = LCRandom();
-        iv = exp & 0x1F;
-        BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &iv);
-        iv = (exp & 0x3E0) >> 5;
-        BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &iv);
-        iv = (exp & 0x7C00) >> 10;
-        BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &iv);
+        var1 = LCRandom();
+        var2 = var1 & 0x1F;
+        BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &var2);
+        var2 = (var1 & 0x3E0) >> 5;
+        BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &var2);
+        var2 = (var1 & 0x7C00) >> 10;
+        BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &var2);
+        var1 = LCRandom();
+        var2 = var1 & 0x1F;
+        BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &var2);
+        var2 = (var1 & 0x3E0) >> 5;
+        BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &var2);
+        var2 = (var1 & 0x7C00) >> 10;
+        BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &var2);
     }
-    exp = (u32)Species_GetValue(species, SPECIES_DATA_ABILITY_1);
-    iv = (u32)Species_GetValue(species, SPECIES_DATA_ABILITY_2);
-    if (iv != 0) {
+
+    var1 = Species_GetValue(species, SPECIES_DATA_ABILITY_1);
+    var2 = Species_GetValue(species, SPECIES_DATA_ABILITY_2);
+    if (var2 != ABILITY_NONE) {
         if (personality & 1) {
-            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &iv);
+            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &var2);
         } else {
-            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &exp);
+            BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &var1);
         }
     } else {
-        BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &exp);
+        BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &var1);
     }
-    exp = BoxPokemon_GetGender(boxMon);
-    BoxPokemon_SetData(boxMon, MON_DATA_GENDER, &exp);
+
+    var1 = BoxPokemon_GetGender(boxMon);
+    BoxPokemon_SetData(boxMon, MON_DATA_GENDER, &var1);
     InitBoxMonMoveset(boxMon);
-    ReleaseBoxMonLock(boxMon, decry);
+    ReleaseBoxMonLock(boxMon, reencrypt);
 }
 
 void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 nature) {
@@ -271,14 +276,14 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
             unownLetter = CALC_UNOWN_LETTER(personality);
         } while (nature != Personality_GetNature(personality) || gender != Species_GetGenderFromPersonality(species, personality) || unownLetter != letter - 1);
     } else {
-        personality = GenPersonalityByGenderAndNature(species, gender, nature);
+        personality = Personality_CreateFromGenderAndNature(species, gender, nature);
     }
     Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
-u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
+u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
     int pid = nature;
-    u8 ratio = (u8)Species_GetValue(species, SPECIES_DATA_GENDER_RATIO);
+    u8 ratio = Species_GetValue(species, SPECIES_DATA_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:
     case MON_RATIO_FEMALE:
@@ -293,7 +298,7 @@ u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
         }
         break;
     }
-    return (u32)pid;
+    return pid;
 }
 
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
@@ -3851,7 +3856,7 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
     GF_ASSERT(gender != 0xFF);
     if (gen_mode) {
         u32 r4 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
-        pid = GenPersonalityByGenderAndNature(species, gender, nature);
+        pid = Personality_CreateFromGenderAndNature(species, gender, nature);
         if ((pid & 1) != ability) {
             // Force correct ability for gender and nature pid
             pid++;
