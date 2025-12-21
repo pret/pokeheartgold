@@ -1208,7 +1208,7 @@ BOOL BtlCmd_CalcExpGain(BattleSystem *battleSystem, BattleContext *ctx) {
                 }
             }
         }
-        totalExp = Species_GetValue(ctx->battleMons[ctx->battlerIdFainted].species, BASE_EXP_YIELD);
+        totalExp = Species_GetValue(ctx->battleMons[ctx->battlerIdFainted].species, SPECIES_DATA_EXP_YIELD);
         totalExp = (totalExp * ctx->battleMons[ctx->battlerIdFainted].level) / 7;
         if (expShareMonsCnt) {
             ctx->gainedExp = (totalExp / 2) / expMonsCnt;
@@ -3727,10 +3727,10 @@ BOOL BtlCmd_BeatUp(BattleSystem *battleSystem, BattleContext *ctx) {
     form = Pokemon_GetData(mon, MON_DATA_FORM, 0);
     level = Pokemon_GetData(mon, MON_DATA_LEVEL, 0);
 
-    ctx->damage = Species_GetFormValue(species, form, BASE_ATK);
+    ctx->damage = Species_GetFormValue(species, form, SPECIES_DATA_BASE_ATK);
     ctx->damage *= ctx->trainerAIData.moveData[ctx->moveNoCur].power;
     ctx->damage *= (level * 2 / 5 + 2);
-    ctx->damage /= (u32)Species_GetFormValue(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].form, BASE_DEF);
+    ctx->damage /= (u32)Species_GetFormValue(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].form, SPECIES_DATA_BASE_DEF);
     ctx->damage /= 50;
     ctx->damage += 2;
     ctx->damage *= ctx->criticalMultiplier;

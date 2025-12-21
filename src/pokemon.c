@@ -207,7 +207,7 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
     BoxPokemon_SetData(boxMon, MON_DATA_SPECIES_NAME, NULL);
     exp = Species_GetExpAtLevel(species, level);
     BoxPokemon_SetData(boxMon, MON_DATA_EXPERIENCE, &exp);
-    exp = (u32)Species_GetValue(species, BASE_FRIENDSHIP);
+    exp = (u32)Species_GetValue(species, SPECIES_DATA_BASE_FRIENDSHIP);
     BoxPokemon_SetData(boxMon, MON_DATA_FRIENDSHIP, &exp);
     BoxPokemon_SetData(boxMon, MON_DATA_MET_LEVEL, &level);
     BoxPokemon_SetData(boxMon, MON_DATA_MET_GAME, (void *)&gGameVersion);
@@ -237,8 +237,8 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
         iv = (exp & 0x7C00) >> 10;
         BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &iv);
     }
-    exp = (u32)Species_GetValue(species, BASE_ABILITY_1);
-    iv = (u32)Species_GetValue(species, BASE_ABILITY_2);
+    exp = (u32)Species_GetValue(species, SPECIES_DATA_ABILITY_1);
+    iv = (u32)Species_GetValue(species, SPECIES_DATA_ABILITY_2);
     if (iv != 0) {
         if (personality & 1) {
             BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &iv);
@@ -278,7 +278,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
 
 u32 GenPersonalityByGenderAndNature(u16 species, u8 gender, u8 nature) {
     int pid = nature;
-    u8 ratio = (u8)Species_GetValue(species, BASE_GENDER_RATIO);
+    u8 ratio = (u8)Species_GetValue(species, SPECIES_DATA_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:
     case MON_RATIO_FEMALE:
@@ -845,7 +845,7 @@ static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int param, void *dest)
         if (blockA->species == SPECIES_ARCEUS && blockA->ability == ABILITY_MULTITYPE) {
             ret = (u32)GetArceusTypeByHeldItemEffect((u16)GetItemAttr(blockA->heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT));
         } else {
-            ret = (u32)Species_GetFormValue(blockA->species, blockB->form, (int)(param - MON_DATA_TYPE_1 + BASE_TYPE1));
+            ret = (u32)Species_GetFormValue(blockA->species, blockB->form, (int)(param - MON_DATA_TYPE_1 + SPECIES_DATA_TYPE_1));
         }
         break;
     case MON_DATA_SPECIES_NAME:
@@ -1711,103 +1711,103 @@ int SpeciesData_GetValue(const SpeciesData *speciesData, int param) {
     int ret;
     GF_ASSERT(speciesData != NULL);
     switch (param) {
-    case BASE_HP:
+    case SPECIES_DATA_BASE_HP:
         ret = speciesData->hp;
         break;
-    case BASE_ATK:
+    case SPECIES_DATA_BASE_ATK:
         ret = speciesData->atk;
         break;
-    case BASE_DEF:
+    case SPECIES_DATA_BASE_DEF:
         ret = speciesData->def;
         break;
-    case BASE_SPEED:
+    case SPECIES_DATA_BASE_SPEED:
         ret = speciesData->speed;
         break;
-    case BASE_SPATK:
+    case SPECIES_DATA_BASE_SP_ATK:
         ret = speciesData->spatk;
         break;
-    case BASE_SPDEF:
+    case SPECIES_DATA_BASE_SP_DEF:
         ret = speciesData->spdef;
         break;
-    case BASE_TYPE1:
+    case SPECIES_DATA_TYPE_1:
         ret = speciesData->types[0];
         break;
-    case BASE_TYPE2:
+    case SPECIES_DATA_TYPE_2:
         ret = speciesData->types[1];
         break;
-    case BASE_CATCH_RATE:
+    case SPECIES_DATA_CATCH_RATE:
         ret = speciesData->catchRate;
         break;
-    case BASE_EXP_YIELD:
+    case SPECIES_DATA_EXP_YIELD:
         ret = speciesData->expYield;
         break;
-    case BASE_HP_YIELD:
+    case SPECIES_DATA_EV_HP_YIELD:
         ret = speciesData->hp_yield;
         break;
-    case BASE_ATK_YIELD:
+    case SPECIES_DATA_EV_ATK_YIELD:
         ret = speciesData->atk_yield;
         break;
-    case BASE_DEF_YIELD:
+    case SPECIES_DATA_EV_DEF_YIELD:
         ret = speciesData->def_yield;
         break;
-    case BASE_SPEED_YIELD:
+    case SPECIES_DATA_EV_SPEED_YIELD:
         ret = speciesData->speed_yield;
         break;
-    case BASE_SPATK_YIELD:
+    case SPECIES_DATA_EV_SP_ATK_YIELD:
         ret = speciesData->spatk_yield;
         break;
-    case BASE_SPDEF_YIELD:
+    case SPECIES_DATA_EV_SP_DEF_YIELD:
         ret = speciesData->spdef_yield;
         break;
-    case BASE_ITEM_1:
+    case SPECIES_DATA_HELD_ITEM_COMMON:
         ret = speciesData->item1;
         break;
-    case BASE_ITEM_2:
+    case SPECIES_DATA_HELD_ITEM_RARE:
         ret = speciesData->item2;
         break;
-    case BASE_GENDER_RATIO:
+    case SPECIES_DATA_GENDER_RATIO:
         ret = speciesData->genderRatio;
         break;
-    case BASE_EGG_CYCLES:
+    case SPECIES_DATA_EGG_CYCLES:
         ret = speciesData->eggCycles;
         break;
-    case BASE_FRIENDSHIP:
+    case SPECIES_DATA_BASE_FRIENDSHIP:
         ret = speciesData->friendship;
         break;
-    case BASE_GROWTH_RATE:
+    case SPECIES_DATA_EXP_RATE:
         ret = speciesData->growthRate;
         break;
-    case BASE_EGG_GROUP_1:
+    case SPECIES_DATA_EGG_GROUP_1:
         ret = speciesData->eggGroups[0];
         break;
-    case BASE_EGG_GROUP_2:
+    case SPECIES_DATA_EGG_GROUP_2:
         ret = speciesData->eggGroups[1];
         break;
-    case BASE_ABILITY_1:
+    case SPECIES_DATA_ABILITY_1:
         ret = speciesData->abilities[0];
         break;
-    case BASE_ABILITY_2:
+    case SPECIES_DATA_ABILITY_2:
         ret = speciesData->abilities[1];
         break;
-    case BASE_GREAT_MARSH_RATE:
+    case SPECIES_DATA_SAFARI_FLEE_RATE:
         ret = speciesData->greatMarshRate;
         break;
-    case BASE_COLOR:
+    case SPECIES_DATA_BODY_COLOR:
         ret = speciesData->color;
         break;
-    case BASE_FLIP:
+    case SPECIES_DATA_FLIP_SPRITE:
         ret = speciesData->flip;
         break;
-    case BASE_TMHM_1:
+    case SPECIES_DATA_TM_LEARNSET_MASK_1:
         ret = (int)speciesData->tmhm_1;
         break;
-    case BASE_TMHM_2:
+    case SPECIES_DATA_TM_LEARNSET_MASK_2:
         ret = (int)speciesData->tmhm_2;
         break;
-    case BASE_TMHM_3:
+    case SPECIES_DATA_TM_LEARNSET_MASK_3:
         ret = (int)speciesData->tmhm_3;
         break;
-    case BASE_TMHM_4:
+    case SPECIES_DATA_TM_LEARNSET_MASK_4:
         ret = (int)speciesData->tmhm_4;
         break;
     }
@@ -1875,7 +1875,7 @@ u32 Pokemon_GetCurrentLevelBaseExp(Pokemon *mon) {
 }
 
 u32 Species_GetExpAtLevel(int species, int level) {
-    return ExpRate_GetExpAtLevel(Species_GetValue(species, BASE_GROWTH_RATE), level);
+    return ExpRate_GetExpAtLevel(Species_GetValue(species, SPECIES_DATA_EXP_RATE), level);
 }
 
 void ExpRate_LoadTable(int rate, u32 *dest) {
@@ -1920,7 +1920,7 @@ int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 specie
 #pragma unused(species)
     static u32 table[101];
     int i;
-    ExpRate_LoadTable(SpeciesData_GetValue(personal, BASE_GROWTH_RATE), table);
+    ExpRate_LoadTable(SpeciesData_GetValue(personal, SPECIES_DATA_EXP_RATE), table);
     for (i = 1; i < 101; i++) {
         if (table[i] > exp) {
             break;
@@ -2077,7 +2077,7 @@ u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
 
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid) {
     int gender;
-    u8 ratio = SpeciesData_GetValue(personal, BASE_GENDER_RATIO);
+    u8 ratio = SpeciesData_GetValue(personal, SPECIES_DATA_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:
         return MON_MALE;
@@ -2747,7 +2747,7 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     u16 species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     u8 level = (u8)(Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) + 1);
     u32 exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
-    u32 growthrate = (u32)Species_GetValue(species, BASE_GROWTH_RATE);
+    u32 growthrate = (u32)Species_GetValue(species, SPECIES_DATA_EXP_RATE);
     u32 maxexp = ExpRate_GetExpAtLevel((int)growthrate, 100);
     if (exp > maxexp) {
         exp = maxexp;
@@ -3732,8 +3732,8 @@ void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
         chance = (u32)(LCRandom() % 100);
         species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
         form = (u16)Pokemon_GetData(mon, MON_DATA_FORM, 0);
-        item1 = (u16)Species_GetFormValue(species, form, BASE_ITEM_1);
-        item2 = (u16)Species_GetFormValue(species, form, BASE_ITEM_2);
+        item1 = (u16)Species_GetFormValue(species, form, SPECIES_DATA_HELD_ITEM_COMMON);
+        item2 = (u16)Species_GetFormValue(species, form, SPECIES_DATA_HELD_ITEM_RARE);
         if (item1 == item2 && item1 != ITEM_NONE) {
             Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item1);
         } else {
@@ -3769,19 +3769,19 @@ BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm) {
     }
 
     // mask = 1 << (a2 % 32);
-    // baseStat = BASE_TMHM_1 + (a2 / 32);
+    // baseStat = SPECIES_DATA_TM_LEARNSET_MASK_1 + (a2 / 32);
     if (tmhm < 32) {
         mask = 1 << tmhm;
-        baseStat = BASE_TMHM_1;
+        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_1;
     } else if (tmhm < 64) {
         mask = 1 << (tmhm - 32);
-        baseStat = BASE_TMHM_2;
+        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_2;
     } else if (tmhm < 96) {
         mask = 1 << (tmhm - 64);
-        baseStat = BASE_TMHM_3;
+        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_3;
     } else {
         mask = 1 << (tmhm - 96);
-        baseStat = BASE_TMHM_4;
+        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_4;
     }
     return (Species_GetFormValue(species, form, baseStat) & mask) != 0;
 }
@@ -3795,8 +3795,8 @@ void UpdateBoxMonAbility(BoxPokemon *boxMon) {
     int species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
     int pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
     int form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
-    int ability1 = Species_GetFormValue(species, form, BASE_ABILITY_1);
-    int ability2 = Species_GetFormValue(species, form, BASE_ABILITY_2);
+    int ability1 = Species_GetFormValue(species, form, SPECIES_DATA_ABILITY_1);
+    int ability2 = Species_GetFormValue(species, form, SPECIES_DATA_ABILITY_2);
     if (ability2 != ABILITY_NONE) {
         if (pid & 1) {
             BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &ability2);
@@ -3863,7 +3863,7 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
         pid |= ((u16)pid ^ r4) << 16;
     } else {
         u32 r1;
-        u8 ratio = Species_GetValue(species, BASE_GENDER_RATIO);
+        u8 ratio = Species_GetValue(species, SPECIES_DATA_GENDER_RATIO);
         GF_ASSERT((nature & 1) == ability);
         r1 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
         pid = (0xFF00 ^ (r1 & 0xFF00)) << 16;

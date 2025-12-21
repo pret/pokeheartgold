@@ -437,7 +437,7 @@ static void Pokedex_SetCaughtLanguage(Pokedex *pokedex, u32 species, u32 languag
 static int Pokedex_SpeciesGetLastSeenGender_Internal(Pokedex *pokedex, u16 species, u32 idx) {
     u8 gender1, gender2;
 
-    if (Species_GetValue(species, BASE_GENDER_RATIO) == MON_RATIO_UNKNOWN) {
+    if (Species_GetValue(species, SPECIES_DATA_GENDER_RATIO) == MON_RATIO_UNKNOWN) {
         if (idx == 0) {
             return 2;
         } else {

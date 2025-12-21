@@ -633,7 +633,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     u8 friendship;
     String *name;
 
-    friendship = Species_GetValue(species, BASE_EGG_CYCLES);
+    friendship = Species_GetValue(species, SPECIES_DATA_EGG_CYCLES);
     Pokemon_InitWith(mon, species, 1, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
 
     metLevel = 0;
@@ -671,7 +671,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     u32 pid;
     int i;
 
-    friendship = Species_GetValue(species, BASE_EGG_CYCLES);
+    friendship = Species_GetValue(species, SPECIES_DATA_EGG_CYCLES);
     pid = Save_Daycare_GetEggPID(dayCare);
     if (Save_Daycare_MasudaCheck(dayCare)) {
         if (!CalcShininessByOtIdAndPersonality(otId, pid)) {
@@ -764,8 +764,8 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents) {
         species[i] = BoxPokemon_GetData(parents[i], MON_DATA_SPECIES, NULL);
         otIds[i] = BoxPokemon_GetData(parents[i], MON_DATA_OT_ID, NULL);
         genders[i] = GetGenderBySpeciesAndPersonality(species[i], BoxPokemon_GetData(parents[i], MON_DATA_PERSONALITY, NULL));
-        eggGroups[i][0] = Species_GetValue(species[i], BASE_EGG_GROUP_1);
-        eggGroups[i][1] = Species_GetValue(species[i], BASE_EGG_GROUP_2);
+        eggGroups[i][0] = Species_GetValue(species[i], SPECIES_DATA_EGG_GROUP_1);
+        eggGroups[i][1] = Species_GetValue(species[i], SPECIES_DATA_EGG_GROUP_2);
     }
     // Undiscovered cannot mate with any
     if (eggGroups[0][0] == EGG_GROUP_UNDISCOVERED || eggGroups[1][0] == EGG_GROUP_UNDISCOVERED) {

@@ -293,15 +293,15 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     }
     a1->ppUp = 0;
     a1->language = gGameLanguage;
-    u32 ability = Species_GetValue(a1->species, BASE_ABILITY_2);
+    u32 ability = Species_GetValue(a1->species, SPECIES_DATA_ABILITY_2);
     if (ability != ABILITY_NONE) {
         if (a1->pid % 2) {
             a1->ability = ability;
         } else {
-            a1->ability = Species_GetValue(a1->species, BASE_ABILITY_1);
+            a1->ability = Species_GetValue(a1->species, SPECIES_DATA_ABILITY_1);
         }
     } else {
-        a1->ability = Species_GetValue(a1->species, BASE_ABILITY_1);
+        a1->ability = Species_GetValue(a1->species, SPECIES_DATA_ABILITY_1);
     }
     a1->friendship = friendship;
     GetSpeciesNameIntoArray(a1->species, heapID, a1->nickname);
