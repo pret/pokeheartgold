@@ -30534,7 +30534,7 @@ _021F4A8A:
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	add r1, r4, #0
-	bl GetMonBaseStatEx_HandleAlternateForm
+	bl Species_GetFormValueFromNarc
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	b _021F4AFC

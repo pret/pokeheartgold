@@ -214,7 +214,7 @@
 .public BoxPokemon_GetData
 .public Pokemon_SetData
 .public BoxPokemon_SetData
-.public GetMonBaseStatEx_HandleAlternateForm
+.public Species_GetFormValueFromNarc
 .public GetBoxMonNature
 .public BoxPokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
