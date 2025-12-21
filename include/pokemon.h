@@ -35,7 +35,7 @@ extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
 void Pokemon_Init(Pokemon *mon);
 void BoxPokemon_Init(BoxPokemon *boxMon);
 u32 SizeOfStructPokemon(void);
-Pokemon *AllocMonZeroed(enum HeapID heapID);
+Pokemon *Pokemon_New(enum HeapID heapID);
 BOOL AcquireMonLock(Pokemon *mon);
 BOOL ReleaseMonLock(Pokemon *mon, BOOL decrypt_result);
 BOOL AcquireBoxMonLock(BoxPokemon *boxMon);

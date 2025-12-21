@@ -207,7 +207,7 @@
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public Save_SpecialRibbons_Get
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public Pokemon_GetData

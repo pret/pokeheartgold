@@ -2807,7 +2807,7 @@ _02076CE4:
 	b _02076E5E
 _02076CE6:
 	ldr r0, [r4, #0x5c]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
 	add r1, r5, #0
@@ -3390,7 +3390,7 @@ sub_020771E8: ; 0x020771E8
 	bl PokepicManager_CreatePokepic
 	str r0, [r4, #0x1c]
 	ldr r0, [r4, #0x5c]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
 	add r1, r5, #0

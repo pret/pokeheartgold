@@ -32,7 +32,7 @@ NPCTradeAppData *NPCTradeApp_Init(enum HeapID heapID, NpcTradeNum tradeno) {
     ret->trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, heapID, FALSE);
     ret->heapID = heapID;
     ret->tradeno = tradeno;
-    ret->mon = AllocMonZeroed(heapID);
+    ret->mon = Pokemon_New(heapID);
     ret->profile = PlayerProfile_New(heapID);
     PlayerProfile_Init(ret->profile);
     {
@@ -62,7 +62,7 @@ void NPCTrade_MakeAndGiveLoanMon(FieldSystem *fieldSystem, NpcTradeNum tradeno, 
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD2);
+    mon = Pokemon_New(HEAP_ID_FIELD2);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, tradeno, FALSE, HEAP_ID_FIELD2, TRUE);
     _CreateTradeMon(mon, trade_dat, level, (NpcTradeNum)tradeno, mapno, 7, HEAP_ID_FIELD2);
     UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
@@ -88,7 +88,7 @@ Mail *NPCTrade_MakeKenyaMail(void) {
     Mail *mail;
     u8 mailno;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD2);
+    mon = Pokemon_New(HEAP_ID_FIELD2);
     trade_dat = GfGfxLoader_LoadFromNarc(NARC_a_1_1_2, 7, FALSE, HEAP_ID_FIELD2, TRUE);
     _CreateTradeMon(mon, trade_dat, 20, NPC_TRADE_KENYA_SPEAROW, MAP_ROUTE_35_GOLDENROD_GATEHOUSE, 7, HEAP_ID_FIELD2);
     name = _GetNpcTradeName(HEAP_ID_FIELD2, NPC_TRADE_OT_NUM(NPC_TRADE_KENYA_SPEAROW));

@@ -315,7 +315,7 @@
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
 .public Pokemon_Init
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_InitWith
 .public Pokemon_InitWithNature
 .public Pokemon_InitWithGenderNatureLetter

@@ -13828,7 +13828,7 @@ _0225F5CE:
 	str r0, [sp, #0x14]
 _0225F5DC:
 	mov r0, #5
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r5, #0
 _0225F5E6:

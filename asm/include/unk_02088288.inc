@@ -95,7 +95,7 @@
 .public sub_0203A964
 .public Save_VarsFlags_Get
 .public CheckFlag982
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireMonLock
 .public ReleaseMonLock
 .public Pokemon_GetData

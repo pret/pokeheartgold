@@ -210,7 +210,7 @@ static void InitGameStateAfterOakSpeech_Internal(enum HeapID heapID, SaveData *s
     // Put an email from your friend into your PC.
     friend_names_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0445_bin, HEAP_ID_3);
     Mailbox *mailbox = Save_Mailbox_Get(saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_3);
+    Pokemon *mon = Pokemon_New(HEAP_ID_3);
 
     Pokemon_InitWith(mon, SPECIES_MARILL, 1, 0, FALSE, 0, OT_ID_PLAYER_ID, 0);
 

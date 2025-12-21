@@ -1856,7 +1856,7 @@ _022469F8:
 	str r7, [r4, #0x14]
 	mov r0, #4
 	str r0, [r4]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [r4, #0xc]
 	bl Pokemon_Init
 	mov r1, #0
@@ -3844,7 +3844,7 @@ ov02_02247910: ; 0x02247910
 	mov r0, #0xb
 	str r2, [sp, #0x18]
 	add r5, r3, #0
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [sp, #0x1c]
 	bl Pokemon_Init
 	ldrb r0, [r6, #0xd]
@@ -3971,7 +3971,7 @@ ov02_02247A18: ; 0x02247A18
 	str r2, [sp, #0x14]
 	add r6, r3, #0
 	ldr r7, [sp, #0x38]
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	bl Pokemon_Init
 	ldr r0, [sp, #0xc]
@@ -5123,7 +5123,7 @@ ov02_022482BC: ; 0x022482BC
 	add r5, r1, #0
 	mov r0, #4
 	add r6, r2, #0
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #4

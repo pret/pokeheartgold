@@ -1608,7 +1608,7 @@ sub_0208D0A4: ; 0x0208D0A4
 	cmp r1, #2
 	bne _0208D102
 	mov r0, #0x13
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0

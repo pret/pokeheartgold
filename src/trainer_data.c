@@ -283,7 +283,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, enum HeapID hea
     seedBak = GetLCRNGSeed();
     Party_InitWithMaxSize(enemies->party[partyIndex], PARTY_SIZE);
     data = (TRPOKE *)Heap_Alloc(heapID, sizeof(TRPOKE) * PARTY_SIZE);
-    mon = AllocMonZeroed(heapID);
+    mon = Pokemon_New(heapID);
     TrainerData_ReadTrPoke(enemies->trainerId[partyIndex], data);
 
     // If a Pokemon's gender ratio is 50/50, the generated Pokemon will be the same

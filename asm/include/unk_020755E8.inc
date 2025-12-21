@@ -134,7 +134,7 @@
 .public GameStats_Inc
 .public GameStats_AddScore
 .public sub_0203A880
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData

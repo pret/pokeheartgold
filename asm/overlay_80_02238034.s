@@ -232,7 +232,7 @@ _022381C8:
 	mov r5, #2
 _022381CA:
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x1c]
@@ -295,7 +295,7 @@ _0223824A:
 	cmp r6, #4
 	blt _0223824A
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r5, #0
@@ -359,7 +359,7 @@ _0223829A:
 	ldr r0, [r4, #0x10]
 	bl Party_InitWithMaxSize
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r0, #0
 	str r0, [sp, #8]
@@ -496,7 +496,7 @@ ov80_022383C0: ; 0x022383C0
 	bl BattleArcade_GetOpponentMonCount
 	str r0, [sp]
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	ldr r0, [sp]
 	mov r6, #0

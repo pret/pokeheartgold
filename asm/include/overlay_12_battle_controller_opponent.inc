@@ -66,7 +66,7 @@
 .public TextPrinterCheckActive
 .public GF_AssertFail
 .public PlayerProfile_GetVersion
-.public AllocMonZeroed
+.public Pokemon_New
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData

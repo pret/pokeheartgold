@@ -285,7 +285,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         u32 trainerId = PlayerProfile_GetTrainerID(profile);
         BOOL gender = PlayerProfile_GetTrainerGender(profile);
 
-        tmpPokemon = AllocMonZeroed(HEAP_ID_FIELD3);
+        tmpPokemon = Pokemon_New(HEAP_ID_FIELD3);
 #ifdef UBFIX
         GF_ASSERT(tmpPokemon != NULL);
 #endif

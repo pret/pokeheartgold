@@ -555,7 +555,7 @@ _02232938:
 	mov r3, #0
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x3c

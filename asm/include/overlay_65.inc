@@ -186,7 +186,7 @@
 .public sub_02055198
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireMonLock
 .public ReleaseMonLock
 .public Pokemon_GetData

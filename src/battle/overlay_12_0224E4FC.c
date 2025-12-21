@@ -5370,7 +5370,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     int battlerIdTarget;
                     int dat;
 
-                    mon2 = AllocMonZeroed(HEAP_ID_BATTLE);
+                    mon2 = Pokemon_New(HEAP_ID_BATTLE);
 
                     if (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_DOUBLES) {
                         battlerIdTarget = ctx->playerActions[ctx->battlerIdTemp].unk4;

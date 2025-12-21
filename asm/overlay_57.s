@@ -52,7 +52,7 @@ ov57_022378DC: ; 0x022378DC
 	ldr r1, _02237AE8 ; =0x0000040C
 	str r0, [r4, r1]
 	mov r0, #0x34
-	bl AllocMonZeroed
+	bl Pokemon_New
 	ldr r1, _02237AEC ; =0x00000458
 	mov r2, #0xff
 	str r0, [r4, r1]

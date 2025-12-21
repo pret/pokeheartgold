@@ -38,7 +38,7 @@ ov80_022310C4: ; 0x022310C4
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	ldr r1, _022313AC ; =0x00000D8C
 	str r0, [r4, r1]
 	ldr r0, _022313A8 ; =0x000006F8

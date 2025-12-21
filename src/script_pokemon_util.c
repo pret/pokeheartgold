@@ -28,7 +28,7 @@ BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
     {
-        mon = AllocMonZeroed(heapID);
+        mon = Pokemon_New(heapID);
         Pokemon_Init(mon);
         Pokemon_InitWith(mon, species, level, 32, FALSE, 0, 0, 0);
         sub_020720FC(mon, profile, ITEM_POKE_BALL, ball, encounterType, heapID);
@@ -56,7 +56,7 @@ BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 metLocation
 
     profile = Save_PlayerData_GetProfile(saveData);
     party = SaveArray_Party_Get(saveData);
-    mon = AllocMonZeroed(HEAP_ID_FIELD3);
+    mon = Pokemon_New(HEAP_ID_FIELD3);
     Pokemon_Init(mon);
     SetEggStats(mon, species, metLocation, profile, 4, sub_02017FE4(mapsecType, maploc));
     result = Party_AddMon(party, mon);

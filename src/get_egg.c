@@ -162,7 +162,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     DaycareMail *daycareMail;
     u16 species;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD1);
+    mon = Pokemon_New(HEAP_ID_FIELD1);
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     daycareMail = DaycareMon_GetExtras(daycareMon);
 
@@ -200,7 +200,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     u32 exp;
     u32 level;
 
-    tmpMon = AllocMonZeroed(HEAP_ID_FIELD2);
+    tmpMon = Pokemon_New(HEAP_ID_FIELD2);
     boxmon_tmp = Mon_GetBoxMon(tmpMon);
     CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
     exp = BoxPokemon_GetData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
@@ -705,7 +705,7 @@ void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
     u32 otId;
     u8 mom_form;
 
-    mon = AllocMonZeroed(HEAP_ID_FIELD1);
+    mon = Pokemon_New(HEAP_ID_FIELD1);
     species = Daycare_GetEggSpecies(dayCare, gender_idx);
     species = Daycare_BreedingIncenseCheck(species, dayCare);
     otId = PlayerProfile_GetTrainerID(profile);
@@ -1029,7 +1029,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     Pokemon *tmpMon;
 
     string = String_New(PLAYER_NAME_LENGTH + 1, heapID);
-    tmpMon = AllocMonZeroed(heapID);
+    tmpMon = Pokemon_New(heapID);
     species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         moves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);

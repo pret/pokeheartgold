@@ -699,7 +699,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
 
     data->entryBuf[data->textCursorPos] = EOS;
     if (data->type == NAME_SCREEN_POKEMON) {
-        Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
+        Pokemon *mon = Pokemon_New(HEAP_ID_NAMING_SCREEN);
         Pokemon_InitWith(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
         // wtf
         Heap_Free(mon);
@@ -941,7 +941,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     }
     MI_CpuFill16(data->entryBuf, 1, sizeof(data->entryBuf));
     if (data->type == NAME_SCREEN_POKEMON) {
-        Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
+        Pokemon *mon = Pokemon_New(HEAP_ID_NAMING_SCREEN);
         Pokemon_InitWith(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
         BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
         Heap_Free(mon);
@@ -988,7 +988,7 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
             BufferPCBoxName(data->msgFormat, 2, args->pcStorage, boxno);
         }
         if (data->textCursorPos == 0 || NamingScreen_PMCharArrayIsAllSpaces(data->entryBuf)) {
-            Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
+            Pokemon *mon = Pokemon_New(HEAP_ID_NAMING_SCREEN);
             Pokemon_InitWith(mon, data->playerGenderOrMonSpecies, 1, 0, 0, 0, 0, 0);
             BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
             Heap_Free(mon);

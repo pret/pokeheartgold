@@ -251,7 +251,7 @@
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
 .public Pokemon_Init
-.public AllocMonZeroed
+.public Pokemon_New
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public Pokemon_InitWith

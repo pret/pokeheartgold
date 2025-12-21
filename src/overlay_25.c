@@ -275,7 +275,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     sub_02051D18(setup, fieldSystem, saveData, fieldSystem->location->mapId, fieldSystem->bagCursor, fieldSystem->unkB0);
     setup->battleBg = BATTLE_BG_BUILDING_1;
     setup->terrain = TERRAIN_BUILDING;
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD2);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD2);
     s32 partyCount = Party_GetCount(party);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
     for (i = 0; i < partyCount; i++) {
@@ -350,7 +350,7 @@ static void TrainerHouse_InitBattleSetup(BattleSetup *setup, TrainerHouseSet *se
     s32 i;
     TrainerHouse_InitTrainer(set, &setup->trainer[battlerId]);
     setup->trainerId[battlerId] = set->trainer.id;
-    Pokemon *tempMon = AllocMonZeroed(HEAP_ID_FIELD2);
+    Pokemon *tempMon = Pokemon_New(HEAP_ID_FIELD2);
     Party_InitWithMaxSize(setup->party[battlerId], PARTY_SIZE);
     TrainerHouseMon *trainerHouseMon = set->party;
     for (i = 0; i < PARTY_SIZE; trainerHouseMon++, i++) {

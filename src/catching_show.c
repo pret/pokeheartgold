@@ -122,7 +122,7 @@ static void BufferSpeciesData(u16 species, u8 *dest) {
 
 static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
     MigratedPokemon *transferData = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD1);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD1);
     u8 narc_data[6];
     u16 species;
 
@@ -254,7 +254,7 @@ static void UpdateBattleResultInternal(FieldSystem *fieldSystem, BattleSetup *se
 }
 
 static BattleSetup *FieldSystem_SetupCatchingShowEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD3);
     MigratedPokemon *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
     BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD2, FieldSystem_GetParkBallCount(fieldSystem));
 

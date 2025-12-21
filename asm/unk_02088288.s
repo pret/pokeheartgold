@@ -2188,7 +2188,7 @@ _0208948A:
 	bl sub_0208A520
 	add r6, r0, #0
 	mov r0, #0x13
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
@@ -2629,7 +2629,7 @@ sub_020897F0: ; 0x020897F0
 	mov r0, #0x13
 	add r6, r1, #0
 	add r7, r2, #0
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0

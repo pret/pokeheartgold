@@ -22151,7 +22151,7 @@ ov14_021F08BC: ; 0x021F08BC
 	mov r6, #0xa
 _021F08D0:
 	add r0, r6, #0
-	bl AllocMonZeroed
+	bl Pokemon_New
 	str r0, [r5]
 	add r4, r4, #1
 	add r5, #0x20

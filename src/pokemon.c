@@ -112,8 +112,8 @@ u32 SizeOfStructPokemon(void) {
     return sizeof(Pokemon);
 }
 
-Pokemon *AllocMonZeroed(enum HeapID heapID) {
-    Pokemon *mon = (Pokemon *)Heap_Alloc(heapID, sizeof(Pokemon));
+Pokemon *Pokemon_New(enum HeapID heapID) {
+    Pokemon *mon = Heap_Alloc(heapID, sizeof(Pokemon));
     Pokemon_Init(mon);
     return mon;
 }
@@ -3818,7 +3818,7 @@ void SetMonPersonality(Pokemon *mon, u32 personality) {
     PokemonDataBlockD *sp18;
     Pokemon *tmpMon;
 
-    tmpMon = AllocMonZeroed(HEAP_ID_DEFAULT);
+    tmpMon = Pokemon_New(HEAP_ID_DEFAULT);
     CopyPokemonToPokemon(mon, tmpMon);
     r4 = &GetSubstruct(&tmpMon->box, mon->box.personality, 0)->blockA;
     r6 = &GetSubstruct(&tmpMon->box, mon->box.personality, 1)->blockB;

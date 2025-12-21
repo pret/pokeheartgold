@@ -42,7 +42,7 @@ BOOL ScrCmd_PalParkAction(ScriptContext *ctx) {
 
 BOOL ScrCmd_509(ScriptContext *ctx) {
     struct MigratedPokemon *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD3);
     u16 *retPtr = ScriptGetVarPointer(ctx);
     if (sub_0202EC98(unkStruct) == PARTY_SIZE) {
         *retPtr = TRUE;
@@ -56,7 +56,7 @@ BOOL ScrCmd_509(ScriptContext *ctx) {
 BOOL ScrCmd_510(ScriptContext *ctx) {
     MigratedPokemon *unkStruct = Save_MigratedPokemon_Get(ctx->fieldSystem->saveData);
     PCStorage *storage = SaveArray_PCStorage_Get(ctx->fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD3);
     PlayerProfile *profile = Save_PlayerData_GetProfile(ctx->fieldSystem->saveData);
     Pokedex *pokedex = Save_Pokedex_Get(ctx->fieldSystem->saveData);
     int i;
