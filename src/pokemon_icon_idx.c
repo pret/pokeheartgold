@@ -37,7 +37,7 @@ u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
         }
     }
 
-    form = sub_02070438(species, form);
+    form = Species_SanitizeFormId(species, form);
     if (form != 0) {
         if (species == SPECIES_DEOXYS) {
             return form + 503 - 1;
@@ -68,12 +68,12 @@ u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
 u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
     if (!isEgg) {
         if (species == SPECIES_CASTFORM) {
-            form = sub_02070438(species, form);
+            form = Species_SanitizeFormId(species, form);
             if (form != 0) {
                 return form + 547 - 1;
             }
         } else if (species == SPECIES_CHERRIM) {
-            form = sub_02070438(species, form);
+            form = Species_SanitizeFormId(species, form);
             if (form != 0) {
                 return form + 550 - 1;
             }

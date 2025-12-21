@@ -7141,7 +7141,7 @@ ov112_021E9480: ; 0x021E9480
 	lsl r1, r2, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02070438
+	bl Species_SanitizeFormId
 	ldr r1, _021E9598 ; =0x000001A5
 	cmp r5, r1
 	bgt _021E94EC
@@ -24992,7 +24992,7 @@ _021F2124:
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02070438
+	bl Species_SanitizeFormId
 	cmp r0, #0
 	bne _021F2142
 	mov r6, #0

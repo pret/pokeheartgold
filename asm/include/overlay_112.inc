@@ -271,7 +271,7 @@
 .public BoxMonIsShiny
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public sub_02070438
+.public Species_SanitizeFormId
 .public Mon_GetBoxMon
 .public CopyBoxPokemonToPokemon
 .public Mon_UpdateShayminForm

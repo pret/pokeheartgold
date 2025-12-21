@@ -752,7 +752,7 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, enum HeapID heapID, 
 
     NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapID);
 
-    if (sub_02070438(species, form) == 0) {
+    if (Species_SanitizeFormId(species, form) == 0) {
         form = 0;
     }
 

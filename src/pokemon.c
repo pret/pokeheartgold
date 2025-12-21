@@ -46,7 +46,7 @@ u32 MaskOfFlagNo(int flagno);
 void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
 void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
-u8 sub_02070438(u16 species, u8 form);
+u8 Species_SanitizeFormId(u16 species, u8 form);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
 u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
@@ -2169,7 +2169,7 @@ void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 spec
     pokepicTemplate->species = SPECIES_NONE;
     pokepicTemplate->isAnimated = FALSE;
     pokepicTemplate->personality = 0;
-    form = sub_02070438(species, form);
+    form = Species_SanitizeFormId(species, form);
     switch (species) {
     case SPECIES_BURMY:
         pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
@@ -2259,7 +2259,7 @@ void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 spec
     }
 }
 
-u8 sub_02070438(u16 species, u8 form) {
+u8 Species_SanitizeFormId(u16 species, u8 form) {
     switch (species) {
     case SPECIES_BURMY:
         if (form > BURMY_FORM_MAX - 1) {
@@ -2345,7 +2345,7 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 s
     pokepicTemplate->species = SPECIES_NONE;
     pokepicTemplate->isAnimated = FALSE;
     pokepicTemplate->personality = 0;
-    form = sub_02070438(species, form);
+    form = Species_SanitizeFormId(species, form);
     switch (species) {
     case SPECIES_BURMY:
         pokepicTemplate->narcID = NARC_pbr_otherpoke;
@@ -2484,7 +2484,7 @@ u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8
     s32 fileId;
     u8 ret;
 
-    form = sub_02070438(species, form);
+    form = Species_SanitizeFormId(species, form);
     switch (species) {
     case SPECIES_BURMY:
         narcId = NARC_poketool_pokegra_height_o;
@@ -2566,7 +2566,7 @@ u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing
     s32 fileId;
     u8 ret;
 
-    form = sub_02070438(species, form);
+    form = Species_SanitizeFormId(species, form);
     switch (species) {
     case SPECIES_BURMY:
         narcId = NARC_pbr_dp_height_o;
