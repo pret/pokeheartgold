@@ -4199,7 +4199,7 @@ _022485B4:
 	add r0, r7, #0
 	mov r1, #8
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #6
 	bl ApplyMonMoodModifier
@@ -4212,7 +4212,7 @@ _02248602:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4225,7 +4225,7 @@ _02248620:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier

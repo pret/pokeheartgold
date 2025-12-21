@@ -17835,7 +17835,7 @@ _021EE8E6:
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #8
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 _021EE91C:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}

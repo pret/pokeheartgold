@@ -6088,7 +6088,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 oldStats->stats[i] = Pokemon_GetData(mon, stats.stats[i], NULL);
             }
 
-            MonApplyFriendshipMod(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->battleSystem));
+            Pokemon_UpdateFriendship(mon, MON_MOOD_MODIFIER_LEVEL_UP_IN_BATTLE, BattleSystem_GetLocation(data->battleSystem));
             ApplyMonMoodModifier(mon, 0);
             Pokemon_CalcStats(mon);
 

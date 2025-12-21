@@ -2813,7 +2813,7 @@ _022394EC:
 	lsl r2, r2, #0x10
 	mov r1, #3
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r6, #0
 	mov r1, #2
 	bl ApplyMonMoodModifier
@@ -2838,7 +2838,7 @@ _02239524:
 	lsl r2, r2, #0x10
 	mov r1, #3
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r6, #0
 	mov r1, #2
 	bl ApplyMonMoodModifier

@@ -904,7 +904,7 @@ void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) 
         if (!MoveIsHM(partyMenu->args->moveId)) {
             Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
         }
-        MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_LEARN_TMHM, PartyMenu_GetCurrentMapSec(partyMenu));
+        Pokemon_UpdateFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM, PartyMenu_GetCurrentMapSec(partyMenu));
         ApplyMonMoodModifier(mon, MON_MOOD_MODIFIER_LEARN_TMHM);
     }
 }

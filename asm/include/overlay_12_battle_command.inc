@@ -75,7 +75,7 @@
 .public SpeciesData_Free
 .public Species_GetValue
 .public Pokemon_GetCurrentLevelBaseExp
-.public MonApplyFriendshipMod
+.public Pokemon_UpdateFriendship
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxMon
 .public Pokemon_TryLevelUp
