@@ -1875,23 +1875,24 @@ u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon) {
 }
 
 u32 Species_GetExpAtLevel(int species, int level) {
-    return GetExpByGrowthRateAndLevel(Species_GetValue(species, BASE_GROWTH_RATE), level);
+    return ExpRate_GetExpAtLevel(Species_GetValue(species, BASE_GROWTH_RATE), level);
 }
 
-void LoadGrowthTable(int growthRate, u32 *dest) {
-    GF_ASSERT(growthRate < 8);
-    ReadWholeNarcMemberByIdPair(dest, NARC_poketool_personal_growtbl, growthRate);
+void ExpRate_LoadTable(int rate, u32 *dest) {
+    GF_ASSERT(rate < 8);
+    ReadWholeNarcMemberByIdPair(dest, NARC_poketool_personal_growtbl, rate);
 }
 
-u32 GetExpByGrowthRateAndLevel(int growthRate, int level) {
-    u32 *table;
-    u32 ret;
-    GF_ASSERT(growthRate < 8);
+u32 ExpRate_GetExpAtLevel(int rate, int level) {
+    GF_ASSERT(rate < 8);
     GF_ASSERT(level <= MAX_LEVEL + 1);
-    table = (u32 *)Heap_Alloc(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
-    LoadGrowthTable(growthRate, table);
-    ret = table[level];
-    Heap_Free(table);
+
+    u32 *expTable = (u32 *)Heap_Alloc(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
+    ExpRate_LoadTable(rate, expTable);
+
+    u32 ret = expTable[level];
+    Heap_Free(expTable);
+
     return ret;
 }
 
@@ -1919,7 +1920,7 @@ int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 specie
 #pragma unused(species)
     static u32 table[101];
     int i;
-    LoadGrowthTable(SpeciesData_GetValue(personal, BASE_GROWTH_RATE), table);
+    ExpRate_LoadTable(SpeciesData_GetValue(personal, BASE_GROWTH_RATE), table);
     for (i = 1; i < 101; i++) {
         if (table[i] > exp) {
             break;
@@ -2747,7 +2748,7 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     u8 level = (u8)(Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) + 1);
     u32 exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
     u32 growthrate = (u32)Species_GetValue(species, BASE_GROWTH_RATE);
-    u32 maxexp = GetExpByGrowthRateAndLevel((int)growthrate, 100);
+    u32 maxexp = ExpRate_GetExpAtLevel((int)growthrate, 100);
     if (exp > maxexp) {
         exp = maxexp;
         Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
@@ -2755,7 +2756,7 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     if (level > 100) {
         return FALSE;
     }
-    if (exp >= GetExpByGrowthRateAndLevel((int)growthrate, level)) {
+    if (exp >= ExpRate_GetExpAtLevel((int)growthrate, level)) {
         Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
         return TRUE;
     }
