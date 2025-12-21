@@ -6103,7 +6103,7 @@ _021E8BDA:
 	strb r1, [r5, #0xd]
 	ldr r0, [sp, #0xc]
 	mov r1, #0x1c
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	ldrb r1, [r5, #0xe]
 	mov r2, #1
 	lsl r0, r0, #0x18
@@ -6311,7 +6311,7 @@ _021E8D24:
 	bl SpeciesData_NewFromSpecies
 	mov r1, #0x1c
 	add r4, r0, #0
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	ldrb r1, [r7, #0xe]
 	mov r2, #1
 	lsl r0, r0, #0x18

@@ -1707,10 +1707,10 @@ SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID) {
     return speciesData;
 }
 
-int GetPersonalAttr(const SpeciesData *speciesData, int attr) {
+int SpeciesData_GetValue(const SpeciesData *speciesData, int param) {
     int ret;
     GF_ASSERT(speciesData != NULL);
-    switch (attr) {
+    switch (param) {
     case BASE_HP:
         ret = speciesData->hp;
         break;
@@ -1822,14 +1822,14 @@ void SpeciesData_Free(SpeciesData *speciesData) {
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
     int ret;
     SpeciesData *speciesData = SpeciesData_NewFromSpecies(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
-    ret = GetPersonalAttr(speciesData, attr);
+    ret = SpeciesData_GetValue(speciesData, attr);
     SpeciesData_Free(speciesData);
     return ret;
 }
 
 int Species_GetValue(int species, int param) {
     SpeciesData *speciesData = SpeciesData_NewFromSpecies(species, HEAP_ID_DEFAULT);
-    int result = GetPersonalAttr(speciesData, param);
+    int result = SpeciesData_GetValue(speciesData, param);
     SpeciesData_Free(speciesData);
     return result;
 }
@@ -1839,7 +1839,7 @@ int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int 
     int ret;
     SpeciesData *buf = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
     NARC_ReadWholeMember(narc, resolved, buf);
-    ret = GetPersonalAttr(buf, attr);
+    ret = SpeciesData_GetValue(buf, attr);
     Heap_Free(buf);
     return ret;
 }
@@ -1918,7 +1918,7 @@ int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 specie
 #pragma unused(species)
     static u32 table[101];
     int i;
-    LoadGrowthTable(GetPersonalAttr(personal, BASE_GROWTH_RATE), table);
+    LoadGrowthTable(SpeciesData_GetValue(personal, BASE_GROWTH_RATE), table);
     for (i = 1; i < 101; i++) {
         if (table[i] > exp) {
             break;
@@ -2075,7 +2075,7 @@ u8 GetGenderBySpeciesAndPersonality(u16 species, u32 pid) {
 
 u8 GetGenderBySpeciesAndPersonality_PreloadedPersonal(const SpeciesData *personal, u16 species, u32 pid) {
     int gender;
-    u8 ratio = GetPersonalAttr(personal, BASE_GENDER_RATIO);
+    u8 ratio = SpeciesData_GetValue(personal, BASE_GENDER_RATIO);
     switch (ratio) {
     case MON_RATIO_MALE:
         return MON_MALE;

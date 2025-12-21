@@ -262,7 +262,7 @@
 .public BoxPokemon_SetData
 .public SpeciesData_NewFromForm
 .public SpeciesData_NewFromSpecies
-.public GetPersonalAttr
+.public SpeciesData_GetValue
 .public SpeciesData_Free
 .public CalcBoxMonExpToNextLevel
 .public MonApplyFriendshipMod

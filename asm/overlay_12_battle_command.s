@@ -99,7 +99,7 @@ _02246488: ; jump table
 _02246494:
 	add r0, r7, #0
 	mov r1, #0xa
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x7a
@@ -111,7 +111,7 @@ _02246494:
 _022464AC:
 	add r0, r7, #0
 	mov r1, #0xb
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x75
@@ -123,7 +123,7 @@ _022464AC:
 _022464C4:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x76
@@ -135,7 +135,7 @@ _022464C4:
 _022464DC:
 	add r0, r7, #0
 	mov r1, #0xd
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x79
@@ -147,7 +147,7 @@ _022464DC:
 _022464F4:
 	add r0, r7, #0
 	mov r1, #0xe
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x77
@@ -159,7 +159,7 @@ _022464F4:
 _0224650C:
 	add r0, r7, #0
 	mov r1, #0xf
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x78

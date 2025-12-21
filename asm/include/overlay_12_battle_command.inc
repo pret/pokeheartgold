@@ -71,7 +71,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public SpeciesData_NewFromForm
-.public GetPersonalAttr
+.public SpeciesData_GetValue
 .public SpeciesData_Free
 .public Species_GetValue
 .public GetMonBaseExperienceAtCurrentLevel
