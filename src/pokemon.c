@@ -29,7 +29,7 @@
 void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
-void InitBoxMonMoveset(BoxPokemon *boxMon);
+void BoxPokemon_SetDefaultMoves(BoxPokemon *boxMon);
 void SpeciesData_LoadForm(int species, int form, SpeciesData *dest);
 u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat);
 static u32 Pokemon_GetDataInternal(Pokemon *mon, int param, void *dest);
@@ -53,7 +53,7 @@ u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
-BOOL MonHasMove(Pokemon *mon, u16 move_id);
+BOOL Pokemon_HasMove(Pokemon *mon, u16 move_id);
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 
@@ -255,7 +255,7 @@ void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BO
 
     var1 = BoxPokemon_GetGender(boxMon);
     BoxPokemon_SetData(boxMon, MON_DATA_GENDER, &var1);
-    InitBoxMonMoveset(boxMon);
+    BoxPokemon_SetDefaultMoves(boxMon);
     ReleaseBoxMonLock(boxMon, reencrypt);
 }
 
@@ -2905,7 +2905,7 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
                 }
                 break;
             case EVO_HAS_MOVE:
-                if (MonHasMove(mon, evoTable[i].param) == TRUE) {
+                if (Pokemon_HasMove(mon, evoTable[i].param) == TRUE) {
                     target = evoTable[i].target;
                     *method_ret = EVO_HAS_MOVE;
                 }
@@ -3010,13 +3010,13 @@ u16 ReadFromPersonalPmsNarc(u16 species) {
 
 u16 GetEggSpecies(u16 species) {
     switch (species) {
-    case SPECIES_SUDOWOODO:
-    case SPECIES_MARILL:
-    case SPECIES_MR_MIME:
     case SPECIES_CHANSEY:
+    case SPECIES_MR_MIME:
     case SPECIES_SNORLAX:
-    case SPECIES_MANTINE:
+    case SPECIES_MARILL:
+    case SPECIES_SUDOWOODO:
     case SPECIES_WOBBUFFET:
+    case SPECIES_MANTINE:
     case SPECIES_ROSELIA:
     case SPECIES_CHIMECHO:
         return species;
@@ -3025,156 +3025,149 @@ u16 GetEggSpecies(u16 species) {
     }
 }
 
-void InitBoxMonMoveset(BoxPokemon *boxMon) {
-    BOOL decry;
-    u16 *levelUpLearnset;
-    int i;
-    u16 species;
-    u32 form;
-    u8 level;
-    u16 move;
-    levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
-    decry = AcquireBoxMonLock(boxMon);
-    species = (u16)BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
-    form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
-    level = (u8)BoxPokemon_CalcLevel(boxMon);
-    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
-    for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
+void BoxPokemon_SetDefaultMoves(BoxPokemon *boxMon) {
+    BOOL reencrypt;
+    u16 *levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
+    reencrypt = AcquireBoxMonLock(boxMon);
+
+    u16 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
+    int form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
+    u8 level = BoxPokemon_CalcLevel(boxMon);
+
+    Species_LoadLevelUpLearnset(species, form, levelUpLearnset);
+
+    for (int i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
         if ((levelUpLearnset[i] & LEVEL_UP_LEARNSET_LEVEL_MASK) > (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
             break;
         }
-        move = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
-        if (TryAppendBoxMonMove(boxMon, move) == MOVE_APPEND_FULL) {
-            DeleteBoxMonFirstMoveAndAppend(boxMon, move);
+        u16 move = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
+        if (BoxPokemon_TryAppendMove(boxMon, move) == MOVE_APPEND_FULL) {
+            BoxPokemon_ForceAppendMove(boxMon, move);
         }
     }
     Heap_Free(levelUpLearnset);
-    ReleaseBoxMonLock(boxMon, decry);
+    ReleaseBoxMonLock(boxMon, reencrypt);
 }
 
-u32 TryAppendMonMove(Pokemon *mon, u16 move) {
-    return TryAppendBoxMonMove(Pokemon_GetBoxMon(mon), move);
+u32 Pokemon_TryAppendMove(Pokemon *mon, u16 move) {
+    return BoxPokemon_TryAppendMove(Pokemon_GetBoxMon(mon), move);
 }
 
-u32 TryAppendBoxMonMove(BoxPokemon *boxMon, u16 move) {
+u32 BoxPokemon_TryAppendMove(BoxPokemon *boxMon, u16 move) {
     u32 ret = MOVE_APPEND_FULL;
-    int i;
-    BOOL decry = AcquireBoxMonLock(boxMon);
-    u16 cur_move;
-    for (i = 0; i < MAX_MON_MOVES; i++) {
-        cur_move = (u16)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + i, NULL);
-        if (cur_move == MOVE_NONE) {
-            BoxMonSetMoveInSlot(boxMon, move, (u8)i);
+    BOOL reencrypt = AcquireBoxMonLock(boxMon);
+
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
+        u16 slotMove = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + i, NULL);
+        if (slotMove == MOVE_NONE) {
+            BoxPokemon_SetMoveInSlot(boxMon, move, i);
             ret = move;
             break;
         }
-        if (cur_move == move) {
+        if (slotMove == move) {
             ret = MOVE_APPEND_KNOWN;
             break;
         }
     }
-    ReleaseBoxMonLock(boxMon, decry);
+    ReleaseBoxMonLock(boxMon, reencrypt);
     return ret;
 }
 
-void DeleteMonFirstMoveAndAppend(Pokemon *mon, u16 move_id) {
-    DeleteBoxMonFirstMoveAndAppend(Pokemon_GetBoxMon(mon), move_id);
+void Pokemon_ForceAppendMove(Pokemon *mon, u16 move) {
+    BoxPokemon_ForceAppendMove(Pokemon_GetBoxMon(mon), move);
 }
 
-void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move) {
-    BOOL decry = AcquireBoxMonLock(boxMon);
-    int i;
+void BoxPokemon_ForceAppendMove(BoxPokemon *boxMon, u16 move) {
+    BOOL reencrypt = AcquireBoxMonLock(boxMon);
     u16 moves[MAX_MON_MOVES];
     u8 pp[MAX_MON_MOVES];
     u8 ppUp[MAX_MON_MOVES];
 
-    for (i = 0; i < MAX_MON_MOVES - 1; i++) {
-        moves[i] = (u16)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + i + 1, NULL);
-        pp[i] = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP + i + 1, NULL);
-        ppUp[i] = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + i + 1, NULL);
+    // Bubble move slots 2 through 4 upwards
+    for (int i = 0; i < MAX_MON_MOVES - 1; i++) {
+        moves[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE2 + i, NULL);
+        pp[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE2_PP + i, NULL);
+        ppUp[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE2_PP_UPS + i, NULL);
     }
 
-    moves[3] = move;
-    pp[3] = (u8)GetMoveAttr(move, MOVEATTR_PP);
-    ppUp[3] = 0;
+    moves[MAX_MON_MOVES - 1] = move;
+    pp[MAX_MON_MOVES - 1] = GetMoveAttr(move, MOVEATTR_PP);
+    ppUp[MAX_MON_MOVES - 1] = 0;
 
-    for (i = 0; i < MAX_MON_MOVES; i++) {
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
         BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + i, &moves[i]);
         BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + i, &pp[i]);
         BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP_UPS + i, &ppUp[i]);
     }
 
-    ReleaseBoxMonLock(boxMon, decry);
+    ReleaseBoxMonLock(boxMon, reencrypt);
 }
 
-void MonSetMoveInSlot_ResetPpUp(Pokemon *mon, u16 move, u8 slot) {
-    int pp;
-    int ppUp;
-
-    MonSetMoveInSlot(mon, move, slot);
-    ppUp = 0;
+void Pokemon_SetMoveInSlot_ResetPPUp(Pokemon *mon, u16 move, u8 slot) {
+    Pokemon_SetMoveInSlot(mon, move, slot);
+    int pp, ppUp = 0;
     Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + slot, &ppUp);
     pp = GetMoveMaxPP(move, 0);
     Pokemon_SetData(mon, MON_DATA_MOVE1_PP + slot, &pp);
 }
 
-void MonSetMoveInSlot(Pokemon *mon, u16 move, u8 slot) {
-    BoxMonSetMoveInSlot(&mon->box, move, slot);
+void Pokemon_SetMoveInSlot(Pokemon *mon, u16 move, u8 slot) {
+    BoxPokemon_SetMoveInSlot(&mon->box, move, slot);
 }
 
-void BoxMonSetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
-    u8 ppUp;
-    u8 pp;
-
+void BoxPokemon_SetMoveInSlot(BoxPokemon *boxMon, u16 move, u8 slot) {
     BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + slot, &move);
-    ppUp = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot, NULL);
-    pp = (u8)GetMoveMaxPP(move, ppUp);
+
+    u8 ppUps = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot, NULL);
+    u8 pp = GetMoveMaxPP(move, ppUps);
     BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + slot, &pp);
 }
 
-u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
-    u32 ret = 0;
+u32 Pokemon_TryLevelUpMove(Pokemon *mon, int *index, u16 *move) {
+    u32 ret = MOVE_NONE;
     u16 *levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
-    u16 species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
-    u8 level = (u8)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
-    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
+    u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    int form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    u8 level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    Species_LoadLevelUpLearnset(species, form, levelUpLearnset);
 
-    if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
+    if (levelUpLearnset[*index] == LEVEL_UP_LEARNSET_END) {
         Heap_Free(levelUpLearnset);
-        return 0;
+        return MOVE_NONE;
     }
-    while ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) != (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
-        (*last_i)++;
-        if (levelUpLearnset[*last_i] == LEVEL_UP_LEARNSET_END) {
+
+    while ((levelUpLearnset[*index] & LEVEL_UP_LEARNSET_LEVEL_MASK) != (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
+        (*index)++;
+        if (levelUpLearnset[*index] == LEVEL_UP_LEARNSET_END) {
             Heap_Free(levelUpLearnset);
-            return 0;
+            return MOVE_NONE;
         }
     }
-    if ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) == (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
-        *sp0 = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[*last_i]);
-        (*last_i)++;
-        ret = TryAppendMonMove(mon, *sp0);
+
+    if ((levelUpLearnset[*index] & LEVEL_UP_LEARNSET_LEVEL_MASK) == (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
+        *move = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[*index]);
+        (*index)++;
+        ret = Pokemon_TryAppendMove(mon, *move);
     }
     Heap_Free(levelUpLearnset);
     return ret;
 }
 
-void MonSwapMoves(Pokemon *mon, int a, int b) {
-    BoxMonSwapMoves(&mon->box, a, b);
+void Pokemon_SwapMoveSlots(Pokemon *mon, int slot1, int slot2) {
+    BoxPokemon_SwapMoveSlots(&mon->box, slot1, slot2);
 }
 
-void BoxMonSwapMoves(BoxPokemon *boxMon, int slot1, int slot2) {
+void BoxPokemon_SwapMoveSlots(BoxPokemon *boxMon, int slot1, int slot2) {
     u16 moves[2];
     u8 pp[2];
     u8 ppUp[2];
 
-    moves[0] = (u16)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + slot1, NULL);
-    pp[0] = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP + slot1, NULL);
-    ppUp[0] = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot1, NULL);
-    moves[1] = (u16)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + slot2, NULL);
-    pp[1] = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP + slot2, NULL);
-    ppUp[1] = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, NULL);
+    moves[0] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + slot1, NULL);
+    pp[0] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP + slot1, NULL);
+    ppUp[0] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot1, NULL);
+    moves[1] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + slot2, NULL);
+    pp[1] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP + slot2, NULL);
+    ppUp[1] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, NULL);
 
     BoxPokemon_SetData(boxMon, MON_DATA_MOVE1 + slot1, &moves[1]);
     BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + slot1, &pp[1]);
@@ -3184,38 +3177,36 @@ void BoxMonSwapMoves(BoxPokemon *boxMon, int slot1, int slot2) {
     BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP_UPS + slot2, &ppUp[0]);
 }
 
-void MonDeleteMoveSlot(Pokemon *mon, u32 slot) {
+void Pokemon_ClearMoveSlot(Pokemon *mon, u32 slot) {
     u16 move;
     u8 pp;
     u8 ppUp;
-    for (; slot < MAX_MON_MOVES - 1; slot++) {
-        move = (u16)Pokemon_GetData(mon, (int)(MON_DATA_MOVE1 + slot + 1), NULL);
-        pp = (u8)Pokemon_GetData(mon, (int)(MON_DATA_MOVE1_PP + slot + 1), NULL);
-        ppUp = (u8)Pokemon_GetData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot + 1), NULL);
-        Pokemon_SetData(mon, (int)(MON_DATA_MOVE1 + slot), &move);
-        Pokemon_SetData(mon, (int)(MON_DATA_MOVE1_PP + slot), &pp);
-        Pokemon_SetData(mon, (int)(MON_DATA_MOVE1_PP_UPS + slot), &ppUp);
+
+    for (u32 i = slot; i < MAX_MON_MOVES - 1; i++) {
+        move = Pokemon_GetData(mon, MON_DATA_MOVE1 + i + 1, NULL);
+        pp = Pokemon_GetData(mon, MON_DATA_MOVE1_PP + i + 1, NULL);
+        ppUp = Pokemon_GetData(mon, MON_DATA_MOVE1_PP_UPS + i + 1, NULL);
+        Pokemon_SetData(mon, MON_DATA_MOVE1 + i, &move);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP + i, &pp);
+        Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + i, &ppUp);
     }
+
     move = MOVE_NONE;
     pp = 0;
     ppUp = 0;
-    Pokemon_SetData(mon, MON_DATA_MOVE1 + 3, &move);
-    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + 3, &pp);
-    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + 3, &ppUp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1 + MAX_MON_MOVES - 1, &move);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + MAX_MON_MOVES - 1, &pp);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + MAX_MON_MOVES - 1, &ppUp);
 }
 
-BOOL MonHasMove(Pokemon *mon, u16 move) {
+BOOL Pokemon_HasMove(Pokemon *mon, u16 move) {
     int i;
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL) == move) {
             break;
         }
     }
-    if (i != MAX_MON_MOVES) {
-        return TRUE;
-    } else {
-        return FALSE;
-    }
+    return i != MAX_MON_MOVES;
 }
 
 void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
@@ -3294,7 +3285,7 @@ s8 GetFlavorPreferenceFromPID(u32 personality, int flavor) {
 int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest) {
     int i;
     u16 *levelUpLearnset = Heap_Alloc(HEAP_ID_DEFAULT, MAX_LEARNED_MOVES * sizeof(u16));
-    LoadLevelUpLearnset_HandleAlternateForm(species, (int)form, levelUpLearnset);
+    Species_LoadLevelUpLearnset(species, (int)form, levelUpLearnset);
     for (i = 0; levelUpLearnset[i] != LEVEL_UP_LEARNSET_END; i++) {
         dest[i] = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[i]);
     }
@@ -3629,10 +3620,10 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
         for (j = ROTOM_HEAT; j < (unsigned)ROTOM_FORM_MAX; j++) {
             if (cur_move != MOVE_NONE && cur_move == form_moves[j]) {
                 if (new_move != MOVE_NONE) {
-                    MonSetMoveInSlot_ResetPpUp(mon, new_move, i);
+                    Pokemon_SetMoveInSlot_ResetPPUp(mon, new_move, i);
                     new_move = MOVE_NONE;
                 } else {
-                    MonDeleteMoveSlot(mon, i);
+                    Pokemon_ClearMoveSlot(mon, i);
                     i--;
                 }
                 break;
@@ -3642,16 +3633,16 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
     if (new_move != MOVE_NONE) {
         for (i = 0; i < MAX_MON_MOVES; i++) {
             if (Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
-                MonSetMoveInSlot_ResetPpUp(mon, new_move, i);
+                Pokemon_SetMoveInSlot_ResetPPUp(mon, new_move, i);
                 break;
             }
         }
         if (i == MAX_MON_MOVES) {
-            MonSetMoveInSlot_ResetPpUp(mon, new_move, defaultSlot);
+            Pokemon_SetMoveInSlot_ResetPPUp(mon, new_move, defaultSlot);
         }
     }
     if (Pokemon_GetData(mon, MON_DATA_MOVE1, NULL) == MOVE_NONE) {
-        MonSetMoveInSlot_ResetPpUp(mon, MOVE_THUNDER_SHOCK, 0);
+        Pokemon_SetMoveInSlot_ResetPPUp(mon, MOVE_THUNDER_SHOCK, 0);
     }
     Pokemon_SetData(mon, MON_DATA_FORM, &form);
     UpdateMonAbility(mon);
@@ -3659,7 +3650,7 @@ BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot) {
     return TRUE;
 }
 
-void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUpLearnset) {
+void Species_LoadLevelUpLearnset(int species, int form, u16 *levelUpLearnset) {
     ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
 }
 

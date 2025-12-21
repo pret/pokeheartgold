@@ -107,8 +107,8 @@
 .public Pokemon_Size
 .public BoxPokemon_Size
 .public Pokemon_GetBoxMon
-.public MonSwapMoves
-.public BoxMonSwapMoves
+.public Pokemon_SwapMoveSlots
+.public BoxPokemon_SwapMoveSlots
 .public CopyBoxPokemonToPokemon
 .public MonGetFlavorPreference
 .public Pokemon_HasPokerus

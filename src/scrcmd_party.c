@@ -468,7 +468,7 @@ BOOL ScrCmd_MonForgetMove(ScriptContext *ctx) {
     u16 moveSlot = ScriptGetVar(ctx);
 
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), pokemonSlot);
-    MonDeleteMoveSlot(mon, moveSlot);
+    Pokemon_ClearMoveSlot(mon, moveSlot);
 
     return FALSE;
 }

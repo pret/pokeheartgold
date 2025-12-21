@@ -65,7 +65,7 @@ BOOL GiveEgg(enum HeapID heapID, SaveData *saveData, int species, u8 metLocation
 }
 
 void PartyMonSetMoveInSlot(Party *party, int mon_slot, int move_slot, u16 moveId) {
-    MonSetMoveInSlot_ResetPpUp(Party_GetMonByIndex(party, mon_slot), moveId, move_slot);
+    Pokemon_SetMoveInSlot_ResetPPUp(Party_GetMonByIndex(party, mon_slot), moveId, move_slot);
 }
 
 int GetIdxOfFirstPartyMonWithMove(Party *party, u16 move) {

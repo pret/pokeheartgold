@@ -27,7 +27,7 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, enum HeapID heapID) {
     u16 *tableFromFile = Heap_Alloc(heapID, LEVEL_UP_LEARNSET_MAX * 2);
     u16 *returnTable = Heap_Alloc(heapID, LEVEL_UP_LEARNSET_MAX * 2);
 
-    LoadLevelUpLearnset_HandleAlternateForm(species, form, tableFromFile);
+    Species_LoadLevelUpLearnset(species, form, tableFromFile);
 
     for (u8 i = 0, j, k = 0; i < LEVEL_UP_LEARNSET_MAX; i++) {
         if (tableFromFile[i] == LEVEL_UP_LEARNSET_END) {

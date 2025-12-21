@@ -6220,7 +6220,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         u16 move;
         BgConfig *bgConfig = BattleSystem_GetBgConfig(data->battleSystem); // unused, but must be kept to match
 
-        switch (MonTryLearnMoveOnLevelUp(mon, &data->unk30[2], &move)) {
+        switch (Pokemon_TryLevelUpMove(mon, &data->unk30[2], &move)) {
         case 0:
             data->state = STATE_GET_EXP_GAUGE;
             break;
@@ -6376,7 +6376,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
         i = 0;
         Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + data->unk30[5], &i);
-        MonSetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
+        Pokemon_SetMoveInSlot(mon, data->unk30[4], data->unk30[5]);
 
         if (data->ctx->selectedMonIndex[expBattler] == slot) {
             BattleSystem_ReloadMonData(data->battleSystem, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);

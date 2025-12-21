@@ -144,11 +144,11 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
         }
         last_i = 0;
         for (
-            stat = MonTryLearnMoveOnLevelUp(mon, &last_i, &learned);
+            stat = Pokemon_TryLevelUpMove(mon, &last_i, &learned);
             stat != 0;
-            stat = MonTryLearnMoveOnLevelUp(mon, &last_i, &learned)) {
+            stat = Pokemon_TryLevelUpMove(mon, &last_i, &learned)) {
             if (stat == MOVE_APPEND_FULL) {
-                DeleteMonFirstMoveAndAppend(mon, learned);
+                Pokemon_ForceAppendMove(mon, learned);
             }
         }
     }
@@ -472,8 +472,8 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < r5; j++) {
                 if (search->dad_moves[i] == search->baby_egg_moves[j]) {
-                    if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
-                        DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
+                    if (Pokemon_TryAppendMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
+                        Pokemon_ForceAppendMove(egg, search->dad_moves[i]);
                     }
                     break;
                 }
@@ -487,8 +487,8 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
             for (j = 0; j < 100; j++) {
                 if (search->dad_moves[i] == TMHMGetMove(j + ITEM_TM01)) {
                     if (GetTMHMCompatBySpeciesAndForm(egg_species, egg_form, j)) {
-                        if (TryAppendMonMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
-                            DeleteMonFirstMoveAndAppend(egg, search->dad_moves[i]);
+                        if (Pokemon_TryAppendMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
+                            Pokemon_ForceAppendMove(egg, search->dad_moves[i]);
                         }
                     }
                 }
@@ -512,8 +512,8 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
         for (j = 0; j < learnset_size; j++) {
             if (search->baby_learnset[j] != MOVE_NONE) {
                 if (search->shared_moves[i] == search->baby_learnset[j]) {
-                    if (TryAppendMonMove(egg, search->shared_moves[i]) == MOVE_APPEND_FULL) {
-                        DeleteMonFirstMoveAndAppend(egg, search->shared_moves[i]);
+                    if (Pokemon_TryAppendMove(egg, search->shared_moves[i]) == MOVE_APPEND_FULL) {
+                        Pokemon_ForceAppendMove(egg, search->shared_moves[i]);
                     }
                     break;
                 }
@@ -573,8 +573,8 @@ static void Daycare_LightBallCheck(Pokemon *egg, Daycare *dayCare) {
     item2 = BoxPokemon_GetData(parents[1], MON_DATA_HELD_ITEM, NULL);
 
     if (item1 == ITEM_LIGHT_BALL || item2 == ITEM_LIGHT_BALL) {
-        if (TryAppendMonMove(egg, MOVE_VOLT_TACKLE) == MOVE_APPEND_FULL) {
-            DeleteMonFirstMoveAndAppend(egg, MOVE_VOLT_TACKLE);
+        if (Pokemon_TryAppendMove(egg, MOVE_VOLT_TACKLE) == MOVE_APPEND_FULL) {
+            Pokemon_ForceAppendMove(egg, MOVE_VOLT_TACKLE);
         }
     }
 }

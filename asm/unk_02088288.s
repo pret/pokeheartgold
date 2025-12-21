@@ -4702,7 +4702,7 @@ sub_0208A834: ; 0x0208A834
 	lsl r2, r2, #0x18
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x1c
-	bl BoxMonSwapMoves
+	bl BoxPokemon_SwapMoveSlots
 	b _0208A868
 _0208A85A:
 	ldrb r2, [r4, r1]
@@ -4710,7 +4710,7 @@ _0208A85A:
 	lsl r2, r2, #0x18
 	lsr r1, r1, #0x1c
 	lsr r2, r2, #0x1c
-	bl MonSwapMoves
+	bl Pokemon_SwapMoveSlots
 _0208A868:
 	ldr r0, _0208A8F0 ; =0x000007BD
 	mov r1, #0x99

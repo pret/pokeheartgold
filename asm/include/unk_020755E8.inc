@@ -140,8 +140,8 @@
 .public Pokemon_SetData
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxMon
-.public MonSetMoveInSlot
-.public MonTryLearnMoveOnLevelUp
+.public Pokemon_SetMoveInSlot
+.public Pokemon_TryLevelUpMove
 .public CopyPokemonToPokemon
 .public UpdateMonAbility
 .public NARC_ReadPokepicAnimScript

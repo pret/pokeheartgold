@@ -1843,7 +1843,7 @@ _020764DE:
 	ldr r0, [r4, #0x28]
 	add r1, #0x68
 	add r2, sp, #0xc
-	bl MonTryLearnMoveOnLevelUp
+	bl Pokemon_TryLevelUpMove
 	cmp r0, #0
 	beq _020764FE
 	ldr r1, _020765EC ; =0x0000FFFE
@@ -2445,7 +2445,7 @@ _020769BC:
 	ldrh r1, [r1]
 	ldrb r2, [r2]
 	ldr r0, [r4, #0x28]
-	bl MonSetMoveInSlot
+	bl Pokemon_SetMoveInSlot
 	add r0, r4, #0
 	mov r1, #0x1e
 	add r0, #0x66

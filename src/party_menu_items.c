@@ -633,7 +633,7 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
         break;
     case 3:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-        switch (MonTryLearnMoveOnLevelUp(mon, &partyMenu->args->levelUpMoveSearchState, &partyMenu->args->moveId)) {
+        switch (Pokemon_TryLevelUpMove(mon, &partyMenu->args->levelUpMoveSearchState, &partyMenu->args->moveId)) {
         case MOVE_NONE:
             partyMenu->levelUpLearnMovesLoopState = 6;
             break;
