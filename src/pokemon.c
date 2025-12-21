@@ -1843,15 +1843,18 @@ int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int 
     return ret;
 }
 
-u8 GetPercentProgressTowardsNextLevel(Pokemon *mon) {
-    BOOL decry = AcquireMonLock(mon);
-    u16 species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-    u8 level = (u8)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
-    u32 lo = GetMonExpBySpeciesAndLevel(species, level);
-    u32 hi = GetMonExpBySpeciesAndLevel(species, level + 1);
-    u32 cur = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
-    ReleaseMonLock(mon, decry);
-    return (u8)(100 * (cur - lo) / (hi - lo));
+u8 Pokemon_GetPercentToNextLevel(Pokemon *mon) {
+    BOOL recrypt = AcquireMonLock(mon);
+    u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u8 level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    u32 curLevelExp = GetMonExpBySpeciesAndLevel(species, level);
+    u32 nextLevelExp = GetMonExpBySpeciesAndLevel(species, level + 1);
+    u32 curExp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
+
+    ReleaseMonLock(mon, recrypt);
+    u8 percent = ((curExp - curLevelExp) * 100) / (nextLevelExp - curLevelExp);
+
+    return percent;
 }
 
 u32 CalcMonExpToNextLevel(Pokemon *mon) {
