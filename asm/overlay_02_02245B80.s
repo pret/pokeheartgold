@@ -3897,7 +3897,7 @@ _02247970:
 	mov r7, #1
 _02247994:
 	add r0, r5, #0
-	bl GenerateShinyPersonality
+	bl Personality_GenerateShiny
 	add r4, r0, #0
 	cmp r7, #0
 	beq _022479E2
@@ -3917,7 +3917,7 @@ _022479B8:
 	cmp r7, r0
 	bne _022479E2
 	add r0, r5, #0
-	bl GenerateShinyPersonality
+	bl Personality_GenerateShiny
 	add r4, r0, #0
 	b _022479A0
 _022479C8:
@@ -3929,7 +3929,7 @@ _022479C8:
 	cmp r0, r1
 	beq _022479E2
 	add r0, r5, #0
-	bl GenerateShinyPersonality
+	bl Personality_GenerateShiny
 	add r4, r0, #0
 	b _022479A0
 _022479E2:

@@ -81,7 +81,7 @@ u8 Species_GetGenderFromPersonality(u16 species, u32 personality);
 u8 Pokemon_IsShiny(Pokemon *mon);
 u8 BoxPokemon_IsShiny(BoxPokemon *boxMon);
 u8 Personality_IsShiny(u32 otID, u32 personality);
-u32 GenerateShinyPersonality(u32 otid);
+u32 Personality_GenerateShiny(u32 otID);
 u32 GetArceusTypeByHeldItemEffect(u16 plate);
 u8 BoxPokemon_GetForm(BoxPokemon *boxMon);
 u8 Pokemon_GetForm(Pokemon *mon);

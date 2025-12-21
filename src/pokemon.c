@@ -2111,26 +2111,36 @@ u8 Personality_IsShiny(u32 otID, u32 personality) {
     return (u8)SHINY_CHECK(otID, personality);
 }
 
-u32 GenerateShinyPersonality(u32 otid) {
-    int r4;
-    u16 r6;
-    u16 r5;
-    otid = (u32)((((otid & 0xFFFF0000) >> 16) ^ (otid & 0xFFFF)) >> 3u);
-    r6 = (u16)(LCRandom() & 7);
-    r5 = (u16)(LCRandom() & 7);
-    for (r4 = 0; r4 < 13; r4++) {
-        if (MaskOfFlagNo(r4) & otid) {
+u32 Personality_GenerateShiny(u32 otID) {
+    // 1. Pre-compute the XOR of the two halves of the trainer ID. We only
+    // care about the most-significant 13 bits, so truncate the last 3.
+    otID = (((otID & 0xFFFF0000) >> 16) ^ (otID & 0xFFFF)) >> 3u;
+
+    int i;
+
+    // 2. Randomize the least-significant 3-bits of each half of the
+    // generated personality.
+    u16 rndLow = LCRandom() & 7;
+    u16 rndHigh = LCRandom() & 7;
+
+    // 3. For each of the remaining 13 bits, pick some permutation of them
+    // across both halves to be set to 1 such that the XOR of their bits
+    // will XOR with the monOTID to 0.
+    for (i = 0; i < 13; i++) {
+        if (MaskOfFlagNo(i) & otID) {
+            // Trainer ID XORs to 1; set one of the two personality bits to 1
             if (LCRandom() & 1) {
-                r6 |= MaskOfFlagNo(r4 + 3);
+                rndLow |= MaskOfFlagNo(i + 3);
             } else {
-                r5 |= MaskOfFlagNo(r4 + 3);
+                rndHigh |= MaskOfFlagNo(i + 3);
             }
         } else if (LCRandom() & 1) {
-            r6 |= MaskOfFlagNo(r4 + 3);
-            r5 |= MaskOfFlagNo(r4 + 3);
+            // Trainer ID XORs to 0; set both of the two bits to either 0 or 1
+            rndLow |= MaskOfFlagNo(i + 3);
+            rndHigh |= MaskOfFlagNo(i + 3);
         }
     }
-    return (u32)((r5 << 16) | r6);
+    return rndLow | (rndHigh << 16);
 }
 
 void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing) {
