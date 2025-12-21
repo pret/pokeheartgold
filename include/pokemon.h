@@ -63,7 +63,7 @@ int Species_GetValue(int species, int param);
 u8 Pokemon_GetPercentToNextLevel(Pokemon *mon);
 u32 CalcMonExpToNextLevel(Pokemon *mon);
 u32 CalcBoxMonExpToNextLevel(BoxPokemon *boxMon);
-u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon);
+u32 Pokemon_GetCurrentLevelBaseExp(Pokemon *mon);
 u32 Species_GetExpAtLevel(int species, int level);
 void ExpRate_LoadTable(int rate, u32 *dest);
 u32 ExpRate_GetExpAtLevel(int rate, int level);

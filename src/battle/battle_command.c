@@ -6006,7 +6006,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             }
 
             u32 newExp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
-            data->unk30[3] = newExp - GetMonBaseExperienceAtCurrentLevel(mon);
+            data->unk30[3] = newExp - Pokemon_GetCurrentLevelBaseExp(mon);
             newExp += totalExp;
 
             if (slot == data->ctx->selectedMonIndex[expBattler]) {

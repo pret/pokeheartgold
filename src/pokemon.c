@@ -1868,9 +1868,9 @@ u32 CalcBoxMonExpToNextLevel(BoxPokemon *boxMon) {
     return hi - cur;
 }
 
-u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon) {
-    int species = (int)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-    int level = (int)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+u32 Pokemon_GetCurrentLevelBaseExp(Pokemon *mon) {
+    int species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    int level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
     return Species_GetExpAtLevel(species, level);
 }
 

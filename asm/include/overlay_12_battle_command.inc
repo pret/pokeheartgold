@@ -74,7 +74,7 @@
 .public SpeciesData_GetValue
 .public SpeciesData_Free
 .public Species_GetValue
-.public GetMonBaseExperienceAtCurrentLevel
+.public Pokemon_GetCurrentLevelBaseExp
 .public MonApplyFriendshipMod
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon
