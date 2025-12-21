@@ -142,7 +142,7 @@
 .public Pokemon_GetBoxMon
 .public Pokemon_SetMoveInSlot
 .public Pokemon_TryLevelUpMove
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public UpdateMonAbility
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C

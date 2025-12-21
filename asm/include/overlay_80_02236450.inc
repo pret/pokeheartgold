@@ -22,7 +22,7 @@
 .public Species_GetExpAtLevel
 .public Personality_GetNature
 .public Personality_IsShiny
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public MaskOfFlagNo
 .public Party_InitWithMaxSize
 .public Party_AddMon

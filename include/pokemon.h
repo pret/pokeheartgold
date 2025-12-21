@@ -99,14 +99,14 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
 u16 ReadFromPersonalPmsNarc(u16 species);
 u16 GetEggSpecies(u16 species);
 void Pokemon_SetMoveInSlot(Pokemon *mon, u16 move, u8 slot);
-void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest);
+void BoxPokemon_CopyToPokemon(const BoxPokemon *src, Pokemon *dest);
 u8 Party_GetMaxLevel(Party *party);
 u16 SpeciesToSinnohDexNo(u16 species);
 u16 SinnohDexNoToSpecies(u16 sinnoh_dex);
 u16 *LoadSpeciesToJohtoDexNoLUT(void);
-void CopyPokemonToPokemon(const Pokemon *src, Pokemon *dest);
-void CopyBoxPokemonToBoxPokemon(const BoxPokemon *src, BoxPokemon *dest);
-void CopyPokemonToBoxPokemon(const Pokemon *src, BoxPokemon *dest);
+void Pokemon_Copy(const Pokemon *src, Pokemon *dest);
+void BoxPokemon_Copy(const BoxPokemon *src, BoxPokemon *dest);
+void Pokemon_CopyToBoxPokemon(const Pokemon *src, BoxPokemon *dest);
 s8 MonGetFlavorPreference(Pokemon *mon, int flavor);
 s8 BoxMonGetFlavorPreference(BoxPokemon *boxMon, int flavor);
 s8 GetFlavorPreferenceFromPID(u32 personality, int flavor);

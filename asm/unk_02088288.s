@@ -2192,7 +2192,7 @@ _0208948A:
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl CopyBoxPokemonToPokemon
+	bl BoxPokemon_CopyToPokemon
 	b _020894B4
 _020894AE:
 	bl sub_0208A520
@@ -2633,7 +2633,7 @@ sub_020897F0: ; 0x020897F0
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl CopyBoxPokemonToPokemon
+	bl BoxPokemon_CopyToPokemon
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0

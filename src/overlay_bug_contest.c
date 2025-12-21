@@ -213,7 +213,7 @@ void BugContest_RestoreParty_RetrieveCaughtPokemon(BugContest *bugContest) {
     // Restore the player's party to its prior state, but keep the
     // state of the Pokemon you used intact.
     mon = Pokemon_New(bugContest->heapID);
-    CopyPokemonToPokemon(Party_GetMonByIndex(bugContest->party_cur, 0), mon);
+    Pokemon_Copy(Party_GetMonByIndex(bugContest->party_cur, 0), mon);
     Party_GetMonAprijuiceModifiers(bugContest->party_cur, &sub, 0);
     Party_Copy(bugContest->party_bak, bugContest->party_cur);
     Party_SafeCopyMonToSlot_ResetAprijuiceModifiers(bugContest->party_cur, bugContest->lead_mon_idx, mon);

@@ -29,7 +29,7 @@
 .public String_Delete
 .public String_Compare
 .public Pokemon_New
-.public CopyBoxPokemonToPokemon
+.public BoxPokemon_CopyToPokemon
 .public GetMoveAttr
 .public GetMoveMaxPP
 .public Pokedex_ConvertToCurrentDexNo

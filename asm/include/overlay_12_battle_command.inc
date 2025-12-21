@@ -81,7 +81,7 @@
 .public Pokemon_TryLevelUp
 .public Pokemon_SetMoveInSlot
 .public Pokemon_TryLevelUpMove
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public Party_MaskMonsWithPokerus
 .public Mon_UpdateGiratinaForm
 .public MaskOfFlagNo

@@ -2811,7 +2811,7 @@ _02076CE6:
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
 	add r1, r5, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	mov r0, #0x49
 	lsl r0, r0, #2
 	str r0, [sp]
@@ -3394,7 +3394,7 @@ sub_020771E8: ; 0x020771E8
 	add r5, r0, #0
 	ldr r0, [r4, #0x28]
 	add r1, r5, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #5

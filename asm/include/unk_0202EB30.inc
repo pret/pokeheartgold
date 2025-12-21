@@ -11,7 +11,7 @@
 .public sub_0202EC98
 .public Pokemon_Init
 .public Pokemon_GetData
-.public CopyBoxPokemonToPokemon
+.public BoxPokemon_CopyToPokemon
 .public OS_GetMacAddress
 .public OS_GetOwnerRtcOffset
 .public MIi_CpuClearFast

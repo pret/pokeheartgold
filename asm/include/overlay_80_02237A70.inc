@@ -23,7 +23,7 @@
 .public Pokemon_New
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public sub_0207217C
 .public SaveArray_Party_Init
 .public Party_InitWithMaxSize

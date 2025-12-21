@@ -17823,7 +17823,7 @@ _021EE8E6:
 	str r0, [sp]
 	add r0, r7, #0
 	add r1, r5, #0
-	bl CopyBoxPokemonToPokemon
+	bl BoxPokemon_CopyToPokemon
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0

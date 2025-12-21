@@ -1612,7 +1612,7 @@ sub_0208D0A4: ; 0x0208D0A4
 	add r4, r0, #0
 	add r0, r6, #0
 	add r1, r4, #0
-	bl CopyBoxPokemonToPokemon
+	bl BoxPokemon_CopyToPokemon
 	mov r0, #0x89
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

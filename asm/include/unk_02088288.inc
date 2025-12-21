@@ -109,7 +109,7 @@
 .public Pokemon_GetBoxMon
 .public Pokemon_SwapMoveSlots
 .public BoxPokemon_SwapMoveSlots
-.public CopyBoxPokemonToPokemon
+.public BoxPokemon_CopyToPokemon
 .public MonGetFlavorPreference
 .public Pokemon_HasPokerus
 .public Pokemon_IsImmuneToPokerus

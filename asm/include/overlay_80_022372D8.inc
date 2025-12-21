@@ -13,7 +13,7 @@
 .public Pokemon_New
 .public Pokemon_GetData
 .public Personality_IsShiny
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public UpdateMonAbility
 .public Party_InitWithMaxSize
 .public Party_GetMonByIndex

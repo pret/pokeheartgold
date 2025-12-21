@@ -1315,7 +1315,7 @@ _02246EEC:
 	bl BattleSystem_GetBugContestCaughtMon
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #0x28]
 	cmp r0, #0x16
 	bne _02246F0C

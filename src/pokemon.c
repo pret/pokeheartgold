@@ -3209,36 +3209,39 @@ BOOL Pokemon_HasMove(Pokemon *mon, u16 move) {
     return i != MAX_MON_MOVES;
 }
 
-void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
-    u32 sp0 = 0;
-    CAPSULE sp4;
-    struct Mail *mail;
+void BoxPokemon_CopyToPokemon(const BoxPokemon *src, Pokemon *dest) {
+    u32 zero = 0;
+
     dest->box = *src;
     if (dest->box.boxDecrypted) {
         dest->box.partyDecrypted = TRUE;
     }
-    Pokemon_SetData(dest, MON_DATA_STATUS, &sp0);
-    Pokemon_SetData(dest, MON_DATA_HP, &sp0);
-    Pokemon_SetData(dest, MON_DATA_MAX_HP, &sp0);
-    mail = Mail_New(HEAP_ID_DEFAULT);
+    Pokemon_SetData(dest, MON_DATA_STATUS, &zero);
+    Pokemon_SetData(dest, MON_DATA_HP, &zero);
+    Pokemon_SetData(dest, MON_DATA_MAX_HP, &zero);
+
+    struct Mail *mail = Mail_New(HEAP_ID_DEFAULT);
     Pokemon_SetData(dest, MON_DATA_MAIL, mail);
     Heap_Free(mail);
-    Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE_ID, &sp0);
-    MI_CpuClearFast(&sp4, sizeof(sp4));
-    Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE, &sp4);
+
+    CAPSULE capsule;
+    Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE_ID, &zero);
+    MI_CpuClearFast(&capsule, sizeof(capsule));
+    Pokemon_SetData(dest, MON_DATA_BALL_CAPSULE, &capsule);
+
     Pokemon_CalcLevelAndStats(dest);
 }
 
 u8 Party_GetMaxLevel(Party *party) {
-    int i;
-    int r7 = Party_GetCount(party);
+    int count = Party_GetCount(party);
     u8 ret = 1;
-    u8 level;
-    for (i = 0; i < r7; i++) {
+
+    for (int i = 0; i < count; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, i);
+
         if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE
             && !Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
-            level = (u8)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+            u8 level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
             if (level > ret) {
                 ret = level;
             }
@@ -3257,15 +3260,15 @@ u16 *LoadSpeciesToJohtoDexNoLUT(void) {
     return AllocAtEndAndReadWholeNarcMemberByIdPair(NARC_poketool_johtozukan, 0, HEAP_ID_3);
 }
 
-void CopyPokemonToPokemon(const Pokemon *src, Pokemon *dest) {
+void Pokemon_Copy(const Pokemon *src, Pokemon *dest) {
     *dest = *src;
 }
 
-void CopyBoxPokemonToBoxPokemon(const BoxPokemon *src, BoxPokemon *dest) {
+void BoxPokemon_Copy(const BoxPokemon *src, BoxPokemon *dest) {
     *dest = *src;
 }
 
-void CopyPokemonToBoxPokemon(const Pokemon *src, BoxPokemon *dest) {
+void Pokemon_CopyToBoxPokemon(const Pokemon *src, BoxPokemon *dest) {
     *dest = src->box;
 }
 
@@ -3821,7 +3824,7 @@ void SetMonPersonality(Pokemon *mon, u32 personality) {
     Pokemon *tmpMon;
 
     tmpMon = Pokemon_New(HEAP_ID_DEFAULT);
-    CopyPokemonToPokemon(mon, tmpMon);
+    Pokemon_Copy(mon, tmpMon);
     r4 = &GetSubstruct(&tmpMon->box, mon->box.personality, 0)->blockA;
     r6 = &GetSubstruct(&tmpMon->box, mon->box.personality, 1)->blockB;
     r7 = &GetSubstruct(&tmpMon->box, mon->box.personality, 2)->blockC;

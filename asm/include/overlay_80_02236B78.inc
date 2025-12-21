@@ -11,7 +11,7 @@
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
 .public Pokemon_New
-.public CopyPokemonToPokemon
+.public Pokemon_Copy
 .public SaveArray_Party_Init
 .public Party_InitWithMaxSize
 .public Party_RemoveMon

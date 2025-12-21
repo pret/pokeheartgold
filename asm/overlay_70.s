@@ -15794,7 +15794,7 @@ _0223F718:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	add r1, r5, #0
-	bl CopyBoxPokemonToPokemon
+	bl BoxPokemon_CopyToPokemon
 _0223F730:
 	ldr r0, [r4]
 	ldr r0, [r0, #0x1c]
@@ -18300,7 +18300,7 @@ ov70_022409C0: ; 0x022409C0
 	ldr r0, [r0, #0xc]
 	bl PCStorage_GetMonByIndexPair
 	add r1, r4, #0
-	bl CopyBoxPokemonToPokemon
+	bl BoxPokemon_CopyToPokemon
 	mov r2, #0x12
 	ldr r0, [r5]
 	lsl r2, r2, #4
@@ -20171,7 +20171,7 @@ ov70_022418A4: ; 0x022418A4
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add sp, #8
 	pop {r3, r4, r5, pc}
 _022418D4:

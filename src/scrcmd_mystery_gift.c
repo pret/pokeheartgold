@@ -289,7 +289,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
 #ifdef UBFIX
         GF_ASSERT(tmpPokemon != NULL);
 #endif
-        CopyPokemonToPokemon(pokemon, tmpPokemon);
+        Pokemon_Copy(pokemon, tmpPokemon);
         Pokemon_SetData(tmpPokemon, MON_DATA_OT_NAME_STRING, playerName);
         Pokemon_SetData(tmpPokemon, MON_DATA_OT_ID, &trainerId);
         Pokemon_SetData(tmpPokemon, MON_DATA_OT_GENDER, &gender);

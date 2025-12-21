@@ -279,7 +279,7 @@ static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, Traine
     s32 partyCount = Party_GetCount(party);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], PARTY_SIZE);
     for (i = 0; i < partyCount; i++) {
-        CopyPokemonToPokemon(Party_GetMonByIndex(party, i), mon);
+        Pokemon_Copy(Party_GetMonByIndex(party, i), mon);
         if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) > MAX_TRAINER_HOUSE_LEVEL) {
             u32 exp = Species_GetExpAtLevel(Pokemon_GetData(mon, MON_DATA_SPECIES, NULL), MAX_TRAINER_HOUSE_LEVEL);
             Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);

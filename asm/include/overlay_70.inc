@@ -238,8 +238,8 @@
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxMon
 .public GetMonEvolution
-.public CopyBoxPokemonToPokemon
-.public CopyPokemonToPokemon
+.public BoxPokemon_CopyToPokemon
+.public Pokemon_Copy
 .public Mon_UpdateShayminForm
 .public BoxMon_UpdateShayminForm
 .public Pokemon_RemoveCapsule

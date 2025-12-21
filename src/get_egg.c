@@ -101,7 +101,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     }
     mood = 0;
     Pokemon_SetData(partyMon, MON_DATA_MOOD, &mood);
-    CopyPokemonToBoxPokemon(partyMon, boxMon);
+    Pokemon_CopyToBoxPokemon(partyMon, boxMon);
     BoxMon_UpdateShayminForm(boxMon, SHAYMIN_LAND);
     DaycareMon_SetSteps(daycareMon, 0);
     Party_RemoveMon(party, partyIdx);
@@ -169,7 +169,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     BufferBoxMonNickname(msgFmt, 0, boxMon);
     species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
 
-    CopyBoxPokemonToPokemon(boxMon, mon);
+    BoxPokemon_CopyToPokemon(boxMon, mon);
     if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
         exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
         exp += DaycareMon_GetSteps(daycareMon);
@@ -202,7 +202,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
 
     tmpMon = Pokemon_New(HEAP_ID_FIELD2);
     boxmon_tmp = Pokemon_GetBoxMon(tmpMon);
-    CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
+    BoxPokemon_Copy(boxMon, boxmon_tmp);
     exp = BoxPokemon_GetData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
     exp += steps;
     BoxPokemon_SetData(boxmon_tmp, MON_DATA_EXPERIENCE, &exp);
@@ -1090,7 +1090,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     Pokemon_SetData(tmpMon, MON_DATA_MET_YEAR, &metYear);
     Pokemon_SetData(tmpMon, MON_DATA_MET_MONTH, &metMonth);
     Pokemon_SetData(tmpMon, MON_DATA_MET_DAY, &metDay);
-    CopyPokemonToPokemon(tmpMon, mon);
+    Pokemon_Copy(tmpMon, mon);
     String_Delete(string);
     Heap_Free(tmpMon);
 }

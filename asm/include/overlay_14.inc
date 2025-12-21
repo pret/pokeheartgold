@@ -219,8 +219,8 @@
 .public BoxPokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public Pokemon_GetBoxMon
-.public CopyBoxPokemonToPokemon
-.public CopyPokemonToPokemon
+.public BoxPokemon_CopyToPokemon
+.public Pokemon_Copy
 .public BoxMon_UpdateArceusForm
 .public BoxMon_UpdateGiratinaForm
 .public Mon_UpdateShayminForm

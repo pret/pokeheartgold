@@ -139,10 +139,10 @@ sub_0202EC14: ; 0x0202EC14
 	mov r1, #0xec
 	mul r1, r2
 	add r1, r3, r1
-	ldr r3, _0202EC24 ; =CopyBoxPokemonToPokemon
+	ldr r3, _0202EC24 ; =BoxPokemon_CopyToPokemon
 	bx r3
 	nop
-_0202EC24: .word CopyBoxPokemonToPokemon
+_0202EC24: .word BoxPokemon_CopyToPokemon
 	thumb_func_end sub_0202EC14
 
 	thumb_func_start sub_0202EC28

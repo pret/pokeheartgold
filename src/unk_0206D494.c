@@ -423,7 +423,7 @@ static BOOL Task_BugContest_PromptSwapPokemon(TaskManager *taskManager) {
     case 1:
         if (FieldSystem_ApplicationIsRunning(fieldSystem) == FALSE) {
             if (unkStruct->unk08->unk10 != contest->mon) {
-                CopyPokemonToPokemon(unkStruct->newlyCaughtMon, contest->mon);
+                Pokemon_Copy(unkStruct->newlyCaughtMon, contest->mon);
             }
             if (!contest->caught_poke) {
                 contest->caught_poke = TRUE;

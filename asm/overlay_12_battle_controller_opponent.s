@@ -13864,7 +13864,7 @@ _0225F614:
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #4]
 	ldrb r1, [r5, #0x1c]
 	add r0, r0, r6
@@ -13904,7 +13904,7 @@ _0225F66A:
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #4]
 	ldrb r1, [r5, #0x1c]
 	add r0, r0, r7

@@ -273,7 +273,7 @@
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public Species_SanitizeFormId
 .public Pokemon_GetBoxMon
-.public CopyBoxPokemonToPokemon
+.public BoxPokemon_CopyToPokemon
 .public Mon_UpdateShayminForm
 .public ChangePersonalityToNatureGenderAndAbility
 .public PCStorage_PlaceMonInBoxByIndexPair
