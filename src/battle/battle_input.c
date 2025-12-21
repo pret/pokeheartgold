@@ -1913,7 +1913,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
             if (caughtMon != NULL) {
                 int species = Pokemon_GetData(caughtMon, MON_DATA_SPECIES, NULL);
                 if (species != SPECIES_NONE) {
-                    int gender = GetMonGender(caughtMon);
+                    int gender = Pokemon_GetGender(caughtMon);
 
                     switch (gender) {
                     case MON_MALE:

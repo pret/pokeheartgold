@@ -102,7 +102,7 @@
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public Pokemon_GetData
-.public GetMonGender
+.public Pokemon_GetGender
 .public Mon_GetBoxMon
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

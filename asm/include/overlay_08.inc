@@ -104,7 +104,7 @@
 .public String_Delete
 .public Pokemon_GetData
 .public Species_GetExpAtLevel
-.public GetMonGender
+.public Pokemon_GetGender
 .public Mon_GetBoxMon
 .public GetMoveAttr
 .public GetMoveMaxPP

@@ -345,7 +345,7 @@ _021F7524:
 	bl Pokemon_GetData
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
-	bl GetMonGender
+	bl Pokemon_GetGender
 	str r0, [sp, #8]
 	lsl r1, r6, #0x10
 	ldr r2, [sp, #8]

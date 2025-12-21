@@ -1047,7 +1047,7 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
     } else {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = TRUE;
     }
-    partyMenu->monsDrawState[partySlot].gender = GetMonGender(mon);
+    partyMenu->monsDrawState[partySlot].gender = Pokemon_GetGender(mon);
     partyMenu->monsDrawState[partySlot].active = TRUE;
     partyMenu->monsDrawState[partySlot].status = (u8)Pokemon_GetStatusIconId(mon);
     PartyMenu_MonSuperContestEligibilityCheck(partyMenu, mon, partySlot);

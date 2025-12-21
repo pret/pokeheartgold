@@ -227,7 +227,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
     }
     SetMonPersonality(pokemon, rand);
 
-    int gender = GetMonGender(pokemon);
+    int gender = Pokemon_GetGender(pokemon);
     Pokemon_SetData(pokemon, MON_DATA_GENDER, &gender);
 
     gender = Pokemon_GetData(pokemon, MON_DATA_HP_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_ATK_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_DEF_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPEED_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPATK_IV, NULL) + Pokemon_GetData(pokemon, MON_DATA_SPDEF_IV, NULL);

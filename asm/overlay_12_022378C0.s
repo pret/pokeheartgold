@@ -1831,7 +1831,7 @@ _02238CE2:
 	add r1, r5, #0
 	bl Party_GetMonByIndex
 	add r7, r0, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	str r0, [sp, #0x44]
 	add r0, r7, #0
 	mov r1, #0x6f

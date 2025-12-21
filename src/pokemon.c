@@ -2056,7 +2056,7 @@ void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location) {
     Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
 }
 
-u8 GetMonGender(Pokemon *mon) {
+u8 Pokemon_GetGender(Pokemon *mon) {
     return BoxPokemon_GetGender(&mon->box);
 }
 

@@ -5500,7 +5500,7 @@ ov81_022409B0: ; 0x022409B0
 	cmp r0, #1
 	bne _02240AC8
 	add r0, r7, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	add r7, r0, #0
 	add r0, r4, #0
 	bl GetWindowWidth

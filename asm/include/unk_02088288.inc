@@ -102,7 +102,7 @@
 .public BoxPokemon_GetData
 .public Species_GetExpAtLevel
 .public GetMonNature
-.public GetMonGender
+.public Pokemon_GetGender
 .public MonIsShiny
 .public sub_02070D90
 .public sub_02070D94

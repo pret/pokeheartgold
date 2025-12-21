@@ -4743,7 +4743,7 @@ _0221E036:
 	ldr r0, _0221E074 ; =0x00000222
 	strb r1, [r7, r0]
 	add r0, r4, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldr r1, _0221E078 ; =0x00000221
 	strb r0, [r5, r1]
 	add r0, r4, #0

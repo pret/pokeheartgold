@@ -1538,7 +1538,7 @@ _021E64EA:
 	bl ov111_021E6934
 	add r0, r6, #0
 	ldr r7, _021E65C8 ; =0x00070800
-	bl GetMonGender
+	bl Pokemon_GetGender
 	cmp r0, #0
 	beq _021E653A
 	cmp r0, #1

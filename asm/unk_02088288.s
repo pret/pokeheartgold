@@ -2773,7 +2773,7 @@ _0208992C:
 	strb r0, [r4, #0x12]
 _02089934:
 	add r0, r5, #0
-	bl GetMonGender
+	bl Pokemon_GetGender
 	ldrb r1, [r4, #0x13]
 	mov r2, #3
 	bic r1, r2

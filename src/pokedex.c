@@ -398,7 +398,7 @@ static void Pokedex_TryAppendSeenForm(Pokedex *pokedex, u16 species, Pokemon *mo
         break;
     case SPECIES_PICHU:
         if (form == 0) {
-            if (GetMonGender(mon) == MON_MALE) {
+            if (Pokemon_GetGender(mon) == MON_MALE) {
                 form = 0;
             } else {
                 form = 1;
@@ -776,7 +776,7 @@ void Pokedex_SetMonSeenFlag(Pokedex *pokedex, Pokemon *mon) {
 
     species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
-    gender = GetMonGender(mon);
+    gender = Pokemon_GetGender(mon);
 
     ASSERT_POKEDEX(pokedex);
     if (!DexSpeciesIsInvalid(species)) {
@@ -806,7 +806,7 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
     species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     language = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
     personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
-    gender = GetMonGender(mon);
+    gender = Pokemon_GetGender(mon);
 
     ASSERT_POKEDEX(pokedex);
     if (!DexSpeciesIsInvalid(species)) {
