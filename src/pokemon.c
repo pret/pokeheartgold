@@ -2724,20 +2724,20 @@ void sub_02070D84(s32 trainer_class, s32 battlerSide, struct UnkStruct_02070D3C 
     sub_02070D3C(trainer_class, battlerSide, FALSE, a2);
 }
 
-u32 sub_02070D90(void) {
+u32 Pokemon_Size(void) {
     return sizeof(Pokemon);
 }
 
-u32 sub_02070D94(void) {
+u32 BoxPokemon_Size(void) {
     return sizeof(BoxPokemon);
 }
 
-u8 GetMonUnownLetter(Pokemon *mon) {
-    return GetBoxMonUnownLetter(&mon->box);
+u8 Pokemon_GetForm(Pokemon *mon) {
+    return BoxPokemon_GetForm(&mon->box);
 }
 
-u8 GetBoxMonUnownLetter(BoxPokemon *boxMon) {
-    return (u8)BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
+u8 BoxPokemon_GetForm(BoxPokemon *boxMon) {
+    return BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
 }
 
 BoxPokemon *Pokemon_GetBoxMon(Pokemon *mon) {

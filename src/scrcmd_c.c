@@ -1593,7 +1593,7 @@ BOOL ScrCmd_574(ScriptContext *ctx) {
 BOOL ScrCmd_136(ScriptContext *ctx) {
     u16 partyIdx = ScriptGetVar(ctx);
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = GetMonUnownLetter(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
+    *p_dest = Pokemon_GetForm(Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx));
     return FALSE;
 }
 

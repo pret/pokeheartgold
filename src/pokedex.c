@@ -823,7 +823,7 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
         }
         Pokedex_TryAppendSeenForm(pokedex, species, mon);
         if (species == SPECIES_UNOWN) {
-            Pokedex_TryAppendUnownLetter(pokedex, GetMonUnownLetter(mon), TRUE);
+            Pokedex_TryAppendUnownLetter(pokedex, Pokemon_GetForm(mon), TRUE);
         }
         Pokedex_SetCaughtLanguage(pokedex, species, language);
         if (language != GAME_LANGUAGE) {

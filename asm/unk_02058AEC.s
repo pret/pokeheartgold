@@ -1493,7 +1493,7 @@ sub_020596A8: ; 0x020596A8
 	bl SaveArray_Party_Get
 	str r0, [sp]
 	ldr r4, [r7, #0x4c]
-	bl sub_02070D90
+	bl Pokemon_Size
 	add r6, r0, #0
 	lsl r0, r6, #1
 	add r0, r6, r0
@@ -1578,7 +1578,7 @@ _02059744:
 sub_02059748: ; 0x02059748
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02070D90
+	bl Pokemon_Size
 	lsl r1, r0, #1
 	ldr r2, [r4, #0x48]
 	add r0, r0, r1
@@ -1639,7 +1639,7 @@ _020597A4:
 sub_020597A8: ; 0x020597A8
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02070D90
+	bl Pokemon_Size
 	add r6, r0, #0
 	ldr r0, [r5, #0x50]
 	mov r1, #3
@@ -1663,7 +1663,7 @@ _020597BC:
 sub_020597D4: ; 0x020597D4
 	push {r4, r5, r6, lr}
 	add r6, r0, #0
-	bl sub_02070D90
+	bl Pokemon_Size
 	add r4, r0, #0
 	add r0, r6, #0
 	add r0, #0x84
@@ -1716,7 +1716,7 @@ sub_02059820: ; 0x02059820
 	mov r3, #4
 	bl NewMsgDataFromNarc
 	str r0, [sp, #0x18]
-	bl sub_02070D90
+	bl Pokemon_Size
 	str r0, [sp, #0x1c]
 	mov r0, #9
 	str r0, [sp]
@@ -2074,7 +2074,7 @@ _02059B06:
 	thumb_func_start sub_02059B08
 sub_02059B08: ; 0x02059B08
 	push {r3, lr}
-	bl sub_02070D90
+	bl Pokemon_Size
 	lsl r1, r0, #1
 	add r0, r0, r1
 	add r0, r0, #4

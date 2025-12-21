@@ -85,7 +85,7 @@ u32 GetBattleMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
 static u16 BoxMonGetForm(BoxPokemon *boxMon) {
     switch (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL)) {
     case SPECIES_UNOWN:
-        return GetBoxMonUnownLetter(boxMon);
+        return BoxPokemon_GetForm(boxMon);
     case SPECIES_DEOXYS:
     case SPECIES_SHELLOS:
     case SPECIES_GASTRODON:
