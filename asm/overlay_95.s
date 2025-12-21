@@ -489,7 +489,7 @@ ov95_021E5CAC: ; 0x021E5CAC
 	bl String_New
 	add r4, r0, #0
 	ldr r0, [sp, #0x10]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r5, #0
 	mov r1, #0

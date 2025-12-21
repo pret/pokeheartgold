@@ -194,7 +194,7 @@
 .public Species_GetFormValue
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public CopyPokemonToPokemon
 .public Mon_UpdateShayminForm
 .public Pokemon_RemoveCapsule

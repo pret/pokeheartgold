@@ -2096,7 +2096,7 @@ u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 unus
     }
 }
 
-BOOL BoxMonIsHoldingMail(BoxPokemon *boxMon) {
+BOOL BoxPokemon_IsHoldingMail(BoxPokemon *boxMon) {
     return ItemIdIsMail(BoxPokemon_GetData(boxMon, MON_DATA_HELD_ITEM, NULL));
 }
 
@@ -2740,7 +2740,7 @@ u8 GetBoxMonUnownLetter(BoxPokemon *boxMon) {
     return (u8)BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
 }
 
-BoxPokemon *Mon_GetBoxMon(Pokemon *mon) {
+BoxPokemon *Pokemon_GetBoxMon(Pokemon *mon) {
     return &mon->box;
 }
 
@@ -3045,7 +3045,7 @@ void InitBoxMonMoveset(BoxPokemon *boxMon) {
 }
 
 u32 TryAppendMonMove(Pokemon *mon, u16 move) {
-    return TryAppendBoxMonMove(Mon_GetBoxMon(mon), move);
+    return TryAppendBoxMonMove(Pokemon_GetBoxMon(mon), move);
 }
 
 u32 TryAppendBoxMonMove(BoxPokemon *boxMon, u16 move) {
@@ -3070,7 +3070,7 @@ u32 TryAppendBoxMonMove(BoxPokemon *boxMon, u16 move) {
 }
 
 void DeleteMonFirstMoveAndAppend(Pokemon *mon, u16 move_id) {
-    DeleteBoxMonFirstMoveAndAppend(Mon_GetBoxMon(mon), move_id);
+    DeleteBoxMonFirstMoveAndAppend(Pokemon_GetBoxMon(mon), move_id);
 }
 
 void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move) {
@@ -4241,7 +4241,7 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
         DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
     }
-    boxMon = Mon_GetBoxMon(mon);
+    boxMon = Pokemon_GetBoxMon(mon);
     dbA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
     dbB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
     dbC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
@@ -4318,7 +4318,7 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
     int i;
 
     MI_CpuClearFast(mon, sizeof(Pokemon));
-    boxMon = Mon_GetBoxMon(mon);
+    boxMon = Pokemon_GetBoxMon(mon);
     dbA = &GetSubstruct(boxMon, src->personality, 0)->blockA;
     dbB = &GetSubstruct(boxMon, src->personality, 1)->blockB;
     dbC = &GetSubstruct(boxMon, src->personality, 2)->blockC;
@@ -4993,7 +4993,7 @@ void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, struct PokeathlonTodayP
 }
 
 void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformance *dest) {
-    CalcBoxMonPokeathlonPerformance(Mon_GetBoxMon(mon), dest);
+    CalcBoxMonPokeathlonPerformance(Pokemon_GetBoxMon(mon), dest);
 }
 
 void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapID) {
@@ -5025,5 +5025,5 @@ void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokem
 }
 
 void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapID) {
-    CalcBoxmonPokeathlonStars(dest, Mon_GetBoxMon(mon), aprijuice, heapID);
+    CalcBoxmonPokeathlonStars(dest, Pokemon_GetBoxMon(mon), aprijuice, heapID);
 }

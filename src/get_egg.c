@@ -96,7 +96,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     playerNamePtr = PlayerProfile_GetNamePtr(Save_PlayerData_GetProfile(saveData));
     Pokemon_GetData(partyMon, MON_DATA_NICKNAME, nickname);
-    if (BoxMonIsHoldingMail(Mon_GetBoxMon(partyMon))) {
+    if (BoxPokemon_IsHoldingMail(Pokemon_GetBoxMon(partyMon))) {
         Pokemon_GetData(partyMon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
     }
     mood = 0;
@@ -176,7 +176,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
         Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
         Daycare_LearnLevelUpMoves(mon);
     }
-    if (BoxMonIsHoldingMail(boxMon)) {
+    if (BoxPokemon_IsHoldingMail(boxMon)) {
         Pokemon_SetData(mon, MON_DATA_MAIL, DaycareMail_GetMailPtr(daycareMail));
     }
     Party_AddMon(party, mon);
@@ -201,7 +201,7 @@ static int GetDaycareUpdatedLevel(BoxPokemon *boxMon, u32 steps) {
     u32 level;
 
     tmpMon = Pokemon_New(HEAP_ID_FIELD2);
-    boxmon_tmp = Mon_GetBoxMon(tmpMon);
+    boxmon_tmp = Pokemon_GetBoxMon(tmpMon);
     CopyBoxPokemonToBoxPokemon(boxMon, boxmon_tmp);
     exp = BoxPokemon_GetData(boxmon_tmp, MON_DATA_EXPERIENCE, NULL);
     exp += steps;

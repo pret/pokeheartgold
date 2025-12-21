@@ -943,7 +943,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     if (data->type == NAME_SCREEN_POKEMON) {
         Pokemon *mon = Pokemon_New(HEAP_ID_NAMING_SCREEN);
         Pokemon_InitWith(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
-        BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonSpeciesName(data->msgFormat, 0, Pokemon_GetBoxMon(mon));
         Heap_Free(mon);
     }
     if (args->battleMsgId != 0) {
@@ -990,7 +990,7 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
         if (data->textCursorPos == 0 || NamingScreen_PMCharArrayIsAllSpaces(data->entryBuf)) {
             Pokemon *mon = Pokemon_New(HEAP_ID_NAMING_SCREEN);
             Pokemon_InitWith(mon, data->playerGenderOrMonSpecies, 1, 0, 0, 0, 0, 0);
-            BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonSpeciesName(data->msgFormat, 0, Pokemon_GetBoxMon(mon));
             Heap_Free(mon);
         } else {
             data->entryBuf[data->textCursorPos] = EOS;

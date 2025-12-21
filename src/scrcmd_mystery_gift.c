@@ -315,7 +315,7 @@ static void MGMessageSuccess_GiveMon(struct GetMysteryGiftGmmState *gmmState, u1
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00007;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+    BufferBoxMonSpeciesNameWithArticle(gmmState->msgFormat, 1, Pokemon_GetBoxMon(&mgData->mon));
 }
 
 static void MGMessageFailure_GiveMon(struct GetMysteryGiftGmmState *gmmState, u16 *pMsgBank, u16 *pMsgNum) {
@@ -332,7 +332,7 @@ static void MGMessageSuccess_Egg(struct GetMysteryGiftGmmState *gmmState, u16 *p
     *pMsgBank = NARC_msg_msg_0209_bin;
     *pMsgNum = msg_0209_00008;
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
-    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Mon_GetBoxMon(&mgData->mon));
+    BufferBoxMonSpeciesName(gmmState->msgFormat, 1, Pokemon_GetBoxMon(&mgData->mon));
 }
 
 static BOOL MGCheck_Item(FieldSystem *fieldSys, MysteryGiftData *unused) {

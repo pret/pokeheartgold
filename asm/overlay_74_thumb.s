@@ -17844,7 +17844,7 @@ ov74_0223195C: ; 0x0223195C
 	bl Save_MigratedPokemon_Get
 	str r0, [sp]
 	add r0, sp, #8
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r6, r0, #0
 	mov r4, #0
 	add r5, r7, #0

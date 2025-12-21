@@ -142,7 +142,7 @@
 .public sub_0203A880
 .public Pokemon_GetData
 .public Pokemon_GetGender
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public Pokemon_GetIconNaix
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

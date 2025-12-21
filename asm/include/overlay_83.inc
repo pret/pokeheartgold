@@ -195,7 +195,7 @@
 .public Pokemon_GetNature
 .public Pokemon_GetGender
 .public GetBoxmonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public GetMoveMaxPP
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette

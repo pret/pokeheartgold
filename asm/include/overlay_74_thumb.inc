@@ -276,7 +276,7 @@
 .public BoxPokemon_GetGender
 .public Pokemon_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

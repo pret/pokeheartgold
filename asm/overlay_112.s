@@ -10389,7 +10389,7 @@ _021EAEAE:
 	mov r0, #0x9a
 	bl Pokemon_New
 	add r6, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r4, r0, #0
 	ldr r0, _021EAF28 ; =0x0001E440
 	add r1, r4, #0
@@ -17683,7 +17683,7 @@ ov112_021EE7A8: ; 0x021EE7A8
 	mov r0, #0x9a
 	bl Pokemon_New
 	add r4, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r6, r0, #0
 	ldr r0, _021EE89C ; =0x0001E440
 	add r2, sp, #8
@@ -17740,7 +17740,7 @@ _021EE81E:
 	add r2, r5, r7
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EE8B0 ; =0x0001E438
@@ -18125,7 +18125,7 @@ _021EEB3A:
 	add r2, r6, #0
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EECC4 ; =0x0001E438
@@ -18134,7 +18134,7 @@ _021EEB3A:
 	mov r3, #0xe9
 	bl BoxMonSetTrainerMemo
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, sp, #0x24
@@ -18182,7 +18182,7 @@ _021EEBA4:
 	add r0, r4, #0
 	bl Pokemon_Init
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r6, r0, #0
 	bl MTRandom
 	mov r1, #0x18
@@ -18214,7 +18214,7 @@ _021EEBA4:
 	mov r1, #0x91
 	bl BoxPokemon_SetData
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r3, _021EECE0 ; =0x0000AD1A

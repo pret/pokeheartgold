@@ -93,7 +93,7 @@ void DeleteBoxMonFirstMoveAndAppend(BoxPokemon *boxMon, u16 move);
 void LoadLevelUpLearnset_HandleAlternateForm(int species, int form, u16 *levelUpLearnset);
 void MonSwapMoves(Pokemon *mon, int a, int b);
 void BoxMonSwapMoves(BoxPokemon *boxMon, int a, int b);
-BoxPokemon *Mon_GetBoxMon(Pokemon *mon);
+BoxPokemon *Pokemon_GetBoxMon(Pokemon *mon);
 
 u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *method_ret);
 u16 ReadFromPersonalPmsNarc(u16 species);
@@ -137,7 +137,7 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID);
 int Species_GetFormValueFromNarc(NARC *narc, int species, int form, int param);
 u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat);
 u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 unused_species, u32 pid);
-BOOL BoxMonIsHoldingMail(BoxPokemon *boxMon);
+BOOL BoxPokemon_IsHoldingMail(BoxPokemon *boxMon);
 void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing);
 void sub_02070130(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing);
 void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14);
@@ -155,7 +155,7 @@ void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C 
 void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
 u32 sub_02070D90(void);
 u32 sub_02070D94(void);
-BoxPokemon *Mon_GetBoxMon(Pokemon *mon);
+BoxPokemon *Pokemon_GetBoxMon(Pokemon *mon);
 BOOL Pokemon_TryLevelUp(Pokemon *mon);
 void InitBoxMonMoveset(BoxPokemon *boxMon);
 void MonSetMoveInSlot_ResetPpUp(Pokemon *mon, u16 move, u8 slot);

@@ -1432,7 +1432,7 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     Window *windows = &data->windows[windowIdx];
     RegisterHofMon *hofMon = &data->mons[monIdx];
     Pokemon *mon = hofMon->mon;
-    BoxPokemon *boxmon = Mon_GetBoxMon(mon);
+    BoxPokemon *boxmon = Pokemon_GetBoxMon(mon);
 
     FillWindowPixelBuffer(&windows[0], 0);
     ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->strbuf1);

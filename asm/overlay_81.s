@@ -4350,7 +4350,7 @@ _02240114:
 	ldrh r1, [r4, r1]
 	add r1, r1, #2
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #1
@@ -4361,7 +4361,7 @@ _02240114:
 	add r1, r1, #6
 	ldrh r1, [r4, r1]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r4, #0
 	mov r1, #2
@@ -5456,7 +5456,7 @@ ov81_022409B0: ; 0x022409B0
 	bl NewString_ReadMsgData
 	str r0, [sp, #0x1c]
 	add r0, r7, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r5, #0x20]
 	mov r1, #0

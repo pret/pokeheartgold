@@ -928,8 +928,8 @@ static BOOL Task_WirelessTrade(TaskManager *taskman) {
         break;
     case WIRELESS_TRADE_STATE_4:
         data->tradeSequence.partnerProfile = data->wirelessTradeSelectMon.partnerProfile;
-        data->tradeSequence.unk0 = Mon_GetBoxMon(data->wirelessTradeSelectMon.unk38);
-        data->tradeSequence.unk4 = Mon_GetBoxMon(data->wirelessTradeSelectMon.unk3C);
+        data->tradeSequence.unk0 = Pokemon_GetBoxMon(data->wirelessTradeSelectMon.unk38);
+        data->tradeSequence.unk4 = Pokemon_GetBoxMon(data->wirelessTradeSelectMon.unk3C);
         data->tradeSequence.options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
         data->tradeSequence.unk10 = 1;
 

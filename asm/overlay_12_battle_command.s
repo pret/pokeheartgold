@@ -1401,7 +1401,7 @@ _02246F7E:
 	bl BattleSystem_SetPokedexCaught
 _02246FB4:
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]
@@ -3964,7 +3964,7 @@ _022483BC:
 	add r6, r0, #0
 _022483C6:
 	ldr r0, [sp, #0x18]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0

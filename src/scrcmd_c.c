@@ -4304,7 +4304,7 @@ u32 sub_020467A8(SaveData *saveData) {
     }
 
     Pokemon *walkerMon = Pokemon_New(HEAP_ID_FIELD3);
-    BoxPokemon *walkerBoxMon = Mon_GetBoxMon(walkerMon);
+    BoxPokemon *walkerBoxMon = Pokemon_GetBoxMon(walkerMon);
     POKEWALKER *pokeWalker = Save_Pokewalker_Get(saveData);
     if (Pokewalker_TryGetBoxMon(pokeWalker, walkerBoxMon)) {
         if (BoxPokemon_GetData(walkerBoxMon, MON_DATA_SPECIES, NULL) == SPECIES_ROTOM && !BoxPokemon_GetData(walkerBoxMon, MON_DATA_IS_EGG, NULL)) {

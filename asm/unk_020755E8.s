@@ -1345,7 +1345,7 @@ _02076038:
 	ldrb r1, [r1]
 	bl PlayCry
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -1762,13 +1762,13 @@ _020763FC:
 	ldr r0, [r4, #0x28]
 	bl Pokemon_CalcLevelAndStats
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	bl BufferBoxMonNickname
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #1
@@ -1875,7 +1875,7 @@ _02076508:
 	pop {r4, pc}
 _0207651C:
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -1902,7 +1902,7 @@ _0207651C:
 	pop {r4, pc}
 _02076558:
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -1933,7 +1933,7 @@ _02076558:
 	pop {r4, pc}
 _0207659C:
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -2263,7 +2263,7 @@ _02076854:
 	pop {r4, pc}
 _02076866:
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -2343,7 +2343,7 @@ _020768E0:
 	pop {r4, pc}
 _02076906:
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -2399,7 +2399,7 @@ _02076958:
 	pop {r4, pc}
 _0207697E:
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0
@@ -2673,7 +2673,7 @@ _02076BB8:
 	cmp r0, #0
 	bne _02076C76
 	ldr r0, [r4, #0x28]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0xc]
 	mov r1, #0

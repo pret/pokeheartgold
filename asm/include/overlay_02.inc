@@ -328,7 +328,7 @@
 .public Species_GetGenderFromPersonality
 .public GenerateShinyPersonality
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public WildMonSetRandomHeldItem
 .public CalcMonPokeathlonStars
 .public EnemyTrainerSet_Init

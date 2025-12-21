@@ -979,7 +979,7 @@ _02059274:
 	ldrb r1, [r1]
 	ldr r0, [r4, #0x50]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r4, #0x28]
 	mov r1, #1

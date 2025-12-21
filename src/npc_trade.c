@@ -163,8 +163,8 @@ void NPCTrade_CreateTradeAnim(FieldSystem *fieldSystem, NPCTradeAppData *work, i
     _CreateTradeMon(work->mon, work->trade_dat, Pokemon_GetData(my_poke, MON_DATA_LEVEL, NULL), work->tradeno, fieldSystem->location->mapId, 1, work->heapID);
     CopyPokemonToPokemon(my_poke, my_mon_buf);
     CopyPokemonToPokemon(work->mon, trade_mon_buf);
-    anim_work->my_boxmon = Mon_GetBoxMon(my_mon_buf);
-    anim_work->trade_boxmon = Mon_GetBoxMon(trade_mon_buf);
+    anim_work->my_boxmon = Pokemon_GetBoxMon(my_mon_buf);
+    anim_work->trade_boxmon = Pokemon_GetBoxMon(trade_mon_buf);
     anim_work->trade_profile = work->profile;
     anim_work->is_ingame = 1;
     anim_work->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);

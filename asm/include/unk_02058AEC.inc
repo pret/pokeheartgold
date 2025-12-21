@@ -128,7 +128,7 @@
 .public MapObject_IsMovementPaused
 .public Pokemon_GetData
 .public sub_02070D90
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public SaveArray_Party_Alloc
 .public Party_InitWithMaxSize
 .public Party_AddMon

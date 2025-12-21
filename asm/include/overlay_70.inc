@@ -236,7 +236,7 @@
 .public Species_GetValue
 .public BoxPokemon_CalcLevel
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public GetMonEvolution
 .public CopyBoxPokemonToPokemon
 .public CopyPokemonToPokemon

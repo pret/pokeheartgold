@@ -170,7 +170,7 @@ _021E5A20:
 	mov r3, #0x48
 	bl ov111_021E6738
 	add r0, r5, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r6, #0
 	mov r1, #0
@@ -405,13 +405,13 @@ ov111_021E5BE4: ; 0x021E5BE4
 	mov r3, #0x70
 	bl ov111_021E6738
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #0
 	bl BufferBoxMonSpeciesName
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #1
@@ -1523,7 +1523,7 @@ _021E64EA:
 	bl Pokemon_GetData
 	str r0, [sp, #0xc]
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	add r0, r7, #0
 	mov r1, #0

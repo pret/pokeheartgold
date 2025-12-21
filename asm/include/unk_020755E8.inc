@@ -139,7 +139,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public GetPokemonSpriteCharAndPlttNarcIds
-.public Mon_GetBoxMon
+.public Pokemon_GetBoxMon
 .public MonSetMoveInSlot
 .public MonTryLearnMoveOnLevelUp
 .public CopyPokemonToPokemon

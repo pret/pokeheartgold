@@ -2233,7 +2233,7 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
             }
 
             pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, battlerId, menu->targetMons[battlerId].selectedMon);
-            boxMon = Mon_GetBoxMon(pokemon);
+            boxMon = Pokemon_GetBoxMon(pokemon);
 
             BufferBoxMonNickname(messageFormat, 0, boxMon);
             StringExpandPlaceholders(messageFormat, strPokemonName, strGenderMarker);

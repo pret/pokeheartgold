@@ -689,7 +689,7 @@ _0222FB42:
 	add r1, r5, #0
 	ldr r0, [r4, r0]
 	bl Party_GetMonByIndex
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [r6]
 	add r1, r5, #0

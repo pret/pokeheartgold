@@ -2660,7 +2660,7 @@ sub_0208981C: ; 0x0208981C
 	bl Pokemon_GetData
 	strh r0, [r4, #0xc]
 	add r0, r5, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	mov r2, #0x7a
 	lsl r2, r2, #4
 	add r6, r0, #0

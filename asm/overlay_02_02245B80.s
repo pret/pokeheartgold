@@ -21486,7 +21486,7 @@ _0224FD30:
 _0224FD3E:
 	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	str r0, [sp, #4]
 	ldr r0, [r5, #0xc]
 	bl Save_PlayerData_GetProfile
@@ -22432,7 +22432,7 @@ FollowMon_PlaceholdersSet: ; 0x022504A0
 	bl SaveArray_Party_Get
 	bl GetFirstAliveMonInParty_CrashIfNone
 	add r6, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0

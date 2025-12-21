@@ -114,7 +114,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         break;
     case 9: {
         String *str = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00188); //" changed Form!"
-        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str);
         String_Delete(str);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
