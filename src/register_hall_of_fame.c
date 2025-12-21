@@ -1360,7 +1360,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
 
     u32 plttLoc = NNS_G2dGetImagePaletteLocation(Sprite_GetPaletteProxy(data->monPics[picIdx]->sprite), NNS_G2D_VRAM_TYPE_2DMAIN);
     const void *loadPos = NNS_G3dGetPlttData(resTex);
-    if (MonIsShiny(hofMon->mon) == TRUE) {
+    if (Pokemon_IsShiny(hofMon->mon) == TRUE) {
         loadPos = (const u8 *)loadPos + 0x20;
     }
     RegisterHallOfFame_ReplaceSpritePltt(loadPos, plttLoc, 0x20);

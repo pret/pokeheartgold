@@ -3055,7 +3055,7 @@ _02089B92:
 	str r0, [r4, #0x50]
 _02089B9A:
 	add r0, r5, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	cmp r0, #1
 	ldr r1, [r4, #0x50]
 	bne _02089BAE

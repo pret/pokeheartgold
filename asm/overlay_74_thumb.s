@@ -26449,7 +26449,7 @@ ov74_02235B14: ; 0x02235B14
 	bl Pokemon_GetGender
 	str r0, [sp, #0x24]
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]

@@ -674,10 +674,10 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     friendship = Species_GetValue(species, SPECIES_DATA_EGG_CYCLES);
     pid = Save_Daycare_GetEggPID(dayCare);
     if (Save_Daycare_MasudaCheck(dayCare)) {
-        if (!CalcShininessByOtIdAndPersonality(otId, pid)) {
+        if (!Personality_IsShiny(otId, pid)) {
             for (i = 0; i < 4; i++) {
                 pid = PRandom(pid);
-                if (CalcShininessByOtIdAndPersonality(otId, pid)) {
+                if (Personality_IsShiny(otId, pid)) {
                     break;
                 }
             }
@@ -1049,10 +1049,10 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     otId = Pokemon_GetData(mon, MON_DATA_OT_ID, NULL);
     form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     if (species == SPECIES_MANAPHY && Pokemon_GetData(mon, MON_DATA_EGG_LOCATION, NULL) == sub_02017FE4(MAPSECTYPE_EXTERNAL, 1)) {
-        if (CalcShininessByOtIdAndPersonality(otId, pid)) {
+        if (Personality_IsShiny(otId, pid)) {
             do {
                 pid = PRandom(pid);
-            } while (CalcShininessByOtIdAndPersonality(otId, pid));
+            } while (Personality_IsShiny(otId, pid));
         }
     }
     Pokemon_InitWith(tmpMon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);

@@ -218,7 +218,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
 
     if (personality != 0) {
         if (personality == 1) {
-            while (CalcShininessByOtIdAndPersonality(otid, rand)) {
+            while (Personality_IsShiny(otid, rand)) {
                 rand = PRandom(rand);
             }
         } else {

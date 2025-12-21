@@ -698,7 +698,7 @@ _0223783A:
 	lsl r0, r0, #2
 	ldr r0, [r3, r0]
 	ldr r1, [r1, r2]
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	pop {r4, pc}
 	.balign 4, 0
 _0223784C: .word 0x0003D0A9

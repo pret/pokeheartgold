@@ -274,7 +274,7 @@
 .public CalcLevelBySpeciesAndExp
 .public Pokemon_GetGender
 .public BoxPokemon_GetGender
-.public MonIsShiny
+.public Pokemon_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public Mon_GetBoxMon
 .public GetMonIconNaixEx

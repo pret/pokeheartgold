@@ -1894,7 +1894,7 @@ _021E67D0:
 	ldr r0, [r5, r1]
 	sub r1, r1, #4
 	ldr r1, [r5, r1]
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	cmp r0, #0
 	beq _021E685C
 	mov r7, #1
@@ -2580,7 +2580,7 @@ _021E6DCE:
 	ldr r0, [r5, r1]
 	sub r1, r1, #4
 	ldr r1, [r5, r1]
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	cmp r0, #0
 	beq _021E6E02
 	add r4, #0x20

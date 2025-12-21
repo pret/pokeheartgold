@@ -23587,7 +23587,7 @@ _022374D0:
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	lsl r3, r7, #0x18
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x1c]

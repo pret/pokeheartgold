@@ -167,7 +167,7 @@ _02229FF8:
 	bne _02229FF8
 	add r0, r7, #0
 	add r1, r6, #0
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	cmp r0, #1
 	beq _02229FF8
 	str r6, [r4, #0x10]

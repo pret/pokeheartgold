@@ -103,7 +103,7 @@
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
 .public Species_GetGenderFromPersonality
-.public CalcShininessByOtIdAndPersonality
+.public Personality_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public sub_020729D8

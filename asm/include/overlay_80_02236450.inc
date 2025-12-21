@@ -21,7 +21,7 @@
 .public Species_GetValue
 .public Species_GetExpAtLevel
 .public GetNatureFromPersonality
-.public CalcShininessByOtIdAndPersonality
+.public Personality_IsShiny
 .public CopyPokemonToPokemon
 .public MaskOfFlagNo
 .public Party_InitWithMaxSize

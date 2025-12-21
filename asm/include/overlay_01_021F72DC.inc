@@ -44,7 +44,7 @@
 .public FieldSystem_UnkSub108_Set
 .public Pokemon_GetData
 .public Pokemon_GetGender
-.public MonIsShiny
+.public Pokemon_IsShiny
 .public SaveArray_Party_Get
 .public _s32_div_f
 .public ov01_021F1640

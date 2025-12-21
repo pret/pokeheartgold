@@ -1527,7 +1527,7 @@ LocalMapObject *FollowMon_InitMapObject(MapObjectManager *mapObjectManager, int 
         if (FollowMon_GetPermissionBySpeciesAndMap(species, mapNo)) {
             int form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
             int gender = Pokemon_GetData(mon, MON_DATA_GENDER, NULL); // must be int to match, even though gender is u8
-            int shiny = MonIsShiny(mon);
+            int shiny = Pokemon_IsShiny(mon);
 
             fieldSystem->followMon.mapObject = FollowMon_CreateMapObject(mapObjectManager, species, form, gender, direction, x, y, shiny);
             fieldSystem->followMon.active = TRUE;
@@ -1585,7 +1585,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
             } else {
                 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
                 gender = Pokemon_GetGender(mon);
-                shiny = MonIsShiny(mon);
+                shiny = Pokemon_IsShiny(mon);
                 fieldSystem->followMon.mapObject = followPokeObj;
                 fieldSystem->followMon.active = TRUE;
 
@@ -1621,7 +1621,7 @@ void FollowMon_ChangeMon(MapObjectManager *mapObjectManager, u32 mapno) {
             if (followPokeObj != NULL) {
                 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
                 gender = Pokemon_GetGender(mon);
-                shiny = MonIsShiny(mon);
+                shiny = Pokemon_IsShiny(mon);
 
                 FieldSystem_SetFollowerPokeParam(fieldSystem, species, form, shiny, gender);
                 FollowMon_SetObjectParams(followPokeObj, species, form, shiny);

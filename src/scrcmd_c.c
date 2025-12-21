@@ -4395,7 +4395,7 @@ BOOL ScrCmd_FollowerPokeIsEventTrigger(ScriptContext *ctx) {
     species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     switch (event) {
     case EVENT_SPIKY_EARED_PICHU:
-        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && MonIsShiny(mon)) {
+        if ((species == SPECIES_PICHU || species == SPECIES_PIKACHU || species == SPECIES_RAICHU) && Pokemon_IsShiny(mon)) {
             *r6 = 1;
         }
         break;

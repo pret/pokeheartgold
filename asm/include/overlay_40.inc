@@ -252,7 +252,7 @@
 .public SpeciesData_NewFromSpecies
 .public SpeciesData_Free
 .public Species_GetGenderFromPersonality
-.public CalcShininessByOtIdAndPersonality
+.public Personality_IsShiny
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public PCStorage_IsBonusWallpaperUnlocked

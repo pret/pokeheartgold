@@ -34,7 +34,7 @@
 .public Pokemon_SetData
 .public Species_GetValue
 .public GetNatureFromPersonality
-.public CalcShininessByOtIdAndPersonality
+.public Personality_IsShiny
 .public sub_0207217C
 .public MaskOfFlagNo
 .public Party_AddMon

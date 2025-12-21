@@ -2097,18 +2097,18 @@ BOOL BoxMonIsHoldingMail(BoxPokemon *boxMon) {
     return ItemIdIsMail(BoxPokemon_GetData(boxMon, MON_DATA_HELD_ITEM, NULL));
 }
 
-u8 MonIsShiny(Pokemon *mon) {
-    return BoxMonIsShiny(&mon->box);
+u8 Pokemon_IsShiny(Pokemon *mon) {
+    return BoxPokemon_IsShiny(&mon->box);
 }
 
-u8 BoxMonIsShiny(BoxPokemon *boxMon) {
-    u32 otid = BoxPokemon_GetData(boxMon, MON_DATA_OT_ID, NULL);
-    u32 pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
-    return CalcShininessByOtIdAndPersonality(otid, pid);
+u8 BoxPokemon_IsShiny(BoxPokemon *boxMon) {
+    u32 otID = BoxPokemon_GetData(boxMon, MON_DATA_OT_ID, NULL);
+    u32 personality = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
+    return Personality_IsShiny(otID, personality);
 }
 
-u8 CalcShininessByOtIdAndPersonality(u32 otid, u32 pid) {
-    return (u8)SHINY_CHECK(otid, pid);
+u8 Personality_IsShiny(u32 otID, u32 personality) {
+    return (u8)SHINY_CHECK(otID, personality);
 }
 
 u32 GenerateShinyPersonality(u32 otid) {
@@ -2145,7 +2145,7 @@ void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPoke
     BOOL decry = AcquireBoxMonLock(boxMon);
     u16 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = BoxPokemon_GetGender(boxMon);
-    u8 shiny = BoxMonIsShiny(boxMon);
+    u8 shiny = BoxPokemon_IsShiny(boxMon);
     u32 pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
     u8 form;
     if (species == SPECIES_EGG) {

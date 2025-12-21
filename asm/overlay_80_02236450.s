@@ -477,7 +477,7 @@ _022367BE:
 	bne _022367BE
 	ldr r0, [sp]
 	add r1, r7, #0
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	cmp r0, #1
 	beq _022367BE
 	str r7, [r5, #0x10]

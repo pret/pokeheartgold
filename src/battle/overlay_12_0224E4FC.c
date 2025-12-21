@@ -92,7 +92,7 @@ void BattleSystem_GetBattleMon(BattleSystem *battleSystem, BattleContext *ctx, i
     ctx->battleMons[battlerId].type2 = Pokemon_GetData(mon, MON_DATA_TYPE_2, NULL);
 
     ctx->battleMons[battlerId].gender = Pokemon_GetGender(mon);
-    ctx->battleMons[battlerId].shiny = MonIsShiny(mon);
+    ctx->battleMons[battlerId].shiny = Pokemon_IsShiny(mon);
 
     if (BattleSystem_GetBattleType(battleSystem) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) { // No abilities battle
         ctx->battleMons[battlerId].ability = 0;

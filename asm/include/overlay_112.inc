@@ -267,8 +267,8 @@
 .public CalcBoxMonExpToNextLevel
 .public MonApplyFriendshipMod
 .public BoxPokemon_GetGender
-.public MonIsShiny
-.public BoxMonIsShiny
+.public Pokemon_IsShiny
+.public BoxPokemon_IsShiny
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public Species_SanitizeFormId

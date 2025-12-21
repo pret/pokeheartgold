@@ -12,7 +12,7 @@
 .public BattleSetup_SetAllySideBattlersToPlayer
 .public Pokemon_New
 .public Pokemon_GetData
-.public CalcShininessByOtIdAndPersonality
+.public Personality_IsShiny
 .public CopyPokemonToPokemon
 .public UpdateMonAbility
 .public Party_InitWithMaxSize
