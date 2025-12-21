@@ -30,7 +30,7 @@
 
 #define NUM_BANNED_BATTLE_FRONTIER 18
 
-extern const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS];
+extern const s8 gNatureStatModifiers[NATURE_NUM][NUM_EV_STATS];
 
 void Pokemon_Init(Pokemon *mon);
 void BoxPokemon_Init(BoxPokemon *boxMon);
@@ -71,9 +71,9 @@ int Pokemon_CalcLevel(Pokemon *mon);
 int BoxPokemon_CalcLevel(BoxPokemon *boxMon);
 int CalcLevelBySpeciesAndExp(u16 species, u32 experience);
 int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 species, u32 experience);
-u8 GetBoxMonNature(BoxPokemon *boxMon);
-u8 GetMonNature(Pokemon *mon);
-u8 GetNatureFromPersonality(u32 pid);
+u8 BoxPokemon_GetNature(BoxPokemon *boxMon);
+u8 Pokemon_GetNature(Pokemon *mon);
+u8 Personality_GetNature(u32 personality);
 void MonApplyFriendshipMod(Pokemon *mon, u8 kind, u16 location);
 u8 Pokemon_GetGender(Pokemon *mon);
 u8 BoxPokemon_GetGender(BoxPokemon *boxMon);
@@ -135,7 +135,7 @@ void RestoreBoxMonPP(BoxPokemon *boxMon);
 BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID);
 
 int Species_GetFormValueFromNarc(NARC *narc, int species, int form, int param);
-u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex);
+u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat);
 u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 unused_species, u32 pid);
 BOOL BoxMonIsHoldingMail(BoxPokemon *boxMon);
 void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing);

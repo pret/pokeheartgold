@@ -3892,7 +3892,7 @@ _02247970:
 	lsr r0, r0, #0x10
 	bne _02247994
 	ldr r0, [sp, #0x44]
-	bl GetMonNature
+	bl Pokemon_GetNature
 	str r0, [sp, #0x20]
 	mov r7, #1
 _02247994:
@@ -3924,7 +3924,7 @@ _022479C8:
 	cmp r0, #0x1c
 	bne _022479A0
 	add r0, r4, #0
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	ldr r1, [sp, #0x20]
 	cmp r0, r1
 	beq _022479E2
@@ -20259,7 +20259,7 @@ _0224F420:
 	bl Pokemon_GetData
 	strb r0, [r5, #7]
 	add r0, r7, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	lsl r1, r0, #2
 	ldr r0, _0224F4B4 ; =ov02_02253AC0
 	mov r2, #0

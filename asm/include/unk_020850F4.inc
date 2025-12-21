@@ -56,7 +56,7 @@
 .public MIi_CpuClear32
 .public memset
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers
 .public _02102620
 .public gSystem
 .public OS_IRQTable

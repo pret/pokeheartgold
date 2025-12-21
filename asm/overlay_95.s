@@ -1244,7 +1244,7 @@ ov95_021E62A4: ; 0x021E62A4
 	add r4, r0, #0
 	ldr r0, [r5]
 	ldr r0, [r0, #0xc]
-	bl GetMonNature
+	bl Pokemon_GetNature
 	ldr r0, [r5, #0x70]
 	mov r1, #1
 	bl Pokepic_StartAnim

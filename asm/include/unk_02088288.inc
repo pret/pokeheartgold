@@ -101,7 +101,7 @@
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public Species_GetExpAtLevel
-.public GetMonNature
+.public Pokemon_GetNature
 .public Pokemon_GetGender
 .public Pokemon_IsShiny
 .public sub_02070D90
@@ -195,7 +195,7 @@
 .public memset
 .public _s32_div_f
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers
 .public gOverlayTemplate_PokemonSummary
 .public gSystem
 .public OS_IRQTable

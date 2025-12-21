@@ -9,7 +9,7 @@
 	.include "global.inc"
 
 	.public gOverlayTemplate_Battle
-	.public gNatureStatMods
+	.public gNatureStatModifiers
 
 	.text
 
@@ -556,7 +556,7 @@ sub_0208C7F8: ; 0x0208C7F8
 	ldr r4, _0208C840 ; =0x000E0F00
 	lsl r0, r1, #2
 	add r1, r1, r0
-	ldr r0, _0208C844 ; =gNatureStatMods
+	ldr r0, _0208C844 ; =gNatureStatModifiers
 	add r0, r0, r1
 	ldrsb r0, [r3, r0]
 	cmp r0, #0
@@ -585,7 +585,7 @@ _0208C81A:
 	.balign 4, 0
 _0208C83C: .word 0x00000263
 _0208C840: .word 0x000E0F00
-_0208C844: .word gNatureStatMods
+_0208C844: .word gNatureStatModifiers
 _0208C848: .word 0x000E0800
 _0208C84C: .word 0x000E0700
 	thumb_func_end sub_0208C7F8

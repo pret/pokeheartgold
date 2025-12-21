@@ -330,7 +330,7 @@ BOOL MonMetadataMatchesEvent(u8 eventNo, Pokemon *mon, BOOL isMine) {
 }
 
 static void FormatNature(Unk0208E600 *a0) {
-    int nature = GetMonNature(a0->mon);
+    int nature = Pokemon_GetNature(a0->mon);
     if (nature <= NATURE_QUIRKY) {
         a0->notepad.nature = String_New(0x48, a0->heapID);
         ReadMsgDataIntoString(a0->msgData, msg_0302_00024 + nature, a0->notepad.nature);

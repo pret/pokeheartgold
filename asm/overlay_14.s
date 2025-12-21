@@ -3484,7 +3484,7 @@ ov14_021E7358: ; 0x021E7358
 	bl BoxPokemon_GetData
 	strb r0, [r6, #0xe]
 	add r0, r7, #0
-	bl GetBoxMonNature
+	bl BoxPokemon_GetNature
 	strb r0, [r6, #0xf]
 	add r0, r7, #0
 	mov r1, #0xb

@@ -207,7 +207,7 @@ BOOL ScrCmd_MonGetNature(ScriptContext *ctx) {
         return FALSE;
     }
 
-    *nature = GetMonNature(mon);
+    *nature = Pokemon_GetNature(mon);
     return FALSE;
 }
 
@@ -220,7 +220,7 @@ BOOL ScrCmd_GetPartySlotWithNature(ScriptContext *ctx) {
     u8 partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
     for (i = 0, *slot = 255; i < partyCount; i++) {
         Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), i);
-        if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) && GetMonNature(mon) == nature) {
+        if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) && Pokemon_GetNature(mon) == nature) {
             *slot = i;
             break;
         }

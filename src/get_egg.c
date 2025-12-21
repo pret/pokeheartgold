@@ -313,10 +313,10 @@ static void GenerateEggPID(Daycare *dayCare) {
     if (everstone_num < 0) {
         Save_Daycare_SetEggPID(dayCare, MTRandom());
     } else {
-        nature = GetNatureFromPersonality(BoxPokemon_GetData(Daycare_GetBoxMonI(dayCare, everstone_num), MON_DATA_PERSONALITY, NULL));
+        nature = Personality_GetNature(BoxPokemon_GetData(Daycare_GetBoxMonI(dayCare, everstone_num), MON_DATA_PERSONALITY, NULL));
         for (;;) {
             pid = MTRandom();
-            if (nature == GetNatureFromPersonality(pid) && pid != 0) {
+            if (nature == Personality_GetNature(pid) && pid != 0) {
                 break;
             }
             if (++i > 2400) {

@@ -44,4 +44,4 @@
 .public _fmul
 .public _fsub
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers

@@ -33,7 +33,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Species_GetValue
-.public GetNatureFromPersonality
+.public Personality_GetNature
 .public Personality_IsShiny
 .public sub_0207217C
 .public MaskOfFlagNo

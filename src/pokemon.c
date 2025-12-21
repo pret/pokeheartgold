@@ -31,7 +31,7 @@ void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
 void InitBoxMonMoveset(BoxPokemon *boxMon);
 void SpeciesData_LoadForm(int species, int form, SpeciesData *dest);
-u16 ModifyStatByNature(u8 nature, u16 stat, u8 statID);
+u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat);
 static u32 Pokemon_GetDataInternal(Pokemon *mon, int param, void *dest);
 static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int param, void *dest);
 static void Pokemon_SetDataInternal(Pokemon *mon, int param, const void *data);
@@ -258,7 +258,7 @@ void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 natu
     u32 personality;
     do {
         personality = (u32)(LCRandom() | (LCRandom() << 16));
-    } while (nature != GetNatureFromPersonality(personality));
+    } while (nature != Personality_GetNature(personality));
     Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
@@ -269,7 +269,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
         do {
             personality = (u32)(LCRandom() | (LCRandom() << 16));
             unownLetter = CALC_UNOWN_LETTER(personality);
-        } while (nature != GetNatureFromPersonality(personality) || gender != Species_GetGenderFromPersonality(species, personality) || unownLetter != letter - 1);
+        } while (nature != Personality_GetNature(personality) || gender != Species_GetGenderFromPersonality(species, personality) || unownLetter != letter - 1);
     } else {
         personality = GenPersonalityByGenderAndNature(species, gender, nature);
     }
@@ -348,23 +348,23 @@ void Pokemon_CalcStats(Pokemon *mon) {
     Pokemon_SetData(mon, MON_DATA_MAX_HP, &newMaxHp);
 
     int newAtk = (speciesData->atk * 2 + atkIV + atkEV / 4) * level / 100 + 5;
-    newAtk = ModifyStatByNature(GetMonNature(mon), newAtk, STAT_ATK);
+    newAtk = Nature_ModifyStatValue(Pokemon_GetNature(mon), newAtk, STAT_ATK);
     Pokemon_SetData(mon, MON_DATA_ATK, &newAtk);
 
     int newDef = (speciesData->def * 2 + defIV + defEV / 4) * level / 100 + 5;
-    newDef = ModifyStatByNature(GetMonNature(mon), newDef, STAT_DEF);
+    newDef = Nature_ModifyStatValue(Pokemon_GetNature(mon), newDef, STAT_DEF);
     Pokemon_SetData(mon, MON_DATA_DEF, &newDef);
 
     int newSpeed = (speciesData->speed * 2 + speedIV + speedEV / 4) * level / 100 + 5;
-    newSpeed = ModifyStatByNature(GetMonNature(mon), newSpeed, STAT_SPEED);
+    newSpeed = Nature_ModifyStatValue(Pokemon_GetNature(mon), newSpeed, STAT_SPEED);
     Pokemon_SetData(mon, MON_DATA_SPEED, &newSpeed);
 
     int newSpAtk = (speciesData->spatk * 2 + spAtkIV + spAtkEV / 4) * level / 100 + 5;
-    newSpAtk = ModifyStatByNature(GetMonNature(mon), newSpAtk, STAT_SPATK);
+    newSpAtk = Nature_ModifyStatValue(Pokemon_GetNature(mon), newSpAtk, STAT_SPATK);
     Pokemon_SetData(mon, MON_DATA_SP_ATK, &newSpAtk);
 
     int newSpDef = (speciesData->spdef * 2 + spDefIV + spDefEV / 4) * level / 100 + 5;
-    newSpDef = ModifyStatByNature(GetMonNature(mon), newSpDef, STAT_SPDEF);
+    newSpDef = Nature_ModifyStatValue(Pokemon_GetNature(mon), newSpDef, STAT_SPDEF);
     Pokemon_SetData(mon, MON_DATA_SP_DEF, &newSpDef);
 
     Heap_Free(speciesData);
@@ -1373,7 +1373,6 @@ static void AddMonDataInternal(Pokemon *mon, int param, int value) {
     case MON_DATA_SP_ATK:
     case MON_DATA_SP_DEF:
     case MON_DATA_MAIL:
-        // case MON_DATA_BALL_CAPSULE:
         GF_ASSERT(FALSE);
         break;
     default:
@@ -1692,6 +1691,7 @@ static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value)
     case MON_DATA_SHINY_LEAF_CROWN:
     default:
         GF_ASSERT(FALSE);
+        break;
     }
 }
 
@@ -1929,73 +1929,73 @@ int CalcLevelBySpeciesAndExp_PreloadedPersonal(SpeciesData *personal, u16 specie
     return i - 1;
 }
 
-u8 GetMonNature(Pokemon *mon) {
-    return GetBoxMonNature(&mon->box);
+u8 Pokemon_GetNature(Pokemon *mon) {
+    return BoxPokemon_GetNature(&mon->box);
 }
 
-u8 GetBoxMonNature(BoxPokemon *boxMon) {
-    BOOL decry = AcquireBoxMonLock(boxMon);
+u8 BoxPokemon_GetNature(BoxPokemon *boxMon) {
+    BOOL reencrypt = AcquireBoxMonLock(boxMon);
     u32 personality = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
-    ReleaseBoxMonLock(boxMon, decry);
-    return GetNatureFromPersonality(personality);
+    ReleaseBoxMonLock(boxMon, reencrypt);
+    return Personality_GetNature(personality);
 }
 
-u8 GetNatureFromPersonality(u32 pid) {
-    return (u8)(pid % 25);
+u8 Personality_GetNature(u32 personality) {
+    return (u8)(personality % NATURE_NUM);
 }
 
-const s8 gNatureStatMods[NATURE_NUM][NUM_EV_STATS] = {
-    { 0,  0,  0,  0,  0  },
-    { 1,  -1, 0,  0,  0  },
-    { 1,  0,  -1, 0,  0  },
-    { 1,  0,  0,  -1, 0  },
-    { 1,  0,  0,  0,  -1 },
-    { -1, 1,  0,  0,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  1,  -1, 0,  0  },
-    { 0,  1,  0,  -1, 0  },
-    { 0,  1,  0,  0,  -1 },
-    { -1, 0,  1,  0,  0  },
-    { 0,  -1, 1,  0,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  0,  1,  -1, 0  },
-    { 0,  0,  1,  0,  -1 },
-    { -1, 0,  0,  1,  0  },
-    { 0,  -1, 0,  1,  0  },
-    { 0,  0,  -1, 1,  0  },
-    { 0,  0,  0,  0,  0  },
-    { 0,  0,  0,  1,  -1 },
-    { -1, 0,  0,  0,  1  },
-    { 0,  -1, 0,  0,  1  },
-    { 0,  0,  -1, 0,  1  },
-    { 0,  0,  0,  -1, 1  },
-    { 0,  0,  0,  0,  0  },
+const s8 gNatureStatModifiers[NATURE_NUM][NUM_EV_STATS] = {
+                    // Attack Defense Speed Sp.Atk Sp.Def
+    [NATURE_HARDY]   = {  0,     0,     0,     0,    0 },
+    [NATURE_LONELY]  = { +1,    -1,     0,     0,    0 },
+    [NATURE_BRAVE]   = { +1,     0,    -1,     0,    0 },
+    [NATURE_ADAMANT] = { +1,     0,     0,    -1,    0 },
+    [NATURE_NAUGHTY] = { +1,     0,     0,     0,   -1 },
+    [NATURE_BOLD]    = { -1,    +1,     0,     0,    0 },
+    [NATURE_DOCILE]  = {  0,     0,     0,     0,    0 },
+    [NATURE_RELAXED] = {  0,    +1,    -1,     0,    0 },
+    [NATURE_IMPISH]  = {  0,    +1,     0,    -1,    0 },
+    [NATURE_LAX]     = {  0,    +1,     0,     0,   -1 },
+    [NATURE_TIMID]   = { -1,     0,    +1,     0,    0 },
+    [NATURE_HASTY]   = {  0,    -1,    +1,     0,    0 },
+    [NATURE_SERIOUS] = {  0,     0,     0,     0,    0 },
+    [NATURE_JOLLY]   = {  0,     0,    +1,    -1,    0 },
+    [NATURE_NAIVE]   = {  0,     0,    +1,     0,   -1 },
+    [NATURE_MODEST]  = { -1,     0,     0,    +1,    0 },
+    [NATURE_MILD]    = {  0,    -1,     0,    +1,    0 },
+    [NATURE_QUIET]   = {  0,     0,    -1,    +1,    0 },
+    [NATURE_BASHFUL] = {  0,     0,     0,     0,    0 },
+    [NATURE_RASH]    = {  0,     0,     0,    +1,   -1 },
+    [NATURE_CALM]    = { -1,     0,     0,     0,   +1 },
+    [NATURE_GENTLE]  = {  0,    -1,     0,     0,   +1 },
+    [NATURE_SASSY]   = {  0,     0,    -1,     0,   +1 },
+    [NATURE_CAREFUL] = {  0,     0,     0,    -1,   +1 },
+    [NATURE_QUIRKY]  = {  0,     0,     0,     0,    0 },
 };
 
-u16 ModifyStatByNature(u8 nature, u16 n, u8 statIndex) {
-    u16 retVal;
-
+u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat) {
+    u16 ret;
     // Dont modify HP, Accuracy, or Evasion by nature
-    if (statIndex < STAT_ATK || statIndex > STAT_SPDEF) {
-        return n;
+    if (stat < STAT_ATK || stat > STAT_SPDEF) {
+        return value;
     }
 
-    switch (gNatureStatMods[nature][statIndex - 1]) {
+    switch (gNatureStatModifiers[nature][stat - 1]) {
     case 1:
         // NOTE: will overflow for n > 595 because the intermediate value is cast to u16 before the division.
-        retVal = n * 110;
-        retVal /= 100;
+        ret = value * 110;
+        ret /= 100;
         break;
     case -1:
         // NOTE: will overflow for n > 728, see above
-        retVal = n * 90;
-        retVal /= 100;
+        ret = value * 90;
+        ret /= 100;
         break;
     default:
-        retVal = n;
+        ret = value;
         break;
     }
-    return retVal;
+    return ret;
 }
 
 static const s8 sFriendshipModTable[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM] = {
@@ -3277,7 +3277,7 @@ s8 BoxMonGetFlavorPreference(BoxPokemon *boxMon, int flavor) {
 }
 
 s8 GetFlavorPreferenceFromPID(u32 personality, int flavor) {
-    return sFlavorPreferencesByNature[GetNatureFromPersonality(personality)][flavor];
+    return sFlavorPreferencesByNature[Personality_GetNature(personality)][flavor];
 }
 
 int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest) {
@@ -4960,7 +4960,7 @@ void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, struct PokeathlonTodayP
     u16 form;
 
     pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
-    nature = GetBoxMonNature(boxMon);
+    nature = BoxPokemon_GetNature(boxMon);
     GF_RTC_CopyDateTime(&date, &time);
     day = date.day;
 

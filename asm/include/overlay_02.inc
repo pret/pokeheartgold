@@ -323,8 +323,8 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Species_GetValue
-.public GetMonNature
-.public GetNatureFromPersonality
+.public Pokemon_GetNature
+.public Personality_GetNature
 .public Species_GetGenderFromPersonality
 .public GenerateShinyPersonality
 .public GetPokemonSpriteCharAndPlttNarcIds

@@ -21,6 +21,6 @@
 .public MIi_CpuCopyFast
 .public MATH_CountPopulation
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers
 .public ov37_021E6FC8
 .public ov37_021E75E0

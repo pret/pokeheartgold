@@ -3754,7 +3754,7 @@ ov83_0223FD4C: ; 0x0223FD4C
 	mov r3, #0x40
 	bl ov83_0223FF20
 	add r0, r6, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	add r2, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0
@@ -7867,7 +7867,7 @@ ov83_02241E18: ; 0x02241E18
 	lsl r1, r1, #4
 	strb r0, [r5, r1]
 	add r0, r6, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	ldr r1, _02241FBC ; =0x00000811
 	mov r2, #0
 	strb r0, [r5, r1]
@@ -15615,7 +15615,7 @@ ov83_02245D48: ; 0x02245D48
 	ldr r1, _02245EEC ; =0x000005C8
 	strb r0, [r5, r1]
 	add r0, r6, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	ldr r1, _02245EF0 ; =0x000005C9
 	mov r2, #0
 	strb r0, [r5, r1]

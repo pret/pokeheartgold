@@ -28,7 +28,7 @@
 .public MI_CpuFill8
 .public memset
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers
 .public ov13_0221BA00
 .public ov44_0222A4B4
 .public ov44_0222A60C

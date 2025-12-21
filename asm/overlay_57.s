@@ -8233,7 +8233,7 @@ ov57_0223B9C8: ; 0x0223B9C8
 	add r4, r0, #0
 	ldr r0, _0223BA14 ; =0x00000458
 	ldr r0, [r5, r0]
-	bl GetMonNature
+	bl Pokemon_GetNature
 	mov r0, #0x72
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

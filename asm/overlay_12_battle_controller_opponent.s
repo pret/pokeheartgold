@@ -2563,7 +2563,7 @@ _02259B1E:
 	ldrb r0, [r6, r0]
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #4]
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	str r0, [r4, #0x24]
 	ldrb r0, [r5, #1]
 	lsl r0, r0, #0x1d
@@ -2736,7 +2736,7 @@ _02259BE4:
 	add r0, #0x8c
 	strb r1, [r0]
 	ldr r0, [r5, #4]
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	add r1, r4, #0
 	add r1, #0x8d
 	strb r0, [r1]
@@ -2943,7 +2943,7 @@ _02259D92:
 	add r0, #0x8c
 	strb r1, [r0]
 	ldr r0, [r4, #4]
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	add r1, r5, #0
 	add r1, #0x8d
 	strb r0, [r1]

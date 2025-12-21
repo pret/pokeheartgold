@@ -20,7 +20,7 @@
 .public Pokemon_SetData
 .public Species_GetValue
 .public Species_GetExpAtLevel
-.public GetNatureFromPersonality
+.public Personality_GetNature
 .public Personality_IsShiny
 .public CopyPokemonToPokemon
 .public MaskOfFlagNo

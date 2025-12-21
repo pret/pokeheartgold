@@ -9,7 +9,7 @@
 	.include "global.inc"
 
 	.public gOverlayTemplate_Battle
-	.public gNatureStatMods
+	.public gNatureStatModifiers
 
 	.text
 
@@ -2883,7 +2883,7 @@ _020899C8:
 	add r1, #0x32
 	strb r0, [r1]
 	add r0, r5, #0
-	bl GetMonNature
+	bl Pokemon_GetNature
 	add r1, r4, #0
 	add r1, #0x33
 	strb r0, [r1]

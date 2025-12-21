@@ -9,7 +9,7 @@
 	.include "global.inc"
 
 	.public gOverlayTemplate_Battle
-	.public gNatureStatMods
+	.public gNatureStatModifiers
 
 	.text
 

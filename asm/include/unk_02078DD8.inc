@@ -11,5 +11,5 @@
 .public sub_02078E28
 .public memset
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers
 .public ov00_021E6D60

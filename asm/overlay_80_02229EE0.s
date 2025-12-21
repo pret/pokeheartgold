@@ -160,7 +160,7 @@ _02229FF8:
 	add r6, r5, #0
 	orr r6, r0
 	add r0, r6, #0
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	add r1, sp, #8
 	ldrb r1, [r1, #0xb]
 	cmp r1, r0

@@ -263,7 +263,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     if (a4 == 0) {
         do {
             pid = sub_0204B510(a0) | sub_0204B510(a0) << 16;
-        } while (frontierMon.nature != GetNatureFromPersonality(pid)
+        } while (frontierMon.nature != Personality_GetNature(pid)
             || Personality_IsShiny(otId, pid) == TRUE);
         a1->pid = pid;
     } else {

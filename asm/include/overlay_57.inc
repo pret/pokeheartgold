@@ -192,7 +192,7 @@
 .public Pokemon_New
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonNature
+.public Pokemon_GetNature
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
 .public CopyPokemonToPokemon
