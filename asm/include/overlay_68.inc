@@ -134,7 +134,7 @@
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public Pokemon_SetData
-.public GetMonBaseStat_HandleAlternateForm
+.public Species_GetFormValue
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public Mon_GetBoxMon
 .public GetMoveAttr

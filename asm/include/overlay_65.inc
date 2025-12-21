@@ -191,7 +191,7 @@
 .public ReleaseMonLock
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonBaseStat_HandleAlternateForm
+.public Species_GetFormValue
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public sub_0207083C
 .public Mon_GetBoxMon

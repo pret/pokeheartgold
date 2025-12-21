@@ -1423,7 +1423,7 @@ ov65_0221C9D8: ; 0x0221C9D8
 	beq _0221CA50
 	ldrb r1, [r4, #6]
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	strh r0, [r4, #0xa]
 _0221CA50:
 	cmp r6, #0

@@ -28,7 +28,7 @@
 .public Sprite_SetAnimationFrame
 .public Sprite_SetDrawPriority
 .public Sprite_GetImageProxy
-.public GetMonBaseStat_HandleAlternateForm
+.public Species_GetFormValue
 .public CalcBoxMonPokeathlonPerformance
 .public CalcBoxmonPokeathlonStars
 .public GetMoveAttr

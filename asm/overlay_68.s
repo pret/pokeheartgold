@@ -3176,7 +3176,7 @@ ov68_021E7224: ; 0x021E7224
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	add r3, r0, #0
 	mov r2, #1
 	ldr r0, [r5, #0x18]

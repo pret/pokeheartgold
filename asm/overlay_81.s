@@ -6140,7 +6140,7 @@ ov81_02240F48: ; 0x02240F48
 	add r1, r0, #0
 	add r0, r7, #0
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	cmp r0, #0
 	bne _02240FA0
 	ldr r0, [r5, r4]

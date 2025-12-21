@@ -845,7 +845,7 @@ static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int attr, void *dest) 
         if (blockA->species == SPECIES_ARCEUS && blockA->ability == ABILITY_MULTITYPE) {
             ret = (u32)GetArceusTypeByHeldItemEffect((u16)GetItemAttr(blockA->heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT));
         } else {
-            ret = (u32)GetMonBaseStat_HandleAlternateForm(blockA->species, blockB->form, (int)(attr - MON_DATA_TYPE_1 + BASE_TYPE1));
+            ret = (u32)Species_GetFormValue(blockA->species, blockB->form, (int)(attr - MON_DATA_TYPE_1 + BASE_TYPE1));
         }
         break;
     case MON_DATA_SPECIES_NAME:
@@ -1819,12 +1819,11 @@ void SpeciesData_Free(SpeciesData *speciesData) {
     Heap_Free(speciesData);
 }
 
-int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
-    int ret;
+int Species_GetFormValue(int species, int form, int param) {
     SpeciesData *speciesData = SpeciesData_NewFromSpecies(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
-    ret = SpeciesData_GetValue(speciesData, attr);
+    int result = SpeciesData_GetValue(speciesData, param);
     SpeciesData_Free(speciesData);
-    return ret;
+    return result;
 }
 
 int Species_GetValue(int species, int param) {
@@ -3730,8 +3729,8 @@ void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
         chance = (u32)(LCRandom() % 100);
         species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
         form = (u16)Pokemon_GetData(mon, MON_DATA_FORM, 0);
-        item1 = (u16)GetMonBaseStat_HandleAlternateForm(species, form, BASE_ITEM_1);
-        item2 = (u16)GetMonBaseStat_HandleAlternateForm(species, form, BASE_ITEM_2);
+        item1 = (u16)Species_GetFormValue(species, form, BASE_ITEM_1);
+        item2 = (u16)Species_GetFormValue(species, form, BASE_ITEM_2);
         if (item1 == item2 && item1 != ITEM_NONE) {
             Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item1);
         } else {
@@ -3781,7 +3780,7 @@ BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm) {
         mask = 1 << (tmhm - 96);
         baseStat = BASE_TMHM_4;
     }
-    return (GetMonBaseStat_HandleAlternateForm(species, form, baseStat) & mask) != 0;
+    return (Species_GetFormValue(species, form, baseStat) & mask) != 0;
 }
 
 void UpdateMonAbility(Pokemon *mon) {
@@ -3793,8 +3792,8 @@ void UpdateBoxMonAbility(BoxPokemon *boxMon) {
     int species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
     int pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
     int form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
-    int ability1 = GetMonBaseStat_HandleAlternateForm(species, form, BASE_ABILITY_1);
-    int ability2 = GetMonBaseStat_HandleAlternateForm(species, form, BASE_ABILITY_2);
+    int ability1 = Species_GetFormValue(species, form, BASE_ABILITY_1);
+    int ability2 = Species_GetFormValue(species, form, BASE_ABILITY_2);
     if (ability2 != ABILITY_NONE) {
         if (pid & 1) {
             BoxPokemon_SetData(boxMon, MON_DATA_ABILITY, &ability2);

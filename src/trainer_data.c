@@ -439,7 +439,7 @@ void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid)
     int abilityOverride = (overrideParam & 0xF0) >> 4;
     if (overrideParam != 0) {
         if (genderOverride != 0) {
-            *pid = GetMonBaseStat_HandleAlternateForm(species, form, BASE_GENDER_RATIO);
+            *pid = Species_GetFormValue(species, form, BASE_GENDER_RATIO);
             if (genderOverride == 1) {
                 *pid += 2;
             } else {

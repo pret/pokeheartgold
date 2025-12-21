@@ -58,7 +58,7 @@ SpeciesData *SpeciesData_NewFromForm(int species, int form, enum HeapID heapID);
 SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID);
 int SpeciesData_GetValue(const SpeciesData *speciesData, int param);
 void SpeciesData_Free(SpeciesData *speciesData);
-int GetMonBaseStat_HandleAlternateForm(int species, int form, int stat_id);
+int Species_GetFormValue(int species, int form, int stat_id);
 int Species_GetValue(int species, int param);
 u8 GetPercentProgressTowardsNextLevel(Pokemon *mon);
 u32 CalcMonExpToNextLevel(Pokemon *mon);

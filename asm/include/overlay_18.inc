@@ -235,7 +235,7 @@
 .public AcquireMonLock
 .public ReleaseMonLock
 .public Pokemon_GetData
-.public GetMonBaseStat_HandleAlternateForm
+.public Species_GetFormValue
 .public GetPokemonSpriteCharAndPlttNarcIds
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm

@@ -137,7 +137,7 @@
 .public AcquireBoxMonLock
 .public ReleaseBoxMonLock
 .public BoxPokemon_GetData
-.public GetMonBaseStat_HandleAlternateForm
+.public Species_GetFormValue
 .public GetBoxmonSpriteCharAndPlttNarcIds
 .public sub_02070854
 .public NARC_ReadPokepicAnimScript

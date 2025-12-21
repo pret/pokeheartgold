@@ -3727,10 +3727,10 @@ BOOL BtlCmd_BeatUp(BattleSystem *battleSystem, BattleContext *ctx) {
     form = Pokemon_GetData(mon, MON_DATA_FORM, 0);
     level = Pokemon_GetData(mon, MON_DATA_LEVEL, 0);
 
-    ctx->damage = GetMonBaseStat_HandleAlternateForm(species, form, BASE_ATK);
+    ctx->damage = Species_GetFormValue(species, form, BASE_ATK);
     ctx->damage *= ctx->trainerAIData.moveData[ctx->moveNoCur].power;
     ctx->damage *= (level * 2 / 5 + 2);
-    ctx->damage /= (u32)GetMonBaseStat_HandleAlternateForm(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].form, BASE_DEF);
+    ctx->damage /= (u32)Species_GetFormValue(ctx->battleMons[ctx->battlerIdTarget].species, ctx->battleMons[ctx->battlerIdTarget].form, BASE_DEF);
     ctx->damage /= 50;
     ctx->damage += 2;
     ctx->damage *= ctx->criticalMultiplier;
@@ -5650,7 +5650,7 @@ BOOL BtlCmd_LoadArchivedMonData(BattleSystem *battleSystem, BattleContext *ctx) 
 
     int *formPtr = BattleScriptGetVarPointer(battleSystem, ctx, form);
 
-    ctx->calcTemp = GetMonBaseStat_HandleAlternateForm(species, *formPtr, stat);
+    ctx->calcTemp = Species_GetFormValue(species, *formPtr, stat);
 
     return FALSE;
 }

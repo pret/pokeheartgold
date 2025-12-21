@@ -24732,7 +24732,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #4]
@@ -24751,7 +24751,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #7
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	beq _021F21B6
