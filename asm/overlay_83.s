@@ -15046,7 +15046,7 @@ _022458D6:
 	mov r2, #0
 	bl Pokemon_GetData
 	mov r1, #0x32
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #8
@@ -15070,7 +15070,7 @@ _0224590E:
 	mov r2, #0
 	bl Pokemon_GetData
 	mov r1, #0x37
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #8
@@ -15085,7 +15085,7 @@ _02245946:
 	mov r2, #0
 	bl Pokemon_GetData
 	mov r1, #0x2d
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [sp]
 	add r0, r4, #0
 	mov r1, #8

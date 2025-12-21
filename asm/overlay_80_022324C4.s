@@ -350,7 +350,7 @@ _0223278E:
 	mov r2, #0
 	bl Pokemon_GetData
 	mov r1, #0x32
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [sp, #0x10]
 	add r0, r4, #0
 	mov r1, #8

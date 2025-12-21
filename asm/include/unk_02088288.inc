@@ -100,7 +100,7 @@
 .public ReleaseMonLock
 .public Pokemon_GetData
 .public BoxPokemon_GetData
-.public GetMonExpBySpeciesAndLevel
+.public Species_GetExpAtLevel
 .public GetMonNature
 .public GetMonGender
 .public MonIsShiny

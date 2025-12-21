@@ -2825,7 +2825,7 @@ _02089934:
 	ldrh r0, [r4, #0xc]
 	lsl r1, r1, #0x19
 	lsr r1, r1, #0x19
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [r4, #0x1c]
 	ldrb r0, [r4, #0x12]
 	lsl r0, r0, #0x19
@@ -2837,7 +2837,7 @@ _02089934:
 _020899C0:
 	ldrh r0, [r4, #0xc]
 	add r1, r1, #1
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 _020899C8:
 	str r0, [r4, #0x20]
 	add r0, r5, #0

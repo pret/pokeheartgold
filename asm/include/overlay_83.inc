@@ -191,7 +191,7 @@
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonExpBySpeciesAndLevel
+.public Species_GetExpAtLevel
 .public GetMonNature
 .public GetMonGender
 .public GetBoxmonSpriteCharAndPlttNarcIds

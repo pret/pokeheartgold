@@ -103,7 +103,7 @@
 .public String_New
 .public String_Delete
 .public Pokemon_GetData
-.public GetMonExpBySpeciesAndLevel
+.public Species_GetExpAtLevel
 .public GetMonGender
 .public Mon_GetBoxMon
 .public GetMoveAttr

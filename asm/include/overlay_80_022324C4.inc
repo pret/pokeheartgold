@@ -50,7 +50,7 @@
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetMonExpBySpeciesAndLevel
+.public Species_GetExpAtLevel
 .public SaveArray_Party_Alloc
 .public Party_AddMon
 .public Party_GetCount

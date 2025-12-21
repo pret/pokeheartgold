@@ -64,7 +64,7 @@ u8 Pokemon_GetPercentToNextLevel(Pokemon *mon);
 u32 CalcMonExpToNextLevel(Pokemon *mon);
 u32 CalcBoxMonExpToNextLevel(BoxPokemon *boxMon);
 u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon);
-u32 GetMonExpBySpeciesAndLevel(int species, int level);
+u32 Species_GetExpAtLevel(int species, int level);
 void LoadGrowthTable(int growthRate, u32 *table);
 u32 GetExpByGrowthRateAndLevel(int rate, int level);
 int Pokemon_CalcLevel(Pokemon *mon);

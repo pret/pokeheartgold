@@ -19,7 +19,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Species_GetValue
-.public GetMonExpBySpeciesAndLevel
+.public Species_GetExpAtLevel
 .public GetNatureFromPersonality
 .public CalcShininessByOtIdAndPersonality
 .public CopyPokemonToPokemon

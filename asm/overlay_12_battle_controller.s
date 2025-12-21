@@ -1351,7 +1351,7 @@ _02262AC8:
 _02262AE2:
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0xc]
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	mov r1, #0xc0
 	mul r1, r4
 	add r2, r5, r1
@@ -1362,11 +1362,11 @@ _02262AE2:
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x10]
 	add r1, r1, #1
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	add r5, r0, #0
 	ldr r0, [sp, #0x10]
 	ldr r1, [sp, #0xc]
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	sub r0, r5, r0
 	str r0, [sp, #0x20]
 	ldrh r1, [r7, r6]
@@ -2680,7 +2680,7 @@ _02263500:
 _0226350E:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	ldr r1, _02263560 ; =0x00002DA4
 	add r2, r5, r4
 	ldr r1, [r2, r1]
@@ -2688,11 +2688,11 @@ _0226350E:
 	str r0, [sp, #0x18]
 	add r0, r7, #0
 	add r1, r6, #1
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	add r4, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	sub r0, r4, r0
 	str r0, [sp, #0x1c]
 	mov r0, #0x14
@@ -2743,7 +2743,7 @@ ov12_02263564: ; 0x02263564
 	add r1, r6, #0
 	str r0, [sp, #0x10]
 	add r0, r7, #0
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	mov r1, #0xc0
 	mul r1, r4
 	add r2, r5, r1
@@ -2753,11 +2753,11 @@ ov12_02263564: ; 0x02263564
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, r6, #1
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	add r5, r0, #0
 	add r0, r7, #0
 	add r1, r6, #0
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	sub r0, r5, r0
 	str r0, [sp, #0x18]
 	mov r0, #0x10
@@ -3448,7 +3448,7 @@ _02263AB6:
 _02263AD0:
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	mov r1, #0xc0
 	mul r1, r4
 	add r2, r5, r1
@@ -3459,11 +3459,11 @@ _02263AD0:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0xc]
 	add r1, r1, #1
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	add r5, r0, #0
 	ldr r0, [sp, #0xc]
 	ldr r1, [sp, #8]
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	sub r0, r5, r0
 	str r0, [sp, #0x1c]
 	ldrh r1, [r7, r6]

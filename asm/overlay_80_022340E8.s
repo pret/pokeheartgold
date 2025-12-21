@@ -268,7 +268,7 @@ _022342E4:
 	mov r2, #0
 	bl Pokemon_GetData
 	mov r1, #0x32
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [sp, #0x14]
 	add r0, r4, #0
 	mov r1, #8
@@ -2296,7 +2296,7 @@ _02235290:
 	mov r2, #0
 	bl Pokemon_GetData
 	add r1, r6, #0
-	bl GetMonExpBySpeciesAndLevel
+	bl Species_GetExpAtLevel
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #8

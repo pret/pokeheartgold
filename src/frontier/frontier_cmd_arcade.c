@@ -99,7 +99,7 @@ BOOL FrtCmd_187(FrontierContext *ctx) {
             mon = Party_GetMonByIndex(arcadeData->playerParty, i);
             u32 level = Pokemon_GetData(mon, MON_DATA_LEVEL, 0);
             u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
-            u32 exp = GetMonExpBySpeciesAndLevel(species, level - 3);
+            u32 exp = Species_GetExpAtLevel(species, level - 3);
             Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
             Pokemon_CalcLevelAndStats(mon);
         }
