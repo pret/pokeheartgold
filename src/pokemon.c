@@ -303,11 +303,11 @@ void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int pe
 }
 
 void Pokemon_CalcLevelAndStats(Pokemon *mon) {
-    BOOL decry = AcquireMonLock(mon);
-    u32 level = (u32)Pokemon_CalcLevel(mon);
+    BOOL reencrypt = AcquireMonLock(mon);
+    int level = Pokemon_CalcLevel(mon);
     Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
     Pokemon_CalcStats(mon);
-    ReleaseMonLock(mon, decry);
+    ReleaseMonLock(mon, reencrypt);
 }
 
 void Pokemon_CalcStats(Pokemon *mon) {
