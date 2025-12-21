@@ -606,6 +606,7 @@ typedef enum {
 #define GROWTH_SLOW        5
 #define GROWTH_UNUSED_6    6
 #define GROWTH_UNUSED_7    7
+#define GROWTH_RATE_COUNT  8
 
 #define CATCHING_SHOW_MONS 6
 

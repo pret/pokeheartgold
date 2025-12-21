@@ -293,7 +293,7 @@ BOOL UseItemOnPokemon(Pokemon *mon, u16 itemID, u16 moveIdx, u16 location, enum 
     sp5C = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
     if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_LEVEL_UP)) {
         if (sp5C < MAX_LEVEL) {
-            AddMonData(mon, MON_DATA_EXPERIENCE, CalcMonExpToNextLevel(mon));
+            AddMonData(mon, MON_DATA_EXPERIENCE, Pokemon_CalcExpToNextLevel(mon));
             Pokemon_CalcLevelAndStats(mon);
             if (sp54 == 0) {
                 sp60 = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);

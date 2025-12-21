@@ -17808,7 +17808,7 @@ ov112_021EE8BC: ; 0x021EE8BC
 	add r4, r6, #0
 _021EE8D8:
 	add r0, r7, #0
-	bl CalcBoxMonExpToNextLevel
+	bl BoxPokemon_CalcExpToNextLevel
 	cmp r4, r0
 	blt _021EE8E6
 	add r4, r0, #0

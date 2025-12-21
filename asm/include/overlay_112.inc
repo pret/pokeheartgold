@@ -264,7 +264,7 @@
 .public SpeciesData_NewFromSpecies
 .public SpeciesData_GetValue
 .public SpeciesData_Free
-.public CalcBoxMonExpToNextLevel
+.public BoxPokemon_CalcExpToNextLevel
 .public MonApplyFriendshipMod
 .public BoxPokemon_GetGender
 .public Pokemon_IsShiny

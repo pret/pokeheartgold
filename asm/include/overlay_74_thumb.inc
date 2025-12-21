@@ -271,7 +271,7 @@
 .public BoxPokemon_GetData
 .public BoxPokemon_SetData
 .public Species_GetValue
-.public CalcLevelBySpeciesAndExp
+.public Species_CalcLevelByExp
 .public Pokemon_GetGender
 .public BoxPokemon_GetGender
 .public Pokemon_IsShiny

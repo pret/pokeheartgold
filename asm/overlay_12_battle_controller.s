@@ -1552,7 +1552,7 @@ _02262C7C:
 	b _02262C8C
 _02262C86:
 	add r0, r4, #0
-	bl Pokemon_GetPercentToNextLevel
+	bl Pokemon_CalcPercentToNextLevel
 _02262C8C:
 	strb r0, [r5, #2]
 	add r5, r5, #1

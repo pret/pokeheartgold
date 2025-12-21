@@ -24313,7 +24313,7 @@ ov74_02234A0C: ; 0x02234A0C
 	add r1, r0, #0
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0x10
-	bl CalcLevelBySpeciesAndExp
+	bl Species_CalcLevelByExp
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_02234A0C
 
