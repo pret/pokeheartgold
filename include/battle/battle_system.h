@@ -133,7 +133,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag);
 BOOL ov12_0223C080(BattleSystem *battleSystem);
 void ov12_0223C0C4(BattleSystem *battleSystem);
 u8 BattleSystem_GetChatotVoiceParam(BattleSystem *battleSystem, int battlerId);
-u32 BattleSystem_GetBugContestCaughtMon(BattleSystem *battleSystem);
+Pokemon *BattleSystem_GetBugContestCaughtMon(BattleSystem *battleSystem);
 u8 ov12_0223C140(BattleSystem *battleSystem, u32 battlerId);
 void ov12_0223C1A0(BattleSystem *battleSystem, u8 *buffer);
 void BattleSystem_ListOpponentsFlags(BattleSystem *battleSystem, u8 *buffer);

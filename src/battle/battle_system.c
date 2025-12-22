@@ -237,15 +237,9 @@ BagCursor *BattleSystem_GetBagCursor(BattleSystem *battleSystem) {
     return battleSystem->bagCursor;
 }
 
-<<<<<<< HEAD
 u16 BattleSystem_GetMonBall(BattleSystem *battleSystem, Pokemon *mon) {
     if (battleSystem->unk2474_2) {
-        return GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
-=======
-u16 BattleSystem_GetMonBall(BattleSystem *bsys, Pokemon *mon) {
-    if (bsys->unk2474_2) {
         return Pokemon_GetMonData(mon, MON_DATA_DP_POKEBALL, NULL);
->>>>>>> 21acff13d (labelled various func names)
     } else {
         return Pokemon_GetMonData(mon, MON_DATA_POKEBALL, NULL);
     }
@@ -623,11 +617,7 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
             if (BallToItemId(BattleSystem_GetMonBall(battleSystem, mon)) == ITEM_LUXURY_BALL) {
                 friendship++;
             }
-<<<<<<< HEAD
-            if (GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(battleSystem)) {
-=======
-            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(bsys)) {
->>>>>>> 21acff13d (labelled various func names)
+            if (Pokemon_GetMonData(mon, MON_DATA_EGG_LOCATION, NULL) == BattleSystem_GetLocation(battleSystem)) {
                 friendship++;
             }
             data = Pokemon_GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
@@ -740,7 +730,7 @@ u8 BattleSystem_GetUnk23FC(BattleSystem *battleSystem) {
 
 u8 BattleSystem_GetSafariRunAttempts(BattleSystem *battleSystem) {
     GF_ASSERT(battleSystem->ctx != NULL);
-    return ov12_022581D4(battleSystem, battleSystem->ctx, 5, 0);
+    return BattleSystem_GetBattleContextData(battleSystem, battleSystem->ctx, 5, 0);
 }
 
 int BattleSystem_GetSafariBallCount(BattleSystem *battleSystem) {
@@ -801,19 +791,11 @@ void BattleSystem_TryChangeForm(BattleSystem *battleSystem) {
         return;
     }
 
-<<<<<<< HEAD
     for (i = 0; i < BattleSystem_GetPartySize(battleSystem, BATTLER_PLAYER); i++) {
         mon = BattleSystem_GetPartyMon(battleSystem, BATTLER_PLAYER, i);
-        species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
         if (species == SPECIES_BURMY && battleSystem->unk2418[BATTLER_PLAYER] & MaskOfFlagNo(i)) {
             switch (BattleSystem_GetTerrainId(battleSystem)) {
-=======
-    for (i = 0; i < BattleSystem_GetPartySize(bsys, BATTLER_PLAYER); i++) {
-        mon = BattleSystem_GetPartyMon(bsys, BATTLER_PLAYER, i);
-        species = Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
-        if (species == SPECIES_BURMY && bsys->unk2418[BATTLER_PLAYER] & MaskOfFlagNo(i)) {
-            switch (BattleSystem_GetTerrainId(bsys)) {
->>>>>>> 21acff13d (labelled various func names)
             case TERRAIN_GRASS:
             case TERRAIN_PUDDLE:
             case TERRAIN_SNOW:
@@ -1053,7 +1035,7 @@ BattlerInfoBox *BattleSystem_GetBattlerInfoBox(BattleSystem *battleSystem, int b
     return OpponentData_GetBattlerInfoBox(battleSystem->opponentData[battlerId]);
 }
 
-void BattleSystem_HpBar_Init(BattleSystem *battleSystem) {
+void BattleSystem_BattlerInfoBox_Init(BattleSystem *battleSystem) {
     int i;
     BattlerInfoBox *battlerInfoBox;
 
@@ -1355,13 +1337,8 @@ void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
             Pokedex_SetMonSeenFlag(battleSystem->pokedex, mon);
         }
     }
-<<<<<<< HEAD
-    if (!(flag & 1) && GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
-        Pokedex_SetMonCaughtFlag(battleSystem->pokedex, mon);
-=======
     if (!(flag & 1) && Pokemon_GetMonData(mon, MON_DATA_SPECIES_OR_EGG, NULL) == SPECIES_BURMY) {
-        Pokedex_SetMonCaughtFlag(bsys->pokedex, mon);
->>>>>>> 21acff13d (labelled various func names)
+        Pokedex_SetMonCaughtFlag(battleSystem->pokedex, mon);
     }
 }
 

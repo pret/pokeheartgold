@@ -285,10 +285,10 @@ BOOL MonIsFromTogepiEgg(Pokemon *mon, SaveData *saveData) {
             || species == SPECIES_TOGEKISS)) {
         return FALSE;
     }
-    // For some reason, the result of calls to GetMonData must be assigned
+    // For some reason, the result of calls to Pokemon_GetMonData must be assigned
     // to explicit variables before being compared for the function to match,
     // even though the values are never used again afterwards. Also, the same
-    // variables are used for different calls to GetMonData.
+    // variables are used for different calls to Pokemon_GetMonData.
     int word = Pokemon_GetMonData(mon, MON_DATA_OT_ID, NULL);
     if (word != PlayerProfile_GetTrainerID(profile)) {
         return FALSE;
