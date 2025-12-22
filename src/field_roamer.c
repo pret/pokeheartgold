@@ -207,7 +207,7 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     profile = Save_PlayerData_GetProfile(saveData);
     mon = Pokemon_New((enum HeapID)4);
     Pokemon_Init(mon);
-    Pokemon_InitWith(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
+    Pokemon_InitWithParams(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
     SetRoamerData(roamerStats, ROAMER_DATA_STATUS, 0);
     SetRoamerData(roamerStats, ROAMER_DATA_ACTIVE, TRUE);
     SetRoamerData(roamerStats, ROAMER_DATA_IVS, Pokemon_GetData(mon, MON_DATA_COMBINED_IVS, NULL));

@@ -316,7 +316,7 @@
 .public BugContest_GetSportBallsAddr
 .public Pokemon_Init
 .public Pokemon_New
-.public Pokemon_InitWith
+.public Pokemon_InitWithParams
 .public Pokemon_InitWithNature
 .public Pokemon_InitWithGenderNatureLetter
 .public CreateMonWithFixedIVs

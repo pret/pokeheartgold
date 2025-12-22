@@ -51,7 +51,7 @@
 .public sub_0202BF08
 .public sub_0202BF80
 .public Save_FashionData_Get
-.public Pokemon_InitWith
+.public Pokemon_InitWithParams
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public MATHi_CRC32InitTableRev

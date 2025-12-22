@@ -331,7 +331,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, enum HeapID hea
             // Difficulty is a number between 0 and 250 which directly corresponds
             // to the (uniform) IV spread of the generated Pokemon.
             iv = (u8)((monSpecies[i].difficulty * 31) / 255);
-            Pokemon_InitWith(mon, species, monSpecies[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_InitWithParams(mon, species, monSpecies[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
 
             // If you were treating the trainer type as a bitfield, you'd put the
             // checks for held item and moves here. You'd also treat the trpoke
@@ -364,7 +364,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, enum HeapID hea
             }
             personality = (personality << 8) + pidGender;
             iv = (u8)((monSpeciesMoves[i].difficulty * 31) / 255);
-            Pokemon_InitWith(mon, species, monSpeciesMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_InitWithParams(mon, species, monSpeciesMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
             for (j = 0; j < MAX_MON_MOVES; j++) {
                 Pokemon_SetMoveInSlot(mon, monSpeciesMoves[i].moves[j], (u8)j);
             }
@@ -391,7 +391,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, enum HeapID hea
             }
             personality = (personality << 8) + pidGender;
             iv = (u8)((monSpeciesItem[i].difficulty * 31) / 255);
-            Pokemon_InitWith(mon, species, monSpeciesItem[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_InitWithParams(mon, species, monSpeciesItem[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
             Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &monSpeciesItem[i].item);
             SetTrMonCapsule(monSpeciesItem[i].capsule, mon, heapID);
             Pokemon_SetData(mon, MON_DATA_FORM, &form);
@@ -416,7 +416,7 @@ void CreateNPCTrainerParty(BattleSetup *enemies, int partyIndex, enum HeapID hea
             }
             personality = (personality << 8) + pidGender;
             iv = (u8)((monSpeciesItemMoves[i].difficulty * 31) / 255);
-            Pokemon_InitWith(mon, species, monSpeciesItemMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
+            Pokemon_InitWithParams(mon, species, monSpeciesItemMoves[i].level, iv, TRUE, (s32)personality, OT_ID_RANDOM_NO_SHINY, 0);
             Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &monSpeciesItemMoves[i].item);
             for (j = 0; j < MAX_MON_MOVES; j++) {
                 Pokemon_SetMoveInSlot(mon, monSpeciesItemMoves[i].moves[j], (u8)j);

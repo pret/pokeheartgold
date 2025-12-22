@@ -345,7 +345,7 @@ _0222A15E:
 	add r0, r5, #0
 	lsl r1, r1, #0x15
 	lsr r1, r1, #0x15
-	bl Pokemon_InitWith
+	bl Pokemon_InitWithParams
 	add r0, r5, #0
 	mov r1, #0xaf
 	add r2, sp, #0x1c

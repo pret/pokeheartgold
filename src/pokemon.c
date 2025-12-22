@@ -164,27 +164,29 @@ BOOL ReleaseBoxMonLock(BoxPokemon *boxMon, BOOL locked) {
     }
     return prev;
 }
-void Pokemon_InitWith(Pokemon *mon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
-    Mail *mail;
-    u32 capsule;
-    CAPSULE seal_coords;
+void Pokemon_InitWithParams(Pokemon *mon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
     Pokemon_Init(mon);
-    BoxPokemon_InitWith(&mon->box, species, level, ivs, hasFixedPersonality, personality, otIDType, otID);
+
+    BoxPokemon_InitWithParams(&mon->box, species, level, ivs, hasFixedPersonality, personality, otIDType, otID);
     // Not your average encryption call
     MonEncryptSegment((u16 *)&mon->party, sizeof(mon->party), 0);
     ENCRYPT_PARTY(mon);
     Pokemon_SetData(mon, MON_DATA_LEVEL, &level);
-    mail = Mail_New(HEAP_ID_DEFAULT);
+
+    Mail *mail = Mail_New(HEAP_ID_DEFAULT);
     Pokemon_SetData(mon, MON_DATA_MAIL, mail);
     Heap_Free(mail);
-    capsule = 0;
-    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE_ID, &capsule);
-    MI_CpuClearFast(&seal_coords, sizeof(seal_coords));
-    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &seal_coords);
+
+    u32 zero = 0;
+    CAPSULE capsule;
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE_ID, &zero);
+    MI_CpuClearFast(&capsule, sizeof(capsule));
+    Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &capsule);
+
     Pokemon_CalcLevelAndStats(mon);
 }
 
-void BoxPokemon_InitWith(BoxPokemon *boxMon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
+void BoxPokemon_InitWithParams(BoxPokemon *boxMon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
     u32 var1, var2;
     BoxPokemon_Init(boxMon);
     BOOL reencrypt = AcquireBoxMonLock(boxMon);
@@ -264,7 +266,7 @@ void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 natu
     do {
         personality = (u32)(LCRandom() | (LCRandom() << 16));
     } while (nature != Personality_GetNature(personality));
-    Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
+    Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
 void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 gender, u8 nature, u8 letter) {
@@ -278,7 +280,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
     } else {
         personality = Personality_CreateFromGenderAndNature(species, gender, nature);
     }
-    Pokemon_InitWith(mon, species, level, ivs, TRUE, personality, 0, 0);
+    Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
 
 u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
@@ -302,7 +304,7 @@ u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
 }
 
 void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
-    Pokemon_InitWith(mon, species, level, 0, 1, personality, 0, 0);
+    Pokemon_InitWithParams(mon, species, level, 0, 1, personality, 0, 0);
     Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &ivs);
     Pokemon_CalcLevelAndStats(mon);
 }

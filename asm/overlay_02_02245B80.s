@@ -1869,7 +1869,7 @@ _022469F8:
 	mov r1, #0x95
 	mov r2, #0x64
 	mov r3, #0x20
-	bl Pokemon_InitWith
+	bl Pokemon_InitWithParams
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -3943,7 +3943,7 @@ _022479E2:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	ldr r2, [sp, #0x14]
-	bl Pokemon_InitWith
+	bl Pokemon_InitWithParams
 	ldr r0, [sp, #0x18]
 	ldr r2, [sp, #0x1c]
 	ldr r3, [sp, #0x48]

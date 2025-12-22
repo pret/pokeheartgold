@@ -1119,7 +1119,7 @@ BOOL ScrCmd_GiveSpikyEarPichu(ScriptContext *ctx) {
 
     u32 trId = PlayerProfile_GetTrainerID(profile);
     u32 unkA = ChangePersonalityToNatureGenderAndAbility(trId, 0xac, NATURE_NAUGHTY, MON_FEMALE, 0, 0);
-    Pokemon_InitWith(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
+    Pokemon_InitWithParams(mon, SPECIES_PICHU, 30, 0x20, 1, unkA, 1, trId);
 
     form = 1;
     Pokemon_SetData(mon, MON_DATA_FORM, &form);

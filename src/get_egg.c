@@ -634,7 +634,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     String *name;
 
     friendship = Species_GetValue(species, SPECIES_DATA_EGG_CYCLES);
-    Pokemon_InitWith(mon, species, 1, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    Pokemon_InitWithParams(mon, species, 1, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
 
     metLevel = 0;
     pokeball = BALL_POKE;
@@ -683,7 +683,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
             }
         }
     }
-    Pokemon_InitWith(mon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
+    Pokemon_InitWithParams(mon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
 
     metLevel = 0;
     pokeball = BALL_POKE;
@@ -1055,7 +1055,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
             } while (Personality_IsShiny(otId, pid));
         }
     }
-    Pokemon_InitWith(tmpMon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
+    Pokemon_InitWithParams(tmpMon, species, 1, 32, TRUE, pid, OT_ID_PLAYER_ID, 0);
     for (i = 0; i < MAX_MON_MOVES; i++) {
         Pokemon_SetData(tmpMon, MON_DATA_MOVE1 + i, &moves[i]);
         Pokemon_SetData(tmpMon, MON_DATA_MOVE1_PP + i, &pp[i]);
