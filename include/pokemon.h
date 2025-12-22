@@ -177,9 +177,9 @@ void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball
 void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2);
-BOOL GetMonTMHMCompat(Pokemon *mon, u8 tmhm);
-BOOL GetBoxMonTMHMCompat(BoxPokemon *boxMon, u8 tmhm);
-BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm);
+BOOL Pokemon_CanLearnTMHM(Pokemon *mon, u8 tmHM);
+BOOL BoxPokemon_CanLearnTMHM(BoxPokemon *boxMon, u8 tmHM);
+BOOL Species_CanLearnTMHM(u16 species, u32 form, u8 tmHM);
 void SetMonPersonality(Pokemon *mon, u32 personality);
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
 void SpeciesData_LoadSpecies(int species, SpeciesData *personal);

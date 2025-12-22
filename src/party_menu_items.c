@@ -761,7 +761,7 @@ u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon) {
         }
     }
 
-    if (!GetMonTMHMCompat(mon, ItemToTMHMId(partyMenu->args->itemId))) {
+    if (!Pokemon_CanLearnTMHM(mon, ItemToTMHMId(partyMenu->args->itemId))) {
         return LEARN_MOVE_CHECK_INCOMPAT;
     }
 

@@ -486,7 +486,7 @@ static void InheritMoves(Pokemon *egg, BoxPokemon *father, BoxPokemon *mother) {
         if (search->dad_moves[i] != MOVE_NONE) {
             for (j = 0; j < 100; j++) {
                 if (search->dad_moves[i] == TMHMGetMove(j + ITEM_TM01)) {
-                    if (GetTMHMCompatBySpeciesAndForm(egg_species, egg_form, j)) {
+                    if (Species_CanLearnTMHM(egg_species, egg_form, j)) {
                         if (Pokemon_TryAppendMove(egg, search->dad_moves[i]) == MOVE_APPEND_FULL) {
                             Pokemon_ForceAppendMove(egg, search->dad_moves[i]);
                         }

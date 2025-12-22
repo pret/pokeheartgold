@@ -272,6 +272,7 @@ void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 natu
 void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 gender, u8 nature, u8 letter) {
     u32 personality = 0;
     u16 unownLetter = 0;
+
     if (letter != 0 && letter < UNOWN_FORM_MAX + 1) {
         do {
             personality = (u32)(LCRandom() | (LCRandom() << 16));
@@ -3753,42 +3754,39 @@ void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2) {
     }
 }
 
-BOOL GetMonTMHMCompat(Pokemon *mon, u8 tmhm) {
-    return GetBoxMonTMHMCompat(&mon->box, tmhm);
+BOOL Pokemon_CanLearnTMHM(Pokemon *mon, u8 tmHM) {
+    return BoxPokemon_CanLearnTMHM(&mon->box, tmHM);
 }
 
-BOOL GetBoxMonTMHMCompat(BoxPokemon *boxMon, u8 tmhm) {
-    u16 species;
-    u32 form;
+BOOL BoxPokemon_CanLearnTMHM(BoxPokemon *boxMon, u8 tmHM) {
+    u16 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
+    int form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
 
-    species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
-    form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
-    return GetTMHMCompatBySpeciesAndForm(species, form, tmhm);
+    return Species_CanLearnTMHM(species, form, tmHM);
 }
 
-BOOL GetTMHMCompatBySpeciesAndForm(u16 species, u32 form, u8 tmhm) {
-    u32 mask;
-    int baseStat;
+BOOL Species_CanLearnTMHM(u16 species, u32 form, u8 tmHM) {
     if (species == SPECIES_EGG) {
         return FALSE;
     }
 
-    // mask = 1 << (a2 % 32);
-    // baseStat = SPECIES_DATA_TM_LEARNSET_MASK_1 + (a2 / 32);
-    if (tmhm < 32) {
-        mask = 1 << tmhm;
-        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_1;
-    } else if (tmhm < 64) {
-        mask = 1 << (tmhm - 32);
-        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_2;
-    } else if (tmhm < 96) {
-        mask = 1 << (tmhm - 64);
-        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_3;
+    u32 mask;
+    int param;
+    if (tmHM < 32) {
+        mask = (1 << tmHM);
+        param = SPECIES_DATA_TM_LEARNSET_MASK_1;
+    } else if (tmHM < 64) {
+        mask = (1 << (tmHM - 32));
+        param = SPECIES_DATA_TM_LEARNSET_MASK_2;
+    } else if (tmHM < 96) {
+        mask = (1 << (tmHM - 64));
+        param = SPECIES_DATA_TM_LEARNSET_MASK_3;
     } else {
-        mask = 1 << (tmhm - 96);
-        baseStat = SPECIES_DATA_TM_LEARNSET_MASK_4;
+        mask = (1 << (tmHM - 96));
+        param = SPECIES_DATA_TM_LEARNSET_MASK_4;
     }
-    return (Species_GetFormValue(species, form, baseStat) & mask) != 0;
+
+    return (Species_GetFormValue(species, form, param) & mask) != 0;
 }
 
 void UpdateMonAbility(Pokemon *mon) {
