@@ -40,7 +40,7 @@ typedef struct PhoneCallPersistentState {
 
 typedef struct SavePokegear {
     u8 lastUsedApp;
-    u8 zoom;
+    u8 mapZoom;
     u8 unk_2;
     u8 unk_3;
     u32 unlockedSkins : 9;
