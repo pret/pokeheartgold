@@ -8,9 +8,9 @@
 typedef struct HeapParam {
     u32 size;        // maximum size of the heap
     OSArenaId arena; // where to allocate the heap from
-} HEAP_PARAM;
+} HeapParam;
 
-void Heap_InitSystem(const HEAP_PARAM *templates, u32 nTemplates, u32 totalNumHeaps, u32 pre_size);
+void Heap_InitSystem(const HeapParam *templates, u32 nTemplates, u32 totalNumHeaps, u32 preSize);
 BOOL Heap_Create(enum HeapID parent, enum HeapID child, u32 size);
 BOOL Heap_CreateAtEnd(enum HeapID parent, enum HeapID child, u32 size);
 void Heap_Destroy(enum HeapID heapID);
