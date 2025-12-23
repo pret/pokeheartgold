@@ -351,3 +351,62 @@ void ov18_021E654C(PokedexAppData *pokedexApp) {
     sub_020196E8(pokedexApp->unk_0008, 0, 0, 24);
     sub_020198FC(pokedexApp->unk_0008, 0, 0, -1, 5);
 }
+
+void ov18_021E6574(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 0, 0, 19);
+    sub_020198FC(pokedexApp->unk_0008, 0, 0, 1, 5);
+}
+
+void ov18_021E659C(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 4, 0, 15);
+}
+
+void ov18_021E65AC(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 1, 0, 24);
+    sub_020198FC(pokedexApp->unk_0008, 1, 0, -1, 5);
+}
+
+void ov18_021E65D4(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 1, 0, 19);
+    sub_020198FC(pokedexApp->unk_0008, 1, 0, 1, 5);
+}
+
+void ov18_021E65FC(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 6, 0, 24);
+    sub_020198FC(pokedexApp->unk_0008, 6, 0, -1, 4);
+}
+
+void ov18_021E6624(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 6, 0, 20);
+    sub_020198FC(pokedexApp->unk_0008, 6, 0, 1, 4);
+}
+
+void ov18_021E664C(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 7, 0, 24);
+    sub_020198FC(pokedexApp->unk_0008, 7, 0, -1, 4);
+}
+
+void ov18_021E6674(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 7, 0, 20);
+    sub_020198FC(pokedexApp->unk_0008, 7, 0, 1, 4);
+}
+
+void ov18_021E669C(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 8, 0, 24);
+    sub_020198FC(pokedexApp->unk_0008, 8, 0, -1, 5);
+}
+
+void ov18_021E66C4(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 8, 0, 19);
+    sub_020198FC(pokedexApp->unk_0008, 8, 0, 1, 5);
+}
+
+void ov18_021E66EC(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 16, 0, 24);
+    sub_020198FC(pokedexApp->unk_0008, 16, 0, -1, 4);
+}
+
+void ov18_021E6714(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 16, 0, 20);
+    sub_020198FC(pokedexApp->unk_0008, 16, 0, 1, 4);
+}
