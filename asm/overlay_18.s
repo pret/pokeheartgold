@@ -13,12 +13,6 @@
 	.extern ov18_021E5C84
 	.extern ov18_021E5E70
 	.extern ov18_021E5F58
-	.extern ov18_021E5FA4
-	.extern ov18_021E5FE8
-	.extern ov18_021E602C
-	.extern ov18_021E6070
-	.extern ov18_021E60B4
-	.extern ov18_021E60F8
 	.extern ov18_021E613C
 	.extern ov18_021E6174
 	.extern ov18_021E618C
@@ -46,77 +40,9 @@
 	.extern ov18_021E673C
 	.extern ov18_021E6794
 	.extern ov18_021E67B0
+	.extern ov18_021E67C8
 
 	.text
-
-	thumb_func_start ov18_021E67C8
-ov18_021E67C8: ; 0x021E67C8
-	push {r4, lr}
-	add r4, r0, #0
-	cmp r1, #5
-	bhi _021E6864
-	add r1, r1, r1
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021E67DC: ; jump table
-	.short _021E67E8 - _021E67DC - 2 ; case 0
-	.short _021E67FE - _021E67DC - 2 ; case 1
-	.short _021E6814 - _021E67DC - 2 ; case 2
-	.short _021E682A - _021E67DC - 2 ; case 3
-	.short _021E6840 - _021E67DC - 2 ; case 4
-	.short _021E6850 - _021E67DC - 2 ; case 5
-_021E67E8:
-	bl ov18_021E6868
-	bl ov18_021E5FA4
-	add r0, r4, #0
-	bl ov18_021EE3FC
-	add r0, r4, #0
-	bl ov18_021F2880
-	pop {r4, pc}
-_021E67FE:
-	bl ov18_021E7BD0
-	bl ov18_021E6070
-	add r0, r4, #0
-	bl ov18_021F021C
-	add r0, r4, #0
-	bl ov18_021F3D98
-	pop {r4, pc}
-_021E6814:
-	bl ov18_021E7D90
-	bl ov18_021E60B4
-	add r0, r4, #0
-	bl ov18_021F05E8
-	add r0, r4, #0
-	bl ov18_021F49F8
-	pop {r4, pc}
-_021E682A:
-	bl ov18_021E800C
-	bl ov18_021E602C
-	add r0, r4, #0
-	bl ov18_021F0900
-	add r0, r4, #0
-	bl ov18_021F5DC0
-	pop {r4, pc}
-_021E6840:
-	bl ov18_021E7ED8
-	bl ov18_021E60F8
-	add r0, r4, #0
-	bl ov18_021F0858
-	pop {r4, pc}
-_021E6850:
-	bl ov18_021E7048
-	bl ov18_021E5FE8
-	add r0, r4, #0
-	bl ov18_021EEE58
-	add r0, r4, #0
-	bl ov18_021F2F3C
-_021E6864:
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021E67C8
 
 	thumb_func_start ov18_021E6868
 ov18_021E6868: ; 0x021E6868

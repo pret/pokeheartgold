@@ -5,6 +5,12 @@
 #include "sprite_system.h"
 
 void ov18_021E5C40(void *cb_arg);
+void ov18_021E5FA4(void);
+void ov18_021E5FE8(void);
+void ov18_021E602C(void);
+void ov18_021E6070(void);
+void ov18_021E60B4(void);
+void ov18_021E60F8(void);
 
 extern const GraphicsBanks ov18_021F98B0;
 
@@ -435,4 +441,44 @@ void ov18_021E6794(PokedexAppData *pokedexApp) {
 void ov18_021E67B0(PokedexAppData *pokedexApp) {
     sub_0201980C(pokedexApp->unk_0008, 23);
     ClearWindowTilemapAndScheduleTransfer(&pokedexApp->unk_003C);
+}
+
+void ov18_021E67C8(PokedexAppData *pokedexApp, int a1) {
+    switch (a1) {
+    case 0:
+        ov18_021E6868(pokedexApp);
+        ov18_021E5FA4();
+        ov18_021EE3FC(pokedexApp);
+        ov18_021F2880(pokedexApp);
+        break;
+    case 1:
+        ov18_021E7BD0(pokedexApp);
+        ov18_021E6070();
+        ov18_021F021C(pokedexApp);
+        ov18_021F3D98(pokedexApp);
+        break;
+    case 2:
+        ov18_021E7D90(pokedexApp);
+        ov18_021E60B4();
+        ov18_021F05E8(pokedexApp);
+        ov18_021F49F8(pokedexApp);
+        break;
+    case 3:
+        ov18_021E800C(pokedexApp);
+        ov18_021E602C();
+        ov18_021F0900(pokedexApp);
+        ov18_021F5DC0(pokedexApp);
+        break;
+    case 4:
+        ov18_021E7ED8(pokedexApp);
+        ov18_021E60F8();
+        ov18_021F0858(pokedexApp);
+        break;
+    case 5:
+        ov18_021E7048(pokedexApp);
+        ov18_021E5FE8();
+        ov18_021EEE58(pokedexApp);
+        ov18_021F2F3C(pokedexApp);
+        break;
+    }
 }
