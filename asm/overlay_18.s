@@ -43,86 +43,11 @@
 	.extern ov18_021E66C4
 	.extern ov18_021E66EC
 	.extern ov18_021E6714
+	.extern ov18_021E673C
+	.extern ov18_021E6794
+	.extern ov18_021E67B0
 
 	.text
-
-	thumb_func_start ov18_021E673C
-ov18_021E673C: ; 0x021E673C
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	ldr r0, [r5, #8]
-	mov r1, #0x10
-	bl sub_02019B08
-	ldr r1, _021E678C ; =0x000018A2
-	add r4, r0, #0
-	ldr r0, [r5]
-	ldrh r1, [r5, r1]
-	ldr r0, [r0]
-	bl Pokedex_CheckMonCaughtFlag
-	cmp r0, #0
-	beq _021E675E
-	mov r5, #0
-	b _021E6762
-_021E675E:
-	mov r5, #0xb
-	lsl r5, r5, #0xc
-_021E6762:
-	mov r0, #0
-	ldr r6, _021E6790 ; =0x00000FFF
-	add r2, r0, #0
-_021E6768:
-	lsl r3, r2, #1
-	add r3, r4, r3
-	mov r1, #8
-	add r3, #0x10
-_021E6770:
-	ldrh r7, [r3]
-	add r1, r1, #1
-	and r7, r6
-	orr r7, r5
-	strh r7, [r3]
-	add r3, r3, #2
-	cmp r1, #0x10
-	blo _021E6770
-	add r0, r0, #1
-	add r2, #0x20
-	cmp r0, #4
-	blo _021E6768
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E678C: .word 0x000018A2
-_021E6790: .word 0x00000FFF
-	thumb_func_end ov18_021E673C
-
-	thumb_func_start ov18_021E6794
-ov18_021E6794: ; 0x021E6794
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #8]
-	mov r1, #0x17
-	mov r2, #0xa
-	mov r3, #0xb
-	bl sub_020196E8
-	add r4, #0x3c
-	add r0, r4, #0
-	bl ScheduleWindowCopyToVram
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021E6794
-
-	thumb_func_start ov18_021E67B0
-ov18_021E67B0: ; 0x021E67B0
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, [r4, #8]
-	mov r1, #0x17
-	bl sub_0201980C
-	add r4, #0x3c
-	add r0, r4, #0
-	bl ClearWindowTilemapAndScheduleTransfer
-	pop {r4, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021E67B0
 
 	thumb_func_start ov18_021E67C8
 ov18_021E67C8: ; 0x021E67C8

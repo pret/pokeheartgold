@@ -410,3 +410,29 @@ void ov18_021E6714(PokedexAppData *pokedexApp) {
     sub_020196E8(pokedexApp->unk_0008, 16, 0, 20);
     sub_020198FC(pokedexApp->unk_0008, 16, 0, 1, 4);
 }
+
+void ov18_021E673C(PokedexAppData *pokedexApp) {
+    u16 *r4 = sub_02019B08(pokedexApp->unk_0008, 16);
+    u16 r5;
+
+    if (Pokedex_CheckMonCaughtFlag(pokedexApp->unk_0000->pokedex, pokedexApp->unk_18A2)) {
+        r5 = 0;
+    } else {
+        r5 = 0xB000;
+    }
+    for (u32 i = 0; i < 4; ++i) {
+        for (u32 j = 8; j < 16; ++j) {
+            r4[32 * i + j] = (r4[32 * i + j] & 0xFFF) | r5;
+        }
+    }
+}
+
+void ov18_021E6794(PokedexAppData *pokedexApp) {
+    sub_020196E8(pokedexApp->unk_0008, 23, 10, 11);
+    ScheduleWindowCopyToVram(&pokedexApp->unk_003C);
+}
+
+void ov18_021E67B0(PokedexAppData *pokedexApp) {
+    sub_0201980C(pokedexApp->unk_0008, 23);
+    ClearWindowTilemapAndScheduleTransfer(&pokedexApp->unk_003C);
+}
