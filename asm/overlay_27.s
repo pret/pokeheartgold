@@ -243,11 +243,11 @@ ov27_0225A19C: ; 0x0225A19C
 	str r1, [sp, #4]
 	bl SysTask_GetData
 	add r6, r0, #0
-	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(ds_protect)
 	mov r0, #0
 	bl FS_LoadOverlay
 	ldr r0, _0225A2B4 ; =ov27_0225C238
-	bl ov123_0225F430
+	bl DSProt_DetectFlashcart
 	cmp r0, #0
 	beq _0225A1C8
 	mov r1, #0xfa
@@ -299,7 +299,7 @@ _0225A216:
 	cmp r5, #4
 	blt _0225A216
 	ldr r0, _0225A2C0 ; =ov27_0225C248
-	bl ov123_0225F598
+	bl DSProt_DetectNotEmulator
 	cmp r0, #0
 	bne _0225A238
 	mov r1, #0xfa
@@ -343,7 +343,7 @@ _0225A246:
 	mov r0, #8
 	bl Heap_Destroy
 	ldr r0, _0225A2C4 ; =ov27_0225C24C
-	bl ov123_0225F688
+	bl DSProt_DetectNotDummy
 	cmp r0, #0
 	bne _0225A2A4
 	mov r1, #0xfa
@@ -351,13 +351,13 @@ _0225A246:
 	lsl r1, r1, #2
 	bl Heap_AllocAtEnd
 _0225A2A4:
-	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(OVY_123)
+	ldr r1, _0225A2B0 ; =FS_OVERLAY_ID(ds_protect)
 	mov r0, #0
 	bl FS_UnloadOverlay
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_0225A2B0: .word FS_OVERLAY_ID(OVY_123)
+_0225A2B0: .word FS_OVERLAY_ID(ds_protect)
 _0225A2B4: .word ov27_0225C238
 _0225A2B8: .word 0x000004A8
 _0225A2BC: .word 0x000004AC
