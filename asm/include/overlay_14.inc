@@ -208,8 +208,8 @@
 .public Options_GetFrame
 .public Save_SpecialRibbons_Get
 .public Pokemon_New
-.public AcquireBoxMonLock
-.public ReleaseBoxMonLock
+.public BoxPokemon_UnlockEncryption
+.public BoxPokemon_LockEncryption
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public Pokemon_SetData

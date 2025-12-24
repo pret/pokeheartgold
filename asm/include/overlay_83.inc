@@ -186,8 +186,8 @@
 .public sub_0205C174
 .public sub_0205C1F0
 .public sub_0205C268
-.public AcquireMonLock
-.public ReleaseMonLock
+.public Pokemon_UnlockEncryption
+.public Pokemon_LockEncryption
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData

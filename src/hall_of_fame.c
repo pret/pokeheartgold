@@ -38,7 +38,7 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
 
         for (i = 0, j = 0; i < npokes; i++) {
             Pokemon *mon = Party_GetMonByIndex(party, i);
-            BOOL lock = AcquireMonLock(mon);
+            BOOL lock = Pokemon_UnlockEncryption(mon);
             if (!Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
                 team->party[j].species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
                 team->party[j].level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
@@ -60,7 +60,7 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                 }
                 j++;
             }
-            ReleaseMonLock(mon, lock);
+            Pokemon_LockEncryption(mon, lock);
         }
         team->year = date->year;
         team->month = date->month;

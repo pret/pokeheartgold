@@ -6239,7 +6239,7 @@ _021E8CDE:
 	strh r0, [r7]
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl AcquireBoxMonLock
+	bl BoxPokemon_UnlockEncryption
 	mov r4, #0
 	add r6, r7, #0
 _021E8D24:
@@ -6305,7 +6305,7 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl ReleaseBoxMonLock
+	bl BoxPokemon_LockEncryption
 	ldrh r0, [r7]
 	mov r1, #0x9a
 	bl SpeciesData_NewFromSpecies

@@ -265,8 +265,8 @@
 .public sub_0203A914
 .public sub_0203A930
 .public BoxPokemon_Init
-.public AcquireBoxMonLock
-.public ReleaseBoxMonLock
+.public BoxPokemon_UnlockEncryption
+.public BoxPokemon_LockEncryption
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public BoxPokemon_SetData
