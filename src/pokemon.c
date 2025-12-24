@@ -119,51 +119,56 @@ Pokemon *Pokemon_New(enum HeapID heapID) {
 }
 
 BOOL Pokemon_UnlockEncryption(Pokemon *mon) {
-    BOOL locked = FALSE;
+    BOOL wasDecrypted = FALSE;
+
     if (!mon->box.partyDecrypted) {
-        locked = TRUE;
+        wasDecrypted = TRUE;
         GF_ASSERT(!mon->box.boxDecrypted);
         mon->box.partyDecrypted = TRUE;
         mon->box.boxDecrypted = TRUE;
         DECRYPT_PARTY(mon);
         DECRYPT_BOX(&mon->box);
     }
-    return locked;
+    return wasDecrypted;
 }
 
-BOOL Pokemon_LockEncryption(Pokemon *mon, BOOL locked) {
-    BOOL prev = FALSE;
-    if (mon->box.partyDecrypted == TRUE && locked == TRUE) {
-        prev = TRUE;
+BOOL Pokemon_LockEncryption(Pokemon *mon, BOOL encrypt) {
+    BOOL wasEncrypted = FALSE;
+
+    if (mon->box.partyDecrypted == TRUE && encrypt == TRUE) {
+        wasEncrypted = TRUE;
         mon->box.partyDecrypted = FALSE;
         mon->box.boxDecrypted = FALSE;
         ENCRYPT_PARTY(mon);
         mon->box.checksum = CHECKSUM(&mon->box);
         ENCRYPT_BOX(&mon->box);
     }
-    return prev;
+    return wasEncrypted;
 }
 
 BOOL BoxPokemon_UnlockEncryption(BoxPokemon *boxMon) {
-    BOOL locked = FALSE;
+    BOOL wasDecrypted = FALSE;
+
     if (!boxMon->boxDecrypted) {
-        locked = TRUE;
+        wasDecrypted = TRUE;
         boxMon->boxDecrypted = TRUE;
         DECRYPT_BOX(boxMon);
     }
-    return locked;
+    return wasDecrypted;
 }
 
-BOOL BoxPokemon_LockEncryption(BoxPokemon *boxMon, BOOL locked) {
-    BOOL prev = FALSE;
-    if (boxMon->boxDecrypted == TRUE && locked == TRUE) {
-        prev = TRUE;
+BOOL BoxPokemon_LockEncryption(BoxPokemon *boxMon, BOOL encrypt) {
+    BOOL wasEncrypted = FALSE;
+
+    if (boxMon->boxDecrypted == TRUE && encrypt == TRUE) {
+        wasEncrypted = TRUE;
         boxMon->boxDecrypted = FALSE;
         boxMon->checksum = CHECKSUM(boxMon);
         ENCRYPT_BOX(boxMon);
     }
-    return prev;
+    return wasEncrypted;
 }
+
 void Pokemon_InitWithParams(Pokemon *mon, int species, int level, int ivs, BOOL hasFixedPersonality, int personality, int otIDType, int otID) {
     Pokemon_Init(mon);
 
