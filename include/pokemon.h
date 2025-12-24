@@ -1,5 +1,5 @@
-#ifndef POKEDIAMOND_POKEMON_H
-#define POKEDIAMOND_POKEMON_H
+#ifndef POKEHEARTGOLD_POKEMON_H
+#define POKEHEARTGOLD_POKEMON_H
 
 #include "pokemon_types_def.h"
 #include "sprite_system.h"
@@ -209,4 +209,4 @@ void CalcMonPokeathlonPerformance(Pokemon *mon, struct PokeathlonTodayPerformanc
 void CalcBoxmonPokeathlonStars(struct PokeathlonPerformanceStars *dest, BoxPokemon *boxMon, const s8 *aprijuice, enum HeapID heapID);
 void CalcMonPokeathlonStars(struct PokeathlonPerformanceStars *dest, Pokemon *mon, const s8 *aprijuice, enum HeapID heapID);
 
-#endif // POKEDIAMOND_POKEMON_H
+#endif // POKEHEARTGOLD_POKEMON_H
