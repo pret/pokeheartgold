@@ -353,7 +353,7 @@ BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_MAIN_3);
     FreeBgTilemapBuffer(appData->bgConfig, GF_BG_LYR_SUB_0);
     ViewRankings_DestroySprites(appData);
-    sub_0200AEB0(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
+    SpriteResource_ResetTransferTasks(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_CHAR]);
     sub_0200B0A8(appData->gf2dGfxResObjects[GF_GFX_RES_TYPE_PLTT]);
     for (int i = 0; i < 6; ++i) {
         Destroy2DGfxResObjMan(appData->gf2dGfxResManagers[i]);

@@ -587,7 +587,7 @@ sub_0205CFBC: ; 0x0205CFBC
 	bl MapObject_SetFacingDirection
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0205F328
+	bl MapObject_SetUnkA0
 	add r0, r4, #0
 	bl sub_02060F78
 	add r0, r4, #0

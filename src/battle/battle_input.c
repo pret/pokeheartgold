@@ -1911,9 +1911,9 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
             strFormated = String_New(32, HEAP_ID_BATTLE);
             caughtMon = BattleSystem_GetBugContestCaughtMon(battleInput->battleSystem);
             if (caughtMon != NULL) {
-                int species = GetMonData(caughtMon, MON_DATA_SPECIES, NULL);
+                int species = Pokemon_GetMonData(caughtMon, MON_DATA_SPECIES, NULL);
                 if (species != SPECIES_NONE) {
-                    int gender = GetMonGender(caughtMon);
+                    int gender = Pokemon_GetGender(caughtMon);
 
                     switch (gender) {
                     case MON_MALE:
@@ -1933,7 +1933,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                         BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 20023, 136, 0x10, 0, 0);
                         String_Delete(strMonGender);
                     }
-                    int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
+                    int level = Pokemon_GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
                     BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, msg_0197_01274);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);
@@ -2215,7 +2215,7 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
     BattleInput_GetMonsHitArray(battleInput, monsHit, 0);
     BattleInput_LoadPokemonIconResources(battleInput);
     ov12_022686BC(battleInput);
-    ov12_0223C1C4(battleInput->battleSystem, v10);
+    BattleSystem_ListOpponentsFlags(battleInput->battleSystem, v10);
     ov12_0223C1A0(battleInput->battleSystem, v11);
 
     strPokemonName = String_New(24, HEAP_ID_BATTLE);
@@ -2233,7 +2233,7 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
             }
 
             pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, battlerId, menu->targetMons[battlerId].selectedMon);
-            boxMon = Mon_GetBoxMon(pokemon);
+            boxMon = Pokemon_GetBox(pokemon);
 
             BufferBoxMonNickname(messageFormat, 0, boxMon);
             StringExpandPlaceholders(messageFormat, strPokemonName, strGenderMarker);
@@ -3453,7 +3453,7 @@ static void Task_BattleMenuSlideIn(SysTask *task, void *data) {
         BgSetPosTextAndCommit(bgConfig, 4, BG_POS_OP_SET_Y, 0);
         BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_X, 0);
         BgSetPosTextAndCommit(bgConfig, 5, BG_POS_OP_SET_Y, 0);
-        ov12_0223BB64(menuSlideIn->battleInput->battleSystem, 1);
+        BattleSystem_SetUnk2440(menuSlideIn->battleInput->battleSystem, 1);
         Heap_Free(data);
         SysTask_Destroy(task);
 
@@ -4369,7 +4369,7 @@ static int BattleInput_CatchingTutorialMain(BattleInput *battleInput) {
     PaletteData *palette = BattleSystem_GetPaletteData(battleInput->battleSystem);
     int ret = TOUCH_MENU_NO_INPUT;
 
-    if (ov12_0223BB04(battleInput->battleSystem) == 0) {
+    if (BattleSystem_GetUnk2421(battleInput->battleSystem) == 0) {
         GF_ASSERT(battleInput->tutorial.state < NELEMS(ov12_0226E260));
         ret = ov12_0226E260[battleInput->tutorial.state](battleInput);
     } else {

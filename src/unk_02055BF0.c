@@ -385,7 +385,7 @@ BOOL sub_020562B0(TaskManager *man) {
         MapObject_ClearHeldMovementIfActive(obj);
         Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
         Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-        sub_0205F328(obj, 0);
+        MapObject_SetUnkA0(obj, 0);
         fenv->unk18 = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldEnvSubUnk18));
         fenv18 = fenv->unk18;
         fenv18->state = 0;
@@ -471,7 +471,7 @@ BOOL sub_02056424(TaskManager *man) {
             MapObject_ClearHeldMovementIfActive(obj);
             Field_PlayerAvatar_OrrTransitionFlags(fieldSystem->playerAvatar, 512);
             Field_PlayerAvatar_ApplyTransitionFlags(fieldSystem->playerAvatar);
-            sub_0205F328(obj, 0);
+            MapObject_SetUnkA0(obj, 0);
             fenv->unk18 = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(FieldEnvSubUnk18));
             fenv->unk18->state = 0;
             PlayerAvatar_ToggleAutomaticHeightUpdating(fieldSystem->playerAvatar, FALSE);

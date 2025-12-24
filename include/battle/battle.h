@@ -438,7 +438,7 @@ typedef struct BattleContext {
 
 typedef struct BattleSystem BattleSystem;
 
-typedef struct BattleHpBar {
+typedef struct BattlerInfoBox {
     struct {
         u8 script;
     };
@@ -460,7 +460,7 @@ typedef struct BattleHpBar {
     s32 gainedExp;
     s32 expCalc;
     u8 level;
-    u8 unk49;
+    u8 gender;
     u8 unk_4A;
     u8 unk4B;
     u8 unk4C;
@@ -471,8 +471,8 @@ typedef struct BattleHpBar {
     u8 unk_4F_2 : 1;
     u8 unk_4F_3 : 1;
     SysTask *sysTask;
-    u16 unk54;
-} BattleHpBar;
+    u16 yOffset;
+} BattlerInfoBox;
 
 typedef struct OpponentData {
     u32 unk0[6];
@@ -480,15 +480,15 @@ typedef struct OpponentData {
     u32 *unk1C;
     Pokepic *pokepic;
     u32 *unk24;
-    BattleHpBar hpBar;
+    BattlerInfoBox battlerInfoBox;
     void *unk80;
     u8 unk84[0x110];
     u8 unk194;
     u8 unk195;
     u8 unk196;
     u8 unk197;
-    SysTask *unk198;
-    u16 unk19C;
+    SysTask *sysTask;
+    u16 yOffset;
     int unk1A0;
     u32 *unk1A4;
     u8 unk1A8;

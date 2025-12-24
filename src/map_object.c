@@ -34,7 +34,7 @@ static void sub_0205E934(LocalMapObject *object);
 static void MapObject_ConvertXZToPositionVec(LocalMapObject *object);
 static void MapObject_CreateFromInitArgs(MapObjectInitArgs *args);
 static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager *manager);
-static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo);
+static LocalMapObject *MapObject_FindLocalMapObject(MapObjectManager *manager, u32 id, u32 mapNo);
 static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object);
 static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem);
 static void MapObject_SetPositionVectorFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent);
@@ -71,9 +71,9 @@ static u32 MapObject_GetFlags2BitsMask(LocalMapObject *object, u32 bits);
 static void MapObject_SetMapID(LocalMapObject *object, u32 mapId);
 static void MapObject_SetMovement(LocalMapObject *object, u32 movement);
 static void MapObject_SetInitialFacingDirection(LocalMapObject *object, u32 initialFacing);
-static void sub_0205F338(LocalMapObject *object, SysTask *sysTask);
-static SysTask *sub_0205F340(LocalMapObject *object);
-static void sub_0205F348(LocalMapObject *object);
+static void MapObject_SetUnkB0(LocalMapObject *object, SysTask *sysTask);
+static SysTask *MapObject_GetUnkB0(LocalMapObject *object);
+static void MapObject_Destroy(LocalMapObject *object);
 static void MapObject_SetManager(LocalMapObject *object, MapObjectManager *manager);
 static MapObjectManager *MapObject_GetManagerFromManager(LocalMapObject *object);
 static void sub_0205F414(LocalMapObject *object, LocalMapObject_UnkCallback callback);
@@ -187,39 +187,39 @@ static MapObjectManager *MapObjectManager_New(u32 objectCount) {
 }
 
 static LocalMapObject *MapObject_CreateFromObjectEvent(MapObjectManager *manager, ObjectEvent *objectEvent, u32 mapNo) {
-    LocalMapObject *ret;
+    LocalMapObject *mapObject;
     ObjectEvent event = *objectEvent;
     ObjectEvent *eventPtr = &event;
 
     u32 objectId = ObjectEvent_GetID(eventPtr);
     if (!ObjectEvent_ScriptIDIsUnset(eventPtr)) {
-        ret = sub_0205EA98(manager, objectId, mapNo);
-        if (ret != NULL) {
-            sub_0205F014(ret, eventPtr, mapNo);
-            return ret;
+        mapObject = MapObject_FindLocalMapObject(manager, objectId, mapNo);
+        if (mapObject != NULL) {
+            sub_0205F014(mapObject, eventPtr, mapNo);
+            return mapObject;
         }
     } else {
-        ret = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(eventPtr));
-        if (ret != NULL) {
-            sub_0205F058(ret, mapNo, eventPtr);
-            return ret;
+        mapObject = MapObjectManager_GetFirstObjectWithIDAndMap(manager, objectId, ObjectEvent_GetEventFlag_AssertScriptIDIsUnset(eventPtr));
+        if (mapObject != NULL) {
+            sub_0205F058(mapObject, mapNo, eventPtr);
+            return mapObject;
         }
     }
 
-    ret = MapObjectManager_GetFirstInactiveObject(manager);
-    if (ret == NULL) {
-        return ret;
+    mapObject = MapObjectManager_GetFirstInactiveObject(manager);
+    if (mapObject == NULL) {
+        return mapObject;
     }
 
-    MapObject_InitFromObjectEvent(ret, eventPtr, MapObjectManager_GetFieldSystem(manager));
-    sub_0205EC90(ret, manager);
-    MapObject_SetMapID(ret, mapNo);
-    sub_0205EFA4(ret);
-    sub_0205EFB4(ret);
-    MapObject_SetFlagsBits(ret, MAPOBJECTFLAG_UNK2);
-    sub_0205EAF0(manager, ret);
+    MapObject_InitFromObjectEvent(mapObject, eventPtr, MapObjectManager_GetFieldSystem(manager));
+    sub_0205EC90(mapObject, manager);
+    MapObject_SetMapID(mapObject, mapNo);
+    sub_0205EFA4(mapObject);
+    sub_0205EFB4(mapObject);
+    MapObject_SetFlagsBits(mapObject, MAPOBJECTFLAG_UNK2);
+    sub_0205EAF0(manager, mapObject);
     sub_0205F16C(MapObjectManager_Get(manager));
-    return ret;
+    return mapObject;
 }
 
 LocalMapObject *MapObject_Create(MapObjectManager *manager, u32 x, u32 y, u32 direction, u32 sprite, u32 movement, u32 mapNo) {
@@ -281,7 +281,7 @@ void MapObject_Remove(LocalMapObject *object) {
         sub_0205F498(object);
     }
     sub_0205F444(object);
-    sub_0205F348(object);
+    MapObject_Destroy(object);
     sub_0205F174(MapObject_GetManagerFromManager(object));
     MapObject_Clear(object);
 }
@@ -584,7 +584,7 @@ static LocalMapObject *MapObjectManager_GetFirstInactiveObject(MapObjectManager 
     return NULL;
 }
 
-static LocalMapObject *sub_0205EA98(MapObjectManager *manager, u32 id, u32 mapNo) { // find corresponding LMO with ID and mapNo?
+static LocalMapObject *MapObject_FindLocalMapObject(MapObjectManager *manager, u32 id, u32 mapNo) {
     s32 index = 0;
     LocalMapObject *object;
 
@@ -607,7 +607,7 @@ static void sub_0205EAF0(MapObjectManager *manager, LocalMapObject *object) {
     SysTask *task = SysTask_CreateOnMainQueue((SysTaskFunc)sub_0205F12C, object, priority);
     GF_ASSERT(task != NULL);
 
-    sub_0205F338(object, task);
+    MapObject_SetUnkB0(object, task);
 }
 
 static void MapObject_InitFromObjectEvent(LocalMapObject *object, ObjectEvent *objectEvent, FieldSystem *fieldSystem) {
@@ -819,7 +819,7 @@ static void sub_0205EFB4(LocalMapObject *object) {
     }
 
     sub_0205EF8C(object);
-    sub_0205F328(object, 0);
+    MapObject_SetUnkA0(object, 0);
     ov01_021FA2B8(object, FALSE);
     if (!MapObject_CheckFlag14(object)) {
         sub_0205ED18(object);
@@ -1176,24 +1176,24 @@ s32 MapObject_GetYRange(LocalMapObject *object) {
     return object->yRange;
 }
 
-void sub_0205F328(LocalMapObject *object, u32 param1) {
+void MapObject_SetUnkA0(LocalMapObject *object, u32 param1) {
     object->unkA0 = param1;
 }
 
-u32 sub_0205F330(LocalMapObject *object) {
+u32 MapObject_GetUnkA0(LocalMapObject *object) {
     return object->unkA0;
 }
 
-static void sub_0205F338(LocalMapObject *object, SysTask *sysTask) {
+static void MapObject_SetUnkB0(LocalMapObject *object, SysTask *sysTask) {
     object->unkB0 = sysTask;
 }
 
-static SysTask *sub_0205F340(LocalMapObject *object) {
+static SysTask *MapObject_GetUnkB0(LocalMapObject *object) {
     return object->unkB0;
 }
 
-static void sub_0205F348(LocalMapObject *object) {
-    SysTask_Destroy(sub_0205F340(object));
+static void MapObject_Destroy(LocalMapObject *object) {
+    SysTask_Destroy(MapObject_GetUnkB0(object));
 }
 
 static void MapObject_SetManager(LocalMapObject *object, MapObjectManager *manager) {

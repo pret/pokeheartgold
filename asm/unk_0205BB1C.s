@@ -333,7 +333,7 @@ _0205BD36:
 	bl Party_GetMonByIndex
 	add r1, r7, #0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _0205BD52
 	add r0, r4, #0
@@ -369,13 +369,13 @@ _0205BD78:
 	mov r1, #0x4c
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _0205BDA4
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _0205BDA4
 	add r0, r5, #0
@@ -412,7 +412,7 @@ _0205BDD2:
 	bl Party_GetMonByIndex
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r5]
 	add r6, r6, #1
 	add r5, r5, #2

@@ -271,7 +271,7 @@ _0225A1C8:
 	lsl r7, r7, #2
 _0225A1EA:
 	ldr r0, [r5, r7]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	add r4, r4, #1
 	add r5, #0x10
 	cmp r4, #0xb
@@ -752,7 +752,7 @@ _0225A5A8:
 	bl FieldSystem_GetPlayerAvatar
 	bl PlayerAvatar_GetMapObject
 	add r7, r0, #0
-	bl sub_0205F330
+	bl MapObject_GetUnkA0
 	add r6, r0, #0
 	add r0, r7, #0
 	bl MapObject_GetSpriteID
@@ -4031,7 +4031,7 @@ ov27_0225BFCC: ; 0x0225BFCC
 	ldr r0, [r1, #0x10]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0
 	add r2, r0, #0
 	str r1, [sp]
@@ -4540,7 +4540,7 @@ ov27_0225C398: ; 0x0225C398
 	mov r0, #0xd5
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0xd6
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

@@ -1572,7 +1572,7 @@ ov01_021F06EC: ; 0x021F06EC
 	add r4, r1, #0
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r4, #4]
 	bl sub_0200B0A8
 	mov r7, #0x4b

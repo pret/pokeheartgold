@@ -775,7 +775,7 @@ _0225DB44:
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x5a
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -783,7 +783,7 @@ _0225DB44:
 	mov r0, #0x55
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x56
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

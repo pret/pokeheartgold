@@ -31,7 +31,7 @@
 .public sub_0200A740
 .public DestroySingle2DGfxResObj
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public OamManager_Create

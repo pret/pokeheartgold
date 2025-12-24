@@ -104,7 +104,7 @@
 .public OverworldModelLookupHasFemaleForm
 .public GetGenderBySpeciesAndPersonality
 .public CalcShininessByOtIdAndPersonality
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public sub_020729D8
 .public NNS_G2dGetImageLocation

@@ -325,7 +325,7 @@ static void IntroMovie_Scene1_LoadSpriteGfx(IntroMovieOverlayData *data, IntroMo
 static void IntroMovie_Scene1_DestroySpritesAndObjectGfx(IntroMovieOverlayData *data, IntroMovieScene1Data *sceneData) {
     Sprite_Delete(sceneData->sunSprite);
     Sprite_Delete(sceneData->birdSprite);
-    sub_0200AEB0(sceneData->charResObj);
+    SpriteResource_ResetTransferTasks(sceneData->charResObj);
     sub_0200B0A8(sceneData->plttResObj);
     IntroMovie_DestroySpriteResourceManagers(data);
 }

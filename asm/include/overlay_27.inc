@@ -27,7 +27,7 @@
 .public AddCellOrAnimResObjFromNarc
 .public sub_0200A740
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public NewMsgDataFromNarc
@@ -116,14 +116,14 @@
 .public PlayerAvatar_SetRunningShoesLock
 .public MapObject_GetSpriteID
 .public MapObject_GetScriptID
-.public sub_0205F330
+.public MapObject_GetUnkA0
 .public Save_VarsFlags_CheckSafariSysFlag
 .public Save_VarsFlags_CheckBugContestFlag
 .public Save_VarsFlags_CheckPalParkSysFlag
 .public FieldSystem_MapIsBattleTowerMultiPartnerSelectRoom
 .public FieldSystem_BugContest_Get
 .public BugContest_GetSportBallsAddr
-.public GetMonData
+.public Pokemon_GetMonData
 .public Pokemon_GetIconNaix
 .public Pokemon_GetIconPalette
 .public sub_02074490

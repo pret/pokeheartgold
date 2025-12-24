@@ -125,7 +125,7 @@ void DoSoundUpdateFrame(void) {
         }
     }
 
-    ChatotSoundMain();
+    Chatot_SoundMain();
 
     // Up to two Pokemon cries can be queued.
     for (i = 0; i < 2; i++) {

@@ -5258,7 +5258,7 @@ _0225AE70:
 	cmp r7, #2
 	blt _0225AE70
 	ldr r0, [r5, #0x40]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #0x44]
 	bl sub_0200B0A8
 	mov r7, #0x13
@@ -7801,7 +7801,7 @@ ov49_0225C148: ; 0x0225C148
 	mov r0, #0
 	str r0, [r5, #0x54]
 	ldr r0, [r5, #0x58]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #0x5c]
 	bl sub_0200B0A8
 	mov r7, #0x13
@@ -8033,7 +8033,7 @@ ov49_0225C328: ; 0x0225C328
 	mov r0, #0
 	str r0, [r5, #0x68]
 	ldr r0, [r5, #0x6c]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	ldr r0, [r5, #0x70]
 	bl sub_0200B0A8
 	mov r7, #0x13
@@ -8614,7 +8614,7 @@ _0225C796:
 	add r0, r4, #0
 	add r0, #0xbc
 	ldr r0, [r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x13
 	add r1, r4, #0
 	lsl r0, r0, #4

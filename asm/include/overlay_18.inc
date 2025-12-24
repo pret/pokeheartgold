@@ -54,7 +54,7 @@
 .public DestroySingle2DGfxResObj
 .public GF2DGfxResObj_GetResID
 .public sub_0200ADA4
-.public sub_0200AEB0
+.public SpriteResource_ResetTransferTasks
 .public sub_0200B00C
 .public sub_0200B0A8
 .public SpriteTransfer_GetPlttOffset
@@ -232,12 +232,12 @@
 .public Pokedex_GetSeenFormByIdx
 .public Pokedex_GetSeenFormNum
 .public MapHeader_GetMapSec
-.public AcquireMonLock
-.public ReleaseMonLock
-.public GetMonData
+.public Pokemon_AcquireMonLock
+.public Pokemon_ReleaseMonLock
+.public Pokemon_GetMonData
 .public GetMonBaseStat_HandleAlternateForm
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
+.public PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonPicHeightBySpeciesGenderForm
 .public GetBattleMonIconNaixEx
 .public GetBattleMonIconPaletteEx

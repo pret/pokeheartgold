@@ -6146,12 +6146,12 @@ ov112_021E8C5C: ; 0x021E8C5C
 	add r0, r7, #0
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r6, r0, #0
 	add r0, r7, #0
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	mov r3, #0
 	add r1, r0, #0
 	add r2, r3, #0
@@ -6239,7 +6239,7 @@ _021E8CDE:
 	strh r0, [r7]
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl AcquireBoxMonLock
+	bl BoxPokemon_AcquireBoxMonLock
 	mov r4, #0
 	add r6, r7, #0
 _021E8D24:
@@ -6248,7 +6248,7 @@ _021E8D24:
 	ldr r0, [r5, r0]
 	add r1, #0x36
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r6, #4]
 	add r4, r4, #1
 	add r6, r6, #2
@@ -6258,13 +6258,13 @@ _021E8D24:
 	mov r1, #0xa1
 	ldr r0, [r5, r0]
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strb r0, [r7, #0xc]
 	ldr r0, _021E9028 ; =0x0001E430
 	mov r1, #0x70
 	ldr r0, [r5, r0]
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	ldrb r1, [r7, #0xd]
 	mov r2, #0x1f
 	lsl r0, r0, #0x18
@@ -6280,7 +6280,7 @@ _021E8D24:
 	ldr r0, _021E9028 ; =0x0001E430
 	strb r1, [r7, #0xd]
 	ldr r0, [r5, r0]
-	bl BoxMonIsShiny
+	bl BoxPokemon_IsShiny
 	lsl r0, r0, #0x1f
 	ldrb r2, [r7, #0xe]
 	mov r1, #2
@@ -6292,7 +6292,7 @@ _021E8D24:
 	mov r1, #9
 	ldr r0, [r5, r0]
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r1, r7, #0
 	add r1, #0x26
 	strb r0, [r1]
@@ -6301,11 +6301,11 @@ _021E8D24:
 	ldr r0, [r5, r0]
 	mov r1, #0x75
 	add r2, #0x10
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	ldr r0, _021E9028 ; =0x0001E430
 	mov r1, #1
 	ldr r0, [r5, r0]
-	bl ReleaseBoxMonLock
+	bl BoxPokemon_ReleaseBoxMonLock
 	ldrh r0, [r7]
 	mov r1, #0x9a
 	bl AllocAndLoadMonPersonal
@@ -6325,7 +6325,7 @@ _021E8D24:
 	bl FreeMonPersonal
 	ldr r0, _021E9028 ; =0x0001E430
 	ldr r0, [r5, r0]
-	bl GetBoxMonGender
+	bl BoxPokemon_GetGender
 	ldrb r2, [r7, #0xd]
 	mov r1, #0x60
 	lsl r0, r0, #0x1e
@@ -6581,7 +6581,7 @@ _021E8FD6:
 	mov r1, #0
 	ldr r0, [r5, r0]
 	add r2, r1, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r2, r0, #0
 	ldr r1, _021E9058 ; =ov112_021FE498
 	add r0, r4, #0
@@ -6833,7 +6833,7 @@ _021E91B4:
 	add r2, r4, #0
 	ldr r0, [r0, r1]
 	mov r1, #0x77
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #0xff
@@ -6877,16 +6877,16 @@ ov112_021E9290: ; 0x021E9290
 	add r1, r6, #0
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetBoxmonSpriteCharAndPlttNarcIds
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r7, r0, #0
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	mov r3, #0
 	str r3, [sp]
 	mov r1, #0xa
@@ -7141,7 +7141,7 @@ ov112_021E9480: ; 0x021E9480
 	lsl r1, r2, #0x18
 	lsr r0, r0, #0x10
 	lsr r1, r1, #0x18
-	bl sub_02070438
+	bl SanitizeFormId
 	ldr r1, _021E9598 ; =0x000001A5
 	cmp r5, r1
 	bgt _021E94EC
@@ -10389,7 +10389,7 @@ _021EAEAE:
 	mov r0, #0x9a
 	bl AllocMonZeroed
 	add r6, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r4, r0, #0
 	ldr r0, _021EAF28 ; =0x0001E440
 	add r1, r4, #0
@@ -16636,12 +16636,12 @@ _021EE006:
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, _021EE040 ; =0x00009D44
 	ldrh r2, [r5, r1]
 	cmp r2, r7
@@ -17683,7 +17683,7 @@ ov112_021EE7A8: ; 0x021EE7A8
 	mov r0, #0x9a
 	bl AllocMonZeroed
 	add r4, r0, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r6, r0, #0
 	ldr r0, _021EE89C ; =0x0001E440
 	add r2, sp, #8
@@ -17740,7 +17740,7 @@ _021EE81E:
 	add r2, r5, r7
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EE8B0 ; =0x0001E438
@@ -17800,7 +17800,7 @@ ov112_021EE8BC: ; 0x021EE8BC
 	mov r1, #0xa1
 	add r2, r6, #0
 	add r7, r0, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0x64
 	bhs _021EE91C
 	cmp r4, #0
@@ -17808,7 +17808,7 @@ ov112_021EE8BC: ; 0x021EE8BC
 	add r4, r6, #0
 _021EE8D8:
 	add r0, r7, #0
-	bl CalcBoxMonExpToNextLevel
+	bl BoxPokemon_CalcExpToNextLevel
 	cmp r4, r0
 	blt _021EE8E6
 	add r4, r0, #0
@@ -17817,7 +17817,7 @@ _021EE8E6:
 	add r0, r7, #0
 	mov r1, #8
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	str r0, [sp]
 	add r0, r0, r4
 	str r0, [sp]
@@ -17827,15 +17827,15 @@ _021EE8E6:
 	add r0, r5, #0
 	mov r1, #8
 	add r2, sp, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcMonLevelAndStats
 	cmp r6, #0
 	beq _021EE91C
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #8
-	bl MonApplyFriendshipMod
+	bl Pokemon_ApplyFriendshipMod
 _021EE91C:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}
@@ -17889,7 +17889,7 @@ ov112_021EE970: ; 0x021EE970
 	blt _021EE99C
 	mov r1, #9
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r1, sp, #0
 	strb r0, [r1]
 	ldrb r0, [r1]
@@ -17900,7 +17900,7 @@ ov112_021EE970: ; 0x021EE970
 	add r0, r4, #0
 	mov r1, #9
 	add r2, sp, #0
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 _021EE99C:
 	add sp, #4
 	pop {r3, r4, pc}
@@ -17932,7 +17932,7 @@ ov112_021EE9A4: ; 0x021EE9A4
 	add r0, r5, #0
 	mov r1, #0x91
 	add r2, r6, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r6, #0
 	bl String_Delete
 	add sp, #8
@@ -17981,33 +17981,33 @@ _021EEA06:
 	ldrb r2, [r4, #0xc]
 	add r0, r5, #0
 	mov r3, #0x20
-	bl CreateMon
+	bl Pokemon_CreateMon
 	add r0, r5, #0
 	mov r1, #6
 	add r2, r4, #2
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #0x36
 	add r2, r4, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #0x37
 	add r2, r4, #6
-	bl SetMonData
+	bl Pokemon_SetData
 	add r2, r4, #0
 	add r0, r5, #0
 	mov r1, #0x38
 	add r2, #8
-	bl SetMonData
+	bl Pokemon_SetData
 	add r4, #0xa
 	add r0, r5, #0
 	mov r1, #0x39
 	add r2, r4, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r5, #0
 	mov r1, #0x70
 	add r2, sp, #0x10
-	bl SetMonData
+	bl Pokemon_SetData
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021EE9E4
@@ -18125,7 +18125,7 @@ _021EEB3A:
 	add r2, r6, #0
 	bl ov112_021EE9A4
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r1, _021EECC4 ; =0x0001E438
@@ -18134,7 +18134,7 @@ _021EEB3A:
 	mov r3, #0xe9
 	bl BoxMonSetTrainerMemo
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	str r0, [sp, #0x14]
 	add r0, r7, #0
 	add r1, sp, #0x24
@@ -18180,9 +18180,9 @@ _021EEBA4:
 	add r1, r5, r2
 	bl CopyU16ArrayToString
 	add r0, r4, #0
-	bl ZeroMonData
+	bl Pokemon_ZeroMonData
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	add r6, r0, #0
 	bl MTRandom
 	mov r1, #0x18
@@ -18208,13 +18208,13 @@ _021EEBA4:
 	strb r1, [r0, #1]
 	add r0, r6, #0
 	mov r1, #0x9d
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	ldr r2, [sp, #4]
 	add r0, r6, #0
 	mov r1, #0x91
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	add r0, r4, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBox
 	mov r1, #0x9a
 	str r1, [sp]
 	ldr r3, _021EECE0 ; =0x0000AD1A
@@ -18227,19 +18227,19 @@ _021EEBA4:
 	add r0, r6, #0
 	mov r1, #0xa
 	add r2, r5, r2
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	mov r1, #1
 	add r0, sp, #0x18
 	strb r1, [r0]
 	add r0, r6, #0
 	mov r1, #0x6e
 	add r2, sp, #0x18
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	ldr r2, _021EECE8 ; =0x0000AD30
 	add r0, r6, #0
 	mov r1, #0x9b
 	add r2, r5, r2
-	bl SetBoxMonData
+	bl BoxPokemon_SetData
 	add r0, r7, #0
 	add r1, sp, #0x24
 	add r2, sp, #0x20
@@ -18960,33 +18960,33 @@ ov112_021EF1F0: ; 0x021EF1F0
 	mov r1, #0xac
 	mov r2, #0
 	add r4, r0, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _021EF282
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	mov r1, #0
 	str r0, [r5]
 	add r0, r4, #0
 	add r2, r1, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	str r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r5, #8]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r5, #0xa]
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r5, #0xc]
 	mov r0, #0
 	add r2, r5, #0
@@ -18994,24 +18994,24 @@ ov112_021EF1F0: ; 0x021EF1F0
 	add r0, r4, #0
 	mov r1, #0x75
 	add r2, #0x18
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	add r0, r4, #0
-	bl BoxMonIsShiny
+	bl BoxPokemon_IsShiny
 	strh r0, [r5, #0x10]
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r5, #0x12]
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r5, #0x14]
 	add r0, r4, #0
 	mov r1, #0xb
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r5, #0x16]
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -19037,24 +19037,24 @@ ov112_021EF298: ; 0x021EF298
 	mov r1, #0xac
 	mov r2, #0
 	add r5, r0, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _021EF2E6
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	str r0, [r4]
 	mov r2, #0
 	str r2, [r4, #4]
 	add r0, r5, #0
 	mov r1, #0x4c
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r4, #8]
 	add r0, r5, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	strh r0, [r4, #0xa]
 	mov r0, #0
 	strh r0, [r4, #0xc]
@@ -19121,12 +19121,12 @@ ov112_021EF31C: ; 0x021EF31C
 	add r6, r0, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r5, #0x18]
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r5, #0
 	add r1, #0x30
 	strb r0, [r1]
@@ -19134,16 +19134,16 @@ ov112_021EF31C: ; 0x021EF31C
 	add r0, r6, #0
 	mov r1, #0x75
 	add r2, #0x1a
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r0, r6, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	add r1, r5, #0
 	add r1, #0x31
 	strb r0, [r1]
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r5, #0x32
 	strb r0, [r5]
 	ldr r0, _021EF3F0 ; =0x0001E42C
@@ -19161,7 +19161,7 @@ _021EF38C:
 	mov r1, #0xac
 	mov r2, #0
 	add r6, r0, #0
-	bl GetBoxMonData
+	bl BoxPokemon_GetData
 	cmp r0, #0
 	beq _021EF3B0
 	ldr r0, _021EF3F4 ; =0x0001E430
@@ -19234,39 +19234,39 @@ _021EF414:
 	mov r1, #0
 	add r7, r0, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #0x34]
 	add r0, r7, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #4
 	strh r0, [r1, #0x34]
 	add r0, r7, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #0x34
 	strb r0, [r1, #7]
 	add r2, sp, #0x3c
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, #2
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r0, r7, #0
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	add r1, sp, #0x34
 	strb r0, [r1, #6]
 	add r0, r7, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #0x34
 	strb r0, [r1, #8]
 	add r0, r7, #0
 	mov r1, #0xb
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r4, #0
 	mov r3, #1
 	add r5, r0, #0
@@ -19295,13 +19295,13 @@ _021EF4A2:
 	add r0, r7, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #0x34
 	strh r0, [r1, #0x26]
 	add r0, r7, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, sp, #0x54
 	strb r0, [r1, #8]
 	ldr r0, [sp]
@@ -21456,7 +21456,7 @@ _021F057E:
 	mov r0, #0x52
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	mov r0, #0x53
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
@@ -22321,7 +22321,7 @@ ov112_021F0C8C: ; 0x021F0C8C
 	ldrh r1, [r5, #4]
 	ldrb r2, [r5, #8]
 	add r0, sp, #0x14
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl PokepicTemplate_GetMonSpriteCharAndPlttNarcIdsEx
 	ldr r0, [r5]
 	mov r3, #0x6e
 	str r0, [sp]
@@ -24992,7 +24992,7 @@ _021F2124:
 	str r0, [sp, #0x28]
 	add r0, r4, #0
 	add r1, r6, #0
-	bl sub_02070438
+	bl SanitizeFormId
 	cmp r0, #0
 	bne _021F2142
 	mov r6, #0
@@ -27452,13 +27452,13 @@ _021F33F6:
 	mov r1, #3
 	mov r2, #0
 	add r5, r0, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	bne _021F341E
 	add r0, r5, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	cmp r0, #0
 	beq _021F3420
 _021F341E:
@@ -27467,7 +27467,7 @@ _021F3420:
 	add r0, r5, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	ldrh r1, [r6]
 	ldr r2, _021F359C ; =0xFFFFF800
@@ -27480,7 +27480,7 @@ _021F3420:
 	add r0, r5, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	lsl r0, r0, #0x1b
@@ -27503,7 +27503,7 @@ _021F3420:
 	bne _021F3482
 	add r0, r5, #0
 	mov r1, #0
-	bl Mon_UpdateShayminForm
+	bl Pokemon_UpdateShayminForm
 	ldrh r1, [r6]
 	ldr r0, _021F35A0 ; =0xFFFF07FF
 	and r0, r1
@@ -27514,48 +27514,48 @@ _021F3482:
 	add r0, r5, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strh r0, [r6, #2]
 	add r0, r5, #0
 	mov r1, #7
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	mov r1, #0
 	str r0, [r6, #0xc]
 	add r0, r5, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [r6, #0x10]
 	add r0, r5, #0
 	mov r1, #0xc
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	strb r0, [r6, #0x1f]
 	add r0, r5, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r6, #0
 	add r1, #0x20
 	strb r0, [r1]
 	add r0, r5, #0
 	mov r1, #9
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r6, #0
 	add r1, #0x21
 	strb r0, [r1]
 	add r0, r5, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r6, #0
 	add r1, #0x22
 	strb r0, [r1]
 	add r0, r5, #0
 	mov r1, #0x75
 	add r2, sp, #0x20
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r0, r6, #0
 	add r0, #0x24
 	add r1, sp, #0x20
@@ -27570,14 +27570,14 @@ _021F3500:
 	add r0, r5, #0
 	add r1, #0x36
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	ldr r1, [sp, #8]
 	mov r2, #0
 	strh r0, [r1, #4]
 	add r1, r4, #0
 	add r0, r5, #0
 	add r1, #0x3e
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r0, #0
 	lsl r1, r7
 	ldr r0, [sp, #0x10]
@@ -27600,7 +27600,7 @@ _021F353E:
 	add r0, r5, #0
 	add r1, #0x46
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r0, #0
 	lsl r1, r7
 	ldr r0, [sp, #4]
@@ -27610,7 +27610,7 @@ _021F353E:
 	str r0, [sp, #4]
 	add r0, r5, #0
 	add r1, #0xd
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r1, r6, r4
 	add r4, r4, #1
 	add r7, r7, #5
@@ -27624,7 +27624,7 @@ _021F353E:
 	beq _021F357E
 	add r0, r5, #0
 	mov r1, #1
-	bl Mon_UpdateShayminForm
+	bl Pokemon_UpdateShayminForm
 _021F357E:
 	ldr r0, [sp, #0x14]
 	add r6, #0x38

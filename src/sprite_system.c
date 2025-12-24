@@ -228,11 +228,11 @@ static BOOL SpriteSystem_LoadResourceDataFromFilepaths(SpriteSystem *spriteSyste
     return TRUE;
 }
 
-BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList) {
+BOOL SpriteSystem_LoadResourceDataFromFilepathsOakSpeechMode(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList) {
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, 2, 1);
 }
 
-BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
+BOOL SpriteSystem_LoadResourceDataFromFilepathsCustomMode(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const u16 *fileIdList, int loadCharMode, int loadPlttMode) {
     return SpriteSystem_LoadResourceDataFromFilepaths(spriteSystem, spriteManager, fileIdList, loadCharMode, loadPlttMode);
 }
 

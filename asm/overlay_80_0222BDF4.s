@@ -6793,17 +6793,17 @@ _0222F0DA:
 	mov r1, #0
 	ldr r0, [sp, #0x20]
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	str r0, [sp, #0x34]
 	ldr r0, [sp, #0x20]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetMonData
 	add r7, r0, #0
 	ldr r1, [sp, #0x20]
 	add r0, sp, #0x6c
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl PokepicTemplate_GetPokemonSpriteCharAndPlttNarcIds
 	mov r3, #0
 	str r3, [sp]
 	mov r0, #0xa

@@ -1161,7 +1161,7 @@ ov43_0222A81C: ; 0x0222A81C
 	add r7, r0, #0
 	add r0, #0xac
 	ldr r0, [r0]
-	bl sub_0200AEB0
+	bl SpriteResource_ResetTransferTasks
 	add r0, r7, #0
 	add r0, #0xb0
 	ldr r0, [r0]

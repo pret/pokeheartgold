@@ -101,8 +101,8 @@ const struct SaveChunkHeader gSaveChunkHeaders[] = {
     {
      SAVE_DAYCARE,
      0,
-     (SAVESIZEFN)Save_Daycare_sizeof,
-     (SAVEINITFN)Save_Daycare_Init,
+     (SAVESIZEFN)Daycare_GetSizeOfDaycare,
+     (SAVEINITFN)Daycare_Init,
      },
     {
      SAVE_PALPAD,
@@ -400,7 +400,7 @@ int sub_02027158(SaveData *saveData, struct UnkStruct_02030A98 *data) {
 }
 
 u32 PCStorage_GetSizeOfBox(void) {
-    return sub_02074120();
+    return PCStorage_GetBoxSize();
 }
 
 u32 PCStorage_GetNumBoxes(void) {
