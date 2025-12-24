@@ -22,7 +22,9 @@ struct PokedexAppData {
     UnkStruct_0201956C *unk_0008;
     u8 filler_000C[0x30];
     Window unk_003C;
-    u8 filler_004C[0x610];
+    u8 filler_004C[0x30];
+    Window unk_007C;
+    u8 filler_008C[0x5D0];
     MsgData *unk_065C;
     MessageFormat *unk_0660;
     String *unk_0664;
@@ -91,6 +93,7 @@ void ov18_021E6CE8(PokedexAppData *pokedexApp, u16 *a1);
 BOOL ov18_021E6D10(PokedexAppData *pokedexApp, u16 species, u16 language);
 BOOL ov18_021E6D38(PokedexAppData *pokedexApp, u16 species);
 void ov18_021E6D68(PokedexAppData *pokedexApp, u16 species, s16 a2);
+void ov18_021E6E44(PokedexAppData *pokedexApp);
 void ov18_021E6F6C(BgConfig *bgConfig, u8 bgId, u8 language, NARC *narc, enum HeapID heapId);
 BOOL ov18_021E8BF4(PokedexAppData *pokedexApp, int *pState);
 void ov18_021EE638(PokedexAppData *pokedexApp, u32 species, int a2);
@@ -103,5 +106,11 @@ void ov18_021F1DE4(PokedexAppData *pokedexApp, u32 species, int a2, int a3);
 void ov18_021F2EC8(PokedexAppData *pokedexApp, int a1, int a2);
 int ov18_021F8824(PokedexAppData *pokedexApp);
 u16 ov18_021F8838(PokedexAppData *pokedexApp);
+void ov18_021F2A2C(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021F2A84(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021EE6BC(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021F1CAC(PokedexAppData *pokedexApp, int a1, int a2, int a3);
+void ov18_021E6FB8(BgConfig *bgConfig, u8 bgId, NARC *narc, enum HeapID heapId);
+void ov18_021F11C0(PokedexAppData *pokedexApp, int a1, int a2);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H

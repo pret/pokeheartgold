@@ -682,3 +682,40 @@ void ov18_021E6D68(PokedexAppData *pokedexApp, u16 a1, s16 a2) {
         }
     }
 }
+
+void ov18_021E6E44(PokedexAppData *pokedexApp) {
+    u32 r6 = ov18_021F8824(pokedexApp);
+    u16 r4 = ov18_021F8838(pokedexApp);
+
+    if (r4 == 0) {
+        ov18_021F2A2C(pokedexApp, 6, 0);
+        ov18_021F2A84(pokedexApp, 8, 0);
+    } else {
+        if (ov18_021E6D38(pokedexApp, r4) == TRUE) {
+            ov18_021F2A2C(pokedexApp, 6, 1);
+        } else {
+            ov18_021F2A2C(pokedexApp, 6, 0);
+        }
+        ov18_021F2A84(pokedexApp, 8, 1);
+    }
+    if (!ov18_021E6D10(pokedexApp, r4, pokedexApp->unk_185C)) {
+        pokedexApp->unk_185C = GAME_LANGUAGE;
+    }
+    ov18_021EE638(pokedexApp, r4, 6);
+    ov18_021EE6BC(pokedexApp, r4, r6);
+    ov18_021EE8B8(pokedexApp, r4, r6);
+    ov18_021F1CAC(pokedexApp, r4, 11, 10);
+    ov18_021F24E0(pokedexApp, r4, 8);
+    ov18_021F2530(pokedexApp, r4, 18);
+    ov18_021F209C(pokedexApp, r4, r6, 14);
+    ov18_021F1DE4(pokedexApp, r4, r6, 13);
+    ov18_021F2EC8(pokedexApp, r6, 9);
+    if (r6 >= ov18_021F891C(pokedexApp, TRUE)) {
+        ov18_021E6FB8(pokedexApp->unk_0004, GF_BG_LYR_SUB_3, pokedexApp->unk_0854, HEAP_ID_37);
+        ClearWindowTilemapAndScheduleTransfer(&pokedexApp->unk_007C);
+        ov18_021F11C0(pokedexApp, 10, 0);
+    } else {
+        ov18_021E6F6C(pokedexApp->unk_0004, GF_BG_LYR_SUB_3, pokedexApp->unk_185C, pokedexApp->unk_0854, HEAP_ID_37);
+        ScheduleWindowCopyToVram(&pokedexApp->unk_007C);
+    }
+}
