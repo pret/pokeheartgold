@@ -2,6 +2,7 @@
 #include "msgdata/msg.naix"
 
 #include "gf_gfx_loader.h"
+#include "pokedex_util.h"
 #include "sprite_system.h"
 
 void ov18_021E5C40(void *cb_arg);
@@ -582,4 +583,32 @@ u16 *ov18_021E6AEC(PokedexAppData *pokedexApp, u32 a1) {
     }
 
     return ret;
+}
+
+u16 *ov18_021E6BB8(PokedexAppData *pokedexApp, u32 a1) {
+    u16 *ret = Heap_AllocAtEnd(HEAP_ID_37, 160 * 10 * sizeof(u16));
+    u16 *sp14 = sub_02019B08(pokedexApp->unk_0008, 5);
+
+    for (u16 i = 0; i < 10; ++i) {
+        MI_CpuCopy16(sp14, &ret[160 * i], 160 * sizeof(u16));
+        for (u16 j = 0; j < 5; ++j) {
+            u32 sp4 = a1 + 5 * i + j;
+            if (pokedexApp->unk_1030[sp4].unk_0 == SPECIES_NONE) {
+                continue;
+            }
+            u32 r1 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, pokedexApp->unk_1030[sp4].unk_0);
+            if (pokedexApp->unk_1030[sp4].unk_2 == 2) {
+                ret[160 * i + 36 + 5 * j] = 0x1002;
+                ov18_021E6A98(&ret[160 * i + 37 + 5 * j], r1, 3);
+            } else {
+                ov18_021E6A98(&ret[160 * i + 37 + 5 * j], r1, 14);
+            }
+        }
+    }
+
+    return ret;
+}
+
+void ov18_021E6C90(u16 *a0) {
+    Heap_Free(a0);
 }

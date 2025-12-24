@@ -83,6 +83,8 @@ void ov18_021E6C98(PokedexAppData *pokedexApp);
 void ov18_021E6A98(u16 *a0, u16 a1, u16 a2);
 u16 ov18_021F891C(PokedexAppData *pokedexApp, BOOL a1);
 u16 *ov18_021E6AEC(PokedexAppData *pokedexApp, u32 a1);
+u16 *ov18_021E6BB8(PokedexAppData *pokedexApp, u32 a1);
+void ov18_021E6C90(u16 *a0);
 BOOL ov18_021E8BF4(PokedexAppData *appData, int *pState);
 void ov18_021F0168(PokedexAppData *pokedexApp);
 u16 ov18_021F8838(PokedexAppData *appData);
