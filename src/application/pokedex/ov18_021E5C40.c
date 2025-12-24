@@ -719,3 +719,34 @@ void ov18_021E6E44(PokedexAppData *pokedexApp) {
         ScheduleWindowCopyToVram(&pokedexApp->unk_007C);
     }
 }
+
+void ov18_021E6F6C(BgConfig *bgConfig, u8 bgId, u8 language, NARC *narc, enum HeapID heapId) {
+    NNSG2dScreenData *spC;
+
+    void *r6 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, language == GAME_LANGUAGE ? 20 : 21, TRUE, &spC, heapId);
+    LoadRectToBgTilemapRect(bgConfig, bgId, spC->rawData, 0, 0, 32, 24);
+    ScheduleBgTilemapBufferTransfer(bgConfig, bgId);
+    Heap_Free(r6);
+}
+
+void ov18_021E6FB8(BgConfig *bgConfig, u8 bgId, NARC *narc, enum HeapID heapId) {
+    NNSG2dScreenData *spC;
+
+    void *r6 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 22, TRUE, &spC, heapId);
+    LoadRectToBgTilemapRect(bgConfig, bgId, spC->rawData, 0, 0, 32, 24);
+    ScheduleBgTilemapBufferTransfer(bgConfig, bgId);
+    Heap_Free(r6);
+}
+
+void ov18_021E6FFC(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_1868 = 0;
+    pokedexApp->unk_186C = 0x1A;
+    pokedexApp->unk_1870 = 0x11;
+    pokedexApp->unk_1874 = 0x11;
+    pokedexApp->unk_1878 = 0;
+    pokedexApp->unk_187C = 0x98;
+    pokedexApp->unk_1880 = 0;
+    pokedexApp->unk_1884 = 0x98;
+    pokedexApp->unk_1888 = 3;
+    pokedexApp->unk_188C = 14;
+}
