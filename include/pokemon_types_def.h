@@ -108,12 +108,12 @@ typedef struct {
  * @brief Block C of the BoxPokemon data structure
  */
 typedef struct {
-    /* 0x00 */ u16 nickname[11];
+    /* 0x00 */ u16 nickname[POKEMON_NAME_LENGTH + 1];
 
     /* 0x16 */ u8 unused;
     /* 0x17 */ u8 originGame;
 
-    /* 0x18 */ u64 ribbonsDS2;
+    /* 0x18 */ u64 ribbonsDS2; //!< A bitmask of ribbons given to the Pokemon from Sinnoh's Super Contests.
 } PokemonDataBlockC;
 
 /**
@@ -197,18 +197,18 @@ typedef struct Mail {
  *  Rather than recalculating stats after each battle, they're stored here.
  */
 typedef struct PartyPokemon {
-    /* 0x088 */ u32 status; // slp:3, psn:1, brn:1, frz:1, prz:1, tox:1, ...
-    /* 0x08C */ u8 level;   //!< The Pokemon's current level, as computed from its total EXP value and its species' level curve.
+    /* 0x088 */ u32 status; //!< The Pokemon's current status condition.
+    /* 0x08C */ u8 level; //!< The Pokemon's current level, as computed from its total EXP value and its species' level curve.
     /* 0x08D */ u8 ballCapsuleID; //!< The ID of the ball capsule attached to the Pokemon.
-    /* 0x08E */ u16 hp;           //!< The Pokemon's current HP.
-    /* 0x090 */ u16 maxHP;        //!< The Pokemon's maximum HP.
-    /* 0x092 */ u16 atk;          //!< The Pokemon's Attack stat.
-    /* 0x094 */ u16 def;          //!< The Pokemon's Defense stat.
-    /* 0x096 */ u16 speed;        //!< The Pokemon's Speed stat.
-    /* 0x098 */ u16 spatk;        //!< The Pokemon's Special Attack stat.
-    /* 0x09A */ u16 spdef;        //!< The Pokemon's Special Defense stat.
+    /* 0x08E */ u16 hp; //!< The Pokemon's current HP.
+    /* 0x090 */ u16 maxHP; //!< The Pokemon's maximum HP.
+    /* 0x092 */ u16 attack; //!< The Pokemon's Attack stat.
+    /* 0x094 */ u16 defense; //!< The Pokemon's Defense stat.
+    /* 0x096 */ u16 speed; //!< The Pokemon's Speed stat.
+    /* 0x098 */ u16 spAtk; //!< The Pokemon's Special Attack stat.
+    /* 0x09A */ u16 spDef; //!< The Pokemon's Special Defense stat.
     /* 0x09C */ Mail mail;
-    /* 0x0D4 */ CAPSULE sealCoords; // seal coords
+    /* 0x0D4 */ CAPSULE ballCapsule;
 } PartyPokemon;
 
 typedef struct {
