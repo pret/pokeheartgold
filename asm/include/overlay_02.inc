@@ -319,7 +319,7 @@
 .public Pokemon_InitWithParams
 .public Pokemon_InitWithNature
 .public Pokemon_InitWithGenderNatureLetter
-.public CreateMonWithFixedIVs
+.public Pokemon_InitAndCalcStats
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Species_GetValue

@@ -307,7 +307,7 @@ static void TrainerHouse_CopyToPokemon(TrainerHouseMon *trainerHouseMon, Pokemon
     u32 species = trainerHouseMon->species;
     u32 ivs = trainerHouseMon->ivsWord & 0x3fffffff;
     u32 pid = trainerHouseMon->pid;
-    CreateMonWithFixedIVs(mon, species, tempByte, ivs, pid);
+    Pokemon_InitAndCalcStats(mon, species, tempByte, ivs, pid);
     tempByte = trainerHouseMon->form;
     Pokemon_SetData(mon, MON_DATA_FORM, &tempByte);
     Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &trainerHouseMon->item);

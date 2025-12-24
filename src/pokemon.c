@@ -265,7 +265,7 @@ void BoxPokemon_InitWithParams(BoxPokemon *boxMon, int species, int level, int i
 void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 nature) {
     u32 personality;
     do {
-        personality = (u32)(LCRandom() | (LCRandom() << 16));
+        personality = (LCRandom() | (LCRandom() << 16));
     } while (nature != Personality_GetNature(personality));
     Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, 0, 0);
 }
@@ -276,7 +276,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
 
     if (letter != 0 && letter < UNOWN_FORM_MAX + 1) {
         do {
-            personality = (u32)(LCRandom() | (LCRandom() << 16));
+            personality = (LCRandom() | (LCRandom() << 16));
             unownLetter = CALC_UNOWN_LETTER(personality);
         } while (nature != Personality_GetNature(personality) || gender != Species_GetGenderFromPersonality(species, personality) || unownLetter != letter - 1);
     } else {
@@ -305,9 +305,9 @@ u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
     return pid;
 }
 
-void CreateMonWithFixedIVs(Pokemon *mon, int species, int level, int ivs, int personality) {
-    Pokemon_InitWithParams(mon, species, level, 0, 1, personality, 0, 0);
-    Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &ivs);
+void Pokemon_InitAndCalcStats(Pokemon *mon, int species, int level, int combinedIVs, int personality) {
+    Pokemon_InitWithParams(mon, species, level, 0, TRUE, personality, 0, 0);
+    Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &combinedIVs);
     Pokemon_CalcLevelAndStats(mon);
 }
 

@@ -5159,7 +5159,7 @@ ov02_022482BC: ; 0x022482BC
 	add r0, r4, #0
 	lsr r1, r1, #0x10
 	add r2, r7, #0
-	bl CreateMonWithFixedIVs
+	bl Pokemon_InitAndCalcStats
 	add r0, r4, #0
 	mov r1, #7
 	add r2, sp, #0x30
