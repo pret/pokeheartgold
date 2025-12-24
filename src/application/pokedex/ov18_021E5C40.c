@@ -4,6 +4,9 @@
 #include "gf_gfx_loader.h"
 #include "pokedex_util.h"
 #include "sprite_system.h"
+#include "unk_02005D10.h"
+#include "unk_02091278.h"
+#include "unk_020912AC.h"
 
 void ov18_021E5C40(void *cb_arg);
 void ov18_021E5FA4(void);
@@ -611,4 +614,71 @@ u16 *ov18_021E6BB8(PokedexAppData *pokedexApp, u32 a1) {
 
 void ov18_021E6C90(u16 *a0) {
     Heap_Free(a0);
+}
+
+void ov18_021E6C98(PokedexAppData *pokedexApp) {
+    u16 *r5 = ov18_021E6AEC(pokedexApp, 15 * pokedexApp->unk_1859);
+    ov18_021E6CE8(pokedexApp, r5);
+    ov18_021E6C90(r5);
+}
+
+void ov18_021E6CC0(PokedexAppData *pokedexApp) {
+    u16 *r5 = ov18_021E6BB8(pokedexApp, 15 * pokedexApp->unk_1859);
+    ov18_021E6CE8(pokedexApp, r5);
+    ov18_021E6C90(r5);
+}
+
+void ov18_021E6CE8(PokedexAppData *pokedexApp, u16 *a1) {
+    LoadRectToBgTilemapRect(pokedexApp->unk_0004, GF_BG_LYR_MAIN_3, a1, 0, 0, 32, 24);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_3);
+}
+
+BOOL ov18_021E6D10(PokedexAppData *pokedexApp, u16 species, u16 language) {
+    // explicit comparison to FALSE required to match
+    if (Pokedex_GetInternationalViewFlag(pokedexApp->unk_0000->pokedex) == FALSE) {
+        return FALSE;
+    }
+
+    return Pokedex_HasCaughtMonWithLanguage(pokedexApp->unk_0000->pokedex, species, language);
+}
+
+BOOL ov18_021E6D38(PokedexAppData *pokedexApp, u16 species) {
+    extern const u8 ov18_021F9C18[6];
+
+    for (int i = 0; i < NELEMS(ov18_021F9C18); ++i) {
+        if (ov18_021F9C18[i] != GAME_LANGUAGE && ov18_021E6D10(pokedexApp, species, ov18_021F9C18[i]) == TRUE) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+void ov18_021E6D68(PokedexAppData *pokedexApp, u16 a1, s16 a2) {
+    if (Pokedex_GetInternationalViewFlag(pokedexApp->unk_0000->pokedex) == FALSE) {
+        return;
+    }
+
+    s16 r7 = LanguageToDexFlag(pokedexApp->unk_185C);
+    for (u32 i = 0; i < 6; ++i) {
+        r7 = sub_020912D0(r7, a2);
+        s16 r4 = sub_02091294(r7);
+        if (r4 == pokedexApp->unk_185C) {
+            return;
+        }
+        if (ov18_021E6D10(pokedexApp, a1, r4) == TRUE || r4 == GAME_LANGUAGE) {
+            int r6 = ov18_021F8824(pokedexApp);
+            pokedexApp->unk_185C = r4;
+            ov18_021EE638(pokedexApp, a1, 6);
+            ov18_021E6F6C(pokedexApp->unk_0004, GF_BG_LYR_SUB_3, pokedexApp->unk_185C, pokedexApp->unk_0854, HEAP_ID_37);
+            ov18_021EE8B8(pokedexApp, a1, r6);
+            ov18_021F24E0(pokedexApp, a1, 8);
+            ov18_021F2530(pokedexApp, a1, 18);
+            ov18_021F209C(pokedexApp, a1, r6, 14);
+            ov18_021F1DE4(pokedexApp, a1, r6, 13);
+            ov18_021F2EC8(pokedexApp, r6, 9);
+            PlaySE(SEQ_SE_GS_ZKN03);
+            return;
+        }
+    }
 }

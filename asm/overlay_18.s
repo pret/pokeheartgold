@@ -42,227 +42,17 @@
 	.extern ov18_021E67B0
 	.extern ov18_021E67C8
 	.extern ov18_021E6A70
-	.extern ov18_021E6A98
 	.extern ov18_021E6AEC
 	.extern ov18_021E6BB8
 	.extern ov18_021E6C90
+	.extern ov18_021E6C98
+	.extern ov18_021E6CC0
+	.extern ov18_021E6CE8
+	.extern ov18_021E6D10
+	.extern ov18_021E6D38
+	.extern ov18_021E6D68
 
 	.text
-
-	thumb_func_start ov18_021E6C98
-ov18_021E6C98: ; 0x021E6C98
-	push {r3, r4, r5, lr}
-	ldr r1, _021E6CBC ; =0x00001859
-	add r4, r0, #0
-	ldrb r2, [r4, r1]
-	mov r1, #0xf
-	mul r1, r2
-	bl ov18_021E6AEC
-	add r5, r0, #0
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov18_021E6CE8
-	add r0, r5, #0
-	bl ov18_021E6C90
-	pop {r3, r4, r5, pc}
-	nop
-_021E6CBC: .word 0x00001859
-	thumb_func_end ov18_021E6C98
-
-	thumb_func_start ov18_021E6CC0
-ov18_021E6CC0: ; 0x021E6CC0
-	push {r3, r4, r5, lr}
-	ldr r1, _021E6CE4 ; =0x00001859
-	add r4, r0, #0
-	ldrb r2, [r4, r1]
-	mov r1, #0xf
-	mul r1, r2
-	bl ov18_021E6BB8
-	add r5, r0, #0
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov18_021E6CE8
-	add r0, r5, #0
-	bl ov18_021E6C90
-	pop {r3, r4, r5, pc}
-	nop
-_021E6CE4: .word 0x00001859
-	thumb_func_end ov18_021E6CC0
-
-	thumb_func_start ov18_021E6CE8
-ov18_021E6CE8: ; 0x021E6CE8
-	push {r3, r4, lr}
-	sub sp, #0xc
-	mov r3, #0
-	add r4, r0, #0
-	str r3, [sp]
-	mov r0, #0x20
-	str r0, [sp, #4]
-	mov r0, #0x18
-	str r0, [sp, #8]
-	add r2, r1, #0
-	ldr r0, [r4, #4]
-	mov r1, #3
-	bl LoadRectToBgTilemapRect
-	ldr r0, [r4, #4]
-	mov r1, #3
-	bl ScheduleBgTilemapBufferTransfer
-	add sp, #0xc
-	pop {r3, r4, pc}
-	thumb_func_end ov18_021E6CE8
-
-	thumb_func_start ov18_021E6D10
-ov18_021E6D10: ; 0x021E6D10
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, [r5]
-	add r4, r1, #0
-	ldr r0, [r0]
-	add r6, r2, #0
-	bl Pokedex_GetInternationalViewFlag
-	cmp r0, #0
-	bne _021E6D28
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_021E6D28:
-	ldr r0, [r5]
-	add r1, r4, #0
-	ldr r0, [r0]
-	add r2, r6, #0
-	bl Pokedex_HasCaughtMonWithLanguage
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021E6D10
-
-	thumb_func_start ov18_021E6D38
-ov18_021E6D38: ; 0x021E6D38
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r5, _021E6D64 ; =ov18_021F9C18
-	add r6, r0, #0
-	add r7, r1, #0
-	mov r4, #0
-_021E6D42:
-	ldrb r2, [r5]
-	cmp r2, #2
-	beq _021E6D58
-	add r0, r6, #0
-	add r1, r7, #0
-	bl ov18_021E6D10
-	cmp r0, #1
-	bne _021E6D58
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_021E6D58:
-	add r4, r4, #1
-	add r5, r5, #1
-	cmp r4, #6
-	blo _021E6D42
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E6D64: .word ov18_021F9C18
-	thumb_func_end ov18_021E6D38
-
-	thumb_func_start ov18_021E6D68
-ov18_021E6D68: ; 0x021E6D68
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	str r1, [sp, #4]
-	add r5, r0, #0
-	str r2, [sp, #8]
-	ldr r0, [r5]
-	ldr r0, [r0]
-	bl Pokedex_GetInternationalViewFlag
-	cmp r0, #0
-	beq _021E6E34
-	ldr r0, _021E6E38 ; =0x0000185C
-	ldrb r0, [r5, r0]
-	bl LanguageToDexFlag
-	lsl r0, r0, #0x10
-	asr r7, r0, #0x10
-	mov r6, #0
-_021E6D8C:
-	ldr r1, [sp, #8]
-	add r0, r7, #0
-	bl sub_020912D0
-	add r7, r0, #0
-	bl sub_02091294
-	lsl r0, r0, #0x10
-	asr r4, r0, #0x10
-	ldr r0, _021E6E38 ; =0x0000185C
-	ldrb r0, [r5, r0]
-	cmp r4, r0
-	beq _021E6E34
-	lsl r2, r4, #0x10
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	lsr r2, r2, #0x10
-	bl ov18_021E6D10
-	cmp r0, #1
-	beq _021E6DBA
-	cmp r4, #2
-	bne _021E6E2E
-_021E6DBA:
-	add r0, r5, #0
-	bl ov18_021F8824
-	add r6, r0, #0
-	ldr r0, _021E6E38 ; =0x0000185C
-	mov r2, #6
-	strb r4, [r5, r0]
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	bl ov18_021EE638
-	mov r0, #0x25
-	str r0, [sp]
-	ldr r2, _021E6E38 ; =0x0000185C
-	ldr r3, _021E6E3C ; =0x00000854
-	ldrb r2, [r5, r2]
-	ldr r0, [r5, #4]
-	ldr r3, [r5, r3]
-	mov r1, #7
-	bl ov18_021E6F6C
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	add r2, r6, #0
-	bl ov18_021EE8B8
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	mov r2, #8
-	bl ov18_021F24E0
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	mov r2, #0x12
-	bl ov18_021F2530
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	add r2, r6, #0
-	mov r3, #0xe
-	bl ov18_021F209C
-	ldr r1, [sp, #4]
-	add r0, r5, #0
-	add r2, r6, #0
-	mov r3, #0xd
-	bl ov18_021F1DE4
-	add r0, r5, #0
-	add r1, r6, #0
-	mov r2, #9
-	bl ov18_021F2EC8
-	ldr r0, _021E6E40 ; =0x000008E8
-	bl PlaySE
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-_021E6E2E:
-	add r6, r6, #1
-	cmp r6, #6
-	blo _021E6D8C
-_021E6E34:
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021E6E38: .word 0x0000185C
-_021E6E3C: .word 0x00000854
-_021E6E40: .word 0x000008E8
-	thumb_func_end ov18_021E6D68
 
 	thumb_func_start ov18_021E6E44
 ov18_021E6E44: ; 0x021E6E44
@@ -37478,9 +37268,6 @@ ov18_021F99E0:
 	.word 0x00000093, 0x00000079, 0x000000F2, 0x000000F3
 	.word 0x000001E6, 0x000000F4
 	.size ov18_021F99E0,.-ov18_021F99E0
-
-	; file boundary
-	.balign 4, 0
 
 	.global ov18_021F9C18
 ov18_021F9C18:
