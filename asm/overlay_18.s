@@ -56,152 +56,13 @@
 	.extern ov18_021E6FB8
 	.extern ov18_021E6FFC
 	.extern ov18_021E71D0
+	.extern ov18_021E7448
+	.extern ov18_021E7490
+	.extern ov18_021E74B8
+	.extern ov18_021E74E4
+	.extern ov18_021E7534
 
 	.text
-
-	thumb_func_start ov18_021E7448
-ov18_021E7448: ; 0x021E7448
-	push {r3, r4, lr}
-	sub sp, #0xc
-	add r3, r1, #0
-	add r4, r0, #0
-	cmp r2, #1
-	ldrb r0, [r3, #2]
-	bne _021E746E
-	str r0, [sp]
-	ldrb r0, [r3, #3]
-	mov r1, #2
-	str r0, [sp, #4]
-	mov r0, #3
-	str r0, [sp, #8]
-	ldrb r2, [r3]
-	ldrb r3, [r3, #1]
-	ldr r0, [r4, #4]
-	bl BgTilemapRectChangePalette
-	b _021E7482
-_021E746E:
-	str r0, [sp]
-	ldrb r0, [r3, #3]
-	mov r1, #2
-	str r0, [sp, #4]
-	str r1, [sp, #8]
-	ldrb r2, [r3]
-	ldrb r3, [r3, #1]
-	ldr r0, [r4, #4]
-	bl BgTilemapRectChangePalette
-_021E7482:
-	ldr r0, [r4, #4]
-	mov r1, #2
-	bl ScheduleBgTilemapBufferTransfer
-	add sp, #0xc
-	pop {r3, r4, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021E7448
-
-	thumb_func_start ov18_021E7490
-ov18_021E7490: ; 0x021E7490
-	push {r3, r4, r5, r6, r7, lr}
-	add r4, r2, #0
-	add r5, r1, #0
-	ldr r1, [r4]
-	add r6, r3, #0
-	lsl r1, r1, #2
-	add r1, r5, r1
-	mov r2, #0
-	add r7, r0, #0
-	bl ov18_021E7448
-	lsl r1, r6, #2
-	add r0, r7, #0
-	add r1, r5, r1
-	mov r2, #1
-	str r6, [r4]
-	bl ov18_021E7448
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov18_021E7490
-
-	thumb_func_start ov18_021E74B8
-ov18_021E74B8: ; 0x021E74B8
-	push {r4, lr}
-	ldr r2, _021E74DC ; =0x00001868
-	add r4, r0, #0
-	add r3, r1, #0
-	ldr r1, _021E74E0 ; =ov18_021F9780
-	add r2, r4, r2
-	bl ov18_021E7490
-	add r0, r4, #0
-	mov r1, #0x25
-	bl ov18_021EFBE8
-	mov r0, #0x97
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl ScheduleWindowCopyToVram
-	pop {r4, pc}
-	.balign 4, 0
-_021E74DC: .word 0x00001868
-_021E74E0: .word ov18_021F9780
-	thumb_func_end ov18_021E74B8
-
-	thumb_func_start ov18_021E74E4
-ov18_021E74E4: ; 0x021E74E4
-	push {r3, r4, r5, r6, r7, lr}
-	mov r4, #0
-	ldr r5, _021E7528 ; =ov18_021F990C
-	add r6, r0, #0
-	add r7, r4, #0
-_021E74EE:
-	add r0, r6, #0
-	add r1, r5, #0
-	add r2, r7, #0
-	bl ov18_021E7448
-	add r4, r4, #1
-	add r5, r5, #4
-	cmp r4, #0x12
-	blo _021E74EE
-	ldr r1, _021E752C ; =0x00001870
-	ldr r2, _021E7528 ; =ov18_021F990C
-	ldr r1, [r6, r1]
-	add r0, r6, #0
-	lsl r1, r1, #2
-	add r1, r2, r1
-	mov r2, #1
-	bl ov18_021E7448
-	ldr r1, _021E7530 ; =0x00001874
-	ldr r2, _021E7528 ; =ov18_021F990C
-	ldr r1, [r6, r1]
-	add r0, r6, #0
-	lsl r1, r1, #2
-	add r1, r2, r1
-	mov r2, #1
-	bl ov18_021E7448
-	pop {r3, r4, r5, r6, r7, pc}
-	nop
-_021E7528: .word ov18_021F990C
-_021E752C: .word 0x00001870
-_021E7530: .word 0x00001874
-	thumb_func_end ov18_021E74E4
-
-	thumb_func_start ov18_021E7534
-ov18_021E7534: ; 0x021E7534
-	push {r4, lr}
-	ldr r2, _021E7558 ; =0x00001888
-	add r4, r0, #0
-	add r3, r1, #0
-	ldr r1, _021E755C ; =ov18_021F9770
-	add r2, r4, r2
-	bl ov18_021E7490
-	add r0, r4, #0
-	mov r1, #0x4b
-	bl ov18_021EFE70
-	ldr r0, _021E7560 ; =0x000004BC
-	add r0, r4, r0
-	bl ScheduleWindowCopyToVram
-	pop {r4, pc}
-	nop
-_021E7558: .word 0x00001888
-_021E755C: .word ov18_021F9770
-_021E7560: .word 0x000004BC
-	thumb_func_end ov18_021E7534
 
 	thumb_func_start ov18_021E7564
 ov18_021E7564: ; 0x021E7564
@@ -3051,6 +2912,8 @@ ov18_021E8BD4: ; 0x021E8BD4
 _021E8BEC: .word 0x0000190C
 _021E8BF0: .word 0x00001908
 	thumb_func_end ov18_021E8BD4
+
+	// file boundary
 
 	thumb_func_start ov18_021E8BF4
 ov18_021E8BF4: ; 0x021E8BF4
