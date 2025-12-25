@@ -55,285 +55,9 @@
 	.extern ov18_021E6F6C
 	.extern ov18_021E6FB8
 	.extern ov18_021E6FFC
+	.extern ov18_021E71D0
 
 	.text
-
-	thumb_func_start ov18_021E71D0
-ov18_021E71D0: ; 0x021E71D0
-	push {r3, r4, r5, lr}
-	sub sp, #0x10
-	add r4, r0, #0
-	add r5, r2, #0
-	cmp r1, #7
-	bls _021E71DE
-	b _021E7426
-_021E71DE:
-	add r0, r1, r1
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_021E71EA: ; jump table
-	.short _021E71FA - _021E71EA - 2 ; case 0
-	.short _021E723E - _021E71EA - 2 ; case 1
-	.short _021E728C - _021E71EA - 2 ; case 2
-	.short _021E72D4 - _021E71EA - 2 ; case 3
-	.short _021E7316 - _021E71EA - 2 ; case 4
-	.short _021E7352 - _021E71EA - 2 ; case 5
-	.short _021E738E - _021E71EA - 2 ; case 6
-	.short _021E73E2 - _021E71EA - 2 ; case 7
-_021E71FA:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x39
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov18_021F6DE0
-	add r0, r4, #0
-	mov r1, #0
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EF45C
-	add r0, r4, #0
-	bl ov18_021EF528
-	add r0, r4, #0
-	mov r1, #0
-	bl ov18_021F3618
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E723E:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x3e
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	ldr r1, _021E7430 ; =0x00001868
-	ldr r2, _021E7434 ; =ov18_021F9780
-	ldr r1, [r4, r1]
-	add r0, r4, #0
-	lsl r1, r1, #2
-	add r1, r2, r1
-	mov r2, #1
-	bl ov18_021E7448
-	add r0, r4, #0
-	bl ov18_021F6EC0
-	add r0, r4, #0
-	mov r1, #2
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EF5D8
-	add r0, r4, #0
-	mov r1, #4
-	bl ov18_021F3618
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E728C:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x3f
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	ldr r1, _021E7438 ; =0x0000186C
-	add r0, r4, #0
-	ldr r1, [r4, r1]
-	mov r2, #1
-	bl ov18_021E76A4
-	add r0, r4, #0
-	bl ov18_021F6FA0
-	add r0, r4, #0
-	mov r1, #3
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EF764
-	add r0, r4, #0
-	mov r1, #4
-	bl ov18_021F3618
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E72D4:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x40
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	add r0, r4, #0
-	bl ov18_021E74E4
-	add r0, r4, #0
-	bl ov18_021F7124
-	add r0, r4, #0
-	mov r1, #4
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EF848
-	add r0, r4, #0
-	mov r1, #4
-	bl ov18_021F3618
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E7316:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x41
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	add r0, r4, #0
-	bl ov18_021F7354
-	add r0, r4, #0
-	mov r1, #5
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EF91C
-	add r0, r4, #0
-	mov r1, #2
-	bl ov18_021F3618
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E7352:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x42
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	add r0, r4, #0
-	bl ov18_021F74D8
-	add r0, r4, #0
-	mov r1, #6
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EF9B4
-	add r0, r4, #0
-	mov r1, #3
-	bl ov18_021F3618
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E738E:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x43
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	ldr r1, _021E743C ; =0x00001888
-	ldr r2, _021E7440 ; =ov18_021F9770
-	ldr r1, [r4, r1]
-	add r0, r4, #0
-	lsl r1, r1, #2
-	add r1, r2, r1
-	mov r2, #1
-	bl ov18_021E7448
-	add r0, r4, #0
-	bl ov18_021F7668
-	add r0, r4, #0
-	mov r1, #7
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EFA50
-	add r0, r4, #0
-	mov r1, #4
-	bl ov18_021F3618
-	add r0, r4, #0
-	bl ov18_021E7564
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_021E73E2:
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E742C ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x44
-	mov r3, #2
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	ldr r1, _021E7444 ; =0x0000188C
-	add r0, r4, #0
-	ldr r1, [r4, r1]
-	mov r2, #1
-	bl ov18_021E7628
-	add r0, r4, #0
-	bl ov18_021F7748
-	add r0, r4, #0
-	mov r1, #8
-	bl ov18_021EEED0
-	add r0, r4, #0
-	bl ov18_021EFB88
-	add r0, r4, #0
-	mov r1, #1
-	bl ov18_021F3618
-_021E7426:
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-	nop
-_021E742C: .word 0x00000854
-_021E7430: .word 0x00001868
-_021E7434: .word ov18_021F9780
-_021E7438: .word 0x0000186C
-_021E743C: .word 0x00001888
-_021E7440: .word ov18_021F9770
-_021E7444: .word 0x0000188C
-	thumb_func_end ov18_021E71D0
 
 	thumb_func_start ov18_021E7448
 ov18_021E7448: ; 0x021E7448
@@ -491,7 +215,7 @@ ov18_021E7564: ; 0x021E7564
 	ldr r0, [r6, r0]
 	mov r1, #1
 	bl GridInputHandler_ClearEnabledFlag
-	ldr r5, _021E7624 ; =_021F9774
+	ldr r5, _021E7624 ; =ov18_021F9770 + 4
 	ldr r0, [r6, #4]
 	mov r1, #2
 	bl GetBgTilemapBuffer
@@ -570,7 +294,7 @@ _021E761C:
 	pop {r4, r5, r6, pc}
 	nop
 _021E7620: .word 0x00001860
-_021E7624: .word ov18_021F9774
+_021E7624: .word ov18_021F9770 + 4
 	thumb_func_end ov18_021E7564
 
 	thumb_func_start ov18_021E7628
@@ -36651,20 +36375,13 @@ ov18_021F9760:
 	.word 0x00000001, 0x00000000, 0x00000001, 0x00000000
 	.size ov18_021F9760,.-ov18_021F9760
 
-	; file boundary
-	.balign 4, 0
-
 	.global ov18_021F9770
 ov18_021F9770:
 	.byte 0x06, 0x08, 0x07, 0x02
-	.size ov18_021F9770,.-ov18_021F9770
-
-	.global ov18_021F9774
-ov18_021F9774:
 	.byte 0x13, 0x08, 0x07, 0x02
 	.byte 0x06, 0x0F, 0x07, 0x02
 	.byte 0x13, 0x0F, 0x07, 0x02
-	.size ov18_021F9774,.-ov18_021F9774
+	.size ov18_021F9770,.-ov18_021F9770
 
 	.global ov18_021F9780
 ov18_021F9780:
