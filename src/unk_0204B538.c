@@ -251,7 +251,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     a1->species = frontierMon.species;
     a1->form = frontierMon.form;
     a1->item = a7 ? _020FBFA4[a6] : frontierMon.item;
-    u32 friendship = FRIENDSHIP_MAX;
+    u32 friendship = MAX_FRIENDSHIP;
     for (i = 0; i < MAX_MON_MOVES; i++) {
         a1->moves[i] = frontierMon.moves[i];
         if (frontierMon.moves[i] == MOVE_FRUSTRATION) {

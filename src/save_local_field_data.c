@@ -143,7 +143,7 @@ void FieldSystem_RestoreMapObjectsFromSave(FieldSystem *fieldSystem) {
         form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         if (species != SPECIES_SHAYMIN) {
             GF_ASSERT(FALSE);
-        } else if (form == SHAYMIN_LAND) {
+        } else if (form == SHAYMIN_FORM_LAND) {
             follower->spriteId = SPRITE_FOLLOWER_MON_SHAYMIN;
         }
     }

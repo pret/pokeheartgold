@@ -803,7 +803,7 @@ void BattleSystem_TryChangeForm(BattleSystem *battleSystem) {
             case TERRAIN_ICE:
             case TERRAIN_GREAT_MARSH:
             default:
-                form = BURMY_PLANT;
+                form = BURMY_FORM_PLANT;
                 break;
             case TERRAIN_PLAIN:
             case TERRAIN_SAND:
@@ -811,7 +811,7 @@ void BattleSystem_TryChangeForm(BattleSystem *battleSystem) {
             case TERRAIN_MOUNTAIN:
             case TERRAIN_DISTORTION_WORLD:
             case TERRAIN_GIRATINA:
-                form = BURMY_SANDY;
+                form = BURMY_FORM_SANDY;
                 break;
             case TERRAIN_BUILDING:
             case TERRAIN_UNKNOWN:
@@ -825,7 +825,7 @@ void BattleSystem_TryChangeForm(BattleSystem *battleSystem) {
             case TERRAIN_BATTLE_ARCADE:
             case TERRAIN_BATTLE_CASTLE:
             case TERRAIN_BATTLE_HALL:
-                form = BURMY_TRASH;
+                form = BURMY_FORM_TRASH;
                 break;
             }
             Pokemon_SetData(mon, MON_DATA_FORM, &form);

@@ -5289,28 +5289,28 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                 if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_NORMAL && ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_NORMAL) {
                     ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_NORMAL;
                     ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_NORMAL;
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_NORMAL;
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_FORM_NORMAL;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) && ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_FIRE && ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_FIRE) {
                     ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_FIRE;
                     ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_FIRE;
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_SUNNY;
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_FORM_SUNNY;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) && ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_WATER && ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_WATER) {
                     ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_WATER;
                     ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_WATER;
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_RAINY;
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_FORM_RAINY;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) && ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_ICE && ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_ICE) {
                     ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_ICE;
                     ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_ICE;
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_SNOWY;
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_FORM_SNOWY;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
@@ -5318,7 +5318,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
             } else if (ctx->battleMons[ctx->battlerIdTemp].type1 != TYPE_NORMAL && ctx->battleMons[ctx->battlerIdTemp].type2 != TYPE_NORMAL) {
                 ctx->battleMons[ctx->battlerIdTemp].type1 = TYPE_NORMAL;
                 ctx->battleMons[ctx->battlerIdTemp].type2 = TYPE_NORMAL;
-                ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_NORMAL;
+                ctx->battleMons[ctx->battlerIdTemp].form = (u8)CASTFORM_FORM_NORMAL;
                 *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                 ret = TRUE;
                 break;
@@ -5326,29 +5326,29 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
         }
         if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_CHERRIM && ctx->battleMons[ctx->battlerIdTemp].hp) {
             if (!CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) && !CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK)) {
-                if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_SUNNY) {
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_CLOUDY;
+                if (!(ctx->fieldCondition & FIELD_CONDITION_WEATHER_CASTFORM) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_FORM_SUNSHINE) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_FORM_OVERCAST;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
-                } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_CLOUDY) {
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_SUNNY;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_SUN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_FORM_OVERCAST) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_FORM_SUNSHINE;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
-                } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_SUNNY) {
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_CLOUDY;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_FORM_SUNSHINE) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_FORM_OVERCAST;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
-                } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_SUNNY) {
-                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_CLOUDY;
+                } else if ((ctx->fieldCondition & FIELD_CONDITION_HAIL_ALL) && ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_FORM_SUNSHINE) {
+                    ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_FORM_OVERCAST;
                     *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                     ret = TRUE;
                     break;
                 }
-            } else if (ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_SUNNY) {
-                ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_CLOUDY;
+            } else if (ctx->battleMons[ctx->battlerIdTemp].form == (u8)CHERRIM_FORM_SUNSHINE) {
+                ctx->battleMons[ctx->battlerIdTemp].form = (u8)CHERRIM_FORM_OVERCAST;
                 *script = BATTLE_SUBSCRIPT_FORM_CHANGE;
                 ret = TRUE;
                 break;
@@ -5363,7 +5363,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                 break;
             }
         }
-        if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_GIRATINA && ctx->battleMons[ctx->battlerIdTemp].hp && ctx->battleMons[ctx->battlerIdTemp].form == GIRATINA_ORIGIN) {
+        if (ctx->battleMons[ctx->battlerIdTemp].species == SPECIES_GIRATINA && ctx->battleMons[ctx->battlerIdTemp].hp && ctx->battleMons[ctx->battlerIdTemp].form == GIRATINA_FORM_ORIGIN) {
             if ((ctx->battleMons[ctx->battlerIdTemp].status2 & STATUS2_TRANSFORM) || (!(BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_DISTORTION_WORLD) && ctx->battleMons[ctx->battlerIdTemp].item != ITEM_GRISEOUS_ORB)) {
                 if (ctx->battleMons[ctx->battlerIdTemp].status2 & STATUS2_TRANSFORM) {
                     Pokemon *mon2;
@@ -5380,7 +5380,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     Pokemon_Copy(BattleSystem_GetPartyMon(battleSystem, battlerIdTarget, ctx->selectedMonIndex[battlerIdTarget]), mon2);
                     dat = 0;
                     Pokemon_SetData(mon2, MON_DATA_HELD_ITEM, &dat);
-                    dat = (u8)GIRATINA_ALTERED;
+                    dat = (u8)GIRATINA_FORM_ALTERED;
                     Pokemon_SetData(mon2, MON_DATA_FORM, &dat);
                     Mon_UpdateGiratinaForm(mon2);
                     ctx->battleMons[ctx->battlerIdTemp].atk = Pokemon_GetData(mon2, MON_DATA_ATK, NULL);
@@ -5389,7 +5389,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     ctx->battleMons[ctx->battlerIdTemp].spAtk = Pokemon_GetData(mon2, MON_DATA_SP_ATK, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].spDef = Pokemon_GetData(mon2, MON_DATA_SP_DEF, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].ability = Pokemon_GetData(mon2, MON_DATA_ABILITY, NULL);
-                    ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_ALTERED;
+                    ctx->battleMons[ctx->battlerIdTemp].form = GIRATINA_FORM_ALTERED;
                     ctx->battleStatus2 |= BATTLE_STATUS2_FORM_CHANGE;
                     BattleController_EmitBattleMonToPartyMonCopy(battleSystem, ctx, ctx->battlerIdTemp);
                     Heap_Free(mon2);

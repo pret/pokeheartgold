@@ -455,7 +455,7 @@ void TrMon_OverridePidGender(int species, int form, int overrideParam, u32 *pid)
 }
 
 void TrMon_FrustrationCheckAndSetFriendship(Pokemon *mon) {
-    u8 friendship = FRIENDSHIP_MAX;
+    u8 friendship = MAX_FRIENDSHIP;
     int i;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {

@@ -35,7 +35,7 @@ BOOL ov02_02252334(FieldSystem *fieldSystem) {
         if (species != fieldSystem->followMon.species) {
             return FALSE;
         }
-        if (fieldSystem->followMon.form == SHAYMIN_SKY && form == SHAYMIN_LAND) {
+        if (fieldSystem->followMon.form == SHAYMIN_FORM_SKY && form == SHAYMIN_FORM_LAND) {
             return TRUE;
         }
     }

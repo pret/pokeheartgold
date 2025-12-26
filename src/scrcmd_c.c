@@ -4254,19 +4254,19 @@ BOOL ScrCmd_GetOwnedRotomForms(ScriptContext *ctx) {
     *hasMow = FALSE;
 
     flag = sub_020467A8(fieldSystem->saveData);
-    if (((flag >> ROTOM_HEAT) & 1) == 1) {
+    if (((flag >> ROTOM_FORM_HEAT) & 1) == 1) {
         *hasHeat = TRUE;
     }
-    if (((flag >> ROTOM_WASH) & 1) == 1) {
+    if (((flag >> ROTOM_FORM_WASH) & 1) == 1) {
         *hasWash = TRUE;
     }
-    if (((flag >> ROTOM_FROST) & 1) == 1) {
+    if (((flag >> ROTOM_FORM_FROST) & 1) == 1) {
         *hasFrost = TRUE;
     }
-    if (((flag >> ROTOM_FAN) & 1) == 1) {
+    if (((flag >> ROTOM_FORM_FAN) & 1) == 1) {
         *hasFan = TRUE;
     }
-    if (((flag >> ROTOM_MOW) & 1) == 1) {
+    if (((flag >> ROTOM_FORM_MOW) & 1) == 1) {
         *hasMow = TRUE;
     }
     return TRUE;
