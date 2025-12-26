@@ -140,7 +140,7 @@ static int Pokedex_CountRegisteredUnownLetters(const Pokedex *pokedex, BOOL caug
     } else {
         arr = pokedex->unownSeenOrder;
     }
-    for (i = 0; i < UNOWN_FORM_MAX; i++, j++) {
+    for (i = 0; i < UNOWN_FORM_COUNT; i++, j++) {
         if (arr[i] == 0xFF) {
             break;
         }
@@ -156,7 +156,7 @@ static BOOL Pokedex_HasAlreadyAddedUnownLetter(const Pokedex *pokedex, u8 letter
     } else {
         arr = pokedex->unownSeenOrder;
     }
-    for (i = 0; i < UNOWN_FORM_MAX; i++) {
+    for (i = 0; i < UNOWN_FORM_COUNT; i++) {
         if (arr[i] == letter) {
             return TRUE;
         }
@@ -174,7 +174,7 @@ static void Pokedex_TryAppendUnownLetter(Pokedex *pokedex, int letter, BOOL caug
     }
     if (!Pokedex_HasAlreadyAddedUnownLetter(pokedex, letter, caught)) {
         idx = Pokedex_CountRegisteredUnownLetters(pokedex, caught);
-        if (idx < UNOWN_FORM_MAX) {
+        if (idx < UNOWN_FORM_COUNT) {
             arr[idx] = letter;
         }
     }
@@ -324,7 +324,7 @@ static BOOL Pokedex_CheckSeenDeoxysForm(Pokedex *pokedex, u32 form) {
 static void Pokedex_SetSeenDeoxysForm(Pokedex *pokedex, u16 species, Pokemon *mon) {
     u8 form;
 
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     if (species == SPECIES_DEOXYS) {
         if (!Pokedex_CheckSeenDeoxysForm(pokedex, form)) {
             Pokedex_DeoxysFormFlagAction(pokedex, form, Pokedex_CountSeenDeoxysForms(pokedex));
@@ -387,7 +387,7 @@ static void Pokedex_SetSeenRotomForm(Pokedex *pokedex, u32 species, u32 form) {
 static void Pokedex_TryAppendSeenForm(Pokedex *pokedex, u16 species, Pokemon *mon) {
     u32 form;
 
-    form = GetMonData(mon, MON_DATA_FORM, NULL);
+    form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     switch (species) {
     case SPECIES_UNOWN:
         Pokedex_TryAppendUnownLetter(pokedex, form, FALSE);
@@ -398,7 +398,7 @@ static void Pokedex_TryAppendSeenForm(Pokedex *pokedex, u16 species, Pokemon *mo
         break;
     case SPECIES_PICHU:
         if (form == 0) {
-            if (GetMonGender(mon) == MON_MALE) {
+            if (Pokemon_GetGender(mon) == MON_MALE) {
                 form = 0;
             } else {
                 form = 1;
@@ -437,7 +437,7 @@ static void Pokedex_SetCaughtLanguage(Pokedex *pokedex, u32 species, u32 languag
 static int Pokedex_SpeciesGetLastSeenGender_Internal(Pokedex *pokedex, u16 species, u32 idx) {
     u8 gender1, gender2;
 
-    if (GetMonBaseStat(species, BASE_GENDER_RATIO) == MON_RATIO_UNKNOWN) {
+    if (Species_GetValue(species, SPECIES_DATA_GENDER_RATIO) == GENDER_RATIO_UNKNOWN) {
         if (idx == 0) {
             return 2;
         } else {
@@ -774,9 +774,9 @@ void Pokedex_SetMonSeenFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender;
     u8 seenGender;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    gender = GetMonGender(mon);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
+    gender = Pokemon_GetGender(mon);
 
     ASSERT_POKEDEX(pokedex);
     if (!DexSpeciesIsInvalid(species)) {
@@ -803,10 +803,10 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
     u32 gender;
     u32 gender_ct;
 
-    species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    language = GetMonData(mon, MON_DATA_LANGUAGE, NULL);
-    personality = GetMonData(mon, MON_DATA_PERSONALITY, NULL);
-    gender = GetMonGender(mon);
+    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    language = Pokemon_GetData(mon, MON_DATA_LANGUAGE, NULL);
+    personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
+    gender = Pokemon_GetGender(mon);
 
     ASSERT_POKEDEX(pokedex);
     if (!DexSpeciesIsInvalid(species)) {
@@ -823,7 +823,7 @@ void Pokedex_SetMonCaughtFlag(Pokedex *pokedex, Pokemon *mon) {
         }
         Pokedex_TryAppendSeenForm(pokedex, species, mon);
         if (species == SPECIES_UNOWN) {
-            Pokedex_TryAppendUnownLetter(pokedex, GetMonUnownLetter(mon), TRUE);
+            Pokedex_TryAppendUnownLetter(pokedex, Pokemon_GetForm(mon), TRUE);
         }
         Pokedex_SetCaughtLanguage(pokedex, species, language);
         if (language != GAME_LANGUAGE) {

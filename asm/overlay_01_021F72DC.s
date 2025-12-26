@@ -337,15 +337,15 @@ _021F7524:
 	str r0, [sp, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r6, r0, #0
 	ldr r0, [sp, #0xc]
-	bl GetMonGender
+	bl Pokemon_GetGender
 	str r0, [sp, #8]
 	lsl r1, r6, #0x10
 	ldr r2, [sp, #8]
@@ -354,7 +354,7 @@ _021F7524:
 	bl FollowMon_GetSpriteID
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0xc]
-	bl MonIsShiny
+	bl Pokemon_IsShiny
 	str r0, [sp, #4]
 	lsl r2, r6, #0x18
 	ldrb r1, [r4, #0x17]
@@ -445,7 +445,7 @@ _021F7636:
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r3, r0, #0
 	mov r1, #0x42
 	lsl r2, r7, #0x10

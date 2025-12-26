@@ -23579,15 +23579,15 @@ _022374CE:
 _022374D0:
 	add r0, r5, #0
 	mov r1, #0x6d
-	bl AllocAndLoadMonPersonal
+	bl SpeciesData_NewFromSpecies
 	str r0, [sp, #0x18]
 	add r0, r5, #0
 	add r1, r6, #0
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGenderFromPersonality
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	add r1, r6, #0
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	lsl r3, r7, #0x18
 	str r0, [sp, #0x20]
 	ldr r1, [sp, #0x1c]
@@ -23595,7 +23595,7 @@ _022374D0:
 	mov r2, #2
 	lsr r3, r3, #0x18
 	str r6, [sp]
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]
@@ -23606,7 +23606,7 @@ _022374D0:
 	add r1, r5, #0
 	mov r3, #2
 	str r6, [sp, #8]
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -23622,7 +23622,7 @@ _022374D0:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [sp, #0x18]
-	bl FreeMonPersonal
+	bl SpeciesData_Free
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -49519,7 +49519,7 @@ _02244A02:
 	mov r1, #0xac
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02244A5C
 	mov r0, #0
@@ -49529,7 +49529,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0x75
 	add r2, r5, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r0, r4, #0
 	bl String_SetEmpty
 	add r0, r4, #0
@@ -49544,7 +49544,7 @@ _02244A02:
 	add r0, r7, #0
 	mov r1, #0xb3
 	mov r2, #0
-	bl SetMonData
+	bl Pokemon_SetData
 _02244A54:
 	ldr r0, [sp, #0x18]
 	add r6, r6, #1

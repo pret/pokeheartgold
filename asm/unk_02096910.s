@@ -318,14 +318,14 @@ _02096B30:
 	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	add r1, #0x76
 	strh r0, [r1]
 	add r0, r4, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	add r1, #0x7e
 	strh r0, [r1]
@@ -335,14 +335,14 @@ _02096B30:
 	mov r1, #MON_DATA_SPECIES
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	add r1, #0x78
 	strh r0, [r1]
 	add r0, r4, #0
 	mov r1, #MON_DATA_HELD_ITEM
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	add r1, #0x80
 	strh r0, [r1]

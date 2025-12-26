@@ -205,14 +205,14 @@ void Save_CreateRoamerByID(SaveData *saveData, u8 idx) {
     SetRoamerData(roamerStats, ROAMER_DATA_LEVEL, level);
 
     profile = Save_PlayerData_GetProfile(saveData);
-    mon = AllocMonZeroed((enum HeapID)4);
-    ZeroMonData(mon);
-    CreateMon(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
+    mon = Pokemon_New((enum HeapID)4);
+    Pokemon_Init(mon);
+    Pokemon_InitWithParams(mon, species, level, 32, FALSE, 0, OT_ID_PRESET, PlayerProfile_GetTrainerID_VisibleHalf(profile));
     SetRoamerData(roamerStats, ROAMER_DATA_STATUS, 0);
     SetRoamerData(roamerStats, ROAMER_DATA_ACTIVE, TRUE);
-    SetRoamerData(roamerStats, ROAMER_DATA_IVS, GetMonData(mon, MON_DATA_COMBINED_IVS, NULL));
-    SetRoamerData(roamerStats, ROAMER_DATA_PERSONALITY, GetMonData(mon, MON_DATA_PERSONALITY, NULL));
-    SetRoamerData(roamerStats, ROAMER_DATA_HP, GetMonData(mon, MON_DATA_MAX_HP, NULL));
+    SetRoamerData(roamerStats, ROAMER_DATA_IVS, Pokemon_GetData(mon, MON_DATA_COMBINED_IVS, NULL));
+    SetRoamerData(roamerStats, ROAMER_DATA_PERSONALITY, Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL));
+    SetRoamerData(roamerStats, ROAMER_DATA_HP, Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL));
     Heap_Free(mon);
     RoamerLocationSetRandom(roamerSave, idx, PlayerLocationHistoryGetBack(roamerSave));
 }

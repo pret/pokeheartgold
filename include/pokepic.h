@@ -142,8 +142,8 @@ typedef struct Pokepic {
     u32 needReloadChar : 1;
     u32 needReloadPltt : 1;
     u32 filler_00_09 : 23;
-    PokepicTemplate template;
-    PokepicTemplate templateBak;
+    PokemonSpriteTemplate template;
+    PokemonSpriteTemplate templateBak;
     PokepicDrawParam drawParam;
     u8 animActive;
     u8 whichAnim;
@@ -197,10 +197,10 @@ void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
 BOOL Pokepic_IsAnimFinished(Pokepic *pokepic);
 
 // Finds an empty Pokepic slot and creates a Pokepic there
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokemonSpriteTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
 
 // Initializes the Pokepic from arguments at the given position
-Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback);
+Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokemonSpriteTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback);
 
 // Sets the pic inactive
 void Pokepic_Delete(Pokepic *pokepic);
@@ -254,7 +254,7 @@ void PokepicManager_SetCharBaseAddrAndSize(PokepicManager *pokepicManager, int a
 void PokepicManager_SetPlttBaseAddrAndSize(PokepicManager *pokepicManager, int addr, int size);
 
 // Returns a pointer to the Pokepic template
-PokepicTemplate *Pokepic_GetTemplate(Pokepic *pokepic);
+PokemonSpriteTemplate *Pokepic_GetTemplate(Pokepic *pokepic);
 
 // Handles transfer of character and/or palette data from buffer if the corresponding request flags are set.
 void PokepicManager_HandleLoadImgAndOrPltt(PokepicManager *pokepicManager);

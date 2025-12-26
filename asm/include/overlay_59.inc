@@ -177,9 +177,9 @@
 .public sub_02031FE8
 .public sub_02032004
 .public sub_02032024
-.public GetMonData
-.public GetMonBaseStat_HandleAlternateForm
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_GetData
+.public Species_GetFormValue
+.public Pokemon_BuildSpriteTemplate
 .public CalcMonPokeathlonPerformance
 .public CalcMonPokeathlonStars
 .public Party_GetCount

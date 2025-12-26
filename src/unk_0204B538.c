@@ -192,7 +192,7 @@ void sub_0204B6AC(UnkStruct_Fsys_A0 *a0, SaveData *saveData) {
     Party *party = SaveArray_Party_Get(saveData);
     for (s32 i = 0; i < 2; i++) {
         Pokemon *mon = Party_GetMonByIndex(party, a0->unk2a[i]);
-        a0->unk83e[1 + i] = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        a0->unk83e[1 + i] = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     }
     a0->unk83e[3] = sub_0202D57C(a0->unk74, 3, 0);
 }
@@ -251,7 +251,7 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     a1->species = frontierMon.species;
     a1->form = frontierMon.form;
     a1->item = a7 ? _020FBFA4[a6] : frontierMon.item;
-    u32 friendship = FRIENDSHIP_MAX;
+    u32 friendship = MAX_FRIENDSHIP;
     for (i = 0; i < MAX_MON_MOVES; i++) {
         a1->moves[i] = frontierMon.moves[i];
         if (frontierMon.moves[i] == MOVE_FRUSTRATION) {
@@ -263,8 +263,8 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     if (a4 == 0) {
         do {
             pid = sub_0204B510(a0) | sub_0204B510(a0) << 16;
-        } while (frontierMon.nature != GetNatureFromPersonality(pid)
-            || CalcShininessByOtIdAndPersonality(otId, pid) == TRUE);
+        } while (frontierMon.nature != Personality_GetNature(pid)
+            || Personality_IsShiny(otId, pid) == TRUE);
         a1->pid = pid;
     } else {
         a1->pid = a4;
@@ -293,15 +293,15 @@ static u32 sub_0204B834(UnkStruct_Fsys_A0 *a0, UnkStruct_0204B470 *a1, u16 front
     }
     a1->ppUp = 0;
     a1->language = gGameLanguage;
-    u32 ability = GetMonBaseStat(a1->species, BASE_ABILITY_2);
+    u32 ability = Species_GetValue(a1->species, SPECIES_DATA_ABILITY_2);
     if (ability != ABILITY_NONE) {
         if (a1->pid % 2) {
             a1->ability = ability;
         } else {
-            a1->ability = GetMonBaseStat(a1->species, BASE_ABILITY_1);
+            a1->ability = Species_GetValue(a1->species, SPECIES_DATA_ABILITY_1);
         }
     } else {
-        a1->ability = GetMonBaseStat(a1->species, BASE_ABILITY_1);
+        a1->ability = Species_GetValue(a1->species, SPECIES_DATA_ABILITY_1);
     }
     a1->friendship = friendship;
     GetSpeciesNameIntoArray(a1->species, heapID, a1->nickname);

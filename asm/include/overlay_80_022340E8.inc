@@ -31,11 +31,11 @@
 .public sub_0205C2C0
 .public sub_0205C2E8
 .public Save_VarsFlags_GetVar4052
-.public AllocMonZeroed
-.public CalcMonLevelAndStats
-.public GetMonData
-.public SetMonData
-.public GetMonExpBySpeciesAndLevel
+.public Pokemon_New
+.public Pokemon_CalcLevelAndStats
+.public Pokemon_GetData
+.public Pokemon_SetData
+.public Species_GetExpAtLevel
 .public SaveArray_Party_Alloc
 .public Party_AddMon
 .public Party_GetCount

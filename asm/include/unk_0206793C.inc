@@ -11,7 +11,7 @@
 .public PaletteFadeUntilFinished
 .public CallTask_FadeFromBlack
 .public CallTask_NPCTrade
-.public AllocMonZeroed
+.public Pokemon_New
 .public memset
 .public NPCTrade_ReceiveMonToSlot
 .public NPCTrade_CreateTradeAnim

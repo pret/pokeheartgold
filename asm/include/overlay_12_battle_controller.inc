@@ -4,10 +4,10 @@
 .public sub_0202FC48
 .public sub_02037454
 .public sub_0203769C
-.public GetMonData
-.public GetPercentProgressTowardsNextLevel
-.public GetMonExpBySpeciesAndLevel
-.public GetMonPicHeightBySpeciesGenderForm
+.public Pokemon_GetData
+.public Pokemon_CalcPercentToNextLevel
+.public Species_GetExpAtLevel
+.public Species_LoadSpriteYOffset
 .public MaskOfFlagNo
 .public GetMoveMaxPP
 .public Party_GetCount

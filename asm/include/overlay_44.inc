@@ -278,7 +278,7 @@
 .public sub_0203A880
 .public Save_VarsFlags_Get
 .public Save_VarsFlags_FlypointFlagAction
-.public GetMonData
+.public Pokemon_GetData
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

@@ -1848,7 +1848,7 @@ _021E67D0:
 	ldrh r0, [r5, r1]
 	sub r1, #8
 	ldr r1, [r5, r1]
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGenderFromPersonality
 	mov r2, #0x61
 	lsl r2, r2, #2
 	str r0, [sp, #0x20]
@@ -1870,7 +1870,7 @@ _021E67D0:
 	ldrb r3, [r5, r3]
 	lsr r1, r1, #0x18
 	mov r2, #2
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r3, sp, #0x3c
@@ -1894,7 +1894,7 @@ _021E67D0:
 	ldr r0, [r5, r1]
 	sub r1, r1, #4
 	ldr r1, [r5, r1]
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	cmp r0, #0
 	beq _021E685C
 	mov r7, #1
@@ -1914,7 +1914,7 @@ _021E685E:
 	str r0, [sp, #0x18]
 	ldrh r0, [r5, r1]
 	ldr r1, [sp, #0x18]
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGenderFromPersonality
 	add r2, r0, #0
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
@@ -1928,7 +1928,7 @@ _021E685E:
 	str r0, [sp, #8]
 	ldrh r1, [r5, r1]
 	add r0, sp, #0x50
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [sp, #0x28]
 	mov r2, #0x3b
 	str r0, [sp]
@@ -2465,7 +2465,7 @@ _021E6C84:
 	ldrh r0, [r5, r1]
 	sub r1, #8
 	ldr r1, [r5, r1]
-	bl GetGenderBySpeciesAndPersonality
+	bl Species_GetGenderFromPersonality
 	mov r1, #0x66
 	lsl r1, r1, #2
 	add r2, r0, #0
@@ -2580,7 +2580,7 @@ _021E6DCE:
 	ldr r0, [r5, r1]
 	sub r1, r1, #4
 	ldr r1, [r5, r1]
-	bl CalcShininessByOtIdAndPersonality
+	bl Personality_IsShiny
 	cmp r0, #0
 	beq _021E6E02
 	add r4, #0x20

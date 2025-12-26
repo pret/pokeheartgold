@@ -9,9 +9,9 @@
 .public sub_0202EC28
 .public MigratedPokemon_ConvertToPokemon
 .public sub_0202EC98
-.public ZeroMonData
-.public GetMonData
-.public CopyBoxPokemonToPokemon
+.public Pokemon_Init
+.public Pokemon_GetData
+.public BoxPokemon_CopyToPokemon
 .public OS_GetMacAddress
 .public OS_GetOwnerRtcOffset
 .public MIi_CpuClearFast

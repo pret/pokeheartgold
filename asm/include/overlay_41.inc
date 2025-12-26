@@ -218,9 +218,9 @@
 .public sub_0202BF04
 .public sub_0202BF08
 .public GameStats_AddScore
-.public AllocMonZeroed
-.public GetMonData
-.public sub_02070130
+.public Pokemon_New
+.public Pokemon_GetData
+.public BoxPokemon_BuildSpriteTemplateDP
 .public sub_02070848
 .public NNS_GfdResetFrmTexVramState
 .public NNS_GfdResetFrmPlttVramState

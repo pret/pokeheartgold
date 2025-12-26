@@ -28,7 +28,7 @@
 .public Sprite_SetAnimationFrame
 .public Sprite_SetDrawPriority
 .public Sprite_GetImageProxy
-.public GetMonBaseStat_HandleAlternateForm
+.public Species_GetFormValue
 .public CalcBoxMonPokeathlonPerformance
 .public CalcBoxmonPokeathlonStars
 .public GetMoveAttr
@@ -87,4 +87,4 @@
 .public _s32_div_f
 .public _u32_div_f
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers

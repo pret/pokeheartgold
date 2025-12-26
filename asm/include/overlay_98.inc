@@ -69,7 +69,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Delete
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public Species_BuildSpriteTemplate
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

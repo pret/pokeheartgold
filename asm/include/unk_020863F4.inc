@@ -76,4 +76,4 @@
 .public sub_020871C4
 .public _u32_div_f
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers

@@ -25,8 +25,8 @@
 .public sub_0205C074
 .public sub_0205C268
 .public Save_VarsFlags_GetVar4052
-.public AllocMonZeroed
-.public GetMonData
+.public Pokemon_New
+.public Pokemon_GetData
 .public SaveArray_Party_Alloc
 .public SaveArray_Party_Init
 .public Party_GetCount

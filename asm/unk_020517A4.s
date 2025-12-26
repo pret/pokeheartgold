@@ -307,7 +307,7 @@ WildPokemonGetBattleIntroAndMusicParam: ; 0x02051894
 	bl GetFirstAliveMonInParty_CrashIfNone
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r4, #0x6d
 	bne _020518AC
 	mov r0, #0x2a

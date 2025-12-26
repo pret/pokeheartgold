@@ -72,7 +72,7 @@ _02258874:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x68]
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	beq _02258950
@@ -82,7 +82,7 @@ _02258874:
 	ldr r0, [sp, #0x68]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02258950
 	add r0, r4, #0
@@ -129,14 +129,14 @@ _02258874:
 	ldr r0, [sp, #0x68]
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x58]
 	ldr r0, [sp, #0x68]
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0x54]
@@ -194,7 +194,7 @@ _0225897E:
 	add r0, r4, #0
 	add r1, #0x36
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x3c]
@@ -212,7 +212,7 @@ _0225897E:
 	add r0, r4, #0
 	mov r1, #0xa
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x70]
 	add r0, r5, #0
 	add r1, r6, #0
@@ -300,7 +300,7 @@ _02258A50:
 	mov r1, #0xae
 	mov r2, #0
 	str r0, [sp, #0x1c]
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	beq _02258A70
@@ -313,7 +313,7 @@ _02258A72:
 	ldr r0, [sp, #0x1c]
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02258B76
 	ldr r0, _02258B90 ; =0x0000219C
@@ -355,7 +355,7 @@ _02258AC4:
 	ldr r0, [sp, #0x1c]
 	add r1, #0x36
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #0x8c]
@@ -504,7 +504,7 @@ _02258BE6:
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r6, #0
@@ -517,7 +517,7 @@ _02258C02:
 	add r0, r4, #0
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	lsl r1, r1, #0x10
 	add r0, r6, #0
@@ -605,32 +605,32 @@ _02258C90:
 	add r0, r4, #0
 	mov r1, #0x4b
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r5, r0, #0
 	add r0, r4, #0
 	mov r1, #0x4a
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r6, r0, #0
 	add r0, r4, #0
 	mov r1, #0x49
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r0, #0
 	add r0, r4, #0
 	mov r1, #0x48
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #4]
 	add r0, r4, #0
 	mov r1, #0x46
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #8]
 	add r0, r4, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	lsl r2, r6, #0x1f
 	lsl r0, r5, #0x1f
@@ -1409,13 +1409,13 @@ _0225922A:
 	add r0, r7, #0
 	add r1, #0x36
 	add r2, r5, #0
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r2, [sp, #8]
 	add r1, r4, #0
 	add r0, r7, #0
 	add r1, #0x3a
 	add r2, r2, r4
-	bl SetMonData
+	bl Pokemon_SetData
 _02259254:
 	add r4, r4, #1
 	add r5, r5, #2
@@ -1433,16 +1433,16 @@ _0225925C:
 	add r0, r7, #0
 	mov r1, #6
 	add r2, #0xc
-	bl SetMonData
+	bl Pokemon_SetData
 _02259278:
 	add r0, r7, #0
 	mov r1, #0xa3
 	add r2, r6, #2
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r7, #0
 	mov r1, #0xa0
 	add r2, r6, #4
-	bl SetMonData
+	bl Pokemon_SetData
 	ldrh r0, [r6, #0x2a]
 	cmp r0, #0
 	beq _0225929E
@@ -1450,7 +1450,7 @@ _02259278:
 	add r0, r7, #0
 	mov r1, #0x70
 	add r2, #0x20
-	bl SetMonData
+	bl Pokemon_SetData
 _0225929E:
 	ldrh r0, [r6, #0x28]
 	cmp r0, #0
@@ -1459,9 +1459,9 @@ _0225929E:
 	add r0, r7, #0
 	mov r1, #0xa
 	add r2, #0x24
-	bl SetMonData
+	bl Pokemon_SetData
 	add r0, r7, #0
-	bl CalcMonLevelAndStats
+	bl Pokemon_CalcLevelAndStats
 _022592B6:
 	mov r2, #0x65
 	ldr r1, [sp, #4]
@@ -1577,7 +1577,7 @@ _0225937A:
 _02259394:
 	mov r1, #0xa
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 _0225939C:
 	ldrh r1, [r4, #2]
 	cmp r1, #0xd7
@@ -1589,7 +1589,7 @@ _022593A8:
 	add r0, r6, #0
 	mov r1, #0xa0
 	add r2, sp, #8
-	bl SetMonData
+	bl Pokemon_SetData
 _022593B2:
 	ldr r0, [sp, #4]
 	add r5, r5, #1
@@ -1662,7 +1662,7 @@ _02259418:
 	ldrh r1, [r4, #2]
 	ldrb r2, [r4, #4]
 	add r0, sp, #0x14
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5, #0x20]
 	bl Pokepic_GetTemplate
 	add r7, r0, #0
@@ -1713,7 +1713,7 @@ _02259418:
 	ldrb r1, [r4, #4]
 	ldrb r3, [r4, #1]
 	lsr r2, r2, #0x18
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	bl ov12_0223A99C
@@ -2190,13 +2190,13 @@ _02259846:
 	mov r1, #5
 	mov r2, #0
 	add r4, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _02259894
 	add r0, r4, #0
 	mov r1, #0x4c
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02259894
 	ldr r0, [sp]
@@ -2207,7 +2207,7 @@ _02259846:
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #8]
 	add r0, r1, r0
 	str r0, [sp, #8]
@@ -2216,7 +2216,7 @@ _02259888:
 	add r0, r4, #0
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r7, r7, r0
 _02259894:
 	add r0, r6, #0
@@ -2415,7 +2415,7 @@ _022599F2:
 	lsl r2, r2, #0x1e
 	add r0, sp, #0x5c
 	lsr r2, r2, #0x1e
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5, #4]
 	str r0, [sp]
 	ldrb r3, [r5, #1]
@@ -2425,7 +2425,7 @@ _022599F2:
 	lsl r3, r3, #0x18
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	str r0, [sp, #0x2c]
 	mov r0, #0x69
 	lsl r0, r0, #2
@@ -2563,7 +2563,7 @@ _02259B1E:
 	ldrb r0, [r6, r0]
 	str r0, [r4, #0x1c]
 	ldr r0, [r5, #4]
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	str r0, [r4, #0x24]
 	ldrb r0, [r5, #1]
 	lsl r0, r0, #0x1d
@@ -2654,7 +2654,7 @@ _02259BE4:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5, #4]
 	add r2, r4, #0
 	str r0, [sp]
@@ -2666,7 +2666,7 @@ _02259BE4:
 	ldrb r2, [r2]
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r1, r4, #0
 	add r1, #0x85
 	strb r0, [r1]
@@ -2736,7 +2736,7 @@ _02259BE4:
 	add r0, #0x8c
 	strb r1, [r0]
 	ldr r0, [r5, #4]
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	add r1, r4, #0
 	add r1, #0x8d
 	strb r0, [r1]
@@ -2861,7 +2861,7 @@ _02259D92:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r4, #4]
 	add r2, r5, #0
 	str r0, [sp]
@@ -2873,7 +2873,7 @@ _02259D92:
 	ldrb r2, [r2]
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r1, r5, #0
 	add r1, #0x85
 	strb r0, [r1]
@@ -2943,7 +2943,7 @@ _02259D92:
 	add r0, #0x8c
 	strb r1, [r0]
 	ldr r0, [r4, #4]
-	bl GetNatureFromPersonality
+	bl Personality_GetNature
 	add r1, r5, #0
 	add r1, #0x8d
 	strb r0, [r1]
@@ -11298,7 +11298,7 @@ ov12_0225E154: ; 0x0225E154
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	mov r1, #0x1a
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r2, _0225E1CC ; =ov12_0226D140
 	lsl r1, r5, #1
 	ldrb r2, [r2, r1]
@@ -13203,7 +13203,7 @@ _0225F070:
 	mov r1, #0xa3
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [r4, #8]
 	mov r2, #0
 	ldr r1, [r1, #4]
@@ -13212,7 +13212,7 @@ _0225F070:
 	str r0, [r5, #0x28]
 	add r0, r6, #0
 	mov r1, #0xa4
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #0x2c]
 	ldr r0, [r4, #8]
 	mov r1, #0xa0
@@ -13221,7 +13221,7 @@ _0225F070:
 	ldrh r0, [r0, #0x20]
 	str r0, [r5, #0x30]
 	add r0, r6, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _0225F0F6
 	add r0, r5, #0
@@ -13342,7 +13342,7 @@ _0225F1B2:
 	bl BattleSystem_GetPartyMon
 	mov r1, #0xa0
 	add r2, r5, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _0225F1EE
 	ldr r0, [sp, #0x10]
@@ -13828,7 +13828,7 @@ _0225F5CE:
 	str r0, [sp, #0x14]
 _0225F5DC:
 	mov r0, #5
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r5, #0
 _0225F5E6:
@@ -13864,7 +13864,7 @@ _0225F614:
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0x1c]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #4]
 	ldrb r1, [r5, #0x1c]
 	add r0, r0, r6
@@ -13904,7 +13904,7 @@ _0225F66A:
 	bl Party_GetMonByIndex
 	add r1, r0, #0
 	ldr r0, [sp, #0x20]
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #4]
 	ldrb r1, [r5, #0x1c]
 	add r0, r0, r7
@@ -14222,7 +14222,7 @@ _0225F90C:
 	bl BattleSystem_GetPartyMon
 	mov r1, #0xa3
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	beq _0225F92E
 	ldrb r0, [r7, #0xc]
@@ -14330,7 +14330,7 @@ _0225F9E6:
 	mov r1, #0xa3
 	mov r2, #0
 	add r5, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _0225FA02
 	ldr r0, [r4]
@@ -14339,7 +14339,7 @@ _0225FA02:
 	add r0, r5, #0
 	mov r1, #0xae
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, _0225FA40 ; =0x000001EE
 	cmp r0, r1
 	bne _0225FA18
@@ -15462,7 +15462,7 @@ _022602CE:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldrb r3, [r3]
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	mov r3, #0x50
 	sub r0, r3, r0
 	str r0, [sp]

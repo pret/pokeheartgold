@@ -28,8 +28,8 @@
 .public AddTextPrinterParameterizedWithColor
 .public String_Delete
 .public String_Compare
-.public AllocMonZeroed
-.public CopyBoxPokemonToPokemon
+.public Pokemon_New
+.public BoxPokemon_CopyToPokemon
 .public GetMoveAttr
 .public GetMoveMaxPP
 .public Pokedex_ConvertToCurrentDexNo
@@ -57,4 +57,4 @@
 .public sub_0208E600
 .public sub_0208E994
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers

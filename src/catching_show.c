@@ -122,7 +122,7 @@ static void BufferSpeciesData(u16 species, u8 *dest) {
 
 static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
     MigratedPokemon *transferData = Save_MigratedPokemon_Get(fieldSystem->saveData);
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD1);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD1);
     u8 narc_data[6];
     u16 species;
 
@@ -130,7 +130,7 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
         catchingShow->caughtMonsOrder[i] = 0;
         MigratedPokemon_ConvertToPokemon(transferData, i, mon);
 
-        species = GetMonData(mon, MON_DATA_SPECIES, NULL);
+        species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
 
         catchingShow->pokemon[i].species = species;
         BufferSpeciesData(species, narc_data);
@@ -142,8 +142,8 @@ static void InitSpeciesData(FieldSystem *fieldSystem, CatchingShow *catchingShow
         }
         catchingShow->pokemon[i].rarity = narc_data[PPMONDAT_OFFSET_ENCOUTER_RATE];
         catchingShow->pokemon[i].catchingPoints = narc_data[PPMONDAT_OFFSET_SCORE];
-        catchingShow->pokemon[i].type1 = GetMonData(mon, MON_DATA_TYPE_1, NULL);
-        catchingShow->pokemon[i].type2 = GetMonData(mon, MON_DATA_TYPE_2, NULL);
+        catchingShow->pokemon[i].type1 = Pokemon_GetData(mon, MON_DATA_TYPE_1, NULL);
+        catchingShow->pokemon[i].type2 = Pokemon_GetData(mon, MON_DATA_TYPE_2, NULL);
     }
 
     Heap_Free(mon);
@@ -254,7 +254,7 @@ static void UpdateBattleResultInternal(FieldSystem *fieldSystem, BattleSetup *se
 }
 
 static BattleSetup *FieldSystem_SetupCatchingShowEncounter(FieldSystem *fieldSystem, CatchingShow *catchingShow) {
-    Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD3);
+    Pokemon *mon = Pokemon_New(HEAP_ID_FIELD3);
     MigratedPokemon *migratedMons = Save_MigratedPokemon_Get(fieldSystem->saveData);
     BattleSetup *ret = BattleSetup_New_PalPark(HEAP_ID_FIELD2, FieldSystem_GetParkBallCount(fieldSystem));
 

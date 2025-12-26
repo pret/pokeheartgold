@@ -506,7 +506,7 @@ void sub_0207D1C8(PartyMenu *partyMenu) {
     } else {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
         String *msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00038);
-        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
         String_Delete(msg);
     }
@@ -518,7 +518,7 @@ static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenu *partyMenu, u8 partyS
 
 void PartyMenu_BufferMonNickname(PartyMenu *partyMenu, Pokemon *mon, u32 partySlot) {
     String *msg = NewString_ReadMsgData(partyMenu->msgData, sMonNicknameMsgIds[partySlot][0]);
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->monsDrawState[partySlot].nickname, msg);
     String_Delete(msg);
 }
@@ -900,12 +900,12 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenu *partyMenu) {
     Pokemon *mon;
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    stats[0] = GetMonData(mon, MON_DATA_MAX_HP, NULL);
-    stats[1] = GetMonData(mon, MON_DATA_ATK, NULL);
-    stats[2] = GetMonData(mon, MON_DATA_DEF, NULL);
-    stats[3] = GetMonData(mon, MON_DATA_SP_ATK, NULL);
-    stats[4] = GetMonData(mon, MON_DATA_SP_DEF, NULL);
-    stats[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
+    stats[0] = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
+    stats[1] = Pokemon_GetData(mon, MON_DATA_ATK, NULL);
+    stats[2] = Pokemon_GetData(mon, MON_DATA_DEF, NULL);
+    stats[3] = Pokemon_GetData(mon, MON_DATA_SP_ATK, NULL);
+    stats[4] = Pokemon_GetData(mon, MON_DATA_SP_DEF, NULL);
+    stats[5] = Pokemon_GetData(mon, MON_DATA_SPEED, NULL);
     AddWindowParameterized(partyMenu->bgConfig, &partyMenu->levelUpStatsWindow[0], GF_BG_LYR_MAIN_0, 1, 1, 14, 12, 0, 0x260);
     DrawFrameAndWindow1(&partyMenu->levelUpStatsWindow[0], TRUE, 1, 14);
     FillWindowPixelBuffer(&partyMenu->levelUpStatsWindow[0], 15);
@@ -958,14 +958,14 @@ void sub_0207E068(PartyMenu *partyMenu) {
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00008);
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
     AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37], 0, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(msg);
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00182);
-    BufferItemName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_HELD_ITEM, NULL));
+    BufferItemName(partyMenu->msgFormat, 1, Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
     AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39], 0, partyMenu->formattedStrBuf, 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(msg);

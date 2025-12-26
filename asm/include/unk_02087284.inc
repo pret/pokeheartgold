@@ -52,4 +52,4 @@
 .public _fsub
 .public _s32_div_f
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers

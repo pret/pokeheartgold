@@ -23938,7 +23938,7 @@ _021F1AC8:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x30
 	add r1, r4, #0
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -24732,7 +24732,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #6
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp, #4]
@@ -24751,7 +24751,7 @@ _021F2174:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #7
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	beq _021F21B6
@@ -32497,7 +32497,7 @@ _021F5F4A:
 	ldrb r1, [r3, #1]
 	ldrh r0, [r5, r0]
 	ldrb r3, [r3]
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r2, r0, #0
 	lsl r0, r4, #2
 	add r1, r5, r0
@@ -33627,7 +33627,7 @@ _021F6872:
 	ldrh r0, [r5, r0]
 	ldrb r3, [r3]
 	add r2, r6, #0
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 _021F6886:
 	cmp r4, #1
 	bne _021F68EC
@@ -33855,7 +33855,7 @@ _021F6A22:
 	ldr r2, [sp, #0x18]
 	add r0, sp, #0x2c
 	add r1, r4, #0
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	str r7, [sp]
 	str r6, [sp, #4]
 	mov r0, #0
@@ -38122,39 +38122,39 @@ ov18_021F8AB8: ; 0x021F8AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl AcquireMonLock
+	bl Pokemon_UnlockEncryption
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x91
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x92
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x93
 	lsl r1, r1, #2
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	mov r1, #0xb2
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	mov r1, #0x25
 	lsl r1, r1, #4
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl ReleaseMonLock
+	bl Pokemon_LockEncryption
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8AB8
@@ -39509,7 +39509,7 @@ ov18_021F95CC: ; 0x021F95CC
 	ldr r1, [r4, #0xc]
 	add r0, sp, #0x10
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

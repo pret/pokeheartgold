@@ -91,7 +91,7 @@
 .public sub_02069DC8
 .public FollowMon_IsActive
 .public FieldSystem_UnkSub108_AddMonMood
-.public GetMonData
+.public Pokemon_GetData
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get
 .public memset

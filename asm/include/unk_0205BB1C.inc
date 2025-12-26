@@ -17,7 +17,7 @@
 .public sub_0205BFB4
 .public MapObject_SetVisible
 .public sub_0205F9A0
-.public GetMonData
+.public Pokemon_GetData
 .public Party_GetCount
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

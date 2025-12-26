@@ -570,7 +570,7 @@ ov80_02236F24: ; 0x02236F24
 	ldr r1, [sp, #0x10]
 	bl Party_InitWithMaxSize
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	ldr r0, [sp, #0x10]
 	mov r6, #0
@@ -582,7 +582,7 @@ _02236F94:
 	ldr r0, [r5, r0]
 	bl Party_GetMonByIndex
 	add r1, r7, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #0
@@ -629,7 +629,7 @@ _02236FFC:
 	cmp r7, #4
 	blt _02236FFC
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	ldr r0, [sp, #0xc]
 	mov r6, #0
@@ -641,7 +641,7 @@ _0223701C:
 	ldr r0, [r5, r0]
 	bl Party_GetMonByIndex
 	add r1, r7, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #1
@@ -693,7 +693,7 @@ _0223704E:
 	ldr r0, [r4, #0x10]
 	bl Party_InitWithMaxSize
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #8]
@@ -707,7 +707,7 @@ _022370B6:
 	ldr r0, [r5, r0]
 	bl Party_GetMonByIndex
 	add r1, r7, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	add r0, r4, #0
 	add r1, r7, #0
 	mov r2, #3
@@ -805,7 +805,7 @@ ov80_02237130: ; 0x02237130
 	ldr r0, [r5, r0]
 	bl SaveArray_Party_Init
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r0, #0xa
 	lsl r0, r0, #6
@@ -875,7 +875,7 @@ _022371D4:
 	add r3, r5, r3
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp, #0x10]

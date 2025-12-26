@@ -903,12 +903,12 @@ _021F21D2:
 	ldr r0, [r4, #0x14]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r5, r0, #0
 	ldr r0, [r4, #0x14]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	lsl r0, r5, #0x10
 	lsl r1, r1, #0x18
@@ -1556,12 +1556,12 @@ ov01_021F2700: ; 0x021F2700
 	ldr r0, [r5, #0x24]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r4, r0, #0
 	ldr r0, [r5, #0x24]
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	lsl r0, r4, #0x10
 	lsl r1, r1, #0x18

@@ -102,10 +102,10 @@
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
-.public GetGenderBySpeciesAndPersonality
-.public CalcShininessByOtIdAndPersonality
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Species_GetGenderFromPersonality
+.public Personality_IsShiny
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public sub_020729D8
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation

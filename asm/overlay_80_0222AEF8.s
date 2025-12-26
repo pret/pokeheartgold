@@ -793,12 +793,12 @@ _0222B46C:
 	str r0, [sp, #0xc]
 	mov r1, #0x47
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strb r0, [r7]
 	mov r1, #0
 	ldr r0, [sp, #0xc]
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	stmia r6!, {r0}
 	ldr r0, [sp, #8]
 	add r7, r7, #1
@@ -1549,7 +1549,7 @@ ov80_0222B9CC: ; 0x0222B9CC
 	bl SizeOfStructPokemon
 	add r5, r0, #0
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0
@@ -2031,7 +2031,7 @@ ov80_0222BD44: ; 0x0222BD44
 	bl SizeOfStructPokemon
 	add r5, r0, #0
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #8]
 	mov r7, #0

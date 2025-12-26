@@ -10,10 +10,10 @@
 .public BattleSetup_AddMonToParty
 .public sub_02051D18
 .public BattleSetup_SetAllySideBattlersToPlayer
-.public AllocMonZeroed
-.public GetMonData
-.public CalcShininessByOtIdAndPersonality
-.public CopyPokemonToPokemon
+.public Pokemon_New
+.public Pokemon_GetData
+.public Personality_IsShiny
+.public Pokemon_Copy
 .public UpdateMonAbility
 .public Party_InitWithMaxSize
 .public Party_GetMonByIndex

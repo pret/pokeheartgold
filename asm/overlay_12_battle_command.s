@@ -20,7 +20,7 @@ BattleScript_CalcEffortValues: ; 0x022463E8
 	add r1, r3, #0
 	mov r2, #5
 	mov r4, #0
-	bl AllocAndLoadMonPersonal_HandleAlternateForm
+	bl SpeciesData_NewFromForm
 	add r7, r0, #0
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
@@ -28,7 +28,7 @@ BattleScript_CalcEffortValues: ; 0x022463E8
 	mov r1, #6
 	add r2, r4, #0
 	str r0, [sp, #0x14]
-	bl GetMonData
+	bl Pokemon_GetData
 	lsl r0, r0, #0x10
 	lsr r6, r0, #0x10
 	add r0, r6, #0
@@ -51,7 +51,7 @@ _02246436:
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	ldr r1, [sp, #0xc]
 	strb r0, [r1]
 	add r0, r1, #0
@@ -99,7 +99,7 @@ _02246488: ; jump table
 _02246494:
 	add r0, r7, #0
 	mov r1, #0xa
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x7a
@@ -111,7 +111,7 @@ _02246494:
 _022464AC:
 	add r0, r7, #0
 	mov r1, #0xb
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x75
@@ -123,7 +123,7 @@ _022464AC:
 _022464C4:
 	add r0, r7, #0
 	mov r1, #0xc
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x76
@@ -135,7 +135,7 @@ _022464C4:
 _022464DC:
 	add r0, r7, #0
 	mov r1, #0xd
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x79
@@ -147,7 +147,7 @@ _022464DC:
 _022464F4:
 	add r0, r7, #0
 	mov r1, #0xe
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x77
@@ -159,7 +159,7 @@ _022464F4:
 _0224650C:
 	add r0, r7, #0
 	mov r1, #0xf
-	bl GetPersonalAttr
+	bl SpeciesData_GetValue
 	lsl r0, r0, #0x10
 	asr r4, r0, #0x10
 	cmp r5, #0x78
@@ -219,7 +219,7 @@ _02246568:
 	str r0, [sp, #0x18]
 	ldr r0, [sp, #0x14]
 	add r1, #0xd
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [sp, #0x10]
 	add r0, r0, #1
 	str r0, [sp, #0x10]
@@ -231,7 +231,7 @@ _02246568:
 	b _0224646C
 _0224659A:
 	add r0, r7, #0
-	bl FreeMonPersonal
+	bl SpeciesData_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -680,7 +680,7 @@ _02246950:
 	add r0, r6, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_CheckMonCaught
@@ -1007,7 +1007,7 @@ _02246C00:
 	add r0, sp, #0xc0
 	add r1, r6, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1146,7 +1146,7 @@ _02246D4E:
 	mov r1, #5
 	mov r2, #0
 	add r6, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r5, r0, #0
 	ldr r0, [r4]
 	bl BattleSystem_GetOptions
@@ -1177,7 +1177,7 @@ _02246DB0:
 	add r0, r6, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #8]
 	ldr r0, [r4]
 	bl BattleSystem_GetPcStorage
@@ -1185,7 +1185,7 @@ _02246DB0:
 	add r0, r6, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [r5, #0x10]
 	ldr r0, _0224706C ; =gOverlayTemplate_NamingScreen
 	add r1, r5, #0
@@ -1244,7 +1244,7 @@ _02246E2A:
 	bne _02246E5C
 	ldr r2, [r5, #0x18]
 	mov r1, #0x78
-	bl SetMonData
+	bl Pokemon_SetData
 	ldr r0, [r4]
 	mov r1, #0x32
 	bl BattleSystem_GameStatIncrement
@@ -1315,7 +1315,7 @@ _02246EEC:
 	bl BattleSystem_GetBugContestCaughtMon
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyPokemonToPokemon
+	bl Pokemon_Copy
 	ldr r0, [r4, #0x28]
 	cmp r0, #0x16
 	bne _02246F0C
@@ -1380,13 +1380,13 @@ _02246F7E:
 	add r0, r6, #0
 	add r1, #0x42
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	str r0, [sp, #0x2c]
 	add r0, r6, #0
 	add r1, #0x3a
 	add r2, sp, #0x2c
-	bl SetMonData
+	bl Pokemon_SetData
 	add r5, r5, #1
 	cmp r5, #4
 	blt _02246F7E
@@ -1401,7 +1401,7 @@ _02246F7E:
 	bl BattleSystem_SetPokedexCaught
 _02246FB4:
 	add r0, r6, #0
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x14]
@@ -1719,7 +1719,7 @@ _02247242:
 	lsl r0, r0, #6
 	ldrh r0, [r1, r0]
 	mov r1, #8
-	bl GetMonBaseStat
+	bl Species_GetValue
 	ldr r1, _02247528 ; =0x0000311C
 	ldr r2, _0224752C ; =ov12_0226C3CE
 	ldrb r1, [r4, r1]
@@ -1739,7 +1739,7 @@ _02247278:
 	lsl r0, r0, #6
 	ldrh r0, [r1, r0]
 	mov r1, #8
-	bl GetMonBaseStat
+	bl Species_GetValue
 _0224728A:
 	add r5, r0, #0
 	mov r0, #0xa
@@ -1961,7 +1961,7 @@ _02247410:
 	lsl r0, r0, #6
 	ldrh r0, [r1, r0]
 	mov r1, #3
-	bl GetMonBaseStat
+	bl Species_GetValue
 	cmp r0, #0x64
 	blo _02247512
 	lsl r5, r5, #2
@@ -2248,7 +2248,7 @@ _02247622:
 	bl BattleSystem_GetPartyMon
 	mov r1, #9
 	add r2, sp, #8
-	bl SetMonData
+	bl Pokemon_SetData
 _02247646:
 	add r0, r5, #0
 	add sp, #0xc
@@ -3930,7 +3930,7 @@ ov12_02248228: ; 0x02248228
 	ldr r0, [sp, #0x18]
 	mov r1, #0xb0
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _02248390
 	mov r0, #2
@@ -3939,7 +3939,7 @@ _02248390:
 	ldr r0, [sp, #0x18]
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 _0224839A:
 	cmp r0, #0
 	bne _022483AC
@@ -3964,7 +3964,7 @@ _022483BC:
 	add r6, r0, #0
 _022483C6:
 	ldr r0, [sp, #0x18]
-	bl Mon_GetBoxMon
+	bl Pokemon_GetBoxMon
 	add r2, r0, #0
 	ldr r0, [sp, #0x24]
 	mov r1, #0
@@ -3972,7 +3972,7 @@ _022483C6:
 	ldr r0, [sp, #0x18]
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4199,7 +4199,7 @@ _022485B4:
 	add r0, r7, #0
 	mov r1, #8
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #6
 	bl ApplyMonMoodModifier
@@ -4212,7 +4212,7 @@ _02248602:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier
@@ -4225,7 +4225,7 @@ _02248620:
 	add r0, r7, #0
 	mov r1, #6
 	lsr r2, r2, #0x10
-	bl MonApplyFriendshipMod
+	bl Pokemon_UpdateFriendship
 	add r0, r7, #0
 	mov r1, #4
 	bl ApplyMonMoodModifier

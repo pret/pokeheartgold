@@ -55,12 +55,12 @@ static BOOL CreateStarter(TaskManager *taskManager) {
             for (i = 0; i < (int)NELEMS(species); i++) {
                 Pokemon *mon = &env->args->starters[i];
                 PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-                ZeroMonData(mon);
-                CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+                Pokemon_Init(mon);
+                Pokemon_InitWithParams(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
                 sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD2);
                 {
                     int item = ITEM_NONE;
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+                    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &item);
                 }
             }
         }

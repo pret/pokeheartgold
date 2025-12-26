@@ -216,7 +216,7 @@ static PartyMenuItemType ItemId_GetPartyUseType(u16 itemId) {
 static void PartyMenu_GetItemUseMessage(PartyMenu *partyMenu, u16 itemId, int param) {
     String *string;
 
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)));
     switch (ItemId_GetPartyUseType(itemId)) {
     case PARTY_MENU_ITEM_TYPE_PSN_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00066);
@@ -413,21 +413,21 @@ static int PartyMenu_ItemUseFunc_StatusHealEtc(PartyMenu *partyMenu) {
 
 static int PartyMenu_ItemUseFunc_EVDown(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    u8 hpEv = GetMonData(mon, MON_DATA_HP_EV, NULL);
-    u8 atkEv = GetMonData(mon, MON_DATA_ATK_EV, NULL);
-    u8 defEv = GetMonData(mon, MON_DATA_DEF_EV, NULL);
-    u8 speedEv = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
-    u8 spAtkEv = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
-    u8 spDefEv = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
-    u8 friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
+    u8 hpEv = Pokemon_GetData(mon, MON_DATA_HP_EV, NULL);
+    u8 atkEv = Pokemon_GetData(mon, MON_DATA_ATK_EV, NULL);
+    u8 defEv = Pokemon_GetData(mon, MON_DATA_DEF_EV, NULL);
+    u8 speedEv = Pokemon_GetData(mon, MON_DATA_SPEED_EV, NULL);
+    u8 spAtkEv = Pokemon_GetData(mon, MON_DATA_SPATK_EV, NULL);
+    u8 spDefEv = Pokemon_GetData(mon, MON_DATA_SPDEF_EV, NULL);
+    u8 friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     sub_02079E38(partyMenu, partyMenu->partyMonIndex);
     sub_0207D5DC(partyMenu, partyMenu->partyMonIndex);
     PartyMenu_CommitPartyMonPanelWindowsToVram_InVBlank(partyMenu, partyMenu->partyMonIndex);
     PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].status);
     if (
-        hpEv != GetMonData(mon, MON_DATA_HP_EV, NULL) || atkEv != GetMonData(mon, MON_DATA_ATK_EV, NULL) || defEv != GetMonData(mon, MON_DATA_DEF_EV, NULL) || speedEv != GetMonData(mon, MON_DATA_SPEED_EV, NULL) || spAtkEv != GetMonData(mon, MON_DATA_SPATK_EV, NULL) || spDefEv != GetMonData(mon, MON_DATA_SPDEF_EV, NULL)) {
-        if (friendship != GetMonData(mon, MON_DATA_FRIENDSHIP, NULL)) {
+        hpEv != Pokemon_GetData(mon, MON_DATA_HP_EV, NULL) || atkEv != Pokemon_GetData(mon, MON_DATA_ATK_EV, NULL) || defEv != Pokemon_GetData(mon, MON_DATA_DEF_EV, NULL) || speedEv != Pokemon_GetData(mon, MON_DATA_SPEED_EV, NULL) || spAtkEv != Pokemon_GetData(mon, MON_DATA_SPATK_EV, NULL) || spDefEv != Pokemon_GetData(mon, MON_DATA_SPDEF_EV, NULL)) {
+        if (friendship != Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL)) {
             PartyMenu_GetItemUseMessage(partyMenu, partyMenu->args->itemId, 0);
         } else {
             PartyMenu_GetItemUseMessage(partyMenu, partyMenu->args->itemId, 1);
@@ -443,7 +443,7 @@ static int PartyMenu_ItemUseFunc_EVDown(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    int hp = GetMonData(mon, MON_DATA_HP, NULL);
+    int hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
     String *string;
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].hp == 0) {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
@@ -452,7 +452,7 @@ static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
     } else {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
     }
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     BufferIntegerAsString(partyMenu->msgFormat, 1, hp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -469,7 +469,7 @@ static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
 }
 
 static int PartyMenu_ItemUseFunc_HPRestoreAnimLoop(PartyMenu *partyMenu) {
-    int hp = GetMonData(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), MON_DATA_HP, NULL);
+    int hp = Pokemon_GetData(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex), MON_DATA_HP, NULL);
     // Hook: Speed up HP restore here
     // This currently animates 1 HP per frame
     if (hp != partyMenu->monsDrawState[partyMenu->partyMonIndex].hp) {
@@ -525,9 +525,9 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
     case 1:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
         UseItemOnPokemon(mon, partyMenu->args->itemId, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
-        hp = GetMonData(mon, MON_DATA_HP, NULL);
+        hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
-        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
         partyMenu->monsDrawState[partyMenu->partyMonIndex].status = PARTY_MON_STATUS_ICON_OK;
@@ -540,7 +540,7 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
         break;
     case 2:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-        hp = GetMonData(mon, MON_DATA_HP, NULL);
+        hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
         ++partyMenu->monsDrawState[partyMenu->partyMonIndex].hp;
         PartyMenu_ClearMonHpTextWindow(partyMenu, partyMenu->partyMonIndex);
         FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_MON1_HPBAR + 5 * partyMenu->partyMonIndex], 0);
@@ -573,18 +573,18 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
 
 static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    partyMenu->levelUpStatsTmp[0] = GetMonData(mon, MON_DATA_MAX_HP, NULL);
-    partyMenu->levelUpStatsTmp[1] = GetMonData(mon, MON_DATA_ATK, NULL);
-    partyMenu->levelUpStatsTmp[2] = GetMonData(mon, MON_DATA_DEF, NULL);
-    partyMenu->levelUpStatsTmp[3] = GetMonData(mon, MON_DATA_SP_ATK, NULL);
-    partyMenu->levelUpStatsTmp[4] = GetMonData(mon, MON_DATA_SP_DEF, NULL);
-    partyMenu->levelUpStatsTmp[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
+    partyMenu->levelUpStatsTmp[0] = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
+    partyMenu->levelUpStatsTmp[1] = Pokemon_GetData(mon, MON_DATA_ATK, NULL);
+    partyMenu->levelUpStatsTmp[2] = Pokemon_GetData(mon, MON_DATA_DEF, NULL);
+    partyMenu->levelUpStatsTmp[3] = Pokemon_GetData(mon, MON_DATA_SP_ATK, NULL);
+    partyMenu->levelUpStatsTmp[4] = Pokemon_GetData(mon, MON_DATA_SP_DEF, NULL);
+    partyMenu->levelUpStatsTmp[5] = Pokemon_GetData(mon, MON_DATA_SPEED, NULL);
     UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, 0, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU);
-    partyMenu->monsDrawState[partyMenu->partyMonIndex].level = GetMonData(mon, MON_DATA_LEVEL, NULL);
-    partyMenu->monsDrawState[partyMenu->partyMonIndex].hp = GetMonData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
+    partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00177);
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Delete(string);
@@ -633,14 +633,14 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
         break;
     case 3:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-        switch (MonTryLearnMoveOnLevelUp(mon, &partyMenu->args->levelUpMoveSearchState, &partyMenu->args->moveId)) {
+        switch (Pokemon_TryLevelUpMove(mon, &partyMenu->args->levelUpMoveSearchState, &partyMenu->args->moveId)) {
         case MOVE_NONE:
             partyMenu->levelUpLearnMovesLoopState = 6;
             break;
         case MOVE_APPEND_KNOWN:
             break;
         case MOVE_APPEND_FULL:
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
             BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
             string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
@@ -651,7 +651,7 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_YES_NO_INIT;
             return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
         default:
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
             BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
             string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00178);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
@@ -691,12 +691,12 @@ int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu) {
     partyMenu->itemUseCallback = PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop;
     partyMenu->levelUpLearnMovesLoopState = 3;
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     if (partyMenu->args->selectedMoveIdx == 4) {
         BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
         return PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn(partyMenu);
     } else {
-        BufferMoveName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_MOVE1 + partyMenu->args->selectedMoveIdx, NULL));
+        BufferMoveName(partyMenu->msgFormat, 1, Pokemon_GetData(mon, MON_DATA_MOVE1 + partyMenu->args->selectedMoveIdx, NULL));
         String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00061);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
@@ -752,7 +752,7 @@ static int PartyMenu_ItemUseFunc_LevelUpAskAgainToForget(PartyMenu *partyMenu) {
 u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon) {
     u8 i;
     for (i = 0; i < MAX_MON_MOVES; ++i) {
-        u16 move = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        u16 move = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
         if (move == partyMenu->args->moveId) {
             return LEARN_MOVE_CHECK_KNOWN;
         }
@@ -761,7 +761,7 @@ u8 PartyMenu_CheckCanLearnTMHMMove(PartyMenu *partyMenu, Pokemon *mon) {
         }
     }
 
-    if (!GetMonTMHMCompat(mon, ItemToTMHMId(partyMenu->args->itemId))) {
+    if (!Pokemon_CanLearnTMHM(mon, ItemToTMHMId(partyMenu->args->itemId))) {
         return LEARN_MOVE_CHECK_INCOMPAT;
     }
 
@@ -777,7 +777,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
     u32 response = PartyMenu_CheckCanLearnTMHMMove(partyMenu, mon);
     String *string;
 
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
     switch (response) {
     case 0:
@@ -823,12 +823,12 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
 
 int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenu *partyMenu) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+    BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
     if (partyMenu->args->selectedMoveIdx == 4) {
         BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
         return PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn(partyMenu);
     } else {
-        BufferMoveName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_MOVE1 + partyMenu->args->selectedMoveIdx, NULL));
+        BufferMoveName(partyMenu->msgFormat, 1, Pokemon_GetData(mon, MON_DATA_MOVE1 + partyMenu->args->selectedMoveIdx, NULL));
         String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00061);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
         String_Delete(string);
@@ -895,23 +895,23 @@ static int PartyMenu_ItemUseFunc_TMHMAskAgainToForget(PartyMenu *partyMenu) {
 
 void PartyMenu_LearnMoveToSlot(PartyMenu *partyMenu, Pokemon *mon, int moveIdx) {
     int data = partyMenu->args->moveId;
-    SetMonData(mon, MON_DATA_MOVE1 + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1 + moveIdx, &data);
     data = 0;
-    SetMonData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP_UPS + moveIdx, &data);
     data = GetMoveMaxPP(partyMenu->args->moveId, 0);
-    SetMonData(mon, MON_DATA_MOVE1_PP + moveIdx, &data);
+    Pokemon_SetData(mon, MON_DATA_MOVE1_PP + moveIdx, &data);
     if (partyMenu->args->itemId != ITEM_NONE) {
         if (!MoveIsHM(partyMenu->args->moveId)) {
             Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
         }
-        MonApplyFriendshipMod(mon, FRIENDSHIP_EVENT_LEARN_TMHM, PartyMenu_GetCurrentMapSec(partyMenu));
+        Pokemon_UpdateFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM, PartyMenu_GetCurrentMapSec(partyMenu));
         ApplyMonMoodModifier(mon, MON_MOOD_MODIFIER_LEARN_TMHM);
     }
 }
 
 u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx) {
     Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-    u16 moveId = GetMonData(mon, MON_DATA_MOVE1 + moveIdx, NULL);
+    u16 moveId = Pokemon_GetData(mon, MON_DATA_MOVE1 + moveIdx, NULL);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00145 + moveIdx);
     BufferMoveName(partyMenu->msgFormat, 0, moveId);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->unformattedStrBuf, string);
@@ -969,7 +969,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         if (UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, input, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU) == TRUE) {
             Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-            int moveId = GetMonData(mon, MON_DATA_MOVE1 + input, NULL);
+            int moveId = Pokemon_GetData(mon, MON_DATA_MOVE1 + input, NULL);
             PartyMenu_GetItemUseMessage(partyMenu, partyMenu->args->itemId, moveId);
             Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
             PlaySE(SEQ_SE_DP_KAIFUKU);

@@ -158,9 +158,9 @@
 .public SealOnCapsuleGetID
 .public SealOnCapsuleGetX
 .public SealOnCapsuleGetY
-.public GetMonData
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Pokemon_GetData
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public sub_02071FDC
 .public sub_020729D8
 .public sub_020729FC

@@ -1029,25 +1029,25 @@ BOOL sub_02079E38(PartyMenu *partyMenu, u8 partySlot) {
         return FALSE;
     }
     mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-    species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
+    species = (u16)Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     if (species == SPECIES_NONE) {
         return FALSE;
     }
     PartyMenu_BufferMonNickname(partyMenu, mon, partySlot);
     partyMenu->monsDrawState[partySlot].species = species;
-    partyMenu->monsDrawState[partySlot].hp = (u16)GetMonData(mon, MON_DATA_HP, NULL);
-    partyMenu->monsDrawState[partySlot].maxHp = (u16)GetMonData(mon, MON_DATA_MAX_HP, NULL);
-    partyMenu->monsDrawState[partySlot].level = (u16)GetMonData(mon, MON_DATA_LEVEL, NULL);
-    partyMenu->monsDrawState[partySlot].heldItem = (u16)GetMonData(mon, MON_DATA_HELD_ITEM, NULL);
-    partyMenu->monsDrawState[partySlot].capsule = (u16)GetMonData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
-    partyMenu->monsDrawState[partySlot].isEgg = (u8)GetMonData(mon, MON_DATA_IS_EGG, NULL);
-    partyMenu->monsDrawState[partySlot].form = (u8)GetMonData(mon, MON_DATA_FORM, NULL);
-    if (GetMonData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
+    partyMenu->monsDrawState[partySlot].hp = (u16)Pokemon_GetData(mon, MON_DATA_HP, NULL);
+    partyMenu->monsDrawState[partySlot].maxHp = (u16)Pokemon_GetData(mon, MON_DATA_MAX_HP, NULL);
+    partyMenu->monsDrawState[partySlot].level = (u16)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+    partyMenu->monsDrawState[partySlot].heldItem = (u16)Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
+    partyMenu->monsDrawState[partySlot].capsule = (u16)Pokemon_GetData(mon, MON_DATA_BALL_CAPSULE_ID, NULL);
+    partyMenu->monsDrawState[partySlot].isEgg = (u8)Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL);
+    partyMenu->monsDrawState[partySlot].form = (u8)Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    if (Pokemon_GetData(mon, MON_DATA_NO_PRINT_GENDER, NULL) == TRUE) {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = FALSE;
     } else {
         partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol = TRUE;
     }
-    partyMenu->monsDrawState[partySlot].gender = GetMonGender(mon);
+    partyMenu->monsDrawState[partySlot].gender = Pokemon_GetGender(mon);
     partyMenu->monsDrawState[partySlot].active = TRUE;
     partyMenu->monsDrawState[partySlot].status = (u8)Pokemon_GetStatusIconId(mon);
     PartyMenu_MonSuperContestEligibilityCheck(partyMenu, mon, partySlot);
@@ -1064,7 +1064,7 @@ static void PartyMenu_MonSuperContestEligibilityCheck(PartyMenu *partyMenu, Poke
             u32 numRibbons = Pokemon_CountRibbonsByCategory(mon, partyMenu->args->contestStat);
             u32 i;
             for (i = 0; i < 4; ++i) {
-                if (GetMonData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
+                if (Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL) == MOVE_NONE) {
                     break;
                 }
             }
@@ -1081,34 +1081,34 @@ static u32 Pokemon_CountRibbonsByCategory(Pokemon *mon, u8 contestStat) {
     u32 result;
     switch (contestStat) {
     case COOL:
-        result = GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_COOL_RIBBON_MASTER, NULL);
+        result = Pokemon_GetData(mon, MON_DATA_SUPER_COOL_RIBBON, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_COOL_RIBBON_GREAT, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_COOL_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_COOL_RIBBON_MASTER, NULL);
         break;
     case BEAUTY:
-        result = GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_MASTER, NULL);
+        result = Pokemon_GetData(mon, MON_DATA_SUPER_BEAUTY_RIBBON, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_GREAT, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_BEAUTY_RIBBON_MASTER, NULL);
         break;
     case CUTE:
-        result = GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_CUTE_RIBBON_MASTER, NULL);
+        result = Pokemon_GetData(mon, MON_DATA_SUPER_CUTE_RIBBON, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_CUTE_RIBBON_GREAT, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_CUTE_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_CUTE_RIBBON_MASTER, NULL);
         break;
     case SMART:
-        result = GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_SMART_RIBBON_MASTER, NULL);
+        result = Pokemon_GetData(mon, MON_DATA_SUPER_SMART_RIBBON, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_SMART_RIBBON_GREAT, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_SMART_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_SMART_RIBBON_MASTER, NULL);
         break;
     case TOUGH:
-        result = GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_GREAT, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_ULTRA, NULL);
-        result += GetMonData(mon, MON_DATA_SUPER_TOUGH_RIBBON_MASTER, NULL);
+        result = Pokemon_GetData(mon, MON_DATA_SUPER_TOUGH_RIBBON, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_TOUGH_RIBBON_GREAT, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_TOUGH_RIBBON_ULTRA, NULL);
+        result += Pokemon_GetData(mon, MON_DATA_SUPER_TOUGH_RIBBON_MASTER, NULL);
         break;
     }
     return result;
@@ -1276,7 +1276,7 @@ void sub_0207A7F4(PartyMenu *partyMenu, u8 partySlot) {
         } else {
             paletteSlot = 0;
         }
-        if (GetMonData(mon, MON_DATA_HP, NULL) == 0) {
+        if (Pokemon_GetData(mon, MON_DATA_HP, NULL) == 0) {
             paletteSlot += 2;
         } else if (sub_0207A880(partyMenu, partySlot) == TRUE) {
             paletteSlot += 1;
@@ -1635,7 +1635,7 @@ static u8 sub_0207B0B0(PartyMenu *partyMenu, u8 *buf) {
             buf[count] = PARTY_MON_CONTEXT_MENU_QUIT;
             ++count;
             for (i = 0; i < MAX_MON_MOVES; ++i) {
-                move = GetMonData(pokemon, MON_DATA_MOVE1 + i, NULL);
+                move = Pokemon_GetData(pokemon, MON_DATA_MOVE1 + i, NULL);
                 if (move == MOVE_NONE) {
                     break;
                 }
@@ -2279,7 +2279,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
         if (PartyMenu_SoftboiledHPTransferStep(partyMenu, partyMenu->partyMonIndex, 1) == TRUE) {
             Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(pokemon));
             BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->levelUpStatsTmp[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Delete(string);
@@ -2323,7 +2323,7 @@ static BOOL PartyMenu_SoftboiledHPTransferStep(PartyMenu *partyMenu, u8 partySlo
     if (partyMenu->levelUpStatsTmp[0] == partyMenu->levelUpStatsTmp[2] || partyMenu->monsDrawState[partySlot].hp == partyMenu->monsDrawState[partySlot].maxHp) {
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
         u32 hp = partyMenu->monsDrawState[partySlot].hp;
-        SetMonData(mon, MON_DATA_HP, &hp);
+        Pokemon_SetData(mon, MON_DATA_HP, &hp);
         return TRUE;
     }
 
@@ -2408,7 +2408,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
     ItemData *itemData = LoadItemDataOrGfx(partyMenu->args->itemId, ITEMNARC_PARAM, HEAP_ID_PARTY_MENU);
 
     if (partyMenu->args->itemId == ITEM_GRACIDEA && Mon_CanUseGracidea(Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex)) == TRUE) {
-        partyMenu->args->species = SHAYMIN_SKY; // SPECIES_BULBASAUR
+        partyMenu->args->species = SHAYMIN_FORM_SKY; // SPECIES_BULBASAUR
         Heap_Free(itemData);
         PartyMenu_FormChangeScene_Begin(partyMenu);
         return PARTY_MENU_STATE_FORM_CHANGE_ANIM;
@@ -2461,9 +2461,9 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
     FieldSystem *fieldSystem = partyMenu->args->fieldSystem;
 
     if (partyMenu->args->itemId == ITEM_GRISEOUS_ORB) {
-        if (GetMonData(mon, MON_DATA_SPECIES, NULL) != SPECIES_GIRATINA) {
+        if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) != SPECIES_GIRATINA) {
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00189, partyMenu->unformattedStrBuf);
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
             BufferItemNameWithIndefArticle(partyMenu->msgFormat, 1, partyMenu->args->itemId);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
             result = PARTY_MENU_STATE_PRINT_ITEM_SWAP_MESSAGE;
@@ -2487,14 +2487,14 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
                 s32 sp0;
                 result = PartyMenu_GiveItemToMon_HandleGriseousOrb(partyMenu, mon, &sp0);
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00107, partyMenu->unformattedStrBuf);
-                BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+                BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
                 BufferItemName(partyMenu->msgFormat, 1, partyMenu->args->itemId);
                 StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
             }
             break;
         case 1:
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00079, partyMenu->unformattedStrBuf);
-            BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+            BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
             BufferItemNameWithIndefArticle(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
             result = PARTY_MENU_STATE_PRINT_ASK_SWITCH_ITEMS;
@@ -2515,7 +2515,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
 static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokemon *mon, s32 *transformResult) {
     u32 itemToBeHeld = partyMenu->args->itemId;
     Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
     Pokemon_UpdateArceusForm(mon);
     *transformResult = Mon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = partyMenu->args->itemId;
@@ -2529,7 +2529,7 @@ static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokem
 
 static void PartyMenu_SwapMonHeldItem(PartyMenu *partyMenu, Pokemon *mon, u32 oldItemId, u32 newItemId) {
     Bag_AddItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU);
-    SetMonData(mon, MON_DATA_HELD_ITEM, &newItemId);
+    Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &newItemId);
     Pokemon_UpdateArceusForm(mon);
     Mon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = newItemId;
@@ -2640,7 +2640,7 @@ static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu) {
     }
     if (oldItem == ITEM_NONE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00107, partyMenu->unformattedStrBuf);
-        BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
+        BufferBoxMonNickname(partyMenu->msgFormat, 0, Pokemon_GetBoxMon(mon));
         BufferItemName(partyMenu->msgFormat, 1, partyMenu->args->itemId);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
     } else {

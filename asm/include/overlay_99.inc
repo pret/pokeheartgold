@@ -81,7 +81,7 @@
 .public sub_02031978
 .public sub_0203197C
 .public sub_02031990
-.public GetGenderBySpeciesAndPersonality
+.public Species_GetGenderFromPersonality
 .public G2x_SetBlendAlpha_
 .public MI_CpuFill8
 .public MI_CpuCopy8

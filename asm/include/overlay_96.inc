@@ -330,9 +330,9 @@
 .public SpeciesToOverworldModelIndexOffset
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
-.public GetMonBaseStat
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Species_GetValue
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

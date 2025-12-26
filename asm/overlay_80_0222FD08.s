@@ -413,7 +413,7 @@ _02230038:
 	add r6, r4, r0
 _02230078:
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r5, r0, #0
 	add r0, r4, #0
 	bl ov80_02237120
@@ -750,7 +750,7 @@ _022302A6:
 	add r3, sp, #0x28
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x4c
@@ -834,7 +834,7 @@ _0223035C:
 	add r3, sp, #0x28
 	bl ov80_0222A52C
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	mov r7, #0
 	add r4, sp, #0x4c
@@ -1166,7 +1166,7 @@ _0223067C:
 	add r0, r6, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, sp, #4
 	strb r0, [r1, #8]
 	ldr r0, _0223076C ; =0x000004F4
@@ -1179,7 +1179,7 @@ _0223067C:
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x10]
 	ldr r0, _0223076C ; =0x000004F4
 	lsl r2, r4, #0x18
@@ -1222,7 +1222,7 @@ _022306F6:
 	add r0, r6, #0
 	mov r1, #0x47
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, sp, #4
 	strb r0, [r1, #8]
 	ldr r0, _0223076C ; =0x000004F4
@@ -1235,7 +1235,7 @@ _022306F6:
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	str r0, [sp, #0x10]
 	ldr r0, _0223076C ; =0x000004F4
 	lsl r2, r4, #0x18
@@ -1348,7 +1348,7 @@ ov80_022307F0: ; 0x022307F0
 	ldr r0, [r5, r0]
 	bl SaveArray_Party_Init
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r6, r0, #0
 	ldr r0, [sp, #4]
 	mov r7, #0
@@ -1468,12 +1468,12 @@ _022308FE:
 	str r0, [sp, #0x24]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strh r0, [r6]
 	ldr r0, [sp, #0x24]
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strh r0, [r4]
 	ldr r0, [sp, #0x20]
 	add r7, r7, #1
@@ -1504,12 +1504,12 @@ _0223094A:
 	str r0, [sp, #0x28]
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strh r0, [r6]
 	ldr r0, [sp, #0x28]
 	mov r1, #6
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strh r0, [r4]
 	ldr r1, [sp, #0x18]
 	ldr r0, _022309F4 ; =0x000003D2
@@ -1641,7 +1641,7 @@ ov80_02230A60: ; 0x02230A60
 	ldr r0, [r4, r0]
 	bl SaveArray_Party_Init
 	mov r0, #0xb
-	bl AllocMonZeroed
+	bl Pokemon_New
 	add r7, r0, #0
 	mov r0, #0
 	str r0, [sp]

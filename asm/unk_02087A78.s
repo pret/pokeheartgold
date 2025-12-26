@@ -11,7 +11,7 @@
 	.public gOverlayTemplate_Battle
 	.public _021028B4
 	.public _021028C4
-	.public gNatureStatMods
+	.public gNatureStatModifiers
 
 	.text
 

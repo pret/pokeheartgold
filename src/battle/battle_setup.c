@@ -69,7 +69,7 @@ BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleTypeFlags) {
     setup->wifiHistory = NULL;
     setup->gameStats = NULL;
     setup->fixedDamaageMovesBanned = FALSE;
-    setup->bugContestMon = AllocMonZeroed(heapID);
+    setup->bugContestMon = Pokemon_New(heapID);
 
     setup->unk_19C = RngSeedFromRTC();
 
@@ -92,7 +92,7 @@ BattleSetup *BattleSetup_New_SafariZone(enum HeapID heapID, int balls) {
 BattleSetup *BattleSetup_New_BugContest(enum HeapID heapID, int balls, Pokemon *bugmon) {
     BattleSetup *setup = BattleSetup_New(heapID, BATTLE_TYPE_BUG_CONTEST);
     setup->safariBalls = balls;
-    CopyPokemonToPokemon(bugmon, setup->bugContestMon);
+    Pokemon_Copy(bugmon, setup->bugContestMon);
     return setup;
 }
 
@@ -123,10 +123,10 @@ BattleSetup *BattleSetup_New_Tutorial(enum HeapID heapID, FieldSystem *fieldSyst
     setup->timeOfDay = Field_GetTimeOfDay(fieldSystem);
     Bag_AddItem(setup->bag, ITEM_POKE_BALL, 20, heapID);
     {
-        Pokemon *pokemon = AllocMonZeroed(heapID);
-        CreateMon(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+        Pokemon *pokemon = Pokemon_New(heapID);
+        Pokemon_InitWithParams(pokemon, SPECIES_MARILL, 5, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
         Party_AddMon(setup->party[BATTLER_PLAYER], pokemon);
-        CreateMon(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
+        Pokemon_InitWithParams(pokemon, SPECIES_RATTATA, 2, 32, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
         Party_AddMon(setup->party[BATTLER_ENEMY], pokemon);
         Heap_Free(pokemon);
     }
@@ -278,14 +278,14 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     setup->terrain = TERRAIN_BUILDING;
     BattleSetup_SetProfile(setup, profile, BATTLER_PLAYER);
 
-    Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD2);
+    Pokemon *pokemon = Pokemon_New(HEAP_ID_FIELD2);
     Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], Party_GetCount(party));
     for (int i = 0; i < Party_GetCount(party); ++i) {
-        CopyPokemonToPokemon(Party_GetMonByIndex(party, i), pokemon);
-        if (level != GetMonData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
-            u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), level);
-            SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
-            CalcMonLevelAndStats(pokemon);
+        Pokemon_Copy(Party_GetMonByIndex(party, i), pokemon);
+        if (level != Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL) && level != 0) {
+            u32 exp = Species_GetExpAtLevel(Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL), level);
+            Pokemon_SetData(pokemon, MON_DATA_EXPERIENCE, &exp);
+            Pokemon_CalcLevelAndStats(pokemon);
         }
         BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
     }
@@ -345,14 +345,14 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
             }
             cnt = Party_GetCount(party);
         }
-        Pokemon *pokemon = AllocMonZeroed(HEAP_ID_FIELD2);
+        Pokemon *pokemon = Pokemon_New(HEAP_ID_FIELD2);
         Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], cnt);
         for (i = 0; i < cnt; ++i) {
-            CopyPokemonToPokemon(Party_GetMonByIndex(party, partySlots_cpy[i] - 1), pokemon);
-            if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
-                u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), 50);
-                SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
-                CalcMonLevelAndStats(pokemon);
+            Pokemon_Copy(Party_GetMonByIndex(party, partySlots_cpy[i] - 1), pokemon);
+            if (Pokemon_GetData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
+                u32 exp = Species_GetExpAtLevel(Pokemon_GetData(pokemon, MON_DATA_SPECIES, NULL), 50);
+                Pokemon_SetData(pokemon, MON_DATA_EXPERIENCE, &exp);
+                Pokemon_CalcLevelAndStats(pokemon);
             }
             BattleSetup_AddMonToParty(setup, pokemon, BATTLER_PLAYER);
         }

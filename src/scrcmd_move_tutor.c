@@ -152,41 +152,41 @@ static u16 GetMoveTutorLearnsetIndex(u16 species, u8 form) {
     // subtract 2 because SPECIES_EGG and SPECIES_BAD_EGG are missing
     switch (species) {
     case SPECIES_DEOXYS:
-        if (form == DEOXYS_ATTACK) {
+        if (form == DEOXYS_FORM_ATTACK) {
             index = SPECIES_DEOXYS_ATK - 2;
-        } else if (form == DEOXYS_DEFENSE) {
+        } else if (form == DEOXYS_FORM_DEFENSE) {
             index = SPECIES_DEOXYS_DEF - 2;
-        } else if (form == DEOXYS_SPEED) {
+        } else if (form == DEOXYS_FORM_SPEED) {
             index = SPECIES_DEOXYS_SPD - 2;
         }
         break;
     case SPECIES_WORMADAM:
-        if (form == WORMADAM_SANDY) {
+        if (form == WORMADAM_FORM_SANDY) {
             index = SPECIES_WORMADAM_SANDY - 2;
-        } else if (form == WORMADAM_TRASH) {
+        } else if (form == WORMADAM_FORM_TRASH) {
             index = SPECIES_WORMADAM_TRASH - 2;
         }
         break;
     case SPECIES_GIRATINA:
-        if (form == GIRATINA_ORIGIN) {
+        if (form == GIRATINA_FORM_ORIGIN) {
             index = SPECIES_GIRATINA_ORIGIN - 2;
         }
         break;
     case SPECIES_SHAYMIN:
-        if (form == SHAYMIN_SKY) {
+        if (form == SHAYMIN_FORM_SKY) {
             index = SPECIES_SHAYMIN_SKY - 2;
         }
         break;
     case SPECIES_ROTOM:
-        if (form == ROTOM_HEAT) {
+        if (form == ROTOM_FORM_HEAT) {
             index = SPECIES_ROTOM_HEAT - 2;
-        } else if (form == ROTOM_WASH) {
+        } else if (form == ROTOM_FORM_WASH) {
             index = SPECIES_ROTOM_WASH - 2;
-        } else if (form == ROTOM_FROST) {
+        } else if (form == ROTOM_FORM_FROST) {
             index = SPECIES_ROTOM_FROST - 2;
-        } else if (form == ROTOM_FAN) {
+        } else if (form == ROTOM_FORM_FAN) {
             index = SPECIES_ROTOM_FAN - 2;
-        } else if (form == ROTOM_MOW) {
+        } else if (form == ROTOM_FORM_MOW) {
             index = SPECIES_ROTOM_MOW - 2;
         }
         break;
@@ -198,10 +198,10 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     s32 i, j;
     u16 currentMoves[MAX_MON_MOVES];
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        currentMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, NULL);
+        currentMoves[i] = Pokemon_GetData(mon, MON_DATA_MOVE1 + i, NULL);
     }
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD2, GetMoveTutorLearnsetIndex(species, form));
     u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
@@ -327,8 +327,8 @@ BOOL ScrCmd_742(ScriptContext *ctx) {
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);
     Pokemon *mon = Party_GetMonByIndex(party, slot);
     u16 *unk = Heap_AllocAtEnd(HEAP_ID_FIELD2, 0x2c);
-    u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+    u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
     s32 size = Species_LoadLearnsetTable(species, form, unk);
     for (s32 i = 0; i < size; i++) {
         if (move == unk[i]) {

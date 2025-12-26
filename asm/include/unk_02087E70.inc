@@ -13,7 +13,7 @@
 .public sub_02087988
 .public sub_02087A78
 .public gOverlayTemplate_Battle
-.public gNatureStatMods
+.public gNatureStatModifiers
 .public _021028B4
 .public _021028C4
 .public gSystem

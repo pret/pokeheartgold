@@ -6375,7 +6375,7 @@ _0223AE44:
 	mov r1, #0x4c
 	mov r2, #0
 	add r7, r0, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	cmp r0, #0
 	bne _0223AE76
 	ldr r0, [r5]
@@ -7918,26 +7918,26 @@ ov59_0223BA64: ; 0x0223BA64
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strh r0, [r5, #4]
 	add r0, r4, #0
 	mov r1, #0x6f
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strb r0, [r5, #7]
 	add r0, r4, #0
 	mov r1, #0xa1
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	strb r0, [r5, #6]
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r0, #0
 	ldrh r0, [r5, #4]
 	mov r2, #0x1c
-	bl GetMonBaseStat_HandleAlternateForm
+	bl Species_GetFormValue
 	mov r1, #1
 	eor r0, r1
 	strb r0, [r5, #9]
@@ -7948,7 +7948,7 @@ ov59_0223BA64: ; 0x0223BA64
 	ldr r2, [r5, #0xc]
 	add r0, r4, #0
 	mov r1, #0x77
-	bl GetMonData
+	bl Pokemon_GetData
 	add r1, r5, #0
 	ldr r0, [r5]
 	add r1, #0x1e
@@ -9068,7 +9068,7 @@ ov59_0223C380: ; 0x0223C380
 	add r4, r0, #0
 	add r0, sp, #0x10
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

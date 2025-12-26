@@ -28,14 +28,14 @@ BOOL ov02_02252334(FieldSystem *fieldSystem) {
     }
     if (FollowMon_IsActive(fieldSystem) && fieldSystem->followMon.species == SPECIES_SHAYMIN) {
         Pokemon *mon = GetFirstAliveMonInParty_CrashIfNone(SaveArray_Party_Get(fieldSystem->saveData));
-        u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-        u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
+        u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         GF_ASSERT(species == fieldSystem->followMon.species);
         // yes, this is explicitly checked twice
         if (species != fieldSystem->followMon.species) {
             return FALSE;
         }
-        if (fieldSystem->followMon.form == SHAYMIN_SKY && form == SHAYMIN_LAND) {
+        if (fieldSystem->followMon.form == SHAYMIN_FORM_SKY && form == SHAYMIN_FORM_LAND) {
             return TRUE;
         }
     }
