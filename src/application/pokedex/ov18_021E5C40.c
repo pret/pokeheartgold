@@ -953,3 +953,55 @@ void ov18_021E76EC(PokedexAppData *pokedexApp, u32 a1) {
     ov18_021EFC3C(pokedexApp, 66);
     ScheduleWindowCopyToVram(&pokedexApp->unk_042C);
 }
+
+void ov18_021E7724(PokedexAppData *pokedexApp) {
+    NNSG2dScreenData *sp1C;
+    void *sp14;
+    u16 *r4;
+    u16 *r5;
+    u16 *sp10;
+    u16 sp1A;
+    u16 sp18;
+    u32 i;
+    u32 j;
+
+    r4 = sub_02019B08(pokedexApp->unk_0008, 15);
+    r5 = sub_02019B08(pokedexApp->unk_0008, 14);
+
+    sp14 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->unk_0854, 0, TRUE, &sp1C, HEAP_ID_37);
+    sp10 = (u16 *)sp1C->rawData;
+    for (i = 0; i < 24; ++i) {
+        memcpy(&r4[32 * i], &sp10[32 * i], 32 * sizeof(u16));
+        memcpy(&r5[3 * i], &sp10[32 * i + 0x400], 3 * sizeof(u16));
+    }
+    Heap_Free(sp14);
+
+    if (pokedexApp->unk_1860 == 0) {
+        for (i = 0; i < 2; ++i) {
+            for (j = 0; j < 26; ++j) {
+                sp10 = &r4[(i + 15) * 32 + 3 + j];
+                *sp10 = (*sp10 & 0xF000) | 0x16;
+            }
+        }
+    }
+
+    if (pokedexApp->unk_1858 == 0) {
+        r5 = sub_02019B08(pokedexApp->unk_0008, 2);
+        sub_02019B44(pokedexApp->unk_0008, 2, &sp1A, &sp18);
+        for (i = 0; i < sp18; ++i) {
+            for (j = 0; j < sp1A; ++j) {
+                r4[32 * (i + 3) + j + 5] = r5[i * sp1A + j];
+            }
+        }
+    } else {
+        r5 = sub_02019B08(pokedexApp->unk_0008, 3);
+        sub_02019B44(pokedexApp->unk_0008, 2, &sp1A, &sp18); // typo? should be 3 not 2
+        for (i = 0; i < sp18; ++i) {
+            for (j = 0; j < sp1A; ++j) {
+                r4[32 * (i + 3) + j + 5] = r5[i * sp1A + j];
+            }
+        }
+    }
+
+    ov18_021EFFEC(pokedexApp);
+}
