@@ -56,15 +56,11 @@
 	.extern ov18_021E6FB8
 	.extern ov18_021E6FFC
 	.extern ov18_021E71D0
-	.extern ov18_021E7448
-	.extern ov18_021E7490
 	.extern ov18_021E74B8
 	.extern ov18_021E74E4
 	.extern ov18_021E7534
-	.extern ov18_021E7628
 	.extern ov18_021E766C
 	.extern ov18_021E7698
-	.extern ov18_021E76A4
 	.extern ov18_021E76EC
 	.extern ov18_021E7724
 	.extern ov18_021E78AC
