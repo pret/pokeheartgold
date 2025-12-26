@@ -1007,7 +1007,7 @@ _02246C00:
 	add r0, sp, #0xc0
 	add r1, r6, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

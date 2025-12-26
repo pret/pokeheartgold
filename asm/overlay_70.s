@@ -5952,7 +5952,7 @@ ov70_0223A7E4: ; 0x0223A7E4
 	add r0, sp, #0x20
 	add r1, r5, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0

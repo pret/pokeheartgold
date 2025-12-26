@@ -1031,7 +1031,7 @@ _02247166:
 	add r1, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -2903,7 +2903,7 @@ ov71_02247F9C: ; 0x02247F9C
 	add r1, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	ldr r0, [r5]
 	bl ov71_022473A8
 	add r2, r0, #0
@@ -2917,7 +2917,7 @@ ov71_02247F9C: ; 0x02247F9C
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0
-	bl sub_02070854
+	bl BoxPokemon_SpriteYOffset
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]
@@ -9994,7 +9994,7 @@ ov71_0224B7EC: ; 0x0224B7EC
 	add r1, r4, #0
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	ldr r0, [r5]
 	bl ov71_022473BC
 	add r2, r0, #0
@@ -10008,7 +10008,7 @@ ov71_0224B7EC: ; 0x0224B7EC
 	add r0, r4, #0
 	mov r1, #2
 	mov r2, #0
-	bl sub_02070854
+	bl BoxPokemon_SpriteYOffset
 	add r3, r0, #0
 	mov r1, #0
 	str r1, [sp]

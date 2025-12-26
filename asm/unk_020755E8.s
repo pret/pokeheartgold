@@ -3377,7 +3377,7 @@ sub_020771E8: ; 0x020771E8
 	ldr r1, [r4, #0x28]
 	add r0, sp, #0x10
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -3405,7 +3405,7 @@ sub_020771E8: ; 0x020771E8
 	add r0, sp, #0x10
 	add r1, r5, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	add r0, r5, #0
 	bl Heap_Free
 	mov r0, #0

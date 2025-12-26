@@ -1870,7 +1870,7 @@ _021E67D0:
 	ldrb r3, [r5, r3]
 	lsr r1, r1, #0x18
 	mov r2, #2
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r3, sp, #0x3c
@@ -1928,7 +1928,7 @@ _021E685E:
 	str r0, [sp, #8]
 	ldrh r1, [r5, r1]
 	add r0, sp, #0x50
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [sp, #0x28]
 	mov r2, #0x3b
 	str r0, [sp]

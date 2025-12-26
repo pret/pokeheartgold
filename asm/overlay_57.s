@@ -8172,7 +8172,7 @@ ov57_0223B950: ; 0x0223B950
 	ldr r1, [r5, r1]
 	add r0, sp, #0x38
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	ldr r0, _0223B9BC ; =0x00000458
 	mov r1, #5
 	ldr r0, [r5, r0]

@@ -135,7 +135,7 @@
 .public BoxPokemon_GetData
 .public Pokemon_SetData
 .public Species_GetFormValue
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public GetMoveAttr
 .public GetMoveMaxPP

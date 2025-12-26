@@ -18639,7 +18639,7 @@ ov83_02247668: ; 0x02247668
 	add r0, sp, #0x30
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	str r4, [sp]
 	str r7, [sp, #4]
 	mov r0, #0

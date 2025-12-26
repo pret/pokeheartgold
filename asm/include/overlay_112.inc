@@ -269,8 +269,8 @@
 .public BoxPokemon_GetGender
 .public Pokemon_IsShiny
 .public BoxPokemon_IsShiny
-.public GetBoxmonSpriteCharAndPlttNarcIds
-.public GetMonSpriteCharAndPlttNarcIdsEx
+.public BoxPokemon_BuildSpriteTemplate
+.public Species_BuildSpriteTemplate
 .public Species_SanitizeFormId
 .public Pokemon_GetBoxMon
 .public BoxPokemon_CopyToPokemon

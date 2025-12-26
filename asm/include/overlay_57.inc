@@ -193,7 +193,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Pokemon_GetNature
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public sub_0207083C
 .public Pokemon_Copy
 .public NARC_ReadPokepicAnimScript

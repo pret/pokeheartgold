@@ -502,6 +502,11 @@ typedef enum {
     ROTOM_MOW = 5,
     ROTOM_FORM_MAX = 6,
 
+    // as define
+    //SHAYMIN_LAND = 0,
+    //SHAYMIN_SKY = 1,
+    //SHAYMIN_FORM_MAX = 2,
+
     SHELLOS_WEST = 0,
     SHELLOS_EAST = 1,
     SHELLOS_FORM_MAX = 2,

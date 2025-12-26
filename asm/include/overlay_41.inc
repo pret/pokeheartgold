@@ -220,7 +220,7 @@
 .public GameStats_AddScore
 .public Pokemon_New
 .public Pokemon_GetData
-.public sub_02070130
+.public BoxPokemon_BuildSpriteTemplateDP
 .public sub_02070848
 .public NNS_GfdResetFrmTexVramState
 .public NNS_GfdResetFrmPlttVramState

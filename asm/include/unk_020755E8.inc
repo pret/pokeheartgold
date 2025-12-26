@@ -138,7 +138,7 @@
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData
 .public Pokemon_SetData
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public Pokemon_SetMoveInSlot
 .public Pokemon_TryLevelUpMove

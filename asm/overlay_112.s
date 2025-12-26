@@ -6877,7 +6877,7 @@ ov112_021E9290: ; 0x021E9290
 	add r1, r6, #0
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0
@@ -22321,7 +22321,7 @@ ov112_021F0C8C: ; 0x021F0C8C
 	ldrh r1, [r5, #4]
 	ldrb r2, [r5, #8]
 	add r0, sp, #0x14
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5]
 	mov r3, #0x6e
 	str r0, [sp]

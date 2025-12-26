@@ -2743,7 +2743,7 @@ ov97_0221FBDC: ; 0x0221FBDC
 	ldrh r1, [r5, #4]
 	ldrb r2, [r5, #8]
 	add r0, sp, #0x14
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5]
 	mov r3, #0x96
 	str r0, [sp]

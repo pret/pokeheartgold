@@ -9911,7 +9911,7 @@ ov81_02242C80: ; 0x02242C80
 	add r0, sp, #0x10
 	mov r2, #2
 	add r6, r3, #0
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	ldr r0, [sp, #0x34]
 	ldr r3, [sp, #0x30]
 	str r0, [sp]

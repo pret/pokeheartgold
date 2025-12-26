@@ -235,7 +235,7 @@
 .public Pokemon_SetData
 .public Species_GetValue
 .public BoxPokemon_CalcLevel
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public GetMonEvolution
 .public BoxPokemon_CopyToPokemon

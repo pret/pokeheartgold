@@ -217,7 +217,7 @@
 .public Species_GetFormValueFromNarc
 .public BoxPokemon_GetNature
 .public BoxPokemon_GetGender
-.public GetBoxmonSpriteCharAndPlttNarcIds
+.public BoxPokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public BoxPokemon_CopyToPokemon
 .public Pokemon_Copy

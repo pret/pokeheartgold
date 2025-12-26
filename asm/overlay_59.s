@@ -9068,7 +9068,7 @@ ov59_0223C380: ; 0x0223C380
 	add r4, r0, #0
 	add r0, sp, #0x10
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

@@ -1206,7 +1206,7 @@ ov95_021E623C: ; 0x021E623C
 	add r0, sp, #0x3c
 	add r1, r4, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	lsl r2, r6, #0x10
 	ldr r0, [r5, #0x40]
 	add r1, sp, #0x14

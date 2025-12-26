@@ -327,7 +327,7 @@
 .public Personality_GetNature
 .public Species_GetGenderFromPersonality
 .public Personality_GenerateShiny
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public WildMonSetRandomHeldItem
 .public CalcMonPokeathlonStars

@@ -643,11 +643,11 @@ sub_0208E3AC: ; 0x0208E3AC
 	bne _0208E3DE
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	b _0208E3E4
 _0208E3DE:
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 _0208E3E4:
 	mov r2, #0xa9
 	lsl r2, r2, #2

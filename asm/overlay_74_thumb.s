@@ -26465,7 +26465,7 @@ ov74_02235B14: ; 0x02235B14
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x18
 	mov r3, #2
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r1, #0
 	add r0, r6, #0
 	add r2, r1, #0

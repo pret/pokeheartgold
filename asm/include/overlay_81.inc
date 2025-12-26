@@ -181,7 +181,7 @@
 .public Pokemon_GetData
 .public Species_GetFormValue
 .public Pokemon_GetGender
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

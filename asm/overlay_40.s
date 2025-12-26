@@ -23595,7 +23595,7 @@ _022374D0:
 	mov r2, #2
 	lsr r3, r3, #0x18
 	str r6, [sp]
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	ldr r0, [sp, #0x20]
 	ldr r2, [sp, #0x1c]
 	str r0, [sp]
@@ -23606,7 +23606,7 @@ _022374D0:
 	add r1, r5, #0
 	mov r3, #2
 	str r6, [sp, #8]
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

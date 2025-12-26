@@ -1662,7 +1662,7 @@ _02259418:
 	ldrh r1, [r4, #2]
 	ldrb r2, [r4, #4]
 	add r0, sp, #0x14
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5, #0x20]
 	bl Pokepic_GetTemplate
 	add r7, r0, #0
@@ -1713,7 +1713,7 @@ _02259418:
 	ldrb r1, [r4, #4]
 	ldrb r3, [r4, #1]
 	lsr r2, r2, #0x18
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r6, r0, #0
 	ldr r0, [sp, #0x10]
 	bl ov12_0223A99C
@@ -2415,7 +2415,7 @@ _022599F2:
 	lsl r2, r2, #0x1e
 	add r0, sp, #0x5c
 	lsr r2, r2, #0x1e
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5, #4]
 	str r0, [sp]
 	ldrb r3, [r5, #1]
@@ -2425,7 +2425,7 @@ _022599F2:
 	lsl r3, r3, #0x18
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	str r0, [sp, #0x2c]
 	mov r0, #0x69
 	lsl r0, r0, #2
@@ -2654,7 +2654,7 @@ _02259BE4:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r5, #4]
 	add r2, r4, #0
 	str r0, [sp]
@@ -2666,7 +2666,7 @@ _02259BE4:
 	ldrb r2, [r2]
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r1, r4, #0
 	add r1, #0x85
 	strb r0, [r1]
@@ -2861,7 +2861,7 @@ _02259D92:
 	ldrb r3, [r3]
 	add r0, #0x14
 	lsr r2, r2, #0x1e
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r0, [r4, #4]
 	add r2, r5, #0
 	str r0, [sp]
@@ -2873,7 +2873,7 @@ _02259D92:
 	ldrb r2, [r2]
 	lsr r1, r1, #0x1e
 	lsr r3, r3, #0x1b
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	add r1, r5, #0
 	add r1, #0x85
 	strb r0, [r1]
@@ -15462,7 +15462,7 @@ _022602CE:
 	ldrb r1, [r1]
 	ldrb r2, [r2]
 	ldrb r3, [r3]
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	mov r3, #0x50
 	sub r0, r3, r0
 	str r0, [sp]

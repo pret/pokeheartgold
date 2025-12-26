@@ -14494,7 +14494,7 @@ _021EC7B8:
 	ldrh r1, [r7, #0x14]
 	ldrb r2, [r7, #0x1b]
 	add r0, sp, #0x20
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldrh r0, [r7, #4]
 	ldrh r1, [r7, #8]
 	ldr r3, [r4]
@@ -19253,7 +19253,7 @@ _021EEC28:
 	str r0, [sp, #8]
 	ldrb r2, [r4, #7]
 	add r0, sp, #0x28
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	ldr r3, _021EECB4 ; =ov96_0221B1AC
 	add r2, sp, #0x18
 	ldmia r3!, {r0, r1}
@@ -30414,7 +30414,7 @@ _021F4490:
 	ldrh r1, [r7]
 	ldrb r2, [r7, #7]
 	add r0, sp, #0x20
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -54381,7 +54381,7 @@ _022003F8:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2
@@ -56933,7 +56933,7 @@ _022017F2:
 	ldrh r3, [r3, #2]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	lsl r1, r5, #0xc
 	str r1, [sp, #0x80]
 	mov r1, #0x5e
@@ -61582,7 +61582,7 @@ _02203DDC:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -61655,7 +61655,7 @@ _02203E5E:
 	ldrb r1, [r6, #7]
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
-	bl GetMonPicHeightBySpeciesGenderForm
+	bl Species_LoadSpriteYOffset
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	add r0, r0, r1
@@ -70121,7 +70121,7 @@ _02208260:
 	ldrh r1, [r5]
 	ldrb r2, [r5, #7]
 	add r0, sp, #0x10
-	bl GetMonSpriteCharAndPlttNarcIdsEx
+	bl Species_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2

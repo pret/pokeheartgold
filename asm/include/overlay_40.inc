@@ -253,8 +253,8 @@
 .public SpeciesData_Free
 .public Species_GetGenderFromPersonality
 .public Personality_IsShiny
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public PCStorage_IsBonusWallpaperUnlocked
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

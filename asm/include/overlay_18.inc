@@ -236,9 +236,9 @@
 .public Pokemon_LockEncryption
 .public Pokemon_GetData
 .public Species_GetFormValue
-.public GetPokemonSpriteCharAndPlttNarcIds
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Pokemon_BuildSpriteTemplate
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public GetBattleMonIconNaixEx
 .public GetBattleMonIconPaletteEx
 .public sub_02074490

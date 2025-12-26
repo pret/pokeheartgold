@@ -331,8 +331,8 @@
 .public OverworldModelLookupFormCount
 .public OverworldModelLookupHasFemaleForm
 .public Species_GetValue
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx
 .public sub_02074490

@@ -7,7 +7,7 @@
 .public Pokemon_GetData
 .public Pokemon_CalcPercentToNextLevel
 .public Species_GetExpAtLevel
-.public GetMonPicHeightBySpeciesGenderForm
+.public Species_LoadSpriteYOffset
 .public MaskOfFlagNo
 .public GetMoveMaxPP
 .public Party_GetCount

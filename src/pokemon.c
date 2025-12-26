@@ -43,13 +43,13 @@ void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
 u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
-void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL a3);
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
-void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 pid);
+void BoxPokemon_BuildSpriteTemplate(PokemonSpriteTemplate *template, BoxPokemon *boxMon, u8 face, BOOL preferDP);
+static void Species_BuildSpriteTemplateDP(PokemonSpriteTemplate *pokepicTemplate, u16 species, u8 gender, u8 face, u8 shiny, u8 form, u32 pid);
+void Species_BuildSpriteTemplate(PokemonSpriteTemplate *pokepicTemplate, u16 species, u8 gender, u8 face, u8 shiny, u8 form, u32 pid);
 u8 Species_SanitizeFormId(u16 species, u8 form);
-u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
-u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
-u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
+u8 BoxPokemon_SpriteYOffset(BoxPokemon *boxMon, u8 face, BOOL preferDP);
+u8 Species_LoadSpriteYOffsetDP(u16 species, u8 gender, u8 face, u8 form, u32 pid);
+u8 Species_LoadSpriteYOffset(u16 species, u8 gender, u8 face, u8 form, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
 void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
@@ -1902,7 +1902,7 @@ u32 ExpRate_GetExpAtLevel(int rate, int level) {
     GF_ASSERT(rate < GROWTH_RATE_COUNT);
     GF_ASSERT(level <= MAX_LEVEL + 1);
 
-    u32 *expTable = (u32 *)Heap_Alloc(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
+    u32 *expTable = Heap_Alloc(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
     ExpRate_LoadTable(rate, expTable);
 
     u32 ret = expTable[level];
@@ -2156,20 +2156,20 @@ u32 Personality_GenerateShiny(u32 otID) {
     return rndLow | (rndHigh << 16);
 }
 
-void GetPokemonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, Pokemon *mon, u8 whichFacing) {
-    GetBoxmonSpriteCharAndPlttNarcIds(pokepicTemplate, &mon->box, whichFacing, FALSE);
+void Pokemon_BuildSpriteTemplate(PokemonSpriteTemplate *template, Pokemon *mon, u8 face) {
+    BoxPokemon_BuildSpriteTemplate(template, &mon->box, face, FALSE);
 }
 
-void sub_02070130(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing) {
-    GetBoxmonSpriteCharAndPlttNarcIds(pokepicTemplate, boxMon, whichFacing, TRUE);
+void BoxPokemon_BuildSpriteTemplateDP(PokemonSpriteTemplate *template, BoxPokemon *boxMon, u8 face) {
+    BoxPokemon_BuildSpriteTemplate(template, boxMon, face, TRUE);
 }
 
-void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPokemon *boxMon, u8 whichFacing, BOOL sp14) {
-    BOOL decry = BoxPokemon_UnlockEncryption(boxMon);
+void BoxPokemon_BuildSpriteTemplate(PokemonSpriteTemplate *template, BoxPokemon *boxMon, u8 face, BOOL preferDP) {
+    BOOL reencrypt = BoxPokemon_UnlockEncryption(boxMon);
     u16 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = BoxPokemon_GetGender(boxMon);
     u8 shiny = BoxPokemon_IsShiny(boxMon);
-    u32 pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
+    u32 personality = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
     u8 form;
     if (species == SPECIES_EGG) {
         if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_MANAPHY) {
@@ -2180,103 +2180,104 @@ void GetBoxmonSpriteCharAndPlttNarcIds(PokepicTemplate *pokepicTemplate, BoxPoke
     } else {
         form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
     }
-    if (sp14 == TRUE) {
-        DP_GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, pid);
+
+    if (preferDP == TRUE) {
+        Species_BuildSpriteTemplateDP(template, species, gender, face, shiny, form, personality);
     } else {
-        GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, pid);
+        Species_BuildSpriteTemplate(template, species, gender, face, shiny, form, personality);
     }
-    BoxPokemon_LockEncryption(boxMon, decry);
+    BoxPokemon_LockEncryption(boxMon, reencrypt);
 }
 
-void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    pokepicTemplate->species = SPECIES_NONE;
-    pokepicTemplate->isAnimated = FALSE;
-    pokepicTemplate->personality = 0;
+void Species_BuildSpriteTemplate(PokemonSpriteTemplate *template, u16 species, u8 gender, u8 face, u8 shiny, u8 form, u32 personality) {
+    template->species = SPECIES_NONE;
+    template->isAnimated = FALSE;
+    template->personality = 0;
     form = Species_SanitizeFormId(species, form);
     switch (species) {
     case SPECIES_BURMY:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x48 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xAA + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x48 + form * 2);
+        template->palDataID = (u16)(shiny + 0xAA + form * 2);
         break;
     case SPECIES_WORMADAM:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x4E + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xB0 + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x4E + form * 2);
+        template->palDataID = (u16)(shiny + 0xB0 + form * 2);
         break;
     case SPECIES_SHELLOS:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing + 0x54 + form);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xB6 + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face + 0x54 + form);
+        template->palDataID = (u16)(shiny + 0xB6 + form * 2);
         break;
     case SPECIES_GASTRODON:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing + 0x58 + form);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xBA + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face + 0x58 + form);
+        template->palDataID = (u16)(shiny + 0xBA + form * 2);
         break;
     case SPECIES_CHERRIM:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing + 0x5C + form);
-        pokepicTemplate->palDataID = (u16)(shiny * 2 + 0xBE + form);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face + 0x5C + form);
+        template->palDataID = (u16)(shiny * 2 + 0xBE + form);
         break;
     case SPECIES_ARCEUS:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x60 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xC2 + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x60 + form * 2);
+        template->palDataID = (u16)(shiny + 0xC2 + form * 2);
         break;
     case SPECIES_CASTFORM:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing * 2 + 0x40 + form);
-        pokepicTemplate->palDataID = (u16)(shiny * 4 + 0xA2 + form);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face * 2 + 0x40 + form);
+        template->palDataID = (u16)(shiny * 4 + 0xA2 + form);
         break;
     case SPECIES_DEOXYS:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0x9E);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + form * 2);
+        template->palDataID = (u16)(shiny + 0x9E);
         break;
     case SPECIES_UNOWN:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xA0);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x8 + form * 2);
+        template->palDataID = (u16)(shiny + 0xA0);
         break;
     case SPECIES_EGG: // egg, manaphy egg
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(0x84 + form);
-        pokepicTemplate->palDataID = (u16)(0xE6 + form);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(0x84 + form);
+        template->palDataID = (u16)(0xE6 + form);
         break;
     case SPECIES_BAD_EGG: // bad egg
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = 0x84;
-        pokepicTemplate->palDataID = 0xE6;
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = 0x84;
+        template->palDataID = 0xE6;
         break;
     case SPECIES_SHAYMIN: // land, sky
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xE8 + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x86 + form * 2);
+        template->palDataID = (u16)(shiny + 0xE8 + form * 2);
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xEC + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x8A + form * 2);
+        template->palDataID = (u16)(shiny + 0xEC + form * 2);
         break;
     case SPECIES_GIRATINA: // altered, origin
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xF8 + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x96 + form * 2);
+        template->palDataID = (u16)(shiny + 0xF8 + form * 2);
         break;
     case SPECIES_PICHU: // spiky-ear
-        pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x9A + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xFC + form * 2);
+        template->narcID = NARC_poketool_pokegra_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x9A + form * 2);
+        template->palDataID = (u16)(shiny + 0xFC + form * 2);
         break;
     default:
-        pokepicTemplate->narcID = NARC_poketool_pokegra_pokegra;
-        pokepicTemplate->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
-        pokepicTemplate->palDataID = (u16)(shiny + (species * 6 + 4));
-        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT) {
-            pokepicTemplate->species = SPECIES_SPINDA;
-            pokepicTemplate->isAnimated = FALSE;
-            pokepicTemplate->personality = personality;
+        template->narcID = NARC_poketool_pokegra_pokegra;
+        template->charDataID = (u16)(species * 6 + face + (gender == MON_FEMALE ? 0 : 1));
+        template->palDataID = (u16)(shiny + (species * 6 + 4));
+        if (species == SPECIES_SPINDA && face == MON_PIC_FACING_FRONT) {
+            template->species = SPECIES_SPINDA;
+            template->isAnimated = FALSE;
+            template->personality = personality;
         }
         break;
     }
@@ -2358,132 +2359,151 @@ u8 Species_SanitizeFormId(u16 species, u8 form) {
     return form;
 }
 
-void sub_02070560(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny) {
+void sub_02070560(PokemonSpriteTemplate *pokepicTemplate, u16 species, u8 face, u8 gender, u32 shiny) {
     pokepicTemplate->narcID = NARC_pbr_pokegra;
-    pokepicTemplate->charDataID = (u16)(species * 6 + whichFacing + (gender == MON_FEMALE ? 0 : 1));
+    pokepicTemplate->charDataID = (u16)(species * 6 + face + (gender == MON_FEMALE ? 0 : 1));
     pokepicTemplate->palDataID = (u16)(shiny + (species * 6 + 4));
 }
 
-void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
-    pokepicTemplate->species = SPECIES_NONE;
-    pokepicTemplate->isAnimated = FALSE;
-    pokepicTemplate->personality = 0;
+/**
+ * @brief Build a PokemonSpriteTemplate for a Pokemon sprite, preferring sprites from
+ * Diamond/Pearl over Platinum/HGSS.
+ *
+ * This routine will still use sprites from Platinum for Pokemon variants which
+ * did not exist in Diamond/Pearl, namely:
+ * - Giratina-Origin
+ * - Shaymin-Sky
+ * - Rotom appliances
+ * - Pichu-SpikyEar
+ *
+ * @param template       Pointer to the sprite template to be populated
+ * @param species        The Pokemon's species
+ * @param gender         The Pokemon's gender
+ * @param face           Which face of the Pokemon the player sees
+ * @param shiny          1 if the Pokemon is shiny, 0 if not
+ * @param form           The Pokemon's form
+ * @param personality    The Pokemon's personality value
+ */
+static void Species_BuildSpriteTemplateDP(PokemonSpriteTemplate *template, u16 species, u8 gender, u8 face, u8 shiny, u8 form, u32 personality) {
+    template->species = SPECIES_NONE;
+    template->isAnimated = FALSE;
+    template->personality = 0;
     form = Species_SanitizeFormId(species, form);
     switch (species) {
     case SPECIES_BURMY:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x48 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0x92 + form * 2);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x48 + form * 2);
+        template->palDataID = (u16)(shiny + 0x92 + form * 2);
         break;
     case SPECIES_WORMADAM:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x4E + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0x98 + form * 2);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x4E + form * 2);
+        template->palDataID = (u16)(shiny + 0x98 + form * 2);
         break;
     case SPECIES_SHELLOS:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing + 0x54 + form);
-        pokepicTemplate->palDataID = (u16)(shiny + 0x9E + form * 2);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face + 0x54 + form);
+        template->palDataID = (u16)(shiny + 0x9E + form * 2);
         break;
     case SPECIES_GASTRODON:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing + 0x58 + form);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xA2 + form * 2);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face + 0x58 + form);
+        template->palDataID = (u16)(shiny + 0xA2 + form * 2);
         break;
     case SPECIES_CHERRIM:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing + 0x5C + form);
-        pokepicTemplate->palDataID = (u16)(shiny * 2 + 0xA6 + form);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face + 0x5C + form);
+        template->palDataID = (u16)(shiny * 2 + 0xA6 + form);
         break;
     case SPECIES_ARCEUS:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x60 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0xAA + form * 2);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x60 + form * 2);
+        template->palDataID = (u16)(shiny + 0xAA + form * 2);
         break;
     case SPECIES_CASTFORM:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing * 2 + 0x40 + form);
-        pokepicTemplate->palDataID = (u16)(shiny * 4 + 0x8A + form);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face * 2 + 0x40 + form);
+        template->palDataID = (u16)(shiny * 4 + 0x8A + form);
         break;
     case SPECIES_DEOXYS:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0x86);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face / 2 + form * 2);
+        template->palDataID = (u16)(shiny + 0x86);
         break;
     case SPECIES_UNOWN:
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8 + form * 2);
-        pokepicTemplate->palDataID = (u16)(shiny + 0x88);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(face / 2 + 0x8 + form * 2);
+        template->palDataID = (u16)(shiny + 0x88);
         break;
     case SPECIES_EGG: // egg, manaphy egg
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = (u16)(0x84 + form);
-        pokepicTemplate->palDataID = (u16)(0xCE + form);
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = (u16)(0x84 + form);
+        template->palDataID = (u16)(0xCE + form);
         break;
     case SPECIES_BAD_EGG: // bad egg
-        pokepicTemplate->narcID = NARC_pbr_otherpoke;
-        pokepicTemplate->charDataID = 0x84;
-        pokepicTemplate->palDataID = 0xCE;
+        template->narcID = NARC_pbr_otherpoke;
+        template->charDataID = 132;
+        template->palDataID = 206;
         break;
     case SPECIES_SHAYMIN: // land, sky
-        if (form != 0) {
-            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x86 + form * 2);
-            pokepicTemplate->palDataID = (u16)(shiny + 0xEA);
+        if (form > 0) {
+            template->narcID = NARC_poketool_pokegra_otherpoke;
+            template->charDataID = (u16)(face / 2 + 0x86 + form * 2);
+            template->palDataID = (u16)(shiny + 0xEA);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            sub_02070560(template, species, face, gender, shiny);
         }
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
-        if (form != 0) {
-            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x8A + form * 2);
-            pokepicTemplate->palDataID = (u16)(shiny + 0xEC + form * 2);
+        if (form > 0) {
+            template->narcID = NARC_poketool_pokegra_otherpoke;
+            template->charDataID = (u16)(face / 2 + 0x8A + form * 2);
+            template->palDataID = (u16)(shiny + 0xEC + form * 2);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            sub_02070560(template, species, face, gender, shiny);
         }
         break;
     case SPECIES_GIRATINA: // altered, origin
-        if (form != 0) {
-            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x96 + form * 2);
-            pokepicTemplate->palDataID = (u16)(shiny + 0xF8 + form * 2);
+        if (form > 0) {
+            template->narcID = NARC_poketool_pokegra_otherpoke;
+            template->charDataID = (u16)(face / 2 + 0x96 + form * 2);
+            template->palDataID = (u16)(shiny + 0xF8 + form * 2);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            sub_02070560(template, species, face, gender, shiny);
         }
         break;
     case SPECIES_PICHU: // spiky-ear
         if (form != 0) {
-            pokepicTemplate->narcID = NARC_poketool_pokegra_otherpoke;
-            pokepicTemplate->charDataID = (u16)(whichFacing / 2 + 0x9C);
-            pokepicTemplate->palDataID = (u16)(shiny + 0xFE);
+            template->narcID = NARC_poketool_pokegra_otherpoke;
+            template->charDataID = (u16)(face / 2 + 0x9C);
+            template->palDataID = (u16)(shiny + 0xFE);
         } else {
-            sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
+            sub_02070560(template, species, face, gender, shiny);
         }
         break;
     default:
-        sub_02070560(pokepicTemplate, species, whichFacing, gender, shiny);
-        if (species == SPECIES_SPINDA && whichFacing == MON_PIC_FACING_FRONT) {
-            pokepicTemplate->species = SPECIES_SPINDA;
-            pokepicTemplate->isAnimated = FALSE;
-            pokepicTemplate->personality = personality;
+        sub_02070560(template, species, face, gender, shiny);
+        if (species == SPECIES_SPINDA && face == MON_PIC_FACING_FRONT) {
+            template->species = SPECIES_SPINDA;
+            template->isAnimated = FALSE;
+            template->personality = personality;
         }
         break;
     }
 }
 
-u8 sub_0207083C(BoxPokemon *boxMon, u8 whichFacing) {
-    return sub_02070854(boxMon, whichFacing, FALSE);
+u8 sub_0207083C(BoxPokemon *boxMon, u8 face) {
+    return BoxPokemon_SpriteYOffset(boxMon, face, FALSE);
 }
 
-u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing) {
-    return sub_02070854(boxMon, whichFacing, TRUE);
+u8 sub_02070848(BoxPokemon *boxMon, u8 face) {
+    return BoxPokemon_SpriteYOffset(boxMon, face, TRUE);
 }
 
-u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2) {
+u8 BoxPokemon_SpriteYOffset(BoxPokemon *boxMon, u8 face, BOOL preferDP) {
     u16 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES_OR_EGG, NULL);
     u8 gender = BoxPokemon_GetGender(boxMon);
-    u32 pid = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
+    u32 personality = BoxPokemon_GetData(boxMon, MON_DATA_PERSONALITY, NULL);
     u8 form;
     if (species == SPECIES_EGG) {
         if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_MANAPHY) {
@@ -2494,199 +2514,200 @@ u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2) {
     } else {
         form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
     }
-    if (a2 == TRUE) {
-        return GetMonPicHeightBySpeciesGenderForm_PBR(species, gender, whichFacing, form, pid);
-    } else {
-        return GetMonPicHeightBySpeciesGenderForm(species, gender, whichFacing, form, pid);
+
+    if (preferDP == TRUE) {
+        return Species_LoadSpriteYOffsetDP(species, gender, face, form, personality);
     }
+    return Species_LoadSpriteYOffset(species, gender, face, form, personality);
 }
 
-u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
+u8 Species_LoadSpriteYOffset(u16 species, u8 gender, u8 face, u8 form, u32 pid) {
 #pragma unused(pid)
-    NarcId narcId;
-    s32 fileId;
-    u8 ret;
-
     form = Species_SanitizeFormId(species, form);
+
+    NarcId narcID;
+    s32 fileID;
     switch (species) {
     case SPECIES_BURMY:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x48 + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 72 + (face / 2) + form * 2;
         break;
     case SPECIES_WORMADAM:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x4E + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 78 + (face / 2) + form * 2;
         break;
     case SPECIES_SHELLOS:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x54 + whichFacing + form;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 84 + face + form;
         break;
     case SPECIES_GASTRODON:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x58 + whichFacing + form;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 88 + face + form;
         break;
     case SPECIES_CHERRIM:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x5C + whichFacing + form;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 92 + face + form;
         break;
     case SPECIES_ARCEUS:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x60 + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 96 + (face / 2) + form * 2;
         break;
     case SPECIES_CASTFORM:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x40 + 2 * whichFacing + form;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 64 + face * 2 + form;
         break;
     case SPECIES_DEOXYS:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x00 + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 0 + (face / 2) + form * 2;
         break;
     case SPECIES_UNOWN:
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x08 + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 8 + (face / 2) + form * 2;
         break;
     case SPECIES_EGG: // egg, manaphy egg
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x84 + form;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 132 + form;
         break;
     case SPECIES_BAD_EGG: // bad egg
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x84;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 132;
         break;
     case SPECIES_SHAYMIN: // land, sky
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x88 + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 136 + (face / 2) + form * 2;
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x8C + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 140 + (face / 2) + form * 2;
         break;
     case SPECIES_GIRATINA: // altered, origin
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x98 + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 152 + (face / 2) + form * 2;
         break;
     case SPECIES_PICHU: // spiky-ear
-        narcId = NARC_poketool_pokegra_height_o;
-        fileId = 0x9C + whichFacing / 2 + form * 2;
+        narcID = NARC_poketool_pokegra_height_o;
+        fileID = 156 + (face / 2) + form * 2;
         break;
     default:
-        narcId = NARC_poketool_pokegra_height;
-        fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
+        narcID = NARC_poketool_pokegra_height;
+        fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
         break;
     }
-    ReadWholeNarcMemberByIdPair(&ret, narcId, fileId);
+
+    u8 ret;
+    ReadWholeNarcMemberByIdPair(&ret, narcID, fileID);
     return ret;
 }
 
-u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid) {
-    // species -> r5
-    // gender -> r6
-    // whichFacing -> r4
-    // form -> <overwrittten>
-    // pid -> sp18
+u8 Species_LoadSpriteYOffsetDP(u16 species, u8 gender, u8 face, u8 form, u32 pid) {
 #pragma unused(pid)
-    NarcId narcId;
-    s32 fileId;
-    u8 ret;
-
     form = Species_SanitizeFormId(species, form);
+
+    NarcId narcID;
+    s32 fileID;
     switch (species) {
     case SPECIES_BURMY:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x48 + whichFacing / 2 + form * 2;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 72 + (face / 2) + form * 2;
         break;
     case SPECIES_WORMADAM:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x4E + whichFacing / 2 + form * 2;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 78 + (face / 2) + form * 2;
         break;
     case SPECIES_SHELLOS:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x54 + whichFacing + form;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 84 + face + form;
         break;
     case SPECIES_GASTRODON:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x58 + whichFacing + form;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 88 + face + form;
         break;
     case SPECIES_CHERRIM:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x5C + whichFacing + form;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 92 + face + form;
         break;
     case SPECIES_ARCEUS:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x60 + whichFacing / 2 + form * 2;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 96 + (face / 2) + form * 2;
         break;
     case SPECIES_CASTFORM:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x40 + 2 * whichFacing + form;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 64 + face * 2 + form;
         break;
     case SPECIES_DEOXYS:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x00 + whichFacing / 2 + form * 2;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 0 + (face / 2) + form * 2;
         break;
     case SPECIES_UNOWN:
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x08 + whichFacing / 2 + form * 2;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 8 + (face / 2) + form * 2;
         break;
     case SPECIES_EGG: // egg, manaphy egg
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x84 + form;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 132 + form;
         break;
     case SPECIES_BAD_EGG: // bad egg
-        narcId = NARC_pbr_dp_height_o;
-        fileId = 0x84;
+        narcID = NARC_pbr_dp_height_o;
+        fileID = 132;
         break;
     case SPECIES_SHAYMIN: // land, sky
-        if (form != 0) {
-            narcId = NARC_poketool_pokegra_height_o;
-            fileId = 0x88 + whichFacing / 2 + form * 2;
+        if (form > 0) {
+            narcID = NARC_poketool_pokegra_height_o;
+            fileID = 136 + (face / 2) + form * 2;
         } else {
-            narcId = NARC_pbr_dp_height;
-            fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
+            narcID = NARC_pbr_dp_height;
+            fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
         }
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
-        if (form != 0) {
-            narcId = NARC_poketool_pokegra_height_o;
-            fileId = 0x8C + whichFacing / 2 + form * 2;
+        if (form > 0) {
+            narcID = NARC_poketool_pokegra_height_o;
+            fileID = 140 + (face / 2) + form * 2;
         } else {
-            narcId = NARC_pbr_dp_height;
-            fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
+            narcID = NARC_pbr_dp_height;
+            fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
         }
         break;
     case SPECIES_GIRATINA: // altered, origin
-        if (form != 0) {
-            narcId = NARC_poketool_pokegra_height_o;
-            fileId = 0x98 + whichFacing / 2 + form * 2;
+        if (form > 0) {
+            narcID = NARC_poketool_pokegra_height_o;
+            fileID = 152 + (face / 2) + form * 2;
         } else {
-            narcId = NARC_pbr_dp_height;
-            fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
+            narcID = NARC_pbr_dp_height;
+            fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
         }
         break;
-        //    case SPECIES_PICHU: // spiky-ear
-        //        if (form != 0) {
-        //            narcId = NARC_pbr_dp_height_o;
-        //            fileId = 0x9C + whichFacing / 2 + form * 2;
-        //        } else {
-        //            narcId = NARC_pbr_dp_height;
-        //            fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
-        //        }
-        //        break;
     default:
-        narcId = NARC_pbr_dp_height;
-        fileId = species * 4 + whichFacing + (gender != MON_FEMALE ? 1 : 0);
+        narcID = NARC_pbr_dp_height;
+        fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
         break;
     }
-    ReadWholeNarcMemberByIdPair(&ret, narcId, fileId);
+
+    u8 ret;
+    ReadWholeNarcMemberByIdPair(&ret, narcID, fileID);
     return ret;
 }
 
 static const struct ManagedSpriteTemplate _020FF588 = {
-    0, 0, 0, 0, 0, 0, NNS_G2D_VRAM_TYPE_2DMAIN, { 0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u },
-           2, 1
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    0x0,
+    NNS_G2D_VRAM_TYPE_2DMAIN,
+    { 0x4E2F, 0x4E2A, 0x4E27, 0x4E27, -1u, -1u },
+    0x2,
+    0x1
 };
 
 static const int _020FF50C[] = {
-    0, 1, 1, 2, 0, 3
+    0x0,
+    0x1,
+    0x1,
+    0x2,
+    0x0,
+    0x3
 };
 
 struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, enum HeapID heapID) {
@@ -3098,9 +3119,9 @@ void BoxPokemon_ForceAppendMove(BoxPokemon *boxMon, u16 move) {
 
     // Bubble move slots 2 through 4 upwards
     for (int i = 0; i < MAX_MON_MOVES - 1; i++) {
-        moves[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE2 + i, NULL);
-        pp[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE2_PP + i, NULL);
-        ppUp[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE2_PP_UPS + i, NULL);
+        moves[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + i + 1, NULL);
+        pp[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP + i + 1, NULL);
+        ppUp[i] = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_PP_UPS + i + 1, NULL);
     }
 
     moves[MAX_MON_MOVES - 1] = move;
@@ -3233,7 +3254,7 @@ void BoxPokemon_CopyToPokemon(const BoxPokemon *src, Pokemon *dest) {
     Pokemon_SetData(dest, MON_DATA_HP, &zero);
     Pokemon_SetData(dest, MON_DATA_MAX_HP, &zero);
 
-    struct Mail *mail = Mail_New(HEAP_ID_DEFAULT);
+    Mail *mail = Mail_New(HEAP_ID_DEFAULT);
     Pokemon_SetData(dest, MON_DATA_MAIL, mail);
     Heap_Free(mail);
 

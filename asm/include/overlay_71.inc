@@ -138,8 +138,8 @@
 .public BoxPokemon_LockEncryption
 .public BoxPokemon_GetData
 .public Species_GetFormValue
-.public GetBoxmonSpriteCharAndPlttNarcIds
-.public sub_02070854
+.public BoxPokemon_BuildSpriteTemplate
+.public BoxPokemon_SpriteYOffset
 .public NARC_ReadPokepicAnimScript
 .public sub_020729A4
 .public NNS_G2dSetupSoftwareSpriteCamera

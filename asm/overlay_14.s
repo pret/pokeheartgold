@@ -27933,7 +27933,7 @@ ov14_021F3614: ; 0x021F3614
 	add r0, sp, #0x24
 	mov r2, #2
 	mov r3, #0
-	bl GetBoxmonSpriteCharAndPlttNarcIds
+	bl BoxPokemon_BuildSpriteTemplate
 	ldrb r0, [r4, #0x12]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x1f

@@ -263,15 +263,15 @@ struct UnkPokemonStruct_02072A98 {
     /* 0x6E */ u16 spdef;
 };
 
-typedef struct PokepicTemplate {
+typedef struct PokemonSpriteTemplate {
     u16 narcID;
     u16 charDataID;
     u16 palDataID;
-    u16 species;
+    u16 species; //< Simple flag denoting whether the rendered sprite should be pseudo-randomized with splotches (only for Spinda's front-sprite).
     u8 isAnimated;
     u8 filler_9[3];
     u32 personality;
-} PokepicTemplate;
+} PokemonSpriteTemplate;
 
 struct PokeanmSub {
     s8 unk0;

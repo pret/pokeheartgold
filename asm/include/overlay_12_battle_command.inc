@@ -76,7 +76,7 @@
 .public Species_GetValue
 .public Pokemon_GetCurrentLevelBaseExp
 .public Pokemon_UpdateFriendship
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
 .public Pokemon_TryLevelUp
 .public Pokemon_SetMoveInSlot

@@ -192,7 +192,7 @@
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Species_GetFormValue
-.public GetPokemonSpriteCharAndPlttNarcIds
+.public Pokemon_BuildSpriteTemplate
 .public sub_0207083C
 .public Pokemon_GetBoxMon
 .public Pokemon_Copy

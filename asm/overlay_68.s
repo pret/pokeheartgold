@@ -3152,7 +3152,7 @@ ov68_021E7224: ; 0x021E7224
 	add r0, sp, #0x10
 	add r1, r4, #0
 	mov r2, #2
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]

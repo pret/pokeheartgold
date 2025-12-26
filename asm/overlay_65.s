@@ -2769,7 +2769,7 @@ ov65_0221D57C: ; 0x0221D57C
 	mov r2, #2
 	add r5, r1, #0
 	str r3, [sp, #0x20]
-	bl GetPokemonSpriteCharAndPlttNarcIds
+	bl Pokemon_BuildSpriteTemplate
 	mov r1, #0
 	add r0, r5, #0
 	add r2, r1, #0

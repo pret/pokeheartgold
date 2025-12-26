@@ -10095,14 +10095,14 @@ _0224A7A4: .word 0x0400004A
 
 	thumb_func_start ov02_0224A7A8
 ov02_0224A7A8: ; 0x0224A7A8
-	ldr r3, _0224A7B4 ; =GetPokemonSpriteCharAndPlttNarcIds
+	ldr r3, _0224A7B4 ; =Pokemon_BuildSpriteTemplate
 	add r2, r0, #0
 	add r0, r1, #0
 	ldr r1, [r2, #0x5c]
 	mov r2, #2
 	bx r3
 	.balign 4, 0
-_0224A7B4: .word GetPokemonSpriteCharAndPlttNarcIds
+_0224A7B4: .word Pokemon_BuildSpriteTemplate
 	thumb_func_end ov02_0224A7A8
 
 	thumb_func_start ov02_0224A7B8

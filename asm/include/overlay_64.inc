@@ -104,8 +104,8 @@
 .public OverworldModelLookupHasFemaleForm
 .public Species_GetGenderFromPersonality
 .public Personality_IsShiny
-.public GetMonSpriteCharAndPlttNarcIdsEx
-.public GetMonPicHeightBySpeciesGenderForm
+.public Species_BuildSpriteTemplate
+.public Species_LoadSpriteYOffset
 .public sub_020729D8
 .public NNS_G2dGetImageLocation
 .public NNS_G2dGetImagePaletteLocation
