@@ -1127,3 +1127,65 @@ void ov18_021E7B6C(BOOL a0) {
         GXS_SetVisibleWnd(GX_WNDMASK_NONE);
     }
 }
+
+void ov18_021E7BD0(PokedexAppData *pokedexApp) {
+    ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_0);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_2);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_2);
+
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 82, pokedexApp->unk_0004, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    if (pokedexApp->unk_1860 == 1) {
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 81, pokedexApp->unk_0004, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    } else {
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 80, pokedexApp->unk_0004, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    }
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 83, pokedexApp->unk_0004, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 83, pokedexApp->unk_0004, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 4, pokedexApp->unk_0004, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->unk_0850, pokedexApp->unk_0854, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 84, pokedexApp->unk_0004, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 85, pokedexApp->unk_0004, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 86, pokedexApp->unk_0004, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 87, pokedexApp->unk_0004, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->unk_0850, pokedexApp->unk_0854, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_0);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_1);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_3);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_0);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_1);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_2);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_3);
+}
+
+void ov18_021E7D90(PokedexAppData *pokedexApp) {
+    ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_0);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_1);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_2);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_0);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
+    ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_3);
+
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 89, pokedexApp->unk_0004, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 90, pokedexApp->unk_0004, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 4, pokedexApp->unk_0004, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->unk_0850, pokedexApp->unk_0854, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->unk_0854, 91, pokedexApp->unk_0004, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->unk_0854, 92, pokedexApp->unk_0004, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->unk_0850, pokedexApp->unk_0854, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+
+    sub_020196E8(pokedexApp->unk_0008, 16, 0, 20);
+
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_0);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_1);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_2);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_3);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_0);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_1);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_2);
+    ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_3);
+}
