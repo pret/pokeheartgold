@@ -67,88 +67,9 @@
 	.extern ov18_021E7A80
 	.extern ov18_021E7B6C
 	.extern ov18_021E800C
+	.extern ov18_021E81A8
 
 	.text
-
-	thumb_func_start ov18_021E81A8
-ov18_021E81A8: ; 0x021E81A8
-	push {r4, lr}
-	sub sp, #0x10
-	add r4, r0, #0
-	mov r1, #0
-	bl ov18_021E613C
-	add r0, r4, #0
-	mov r1, #2
-	bl ov18_021E613C
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E8250 ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x62
-	mov r3, #3
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E8250 ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x5d
-	mov r3, #3
-	bl GfGfxLoader_LoadCharDataFromOpenNarc
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E8250 ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x63
-	mov r3, #7
-	bl GfGfxLoader_LoadScrnDataFromOpenNarc
-	mov r0, #0
-	str r0, [sp]
-	str r0, [sp, #4]
-	mov r0, #1
-	str r0, [sp, #8]
-	mov r0, #0x25
-	str r0, [sp, #0xc]
-	ldr r0, _021E8250 ; =0x00000854
-	ldr r2, [r4, #4]
-	ldr r0, [r4, r0]
-	mov r1, #0x5e
-	mov r3, #7
-	bl GfGfxLoader_LoadCharDataFromOpenNarc
-	ldr r0, [r4, #4]
-	mov r1, #0
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r4, #4]
-	mov r1, #2
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r4, #4]
-	mov r1, #3
-	bl ScheduleBgTilemapBufferTransfer
-	ldr r0, [r4, #4]
-	mov r1, #7
-	bl ScheduleBgTilemapBufferTransfer
-	add sp, #0x10
-	pop {r4, pc}
-	.balign 4, 0
-_021E8250: .word 0x00000854
-	thumb_func_end ov18_021E81A8
 
 	thumb_func_start ov18_021E8254
 ov18_021E8254: ; 0x021E8254
