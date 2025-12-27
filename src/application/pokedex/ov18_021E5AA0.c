@@ -19,10 +19,10 @@ BOOL Pokedex_Init(OverlayManager *man, int *state) {
     Heap_Create(HEAP_ID_3, HEAP_ID_37, 0x61000);
     appData = OverlayManager_CreateAndGetData(man, sizeof(PokedexAppData), HEAP_ID_37);
     MI_CpuClear8(appData, sizeof(PokedexAppData));
-    appData->unk_0000 = OverlayManager_GetArgs(man);
+    appData->args = OverlayManager_GetArgs(man);
     appData->unk_085C = 5;
-    appData->unk_1858 = sub_02092BE0(appData->unk_0000->unk_08);
-    if (Pokedex_GetNatDexFlag(appData->unk_0000->pokedex)) {
+    appData->unk_1858 = sub_02092BE0(appData->args->unk_08);
+    if (Pokedex_GetNatDexFlag(appData->args->pokedex)) {
         appData->unk_1860 = TRUE;
         if (appData->unk_1858 == 2) {
             appData->unk_1858 = 1;
@@ -33,8 +33,8 @@ BOOL Pokedex_Init(OverlayManager *man, int *state) {
             appData->unk_1858 = 0;
         }
     }
-    if (Pokedex_CheckMonCaughtFlag(appData->unk_0000->pokedex, SPECIES_GIRATINA) == TRUE) {
-        SetDexBanksByGiratinaForm(Pokedex_GetSeenFormByIdx(appData->unk_0000->pokedex, SPECIES_GIRATINA, 0));
+    if (Pokedex_CheckMonCaughtFlag(appData->args->pokedex, SPECIES_GIRATINA) == TRUE) {
+        SetDexBanksByGiratinaForm(Pokedex_GetSeenFormByIdx(appData->args->pokedex, SPECIES_GIRATINA, 0));
     } else {
         SetDexBanksByGiratinaForm(GIRATINA_ALTERED);
     }
@@ -61,7 +61,7 @@ BOOL Pokedex_Exit(OverlayManager *man, int *state) {
     if (ov123_0225F520(ov18_021E5C1C)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }
-    sub_02092BD8(appData->unk_0000->unk_08, ov18_021F8838(appData), appData->unk_1858);
+    sub_02092BD8(appData->args->unk_08, ov18_021F8838(appData), appData->unk_1858);
     // DSProt_DetectFlashcart
     if (ov123_0225F430(ov18_021E5C2C)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
