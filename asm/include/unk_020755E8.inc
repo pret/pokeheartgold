@@ -143,7 +143,7 @@
 .public Pokemon_SetMoveInSlot
 .public Pokemon_TryLevelUpMove
 .public Pokemon_Copy
-.public UpdateMonAbility
+.public Pokemon_UpdateAbility
 .public NARC_ReadPokepicAnimScript
 .public sub_0207294C
 .public sub_020729A4

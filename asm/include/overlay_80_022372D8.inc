@@ -14,7 +14,7 @@
 .public Pokemon_GetData
 .public Personality_IsShiny
 .public Pokemon_Copy
-.public UpdateMonAbility
+.public Pokemon_UpdateAbility
 .public Party_InitWithMaxSize
 .public Party_GetMonByIndex
 .public SaveArray_Party_Get

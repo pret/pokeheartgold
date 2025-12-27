@@ -1758,7 +1758,7 @@ _020763FC:
 	add r2, #0x62
 	bl Pokemon_SetData
 	ldr r0, [r4, #0x28]
-	bl UpdateMonAbility
+	bl Pokemon_UpdateAbility
 	ldr r0, [r4, #0x28]
 	bl Pokemon_CalcLevelAndStats
 	ldr r0, [r4, #0x28]
@@ -2933,7 +2933,7 @@ _02076D62:
 	add r2, sp, #8
 	bl Pokemon_SetData
 	add r0, r5, #0
-	bl UpdateMonAbility
+	bl Pokemon_UpdateAbility
 	add r0, r5, #0
 	bl Pokemon_CalcLevelAndStats
 	ldr r0, [r4, #0x24]
