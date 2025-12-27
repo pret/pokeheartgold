@@ -2975,7 +2975,7 @@ _02089A3C:
 _02089AF6:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl MonGetFlavorPreference
+	bl Pokemon_GetFlavorAffinity
 	cmp r0, #1
 	bne _02089B0A
 	add r0, r4, #0

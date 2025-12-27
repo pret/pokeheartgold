@@ -30,7 +30,7 @@
 
 #define BATTLE_FACILITY_BANLIST_SIZE 18
 
-extern const s8 gNatureStatModifiers[NATURE_NUM][NUM_EV_STATS];
+extern const s8 gNatureStatModifiers[NATURE_COUNT][NUM_EV_STATS];
 
 void Pokemon_Init(Pokemon *mon);
 void BoxPokemon_Init(BoxPokemon *boxMon);
@@ -107,9 +107,8 @@ u16 *LoadSpeciesToJohtoDexNoLUT(void);
 void Pokemon_Copy(const Pokemon *src, Pokemon *dest);
 void BoxPokemon_Copy(const BoxPokemon *src, BoxPokemon *dest);
 void Pokemon_CopyToBoxPokemon(const Pokemon *src, BoxPokemon *dest);
-s8 MonGetFlavorPreference(Pokemon *mon, int flavor);
-s8 BoxMonGetFlavorPreference(BoxPokemon *boxMon, int flavor);
-s8 GetFlavorPreferenceFromPID(u32 personality, int flavor);
+s8 Pokemon_GetFlavorAffinity(Pokemon *mon, int flavor);
+s8 Personality_GetFlavorAffinity(u32 personality, int flavor);
 int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest);
 void Party_GivePokerusAtRandom(Party *party);
 u8 Party_MaskHasPokerus(Party *party, u8 partyMask);
@@ -160,7 +159,6 @@ void BoxPokemon_SetDefaultMoves(BoxPokemon *boxMon);
 void Pokemon_SetMoveInSlot_ResetPPUp(Pokemon *mon, u16 move, u8 slot);
 u32 Pokemon_TryLevelUpMove(Pokemon *mon, int *last_i, u16 *sp0);
 void Pokemon_ClearMoveSlot(Pokemon *mon, u32 slot);
-BOOL Pokemon_HasMove(Pokemon *mon, u16 move);
 u16 SpeciesToJohtoDexNo(u16 species);
 void Pokemon_ForceSetGiratinaOriginForm(Pokemon *mon);
 void Party_UpdateGiratinaForms(Party *party, BOOL forceOrigin);
