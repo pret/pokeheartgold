@@ -45,15 +45,341 @@ u32 ov18_021E8B18(u32 a0);
 u32 ov18_021E8B40(void);
 u32 ov18_021E8B78(void);
 
-extern const UnkStruct_ov18_021F9780 ov18_021F9770[];
-extern const UnkStruct_ov18_021F9780 ov18_021F9780[];
-extern const GraphicsBanks ov18_021F98B0;
-extern const u16 ov18_021F98D8[];
-extern const UnkStruct_ov18_021F9780 ov18_021F990C[18];
-extern const u16 ov18_021F9954[70];
-extern const u8 ov18_021F9C18[6];
-extern const u8 ov18_021F9C20[];
-extern const int ov18_021F99E0[142];
+static const u16 ov18_021F9954[70] = {
+    0xFFFF,
+    0x003C,
+    0x0021,
+    0x0043,
+    0x0022,
+    0x0023,
+    0x0049,
+    0x0024,
+    0x0025,
+    0x0026,
+    0x0027,
+    0x0028,
+    0x0029,
+    0x004E,
+    0x002A,
+    0x002B,
+    0x004D,
+    0x005E,
+    0x005F,
+    0x004B,
+    0x002C,
+    0x002D,
+    0x0058,
+    0x002E,
+    0x0059,
+    0x002F,
+    0x0030,
+    0x0097,
+    0x005A,
+    0x0014,
+    0x005B,
+    0x005C,
+    0x0031,
+    0x0032,
+    0x0034,
+    0x0036,
+    0x0037,
+    0x0038,
+    0x0039,
+    0x0098,
+    0x001E,
+    0x001F,
+    0x0020,
+    0x0009,
+    0x000A,
+    0x000B,
+    0x000C,
+    0x000D,
+    0x000E,
+    0x000F,
+    0x0010,
+    0x0011,
+    0x0012,
+    0x0013,
+    0x0015,
+    0x0016,
+    0x0017,
+    0x01A6,
+    0x0019,
+    0x001A,
+    0x005D,
+    0x001B,
+    0x001C,
+    0x001D,
+    0x019E,
+    0x0033,
+    0x004A,
+    0x00AE,
+    0x0018,
+    0xFFFF,
+};
+
+static const u16 ov18_021F98D8[] = {
+    0xFFFF,
+    0x009B,
+    0x0071,
+    0x0063,
+    0x00B1,
+    0x0075,
+    0x0060,
+    0x0007,
+    0x014C,
+    0x0079,
+    0x0077,
+    0x0078,
+    0x00FD,
+    0x00B0,
+    0x01C1,
+    0x0092,
+    0x01CE,
+    0x0117,
+    0x0156,
+    0x00F0,
+    0x006C,
+    0x007C,
+    0x007E,
+    0x006A,
+    0x0093,
+    0x0091,
+};
+
+static const int ov18_021F99E0[142] = {
+    0x00000009,
+    0x0000000A,
+    0x0000019E,
+    0x0000000B,
+    0x0000000C,
+    0x0000000D,
+    0x0000000E,
+    0x0000000F,
+    0x00000010,
+    0x00000011,
+    0x00000012,
+    0x00000013,
+    0x00000014,
+    0x00000015,
+    0x00000016,
+    0x00000017,
+    0x000001A6,
+    0x00000018,
+    0x00000019,
+    0x0000001A,
+    0x0000005B,
+    0x0000005C,
+    0x0000005D,
+    0x0000001B,
+    0x0000001C,
+    0x0000001D,
+    0x0000001E,
+    0x0000001F,
+    0x00000020,
+    0x00000021,
+    0x00000022,
+    0x00000023,
+    0x00000024,
+    0x00000025,
+    0x00000026,
+    0x00000027,
+    0x00000028,
+    0x00000029,
+    0x0000002A,
+    0x0000002B,
+    0x0000005E,
+    0x0000005F,
+    0x0000002C,
+    0x0000002D,
+    0x0000002E,
+    0x0000002F,
+    0x00000030,
+    0x00000097,
+    0x00000098,
+    0x0000004A,
+    0x0000014C,
+    0x0000014D,
+    0x0000014E,
+    0x0000014F,
+    0x00000150,
+    0x00000151,
+    0x00000152,
+    0x00000153,
+    0x00000155,
+    0x00000059,
+    0x00000007,
+    0x000000D9,
+    0x00000037,
+    0x00000091,
+    0x000001C2,
+    0x000001C3,
+    0x00000034,
+    0x00000043,
+    0x0000004B,
+    0x00000039,
+    0x00000156,
+    0x00000117,
+    0x0000006A,
+    0x0000007B,
+    0x000000B0,
+    0x000000FD,
+    0x0000004E,
+    0x00000038,
+    0x00000078,
+    0x000000ED,
+    0x000000EE,
+    0x000000EF,
+    0x00000075,
+    0x00000058,
+    0x0000006B,
+    0x000001C0,
+    0x000001C1,
+    0x00000201,
+    0x00000077,
+    0x000000FA,
+    0x000000FB,
+    0x000000FC,
+    0x0000005A,
+    0x0000007A,
+    0x000001CB,
+    0x000001CC,
+    0x000001CD,
+    0x000001CE,
+    0x000001CF,
+    0x000001D0,
+    0x00000060,
+    0x000001E7,
+    0x0000003C,
+    0x000000F0,
+    0x0000004D,
+    0x00000031,
+    0x00000033,
+    0x0000006C,
+    0x000001C4,
+    0x00000071,
+    0x0000013B,
+    0x000001EA,
+    0x000001EB,
+    0x000001EC,
+    0x000000B1,
+    0x000000B5,
+    0x00000165,
+    0x000000AE,
+    0x00000092,
+    0x000001C5,
+    0x000001C6,
+    0x000001C7,
+    0x000001C8,
+    0x0000009B,
+    0x0000009C,
+    0x0000007E,
+    0x0000012A,
+    0x00000063,
+    0x00000099,
+    0x0000009A,
+    0x00000036,
+    0x0000007C,
+    0x000000B2,
+    0x000000B3,
+    0x00000049,
+    0x00000032,
+    0x00000093,
+    0x00000079,
+    0x000000F2,
+    0x000000F3,
+    0x000001E6,
+    0x000000F4,
+};
+
+static const GraphicsBanks ov18_021F98B0 = {
+    .bg = GX_VRAM_BG_128_B,
+    .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
+    .subbg = GX_VRAM_SUB_BG_128_C,
+    .subbgextpltt = GX_VRAM_SUB_BGEXTPLTT_NONE,
+    .obj = GX_VRAM_OBJ_64_E,
+    .objextpltt = GX_VRAM_OBJEXTPLTT_NONE,
+    .subobj = GX_VRAM_SUB_OBJ_16_I,
+    .subobjextpltt = GX_VRAM_SUB_OBJEXTPLTT_NONE,
+    .tex = GX_VRAM_TEX_0_A,
+    .texpltt = GX_VRAM_TEXPLTT_01_FG,
+};
+
+static const u8 ov18_021F9C18[6] = {
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+};
+
+static const UnkStruct_ov18_021F9780 ov18_021F9780[] = {
+    { 3,  6,  11, 2 },
+    { 18, 6,  11, 2 },
+    { 3,  10, 11, 2 },
+    { 18, 10, 11, 2 },
+    { 3,  14, 11, 2 },
+    { 18, 14, 11, 2 },
+};
+
+static const UnkStruct_ov18_021F9780 ov18_021F990C[18] = {
+    { 0,  5,  8, 2 },
+    { 8,  5,  8, 2 },
+    { 16, 5,  8, 2 },
+    { 24, 5,  8, 2 },
+    { 0,  8,  8, 2 },
+    { 8,  8,  8, 2 },
+    { 16, 8,  8, 2 },
+    { 24, 8,  8, 2 },
+    { 0,  11, 8, 2 },
+    { 8,  11, 8, 2 },
+    { 16, 11, 8, 2 },
+    { 24, 11, 8, 2 },
+    { 0,  14, 8, 2 },
+    { 8,  14, 8, 2 },
+    { 16, 14, 8, 2 },
+    { 24, 14, 8, 2 },
+    { 0,  17, 8, 2 },
+    { 8,  17, 8, 2 },
+};
+
+static const UnkStruct_ov18_021F9780 ov18_021F9770[] = {
+    { 6,  8,  7, 2 },
+    { 19, 8,  7, 2 },
+    { 6,  15, 7, 2 },
+    { 19, 15, 7, 2 },
+};
+
+static const u8 ov18_021F9C20[] = {
+    0x00,
+    0x01,
+    0x02,
+    0x03,
+    0x04,
+    0x05,
+    0x06,
+    0x07,
+    0x08,
+    0x09,
+    0x0A,
+    0x0B,
+    0x0C,
+    0x0D,
+    0x0E,
+    0x0F,
+    0x10,
+    0x11,
+    0x12,
+    0x13,
+    0x14,
+    0x15,
+    0x16,
+    0x17,
+    0x18,
+    0x19,
+    0x1B,
+};
 
 void ov18_021E5C40(void *cb_arg) {
     PokedexAppData *pokedexApp = cb_arg;
@@ -73,15 +399,32 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     pokedexApp->unk_0004 = BgConfig_Alloc(HEAP_ID_37);
 
     {
-        extern const GraphicsModes ov18_021F9750;
-        GraphicsModes graphicsModes = ov18_021F9750;
+        GraphicsModes graphicsModes = {
+            GX_DISPMODE_GRAPHICS,
+            GX_BGMODE_0,
+            GX_BGMODE_0,
+            GX_BG0_AS_2D,
+        };
 
         SetBothScreensModesAndDisable(&graphicsModes);
     }
 
     {
-        extern const BgTemplate ov18_021F97EC;
-        BgTemplate bgTemplate = ov18_021F97EC;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_512x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_512x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_MAIN_0, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_0);
@@ -89,8 +432,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F97B4;
-        BgTemplate bgTemplate = ov18_021F97B4;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe800,
+            .charBase = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_MAIN_1, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_1);
@@ -98,8 +454,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F9894;
-        BgTemplate bgTemplate = ov18_021F9894;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe000,
+            .charBase = GX_BG_CHARBASE_0x14000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_MAIN_2, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_2);
@@ -107,8 +476,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F9824;
-        BgTemplate bgTemplate = ov18_021F9824;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xd800,
+            .charBase = GX_BG_CHARBASE_0x18000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_MAIN_3, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_3);
@@ -116,8 +498,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F9840;
-        BgTemplate bgTemplate = ov18_021F9840;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_512x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_512x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xf000,
+            .charBase = GX_BG_CHARBASE_0x10000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 0,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_SUB_0, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_0);
@@ -125,8 +520,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F985C;
-        BgTemplate bgTemplate = ov18_021F985C;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe800,
+            .charBase = GX_BG_CHARBASE_0x00000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 1,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_SUB_1, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
@@ -134,8 +542,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F9798;
-        BgTemplate bgTemplate = ov18_021F9798;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xe000,
+            .charBase = GX_BG_CHARBASE_0x14000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 2,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_SUB_2, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_2);
@@ -143,8 +564,21 @@ void ov18_021E5C84(PokedexAppData *pokedexApp) {
     }
 
     {
-        extern const BgTemplate ov18_021F97D0;
-        BgTemplate bgTemplate = ov18_021F97D0;
+        BgTemplate bgTemplate = {
+            .x = 0,
+            .y = 0,
+            .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+            .baseTile = 0,
+            .size = GF_BG_SCR_SIZE_256x256,
+            .colorMode = GX_BG_COLORMODE_16,
+            .screenBase = GX_BG_SCRBASE_0xd800,
+            .charBase = GX_BG_CHARBASE_0x18000,
+            .bgExtPltt = GX_BG_EXTPLTT_01,
+            .priority = 3,
+            .areaOver = GX_BG_AREAOVER_XLU,
+            .dummy = 0,
+            .mosaic = 0,
+        };
 
         InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_SUB_3, &bgTemplate, GF_BG_TYPE_TEXT);
         ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_3);
@@ -156,15 +590,32 @@ void ov18_021E5E70(PokedexAppData *pokedexApp, BOOL a1) {
     FreeBgTilemapBuffer(pokedexApp->unk_0004, GF_BG_LYR_SUB_3);
     if (!a1) {
         {
-            extern const GraphicsModes ov18_021F9740;
-            GraphicsModes graphicsModes = ov18_021F9740;
+            GraphicsModes graphicsModes = {
+                GX_DISPMODE_GRAPHICS,
+                GX_BGMODE_0,
+                GX_BGMODE_0,
+                GX_BG0_AS_2D,
+            };
 
             SetScreenModeAndDisable(&graphicsModes, SCREEN_SUB);
         }
 
         {
-            extern const BgTemplate ov18_021F9878;
-            BgTemplate bgTemplate = ov18_021F9878;
+            BgTemplate bgTemplate = {
+                .x = 0,
+                .y = 0,
+                .bufferSize = GF_BG_BUF_SIZE_256x256_4BPP,
+                .baseTile = 0,
+                .size = GF_BG_SCR_SIZE_256x256,
+                .colorMode = GX_BG_COLORMODE_16,
+                .screenBase = GX_BG_SCRBASE_0xd800,
+                .charBase = GX_BG_CHARBASE_0x18000,
+                .bgExtPltt = GX_BG_EXTPLTT_01,
+                .priority = 3,
+                .areaOver = GX_BG_AREAOVER_XLU,
+                .dummy = 0,
+                .mosaic = 0,
+            };
 
             InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_SUB_3, &bgTemplate, GF_BG_TYPE_TEXT);
             ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_3);
@@ -172,15 +623,32 @@ void ov18_021E5E70(PokedexAppData *pokedexApp, BOOL a1) {
         }
     } else {
         {
-            extern const GraphicsModes ov18_021F9760;
-            GraphicsModes graphicsModes = ov18_021F9760;
+            GraphicsModes graphicsModes = {
+                GX_DISPMODE_GRAPHICS,
+                GX_BGMODE_0,
+                GX_BGMODE_1,
+                GX_BG0_AS_2D,
+            };
 
             SetScreenModeAndDisable(&graphicsModes, SCREEN_SUB);
         }
 
         {
-            extern const BgTemplate ov18_021F9808;
-            BgTemplate bgTemplate = ov18_021F9808;
+            BgTemplate bgTemplate = {
+                .x = 0,
+                .y = 0,
+                .bufferSize = GF_BG_BUF_SIZE_256x256_8BPP,
+                .baseTile = 0,
+                .size = GF_BG_SCR_SIZE_256x256,
+                .colorMode = GX_BG_COLORMODE_256,
+                .screenBase = GX_BG_SCRBASE_0xd800,
+                .charBase = GX_BG_CHARBASE_0x18000,
+                .bgExtPltt = GX_BG_EXTPLTT_01,
+                .priority = 2,
+                .areaOver = GX_BG_AREAOVER_XLU,
+                .dummy = 0,
+                .mosaic = 0,
+            };
 
             InitBgFromTemplate(pokedexApp->unk_0004, GF_BG_LYR_SUB_3, &bgTemplate, GF_BG_TYPE_AFFINE);
             ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_3);
