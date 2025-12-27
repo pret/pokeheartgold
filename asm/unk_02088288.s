@@ -4029,7 +4029,7 @@ sub_0208A310: ; 0x0208A310
 	beq _0208A396
 	b _0208A3C6
 _0208A32C:
-	bl Pokemon_Size
+	bl Pokemon_Size2
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -4158,7 +4158,7 @@ _0208A41A:
 	mvn r0, r0
 	pop {r3, r4, r5, r6, r7, pc}
 _0208A420:
-	bl Pokemon_Size
+	bl Pokemon_Size2
 	mov r1, #0x8b
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -4308,7 +4308,7 @@ sub_0208A520: ; 0x0208A520
 	beq _0208A550
 	b _0208A55E
 _0208A538:
-	bl Pokemon_Size
+	bl Pokemon_Size2
 	ldrb r1, [r4, #0x14]
 	ldr r2, [r4]
 	mul r0, r1

@@ -104,7 +104,7 @@
 .public Pokemon_GetNature
 .public Pokemon_GetGender
 .public Pokemon_IsShiny
-.public Pokemon_Size
+.public Pokemon_Size2
 .public BoxPokemon_Size
 .public Pokemon_GetBoxMon
 .public Pokemon_SwapMoveSlots

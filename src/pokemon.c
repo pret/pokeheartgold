@@ -120,7 +120,7 @@ void BoxPokemon_Init(BoxPokemon *boxMon) {
     ENCRYPT_BOX(boxMon);
 }
 
-u32 SizeOfStructPokemon(void) {
+u32 Pokemon_Size(void) {
     return sizeof(Pokemon);
 }
 
@@ -2778,7 +2778,7 @@ void sub_02070D84(s32 trainer_class, s32 battlerSide, struct UnkStruct_02070D3C 
     sub_02070D3C(trainer_class, battlerSide, FALSE, a2);
 }
 
-u32 Pokemon_Size(void) {
+u32 Pokemon_Size2(void) {
     return sizeof(Pokemon);
 }
 

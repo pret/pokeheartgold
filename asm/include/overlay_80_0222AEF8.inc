@@ -12,7 +12,7 @@
 .public sub_0203769C
 .public sub_0205C1F0
 .public sub_0205C268
-.public SizeOfStructPokemon
+.public Pokemon_Size
 .public Pokemon_New
 .public Pokemon_GetData
 .public Party_AddMon

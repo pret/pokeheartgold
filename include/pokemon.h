@@ -34,7 +34,7 @@ extern const s8 gNatureStatModifiers[NATURE_COUNT][NUM_EV_STATS];
 
 void Pokemon_Init(Pokemon *mon);
 void BoxPokemon_Init(BoxPokemon *boxMon);
-u32 SizeOfStructPokemon(void);
+u32 Pokemon_Size(void);
 Pokemon *Pokemon_New(enum HeapID heapID);
 BOOL Pokemon_UnlockEncryption(Pokemon *mon);
 BOOL Pokemon_LockEncryption(Pokemon *mon, BOOL encrypt);
@@ -151,7 +151,7 @@ u8 GetMonPicHeightBySpeciesGenderForme_PBR(u16 species, u8 gender, u8 face, u8 f
 struct ManagedSprite *sub_02070C24(SpriteSystem *renderer, SpriteManager *gfxHandler, PaletteData *plttData, int x, int y, int trainerClass, int battlerPosition, BOOL isLink, int resTag, enum HeapID heapID);
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 void sub_02070D84(s32 trainer_class, s32 a1, struct UnkStruct_02070D3C *a2);
-u32 Pokemon_Size(void);
+u32 Pokemon_Size2(void);
 u32 BoxPokemon_Size(void);
 BoxPokemon *Pokemon_GetBoxMon(Pokemon *mon);
 BOOL Pokemon_TryLevelUp(Pokemon *mon);

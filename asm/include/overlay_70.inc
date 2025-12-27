@@ -226,7 +226,7 @@
 .public SpriteToUnionRoomAvatarIdx
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
-.public SizeOfStructPokemon
+.public Pokemon_Size
 .public Pokemon_New
 .public BoxPokemon_UnlockEncryption
 .public BoxPokemon_LockEncryption
