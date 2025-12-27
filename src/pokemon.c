@@ -4130,20 +4130,20 @@ BOOL Pokemon_IsBattleFacilityBanned(Pokemon *mon) {
     return Species_IsBattleFacilityBanned(species, form);
 }
 
-BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID) {
-    u32 myId = PlayerProfile_GetTrainerID(profile);
-    u32 otId = BoxPokemon_GetData(boxMon, MON_DATA_OT_ID, NULL);
-    u32 myGender = PlayerProfile_GetTrainerGender(profile);
+BOOL BoxPokemon_BelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *player, enum HeapID heapID) {
+    u32 playerID = PlayerProfile_GetTrainerID(player);
+    u32 otID = BoxPokemon_GetData(boxMon, MON_DATA_OT_ID, NULL);
+    u32 playerGender = PlayerProfile_GetTrainerGender(player);
     u32 otGender = BoxPokemon_GetData(boxMon, MON_DATA_OT_GENDER, NULL);
-    String *r7 = PlayerProfile_GetPlayerName_NewString(profile, heapID);
-    String *r6 = String_New(PLAYER_NAME_LENGTH + 1, heapID);
+    String *playerName = PlayerProfile_GetPlayerName_NewString(player, heapID);
+    String *otName = String_New(PLAYER_NAME_LENGTH + 1, heapID);
     BOOL ret = FALSE;
-    BoxPokemon_GetData(boxMon, MON_DATA_OT_NAME_STRING, r6);
-    if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {
+    BoxPokemon_GetData(boxMon, MON_DATA_OT_NAME_STRING, otName);
+    if (playerID == otID && playerGender == otGender && String_Compare(playerName, otName) == 0) {
         ret = TRUE;
     }
-    String_Delete(r6);
-    String_Delete(r7);
+    String_Delete(otName);
+    String_Delete(playerName);
     return ret;
 }
 

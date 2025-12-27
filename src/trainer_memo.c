@@ -752,7 +752,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         BoxMon_SetOriginalTrainerData(boxMon, profile, heapID);
         break;
     case 4:
-        if (BoxmonBelongsToPlayer(boxMon, profile, heapID) == TRUE) {
+        if (BoxPokemon_BelongsToPlayer(boxMon, profile, heapID) == TRUE) {
             if (!BoxPokemon_GetData(boxMon, MON_DATA_IS_EGG, NULL)) {
                 BoxMon_ClearMetDateAndLocation(boxMon, SETMETDATEPARAM_EGG);
                 BoxMon_SetMetDateAndLocation(boxMon, mapsec, SETMETDATEPARAM_MON);
@@ -780,7 +780,7 @@ void BoxMonSetTrainerMemo(BoxPokemon *boxMon, PlayerProfile *profile, int strat,
         if (mapsec > sub_02017FE4(MAPSECTYPE_GIFT, MAPLOC(METLOC_DAY_CARE_COUPLE))) {
             mapsec = MAPSEC_MYSTERY_ZONE;
         }
-        if (!BoxmonBelongsToPlayer(boxMon, profile, heapID)) {
+        if (!BoxPokemon_BelongsToPlayer(boxMon, profile, heapID)) {
             var = BoxPokemon_GetData(boxMon, MON_DATA_MET_LOCATION, NULL);
             BoxPokemon_SetData(boxMon, MON_DATA_EGG_LOCATION, &var);
 

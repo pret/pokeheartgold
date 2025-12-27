@@ -191,7 +191,7 @@ int ResolveMonForm(int species, int form);
 u32 MaskOfFlagNo(int flagno);
 BOOL Species_IsMythical(u16 species);
 BOOL Pokemon_IsBattleFacilityBanned(Pokemon *mon);
-BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID);
+BOOL BoxPokemon_BelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *player, enum HeapID heapID);
 int TrainerClassToBackpicID(int trainerClass, BOOL a1);
 void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3);
 void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6);
