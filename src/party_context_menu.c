@@ -646,7 +646,7 @@ void sub_0207D710(PartyMenu *partyMenu, u8 partySlot) {
     } else {
         PartyMenu_PrintMonLevelOnWindow(partyMenu, partySlot);
         Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partySlot);
-        if (!GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, NULL)) {
+        if (!Pokemon_GetEvolutionTarget(NULL, mon, EVO_CONTEXT_ITEM_USE, partyMenu->args->itemId, NULL)) {
             PartyMenu_PrintEvoStoneCompatString(partyMenu, partySlot, 1);
         } else {
             PartyMenu_PrintEvoStoneCompatString(partyMenu, partySlot, 0);

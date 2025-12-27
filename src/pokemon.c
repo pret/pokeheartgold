@@ -53,7 +53,7 @@ u8 Species_LoadSpriteYOffsetDP(u16 species, u8 gender, u8 face, u8 form, u32 pid
 u8 Species_LoadSpriteYOffset(u16 species, u8 gender, u8 face, u8 form, u32 pid);
 void sub_02070D3C(s32 trainer_class, s32 a1, BOOL a2, struct UnkStruct_02070D3C *a3);
 int TrainerClassToBackpicID(int trainer_class, int a1);
-void LoadMonEvolutionTable(u16 species, struct Evolution *evoTable);
+void Species_LoadEvolutions(u16 species, Evolution *dest);
 static BOOL Pokemon_HasMove(Pokemon *mon, u16 move_id);
 static s8 BoxPokemon_GetFlavorAffinity(BoxPokemon *boxMon, int flavor);
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
@@ -2812,228 +2812,227 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     return FALSE;
 }
 
-u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *method_ret) {
-    u16 species;
-    u16 heldItem;
-    u8 level;
-    int i;
-    u16 target = SPECIES_NONE;
-    u16 friendship;
-    u32 pid;
-    u8 holdEffect;
-    u8 beauty; // for Feebas, but queried unconditionally.
-    u16 pid_hi = 0;
-    struct Evolution *evoTable;
-    int method_local;
+u16 Pokemon_GetEvolutionTarget(Party *party, Pokemon *mon, u8 context, u16 evoParam, int *methodRet) {
+    u16 targetSpecies = SPECIES_NONE;
 
-    species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-    heldItem = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
-    pid = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
-    beauty = Pokemon_GetData(mon, MON_DATA_BEAUTY, NULL);
-    pid_hi = (u16)((pid & 0xFFFF0000) >> 16);
-    holdEffect = GetItemAttr(heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT);
+    u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u16 heldItem = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
+    u32 personality = Pokemon_GetData(mon, MON_DATA_PERSONALITY, NULL);
+    u8 beauty = Pokemon_GetData(mon, MON_DATA_BEAUTY, NULL);
+
+    int i;
+    u16 friendship;
+    u16 personalityUpper = (personality & 0xFFFF0000) >> 16;
+    u8 holdEffect = GetItemAttr(heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT);
+
     // Kadabra bypasses Everstone because he's just that broken.
-    if (species != SPECIES_KADABRA && holdEffect == HOLD_EFFECT_NO_EVOLVE && context != EVOCTX_ITEM_USE) {
+    if (species != SPECIES_KADABRA
+        && holdEffect == HOLD_EFFECT_NO_EVOLVE
+        && context != EVO_CONTEXT_ITEM_USE) {
         return SPECIES_NONE;
     }
+
     // Spiky-ear Pichu cannot evolve
     if (species == SPECIES_PICHU && Pokemon_GetData(mon, MON_DATA_FORM, 0) == 1) {
         return SPECIES_NONE;
     }
-    if (method_ret == NULL) {
-        method_ret = &method_local;
+
+    int stackVar;
+    if (methodRet == NULL) {
+        methodRet = &stackVar;
     }
-    evoTable = Heap_Alloc(HEAP_ID_DEFAULT, MAX_EVOS_PER_POKE * sizeof(struct Evolution));
-    LoadMonEvolutionTable(species, evoTable);
+    Evolution *evolutions = Heap_Alloc(HEAP_ID_DEFAULT, MAX_MON_EVOLUTIONS * sizeof(Evolution));
+    Species_LoadEvolutions(species, evolutions);
     switch (context) {
-    case EVOCTX_LEVELUP:
-        level = (u8)Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
-        friendship = (u16)Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
-        for (i = 0; i < 7; i++) {
-            switch (evoTable[i].method) {
+    case EVO_CONTEXT_LEVEL_UP:
+        u8 level = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL);
+        friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
+        for (i = 0; i < MAX_MON_EVOLUTIONS; i++) {
+            switch (evolutions[i].method) {
             case EVO_NONE:
+            case EVO_TRADE:
+            case EVO_TRADE_HELD_ITEM:
+            case EVO_USE_ITEM:
+            case EVO_USE_ITEM_MALE:
+            case EVO_USE_ITEM_FEMALE:
                 break;
-            case EVO_FRIENDSHIP:
-                if (friendship >= 220) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_FRIENDSHIP;
+            case EVO_LEVEL_FRIENDSHIP:
+                if (friendship >= FRIENDSHIP_EVO_THRESHOLD) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_FRIENDSHIP;
                 }
                 break;
-            case EVO_FRIENDSHIP_DAY:
-                if (IsNighttime() == 0 && friendship >= 220) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_FRIENDSHIP_DAY;
+            case EVO_LEVEL_FRIENDSHIP_DAY:
+                if (IsNighttime() == FALSE && friendship >= FRIENDSHIP_EVO_THRESHOLD) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_FRIENDSHIP_DAY;
                 }
                 break;
-            case EVO_FRIENDSHIP_NIGHT:
-                if (IsNighttime() == 1 && friendship >= 220) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_FRIENDSHIP_NIGHT;
+            case EVO_LEVEL_FRIENDSHIP_NIGHT:
+                if (IsNighttime() == TRUE && friendship >= FRIENDSHIP_EVO_THRESHOLD) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_FRIENDSHIP_NIGHT;
                 }
                 break;
             case EVO_LEVEL:
-                if (evoTable[i].param <= level) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL;
+                if (evolutions[i].param <= level) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL;
                 }
                 break;
-            case EVO_TRADE:
-                break;
-            case EVO_TRADE_ITEM:
-                break;
-            case EVO_STONE:
-                break;
             case EVO_LEVEL_ATK_GT_DEF:
-                if (evoTable[i].param <= level && Pokemon_GetData(mon, MON_DATA_ATK, NULL) > Pokemon_GetData(mon, MON_DATA_DEF, NULL)) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_ATK_GT_DEF;
+                if (evolutions[i].param <= level && Pokemon_GetData(mon, MON_DATA_ATK, NULL) > Pokemon_GetData(mon, MON_DATA_DEF, NULL)) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_ATK_GT_DEF;
                 }
                 break;
             case EVO_LEVEL_ATK_EQ_DEF:
-                if (evoTable[i].param <= level && Pokemon_GetData(mon, MON_DATA_ATK, NULL) == Pokemon_GetData(mon, MON_DATA_DEF, NULL)) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_ATK_EQ_DEF;
+                if (evolutions[i].param <= level && Pokemon_GetData(mon, MON_DATA_ATK, NULL) == Pokemon_GetData(mon, MON_DATA_DEF, NULL)) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_ATK_EQ_DEF;
                 }
                 break;
             case EVO_LEVEL_ATK_LT_DEF:
-                if (evoTable[i].param <= level && Pokemon_GetData(mon, MON_DATA_ATK, NULL) < Pokemon_GetData(mon, MON_DATA_DEF, NULL)) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_ATK_LT_DEF;
+                if (evolutions[i].param <= level && Pokemon_GetData(mon, MON_DATA_ATK, NULL) < Pokemon_GetData(mon, MON_DATA_DEF, NULL)) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_ATK_LT_DEF;
                 }
                 break;
-            case EVO_LEVEL_PID_LO:
-                if (evoTable[i].param <= level && pid_hi % 10 < 5) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_PID_LO;
+            case EVO_LEVEL_PID_LOW:
+                if (evolutions[i].param <= level && personalityUpper % 10 < 5) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_PID_LOW;
                 }
                 break;
-            case EVO_LEVEL_PID_HI:
-                if (evoTable[i].param <= level && pid_hi % 10 >= 5) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_PID_HI;
+            case EVO_LEVEL_PID_HIGH:
+                if (evolutions[i].param <= level && personalityUpper % 10 >= 5) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_PID_HIGH;
                 }
                 break;
             case EVO_LEVEL_NINJASK:
-                if (evoTable[i].param <= level) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_NINJASK;
+                if (evolutions[i].param <= level) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_NINJASK;
                 }
                 break;
             case EVO_LEVEL_SHEDINJA:
-                *method_ret = EVO_LEVEL_SHEDINJA;
+                *methodRet = EVO_LEVEL_SHEDINJA;
                 break;
-            case EVO_BEAUTY:
-                if (evoTable[i].param <= beauty) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_BEAUTY;
+            case EVO_LEVEL_BEAUTY:
+                if (evolutions[i].param <= beauty) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_BEAUTY;
                 }
                 break;
-            case EVO_STONE_MALE:
-                break;
-            case EVO_STONE_FEMALE:
-                break;
-            case EVO_ITEM_DAY:
-                if (IsNighttime() == 0 && evoTable[i].param == heldItem) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_ITEM_DAY;
+            case EVO_LEVEL_HELD_ITEM_DAY:
+                if (IsNighttime() == FALSE && evolutions[i].param == heldItem) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_HELD_ITEM_DAY;
                 }
                 break;
-            case EVO_ITEM_NIGHT:
-                if (IsNighttime() == 1 && evoTable[i].param == heldItem) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_ITEM_NIGHT;
+            case EVO_LEVEL_HELD_ITEM_NIGHT:
+                if (IsNighttime() == TRUE && evolutions[i].param == heldItem) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_HELD_ITEM_NIGHT;
                 }
                 break;
-            case EVO_HAS_MOVE:
-                if (Pokemon_HasMove(mon, evoTable[i].param) == TRUE) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_HAS_MOVE;
+            case EVO_LEVEL_KNOW_MOVE:
+                if (Pokemon_HasMove(mon, evolutions[i].param) == TRUE) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_KNOW_MOVE;
                 }
                 break;
-            case EVO_OTHER_PARTY_MON:
-                if (party != NULL && Party_HasMon(party, evoTable[i].param) == 1) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_OTHER_PARTY_MON;
+            case EVO_LEVEL_SPECIES_IN_PARTY:
+                if (party != NULL && Party_HasMon(party, evolutions[i].param) == TRUE) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_SPECIES_IN_PARTY;
                 }
                 break;
             case EVO_LEVEL_MALE:
-                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_MALE && evoTable[i].param <= level) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_MALE;
+                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_MALE && evolutions[i].param <= level) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_MALE;
                 }
                 break;
             case EVO_LEVEL_FEMALE:
-                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_FEMALE && evoTable[i].param <= level) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_LEVEL_FEMALE;
+                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_FEMALE && evolutions[i].param <= level) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_FEMALE;
                 }
                 break;
-            case EVO_CORONET:
-                if (usedItem == evoTable[i].method) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_CORONET;
+            case EVO_LEVEL_MAGNETIC_FIELD:
+                if (evoParam == evolutions[i].method) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_MAGNETIC_FIELD;
                 }
                 break;
-            case EVO_ETERNA:
-                if (usedItem == evoTable[i].method) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_ETERNA;
+            case EVO_LEVEL_MOSS_ROCK:
+                if (evoParam == evolutions[i].method) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_MOSS_ROCK;
                 }
                 break;
-            case EVO_ROUTE217:
-                if (usedItem == evoTable[i].method) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_ROUTE217;
+            case EVO_LEVEL_ICE_ROCK:
+                if (evoParam == evolutions[i].method) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_LEVEL_ICE_ROCK;
                 }
                 break;
             }
-            if (target != SPECIES_NONE) {
+
+            if (targetSpecies != SPECIES_NONE) {
                 break;
             }
         }
         break;
-    case EVOCTX_TRADE:
-        for (i = 0; i < 7; i++) {
-            switch (evoTable[i].method) {
+    case EVO_CONTEXT_TRADE:
+        for (i = 0; i < MAX_MON_EVOLUTIONS; i++) {
+            switch (evolutions[i].method) {
             case EVO_TRADE:
-                target = evoTable[i].target;
-                *method_ret = EVO_TRADE;
+                targetSpecies = evolutions[i].target;
+                *methodRet = EVO_TRADE;
                 break;
-            case EVO_TRADE_ITEM:
-                if (heldItem == evoTable[i].param) {
-                    target = evoTable[i].target;
-                    *method_ret = EVO_TRADE_ITEM;
+            case EVO_TRADE_HELD_ITEM:
+                if (heldItem == evolutions[i].param) {
+                    targetSpecies = evolutions[i].target;
+                    *methodRet = EVO_TRADE_HELD_ITEM;
                 }
                 break;
             }
-            if (target != SPECIES_NONE) {
+
+            if (targetSpecies != SPECIES_NONE) {
                 break;
             }
         }
         break;
-    case EVOCTX_ITEM_CHECK:
-    case EVOCTX_ITEM_USE:
-        for (i = 0; i < 7; i++) {
-            if (evoTable[i].method == EVO_STONE && usedItem == evoTable[i].param) {
-                target = evoTable[i].target;
-                *method_ret = 0;
+    case EVO_CONTEXT_ITEM_CHECK:
+    case EVO_CONTEXT_ITEM_USE:
+        for (i = 0; i < MAX_MON_EVOLUTIONS; i++) {
+            if (evolutions[i].method == EVO_USE_ITEM && evoParam == evolutions[i].param) {
+                targetSpecies = evolutions[i].target;
+                *methodRet = EVO_NONE;
                 break;
             }
-            if (evoTable[i].method == EVO_STONE_MALE && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_MALE && usedItem == evoTable[i].param) {
-                target = evoTable[i].target;
-                *method_ret = 0;
+            if (evolutions[i].method == EVO_USE_ITEM_MALE
+                && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_MALE
+                && evoParam == evolutions[i].param) {
+                targetSpecies = evolutions[i].target;
+                *methodRet = EVO_NONE;
                 break;
             }
-            if (evoTable[i].method == EVO_STONE_FEMALE && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_FEMALE && usedItem == evoTable[i].param) {
-                target = evoTable[i].target;
-                *method_ret = 0;
+            if (evolutions[i].method == EVO_USE_ITEM_FEMALE
+                && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_FEMALE
+                && evoParam == evolutions[i].param) {
+                targetSpecies = evolutions[i].target;
+                *methodRet = EVO_NONE;
                 break;
             }
         }
         break;
     }
-    Heap_Free(evoTable);
-    return target;
+    Heap_Free(evolutions);
+    return targetSpecies;
 }
 
 u16 ReadFromPersonalPmsNarc(u16 species) {
@@ -3941,8 +3940,8 @@ void SpeciesData_LoadForm(int species, int form, SpeciesData *speciesData) {
     ReadWholeNarcMemberByIdPair(speciesData, NARC_poketool_personal_personal, ResolveMonForm(species, form));
 }
 
-void LoadMonEvolutionTable(u16 species, struct Evolution *evo) {
-    ReadWholeNarcMemberByIdPair(evo, NARC_poketool_personal_evo, species);
+void Species_LoadEvolutions(u16 species, Evolution *dest) {
+    ReadWholeNarcMemberByIdPair(dest, NARC_poketool_personal_evo, species);
 }
 
 void MonEncryptSegment(void *data, u32 size, u32 seed) {

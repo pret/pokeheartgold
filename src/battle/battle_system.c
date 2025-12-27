@@ -715,7 +715,7 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
         }
         if (*selectedMonIndex < PARTY_SIZE) {
             mon = Party_GetMonByIndex(setup->party[0], *selectedMonIndex);
-            species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
+            species = Pokemon_GetEvolutionTarget(setup->party[0], mon, EVO_CONTEXT_LEVEL_UP, setup->evolutionLocation, evolutionCondition);
             if (species) {
                 return species;
             }

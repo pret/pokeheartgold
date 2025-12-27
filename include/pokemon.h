@@ -95,7 +95,7 @@ void Pokemon_SwapMoveSlots(Pokemon *mon, int slot1, int slot2);
 void BoxPokemon_SwapMoveSlots(BoxPokemon *boxMon, int slot1, int slot2);
 BoxPokemon *Pokemon_GetBoxMon(Pokemon *mon);
 
-u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *method_ret);
+u16 Pokemon_GetEvolutionTarget(Party *party, Pokemon *mon, u8 context, u16 evoParam, int *methodRet);
 u16 ReadFromPersonalPmsNarc(u16 species);
 u16 GetEggSpecies(u16 species);
 void Pokemon_SetMoveInSlot(Pokemon *mon, u16 move, u8 slot);
@@ -181,7 +181,7 @@ void Pokemon_SetPersonality(Pokemon *mon, u32 personality);
 u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
 void SpeciesData_LoadSpecies(int species, SpeciesData *personal);
 void SpeciesData_LoadForm(int species, int form, SpeciesData *speciesData);
-void LoadMonEvolutionTable(u16 species, struct Evolution *evo);
+void Species_LoadEvolutions(u16 species, Evolution *dest);
 void MonEncryptSegment(void *data, u32 size, u32 seed);
 void MonDecryptSegment(void *data, u32 size, u32 seed);
 u32 CalcMonChecksum(void *_data, u32 size);

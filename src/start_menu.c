@@ -918,7 +918,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
     case PARTY_MENU_ACTION_RETURN_EVO_ITEM_USE: {
         UnkStruct_0203CA9C_Case8 *unk = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0203CA9C_Case8));
         unk->evoParam = partyMenuArgs->itemId;
-        unk->evoType = EVOCTX_ITEM_USE;
+        unk->evoType = EVO_CONTEXT_ITEM_USE;
         unk->partySlot = partyMenuArgs->partySlot;
         unk->species = partyMenuArgs->species;
         unk->evoMethod = partyMenuArgs->evoMethod;
@@ -929,7 +929,7 @@ BOOL Task_StartMenu_HandleReturn_Pokemon(TaskManager *taskManager) {
     case PARTY_MENU_ACTION_RETURN_EVO_RARE_CANDY: {
         UnkStruct_0203CA9C_Case8 *unk = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0203CA9C_Case8));
         unk->evoParam = MapHeader_GetMapEvolutionMethod(fieldSystem->location->mapId);
-        unk->evoType = EVOCTX_LEVELUP;
+        unk->evoType = EVO_CONTEXT_LEVEL_UP;
         unk->partySlot = partyMenuArgs->partySlot;
         unk->species = partyMenuArgs->species;
         unk->evoMethod = partyMenuArgs->evoMethod;
@@ -1467,7 +1467,7 @@ static void Task_StartMenu_Evolution(TaskManager *taskManager) {
     Party *party = SaveArray_Party_Get(fieldSystem->saveData);
     Pokemon *pokemon = Party_GetMonByIndex(party, unk->partySlot);
     EvolutionTaskData *evolution;
-    if (unk->evoType == EVOCTX_LEVELUP) {
+    if (unk->evoType == EVO_CONTEXT_LEVEL_UP) {
         evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->evoMethod, TRUE, HEAP_ID_EVOLUTION);
     } else {
         evolution = sub_02075A7C(party, pokemon, unk->species, Save_PlayerData_GetOptionsAddr(fieldSystem->saveData), sub_02088288(fieldSystem->saveData), Save_Pokedex_Get(fieldSystem->saveData), Save_Bag_Get(fieldSystem->saveData), Save_GameStats_Get(fieldSystem->saveData), unk->evoMethod, FALSE, HEAP_ID_EVOLUTION);

@@ -300,12 +300,12 @@ typedef struct UnkStruct_02070D3C {
     s32 ncbr_id;
 } UnkStruct_02070D3C;
 
-struct Evolution {
+typedef struct Evolution {
     u16 method;
     u16 param;
     u16 target;
-};
-#define MAX_EVOS_PER_POKE 7
+} Evolution;
+#define MAX_MON_EVOLUTIONS 7
 
 typedef struct PartyCore {
     int maxCount;

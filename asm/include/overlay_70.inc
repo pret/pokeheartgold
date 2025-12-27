@@ -237,7 +237,7 @@
 .public BoxPokemon_CalcLevel
 .public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
-.public GetMonEvolution
+.public Pokemon_GetEvolutionTarget
 .public BoxPokemon_CopyToPokemon
 .public Pokemon_Copy
 .public Pokemon_UpdateShayminForm

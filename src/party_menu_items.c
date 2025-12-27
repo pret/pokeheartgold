@@ -679,7 +679,7 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
     case 6:
         mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
         mapEvoMethod = MapHeader_GetMapEvolutionMethod(partyMenu->args->fieldSystem->location->mapId);
-        partyMenu->args->species = GetMonEvolution(partyMenu->args->party, mon, EVOCTX_LEVELUP, mapEvoMethod, &partyMenu->args->evoMethod);
+        partyMenu->args->species = Pokemon_GetEvolutionTarget(partyMenu->args->party, mon, EVO_CONTEXT_LEVEL_UP, mapEvoMethod, &partyMenu->args->evoMethod);
         partyMenu->args->selectedAction = partyMenu->args->species != SPECIES_NONE ? PARTY_MENU_ACTION_RETURN_EVO_RARE_CANDY : PARTY_MENU_ACTION_RETURN_0;
         return PARTY_MENU_STATE_BEGIN_EXIT;
     }

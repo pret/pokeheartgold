@@ -2429,7 +2429,7 @@ static int PartyMenu_HandleUseItemOnMon(PartyMenu *partyMenu) {
         Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
         if (GetItemAttr_PreloadedItemData(itemData, ITEMATTR_EVOLVE)) {
             Pokemon *mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
-            partyMenu->args->species = GetMonEvolution(NULL, mon, EVOCTX_ITEM_USE, partyMenu->args->itemId, &partyMenu->args->evoMethod);
+            partyMenu->args->species = Pokemon_GetEvolutionTarget(NULL, mon, EVO_CONTEXT_ITEM_USE, partyMenu->args->itemId, &partyMenu->args->evoMethod);
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_EVO_ITEM_USE;
             Heap_Free(itemData);
             return PARTY_MENU_STATE_BEGIN_EXIT;

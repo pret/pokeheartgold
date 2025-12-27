@@ -19896,7 +19896,7 @@ _0224166E:
 	add r1, r6, #0
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl GetMonEvolution
+	bl Pokemon_GetEvolutionTarget
 	add r2, r0, #0
 	beq _022416DA
 	ldr r3, [r5]
@@ -19984,7 +19984,7 @@ _02241742:
 	add r1, r6, #0
 	mov r2, #1
 	lsr r3, r3, #0x10
-	bl GetMonEvolution
+	bl Pokemon_GetEvolutionTarget
 	add r2, r0, #0
 	beq _02241798
 	ldr r3, [r5]
