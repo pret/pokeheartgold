@@ -28,6 +28,7 @@ void ov18_021E7BD0(PokedexAppData *pokedexApp);
 void ov18_021E7D90(PokedexAppData *pokedexApp);
 void ov18_021E7ED8(PokedexAppData *pokedexApp);
 void ov18_021E800C(PokedexAppData *pokedexApp);
+u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1);
 void ov18_021EE3FC(PokedexAppData *pokedexApp);
 void ov18_021EEE58(PokedexAppData *pokedexApp);
 void ov18_021F021C(PokedexAppData *pokedexApp);
@@ -1265,4 +1266,64 @@ void ov18_021E81A8(PokedexAppData *pokedexApp) {
     ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_2);
     ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_MAIN_3);
     ScheduleBgTilemapBufferTransfer(pokedexApp->unk_0004, GF_BG_LYR_SUB_3);
+}
+
+void ov18_021E8254(PokedexAppData *pokedexApp) {
+    memset(pokedexApp->unk_18A4, 0, sizeof(pokedexApp->unk_18A4));
+
+    switch (pokedexApp->unk_18A2) {
+    case SPECIES_UNOWN:
+    case SPECIES_PICHU:
+    case SPECIES_DEOXYS:
+    case SPECIES_BURMY:
+    case SPECIES_WORMADAM:
+    case SPECIES_SHELLOS:
+    case SPECIES_GASTRODON:
+    case SPECIES_ROTOM:
+    case SPECIES_GIRATINA:
+    case SPECIES_SHAYMIN:
+        pokedexApp->unk_18C4 = Pokedex_GetSeenFormNum(pokedexApp->unk_0000->pokedex, pokedexApp->unk_18A2);
+        for (u32 i = 0; i < pokedexApp->unk_18C4; ++i) {
+            pokedexApp->unk_18A4[i] = Pokedex_GetSeenFormByIdx(pokedexApp->unk_0000->pokedex, pokedexApp->unk_18A2, i) | 0x80;
+        }
+        break;
+    case SPECIES_CASTFORM:
+        pokedexApp->unk_18C4 = 4;
+        for (u32 i = 0; i < pokedexApp->unk_18C4; ++i) {
+            pokedexApp->unk_18A4[i] = i | 0x80;
+        }
+        break;
+    case SPECIES_CHERRIM:
+        pokedexApp->unk_18C4 = 2;
+        for (u32 i = 0; i < pokedexApp->unk_18C4; ++i) {
+            pokedexApp->unk_18A4[i] = i | 0x80;
+        }
+        break;
+    default:
+        pokedexApp->unk_18A4[0] = ov18_021E83D0(pokedexApp, 0);
+        pokedexApp->unk_18A4[1] = ov18_021E83D0(pokedexApp, 1);
+        if (pokedexApp->unk_18A4[1] == 0) {
+            pokedexApp->unk_18C4 = 1;
+        } else {
+            pokedexApp->unk_18C4 = 2;
+        }
+        break;
+    }
+}
+
+u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1) {
+    switch (Pokedex_SpeciesGetLastSeenGender(pokedexApp->unk_0000->pokedex, pokedexApp->unk_18A2, a1)) {
+    case MON_MALE:
+        return 1;
+    case MON_FEMALE:
+        return 2;
+    case MON_GENDERLESS:
+        return 3;
+    default:
+        if (a1 == 0) {
+            return 3;
+        } else {
+            return 0;
+        }
+    }
 }

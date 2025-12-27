@@ -74,7 +74,7 @@ struct PokedexAppData {
     int unk_1898;
     u8 filler_189C[6];
     u16 unk_18A2;
-    u8 filler_18A4[0x20];
+    u8 unk_18A4[0x20];
     s8 unk_18C4;
     u8 filler_18C5[0x4B];
 }; // size: 0x1910
@@ -148,6 +148,7 @@ void ov18_021EF45C(PokedexAppData *pokedexApp);
 void ov18_021EF528(PokedexAppData *pokedexApp);
 void ov18_021EF5D8(PokedexAppData *pokedexApp);
 void ov18_021EF764(PokedexAppData *pokedexApp);
+void ov18_021E8254(PokedexAppData *pokedexApp);
 void ov18_021EF848(PokedexAppData *pokedexApp);
 void ov18_021EF91C(PokedexAppData *pokedexApp);
 void ov18_021EF9B4(PokedexAppData *pokedexApp);
