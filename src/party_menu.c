@@ -2517,7 +2517,7 @@ static int PartyMenu_GiveItemToMon_HandleGriseousOrb(PartyMenu *partyMenu, Pokem
     Bag_TakeItem(partyMenu->args->bag, partyMenu->args->itemId, 1, HEAP_ID_PARTY_MENU);
     Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &itemToBeHeld);
     Pokemon_UpdateArceusForm(mon);
-    *transformResult = Mon_UpdateGiratinaForm(mon);
+    *transformResult = Pokemon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = partyMenu->args->itemId;
     PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
     if (itemToBeHeld == ITEM_GRISEOUS_ORB && *transformResult != -1) {
@@ -2531,7 +2531,7 @@ static void PartyMenu_SwapMonHeldItem(PartyMenu *partyMenu, Pokemon *mon, u32 ol
     Bag_AddItem(partyMenu->args->bag, oldItemId, 1, HEAP_ID_PARTY_MENU);
     Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &newItemId);
     Pokemon_UpdateArceusForm(mon);
-    Mon_UpdateGiratinaForm(mon);
+    Pokemon_UpdateGiratinaForm(mon);
     partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = newItemId;
     PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
 }

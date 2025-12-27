@@ -57,7 +57,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
         work->species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         switch (work->species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForm(mon);
+            Pokemon_UpdateGiratinaForm(mon);
             work->duration = 65;
             work->fileId = NARC_particle_giratina;
             break;

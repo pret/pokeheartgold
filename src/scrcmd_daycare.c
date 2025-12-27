@@ -232,7 +232,7 @@ BOOL ScrCmd_DaycareSanitizeMon(ScriptContext *ctx) {
         u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
         switch (species) {
         case SPECIES_GIRATINA:
-            Mon_UpdateGiratinaForm(mon);
+            Pokemon_UpdateGiratinaForm(mon);
             break;
         case SPECIES_ROTOM:
             Mon_UpdateRotomForm(mon, 0, 0);

@@ -83,7 +83,7 @@
 .public Pokemon_TryLevelUpMove
 .public Pokemon_Copy
 .public Party_MaskHasPokerus
-.public Mon_UpdateGiratinaForm
+.public Pokemon_UpdateGiratinaForm
 .public MaskOfFlagNo
 .public PCStorage_PlaceMonInBoxFirstEmptySlot
 .public PCStorage_GetActiveBox

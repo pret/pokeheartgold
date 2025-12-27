@@ -462,7 +462,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
             species = Pokemon_GetData(mon, MON_DATA_SPECIES, 0);
             switch (species) {
             case SPECIES_GIRATINA:
-                Mon_UpdateGiratinaForm(mon);
+                Pokemon_UpdateGiratinaForm(mon);
                 break;
             case SPECIES_ROTOM:
                 Mon_UpdateRotomForm(mon, 0, 0);

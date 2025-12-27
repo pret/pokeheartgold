@@ -1545,7 +1545,7 @@ _021E6510:
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10
 	add r0, r4, #0
-	bl BoxMon_UpdateGiratinaForm
+	bl BoxPokemon_UpdateGiratinaForm
 	add r0, r4, #0
 	mov r1, #0x70
 	mov r2, #0

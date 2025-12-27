@@ -3512,20 +3512,20 @@ u32 HoldEffect_GetArceusType(u16 holdEffect) {
     }
 }
 
-s32 Mon_UpdateGiratinaForm(Pokemon *mon) {
-    s32 ret = BoxMon_UpdateGiratinaForm(&mon->box);
+s32 Pokemon_UpdateGiratinaForm(Pokemon *mon) {
+    s32 ret = BoxPokemon_UpdateGiratinaForm(&mon->box);
     if (ret != -1) {
         Pokemon_CalcLevelAndStats(mon);
     }
     return ret;
 }
 
-s32 BoxMon_UpdateGiratinaForm(BoxPokemon *boxMon) {
+s32 BoxPokemon_UpdateGiratinaForm(BoxPokemon *boxMon) {
     int species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
-    int heldItem = BoxPokemon_GetData(boxMon, MON_DATA_HELD_ITEM, NULL);
-    int form;
+    int item = BoxPokemon_GetData(boxMon, MON_DATA_HELD_ITEM, NULL);
     if (species == SPECIES_GIRATINA) {
-        if (heldItem == ITEM_GRISEOUS_ORB) {
+    	int form;
+        if (item == ITEM_GRISEOUS_ORB) {
             form = GIRATINA_FORM_ORIGIN;
         } else {
             form = GIRATINA_FORM_ALTERED;
@@ -3537,7 +3537,7 @@ s32 BoxMon_UpdateGiratinaForm(BoxPokemon *boxMon) {
     return -1;
 }
 
-void Mon_ForceSetGiratinaOriginForm(Pokemon *mon) {
+void Pokemon_ForceSetGiratinaOriginForm(Pokemon *mon) {
     s32 form = GIRATINA_FORM_ORIGIN;
     if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) == SPECIES_GIRATINA) {
         BoxPokemon_SetData(&mon->box, MON_DATA_FORM, &form);
@@ -3546,16 +3546,14 @@ void Mon_ForceSetGiratinaOriginForm(Pokemon *mon) {
     }
 }
 
-void Party_UpdateAllGiratina_DistortionWorld(Party *party, BOOL force_origin) {
-    int npoke = Party_GetCount(party);
-    int i;
-    Pokemon *mon;
-    for (i = 0; i < npoke; i++) {
-        mon = Party_GetMonByIndex(party, i);
-        if (force_origin) {
-            Mon_ForceSetGiratinaOriginForm(mon);
+void Party_UpdateGiratinaForms(Party *party, BOOL forceOrigin) {
+    int count = Party_GetCount(party);
+    for (int i = 0; i < count; i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, i);
+        if (forceOrigin) {
+            Pokemon_ForceSetGiratinaOriginForm(mon);
         } else {
-            Mon_UpdateGiratinaForm(mon);
+            Pokemon_UpdateGiratinaForm(mon);
         }
     }
 }

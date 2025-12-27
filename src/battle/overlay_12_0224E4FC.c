@@ -5382,7 +5382,7 @@ BOOL Battler_CheckWeatherFormChange(BattleSystem *battleSystem, BattleContext *c
                     Pokemon_SetData(mon2, MON_DATA_HELD_ITEM, &dat);
                     dat = (u8)GIRATINA_FORM_ALTERED;
                     Pokemon_SetData(mon2, MON_DATA_FORM, &dat);
-                    Mon_UpdateGiratinaForm(mon2);
+                    Pokemon_UpdateGiratinaForm(mon2);
                     ctx->battleMons[ctx->battlerIdTemp].atk = Pokemon_GetData(mon2, MON_DATA_ATK, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].def = Pokemon_GetData(mon2, MON_DATA_DEF, NULL);
                     ctx->battleMons[ctx->battlerIdTemp].speed = Pokemon_GetData(mon2, MON_DATA_SPEED, NULL);

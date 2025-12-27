@@ -143,7 +143,7 @@ static void PartyMonContextMenuAction_Take(PartyMenu *partyMenu, int *pState) {
             u32 itemId = ITEM_NONE;
             Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &itemId);
             Pokemon_UpdateArceusForm(mon);
-            griseousOrbResult = Mon_UpdateGiratinaForm(mon);
+            griseousOrbResult = Pokemon_UpdateGiratinaForm(mon);
             if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_GRISEOUS_ORB && griseousOrbResult == FALSE) {
                 newState = PARTY_MENU_STATE_PRINT_TAKE_GRISEOUS_ORB_MESSAGE;
             }
@@ -267,7 +267,7 @@ static int PartyMenu_TakeMail_ReturnToBag(PartyMenu *partyMenu) {
         u32 itemId = ITEM_NONE;
         Pokemon_SetData(mon, MON_DATA_HELD_ITEM, &itemId);
         Pokemon_UpdateArceusForm(mon);
-        Mon_UpdateGiratinaForm(mon);
+        Pokemon_UpdateGiratinaForm(mon);
         partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem = ITEM_NONE;
         PartyMenu_DrawMonHeldItemIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem);
         PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00052, FALSE);

@@ -4361,7 +4361,7 @@ BOOL ScrCmd_696(ScriptContext *ctx) {
     int i, partyCount;
     Pokemon *mon;
 
-    Party_UpdateAllGiratina_DistortionWorld(party, r5);
+    Party_UpdateGiratinaForms(party, r5);
     partyCount = Party_GetCount(party);
     for (i = 0; i < partyCount; i++) {
         mon = Party_GetMonByIndex(party, i);
