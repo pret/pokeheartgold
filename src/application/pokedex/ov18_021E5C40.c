@@ -30,6 +30,10 @@ void ov18_021E7D90(PokedexAppData *pokedexApp);
 void ov18_021E7ED8(PokedexAppData *pokedexApp);
 void ov18_021E800C(PokedexAppData *pokedexApp);
 u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1);
+void ov18_021E8698(PokedexAppData_UnkSub18DC *a0, u16 a1, int a2);
+void ov18_021E8714(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC *a1, int a2, int a3);
+void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC *a1, int a2, int a3, int a4);
+void ov18_021E8A00(PokedexAppData *pokedexApp);
 void ov18_021EE3FC(PokedexAppData *pokedexApp);
 void ov18_021EEE58(PokedexAppData *pokedexApp);
 void ov18_021F021C(PokedexAppData *pokedexApp);
@@ -1358,4 +1362,76 @@ void ov18_021E84EC(PokedexAppData *pokedexApp) {
     Heap_Free(r5->unk_4);
     Heap_Free(r5->unk_8);
     Heap_Free(r5->unk_C);
+}
+
+void ov18_021E8528(PokedexAppData *pokedexApp, int a1, int a2) {
+    ov18_021E8698(&pokedexApp->unk_18DC, pokedexApp->unk_18A2, a1 + 4);
+    ov18_021E8698(&pokedexApp->unk_18E4, pokedexApp->unk_18A2, 7);
+    ov18_021E8698(&pokedexApp->unk_18EC, pokedexApp->unk_18A2, a1);
+    ov18_021E8698(&pokedexApp->unk_18F4, pokedexApp->unk_18A2, 3);
+
+    u32 r2 = 1;
+    r2 += pokedexApp->unk_18DC.unk_4 - 1;
+    r2 += pokedexApp->unk_18E4.unk_4 - 1;
+    r2 += pokedexApp->unk_18EC.unk_4 - 1;
+    r2 += pokedexApp->unk_18F4.unk_4 - 1;
+
+    pokedexApp->unk_18FC = Heap_Alloc(HEAP_ID_37, sizeof(u32) * r2);
+    pokedexApp->unk_1904 = Heap_Alloc(HEAP_ID_37, sizeof(u32) * r2);
+    MI_CpuClear32(pokedexApp->unk_18FC, sizeof(u32) * r2);
+    MI_CpuClear32(pokedexApp->unk_1904, sizeof(u32) * r2);
+    pokedexApp->unk_18FC[0] = -2;
+    pokedexApp->unk_1900 = 1;
+    pokedexApp->unk_1904[0] = 0;
+
+    ov18_021E8714(pokedexApp, &pokedexApp->unk_18DC, a2, 0);
+    ov18_021E8714(pokedexApp, &pokedexApp->unk_18E4, a2, 1);
+    u32 r6 = pokedexApp->unk_1900;
+    ov18_021E8878(pokedexApp, &pokedexApp->unk_18EC, a2, r6, 0);
+    ov18_021E8878(pokedexApp, &pokedexApp->unk_18F4, a2, r6, 1);
+    ov18_021E8A00(pokedexApp);
+}
+
+void ov18_021E8648(PokedexAppData *pokedexApp) {
+    Heap_Free(pokedexApp->unk_18DC.unk_0);
+    Heap_Free(pokedexApp->unk_18E4.unk_0);
+    Heap_Free(pokedexApp->unk_18EC.unk_0);
+    Heap_Free(pokedexApp->unk_18F4.unk_0);
+    Heap_Free(pokedexApp->unk_18FC);
+    Heap_Free(pokedexApp->unk_1904);
+}
+
+void ov18_021E8698(PokedexAppData_UnkSub18DC *a0, u16 a1, int a2) {
+    int r3;
+    u32 sp8;
+
+    switch (a2) {
+    case 0:
+        r3 = 2;
+        break;
+    case 1:
+        r3 = 0x1F1;
+        break;
+    case 2:
+        r3 = 0x3E0;
+        break;
+    case 3:
+        r3 = 0xB9C;
+        break;
+    case 4:
+        r3 = 0x5CF;
+        break;
+    case 5:
+        r3 = 0x7BE;
+        break;
+    case 6:
+        r3 = 0x9AD;
+        break;
+    case 7:
+        r3 = 0xD8B;
+        break;
+    }
+    // UB: if unexpected a2, r3 is uninitialized
+    a0->unk_0 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, r3 + a1, FALSE, HEAP_ID_37, FALSE, &sp8);
+    a0->unk_4 = sp8 / sizeof(u32);
 }
