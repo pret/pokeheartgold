@@ -529,6 +529,7 @@ include files/demo/legend.mk
 include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
+include files/application/zukanlist/zukan_data/zukan_enc.mk
 include files/data/photo_data.mk
 include files/tel/pmtel_book.mk
 include files/graphic/camera_viewfinder.mk

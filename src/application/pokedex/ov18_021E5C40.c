@@ -18,7 +18,7 @@ static void ov18_021E6070(void);
 static void ov18_021E60B4(void);
 static void ov18_021E60F8(void);
 static void ov18_021E6868(PokedexAppData *pokedexApp);
-static void ov18_021E6A98(u16 *a0, u16 a1, u16 a2);
+static void PokedexApp_3DigitNumToTiles(u16 *a0, u16 a1, u16 a2);
 static void ov18_021E7048(PokedexAppData *pokedexApp);
 static void ov18_021E7448(PokedexAppData *pokedexApp, const UnkStruct_ov18_021F9780 *a1, BOOL a2);
 static void ov18_021E7490(PokedexAppData *pokedexApp, const UnkStruct_ov18_021F9780 *a1, int *a2, int a3);
@@ -38,7 +38,7 @@ static void ov18_021E8A00(PokedexAppData *pokedexApp);
 static u32 ov18_021E8B40(void);
 static u32 ov18_021E8B78(void);
 
-static const u16 ov18_021F9954[70] = {
+static const u16 sOverworldMapIDs[70] = {
     0xFFFF,
     MAP_NEW_BARK,
     MAP_ROUTE_29,
@@ -111,7 +111,7 @@ static const u16 ov18_021F9954[70] = {
     0xFFFF,
 };
 
-static const u16 ov18_021F98D8[] = {
+static const u16 sDungeonMapIDs[] = {
     0xFFFF,
     MAP_SPROUT_TOWER_2F,
     MAP_RUINS_OF_ALPH,
@@ -140,7 +140,7 @@ static const u16 ov18_021F98D8[] = {
     MAP_CERULEAN_CAVE_1F,
 };
 
-static const int ov18_021F99E0[142] = {
+static const int sMapIDs_Alphabetical[142] = {
     MAP_ROUTE_1,
     MAP_ROUTE_2,
     MAP_ROUTE_2_EAST,
@@ -285,7 +285,7 @@ static const int ov18_021F99E0[142] = {
     MAP_WHIRL_ISLANDS_B3F_LUGIA_CAVE,
 };
 
-static const GraphicsBanks ov18_021F98B0 = {
+static const GraphicsBanks sGraphicsBanks = {
     .bg = GX_VRAM_BG_128_B,
     .bgextpltt = GX_VRAM_BGEXTPLTT_NONE,
     .subbg = GX_VRAM_SUB_BG_128_C,
@@ -298,7 +298,7 @@ static const GraphicsBanks ov18_021F98B0 = {
     .texpltt = GX_VRAM_TEXPLTT_01_FG,
 };
 
-static const u8 ov18_021F9C18[6] = {
+static const u8 sLanguages[6] = {
     LANGUAGE_JAPANESE,
     LANGUAGE_ENGLISH,
     LANGUAGE_FRENCH,
@@ -385,7 +385,7 @@ void ov18_021E5C40(void *cb_arg) {
 }
 
 void ov18_021E5C74(void) {
-    GfGfx_SetBanks(&ov18_021F98B0);
+    GfGfx_SetBanks(&sGraphicsBanks);
 }
 
 void ov18_021E5C84(PokedexAppData *pokedexApp) {
@@ -1036,12 +1036,14 @@ void ov18_021E6A70(PokedexAppData *pokedexApp) {
     }
 }
 
-static void ov18_021E6A98(u16 *a0, u16 a1, u16 a2) {
-    u8 sp4[3] = { 100, 10, 1 };
+static void PokedexApp_3DigitNumToTiles(u16 *dest, u16 num, u16 baseTile) {
+    u8 pow10s[3] = { 100, 10, 1 };
+
+    // GF_ASSERT(num <= 999);
 
     for (u8 i = 0; i < 3; ++i) {
-        a0[i] = (a2 + (a1 / sp4[i])) | 0x1000;
-        a1 %= sp4[i];
+        dest[i] = (baseTile + (num / pow10s[i])) | 0x1000;
+        num %= pow10s[i];
     }
 }
 
@@ -1059,9 +1061,9 @@ u16 *ov18_021E6AEC(PokedexAppData *pokedexApp, u32 a1) {
             }
             if (pokedexApp->unk_1030[r1].unk_2 == 2) {
                 ret[160 * i + 36 + 5 * j] = 0x1002;
-                ov18_021E6A98(&ret[160 * i + 37 + 5 * j], r1 + 1, 3);
+                PokedexApp_3DigitNumToTiles(&ret[160 * i + 37 + 5 * j], r1 + 1, 3);
             } else {
-                ov18_021E6A98(&ret[160 * i + 37 + 5 * j], r1 + 1, 14);
+                PokedexApp_3DigitNumToTiles(&ret[160 * i + 37 + 5 * j], r1 + 1, 14);
             }
         }
     }
@@ -1083,9 +1085,9 @@ u16 *ov18_021E6BB8(PokedexAppData *pokedexApp, u32 a1) {
             u32 r1 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, pokedexApp->unk_1030[sp4].unk_0);
             if (pokedexApp->unk_1030[sp4].unk_2 == 2) {
                 ret[160 * i + 36 + 5 * j] = 0x1002;
-                ov18_021E6A98(&ret[160 * i + 37 + 5 * j], r1, 3);
+                PokedexApp_3DigitNumToTiles(&ret[160 * i + 37 + 5 * j], r1, 3);
             } else {
-                ov18_021E6A98(&ret[160 * i + 37 + 5 * j], r1, 14);
+                PokedexApp_3DigitNumToTiles(&ret[160 * i + 37 + 5 * j], r1, 14);
             }
         }
     }
@@ -1124,8 +1126,8 @@ BOOL ov18_021E6D10(PokedexAppData *pokedexApp, u16 species, u16 language) {
 }
 
 BOOL ov18_021E6D38(PokedexAppData *pokedexApp, u16 species) {
-    for (int i = 0; i < NELEMS(ov18_021F9C18); ++i) {
-        if (ov18_021F9C18[i] != GAME_LANGUAGE && ov18_021E6D10(pokedexApp, species, ov18_021F9C18[i]) == TRUE) {
+    for (int i = 0; i < NELEMS(sLanguages); ++i) {
+        if (sLanguages[i] != GAME_LANGUAGE && ov18_021E6D10(pokedexApp, species, sLanguages[i]) == TRUE) {
             return TRUE;
         }
     }
@@ -1895,7 +1897,7 @@ static void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 species, int a2) 
         break;
     }
     // UB: if unexpected a2, r3 is uninitialized
-    a0->maps = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, base + species, FALSE, HEAP_ID_37, FALSE, &size);
+    a0->maps = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_enc, base + species, FALSE, HEAP_ID_37, FALSE, &size);
     a0->nMaps = size / sizeof(u32);
 }
 
@@ -1989,8 +1991,8 @@ static void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_
 }
 
 static u32 ov18_021E89DC(u32 a0) {
-    for (u32 i = 0; i < NELEMS(ov18_021F99E0); ++i) {
-        if (a0 == ov18_021F99E0[i]) {
+    for (u32 i = 0; i < NELEMS(sMapIDs_Alphabetical); ++i) {
+        if (a0 == sMapIDs_Alphabetical[i]) {
             return i;
         }
     }
@@ -2047,11 +2049,11 @@ u32 ov18_021E8AE0(PokedexAppData *pokedexApp, u32 a1) {
 }
 
 u32 ov18_021E8B0C(u32 idx) {
-    return ov18_021F9954[idx];
+    return sOverworldMapIDs[idx];
 }
 
 u32 ov18_021E8B18(u32 a0) {
-    return ov18_021F98D8[a0];
+    return sDungeonMapIDs[a0];
 }
 
 BOOL ov18_021E8B24(u32 idx) {
@@ -2060,8 +2062,8 @@ BOOL ov18_021E8B24(u32 idx) {
 }
 
 static u32 ov18_021E8B40(void) {
-    for (u32 i = 0; i < NELEMS(ov18_021F9954); ++i) {
-        if (ov18_021F9954[i] == MAP_ROUTE_2) {
+    for (u32 i = 0; i < NELEMS(sOverworldMapIDs); ++i) {
+        if (sOverworldMapIDs[i] == MAP_ROUTE_2) {
             return i;
         }
     }
@@ -2074,8 +2076,8 @@ BOOL ov18_021E8B5C(u32 idx) {
 }
 
 static u32 ov18_021E8B78(void) {
-    for (u32 i = 0; i < NELEMS(ov18_021F9954); ++i) {
-        if (ov18_021F9954[i] == MAP_ROUTE_16) {
+    for (u32 i = 0; i < NELEMS(sOverworldMapIDs); ++i) {
+        if (sOverworldMapIDs[i] == MAP_ROUTE_16) {
             return i;
         }
     }
@@ -2085,8 +2087,8 @@ static u32 ov18_021E8B78(void) {
 void ov18_021E8B94(PokedexAppData *pokedexApp) {
     u32 size;
 
-    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, 1, FALSE, HEAP_ID_37, FALSE, &size);
-    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, 0, FALSE, HEAP_ID_37, FALSE, &size);
+    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_enc, 1, FALSE, HEAP_ID_37, FALSE, &size);
+    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_enc, 0, FALSE, HEAP_ID_37, FALSE, &size);
 }
 
 void ov18_021E8BD4(PokedexAppData *pokedexApp) {

@@ -137,7 +137,7 @@ typedef enum NarcId {
     NARC_a_1_3_0 = 130,
     NARC_poketool_trmsg_trtblofs = 131,
     NARC_a_1_3_2 = 132,
-    NARC_a_1_3_3 = 133,
+    NARC_application_zukanlist_zukan_data_zukan_enc = 133,
     NARC_a_1_3_4 = 134,
     NARC_a_1_3_5 = 135,
     NARC_fielddata_encountdata_s_enc_data = 136,

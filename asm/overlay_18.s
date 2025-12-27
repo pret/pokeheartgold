@@ -73,7 +73,6 @@
 	.extern ov18_021E84EC
 	.extern ov18_021E8528
 	.extern ov18_021E8648
-	.extern ov18_021E89DC
 	.extern ov18_021E8AB0
 	.extern ov18_021E8ACC
 	.extern ov18_021E8AE0
