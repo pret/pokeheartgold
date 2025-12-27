@@ -3875,32 +3875,32 @@ void Pokemon_SetPersonality(Pokemon *mon, u32 personality) {
     Heap_Free(tmpMon);
 }
 
-u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
-    // u32 pid is a random seed to convolve into a pid that bears the
+u32 Personality_ChangeNatureGenderAbility(u32 personality, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode) {
+    // u32 personality is a random seed to convolve into a personality that bears the
     // requested nature, gender, and ability. This is used to make
     // pokemon caught on the Pokewalker, and the Spiky-Eared Pichu.
-    // In both actual use cases, u32 pid is OTID, which means r4 and r1
+    // In both actual use cases, u32 personality is OTID, which means r4 and r1
     // are always SID ^ TID.
     GF_ASSERT(ability < 2);
     GF_ASSERT(gender != 0xFF);
     if (gen_mode) {
-        u32 r4 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
-        pid = Personality_CreateFromGenderAndNature(species, gender, nature);
-        if ((pid & 1) != ability) {
-            // Force correct ability for gender and nature pid
-            pid++;
+        u32 r4 = ((personality & 0xFFFF0000) >> 16) ^ (u16)personality;
+        personality = Personality_CreateFromGenderAndNature(species, gender, nature);
+        if ((personality & 1) != ability) {
+            // Force correct ability for gender and nature personality
+            personality++;
         }
-        pid |= ((u16)pid ^ r4) << 16;
+        personality |= ((u16)personality ^ r4) << 16;
     } else {
         u32 r1;
         u8 ratio = Species_GetValue(species, SPECIES_DATA_GENDER_RATIO);
         GF_ASSERT((nature & 1) == ability);
-        r1 = ((pid & 0xFFFF0000) >> 16) ^ (u16)pid;
-        pid = (0xFF00 ^ (r1 & 0xFF00)) << 16;
-        // Force the pid to have the requested nature
-        pid += nature - (pid % 25);
-        // Maintaining that pid%25 is nature, and pid&1 is ability,
-        // ensure pid&0xFF compared to the gender ratio yields gender
+        r1 = ((personality & 0xFFFF0000) >> 16) ^ (u16)personality;
+        personality = (0xFF00 ^ (r1 & 0xFF00)) << 16;
+        // Force the personality to have the requested nature
+        personality += nature - (personality % 25);
+        // Maintaining that personality%25 is nature, and personality&1 is ability,
+        // ensure personality&0xFF compared to the gender ratio yields gender
         switch (ratio) {
         case GENDER_RATIO_MALE_ONLY:
         case GENDER_RATIO_FEMALE_ONLY:
@@ -3908,28 +3908,28 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
             break;
         default:
             if (gender == GENDER_MALE) {
-                if (ratio > (u8)pid) {
-                    // pid is female; force pid to become male
-                    pid += 25 * ((ratio - (u8)pid) / 25u + 1);
-                    if ((pid & 1) != ability) {
-                        GF_ASSERT((u8)pid <= 230);
-                        pid += 25;
+                if (ratio > (u8)personality) {
+                    // personality is female; force personality to become male
+                    personality += 25 * ((ratio - (u8)personality) / 25u + 1);
+                    if ((personality & 1) != ability) {
+                        GF_ASSERT((u8)personality <= 230);
+                        personality += 25;
                     }
                 }
             } else {
-                if (ratio < (u8)pid) {
-                    // pid is male; force pid to become female
-                    pid -= 25 * (((u8)pid - ratio) / 25u + 1);
-                    if ((pid & 1) != ability) {
-                        GF_ASSERT((u8)pid >= 25);
-                        pid -= 25;
+                if (ratio < (u8)personality) {
+                    // personality is male; force personality to become female
+                    personality -= 25 * (((u8)personality - ratio) / 25u + 1);
+                    if ((personality & 1) != ability) {
+                        GF_ASSERT((u8)personality >= 25);
+                        personality -= 25;
                     }
                 }
             }
             break;
         }
     }
-    return pid;
+    return personality;
 }
 
 void SpeciesData_LoadSpecies(int species, SpeciesData *speciesData) {

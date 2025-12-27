@@ -17971,7 +17971,7 @@ _021EEA06:
 	add r0, r7, #0
 	lsr r2, r2, #0x18
 	add r3, r6, #0
-	bl ChangePersonalityToNatureGenderAndAbility
+	bl Personality_ChangeNatureGenderAbility
 	mov r1, #1
 	str r1, [sp]
 	str r0, [sp, #4]

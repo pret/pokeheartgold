@@ -178,7 +178,7 @@ BOOL Pokemon_CanLearnTMHM(Pokemon *mon, u8 tmHM);
 BOOL BoxPokemon_CanLearnTMHM(BoxPokemon *boxMon, u8 tmHM);
 BOOL Species_CanLearnTMHM(u16 species, u32 form, u8 tmHM);
 void Pokemon_SetPersonality(Pokemon *mon, u32 personality);
-u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
+u32 Personality_ChangeNatureGenderAbility(u32 personality, u16 species, u8 nature, u8 gender, u8 ability, BOOL gen_mode);
 void SpeciesData_LoadSpecies(int species, SpeciesData *personal);
 void SpeciesData_LoadForm(int species, int form, SpeciesData *speciesData);
 void Species_LoadEvolutions(u16 species, Evolution *dest);
