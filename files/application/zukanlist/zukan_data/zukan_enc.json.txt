@@ -38,14 +38,16 @@ gEncounters_{{ method }}_{{ mon }}:
 ## for map in maps
     .word {{ map }}
 ## endfor
-## else if default(SOULSILVER, 0) == 1
+## else
+#ifdef SOULSILVER
 ## for map in maps.SILVER
     .word {{ map }}
 ## endfor
-## else
+#else
 ## for map in maps.GOLD
     .word {{ map }}
 ## endfor
+#endif
 ## endif
     .size gEncounters_{{ method }}_{{ mon }},.-gEncounters_{{ method }}_{{ mon }}
 
