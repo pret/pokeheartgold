@@ -859,7 +859,7 @@ static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int param, void *dest)
     case MON_DATA_TYPE_1:
     case MON_DATA_TYPE_2:
         if (blockA->species == SPECIES_ARCEUS && blockA->ability == ABILITY_MULTITYPE) {
-            ret = GetArceusTypeByHeldItemEffect((u16)GetItemAttr(blockA->heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT));
+            ret = HoldEffect_GetArceusType((u16)GetItemAttr(blockA->heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT));
         } else {
             ret = Species_GetFormValue(blockA->species, blockB->form, (int)(param - MON_DATA_TYPE_1 + SPECIES_DATA_TYPE_1));
         }
@@ -3460,22 +3460,21 @@ BOOL BoxPokemon_IsImmuneToPokerus(BoxPokemon *boxMon) {
 }
 
 void Pokemon_UpdateArceusForm(Pokemon *mon) {
-    BoxMon_UpdateArceusForm(&mon->box);
+    BoxPokemon_UpdateArceusForm(&mon->box);
 }
 
-void BoxMon_UpdateArceusForm(BoxPokemon *boxMon) {
+void BoxPokemon_UpdateArceusForm(BoxPokemon *boxMon) {
     u32 species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
     u32 ability = BoxPokemon_GetData(boxMon, MON_DATA_ABILITY, NULL);
     u32 heldItem = BoxPokemon_GetData(boxMon, MON_DATA_HELD_ITEM, NULL);
-    u32 form;
     if (species == SPECIES_ARCEUS && ability == ABILITY_MULTITYPE) {
-        form = GetArceusTypeByHeldItemEffect((u16)GetItemAttr((u16)heldItem, 1, HEAP_ID_DEFAULT));
+        u32 form = HoldEffect_GetArceusType(GetItemAttr(heldItem, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT));
         BoxPokemon_SetData(boxMon, MON_DATA_FORM, &form);
     }
 }
 
-u32 GetArceusTypeByHeldItemEffect(u16 heldEffect) {
-    switch (heldEffect) {
+u32 HoldEffect_GetArceusType(u16 holdEffect) {
+    switch (holdEffect) {
     case HOLD_EFFECT_ARCEUS_FIRE:
         return TYPE_FIRE;
     case HOLD_EFFECT_ARCEUS_WATER:

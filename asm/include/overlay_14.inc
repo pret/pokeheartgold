@@ -221,7 +221,7 @@
 .public Pokemon_GetBoxMon
 .public BoxPokemon_CopyToPokemon
 .public Pokemon_Copy
-.public BoxMon_UpdateArceusForm
+.public BoxPokemon_UpdateArceusForm
 .public BoxMon_UpdateGiratinaForm
 .public Mon_UpdateShayminForm
 .public BoxMon_UpdateShayminForm
