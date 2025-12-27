@@ -465,10 +465,10 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
                 Pokemon_UpdateGiratinaForm(mon);
                 break;
             case SPECIES_ROTOM:
-                Mon_UpdateRotomForm(mon, 0, 0);
+                Pokemon_UpdateRotomForm(mon, ROTOM_FORM_NORMAL, 0);
                 break;
             case SPECIES_SHAYMIN:
-                Pokemon_UpdateShayminForm(mon, 0);
+                Pokemon_UpdateShayminForm(mon, SHAYMIN_FORM_LAND);
                 break;
             }
         }
@@ -518,11 +518,11 @@ BOOL ScrCmd_CountTranformedRotomsInParty(ScriptContext *ctx) {
 BOOL ScrCmd_UpdateRotomForm(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     int rotomIndex = ScriptGetVar(ctx);
-    int defaultSlot = ScriptGetVar(ctx);
+    int moveSlot = ScriptGetVar(ctx);
     ScriptGetVar(ctx); // unsused variable
     u32 form = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(fieldSystem->saveData), rotomIndex);
-    Mon_UpdateRotomForm(mon, form, defaultSlot);
+    Pokemon_UpdateRotomForm(mon, form, moveSlot);
     Pokedex_SetMonCaughtFlag(Save_Pokedex_Get(fieldSystem->saveData), mon);
     return FALSE;
 }

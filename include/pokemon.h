@@ -167,7 +167,7 @@ void Party_UpdateGiratinaForms(Party *party, BOOL forceOrigin);
 BOOL Pokemon_CanShayminSkyForm(Pokemon *mon);
 void Party_SetShayminLandForms(Party *party);
 BOOL Party_UpdateShayminForms(Party *party, int minutesDiff, const RTCTime *time);
-BOOL Mon_UpdateRotomForm(Pokemon *mon, int form, int defaultSlot);
+BOOL Pokemon_UpdateRotomForm(Pokemon *mon, int form, int moveSlot);
 void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24);
 void sub_0207204C(SOUND_CHATOT *r7, u32 r6, u16 r5, s32 r4, s32 sp20, u32 sp24, u32 sp28, u32 sp2C, u8 sp30);
 void sub_020720D4(Pokemon *mon);
