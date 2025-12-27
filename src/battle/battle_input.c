@@ -1916,11 +1916,11 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                     int gender = Pokemon_GetGender(caughtMon);
 
                     switch (gender) {
-                    case MON_MALE:
+                    case GENDER_MALE:
                         strMonGender = NewString_ReadMsgData(msgLoader, msg_0197_01272); // ♂
                         genderColor = 0xc0d00;
                         break;
-                    case MON_FEMALE:
+                    case GENDER_FEMALE:
                         strMonGender = NewString_ReadMsgData(msgLoader, msg_0197_01273); // ♀
                         genderColor = 0xe0f00;
                         break;
@@ -2224,9 +2224,9 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
         battlerId = v11[2 + i];
 
         if ((menu->targetMons[battlerId].hide == 1) && (monsHit[i] == 1)) {
-            if (menu->targetMons[battlerId].gender == MON_MALE) {
+            if (menu->targetMons[battlerId].gender == GENDER_MALE) {
                 strGenderMarker = NewString_ReadMsgData(msgLoader, msg_0197_00962); // ♂
-            } else if (menu->targetMons[battlerId].gender == MON_FEMALE) {
+            } else if (menu->targetMons[battlerId].gender == GENDER_FEMALE) {
                 strGenderMarker = NewString_ReadMsgData(msgLoader, msg_0197_00963); // ♀
             } else {
                 strGenderMarker = NewString_ReadMsgData(msgLoader, msg_0197_00964); //(genderless)

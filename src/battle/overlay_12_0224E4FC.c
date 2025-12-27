@@ -5796,10 +5796,10 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
     statChangeSpAtk += 6;
     statChangeSpDef += 6;
 
-    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != MON_GENDERLESS && calcTarget.gender != MON_GENDERLESS) {
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender == calcTarget.gender && calcAttacker.gender != GENDER_NONE && calcTarget.gender != GENDER_NONE) {
         movePower = movePower * 125 / 100;
     }
-    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != MON_GENDERLESS && calcTarget.gender != MON_GENDERLESS) {
+    if (calcAttacker.ability == ABILITY_RIVALRY && calcAttacker.gender != calcTarget.gender && calcAttacker.gender != GENDER_NONE && calcTarget.gender != GENDER_NONE) {
         movePower = movePower * 75 / 100;
     }
 

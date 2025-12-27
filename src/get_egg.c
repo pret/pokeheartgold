@@ -592,7 +592,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
         if ((parent_species[i] = BoxPokemon_GetData(parents[i], MON_DATA_SPECIES, NULL)) == SPECIES_DITTO) {
             gender_idx[0] = i ^ 1;
             gender_idx[1] = i;
-        } else if (BoxPokemon_GetGender(parents[i]) == MON_FEMALE) {
+        } else if (BoxPokemon_GetGender(parents[i]) == GENDER_FEMALE) {
             gender_idx[0] = i;
             gender_idx[1] = i ^ 1;
         }
@@ -616,7 +616,7 @@ static u16 Daycare_GetEggSpecies(Daycare *dayCare, u8 *gender_idx) {
     if (pms == SPECIES_MANAPHY) {
         pms = SPECIES_PHIONE;
     }
-    if (parent_species[gender_idx[1]] == SPECIES_DITTO && BoxPokemon_GetGender(parents[gender_idx[0]]) != MON_FEMALE) {
+    if (parent_species[gender_idx[1]] == SPECIES_DITTO && BoxPokemon_GetGender(parents[gender_idx[0]]) != GENDER_FEMALE) {
         swp = gender_idx[1];
         gender_idx[1] = gender_idx[0];
         gender_idx[0] = swp;
@@ -788,7 +788,7 @@ static u8 ComputeCompatibilityBetweenBoxMons(BoxPokemon **parents) {
         return 0;
     }
     // Nonbinary gender cannot breed in gen 4
-    if (genders[0] == MON_GENDERLESS || genders[1] == MON_GENDERLESS) {
+    if (genders[0] == GENDER_NONE || genders[1] == GENDER_NONE) {
         return 0;
     }
     // Nonmatching egg groups cannot breed in gen 4
@@ -946,10 +946,10 @@ void Save_Daycare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_i
     BufferIntegerAsString(msgFmt, level_idx, level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
 
     gender = BoxPokemon_GetData(boxMon, MON_DATA_GENDER, NULL);
-    if (gender != MON_GENDERLESS) {
+    if (gender != GENDER_NONE) {
         species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
         if ((species == SPECIES_NIDORAN_F || species == SPECIES_NIDORAN_M) && !BoxPokemon_GetData(boxMon, MON_DATA_HAS_NICKNAME, NULL)) {
-            gender = MON_GENDERLESS;
+            gender = GENDER_NONE;
         }
     }
     BufferGenderSymbol(msgFmt, gender_idx, gender);

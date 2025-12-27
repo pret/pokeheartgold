@@ -89,9 +89,9 @@ static inline void SetDex3Flag(u32 *arr, u32 idx, u32 form) {
 
 static inline u8 CheckDexGender(const u8 *arr, u16 species) {
     if (CheckDexFlag(arr, species)) {
-        return MON_FEMALE;
+        return GENDER_FEMALE;
     } else {
-        return MON_MALE;
+        return GENDER_MALE;
     }
 }
 
@@ -398,7 +398,7 @@ static void Pokedex_TryAppendSeenForm(Pokedex *pokedex, u16 species, Pokemon *mo
         break;
     case SPECIES_PICHU:
         if (form == 0) {
-            if (Pokemon_GetGender(mon) == MON_MALE) {
+            if (Pokemon_GetGender(mon) == GENDER_MALE) {
                 form = 0;
             } else {
                 form = 1;

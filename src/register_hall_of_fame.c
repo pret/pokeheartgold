@@ -1442,11 +1442,11 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     CopyWindowPixelsToVram_TextMode(&windows[0]);
 
     FillWindowPixelBuffer(&windows[1], 0);
-    if (hofMon->gender == MON_GENDERLESS || !hofMon->printGender) {
+    if (hofMon->gender == GENDER_NONE || !hofMon->printGender) {
         ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->strbuf1);
-    } else if (hofMon->gender == MON_MALE) {
+    } else if (hofMon->gender == GENDER_MALE) {
         ReadMsgDataIntoString(data->msgData, msg_0180_00001, data->strbuf1);
-    } else if (hofMon->gender == MON_FEMALE) {
+    } else if (hofMon->gender == GENDER_FEMALE) {
         ReadMsgDataIntoString(data->msgData, msg_0180_00002, data->strbuf1);
     } else {
         ReadMsgDataIntoString(data->msgData, msg_0180_00003, data->strbuf1);
@@ -2074,7 +2074,7 @@ static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form,
     } else {
         ret = SpeciesToOverworldModelIndexOffset(species) + NARC_mmodel_mmodel_00000297_NSBTX;
         if (OverworldModelLookupHasFemaleForm(species)) {
-            if (gender == MON_FEMALE) {
+            if (gender == GENDER_FEMALE) {
                 ++ret;
             }
         } else {

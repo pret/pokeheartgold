@@ -217,10 +217,10 @@ static void InitGameStateAfterOakSpeech_Internal(enum HeapID heapID, SaveData *s
     Mail *mail;
     if (PlayerProfile_GetTrainerGender(profile) == PLAYER_GENDER_MALE) {
         author_name = NewString_ReadMsgData(friend_names_msgdata, msg_0445_00001);
-        mail = CreateKenyaMail(mon, MAIL_AIR, MON_FEMALE, author_name, 0);
+        mail = CreateKenyaMail(mon, MAIL_AIR, GENDER_FEMALE, author_name, 0);
     } else {
         author_name = NewString_ReadMsgData(friend_names_msgdata, msg_0445_00000);
-        mail = CreateKenyaMail(mon, MAIL_AIR, MON_MALE, author_name, 0);
+        mail = CreateKenyaMail(mon, MAIL_AIR, GENDER_MALE, author_name, 0);
     }
 
     MailMessage mail_message;

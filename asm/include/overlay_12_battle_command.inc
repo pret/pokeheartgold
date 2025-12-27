@@ -82,7 +82,7 @@
 .public Pokemon_SetMoveInSlot
 .public Pokemon_TryLevelUpMove
 .public Pokemon_Copy
-.public Party_MaskMonsWithPokerus
+.public Party_MaskHasPokerus
 .public Mon_UpdateGiratinaForm
 .public MaskOfFlagNo
 .public PCStorage_PlaceMonInBoxFirstEmptySlot

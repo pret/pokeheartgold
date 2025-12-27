@@ -722,7 +722,7 @@ static u32 ov78_021E6688(int species, int form, int gender) {
     } else {
         ret = MMODEL_FOLLOWER_MON_BASE + SpeciesToOverworldModelIndexOffset(species);
         if (OverworldModelLookupHasFemaleForm(species)) {
-            if (gender == MON_FEMALE) {
+            if (gender == GENDER_FEMALE) {
                 ret++;
             }
         } else {

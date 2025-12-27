@@ -533,10 +533,10 @@ static void PartyMenu_PrintMonNicknameOnWindow(PartyMenu *partyMenu, u8 partySlo
         FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0);
         AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         if (!partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol) {
-            if (partyMenu->monsDrawState[partySlot].gender == MON_MALE) {
+            if (partyMenu->monsDrawState[partySlot].gender == GENDER_MALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00027, partyMenu->unformattedStrBuf);
                 AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
-            } else if (partyMenu->monsDrawState[partySlot].gender == MON_FEMALE) {
+            } else if (partyMenu->monsDrawState[partySlot].gender == GENDER_FEMALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00028, partyMenu->unformattedStrBuf);
                 AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(5, 6, 0), NULL);
             }

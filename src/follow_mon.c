@@ -1647,7 +1647,7 @@ u32 FollowMon_GetSpriteID(int species, u16 form, u32 gender) {
     } else {
         ret = SPRITE_FOLLOWER_MON_BULBASAUR + SpeciesToOverworldModelIndexOffset(species);
         if (OverworldModelLookupHasFemaleForm(species)) {
-            if (gender == MON_FEMALE) {
+            if (gender == GENDER_FEMALE) {
                 ret++;
             }
         } else {

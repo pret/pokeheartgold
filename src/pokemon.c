@@ -41,7 +41,7 @@ static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value)
 PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
 void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
-u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 species, u32 pid);
+u8 SpeciesData_GetGenderFromPersonality(SpeciesData *speciesData, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
 void BoxPokemon_BuildSpriteTemplate(PokemonSpriteTemplate *template, BoxPokemon *boxMon, u8 face, BOOL preferDP);
 static void Species_BuildSpriteTemplateDP(PokemonSpriteTemplate *pokepicTemplate, u16 species, u8 gender, u8 face, u8 shiny, u8 form, u32 pid);
@@ -299,7 +299,7 @@ u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
     case GENDER_RATIO_UNKNOWN:
         break;
     default:
-        if (gender == MON_MALE) {
+        if (gender == GENDER_MALE) {
             // Smallest increment that forces the low byte to exceed the
             // gender ratio, thus making the mon male
             pid = 25 * ((ratio / 25) + 1);
@@ -1720,7 +1720,7 @@ SpeciesData *SpeciesData_NewFromSpecies(int species, enum HeapID heapID) {
     return speciesData;
 }
 
-int SpeciesData_GetValue(const SpeciesData *speciesData, int param) {
+int SpeciesData_GetValue(SpeciesData *speciesData, int param) {
     int ret;
     GF_ASSERT(speciesData != NULL);
     switch (param) {
@@ -1955,6 +1955,7 @@ u8 Personality_GetNature(u32 personality) {
     return (u8)(personality % NATURE_NUM);
 }
 
+// clang-format off
 const s8 gNatureStatModifiers[NATURE_NUM][NUM_EV_STATS] = {
                     // Attack Defense Speed Sp.Atk Sp.Def
     [NATURE_HARDY]   = {  0,     0,     0,     0,    0 },
@@ -1983,6 +1984,7 @@ const s8 gNatureStatModifiers[NATURE_NUM][NUM_EV_STATS] = {
     [NATURE_CAREFUL] = {  0,     0,     0,    -1,   +1 },
     [NATURE_QUIRKY]  = {  0,     0,     0,     0,    0 },
 };
+// clang-format on
 
 u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat) {
     u16 ret;
@@ -2085,20 +2087,20 @@ u8 Species_GetGenderFromPersonality(u16 species, u32 personality) {
     return gender;
 }
 
-u8 SpeciesData_GetGenderFromPersonality(const SpeciesData *speciesData, u16 unused_species, u32 personality) {
+u8 SpeciesData_GetGenderFromPersonality(SpeciesData *speciesData, u16 unused_species, u32 personality) {
     u8 ratio = SpeciesData_GetValue(speciesData, SPECIES_DATA_GENDER_RATIO);
     switch (ratio) {
     case GENDER_RATIO_MALE_ONLY:
-        return MON_MALE;
+        return GENDER_MALE;
     case GENDER_RATIO_FEMALE_ONLY:
-        return MON_FEMALE;
+        return GENDER_FEMALE;
     case GENDER_RATIO_UNKNOWN:
-        return MON_GENDERLESS;
+        return GENDER_NONE;
     default:
         if (ratio > (personality & 0xff)) {
-            return MON_FEMALE;
+            return GENDER_FEMALE;
         } else {
-            return MON_MALE;
+            return GENDER_MALE;
         }
     }
 }
@@ -2271,7 +2273,7 @@ void Species_BuildSpriteTemplate(PokemonSpriteTemplate *template, u16 species, u
         break;
     default:
         template->narcID = NARC_poketool_pokegra_pokegra;
-        template->charDataID = (u16)(species * 6 + face + (gender == MON_FEMALE ? 0 : 1));
+        template->charDataID = (u16)(species * 6 + face + (gender == GENDER_FEMALE ? 0 : 1));
         template->palDataID = (u16)(shiny + (species * 6 + 4));
         if (species == SPECIES_SPINDA && face == MON_PIC_FACING_FRONT) {
             template->species = SPECIES_SPINDA;
@@ -2360,7 +2362,7 @@ u8 Species_SanitizeFormId(u16 species, u8 form) {
 
 void sub_02070560(PokemonSpriteTemplate *pokepicTemplate, u16 species, u8 face, u8 gender, u32 shiny) {
     pokepicTemplate->narcID = NARC_pbr_pokegra;
-    pokepicTemplate->charDataID = (u16)(species * 6 + face + (gender == MON_FEMALE ? 0 : 1));
+    pokepicTemplate->charDataID = (u16)(species * 6 + face + (gender == GENDER_FEMALE ? 0 : 1));
     pokepicTemplate->palDataID = (u16)(shiny + (species * 6 + 4));
 }
 
@@ -2589,7 +2591,7 @@ u8 Species_LoadSpriteYOffset(u16 species, u8 gender, u8 face, u8 form, u32 pid) 
         break;
     default:
         narcID = NARC_poketool_pokegra_height;
-        fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
+        fileID = species * 4 + face + (gender != GENDER_FEMALE ? 1 : 0);
         break;
     }
 
@@ -2655,7 +2657,7 @@ u8 Species_LoadSpriteYOffsetDP(u16 species, u8 gender, u8 face, u8 form, u32 pid
             fileID = 136 + (face / 2) + form * 2;
         } else {
             narcID = NARC_pbr_dp_height;
-            fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
+            fileID = species * 4 + face + (gender != GENDER_FEMALE ? 1 : 0);
         }
         break;
     case SPECIES_ROTOM: // normal, fan, mow, wash, heat, frost
@@ -2664,7 +2666,7 @@ u8 Species_LoadSpriteYOffsetDP(u16 species, u8 gender, u8 face, u8 form, u32 pid
             fileID = 140 + (face / 2) + form * 2;
         } else {
             narcID = NARC_pbr_dp_height;
-            fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
+            fileID = species * 4 + face + (gender != GENDER_FEMALE ? 1 : 0);
         }
         break;
     case SPECIES_GIRATINA: // altered, origin
@@ -2673,12 +2675,12 @@ u8 Species_LoadSpriteYOffsetDP(u16 species, u8 gender, u8 face, u8 form, u32 pid
             fileID = 152 + (face / 2) + form * 2;
         } else {
             narcID = NARC_pbr_dp_height;
-            fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
+            fileID = species * 4 + face + (gender != GENDER_FEMALE ? 1 : 0);
         }
         break;
     default:
         narcID = NARC_pbr_dp_height;
-        fileID = species * 4 + face + (gender != MON_FEMALE ? 1 : 0);
+        fileID = species * 4 + face + (gender != GENDER_FEMALE ? 1 : 0);
         break;
     }
 
@@ -2950,13 +2952,13 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
                 }
                 break;
             case EVO_LEVEL_MALE:
-                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == MON_MALE && evoTable[i].param <= level) {
+                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_MALE && evoTable[i].param <= level) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_MALE;
                 }
                 break;
             case EVO_LEVEL_FEMALE:
-                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == MON_FEMALE && evoTable[i].param <= level) {
+                if (Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_FEMALE && evoTable[i].param <= level) {
                     target = evoTable[i].target;
                     *method_ret = EVO_LEVEL_FEMALE;
                 }
@@ -3012,12 +3014,12 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
                 *method_ret = 0;
                 break;
             }
-            if (evoTable[i].method == EVO_STONE_MALE && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == MON_MALE && usedItem == evoTable[i].param) {
+            if (evoTable[i].method == EVO_STONE_MALE && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_MALE && usedItem == evoTable[i].param) {
                 target = evoTable[i].target;
                 *method_ret = 0;
                 break;
             }
-            if (evoTable[i].method == EVO_STONE_FEMALE && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == MON_FEMALE && usedItem == evoTable[i].param) {
+            if (evoTable[i].method == EVO_STONE_FEMALE && Pokemon_GetData(mon, MON_DATA_GENDER, NULL) == GENDER_FEMALE && usedItem == evoTable[i].param) {
                 target = evoTable[i].target;
                 *method_ret = 0;
                 break;
@@ -3331,51 +3333,52 @@ int Species_LoadLearnsetTable(u32 species, u32 form, u16 *dest) {
 
 void Party_GivePokerusAtRandom(Party *party) {
     int count = Party_GetCount(party);
-    int idx;
+    int slot;
     Pokemon *mon;
-    u8 sp0;
+    u8 pokerus;
     switch (LCRandom()) {
     case 0x4000:
     case 0x8000:
     case 0xC000:
         do {
-            idx = LCRandom() % count;
-            mon = Party_GetMonByIndex(party, idx);
+            slot = LCRandom() % count;
+            mon = Party_GetMonByIndex(party, slot);
         } while (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE || Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL));
-        if (!Party_MaskMonsWithPokerus(party, (u8)MaskOfFlagNo(idx))) {
+
+        if (!Party_MaskHasPokerus(party, (u8)MaskOfFlagNo(slot))) {
             do {
-                sp0 = (u8)LCRandom();
-            } while (!(sp0 & 7));
-            if (sp0 & 0xF0) {
-                sp0 &= 7;
+                pokerus = LCRandom();
+            } while (!(pokerus & 0x7));
+            if (pokerus & 0xf0) {
+                pokerus &= 0x7;
             }
-            sp0 |= sp0 << 4;
-            sp0 &= 0xF3;
-            sp0++;
-            Pokemon_SetData(mon, MON_DATA_POKERUS, &sp0);
+            pokerus |= pokerus << 4;
+            pokerus &= 0xf3;
+            pokerus++;
+            Pokemon_SetData(mon, MON_DATA_POKERUS, &pokerus);
         }
     }
 }
 
-u8 Party_MaskMonsWithPokerus(Party *party, u8 mask) {
-    int i = 0;
+u8 Party_MaskHasPokerus(Party *party, u8 partyMask) {
+    int slot = 0;
     u32 flag = 1;
     u8 ret = 0;
     Pokemon *mon;
-    if (mask != 0) {
+    if (partyMask != 0) {
         do {
-            if (mask & 1) {
-                mon = Party_GetMonByIndex(party, i);
+            if (partyMask & 1) {
+                mon = Party_GetMonByIndex(party, slot);
                 if (Pokemon_GetData(mon, MON_DATA_POKERUS, NULL)) {
                     ret |= flag;
                 }
             }
-            i++;
+            slot++;
             flag <<= 1;
-            mask >>= 1;
-        } while (mask != 0);
+            partyMask >>= 1;
+        } while (partyMask != 0);
     } else {
-        mon = Party_GetMonByIndex(party, 0);
+        mon = Party_GetMonByIndex(party, slot);
         if (Pokemon_GetData(mon, MON_DATA_POKERUS, NULL)) {
             ret++;
         }
@@ -3383,21 +3386,19 @@ u8 Party_MaskMonsWithPokerus(Party *party, u8 mask) {
     return ret;
 }
 
-void Party_UpdatePokerus(Party *party, int r5) {
-    int i;
-    u8 pokerus;
-    Pokemon *mon;
+void Party_UpdatePokerus(Party *party, int daysPassed) {
     int count = Party_GetCount(party);
-    for (i = 0; i < count; i++) {
-        mon = Party_GetMonByIndex(party, i);
+    for (int i = 0; i < count; i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, i);
         if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-            pokerus = (u8)Pokemon_GetData(mon, MON_DATA_POKERUS, NULL);
-            if (pokerus & 0xF) {
-                if ((pokerus & 0xF) < r5 || r5 > 4) {
-                    pokerus &= 0xF0;
+            u8 pokerus = Pokemon_GetData(mon, MON_DATA_POKERUS, NULL);
+            if (pokerus & 0xf) {
+                if ((pokerus & 0xf) < daysPassed || daysPassed > 4) {
+                    pokerus &= 0xf0;
                 } else {
-                    pokerus -= r5;
+                    pokerus -= daysPassed;
                 }
+
                 if (pokerus == 0) {
                     pokerus = 0x10; // immune
                 }
@@ -3409,24 +3410,22 @@ void Party_UpdatePokerus(Party *party, int r5) {
 
 void Party_SpreadPokerus(Party *party) {
     int count = Party_GetCount(party);
-    int i;
-    Pokemon *mon;
-    u8 pokerus;
     if ((LCRandom() % 3) == 0) {
-        for (i = 0; i < count; i++) {
-            mon = Party_GetMonByIndex(party, i);
+        for (int i = 0; i < count; i++) {
+            Pokemon *mon = Party_GetMonByIndex(party, i);
             if (Pokemon_GetData(mon, MON_DATA_SPECIES, NULL) != SPECIES_NONE) {
-                pokerus = (u8)Pokemon_GetData(mon, MON_DATA_POKERUS, NULL);
-                if (pokerus & 0xF) {
+                u8 pokerus = Pokemon_GetData(mon, MON_DATA_POKERUS, NULL);
+                if (pokerus & 0xf) {
                     if (i != 0) {
                         mon = Party_GetMonByIndex(party, i - 1);
-                        if (!(Pokemon_GetData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
+                        if (!(Pokemon_GetData(mon, MON_DATA_POKERUS, NULL) & 0xf0)) {
                             Pokemon_SetData(mon, MON_DATA_POKERUS, &pokerus);
                         }
                     }
+
                     if (i < count - 1) {
                         mon = Party_GetMonByIndex(party, i + 1);
-                        if (!(Pokemon_GetData(mon, MON_DATA_POKERUS, NULL) & 0xF0)) {
+                        if (!(Pokemon_GetData(mon, MON_DATA_POKERUS, NULL) & 0xf0)) {
                             Pokemon_SetData(mon, MON_DATA_POKERUS, &pokerus);
                             i++; // don't infect the rest of the party
                         }
@@ -3438,19 +3437,19 @@ void Party_SpreadPokerus(Party *party) {
 }
 
 BOOL Pokemon_HasPokerus(Pokemon *mon) {
-    return BoxMon_HasPokerus(&mon->box);
+    return BoxPokemon_HasPokerus(&mon->box);
 }
 
-BOOL BoxMon_HasPokerus(BoxPokemon *boxMon) {
-    return (BoxPokemon_GetData(boxMon, MON_DATA_POKERUS, NULL) & 0xF) != 0;
+BOOL BoxPokemon_HasPokerus(BoxPokemon *boxMon) {
+    return (BoxPokemon_GetData(boxMon, MON_DATA_POKERUS, NULL) & 0xf) != 0;
 }
 
 BOOL Pokemon_IsImmuneToPokerus(Pokemon *mon) {
-    return BoxMon_IsImmuneToPokerus(&mon->box);
+    return BoxPokemon_IsImmuneToPokerus(&mon->box);
 }
 
-BOOL BoxMon_IsImmuneToPokerus(BoxPokemon *boxMon) {
-    u8 pokerus = (u8)BoxPokemon_GetData(boxMon, MON_DATA_POKERUS, NULL);
+BOOL BoxPokemon_IsImmuneToPokerus(BoxPokemon *boxMon) {
+    u8 pokerus = BoxPokemon_GetData(boxMon, MON_DATA_POKERUS, NULL);
     if (pokerus & 0xF) {
         return FALSE;
     }
@@ -3910,7 +3909,7 @@ u32 ChangePersonalityToNatureGenderAndAbility(u32 pid, u16 species, u8 nature, u
         case GENDER_RATIO_UNKNOWN:
             break;
         default:
-            if (gender == MON_MALE) {
+            if (gender == GENDER_MALE) {
                 if (ratio > (u8)pid) {
                     // pid is female; force pid to become male
                     pid += 25 * ((ratio - (u8)pid) / 25u + 1);
