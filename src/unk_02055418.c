@@ -95,7 +95,7 @@ void sub_02055508(FieldSystem *fieldSystem, int days) {
 void sub_020555B4(FieldSystem *fieldSystem, u32 unkA, RTCTime *time) {
     sub_02092E34(FieldSystem_GetGearPhoneRingManager(fieldSystem), unkA, 0);
     FieldSystem_IncrementBugContestTimer(fieldSystem, unkA);
-    Party_TryResetShaymin(SaveArray_Party_Get(fieldSystem->saveData), unkA, time);
+    Party_UpdateShayminForms(SaveArray_Party_Get(fieldSystem->saveData), unkA, time);
 }
 
 TIMEOFDAY Field_GetTimeOfDay(FieldSystem *fieldSystem) {

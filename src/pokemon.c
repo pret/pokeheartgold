@@ -3558,74 +3558,74 @@ void Party_UpdateGiratinaForms(Party *party, BOOL forceOrigin) {
     }
 }
 
-void Mon_UpdateShayminForm(Pokemon *mon, int form) {
-    BoxMon_UpdateShayminForm(&mon->box, form);
+void Pokemon_UpdateShayminForm(Pokemon *mon, int form) {
+    BoxPokemon_UpdateShayminForm(&mon->box, form);
     Pokemon_CalcLevelAndStats(mon);
 }
 
-void BoxMon_UpdateShayminForm(BoxPokemon *boxMon, int form) {
+void BoxPokemon_UpdateShayminForm(BoxPokemon *boxMon, int form) {
     if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_SHAYMIN) {
-        GF_ASSERT(form <= 1);
+        GF_ASSERT(form <= SHAYMIN_FORM_COUNT - 1);
         BoxPokemon_SetData(boxMon, MON_DATA_FORM, &form);
         BoxPokemon_UpdateAbility(boxMon);
     }
 }
 
-BOOL Mon_CanUseGracidea(Pokemon *mon) {
-    RTCTime time;
-    int species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-    int form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
-    int status = Pokemon_GetData(mon, MON_DATA_STATUS, NULL);
-    int hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
+BOOL Pokemon_CanShayminSkyForm(Pokemon *mon) {
+    u32 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+    u32 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+    u32 status = Pokemon_GetData(mon, MON_DATA_STATUS, NULL);
+    u32 hp = Pokemon_GetData(mon, MON_DATA_HP, NULL);
     BOOL fatefulEncounter = Pokemon_GetData(mon, MON_DATA_FATEFUL_ENCOUNTER, NULL);
+
+    RTCTime time;
     GF_RTC_CopyTime(&time);
 
-    if (species == SPECIES_SHAYMIN && form == SHAYMIN_FORM_LAND && hp != 0 && fatefulEncounter == TRUE && !(status & MON_STATUS_FRZ_MASK) && (time.hour >= 4 && time.hour < 20)) {
+    if (species == SPECIES_SHAYMIN
+        && form == SHAYMIN_FORM_LAND
+        && hp > 0
+        && fatefulEncounter == TRUE
+        && !(status & MON_STATUS_FRZ_MASK)
+        && time.hour >= 4
+        && time.hour < 20) {
         return TRUE;
     } else {
         return FALSE;
     }
 }
 
-void Party_ResetAllShayminToLandForm(Party *party) {
-    int npoke = Party_GetCount(party);
-    int i;
-    int species;
-    int form;
-    Pokemon *mon;
-    for (i = 0; i < npoke; i++) {
-        mon = Party_GetMonByIndex(party, i);
-        species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
-        form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
+void Party_SetShayminLandForms(Party *party) {
+    int count = Party_GetCount(party);
+    for (int i = 0; i < count; i++) {
+        Pokemon *mon = Party_GetMonByIndex(party, i);
+        int species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
+        int form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         if (species == SPECIES_SHAYMIN && form == SHAYMIN_FORM_SKY) {
-            Mon_UpdateShayminForm(mon, SHAYMIN_FORM_LAND);
+            Pokemon_UpdateShayminForm(mon, SHAYMIN_FORM_LAND);
         }
     }
 }
 
-BOOL Party_TryResetShaymin(Party *party, int min_max, const RTCTime *time) {
-    int hour, minute;
+BOOL Party_UpdateShayminForms(Party *party, int minutesDiff, const RTCTime *time) {
+    s32 hour, minutes;
     if (time->hour >= 20 || time->hour < 4) {
         hour = time->hour;
         if (hour < 4) {
             hour += 24;
         }
-        minute = time->minute + 60 * (hour - 20);
-        if (minute < min_max + 1) {
-            Party_ResetAllShayminToLandForm(party);
+        minutes = time->minute + 60 * (hour - 20);
+        if (minutes < minutesDiff + 1) {
+            Party_SetShayminLandForms(party);
             return TRUE;
-        } else {
-            return FALSE;
         }
+        return FALSE;
     } else {
-        hour = time->hour;
-        minute = time->minute + 60 * (hour - 4);
-        if (minute < min_max) {
-            Party_ResetAllShayminToLandForm(party);
+        minutes = time->minute + (time->hour - 4) * 60;
+        if (minutes < minutesDiff) {
+            Party_SetShayminLandForms(party);
             return TRUE;
-        } else {
-            return FALSE;
         }
+        return FALSE;
     }
 }
 

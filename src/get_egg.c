@@ -102,7 +102,7 @@ static void DaycareMon_CopyFromPartySlot(Party *party, int partyIdx, DaycareMon 
     mood = 0;
     Pokemon_SetData(partyMon, MON_DATA_MOOD, &mood);
     Pokemon_CopyToBoxPokemon(partyMon, boxMon);
-    BoxMon_UpdateShayminForm(boxMon, SHAYMIN_FORM_LAND);
+    BoxPokemon_UpdateShayminForm(boxMon, SHAYMIN_FORM_LAND);
     DaycareMon_SetSteps(daycareMon, 0);
     Party_RemoveMon(party, partyIdx);
     if (!Party_HasMon(party, SPECIES_CHATOT)) {

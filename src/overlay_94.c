@@ -62,7 +62,7 @@ BOOL PartyMenu_AnimateIconFormChange(PartyMenu *partyMenu) {
             work->fileId = NARC_particle_giratina;
             break;
         case SPECIES_SHAYMIN:
-            Mon_UpdateShayminForm(mon, SHAYMIN_FORM_SKY);
+            Pokemon_UpdateShayminForm(mon, SHAYMIN_FORM_SKY);
             work->duration = 35;
             work->fileId = NARC_particle_shaymin;
             break;

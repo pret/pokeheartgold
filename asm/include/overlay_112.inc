@@ -274,7 +274,7 @@
 .public Species_SanitizeFormId
 .public Pokemon_GetBoxMon
 .public BoxPokemon_CopyToPokemon
-.public Mon_UpdateShayminForm
+.public Pokemon_UpdateShayminForm
 .public ChangePersonalityToNatureGenderAndAbility
 .public PCStorage_PlaceMonInBoxByIndexPair
 .public PCStorage_DeleteBoxMonByIndexPair

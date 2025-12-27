@@ -15775,7 +15775,7 @@ ov70_0223F6E4: ; 0x0223F6E4
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl Mon_UpdateShayminForm
+	bl Pokemon_UpdateShayminForm
 	bl SizeOfStructPokemon
 	add r2, r0, #0
 	mov r0, #0x49
@@ -15789,7 +15789,7 @@ _0223F718:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl BoxMon_UpdateShayminForm
+	bl BoxPokemon_UpdateShayminForm
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

@@ -160,7 +160,7 @@ BOOL ov36_App_MainMenu_SelectOption_Continue_AppExec(OverlayManager *man, int *s
         SysInfoRTC_HandleContinueOnNewConsole(Save_SysInfo_RTC_Get(saveData));
         Save_BerryPotRTC_Init(Save_BerryPotRTC_Get(saveData));
         Save_SysInfo_InitFromSystem(sys_info);
-        Party_ResetAllShayminToLandForm(SaveArray_Party_Get(saveData));
+        Party_SetShayminLandForms(SaveArray_Party_Get(saveData));
     }
 
     sub_0201838C(Save_PlayerData_GetIGTAddr(saveData));
