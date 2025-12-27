@@ -27,6 +27,13 @@
 #include "unk_02016EDC.h"
 #include "unk_02078834.h"
 
+enum PokemonDataBlockID {
+    DATA_BLOCK_A = 0,
+    DATA_BLOCK_B,
+    DATA_BLOCK_C,
+    DATA_BLOCK_D
+};
+
 void MonEncryptSegment(void *data, u32 size, u32 key);
 void MonDecryptSegment(void *data, u32 size, u32 key);
 u32 CalcMonChecksum(void *data, u32 size);
@@ -39,7 +46,7 @@ static void Pokemon_SetDataInternal(Pokemon *mon, int param, void *data);
 static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int param, void *data);
 static void Pokemon_IncreaseDataInternal(Pokemon *mon, int param, int value);
 static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value);
-PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which_struct);
+static void *BoxPokemon_GetDataBlock(BoxPokemon *boxMon, u32 personality, u8 dataBlockID);
 void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
 int ResolveMonForm(int species, int form);
 u8 SpeciesData_GetGenderFromPersonality(SpeciesData *speciesData, u16 species, u32 pid);
@@ -487,10 +494,10 @@ static inline u32 GetRibbon(u64 mask, int param, int ribbonStart)
 
 static u32 BoxPokemon_GetDataInternal(BoxPokemon *boxMon, int param, void *dest) {
     u32 ret = 0;
-    PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
-    PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
-    PokemonDataBlockC *blockC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
-    PokemonDataBlockD *blockD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
+    PokemonDataBlockA *blockA = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_A);
+    PokemonDataBlockB *blockB = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_B);
+    PokemonDataBlockC *blockC = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_C);
+    PokemonDataBlockD *blockD = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_D);
 
     switch (param) {
     default:
@@ -982,10 +989,10 @@ static void BoxPokemon_SetDataInternal(BoxPokemon *boxMon, int param, void *valu
     u16 namebuf3[POKEMON_NAME_LENGTH + 1];
     String *speciesName;
 
-    PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
-    PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
-    PokemonDataBlockC *blockC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
-    PokemonDataBlockD *blockD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
+    PokemonDataBlockA *blockA = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_A);
+    PokemonDataBlockB *blockB = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_B);
+    PokemonDataBlockC *blockC = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_C);
+    PokemonDataBlockD *blockD = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_D);
 
     switch (param) {
     case MON_DATA_PERSONALITY:
@@ -1401,10 +1408,10 @@ static void Pokemon_IncreaseDataInternal(Pokemon *mon, int param, int value) {
 }
 
 static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value) {
-    PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
-    PokemonDataBlockB *blockB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
-    PokemonDataBlockC *blockC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
-    PokemonDataBlockD *blockD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
+    PokemonDataBlockA *blockA = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_A);
+    PokemonDataBlockB *blockB = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_B);
+    PokemonDataBlockC *blockC = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_C);
+    PokemonDataBlockD *blockD = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_D);
 
     switch (param) {
     case MON_DATA_EXPERIENCE:
@@ -3849,14 +3856,14 @@ void Pokemon_SetPersonality(Pokemon *mon, u32 personality) {
     Pokemon *tmpMon = Pokemon_New(HEAP_ID_DEFAULT);
     Pokemon_Copy(mon, tmpMon);
 
-    PokemonDataBlockA *tmpBlockA = &GetSubstruct(&tmpMon->box, mon->box.personality, 0)->blockA;
-    PokemonDataBlockB *tmpBlockB = &GetSubstruct(&tmpMon->box, mon->box.personality, 1)->blockB;
-    PokemonDataBlockC *tmpBlockC = &GetSubstruct(&tmpMon->box, mon->box.personality, 2)->blockC;
-    PokemonDataBlockD *tmpBlockD = &GetSubstruct(&tmpMon->box, mon->box.personality, 3)->blockD;
-    PokemonDataBlockA *blockA = &GetSubstruct(&mon->box, personality, 0)->blockA;
-    PokemonDataBlockB *blockB = &GetSubstruct(&mon->box, personality, 1)->blockB;
-    PokemonDataBlockC *blockC = &GetSubstruct(&mon->box, personality, 2)->blockC;
-    PokemonDataBlockD *blockD = &GetSubstruct(&mon->box, personality, 3)->blockD;
+    PokemonDataBlockA *tmpBlockA = BoxPokemon_GetDataBlock(&tmpMon->box, mon->box.personality, DATA_BLOCK_A);
+    PokemonDataBlockB *tmpBlockB = BoxPokemon_GetDataBlock(&tmpMon->box, mon->box.personality, DATA_BLOCK_B);
+    PokemonDataBlockC *tmpBlockC = BoxPokemon_GetDataBlock(&tmpMon->box, mon->box.personality, DATA_BLOCK_C);
+    PokemonDataBlockD *tmpBlockD = BoxPokemon_GetDataBlock(&tmpMon->box, mon->box.personality, DATA_BLOCK_D);
+    PokemonDataBlockA *blockA = BoxPokemon_GetDataBlock(&mon->box, personality, DATA_BLOCK_A);
+    PokemonDataBlockB *blockB = BoxPokemon_GetDataBlock(&mon->box, personality, DATA_BLOCK_B);
+    PokemonDataBlockC *blockC = BoxPokemon_GetDataBlock(&mon->box, personality, DATA_BLOCK_C);
+    PokemonDataBlockD *blockD = BoxPokemon_GetDataBlock(&mon->box, personality, DATA_BLOCK_D);
 
     DECRYPT_BOX(&tmpMon->box);
     DECRYPT_PARTY(mon);
@@ -3962,45 +3969,48 @@ u32 CalcMonChecksum(void *_data, u32 size) {
     return ret;
 }
 
-PokemonDataBlock *GetSubstruct(BoxPokemon *boxMon, u32 pid, u8 which) {
-    static const u8 offsets[32][4] = {
-        { 0x00, 0x20, 0x40, 0x60 },
-        { 0x00, 0x20, 0x60, 0x40 },
-        { 0x00, 0x40, 0x20, 0x60 },
-        { 0x00, 0x60, 0x20, 0x40 },
-        { 0x00, 0x40, 0x60, 0x20 },
-        { 0x00, 0x60, 0x40, 0x20 },
-        { 0x20, 0x00, 0x40, 0x60 },
-        { 0x20, 0x00, 0x60, 0x40 },
-        { 0x40, 0x00, 0x20, 0x60 },
-        { 0x60, 0x00, 0x20, 0x40 },
-        { 0x40, 0x00, 0x60, 0x20 },
-        { 0x60, 0x00, 0x40, 0x20 },
-        { 0x20, 0x40, 0x00, 0x60 },
-        { 0x20, 0x60, 0x00, 0x40 },
-        { 0x40, 0x20, 0x00, 0x60 },
-        { 0x60, 0x20, 0x00, 0x40 },
-        { 0x40, 0x60, 0x00, 0x20 },
-        { 0x60, 0x40, 0x00, 0x20 },
-        { 0x20, 0x40, 0x60, 0x00 },
-        { 0x20, 0x60, 0x40, 0x00 },
-        { 0x40, 0x20, 0x60, 0x00 },
-        { 0x60, 0x20, 0x40, 0x00 },
-        { 0x40, 0x60, 0x20, 0x00 },
-        { 0x60, 0x40, 0x20, 0x00 },
-        { 0x00, 0x20, 0x40, 0x60 },
-        { 0x00, 0x20, 0x60, 0x40 },
-        { 0x00, 0x40, 0x20, 0x60 },
-        { 0x00, 0x60, 0x20, 0x40 },
-        { 0x00, 0x40, 0x60, 0x20 },
-        { 0x00, 0x60, 0x40, 0x20 },
-        { 0x20, 0x00, 0x40, 0x60 },
-        { 0x20, 0x00, 0x60, 0x40 },
-    };
+#define SUBSTRUCT_CASE(v1, v2, v3, v4) \
+    { (v1 << 5), (v2 << 5), (v3 << 5), (v4 << 5) }
 
-    pid = ((pid & 0x3E000) >> 13);
-    GF_ASSERT(which <= 3);
-    return (PokemonDataBlock *)((char *)boxMon->dataBlocks + offsets[pid][which]);
+static const u8 substructOffsets[32][4] = {
+    [0] = SUBSTRUCT_CASE(0, 1, 2, 3),
+    [1] = SUBSTRUCT_CASE(0, 1, 3, 2),
+    [2] = SUBSTRUCT_CASE(0, 2, 1, 3),
+    [3] = SUBSTRUCT_CASE(0, 3, 1, 2),
+    [4] = SUBSTRUCT_CASE(0, 2, 3, 1),
+    [5] = SUBSTRUCT_CASE(0, 3, 2, 1),
+    [6] = SUBSTRUCT_CASE(1, 0, 2, 3),
+    [7] = SUBSTRUCT_CASE(1, 0, 3, 2),
+    [8] = SUBSTRUCT_CASE(2, 0, 1, 3),
+    [9] = SUBSTRUCT_CASE(3, 0, 1, 2),
+    [10] = SUBSTRUCT_CASE(2, 0, 3, 1),
+    [11] = SUBSTRUCT_CASE(3, 0, 2, 1),
+    [12] = SUBSTRUCT_CASE(1, 2, 0, 3),
+    [13] = SUBSTRUCT_CASE(1, 3, 0, 2),
+    [14] = SUBSTRUCT_CASE(2, 1, 0, 3),
+    [15] = SUBSTRUCT_CASE(3, 1, 0, 2),
+    [16] = SUBSTRUCT_CASE(2, 3, 0, 1),
+    [17] = SUBSTRUCT_CASE(3, 2, 0, 1),
+    [18] = SUBSTRUCT_CASE(1, 2, 3, 0),
+    [19] = SUBSTRUCT_CASE(1, 3, 2, 0),
+    [20] = SUBSTRUCT_CASE(2, 1, 3, 0),
+    [21] = SUBSTRUCT_CASE(3, 1, 2, 0),
+    [22] = SUBSTRUCT_CASE(2, 3, 1, 0),
+    [23] = SUBSTRUCT_CASE(3, 2, 1, 0),
+    [24] = SUBSTRUCT_CASE(0, 1, 2, 3),
+    [25] = SUBSTRUCT_CASE(0, 1, 3, 2),
+    [26] = SUBSTRUCT_CASE(0, 2, 1, 3),
+    [27] = SUBSTRUCT_CASE(0, 3, 1, 2),
+    [28] = SUBSTRUCT_CASE(0, 2, 3, 1),
+    [29] = SUBSTRUCT_CASE(0, 3, 2, 1),
+    [30] = SUBSTRUCT_CASE(1, 0, 2, 3),
+    [31] = SUBSTRUCT_CASE(1, 0, 3, 2),
+};
+
+static void *BoxPokemon_GetDataBlock(BoxPokemon *boxMon, u32 personality, u8 dataBlockID) {
+    personality = (personality & 0x3e000) >> 13;
+    GF_ASSERT(dataBlockID <= DATA_BLOCK_D);
+    return ((char *)boxMon->dataBlocks + substructOffsets[personality][dataBlockID]);
 }
 
 int ResolveMonForm(int species, int form) {
@@ -4271,10 +4281,10 @@ void sub_02072A98(Pokemon *mon, struct UnkPokemonStruct_02072A98 *dest) {
         DECRYPT_BOX(&mon->box);
     }
     boxMon = Pokemon_GetBoxMon(mon);
-    dbA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
-    dbB = &GetSubstruct(boxMon, boxMon->personality, 1)->blockB;
-    dbC = &GetSubstruct(boxMon, boxMon->personality, 2)->blockC;
-    dbD = &GetSubstruct(boxMon, boxMon->personality, 3)->blockD;
+    dbA = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_A);
+    dbB = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_B);
+    dbC = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_C);
+    dbD = BoxPokemon_GetDataBlock(boxMon, boxMon->personality, DATA_BLOCK_D);
 
     dest->personality = boxMon->personality;
     dest->partyDecrypted = FALSE;
@@ -4348,10 +4358,10 @@ void sub_02072D64(const struct UnkPokemonStruct_02072A98 *src, Pokemon *mon) {
 
     MI_CpuClearFast(mon, sizeof(Pokemon));
     boxMon = Pokemon_GetBoxMon(mon);
-    dbA = &GetSubstruct(boxMon, src->personality, 0)->blockA;
-    dbB = &GetSubstruct(boxMon, src->personality, 1)->blockB;
-    dbC = &GetSubstruct(boxMon, src->personality, 2)->blockC;
-    dbD = &GetSubstruct(boxMon, src->personality, 3)->blockD;
+    dbA = BoxPokemon_GetDataBlock(boxMon, src->personality, DATA_BLOCK_A);
+    dbB = BoxPokemon_GetDataBlock(boxMon, src->personality, DATA_BLOCK_B);
+    dbC = BoxPokemon_GetDataBlock(boxMon, src->personality, DATA_BLOCK_C);
+    dbD = BoxPokemon_GetDataBlock(boxMon, src->personality, DATA_BLOCK_D);
 
     boxMon->personality = src->personality;
     boxMon->partyDecrypted = FALSE;
