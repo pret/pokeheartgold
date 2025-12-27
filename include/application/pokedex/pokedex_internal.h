@@ -38,6 +38,13 @@ typedef struct PokedexAppData_UnkSub18DC {
     u32 *unk_28;
 } PokedexAppData_UnkSub18DC;
 
+typedef struct PokedexAppData_UnkSub1908 {
+    u8 unk_00;
+    u8 unk_01;
+    u8 unk_02;
+    u8 unk_03;
+} PokedexAppData_UnkSub1908;
+
 typedef struct PokedexAppData_UnkSub190C {
     u8 unk_00;
     u8 unk_01;
@@ -109,7 +116,7 @@ struct PokedexAppData {
     u8 filler_18C5[7];
     PokedexAppData_UnkSub18CC unk_18CC;
     PokedexAppData_UnkSub18DC unk_18DC;
-    void *unk_1908;
+    PokedexAppData_UnkSub1908 *unk_1908;
     PokedexAppData_UnkSub190C *unk_190C;
 }; // size: 0x1910
 
