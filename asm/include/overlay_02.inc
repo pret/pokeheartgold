@@ -329,7 +329,7 @@
 .public Personality_GenerateShiny
 .public Pokemon_BuildSpriteTemplate
 .public Pokemon_GetBoxMon
-.public WildMonSetRandomHeldItem
+.public Pokemon_GiveWildHeldItem
 .public CalcMonPokeathlonStars
 .public EnemyTrainerSet_Init
 .public Party_AddMon

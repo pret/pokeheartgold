@@ -5468,7 +5468,7 @@ _02248576:
 _02248578:
 	ldr r1, [r6]
 	add r0, r4, #0
-	bl WildMonSetRandomHeldItem
+	bl Pokemon_GiveWildHeldItem
 	add r0, r4, #0
 	mov r1, #5
 	mov r2, #0

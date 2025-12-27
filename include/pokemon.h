@@ -175,7 +175,7 @@ void sub_020720FC(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 enc
 void sub_0207213C(BoxPokemon *boxMon, PlayerProfile *playerProfile, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_0207217C(Pokemon *mon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
 void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u32 encounterType, enum HeapID heapID);
-void WildMonSetRandomHeldItem(Pokemon *mon, u32 a1, u32 a2);
+void Pokemon_GiveWildHeldItem(Pokemon *mon, u32 battleType, u32 itemRates);
 BOOL Pokemon_CanLearnTMHM(Pokemon *mon, u8 tmHM);
 BOOL BoxPokemon_CanLearnTMHM(BoxPokemon *boxMon, u8 tmHM);
 BOOL Species_CanLearnTMHM(u16 species, u32 form, u8 tmHM);
