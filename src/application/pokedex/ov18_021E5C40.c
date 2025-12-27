@@ -1,6 +1,7 @@
 #include "application/pokedex/pokedex_internal.h"
 #include "msgdata/msg.naix"
 
+#include "dex_mon_measures.h"
 #include "gf_gfx_loader.h"
 #include "pokedex_util.h"
 #include "sprite_system.h"
@@ -1326,4 +1327,35 @@ u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1) {
             return 0;
         }
     }
+}
+
+void ov18_021E8410(PokedexAppData *pokedexApp) {
+    NARC *narc; // forward decl fixes regswap
+    PokedexAppData_UnkSub18CC *r5 = &pokedexApp->unk_18CC;
+    narc = NARC_New(GetPokedexDataNarcID(), HEAP_ID_37);
+    if (PlayerProfile_GetTrainerGender(pokedexApp->unk_0000->playerProfile) == TRAINER_MALE) {
+        r5->unk_0 = GfGfxLoader_LoadFromOpenNarc(narc, 9, FALSE, HEAP_ID_37, FALSE);
+        r5->unk_4 = GfGfxLoader_LoadFromOpenNarc(narc, 5, FALSE, HEAP_ID_37, FALSE);
+        r5->unk_8 = GfGfxLoader_LoadFromOpenNarc(narc, 10, FALSE, HEAP_ID_37, FALSE);
+        r5->unk_C = GfGfxLoader_LoadFromOpenNarc(narc, 6, FALSE, HEAP_ID_37, FALSE);
+    } else {
+        r5->unk_0 = GfGfxLoader_LoadFromOpenNarc(narc, 7, FALSE, HEAP_ID_37, FALSE);
+        r5->unk_4 = GfGfxLoader_LoadFromOpenNarc(narc, 3, FALSE, HEAP_ID_37, FALSE);
+        r5->unk_8 = GfGfxLoader_LoadFromOpenNarc(narc, 8, FALSE, HEAP_ID_37, FALSE);
+        r5->unk_C = GfGfxLoader_LoadFromOpenNarc(narc, 4, FALSE, HEAP_ID_37, FALSE);
+    }
+    pokedexApp->unk_1848 = GfGfxLoader_LoadFromOpenNarc(narc, 0, FALSE, HEAP_ID_37, FALSE);
+    pokedexApp->unk_184C = GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, HEAP_ID_37, FALSE);
+    NARC_Delete(narc);
+}
+
+void ov18_021E84EC(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub18CC *r5 = &pokedexApp->unk_18CC;
+
+    Heap_Free(pokedexApp->unk_1848);
+    Heap_Free(pokedexApp->unk_184C);
+    Heap_Free(r5->unk_0);
+    Heap_Free(r5->unk_4);
+    Heap_Free(r5->unk_8);
+    Heap_Free(r5->unk_C);
 }
