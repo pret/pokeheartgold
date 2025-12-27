@@ -30,21 +30,14 @@ void ov18_021E7D90(PokedexAppData *pokedexApp);
 void ov18_021E7ED8(PokedexAppData *pokedexApp);
 void ov18_021E800C(PokedexAppData *pokedexApp);
 u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1);
-void ov18_021E8698(PokedexAppData_UnkSub18DC *a0, u16 a1, int a2);
-void ov18_021E8714(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC *a1, int a2, int a3);
-void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC *a1, int a2, int a3, int a4);
+void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 a1, int a2);
+void ov18_021E8714(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3);
+void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3, int a4);
 void ov18_021E8A00(PokedexAppData *pokedexApp);
-void ov18_021EE3FC(PokedexAppData *pokedexApp);
-void ov18_021EEE58(PokedexAppData *pokedexApp);
-void ov18_021F021C(PokedexAppData *pokedexApp);
-void ov18_021F05E8(PokedexAppData *pokedexApp);
-void ov18_021F0858(PokedexAppData *pokedexApp);
-void ov18_021F0900(PokedexAppData *pokedexApp);
-void ov18_021F2880(PokedexAppData *pokedexApp);
-void ov18_021F2F3C(PokedexAppData *pokedexApp);
-void ov18_021F3D98(PokedexAppData *pokedexApp);
-void ov18_021F49F8(PokedexAppData *pokedexApp);
-void ov18_021F5DC0(PokedexAppData *pokedexApp);
+BOOL ov18_021E8B24(u32 a0);
+u32 ov18_021E8B40(void);
+BOOL ov18_021E8B5C(u32 a0);
+u32 ov18_021E8B78(void);
 
 extern const UnkStruct_ov18_021F9780 ov18_021F9770[];
 extern const UnkStruct_ov18_021F9780 ov18_021F9780[];
@@ -1365,43 +1358,43 @@ void ov18_021E84EC(PokedexAppData *pokedexApp) {
 }
 
 void ov18_021E8528(PokedexAppData *pokedexApp, int a1, int a2) {
-    ov18_021E8698(&pokedexApp->unk_18DC, pokedexApp->unk_18A2, a1 + 4);
-    ov18_021E8698(&pokedexApp->unk_18E4, pokedexApp->unk_18A2, 7);
-    ov18_021E8698(&pokedexApp->unk_18EC, pokedexApp->unk_18A2, a1);
-    ov18_021E8698(&pokedexApp->unk_18F4, pokedexApp->unk_18A2, 3);
+    ov18_021E8698(&pokedexApp->unk_18DC.unk_00, pokedexApp->unk_18A2, a1 + 4);
+    ov18_021E8698(&pokedexApp->unk_18DC.unk_08, pokedexApp->unk_18A2, 7);
+    ov18_021E8698(&pokedexApp->unk_18DC.unk_10, pokedexApp->unk_18A2, a1);
+    ov18_021E8698(&pokedexApp->unk_18DC.unk_18, pokedexApp->unk_18A2, 3);
 
     u32 r2 = 1;
-    r2 += pokedexApp->unk_18DC.unk_4 - 1;
-    r2 += pokedexApp->unk_18E4.unk_4 - 1;
-    r2 += pokedexApp->unk_18EC.unk_4 - 1;
-    r2 += pokedexApp->unk_18F4.unk_4 - 1;
+    r2 += pokedexApp->unk_18DC.unk_00.unk_4 - 1;
+    r2 += pokedexApp->unk_18DC.unk_08.unk_4 - 1;
+    r2 += pokedexApp->unk_18DC.unk_10.unk_4 - 1;
+    r2 += pokedexApp->unk_18DC.unk_18.unk_4 - 1;
 
-    pokedexApp->unk_18FC = Heap_Alloc(HEAP_ID_37, sizeof(u32) * r2);
-    pokedexApp->unk_1904 = Heap_Alloc(HEAP_ID_37, sizeof(u32) * r2);
-    MI_CpuClear32(pokedexApp->unk_18FC, sizeof(u32) * r2);
-    MI_CpuClear32(pokedexApp->unk_1904, sizeof(u32) * r2);
-    pokedexApp->unk_18FC[0] = -2;
-    pokedexApp->unk_1900 = 1;
-    pokedexApp->unk_1904[0] = 0;
+    pokedexApp->unk_18DC.unk_20.unk_0 = Heap_Alloc(HEAP_ID_37, sizeof(u32) * r2);
+    pokedexApp->unk_18DC.unk_28 = Heap_Alloc(HEAP_ID_37, sizeof(u32) * r2);
+    MI_CpuClear32(pokedexApp->unk_18DC.unk_20.unk_0, sizeof(u32) * r2);
+    MI_CpuClear32(pokedexApp->unk_18DC.unk_28, sizeof(u32) * r2);
+    pokedexApp->unk_18DC.unk_20.unk_0[0] = -2;
+    pokedexApp->unk_18DC.unk_20.unk_4 = 1;
+    pokedexApp->unk_18DC.unk_28[0] = 0;
 
-    ov18_021E8714(pokedexApp, &pokedexApp->unk_18DC, a2, 0);
-    ov18_021E8714(pokedexApp, &pokedexApp->unk_18E4, a2, 1);
-    u32 r6 = pokedexApp->unk_1900;
-    ov18_021E8878(pokedexApp, &pokedexApp->unk_18EC, a2, r6, 0);
-    ov18_021E8878(pokedexApp, &pokedexApp->unk_18F4, a2, r6, 1);
+    ov18_021E8714(pokedexApp, &pokedexApp->unk_18DC.unk_00, a2, 0);
+    ov18_021E8714(pokedexApp, &pokedexApp->unk_18DC.unk_08, a2, 1);
+    u32 r6 = pokedexApp->unk_18DC.unk_20.unk_4;
+    ov18_021E8878(pokedexApp, &pokedexApp->unk_18DC.unk_10, a2, r6, 0);
+    ov18_021E8878(pokedexApp, &pokedexApp->unk_18DC.unk_18, a2, r6, 1);
     ov18_021E8A00(pokedexApp);
 }
 
 void ov18_021E8648(PokedexAppData *pokedexApp) {
-    Heap_Free(pokedexApp->unk_18DC.unk_0);
-    Heap_Free(pokedexApp->unk_18E4.unk_0);
-    Heap_Free(pokedexApp->unk_18EC.unk_0);
-    Heap_Free(pokedexApp->unk_18F4.unk_0);
-    Heap_Free(pokedexApp->unk_18FC);
-    Heap_Free(pokedexApp->unk_1904);
+    Heap_Free(pokedexApp->unk_18DC.unk_00.unk_0);
+    Heap_Free(pokedexApp->unk_18DC.unk_08.unk_0);
+    Heap_Free(pokedexApp->unk_18DC.unk_10.unk_0);
+    Heap_Free(pokedexApp->unk_18DC.unk_18.unk_0);
+    Heap_Free(pokedexApp->unk_18DC.unk_20.unk_0);
+    Heap_Free(pokedexApp->unk_18DC.unk_28);
 }
 
-void ov18_021E8698(PokedexAppData_UnkSub18DC *a0, u16 a1, int a2) {
+void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 a1, int a2) {
     int r3;
     u32 sp8;
 
@@ -1434,4 +1427,52 @@ void ov18_021E8698(PokedexAppData_UnkSub18DC *a0, u16 a1, int a2) {
     // UB: if unexpected a2, r3 is uninitialized
     a0->unk_0 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, r3 + a1, FALSE, HEAP_ID_37, FALSE, &sp8);
     a0->unk_4 = sp8 / sizeof(u32);
+}
+
+void ov18_021E8714(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3) {
+    u16 i;
+    u16 j;
+
+    if (a2 == 0) {
+        for (i = 0; i < a1->unk_4 - 1; ++i) {
+            if (pokedexApp->unk_190C[a1->unk_0[i]].unk_00 >= 22) {
+                continue;
+            }
+            for (j = 0; j < pokedexApp->unk_18DC.unk_20.unk_4; ++j) {
+                if (pokedexApp->unk_18DC.unk_20.unk_0[j] == a1->unk_0[i]) {
+                    pokedexApp->unk_18DC.unk_28[j] |= 1 << a3;
+                    break;
+                }
+            }
+            if (j == pokedexApp->unk_18DC.unk_20.unk_4) {
+                pokedexApp->unk_18DC.unk_20.unk_0[pokedexApp->unk_18DC.unk_20.unk_4] = a1->unk_0[i];
+                pokedexApp->unk_18DC.unk_28[pokedexApp->unk_18DC.unk_20.unk_4] = 1 << a3;
+                ++pokedexApp->unk_18DC.unk_20.unk_4;
+            }
+        }
+    } else {
+        u32 r5;
+        for (i = 0; i < a1->unk_4 - 1; ++i) {
+            r5 = a1->unk_0[i];
+            if (pokedexApp->unk_190C[a1->unk_0[i]].unk_00 < 22) {
+                continue;
+            }
+            if (ov18_021E8B24(r5) == TRUE) {
+                r5 = ov18_021E8B40();
+            } else if (ov18_021E8B5C(r5) == TRUE) {
+                r5 = ov18_021E8B78();
+            }
+            for (j = 0; j < pokedexApp->unk_18DC.unk_20.unk_4; ++j) {
+                if (pokedexApp->unk_18DC.unk_20.unk_0[j] == r5) {
+                    pokedexApp->unk_18DC.unk_28[j] |= 1 << a3;
+                    break;
+                }
+            }
+            if (j == pokedexApp->unk_18DC.unk_20.unk_4) {
+                pokedexApp->unk_18DC.unk_20.unk_0[pokedexApp->unk_18DC.unk_20.unk_4] = r5;
+                pokedexApp->unk_18DC.unk_28[pokedexApp->unk_18DC.unk_20.unk_4] = 1 << a3;
+                ++pokedexApp->unk_18DC.unk_20.unk_4;
+            }
+        }
+    }
 }
