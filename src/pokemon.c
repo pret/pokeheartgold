@@ -3843,36 +3843,30 @@ void BoxPokemon_UpdateAbility(BoxPokemon *boxMon) {
     BoxPokemon_LockEncryption(boxMon, reencrypt);
 }
 
-void SetMonPersonality(Pokemon *mon, u32 personality) {
-    PokemonDataBlockA *r4;
-    PokemonDataBlockB *r6;
-    PokemonDataBlockC *r7;
-    PokemonDataBlockD *sp8;
-    PokemonDataBlockA *spC;
-    PokemonDataBlockB *sp10;
-    PokemonDataBlockC *sp14;
-    PokemonDataBlockD *sp18;
-    Pokemon *tmpMon;
-
-    tmpMon = Pokemon_New(HEAP_ID_DEFAULT);
+void Pokemon_SetPersonality(Pokemon *mon, u32 personality) {
+    Pokemon *tmpMon = Pokemon_New(HEAP_ID_DEFAULT);
     Pokemon_Copy(mon, tmpMon);
-    r4 = &GetSubstruct(&tmpMon->box, mon->box.personality, 0)->blockA;
-    r6 = &GetSubstruct(&tmpMon->box, mon->box.personality, 1)->blockB;
-    r7 = &GetSubstruct(&tmpMon->box, mon->box.personality, 2)->blockC;
-    sp8 = &GetSubstruct(&tmpMon->box, mon->box.personality, 3)->blockD;
-    spC = &GetSubstruct(&mon->box, personality, 0)->blockA;
-    sp10 = &GetSubstruct(&mon->box, personality, 1)->blockB;
-    sp14 = &GetSubstruct(&mon->box, personality, 2)->blockC;
-    sp18 = &GetSubstruct(&mon->box, personality, 3)->blockD;
+
+    PokemonDataBlockA *tmpBlockA = &GetSubstruct(&tmpMon->box, mon->box.personality, 0)->blockA;
+    PokemonDataBlockB *tmpBlockB = &GetSubstruct(&tmpMon->box, mon->box.personality, 1)->blockB;
+    PokemonDataBlockC *tmpBlockC = &GetSubstruct(&tmpMon->box, mon->box.personality, 2)->blockC;
+    PokemonDataBlockD *tmpBlockD = &GetSubstruct(&tmpMon->box, mon->box.personality, 3)->blockD;
+    PokemonDataBlockA *blockA = &GetSubstruct(&mon->box, personality, 0)->blockA;
+    PokemonDataBlockB *blockB = &GetSubstruct(&mon->box, personality, 1)->blockB;
+    PokemonDataBlockC *blockC = &GetSubstruct(&mon->box, personality, 2)->blockC;
+    PokemonDataBlockD *blockD = &GetSubstruct(&mon->box, personality, 3)->blockD;
 
     DECRYPT_BOX(&tmpMon->box);
     DECRYPT_PARTY(mon);
     DECRYPT_BOX(&mon->box);
+
     mon->box.personality = personality;
-    *spC = *r4;
-    *sp10 = *r6;
-    *sp14 = *r7;
-    *sp18 = *sp8;
+
+    *blockA = *tmpBlockA;
+    *blockB = *tmpBlockB;
+    *blockC = *tmpBlockC;
+    *blockD = *tmpBlockD;
+
     mon->box.checksum = CHECKSUM(&mon->box);
     ENCRYPT_BOX(&mon->box);
     ENCRYPT_PARTY(mon);
