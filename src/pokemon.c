@@ -1902,9 +1902,9 @@ void ExpRate_LoadTable(int rate, u32 *dest) {
 
 u32 ExpRate_GetExpAtLevel(int rate, int level) {
     GF_ASSERT(rate < GROWTH_RATE_COUNT);
-    GF_ASSERT(level <= MAX_LEVEL + 1);
+    GF_ASSERT(level <= MAX_MON_LEVEL + 1);
 
-    u32 *expTable = Heap_Alloc(HEAP_ID_DEFAULT, (MAX_LEVEL + 1) * sizeof(u32));
+    u32 *expTable = Heap_Alloc(HEAP_ID_DEFAULT, (MAX_MON_LEVEL + 1) * sizeof(u32));
     ExpRate_LoadTable(rate, expTable);
 
     u32 ret = expTable[level];
@@ -1934,10 +1934,10 @@ int Species_CalcLevelByExp(u16 species, u32 exp) {
 
 int SpeciesData_CalcLevelByExp(SpeciesData *speciesData, u16 unused_species, u32 exp) {
 #pragma unused(unused_species)
-    static u32 table[MAX_LEVEL + 1];
+    static u32 table[MAX_MON_LEVEL + 1];
     ExpRate_LoadTable(SpeciesData_GetValue(speciesData, SPECIES_DATA_EXP_RATE), table);
     int i;
-    for (i = 1; i < MAX_LEVEL + 1; i++) {
+    for (i = 1; i < MAX_MON_LEVEL + 1; i++) {
         if (table[i] > exp) {
             break;
         }
@@ -2796,13 +2796,13 @@ BOOL Pokemon_TryLevelUp(Pokemon *mon) {
     u8 nextLevel = Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) + 1;
     u32 exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
     int expRate = Species_GetValue(species, SPECIES_DATA_EXP_RATE);
-    u32 maxExp = ExpRate_GetExpAtLevel(expRate, MAX_LEVEL);
+    u32 maxExp = ExpRate_GetExpAtLevel(expRate, MAX_MON_LEVEL);
 
     if (exp > maxExp) {
         exp = maxExp;
         Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
     }
-    if (nextLevel > MAX_LEVEL) {
+    if (nextLevel > MAX_MON_LEVEL) {
         return FALSE;
     }
     if (exp >= ExpRate_GetExpAtLevel(expRate, nextLevel)) {

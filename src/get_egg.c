@@ -138,7 +138,7 @@ static void Daycare_LearnLevelUpMoves(Pokemon *mon) {
     u16 learned;
     int stat;
 
-    for (i = 0, last_i = 0; i < MAX_LEVEL; i++) {
+    for (i = 0, last_i = 0; i < MAX_MON_LEVEL; i++) {
         if (!Pokemon_TryLevelUp(mon)) {
             break;
         }
@@ -170,7 +170,7 @@ static int Save_Daycare_MoveMonToParty(Party *party, DaycareMon *daycareMon, Mes
     species = BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL);
 
     BoxPokemon_CopyToPokemon(boxMon, mon);
-    if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) != MAX_LEVEL) {
+    if (Pokemon_GetData(mon, MON_DATA_LEVEL, NULL) != MAX_MON_LEVEL) {
         exp = Pokemon_GetData(mon, MON_DATA_EXPERIENCE, NULL);
         exp += DaycareMon_GetSteps(daycareMon);
         Pokemon_SetData(mon, MON_DATA_EXPERIENCE, &exp);
