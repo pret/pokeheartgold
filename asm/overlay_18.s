@@ -81,58 +81,10 @@
 	.extern ov18_021E8B18
 	.extern ov18_021E8B24
 	.extern ov18_021E8B5C
+	.extern ov18_021E8B94
+	.extern ov18_021E8BD4
 
 	.text
-
-	thumb_func_start ov18_021E8B94
-ov18_021E8B94: ; 0x021E8B94
-	push {r3, r4, lr}
-	sub sp, #0xc
-	mov r2, #0
-	add r4, r0, #0
-	str r2, [sp]
-	add r0, sp, #8
-	str r0, [sp, #4]
-	mov r0, #0x85
-	mov r1, #1
-	mov r3, #0x25
-	bl GfGfxLoader_LoadFromNarc_GetSizeOut
-	ldr r1, _021E8BCC ; =0x0000190C
-	mov r3, #0x25
-	str r0, [r4, r1]
-	mov r1, #0
-	str r1, [sp]
-	add r0, sp, #8
-	str r0, [sp, #4]
-	mov r0, #0x85
-	add r2, r1, #0
-	bl GfGfxLoader_LoadFromNarc_GetSizeOut
-	ldr r1, _021E8BD0 ; =0x00001908
-	str r0, [r4, r1]
-	add sp, #0xc
-	pop {r3, r4, pc}
-	nop
-_021E8BCC: .word 0x0000190C
-_021E8BD0: .word 0x00001908
-	thumb_func_end ov18_021E8B94
-
-	thumb_func_start ov18_021E8BD4
-ov18_021E8BD4: ; 0x021E8BD4
-	push {r4, lr}
-	add r4, r0, #0
-	ldr r0, _021E8BEC ; =0x0000190C
-	ldr r0, [r4, r0]
-	bl Heap_Free
-	ldr r0, _021E8BF0 ; =0x00001908
-	ldr r0, [r4, r0]
-	bl Heap_Free
-	pop {r4, pc}
-	nop
-_021E8BEC: .word 0x0000190C
-_021E8BF0: .word 0x00001908
-	thumb_func_end ov18_021E8BD4
-
-	// file boundary
 
 	thumb_func_start ov18_021E8BF4
 ov18_021E8BF4: ; 0x021E8BF4

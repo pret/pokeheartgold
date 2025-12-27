@@ -1620,3 +1620,15 @@ u32 ov18_021E8B78(void) {
     }
     return 1;
 }
+
+void ov18_021E8B94(PokedexAppData *pokedexApp) {
+    u32 sp8;
+
+    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, 1, FALSE, HEAP_ID_37, FALSE, &sp8);
+    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_a_1_3_3, 0, FALSE, HEAP_ID_37, FALSE, &sp8);
+}
+
+void ov18_021E8BD4(PokedexAppData *pokedexApp) {
+    Heap_Free(pokedexApp->unk_190C);
+    Heap_Free(pokedexApp->unk_1908);
+}
