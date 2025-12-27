@@ -1,3 +1,5 @@
+#include "constants/maps.h"
+
 #include "application/pokedex/pokedex_internal.h"
 #include "msgdata/msg.naix"
 
@@ -33,18 +35,25 @@ u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1);
 void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 a1, int a2);
 void ov18_021E8714(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3);
 void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3, int a4);
+u32 ov18_021E89DC(u32 a0);
 void ov18_021E8A00(PokedexAppData *pokedexApp);
-BOOL ov18_021E8B24(u32 a0);
+BOOL ov18_021E8AB0(PokedexAppData *pokedexApp, u32 a1);
+u32 ov18_021E8ACC(PokedexAppData *pokedexApp, u32 a1, u32 a2);
+u32 ov18_021E8AE0(PokedexAppData *pokedexApp, u32 a1);
+u32 ov18_021E8B0C(u32 a0);
+u32 ov18_021E8B18(u32 a0);
 u32 ov18_021E8B40(void);
-BOOL ov18_021E8B5C(u32 a0);
 u32 ov18_021E8B78(void);
 
 extern const UnkStruct_ov18_021F9780 ov18_021F9770[];
 extern const UnkStruct_ov18_021F9780 ov18_021F9780[];
 extern const GraphicsBanks ov18_021F98B0;
+extern const u16 ov18_021F98D8[];
 extern const UnkStruct_ov18_021F9780 ov18_021F990C[18];
+extern const u16 ov18_021F9954[70];
 extern const u8 ov18_021F9C18[6];
 extern const u8 ov18_021F9C20[];
+extern const int ov18_021F99E0[142];
 
 void ov18_021E5C40(void *cb_arg) {
     PokedexAppData *pokedexApp = cb_arg;
@@ -1516,4 +1525,98 @@ void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, 
             }
         }
     }
+}
+
+u32 ov18_021E89DC(u32 a0) {
+    for (u32 i = 0; i < NELEMS(ov18_021F99E0); ++i) {
+        if (a0 == ov18_021F99E0[i]) {
+            return i;
+        }
+    }
+
+    GF_ASSERT(FALSE);
+    return 0;
+}
+
+void ov18_021E8A00(PokedexAppData *pokedexApp) {
+    u32 r6;
+    u32 r7;
+    u16 i;
+    u16 j;
+
+    for (i = 1; i < pokedexApp->unk_18DC.unk_20.unk_4 - 1; ++i) {
+        r6 = ov18_021E8AE0(pokedexApp, i);
+        for (j = i + 1; j < pokedexApp->unk_18DC.unk_20.unk_4; ++j) {
+            r7 = ov18_021E8AE0(pokedexApp, j);
+            if (ov18_021E89DC(r6) > ov18_021E89DC(r7)) {
+                s32 r3;
+                u32 r3_2;
+
+                r3 = pokedexApp->unk_18DC.unk_20.unk_0[i];
+                pokedexApp->unk_18DC.unk_20.unk_0[i] = pokedexApp->unk_18DC.unk_20.unk_0[j];
+                pokedexApp->unk_18DC.unk_20.unk_0[j] = r3;
+
+                r3_2 = pokedexApp->unk_18DC.unk_28[i];
+                pokedexApp->unk_18DC.unk_28[i] = pokedexApp->unk_18DC.unk_28[j];
+                pokedexApp->unk_18DC.unk_28[j] = r3_2;
+
+                r6 = r7;
+            }
+        }
+    }
+}
+
+BOOL ov18_021E8AB0(PokedexAppData *pokedexApp, u32 a1) {
+    if (pokedexApp->unk_18DC.unk_28[a1] & 0x80000000) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+u32 ov18_021E8ACC(PokedexAppData *pokedexApp, u32 a1, u32 a2) {
+    return pokedexApp->unk_18DC.unk_28[a1] & (1 << a2);
+}
+
+u32 ov18_021E8AE0(PokedexAppData *pokedexApp, u32 a1) {
+    if (ov18_021E8AB0(pokedexApp, a1) == FALSE) { // explicit comparison required to match
+        return ov18_021E8B0C(pokedexApp->unk_18DC.unk_20.unk_0[a1]);
+    } else {
+        return ov18_021E8B18(pokedexApp->unk_18DC.unk_20.unk_0[a1]);
+    }
+}
+
+u32 ov18_021E8B0C(u32 a0) {
+    return ov18_021F9954[a0];
+}
+
+u32 ov18_021E8B18(u32 a0) {
+    return ov18_021F98D8[a0];
+}
+
+BOOL ov18_021E8B24(u32 a0) {
+    u32 r0 = ov18_021E8B0C(a0);
+    return r0 == MAP_ROUTE_2 || r0 == MAP_ROUTE_2_EAST;
+}
+
+u32 ov18_021E8B40(void) {
+    for (u32 i = 0; i < NELEMS(ov18_021F9954); ++i) {
+        if (ov18_021F9954[i] == 10) {
+            return i;
+        }
+    }
+    return 1;
+}
+
+BOOL ov18_021E8B5C(u32 a0) {
+    u32 r0 = ov18_021E8B0C(a0);
+    return r0 == MAP_ROUTE_16_EAST || r0 == MAP_ROUTE_16;
+}
+
+u32 ov18_021E8B78(void) {
+    for (u32 i = 0; i < NELEMS(ov18_021F9954); ++i) {
+        if (ov18_021F9954[i] == 24) {
+            return i;
+        }
+    }
+    return 1;
 }
