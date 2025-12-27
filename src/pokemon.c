@@ -4062,7 +4062,7 @@ int LowestFlagNo(u32 mask) {
     return i;
 }
 
-static const u16 sBattleFrontierBanlist[NUM_BANNED_BATTLE_FRONTIER] = {
+static const u16 sBattleFacilityBanlist[BATTLE_FACILITY_BANLIST_SIZE] = {
     SPECIES_MEWTWO,
     SPECIES_MEW,
     SPECIES_LUGIA,
@@ -4083,9 +4083,9 @@ static const u16 sBattleFrontierBanlist[NUM_BANNED_BATTLE_FRONTIER] = {
     SPECIES_ARCEUS,
 };
 
-BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 form) {
-    for (u32 i = 0; i < NUM_BANNED_BATTLE_FRONTIER; i++) {
-        if (species == sBattleFrontierBanlist[i]) {
+BOOL Species_IsBattleFacilityBanned(u16 species, u16 form) {
+    for (u32 i = 0; i < BATTLE_FACILITY_BANLIST_SIZE; i++) {
+        if (species == sBattleFacilityBanlist[i]) {
             return TRUE;
         }
     }
@@ -4095,11 +4095,11 @@ BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 form) {
     return FALSE;
 }
 
-u16 GetBannedBattleFrontierPokemon(u32 idx) {
-    if (idx >= NUM_BANNED_BATTLE_FRONTIER) {
-        idx = 0;
+u16 BattleFacility_GetBanlistEntry(u32 index) {
+    if (index >= BATTLE_FACILITY_BANLIST_SIZE) {
+        index = 0;
     }
-    return sBattleFrontierBanlist[idx];
+    return sBattleFacilityBanlist[index];
 }
 
 static const u16 sMythicalMonsList[9] = {
@@ -4114,7 +4114,7 @@ static const u16 sMythicalMonsList[9] = {
     SPECIES_ARCEUS,
 };
 
-BOOL SpeciesIsMythical(u16 species) {
+BOOL Species_IsMythical(u16 species) {
     int i;
     for (i = 0; i < NELEMS(sMythicalMonsList); i++) {
         if (species == sMythicalMonsList[i]) {
@@ -4124,10 +4124,10 @@ BOOL SpeciesIsMythical(u16 species) {
     return FALSE;
 }
 
-BOOL MonCheckFrontierIneligibility(Pokemon *mon) {
+BOOL Pokemon_IsBattleFacilityBanned(Pokemon *mon) {
     u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     u16 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
-    return IsPokemonBannedFromBattleFrontier(species, form);
+    return Species_IsBattleFacilityBanned(species, form);
 }
 
 BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID) {

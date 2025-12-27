@@ -28,7 +28,7 @@
 #define MOVE_APPEND_FULL  0xFFFFu
 #define MOVE_APPEND_KNOWN 0xFFFEu
 
-#define NUM_BANNED_BATTLE_FRONTIER 18
+#define BATTLE_FACILITY_BANLIST_SIZE 18
 
 extern const s8 gNatureStatModifiers[NATURE_NUM][NUM_EV_STATS];
 
@@ -128,8 +128,8 @@ void BoxPokemon_UpdateShayminForm(BoxPokemon *boxMon, int form);
 void Pokemon_UpdateAbility(Pokemon *mon);
 void BoxPokemon_UpdateAbility(BoxPokemon *boxMon);
 int LowestFlagNo(u32 mask);
-BOOL IsPokemonBannedFromBattleFrontier(u16 species, u16 form);
-u16 GetBannedBattleFrontierPokemon(u32 idx);
+BOOL Species_IsBattleFacilityBanned(u16 species, u16 form);
+u16 BattleFacility_GetBanlistEntry(u32 index);
 void Pokemon_RemoveCapsule(Pokemon *mon);
 void RestoreBoxMonPP(BoxPokemon *boxMon);
 BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID);
@@ -189,8 +189,8 @@ void MonDecryptSegment(void *data, u32 size, u32 seed);
 u32 CalcMonChecksum(void *_data, u32 size);
 int ResolveMonForm(int species, int form);
 u32 MaskOfFlagNo(int flagno);
-BOOL SpeciesIsMythical(u16 species);
-BOOL MonCheckFrontierIneligibility(Pokemon *mon);
+BOOL Species_IsMythical(u16 species);
+BOOL Pokemon_IsBattleFacilityBanned(Pokemon *mon);
 BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID);
 int TrainerClassToBackpicID(int trainerClass, BOOL a1);
 void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3);
