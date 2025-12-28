@@ -2,6 +2,7 @@
 
 #include "font.h"
 #include "sound_02004A44.h"
+#include "unk_02005D10.h"
 #include "unk_0200FA24.h"
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
@@ -274,4 +275,82 @@ int ov18_021E8DC8(PokedexAppData *pokedexApp) {
     }
 
     return 3;
+}
+
+int ov18_021E8DE8(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State04 *r4 = &pokedexApp->unk_0868.state_04;
+    switch (r4->unk_5) {
+    case 0:
+        BgTilemapRectChangePalette(pokedexApp->bgConfig, r4->unk_4, r4->unk_0, r4->unk_1, r4->unk_2, r4->unk_3, r4->unk_7_4);
+        ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, r4->unk_4);
+        ++r4->unk_5;
+        break;
+    case 1:
+        ++r4->unk_6;
+        if (r4->unk_6 == 4) {
+            BgTilemapRectChangePalette(pokedexApp->bgConfig, r4->unk_4, r4->unk_0, r4->unk_1, r4->unk_2, r4->unk_3, r4->unk_7_0);
+            ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, r4->unk_4);
+            r4->unk_6 = 0;
+            ++r4->unk_5;
+        }
+        break;
+    case 2:
+        MI_CpuClear8(r4, sizeof(pokedexApp->unk_0868));
+        return pokedexApp->unk_085C;
+    }
+
+    return 4;
+}
+
+int ov18_021E8E8C(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_185B = 0;
+    ov18_021E67C8(pokedexApp, 0);
+    PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0xF, 0xFFFF, -127, 0, 0, RGB_BLACK);
+    pokedexApp->unk_0860 = 6;
+    return 2;
+}
+
+int ov18_021E8ECC(PokedexAppData *pokedexApp) {
+    switch (ov18_021F6B00(pokedexApp)) {
+    case 0:
+        PlaySE(SEQ_SE_GS_BUTTON01);
+        return ov18_021EDBB8(pokedexApp, 8, 16, 9);
+    case 1:
+        PlaySE(SEQ_SE_GS_ZKN04);
+        return ov18_021EDBB8(pokedexApp, 0, 8, 10);
+    case 2:
+        if (pokedexApp->unk_0864 == 0) {
+            MenuInputStateMgr_SetState(pokedexApp->args->menuInputStatePtr, MENU_INPUT_STATE_TOUCH);
+        } else {
+            MenuInputStateMgr_SetState(pokedexApp->args->menuInputStatePtr, MENU_INPUT_STATE_BUTTONS);
+        }
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        return ov18_021EDBB8(pokedexApp, 24, 8, 92);
+    case 3:
+        PlaySE(SEQ_SE_GS_ZKN_BUTTON8);
+        ov18_021EDDA4(pokedexApp, 1);
+        break;
+    case 4:
+        PlaySE(SEQ_SE_GS_ZKN_BUTTON8);
+        ov18_021EDDA4(pokedexApp, 0);
+        break;
+    case 5: {
+        PokedexAppData_UnkSub0868_State06 *r5 = &pokedexApp->unk_0868.state_06;
+        System_GetTouchNewCoords(&r5->unk_0, &r5->unk_4);
+        r5->unk_8 = ov18_021F2B9C(pokedexApp);
+        PlaySE(SEQ_SE_GS_BUTTON01);
+        return 8;
+    }
+    case 6: {
+        u32 sp4;
+        u32 sp0;
+
+        System_GetTouchNewCoords(&sp4, &sp0);
+        if (ov18_021F2AF8(pokedexApp, sp4, sp0) == TRUE) {
+            return 7;
+        }
+    } break;
+    }
+
+    return 6;
 }
