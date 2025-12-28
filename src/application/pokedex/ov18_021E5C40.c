@@ -29,7 +29,7 @@ static void ov18_021E7A3C(PokedexAppData *pokedexApp);
 static void ov18_021E7BD0(PokedexAppData *pokedexApp);
 static void ov18_021E7D90(PokedexAppData *pokedexApp);
 static void ov18_021E7ED8(PokedexAppData *pokedexApp);
-static u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1);
+static u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 idx);
 static void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 a1, int a2);
 static void ov18_021E8714(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3);
 static void ov18_021E8878(PokedexAppData *pokedexApp, PokedexAppData_UnkSub18DC_0 *a1, int a2, int a3, int a4);
@@ -1781,8 +1781,8 @@ void ov18_021E8254(PokedexAppData *pokedexApp) {
     }
 }
 
-static u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1) {
-    switch (Pokedex_SpeciesGetLastSeenGender(pokedexApp->args->pokedex, pokedexApp->curSpecies, a1)) {
+static u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 idx) {
+    switch (Pokedex_SpeciesGetLastSeenGender(pokedexApp->args->pokedex, pokedexApp->curSpecies, idx)) {
     case MON_MALE:
         return 1;
     case MON_FEMALE:
@@ -1790,7 +1790,7 @@ static u8 ov18_021E83D0(PokedexAppData *pokedexApp, u8 a1) {
     case MON_GENDERLESS:
         return 3;
     default:
-        if (a1 == 0) {
+        if (idx == 0) {
             return 3;
         } else {
             return 0;
