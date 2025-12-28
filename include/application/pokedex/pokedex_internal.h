@@ -7,6 +7,7 @@
 #include "msgdata.h"
 #include "overlay_18.h"
 #include "palette.h"
+#include "sprite_system.h"
 #include "unk_0201956C.h" // 0x0201956C
 #include "unk_02019BA4.h" // 0x02019BA4
 
@@ -80,7 +81,9 @@ struct PokedexAppData {
     MsgData *msgData;                        // 0x065C
     MessageFormat *msgFormat;                // 0x0660
     String *strBufFormatted;                 // 0x0664
-    u8 filler_0668[0x1E8];                   // 0x0668
+    u8 filler_0668[4];                       // 0x0668
+    SpriteManager *unk_066C;                 // 0x066C
+    u8 filler_0770[0x1E0];                   // 0x0770
     PaletteData *paletteData;                // 0x0850
     NARC *gfxNarc;                           // 0x0854
     u8 filler_0858[4];                       // 0x0858
@@ -193,6 +196,7 @@ BOOL ov18_021E8B24(u32 a0);
 BOOL ov18_021E8B5C(u32 a0);
 void ov18_021E8B94(PokedexAppData *pokedexApp);
 void ov18_021E8BD4(PokedexAppData *pokedexApp);
+
 BOOL ov18_021E8BF4(PokedexAppData *pokedexApp, int *pState);
 u32 ov18_021E8AE0(PokedexAppData *pokedexApp, u32 a1);
 void ov18_021EE3FC(PokedexAppData *pokedexApp);
@@ -223,6 +227,7 @@ void ov18_021F021C(PokedexAppData *pokedexApp);
 void ov18_021F05E8(PokedexAppData *pokedexApp);
 void ov18_021F0858(PokedexAppData *pokedexApp);
 void ov18_021F0900(PokedexAppData *pokedexApp);
+void ov18_021F1004(PokedexAppData *pokedexApp);
 void ov18_021F11C0(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F1CAC(PokedexAppData *pokedexApp, int species, int a2, int a3);
 void ov18_021F1DE4(PokedexAppData *pokedexApp, u32 species, int a2, int a3);
