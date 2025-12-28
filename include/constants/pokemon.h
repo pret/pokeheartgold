@@ -357,6 +357,7 @@
 #define OT_ID_PLAYER_ID       0
 #define OT_ID_PRESET          1
 #define OT_ID_RANDOM_NO_SHINY 2
+#define INIT_IVS_RANDOM       (MAX_IVS_SINGLE_STAT + 1)
 
 #define GENDER_RATIO_MALE_ONLY   0
 #define GENDER_RATIO_FEMALE_12_5 31

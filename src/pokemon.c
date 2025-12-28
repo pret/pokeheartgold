@@ -212,11 +212,11 @@ void BoxPokemon_InitWithParams(BoxPokemon *boxMon, int species, int level, int i
     }
     BoxPokemon_SetData(boxMon, MON_DATA_PERSONALITY, &personality);
 
-    if (otIDType == 2) {
+    if (otIDType == OT_ID_RANDOM_NO_SHINY) {
         do {
             otID = (LCRandom() | (LCRandom() << 16));
         } while (SHINY_CHECK(otID, personality));
-    } else if (otIDType != 1) {
+    } else if (otIDType != OT_ID_PRESET) {
         otID = 0;
     }
     BoxPokemon_SetData(boxMon, MON_DATA_OT_ID, &otID);
@@ -237,7 +237,7 @@ void BoxPokemon_InitWithParams(BoxPokemon *boxMon, int species, int level, int i
     BoxPokemon_SetData(boxMon, MON_DATA_POKEBALL, &var1);
     BoxPokemon_SetData(boxMon, MON_DATA_DP_POKEBALL, &var1);
 
-    if (ivs < 0x20) {
+    if (ivs < INIT_IVS_RANDOM) {
         BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &ivs);
         BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &ivs);
         BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &ivs);
@@ -246,18 +246,23 @@ void BoxPokemon_InitWithParams(BoxPokemon *boxMon, int species, int level, int i
         BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &ivs);
     } else {
         var1 = LCRandom();
-        var2 = var1 & 0x1F;
+        var2 = (var1 & (0x1f << 0)) >> 0;
         BoxPokemon_SetData(boxMon, MON_DATA_HP_IV, &var2);
-        var2 = (var1 & 0x3E0) >> 5;
+
+        var2 = (var1 & (0x1f << 5)) >> 5;
         BoxPokemon_SetData(boxMon, MON_DATA_ATK_IV, &var2);
-        var2 = (var1 & 0x7C00) >> 10;
+
+        var2 = (var1 & (0x1f << 10)) >> 10;
         BoxPokemon_SetData(boxMon, MON_DATA_DEF_IV, &var2);
+
         var1 = LCRandom();
-        var2 = var1 & 0x1F;
+        var2 = (var1 & (0x1f << 0)) >> 0;
         BoxPokemon_SetData(boxMon, MON_DATA_SPEED_IV, &var2);
-        var2 = (var1 & 0x3E0) >> 5;
+
+        var2 = (var1 & (0x1f << 5)) >> 5;
         BoxPokemon_SetData(boxMon, MON_DATA_SPATK_IV, &var2);
-        var2 = (var1 & 0x7C00) >> 10;
+
+        var2 = (var1 & (0x1f << 10)) >> 10;
         BoxPokemon_SetData(boxMon, MON_DATA_SPDEF_IV, &var2);
     }
 
@@ -284,7 +289,7 @@ void Pokemon_InitWithNature(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 natu
     do {
         personality = (LCRandom() | (LCRandom() << 16));
     } while (nature != Personality_GetNature(personality));
-    Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, 0, 0);
+    Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, OT_ID_PLAYER_ID, 0);
 }
 
 void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 ivs, u8 gender, u8 nature, u8 letter) {
@@ -299,7 +304,7 @@ void Pokemon_InitWithGenderNatureLetter(Pokemon *mon, u16 species, u8 level, u8 
     } else {
         personality = Personality_CreateFromGenderAndNature(species, gender, nature);
     }
-    Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, 0, 0);
+    Pokemon_InitWithParams(mon, species, level, ivs, TRUE, personality, OT_ID_PLAYER_ID, 0);
 }
 
 u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
@@ -323,7 +328,7 @@ u32 Personality_CreateFromGenderAndNature(u16 species, u8 gender, u8 nature) {
 }
 
 void Pokemon_InitAndCalcStats(Pokemon *mon, int species, int level, int combinedIVs, int personality) {
-    Pokemon_InitWithParams(mon, species, level, 0, TRUE, personality, 0, 0);
+    Pokemon_InitWithParams(mon, species, level, 0, TRUE, personality, OT_ID_PLAYER_ID, 0);
     Pokemon_SetData(mon, MON_DATA_COMBINED_IVS, &combinedIVs);
     Pokemon_CalcLevelAndStats(mon);
 }
