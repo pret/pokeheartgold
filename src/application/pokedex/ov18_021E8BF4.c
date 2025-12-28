@@ -224,7 +224,7 @@ int ov18_021E8C30(PokedexAppData *pokedexApp) {
     ov18_021E8410(pokedexApp);
     sub_020880CC(0, HEAP_ID_37);
     FontID_Alloc(4, HEAP_ID_37);
-    pokedexApp->gfxNarc = NARC_New(NARC_a_0_6_8, HEAP_ID_37);
+    pokedexApp->gfxNarc = NARC_New(NARC_graphic_zukan_gra, HEAP_ID_37);
     ov18_021E6FFC(pokedexApp);
     ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, 0, 26, 17, 17, 0, 152, 0, 152, 8, 14);
     ov18_021F8884(pokedexApp, 1);
