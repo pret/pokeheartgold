@@ -1,6 +1,9 @@
 #include "constants/maps.h"
 
 #include "application/pokedex/pokedex_internal.h"
+#include "application/zukanlist/zkn_data/zukan_enc.naix"
+#include "application/zukanlist/zkn_data/zukan_hw_data.naix"
+#include "graphic/zukan_gra.naix"
 #include "msgdata/msg.naix"
 
 #include "dex_mon_measures.h"
@@ -803,9 +806,9 @@ void ov18_021E6280(PokedexAppData *pokedexApp) {
 }
 
 void ov18_021E62A8(PokedexAppData *pokedexApp) {
-    NARC *narc = NARC_New(NARC_a_0_7_5, HEAP_ID_37);
-    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, 0, FALSE, HEAP_ID_37, FALSE);
-    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, HEAP_ID_37, FALSE);
+    NARC *narc = NARC_New(NARC_application_zukanlist_zkn_data_zukan_hw_data, HEAP_ID_37);
+    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_hw_data_zukan_hw_data_0_bin, FALSE, HEAP_ID_37, FALSE);
+    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_hw_data_zukan_hw_data_1_bin, FALSE, HEAP_ID_37, FALSE);
     NARC_Delete(narc);
 }
 
@@ -834,18 +837,18 @@ void ov18_021E6308(PokedexAppData *pokedexApp) {
     sub_020195F4(pokedexApp->unk_0008, 14, 0, 3, 24);
     sub_020195F4(pokedexApp->unk_0008, 16, 1, 32, 4);
     sub_020195F4(pokedexApp->unk_0008, 23, 7, 20, 4);
-    sub_020196B8(pokedexApp->unk_0008, 0, pokedexApp->gfxNarc, 5, 1);
-    sub_020196B8(pokedexApp->unk_0008, 1, pokedexApp->gfxNarc, 6, 1);
-    sub_020196B8(pokedexApp->unk_0008, 2, pokedexApp->gfxNarc, 7, 1);
-    sub_020196B8(pokedexApp->unk_0008, 3, pokedexApp->gfxNarc, 8, 1);
-    sub_020196B8(pokedexApp->unk_0008, 4, pokedexApp->gfxNarc, 9, 1);
-    sub_020196B8(pokedexApp->unk_0008, 5, pokedexApp->gfxNarc, 10, 1);
-    sub_020196B8(pokedexApp->unk_0008, 6, pokedexApp->gfxNarc, 69, 1);
-    sub_020196B8(pokedexApp->unk_0008, 7, pokedexApp->gfxNarc, 70, 1);
-    sub_020196B8(pokedexApp->unk_0008, 8, pokedexApp->gfxNarc, 71, 1);
-    sub_020196B8(pokedexApp->unk_0008, 13, pokedexApp->gfxNarc, 16, 1);
-    sub_020196B8(pokedexApp->unk_0008, 16, pokedexApp->gfxNarc, 11, 1);
-    sub_020196B8(pokedexApp->unk_0008, 23, pokedexApp->gfxNarc, 88, 1);
+    sub_020196B8(pokedexApp->unk_0008, 0, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000005_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 1, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000006_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 2, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000007_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 3, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000008_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 4, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000009_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 5, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000010_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 6, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000069_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 7, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000070_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 8, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000071_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 13, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000016_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 16, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000011_NSCR_lz, 1);
+    sub_020196B8(pokedexApp->unk_0008, 23, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000088_NSCR_lz, 1);
     sub_02019B70(pokedexApp->unk_0008, 11, 0, 32, 0, 19);
     sub_02019B70(pokedexApp->unk_0008, 12, 0, 32, 0, 19);
     ov18_021F0168(pokedexApp);
@@ -993,25 +996,25 @@ static void ov18_021E6868(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_2);
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 1, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000001_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
     {
         NNSG2dScreenData *sp10;
-        void *r5 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->gfxNarc, 0, TRUE, &sp10, HEAP_ID_37);
+        void *r5 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000000_NSCR_lz, TRUE, &sp10, HEAP_ID_37);
         BG_LoadScreenTilemapData(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, sp10->rawData, 0x1000);
         Heap_Free(r5);
     }
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 4, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 3, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 17, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 16, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 19, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000003_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000002_NCLR, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000017_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000016_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000019_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
     if (pokedexApp->unk_185C == 2) {
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 20, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000020_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
     } else {
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 21, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000021_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
     }
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000018_NCLR, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
     if (!pokedexApp->unk_1860) {
         FillBgTilemapRect(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0x16, 3, 15, 26, 2, TILEMAP_FILL_KEEP_PAL);
     }
@@ -1204,7 +1207,7 @@ void ov18_021E6E44(PokedexAppData *pokedexApp) {
 void ov18_021E6F6C(BgConfig *bgConfig, u8 bgId, u8 language, NARC *narc, enum HeapID heapId) {
     NNSG2dScreenData *spC;
 
-    void *r6 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, language == GAME_LANGUAGE ? 20 : 21, TRUE, &spC, heapId);
+    void *r6 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, language == GAME_LANGUAGE ? NARC_zukan_gra_zukan_gra_00000020_NSCR_lz : NARC_zukan_gra_zukan_gra_00000021_NSCR_lz, TRUE, &spC, heapId);
     LoadRectToBgTilemapRect(bgConfig, bgId, spC->rawData, 0, 0, 32, 24);
     ScheduleBgTilemapBufferTransfer(bgConfig, bgId);
     Heap_Free(r6);
@@ -1213,7 +1216,7 @@ void ov18_021E6F6C(BgConfig *bgConfig, u8 bgId, u8 language, NARC *narc, enum He
 void ov18_021E6FB8(BgConfig *bgConfig, u8 bgId, NARC *narc, enum HeapID heapId) {
     NNSG2dScreenData *spC;
 
-    void *r6 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, 22, TRUE, &spC, heapId);
+    void *r6 = GfGfxLoader_GetScrnDataFromOpenNarc(narc, NARC_zukan_gra_zukan_gra_00000022_NSCR_lz, TRUE, &spC, heapId);
     LoadRectToBgTilemapRect(bgConfig, bgId, spC->rawData, 0, 0, 32, 24);
     ScheduleBgTilemapBufferTransfer(bgConfig, bgId);
     Heap_Free(r6);
@@ -1239,17 +1242,17 @@ static void ov18_021E7048(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_0);
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 4, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 3, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 58, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 57, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000003_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000058_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000057_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000002_NCLR, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 58, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 58, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 59, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 60, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000058_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000058_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000059_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000060_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000018_NCLR, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
 
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0);
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_1);
@@ -1264,7 +1267,7 @@ static void ov18_021E7048(PokedexAppData *pokedexApp) {
 void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
     switch (a1) {
     case 0:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 57, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000057_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021F6DE0(pokedexApp, a2);
         ov18_021EEED0(pokedexApp, 0);
         ov18_021EF45C(pokedexApp);
@@ -1272,7 +1275,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         ov18_021F3618(pokedexApp, 0);
         break;
     case 1:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 62, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000062_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021E7448(pokedexApp, &ov18_021F9780[pokedexApp->unk_1868], TRUE);
         ov18_021F6EC0(pokedexApp);
         ov18_021EEED0(pokedexApp, 2);
@@ -1280,7 +1283,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         ov18_021F3618(pokedexApp, 4);
         break;
     case 2:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 63, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000063_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021E76A4(pokedexApp, pokedexApp->unk_186C, 1);
         ov18_021F6FA0(pokedexApp);
         ov18_021EEED0(pokedexApp, 3);
@@ -1288,7 +1291,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         ov18_021F3618(pokedexApp, 4);
         break;
     case 3:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 64, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000064_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021E74E4(pokedexApp);
         ov18_021F7124(pokedexApp);
         ov18_021EEED0(pokedexApp, 4);
@@ -1296,21 +1299,21 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         ov18_021F3618(pokedexApp, 4);
         break;
     case 4:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 65, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000065_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021F7354(pokedexApp);
         ov18_021EEED0(pokedexApp, 5);
         ov18_021EF91C(pokedexApp);
         ov18_021F3618(pokedexApp, 2);
         break;
     case 5:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 66, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000066_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021F74D8(pokedexApp);
         ov18_021EEED0(pokedexApp, 6);
         ov18_021EF9B4(pokedexApp);
         ov18_021F3618(pokedexApp, 3);
         break;
     case 6:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 67, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000067_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021E7448(pokedexApp, &ov18_021F9770[pokedexApp->unk_1888], TRUE);
         ov18_021F7668(pokedexApp);
         ov18_021EEED0(pokedexApp, 7);
@@ -1319,7 +1322,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         ov18_021E7564(pokedexApp);
         break;
     case 7:
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 68, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000068_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
         ov18_021E7628(pokedexApp, pokedexApp->unk_188C, TRUE);
         ov18_021F7748(pokedexApp);
         ov18_021EEED0(pokedexApp, 8);
@@ -1446,7 +1449,7 @@ void ov18_021E7724(PokedexAppData *pokedexApp) {
     r4 = sub_02019B08(pokedexApp->unk_0008, 15);
     r5 = sub_02019B08(pokedexApp->unk_0008, 14);
 
-    sp14 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->gfxNarc, 0, TRUE, &sp1C, HEAP_ID_37);
+    sp14 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000000_NSCR_lz, TRUE, &sp1C, HEAP_ID_37);
     sp10 = (u16 *)sp1C->rawData;
     for (i = 0; i < 24; ++i) {
         memcpy(&r4[32 * i], &sp10[32 * i], 32 * sizeof(u16));
@@ -1605,22 +1608,22 @@ static void ov18_021E7BD0(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_2);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 82, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000082_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
     if (pokedexApp->unk_1860 == 1) {
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 81, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000081_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
     } else {
-        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 80, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+        GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000080_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
     }
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 83, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 83, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 4, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000083_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000083_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000002_NCLR, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 84, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 85, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 86, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 87, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000084_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000085_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000086_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000087_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000018_NCLR, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
 
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0);
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_1);
@@ -1640,14 +1643,14 @@ static void ov18_021E7D90(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_3);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 89, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 90, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 4, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000089_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000090_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000002_NCLR, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 91, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 92, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000091_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000092_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000018_NCLR, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
 
     sub_020196E8(pokedexApp->unk_0008, 16, 0, 20);
 
@@ -1668,14 +1671,14 @@ static void ov18_021E7ED8(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_3);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 101, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 102, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 4, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000101_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000102_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000002_NCLR, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 103, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 104, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000103_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000104_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_2, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000018_NCLR, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
 
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0);
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_1);
@@ -1693,22 +1696,22 @@ void ov18_021E800C(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_1);
     ov18_021E613C(pokedexApp, GF_BG_LYR_SUB_2);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 96, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 93, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 95, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 93, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 4, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 2, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000096_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000093_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000095_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000093_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000004_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000002_NCLR, HEAP_ID_37, PLTTBUF_MAIN_BG, 0, 0);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 97, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 94, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, 18, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000097_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000094_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    PaletteData_LoadOpenNarc(pokedexApp->paletteData, pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000018_NCLR, HEAP_ID_37, PLTTBUF_SUB_BG, 0, 0);
 
     if (pokedexApp->numSeenForms == 1) {
         void *r4;
         NNSG2dScreenData *sp10;
 
-        r4 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->gfxNarc, 100, TRUE, &sp10, HEAP_ID_37);
+        r4 = GfGfxLoader_GetScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000100_NSCR_lz, TRUE, &sp10, HEAP_ID_37);
         LoadRectToBgTilemapRect(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, sp10->rawData, 16, 16, 16, 4);
         Heap_Free(r4);
     }
@@ -1727,10 +1730,10 @@ void ov18_021E81A8(PokedexAppData *pokedexApp) {
     ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_0);
     ov18_021E613C(pokedexApp, GF_BG_LYR_MAIN_2);
 
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 98, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 93, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, 99, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
-    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, 94, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000098_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000093_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000099_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
+    GfGfxLoader_LoadCharDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000094_NCGR_lz, pokedexApp->bgConfig, GF_BG_LYR_SUB_3, 0, 0, TRUE, HEAP_ID_37);
 
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0);
     ScheduleBgTilemapBufferTransfer(pokedexApp->bgConfig, GF_BG_LYR_MAIN_2);
@@ -1872,32 +1875,32 @@ static void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 species, int a2) 
 
     switch (a2) {
     case 0:
-        base = 2; // 0 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00000002; // 0 * 495 + 2
         break;
     case 1:
-        base = 497; // 1 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00000497; // 1 * 495 + 2
         break;
     case 2:
-        base = 992; // 2 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00000992; // 2 * 495 + 2
         break;
     case 3:
-        base = 2972; // 6 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00002972; // 6 * 495 + 2
         break;
     case 4:
-        base = 1487; // 3 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00001487; // 3 * 495 + 2
         break;
     case 5:
-        base = 1982; // 4 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00001982; // 4 * 495 + 2
         break;
     case 6:
-        base = 2477; // 5 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00002477; // 5 * 495 + 2
         break;
     case 7:
-        base = 3467; // 7 * 495 + 2
+        base = NARC_zukan_enc_zukan_enc_00003467; // 7 * 495 + 2
         break;
     }
     // UB: if unexpected a2, r3 is uninitialized
-    a0->maps = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_enc, base + species, FALSE, HEAP_ID_37, FALSE, &size);
+    a0->maps = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, base + species, FALSE, HEAP_ID_37, FALSE, &size);
     a0->nMaps = size / sizeof(u32);
 }
 
@@ -2087,8 +2090,8 @@ static u32 ov18_021E8B78(void) {
 void ov18_021E8B94(PokedexAppData *pokedexApp) {
     u32 size;
 
-    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_enc, 1, FALSE, HEAP_ID_37, FALSE, &size);
-    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zukan_data_zukan_enc, 0, FALSE, HEAP_ID_37, FALSE, &size);
+    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, NARC_zukan_enc_zukan_enc_00000001, FALSE, HEAP_ID_37, FALSE, &size);
+    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, NARC_zukan_enc_zukan_enc_00000000, FALSE, HEAP_ID_37, FALSE, &size);
 }
 
 void ov18_021E8BD4(PokedexAppData *pokedexApp) {

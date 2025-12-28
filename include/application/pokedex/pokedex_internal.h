@@ -108,8 +108,8 @@ struct PokedexAppData {
     PokedexAppData_UnkSub1030 unk_1030[518]; // 0x1030
     void *unk_1848;                          // 0x1848
     void *unk_184C;                          // 0x184C
-    void *unk_1850;                          // 0x1850
-    void *unk_1854;                          // 0x1854
+    u16 *unk_1850;                           // 0x1850
+    u8 *unk_1854;                            // 0x1854
     u8 unk_1858;                             // 0x1858
     u8 unk_1859;                             // 0x1859
     u8 unk_185A;                             // 0x185A
