@@ -4201,17 +4201,15 @@ void Pokemon_RemoveCapsule(Pokemon *mon) {
     Pokemon_SetData(mon, MON_DATA_BALL_CAPSULE, &sp1);
 }
 
-void RestoreBoxMonPP(BoxPokemon *boxMon) {
-    int i;
-    u8 pp;
-    BOOL decry = BoxPokemon_UnlockEncryption(boxMon);
-    for (i = 0; i < MAX_MON_MOVES; i++) {
+void BoxPokemon_RestorePP(BoxPokemon *boxMon) {
+    BOOL reencrypt = BoxPokemon_UnlockEncryption(boxMon);
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
         if (BoxPokemon_GetData(boxMon, MON_DATA_MOVE1 + i, NULL) != MOVE_NONE) {
-            pp = (u8)BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_MAX_PP + i, NULL);
+            u8 pp = BoxPokemon_GetData(boxMon, MON_DATA_MOVE1_MAX_PP + i, NULL);
             BoxPokemon_SetData(boxMon, MON_DATA_MOVE1_PP + i, &pp);
         }
     }
-    BoxPokemon_LockEncryption(boxMon, decry);
+    BoxPokemon_LockEncryption(boxMon, reencrypt);
 }
 
 void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3) {

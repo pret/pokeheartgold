@@ -130,7 +130,7 @@ int LowestFlagNo(u32 mask);
 BOOL Species_IsBattleFacilityBanned(u16 species, u16 form);
 u16 BattleFacility_GetBanlistEntry(u32 index);
 void Pokemon_RemoveCapsule(Pokemon *mon);
-void RestoreBoxMonPP(BoxPokemon *boxMon);
+void BoxPokemon_RestorePP(BoxPokemon *boxMon);
 BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID);
 
 int Species_GetFormValueFromNarc(NARC *narc, int species, int form, int param);

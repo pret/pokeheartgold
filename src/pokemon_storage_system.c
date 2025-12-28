@@ -54,7 +54,7 @@ void PCStorage_InitializeBoxes(PCStorage *storage) {
 BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PCStorage *storage, BoxPokemon *boxMon) {
     u32 i = storage->curBox;
     do {
-        RestoreBoxMonPP(boxMon);
+        BoxPokemon_RestorePP(boxMon);
         if (PCStorage_PlaceMonInBoxFirstEmptySlot(storage, i, boxMon)) {
             PCStorage_SetBoxModified(storage, i);
             return TRUE;
@@ -69,7 +69,7 @@ BOOL PCStorage_PlaceMonInFirstEmptySlotInAnyBox(PCStorage *storage, BoxPokemon *
 
 BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PCStorage *storage, u32 boxno, BoxPokemon *boxMon) {
     u32 i;
-    RestoreBoxMonPP(boxMon);
+    BoxPokemon_RestorePP(boxMon);
     if (boxno == -1u) {
         boxno = storage->curBox;
     }
@@ -84,7 +84,7 @@ BOOL PCStorage_PlaceMonInBoxFirstEmptySlot(PCStorage *storage, u32 boxno, BoxPok
 }
 
 BOOL PCStorage_PlaceMonInBoxByIndexPair(PCStorage *storage, u32 boxno, u32 slotno, BoxPokemon *boxMon) {
-    RestoreBoxMonPP(boxMon);
+    BoxPokemon_RestorePP(boxMon);
     if (boxno == -1u) {
         boxno = storage->curBox;
     }
