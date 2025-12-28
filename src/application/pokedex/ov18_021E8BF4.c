@@ -1,5 +1,11 @@
 #include "application/pokedex/pokedex_internal.h"
 
+#include "font.h"
+#include "sound_02004A44.h"
+#include "unk_0200FA24.h"
+#include "unk_020210A0.h"
+#include "unk_0208805C.h"
+
 int ov18_021E8C30(PokedexAppData *pokedexApp);
 int ov18_021E8D38(PokedexAppData *pokedexApp);
 int ov18_021E8DB0(PokedexAppData *pokedexApp);
@@ -200,4 +206,72 @@ BOOL ov18_021E8BF4(PokedexAppData *pokedexApp, int *pState) {
     ov18_021F1004(pokedexApp);
     SpriteSystem_DrawSprites(pokedexApp->unk_066C);
     return TRUE;
+}
+
+int ov18_021E8C30(PokedexAppData *pokedexApp) {
+    Main_SetVBlankIntrCB(NULL, NULL);
+    HBlankInterruptDisable();
+    GfGfx_EngineASetPlanes(GX_PLANEMASK_NONE);
+    GfGfx_EngineBSetPlanes(GX_PLANEMASK_NONE);
+    G2_BlendNone();
+    G2S_BlendNone();
+    sub_020210BC();
+    sub_02021148(4);
+    GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
+    SetKeyRepeatTimers(4, 8);
+    ov18_021E62A8(pokedexApp);
+    ov18_021E8410(pokedexApp);
+    sub_020880CC(0, HEAP_ID_37);
+    FontID_Alloc(4, HEAP_ID_37);
+    pokedexApp->gfxNarc = NARC_New(NARC_a_0_6_8, HEAP_ID_37);
+    ov18_021E6FFC(pokedexApp);
+    ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, 0, 26, 17, 17, 0, 152, 0, 152, 8, 14);
+    ov18_021F8884(pokedexApp, 1);
+    ov18_021EDDB4(pokedexApp);
+    ov18_021E5C74();
+    ov18_021E5C84(pokedexApp);
+    ov18_021E6308(pokedexApp);
+    ov18_021E61A4(pokedexApp);
+    ov18_021E6244(pokedexApp);
+    ov18_021F0FC8(pokedexApp);
+    ov18_021E6174();
+    Sound_SetSceneAndPlayBGM(54, 0, 0);
+    Main_SetVBlankIntrCB(ov18_021E5C40, pokedexApp);
+    return pokedexApp->unk_085C;
+}
+
+int ov18_021E8D38(PokedexAppData *pokedexApp) {
+    Main_SetVBlankIntrCB(NULL, NULL);
+    ov18_021EE388(pokedexApp);
+    ov18_021F0FEC(pokedexApp);
+    ov18_021E6280(pokedexApp);
+    ov18_021E6204(pokedexApp);
+    ov18_021E6540(pokedexApp);
+    ov18_021E5F58(pokedexApp);
+    NARC_Delete(pokedexApp->gfxNarc);
+    FontID_Release(4);
+    ov18_021E84EC(pokedexApp);
+    ov18_021E62E8(pokedexApp);
+    sub_02021238();
+    G2_BlendNone();
+    G2S_BlendNone();
+    GfGfx_EngineASetPlanes(GX_PLANEMASK_NONE);
+    GfGfx_EngineBSetPlanes(GX_PLANEMASK_NONE);
+    return pokedexApp->unk_085C;
+}
+
+int ov18_021E8DB0(PokedexAppData *pokedexApp) {
+    if (IsPaletteFadeFinished() == TRUE) {
+        return pokedexApp->unk_0860;
+    }
+
+    return 2;
+}
+
+int ov18_021E8DC8(PokedexAppData *pokedexApp) {
+    if (PaletteData_GetSelectedBuffersBitmask(pokedexApp->paletteData) == 0) {
+        return pokedexApp->unk_085C;
+    }
+
+    return 3;
 }

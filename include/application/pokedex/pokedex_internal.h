@@ -88,7 +88,8 @@ struct PokedexAppData {
     NARC *gfxNarc;                           // 0x0854
     u8 filler_0858[4];                       // 0x0858
     int unk_085C;                            // 0x085C
-    u8 filler_0860[0x7D0];                   // 0x0860
+    int unk_0860;                            // 0x0860
+    u8 filler_0864[0x7CC];                   // 0x0864
     PokedexAppData_UnkSub1030 unk_1030[518]; // 0x1030
     void *unk_1848;                          // 0x1848
     void *unk_184C;                          // 0x184C
@@ -199,6 +200,8 @@ void ov18_021E8BD4(PokedexAppData *pokedexApp);
 
 BOOL ov18_021E8BF4(PokedexAppData *pokedexApp, int *pState);
 u32 ov18_021E8AE0(PokedexAppData *pokedexApp, u32 a1);
+void ov18_021EDDB4(PokedexAppData *pokedexApp);
+void ov18_021EE388(PokedexAppData *pokedexApp);
 void ov18_021EE3FC(PokedexAppData *pokedexApp);
 void ov18_021EE638(PokedexAppData *pokedexApp, u32 species, int a2);
 void ov18_021EE6BC(PokedexAppData *pokedexApp, int species, int a2);
@@ -227,6 +230,8 @@ void ov18_021F021C(PokedexAppData *pokedexApp);
 void ov18_021F05E8(PokedexAppData *pokedexApp);
 void ov18_021F0858(PokedexAppData *pokedexApp);
 void ov18_021F0900(PokedexAppData *pokedexApp);
+void ov18_021F0FC8(PokedexAppData *pokedexApp);
+void ov18_021F0FEC(PokedexAppData *pokedexApp);
 void ov18_021F1004(PokedexAppData *pokedexApp);
 void ov18_021F11C0(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F1CAC(PokedexAppData *pokedexApp, int species, int a2, int a3);
@@ -253,8 +258,10 @@ void ov18_021F7354(PokedexAppData *pokedexApp);
 void ov18_021F74D8(PokedexAppData *pokedexApp);
 void ov18_021F7668(PokedexAppData *pokedexApp);
 void ov18_021F7748(PokedexAppData *pokedexApp);
+void ov18_021F7ED4(PokedexAppData *pokedexApp, int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11);
 int ov18_021F8824(PokedexAppData *pokedexApp);
 u16 ov18_021F8838(PokedexAppData *pokedexApp);
+void ov18_021F8884(PokedexAppData *pokedexApp, int a1);
 u16 ov18_021F891C(PokedexAppData *pokedexApp, BOOL a1);
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_H
