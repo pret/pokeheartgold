@@ -48,7 +48,7 @@ static void Pokemon_IncreaseDataInternal(Pokemon *mon, int param, int value);
 static void BoxPokemon_AddDataInternal(BoxPokemon *boxMon, int param, int value);
 static void *BoxPokemon_GetDataBlock(BoxPokemon *boxMon, u32 personality, u8 dataBlockID);
 void SpeciesData_LoadSpecies(int species, SpeciesData *dest);
-int ResolveMonForm(int species, int form);
+int Species_GetFormNarcIndex(int species, int form);
 u8 SpeciesData_GetGenderFromPersonality(SpeciesData *speciesData, u16 species, u32 pid);
 u32 MaskOfFlagNo(int flagno);
 void BoxPokemon_BuildSpriteTemplate(PokemonSpriteTemplate *template, BoxPokemon *boxMon, u8 face, BOOL preferDP);
@@ -1850,7 +1850,7 @@ void SpeciesData_Free(SpeciesData *speciesData) {
 }
 
 int Species_GetFormValue(int species, int form, int param) {
-    SpeciesData *speciesData = SpeciesData_NewFromSpecies(ResolveMonForm(species, form), HEAP_ID_DEFAULT);
+    SpeciesData *speciesData = SpeciesData_NewFromSpecies(Species_GetFormNarcIndex(species, form), HEAP_ID_DEFAULT);
     int result = SpeciesData_GetValue(speciesData, param);
     SpeciesData_Free(speciesData);
     return result;
@@ -1864,7 +1864,7 @@ int Species_GetValue(int species, int param) {
 }
 
 int Species_GetFormValueFromNarc(NARC *narc, int species, int form, int param) {
-    int resolved = ResolveMonForm(species, form);
+    int resolved = Species_GetFormNarcIndex(species, form);
     SpeciesData *speciesData = Heap_Alloc(HEAP_ID_DEFAULT, sizeof(SpeciesData));
     NARC_ReadWholeMember(narc, resolved, speciesData);
     int result = SpeciesData_GetValue(speciesData, param);
@@ -3702,7 +3702,7 @@ BOOL Pokemon_UpdateRotomForm(Pokemon *mon, int form, int moveSlot) {
 }
 
 void Species_LoadLevelUpLearnset(int species, int form, u16 *levelUpLearnset) {
-    ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, ResolveMonForm(species, form));
+    ReadWholeNarcMemberByIdPair(levelUpLearnset, NARC_poketool_personal_wotbl, Species_GetFormNarcIndex(species, form));
 }
 
 void sub_02071FDC(SOUND_CHATOT *r6, u32 r5, u16 r4, s32 unused, s32 sp18, u32 sp1C, u32 sp20, u32 sp24) {
@@ -3949,7 +3949,7 @@ void SpeciesData_LoadSpecies(int species, SpeciesData *speciesData) {
 }
 
 void SpeciesData_LoadForm(int species, int form, SpeciesData *speciesData) {
-    ReadWholeNarcMemberByIdPair(speciesData, NARC_poketool_personal_personal, ResolveMonForm(species, form));
+    ReadWholeNarcMemberByIdPair(speciesData, NARC_poketool_personal_personal, Species_GetFormNarcIndex(species, form));
 }
 
 void Species_LoadEvolutions(u16 species, Evolution *dest) {
@@ -4018,7 +4018,7 @@ static void *BoxPokemon_GetDataBlock(BoxPokemon *boxMon, u32 personality, u8 dat
     return ((char *)boxMon->dataBlocks + substructOffsets[personality][dataBlockID]);
 }
 
-int ResolveMonForm(int species, int form) {
+int Species_GetFormNarcIndex(int species, int form) {
     switch (species) {
     case SPECIES_DEOXYS:
         if (form != DEOXYS_FORM_NORMAL && form <= DEOXYS_FORM_COUNT - 1) {

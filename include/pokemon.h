@@ -185,7 +185,7 @@ void Species_LoadEvolutions(u16 species, Evolution *dest);
 void MonEncryptSegment(void *data, u32 size, u32 seed);
 void MonDecryptSegment(void *data, u32 size, u32 seed);
 u32 CalcMonChecksum(void *_data, u32 size);
-int ResolveMonForm(int species, int form);
+int Species_GetFormNarcIndex(int species, int form);
 u32 MaskOfFlagNo(int flagno);
 BOOL Species_IsMythical(u16 species);
 BOOL Pokemon_IsBattleFacilityBanned(Pokemon *mon);
