@@ -1,7 +1,7 @@
 #ifndef GUARD_POKEHEARTGOLD_UNK_0202E4B0_H
 #define GUARD_POKEHEARTGOLD_UNK_0202E4B0_H
 
-#include "pm_string.h"
+#include "string_gf.h"
 #include "save.h"
 
 #define RANKINGS_PER_STAT 6

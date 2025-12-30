@@ -3,7 +3,7 @@
 
 #include "heap.h"
 #include "msgdata.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 #define LIST_HEADER         -3
 #define LIST_CANCEL         -2

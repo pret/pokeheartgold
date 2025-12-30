@@ -9,7 +9,7 @@
 #include "message_format.h"
 #include "msgdata.h"
 #include "overlay_01.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "scrcmd.h"
 #include "script.h"
 #include "text.h"

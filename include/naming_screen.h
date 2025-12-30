@@ -4,7 +4,7 @@
 #include "launch_application.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 extern const OverlayManagerTemplate gOverlayTemplate_NamingScreen;
 

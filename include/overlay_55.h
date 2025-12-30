@@ -5,7 +5,7 @@
 #include "mail_misc.h"
 #include "options.h"
 #include "overlay_manager.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 typedef struct UnkStruct_ov55_021E5B08 {
     u16 unk0;

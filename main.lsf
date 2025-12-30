@@ -91,7 +91,7 @@ Static main
     Object src/unk_02025534.o
     Object asm/unk_02025C44.o
     Object src/font_data.o
-    Object src/pm_string.o
+    Object src/string_gf.o
     Object src/touch_hitbox_controller.o
     Object asm/unk_02026DE0.o
     Object src/unk_02026E30.o

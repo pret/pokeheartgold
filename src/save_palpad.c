@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "pm_string.h"
+#include "string_gf.h"
 
 u32 Save_PalPad_sizeof(void) {
     return sizeof(SavePalPad) * NUM_PALPAD_ENTRIES;

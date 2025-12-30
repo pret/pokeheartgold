@@ -2,7 +2,7 @@
 #define GUARD_MESSAGE_FORMAT_H
 
 #include "player_data.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon_storage_system.h"
 #include "pokemon_types_def.h"
 #include "save_misc_data.h"

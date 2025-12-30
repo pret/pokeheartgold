@@ -13,7 +13,7 @@
 #include "overlay_01.h"
 #include "party.h"
 #include "player_avatar.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon.h"
 #include "pokemon_storage_system.h"
 #include "scrcmd.h"

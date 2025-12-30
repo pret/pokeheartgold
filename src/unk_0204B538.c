@@ -14,7 +14,7 @@
 #include "msgdata.h"
 #include "party.h"
 #include "player_data.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokedex.h"
 #include "pokemon.h"
 #include "scrcmd_9.h"

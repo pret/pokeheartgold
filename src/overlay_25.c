@@ -22,7 +22,7 @@
 #include "msgdata.h"
 #include "overlay_01.h"
 #include "party.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon.h"
 #include "save_trainer_house.h"
 #include "scrcmd.h"

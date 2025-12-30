@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_HALL_OF_FAME_H
 
 #include "party.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 #define NUM_HOF_RECORDS 30
 

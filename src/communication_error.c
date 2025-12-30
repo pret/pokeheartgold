@@ -11,7 +11,7 @@
 #include "gf_gfx_planes.h"
 #include "msgdata.h"
 #include "overlay_00_thumb.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "render_window.h"
 #include "system.h"
 #include "text.h"

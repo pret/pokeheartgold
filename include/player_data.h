@@ -4,7 +4,7 @@
 #include "coins.h"
 #include "igt.h"
 #include "options.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "save.h"
 
 #define MAX_MONEY 999999

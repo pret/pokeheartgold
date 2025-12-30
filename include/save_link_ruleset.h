@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_SAVE_LINK_RULESET_H
 #define POKEHEARTGOLD_SAVE_LINK_RULESET_H
 
-#include "pm_string.h"
+#include "string_gf.h"
 #include "save.h"
 
 #define NUM_SAVE_LINK_BATTLE_RULESETS (1)

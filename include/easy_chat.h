@@ -4,7 +4,7 @@
 #include "constants/easy_chat.h"
 
 #include "msgdata.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 typedef u16 ecword_t;
 

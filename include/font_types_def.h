@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_FONT_TYPES_DEF_H
 
 #include "bg_window.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 typedef u8 FontID; // TODO: This should be an enum and NOT typedef'd, and should be u32
 struct FontData;

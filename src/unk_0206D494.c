@@ -21,7 +21,7 @@
 #include "overlay_111.h"
 #include "player_avatar.h"
 #include "player_data.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon.h"
 #include "save_local_field_data.h"
 #include "save_misc_data.h"

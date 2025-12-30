@@ -3,7 +3,7 @@
 
 #include "bg_window.h"
 #include "options.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 void sub_0205B514(BgConfig *bgConfig, Window *window, int a2);
 void sub_0205B564(Window *window, Options *options);

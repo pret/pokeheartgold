@@ -17,7 +17,7 @@
 #include "party.h"
 #include "player_avatar.h"
 #include "player_data.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokedex.h"
 #include "pokemon.h"
 #include "save_local_field_data.h"

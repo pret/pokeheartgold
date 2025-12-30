@@ -15,7 +15,7 @@
 #include "gf_gfx_planes.h"
 #include "main.h"
 #include "msgdata.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "render_window.h"
 #include "system.h"
 #include "text.h"

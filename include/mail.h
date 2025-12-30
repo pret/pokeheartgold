@@ -3,7 +3,7 @@
 
 #include "heap.h"
 #include "mail_message.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon_types_def.h"
 #include "save.h"
 

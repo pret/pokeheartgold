@@ -4,7 +4,7 @@
 #include "constants/box_wallpaper.h"
 #include "constants/pokemon.h"
 
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon_types_def.h"
 
 typedef struct PokemonStorageSystem PCStorage;

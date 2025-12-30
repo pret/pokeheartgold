@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "pm_string.h"
+#include "string_gf.h"
 
 static BOOL Photo_IsUse(const Photo *photo);
 

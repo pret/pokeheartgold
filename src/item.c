@@ -15,7 +15,7 @@
 #include "filesystem.h"
 #include "heap.h"
 #include "msgdata.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 static const u16 sPocketCounts[POCKETS_COUNT] = {
     [POCKET_ITEMS] = NUM_BAG_ITEMS,

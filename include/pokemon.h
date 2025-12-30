@@ -11,7 +11,7 @@
 
 #include "filesystem.h"
 #include "player_data.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "sound_chatot.h"
 
 #define LEVEL_UP_LEARNSET_END 0xFFFF

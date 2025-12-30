@@ -4,7 +4,7 @@
 #include "gf_rtc.h"
 #include "gymmick.h"
 #include "mail_message.h"
-#include "pm_string.h"
+#include "string_gf.h"
 #include "save.h"
 
 typedef struct APRICORN_TREE {

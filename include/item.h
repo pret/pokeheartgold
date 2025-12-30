@@ -2,7 +2,7 @@
 #define POKEHEARTGOLD_ITEM_H
 
 #include "heap.h"
-#include "pm_string.h"
+#include "string_gf.h"
 
 /*
  * Item slot in memory/save file.

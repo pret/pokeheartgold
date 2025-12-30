@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FRIEND_GROUP_H
 #define POKEHEARTGOLD_FRIEND_GROUP_H
 
-#include "pm_string.h"
+#include "string_gf.h"
 #include "save.h"
 
 // Hey, you wanna join a GROUP?

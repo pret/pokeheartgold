@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_MAIL_MESSAGE_H
 #define POKEHEARTGOLD_MAIL_MESSAGE_H
 
-#include "pm_string.h"
+#include "string_gf.h"
 #include "pokemon_types_def.h"
 
 #define MAILMSG_BANK_0294_GMM 0
@@ -10,7 +10,7 @@
 #define MAILMSG_BANK_0293_GMM 3
 #define MAILMSG_BANK_0295_GMM 4
 
-#include "pm_string.h"
+#include "string_gf.h"
 
 #ifndef PM_ASM
 
