@@ -30,7 +30,7 @@ void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConv
 void String_UpperCharN(String *string, int n);
 void String_Cat_HandleTrainerName(String *dest, String *src);
 void String_FormatU64(String *string, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
-s64 String_atoi(String *string, BOOL *flag);
+s64 String_AtoI(String *string, BOOL *flag);
 u16 String_GetLength(String *string);
 int String_CountLines(const String *string);
 void String_CopyLine(String *dest, const String *src, u32 n);

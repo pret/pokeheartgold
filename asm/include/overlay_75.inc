@@ -103,7 +103,7 @@
 .public String_New
 .public String_Free
 .public String_Copy
-.public String_atoi
+.public String_AtoI
 .public String_Compare
 .public String_GetLength
 .public String_CountLines

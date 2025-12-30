@@ -149,7 +149,7 @@
 .public String_Free
 .public String_Clear
 .public String_Copy
-.public String_atoi
+.public String_AtoI
 .public String_CopyChars
 .public String_cstr
 .public Save_PlayerData_GetProfile

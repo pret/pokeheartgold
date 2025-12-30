@@ -647,7 +647,7 @@ ov75_02246DFC: ; 0x02246DFC
 	ldr r4, [r0]
 	add r1, sp, #0
 	ldr r0, [r4, #0x1c]
-	bl String_atoi
+	bl String_AtoI
 	ldr r2, _02246E38 ; =0x00002710
 	mov r3, #0
 	bl _ull_mod
@@ -710,7 +710,7 @@ ov75_02246E78: ; 0x02246E78
 	ldr r4, [r0]
 	add r1, sp, #0
 	ldr r0, [r4, #0x1c]
-	bl String_atoi
+	bl String_AtoI
 	mov r1, #0x41
 	lsl r1, r1, #2
 	str r0, [r5, r1]

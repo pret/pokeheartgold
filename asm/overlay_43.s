@@ -585,7 +585,7 @@ _0222A378:
 	bne _0222A404
 	add r0, r6, #0
 	add r1, sp, #0x1c
-	bl String_atoi
+	bl String_AtoI
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	add r6, r1, #0
@@ -2134,7 +2134,7 @@ _0222AF88:
 	bl Heap_Free
 	ldr r0, [r4, #0x5c]
 	add r1, sp, #0x10
-	bl String_atoi
+	bl String_AtoI
 	add r3, r0, #0
 	ldr r0, [sp, #0x10]
 	add r2, r1, #0

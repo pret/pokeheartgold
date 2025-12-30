@@ -221,7 +221,7 @@ void String_FormatU64(String *string, u64 num, u32 ndigits, PrintingMode strConv
     GF_ASSERT(FALSE);
 }
 
-s64 String_atoi(String *string, BOOL *flag) {
+s64 String_AtoI(String *string, BOOL *flag) {
     s64 ret = 0ll;
     s64 pow10 = 1ll;
     if (string->size > 18) {
