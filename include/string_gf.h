@@ -7,7 +7,7 @@
 #include "string_util.h"
 
 typedef struct String {
-    u16 maxsize;
+    u16 maxSize;
     u16 size;
     u32 magic;
     u16 data[0];

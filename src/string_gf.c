@@ -15,11 +15,11 @@ static inline void String_Assert(const String *string)
     GF_ASSERT(string->magic == STRING_MAGIC);
 }
 
-String *String_New(u32 maxsize, enum HeapID heapID) {
-    String *ret = (String *)Heap_Alloc(heapID, 2 * maxsize + sizeof(String) + sizeof(u16));
+String *String_New(u32 maxSize, enum HeapID heapID) {
+    String *ret = (String *)Heap_Alloc(heapID, 2 * maxSize + sizeof(String) + sizeof(u16));
     if (ret != NULL) {
         ret->magic = STRING_MAGIC;
-        ret->maxsize = maxsize;
+        ret->maxSize = maxSize;
         ret->size = 0;
         ret->data[0] = EOS;
     }
@@ -41,7 +41,7 @@ void String_Clear(String *string) {
 void String_Copy(String *dest, const String *src) {
     String_Assert(dest);
     String_Assert(src);
-    if (dest->maxsize > src->size) {
+    if (dest->maxSize > src->size) {
         memcpy(dest->data, src->data, (src->size + 1) * 2);
         dest->size = src->size;
         return;
@@ -104,7 +104,7 @@ void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConv
     const u16 *charbase;
     BOOL isNegative = (num < 0);
 
-    if (string->maxsize > ndigits + isNegative) {
+    if (string->maxSize > ndigits + isNegative) {
         charbase = (whichCharset == 0) ? sCharset_JP : sCharset_EN;
         String_Clear(string);
         if (isNegative) {
@@ -190,7 +190,7 @@ void String_FormatU64(String *string, u64 num, u32 ndigits, PrintingMode strConv
     const u16 *charbase;
     BOOL isNegative = (num < 0);
 
-    if (string->maxsize > ndigits + isNegative) {
+    if (string->maxSize > ndigits + isNegative) {
         charbase = (whichCharset == 0) ? sCharset_JP : sCharset_EN;
         String_Clear(string);
         if (isNegative) {
@@ -326,7 +326,7 @@ void String_CopyFromChars(String *string, const u16 *buf) {
     String_Assert(string);
 
     for (string->size = 0; *buf != EOS;) {
-        if (string->size >= string->maxsize - 1) {
+        if (string->size >= string->maxSize - 1) {
             GF_ASSERT(FALSE);
             break;
         }
@@ -338,7 +338,7 @@ void String_CopyFromChars(String *string, const u16 *buf) {
 void String_CopyNumChars(String *string, const u16 *buf, u32 length) {
     String_Assert(string);
 
-    if (length <= string->maxsize) {
+    if (length <= string->maxSize) {
         int i;
         memcpy(string->data, buf, length * 2);
         for (i = 0; i < length; i++) {
@@ -375,7 +375,7 @@ void String_Concat(String *dest, String *src) {
     String_Assert(dest);
     String_Assert(src);
 
-    if (dest->size + src->size + 1 <= dest->maxsize) {
+    if (dest->size + src->size + 1 <= dest->maxSize) {
         memcpy(dest->data + dest->size, src->data, (u32)(2 * (src->size + 1)));
         dest->size += src->size;
         return;
@@ -386,7 +386,7 @@ void String_Concat(String *dest, String *src) {
 void String_AppendChar(String *string, u16 val) {
     String_Assert(string);
 
-    if (string->size + 1 < string->maxsize) {
+    if (string->size + 1 < string->maxSize) {
         string->data[string->size++] = val;
         string->data[string->size] = EOS;
         return;
