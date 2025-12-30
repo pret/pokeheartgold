@@ -187,8 +187,8 @@
 .public Save_VarsFlags_GetVar404C
 .public Save_VarsFlags_SetVar404C
 .public Pokemon_New
-.public Pokemon_UnlockEncryption
-.public Pokemon_LockEncryption
+.public Pokemon_DecryptData
+.public Pokemon_EncryptData
 .public Pokemon_GetData
 .public Pokemon_SetData
 .public Species_GetFormValue

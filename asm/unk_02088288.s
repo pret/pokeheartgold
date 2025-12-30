@@ -2652,7 +2652,7 @@ sub_0208981C: ; 0x0208981C
 	add r7, r0, #0
 	add r0, r5, #0
 	add r4, r2, #0
-	bl Pokemon_UnlockEncryption
+	bl Pokemon_DecryptData
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #5
@@ -3135,7 +3135,7 @@ _02089C24:
 	blo _02089C24
 	ldr r1, [sp, #4]
 	add r0, r5, #0
-	bl Pokemon_LockEncryption
+	bl Pokemon_EncryptData
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

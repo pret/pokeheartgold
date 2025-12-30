@@ -13028,7 +13028,7 @@ ov70_0223E170: ; 0x0223E170
 	add r7, r2, #0
 	add r6, r3, #0
 	ldr r4, [sp, #0x40]
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	add r0, r5, #0
 	mov r1, #0xac
 	mov r2, #0
@@ -13070,7 +13070,7 @@ ov70_0223E170: ; 0x0223E170
 _0223E1DA:
 	add r0, r5, #0
 	mov r1, #1
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	ldr r0, [sp, #0x1c]
 	cmp r0, #0
 	beq _0223E248
@@ -13463,7 +13463,7 @@ ov70_0223E4FC: ; 0x0223E4FC
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	mov r4, #0
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	ldr r5, _0223E534 ; =ov70_02245700
 	str r0, [sp]
 	add r6, r4, #0
@@ -13479,7 +13479,7 @@ _0223E50C:
 	blt _0223E50C
 	ldr r1, [sp]
 	add r0, r7, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	cmp r4, #0
 	beq _0223E530
 	mov r0, #1
@@ -13495,7 +13495,7 @@ _0223E534: .word ov70_02245700
 ov70_0223E538: ; 0x0223E538
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	add r7, r0, #0
 	add r0, r5, #0
 	mov r1, #5
@@ -13509,7 +13509,7 @@ ov70_0223E538: ; 0x0223E538
 	add r6, r0, #0
 	add r0, r5, #0
 	add r1, r7, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	cmp r6, #0
 	ble _0223E592
 	ldr r1, _0223E598 ; =0x000001DF
@@ -13549,7 +13549,7 @@ _0223E598: .word 0x000001DF
 ov70_0223E59C: ; 0x0223E59C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	add r6, r0, #0
 	add r0, r5, #0
 	mov r1, #6
@@ -13558,7 +13558,7 @@ ov70_0223E59C: ; 0x0223E59C
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r6, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	cmp r4, #0x70
 	bne _0223E5C2
 	mov r0, #1

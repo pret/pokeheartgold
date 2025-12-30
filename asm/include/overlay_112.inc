@@ -252,8 +252,8 @@
 .public OverworldModelLookupHasFemaleForm
 .public Pokemon_Init
 .public Pokemon_New
-.public BoxPokemon_UnlockEncryption
-.public BoxPokemon_LockEncryption
+.public BoxPokemon_DecryptData
+.public BoxPokemon_EncryptData
 .public Pokemon_InitWithParams
 .public Pokemon_CalcLevelAndStats
 .public Pokemon_GetData

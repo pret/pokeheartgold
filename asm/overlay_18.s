@@ -38122,7 +38122,7 @@ ov18_021F8AB8: ; 0x021F8AB8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0xc]
-	bl Pokemon_UnlockEncryption
+	bl Pokemon_DecryptData
 	add r4, r0, #0
 	ldr r0, [r5, #0xc]
 	mov r1, #5
@@ -38154,7 +38154,7 @@ ov18_021F8AB8: ; 0x021F8AB8
 	str r0, [r5, r1]
 	ldr r0, [r5, #0xc]
 	add r1, r4, #0
-	bl Pokemon_LockEncryption
+	bl Pokemon_EncryptData
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end ov18_021F8AB8

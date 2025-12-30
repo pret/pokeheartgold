@@ -24381,7 +24381,7 @@ MigrateBoxMon: ; 0x02234A9C
 	add r0, r4, #0
 	bl BoxPokemon_Init
 	add r0, r4, #0
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	mov r1, #0
 	str r0, [sp]
 	add r0, r6, #0
@@ -25095,7 +25095,7 @@ _0223506E:
 	bl BoxPokemon_SetData
 	ldr r1, [sp]
 	add r0, r4, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

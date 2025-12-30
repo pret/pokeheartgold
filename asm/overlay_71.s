@@ -1025,7 +1025,7 @@ _02247164:
 	ldr r4, [r0, #4]
 _02247166:
 	add r0, r4, #0
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	str r0, [sp, #0x20]
 	add r0, sp, #0x38
 	add r1, r4, #0
@@ -1091,7 +1091,7 @@ _022471B8:
 	bl BG_LoadCharTilesData
 	ldr r1, [sp, #0x20]
 	add r0, r4, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	ldr r0, [sp, #0x24]
 	bl Heap_Free
 _02247202:

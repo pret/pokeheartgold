@@ -3715,7 +3715,7 @@ ov14_021E7588: ; 0x021E7588
 	bl ov14_021E60C0
 	add r4, r0, #0
 	beq _021E75E6
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov14_021E7358
@@ -3742,13 +3742,13 @@ _021E75CA:
 	bl ov14_021E765C
 	add r0, r4, #0
 	add r1, r7, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021E75DC:
 	add r0, r4, #0
 	add r1, r7, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	b _021E75F0
 _021E75E6:
 	add r0, r5, #0
@@ -3768,7 +3768,7 @@ ov14_021E75F4: ; 0x021E75F4
 	ldrb r1, [r5, #0x1f]
 	bl ov14_021E60C0
 	add r4, r0, #0
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	add r7, r0, #0
 	add r0, r4, #0
 	bl ov14_021E7358
@@ -3800,7 +3800,7 @@ ov14_021E75F4: ; 0x021E75F4
 	bl ov14_021E7468
 	add r0, r4, #0
 	add r1, r7, #0
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E7658: .word 0x000088D0
@@ -30502,7 +30502,7 @@ _021F4A8A:
 	add r2, r3, r2
 	bl PCStorage_GetMonByIndexPair
 	str r0, [sp, #0x28]
-	bl BoxPokemon_UnlockEncryption
+	bl BoxPokemon_DecryptData
 	str r0, [sp, #0x24]
 	ldr r0, [sp, #0x28]
 	mov r1, #5
@@ -30589,7 +30589,7 @@ _021F4B24:
 _021F4B4A:
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x24]
-	bl BoxPokemon_LockEncryption
+	bl BoxPokemon_EncryptData
 	ldr r0, [sp, #0x18]
 	add r0, r0, #2
 	lsl r0, r0, #0x18

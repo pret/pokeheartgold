@@ -1996,7 +1996,7 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
 
     for (i = 0; i < Party_GetCount(data->args->party); ++i) {
         pokemon = Party_GetMonByIndex(data->args->party, i);
-        encry = Pokemon_UnlockEncryption(pokemon);
+        encry = Pokemon_DecryptData(pokemon);
         if (!Pokemon_GetData(pokemon, MON_DATA_IS_EGG, NULL)) {
             hofMon = &data->mons[data->numMons];
             hofMon->mon = pokemon;
@@ -2024,13 +2024,13 @@ static void RegisterHallOfFame_GetPartyDetails(RegisterHallOfFameData *data) {
             NARC_ReadPokepicAnimScript(narc, hofMon->backspriteAnim, hofMon->species, 0);
             ++data->numMons;
         }
-        Pokemon_LockEncryption(pokemon, encry);
+        Pokemon_EncryptData(pokemon, encry);
     }
     NARC_Delete(narc);
 }
 
 static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(RegisterHallOfFameData *data, Pokemon *pokemon, PlayerProfile *profile) {
-    BOOL encry = Pokemon_UnlockEncryption(pokemon);
+    BOOL encry = Pokemon_DecryptData(pokemon);
     RegisterHallOfFame_MetLocationType ret;
     int version = Pokemon_GetData(pokemon, MON_DATA_MET_GAME, NULL);
     if (version == VERSION_SAPPHIRE || version == VERSION_RUBY || version == VERSION_EMERALD) {
@@ -2062,7 +2062,7 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
             ret = REGHOF_METLOC_HATCHED;
         }
     }
-    Pokemon_LockEncryption(pokemon, encry);
+    Pokemon_EncryptData(pokemon, encry);
     return ret;
 }
 

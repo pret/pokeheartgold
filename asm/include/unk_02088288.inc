@@ -96,8 +96,8 @@
 .public Save_VarsFlags_Get
 .public CheckFlag982
 .public Pokemon_New
-.public Pokemon_UnlockEncryption
-.public Pokemon_LockEncryption
+.public Pokemon_DecryptData
+.public Pokemon_EncryptData
 .public Pokemon_GetData
 .public BoxPokemon_GetData
 .public Species_GetExpAtLevel

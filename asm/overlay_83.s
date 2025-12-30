@@ -7839,7 +7839,7 @@ ov83_02241E18: ; 0x02241E18
 	ldr r0, [r5, r0]
 	bl Party_GetMonByIndex
 	add r6, r0, #0
-	bl Pokemon_UnlockEncryption
+	bl Pokemon_DecryptData
 	str r0, [sp, #4]
 	ldr r0, _02241FAC ; =0x00000804
 	str r6, [r5, r0]
@@ -8003,7 +8003,7 @@ _02241F44:
 	blo _02241F44
 	ldr r1, [sp, #4]
 	add r0, r6, #0
-	bl Pokemon_LockEncryption
+	bl Pokemon_EncryptData
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -15587,7 +15587,7 @@ ov83_02245D48: ; 0x02245D48
 	ldr r0, [r5, r0]
 	bl Party_GetMonByIndex
 	add r6, r0, #0
-	bl Pokemon_UnlockEncryption
+	bl Pokemon_DecryptData
 	str r0, [sp, #4]
 	ldr r0, _02245EE0 ; =0x000005BC
 	str r6, [r5, r0]
@@ -15752,7 +15752,7 @@ _02245E74:
 	blo _02245E74
 	ldr r1, [sp, #4]
 	add r0, r6, #0
-	bl Pokemon_LockEncryption
+	bl Pokemon_EncryptData
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

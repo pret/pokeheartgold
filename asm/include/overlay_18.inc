@@ -232,8 +232,8 @@
 .public Pokedex_GetSeenFormByIdx
 .public Pokedex_GetSeenFormNum
 .public MapHeader_GetMapSec
-.public Pokemon_UnlockEncryption
-.public Pokemon_LockEncryption
+.public Pokemon_DecryptData
+.public Pokemon_EncryptData
 .public Pokemon_GetData
 .public Species_GetFormValue
 .public Pokemon_BuildSpriteTemplate
