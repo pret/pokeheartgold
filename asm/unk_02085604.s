@@ -1311,7 +1311,7 @@ _02085FC0:
 	add r0, r7, #0
 	sub r1, r1, #1
 	add r3, r2, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #0xf5
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

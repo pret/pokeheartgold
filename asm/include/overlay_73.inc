@@ -126,7 +126,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String16_FormatInteger
+.public String_FormatInt
 .public sub_020270C4
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync

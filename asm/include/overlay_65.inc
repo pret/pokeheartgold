@@ -140,7 +140,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String16_FormatInteger
+.public String_FormatInt
 .public CopyU16ArrayToString
 .public PlayerProfile_New
 .public PlayerProfile_Copy

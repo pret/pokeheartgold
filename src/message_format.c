@@ -152,7 +152,7 @@ void BufferBoxMonOTName(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) 
 }
 
 void BufferIntegerAsString(MessageFormat *msgFmt, u32 fieldno, s32 num, u32 numDigits, PrintingMode strconvmode, BOOL whichCharset) {
-    String16_FormatInteger(msgFmt->buffer, num, numDigits, strconvmode, whichCharset);
+    String_FormatInt(msgFmt->buffer, num, numDigits, strconvmode, whichCharset);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 

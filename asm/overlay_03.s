@@ -10344,7 +10344,7 @@ _02259028:
 	ldr r0, [r5, #0x34]
 	add r1, r7, #0
 	mov r2, #7
-	bl String16_FormatInteger
+	bl String_FormatInt
 _02259036:
 	mov r0, #0
 	ldr r1, [r5, #0x34]

@@ -11358,7 +11358,7 @@ _021FEE2C:
 	ldr r1, [sp, #0x18]
 	mov r2, #1
 	mov r3, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	ldr r0, [sp, #0x18]
 	add r1, r0, #0
 	mul r1, r4

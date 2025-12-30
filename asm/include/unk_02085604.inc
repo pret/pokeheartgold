@@ -13,7 +13,7 @@
 .public System_GetTouchHeld
 .public String_New
 .public String_Free
-.public String16_FormatInteger
+.public String_FormatInt
 .public String_Cat
 .public TouchHitboxController_Create
 .public TouchHitboxController_IsTriggered

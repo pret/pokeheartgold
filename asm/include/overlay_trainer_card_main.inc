@@ -121,7 +121,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String16_FormatInteger
+.public String_FormatInt
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay

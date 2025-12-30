@@ -19819,7 +19819,7 @@ _022328B8:
 	mov r2, #3
 	add r4, r0, #0
 	str r3, [sp]
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #0
 	mvn r0, r0
 	str r0, [sp, #0x60]

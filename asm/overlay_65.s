@@ -3079,7 +3079,7 @@ _0221D7B0:
 	add r0, r6, #0
 	mov r2, #3
 	mov r3, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #0x1e
 	str r0, [sp]
 	ldr r0, [sp, #0x2c]

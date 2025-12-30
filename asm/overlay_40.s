@@ -6424,7 +6424,7 @@ _0222EAC0:
 	add r1, r1, #1
 	mov r2, #2
 	mov r3, #1
-	bl String16_FormatInteger
+	bl String_FormatInt
 	ldr r2, [sp, #0x1c]
 	ldr r1, _0222EB98 ; =0x00002608
 	add r0, r7, #0
@@ -6790,7 +6790,7 @@ _0222EDA8:
 	mov r2, #2
 	add r1, r1, #1
 	mov r3, #1
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -7382,7 +7382,7 @@ _0222F258:
 	mov r2, #2
 	add r1, r1, #1
 	mov r3, #1
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -7713,7 +7713,7 @@ _0222F500:
 	add r1, r1, #1
 	mov r2, #2
 	mov r3, #1
-	bl String16_FormatInteger
+	bl String_FormatInt
 	ldr r2, [sp, #0x18]
 	ldr r1, _0222F5E4 ; =0x00002608
 	add r0, r5, #0
@@ -9328,7 +9328,7 @@ _02230062:
 	ldr r1, [sp, #0x4c]
 	mov r2, #4
 	mov r3, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -9465,21 +9465,21 @@ _022302BA:
 	ldr r1, [sp, #0x2c]
 	mov r2, #5
 	mov r3, #2
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	ldr r0, [sp, #0x34]
 	ldr r1, [sp, #0x28]
 	mov r2, #5
 	mov r3, #2
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	mov r2, #2
 	ldr r0, [sp, #0x30]
 	ldr r1, [sp, #0x24]
 	add r3, r2, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #2
@@ -46030,7 +46030,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r0, [sp, #0x18]
 	mov r2, #5
 	mov r3, #2
-	bl String16_FormatInteger
+	bl String_FormatInt
 	ldr r0, [sp, #0x24]
 	ldr r2, _02242F9C ; =0x000186A0
 	add r1, r4, #0
@@ -46042,7 +46042,7 @@ ov40_02242E4C: ; 0x02242E4C
 	ldr r0, [sp, #0x1c]
 	mov r2, #5
 	mov r3, #2
-	bl String16_FormatInteger
+	bl String_FormatInt
 	ldr r0, [sp, #0x24]
 	ldr r2, _02242F9C ; =0x000186A0
 	add r1, r4, #0
@@ -46054,7 +46054,7 @@ ov40_02242E4C: ; 0x02242E4C
 	mov r2, #2
 	ldr r0, [sp, #0x20]
 	add r3, r2, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #1
 	str r0, [sp]
 	mov r1, #2
@@ -46951,7 +46951,7 @@ _022435C2:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #8]
 	add r3, r2, #0
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #0xb
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]

@@ -3177,7 +3177,7 @@ ov51_021E74F4: ; 0x021E74F4
 	ldr r0, [sp, #0x28]
 	ldr r1, [sp, #0x2c]
 	ldr r3, [sp, #0x34]
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #0
 	ldr r1, [sp, #0x28]
 	add r2, r0, #0

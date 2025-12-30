@@ -4290,7 +4290,7 @@ _02239A22:
 	add r0, r4, #0
 	mov r2, #3
 	mov r3, #1
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0xff
@@ -4358,7 +4358,7 @@ _02239AB8:
 	ldr r0, [sp, #0x10]
 	mov r2, #3
 	str r3, [sp]
-	bl String16_FormatInteger
+	bl String_FormatInt
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff

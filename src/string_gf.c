@@ -59,7 +59,7 @@ String *String_Clone(const String *src, enum HeapID heapID) {
     return ret;
 }
 
-void String16_FormatInteger(String *string, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
+void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
     static const u32 sPowersOfTen[10] = {
         1ul,
         10ul,

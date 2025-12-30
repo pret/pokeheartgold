@@ -142,7 +142,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String16_FormatInteger
+.public String_FormatInt
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfile

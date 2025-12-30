@@ -166,7 +166,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String16_FormatInteger
+.public String_FormatInt
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy
 .public TouchHitboxController_IsTriggered
