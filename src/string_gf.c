@@ -32,7 +32,7 @@ void String_Free(String *string) {
     Heap_Free(string);
 }
 
-void String_SetEmpty(String *string) {
+void String_Clear(String *string) {
     String_Assert(string);
     string->size = 0;
     string->data[0] = EOS;
@@ -106,7 +106,7 @@ void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConv
 
     if (string->maxsize > ndigits + isNegative) {
         charbase = (whichCharset == 0) ? sCharset_JP : sCharset_EN;
-        String_SetEmpty(string);
+        String_Clear(string);
         if (isNegative) {
             num *= -1;
             u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_HYPHEN : CHAR_HYPHEN);
@@ -192,7 +192,7 @@ void String16_FormatUnsignedLongLong(String *string, u64 num, u32 ndigits, Print
 
     if (string->maxsize > ndigits + isNegative) {
         charbase = (whichCharset == 0) ? sCharset_JP : sCharset_EN;
-        String_SetEmpty(string);
+        String_Clear(string);
         if (isNegative) {
             num *= -1;
             u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_HYPHEN : CHAR_HYPHEN);
@@ -288,7 +288,7 @@ void String_GetLineN(String *dest, const String *src, u32 n) {
             }
         }
     }
-    String_SetEmpty(dest);
+    String_Clear(dest);
     for (; i < src->size; i++) {
         u16 c = src->data[i];
         if (c == CHAR_LF) {

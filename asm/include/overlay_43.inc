@@ -147,7 +147,7 @@
 .public GF_SetG2dRendererSurface
 .public String_New
 .public String_Free
-.public String_SetEmpty
+.public String_Clear
 .public String_Copy
 .public String_atoi
 .public CopyU16ArrayToString

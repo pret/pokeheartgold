@@ -103,7 +103,7 @@ String *PhoneContact_GetClass(PokegearPhoneCallContext *ctx, u8 callerID) {
         callerID = PHONE_CONTACT_MOTHER;
     }
     if (ctx->phoneEntries[callerID].trainerClass == TRAINERCLASS_PHONE_MOM) {
-        String_SetEmpty(ctx->contactClassBuf);
+        String_Clear(ctx->contactClassBuf);
     } else if (ctx->phoneEntries[callerID].trainerClass >= TRAINERCLASS_PHONE_POKEMON_PROFESSOR) {
         ReadMsgDataIntoString(ctx->msgData_0271, ctx->phoneEntries[callerID].trainerClass - TRAINERCLASS_PHONE_POKEMON_PROFESSOR + msg_0271_00038, ctx->contactClassBuf);
     } else {

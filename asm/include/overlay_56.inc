@@ -99,7 +99,7 @@
 .public System_GetTouchNew
 .public String_New
 .public String_Free
-.public String_SetEmpty
+.public String_Clear
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public sub_0203A964

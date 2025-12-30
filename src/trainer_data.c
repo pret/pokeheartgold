@@ -118,7 +118,7 @@ void GetTrainerMessageByIdPair(u32 trainerIndex, u32 msg_id, String *str, enum H
     }
     NARC_Delete(trTblNarc);
     if (rdbuf[0] == trTblSize) {
-        String_SetEmpty(str);
+        String_Clear(str);
     }
 }
 

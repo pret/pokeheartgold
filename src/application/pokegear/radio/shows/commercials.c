@@ -128,7 +128,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
 
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0412_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0412_00000, radioShow->showTitle);
-    String_SetEmpty(radioShow->showHost);
+    String_Clear(radioShow->showHost);
     MI_CpuClear8(data->commercialUnlockFlags, sizeof(data->commercialUnlockFlags));
     MI_CpuClear8(data->unlockedCommercials, sizeof(data->unlockedCommercials));
 

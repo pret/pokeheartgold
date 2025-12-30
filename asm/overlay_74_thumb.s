@@ -18009,7 +18009,7 @@ _02231A7E:
 _02231AA6:
 	ldr r0, _02231BB4 ; =0x00012608
 	ldr r0, [r6, r0]
-	bl String_SetEmpty
+	bl String_Clear
 	ldr r0, _02231BB4 ; =0x00012608
 	ldr r1, [r5, #0x34]
 	ldr r0, [r6, r0]

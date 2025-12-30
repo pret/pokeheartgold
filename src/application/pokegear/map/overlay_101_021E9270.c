@@ -816,7 +816,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
     locationSpec = selectedLoc->locationSpec;
     markersHeap = selectedLoc->markingsNode;
 
-    String_SetEmpty(mapApp->mapNameString);
+    String_Clear(mapApp->mapNameString);
     for (i = 0; i < 3; ++i) {
         FillWindowPixelBuffer(&mapApp->windows[i], 0);
     }
@@ -854,7 +854,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL isKanto) {
         }
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->unk_16C->rawData, tilemap16CsrcX, 0, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, 24, 11, 7, 7, mapApp->unk_174->rawData, (tilemap174blockId % 4) * 7, (tilemap174blockId / 4) * 7, mapApp->unk_174->screenWidth / 8, mapApp->unk_174->screenHeight / 8);
-        String_SetEmpty(mapApp->flavorTextString);
+        String_Clear(mapApp->flavorTextString);
         ReadMsgDataIntoString(mapApp->msgData, locationSpec->flavorText, mapApp->flavorTextString);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[2], 0, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_GEAR_BATTLE].sprite, PokegearMap_MapHasPhoneRematchOrGift(mapApp, locationSpec->mapId));
@@ -922,7 +922,7 @@ void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUp
     markingsNode = selectedLoc->markingsNode;
 
     if (forceUpdateMapName) {
-        String_SetEmpty(mapApp->mapNameString);
+        String_Clear(mapApp->mapNameString);
         FillWindowPixelBuffer(&mapApp->windows[7], 0);
         PokegearMap_GetLandmarkNameFromMapID(locationSpec->mapId, mapApp->heapID, mapApp->mapNameString);
         AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->mapNameString, 0, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);

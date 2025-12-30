@@ -20,7 +20,7 @@ void CopyU16ArrayToString(String *string, const u16 *src);
 void CopyU16ArrayToStringN(String *string, const u16 *src, u32 n);
 int String_Compare(String *a, String *b);
 void String_Copy(String *dest, const String *src);
-void String_SetEmpty(String *string);
+void String_Clear(String *string);
 String *String_Clone(const String *src, enum HeapID heapID);
 void String_AddChar(String *string, u16 _char);
 void CopyU16ArrayToString(String *dest, const u16 *src);

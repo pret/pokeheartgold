@@ -727,19 +727,19 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     ReadMsgDataIntoString(data->msgData, msg_0045_00000, tmpString); // OPTIONS
     AddTextPrinterParameterizedWithColor(&data->windows.optionsTitle, 0, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
-    String_SetEmpty(tmpString);
+    String_Clear(tmpString);
     OptionsApp_PrintTextFrameString(data, tmpString, TRUE);
 
     for (i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
-        String_SetEmpty(tmpString);
+        String_Clear(tmpString);
         ReadMsgDataIntoString(data->msgData, msg_0045_00001 + i, tmpString); // Option names
         AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, tmpString, 4, i * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     }
 
-    String_SetEmpty(tmpString);
+    String_Clear(tmpString);
     ReadMsgDataIntoString(data->msgData, msg_0045_00008, tmpString); // QUIT
     AddTextPrinterParameterizedWithColor(&data->windows.quitButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
-    String_SetEmpty(tmpString);
+    String_Clear(tmpString);
     ReadMsgDataIntoString(data->msgData, msg_0045_00007, tmpString); // CONFIRM
     AddTextPrinterParameterizedWithColor(&data->windows.confirmButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 

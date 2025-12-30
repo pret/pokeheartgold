@@ -346,7 +346,7 @@ void BufferGenderSymbol(MessageFormat *msgFmt, u32 fieldno, u8 gender) {
         ReadMsgDataIntoString(msgData, msg_0040_00056, msgFmt->buffer);
         break;
     default:
-        String_SetEmpty(msgFmt->buffer);
+        String_Clear(msgFmt->buffer);
         break;
     }
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
@@ -657,7 +657,7 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
 
 void StringExpandPlaceholders(MessageFormat *msgFmt, String *dest, String *src) {
     const u16 *cstr = String_cstr(src);
-    String_SetEmpty(dest);
+    String_Clear(dest);
     while (*cstr != EOS) {
         if (*cstr == EXT_CTRL_CODE_BEGIN) {
             if (MsgArray_ControlCodeIsStrVar(cstr)) {
@@ -680,6 +680,6 @@ void StringExpandPlaceholders(MessageFormat *msgFmt, String *dest, String *src) 
 
 void MessageFormat_ResetBuffers(MessageFormat *msgFmt) {
     for (int i = 0; i < msgFmt->count; i++) {
-        String_SetEmpty(msgFmt->fields[i].msg);
+        String_Clear(msgFmt->fields[i].msg);
     }
 }

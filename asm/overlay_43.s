@@ -5971,7 +5971,7 @@ ov43_0222CD44: ; 0x0222CD44
 	bl CopyU16ArrayToString
 	b _0222CD84
 _0222CD80:
-	bl String_SetEmpty
+	bl String_Clear
 _0222CD84:
 	mov r0, #0
 	str r0, [r5, #0x64]

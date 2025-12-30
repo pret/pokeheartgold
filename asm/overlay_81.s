@@ -5639,7 +5639,7 @@ _02240B68:
 	lsl r7, r7, #0xa
 _02240B6C:
 	add r0, r4, #0
-	bl String_SetEmpty
+	bl String_Clear
 	add r0, sp, #0x4c
 	ldrb r0, [r0]
 	cmp r0, #2

@@ -165,7 +165,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String_SetEmpty
+.public String_Clear
 .public String_FormatInt
 .public String16_FormatUnsignedLongLong
 .public String_CountLines

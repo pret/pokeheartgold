@@ -2379,7 +2379,7 @@ _0223F090:
 	cmp r0, #0xfe
 	beq _0223F0D4
 	add r0, r5, #0
-	bl String_SetEmpty
+	bl String_Clear
 	lsl r0, r7, #0x18
 	lsr r0, r0, #0x18
 	bl ov80_02237920

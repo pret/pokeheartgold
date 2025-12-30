@@ -2007,7 +2007,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         break;
 
     case OAK_SPEECH_MAIN_STATE_PROMPT_NAME_LAUNCH_NAMING_SCREEN:
-        String_SetEmpty(data->namingScreenArgs_Player->nameInputString);
+        String_Clear(data->namingScreenArgs_Player->nameInputString);
         data->namingScreenArgs_Player->playerGenderOrMonSpecies = data->playerGender;
         data->overlayManager = OverlayManager_New(&gOverlayTemplate_NamingScreen, data->namingScreenArgs_Player, data->heapID);
         data->state = OAK_SPEECH_MAIN_STATE_PROMPT_NAME_RESTORE_GRAPHICS_AFTER;

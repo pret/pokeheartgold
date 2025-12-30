@@ -43,7 +43,7 @@ BOOL RadioShow_MahoganySignal_Print(RadioShow *radioShow) {
 void RadioShow_MahoganySignal_Init(RadioShow *radioShow) {
     radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0409_bin, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0409_00000, radioShow->showTitle);
-    String_SetEmpty(radioShow->showHost);
+    String_Clear(radioShow->showHost);
 }
 
 void RadioShow_MahoganySignal_Unload(RadioShow *radioShow) {

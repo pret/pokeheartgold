@@ -11025,7 +11025,7 @@ ov40_02230E08: ; 0x02230E08
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl String_SetEmpty
+	bl String_Clear
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd
@@ -49465,7 +49465,7 @@ _02244982:
 	b _022449CC
 _0224499E:
 	add r0, r4, #0
-	bl String_SetEmpty
+	bl String_Clear
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
 	bl CopyU16ArrayToString
@@ -49531,7 +49531,7 @@ _02244A02:
 	add r2, r5, #0
 	bl GetMonData
 	add r0, r4, #0
-	bl String_SetEmpty
+	bl String_Clear
 	add r0, r4, #0
 	add r1, r5, #0
 	bl CopyU16ArrayToString
@@ -49576,7 +49576,7 @@ ov40_02244A84: ; 0x02244A84
 	push {r3, r4, r5, lr}
 	add r5, r1, #0
 	add r4, r0, #0
-	bl String_SetEmpty
+	bl String_Clear
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xd

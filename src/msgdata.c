@@ -83,7 +83,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT *table, u32 num, String
         }
     } else {
         GF_ASSERT(FALSE);
-        String_SetEmpty(dest);
+        String_Clear(dest);
     }
 }
 
@@ -142,7 +142,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC *narc, u32 group, u32 n
         }
     } else {
         GF_ASSERT(FALSE);
-        String_SetEmpty(dest);
+        String_Clear(dest);
     }
 }
 
