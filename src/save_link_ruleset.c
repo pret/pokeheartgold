@@ -24,7 +24,7 @@ void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *d
 
 String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, enum HeapID heapID) {
     String *ret = String_New(24, heapID);
-    CopyU16ArrayToString(ret, rule->name);
+    String_CopyChars(ret, rule->name);
     return ret;
 }
 

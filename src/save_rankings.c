@@ -341,7 +341,7 @@ ViewRankingsPage *Save_GetReceivedViewRankingPage(SaveRankings *saveRankings, in
             ret->entries[ret->count].groupId = saveRankings->array[page][i].groupId;
             ret->entries[ret->count].stat = saveRankings->array[page][i].stat;
             ret->entries[ret->count].playerName = String_New(PLAYER_NAME_LENGTH + 1, heapID);
-            CopyU16ArrayToString(ret->entries[ret->count].playerName, saveRankings->array[page][i].playerName);
+            String_CopyChars(ret->entries[ret->count].playerName, saveRankings->array[page][i].playerName);
             ++ret->count;
         }
     }

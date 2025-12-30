@@ -73,7 +73,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public SaveArray_PCStorage_Get
 .public Save_Pokeathlon_Get
 .public sub_020319A8

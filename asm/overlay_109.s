@@ -3340,7 +3340,7 @@ _021E728A:
 	add r1, r4, #0
 	ldr r0, [r5, #0x2c]
 	add r1, #0x18
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	mov r0, #0
 	mov r1, #2
 	str r0, [sp]

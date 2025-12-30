@@ -158,7 +158,7 @@
 .public String_New
 .public String_Free
 .public String_Clear
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

@@ -7725,7 +7725,7 @@ _021E9528:
 	add r2, #0x30
 	mul r1, r6
 	add r1, r2, r1
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]

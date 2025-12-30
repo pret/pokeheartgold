@@ -5636,7 +5636,7 @@ _0222CAD0:
 	bl sub_0202C254
 	add r1, r0, #0
 	add r0, r6, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r3, r4, #0
 	mov r0, #0xa
 	mul r3, r0
@@ -5968,7 +5968,7 @@ ov43_0222CD44: ; 0x0222CD44
 	ldr r0, [r4, #0x18]
 	bne _0222CD80
 	ldr r1, [r5, #0x60]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	b _0222CD84
 _0222CD80:
 	bl String_Clear

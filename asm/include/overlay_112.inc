@@ -195,7 +195,7 @@
 .public String_Free
 .public String_Copy
 .public String_GetLength
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public CopyU16ArrayToStringN
 .public String_ToChars
 .public String_Concat

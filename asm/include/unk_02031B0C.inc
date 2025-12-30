@@ -10,7 +10,7 @@
 .public Heap_AllocAtEnd
 .public GF_AssertFail
 .public String_New
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public SaveArray_Get
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID

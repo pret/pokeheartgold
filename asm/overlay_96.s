@@ -16161,7 +16161,7 @@ ov96_021ED524: ; 0x021ED524
 	add r1, r6, r1
 	add r1, #0x12
 	add r7, r0, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r0, [r4, #0xc]
 	bl ov96_021EE97C
 	mov r1, #1
@@ -53853,7 +53853,7 @@ _021FFFAA:
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	add r1, #0x12
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r6, r6, #1
 	add r4, #0x28
 	add r5, r5, #4
@@ -69495,7 +69495,7 @@ _02207D3A:
 	add r1, r4, #0
 	ldr r0, [r5, r0]
 	add r1, #0x12
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r6, r6, #1
 	add r4, #0x28
 	add r5, r5, #4
@@ -73662,7 +73662,7 @@ _02209E4A:
 	add r1, r5, #0
 	add r1, #0x12
 	str r0, [r4, #0x18]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r7, r7, #1
 	add r4, r4, #4
 	add r5, #0x28
@@ -105594,7 +105594,7 @@ _02219590:
 	add r1, r6, #0
 	ldr r0, [r0]
 	add r1, #0x12
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r7, r7, #1
 	add r5, r5, #4
 	add r6, #0x28

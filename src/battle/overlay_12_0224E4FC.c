@@ -363,7 +363,7 @@ int GetBattlerVar(BattleContext *ctx, int battlerId, u32 id, void *data) {
         }
     } break;
     case BMON_DATA_NICKNAME_STRBUF:
-        CopyU16ArrayToString((String *)data, mon->nickname);
+        String_CopyChars((String *)data, mon->nickname);
         break;
     case BMON_DATA_HP:
         return mon->hp;

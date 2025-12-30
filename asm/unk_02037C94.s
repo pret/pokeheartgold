@@ -5182,7 +5182,7 @@ _0203A334:
 	bl sub_02034884
 	add r1, r0, #0
 	ldr r0, [sp, #0x10]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r2, [sp, #0x10]
 	add r0, r4, #0
 	add r1, r5, #0

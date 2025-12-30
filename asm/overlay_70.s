@@ -5881,7 +5881,7 @@ ov70_0223A72C: ; 0x0223A72C
 	str r0, [sp, #0x10]
 	ldr r1, [sp, #8]
 	add r0, r4, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r0, r7, #0
 	mov r1, #0xb4
 	bl NewString_ReadMsgData

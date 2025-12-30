@@ -750,7 +750,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
             String_Copy(dest, buffer);
             String_Free(buffer);
         } else {
-            CopyU16ArrayToString(dest, blockC->nickname);
+            String_CopyChars(dest, blockC->nickname);
         }
         break;
     case MON_DATA_UNUSED_121:
@@ -794,7 +794,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         dest16[ret] = EOS;
     } break;
     case MON_DATA_OT_NAME_STRING:
-        CopyU16ArrayToString(dest, blockD->otName);
+        String_CopyChars(dest, blockD->otName);
         break;
     case MON_DATA_EGG_YEAR:
         ret = blockD->eggYear;

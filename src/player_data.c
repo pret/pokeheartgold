@@ -81,7 +81,7 @@ const u16 *PlayerProfile_GetNamePtr(const PlayerProfile *profile) {
 }
 
 void PlayerName_FlatToString(PlayerProfile *profile, String *str) {
-    CopyU16ArrayToString(str, profile->name);
+    String_CopyChars(str, profile->name);
 }
 
 String *PlayerProfile_GetPlayerName_NewString(PlayerProfile *profile, enum HeapID heapID) {

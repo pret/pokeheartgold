@@ -72,7 +72,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_GetSeenSpindaPersonality
 .public Pokedex_SpeciesGetLastSeenGender

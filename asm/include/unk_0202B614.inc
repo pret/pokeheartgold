@@ -7,7 +7,7 @@
 .public sub_02015FF8
 .public Heap_Alloc
 .public GF_AssertFail
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public String_ToChars
 .public SaveArray_Get
 .public Save_FashionData_Init

@@ -162,7 +162,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetNamePtr

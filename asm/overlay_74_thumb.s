@@ -20661,7 +20661,7 @@ ov74_02232F9C: ; 0x02232F9C
 	bl String_New
 	add r1, sp, #8
 	add r6, r0, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	mov r1, #1
 	str r1, [sp]
 	mov r0, #2

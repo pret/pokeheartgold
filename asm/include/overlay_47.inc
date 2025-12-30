@@ -101,7 +101,7 @@
 .public String_New
 .public String_Free
 .public String_Copy
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
 .public Options_GetTextFrameDelay

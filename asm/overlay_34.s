@@ -1752,7 +1752,7 @@ _0225E2F4:
 	bl PalPad_GetNthEntry
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r0, r6, #0
 	add r1, r5, #0
 	bl PalPadEntry_GetFromUnk68Array
@@ -1830,7 +1830,7 @@ _0225E398:
 	mov r0, #0x1c
 	mul r0, r2
 	ldr r0, [r4, r0]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r0, [r5]
 	mov r1, #0x1c
 	add r2, r0, #0

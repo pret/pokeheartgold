@@ -6429,7 +6429,7 @@ _0222EAC0:
 	ldr r1, _0222EB98 ; =0x00002608
 	add r0, r7, #0
 	ldr r1, [r2, r1]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r0, [sp, #0x14]
 	add r1, r7, #0
 	bl ov40_02230DCC
@@ -6752,7 +6752,7 @@ _0222ED6E:
 	bl GetSpeciesNameIntoArray
 	ldr r0, [sp, #0x44]
 	add r1, sp, #0x64
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -7344,7 +7344,7 @@ _0222F21E:
 	bl GetSpeciesNameIntoArray
 	ldr r0, [sp, #0x4c]
 	add r1, sp, #0x6c
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -7718,7 +7718,7 @@ _0222F500:
 	ldr r1, _0222F5E4 ; =0x00002608
 	add r0, r5, #0
 	ldr r1, [r2, r1]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r0, [sp, #0x14]
 	add r1, r5, #0
 	bl ov40_02230DCC
@@ -23069,7 +23069,7 @@ ov40_0223707C: ; 0x0223707C
 	mov r1, #0xe3
 	lsl r1, r1, #2
 	ldr r1, [r2, r1]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r0, r5, #0
 	add r1, r6, #0
 	bl ov40_02230DCC
@@ -23137,7 +23137,7 @@ ov40_02237144: ; 0x02237144
 	bl String_New
 	add r1, r5, #4
 	add r4, r0, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r0, r5, r6
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -23256,7 +23256,7 @@ _02237238:
 	bl GetSpeciesNameIntoArray
 	add r0, r5, #0
 	add r1, sp, #0x10
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r0, r4, r7
 	add r1, r5, #0
 	bl ov40_022306C0
@@ -25250,7 +25250,7 @@ _022382AA:
 	lsl r1, r1, #2
 	ldr r0, [r4, r0]
 	ldr r1, [r5, r1]
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r1, _022382FC ; =0x00002E10
 	ldr r0, [sp]
 	ldr r1, [r4, r1]
@@ -25266,7 +25266,7 @@ _022382AA:
 	ldr r1, [r5, r1]
 	ldr r0, [r4, r0]
 	add r1, #0x80
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	mov r0, #0xe2
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]
@@ -27689,7 +27689,7 @@ _022396F8:
 	bl GetSpeciesNameIntoArray
 	ldr r0, [sp, #0x1c]
 	add r1, sp, #0x2c
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	b _02239726
 _0223971C:
 	ldr r0, [r5, #0x48]
@@ -36273,7 +36273,7 @@ _0223DD94:
 	bl GetSpeciesNameIntoArray
 	add r0, r5, #0
 	add r1, sp, #0x10
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 _0223DDB0:
 	mov r1, #0
 	str r1, [sp]
@@ -49468,7 +49468,7 @@ _0224499E:
 	bl String_Clear
 	ldr r1, [sp, #0xc]
 	add r0, r4, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	add r1, r4, #0
@@ -49534,7 +49534,7 @@ _02244A02:
 	bl String_Clear
 	add r0, r4, #0
 	add r1, r5, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	ldr r2, [sp, #0x1c]
 	mov r0, #0
 	add r1, r4, #0

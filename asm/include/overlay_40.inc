@@ -170,7 +170,7 @@
 .public String16_FormatUnsignedLongLong
 .public String_CountLines
 .public String_GetLineN
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public String_ToChars
 .public String_Concat
 .public TouchHitboxController_Create

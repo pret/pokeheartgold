@@ -16,14 +16,14 @@ typedef struct String {
 String *String_New(u32 maxsize, enum HeapID heapID);
 void String_Free(String *string);
 void String_ToChars(const String *string, u16 *dest, u32 n);
-void CopyU16ArrayToString(String *string, const u16 *src);
+void String_CopyChars(String *string, const u16 *src);
 void CopyU16ArrayToStringN(String *string, const u16 *src, u32 n);
 int String_Compare(String *a, String *b);
 void String_Copy(String *dest, const String *src);
 void String_Clear(String *string);
 String *String_Clone(const String *src, enum HeapID heapID);
 void String_AddChar(String *string, u16 _char);
-void CopyU16ArrayToString(String *dest, const u16 *src);
+void String_CopyChars(String *dest, const u16 *src);
 void CopyU16ArrayToStringN(String *dest, const u16 *src, u32 n);
 u16 *String_cstr(String *string);
 void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);

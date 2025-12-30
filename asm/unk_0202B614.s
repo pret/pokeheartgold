@@ -1265,13 +1265,13 @@ _0202BEC8: .word 0x00002345
 	thumb_func_start sub_0202BECC
 sub_0202BECC: ; 0x0202BECC
 	add r2, r0, #0
-	ldr r3, _0202BED8 ; =CopyU16ArrayToString
+	ldr r3, _0202BED8 ; =String_CopyChars
 	add r2, #0x20
 	add r0, r1, #0
 	add r1, r2, #0
 	bx r3
 	.balign 4, 0
-_0202BED8: .word CopyU16ArrayToString
+_0202BED8: .word String_CopyChars
 	thumb_func_end sub_0202BECC
 
 	thumb_func_start sub_0202BEDC

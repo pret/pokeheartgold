@@ -180,7 +180,7 @@
 .public String_Free
 .public String_Clear
 .public String_FormatInt
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public CopyU16ArrayToStringN
 .public String_ToChars
 .public sub_02027098

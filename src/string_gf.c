@@ -322,7 +322,7 @@ void String_RadioAddStatic(String *string, u8 level) {
     }
 }
 
-void CopyU16ArrayToString(String *string, const u16 *buf) {
+void String_CopyChars(String *string, const u16 *buf) {
     String_Assert(string);
 
     for (string->size = 0; *buf != EOS;) {

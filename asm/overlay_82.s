@@ -2300,7 +2300,7 @@ ov82_0223EFCC: ; 0x0223EFCC
 	bl String_New
 	add r1, sp, #0x10
 	add r6, r0, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	str r4, [sp]
 	mov r4, #0
 	str r4, [sp, #4]

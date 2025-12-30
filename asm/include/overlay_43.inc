@@ -150,7 +150,7 @@
 .public String_Clear
 .public String_Copy
 .public String_atoi
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public String_cstr
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr

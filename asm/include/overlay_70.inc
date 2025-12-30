@@ -170,7 +170,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public CopyU16ArrayToString
+.public String_CopyChars
 .public SetAllPCBoxesModified
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync

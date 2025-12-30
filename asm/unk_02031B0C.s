@@ -1197,7 +1197,7 @@ _020322E2:
 	add r4, #0x28
 	add r0, r6, #0
 	add r1, r4, r5
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 _02032304:
 	add r0, r6, #0
 	pop {r3, r4, r5, r6, r7, pc}

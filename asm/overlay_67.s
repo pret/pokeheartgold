@@ -1403,7 +1403,7 @@ _021E6406:
 	b _021E645A
 _021E6454:
 	add r1, r6, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 _021E645A:
 	ldr r0, [sp]
 	add r4, #0x10

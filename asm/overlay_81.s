@@ -5344,7 +5344,7 @@ ov81_022408C4: ; 0x022408C4
 	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl CopyU16ArrayToString
+	bl String_CopyChars
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0

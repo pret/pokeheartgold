@@ -241,7 +241,7 @@ void PCStorage_GetBoxName(PCStorage *storage, u32 boxno, String *dest) {
         boxno = storage->curBox;
     }
     if (boxno < NUM_BOXES) {
-        CopyU16ArrayToString(dest, storage->box_names[boxno]);
+        String_CopyChars(dest, storage->box_names[boxno]);
         return;
     }
     GF_ASSERT(FALSE);
