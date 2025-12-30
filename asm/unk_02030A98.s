@@ -1700,7 +1700,7 @@ sub_020315B8: ; 0x020315B8
 	add r1, r5, #0
 	mov r2, #0xf
 	add r4, r0, #0
-	bl CopyU16ArrayToStringN
+	bl String_CopyNumChars
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020315B8
@@ -1873,7 +1873,7 @@ _020316CE:
 	add r1, r5, #0
 	mov r2, #0x28
 	add r4, r0, #0
-	bl CopyU16ArrayToStringN
+	bl String_CopyNumChars
 	add r0, r4, #0
 	add sp, #8
 	pop {r4, r5, r6, pc}

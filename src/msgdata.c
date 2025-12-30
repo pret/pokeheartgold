@@ -78,7 +78,7 @@ static void ReadMsgData_ExistingTable_ExistingString(MAT *table, u32 num, String
         if (buf != NULL) {
             MI_CpuCopy16((char *)table + alloc.offset, buf, 2 * alloc.length);
             Decrypt2(buf, alloc.length, num);
-            CopyU16ArrayToStringN(dest, buf, alloc.length);
+            String_CopyNumChars(dest, buf, alloc.length);
             Heap_Free(buf);
         }
     } else {
@@ -100,7 +100,7 @@ static String *ReadMsgData_ExistingTable_NewString(MAT *table, u32 num, enum Hea
             Decrypt2(buf, alloc.length, num);
             dest = String_New(alloc.length, heapID);
             if (dest != NULL) {
-                CopyU16ArrayToStringN(dest, buf, alloc.length);
+                String_CopyNumChars(dest, buf, alloc.length);
             }
             Heap_Free(buf);
             return dest;
@@ -136,7 +136,7 @@ static void ReadMsgData_ExistingNarc_ExistingString(NARC *narc, u32 group, u32 n
         if (buf != NULL) {
             NARC_ReadFromMember(narc, group, alloc.offset, size, buf);
             Decrypt2(buf, alloc.length, num);
-            CopyU16ArrayToStringN(dest, buf, alloc.length);
+            String_CopyNumChars(dest, buf, alloc.length);
             Heap_Free(buf);
             return;
         }
@@ -176,7 +176,7 @@ static String *ReadMsgData_ExistingNarc_NewString(NARC *narc, u32 group, u32 num
             if (buf != NULL) {
                 NARC_ReadFromMember(narc, group, alloc.offset, size, buf);
                 Decrypt2(buf, alloc.length, num);
-                CopyU16ArrayToStringN(dest, buf, alloc.length);
+                String_CopyNumChars(dest, buf, alloc.length);
                 Heap_Free(buf);
             }
         }

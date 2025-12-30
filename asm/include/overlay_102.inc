@@ -139,7 +139,7 @@
 .public String_Free
 .public String_CountLines
 .public String_CopyLine
-.public CopyU16ArrayToStringN
+.public String_CopyNumChars
 .public String_cstr
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy

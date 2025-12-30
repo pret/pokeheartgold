@@ -8,7 +8,7 @@
 .public Heap_Free
 .public GF_AssertFail
 .public String_New
-.public CopyU16ArrayToStringN
+.public String_CopyNumChars
 .public sub_02027144
 .public sub_02027158
 .public SaveArray_Get

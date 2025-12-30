@@ -7121,7 +7121,7 @@ _021EACDC:
 	ldr r0, [sp]
 	mov r1, ip
 	add r2, r2, #1
-	bl CopyU16ArrayToStringN
+	bl String_CopyNumChars
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _021EACF6:
@@ -10311,7 +10311,7 @@ _021EC4B6:
 	add r1, r2, r1
 	add r0, r5, #0
 	mov r2, #2
-	bl CopyU16ArrayToStringN
+	bl String_CopyNumChars
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EC4C8: .word ov102_021EC820

@@ -19,7 +19,7 @@ void Save_LinkBattleRuleset_Init(Save_LinkBattleRuleset *ruleset) {
 }
 
 void LinkBattleRuleset_CopyNameToString(const LinkBattleRuleset *rule, String *dest) {
-    CopyU16ArrayToStringN(dest, rule->name, 12);
+    String_CopyNumChars(dest, rule->name, 12);
 }
 
 String *LinkBattleRuleset_CreateStringFromName(const LinkBattleRuleset *rule, enum HeapID heapID) {

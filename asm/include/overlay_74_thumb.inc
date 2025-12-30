@@ -181,7 +181,7 @@
 .public String_Clear
 .public String_FormatInt
 .public String_CopyChars
-.public CopyU16ArrayToStringN
+.public String_CopyNumChars
 .public String_ToChars
 .public sub_02027098
 .public Save_MysteryGift_Get

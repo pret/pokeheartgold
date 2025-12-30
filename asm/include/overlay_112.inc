@@ -196,7 +196,7 @@
 .public String_Copy
 .public String_GetLength
 .public String_CopyChars
-.public CopyU16ArrayToStringN
+.public String_CopyNumChars
 .public String_ToChars
 .public String_Concat
 .public String_AddChar

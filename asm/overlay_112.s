@@ -16579,7 +16579,7 @@ ov112_021EDF4C: ; 0x021EDF4C
 	add r0, r4, #0
 	add r1, r5, r1
 	mov r2, #0xc
-	bl CopyU16ArrayToStringN
+	bl String_CopyNumChars
 	mov r1, #1
 	str r1, [sp]
 	ldr r3, _021EDFDC ; =0x00009D51
@@ -19853,7 +19853,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	mov r2, #0xb
 	add r1, r5, r1
 	add r4, r0, #0
-	bl CopyU16ArrayToStringN
+	bl String_CopyNumChars
 	mov r1, #1
 	ldr r0, _021EF94C ; =0x00001090
 	str r1, [sp]
