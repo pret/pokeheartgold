@@ -180,3 +180,5 @@ VERSION101_SOPC_NCGR_FILES += \
 
 clean-zukan-gra:
 	$(RM) $(ZUKAN_GRA_NARC) $(addprefix $(ZUKAN_GRA_DIR)/,$(filter %.lz %.NCGR,$(ZUKAN_GRA_FILES)))
+.PHONY: clean-zukan-gra
+clean-filesystem: clean-zukan-gra
