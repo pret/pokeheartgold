@@ -128,14 +128,14 @@ u32 FontID_FlatArray_GetWidthFirstLine(FontID fontId, const u16 *string, u32 let
 
 u32 FontID_String_GetWidth(u32 fontId, String *string, u32 letterSpacing) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
-    return GetStringWidth(sFontWork->fontDataMan[fontId], String_cstr(string), letterSpacing);
+    return GetStringWidth(sFontWork->fontDataMan[fontId], String_GetChars(string), letterSpacing);
 }
 
 BOOL FontID_String_AllCharsValid(FontID fontId, String *str0, String *str1) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     String_Clear(str1);
     String_Cat_HandleTrainerName(str1, str0);
-    return StringAllCharsValid(sFontWork->fontDataMan[fontId], String_cstr(str1));
+    return StringAllCharsValid(sFontWork->fontDataMan[fontId], String_GetChars(str1));
 }
 
 u8 GetFontAttribute(FontID fontId, int attr) {
@@ -181,7 +181,7 @@ void LoadFontPal1(enum GFPalLoadLocation location, enum GFPalSlotOffset palSlotO
 
 u32 FontID_String_GetWidthMultiline(u32 fontId, String *string, u32 letterSpacing) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
-    return GetStringWidthMultiline(sFontWork->fontDataMan[fontId], String_cstr(string), letterSpacing);
+    return GetStringWidthMultiline(sFontWork->fontDataMan[fontId], String_GetChars(string), letterSpacing);
 }
 
 u32 FontID_String_GetCenterAlignmentX(FontID fontId, String *string, u32 letterSpacing, u32 windowWidth) {

@@ -280,7 +280,7 @@
 .public String_Free
 .public String_Copy
 .public String_CopyFromChars
-.public String_cstr
+.public String_GetChars
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfile

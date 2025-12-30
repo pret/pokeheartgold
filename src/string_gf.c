@@ -365,7 +365,7 @@ void String_CopyToChars(const String *string, u16 *buf, u32 length) {
     GF_ASSERT(FALSE);
 }
 
-u16 *String_cstr(String *string) {
+u16 *String_GetChars(String *string) {
     String_Assert(string);
 
     return string->data;

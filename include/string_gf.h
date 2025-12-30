@@ -25,7 +25,7 @@ String *String_Clone(const String *src, enum HeapID heapID);
 void String_AddChar(String *string, u16 _char);
 void String_CopyFromChars(String *dest, const u16 *src);
 void String_CopyNumChars(String *dest, const u16 *src, u32 n);
-u16 *String_cstr(String *string);
+u16 *String_GetChars(String *string);
 void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
 void String_UpperCharN(String *string, int n);
 void String_Cat_HandleTrainerName(String *dest, String *src);
@@ -35,7 +35,7 @@ u16 String_GetLength(String *string);
 int String_CountLines(const String *string);
 void String_CopyLine(String *dest, const String *src, u32 n);
 void String_AddRadioStatic(String *string, u8 level);
-u16 *String_cstr(String *string);
+u16 *String_GetChars(String *string);
 void String_Concat(String *dest, String *src);
 BOOL String_IsTrainerName(String *string);
 

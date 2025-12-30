@@ -140,7 +140,7 @@
 .public String_CountLines
 .public String_CopyLine
 .public String_CopyNumChars
-.public String_cstr
+.public String_GetChars
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy
 .public TouchHitboxController_IsTriggered

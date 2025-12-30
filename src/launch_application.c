@@ -1052,7 +1052,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
                 data->args->noInput = 1;
             }
         } else if (args->kind == 5) {
-            u16 *var2 = String_cstr(args->nameInputString);
+            u16 *var2 = String_GetChars(args->nameInputString);
             SAV_FRIEND_GRP *friendGroup = Save_FriendGroup_Get(fieldSystem->saveData);
             if (sub_0202C88C(friendGroup, var2)) {
                 data->args->noInput = 2;

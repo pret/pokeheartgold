@@ -162,7 +162,7 @@ static u8 AddTextPrinter(TextPrinterTemplate *template, u32 speed, PrinterCallba
         printer->subStructFields[i] = 0;
     }
     printer->template = *template;
-    printer->template.currentChar.raw = String_cstr(printer->template.currentChar.wrapped);
+    printer->template.currentChar.raw = String_GetChars(printer->template.currentChar.wrapped);
     printer->callback = callback;
     _021D1F6C = 0;
 

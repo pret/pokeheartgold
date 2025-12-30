@@ -112,7 +112,7 @@ BattleSetup *BattleSetup_New_Tutorial(enum HeapID heapID, FieldSystem *fieldSyst
         {
             String *name = String_New(PLAYER_NAME_LENGTH + 1, heapID);
             ReadMsgDataIntoString(msgData, PlayerProfile_GetTrainerGender(profile) ^ 1, name);
-            Save_Profile_PlayerName_Set(setup->profile[BATTLER_PLAYER], String_cstr(name));
+            Save_Profile_PlayerName_Set(setup->profile[BATTLER_PLAYER], String_GetChars(name));
             String_Free(name);
         }
         DestroyMsgData(msgData);

@@ -5553,7 +5553,7 @@ _021E8504:
 	bl ov96_021E5F34
 	add r6, r0, #0
 	add r0, r4, #0
-	bl String_cstr
+	bl String_GetChars
 	add r1, r0, #0
 	add r0, r6, #0
 	bl Save_Profile_PlayerName_Set
@@ -5620,7 +5620,7 @@ _021E8578:
 	ldrh r0, [r4]
 	bl GetSpeciesName
 	str r0, [sp, #0x20]
-	bl String_cstr
+	bl String_GetChars
 	add r1, r0, #0
 	add r0, r6, #0
 	mov r2, #0xb

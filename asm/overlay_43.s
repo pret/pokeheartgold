@@ -2122,7 +2122,7 @@ _0222AF88:
 	bl PlayerProfile_New
 	str r0, [sp, #0xc]
 	ldr r0, [r4, #0x58]
-	bl String_cstr
+	bl String_GetChars
 	add r1, r0, #0
 	ldr r0, [sp, #0xc]
 	bl Save_Profile_PlayerName_Set

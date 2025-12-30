@@ -111,7 +111,7 @@ u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
     GF_ASSERT(msg_bank < NELEMS(sMessageBanks));
     GF_ASSERT(msg_no < MailMsg_NumMsgsInBank(msg_bank));
     msg = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[msg_bank], msg_no, HEAP_ID_DEFAULT);
-    msg_cstr = String_cstr(msg);
+    msg_cstr = String_GetChars(msg);
     ret = 0;
     while (*msg_cstr != EOS) {
         if (*msg_cstr == EXT_CTRL_CODE_BEGIN) {

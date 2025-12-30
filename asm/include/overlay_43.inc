@@ -151,7 +151,7 @@
 .public String_Copy
 .public String_AtoI
 .public String_CopyFromChars
-.public String_cstr
+.public String_GetChars
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_New
