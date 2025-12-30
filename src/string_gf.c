@@ -298,7 +298,7 @@ void String_GetLineN(String *dest, const String *src, u32 n) {
     }
 }
 
-void String_RadioAddStatic(String *string, u8 level) {
+void String_AddRadioStatic(String *string, u8 level) {
     u32 width_3dots = FontID_GetGlyphWidth(0, CHAR_ELLIPSIS);
     u32 width_1dot = FontID_GetGlyphWidth(0, CHAR_ONE_DOT);
     u32 width_2dots = FontID_GetGlyphWidth(0, CHAR_TWO_DOTS);

@@ -240,7 +240,7 @@ void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
 
 void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
     if (radioShow->statik == TRUE) {
-        String_RadioAddStatic(msg, 70);
+        String_AddRadioStatic(msg, 70);
     }
     AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
 }

@@ -34,7 +34,7 @@ s64 String_atoi(String *string, BOOL *flag);
 u16 String_GetLength(String *string);
 int String_CountLines(const String *string);
 void String_GetLineN(String *dest, const String *src, u32 n);
-void String_RadioAddStatic(String *string, u8 level);
+void String_AddRadioStatic(String *string, u8 level);
 u16 *String_cstr(String *string);
 void String_Concat(String *dest, String *src);
 BOOL String_IsTrainerName(String *string);
