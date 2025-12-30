@@ -33,7 +33,7 @@ void String_FormatU64(String *string, u64 num, u32 ndigits, PrintingMode strConv
 s64 String_atoi(String *string, BOOL *flag);
 u16 String_GetLength(String *string);
 int String_CountLines(const String *string);
-void String_GetLineN(String *dest, const String *src, u32 n);
+void String_CopyLine(String *dest, const String *src, u32 n);
 void String_AddRadioStatic(String *string, u8 level);
 u16 *String_cstr(String *string);
 void String_Concat(String *dest, String *src);

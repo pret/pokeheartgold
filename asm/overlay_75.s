@@ -2893,7 +2893,7 @@ _0224806E:
 	ldr r1, [sp, #0xc]
 	add r0, r6, #0
 	add r2, r4, #0
-	bl String_GetLineN
+	bl String_CopyLine
 	str r5, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]
@@ -3015,7 +3015,7 @@ _02248168:
 	ldr r1, [sp, #0x14]
 	add r0, r7, #0
 	add r2, r6, #0
-	bl String_GetLineN
+	bl String_CopyLine
 	str r4, [sp]
 	mov r0, #0xff
 	str r0, [sp, #4]

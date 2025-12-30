@@ -77,7 +77,7 @@
 .public String_Copy
 .public String_GetLength
 .public String_CountLines
-.public String_GetLineN
+.public String_CopyLine
 .public sub_0203A880
 .public NNS_G2dInitOamManagerModule
 .public GX_LoadBGPltt

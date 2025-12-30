@@ -169,7 +169,7 @@
 .public String_FormatInt
 .public String_FormatU64
 .public String_CountLines
-.public String_GetLineN
+.public String_CopyLine
 .public String_CopyChars
 .public String_ToChars
 .public String_Concat

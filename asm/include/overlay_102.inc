@@ -138,7 +138,7 @@
 .public String_New
 .public String_Free
 .public String_CountLines
-.public String_GetLineN
+.public String_CopyLine
 .public CopyU16ArrayToStringN
 .public String_cstr
 .public TouchHitboxController_Create

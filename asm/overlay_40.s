@@ -20470,7 +20470,7 @@ _02235C18:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl String_GetLineN
+	bl String_CopyLine
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0
@@ -20606,7 +20606,7 @@ _02235D48:
 	add r0, r4, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl String_GetLineN
+	bl String_CopyLine
 	mov r0, #0
 	add r1, r4, #0
 	add r2, r0, #0

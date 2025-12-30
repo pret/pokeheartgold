@@ -107,7 +107,7 @@
 .public String_Compare
 .public String_GetLength
 .public String_CountLines
-.public String_GetLineN
+.public String_CopyLine
 .public String_ToChars
 .public SaveGameNormal
 .public Save_ClearStatusFlags

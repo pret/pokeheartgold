@@ -249,7 +249,7 @@ BOOL RadioPrintAdvance(RadioShow *radioShow) {
     if (!radioShow->isSecondLine) {
         radioShow->isSecondLine = TRUE;
     }
-    String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
+    String_CopyLine(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
     PrintRadioLine(radioShow, radioShow->curLineStr, 1);
     CopyWindowToVram(radioShow->showScriptWindow);
     return radioShow->curLineIdx >= radioShow->numLines;
@@ -262,7 +262,7 @@ void RadioPrintInit(RadioShow *radioShow, int msgId, int textNoScroll) {
     radioShow->curLineIdx = 0;
     radioShow->numLines = String_CountLines(radioShow->msgbufFormatted);
     radioShow->printState = RADIO_PRINT_STATE_NULL;
-    String_GetLineN(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
+    String_CopyLine(radioShow->curLineStr, radioShow->msgbufFormatted, radioShow->curLineIdx++);
     PrintRadioLine(radioShow, radioShow->curLineStr, radioShow->isSecondLine);
     CopyWindowToVram(radioShow->showScriptWindow);
     if (radioShow->curLineIdx >= radioShow->numLines) {

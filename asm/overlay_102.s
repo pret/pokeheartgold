@@ -3800,7 +3800,7 @@ _021E92CA:
 	ldr r1, [sp, #0x24]
 	add r0, r4, #0
 	add r2, r6, #0
-	bl String_GetLineN
+	bl String_CopyLine
 	mov r0, #4
 	add r1, r4, #0
 	mov r2, #0

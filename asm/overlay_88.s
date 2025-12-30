@@ -1990,7 +1990,7 @@ _02259720:
 	ldr r1, [sp, #0x34]
 	add r0, r4, #0
 	add r2, r7, #0
-	bl String_GetLineN
+	bl String_CopyLine
 	ldrb r0, [r5, #9]
 	cmp r0, #0
 	beq _0225973A
