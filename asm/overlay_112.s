@@ -4553,7 +4553,7 @@ ov112_021E7C6C: ; 0x021E7C6C
 	add r4, r0, #0
 	ldr r0, _021E7C94 ; =0x0001E454
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E7C98 ; =0x0001E450
 	ldr r0, [r4, r0]
 	bl DestroyMsgData
@@ -4657,7 +4657,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	add r0, r5, r0
 	bl ov112_021E5D68
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, pc}
 	nop
 _021E7D60: .word 0x00001024
@@ -6357,7 +6357,7 @@ _021E8D24:
 	mov r2, #0x15
 	bl CopyStringToU16Array
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, sp, #0x3c
 	str r0, [sp]
 	add r0, r7, #0
@@ -6709,7 +6709,7 @@ ov112_021E90FC: ; 0x021E90FC
 	mov r0, #5
 	bl FontID_Release
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -6759,7 +6759,7 @@ _021E9170:
 	mov r3, #2
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r7, r7, #1
 	add r4, r4, #6
 	add r5, #0x10
@@ -6796,7 +6796,7 @@ _021E91B4:
 	mov r3, #2
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r5, r5, #1
 	cmp r5, #3
 	blt _021E91B4
@@ -6823,7 +6823,7 @@ _021E91B4:
 	mov r3, #2
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xc
 	mov r1, #0x9a
 	bl String_New
@@ -6850,7 +6850,7 @@ _021E91B4:
 	str r0, [sp, #0x10]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #5
 	bl FontID_Release
 	ldr r0, [sp, #0x20]
@@ -7497,9 +7497,9 @@ ov112_021E96D0: ; 0x021E96D0
 	ldr r0, _021E974C ; =0x0001F2E2
 	strh r1, [r5, r0]
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021E9740: .word 0x0001E44C
@@ -8376,70 +8376,70 @@ ov112_021E9E30: ; 0x021E9E30
 	add r4, r0, #0
 	ldr r0, _021E9EE8 ; =0x0001E458
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9EEC ; =0x0001E45C
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9EF0 ; =0x0001E460
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9EF4 ; =0x0001E464
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9EF8 ; =0x0001E468
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9EFC ; =0x0001E46C
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F00 ; =0x0001E470
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F04 ; =0x0001E474
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F08 ; =0x0001E494
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F0C ; =0x0001E49C
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F10 ; =0x0001E498
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F14 ; =0x0001E4A0
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F18 ; =0x0001E4A4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F1C ; =0x0001E4A8
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F20 ; =0x0001E4AC
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F24 ; =0x0001E4B0
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F28 ; =0x0001E4B4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F2C ; =0x0001E4BC
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F30 ; =0x0001E50C
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F34 ; =0x0001E510
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F38 ; =0x0001E514
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E9F3C ; =0x0001E518
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	pop {r4, pc}
 	nop
 _021E9EE8: .word 0x0001E458
@@ -8506,7 +8506,7 @@ ov112_021E9F5C: ; 0x021E9F5C
 	mov r3, #0
 	bl ov112_021E9FA4
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021E9F98: .word 0x0001E44C
@@ -8624,7 +8624,7 @@ ov112_021EA044: ; 0x021EA044
 	mov r3, #0
 	bl ov112_021EA010
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EA080: .word 0x0001E44C
@@ -8674,7 +8674,7 @@ ov112_021EA08C: ; 0x021EA08C
 	bl AddTextPrinterParameterized
 	add r4, r0, #0
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -8725,7 +8725,7 @@ ov112_021EA10C: ; 0x021EA10C
 	mov r1, #1
 	bl AddTextPrinterParameterized
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -10506,7 +10506,7 @@ _021EAFA2:
 	str r7, [sp]
 	bl ov112_021E9FA4
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021EAFA2
@@ -13703,7 +13703,7 @@ _021EC802:
 	str r7, [sp]
 	bl ov112_021E9FA4
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	cmp r4, #5
 	blt _021EC7DA
@@ -13745,7 +13745,7 @@ _021EC802:
 	mov r3, #0
 	bl ov112_021E9FA4
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r2, _021EC890 ; =0x0001EC54
 	add r0, r5, #0
 	ldr r1, [r5, r2]
@@ -13788,7 +13788,7 @@ _021EC8B8:
 	add r3, r1, #0
 	bl ov112_021EA010
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021EC94C ; =0x0001EBB8
 	mov r1, #0
 	add r0, r4, r0
@@ -13814,7 +13814,7 @@ _021EC8EE:
 	add r3, r1, #0
 	bl ov112_021EA010
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl ov112_021ECA88
 	add r1, r0, #0
@@ -13831,7 +13831,7 @@ _021EC8EE:
 	mov r3, #0
 	bl ov112_021EA010
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EC944: .word 0x0001E44C
@@ -16606,7 +16606,7 @@ _021EDFC2:
 	str r0, [r5, r1]
 	bl ov112_021E7464
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x26
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
@@ -17934,7 +17934,7 @@ ov112_021EE9A4: ; 0x021EE9A4
 	add r2, r6, #0
 	bl SetMonData
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021EE9A4
@@ -18269,10 +18269,10 @@ _021EEBA4:
 	str r0, [r5, r1]
 _021EECAC:
 	ldr r0, [sp, #4]
-	bl String_Delete
+	bl String_Free
 _021EECB2:
 	ldr r0, [sp, #0xc]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl Heap_Free
 	add sp, #0x28
@@ -19868,7 +19868,7 @@ ov112_021EF8D4: ; 0x021EF8D4
 	lsr r3, r3, #0x1e
 	bl BufferString
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	mov r1, #0
 	mov r2, #0x2c
@@ -20575,7 +20575,7 @@ _021EFE6E:
 	blt _021EFE6E
 _021EFE96:
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #6
 	str r0, [sp]
 	mov r1, #1
@@ -21419,7 +21419,7 @@ ov112_021F051C: ; 0x021F051C
 	ldr r0, [r7, #0x6c]
 	bl MessageFormat_Delete
 	ldr r0, [r7, #0x70]
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	add r0, #8
 	bl RemoveWindow
@@ -21658,7 +21658,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r2, r6, #0
 	bl BufferString
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x6c]
 	ldr r1, [r5, #0x68]
 	ldr r3, [r5]
@@ -21685,7 +21685,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #8
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #1
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -21729,7 +21729,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #0x18
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldrb r0, [r4, #8]
 	cmp r0, #0
 	bne _021F0820
@@ -21757,7 +21757,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r0, #0x48
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	b _021F0876
 _021F0820:
 	cmp r0, #1
@@ -21787,7 +21787,7 @@ _021F0820:
 	add r0, #0x48
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	b _021F0876
 _021F0864:
 	add r0, r5, #0
@@ -21822,7 +21822,7 @@ _021F0876:
 	add r0, #0x28
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x6c]
 	ldr r2, [sp, #0x10]
 	mov r1, #0
@@ -21853,7 +21853,7 @@ _021F0876:
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -23262,7 +23262,7 @@ _021F1370:
 	add r0, r4, r6
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, r6
 	bl CopyWindowToVram
 	add sp, #0x14
@@ -23339,9 +23339,9 @@ ov112_021F13CC: ; 0x021F13CC
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	b _021F1472
 _021F145A:
 	mov r3, #0
@@ -23357,7 +23357,7 @@ _021F145A:
 	bl AddTextPrinterParameterizedWithColor
 _021F1472:
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x10]
 	bl CopyWindowToVram
 	add sp, #0x14
@@ -23422,7 +23422,7 @@ _021F14DE:
 	add r2, r7, #0
 	bl BufferString
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -23458,7 +23458,7 @@ _021F1514:
 	add r3, r4, #0
 	bl ov112_021F1488
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -23488,7 +23488,7 @@ ov112_021F1548: ; 0x021F1548
 	add r3, r7, #0
 	bl ov112_021F1488
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov112_021F1548
@@ -23735,7 +23735,7 @@ _021F1664:
 	bl FontID_String_GetCenterAlignmentX
 	add r6, r0, #0
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	lsl r3, r6, #0x18
 	add r0, r5, #0
 	mov r1, #1

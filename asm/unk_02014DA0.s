@@ -1592,7 +1592,7 @@ _020157C2:
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _020157D0
-	bl String_Delete
+	bl String_Free
 _020157D0:
 	add r0, r4, #0
 	bl Heap_Free

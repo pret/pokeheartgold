@@ -172,7 +172,7 @@ ov01_021F4048: ; 0x021F4048
 	add r3, r1, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #1
 	str r0, [sp, #0x10]
 	ldr r0, _021F4124 ; =ov01_02206AF4
@@ -203,7 +203,7 @@ _021F40A6:
 	add r3, r1, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	sub r2, r7, #4
 	ldr r0, [r5, #0x14]
 	ldr r1, [r5, #0x18]
@@ -230,7 +230,7 @@ _021F40A6:
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 _021F410E:
 	ldr r0, [sp, #0xc]
 	add r7, r7, #4
@@ -465,7 +465,7 @@ _021F429C:
 	ldr r0, [r5, #0x10]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 _021F42E2:
 	add r7, r7, #1
 	add r4, #0x10

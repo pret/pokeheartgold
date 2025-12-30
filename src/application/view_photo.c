@@ -358,10 +358,10 @@ static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
 
 static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto) {
     for (int i = 0; i < 2; ++i) {
-        String_Delete(viewPhoto->photoDescStringTemplates[i]);
+        String_Free(viewPhoto->photoDescStringTemplates[i]);
     }
-    String_Delete(viewPhoto->exitMsg);
-    String_Delete(viewPhoto->strBuf);
+    String_Free(viewPhoto->exitMsg);
+    String_Free(viewPhoto->strBuf);
     MessageFormat_Delete(viewPhoto->msgFormat);
     DestroyMsgData(viewPhoto->msgData);
     FontID_Release(4);

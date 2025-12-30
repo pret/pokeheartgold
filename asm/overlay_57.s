@@ -1791,7 +1791,7 @@ ov57_0223866C: ; 0x0223866C
 	lsr r3, r3, #1
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl DestroyMsgData
 	mov r0, #0x43
@@ -2041,7 +2041,7 @@ ov57_022387E0: ; 0x022387E0
 	ldr r1, [sp, #0x70]
 	bl sub_020138E0
 	ldr r0, [sp, #0x18]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x14]
 	bl DestroyMsgData
 	add r0, sp, #0x1c
@@ -2587,7 +2587,7 @@ _02238CCE:
 	add r1, r4, #0
 	bl ListMenuItems_AddItem
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x14]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -3953,7 +3953,7 @@ _02239766:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc
@@ -4307,7 +4307,7 @@ _02239A22:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 _02239A76:
 	add r6, r6, #1
 	add r5, #0x10
@@ -4373,7 +4373,7 @@ _02239AB8:
 	add r0, r5, r4
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x10]
-	bl String_Delete
+	bl String_Free
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4438,7 +4438,7 @@ _02239B4A:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0xc

@@ -1740,7 +1740,7 @@ ov69_021E64CC: ; 0x021E64CC
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #4
 	bl FontID_Release
 	add sp, #0x18
@@ -1871,7 +1871,7 @@ _021E6886:
 	bne _021E68BC
 	ldr r0, _021E68C8 ; =0x0000C07C
 	ldr r0, [r5, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E68C4 ; =0x0000C074
 	mov r1, #2
 	str r1, [r5, r0]
@@ -2178,9 +2178,9 @@ ov69_021E6A8C: ; 0x021E6A8C
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E6B48 ; =0x0000C054
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -2264,9 +2264,9 @@ _021E6BD8:
 	str r1, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E6C0C ; =0x0000C054
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -2494,7 +2494,7 @@ ov69_021E6D5C: ; 0x021E6D5C
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _021E6DB6:
@@ -2561,9 +2561,9 @@ _021E6E2A:
 	str r3, [sp, #8]
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0xc]
 	mov r1, #0x30
 	add r2, r0, #0

@@ -141,7 +141,7 @@ void PrintErrorMessageAndReset(void) {
 
     ReadMsgDataIntoString(error_msgdata, msg_0041_00003, error_str);
     AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
-    String_Delete(error_str);
+    String_Free(error_str);
 
     GfGfx_BothDispOn();
     SetMasterBrightnessNeutral(PM_LCD_TOP);

@@ -164,7 +164,7 @@
 .public System_GetTouchNewCoords
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_SetEmpty
 .public String16_FormatInteger
 .public String16_FormatUnsignedLongLong

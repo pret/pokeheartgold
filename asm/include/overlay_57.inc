@@ -165,7 +165,7 @@
 .public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String16_FormatInteger
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy

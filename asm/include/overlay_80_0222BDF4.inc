@@ -107,7 +107,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_Copy
 .public sub_020270C4
 .public SaveGameNormal

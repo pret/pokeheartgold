@@ -379,7 +379,7 @@ BOOL OptionsMenu_Exit(OverlayManager *manager, int *state) {
         Options_SetTextSpeed(data->playerOptions, data->options.textSpeed);
     }
 
-    String_Delete(data->frameNumText);
+    String_Free(data->frameNumText);
 
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
@@ -521,7 +521,7 @@ static BOOL ov54_021E5DBC(OptionsApp_Data *data) {
 
         for (int i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
             for (int j = 0; j < data->menuEntries[i].numStrings; j++) {
-                String_Delete(data->menuEntries[i].strings[j]);
+                String_Free(data->menuEntries[i].strings[j]);
             }
         }
 
@@ -753,7 +753,7 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     CopyWindowToVram(&data->windows.confirmButton);
     CopyWindowToVram(&data->windows.frameAndTextSpeedTest);
 
-    String_Delete(tmpString);
+    String_Free(tmpString);
 }
 
 static void OptionsApp_LoadMenuEntriesData(OptionsApp_Data *data) {

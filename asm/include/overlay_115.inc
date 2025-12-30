@@ -37,7 +37,7 @@
 .public Sprite_SetPriority
 .public Sprite_GetPaletteProxy
 .public String_New
-.public String_Delete
+.public String_Free
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
 .public Save_PlayerData_GetProfile

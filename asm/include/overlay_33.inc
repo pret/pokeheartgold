@@ -34,7 +34,7 @@
 .public AddTextPrinterParameterizedWithColor
 .public TouchscreenHitbox_FindRectAtTouchHeld
 .public TouchscreenHitbox_FindRectAtTouchNew
-.public String_Delete
+.public String_Free
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG
 .public GX_SetBankForSubOBJ

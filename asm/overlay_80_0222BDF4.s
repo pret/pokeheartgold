@@ -2567,7 +2567,7 @@ FrtCmd_126: ; 0x0222D084
 	add r2, r7, #0
 	bl BufferString
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
@@ -5119,7 +5119,7 @@ ov80_0222E400: ; 0x0222E400
 	add r1, r4, #0
 	bl String_Copy
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5463,7 +5463,7 @@ ov80_0222E690: ; 0x0222E690
 	add r1, #0xb4
 	str r0, [r1]
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x9b
 	ldrb r0, [r0]
@@ -5715,7 +5715,7 @@ ov80_0222E88C: ; 0x0222E88C
 	add r5, r6, #0
 _0222E8BE:
 	ldr r0, [r5, #0x1c]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -5982,7 +5982,7 @@ ov80_0222EA74: ; 0x0222EA74
 	lsl r1, r1, #2
 	str r0, [r2, r1]
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	cmp r4, #0xfa
 	bne _0222EAE6
 	add r0, r5, #0
@@ -6386,7 +6386,7 @@ _0222EDB0:
 	add r5, r6, #0
 _0222EDD6:
 	ldr r0, [r5, #0x1c]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0x1c
@@ -6455,9 +6455,9 @@ ov80_0222EE14: ; 0x0222EE14
 	add r2, r6, #0
 	bl AddTextPrinterParameterized
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov80_0222EE14

@@ -97,7 +97,7 @@
 .public Sprite_IsAnimated
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr
 .public PlayerProfile_GetPlayerName_NewString

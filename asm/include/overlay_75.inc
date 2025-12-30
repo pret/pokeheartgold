@@ -101,7 +101,7 @@
 .public GfGfx_SwapDisplay
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_Copy
 .public String_atoi
 .public String_Compare

@@ -92,7 +92,7 @@
 .public GF3dGfxRawResObj_GetTex4x4Key
 .public GF3dGfxRawResObj_GetPlttKey
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyStringToU16Array
 .public sub_02026E18
 .public SaveArray_CalcCRC16

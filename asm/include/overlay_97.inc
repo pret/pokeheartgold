@@ -72,7 +72,7 @@
 .public Sprite_SetPriority
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public SaveArray_PCStorage_Get
 .public Save_Pokeathlon_Get

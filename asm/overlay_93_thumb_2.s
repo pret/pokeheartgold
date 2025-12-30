@@ -5056,7 +5056,7 @@ _0226227A:
 	ldr r2, [r2]
 	bl ov93_02261EB8
 	ldr r0, [sp, #0x34]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x30]
 	sub r6, #0x14
 	sub r4, #0x28

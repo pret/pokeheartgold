@@ -120,7 +120,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public RequestSwap3DBuffers
 .public GetMainBgPlttAddr
 .public sub_02026E8C

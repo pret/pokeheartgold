@@ -107,7 +107,7 @@
 .public Sprite_IsAnimated
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr

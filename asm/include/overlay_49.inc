@@ -189,7 +189,7 @@
 .public GF_AssertFail
 .public G3dResFileHeader_GetSizeWithoutTex
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_Copy
 .public String_GetLength
 .public TouchHitboxController_Create

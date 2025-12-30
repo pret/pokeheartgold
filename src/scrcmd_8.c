@@ -63,7 +63,7 @@ BOOL ScrCmd_465(ScriptContext *ctx) {
         sub_0202C824(group, 0, PlayerProfile_GetTrainerGender(profile));
         sub_0202C848(group, 0, 2);
         sub_0202C7C0(group, 0, MTRandom());
-        String_Delete(str);
+        String_Free(str);
         sub_0202C738(group, 0, 1);
         break;
     }

@@ -935,12 +935,12 @@ sub_0205B380: ; 0x0205B380
 	ldr r0, [r4, #4]
 	cmp r0, #0
 	beq _0205B394
-	bl String_Delete
+	bl String_Free
 _0205B394:
 	ldr r0, [r4, #8]
 	cmp r0, #0
 	beq _0205B39E
-	bl String_Delete
+	bl String_Free
 _0205B39E:
 	pop {r4, pc}
 	thumb_func_end sub_0205B380

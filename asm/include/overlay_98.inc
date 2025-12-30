@@ -68,7 +68,7 @@
 .public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public GetMonSpriteCharAndPlttNarcIdsEx
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

@@ -758,7 +758,7 @@ ov98_0221EB84: ; 0x0221EB84
 	add r7, r1, #0
 	bl FontID_Release
 	ldr r0, [r5, #0x14]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x10]
 	bl MessageFormat_Delete
 	ldr r0, [r5, #0xc]
@@ -916,7 +916,7 @@ _0221EC8A:
 	add r0, r0, r6
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -966,7 +966,7 @@ ov98_0221ECD0: ; 0x0221ECD0
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1019,7 +1019,7 @@ ov98_0221ED48: ; 0x0221ED48
 	add r0, r0, r5
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1084,7 +1084,7 @@ ov98_0221EDC4: ; 0x0221EDC4
 	add r0, r0, r4
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop

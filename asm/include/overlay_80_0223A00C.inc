@@ -60,7 +60,7 @@
 .public Sprite_SetAffineOverwriteMode
 .public Sprite_SetAnimCtrlSeq
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public FX_Div
 .public FX_ModS32
 .public MIi_CpuCopy16

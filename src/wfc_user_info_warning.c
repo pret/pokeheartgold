@@ -110,7 +110,7 @@ void ShowWFCUserInfoWarning(enum HeapID heapID, int a1) {
 
     ReadMsgDataIntoString(warnings_msgdata, msg_0800_00016, warning_string);
     AddTextPrinterParameterized(&window, 0, warning_string, 0, 0, 0, NULL);
-    String_Delete(warning_string);
+    String_Free(warning_string);
 
     GfGfx_BothDispOn();
     SetMasterBrightnessNeutral(0);

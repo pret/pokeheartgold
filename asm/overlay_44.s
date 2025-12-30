@@ -2066,19 +2066,19 @@ ov44_0222AE44: ; 0x0222AE44
 	mov r0, #0x5e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x5d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x5f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov44_0222AE44
@@ -4401,7 +4401,7 @@ ov44_0222C120: ; 0x0222C120
 	cmp r0, #0
 	bne _0222C152
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}
 _0222C152:
@@ -4435,7 +4435,7 @@ _0222C170:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r1, [r5, #4]
 	add r0, r5, #0
 	bl ov44_02229F00
@@ -13768,7 +13768,7 @@ ov44_02230C68: ; 0x02230C68
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r1, #0x5e
 	lsl r1, r1, #2
 	ldr r1, [r5, r1]
@@ -14889,7 +14889,7 @@ _0223153E:
 	mov r1, #2
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r1, [sp, #0x2c]
 	add r0, sp, #0x68
 	bl sub_02013910
@@ -19188,9 +19188,9 @@ ov44_02233678: ; 0x02233678
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0xc]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #8]
 	bl DestroyMsgData
 	ldr r0, [r4, #4]
@@ -19475,7 +19475,7 @@ _02233890:
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #8]
 	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
@@ -19631,9 +19631,9 @@ ov44_0223398C: ; 0x0223398C
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -19868,9 +19868,9 @@ _02233BAA:
 	mov r1, #2
 	bl ScheduleBgTilemapBufferTransfer
 	ldr r0, [sp, #0x28]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x24]
-	bl String_Delete
+	bl String_Free
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0

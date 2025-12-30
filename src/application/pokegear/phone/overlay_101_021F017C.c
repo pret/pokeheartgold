@@ -425,10 +425,10 @@ void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F0658(PokegearPhoneAppData *phoneApp) {
     for (int i = 0; i < PHONE_TOOLTIP_MAX; ++i) {
-        String_Delete(phoneApp->tooltipStrings[i]);
+        String_Free(phoneApp->tooltipStrings[i]);
     }
-    String_Delete(phoneApp->msgReadBuf);
-    String_Delete(phoneApp->msgFormatBuf);
+    String_Free(phoneApp->msgReadBuf);
+    String_Free(phoneApp->msgFormatBuf);
     MessageFormat_Delete(phoneApp->msgFormat);
     DestroyMsgData(phoneApp->msgData);
     TextFlags_SetAlternateDownArrow(FALSE);

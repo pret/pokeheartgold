@@ -664,12 +664,12 @@ static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenA
         }
         // UB: Nonbinary players will not initialize string.
         String_Copy(args->nameInputString, string);
-        String_Delete(string);
+        String_Free(string);
         CopyStringToU16Array(args->nameInputString, args->nameInputFlat, 10);
     } else if (data->type == NAME_SCREEN_RIVAL) {
         string = NewString_ReadMsgData(data->msgData_254, FIRST_DEFAULT_NAME_RIVAL);
         String_Copy(args->nameInputString, string);
-        String_Delete(string);
+        String_Free(string);
         CopyStringToU16Array(args->nameInputString, args->nameInputFlat, 10);
     } else {
         // Remaining cases have their own separate handlers.
@@ -711,7 +711,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
         CopyU16StringArray(args->nameInputFlat, data->entryBuf);
         CopyU16ArrayToString(args->nameInputString, data->entryBuf);
     }
-    String_Delete(data->unk_184);
+    String_Free(data->unk_184);
     for (int i = 0; i < 7; ++i) {
         DestroySysTaskAndEnvironment(data->tasks[i]);
     }
@@ -737,10 +737,10 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
     FontID_Release(2);
     if (data->battleMsgString != NULL) {
-        String_Delete(data->battleMsgString);
+        String_Free(data->battleMsgString);
     }
-    String_Delete(data->promptString);
-    String_Delete(data->unkJapaneseString);
+    String_Free(data->promptString);
+    String_Free(data->unkJapaneseString);
     DestroyMsgData(data->msgData_197);
     DestroyMsgData(data->msgData_254);
     DestroyMsgData(data->msgData_249);
@@ -776,7 +776,7 @@ NamingScreenArgs *NamingScreen_CreateArgs(enum HeapID heapID, NameScreenType kin
 void NamingScreen_DeleteArgs(NamingScreenArgs *namingScreenArgs) {
     GF_ASSERT(namingScreenArgs->nameInputString != NULL);
     GF_ASSERT(namingScreenArgs != NULL); // UB: should check this first
-    String_Delete(namingScreenArgs->nameInputString);
+    String_Free(namingScreenArgs->nameInputString);
     Heap_Free(namingScreenArgs);
 }
 
@@ -999,7 +999,7 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
         }
         data->battleMsgString = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_197, args->battleMsgId, HEAP_ID_NAMING_SCREEN);
         data->printedFromBattleGMM = TRUE;
-        String_Delete(string);
+        String_Free(string);
     }
 }
 
@@ -1536,7 +1536,7 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
         }
         ++i;
     }
-    String_Delete(string);
+    String_Free(string);
 }
 
 static const u8 _02101D3C[] = { 0x60, 0x68, 0x50, 0x58 };
@@ -1574,7 +1574,7 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
         GXS_LoadOBJ(ptr, sSpriteGfxOffsets[i] * 32, 0x80);
     }
 
-    String_Delete(string2);
+    String_Free(string2);
 }
 
 static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entryBuf, u16 cursorPos, u16 *tmpBuf, void *charBuf, String *string) {

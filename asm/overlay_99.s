@@ -7560,7 +7560,7 @@ ov99_021E9418: ; 0x021E9418
 	mov r0, #0x6f
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r4, pc}

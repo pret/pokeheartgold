@@ -262,7 +262,7 @@ static void ov01_02200EC8(SCR_648_STRUCT *unkPtr, int strNo, u16 a2, u32 a3) {
     ReadMsgDataIntoString(unkPtr->msgdata, strNo, str);
     StringExpandPlaceholders(unkPtr->msgfmt, unkPtr->stringArr_1C[unkPtr->totalItems], str);
     unkPtr->items[unkPtr->totalItems].text = unkPtr->stringArr_1C[unkPtr->totalItems];
-    String_Delete(str);
+    String_Free(str);
     if (a3 == 0xfa) {
         unkPtr->items[unkPtr->totalItems].value = -3;
     } else {
@@ -353,7 +353,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
     RemoveWindow(&unkPtr->window_8);
 
     for (i = 0; i < 0x78; i++) {
-        String_Delete(unkPtr->stringArr_1C[i]);
+        String_Free(unkPtr->stringArr_1C[i]);
     }
 
     if (((u32)(unkPtr->unk_207 << 0x1e) >> 0x1f) == 1) {

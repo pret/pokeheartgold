@@ -98,7 +98,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn
 .public String_New
-.public String_Delete
+.public String_Free
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetFrame
 .public sub_0202D5DC

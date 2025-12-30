@@ -640,38 +640,38 @@ ov51_021E6038: ; 0x021E6038
 	add r5, r6, #0
 _021E6042:
 	ldr r0, [r5, r7]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #0xe
 	blt _021E6042
 	ldr r0, _021E60AC ; =0x000033E8
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60B0 ; =0x000033E4
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60B4 ; =0x000033E0
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60B8 ; =0x000033DC
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60BC ; =0x000033D8
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60C0 ; =0x000033CC
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60C4 ; =0x000033D4
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60C8 ; =0x000033D0
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60CC ; =0x000033C8
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _021E60D0 ; =0x000033C4
 	ldr r0, [r6, r0]
 	bl DestroyMsgData
@@ -2774,7 +2774,7 @@ _021E710A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl MessageFormat_Delete
 	add sp, #0x28
@@ -3129,7 +3129,7 @@ _021E7324:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl MessageFormat_Delete
 	add sp, #0x20
@@ -3320,9 +3320,9 @@ _021E758E:
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x14]
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl MessageFormat_Delete
 	add sp, #0x18

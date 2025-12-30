@@ -143,8 +143,8 @@ MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, 
         (*numLegendaryPokemonSeen)++;
     }
     DestroyMsgData(messageData);
-    String_Delete(unused);
-    String_Delete(speciesName);
+    String_Free(unused);
+    String_Free(speciesName);
     return messageFormat;
 }
 
@@ -238,7 +238,7 @@ static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, enum 
     a0->unk04 = unk[0];
     String *trainerName = NewString_ReadMsgData(messageData, frontierTrainerIndex);
     CopyStringToU16Array(trainerName, a0->unk08, NELEMS(a0->unk08));
-    String_Delete(trainerName);
+    String_Free(trainerName);
     DestroyMsgData(messageData);
     return unk;
 }

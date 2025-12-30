@@ -93,7 +93,7 @@ void RadioShow_BuenasPassword_Init(RadioShow *radioShow) {
     setID = Save_VarsFlags_GetBuenasPasswordSet(Save_VarsFlags_Get(radioShow->saveData)) % 30;
     answer = NewString_ReadMsgData(bpMsgData, msg_0066_D23R0102_00040 + setID);
     BufferString(radioShow->msgFormat, 0, answer, 2, 1, 2);
-    String_Delete(answer);
+    String_Free(answer);
     DestroyMsgData(bpMsgData);
 }
 

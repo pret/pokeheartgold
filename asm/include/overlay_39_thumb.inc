@@ -80,7 +80,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyStringToU16Array
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_Get

@@ -1141,10 +1141,10 @@ static void BerryPotsApp_SetupText(BerryPotsAppData *data) {
 
 static void BerryPotsApp_FreeText(BerryPotsAppData *data) {
     for (int i = 0; i < (int)NELEMS(data->statusStrings); i++) {
-        String_Delete(data->statusStrings[i]);
+        String_Free(data->statusStrings[i]);
     }
-    String_Delete(data->cancelString);
-    String_Delete(data->currentStatusString);
+    String_Free(data->cancelString);
+    String_Free(data->currentStatusString);
 
     MessageFormat_Delete(data->msgFmt);
     DestroyMsgData(data->msgData);

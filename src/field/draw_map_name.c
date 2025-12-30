@@ -142,7 +142,7 @@ FieldDrawMapNameInfo *FieldDrawMapNameInfo_Create(BgConfig *bgConfig) {
 void FieldDrawMapNameInfo_Destroy(FieldDrawMapNameInfo *info) {
     DestroyMsgData(info->mapsecMsgData);
     RemoveWindow(&info->window);
-    String_Delete(info->mapNameString);
+    String_Free(info->mapNameString);
     Heap_Free(info);
 }
 

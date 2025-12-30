@@ -253,7 +253,7 @@ TradeSequence_Exit: ; 0x02246B58
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x14]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #8]
 	bl Heap_Free
 	ldr r0, [r4, #0x18]
@@ -2139,9 +2139,9 @@ ov71_02247924: ; 0x02247924
 	add r0, r4, #0
 	bl ov71_0224809C
 	ldr r0, [r4, #0x68]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x6c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x70]
 	bl ov71_02247498
 	ldr r0, [r4, #0x54]
@@ -9231,9 +9231,9 @@ ov71_0224B198: ; 0x0224B198
 	ldr r0, [r0]
 	bl ov71_0224BA48
 	ldr r0, [r4, #0x6c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x70]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x74]
 	cmp r0, #0
 	beq _0224B1C8

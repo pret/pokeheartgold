@@ -512,9 +512,9 @@ ov43_0222A2F0: ; 0x0222A2F0
 	ldr r1, [r5]
 	bl MenuInputStateMgr_SetState
 	ldr r0, [r5, #0x58]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x5c]
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov43_0222A2F0
 
@@ -1317,15 +1317,15 @@ ov43_0222A960: ; 0x0222A960
 	ldr r0, [r4, #0x5c]
 	bl TouchscreenListMenuSpawner_Destroy
 	ldr r0, [r4, #0x7c]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0x80
 	ldr r0, [r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x74]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x78]
-	bl String_Delete
+	bl String_Free
 	add r4, #0x64
 	add r0, r4, #0
 	bl RemoveWindow
@@ -2370,9 +2370,9 @@ _0222B160:
 	cmp r7, #4
 	blt _0222B160
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x1c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x18]
 	ldr r3, [sp, #0x14]
 	str r0, [sp]
@@ -2395,7 +2395,7 @@ ov43_0222B1D8: ; 0x0222B1D8
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #8
 	bl RemoveWindow
@@ -2818,7 +2818,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -3427,7 +3427,7 @@ _0222B95A:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	str r0, [sp, #0x20]
 	ldr r0, _0222BAAC ; =ov43_0222EEE0
@@ -3538,7 +3538,7 @@ ov43_0222BAB8: ; 0x0222BAB8
 	add r0, r5, #0
 	add r0, #0xd8
 	ldr r0, [r0]
-	bl String_Delete
+	bl String_Free
 	mov r6, #0
 	add r4, r5, #0
 _0222BADC:
@@ -4953,7 +4953,7 @@ ov43_0222C550: ; 0x0222C550
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -5662,7 +5662,7 @@ _0222CAD0:
 	lsl r3, r3, #3
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -6264,9 +6264,9 @@ _0222CFB4:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	str r7, [sp]
 	add r3, r5, #0
 	ldr r0, [r4, #0x58]
@@ -9047,9 +9047,9 @@ _0222E462:
 	mov r1, #3
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9266,9 +9266,9 @@ _0222E63A:
 	mov r1, #4
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9333,7 +9333,7 @@ ov43_0222E78C: ; 0x0222E78C
 	add r3, r1, #0
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x2c]
-	bl String_Delete
+	bl String_Free
 	mov r2, #0xb
 	ldrsb r2, [r5, r2]
 	ldr r0, [sp, #0x28]
@@ -9439,9 +9439,9 @@ _0222E828:
 	mov r1, #5
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x30
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -9587,9 +9587,9 @@ _0222E966:
 	mov r1, #6
 	bl ov43_0222DEF8
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9772,9 +9772,9 @@ ov43_0222EA40: ; 0x0222EA40
 	mov r1, #1
 	bl ov43_0222DEF8
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0

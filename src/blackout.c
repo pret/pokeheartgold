@@ -172,8 +172,8 @@ static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 ms
 
     AddTextPrinterParameterizedWithColor(&environment->window, 0, finStr, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-    String_Delete(tmpStr);
-    String_Delete(finStr);
+    String_Free(tmpStr);
+    String_Free(finStr);
 }
 
 enum {

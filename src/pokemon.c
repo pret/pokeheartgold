@@ -748,7 +748,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         if (boxMon->checksumFailed) {
             String *buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT);
             String_Copy(dest, buffer);
-            String_Delete(buffer);
+            String_Free(buffer);
         } else {
             CopyU16ArrayToString(dest, blockC->nickname);
         }
@@ -1325,7 +1325,7 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
     case MON_DATA_SPECIES_NAME:
         speciesName = GetSpeciesName(blockA->species, HEAP_ID_DEFAULT);
         CopyStringToU16Array(speciesName, blockC->nickname, POKEMON_NAME_LENGTH + 1);
-        String_Delete(speciesName);
+        String_Free(speciesName);
         break;
     case MON_DATA_SHINY_LEAF_A:
     case MON_DATA_SHINY_LEAF_B:
@@ -4123,8 +4123,8 @@ BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum Heap
     if (myId == otId && myGender == otGender && String_Compare(r7, r6) == 0) {
         ret = TRUE;
     }
-    String_Delete(r6);
-    String_Delete(r7);
+    String_Free(r6);
+    String_Free(r7);
     return ret;
 }
 

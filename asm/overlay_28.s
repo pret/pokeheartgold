@@ -333,7 +333,7 @@ ov28_0225D7C4: ; 0x0225D7C4
 	lsl r6, r6, #4
 _0225D7CE:
 	ldr r0, [r5, r6]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5

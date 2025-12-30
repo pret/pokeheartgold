@@ -1760,7 +1760,7 @@ ov02_0224686C: ; 0x0224686C
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -21139,7 +21139,7 @@ _0224FA50:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -21173,7 +21173,7 @@ _0224FABA:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -21430,7 +21430,7 @@ FollowMon_ExpandInteractionMessage: ; 0x0224FC8C
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl MessageFormat_Delete
 	add r0, r5, #0
@@ -21514,7 +21514,7 @@ _0224FD72:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl MessageFormat_Delete
 	add r0, r7, #0
@@ -22172,7 +22172,7 @@ _02250272:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -22210,7 +22210,7 @@ _022502C4:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]
@@ -22396,7 +22396,7 @@ _02250418:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	ldr r0, [r0, #0x10]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0xd2
 	ldrb r1, [r0]

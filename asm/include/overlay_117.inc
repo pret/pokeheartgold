@@ -40,7 +40,7 @@
 .public Sprite_SetPriority
 .public Sprite_SetOamMode
 .public String_New
-.public String_Delete
+.public String_Free
 .public G2x_SetBlendAlpha_
 .public memset
 .public _s32_div_f

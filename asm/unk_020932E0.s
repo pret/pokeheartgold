@@ -3252,7 +3252,7 @@ _02094CC8:
 	add r0, r5, r0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -3309,7 +3309,7 @@ _02094D78:
 	add r0, r5, r0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl DestroyMsgData
 	add sp, #0x10
@@ -3684,7 +3684,7 @@ sub_0209501C: ; 0x0209501C
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	bl DestroyMsgData
 	ldr r0, _020950B4 ; =0x00004660

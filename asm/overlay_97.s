@@ -1310,7 +1310,7 @@ ov97_0221F020: ; 0x0221F020
 	ldr r0, [r7, #0x70]
 	bl MessageFormat_Delete
 	ldr r0, [r7, #0x74]
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	add r0, #8
 	bl RemoveWindow
@@ -1631,7 +1631,7 @@ ov97_0221F294: ; 0x0221F294
 	add r0, #8
 	bl CopyWindowToVram
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
@@ -1658,7 +1658,7 @@ ov97_0221F294: ; 0x0221F294
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 _0221F32A:
 	add r0, r4, #0
 	add r0, #0x18
@@ -1684,7 +1684,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x6c]
 	mov r1, #4
 	bl NewString_ReadMsgData
@@ -1703,7 +1703,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x6c]
 	mov r1, #6
 	bl NewString_ReadMsgData
@@ -1722,7 +1722,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x6c]
 	mov r1, #5
 	bl NewString_ReadMsgData
@@ -1741,7 +1741,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x6c]
 	mov r1, #7
 	bl NewString_ReadMsgData
@@ -1760,7 +1760,7 @@ _0221F32A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r4, #0x48
 	add r0, r4, #0
 	bl CopyWindowToVram
@@ -1825,7 +1825,7 @@ ov97_0221F428: ; 0x0221F428
 	add r0, #0x38
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	b _0221F4FE
 _0221F4A8:
 	cmp r0, #1
@@ -1855,7 +1855,7 @@ _0221F4A8:
 	add r0, #0x38
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	b _0221F4FE
 _0221F4EC:
 	add r0, r5, #0
@@ -1879,7 +1879,7 @@ _0221F4FE:
 	add r2, r4, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x70]
 	ldr r1, [r5, #0x6c]
 	ldr r3, [r5]
@@ -1906,7 +1906,7 @@ _0221F4FE:
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0

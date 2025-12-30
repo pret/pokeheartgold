@@ -98,7 +98,7 @@
 .public System_GetTouchHeld
 .public System_GetTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_SetEmpty
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

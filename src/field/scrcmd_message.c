@@ -297,7 +297,7 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     MailMsg_SetFieldI(&mailMessage, 1, word2);
     String *string = MailMsg_GetExpandedString(&mailMessage, HEAP_ID_FIELD3);
     String_Copy(messageBox->message, string);
-    String_Delete(string);
+    String_Free(string);
 }
 
 static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {

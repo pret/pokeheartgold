@@ -126,9 +126,9 @@ _0222A930:
 	ldr r0, [r4, #0x44]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0x48]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x4c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x40]
 	bl Heap_Free
 	ldr r0, [r4, #0x3c]

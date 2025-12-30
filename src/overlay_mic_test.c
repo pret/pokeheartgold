@@ -742,7 +742,7 @@ static void ov62_021E60E4(MicTestSub_B8 *a0, enum HeapID heapID) {
         ClearWindowTilemap(&a0->window[i]);
         String *str = NewString_ReadMsgData(a0->msgData, i);
         AddTextPrinterParameterizedWithColor(&a0->window[i], sMicTestTextBoxes[i].fontId, str, 0, 0, 0xFF, sMicTestTextBoxes[i].color, 0);
-        String_Delete(str);
+        String_Free(str);
         CopyWindowToVram(&a0->window[i]);
     }
 }

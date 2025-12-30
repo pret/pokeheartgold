@@ -970,19 +970,19 @@ ov64_021E6118: ; 0x021E6118
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x69
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x4b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x49
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]

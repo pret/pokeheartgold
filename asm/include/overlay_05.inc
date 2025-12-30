@@ -124,7 +124,7 @@
 .public Sprite_UpdateAnim
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public Thunk_G3X_Reset
 .public GF_3DVramMan_Create
 .public GF_3DVramMan_Delete

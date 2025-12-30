@@ -602,9 +602,9 @@ _02258CC8:
 	ldr r0, [r6, #0x24]
 	bl MessageFormat_Delete
 	ldr r0, [r6, #0x28]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x2c]
-	bl String_Delete
+	bl String_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov47_02258CC0
@@ -1338,7 +1338,7 @@ _02259296:
 	add r0, r5, #0
 	bl ov47_022593A0
 	ldr r0, [r5, #0x18]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #8
 	bl RemoveWindow
@@ -2703,11 +2703,11 @@ ov47_02259D24: ; 0x02259D24
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, [r5, #0x10]
-	bl String_Delete
+	bl String_Free
 	mov r4, #0
 _02259D30:
 	ldr r0, [r5, #0x14]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

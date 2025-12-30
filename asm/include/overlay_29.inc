@@ -58,7 +58,7 @@
 .public Sprite_SetAnimCtrlSeq
 .public Sprite_UpdateAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
-.public String_Delete
+.public String_Free
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG
 .public GX_SetBankForSubOBJ

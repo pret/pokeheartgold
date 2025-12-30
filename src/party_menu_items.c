@@ -221,121 +221,121 @@ static void PartyMenu_GetItemUseMessage(PartyMenu *partyMenu, u16 itemId, int pa
     case PARTY_MENU_ITEM_TYPE_PSN_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00066);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SLP_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00092);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_BRN_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00068);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_FRZ_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00069);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_PRZ_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00067);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_CFS_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00074);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_INF_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00075);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_FULL_HEAL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00072);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_HP_EV_UP:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00076);
         BufferStatName(partyMenu->msgFormat, 1, STAT_HP);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_ATK_EV_UP:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00076);
         BufferStatName(partyMenu->msgFormat, 1, STAT_ATK);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_DEF_EV_UP:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00076);
         BufferStatName(partyMenu->msgFormat, 1, STAT_DEF);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPEED_EV_UP:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00076);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPEED);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPATK_EV_UP:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00076);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPATK);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPDEF_EV_UP:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00076);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPDEF);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_HP_EV_DOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_HP);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_ATK_EV_DOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_ATK);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_DEF_EV_DOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_DEF);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPEED_EV_DOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPEED);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPATK_EV_DOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPATK);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_SPDEF_EV_DOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, param + msg_0300_00104);
         BufferStatName(partyMenu->msgFormat, 1, STAT_SPDEF);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_PP_UP:
     case PARTY_MENU_ITEM_TYPE_PP_MAX:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00073);
         BufferMoveName(partyMenu->msgFormat, 0, param);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         break;
     case PARTY_MENU_ITEM_TYPE_PP_RESTORE:
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00070, partyMenu->formattedStrBuf);
@@ -455,7 +455,7 @@ static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     BufferIntegerAsString(partyMenu->msgFormat, 1, hp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     int statusIcon = Pokemon_GetStatusIconId(mon);
     PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, statusIcon);
     if (statusIcon == PARTY_MON_STATUS_ICON_OK) {
@@ -529,7 +529,7 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00071);
         BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         partyMenu->monsDrawState[partyMenu->partyMonIndex].status = PARTY_MON_STATUS_ICON_OK;
         PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, partyMenu->monsDrawState[partyMenu->partyMonIndex].status);
         PartyMenu_PrintMonLevelOnWindow(partyMenu, partyMenu->partyMonIndex);
@@ -587,7 +587,7 @@ static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     int statusIcon = Pokemon_GetStatusIconId(mon);
     PartyMenu_DrawMonStatusIcon(partyMenu, partyMenu->partyMonIndex, statusIcon);
     if (statusIcon == PARTY_MON_STATUS_ICON_OK) {
@@ -644,7 +644,7 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
             BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
             string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-            String_Delete(string);
+            String_Free(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
             partyMenu->yesCallback = PartyMenu_ItemUseFunc_LevelUpPromptForgetMove;
             partyMenu->noCallback = PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn;
@@ -655,7 +655,7 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
             BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
             string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00178);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-            String_Delete(string);
+            String_Free(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
             partyMenu->levelUpLearnMovesLoopState = 4;
             break;
@@ -672,7 +672,7 @@ static int PartyMenu_ItemUseFunc_LevelUpLearnMovesLoop(PartyMenu *partyMenu) {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
         BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
         partyMenu->levelUpLearnMovesLoopState = 4;
         break;
@@ -699,7 +699,7 @@ int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu) {
         BufferMoveName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_MOVE1 + partyMenu->args->selectedMoveIdx, NULL));
         String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00061);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_ITEM_USE_CB;
         partyMenu->levelUpLearnMovesLoopState = 5;
@@ -710,7 +710,7 @@ int PartyMenu_ItemUseFunc_LevelUpDoLearnMove(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_LevelUpPromptForgetMove(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00060);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_5;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -720,7 +720,7 @@ static int PartyMenu_ItemUseFunc_LevelUpPromptForgetMove(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00056);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
     partyMenu->yesCallback = PartyMenu_ItemUseFunc_LevelUpDidNotLearnMove;
     partyMenu->noCallback = PartyMenu_ItemUseFunc_LevelUpAskAgainToForget;
@@ -731,7 +731,7 @@ static int PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn(PartyMenu *partyMen
 static int PartyMenu_ItemUseFunc_LevelUpDidNotLearnMove(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00059);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_ITEM_USE_CB;
     partyMenu->levelUpLearnMovesLoopState = 4;
@@ -741,7 +741,7 @@ static int PartyMenu_ItemUseFunc_LevelUpDidNotLearnMove(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_LevelUpAskAgainToForget(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->yesCallback = PartyMenu_ItemUseFunc_LevelUpPromptForgetMove;
     partyMenu->noCallback = PartyMenu_ItemUseFunc_LevelUpAskStopTryingToLearn;
@@ -787,7 +787,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
         PartyMenu_LearnMoveToSlot(partyMenu, mon, response);
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -795,7 +795,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
     case LEARN_MOVE_CHECK_KNOWN:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00064);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -803,7 +803,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
     case LEARN_MOVE_CHECK_FULL:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->yesCallback = PartyMenu_ItemUseFunc_TMHMPromptForgetMove;
         partyMenu->noCallback = PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn;
@@ -812,7 +812,7 @@ int PartyMenu_HandleUseTMHMonMon(PartyMenu *partyMenu) {
     case LEARN_MOVE_CHECK_INCOMPAT:
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00063);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -831,7 +831,7 @@ int PartyMenu_ItemUseFunc_TMHMDoLearnMove(PartyMenu *partyMenu) {
         BufferMoveName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_MOVE1 + partyMenu->args->selectedMoveIdx, NULL));
         String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00061);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-        String_Delete(string);
+        String_Free(string);
         PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
         partyMenu->afterTextPrinterState = PARTY_MENU_STATE_TMHM_LEARN_MOVE;
         return PARTY_MENU_STATE_WAIT_TEXT_PRINTER;
@@ -844,7 +844,7 @@ int PartyMenu_Subtask_TMHMLearnMove(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00062);
     BufferMoveName(partyMenu->msgFormat, 1, partyMenu->args->moveId);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -854,7 +854,7 @@ int PartyMenu_Subtask_TMHMLearnMove(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_TMHMPromptForgetMove(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00060);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_4;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -864,7 +864,7 @@ static int PartyMenu_ItemUseFunc_TMHMPromptForgetMove(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00056);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
     partyMenu->yesCallback = PartyMenu_ItemUseFunc_TMHMDidNotLearnMove;
     partyMenu->noCallback = PartyMenu_ItemUseFunc_TMHMAskAgainToForget;
@@ -875,7 +875,7 @@ static int PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn(PartyMenu *partyMenu) 
 static int PartyMenu_ItemUseFunc_TMHMDidNotLearnMove(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00059);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
     partyMenu->afterTextPrinterState = PARTY_MENU_STATE_AFTER_MESSAGE_BEGIN_EXIT;
@@ -885,7 +885,7 @@ static int PartyMenu_ItemUseFunc_TMHMDidNotLearnMove(PartyMenu *partyMenu) {
 static int PartyMenu_ItemUseFunc_TMHMAskAgainToForget(PartyMenu *partyMenu) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00053);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     PartyMenu_PrintMessageOnWindow34(partyMenu, -1, FALSE);
     partyMenu->yesCallback = PartyMenu_ItemUseFunc_TMHMPromptForgetMove;
     partyMenu->noCallback = PartyMenu_ItemUseFunc_TMHMAskStopTryingToLearn;
@@ -915,7 +915,7 @@ u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx) {
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00145 + moveIdx);
     BufferMoveName(partyMenu->msgFormat, 0, moveId);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->unformattedStrBuf, string);
-    String_Delete(string);
+    String_Free(string);
     if (moveId == MOVE_NONE) {
         return FALSE;
     } else {

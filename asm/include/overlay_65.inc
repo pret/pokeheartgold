@@ -139,7 +139,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String16_FormatInteger
 .public CopyU16ArrayToString
 .public PlayerProfile_New

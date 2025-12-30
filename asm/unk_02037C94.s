@@ -5133,7 +5133,7 @@ _0203A2B6:
 	add r1, r5, #0
 	bl sub_0202C270
 	ldr r0, [sp, #0xc]
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender
 	add r3, r0, #0
@@ -5188,7 +5188,7 @@ _0203A334:
 	add r1, r5, #0
 	bl sub_0202C2B4
 	ldr r0, [sp, #0x10]
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl PlayerProfile_GetAvatar
 	add r3, r0, #0

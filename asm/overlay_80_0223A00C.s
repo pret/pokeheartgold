@@ -291,7 +291,7 @@ _0223A1BA:
 	mov r1, #0
 	bl TextOBJ_SetSpritesDrawFlag
 	ldr r0, [sp, #0x24]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	ldr r0, [r4, #0x24]

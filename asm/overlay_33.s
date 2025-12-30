@@ -564,7 +564,7 @@ _0225D912:
 	add r0, r4, r6
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #1
 	lsl r0, r0, #0x10
 	lsr r5, r0, #0x10

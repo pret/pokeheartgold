@@ -101,7 +101,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public GetMonData
 .public GetMonExpBySpeciesAndLevel
 .public GetMonGender

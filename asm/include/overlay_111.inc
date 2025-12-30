@@ -98,7 +98,7 @@
 .public Sprite_GetVramType
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public Options_GetTextFrameDelay
 .public Options_GetFrame
 .public GetMonData

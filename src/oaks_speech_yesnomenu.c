@@ -123,7 +123,7 @@ static void OakSpeechYesNo_PrintMessageOnWindow(OakSpeechYesNo *yesnoMenu, Windo
     AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     CopyWindowToVram(window);
     DestroyMsgData(msgData);
-    String_Delete(string);
+    String_Free(string);
 }
 
 static const s16 sCoords[2][2] = {

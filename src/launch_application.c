@@ -1066,7 +1066,7 @@ static BOOL Task_NamingScreen(TaskManager *taskman) {
             *retVar = data->args->noInput;
         }
         NamingScreen_DeleteArgs(data->args);
-        String_Delete(data->unk10);
+        String_Free(data->unk10);
         Heap_Free(data);
         return TRUE;
     }

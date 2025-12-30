@@ -951,7 +951,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
         BufferString(data->msgFormat, 0, data->namingScreenArgs_Player->nameInputString, data->playerGender, 1, 2);
         BufferString(data->msgFormat, 1, data->namingScreenArgs_Rival->nameInputString, 0, 1, 2);
         StringExpandPlaceholders(data->msgFormat, data->string, temp);
-        String_Delete(temp);
+        String_Free(temp);
 
         data->textPrinter = AddTextPrinterParameterized(&data->dialogWindow, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
         data->printDialogMsgState = 1;
@@ -959,7 +959,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
     }
     case 1:
         if (!TextPrinterCheckActive(data->textPrinter)) {
-            String_Delete(data->string);
+            String_Free(data->string);
             data->printDialogMsgState = 2;
         }
         break;
@@ -1021,7 +1021,7 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
             AddTextPrinterParameterizedWithColor(&data->fullScreenMsgWindow, 0, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
             break;
         }
-        String_Delete(data->string);
+        String_Free(data->string);
         data->printAndFadeFullScreenTextState = 1;
         break;
     case 1:
@@ -1142,7 +1142,7 @@ static void OakSpeech_PrintMultichoiceMenu(OakSpeechData *data, int msg1, int ms
         FillWindowPixelRect(&data->multichoiceMenuButtonWindows[i], 0, 0, 0, 0xC0, 0xC0);
         AddTextPrinterParameterizedWithColor(&data->multichoiceMenuButtonWindows[i], 4, string, (sMultichoiceMenuButtonWindowTemplates[numChoices - 2][i].width * 8 - x) / 2, y, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
         CopyWindowToVram(&data->multichoiceMenuButtonWindows[i]);
-        String_Delete(string);
+        String_Free(string);
     }
 }
 
@@ -2176,7 +2176,7 @@ static void OakSpeech_ShowTutorialTouchMsg(OakSpeechData *data) {
     AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     CopyWindowToVram(window);
     RemoveWindow(window);
-    String_Delete(string);
+    String_Free(string);
 }
 
 static void OakSpeech_HideTutorialTouchMsg(OakSpeechData *data) {

@@ -1784,15 +1784,15 @@ ov113_021E66E4: ; 0x021E66E4
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x5c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x58]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x54]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x50]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x4c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x48]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0x44]

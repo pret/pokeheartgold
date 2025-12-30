@@ -1173,12 +1173,12 @@ static void AlphPuzzle_InitText(AlphPuzzleData *data) {
 }
 
 static void AlphPuzzle_DeleteText(AlphPuzzleData *data) {
-    String_Delete(data->confirmQuitText[0]);
+    String_Free(data->confirmQuitText[0]);
     for (int i = 0; i < 4; i++) {
-        String_Delete(data->hintText[i]);
+        String_Free(data->hintText[i]);
     }
-    String_Delete(data->quitText);
-    String_Delete(data->unk30);
+    String_Free(data->quitText);
+    String_Free(data->unk30);
     MessageFormat_Delete(data->messageFormat);
     DestroyMsgData(data->msgData);
     FontID_Release(4);

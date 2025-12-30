@@ -111,7 +111,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync
 .public Save_SysInfo_GetDwcProfileId

@@ -3166,13 +3166,13 @@ ov85_021E7148: ; 0x021E7148
 	ldr r0, [r4, #8]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0x6c]
-	bl String_Delete
+	bl String_Free
 	mov r4, #0
 _021E717A:
 	add r0, r5, #0
 	add r0, #0x98
 	ldr r0, [r0]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
@@ -3257,7 +3257,7 @@ ov85_021E71EC: ; 0x021E71EC
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0xa
@@ -3309,7 +3309,7 @@ ov85_021E7274: ; 0x021E7274
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0xa
@@ -7094,15 +7094,15 @@ ov85_021E8E00: ; 0x021E8E00
 	add r5, r6, #0
 _021E8E1C:
 	ldr r0, [r5, #0x3c]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
 	blt _021E8E1C
 	ldr r0, [r6, #0x58]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x54]
-	bl String_Delete
+	bl String_Free
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov85_021E8E00
 
@@ -9350,7 +9350,7 @@ _021E9F74:
 	bl AddTextPrinterParameterizedWithColor
 _021E9FA6:
 	ldr r0, [sp, #0x18]
-	bl String_Delete
+	bl String_Free
 _021E9FAC:
 	ldr r0, [sp, #0x20]
 	add r7, #8
@@ -9555,7 +9555,7 @@ ov85_021EA0EC: ; 0x021EA0EC
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xbe
 	lsl r0, r0, #2
 	add r0, r5, r0

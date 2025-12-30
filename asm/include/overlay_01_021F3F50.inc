@@ -26,7 +26,7 @@
 .public AddTextPrinterParameterized
 .public AddTextPrinterParameterizedWithColor
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public SaveGameNormal
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetIGTAddr

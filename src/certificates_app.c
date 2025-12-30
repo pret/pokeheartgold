@@ -540,7 +540,7 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
     StringExpandPlaceholders(data->msgFmt, string, tempString);
     AddTextPrinterParameterizedWithColor(&data->window1, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     AddTextPrinterParameterizedWithColor(&data->window2, 0, string, x1, y1, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    String_Delete(tempString);
+    String_Free(tempString);
 
     u32 msgNum;
     if (data->certificateId == CERTIFICATE_JOHTO_DEX) {
@@ -560,7 +560,7 @@ static void ov78_021E6068(CertificatesApp_Data *data) {
         AddTextPrinterParameterizedWithColor(&data->window2, 0, string, 138, 144, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     }
 
-    String_Delete(string);
+    String_Free(string);
 }
 
 static ManagedSprite *ov78_021E61C4(SpriteSystem *renderer, SpriteManager *gfxHandler, s16 x, s16 y, u8 animation, u8 spritePriority) {

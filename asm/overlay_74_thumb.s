@@ -1003,7 +1003,7 @@ ov74_0222947C: ; 0x0222947C
 	mov r2, #0x24
 	bl CopyStringToU16Array
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #8
 	bl ov74_02235A68
 	add r7, r0, #0
@@ -1071,7 +1071,7 @@ ov74_0222947C: ; 0x0222947C
 	mov r2, #0xfa
 	bl CopyStringToU16Array
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xd2
 	lsl r0, r0, #2
 	mov r1, #0
@@ -3801,7 +3801,7 @@ _0222AA60:
 	cmp r0, #0
 	bne _0222AA86
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 _0222AA86:
 	add r0, r5, #0
 	mov r1, #0
@@ -3857,7 +3857,7 @@ ov74_0222AAAC: ; 0x0222AAAC
 	mov r3, #3
 	bl DrawFrameAndWindow1
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4245,7 +4245,7 @@ _0222AE16:
 	cmp r0, #0
 	bne _0222AE36
 	ldr r0, [r4, #0x14]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	str r0, [r4, #0x14]
 	str r0, [r4, #0x68]
@@ -8661,7 +8661,7 @@ ov74_0222D1D4: ; 0x0222D1D4
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl DestroyMsgData
 	add r0, r6, #0
@@ -8982,7 +8982,7 @@ ov74_0222D494: ; 0x0222D494
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9043,7 +9043,7 @@ _0222D522:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -9137,7 +9137,7 @@ ov74_0222D5C4: ; 0x0222D5C4
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -9182,7 +9182,7 @@ ov74_0222D614: ; 0x0222D614
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	mov r0, #0
 	pop {r4, r5, r6, pc}
@@ -9584,7 +9584,7 @@ _0222D956:
 	add r0, r6, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 _0222D976:
 	add r0, r6, #0
 	bl CopyWindowToVram
@@ -9725,7 +9725,7 @@ _0222DA58:
 	add r0, r6, #0
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _0222DAE8 ; =0x00002A04
 	ldr r0, [r5, r0]
 	bl DestroyMsgData
@@ -11608,7 +11608,7 @@ _0222E9D6:
 	bl AddTextPrinterParameterizedWithColor
 _0222E9F0:
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerID
 	add r2, r0, #0
@@ -11641,7 +11641,7 @@ _0222E9F0:
 	mov r3, #0x50
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r5, #0x18
 _0222EA44:
 	ldr r0, [sp, #0x18]
@@ -11730,7 +11730,7 @@ ov74_0222EA88: ; 0x0222EA88
 	add r0, r4, #0
 	bl CopyWindowToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, _0222EB20 ; =0x00002A04
 	ldr r0, [r5, r0]
 	bl DestroyMsgData
@@ -12135,7 +12135,7 @@ ov74_0222EE0C: ; 0x0222EE0C
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #1
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -12181,7 +12181,7 @@ _0222EE76:
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #1
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
@@ -12270,7 +12270,7 @@ ov74_0222EF18: ; 0x0222EF18
 	str r3, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -12527,7 +12527,7 @@ _0222F0F4:
 	add r0, r6, #0
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x30]
-	bl String_Delete
+	bl String_Free
 _0222F158:
 	add r0, r6, #0
 	bl CopyWindowToVram
@@ -12665,7 +12665,7 @@ _0222F234:
 	add r0, r6, #0
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x14]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _0222F2C4 ; =0x00002A04
 	ldr r0, [r5, r0]
 	bl DestroyMsgData
@@ -18023,7 +18023,7 @@ _02231AA6:
 	ldr r2, [sp, #0x20]
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	ldr r1, [sp, #0x1c]
 	add r0, r5, #0
 	add r2, r4, #0
@@ -19774,7 +19774,7 @@ _022327D6:
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	mov r1, #0xc
 	mov r2, #0
@@ -19806,7 +19806,7 @@ _022327D6:
 	str r6, [sp, #0x68]
 	bl ov74_02231A1C
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 _022328B8:
 	add r0, r4, #0
 	bl ov74_02234A0C
@@ -19833,7 +19833,7 @@ _022328B8:
 	str r4, [sp, #0x68]
 	bl ov74_02231A1C
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #4]
 	mov r1, #0
 	lsl r0, r0, #0x10
@@ -20688,7 +20688,7 @@ ov74_02232F9C: ; 0x02232F9C
 	add r1, r5, r1
 	bl ov74_02231A1C
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl MessageFormat_Delete
 	add r0, r5, #0
@@ -21767,10 +21767,10 @@ ov74_022338D4: ; 0x022338D4
 	add r4, r0, #0
 	ldr r0, _02233914 ; =0x00012608
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _02233918 ; =0x0001260C
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x20]
 	bl Heap_Free
 	ldr r0, _0223391C ; =FS_OVERLAY_ID(intro_title)
@@ -25662,7 +25662,7 @@ _02235500:
 	str r0, [r5, #0xc]
 _02235542:
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x14]
 	cmp r0, #0
 	bne _02235554

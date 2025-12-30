@@ -9,7 +9,7 @@
 .public Heap_Free
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public sub_0209680C
 .public MI_CpuFill8
 .public FrontierSystem_Create

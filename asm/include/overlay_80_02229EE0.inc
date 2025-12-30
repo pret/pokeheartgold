@@ -17,7 +17,7 @@
 .public Sprite_SetAnimationFrame
 .public Sprite_GetAnimationFrame
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public CopyStringToU16Array
 .public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender

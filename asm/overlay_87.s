@@ -1923,9 +1923,9 @@ _021E6816:
 	ldr r0, [r6, #0x3c]
 	bl MessageFormat_Delete
 	ldr r0, [r6, #0x40]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x44]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x16
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]

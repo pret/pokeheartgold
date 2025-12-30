@@ -1993,7 +1993,7 @@ ov111_021E685C: ; 0x021E685C
 	ldr r0, [r4, #0x10]
 	cmp r0, #0
 	beq _021E687A
-	bl String_Delete
+	bl String_Free
 _021E687A:
 	ldr r0, [r4, #4]
 	bl MessagePrinter_Delete
@@ -2021,7 +2021,7 @@ ov111_021E6888: ; 0x021E6888
 	and r0, r1
 	str r0, [r4, #0x30]
 	ldr r0, [r4, #0x10]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	str r0, [r4, #0x10]
 	sub r0, r0, #1
@@ -2386,7 +2386,7 @@ ov111_021E6B30: ; 0x021E6B30
 	add r0, r5, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	thumb_func_end ov111_021E6B30

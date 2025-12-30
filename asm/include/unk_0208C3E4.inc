@@ -26,7 +26,7 @@
 .public GetWindowWidth
 .public ScheduleBgTilemapBufferTransfer
 .public AddTextPrinterParameterizedWithColor
-.public String_Delete
+.public String_Free
 .public String_Compare
 .public AllocMonZeroed
 .public CopyBoxPokemonToPokemon

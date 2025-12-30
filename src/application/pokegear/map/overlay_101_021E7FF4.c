@@ -424,11 +424,11 @@ static void PokegearMap_InitMsg(PokegearMapAppData *mapApp) {
 }
 
 static void PokegearMap_DeleteMsg(PokegearMapAppData *mapApp) {
-    String_Delete(mapApp->formatFlavorTextString);
-    String_Delete(mapApp->mapNameString);
-    String_Delete(mapApp->regionNameStrings[1]);
-    String_Delete(mapApp->regionNameStrings[0]);
-    String_Delete(mapApp->flavorTextString);
+    String_Free(mapApp->formatFlavorTextString);
+    String_Free(mapApp->mapNameString);
+    String_Free(mapApp->regionNameStrings[1]);
+    String_Free(mapApp->regionNameStrings[0]);
+    String_Free(mapApp->flavorTextString);
     MessageFormat_Delete(mapApp->msgFormat);
     DestroyMsgData(mapApp->msgData);
 }

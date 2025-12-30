@@ -328,7 +328,7 @@ static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
 }
 
 static void sub_02052E70(GameClearWork *env) {
-    String_Delete(env->windowText);
+    String_Free(env->windowText);
     sub_0200F450(env->waitingIcon);
     sub_0205B5A8(&env->window);
 }
@@ -351,7 +351,7 @@ static void GameClearSave_PrintSaveStatus(FieldSystem *fieldSystem, GameClearWor
 
 static void GameClearSave_Free(FieldSystem *fieldSystem, GameClearWork *env) {
     if (env->windowText != NULL) {
-        String_Delete(env->windowText);
+        String_Free(env->windowText);
     }
     if (WindowIsInUse(&env->window)) {
         RemoveWindow(&env->window);

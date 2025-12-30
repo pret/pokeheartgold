@@ -146,7 +146,7 @@
 .public GF_AssertFail
 .public GF_SetG2dRendererSurface
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_SetEmpty
 .public String_Copy
 .public String_atoi

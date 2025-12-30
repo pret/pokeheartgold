@@ -65,7 +65,7 @@
 .public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
 .public System_GetTouchHeldCoords
-.public String_Delete
+.public String_Free
 .public FieldSystem_GetFacingObject
 .public sub_0203DF8C
 .public FieldSystem_IsPlayerMovementAllowed

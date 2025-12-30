@@ -748,15 +748,15 @@ ov68_021E5F18: ; 0x021E5F18
 	mov r0, #1
 	lsl r0, r0, #8
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x41
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x42
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov68_021E5F18
@@ -1262,7 +1262,7 @@ ov68_021E62D4: ; 0x021E62D4
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -1641,7 +1641,7 @@ _021E65AE:
 	ldr r0, [sp, #0x1c]
 	bl DestroyMsgData
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2311,7 +2311,7 @@ _021E6BB0:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021E6BE8: .word ov68_021E7DA4

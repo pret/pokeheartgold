@@ -540,17 +540,17 @@ ov52_021E8568: ; 0x021E8568
 	add r5, r6, #0
 _021E8578:
 	ldr r0, [r5, #0x18]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #5
 	blt _021E8578
 	ldr r0, [r6, #0x34]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x30]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x2c]
-	bl String_Delete
+	bl String_Free
 	pop {r4, r5, r6, pc}
 	nop
 _021E859C: .word 0x00005C9C
@@ -2241,7 +2241,7 @@ ov52_021E927C: ; 0x021E927C
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xb5
 	lsl r0, r0, #2
 	add r0, r5, r0

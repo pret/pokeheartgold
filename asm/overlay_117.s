@@ -574,7 +574,7 @@ ov117_0225F470: ; 0x0225F470
 	add r0, r4, #0
 	bl MessageFormat_Delete
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov117_0225F470
@@ -816,7 +816,7 @@ _0225F560:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #2

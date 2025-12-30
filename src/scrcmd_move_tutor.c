@@ -295,7 +295,7 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
         BufferIntegerAsString(*messageFormat, 1, sTutorMoves[learnableMoves[i + numMovesToSkip]].cost, 2, PRINTING_MODE_RIGHT_ALIGN, TRUE);
         MoveTutorMenu_SetListItem(*unk, showAsTwoColumns, 0xff, sTutorMoves[learnableMoves[i + numMovesToSkip]].move);
     }
-    String_Delete(string);
+    String_Free(string);
     DestroyMsgData(messageData);
     if (showNextButton) {
         MoveTutorMenu_SetListItem(*unk, 2, 0xff, 0xfffd);

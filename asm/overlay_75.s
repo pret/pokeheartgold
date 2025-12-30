@@ -214,11 +214,11 @@ ov75_02246B00: ; 0x02246B00
 	mov r0, #0x45
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x11
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x73
@@ -1086,11 +1086,11 @@ _022471A4:
 	ldr r0, [r4, #0x20]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0x3c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x40]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x38]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl ov75_02247838
 	ldr r0, [r4, #4]
@@ -2418,7 +2418,7 @@ ov75_02247C70: ; 0x02247C70
 	add r3, #0xc
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x34]
 	mov r1, #0x2b
 	bl NewString_ReadMsgData
@@ -2437,7 +2437,7 @@ ov75_02247C70: ; 0x02247C70
 	add r3, #0xc
 	bl AddTextPrinterParameterized
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -2914,9 +2914,9 @@ _0224806E:
 	blt _0224806E
 _0224809E:
 	ldr r0, [sp, #0xc]
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r7, #0xc4
 	add r0, r7, #0
 	bl CopyWindowToVram
@@ -3031,9 +3031,9 @@ _02248168:
 	cmp r6, #6
 	blt _02248168
 	ldr r0, [sp, #0x14]
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0xc4
 	mov r1, #1
@@ -5572,7 +5572,7 @@ ov75_022494CC: ; 0x022494CC
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #0xf
@@ -5866,7 +5866,7 @@ ov75_022496B8: ; 0x022496B8
 	mov r0, #0xff
 	str r0, [r5, #0x44]
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0

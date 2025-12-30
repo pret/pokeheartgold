@@ -650,7 +650,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
     SetMonData(mon, MON_DATA_IS_EGG, &isEgg);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_FIELD1);
     SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
-    String_Delete(name);
+    String_Free(name);
     if (trainerMemoStrat == 4) {
         otId = PlayerProfile_GetTrainerID(profile);
         gender = PlayerProfile_GetTrainerGender(profile);
@@ -658,7 +658,7 @@ void SetEggStats(Pokemon *mon, int species, u8 metLocation, PlayerProfile *profi
         SetMonData(mon, MON_DATA_OT_NAME_STRING, name);
         SetMonData(mon, MON_DATA_OT_ID, &otId);
         SetMonData(mon, MON_DATA_OT_GENDER, &gender);
-        String_Delete(name);
+        String_Free(name);
     }
     MonSetTrainerMemo(mon, profile, trainerMemoStrat, eggLocation, HEAP_ID_DEFAULT);
 }
@@ -694,7 +694,7 @@ static void SetBreedEggStats(Pokemon *mon, u16 species, Daycare *dayCare, u32 ot
     SetMonData(mon, MON_DATA_FORM, &form);
     name = GetSpeciesName(SPECIES_EGG, HEAP_ID_FIELD1);
     SetMonData(mon, MON_DATA_NICKNAME_STRING, name);
-    String_Delete(name);
+    String_Free(name);
 }
 
 void GiveEggToPlayer(Daycare *dayCare, Party *party, PlayerProfile *profile) {
@@ -1091,7 +1091,7 @@ static void sub_0206D038(Pokemon *mon, enum HeapID heapID) {
     SetMonData(tmpMon, MON_DATA_MET_MONTH, &metMonth);
     SetMonData(tmpMon, MON_DATA_MET_DAY, &metDay);
     CopyPokemonToPokemon(tmpMon, mon);
-    String_Delete(string);
+    String_Free(string);
     Heap_Free(tmpMon);
 }
 

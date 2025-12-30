@@ -77,7 +77,7 @@
 .public System_GetTouchHeldCoords
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public GetMonData
 .public GetMonIconNaixEx
 .public GetMonIconPaletteEx

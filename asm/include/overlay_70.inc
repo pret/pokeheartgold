@@ -169,7 +169,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public SetAllPCBoxesModified
 .public Save_PrepareForAsyncWrite

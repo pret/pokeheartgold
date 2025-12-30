@@ -1326,7 +1326,7 @@ _02085FC0:
 	blt _02085FA8
 _02085FEC:
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	mov r1, #3
 	bl sub_02085808

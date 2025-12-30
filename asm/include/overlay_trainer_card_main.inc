@@ -120,7 +120,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String16_FormatInteger
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr

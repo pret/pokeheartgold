@@ -2754,7 +2754,7 @@ ov05_0221D020: ; 0x0221D020
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221D030
-	bl String_Delete
+	bl String_Free
 _0221D030:
 	mov r0, #0xbb
 	lsl r0, r0, #4
@@ -5538,7 +5538,7 @@ _0221E656:
 	add r1, r6, #0
 	bl StringExpandPlaceholders
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0xff
@@ -5932,7 +5932,7 @@ _0221E9A0:
 	cmp r4, #6
 	blo _0221E986
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x10]
 	bl DestroyMsgData
 	ldr r0, [sp, #0xc]

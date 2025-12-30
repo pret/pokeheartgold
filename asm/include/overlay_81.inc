@@ -156,7 +156,7 @@
 .public Sprite_SetOamMode
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_SetEmpty
 .public CopyU16ArrayToString
 .public Thunk_G3X_Reset

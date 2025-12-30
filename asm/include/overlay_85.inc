@@ -164,7 +164,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
 .public GF_3DVramMan_InitFrameTexVramManager

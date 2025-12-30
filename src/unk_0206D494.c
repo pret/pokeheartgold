@@ -354,8 +354,8 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     GetMonData(mon, MON_DATA_NICKNAME_STRING, monNickname);
     String *tradeNickname = NewString_ReadMsgData(messageData, tradeNum);
     BOOL differentNickname = String_Compare(monNickname, tradeNickname);
-    String_Delete(tradeNickname);
-    String_Delete(monNickname);
+    String_Free(tradeNickname);
+    String_Free(monNickname);
     if (differentNickname) {
         DestroyMsgData(messageData);
         return FALSE;
@@ -364,8 +364,8 @@ static BOOL MonIsInGameTradePokeInternal(Pokemon *mon, NPCTrade *trade, NpcTrade
     GetMonData(mon, MON_DATA_OT_NAME_STRING, monOtName);
     String *tradeOtName = NewString_ReadMsgData(messageData, NPC_TRADE_OT_NUM(tradeNum));
     BOOL differentOtName = String_Compare(monOtName, tradeOtName);
-    String_Delete(tradeOtName);
-    String_Delete(monOtName);
+    String_Free(tradeOtName);
+    String_Free(monOtName);
     if (differentOtName) {
         DestroyMsgData(messageData);
         return FALSE;

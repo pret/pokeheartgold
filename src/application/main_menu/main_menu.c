@@ -673,7 +673,7 @@ static BOOL ov74_0222779C(MainMenuAppData *data) {
             String *string = NewString_ReadMsgData(msgData, unk2->msgId);
             u32 width = FontID_String_GetWidthMultiline(unk.fontId, string, 0);
             unk.textX = (unk2->width * 8 - width) / 2;
-            String_Delete(string);
+            String_Free(string);
             DestroyMsgData(msgData);
             unk.textY = 4;
         }
@@ -892,7 +892,7 @@ static void PrintPlayerInfoField(Window *window, MsgData *msgData, MessageFormat
     int stringPixelWidth = FontID_String_GetWidth(0, string, GetFontAttribute(0, 2));
     u32 x = GetWindowWidth(window) * 8 - (stringPixelWidth + 32);
     AddTextPrinterParameterizedWithColor(window, 0, string, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
-    String_Delete(string);
+    String_Free(string);
 }
 
 static void ov74_02227E64(MessageFormat *messageFormat, int number) {
@@ -937,7 +937,7 @@ static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruc
 
         String *string = ReadMsgData_ExpandPlaceholders(messageFormat, msgData, sContinueButtonMsgs[i], HEAP_ID_MAIN_MENU);
         AddTextPrinterParameterizedWithColor(a2->window, 0, string, 32, i * 16, TEXT_SPEED_NOTRANSFER, textColor, NULL);
-        String_Delete(string);
+        String_Free(string);
     }
 
     BufferPlayersName(messageFormat, 0, data->profile);

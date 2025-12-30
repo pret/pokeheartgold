@@ -2635,7 +2635,7 @@ ov109_021E6D2C: ; 0x021E6D2C
 	add r5, r6, #0
 _021E6D42:
 	ldr r0, [r5, #0x48]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #2
@@ -2644,15 +2644,15 @@ _021E6D42:
 	add r4, r6, #0
 _021E6D54:
 	ldr r0, [r4, #0x34]
-	bl String_Delete
+	bl String_Free
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #5
 	blt _021E6D54
 	ldr r0, [r6, #0x30]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x2c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x28]
 	bl MessageFormat_Delete
 	ldr r0, [r6, #0x24]

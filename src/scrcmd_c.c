@@ -4055,8 +4055,8 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
     r7_str = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msg_0202_00001, HEAP_ID_FIELD3);
     sp0_str = NewString_ReadMsgData(msgData, msg_0202_00000);
     *p_ret = String_Compare(r7_str, sp0_str) == FALSE;
-    String_Delete(r7_str);
-    String_Delete(sp0_str);
+    String_Free(r7_str);
+    String_Free(sp0_str);
     DestroyMsgData(msgData);
     MessageFormat_Delete(msgFmt);
     return FALSE;

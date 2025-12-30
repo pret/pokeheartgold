@@ -176,7 +176,7 @@ static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, enum HeapID heapID) {
 
 static void ov55_021E5BAC(UnkStruct_ov55_021E5B08 *unk) {
     if (unk->mailAuthorName != NULL) {
-        String_Delete(unk->mailAuthorName);
+        String_Free(unk->mailAuthorName);
     }
 
     Heap_Free(unk);

@@ -346,7 +346,7 @@ static BOOL TouchSaveApp_AskForSave(TouchSaveAppData *data) {
 
 static BOOL TouchSaveApp_WaitForTextPrinter(TouchSaveAppData *data) {
     if (!TextPrinterCheckActive(data->textPrinter)) {
-        String_Delete(data->string);
+        String_Free(data->string);
         data->state = data->stateAfterTextPrint;
     }
 

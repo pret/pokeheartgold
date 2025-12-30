@@ -361,7 +361,7 @@ _0225D796:
 	mov r1, #4
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x24
 	bl CopyWindowPixelsToVram_TextMode
@@ -437,7 +437,7 @@ ov32_0225D84C: ; 0x0225D84C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #4
 	mov r1, #8
 	bl String_New
@@ -476,7 +476,7 @@ ov32_0225D84C: ; 0x0225D84C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x10]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x51
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -519,9 +519,9 @@ ov32_0225D84C: ; 0x0225D84C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x34
 	bl CopyWindowPixelsToVram_TextMode
@@ -635,9 +635,9 @@ _0225D9D4:
 	ldr r0, [sp, #0x1c]
 	bl Heap_Free
 	ldr r0, [sp, #0x14]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x18]
-	bl String_Delete
+	bl String_Free
 	ldr r1, _0225DA7C ; =0x000002AB
 	mov r0, #1
 	ldrb r2, [r7, r1]

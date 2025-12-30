@@ -3867,9 +3867,9 @@ _021E9308:
 	cmp r0, #2
 	blt _021E927E
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x24]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x20]
 	bl DestroyMsgData
 	add sp, #0x60
@@ -5978,7 +5978,7 @@ _021EA3D6:
 	ldr r0, [r4, #0x7c]
 	cmp r0, #0
 	beq _021EA3E0
-	bl String_Delete
+	bl String_Free
 _021EA3E0:
 	add r0, r4, #0
 	add r0, #0xc
@@ -6989,7 +6989,7 @@ _021EABFC:
 	str r0, [sp, #0x10]
 	bl ov102_021EAC70
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x1c]
 	add sp, #0x28
 	pop {r3, r4, r5, r6, r7, pc}
@@ -7046,11 +7046,11 @@ _021EAC6C: .word 0x0000FFFE
 
 	thumb_func_start ov102_021EAC70
 ov102_021EAC70: ; 0x021EAC70
-	ldr r3, _021EAC78 ; =String_Delete
+	ldr r3, _021EAC78 ; =String_Free
 	ldr r0, [r0]
 	bx r3
 	nop
-_021EAC78: .word String_Delete
+_021EAC78: .word String_Free
 	thumb_func_end ov102_021EAC70
 
 	thumb_func_start ov102_021EAC7C
@@ -7369,7 +7369,7 @@ _021EAE68:
 	add r2, r6, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl MessageFormat_Delete
 	b _021EAF34
@@ -7896,7 +7896,7 @@ _021EB2BA:
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r5, #0x18]
-	bl String_Delete
+	bl String_Free
 	add r6, r6, #1
 	add r4, #0x10
 	add r5, r5, #4
@@ -8617,7 +8617,7 @@ _021EB7EC:
 	add r0, sp, #0x28
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, sp, #0x28
 	bl RemoveWindow
 	add r4, r4, #1
@@ -8718,7 +8718,7 @@ _021EB91E:
 	add r0, sp, #0x20
 	bl PutWindowTilemap
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, sp, #0x20
 	bl RemoveWindow
 	ldr r0, [sp, #0x14]
@@ -9242,7 +9242,7 @@ _021EBCDE:
 	ldr r0, [r4, #0x3c]
 	cmp r0, #0
 	beq _021EBCE8
-	bl String_Delete
+	bl String_Free
 _021EBCE8:
 	add r0, r4, #0
 	add r0, #0x20

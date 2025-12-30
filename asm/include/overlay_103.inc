@@ -127,7 +127,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay

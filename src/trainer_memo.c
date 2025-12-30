@@ -354,7 +354,7 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
     BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
-    String_Delete(str);
+    String_Free(str);
 }
 
 static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
@@ -404,7 +404,7 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
     }
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
-    String_Delete(str);
+    String_Free(str);
 }
 
 static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) {
@@ -426,7 +426,7 @@ static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) 
     }
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
-    String_Delete(str);
+    String_Free(str);
 }
 
 static void FormatCharacteristic(Unk0208E600 *a0) {
@@ -808,7 +808,7 @@ static void BoxMon_SetOriginalTrainerData(BoxPokemon *boxMon, PlayerProfile *pro
     SetBoxMonData(boxMon, MON_DATA_OT_GENDER, &gender);
     SetBoxMonData(boxMon, MON_DATA_OT_NAME_STRING, name);
 
-    String_Delete(name);
+    String_Free(name);
 }
 
 static void BoxMon_SetMetDateAndLocation(BoxPokemon *boxMon, int mapsec, int setMetDateParam) {

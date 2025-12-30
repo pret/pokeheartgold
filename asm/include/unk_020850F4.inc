@@ -38,7 +38,7 @@
 .public GfGfx_SwapDisplay
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public TouchHitboxController_Destroy
 .public sub_0203A880
 .public sub_0203A914

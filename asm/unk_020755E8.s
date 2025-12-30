@@ -351,7 +351,7 @@ sub_02075804: ; 0x02075804
 	add r0, r5, #0
 	bl CopyWindowToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0

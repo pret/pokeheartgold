@@ -195,7 +195,7 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, enum Hea
     }
 
     Heap_Free(tmp);
-    String_Delete(name);
+    String_Free(name);
     SaveSubstruct_UpdateCRC(SAVE_RANKINGS);
     return ret;
 }
@@ -353,7 +353,7 @@ void ViewRankingsPage_Delete(ViewRankingsPage *viewRankingsPage) {
 
     for (i = 0; i < RANKINGS_PER_STAT; ++i) {
         if (viewRankingsPage->entries[i].playerName != NULL) {
-            String_Delete(viewRankingsPage->entries[i].playerName);
+            String_Free(viewRankingsPage->entries[i].playerName);
         }
     }
     MI_CpuClear8(viewRankingsPage, sizeof(ViewRankingsPage));

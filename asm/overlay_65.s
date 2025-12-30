@@ -251,11 +251,11 @@ ov65_0221BFEC: ; 0x0221BFEC
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -708,7 +708,7 @@ _0221C430:
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x10]
 	add r5, #0x10
 	add r4, r4, #1
@@ -1826,7 +1826,7 @@ WirelessTradeSelectMon_Exit: ; 0x0221CD74
 	mov r0, #0x67
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _0221CE14 ; =0x00002228
 	ldr r0, [r4, r0]
 	bl Heap_Free
@@ -1863,7 +1863,7 @@ WirelessTradeSelectMon_Exit: ; 0x0221CD74
 	mov r0, #0x66
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0
@@ -2852,7 +2852,7 @@ ov65_0221D5FC: ; 0x0221D5FC
 	mov r3, #0
 	bl ov65_0221FB4C
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	thumb_func_end ov65_0221D5FC
@@ -3090,7 +3090,7 @@ _0221D7B0:
 	str r3, [sp, #4]
 	bl ov65_0221FB4C
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	b _0221D842
 _0221D836:
 	add r0, r5, #0
@@ -3141,7 +3141,7 @@ _0221D842:
 	str r3, [sp, #4]
 	bl ov65_0221FB4C
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x38
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -4777,7 +4777,7 @@ _0221E5AA:
 	sub r3, #0xd
 	bl ListMenuItems_AppendFromMsgData
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	ldr r2, _0221E5F0 ; =0x00003688
 	mov r3, #6
 	lsl r3, r3, #6
@@ -7496,7 +7496,7 @@ _0221FBC6:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r4, r5, r6, pc}

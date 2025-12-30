@@ -71,14 +71,14 @@ PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContext
 
 void PhoneCall_DestroyContext(PokegearPhoneCallContext *ctx) {
     for (int i = 0; i < 3; ++i) {
-        String_Delete(ctx->noSignalMsgs[i]);
-        String_Delete(ctx->hangUpMsgs[i]);
+        String_Free(ctx->noSignalMsgs[i]);
+        String_Free(ctx->hangUpMsgs[i]);
     }
-    String_Delete(ctx->buf14String);
-    String_Delete(ctx->contactClassBuf);
-    String_Delete(ctx->contactNameBuf);
-    String_Delete(ctx->phoneCallMsgReadBuff);
-    String_Delete(ctx->msgExpansionBuff);
+    String_Free(ctx->buf14String);
+    String_Free(ctx->contactClassBuf);
+    String_Free(ctx->contactNameBuf);
+    String_Free(ctx->phoneCallMsgReadBuff);
+    String_Free(ctx->msgExpansionBuff);
     MessageFormat_Delete(ctx->msgFormat);
     DestroyMsgData(ctx->msgData_0640);
     DestroyMsgData(ctx->msgData_0271);

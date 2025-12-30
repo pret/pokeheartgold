@@ -814,7 +814,7 @@ ov89_02258F00: ; 0x02258F00
 	add r0, r4, #0
 	add r0, #0xc4
 	ldr r0, [r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #2
 	bl FontID_Release
 	ldr r0, [r4, #0x10]
@@ -1677,7 +1677,7 @@ _0225963E:
 	mov r1, #1
 	bl TextOBJ_SetSpritesDrawFlag
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x4c
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -8197,11 +8197,11 @@ _0225C7D8:
 	add r0, r4, r5
 	bl CopyWindowToVram
 	ldr r0, [sp, #0x1c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x20]
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
 	bl Heap_Free
 _0225C80A:

@@ -80,11 +80,11 @@ RadioShow *RadioShow_Create(SaveData *saveData, u16 mapID, u16 mapHeader, BOOL i
 }
 
 void RadioShow_Delete(RadioShow *radioShow) {
-    String_Delete(radioShow->msgbufRaw);
-    String_Delete(radioShow->msgbufFormatted);
-    String_Delete(radioShow->showHost);
-    String_Delete(radioShow->showTitle);
-    String_Delete(radioShow->curLineStr);
+    String_Free(radioShow->msgbufRaw);
+    String_Free(radioShow->msgbufFormatted);
+    String_Free(radioShow->showHost);
+    String_Free(radioShow->showTitle);
+    String_Free(radioShow->curLineStr);
     MessageFormat_Delete(radioShow->msgFormat);
     DestroyMsgData(radioShow->msgData_269);
     MI_CpuClear8(radioShow, sizeof(RadioShow));

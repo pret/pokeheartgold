@@ -135,7 +135,7 @@ void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action act
     case BERRY_POTS_APP_022036FC_ACTION_16: {
         String *berryName = GetNutName(unk->berryId, data->heapID);
         BufferString(data->msgFmt, 0, berryName, 0, 0, 2);
-        String_Delete(berryName);
+        String_Free(berryName);
         break;
     }
     default:

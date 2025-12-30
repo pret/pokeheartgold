@@ -57,7 +57,7 @@
 .public sub_02021AC8
 .public sub_02021B5C
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public sub_0203410C
 .public sub_020342C0
 .public sub_02037030

@@ -828,22 +828,22 @@ sub_0208895C: ; 0x0208895C
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x8d
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x8e
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _020889CC ; =0x000007AC
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x7b
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	pop {r4, pc}
 	.balign 4, 0
 _020889BC: .word 0x000007B4

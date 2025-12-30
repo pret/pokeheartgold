@@ -1571,9 +1571,9 @@ _022594BC:
 	add r0, #8
 	bl RemoveWindow
 	ldr r0, [r4, #0x1c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x18]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #4]
 	bl DestroyMsgData
 	ldr r0, [r4]

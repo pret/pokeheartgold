@@ -1197,8 +1197,8 @@ static void ov12_0226516C(BattleHpBar *hpBar) {
         MI_CpuCopy16(pixelBuffer2 + ov12_0226D680[hpBar->type][1].size, (void *)((u32)vramAddr + ov12_0226D680[hpBar->type][3].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), ov12_0226D680[hpBar->type][3].size);
     }
     RemoveWindow(&window);
-    String_Delete(string);
-    String_Delete(string2);
+    String_Free(string);
+    String_Free(string2);
 }
 
 static void ov12_022652D0(BattleHpBar *hpBar) {
@@ -1329,7 +1329,7 @@ static void BattleHpBar_PrintSafariOrParkBallsString(BattleHpBar *hpBar, u32 fla
     }
 
     RemoveWindow(&window);
-    String_Delete(string);
+    String_Free(string);
 }
 
 static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u32 flag) {
@@ -1374,8 +1374,8 @@ static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u
     }
 
     RemoveWindow(&window);
-    String_Delete(string);
-    String_Delete(string2);
+    String_Free(string);
+    String_Free(string2);
 }
 
 static int ov12_022657E4(BattleHpBar *hpBar, BOOL isExp) {

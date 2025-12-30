@@ -154,7 +154,7 @@
 .public Sprite_GetDrawPriority
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String16_FormatInteger
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers

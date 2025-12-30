@@ -228,7 +228,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             }
             MI_CpuFill16(set->trainer.otName, EOS, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
             MI_CpuCopy16(String_cstr(otName), set->trainer.otName, length * sizeof(u16));
-            String_Delete(otName);
+            String_Free(otName);
         }
     }
     for (s32 i = 0; i < PARTY_SIZE; i++) {
@@ -246,7 +246,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             }
             MI_CpuFill16(trainerHouseMon->nickname, EOS, POKEMON_NAME_LENGTH * sizeof(u16));
             MI_CpuCopy16(String_cstr(name), trainerHouseMon->nickname, length * sizeof(u16));
-            String_Delete(name);
+            String_Free(name);
         }
     }
 }

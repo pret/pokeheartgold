@@ -870,8 +870,8 @@ BOOL RegisterHallOfFame_Exit(OverlayManager *man, int *state) {
     RegisterHallOfFame_DestroyBgConfig(data);
     NARC_Delete(data->narcA180);
     NARC_Delete(data->narcA101);
-    String_Delete(data->strbuf1);
-    String_Delete(data->strbuf2);
+    String_Free(data->strbuf1);
+    String_Free(data->strbuf2);
     MessageFormat_Delete(data->msgFormat);
     DestroyMsgData(data->msgData);
     OverlayManager_FreeData(man);

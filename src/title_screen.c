@@ -642,7 +642,7 @@ static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, 
     } else {
         AddTextPrinterParameterizedWithColorAndSpacing(&animData->window, 0, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 2, 0), 1, 0, NULL);
     }
-    String_Delete(string);
+    String_Free(string);
     DestroyMsgData(msgData);
 
     u16 color1 = RGB(27, 8, 0);  // HeartGold

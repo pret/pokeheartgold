@@ -192,7 +192,7 @@
 .public TouchscreenHitbox_TouchNewIsIn
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_Copy
 .public String_GetLength
 .public CopyU16ArrayToString

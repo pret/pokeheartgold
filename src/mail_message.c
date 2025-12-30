@@ -123,7 +123,7 @@ u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
             msg_cstr++;
         }
     }
-    String_Delete(msg);
+    String_Free(msg);
     return ret;
 }
 

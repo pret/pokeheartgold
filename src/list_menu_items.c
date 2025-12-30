@@ -65,7 +65,7 @@ void ListMenuItems_DestroyMenuStrings(LISTMENUITEM *items) {
         if (items[i].text == NULL) {
             break;
         }
-        String_Delete(items[i].text);
+        String_Free(items[i].text);
         items[i].text = NULL;
     }
 }

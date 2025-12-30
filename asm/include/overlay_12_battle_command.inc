@@ -66,7 +66,7 @@
 .public Sprite_SetPalOffsetRespectVramOffset
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public CalcMonStats
 .public GetMonData
 .public SetMonData

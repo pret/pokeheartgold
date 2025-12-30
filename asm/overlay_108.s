@@ -2914,7 +2914,7 @@ ov108_021E7014: ; 0x021E7014
 	lsl r7, r7, #2
 _021E7020:
 	ldr r0, [r5, r7]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -2925,7 +2925,7 @@ _021E7020:
 	lsl r7, r7, #4
 _021E7036:
 	ldr r0, [r4, r7]
-	bl String_Delete
+	bl String_Free
 	add r5, r5, #1
 	add r4, r4, #4
 	cmp r5, #5
@@ -2933,15 +2933,15 @@ _021E7036:
 	mov r0, #0xce
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xcd
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xc3
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xc2
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]

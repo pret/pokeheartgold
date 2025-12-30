@@ -26,7 +26,7 @@ ov34_0225D520: ; 0x0225D520
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1764,7 +1764,7 @@ _0225E2F4:
 	add r3, r1, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 _0225E332:
 	ldr r1, [sp, #8]
 	add r0, r7, #0
@@ -1812,7 +1812,7 @@ _0225E372:
 	ldr r0, [r0, #4]
 	cmp r0, #0
 	beq _0225E386
-	bl String_Delete
+	bl String_Free
 _0225E386:
 	ldr r1, [r5]
 	mov r0, #0x1c
@@ -1821,7 +1821,7 @@ _0225E386:
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _0225E398
-	bl String_Delete
+	bl String_Free
 _0225E398:
 	ldr r0, [sp, #8]
 	bl PlayerProfile_GetNamePtr

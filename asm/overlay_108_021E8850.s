@@ -2577,7 +2577,7 @@ ov108_021E9CD0: ; 0x021E9CD0
 	lsl r7, r7, #2
 _021E9CDC:
 	ldr r0, [r5, r7]
-	bl String_Delete
+	bl String_Free
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #4
@@ -2585,19 +2585,19 @@ _021E9CDC:
 	mov r0, #0x33
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xcb
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xc6
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xc5
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x31
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]

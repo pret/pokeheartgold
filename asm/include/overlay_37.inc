@@ -101,7 +101,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public PlayerName_FlatToString
 .public Options_GetFrame
 .public sub_02033250

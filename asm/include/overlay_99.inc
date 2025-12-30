@@ -71,7 +71,7 @@
 .public TouchscreenHitbox_FindHitboxAtTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public PlayerProfile_GetTrainerGender
 .public Pokedex_GetSeenSpindaPersonality

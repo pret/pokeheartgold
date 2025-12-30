@@ -1039,7 +1039,7 @@ _0225CD72:
 	add r0, r4, #0
 	add r0, #0x88
 	ldr r0, [r0]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0x84
 	ldr r0, [r0]
@@ -1780,7 +1780,7 @@ ov93_0225D468: ; 0x0225D468
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r5, #0x70
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -2223,7 +2223,7 @@ ov93_0225D78C: ; 0x0225D78C
 	add r3, r5, r3
 	bl ov93_02261EB8
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -2308,9 +2308,9 @@ _0225D840:
 	cmp r0, #6
 	blt _0225D840
 	ldr r0, [sp, #0x30]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x38]
-	bl String_Delete
+	bl String_Free
 	ldr r0, _0225D9D4 ; =0x000015A8
 	add r0, r5, r0
 	bl ov93_02261FC8

@@ -66,7 +66,7 @@
 .public System_GetTouchNew
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public Save_PlayerData_GetOptionsAddr
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

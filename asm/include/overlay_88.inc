@@ -73,7 +73,7 @@
 .public SpriteList_RenderAndAnimateSprites
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_Copy
 .public String_GetLength
 .public String_CountLines

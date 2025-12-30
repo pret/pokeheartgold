@@ -594,7 +594,7 @@ ov14_021E5DB8: ; 0x021E5DB8
 	add r4, r0, #0
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x28]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x34]
 	ldr r0, [r0, #0x24]
 	bl MessageFormat_Delete
@@ -31129,7 +31129,7 @@ ov14_021F4F84: ; 0x021F4F84
 	add r1, r6, #0
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov14_021F4F84
@@ -31163,7 +31163,7 @@ ov14_021F4FBC: ; 0x021F4FBC
 	ldr r3, [sp, #0x24]
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov14_021F4FBC
@@ -32120,7 +32120,7 @@ ov14_021F5718: ; 0x021F5718
 	sub r3, #8
 	bl ov14_021F4F24
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r4, #0
@@ -32170,7 +32170,7 @@ ov14_021F57B8: ; 0x021F57B8
 	mov r2, #0x30
 	bl ov14_021F4F24
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x34]
 	add r1, sp, #0xc
 	mov r2, #0
@@ -32233,7 +32233,7 @@ ov14_021F57B8: ; 0x021F57B8
 	mov r2, #0x14
 	bl ov14_021F4F24
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x34]
 	add r1, sp, #0xc
 	mov r2, #1
@@ -32304,7 +32304,7 @@ _021F5918:
 	mov r2, #0x30
 	bl ov14_021F4F24
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x34]
 	add r1, sp, #0xc
 	mov r2, #0
@@ -32621,7 +32621,7 @@ _021F5B8E:
 	add r3, r7, #0
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x70
@@ -32702,7 +32702,7 @@ _021F5C5A:
 	bl ov14_021F4F24
 _021F5C6E:
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x14
@@ -32958,7 +32958,7 @@ _021F5E4A:
 	add r3, r7, #0
 	bl ov14_021F4F24
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add sp, #0x3c
@@ -33969,7 +33969,7 @@ _021F65D8:
 	asr r2, r2, #1
 	bl ov14_021F4F24
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x2e
 	lsl r0, r0, #4
 	add r0, r4, r0
@@ -34510,7 +34510,7 @@ _021F6996:
 	ldr r1, [r1, #0x28]
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x34]
 	lsl r4, r6, #4
 	add r0, #0x30

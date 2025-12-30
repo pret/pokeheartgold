@@ -294,7 +294,7 @@ static void MGGive_Mon(FieldSystem *fieldSys, MysteryGiftData *unused) {
         SetMonData(tmpPokemon, MON_DATA_OT_ID, &trainerId);
         SetMonData(tmpPokemon, MON_DATA_OT_GENDER, &gender);
         pokemon = tmpPokemon;
-        String_Delete(playerName);
+        String_Free(playerName);
     }
 
     MonSetTrainerMemo(pokemon, profile, 4, sub_02017FE4(MAPSECTYPE_EXTERNAL, eggMetLocation), HEAP_ID_FIELD3);
@@ -381,7 +381,7 @@ static void MGMessageSuccess_BattleRules(struct GetMysteryGiftGmmState *gmmState
     BufferPlayersName(gmmState->msgFormat, 0, Save_PlayerData_GetProfile(gmmState->fieldSys->saveData));
     String *rulesetName = LinkBattleRuleset_CreateStringFromName(mgData, HEAP_ID_FIELD3);
     BufferString(gmmState->msgFormat, 1, rulesetName, 0, 1, 2);
-    String_Delete(rulesetName);
+    String_Free(rulesetName);
 }
 
 // Unreachable

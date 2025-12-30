@@ -316,7 +316,7 @@ _0225D73A:
 	add r0, r5, r4
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, r4
 	bl CopyWindowPixelsToVram_TextMode
 	add r0, r5, r4

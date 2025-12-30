@@ -631,7 +631,7 @@ ov103_021ECE54: ; 0x021ECE54
 	mov r0, #0x23
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x8b
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -3539,7 +3539,7 @@ ov103_021EE430: ; 0x021EE430
 	add r1, r6, #0
 	bl ov103_021EE3E4
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov103_021EE430
@@ -3844,7 +3844,7 @@ ov103_021EE644: ; 0x021EE644
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r1, #0x23
 	ldr r2, [r5, #0xc]
 	lsl r1, r1, #4
@@ -3898,7 +3898,7 @@ ov103_021EE644: ; 0x021EE644
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	mov r1, #0x6e
 	ldr r2, [r5, #0xc]
 	mov r3, #0
@@ -3960,7 +3960,7 @@ ov103_021EE784: ; 0x021EE784
 	add r2, r4, #0
 	bl BufferString
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #8
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
@@ -4024,7 +4024,7 @@ ov103_021EE824: ; 0x021EE824
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl ov103_021EE7DC
 	pop {r3, r4, r5, pc}
@@ -4254,7 +4254,7 @@ ov103_021EE9C8: ; 0x021EE9C8
 	add r3, r2, #0
 	bl ov103_021EE3E4
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 _021EEA1C:
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}

@@ -86,7 +86,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public TouchscreenHitbox_TouchNewIsIn
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public PlayerProfile_GetNamePtr
 .public PlayerProfile_GetTrainerID

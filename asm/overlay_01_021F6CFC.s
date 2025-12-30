@@ -736,9 +736,9 @@ ov01_021F7268: ; 0x021F7268
 	ldr r0, [r4, #0x38]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0xc]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #8]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0x10
 	bl WindowIsInUse

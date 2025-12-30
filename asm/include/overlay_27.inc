@@ -85,7 +85,7 @@
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public System_GetTouchNew
 .public GF_AssertFail
-.public String_Delete
+.public String_Free
 .public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
 .public sub_0203769C

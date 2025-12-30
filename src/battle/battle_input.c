@@ -1877,10 +1877,10 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_POKEMON], strPokemon, 4, MAKE_TEXT_COLOR(7, 8, 9), 2, 20023, 216, 168, 1, NULL);
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_RUN], strRun, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 176, 1, NULL);
 
-    String_Delete(strFight);
-    String_Delete(strBag);
-    String_Delete(strPokemon);
-    String_Delete(strRun);
+    String_Free(strFight);
+    String_Free(strBag);
+    String_Free(strPokemon);
+    String_Free(strRun);
 
     if ((BattleSystem_GetBattleType(battleInput->battleSystem) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) == 0) {
         Pokemon *pokemon = BattleSystem_GetPartyMon(battleInput->battleSystem, menu->battlerId, menu->selectedMon);
@@ -1931,14 +1931,14 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
 
                     if (strMonGender != NULL) {
                         BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 20023, 136, 0x10, 0, 0);
-                        String_Delete(strMonGender);
+                        String_Free(strMonGender);
                     }
                     int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
                     BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, msg_0197_01274);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);
                     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, 0, 0x90800, 3, 20023, 144, 0x10, 0, 0);
-                    String_Delete(strMonLevel);
+                    String_Free(strMonLevel);
                     BattleInput_SetBugContestPokemonIcon(battleInput, caughtMon);
                 }
             }
@@ -1947,9 +1947,9 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
             String *strBallsRemaining = NewString_ReadMsgData(msgLoader, msg_0197_01271);
             StringExpandPlaceholders(format, strFormated, strBallsRemaining);
             BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, 0, 0x90800, 3, 20023, 224, 0x10, 0, 0);
-            String_Delete(strBallsRemaining);
+            String_Free(strBallsRemaining);
             BattleInput_CreateBugContestGraphics(battleInput);
-            String_Delete(strFormated);
+            String_Free(strFormated);
         }
     }
 }
@@ -2028,7 +2028,7 @@ static void BattleInput_CreateFightMenuObjects(BattleInput *battleInput, int par
 
     String *strCancel = NewString_ReadMsgData(msgLoader, msg_0197_00929); // CANCEL
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_CANCEL], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 175, 1, NULL);
-    String_Delete(strCancel);
+    String_Free(strCancel);
 
     int moveType;
 
@@ -2077,8 +2077,8 @@ static void BattleInput_CreateYesNoMenuObjects(BattleInput *battleInput, int par
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_YES], strYes, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_NO], strNo, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
-    String_Delete(strYes);
-    String_Delete(strNo);
+    String_Free(strYes);
+    String_Free(strNo);
 }
 
 static void BattleInput_CreateKeepForgetMenuObjects(BattleInput *battleInput, int param1, int param2) {
@@ -2089,8 +2089,8 @@ static void BattleInput_CreateKeepForgetMenuObjects(BattleInput *battleInput, in
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FORGET_MOVE], strForget, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_MOVE], strKeep, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
-    String_Delete(strForget);
-    String_Delete(strKeep);
+    String_Free(strForget);
+    String_Free(strKeep);
 }
 
 static void BattleInput_CreateGiveUpOnMoveMenuObjects(BattleInput *battleInput, int param1, int param2) {
@@ -2109,10 +2109,10 @@ static void BattleInput_CreateGiveUpOnMoveMenuObjects(BattleInput *battleInput, 
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_GIVEUP], strGiveUpFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_DONT_GIVEUP], strDontGiveUpFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
-    String_Delete(strGiveUp);
-    String_Delete(strDontGiveUp);
-    String_Delete(strGiveUpFormated);
-    String_Delete(strDontGiveUpFormated);
+    String_Free(strGiveUp);
+    String_Free(strDontGiveUp);
+    String_Free(strGiveUpFormated);
+    String_Free(strDontGiveUpFormated);
 }
 
 static void BattleInput_CreateVSRecorderPlaybackMenuObjects(BattleInput *battleInput, int param1, int param2) {
@@ -2138,7 +2138,7 @@ static void BattleInput_CreateVSRecorderPlaybackMenuObjects(BattleInput *battleI
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strStop, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 171, 1, NULL);
-    String_Delete(strStop);
+    String_Free(strStop);
 }
 
 static void BattleInput_CreateSwitchOrFleeMenuObjects(BattleInput *battleInput, int param1, int param2) {
@@ -2157,10 +2157,10 @@ static void BattleInput_CreateSwitchOrFleeMenuObjects(BattleInput *battleInput, 
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_USE_NEXT_MON], strNextPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FLEE], strFleeFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
-    String_Delete(strNextPokemon);
-    String_Delete(strFlee);
-    String_Delete(strNextPokemonFormated);
-    String_Delete(strFleeFormated);
+    String_Free(strNextPokemon);
+    String_Free(strFlee);
+    String_Free(strNextPokemonFormated);
+    String_Free(strFleeFormated);
 }
 
 static void BattleInput_CreateSwitchOrKeepMenuObjects(BattleInput *battleInput, int param1, int param2) {
@@ -2184,10 +2184,10 @@ static void BattleInput_CreateSwitchOrKeepMenuObjects(BattleInput *battleInput, 
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_SWITCH], strSwitchPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_BATTLING], strKeepBattlingFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
-    String_Delete(strSwitchPokemon);
-    String_Delete(strKeepBattling);
-    String_Delete(strSwitchPokemonFormated);
-    String_Delete(strKeepBattlingFormated);
+    String_Free(strSwitchPokemon);
+    String_Free(strKeepBattling);
+    String_Free(strSwitchPokemonFormated);
+    String_Free(strKeepBattlingFormated);
 }
 
 static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int param1, int param2) {
@@ -2245,7 +2245,7 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
             }
 
             BattleInput_CreateTextObject(battleInput, &battleInput->textObj[i], strPokemonName, 4, monNameColor, 6, 20023, sTargetPokemonMenuPositions[i][0], sTargetPokemonMenuPositions[i][1], 1, NULL);
-            String_Delete(strGenderMarker);
+            String_Free(strGenderMarker);
 
             switch (i) {
             case 1:
@@ -2262,11 +2262,11 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
         }
     }
 
-    String_Delete(strPokemonName);
+    String_Free(strPokemonName);
 
     String *strCancel = NewString_ReadMsgData(msgLoader, msg_0197_00930); // CANCEL
     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_TARGET_CANCEL], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][0], sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][1], 1, NULL);
-    String_Delete(strCancel);
+    String_Free(strCancel);
 }
 
 static int BattleInput_TouchCallback_MainMenu(BattleInput *battleInput, int touchInput, int unused) {
@@ -2874,7 +2874,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
         if ((moveDisplayObj->moveDisplay[i].window.pixelBuffer == NULL) || ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0))) {
             strMoveName = GetMoveName(moveMemory->moveNo[i], HEAP_ID_BATTLE);
             BattleInput_SetMoveDisplayObjectTextFont(battleInput, strMoveName, 4, &moveDisplayObj->moveDisplay[i], MAKE_TEXT_COLOR(7, 8, 9));
-            String_Delete(strMoveName);
+            String_Free(strMoveName);
         }
 
         if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != 0) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i]) || (moveMemory->ppMax[i] != moveDisplayObj->move.ppMax[i])) {
@@ -2894,9 +2894,9 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
         }
     }
 
-    String_Delete(strPP);
-    String_Delete(strSlash);
-    String_Delete(strSlashFormatted);
+    String_Free(strPP);
+    String_Free(strSlash);
+    String_Free(strSlashFormatted);
 
     moveDisplayObj->move = *moveMemory;
 }
@@ -4500,7 +4500,7 @@ void BattleInput_PrintSystemMessage(BattleInput *battleInput, int index) {
         src = NewString_ReadMsgData(msgLoader, stopMsgId[index][i]);
 
         BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1 + i], src, 0, MAKE_TEXT_COLOR(1, 2, 0), 4, 20023, 1 * 8 + 8, 6 * 8 + 16 + 16 * i, 0, NULL);
-        String_Delete(src);
+        String_Free(src);
     }
 }
 

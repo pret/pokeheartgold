@@ -10,7 +10,7 @@
 .public Heap_Free
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public CopyU16ArrayToString
 .public Save_PrepareForAsyncWrite
 .public Save_WriteFileAsync

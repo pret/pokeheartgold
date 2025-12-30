@@ -87,7 +87,7 @@
 .public TouchscreenHitbox_TouchNewIsIn
 .public System_GetTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public String_Copy
 .public CopyU16ArrayToString
 .public Save_PlayerData_GetOptionsAddr

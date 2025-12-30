@@ -4823,7 +4823,7 @@ _0225AB30:
 	add r0, r4, #0
 	bl ov49_0225AC38
 	ldr r0, [r4, #0x18]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl RemoveWindow
 	pop {r4, pc}
@@ -5951,9 +5951,9 @@ _0225B36A:
 	cmp r4, #4
 	blt _0225B36A
 	ldr r0, [r6, #0x14]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r6, #0x18]
-	bl String_Delete
+	bl String_Free
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end ov49_0225B35C

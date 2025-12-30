@@ -127,7 +127,7 @@
 .public Camera_Init_FromPosDistanceAndAngle
 .public System_GetTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public Thunk_G3X_Reset
 .public Options_GetTextFrameDelay
 .public Options_GetFrame

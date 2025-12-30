@@ -348,7 +348,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         if (TextPrinterCheckActive(work->subPrinterId)) {
             break;
         }
-        String_Delete(work->strbuf);
+        String_Free(work->strbuf);
         work->strbuf = NULL;
         *state = CHOOSE_STARTER_STATE_HANDLE_INPUT;
         break;
@@ -371,7 +371,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
             {
                 String *baseTrans = NULL;
                 printMsgOnWinEx(work->winTop, work->heapID, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &baseTrans);
-                String_Delete(baseTrans);
+                String_Free(baseTrans);
             }
             PlayCry(sSpecies[work->curSelection], FALSE);
             printMsgOnBottom(work, msg_0190_00007);
@@ -425,7 +425,7 @@ BOOL ChooseStarter_Main(OverlayManager *ovy, int *state) {
         {
             String *sp10 = NULL;
             printMsgOnWinEx(work->winTop, work->heapID, FALSE, NARC_msg_msg_0190_bin, msg_0190_00004 + work->curSelection, MAKE_TEXT_COLOR(1, 2, 15), 0, &sp10);
-            String_Delete(sp10);
+            String_Free(sp10);
         }
         PlayCry(sSpecies[work->curSelection], 0);
         if (work->state != SELECT_STATE_INSPECT) {
@@ -1060,7 +1060,7 @@ static u8 printMsgOnWinEx(Window *window, enum HeapID heapID, BOOL makeFrame, s3
 static void printMsgOnBottom(struct ChooseStarterAppWork *work, int msgId) {
     String *string = NULL;
     printMsgOnWinEx(work->winBottom, work->heapID, FALSE, NARC_msg_msg_0190_bin, msgId, MAKE_TEXT_COLOR(1, 2, 0), 0, &string);
-    String_Delete(string);
+    String_Free(string);
 }
 
 static void freeWindow(Window *window) {

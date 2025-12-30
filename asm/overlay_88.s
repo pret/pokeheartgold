@@ -1561,7 +1561,7 @@ ov88_022593D0: ; 0x022593D0
 	add r0, r5, #0
 	add r0, #0x90
 	ldr r0, [r0]
-	bl String_Delete
+	bl String_Free
 	add r4, r5, #0
 	mov r6, #0
 	add r4, #0x60
@@ -1752,7 +1752,7 @@ ov88_0225954C: ; 0x0225954C
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #8]
-	bl String_Delete
+	bl String_Free
 	add r4, #0xc
 	add r0, r4, #0
 	bl RemoveWindow
@@ -2042,7 +2042,7 @@ _02259766:
 	blo _02259720
 _0225978A:
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x14]
 	bl ScheduleWindowCopyToVram
 	ldr r0, [sp, #0x28]
@@ -2064,7 +2064,7 @@ _0225978A:
 	cmp r0, #4
 	blt _022596BC
 	ldr r0, [sp, #0x34]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x38]
 	bl DestroyMsgData
 	add sp, #0x40

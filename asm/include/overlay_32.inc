@@ -64,7 +64,7 @@
 .public Sprite_UpdateAnim
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public PlayerProfile_New
 .public Save_Profile_PlayerName_Set
 .public sub_0202C254

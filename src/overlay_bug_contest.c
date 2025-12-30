@@ -137,7 +137,7 @@ void BugContest_BufferContestWinnerNames(BugContest *bugContest, MsgData *msgDat
     } else {
         string = NewString_ReadMsgData(msgData, contestant->id + msg_0246_00078);
         BufferString(msgFmt, 0, string, 2, 1, 2);
-        String_Delete(string);
+        String_Free(string);
         BufferTrainerClassName(msgFmt, 2, sBugContestOpponentClasses[contestant->id]);
     }
     BufferSpeciesName(msgFmt, 1, contestant->data.species);
@@ -164,7 +164,7 @@ BOOL BugContest_BufferCaughtMonNick(BugContest *bugContest, MessageFormat *msgFm
     string = String_New(POKEMON_NAME_LENGTH + 1 + 1, bugContest->heapID);
     GetMonData(bugContest->mon, MON_DATA_NICKNAME_STRING, string);
     BufferString(msgFmt, slot, string, 2, 1, 2);
-    String_Delete(string);
+    String_Free(string);
     return bugContest->party_cur_num >= PARTY_SIZE;
 }
 

@@ -26,7 +26,7 @@ String *String_New(u32 maxsize, enum HeapID heapID) {
     return ret;
 }
 
-void String_Delete(String *string) {
+void String_Free(String *string) {
     String_Assert(string);
     string->magic = STRING_INVAL;
     Heap_Free(string);

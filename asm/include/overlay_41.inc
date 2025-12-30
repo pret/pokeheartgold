@@ -182,7 +182,7 @@
 .public GF2dGfxRawResMan_DoesNotHaveObjWithId
 .public GF2dGfxRawResMan_AllocObj
 .public String_New
-.public String_Delete
+.public String_Free
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy
 .public TouchHitboxController_IsTriggered

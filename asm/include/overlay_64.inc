@@ -93,7 +93,7 @@
 .public Sprite_GetPaletteProxy
 .public TouchscreenHitbox_FindRectAtTouchNew
 .public String_New
-.public String_Delete
+.public String_Free
 .public Save_HOF_GetNumRecords
 .public Save_HOF_TranslateRecordIdx
 .public Save_HOF_RecordCountMons

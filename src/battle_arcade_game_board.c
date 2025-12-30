@@ -532,11 +532,11 @@ static void BattleArcadeGameBoard_Delete(GAME_BOARD_WORK *work) {
 
     DestroyMsgData(work->msgData);
     MessageFormat_Delete(work->msgFmt);
-    String_Delete(work->unk70);
-    String_Delete(work->unk74);
+    String_Free(work->unk70);
+    String_Free(work->unk74);
 
     for (i = 0; i < 2; i++) {
-        String_Delete(work->unk78[i]);
+        String_Free(work->unk78[i]);
     }
 
     ov84_0223F8E4(work->window);

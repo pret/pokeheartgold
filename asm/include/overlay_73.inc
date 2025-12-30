@@ -125,7 +125,7 @@
 .public System_GetTouchHeld
 .public GF_AssertFail
 .public String_New
-.public String_Delete
+.public String_Free
 .public String16_FormatInteger
 .public sub_020270C4
 .public Save_PrepareForAsyncWrite

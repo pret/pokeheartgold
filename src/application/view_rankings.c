@@ -983,11 +983,11 @@ static void ViewRankings_CreateStrings(ViewRankingsAppData *appData) {
 
 static void ViewRankings_DeleteStrings(ViewRankingsAppData *appData) {
     for (int i = 0; i < VIEW_RANKINGS_MISC_STRING_MAX; ++i) {
-        String_Delete(appData->miscStrings[i]);
+        String_Free(appData->miscStrings[i]);
     }
-    String_Delete(appData->playerNameString);
-    String_Delete(appData->rankingString);
-    String_Delete(appData->formatedStrBuf);
+    String_Free(appData->playerNameString);
+    String_Free(appData->rankingString);
+    String_Free(appData->formatedStrBuf);
     MessageFormat_Delete(appData->msgFormat);
     DestroyMsgData(appData->msgData);
 }
@@ -1050,7 +1050,7 @@ static void ViewRankings_PrintDeleteRecordText(ViewRankingsAppData *appData) {
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00040);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
-    String_Delete(string);
+    String_Free(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD]);
 }
 
@@ -1058,7 +1058,7 @@ static void ViewRankings_PrintReturnText(ViewRankingsAppData *appData) {
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00041);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
-    String_Delete(string);
+    String_Free(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN]);
 }
 
@@ -1074,7 +1074,7 @@ static void ViewRankings_PrintDeleteXsRecordAreYouSure(ViewRankingsAppData *appD
     BufferString(appData->msgFormat, 0, page->entries[entryIdx].pageEntry->playerName, 2, 1, 2);
     string = ReadMsgData_ExpandPlaceholders(appData->msgFormat, appData->msgData, msg_0421_00049, HEAP_ID_RANKINGS_APP);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    String_Delete(string);
+    String_Free(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
@@ -1085,7 +1085,7 @@ static void ViewRankings_PrintYourOwnRecordCantBeDeleted(ViewRankingsAppData *ap
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     string = NewString_ReadMsgData(appData->msgData, msg_0421_00052);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    String_Delete(string);
+    String_Free(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 
@@ -1100,8 +1100,8 @@ static void ViewRankings_PrintRecordStatHeaderText(ViewRankingsAppData *appData)
     string2 = NewString_ReadMsgData(appData->msgData, msgNo + 1);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    String_Delete(string);
-    String_Delete(string2);
+    String_Free(string);
+    String_Free(string2);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER]);
 }
 
@@ -1112,7 +1112,7 @@ static void ViewRankings_PrintSelectRecordToDeleteText(ViewRankingsAppData *appD
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     string = NewString_ReadMsgData(appData->msgData, msg_0421_00048);
     AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    String_Delete(string);
+    String_Free(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
 

@@ -3048,7 +3048,7 @@ ov48_02259F14: ; 0x02259F14
 	bl RemoveTextPrinter
 _02259F30:
 	ldr r0, [r4, #0xc]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x20]
 	bl YesNoPrompt_Destroy
 	add r4, #0x10
@@ -5437,9 +5437,9 @@ ov48_0225B0A4: ; 0x0225B0A4
 	ldr r0, [r4, #4]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #8]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0xc]
-	bl String_Delete
+	bl String_Free
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_0225B0A4

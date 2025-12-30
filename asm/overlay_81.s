@@ -5368,7 +5368,7 @@ _0224090C:
 	add r2, r4, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -5422,7 +5422,7 @@ _02240980:
 	add r2, r4, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x14
@@ -5490,9 +5490,9 @@ ov81_022409B0: ; 0x022409B0
 	add r1, r6, #0
 	bl AddTextPrinterParameterizedWithColor
 	ldr r0, [sp, #0x1c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x18]
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	mov r1, #0xb0
 	mov r2, #0
@@ -5530,7 +5530,7 @@ ov81_022409B0: ; 0x022409B0
 	add r0, r4, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	b _02240AC8
 _02240A96:
 	cmp r7, #1
@@ -5554,7 +5554,7 @@ _02240A96:
 	add r2, r5, #0
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 _02240AC8:
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -5663,7 +5663,7 @@ _02240B6C:
 	bl AddTextPrinterParameterizedWithColor
 _02240BA0:
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
@@ -5768,14 +5768,14 @@ _02240C6C:
 	ldr r0, [r5, #0x20]
 	bl MessageFormat_Delete
 	ldr r0, [r5, #0x24]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x28]
-	bl String_Delete
+	bl String_Free
 	mov r6, #0
 	add r4, r5, #0
 _02240C9A:
 	ldr r0, [r4, #0x2c]
-	bl String_Delete
+	bl String_Free
 	add r6, r6, #1
 	add r4, r4, #4
 	cmp r6, #4
@@ -10550,7 +10550,7 @@ ov81_022430B4: ; 0x022430B4
 	add r0, r5, #0
 	bl ov81_02243068
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	thumb_func_end ov81_022430B4

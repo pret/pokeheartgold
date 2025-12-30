@@ -340,7 +340,7 @@ static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msg
         data->textPrinterId = AddTextPrinterParameterized(&data->window, 1, data->textString, 0, 0, textSpeed, NULL);
 
         if (textSpeed == TEXT_SPEED_INSTANT) {
-            String_Delete(data->textString);
+            String_Free(data->textString);
 
             // Skip waiting for the text printer to finish since the speed here was instant
             data->printState++;
@@ -353,7 +353,7 @@ static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msg
             break;
         }
 
-        String_Delete(data->textString);
+        String_Free(data->textString);
         data->printState++;
         break;
     case PRINTSTATE_EXIT:

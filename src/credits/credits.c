@@ -279,7 +279,7 @@ BOOL Credits_Exit(OverlayManager *man, int *state) {
         PageWork *ptr = &work->pageWork;
         RemoveWindow(&ptr->window);
         DestroyMsgData(ptr->msgData);
-        String_Delete(ptr->string);
+        String_Free(ptr->string);
         FreeBG(work);
         for (u8 i = 0; i < 6; i++) {
             Heap_Free(work->unk468[i]);

@@ -176,7 +176,7 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     ReadMsgDataIntoString(errorMessageData, msgNo, tmpStr);
     StringExpandPlaceholders(messageFormat, errorMessageStr, tmpStr);
     AddTextPrinterParameterized(&window, 0, errorMessageStr, 0, 0, 0, NULL);
-    String_Delete(errorMessageStr);
+    String_Free(errorMessageStr);
     // BUG: tmp_str is never destroyed.
 
     GfGfx_BothDispOn();

@@ -404,7 +404,7 @@ _02085446:
 	bl GF_AssertFail
 _0208544E:
 	ldr r0, [r4, #0x1c]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r4, pc}

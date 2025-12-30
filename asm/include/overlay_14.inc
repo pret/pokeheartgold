@@ -201,7 +201,7 @@
 .public System_GetTouchHeldCoords
 .public System_GetTouchNewCoords
 .public String_New
-.public String_Delete
+.public String_Free
 .public SaveArray_PCStorage_Get
 .public Save_PlayerData_GetProfile
 .public Save_PlayerData_GetOptionsAddr

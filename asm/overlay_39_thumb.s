@@ -57,7 +57,7 @@ ov39_02227088: ; 0x02227088
 	mov r2, #0x14
 	bl CopyStringToU16Array
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r4, #0
 	str r7, [sp, #0xc]
 	str r7, [sp, #8]
@@ -346,7 +346,7 @@ ov39_022272EC: ; 0x022272EC
 	str r1, [r4, r0]
 	add r0, #0x38
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0xfe
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -1790,7 +1790,7 @@ _02227D6E:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	mov r1, #0xff
 	lsl r1, r1, #2
 	ldr r1, [r4, r1]
@@ -2639,11 +2639,11 @@ _02228394:
 	ldr r0, [r4, #0x20]
 	bl MessageFormat_Delete
 	ldr r0, [r4, #0x38]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x3c]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r4, #0x34]
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl ov39_02228948
 	ldr r0, [r4, #4]
@@ -3420,7 +3420,7 @@ ov39_022289D0: ; 0x022289D0
 	mov r0, #0xff
 	str r0, [r5, #0x40]
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0xc
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
@@ -3562,7 +3562,7 @@ ov39_02228B04: ; 0x02228B04
 	add r2, r6, #0
 	bl StringExpandPlaceholders
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #0xf

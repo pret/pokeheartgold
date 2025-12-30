@@ -68,7 +68,7 @@ ov80_02229F04: ; 0x02229F04
 	mov r2, #8
 	bl CopyStringToU16Array
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
 	bl DestroyMsgData
 	add r0, r6, #0
@@ -496,7 +496,7 @@ _0222A1BC:
 	add r2, r7, #0
 	bl SetMonData
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	bl DestroyMsgData
 	b _0222A2F0
@@ -594,7 +594,7 @@ ov80_0222A334: ; 0x0222A334
 	add r2, sp, #8
 	bl SetMonData
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	bl DestroyMsgData
 	add sp, #0xc

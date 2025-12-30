@@ -146,7 +146,7 @@ ov31_0225D654: ; 0x0225D654
 	mov r0, #0x62
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x57
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -223,7 +223,7 @@ _0225D6F8:
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 	nop
@@ -1035,7 +1035,7 @@ _0225DD60:
 	add r3, r4, #0
 	bl ov31_0225DE00
 	ldr r0, [sp, #0x10]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [r5, #0x14]
 	ldr r1, [sp, #0xc]
 	add r2, r7, #0
@@ -1148,7 +1148,7 @@ _0225DE3A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -1198,7 +1198,7 @@ _0225DEBC:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x10
 	mov r1, #0xb
 	bl String_New
@@ -1270,9 +1270,9 @@ _0225DF2A:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r5, #0x74
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -1360,9 +1360,9 @@ _0225DFEC:
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r4, #0x54
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
@@ -1554,7 +1554,7 @@ ov31_0225E184: ; 0x0225E184
 	add r3, r6, #0
 	bl ov31_0225DE00
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	mov r2, #0x9a
 	ldr r0, [r5, #0x14]
 	lsl r2, r2, #2
@@ -1617,7 +1617,7 @@ ov31_0225E20C: ; 0x0225E20C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #5
 	mov r1, #0xb
 	bl String_New
@@ -1669,9 +1669,9 @@ ov31_0225E20C: ; 0x0225E20C
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x49
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1780,13 +1780,13 @@ ov31_0225E2D4: ; 0x0225E2D4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x10]
-	bl String_Delete
+	bl String_Free
 	ldr r0, [sp, #0x14]
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0xf4
 	bl ScheduleWindowCopyToVram
@@ -1850,9 +1850,9 @@ ov31_0225E2D4: ; 0x0225E2D4
 	str r1, [sp, #0xc]
 	bl AddTextPrinterParameterizedWithColor
 	add r0, r6, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r7, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x4d
 	lsl r0, r0, #2
 	add r0, r5, r0
@@ -1891,7 +1891,7 @@ ov31_0225E474: ; 0x0225E474
 	add r0, r5, r0
 	bl ScheduleWindowCopyToVram
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -2022,7 +2022,7 @@ ov31_0225E54C: ; 0x0225E54C
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2144,7 +2144,7 @@ _0225E684:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2439,7 +2439,7 @@ _0225E8DA:
 	add r2, r5, #0
 	bl StringExpandPlaceholders
 	add r0, r5, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #0xf
@@ -2607,7 +2607,7 @@ ov31_0225EA08: ; 0x0225EA08
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #0xf
@@ -2675,7 +2675,7 @@ ov31_0225EA9C: ; 0x0225EA9C
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #0xf
@@ -2743,7 +2743,7 @@ ov31_0225EB30: ; 0x0225EB30
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #0xf
@@ -2811,7 +2811,7 @@ ov31_0225EBC4: ; 0x0225EBC4
 	add r2, r4, #0
 	bl StringExpandPlaceholders
 	add r0, r4, #0
-	bl String_Delete
+	bl String_Free
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #0xf

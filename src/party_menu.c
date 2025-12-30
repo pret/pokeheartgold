@@ -619,12 +619,12 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     sub_02021238();
     GF_DestroyVramTransferManager();
     for (i = 0; i < PARTY_SIZE; ++i) {
-        String_Delete(partyMenu->monsDrawState[i].nickname);
+        String_Free(partyMenu->monsDrawState[i].nickname);
     }
-    String_Delete(partyMenu->formattedStrBuf);
-    String_Delete(partyMenu->unformattedStrBuf);
+    String_Free(partyMenu->formattedStrBuf);
+    String_Free(partyMenu->unformattedStrBuf);
     for (i = 0; i < 20; ++i) {
-        String_Delete(partyMenu->contextMenuStrings[i]);
+        String_Free(partyMenu->contextMenuStrings[i]);
     }
     DestroyMsgData(partyMenu->msgData);
     MessagePrinter_Delete(partyMenu->msgPrinter);
@@ -1996,7 +1996,7 @@ static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
             BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-            String_Delete(string);
+            String_Free(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SELECT_MONS_ERROR_MSG_CLOSE;
             PlaySE(SEQ_SE_DP_CUSTOM06);
@@ -2282,7 +2282,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
             BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
             BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->levelUpStatsTmp[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
-            String_Delete(string);
+            String_Free(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
             partyMenu->levelUpStatsTmp[1] = 4;
             partyMenu->afterTextPrinterState = PARTY_MENU_STATE_SOFTBOILED;
