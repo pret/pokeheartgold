@@ -12,13 +12,13 @@
 static inline void String_Assert(const String *string)
 {
     GF_ASSERT(string != NULL);
-    GF_ASSERT(string->magic == STRING_MAGIC);
+    GF_ASSERT(string->integrity == STRING_MAGIC);
 }
 
 String *String_New(u32 maxSize, enum HeapID heapID) {
     String *ret = (String *)Heap_Alloc(heapID, 2 * maxSize + sizeof(String) + sizeof(u16));
     if (ret != NULL) {
-        ret->magic = STRING_MAGIC;
+        ret->integrity = STRING_MAGIC;
         ret->maxSize = maxSize;
         ret->size = 0;
         ret->data[0] = EOS;
@@ -28,7 +28,7 @@ String *String_New(u32 maxSize, enum HeapID heapID) {
 
 void String_Free(String *string) {
     String_Assert(string);
-    string->magic = STRING_INVAL;
+    string->integrity = STRING_INVAL;
     Heap_Free(string);
 }
 

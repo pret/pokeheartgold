@@ -9,7 +9,7 @@
 typedef struct String {
     u16 maxSize;
     u16 size;
-    u32 magic;
+    u32 integrity;
     u16 data[0];
 } String;
 
