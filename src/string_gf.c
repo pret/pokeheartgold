@@ -371,7 +371,7 @@ u16 *String_cstr(String *string) {
     return string->data;
 }
 
-void String_Cat(String *dest, String *src) {
+void String_Concat(String *dest, String *src) {
     String_Assert(dest);
     String_Assert(src);
 
@@ -425,7 +425,7 @@ void String_Cat_HandleTrainerName(String *dest, String *src) {
         *dest_p = EOS;
         dest->size += outsize;
     } else {
-        String_Cat(dest, src);
+        String_Concat(dest, src);
     }
 }
 

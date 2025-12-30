@@ -14,7 +14,7 @@
 .public String_New
 .public String_Free
 .public String_FormatInt
-.public String_Cat
+.public String_Concat
 .public TouchHitboxController_Create
 .public TouchHitboxController_IsTriggered
 .public sub_0203A4AC

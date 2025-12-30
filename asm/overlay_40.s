@@ -46956,7 +46956,7 @@ _022435C2:
 	lsl r0, r0, #6
 	ldr r0, [r7, r0]
 	ldr r1, [sp, #4]
-	bl String_Cat
+	bl String_Concat
 	mov r0, #0x81
 	lsl r0, r0, #2
 	ldr r0, [r7, r0]

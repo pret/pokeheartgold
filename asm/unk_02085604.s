@@ -1316,7 +1316,7 @@ _02085FC0:
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	add r1, r7, #0
-	bl String_Cat
+	bl String_Concat
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]

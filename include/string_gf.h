@@ -36,7 +36,7 @@ int String_CountLines(const String *string);
 void String_GetLineN(String *dest, const String *src, u32 n);
 void String_RadioAddStatic(String *string, u8 level);
 u16 *String_cstr(String *string);
-void String_Cat(String *dest, String *src);
+void String_Concat(String *dest, String *src);
 BOOL String_IsTrainerName(String *string);
 
 #endif // POKEHEARTGOLD_STRING_H
