@@ -665,12 +665,12 @@ static void NamingScreen_SetDefaultName(NamingScreenAppData *data, NamingScreenA
         // UB: Nonbinary players will not initialize string.
         String_Copy(args->nameInputString, string);
         String_Free(string);
-        CopyStringToU16Array(args->nameInputString, args->nameInputFlat, 10);
+        String_ToChars(args->nameInputString, args->nameInputFlat, 10);
     } else if (data->type == NAME_SCREEN_RIVAL) {
         string = NewString_ReadMsgData(data->msgData_254, FIRST_DEFAULT_NAME_RIVAL);
         String_Copy(args->nameInputString, string);
         String_Free(string);
-        CopyStringToU16Array(args->nameInputString, args->nameInputFlat, 10);
+        String_ToChars(args->nameInputString, args->nameInputFlat, 10);
     } else {
         // Remaining cases have their own separate handlers.
         args->noInput = TRUE;
@@ -937,7 +937,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId ^ 1, BG_POS_OP_SET_Y, data->bgPosVecs[data->activeKeyboardBgId ^ 1].y);
     data->entryBufBak[0] = EOS;
     if (args->nameInputString != NULL) {
-        CopyStringToU16Array(args->nameInputString, data->entryBufBak, 32);
+        String_ToChars(args->nameInputString, data->entryBufBak, 32);
     }
     MI_CpuFill16(data->entryBuf, 1, sizeof(data->entryBuf));
     if (data->type == NAME_SCREEN_POKEMON) {

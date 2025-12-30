@@ -51,9 +51,9 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                 team->party[j].moves[3] = GetMonData(mon, MON_DATA_MOVE4, NULL);
                 if (string != NULL) {
                     GetMonData(mon, MON_DATA_NICKNAME_STRING, string);
-                    CopyStringToU16Array(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
+                    String_ToChars(string, team->party[j].nickname, POKEMON_NAME_LENGTH + 1);
                     GetMonData(mon, MON_DATA_OT_NAME_STRING, string);
-                    CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
+                    String_ToChars(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
                     team->party[j].nickname[0] = EOS;
                     team->party[j].otname[0] = EOS;

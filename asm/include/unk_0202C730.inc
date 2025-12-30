@@ -2,7 +2,7 @@
 #pragma once
 .public StringNotEqualN
 .public PRandom
-.public CopyStringToU16Array
+.public String_ToChars
 .public SaveArray_Get
 .public Save_FriendGroup_sizeof
 .public sub_0202C738

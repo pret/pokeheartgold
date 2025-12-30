@@ -73,7 +73,7 @@ void Save_Profile_PlayerName_Set(PlayerProfile *profile, u16 *name) {
 }
 
 void PlayerName_StringToFlat(PlayerProfile *profile, String *str) {
-    CopyStringToU16Array(str, profile->name, PLAYER_NAME_LENGTH + 1);
+    String_ToChars(str, profile->name, PLAYER_NAME_LENGTH + 1);
 }
 
 const u16 *PlayerProfile_GetNamePtr(const PlayerProfile *profile) {

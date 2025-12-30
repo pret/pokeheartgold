@@ -355,7 +355,7 @@ void CopyU16ArrayToStringN(String *string, const u16 *buf, u32 length) {
     GF_ASSERT(FALSE);
 }
 
-void CopyStringToU16Array(const String *string, u16 *buf, u32 length) {
+void String_ToChars(const String *string, u16 *buf, u32 length) {
     String_Assert(string);
 
     if (string->size + 1 <= length) {

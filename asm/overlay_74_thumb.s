@@ -1001,7 +1001,7 @@ ov74_0222947C: ; 0x0222947C
 	add r7, r0, #0
 	add r1, r4, r1
 	mov r2, #0x24
-	bl CopyStringToU16Array
+	bl String_ToChars
 	add r0, r7, #0
 	bl String_Free
 	mov r0, #8
@@ -1069,7 +1069,7 @@ ov74_0222947C: ; 0x0222947C
 	add r7, r0, #0
 	add r1, r4, r1
 	mov r2, #0xfa
-	bl CopyStringToU16Array
+	bl String_ToChars
 	add r0, r7, #0
 	bl String_Free
 	mov r0, #0xd2

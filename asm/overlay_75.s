@@ -5959,7 +5959,7 @@ _02249794:
 	ldr r0, [sp]
 	ldr r1, [sp, #4]
 	mov r2, #0x64
-	bl CopyStringToU16Array
+	bl String_ToChars
 	ldr r7, [sp, #4]
 	mov r6, #0
 _022497BE:
@@ -6040,7 +6040,7 @@ ov75_02249838: ; 0x02249838
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x64
-	bl CopyStringToU16Array
+	bl String_ToChars
 	ldrh r1, [r4]
 	ldr r0, _0224987C ; =0x0000FFFF
 	cmp r1, r0

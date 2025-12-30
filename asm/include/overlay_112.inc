@@ -197,7 +197,7 @@
 .public String_GetLength
 .public CopyU16ArrayToString
 .public CopyU16ArrayToStringN
-.public CopyStringToU16Array
+.public String_ToChars
 .public String_Concat
 .public String_AddChar
 .public SaveArray_PCStorage_Get

@@ -83,7 +83,7 @@ const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData) {
 }
 
 void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const String *name) {
-    CopyStringToU16Array(name, saveMiscData->rivalName, PLAYER_NAME_LENGTH + 1);
+    String_ToChars(name, saveMiscData->rivalName, PLAYER_NAME_LENGTH + 1);
 }
 
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData) {

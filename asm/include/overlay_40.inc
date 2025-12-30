@@ -171,7 +171,7 @@
 .public String_CountLines
 .public String_GetLineN
 .public CopyU16ArrayToString
-.public CopyStringToU16Array
+.public String_ToChars
 .public String_Concat
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy

@@ -8,7 +8,7 @@
 .public Heap_Alloc
 .public GF_AssertFail
 .public CopyU16ArrayToString
-.public CopyStringToU16Array
+.public String_ToChars
 .public SaveArray_Get
 .public Save_FashionData_Init
 .public Save_FashionData_sizeof

@@ -66,7 +66,7 @@ ov80_02229F04: ; 0x02229F04
 	add r4, r0, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl CopyStringToU16Array
+	bl String_ToChars
 	add r0, r4, #0
 	bl String_Free
 	add r0, r7, #0
