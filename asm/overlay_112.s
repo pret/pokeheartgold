@@ -4628,7 +4628,7 @@ ov112_021E7CC8: ; 0x021E7CC8
 	add r1, #0x3c
 	add r0, r4, #0
 	add r1, r5, r1
-	bl String_ToChars
+	bl String_CopyToChars
 	ldr r0, _021E7D6C ; =0x00001028
 	mov r1, #1
 	str r1, [r5, r0]
@@ -6355,7 +6355,7 @@ _021E8D24:
 	add r4, r0, #0
 	add r1, #0x28
 	mov r2, #0x15
-	bl String_ToChars
+	bl String_CopyToChars
 	add r0, r4, #0
 	bl String_Free
 	add r0, sp, #0x3c
@@ -23451,7 +23451,7 @@ _021F1514:
 	add r0, r6, #0
 	add r1, sp, #0
 	mov r2, #0x13
-	bl String_ToChars
+	bl String_CopyToChars
 	add r0, r5, #0
 	add r1, sp, #0
 	mov r2, #4
@@ -23481,7 +23481,7 @@ ov112_021F1548: ; 0x021F1548
 	add r0, r4, #0
 	add r1, sp, #0
 	add r2, r7, #0
-	bl String_ToChars
+	bl String_CopyToChars
 	add r0, r5, #0
 	add r1, sp, #0
 	add r2, r6, #0

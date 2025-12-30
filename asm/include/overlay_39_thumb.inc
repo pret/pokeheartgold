@@ -81,7 +81,7 @@
 .public GF_AssertFail
 .public String_New
 .public String_Free
-.public String_ToChars
+.public String_CopyToChars
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_Get
 .public Save_SysInfo_GetDwcProfileId

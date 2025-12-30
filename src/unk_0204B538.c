@@ -237,7 +237,7 @@ static u16 *sub_0204B7D0(UnkStruct_0204B7D0 *a0, u32 frontierTrainerIndex, enum 
     a0->unk1a = frontierTrainerIndex * 3;
     a0->unk04 = unk[0];
     String *trainerName = NewString_ReadMsgData(messageData, frontierTrainerIndex);
-    String_ToChars(trainerName, a0->unk08, NELEMS(a0->unk08));
+    String_CopyToChars(trainerName, a0->unk08, NELEMS(a0->unk08));
     String_Free(trainerName);
     DestroyMsgData(messageData);
     return unk;

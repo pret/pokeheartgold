@@ -154,7 +154,7 @@ sub_0202C7F8: ; 0x0202C7F8
 	add r1, r4, r2
 	add r0, r3, #0
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 	pop {r4, pc}
 _0202C810:
 	mov r2, #0x2c
@@ -163,7 +163,7 @@ _0202C810:
 	add r0, r3, #0
 	add r1, #0x10
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202C7F8

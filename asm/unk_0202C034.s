@@ -350,7 +350,7 @@ _0202C280:
 	add r1, r2, r1
 	add r0, r6, #0
 	mov r2, #0x10
-	bl String_ToChars
+	bl String_CopyToChars
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202C270
@@ -391,7 +391,7 @@ _0202C2C4:
 	add r1, r2, r1
 	add r0, r6, #0
 	mov r2, #0x10
-	bl String_ToChars
+	bl String_CopyToChars
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 	thumb_func_end sub_0202C2B4

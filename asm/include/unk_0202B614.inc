@@ -8,7 +8,7 @@
 .public Heap_Alloc
 .public GF_AssertFail
 .public String_CopyFromChars
-.public String_ToChars
+.public String_CopyToChars
 .public SaveArray_Get
 .public Save_FashionData_Init
 .public Save_FashionData_sizeof

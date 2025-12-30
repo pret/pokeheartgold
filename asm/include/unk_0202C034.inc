@@ -2,7 +2,7 @@
 #pragma once
 .public GF_RTC_CopyDate
 .public GF_AssertFail
-.public String_ToChars
+.public String_CopyToChars
 .public SaveArray_Get
 .public sub_0202C034
 .public sub_0202C03C

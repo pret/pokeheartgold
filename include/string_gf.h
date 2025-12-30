@@ -15,7 +15,7 @@ typedef struct String {
 
 String *String_New(u32 maxsize, enum HeapID heapID);
 void String_Free(String *string);
-void String_ToChars(const String *string, u16 *dest, u32 n);
+void String_CopyToChars(const String *string, u16 *dest, u32 n);
 void String_CopyFromChars(String *string, const u16 *src);
 void String_CopyNumChars(String *string, const u16 *src, u32 n);
 int String_Compare(String *a, String *b);

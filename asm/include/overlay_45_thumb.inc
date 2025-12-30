@@ -93,7 +93,7 @@
 .public GF3dGfxRawResObj_GetPlttKey
 .public String_New
 .public String_Free
-.public String_ToChars
+.public String_CopyToChars
 .public sub_02026E18
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_RTC_Get

@@ -190,7 +190,7 @@ SaveRankingsEntry *Save_GetPlayerMixingRankingEntry(SaveData *saveData, enum Hea
 
     for (i = 0; i < RANKINGS_COUNT; ++i) {
         ret[i].groupId = groupId;
-        String_ToChars(name, ret[i].playerName, PLAYER_NAME_LENGTH + 1);
+        String_CopyToChars(name, ret[i].playerName, PLAYER_NAME_LENGTH + 1);
         ret[i].stat = tmp[i];
     }
 

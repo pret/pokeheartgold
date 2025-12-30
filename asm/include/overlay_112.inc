@@ -197,7 +197,7 @@
 .public String_GetLength
 .public String_CopyFromChars
 .public String_CopyNumChars
-.public String_ToChars
+.public String_CopyToChars
 .public String_Concat
 .public String_AddChar
 .public SaveArray_PCStorage_Get

@@ -49461,7 +49461,7 @@ _02244982:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 	b _022449CC
 _0224499E:
 	add r0, r4, #0
@@ -49481,7 +49481,7 @@ _0224499E:
 	ldr r0, [sp, #0x1c]
 	ldr r1, [sp, #0x10]
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 _022449CC:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x28]

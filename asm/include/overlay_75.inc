@@ -108,7 +108,7 @@
 .public String_GetLength
 .public String_CountLines
 .public String_CopyLine
-.public String_ToChars
+.public String_CopyToChars
 .public SaveGameNormal
 .public Save_ClearStatusFlags
 .public Save_SysInfo_Get

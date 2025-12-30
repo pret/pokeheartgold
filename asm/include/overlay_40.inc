@@ -171,7 +171,7 @@
 .public String_CountLines
 .public String_CopyLine
 .public String_CopyFromChars
-.public String_ToChars
+.public String_CopyToChars
 .public String_Concat
 .public TouchHitboxController_Create
 .public TouchHitboxController_Destroy

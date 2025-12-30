@@ -3709,11 +3709,11 @@ ov45_0222B8A0: ; 0x0222B8A0
 	add r4, r0, #0
 	add r1, #0x28
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 	add r0, r4, #0
 	bl String_Free
 	mov r0, #0

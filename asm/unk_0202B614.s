@@ -152,7 +152,7 @@ sub_0202B718: ; 0x0202B718
 	add r4, r2, #0
 	add r1, #0x20
 	mov r2, #8
-	bl String_ToChars
+	bl String_CopyToChars
 	add r5, #0x34
 	strb r4, [r5]
 	pop {r3, r4, r5, pc}

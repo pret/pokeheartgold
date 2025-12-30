@@ -38,7 +38,7 @@ NPCTradeAppData *NPCTradeApp_Init(enum HeapID heapID, NpcTradeNum tradeno) {
     {
         String *name;
         name = _GetNpcTradeName(heapID, NPC_TRADE_OT_NUM(tradeno));
-        String_ToChars(name, strbuf, 128);
+        String_CopyToChars(name, strbuf, 128);
         String_Free(name);
     }
     Save_Profile_PlayerName_Set(ret->profile, strbuf);

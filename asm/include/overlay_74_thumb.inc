@@ -182,7 +182,7 @@
 .public String_FormatInt
 .public String_CopyFromChars
 .public String_CopyNumChars
-.public String_ToChars
+.public String_CopyToChars
 .public sub_02027098
 .public Save_MysteryGift_Get
 .public Save_MigratedPokemon_Get

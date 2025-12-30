@@ -252,7 +252,7 @@ void PCStorage_SetBoxName(PCStorage *storage, u32 boxno, const String *src) {
         boxno = storage->curBox;
     }
     if (boxno < NUM_BOXES) {
-        String_ToChars(src, storage->box_names[boxno], BOX_NAME_LENGTH);
+        String_CopyToChars(src, storage->box_names[boxno], BOX_NAME_LENGTH);
     }
 }
 

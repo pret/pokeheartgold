@@ -355,7 +355,7 @@ void String_CopyNumChars(String *string, const u16 *buf, u32 length) {
     GF_ASSERT(FALSE);
 }
 
-void String_ToChars(const String *string, u16 *buf, u32 length) {
+void String_CopyToChars(const String *string, u16 *buf, u32 length) {
     String_Assert(string);
 
     if (string->size + 1 <= length) {

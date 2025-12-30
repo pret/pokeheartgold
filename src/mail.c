@@ -154,7 +154,7 @@ Mail *CreateKenyaMail(Pokemon *mon, u8 mailType, u8 gender, String *name, u8 otI
     Mail *ret = Mail_New(HEAP_ID_3);
     Mail_Init(ret);
     ret->mail_type = mailType;
-    String_ToChars(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
+    String_CopyToChars(name, ret->author_name, PLAYER_NAME_LENGTH + 1);
     ret->author_gender = gender;
     ret->author_otId = otId;
 
