@@ -39,7 +39,7 @@ void ListMenuItems_AddItem(LISTMENUITEM *items, String *string, int value) {
 
     items = ListMenuItems_SeekEnd(items, &heapID);
     if (items != NULL) {
-        items->text = String_Dup(string, heapID);
+        items->text = String_Clone(string, heapID);
         items->value = value;
     }
 }

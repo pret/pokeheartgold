@@ -49,7 +49,7 @@ void String_Copy(String *dest, const String *src) {
     GF_ASSERT(FALSE);
 }
 
-String *String_Dup(const String *src, enum HeapID heapID) {
+String *String_Clone(const String *src, enum HeapID heapID) {
     String *ret;
     String_Assert(src);
     ret = String_New(src->size + 1, heapID);
