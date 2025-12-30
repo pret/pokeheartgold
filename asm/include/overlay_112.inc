@@ -199,7 +199,7 @@
 .public String_CopyNumChars
 .public String_CopyToChars
 .public String_Concat
-.public String_AddChar
+.public String_AppendChar
 .public SaveArray_PCStorage_Get
 .public SaveGameNormal
 .public Save_ClearStatusFlags

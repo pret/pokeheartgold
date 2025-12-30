@@ -23323,7 +23323,7 @@ ov112_021F13CC: ; 0x021F13CC
 	mov r1, #0xe
 	add r0, r4, #0
 	lsl r1, r1, #0xc
-	bl String_AddChar
+	bl String_AppendChar
 	add r0, r4, #0
 	add r1, r7, #0
 	bl String_Concat

@@ -22,7 +22,7 @@ int String_Compare(String *a, String *b);
 void String_Copy(String *dest, const String *src);
 void String_Clear(String *string);
 String *String_Clone(const String *src, enum HeapID heapID);
-void String_AddChar(String *string, u16 _char);
+void String_AppendChar(String *string, u16 _char);
 void String_CopyFromChars(String *dest, const u16 *src);
 void String_CopyNumChars(String *dest, const u16 *src, u32 n);
 u16 *String_GetChars(String *string);

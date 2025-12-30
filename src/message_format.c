@@ -669,11 +669,11 @@ void StringExpandPlaceholders(MessageFormat *msgFmt, String *dest, String *src) 
                 const u16 *before = cstr;
                 cstr = MsgArray_SkipControlCode(cstr);
                 while (before < cstr) {
-                    String_AddChar(dest, *before++);
+                    String_AppendChar(dest, *before++);
                 }
             }
         } else {
-            String_AddChar(dest, *cstr++);
+            String_AppendChar(dest, *cstr++);
         }
     }
 }
