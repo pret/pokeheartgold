@@ -429,7 +429,7 @@ void String_ConcatTrainerName(String *dest, String *src) {
     }
 }
 
-void String_UpperCharN(String *string, int n) {
+void String_UpperChar(String *string, int n) {
     String_Assert(string);
 
     if (string->size > n) {

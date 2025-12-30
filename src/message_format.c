@@ -636,7 +636,7 @@ void BufferMonthNameAbbr(MessageFormat *msgFmt, u32 fieldno, u32 month) {
 }
 
 void MessageFormat_UpperFirstChar(MessageFormat *msgFmt, u32 fieldno) {
-    String_UpperCharN(msgFmt->fields[fieldno].msg, 0);
+    String_UpperChar(msgFmt->fields[fieldno].msg, 0);
 }
 
 void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {

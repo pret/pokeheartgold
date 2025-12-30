@@ -27,7 +27,7 @@ void String_CopyFromChars(String *dest, const u16 *src);
 void String_CopyNumChars(String *dest, const u16 *src, u32 n);
 u16 *String_GetChars(String *string);
 void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
-void String_UpperCharN(String *string, int n);
+void String_UpperChar(String *string, int n);
 void String_ConcatTrainerName(String *dest, String *src);
 void String_FormatU64(String *string, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset);
 s64 String_AtoI(String *string, BOOL *flag);
