@@ -167,7 +167,7 @@
 .public String_Free
 .public String_Clear
 .public String_FormatInt
-.public String16_FormatUnsignedLongLong
+.public String_FormatU64
 .public String_CountLines
 .public String_GetLineN
 .public String_CopyChars

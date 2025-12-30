@@ -6781,7 +6781,7 @@ _0222EDA8:
 	ldr r0, [sp, #0x34]
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
-	bl String16_FormatUnsignedLongLong
+	bl String_FormatU64
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, [sp, #0x20]
@@ -7373,7 +7373,7 @@ _0222F258:
 	ldr r0, [sp, #0x48]
 	ldr r1, [sp, #0x24]
 	ldr r2, [sp, #0x28]
-	bl String16_FormatUnsignedLongLong
+	bl String_FormatU64
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, [sp, #0x20]

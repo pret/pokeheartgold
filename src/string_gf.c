@@ -135,7 +135,7 @@ void String_FormatInt(String *string, int num, u32 ndigits, PrintingMode strConv
     GF_ASSERT(FALSE);
 }
 
-void String16_FormatUnsignedLongLong(String *string, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
+void String_FormatU64(String *string, u64 num, u32 ndigits, PrintingMode strConvMode, BOOL whichCharset) {
     static const u64 sPowersOfTen[20] = {
         1ull,
         10ull,
