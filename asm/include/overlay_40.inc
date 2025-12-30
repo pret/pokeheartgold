@@ -170,7 +170,7 @@
 .public String_FormatU64
 .public String_CountLines
 .public String_CopyLine
-.public String_CopyChars
+.public String_CopyFromChars
 .public String_ToChars
 .public String_Concat
 .public TouchHitboxController_Create

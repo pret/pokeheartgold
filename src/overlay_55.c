@@ -158,7 +158,7 @@ static UnkStruct_ov55_021E5B08 *ov55_021E5B08(Mail *mail, enum HeapID heapID) {
     ret->unk0 = 0;
     ret->mailOTID = Mail_GetOTID(mail);
     ret->mailAuthorName = String_New(PLAYER_NAME_LENGTH + 1, heapID);
-    String_CopyChars(ret->mailAuthorName, Mail_GetAuthorNamePtr(mail));
+    String_CopyFromChars(ret->mailAuthorName, Mail_GetAuthorNamePtr(mail));
     ret->mailType = Mail_GetType(mail);
     ret->mailLanguage = Mail_GetLanguage(mail);
     ret->mailVersion = Mail_GetVersion(mail);

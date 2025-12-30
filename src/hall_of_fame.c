@@ -121,8 +121,8 @@ void Save_HOF_GetMonStatsByIndexPair(HallOfFame *hallOfFame, int teamNum, int mo
     dest->personality = mon->personality;
     dest->otid = mon->otid;
     dest->form = mon->form;
-    String_CopyChars(dest->nickname, mon->nickname);
-    String_CopyChars(dest->otname, mon->otname);
+    String_CopyFromChars(dest->nickname, mon->nickname);
+    String_CopyFromChars(dest->otname, mon->otname);
     for (i = 0; i < 4; i++) {
         dest->moves[i] = mon->moves[i];
     }

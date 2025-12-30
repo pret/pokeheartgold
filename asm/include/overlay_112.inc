@@ -195,7 +195,7 @@
 .public String_Free
 .public String_Copy
 .public String_GetLength
-.public String_CopyChars
+.public String_CopyFromChars
 .public String_CopyNumChars
 .public String_ToChars
 .public String_Concat

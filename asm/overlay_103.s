@@ -3566,7 +3566,7 @@ ov103_021EE468: ; 0x021EE468
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r2, r0]
-	bl String_CopyChars
+	bl String_CopyFromChars
 	mov r4, #0
 	str r4, [sp, #0x1c]
 _021EE49A:
@@ -3944,7 +3944,7 @@ ov103_021EE784: ; 0x021EE784
 	bl Mail_GetAuthorNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r5, #0
 	bl Mail_GetAuthorGender
 	add r3, r0, #0
@@ -4191,7 +4191,7 @@ _021EE93A:
 	ldr r2, [r5, #0xc]
 	lsl r0, r0, #4
 	ldr r0, [r2, r0]
-	bl String_CopyChars
+	bl String_CopyFromChars
 	mov r1, #0x86
 	ldr r4, [r5, #0xc]
 	mov r3, #1

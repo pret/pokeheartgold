@@ -4484,7 +4484,7 @@ _0222C1EA:
 	mov r0, #0x17
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
-	bl String_CopyChars
+	bl String_CopyFromChars
 	b _0222C214
 _0222C204:
 	mov r2, #0x5a

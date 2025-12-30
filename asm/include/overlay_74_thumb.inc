@@ -180,7 +180,7 @@
 .public String_Free
 .public String_Clear
 .public String_FormatInt
-.public String_CopyChars
+.public String_CopyFromChars
 .public String_CopyNumChars
 .public String_ToChars
 .public sub_02027098

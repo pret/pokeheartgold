@@ -98,12 +98,12 @@ void BufferString(MessageFormat *msgFmt, u32 fieldno, const String *string, s32 
 }
 
 void BufferPlayersName(MessageFormat *msgFmt, u32 fieldno, PlayerProfile *playerProfile) {
-    String_CopyChars(msgFmt->buffer, PlayerProfile_GetNamePtr(playerProfile));
+    String_CopyFromChars(msgFmt->buffer, PlayerProfile_GetNamePtr(playerProfile));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
 void BufferRivalsName(MessageFormat *msgFmt, u32 fieldno, SaveData *saveData) {
-    String_CopyChars(msgFmt->buffer, Save_Misc_RivalName_Const_Get(Save_Misc_Const_Get(saveData)));
+    String_CopyFromChars(msgFmt->buffer, Save_Misc_RivalName_Const_Get(Save_Misc_Const_Get(saveData)));
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
@@ -322,7 +322,7 @@ void BufferFrontierOpponentName(MessageFormat *msgFmt, u32 fieldno, u32 opponent
 }
 
 void BufferTrainerNameFromDataStruct(MessageFormat *msgFmt, u32 fieldno, Trainer *trainer) {
-    String_CopyChars(msgFmt->buffer, trainer->name);
+    String_CopyFromChars(msgFmt->buffer, trainer->name);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
@@ -469,7 +469,7 @@ void BufferGroupName(MessageFormat *msgFmt, SaveData *saveData, s32 groupId, s32
     u8 sp10 = sub_0202C830(friendGrp, groupId);
     u8 r7 = sub_0202C83C(friendGrp, groupId);
     String *dest = String_New(64, HEAP_ID_FIELD1);
-    String_CopyChars(dest, sub_0202C7E0(friendGrp, groupId, nameType));
+    String_CopyFromChars(dest, sub_0202C7E0(friendGrp, groupId, nameType));
     BufferString(msgFmt, fieldno, dest, sp10, 1, r7);
     String_Free(dest);
 }

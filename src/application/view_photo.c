@@ -423,7 +423,7 @@ static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String
     BufferPlayersName(msgFormat, 0, Save_PlayerData_GetProfile(saveData));
     MapID_GetLandmarkName(photo->mapId, heapID, strBuf);
     BufferString(msgFormat, 1, strBuf, 2, 0, 2);
-    String_CopyChars(strBuf, photo->leadMonNick);
+    String_CopyFromChars(strBuf, photo->leadMonNick);
     BufferString(msgFormat, 2, strBuf, 2, 0, 2);
     u8 year = photo->date >> 24;
     BufferIntegerAsString(msgFormat, 3, year + 2000, 4, PRINTING_MODE_LEADING_ZEROS, TRUE);

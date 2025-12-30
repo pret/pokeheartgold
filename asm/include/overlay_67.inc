@@ -89,7 +89,7 @@
 .public String_New
 .public String_Free
 .public String_Copy
-.public String_CopyChars
+.public String_CopyFromChars
 .public Save_PlayerData_GetOptionsAddr
 .public sub_0202D488
 .public sub_0202D5DC

@@ -18178,7 +18178,7 @@ _021EEBA4:
 	beq _021EECAC
 	add r2, #0x1e
 	add r1, r5, r2
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r4, #0
 	bl ZeroMonData
 	add r0, r4, #0
@@ -21625,7 +21625,7 @@ ov112_021F06CC: ; 0x021F06CC
 	add r1, #0xa
 	str r0, [sp, #0x10]
 	ldr r0, [r5, #0x70]
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r5, #0
 	add r0, #0x38
 	mov r1, #0
@@ -23406,12 +23406,12 @@ _021F14C6:
 	beq _021F14D6
 	ldr r1, _021F1500 ; =ov112_021FF2EC
 	add r0, r7, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	b _021F14DE
 _021F14D6:
 	add r0, r7, #0
 	add r1, r6, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 _021F14DE:
 	mov r0, #1
 	str r0, [sp]

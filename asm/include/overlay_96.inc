@@ -279,7 +279,7 @@
 .public String_New
 .public String_Free
 .public String_Copy
-.public String_CopyChars
+.public String_CopyFromChars
 .public String_cstr
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers

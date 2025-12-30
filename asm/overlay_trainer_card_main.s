@@ -2552,7 +2552,7 @@ _021E6F68:
 	add r1, r5, #0
 	ldr r0, [r7, r0]
 	add r1, #8
-	bl String_CopyChars
+	bl String_CopyFromChars
 	ldr r0, _021E71C8 ; =0x000033D0
 	mov r2, #0
 	ldr r0, [r7, r0]

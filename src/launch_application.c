@@ -1127,15 +1127,15 @@ void CallTask_NamingScreen(TaskManager *taskman, NameScreenType type, int specie
         data->args->monGender = GetMonData(mon, MON_DATA_GENDER, NULL);
         data->args->monForm = GetMonData(mon, MON_DATA_FORM, NULL);
         if (defaultStr != NULL) {
-            String_CopyChars(data->unk10, defaultStr);
+            String_CopyFromChars(data->unk10, defaultStr);
         }
         break;
     case NAME_SCREEN_GROUP:
-        String_CopyChars(data->unk10, defaultStr);
+        String_CopyFromChars(data->unk10, defaultStr);
         break;
     default:
         if (defaultStr != NULL) {
-            String_CopyChars(data->args->nameInputString, defaultStr);
+            String_CopyFromChars(data->args->nameInputString, defaultStr);
         }
         break;
     }

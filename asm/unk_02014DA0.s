@@ -1571,7 +1571,7 @@ ListMenuCursorNew: ; 0x02015788
 	bl String_New
 	ldr r1, _020157B4 ; =_020F60DC
 	str r0, [r4, #4]
-	bl String_CopyChars
+	bl String_CopyFromChars
 _020157AA:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}

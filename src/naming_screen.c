@@ -709,7 +709,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     } else {
         CopyU16StringArray(data->entryBufBak, data->entryBuf);
         CopyU16StringArray(args->nameInputFlat, data->entryBuf);
-        String_CopyChars(args->nameInputString, data->entryBuf);
+        String_CopyFromChars(args->nameInputString, data->entryBuf);
     }
     String_Free(data->unk_184);
     for (int i = 0; i < 7; ++i) {
@@ -994,7 +994,7 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
             Heap_Free(mon);
         } else {
             data->entryBuf[data->textCursorPos] = EOS;
-            String_CopyChars(string, data->entryBuf);
+            String_CopyFromChars(string, data->entryBuf);
             BufferString(data->msgFormat, 0, string, 0, 0, 0);
         }
         data->battleMsgString = ReadMsgData_ExpandPlaceholders(data->msgFormat, data->msgData_197, args->battleMsgId, HEAP_ID_NAMING_SCREEN);
@@ -1530,7 +1530,7 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
             pmCharBuf[0] = rawChars[i];
             pmCharBuf[1] = EOS;
             width = FontID_FlatArray_GetWidth(0, pmCharBuf, 0);
-            String_CopyChars(string, pmCharBuf);
+            String_CopyFromChars(string, pmCharBuf);
             centerX = x + i * spacing + ((spacing - width) / 2);
             AddTextPrinterParameterizedWithColor(window, 0, string, centerX, y, textSpeed, color, NULL);
         }
@@ -1568,7 +1568,7 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
         curCharBuf[1] = EOS;
 
         FillWindowPixelBuffer(&windows[i], 0);
-        String_CopyChars(string2, curCharBuf);
+        String_CopyFromChars(string2, curCharBuf);
         ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[i], string2, 2, MAKE_TEXT_COLOR(13, 14, 15));
         DC_FlushRange(ptr, 0x80);
         GXS_LoadOBJ(ptr, sSpriteGfxOffsets[i] * 32, 0x80);

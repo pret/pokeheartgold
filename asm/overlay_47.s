@@ -2676,7 +2676,7 @@ _02259CC4:
 _02259CF6:
 	ldr r0, [r5, #0x10]
 	add r1, r4, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	mov r4, #0
 	add r7, r6, #1
 _02259D02:
@@ -2688,7 +2688,7 @@ _02259D02:
 _02259D10:
 	ldr r0, [r5, #0x14]
 	add r1, r6, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r4, r4, #1
 	add r5, r5, #4
 	cmp r4, #3

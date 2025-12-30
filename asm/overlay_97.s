@@ -1778,7 +1778,7 @@ ov97_0221F428: ; 0x0221F428
 	ldr r0, [r5, #0x74]
 	add r4, r1, #0
 	add r1, #0xa
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r5, #0
 	add r0, #0x28
 	mov r1, #0

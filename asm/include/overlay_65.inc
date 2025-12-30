@@ -141,7 +141,7 @@
 .public String_New
 .public String_Free
 .public String_FormatInt
-.public String_CopyChars
+.public String_CopyFromChars
 .public PlayerProfile_New
 .public PlayerProfile_Copy
 .public Save_Profile_PlayerName_Set

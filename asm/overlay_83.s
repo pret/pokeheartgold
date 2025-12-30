@@ -4756,7 +4756,7 @@ _0224058C:
 	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
@@ -5595,7 +5595,7 @@ ov83_02240C8C: ; 0x02240C8C
 	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r7, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0
@@ -13224,7 +13224,7 @@ ov83_02244AD8: ; 0x02244AD8
 	bl PlayerProfile_GetNamePtr
 	add r1, r0, #0
 	add r0, r4, #0
-	bl String_CopyChars
+	bl String_CopyFromChars
 	add r0, r6, #0
 	bl PlayerProfile_GetTrainerGender
 	cmp r0, #0

@@ -792,7 +792,7 @@ sub_02088894: ; 0x02088894
 	cmp r1, #0
 	beq _0208893C
 	ldr r0, [r4, r2]
-	bl String_CopyChars
+	bl String_CopyFromChars
 _0208893C:
 	pop {r4, pc}
 	nop
