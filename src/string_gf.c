@@ -398,7 +398,7 @@ BOOL String_IsTrainerName(String *string) {
     return string->size != 0 && string->data[0] == TRNAMECODE;
 }
 
-void String_Cat_HandleTrainerName(String *dest, String *src) {
+void String_ConcatTrainerName(String *dest, String *src) {
     if (String_IsTrainerName(src)) {
         u16 *dest_p = &dest->data[dest->size];
         u16 *src_p = &src->data[1];

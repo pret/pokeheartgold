@@ -134,7 +134,7 @@ u32 FontID_String_GetWidth(u32 fontId, String *string, u32 letterSpacing) {
 BOOL FontID_String_AllCharsValid(FontID fontId, String *str0, String *str1) {
     GF_ASSERT(sFontWork->fontDataMan[fontId] != NULL);
     String_Clear(str1);
-    String_Cat_HandleTrainerName(str1, str0);
+    String_ConcatTrainerName(str1, str0);
     return StringAllCharsValid(sFontWork->fontDataMan[fontId], String_GetChars(str1));
 }
 
