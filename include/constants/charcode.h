@@ -374,7 +374,7 @@
 #define CHAR_O_ACUTE                  370
 #define CHAR_O_CIRCUMFLEX             371
 #define CHAR_O_TILDE                  372
-#define CHAR_O_DIERSIS                373
+#define CHAR_O_DIERESIS               373
 #define CHAR_MULTIPLY                 374
 #define CHAR_O_SLASH                  375
 #define CHAR_U_GRAVE                  376
@@ -406,7 +406,7 @@
 #define CHAR_o_ACUTE                  402
 #define CHAR_o_CIRCUMFLEX             403
 #define CHAR_o_TILDE                  404
-#define CHAR_o_DIERSIS                405
+#define CHAR_o_DIERESIS               405
 #define CHAR_DIVIDE                   406
 #define CHAR_o_SLASH                  407
 #define CHAR_u_GRAVE                  408
