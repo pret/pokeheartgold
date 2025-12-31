@@ -1778,7 +1778,7 @@ u8 sub_0207B364(PartyMenu *partyMenu, u8 selection) {
         }
     }
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
-        if (Species_IsBattleFacilityBanned(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
+        if (Species_IsBattleFrontierBanned(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
             return 0;
         }
     }
@@ -1797,7 +1797,7 @@ u8 sub_0207B418(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
-        if (Species_IsBattleFacilityBanned(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
+        if (Species_IsBattleFrontierBanned(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
             return 0;
         }
     }
@@ -1816,7 +1816,7 @@ u8 sub_0207B4A0(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
-        if (Species_IsBattleFacilityBanned(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
+        if (Species_IsBattleFrontierBanned(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
             return 0;
         }
     }

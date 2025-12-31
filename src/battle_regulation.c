@@ -77,7 +77,7 @@ BOOL LinkBattleRuleset_CheckDexBasedRules(LinkBattleRuleset *ruleset, Pokemon *p
 
     rule = LinkBattleRuleset_GetRuleValue(ruleset, LINKBATTLERULE_UBERS_CLAUSE);
     if (rule == 0) {
-        if (Pokemon_IsBattleFacilityBanned(pokemon)) {
+        if (Pokemon_IsBattleFrontierBanned(pokemon)) {
             return FALSE;
         }
     }
@@ -131,7 +131,7 @@ BattleRegulationComplianceMessage LinkBattleRuleset_GetPartySelectionComplianceM
     if (rule == 0x8000) {
         j = 0;
         for (i = 0; i < PARTY_SIZE; ++i) {
-            if (species[i] != SPECIES_NONE && Species_IsBattleFacilityBanned(species[i], 0) && !Species_IsMythical(species[i])) {
+            if (species[i] != SPECIES_NONE && Species_IsBattleFrontierBanned(species[i], 0) && !Species_IsMythical(species[i])) {
                 ++j;
             }
         }
@@ -244,7 +244,7 @@ int sub_02074CD0(LinkBattleRuleset *ruleset, Party *party, PokedexData *pokedex)
     if (rule == 0x8000) {
         numBannedMons = 0;
         for (i = 0; i < PARTY_SIZE; ++i) {
-            if (species[i] != SPECIES_NONE && Species_IsMythical(species[i]) == FALSE && Species_IsBattleFacilityBanned(species[i], 0) == TRUE) {
+            if (species[i] != SPECIES_NONE && Species_IsMythical(species[i]) == FALSE && Species_IsBattleFrontierBanned(species[i], 0) == TRUE) {
                 ++numBannedMons;
                 if (numBannedMons > 2) {
                     species[i] = SPECIES_NONE;

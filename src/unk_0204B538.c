@@ -133,8 +133,8 @@ MessageFormat *sub_0204B538(SaveData *saveData, u16 numEligiblePokemon, u16 a2, 
     messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, HEAP_ID_FIELD1);
     messageFormat = MessageFormat_New_Custom(19, 14, HEAP_ID_FIELD1);
     BufferIntegerAsString(messageFormat, 0, numEligiblePokemon, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    for (u8 i = 0; i < BATTLE_FACILITY_BANLIST_SIZE; i++) {
-        u16 species = BattleFacility_GetBanlistEntry(i);
+    for (u8 i = 0; i < BATTLE_FRONTIER_BANLIST_SIZE; i++) {
+        u16 species = BattleFrontier_GetBanlistEntry(i);
         if (!Pokedex_CheckMonSeenFlag(pokedex, species)) {
             continue;
         }

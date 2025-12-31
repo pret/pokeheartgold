@@ -4073,7 +4073,7 @@ int LowestFlagNo(u32 mask) {
     return i;
 }
 
-static const u16 sBattleFacilityBanlist[BATTLE_FACILITY_BANLIST_SIZE] = {
+static const u16 sBattleFrontierBanlist[BATTLE_FRONTIER_BANLIST_SIZE] = {
     SPECIES_MEWTWO,
     SPECIES_MEW,
     SPECIES_LUGIA,
@@ -4094,9 +4094,9 @@ static const u16 sBattleFacilityBanlist[BATTLE_FACILITY_BANLIST_SIZE] = {
     SPECIES_ARCEUS,
 };
 
-BOOL Species_IsBattleFacilityBanned(u16 species, u16 form) {
-    for (u32 i = 0; i < BATTLE_FACILITY_BANLIST_SIZE; i++) {
-        if (species == sBattleFacilityBanlist[i]) {
+BOOL Species_IsBattleFrontierBanned(u16 species, u16 form) {
+    for (u32 i = 0; i < BATTLE_FRONTIER_BANLIST_SIZE; i++) {
+        if (species == sBattleFrontierBanlist[i]) {
             return TRUE;
         }
     }
@@ -4106,11 +4106,11 @@ BOOL Species_IsBattleFacilityBanned(u16 species, u16 form) {
     return FALSE;
 }
 
-u16 BattleFacility_GetBanlistEntry(u32 index) {
-    if (index >= BATTLE_FACILITY_BANLIST_SIZE) {
+u16 BattleFrontier_GetBanlistEntry(u32 index) {
+    if (index >= BATTLE_FRONTIER_BANLIST_SIZE) {
         index = 0;
     }
-    return sBattleFacilityBanlist[index];
+    return sBattleFrontierBanlist[index];
 }
 
 static const u16 sMythicalMonsList[9] = {
@@ -4135,10 +4135,10 @@ BOOL Species_IsMythical(u16 species) {
     return FALSE;
 }
 
-BOOL Pokemon_IsBattleFacilityBanned(Pokemon *mon) {
+BOOL Pokemon_IsBattleFrontierBanned(Pokemon *mon) {
     u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES, NULL);
     u16 form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
-    return Species_IsBattleFacilityBanned(species, form);
+    return Species_IsBattleFrontierBanned(species, form);
 }
 
 BOOL BoxPokemon_BelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *player, enum HeapID heapID) {

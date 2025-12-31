@@ -135,7 +135,7 @@ BOOL sub_0204A5B0(u16 numRequired, SaveData *saveData, BOOL checkDuplicateItems)
         if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL)) {
             continue;
         }
-        if (Species_IsBattleFacilityBanned(species, form) == TRUE) {
+        if (Species_IsBattleFrontierBanned(species, form) == TRUE) {
             continue;
         }
         if (checkDuplicateItems == TRUE && sub_0204A424(validMons, species, item, numValid) == TRUE) {

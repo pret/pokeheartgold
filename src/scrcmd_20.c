@@ -216,7 +216,7 @@ static BOOL BattleHall_DoesPartyContainEligibleMons(s32 numRequiredMons, SaveDat
         form = Pokemon_GetData(mon, MON_DATA_FORM, NULL);
         if (Pokemon_GetData(mon, MON_DATA_IS_EGG, NULL) == FALSE
             && level >= 30
-            && Species_IsBattleFacilityBanned(species, form) != TRUE) {
+            && Species_IsBattleFrontierBanned(species, form) != TRUE) {
             numEligibleMons++;
             arr[i] = species;
         }
