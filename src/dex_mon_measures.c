@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/pokemon.h"
+
 #include "msgdata/msg.naix"
 
 #include "filesystem.h"
@@ -9,10 +11,10 @@
 
 static u32 *ZknNarc_LoadHeight(NARC *narc, enum HeapID heapID);
 static u32 *ZknNarc_LoadWeight(NARC *narc, enum HeapID heapID);
-static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID);
-static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID);
-static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID);
-static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID);
+static void sub_02091470(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID);
+static void sub_02091498(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID);
+static void sub_020914C0(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID);
+static void sub_020914E8(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID);
 
 static NarcId sDataNarcId = NARC_application_zukanlist_zkn_data_zukan_data;
 static int sWeightMsgBank = NARC_msg_msg_0812_bin;
@@ -90,28 +92,28 @@ static u32 *ZknNarc_LoadWeight(NARC *narc, enum HeapID heapID) {
     return GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, heapID, FALSE);
 }
 
-static void sub_02091470(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID) {
+static void sub_02091470(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 9, FALSE, heapID, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 10, FALSE, heapID, FALSE);
 }
 
-static void sub_02091498(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID) {
+static void sub_02091498(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 7, FALSE, heapID, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 8, FALSE, heapID, FALSE);
 }
 
-static void sub_020914C0(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID) {
+static void sub_020914C0(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 5, FALSE, heapID, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 6, FALSE, heapID, FALSE);
 }
 
-static void sub_020914E8(NARC *narc, u32 **a1, u32 **a2, enum HeapID heapID) {
+static void sub_020914E8(NARC *narc, s16 **a1, s16 **a2, enum HeapID heapID) {
     *a1 = GfGfxLoader_LoadFromOpenNarc(narc, 3, FALSE, heapID, FALSE);
     *a2 = GfGfxLoader_LoadFromOpenNarc(narc, 4, FALSE, heapID, FALSE);
 }
 
 void SetDexBanksByGiratinaForm(int form) {
-    if (form == 0) {
+    if (form == GIRATINA_ALTERED) {
         sDataNarcId = NARC_application_zukanlist_zkn_data_zukan_data_gira;
         sWeightMsgBank = NARC_msg_msg_0813_bin;
         sHeightMsgBank = NARC_msg_msg_0815_bin;

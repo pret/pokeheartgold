@@ -532,6 +532,7 @@ include files/arc/headbutt.mk
 include files/poketool/personal/personal.mk
 include files/fielddata/graphic/preview_graphic/preview_graphic.mk
 include files/application/zukanlist/zkn_data/zukan_enc.mk
+include files/application/zukanlist/zkn_data/zukan_data.mk
 include files/application/zukanlist/zkn_data/zukan_hw_data.mk
 include files/data/photo_data.mk
 include files/tel/pmtel_book.mk

@@ -12,7 +12,7 @@ Options::Options(int argc, char **argv) {
         if (arg == "-f" || arg == "--flatten") {
             flatten = true;
         } else if (arg == "-p" || arg == "--padding") {
-            int padval_i = stoi(argv[++i]);
+            int padval_i = stoi(argv[++i], nullptr, 0);
             if (padval_i < 0 || padval_i > 255) {
                 throw command_error(string{"invalid 8-bit value "} + argv[i] + " for " + arg);
             }
@@ -51,11 +51,11 @@ void Options::ReadObjectFile(vector<unsigned char> &rodata, vector<uint32_t> &si
         }
     } else {
         auto pred = [&](const Elf32_Sym &sym) {
-            return sym.st_size != 0
-                   && strcmp(objfile.GetSectionName(objfile.sections()[sym.st_shndx]), ".rodata") == 0
-                   && strcmp(objfile.GetSymbolName(sym), "__size") != 0
-                   && strcmp(objfile.GetSymbolName(sym), "__data") != 0
-                   && strcmp(objfile.GetSymbolName(sym), ".rodata") != 0;
+            return ELF32_ST_TYPE(sym.st_info) == STT_OBJECT
+                && strcmp(objfile.GetSectionName(objfile.sections()[sym.st_shndx]), ".rodata") == 0
+                && strcmp(objfile.GetSymbolName(sym), "__size") != 0
+                && strcmp(objfile.GetSymbolName(sym), "__data") != 0
+                && strcmp(objfile.GetSymbolName(sym), ".rodata") != 0;
         };
         sizes.resize(count_if(objfile.symbols().begin(), objfile.symbols().end(), pred));
         ELF_ASSERT(!sizes.empty());

@@ -84,6 +84,8 @@ application/zukanlist/zkn_data/zukan_enc_gold.narc
 application/zukanlist/zkn_data/zukan_enc_silver.narc
 application/zukanlist/zkn_data/zukan_hw_data_gold.narc
 application/zukanlist/zkn_data/zukan_hw_data_silver.narc
+application/zukanlist/zkn_data/zukan_data.narc
+application/zukanlist/zkn_data/zukan_data_gira.narc
 application/annon/puzzle_gra.narc
 demo/opening/gs_opening.narc
 demo/legend.narc

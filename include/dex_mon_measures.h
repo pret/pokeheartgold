@@ -7,10 +7,10 @@
 typedef struct PokedexData {
     u32 *height;
     u32 *weight;
-    u32 *unk_08;
-    u32 *unk_0C;
-    u32 *unk_10;
-    u32 *unk_14;
+    s16 *unk_08;
+    s16 *unk_0C;
+    s16 *unk_10;
+    s16 *unk_14;
 } PokedexData; // size=0x18
 
 struct PokedexData *PokedexData_Create(enum HeapID heapID);

@@ -1,0 +1,143 @@
+{{ doNotModifyHeader }}
+
+#include "constants/species.h"
+
+    .rodata
+    .balign 4, 0
+
+    .type gMonHeights, @object
+    .balign 4, 255
+gMonHeights:
+## for mon in mon_stats
+## if isInteger(mon.height)
+    .word {{ mon.height }} // {{ mon.species }}
+## else
+#ifdef GIRA
+    .word {{ mon.height.origin }} // {{ mon.species }} origin
+#else
+    .word {{ mon.height.altered }} // {{ mon.species }} altered
+#endif
+## endif
+## endfor
+    .size gMonHeights,.-gMonHeights
+
+    .type gMonWeights, @object
+    .balign 4, 255
+gMonWeights:
+## for mon in mon_stats
+## if isInteger(mon.weight)
+    .word {{ mon.weight }} // {{ mon.species }}
+## else
+#ifdef GIRA
+    .word {{ mon.weight.origin }} // {{ mon.species }} origin
+#else
+    .word {{ mon.weight.altered }} // {{ mon.species }} altered
+#endif
+## endif
+## endfor
+    .size gMonWeights,.-gMonWeights
+
+    .type gMonBodyTypes, @object
+    .balign 4, 255
+gMonBodyTypes:
+## for mon in mon_stats
+## if isInteger(mon.body_style)
+    .byte {{ mon.body_style }} // {{ mon.species }}
+## else
+#ifdef GIRA
+    .byte {{ mon.body_style.origin }} // {{ mon.species }} origin
+#else
+    .byte {{ mon.body_style.altered }} // {{ mon.species }} altered
+#endif
+## endif
+## endfor
+    .size gMonBodyTypes,.-gMonBodyTypes
+
+    .type gMonScaleF, @object
+    .balign 4, 255
+gMonScaleF:
+## for mon in mon_stats
+    .short {{ mon.scale_f }} // {{ mon.species }}
+## endfor
+    .size gMonScaleF,.-gMonScaleF
+
+    .type gMonMonScaleF, @object
+    .balign 4, 255
+gMonMonScaleF:
+## for mon in mon_stats
+    .short {{ mon.mon_scale_f }} // {{ mon.species }}
+## endfor
+    .size gMonMonScaleF,.-gMonMonScaleF
+
+    .type gMonScaleM, @object
+    .balign 4, 255
+gMonScaleM:
+## for mon in mon_stats
+    .short {{ mon.scale_m }} // {{ mon.species }}
+## endfor
+    .size gMonScaleM,.-gMonScaleM
+
+    .type gMonMonScaleM, @object
+    .balign 4, 255
+gMonMonScaleM:
+## for mon in mon_stats
+    .short {{ mon.mon_scale_m }} // {{ mon.species }}
+## endfor
+    .size gMonMonScaleM,.-gMonMonScaleM
+
+    .type gMonYPosF, @object
+    .balign 4, 255
+gMonYPosF:
+## for mon in mon_stats
+    .short {{ mon.ypos_f }} // {{ mon.species }}
+## endfor
+    .size gMonYPosF,.-gMonYPosF
+
+    .type gMonMonYPosF, @object
+    .balign 4, 255
+gMonMonYPosF:
+## for mon in mon_stats
+    .short {{ mon.mon_ypos_f }} // {{ mon.species }}
+## endfor
+    .size gMonMonYPosF,.-gMonMonYPosF
+
+    .type gMonYPosM, @object
+    .balign 4, 255
+gMonYPosM:
+## for mon in mon_stats
+    .short {{ mon.ypos_m }} // {{ mon.species }}
+## endfor
+    .size gMonYPosM,.-gMonYPosM
+
+    .type gMonMonYPosM, @object
+    .balign 4, 255
+gMonMonYPosM:
+## for mon in mon_stats
+    .short {{ mon.mon_ypos_m }} // {{ mon.species }}
+## endfor
+    .size gMonMonYPosM,.-gMonMonYPosM
+
+## for group in sorting
+## for subgroup in group.options
+    .type gDexSort_{{ group.type }}_{{ subgroup.id }}, @object
+    .balign 4, 255
+gDexSort_{{ group.type }}_{{ subgroup.id }}:
+## if isArray(subgroup.mons)
+## for mon in subgroup.mons
+    .short {{ mon }}
+## endfor
+## else
+#ifdef GIRA
+## for mon in subgroup.mons.origin
+    .short {{ mon }}
+## endfor
+#else
+## for mon in subgroup.mons.altered
+    .short {{ mon }}
+## endfor
+#endif
+##endif
+    .size gDexSort_{{ group.type }}_{{ subgroup.id }},.-gDexSort_{{ group.type }}_{{ subgroup.id }}
+
+## endfor
+## endfor
