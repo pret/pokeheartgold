@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/charcode.h"
+
 #include "filesystem_files_def.h"
 #include "gf_gfx_loader.h"
 
@@ -73,7 +75,7 @@ void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u3
 void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y) {
     ConvertUIntToDecimalString(messagePrinter->string, num, mode, ndigits);
     u32 i;
-    for (i = 0; messagePrinter->string[i] != EOS; i++) {
+    for (i = 0; messagePrinter->string[i] != CHAR_EOS; i++) {
         if (messagePrinter->string[i] >= CHAR_JP_0 && messagePrinter->string[i] <= CHAR_JP_9) {
             BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + (messagePrinter->string[i] - CHAR_JP_0) * 32, 0, 0, 8, 8, x, y, 8, 8);
         } else {

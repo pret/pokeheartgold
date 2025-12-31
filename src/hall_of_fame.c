@@ -55,8 +55,8 @@ void Save_HOF_RecordParty(HallOfFame *hof, Party *party, RTCDate *date) {
                     GetMonData(mon, MON_DATA_OT_NAME_STRING, string);
                     CopyStringToU16Array(string, team->party[j].otname, PLAYER_NAME_LENGTH + 1);
                 } else {
-                    team->party[j].nickname[0] = EOS;
-                    team->party[j].otname[0] = EOS;
+                    team->party[j].nickname[0] = CHAR_EOS;
+                    team->party[j].otname[0] = CHAR_EOS;
                 }
                 j++;
             }

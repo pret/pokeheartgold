@@ -2,6 +2,8 @@
 
 #include "global.h"
 
+#include "constants/charcode.h"
+
 s32 Ascii_StrLen(const s8 *str) {
     s32 i = 0;
     while (str[i] != 0) {

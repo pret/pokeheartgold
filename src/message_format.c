@@ -658,8 +658,8 @@ void BufferDeptStoreFloorNo(MessageFormat *msgFmt, u32 fieldno, u32 floor) {
 void StringExpandPlaceholders(MessageFormat *msgFmt, String *dest, String *src) {
     const u16 *cstr = String_cstr(src);
     String_SetEmpty(dest);
-    while (*cstr != EOS) {
-        if (*cstr == EXT_CTRL_CODE_BEGIN) {
+    while (*cstr != CHAR_EOS) {
+        if (*cstr == CHAR_CONTROL_CODE_ARG) {
             if (MsgArray_ControlCodeIsStrVar(cstr)) {
                 u32 idx = MsgArray_ControlCodeGetField(cstr, 0);
                 GF_ASSERT(idx < msgFmt->count);

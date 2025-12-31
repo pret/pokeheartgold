@@ -59,7 +59,7 @@ void PlayerProfile_Init(PlayerProfile *profile) {
 
 BOOL PlayerProfile_IsNameEmpty(PlayerProfile *profile) {
     for (s32 i = 0; i < PLAYER_NAME_LENGTH + 1; i++) {
-        if (profile->name[i] != CHAR_NUL) {
+        if (profile->name[i] != CHAR_NONE) {
             return FALSE;
         }
     }

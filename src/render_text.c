@@ -111,9 +111,9 @@ RenderResult RenderText(TextPrinter *printer) {
         GF_ASSERT(currentChar != 0xF100);
 
         switch (currentChar) {
-        case EOS:
+        case CHAR_EOS:
             return RENDER_FINISH;
-        case CHAR_LF:
+        case CHAR_LINE_BREAK:
             printer->template.currentX = printer->template.x;
             s32 fontAttribute = GetFontAttribute(printer->template.fontId, 1);
 
@@ -124,7 +124,7 @@ RenderResult RenderText(TextPrinter *printer) {
         case 0xF0FD:
             printer->template.currentChar.raw++;
             return RENDER_REPEAT;
-        case EXT_CTRL_CODE_BEGIN:
+        case CHAR_CONTROL_CODE_ARG:
             printer->template.currentChar.raw--;
             switch ((u16)MsgArray_GetControlCode(printer->template.currentChar.raw)) {
             case 0xFF00:

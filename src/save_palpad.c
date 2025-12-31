@@ -17,7 +17,7 @@ void Save_PalPad_Init(SavePalPad *palPad) {
 
     for (i = 0; i < NUM_PALPAD_ENTRIES; i++) {
         memset(&palPad[i], 0, sizeof(SavePalPad));
-        palPad[i].name[0] = EOS;
+        palPad[i].name[0] = CHAR_EOS;
     }
 }
 
@@ -53,12 +53,12 @@ void SavePalPad_Merge(SavePalPad *a, SavePalPad *b, int n, enum HeapID heapID) {
     for (i = 0; i < n; i++) {
         c[k] = b[i];
         if (sp18[i] >= 0) {
-            a[sp18[i]].name[0] = EOS;
+            a[sp18[i]].name[0] = CHAR_EOS;
         }
         k++;
     }
     for (i = 0; i < NUM_PALPAD_ENTRIES; i++) {
-        if (a[i].name[0] != EOS) {
+        if (a[i].name[0] != CHAR_EOS) {
             c[k] = a[i];
             k++;
             if (k >= NUM_PALPAD_ENTRIES) {

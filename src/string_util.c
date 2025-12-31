@@ -5,12 +5,12 @@
 #include "constants/charcode.h"
 
 u16 *CopyU16StringArray(u16 *dest, const u16 *src) {
-    while (*src != EOS) {
+    while (*src != CHAR_EOS) {
         *dest = *src;
         src++;
         dest++;
     }
-    *dest = EOS;
+    *dest = CHAR_EOS;
     return dest;
 }
 
@@ -25,13 +25,13 @@ u16 *CopyU16StringArrayN(u16 *dest, const u16 *src, u32 n) {
 
 int StringLength(const u16 *str) {
     int i;
-    for (i = 0; str[i] != EOS; i++) {}
+    for (i = 0; str[i] != CHAR_EOS; i++) {}
     return i;
 }
 
 BOOL StringNotEqual(const u16 *a, const u16 *b) {
     while (*a == *b) {
-        if (*a == EOS) {
+        if (*a == CHAR_EOS) {
             return FALSE;
         }
         a++;
@@ -45,7 +45,7 @@ BOOL StringNotEqualN(const u16 *a, const u16 *b, u32 n) {
         if (n == 0) {
             return FALSE;
         }
-        if (*a == EOS && *b == EOS) {
+        if (*a == CHAR_EOS && *b == CHAR_EOS) {
             return FALSE;
         }
         a++;
@@ -64,7 +64,7 @@ u16 *StringFill(u16 *str, u16 val, u32 n) {
 }
 
 u16 *StringFillEOS(u16 *str, u32 n) {
-    return StringFill(str, EOS, n);
+    return StringFill(str, CHAR_EOS, n);
 }
 
 u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u32 ndigits) {
@@ -91,17 +91,17 @@ u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u3
         digit = num / denom;
         num -= denom * digit;
         if (strconvmode == PRINTING_MODE_LEADING_ZEROS) {
-            *dest = (digit >= 10) ? CHAR_JP_QUESTION_MARK : _digit_strcode[digit];
+            *dest = (digit >= 10) ? CHAR_JP_QMARK : _digit_strcode[digit];
             dest++;
         } else if (digit != 0 || denom == 1) {
             strconvmode = PRINTING_MODE_LEADING_ZEROS;
-            *dest = (digit >= 10) ? CHAR_JP_QUESTION_MARK : _digit_strcode[digit];
+            *dest = (digit >= 10) ? CHAR_JP_QMARK : _digit_strcode[digit];
             dest++;
         } else if (strconvmode == PRINTING_MODE_RIGHT_ALIGN) {
             *dest = CHAR_JP_SPACE;
             dest++;
         }
     }
-    *dest = EOS;
+    *dest = CHAR_EOS;
     return dest;
 }

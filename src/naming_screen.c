@@ -251,51 +251,51 @@ static const u8 sHomeRowCursorAnimIDs[] = {
     0x29, // OK
 };
 
-static const u16 sKeyboardRow_Upper_1[] = { CHAR_A, CHAR_B, CHAR_C, CHAR_D, CHAR_E, CHAR_F, CHAR_G, CHAR_H, CHAR_I, CHAR_J, CHAR_SPACE, CHAR_COMMA, CHAR_PERIOD, EOS };
+static const u16 sKeyboardRow_Upper_1[] = { CHAR_A, CHAR_B, CHAR_C, CHAR_D, CHAR_E, CHAR_F, CHAR_G, CHAR_H, CHAR_I, CHAR_J, CHAR_SPACE, CHAR_COMMA, CHAR_PERIOD, CHAR_EOS };
 
-static const u16 sKeyboardRow_Upper_2[] = { CHAR_K, CHAR_L, CHAR_M, CHAR_N, CHAR_O, CHAR_P, CHAR_Q, CHAR_R, CHAR_S, CHAR_T, CHAR_SPACE, CHAR_RAPOST, CHAR_HYPHEN, EOS };
+static const u16 sKeyboardRow_Upper_2[] = { CHAR_K, CHAR_L, CHAR_M, CHAR_N, CHAR_O, CHAR_P, CHAR_Q, CHAR_R, CHAR_S, CHAR_T, CHAR_SPACE, CHAR_SINGLE_QUOTE_CLOSE, CHAR_MINUS, CHAR_EOS };
 
-static const u16 sKeyboardRow_Upper_3[] = { CHAR_U, CHAR_V, CHAR_W, CHAR_X, CHAR_Y, CHAR_Z, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_MALE, CHAR_FEMALE, EOS };
+static const u16 sKeyboardRow_Upper_3[] = { CHAR_U, CHAR_V, CHAR_W, CHAR_X, CHAR_Y, CHAR_Z, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_MALE, CHAR_FEMALE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Upper_4[] = { CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Upper_4[] = { CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Upper_5[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Upper_5[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Lower_1[] = { CHAR_a, CHAR_b, CHAR_c, CHAR_d, CHAR_e, CHAR_f, CHAR_g, CHAR_h, CHAR_i, CHAR_j, CHAR_SPACE, CHAR_COMMA, CHAR_PERIOD, EOS };
+static const u16 sKeyboardRow_Lower_1[] = { CHAR_a, CHAR_b, CHAR_c, CHAR_d, CHAR_e, CHAR_f, CHAR_g, CHAR_h, CHAR_i, CHAR_j, CHAR_SPACE, CHAR_COMMA, CHAR_PERIOD, CHAR_EOS };
 
-static const u16 sKeyboardRow_Lower_2[] = { CHAR_k, CHAR_l, CHAR_m, CHAR_n, CHAR_o, CHAR_p, CHAR_q, CHAR_r, CHAR_s, CHAR_t, CHAR_SPACE, CHAR_RAPOST, CHAR_HYPHEN, EOS };
+static const u16 sKeyboardRow_Lower_2[] = { CHAR_k, CHAR_l, CHAR_m, CHAR_n, CHAR_o, CHAR_p, CHAR_q, CHAR_r, CHAR_s, CHAR_t, CHAR_SPACE, CHAR_SINGLE_QUOTE_CLOSE, CHAR_MINUS, CHAR_EOS };
 
-static const u16 sKeyboardRow_Lower_3[] = { CHAR_u, CHAR_v, CHAR_w, CHAR_x, CHAR_y, CHAR_z, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_MALE, CHAR_FEMALE, EOS };
+static const u16 sKeyboardRow_Lower_3[] = { CHAR_u, CHAR_v, CHAR_w, CHAR_x, CHAR_y, CHAR_z, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_MALE, CHAR_FEMALE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Lower_4[] = { CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Lower_4[] = { CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Lower_5[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Lower_5[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Symbols_1[] = { CHAR_COMMA, CHAR_PERIOD, CHAR_COLON, CHAR_SEMICOLON, CHAR_EXCL, CHAR_QMARK, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_MALE, CHAR_FEMALE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Symbols_1[] = { CHAR_COMMA, CHAR_PERIOD, CHAR_COLON, CHAR_SEMICOLON, CHAR_EMARK, CHAR_QMARK, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_MALE, CHAR_FEMALE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Symbols_2[] = { CHAR_LDQUOT, CHAR_RDQUOT, CHAR_LAPOST, CHAR_RAPOST, CHAR_LPAREN, CHAR_RPAREN, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Symbols_2[] = { CHAR_DOUBLE_QUOTE_OPEN, CHAR_DOUBLE_QUOTE_CLOSE, CHAR_SINGLE_QUOTE_OPEN, CHAR_SINGLE_QUOTE_CLOSE, CHAR_PARENTHESES_OPEN, CHAR_PARENTHESES_CLOSE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Symbols_3[] = { CHAR_ELLIPSIS, CHAR_CTRDOT, CHAR_TILDE, CHAR_AT, CHAR_HASH, CHAR_PERCENT, CHAR_PLUS, CHAR_HYPHEN, CHAR_ASTERISK, CHAR_SLASH, CHAR_EQUALS, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Symbols_3[] = { CHAR_ELLIPSIS, CHAR_DOT, CHAR_TILDE, CHAR_AT_SIGN, CHAR_HASH, CHAR_PERCENT, CHAR_PLUS, CHAR_MINUS, CHAR_ASTERISK, CHAR_SLASH, CHAR_EQUALS, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Symbols_4[] = { CHAR_CIRCLE_DOT, CHAR_CIRCLE, CHAR_SQUARE, CHAR_TRIANGLE, CHAR_DIAMOND, CHAR_SPADE_SUIT, CHAR_HEART_SUIT, CHAR_DIAMOND_SUIT, CHAR_CLUB_SUIT, CHAR_STAR, CHAR_MUSIC_NOTE, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Symbols_4[] = { CHAR_DOUBLE_CIRCLE, CHAR_CIRCLE, CHAR_SQUARE, CHAR_TRIANGLE, CHAR_DIAMOND, CHAR_SPADE_SUIT, CHAR_HEART_SUIT, CHAR_DIAMOND_SUIT, CHAR_CLUB_SUIT, CHAR_STAR, CHAR_MUSIC_NOTE, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Symbols_5[] = { CHAR_SUN, CHAR_TREBLE_CLEF, CHAR_UMBRELLA, CHAR_SNOWMAN, CHAR_SMILEY, CHAR_LAUGHING, CHAR_ANGUISH, CHAR_ANGRY, CHAR_SNORING, CHAR_UP_ARROW, CHAR_DOWN_ARROW, CHAR_SPACE, CHAR_SPACE, EOS };
+static const u16 sKeyboardRow_Symbols_5[] = { CHAR_SUN, CHAR_CLOUD, CHAR_UMBRELLA, CHAR_SNOWMAN, CHAR_EMOTE_SMILE, CHAR_EMOTE_LAUGH, CHAR_EMOTE_UPSET, CHAR_EMOTE_FROWN, CHAR_ZZZ, CHAR_ARROW_CURVE_UP, CHAR_ARROW_CURVE_DOWN, CHAR_SPACE, CHAR_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_JPMisc_1[] = { CHAR_JP_0, CHAR_JP_1, CHAR_JP_2, CHAR_JP_3, CHAR_JP_4, CHAR_JP_5, CHAR_JP_6, CHAR_JP_7, CHAR_JP_8, CHAR_JP_9, CHAR_JP_SPACE, CHAR_JP_EXCLAM_MARK, CHAR_JP_QUESTION_MARK, EOS };
+static const u16 sKeyboardRow_JPMisc_1[] = { CHAR_JP_0, CHAR_JP_1, CHAR_JP_2, CHAR_JP_3, CHAR_JP_4, CHAR_JP_5, CHAR_JP_6, CHAR_JP_7, CHAR_JP_8, CHAR_JP_9, CHAR_JP_SPACE, CHAR_JP_EMARK, CHAR_JP_QMARK, CHAR_EOS };
 
-static const u16 sKeyboardRow_JPMisc_2[] = { CHAR_JP_COMMA, CHAR_JP_FULLSTOP, CHAR_JP_HW_COMMA, CHAR_JP_HW_PERIOD, CHAR_JP_ELLIPSIS, CHAR_JP_CENTER_DOT, CHAR_JP_TILDE, CHAR_JP_HW_COLON, CHAR_JP_HW_SEMICOLON, CHAR_JP_SLASH, CHAR_JP_SPACE, CHAR_JP_OTOKO, CHAR_JP_ONNA, EOS };
+static const u16 sKeyboardRow_JPMisc_2[] = { CHAR_JP_COMMA, CHAR_JP_FULL_STOP, CHAR_JP_HW_COMMA, CHAR_JP_HW_PERIOD, CHAR_JP_ELLIPSIS, CHAR_JP_DOT, CHAR_JP_TILDE, CHAR_JP_HW_COLON, CHAR_JP_HW_SEMICOLON, CHAR_JP_SLASH, CHAR_JP_SPACE, CHAR_JP_MALE, CHAR_JP_FEMALE, CHAR_EOS };
 
-static const u16 sKeyboardRow_JPMisc_3[] = { CHAR_JP_OPEN_QUOT, CHAR_JP_CLOSE_QUOT, CHAR_JP_OPEN_DQUOT, CHAR_JP_CLOSE_DQUOT, CHAR_JP_OPEN_PAREN, CHAR_JP_CLOSE_PAREN, CHAR_JP_PLUS, CHAR_JP_HYPHEN, CHAR_JP_MULT, CHAR_JP_DIV, CHAR_JP_EQUAL, CHAR_JP_PERCENT, CHAR_JP_AT, EOS };
+static const u16 sKeyboardRow_JPMisc_3[] = { CHAR_JP_SINGLE_QUOTE_OPEN, CHAR_JP_SINGLE_QUOTE_CLOSE, CHAR_JP_DOUBLE_QUOTE_OPEN, CHAR_JP_DOUBLE_QUOTE_CLOSE, CHAR_JP_PARENTHESES_OPEN, CHAR_JP_PARENTHESES_CLOSE, CHAR_JP_PLUS, CHAR_JP_MINUS, CHAR_JP_MULTIPLY, CHAR_JP_DIVIDE, CHAR_JP_EQUALS, CHAR_JP_PERCENT, CHAR_JP_AT_SIGN, CHAR_EOS };
 
-static const u16 sKeyboardRow_JPMisc_4[] = { CHAR_JP_CIRCLE_DOT, CHAR_JP_CIRCLE, CHAR_JP_SQUARE, CHAR_JP_TRIANGLE, CHAR_JP_DIAMOND, CHAR_JP_HEART_SUIT, CHAR_JP_SPADE_SUIT, CHAR_JP_DIAMOND_SUIT, CHAR_JP_CLUB_SUIT, CHAR_JP_STAR, CHAR_JP_MUSIC_NOTE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_JPMisc_4[] = { CHAR_JP_DOUBLE_CIRCLE, CHAR_JP_CIRCLE, CHAR_JP_SQUARE, CHAR_JP_TRIANGLE, CHAR_JP_DIAMOND, CHAR_JP_HEART_SUIT, CHAR_JP_SPADE_SUIT, CHAR_JP_DIAMOND_SUIT, CHAR_JP_CLUB_SUIT, CHAR_JP_STAR, CHAR_JP_MUSIC_NOTE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_JPMisc_5[] = { CHAR_JP_SUN, CHAR_JP_TREBLE_CLEF, CHAR_JP_UMBRELLA, CHAR_JP_SNOWMAN, CHAR_JP_SMILEY, CHAR_JP_LAUGHING, CHAR_JP_ANGUISH, CHAR_JP_ANGRY, CHAR_JP_SNORING, CHAR_JP_UP_ARROW, CHAR_JP_DOWN_ARROW, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_JPMisc_5[] = { CHAR_JP_SUN, CHAR_JP_CLOUD, CHAR_JP_UMBRELLA, CHAR_JP_SNOWMAN, CHAR_JP_EMOTE_SMILE, CHAR_JP_EMOTE_LAUGH, CHAR_JP_EMOTE_UPSET, CHAR_JP_EMOTE_FROWN, CHAR_JP_ZZZ, CHAR_JP_ARROW_CURVE_UP, CHAR_JP_ARROW_CURVE_DOWN, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Numpad_1[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_Numpad_1[] = { CHAR_0, CHAR_1, CHAR_2, CHAR_3, CHAR_4, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Numpad_2[] = { CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_Numpad_2[] = { CHAR_5, CHAR_6, CHAR_7, CHAR_8, CHAR_9, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_EOS };
 
-static const u16 sKeyboardRow_Numpad_345[] = { CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, EOS };
+static const u16 sKeyboardRow_Numpad_345[] = { CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_JP_SPACE, CHAR_EOS };
 
 static const u16 *sKeyboardLayoutPtrs[][5] = {
     { sKeyboardRow_Upper_1,   sKeyboardRow_Upper_2,   sKeyboardRow_Upper_3,    sKeyboardRow_Upper_4,    sKeyboardRow_Upper_5    },
@@ -307,88 +307,88 @@ static const u16 *sKeyboardLayoutPtrs[][5] = {
 
 // These arrays are used to convert Japanese characters in response to pressing R.
 static const u16 sJpCharConvTable[][3] = {
-    { CHAR_JP_HIRA_A,  CHAR_JP_SPACE,   CHAR_JP_HIRA_A_SMALL  },
-    { CHAR_JP_HIRA_I,  CHAR_JP_SPACE,   CHAR_JP_HIRA_I_SMALL  },
-    { CHAR_JP_HIRA_U,  CHAR_JP_SPACE,   CHAR_JP_HIRA_U_SMALL  },
-    { CHAR_JP_HIRA_E,  CHAR_JP_SPACE,   CHAR_JP_HIRA_E_SMALL  },
-    { CHAR_JP_HIRA_O,  CHAR_JP_SPACE,   CHAR_JP_HIRA_O_SMALL  },
-    { CHAR_JP_KATA_A,  CHAR_JP_SPACE,   CHAR_JP_KATA_A_SMALL  },
-    { CHAR_JP_KATA_I,  CHAR_JP_SPACE,   CHAR_JP_KATA_I_SMALL  },
-    { CHAR_JP_KATA_U,  CHAR_JP_SPACE,   CHAR_JP_KATA_U_SMALL  },
-    { CHAR_JP_KATA_E,  CHAR_JP_SPACE,   CHAR_JP_KATA_E_SMALL  },
-    { CHAR_JP_KATA_O,  CHAR_JP_SPACE,   CHAR_JP_KATA_O_SMALL  },
-    { CHAR_JP_HIRA_YA, CHAR_JP_SPACE,   CHAR_JP_HIRA_YA_SMALL },
-    { CHAR_JP_HIRA_YU, CHAR_JP_SPACE,   CHAR_JP_HIRA_YU_SMALL },
-    { CHAR_JP_HIRA_YO, CHAR_JP_SPACE,   CHAR_JP_HIRA_YO_SMALL },
-    { CHAR_JP_KATA_YA, CHAR_JP_SPACE,   CHAR_JP_KATA_YA_SMALL },
-    { CHAR_JP_KATA_YU, CHAR_JP_SPACE,   CHAR_JP_KATA_YU_SMALL },
-    { CHAR_JP_KATA_YO, CHAR_JP_SPACE,   CHAR_JP_KATA_YO_SMALL },
-    { CHAR_JP_A,       CHAR_JP_SPACE,   CHAR_JP_a             },
-    { CHAR_JP_B,       CHAR_JP_SPACE,   CHAR_JP_b             },
-    { CHAR_JP_C,       CHAR_JP_SPACE,   CHAR_JP_c             },
-    { CHAR_JP_D,       CHAR_JP_SPACE,   CHAR_JP_d             },
-    { CHAR_JP_E,       CHAR_JP_SPACE,   CHAR_JP_e             },
-    { CHAR_JP_F,       CHAR_JP_SPACE,   CHAR_JP_f             },
-    { CHAR_JP_G,       CHAR_JP_SPACE,   CHAR_JP_g             },
-    { CHAR_JP_H,       CHAR_JP_SPACE,   CHAR_JP_h             },
-    { CHAR_JP_I,       CHAR_JP_SPACE,   CHAR_JP_i             },
-    { CHAR_JP_J,       CHAR_JP_SPACE,   CHAR_JP_j             },
-    { CHAR_JP_K,       CHAR_JP_SPACE,   CHAR_JP_k             },
-    { CHAR_JP_L,       CHAR_JP_SPACE,   CHAR_JP_l             },
-    { CHAR_JP_M,       CHAR_JP_SPACE,   CHAR_JP_m             },
-    { CHAR_JP_N,       CHAR_JP_SPACE,   CHAR_JP_n             },
-    { CHAR_JP_O,       CHAR_JP_SPACE,   CHAR_JP_o             },
-    { CHAR_JP_P,       CHAR_JP_SPACE,   CHAR_JP_p             },
-    { CHAR_JP_Q,       CHAR_JP_SPACE,   CHAR_JP_q             },
-    { CHAR_JP_R,       CHAR_JP_SPACE,   CHAR_JP_r             },
-    { CHAR_JP_S,       CHAR_JP_SPACE,   CHAR_JP_s             },
-    { CHAR_JP_T,       CHAR_JP_SPACE,   CHAR_JP_t             },
-    { CHAR_JP_U,       CHAR_JP_SPACE,   CHAR_JP_u             },
-    { CHAR_JP_V,       CHAR_JP_SPACE,   CHAR_JP_v             },
-    { CHAR_JP_W,       CHAR_JP_SPACE,   CHAR_JP_w             },
-    { CHAR_JP_X,       CHAR_JP_SPACE,   CHAR_JP_x             },
-    { CHAR_JP_Y,       CHAR_JP_SPACE,   CHAR_JP_y             },
-    { CHAR_JP_Z,       CHAR_JP_SPACE,   CHAR_JP_z             },
-    { CHAR_JP_HIRA_TU, CHAR_JP_HIRA_DU, CHAR_JP_HIRA_TU_SMALL },
-    { CHAR_JP_KATA_TU, CHAR_JP_KATA_DU, CHAR_JP_KATA_TU_SMALL },
-    { CHAR_JP_HIRA_KA, CHAR_JP_HIRA_GA, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_KI, CHAR_JP_HIRA_GI, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_KU, CHAR_JP_HIRA_GU, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_KE, CHAR_JP_HIRA_GE, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_KO, CHAR_JP_HIRA_GO, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_SA, CHAR_JP_HIRA_ZA, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_SI, CHAR_JP_HIRA_ZI, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_SU, CHAR_JP_HIRA_ZU, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_SE, CHAR_JP_HIRA_ZE, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_SO, CHAR_JP_HIRA_ZO, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_TA, CHAR_JP_HIRA_DA, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_TI, CHAR_JP_HIRA_DI, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_TE, CHAR_JP_HIRA_DE, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_TO, CHAR_JP_HIRA_DO, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_KA, CHAR_JP_KATA_GA, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_KI, CHAR_JP_KATA_GI, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_KU, CHAR_JP_KATA_GU, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_KE, CHAR_JP_KATA_GE, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_KO, CHAR_JP_KATA_GO, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_SA, CHAR_JP_KATA_ZA, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_SI, CHAR_JP_KATA_ZI, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_SU, CHAR_JP_KATA_ZU, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_SE, CHAR_JP_KATA_ZE, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_SO, CHAR_JP_KATA_ZO, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_TA, CHAR_JP_KATA_DA, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_TI, CHAR_JP_KATA_DI, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_TE, CHAR_JP_KATA_DE, CHAR_JP_SPACE         },
-    { CHAR_JP_KATA_TO, CHAR_JP_KATA_DO, CHAR_JP_SPACE         },
-    { CHAR_JP_HIRA_HA, CHAR_JP_HIRA_BA, CHAR_JP_HIRA_PA       },
-    { CHAR_JP_HIRA_HI, CHAR_JP_HIRA_BI, CHAR_JP_HIRA_PI       },
-    { CHAR_JP_HIRA_HU, CHAR_JP_HIRA_BU, CHAR_JP_HIRA_PU       },
-    { CHAR_JP_HIRA_HE, CHAR_JP_HIRA_BE, CHAR_JP_HIRA_PE       },
-    { CHAR_JP_HIRA_HO, CHAR_JP_HIRA_BO, CHAR_JP_HIRA_PO       },
-    { CHAR_JP_KATA_HA, CHAR_JP_KATA_BA, CHAR_JP_KATA_PA       },
-    { CHAR_JP_KATA_HI, CHAR_JP_KATA_BI, CHAR_JP_KATA_PI       },
-    { CHAR_JP_KATA_HU, CHAR_JP_KATA_BU, CHAR_JP_KATA_PU       },
-    { CHAR_JP_KATA_HE, CHAR_JP_KATA_BE, CHAR_JP_KATA_PE       },
-    { CHAR_JP_KATA_HO, CHAR_JP_KATA_BO, CHAR_JP_KATA_PO       },
+    { CHAR_JP_HIRA_A,   CHAR_JP_SPACE,    CHAR_JP_HIRA_A_SMALL  },
+    { CHAR_JP_HIRA_I,   CHAR_JP_SPACE,    CHAR_JP_HIRA_I_SMALL  },
+    { CHAR_JP_HIRA_U,   CHAR_JP_SPACE,    CHAR_JP_HIRA_U_SMALL  },
+    { CHAR_JP_HIRA_E,   CHAR_JP_SPACE,    CHAR_JP_HIRA_E_SMALL  },
+    { CHAR_JP_HIRA_O,   CHAR_JP_SPACE,    CHAR_JP_HIRA_O_SMALL  },
+    { CHAR_JP_KATA_A,   CHAR_JP_SPACE,    CHAR_JP_KATA_A_SMALL  },
+    { CHAR_JP_KATA_I,   CHAR_JP_SPACE,    CHAR_JP_KATA_I_SMALL  },
+    { CHAR_JP_KATA_U,   CHAR_JP_SPACE,    CHAR_JP_KATA_U_SMALL  },
+    { CHAR_JP_KATA_E,   CHAR_JP_SPACE,    CHAR_JP_KATA_E_SMALL  },
+    { CHAR_JP_KATA_O,   CHAR_JP_SPACE,    CHAR_JP_KATA_O_SMALL  },
+    { CHAR_JP_HIRA_YA,  CHAR_JP_SPACE,    CHAR_JP_HIRA_YA_SMALL },
+    { CHAR_JP_HIRA_YU,  CHAR_JP_SPACE,    CHAR_JP_HIRA_YU_SMALL },
+    { CHAR_JP_HIRA_YO,  CHAR_JP_SPACE,    CHAR_JP_HIRA_YO_SMALL },
+    { CHAR_JP_KATA_YA,  CHAR_JP_SPACE,    CHAR_JP_KATA_YA_SMALL },
+    { CHAR_JP_KATA_YU,  CHAR_JP_SPACE,    CHAR_JP_KATA_YU_SMALL },
+    { CHAR_JP_KATA_YO,  CHAR_JP_SPACE,    CHAR_JP_KATA_YO_SMALL },
+    { CHAR_JP_A,        CHAR_JP_SPACE,    CHAR_JP_a             },
+    { CHAR_JP_B,        CHAR_JP_SPACE,    CHAR_JP_b             },
+    { CHAR_JP_C,        CHAR_JP_SPACE,    CHAR_JP_c             },
+    { CHAR_JP_D,        CHAR_JP_SPACE,    CHAR_JP_d             },
+    { CHAR_JP_E,        CHAR_JP_SPACE,    CHAR_JP_e             },
+    { CHAR_JP_F,        CHAR_JP_SPACE,    CHAR_JP_f             },
+    { CHAR_JP_G,        CHAR_JP_SPACE,    CHAR_JP_g             },
+    { CHAR_JP_H,        CHAR_JP_SPACE,    CHAR_JP_h             },
+    { CHAR_JP_I,        CHAR_JP_SPACE,    CHAR_JP_i             },
+    { CHAR_JP_J,        CHAR_JP_SPACE,    CHAR_JP_j             },
+    { CHAR_JP_K,        CHAR_JP_SPACE,    CHAR_JP_k             },
+    { CHAR_JP_L,        CHAR_JP_SPACE,    CHAR_JP_l             },
+    { CHAR_JP_M,        CHAR_JP_SPACE,    CHAR_JP_m             },
+    { CHAR_JP_N,        CHAR_JP_SPACE,    CHAR_JP_n             },
+    { CHAR_JP_O,        CHAR_JP_SPACE,    CHAR_JP_o             },
+    { CHAR_JP_P,        CHAR_JP_SPACE,    CHAR_JP_p             },
+    { CHAR_JP_Q,        CHAR_JP_SPACE,    CHAR_JP_q             },
+    { CHAR_JP_R,        CHAR_JP_SPACE,    CHAR_JP_r             },
+    { CHAR_JP_S,        CHAR_JP_SPACE,    CHAR_JP_s             },
+    { CHAR_JP_T,        CHAR_JP_SPACE,    CHAR_JP_t             },
+    { CHAR_JP_U,        CHAR_JP_SPACE,    CHAR_JP_u             },
+    { CHAR_JP_V,        CHAR_JP_SPACE,    CHAR_JP_v             },
+    { CHAR_JP_W,        CHAR_JP_SPACE,    CHAR_JP_w             },
+    { CHAR_JP_X,        CHAR_JP_SPACE,    CHAR_JP_x             },
+    { CHAR_JP_Y,        CHAR_JP_SPACE,    CHAR_JP_y             },
+    { CHAR_JP_Z,        CHAR_JP_SPACE,    CHAR_JP_z             },
+    { CHAR_JP_HIRA_TSU, CHAR_JP_HIRA_DZU, CHAR_JP_HIRA_SOKUON   },
+    { CHAR_JP_KATA_TSU, CHAR_JP_KATA_DZU, CHAR_JP_KATA_SOKUON   },
+    { CHAR_JP_HIRA_KA,  CHAR_JP_HIRA_GA,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KI,  CHAR_JP_HIRA_GI,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KU,  CHAR_JP_HIRA_GU,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KE,  CHAR_JP_HIRA_GE,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_KO,  CHAR_JP_HIRA_GO,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SA,  CHAR_JP_HIRA_ZA,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SHI, CHAR_JP_HIRA_JI,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SU,  CHAR_JP_HIRA_ZU,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SE,  CHAR_JP_HIRA_ZE,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_SO,  CHAR_JP_HIRA_ZO,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TA,  CHAR_JP_HIRA_DA,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_CHI, CHAR_JP_HIRA_DJI, CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TE,  CHAR_JP_HIRA_DE,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_TO,  CHAR_JP_HIRA_DO,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KA,  CHAR_JP_KATA_GA,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KI,  CHAR_JP_KATA_GI,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KU,  CHAR_JP_KATA_GU,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KE,  CHAR_JP_KATA_GE,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_KO,  CHAR_JP_KATA_GO,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SA,  CHAR_JP_KATA_ZA,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SHI, CHAR_JP_KATA_JI,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SU,  CHAR_JP_KATA_ZU,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SE,  CHAR_JP_KATA_ZE,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_SO,  CHAR_JP_KATA_ZO,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TA,  CHAR_JP_KATA_DA,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_CHI, CHAR_JP_KATA_DJI, CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TE,  CHAR_JP_KATA_DE,  CHAR_JP_SPACE         },
+    { CHAR_JP_KATA_TO,  CHAR_JP_KATA_DO,  CHAR_JP_SPACE         },
+    { CHAR_JP_HIRA_HA,  CHAR_JP_HIRA_BA,  CHAR_JP_HIRA_PA       },
+    { CHAR_JP_HIRA_HI,  CHAR_JP_HIRA_BI,  CHAR_JP_HIRA_PI       },
+    { CHAR_JP_HIRA_FU,  CHAR_JP_HIRA_BU,  CHAR_JP_HIRA_PU       },
+    { CHAR_JP_HIRA_HE,  CHAR_JP_HIRA_BE,  CHAR_JP_HIRA_PE       },
+    { CHAR_JP_HIRA_HO,  CHAR_JP_HIRA_BO,  CHAR_JP_HIRA_PO       },
+    { CHAR_JP_KATA_HA,  CHAR_JP_KATA_BA,  CHAR_JP_KATA_PA       },
+    { CHAR_JP_KATA_HI,  CHAR_JP_KATA_BI,  CHAR_JP_KATA_PI       },
+    { CHAR_JP_KATA_FU,  CHAR_JP_KATA_BU,  CHAR_JP_KATA_PU       },
+    { CHAR_JP_KATA_HE,  CHAR_JP_KATA_BE,  CHAR_JP_KATA_PE       },
+    { CHAR_JP_KATA_HO,  CHAR_JP_KATA_BO,  CHAR_JP_KATA_PO       },
 };
 
 #define CHARCONVTBL_ALPHA_BEGIN   0
@@ -396,18 +396,18 @@ static const u16 sJpCharConvTable[][3] = {
 #define CHARCONVTBL_HANDAKU_BEGIN 72
 
 static const u16 sDakutenTable[][2] = {
-    { CHAR_JP_HIRA_TU_SMALL, CHAR_JP_HIRA_DU },
-    { CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_DU },
-    { CHAR_JP_HIRA_PA,       CHAR_JP_HIRA_BA },
-    { CHAR_JP_HIRA_PI,       CHAR_JP_HIRA_BI },
-    { CHAR_JP_HIRA_PU,       CHAR_JP_HIRA_BU },
-    { CHAR_JP_HIRA_PE,       CHAR_JP_HIRA_BE },
-    { CHAR_JP_HIRA_PO,       CHAR_JP_HIRA_BO },
-    { CHAR_JP_KATA_PA,       CHAR_JP_KATA_BA },
-    { CHAR_JP_KATA_PI,       CHAR_JP_KATA_BI },
-    { CHAR_JP_KATA_PU,       CHAR_JP_KATA_BU },
-    { CHAR_JP_KATA_PE,       CHAR_JP_KATA_BE },
-    { CHAR_JP_KATA_PO,       CHAR_JP_KATA_BO },
+    { CHAR_JP_HIRA_SOKUON, CHAR_JP_HIRA_DZU },
+    { CHAR_JP_KATA_SOKUON, CHAR_JP_KATA_DZU },
+    { CHAR_JP_HIRA_PA,     CHAR_JP_HIRA_BA  },
+    { CHAR_JP_HIRA_PI,     CHAR_JP_HIRA_BI  },
+    { CHAR_JP_HIRA_PU,     CHAR_JP_HIRA_BU  },
+    { CHAR_JP_HIRA_PE,     CHAR_JP_HIRA_BE  },
+    { CHAR_JP_HIRA_PO,     CHAR_JP_HIRA_BO  },
+    { CHAR_JP_KATA_PA,     CHAR_JP_KATA_BA  },
+    { CHAR_JP_KATA_PI,     CHAR_JP_KATA_BI  },
+    { CHAR_JP_KATA_PU,     CHAR_JP_KATA_BU  },
+    { CHAR_JP_KATA_PE,     CHAR_JP_KATA_BE  },
+    { CHAR_JP_KATA_PO,     CHAR_JP_KATA_BO  },
 };
 
 static const u16 sHandakutenTable[][2] = {
@@ -439,11 +439,11 @@ static const u8 sKeyboardFrameColors[] = {
 
 // These were intended for the Japanese build, but their purpose was replaced with GMM.
 // The arrays still appear in the final English ROM.
-const u16 sPrompt_YourName[] = { CHAR_JP_HIRA_A, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_TA, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_MA, CHAR_JP_HIRA_E, CHAR_JP_HIRA_HA, CHAR_JP_QUESTION_MARK, EOS };
+const u16 sPrompt_YourName[] = { CHAR_JP_HIRA_A, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_TA, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_MA, CHAR_JP_HIRA_E, CHAR_JP_HIRA_HA, CHAR_JP_QMARK, CHAR_EOS };
 
-const u16 sPrompt_PokemonsNickname[] = { CHAR_JP_KATA_PO, CHAR_JP_KATA_KE, CHAR_JP_KATA_MO, CHAR_JP_KATA_N_, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_KATA_NI, CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_KU, CHAR_JP_KATA_NE, CHAR_JP_HYPHEN, CHAR_JP_KATA_MU, CHAR_JP_HIRA_HA, CHAR_JP_QUESTION_MARK, EOS };
+const u16 sPrompt_PokemonsNickname[] = { CHAR_JP_KATA_PO, CHAR_JP_KATA_KE, CHAR_JP_KATA_MO, CHAR_JP_KATA_N, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_KATA_NI, CHAR_JP_KATA_SOKUON, CHAR_JP_KATA_KU, CHAR_JP_KATA_NE, CHAR_JP_MINUS, CHAR_JP_KATA_MU, CHAR_JP_HIRA_HA, CHAR_JP_QMARK, CHAR_EOS };
 
-const u16 sPrompt_BoxName[] = { CHAR_JP_KATA_BO, CHAR_JP_KATA_TU_SMALL, CHAR_JP_KATA_KU, CHAR_JP_KATA_SU, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_MA, CHAR_JP_HIRA_E, CHAR_JP_HIRA_HA, CHAR_JP_QUESTION_MARK, EOS };
+const u16 sPrompt_BoxName[] = { CHAR_JP_KATA_BO, CHAR_JP_KATA_SOKUON, CHAR_JP_KATA_KU, CHAR_JP_KATA_SU, CHAR_JP_HIRA_NO, CHAR_JP_SPACE, CHAR_JP_HIRA_NA, CHAR_JP_HIRA_MA, CHAR_JP_HIRA_E, CHAR_JP_HIRA_HA, CHAR_JP_QMARK, CHAR_EOS };
 
 // Required to force the above three arrays to appear in the final ROM.
 // This pointer array does not appear in the final ROM.
@@ -682,7 +682,7 @@ static BOOL NamingScreen_PMCharArrayIsAllSpaces(const u16 *s) {
     int i;
 
     for (i = 0;; ++i) {
-        if (s[i] == EOS) {
+        if (s[i] == CHAR_EOS) {
             break;
         }
         if (s[i] != CHAR_SPACE) {
@@ -697,7 +697,7 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     NamingScreenAppData *data = OverlayManager_GetData(ovyMan);
     NamingScreenArgs *args = OverlayManager_GetArgs(ovyMan);
 
-    data->entryBuf[data->textCursorPos] = EOS;
+    data->entryBuf[data->textCursorPos] = CHAR_EOS;
     if (data->type == NAME_SCREEN_POKEMON) {
         Pokemon *mon = AllocMonZeroed(HEAP_ID_NAMING_SCREEN);
         CreateMon(mon, data->playerGenderOrMonSpecies, 5, 10, 10, 10, 10, 10);
@@ -762,7 +762,7 @@ NamingScreenArgs *NamingScreen_CreateArgs(enum HeapID heapID, NameScreenType kin
     ret->playerGenderOrMonSpecies = param;
     ret->maxLen = maxLen;
     ret->noInput = FALSE;
-    ret->nameInputFlat[0] = EOS;
+    ret->nameInputFlat[0] = CHAR_EOS;
     ret->nameInputString = String_New(32, heapID);
     ret->battleMsgId = 0;
     ret->pcStorage = 0;
@@ -935,7 +935,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId, BG_POS_OP_SET_Y, data->bgPosVecs[data->activeKeyboardBgId].y);
     BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId ^ 1, BG_POS_OP_SET_X, data->bgPosVecs[data->activeKeyboardBgId ^ 1].x);
     BgSetPosTextAndCommit(data->bgConfig, data->activeKeyboardBgId ^ 1, BG_POS_OP_SET_Y, data->bgPosVecs[data->activeKeyboardBgId ^ 1].y);
-    data->entryBufBak[0] = EOS;
+    data->entryBufBak[0] = CHAR_EOS;
     if (args->nameInputString != NULL) {
         CopyStringToU16Array(args->nameInputString, data->entryBufBak, 32);
     }
@@ -962,7 +962,7 @@ static void NamingScreen_InitKeyboardAndEntryCursors(NamingScreenAppData *data, 
     data->unk_484 = -1;
     data->unk_488 = 0;
     data->unk_48C = 0;
-    data->entryBuf[data->maxLen] = EOS;
+    data->entryBuf[data->maxLen] = CHAR_EOS;
     for (int i = 0; i < 7; ++i) {
         data->spriteAnimUpdateReq[i] = 0;
     }
@@ -993,7 +993,7 @@ static void NamingScreen_PrepareBattleMessage(NamingScreenAppData *data, Overlay
             BufferBoxMonSpeciesName(data->msgFormat, 0, Mon_GetBoxMon(mon));
             Heap_Free(mon);
         } else {
-            data->entryBuf[data->textCursorPos] = EOS;
+            data->entryBuf[data->textCursorPos] = CHAR_EOS;
             CopyU16ArrayToString(string, data->entryBuf);
             BufferString(data->msgFormat, 0, string, 0, 0, 0);
         }
@@ -1347,7 +1347,7 @@ static void NamingScreen_InitWindows(NamingScreenAppData *data, OverlayManager *
 
     OverlayManager_GetArgs(ovyMan);
 
-    if (data->entryBufBak[0] != EOS) {
+    if (data->entryBufBak[0] != CHAR_EOS) {
         CopyU16StringArray(data->entryBuf, data->entryBufBak);
         NamingScreen_BlitRawCharactersToWindow(&data->windows[3], data->entryBuf, 0, 0, 12, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
     }
@@ -1518,7 +1518,7 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
     int centerX;
     u16 pmCharBuf[2];
     String *string = String_New(2, HEAP_ID_NAMING_SCREEN);
-    while (rawChars[i] != EOS) {
+    while (rawChars[i] != CHAR_EOS) {
         if (rawChars[i] == NAME_SCREEN_CONTROL_DAKU || rawChars[i] == NAME_SCREEN_CONTROL_HANDAKU || rawChars[i] == NAME_SCREEN_CONTROL_SPACE) {
             // This is unreachable outside of Japan.
             u16 buttonId = rawChars[i] - NAME_SCREEN_CONTROL_DAKU;
@@ -1528,7 +1528,7 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
             continue;
         } else {
             pmCharBuf[0] = rawChars[i];
-            pmCharBuf[1] = EOS;
+            pmCharBuf[1] = CHAR_EOS;
             width = FontID_FlatArray_GetWidth(0, pmCharBuf, 0);
             CopyU16ArrayToString(string, pmCharBuf);
             centerX = x + i * spacing + ((spacing - width) / 2);
@@ -1565,7 +1565,7 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
     string2 = String_New(21, HEAP_ID_NAMING_SCREEN);
     for (i = 0; i < 3; ++i) {
         curCharBuf[0] = tmpBuf[i];
-        curCharBuf[1] = EOS;
+        curCharBuf[1] = CHAR_EOS;
 
         FillWindowPixelBuffer(&windows[i], 0);
         CopyU16ArrayToString(string2, curCharBuf);
@@ -1694,7 +1694,7 @@ static NamingScreenMainState NamingScreen_HandleCharacterInput(NamingScreenAppDa
         break;
     case NAME_SCREEN_BUTTON_BACK:
         if (data->textCursorPos != 0) {
-            data->entryBuf[data->textCursorPos - 1] = EOS;
+            data->entryBuf[data->textCursorPos - 1] = CHAR_EOS;
             --data->textCursorPos;
             FillWindowPixelBuffer(&data->windows[3], 1);
             if (data->textCursorPos == 0) {
@@ -1823,12 +1823,12 @@ static BOOL NamingScreen_JP_FlipDiacritic(int tableStart, int tableEnd, int conv
         }
         break;
     case NAME_SCREEN_BUTTON_PAGE_JP_UNUSED_2:
-        if (key == CHAR_JP_HIRA_DU) {
-            pmCharBuf[cursorPos - 1] = CHAR_JP_HIRA_TU_SMALL;
+        if (key == CHAR_JP_HIRA_DZU) {
+            pmCharBuf[cursorPos - 1] = CHAR_JP_HIRA_SOKUON;
             return TRUE;
         }
-        if (key == CHAR_JP_KATA_DU) {
-            pmCharBuf[cursorPos - 1] = CHAR_JP_KATA_TU_SMALL;
+        if (key == CHAR_JP_KATA_DZU) {
+            pmCharBuf[cursorPos - 1] = CHAR_JP_KATA_SOKUON;
             return TRUE;
         }
         break;

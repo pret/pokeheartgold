@@ -21,7 +21,7 @@ String *String_New(u32 maxsize, enum HeapID heapID) {
         ret->magic = STRING_MAGIC;
         ret->maxsize = maxsize;
         ret->size = 0;
-        ret->data[0] = EOS;
+        ret->data[0] = CHAR_EOS;
     }
     return ret;
 }
@@ -35,7 +35,7 @@ void String_Delete(String *string) {
 void String_SetEmpty(String *string) {
     ASSERT_STRING(string);
     string->size = 0;
-    string->data[0] = EOS;
+    string->data[0] = CHAR_EOS;
 }
 
 void String_Copy(String *dest, const String *src) {
@@ -109,7 +109,7 @@ void String16_FormatInteger(String *str, int num, u32 ndigits, PrintingMode strC
         String_SetEmpty(str);
         if (isNegative) {
             num *= -1;
-            u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_HYPHEN : CHAR_HYPHEN);
+            u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_MINUS : CHAR_MINUS);
             str->data[str->size++] = hyphen;
         }
         u32 dividend = sPowersOfTen[ndigits - 1];
@@ -117,19 +117,19 @@ void String16_FormatInteger(String *str, int num, u32 ndigits, PrintingMode strC
             u16 digit = (u16)(num / dividend);
             num -= dividend * digit;
             if (strConvMode == PRINTING_MODE_LEADING_ZEROS) {
-                u16 value = (u16)((digit < 10) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
+                u16 value = (u16)((digit < 10) ? charbase[digit] : CHAR_JP_QMARK);
                 str->data[str->size++] = value;
             } else if (digit != 0 || dividend == 1) {
                 strConvMode = PRINTING_MODE_LEADING_ZEROS;
-                u16 value = (u16)((digit < 10) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
+                u16 value = (u16)((digit < 10) ? charbase[digit] : CHAR_JP_QMARK);
                 str->data[str->size++] = value;
             } else if (strConvMode == PRINTING_MODE_RIGHT_ALIGN) {
-                u16 value = (u16)((whichCharset == 0) ? CHAR_JP_SPACE : CHAR_NARROW_SPACE);
+                u16 value = (u16)((whichCharset == 0) ? CHAR_JP_SPACE : CHAR_NUM_SPACE);
                 str->data[str->size++] = value;
             }
             dividend /= 10;
         }
-        str->data[str->size] = EOS;
+        str->data[str->size] = CHAR_EOS;
         return;
     }
     GF_ASSERT(FALSE);
@@ -195,7 +195,7 @@ void String16_FormatUnsignedLongLong(String *str, u64 num, u32 ndigits, Printing
         String_SetEmpty(str);
         if (isNegative) {
             num *= -1;
-            u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_HYPHEN : CHAR_HYPHEN);
+            u16 hyphen = (u16)((whichCharset == 0) ? CHAR_JP_MINUS : CHAR_MINUS);
             str->data[str->size++] = hyphen;
         }
         u64 dividend = sPowersOfTen[ndigits - 1];
@@ -203,11 +203,11 @@ void String16_FormatUnsignedLongLong(String *str, u64 num, u32 ndigits, Printing
             u64 digit = num / dividend;
             num -= dividend * digit;
             if (strConvMode == PRINTING_MODE_LEADING_ZEROS) {
-                u16 value = (u16)((digit < 10ull) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
+                u16 value = (u16)((digit < 10ull) ? charbase[digit] : CHAR_JP_QMARK);
                 str->data[str->size++] = value;
             } else if (digit != 0 || dividend == 1) {
                 strConvMode = PRINTING_MODE_LEADING_ZEROS;
-                u16 value = (u16)((digit < 10ull) ? charbase[digit] : CHAR_JP_QUESTION_MARK);
+                u16 value = (u16)((digit < 10ull) ? charbase[digit] : CHAR_JP_QMARK);
                 str->data[str->size++] = value;
             } else if (strConvMode == PRINTING_MODE_RIGHT_ALIGN) {
                 u16 value = (u16)((whichCharset == 0) ? CHAR_JP_SPACE : CHAR_SPACE);
@@ -215,7 +215,7 @@ void String16_FormatUnsignedLongLong(String *str, u64 num, u32 ndigits, Printing
             }
             dividend /= 10ull;
         }
-        str->data[str->size] = EOS;
+        str->data[str->size] = CHAR_EOS;
         return;
     }
     GF_ASSERT(FALSE);
@@ -251,7 +251,7 @@ BOOL String_Compare(String *str1, String *str2) {
     ASSERT_STRING(str2);
 
     for (int i = 0; str1->data[i] == str2->data[i]; i++) {
-        if (str1->data[i] == EOS) {
+        if (str1->data[i] == CHAR_EOS) {
             return FALSE;
         }
     }
@@ -268,7 +268,7 @@ int String_CountLines(volatile String *str) {
 
     int i, nline;
     for (i = 0, nline = 1; i < str->size; i++) {
-        if (str->data[i] == CHAR_LF) {
+        if (str->data[i] == CHAR_LINE_BREAK) {
             nline++;
         }
     }
@@ -282,7 +282,7 @@ void String_GetLineN(String *dest, volatile String *src, u32 n) {
     int i = 0;
     if (n != 0) {
         for (i = 0; i < src->size; i++) {
-            if (src->data[i] == CHAR_LF && --n == 0) {
+            if (src->data[i] == CHAR_LINE_BREAK && --n == 0) {
                 i++;
                 break;
             }
@@ -291,7 +291,7 @@ void String_GetLineN(String *dest, volatile String *src, u32 n) {
     String_SetEmpty(dest);
     for (; i < src->size; i++) {
         u16 c = src->data[i];
-        if (c == CHAR_LF) {
+        if (c == CHAR_LINE_BREAK) {
             break;
         }
         String_AddChar(dest, c);
@@ -325,14 +325,14 @@ void String_RadioAddStatic(String *string, u8 level) {
 void CopyU16ArrayToString(String *str, const u16 *buf) {
     ASSERT_STRING(str);
 
-    for (str->size = 0; *buf != EOS;) {
+    for (str->size = 0; *buf != CHAR_EOS;) {
         if (str->size >= str->maxsize - 1) {
             GF_ASSERT(FALSE);
             break;
         }
         str->data[str->size++] = *buf++;
     }
-    str->data[str->size] = EOS;
+    str->data[str->size] = CHAR_EOS;
 }
 
 void CopyU16ArrayToStringN(String *str, const u16 *buf, u32 length) {
@@ -342,13 +342,13 @@ void CopyU16ArrayToStringN(String *str, const u16 *buf, u32 length) {
         int i;
         memcpy(str->data, buf, length * 2);
         for (i = 0; i < length; i++) {
-            if (str->data[i] == EOS) {
+            if (str->data[i] == CHAR_EOS) {
                 break;
             }
         }
         str->size = (u16)i;
         if (i == length) {
-            str->data[length - 1] = EOS;
+            str->data[length - 1] = CHAR_EOS;
         }
         return;
     }
@@ -388,14 +388,14 @@ void String_AddChar(String *str, u16 val) {
 
     if (str->size + 1 < str->maxsize) {
         str->data[str->size++] = val;
-        str->data[str->size] = EOS;
+        str->data[str->size] = CHAR_EOS;
         return;
     }
     GF_ASSERT(FALSE);
 }
 
 BOOL String_IsTrainerName(String *string) {
-    return string->size != 0 && string->data[0] == TRNAMECODE;
+    return string->size != 0 && string->data[0] == CHAR_COMPRESSED_MARK;
 }
 
 void String_Cat_HandleTrainerName(String *dest, String *src) {
@@ -422,7 +422,7 @@ void String_Cat_HandleTrainerName(String *dest, String *src) {
             *dest_p++ = cur_char;
             outsize++;
         }
-        *dest_p = EOS;
+        *dest_p = CHAR_EOS;
         dest->size += outsize;
     } else {
         String_Cat(dest, src);

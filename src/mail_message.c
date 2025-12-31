@@ -113,8 +113,8 @@ u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no) {
     msg = ReadMsgData_NewNarc_NewString(NARC_msgdata_msg, sMessageBanks[msg_bank], msg_no, HEAP_ID_DEFAULT);
     msg_cstr = String_cstr(msg);
     ret = 0;
-    while (*msg_cstr != EOS) {
-        if (*msg_cstr == EXT_CTRL_CODE_BEGIN) {
+    while (*msg_cstr != CHAR_EOS) {
+        if (*msg_cstr == CHAR_CONTROL_CODE_ARG) {
             if (MsgArray_ControlCodeIsStrVar(msg_cstr)) {
                 ret++;
             }

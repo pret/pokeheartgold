@@ -210,10 +210,10 @@ static void DecompressGlyphTiles_LazyFromNarc(struct FontData *fontData, u16 gly
 u32 GetStringWidth(struct FontData *fontData, const u16 *string, u32 letterSpacing) {
     u32 ret = 0;
 
-    while (*string != EOS) {
-        if (*string == EXT_CTRL_CODE_BEGIN) {
+    while (*string != CHAR_EOS) {
+        if (*string == CHAR_CONTROL_CODE_ARG) {
             string = MsgArray_SkipControlCode(string);
-            if (*string != EOS) {
+            if (*string != CHAR_EOS) {
                 continue;
             }
             break;
@@ -228,10 +228,10 @@ u32 GetStringWidth(struct FontData *fontData, const u16 *string, u32 letterSpaci
 u32 GetStringWidthFirstLine(struct FontData *fontData, const u16 *string, u32 letterSpacing) {
     u32 ret = 0;
 
-    while (*string != EOS && *string != CHAR_LF) {
-        if (*string == EXT_CTRL_CODE_BEGIN) {
+    while (*string != CHAR_EOS && *string != CHAR_LINE_BREAK) {
+        if (*string == CHAR_CONTROL_CODE_ARG) {
             string = MsgArray_SkipControlCode(string);
-            if (*string != EOS && *string != CHAR_LF) {
+            if (*string != CHAR_EOS && *string != CHAR_LINE_BREAK) {
                 continue;
             }
             break;
@@ -244,10 +244,10 @@ u32 GetStringWidthFirstLine(struct FontData *fontData, const u16 *string, u32 le
 }
 
 BOOL StringAllCharsValid(struct FontData *fontData, const u16 *string) {
-    while (*string != EOS) {
-        if (*string == EXT_CTRL_CODE_BEGIN) {
+    while (*string != CHAR_EOS) {
+        if (*string == CHAR_CONTROL_CODE_ARG) {
             string = MsgArray_SkipControlCode(string);
-            if (*string == EOS) {
+            if (*string == CHAR_EOS) {
                 return TRUE;
             }
             // bug: if multiple ext ctrl codes in tandem,
@@ -276,10 +276,10 @@ static u32 GetGlyphWidth_FixedWidth(struct FontData *fontData, int glyphId) {
 u32 GetStringWidthMultiline(struct FontData *fontData, const u16 *string, u32 letterSpacing) {
     u32 cur = 0, ret = 0;
 
-    while (*string != EOS) {
-        if (*string == EXT_CTRL_CODE_BEGIN) {
+    while (*string != CHAR_EOS) {
+        if (*string == CHAR_CONTROL_CODE_ARG) {
             string = MsgArray_SkipControlCode(string);
-        } else if (*string == CHAR_LF) {
+        } else if (*string == CHAR_LINE_BREAK) {
             if (ret < cur - letterSpacing) {
                 ret = cur - letterSpacing;
             }

@@ -58,17 +58,17 @@ static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
     {                              \
         .language = GAME_LANGUAGE, \
         .nickname = {              \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     EOS,                   \
-                     },                         \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     CHAR_EOS,     \
+                     },            \
 }
 
 static const TrainerHouseSet ov25_02259D9C = {
@@ -82,11 +82,11 @@ static const TrainerHouseSet ov25_02259D9C = {
             CHAR_JP_HIRA_HI,
             CHAR_JP_HIRA_KA,
             CHAR_JP_HIRA_RU,
-            EOS,
-            EOS,
-            EOS,
-            EOS,
-            EOS,
+            CHAR_EOS,
+            CHAR_EOS,
+            CHAR_EOS,
+            CHAR_EOS,
+            CHAR_EOS,
         }, // "ひかる"
     },
     .party = {
@@ -113,11 +113,11 @@ static const TrainerHouseSet ov25_02259D9C = {
                 CHAR_JP_KATA_NI,
                 CHAR_JP_KATA_U,
                 CHAR_JP_KATA_MU,
-                EOS,
-                EOS,
-                EOS,
-                EOS,
-                EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
             }, // "メガニウム"
         },
                 {
@@ -140,14 +140,14 @@ static const TrainerHouseSet ov25_02259D9C = {
             .nickname = {
                 CHAR_JP_KATA_BA,
                 CHAR_JP_KATA_KU,
-                CHAR_JP_KATA_HU,
-                CHAR_JP_HYPHEN,
-                CHAR_JP_KATA_N_,
-                EOS,
-                EOS,
-                EOS,
-                EOS,
-                EOS,
+                CHAR_JP_KATA_FU,
+                CHAR_JP_MINUS,
+                CHAR_JP_KATA_N,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
             }, // "バクフーン"
         },
                 {
@@ -169,15 +169,15 @@ static const TrainerHouseSet ov25_02259D9C = {
             .level = 50,
             .nickname = {
                 CHAR_JP_KATA_O,
-                CHAR_JP_HYPHEN,
+                CHAR_JP_MINUS,
                 CHAR_JP_KATA_DA,
                 CHAR_JP_KATA_I,
                 CHAR_JP_KATA_RU,
-                EOS,
-                EOS,
-                EOS,
-                EOS,
-                EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
+                CHAR_EOS,
             }, // "オーダイル"
         },
                 DUMMY_TRAINER_HOUSE_MON,
@@ -226,7 +226,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             if (length > PLAYER_NAME_LENGTH) {
                 length = PLAYER_NAME_LENGTH;
             }
-            MI_CpuFill16(set->trainer.otName, EOS, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
+            MI_CpuFill16(set->trainer.otName, CHAR_EOS, (PLAYER_NAME_LENGTH + 1) * sizeof(u16));
             MI_CpuCopy16(String_cstr(otName), set->trainer.otName, length * sizeof(u16));
             String_Delete(otName);
         }
@@ -244,7 +244,7 @@ static void TrainerHouse_SetNames(TrainerHouseSet *set) {
             if (length > POKEMON_NAME_LENGTH) {
                 length = POKEMON_NAME_LENGTH;
             }
-            MI_CpuFill16(trainerHouseMon->nickname, EOS, POKEMON_NAME_LENGTH * sizeof(u16));
+            MI_CpuFill16(trainerHouseMon->nickname, CHAR_EOS, POKEMON_NAME_LENGTH * sizeof(u16));
             MI_CpuCopy16(String_cstr(name), trainerHouseMon->nickname, length * sizeof(u16));
             String_Delete(name);
         }

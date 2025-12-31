@@ -23,7 +23,7 @@ static u8 sRulesetIndexes[] = {
 };
 
 static LinkBattleRuleset sDefaultRuleset = {
-    .name = { EOS },
+    .name = { CHAR_EOS },
     .totalLevel = 0,
     .partyCount = 6,
     .maxLevel = 100,
@@ -38,7 +38,7 @@ static LinkBattleRuleset sDefaultRuleset = {
 
 static LinkBattleRuleset sAlternateRulesets[] = {
     [STD_RULESET_STANDARD] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 3,
                               .maxLevel = 50,
@@ -51,7 +51,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_FANCY] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 80,
                               .partyCount = 3,
                               .maxLevel = 30,
@@ -64,7 +64,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_LITTLE] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 3,
                               .maxLevel = 5,
@@ -77,7 +77,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = TRUE,
                               },
     [STD_RULESET_LIGHT] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 3,
                               .maxLevel = 50,
@@ -90,7 +90,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_DOUBLE] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 4,
                               .maxLevel = 50,
@@ -103,7 +103,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_STANDARD_2] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 3,
                               .maxLevel = 100,
@@ -116,7 +116,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_LIGHT_2] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 3,
                               .maxLevel = 100,
@@ -129,7 +129,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_DOUBLE_2] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 4,
                               .maxLevel = 100,
@@ -142,7 +142,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_DOUBLE_3] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0,
                               .partyCount = 4,
                               .maxLevel = 200,
@@ -155,7 +155,7 @@ static LinkBattleRuleset sAlternateRulesets[] = {
                               .dragonRageClause = FALSE,
                               },
     [STD_RULESET_GS] = {
-                              .name = { EOS },
+                              .name = { CHAR_EOS },
                               .totalLevel = 0 | FLAG_RULESET_BAN_SOUL_DEW,
                               .partyCount = 4,
                               .maxLevel = 100,
