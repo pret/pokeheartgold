@@ -5,9 +5,9 @@
     .rodata
     .balign 4, 0
 
-    .type gMonHeights, @object
+    .type mon_stats_height, @object
     .balign 4, 255
-gMonHeights:
+mon_stats_height:
 ## for mon in mon_stats
 ## if isInteger(mon.height)
     .word {{ mon.height }} // {{ mon.species }}
@@ -19,11 +19,11 @@ gMonHeights:
 #endif
 ## endif
 ## endfor
-    .size gMonHeights,.-gMonHeights
+    .size mon_stats_height,.-mon_stats_height
 
-    .type gMonWeights, @object
+    .type mon_stats_weight, @object
     .balign 4, 255
-gMonWeights:
+mon_stats_weight:
 ## for mon in mon_stats
 ## if isInteger(mon.weight)
     .word {{ mon.weight }} // {{ mon.species }}
@@ -35,11 +35,11 @@ gMonWeights:
 #endif
 ## endif
 ## endfor
-    .size gMonWeights,.-gMonWeights
+    .size mon_stats_weight,.-mon_stats_weight
 
-    .type gMonBodyTypes, @object
+    .type mon_stats_body_style, @object
     .balign 4, 255
-gMonBodyTypes:
+mon_stats_body_style:
 ## for mon in mon_stats
 ## if isInteger(mon.body_style)
     .byte {{ mon.body_style }} // {{ mon.species }}
@@ -51,77 +51,77 @@ gMonBodyTypes:
 #endif
 ## endif
 ## endfor
-    .size gMonBodyTypes,.-gMonBodyTypes
+    .size mon_stats_body_style,.-mon_stats_body_style
 
-    .type gMonScaleF, @object
+    .type mon_stats_player_scale_f, @object
     .balign 4, 255
-gMonScaleF:
+mon_stats_player_scale_f:
 ## for mon in mon_stats
     .short {{ mon.scale_f }} // {{ mon.species }}
 ## endfor
-    .size gMonScaleF,.-gMonScaleF
+    .size mon_stats_player_scale_f,.-mon_stats_player_scale_f
 
-    .type gMonMonScaleF, @object
+    .type mon_stats_mon_scale_f, @object
     .balign 4, 255
-gMonMonScaleF:
+mon_stats_mon_scale_f:
 ## for mon in mon_stats
     .short {{ mon.mon_scale_f }} // {{ mon.species }}
 ## endfor
-    .size gMonMonScaleF,.-gMonMonScaleF
+    .size mon_stats_mon_scale_f,.-mon_stats_mon_scale_f
 
-    .type gMonScaleM, @object
+    .type mon_stats_player_scale_m, @object
     .balign 4, 255
-gMonScaleM:
+mon_stats_player_scale_m:
 ## for mon in mon_stats
     .short {{ mon.scale_m }} // {{ mon.species }}
 ## endfor
-    .size gMonScaleM,.-gMonScaleM
+    .size mon_stats_player_scale_m,.-mon_stats_player_scale_m
 
-    .type gMonMonScaleM, @object
+    .type mon_stats_mon_scale_m, @object
     .balign 4, 255
-gMonMonScaleM:
+mon_stats_mon_scale_m:
 ## for mon in mon_stats
     .short {{ mon.mon_scale_m }} // {{ mon.species }}
 ## endfor
-    .size gMonMonScaleM,.-gMonMonScaleM
+    .size mon_stats_mon_scale_m,.-mon_stats_mon_scale_m
 
-    .type gMonYPosF, @object
+    .type mon_stats_player_ypos_f, @object
     .balign 4, 255
-gMonYPosF:
+mon_stats_player_ypos_f:
 ## for mon in mon_stats
     .short {{ mon.ypos_f }} // {{ mon.species }}
 ## endfor
-    .size gMonYPosF,.-gMonYPosF
+    .size mon_stats_player_ypos_f,.-mon_stats_player_ypos_f
 
-    .type gMonMonYPosF, @object
+    .type mon_stats_mon_ypos_f, @object
     .balign 4, 255
-gMonMonYPosF:
+mon_stats_mon_ypos_f:
 ## for mon in mon_stats
     .short {{ mon.mon_ypos_f }} // {{ mon.species }}
 ## endfor
-    .size gMonMonYPosF,.-gMonMonYPosF
+    .size mon_stats_mon_ypos_f,.-mon_stats_mon_ypos_f
 
-    .type gMonYPosM, @object
+    .type mon_stats_player_ypos_m, @object
     .balign 4, 255
-gMonYPosM:
+mon_stats_player_ypos_m:
 ## for mon in mon_stats
     .short {{ mon.ypos_m }} // {{ mon.species }}
 ## endfor
-    .size gMonYPosM,.-gMonYPosM
+    .size mon_stats_player_ypos_m,.-mon_stats_player_ypos_m
 
-    .type gMonMonYPosM, @object
+    .type mon_stats_mon_ypos_m, @object
     .balign 4, 255
-gMonMonYPosM:
+mon_stats_mon_ypos_m:
 ## for mon in mon_stats
     .short {{ mon.mon_ypos_m }} // {{ mon.species }}
 ## endfor
-    .size gMonMonYPosM,.-gMonMonYPosM
+    .size mon_stats_mon_ypos_m,.-mon_stats_mon_ypos_m
 
 ## for group in sorting
 ## for subgroup in group.options
-    .type gDexSort_{{ group.type }}_{{ subgroup.id }}, @object
+    .type sort_order_{{ group.type }}_{{ subgroup.id }}, @object
     .balign 4, 255
-gDexSort_{{ group.type }}_{{ subgroup.id }}:
+sort_order_{{ group.type }}_{{ subgroup.id }}:
 ## if isArray(subgroup.mons)
 ## for mon in subgroup.mons
     .short {{ mon }}
@@ -137,7 +137,7 @@ gDexSort_{{ group.type }}_{{ subgroup.id }}:
 ## endfor
 #endif
 ##endif
-    .size gDexSort_{{ group.type }}_{{ subgroup.id }},.-gDexSort_{{ group.type }}_{{ subgroup.id }}
+    .size sort_order_{{ group.type }}_{{ subgroup.id }},.-sort_order_{{ group.type }}_{{ subgroup.id }}
 
 ## endfor
 ## endfor

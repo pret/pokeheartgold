@@ -1,6 +1,7 @@
 #include "constants/maps.h"
 
 #include "application/pokedex/pokedex_internal.h"
+#include "application/zukanlist/zkn_data/zukan_data.naix"
 #include "application/zukanlist/zkn_data/zukan_enc.naix"
 #include "application/zukanlist/zkn_data/zukan_hw_data.naix"
 #include "graphic/zukan_gra.naix"
@@ -1806,30 +1807,30 @@ void ov18_021E8410(PokedexAppData *pokedexApp) {
     PokedexAppData_UnkSub18CC *r5 = &pokedexApp->unk_18CC;
     narc = NARC_New(GetPokedexDataNarcID(), HEAP_ID_37);
     if (PlayerProfile_GetTrainerGender(pokedexApp->args->playerProfile) == TRAINER_MALE) {
-        r5->unk_0 = GfGfxLoader_LoadFromOpenNarc(narc, 9, FALSE, HEAP_ID_37, FALSE);
-        r5->unk_4 = GfGfxLoader_LoadFromOpenNarc(narc, 5, FALSE, HEAP_ID_37, FALSE);
-        r5->unk_8 = GfGfxLoader_LoadFromOpenNarc(narc, 10, FALSE, HEAP_ID_37, FALSE);
-        r5->unk_C = GfGfxLoader_LoadFromOpenNarc(narc, 6, FALSE, HEAP_ID_37, FALSE);
+        r5->player_ypos = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_player_ypos_m, FALSE, HEAP_ID_37, FALSE);
+        r5->player_scale = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_player_scale_m, FALSE, HEAP_ID_37, FALSE);
+        r5->mon_ypos = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_mon_ypos_m, FALSE, HEAP_ID_37, FALSE);
+        r5->mon_scale = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_mon_scale_m, FALSE, HEAP_ID_37, FALSE);
     } else {
-        r5->unk_0 = GfGfxLoader_LoadFromOpenNarc(narc, 7, FALSE, HEAP_ID_37, FALSE);
-        r5->unk_4 = GfGfxLoader_LoadFromOpenNarc(narc, 3, FALSE, HEAP_ID_37, FALSE);
-        r5->unk_8 = GfGfxLoader_LoadFromOpenNarc(narc, 8, FALSE, HEAP_ID_37, FALSE);
-        r5->unk_C = GfGfxLoader_LoadFromOpenNarc(narc, 4, FALSE, HEAP_ID_37, FALSE);
+        r5->player_ypos = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_player_ypos_f, FALSE, HEAP_ID_37, FALSE);
+        r5->player_scale = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_player_scale_f, FALSE, HEAP_ID_37, FALSE);
+        r5->mon_ypos = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_mon_ypos_f, FALSE, HEAP_ID_37, FALSE);
+        r5->mon_scale = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_mon_scale_f, FALSE, HEAP_ID_37, FALSE);
     }
-    pokedexApp->unk_1848 = GfGfxLoader_LoadFromOpenNarc(narc, 0, FALSE, HEAP_ID_37, FALSE);
-    pokedexApp->unk_184C = GfGfxLoader_LoadFromOpenNarc(narc, 1, FALSE, HEAP_ID_37, FALSE);
+    pokedexApp->heights = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_height, FALSE, HEAP_ID_37, FALSE);
+    pokedexApp->weights = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_data_mon_stats_weight, FALSE, HEAP_ID_37, FALSE);
     NARC_Delete(narc);
 }
 
 void ov18_021E84EC(PokedexAppData *pokedexApp) {
     PokedexAppData_UnkSub18CC *r5 = &pokedexApp->unk_18CC;
 
-    Heap_Free(pokedexApp->unk_1848);
-    Heap_Free(pokedexApp->unk_184C);
-    Heap_Free(r5->unk_0);
-    Heap_Free(r5->unk_4);
-    Heap_Free(r5->unk_8);
-    Heap_Free(r5->unk_C);
+    Heap_Free(pokedexApp->heights);
+    Heap_Free(pokedexApp->weights);
+    Heap_Free(r5->player_ypos);
+    Heap_Free(r5->player_scale);
+    Heap_Free(r5->mon_ypos);
+    Heap_Free(r5->mon_scale);
 }
 
 void ov18_021E8528(PokedexAppData *pokedexApp, int a1, int a2) {

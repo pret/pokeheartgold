@@ -7,15 +7,15 @@
 typedef struct PokedexData {
     u32 *height;
     u32 *weight;
-    s16 *unk_08;
-    s16 *unk_0C;
-    s16 *unk_10;
-    s16 *unk_14;
+    s16 *playerYPos;
+    s16 *monYPos;
+    s16 *playerScale;
+    s16 *monScale;
 } PokedexData; // size=0x18
 
 struct PokedexData *PokedexData_Create(enum HeapID heapID);
 void PokedexData_Delete(struct PokedexData *zkn);
-void PokedexData_LoadAll(struct PokedexData *zkn, int mode, enum HeapID heapID);
+void PokedexData_LoadAll(struct PokedexData *zkn, int playerGender, enum HeapID heapID);
 void PokedexData_UnloadAll(struct PokedexData *zkn);
 u32 PokedexData_GetHeight(struct PokedexData *zkn, int species);
 u32 PokedexData_GetWeight(struct PokedexData *zkn, int species);
