@@ -139,7 +139,10 @@ typedef struct PokedexAppData_UnkSub0868_State10 {
 } PokedexAppData_UnkSub0868_State10;
 
 typedef struct PokedexAppData_UnkSub0868_State13 {
-    u8 filler_0[7];
+    u16 *unk_0;
+    u8 unk_4;
+    u8 unk_5;
+    u8 unk_6;
     u8 unk_7;
 } PokedexAppData_UnkSub0868_State13;
 
@@ -382,7 +385,10 @@ void ov18_021F0900(PokedexAppData *pokedexApp);
 void ov18_021F0FC8(PokedexAppData *pokedexApp);
 void ov18_021F0FEC(PokedexAppData *pokedexApp);
 void ov18_021F1004(PokedexAppData *pokedexApp);
+void ov18_021F118C(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F11C0(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021F16C4(PokedexAppData *pokedexApp, int a1, int a2, u8 a3);
+void ov18_021F1760(PokedexAppData *pokedexApp, int a1, int a2, u8 a3);
 void ov18_021F1CAC(PokedexAppData *pokedexApp, int species, int a2, int a3);
 void ov18_021F1DE4(PokedexAppData *pokedexApp, u32 species, int a2, int a3);
 void ov18_021F209C(PokedexAppData *pokedexApp, u32 species, int a2, int a3);
@@ -396,7 +402,13 @@ void ov18_021F2B3C(PokedexAppData *pokedexApp, int a1, s16 a2);
 void ov18_021F2B70(PokedexAppData *pokedexApp, int a1, s16 a2);
 s16 ov18_021F2B9C(PokedexAppData *pokedexApp);
 void ov18_021F2BB0(PokedexAppData *pokedexApp, int a1);
+void ov18_021F2BFC(PokedexAppData *pokedexApp);
+void ov18_021F2C10(PokedexAppData *pokedexApp, int a1, int a2);
 int ov18_021F2CD0(PokedexAppData *pokedexApp, int a1, u32 x, u32 y);
+int ov18_021F2DD4(PokedexAppData *pokedexApp, int a1, int a2, int a3);
+u8 ov18_021F2E14(PokedexAppData *pokedexApp, int a1, int a2, int a3);
+void ov18_021F2E4C(PokedexAppData *pokedexApp, int a1, int a2);
+void ov18_021F2E80(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F2EC8(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F2F00(PokedexAppData *pokedexApp);
 void ov18_021F2F3C(PokedexAppData *pokedexApp);
