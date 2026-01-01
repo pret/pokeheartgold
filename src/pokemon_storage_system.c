@@ -247,7 +247,7 @@ void PCStorage_GetBoxName(PCStorage *storage, u32 boxno, String *dest) {
     GF_ASSERT(FALSE);
 }
 
-void PCStorage_SetBoxName(PCStorage *storage, u32 boxno, const String *src) {
+void PCStorage_SetBoxName(PCStorage *storage, u32 boxno, String *src) {
     if (boxno == -1u) {
         boxno = storage->curBox;
     }

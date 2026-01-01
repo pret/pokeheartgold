@@ -82,7 +82,7 @@ const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData) {
     return saveMiscData->rivalName;
 }
 
-void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const String *name) {
+void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, String *name) {
     String_CopyToChars(name, saveMiscData->rivalName, PLAYER_NAME_LENGTH + 1);
 }
 

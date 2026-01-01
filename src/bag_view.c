@@ -126,17 +126,17 @@ BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 
         string = NewString_ReadMsgData(msgData, msg_0010_00102); // A Key Item in the Bag can be assigned to this button for instant use.
     } else if (itemId == ITEM_POINT_CARD) {
         string = NewString_ReadMsgData(msgData, msg_0010_00100); // Saved Battle Points: {STRVAR_1 53, 0, 0}BP
-        BufferIntegerAsString(messageFormat, 0, GetNumBattlePoints(saveData), 4, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(messageFormat, 0, GetNumBattlePoints(saveData), 4, PADDING_MODE_NONE, TRUE);
     } else if (itemId == ITEM_SEAL_CASE) {
         string = NewString_ReadMsgData(msgData, msg_0010_00095); // Seals: {STRVAR_1 53, 0, 0}
-        BufferIntegerAsString(messageFormat, 0, GetSealCount(saveData), 4, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(messageFormat, 0, GetSealCount(saveData), 4, PADDING_MODE_NONE, TRUE);
     } else if (itemId == ITEM_FASHION_CASE) {
         string = NewString_ReadMsgData(msgData, msg_0010_00096); // Accessories: {STRVAR_1 52, 0, 0} Backdrops: {STRVAR_1 51, 1, 0}
-        BufferIntegerAsString(messageFormat, 0, GetNumFashionAccessories(saveData), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        BufferIntegerAsString(messageFormat, 1, GetNumFashionBackgrounds(saveData), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(messageFormat, 0, GetNumFashionAccessories(saveData), 3, PADDING_MODE_NONE, TRUE);
+        BufferIntegerAsString(messageFormat, 1, GetNumFashionBackgrounds(saveData), 2, PADDING_MODE_NONE, TRUE);
     } else if (itemId == ITEM_COIN_CASE) {
         string = NewString_ReadMsgData(msgData, msg_0010_00058); // Your Coins: {STRVAR_1 54, 0, 0}
-        BufferIntegerAsString(messageFormat, 0, GetCoinCount(saveData), 5, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(messageFormat, 0, GetCoinCount(saveData), 5, PADDING_MODE_NONE, TRUE);
     } else {
         MessageFormat_Delete(messageFormat);
         DestroyMsgData(msgData);

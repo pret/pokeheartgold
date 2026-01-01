@@ -1227,7 +1227,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
     u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
     u8 *r7 = Heap_Alloc(HEAP_ID_BATTLE, 0xC0);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->battleSystem), hpBar->level, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetLevelNumPrinter(hpBar->battleSystem), hpBar->level, 3, PADDING_MODE_NONE, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
     MI_CpuCopy16((void *)((u32)vramAddr + ov12_0226D420[hpBar->type][0].offset + imgProxy->vramLocation.baseAddrOfVram[NNS_G2D_VRAM_TYPE_2DMAIN]), r7, ov12_0226D420[hpBar->type][0].size);
@@ -1252,7 +1252,7 @@ static void ov12_02265354(BattleHpBar *hpBar) {
 static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
     u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->battleSystem), num, 3, PRINTING_MODE_RIGHT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->battleSystem), num, 3, PADDING_MODE_SPACES, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
@@ -1264,7 +1264,7 @@ static void ov12_02265474(BattleHpBar *hpBar, u32 num) {
 static void ov12_02265500(BattleHpBar *hpBar) {
     u8 *r4 = Heap_Alloc(HEAP_ID_BATTLE, 0x60);
     MI_CpuFill8(r4, 0xFF, 0x60);
-    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->battleSystem), hpBar->maxHp, 3, PRINTING_MODE_LEFT_ALIGN, (void *)r4);
+    sub_0200CEB0(BattleSystem_GetHpNumPrinter(hpBar->battleSystem), hpBar->maxHp, 3, PADDING_MODE_NONE, (void *)r4);
     NNSG2dImageProxy *imgProxy = Sprite_GetImageProxy(hpBar->boxObj->sprite);
     void *vramAddr = G2_GetOBJCharPtr();
 
@@ -1352,7 +1352,7 @@ static void BattleHpBar_PrintNumRemainingSafariOrParkBalls(BattleHpBar *hpBar, u
     } else {
         string2 = NewString_ReadMsgData(msgData, msg_0197_01221); // Left: $1
     }
-    BufferIntegerAsString(msgFormat, 0, hpBar->unk27, 2, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(msgFormat, 0, hpBar->unk27, 2, PADDING_MODE_SPACES, TRUE);
     StringExpandPlaceholders(msgFormat, string, string2);
     AddTextWindowTopLeftCorner(bgConfig, &window, 13, 2, 0, 15);
     AddTextPrinterParameterizedWithColorAndSpacing(&window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(14, 2, 15), 0, 0, NULL);

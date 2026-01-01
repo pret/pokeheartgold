@@ -67,7 +67,7 @@ u16 *StringFillEOS(u16 *str, u32 n) {
     return StringFill(str, EOS, n);
 }
 
-u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u32 ndigits) {
+u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, enum PaddingMode paddingMode, u32 ndigits) {
     static const u16 _digit_strcode[] = {
         CHAR_JP_0, CHAR_JP_1, CHAR_JP_2, CHAR_JP_3, CHAR_JP_4, CHAR_JP_5, CHAR_JP_6, CHAR_JP_7, CHAR_JP_8, CHAR_JP_9, CHAR_JP_A, CHAR_JP_B, CHAR_JP_C, CHAR_JP_D, CHAR_JP_E, CHAR_JP_F
 
@@ -90,14 +90,14 @@ u16 *ConvertUIntToDecimalString(u16 *dest, u32 num, PrintingMode strconvmode, u3
     for (denom = _power_of_10[ndigits - 1]; denom != 0; denom /= 10) {
         digit = num / denom;
         num -= denom * digit;
-        if (strconvmode == PRINTING_MODE_LEADING_ZEROS) {
+        if (paddingMode == PADDING_MODE_ZEROES) {
             *dest = (digit >= 10) ? CHAR_JP_QUESTION_MARK : _digit_strcode[digit];
             dest++;
         } else if (digit != 0 || denom == 1) {
-            strconvmode = PRINTING_MODE_LEADING_ZEROS;
+            paddingMode = PADDING_MODE_ZEROES;
             *dest = (digit >= 10) ? CHAR_JP_QUESTION_MARK : _digit_strcode[digit];
             dest++;
-        } else if (strconvmode == PRINTING_MODE_RIGHT_ALIGN) {
+        } else if (paddingMode == PADDING_MODE_SPACES) {
             *dest = CHAR_JP_SPACE;
             dest++;
         }

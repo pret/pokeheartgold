@@ -82,7 +82,7 @@ void MessageFormat_InitFields(MessageFormatFields *field) {
 #pragma unused(field)
 }
 
-void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const String *string, const MessageFormatAttrs *attrs) {
+void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, String *string, const MessageFormatAttrs *attrs) {
     GF_ASSERT(fieldno < msgFmt->count);
     if (fieldno < msgFmt->count) {
         if (attrs != NULL) {
@@ -92,7 +92,7 @@ void SetStringAsPlaceholder(MessageFormat *msgFmt, u32 fieldno, const String *st
     }
 }
 
-void BufferString(MessageFormat *msgFmt, u32 fieldno, const String *string, s32 a3, s32 a4, s32 a5) {
+void BufferString(MessageFormat *msgFmt, u32 fieldno, String *string, s32 a3, s32 a4, s32 a5) {
 #pragma unused(a3, a4, a5)
     SetStringAsPlaceholder(msgFmt, fieldno, string, NULL);
 }
@@ -151,8 +151,8 @@ void BufferBoxMonOTName(MessageFormat *msgFmt, u32 fieldno, BoxPokemon *boxMon) 
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 
-void BufferIntegerAsString(MessageFormat *msgFmt, u32 fieldno, s32 num, u32 numDigits, PrintingMode strconvmode, BOOL whichCharset) {
-    String_FormatInt(msgFmt->buffer, num, numDigits, strconvmode, whichCharset);
+void BufferIntegerAsString(MessageFormat *msgFmt, u32 fieldno, s32 num, u32 numDigits, enum PaddingMode paddingMode, BOOL whichCharset) {
+    String_FormatInt(msgFmt->buffer, num, numDigits, paddingMode, (enum CharsetMode)whichCharset);
     SetStringAsPlaceholder(msgFmt, fieldno, msgFmt->buffer, NULL);
 }
 

@@ -1934,7 +1934,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                         String_Free(strMonGender);
                     }
                     int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
-                    BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
+                    BufferIntegerAsString(format, 1, level, 3, PADDING_MODE_NONE, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, msg_0197_01274);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);
                     BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, 0, 0x90800, 3, 20023, 144, 0x10, 0, 0);
@@ -1943,7 +1943,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                 }
             }
             int ballsRemaining = BattleSystem_GetSafariBallCount(battleInput->battleSystem);
-            BufferIntegerAsString(format, 0, ballsRemaining, 2, PRINTING_MODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(format, 0, ballsRemaining, 2, PADDING_MODE_NONE, 1);
             String *strBallsRemaining = NewString_ReadMsgData(msgLoader, msg_0197_01271);
             StringExpandPlaceholders(format, strFormated, strBallsRemaining);
             BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, 0, 0x90800, 3, 20023, 224, 0x10, 0, 0);
@@ -2878,8 +2878,8 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
         }
 
         if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != 0) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i]) || (moveMemory->ppMax[i] != moveDisplayObj->move.ppMax[i])) {
-            BufferIntegerAsString(messageFormat, 0, moveMemory->pp[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
-            BufferIntegerAsString(messageFormat, 1, moveMemory->ppMax[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
+            BufferIntegerAsString(messageFormat, 0, moveMemory->pp[i], 2, PADDING_MODE_SPACES, 0);
+            BufferIntegerAsString(messageFormat, 1, moveMemory->ppMax[i], 2, PADDING_MODE_SPACES, 0);
             StringExpandPlaceholders(messageFormat, strSlashFormatted, strSlash);
 
             ppColor = GetPPTextColor(moveMemory->pp[i], moveMemory->ppMax[i]);

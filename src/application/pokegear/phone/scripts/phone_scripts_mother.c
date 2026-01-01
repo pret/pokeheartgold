@@ -46,7 +46,7 @@ BOOL GearPhoneCall_Mother(PokegearPhoneCallContext *ctx) {
     case 0:
         PhoneCall_InitMsgDataAndBufferNames(ctx);
         state->momsSavingsBalance = PhoneCallPersistentState_MomSavings_BalanceAction(ctx->callPersistentState, MOMS_BALANCE_GET, 0);
-        BufferIntegerAsString(ctx->msgFormat, 10, state->momsSavingsBalance, 6, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(ctx->msgFormat, 10, state->momsSavingsBalance, 6, PADDING_MODE_NONE, TRUE);
         state->flag0 = Save_VarsFlags_MomsSavingsFlagCheck(ctx->saveVarsFlags);
         state->flag1 = PhoneCallPersistentState_MomGiftQueue_IsFull(ctx->callPersistentState);
         if (state->isScriptedCall == 2) {

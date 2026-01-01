@@ -104,8 +104,8 @@ BOOL GearPhoneCall_ProfOak(PokegearPhoneCallContext *ctx) {
             r7 = Pokedex_CountNationalDexSeen(state->miscPtr.pokedex);
             r6_2 = Pokedex_CountNationalDexOwned(state->miscPtr.pokedex);
         }
-        BufferIntegerAsString(ctx->msgFormat, 5, r7, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-        BufferIntegerAsString(ctx->msgFormat, 6, r6_2, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(ctx->msgFormat, 5, r7, 3, PADDING_MODE_NONE, TRUE);
+        BufferIntegerAsString(ctx->msgFormat, 6, r6_2, 3, PADDING_MODE_NONE, TRUE);
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0666_00020);
         break;
     case 4:

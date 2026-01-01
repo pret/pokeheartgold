@@ -897,20 +897,20 @@ static void PrintPlayerInfoField(Window *window, MsgData *msgData, MessageFormat
 
 static void ov74_02227E64(MessageFormat *messageFormat, int number) {
     u32 digits;
-    PrintingMode printingMode;
+    enum PaddingMode paddingMode;
 
     if (number >= 100) {
         digits = 3;
-        printingMode = PRINTING_MODE_LEFT_ALIGN;
+        paddingMode = PADDING_MODE_NONE;
     } else if (number >= 10) {
         digits = 3;
-        printingMode = PRINTING_MODE_RIGHT_ALIGN;
+        paddingMode = PADDING_MODE_SPACES;
     } else {
         digits = 2;
-        printingMode = PRINTING_MODE_RIGHT_ALIGN;
+        paddingMode = PADDING_MODE_SPACES;
     }
 
-    BufferIntegerAsString(messageFormat, 0, number, digits, printingMode, 1);
+    BufferIntegerAsString(messageFormat, 0, number, digits, paddingMode, 1);
 }
 
 static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruct_ov74_02235414 *a2, u32 a3) {
@@ -944,10 +944,10 @@ static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruc
     PrintPlayerInfoField(a2->window, msgData, messageFormat, textColor, msg_0442_00017, 16);
 
     ov74_02227E64(messageFormat, GetIGTHours(data->igt));
-    BufferIntegerAsString(messageFormat, 1, GetIGTMinutes(data->igt), 2, PRINTING_MODE_LEADING_ZEROS, 1);
+    BufferIntegerAsString(messageFormat, 1, GetIGTMinutes(data->igt), 2, PADDING_MODE_ZEROES, 1);
     PrintPlayerInfoField(a2->window, msgData, messageFormat, textColor, msg_0442_00018, 32);
 
-    BufferIntegerAsString(messageFormat, 0, data->badges, 2, PRINTING_MODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(messageFormat, 0, data->badges, 2, PADDING_MODE_NONE, 1);
     PrintPlayerInfoField(a2->window, msgData, messageFormat, textColor, msg_0442_00020, 48);
 
     if (data->hasPokedex) {

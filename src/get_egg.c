@@ -228,7 +228,7 @@ static u8 DaycareMon_BufferLevelGrowthAndNick(DaycareMon *daycareMon, MessageFor
 
     boxMon = DaycareMon_GetBoxMon(daycareMon);
     levelGrowth = DaycareMon_CalcLevelGrowth(daycareMon);
-    BufferIntegerAsString(msgFmt, 1, levelGrowth, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(msgFmt, 1, levelGrowth, 3, PADDING_MODE_NONE, TRUE);
     BufferBoxMonNickname(msgFmt, 0, boxMon);
     return levelGrowth;
 }
@@ -241,7 +241,7 @@ static u16 DaycareMon_BufferNickAndRetrievalPrice(DaycareMon *daycareMon, Messag
     levelGrowth = DaycareMon_CalcLevelGrowth(daycareMon);
     BufferBoxMonNickname(msgFmt, 0, boxMon);
     price = (levelGrowth + 1) * 100;
-    BufferIntegerAsString(msgFmt, 1, price, 5, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(msgFmt, 1, price, 5, PADDING_MODE_NONE, TRUE);
     return price;
 }
 
@@ -943,7 +943,7 @@ void Save_Daycare_BufferMonStats(Daycare *dayCare, u32 nickname_idx, u32 level_i
     BufferBoxMonNickname(msgFmt, nickname_idx, boxMon);
 
     level = GetDaycareUpdatedLevel(boxMon, DaycareMon_GetSteps(daycareMon));
-    BufferIntegerAsString(msgFmt, level_idx, level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(msgFmt, level_idx, level, 3, PADDING_MODE_NONE, TRUE);
 
     gender = GetBoxMonData(boxMon, MON_DATA_GENDER, NULL);
     if (gender != MON_GENDERLESS) {

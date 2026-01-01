@@ -42,7 +42,7 @@ BOOL GearPhoneCall_Bill(PokegearPhoneCallContext *ctx) {
         PCStorage_GetBoxName(pcStorage, PCStorage_GetActiveBox(pcStorage), ctx->msgExpansionBuff);
         BufferString(ctx->msgFormat, 10, ctx->msgExpansionBuff, 2, 1, 2);
         count = PCStorage_CountEmptySpotsInAllBoxes(pcStorage);
-        BufferIntegerAsString(ctx->msgFormat, 11, count, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(ctx->msgFormat, 11, count, 3, PADDING_MODE_NONE, TRUE);
         if (count == 0) {
             PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msg_0665_00009);
         } else {

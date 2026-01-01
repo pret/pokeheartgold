@@ -1456,7 +1456,7 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     AddTextPrinterParameterizedWithColor(&windows[1], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     ReadMsgDataIntoString(data->msgData, msg_0180_00005, data->strbuf1);
-    BufferIntegerAsString(data->msgFormat, 0, hofMon->level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(data->msgFormat, 0, hofMon->level, 3, PADDING_MODE_NONE, TRUE);
     StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
     AddTextPrinterParameterizedWithColor(&windows[1], 0, data->strbuf2, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[1]);
@@ -2326,9 +2326,9 @@ static void RegisterHallOfFame_WholePartyScene_InitWindows(RegisterHallOfFameDat
     FillWindowPixelBuffer(&data->windows[1], 1);
     ReadMsgDataIntoString(data->msgData, msg_0180_00017, data->strbuf2);
     BufferPlayersName(data->msgFormat, 0, data->args->profile);
-    BufferIntegerAsString(data->msgFormat, 1, PlayerProfile_GetTrainerID_VisibleHalf(data->args->profile), 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
-    BufferIntegerAsString(data->msgFormat, 2, GetIGTHours(data->args->igt), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(data->msgFormat, 3, GetIGTMinutes(data->args->igt), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(data->msgFormat, 1, PlayerProfile_GetTrainerID_VisibleHalf(data->args->profile), 5, PADDING_MODE_ZEROES, TRUE);
+    BufferIntegerAsString(data->msgFormat, 2, GetIGTHours(data->args->igt), 3, PADDING_MODE_NONE, TRUE);
+    BufferIntegerAsString(data->msgFormat, 3, GetIGTMinutes(data->args->igt), 2, PADDING_MODE_ZEROES, TRUE);
     StringExpandPlaceholders(data->msgFormat, data->strbuf1, data->strbuf2);
     AddTextPrinterParameterizedWithColor(&data->windows[1], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowToVram(&data->windows[1]);

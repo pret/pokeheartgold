@@ -141,7 +141,7 @@ void BugContest_BufferContestWinnerNames(BugContest *bugContest, MsgData *msgDat
         BufferTrainerClassName(msgFmt, 2, sBugContestOpponentClasses[contestant->id]);
     }
     BufferSpeciesName(msgFmt, 1, contestant->data.species);
-    BufferIntegerAsString(msgFmt, 3, contestant->score, 3, PRINTING_MODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(msgFmt, 3, contestant->score, 3, PADDING_MODE_NONE, 1);
 }
 
 BOOL BugContest_ContestantIsRegistered(BugContest *bugContest, u8 id) {

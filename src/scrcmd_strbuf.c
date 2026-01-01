@@ -126,7 +126,7 @@ BOOL ScrCmd_BufferInt(ScriptContext *ctx) {
     u8 idx = ScriptReadByte(ctx);
     u16 number = ScriptGetVar(ctx);
 
-    BufferIntegerAsString(*msg_fmt, idx, number, CountDigits(number), PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, CountDigits(number), PADDING_MODE_SPACES, TRUE);
 
     return FALSE;
 }
@@ -139,11 +139,11 @@ BOOL ScrCmd_BufferIntEx(ScriptContext *ctx) {
     u8 unk2 = ScriptReadByte(ctx);
 
     u8 digits = unk2;
-    if (str_conv_mode == PRINTING_MODE_LEFT_ALIGN) {
+    if (str_conv_mode == PADDING_MODE_NONE) {
         digits = CountDigits(number);
     }
 
-    BufferIntegerAsString(*msg_fmt, idx, number, digits, (PrintingMode)str_conv_mode, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, digits, (enum PaddingMode)str_conv_mode, TRUE);
 
     return FALSE;
 }
@@ -156,11 +156,11 @@ BOOL ScrCmd_661(ScriptContext *ctx) {
     u8 unk2 = ScriptReadByte(ctx);
 
     u8 digits = unk2;
-    if (str_conv_mode == PRINTING_MODE_LEFT_ALIGN) {
+    if (str_conv_mode == PADDING_MODE_NONE) {
         digits = CountDigits(number);
     }
 
-    BufferIntegerAsString(*msg_fmt, idx, number, digits, (PrintingMode)str_conv_mode, TRUE);
+    BufferIntegerAsString(*msg_fmt, idx, number, digits, (enum PaddingMode)str_conv_mode, TRUE);
 
     return FALSE;
 }

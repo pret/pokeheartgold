@@ -453,7 +453,7 @@ static int PartyMenu_ItemUseFunc_HPRestore(PartyMenu *partyMenu) {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
     }
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
-    BufferIntegerAsString(partyMenu->msgFormat, 1, hp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(partyMenu->msgFormat, 1, hp - partyMenu->monsDrawState[partyMenu->partyMonIndex].hp, 3, PADDING_MODE_NONE, TRUE);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Free(string);
     int statusIcon = Pokemon_GetStatusIconId(mon);
@@ -585,7 +585,7 @@ static int PartyMenu_ItemUseFunc_LevelUp(PartyMenu *partyMenu) {
     partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp = GetMonData(mon, MON_DATA_MAX_HP, NULL);
     String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00177);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
-    BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->monsDrawState[partyMenu->partyMonIndex].level, 3, PADDING_MODE_NONE, TRUE);
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
     String_Free(string);
     int statusIcon = Pokemon_GetStatusIconId(mon);

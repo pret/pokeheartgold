@@ -925,9 +925,9 @@ BOOL ScrCmd_741(ScriptContext *ctx) {
         *price = 5000;
     }
 
-    BufferIntegerAsString(*msgfmt, 2, *price, 4, PRINTING_MODE_LEFT_ALIGN, 1);
-    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, PRINTING_MODE_LEFT_ALIGN, 1);      // richness..?
-    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, PRINTING_MODE_LEFT_ALIGN, 1); // smoothness..?
+    BufferIntegerAsString(*msgfmt, 2, *price, 4, PADDING_MODE_NONE, 1);
+    BufferIntegerAsString(*msgfmt, 3, unkVar, 3, PADDING_MODE_NONE, 1);      // richness..?
+    BufferIntegerAsString(*msgfmt, 4, unkOut.unk2, 3, PADDING_MODE_NONE, 1); // smoothness..?
 
     *unkPtrC = unkOut.unk0;
 
@@ -1538,7 +1538,7 @@ BOOL ScrCmd_BugContestGetTimeLeft(ScriptContext *ctx) {
         timeLeft = 20 - bugContest->elapsed_time;
     }
 
-    BufferIntegerAsString(*msgfmt, script_index, timeLeft, 2, PRINTING_MODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(*msgfmt, script_index, timeLeft, 2, PADDING_MODE_NONE, 1);
 
     return FALSE;
 }

@@ -949,8 +949,8 @@ BOOL VoltorbFlipTaskEngine_CardFlipEffect_Main(VoltorbFlipTaskEngine *workflow, 
 
             int payoutAfter = VoltorbFlipGameState_GetGamePayout(work->game);
 
-            BufferIntegerAsString(work->msgFmt, 0, type, 1, PRINTING_MODE_LEFT_ALIGN, 1);
-            BufferIntegerAsString(work->msgFmt, 1, payoutAfter, 5, PRINTING_MODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(work->msgFmt, 0, type, 1, PADDING_MODE_NONE, 1);
+            BufferIntegerAsString(work->msgFmt, 1, payoutAfter, 5, PADDING_MODE_NONE, 1);
             ManagedSprite_SetPositionXY(work->sprites[VF_SPRITE_FLIPPING_CARD], x, y);
             ManagedSprite_SetAnim(work->sprites[VF_SPRITE_FLIPPING_CARD], 0);
 
@@ -1039,7 +1039,7 @@ BOOL VoltorbFlipTaskEngine_AwardCoins_Main(VoltorbFlipTaskEngine *workflow, Volt
     switch (state) {
     case 0: {
         int var2 = VoltorbFlipGameState_GetGamePayout(work->game);
-        BufferIntegerAsString(work->msgFmt, 0, var2, 5, PRINTING_MODE_LEFT_ALIGN, 1);
+        BufferIntegerAsString(work->msgFmt, 0, var2, 5, PADDING_MODE_NONE, 1);
         BufferPlayersName(work->msgFmt, 1, work->profile);
         // {STRVAR_1 3, 1, 0}\nreceived {STRVAR_1 53, 0, 0} Coin(s)!\r
         VoltorbFlip_PrintTextWindow(work, msg_0039_00040, TRUE);
@@ -1267,7 +1267,7 @@ BOOL VoltorbFlipTaskEngine_QuitRound_SetUp(VoltorbFlipTaskEngine *workflow, Volt
         } else {
             // If you quit now, you will\nreceive {STRVAR_1 53, 0, 0} Coin(s).\fWill you quit?
             msgNo = msg_0039_00034;
-            BufferIntegerAsString(work->msgFmt, 0, payout, 5, PRINTING_MODE_LEFT_ALIGN, 1);
+            BufferIntegerAsString(work->msgFmt, 0, payout, 5, PADDING_MODE_NONE, 1);
         }
         VoltorbFlip_DimLayersExceptBG3(&work->screenIsDimmed);
         VoltorbFlip_PrintTextWindow(work, msgNo, TRUE);
@@ -1834,7 +1834,7 @@ static void VoltorbFlip_RenderTopScreen(VoltorbFlipAppData *work) {
     VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wQuit, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, GF_BG_LYR_MAIN_1);
 
-    BufferIntegerAsString(work->msgFmt, 0, 1, 1, PRINTING_MODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(work->msgFmt, 0, 1, 1, PADDING_MODE_NONE, 1);
 
     // {ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}
     VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
@@ -1939,7 +1939,7 @@ static BOOL VoltorbFlip_IsPrinterFinished(VoltorbFlipAppData *work) {
 static void VoltorbFlip_FormatGameLevel(VoltorbFlipAppData *work, int idx) {
     u8 displayLevel = 8 - VoltorbFlipGameState_GetGameLevel(work->game);
 
-    BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, PRINTING_MODE_LEFT_ALIGN, 1);
+    BufferIntegerAsString(work->msgFmt, idx, displayLevel, 1, PADDING_MODE_NONE, 1);
 }
 
 static void VoltorbFlip_DimLayersExceptBG3(u8 *isDimmed) {

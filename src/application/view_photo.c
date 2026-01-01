@@ -426,11 +426,11 @@ static void formatPhotoFlavorText(Photo *photo, MessageFormat *msgFormat, String
     String_CopyFromChars(strBuf, photo->leadMonNick);
     BufferString(msgFormat, 2, strBuf, 2, 0, 2);
     u8 year = photo->date >> 24;
-    BufferIntegerAsString(msgFormat, 3, year + 2000, 4, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(msgFormat, 3, year + 2000, 4, PADDING_MODE_ZEROES, TRUE);
     u8 month = photo->date >> 16;
-    BufferIntegerAsString(msgFormat, 4, month, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(msgFormat, 4, month, 2, PADDING_MODE_ZEROES, TRUE);
     u8 day = photo->date >> 8;
-    BufferIntegerAsString(msgFormat, 5, day, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(msgFormat, 5, day, 2, PADDING_MODE_ZEROES, TRUE);
 }
 
 static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto) {

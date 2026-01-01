@@ -551,7 +551,7 @@ void PartyMenu_PrintMonLevelOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     if (partyMenu->monsDrawState[partySlot].status != PARTY_MON_STATUS_ICON_OK) {
         ScheduleWindowCopyToVram(window);
     } else {
-        sub_0200CE7C(partyMenu->msgPrinter, 1, partyMenu->monsDrawState[partySlot].level, 3, PRINTING_MODE_LEFT_ALIGN, window, 5, 2);
+        sub_0200CE7C(partyMenu->msgPrinter, 1, partyMenu->monsDrawState[partySlot].level, 3, PADDING_MODE_NONE, window, 5, 2);
         ScheduleWindowCopyToVram(window);
     }
 }
@@ -559,7 +559,7 @@ void PartyMenu_PrintMonLevelOnWindow(PartyMenu *partyMenu, u8 partySlot) {
 void PartyMenu_PrintMonCurHpOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
-    PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].hp, 3, PRINTING_MODE_RIGHT_ALIGN, window, 0, 2);
+    PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].hp, 3, PADDING_MODE_SPACES, window, 0, 2);
     ScheduleWindowCopyToVram(window);
 }
 
@@ -573,7 +573,7 @@ void PartyMenu_ClearMonHpTextWindow(PartyMenu *partyMenu, u8 partySlot) {
 static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_HPTEXT];
 
-    PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PRINTING_MODE_LEFT_ALIGN, window, 36, 2);
+    PrintUIntOnWindow(partyMenu->msgPrinter, partyMenu->monsDrawState[partySlot].maxHp, 3, PADDING_MODE_NONE, window, 36, 2);
     ScheduleWindowCopyToVram(window);
 }
 
@@ -918,7 +918,7 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenu *partyMenu) {
         AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, str_plusSign, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
         str_formatInt = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
-        BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->levelUpStatsTmp[i], 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->levelUpStatsTmp[i], 2, PADDING_MODE_NONE, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str_formatInt);
         String_Free(str_formatInt);
         AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
@@ -936,7 +936,7 @@ void sub_0207DF98(PartyMenu *partyMenu) {
     FillWindowPixelRect(&partyMenu->levelUpStatsWindow[0], 15, 80, 0, 32, 112);
     spC = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
     for (i = 0; i < NUM_STATS; ++i) {
-        BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->levelUpStatsTmp[i], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->levelUpStatsTmp[i], 3, PADDING_MODE_NONE, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, spC);
         AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(0, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
     }

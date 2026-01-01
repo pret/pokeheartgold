@@ -423,7 +423,7 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
     if (unk0 != NULL) {
         Heap_Free(unk0);
     }
-    BufferIntegerAsString(*messageFormat, strIdxWinStreak, winStreak, CountDigits(winStreak), PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(*messageFormat, strIdxWinStreak, winStreak, CountDigits(winStreak), PADDING_MODE_SPACES, TRUE);
     u16 bp = 0;
     u32 currWinStreakLevel = 0;
     u16 prevWinStreakLevel = *winStreakLevel;
@@ -452,9 +452,9 @@ BOOL ScrCmd_BufferBattleHallStreak(ScriptContext *ctx) {
         }
     }
     u32 currWinStreakTarget = battleHallWinStreakBP[currWinStreakLevel].winStreakTarget;
-    BufferIntegerAsString(*messageFormat, strIdxCurrWinStreakTarget, currWinStreakTarget, CountDigits(currWinStreakTarget), PRINTING_MODE_RIGHT_ALIGN, TRUE);
-    BufferIntegerAsString(*messageFormat, strIdxNextWinStreakTarget, battleHallWinStreakBP[*winStreakLevel].winStreakTarget, CountDigits(battleHallWinStreakBP[*winStreakLevel].winStreakTarget), PRINTING_MODE_RIGHT_ALIGN, TRUE);
-    BufferIntegerAsString(*messageFormat, strIdxBP, bp, CountDigits(bp), PRINTING_MODE_RIGHT_ALIGN, TRUE);
+    BufferIntegerAsString(*messageFormat, strIdxCurrWinStreakTarget, currWinStreakTarget, CountDigits(currWinStreakTarget), PADDING_MODE_SPACES, TRUE);
+    BufferIntegerAsString(*messageFormat, strIdxNextWinStreakTarget, battleHallWinStreakBP[*winStreakLevel].winStreakTarget, CountDigits(battleHallWinStreakBP[*winStreakLevel].winStreakTarget), PADDING_MODE_SPACES, TRUE);
+    BufferIntegerAsString(*messageFormat, strIdxBP, bp, CountDigits(bp), PADDING_MODE_SPACES, TRUE);
     return FALSE;
 }
 

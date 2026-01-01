@@ -124,7 +124,7 @@ void ov17_022036FC(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Action act
         break;
     case BERRY_POTS_APP_022036FC_ACTION_10:
     case BERRY_POTS_APP_022036FC_ACTION_14:
-        BufferIntegerAsString(data->msgFmt, 1, unk->quantityOrYieldMaybe, 2, PRINTING_MODE_LEFT_ALIGN, 0);
+        BufferIntegerAsString(data->msgFmt, 1, unk->quantityOrYieldMaybe, 2, PADDING_MODE_NONE, 0);
         // fallthrough
     case BERRY_POTS_APP_022036FC_ACTION_6:
     case BERRY_POTS_APP_022036FC_ACTION_7:

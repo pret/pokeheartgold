@@ -1872,14 +1872,14 @@ static void BattleMessage_BufferItem(BattleSystem *battleSystem, int bufferIndex
 }
 
 static void BattleMessage_BufferNumber(BattleSystem *battleSystem, int bufferIndex, int param) {
-    BufferIntegerAsString(battleSystem->msgFormat, bufferIndex, param, 5, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(battleSystem->msgFormat, bufferIndex, param, 5, PADDING_MODE_NONE, TRUE);
 }
 
 static void BattleMessage_BufferNumbers(BattleSystem *battleSystem, int bufferIndex, int param, int numDigits) {
     if (numDigits) {
-        BufferIntegerAsString(battleSystem->msgFormat, bufferIndex, param, numDigits, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+        BufferIntegerAsString(battleSystem->msgFormat, bufferIndex, param, numDigits, PADDING_MODE_SPACES, TRUE);
     } else {
-        BufferIntegerAsString(battleSystem->msgFormat, bufferIndex, param, 5, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+        BufferIntegerAsString(battleSystem->msgFormat, bufferIndex, param, 5, PADDING_MODE_SPACES, TRUE);
     }
 }
 

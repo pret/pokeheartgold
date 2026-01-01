@@ -1017,7 +1017,7 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
             if (cur < prev) {
                 ++ranking;
             }
-            BufferIntegerAsString(appData->msgFormat, 0, ranking, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            BufferIntegerAsString(appData->msgFormat, 0, ranking, 1, PADDING_MODE_SPACES, TRUE);
             StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->rankingString);
             AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RANKING], 0, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
@@ -1025,7 +1025,7 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
             StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->playerNameString);
             AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], 0, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
-            BufferIntegerAsString(appData->msgFormat, 0, cur, pageParam->numDigits, PRINTING_MODE_RIGHT_ALIGN, TRUE);
+            BufferIntegerAsString(appData->msgFormat, 0, cur, pageParam->numDigits, PADDING_MODE_SPACES, TRUE);
             StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->miscStrings[pageParam->msgId - msg_0421_00044]);
             AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], 0, appData->formatedStrBuf, 160 - FontID_String_GetWidth(0, appData->formatedStrBuf, 0), 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 

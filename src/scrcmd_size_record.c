@@ -76,8 +76,8 @@ static void FormatSizeRecord(FieldSystem *fieldSystem, u8 idx0, u8 idx1, u16 spe
     msgFmt = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_MESSAGE_FORMAT);
     score = GetMonSize(species, rand);
     r4 = LengthConvertToImperial(score);
-    BufferIntegerAsString(*msgFmt, idx0, r4 / 10, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(*msgFmt, idx1, r4 % 10, 1, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(*msgFmt, idx0, r4 / 10, 3, PADDING_MODE_NONE, TRUE);
+    BufferIntegerAsString(*msgFmt, idx1, r4 % 10, 1, PADDING_MODE_NONE, TRUE);
 }
 
 BOOL ScrCmd_SizeRecordCompare(ScriptContext *ctx) {

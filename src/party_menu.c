@@ -1994,7 +1994,7 @@ static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
             break;
         case BTL_REG_COMPLIANCE_FAIL_MAX_TOTAL_LEVEL: {
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00167);
-            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 0, LinkBattleRuleset_GetRuleValue(partyMenu->args->linkBattleRuleset, LINKBATTLERULE_MAX_TOTAL_LEVEL), 3, PADDING_MODE_NONE, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Free(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);
@@ -2280,7 +2280,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
             Pokemon *pokemon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
             String *string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00065);
             BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(pokemon));
-            BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->levelUpStatsTmp[2], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(partyMenu->msgFormat, 1, partyMenu->levelUpStatsTmp[2], 3, PADDING_MODE_NONE, TRUE);
             StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, string);
             String_Free(string);
             PartyMenu_PrintMessageOnWindow34(partyMenu, -1, TRUE);

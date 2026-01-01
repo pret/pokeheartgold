@@ -70,7 +70,7 @@ void sub_0200CDAC(MessagePrinter *messagePrinter, u8 glyphId, Window *window, u3
     BlitBitmapRectToWindow(window, messagePrinter->ppCharData->pRawData + _020F5C24[glyphId][0], 0, 0, _020F5C24[glyphId][1], 8, x, y, _020F5C24[glyphId][1], 8);
 }
 
-void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y) {
+void PrintUIntOnWindow(MessagePrinter *messagePrinter, u32 num, u32 ndigits, enum PaddingMode mode, Window *window, u32 x, u32 y) {
     ConvertUIntToDecimalString(messagePrinter->string, num, mode, ndigits);
     u32 i;
     for (i = 0; messagePrinter->string[i] != EOS; i++) {

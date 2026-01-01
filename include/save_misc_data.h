@@ -71,7 +71,7 @@ BerryPot *Save_BerryPots_Get(SaveData *saveData);
 struct GF_RTC_DateTime *Save_BerryPotRTC_Get(SaveData *saveData);
 Gymmick *Save_GetGymmickPtr(SaveData *saveData);
 const u16 *Save_Misc_RivalName_Const_Get(const SAVE_MISC_DATA *saveMiscData);
-void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, const String *name);
+void Save_Misc_RivalName_Set(SAVE_MISC_DATA *saveMiscData, String *name);
 void SaveMisc_SetExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
 BOOL SaveMisc_CheckExtraChunksExist(SAVE_MISC_DATA *saveMiscData);
 void SaveMisc_SetFavoriteMon(SAVE_MISC_DATA *saveMiscData, int species, int form, int isEgg);

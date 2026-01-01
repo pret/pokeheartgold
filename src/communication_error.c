@@ -172,7 +172,7 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
-    BufferIntegerAsString(messageFormat, 0, errorCode, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(messageFormat, 0, errorCode, 5, PADDING_MODE_ZEROES, TRUE);
     ReadMsgDataIntoString(errorMessageData, msgNo, tmpStr);
     StringExpandPlaceholders(messageFormat, errorMessageStr, tmpStr);
     AddTextPrinterParameterized(&window, 0, errorMessageStr, 0, 0, 0, NULL);

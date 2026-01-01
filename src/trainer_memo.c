@@ -343,14 +343,14 @@ static void FormatDateAndLocationMet(Unk0208E600 *a0, int msgNo) {
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
-    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PADDING_MODE_ZEROES, TRUE);
     BufferMonthNameAbbr(a0->msgFmt, 1, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PADDING_MODE_NONE, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PADDING_MODE_NONE, TRUE);
     BufferLocationName(a0->msgFmt, 4, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
-    BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PADDING_MODE_ZEROES, TRUE);
     BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PADDING_MODE_NONE, TRUE);
     BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
 
     StringExpandPlaceholders(a0->msgFmt, a0->notepad.dateLocationMet, str);
@@ -365,10 +365,10 @@ static void FormatDateAndLocation_Migrated(Unk0208E600 *a0, int msgNo) {
 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
-    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 0, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PADDING_MODE_ZEROES, TRUE);
     BufferMonthNameAbbr(a0->msgFmt, 1, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
-    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 2, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PADDING_MODE_NONE, TRUE);
+    BufferIntegerAsString(a0->msgFmt, 3, GetMonData(a0->mon, MON_DATA_MET_LEVEL, NULL), 3, PADDING_MODE_NONE, TRUE);
 
     version = GetMonData(a0->mon, MON_DATA_MET_GAME, NULL);
     switch (version) {
@@ -414,14 +414,14 @@ static void FormatDateAndLocation_Egg(Unk0208E600 *a0, int msgNo, BOOL hatched) 
     ReadMsgDataIntoString(a0->msgData, msgNo, str);
 
     if (!hatched) {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_EGG_YEAR, NULL), 2, PADDING_MODE_ZEROES, TRUE);
         BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_EGG_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_EGG_DAY, NULL), 2, PADDING_MODE_NONE, TRUE);
         BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_EGG_LOCATION, NULL));
     } else {
-        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
+        BufferIntegerAsString(a0->msgFmt, 5, GetMonData(a0->mon, MON_DATA_MET_YEAR, NULL), 2, PADDING_MODE_ZEROES, TRUE);
         BufferMonthNameAbbr(a0->msgFmt, 6, GetMonData(a0->mon, MON_DATA_MET_MONTH, NULL));
-        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+        BufferIntegerAsString(a0->msgFmt, 7, GetMonData(a0->mon, MON_DATA_MET_DAY, NULL), 2, PADDING_MODE_NONE, TRUE);
         BufferLocationName(a0->msgFmt, 8, GetMonData(a0->mon, MON_DATA_MET_LOCATION, NULL));
     }
 

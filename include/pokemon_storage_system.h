@@ -44,7 +44,7 @@ void PCStorage_SetActiveBox(PCStorage *storage, u32 boxno);
 u8 PCStorage_GetBoxWallpaper(PCStorage *storage, u32 boxno);
 BOOL PCStorage_IsValidWallpaperId(u8 wallpaperno);
 void PCStorage_SetBoxWallpaper(PCStorage *storage, u32 boxno, u8 wallpaperno);
-void PCStorage_SetBoxName(PCStorage *storage, u32 boxno, const String *src);
+void PCStorage_SetBoxName(PCStorage *storage, u32 boxno, String *src);
 int PCStorage_CountMonsAndEggsInBox(PCStorage *storage, u32 boxno);
 int PCStorage_CountMonsInBox(PCStorage *storage, u32 boxno);
 int PCStorage_CountMonsInAllBoxes(PCStorage *storage);

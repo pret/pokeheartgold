@@ -42,7 +42,7 @@ BOOL GearPhoneCall_Kurt(PokegearPhoneCallContext *ctx) {
             msgId = msg_0643_00004;
         } else {
             BufferItemName(ctx->msgFormat, 10, ApricornBox_GetKurtBall(apricornBox));
-            BufferIntegerAsString(ctx->msgFormat, 11, kurtQuantity, 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
+            BufferIntegerAsString(ctx->msgFormat, 11, kurtQuantity, 2, PADDING_MODE_NONE, TRUE);
             msgId = msg_0643_00003;
         }
         PhoneCallMessagePrint_Ungendered(ctx, ctx->msgData_PhoneContact, msgId);
