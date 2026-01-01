@@ -16,7 +16,7 @@ static inline void String_Assert(const String *string) {
 }
 
 String *String_New(u32 maxSize, enum HeapID heapID) {
-    String *string = Heap_Alloc(heapID, STRING_HEADER_SIZE + (maxSize * sizeof(u16)));
+    String *string = Heap_Alloc(heapID, STRING_HEADER_SIZE + (maxSize * sizeof(charcode_t)));
     if (string != NULL) {
         string->integrity = STRING_MAGIC_NUMBER;
         string->maxSize = maxSize;
@@ -42,7 +42,7 @@ void String_Copy(String *dest, String *src) {
     String_Assert(dest);
     String_Assert(src);
     if (dest->maxSize > src->size) {
-        memcpy(dest->data, src->data, (src->size + 1) * sizeof(u16));
+        memcpy(dest->data, src->data, (src->size + 1) * sizeof(charcode_t));
         dest->size = src->size;
         return;
     }
@@ -72,7 +72,7 @@ void String_FormatInt(String *dest, int num, u32 maxDigits, enum PaddingMode pad
         1000000000,
     };
 
-    static const u16 sDigits_JP[] = {
+    static const charcode_t sDigits_JP[] = {
         CHAR_JP_0,
         CHAR_JP_1,
         CHAR_JP_2,
@@ -85,7 +85,7 @@ void String_FormatInt(String *dest, int num, u32 maxDigits, enum PaddingMode pad
         CHAR_JP_9,
     };
 
-    static const u16 sDigits_EN[] = {
+    static const charcode_t sDigits_EN[] = {
         CHAR_0,
         CHAR_1,
         CHAR_2,
@@ -103,7 +103,7 @@ void String_FormatInt(String *dest, int num, u32 maxDigits, enum PaddingMode pad
     BOOL isNegative = (num < 0);
 
     if (dest->maxSize > maxDigits + isNegative) {
-        const u16 *digitSet = (charsetMode == CHARSET_MODE_JP) ? sDigits_JP : sDigits_EN;
+        const charcode_t *digitSet = (charsetMode == CHARSET_MODE_JP) ? sDigits_JP : sDigits_EN;
 
         String_Clear(dest);
 
@@ -158,7 +158,7 @@ void String_FormatU64(String *dest, u64 num, u32 maxDigits, enum PaddingMode pad
         10000000000000000000ll,
     };
 
-    static const u16 sDigits_JP[] = {
+    static const charcode_t sDigits_JP[] = {
         CHAR_JP_0,
         CHAR_JP_1,
         CHAR_JP_2,
@@ -171,7 +171,7 @@ void String_FormatU64(String *dest, u64 num, u32 maxDigits, enum PaddingMode pad
         CHAR_JP_9,
     };
 
-    static const u16 sDigits_EN[10] = {
+    static const charcode_t sDigits_EN[] = {
         CHAR_0,
         CHAR_1,
         CHAR_2,
@@ -189,7 +189,7 @@ void String_FormatU64(String *dest, u64 num, u32 maxDigits, enum PaddingMode pad
     BOOL isNegative = (num < 0);
 
     if (dest->maxSize > maxDigits + isNegative) {
-        const u16 *digitSet = (charsetMode == CHARSET_MODE_JP) ? sDigits_JP : sDigits_EN;
+        const charcode_t *digitSet = (charsetMode == CHARSET_MODE_JP) ? sDigits_JP : sDigits_EN;
 
         String_Clear(dest);
 
@@ -316,7 +316,7 @@ void String_AddRadioStatic(String *string, u8 level) {
     }
 }
 
-void String_CopyFromChars(String *dest, const u16 *src) {
+void String_CopyFromChars(String *dest, const charcode_t *src) {
     String_Assert(dest);
 
     for (dest->size = 0; *src != EOS;) {
@@ -329,11 +329,11 @@ void String_CopyFromChars(String *dest, const u16 *src) {
     dest->data[dest->size] = EOS;
 }
 
-void String_CopyNumChars(String *dest, const u16 *src, u32 num) {
+void String_CopyNumChars(String *dest, const charcode_t *src, u32 num) {
     String_Assert(dest);
 
     if (num <= dest->maxSize) {
-        memcpy(dest->data, src, num * sizeof(u16));
+        memcpy(dest->data, src, num * sizeof(charcode_t));
 
         int i;
         for (i = 0; i < num; i++) {
@@ -350,17 +350,17 @@ void String_CopyNumChars(String *dest, const u16 *src, u32 num) {
     GF_ASSERT(FALSE);
 }
 
-void String_CopyToChars(String *src, u16 *dest, u32 destSize) {
+void String_CopyToChars(String *src, charcode_t *dest, u32 destSize) {
     String_Assert(src);
 
     if (src->size + 1 <= destSize) {
-        memcpy(dest, src->data, (src->size + 1) * sizeof(u16));
+        memcpy(dest, src->data, (src->size + 1) * sizeof(charcode_t));
         return;
     }
     GF_ASSERT(FALSE);
 }
 
-u16 *String_GetChars(String *string) {
+charcode_t *String_GetChars(String *string) {
     String_Assert(string);
 
     return string->data;
@@ -371,14 +371,14 @@ void String_Concat(String *dest, String *src) {
     String_Assert(src);
 
     if (dest->size + src->size + 1 <= dest->maxSize) {
-        memcpy(dest->data + dest->size, src->data, (src->size + 1) * sizeof(u16));
+        memcpy(dest->data + dest->size, src->data, (src->size + 1) * sizeof(charcode_t));
         dest->size += src->size;
         return;
     }
     GF_ASSERT(FALSE);
 }
 
-void String_AppendChar(String *string, u16 c) {
+void String_AppendChar(String *string, charcode_t c) {
     String_Assert(string);
 
     if (string->size + 1 < string->maxSize) {
@@ -401,11 +401,11 @@ void String_ConcatTrainerName(String *dest, String *src) {
     // TODO: This process could do with some more documentation, i.e. why this
     // is done.
     if (String_IsTrainerName(src)) {
-        u16 *dstChar = &dest->data[dest->size];
-        u16 *srcChar = &src->data[1];
+        charcode_t *dstChar = &dest->data[dest->size];
+        charcode_t *srcChar = &src->data[1];
         s32 shift = 0;
         u32 charsAdded = 0;
-        u16 curChar = 0;
+        charcode_t curChar = 0;
 
         while (TRUE) {
             curChar = (*srcChar >> shift) & TRNAME_MASK;
