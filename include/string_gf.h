@@ -11,14 +11,23 @@
  * Managed string buffer.
  */
 typedef struct String {
+    /// Maximum allocated size of the buffer.
     u16 maxSize;
+    /// Size of the buffer, at present; the length of the underlying string.
     u16 size;
+    /// Integrity value specified at allocation time.
     u32 integrity;
+    /// The underlying character buffer.
     charcode_t data[0];
 } String;
 
+/**
+ * Control codes for which charset to use when formatting a string.
+ */
 enum CharsetMode {
+    /// Use the Japanese character set (i.e., full-width characters).
     CHARSET_MODE_JP,
+    /// Use the English character set (i.e., half-width characters).
     CHARSET_MODE_EN,
 };
 
