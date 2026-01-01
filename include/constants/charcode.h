@@ -383,7 +383,7 @@
 #define CHAR_U_DIERESIS               379
 #define CHAR_Y_ACUTE                  380
 #define CHAR_THORN                    381
-#define CHAR_Y_DIERESIS               382
+#define CHAR_ESZETT                   382
 #define CHAR_a_GRAVE                  383
 #define CHAR_a_ACUTE                  384
 #define CHAR_a_CIRCUMFLEX             385
