@@ -275,7 +275,7 @@
 #define CHAR_JP_ARROW_CURVE_UP        271
 #define CHAR_JP_ARROW_CURVE_DOWN      272
 #define CHAR_JP_ZZZ                   273
-#define CHAR_JP_YEN                   274
+#define CHAR_JP_CURRENCY              274
 #define CHAR_POCKET_ICON_ITEMS        275
 #define CHAR_POCKET_ICON_KEY_ITEMS    276
 #define CHAR_POCKET_ICON_TMS_HMS      277
@@ -425,7 +425,7 @@
 #define CHAR_er_SUPER                 421
 #define CHAR_re_SUPER                 422
 #define CHAR_r_SUPER                  423
-#define CHAR_YEN                      424 // Displayed as the "Poké Dollar" symbol in international versions
+#define CHAR_CURRENCY                 424 // "Poké Dollar" symbol in international versions
 #define CHAR_EMARK_INVERTED           425
 #define CHAR_QMARK_INVERTED           426
 #define CHAR_EMARK                    427
