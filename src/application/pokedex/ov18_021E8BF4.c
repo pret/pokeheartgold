@@ -612,3 +612,43 @@ int PokedexApp_MainSeq_11(PokedexAppData *pokedexApp) {
 
     return POKEDEXAPP_MAINSEQ_11;
 }
+
+int PokedexApp_MainSeq_12(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State09 *r4 = &pokedexApp->unk_0868.state_09;
+
+    switch (r4->unk_0) {
+    case 0:
+        sub_0201980C(pokedexApp->unk_0008, 4);
+        ov18_021F2A2C(pokedexApp, 6, 0);
+        ov18_021F2A84(pokedexApp, 8, 0);
+        ClearWindowTilemapAndScheduleTransfer(&pokedexApp->windows[6]);
+        ov18_021E65D4(pokedexApp);
+        ++r4->unk_0;
+        // fallthrough
+    case 1: {
+        ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SUB_X, 16);
+        ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SUB_X, 16);
+        ov18_021F2B3C(pokedexApp, 0, 16);
+        int r6 = Bg_GetXpos(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0);
+        if (r4->unk_3 == 0 && r6 < 64 && !sub_020199E4(pokedexApp->unk_0008, 1)) {
+            r4->unk_3 = 1;
+            ov18_021E654C(pokedexApp);
+        }
+        if (r6 <= 0) {
+            ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, 0);
+            ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
+            ov18_021F2B70(pokedexApp, 0, ov18_021F2B9C(pokedexApp));
+            if (r4->unk_3 == 1) {
+                ++r4->unk_0;
+            }
+        }
+    } break;
+    case 2:
+        if (!sub_020199E4(pokedexApp->unk_0008, 0)) {
+            MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+            return POKEDEXAPP_MAINSEQ_06;
+        }
+    }
+
+    return POKEDEXAPP_MAINSEQ_12;
+}

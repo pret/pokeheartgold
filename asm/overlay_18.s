@@ -8,24 +8,11 @@
 	.extern ov18_021E590C
 	.extern ov18_021E595C
 	.extern ov18_021E59A8
-	.extern ov18_021E5C40
-	.extern ov18_021E5C74
-	.extern ov18_021E5C84
 	.extern ov18_021E5E70
-	.extern ov18_021E5F58
 	.extern ov18_021E613C
 	.extern ov18_021E6174
 	.extern ov18_021E618C
-	.extern ov18_021E61A4
-	.extern ov18_021E6204
-	.extern ov18_021E6244
-	.extern ov18_021E6280
-	.extern ov18_021E62A8
-	.extern ov18_021E62E8
-	.extern ov18_021E6308
-	.extern ov18_021E6540
 	.extern ov18_021E654C
-	.extern ov18_021E6574
 	.extern ov18_021E659C
 	.extern ov18_021E65AC
 	.extern ov18_021E65D4
@@ -50,7 +37,6 @@
 	.extern ov18_021E6CE8
 	.extern ov18_021E6D10
 	.extern ov18_021E6D38
-	.extern ov18_021E6D68
 	.extern ov18_021E6E44
 	.extern ov18_021E6F6C
 	.extern ov18_021E6FB8
@@ -69,8 +55,6 @@
 	.extern ov18_021E800C
 	.extern ov18_021E81A8
 	.extern ov18_021E8254
-	.extern ov18_021E8410
-	.extern ov18_021E84EC
 	.extern ov18_021E8528
 	.extern ov18_021E8648
 	.extern ov18_021E8AB0
@@ -84,119 +68,6 @@
 	.extern ov18_021E8BD4
 
 	.text
-
-	thumb_func_start PokedexApp_MainSeq_12
-PokedexApp_MainSeq_12: ; 0x021E9600
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	ldr r0, _021E96F0 ; =0x00000868
-	add r4, r5, r0
-	ldrh r0, [r4]
-	cmp r0, #0
-	beq _021E9618
-	cmp r0, #1
-	beq _021E9648
-	cmp r0, #2
-	beq _021E96CE
-	b _021E96EA
-_021E9618:
-	ldr r0, [r5, #8]
-	mov r1, #4
-	bl sub_0201980C
-	add r0, r5, #0
-	mov r1, #6
-	mov r2, #0
-	bl ov18_021F2A2C
-	add r0, r5, #0
-	mov r1, #8
-	mov r2, #0
-	bl ov18_021F2A84
-	add r0, r5, #0
-	add r0, #0x6c
-	bl ClearWindowTilemapAndScheduleTransfer
-	add r0, r5, #0
-	bl ov18_021E65D4
-	ldrh r0, [r4]
-	add r0, r0, #1
-	strh r0, [r4]
-_021E9648:
-	ldr r0, [r5, #4]
-	mov r1, #0
-	mov r2, #2
-	mov r3, #0x10
-	bl ScheduleSetBgPosText
-	ldr r0, [r5, #4]
-	mov r1, #4
-	mov r2, #2
-	mov r3, #0x10
-	bl ScheduleSetBgPosText
-	add r0, r5, #0
-	mov r1, #0
-	mov r2, #0x10
-	bl ov18_021F2B3C
-	ldr r0, [r5, #4]
-	mov r1, #0
-	bl Bg_GetXpos
-	add r6, r0, #0
-	ldrb r0, [r4, #3]
-	cmp r0, #0
-	bne _021E9694
-	cmp r6, #0x40
-	bge _021E9694
-	ldr r0, [r5, #8]
-	mov r1, #1
-	bl sub_020199E4
-	cmp r0, #0
-	bne _021E9694
-	mov r0, #1
-	strb r0, [r4, #3]
-	add r0, r5, #0
-	bl ov18_021E654C
-_021E9694:
-	cmp r6, #0
-	bgt _021E96EA
-	mov r1, #0
-	ldr r0, [r5, #4]
-	add r2, r1, #0
-	add r3, r1, #0
-	bl ScheduleSetBgPosText
-	mov r2, #0
-	ldr r0, [r5, #4]
-	mov r1, #4
-	add r3, r2, #0
-	bl ScheduleSetBgPosText
-	add r0, r5, #0
-	bl ov18_021F2B9C
-	add r2, r0, #0
-	add r0, r5, #0
-	mov r1, #0
-	bl ov18_021F2B70
-	ldrb r0, [r4, #3]
-	cmp r0, #1
-	bne _021E96EA
-	ldrh r0, [r4]
-	add r0, r0, #1
-	strh r0, [r4]
-	b _021E96EA
-_021E96CE:
-	ldr r0, [r5, #8]
-	mov r1, #0
-	bl sub_020199E4
-	cmp r0, #0
-	bne _021E96EA
-	ldr r0, _021E96F0 ; =0x00000868
-	mov r1, #0
-	add r0, r5, r0
-	mov r2, #0x10
-	bl MI_CpuFill8
-	mov r0, #6
-	pop {r4, r5, r6, pc}
-_021E96EA:
-	mov r0, #0xc
-	pop {r4, r5, r6, pc}
-	nop
-_021E96F0: .word 0x00000868
-	thumb_func_end PokedexApp_MainSeq_12
 
 	thumb_func_start PokedexApp_MainSeq_13
 PokedexApp_MainSeq_13: ; 0x021E96F4
