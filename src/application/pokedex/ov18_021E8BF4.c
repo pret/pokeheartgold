@@ -7,199 +7,199 @@
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
-int ov18_021E8C30(PokedexAppData *pokedexApp);
-int ov18_021E8D38(PokedexAppData *pokedexApp);
-int ov18_021E8DB0(PokedexAppData *pokedexApp);
-int ov18_021E8DC8(PokedexAppData *pokedexApp);
-int ov18_021E8DE8(PokedexAppData *pokedexApp);
-int ov18_021E8E8C(PokedexAppData *pokedexApp);
-int ov18_021E8ECC(PokedexAppData *pokedexApp);
-int ov18_021E8FCC(PokedexAppData *pokedexApp);
-int ov18_021E9070(PokedexAppData *pokedexApp);
-int ov18_021E918C(PokedexAppData *pokedexApp);
-int ov18_021E92AC(PokedexAppData *pokedexApp);
-int ov18_021E93D8(PokedexAppData *pokedexApp);
-int ov18_021E9600(PokedexAppData *pokedexApp);
-int ov18_021E96F4(PokedexAppData *pokedexApp);
-int ov18_021E9820(PokedexAppData *pokedexApp);
-int ov18_021E9940(PokedexAppData *pokedexApp);
-int ov18_021E99C8(PokedexAppData *pokedexApp);
-int ov18_021E9A4C(PokedexAppData *pokedexApp);
-int ov18_021E9BE0(PokedexAppData *pokedexApp);
-int ov18_021E9CD8(PokedexAppData *pokedexApp);
-int ov18_021E9D70(PokedexAppData *pokedexApp);
-int ov18_021E9F28(PokedexAppData *pokedexApp);
-int ov18_021EA36C(PokedexAppData *pokedexApp);
-int ov18_021EA384(PokedexAppData *pokedexApp);
-int ov18_021EA430(PokedexAppData *pokedexApp);
-int ov18_021EA5A8(PokedexAppData *pokedexApp);
-int ov18_021EA688(PokedexAppData *pokedexApp);
-int ov18_021EA760(PokedexAppData *pokedexApp);
-int ov18_021EA838(PokedexAppData *pokedexApp);
-int ov18_021EA854(PokedexAppData *pokedexApp);
-int ov18_021EA95C(PokedexAppData *pokedexApp);
-int ov18_021EA96C(PokedexAppData *pokedexApp);
-int ov18_021EA988(PokedexAppData *pokedexApp);
-int ov18_021EAA20(PokedexAppData *pokedexApp);
-int ov18_021EAA30(PokedexAppData *pokedexApp);
-int ov18_021EAA58(PokedexAppData *pokedexApp);
-int ov18_021EAB7C(PokedexAppData *pokedexApp);
-int ov18_021EAB8C(PokedexAppData *pokedexApp);
-int ov18_021EABB4(PokedexAppData *pokedexApp);
-int ov18_021EAE44(PokedexAppData *pokedexApp);
-int ov18_021EAE54(PokedexAppData *pokedexApp);
-int ov18_021EAF18(PokedexAppData *pokedexApp);
-int ov18_021EAFDC(PokedexAppData *pokedexApp);
-int ov18_021EB034(PokedexAppData *pokedexApp);
-int ov18_021EB08C(PokedexAppData *pokedexApp);
-int ov18_021EB0B0(PokedexAppData *pokedexApp);
-int ov18_021EB270(PokedexAppData *pokedexApp);
-int ov18_021EB280(PokedexAppData *pokedexApp);
-int ov18_021EB348(PokedexAppData *pokedexApp);
-int ov18_021EB41C(PokedexAppData *pokedexApp);
-int ov18_021EB474(PokedexAppData *pokedexApp);
-int ov18_021EB4CC(PokedexAppData *pokedexApp);
-int ov18_021EB4E8(PokedexAppData *pokedexApp);
-int ov18_021EB580(PokedexAppData *pokedexApp);
-int ov18_021EB590(PokedexAppData *pokedexApp);
-int ov18_021EB5AC(PokedexAppData *pokedexApp);
-int ov18_021EB644(PokedexAppData *pokedexApp);
-int ov18_021EB654(PokedexAppData *pokedexApp);
-int ov18_021EB838(PokedexAppData *pokedexApp);
-int ov18_021EB988(PokedexAppData *pokedexApp);
-int ov18_021EBAC4(PokedexAppData *pokedexApp);
-int ov18_021EBB68(PokedexAppData *pokedexApp);
-int ov18_021EBC08(PokedexAppData *pokedexApp);
-int ov18_021EBD28(PokedexAppData *pokedexApp);
-int ov18_021EBEC8(PokedexAppData *pokedexApp);
-int ov18_021EBFC0(PokedexAppData *pokedexApp);
-int ov18_021EC280(PokedexAppData *pokedexApp);
-int ov18_021EC2C4(PokedexAppData *pokedexApp);
-int ov18_021EC3E8(PokedexAppData *pokedexApp);
-int ov18_021EC4FC(PokedexAppData *pokedexApp);
-int ov18_021EC7AC(PokedexAppData *pokedexApp);
-int ov18_021EC88C(PokedexAppData *pokedexApp);
-int ov18_021EC95C(PokedexAppData *pokedexApp);
-int ov18_021ECA2C(PokedexAppData *pokedexApp);
-int ov18_021ECA90(PokedexAppData *pokedexApp);
-int ov18_021ECAEC(PokedexAppData *pokedexApp);
-int ov18_021ECC00(PokedexAppData *pokedexApp);
-int ov18_021ECCB0(PokedexAppData *pokedexApp);
-int ov18_021ECDC8(PokedexAppData *pokedexApp);
-int ov18_021ECEA0(PokedexAppData *pokedexApp);
-int ov18_021ECF58(PokedexAppData *pokedexApp);
-int ov18_021ED15C(PokedexAppData *pokedexApp);
-int ov18_021ED224(PokedexAppData *pokedexApp);
-int ov18_021ED304(PokedexAppData *pokedexApp);
-int ov18_021ED3E8(PokedexAppData *pokedexApp);
-int ov18_021ED450(PokedexAppData *pokedexApp);
-int ov18_021ED4B4(PokedexAppData *pokedexApp);
-int ov18_021ED5FC(PokedexAppData *pokedexApp);
-int ov18_021ED7BC(PokedexAppData *pokedexApp);
-int ov18_021ED8E4(PokedexAppData *pokedexApp);
-int ov18_021ED98C(PokedexAppData *pokedexApp);
-int ov18_021EDA60(PokedexAppData *pokedexApp);
-int ov18_021EDB28(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_00(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_01(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_02(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_03(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_04(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_05(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_06(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_07(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_08(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_09(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_10(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_11(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_12(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_13(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_14(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_15(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_16(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_17(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_18(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_21(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_22(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_23(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_24(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_25(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_19(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_20(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_26(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_27(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_28(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_29(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_30(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_31(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_32(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_33(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_34(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_35(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_36(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_37(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_38(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_39(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_40(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_41(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_42(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_43(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_44(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_45(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_46(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_47(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_48(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_49(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_50(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_51(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_52(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_53(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_54(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_55(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_56(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_57(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_58(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_59(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_60(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_61(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_62(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_63(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_64(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_65(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_66(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_67(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_68(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_69(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_70(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_71(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_72(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_73(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_74(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_75(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_76(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_77(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_78(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_79(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_80(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_81(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_82(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_83(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_84(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_85(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_86(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_87(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_88(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_89(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_90(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_91(PokedexAppData *pokedexApp);
+int PokedexApp_MainSeq_92(PokedexAppData *pokedexApp);
 
-static int (*const ov18_021F9C3C[])(PokedexAppData *pokedexApp) = {
-    ov18_021E8C30,
-    ov18_021E8D38,
-    ov18_021E8DB0,
-    ov18_021E8DC8,
-    ov18_021E8DE8,
-    ov18_021E8E8C,
-    ov18_021E8ECC,
-    ov18_021E8FCC,
-    ov18_021E9070,
-    ov18_021E918C,
-    ov18_021E92AC,
-    ov18_021E93D8,
-    ov18_021E9600,
-    ov18_021E96F4,
-    ov18_021E9820,
-    ov18_021E9940,
-    ov18_021E99C8,
-    ov18_021E9A4C,
-    ov18_021E9BE0,
-    ov18_021EA430,
-    ov18_021EA5A8,
-    ov18_021E9CD8,
-    ov18_021E9D70,
-    ov18_021E9F28,
-    ov18_021EA36C,
-    ov18_021EA384,
-    ov18_021EA688,
-    ov18_021EA760,
-    ov18_021EA838,
-    ov18_021EA854,
-    ov18_021EA95C,
-    ov18_021EA96C,
-    ov18_021EA988,
-    ov18_021EAA20,
-    ov18_021EAA30,
-    ov18_021EAA58,
-    ov18_021EAB7C,
-    ov18_021EAB8C,
-    ov18_021EABB4,
-    ov18_021EAE44,
-    ov18_021EAE54,
-    ov18_021EAF18,
-    ov18_021EAFDC,
-    ov18_021EB034,
-    ov18_021EB08C,
-    ov18_021EB0B0,
-    ov18_021EB270,
-    ov18_021EB280,
-    ov18_021EB348,
-    ov18_021EB41C,
-    ov18_021EB474,
-    ov18_021EB4CC,
-    ov18_021EB4E8,
-    ov18_021EB580,
-    ov18_021EB590,
-    ov18_021EB5AC,
-    ov18_021EB644,
-    ov18_021EB654,
-    ov18_021EB838,
-    ov18_021EB988,
-    ov18_021EBAC4,
-    ov18_021EBB68,
-    ov18_021EBC08,
-    ov18_021EBD28,
-    ov18_021EBEC8,
-    ov18_021EBFC0,
-    ov18_021EC280,
-    ov18_021EC2C4,
-    ov18_021EC3E8,
-    ov18_021EC4FC,
-    ov18_021EC7AC,
-    ov18_021EC88C,
-    ov18_021EC95C,
-    ov18_021ECA2C,
-    ov18_021ECA90,
-    ov18_021ECAEC,
-    ov18_021ECC00,
-    ov18_021ECCB0,
-    ov18_021ECDC8,
-    ov18_021ECEA0,
-    ov18_021ECF58,
-    ov18_021ED15C,
-    ov18_021ED224,
-    ov18_021ED304,
-    ov18_021ED3E8,
-    ov18_021ED450,
-    ov18_021ED4B4,
-    ov18_021ED5FC,
-    ov18_021ED7BC,
-    ov18_021ED8E4,
-    ov18_021ED98C,
-    ov18_021EDA60,
-    ov18_021EDB28,
+static int (*const sMainSeqFuncs[])(PokedexAppData *pokedexApp) = {
+    [POKEDEXAPP_MAINSEQ_00] = PokedexApp_MainSeq_00,
+    [POKEDEXAPP_MAINSEQ_01] = PokedexApp_MainSeq_01,
+    [POKEDEXAPP_MAINSEQ_02] = PokedexApp_MainSeq_02,
+    [POKEDEXAPP_MAINSEQ_03] = PokedexApp_MainSeq_03,
+    [POKEDEXAPP_MAINSEQ_04] = PokedexApp_MainSeq_04,
+    [POKEDEXAPP_MAINSEQ_05] = PokedexApp_MainSeq_05,
+    [POKEDEXAPP_MAINSEQ_06] = PokedexApp_MainSeq_06,
+    [POKEDEXAPP_MAINSEQ_07] = PokedexApp_MainSeq_07,
+    [POKEDEXAPP_MAINSEQ_08] = PokedexApp_MainSeq_08,
+    [POKEDEXAPP_MAINSEQ_09] = PokedexApp_MainSeq_09,
+    [POKEDEXAPP_MAINSEQ_10] = PokedexApp_MainSeq_10,
+    [POKEDEXAPP_MAINSEQ_11] = PokedexApp_MainSeq_11,
+    [POKEDEXAPP_MAINSEQ_12] = PokedexApp_MainSeq_12,
+    [POKEDEXAPP_MAINSEQ_13] = PokedexApp_MainSeq_13,
+    [POKEDEXAPP_MAINSEQ_14] = PokedexApp_MainSeq_14,
+    [POKEDEXAPP_MAINSEQ_15] = PokedexApp_MainSeq_15,
+    [POKEDEXAPP_MAINSEQ_16] = PokedexApp_MainSeq_16,
+    [POKEDEXAPP_MAINSEQ_17] = PokedexApp_MainSeq_17,
+    [POKEDEXAPP_MAINSEQ_18] = PokedexApp_MainSeq_18,
+    [POKEDEXAPP_MAINSEQ_19] = PokedexApp_MainSeq_19,
+    [POKEDEXAPP_MAINSEQ_20] = PokedexApp_MainSeq_20,
+    [POKEDEXAPP_MAINSEQ_21] = PokedexApp_MainSeq_21,
+    [POKEDEXAPP_MAINSEQ_22] = PokedexApp_MainSeq_22,
+    [POKEDEXAPP_MAINSEQ_23] = PokedexApp_MainSeq_23,
+    [POKEDEXAPP_MAINSEQ_24] = PokedexApp_MainSeq_24,
+    [POKEDEXAPP_MAINSEQ_25] = PokedexApp_MainSeq_25,
+    [POKEDEXAPP_MAINSEQ_26] = PokedexApp_MainSeq_26,
+    [POKEDEXAPP_MAINSEQ_27] = PokedexApp_MainSeq_27,
+    [POKEDEXAPP_MAINSEQ_28] = PokedexApp_MainSeq_28,
+    [POKEDEXAPP_MAINSEQ_29] = PokedexApp_MainSeq_29,
+    [POKEDEXAPP_MAINSEQ_30] = PokedexApp_MainSeq_30,
+    [POKEDEXAPP_MAINSEQ_31] = PokedexApp_MainSeq_31,
+    [POKEDEXAPP_MAINSEQ_32] = PokedexApp_MainSeq_32,
+    [POKEDEXAPP_MAINSEQ_33] = PokedexApp_MainSeq_33,
+    [POKEDEXAPP_MAINSEQ_34] = PokedexApp_MainSeq_34,
+    [POKEDEXAPP_MAINSEQ_35] = PokedexApp_MainSeq_35,
+    [POKEDEXAPP_MAINSEQ_36] = PokedexApp_MainSeq_36,
+    [POKEDEXAPP_MAINSEQ_37] = PokedexApp_MainSeq_37,
+    [POKEDEXAPP_MAINSEQ_38] = PokedexApp_MainSeq_38,
+    [POKEDEXAPP_MAINSEQ_39] = PokedexApp_MainSeq_39,
+    [POKEDEXAPP_MAINSEQ_40] = PokedexApp_MainSeq_40,
+    [POKEDEXAPP_MAINSEQ_41] = PokedexApp_MainSeq_41,
+    [POKEDEXAPP_MAINSEQ_42] = PokedexApp_MainSeq_42,
+    [POKEDEXAPP_MAINSEQ_43] = PokedexApp_MainSeq_43,
+    [POKEDEXAPP_MAINSEQ_44] = PokedexApp_MainSeq_44,
+    [POKEDEXAPP_MAINSEQ_45] = PokedexApp_MainSeq_45,
+    [POKEDEXAPP_MAINSEQ_46] = PokedexApp_MainSeq_46,
+    [POKEDEXAPP_MAINSEQ_47] = PokedexApp_MainSeq_47,
+    [POKEDEXAPP_MAINSEQ_48] = PokedexApp_MainSeq_48,
+    [POKEDEXAPP_MAINSEQ_49] = PokedexApp_MainSeq_49,
+    [POKEDEXAPP_MAINSEQ_50] = PokedexApp_MainSeq_50,
+    [POKEDEXAPP_MAINSEQ_51] = PokedexApp_MainSeq_51,
+    [POKEDEXAPP_MAINSEQ_52] = PokedexApp_MainSeq_52,
+    [POKEDEXAPP_MAINSEQ_53] = PokedexApp_MainSeq_53,
+    [POKEDEXAPP_MAINSEQ_54] = PokedexApp_MainSeq_54,
+    [POKEDEXAPP_MAINSEQ_55] = PokedexApp_MainSeq_55,
+    [POKEDEXAPP_MAINSEQ_56] = PokedexApp_MainSeq_56,
+    [POKEDEXAPP_MAINSEQ_57] = PokedexApp_MainSeq_57,
+    [POKEDEXAPP_MAINSEQ_58] = PokedexApp_MainSeq_58,
+    [POKEDEXAPP_MAINSEQ_59] = PokedexApp_MainSeq_59,
+    [POKEDEXAPP_MAINSEQ_60] = PokedexApp_MainSeq_60,
+    [POKEDEXAPP_MAINSEQ_61] = PokedexApp_MainSeq_61,
+    [POKEDEXAPP_MAINSEQ_62] = PokedexApp_MainSeq_62,
+    [POKEDEXAPP_MAINSEQ_63] = PokedexApp_MainSeq_63,
+    [POKEDEXAPP_MAINSEQ_64] = PokedexApp_MainSeq_64,
+    [POKEDEXAPP_MAINSEQ_65] = PokedexApp_MainSeq_65,
+    [POKEDEXAPP_MAINSEQ_66] = PokedexApp_MainSeq_66,
+    [POKEDEXAPP_MAINSEQ_67] = PokedexApp_MainSeq_67,
+    [POKEDEXAPP_MAINSEQ_68] = PokedexApp_MainSeq_68,
+    [POKEDEXAPP_MAINSEQ_69] = PokedexApp_MainSeq_69,
+    [POKEDEXAPP_MAINSEQ_70] = PokedexApp_MainSeq_70,
+    [POKEDEXAPP_MAINSEQ_71] = PokedexApp_MainSeq_71,
+    [POKEDEXAPP_MAINSEQ_72] = PokedexApp_MainSeq_72,
+    [POKEDEXAPP_MAINSEQ_73] = PokedexApp_MainSeq_73,
+    [POKEDEXAPP_MAINSEQ_74] = PokedexApp_MainSeq_74,
+    [POKEDEXAPP_MAINSEQ_75] = PokedexApp_MainSeq_75,
+    [POKEDEXAPP_MAINSEQ_76] = PokedexApp_MainSeq_76,
+    [POKEDEXAPP_MAINSEQ_77] = PokedexApp_MainSeq_77,
+    [POKEDEXAPP_MAINSEQ_78] = PokedexApp_MainSeq_78,
+    [POKEDEXAPP_MAINSEQ_79] = PokedexApp_MainSeq_79,
+    [POKEDEXAPP_MAINSEQ_80] = PokedexApp_MainSeq_80,
+    [POKEDEXAPP_MAINSEQ_81] = PokedexApp_MainSeq_81,
+    [POKEDEXAPP_MAINSEQ_82] = PokedexApp_MainSeq_82,
+    [POKEDEXAPP_MAINSEQ_83] = PokedexApp_MainSeq_83,
+    [POKEDEXAPP_MAINSEQ_84] = PokedexApp_MainSeq_84,
+    [POKEDEXAPP_MAINSEQ_85] = PokedexApp_MainSeq_85,
+    [POKEDEXAPP_MAINSEQ_86] = PokedexApp_MainSeq_86,
+    [POKEDEXAPP_MAINSEQ_87] = PokedexApp_MainSeq_87,
+    [POKEDEXAPP_MAINSEQ_88] = PokedexApp_MainSeq_88,
+    [POKEDEXAPP_MAINSEQ_89] = PokedexApp_MainSeq_89,
+    [POKEDEXAPP_MAINSEQ_90] = PokedexApp_MainSeq_90,
+    [POKEDEXAPP_MAINSEQ_91] = PokedexApp_MainSeq_91,
+    [POKEDEXAPP_MAINSEQ_92] = PokedexApp_MainSeq_92,
 };
 
-BOOL ov18_021E8BF4(PokedexAppData *pokedexApp, int *pState) {
-    *pState = ov18_021F9C3C[*pState](pokedexApp);
-    if (*pState == NELEMS(ov18_021F9C3C)) {
+BOOL PokedexApp_RunMainSeq(PokedexAppData *pokedexApp, int *pState) {
+    *pState = sMainSeqFuncs[*pState](pokedexApp);
+    if (*pState == NELEMS(sMainSeqFuncs)) {
         return FALSE;
     }
 
@@ -209,7 +209,7 @@ BOOL ov18_021E8BF4(PokedexAppData *pokedexApp, int *pState) {
     return TRUE;
 }
 
-int ov18_021E8C30(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_00(PokedexAppData *pokedexApp) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GfGfx_EngineASetPlanes(GX_PLANEMASK_NONE);
@@ -241,7 +241,7 @@ int ov18_021E8C30(PokedexAppData *pokedexApp) {
     return pokedexApp->unk_085C;
 }
 
-int ov18_021E8D38(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_01(PokedexAppData *pokedexApp) {
     Main_SetVBlankIntrCB(NULL, NULL);
     ov18_021EE388(pokedexApp);
     ov18_021F0FEC(pokedexApp);
@@ -261,23 +261,23 @@ int ov18_021E8D38(PokedexAppData *pokedexApp) {
     return pokedexApp->unk_085C;
 }
 
-int ov18_021E8DB0(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_02(PokedexAppData *pokedexApp) {
     if (IsPaletteFadeFinished() == TRUE) {
         return pokedexApp->unk_0860;
     }
 
-    return 2;
+    return POKEDEXAPP_MAINSEQ_02;
 }
 
-int ov18_021E8DC8(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_03(PokedexAppData *pokedexApp) {
     if (PaletteData_GetSelectedBuffersBitmask(pokedexApp->paletteData) == 0) {
         return pokedexApp->unk_085C;
     }
 
-    return 3;
+    return POKEDEXAPP_MAINSEQ_03;
 }
 
-int ov18_021E8DE8(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_04(PokedexAppData *pokedexApp) {
     PokedexAppData_UnkSub0868_State04 *r4 = &pokedexApp->unk_0868.state_04;
     switch (r4->unk_5) {
     case 0:
@@ -299,18 +299,18 @@ int ov18_021E8DE8(PokedexAppData *pokedexApp) {
         return pokedexApp->unk_085C;
     }
 
-    return 4;
+    return POKEDEXAPP_MAINSEQ_04;
 }
 
-int ov18_021E8E8C(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_05(PokedexAppData *pokedexApp) {
     pokedexApp->unk_185B = 0;
     ov18_021E67C8(pokedexApp, 0);
     PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0xF, 0xFFFF, -127, 0, 0, RGB_BLACK);
     pokedexApp->unk_0860 = 6;
-    return 2;
+    return POKEDEXAPP_MAINSEQ_02;
 }
 
-int ov18_021E8ECC(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_06(PokedexAppData *pokedexApp) {
     switch (ov18_021F6B00(pokedexApp)) {
     case 0:
         PlaySE(SEQ_SE_GS_BUTTON01);
@@ -339,7 +339,7 @@ int ov18_021E8ECC(PokedexAppData *pokedexApp) {
         System_GetTouchNewCoords(&r5->unk_0, &r5->unk_4);
         r5->unk_8 = ov18_021F2B9C(pokedexApp);
         PlaySE(SEQ_SE_GS_BUTTON01);
-        return 8;
+        return POKEDEXAPP_MAINSEQ_08;
     }
     case 6: {
         u32 sp4;
@@ -347,21 +347,21 @@ int ov18_021E8ECC(PokedexAppData *pokedexApp) {
 
         System_GetTouchNewCoords(&sp4, &sp0);
         if (ov18_021F2AF8(pokedexApp, sp4, sp0) == TRUE) {
-            return 7;
+            return POKEDEXAPP_MAINSEQ_07;
         }
     } break;
     }
 
-    return 6;
+    return POKEDEXAPP_MAINSEQ_06;
 }
 
-int ov18_021E8FCC(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_07(PokedexAppData *pokedexApp) {
     u32 sp4;
     u32 sp0;
 
     if (!System_GetTouchHeldCoords(&sp4, &sp0)) {
         ov18_021EDCD4(pokedexApp);
-        return 6;
+        return POKEDEXAPP_MAINSEQ_06;
     }
 
     if (sp4 >= 92 && sp4 < 164 && sp0 >= 112 && sp0 < 144) {
@@ -386,13 +386,13 @@ int ov18_021E8FCC(PokedexAppData *pokedexApp) {
         }
     } else {
         ov18_021EDCD4(pokedexApp);
-        return 6;
+        return POKEDEXAPP_MAINSEQ_06;
     }
 
-    return 7;
+    return POKEDEXAPP_MAINSEQ_07;
 }
 
-int ov18_021E9070(PokedexAppData *pokedexApp) {
+int PokedexApp_MainSeq_08(PokedexAppData *pokedexApp) {
     PokedexAppData_UnkSub0868_State06 *r4 = &pokedexApp->unk_0868.state_06;
 
     switch (r4->unk_A) {
@@ -403,7 +403,7 @@ int ov18_021E9070(PokedexAppData *pokedexApp) {
         if (!System_GetTouchHeldCoords(&sp4, &sp0)) {
             if (Bg_GetXpos(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0) >= 64) {
                 MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
-                return 9;
+                return POKEDEXAPP_MAINSEQ_09;
             }
             ++r4->unk_A;
         } else if ((s32)(r4->unk_0 - sp4) < 0) {
@@ -425,10 +425,57 @@ int ov18_021E9070(PokedexAppData *pokedexApp) {
             ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 0);
             ov18_021F2B70(pokedexApp, 0, ov18_021F2B9C(pokedexApp));
             MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
-            return 6;
+            return POKEDEXAPP_MAINSEQ_06;
         }
         break;
     }
 
-    return 8;
+    return POKEDEXAPP_MAINSEQ_08;
+}
+
+int PokedexApp_MainSeq_09(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State09 *r4 = &pokedexApp->unk_0868.state_09;
+
+    switch (r4->unk_0) {
+    case 0:
+        ov18_021E6574(pokedexApp);
+        ++r4->unk_0;
+        // fallthrough
+    case 1: {
+        ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_ADD_X, 16);
+        ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_ADD_X, 16);
+        ov18_021F2B3C(pokedexApp, 0, -16);
+        int r6 = Bg_GetXpos(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0);
+        if (r4->unk_3 == 0 && r6 >= 192 && !sub_020199E4(pokedexApp->unk_0008, 0)) {
+            r4->unk_3 = 1;
+            ov18_021E65AC(pokedexApp);
+            ov18_021EDE64(pokedexApp);
+        }
+        if (r6 >= 256) {
+            ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, 256);
+            ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 256);
+            ov18_021F2B70(pokedexApp, 0, ov18_021F2B9C(pokedexApp) - 256);
+            if (r4->unk_3 == 1) {
+                ++r4->unk_0;
+            }
+        }
+    } break;
+    case 2:
+        if (!sub_020199E4(pokedexApp->unk_0008, 1)) {
+            u16 species = ov18_021F8838(pokedexApp);
+            ov18_021E659C(pokedexApp);
+            if (species != SPECIES_NONE) {
+                ov18_021F24E0(pokedexApp, species, 8);
+                if (ov18_021E6D38(pokedexApp, species) == TRUE) {
+                    ov18_021F2A2C(pokedexApp, 6, 1);
+                }
+            }
+            ov18_021EE638(pokedexApp, species, 6);
+            MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+            return POKEDEXAPP_MAINSEQ_11;
+        }
+        break;
+    }
+
+    return POKEDEXAPP_MAINSEQ_09;
 }

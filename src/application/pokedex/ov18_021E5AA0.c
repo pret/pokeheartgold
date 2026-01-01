@@ -46,7 +46,7 @@ BOOL Pokedex_Init(OverlayManager *man, int *state) {
 BOOL Pokedex_Main(OverlayManager *man, int *state) {
     PokedexAppData *appData = OverlayManager_GetData(man);
 
-    if (!ov18_021E8BF4(appData, state)) {
+    if (!PokedexApp_RunMainSeq(appData, state)) {
         return TRUE;
     } else {
         return FALSE;

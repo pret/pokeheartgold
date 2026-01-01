@@ -85,141 +85,8 @@
 
 	.text
 
-	thumb_func_start ov18_021E918C
-ov18_021E918C: ; 0x021E918C
-	push {r4, r5, r6, lr}
-	ldr r1, _021E92A8 ; =0x00000868
-	add r5, r0, #0
-	add r4, r5, r1
-	ldrh r1, [r4]
-	cmp r1, #0
-	beq _021E91A4
-	cmp r1, #1
-	beq _021E91AE
-	cmp r1, #2
-	beq _021E924A
-	b _021E92A2
-_021E91A4:
-	bl ov18_021E6574
-	ldrh r0, [r4]
-	add r0, r0, #1
-	strh r0, [r4]
-_021E91AE:
-	ldr r0, [r5, #4]
-	mov r1, #0
-	mov r2, #1
-	mov r3, #0x10
-	bl ScheduleSetBgPosText
-	ldr r0, [r5, #4]
-	mov r1, #4
-	mov r2, #1
-	mov r3, #0x10
-	bl ScheduleSetBgPosText
-	mov r1, #0
-	add r2, r1, #0
-	add r0, r5, #0
-	sub r2, #0x10
-	bl ov18_021F2B3C
-	ldr r0, [r5, #4]
-	mov r1, #0
-	bl Bg_GetXpos
-	add r6, r0, #0
-	ldrb r0, [r4, #3]
-	cmp r0, #0
-	bne _021E9202
-	cmp r6, #0xc0
-	blt _021E9202
-	ldr r0, [r5, #8]
-	mov r1, #0
-	bl sub_020199E4
-	cmp r0, #0
-	bne _021E9202
-	mov r0, #1
-	strb r0, [r4, #3]
-	add r0, r5, #0
-	bl ov18_021E65AC
-	add r0, r5, #0
-	bl ov18_021EDE64
-_021E9202:
-	mov r3, #1
-	lsl r3, r3, #8
-	cmp r6, r3
-	blt _021E92A2
-	mov r1, #0
-	ldr r0, [r5, #4]
-	add r2, r1, #0
-	bl ScheduleSetBgPosText
-	mov r1, #4
-	add r3, r1, #0
-	ldr r0, [r5, #4]
-	mov r2, #0
-	add r3, #0xfc
-	bl ScheduleSetBgPosText
-	add r0, r5, #0
-	bl ov18_021F2B9C
-	mov r2, #1
-	add r3, r0, #0
-	lsl r2, r2, #8
-	sub r2, r3, r2
-	lsl r2, r2, #0x10
-	add r0, r5, #0
-	mov r1, #0
-	asr r2, r2, #0x10
-	bl ov18_021F2B70
-	ldrb r0, [r4, #3]
-	cmp r0, #1
-	bne _021E92A2
-	ldrh r0, [r4]
-	add r0, r0, #1
-	strh r0, [r4]
-	b _021E92A2
-_021E924A:
-	ldr r0, [r5, #8]
-	mov r1, #1
-	bl sub_020199E4
-	cmp r0, #0
-	bne _021E92A2
-	add r0, r5, #0
-	bl ov18_021F8838
-	add r4, r0, #0
-	add r0, r5, #0
-	bl ov18_021E659C
-	cmp r4, #0
-	beq _021E9288
-	add r0, r5, #0
-	add r1, r4, #0
-	mov r2, #8
-	bl ov18_021F24E0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov18_021E6D38
-	cmp r0, #1
-	bne _021E9288
-	add r0, r5, #0
-	mov r1, #6
-	mov r2, #1
-	bl ov18_021F2A2C
-_021E9288:
-	add r0, r5, #0
-	add r1, r4, #0
-	mov r2, #6
-	bl ov18_021EE638
-	ldr r0, _021E92A8 ; =0x00000868
-	mov r1, #0
-	add r0, r5, r0
-	mov r2, #0x10
-	bl MI_CpuFill8
-	mov r0, #0xb
-	pop {r4, r5, r6, pc}
-_021E92A2:
-	mov r0, #9
-	pop {r4, r5, r6, pc}
-	nop
-_021E92A8: .word 0x00000868
-	thumb_func_end ov18_021E918C
-
-	thumb_func_start ov18_021E92AC
-ov18_021E92AC: ; 0x021E92AC
+	thumb_func_start PokedexApp_MainSeq_10
+PokedexApp_MainSeq_10: ; 0x021E92AC
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021E93CC ; =0x00000868
@@ -355,10 +222,10 @@ _021E93C4:
 _021E93CC: .word 0x00000868
 _021E93D0: .word 0x0000FFFE
 _021E93D4: .word 0x0000FFFF
-	thumb_func_end ov18_021E92AC
+	thumb_func_end PokedexApp_MainSeq_10
 
-	thumb_func_start ov18_021E93D8
-ov18_021E93D8: ; 0x021E93D8
+	thumb_func_start PokedexApp_MainSeq_11
+PokedexApp_MainSeq_11: ; 0x021E93D8
 	push {r4, lr}
 	sub sp, #8
 	mov r1, #1
@@ -615,10 +482,10 @@ _021E95F0: .word 0x000008E9
 _021E95F4: .word 0x00001859
 _021E95F8: .word 0x00000868
 _021E95FC: .word 0x0000086F
-	thumb_func_end ov18_021E93D8
+	thumb_func_end PokedexApp_MainSeq_11
 
-	thumb_func_start ov18_021E9600
-ov18_021E9600: ; 0x021E9600
+	thumb_func_start PokedexApp_MainSeq_12
+PokedexApp_MainSeq_12: ; 0x021E9600
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	ldr r0, _021E96F0 ; =0x00000868
@@ -728,10 +595,10 @@ _021E96EA:
 	pop {r4, r5, r6, pc}
 	nop
 _021E96F0: .word 0x00000868
-	thumb_func_end ov18_021E9600
+	thumb_func_end PokedexApp_MainSeq_12
 
-	thumb_func_start ov18_021E96F4
-ov18_021E96F4: ; 0x021E96F4
+	thumb_func_start PokedexApp_MainSeq_13
+PokedexApp_MainSeq_13: ; 0x021E96F4
 	push {r3, r4, r5, lr}
 	ldr r1, _021E9814 ; =0x00000868
 	add r5, r0, #0
@@ -865,10 +732,10 @@ _021E980E:
 _021E9814: .word 0x00000868
 _021E9818: .word 0x00001859
 _021E981C: .word 0x0000185A
-	thumb_func_end ov18_021E96F4
+	thumb_func_end PokedexApp_MainSeq_13
 
-	thumb_func_start ov18_021E9820
-ov18_021E9820: ; 0x021E9820
+	thumb_func_start PokedexApp_MainSeq_14
+PokedexApp_MainSeq_14: ; 0x021E9820
 	push {r3, r4, r5, lr}
 	ldr r1, _021E9934 ; =0x00000868
 	add r5, r0, #0
@@ -997,10 +864,10 @@ _021E9930:
 _021E9934: .word 0x00000868
 _021E9938: .word 0x00001859
 _021E993C: .word 0x0000185A
-	thumb_func_end ov18_021E9820
+	thumb_func_end PokedexApp_MainSeq_14
 
-	thumb_func_start ov18_021E9940
-ov18_021E9940: ; 0x021E9940
+	thumb_func_start PokedexApp_MainSeq_15
+PokedexApp_MainSeq_15: ; 0x021E9940
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -1059,10 +926,10 @@ _021E99B6:
 _021E99BC: .word 0x00001859
 _021E99C0: .word 0x0000185E
 _021E99C4: .word 0x000008E8
-	thumb_func_end ov18_021E9940
+	thumb_func_end PokedexApp_MainSeq_15
 
-	thumb_func_start ov18_021E99C8
-ov18_021E99C8: ; 0x021E99C8
+	thumb_func_start PokedexApp_MainSeq_16
+PokedexApp_MainSeq_16: ; 0x021E99C8
 	push {r3, r4, r5, lr}
 	ldr r1, _021E9A3C ; =0x00000868
 	add r5, r0, #0
@@ -1117,10 +984,10 @@ _021E9A3C: .word 0x00000868
 _021E9A40: .word 0x00001859
 _021E9A44: .word 0x0000185E
 _021E9A48: .word 0x000008E8
-	thumb_func_end ov18_021E99C8
+	thumb_func_end PokedexApp_MainSeq_16
 
-	thumb_func_start ov18_021E9A4C
-ov18_021E9A4C: ; 0x021E9A4C
+	thumb_func_start PokedexApp_MainSeq_17
+PokedexApp_MainSeq_17: ; 0x021E9A4C
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -1303,10 +1170,10 @@ _021E9BD4:
 	pop {r4, r5, r6, pc}
 	nop
 _021E9BDC: .word 0x00000868
-	thumb_func_end ov18_021E9A4C
+	thumb_func_end PokedexApp_MainSeq_17
 
-	thumb_func_start ov18_021E9BE0
-ov18_021E9BE0: ; 0x021E9BE0
+	thumb_func_start PokedexApp_MainSeq_18
+PokedexApp_MainSeq_18: ; 0x021E9BE0
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -1417,10 +1284,10 @@ _021E9CC8: .word 0x0000FFFE
 _021E9CCC: .word 0x0000FFFF
 _021E9CD0: .word 0x0000085C
 _021E9CD4: .word 0x0000185B
-	thumb_func_end ov18_021E9BE0
+	thumb_func_end PokedexApp_MainSeq_18
 
-	thumb_func_start ov18_021E9CD8
-ov18_021E9CD8: ; 0x021E9CD8
+	thumb_func_start PokedexApp_MainSeq_21
+PokedexApp_MainSeq_21: ; 0x021E9CD8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021E9D64 ; =0x00000868
@@ -1491,10 +1358,10 @@ _021E9D5C:
 _021E9D64: .word 0x00000868
 _021E9D68: .word 0x0000FFEF
 _021E9D6C: .word 0x0000FFFF
-	thumb_func_end ov18_021E9CD8
+	thumb_func_end PokedexApp_MainSeq_21
 
-	thumb_func_start ov18_021E9D70
-ov18_021E9D70: ; 0x021E9D70
+	thumb_func_start PokedexApp_MainSeq_22
+PokedexApp_MainSeq_22: ; 0x021E9D70
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -1701,10 +1568,10 @@ _021E9F1E:
 	pop {r4, pc}
 	.balign 4, 0
 _021E9F24: .word 0x000008E9
-	thumb_func_end ov18_021E9D70
+	thumb_func_end PokedexApp_MainSeq_22
 
-	thumb_func_start ov18_021E9F28
-ov18_021E9F28: ; 0x021E9F28
+	thumb_func_start PokedexApp_MainSeq_23
+PokedexApp_MainSeq_23: ; 0x021E9F28
 	push {r3, r4, r5, lr}
 	sub sp, #0x20
 	ldr r1, _021EA274 ; =0x00000868
@@ -2190,7 +2057,7 @@ _021EA33C:
 _021EA344: .word 0x000005F2
 _021EA348: .word gSystem
 _021EA34C: .word 0x00000868
-	thumb_func_end ov18_021E9F28
+	thumb_func_end PokedexApp_MainSeq_23
 
 	thumb_func_start ov18_021EA350
 ov18_021EA350: ; 0x021EA350
@@ -2208,8 +2075,8 @@ ov18_021EA350: ; 0x021EA350
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov18_021EA350
 
-	thumb_func_start ov18_021EA36C
-ov18_021EA36C: ; 0x021EA36C
+	thumb_func_start PokedexApp_MainSeq_24
+PokedexApp_MainSeq_24: ; 0x021EA36C
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov18_021E6FFC
@@ -2219,10 +2086,10 @@ ov18_021EA36C: ; 0x021EA36C
 	bl ov18_021F3494
 	mov r0, #0x16
 	pop {r4, pc}
-	thumb_func_end ov18_021EA36C
+	thumb_func_end PokedexApp_MainSeq_24
 
-	thumb_func_start ov18_021EA384
-ov18_021EA384: ; 0x021EA384
+	thumb_func_start PokedexApp_MainSeq_25
+PokedexApp_MainSeq_25: ; 0x021EA384
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021EA420 ; =0x00000868
@@ -2300,10 +2167,10 @@ _021EA420: .word 0x00000868
 _021EA424: .word 0x0000FFEF
 _021EA428: .word 0x0000FFFF
 _021EA42C: .word 0x0000085C
-	thumb_func_end ov18_021EA384
+	thumb_func_end PokedexApp_MainSeq_25
 
-	thumb_func_start ov18_021EA430
-ov18_021EA430: ; 0x021EA430
+	thumb_func_start PokedexApp_MainSeq_19
+PokedexApp_MainSeq_19: ; 0x021EA430
 	push {r3, r4, r5, lr}
 	sub sp, #0x20
 	ldr r1, _021EA590 ; =0x00000868
@@ -2472,10 +2339,10 @@ _021EA598: .word 0x00000854
 _021EA59C: .word 0x0000FFFE
 _021EA5A0: .word 0x0000FFFF
 _021EA5A4: .word 0x0000085C
-	thumb_func_end ov18_021EA430
+	thumb_func_end PokedexApp_MainSeq_19
 
-	thumb_func_start ov18_021EA5A8
-ov18_021EA5A8: ; 0x021EA5A8
+	thumb_func_start PokedexApp_MainSeq_20
+PokedexApp_MainSeq_20: ; 0x021EA5A8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	ldr r0, _021EA680 ; =0x00000868
@@ -2577,10 +2444,10 @@ _021EA67C:
 	.balign 4, 0
 _021EA680: .word 0x00000868
 _021EA684: .word 0x0000085C
-	thumb_func_end ov18_021EA5A8
+	thumb_func_end PokedexApp_MainSeq_20
 
-	thumb_func_start ov18_021EA688
-ov18_021EA688: ; 0x021EA688
+	thumb_func_start PokedexApp_MainSeq_26
+PokedexApp_MainSeq_26: ; 0x021EA688
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021EA750 ; =0x00000868
@@ -2679,10 +2546,10 @@ _021EA750: .word 0x00000868
 _021EA754: .word 0x0000FFEF
 _021EA758: .word 0x0000FFFF
 _021EA75C: .word 0x0000085C
-	thumb_func_end ov18_021EA688
+	thumb_func_end PokedexApp_MainSeq_26
 
-	thumb_func_start ov18_021EA760
-ov18_021EA760: ; 0x021EA760
+	thumb_func_start PokedexApp_MainSeq_27
+PokedexApp_MainSeq_27: ; 0x021EA760
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021EA828 ; =0x00000868
@@ -2781,10 +2648,10 @@ _021EA828: .word 0x00000868
 _021EA82C: .word 0x0000FFEF
 _021EA830: .word 0x0000FFFF
 _021EA834: .word 0x0000085C
-	thumb_func_end ov18_021EA760
+	thumb_func_end PokedexApp_MainSeq_27
 
-	thumb_func_start ov18_021EA838
-ov18_021EA838: ; 0x021EA838
+	thumb_func_start PokedexApp_MainSeq_28
+PokedexApp_MainSeq_28: ; 0x021EA838
 	push {r3, lr}
 	ldr r1, _021EA850 ; =0x00001868
 	mov r3, #0x1d
@@ -2798,10 +2665,10 @@ ov18_021EA838: ; 0x021EA838
 	pop {r3, pc}
 	.balign 4, 0
 _021EA850: .word 0x00001868
-	thumb_func_end ov18_021EA838
+	thumb_func_end PokedexApp_MainSeq_28
 
-	thumb_func_start ov18_021EA854
-ov18_021EA854: ; 0x021EA854
+	thumb_func_start PokedexApp_MainSeq_29
+PokedexApp_MainSeq_29: ; 0x021EA854
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov18_021F6F08
@@ -2920,10 +2787,10 @@ _021EA950:
 	.balign 4, 0
 _021EA954: .word 0x000008E9
 _021EA958: .word 0x00001890
-	thumb_func_end ov18_021EA854
+	thumb_func_end PokedexApp_MainSeq_29
 
-	thumb_func_start ov18_021EA95C
-ov18_021EA95C: ; 0x021EA95C
+	thumb_func_start PokedexApp_MainSeq_30
+PokedexApp_MainSeq_30: ; 0x021EA95C
 	push {r3, lr}
 	mov r1, #0
 	add r2, r1, #0
@@ -2931,10 +2798,10 @@ ov18_021EA95C: ; 0x021EA95C
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EA95C
+	thumb_func_end PokedexApp_MainSeq_30
 
-	thumb_func_start ov18_021EA96C
-ov18_021EA96C: ; 0x021EA96C
+	thumb_func_start PokedexApp_MainSeq_31
+PokedexApp_MainSeq_31: ; 0x021EA96C
 	push {r3, lr}
 	ldr r1, _021EA984 ; =0x0000186C
 	mov r3, #0x20
@@ -2948,10 +2815,10 @@ ov18_021EA96C: ; 0x021EA96C
 	pop {r3, pc}
 	.balign 4, 0
 _021EA984: .word 0x0000186C
-	thumb_func_end ov18_021EA96C
+	thumb_func_end PokedexApp_MainSeq_31
 
-	thumb_func_start ov18_021EA988
-ov18_021EA988: ; 0x021EA988
+	thumb_func_start PokedexApp_MainSeq_32
+PokedexApp_MainSeq_32: ; 0x021EA988
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ov18_021F6FE8
@@ -3022,10 +2889,10 @@ _021EAA12:
 	nop
 _021EAA18: .word 0x000008E9
 _021EAA1C: .word 0x00001890
-	thumb_func_end ov18_021EA988
+	thumb_func_end PokedexApp_MainSeq_32
 
-	thumb_func_start ov18_021EAA20
-ov18_021EAA20: ; 0x021EAA20
+	thumb_func_start PokedexApp_MainSeq_33
+PokedexApp_MainSeq_33: ; 0x021EAA20
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #1
@@ -3033,10 +2900,10 @@ ov18_021EAA20: ; 0x021EAA20
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EAA20
+	thumb_func_end PokedexApp_MainSeq_33
 
-	thumb_func_start ov18_021EAA30
-ov18_021EAA30: ; 0x021EAA30
+	thumb_func_start PokedexApp_MainSeq_34
+PokedexApp_MainSeq_34: ; 0x021EAA30
 	push {r3, lr}
 	ldr r2, _021EAA54 ; =0x00001870
 	add r1, r2, #0
@@ -3055,10 +2922,10 @@ ov18_021EAA30: ; 0x021EAA30
 	pop {r3, pc}
 	nop
 _021EAA54: .word 0x00001870
-	thumb_func_end ov18_021EAA30
+	thumb_func_end PokedexApp_MainSeq_34
 
-	thumb_func_start ov18_021EAA58
-ov18_021EAA58: ; 0x021EAA58
+	thumb_func_start PokedexApp_MainSeq_35
+PokedexApp_MainSeq_35: ; 0x021EAA58
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov18_021F716C
@@ -3200,10 +3067,10 @@ _021EAB6C: .word 0x00001870
 _021EAB70: .word 0x000008E9
 _021EAB74: .word 0x00001890
 _021EAB78: .word 0x00001874
-	thumb_func_end ov18_021EAA58
+	thumb_func_end PokedexApp_MainSeq_35
 
-	thumb_func_start ov18_021EAB7C
-ov18_021EAB7C: ; 0x021EAB7C
+	thumb_func_start PokedexApp_MainSeq_36
+PokedexApp_MainSeq_36: ; 0x021EAB7C
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #2
@@ -3211,10 +3078,10 @@ ov18_021EAB7C: ; 0x021EAB7C
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EAB7C
+	thumb_func_end PokedexApp_MainSeq_36
 
-	thumb_func_start ov18_021EAB8C
-ov18_021EAB8C: ; 0x021EAB8C
+	thumb_func_start PokedexApp_MainSeq_37
+PokedexApp_MainSeq_37: ; 0x021EAB8C
 	push {r3, lr}
 	ldr r2, _021EABB0 ; =0x00001878
 	add r1, r2, #0
@@ -3233,10 +3100,10 @@ ov18_021EAB8C: ; 0x021EAB8C
 	pop {r3, pc}
 	nop
 _021EABB0: .word 0x00001878
-	thumb_func_end ov18_021EAB8C
+	thumb_func_end PokedexApp_MainSeq_37
 
-	thumb_func_start ov18_021EABB4
-ov18_021EABB4: ; 0x021EABB4
+	thumb_func_start PokedexApp_MainSeq_38
+PokedexApp_MainSeq_38: ; 0x021EABB4
 	push {r3, r4, r5, lr}
 	ldr r1, _021EAD5C ; =0x00000868
 	add r4, r0, #0
@@ -3445,7 +3312,7 @@ _021EAD64: .word 0x00001878
 _021EAD68: .word 0x000008E9
 _021EAD6C: .word 0x00001890
 _021EAD70: .word gSystem
-	thumb_func_end ov18_021EABB4
+	thumb_func_end PokedexApp_MainSeq_38
 
 	thumb_func_start ov18_021EAD74
 ov18_021EAD74: ; 0x021EAD74
@@ -3556,8 +3423,8 @@ _021EAE00:
 _021EAE40: .word 0x00001850
 	thumb_func_end ov18_021EADB8
 
-	thumb_func_start ov18_021EAE44
-ov18_021EAE44: ; 0x021EAE44
+	thumb_func_start PokedexApp_MainSeq_39
+PokedexApp_MainSeq_39: ; 0x021EAE44
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #3
@@ -3565,10 +3432,10 @@ ov18_021EAE44: ; 0x021EAE44
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EAE44
+	thumb_func_end PokedexApp_MainSeq_39
 
-	thumb_func_start ov18_021EAE54
-ov18_021EAE54: ; 0x021EAE54
+	thumb_func_start PokedexApp_MainSeq_40
+PokedexApp_MainSeq_40: ; 0x021EAE54
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -3656,10 +3523,10 @@ _021EAF08: .word 0x0000187C
 _021EAF0C: .word 0x00001850
 _021EAF10: .word 0x0000046C
 _021EAF14: .word 0x000008E8
-	thumb_func_end ov18_021EAE54
+	thumb_func_end PokedexApp_MainSeq_40
 
-	thumb_func_start ov18_021EAF18
-ov18_021EAF18: ; 0x021EAF18
+	thumb_func_start PokedexApp_MainSeq_41
+PokedexApp_MainSeq_41: ; 0x021EAF18
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -3747,10 +3614,10 @@ _021EAFCC: .word 0x00001878
 _021EAFD0: .word 0x00001850
 _021EAFD4: .word 0x0000045C
 _021EAFD8: .word 0x000008E8
-	thumb_func_end ov18_021EAF18
+	thumb_func_end PokedexApp_MainSeq_41
 
-	thumb_func_start ov18_021EAFDC
-ov18_021EAFDC: ; 0x021EAFDC
+	thumb_func_start PokedexApp_MainSeq_42
+PokedexApp_MainSeq_42: ; 0x021EAFDC
 	push {r3, r4, r5, lr}
 	ldr r1, _021EB02C ; =0x00000868
 	add r5, r0, #0
@@ -3790,10 +3657,10 @@ _021EB026:
 	nop
 _021EB02C: .word 0x00000868
 _021EB030: .word 0x0000187C
-	thumb_func_end ov18_021EAFDC
+	thumb_func_end PokedexApp_MainSeq_42
 
-	thumb_func_start ov18_021EB034
-ov18_021EB034: ; 0x021EB034
+	thumb_func_start PokedexApp_MainSeq_43
+PokedexApp_MainSeq_43: ; 0x021EB034
 	push {r3, r4, r5, lr}
 	ldr r1, _021EB084 ; =0x00000868
 	add r5, r0, #0
@@ -3833,10 +3700,10 @@ _021EB07E:
 	nop
 _021EB084: .word 0x00000868
 _021EB088: .word 0x00001878
-	thumb_func_end ov18_021EB034
+	thumb_func_end PokedexApp_MainSeq_43
 
-	thumb_func_start ov18_021EB08C
-ov18_021EB08C: ; 0x021EB08C
+	thumb_func_start PokedexApp_MainSeq_44
+PokedexApp_MainSeq_44: ; 0x021EB08C
 	push {r3, lr}
 	mov r2, #0x62
 	lsl r2, r2, #6
@@ -3854,10 +3721,10 @@ ov18_021EB08C: ; 0x021EB08C
 	bl ov18_021EDE4C
 	mov r0, #0x1a
 	pop {r3, pc}
-	thumb_func_end ov18_021EB08C
+	thumb_func_end PokedexApp_MainSeq_44
 
-	thumb_func_start ov18_021EB0B0
-ov18_021EB0B0: ; 0x021EB0B0
+	thumb_func_start PokedexApp_MainSeq_45
+PokedexApp_MainSeq_45: ; 0x021EB0B0
 	push {r3, r4, r5, lr}
 	ldr r1, _021EB25C ; =0x00000868
 	add r4, r0, #0
@@ -4068,10 +3935,10 @@ _021EB260: .word 0x00001884
 _021EB264: .word 0x000008E9
 _021EB268: .word 0x00001890
 _021EB26C: .word gSystem
-	thumb_func_end ov18_021EB0B0
+	thumb_func_end PokedexApp_MainSeq_45
 
-	thumb_func_start ov18_021EB270
-ov18_021EB270: ; 0x021EB270
+	thumb_func_start PokedexApp_MainSeq_46
+PokedexApp_MainSeq_46: ; 0x021EB270
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #4
@@ -4079,10 +3946,10 @@ ov18_021EB270: ; 0x021EB270
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EB270
+	thumb_func_end PokedexApp_MainSeq_46
 
-	thumb_func_start ov18_021EB280
-ov18_021EB280: ; 0x021EB280
+	thumb_func_start PokedexApp_MainSeq_47
+PokedexApp_MainSeq_47: ; 0x021EB280
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -4172,10 +4039,10 @@ _021EB338: .word 0x00001884
 _021EB33C: .word 0x00001850
 _021EB340: .word 0x0000049C
 _021EB344: .word 0x000008E8
-	thumb_func_end ov18_021EB280
+	thumb_func_end PokedexApp_MainSeq_47
 
-	thumb_func_start ov18_021EB348
-ov18_021EB348: ; 0x021EB348
+	thumb_func_start PokedexApp_MainSeq_48
+PokedexApp_MainSeq_48: ; 0x021EB348
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -4272,10 +4139,10 @@ _021EB40C: .word 0x00000868
 _021EB410: .word 0x00001850
 _021EB414: .word 0x0000048C
 _021EB418: .word 0x000008E8
-	thumb_func_end ov18_021EB348
+	thumb_func_end PokedexApp_MainSeq_48
 
-	thumb_func_start ov18_021EB41C
-ov18_021EB41C: ; 0x021EB41C
+	thumb_func_start PokedexApp_MainSeq_49
+PokedexApp_MainSeq_49: ; 0x021EB41C
 	push {r3, r4, r5, lr}
 	ldr r1, _021EB46C ; =0x00000868
 	add r5, r0, #0
@@ -4315,10 +4182,10 @@ _021EB466:
 	nop
 _021EB46C: .word 0x00000868
 _021EB470: .word 0x00001884
-	thumb_func_end ov18_021EB41C
+	thumb_func_end PokedexApp_MainSeq_49
 
-	thumb_func_start ov18_021EB474
-ov18_021EB474: ; 0x021EB474
+	thumb_func_start PokedexApp_MainSeq_50
+PokedexApp_MainSeq_50: ; 0x021EB474
 	push {r3, r4, r5, lr}
 	ldr r1, _021EB4C8 ; =0x00000868
 	add r5, r0, #0
@@ -4360,10 +4227,10 @@ _021EB4C4:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021EB4C8: .word 0x00000868
-	thumb_func_end ov18_021EB474
+	thumb_func_end PokedexApp_MainSeq_50
 
-	thumb_func_start ov18_021EB4CC
-ov18_021EB4CC: ; 0x021EB4CC
+	thumb_func_start PokedexApp_MainSeq_51
+PokedexApp_MainSeq_51: ; 0x021EB4CC
 	push {r3, lr}
 	ldr r1, _021EB4E4 ; =0x00001888
 	mov r3, #0x34
@@ -4377,10 +4244,10 @@ ov18_021EB4CC: ; 0x021EB4CC
 	pop {r3, pc}
 	.balign 4, 0
 _021EB4E4: .word 0x00001888
-	thumb_func_end ov18_021EB4CC
+	thumb_func_end PokedexApp_MainSeq_51
 
-	thumb_func_start ov18_021EB4E8
-ov18_021EB4E8: ; 0x021EB4E8
+	thumb_func_start PokedexApp_MainSeq_52
+PokedexApp_MainSeq_52: ; 0x021EB4E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ov18_021F76B0
@@ -4451,10 +4318,10 @@ _021EB572:
 	nop
 _021EB578: .word 0x000008E9
 _021EB57C: .word 0x00001890
-	thumb_func_end ov18_021EB4E8
+	thumb_func_end PokedexApp_MainSeq_52
 
-	thumb_func_start ov18_021EB580
-ov18_021EB580: ; 0x021EB580
+	thumb_func_start PokedexApp_MainSeq_53
+PokedexApp_MainSeq_53: ; 0x021EB580
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #5
@@ -4462,10 +4329,10 @@ ov18_021EB580: ; 0x021EB580
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EB580
+	thumb_func_end PokedexApp_MainSeq_53
 
-	thumb_func_start ov18_021EB590
-ov18_021EB590: ; 0x021EB590
+	thumb_func_start PokedexApp_MainSeq_54
+PokedexApp_MainSeq_54: ; 0x021EB590
 	push {r3, lr}
 	ldr r1, _021EB5A8 ; =0x0000188C
 	mov r3, #0x37
@@ -4479,10 +4346,10 @@ ov18_021EB590: ; 0x021EB590
 	pop {r3, pc}
 	.balign 4, 0
 _021EB5A8: .word 0x0000188C
-	thumb_func_end ov18_021EB590
+	thumb_func_end PokedexApp_MainSeq_54
 
-	thumb_func_start ov18_021EB5AC
-ov18_021EB5AC: ; 0x021EB5AC
+	thumb_func_start PokedexApp_MainSeq_55
+PokedexApp_MainSeq_55: ; 0x021EB5AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	bl ov18_021F7790
@@ -4553,10 +4420,10 @@ _021EB636:
 	nop
 _021EB63C: .word 0x000008E9
 _021EB640: .word 0x00001890
-	thumb_func_end ov18_021EB5AC
+	thumb_func_end PokedexApp_MainSeq_55
 
-	thumb_func_start ov18_021EB644
-ov18_021EB644: ; 0x021EB644
+	thumb_func_start PokedexApp_MainSeq_56
+PokedexApp_MainSeq_56: ; 0x021EB644
 	push {r3, lr}
 	mov r1, #0
 	mov r2, #6
@@ -4564,10 +4431,10 @@ ov18_021EB644: ; 0x021EB644
 	bl ov18_021EDE4C
 	mov r0, #0x1b
 	pop {r3, pc}
-	thumb_func_end ov18_021EB644
+	thumb_func_end PokedexApp_MainSeq_56
 
-	thumb_func_start ov18_021EB654
-ov18_021EB654: ; 0x021EB654
+	thumb_func_start PokedexApp_MainSeq_57
+PokedexApp_MainSeq_57: ; 0x021EB654
 	push {r4, lr}
 	sub sp, #8
 	mov r1, #0
@@ -4794,10 +4661,10 @@ _021EB828: .word 0x0000185B
 _021EB82C: .word 0x00001859
 _021EB830: .word 0x00000868
 _021EB834: .word 0x0000086F
-	thumb_func_end ov18_021EB654
+	thumb_func_end PokedexApp_MainSeq_57
 
-	thumb_func_start ov18_021EB838
-ov18_021EB838: ; 0x021EB838
+	thumb_func_start PokedexApp_MainSeq_58
+PokedexApp_MainSeq_58: ; 0x021EB838
 	push {r3, r4, r5, lr}
 	ldr r1, _021EB978 ; =0x00000868
 	add r5, r0, #0
@@ -4949,10 +4816,10 @@ _021EB978: .word 0x00000868
 _021EB97C: .word 0x000005EC
 _021EB980: .word 0x00001859
 _021EB984: .word 0x0000185A
-	thumb_func_end ov18_021EB838
+	thumb_func_end PokedexApp_MainSeq_58
 
-	thumb_func_start ov18_021EB988
-ov18_021EB988: ; 0x021EB988
+	thumb_func_start PokedexApp_MainSeq_59
+PokedexApp_MainSeq_59: ; 0x021EB988
 	push {r3, r4, r5, lr}
 	ldr r1, _021EBAB4 ; =0x00000868
 	add r5, r0, #0
@@ -5093,10 +4960,10 @@ _021EBAB4: .word 0x00000868
 _021EBAB8: .word 0x000005EC
 _021EBABC: .word 0x00001859
 _021EBAC0: .word 0x0000185A
-	thumb_func_end ov18_021EB988
+	thumb_func_end PokedexApp_MainSeq_59
 
-	thumb_func_start ov18_021EBAC4
-ov18_021EBAC4: ; 0x021EBAC4
+	thumb_func_start PokedexApp_MainSeq_60
+PokedexApp_MainSeq_60: ; 0x021EBAC4
 	push {r4, r5, lr}
 	sub sp, #0xc
 	add r5, r0, #0
@@ -5169,10 +5036,10 @@ _021EBB56:
 _021EBB5C: .word 0x00001859
 _021EBB60: .word 0x0000185E
 _021EBB64: .word 0x000008E8
-	thumb_func_end ov18_021EBAC4
+	thumb_func_end PokedexApp_MainSeq_60
 
-	thumb_func_start ov18_021EBB68
-ov18_021EBB68: ; 0x021EBB68
+	thumb_func_start PokedexApp_MainSeq_61
+PokedexApp_MainSeq_61: ; 0x021EBB68
 	push {r3, r4, r5, lr}
 	ldr r1, _021EBBF8 ; =0x00000868
 	add r5, r0, #0
@@ -5241,10 +5108,10 @@ _021EBBF8: .word 0x00000868
 _021EBBFC: .word 0x00001859
 _021EBC00: .word 0x0000185E
 _021EBC04: .word 0x000008E8
-	thumb_func_end ov18_021EBB68
+	thumb_func_end PokedexApp_MainSeq_61
 
-	thumb_func_start ov18_021EBC08
-ov18_021EBC08: ; 0x021EBC08
+	thumb_func_start PokedexApp_MainSeq_62
+PokedexApp_MainSeq_62: ; 0x021EBC08
 	push {r4, lr}
 	sub sp, #0x20
 	ldr r1, _021EBD10 ; =0x00000868
@@ -5370,10 +5237,10 @@ _021EBD18: .word 0x000005EC
 _021EBD1C: .word 0x0000FFFE
 _021EBD20: .word 0x0000FFFF
 _021EBD24: .word 0x0000085C
-	thumb_func_end ov18_021EBC08
+	thumb_func_end PokedexApp_MainSeq_62
 
-	thumb_func_start ov18_021EBD28
-ov18_021EBD28: ; 0x021EBD28
+	thumb_func_start PokedexApp_MainSeq_63
+PokedexApp_MainSeq_63: ; 0x021EBD28
 	push {r4, lr}
 	sub sp, #0x20
 	ldr r1, _021EBEB8 ; =0x00000868
@@ -5559,10 +5426,10 @@ _021EBEB8: .word 0x00000868
 _021EBEBC: .word 0x00001858
 _021EBEC0: .word 0x00000854
 _021EBEC4: .word 0x000005EC
-	thumb_func_end ov18_021EBD28
+	thumb_func_end PokedexApp_MainSeq_63
 
-	thumb_func_start ov18_021EBEC8
-ov18_021EBEC8: ; 0x021EBEC8
+	thumb_func_start PokedexApp_MainSeq_64
+PokedexApp_MainSeq_64: ; 0x021EBEC8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021EBFA4 ; =0x00000868
@@ -5670,10 +5537,10 @@ _021EBFB0: .word 0x0000FFFE
 _021EBFB4: .word 0x0000FFFF
 _021EBFB8: .word 0x0000085C
 _021EBFBC: .word 0x000018A0
-	thumb_func_end ov18_021EBEC8
+	thumb_func_end PokedexApp_MainSeq_64
 
-	thumb_func_start ov18_021EBFC0
-ov18_021EBFC0: ; 0x021EBFC0
+	thumb_func_start PokedexApp_MainSeq_65
+PokedexApp_MainSeq_65: ; 0x021EBFC0
 	push {r4, lr}
 	sub sp, #0x10
 	ldr r1, _021EC1C8 ; =0x00000868
@@ -5904,7 +5771,7 @@ _021EC1CC: .word 0x00000854
 _021EC1D0: .word 0x00001859
 _021EC1D4: .word 0x0000FFEF
 _021EC1D8: .word 0x0000FFFF
-	thumb_func_end ov18_021EBFC0
+	thumb_func_end PokedexApp_MainSeq_65
 
 	thumb_func_start ov18_021EC1DC
 ov18_021EC1DC: ; 0x021EC1DC
@@ -5989,8 +5856,8 @@ _021EC278: .word 0x00000868
 _021EC27C: .word 0x0000185B
 	thumb_func_end ov18_021EC1DC
 
-	thumb_func_start ov18_021EC280
-ov18_021EC280: ; 0x021EC280
+	thumb_func_start PokedexApp_MainSeq_66
+PokedexApp_MainSeq_66: ; 0x021EC280
 	push {r4, lr}
 	add r4, r0, #0
 	bl ov18_021F8838
@@ -6014,14 +5881,14 @@ ov18_021EC280: ; 0x021EC280
 	add r0, r4, #0
 	bl ov18_021F3D34
 	add r0, r4, #0
-	bl ov18_021EC3E8
+	bl PokedexApp_MainSeq_68
 	pop {r4, pc}
 	nop
 _021EC2C0: .word 0x000018A2
-	thumb_func_end ov18_021EC280
+	thumb_func_end PokedexApp_MainSeq_66
 
-	thumb_func_start ov18_021EC2C4
-ov18_021EC2C4: ; 0x021EC2C4
+	thumb_func_start PokedexApp_MainSeq_67
+PokedexApp_MainSeq_67: ; 0x021EC2C4
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021EC3D0 ; =0x00000868
@@ -6152,10 +6019,10 @@ _021EC3D8: .word 0x0000FFFF
 _021EC3DC: .word 0x0000085C
 _021EC3E0: .word 0x0000185B
 _021EC3E4: .word 0x000018A0
-	thumb_func_end ov18_021EC2C4
+	thumb_func_end PokedexApp_MainSeq_67
 
-	thumb_func_start ov18_021EC3E8
-ov18_021EC3E8: ; 0x021EC3E8
+	thumb_func_start PokedexApp_MainSeq_68
+PokedexApp_MainSeq_68: ; 0x021EC3E8
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021EC4E4 ; =0x00000868
@@ -6279,10 +6146,10 @@ _021EC4EC: .word 0x0000F7BE
 _021EC4F0: .word 0x0000FFEF
 _021EC4F4: .word 0x0000FFFF
 _021EC4F8: .word 0x0000185B
-	thumb_func_end ov18_021EC3E8
+	thumb_func_end PokedexApp_MainSeq_68
 
-	thumb_func_start ov18_021EC4FC
-ov18_021EC4FC: ; 0x021EC4FC
+	thumb_func_start PokedexApp_MainSeq_69
+PokedexApp_MainSeq_69: ; 0x021EC4FC
 	push {r3, r4, lr}
 	sub sp, #0xc
 	add r4, r0, #0
@@ -6626,10 +6493,10 @@ _021EC79A:
 _021EC7A0: .word 0x000008E9
 _021EC7A4: .word 0x000008E8
 _021EC7A8: .word 0x00000868
-	thumb_func_end ov18_021EC4FC
+	thumb_func_end PokedexApp_MainSeq_69
 
-	thumb_func_start ov18_021EC7AC
-ov18_021EC7AC: ; 0x021EC7AC
+	thumb_func_start PokedexApp_MainSeq_70
+PokedexApp_MainSeq_70: ; 0x021EC7AC
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021EC874 ; =0x00000868
@@ -6733,10 +6600,10 @@ _021EC87C: .word 0x0000FFEF
 _021EC880: .word 0x0000FFFF
 _021EC884: .word 0x0000085C
 _021EC888: .word 0x0000185B
-	thumb_func_end ov18_021EC7AC
+	thumb_func_end PokedexApp_MainSeq_70
 
-	thumb_func_start ov18_021EC88C
-ov18_021EC88C: ; 0x021EC88C
+	thumb_func_start PokedexApp_MainSeq_71
+PokedexApp_MainSeq_71: ; 0x021EC88C
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _021EC954 ; =0x00000868
 	add r5, r0, #0
@@ -6833,10 +6700,10 @@ _021EC950:
 	.balign 4, 0
 _021EC954: .word 0x00000868
 _021EC958: .word 0x000018CA
-	thumb_func_end ov18_021EC88C
+	thumb_func_end PokedexApp_MainSeq_71
 
-	thumb_func_start ov18_021EC95C
-ov18_021EC95C: ; 0x021EC95C
+	thumb_func_start PokedexApp_MainSeq_72
+PokedexApp_MainSeq_72: ; 0x021EC95C
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _021ECA24 ; =0x00000868
 	add r5, r0, #0
@@ -6933,10 +6800,10 @@ _021ECA20:
 	.balign 4, 0
 _021ECA24: .word 0x00000868
 _021ECA28: .word 0x000018CA
-	thumb_func_end ov18_021EC95C
+	thumb_func_end PokedexApp_MainSeq_72
 
-	thumb_func_start ov18_021ECA2C
-ov18_021ECA2C: ; 0x021ECA2C
+	thumb_func_start PokedexApp_MainSeq_73
+PokedexApp_MainSeq_73: ; 0x021ECA2C
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -6980,10 +6847,10 @@ _021ECA82:
 	.balign 4, 0
 _021ECA88: .word 0x000018CA
 _021ECA8C: .word 0x000008E8
-	thumb_func_end ov18_021ECA2C
+	thumb_func_end PokedexApp_MainSeq_73
 
-	thumb_func_start ov18_021ECA90
-ov18_021ECA90: ; 0x021ECA90
+	thumb_func_start PokedexApp_MainSeq_74
+PokedexApp_MainSeq_74: ; 0x021ECA90
 	push {r4, lr}
 	ldr r1, _021ECAE0 ; =0x00000868
 	add r4, r0, #0
@@ -7022,10 +6889,10 @@ _021ECADC:
 _021ECAE0: .word 0x00000868
 _021ECAE4: .word 0x000018CA
 _021ECAE8: .word 0x000008E8
-	thumb_func_end ov18_021ECA90
+	thumb_func_end PokedexApp_MainSeq_74
 
-	thumb_func_start ov18_021ECAEC
-ov18_021ECAEC: ; 0x021ECAEC
+	thumb_func_start PokedexApp_MainSeq_75
+PokedexApp_MainSeq_75: ; 0x021ECAEC
 	push {r3, r4, r5, lr}
 	ldr r1, _021ECBF8 ; =0x00000868
 	add r5, r0, #0
@@ -7151,10 +7018,10 @@ _021ECBF2:
 	nop
 _021ECBF8: .word 0x00000868
 _021ECBFC: .word 0x000018C9
-	thumb_func_end ov18_021ECAEC
+	thumb_func_end PokedexApp_MainSeq_75
 
-	thumb_func_start ov18_021ECC00
-ov18_021ECC00: ; 0x021ECC00
+	thumb_func_start PokedexApp_MainSeq_76
+PokedexApp_MainSeq_76: ; 0x021ECC00
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021ECC9C ; =0x00000868
@@ -7237,10 +7104,10 @@ _021ECCA0: .word 0x0000F7BE
 _021ECCA4: .word 0x0000FFEF
 _021ECCA8: .word 0x0000FFFF
 _021ECCAC: .word 0x0000185B
-	thumb_func_end ov18_021ECC00
+	thumb_func_end PokedexApp_MainSeq_76
 
-	thumb_func_start ov18_021ECCB0
-ov18_021ECCB0: ; 0x021ECCB0
+	thumb_func_start PokedexApp_MainSeq_77
+PokedexApp_MainSeq_77: ; 0x021ECCB0
 	push {r3, r4, lr}
 	sub sp, #4
 	add r4, r0, #0
@@ -7368,10 +7235,10 @@ _021ECDB4:
 _021ECDBC: .word 0x000008E9
 _021ECDC0: .word 0x000008E8
 _021ECDC4: .word gSystem
-	thumb_func_end ov18_021ECCB0
+	thumb_func_end PokedexApp_MainSeq_77
 
-	thumb_func_start ov18_021ECDC8
-ov18_021ECDC8: ; 0x021ECDC8
+	thumb_func_start PokedexApp_MainSeq_78
+PokedexApp_MainSeq_78: ; 0x021ECDC8
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021ECE88 ; =0x00000868
@@ -7472,10 +7339,10 @@ _021ECE90: .word 0x0000FFEF
 _021ECE94: .word 0x0000FFFF
 _021ECE98: .word 0x0000085C
 _021ECE9C: .word 0x0000185B
-	thumb_func_end ov18_021ECDC8
+	thumb_func_end PokedexApp_MainSeq_78
 
-	thumb_func_start ov18_021ECEA0
-ov18_021ECEA0: ; 0x021ECEA0
+	thumb_func_start PokedexApp_MainSeq_79
+PokedexApp_MainSeq_79: ; 0x021ECEA0
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021ECF40 ; =0x00000868
@@ -7561,10 +7428,10 @@ _021ECF48: .word 0x0000F7BE
 _021ECF4C: .word 0x0000FFEF
 _021ECF50: .word 0x0000FFFF
 _021ECF54: .word 0x0000185B
-	thumb_func_end ov18_021ECEA0
+	thumb_func_end PokedexApp_MainSeq_79
 
-	thumb_func_start ov18_021ECF58
-ov18_021ECF58: ; 0x021ECF58
+	thumb_func_start PokedexApp_MainSeq_80
+PokedexApp_MainSeq_80: ; 0x021ECF58
 	push {r4, lr}
 	sub sp, #0x18
 	add r1, sp, #0x14
@@ -7824,10 +7691,10 @@ _021ED14C: .word 0x000008E9
 _021ED150: .word 0x000008E8
 _021ED154: .word 0x00000868
 _021ED158: .word 0x000018C4
-	thumb_func_end ov18_021ECF58
+	thumb_func_end PokedexApp_MainSeq_80
 
-	thumb_func_start ov18_021ED15C
-ov18_021ED15C: ; 0x021ED15C
+	thumb_func_start PokedexApp_MainSeq_81
+PokedexApp_MainSeq_81: ; 0x021ED15C
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021ED20C ; =0x00000868
@@ -7922,10 +7789,10 @@ _021ED214: .word 0x0000FFEF
 _021ED218: .word 0x0000FFFF
 _021ED21C: .word 0x0000085C
 _021ED220: .word 0x0000185B
-	thumb_func_end ov18_021ED15C
+	thumb_func_end PokedexApp_MainSeq_81
 
-	thumb_func_start ov18_021ED224
-ov18_021ED224: ; 0x021ED224
+	thumb_func_start PokedexApp_MainSeq_82
+PokedexApp_MainSeq_82: ; 0x021ED224
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _021ED2FC ; =0x00000868
 	add r5, r0, #0
@@ -8028,10 +7895,10 @@ _021ED2F8:
 	.balign 4, 0
 _021ED2FC: .word 0x00000868
 _021ED300: .word 0x000018C5
-	thumb_func_end ov18_021ED224
+	thumb_func_end PokedexApp_MainSeq_82
 
-	thumb_func_start ov18_021ED304
-ov18_021ED304: ; 0x021ED304
+	thumb_func_start PokedexApp_MainSeq_83
+PokedexApp_MainSeq_83: ; 0x021ED304
 	push {r3, r4, r5, r6, r7, lr}
 	ldr r1, _021ED3E0 ; =0x00000868
 	add r5, r0, #0
@@ -8136,10 +8003,10 @@ _021ED3DC:
 	.balign 4, 0
 _021ED3E0: .word 0x00000868
 _021ED3E4: .word 0x000018C5
-	thumb_func_end ov18_021ED304
+	thumb_func_end PokedexApp_MainSeq_83
 
-	thumb_func_start ov18_021ED3E8
-ov18_021ED3E8: ; 0x021ED3E8
+	thumb_func_start PokedexApp_MainSeq_84
+PokedexApp_MainSeq_84: ; 0x021ED3E8
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
@@ -8184,10 +8051,10 @@ _021ED440:
 	nop
 _021ED448: .word 0x000018C5
 _021ED44C: .word 0x000008E8
-	thumb_func_end ov18_021ED3E8
+	thumb_func_end PokedexApp_MainSeq_84
 
-	thumb_func_start ov18_021ED450
-ov18_021ED450: ; 0x021ED450
+	thumb_func_start PokedexApp_MainSeq_85
+PokedexApp_MainSeq_85: ; 0x021ED450
 	push {r4, lr}
 	ldr r1, _021ED4A8 ; =0x00000868
 	add r4, r0, #0
@@ -8228,10 +8095,10 @@ _021ED4A2:
 _021ED4A8: .word 0x00000868
 _021ED4AC: .word 0x000018C5
 _021ED4B0: .word 0x000008E8
-	thumb_func_end ov18_021ED450
+	thumb_func_end PokedexApp_MainSeq_85
 
-	thumb_func_start ov18_021ED4B4
-ov18_021ED4B4: ; 0x021ED4B4
+	thumb_func_start PokedexApp_MainSeq_86
+PokedexApp_MainSeq_86: ; 0x021ED4B4
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021ED5E8 ; =0x00000868
@@ -8382,10 +8249,10 @@ _021ED5EC: .word 0x0000F7BE
 _021ED5F0: .word 0x0000FFEF
 _021ED5F4: .word 0x0000FFFF
 _021ED5F8: .word 0x000018C7
-	thumb_func_end ov18_021ED4B4
+	thumb_func_end PokedexApp_MainSeq_86
 
-	thumb_func_start ov18_021ED5FC
-ov18_021ED5FC: ; 0x021ED5FC
+	thumb_func_start PokedexApp_MainSeq_87
+PokedexApp_MainSeq_87: ; 0x021ED5FC
 	push {r4, lr}
 	sub sp, #0x10
 	add r1, sp, #0xc
@@ -8600,10 +8467,10 @@ _021ED7AC: .word 0x000008E8
 _021ED7B0: .word 0x000018C7
 _021ED7B4: .word 0x000018C6
 _021ED7B8: .word 0x000018C4
-	thumb_func_end ov18_021ED5FC
+	thumb_func_end PokedexApp_MainSeq_87
 
-	thumb_func_start ov18_021ED7BC
-ov18_021ED7BC: ; 0x021ED7BC
+	thumb_func_start PokedexApp_MainSeq_88
+PokedexApp_MainSeq_88: ; 0x021ED7BC
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021ED8D4 ; =0x00000868
@@ -8739,10 +8606,10 @@ _021ED8D4: .word 0x00000868
 _021ED8D8: .word 0x0000F7BE
 _021ED8DC: .word 0x0000FFEF
 _021ED8E0: .word 0x0000FFFF
-	thumb_func_end ov18_021ED7BC
+	thumb_func_end PokedexApp_MainSeq_88
 
-	thumb_func_start ov18_021ED8E4
-ov18_021ED8E4: ; 0x021ED8E4
+	thumb_func_start PokedexApp_MainSeq_89
+PokedexApp_MainSeq_89: ; 0x021ED8E4
 	push {r3, r4, lr}
 	sub sp, #0xc
 	ldr r1, _021ED978 ; =0x00000868
@@ -8822,10 +8689,10 @@ _021ED97C: .word 0x0000F7BE
 _021ED980: .word 0x0000FFEF
 _021ED984: .word 0x0000FFFF
 _021ED988: .word 0x0000185B
-	thumb_func_end ov18_021ED8E4
+	thumb_func_end PokedexApp_MainSeq_89
 
-	thumb_func_start ov18_021ED98C
-ov18_021ED98C: ; 0x021ED98C
+	thumb_func_start PokedexApp_MainSeq_90
+PokedexApp_MainSeq_90: ; 0x021ED98C
 	push {r4, lr}
 	sub sp, #0x10
 	add r1, sp, #0xc
@@ -8930,10 +8797,10 @@ _021EDA52:
 	.balign 4, 0
 _021EDA58: .word 0x000008E9
 _021EDA5C: .word 0x000008E8
-	thumb_func_end ov18_021ED98C
+	thumb_func_end PokedexApp_MainSeq_90
 
-	thumb_func_start ov18_021EDA60
-ov18_021EDA60: ; 0x021EDA60
+	thumb_func_start PokedexApp_MainSeq_91
+PokedexApp_MainSeq_91: ; 0x021EDA60
 	push {r4, r5, lr}
 	sub sp, #0xc
 	ldr r1, _021EDB10 ; =0x00000868
@@ -9029,10 +8896,10 @@ _021EDB18: .word 0x0000FFEF
 _021EDB1C: .word 0x0000FFFF
 _021EDB20: .word 0x0000085C
 _021EDB24: .word 0x0000185B
-	thumb_func_end ov18_021EDA60
+	thumb_func_end PokedexApp_MainSeq_91
 
-	thumb_func_start ov18_021EDB28
-ov18_021EDB28: ; 0x021EDB28
+	thumb_func_start PokedexApp_MainSeq_92
+PokedexApp_MainSeq_92: ; 0x021EDB28
 	ldr r1, _021EDB34 ; =0x0000085C
 	mov r2, #0x5d
 	str r2, [r0, r1]
@@ -9042,7 +8909,7 @@ ov18_021EDB28: ; 0x021EDB28
 	.balign 4, 0
 _021EDB34: .word 0x0000085C
 _021EDB38: .word ov18_021EDB3C
-	thumb_func_end ov18_021EDB28
+	thumb_func_end PokedexApp_MainSeq_92
 
 	thumb_func_start ov18_021EDB3C
 ov18_021EDB3C: ; 0x021EDB3C
