@@ -563,7 +563,7 @@ typedef enum {
     UNOWN_FORM_QUESTION_MARK = 27,
     UNOWN_FORM_COUNT,
 
-    PICHU_NORMAL = 0,
+    PICHU_BASE = 0,
     PICHU_SPIKY_EAR = 1,
     PICHU_FORM_COUNT,
 
