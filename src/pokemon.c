@@ -2193,7 +2193,7 @@ void BoxPokemon_BuildSpriteTemplate(PokemonSpriteTemplate *template, BoxPokemon 
         if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_MANAPHY) {
             form = EGG_FORM_MANAPHY;
         } else {
-            form = EGG_FORM_NORMAL;
+            form = EGG_FORM_BASE;
         }
     } else {
         form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
@@ -2527,7 +2527,7 @@ u8 BoxPokemon_SpriteYOffset(BoxPokemon *boxMon, u8 face, BOOL preferDP) {
         if (BoxPokemon_GetData(boxMon, MON_DATA_SPECIES, NULL) == SPECIES_MANAPHY) {
             form = EGG_FORM_MANAPHY;
         } else {
-            form = EGG_FORM_NORMAL;
+            form = EGG_FORM_BASE;
         }
     } else {
         form = BoxPokemon_GetData(boxMon, MON_DATA_FORM, NULL);
@@ -3646,7 +3646,7 @@ BOOL Party_UpdateShayminForms(Party *party, int minutesDiff, const RTCTime *time
 
 BOOL Pokemon_UpdateRotomForm(Pokemon *mon, int form, int moveSlot) {
     static const u16 rotomFormMoves[ROTOM_FORM_COUNT] = {
-        [ROTOM_FORM_NORMAL] = MOVE_NONE,
+        [ROTOM_FORM_BASE] = MOVE_NONE,
         [ROTOM_FORM_HEAT] = MOVE_OVERHEAT,
         [ROTOM_FORM_WASH] = MOVE_HYDRO_PUMP,
         [ROTOM_FORM_FROST] = MOVE_BLIZZARD,
@@ -4041,7 +4041,7 @@ int Species_GetFormNarcIndex(int species, int form) {
         }
         break;
     case SPECIES_ROTOM:
-        if (form != ROTOM_FORM_NORMAL && form <= ROTOM_FORM_COUNT - 1) {
+        if (form != ROTOM_FORM_BASE && form <= ROTOM_FORM_COUNT - 1) {
             return SPECIES_ROTOM_HEAT + form - ROTOM_FORM_HEAT;
         }
         break;

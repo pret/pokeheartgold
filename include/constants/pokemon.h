@@ -502,7 +502,7 @@ typedef enum {
     GIRATINA_FORM_ORIGIN = 1,
     GIRATINA_FORM_COUNT,
 
-    ROTOM_FORM_NORMAL = 0,
+    ROTOM_FORM_BASE = 0,
     ROTOM_FORM_HEAT = 1,
     ROTOM_FORM_WASH = 2,
     ROTOM_FORM_FROST = 3,
@@ -567,7 +567,7 @@ typedef enum {
     PICHU_SPIKY_EAR = 1,
     PICHU_FORM_COUNT,
 
-    EGG_FORM_NORMAL = 0,
+    EGG_FORM_BASE = 0,
     EGG_FORM_MANAPHY = 1,
     EGG_FORM_COUNT,
 } AlternateForms;

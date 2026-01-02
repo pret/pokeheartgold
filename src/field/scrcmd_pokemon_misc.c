@@ -465,7 +465,7 @@ BOOL ScrCmd_CommSanitizeParty(ScriptContext *ctx) {
                 Pokemon_UpdateGiratinaForm(mon);
                 break;
             case SPECIES_ROTOM:
-                Pokemon_UpdateRotomForm(mon, ROTOM_FORM_NORMAL, 0);
+                Pokemon_UpdateRotomForm(mon, ROTOM_FORM_BASE, 0);
                 break;
             case SPECIES_SHAYMIN:
                 Pokemon_UpdateShayminForm(mon, SHAYMIN_FORM_LAND);
