@@ -183,7 +183,7 @@ BOOL ApplyPoisonStep(Party *party, u16 location) {
         Pokemon_SetData(mon, MON_DATA_HP, &hp);
         if (hp == 1) {
             n_fainted++;
-            Pokemon_UpdateFriendship(mon, FRIENDSHIP_EVENT_HEAL_FIELD_PSN, location);
+            Pokemon_UpdateFriendship(mon, FRIENDSHIP_EVENT_POISON_SURVIVE, location);
             ApplyMonMoodModifier(mon, MON_MOOD_MODIFIER_SURVIVED_PSN);
         }
         n_poisoned++;

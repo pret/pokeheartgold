@@ -2029,49 +2029,54 @@ u16 Nature_ModifyStatValue(u8 nature, u16 value, u8 stat) {
 }
 
 // clang-format off
-static const s8 sFriendshipModifiers[FRIENDSHIP_EVENT_NUM][FRIENDSHIP_TIER_NUM] = {
-    [FRIENDSHIP_EVENT_GROW_LEVEL] =     {  5,  3,   2 },
-    [FRIENDSHIP_EVENT_VITAMIN] =        {  5,  3,   2 },
-    [FRIENDSHIP_EVENT_BATTLE_ITEM] =    {  1,  1,   0 },
-    [FRIENDSHIP_EVENT_LEAGUE_BATTLE] =  {  3,  2,   1 },
-    [FRIENDSHIP_EVENT_LEARN_TMHM] =     {  1,  1,   0 },
-    [FRIENDSHIP_EVENT_WALKING] =        {  1,  1,   1 },
-    [FRIENDSHIP_EVENT_FAINT_SMALL] =    { -1, -1,  -1 },
-    [FRIENDSHIP_EVENT_HEAL_FIELD_PSN] = { -5, -5, -10 },
-    [FRIENDSHIP_EVENT_FAINT_LARGE] =    { -5, -5, -10 },
-    [FRIENDHSIP_EVENT_CONTEST_WIN] =    {  3,  2,   1 },
+static const s8 sFriendshipModifiers[FRIENDSHIP_EVENT_COUNT][FRIENDSHIP_TIER_NUM] = {
+    [FRIENDSHIP_EVENT_LEVEL_UP] =                       {  5,  3,   2 },
+    [FRIENDSHIP_EVENT_VITAMIN] =                        {  5,  3,   2 },
+    [FRIENDSHIP_EVENT_BATTLE_ITEM] =                    {  1,  1,   0 },
+    [FRIENDSHIP_EVENT_BEAT_GYM_LEADER_E4_OR_CHAMPION] = {  3,  2,   1 },
+    [FRIENDSHIP_EVENT_LEARN_TMHM] =                     {  1,  1,   0 },
+    [FRIENDSHIP_EVENT_WALK_CYCLE] =                     {  1,  1,   1 },
+    [FRIENDSHIP_EVENT_BATTLE_FAINT] =                   { -1, -1,  -1 },
+    [FRIENDSHIP_EVENT_POISON_SURVIVE] =                 { -5, -5, -10 },
+    [FRIENDSHIP_EVENT_BATTLE_FAINT_HIGH_LVL_DIFF] =     { -5, -5, -10 },
+    [FRIENDSHIP_EVENT_CONTEST_WIN] =                    {  3,  2,   1 },
 };
 // clang-format on
 
-void Pokemon_UpdateFriendship(Pokemon *mon, u8 kind, u16 location) {
-    if (kind == FRIENDSHIP_EVENT_WALKING && (LCRandom() & 1)) {
+void Pokemon_UpdateFriendship(Pokemon *mon, u8 friendshipEvent, u16 mapID) {
+    if (friendshipEvent == FRIENDSHIP_EVENT_WALK_CYCLE && (LCRandom() & 1)) {
         return;
     }
 
     u16 species = Pokemon_GetData(mon, MON_DATA_SPECIES_OR_EGG, NULL);
+
     if (species == SPECIES_NONE || species == SPECIES_EGG) {
         return;
     }
 
     u16 item = Pokemon_GetData(mon, MON_DATA_HELD_ITEM, NULL);
-    u8 effect = GetItemAttr(item, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT);
-    u8 tier = FRIENDSHIP_TIER_LOW;
+    u8 holdEffect = GetItemAttr(item, ITEMATTR_HOLD_EFFECT, HEAP_ID_DEFAULT);
+    u8 friendshipTier = FRIENDSHIP_TIER_LOW;
     s16 friendship = Pokemon_GetData(mon, MON_DATA_FRIENDSHIP, NULL);
+
     if (friendship >= FRIENDSHIP_TIER_MID_MIN) {
-        tier++;
-    }
-    if (friendship >= FRIENDSHIP_TIER_HI_MIN) {
-        tier++;
+        friendshipTier++;
     }
 
-    s8 modifier = sFriendshipModifiers[kind][tier];
+    if (friendship >= FRIENDSHIP_TIER_HI_MIN) {
+        friendshipTier++;
+    }
+
+    s8 modifier = sFriendshipModifiers[friendshipEvent][friendshipTier];
     if (modifier > 0 && Pokemon_GetData(mon, MON_DATA_DP_POKEBALL, NULL) == BALL_LUXURY) {
         modifier++;
     }
-    if (modifier > 0 && Pokemon_GetData(mon, MON_DATA_EGG_LOCATION, NULL) == location) {
+
+    if (modifier > 0 && Pokemon_GetData(mon, MON_DATA_EGG_LOCATION, NULL) == mapID) {
         modifier++;
     }
-    if (modifier > 0 && effect == HOLD_EFFECT_FRIENDSHIP_UP) {
+
+    if (modifier > 0 && holdEffect == HOLD_EFFECT_FRIENDSHIP_UP) {
         modifier = modifier * 150 / 100;
     }
 
@@ -2079,9 +2084,11 @@ void Pokemon_UpdateFriendship(Pokemon *mon, u8 kind, u16 location) {
     if (friendship < 0) {
         friendship = 0;
     }
+
     if (friendship > MAX_FRIENDSHIP) {
         friendship = MAX_FRIENDSHIP;
     }
+
     Pokemon_SetData(mon, MON_DATA_FRIENDSHIP, &friendship);
 }
 

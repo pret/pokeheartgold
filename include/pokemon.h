@@ -74,7 +74,7 @@ int SpeciesData_CalcLevelByExp(SpeciesData *speciesData, u16 unused_species, u32
 u8 BoxPokemon_GetNature(BoxPokemon *boxMon);
 u8 Pokemon_GetNature(Pokemon *mon);
 u8 Personality_GetNature(u32 personality);
-void Pokemon_UpdateFriendship(Pokemon *mon, u8 kind, u16 location);
+void Pokemon_UpdateFriendship(Pokemon *mon, u8 friendshipEvent, u16 mapID);
 u8 Pokemon_GetGender(Pokemon *mon);
 u8 BoxPokemon_GetGender(BoxPokemon *boxMon);
 u8 Species_GetGenderFromPersonality(u16 species, u32 personality);

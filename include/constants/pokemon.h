@@ -375,18 +375,17 @@
 #define GENDER_NONE   2
 
 // Constants for AdjustFriendship
-#define FRIENDSHIP_EVENT_GROW_LEVEL     0
-#define FRIENDSHIP_EVENT_VITAMIN        1 // unused, handled by PokemonUseItemEffects
-#define FRIENDSHIP_EVENT_BATTLE_ITEM    2 // unused, handled by PokemonUseItemEffects
-#define FRIENDSHIP_EVENT_LEAGUE_BATTLE  3
-#define FRIENDSHIP_EVENT_LEARN_TMHM     4
-#define FRIENDSHIP_EVENT_WALKING        5
-#define FRIENDSHIP_EVENT_FAINT_SMALL    6
-#define FRIENDSHIP_EVENT_HEAL_FIELD_PSN 7
-#define FRIENDSHIP_EVENT_FAINT_LARGE    8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
-#define FRIENDHSIP_EVENT_CONTEST_WIN    9 // Leftover from Platinum
-
-#define FRIENDSHIP_EVENT_NUM 10
+#define FRIENDSHIP_EVENT_LEVEL_UP                       0
+#define FRIENDSHIP_EVENT_VITAMIN                        1 // unused, handled by PokemonUseItemEffects
+#define FRIENDSHIP_EVENT_BATTLE_ITEM                    2 // unused, handled by PokemonUseItemEffects
+#define FRIENDSHIP_EVENT_BEAT_GYM_LEADER_E4_OR_CHAMPION 3
+#define FRIENDSHIP_EVENT_LEARN_TMHM                     4
+#define FRIENDSHIP_EVENT_WALK_CYCLE                     5
+#define FRIENDSHIP_EVENT_BATTLE_FAINT                   6
+#define FRIENDSHIP_EVENT_POISON_SURVIVE                 7
+#define FRIENDSHIP_EVENT_BATTLE_FAINT_HIGH_LVL_DIFF     8 // If opponent was >= 30 levels higher. See AdjustFriendshipOnBattleFaint
+#define FRIENDSHIP_EVENT_CONTEST_WIN                    9 // Leftover from Platinum
+#define FRIENDSHIP_EVENT_COUNT                          10
 
 #define FRIENDSHIP_TIER_LOW     0
 #define FRIENDSHIP_TIER_LOW_MIN 0
