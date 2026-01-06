@@ -105,6 +105,7 @@ enum {
     POKEDEXAPP_MAINSEQ_90 = 90,
     POKEDEXAPP_MAINSEQ_91 = 91,
     POKEDEXAPP_MAINSEQ_92 = 92,
+    POKEDEXAPP_MAINSEQ_MAX = 93,
 };
 
 typedef struct PokedexAppData PokedexAppData;
@@ -345,6 +346,7 @@ void ov18_021E8BD4(PokedexAppData *pokedexApp);
 
 BOOL PokedexApp_RunMainSeq(PokedexAppData *pokedexApp, int *pState);
 
+void ov18_021EDB3C(PokedexAppData *pokedexApp, int a1);
 int ov18_021EDBB8(PokedexAppData *pokedexApp, int a1, int a2, int a3);
 int ov18_021EDBDC(PokedexAppData *pokedexApp, int a1, int a2, int a3);
 int ov18_021EDC00(PokedexAppData *pokedexApp, int a1, int a2, int a3, int a4, int a5);
@@ -420,6 +422,7 @@ void ov18_021F2EC8(PokedexAppData *pokedexApp, int a1, int a2);
 void ov18_021F2F00(PokedexAppData *pokedexApp);
 void ov18_021F2F3C(PokedexAppData *pokedexApp);
 void ov18_021F3190(PokedexAppData *pokedexApp);
+void ov18_021F3438(PokedexAppData *pokedexApp);
 void ov18_021F3448(PokedexAppData *pokedexApp);
 void ov18_021F3494(PokedexAppData *pokedexApp);
 void ov18_021F3618(PokedexAppData *pokedexApp, int a1);
@@ -442,7 +445,7 @@ void ov18_021F7668(PokedexAppData *pokedexApp);
 void ov18_021F7748(PokedexAppData *pokedexApp);
 void ov18_021F7B74(PokedexAppData *pokedexApp);
 void ov18_021F7ED4(PokedexAppData *pokedexApp, u8 a1, u32 a2, u32 a3, u32 a4, u32 a5, u32 a6, u32 a7, u32 a8, u32 a9, u32 a10, u32 a11);
-int ov18_021F8824(PokedexAppData *pokedexApp);
+u32 ov18_021F8824(PokedexAppData *pokedexApp);
 u16 ov18_021F8838(PokedexAppData *pokedexApp);
 void ov18_021F8884(PokedexAppData *pokedexApp, int a1);
 u16 ov18_021F891C(PokedexAppData *pokedexApp, BOOL a1);
