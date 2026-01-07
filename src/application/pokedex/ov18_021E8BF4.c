@@ -9,6 +9,9 @@
 #include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
+#define PLTTBUF_EXCEPT_MAIN_BG_F (PLTTBUF_SUB_BG_F | PLTTBUF_MAIN_OBJ_F | PLTTBUF_SUB_OBJ_F)
+#define PLTTFADE_OPAQUE_ALL_F    (0xFFFF)
+
 int PokedexApp_MainSeq_00(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_01(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_02(PokedexAppData *pokedexApp);
@@ -308,7 +311,7 @@ int PokedexApp_MainSeq_04(PokedexAppData *pokedexApp) {
 int PokedexApp_MainSeq_05(PokedexAppData *pokedexApp) {
     pokedexApp->unk_185B = 0;
     ov18_021E67C8(pokedexApp, 0);
-    PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0xF, 0xFFFF, -127, 0, 0, RGB_BLACK);
+    PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0xF, PLTTFADE_OPAQUE_ALL_F, -127, 0, 0, RGB_BLACK);
     pokedexApp->unk_0860 = 6;
     return POKEDEXAPP_MAINSEQ_02;
 }
@@ -487,8 +490,8 @@ int PokedexApp_MainSeq_10(PokedexAppData *pokedexApp) {
     switch (pokedexApp->unk_0868.state_10.unk_0) {
     case 0:
         ov18_021E6574(pokedexApp);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x0001, 0xFFFE, 0, 0, 16, RGB_BLACK);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x000E, 0xFFFF, 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 0), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
         ++pokedexApp->unk_0868.state_10.unk_0;
         break;
     case 1:
@@ -836,8 +839,8 @@ int PokedexApp_MainSeq_18(PokedexAppData *pokedexApp) {
         ov18_021F2A84(pokedexApp, 8, 0);
         ClearWindowTilemapAndScheduleTransfer(&pokedexApp->windows[6]);
         ov18_021E65D4(pokedexApp);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x0001, 0xFFFE, 0, 0, 16, RGB_BLACK);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x000E, 0xFFFF, 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 0), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
         pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_18;
         ++pokedexApp->unk_0868.state_10.unk_0;
         return POKEDEXAPP_MAINSEQ_03;
@@ -868,8 +871,8 @@ int PokedexApp_MainSeq_21(PokedexAppData *pokedexApp) {
         ov18_021E67C8(pokedexApp, 5);
         ov18_021E65FC(pokedexApp);
         ov18_021F6DE0(pokedexApp, 0);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x0001, 0xFFEF, 0, 16, 0, RGB_BLACK);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x000E, 0xFFFF, 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 16, 0, RGB_BLACK);
         ++pokedexApp->unk_0868.state_10.unk_0;
         pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_21;
         return POKEDEXAPP_MAINSEQ_03;
@@ -1107,8 +1110,8 @@ int PokedexApp_MainSeq_25(PokedexAppData *pokedexApp) {
     case 0:
         ov18_021F11C0(pokedexApp, 0, 0);
         ov18_021E6624(pokedexApp);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x0001, 0xFFEF, 0, 0, 16, RGB_BLACK);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x000E, 0xFFFF, 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
         pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_25;
         ++pokedexApp->unk_0868.state_10.unk_0;
         return POKEDEXAPP_MAINSEQ_03;
@@ -1144,8 +1147,8 @@ int PokedexApp_MainSeq_19(PokedexAppData *pokedexApp) {
         ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_MAIN_0, BG_POS_OP_SET_X, 256);
         ScheduleSetBgPosText(pokedexApp->bgConfig, GF_BG_LYR_SUB_0, BG_POS_OP_SET_X, 256);
         ov18_021F2B3C(pokedexApp, 0, -256);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x0001, 0xFFFE, 0, 16, 0, RGB_BLACK);
-        PaletteData_BeginPaletteFade(pokedexApp->paletteData, 0x000E, 0xFFFF, 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 0), 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 16, 0, RGB_BLACK);
         pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_19;
         ++pokedexApp->unk_0868.state_10.unk_0;
         return POKEDEXAPP_MAINSEQ_03;
@@ -1204,4 +1207,62 @@ int PokedexApp_MainSeq_20(PokedexAppData *pokedexApp) {
     }
 
     return POKEDEXAPP_MAINSEQ_20;
+}
+
+int PokedexApp_MainSeq_26(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State26 *r4 = &pokedexApp->unk_0868.state_26;
+
+    switch (r4->unk_2) {
+    case 0:
+        ov18_021F11C0(pokedexApp, 0, 0);
+        ov18_021E6624(pokedexApp);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
+        pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_26;
+        ++r4->unk_2;
+        return POKEDEXAPP_MAINSEQ_03;
+    case 1:
+        ov18_021F7B74(pokedexApp);
+        ov18_021E664C(pokedexApp);
+        ov18_021E71D0(pokedexApp, r4->unk_0, r4->unk_3);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 16, 0, RGB_BLACK);
+        pokedexApp->unk_085C = r4->unk_1;
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+        return POKEDEXAPP_MAINSEQ_03;
+    }
+
+    return POKEDEXAPP_MAINSEQ_26; // if we're here, we're softlocked
+}
+
+int PokedexApp_MainSeq_27(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State26 *r4 = &pokedexApp->unk_0868.state_26;
+
+    switch (r4->unk_2) {
+    case 0:
+        ov18_021F11C0(pokedexApp, 0, 0);
+        ov18_021E6674(pokedexApp);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
+        pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_27;
+        ++r4->unk_2;
+        return POKEDEXAPP_MAINSEQ_03;
+    case 1:
+        ov18_021F7B74(pokedexApp);
+        ov18_021E65FC(pokedexApp);
+        ov18_021E71D0(pokedexApp, 0, r4->unk_3);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 4), 0, 16, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 16, 0, RGB_BLACK);
+        pokedexApp->unk_085C = r4->unk_1;
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+        return POKEDEXAPP_MAINSEQ_03;
+    }
+
+    return POKEDEXAPP_MAINSEQ_27; // if we're here, we're softlocked
+}
+
+int PokedexApp_MainSeq_28(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_1890[0] = pokedexApp->unk_1868[0];
+    ov18_021EDE4C(pokedexApp, 1, 0, 29);
+    return POKEDEXAPP_MAINSEQ_26;
 }
