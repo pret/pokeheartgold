@@ -446,6 +446,7 @@ int ov18_021F6BBC(PokedexAppData *pokedexApp, int a1);
 void ov18_021F6DE0(PokedexAppData *pokedexApp, int a1);
 u32 ov18_021F6E2C(PokedexAppData *pokedexApp);
 void ov18_021F6EC0(PokedexAppData *pokedexApp);
+u32 ov18_021F6F08(PokedexAppData *pokedexApp);
 void ov18_021F6FA0(PokedexAppData *pokedexApp);
 void ov18_021F7124(PokedexAppData *pokedexApp);
 void ov18_021F7354(PokedexAppData *pokedexApp);

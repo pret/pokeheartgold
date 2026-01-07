@@ -13,12 +13,6 @@
 	.extern ov18_021E6174
 	.extern ov18_021E618C
 	.extern ov18_021E659C
-	.extern ov18_021E65AC
-	.extern ov18_021E65D4
-	.extern ov18_021E65FC
-	.extern ov18_021E6624
-	.extern ov18_021E664C
-	.extern ov18_021E6674
 	.extern ov18_021E669C
 	.extern ov18_021E66C4
 	.extern ov18_021E66EC
@@ -34,11 +28,7 @@
 	.extern ov18_021E6CC0
 	.extern ov18_021E6CE8
 	.extern ov18_021E6D10
-	.extern ov18_021E6D38
 	.extern ov18_021E6F6C
-	.extern ov18_021E6FB8
-	.extern ov18_021E6FFC
-	.extern ov18_021E71D0
 	.extern ov18_021E74B8
 	.extern ov18_021E74E4
 	.extern ov18_021E7534
@@ -48,7 +38,6 @@
 	.extern ov18_021E7724
 	.extern ov18_021E78AC
 	.extern ov18_021E7A80
-	.extern ov18_021E7B6C
 	.extern ov18_021E800C
 	.extern ov18_021E81A8
 	.extern ov18_021E8254
@@ -66,156 +55,6 @@
 	.extern ov18_021EA350
 
 	.text
-
-	thumb_func_start PokedexApp_MainSeq_29
-PokedexApp_MainSeq_29: ; 0x021EA854
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov18_021F6F08
-	cmp r0, #7
-	bhi _021EA87C
-	add r1, r0, r0
-	add r1, pc
-	ldrh r1, [r1, #6]
-	lsl r1, r1, #0x10
-	asr r1, r1, #0x10
-	add pc, r1
-_021EA86C: ; jump table
-	.short _021EA886 - _021EA86C - 2 ; case 0
-	.short _021EA89E - _021EA86C - 2 ; case 1
-	.short _021EA8B6 - _021EA86C - 2 ; case 2
-	.short _021EA8CE - _021EA86C - 2 ; case 3
-	.short _021EA8E6 - _021EA86C - 2 ; case 4
-	.short _021EA8FE - _021EA86C - 2 ; case 5
-	.short _021EA916 - _021EA86C - 2 ; case 6
-	.short _021EA932 - _021EA86C - 2 ; case 7
-_021EA87C:
-	mov r1, #1
-	mvn r1, r1
-	cmp r0, r1
-	beq _021EA932
-	b _021EA950
-_021EA886:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #0
-	bl ov18_021E74B8
-	b _021EA950
-_021EA89E:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #1
-	bl ov18_021E74B8
-	b _021EA950
-_021EA8B6:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #2
-	bl ov18_021E74B8
-	b _021EA950
-_021EA8CE:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #3
-	bl ov18_021E74B8
-	b _021EA950
-_021EA8E6:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #4
-	bl ov18_021E74B8
-	b _021EA950
-_021EA8FE:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #5
-	bl ov18_021E74B8
-	b _021EA950
-_021EA916:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EA954 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #0
-	mov r2, #0xa
-	mov r3, #0x1e
-	bl ov18_021EDBDC
-	pop {r4, pc}
-_021EA932:
-	mov r0, #0x25
-	lsl r0, r0, #6
-	bl PlaySE
-	ldr r0, _021EA958 ; =0x00001890
-	mov r2, #0xa
-	ldr r1, [r4, r0]
-	sub r0, #0x28
-	str r1, [r4, r0]
-	add r0, r4, #0
-	mov r1, #0x16
-	mov r3, #0x1e
-	bl ov18_021EDBDC
-	pop {r4, pc}
-_021EA950:
-	mov r0, #0x1d
-	pop {r4, pc}
-	.balign 4, 0
-_021EA954: .word 0x000008E9
-_021EA958: .word 0x00001890
-	thumb_func_end PokedexApp_MainSeq_29
-
-	thumb_func_start PokedexApp_MainSeq_30
-PokedexApp_MainSeq_30: ; 0x021EA95C
-	push {r3, lr}
-	mov r1, #0
-	add r2, r1, #0
-	mov r3, #0x16
-	bl ov18_021EDE4C
-	mov r0, #0x1b
-	pop {r3, pc}
-	thumb_func_end PokedexApp_MainSeq_30
-
-	thumb_func_start PokedexApp_MainSeq_31
-PokedexApp_MainSeq_31: ; 0x021EA96C
-	push {r3, lr}
-	ldr r1, _021EA984 ; =0x0000186C
-	mov r3, #0x20
-	ldr r2, [r0, r1]
-	add r1, #0x24
-	str r2, [r0, r1]
-	mov r1, #2
-	mov r2, #0
-	bl ov18_021EDE4C
-	mov r0, #0x1a
-	pop {r3, pc}
-	.balign 4, 0
-_021EA984: .word 0x0000186C
-	thumb_func_end PokedexApp_MainSeq_31
 
 	thumb_func_start PokedexApp_MainSeq_32
 PokedexApp_MainSeq_32: ; 0x021EA988

@@ -1263,6 +1263,63 @@ int PokedexApp_MainSeq_27(PokedexAppData *pokedexApp) {
 
 int PokedexApp_MainSeq_28(PokedexAppData *pokedexApp) {
     pokedexApp->unk_1890[0] = pokedexApp->unk_1868[0];
-    ov18_021EDE4C(pokedexApp, 1, 0, 29);
+    ov18_021EDE4C(pokedexApp, 1, 0, POKEDEXAPP_MAINSEQ_29);
+    return POKEDEXAPP_MAINSEQ_26;
+}
+
+int PokedexApp_MainSeq_29(PokedexAppData *pokedexApp) {
+    switch (ov18_021F6F08(pokedexApp)) {
+    case 0:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        ov18_021E74B8(pokedexApp, 0);
+        break;
+    case 1:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        ov18_021E74B8(pokedexApp, 1);
+        break;
+    case 2:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        ov18_021E74B8(pokedexApp, 2);
+        break;
+    case 3:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        ov18_021E74B8(pokedexApp, 3);
+        break;
+    case 4:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        ov18_021E74B8(pokedexApp, 4);
+        break;
+    case 5:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        ov18_021E74B8(pokedexApp, 5);
+        break;
+    case 6:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        return ov18_021EDBDC(pokedexApp, 0, 10, POKEDEXAPP_MAINSEQ_30);
+    case 7:
+    case -2:
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        pokedexApp->unk_1868[0] = pokedexApp->unk_1890[0];
+        return ov18_021EDBDC(pokedexApp, 22, 10, POKEDEXAPP_MAINSEQ_30);
+    }
+
+    return POKEDEXAPP_MAINSEQ_29;
+}
+
+int PokedexApp_MainSeq_30(PokedexAppData *pokedexApp) {
+    ov18_021EDE4C(pokedexApp, 0, 0, POKEDEXAPP_MAINSEQ_22);
+    return POKEDEXAPP_MAINSEQ_27;
+}
+
+int PokedexApp_MainSeq_31(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_1890[0] = pokedexApp->unk_1868[1];
+    ov18_021EDE4C(pokedexApp, 2, 0, POKEDEXAPP_MAINSEQ_32);
     return POKEDEXAPP_MAINSEQ_26;
 }
