@@ -1,0 +1,98 @@
+#ifndef GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_CONSTANTS_H
+#define GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_CONSTANTS_H
+
+#include "application/zukanlist/zkn_data/zukan_data.naix"
+
+enum {
+    dex_search_criteria_sort_order = 0,
+    dex_search_criteria_letter = 1,
+    dex_search_criteria_type1 = 2,
+    dex_search_criteria_type2 = 3,
+};
+
+#define dex_order_national     (NARC_zukan_data_sort_order_dex_order_national - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_johto        (NARC_zukan_data_sort_order_dex_order_johto - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_alphabetical (NARC_zukan_data_sort_order_dex_order_alphabetical - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_heaviest     (NARC_zukan_data_sort_order_dex_order_heaviest - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_lightest     (NARC_zukan_data_sort_order_dex_order_lightest - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_tallest      (NARC_zukan_data_sort_order_dex_order_tallest - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_shortest     (NARC_zukan_data_sort_order_dex_order_shortest - NARC_zukan_data_sort_order_dex_order_national)
+#define dex_order_quit         ((dex_order_shortest) + 1)
+
+#define dex_search_letters_a      (NARC_zukan_data_sort_order_letters_a - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_b      (NARC_zukan_data_sort_order_letters_b - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_c      (NARC_zukan_data_sort_order_letters_c - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_d      (NARC_zukan_data_sort_order_letters_d - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_e      (NARC_zukan_data_sort_order_letters_e - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_f      (NARC_zukan_data_sort_order_letters_f - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_g      (NARC_zukan_data_sort_order_letters_g - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_h      (NARC_zukan_data_sort_order_letters_h - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_i      (NARC_zukan_data_sort_order_letters_i - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_j      (NARC_zukan_data_sort_order_letters_j - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_k      (NARC_zukan_data_sort_order_letters_k - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_l      (NARC_zukan_data_sort_order_letters_l - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_m      (NARC_zukan_data_sort_order_letters_m - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_n      (NARC_zukan_data_sort_order_letters_n - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_o      (NARC_zukan_data_sort_order_letters_o - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_p      (NARC_zukan_data_sort_order_letters_p - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_q      (NARC_zukan_data_sort_order_letters_q - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_r      (NARC_zukan_data_sort_order_letters_r - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_s      (NARC_zukan_data_sort_order_letters_s - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_t      (NARC_zukan_data_sort_order_letters_t - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_u      (NARC_zukan_data_sort_order_letters_u - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_v      (NARC_zukan_data_sort_order_letters_v - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_w      (NARC_zukan_data_sort_order_letters_w - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_x      (NARC_zukan_data_sort_order_letters_x - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_y      (NARC_zukan_data_sort_order_letters_y - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_z      (NARC_zukan_data_sort_order_letters_z - NARC_zukan_data_sort_order_letters_a)
+#define dex_search_letters_all    ((dex_search_letters_z) + 1)
+#define dex_search_letters_submit ((dex_search_letters_z) + 2)
+#define dex_search_letters_cancel ((dex_search_letters_z) + 3)
+
+#define dex_search_type_normal   (NARC_zukan_data_sort_order_types_normal - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_fighting (NARC_zukan_data_sort_order_types_fighting - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_flying   (NARC_zukan_data_sort_order_types_flying - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_poison   (NARC_zukan_data_sort_order_types_poison - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_ground   (NARC_zukan_data_sort_order_types_ground - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_rock     (NARC_zukan_data_sort_order_types_rock - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_bug      (NARC_zukan_data_sort_order_types_bug - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_ghost    (NARC_zukan_data_sort_order_types_ghost - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_steel    (NARC_zukan_data_sort_order_types_steel - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_fire     (NARC_zukan_data_sort_order_types_fire - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_water    (NARC_zukan_data_sort_order_types_water - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_grass    (NARC_zukan_data_sort_order_types_grass - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_electric (NARC_zukan_data_sort_order_types_electric - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_psychic  (NARC_zukan_data_sort_order_types_psychic - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_ice      (NARC_zukan_data_sort_order_types_ice - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_dragon   (NARC_zukan_data_sort_order_types_dragon - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_dark     (NARC_zukan_data_sort_order_types_dark - NARC_zukan_data_sort_order_types_normal)
+#define dex_search_type_all      ((dex_search_type_dark) + 1)
+#define dex_search_type_submit   ((dex_search_type_dark) + 2)
+#define dex_search_type_cancel   ((dex_search_type_dark) + 3)
+
+#define dex_search_bodytype_quadruped        (NARC_zukan_data_sort_order_body_style_quadruped - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_bipedal_tailless (NARC_zukan_data_sort_order_body_style_bipedal_tailless - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_bipedal_tail     (NARC_zukan_data_sort_order_body_style_bipedal_tail - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_serpentine       (NARC_zukan_data_sort_order_body_style_serpentine - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_multiwing        (NARC_zukan_data_sort_order_body_style_multiwing - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_biwing           (NARC_zukan_data_sort_order_body_style_biwing - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_insectoid        (NARC_zukan_data_sort_order_body_style_insectoid - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_head_torso       (NARC_zukan_data_sort_order_body_style_head_torso - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_head_arms        (NARC_zukan_data_sort_order_body_style_head_arms - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_head_legs        (NARC_zukan_data_sort_order_body_style_head_legs - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_tentacles        (NARC_zukan_data_sort_order_body_style_tentacles - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_fins             (NARC_zukan_data_sort_order_body_style_fins - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_head_only        (NARC_zukan_data_sort_order_body_style_head_only - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_multibody        (NARC_zukan_data_sort_order_body_style_multibody - NARC_zukan_data_sort_order_body_style_quadruped)
+
+#define dex_search_lettergroup_abc (NARC_zukan_data_sort_order_letter_groups_abc - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_def (NARC_zukan_data_sort_order_letter_groups_def - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_ghi (NARC_zukan_data_sort_order_letter_groups_ghi - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_jkl (NARC_zukan_data_sort_order_letter_groups_jkl - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_mno (NARC_zukan_data_sort_order_letter_groups_mno - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_pqr (NARC_zukan_data_sort_order_letter_groups_pqr - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_stu (NARC_zukan_data_sort_order_letter_groups_stu - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_vwx (NARC_zukan_data_sort_order_letter_groups_vwx - NARC_zukan_data_sort_order_letter_groups_abc)
+#define dex_search_lettergroup_yz  (NARC_zukan_data_sort_order_letter_groups_yz - NARC_zukan_data_sort_order_letter_groups_abc)
+
+#endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_CONSTANTS_H

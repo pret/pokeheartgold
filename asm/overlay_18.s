@@ -56,258 +56,6 @@
 
 	.text
 
-	thumb_func_start PokedexApp_MainSeq_32
-PokedexApp_MainSeq_32: ; 0x021EA988
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl ov18_021F6FE8
-	mov r1, #3
-	add r4, r0, #0
-	mvn r1, r1
-	cmp r4, r1
-	bhi _021EA9AC
-	bhs _021EAA12
-	cmp r4, #0x1c
-	bhi _021EA9FC
-	cmp r4, #0x1b
-	blo _021EA9FC
-	beq _021EA9C2
-	cmp r4, #0x1c
-	beq _021EA9DE
-	b _021EA9FC
-_021EA9AC:
-	add r0, r1, #1
-	cmp r4, r0
-	blo _021EA9FC
-	beq _021EAA12
-	add r0, r1, #2
-	cmp r4, r0
-	beq _021EA9DE
-	add r0, r1, #3
-	cmp r4, r0
-	beq _021EAA12
-	b _021EA9FC
-_021EA9C2:
-	ldr r0, [r5]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EAA18 ; =0x000008E9
-	bl PlaySE
-	add r0, r5, #0
-	mov r1, #0
-	mov r2, #0xa
-	mov r3, #0x21
-	bl ov18_021EDBDC
-	pop {r3, r4, r5, pc}
-_021EA9DE:
-	mov r0, #0x25
-	lsl r0, r0, #6
-	bl PlaySE
-	ldr r0, _021EAA1C ; =0x00001890
-	mov r2, #0xa
-	ldr r1, [r5, r0]
-	sub r0, #0x24
-	str r1, [r5, r0]
-	add r0, r5, #0
-	mov r1, #0x16
-	mov r3, #0x21
-	bl ov18_021EDBDC
-	pop {r3, r4, r5, pc}
-_021EA9FC:
-	ldr r0, [r5]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EAA18 ; =0x000008E9
-	bl PlaySE
-	add r0, r5, #0
-	add r1, r4, #0
-	bl ov18_021E76EC
-_021EAA12:
-	mov r0, #0x20
-	pop {r3, r4, r5, pc}
-	nop
-_021EAA18: .word 0x000008E9
-_021EAA1C: .word 0x00001890
-	thumb_func_end PokedexApp_MainSeq_32
-
-	thumb_func_start PokedexApp_MainSeq_33
-PokedexApp_MainSeq_33: ; 0x021EAA20
-	push {r3, lr}
-	mov r1, #0
-	mov r2, #1
-	mov r3, #0x16
-	bl ov18_021EDE4C
-	mov r0, #0x1b
-	pop {r3, pc}
-	thumb_func_end PokedexApp_MainSeq_33
-
-	thumb_func_start PokedexApp_MainSeq_34
-PokedexApp_MainSeq_34: ; 0x021EAA30
-	push {r3, lr}
-	ldr r2, _021EAA54 ; =0x00001870
-	add r1, r2, #0
-	ldr r3, [r0, r2]
-	add r1, #0x20
-	str r3, [r0, r1]
-	add r1, r2, #4
-	ldr r1, [r0, r1]
-	add r2, #0x24
-	str r1, [r0, r2]
-	mov r1, #3
-	mov r2, #0
-	mov r3, #0x23
-	bl ov18_021EDE4C
-	mov r0, #0x1a
-	pop {r3, pc}
-	nop
-_021EAA54: .word 0x00001870
-	thumb_func_end PokedexApp_MainSeq_34
-
-	thumb_func_start PokedexApp_MainSeq_35
-PokedexApp_MainSeq_35: ; 0x021EAA58
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov18_021F716C
-	mov r2, #3
-	mvn r2, r2
-	cmp r0, r2
-	bhi _021EAA7A
-	bhs _021EAB68
-	cmp r0, #0x13
-	bhi _021EAAE6
-	cmp r0, #0x12
-	blo _021EAAE6
-	beq _021EAA90
-	cmp r0, #0x13
-	beq _021EAABE
-	b _021EAAE6
-_021EAA7A:
-	add r1, r2, #1
-	cmp r0, r1
-	blo _021EAAE6
-	beq _021EAB68
-	add r1, r2, #2
-	cmp r0, r1
-	beq _021EAABE
-	add r1, r2, #3
-	cmp r0, r1
-	beq _021EAB68
-	b _021EAAE6
-_021EAA90:
-	ldr r0, _021EAB6C ; =0x00001870
-	add r1, r0, #4
-	ldr r2, [r4, r0]
-	ldr r1, [r4, r1]
-	cmp r2, r1
-	bne _021EAAA2
-	mov r1, #0x11
-	add r0, r0, #4
-	str r1, [r4, r0]
-_021EAAA2:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EAB70 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #0
-	mov r2, #0xa
-	mov r3, #0x24
-	bl ov18_021EDBDC
-	pop {r4, pc}
-_021EAABE:
-	ldr r1, _021EAB74 ; =0x00001890
-	add r0, r1, #0
-	ldr r2, [r4, r1]
-	sub r0, #0x20
-	str r2, [r4, r0]
-	add r0, r1, #4
-	ldr r0, [r4, r0]
-	sub r1, #0x1c
-	str r0, [r4, r1]
-	mov r0, #0x25
-	lsl r0, r0, #6
-	bl PlaySE
-	add r0, r4, #0
-	mov r1, #0x16
-	mov r2, #0xa
-	mov r3, #0x24
-	bl ov18_021EDBDC
-	pop {r4, pc}
-_021EAAE6:
-	cmp r0, #0x11
-	bne _021EAAFC
-	ldr r1, _021EAB78 ; =0x00001874
-	ldr r2, [r4, r1]
-	cmp r2, #0x11
-	beq _021EAAF6
-	str r0, [r4, r1]
-	b _021EAB24
-_021EAAF6:
-	sub r1, r1, #4
-	str r0, [r4, r1]
-	b _021EAB24
-_021EAAFC:
-	ldr r2, _021EAB6C ; =0x00001870
-	ldr r3, [r4, r2]
-	cmp r3, #0x11
-	bne _021EAB08
-	str r0, [r4, r2]
-	b _021EAB24
-_021EAB08:
-	add r1, r2, #4
-	ldr r1, [r4, r1]
-	cmp r1, #0x11
-	bne _021EAB1A
-	cmp r3, r0
-	beq _021EAB68
-	add r1, r2, #4
-	str r0, [r4, r1]
-	b _021EAB24
-_021EAB1A:
-	cmp r1, r0
-	beq _021EAB68
-	str r1, [r4, r2]
-	add r1, r2, #4
-	str r0, [r4, r1]
-_021EAB24:
-	ldr r0, [r4]
-	ldr r0, [r0, #0xc]
-	bl MenuInputStateMgr_GetState
-	ldr r0, _021EAB70 ; =0x000008E9
-	bl PlaySE
-	add r0, r4, #0
-	bl ov18_021E74E4
-	ldr r1, _021EAB6C ; =0x00001870
-	add r0, r4, #0
-	ldr r1, [r4, r1]
-	mov r2, #0x2d
-	mov r3, #0x1d
-	bl ov18_021EFC9C
-	ldr r1, _021EAB78 ; =0x00001874
-	add r0, r4, #0
-	ldr r1, [r4, r1]
-	mov r2, #0x2e
-	mov r3, #0x23
-	bl ov18_021EFC9C
-	mov r0, #0xb7
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl ScheduleWindowCopyToVram
-	mov r0, #0xbb
-	lsl r0, r0, #2
-	add r0, r4, r0
-	bl ScheduleWindowCopyToVram
-_021EAB68:
-	mov r0, #0x23
-	pop {r4, pc}
-	.balign 4, 0
-_021EAB6C: .word 0x00001870
-_021EAB70: .word 0x000008E9
-_021EAB74: .word 0x00001890
-_021EAB78: .word 0x00001874
-	thumb_func_end PokedexApp_MainSeq_35
-
 	thumb_func_start PokedexApp_MainSeq_36
 PokedexApp_MainSeq_36: ; 0x021EAB7C
 	push {r3, lr}
@@ -30935,14 +30683,36 @@ ov18_021FBA40:
 
 	.global ov18_021FBA94
 ov18_021FBA94:
-	.byte 0x28, 0x37, 0x18, 0x27, 0x28, 0x37, 0x38, 0x47, 0x28, 0x37, 0x58, 0x67
-	.byte 0x28, 0x37, 0x78, 0x87, 0x28, 0x37, 0x98, 0xA7, 0x28, 0x37, 0xB8, 0xC7, 0x28, 0x37, 0xD8, 0xE7
-	.byte 0x48, 0x57, 0x18, 0x27, 0x48, 0x57, 0x38, 0x47, 0x48, 0x57, 0x58, 0x67, 0x48, 0x57, 0x78, 0x87
-	.byte 0x48, 0x57, 0x98, 0xA7, 0x48, 0x57, 0xB8, 0xC7, 0x48, 0x57, 0xD8, 0xE7, 0x68, 0x77, 0x18, 0x27
-	.byte 0x68, 0x77, 0x38, 0x47, 0x68, 0x77, 0x58, 0x67, 0x68, 0x77, 0x78, 0x87, 0x68, 0x77, 0x98, 0xA7
-	.byte 0x68, 0x77, 0xB8, 0xC7, 0x68, 0x77, 0xD8, 0xE7, 0x88, 0x97, 0x18, 0x27, 0x88, 0x97, 0x38, 0x47
-	.byte 0x88, 0x97, 0x58, 0x67, 0x88, 0x97, 0x78, 0x87, 0x88, 0x97, 0x98, 0xA7, 0x88, 0x97, 0xD8, 0xE7
-	.byte 0xA4, 0xBB, 0x04, 0x4B, 0xA4, 0xBB, 0xB4, 0xFB, 0xFF, 0x00, 0x00, 0x00
+	.byte 0x28, 0x37, 0x18, 0x27
+	.byte 0x28, 0x37, 0x38, 0x47
+	.byte 0x28, 0x37, 0x58, 0x67
+	.byte 0x28, 0x37, 0x78, 0x87
+	.byte 0x28, 0x37, 0x98, 0xA7
+	.byte 0x28, 0x37, 0xB8, 0xC7
+	.byte 0x28, 0x37, 0xD8, 0xE7
+	.byte 0x48, 0x57, 0x18, 0x27
+	.byte 0x48, 0x57, 0x38, 0x47
+	.byte 0x48, 0x57, 0x58, 0x67
+	.byte 0x48, 0x57, 0x78, 0x87
+	.byte 0x48, 0x57, 0x98, 0xA7
+	.byte 0x48, 0x57, 0xB8, 0xC7
+	.byte 0x48, 0x57, 0xD8, 0xE7
+	.byte 0x68, 0x77, 0x18, 0x27
+	.byte 0x68, 0x77, 0x38, 0x47
+	.byte 0x68, 0x77, 0x58, 0x67
+	.byte 0x68, 0x77, 0x78, 0x87
+	.byte 0x68, 0x77, 0x98, 0xA7
+	.byte 0x68, 0x77, 0xB8, 0xC7
+	.byte 0x68, 0x77, 0xD8, 0xE7
+	.byte 0x88, 0x97, 0x18, 0x27
+	.byte 0x88, 0x97, 0x38, 0x47
+	.byte 0x88, 0x97, 0x58, 0x67
+	.byte 0x88, 0x97, 0x78, 0x87
+	.byte 0x88, 0x97, 0x98, 0xA7
+	.byte 0x88, 0x97, 0xD8, 0xE7
+	.byte 0xA4, 0xBB, 0x04, 0x4B
+	.byte 0xA4, 0xBB, 0xB4, 0xFB
+	.byte 0xFF, 0x00, 0x00, 0x00
 	.size ov18_021FBA94,.-ov18_021FBA94
 
 	.global ov18_021FBB0C

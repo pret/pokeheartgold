@@ -1428,9 +1428,9 @@ static void ov18_021E76A4(PokedexAppData *pokedexApp, u32 a1, BOOL a2) {
     ov18_021E7448(pokedexApp, &sp0, a2);
 }
 
-void ov18_021E76EC(PokedexAppData *pokedexApp, u32 a1) {
+void ov18_021E76EC(PokedexAppData *pokedexApp, u32 letter) {
     ov18_021E76A4(pokedexApp, pokedexApp->unk_1868[1], FALSE);
-    pokedexApp->unk_1868[1] = a1;
+    pokedexApp->unk_1868[1] = letter;
     ov18_021E76A4(pokedexApp, pokedexApp->unk_1868[1], TRUE);
     ov18_021EFC3C(pokedexApp, 66);
     ScheduleWindowCopyToVram(&pokedexApp->windows[66]);
