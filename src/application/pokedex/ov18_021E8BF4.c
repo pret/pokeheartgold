@@ -54,6 +54,7 @@ int PokedexApp_MainSeq_35(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_36(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_37(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_38(PokedexAppData *pokedexApp);
+void ov18_021EAD74(int *a0, int a1, int a2, u32 *a3, int a4);
 int PokedexApp_MainSeq_39(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_40(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_41(PokedexAppData *pokedexApp);
@@ -1416,4 +1417,118 @@ int PokedexApp_MainSeq_35(PokedexAppData *pokedexApp) {
     }
 
     return POKEDEXAPP_MAINSEQ_35;
+}
+
+int PokedexApp_MainSeq_36(PokedexAppData *pokedexApp) {
+    ov18_021EDE4C(pokedexApp, 0, 2, POKEDEXAPP_MAINSEQ_22);
+    return POKEDEXAPP_MAINSEQ_27;
+}
+
+int PokedexApp_MainSeq_37(PokedexAppData *pokedexApp) {
+    pokedexApp->unk_1890[0] = pokedexApp->unk_1868[4];
+    pokedexApp->unk_1890[1] = pokedexApp->unk_1868[5];
+    ov18_021EDE4C(pokedexApp, 4, 0, POKEDEXAPP_MAINSEQ_38);
+    return POKEDEXAPP_MAINSEQ_26;
+}
+
+int PokedexApp_MainSeq_38(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State38 *r5 = &pokedexApp->unk_0868.state_38;
+
+    switch (ov18_021F739C(pokedexApp)) {
+    case 0:
+        r5->unk_0 = pokedexApp->unk_1868[5];
+        r5->unk_4 = 0;
+        ov18_021F36D4(pokedexApp, 0, 5, 1);
+        return POKEDEXAPP_MAINSEQ_40;
+    case 1:
+        r5->unk_0 = pokedexApp->unk_1868[4];
+        r5->unk_4 = 0;
+        ov18_021F36D4(pokedexApp, 0, 11, 1);
+        return POKEDEXAPP_MAINSEQ_41;
+    case 2:
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+        return ov18_021EDBDC(pokedexApp, 0, 10, POKEDEXAPP_MAINSEQ_39);
+    case 3:
+    case -2:
+        PlaySE(SEQ_SE_GS_GEARCANCEL);
+        pokedexApp->unk_1868[4] = pokedexApp->unk_1890[0];
+        pokedexApp->unk_1868[5] = pokedexApp->unk_1890[1];
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+        return ov18_021EDBDC(pokedexApp, 22, 10, POKEDEXAPP_MAINSEQ_39);
+    case 4:
+        if (pokedexApp->unk_1868[5] == 152) {
+            break;
+        }
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        r5->unk_8 = 2;
+        r5->unk_A = 1;
+        ov18_021F118C(pokedexApp, r5->unk_8, 54);
+        return POKEDEXAPP_MAINSEQ_42;
+    case 5:
+        if (pokedexApp->unk_1868[5] > pokedexApp->unk_1868[4]) {
+            (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+            PlaySE(SEQ_SE_GS_ZKN04);
+            r5->unk_8 = 1;
+            r5->unk_A = -1;
+            ov18_021F118C(pokedexApp, r5->unk_8, 57);
+            return POKEDEXAPP_MAINSEQ_42;
+        }
+        break;
+    case 6:
+        if (pokedexApp->unk_1868[4] < pokedexApp->unk_1868[5]) {
+            (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+            PlaySE(SEQ_SE_GS_ZKN04);
+            r5->unk_8 = 4;
+            r5->unk_A = 1;
+            ov18_021F118C(pokedexApp, r5->unk_8, 54);
+            return POKEDEXAPP_MAINSEQ_43;
+        }
+        break;
+    case 7:
+        if (pokedexApp->unk_1868[4] == 0) {
+            break;
+        }
+        (void)MenuInputStateMgr_GetState(pokedexApp->args->menuInputStatePtr);
+        PlaySE(SEQ_SE_GS_ZKN04);
+        r5->unk_8 = 3;
+        r5->unk_A = -1;
+        ov18_021F118C(pokedexApp, r5->unk_8, 57);
+        return POKEDEXAPP_MAINSEQ_43;
+    case -1:
+        if ((gSystem.heldKeys & PAD_KEY_LEFT) || (gSystem.heldKeys & PAD_KEY_RIGHT) || System_GetTouchHeld()) {
+            break;
+        }
+        r5->unk_4 = 0;
+        break;
+    }
+
+    return POKEDEXAPP_MAINSEQ_38;
+}
+
+void ov18_021EAD74(int *a0, int a1, int a2, u32 *a3, int a4) {
+    int r3;
+    int r5;
+
+    if (*a3 != 24) {
+        ++(*a3);
+    }
+    if (*a3 >= 24) {
+        r5 = 32;
+    } else if (*a3 >= 16) {
+        r5 = 16;
+    } else if (*a3 >= 8) {
+        r5 = 8;
+    } else {
+        r5 = 1;
+    }
+    r3 = (*a0) + r5 * a4;
+    if (r3 < a1) {
+        r3 = a1;
+    } else if (r3 > a2) {
+        r3 = a2;
+    }
+    *a0 = r3;
 }
