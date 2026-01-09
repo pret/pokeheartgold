@@ -55,6 +55,7 @@ int PokedexApp_MainSeq_36(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_37(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_38(PokedexAppData *pokedexApp);
 void ov18_021EAD74(int *a0, int a1, int a2, u32 *a3, int a4);
+void ov18_021EADB8(PokedexAppData *pokedexApp, int a1, int a2, int a3, int a4);
 int PokedexApp_MainSeq_39(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_40(PokedexAppData *pokedexApp);
 int PokedexApp_MainSeq_41(PokedexAppData *pokedexApp);
@@ -1531,4 +1532,50 @@ void ov18_021EAD74(int *a0, int a1, int a2, u32 *a3, int a4) {
         r3 = a2;
     }
     *a0 = r3;
+}
+
+void ov18_021EADB8(PokedexAppData *pokedexApp, int a1, BOOL a2, int a3, int a4) {
+    if (a2 == FALSE) {
+        ov18_021F36D4(pokedexApp, ov18_021F3AD0(pokedexApp, a1), a3, 1);
+        ov18_021F38F0(pokedexApp, a3 + 1, pokedexApp->unk_1850[a1].unk_0);
+        ov18_021EFD00(pokedexApp, pokedexApp->unk_1850[a1].unk_0, a4);
+        ScheduleWindowCopyToVram(&pokedexApp->windows[a4]);
+    } else {
+        ov18_021F37D4(pokedexApp, ov18_021F3AD0(pokedexApp, a1), a3, 1);
+        ov18_021F39C4(pokedexApp, a3 + 1, pokedexApp->unk_1850[a1].unk_2);
+        ov18_021EFDB4(pokedexApp, pokedexApp->unk_1850[a1].unk_2, a4);
+        ScheduleWindowCopyToVram(&pokedexApp->windows[a4]);
+    }
+}
+
+int PokedexApp_MainSeq_39(PokedexAppData *pokedexApp) {
+    ov18_021EDE4C(pokedexApp, 0, 3, POKEDEXAPP_MAINSEQ_22);
+    return POKEDEXAPP_MAINSEQ_27;
+}
+
+int PokedexApp_MainSeq_40(PokedexAppData *pokedexApp) {
+    u32 sp4;
+    u32 r4;
+    PokedexAppData_UnkSub0868_State38 *r4_2 = &pokedexApp->unk_0868.state_38;
+
+    if (!ov18_021F765C(&sp4)) {
+        if (pokedexApp->unk_1868[5] < pokedexApp->unk_1868[4]) {
+            pokedexApp->unk_1868[5] = r4_2->unk_0;
+        }
+        ov18_021EADB8(pokedexApp, pokedexApp->unk_1868[5], FALSE, 5, 70);
+        ov18_021F3A64(pokedexApp, pokedexApp->unk_1868[5], 1);
+        return POKEDEXAPP_MAINSEQ_38;
+    }
+
+    r4 = pokedexApp->unk_1868[5];
+    ov18_021F36D4(pokedexApp, sp4, 5, 1);
+    pokedexApp->unk_1868[5] = ov18_021F3AB0(pokedexApp, 5);
+    ov18_021F38F0(pokedexApp, 6, pokedexApp->unk_1850[pokedexApp->unk_1868[5]].unk_0);
+    ov18_021EFD00(pokedexApp, pokedexApp->unk_1850[pokedexApp->unk_1868[5]].unk_0, 70);
+    ScheduleWindowCopyToVram(&pokedexApp->windows[70]);
+    ov18_021F3A64(pokedexApp, pokedexApp->unk_1868[5], 1);
+    if (r4 != pokedexApp->unk_1868[5]) {
+        PlaySE(SEQ_SE_GS_ZKN03);
+    }
+    return POKEDEXAPP_MAINSEQ_40;
 }
