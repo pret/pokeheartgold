@@ -1,20 +1,8 @@
+#include "unk_0203AC88.h"
+
 #include "global.h"
 
-typedef struct UnkStruct_0203AC88 {
-    void *func1;
-    void *func2;
-    void *func3;
-} UnkStruct_0203AC88;
-
-const UnkStruct_0203AC88 *sub_0203AC88(void);
-int sub_0203AC90(void);
-
-extern void sub_02097238(void);
-extern void sub_02097230(void);
-extern void sub_02097248(void);
-extern void sub_0209722C(void);
-extern void sub_02097258(void);
-extern void sub_02097234(void);
+#include "unk_020971F8.h"
 
 static const UnkStruct_0203AC88 sUnkTable_0203AC88[] = {
     { sub_02097238, sub_02097230, NULL },
