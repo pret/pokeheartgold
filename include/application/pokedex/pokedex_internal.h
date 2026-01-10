@@ -290,6 +290,10 @@ struct PokedexAppData {
     PokedexAppData_UnkSub190C *unk_190C;     // 0x190C
 }; // size: 0x1910
 
+String *ov18_021E590C(u16 species, int language, enum HeapID heapId);
+String *ov18_021E595C(u16 species, int language, enum HeapID heapId);
+String *ov18_021E59A8(u16 species, int language, int a2, enum HeapID heapId);
+
 void ov18_021E5C40(void *cb_arg);
 void ov18_021E5C74(void);
 void ov18_021E5C84(PokedexAppData *pokedexApp);
@@ -477,6 +481,7 @@ u32 ov18_021F716C(PokedexAppData *pokedexApp);
 void ov18_021F7354(PokedexAppData *pokedexApp);
 u32 ov18_021F739C(PokedexAppData *pokedexApp);
 void ov18_021F74D8(PokedexAppData *pokedexApp);
+u32 ov18_021F7520(PokedexAppData *pokedexApp);
 u32 ov18_021F765C(u32 *a1);
 void ov18_021F7668(PokedexAppData *pokedexApp);
 void ov18_021F7748(PokedexAppData *pokedexApp);

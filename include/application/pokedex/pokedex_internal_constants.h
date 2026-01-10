@@ -8,6 +8,10 @@ enum {
     dex_search_criteria_letter = 1,
     dex_search_criteria_type1 = 2,
     dex_search_criteria_type2 = 3,
+    dex_search_criteria_height_min = 4,
+    dex_search_criteria_height_max = 5,
+    dex_search_criteria_weight_min = 6,
+    dex_search_criteria_weight_max = 7,
 };
 
 #define dex_order_national     (NARC_zukan_data_sort_order_dex_order_national - NARC_zukan_data_sort_order_dex_order_national)

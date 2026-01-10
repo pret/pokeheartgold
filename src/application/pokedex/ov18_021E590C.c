@@ -14,12 +14,9 @@
 #error "Unable to determine game"
 #endif // HGSS
 
-int deadstrip_0(int a0);
-String *ov18_021E590C(u16 species, int language, enum HeapID heapId);
-String *ov18_021E595C(u16 species, int language, enum HeapID heapId);
-String *ov18_021E59A8(u16 species, int language, int a2, enum HeapID heapId);
-String *ov18_021E5A10(int msgBank, int msgNum, enum HeapID heapId);
-void ov18_021E5A50(u16 species, int language, int *pMsgNo, int *pLanguageFlag, int *pLanguageFlagNativeMask);
+static int deadstrip_0(int a0);
+static String *ov18_021E5A10(int msgBank, int msgNum, enum HeapID heapId);
+static void ov18_021E5A50(u16 species, int language, int *pMsgNo, int *pLanguageFlag, int *pLanguageFlagNativeMask);
 
 static const int ov18_021F970C[] = {
     NARC_msg_msg_0828_bin,
@@ -109,7 +106,7 @@ String *ov18_021E59A8(u16 species, int language, int a2, enum HeapID heapId) {
     return ov18_021E5A10(msgBank, msgNum, heapId);
 }
 
-String *ov18_021E5A10(int msgBank, int msgNum, enum HeapID heapId) {
+static String *ov18_021E5A10(int msgBank, int msgNum, enum HeapID heapId) {
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, heapId);
     if (msgData != NULL) {
         String *ret = String_New(256, heapId);
@@ -139,7 +136,7 @@ static inline BOOL ov18_021E5A50_sub2(int species, int languageFlag) {
     }
 }
 
-void ov18_021E5A50(u16 species, int language, int *pMsgNo, int *pLanguageFlag, int *pLanguageFlagNativeMask) {
+static void ov18_021E5A50(u16 species, int language, int *pMsgNo, int *pLanguageFlag, int *pLanguageFlagNativeMask) {
     *pLanguageFlag = LanguageToDexFlag(language);
     GF_ASSERT(*pLanguageFlag < DEX_LANGUAGE_FLAG_MAX);
     *pMsgNo = species;
