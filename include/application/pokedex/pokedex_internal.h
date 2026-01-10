@@ -3,6 +3,8 @@
 
 #include "global.h"
 
+#include "application/pokedex/pokedex_internal_constants.h"
+
 #include "bg_window.h"
 #include "msgdata.h"
 #include "overlay_18.h"
@@ -240,54 +242,54 @@ typedef struct PokedexAppData_UnkSub1850 {
 } PokedexAppData_UnkSub1850;
 
 struct PokedexAppData {
-    PokedexArgs *args;                       // 0x0000
-    BgConfig *bgConfig;                      // 0x0004
-    UnkStruct_0201956C *unk_0008;            // 0x0008
-    Window windows[101];                     // 0x000C
-    MsgData *msgData;                        // 0x065C
-    MessageFormat *msgFormat;                // 0x0660
-    String *strBufFormatted;                 // 0x0664
-    u8 filler_0668[4];                       // 0x0668
-    SpriteManager *unk_066C;                 // 0x066C
-    u8 filler_0770[0x1E0];                   // 0x0770
-    PaletteData *paletteData;                // 0x0850
-    NARC *gfxNarc;                           // 0x0854
-    u8 filler_0858[4];                       // 0x0858
-    int unk_085C;                            // 0x085C
-    int unk_0860;                            // 0x0860
-    u32 unk_0864;                            // 0x0864
-    PokedexAppData_UnkSub0868 unk_0868;      // 0x0868
-    u8 filler_0878[0x7B4];                   // 0x0878
-    u16 unk_102C;                            // 0x102C
-    u16 unk_102E;                            // 0x102E
-    PokedexAppData_UnkSub1030 unk_1030[518]; // 0x1030
-    void *heights;                           // 0x1848
-    void *weights;                           // 0x184C
-    PokedexAppData_UnkSub1850 *unk_1850;     // 0x1850
-    u8 *unk_1854;                            // 0x1854
-    u8 unk_1858;                             // 0x1858
-    u8 unk_1859;                             // 0x1859
-    u8 unk_185A;                             // 0x185A
-    u8 unk_185B;                             // 0x185B
-    u8 unk_185C;                             // 0x185C
-    u8 unk_185D;                             // 0x185D
-    u8 unk_185E;                             // 0x185E
-    int unk_1860;                            // 0x1860
-    GridInputHandler *unk_1864;              // 0x1864
-    u32 unk_1868[10];                        // 0x1868
-    u32 unk_1890[2];                         // 0x1890
-    int unk_1898;                            // 0x1898
-    u8 filler_189C[4];                       // 0x189C
-    u8 unk_18A0;                             // 0x18A0
-    u8 unk_18A1;                             // 0x18A1
-    u16 curSpecies;                          // 0x18A2
-    u8 seenForms[0x20];                      // 0x18A4
-    s8 numSeenForms;                         // 0x18C4
-    u8 filler_18C5[7];                       // 0x18C5
-    PokedexAppData_UnkSub18CC unk_18CC;      // 0x18CC
-    PokedexAppData_UnkSub18DC unk_18DC;      // 0x18DC
-    PokedexAppData_UnkSub1908 *unk_1908;     // 0x1908
-    PokedexAppData_UnkSub190C *unk_190C;     // 0x190C
+    PokedexArgs *args;                              // 0x0000
+    BgConfig *bgConfig;                             // 0x0004
+    UnkStruct_0201956C *unk_0008;                   // 0x0008
+    Window windows[101];                            // 0x000C
+    MsgData *msgData;                               // 0x065C
+    MessageFormat *msgFormat;                       // 0x0660
+    String *strBufFormatted;                        // 0x0664
+    u8 filler_0668[4];                              // 0x0668
+    SpriteManager *unk_066C;                        // 0x066C
+    u8 filler_0770[0x1E0];                          // 0x0770
+    PaletteData *paletteData;                       // 0x0850
+    NARC *gfxNarc;                                  // 0x0854
+    u8 filler_0858[4];                              // 0x0858
+    int unk_085C;                                   // 0x085C
+    int unk_0860;                                   // 0x0860
+    u32 unk_0864;                                   // 0x0864
+    PokedexAppData_UnkSub0868 unk_0868;             // 0x0868
+    u8 filler_0878[0x7B4];                          // 0x0878
+    u16 unk_102C;                                   // 0x102C
+    u16 unk_102E;                                   // 0x102E
+    PokedexAppData_UnkSub1030 unk_1030[518];        // 0x1030
+    void *heights;                                  // 0x1848
+    void *weights;                                  // 0x184C
+    PokedexAppData_UnkSub1850 *unk_1850;            // 0x1850
+    u8 *unk_1854;                                   // 0x1854
+    u8 unk_1858;                                    // 0x1858
+    u8 unk_1859;                                    // 0x1859
+    u8 unk_185A;                                    // 0x185A
+    u8 unk_185B;                                    // 0x185B
+    u8 unk_185C;                                    // 0x185C
+    u8 unk_185D;                                    // 0x185D
+    u8 unk_185E;                                    // 0x185E
+    int unk_1860;                                   // 0x1860
+    GridInputHandler *unk_1864;                     // 0x1864
+    u32 dexSearchCriteria[dex_search_criteria_num]; // 0x1868
+    u32 dexSearchCriteriaBak[2];                    // 0x1890
+    int unk_1898;                                   // 0x1898
+    u8 filler_189C[4];                              // 0x189C
+    u8 unk_18A0;                                    // 0x18A0
+    u8 unk_18A1;                                    // 0x18A1
+    u16 curSpecies;                                 // 0x18A2
+    u8 seenForms[0x20];                             // 0x18A4
+    s8 numSeenForms;                                // 0x18C4
+    u8 filler_18C5[7];                              // 0x18C5
+    PokedexAppData_UnkSub18CC unk_18CC;             // 0x18CC
+    PokedexAppData_UnkSub18DC unk_18DC;             // 0x18DC
+    PokedexAppData_UnkSub1908 *unk_1908;            // 0x1908
+    PokedexAppData_UnkSub190C *unk_190C;            // 0x190C
 }; // size: 0x1910
 
 String *ov18_021E590C(u16 species, int language, enum HeapID heapId);
@@ -484,7 +486,9 @@ void ov18_021F74D8(PokedexAppData *pokedexApp);
 u32 ov18_021F7520(PokedexAppData *pokedexApp);
 u32 ov18_021F765C(u32 *a1);
 void ov18_021F7668(PokedexAppData *pokedexApp);
+u32 ov18_021F76B0(PokedexAppData *pokedexApp);
 void ov18_021F7748(PokedexAppData *pokedexApp);
+u32 ov18_021F7790(PokedexAppData *pokedexApp);
 void ov18_021F7B74(PokedexAppData *pokedexApp);
 void ov18_021F7ED4(PokedexAppData *pokedexApp, u8 a1, u32 a2, u32 a3, u32 a4, u32 a5, u32 a6, u32 a7, u32 a8, u32 a9, u32 a10, u32 a11);
 u32 ov18_021F8824(PokedexAppData *pokedexApp);

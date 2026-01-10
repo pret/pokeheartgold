@@ -1,6 +1,7 @@
 #include "constants/maps.h"
 
 #include "application/pokedex/pokedex_internal.h"
+#include "application/pokedex/pokedex_internal_constants.h"
 #include "application/zukanlist/zkn_data/zukan_data.naix"
 #include "application/zukanlist/zkn_data/zukan_enc.naix"
 #include "application/zukanlist/zkn_data/zukan_hw_data.naix"
@@ -1224,16 +1225,16 @@ void ov18_021E6FB8(BgConfig *bgConfig, u8 bgId, NARC *narc, enum HeapID heapId) 
 }
 
 void ov18_021E6FFC(PokedexAppData *pokedexApp) {
-    pokedexApp->unk_1868[0] = 0;
-    pokedexApp->unk_1868[1] = 0x1A;
-    pokedexApp->unk_1868[2] = 0x11;
-    pokedexApp->unk_1868[3] = 0x11;
-    pokedexApp->unk_1868[4] = 0;
-    pokedexApp->unk_1868[5] = 0x98;
-    pokedexApp->unk_1868[6] = 0;
-    pokedexApp->unk_1868[7] = 0x98;
-    pokedexApp->unk_1868[8] = 3;
-    pokedexApp->unk_1868[9] = 14;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_sort_order] = dex_order_national;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_letter] = dex_search_letters_all;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_type1] = dex_search_type_all;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_type2] = dex_search_type_all;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_height_min] = 0;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_height_max] = 152;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_weight_min] = 0;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_weight_max] = 152;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_area] = dex_search_area_all;
+    pokedexApp->dexSearchCriteria[dex_search_criteria_body_type] = dex_search_bodytype_all;
 }
 
 static void ov18_021E7048(PokedexAppData *pokedexApp) {
@@ -1277,7 +1278,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         break;
     case 1:
         GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000062_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-        ov18_021E7448(pokedexApp, &ov18_021F9780[pokedexApp->unk_1868[0]], TRUE);
+        ov18_021E7448(pokedexApp, &ov18_021F9780[pokedexApp->dexSearchCriteria[dex_search_criteria_sort_order]], TRUE);
         ov18_021F6EC0(pokedexApp);
         ov18_021EEED0(pokedexApp, 2);
         ov18_021EF5D8(pokedexApp);
@@ -1285,7 +1286,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         break;
     case 2:
         GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000063_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-        ov18_021E76A4(pokedexApp, pokedexApp->unk_1868[1], 1);
+        ov18_021E76A4(pokedexApp, pokedexApp->dexSearchCriteria[dex_search_criteria_letter], 1);
         ov18_021F6FA0(pokedexApp);
         ov18_021EEED0(pokedexApp, 3);
         ov18_021EF764(pokedexApp);
@@ -1315,7 +1316,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         break;
     case 6:
         GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000067_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-        ov18_021E7448(pokedexApp, &ov18_021F9770[pokedexApp->unk_1868[8]], TRUE);
+        ov18_021E7448(pokedexApp, &ov18_021F9770[pokedexApp->dexSearchCriteria[dex_search_criteria_area]], TRUE);
         ov18_021F7668(pokedexApp);
         ov18_021EEED0(pokedexApp, 7);
         ov18_021EFA50(pokedexApp);
@@ -1324,7 +1325,7 @@ void ov18_021E71D0(PokedexAppData *pokedexApp, int a1, int a2) {
         break;
     case 7:
         GfGfxLoader_LoadScrnDataFromOpenNarc(pokedexApp->gfxNarc, NARC_zukan_gra_zukan_gra_00000068_NSCR_lz, pokedexApp->bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, HEAP_ID_37);
-        ov18_021E7628(pokedexApp, pokedexApp->unk_1868[9], TRUE);
+        ov18_021E7628(pokedexApp, pokedexApp->dexSearchCriteria[dex_search_criteria_body_type], TRUE);
         ov18_021F7748(pokedexApp);
         ov18_021EEED0(pokedexApp, 8);
         ov18_021EFB88(pokedexApp);
@@ -1349,7 +1350,7 @@ static void ov18_021E7490(PokedexAppData *pokedexApp, const UnkStruct_ov18_021F9
 }
 
 void ov18_021E74B8(PokedexAppData *pokedexApp, int a1) {
-    ov18_021E7490(pokedexApp, ov18_021F9780, pokedexApp->unk_1868, a1);
+    ov18_021E7490(pokedexApp, ov18_021F9780, pokedexApp->dexSearchCriteria, a1);
     ov18_021EFBE8(pokedexApp, 37);
     ScheduleWindowCopyToVram(&pokedexApp->windows[37]);
 }
@@ -1358,12 +1359,12 @@ void ov18_021E74E4(PokedexAppData *pokedexApp) {
     for (int i = 0; i < NELEMS(ov18_021F990C); ++i) {
         ov18_021E7448(pokedexApp, &ov18_021F990C[i], FALSE);
     }
-    ov18_021E7448(pokedexApp, &ov18_021F990C[pokedexApp->unk_1868[2]], TRUE);
-    ov18_021E7448(pokedexApp, &ov18_021F990C[pokedexApp->unk_1868[3]], TRUE);
+    ov18_021E7448(pokedexApp, &ov18_021F990C[pokedexApp->dexSearchCriteria[dex_search_criteria_type1]], TRUE);
+    ov18_021E7448(pokedexApp, &ov18_021F990C[pokedexApp->dexSearchCriteria[dex_search_criteria_type2]], TRUE);
 }
 
 void ov18_021E7534(PokedexAppData *pokedexApp, int a1) {
-    ov18_021E7490(pokedexApp, ov18_021F9770, &pokedexApp->unk_1868[8], a1);
+    ov18_021E7490(pokedexApp, ov18_021F9770, &pokedexApp->dexSearchCriteria[dex_search_criteria_area], a1);
     ov18_021EFE70(pokedexApp, 75);
     ScheduleWindowCopyToVram(&pokedexApp->windows[75]);
 }
@@ -1407,9 +1408,9 @@ static void ov18_021E7628(PokedexAppData *pokedexApp, u32 a1, BOOL a2) {
 }
 
 void ov18_021E766C(PokedexAppData *pokedexApp, u32 a1) {
-    ov18_021E7628(pokedexApp, pokedexApp->unk_1868[9], FALSE);
-    pokedexApp->unk_1868[9] = a1;
-    ov18_021E7628(pokedexApp, pokedexApp->unk_1868[9], TRUE);
+    ov18_021E7628(pokedexApp, pokedexApp->dexSearchCriteria[dex_search_criteria_body_type], FALSE);
+    pokedexApp->dexSearchCriteria[dex_search_criteria_body_type] = a1;
+    ov18_021E7628(pokedexApp, pokedexApp->dexSearchCriteria[dex_search_criteria_body_type], TRUE);
     ov18_021F3494(pokedexApp);
 }
 
@@ -1429,9 +1430,9 @@ static void ov18_021E76A4(PokedexAppData *pokedexApp, u32 a1, BOOL a2) {
 }
 
 void ov18_021E76EC(PokedexAppData *pokedexApp, u32 letter) {
-    ov18_021E76A4(pokedexApp, pokedexApp->unk_1868[1], FALSE);
-    pokedexApp->unk_1868[1] = letter;
-    ov18_021E76A4(pokedexApp, pokedexApp->unk_1868[1], TRUE);
+    ov18_021E76A4(pokedexApp, pokedexApp->dexSearchCriteria[dex_search_criteria_letter], FALSE);
+    pokedexApp->dexSearchCriteria[dex_search_criteria_letter] = letter;
+    ov18_021E76A4(pokedexApp, pokedexApp->dexSearchCriteria[dex_search_criteria_letter], TRUE);
     ov18_021EFC3C(pokedexApp, 66);
     ScheduleWindowCopyToVram(&pokedexApp->windows[66]);
 }

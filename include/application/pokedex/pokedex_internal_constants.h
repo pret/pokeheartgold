@@ -12,6 +12,9 @@ enum {
     dex_search_criteria_height_max = 5,
     dex_search_criteria_weight_min = 6,
     dex_search_criteria_weight_max = 7,
+    dex_search_criteria_area = 8,
+    dex_search_criteria_body_type = 9,
+    dex_search_criteria_num = 10,
 };
 
 #define dex_order_national     (NARC_zukan_data_sort_order_dex_order_national - NARC_zukan_data_sort_order_dex_order_national)
@@ -88,6 +91,9 @@ enum {
 #define dex_search_bodytype_fins             (NARC_zukan_data_sort_order_body_style_fins - NARC_zukan_data_sort_order_body_style_quadruped)
 #define dex_search_bodytype_head_only        (NARC_zukan_data_sort_order_body_style_head_only - NARC_zukan_data_sort_order_body_style_quadruped)
 #define dex_search_bodytype_multibody        (NARC_zukan_data_sort_order_body_style_multibody - NARC_zukan_data_sort_order_body_style_quadruped)
+#define dex_search_bodytype_all              ((dex_search_bodytype_multibody) + 1)
+#define dex_search_bodytype_submit           ((dex_search_bodytype_multibody) + 2)
+#define dex_search_bodytype_cancel           ((dex_search_bodytype_multibody) + 3)
 
 #define dex_search_lettergroup_abc (NARC_zukan_data_sort_order_letter_groups_abc - NARC_zukan_data_sort_order_letter_groups_abc)
 #define dex_search_lettergroup_def (NARC_zukan_data_sort_order_letter_groups_def - NARC_zukan_data_sort_order_letter_groups_abc)
@@ -98,5 +104,12 @@ enum {
 #define dex_search_lettergroup_stu (NARC_zukan_data_sort_order_letter_groups_stu - NARC_zukan_data_sort_order_letter_groups_abc)
 #define dex_search_lettergroup_vwx (NARC_zukan_data_sort_order_letter_groups_vwx - NARC_zukan_data_sort_order_letter_groups_abc)
 #define dex_search_lettergroup_yz  (NARC_zukan_data_sort_order_letter_groups_yz - NARC_zukan_data_sort_order_letter_groups_abc)
+
+#define dex_search_area_unknown 0
+#define dex_search_area_johto   1
+#define dex_search_area_kanto   2
+#define dex_search_area_all     (dex_search_area_kanto + 1)
+#define dex_search_area_submit  (dex_search_area_kanto + 2)
+#define dex_search_area_cancel  (dex_search_area_kanto + 3)
 
 #endif // GUARD_POKEHEARTGOLD_APPLICATION_POKEDEX_POKEDEX_INTERNAL_CONSTANTS_H
