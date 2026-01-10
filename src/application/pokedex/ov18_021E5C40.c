@@ -1555,7 +1555,7 @@ static void ov18_021E7A3C(PokedexAppData *pokedexApp) {
     pokedexApp->unk_1898 = 0;
 }
 
-void ov18_021E7A80(PokedexAppData *pokedexApp, u16 species, u16 a2) {
+void ov18_021E7A80(PokedexAppData *pokedexApp, u16 species, s16 a2) {
     if (!Pokedex_GetInternationalViewFlag(pokedexApp->args->pokedex)) {
         return;
     }
