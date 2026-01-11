@@ -12,8 +12,6 @@ static const u8 sDexFlagToLanguage[] = {
     LANGUAGE_GERMAN,
     LANGUAGE_ITALIAN,
     LANGUAGE_SPANISH,
-    0, // padding
-    0, // padding
 };
 
 // Convert a language code to a Pokedex caught-language bit index

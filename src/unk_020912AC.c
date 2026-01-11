@@ -12,9 +12,7 @@ static const u8 sDexCycleTable[] = {
     3,
     4,
     5,
-    0,
-    0,
-    0,
+    0
 };
 
 // Get dex cycle value at index
