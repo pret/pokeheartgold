@@ -2006,3 +2006,132 @@ int PokedexApp_MainSeq_58(PokedexAppData *pokedexApp) {
 
     return POKEDEXAPP_MAINSEQ_58;
 }
+
+int PokedexApp_MainSeq_59(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State13 *r4 = &pokedexApp->unk_0868.state_13;
+
+    switch (r4->unk_4) {
+    case 0:
+        ov18_021F11C0(pokedexApp, 0, 0);
+        ov18_021F118C(pokedexApp, 20, 9);
+        ov18_021F2A2C(pokedexApp, 22, 0);
+        ov18_021F2A84(pokedexApp, 24, 0);
+        ClearWindowTilemapAndScheduleTransfer(&pokedexApp->windows[94]);
+        r4->unk_0 = ov18_021E6BB8(pokedexApp, 15 * (pokedexApp->unk_1859));
+        r4->unk_6 = ov18_021F2E14(pokedexApp, 18, ov18_021F2DD4(pokedexApp, pokedexApp->unk_1859 + 1, 18, 0), 15);
+        ++r4->unk_4;
+        // fallthrough
+    case 1:
+        ++r4->unk_5;
+        ov18_021E6CE8(pokedexApp, &r4->unk_0[32 * r4->unk_5]);
+        ov18_021F1760(pokedexApp, 59, -8, r4->unk_5 / 5);
+        ov18_021F2E4C(pokedexApp, 18, r4->unk_6);
+        if (pokedexApp->unk_1859 == 0) {
+            ov18_021F3C54(pokedexApp, -8);
+        }
+        if (r4->unk_5 == 15) {
+            ++r4->unk_4;
+        }
+        break;
+    case 2:
+        if (r4->unk_7 == 1) {
+            pokedexApp->unk_185A -= 10;
+        }
+        ++pokedexApp->unk_1859;
+        ov18_021F2BB0(pokedexApp, 0);
+        ov18_021E6C90(r4->unk_0);
+        ov18_021E78AC(pokedexApp);
+        ov18_021EDEB0(pokedexApp);
+        ov18_021F2C10(pokedexApp, 19, 0);
+        ov18_021F2E80(pokedexApp, 18, 0);
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+        return POKEDEXAPP_MAINSEQ_57;
+    }
+
+    return POKEDEXAPP_MAINSEQ_59;
+}
+
+int PokedexApp_MainSeq_60(PokedexAppData *pokedexApp) {
+    u32 x, y;
+
+    if (!System_GetTouchHeldCoords(&x, &y)) {
+        return POKEDEXAPP_MAINSEQ_57;
+    }
+    if (ov18_021F2D24(pokedexApp, 18, x, y, 0) == 1) {
+        u16 *r4 = ov18_021E6BB8(pokedexApp, 15 * pokedexApp->unk_1859);
+        pokedexApp->unk_185E ^= 1;
+        ov18_021E6CE8(pokedexApp, r4);
+        ov18_021E6C90(r4);
+        ov18_021F1620(pokedexApp, 59);
+        if (!pokedexApp->unk_1859) {
+            ov18_021F3C88(pokedexApp);
+        } else {
+            ov18_021F11C0(pokedexApp, 25, 0);
+        }
+        ov18_021E78AC(pokedexApp);
+        ov18_021EDEB0(pokedexApp);
+        ov18_021F2C10(pokedexApp, 19, 0);
+        PlaySE(SEQ_SE_GS_ZKN03);
+    }
+    return POKEDEXAPP_MAINSEQ_60;
+}
+
+int PokedexApp_MainSeq_61(PokedexAppData *pokedexApp) {
+    PokedexAppData_UnkSub0868_State16 *r3 = &pokedexApp->unk_0868.state_16;
+
+    if (ov18_021F2D24(pokedexApp, 18, r3->unk_0, r3->unk_2, 0) == 1) {
+        u16 *r4 = ov18_021E6BB8(pokedexApp, 15 * pokedexApp->unk_1859);
+        pokedexApp->unk_185E ^= 1;
+        ov18_021E6CE8(pokedexApp, r4);
+        ov18_021E6C90(r4);
+        ov18_021F1620(pokedexApp, 59);
+        if (!pokedexApp->unk_1859) {
+            ov18_021F3C88(pokedexApp);
+        } else {
+            ov18_021F11C0(pokedexApp, 25, 0);
+        }
+        ov18_021E78AC(pokedexApp);
+        ov18_021EDEB0(pokedexApp);
+        ov18_021F2C10(pokedexApp, 19, 1);
+        PlaySE(SEQ_SE_GS_ZKN03);
+        MI_CpuClear8(&pokedexApp->unk_0868, sizeof(pokedexApp->unk_0868));
+    }
+    return POKEDEXAPP_MAINSEQ_57;
+}
+
+PokedexApp_MainSeq_62(PokedexAppData *pokedexApp) {
+    switch (pokedexApp->unk_0868.state_10.unk_0) {
+    case 0: {
+        u16 r1 = ov18_021F8838(pokedexApp);
+        if (r1 != 0) {
+            sub_02092BD8(pokedexApp->args->unk_08, r1, pokedexApp->unk_1858);
+        }
+        ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, dex_order_national, dex_search_letters_all, dex_search_type_all, dex_search_type_all, 0, 152, 0, 152, 1 << dex_search_area_all, dex_search_bodytype_all);
+        ov18_021F8884(pokedexApp, 1);
+        ov18_021EDDB4(pokedexApp);
+        ov18_021EDE64(pokedexApp);
+        sub_0201980C(pokedexApp->unk_0008, 4);
+        ov18_021F2A2C(pokedexApp, 22, 0);
+        ov18_021F2A84(pokedexApp, 24, 0);
+        ClearWindowTilemapAndScheduleTransfer(&pokedexApp->windows[94]);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F & ~(1 << 0), 0, 0, 16, RGB_BLACK);
+        PaletteData_BeginPaletteFade(pokedexApp->paletteData, PLTTBUF_EXCEPT_MAIN_BG_F, PLTTFADE_OPAQUE_ALL_F, 0, 0, 16, RGB_BLACK);
+        pokedexApp->unk_085C = POKEDEXAPP_MAINSEQ_62;
+        ov18_021E66C4(pokedexApp);
+        ++pokedexApp->unk_0868.state_10.unk_0;
+        return POKEDEXAPP_MAINSEQ_03;
+    }
+    case 1:
+        if (!sub_020199E4(pokedexApp->unk_0008, 8)) {
+            ZeroPalettesByBitmask(0x000F, HEAP_ID_37);
+            ov18_021EE388(pokedexApp);
+            ov18_021F3294(pokedexApp);
+            ov18_021F3438(pokedexApp);
+            pokedexApp->unk_0868.state_10.unk_0 = 0;
+            return POKEDEXAPP_MAINSEQ_21;
+        }
+        break;
+    }
+
+    return POKEDEXAPP_MAINSEQ_62;
+}
