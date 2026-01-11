@@ -18,15 +18,12 @@ static const u8 sDexFlagToLanguage[] = {
 
 // Convert a language code to a Pokedex caught-language bit index
 int LanguageToDexFlag(u32 language) {
-    int i = 0;
-    const u8 *ptr = sDexFlagToLanguage;
+    int i;
 
-    while (i < 6) {
-        if (language == *ptr) {
+    for (i = 0; i < 6; i++) {
+        if (language == sDexFlagToLanguage[i]) {
             break;
         }
-        i++;
-        ptr++;
     }
 
     return i;

@@ -34,10 +34,7 @@ s16 sub_020912D0(u32 value, u32 offset) {
 
     for (i = 0; i < 6; i++) {
         if (sDexCycleTable[i] == value) {
-            u32 temp = offset + 6;
-            i += temp;
-            i %= 6;
-            return sDexCycleTable[i];
+            return sDexCycleTable[(i + offset + 6) % 6];
         }
     }
 
