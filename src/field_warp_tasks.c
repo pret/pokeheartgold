@@ -2,6 +2,7 @@
 
 #include "constants/maps.h"
 
+#include "field_map_change.h"
 #include "field_system_rtc_weather.h"
 #include "follow_mon.h"
 #include "map_events.h"
@@ -31,7 +32,6 @@
 #include "unk_02056D7C.h"
 #include "unk_02058AEC.h"
 #include "unk_0205AC88.h"
-#include "unk_0206793C.h"
 
 struct UnkTaskEnv_02053688 {
     int unk0;
@@ -174,9 +174,9 @@ void sub_02053038(FieldSystem *fieldSystem, BOOL isConnection) {
         ClearTempFieldEventData(fieldSystem);
     }
     if (!isConnection) {
-        sub_02067AE4(fieldSystem);
+        FieldSystem_HandleEnterMapWarp(fieldSystem);
     } else {
-        sub_02067A88(fieldSystem);
+        FieldSystem_HandleEnterMapNonWarp(fieldSystem);
     }
     if (!fieldSystem->unkAC && !isConnection) {
         FieldSystem_StartBugContestTimer(fieldSystem);
@@ -376,7 +376,7 @@ static BOOL FieldTask_ContinueGame_Normal(TaskManager *taskManager) {
             FieldSystem_StartBugContestTimer(fieldSystem);
             sub_0205323C(fieldSystem);
         }
-        sub_02067BE8(fieldSystem);
+        FieldSystem_RandomizeRoamers(fieldSystem);
         *state_p = 2;
         break;
     case 2:
@@ -630,7 +630,7 @@ static BOOL sub_02053950(TaskManager *taskManager) {
         if (GF_SndGetFadeTimer() != 0) {
             break;
         }
-        sub_02067B88(fieldSystem);
+        FieldSystem_ExitSafariZoneWarp(fieldSystem);
         sub_02053A14(taskManager);
         env->unk0++;
         break;
@@ -741,9 +741,9 @@ static BOOL sub_02053B3C(TaskManager *taskManager) {
         }
         sub_02055110(fieldSystem, location->mapId, 0);
         if (env->unk4 == 2) {
-            sub_02067BA4(fieldSystem);
+            FieldSystem_ExitSafariZoneNonWarp(fieldSystem);
         } else if (env->unk4 == 0 || env->unk4 == 1) {
-            sub_02067BC0(fieldSystem);
+            FieldSystem_ClearSafariFlag(fieldSystem);
         } else {
             GF_ASSERT(FALSE);
         }
