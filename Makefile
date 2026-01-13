@@ -91,7 +91,7 @@ PROJECT_CLEAN_TARGETS += $(FX_CONST_H)
 $(FX_CONST_H): $(MKFXCONST) $(TOOLSDIR)/gen_fx_consts/fx_const.csv
 	$(MKFXCONST) $@
 
-$(FILES_NEEDED_FOR_COMPILE) $(ALL_LIB_OBJS): $(FX_CONST_H)
+$(ALL_LIB_OBJS): $(FX_CONST_H)
 sdk9: $(ALL_LIB_OBJS)
 $(WORK_DIR)/include/global.h: $(FX_CONST_H) ;
 
