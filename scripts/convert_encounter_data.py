@@ -152,6 +152,8 @@ with g_enc_file.open() as g_fp, s_enc_file.open() as s_fp:
                                 ),
                             }
                             for i in range(5)
+                            if get_value(g_enc_row, s_enc_row, f"species_superrod{i}")
+                            != "SPECIES_NONE"
                         ],
                     },
                 },
