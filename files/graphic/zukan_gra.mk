@@ -179,6 +179,6 @@ VERSION101_SOPC_NCGR_FILES += \
 	$(ZUKAN_GRA_DIR)/zukan_gra_00000104.NCGR
 
 clean-zukan-gra:
-	$(RM) $(ZUKAN_GRA_NARC) $(addprefix $(ZUKAN_GRA_DIR)/,$(filter %.lz %.NCGR,$(ZUKAN_GRA_FILES)))
+	$(RM) $(ZUKAN_GRA_NARC) $(addprefix $(ZUKAN_GRA_DIR)/,$(filter %.lz %.NCGR,$(ZUKAN_GRA_FILES)) $(patsubst %.lz,%,$(filter %.NCGR.lz,$(ZUKAN_GRA_FILES))))
 .PHONY: clean-zukan-gra
 clean-filesystem: clean-zukan-gra
